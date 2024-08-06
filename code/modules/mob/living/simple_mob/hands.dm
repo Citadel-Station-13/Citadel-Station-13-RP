@@ -4,7 +4,7 @@
 
 //If they can or cannot use tools/machines/etc
 /mob/living/simple_mob/IsAdvancedToolUser()
-	return has_hands
+	return hand_count
 
 /mob/living/simple_mob/proc/IsHumanoidToolUser(var/atom/tool)
 	if(!humanoid_hands)

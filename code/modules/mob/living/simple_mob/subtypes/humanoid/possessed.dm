@@ -39,7 +39,6 @@
 	armor_legacy_mob = list(melee = 30, bullet = 10, laser = 20,energy = 25, bomb = 20, bio = 100, rad = 100) //This should be the same as the base RIG.
 
 	hand_count = 2
-	has_hands = 1
 	humanoid_hands = 1
 
 	grab_resist = 100

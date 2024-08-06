@@ -16,8 +16,15 @@
 	var/mob/owner
 	/// users using us
 	var/list/client/using
+	
+	//* hud config *//
+
 	/// desired hud style - set at base of sync_client
-	var/datum/hud_style/style
+	var/datum/hud_style/hud_style
+	/// desired hud color - set at base of sync_client
+	var/hud_color
+	/// desired hud alpha - set at base of sync_client
+	var/hud_alpha
 
 /datum/mob_hud/New(mob/owner)
 	src.owner = owner
@@ -37,12 +44,18 @@
 	unapply_client(C)
 
 /datum/mob_hud/proc/sync_client(client/C)
+	if(!C)
+		hud_style = GLOB.hud_styles[/datum/hud_style/midnight::id]
+		hud_color = "#ffffff"
+		hud_alpha = 255
+		return
 	var/requested = C.get_preference_entry(/datum/game_preference_entry/dropdown/hud_style)
-	style = GLOB.hud_styles[all_ui_style_ids[requested]]
+	hud_style = GLOB.hud_styles[all_ui_style_ids[requested]]
 	if(isnull(style))
 		stack_trace("failed to get style [requested]")
-		style = new /datum/hud_style/midnight
-	#warn take alpha/etc into account
+		hud_style = new /datum/hud_style/midnight
+	hud_color = C.get_preference_entry(/datum/game_preference_entry/simple_color/hud_color)
+	hud_alpha = C.get_preference_entry(/datum/game_preference_entry/number/hud_alpha)
 
 /datum/mob_hud/proc/apply_client(client/C)
 	C.screen += screens()
