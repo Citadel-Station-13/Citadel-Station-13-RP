@@ -6,6 +6,8 @@ SUBSYSTEM_DEF(overmaps)
 	runlevels = RUNLEVEL_GAME|RUNLEVEL_POSTGAME
 	subsystem_flags = SS_KEEP_TIMING
 
+	//* Freeflight *//
+
 	/// did you know? shuttle flight levels are free!
 	/// that means you can just take one!
 	///
@@ -14,6 +16,11 @@ SUBSYSTEM_DEF(overmaps)
 	var/list/datum/map_level/freeflight/free_flight_levels = list()
 	/// currently in-use shuttle flight levels
 	var/list/datum/map_level/freeflight/used_flight_levels = list()
+
+	//* Global Tuning *//
+
+	/// applied to all ship thrust
+	var/global_thrust_multiplier = 2
 
 //* Flight Levels *//
 
