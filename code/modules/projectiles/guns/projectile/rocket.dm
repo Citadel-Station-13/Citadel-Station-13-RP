@@ -3,7 +3,7 @@
 	desc = "MAGGOT."
 	icon_state = "rocket"
 	item_state = "rocket"
-	caliber = "rocket"
+	caliber = /datum/ammo_caliber/rocket
 	max_shells = 1
 	load_method = SINGLE_CASING
 	w_class = WEIGHT_CLASS_BULKY

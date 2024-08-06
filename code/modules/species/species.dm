@@ -330,6 +330,11 @@
 	var/snow_movement = 0
 	/// How affected by item slowdown the species is.
 	var/item_slowdown_mod = 1
+	/// How affected by light the species is. Positive values slow down, negative speed up.
+	/// Values are a maximum slowdown / speedup based on amount of light or lack thereof.
+	var/light_slowdown = 0
+	var/dark_slowdown = 0
+
 
 	//? Special condition
 	/// Multiplier for 'Regenerate' power speed, in human_powers.dm

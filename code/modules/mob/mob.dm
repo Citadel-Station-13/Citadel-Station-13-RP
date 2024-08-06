@@ -428,18 +428,6 @@
 	. -= src
 
 /**
- * Verb to activate the object in your held hand
- *
- * Calls attack self on the item and updates the inventory hud for hands
- */
-/mob/verb/mode()
-	set name = "Activate Held Object"
-	set category = VERB_CATEGORY_OBJECT
-	set src = usr
-
-	return
-
-/**
  * Get the notes of this mob
  *
  * This actually gets the mind datums notes

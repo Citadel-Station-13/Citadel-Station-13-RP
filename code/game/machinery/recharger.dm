@@ -1,3 +1,4 @@
+// todo: dynamic recharger API on item for cell chargers, wall chargers, and device rechargers.
 /obj/machinery/recharger
 	name = "recharger"
 	desc = "A standard recharger for all devices that use power."
@@ -9,7 +10,7 @@
 	active_power_usage = 40000	//10 kW
 	var/efficiency = 10000 //will provide the modified power rate when upgraded
 	var/obj/item/charging = null
-	var/list/allowed_devices = list(/obj/item/gun/energy, /obj/item/melee/baton, /obj/item/modular_computer, /obj/item/computer_hardware/battery_module, /obj/item/cell, /obj/item/flashlight, /obj/item/electronic_assembly, /obj/item/weldingtool/electric, /obj/item/ammo_magazine/smart, /obj/item/flash, /obj/item/ammo_casing/microbattery, /obj/item/shield_diffuser, /obj/item/ammo_magazine/cell_mag, /obj/item/gun/ballistic/cell_loaded)
+	var/list/allowed_devices = list(/obj/item/gun/energy, /obj/item/melee/baton, /obj/item/modular_computer, /obj/item/computer_hardware/battery_module, /obj/item/cell, /obj/item/flashlight, /obj/item/electronic_assembly, /obj/item/weldingtool/electric, /obj/item/flash, /obj/item/ammo_casing/microbattery, /obj/item/shield_diffuser, /obj/item/ammo_magazine/microbattery, /obj/item/gun/ballistic/microbattery)
 	var/icon_state_charged = "recharger2"
 	var/icon_state_charging = "recharger1"
 	var/icon_state_idle = "recharger0" //also when unpowered
@@ -64,16 +65,16 @@
 			if(EW.use_external_power)
 				to_chat(user, "<span class='notice'>\The [EW] has no recharge port.</span>")
 				return
-		else if(istype(G, /obj/item/ammo_magazine/cell_mag))
-			var/obj/item/ammo_magazine/cell_mag/maggy = G
-			if(maggy.stored_ammo.len < 1)
+		else if(istype(G, /obj/item/ammo_magazine/microbattery))
+			var/obj/item/ammo_magazine/microbattery/maggy = G
+			if(!maggy.amount_remaining())
 				to_chat(user, "\The [G] does not have any cells installed.")
 				return
-		else if(istype(G, /obj/item/gun/ballistic/cell_loaded))
-			var/obj/item/gun/ballistic/cell_loaded/gunny = G
+		else if(istype(G, /obj/item/gun/ballistic/microbattery))
+			var/obj/item/gun/ballistic/microbattery/gunny = G
 			if(gunny.ammo_magazine)
-				var/obj/item/ammo_magazine/cell_mag/maggy = gunny.ammo_magazine
-				if(maggy.stored_ammo.len < 1)
+				var/obj/item/ammo_magazine/microbattery/maggy = gunny.ammo_magazine
+				if(!maggy.amount_remaining())
 					to_chat(user, "\The [G] does not have any cell in its magazine installed.")
 					return
 			else
@@ -176,15 +177,15 @@
 				update_use_power(USE_POWER_ACTIVE)
 			return
 
-		else if(istype(charging, /obj/item/ammo_magazine/cell_mag))
+		else if(istype(charging, /obj/item/ammo_magazine/microbattery))
 			charge_mag(charging)
 
-		else if(istype(charging, /obj/item/gun/ballistic/cell_loaded))
-			var/obj/item/gun/ballistic/cell_loaded/gunny = charging
+		else if(istype(charging, /obj/item/gun/ballistic/microbattery))
+			var/obj/item/gun/ballistic/microbattery/gunny = charging
 			charge_mag(gunny.ammo_magazine)
 
-/obj/machinery/recharger/proc/charge_mag(obj/item/ammo_magazine/cell_mag/maggy)
-	var/tally = maggy.stored_ammo.len
+/obj/machinery/recharger/proc/charge_mag(obj/item/ammo_magazine/microbattery/maggy)
+	var/tally = maggy.amount_remaining()
 	for(var/obj/item/ammo_casing/microbattery/batt in maggy)
 		if(batt.shots_left < initial(batt.shots_left))
 			icon_state = icon_state_charging
@@ -229,7 +230,7 @@
 	plane = TURF_PLANE
 	layer = ABOVE_TURF_LAYER
 	base_power_draw = 30000
-	allowed_devices = list(/obj/item/gun/energy, /obj/item/gun/magnetic, /obj/item/melee/baton, /obj/item/flashlight, /obj/item/cell/device, /obj/item/ammo_casing/microbattery, /obj/item/ammo_magazine/cell_mag, /obj/item/gun/ballistic/cell_loaded)
+	allowed_devices = list(/obj/item/gun/energy, /obj/item/gun/magnetic, /obj/item/melee/baton, /obj/item/flashlight, /obj/item/cell/device, /obj/item/ammo_casing/microbattery, /obj/item/ammo_magazine/microbattery, /obj/item/gun/ballistic/microbattery)
 	icon_state_charged = "wrecharger2"
 	icon_state_charging = "wrecharger1"
 	icon_state_idle = "wrecharger0"
