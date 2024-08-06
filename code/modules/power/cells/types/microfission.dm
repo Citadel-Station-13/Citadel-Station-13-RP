@@ -38,9 +38,9 @@ POWER_CELL_GENERATE_TYPES(/obj/item/cell/microfission)
 	/// if set, lose this much maximum charge per second as a ratio of [regen_left]
 	var/regen_loss_per_second_as_ratio = 1 / ((1 HOURS) / 10) // / 10 because the macros turn time into deciseconds.
 	/// minimum recharge per second
-	var/regen_min_per_second = STATIC_KW_TO_CELL_UNITS(2.5)
+	var/regen_min_per_second = STATIC_KW_TO_CELL_UNITS(2.5, 1)
 	/// maximum recharge per second
-	var/regen_max_per_second = STATIC_KW_TO_CELL_UNITS(25)
+	var/regen_max_per_second = STATIC_KW_TO_CELL_UNITS(25. 1)
 	/// at what % of [regen_initial] we start to have regen drop
 	var/regen_drop_start = 2 / 3
 	/// at what % of [regen_initial] we fall to minimum regen

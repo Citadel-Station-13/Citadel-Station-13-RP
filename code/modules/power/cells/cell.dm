@@ -29,6 +29,14 @@
 	var/typegen_capacity_large = POWER_CELL_CAPACITY_LARGE
 	var/typegen_capacity_weapon = POWER_CELL_CAPACITY_WEAPON
 
+	//* Materials - Type Generation *//
+
+	var/typegen_material_modify = null
+	var/typegen_material_small_multiply = 1
+	var/typegen_material_medium_multiply = 5
+	var/typegen_material_large_multiply = 20
+	var/typegen_material_weapon_multipliy = 3.5
+
 	//* Configuration *//
 	/// allow rechargers
 	var/can_be_recharged = TRUE
@@ -64,6 +72,14 @@
 	var/overlay_full_state = "cell-o2" // Overlay used when fully charged.
 
 /obj/item/cell/Initialize(mapload)
+	if(!isnull(typegen_material_modify) && !is_typelist(NAMEOF(src, materials_base), materials_base))
+		if(has_typelist(NAMEOF(src, materials_base)))
+			materials_base = get_typelist(NAMEOF(src, materials_base))
+		else
+			var/list/multiplied = materials_base.Copy()
+			for(var/key in multiplied)
+				multiplied[key] = multiplied[key] * typegen_material_modify
+			materials_base = typelist(NAMEOF(src, materials_base), multiplied)
 	. = ..()
 	if(isnull(charge))
 		charge = max_charge

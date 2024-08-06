@@ -34,7 +34,7 @@ DEFINE_BITFIELD_NEW(cell_type, list(
 	rendering_system = TRUE; \
 	indicator_count = 4; \
 	max_charge = ##TYPEPATH::typegen_capacity_small * ##TYPEPATH::typegen_capacity_multiplier; \
-
+	typegen_material_modify = ##TYPEPATH::typegen_material_small_multiply; \
 } \
 ##TYPEPATH/medium { \
 	name = "medium power cell (" + ##TYPEPATH::cell_name + ")"; \
@@ -42,6 +42,7 @@ DEFINE_BITFIELD_NEW(cell_type, list(
 	rendering_system = TRUE; \
 	indicator_count = 4; \
 	max_charge = ##TYPEPATH::typegen_capacity_medium * ##TYPEPATH::typegen_capacity_multiplier; \
+	typegen_material_modify = ##TYPEPATH::typegen_material_medium_multiply; \
 } \
 ##TYPEPATH/large { \
 	name = "large power cell (" + ##TYPEPATH::cell_name + ")"; \
@@ -49,6 +50,7 @@ DEFINE_BITFIELD_NEW(cell_type, list(
 	rendering_system = TRUE; \
 	indicator_count = 4; \
 	max_charge = ##TYPEPATH::typegen_capacity_large * ##TYPEPATH::typegen_capacity_multiplier; \
+	typegen_material_modify = ##TYPEPATH::typegen_material_large_multiply; \
 } \
 ##TYPEPATH/weapon { \
 	name = "weapon power cell (" + ##TYPEPATH::cell_name + ")"; \
@@ -56,4 +58,5 @@ DEFINE_BITFIELD_NEW(cell_type, list(
 	rendering_system = TRUE; \
 	indicator_count = 4; \
 	max_charge = ##TYPEPATH::typegen_capacity_weapon * ##TYPEPATH::typegen_capacity_multiplier; \
+	typegen_material_modify = ##TYPEPATH::typegen_material_weapon_multiply; \
 }
