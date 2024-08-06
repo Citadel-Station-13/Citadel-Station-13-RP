@@ -16,7 +16,7 @@
 	if(!check_inventory_usage(usr))
 		return
 
-	usr.attack_ui(slot_id)
+	// usr.attack_ui(slot_id)
 
 // Hand slots are special to handle the handcuffs overlay
 /atom/movable/screen/inventory/hand

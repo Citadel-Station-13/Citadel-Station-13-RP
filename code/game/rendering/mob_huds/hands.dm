@@ -21,6 +21,7 @@
 	var/atom/movable/screen/hands/old_hand = hands[from_index]
 	var/atom/movable/screen/hands/new_hand = hands[to_index]
 
+
 #warn impl all
 
 /atom/movable/screen/hands

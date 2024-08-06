@@ -1,20 +1,3 @@
-// todo: see all this? needs to be decided what to do with and shoved into the inventory handling system proper once evaluated.
-
-//This proc is called whenever someone clicks an inventory ui slot.
-/mob/proc/attack_ui(var/slot)
-	var/obj/item/W = get_active_held_item()
-
-	var/obj/item/E = item_by_slot_id(slot)
-	if (istype(E))
-		if(istype(W))
-			E.attackby(W,src)
-		else
-			E.attack_hand(src)
-	else
-		equip_to_slot_if_possible(W, slot)
-
-//! helpers below
-
 /**
  * smart equips an item - puts in a slot or tries to put it in storage.
  */
@@ -58,8 +41,6 @@
 //* Hands *//
 
 /mob/proc/swap_hand(to_index)
-	#warn all of this doesn't properly support multi-user.
-
 	var/obj/item/was_active = length(held_items) <= active_hand? held_items[active_hand] : null
 	var/old_index = active_hand
 
@@ -75,7 +56,7 @@
 
 	. = TRUE
 
-	inventory?.hud?.swap_active_hand(old_index, active_hand)
+	hands_hud?.swap_active_hand(old_index, to_index)
 
 	//! LEGACY
 	// We just swapped hands, so the thing in our inactive hand will notice it's not the focus
@@ -121,7 +102,6 @@
 /mob/proc/get_generalized_hand_name(index)
 	var/number_on_side = round(index / 2)
 	return "[index % 2? "left" : "right"] hand[number_on_side > 1 && " #[number_on_side]"]"
-
 
 //* Hands - Helpers *//
 

@@ -40,10 +40,6 @@
 	var/list/hud_gears
 	/// Icon file path to use for the HUD, otherwise generic icons are used
 	var/ui_icons
-	/// If they have hands, they could use some icons.
-	var/r_hand_sprite
-	/// If they have hands, they could use some icons.
-	var/l_hand_sprite
 	/// Message to print to players about 'how' to play this mob on login.
 	var/player_msg
 

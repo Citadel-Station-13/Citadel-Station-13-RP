@@ -116,8 +116,8 @@
 	//* Inventory *//
 	/// our inventory datum, if any.
 	var/datum/inventory/inventory
-	/// inventory hud used
-	var/datum/mob_hud/inventory/using_inventory_hud
+	/// our hand hud, if any
+	var/datum/mob_hud/hands/hands_hud
 	/// held items; indexed list. defaults to null, lazy.
 	/// the length of this is also the abstracted number of hands we should have
 	/// * 1, 3, 5, ... are left

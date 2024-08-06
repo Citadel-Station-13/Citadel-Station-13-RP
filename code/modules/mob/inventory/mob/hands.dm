@@ -16,7 +16,7 @@
 //* Public API - Pickup *//
 
 /mob/proc/put_in_hand(obj/item/I, index, flags)
-	return put_in_hand_impl(I, index, flags)
+	return equip_hand_impl(I, index, flags)
 
 /mob/proc/put_in_hands(obj/item/I, flags)
 	if(is_holding(I))
@@ -342,7 +342,7 @@
  * the big, bad proc ultimately in charge of putting something into someone's hand
  * whether it's from the ground, from a slot, or from another hand.
  */
-/mob/proc/put_in_hand_impl(obj/item/I, index, flags)
+/mob/proc/equip_hand_impl(obj/item/I, index, flags)
 	PRIVATE_PROC(TRUE)
 	if(!I)
 		return TRUE
@@ -382,6 +382,7 @@
 		log_inventory("pickup-to-hand: keyname [key_name(src)] index [index] item [I]([ref(I)])")
 
 	held_items[index] = I
+	#warn hud
 
 	//! LEGACY BEGIN
 	I.update_twohanding()
@@ -396,7 +397,26 @@
 		I.add_hiddenprint(src)
 
 /**
+ * get something out of our hand
+ *
+ * @return unequipped item
+ */
+/mob/proc/unequip_hand_impl(obj/item/I, index, flags)
+	ASSERT(held_items[index] == I)
+
+	held_items[index] = null
+
+	I.unequipped(src, SLOT_ID_HANDS, flags)
+	#warn impl; hud
+
+/**
  * handle swapping item from one hand index to another
  */
 /mob/proc/handle_item_handswap(obj/item/I, index, old_index, flags, mob/user = src)
-	#warn impl
+	ASSERT(held_items[old_index] == I)
+	ASSERT(isnull(held_items[index]))
+
+	held_items[old_index] = null
+	held_items[index] = I
+
+	#warn impl; hud

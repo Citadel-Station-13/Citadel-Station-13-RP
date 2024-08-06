@@ -8,13 +8,12 @@
 	var/intent
 	/// optional: click params
 	var/list/params
-	/// hand index, if any
+	/// optional: hand index, if any
 	var/hand_index
 	/// with item, if any
 	var/obj/item/using
 	/// optional: target atom
 	var/atom/target
-	#warn deal with hand index lol
 
 /datum/event_args/actor/clickchain/New(mob/performer, mob/initiator, atom/target, list/params, intent)
 	..()

@@ -49,7 +49,9 @@
  */
 /datum/inventory/proc/get_hud()
 	RETURN_TYPE(/datum/mob_hud/inventory)
-	#warn impl
+	if(!hud)
+		hud = new(owner, src)
+	return hud
 
 //* Queries *//
 

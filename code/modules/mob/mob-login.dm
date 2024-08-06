@@ -94,6 +94,11 @@
 	// load inventory HUD
 	var/datum/mob_hud/inventory/inventory_hud = inventory?.get_hud()
 	inventory_hud?.add_user(client)
+	// load hands HUD
+	if(has_hands())
+		if(!hands_hud)
+			hands_hud = new(src)
+		hands_hud.add_user(client)
 
 	//* legacy
 	// this is below reset_perspective so self perspective generates.

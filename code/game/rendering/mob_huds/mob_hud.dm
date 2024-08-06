@@ -16,7 +16,7 @@
 	var/mob/owner
 	/// users using us
 	var/list/client/using
-	
+
 	//* hud config *//
 
 	/// desired hud style - set at base of sync_client
@@ -51,7 +51,7 @@
 		return
 	var/requested = C.get_preference_entry(/datum/game_preference_entry/dropdown/hud_style)
 	hud_style = GLOB.hud_styles[all_ui_style_ids[requested]]
-	if(isnull(style))
+	if(isnull(hud_style))
 		stack_trace("failed to get style [requested]")
 		hud_style = new /datum/hud_style/midnight
 	hud_color = C.get_preference_entry(/datum/game_preference_entry/simple_color/hud_color)

@@ -95,8 +95,7 @@
 	if(hand)
 		if(!can_unequip(I, SLOT_ID_HANDS, flags, user))
 			return FALSE
-		_unequip_held(I, TRUE)
-		I.unequipped(src, SLOT_ID_HANDS, flags)
+		unequip_hand_impl(I, hand, flags)
 		old = SLOT_ID_HANDS
 	else
 		if(!I.worn_slot)
