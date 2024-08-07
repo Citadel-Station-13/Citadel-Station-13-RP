@@ -33,7 +33,7 @@
 
 /obj/item/inducer/Initialize(mapload)
 	. = ..()
-	var/datum/object_system/cell_slot/cell_slot = init_cell_slot(cell_type)
+	var/datum/object_system/cell_slot/cell_slot = init_cell_slot(cell_type, CELL_TYPE_MEDIUM)
 	cell_slot.receive_emp = TRUE
 	cell_slot.receive_inducer = TRUE
 	cell_slot.remove_yank_offhand = TRUE
@@ -44,7 +44,7 @@
 /obj/item/inducer/examine(mob/user, dist)
 	. = ..()
 	if(!isnull(obj_cell_slot.cell))
-		. += "<br><span class='notice'>Its display shows: [round(obj_cell_slot.cell.charge)] / [obj_cell_slot.cell.maxcharge].</span>"
+		. += "<br><span class='notice'>Its display shows: [round(obj_cell_slot.cell.charge)] / [obj_cell_slot.cell.max_charge].</span>"
 	else
 		. += "<br><span class='notice'>Its display is dark.</span>"
 	if(opened)
@@ -217,7 +217,7 @@
 	var/obj/item/cell/C = get_cell(TRUE)
 	if(C)
 		things_to_induce += C
-		if(C.charge >= C.maxcharge)
+		if(C.charge >= C.max_charge)
 			return INDUCER_SCAN_FULL
 
 /**
@@ -234,7 +234,7 @@
 	. = ..()
 	var/obj/item/cell/C = get_cell()
 	if(C)
-		var/use = clamp(C.maxcharge - C.charge, 0, amount)
+		var/use = clamp(C.max_charge - C.charge, 0, amount)
 		C.give(use)
 		return use
 	else

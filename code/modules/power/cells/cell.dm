@@ -14,10 +14,50 @@
 	throw_speed = 3
 	throw_range = 5
 	w_class = WEIGHT_CLASS_NORMAL
+
+	//* Identity *//
+	/// base name; set on subtypes so [POWER_CELL_GENERATE_TYPES] works properly
+	var/cell_name = "unknown"
+	/// description appended to basic description by [POWER_CELL_GENERATE_TYPES].
+	var/cell_desc = "You don't know what this one does."
+
+	//* Capacity - Type Generation *//
+
+	var/typegen_capacity_multiplier = 1
+	var/typegen_capacity_small = POWER_CELL_CAPACITY_SMALL
+	var/typegen_capacity_medium = POWER_CELL_CAPACITY_MEDIUM
+	var/typegen_capacity_large = POWER_CELL_CAPACITY_LARGE
+	var/typegen_capacity_weapon = POWER_CELL_CAPACITY_WEAPON
+
+	//* Materials - Type Generation *//
+
+	var/typegen_material_modify = null
+	var/typegen_material_small_multiply = 1
+	var/typegen_material_medium_multiply = 5
+	var/typegen_material_large_multiply = 20
+	var/typegen_material_weapon_multipliy = 3.5
+
+	//* Configuration *//
+	/// allow rechargers
+	var/can_be_recharged = TRUE
+	#warn impl
+
+	//* Rendering *//
+	/// perform default rendering
+	var/rendering_system = FALSE
+	/// total states; 0 to disable auto render
+	var/indicator_count
+	/// our indicator color
+	var/indicator_color = "#00aa00"
+	/// our stripe color; null for no stripe
+	var/stripe_color
+
+
+	//* legacy below *//
 	/// Are we EMP immune?
 	var/emp_proof = FALSE
 	var/charge
-	var/maxcharge = 1000
+	var/max_charge = 1000
 	var/rigged = 0		// true if rigged to explode
 	var/minor_fault = 0 //If not 100% reliable, it will build up faults.
 	var/self_recharge = FALSE // If true, the cell will recharge itself.
@@ -30,12 +70,19 @@
 	// Overlay stuff.
 	var/overlay_half_state = "cell-o1" // Overlay used when not fully charged but not empty.
 	var/overlay_full_state = "cell-o2" // Overlay used when fully charged.
-	var/last_overlay_state = null // Used to optimize update_icon() calls.
 
 /obj/item/cell/Initialize(mapload)
+	if(!isnull(typegen_material_modify) && !is_typelist(NAMEOF(src, materials_base), materials_base))
+		if(has_typelist(NAMEOF(src, materials_base)))
+			materials_base = get_typelist(NAMEOF(src, materials_base))
+		else
+			var/list/multiplied = materials_base.Copy()
+			for(var/key in multiplied)
+				multiplied[key] = multiplied[key] * typegen_material_modify
+			materials_base = typelist(NAMEOF(src, materials_base), multiplied)
 	. = ..()
 	if(isnull(charge))
-		charge = maxcharge
+		charge = max_charge
 	update_icon()
 	if(self_recharge)
 		START_PROCESSING(SSobj, src)
@@ -66,46 +113,13 @@
 /obj/item/cell/can_drain_energy(datum/actor, flags)
 	return TRUE
 
-#define OVERLAY_FULL	2
-#define OVERLAY_PARTIAL	1
-#define OVERLAY_EMPTY	0
-
-/obj/item/cell/update_icon()
-	var/new_overlay = null // The overlay that is needed.
-	// If it's different than the current overlay, then it'll get changed.
-	// Otherwise nothing happens, to save on CPU.
-
-	if(charge < 0.01) // Empty.
-		new_overlay = OVERLAY_EMPTY
-		if(last_overlay_state != new_overlay)
-			cut_overlays()
-
-	else if(charge/maxcharge >= 0.995) // Full
-		new_overlay = OVERLAY_FULL
-		if(last_overlay_state != new_overlay)
-			cut_overlay(overlay_half_state)
-			add_overlay(overlay_full_state)
-
-
-	else // Inbetween.
-		new_overlay = OVERLAY_PARTIAL
-		if(last_overlay_state != new_overlay)
-			cut_overlay(overlay_full_state)
-			add_overlay(overlay_half_state)
-
-	last_overlay_state = new_overlay
-
-#undef OVERLAY_FULL
-#undef OVERLAY_PARTIAL
-#undef OVERLAY_EMPTY
-
 /obj/item/cell/proc/percent()		// return % charge of cell
-	if(!maxcharge)
+	if(!max_charge)
 		return 0
-	return 100.0*charge/maxcharge
+	return 100.0*charge/max_charge
 
 /obj/item/cell/proc/fully_charged()
-	return (charge == maxcharge)
+	return (charge == max_charge)
 
 // checks if the power cell is able to provide the specified amount of charge
 /obj/item/cell/proc/check_charge(var/amount)
@@ -113,7 +127,7 @@
 
 // Returns how much charge is missing from the cell, useful to make sure not overdraw from the grid when recharging.
 /obj/item/cell/proc/amount_missing()
-	return max(maxcharge - charge, 0)
+	return max(max_charge - charge, 0)
 
 // use power from a cell, returns the amount actually used
 /obj/item/cell/proc/use(var/amount)
@@ -134,26 +148,12 @@
 	use(amount)
 	return 1
 
-/**
- * use x cell units, affected by GLOB.cellefficiency
- */
-/obj/item/cell/proc/use_scaled(amount)
-	return use(amount / GLOB.cellefficiency) * GLOB.cellefficiency
-
-/**
- * uses x cell units but only if we have enough, affected by GLOB.cellefficiency
- *
- * returns TRUE/FALSE
- */
-/obj/item/cell/proc/checked_use_scaled(amount)
-	return checked_use(amount / GLOB.cellefficiency)
-
 // recharge the cell
 /obj/item/cell/proc/give(var/amount)
 	if(rigged && amount > 0)
 		explode()
 		return FALSE
-	var/amount_used = min(maxcharge-charge,amount)
+	var/amount_used = min(max_charge-charge,amount)
 	charge += amount_used
 	update_icon()
 	if(loc)
@@ -164,11 +164,11 @@
 /obj/item/cell/examine(mob/user, dist)
 	. = ..()
 	if(get_dist(src, user) <= 1)
-		. += " It has a power rating of [maxcharge].\nThe charge meter reads [round(src.percent() )]%."
-	if(maxcharge < 30000)
-		. += "[desc]\nThe manufacturer's label states this cell has a power rating of [maxcharge], and that you should not swallow it.\nThe charge meter reads [round(src.percent() )]%."
+		. += " It has a power rating of [max_charge].\nThe charge meter reads [round(src.percent() )]%."
+	if(max_charge < 30000)
+		. += "[desc]\nThe manufacturer's label states this cell has a power rating of [max_charge], and that you should not swallow it.\nThe charge meter reads [round(src.percent() )]%."
 	else
-		. += "This power cell has an exciting chrome finish, as it is an uber-capacity cell type! It has a power rating of [maxcharge]!\nThe charge meter reads [round(src.percent() )]%."
+		. += "This power cell has an exciting chrome finish, as it is an uber-capacity cell type! It has a power rating of [max_charge]!\nThe charge meter reads [round(src.percent() )]%."
 
 /obj/item/cell/attackby(obj/item/W, mob/user)
 	..()
@@ -215,7 +215,7 @@
 
 /obj/item/cell/proc/corrupt()
 	charge /= 2
-	maxcharge /= 2
+	max_charge /= 2
 	if (prob(10))
 		rigged = 1 //broken batteries are dangerous
 
@@ -274,3 +274,29 @@
 	var/datum/gender/TU = GLOB.gender_datums[user.get_visible_gender()]
 	user.visible_message("<span class='danger'>\The [user] is licking the electrodes of \the [src]! It looks like [TU.he] [TU.is] trying to commit suicide.</span>")
 	return (FIRELOSS)
+
+//* Rendering *//
+
+/obj/item/cell/update_icon()
+	if(rendering_system)
+		cut_overlays()
+
+		if(stripe_color)
+			var/image/stripe = image(icon, "cell-stripe")
+			stripe.color = stripe_color
+			add_overlay(stripe)
+
+		if(indicator_count)
+			var/image/indicator = image(icon, "cell-[charge <= 1? "empty" : "[ceil(charge / max_charge * 5)]"]")
+			indicator.color = indicator_color
+			add_overlay(indicator)
+	else
+		//! LEGACY CODE !//
+		cut_overlays()
+		if(charge < 0.01) // Empty.
+		else if(charge/max_charge >= 0.995) // Full
+			add_overlay(overlay_full_state)
+		else // Inbetween.
+			add_overlay(overlay_half_state)
+		//! END !//
+	return ..()

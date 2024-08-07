@@ -8,7 +8,7 @@
 	damage_force = 0
 	throw_speed = 5
 	throw_range = 7
-	maxcharge = 480
+	max_charge = 480
 	charge_amount = 5
 	materials_base = list("metal" = 350, MAT_GLASS = 50)
 	preserve_item = 1
@@ -22,7 +22,7 @@
 	name = "weapon power cell"
 	desc = "A small power cell designed to power handheld weaponry."
 	icon_state = "wcell"
-	maxcharge = 2400
+	max_charge = 2400
 	charge_amount = 20
 
 	worth_intrinsic = 50

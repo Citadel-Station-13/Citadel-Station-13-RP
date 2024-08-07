@@ -626,9 +626,9 @@
 	if(use_external_power)
 		var/obj/item/cell/external = get_external_power_supply()
 		if(external)
-			return external.maxcharge
+			return external.max_charge
 	else if(power_supply)
-		return power_supply.maxcharge
+		return power_supply.max_charge
 	return 0
 
 /obj/item/weldingtool/electric/remove_fuel(var/amount = 1, var/mob/M = null)

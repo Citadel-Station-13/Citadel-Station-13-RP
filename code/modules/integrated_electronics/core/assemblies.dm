@@ -178,7 +178,7 @@
 	data["max_complexity"] = max_complexity
 
 	data["battery_charge"] = round(battery?.charge, 0.1)
-	data["battery_max"] = round(battery?.maxcharge, 0.1)
+	data["battery_max"] = round(battery?.max_charge, 0.1)
 	data["net_power"] = DYNAMIC_CELL_UNITS_TO_W(net_power, 1)
 	data["circuit_props"] = ui_circuit_props
 	// This works because lists are always passed by reference in BYOND, so modifying unremovable_circuits

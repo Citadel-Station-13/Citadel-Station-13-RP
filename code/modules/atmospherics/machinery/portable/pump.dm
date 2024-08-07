@@ -84,7 +84,7 @@
 		last_flow_rate_legacy = 0
 		last_power_draw_legacy = 0
 	else
-		cell.use_scaled(DYNAMIC_W_TO_CELL_UNITS(power_draw, 1))
+		cell.use(DYNAMIC_W_TO_CELL_UNITS(power_draw, 1))
 		last_power_draw_legacy = power_draw
 
 		update_connected_network()
@@ -133,7 +133,7 @@
 
 	data["powerDraw"] = round(last_power_draw_legacy)
 	data["cellCharge"] = cell ? cell.charge : 0
-	data["cellMaxCharge"] = cell ? cell.maxcharge : 1
+	data["cellMaxCharge"] = cell ? cell.max_charge : 1
 
 	if(holding)
 		data["holding"] = list()

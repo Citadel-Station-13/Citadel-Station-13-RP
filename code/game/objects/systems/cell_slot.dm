@@ -5,19 +5,11 @@
  * cell slot
  */
 /datum/object_system/cell_slot
+	//* State *//
 	/// held cell
 	var/obj/item/cell/cell
-	/// reserved - cell type accepted enum, for when we do large/medium/small/etc cells later.
-	var/cell_type
-	/// considered primary? if so, we get returned on get_cell()
-	var/primary = TRUE
-	/// allow inducer?
-	var/receive_inducer = FALSE
-	/// allow EMPs to hit?
-	var/receive_emp = FALSE
-	/// allow explosions to hit cell?
-	// todo: currently unused
-	var/recieve_explosion = FALSE
+
+	//* Config - Interaction *//
 	/// allow quick removal by clicking with hand?
 	var/remove_yank_offhand = FALSE
 	/// allow context menu removal?
@@ -32,7 +24,25 @@
 	var/remove_tool_time = 0
 	/// removal / insertion is discrete or loud
 	var/remove_is_discrete = TRUE
-	/// legacy
+
+	//* Config - Defense *//
+	/// allow EMPs to hit?
+	var/receive_emp = FALSE
+	/// allow explosions to hit cell?
+	// todo: currently unused
+	var/recieve_explosion = FALSE
+
+	//* Config - Integration *//
+	/// allow inducer?
+	var/receive_inducer = FALSE
+	/// considered primary? if so, we get returned on get_cell()
+	var/primary = TRUE
+
+	//* Config - Cell Accept *//
+	/// cell types accepted
+	var/cell_type = NONE
+
+	//! Legacy !//
 	// todo: kill this
 	var/legacy_use_device_cells = FALSE
 
@@ -40,6 +50,7 @@
  * returns TRUE if slot accepts this type of cell
  */
 /datum/object_system/cell_slot/proc/accepts_cell(obj/item/cell/cell)
+	#warn this
 	return legacy_use_device_cells? istype(cell, /obj/item/cell/device) : TRUE
 
 /**
@@ -112,17 +123,35 @@
 
 //? Lazy wrappers for init
 
-/obj/proc/init_cell_slot(initial_cell_path)
+/**
+ * Creates a cell slot
+ *
+ * * This proc will error if it cannot detect a cell type, nor a preload to detect it from.
+ *
+ * @params
+ * * preload_path - (optional) cell typepath to start with
+ * * cell_type - (optional) CELL_TYPE_* bitfield, of cell types to accept; defaults to preload_path's type if it exists and this isn't provided.
+ */
+/obj/proc/init_cell_slot(preload_path, cell_type)
 	RETURN_TYPE(/datum/object_system/cell_slot)
 	ASSERT(isnull(obj_cell_slot))
 	obj_cell_slot = new(src)
-	if(initial_cell_path)
-		obj_cell_slot.cell = new initial_cell_path
+	if(preload_path)
+		obj_cell_slot.cell = new preload_path
+		if(isnull(cell_type))
+			cell_type = obj_cell_slot.cell_type
+	else
+		cell_type = CELL_TYPE_MEDIUM
+		stack_trace("failed to provide a cell type accept bitfield, and didn't provide a preload path to autodetect from")
+	obj_cell_slot.cell_type = cell_type
 	return obj_cell_slot
 
-/obj/proc/init_cell_slot_easy_tool(initial_cell_path, offhand_removal = TRUE, inhand_removal = FALSE)
+/**
+ * Wrapper for lazily initializing a cell slot that uses small cells.
+ */
+/obj/proc/init_cell_slot_easy_tool(preload_path, offhand_removal = TRUE, inhand_removal = FALSE)
 	RETURN_TYPE(/datum/object_system/cell_slot)
-	if(isnull(init_cell_slot(initial_cell_path)))
+	if(isnull(init_cell_slot(preload_path)))
 		return
 	if(offhand_removal)
 		obj_cell_slot.remove_yank_offhand = TRUE
@@ -131,6 +160,7 @@
 	obj_cell_slot.remove_yank_context = TRUE
 	obj_cell_slot.remove_yank_time = 0
 	obj_cell_slot.legacy_use_device_cells = TRUE
+	obj_cell_slot.cell_type = CELL_TYPE_SMALL
 	return obj_cell_slot
 
 //? Wrappers for cell.dm functions
@@ -201,18 +231,6 @@
  */
 /datum/object_system/cell_slot/proc/checked_use(var/amount)
 	return cell?.checked_use(amount) ? TRUE : FALSE
-
-/**
- * cell function wrapper - use x cell units, affected by GLOB.cellefficiency, returns the amount actually used or 0 if null
- */
-/datum/object_system/cell_slot/proc/use_scaled(var/amount)
-	return cell?.use_scaled(amount) || 0
-
-/**
- * cell function wrapper - checked_use() but scaled by GLOB.cellefficiency
- */
-/datum/object_system/cell_slot/proc/checked_use_scaled(var/amount)
-	return cell?.checked_use_scaled(amount) ? TRUE : FALSE
 
 /**
  * cell function wrapper - recharge the cell by x amount returns the amount consumed or 0 if cell is null

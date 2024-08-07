@@ -186,7 +186,7 @@
 	return
 
 /obj/item/gun/energy/kinetic_accelerator/proc/reload()
-	power_supply.give(power_supply.maxcharge)
+	power_supply.give(power_supply.max_charge)
 	// process_chamber()
 	// if(!suppressed)
 	playsound(src, 'sound/weapons/kenetic_reload.ogg', 60, 1)

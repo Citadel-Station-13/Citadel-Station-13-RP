@@ -220,7 +220,7 @@
 
 	if(!cell)
 		cell = new /obj/item/cell/high(src)
-		cell.maxcharge = 15000
+		cell.max_charge = 15000
 		cell.charge = 15000
 
 	. = ..()
@@ -515,7 +515,7 @@
 		STATPANEL_DATA_LINE("")
 		if(cell)
 			STATPANEL_DATA_LINE("Charge Left: [round(cell.percent())]%")
-			STATPANEL_DATA_LINE("Cell Rating: [round(cell.maxcharge)]") // Round just in case we somehow get crazy values
+			STATPANEL_DATA_LINE("Cell Rating: [round(cell.max_charge)]") // Round just in case we somehow get crazy values
 			STATPANEL_DATA_LINE("Power Cell Load: [round(used_power_this_tick)]W")
 		else
 			STATPANEL_DATA_LINE("No Cell Inserted!")

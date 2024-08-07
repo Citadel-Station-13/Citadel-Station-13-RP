@@ -60,7 +60,7 @@
 
 	data["cell"] = cell
 	data["cellCharge"] = cell?.charge
-	data["cellMaxCharge"] = cell?.maxcharge
+	data["cellMaxCharge"] = cell?.max_charge
 
 	data["locked"] = locked
 	data["suspension_field"] = suspension_field

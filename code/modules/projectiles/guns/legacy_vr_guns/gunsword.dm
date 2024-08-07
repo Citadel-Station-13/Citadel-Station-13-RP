@@ -35,7 +35,7 @@
 	icon_state = "gsaberoff"
 	icon_override = 'icons/vore/custom_guns_vr.dmi'
 	item_state = "gsaberoff"
-	maxcharge = 2400
+	max_charge = 2400
 	charge_amount = 20
 	damage_force = 3
 	throw_force = 5
