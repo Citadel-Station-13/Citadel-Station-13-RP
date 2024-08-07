@@ -3,6 +3,7 @@
 
 /datum/world_faction/corporation/nanotrasen
 	name = "Nanotrasen"
+	abbreviation = "NT"
 	id = "nanotrasen"
 	desc = "Nanotrasen - one of the great Trans-Stellar Corporations from the 2300s. A logistics and prototyping giant whose \
 	claim to fame was the industrial synthesis of the Artificial Bluespace Crystal, they are one of the most prestigious \
