@@ -348,6 +348,21 @@
 "anT" = (
 /turf/simulated/wall/prepainted/security,
 /area/security/detectives_office)
+"aoF" = (
+/obj/structure/cable/green{
+	icon_state = "1-8"
+	},
+/obj/structure/cable/green{
+	dir = 1;
+	icon_state = "1-2"
+	},
+/obj/machinery/power/sensor{
+	name = "Powernet Sensor - Security Subgrid";
+	name_tag = "Surfsec Subgrid"
+	},
+/obj/structure/cable/green,
+/turf/simulated/floor/plating,
+/area/maintenance/substation/security)
 "aoJ" = (
 /obj/structure/cable/green{
 	icon_state = "1-2"
@@ -1027,6 +1042,10 @@
 /obj/map_helper/access_helper/airlock/station/head_office/head_of_security,
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/heads/hos)
+"aHX" = (
+/obj/effect/shuttle_landmark/triumph/deck4/udang,
+/turf/space,
+/area/space)
 "aIj" = (
 /obj/machinery/camera/network/civilian{
 	dir = 1
@@ -1284,17 +1303,6 @@
 	},
 /turf/simulated/wall/r_wall/prepainted/command,
 /area/teleporter)
-"aNG" = (
-/obj/effect/floor_decal/industrial/danger{
-	dir = 10
-	},
-/obj/machinery/light{
-	dir = 8
-	},
-/obj/machinery/mech_recharger,
-/obj/vehicle/sealed/mecha/combat/fighter/baron/sec/loaded,
-/turf/simulated/floor/tiled/old_cargo/gray,
-/area/security/hanger)
 "aNK" = (
 /turf/simulated/wall/prepainted,
 /area/hallway/primary/aft)
@@ -1603,6 +1611,22 @@
 /obj/machinery/light,
 /turf/simulated/floor/tiled/dark,
 /area/security/hallway)
+"aZU" = (
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
+/obj/structure/cable/green{
+	icon_state = "2-8"
+	},
+/obj/machinery/power/sensor{
+	name = "Powernet Sensor - Command Subgrid";
+	name_tag = "Command Subgrid"
+	},
+/obj/structure/cable/green{
+	icon_state = "0-2"
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/substation/command)
 "baf" = (
 /obj/structure/closet/crate/bin{
 	anchored = 1
@@ -4151,10 +4175,6 @@
 	},
 /obj/map_helper/access_helper/airlock/station/external_airlock,
 /turf/simulated/floor/tiled/dark,
-/area/hallway/secondary/docking_hallway)
-"cVf" = (
-/obj/effect/floor_decal/sign/dock/three,
-/turf/simulated/wall/r_wall/prepainted,
 /area/hallway/secondary/docking_hallway)
 "cVE" = (
 /obj/machinery/light/small{
@@ -8284,14 +8304,6 @@
 /obj/map_helper/access_helper/airlock/station/maintenance,
 /turf/simulated/floor/plating,
 /area/maintenance/substation/exploration)
-"fIV" = (
-/obj/effect/floor_decal/industrial/danger{
-	dir = 10
-	},
-/obj/machinery/mech_recharger,
-/obj/vehicle/sealed/mecha/combat/fighter/baron/sec/loaded,
-/turf/simulated/floor/tiled/old_cargo/gray,
-/area/security/hanger)
 "fJm" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
@@ -15988,21 +16000,6 @@
 /obj/machinery/power/apc/west_mount,
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/HOP_quarters)
-"kPs" = (
-/obj/structure/cable/green{
-	icon_state = "1-8"
-	},
-/obj/structure/cable/green{
-	dir = 1;
-	icon_state = "1-2"
-	},
-/obj/machinery/power/sensor{
-	name = "Powernet Sensor - Security Subgrid";
-	name_tag = "Surfsec Subgrid"
-	},
-/obj/structure/cable/green,
-/turf/simulated/floor/plating,
-/area/maintenance/substation/security)
 "kPt" = (
 /obj/item/paper_bin,
 /obj/item/clothing/glasses/sunglasses,
@@ -17401,6 +17398,19 @@
 /obj/structure/dispenser/oxygen,
 /turf/simulated/floor/tiled/dark,
 /area/hallway/secondary/docking_hallway)
+"lZS" = (
+/obj/machinery/embedded_controller/radio/airlock/docking_port{
+	dir = 4;
+	frequency = 1380;
+	id_tag = "triumph_udang_dock";
+	pixel_x = -26;
+	pixel_y = 1
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 6
+	},
+/turf/simulated/floor/tiled/dark,
+/area/hallway/secondary/docking_hallway)
 "maa" = (
 /obj/effect/floor_decal/techfloor,
 /obj/effect/floor_decal/techfloor/hole,
@@ -17950,6 +17960,17 @@
 	},
 /turf/simulated/floor/tiled/old_tile/gray,
 /area/security/range)
+"mtH" = (
+/obj/effect/floor_decal/industrial/danger{
+	dir = 10
+	},
+/obj/machinery/light{
+	dir = 8
+	},
+/obj/machinery/mech_recharger,
+/obj/vehicle/sealed/mecha/combat/fighter/baron/sec/loaded,
+/turf/simulated/floor/tiled/old_cargo/gray,
+/area/security/hanger)
 "mtR" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/cable/green{
@@ -19094,6 +19115,13 @@
 /obj/machinery/suit_storage_unit/standard_unit,
 /turf/simulated/floor/tiled,
 /area/teleporter)
+"nnL" = (
+/obj/effect/floor_decal/techfloor/orange/corner{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden,
+/turf/simulated/floor/tiled/dark,
+/area/hallway/secondary/docking_hallway)
 "nnP" = (
 /turf/simulated/wall/prepainted/civilian,
 /area/chapel/main)
@@ -21769,6 +21797,13 @@
 	},
 /turf/simulated/floor/tiled,
 /area/exploration/excursion_dock)
+"pdD" = (
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/manifold4w/hidden,
+/turf/simulated/floor/tiled/dark,
+/area/hallway/secondary/docking_hallway)
 "pdK" = (
 /obj/structure/closet/crate,
 /obj/fiftyspawner/steel,
@@ -21981,6 +22016,20 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/wood,
 /area/hydroponics/garden)
+"pmh" = (
+/obj/map_helper/airlock/door/int_door,
+/obj/machinery/access_button/airlock_interior{
+	dir = 1;
+	frequency = 1380;
+	master_tag = "triumph_udang_dock";
+	pixel_x = 24
+	},
+/obj/machinery/door/airlock/glass_external{
+	req_one_access = null
+	},
+/obj/map_helper/access_helper/airlock/station/external_airlock,
+/turf/simulated/floor/tiled/dark,
+/area/hallway/secondary/docking_hallway)
 "pmB" = (
 /obj/structure/cable/green{
 	icon_state = "1-2"
@@ -26523,22 +26572,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/security/brig)
-"sAo" = (
-/obj/structure/cable/green{
-	icon_state = "1-2"
-	},
-/obj/structure/cable/green{
-	icon_state = "2-8"
-	},
-/obj/machinery/power/sensor{
-	name = "Powernet Sensor - Command Subgrid";
-	name_tag = "Command Subgrid"
-	},
-/obj/structure/cable/green{
-	icon_state = "0-2"
-	},
-/turf/simulated/floor/plating,
-/area/maintenance/substation/command)
 "sAM" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -27579,6 +27612,13 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
+/turf/simulated/floor/tiled/dark,
+/area/hallway/secondary/docking_hallway)
+"tsk" = (
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 9
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden,
 /turf/simulated/floor/tiled/dark,
 /area/hallway/secondary/docking_hallway)
 "tsP" = (
@@ -28947,15 +28987,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/crew_quarters/sleep/CE_quarters)
-"unu" = (
-/obj/structure/cable/green{
-	icon_state = "4-8"
-	},
-/obj/machinery/atmospherics/pipe/manifold/hidden{
-	dir = 1
-	},
-/turf/simulated/floor/tiled/dark,
-/area/hallway/secondary/docking_hallway)
 "unB" = (
 /obj/structure/cable/green{
 	icon_state = "1-2"
@@ -29915,6 +29946,14 @@
 "uTr" = (
 /turf/simulated/wall/prepainted,
 /area/maintenance/central)
+"uTz" = (
+/obj/effect/floor_decal/industrial/danger{
+	dir = 10
+	},
+/obj/machinery/mech_recharger,
+/obj/vehicle/sealed/mecha/combat/fighter/baron/sec/loaded,
+/turf/simulated/floor/tiled/old_cargo/gray,
+/area/security/hanger)
 "uTN" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/item/clothing/mask/gas,
@@ -31184,6 +31223,22 @@
 	},
 /turf/simulated/floor/tiled,
 /area/security/brig)
+"vQp" = (
+/obj/machinery/airlock_sensor{
+	dir = 8;
+	frequency = 1380;
+	id_tag = "triumph_udang_dock";
+	pixel_x = 23
+	},
+/obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
+	dir = 8;
+	frequency = 1380;
+	id_tag = "triumph_udang_dock_pump"
+	},
+/obj/map_helper/airlock/sensor/chamber_sensor,
+/obj/map_helper/airlock/atmos/chamber_pump,
+/turf/simulated/floor/tiled/dark,
+/area/hallway/secondary/docking_hallway)
 "vQw" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -32522,6 +32577,21 @@
 	},
 /turf/simulated/floor/tiled,
 /area/exploration/showers)
+"wQa" = (
+/obj/machinery/shield_diffuser,
+/obj/map_helper/airlock/door/ext_door,
+/obj/machinery/access_button/airlock_exterior{
+	dir = 1;
+	frequency = 1380;
+	master_tag = "triumph_udang_dock";
+	pixel_x = -24
+	},
+/obj/machinery/door/airlock/glass_external{
+	req_one_access = null
+	},
+/obj/map_helper/access_helper/airlock/station/external_airlock,
+/turf/simulated/floor/tiled/dark,
+/area/hallway/secondary/docking_hallway)
 "wQh" = (
 /obj/structure/bed/chair/comfy/red,
 /turf/simulated/floor/carpet/purcarpet,
@@ -33352,6 +33422,13 @@
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/shuttle/courser/general)
+"xmU" = (
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden,
+/turf/simulated/floor/tiled/dark,
+/area/hallway/secondary/docking_hallway)
 "xna" = (
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /obj/effect/floor_decal/industrial/warning,
@@ -33547,6 +33624,13 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/chapel/main)
+"xtE" = (
+/obj/effect/floor_decal/sign/dock/three,
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/dark,
+/area/hallway/secondary/docking_hallway)
 "xtP" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
@@ -44129,7 +44213,7 @@ pgU
 pHk
 hFU
 qCU
-aNG
+mtH
 eTm
 iiA
 xDy
@@ -44905,7 +44989,7 @@ jFb
 vSD
 hFU
 gJm
-fIV
+uTz
 jFB
 rQA
 dIH
@@ -54591,7 +54675,7 @@ dNv
 cyD
 own
 qTR
-kPs
+aoF
 whp
 own
 jdj
@@ -58788,14 +58872,14 @@ jNg
 jNg
 jNg
 jNg
-jNg
-jNg
-jNg
-jNg
-jNg
-jNg
-jNg
+wBM
+wBM
+wBM
+wBM
 yfo
+yfo
+wBM
+wBM
 hja
 dpS
 vTi
@@ -58980,18 +59064,18 @@ jNg
 jNg
 jNg
 jNg
+aHX
 jNg
-jNg
-jNg
-jNg
-jNg
-jNg
-jNg
-jNg
-jNg
-yfo
-hja
-unu
+wQa
+lZS
+tyc
+tsk
+xmU
+xmU
+xmU
+xmU
+nnL
+pdD
 clX
 tkc
 qQg
@@ -59176,15 +59260,15 @@ jNg
 jNg
 jNg
 jNg
-jNg
-jNg
-jNg
-jNg
-jNg
-jNg
-jNg
-cVf
+gKK
+vQp
+pmh
 qey
+aTp
+aTp
+aTp
+aTp
+xtE
 wDo
 hvu
 uCU
@@ -59370,13 +59454,13 @@ jNg
 jNg
 jNg
 jNg
-jNg
-jNg
-jNg
-jNg
-jNg
-jNg
-jNg
+wBM
+wBM
+gGl
+wBM
+yfo
+yfo
+wBM
 wBM
 pcR
 xPV
@@ -60769,7 +60853,7 @@ nTC
 uJU
 gbh
 sTF
-sAo
+aZU
 bLT
 qXL
 aLV

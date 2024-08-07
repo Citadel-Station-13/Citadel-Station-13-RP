@@ -31,7 +31,9 @@
 		)
 
 	initial_restricted_waypoints = list(
-		"Beruang Trade Ship" = list("tradeport_hangar")
+		"Beruang Trade Ship" = list("tradeport_hangar"),
+		"Udang Transport Shuttle" = list("tradeport_udang"),
+		"Scoophead trade Shuttle" = list("tradeport_scoophead")
 		)
 /* // Old Restricted list. Leaving commented out for reference - Bloop
 	initial_restricted_waypoints = list(
@@ -115,6 +117,20 @@
 	docking_controller = "tradeport_hangar_dock"
 	base_turf = /turf/simulated/floor/tiled/techfloor/grid
 	base_area = /area/tradeport/dock
+
+/obj/effect/shuttle_landmark/triumph/trade/udang
+	name = "Udang Underconstruction Docking bay"
+	landmark_tag = "tradeport_udang"
+	docking_controller = "tradeport_udang_dock"
+	base_turf = /turf/space
+	base_area = /area/space
+
+/obj/effect/shuttle_landmark/triumph/trade/scoophead
+	name = "Scoophead Docking bay"
+	landmark_tag = "tradeport_scoophead"
+	docking_controller = "tradeport_scoophead_dock"
+	base_turf = /turf/space
+	base_area = /area/space
 
 // Todo
 /*
