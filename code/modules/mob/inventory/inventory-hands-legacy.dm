@@ -21,3 +21,41 @@
  */
 /mob/proc/drop_inactive_held_item(flags)
 	return drop_item_to_ground(get_inactive_held_item(), flags)
+
+/**
+ * returns held item in active hand
+ *
+ * todo: deprecate; 'active hand' should be based on client intent, not on the mob.
+ */
+/mob/proc/get_active_held_item()
+	RETURN_TYPE(/obj/item)
+	return inventory?.held_items?[active_hand]
+
+/**
+ * returns held item in inactive hand (or any inactive hand if more than 1)
+ *
+ * todo: deprecate; 'active hand' should be based on client intent, not on the mob.
+ */
+/mob/proc/get_inactive_held_item()
+	RETURN_TYPE(/obj/item)
+	for(var/i in 1 to length(inventory?.held_items))
+		if(i == active_hand)
+			continue
+		if(isnull(inventory?.held_items[i]))
+			continue
+		return inventory?.held_items[i]
+
+/**
+ * returns all items held in non active hands
+ *
+ * todo: deprecate; 'active hand' should be based on client intent, not on the mob.
+ */
+/mob/proc/get_inactive_held_items()
+	RETURN_TYPE(/list)
+	. = list()
+	for(var/i in 1 to length(inventory?.held_items))
+		if(i == active_hand)
+			continue
+		if(isnull(inventory?.held_items[i]))
+			continue
+		. += inventory?.held_items[i]

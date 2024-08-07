@@ -462,7 +462,7 @@
 
 	var/mob/living/M = holder.wearer
 
-	if(M.hands_full())
+	if(M.are_usable_hands_full())
 		to_chat(M, "<span class='danger'>Your hands are full.</span>")
 		deactivate()
 		return

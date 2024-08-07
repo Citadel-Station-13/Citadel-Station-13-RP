@@ -41,7 +41,7 @@
  * @return INV_RETURN_* flags
  */
 /datum/inventory/proc/drop_held_index(index, inv_op_flags)
-	return drop_item_to_ground(get_held_item_of_index(index), flags)
+	return drop_item_to_ground(get_held_index(index), flags)
 
 /**
  * Drops the item held in a given hand index.
@@ -53,4 +53,4 @@
  * @return INV_RETURN_* flags
  */
 /mob/proc/drop_held_index(index, flags)
-	return drop_item_to_ground(get_held_item_of_index(index), flags)
+	return drop_item_to_ground(get_held_index(index), flags)

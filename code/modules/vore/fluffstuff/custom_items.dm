@@ -1282,7 +1282,7 @@
 
 /obj/item/melee/baton/fluff/stunstaff/update_worn_icon()
 	var/mob/living/M = loc
-	if(istype(M) && !issmall(M) && M.is_holding(src) && !M.hands_full())
+	if(istype(M) && !issmall(M) && M.is_holding(src) && !M.are_usable_hands_full())
 		wielded = 1
 		damage_force = 15
 		name = "[base_name] (wielded)"

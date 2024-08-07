@@ -213,7 +213,7 @@
 
 	var/mob/living/M = holder.wearer
 
-	if(M.hands_full())
+	if(M.are_usable_hands_full())
 		to_chat(M, "<span class='danger'>Your hands are full.</span>")
 		deactivate()
 		return
@@ -265,7 +265,7 @@
 		H.visible_message("<span class='danger'>[H] launches \a [firing]!</span>")
 		firing.throw_at_old(target,fire_force,fire_distance)
 	else
-		if(H.hands_full())
+		if(H.are_usable_hands_full())
 			to_chat(H, "<span class='danger'>Your hands are full.</span>")
 		else
 			var/obj/item/new_weapon = new fabrication_type()

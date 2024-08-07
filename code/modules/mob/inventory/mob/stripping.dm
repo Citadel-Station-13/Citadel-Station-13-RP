@@ -86,7 +86,7 @@
 					. += "Right hand: "
 				else
 					. += "Hand [i]: "
-			var/obj/item/holding = get_held_item_of_index(i)
+			var/obj/item/holding = get_held_index(i)
 			. += "<a href='?src=[REF(src)];strip=hand;id=[i]'>[holding? holding.name : "nothing"]</a><br>"
 		. += "<hr>"
 
@@ -139,7 +139,7 @@
 	if((index < 1) || (index > get_nominal_hand_count()))
 		return FALSE
 
-	var/obj/item/ours = get_held_item_of_index(index)
+	var/obj/item/ours = get_held_index(index)
 	var/obj/item/theirs = user.get_active_held_item()
 
 	if(!ours && !theirs)

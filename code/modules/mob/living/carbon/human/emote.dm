@@ -807,7 +807,7 @@
 
 		if ("handshake")
 			m_type = 1
-			if (!restrained() && !hands_full())
+			if (!restrained() && !are_usable_hands_full())
 				var/mob/living/M = null
 				if (param)
 					for (var/mob/living/A in view(1, null))
@@ -1086,7 +1086,7 @@
 	if (length(pose)>0 && pose != old_pose)
 		visible_emote("adjusts [T.his] posture.")
 		addtimer(CALLBACK(src,PROC_REF(set_pose),""),time SECONDS)
-	
+
 
 /mob/living/carbon/human/verb/silent_pose()
 	set name = "Set Pose (Stealth)"

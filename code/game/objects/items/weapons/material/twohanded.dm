@@ -90,7 +90,7 @@
 
 /obj/item/material/twohanded/fireaxe/update_worn_icon()
 	var/mob/living/M = loc
-	if(istype(M) && M.can_wield_item(src) && M.is_holding(src) && !M.hands_full())
+	if(istype(M) && M.can_wield_item(src) && M.is_holding(src) && !M.are_usable_hands_full())
 		wielded = 1
 		pry = 1
 		name = "[base_name] (wielded)"

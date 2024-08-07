@@ -178,10 +178,10 @@
 			. += SPAN_INFO("[icon2html(back, user)] [T.He] [T.has] \a [FORMAT_TEXT_LOOKITEM(back)] on [T.his] back.")
 
 	// hands
-	for(var/i in 1 to length(held_items))
-		if(isnull(held_items[i]))
+	for(var/i in 1 to length(inventory?.held_items))
+		if(isnull(inventory.held_items[i]))
 			continue
-		var/obj/item/held = held_items[i]
+		var/obj/item/held = inventory.held_items[i]
 		if(held.show_examine)
 			continue
 		var/hand_str = (i % 2)? "left hand[i > 2? " #[round(i / 2)]" : ""]" : "right hand[i > 2? " #[round(i / 2)]" : ""]"

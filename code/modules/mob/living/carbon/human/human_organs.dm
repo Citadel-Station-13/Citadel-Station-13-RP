@@ -118,8 +118,8 @@
 		afflict_paralyze(20 * 5) //can't emote while weakened, apparently.
 
 /mob/living/carbon/human/proc/handle_grasp()
-	for(var/i in 1 to length(held_items))
-		var/obj/item/held = held_items[i]
+	for(var/i in 1 to length(inventory?.held_items))
+		var/obj/item/held = inventory.held_items[i]
 		if(isnull(held))
 			continue
 		var/obj/item/organ/external/hand = get_hand_organ_of_index(i)

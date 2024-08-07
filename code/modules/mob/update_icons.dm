@@ -87,7 +87,7 @@
 //* Helpers - These call other update procs. *//
 
 /mob/proc/update_inv_hands()
-	for(var/i in 1 to length(held_items))
+	for(var/i in 1 to length(inventory?.held_items))
 		update_inv_hand(i)
 
 /mob/proc/update_inv_active_hand()

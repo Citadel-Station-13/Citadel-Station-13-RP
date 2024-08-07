@@ -7,6 +7,8 @@
 //* and the enforcement of 'mob.inventory' access, but given the overhead of  *//
 //* a proc-call, this is currently not done.                                  *//
 
+//* Basic *//
+
 /**
  * Gets the item held in a given hand index
  *
@@ -45,14 +47,42 @@
 /mob/proc/get_held_index(obj/item/I)
 	return inventory?.held_items?.Find(I) || null
 
+//* Special *//
+
+/**
+ * Get an indexed list of weakrefs or nulls of held items.
+ *
+ * * returns null if we have no inventory.
+ */
+/datum/inventory/proc/get_held_items_as_weakrefs()
+	RETURN_TYPE(/list)
+	. = new /list(length(held_items))
+	for(var/i in 1 to length(held_items))
+		.[i] = WEAKREF(held_items[i])
+
+/**
+ * Get an indexed list of weakrefs or nulls of held items.
+ *
+ * * returns null if we have no inventory.
+ */
+/mob/proc/get_held_items_as_weakrefs()
+	RETURN_TYPE(/list)
+	if(!inventory)
+		return
+	. = new /list(length(inventory.held_items))
+	for(var/i in 1 to length(inventory.held_items))
+		.[i] = WEAKREF(inventory.held_items[i])
+
 #warn mirror & check below
+
+//* By Side *//
 
 /**
  * returns first item on left
  */
 /mob/proc/get_left_held_item()
 	RETURN_TYPE(/obj/item)
-	for(var/i in 1 to length(held_items) step 2)
+	for(var/i in 1 to length(inventory?.held_items) step 2)
 		if(isnull(inventory?.held_items[i]))
 			continue
 		return inventory?.held_items[i]
@@ -88,6 +118,8 @@
 		if(isnull(inventory?.held_items[i]))
 			continue
 		. += inventory?.held_items[i]
+
+//* Iteration *//
 
 /**
  * returns held items
@@ -132,35 +164,3 @@
 	for(var/i in 1 to length(inventory?.held_items))
 		if(isnull(inventory?.held_items[i]))
 			. += i
-
-/**
- * returns held item in active hand
- */
-/mob/proc/get_active_held_item()
-	RETURN_TYPE(/obj/item)
-	return inventory?.held_items?[active_hand]
-
-/**
- * returns held item in inactive hand (or any inactive hand if more than 1)
- */
-/mob/proc/get_inactive_held_item()
-	RETURN_TYPE(/obj/item)
-	for(var/i in 1 to length(inventory?.held_items))
-		if(i == active_hand)
-			continue
-		if(isnull(inventory?.held_items[i]))
-			continue
-		return inventory?.held_items[i]
-
-/**
- * returns all items held in non active hands
- */
-/mob/proc/get_inactive_held_items()
-	RETURN_TYPE(/list)
-	. = list()
-	for(var/i in 1 to length(inventory?.held_items))
-		if(i == active_hand)
-			continue
-		if(isnull(inventory?.held_items[i]))
-			continue
-		. += inventory?.held_items[i]

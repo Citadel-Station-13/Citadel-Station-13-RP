@@ -225,7 +225,7 @@
 
 /obj/item/proc/is_held_twohanded(mob/living/M)
 	for(var/i in M.get_usable_hand_indices())
-		if(!isnull(M.held_items[i]))
+		if(!isnull(M.inventory?.held_items[i]))
 			continue
 		return TRUE
 	return FALSE

@@ -130,7 +130,7 @@
 				var/obj/item/thing = item_by_slot_id(SLOT_ID_BACK)
 				return thing?.obj_storage?.can_be_inserted(I, new /datum/event_args/actor(user), TRUE)
 			if(/datum/inventory_slot/abstract/put_in_hands)
-				return (flags & INV_OP_FORCE) || !hands_full()
+				return (flags & INV_OP_FORCE) || !are_usable_hands_full()
 		return TRUE
 
 	if(!inventory_slot_bodypart_check(I, slot, user, flags) && !(flags & INV_OP_FORCE))

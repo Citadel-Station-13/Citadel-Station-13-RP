@@ -103,7 +103,7 @@
 		if(S.run_checks())
 			S.on_innate_cast(src)
 
-	if(hands_full())
+	if(are_usable_hands_full())
 		var/found = FALSE
 		for(var/obj/item/spell/spell as anything in get_held_item_of_type(/obj/item/spell))
 			if(spell.aspect != ASPECT_CHROMATIC)

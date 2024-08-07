@@ -307,7 +307,7 @@
 
 	T.afflict_paralyze(20 * 3)
 
-	if(hands_full())
+	if(are_usable_hands_full())
 		to_chat(src, "<span class='danger'>You need to have one hand free to grab someone.</span>")
 		return
 

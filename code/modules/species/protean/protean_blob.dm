@@ -318,12 +318,7 @@
 	//Size update
 	blob.transform = matrix()*size_multiplier
 	blob.size_multiplier = size_multiplier
-	var/list/datum/weakref/prev_held = new /list(length(held_items))
-	for(var/i in 1 to length(held_items))
-		var/obj/item/held = held_items[i]
-		if(isnull(held))
-			continue
-		blob.previously_held[i] = WEAKREF(held)
+	blob.previously_held = inventory?.get_held_items_as_weakrefs()
 	//languages!!
 	for(var/datum/language/L in languages)
 		blob.add_language(L.name)

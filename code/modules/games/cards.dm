@@ -85,7 +85,7 @@
 
 	if(usr.stat || !Adjacent(usr)) return
 
-	if(user.hands_full()) // Safety check lest the card disappear into oblivion
+	if(user.are_usable_hands_full()) // Safety check lest the card disappear into oblivion
 		to_chat(user,"<span class='notice'>Your hands are full!</span>")
 		return
 
@@ -363,7 +363,7 @@
 
 	if(user.stat || !Adjacent(user)) return
 
-	if(user.hands_full()) // Safety check lest the card disappear into oblivion
+	if(user.are_usable_hands_full()) // Safety check lest the card disappear into oblivion
 		to_chat(usr,"<span class='danger'>Your hands are full!</span>")
 		return
 
