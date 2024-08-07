@@ -366,16 +366,16 @@
 		return ..()
 	//Trailer hitch check
 	if(istype(dropping, /obj/vehicle/trailer))
-		if(attach_to(dropping, user))
+		if(hitch_to(dropping, user))
 			return CLICKCHAIN_DO_NOT_PROPAGATE
 
 	return ..()
 
 /**
- * Attempts to attach a trailer to the vehicle. Returns true if it does something else it returns false.
+ * Attempts to hitch/unhitch a trailer to the vehicle. Returns true if it succeeds else it returns false.
  * Assumes proximity checks have already been made.
  */
-/obj/vehicle/proc/attach_to(obj/vehicle/trailer/dropping, mob/user)
+/obj/vehicle/proc/hitch_to(obj/vehicle/trailer/dropping, mob/user)
 	//If its not our allowed trailer, leave this function NOW.
 	if (dropping.type != trailer_type)
 		return FALSE
@@ -411,7 +411,7 @@
  * [name]_overlay is for a sprite that covers the mobs on it
  * [name]_overlay_a is for changing the paint color of the overlay
  * if you have [_on/_off] states for any overlay the base sprite must have [name]_on. Only overlays with a difference need to have _on and _off appended to their names.
- * if you do not have bodypaint, an overlay, or bodypaint for an overlay you do not need to make them.
+ * if you do not have bodypaint, or an overlay, or bodypaint for an overlay you do not need to make them.
  */
 /obj/vehicle/proc/update_overlay()
 	cut_overlays()

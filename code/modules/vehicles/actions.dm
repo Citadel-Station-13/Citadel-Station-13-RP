@@ -110,6 +110,18 @@
 	if(istype(vehicle_entered_target))
 		vehicle_entered_target.mob_try_exit(owner, owner)
 
+/datum/action/vehicle/ridden/skateboard
+	var/obj/vehicle/ridden/skateboard/the_vehicle
+
+/datum/action/vehicle/ridden/skateboard/trick_grind
+	name = "Grind"
+	desc = "Perform a gnarly trick!"
+	button_icon_state = "car_eject"
+
+/datum/action/vehicle/ridden/skateboard/trick_grind/on_trigger(mob/user)
+	. = ..()
+	the_vehicle.grind()
+
 /datum/action/vehicle/ridden
 	var/obj/vehicle/ridden/vehicle_ridden_target
 

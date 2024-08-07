@@ -173,3 +173,12 @@
 	icon_state = "cargo_trailer"
 	allowed_cargo = /obj/structure/
 	trailer_type = /obj/vehicle/trailer/cargo
+
+/obj/vehicle/trailer/quad
+	name = "ATC trailer"
+	desc = "A trailer designed to be pulled by a ATV."
+	icon = 'icons/obj/vehicles/quad_trailer_64x64.dmi'
+	icon_state = "quadtrailer"
+
+/obj/vehicle/trailer/quad/update_icon()
+	update_overlay()

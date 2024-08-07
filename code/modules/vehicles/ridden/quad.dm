@@ -6,6 +6,7 @@
 	integrity = 200
 	integrity_max = 200
 	riding_handler_type = /datum/component/riding_handler/vehicle/ridden/quadbike
+	trailer_type = /obj/vehicle/trailer/quad
 	is_mechanical = FALSE
 	cell_type = /obj/item/cell
 	power_cost_to_move = 5

@@ -10,8 +10,9 @@
 	riding_handler_type = /datum/component/riding_handler/vehicle/ridden/skateboard
 
 	var/board_item_type
+	var/grinding
 	var/next_crash
-	var/rough_terrain
+	var/datum/effect_system/spark_spread/sparks
 
 /datum/component/riding_handler/vehicle/ridden/skateboard
 	rider_offsets = list(
@@ -37,15 +38,36 @@
 		/turf/unsimulated
 	)
 
+/obj/vehicle/ridden/skateboard/Initialize(mapload)
+	. = ..()
+	sparks = new
+	sparks.set_up(1, 0, src)
+	sparks.attach(src)
+
+/obj/vehicle/ridden/skateboard/generate_actions()
+	. = ..()
+	initialize_passenger_action_type(/datum/action/vehicle/ridden/skateboard/trick_grind)
+
+/obj/vehicle/ridden/skateboard/generate_action_type()
+	var/datum/action/vehicle/ridden/skateboard/E = ..()
+	. = E
+	if(istype(E))
+		E.the_vehicle = src
+
+/obj/vehicle/ridden/skateboard/Destroy()
+	if(sparks)
+		QDEL_NULL(sparks)
+	. = ..()
+
 //Running into things tosses you like salad.
 /obj/vehicle/ridden/skateboard/Bump(atom/A)
 	//If a board shreds in the forest. And a man isn't there to hear. Does it make a sound? No.
-	if(!(A.density && occupant_amount()))
+	if(!(A.density && occupant_amount() && grinding))
 		return
 
 	var/mob/living/H = occupants[1]
 	playsound(src, 'sound/effects/bang.ogg', 40, TRUE)
-	if(!iscarbon(H) || /*grinding ||*/ world.time < next_crash || prob(60) || rough_terrain)
+	if(!iscarbon(H) || world.time < next_crash || prob(60))
 		unbuckle_mob(H)
 		H.throw_at_random(FALSE, 2, 2)
 
@@ -60,7 +82,7 @@
 				H.afflict_paralyze(20 * 10)
 				visible_message("<span class='danger'>[src] crashes into [A], sending [H] flying! They land on their head, that doesn't look good...</span>")
 			else
-				H.adjustBrainLoss(rand(1, 2))
+				H.adjustBrainLoss(1)
 				visible_message("<span class='danger'>[src] crashes into [A], sending [H] flying!</span>")
 			H.update_health()
 		H.afflict_paralyze(20*2)
@@ -82,7 +104,25 @@
 		user.put_in_hands(board)
 		qdel(src)
 
-
+// ----Tricks----
+/obj/vehicle/ridden/skateboard/proc/grind()
+	if(!occupant_amount())
+		icon_state = initial(icon_state)
+		return
+	var/mob/H = occupants[1]
+	icon_state = initial(icon_state) + "-grind"
+	Move(get_step(src, dir))
+	if(locate(/obj/structure/table) in loc.contents || locate(/obj/structure/railing) in loc.contents)
+		grinding = TRUE
+		visible_message("<span class='notice'>[H] shreds!</span>")
+		playsound(src, 'sound/weapons/skateboard_ollie.ogg', 50, TRUE)
+		if(prob (50))
+			sparks.start() //the most radical way to start plasma fires
+		addtimer(CALLBACK(src, PROC_REF(grind)), 2)
+		return
+	else
+		icon_state = initial(icon_state)
+		grinding = FALSE
 
 
 // ----Skateboards----
@@ -127,7 +167,7 @@
 	icon_state = "scooter"
 	board_item_type = /obj/item/melee/skateboard/scooter
 
-// ----Construction----
+// ----Construction items----
 /obj/item/skate_wheels
 	name = "rubberized wheels"
 	desc = "These rubberized wheels encase ball bearings which ensure a smooth rotation. They could possibly be mounted on an appropriate frame."
