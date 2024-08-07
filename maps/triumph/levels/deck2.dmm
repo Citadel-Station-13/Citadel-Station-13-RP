@@ -2356,6 +2356,16 @@
 "gX" = (
 /turf/simulated/wall/prepainted/civilian,
 /area/crew_quarters/kitchen)
+"ha" = (
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/obj/structure/closet/crate/bin{
+	anchored = 1
+	},
+/obj/machinery/light,
+/turf/simulated/floor/tiled,
+/area/hydroponics)
 "hd" = (
 /obj/structure/table/marble,
 /obj/item/material/knife/butch,
@@ -3953,6 +3963,9 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 8
 	},
+/obj/machinery/light{
+	dir = 8
+	},
 /turf/simulated/floor/tiled,
 /area/hydroponics)
 "lZ" = (
@@ -4273,9 +4286,7 @@
 /obj/effect/floor_decal/corner/lime/border{
 	dir = 4
 	},
-/obj/structure/closet/crate/bin{
-	anchored = 1
-	},
+/obj/machinery/smartfridge,
 /turf/simulated/floor/tiled,
 /area/hydroponics)
 "nq" = (
@@ -7381,6 +7392,17 @@
 "wl" = (
 /turf/simulated/wall/prepainted/cargo,
 /area/quartermaster/storage)
+"wn" = (
+/obj/machinery/portable_atmospherics/hydroponics,
+/obj/effect/floor_decal/corner/green{
+	dir = 10
+	},
+/obj/machinery/light{
+	dir = 4;
+	use_power = 0
+	},
+/turf/simulated/floor/tiled,
+/area/hydroponics)
 "wo" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 8
@@ -8192,6 +8214,9 @@
 /obj/machinery/holopad,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
+	},
+/obj/machinery/light{
+	dir = 1
 	},
 /turf/simulated/floor/tiled,
 /area/hydroponics)
@@ -11506,13 +11531,14 @@
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/bar)
 "IR" = (
-/obj/machinery/portable_atmospherics/hydroponics,
 /obj/effect/floor_decal/borderfloor{
 	dir = 10
 	},
 /obj/effect/floor_decal/corner/lime/border{
 	dir = 10
 	},
+/obj/item/multitool,
+/obj/structure/table/standard,
 /turf/simulated/floor/tiled,
 /area/hydroponics)
 "IS" = (
@@ -13416,9 +13442,8 @@
 /turf/simulated/floor/tiled,
 /area/triumph/surfacebase/mining_main/storage)
 "OI" = (
-/obj/machinery/smartfridge,
-/turf/simulated/floor/tiled,
-/area/hydroponics)
+/turf/space/basic,
+/area/vacant/vacant_office)
 "OJ" = (
 /obj/machinery/vending/hydronutrients,
 /turf/simulated/floor/tiled/techfloor,
@@ -30424,7 +30449,7 @@ VL
 dh
 KH
 ot
-nE
+wn
 KH
 nE
 XY
@@ -30617,8 +30642,8 @@ pZ
 VL
 kO
 KH
-bE
-OI
+ha
+iy
 yv
 nE
 XY
@@ -33141,7 +33166,7 @@ Wo
 fc
 qQ
 qQ
-qQ
+OI
 Xy
 zQ
 Ks
