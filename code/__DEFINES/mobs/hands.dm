@@ -1,8 +1,10 @@
-//* hand manipulation levels
+//* hand manipulation levels *//
 
-/// use keyboards / precision work
-#define HAND_MANIPULATION_PRECISE 3
-/// pick up an item roughly
-#define HAND_MANIPULATION_GENERAL 2
+/// do surgery / precise tooling / precision work
+#define HAND_MANIPULATION_PRECISE 4
+/// use simple keyboards, manipulate a small switch, rotate objects, etc
+#define HAND_MANIPULATION_GENERAL 3
+/// pick up an item roughly, pull a switch, etc
+#define HAND_MANIPULATION_MOVE 2
 /// just hit your hand against something
 #define HAND_MANIPULATION_DULL 1
