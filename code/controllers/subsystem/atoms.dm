@@ -120,9 +120,6 @@ SUBSYSTEM_DEF(atoms)
 	if (initialized == INITIALIZATION_INSSATOMS)
 		return	// Let proper initialisation handle it later
 
-	var/prev_shuttle_queue_state = SSshuttle.block_init_queue
-	SSshuttle.block_init_queue = TRUE
-
 	var/list/atom/atoms = list()
 	var/list/area/areas = list()
 	var/list/obj/structure/cable/cables = list()
@@ -159,9 +156,6 @@ SUBSYSTEM_DEF(atoms)
 	for(var/I in areas)
 		var/area/A = I
 		A.power_change()
-
-	SSshuttle.block_init_queue = prev_shuttle_queue_state
-	SSshuttle.process_init_queues()	// We will flush the queue unless there were other blockers, in which case they will do it.
 
 	admin_notice("<span class='danger'>Submap initializations finished.</span>", R_DEBUG)
 

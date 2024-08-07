@@ -14,7 +14,7 @@
 	var/welded = 0 //defining this here for ventcrawl stuff
 
 /obj/machinery/atmospherics/component/unary/Initialize(mapload)
-	air_contents = new(200)
+	air_contents = new(volume)
 	return ..()
 
 /obj/machinery/atmospherics/component/unary/init_dir()

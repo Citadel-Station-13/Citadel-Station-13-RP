@@ -13,6 +13,7 @@
 /// Atom is not considered a game world object.
 /// This means semantic "wipe game world state" things like turf.empty(), saving, loading, etc, should ignore it,
 /// but the atom is not abstract.
+/// This atom will also **not** be ignored by shuttles, unlike [ATOM_ABSTRACT].
 #define ATOM_NONWORLD       (1<<5)
 /// uses integrity, and is broken
 #define ATOM_BROKEN			(1<<6)
@@ -59,15 +60,21 @@ DEFINE_BITFIELD(atom_flags, list(
 #define MOVABLE_NO_THROW_DAMAGE_SCALING (1<<1)
 /// Do not spin when thrown.
 #define MOVABLE_NO_THROW_SPIN           (1<<2)
+/// throw them out of the sky when a shuttle leaves
+/// aka 'don't just qdel this'
+///
+/// * INTEGRITY_INDESTRUCTIBLE does not imply this.
+#define MOVABLE_NO_LOST_IN_SPACE		(1<<3)
 /// We are currently about to be yanked by a Moved() triggering a Move()
 ///
 /// * used so things like projectile hitscans know to yield
-#define MOVABLE_IN_MOVED_YANK		(1<<3)
+#define MOVABLE_IN_MOVED_YANK			(1<<4)
 
 DEFINE_BITFIELD(movable_flags, list(
 	BITFIELD(MOVABLE_NO_THROW_SPEED_SCALING),
 	BITFIELD(MOVABLE_NO_THROW_DAMAGE_SCALING),
 	BITFIELD(MOVABLE_NO_THROW_SPIN),
+	BITFIELD_NAMED("Prevent Deletion by Shuttle Orphaning", MOVABLE_NO_LOST_IN_SPACE),
 	BITFIELD(MOVABLE_IN_MOVED_YANK),
 ))
 

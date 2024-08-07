@@ -618,7 +618,7 @@
 /turf/simulated/floor/reinforced,
 /area/piratebase/halls)
 "Ea" = (
-/obj/machinery/computer/shuttle_control/explore/pirate{
+/obj/machinery/computer/shuttle_control{
 	dir = 4
 	},
 /turf/simulated/floor/reinforced,

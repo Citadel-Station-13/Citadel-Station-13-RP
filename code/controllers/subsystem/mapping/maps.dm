@@ -163,7 +163,16 @@
 	var/list/area_cache = instance.bundle_area_cache? list() : null
 
 	for(var/datum/map_level/level as anything in instance.levels)
-		var/datum/dmm_context/loaded_context = _load_level(level, FALSE, instance.center, instance.crop, generation_callbacks, orientation = instance.orientation, area_cache = area_cache, defer_context = TRUE)
+		var/datum/dmm_context/loaded_context = _load_level(
+			level,
+			FALSE,
+			instance.center,
+			instance.crop,
+			generation_callbacks,
+			orientation = instance.orientation,
+			area_cache = area_cache,
+			defer_context = TRUE,
+		)
 		if(isnull(loaded_context))
 			STACK_TRACE("unable to load level [level] ([level.id])")
 			message_admins(world, SPAN_DANGER("PANIC: Unable to load level [level] ([level.id])"))
@@ -174,16 +183,14 @@
 	loaded_maps += instance
 	this_batch += instance
 
+	// todo: should this be here? it makes sense but uh, really?
 	instance.on_loaded_immediate()
 
+	// todo: should this be here? and not in load_map_impl after everything's done?
 	// rebuild multiz
 	// this is for the lookups, which must be done immediately, as generation/hooks might require it.
 	rebuild_verticality()
 	rebuild_transitions()
-
-	// todo: legacy
-	for(var/path in instance.legacy_assert_shuttle_datums)
-		SSshuttle.legacy_shuttle_assert(path)
 
 	var/list/datum/map/recursing = list()
 

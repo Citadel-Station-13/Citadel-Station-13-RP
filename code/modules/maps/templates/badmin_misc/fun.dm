@@ -236,15 +236,12 @@
 // Note the names, pick whichever makes the most sense for your map. No need to use them in any particular order or use any/all of them.
 /obj/effect/shuttle_landmark/automatic/admin_use1
 	name = "Landing Zone"
-	landmark_tag = "adminuse_lz_alpha"
 
 /obj/effect/shuttle_landmark/automatic/admin_use2
 	name = "Parking Area"
-	landmark_tag = "adminuse_lz_beta"
 
 /obj/effect/shuttle_landmark/automatic/admin_use3
 	name = "Docking Node"
-	landmark_tag = "adminuse_lz_gamma"
 
 
 //////////////////////////////////////////////////////////////////////////////////////

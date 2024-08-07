@@ -1,4 +1,6 @@
-#define waypoint_sector(waypoint) get_overmap_sector(get_z(waypoint))
+// todo: readd fuel ports and usage on overmaps update.
+/*
+#define waypoint_sector(waypoint) get_overmap_entity(get_z(waypoint))
 
 /datum/shuttle/autodock/overmap
 	warmup_time = 10
@@ -6,7 +8,6 @@
 	// additional bounds range we can jump to
 	var/range = 3
 	var/fuel_consumption = 0 //Amount of moles of gas consumed per trip; If zero, then shuttle is magic and does not need fuel
-	var/list/obj/structure/fuel_port/fuel_ports //the fuel ports of the shuttle (but usually just one)
 	var/obj/overmap/entity/visitable/ship/landable/myship //my overmap ship object
 
 	category = /datum/shuttle/autodock/overmap
@@ -18,13 +19,6 @@
 /datum/shuttle/autodock/overmap/Destroy()
 	. = ..()
 	myship = null
-
-/datum/shuttle/autodock/overmap/proc/refresh_fuel_ports_list() //loop through all
-	fuel_ports = list()
-	for(var/area/A in shuttle_area)
-		for(var/obj/structure/fuel_port/fuel_port_in_area in A)
-			fuel_port_in_area.parent_shuttle = src
-			fuel_ports += fuel_port_in_area
 
 /datum/shuttle/autodock/overmap/fuel_check()
 	if(!src.try_consume_fuel()) //insufficient fuel
@@ -111,6 +105,8 @@
 			fuel_to_consume -= fuel_available
 			FT.remove_air_by_flag(GAS_FLAG_FUEL, fuel_available)
 
+*/
+
 /obj/structure/fuel_port
 	name = "fuel port"
 	desc = "The fuel input port of the shuttle. Holds one fuel tank. Use a crowbar to open and close it."
@@ -129,6 +125,9 @@
 	. = ..()
 	if(base_tank)
 		new base_tank(src)
+	var/area/shuttle/shuttle_area = get_area(src)
+	if(istype(shuttle_area))
+		shuttle_area.shuttle.legacy_fuel_ports += src
 
 /obj/structure/fuel_port/heavy
 	base_tank = /obj/item/tank/phoron/pressurized

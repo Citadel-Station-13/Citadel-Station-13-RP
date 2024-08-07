@@ -725,7 +725,7 @@
 /turf/simulated/floor/tiled/techfloor/virgo2,
 /area/tether_away/aerostat/inside)
 "cj" = (
-/obj/machinery/computer/shuttle_control/aerostat_shuttle,
+/obj/machinery/computer/shuttle_control,
 /obj/machinery/light{
 	dir = 1
 	},
