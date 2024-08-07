@@ -352,7 +352,41 @@
 	reagent_mix = RECIPE_REAGENT_REPLACE //No egg or mix in final recipe
 	result = /obj/item/reagent_containers/food/snacks/sliceable/cosmicbrownies
 
+/datum/recipe/red_macaron
+	appliance = OVEN
+	reagents = list("egg" = 3, "crayon_dust_red" = 1, "sugar" = 5)
+	items = list(
+		/obj/item/reagent_containers/food/snacks/doughslice
+	)
+	reagent_mix = RECIPE_REAGENT_REPLACE
+	result = /obj/item/reagent_containers/food/snacks/macaron/red
 
+/datum/recipe/yellow_macaron
+	appliance = OVEN
+	reagents = list("egg" = 3, "crayon_dust_yellow" = 1, "sugar" = 5)
+	items = list(
+		/obj/item/reagent_containers/food/snacks/doughslice
+	)
+	reagent_mix = RECIPE_REAGENT_REPLACE
+	result = /obj/item/reagent_containers/food/snacks/macaron/yellow
+
+/datum/recipe/purple_macaron
+	appliance = OVEN
+	reagents = list("egg" = 3, "crayon_dust_purple" = 1, "sugar" = 5)
+	items = list(
+		/obj/item/reagent_containers/food/snacks/doughslice
+	)
+	reagent_mix = RECIPE_REAGENT_REPLACE
+	result = /obj/item/reagent_containers/food/snacks/macaron/purple
+
+/datum/recipe/green_macaron
+	appliance = OVEN
+	reagents = list("egg" = 3, "crayon_dust_green" = 1, "sugar" = 5)
+	items = list(
+		/obj/item/reagent_containers/food/snacks/doughslice
+	)
+	reagent_mix = RECIPE_REAGENT_REPLACE
+	result = /obj/item/reagent_containers/food/snacks/macaron/green
 
 
 //Pizzas

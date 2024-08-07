@@ -7042,3 +7042,27 @@ END CITADEL CHANGE */
 	icon_state = "meatsicle"
 	nutriment_amt = 6
 	nutriment_desc = list("frozen meat" = 1)
+
+// Macarons
+
+/obj/item/reagent_containers/food/snacks/macaron
+	name = "macaron"
+	nutriment_amt = 6
+	bitesize = 3
+	nutriment_desc = list("sugar")
+
+/obj/item/reagent_containers/food/snacks/macaron/red
+	desc = "A small sugary treat. This one is red!"
+	icon_state = "macaron_red"
+
+/obj/item/reagent_containers/food/snacks/macaron/yellow
+	desc = "A small sugary treat. This one is yellow!"
+	icon_state = "macaron_yellow"
+
+/obj/item/reagent_containers/food/snacks/macaron/purple
+	desc = "A small sugary treat. This one is purple!"
+	icon_state = "macaron_purple"
+
+/obj/item/reagent_containers/food/snacks/macaron/green
+	desc = "A small sugary treat. This one is green!"
+	icon_state = "macaron_green"
