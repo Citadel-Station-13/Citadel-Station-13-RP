@@ -22,3 +22,13 @@
 	spawning = 1
 	velocity = list(0, 0.3, 0)
 	friction = 0.25
+
+/particles/smoke/soar
+	width = 100
+	height = 100
+	lifespan = 3 SECONDS
+	fade = 1 SECONDS
+	fadein = 0.2 SECONDS
+	spawning = 0.2
+	grow = list(-0.1,-0.1)
+	velocity = list(0.1, 0.1, 0)
