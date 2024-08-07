@@ -210,13 +210,16 @@ SUBSYSTEM_DEF(assets)
 
 	set_transport_to(newtransport)
 
+/datum/controller/subsystem/assets/proc/reload_transport()
+	set_transport_to(new transport.type)
+
 /datum/controller/subsystem/assets/proc/set_transport_to(datum/asset_transport/new_transport)
 	QDEL_NULL(transport)
 	transport = new_transport
 
 	// unload all asset packs
 	for(var/datum/asset_pack/pack in asset_packs)
-		pack.loaded_urls = null
+		pack.unload()
 	// unload all dynamic items
 	for(var/name in dynamic_asset_items_by_name)
 		var/datum/asset_item/dynamic/item = dynamic_asset_items_by_name[name]

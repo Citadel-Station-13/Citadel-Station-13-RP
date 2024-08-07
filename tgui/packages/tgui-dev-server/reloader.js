@@ -82,6 +82,7 @@ export const reloadByondCache = async bundleDir => {
     logger.log('found no tmp folder in cache');
     return;
   }
+  cacheDirs.forEach((dir) => fs.closeSync(fs.openSync(dir + '/dummy', 'w')));
   // Get dreamseeker instances
   const pids = cacheDirs.map(cacheDir => (
     parseInt(cacheDir.split('/cache/tmp').pop(), 10)
