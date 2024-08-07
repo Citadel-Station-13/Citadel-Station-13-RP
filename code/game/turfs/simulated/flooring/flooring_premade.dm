@@ -122,6 +122,8 @@
 	icon_state = "wood"
 	initial_flooring = /singleton/flooring/wood
 
+CREATE_STANDARD_TURFS(/turf/simulated/floor/wood)
+
 /turf/simulated/floor/wood/broken
 	icon_state = "broken0" // This gets changed when spawned.
 
@@ -135,6 +137,8 @@
 	icon_state = "sifwood"
 	initial_flooring = /singleton/flooring/wood/sif
 
+CREATE_STANDARD_TURFS(/turf/simulated/floor/wood/sif)
+
 /turf/simulated/floor/wood/sif/broken
 	icon_state = "sifwood_broken0" // This gets changed when spawned.
 
@@ -147,12 +151,14 @@
 	icon = 'icons/turf/flooring/grass.dmi'
 	icon_state = "grass0"
 	initial_flooring = /singleton/flooring/grass
+CREATE_STANDARD_TURFS(/turf/simulated/floor/grass)
 
 /turf/simulated/floor/tiled
 	name = "floor"
 	icon = 'icons/turf/flooring/tiles.dmi'
 	icon_state = "tiled"
 	initial_flooring = /singleton/flooring/tiling
+CREATE_STANDARD_TURFS(/turf/simulated/floor/tiled)
 
 /turf/simulated/floor/tiled/techmaint
 	name = "floor"
@@ -177,6 +183,7 @@
 	name = "floor"
 	icon_state = "monotile"
 	initial_flooring = /singleton/flooring/tiling/new_tile/monotile
+CREATE_STANDARD_TURFS(/turf/simulated/floor/tiled/monotile)
 
 /turf/simulated/floor/tiled/monowhite
 	name = "floor"
@@ -439,6 +446,8 @@ CREATE_STANDARD_TURFS(/turf/simulated/floor/reinforced)
 	icon_state = "plasteel"
 	initial_flooring = /singleton/flooring/plasteel
 
+CREATE_STANDARD_TURFS(/turf/simulated/floor/plasteel)
+
 /turf/simulated/floor/durasteel
 	name = "durasteel"
 	icon = 'icons/turf/flooring/misc.dmi'
@@ -462,6 +471,8 @@ CREATE_STANDARD_TURFS(/turf/simulated/floor/reinforced)
 	icon = 'icons/turf/flooring/misc.dmi'
 	icon_state = "phoron"
 	initial_flooring = /singleton/flooring/phoron
+
+CREATE_STANDARD_TURFS(/turf/simulated/floor/phoron)
 
 /turf/simulated/floor/uranium
 	name = "uranium"
@@ -538,14 +549,12 @@ CREATE_STANDARD_TURFS(/turf/simulated/floor/reinforced)
 /turf/simulated/floor/beach/water
 /turf/simulated/floor/beach/water/ocean
 */
+/**This literally does nothing, need to axe or make it do something */
 /turf/simulated/floor/airless/ceiling
+
 /turf/simulated/floor/plating
-
-/turf/simulated/floor/plating/external
-	outdoors = TRUE
-
-/turf/simulated/floor/tiled/external
-	outdoors = TRUE
+	can_start_dirty = TRUE	// But let maints and decrepit areas have some randomness
+CREATE_STANDARD_TURFS(/turf/simulated/floor/plating)
 
 //**** Here lives snow ****
 /turf/simulated/floor/snow

@@ -1,0 +1,60 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/turf/simulated/floor/holofloor/tiled/dark,
+/area/holodeck/holodorm/source_boxing)
+"j" = (
+/obj/effect/floor_decal/corner/red{
+	dir = 9
+	},
+/turf/simulated/floor/holofloor/tiled/dark,
+/area/holodeck/holodorm/source_boxing)
+"k" = (
+/obj/structure/table/holotable,
+/obj/item/clothing/gloves/boxing/hologlove,
+/turf/simulated/floor/holofloor/tiled/dark,
+/area/holodeck/holodorm/source_boxing)
+"m" = (
+/obj/structure/table/holotable,
+/obj/item/clothing/gloves/boxing/hologlove{
+	icon_state = "boxinggreen";
+	item_state = "boxinggreen"
+	},
+/turf/simulated/floor/holofloor/tiled/dark,
+/area/holodeck/holodorm/source_boxing)
+"Z" = (
+/obj/effect/floor_decal/corner/green{
+	dir = 6
+	},
+/turf/simulated/floor/holofloor/tiled/dark,
+/area/holodeck/holodorm/source_boxing)
+
+(1,1,1) = {"
+k
+a
+a
+"}
+(2,1,1) = {"
+j
+j
+j
+"}
+(3,1,1) = {"
+a
+a
+a
+"}
+(4,1,1) = {"
+a
+a
+a
+"}
+(5,1,1) = {"
+Z
+Z
+Z
+"}
+(6,1,1) = {"
+a
+a
+m
+"}

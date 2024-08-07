@@ -883,6 +883,8 @@
 		/obj/structure/flora/ausbushes/sparsegrass,
 		/obj/structure/flora/ausbushes/fullgrass
 		)
+
+CREATE_STANDARD_TURFS(/turf/simulated/floor/outdoors/grass/heavy)
 /turf/simulated/floor/outdoors/grass/heavy/interior
     name = "heavy grass"
     desc = "A dense sheet of harvested turf used in interior decoration."

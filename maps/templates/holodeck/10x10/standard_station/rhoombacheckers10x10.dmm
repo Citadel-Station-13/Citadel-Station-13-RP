@@ -1,0 +1,193 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/turf/simulated/floor/holofloor/tiled/dark,
+/area/holodeck/source_checker)
+"b" = (
+/obj/effect/floor_decal/sign/dock/two,
+/turf/simulated/floor/holofloor/wood,
+/area/holodeck/source_checker)
+"i" = (
+/turf/simulated/floor/holofloor/wood,
+/area/holodeck/source_checker)
+"m" = (
+/obj/item/checker/black,
+/turf/simulated/floor/tiled/white,
+/area/holodeck/source_checker)
+"n" = (
+/obj/effect/floor_decal/sign/a,
+/turf/simulated/floor/holofloor/wood,
+/area/holodeck/source_checker)
+"s" = (
+/obj/item/checker/red,
+/turf/simulated/floor/tiled/white,
+/area/holodeck/source_checker)
+"w" = (
+/obj/item/checker/redking,
+/obj/item/checker/redking,
+/obj/item/checker/redking,
+/obj/item/checker/redking,
+/obj/item/checker/redking,
+/obj/item/checker/redking,
+/obj/item/checker/redking,
+/obj/item/checker/redking,
+/obj/item/checker/redking,
+/obj/item/checker/redking,
+/obj/item/checker/redking,
+/obj/item/checker/redking,
+/turf/simulated/floor/holofloor/wood,
+/area/holodeck/source_checker)
+"K" = (
+/obj/item/checker/blackking,
+/obj/item/checker/blackking,
+/obj/item/checker/blackking,
+/obj/item/checker/blackking,
+/obj/item/checker/blackking,
+/obj/item/checker/blackking,
+/obj/item/checker/blackking,
+/obj/item/checker/blackking,
+/obj/item/checker/blackking,
+/obj/item/checker/blackking,
+/obj/item/checker/blackking,
+/obj/item/checker/blackking,
+/turf/simulated/floor/holofloor/wood,
+/area/holodeck/source_checker)
+"L" = (
+/turf/simulated/floor/tiled/white,
+/area/holodeck/source_checker)
+"P" = (
+/obj/effect/floor_decal/sign/c,
+/turf/simulated/floor/holofloor/wood,
+/area/holodeck/source_checker)
+"S" = (
+/obj/effect/floor_decal/sign/dock/three,
+/turf/simulated/floor/holofloor/wood,
+/area/holodeck/source_checker)
+"V" = (
+/obj/effect/floor_decal/sign/dock/one,
+/turf/simulated/floor/holofloor/wood,
+/area/holodeck/source_checker)
+"Z" = (
+/obj/effect/floor_decal/sign/b,
+/turf/simulated/floor/holofloor/wood,
+/area/holodeck/source_checker)
+
+(1,1,1) = {"
+i
+i
+i
+i
+i
+i
+S
+b
+V
+i
+"}
+(2,1,1) = {"
+i
+a
+s
+a
+L
+a
+m
+a
+m
+n
+"}
+(3,1,1) = {"
+i
+s
+a
+s
+a
+L
+a
+m
+a
+Z
+"}
+(4,1,1) = {"
+i
+a
+s
+a
+L
+a
+m
+a
+m
+P
+"}
+(5,1,1) = {"
+i
+s
+a
+s
+a
+L
+a
+m
+a
+i
+"}
+(6,1,1) = {"
+i
+a
+s
+a
+L
+a
+m
+a
+m
+i
+"}
+(7,1,1) = {"
+i
+s
+a
+s
+a
+L
+a
+m
+a
+i
+"}
+(8,1,1) = {"
+i
+a
+s
+a
+L
+a
+m
+a
+m
+i
+"}
+(9,1,1) = {"
+i
+s
+a
+s
+a
+L
+a
+m
+a
+i
+"}
+(10,1,1) = {"
+w
+i
+i
+i
+i
+i
+i
+i
+i
+K
+"}

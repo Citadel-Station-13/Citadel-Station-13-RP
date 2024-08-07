@@ -6,7 +6,7 @@
 /obj/structure/fence{
 	dir = 4
 	},
-/turf/simulated/floor/plating/external,
+/turf/simulated/floor/plating/outdoors,
 /area/class_h/POIs/solar_farm)
 "c" = (
 /obj/structure/fence{
@@ -16,7 +16,7 @@
 /area/class_h/POIs/solar_farm)
 "e" = (
 /obj/structure/fence/door,
-/turf/simulated/floor/plating/external,
+/turf/simulated/floor/plating/outdoors,
 /area/class_h/POIs/solar_farm)
 "h" = (
 /obj/structure/cable{
@@ -28,7 +28,7 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/turf/simulated/floor/plating/external,
+/turf/simulated/floor/plating/outdoors,
 /area/class_h/POIs/solar_farm)
 "j" = (
 /obj/machinery/power/solar_control,
@@ -41,13 +41,13 @@
 /obj/structure/cable{
 	icon_state = "1-4"
 	},
-/turf/simulated/floor/plating/external,
+/turf/simulated/floor/plating/outdoors,
 /area/class_h/POIs/solar_farm)
 "l" = (
 /obj/structure/fence/door/opened{
 	dir = 8
 	},
-/turf/simulated/floor/plating/external,
+/turf/simulated/floor/plating/outdoors,
 /area/class_h/POIs/solar_farm)
 "m" = (
 /obj/machinery/power/smes/buildable,
@@ -60,13 +60,13 @@
 /obj/structure/cable{
 	dir = 8
 	},
-/turf/simulated/floor/plating/external,
+/turf/simulated/floor/plating/outdoors,
 /area/class_h/POIs/solar_farm)
 "o" = (
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
-/turf/simulated/floor/plating/external,
+/turf/simulated/floor/plating/outdoors,
 /area/class_h/POIs/solar_farm)
 "p" = (
 /obj/structure/cable{
@@ -79,7 +79,7 @@
 	icon_state = "1-2"
 	},
 /mob/living/simple_mob/mechanical/corrupt_maint_drone,
-/turf/simulated/floor/plating/external,
+/turf/simulated/floor/plating/outdoors,
 /area/class_h/POIs/solar_farm)
 "q" = (
 /obj/machinery/power/terminal{
@@ -101,7 +101,7 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/turf/simulated/floor/plating/external,
+/turf/simulated/floor/plating/outdoors,
 /area/class_h/POIs/solar_farm)
 "u" = (
 /turf/template_noop,
@@ -125,14 +125,14 @@
 /obj/structure/cable{
 	icon_state = "2-8"
 	},
-/turf/simulated/floor/plating/external,
+/turf/simulated/floor/plating/outdoors,
 /area/class_h/POIs/solar_farm)
 "z" = (
 /obj/machinery/power/solar,
 /obj/structure/cable{
 	dir = 8
 	},
-/turf/simulated/floor/plating/external,
+/turf/simulated/floor/plating/outdoors,
 /area/class_h/POIs/solar_farm)
 "B" = (
 /turf/simulated/wall,
@@ -141,7 +141,7 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/turf/simulated/floor/plating/external,
+/turf/simulated/floor/plating/outdoors,
 /area/class_h/POIs/solar_farm)
 "E" = (
 /obj/structure/closet/secure_closet/engineering_electrical{
@@ -159,26 +159,26 @@
 /obj/structure/cable{
 	icon_state = "1-8"
 	},
-/turf/simulated/floor/plating/external,
+/turf/simulated/floor/plating/outdoors,
 /area/class_h/POIs/solar_farm)
 "G" = (
 /obj/structure/fence{
 	dir = 1
 	},
-/turf/simulated/floor/plating/external,
+/turf/simulated/floor/plating/outdoors,
 /area/class_h/POIs/solar_farm)
 "H" = (
-/turf/simulated/floor/plating/external,
+/turf/simulated/floor/plating/outdoors,
 /area/class_h/POIs/solar_farm)
 "I" = (
 /mob/living/simple_mob/mechanical/corrupt_maint_drone,
-/turf/simulated/floor/plating/external,
+/turf/simulated/floor/plating/outdoors,
 /area/class_h/POIs/solar_farm)
 "L" = (
 /obj/structure/fence/door/opened{
 	dir = 4
 	},
-/turf/simulated/floor/plating/external,
+/turf/simulated/floor/plating/outdoors,
 /area/class_h/POIs/solar_farm)
 "N" = (
 /obj/structure/cable{
@@ -187,7 +187,7 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/turf/simulated/floor/plating/external,
+/turf/simulated/floor/plating/outdoors,
 /area/class_h/POIs/solar_farm)
 "O" = (
 /obj/structure/cable{
@@ -213,14 +213,14 @@
 /obj/structure/cable{
 	dir = 4
 	},
-/turf/simulated/floor/plating/external,
+/turf/simulated/floor/plating/outdoors,
 /area/class_h/POIs/solar_farm)
 "T" = (
 /obj/machinery/power/tracker,
 /obj/structure/cable{
 	dir = 8
 	},
-/turf/simulated/floor/plating/external,
+/turf/simulated/floor/plating/outdoors,
 /area/class_h/POIs/solar_farm)
 "U" = (
 /obj/structure/cable{
@@ -238,7 +238,7 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/turf/simulated/floor/plating/external,
+/turf/simulated/floor/plating/outdoors,
 /area/class_h/POIs/solar_farm)
 "W" = (
 /obj/structure/cable{
@@ -256,7 +256,7 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
-/turf/simulated/floor/plating/external,
+/turf/simulated/floor/plating/outdoors,
 /area/class_h/POIs/solar_farm)
 
 (1,1,1) = {"

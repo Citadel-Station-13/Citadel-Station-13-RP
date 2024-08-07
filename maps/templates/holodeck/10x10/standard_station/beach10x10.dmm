@@ -1,0 +1,154 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/turf/simulated/floor/holofloor/beach/sand,
+/area/holodeck/source_beach)
+"b" = (
+/turf/simulated/floor/holofloor/beach/water,
+/area/holodeck/source_beach)
+"h" = (
+/turf/unsimulated/beach/sand{
+	icon_state = "beach"
+	},
+/area/holodeck/source_beach)
+"m" = (
+/obj/item/clothing/glasses/sunglasses,
+/turf/simulated/floor/holofloor/beach/sand,
+/area/holodeck/source_beach)
+"p" = (
+/obj/item/inflatable_duck,
+/turf/simulated/floor/holofloor/beach/sand,
+/area/holodeck/source_beach)
+"v" = (
+/obj/effect/overlay/palmtree_l,
+/obj/effect/overlay/coconut,
+/turf/simulated/floor/holofloor/beach/sand,
+/area/holodeck/source_beach)
+"z" = (
+/obj/item/beach_ball,
+/turf/simulated/floor/holofloor/beach/sand,
+/area/holodeck/source_beach)
+"Y" = (
+/obj/effect/overlay/palmtree_r,
+/turf/simulated/floor/holofloor/beach/sand,
+/area/holodeck/source_beach)
+
+(1,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+h
+b
+b
+"}
+(2,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+h
+b
+b
+"}
+(3,1,1) = {"
+a
+Y
+a
+a
+a
+a
+a
+h
+b
+b
+"}
+(4,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+h
+b
+b
+"}
+(5,1,1) = {"
+a
+a
+a
+z
+a
+a
+a
+h
+b
+b
+"}
+(6,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+h
+b
+b
+"}
+(7,1,1) = {"
+a
+a
+m
+a
+a
+a
+a
+h
+b
+b
+"}
+(8,1,1) = {"
+a
+a
+v
+a
+p
+a
+a
+h
+b
+b
+"}
+(9,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+h
+b
+b
+"}
+(10,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+h
+b
+b
+"}

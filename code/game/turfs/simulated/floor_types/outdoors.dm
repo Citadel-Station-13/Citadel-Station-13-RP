@@ -13,12 +13,14 @@
 	name = "mud"
 	icon_state = "mud_dark"
 
+CREATE_STANDARD_TURFS(/turf/simulated/floor/outdoors/mud)
 /turf/simulated/floor/outdoors/rocks
 	name = "rocks"
 	desc = "Hard as a rock."
 	icon_state = "rock"
 	baseturfs = /turf/baseturf_bottom
 
+CREATE_STANDARD_TURFS(/turf/simulated/floor/outdoors/rocks)
 /turf/simulated/floor/outdoors/rocks/caves
 	outdoors = FALSE
 
