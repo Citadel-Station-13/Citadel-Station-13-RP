@@ -13,6 +13,8 @@
  * Checks if a hand can be used at a given manipulation level.
  */
 /mob/proc/is_hand_manipulation_sufficient(index, manipulation)
+	// until there's a reason to do otherwise, get_hand_manipulation_level() should be what you override!
+	SHOULD_NOT_OVERRIDE(TRUE)
 	return get_hand_manipulation_level(index) >= manipulation
 
 /**

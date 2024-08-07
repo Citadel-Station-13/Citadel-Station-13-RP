@@ -1029,9 +1029,6 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 		animate(client, color = null, time = 10)
 	return
 
-/mob/proc/swap_hand()
-	return
-
 /mob/proc/will_show_tooltip()
 	if(alpha <= EFFECTIVE_INVIS)
 		return FALSE

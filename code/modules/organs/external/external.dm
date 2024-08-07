@@ -542,14 +542,8 @@
 		return FALSE
 
 	if(user == src.owner)
-		var/grasp
-		if(user.l_hand == tool && (src.body_part_flags & (ARM_LEFT|HAND_LEFT)))
-			grasp = BP_L_HAND
-		else if(user.r_hand == tool && (src.body_part_flags & (ARM_RIGHT|HAND_RIGHT)))
-			grasp = BP_R_HAND
-
-		if(grasp)
-			to_chat(user, SPAN_WARNING("You can't reach your [src.name] while holding [tool] in your [owner.get_bodypart_name(grasp)]."))
+		if(owner.get_hand_organ(owner.get_held_index(tool)) == src)
+			to_chat(user, SPAN_WARNING("You can't reach your [src] while holding [tool] in the same hand!"))
 			return FALSE
 
 	user.setClickCooldown(user.get_attack_speed(tool))
