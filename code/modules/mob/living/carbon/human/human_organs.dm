@@ -122,7 +122,7 @@
 		var/obj/item/held = held_items[i]
 		if(isnull(held))
 			continue
-		var/obj/item/organ/external/hand = get_hand_organ(i)
+		var/obj/item/organ/external/hand = get_hand_organ_of_index(i)
 		var/obj/item/organ/external/arm = get_arm_organ(i)
 		if(isnull(arm) || isnull(hand))
 			visible_message("<span class='danger'>Lacking a functioning left hand, \the [src] drops \the [held].</span>")

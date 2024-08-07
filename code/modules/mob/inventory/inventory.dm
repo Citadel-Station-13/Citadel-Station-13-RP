@@ -22,8 +22,16 @@
 
 	//* Inventory *//
 
+	/// held items
+	///
+	/// * empty indices are null
+	/// * this is also our rendered & nominal hand count
+	/// * 1, 3, 5, ... are left
+	/// * 2, 4, 6, ... are right
+	var/list/obj/item/held_items = list()
+
 	//* Caches *//
-	/// cached overlays by slot id
+	/// cached overlays by slot id or hand index
 	var/list/rendered_normal_overlays = list()
 	/// cached overlays by slot id
 	// todo: emissives
@@ -77,16 +85,22 @@
 /**
  * called when an item is added to inventory
  */
-/datum/inventory/proc/item_entered(obj/item/item, datum/inventory_slot/slot_or_index)
-	hud?.add_item(item, slot_or_index)
+/datum/inventory/proc/item_entered(obj/item/item, datum/inventory_slot/slot)
+	hud?.add_item(item, slot)
 
 /**
  * called when an item is removed from inventory
  */
-/datum/inventory/proc/item_exited(obj/item/item, datum/inventory_slot/slot_or_index)
-	hud?.remove_item(item, slot_or_index)
+/datum/inventory/proc/item_exited(obj/item/item, datum/inventory_slot/slot)
+	hud?.remove_item(item, slot)
 
-#warn hook above 2
+/**
+ * called when an item is moved from one slot to another
+ */
+/datum/inventory/proc/item_exited(obj/item/item, datum/inventory_slot/from_slot, datum/inventory_slot/to_slot)
+	hud?.move_item(item, from_slot, to_slot)
+
+#warn hook above 3
 
 //? init
 

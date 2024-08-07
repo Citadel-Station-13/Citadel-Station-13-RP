@@ -116,13 +116,6 @@
 	//* Inventory *//
 	/// our inventory datum, if any.
 	var/datum/inventory/inventory
-	/// our hand hud, if any
-	var/datum/mob_hud/hands/hands_hud
-	/// held items; indexed list. defaults to null, lazy.
-	/// the length of this is also the abstracted number of hands we should have
-	/// * 1, 3, 5, ... are left
-	/// * 2, 4, 6, ... are right
-	var/list/obj/item/held_items
 	/// active hand index - null or num. must always be in range of held_items indices!
 	var/active_hand
 

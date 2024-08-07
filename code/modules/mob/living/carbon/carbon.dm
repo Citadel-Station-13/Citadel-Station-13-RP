@@ -312,7 +312,7 @@
 
 /mob/living/carbon/proc/update_handcuffed()
 	if(handcuffed)
-		drop_all_held_items()
+		drop_held_items()
 		stop_pulling()
 	update_inv_handcuffed()
 	update_mobility()

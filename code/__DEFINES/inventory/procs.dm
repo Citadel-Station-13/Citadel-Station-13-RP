@@ -1,4 +1,8 @@
-//! flags for inventory ops
+//* This file is explicitly licensed under the MIT license. *//
+//* Copyright (c) 2024 silicons                             *//
+
+//* Inventory Operation Flags *//
+
 /// force; implies INV_OP_IGNORE_DELAY and INV_OP_IGNORE_REACHABILITY
 #define INV_OP_FORCE				(1<<0)
 /// components that intercept to relocate should refrain - usually used with force
@@ -46,6 +50,17 @@
 #define INV_OP_SILENT				(INV_OP_SUPPRESS_SOUND | INV_OP_SUPPRESS_WARNING)
 
 // todo: INV_OP_RECRUSE
+
+//* Inventory Return Flags *//
+
+/// Failed
+///
+/// * Yes, on a failure, we just return null.
+#define INV_RETURN_FAILED null
+/// Success
+#define INV_RETURN_SUCCESS (1<<0)
+/// Success, but was relocated instead of going to where it should go.
+#define INV_RETURN_RELOCATED (1<<1)
 
 //! return values from can_equip_conflict_check
 /// yes

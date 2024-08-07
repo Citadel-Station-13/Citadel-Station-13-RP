@@ -48,8 +48,10 @@
 //* However, this system isn't in yet, so old code should still use these procs.  *//
 
 /**
- * Get the external organ of an arm
+ * Get the external organ of the active hand
+ *
+ * * in mobs with no logical arm and only a hand, this returns the hand
  */
 /mob/living/carbon/proc/get_active_hand_organ(index)
 	RETURN_TYPE(/obj/item/organ/external)
-	return get_hand_organ(active_hand)
+	return get_hand_organ_of_index(active_hand)

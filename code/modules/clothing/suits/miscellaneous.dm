@@ -305,7 +305,7 @@
 /obj/item/clothing/suit/straight_jacket/equipped(var/mob/living/user,var/slot)
 	. = ..()
 	if(slot == SLOT_ID_SUIT)
-		user.drop_all_held_items()
+		user.drop_held_items()
 		user.drop_item_to_ground(user.item_by_slot_id(SLOT_ID_HANDCUFFED), INV_OP_FORCE)
 
 /obj/item/clothing/suit/ianshirt

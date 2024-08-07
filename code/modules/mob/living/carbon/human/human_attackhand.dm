@@ -284,7 +284,7 @@
 					return
 
 				//Actually disarm them
-				drop_all_held_items()
+				drop_held_items()
 
 				visible_message("<span class='danger'>[L] has disarmed [src]!</span>")
 				playsound(src, 'sound/weapons/thudswoosh.ogg', 50, 1, -1)
