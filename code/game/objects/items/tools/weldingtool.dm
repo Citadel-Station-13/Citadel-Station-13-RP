@@ -364,12 +364,13 @@
 	eye_safety_modifier = 1 // Safer on eyes.
 
 /obj/item/weldingtool/bone
-	name = "primitive welding tool"
-	desc = "A curious welding tool that uses an anomalous ignition method."
+	name = "Elder's Bellows"
+	desc = "A curious welding tool that uses an anomalous crystal and a bellows to create heat."
+	icon = 'icons/obj/lavaland.dmi'
 	icon_state = "ashwelder"
 	max_fuel = 20
 	materials_base = list(MAT_METAL = 30, MAT_BONE = 10)
-	tool_speed = 1.5
+	tool_speed = 3 ///It doesn't get that hot
 	eye_safety_modifier = 3 // Safe for Scorians who don't have goggles.
 	always_process = TRUE
 

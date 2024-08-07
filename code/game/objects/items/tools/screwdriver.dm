@@ -76,6 +76,14 @@
 	random_color = FALSE
 	tool_speed = 1.25
 
+/obj/item/tool/screwdriver/bronze
+	name = "bronze chisel"
+	desc = "A flat point chisel made of bronze, used to carve bone. It may make a good screwdriver in a pinch."
+	icon = 'icons/obj/lavaland.dmi'
+	icon_state = "screwdriver_bronze"
+	item_state = "screwdriver_brass"
+	random_color = FALSE
+
 /obj/item/tool/screwdriver/brass
 	name = "brass screwdriver"
 	desc = "A screwdriver with a very sharp tip, that ensures fine deliberate adjustments."

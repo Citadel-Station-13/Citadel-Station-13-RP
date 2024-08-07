@@ -122,6 +122,15 @@
 	base_icon = "bone_axe"
 	material_color = FALSE
 
+/obj/item/material/twohanded/fireaxe/bronze
+	name = "Bronze Battleaxe"
+	desc = "A large twohanded battleaxe made of bronze. Its double head marks it a tool for combat alone."
+	material_parts = /datum/material/bronze
+	icon = 'icons/obj/lavaland.dmi'
+	icon_state = "bronze_axe0"
+	base_icon = "bronze_axe"
+	material_color = FALSE
+
 /obj/item/material/twohanded/fireaxe/plasteel
 	material_parts = /datum/material/plasteel
 
@@ -236,6 +245,19 @@
 
 /obj/item/material/twohanded/spear/durasteel
 	material_parts = /datum/material/durasteel
+
+/obj/item/material/twohanded/spear/bronze
+	name = "spear"
+	desc = "A spear of bone shaft and bronze head. Simplicity never goes out of style."
+	material_parts = /datum/material/bronze
+	icon = 'icons/obj/lavaland.dmi'
+	icon_state = "bronze_spear0"
+	base_icon = "bronze_spear"
+	material_color = 0
+
+
+/obj/item/material/twohanded/spear/bronze/Initialize(mapload, material_key)
+	..(mapload,"bronze")
 
 //Sledgehammers. Slightly less force than fire axes, but breaks bones easier.
 
