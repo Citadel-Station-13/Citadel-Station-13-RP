@@ -77,14 +77,14 @@
 
 /obj/projectile/beam/heavylaser/cannon
 	damage = 80
-	armor_penetration = 50
+	armor_penetration = 45
 	light_color = "#FF0D00"
 
 /obj/projectile/beam/xray
 	name = "xray beam"
 	icon_state = "xray"
 	fire_sound = 'sound/weapons/eluger.ogg'
-	damage = 25
+	damage = 30
 	armor_penetration = 50
 	light_color = "#00CC33"
 

@@ -215,10 +215,10 @@
 		return
 
 	var/weapon_descriptor = RESOLVE_SHIELDCALL_WEAPON_DESCRIPTOR(args)
+	var/brute = damage_type == BRUTE? damage : 0
+	var/burn = damage_type == BURN? damage : 0
 
 	if(hit_zone)
 		take_targeted_damage(brute, burn, damage_mode, hit_zone, weapon_descriptor)
 	else
 		take_overall_damage(brute, burn, damage_mode, weapon_descriptor)
-
-#warn impl

@@ -29,7 +29,7 @@
 			continue
 		impact(victim)
 
-/obj/projectile/bullet/Moved(atom/old_loc, movement_dir, forced, list/old_locs, momentum_change)
+/obj/projectile/bullet/pellet/Moved(atom/old_loc, movement_dir, forced, list/old_locs, momentum_change)
 	. = ..()
 	var/travelled = pellet_loss_last_distance - distance_travelled
 	pellet_loss_last_distance = distance_travelled
