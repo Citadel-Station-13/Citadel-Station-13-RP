@@ -1,4 +1,8 @@
-//! flags for inventory ops
+//* This file is explicitly licensed under the MIT license. *//
+//* Copyright (c) 2024 silicons                             *//
+
+//* Inventory Operation Flags *//
+
 /// force; implies INV_OP_IGNORE_DELAY and INV_OP_IGNORE_REACHABILITY
 #define INV_OP_FORCE				(1<<0)
 /// components that intercept to relocate should refrain - usually used with force
@@ -9,7 +13,7 @@
 #define INV_OP_SUPPRESS_WARNING		(1<<3)
 /// do not run logic like checking if you should drop something when something's unequipped
 #define INV_OP_NO_LOGIC				(1<<4)
-/// do not updatei cons
+/// do not update icons
 #define INV_OP_NO_UPDATE_ICONS		(1<<5)
 /// hint: we are directly dropping to ground/off omb
 #define INV_OP_DIRECTLY_DROPPING	(1<<6)
@@ -46,6 +50,17 @@
 #define INV_OP_SILENT				(INV_OP_SUPPRESS_SOUND | INV_OP_SUPPRESS_WARNING)
 
 // todo: INV_OP_RECRUSE
+
+//* Inventory Return Flags *//
+
+/// Failed
+///
+/// * Yes, on a failure, we just return null.
+#define INV_RETURN_FAILED null
+/// Success
+#define INV_RETURN_SUCCESS (1<<0)
+/// Success, but was relocated instead of going to where it should go.
+#define INV_RETURN_RELOCATED (1<<1)
 
 //! return values from can_equip_conflict_check
 /// yes

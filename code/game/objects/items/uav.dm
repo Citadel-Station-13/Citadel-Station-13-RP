@@ -64,7 +64,7 @@
 	STOP_PROCESSING(SSobj, src)
 	return ..()
 
-/obj/item/uav/attack_hand(mob/user, list/params)
+/obj/item/uav/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	//Has to be on the ground to work with it properly
 	if(!isturf(loc))
 		return ..()

@@ -178,7 +178,7 @@
 	T.thermal_conductivity = initial(T.thermal_conductivity)
 	..()
 
-/obj/structure/alien/hybrid_resin/attack_hand(mob/user, list/params)
+/obj/structure/alien/hybrid_resin/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(iscarbon(user))
 		var/mob/living/carbon/C = user
 		if(locate(/obj/item/organ/internal/xenos/hivenode) in C.internal_organs)

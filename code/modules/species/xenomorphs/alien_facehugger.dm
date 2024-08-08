@@ -30,7 +30,7 @@ var/const/MAX_ACTIVE_TIME = 400
 	var/strength = 5
 	var/attached = 0
 
-/obj/item/clothing/mask/facehugger/attack_hand(mob/user, list/params)
+/obj/item/clothing/mask/facehugger/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if((stat == CONSCIOUS && !sterile))
 		if(Attach(user))
 			return
@@ -315,7 +315,7 @@ var/const/MAX_ACTIVE_TIME = 400
 	var/strength = 5
 	var/attached = 0
 
-/mob/living/simple_mob/animal/space/alien/facehugger/attack_hand(mob/user, list/params)
+/mob/living/simple_mob/animal/space/alien/facehugger/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 
 	if((stat == CONSCIOUS && !sterile))
 		if(Attach(user))

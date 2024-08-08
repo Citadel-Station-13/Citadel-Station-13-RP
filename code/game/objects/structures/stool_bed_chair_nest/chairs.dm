@@ -51,7 +51,7 @@
 	qdel(src)
 	return CLICKCHAIN_DO_NOT_PROPAGATE
 
-/obj/structure/bed/chair/attack_hand(mob/user)
+/obj/structure/bed/chair/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(!stacked_size)
 		return ..()
 	var/obj/item/material/twohanded/folded_metal_chair/F = new(loc)

@@ -482,7 +482,7 @@
 	immediate += /datum/asset_pack/spritesheet/materials
 	return ..()
 
-/obj/machinery/mecha_part_fabricator/attack_hand(mob/user, list/params)
+/obj/machinery/mecha_part_fabricator/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(..())
 		return
 	if(!allowed(user))

@@ -17,7 +17,42 @@
 //! BYOND will 100% allow you to.
 //! DO NOT DO THIS.
 
-#define ui_entire_screen "LEFT,BOTTOM to RIGHT,TOP"
+//*                  General HUD positions                   *//
+//* These should be as widescreen-agnostic as possible.      *//
+
+/// Fill screen
+#define SCREEN_LOC_FULLSCREEN "LEFT,BOTTOM to RIGHT,TOP"
+
+//*                     Mob HUD positions                    *//
+//* These should be widescreen-agnostic and use anchorings   *//
+//* to the sides of the screen / center.                     *//
+
+/// the bottom-left hand of hands HUD
+#define SCREEN_LOC_MOB_HANDS_HUD_ANCHOR "CENTER-1:16,BOTTOM+1:5"
+
+/// the bottom-left drawer position of inventory HUD
+#define SCREEN_LOC_MOB_INVENTORY_HUD_ANCHOR "LEFT:6,BOTTOM:5"
+
+#warn deal with this crap
+
+//Pop-up inventory
+#define ui_shoes "LEFT+1:8,BOTTOM:5"
+
+#define ui_iclothing "LEFT:6,BOTTOM+1:7"
+#define ui_oclothing "LEFT+1:8,BOTTOM+1:7"
+#define ui_gloves "LEFT+2:10,BOTTOM+1:7"
+
+#define ui_glasses "LEFT:6,BOTTOM+2:9"
+#define ui_mask "LEFT+1:8,BOTTOM+2:9"
+#define ui_l_ear "LEFT+2:10,BOTTOM+2:9"
+#define ui_r_ear "LEFT+2:10,BOTTOM+3:11"
+
+#define ui_head "LEFT+1:8,BOTTOM+3:11"
+
+/// Hands
+#define SCREEN_LOC_INV_HAND(index) "CENTER[index % 2? "" : "-1"]:16,BOTTOM[index < 2? "" : "+[(round(index / 2) - 1)]"]:5"
+#define ui_swaphand1 "CENTER-1:16,BOTTOM+1:5"
+#define ui_swaphand2 "CENTER:16,BOTTOM+1:5"
 
 //Lower left, persistant menu
 #define ui_inventory "LEFT:6,BOTTOM:5"
@@ -27,11 +62,8 @@
 #define ui_id "LEFT+3:12,BOTTOM:5"
 #define ui_belt "LEFT+4:14,BOTTOM:5"
 #define ui_back "CENTER-2:14,BOTTOM:5"
-#define ui_rhand "CENTER-1:16,BOTTOM:5"
-#define ui_lhand "CENTER:16,BOTTOM:5"
+
 #define ui_equip "CENTER-1:16,BOTTOM+1:5"
-#define ui_swaphand1 "CENTER-1:16,BOTTOM+1:5"
-#define ui_swaphand2 "CENTER:16,BOTTOM+1:5"
 #define ui_storage1 "CENTER+1:16,BOTTOM:5"
 #define ui_storage2 "CENTER+2:16,BOTTOM:5"
 #define ui_smallquad "RIGHT-4:18,BOTTOM:4"
@@ -132,20 +164,6 @@
 //#define ui_wiz_instability_display "RIGHT-2:28,CENTER-3:15"
 #define ui_wiz_instability_display "RIGHT-1:28,TOP-2:27"
 
-//Pop-up inventory
-#define ui_shoes "LEFT+1:8,BOTTOM:5"
-
-#define ui_iclothing "LEFT:6,BOTTOM+1:7"
-#define ui_oclothing "LEFT+1:8,BOTTOM+1:7"
-#define ui_gloves "LEFT+2:10,BOTTOM+1:7"
-
-#define ui_glasses "LEFT:6,BOTTOM+2:9"
-#define ui_mask "LEFT+1:8,BOTTOM+2:9"
-#define ui_l_ear "LEFT+2:10,BOTTOM+2:9"
-#define ui_r_ear "LEFT+2:10,BOTTOM+3:11"
-
-#define ui_head "LEFT+1:8,BOTTOM+3:11"
-
 //Intent small buttons
 #define ui_help_small "RIGHT-3:8,BOTTOM:1"
 #define ui_disarm_small "RIGHT-3:15,BOTTOM:18"
@@ -154,16 +172,8 @@
 
 //#define ui_swapbutton "6:-16,1:5" //Unused
 
-//#define ui_headset "BOTTOM,8"
-#define ui_hand "CENTER-1:14,BOTTOM:5"
-#define ui_hstore1 "CENTER-2,CENTER-2"
-//#define ui_resist "RIGHT+1,BOTTOM-1"
 #define ui_sleep "RIGHT+1,TOP-13"
 #define ui_rest "RIGHT+1,TOP-14"
-
-
-#define ui_iarrowleft "BOTTOM-1,RIGHT-4"
-#define ui_iarrowright "BOTTOM-1,RIGHT-2"
 
 #define ui_spell_master "RIGHT-1:16,TOP-1:16"
 #define ui_genetic_master "RIGHT-1:16,TOP-2:16"

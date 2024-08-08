@@ -19,7 +19,7 @@
 		return UI_CLOSE
 	return ..()
 
-/obj/machinery/computer/drone_control/attack_hand(mob/user, list/params)
+/obj/machinery/computer/drone_control/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(..())
 		return
 

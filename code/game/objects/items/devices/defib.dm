@@ -67,7 +67,7 @@
 /obj/item/defib_kit/ui_action_click(datum/action/action, datum/event_args/actor/actor)
 	toggle_paddles()
 
-/obj/item/defib_kit/attack_hand(mob/user, list/params)
+/obj/item/defib_kit/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(loc == user)
 		toggle_paddles()
 	else
@@ -223,9 +223,9 @@
 			make_announcement("beeps, \"Unit is re-energized.\"", "notice")
 			playsound(src, 'sound/machines/defib_ready.ogg', 50, 0)
 
-/obj/item/shockpaddles/update_held_icon()
+/obj/item/shockpaddles/update_worn_icon()
 	var/mob/living/M = loc
-	if(istype(M) && M.is_holding(src) && !M.hands_full())
+	if(istype(M) && M.is_holding(src) && !M.are_usable_hands_full())
 		wielded = 1
 		name = "[initial(name)] (wielded)"
 	else
@@ -241,7 +241,7 @@
 		icon_state = "defibpaddles[wielded]_cooldown"
 
 /obj/item/shockpaddles/proc/can_use(mob/user, mob/M)
-	update_held_icon()
+	update_worn_icon()
 	if(busy)
 		return 0
 	if(!check_charge(chargecost))

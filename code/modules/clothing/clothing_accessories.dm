@@ -1,4 +1,4 @@
-/obj/item/clothing/_inv_return_attached()
+/obj/item/clothing/inv_slot_attached()
 	if(!accessories)
 		return ..()
 	. = ..()

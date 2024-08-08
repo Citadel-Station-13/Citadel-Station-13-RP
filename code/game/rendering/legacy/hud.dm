@@ -18,7 +18,7 @@ GLOBAL_DATUM_INIT(global_hud, /datum/global_hud, new)
 	var/atom/movable/screen/holomap
 
 /atom/movable/screen/global_screen
-	screen_loc = ui_entire_screen
+	screen_loc = SCREEN_LOC_FULLSCREEN
 	plane = FULLSCREEN_PLANE
 	mouse_opacity = 0
 

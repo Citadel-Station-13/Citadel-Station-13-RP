@@ -144,7 +144,7 @@
 				user.visible_message("[user] inserts [P] into [src].", "<span class='notice'>You insert [P] into [src].</span>")
 				playsound(src.loc, 'sound/weapons/flipblade.ogg', 50, 1)
 				update_icon()
-				update_held_icon()
+				update_worn_icon()
 		return
 
 /obj/item/gun/energy/modular/pistol

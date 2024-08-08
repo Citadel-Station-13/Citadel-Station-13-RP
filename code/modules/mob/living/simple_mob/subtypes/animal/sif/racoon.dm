@@ -28,7 +28,7 @@
 	maxHealth = 50
 	health = 50
 	randomized = TRUE
-	has_hands = TRUE
+	hand_count = 2
 	humanoid_hands = TRUE
 
 	pass_flags = ATOM_PASS_TABLE

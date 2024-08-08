@@ -23,7 +23,7 @@
 	else
 		src.icon_state = "glassbox[src.occupied]"
 
-/obj/structure/displaycase/attack_hand(mob/user, list/params)
+/obj/structure/displaycase/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if((atom_flags & ATOM_BROKEN) && occupied)
 		new /obj/item/gun/energy/captain( src.loc )
 		to_chat(user, "<span class='notice'>You deactivate the hover field built into the case.</span>")

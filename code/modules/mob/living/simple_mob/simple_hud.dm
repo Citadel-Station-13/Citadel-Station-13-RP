@@ -244,7 +244,7 @@
 		var/atom/movable/screen/inventory/hand/right/right_hand = new
 		right_hand.index = 2
 		using = right_hand
-		using.hud = src
+		using.hud_legacy = src
 		using.name = "r_hand"
 		using.icon = ui_style
 		using.icon_state = "r_hand_inactive"
@@ -260,7 +260,7 @@
 		var/atom/movable/screen/inventory/hand/left/left_hand = new
 		left_hand.index = 1
 		using = left_hand
-		using.hud = src
+		using.hud_legacy = src
 		using.name = "l_hand"
 		using.icon = ui_style
 		using.icon_state = "l_hand_inactive"

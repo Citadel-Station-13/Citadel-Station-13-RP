@@ -62,7 +62,7 @@
 
 */
 
-/obj/structure/largecrate/attack_hand(mob/user, list/params)
+/obj/structure/largecrate/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	to_chat(user, "<span class='notice'>You need a crowbar to pry this open!</span>")
 	return
 

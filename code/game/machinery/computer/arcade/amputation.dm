@@ -7,7 +7,7 @@
 	icon_screen = null
 	circuit = /obj/item/circuitboard/arcade/amputation
 
-/obj/machinery/computer/arcade/amputation/attack_hand(mob/user, list/modifiers)
+/obj/machinery/computer/arcade/amputation/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(!iscarbon(user))
 		return
 	var/mob/living/carbon/c_user = user

@@ -29,7 +29,7 @@
 /obj/item/gun/ballistic/automatic/fluff/crestrose/switch_firemodes(mob/user)
 	if(..())
 		update_icon()
-		update_held_icon()
+		update_worn_icon()
 
 
 /obj/item/gun/ballistic/automatic/fluff/crestrose/handle_shield(mob/user, var/damage, atom/damage_source = null, mob/attacker = null, var/def_zone = null, var/attack_text = "the attack")

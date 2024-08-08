@@ -427,9 +427,6 @@
 			. += M
 	. -= src
 
-/mob/proc/ret_grab(obj/effect/list_container/mobl/L as obj, flag)
-	return
-
 /**
  * Get the notes of this mob
  *
@@ -1030,9 +1027,6 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 /mob/proc/update_client_color()
 	if(client && client.color)
 		animate(client, color = null, time = 10)
-	return
-
-/mob/proc/swap_hand()
 	return
 
 /mob/proc/will_show_tooltip()

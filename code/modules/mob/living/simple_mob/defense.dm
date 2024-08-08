@@ -1,5 +1,5 @@
 // When someone clicks us with an empty hand
-/mob/living/simple_mob/attack_hand(mob/user, list/params)
+/mob/living/simple_mob/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	. = ..()
 	if(.)
 		return
@@ -30,7 +30,6 @@
 
 			L.put_in_active_hand(G)
 
-			G.synch()
 			G.affecting = src
 			LAssailant = L
 

@@ -30,7 +30,7 @@
 	desc = "A remote control switch for polarized windows."
 	var/range = 7
 
-/obj/machinery/button/windowtint/attack_hand(mob/user, list/params)
+/obj/machinery/button/windowtint/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if (..())
 		return TRUE
 	else

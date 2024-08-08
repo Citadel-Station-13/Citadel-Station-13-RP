@@ -94,7 +94,7 @@
 	data["node2_dir"] = dir_name(node_connects[2],TRUE)
 	return data
 
-/obj/machinery/atmospherics/component/trinary/mixer/attack_hand(mob/user, list/params)
+/obj/machinery/atmospherics/component/trinary/mixer/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(..())
 		return
 	ui_interact(user)

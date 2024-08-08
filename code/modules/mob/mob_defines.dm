@@ -56,11 +56,11 @@
 	/// Atom we're buckl**ing** to. Used to stop stuff like lava from incinerating those who are mid buckle.
 	var/atom/movable/buckling
 
-	//* HUD (Atom)
+	//* HUD (Atom) *//
 	/// HUDs to initialize, typepaths
 	var/list/atom_huds_to_initialize
 
-	//* HUD
+	//* HUD *//
 	/// active, opened storage
 	//  todo: doesn't clear from clients properly on logout, relies on login clearing screne.
 	//  todo: we'll eventually need a system to handle ckey transfers properly.
@@ -113,9 +113,11 @@
 	/// our abilities - set to list of paths to init to intrinsic abilities.
 	var/list/datum/ability/abilities
 
-	//? Inventory
+	//* Inventory *//
 	/// our inventory datum, if any.
 	var/datum/inventory/inventory
+	/// active hand index - null or num. must always be in range of held_items indices!
+	var/active_hand
 
 	//! Size
 	//! todo kill this with fire it should just be part of icon_scale_x/y.

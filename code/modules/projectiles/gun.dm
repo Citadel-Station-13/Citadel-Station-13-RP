@@ -237,7 +237,7 @@
 		update_icon() // In case item_state is set somewhere else.
 	..()
 
-/obj/item/gun/update_held_icon()
+/obj/item/gun/update_worn_icon()
 	if(wielded_item_state)
 		var/mob/living/M = loc
 		if(istype(M))
@@ -452,7 +452,7 @@
 
 
 	// We do this down here, so we don't get the message if we fire an empty gun.
-	if(user.is_holding(src) && user.hands_full())
+	if(user.is_holding(src) && user.are_usable_hands_full())
 		if(one_handed_penalty >= 20)
 			to_chat(user, "<span class='warning'>You struggle to keep \the [src] pointed at the correct position with just one hand!</span>")
 
@@ -804,7 +804,7 @@
 		playsound(loc, selector_sound, 50, 1)
 	return new_mode
 
-/obj/item/gun/attack_self(mob/user)
+/obj/item/gun/attack_self(mob/user, datum/event_args/actor/e_args)
 	. = ..()
 	if(.)
 		return

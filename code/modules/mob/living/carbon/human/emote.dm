@@ -687,11 +687,8 @@
 		if ("signal")
 			if (!src.restrained())
 				var/t1 = round(text2num(param))
-				if (isnum(t1))
-					if (t1 <= 5 && (!src.r_hand || !src.l_hand))
-						message = "raises [t1] finger\s."
-					else if (t1 <= 10 && (!src.r_hand && !src.l_hand))
-						message = "raises [t1] finger\s."
+				if (isnum(t1) && t1 <= (count_empty_hands() * 5))
+					message = "raises [t1] finger\s."
 			m_type = 1
 
 		if ("smile")
@@ -810,7 +807,7 @@
 
 		if ("handshake")
 			m_type = 1
-			if (!src.restrained() && !src.r_hand)
+			if (!restrained() && !are_usable_hands_full())
 				var/mob/living/M = null
 				if (param)
 					for (var/mob/living/A in view(1, null))
@@ -1089,7 +1086,7 @@
 	if (length(pose)>0 && pose != old_pose)
 		visible_emote("adjusts [T.his] posture.")
 		addtimer(CALLBACK(src,PROC_REF(set_pose),""),time SECONDS)
-	
+
 
 /mob/living/carbon/human/verb/silent_pose()
 	set name = "Set Pose (Stealth)"
