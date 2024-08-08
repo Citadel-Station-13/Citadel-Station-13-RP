@@ -255,7 +255,7 @@
 		// init material parts only if it wasn't initialized already
 		if(!(obj_flags & OBJ_MATERIAL_INITIALIZED))
 			init_material_parts()
-	if(hides_underfloor != OBJ_UNDERFLOOR_NEVER)
+	if(hides_underfloor != OBJ_UNDERFLOOR_NEVER && isturf(loc))
 		initialize_hiding_underfloor(mapload)
 	if (set_obj_flags)
 		var/flagslist = splittext(set_obj_flags,";")
