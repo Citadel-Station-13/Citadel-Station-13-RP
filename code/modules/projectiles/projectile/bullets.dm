@@ -152,19 +152,17 @@
 	fire_sound = 'sound/weapons/weaponsounds_shotgunshot.ogg'
 	damage = 13
 	pellets = 6
-	range_step = 1
+	pellet_loss = 0.66 / WORLD_ICON_SIZE
 	spread_step = 10
 
 /obj/projectile/bullet/pellet/shotgun_improvised
 	name = "shrapnel"
-	damage = 1
+	damage = 4
 	pellets = 10
-	range_step = 1
 	spread_step = 10
 
 /obj/projectile/bullet/pellet/shotgun/flak
 	damage = 2 //The main weapon using these fires four at a time, usually with different destinations. Usually.
-	range_step = 2
 	spread_step = 30
 	armor_penetration = 10
 
@@ -177,7 +175,6 @@
 	SA_vulnerability = MOB_CLASS_DEMONIC | MOB_CLASS_ABERRATION
 	embed_chance = -1
 	pellets = 6
-	range_step = 1
 	spread_step = 20
 	holy = TRUE
 
@@ -367,7 +364,7 @@
 /obj/projectile/bullet/pellet/blunderbuss //More Damage at close range greater falloff
 	damage = 10
 	pellets = 8
-	range_step = 0.5 //Very quick falloff
+	pellet_loss = 1.5 / WORLD_ICON_SIZE
 	spread_step = 30
 
 /obj/projectile/bullet/pellet/blunderbuss/silver
@@ -386,7 +383,6 @@
 
 /obj/projectile/bullet/pellet/heavy_shotgun //I want this to use similar calcuations to blunderbuss shot for falloff.
 	damage = 3 //Fires five pellets at a time.
-	range_step = 0.75
 	spread_step = 30
 	armor_penetration = 10
 
@@ -414,7 +410,6 @@
 
 /obj/projectile/bullet/pellet/heavy_shotgun/grit
 	name = "heavy buckshot"
-	range_step = 1
 
 /obj/projectile/bullet/pellet/heavy_shotgun/on_impact_new(atom/target, impact_flags, def_zone, blocked)
 	. = ..()

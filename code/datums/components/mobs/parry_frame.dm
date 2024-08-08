@@ -28,6 +28,26 @@
 
 #warn impl
 
+INITIALIZE_IMMEDIATE(/atom/movable/render/parry_frame)
+/atom/movable/render/parry_frame
+	var/atom/movable/bound
+	#warn impl all
+
+/atom/movable/render/parry_frame/Initialize(mapload, atom/movable/bind_to)
+	SHOULD_CALL_PARENT(FALSE)
+	src.bound = bind_to
+	bind_to.vis_contents += src
+	return INITIALIZE_HINT_NORMAL
+
+/atom/movable/render/parry_frame/Destroy()
+	bound.vis_contents -= src
+	bound = null
+	return ..()
+
+/atom/movable/render/parry_frame/proc/spinup()
+
+/atom/movable/render/parry_frame/proc/spindown()
+
 /**
  * Datastructure for parry data, now far more simplified.
  *
@@ -144,49 +164,85 @@
 	/// list can be weighted by associated number for relative chance
 	var/list/parry_sfx
 	#warn default
+	/// a typepath of /atom/movable/parry_frame to use as our visual; this is placed in the defending atom's vis_contents
+	var/parry_vfx = /atom/movable/parry_frame
+	#warn default
 
 #warn impl all
 
 /datum/parry_frame/proc/calculate_parry_efficiency(start_time, current_time)
+	#warn impl
 
-
-
+/**
+ * Called when parrying something
+ *
+ * @params
+ * * defending - thing being defended against an attack
+ * * attack_type - (optional) type of attack
+ * * efficiency - (optional) parry efficiency
+ * * weapon - (optional) incoming weapon, depends on ATTACK_TYPE
+ * * severity - (optional) arbitrary 0 to 100 severity of how bad the hit is estimated to be
+ */
+/datum/parry_frame/proc/perform_audiovisuals(atom/defending, attack_type, efficiency, datum/weapon, severity = 75)
+	#warn impl
 
 //* Bindings - Bullet *//
 
 /datum/shieldcall/bound/parry_frame/handle_bullet(atom/defending, shieldcall_returns, fake_attack, list/bullet_act_args)
-	. = ..()
+	// this is a definite 'do as i say, not as i do' moment
+	// this works because the proc names and args and types are **exactly** matching
+	// this is why the procs are all together
+	// do NOT try this at home.
+	return bound:handle_bullet(arglist(args))
 
-/datum/parry_frame/proc/handle_bullet(atom/defending, list/bullet_act_args)
+/datum/parry_frame/proc/handle_bullet(atom/defending, shieldcall_returns, fake_attack, efficiency, list/bullet_act_args)
 	#warn impl
 
 //* Bindings - Melee *//
 
 /datum/shieldcall/bound/parry_frame/handle_item_melee(atom/defending, shieldcall_returns, fake_attack, obj/item/weapon, datum/event_args/actor/clickchain/e_args)
-	. = ..()
+	// this is a definite 'do as i say, not as i do' moment
+	// this works because the proc names and args and types are **exactly** matching
+	// this is why the procs are all together
+	// do NOT try this at home.
+	return bound:handle_item_melee(arglist(args))
+
+/datum/parry_frame/proc/handle_item_melee(atom/defending, shieldcall_returns, fake_attack, efficiency, obj/item/weapon, datum/event_args/actor/clickchain/e_args)
 
 /datum/shieldcall/bound/parry_frame/handle_unarmed_melee(atom/defending, shieldcall_returns, fake_attack, datum/unarmed_attack/style, datum/event_args/actor/clickchain/e_args)
-	. = ..()
+	// this is a definite 'do as i say, not as i do' moment
+	// this works because the proc names and args and types are **exactly** matching
+	// this is why the procs are all together
+	// do NOT try this at home.
+	return bound:handle_unarmed_melee(arglist(args))
+
+/datum/parry_frame/proc/handle_unarmed_melee(atom/defending, shieldcall_returns, fake_attack, efficiency, datum/unarmed_attack/style, datum/event_args/actor/clickchain/e_args)
 
 /datum/shieldcall/bound/parry_frame/handle_touch(atom/defending, shieldcall_returns, fake_attack, datum/event_args/actor/clickchain/e_args, contact_flags, contact_specific)
-	. = ..()
+	// this is a definite 'do as i say, not as i do' moment
+	// this works because the proc names and args and types are **exactly** matching
+	// this is why the procs are all together
+	// do NOT try this at home.
+	return bound:handle_touch(arglist(args))
 
-/datum/parry_frame/proc/handle_
+/datum/parry_frame/proc/handle_touch(atom/defending, shieldcall_returns, fake_attack, efficiency, datum/event_args/actor/clickchain/e_args, contact_flags, contact_specific)
 
 #warn handle_touch
-
-
 
 //* Bindings - Thrown *//
 
 /datum/shieldcall/bound/parry_frame/handle_throw_impact(atom/defending, shieldcall_returns, fake_attack, datum/thrownthing/thrown)
-	. = ..()
+	// this is a definite 'do as i say, not as i do' moment
+	// this works because the proc names and args and types are **exactly** matching
+	// this is why the procs are all together
+	// do NOT try this at home.
+	return bound:handle_throw_impact(arglist(args))
 
 /**
  * @params
  * * defending - the thing being hit
  * * efficiency
  */
-/datum/parry_frame/proc/handle_throw_impact(atom/defending, efficiency, datum/thrownthing/thrown)
+/datum/parry_frame/proc/handle_throw_impact(atom/defending, shieldcall_returns, fake_attack, efficiency, datum/thrownthing/thrown)
 
 

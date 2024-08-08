@@ -115,7 +115,6 @@
 /obj/projectile/bullet/pellet/fragment/tank
 	name = "metal fragment"
 	damage = 9  //Big chunks flying off.
-	range_step = 2 //controls damage falloff with distance. projectiles lose a "pellet" each time they travel this distance. Can be a non-integer.
 
 	base_spread = 0 //causes it to be treated as a shrapnel explosion instead of cone
 	spread_step = 20
@@ -136,5 +135,5 @@
 	name = "large metal fragment"
 	damage = 17
 	armor_penetration = 10
-	range_step = 5 //controls damage falloff with distance. projectiles lose a "pellet" each time they travel this distance. Can be a non-integer.
+	pellet_loss = 0.2 / WORLD_ICON_SIZE
 	pellets = 1
