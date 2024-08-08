@@ -88,8 +88,8 @@
 	<br><br>\
 	An interesting note about this weapon, when compared to contemporary energy weapons, is \
 	that this gun appears to utilize some sort of exotic particle beam instead of being a laser \
-	or plasma. The beam fired has decently capability of harm, and the power consumption appears to be \
-	comparable to a human-made energy side-arm. One possible explaination is that the creators of this \
+	or plasma. The beam fired is decently capable of causing damage, and the power consumption is close \
+	to that of a human-made energy side-arm. One possible explaination is that the creators of this \
 	weapon, in their later years, had less of a need to optimize their capability for war, \
 	and instead focused on other endeavors. Another explaination is that vast age of the weapon \
 	may have caused it to degrade, yet still remain functional at a reduced capability."
