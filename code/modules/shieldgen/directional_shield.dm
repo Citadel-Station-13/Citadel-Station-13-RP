@@ -60,14 +60,16 @@
 		if(istype(P, /obj/projectile/test)) // Turrets need to try to kill the shield and so their test bullet needs to penetrate.
 			return TRUE
 
-		var/bad_arc = global.reverse_dir[dir] // Arc of directions from which we cannot block.
-		if(check_shield_arc(src, bad_arc, P)) // This is actually for mobs but it will work for our purposes as well.
+		if(get_dir(mover, target) & dir)
 			return FALSE
 	return TRUE
 
-/obj/effect/directional_shield/bullet_act(var/obj/projectile/P)
-	adjust_health(-P.get_structure_damage())
-	P.on_hit()
+/obj/effect/directional_shield/bullet_act(obj/projectile/proj, impact_flags, def_zone, blocked)
+	impact_flags &= ~PROJECTILE_IMPACT_FLAGS_SHOULD_NOT_HIT
+	. = ..()
+	if(. & PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT)
+		return
+	adjust_health(-proj.get_structure_damage())
 	playsound(src, 'sound/effects/EMPulse.ogg', 75, 1)
 
 // All the shields tied to their projector are one 'unit', and don't have individualized health values like most other shields.

@@ -402,7 +402,7 @@
 		var/mob/living/L = target
 		if(ishuman(L))
 			var/mob/living/carbon/human/H = L
-			if(H.check_shields(0, null, null, null, "the spray") == 1)		//If they block the spray, it does nothing.
+			if(H.atom_shieldcall_handle_touch(null, SHIELDCALL_CONTACT_FLAG_NEUTRAL, SHIELDCALL_CONTACT_SPECIFIC_CHEMICAL_SPRAY) & SHIELDCALL_FLAGS_BLOCK_ATTACK)
 				amount = 0
 		perm = L.reagent_permeability()
 	return trans_to_mob(target, amount, CHEM_TOUCH, perm, copy)

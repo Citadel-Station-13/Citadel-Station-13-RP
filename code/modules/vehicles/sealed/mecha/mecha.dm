@@ -1154,17 +1154,15 @@
 	return
 
 
-// todo: MAKE INFLICT_DAMAGE_INSTANCE() A THING ON HIT HANDLING PR!!
-/obj/vehicle/sealed/mecha/bullet_act(var/obj/projectile/Proj) //wrapper
-	if(istype(Proj, /obj/projectile/test))
-		var/obj/projectile/test/Test = Proj
-		Test.hit |= occupant_legacy // Register a hit on the occupant_legacy, for things like turrets, or in simple-mob cases stopping friendly fire in firing line mode.
-		return
+/obj/vehicle/sealed/mecha/bullet_act(obj/projectile/proj, impact_flags, def_zone, blocked)
+	if(istype(proj, /obj/projectile/test))
+		var/obj/projectile/test/Test = proj
+		Test.hit |= occupant_legacy // Register a hit on the occupant, for things like turrets, or in simple-mob cases stopping friendly fire in firing line mode.
+		return ..()
 
-	src.log_message("Hit by projectile. Type: [Proj.name]([Proj.damage_flag]).",1)
-	call((proc_res["dynbulletdamage"]||src), "dynbulletdamage")(Proj) //calls equipment
-	..()
-	return
+	src.log_message("Hit by projectile. Type: [proj.name]([proj.damage_flag]).",1)
+	call((proc_res["dynbulletdamage"]||src), "dynbulletdamage")(proj) //calls equipment
+	return ..()
 
 /obj/vehicle/sealed/mecha/proc/dynbulletdamage(var/obj/projectile/Proj)
 	var/obj/item/mecha_parts/component/armor/ArmC = internal_components[MECH_ARMOR]

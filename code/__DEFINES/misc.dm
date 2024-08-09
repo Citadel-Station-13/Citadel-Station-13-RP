@@ -192,14 +192,6 @@ Will print: "/mob/living/carbon/human/death" (you can optionally embed it in a s
 #define NTOS_EMAIL_NOTIFALREADY		1
 #define NTOS_EMAIL_NEWMESSAGE		2
 
-
-// Special return values from bullet_act(). Positive return values are already used to indicate the blocked level of the projectile.
-/// If the projectile should continue flying after calling bullet_act()
-#define PROJECTILE_CONTINUE		-1
-/// If the projectile should treat the attack as a miss (suppresses attack and admin logs) - only applies to mobs.
-#define PROJECTILE_FORCE_MISS	-2
-
-
 // Vending stuff
 #define CAT_NORMAL	1
 #define CAT_HIDDEN	2

@@ -9,3 +9,7 @@
 #define ATTACK_TYPE_THROWN (1<<2)
 /// damage source is /mob
 #define ATTACK_TYPE_UNARMED (1<<3)
+/// we're being contacted by something
+///
+/// * used internally by parry frames, mostly
+#define ATTACK_TYPE_TOUCH (1<<4)

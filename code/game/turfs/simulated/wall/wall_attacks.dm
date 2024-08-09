@@ -170,8 +170,8 @@
 				thermitemelt(user)
 				return
 
-		else if( istype(I, /obj/item/melee/energy/blade) )
-			var/obj/item/melee/energy/blade/EB = I
+		else if( istype(I, /obj/item/melee/transforming/energy/blade) )
+			var/obj/item/melee/transforming/energy/blade/EB = I
 
 			EB.spark_system.start()
 			to_chat(user, "<span class='notice'>You slash \the [src] with \the [EB]; the thermite ignites!</span>")
@@ -222,7 +222,7 @@
 			dismantle_verb = "cutting"
 			dismantle_sound = I.tool_sound
 		//	cut_delay *= 0.7 // Tools themselves now can shorten the time it takes.
-		else if(istype(I,/obj/item/melee/energy/blade))
+		else if(istype(I,/obj/item/melee/transforming/energy/blade))
 			dismantle_sound = /datum/soundbyte/grouped/sparks
 			dismantle_verb = "slicing"
 			cut_delay *= 0.5

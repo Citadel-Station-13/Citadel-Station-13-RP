@@ -537,7 +537,7 @@
 	..() // For the poison.
 
 // Force unstealthing if attacked.
-/mob/living/simple_mob/animal/roach/zeitraum/bullet_act(obj/projectile/P)
+/mob/living/simple_mob/animal/roach/zeitraum/bullet_act(obj/projectile/proj, impact_flags, def_zone, blocked)
 	. = ..()
 	break_cloak()
 

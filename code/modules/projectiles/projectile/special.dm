@@ -17,9 +17,12 @@
 	var/sev3_range = 1
 	var/sev4_range = 1
 
-/obj/projectile/ion/on_hit(var/atom/target, var/blocked = 0)
+/obj/projectile/ion/on_impact_new(atom/target, impact_flags, def_zone, blocked)
+	. = ..()
+	if(. & PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT)
+		return
 	empulse(target, sev1_range, sev2_range, sev3_range, sev4_range)
-	return 1
+	return . | PROJECTILE_IMPACT_DELETE
 
 /obj/projectile/ion/small
 	sev1_range = -1
@@ -41,9 +44,12 @@
 	sharp = 1
 	edge = 1
 
-/obj/projectile/bullet/gyro/on_hit(var/atom/target, var/blocked = 0)
+/obj/projectile/bullet/gyro/on_impact_new(atom/target, impact_flags, def_zone, blocked)
+	. = ..()
+	if(. & PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT)
+		return
 	explosion(target, -1, 0, 2)
-	..()
+	return . | PROJECTILE_IMPACT_DELETE
 
 /obj/projectile/temp
 	name = "freeze beam"
@@ -61,8 +67,10 @@
 
 	combustion = FALSE
 
-/obj/projectile/temp/on_hit(atom/target, blocked = FALSE)
-	..()
+/obj/projectile/temp/on_impact_new(atom/target, impact_flags, def_zone, blocked)
+	. = ..()
+	if(. & PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT)
+		return
 	if(isliving(target))
 		var/mob/living/L = target
 
@@ -83,8 +91,6 @@
 
 		new_temperature = round(new_temperature * temp_factor)
 		L.bodytemperature = new_temperature
-
-	return 1
 
 /obj/projectile/temp/hot
 	name = "heat beam"
@@ -133,7 +139,11 @@
 
 	combustion = FALSE
 
-/obj/projectile/energy/floramut/on_hit(var/atom/target, var/blocked = 0)
+/obj/projectile/energy/floramut/on_impact_new(atom/target, impact_flags, def_zone, blocked)
+	. = ..()
+	if(. & PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT)
+		return
+
 	var/mob/living/M = target
 	if(ishuman(target))
 		var/mob/living/carbon/human/H = M
@@ -163,8 +173,6 @@
 	//	for (var/mob/V in viewers(src))
 	//		V.show_message("The radiation beam dissipates harmlessly through [M]", 3)
 		M.show_message("<font color=#4F49AF>The radiation beam dissipates harmlessly through your body.</font>")
-	else
-		return 1
 
 /obj/projectile/energy/floramut/gene
 	name = "gamma somatoray"
@@ -188,7 +196,10 @@
 	light_power = 0.5
 	light_color = "#FFFFFF"
 
-/obj/projectile/energy/florayield/on_hit(var/atom/target, var/blocked = 0)
+/obj/projectile/energy/florayield/on_impact_new(atom/target, impact_flags, def_zone, blocked)
+	. = ..()
+	if(. & PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT)
+		return
 	var/mob/M = target
 	if(ishuman(target)) //These rays make plantmen fat.
 		var/mob/living/carbon/human/H = M
@@ -196,16 +207,15 @@
 			M.nutrition += 30
 	else if (istype(target, /mob/living/carbon/))
 		M.show_message("<font color=#4F49AF>The radiation beam dissipates harmlessly through your body.</font>")
-	else
-		return 1
-
 
 /obj/projectile/beam/mindflayer
 	name = "flayer ray"
-
 	combustion = FALSE
 
-/obj/projectile/beam/mindflayer/on_hit(var/atom/target, var/blocked = 0)
+/obj/projectile/beam/mindflayer/on_impact_new(atom/target, impact_flags, def_zone, blocked)
+	. = ..()
+	if(. & PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT)
+		return
 	if(ishuman(target))
 		var/mob/living/carbon/human/M = target
 		M.Confuse(rand(5,8))
@@ -229,14 +239,16 @@
 
 	combustion = FALSE
 
-/obj/projectile/bola/on_hit(var/atom/target, var/blocked = 0)
+/obj/projectile/bola/on_impact_new(atom/target, impact_flags, def_zone, blocked)
+	. = ..()
+	if(. & PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT)
+		return
+
 	if(ishuman(target))
 		var/mob/living/carbon/human/M = target
 		var/obj/item/handcuffs/legcuffs/bola/B = new(src.loc)
 		if(!B.place_legcuffs(M,firer))
-			if(B)
-				qdel(B)
-	..()
+			qdel(B)
 
 /obj/projectile/webball
 	name = "ball of web"
@@ -248,13 +260,16 @@
 
 	combustion = FALSE
 
-/obj/projectile/webball/on_hit(var/atom/target, var/blocked = 0)
+/obj/projectile/webball/on_impact_new(atom/target, impact_flags, def_zone, blocked)
+	. = ..()
+	if(. & PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT)
+		return
+
 	if(isturf(target.loc))
 		var/obj/effect/spider/stickyweb/W = locate() in get_turf(target)
 		if(!W && prob(75))
 			visible_message("<span class='danger'>\The [src] splatters a layer of web on \the [target]!</span>")
 			new /obj/effect/spider/stickyweb(target.loc)
-	..()
 
 /obj/projectile/beam/tungsten
 	name = "core of molten tungsten"
@@ -272,7 +287,10 @@
 	tracer_type = /obj/effect/projectile/tungsten/tracer
 	impact_type = /obj/effect/projectile/tungsten/impact
 
-/obj/projectile/beam/tungsten/on_hit(var/atom/target, var/blocked = 0)
+/obj/projectile/beam/tungsten/on_impact_new(atom/target, impact_flags, def_zone)
+	. = ..()
+	if(. & PROJECTILE_IMPACT_BLOCKED)
+		return
 	if(isliving(target))
 		var/mob/living/L = target
 		L.add_modifier(/datum/modifier/grievous_wounds, 30 SECONDS)
@@ -316,17 +334,13 @@
 			else if(armor_special)
 				target.visible_message("<span class='cult'>\The [src] slams into \the [target]'s [target_limb] with a low rumble!</span>")
 
-	..()
-
-/obj/projectile/beam/tungsten/on_impact(var/atom/A)
-	if(istype(A,/turf/simulated/shuttle/wall) || istype(A,/turf/simulated/wall) || (istype(A,/turf/simulated/mineral) && A.density) || istype(A,/obj/vehicle/sealed/mecha) || istype(A,/obj/machinery/door))
+	if(istype(target,/turf/simulated/shuttle/wall) || istype(target,/turf/simulated/wall) || (istype(target,/turf/simulated/mineral) && target.density) || istype(target,/obj/vehicle/sealed/mecha) || istype(target,/obj/machinery/door))
 		var/blast_dir = src.dir
-		A.visible_message("<span class='danger'>\The [A] begins to glow!</span>")
+		target.visible_message("<span class='danger'>\The [target] begins to glow!</span>")
 		spawn(2 SECONDS)
-			var/blastloc = get_step(A, blast_dir)
+			var/blastloc = get_step(target, blast_dir)
 			if(blastloc)
 				explosion(blastloc, -1, -1, 2, 3)
-	..()
 
 /obj/projectile/bullet/honker
 	damage = 0
@@ -384,19 +398,18 @@
 	light_range = 4
 	light_power = 3
 	light_color = "#00ccff"
+	var/heavy = FALSE
 
-/obj/projectile/plasma/on_hit(var/atom/target, var/blocked = 0)
-	explosion(target, -1, 0, 1, 2)
-	..()
+/obj/projectile/plasma/on_impact_new(atom/target, impact_flags, def_zone)
+	. = ..()
+	if(. & PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT)
+		return
 
-/obj/projectile/plasma/on_impact(var/atom/A)
-	if(istype(A,/turf/simulated/shuttle/wall) || istype(A,/turf/simulated/wall) || (istype(A,/turf/simulated/mineral) && A.density) || istype(A,/obj/vehicle/sealed/mecha) || istype(A,/obj/machinery/door))
-		var/blast_dir = src.dir
-		A.visible_message("<span class='danger'>\The [A] is engulfed in roiling plasma!</span>")
-		var/blastloc = get_step(A, blast_dir)
-		if(blastloc)
-			explosion(blastloc, -1, 0, 1, 2)
-	..()
+	var/blast_dir = src.dir
+	target.visible_message("<span class='danger'>\The [target] is engulfed in roiling plasma!</span>")
+	var/blastloc = get_step(target, blast_dir)
+	if(blastloc)
+		explosion(blastloc, -1, 0, heavy? 2 : 1, heavy? 3 : 2)
 
 /obj/projectile/plasma/hot
 	name ="heavy plasma bolt"
@@ -404,16 +417,4 @@
 	light_range = 5
 	light_power = 4
 	light_color = "#00ccff"
-
-/obj/projectile/plasma/hot/on_hit(var/atom/target, var/blocked = 0)
-	explosion(target, -1, 0, 2, 3)
-	..()
-
-/obj/projectile/plasma/hot/on_impact(var/atom/A)
-	if(istype(A,/turf/simulated/shuttle/wall) || istype(A,/turf/simulated/wall) || (istype(A,/turf/simulated/mineral) && A.density) || istype(A,/obj/vehicle/sealed/mecha) || istype(A,/obj/machinery/door))
-		var/blast_dir = src.dir
-		A.visible_message("<span class='danger'>\The [A] is engulfed in roiling plasma!</span>")
-		var/blastloc = get_step(A, blast_dir)
-		if(blastloc)
-			explosion(blastloc, -1, 0, 2, 3)
-	..()
+	heavy = TRUE

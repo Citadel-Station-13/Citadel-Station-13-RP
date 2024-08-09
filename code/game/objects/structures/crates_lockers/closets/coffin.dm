@@ -32,6 +32,7 @@
 	opened = 1
 	color = "#c2b29f"
 	use_old_icon_update = TRUE
+	obj_flags = OBJ_MELEE_TARGETABLE
 
 /obj/structure/closet/grave/attack_hand(mob/user, list/params)
 	if(opened)
@@ -145,9 +146,6 @@
 /obj/structure/closet/grave/open()
 	.=..()
 	alpha = 255	// Needed because of grave hiding
-
-/obj/structure/closet/grave/bullet_act(var/obj/projectile/P)
-	return PROJECTILE_CONTINUE	// It's a hole in the ground, doesn't usually stop or even care about bullets
 
 /obj/structure/closet/grave/return_air_for_internal_lifeform(var/mob/living/L)
 	var/gasid = GAS_ID_CARBON_DIOXIDE

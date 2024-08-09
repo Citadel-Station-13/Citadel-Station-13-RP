@@ -20,16 +20,6 @@
 	crowbar_salvage = new
 	return
 
-/obj/effect/decal/mecha_wreckage/legacy_ex_act(severity)
-	if(severity < 2)
-		spawn
-			qdel(src)
-	return
-
-/obj/effect/decal/mecha_wreckage/bullet_act(var/obj/projectile/Proj)
-	return
-
-
 /obj/effect/decal/mecha_wreckage/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W, /obj/item/weldingtool))
 		var/obj/item/weldingtool/WT = W

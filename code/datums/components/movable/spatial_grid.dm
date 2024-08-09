@@ -16,7 +16,7 @@
 
 /datum/component/spatial_grid/Initialize(datum/spatial_grid/grid)
 	. = ..()
-	if(. & COMPONENT_INCOMPATIBLE)
+	if(. == COMPONENT_INCOMPATIBLE)
 		return
 	if(!ismovable(parent))
 		return COMPONENT_INCOMPATIBLE

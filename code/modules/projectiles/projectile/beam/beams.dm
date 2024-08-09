@@ -6,6 +6,7 @@
 	damage = 40
 	damage_type = BURN
 	damage_flag = ARMOR_LASER
+	projectile_type = PROJECTILE_TYPE_BEAM | PROJECTILE_TYPE_PHOTONIC
 	eyeblur = 4
 	var/frequency = 1
 	hitscan = TRUE
@@ -76,14 +77,14 @@
 
 /obj/projectile/beam/heavylaser/cannon
 	damage = 80
-	armor_penetration = 50
+	armor_penetration = 45
 	light_color = "#FF0D00"
 
 /obj/projectile/beam/xray
 	name = "xray beam"
 	icon_state = "xray"
 	fire_sound = 'sound/weapons/eluger.ogg'
-	damage = 25
+	damage = 30
 	armor_penetration = 50
 	light_color = "#00CC33"
 
@@ -131,7 +132,6 @@
 	name = "lasertag beam"
 	damage = 0
 	eyeblur = 0
-	no_attack_log = 1
 	damage_type = BURN
 	damage_flag = ARMOR_LASER
 
@@ -145,23 +145,27 @@
 	tracer_type = /obj/effect/projectile/tracer/laser_blue
 	impact_type = /obj/effect/projectile/impact/laser_blue
 
-/obj/projectile/beam/lasertag/blue/on_hit(var/atom/target, var/blocked = 0)
+/obj/projectile/beam/lasertag/blue/on_impact_new(atom/target, impact_flags, def_zone)
+	. = ..()
+	if(. & PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT)
+		return
 	if(ishuman(target))
 		var/mob/living/carbon/human/M = target
 		if(istype(M.wear_suit, /obj/item/clothing/suit/redtag))
-			M.afflict_paralyze(20 * 5)
-	return 1
+			M.afflict_paralyze(1.5 SECONDS)
 
 /obj/projectile/beam/lasertag/red
 	icon_state = "laser"
 	light_color = "#FF0D00"
 
-/obj/projectile/beam/lasertag/red/on_hit(var/atom/target, var/blocked = 0)
+/obj/projectile/beam/lasertag/red/on_impact_new(atom/target, impact_flags, def_zone)
+	. = ..()
+	if(. & PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT)
+		return
 	if(ishuman(target))
 		var/mob/living/carbon/human/M = target
 		if(istype(M.wear_suit, /obj/item/clothing/suit/bluetag))
-			M.afflict_paralyze(20 * 5)
-	return 1
+			M.afflict_paralyze(1.5 SECONDS)
 
 /obj/projectile/beam/lasertag/omni//A laser tag bolt that stuns EVERYONE
 	icon_state = "omnilaser"
@@ -171,12 +175,14 @@
 	tracer_type = /obj/effect/projectile/tracer/laser_omni
 	impact_type = /obj/effect/projectile/impact/laser_omni
 
-/obj/projectile/beam/lasertag/omni/on_hit(var/atom/target, var/blocked = 0)
+/obj/projectile/beam/lasertag/omni/on_impact_new(atom/target, impact_flags, def_zone)
+	. = ..()
+	if(. & PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT)
+		return
 	if(ishuman(target))
 		var/mob/living/carbon/human/M = target
 		if((istype(M.wear_suit, /obj/item/clothing/suit/bluetag))||(istype(M.wear_suit, /obj/item/clothing/suit/redtag)))
-			M.afflict_paralyze(20 * 5)
-	return 1
+			M.afflict_paralyze(1.5 SECONDS)
 
 /obj/projectile/beam/sniper
 	name = "sniper beam"
@@ -255,18 +261,18 @@
 	tracer_type = /obj/effect/projectile/tracer/laser_omni
 	impact_type = /obj/effect/projectile/impact/laser_omni
 
-/obj/projectile/beam/stun/disabler/on_hit(atom/target, blocked = 0, def_zone)
-	. = ..(target, blocked, def_zone)
-
-	if(. && istype(target, /mob/living/silicon/robot) && prob(agony))
+/obj/projectile/beam/stun/disabler/on_impact_new(atom/target, impact_flags, def_zone, blocked)
+	. = ..()
+	if(!(. & PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT))
+		return
+	if(istype(target, /mob/living/silicon/robot) && prob(agony))
 		var/mob/living/silicon/robot/R = target
 		var/drainamt = agony * (rand(5, 15) / 10)
 		// 100 to 300 drain
 		R.drain_energy(DYNAMIC_CELL_UNITS_TO_KJ(drainamt * 10))
 		if(istype(firer, /mob/living/silicon/robot)) // Mischevious sappers, the swarm drones are.
 			var/mob/living/silicon/robot/A = firer
-			if(A.cell)
-				A.cell.give(drainamt * 2)
+			A.cell?.give(drainamt * 2)
 
 /obj/projectile/beam/shock
 	name = "shock beam"

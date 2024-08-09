@@ -488,10 +488,12 @@ GLOBAL_VAR_INIT(max_fusion_air_heat, INFINITY)
 	STOP_PROCESSING(SSobj, src)
 	. = ..()
 
-/obj/effect/fusion_em_field/bullet_act(var/obj/projectile/Proj)
-	AddEnergy(Proj.damage)
+/obj/effect/fusion_em_field/bullet_act(obj/projectile/proj, impact_flags, def_zone, blocked)
+	AddEnergy(proj.damage)
 	update_icon()
-	return 0
+	impact_flags &= ~PROJECTILE_IMPACT_FLAGS_SHOULD_GO_THROUGH
+	return ..()
+
 //All procs below this point are called in _core.dm, starting at line 41.
 //Stability monitoring. Gives radio annoucements if field stability is below 80%
 /obj/effect/fusion_em_field/proc/stability_monitor()

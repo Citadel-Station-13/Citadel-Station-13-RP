@@ -314,7 +314,7 @@
 			return 1
 
 		var/atom/A = find_fall_target(oldloc, landing)
-		if(special_fall_handle(A) || !A || !A.check_impact(src))
+		if(special_fall_handle(A) || !A || !A.check_z_impact(src))
 			return
 		var/mob/drop_mob = locate(/mob, landing)
 		if(drop_mob && !(drop_mob == src) && ismob(drop_mob) && isliving(drop_mob)) //Shitload of checks. This is because the game finds various ways to screw me over.
@@ -371,15 +371,13 @@
 		return TRUE
 	return prevent_z_fall(falling_atom, 0, NONE) & (FALL_TERMINATED | FALL_BLOCKED)
 
-
 /**
  * If you are hit: how is it handled.
  * Return TRUE if the generic fall_impact should be called.
  * Return FALSE if you handled it yourself or if there's no effect from hitting you.
  */
-/atom/proc/check_impact(atom/movable/falling_atom)
+/atom/proc/check_z_impact(atom/movable/falling_atom)
 	return TRUE
-
 
 /**
  * Called by CheckFall when we actually hit something. Various Vars will be described below.

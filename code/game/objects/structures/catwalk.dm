@@ -194,7 +194,7 @@
 			if(6 to 50)
 				inflict_atom_damage(
 					rand(10, 20),
-					flag = ARMOR_MELEE,
+					damage_flag = ARMOR_MELEE,
 				)
 				visible_message("<span class='danger'>The planks creak and groan as they're crossed.</span>")
 			if(51 to 100)

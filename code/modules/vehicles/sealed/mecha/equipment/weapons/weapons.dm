@@ -83,11 +83,11 @@
 	if(!istype(P))
 		return
 
-	P.accuracy -= user.get_accuracy_penalty()
+	P.accuracy_overall_modify *= 1 - (user.get_accuracy_penalty() / 100)
 
 	// Some modifiers make it harder or easier to hit things.
 	for(var/datum/modifier/M in user.modifiers)
 		if(!isnull(M.accuracy))
-			P.accuracy += M.accuracy
+			P.accuracy_overall_modify *= 1 + (M.accuracy / 100)
 		if(!isnull(M.accuracy_dispersion))
 			P.dispersion = max(P.dispersion + M.accuracy_dispersion, 0)

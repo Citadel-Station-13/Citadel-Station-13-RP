@@ -33,6 +33,3 @@
 	if(A != src)
 		hit |= A
 	return ..()
-
-/obj/projectile/test/projectile_attack_mob()
-	return

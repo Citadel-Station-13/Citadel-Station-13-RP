@@ -22,9 +22,90 @@
 	density = FALSE
 	anchored = TRUE
 	integrity_flags = INTEGRITY_INDESTRUCTIBLE | INTEGRITY_ACIDPROOF | INTEGRITY_FIREPROOF | INTEGRITY_LAVAPROOF
-	pass_flags = ATOM_PASS_TABLE
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	depth_level = INFINITY // nothing should be passing over us from depth
+
+	//* Collision Handling *//
+
+	/** PROJECTILE PIERCING
+	  * WARNING:
+	  * Projectile piercing MUST be done using these variables.
+	  * Ordinary passflags will result in can_hit_target being false unless directly clicked on - similar to pass_flags_phase but without even going to process_hit.
+	  * The two flag variables below both use pass flags.
+	  * In the context of ATOM_PASS_THROWN, it means the projectile will ignore things that are currently "in the air" from a throw.
+	  *
+	  * Also, projectiles sense hits using Bump(), and then pierce them if necessary.
+	  * They simply do not follow conventional movement rules.
+	  * NEVER flag a projectile as PHASING movement type.
+	  * If you so badly need to make one go through *everything*, override check_pierce() for your projectile to always return PROJECTILE_PIERCE_PHASE/HIT.
+	  */
+	/// The "usual" flags of pass_flags is used in that can_hit_target ignores these unless they're specifically targeted/clicked on. This behavior entirely bypasses process_hit if triggered, rather than phasing which uses prehit_pierce() to check.
+	pass_flags = ATOM_PASS_TABLE
+	/// we handle our own go through
+	generic_canpass = FALSE
+	/// If FALSE, allow us to hit something directly targeted/clicked/whatnot even if we're able to phase through it
+	var/phases_through_direct_target = FALSE
+	/// anything with these pass flags are automatically pierced
+	var/pass_flags_pierce = NONE
+	/// anything with these pass flags are automatically phased through
+	var/pass_flags_phase = NONE
+	/// number of times we've pierced something. Incremented BEFORE bullet_act and similar procs run!
+	var/pierces = 0
+	/// What we already hit
+	/// initialized on fire()
+	var/list/impacted
+
+	//*         -- Combat - Accuracy --              *//
+	//* https://www.desmos.com/calculator/ofz29ttxlw *//
+
+	/// if enabled, baymiss is entirely disabled
+	var/accuracy_disabled = FALSE
+	/// perfect accuracy below this range (in pixels)
+	/// see desmos
+	///
+	/// * this means the projectile doesn't enforce inaccuracy; not the target!
+	/// * remember that even if a projectile clips a single pixel on a target turf, it hits.
+	var/accuracy_perfect_range = WORLD_ICON_SIZE * 5
+	/// +- tweak to calculated probability
+	/// see desmos
+	var/accuracy_curve_y_adjust = 15
+	/// this is really hard to explain, but it basically controls how steep the sigmoid
+	/// curve used for accuracy is
+	/// see desmos
+	var/accuracy_curve_factor = 11
+	/// x-shift
+	/// see desmos
+	var/accuracy_curve_x_shift = -8.4
+	/// accuracy range floor; accuracy doesn't decrease past this
+	/// see desmos
+	var/accuracy_floor_range = WORLD_ICON_SIZE * 30
+	/// alter end result hit probability by this value
+	///
+	/// * this is a multiplier for hit chance if less than 1
+	/// * this is a divisor for miss chance if more than 1
+	/// * 0.5 will turn a 80% hit to a 40%
+	/// * 2 will turn a 80% hit to a 90%
+	/// * 2 will turn a 40% hit to a 70%
+	var/accuracy_overall_modify = 1
+
+	//* Combat - Effects *//
+
+	/// projectile effects
+	///
+	/// * this is a static typelist on this typepath
+	/// * do not under any circumstances edit this
+	VAR_PROTECTED/list/base_projectile_effects
+	/// projectile effects
+	///
+	/// * this is configured at runtime and can be edited
+	VAR_PROTECTED/list/additional_projectile_effects
+
+	//* Configuration *//
+
+	/// Projectile type bitfield; set all that is relevant
+	var/projectile_type = NONE
+	/// Impact ground on expiry (range, or lifetime)
+	var/impact_ground_on_expiry = FALSE
 
 	//* Physics - Configuration *//
 
@@ -122,9 +203,13 @@
 	//        optimally physics loop should handle tracking for stuff like animations, not require on hit processing to check turfs
 	var/turf/trajectory_moving_to
 
+	//* Targeting *//
+
+	/// Originally clicked target
+	var/atom/original_target
+
 	//Fired processing vars
 	var/fired = FALSE	//Have we been fired yet
-	var/ignore_source_check = FALSE
 
 	var/original_angle = 0		//Angle at firing
 	var/nondirectional_sprite = FALSE //Set TRUE to prevent projectiles from having their sprites rotated based on firing angle
@@ -159,9 +244,7 @@
 	//Targetting
 	var/yo = null
 	var/xo = null
-	var/atom/original = null // the original target clicked
 	var/turf/starting = null // the projectile's starting turf
-	var/list/permutated = list() // we've passed through these atoms, don't try to hit them again
 	var/p_x = 16
 	var/p_y = 16			// the pixel location of the tile that the player clicked. Default is the center
 
@@ -170,7 +253,6 @@
 	var/silenced = 0	//Attack message
 	var/shot_from = "" // name of the object which shot us
 
-	var/accuracy = 0
 	var/dispersion = 0.0
 
 	// Sub-munitions. Basically, multi-projectile shotgun, rather than pellets.
@@ -238,6 +320,10 @@
 
 	var/no_attack_log = FALSE
 
+/obj/projectile/Initialize(mapload)
+	#warn projectile effects
+	return ..()
+
 /obj/projectile/Destroy()
 	// stop processing
 	STOP_PROCESSING(SSprojectiles, src)
@@ -245,198 +331,46 @@
 	cleanup_hitscan_tracers()
 	return ..()
 
-/obj/projectile/proc/legacy_on_range() //if we want there to be effects when they reach the end of their range
-	finalize_hitscan_tracers(impact_effect = FALSE, kick_forwards = 8)
-	qdel(src)
-
-/obj/projectile/Crossed(atom/movable/AM) //A mob moving on a tile with a projectile is hit by it.
-	if(AM.is_incorporeal())
+//Called when the projectile intercepts a mob. Returns 1 if the projectile hit the mob, 0 if it missed and should keep flying.
+#warn get rid of
+/obj/projectile/proc/projectile_attack_mob(mob/living/target_mob, distance, miss_modifier = 0)
+	SHOULD_NOT_OVERRIDE(TRUE)
+	if(!istype(target_mob))
 		return
-	..()
-	if(isliving(AM) && !check_pass_flags(ATOM_PASS_MOB))
-		var/mob/living/L = AM
-		if(can_hit_target(L, permutated, (AM == original)))
-			Bump(AM)
 
-/obj/projectile/forceMove(atom/target)
-	var/is_a_jump = isturf(target) != isturf(loc) || target.z != z || !trajectory_ignore_forcemove
-	if(is_a_jump)
-		record_hitscan_end()
-		render_hitscan_tracers()
-	. = ..()
-	if(!.)
-		stack_trace("projectile forcemove failed; please do not try to forcemove projectiles to invalid locations!")
-	distance_travelled_this_iteration = 0
-	if(!trajectory_ignore_forcemove)
-		reset_physics_to_turf()
-	if(is_a_jump)
-		record_hitscan_start()
+	//roll to-hit
+	miss_modifier = max(15*(distance-2) - accuracy + miss_modifier + target_mob.get_evasion(), 0)
+	var/hit_zone = get_zone_with_miss_chance(def_zone, target_mob, miss_modifier, ranged_attack=(distance > 1 || original != target_mob)) //if the projectile hits a target we weren't originally aiming at then retain the chance to miss
 
-/obj/projectile/proc/fire(set_angle_to, atom/direct_target)
-	if(only_submunitions)	// refactor projectiles whwen holy shit this is awful lmao
-		// todo: this should make a muzzle flash
-		qdel(src)
-		return
-	//If no angle needs to resolve it from xo/yo!
-	if(direct_target)
-		direct_target.bullet_act(src, def_zone)
-		// todo: this should make a muzzle flash
-		qdel(src)
-		return
-	if(isnum(set_angle_to))
-		set_angle(set_angle_to)
+	var/result = PROJECTILE_FORCE_MISS
+	if(hit_zone)
+		def_zone = hit_zone //set def_zone, so if the projectile ends up hitting someone else later (to be implemented), it is more likely to hit the same part
+		result = target_mob.bullet_act(src, def_zone)
 
-	// setup physics
-	setup_physics()
-
-	var/turf/starting = get_turf(src)
-	if(isnull(angle))	//Try to resolve through offsets if there's no angle set.
-		if(isnull(xo) || isnull(yo))
-			stack_trace("WARNING: Projectile [type] deleted due to being unable to resolve a target after angle was null!")
-			qdel(src)
-			return
-		var/turf/target = locate(clamp(starting + xo, 1, world.maxx), clamp(starting + yo, 1, world.maxy), starting.z)
-		set_angle(get_visual_angle(src, target))
-	if(dispersion)
-		set_angle(angle + rand(-dispersion, dispersion))
-	original_angle = angle
-	forceMove(starting)
-	permutated = list()
-	fired = TRUE
-	// kickstart
-	if(hitscan)
-		physics_hitscan()
-	else
-		START_PROCESSING(SSprojectiles, src)
-		physics_iteration(WORLD_ICON_SIZE, SSprojectiles.wait)
-
-/obj/projectile/Move(atom/newloc, dir = NONE)
-	. = ..()
-	if(.)
-		if(fired && can_hit_target(original, permutated, TRUE))
-			Bump(original)
-
-//Spread is FORCED!
-/obj/projectile/proc/preparePixelProjectile(atom/target, atom/source, params, spread = 0)
-	var/turf/curloc = get_turf(source)
-	var/turf/targloc = get_turf(target)
-
-	if(istype(source, /atom/movable))
-		var/atom/movable/MT = source
-		if(MT.locs && MT.locs.len)	// Multi tile!
-			for(var/turf/T in MT.locs)
-				if(get_dist(T, target) < get_turf(curloc))
-					curloc = get_turf(T)
-
-	trajectory_ignore_forcemove = TRUE
-	forceMove(get_turf(source))
-	trajectory_ignore_forcemove = FALSE
-	starting = curloc
-	original = target
-	if(targloc || !params)
-		yo = targloc.y - curloc.y
-		xo = targloc.x - curloc.x
-		set_angle(get_visual_angle(src, targloc) + spread)
-
-	if(isliving(source) && params)
-		var/list/calculated = calculate_projectile_angle_and_pixel_offsets(source, params)
-		p_x = calculated[2]
-		p_y = calculated[3]
-
-		set_angle(calculated[1] + spread)
-	else if(targloc)
-		yo = targloc.y - curloc.y
-		xo = targloc.x - curloc.x
-		set_angle(get_visual_angle(src, targloc) + spread)
-	else
-		stack_trace("WARNING: Projectile [type] fired without either mouse parameters, or a target atom to aim at!")
-		qdel(src)
-
-/proc/calculate_projectile_angle_and_pixel_offsets(mob/user, params)
-	var/list/mouse_control = params2list(params)
-	var/p_x = 0
-	var/p_y = 0
-	var/angle = 0
-	if(mouse_control["icon-x"])
-		p_x = text2num(mouse_control["icon-x"])
-	if(mouse_control["icon-y"])
-		p_y = text2num(mouse_control["icon-y"])
-	if(mouse_control["screen-loc"])
-		//Split screen-loc up into X+Pixel_X and Y+Pixel_Y
-		var/list/screen_loc_params = splittext(mouse_control["screen-loc"], ",")
-
-		//Split X+Pixel_X up into list(X, Pixel_X)
-		var/list/screen_loc_X = splittext(screen_loc_params[1],":")
-
-		//Split Y+Pixel_Y up into list(Y, Pixel_Y)
-		var/list/screen_loc_Y = splittext(screen_loc_params[2],":")
-		var/x = text2num(screen_loc_X[1]) * 32 + text2num(screen_loc_X[2]) - 32
-		var/y = text2num(screen_loc_Y[1]) * 32 + text2num(screen_loc_Y[2]) - 32
-
-		//Calculate the "resolution" of screen based on client's view and world's icon size. This will work if the user can view more tiles than average.
-		var/screenviewX = user.client.current_viewport_width * world.icon_size
-		var/screenviewY = user.client.current_viewport_height * world.icon_size
-
-		var/ox = round(screenviewX/2) - user.client.pixel_x //"origin" x
-		var/oy = round(screenviewY/2) - user.client.pixel_y //"origin" y
-		angle = arctan(y - oy, x - ox)
-	return list(angle, p_x, p_y)
-
-/obj/projectile/proc/redirect(x, y, starting, source)
-	old_style_target(locate(x, y, z), starting? get_turf(starting) : get_turf(source))
-
-/obj/projectile/proc/old_style_target(atom/target, atom/source)
-	if(!source)
-		source = get_turf(src)
-	starting = get_turf(source)
-	original = target
-	set_angle(get_visual_angle(source, target))
-
-/obj/projectile/proc/vol_by_damage()
-	if(damage)
-		return clamp((damage) * 0.67, 30, 100)// Multiply projectile damage by 0.67, then clamp the value between 30 and 100
-	else
-		return 50 //if the projectile doesn't do damage, play its hitsound at 50% volume.
-
-//Returns true if the target atom is on our current turf and above the right layer
-//If direct target is true it's the originally clicked target.
-/obj/projectile/proc/can_hit_target(atom/target, list/passthrough, direct_target = FALSE, ignore_loc = FALSE)
-	if(QDELETED(target))
+	if(result == PROJECTILE_FORCE_MISS)
+		if(!silenced)
+			visible_message("<span class='notice'>\The [src] misses [target_mob] narrowly!</span>")
+			playsound(target_mob.loc, pick(miss_sounds), 60, 1)
 		return FALSE
-	if(!ignore_source_check && firer)
-		var/mob/M = firer
-		if((target == firer) || ((target == firer.loc) && istype(firer.loc, /obj/vehicle/sealed/mecha)) || (target in firer.buckled_mobs) || (istype(M) && (M.buckled == target)))
-			return FALSE
-	if(!ignore_loc && (loc != target.loc))
-		return FALSE
-	if(target in passthrough)
-		return FALSE
-	if(target.density)		//This thing blocks projectiles, hit it regardless of layer/mob stuns/etc.
-		return TRUE
-	if(!isliving(target))
-		if(direct_target)
-			return TRUE
-		if(target.layer < PROJECTILE_HIT_THRESHOLD_LAYER)
-			return FALSE
+
+	//hit messages
+	if(silenced)
+		to_chat(target_mob, "<span class='danger'>You've been hit in the [parse_zone(def_zone)] by \the [src]!</span>")
 	else
-		var/mob/living/L = target
-		if(!direct_target)
-			if(!L.density)
-				return FALSE
+		visible_message("<span class='danger'>\The [target_mob] is hit by \the [src] in the [parse_zone(def_zone)]!</span>")//X has fired Y is now given by the guns so you cant tell who shot you if you could not see the shooter
+
+	if(istype(firer, /mob) && istype(target_mob))
+		add_attack_logs(firer,target_mob,"Shot with \a [src.type] projectile")
+
+	//sometimes bullet_act() will want the projectile to continue flying
+	if (result == PROJECTILE_CONTINUE)
+		return FALSE
+
 	return TRUE
 
 /obj/projectile/Bump(atom/A)
-	if(A in permutated)
-		trajectory_ignore_forcemove = TRUE
-		forceMove(get_turf(A))
-		trajectory_ignore_forcemove = FALSE
-		return FALSE
-	if(firer && !reflected)
-		if(A == firer || (A == firer.loc && istype(A, /obj/vehicle/sealed/mecha))) //cannot shoot yourself or your mech
-			trajectory_ignore_forcemove = TRUE
-			forceMove(get_turf(A))
-			trajectory_ignore_forcemove = FALSE
-			return FALSE
+	impact_loop(A.loc, A)
+	#warn ugh
 
 	var/distance = get_dist(starting, get_turf(src))
 	var/turf/target_turf = get_turf(A)
@@ -488,22 +422,12 @@
 	if(A)
 		on_impact(A)
 
-	if(hitscanning)
-		if(trajectory_moving_to)
-			// create tracers
-			var/datum/point/visual_impact_point = get_intersection_point(trajectory_moving_to)
-			// kick it forwards a bit
-			visual_impact_point.shift_in_projectile_angle(angle, 2)
-			// draw
-			finalize_hitscan_tracers(visual_impact_point, impact_effect = TRUE)
-		else
-			finalize_hitscan_tracers(impact_effect = TRUE, kick_forwards = 32)
-
-	qdel(src)
 	return TRUE
 
 //TODO: make it so this is called more reliably, instead of sometimes by bullet_act() and sometimes not
 /obj/projectile/proc/on_hit(atom/target, blocked = 0, def_zone)
+	SHOULD_NOT_OVERRIDE(TRUE)
+	#warn kill
 	if(blocked >= 100)
 		return 0//Full block
 	if(!isliving(target))
@@ -515,12 +439,162 @@
 		L.add_modifier(modifier_type_to_apply, modifier_duration)
 	return 1
 
-//called when the projectile stops flying because it Bump'd with something
-/obj/projectile/proc/on_impact(atom/A)
-	if(damage && damage_type == BURN)
-		var/turf/T = get_turf(A)
-		if(T)
-			T.hotspot_expose(700, 5)
+/obj/projectile/proc/legacy_on_range() //if we want there to be effects when they reach the end of their range
+	finalize_hitscan_tracers(impact_effect = FALSE, kick_forwards = 8)
+
+	for(var/datum/projectile_effect/effect as anything in base_projectile_effects)
+		if(effect.hook_lifetime)
+			effect.on_lifetime(src, impact_ground_on_expiry)
+	for(var/datum/projectile_effect/effect as anything in additional_projectile_effects)
+		if(effect.hook_lifetime)
+			effect.on_lifetime(src, impact_ground_on_expiry)
+
+	if(impact_ground_on_expiry)
+		impact(loc, PROJECTILE_IMPACT_IS_EXPIRING)
+
+	expire()
+
+/obj/projectile/proc/fire(set_angle_to, atom/direct_target)
+	if(only_submunitions)	// refactor projectiles whwen holy shit this is awful lmao
+		// todo: this should make a muzzle flash
+		qdel(src)
+		return
+
+	// setup impact checking
+	impacted = list()
+	// make sure firer is in it
+	if(firer)
+		impacted[firer] = TRUE
+		if(ismob(firer))
+			var/atom/buckle_iterating = firer.buckled
+			while(buckle_iterating)
+				if(impacted[buckle_iterating])
+					CRASH("how did we loop in buckle iteration check?")
+				impacted[buckle_iterating] = TRUE
+				if(ismob(buckle_iterating))
+					var/mob/cast_for_next = buckle_iterating
+					buckle_iterating = cast_for_next.buckled
+				else
+					break
+	// set angle if needed
+	if(isnum(set_angle_to))
+		set_angle(set_angle_to)
+	// handle direct hit
+	if(direct_target)
+		if(direct_target.bullet_act(src, PROJECTILE_IMPACT_POINT_BLANK, def_zone) & PROJECTILE_IMPACT_FLAGS_SHOULD_GO_THROUGH)
+			impacted[direct_target] = TRUE
+		else
+			// todo: this should make a muzzle flash
+			qdel(src)
+			return
+	// setup physics
+	setup_physics()
+
+	// legacy below
+	var/turf/starting = get_turf(src)
+	if(isnull(angle))	//Try to resolve through offsets if there's no angle set.
+		if(isnull(xo) || isnull(yo))
+			stack_trace("WARNING: Projectile [type] deleted due to being unable to resolve a target after angle was null!")
+			qdel(src)
+			return
+		var/turf/target = locate(clamp(starting + xo, 1, world.maxx), clamp(starting + yo, 1, world.maxy), starting.z)
+		set_angle(get_visual_angle(src, target))
+	if(dispersion)
+		set_angle(angle + rand(-dispersion, dispersion))
+	original_angle = angle
+	forceMove(starting)
+	fired = TRUE
+	// legacy aboev
+
+	// start physics & kickstart movement
+	if(hitscan)
+		physics_hitscan()
+	else
+		START_PROCESSING(SSprojectiles, src)
+		physics_iteration(WORLD_ICON_SIZE, SSprojectiles.wait)
+
+//Spread is FORCED!
+/obj/projectile/proc/preparePixelProjectile(atom/target, atom/source, params, spread = 0)
+	var/turf/curloc = get_turf(source)
+	var/turf/targloc = get_turf(target)
+
+	if(istype(source, /atom/movable))
+		var/atom/movable/MT = source
+		if(MT.locs && MT.locs.len)	// Multi tile!
+			for(var/turf/T in MT.locs)
+				if(get_dist(T, target) < get_turf(curloc))
+					curloc = get_turf(T)
+
+	trajectory_ignore_forcemove = TRUE
+	forceMove(get_turf(source))
+	trajectory_ignore_forcemove = FALSE
+	starting = curloc
+	original_target = target
+	if(targloc || !params)
+		yo = targloc.y - curloc.y
+		xo = targloc.x - curloc.x
+		set_angle(get_visual_angle(src, targloc) + spread)
+
+	if(isliving(source) && params)
+		var/list/calculated = calculate_projectile_angle_and_pixel_offsets(source, params)
+		p_x = calculated[2]
+		p_y = calculated[3]
+
+		set_angle(calculated[1] + spread)
+	else if(targloc)
+		yo = targloc.y - curloc.y
+		xo = targloc.x - curloc.x
+		set_angle(get_visual_angle(src, targloc) + spread)
+	else
+		stack_trace("WARNING: Projectile [type] fired without either mouse parameters, or a target atom to aim at!")
+		qdel(src)
+
+/proc/calculate_projectile_angle_and_pixel_offsets(mob/user, params)
+	var/list/mouse_control = params2list(params)
+	var/p_x = 0
+	var/p_y = 0
+	var/angle = 0
+	if(mouse_control["icon-x"])
+		p_x = text2num(mouse_control["icon-x"])
+	if(mouse_control["icon-y"])
+		p_y = text2num(mouse_control["icon-y"])
+	if(mouse_control["screen-loc"])
+		//Split screen-loc up into X+Pixel_X and Y+Pixel_Y
+		var/list/screen_loc_params = splittext(mouse_control["screen-loc"], ",")
+
+		//Split X+Pixel_X up into list(X, Pixel_X)
+		var/list/screen_loc_X = splittext(screen_loc_params[1],":")
+
+		//Split Y+Pixel_Y up into list(Y, Pixel_Y)
+		var/list/screen_loc_Y = splittext(screen_loc_params[2],":")
+		var/x = text2num(screen_loc_X[1]) * 32 + text2num(screen_loc_X[2]) - 32
+		var/y = text2num(screen_loc_Y[1]) * 32 + text2num(screen_loc_Y[2]) - 32
+
+		//Calculate the "resolution" of screen based on client's view and world's icon size. This will work if the user can view more tiles than average.
+		var/screenviewX = user.client.current_viewport_width * world.icon_size
+		var/screenviewY = user.client.current_viewport_height * world.icon_size
+
+		var/ox = round(screenviewX/2) - user.client.pixel_x //"origin" x
+		var/oy = round(screenviewY/2) - user.client.pixel_y //"origin" y
+		angle = arctan(y - oy, x - ox)
+	return list(angle, p_x, p_y)
+
+/obj/projectile/proc/legacy_redirect(x, y, starting, source)
+	reflected = TRUE
+	old_style_target(locate(x, y, z), starting? get_turf(starting) : get_turf(source))
+
+/obj/projectile/proc/old_style_target(atom/target, atom/source)
+	if(!source)
+		source = get_turf(src)
+	starting = get_turf(source)
+	original_target = target
+	set_angle(get_visual_angle(source, target))
+
+/obj/projectile/proc/vol_by_damage()
+	if(damage)
+		return clamp((damage) * 0.67, 30, 100)// Multiply projectile damage by 0.67, then clamp the value between 30 and 100
+	else
+		return 50 //if the projectile doesn't do damage, play its hitsound at 50% volume.
 
 //Checks if the projectile is eligible for embedding. Not that it necessarily will.
 /obj/projectile/proc/can_embed()
@@ -536,51 +610,12 @@
 
 //return 1 if the projectile should be allowed to pass through after all, 0 if not.
 /obj/projectile/proc/check_penetrate(atom/A)
+#warn rid OFF
+	SHOULD_NOT_OVERRIDE(TRUE)
 	return 1
 
 /obj/projectile/proc/check_fire(atom/target as mob, mob/living/user as mob)  //Checks if you can hit them or not.
 	check_trajectory(target, user, pass_flags, atom_flags)
-
-/obj/projectile/CanAllowThrough()
-	. = ..()
-	return TRUE
-
-//Called when the projectile intercepts a mob. Returns 1 if the projectile hit the mob, 0 if it missed and should keep flying.
-/obj/projectile/proc/projectile_attack_mob(mob/living/target_mob, distance, miss_modifier = 0)
-	if(!istype(target_mob))
-		return
-
-	//roll to-hit
-	miss_modifier = max(15*(distance-2) - accuracy + miss_modifier + target_mob.get_evasion(), 0)
-	var/hit_zone = get_zone_with_miss_chance(def_zone, target_mob, miss_modifier, ranged_attack=(distance > 1 || original != target_mob)) //if the projectile hits a target we weren't originally aiming at then retain the chance to miss
-
-	var/result = PROJECTILE_FORCE_MISS
-	if(hit_zone)
-		def_zone = hit_zone //set def_zone, so if the projectile ends up hitting someone else later (to be implemented), it is more likely to hit the same part
-		result = target_mob.bullet_act(src, def_zone)
-
-	if(result == PROJECTILE_FORCE_MISS)
-		if(!silenced)
-			visible_message("<span class='notice'>\The [src] misses [target_mob] narrowly!</span>")
-			playsound(target_mob.loc, pick(miss_sounds), 60, 1)
-		return FALSE
-
-	//hit messages
-	if(silenced)
-		to_chat(target_mob, "<span class='danger'>You've been hit in the [parse_zone(def_zone)] by \the [src]!</span>")
-	else
-		visible_message("<span class='danger'>\The [target_mob] is hit by \the [src] in the [parse_zone(def_zone)]!</span>")//X has fired Y is now given by the guns so you cant tell who shot you if you could not see the shooter
-
-	//admin logs
-	if(!no_attack_log)
-		if(istype(firer, /mob) && istype(target_mob))
-			add_attack_logs(firer,target_mob,"Shot with \a [src.type] projectile")
-
-	//sometimes bullet_act() will want the projectile to continue flying
-	if (result == PROJECTILE_CONTINUE)
-		return FALSE
-
-	return TRUE
 
 /**
  * i hate everything
@@ -594,7 +629,7 @@
  * and submunitions SHOULDNT BE HANDLED HERE!!
  */
 /obj/projectile/proc/launch_projectile_common(atom/target, target_zone, mob/user, params, angle_override, forced_spread = 0)
-	original = target
+	original_target = target
 	def_zone = check_zone(target_zone)
 	firer = user
 
@@ -689,617 +724,472 @@
 /obj/projectile/proc/get_final_damage(atom/target)
 	return run_damage_vulnerability(target)
 
-//* Hitscan Visuals *//
+// !legacy code above!
 
-/**
- * returns a /datum/point based on where we currently are
- */
-/obj/projectile/proc/get_tracer_point()
-	RETURN_TYPE(/datum/point)
-	var/datum/point/point = new
-	if(trajectory_moving_to)
-		// we're in move. use next px/py to respect 1. kick forwards 2. deflections
-		point.x = (trajectory_moving_to.x - 1) * WORLD_ICON_SIZE + next_px
-		point.y = (trajectory_moving_to.y - 1) * WORLD_ICON_SIZE + next_py
-	else
-		point.x = (x - 1) * WORLD_ICON_SIZE + current_px
-		point.y = (y - 1) * WORLD_ICON_SIZE + current_py
-	point.z = z
-	return point
+//* Collision Handling *//
 
-/**
- * * returns a /datum/point based on where we'll be when we loosely intersect a tile
- * * returns null if we'll never intersect it
- * * returns our current point if we're already loosely intersecting it
- * * loosely intersecting means that we are level with the tile in either x or y.
- */
-/obj/projectile/proc/get_intersection_point(turf/colliding)
-	RETURN_TYPE(/datum/point)
-	ASSERT(!isnull(angle))
+/obj/projectile/CanAllowThrough()
+	SHOULD_CALL_PARENT(FALSE)
+	return TRUE
 
-	// calculate hwere we are
-	var/our_x = (x - 1) * WORLD_ICON_SIZE + current_px
-	var/our_y = (y - 1) * WORLD_ICON_SIZE + current_py
+/obj/projectile/CanPassThrough(atom/blocker, turf/target, blocker_opinion)
+	// performance
+	SHOULD_CALL_PARENT(FALSE)
+	// always can go through already impacted things
+	if(impacted[blocker])
+		return TRUE
+	return blocker_opinion
 
-	// calculate how far we have to go to touch their closest x / y axis
-	var/d_to_reach_x
-	var/d_to_reach_y
+/obj/projectile/Crossed(atom/movable/AM) //A mob moving on a tile with a projectile is hit by it.
+	..()
+	scan_crossed_atom(AM)
 
-	if(colliding.x != x)
-		switch(calculated_sdx)
-			if(0)
-				return
-			if(1)
-				if(colliding.x < x)
-					return
-				d_to_reach_x = (((colliding.x - 1) * WORLD_ICON_SIZE + 0.5) - our_x) / calculated_dx
-			if(-1)
-				if(colliding.x > x)
-					return
-				d_to_reach_x = (((colliding.x - 0) * WORLD_ICON_SIZE + 0.5) - our_x) / calculated_dx
-	else
-		d_to_reach_x = 0
-
-	if(colliding.y != y)
-		switch(calculated_sdy)
-			if(0)
-				return
-			if(1)
-				if(colliding.y < y)
-					return
-				d_to_reach_y = (((colliding.y - 1) * WORLD_ICON_SIZE + 0.5) - our_y) / calculated_dy
-			if(-1)
-				if(colliding.y > y)
-					return
-				d_to_reach_y = (((colliding.y - 0) * WORLD_ICON_SIZE + 0.5) - our_y) / calculated_dy
-	else
-		d_to_reach_y = 0
-
-	var/needed_distance = max(d_to_reach_x, d_to_reach_y)
-
-	// calculate if we'll actually be touching the tile once we go that far
-	var/future_x = our_x + needed_distance * calculated_dx
-	var/future_y = our_y + needed_distance * calculated_dy
-	// let's be slightly lenient and do 1 instead of 0.5
-	if(future_x < (colliding.x - 1) * WORLD_ICON_SIZE && future_x > (colliding.x) * WORLD_ICON_SIZE + 1 && \
-		future_y < (colliding.y - 1) * WORLD_ICON_SIZE && future_y > (colliding.y) * WORLD_ICON_SIZE + 1)
-		return // not gonna happen
-
-	// make the point based on how far we need to go
-	var/datum/point/point = new
-	point.x = future_x
-	point.y = future_y
-	point.z = z
-	return point
-
-/**
- * records the start of a hitscan
- *
- * this can edit the point passed in!
- */
-/obj/projectile/proc/record_hitscan_start(datum/point/point, muzzle_marker, kick_forwards)
-	if(!hitscanning)
+// todo: should we inline this?
+/obj/projectile/proc/scan_crossed_atom(atom/movable/target)
+	if(!should_impact(target))
 		return
-	if(isnull(point))
-		point = get_tracer_point()
-	tracer_vertices = list(point)
-	tracer_muzzle_flash = muzzle_marker
+	impact(target)
 
-	// kick forwards
-	point.shift_in_projectile_angle(angle, kick_forwards)
-
-/**
- * ends the hitscan tracer
- *
- * this can edit the point passed in!
- */
-/obj/projectile/proc/record_hitscan_end(datum/point/point, impact_marker, kick_forwards)
-	if(!hitscanning)
-		return
-	if(isnull(point))
-		point = get_tracer_point()
-	tracer_vertices += point
-	tracer_impact_effect = impact_marker
-
-	// kick forwards
-	point.shift_in_projectile_angle(angle, kick_forwards)
-
-/**
- * records a deflection (change in angle, aka generate new tracer)
- */
-/obj/projectile/proc/record_hitscan_deflection(datum/point/point)
-	if(!hitscanning)
-		return
-	if(isnull(point))
-		point = get_tracer_point()
-	// there's no way you need more than 25
-	// if this is hit, fix your shit, don't bump this up; there's absolutely no reason for example,
-	// to simulate reflectors working !!25!! times.
-	if(length(tracer_vertices) >= 25)
-		CRASH("tried to add more than 25 vertices to a hitscan tracer")
-	tracer_vertices += point
-
-/obj/projectile/proc/render_hitscan_tracers(duration = tracer_duration)
-	// don't stay too long
-	ASSERT(duration >= 0 && duration <= 10 SECONDS)
-	// check everything
-	if(!has_tracer || !duration || !length(tracer_vertices))
-		return
-	var/list/atom/movable/beam_components = list()
-
-	// muzzle
-	if(muzzle_type && tracer_muzzle_flash)
-		var/datum/point/starting = tracer_vertices[1]
-		var/atom/movable/muzzle_effect = starting.instantiate_movable_with_unmanaged_offsets(muzzle_type)
-		if(muzzle_effect)
-			// turn it
-			var/matrix/muzzle_transform = matrix()
-			muzzle_transform.Turn(original_angle)
-			muzzle_effect.transform = muzzle_transform
-			muzzle_effect.color = color
-			muzzle_effect.set_light(muzzle_flash_range, muzzle_flash_intensity, muzzle_flash_color_override? muzzle_flash_color_override : color)
-			// add to list
-			beam_components += muzzle_effect
-	// impact
-	if(impact_type && tracer_impact_effect)
-		var/datum/point/starting = tracer_vertices[length(tracer_vertices)]
-		var/atom/movable/impact_effect = starting.instantiate_movable_with_unmanaged_offsets(impact_type)
-		if(impact_effect)
-			// turn it
-			var/matrix/impact_transform = matrix()
-			impact_transform.Turn(angle)
-			impact_effect.transform = impact_transform
-			impact_effect.color = color
-			impact_effect.set_light(impact_light_range, impact_light_intensity, impact_light_color_override? impact_light_color_override : color)
-			// add to list
-			beam_components += impact_effect
-	// path tracers
-	if(tracer_type)
-		var/tempref = "\ref[src]"
-		for(var/i in 1 to length(tracer_vertices) - 1)
-			var/j = i + 1
-			var/datum/point/first_point = tracer_vertices[i]
-			var/datum/point/second_point = tracer_vertices[j]
-			generate_tracer_between_points(first_point, second_point, beam_components, tracer_type, color, duration, hitscan_light_range, hitscan_light_color_override, hitscan_light_intensity, tempref)
-
-	QDEL_LIST_IN(beam_components, duration)
-
-
-/obj/projectile/proc/cleanup_hitscan_tracers()
-	tracer_vertices=null
-
-/obj/projectile/proc/finalize_hitscan_tracers(datum/point/end_point, impact_effect, kick_forwards)
-	// if end wasn't recorded yet and we're still on a turf, record end
-	if(isnull(tracer_impact_effect) && loc)
-		record_hitscan_end(end_point, impact_marker = impact_effect, kick_forwards = kick_forwards)
-	// render & cleanup
-	render_hitscan_tracers()
-	cleanup_hitscan_tracers()
-
-//* Physics - Configuration *//
-
-/**
- * sets our angle
- */
-/obj/projectile/proc/set_angle(new_angle)
-	angle = new_angle
-
-	// update sprite
-	if(!nondirectional_sprite)
-		var/matrix/M = new
-		M.Turn(angle)
-		transform = M
-
-	// update trajectory
-	calculated_dx = sin(new_angle)
-	calculated_dy = cos(new_angle)
-	calculated_sdx = calculated_dx == 0? 0 : (calculated_dx > 0? 1 : -1)
-	calculated_sdy = calculated_dy == 0? 0 : (calculated_dy > 0? 1 : -1)
-
-	// record our tracer's change
-	if(hitscanning)
-		record_hitscan_deflection()
-
-/**
- * sets our speed in pixels per decisecond
- */
-/obj/projectile/proc/set_speed(new_speed)
-	speed = clamp(new_speed, 1, WORLD_ICON_SIZE * 100)
-
-/**
- * sets our angle and speed
- */
-/obj/projectile/proc/set_velocity(new_angle, new_speed)
-	// this is so this can be micro-optimized later but for once i'm not going to do it early for no reason
-	set_speed(new_speed)
-	set_angle(new_angle)
-
-/**
- * todo: this is somewhat mildly terrible
- */
-/obj/projectile/proc/set_homing_target(atom/A)
-	if(!A || (!isturf(A) && !isturf(A.loc)))
-		return FALSE
-	homing = TRUE
-	homing_target = A
-	homing_offset_x = rand(homing_inaccuracy_min, homing_inaccuracy_max)
-	homing_offset_y = rand(homing_inaccuracy_min, homing_inaccuracy_max)
-	if(prob(50))
-		homing_offset_x = -homing_offset_x
-	if(prob(50))
-		homing_offset_y = -homing_offset_y
-
-/**
- * initializes physics vars
- */
-/obj/projectile/proc/setup_physics()
-	distance_travelled = 0
-
-/**
- * called after an unhandled forcemove is detected, or other event
- * that should reset our on-turf state
- */
-/obj/projectile/proc/reset_physics_to_turf()
-	// we use this because we can center larger than 32x32 projectiles
-	// without disrupting physics this way
-	//
-	// we add by (WORLD_ICON_SIZE / 2) because
-	// pixel_x / pixel_y starts at center,
-	//
-	current_px = pixel_x - base_pixel_x + (WORLD_ICON_SIZE / 2)
-	current_py = pixel_y - base_pixel_y + (WORLD_ICON_SIZE / 2)
-	// interrupt active move logic
-	trajectory_moving_to = null
-
-//* Physics - Processing *//
-
-/obj/projectile/process(delta_time)
-	if(paused)
-		return
-	physics_iteration(min(10 * WORLD_ICON_SIZE, delta_time * speed * SSprojectiles.global_projectile_speed_multiplier), delta_time)
-
-/**
- * immediately processes hitscan
- */
-/obj/projectile/proc/physics_hitscan(safety = 250, resuming)
-	// setup
-	if(!resuming)
-		hitscanning = TRUE
-		record_hitscan_start(muzzle_marker = TRUE, kick_forwards = 16)
-
-	// just move as many times as we can
-	while(!QDELETED(src) && loc)
-		// check safety
-		safety--
-		if(safety <= 0)
-			// if you're here, you shouldn't be. do not bump safety up, fix whatever
-			// you're doing because no one should be making projectiles go more than 250
-			// tiles in a single life.
-			stack_trace("projectile hit iteration limit for hitscan")
-			break
-
-		// move forwards by 1 tile length
-		distance_travelled += physics_step(WORLD_ICON_SIZE)
-		// if we're being yanked, yield
-		if(movable_flags & MOVABLE_IN_MOVED_YANK)
-			spawn(0)
-				physics_hitscan(safety, TRUE)
-			return
-
-		// see if we're done
-		if(distance_travelled >= range)
-			legacy_on_range()
-			break
-
-	hitscanning = FALSE
-
-/**
- * ticks forwards a number of pixels
- *
- * todo: potential lazy animate support for performance, as we honestly don't need to animate at full fps if the server's above 20fps
- *
- * * delta_tiem is in deciseconds, not seconds.
- */
-/obj/projectile/proc/physics_iteration(pixels, delta_time, additional_animation_length)
-	// setup iteration
-	var/safety = 15
-	var/pixels_remaining = pixels
-	distance_travelled_this_iteration = 0
-
-	// apply penalty
-	var/penalizing = clamp(trajectory_penalty_applied, 0, pixels_remaining)
-	pixels_remaining -= penalizing
-	trajectory_penalty_applied -= penalizing
-
-	// clamp to max distance
-	pixels_remaining = min(pixels_remaining, range - distance_travelled)
-
-	// move as many times as we need to
-	//
-	// * break if we're loc = null (by deletion or otherwise)
-	// * break if we get paused
-	while(pixels_remaining > 0)
-		// check safety
-		safety--
-		if(safety <= 0)
-			CRASH("ran out of safety! what happened?")
-
-		// move
-		var/pixels_moved = physics_step(pixels_remaining)
-		distance_travelled += pixels_moved
-		distance_travelled_this_iteration += pixels_moved
-		pixels_remaining -= pixels_moved
-		// we're being yanked, yield
-		if(movable_flags & MOVABLE_IN_MOVED_YANK)
-			spawn(0)
-				physics_iteration(pixels_remaining, delta_time, distance_travelled_this_iteration)
-			return
-		if(!loc || paused)
-			break
-
-	// penalize next one if we were kicked forwards forcefully too far
-	trajectory_penalty_applied = max(0, -pixels_remaining)
-
-	// if we don't have a loc anymore just bail
-	if(!loc)
-		return
-
-	// if we're at max range
-	if(distance_travelled >= range)
-		// todo: egh
-		legacy_on_range()
-		if(QDELETED(src))
-			return
-
-	// process homing
-	physics_tick_homing(delta_time)
-
-	// perform animations
-	// we assume at this point any deflections that should have happened, has happened,
-	// so we just do a naive animate based on our current loc and pixel x/y
-	//
-	// todo: animation needs to take into account angle changes,
-	//       but that's expensive as shit so uh lol
-	//
-	// the reason we use distance_travelled_this_iteration is so if something disappears
-	// by forceMove or whatnot,
-	// we won't have it bounce from its previous location to the new one as it's not going
-	// to be accurate anymore
-	//
-	// so instead, as of right now, we backtrack via how much we know we moved.
-	var/final_px = base_pixel_x + current_px - (WORLD_ICON_SIZE / 2)
-	var/final_py = base_pixel_y + current_py - (WORLD_ICON_SIZE / 2)
-	var/anim_dist = distance_travelled_this_iteration + additional_animation_length
-	pixel_x = final_px - (anim_dist * sin(angle))
-	pixel_y = final_py - (anim_dist * cos(angle))
-
-	animate(
-		src,
-		delta_time,
-		flags = ANIMATION_END_NOW,
-		pixel_x = final_px,
-		pixel_y = final_py,
-	)
-
-/**
- * based on but exactly http://www.cs.yorku.ca/~amana/research/grid.pdf
- *
- * move into the next tile, or the specified number of pixels,
- * whichever is less pixels moved
- *
- * this will modify our current_px/current_py as necessary
- *
- * @return pixels moved
- */
-/obj/projectile/proc/physics_step(limit)
-	// distance to move in our angle to get to next turf for horizontal and vertical
-	var/d_next_horizontal = \
-		(calculated_sdx? ((calculated_sdx > 0? (WORLD_ICON_SIZE + 0.5) - current_px : -current_px + 0.5) / calculated_dx) : INFINITY)
-	var/d_next_vertical = \
-		(calculated_sdy? ((calculated_sdy > 0? (WORLD_ICON_SIZE + 0.5) - current_py : -current_py + 0.5) / calculated_dy) : INFINITY)
-	var/turf/move_to_target
-
-	/**
-	 * explanation on why current and next are done:
-	 *
-	 * projectiles track their pixel x/y on turf, not absolute pixel x/y from edge of map
-	 * this is done to make it simpler to reason about, but is not necessarily the most simple
-	 * or efficient way to do things.
-	 *
-	 * part of the problems with this approach is that Move() is not infallible. the projectile can be blocked.
-	 * if we immediately set current pixel x/y, if the projectile is intercepted by a Bump, we now dont' know the 'real'
-	 * position of the projectile because it's out of sync with where it should be
-	 *
-	 * now, things that require math operations on it don't know the actual location of the projectile until this proc
-	 * rolls it back
-	 *
-	 * so instead, we never touch current px/py until the move is known to be successful, then we set it
-	 * to the stored next px/py
-	 *
-	 * this way, things accessing can mutate our state freely without worrying about needing to handle rollbacks
-	 *
-	 * this entire system however adds overhead
-	 * if we want to not have overhead, we'll need to rewrite hit processing and have it so moves are fully illegal to fail
-	 * but doing that is literally not possible because anything can reject a move for any reason whatsoever
-	 * and we cannot control that, so, instead, we make projectiles track in absolute pixel x/y coordinates from edge of map
-	 *
-	 * that way, we don't even need to care about where the .loc is, we just know where the projectile is supposed to be by
-	 * knowing where it isn't, and by taking the change in its pixels the projectile controller can tell the projectile
-	 * where to go-
-	 *
-	 * (all shitposting aside, this is for future work; it works right now and we have an API to do set angle, kick forwards, etc)
-	 * (so i'm not going to touch this more because it's 4 AM and honestly this entire raycaster is already far less overhead)
-	 * (than the old system of a 16-loop of brute forced 2 pixel increments)
-	 */
-
-	if(d_next_horizontal == d_next_vertical)
-		// we're diagonal
-		if(d_next_horizontal <= limit)
-			move_to_target = locate(x + calculated_sdx, y + calculated_sdy, z)
-			. = d_next_horizontal
-			if(!move_to_target)
-				// we hit the world edge and weren't transit; time to get deleted.
-				if(hitscanning)
-					finalize_hitscan_tracers(impact_effect = FALSE)
-				qdel(src)
-				return
-			next_px = calculated_sdx > 0? 0.5 : (WORLD_ICON_SIZE + 0.5)
-			next_py = calculated_sdy > 0? 0.5 : (WORLD_ICON_SIZE + 0.5)
-	else if(d_next_horizontal < d_next_vertical)
-		// closer is to move left/right
-		if(d_next_horizontal <= limit)
-			move_to_target = locate(x + calculated_sdx, y, z)
-			. = d_next_horizontal
-			if(!move_to_target)
-				// we hit the world edge and weren't transit; time to get deleted.
-				if(hitscanning)
-					finalize_hitscan_tracers(impact_effect = FALSE)
-				qdel(src)
-				return
-			next_px = calculated_sdx > 0? 0.5 : (WORLD_ICON_SIZE + 0.5)
-			next_py = current_py + d_next_horizontal * calculated_dy
-	else if(d_next_vertical < d_next_horizontal)
-		// closer is to move up/down
-		if(d_next_vertical <= limit)
-			move_to_target = locate(x, y + calculated_sdy, z)
-			. = d_next_vertical
-			if(!move_to_target)
-				// we hit the world edge and weren't transit; time to get deleted.
-				if(hitscanning)
-					finalize_hitscan_tracers(impact_effect = FALSE)
-				qdel(src)
-				return
-			next_px = current_px + d_next_vertical * calculated_dx
-			next_py = calculated_sdy > 0? 0.5 : (WORLD_ICON_SIZE + 0.5)
-
-	// if we need to move
-	if(move_to_target)
-		var/atom/old_loc = loc
-		trajectory_moving_to = move_to_target
-		if(!Move(move_to_target) && ((loc != move_to_target) || !trajectory_moving_to))
-			// if we don't successfully move, don't change anything, we didn't move.
-			. = 0
-			if(loc == old_loc)
-				stack_trace("projectile failed to move, but is still on turf instead of deleted or relocated.")
-				qdel(src) // bye
-		else
-			// only do these if we successfully move, or somehow end up in that turf anyways
-			if(trajectory_kick_forwards)
-				. += trajectory_kick_forwards
-				trajectory_kick_forwards = 0
-			current_px = next_px
-			current_py = next_py
-			#ifdef CF_PROJECTILE_RAYCAST_VISUALS
-			new /atom/movable/render/projectile_raycast(move_to_target, current_px, current_py, "#77ff77")
-			#endif
-		trajectory_moving_to = null
-	else
-		// not moving to another tile, so, just move on current tile
-		if(trajectory_kick_forwards)
-			trajectory_kick_forwards = 0
-			stack_trace("how did something kick us forwards when we didn't even move?")
-		. = limit
-		current_px += limit * calculated_dx
-		current_py += limit * calculated_dy
-		next_px = current_px
-		next_py = current_py
-		#ifdef CF_PROJECTILE_RAYCAST_VISUALS
-		new /atom/movable/render/projectile_raycast(loc, current_px, current_py, "#ff3333")
-		#endif
-
-#ifdef CF_PROJECTILE_RAYCAST_VISUALS
-GLOBAL_VAR_INIT(projectile_raycast_debug_visual_delay, 2 SECONDS)
-
-/atom/movable/render/projectile_raycast
-	plane = OBJ_PLANE
-	icon = 'icons/system/color_32x32.dmi'
-	icon_state = "white-pixel"
-
-/**
- * px, py are absolute pixel coordinates on the tile, not pixel_x / pixel_y of this renderer!
- */
-/atom/movable/render/projectile_raycast/Initialize(mapload, px, py, color)
-	src.pixel_x = px - 1
-	src.pixel_y = py - 1
-	src.color = color
+/obj/projectile/forceMove(atom/target)
+	var/is_a_jump = isturf(target) != isturf(loc) || target.z != z || !trajectory_ignore_forcemove
+	if(is_a_jump)
+		record_hitscan_end()
+		render_hitscan_tracers()
 	. = ..()
-	QDEL_IN(src, GLOB.projectile_raycast_debug_visual_delay)
-#endif
+	if(!.)
+		stack_trace("projectile forcemove failed; please do not try to forcemove projectiles to invalid locations!")
+	distance_travelled_this_iteration = 0
+	if(!trajectory_ignore_forcemove)
+		reset_physics_to_turf()
+	if(is_a_jump)
+		record_hitscan_start()
+
+/obj/projectile/Moved(atom/old_loc, movement_dir, forced, list/old_locs, momentum_change)
+	. = ..()
+	// if we're being yanked, we'll get Moved() again
+	if(movable_flags & MOVABLE_IN_MOVED_YANK)
+		return
+	// scan the turf for anything we need to hit
+	scan_moved_turf(loc)
+	// trigger effects
+	for(var/datum/projectile_effect/effect as anything in base_projectile_effects)
+		if(effect.hook_moved)
+			effect.on_moved(src, old_loc)
+	for(var/datum/projectile_effect/effect as anything in additional_projectile_effects)
+		if(effect.hook_moved)
+			effect.on_moved(src, old_loc)
+
+// todo: should we inline this?
+/obj/projectile/proc/scan_moved_turf(turf/tile)
+	if(original_target?.loc != tile)
+		return
+	if(!should_impact(original_target))
+		return
+	impact(original_target)
 
 /**
- * immediately, without processing, kicks us forward a number of pixels
+ * checks if we're valid to hit a target
  *
- * since we immediately cross over into a turf when entering,
- * things like mirrors/reflectors will immediately set angle
- *
- * it looks ugly and is pretty bad to just reflect off the edge of a turf so said things can
- * call this proc to kick us forwards by a bit
+ * this is called 'should' because it's not called in impact()
+ * this checks if we should try to impact when processing collisions
+ * this doesn't actually prevent us from having an impact call
  */
-/obj/projectile/proc/physics_kick_forwards(pixels)
-	trajectory_kick_forwards += pixels
-	next_px += pixels * calculated_dx
-	next_py += pixels * calculated_dy
-
-/**
- * only works during non-hitscan
- *
- * this is called once per tick
- * homing is smoother the higher fps the server / SSprojectiles runs at
- *
- * todo: this is somewhat mildly terrible
- * todo: this has absolutely no arc/animation support; this is bad
- */
-/obj/projectile/proc/physics_tick_homing(delta_time)
-	if(!homing)
+/obj/projectile/proc/should_impact(atom/target, is_colliding_us)
+	// 1. emulate the usual physics / cross
+	//    remember that impact_loop() scans all atoms, not just the hit one.
+	if(impacted[target])
 		return FALSE
-	// checks if they're 1. on a turf, 2. on our z
-	// todo: should we add support for tracking something even if it leaves a turf?
-	if(homing_target?.z != z)
-		// bye bye!
+	if(QDELETED(target))
 		return FALSE
-	// todo: this assumes single-tile objects. at some point, we should upgrade this to be unnecessarily expensive and always center-mass.
-	var/dx = (homing_target.x - src.x) * WORLD_ICON_SIZE + (0 - current_px) + homing_offset_x
-	var/dy = (homing_target.y - src.y) * WORLD_ICON_SIZE + (0 - current_py) + homing_offset_y
-	// say it with me, arctan()
-	// is CCW of east if (dx, dy)
-	// and CW of north if (dy, dx)
-	// where dx and dy is distance in x/y pixels from us to them.
-
-	var/nudge_towards = closer_angle_difference(arctan(dy, dx))
-	var/max_turn_speed = homing_turn_speed * delta_time
-
-	set_angle(angle + clamp(nudge_towards, -max_turn_speed, max_turn_speed))
-
-//* Physics - Querying *//
+	// 1.5: legacy bullshit
+	if(target.is_incorporeal())
+		return FALSE
+	// 2. are they the thing blocking us?
+	if(is_colliding_us)
+		return TRUE
+	// 3. process projectile things
+	if(target == original_target)
+		return TRUE
+	else if(!target.density || (target.pass_flags_self & pass_flags))
+		return FALSE
+	else if(target.layer < PROJECTILE_HIT_THRESHOLD_LAYER)
+		return FALSE
+	return TRUE
 
 /**
- * predict what turf we'll be in after going forwards a certain amount of pixels
+ * this strangely named proc is basically the hit processing loop
  *
- * doesn't actually sim; so this will go through walls/obstacles!
+ * "now why the hells would you do this"
  *
- * * if we go out of bounds, we will return null; this doesn't level-wrap
+ * well, you see, turf movement handling doesn't support what we need to do,
+ * and for good reason.
+ *
+ * most of the time, turf movement handling is more than enough for any game use case.
+ * it is not nearly accurate/comprehensive enough for projectiles
+ * and we're not going to make it that, because that's a ton of overhead for everything else
+ *
+ * so instead, projectiles handle it themselves on a Bump().
+ *
+ * when this happens, the projectile should hit everything that's going to collide it anyways
+ * in the turf, not just one thing; this way, hits are instant for a given collision.
+ *
+ * @params
+ * * was_moving_onto - the turf we were moving to
+ * * bumped - what bumped us?
  */
-/obj/projectile/proc/physics_predicted_turf_after_iteration(pixels)
-	// -1 at the end if 0, because:
+/obj/projectile/proc/impact_loop(turf/was_moving_onto, atom/bumped)
+	var/impact_return
+	// so unfortunately, only one border object is considered here
+	// why?
+	// because you see, for speed reasons we're not going to iterate once just to gather border.
+	// so we assume that 'bumped' is border, or it just doesn't happen.
+
+	// make sure we're not inf looping
+	ASSERT(!(impacted[bumped]))
+	// see if we should impact
+	impact_return = impact(bumped)
+	if(!(impact_return & PROJECTILE_IMPACT_CONTINUE_LOOP))
+		return
+
+	// at this point we're technically safe to just move again because
+	// we processed bumped
+	// problem is, that's O(n^2) behavior
+	// we don't want to process just one bumped atom
+	// as turf/Enter() will loop through everything again
 	//
-	// -32 is go back 1 tile and be at the 1st pixel (as 0 is going back)
-	// 0 is go back 1 tile and be at the 32nd pixel.
-	var/incremented_px = (current_px + pixels * calculated_dx) || - 1
-	var/incremented_py = (current_py + pixels * calculated_dy) || - 1
+	// we want to process all of them.
 
-	var/incremented_tx = floor(incremented_px / 32)
-	var/incremented_ty = floor(incremented_py / 32)
+	// at this point you might ask
+	// why not use MOVEMENT_UNSTOPPABLE?
+	// if we did, we wouldn't have the border-prioritization we have
+	// that'd be bad as you'd be hit by a bullet behind a directional window
 
-	return locate(x + incremented_tx, y + incremented_ty, z)
+	// wow, projectiles are annoying to deal with
+
+	// begin: main loop
+
+	// first, targeted atom
+	if(original_target?.loc == was_moving_onto)
+		if(should_impact(original_target))
+			impact_return = impact(bumped)
+			if(!(impact_return & PROJECTILE_IMPACT_CONTINUE_LOOP))
+				return
+
+	// then, mobs
+	for(var/mob/mob_target in was_moving_onto)
+		if(!should_impact(mob_target))
+			continue
+		impact_return = impact(mob_target)
+		if(!(impact_return & PROJECTILE_IMPACT_CONTINUE_LOOP))
+			return
+
+	// then, objs
+	for(var/obj/obj_target in was_moving_onto)
+		if(!should_impact(obj_target))
+			continue
+		impact_return = impact(obj_target)
+		if(!(impact_return & PROJECTILE_IMPACT_CONTINUE_LOOP))
+			return
+
+	// then, the turf
+	if(should_impact(was_moving_onto))
+		impact_return = impact(was_moving_onto)
+		if(!(impact_return & PROJECTILE_IMPACT_CONTINUE_LOOP))
+			return
+
+	// if we passed everything and we're still going,
+	// we can safely move onto their turf again, and this time we should succeed.
+	if(trajectory_moving_to)
+		Move(trajectory_moving_to)
+
+//* Lifetime & Deletion *//
 
 /**
- * predict what turfs we'll hit, excluding the current turf, after going forwards
- * a certain amount of pixels
+ * Called to delete if:
  *
- * doesn't actually sim; so this will go through walls/obstacles!
+ * * ran out of range
+ * * hit something and shouldn't pass through
+ *
+ * @params
+ * * impacting - we're deleting from impact, rather than range
  */
-/obj/projectile/proc/physics_predicted_turfs_during_iteration(pixels)
-	return pixel_physics_raycast(loc, current_px, current_py, angle, pixels)
+/obj/projectile/proc/expire(impacting)
+	qdel(src)
+
+//* Impact Processing *//
+
+/**
+ * Called to perform an impact
+ *
+ * @params
+ * * target - thing being hit
+ * * impact_flags - impact flags to feed in
+ * * def_zone - zone to hit; otherwise this'll be calculated.
+ *
+ * @return resultant impact_flags
+ */
+/obj/projectile/proc/impact(atom/target, impact_flags, def_zone)
+	SHOULD_NOT_OVERRIDE(TRUE)
+
+	if(impacted[target])
+		return impact_flags | PROJECTILE_IMPACT_PASSTHROUGH | PROJECTILE_IMPACT_DUPLICATE | PROJECTILE_IMPACT_CONTINUE_LOOP
+	var/where_we_were = loc
+	impact_flags = pre_impact(target, impact_flags, def_zone)
+	var/keep_going
+
+	// priority 1: delete?
+	if(impact_flags & PROJECTILE_IMPACT_FLAGS_SHOULD_DELETE)
+		if(hitscanning)
+			finalize_hitscan_tracers()
+		qdel(src)
+		return impact_flags
+	// priority 2: should we hit?
+	if(impact_flags & PROJECTILE_IMPACT_FLAGS_SHOULD_NOT_HIT)
+		keep_going = TRUE
+		// phasing?
+		if(impact_flags & PROJECTILE_IMPACT_PHASE)
+			impact_flags = on_phase(target, impact_flags, def_zone)
+		// reflect?
+		else if(impact_flags & PROJECTILE_IMPACT_REFLECT)
+			impact_flags = on_reflect(target, impact_flags, def_zone)
+		// else, is passthrough. do nothing
+	else
+		impact_flags = target.bullet_act(src, impact_flags, def_zone)
+		// did we pierce?
+		if(impact_flags & PROJECTILE_IMPACT_PIERCE)
+			keep_going = TRUE
+			impact_flags = on_pierce(target, impact_flags, def_zone)
+
+	// did anything triggered up above trigger a delete?
+	if(impact_flags & PROJECTILE_IMPACT_FLAGS_SHOULD_DELETE)
+		if(hitscanning)
+			finalize_hitscan_tracers()
+		qdel(src)
+		return impact_flags
+
+	// trigger projectile effects
+	if(base_projectile_effects || additional_projectile_effects)
+		// todo: can we move this to on_impact_new and have 'blocked' passed in? hrm.
+		for(var/datum/projectile_effect/effect as anything in base_projectile_effects)
+			if(effect.hook_impact)
+				impact_flags = effect.on_impact(src, target, impact_flags, def_zone)
+		for(var/datum/projectile_effect/effect as anything in additional_projectile_effects)
+			if(effect.hook_impact)
+				impact_flags = effect.on_impact(src, target, impact_flags, def_zone)
+		// did anything triggered up above trigger a delete?
+		if(impact_flags & PROJECTILE_IMPACT_FLAGS_SHOULD_DELETE)
+			if(hitscanning)
+				finalize_hitscan_tracers()
+			qdel(src)
+			return impact_flags
+
+	#warn insert rest of behavior here
+
+	// see if we should keep going or delete
+	if(keep_going)
+		if(loc == where_we_were)
+			// if we are supposed to keep going and we didn't get yanked, continue the impact loop.
+			impact_flags |= PROJECTILE_IMPACT_CONTINUE_LOOP
+	else
+		// or if we aren't supposed to keep going, delete.
+		if(hitscanning)
+			if(trajectory_moving_to)
+				// create tracers
+				var/datum/point/visual_impact_point = get_intersection_point(trajectory_moving_to)
+				// kick it forwards a bit
+				visual_impact_point.shift_in_projectile_angle(angle, 2)
+				// draw
+				finalize_hitscan_tracers(visual_impact_point, impact_effect = TRUE)
+			else
+				finalize_hitscan_tracers(impact_effect = TRUE, kick_forwards = 32)
+		expire(TRUE)
+
+	return impact_flags
+
+/**
+ * Called at the start of impact.
+ *
+ * * Hooks to return flags / whatnot should happen here
+ * * You are allowed to edit the projectile here, but it is absolutely not recommended.
+ *
+ * @return new impact_flags
+ */
+/obj/projectile/proc/pre_impact(atom/target, impact_flags, def_zone)
+	if(target.pass_flags_self & pass_flags_phase)
+		return impact_flags | PROJECTILE_IMPACT_PHASE
+	if(target.pass_flags_self & pass_flags_pierce)
+		return impact_flags | PROJECTILE_IMPACT_PIERCE
+	return impact_flags
+
+/**
+ * Called after bullet_act() of the target.
+ *
+ * * Please take into account impact_flags.
+ * * Most impact flags returned are not re-checked for performance; pierce/phase calculations should be done in pre_impact().
+ * * please see [/atom/proc/bullet_act()] for information on the parameters.
+ *
+ * Things to keep in mind, if you ignore the above and didn't read bullet_act():
+ * * Parameters are changed directly, as a function's arguments are just a list passed down in ..() if nothing is in the ()
+ * * 'blocked' is extremely powerful
+ * * impact_flags having PROJECTILE_IMPACT_DELETE is a good sign to delete and do nothing else.
+ *
+ * todo: add PROJECTILE_IMPACT_DELETE_AFTER as opposed to DELETE? so rest of effects can still run
+ *
+ * @return new impact_flags; only PROJECTILE_IMPACT_DELETE is rechecked.
+ */
+/obj/projectile/proc/on_impact_new(atom/target, impact_flags, def_zone, blocked)
+	//! legacy shit
+	if(damage && damage_type == BURN)
+		var/turf/T = get_turf(target)
+		if(T)
+			T.hotspot_expose(700, 5)
+	//! end
+	return impact_flags
+
+/**
+ * called in bullet_act() to redirect our impact to another atom
+ *
+ * use like this:
+ *
+ * `return proj.impact_redirect(target, args)`
+ *
+ * * You **must** use this, not just `return target.bullet_act(arglist(args))`
+ * * This does book-keeping like adding the target to permutated, ensure the target can't be hit multiple times in a row, and more.
+ * * Don't be too funny about bullet_act_args, it's a directly passed in args list. Don't be stupid.
+ */
+/obj/projectile/proc/impact_redirect(atom/target, list/bullet_act_args)
+	if(impacted[target])
+		return bullet_act_args[BULLET_ACT_ARG_FLAGS] | PROJECTILE_IMPACT_DUPLICATE
+	bullet_act_args[BULLET_ACT_ARG_FLAGS] |= PROJECTILE_IMPACT_INDIRECTED
+	return target.bullet_act(arglist(bullet_act_args))
+
+/**
+ * phasing through
+ *
+ * * Most impact flags returned are not re-checked for performance; pierce/phase calculations should be done in pre_impact().
+ *
+ * @return new impact flags; only PROJETILE_IMPACT_DELETE is rechecked.
+ */
+/obj/projectile/proc/on_phase(atom/target, impact_flags, def_zone)
+	return impact_flags
+
+/**
+ * reflected off of
+ *
+ * * Most impact flags returned are not re-checked for performance; pierce/phase calculations should be done in pre_impact().
+ *
+ * @return new impact flags; only PROJETILE_IMPACT_DELETE is rechecked.
+ */
+/obj/projectile/proc/on_reflect(atom/target, impact_flags, def_zone)
+	return impact_flags
+
+/**
+ * piercing through
+ *
+ * * Most impact flags returned are not re-checked for performance; pierce/phase calculations should be done in pre_impact().
+ *
+ * @return new impact flags; only PROJETILE_IMPACT_DELETE is rechecked.
+ */
+/obj/projectile/proc/on_pierce(atom/target, impact_flags, def_zone)
+	return impact_flags
+
+//* Impact Processing - Combat *//
+
+/**
+ * processes default hit probability for baymiss
+ *
+ * @params
+ * * target - what we're hitting
+ * * target_opinion - the return from processing hit chance on their side
+ * * distance - distance in pixels
+ *
+ * @return hit probability
+ */
+/obj/projectile/proc/process_accuracy(atom/target, target_opinion = 100, distance = distance_travelled)
+	if(accuracy_disabled)
+		return 100
+	. = target_opinion
+	// perform accuracy curving
+	if(distance > accuracy_perfect_range)
+		// the 'd' stands for 'go to desmos'; link at the top of the file in 'Combat - Accuracy'.
+		var/d = (min(distance, accuracy_floor_range) - accuracy_curve_x_shift - accuracy_curve_factor * 2) / accuracy_curve_factor
+		var/curved_percent = min(100, (-(d / sqrt(1 + d ** 2)) * 50) + 50 + accuracy_curve_y_adjust)
+		. *= curved_percent / 100
+	if(accuracy_overall_modify != 1)
+		if(accuracy_overall_modify < 1)
+			// below 1: multiplier for hit chance
+			. *= accuracy_overall_modify
+		else
+			// above 1: divisor for miss chance
+			. = 1 - ((1 - .) / accuracy_overall_modify)
+
+/**
+ * Applies the standard damage instance to an entity.
+ *
+ * @params
+ * * target - thing being hit
+ * * blocked - 0 to 100+ blocked percent
+ * * impact_flags - impact flags passed in
+ * * hit_zone - zone to hit
+ */
+/obj/projectile/proc/process_damage_instance(atom/target, blocked, impact_flags, hit_zone)
+	#warn this currently doesn't actually hit armor/shieldcalls...
+	#warn make sure SECOND_CALL is used on shieldcalls
+	//! LEGACY COMBAT CODE
+	if(isliving(target))
+		var/mob/living/L = target
+		//Armor
+		var/soaked = L.get_armor_soak(hit_zone, src.damage_flag, src.armor_penetration)
+		var/absorb = L.run_armor_check(hit_zone, src.damage_flag, src.armor_penetration)
+		var/proj_sharp = is_sharp(src)
+		var/proj_edge = has_edge(src)
+		var/final_damage = src.get_final_damage(src)
+
+		if ((proj_sharp || proj_edge) && (soaked >= round(src.damage*0.8)))
+			proj_sharp = 0
+			proj_edge = 0
+
+		if ((proj_sharp || proj_edge) && prob(L.legacy_mob_armor(hit_zone, src.damage_flag)))
+			proj_sharp = 0
+			proj_edge = 0
+
+		var/list/impact_sounds = islist(src.impact_sounds)? LAZYACCESS(src.impact_sounds, L.get_bullet_impact_effect_type(hit_zone)) : src.impact_sounds
+		if(length(impact_sounds))
+			playsound(L, pick(impact_sounds), 75)
+		else if(!isnull(impact_sounds))
+			playsound(L, impact_sounds, 75)
+
+		//Stun Beams
+		if(src.taser_effect)
+			L.stun_effect_act(0, src.agony, hit_zone, src)
+			to_chat(L, "<font color='red'>You have been hit by [src]!</font>")
+			if(!src.nodamage)
+				L.apply_damage(final_damage, src.damage_type, hit_zone, absorb, soaked, 0, src, sharp=proj_sharp, edge=proj_edge)
+			return
+
+		if(!src.nodamage)
+			L.apply_damage(final_damage, src.damage_type, hit_zone, absorb, soaked, 0, src, sharp=proj_sharp, edge=proj_edge)
+	//! END
+
+	for(var/datum/projectile_effect/effect as anything in base_projectile_effects)
+		if(effect.hook_damage)
+			effect.on_damage(src, target, impact_flags, hit_zone, blocked)
+	for(var/datum/projectile_effect/effect as anything in additional_projectile_effects)
+		if(effect.hook_damage)
+			effect.on_damage(src, target, impact_flags, hit_zone, blocked)
+
+/**
+ * wip algorithm to dampen a projectile when it pierces
+ *
+ * * entity - thing hit
+ * * force - nominal force to resist the damping; generally, projectiles at this lose a moderate chunk of energy, while 2x loses minimal, 0.5x loses a lot.
+ * * tier - effective armor tier of object; modulates actual energy lost
+ */
+/obj/projectile/proc/dampen_on_pierce_experimental(atom/entity, force, tier)
+	var/tdiff = damage_tier - tier
+	var/dmult = src.damage / force
+	var/malus = dmult >= 1 ? ((1 / dmult) ** tdiff * 10) : (10 * ((1 / dmult) / (1 + tdiff)))
+	src.damage = clamp(src.damage - malus, src.damage * 0.5, src.damage)
 
 //* Targeting *//
 

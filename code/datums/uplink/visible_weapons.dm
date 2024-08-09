@@ -17,17 +17,17 @@
 /datum/uplink_item/item/visible_weapons/energy_sword
 	name = "Energy Sword, Colorable"
 	item_cost = 40
-	path = /obj/item/melee/energy/sword
+	path = /obj/item/melee/transforming/energy/sword
 
 /datum/uplink_item/item/visible_weapons/energy_sword_pirate
 	name = "Energy Cutlass, Colorable"
 	item_cost = 40
-	path = /obj/item/melee/energy/sword/pirate
+	path = /obj/item/melee/transforming/energy/sword/pirate
 
 /datum/uplink_item/item/visible_weapons/energy_spear
 	name = "Energy Spear, Colorable"
 	item_cost = 50
-	path = /obj/item/melee/energy/spear
+	path = /obj/item/melee/transforming/energy/spear
 
 /datum/uplink_item/item/visible_weapons/claymore
 	name = "Claymore"

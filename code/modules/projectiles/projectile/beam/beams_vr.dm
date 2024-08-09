@@ -26,9 +26,13 @@
 	tracer_type = /obj/effect/projectile/tracer/xray
 	impact_type = /obj/effect/projectile/impact/xray
 
-/obj/projectile/beam/energy_net/on_hit(var/atom/netted)
-	do_net(netted)
-	..()
+/obj/projectile/beam/energy_net/on_impact_new(atom/target, impact_flags, def_zone, blocked)
+	. = ..()
+	if(. & PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT)
+		return
+	if(!ismob(target))
+		return
+	do_net(target)
 
 /obj/projectile/beam/energy_net/proc/do_net(var/mob/M)
 	var/obj/item/energy_net/net = new (get_turf(M))
@@ -47,7 +51,6 @@
 	icon_state = "healbeam"
 	damage = 0 //stops it damaging walls
 	nodamage = TRUE
-	no_attack_log = TRUE
 	damage_type = BURN
 	damage_flag = ARMOR_LASER
 	light_color = "#80F5FF"
@@ -58,7 +61,11 @@
 	tracer_type = /obj/effect/projectile/tracer/medigun
 	impact_type = /obj/effect/projectile/impact/medigun
 
-/obj/projectile/beam/medigun/on_hit(var/atom/target, var/blocked = 0)
+/obj/projectile/beam/medigun/on_impact_new(atom/target, impact_flags, def_zone, blocked)
+	. = ..()
+	if(. & PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT)
+		return
+
 	if(istype(target, /mob/living/carbon/human))
 		var/mob/living/carbon/human/M = target
 		if(M.health < M.maxHealth)
@@ -74,4 +81,3 @@
 			M.adjustFireLoss(-15)
 			M.adjustToxLoss(-5)
 			M.adjustOxyLoss(-5)
-	return 1

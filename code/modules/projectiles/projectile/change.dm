@@ -8,8 +8,11 @@
 
 	combustion = FALSE
 
-/obj/projectile/change/on_hit(var/atom/change)
-	wabbajack(change)
+/obj/projectile/change/on_impact_new(atom/target, impact_flags, def_zone, blocked)
+	. = ..()
+	if(. & PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT)
+		return
+	wabbajack(target)
 
 /obj/projectile/change/proc/wabbajack(var/mob/M)
 	if(istype(M, /mob/living) && M.stat != DEAD)

@@ -47,9 +47,6 @@
 	. = ..()
 	if(.)
 		return
-	if(istype(mover, /obj/projectile))
-		var/obj/projectile/P = mover
-		return !P.can_hit_target(src, P.permutated, src == P.original, TRUE)
 	// thrown things still hit us even when nondense
 	if(can_cross_under(mover))
 		return TRUE

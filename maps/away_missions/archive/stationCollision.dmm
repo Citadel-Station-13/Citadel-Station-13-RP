@@ -2791,7 +2791,7 @@
 /turf/simulated/floor,
 /area/awaymission/arrivalblock)
 "kN" = (
-/obj/item/melee/energy/sword,
+/obj/item/melee/transforming/energy/sword,
 /obj/item/clothing/shoes/syndigaloshes,
 /obj/item/clothing/under/syndicate,
 /obj/effect/decal/remains/human{

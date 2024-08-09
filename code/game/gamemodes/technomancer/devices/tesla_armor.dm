@@ -21,7 +21,29 @@
 	var/normal_icon_state = "tesla_armor_0"
 	var/cooldown_to_charge = 15 SECONDS
 
-/obj/item/clothing/suit/armor/tesla/handle_shield(mob/user, var/damage, atom/damage_source = null, mob/attacker = null, var/def_zone = null, var/attack_text = "the attack")
+/obj/item/clothing/suit/armor/tesla/equipped(mob/user, slot, flags)
+	. = ..()
+	if(slot == SLOT_ID_HANDS)
+		return
+	// if you're reading this: this is not the right way to do shieldcalls
+	// this is just a lazy implementation
+	// signals have highest priority, this as a piece of armor shouldn't have that.
+	RegisterSignal(user, COMSIG_ATOM_SHIELDCALL, PROC_REF(shieldcall))
+
+/obj/item/clothing/suit/armor/tesla/unequipped(mob/user, slot, flags)
+	. = ..()
+	if(slot == SLOT_ID_HANDS)
+		return
+	UnregisterSignal(user, COMSIG_ATOM_SHIELDCALL)
+
+/obj/item/clothing/suit/armor/tesla/proc/shieldcall(mob/user, list/shieldcall_args, fake_attack)
+	var/damage = shieldcall_args[SHIELDCALL_ARG_DAMAGE]
+	var/damage_source = shieldcall_args[SHIELDCALL_ARG_WEAPON]
+	var/def_zone = shieldcall_args[SHIELDCALL_ARG_HIT_ZONE]
+
+	var/datum/event_args/actor/clickchain/clickchain = shieldcall_args[SHIELDCALL_ARG_CLICKCHAIN]
+	var/mob/attacker = clickchain?.performer
+
 	//First, some retaliation.
 	if(active)
 		if(istype(damage_source, /obj/projectile))
@@ -47,7 +69,7 @@
 				ready = 1
 				update_icon()
 				to_chat(user, "<span class='notice'>\The [src] is ready to protect you once more.</span>")
-			visible_message("<span class='danger'>\The [user]'s [src.name] blocks [attack_text]!</span>")
+			visible_message("<span class='danger'>\The [user]'s [src.name] blocks the attack!</span>")
 			update_icon()
 			return 1
 	return 0

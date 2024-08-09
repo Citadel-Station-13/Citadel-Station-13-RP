@@ -69,13 +69,13 @@
 /datum/outfit/pirate/immigrant
 	name = "Pirate - Immigrant"
 	belt = /obj/item/gun/ballistic/pirate
-	r_pocket = /obj/item/melee/energy/sword/pirate
+	r_pocket = /obj/item/melee/transforming/energy/sword/pirate
 
 /datum/outfit/pirate/dilettante
 	name = "Pirate - Dilettante"
 	uniform = /obj/item/clothing/under/surplus
 	shoes = /obj/item/clothing/shoes/boots/jackboots
-	belt = /obj/item/melee/energy/sword/pirate
+	belt = /obj/item/melee/transforming/energy/sword/pirate
 	l_hand = /obj/item/shield/makeshift
 
 /datum/outfit/pirate/professional
@@ -85,5 +85,5 @@
 	shoes = /obj/item/clothing/shoes/boots/jackboots
 	mask = /obj/item/clothing/mask/balaclava
 	belt = /obj/item/gun/energy/zip
-	r_pocket = /obj/item/melee/energy/sword/pirate
+	r_pocket = /obj/item/melee/transforming/energy/sword/pirate
 	r_hand = /obj/item/shield/makeshift

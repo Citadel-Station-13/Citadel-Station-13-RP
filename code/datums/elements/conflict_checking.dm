@@ -1,5 +1,7 @@
 /**
  * Simple conflict checking for getting number of conflicting things on someone with the same ID.
+ *
+ * todo: this is a bit slow innit.
  */
 /datum/element/conflict_checking
 	element_flags = ELEMENT_BESPOKE | ELEMENT_DETACH

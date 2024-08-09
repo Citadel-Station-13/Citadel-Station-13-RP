@@ -1,10 +1,16 @@
 /obj/effect/temporary_effect/item_pickup_ghost
-	anchored = 1
 	plane = MOB_PLANE
 	layer = ABOVE_MOB_LAYER
-	mouse_opacity = 0//just in case something dumb happens
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	time_to_die = 0.5 SECONDS
 	var/lifetime = 0.25 SECONDS //so it doesn't die before animation ends
+
+/obj/effect/temporary_effect/item_pickup_ghost/Initialize(mapload, obj/item/from_item, atom/towards_target)
+	. = ..()
+	if(from_item)
+		assumeform(from_item)
+	if(towards_target)
+		animate_towards(towards_target)
 
 /obj/effect/temporary_effect/item_pickup_ghost/proc/assumeform(var/obj/item/picked_up)
 	icon = picked_up.icon

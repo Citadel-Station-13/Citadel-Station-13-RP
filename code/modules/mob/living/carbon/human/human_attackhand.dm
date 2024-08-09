@@ -53,7 +53,7 @@
 				visible_message("<font color='red'><B>[H] reaches for [src], but misses!</B></font>")
 				return FALSE
 
-		if(H != src && check_shields(0, null, H, H.zone_sel.selecting, H.name))
+		if(atom_shieldcall_handle_touch(new /datum/event_args/actor/clickchain(user)) & SHIELDCALL_FLAGS_BLOCK_ATTACK)
 			H.do_attack_animation(src)
 			return FALSE
 

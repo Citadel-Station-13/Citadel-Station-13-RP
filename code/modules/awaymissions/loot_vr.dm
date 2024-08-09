@@ -128,7 +128,7 @@
 					prob(10);/obj/item/melee/baton,\
 					prob(10);/obj/item/melee/telebaton,\
 					prob(10);/obj/item/melee/classic_baton,\
-					prob(10);/obj/item/melee/energy/sword,\
+					prob(10);/obj/item/melee/transforming/energy/sword,\
 					prob(9);/obj/item/gun/ballistic/automatic/wt550/lethal,\
 					prob(9);/obj/item/gun/ballistic/automatic/pdw,\
 					prob(9);/obj/item/gun/ballistic/derringer,\
@@ -145,7 +145,7 @@
 					prob(8);/obj/item/gun/energy/xray,\
 					prob(8);/obj/item/gun/ballistic/automatic/c20r,\
 					prob(8);/obj/item/gun/ballistic/automatic/stg,\
-					prob(8);/obj/item/melee/energy/sword,\
+					prob(8);/obj/item/melee/transforming/energy/sword,\
 				/*	prob(8);/obj/item/gun/ballistic/automatic/m41a,\ */
 					prob(7);/obj/item/gun/energy/captain,\
 					prob(7);/obj/item/gun/energy/sniperrifle,\

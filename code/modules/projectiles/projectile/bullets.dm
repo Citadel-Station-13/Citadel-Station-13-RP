@@ -8,7 +8,7 @@
 	damage_flag = ARMOR_BULLET
 	embed_chance = 20	//Modified in the actual embed process, but this should keep embed chance about the same
 	sharp = 1
-	var/mob_passthrough_check = 0
+	projectile_type = PROJECTILE_TYPE_KINETIC
 
 	muzzle_type = /obj/effect/projectile/muzzle/bullet
 	miss_sounds = list('sound/weapons/guns/miss1.ogg','sound/weapons/guns/miss2.ogg','sound/weapons/guns/miss3.ogg','sound/weapons/guns/miss4.ogg')
@@ -16,55 +16,14 @@
 							'sound/weapons/guns/ricochet3.ogg', 'sound/weapons/guns/ricochet4.ogg')
 	impact_sounds = list(BULLET_IMPACT_MEAT = SOUNDS_BULLET_MEAT, BULLET_IMPACT_METAL = SOUNDS_BULLET_METAL)
 
-/obj/projectile/bullet/on_hit(var/atom/target, var/blocked = 0)
-	if (..(target, blocked))
-		var/mob/living/L = target
-		shake_camera(L, 3, 2)
-
-/obj/projectile/bullet/projectile_attack_mob(var/mob/living/target_mob, var/distance, var/miss_modifier)
-	if(penetrating > 0 && damage > 20 && prob(damage))
-		mob_passthrough_check = 1
-	else
-		mob_passthrough_check = 0
-	return ..()
-
-/obj/projectile/bullet/can_embed()
-	//prevent embedding if the projectile is passing through the mob
-	if(mob_passthrough_check)
-		return 0
-	return ..()
-
-/obj/projectile/bullet/check_penetrate(var/atom/A)
-	if(!A || !A.density) return 1 //if whatever it was got destroyed when we hit it, then I guess we can just keep going
-
-	if(istype(A, /obj/vehicle/sealed/mecha))
-		return 1 //mecha have their own penetration handling
-
-	if(ismob(A))
-		if(!mob_passthrough_check)
-			return 0
-		if(iscarbon(A))
-			damage *= 0.7 //squishy mobs absorb KE
-		return 1
-
-	var/chance = damage
-	if(istype(A, /turf/simulated/wall))
-		var/turf/simulated/wall/W = A
-		chance = round(damage/W.material_outer.density*1.8)
-	else if(istype(A, /obj/machinery/door))
-		var/obj/machinery/door/D = A
-		chance = round(damage/D.integrity_max*180)
-		if(D.glass) chance *= 2
-	else if(istype(A, /obj/structure/girder))
-		chance = 100
-
-	if(prob(chance))
-		if(A.opacity)
-			//display a message so that people on the other side aren't so confused
-			A.visible_message("<span class='warning'>\The [src] pierces through \the [A]!</span>")
-		return 1
-
-	return 0
+/obj/projectile/bullet/on_impact_new(atom/target, impact_flags, def_zone, blocked)
+	. = ..()
+	if(. & PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT)
+		return
+	var/mob/living/L = target
+	if(!istype(L))
+		return
+	shake_camera(L, 3, 2)
 
 /* short-casing projectiles, like the kind used in pistols or SMGs */
 
@@ -128,7 +87,7 @@
 	damage = 10 // high rof kinda fucked up lets be real
 	agony = 10 // brute easily heals, agony not so much
 	armor_penetration = 30 // reduces shield blockchance
-	accuracy = -20 // he do miss actually
+	accuracy_overall_modify = 0.8 // heehoo
 	speed = 25 * WORLD_ICON_SIZE
 
 /obj/projectile/bullet/pistol/medium/ap/suppressor/turbo // spicy boys
@@ -193,19 +152,17 @@
 	fire_sound = 'sound/weapons/weaponsounds_shotgunshot.ogg'
 	damage = 13
 	pellets = 6
-	range_step = 1
+	pellet_loss = 0.66 / WORLD_ICON_SIZE
 	spread_step = 10
 
 /obj/projectile/bullet/pellet/shotgun_improvised
 	name = "shrapnel"
-	damage = 1
+	damage = 4
 	pellets = 10
-	range_step = 1
 	spread_step = 10
 
 /obj/projectile/bullet/pellet/shotgun/flak
 	damage = 2 //The main weapon using these fires four at a time, usually with different destinations. Usually.
-	range_step = 2
 	spread_step = 30
 	armor_penetration = 10
 
@@ -218,7 +175,6 @@
 	SA_vulnerability = MOB_CLASS_DEMONIC | MOB_CLASS_ABERRATION
 	embed_chance = -1
 	pellets = 6
-	range_step = 1
 	spread_step = 20
 	holy = TRUE
 
@@ -242,20 +198,24 @@
 
 	combustion = FALSE
 
-/obj/projectile/bullet/shotgun/ion/on_hit(var/atom/target, var/blocked = 0)
-	..()
+/obj/projectile/bullet/shotgun/ion/on_impact_new(atom/target, impact_flags, def_zone, blocked)
+	. = ..()
+	if(. & PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT)
+		return
 	empulse(target, 0, 0, 2, 0)	//Only affects what it hits
-	return 1
+	. |= PROJECTILE_IMPACT_DELETE
 
 //Frag shot
 /obj/projectile/bullet/shotgun/frag12
 	name ="frag12 slug"
 	damage = 25
 
-/obj/projectile/bullet/shotgun/frag12/on_hit(atom/target, blocked = FALSE)
-	..()
+/obj/projectile/bullet/shotgun/frag12/on_impact_new(atom/target, impact_flags, def_zone, blocked)
+	. = ..()
+	if(. & PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT)
+		return
 	explosion(target, -1, 0, 1)
-	return 1
+	. |= PROJECTILE_IMPACT_DELETE
 
 /* "Rifle" rounds */
 
@@ -361,10 +321,12 @@
 	embed_chance = 0
 	edge = 1
 
-/obj/projectile/bullet/burstbullet/on_hit(var/atom/target, var/blocked = 0)
-	if(isturf(target))
-		explosion(target, -1, 0, 2)
-	..()
+/obj/projectile/bullet/burstbullet/on_impact_new(atom/target, impact_flags, def_zone, blocked)
+	. = ..()
+	if(. & PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT)
+		return
+	explosion(target, -1, 0, 2)
+	. |= PROJECTILE_IMPACT_DELETE
 
 /obj/projectile/bullet/burstbullet/service
 	name = "charge bullet"
@@ -376,10 +338,13 @@
 	SA_vulnerability = MOB_CLASS_DEMONIC | MOB_CLASS_ABERRATION
 	holy = TRUE
 
-/obj/projectile/bullet/burstbullet/service/on_hit(var/atom/target, var/blocked = 0)
+/obj/projectile/bullet/burstbullet/service/on_impact_new(atom/target, impact_flags, def_zone, blocked)
+	. = ..()
+	if(. & PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT)
+		return
 	if(isturf(target))
 		explosion(target, 0, 1, 2)
-	..()
+	return . | PROJECTILE_IMPACT_DELETE
 
 /* Black Powder */
 
@@ -399,7 +364,7 @@
 /obj/projectile/bullet/pellet/blunderbuss //More Damage at close range greater falloff
 	damage = 10
 	pellets = 8
-	range_step = 0.5 //Very quick falloff
+	pellet_loss = 1.5 / WORLD_ICON_SIZE
 	spread_step = 30
 
 /obj/projectile/bullet/pellet/blunderbuss/silver
@@ -418,7 +383,6 @@
 
 /obj/projectile/bullet/pellet/heavy_shotgun //I want this to use similar calcuations to blunderbuss shot for falloff.
 	damage = 3 //Fires five pellets at a time.
-	range_step = 0.75
 	spread_step = 30
 	armor_penetration = 10
 
@@ -432,7 +396,10 @@
 /obj/projectile/bullet/heavy_shotgun/grit
 	name = "custom heavy slug"
 
-/obj/projectile/bullet/heavy_shotgun/grit/on_hit(var/atom/movable/target, var/blocked = 0)
+/obj/projectile/bullet/heavy_shotgun/grit/on_impact_new(atom/target, impact_flags, def_zone, blocked)
+	. = ..()
+	if(. & PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT)
+		return
 	if(isliving(target))
 		var/mob/living/L = target
 		var/throwdir = get_dir(firer,L)
@@ -440,14 +407,14 @@
 			L.afflict_stun(20 * 1)
 			L.Confuse(1)
 		L.throw_at_old(get_edge_target_turf(L, throwdir), rand(3,6), 10)
-
-		return 1
 
 /obj/projectile/bullet/pellet/heavy_shotgun/grit
 	name = "heavy buckshot"
-	range_step = 1
 
-/obj/projectile/bullet/pellet/heavy_shotgun/grit/on_hit(var/atom/movable/target, var/blocked = 0)
+/obj/projectile/bullet/pellet/heavy_shotgun/on_impact_new(atom/target, impact_flags, def_zone, blocked)
+	. = ..()
+	if(. & PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT)
+		return
 	if(isliving(target))
 		var/mob/living/L = target
 		var/throwdir = get_dir(firer,L)
@@ -455,8 +422,6 @@
 			L.afflict_stun(20 * 1)
 			L.Confuse(1)
 		L.throw_at_old(get_edge_target_turf(L, throwdir), rand(3,6), 10)
-
-		return 1
 
 /* Incendiary */
 
@@ -506,7 +471,11 @@
 	penetrating = 5
 	combustion = TRUE
 
-/obj/projectile/bullet/incendiary/caseless/on_hit(var/atom/movable/target, var/blocked = 0)
+/obj/projectile/bullet/incendiary/caseless/on_impact_new(atom/target, impact_flags, def_zone, blocked)
+	. = ..()
+	if(. & PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT)
+		return
+	// todo: burn this to the ground
 	if(isliving(target))
 		var/mob/living/L = target
 		L.adjustFireLoss(10)

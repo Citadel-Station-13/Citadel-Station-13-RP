@@ -36,6 +36,7 @@
 	// var/dulled_divisor = 0.1	//Just drops the damage to a tenth
 	// var/drops_debris = 1
 
+
 /obj/item/material/Initialize(mapload, material)
 	if(!isnull(material))
 		material_parts = material

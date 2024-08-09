@@ -78,7 +78,7 @@
 				else if(was_failing && !now_failing)
 					atom_fix()
 
-/atom/vv_get_var(var_name)
+/atom/vv_get_var(var_name, resolve)
 	switch(var_name)
 		if(NAMEOF(src, base_layer))
 			if(isnull(base_layer))
