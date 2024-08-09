@@ -45,7 +45,7 @@
 	return ..()
 
 /obj/item/melee/transforming/update_icon_state()
-	icon_state = "[initial(icon_state)][active ? "_active" : ""]"
+	icon_state = "[initial(icon_state)][active ? "-active" : ""]"
 	return ..()
 
 /obj/item/melee/transforming/on_attack_self(datum/event_args/actor/e_args)

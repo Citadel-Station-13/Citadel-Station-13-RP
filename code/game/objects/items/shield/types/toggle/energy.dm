@@ -1,10 +1,9 @@
-#warn redo sprite; active sprite as _active
 /obj/item/shield/transforming/energy
 	name = "energy combat shield"
 	desc = "A shield capable of stopping most projectile and melee attacks. It can be retracted, expanded, and stored anywhere."
-	icon = 'icons/obj/weapons.dmi'
-	icon_state = "eshield"
-	item_state = "eshield"
+	icon = 'icons/items/shields/transforming.dmi'
+	icon_state = "energy"
+	base_icon_state = "energy"
 	slot_flags = SLOT_EARS
 	atom_flags = NOCONDUCT
 
@@ -31,10 +30,6 @@
 
 	origin_tech = list(TECH_MATERIAL = 4, TECH_MAGNET = 3, TECH_ILLEGAL = 4)
 	attack_verb = list("shoved", "bashed")
-	item_icons = list(
-			SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand_melee.dmi',
-			SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_melee.dmi',
-			)
 
 	/// drop projectiles sometimes?
 	var/legacy_projectile_damage_drop = TRUE
@@ -59,31 +54,33 @@
 	spark_system.set_up(3, 0, defending.loc)
 	spark_system.start()
 
-#warn parse
-/obj/item/shield/transforming/energy/attack_self(mob/user)
+/obj/item/shield/transforming/energy/on_activate(datum/event_args/actor/actor, silent)
 	. = ..()
-	if(.)
-		return
-	if (active)
-		slot_flags = null
-		to_chat(user, "<span class='notice'>\The [src] is now active.</span>")
+	slot_flags = SLOT_EARS
+	if(!silent)
+		actor.chat_feedback(
+			SPAN_WARNING("You activate \the [src]."),
+			target = src,
+		)
+	set_light(lrange, lpower, lcolor)
 
-	else
-		slot_flags = SLOT_EARS
-		to_chat(user, "<span class='notice'>\The [src] can now be concealed.</span>")
+/obj/item/shield/transforming/energy/on_deactivate(datum/event_args/actor/actor, silent)
+	. = ..()
+	slot_flags = NONE
+	if(!silent)
+		actor.chat_feedback(
+			SPAN_WARNING("You collapse \the [src]."),
+			target = src,
+		)
+	set_light(0)
 
-/obj/item/shield/transforming/energy/update_icon()
-	var/mutable_appearance/blade_overlay = mutable_appearance(icon, "[icon_state]_blade")
+/obj/item/shield/transforming/energy/build_active_overlay()
+	var/image/built = ..()
 	if(lcolor)
-		blade_overlay.color = lcolor
-	cut_overlays()		//So that it doesn't keep stacking overlays non-stop on top of each other
-	if(active)
-		add_overlay(blade_overlay)
-		item_state = "[icon_state]_blade"
-		set_light(lrange, lpower, lcolor)
-	else
-		set_light(0)
-		item_state = "[icon_state]"
+		built.color = lcolor
+	return built
+
+// todo: legacy below
 
 /obj/item/shield/transforming/energy/AltClick(mob/living/user)
 	if(!in_range(src, user))	//Basic checks to prevent abuse
@@ -101,6 +98,8 @@
 	. = ..()
 	. += "<span class='notice'>Alt-click to recolor it.</span>"
 
+#warn icon state as -active
+#warn which faction?
 /obj/item/shield/transforming/energy/imperial
 	name = "energy scutum"
 	desc = "It's really easy to mispronounce the name of this shield if you've only read it in books."

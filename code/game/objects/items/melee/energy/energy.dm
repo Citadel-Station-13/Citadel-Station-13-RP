@@ -4,7 +4,7 @@
 /datum/parry_frame/passive_block/energy
 	parry_sfx = 'sound/weapons/blade1.ogg'
 
-#warn icon state --> _active
+#warn icon state as -active
 /obj/item/melee/transforming/energy
 	icon = 'icons/obj/weapons.dmi'
 	armor_penetration = 50
@@ -229,7 +229,7 @@
 /*
  * Energy Sword
  */
-#warn icon state --> _active
+#warn icon state as -active
 /obj/item/melee/transforming/energy/sword
 	name = "energy sword"
 	desc = "May the damage_force be within you."
@@ -543,7 +543,7 @@
 	attack_verb = list("whacked", "beat", "slapped", "thonked")
 	DelComponent(/datum/component/jousting)
 
-#warn icon state --> _active
+#warn icon state as -active
 /obj/item/melee/transforming/energy/hfmachete // ported from /vg/station - vgstation-coders/vgstation13#13913, fucked up by hatterhat
 	name = "high-frequency machete"
 	desc = "A high-frequency broad blade used either as an implement or in combat like a short sword."
@@ -609,7 +609,8 @@
 			var/obj/effect/plant/P = target
 			P.die_off()
 
-#warn icon state --> _active
+#warn icon state as -active
+#warn which faction?
 /obj/item/melee/transforming/energy/sword/imperial
 	name = "energy gladius"
 	desc = "A broad, short energy blade.  You'll be glad to have this in a fight."
