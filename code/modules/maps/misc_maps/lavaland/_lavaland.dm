@@ -34,7 +34,7 @@
 	return
 
 /obj/machinery/lavaland_entryportal/proc/move_object(atom/movable/AM, turf/T)
-	if(AM.anchored && !istype(AM, /obj/mecha))
+	if(AM.anchored && !istype(AM, /obj/vehicle/sealed/mecha))
 		return
 
 	if(isliving(AM))
@@ -68,7 +68,7 @@
 	return
 
 /obj/effect/lavaland_exitportal/proc/move_object(atom/movable/AM, turf/T)
-	if(AM.anchored && !istype(AM, /obj/mecha))
+	if(AM.anchored && !istype(AM, /obj/vehicle/sealed/mecha))
 		return
 
 	if(isliving(AM))

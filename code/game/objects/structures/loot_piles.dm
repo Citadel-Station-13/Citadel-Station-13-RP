@@ -254,7 +254,6 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 		/obj/item/reagent_containers/food/snacks/mysterysoup,
 		/obj/item/reagent_containers/food/snacks/hotdog,
 		/obj/item/pizzabox,
-		/obj/item/ammo_casing/spent,
 		/obj/item/stack/rods{amount = 5},
 		/obj/item/stack/material/steel{amount = 5},
 		/obj/item/stack/material/cardboard{amount = 5},
@@ -1082,7 +1081,7 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 		)
 
 	uncommon_loot = list(
-		/obj/item/ammo_magazine/m75,
+		/obj/item/ammo_magazine/a75,
 		/obj/item/mecha_parts/mecha_equipment/weapon/ballistic/mortar
 		)
 

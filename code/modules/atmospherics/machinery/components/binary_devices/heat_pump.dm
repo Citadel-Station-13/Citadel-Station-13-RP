@@ -5,14 +5,13 @@
 	name = "heat pump"
 	desc = "A heat pump, used to transfer heat between two pipe systems."
 
-	level = 1
-
 	icon = 'icons/atmos/heat_pump.dmi'
 	icon_state = "map_off"
 	construction_type = /obj/item/pipe/directional
 	pipe_state = "pump"
 
 	connect_types = CONNECT_TYPE_REGULAR|CONNECT_TYPE_AUX
+	hides_underfloor_underlays = TRUE
 
 	use_power = USE_POWER_OFF
 	//Internal circuitry, friction losses and stuff
@@ -88,9 +87,6 @@
 			return
 		add_underlay(T, node1, turn(dir, 180))
 		add_underlay(T, node2, dir)
-
-/obj/machinery/atmospherics/component/binary/heat_pump/hide(var/i)
-	update_underlays()
 
 /obj/machinery/atmospherics/component/binary/heat_pump/attackby(obj/item/W, mob/user)
 	if(istype(W, /obj/item/pen))

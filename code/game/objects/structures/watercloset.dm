@@ -131,7 +131,7 @@
 	reagents.add_reagent("chlorine", 3)
 	reagents.add_reagent("ammonia", 1)
 
-/obj/item/reagent_containers/food/urinalcake/attack_self(mob/living/user)
+/obj/item/reagent_containers/food/urinalcake/attack_self(mob/user)
 	user.visible_message("<span class='notice'>[user] squishes [src]!</span>", "<span class='notice'>You squish [src].</span>", "<i>You hear a squish.</i>")
 	icon_state = "urinalcake_squish"
 	addtimer(VARSET_CALLBACK(src, icon_state, "urinalcake"), 8)

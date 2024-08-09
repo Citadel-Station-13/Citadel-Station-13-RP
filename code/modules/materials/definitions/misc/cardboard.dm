@@ -12,6 +12,8 @@
 	destruction_desc = "crumples"
 	pass_stack_colors = TRUE
 
+	worth = 1
+
 	relative_integrity = 0.25
 	weight_multiplier = 1
 	density = 8 * 0.2

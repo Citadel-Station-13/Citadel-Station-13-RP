@@ -211,7 +211,9 @@
 
 	playsound(src, crayon_sound, 50, TRUE, -1)
 
-	return make_graffiti(target, datapack, state, angle, pixel_x, pixel_y)
+	. = make_graffiti(target, datapack, state, angle, pixel_x, pixel_y)
+	if(.)
+		log_construction(actor, ., "created graffiti ([datapack] - [state])")
 
 /obj/item/pen/crayon/proc/attempt_color_entity(atom/target, datum/event_args/actor/actor)
 	// todo: implement attempt_color_entity

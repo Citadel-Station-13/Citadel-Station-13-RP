@@ -122,7 +122,7 @@
 			to_chat(user, "<span class='notice'>You set the label to \"[tmp_label]\".</span>")
 			label_text = tmp_label
 			update_name_label()
-	if(istype(W,/obj/item/storage/bag))
+	if(istype(W,/obj/item/storage/bag) || istype(W,/obj/item/storage/part_replacer))
 		..()
 	if(istype(W,/obj/item/reagent_containers/glass) || istype(W,/obj/item/reagent_containers/food/drinks) || istype(W,/obj/item/reagent_containers/food/condiment))
 		return

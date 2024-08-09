@@ -225,7 +225,7 @@
 	},
 /area/awaymission/snow_outpost/powered)
 "aR" = (
-/obj/mecha/combat/marauder/mauler{
+/obj/vehicle/sealed/mecha/combat/marauder/mauler{
 	operation_req_access = list()
 	},
 /turf/simulated/floor/bluegrid{

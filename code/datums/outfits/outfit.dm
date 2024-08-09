@@ -93,7 +93,7 @@
 	post_equip(H)
 
 	if(W) // We set ID info last to ensure the ID photo is as correct as possible.
-		H.set_id_info(W)
+		H.set_id_info(W, H.client)
 	return 1
 
 /datum/outfit/proc/equip_base(mob/living/carbon/human/H)
@@ -218,8 +218,8 @@
 	uniform = /obj/item/clothing/under/oricon/mildress/marine/command
 	back = /obj/item/storage/backpack/satchel
 	belt = /obj/item/gun/ballistic/revolver/consul
-	l_pocket = /obj/item/ammo_magazine/s44
-	r_pocket = /obj/item/ammo_magazine/s44
+	l_pocket = /obj/item/ammo_magazine/a44/speedloader
+	r_pocket = /obj/item/ammo_magazine/a44/speedloader
 	r_hand = /obj/item/clothing/accessory/holster/hip
 	l_hand = /obj/item/clothing/accessory/tie/black
 

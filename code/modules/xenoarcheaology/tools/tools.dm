@@ -337,6 +337,7 @@
 	materials_base = list(MAT_STEEL = 10000, MAT_GLASS = 5000)
 	w_class = WEIGHT_CLASS_SMALL
 	slot_flags = SLOT_BELT
+	worth_intrinsic = 250
 	var/mode = 1 //Start off scanning. 1 = scanning, 0 = measuring
 	var/obj/item/ano_scanner/anomaly_scanner = null
 	var/obj/item/depth_scanner/depth_scanner = null

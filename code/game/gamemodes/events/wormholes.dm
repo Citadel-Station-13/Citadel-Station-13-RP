@@ -63,7 +63,6 @@
 	P.target = exit
 	P.creator = null
 	P.icon = 'icons/obj/objects.dmi'
-	P.failchance = 0
 	P.icon_state = "anom"
 	P.name = "wormhole"
 	spawn(rand(min_duration,max_duration))

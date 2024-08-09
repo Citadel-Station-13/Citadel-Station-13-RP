@@ -641,8 +641,8 @@
 
 	corpse = /obj/spawner/corpse/vox/pirate
 	loot_list = list(/obj/item/gun/ballistic/shotgun/pump/rifle/vox_hunting = 100,
-					/obj/item/ammo_magazine/clip/c762 = 30,
-					/obj/item/ammo_magazine/clip/c762 = 30
+					/obj/item/ammo_magazine/a7_62mm/clip = 30,
+					/obj/item/ammo_magazine/a7_62mm/clip = 30
 					)
 
 	ai_holder_type = /datum/ai_holder/polaris/simple_mob/merc
@@ -727,8 +727,8 @@
 	ai_holder_type = /datum/ai_holder/polaris/simple_mob/merc/ranged/shotgun
 	corpse = /obj/spawner/corpse/vox/boarder_r
 	loot_list = list(/obj/item/gun/ballistic/shotgun/pump/combat = 100,
-					/obj/item/ammo_magazine/m12gdrum = 30,
-					/obj/item/ammo_magazine/m12gdrum = 30
+					/obj/item/ammo_magazine/a12g/drum = 30,
+					/obj/item/ammo_magazine/a12g/drum = 30
 					)
 
 	needs_reload = TRUE

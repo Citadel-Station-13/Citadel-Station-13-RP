@@ -2,7 +2,6 @@
 // This is the pipe that you drag around, not the attached ones.
 
 /obj/structure/disposalconstruct
-
 	name = "disposal pipe segment"
 	desc = "A huge pipe segment used for constructing disposal systems."
 	icon = 'icons/obj/pipes/disposal.dmi'
@@ -11,7 +10,6 @@
 	density = 0
 	pressure_resistance = 5*ONE_ATMOSPHERE
 	materials_base = list(MAT_STEEL = 1850)
-	level = 2
 	var/sortType = ""
 	var/ptype = 0
 	var/subtype = 0
@@ -45,8 +43,13 @@
 	else
 		update() // do_a_flip() calls update anyway, so, lazy way of catching unupdated pipe!
 
-// update iconstate and dpdir due to dir and type
 /obj/structure/disposalconstruct/proc/update()
+	// todo: rework this..
+	update_icon()
+
+// update iconstate and dpdir due to dir and type
+/obj/structure/disposalconstruct/update_icon()
+	. = ..()
 	var/flip = turn(dir, 180)
 	var/left = turn(dir, 90)
 	var/right = turn(dir, -90)
@@ -119,13 +122,6 @@
 	else
 		alpha = 255
 		//otherwise burying half-finished pipes under floors causes them to half-fade
-
-// hide called by levelupdate if turf intact status changes
-// change visibility status and force update of icon
-/obj/structure/disposalconstruct/hide(var/intact)
-	invisibility = (intact && level==1) ? 101: 0	// hide if floor is intact
-	update()
-
 
 // flip and rotate verbs
 /obj/structure/disposalconstruct/verb/rotate()
@@ -260,7 +256,7 @@
 		if(anchored)
 			anchored = 0
 			if(ispipe)
-				level = 2
+				set_hides_underfloor(OBJ_UNDERFLOOR_NEVER)
 				density = 0
 			else
 				density = 1
@@ -286,7 +282,7 @@
 
 			anchored = 1
 			if(ispipe)
-				level = 1 // We don't want disposal bins to disappear under the floors
+				set_hides_underfloor(OBJ_UNDERFLOOR_ALWAYS)
 				density = 0
 			else
 				density = 1 // We don't want disposal bins or outlets to go density 0
@@ -349,12 +345,6 @@
 		else
 			to_chat(user, "You need to attach it to the plating first!")
 			return
-
-/obj/structure/disposalconstruct/hides_under_flooring()
-	if(anchored)
-		return 1
-	else
-		return 0
 
 /obj/structure/disposalconstruct/proc/is_pipe()
 	return (ptype != DISPOSAL_PIPE_BIN && ptype != DISPOSAL_PIPE_OUTLET && ptype != DISPOSAL_PIPE_CHUTE)

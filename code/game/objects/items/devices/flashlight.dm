@@ -6,8 +6,9 @@
 	w_class = WEIGHT_CLASS_SMALL
 	slot_flags = SLOT_BELT
 	materials_base = list(MAT_STEEL = 50, MAT_GLASS = 20)
-	action_button_name = "Toggle Flashlight"
+	item_action_name = "Toggle Flashlight"
 	light_wedge = LIGHT_WIDE
+	worth_intrinsic = 25
 
 	var/on = FALSE
 	/// Luminosity when on
@@ -89,10 +90,6 @@
 	else
 		set_light(0)
 
-/obj/item/flashlight/update_appearance(updates)
-	. = ..()
-	set_flashlight()
-
 /obj/item/flashlight/update_icon_state()
 	. = ..()
 
@@ -133,8 +130,8 @@
 	else if(power_use)
 		STOP_PROCESSING(SSobj, src)
 	playsound(src.loc, 'sound/weapons/empty.ogg', 15, TRUE, -3)
-	update_appearance()
-	user.update_action_buttons()
+	set_flashlight()
+	update_full_icon()
 	return TRUE
 
 /obj/item/flashlight/emp_act(severity)
@@ -327,7 +324,7 @@
 	light_wedge = LIGHT_OMNI
 	light_color = LIGHT_COLOR_FLARE
 
-	action_button_name = null //just pull it manually, neckbeard.
+	item_action_name = null //just pull it manually, neckbeard.
 	power_use = 0
 	drop_sound = 'sound/items/drop/gloves.ogg'
 	pickup_sound = 'sound/items/pickup/gloves.ogg'

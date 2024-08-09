@@ -92,7 +92,7 @@
 	desc = "A 21 round magazine for an advanced 9mm SMG."
 	req_tech = list(TECH_COMBAT = 4, TECH_MATERIAL = 3)
 	materials_base = list(MAT_STEEL = 3750, MAT_SILVER = 100) // Requires silver for proprietary magazines! Or something.
-	build_path = /obj/item/ammo_magazine/m9mmAdvanced
+	build_path = /obj/item/ammo_magazine/a9mm/advanced_smg
 
 /datum/design/science/weapon/ballistic/ammo/techshell
 	design_name = "unloaded tech shell"
@@ -116,7 +116,7 @@
 	id = "m57x28mmp90"
 	req_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 4)
 	materials_base = list(MAT_STEEL = 2250, MAT_PLASTIC = 1500, MAT_COPPER = 1000)
-	build_path = /obj/item/ammo_magazine/m57x28mmp90
+	build_path = /obj/item/ammo_magazine/a5_7mm/p90
 
 /datum/design/science/weapon/ballistic/ammo/m57x28mm
 	abstract_type = /datum/design/science/weapon/ballistic/ammo/m57x28mm
@@ -127,28 +127,28 @@
 	id = "ntles"
 	req_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 4)
 	materials_base = list(MAT_STEEL = 1500, MAT_COPPER = 750)
-	build_path = /obj/item/ammo_magazine/m57x28mm/ntles
+	build_path = /obj/item/ammo_magazine/a5_7mm/nt_les
 
 /datum/design/science/weapon/ballistic/ammo/m57x28mm/ntles/ap
 	design_name = "5.7 top-mounted magazine (AP)"
 	desc = "A standard capacity sidearm magazine (5.7x28mm armor-piercing)."
 	id = "ntlesap"
 	materials_base = list(MAT_STEEL = 1500, MAT_COPPER = 1000)
-	build_path = /obj/item/ammo_magazine/m57x28mm/ntles/ap
+	build_path = /obj/item/ammo_magazine/a5_7mm/nt_les/ap
 
 /datum/design/science/weapon/ballistic/ammo/m57x28mm/ntles/hp
 	design_name = "5.7 top-mounted magazine (HP)"
 	desc = "A standard capacity sidearm magazine (5.7x28mm hollow point)."
 	id = "ntleshp"
 	materials_base = list(MAT_STEEL = 1500, MAT_COPPER = 750)
-	build_path = /obj/item/ammo_magazine/m57x28mm/ntles/hp
+	build_path = /obj/item/ammo_magazine/a5_7mm/nt_les/hp
 
 /datum/design/science/weapon/ballistic/ammo/m57x28mm/ntles/hunter
 	design_name = "5.7 top-mounted magazine (Hunter)"
 	desc = "A standard capacity sidearm magazine (5.7x28mm hunter)."
 	id = "ntleshunter"
 	materials_base = list(MAT_STEEL = 1500, MAT_COPPER = 500)
-	build_path = /obj/item/ammo_magazine/m57x28mm/ntles/hunter
+	build_path = /obj/item/ammo_magazine/a5_7mm/nt_les/hunter
 
 /datum/design/science/weapon/ballistic/ammo/m57x28mm/ntles/highcap
 	design_name = "5.7 highcap top-mounted magazine"
@@ -156,28 +156,28 @@
 	id = "ntleshc"
 	req_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 4)
 	materials_base = list(MAT_STEEL = 2500, MAT_COPPER = 2000)
-	build_path = /obj/item/ammo_magazine/m57x28mm/ntles/highcap
+	build_path = /obj/item/ammo_magazine/a5_7mm/nt_les/highcap
 
 /datum/design/science/weapon/ballistic/ammo/m57x28mm/ntles/highcap/ap
 	design_name = "5.7 highcap top-mounted magazine (AP)"
 	desc = "A high capacity sidearm magazine (5.7x28mm armor-piercing)."
 	id = "ntleshcap"
 	materials_base = list(MAT_STEEL = 2500, MAT_COPPER = 2500)
-	build_path = /obj/item/ammo_magazine/m57x28mm/ntles/highcap/ap
+	build_path = /obj/item/ammo_magazine/a5_7mm/nt_les/highcap/ap
 
 /datum/design/science/weapon/ballistic/ammo/m57x28mm/ntles/highcap/hp
 	design_name = "5.7 highcap top-mounted magazine (HP)"
 	desc = "A high capacity sidearm magazine (5.7x28mm hollow point)."
 	id = "ntleshchp"
 	materials_base = list(MAT_STEEL = 2500, MAT_COPPER = 2000)
-	build_path = /obj/item/ammo_magazine/m57x28mm/ntles/highcap/hp
+	build_path = /obj/item/ammo_magazine/a5_7mm/nt_les/highcap/hp
 
 /datum/design/science/weapon/ballistic/ammo/m57x28mm/ntles/highcap/hunter
 	design_name = "5.7 highcap top-mounted magazine (Hunter)"
 	desc = "A high capacity sidearm magazine (5.7x28mm hunter)."
 	id = "ntleshchunter"
 	materials_base = list(MAT_STEEL = 2500, MAT_COPPER = 1750)
-	build_path = /obj/item/ammo_magazine/m57x28mm/ntles/highcap/hunter
+	build_path = /obj/item/ammo_magazine/a5_7mm/nt_les/highcap/hunter
 
 /datum/design/science/weapon/ballistic/ammo/m57x28mm/fiveseven
 	design_name = "5.7 sidearm magazine"
@@ -185,28 +185,28 @@
 	id = "fiveseven"
 	req_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 4)
 	materials_base = list(MAT_STEEL = 1250, MAT_COPPER = 750)
-	build_path = /obj/item/ammo_magazine/m57x28mm/fiveseven
+	build_path = /obj/item/ammo_magazine/a5_7mm/five_seven
 
 /datum/design/science/weapon/ballistic/ammo/m57x28mm/fiveseven/ap
 	design_name = "5.7 sidearm magazine (AP)"
 	desc = "A standard capacity sidearm magazine (5.7x28mm armor-piercing)."
 	id = "fivesevenap"
 	materials_base = list(MAT_STEEL = 1250, MAT_COPPER = 1000)
-	build_path = /obj/item/ammo_magazine/m57x28mm/fiveseven/ap
+	build_path = /obj/item/ammo_magazine/a5_7mm/five_seven/ap
 
 /datum/design/science/weapon/ballistic/ammo/m57x28mm/fiveseven/hp
 	design_name = "5.7 sidearm magazine (HP)"
 	desc = "A standard capacity sidearm magazine (5.7x28mm hollow point)."
 	id = "fivesevenhp"
 	materials_base = list(MAT_STEEL = 1250, MAT_COPPER = 750)
-	build_path = /obj/item/ammo_magazine/m57x28mm/fiveseven/hp
+	build_path = /obj/item/ammo_magazine/a5_7mm/five_seven/hp
 
 /datum/design/science/weapon/ballistic/ammo/m57x28mm/fiveseven/hunter
 	design_name = "5.7 sidearm magazine (Hunter)"
 	desc = "A standard capacity sidearm magazine (5.7x28mm hunter)."
 	id = "fivesevenhunter"
 	materials_base = list(MAT_STEEL = 1250, MAT_COPPER = 250)
-	build_path = /obj/item/ammo_magazine/m57x28mm/fiveseven/hunter
+	build_path = /obj/item/ammo_magazine/a5_7mm/five_seven/hunter
 
 /datum/design/science/weapon/ballistic/ammo/m57x28mm/fiveseven/highcap
 	design_name = "5.7 sidearm high-cap magazine"
@@ -214,28 +214,28 @@
 	id = "fivesevenhc"
 	req_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 4)
 	materials_base = list(MAT_STEEL = 2000, MAT_COPPER = 750)
-	build_path = /obj/item/ammo_magazine/m57x28mm/fiveseven/highcap
+	build_path = /obj/item/ammo_magazine/a5_7mm/five_seven/highcap
 
 /datum/design/science/weapon/ballistic/ammo/m57x28mm/fiveseven/highcap/ap
 	design_name = "5.7 sidearm high-cap magazine (AP)"
 	desc = "A high capacity sidearm magazine (5.7x28mm armor-piercing)."
 	id = "fivesevenhcap"
 	materials_base = list(MAT_STEEL = 2500, MAT_COPPER = 1000)
-	build_path = /obj/item/ammo_magazine/m57x28mm/fiveseven/highcap/ap
+	build_path = /obj/item/ammo_magazine/a5_7mm/five_seven/highcap/ap
 
 /datum/design/science/weapon/ballistic/ammo/m57x28mm/fiveseven/highcap/hp
 	design_name = "5.7 sidearm high-cap magazine (HP)"
 	desc = "A high capacity sidearm magazine (5.7x28mm hollow point)."
 	id = "fivesevenhchp"
 	materials_base = list(MAT_STEEL = 2000, MAT_COPPER = 750)
-	build_path = /obj/item/ammo_magazine/m57x28mm/fiveseven/highcap/hp
+	build_path = /obj/item/ammo_magazine/a5_7mm/five_seven/highcap/hp
 
 /datum/design/science/weapon/ballistic/ammo/m57x28mm/fiveseven/highcap/hunter
 	design_name = "5.7 sidearm high-cap magazine (Hunter)"
 	desc = "A high capacity sidearm magazine (5.7x28mm hunter)."
 	id = "fivesevenhchunter"
 	materials_base = list(MAT_STEEL = 2000, MAT_COPPER = 500)
-	build_path = /obj/item/ammo_magazine/m57x28mm/fiveseven/highcap/hunter
+	build_path = /obj/item/ammo_magazine/a5_7mm/five_seven/highcap/hunter
 
 /datum/design/science/weapon/phase
 	abstract_type = /datum/design/science/weapon/phase
@@ -286,7 +286,6 @@
 	desc = "An advanced chem spraying device."
 	id = "chemsprayer"
 	req_tech = list(TECH_MATERIAL = 3, TECH_ENGINEERING = 3, TECH_BIO = 2)
-	materials_base = list(MAT_STEEL = 5000, MAT_GLASS = 1000)
 	build_path = /obj/item/reagent_containers/spray/chemsprayer
 
 /datum/design/science/weapon/fuelrod
@@ -307,7 +306,7 @@
 	id = "dartgun_ammo_s"
 	req_tech = list(TECH_COMBAT = 6, TECH_MATERIAL = 2, TECH_BIO = 2, TECH_MAGNET = 1, TECH_ILLEGAL = 1)
 	materials_base = list(MAT_STEEL = 50, MAT_GOLD = 30, MAT_SILVER = 30, MAT_GLASS = 50)
-	build_path = /obj/item/ammo_casing/chemdart/small
+	build_path = /obj/item/ammo_casing/dart/chemdart/small
 
 /datum/design/science/weapon/ammo/dartgunmag_med
 	id = "dartgun_mag_m"
@@ -319,7 +318,7 @@
 	id = "dartgun_ammo_m"
 	req_tech = list(TECH_COMBAT = 7, TECH_MATERIAL = 2, TECH_BIO = 2, TECH_MAGNET = 1, TECH_ILLEGAL = 1)
 	materials_base = list(MAT_STEEL = 80, MAT_GOLD = 40, MAT_SILVER = 40, MAT_GLASS = 60)
-	build_path = /obj/item/ammo_casing/chemdart
+	build_path = /obj/item/ammo_casing/dart/chemdart
 
 /datum/design/science/weapon/melee
 	abstract_type = /datum/design/science/weapon/melee
@@ -412,14 +411,14 @@
 	id = "nsfw_prototype"
 	req_tech = list(TECH_MATERIAL = 6, TECH_MAGNET = 4, TECH_POWER = 4, TECH_COMBAT = 7)
 	materials_base = list(MAT_STEEL = 10000, MAT_GLASS = 6000, MAT_PHORON = 8000, MAT_URANIUM = 4000)
-	build_path = /obj/item/gun/ballistic/cell_loaded/combat/prototype
+	build_path = /obj/item/gun/ballistic/microbattery/combat/prototype
 
 /datum/design/science/weapon/cell_based/prototype_nsfw_mag
 	design_name = "combat cell magazine"
 	id = "nsfw_mag_prototype"
 	req_tech = list(TECH_MATERIAL = 6, TECH_MAGNET = 4, TECH_POWER = 4, TECH_COMBAT = 7)
 	materials_base = list(MAT_STEEL = 8000, MAT_GLASS = 4000, MAT_PHORON = 4000)
-	build_path = /obj/item/ammo_magazine/cell_mag/combat/prototype
+	build_path = /obj/item/ammo_magazine/microbattery/combat/prototype
 
 /datum/design/science/nsfw_cell
 	abstract_type = /datum/design/science/nsfw_cell

@@ -6,7 +6,7 @@
 	icon_state = "intact"
 	pipe_icon = "hepipe"
 	color = "#404040"
-	level = 2
+	hides_underfloor = OBJ_UNDERFLOOR_NEVER
 	connect_types = CONNECT_TYPE_HE
 	pipe_flags = PIPING_DEFAULT_LAYER_ONLY
 	construction_type = /obj/item/pipe/binary/bendable
@@ -33,6 +33,9 @@
 
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging/get_init_dirs()
 	return ..() | initialize_directions_he
+
+/obj/machinery/atmospherics/pipe/simple/heat_exchanging/get_standard_layer(underfloor)
+	return PIPES_HE_LAYER
 
 // Use initialize_directions_he to connect to neighbors instead.
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging/can_be_node(var/obj/machinery/atmospherics/pipe/simple/heat_exchanging/target)
@@ -128,7 +131,7 @@
 	icon = 'icons/atmos/junction.dmi'
 	icon_state = "intact"
 	pipe_icon = "hejunction"
-	level = 2
+	hides_underfloor = OBJ_UNDERFLOOR_NEVER
 	connect_types = CONNECT_TYPE_REGULAR|CONNECT_TYPE_HE
 	construction_type = /obj/item/pipe/directional
 	pipe_state = "junction"

@@ -424,6 +424,7 @@
 	if(panel_open || !R.panel_req)
 		var/obj/item/circuitboard/CB = circuit
 		var/P
+		var/replaced = FALSE //simply to play a sound for feedback for now.
 		for(var/obj/item/A in component_parts)
 			var/our_rating = A.rped_rating()
 			if(isnull(our_rating))
@@ -444,10 +445,14 @@
 						component_parts += B
 						B.loc = null
 						to_chat(user, "<span class='notice'>[A.name] replaced with [B.name].</span>")
+						replaced = TRUE
 						break
 		R.obj_storage.ui_queue_refresh()
+		if(replaced)
+			playsound(src.loc, R.part_replacement_sound, 50, TRUE)
 		update_appearance()
 		RefreshParts()
+
 	return 1
 
 // todo: refactor

@@ -6,6 +6,8 @@
 
 	fire_delay = 4
 
+	worth_intrinsic = 350
+
 	projectile_type = /obj/projectile/energy/electrode
 	modifystate = "taser"
 
