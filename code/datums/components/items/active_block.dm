@@ -7,4 +7,4 @@
 /datum/component/active_block
 	registered_type = /datum/component/active_block
 
-// todo: this requires a hotkey to be fully implemented; default implementation is bad
+// todo: default implementation via toggled defensive hotkey

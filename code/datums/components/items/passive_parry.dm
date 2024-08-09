@@ -116,8 +116,6 @@
 /datum/component/passive_parry/proc/check_slot(slot_id)
 	return islist(parry_data.parry_slot_id)? (slot_id in parry_data.parry_slot_id) : (!parry_data.parry_slot_id || (parry_data.parry_slot_id == slot_id))
 
-#warn impl all
-
 //* Bindings - Bullet *//
 
 /datum/shieldcall/bound/passive_parry/handle_bullet(atom/defending, shieldcall_returns, fake_attack, list/bullet_act_args)

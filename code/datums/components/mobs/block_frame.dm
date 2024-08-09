@@ -22,7 +22,7 @@
 /datum/shieldcall/bound/block_frame
 	expected_type = /datum/component/parry_frame
 
-#warn impl
+// todo: default implementation of a hold-down blocking system.
 
 /**
  * Datastructure for block data, now far more simplified.

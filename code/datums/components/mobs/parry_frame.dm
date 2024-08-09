@@ -69,6 +69,9 @@ INITIALIZE_IMMEDIATE(/atom/movable/render/parry_frame)
  * Datastructure for parry data, now far more simplified.
  *
  * * Please avoid anonymous typing this where possible, this is a heavy datum and caching helps a lot.
+ * * While this is very close to /datum/block_frame, it is different in separate major ways.
+ * * Parrying tends to be more powerful and complex, as it's meant to simulate a very dynamic action.
+ * * Parrying is more expensive to deal with than blocking.
  *
  * todo: this should be a serializable prototype
  */

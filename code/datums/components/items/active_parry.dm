@@ -7,4 +7,4 @@
 /datum/component/active_parry
 	registered_type = /datum/component/active_parry
 
-// todo: this requires a hotkey to be fully implemented; default implementation is bad
+// todo: default implementation via active defensive hotkey
