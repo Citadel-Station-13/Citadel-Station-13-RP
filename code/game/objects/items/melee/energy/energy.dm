@@ -535,7 +535,6 @@
 	attack_verb = list("jabbed", "stabbed", "impaled")
 	AddComponent(/datum/component/jousting)
 
-
 /obj/item/melee/transforming/energy/spear/deactivate(mob/living/user)
 	if(active)
 		to_chat(user, "<span class='notice'>\The [src] deactivates!</span>")

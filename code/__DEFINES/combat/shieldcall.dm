@@ -84,6 +84,7 @@
 /// * /datum/unarmed_attack if unarmed melee
 /// * /obj/item if item melee
 /// * /datum/thrownthing if thrown
+/// * null if touch
 #define SHIELDCALL_ARG_WEAPON 7
 /// flags returned from other shieldcalls
 #define SHIELDCALL_ARG_FLAGS 8

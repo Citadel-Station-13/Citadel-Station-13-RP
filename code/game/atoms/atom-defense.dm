@@ -382,6 +382,8 @@
 /**
  * Runs shieldcalls for handle_touch
  *
+ * * Use this instead of manually looping, as it fires a signal that makes things like /datum/passive_parry spin up.
+ *
  * @params
  * * e_args (optional) the clickchain event, if any; **This is mutable.**
  * * contact_flags - SHIELDCALL_CONTACT_FLAG_*
@@ -392,12 +394,15 @@
  * @return SHIELDCALL_FLAG_* flags
  */
 /atom/proc/atom_shieldcall_handle_touch(datum/event_args/actor/clickchain/e_args, contact_flags, contact_specific, fake_attack, shieldcall_flags)
+	SEND_SIGNAL(src, COMSIG_ATOM_SHIELDCALL_ITERATION, ATOM_SHIELDCALL_ITERATING_TOUCH)
 	. = shieldcall_flags
 	for(var/datum/shieldcall/shieldcall as anything in shieldcalls)
 		. |= shieldcall.handle_touch(src, ., fake_attack, e_args, contact_flags, contact_specific)
 
 /**
  * Runs shieldcalls for handle_unarmed_melee
+ *
+ * * Use this instead of manually looping, as it fires a signal that makes things like /datum/passive_parry spin up.
  *
  * @params
  * * style - the unarmed_attack datum being used
@@ -408,12 +413,15 @@
  * @return SHIELDCALL_FLAG_* flags
  */
 /atom/proc/atom_shieldcall_handle_unarmed_melee(datum/unarmed_attack/style, datum/event_args/actor/clickchain/e_args, fake_attack, shieldcall_flags)
+	SEND_SIGNAL(src, COMSIG_ATOM_SHIELDCALL_ITERATION, ATOM_SHIELDCALL_ITERATING_UNARMED_MELEE)
 	. = shieldcall_flags
 	for(var/datum/shieldcall/shieldcall as anything in shieldcalls)
 		. |= shieldcall.handle_unarmed_melee(src, ., fake_attack, style, e_args)
 
 /**
  * Runs shieldcalls for handle_item_melee
+ *
+ * * Use this instead of manually looping, as it fires a signal that makes things like /datum/passive_parry spin up.
  *
  * @params
  * * weapon - the item being used to swing with
@@ -424,12 +432,15 @@
  * @return SHIELDCALL_FLAG_* flags
  */
 /atom/proc/atom_shieldcall_handle_item_melee(obj/item/weapon, datum/event_args/actor/clickchain/e_args, fake_attack, shieldcall_flags)
+	SEND_SIGNAL(src, COMSIG_ATOM_SHIELDCALL_ITERATION, ATOM_SHIELDCALL_ITERATING_ITEM_MELEE)
 	. = shieldcall_flags
 	for(var/datum/shieldcall/shieldcall as anything in shieldcalls)
 		. |= shieldcall.handle_item_melee(src, ., fake_attack, weapon, e_args)
 
 /**
  * Runs shieldcalls for handle_bullet
+ *
+ * * Use this instead of manually looping, as it fires a signal that makes things like /datum/passive_parry spin up.
  *
  * @params
  * * bullet_act_args - indexed list of bullet_act args.
@@ -440,6 +451,7 @@
  * @return SHIELDCALL_FLAG_TERMINATE or NONE
  */
 /atom/proc/atom_shieldcall_handle_bullet(list/bullet_act_args, fake_attack, shieldcall_flags)
+	SEND_SIGNAL(src, COMSIG_ATOM_SHIELDCALL_ITERATION, ATOM_SHIELDCALL_ITERATING_BULLET_ACT)
 	. = shieldcall_flags
 	for(var/datum/shieldcall/shieldcall as anything in shieldcalls)
 		. |= shieldcall.handle_bullet(src, ., fake_attack, bullet_act_args)
@@ -454,7 +466,8 @@
  *
  * @return SHIELDCALL_FLAG_* flags
  */
-/atom/proc/handle_throw_impact(datum/thrownthing/thrown, fake_attack, shieldcall_flags)
+/atom/proc/atom_shieldcall_handle_throw_impact(datum/thrownthing/thrown, fake_attack, shieldcall_flags)
+	SEND_SIGNAL(src, COMSIG_ATOM_SHIELDCALL_ITERATION, ATOM_SHIELDCALL_ITERATING_THROW_IMPACT)
 	. = shieldcall_flags
 	for(var/datum/shieldcall/shieldcall as anything in shieldcalls)
 		. |= shieldcall.handle_throw_impact(src, ., fake_attack, thrown)

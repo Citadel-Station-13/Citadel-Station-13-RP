@@ -23,10 +23,27 @@
 	/// registered shieldcall
 	var/datum/shieldcall/bound/shieldcall
 
+#warn impl all
+
+/**
+ * * frame - the parry frame
+ * * kick_time_forwards - start this many deciseconds into the frame.
+ */
+/datum/component/parry_frame/Initialize(datum/parry_frame/frame, kick_time_forwards)
+	. = ..()
+
+/datum/component/parry_frame/RegisterSignal(datum/target, signal_type, proctype, override)
+	. = ..()
+
+/datum/component/parry_frame/UnregisterSignal(datum/target, sig_type_or_types)
+	. = ..()
+
+
+/**
+ * Shieldcall used as a listener for [/datum/component/parry_frame]
+ */
 /datum/shieldcall/bound/parry_frame
 	expected_type = /datum/component/parry_frame
-
-#warn impl
 
 INITIALIZE_IMMEDIATE(/atom/movable/render/parry_frame)
 /atom/movable/render/parry_frame
@@ -189,11 +206,9 @@ INITIALIZE_IMMEDIATE(/atom/movable/render/parry_frame)
 //* Bindings - Bullet *//
 
 /datum/shieldcall/bound/parry_frame/handle_bullet(atom/defending, shieldcall_returns, fake_attack, list/bullet_act_args)
-	// this is a definite 'do as i say, not as i do' moment
-	// this works because the proc names and args and types are **exactly** matching
-	// this is why the procs are all together
-	// do NOT try this at home.
-	return bound:handle_bullet(arglist(args))
+	var/datum/component/parry_frame/frame = bound
+	var/efficiency = frame.active_parry.calculate_parry_efficiency(frame.start_time, world.time)
+	return frame.active_parry.handle_bullet(defending, shieldcall_returns, fake_attack, efficiency, bullet_act_args)
 
 /datum/parry_frame/proc/handle_bullet(atom/defending, shieldcall_returns, fake_attack, efficiency, list/bullet_act_args)
 	#warn impl
@@ -201,48 +216,25 @@ INITIALIZE_IMMEDIATE(/atom/movable/render/parry_frame)
 //* Bindings - Melee *//
 
 /datum/shieldcall/bound/parry_frame/handle_item_melee(atom/defending, shieldcall_returns, fake_attack, obj/item/weapon, datum/event_args/actor/clickchain/e_args)
-	// this is a definite 'do as i say, not as i do' moment
-	// this works because the proc names and args and types are **exactly** matching
-	// this is why the procs are all together
-	// do NOT try this at home.
-	return bound:handle_item_melee(arglist(args))
+	return frame.active_parry.handle_bullet(defending, shieldcall_returns, fake_attack, efficiency, weapon, e_args)
 
 /datum/parry_frame/proc/handle_item_melee(atom/defending, shieldcall_returns, fake_attack, efficiency, obj/item/weapon, datum/event_args/actor/clickchain/e_args)
 
 /datum/shieldcall/bound/parry_frame/handle_unarmed_melee(atom/defending, shieldcall_returns, fake_attack, datum/unarmed_attack/style, datum/event_args/actor/clickchain/e_args)
-	// this is a definite 'do as i say, not as i do' moment
-	// this works because the proc names and args and types are **exactly** matching
-	// this is why the procs are all together
-	// do NOT try this at home.
-	return bound:handle_unarmed_melee(arglist(args))
+	return frame.active_parry.handle_bullet(defending, shieldcall_returns, fake_attack, efficiency, style, e_args)
 
 /datum/parry_frame/proc/handle_unarmed_melee(atom/defending, shieldcall_returns, fake_attack, efficiency, datum/unarmed_attack/style, datum/event_args/actor/clickchain/e_args)
 
 /datum/shieldcall/bound/parry_frame/handle_touch(atom/defending, shieldcall_returns, fake_attack, datum/event_args/actor/clickchain/e_args, contact_flags, contact_specific)
-	// this is a definite 'do as i say, not as i do' moment
-	// this works because the proc names and args and types are **exactly** matching
-	// this is why the procs are all together
-	// do NOT try this at home.
-	return bound:handle_touch(arglist(args))
+	return frame.active_parry.handle_bullet(defending, shieldcall_returns, fake_attack, efficiency, e_args, contact_flags, contact_specific)
 
 /datum/parry_frame/proc/handle_touch(atom/defending, shieldcall_returns, fake_attack, efficiency, datum/event_args/actor/clickchain/e_args, contact_flags, contact_specific)
-
-#warn handle_touch
 
 //* Bindings - Thrown *//
 
 /datum/shieldcall/bound/parry_frame/handle_throw_impact(atom/defending, shieldcall_returns, fake_attack, datum/thrownthing/thrown)
-	// this is a definite 'do as i say, not as i do' moment
-	// this works because the proc names and args and types are **exactly** matching
-	// this is why the procs are all together
-	// do NOT try this at home.
-	return bound:handle_throw_impact(arglist(args))
+	return frame.active_parry.handle_bullet(defending, shieldcall_returns, fake_attack, efficiency, thrown)
 
-/**
- * @params
- * * defending - the thing being hit
- * * efficiency
- */
 /datum/parry_frame/proc/handle_throw_impact(atom/defending, shieldcall_returns, fake_attack, efficiency, datum/thrownthing/thrown)
 
 
