@@ -4,8 +4,8 @@
 	icon = 'icons/obj/weapons.dmi'
 	icon_state = "riot"
 	slot_flags = SLOT_BACK
-	damage_force = 5.0
-	throw_force = 5.0
+	damage_force = 5
+	throw_force = 5
 	throw_speed = 1
 	throw_range = 4
 	w_class = WEIGHT_CLASS_BULKY
