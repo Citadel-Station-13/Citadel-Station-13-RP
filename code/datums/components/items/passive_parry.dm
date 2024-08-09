@@ -131,8 +131,7 @@
 	return bound:handle_item_melee(arglist(args))
 
 /datum/component/passive_parry/proc/handle_bullet(atom/defending, shieldcall_returns, fake_attack, list/bullet_act_args)
-	var/datum/component/passive_parry/igniting = bound
-	var/datum/passive_parry/data = igniting.parry_data
+	var/datum/passive_parry/data = parry_data
 	if(!prob(isnull(data.parry_chance_projectile) ? data.parry_chance_default : data.parry_chance_projectile))
 		return
 	if(!check_defensive_arc_tile(defending, bullet_act_args[BULLET_ACT_ARG_PROJECTILE], data.parry_arc, !data.parry_arc_round_down))
@@ -142,7 +141,7 @@
 	if(!(proj.projectile_type & data.parry_projectile_types))
 		return
 	// - End -
-	var/datum/parry_frame/resolved = igniting.ignite(defending, ATTACK_TYPE_PROJECTILE, bullet_act_args[BULLET_ACT_ARG_PROJECTILE])
+	var/datum/parry_frame/resolved = ignite(defending, ATTACK_TYPE_PROJECTILE, bullet_act_args[BULLET_ACT_ARG_PROJECTILE])
 	if(!resolved)
 		return
 	if(!data.parry_frame_simulated)
@@ -166,13 +165,12 @@
 	return bound:handle_item_melee(arglist(args))
 
 /datum/component/passive_parry/proc/handle_item_melee(atom/defending, shieldcall_returns, fake_attack, obj/item/weapon, datum/event_args/actor/clickchain/e_args)
-	var/datum/component/passive_parry/igniting = bound
-	var/datum/passive_parry/data = igniting.parry_data
+	var/datum/passive_parry/data = parry_data
 	if(!prob(isnull(data.parry_chance_melee) ? data.parry_chance_default : data.parry_chance_melee))
 		return
 	if(!check_defensive_arc_tile(defending, e_args.performer, data.parry_arc, !data.parry_arc_round_down))
 		return
-	var/datum/parry_frame/resolved = igniting.ignite(defending, ATTACK_TYPE_MELEE, weapon)
+	var/datum/parry_frame/resolved = ignite(defending, ATTACK_TYPE_MELEE, weapon)
 	if(!resolved)
 		return
 	if(!data.parry_frame_simulated)
@@ -194,13 +192,12 @@
 	return bound:handle_unarmed_melee(arglist(args))
 
 /datum/component/passive_parry/proc/handle_unarmed_melee(atom/defending, shieldcall_returns, fake_attack, datum/unarmed_attack/style, datum/event_args/actor/clickchain/e_args)
-	var/datum/component/passive_parry/igniting = bound
-	var/datum/passive_parry/data = igniting.parry_data
+	var/datum/passive_parry/data = parry_data
 	if(!prob(isnull(data.parry_chance_melee) ? data.parry_chance_default : data.parry_chance_melee))
 		return
 	if(!check_defensive_arc_tile(defending, e_args.performer, data.parry_arc, !data.parry_arc_round_down))
 		return
-	var/datum/parry_frame/resolved = igniting.ignite(defending, ATTACK_TYPE_UNARMED, style)
+	var/datum/parry_frame/resolved = ignite(defending, ATTACK_TYPE_UNARMED, style)
 	if(!resolved)
 		return
 	if(!data.parry_frame_simulated)
@@ -222,13 +219,12 @@
 	return bound:handle_touch(arglist(args))
 
 /datum/component/passive_parry/proc/handle_touch(atom/defending, shieldcall_returns, fake_attack, datum/event_args/actor/clickchain/e_args, contact_flags, contact_specific)
-	var/datum/component/passive_parry/igniting = bound
-	var/datum/passive_parry/data = igniting.parry_data
+	var/datum/passive_parry/data = parry_data
 	if(!prob(isnull(data.parry_chance_touch) ? data.parry_chance_default : data.parry_chance_touch))
 		return
 	if(!check_defensive_arc_tile(defending, e_args.performer, data.parry_arc, !data.parry_arc_round_down))
 		return
-	var/datum/parry_frame/resolved = igniting.ignite(defending, ATTACK_TYPE_TOUCH, null)
+	var/datum/parry_frame/resolved = ignite(defending, ATTACK_TYPE_TOUCH, null)
 	if(!resolved)
 		return
 	if(!data.parry_frame_simulated)
@@ -252,13 +248,12 @@
 	return bound:handle_throw_impact(arglist(args))
 
 /datum/component/passive_parry/proc/handle_throw_impact(atom/defending, shieldcall_returns, fake_attack, datum/thrownthing/thrown)
-	var/datum/component/passive_parry/igniting = bound
-	var/datum/passive_parry/data = igniting.parry_data
+	var/datum/passive_parry/data = parry_data
 	if(!prob(isnull(data.parry_chance_thrown) ? data.parry_chance_default : data.parry_chance_thrown))
 		return
 	if(!check_defensive_arc_tile(defending, thrown, data.parry_arc, !data.parry_arc_round_down))
 		return
-	var/datum/parry_frame/resolved = igniting.ignite(defending, ATTACK_TYPE_THROWN, thrown)
+	var/datum/parry_frame/resolved = ignite(defending, ATTACK_TYPE_THROWN, thrown)
 	if(!resolved)
 		return
 	if(!data.parry_frame_simulated)

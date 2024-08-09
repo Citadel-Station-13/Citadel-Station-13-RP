@@ -216,24 +216,32 @@ INITIALIZE_IMMEDIATE(/atom/movable/render/parry_frame)
 //* Bindings - Melee *//
 
 /datum/shieldcall/bound/parry_frame/handle_item_melee(atom/defending, shieldcall_returns, fake_attack, obj/item/weapon, datum/event_args/actor/clickchain/e_args)
-	return frame.active_parry.handle_bullet(defending, shieldcall_returns, fake_attack, efficiency, weapon, e_args)
+	var/datum/component/parry_frame/frame = bound
+	var/efficiency = frame.active_parry.calculate_parry_efficiency(frame.start_time, world.time)
+	return frame.active_parry.handle_item_melee(defending, shieldcall_returns, fake_attack, efficiency, weapon, e_args)
 
 /datum/parry_frame/proc/handle_item_melee(atom/defending, shieldcall_returns, fake_attack, efficiency, obj/item/weapon, datum/event_args/actor/clickchain/e_args)
 
 /datum/shieldcall/bound/parry_frame/handle_unarmed_melee(atom/defending, shieldcall_returns, fake_attack, datum/unarmed_attack/style, datum/event_args/actor/clickchain/e_args)
-	return frame.active_parry.handle_bullet(defending, shieldcall_returns, fake_attack, efficiency, style, e_args)
+	var/datum/component/parry_frame/frame = bound
+	var/efficiency = frame.active_parry.calculate_parry_efficiency(frame.start_time, world.time)
+	return frame.active_parry.handle_unarmed_melee(defending, shieldcall_returns, fake_attack, efficiency, style, e_args)
 
 /datum/parry_frame/proc/handle_unarmed_melee(atom/defending, shieldcall_returns, fake_attack, efficiency, datum/unarmed_attack/style, datum/event_args/actor/clickchain/e_args)
 
 /datum/shieldcall/bound/parry_frame/handle_touch(atom/defending, shieldcall_returns, fake_attack, datum/event_args/actor/clickchain/e_args, contact_flags, contact_specific)
-	return frame.active_parry.handle_bullet(defending, shieldcall_returns, fake_attack, efficiency, e_args, contact_flags, contact_specific)
+	var/datum/component/parry_frame/frame = bound
+	var/efficiency = frame.active_parry.calculate_parry_efficiency(frame.start_time, world.time)
+	return frame.active_parry.handle_touch(defending, shieldcall_returns, fake_attack, efficiency, e_args, contact_flags, contact_specific)
 
 /datum/parry_frame/proc/handle_touch(atom/defending, shieldcall_returns, fake_attack, efficiency, datum/event_args/actor/clickchain/e_args, contact_flags, contact_specific)
 
 //* Bindings - Thrown *//
 
 /datum/shieldcall/bound/parry_frame/handle_throw_impact(atom/defending, shieldcall_returns, fake_attack, datum/thrownthing/thrown)
-	return frame.active_parry.handle_bullet(defending, shieldcall_returns, fake_attack, efficiency, thrown)
+	var/datum/component/parry_frame/frame = bound
+	var/efficiency = frame.active_parry.calculate_parry_efficiency(frame.start_time, world.time)
+	return frame.active_parry.handle_throw_impact(defending, shieldcall_returns, fake_attack, efficiency, thrown)
 
 /datum/parry_frame/proc/handle_throw_impact(atom/defending, shieldcall_returns, fake_attack, efficiency, datum/thrownthing/thrown)
 
