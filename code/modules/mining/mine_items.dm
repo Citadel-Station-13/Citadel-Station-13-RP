@@ -321,6 +321,12 @@
 	throw_force = 7.0
 	w_class = WEIGHT_CLASS_SMALL
 
+/obj/item/shovel/spade/bone
+	name = "primitive spade"
+	desc = "A small shove cruedly fashioned out of some beast's scapula."
+	icon = 'icons/obj/mining.dmi'
+	icon_state = "spade_bone"
+
 /obj/item/shovel/spade/bronze
 	name = "primitive spade"
 	desc = "A small shovel made of bronze. The design seems to have some ritual purposes."
