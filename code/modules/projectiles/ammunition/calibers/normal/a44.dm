@@ -5,7 +5,7 @@
 
 /obj/item/ammo_casing/a44
 	desc = "A .44 bullet casing."
-	regex_this_caliber = /datum/ammo_caliber/a44
+	caliber = /datum/ammo_caliber/a44
 	icon = 'icons/modules/projectiles/casings/slim.dmi'
 	icon_state = "large"
 	projectile_type = /obj/projectile/bullet/pistol/strong

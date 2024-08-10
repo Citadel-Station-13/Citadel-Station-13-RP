@@ -26,7 +26,7 @@
 	icon = 'icons/modules/projectiles/casings/slim.dmi'
 	icon_state = "small"
 	icon_spent = TRUE
-	regex_this_caliber = /datum/ammo_caliber/a5mm
+	caliber = /datum/ammo_caliber/a5mm
 	projectile_type = /obj/projectile/bullet/pistol // Close enough to be comparable.
 	materials_base = list(MAT_STEEL = 180)
 	casing_flags = CASING_DELETE

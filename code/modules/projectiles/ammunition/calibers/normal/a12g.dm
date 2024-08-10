@@ -9,7 +9,7 @@
 	desc = "A 12 gauge slug."
 	icon = 'icons/modules/projectiles/casings/a12g.dmi'
 	icon_state = "grey"
-	regex_this_caliber = /datum/ammo_caliber/a12g
+	caliber = /datum/ammo_caliber/a12g
 	projectile_type = /obj/projectile/bullet/shotgun
 	materials_base = list(MAT_STEEL = 360)
 	fall_sounds = list('sound/weapons/guns/shotgun_fall.ogg')

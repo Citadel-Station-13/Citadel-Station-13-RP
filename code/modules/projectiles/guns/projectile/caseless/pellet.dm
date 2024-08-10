@@ -8,7 +8,7 @@
 	icon_state = "pellet"
 	item_state = "pellet"
 	wielded_item_state = "pellet-wielded"
-	regex_this_caliber = /datum/ammo_caliber/pellet
+	caliber = /datum/ammo_caliber/pellet
 	fire_sound = 'sound/weapons/tap.ogg'
 	max_shells = 1
 	ammo_type = /obj/item/ammo_casing/p_pellet

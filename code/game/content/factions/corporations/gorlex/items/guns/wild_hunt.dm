@@ -6,7 +6,7 @@
 	icon = 'icons/content/factions/corporations/gorlex/items/guns/wild_hunt.dmi'
 	w_class = WEIGHT_CLASS_BULKY
 	slot_flags = SLOT_BACK
-	regex_this_caliber = /datum/ammo_caliber/a12_7mm
+	caliber = /datum/ammo_caliber/a12_7mm
 	load_method = MAGAZINE
 	magazine_type = /obj/item/ammo_magazine/a12_7mm/wild_hunt
 	recoil = 1
@@ -22,8 +22,6 @@
 		list(mode_name="semiauto",      	burst=1, 	fire_delay=0,    move_delay=null,	burst_accuracy=null, dispersion=null),
 		list(mode_name="automatic",       burst=1, fire_delay=-1,    move_delay=null, burst_accuracy=null, dispersion=null, automatic = 1)
 		)
-
-	item_renderer = /datum/gun_item_renderer
 
 // todo: gun rendering system
 /obj/item/gun/ballistic/caseless/wild_hunt/update_icon_state()
