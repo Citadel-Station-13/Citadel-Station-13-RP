@@ -98,11 +98,9 @@
 	. = ..()
 	. += "<span class='notice'>Alt-click to recolor it.</span>"
 
-#warn icon state as -active
-#warn which faction?
 /obj/item/shield/transforming/energy/imperial
-	name = "energy scutum"
+	name = "imperial shield"
+	desc = "What the hell is this?"
 	desc = "It's really easy to mispronounce the name of this shield if you've only read it in books."
-	icon = 'icons/obj/weapons_vr.dmi'
-	icon_state = "eshield0" // eshield1 for expanded
-	item_icons = list(SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand_melee.dmi', SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_melee.dmi')
+	icon_state = "imperial_shield"
+	base_icon_state = "imperial_shield"

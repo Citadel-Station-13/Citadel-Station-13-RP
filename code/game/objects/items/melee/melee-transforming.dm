@@ -5,9 +5,14 @@
  * single-toggle weapons
  */
 /obj/item/melee/transforming
+	icon = 'icons/items/melee/transforming.dmi'
 	damage_mode = NONE
+	item_icons = null
 
+	/// are we active?
 	var/active = FALSE
+	/// when active, do we use an overlay instead of an icon state?
+	var/active_via_overlay = FALSE
 
 	var/active_weight_class
 	var/inactive_weight_class
@@ -44,9 +49,15 @@
 		return // cancel
 	return ..()
 
-/obj/item/melee/transforming/update_icon_state()
-	icon_state = "[initial(icon_state)][active ? "-active" : ""]"
+/obj/item/shield/transforming/update_icon_state()
+	icon_state = "[initial(icon_state)][active && !active_via_overlay ? "-active" : ""]"
 	return ..()
+
+/obj/item/shield/transforming/update_overlays()
+	. = ..()
+	if(!active || !active_via_overlay)
+		return
+	. += build_active_overlay()
 
 /obj/item/melee/transforming/on_attack_self(datum/event_args/actor/e_args)
 	. = ..()

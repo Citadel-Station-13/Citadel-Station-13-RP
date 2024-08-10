@@ -608,11 +608,8 @@
 			var/obj/effect/plant/P = target
 			P.die_off()
 
-#warn icon state as -active
-#warn which faction?
 /obj/item/melee/transforming/energy/sword/imperial
-	name = "energy gladius"
-	desc = "A broad, short energy blade.  You'll be glad to have this in a fight."
-	icon_state = "sword0"
-	icon = 'icons/obj/weapons_vr.dmi'
-	item_icons = list(SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand_melee.dmi', SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_melee.dmi')
+	name = "imperial sword"
+	desc = "What the hell is this?"
+	icon_state = "imperial_sword"
+	base_icon_state = "imperial_sword"

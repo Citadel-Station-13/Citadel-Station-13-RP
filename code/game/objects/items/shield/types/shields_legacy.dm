@@ -1,7 +1,7 @@
 /obj/item/shield/riot
 	name = "riot shield"
 	desc = "A shield adept for close quarters engagement.  It's also capable of protecting from less powerful projectiles."
-	icon = 'icons/obj/weapons.dmi'
+	icon = 'icons/items/shields/basic.dmi'
 	icon_state = "riot"
 	slot_flags = SLOT_BACK
 	damage_force = 5
@@ -39,8 +39,8 @@
 /obj/item/shield/riot/flash
 	name = "strobe shield"
 	desc = "A shield with a built in, high intensity light capable of blinding and disorienting suspects. Takes regular handheld flashes as bulbs."
-	icon_state = "flashshield"
-	item_state = "flashshield"
+	icon_state = "riot-flash"
+	item_state = "riot-flash"
 	var/obj/item/flash/embedded_flash
 	var/flashfail = 0
 
@@ -120,8 +120,8 @@
 	name = "metal shield"
 	desc = "A large shield made of wired and welded sheets of metal. The handle is made of cloth and leather, making it unwieldy."
 	icon = 'icons/obj/weapons.dmi'
-	icon_state = "makeshift_shield"
-	item_state = "metal"
+	icon_state = "makeshift"
+	inhand_state = "metal"
 	slot_flags = null
 	damage_force = 10
 	throw_force = 7
@@ -130,7 +130,6 @@
 	name = "tower shield"
 	desc = "An immense tower shield. Designed to ensure maximum protection to the user, at the expense of mobility."
 	item_state = "metal"
-	icon_state = "metal"
 	damage_force = 16
 	encumbrance = ITEM_ENCUMBRANCE_SHIELD_TOWER
 	throw_force = 15 //Massive piece of metal
@@ -142,25 +141,32 @@
 /obj/item/shield/riot/energy_proof
 	name = "energy resistant shield"
 	desc = "An ablative shield designed to absorb and disperse energy attacks. This comes at significant cost to its ability to withstand ballistics and kinetics, breaking apart easily."
-	icon_state = "riot_laser"
+	icon_state = "riot-laser"
 
 /obj/item/shield/riot/kinetic_proof
 	name = "kinetic resistant shield"
 	desc = "A polymer and ceramic shield designed to absorb ballistic projectiles and kinetic force. It doesn't do very well into energy attacks, especially from weapons that inflict burns."
-	icon_state = "riot_bullet"
+	icon_state = "riot-bullet"
 
 //Exotics/Costume Shields
 /obj/item/shield/riot/roman
 	name = "scutum"
 	desc = "A replica shield for close quarters engagement.  Its modern materials are also capable of protecting from less powerful projectiles."
 	icon = 'icons/obj/weapons.dmi'
-	icon_state = "roman_shield"
+	icon_state = "roman"
 	slot_flags = SLOT_BACK
 	materials_base = list(MAT_WOOD = 7500, MAT_STEEL = 1000)
-	item_icons = list(
-			SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand_melee.dmi',
-			SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_melee.dmi',
-			)
+
+/obj/item/shield/fluff/roman
+	name = "replica scutum"
+	desc = "A replica shield for close quarters engagement.  It looks sturdy enough to withstand foam weapons, and nothing more."
+	icon = 'icons/obj/weapons.dmi'
+	icon_state = "roman"
+	slot_flags = SLOT_BACK
+	damage_force = 5.0
+	throw_force = 5.0
+	throw_speed = 2
+	throw_range = 6
 
 /obj/item/shield/riot/buckler
 	name = "buckler"
@@ -169,56 +175,18 @@
 	icon_state = "buckler"
 	slot_flags = SLOT_BACK | SLOT_BELT
 	materials_base = list(MAT_WOOD = 7500, MAT_STEEL = 1000)
-	item_icons = list(
-			SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand_melee.dmi',
-			SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_melee.dmi',
-			)
 
-/obj/item/shield/fluff/wolfgirlshield
-	name = "Autumn Shield"
-	desc = "A shiny silvery shield with a large red leaf symbol in the center."
-	icon = 'icons/obj/weapons_vr.dmi'
-	icon_state = "wolfgirlshield"
-	slot_flags = SLOT_BACK | SLOT_OCLOTHING
-	damage_force = 5.0
-	throw_force = 5.0
-	throw_speed = 2
-	throw_range = 6
-	item_icons = list(SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand_melee.dmi', SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_melee.dmi', SLOT_ID_BACK = 'icons/vore/custom_items_vr.dmi', SLOT_ID_SUIT = 'icons/vore/custom_items_vr.dmi')
-	attack_verb = list("shoved", "bashed")
-	allowed = list(/obj/item/melee/fluffstuff/wolfgirlsword)
-
-/obj/item/shield/fluff/roman
-	name = "replica scutum"
-	desc = "A replica shield for close quarters engagement.  It looks sturdy enough to withstand foam weapons, and nothing more."
-	icon = 'icons/obj/weapons.dmi'
-	icon_state = "roman_shield"
-	slot_flags = SLOT_BACK
-	item_icons = list(
-			SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand_melee.dmi',
-			SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_melee.dmi',
-			)
-	damage_force = 5.0
-	throw_force = 5.0
-	throw_speed = 2
-	throw_range = 6
-
-//Foam Shield
 /obj/item/shield/riot/foam
 	name = "foam riot shield"
 	desc = "A shield for close quarters engagement.  It looks sturdy enough to withstand foam weapons, and nothing more."
 	icon = 'icons/obj/weapons.dmi'
-	icon_state = "foamriot"
+	icon_state = "foam"
 	slot_flags = SLOT_BACK
 	damage_force = 0
 	throw_force = 0
 	throw_speed = 2
 	throw_range = 6
 	materials_base = list(MAT_PLASTIC = 7500, "foam" = 1000)
-	item_icons = list(
-			SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand_melee.dmi',
-			SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_melee.dmi',
-			)
 
 /obj/item/shield/riot/foam/passive_parry_intercept(mob/defending, list/shieldcall_args, datum/passive_parry/parry_data)
 	var/allowed = FALSE

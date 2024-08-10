@@ -1655,6 +1655,7 @@
 #include "code\game\objects\items\shield\shield-toggle.dm"
 #include "code\game\objects\items\shield\shield.dm"
 #include "code\game\objects\items\shield\types\shields_legacy.dm"
+#include "code\game\objects\items\shield\types\shields_legacy_vr.dm"
 #include "code\game\objects\items\shield\types\toggle\energy.dm"
 #include "code\game\objects\items\shield\types\toggle\telescopic.dm"
 #include "code\game\objects\items\stacks\fifty_spawner.dm"
