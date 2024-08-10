@@ -211,7 +211,7 @@
 /obj/structure/closet/crate/secure/attackby(obj/item/W as obj, mob/user as mob)
 	if(is_type_in_list(W, list(/obj/item/packageWrap, /obj/item/stack/cable_coil, /obj/item/radio/electropack, /obj/item/tool/wirecutters)))
 		return ..()
-	if(istype(W, /obj/item/melee/transforming/energy/blade))
+	if(istype(W, /obj/item/melee/ninja_energy_blade))
 		emag_act(INFINITY, user)
 	if(!opened)
 		src.togglelock(user)

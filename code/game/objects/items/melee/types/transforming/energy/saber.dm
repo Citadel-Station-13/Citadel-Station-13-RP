@@ -1,0 +1,146 @@
+#warn icon state as -active
+/obj/item/melee/transforming/energy/sword
+	name = "energy sword"
+	desc = "May the damage_force be within you."
+	icon_state = "esword"
+	item_state = "esword"
+	active_damage_force = 30
+	active_throw_force = 20
+	active_weight_class = WEIGHT_CLASS_BULKY
+	damage_force = 3
+	throw_force = 5
+	throw_speed = 1
+	throw_range = 5
+	w_class = WEIGHT_CLASS_SMALL
+	atom_flags = NOBLOODY
+	origin_tech = list(TECH_MAGNET = 3, TECH_ILLEGAL = 4)
+	sharp = 1
+	edge = 1
+	colorable = TRUE
+	drop_sound = 'sound/items/drop/sword.ogg'
+	pickup_sound = 'sound/items/pickup/sword.ogg'
+
+	passive_parry = /datum/passive_parry{
+		parry_chance_default = 60;
+		parry_chance_projectile = 65;
+	}
+
+/obj/item/melee/transforming/energy/sword/dropped(mob/user, atom_flags, atom/newLoc)
+	. = ..()
+	if(!istype(loc,/mob))
+		deactivate(user)
+
+/obj/item/melee/transforming/energy/sword/activate(mob/living/user)
+	if(!active)
+		to_chat(user, "<span class='notice'>\The [src] is now energised.</span>")
+
+	..()
+	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
+
+/obj/item/melee/transforming/energy/sword/deactivate(mob/living/user)
+	if(active)
+		to_chat(user, "<span class='notice'>\The [src] deactivates!</span>")
+	..()
+	attack_verb = list()
+
+/obj/item/melee/transforming/energy/sword/passive_parry_intercept(mob/defending, list/shieldcall_args, datum/passive_parry/parry_data)
+	. = ..()
+	if(!.)
+		return
+
+	var/datum/effect_system/spark_spread/spark_system = new /datum/effect_system/spark_spread()
+	spark_system.set_up(5, 0, defending.loc)
+	spark_system.start()
+
+/obj/item/melee/transforming/energy/sword/attackby(obj/item/W, mob/living/user, params)
+	if(istype(W, /obj/item/melee/transforming/energy/sword))
+		if(HAS_TRAIT(W, TRAIT_ITEM_NODROP) || HAS_TRAIT(src, TRAIT_ITEM_NODROP))
+			to_chat(user, "<span class='warning'>\the [HAS_TRAIT(src, TRAIT_ITEM_NODROP) ? src : W] is stuck to your hand, you can't attach it to \the [HAS_TRAIT(src, TRAIT_ITEM_NODROP) ? W : src]!</span>")
+			return
+		if(istype(W, /obj/item/melee/transforming/energy/sword/charge))
+			to_chat(user,"<span class='warning'>These blades are incompatible, you can't attach them to each other!</span>")
+			return
+		else
+			to_chat(user, "<span class='notice'>You combine the two energy swords, making a single supermassive blade! You're cool.</span>")
+			new /obj/item/melee/transforming/energy/sword/dualsaber(user.drop_location())
+			qdel(W)
+			qdel(src)
+	else
+		return ..()
+
+/obj/item/melee/transforming/energy/sword/pirate
+	name = "energy cutlass"
+	desc = "Arrrr matey."
+	icon_state = "cutlass"
+	base_icon_state = "cutlass"
+	colorable = TRUE
+
+/obj/item/melee/transforming/energy/sword/dualsaber
+	name = "double-bladed energy sword"
+	desc = "Handle with care."
+	icon_state = "saber-dual"
+	base_icon_state = "saber-dual"
+	damage_force = 3
+	active_damage_force = 60
+	throw_force = 5
+	throw_speed = 3
+	armor_penetration = 35
+	colorable = TRUE
+	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
+
+	passive_parry = /datum/passive_parry{
+		parry_chance_default = 60;
+		parry_chance_projectile = 85;
+	}
+
+/obj/item/melee/transforming/energy/sword/charge
+	name = "charge sword"
+	desc = "A small, handheld device which emits a high-energy 'blade'."
+	origin_tech = list(TECH_COMBAT = 5, TECH_MAGNET = 3, TECH_ILLEGAL = 4)
+	active_damage_force = 25
+	armor_penetration = 25
+	colorable = TRUE
+	use_cell = TRUE
+	hitcost = 75
+
+/obj/item/melee/transforming/energy/sword/charge/loaded/Initialize(mapload)
+	. = ..()
+	bcell = new/obj/item/cell/device/weapon(src)
+
+/obj/item/melee/transforming/energy/sword/charge/attackby(obj/item/W, mob/living/user, params)
+	if(istype(W, /obj/item/melee/transforming/energy/sword/charge))
+		if(HAS_TRAIT(W, TRAIT_ITEM_NODROP) || HAS_TRAIT(src, TRAIT_ITEM_NODROP))
+			to_chat(user, "<span class='warning'>\the [HAS_TRAIT(src, TRAIT_ITEM_NODROP) ? src : W] is stuck to your hand, you can't attach it to \the [HAS_TRAIT(src, TRAIT_ITEM_NODROP) ? W : src]!</span>")
+			return
+		else
+			to_chat(user, "<span class='notice'>You combine the two charge swords, making a single supermassive blade! You're cool.</span>")
+			new /obj/item/melee/transforming/energy/sword/charge/dualsaber(user.drop_location())
+			qdel(W)
+			qdel(src)
+	else
+		return ..()
+
+/obj/item/melee/transforming/energy/sword/charge/dualsaber
+	name = "double-bladed charge sword"
+	desc = "Make sure you bought batteries."
+	icon_state = "dualsaber"
+	item_state = "dualsaber"
+	damage_force = 3
+	active_damage_force = 50
+	throw_force = 5
+	throw_speed = 3
+	armor_penetration = 30
+	colorable = TRUE
+	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
+	hitcost = 150
+
+	passive_parry = /datum/passive_parry{
+		parry_chance_default = 60;
+		parry_chance_projectile = 65;
+	}
+
+/obj/item/melee/transforming/energy/sword/imperial
+	name = "imperial sword"
+	desc = "What the hell is this?"
+	icon_state = "imperial_sword"
+	base_icon_state = "imperial_sword"

@@ -14,27 +14,6 @@
 	/// when active, do we use an overlay instead of an icon state?
 	var/active_via_overlay = FALSE
 
-	var/active_weight_class
-	var/inactive_weight_class
-	var/active_weight_volume
-	var/inactive_weight_volume
-
-	var/active_damage_force
-	var/inactive_damage_force
-	var/active_damage_mode
-	var/inactive_damage_mode
-	var/active_damage_tier
-	var/inactive_damage_tier
-
-	var/active_throw_force
-	var/inactive_throw_force
-	var/active_throw_resist
-	var/inactive_throw_resist
-	var/active_throw_range
-	var/inactive_throw_range
-	var/active_throw_speed
-	var/inactive_throw_speed
-
 	/// activation sound; also deactivation if it's not specified
 	var/activation_sound = 'sound/weapons/empty.ogg'
 	var/deactivation_sound
@@ -43,6 +22,42 @@
 
 	/// do not allow passive parry while off
 	var/no_block_while_off = TRUE
+
+	//* active / inactive damage *//
+
+	var/active_damage_force
+	var/inactive_damage_force
+
+	var/active_damage_mode
+	var/inactive_damage_mode
+
+	var/active_damage_tier
+	var/inactive_damage_tier
+
+	var/active_damage_type
+	var/inactive_damage_type
+
+	//* active / inactive inventory costs *//
+
+	var/active_weight_class
+	var/inactive_weight_class
+
+	var/active_weight_volume
+	var/inactive_weight_volume
+
+	//* active / inactive throwing *//
+
+	var/active_throw_force
+	var/inactive_throw_force
+
+	var/active_throw_resist
+	var/inactive_throw_resist
+
+	var/active_throw_range
+	var/inactive_throw_range
+
+	var/active_throw_speed
+	var/inactive_throw_speed
 
 /obj/item/melee/transforming/passive_parry_intercept(mob/defending, list/shieldcall_args, datum/passive_parry/parry_data)
 	if(!active && no_block_while_off)
@@ -86,6 +101,7 @@
 	damage_force = VALUE_OR_DEFAULT(active_damage_force, initial(damage_force))
 	damage_tier = VALUE_OR_DEFAULT(active_damage_tier, initial(damage_tier))
 	damage_mode = VALUE_OR_DEFAULT(active_damage_mode, initial(damage_mode))
+	damage_type = VALUE_OR_DEFAULT(active_damage_type, initial(damage_type))
 
 	throw_force = VALUE_OR_DEFAULT(active_throw_force, initial(throw_force))
 	throw_resist = VALUE_OR_DEFAULT(active_throw_resist, initial(throw_resist))
@@ -107,6 +123,7 @@
 	damage_force = VALUE_OR_DEFAULT(inactive_damage_force, initial(damage_force))
 	damage_tier = VALUE_OR_DEFAULT(inactive_damage_tier, initial(damage_tier))
 	damage_mode = VALUE_OR_DEFAULT(inactive_damage_mode, initial(damage_mode))
+	damage_type = VALUE_OR_DEFAULT(inactive_damage_type, initial(damage_type))
 
 	throw_force = VALUE_OR_DEFAULT(inactive_throw_force, initial(throw_force))
 	throw_resist = VALUE_OR_DEFAULT(inactive_throw_resist, initial(throw_resist))
