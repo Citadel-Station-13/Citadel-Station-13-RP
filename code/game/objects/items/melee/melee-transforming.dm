@@ -41,7 +41,6 @@
 
 	var/list/active_attack_verbs
 	var/list/inactive_attack_verbs
-	#warn handle specially, typelist?
 
 	//* active / inactive inventory costs *//
 
@@ -65,22 +64,29 @@
 	var/active_throw_speed
 	var/inactive_throw_speed
 
+/obj/item/melee/transforming/Initialize(mapload)
+	. = ..()
+	if(active_attack_verbs)
+		active_attack_verbs = typelist(NAMEOF(src, active_attack_verbs), active_attack_verbs)
+	if(inactive_attack_verbs)
+		inactive_attack_verbs = typelist(NAMEOF(src, inactive_attack_verbs), inactive_attack_verbs)
+
 /obj/item/melee/transforming/passive_parry_intercept(mob/defending, list/shieldcall_args, datum/passive_parry/parry_data)
 	if(!active && no_block_while_off)
 		return // cancel
 	return ..()
 
-/obj/item/shield/transforming/update_icon_state()
+/obj/item/melee/transforming/update_icon_state()
 	icon_state = "[initial(icon_state)][active && !active_via_overlay ? "-active" : ""]"
 	return ..()
 
-/obj/item/shield/transforming/update_overlays()
+/obj/item/melee/transforming/update_overlays()
 	. = ..()
 	if(!active || !active_via_overlay)
 		return
 	. += build_active_overlay()
 
-/obj/item/shield/transforming/proc/build_active_overlay()
+/obj/item/melee/transforming/proc/build_active_overlay()
 	RETURN_TYPE(/image)
 	var/image/creating = image(icon, "[base_icon_state || icon_state]-active")
 	return creating
@@ -97,7 +103,10 @@
  * actor can be /datum/event_args/actor or a single mob.
  */
 /obj/item/melee/transforming/proc/toggle(datum/event_args/actor/actor, silent)
-	active = !active
+	set_activation(!active, actor, silent)
+
+/obj/item/melee/transforming/proc/set_activation(state, datum/event_args/actor/actor, silent)
+	active = state
 	if(active)
 		on_activate(actor, silent)
 	else
@@ -114,7 +123,7 @@
 	damage_force = VALUE_OR_DEFAULT(active_damage_force, initial(damage_force))
 	damage_tier = VALUE_OR_DEFAULT(active_damage_tier, initial(damage_tier))
 	damage_mode = VALUE_OR_DEFAULT(active_damage_mode, initial(damage_mode))
-	damage_type = VALUE_OR_DEFAULT(active_damage_type, initial(damage_type))
+	damtype = VALUE_OR_DEFAULT(active_damage_type, initial(damtype))
 
 	throw_force = VALUE_OR_DEFAULT(active_throw_force, initial(throw_force))
 	throw_resist = VALUE_OR_DEFAULT(active_throw_resist, initial(throw_resist))
@@ -123,6 +132,8 @@
 
 	set_weight_class(VALUE_OR_DEFAULT(active_weight_class, initial(w_class)))
 	set_weight_volume(VALUE_OR_DEFAULT(active_weight_volume, initial(weight_volume)))
+
+	active_verb = active_attack_verbs
 
 	if(!silent && activation_sound)
 		playsound(src, activation_sound, toggle_sound_volume, TRUE)
@@ -138,7 +149,7 @@
 	damage_force = VALUE_OR_DEFAULT(inactive_damage_force, initial(damage_force))
 	damage_tier = VALUE_OR_DEFAULT(inactive_damage_tier, initial(damage_tier))
 	damage_mode = VALUE_OR_DEFAULT(inactive_damage_mode, initial(damage_mode))
-	damage_type = VALUE_OR_DEFAULT(inactive_damage_type, initial(damage_type))
+	damtype = VALUE_OR_DEFAULT(inactive_damage_type, initial(damtype))
 
 	throw_force = VALUE_OR_DEFAULT(inactive_throw_force, initial(throw_force))
 	throw_resist = VALUE_OR_DEFAULT(inactive_throw_resist, initial(throw_resist))
@@ -147,6 +158,8 @@
 
 	set_weight_class(VALUE_OR_DEFAULT(inactive_weight_class, initial(w_class)))
 	set_weight_volume(VALUE_OR_DEFAULT(inactive_weight_volume, initial(weight_volume)))
+
+	active_verb = inactive_attack_verbs
 
 	if(!silent && (activation_sound || deactivation_sound))
 		playsound(src, deactivation_sound || activation_sound, toggle_sound_volume, TRUE)

@@ -14,9 +14,13 @@
 	w_class = WEIGHT_CLASS_BULKY//So you can't hide it in your pocket or some such.
 	atom_flags = NOBLOODY
 	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
+
 	var/mob/living/creator
 	var/datum/effect_system/spark_spread/spark_system
-	lcolor = "#00FF00"
+
+	var/lrange = 2
+	var/lpower = 2
+	var/lcolor = "#00FF00"
 
 	passive_parry = /datum/passive_parry{
 		parry_chance_default = 60;
