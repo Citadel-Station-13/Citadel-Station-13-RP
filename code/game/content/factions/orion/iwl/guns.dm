@@ -5,10 +5,10 @@
 	w_class = WEIGHT_CLASS_BULKY
 	recoil = 2 // The battlerifle was known for its nasty recoil.
 	max_shells = 45
-	caliber = "9.5x40mm"
+	caliber = /datum/ammo_caliber/a9_5mm
 	origin_tech = list(TECH_COMBAT = 4, TECH_MATERIAL = 2)
-	magazine_type = /obj/item/ammo_magazine/k25_m
-	allowed_magazines = list(/obj/item/ammo_magazine/k25_m)
+	magazine_type = /obj/item/ammo_magazine/a9_5mm/k25
+	allowed_magazines = list(/obj/item/ammo_magazine/a9_5mm/k25)
 	fire_sound = 'sound/content/factions/orion/iwl/gun_k25.ogg'
 	load_method = MAGAZINE
 	slot_flags = SLOT_BACK
@@ -20,31 +20,30 @@
 
 /obj/item/gun/ballistic/automatic/k25/update_icon_state()
 	. = ..()
-	if(istype(ammo_magazine,/obj/item/ammo_magazine/k25_m))
+	if(istype(ammo_magazine,/obj/item/ammo_magazine/a9_5mm/k25))
 		icon_state = "k25"
 	else
 		icon_state = (ammo_magazine)? "k25" : "k25_e"
 
 // ---------- AMMO & MAGAZINE
 
-/obj/item/ammo_magazine/k25_m
+/obj/item/ammo_magazine/a9_5mm/k25
 	name = "box mag (9.5x40mm)"
-	icon = 'icons/obj/ammo_vr.dmi'
+	icon = 'icons/content/factions/orion/iwl/ammo_vr.dmi'
 	icon_state = "k25_m"
-	caliber = "9.5x40mm"
-	ammo_type = /obj/item/ammo_casing/a95
-	max_ammo = 45
-	mag_type = MAGAZINE
-	multiple_sprites = 1
+	ammo_caliber = /datum/ammo_caliber/a9_5mm
+	ammo_preload = /obj/item/ammo_casing/a95
+	ammo_max = 45
+	magazine_type = MAGAZINE_TYPE_NORMAL
 
-/obj/item/ammo_casing/s72
-	desc = "A 9.5x40mm bullet casing."
-	icon_state = "rifle-casing"
-	caliber = "9.5x40mm"
-	projectile_type = /obj/projectile/bullet/rifle/s72
+/obj/item/ammo_magazine/a9_5mm/k25/empty
+	ammo_current = 0
 
-/obj/projectile/bullet/rifle/s72
-	damage = 35
+// /obj/item/ammo_casing/s72
+// 	desc = "A 9.5x40mm bullet casing."
+// 	icon_state = "rifle-casing"
+// 	caliber = "9.5x40mm"
+// 	projectile_type = /obj/projectile/bullet/rifle/s72
 
-/obj/item/ammo_magazine/k25_m/empty
-	initial_ammo = 0
+// /obj/projectile/bullet/rifle/s72
+// 	damage = 35
