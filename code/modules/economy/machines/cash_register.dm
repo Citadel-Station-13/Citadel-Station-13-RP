@@ -541,3 +541,9 @@
 	account_to_connect = "Civilian"
 	machine_id = "Nebula Gas RETAIL UNIT"
 	req_access = list(160)
+
+/obj/machinery/cash_register/resort
+	name = "Gaia Station Cash Register"
+	account_to_connect = "Civilian"
+	machine_id = "Gaia Station RETAIL UNIT"
+	req_access = list(252)

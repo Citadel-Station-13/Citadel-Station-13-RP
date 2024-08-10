@@ -23,6 +23,8 @@
 	assisted_langs   = list(LANGUAGE_VOX)	// Diona are weird, let's just assume they can use basically any language.
 
 	slowdown = 2.5
+	light_slowdown = -0.5
+	dark_slowdown = 3
 	snow_movement  = -2 // Ignore light snow
 	water_movement = -4 // Ignore shallow water
 	hud_type = /datum/hud_data/diona
@@ -57,6 +59,7 @@
 		O_POLYP    = /obj/item/organ/internal/diona/polyp,
 		O_ANCHOR   = /obj/item/organ/internal/diona/ligament,
 	)
+	vision_organ = O_BRAIN
 
 	has_limbs = list(
 		BP_TORSO  = list("path" = /obj/item/organ/external/diona/chest),

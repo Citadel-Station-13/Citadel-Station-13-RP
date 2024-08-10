@@ -117,7 +117,7 @@
 	player_msg = "Your attacks are short-ranged, but can <b>arc over obstructions</b> such as allies \
 	or barriers."
 
-	ai_holder_type = /datum/ai_holder/simple_mob/ranged/sniper
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/ranged/sniper
 
 	catalogue_data = list(/datum/category_item/catalogue/technology/drone/hivebot/lobber)
 
@@ -147,7 +147,7 @@
 
 	base_attack_cooldown = 5
 
-	ai_holder_type = /datum/ai_holder/simple_mob/ranged/sniper
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/ranged/sniper
 	catalogue_data = list(/datum/category_item/catalogue/technology/drone/hivebot/siege)
 
 	player_msg = "You are capable of firing <b>very long range bombardment attacks</b>.<br>\
@@ -216,7 +216,7 @@
 	movement_cooldown = 0.7 SECONDS
 
 	projectiletype = /obj/projectile/beam/xray
-	ai_holder_type = /datum/ai_holder/simple_mob/ranged/kiting/sniper
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/ranged/kiting/sniper
 
 	icon_scale_x = 1.4
 	icon_scale_y = 1.4

@@ -97,7 +97,7 @@
 
 /obj/machinery/door/Bumped(atom/AM)
 	. = ..()
-	if(panel_open || operating)
+	if(operating)
 		return
 	if(ismob(AM))
 		var/mob/M = AM
@@ -119,14 +119,6 @@
 				open()
 		return
 
-	if(istype(AM, /obj/mecha))
-		var/obj/mecha/mecha = AM
-		if(density)
-			if(mecha.occupant && (src.allowed(mecha.occupant) || src.check_access_list(mecha.operation_req_access)))
-				open()
-			else
-				do_animate(DOOR_ANIMATION_DENY)
-		return
 	if(istype(AM, /obj/structure/bed/chair/wheelchair))
 		var/obj/structure/bed/chair/wheelchair/wheel = AM
 		if(density)
@@ -284,7 +276,7 @@
 	// todo: this is shitcode
 	if(!istype(src, /obj/machinery/door/airlock))
 		for (var/mob/O in viewers(src, null))
-			if ((O.client && !( O.blinded )))
+			if ((O.client && !( O.has_status_effect(/datum/status_effect/sight/blindness) )))
 				O.show_message("[src.name] breaks!" )
 	update_icon()
 

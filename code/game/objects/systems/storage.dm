@@ -33,21 +33,26 @@
 	/// carry weight mitigation, multiplicative.
 	var/weight_multiply = 1
 
-	//* Deconstruction & Integrity
+	//* Deconstruction & Integrity *//
 
 	/// on deconstruct(method), drop on these method flags
 	var/drop_on_deconstruction_methods = ALL
 	/// locks don't work if atom is broken
 	var/lock_nullified_by_atom_break = FALSE
 
-	//* Defense
+	//* Defense *//
 
 	/// pass EMPs in
 	var/pass_emp_inside = TRUE
 	/// pass EMPs in but weaken them
 	var/pass_emp_weaken = TRUE
 
-	//* Filters
+	//* Economy *//
+
+	/// allow selling stuff in worth intrinsic
+	var/use_worth_containing = TRUE
+
+	//* Filters *//
 
 	/// protected var because we want to cache.
 	/// set to a list of typepaths to initialize it at New().
@@ -69,7 +74,7 @@
 	/// this is so overriding things can be easier.
 	VAR_PROTECTED/list/insertion_allow_typecache
 
-	//* Interaction
+	//* Interaction *//
 
 	/// insert proposition: 'on', 'in', etc
 	var/insert_preposition = "in"
@@ -109,7 +114,7 @@
 	/// ghosts can always see inside
 	var/always_allow_observer_view = TRUE
 
-	//* Limits
+	//* Limits *//
 
 	/// if set, limit to a certain volume
 	var/max_combined_volume
@@ -122,19 +127,19 @@
 	/// disallow nesting storage items of same or bigger weight class
 	var/disallow_equal_weight_class_storage_nesting = TRUE
 
-	//* Locking
+	//* Locking *//
 
 	/// locked storage can't be accessed, unless show() is called with force
 	/// however, you can continue viewing even if it's locked.
 	/// use set_locked() to modify.
 	var/locked = FALSE
 
-	//* Mass Operations
+	//* Mass Operations *//
 
 	/// mutex to prevent mass operation spam
 	var/mass_operation_interaction_mutex = FALSE
 
-	//* Redirection
+	//* Redirection *//
 
 	/// When set, we treat this as the real parent object.
 	/// **Warning**: This is an advanced feature.
@@ -147,26 +152,29 @@
 	/// That, however, is too complex and awful, so, we just have a single redirection var now
 	/// if you mess it up, it is not my fault. ~silicons
 	///
+	/// * If you use this, you should probably set [use_worth_containing] to FALSE if it isn't logically in here.
+	/// * If you don't, double (or even infinite) selling can happen.
+	///
 	/// todo: this literally doesn't work due to no Reachability hooks. please implement this properly later via reachability signal hooks.
 	var/atom/movable/storage_indirection/indirection
 
-	//* Radiation
+	//* Radiation *//
 	/// pass clean radiation calls inside?
 	var/pass_clean_radiation_inside = FALSE
 
-	//* Rendering
+	//* Rendering *//
 
 	/// update icon on item change
 	var/update_icon_on_item_change = FALSE
 
-	//* State Caches
+	//* State Caches *//
 
 	/// cached combined w class
 	var/tmp/cached_combined_weight_class
 	/// cached combined volume
 	var/tmp/cached_combined_volume
 
-	//* Sound Effects
+	//* Sound Effects *//
 
 	/// open / access sound passed into playsound
 	var/sfx_open = "rustle"
@@ -275,19 +283,19 @@
 	if(!isnull(action_mode_switch))
 		return
 	action_mode_switch = new(src)
-	action_mode_switch.button_overlay = parent
-	action_mode_switch.update_button()
+	action_mode_switch.button_additional_only = TRUE
+	action_mode_switch.button_additional_overlay = parent
 
 /datum/object_system/storage/proc/grant_buttons(mob/wearer)
 	ensure_buttons()
 	if(allow_mass_gather && allow_mass_gather_mode_switch)
-		action_mode_switch.grant(wearer)
+		action_mode_switch.grant(wearer.inventory.actions)
 
 /datum/object_system/storage/proc/revoke_buttons(mob/wearer)
-	action_mode_switch?.remove(wearer)
+	action_mode_switch?.revoke(wearer.inventory.actions)
 
-/datum/object_system/storage/ui_action_click(datum/action/action, mob/user)
-	switch_gathering_modes(user)
+/datum/object_system/storage/ui_action_click(datum/action/action, datum/event_args/actor/actor)
+	switch_gathering_modes(actor.performer)
 
 //* Caches *//
 
@@ -359,7 +367,7 @@
 
 /datum/object_system/storage/proc/on_dropped(mob/user)
 	revoke_buttons(user)
-b
+
 /**
  * Called by our object when an item exits us
  */
@@ -740,7 +748,8 @@ b
 
 /datum/object_system/storage/proc/update_icon()
 	parent.update_icon()
-	action_mode_switch?.button_overlay = parent
+	action_mode_switch?.button_additional_overlay = parent
+	action_mode_switch?.update_buttons(TRUE)
 
 //* Transfer *//
 
@@ -1029,6 +1038,10 @@ b
 		var/obj/item/transferring = things[i]
 		// make sure they're still there
 		if(transferring.loc != from_loc)
+			continue
+		// see if it can be picked up
+		if(!transferring.should_allow_pickup(actor, TRUE))
+			rejections_out += transferring
 			continue
 		// see if we can accept it
 		if(!try_insert(transferring, actor, TRUE, TRUE, TRUE))
@@ -1765,6 +1778,16 @@ b
 
 /atom/movable/storage_indirection/CanReachOut(atom/movable/mover, atom/target, obj/item/tool, list/cache)
 	return TRUE
+
+/atom/movable/storage_indirection/Exited(atom/movable/AM, atom/newLoc)
+	. = ..()
+	if(isitem(AM))
+		parent.on_item_exited(AM)
+
+/atom/movable/storage_indirection/Entered(atom/movable/AM, atom/oldLoc)
+	. = ..()
+	if(isitem(AM))
+		parent.on_item_entered(AM)
 
 /atom/movable/storage_indirection/on_contents_weight_class_change(obj/item/item, old_weight_class, new_weight_class)
 	parent.on_contents_weight_class_change(item, old_weight_class, new_weight_class)

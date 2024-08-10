@@ -7,6 +7,8 @@
 	sheet_plural_name = "ingots"
 	tgui_icon_key = "ingots"
 
+	worth = 1
+
 	relative_integrity = 0.7
 	density = 8 * 0.7
 	relative_conductivity = 1

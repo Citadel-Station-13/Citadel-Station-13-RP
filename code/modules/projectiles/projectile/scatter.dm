@@ -13,7 +13,7 @@
 	damage = 8
 	spread_submunition_damage = TRUE
 	only_submunitions = TRUE
-	range = 0	// Immediately deletes itself after firing, as its only job is to fire other projectiles.
+	range = WORLD_ICON_SIZE * 0	// Immediately deletes itself after firing, as its only job is to fire other projectiles.
 
 	submunition_spread_max = 30
 	submunition_spread_min = 2

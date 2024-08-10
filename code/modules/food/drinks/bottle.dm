@@ -390,7 +390,7 @@
 	icon_state = "ambrosia_mead"
 	center_of_mass = list("x"=4, "y"=12)
 
-/obj/item/reagent_containers/food/drinks/bottle/royaljelly/Initialize(mapload)
+/obj/item/reagent_containers/food/drinks/bottle/ambrosia_mead/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("mead", 100)
 

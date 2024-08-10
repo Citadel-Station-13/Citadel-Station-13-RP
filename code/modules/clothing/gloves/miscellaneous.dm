@@ -179,7 +179,7 @@
 	name = "PMD issued gloves, stamped with protective seals and spells."
 	icon_state = "para_ert_gloves"
 	item_state = "para_ert_gloves"
-	action_button_name = "Enable Glove Sigils"
+	item_action_name = "Enable Glove Sigils"
 
 	var/blessed = FALSE
 
@@ -672,3 +672,38 @@
 	icon = 'icons/clothing/gloves/ante_gloves.dmi'
 	icon_state = "ante_gloves"
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+
+/obj/item/clothing/gloves/size
+	name = "size standardization bracelet"
+	desc = "A somewhat bulky metal bracelet featuring a crystal, glowing blue. The outer side of the bracelet has an elongated case that one might imagine contains electronic components. This bracelet is used to standardize the size of crewmembers who may need a non-permanent size assist."
+	icon_state = "bs_bracelet"
+	var/original_size
+	var/last_activated
+
+/obj/item/clothing/gloves/size/equipped(mob/user, slot, flags)
+	. = ..()
+	var/mob/living/carbon/human/H = user
+	if(!istype(H))
+		return
+	if(slot != SLOT_ID_GLOVES)
+		return
+	if(last_activated && world.time - last_activated < 10 SECONDS)
+		to_chat(user, "<span class ='warning'>\The [src] flickers. It seems to be recharging.</span>")
+		return
+	last_activated = world.time
+	original_size = user.size_multiplier
+	H.resize(1, TRUE, TRUE)
+	user.visible_message("<span class='warning'>The space around [user] distorts as they change size!</span>","<span class='notice'>The space around you distorts as you change size!</span>")
+
+/obj/item/clothing/gloves/size/unequipped(mob/user, slot, flags)
+	. = ..()
+	if(!original_size)
+		return
+	var/mob/living/carbon/human/H = user
+	if(!istype(H))
+		return
+	last_activated = world.time
+	H.resize(original_size, TRUE, TRUE)
+	original_size = null
+	user.visible_message("<span class='warning'>The space around [user] distorts as they return to their original size!</span>","<span class='notice'>The space around you distorts as you return to your original size!</span>")
+	to_chat(user, "<span class ='warning'>\The [src] flickers. It is now recharging and will be ready again in ten seconds.</span>")

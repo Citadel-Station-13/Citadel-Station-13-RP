@@ -20,11 +20,11 @@
 	icon_state = "advanced_smg"
 	w_class = WEIGHT_CLASS_NORMAL
 	load_method = MAGAZINE
-	caliber = "9mm"
+	caliber = /datum/ammo_caliber/a9mm
 	origin_tech = list(TECH_COMBAT = 4, TECH_MATERIAL = 2)
 	slot_flags = SLOT_BELT
 	magazine_type = null // R&D builds this. Starts unloaded.
-	allowed_magazines = list(/obj/item/ammo_magazine/m9mmAdvanced, /obj/item/ammo_magazine/m9mm)
+	allowed_magazines = list(/obj/item/ammo_magazine/a9mm/advanced_smg, /obj/item/ammo_magazine/a9mm)
 
 	firemodes = list(
 		list(mode_name="semiauto",       burst=1, fire_delay=0,    move_delay=null, burst_accuracy=null, dispersion=null),
@@ -32,7 +32,7 @@
 	)
 
 /obj/item/gun/ballistic/automatic/advanced_smg/loaded
-	magazine_type = /obj/item/ammo_magazine/m9mmAdvanced
+	magazine_type = /obj/item/ammo_magazine/a9mm/advanced_smg
 
 /obj/item/gun/ballistic/automatic/c20r
 	name = "submachine gun"
@@ -41,12 +41,12 @@
 	item_state = "c20r"
 	w_class = WEIGHT_CLASS_NORMAL
 	damage_force = 10
-	caliber = "10mm"
+	caliber = /datum/ammo_caliber/a10mm
 	origin_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 2, TECH_ILLEGAL = 8)
 	slot_flags = SLOT_BELT|SLOT_BACK
 	load_method = MAGAZINE
-	magazine_type = /obj/item/ammo_magazine/m10mm
-	allowed_magazines = list(/obj/item/ammo_magazine/m10mm)
+	magazine_type = /obj/item/ammo_magazine/a10mm
+	allowed_magazines = list(/obj/item/ammo_magazine/a10mm)
 	projectile_type = /obj/projectile/bullet/pistol/medium
 	auto_eject = 1
 	auto_eject_sound = 'sound/weapons/smg_empty_alarm.ogg'
@@ -56,7 +56,7 @@
 /obj/item/gun/ballistic/automatic/c20r/update_icon_state()
 	. = ..()
 	if(ammo_magazine)
-		icon_state = "c20r-[round(ammo_magazine.stored_ammo.len,4)]"
+		icon_state = "c20r-[round(ammo_magazine.amount_remaining(),4)]"
 	else
 		icon_state = "c20r"
 
@@ -69,12 +69,12 @@
 	item_state = null
 	w_class = WEIGHT_CLASS_BULKY
 	damage_force = 10
-	caliber = "5.56mm"
+	caliber = /datum/ammo_caliber/a5_56mm
 	origin_tech = list(TECH_COMBAT = 6, TECH_MATERIAL = 1, TECH_ILLEGAL = 4)
 	slot_flags = SLOT_BACK
 	load_method = MAGAZINE
-	magazine_type = /obj/item/ammo_magazine/m556
-	allowed_magazines = list(/obj/item/ammo_magazine/m556)
+	magazine_type = /obj/item/ammo_magazine/a5_56mm
+	allowed_magazines = list(/obj/item/ammo_magazine/a5_56mm)
 	projectile_type = /obj/projectile/bullet/rifle/a556
 	mag_insert_sound = 'sound/weapons/guns/interaction/ltrifle_magin.ogg'
 	mag_remove_sound = 'sound/weapons/guns/interaction/ltrifle_magout.ogg'
@@ -89,7 +89,7 @@
 
 /obj/item/gun/ballistic/automatic/sts35/update_icon_state()
 	. = ..()
-	if(istype(ammo_magazine,/obj/item/ammo_magazine/m556/small))
+	if(istype(ammo_magazine,/obj/item/ammo_magazine/a5_56mm/small))
 		icon_state = "arifle-small" // If using the small magazines, use the small magazine sprite.
 
 /obj/item/gun/ballistic/automatic/sts35/update_icon(ignore_inhands)
@@ -103,24 +103,25 @@
 	icon_state = "wt550"
 	item_state = "wt550"
 	w_class = WEIGHT_CLASS_NORMAL
-	caliber = "9mm"
+	caliber = /datum/ammo_caliber/a9mm
 	origin_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 2)
 	slot_flags = SLOT_BELT
 	ammo_type = "/obj/item/ammo_casing/a9mmr"
 	load_method = MAGAZINE
-	magazine_type = /obj/item/ammo_magazine/m9mmt/rubber
-	allowed_magazines = list(/obj/item/ammo_magazine/m9mmt)
+	magazine_type = /obj/item/ammo_magazine/a9mm/top_mount/rubber
+	allowed_magazines = list(/obj/item/ammo_magazine/a9mm/top_mount)
 	projectile_type = /obj/projectile/bullet/pistol/medium
+	worth_intrinsic = 450
 
 /obj/item/gun/ballistic/automatic/wt550/update_icon_state()
 	. = ..()
 	if(ammo_magazine)
-		icon_state = "wt550-[round(ammo_magazine.stored_ammo.len,4)]"
+		icon_state = "wt550-[round(ammo_magazine.amount_remaining(),4)]"
 	else
 		icon_state = "wt550"
 
 /obj/item/gun/ballistic/automatic/wt550/lethal
-	magazine_type = /obj/item/ammo_magazine/m9mmt
+	magazine_type = /obj/item/ammo_magazine/a9mm/top_mount
 
 /obj/item/gun/ballistic/automatic/z8
 	name = "designated marksman rifle"
@@ -130,12 +131,12 @@
 	wielded_item_state = "z8carbine-wielded"
 	w_class = WEIGHT_CLASS_BULKY
 	damage_force = 10
-	caliber = "7.62mm"
+	caliber = /datum/ammo_caliber/a7_62mm
 	origin_tech = list(TECH_COMBAT = 8, TECH_MATERIAL = 3)
 	slot_flags = SLOT_BACK
 	load_method = MAGAZINE
-	magazine_type = /obj/item/ammo_magazine/m762
-	allowed_magazines = list(/obj/item/ammo_magazine/m762)
+	magazine_type = /obj/item/ammo_magazine/a7_62mm
+	allowed_magazines = list(/obj/item/ammo_magazine/a7_62mm)
 	projectile_type = /obj/projectile/bullet/rifle/a762
 	auto_eject = 1
 	auto_eject_sound = 'sound/weapons/smg_empty_alarm.ogg'
@@ -143,6 +144,7 @@
 	mag_remove_sound = 'sound/weapons/guns/interaction/batrifle_magout.ogg'
 	heavy = TRUE
 	one_handed_penalty = 60
+	worth_intrinsic = 650 // milrp time
 
 	burst_delay = 4
 	firemodes = list(
@@ -181,7 +183,7 @@
 /obj/item/gun/ballistic/automatic/z8/update_icon_state()
 	. = ..()
 	if(ammo_magazine)
-		icon_state = "carbine-[round(ammo_magazine.stored_ammo.len,2)]"
+		icon_state = "carbine-[round(ammo_magazine.amount_remaining(),2)]"
 	else
 		icon_state = "carbine"
 
@@ -205,12 +207,12 @@
 	damage_force = 10
 	slot_flags = 0
 	max_shells = 50
-	caliber = "5.56mm"
+	caliber = /datum/ammo_caliber/a5_56mm
 	origin_tech = list(TECH_COMBAT = 6, TECH_MATERIAL = 1, TECH_ILLEGAL = 2)
 	slot_flags = SLOT_BACK
 	load_method = MAGAZINE
-	magazine_type = /obj/item/ammo_magazine/m556saw
-	allowed_magazines = list(/obj/item/ammo_magazine/m556saw, /obj/item/ammo_magazine/m556)
+	magazine_type = /obj/item/ammo_magazine/a5_56mm/saw
+	allowed_magazines = list(/obj/item/ammo_magazine/a5_56mm/saw, /obj/item/ammo_magazine/a5_56mm)
 	projectile_type = /obj/projectile/bullet/rifle/a556
 	mag_insert_sound = 'sound/weapons/guns/interaction/lmg_magin.ogg'
 	mag_remove_sound = 'sound/weapons/guns/interaction/lmg_magout.ogg'
@@ -265,11 +267,11 @@
 
 /obj/item/gun/ballistic/automatic/lmg/update_icon_state()
 	. = ..()
-	if(istype(ammo_magazine,/obj/item/ammo_magazine/m762))
+	if(istype(ammo_magazine,/obj/item/ammo_magazine/a7_62mm))
 		icon_state = "l6[cover_open ? "open" : "closed"]mag"
 		item_state = icon_state
 	else
-		icon_state = "l6[cover_open ? "open" : "closed"][ammo_magazine ? round(ammo_magazine.stored_ammo.len, 10) : "-empty"]"
+		icon_state = "l6[cover_open ? "open" : "closed"][ammo_magazine ? round(ammo_magazine.amount_remaining(), 10) : "-empty"]"
 		item_state = "l6[cover_open ? "open" : "closed"][ammo_magazine ? "" : "-empty"]"
 
 /obj/item/gun/ballistic/automatic/lmg/load_ammo(var/obj/item/A, mob/user)
@@ -291,15 +293,15 @@
 	icon_state = "mg42closed50"
 	item_state = "mg42closed"
 	max_shells = 50
-	caliber = "7.62mm"
+	caliber = /datum/ammo_caliber/a7_62mm
 	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 1, TECH_ILLEGAL = 2)
-	magazine_type = /obj/item/ammo_magazine/m762_mg42
-	allowed_magazines = list(/obj/item/ammo_magazine/m762_mg42)
+	magazine_type = /obj/item/ammo_magazine/a7_62mm/mg42
+	allowed_magazines = list(/obj/item/ammo_magazine/a7_62mm/mg42)
 	one_handed_penalty = 100
 
 /obj/item/gun/ballistic/automatic/lmg/mg42/update_icon_state()
 	. = ..()
-	icon_state = "mg42[cover_open ? "open" : "closed"][ammo_magazine ? round(ammo_magazine.stored_ammo.len, 25) : "-empty"]"
+	icon_state = "mg42[cover_open ? "open" : "closed"][ammo_magazine ? round(ammo_magazine.amount_remaining(), 25) : "-empty"]"
 	item_state = "mg42[cover_open ? "open" : "closed"][ammo_magazine ? "" : "-empty"]"
 
 /obj/item/gun/ballistic/automatic/lmg/m60
@@ -308,9 +310,9 @@
 	icon_state = "M60closed75"
 	item_state = "M60closed"
 	max_shells = 75
-	caliber = "7.62mm"
-	magazine_type = /obj/item/ammo_magazine/m762_m60
-	allowed_magazines = list(/obj/item/ammo_magazine/m762_m60)
+	caliber = /datum/ammo_caliber/a7_62mm
+	magazine_type = /obj/item/ammo_magazine/a7_62mm/m60
+	allowed_magazines = list(/obj/item/ammo_magazine/a7_62mm/m60)
 	projectile_type = /obj/projectile/bullet/rifle/a762
 	one_handed_penalty = 100
 
@@ -321,7 +323,7 @@
 
 /obj/item/gun/ballistic/automatic/lmg/m60/update_icon_state()
 	. = ..()
-	icon_state = "M60[cover_open ? "open" : "closed"][ammo_magazine ? round(ammo_magazine.stored_ammo.len, 15) : "-empty"]"
+	icon_state = "M60[cover_open ? "open" : "closed"][ammo_magazine ? round(ammo_magazine.amount_remaining(), 15) : "-empty"]"
 	item_state = "M60[cover_open ? "open" : "closed"][ammo_magazine ? "" : "-empty"]"
 
 //Future AA-12
@@ -332,12 +334,12 @@
 	item_state = "ashot"
 	w_class = WEIGHT_CLASS_BULKY
 	damage_force = 10
-	caliber = "12g"
+	caliber = /datum/ammo_caliber/a12g
 	origin_tech = list(TECH_COMBAT = 6, TECH_MATERIAL = 1, TECH_ILLEGAL = 4)
 	slot_flags = SLOT_BACK
 	load_method = MAGAZINE
-	magazine_type = /obj/item/ammo_magazine/m12gdrum
-	allowed_magazines = list(/obj/item/ammo_magazine/m12gdrum)
+	magazine_type = /obj/item/ammo_magazine/a12g/drum
+	allowed_magazines = list(/obj/item/ammo_magazine/a12g/drum)
 	projectile_type = /obj/projectile/bullet/shotgun
 	heavy = TRUE
 	one_handed_penalty = 30 //The AA12 can be fired one-handed fairly easily.
@@ -365,10 +367,10 @@
 	icon_state = "mini-uzi"
 	w_class = WEIGHT_CLASS_NORMAL
 	load_method = MAGAZINE
-	caliber = ".45"
+	caliber = /datum/ammo_caliber/a45
 	origin_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 2, TECH_ILLEGAL = 5)
-	magazine_type = /obj/item/ammo_magazine/m45uzi
-	allowed_magazines = list(/obj/item/ammo_magazine/m45uzi)
+	magazine_type = /obj/item/ammo_magazine/a45/uzi
+	allowed_magazines = list(/obj/item/ammo_magazine/a45/uzi)
 
 	firemodes = list(
 		list(mode_name="semiauto", burst=1, fire_delay=0),
@@ -416,13 +418,13 @@
 	icon_state = "p90smg"
 	item_state = "p90"
 	w_class = WEIGHT_CLASS_NORMAL
-	caliber = "5.7x28mm"
+	caliber = /datum/ammo_caliber/a5_7mm
 	fire_sound = 'sound/weapons/gunshot/gunshot_uzi.wav'
 	origin_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 2)
 	slot_flags = SLOT_BELT // ToDo: Belt sprite.
 	load_method = MAGAZINE
-	magazine_type = /obj/item/ammo_magazine/m57x28mmp90
-	allowed_magazines = list(/obj/item/ammo_magazine/m57x28mmp90) // ToDo: New sprite for the different mag.
+	magazine_type = /obj/item/ammo_magazine/a5_7mm/p90
+	allowed_magazines = list(/obj/item/ammo_magazine/a5_7mm/p90) // ToDo: New sprite for the different mag.
 
 	firemodes = list(
 		list(mode_name="semiauto", burst=1, fire_delay=0),
@@ -431,31 +433,31 @@
 
 /obj/item/gun/ballistic/automatic/p90/update_icon_state()
 	. = ..()
-	icon_state = "p90smg-[ammo_magazine ? round(ammo_magazine.stored_ammo.len, 6) : "empty"]"
+	icon_state = "p90smg-[ammo_magazine ? round(ammo_magazine.amount_remaining(), 6) : "empty"]"
 
 /obj/item/gun/ballistic/automatic/p90/custom
 	name = "custom personal defense weapon"
 	desc = "An H90K from Hephaestus Industries. This one has a different colored receiver and a sling."
 	icon_state = "p90smgC"
-	magazine_type = /obj/item/ammo_magazine/m57x28mmp90/hunter
+	magazine_type = /obj/item/ammo_magazine/a5_7mm/p90/hunter
 	slot_flags = SLOT_BELT|SLOT_BACK
 	pin = /obj/item/firing_pin/explorer
 
 /obj/item/gun/ballistic/automatic/p90/custom/update_icon_state()
 	. = ..()
-	icon_state = "p90smgC-[ammo_magazine ? round(ammo_magazine.stored_ammo.len, 6) : "e"]"
+	icon_state = "p90smgC-[ammo_magazine ? round(ammo_magazine.amount_remaining(), 6) : "e"]"
 
 /obj/item/gun/ballistic/automatic/tommygun
 	name = "\improper Tommy Gun"
 	desc = "This weapon was made famous by gangsters in the 20th century. Cybersun Industries is currently reproducing these for a target market of historic gun collectors and classy criminals. Uses .45 rounds."
 	icon_state = "tommygun"
 	w_class = WEIGHT_CLASS_NORMAL
-	caliber = ".45"
+	caliber = /datum/ammo_caliber/a45
 	origin_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 2, TECH_ILLEGAL = 5)
 	slot_flags = SLOT_BELT // ToDo: Belt sprite.
 	load_method = MAGAZINE
-	magazine_type = /obj/item/ammo_magazine/m45tommy
-	allowed_magazines = list(/obj/item/ammo_magazine/m45tommy, /obj/item/ammo_magazine/m45tommydrum)
+	magazine_type = /obj/item/ammo_magazine/a45/tommy
+	allowed_magazines = list(/obj/item/ammo_magazine/a45/tommy, /obj/item/ammo_magazine/a45/tommy/drum)
 
 	firemodes = list(
 		list(mode_name="semiauto", burst=1, fire_delay=0),
@@ -474,12 +476,12 @@
 	item_state = "bullpup"
 	w_class = WEIGHT_CLASS_BULKY
 	damage_force = 10
-	caliber = "7.62mm"
+	caliber = /datum/ammo_caliber/a7_62mm
 	origin_tech = list(TECH_COMBAT = 6, TECH_MATERIAL = 1, TECH_ILLEGAL = 4)
 	slot_flags = SLOT_BACK
 	load_method = MAGAZINE
-	magazine_type = /obj/item/ammo_magazine/m762
-	allowed_magazines = list(/obj/item/ammo_magazine/m762, /obj/item/ammo_magazine/m762m)
+	magazine_type = /obj/item/ammo_magazine/a7_62mm
+	allowed_magazines = list(/obj/item/ammo_magazine/a7_62mm, /obj/item/ammo_magazine/a7_62mm)
 	projectile_type = /obj/projectile/bullet/rifle/a762
 	heavy = TRUE
 	one_handed_penalty = 45
@@ -491,7 +493,7 @@
 
 /obj/item/gun/ballistic/automatic/bullpup/update_icon_state()
 	. = ..()
-	if(istype(ammo_magazine,/obj/item/ammo_magazine/m762))
+	if(istype(ammo_magazine,/obj/item/ammo_magazine/a7_62mm))
 		icon_state = "bullpup-small"
 
 /obj/item/gun/ballistic/automatic/bullpup/update_icon()
@@ -505,12 +507,12 @@
 	item_state = "fal"
 	w_class = WEIGHT_CLASS_BULKY
 	damage_force = 10
-	caliber = "7.62mm"
+	caliber = /datum/ammo_caliber/a7_62mm
 	origin_tech = list(TECH_COMBAT = 6, TECH_MATERIAL = 1, TECH_ILLEGAL = 4)
 	slot_flags = SLOT_BACK
 	load_method = MAGAZINE
-	magazine_type = /obj/item/ammo_magazine/m762m
-	allowed_magazines = list(/obj/item/ammo_magazine/m762, /obj/item/ammo_magazine/m762m)
+	magazine_type = /obj/item/ammo_magazine/a7_62mm
+	allowed_magazines = list(/obj/item/ammo_magazine/a7_62mm, /obj/item/ammo_magazine/a7_62mm)
 	heavy = TRUE
 	projectile_type = /obj/projectile/bullet/rifle/a762
 
@@ -534,12 +536,12 @@
 	fire_anim = "automat_fire"
 	w_class = WEIGHT_CLASS_BULKY
 	damage_force = 10
-	caliber = "7.62mm"
+	caliber = /datum/ammo_caliber/a7_62mm
 	heavy = TRUE
 	origin_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 3) //A real work around to a automatic rifle.
 	slot_flags = SLOT_BACK
 	load_method = SPEEDLOADER
-	ammo_type = /obj/item/ammo_casing/a762
+	ammo_type = /obj/item/ammo_casing/a7_62mm
 	max_shells =  15
 	burst = 3
 	fire_delay = 7.2
@@ -548,7 +550,7 @@
 	dispersion = list(0.0, 0.6,1.0)
 
 /obj/item/gun/ballistic/automatic/automat/holy
-	ammo_type = /obj/item/ammo_casing/a762/silver
+	ammo_type = /obj/item/ammo_casing/a7_62mm/silver
 	holy = TRUE
 
 /obj/item/gun/ballistic/automatic/automat/taj
@@ -567,12 +569,12 @@
 	w_class = WEIGHT_CLASS_BULKY
 	heavy = TRUE
 	damage_force = 10
-	caliber = "12g"
+	caliber = /datum/ammo_caliber/a12g
 	origin_tech = list(TECH_COMBAT = 6, TECH_MATERIAL = 1, TECH_ILLEGAL = 4)
 	slot_flags = SLOT_BACK
 	load_method = MAGAZINE
-	magazine_type = /obj/item/ammo_magazine/holyshot_mag
-	allowed_magazines = list(/obj/item/ammo_magazine/holyshot_mag, /obj/item/ammo_magazine/holyshot_mag/stake)
+	magazine_type = /obj/item/ammo_magazine/a12g/drum/holy
+	allowed_magazines = list(/obj/item/ammo_magazine/a12g/drum/holy, /obj/item/ammo_magazine/a12g/drum/holy/stake)
 	projectile_type = /obj/projectile/bullet/shotgun
 
 	one_handed_penalty = 40
@@ -599,12 +601,12 @@
 	w_class = WEIGHT_CLASS_BULKY
 	heavy = TRUE
 	damage_force = 10
-	caliber = "organic"
+	caliber = /datum/ammo_caliber/biomatter
 	origin_tech = list(TECH_COMBAT = 6, TECH_MATERIAL = 1, TECH_ILLEGAL = 4)
 	slot_flags = SLOT_BACK
 	load_method = MAGAZINE
-	magazine_type = /obj/item/ammo_magazine/mcompressedbio/large/banana
-	allowed_magazines = list(/obj/item/ammo_magazine/mcompressedbio/large/banana)
+	magazine_type = /obj/item/ammo_magazine/biomatter/large/banana
+	allowed_magazines = list(/obj/item/ammo_magazine/biomatter/large/banana)
 	projectile_type = /obj/projectile/bullet/organic
 
 	one_handed_penalty = 30
@@ -629,10 +631,10 @@
 	icon_state = "wt274"
 	item_state = "gun"
 	load_method = MAGAZINE
-	caliber = ".45"
+	caliber = /datum/ammo_caliber/a45
 	origin_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 2, TECH_ILLEGAL = 5)
-	magazine_type = /obj/item/ammo_magazine/m45uzi/wt274
-	allowed_magazines = list(/obj/item/ammo_magazine/m45uzi/wt274)
+	magazine_type = /obj/item/ammo_magazine/a45/wt274
+	allowed_magazines = list(/obj/item/ammo_magazine/a45/wt274)
 	one_handed_penalty = 10
 
 	firemodes = list(
@@ -654,13 +656,13 @@
 	icon_state = "combatsmg"
 	item_state = "combatsmg"
 	w_class = WEIGHT_CLASS_NORMAL
-	caliber = "5.7x28mm"
+	caliber = /datum/ammo_caliber/a5_7mm
 	fire_sound = 'sound/weapons/gunshot/gunshot_uzi.wav'
 	origin_tech = list(TECH_COMBAT = 6, TECH_MATERIAL = 2)
 	slot_flags = SLOT_BELT
 	load_method = MAGAZINE
-	magazine_type = /obj/item/ammo_magazine/m57x28mm/smg/ap
-	allowed_magazines = list(/obj/item/ammo_magazine/m57x28mm/smg)
+	magazine_type = /obj/item/ammo_magazine/a5_7mm/harpy_smg/ap
+	allowed_magazines = list(/obj/item/ammo_magazine/a5_7mm/harpy_smg)
 
 	firemodes = list(
 		list(mode_name="semiauto", burst=1, fire_delay=0),
@@ -679,13 +681,13 @@
 	description_fluff = "The HI-GP mk 8 'Ballistae' is a bulky weapon designed to fire an obscenely robust .75 caliber gyrojet round with an explosive payload. The original design was sourced from Old Earth speculative documentation, and developed to test its efficacy. Although the weapon itself is undeniably powerful, its logistical demands, the recoil of the three-stage ammunition system, and its hefty size make it untenable on the modern battlefield."
 	icon_state = "bolter"
 	item_state = "bolter"
-	caliber = ".75"
+	caliber = /datum/ammo_caliber/a75
 	origin_tech = list(TECH_COMBAT = 5, TECH_ILLEGAL = 2)
 	load_method = MAGAZINE
 	fire_sound = 'sound/weapons/gunshot/gunshot_bolter.ogg'
 	max_shells = 30
-	magazine_type = /obj/item/ammo_magazine/m75/sickle
-	allowed_magazines = list(/obj/item/ammo_magazine/m75/sickle)
+	magazine_type = /obj/item/ammo_magazine/a75/rifle
+	allowed_magazines = list(/obj/item/ammo_magazine/a75/rifle)
 	heavy = TRUE
 	one_handed_penalty = 80
 
@@ -696,7 +698,7 @@
 
 /obj/item/gun/ballistic/automatic/bolter/update_icon_state()
 	. = ..()
-	icon_state = "bolter-[ammo_magazine ? round(ammo_magazine.stored_ammo.len, 2) : "empty"]"
+	icon_state = "bolter-[ammo_magazine ? round(ammo_magazine.amount_remaining(), 2) : "empty"]"
 
 /obj/item/gun/ballistic/automatic/bolter/storm
 	name = "\improper Onager heavy bolt rifle"
@@ -705,8 +707,8 @@
 	icon_state = "stormbolter"
 	item_state = "stormbolter"
 	max_shells = 50
-	magazine_type = /obj/item/ammo_magazine/m75/box
-	allowed_magazines = list(/obj/item/ammo_magazine/m75/box)
+	magazine_type = /obj/item/ammo_magazine/a75/box
+	allowed_magazines = list(/obj/item/ammo_magazine/a75/box)
 	one_handed_penalty = 100
 
 	firemodes = list(
@@ -716,7 +718,7 @@
 
 /obj/item/gun/ballistic/automatic/bolter/storm/update_icon_state()
 	. = ..()
-	icon_state = "stormbolter-[ammo_magazine ? round(ammo_magazine.stored_ammo.len, 10) : "empty"]"
+	icon_state = "stormbolter-[ammo_magazine ? round(ammo_magazine.amount_remaining(), 10) : "empty"]"
 
 //Foam Weapons
 /obj/item/gun/ballistic/automatic/advanced_smg/foam
@@ -724,9 +726,9 @@
 	desc = "The existence of this DONKsoft toy has instigated allegations of corporate espionage from Nanotrasen."
 	icon = 'icons/obj/toy.dmi'
 	icon_state = "toy_smg"
-	caliber = "foamdart"
-	magazine_type = /obj/item/ammo_magazine/mfoam/smg
-	allowed_magazines = list(/obj/item/ammo_magazine/mfoam/smg)
+	caliber = /datum/ammo_caliber/foam
+	magazine_type = /obj/item/ammo_magazine/foam/smg
+	allowed_magazines = list(/obj/item/ammo_magazine/foam/smg)
 	fire_sound = 'sound/items/syringeproj.ogg'
 
 /obj/item/gun/ballistic/automatic/advanced_smg/foam/update_icon_state()
@@ -751,9 +753,9 @@
 	icon = 'icons/obj/toy.dmi'
 	icon_state = "toy_c20"
 	damage_force = 5
-	caliber = "foamdart"
-	magazine_type = /obj/item/ammo_magazine/mfoam/c20
-	allowed_magazines = list(/obj/item/ammo_magazine/mfoam/c20)
+	caliber = /datum/ammo_caliber/foam
+	magazine_type = /obj/item/ammo_magazine/foam/smg
+	allowed_magazines = list(/obj/item/ammo_magazine/foam/smg)
 	projectile_type = /obj/projectile/bullet/reusable/foam
 	one_handed_penalty = 5
 	fire_sound = 'sound/items/syringeproj.ogg'
@@ -761,7 +763,7 @@
 /obj/item/gun/ballistic/automatic/c20r/foam/update_icon_state()
 	. = ..()
 	if(ammo_magazine)
-		icon_state = "toy_c20r-[round(ammo_magazine.stored_ammo.len,4)]"
+		icon_state = "toy_c20r-[round(ammo_magazine.amount_remaining(),4)]"
 	else
 		icon_state = "toy_c20r"
 
@@ -776,9 +778,9 @@
 	icon = 'icons/obj/toy.dmi'
 	icon_state = "toy_lmgclosed100"
 	damage_force = 5
-	caliber = "foamdart"
-	magazine_type = /obj/item/ammo_magazine/mfoam/lmg
-	allowed_magazines = list(/obj/item/ammo_magazine/mfoam/lmg)
+	caliber = /datum/ammo_caliber/foam
+	magazine_type = /obj/item/ammo_magazine/foam/lmg
+	allowed_magazines = list(/obj/item/ammo_magazine/foam/lmg)
 	projectile_type = /obj/projectile/bullet/reusable/foam
 	one_handed_penalty = 45 //It's plastic.
 	fire_sound = 'sound/items/syringeproj.ogg'
@@ -787,7 +789,7 @@
 
 /obj/item/gun/ballistic/automatic/lmg/foam/update_icon_state()
 	. = ..()
-	icon_state = "toy_lmg[cover_open ? "open" : "closed"][ammo_magazine ? round(ammo_magazine.stored_ammo.len, 10) : "-empty"]"
+	icon_state = "toy_lmg[cover_open ? "open" : "closed"][ammo_magazine ? round(ammo_magazine.amount_remaining(), 10) : "-empty"]"
 	item_state = "toy_lmg[cover_open ? "open" : "closed"][ammo_magazine ? "" : "-empty"]"
 
 /obj/item/gun/ballistic/automatic/lmg/foam/update_icon()

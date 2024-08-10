@@ -6,7 +6,7 @@
 	name = "Undefined Fluff Box"
 	desc = "This should have a description. Tell an admin."
 	max_items = 7
-	
+
 // END - DO NOT EDIT PROTOTYPE
 
 
@@ -175,8 +175,8 @@
 	name = "Sebastian's Lumoco Arms P3 Box"
 	starts_with = list(
 		/obj/item/gun/ballistic/pistol,
-		/obj/item/ammo_magazine/m9mm/compact/flash,
-		/obj/item/ammo_magazine/m9mm/compact/flash,
+		/obj/item/ammo_magazine/a9mm/compact/flash,
+		/obj/item/ammo_magazine/a9mm/compact/flash,
 		/obj/item/clothing/accessory/permit/gun/fluff/sebastian_aji)
 
 /*

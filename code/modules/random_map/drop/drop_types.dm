@@ -62,10 +62,10 @@ var/global/list/datum/supply_drop_loot/supply_drop
 		/obj/item/storage/box/emps,
 		/obj/item/storage/box/flashbangs,
 		/obj/item/gun/ballistic/automatic/sts35,
-		/obj/item/ammo_magazine/m762/ap,
-		/obj/item/ammo_magazine/m762/ap,
+		/obj/item/ammo_magazine/a7_62mm/ap,
+		/obj/item/ammo_magazine/a7_62mm/ap,
 		/obj/item/gun/ballistic/colt,
-		/obj/item/ammo_magazine/m45,
+		/obj/item/ammo_magazine/a45,
 		/obj/item/material/knife/tacknife/combatknife)
 
 /datum/supply_drop_loot/heavy_warfare
@@ -83,8 +83,8 @@ var/global/list/datum/supply_drop_loot/supply_drop
 		/obj/item/clothing/accessory/storage/black_drop_pouches,
 		/obj/item/storage/backpack/dufflebag/sec,
 		/obj/item/gun/ballistic/automatic/bullpup,
-		/obj/item/ammo_magazine/m762/ap,
-		/obj/item/ammo_magazine/m762,
+		/obj/item/ammo_magazine/a7_62mm/ap,
+		/obj/item/ammo_magazine/a7_62mm,
 		/obj/item/shield/energy,
 		/obj/item/grenade/explosive/frag,
 		/obj/item/grenade/explosive/frag,
@@ -181,12 +181,12 @@ var/global/list/datum/supply_drop_loot/supply_drop
 /datum/supply_drop_loot/food/New()
 	..()
 	contents = list(
-		/obj/item/reagent_containers/food/snacks/liquidfood,
-		/obj/item/reagent_containers/food/snacks/liquidfood,
-		/obj/item/reagent_containers/food/snacks/liquidfood,
-		/obj/item/reagent_containers/food/snacks/liquidfood,
-		/obj/item/reagent_containers/food/snacks/liquidfood,
-		/obj/item/reagent_containers/food/snacks/liquidfood,
+		/obj/item/reagent_containers/food/snacks/liquid,
+		/obj/item/reagent_containers/food/snacks/liquid,
+		/obj/item/reagent_containers/food/snacks/liquid,
+		/obj/item/reagent_containers/food/snacks/liquid,
+		/obj/item/reagent_containers/food/snacks/liquid,
+		/obj/item/reagent_containers/food/snacks/liquid,
 		/obj/item/reagent_containers/food/snacks/tastybread,
 		/obj/item/reagent_containers/food/snacks/tastybread,
 		/obj/item/reagent_containers/food/snacks/tastybread,

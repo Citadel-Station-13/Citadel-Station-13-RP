@@ -361,7 +361,7 @@ GLOBAL_LIST_INIT(testing_global_profiler, list("_PROFILE_NAME" = "Global"))
 		include_link = FALSE
 
 	if(key)
-		if(C && C.holder && C.holder.fakekey && !include_name)
+		if(C?.is_under_stealthmin() && !include_name)
 			if(include_link)
 				. += "<a href='?priv_msg=[REF(C)]'>"
 			. += "Administrator"

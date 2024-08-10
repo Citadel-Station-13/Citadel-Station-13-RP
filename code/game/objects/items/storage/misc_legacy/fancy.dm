@@ -253,9 +253,9 @@
 			C.desc += " This one is \a [brand]."
 
 /obj/item/storage/fancy/cigarettes/update_icon_state()
+	. = ..()
 	if(overlay_amount)
 		icon_state = "[initial(icon_state)][min(length(contents), overlay_amount)]"
-	return ..()
 
 /obj/item/storage/fancy/cigarettes/Exited(atom/movable/AM, atom/newLoc)
 	. = ..()
@@ -323,7 +323,7 @@
 
 /obj/item/storage/fancy/cigarettes/carcinomas
 	name = "\improper pack of Carcinoma Angels"
-	desc = "This unknown brand was slated for the chopping block, until they were publicly endorsed by an old Earthling gonzo journalist. The rest is history. They sell a variety for cats, too."
+	desc = "This neptunian brand was slated for the chopping block, until they were publicly endorsed by an old Earthling gonzo journalist. The rest is history."
 	icon_state = "CApacket"
 	brand = "\improper Carcinoma Angel"
 
@@ -339,6 +339,20 @@
 	icon_state = "BSpacket"
 	starts_with = list(/obj/item/clothing/mask/smokable/cigarette/import = 6)
 	brand = "\improper Black Star"
+
+/obj/item/storage/fancy/cigarettes/kingsilvers
+	name = "\improper pack of Kyningc Silvers"
+	desc = "A brand of imported cigarettes. A homegrown favourite to many a pretentious Eridanian businessman."
+	icon_state = "KSpacket"
+	starts_with = list(/obj/item/clothing/mask/smokable/cigarette/light = 6)
+	brand = "\improper Kyningc Silver"
+
+/obj/item/storage/fancy/cigarettes/subrosas
+	name = "\improper pack of Subrosas"
+	desc = "A brand of imported cigarettes. These ones contain a proprietary herbal blend, 100% nicotine free."
+	icon_state = "SRpacket"
+	starts_with = list(/obj/item/clothing/mask/smokable/cigarette/herbal = 6)
+	brand = "\improper Subrosa"
 
 /obj/item/storage/fancy/cigar
 	name = "cigar case"

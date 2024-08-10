@@ -235,8 +235,12 @@ var/const/CE_STABLE_THRESHOLD = 0.5
 	var/datum/reagent/B = get_blood(container.reagents)
 	if(!B)
 		B = new /datum/reagent/blood
-	B.holder = container
+	B.holder = container.reagents
 	B.volume += amount
+	B.initialize_data()
+	// todo: burn this file with fire
+	container.reagents.reagent_list |= B
+	container.reagents.update_total()
 
 	//set reagent data
 	B.data["donor"] = src
@@ -298,7 +302,7 @@ var/const/CE_STABLE_THRESHOLD = 0.5
 		reagents.add_reagent("blood", amount, injected.data)
 		reagents.update_total()
 		return
-	
+
 	fixblood_if_broken()
 
 	var/datum/reagent/blood/our = get_blood(vessel)

@@ -319,7 +319,7 @@
 	..()
 
 /obj/projectile/beam/tungsten/on_impact(var/atom/A)
-	if(istype(A,/turf/simulated/shuttle/wall) || istype(A,/turf/simulated/wall) || (istype(A,/turf/simulated/mineral) && A.density) || istype(A,/obj/mecha) || istype(A,/obj/machinery/door))
+	if(istype(A,/turf/simulated/shuttle/wall) || istype(A,/turf/simulated/wall) || (istype(A,/turf/simulated/mineral) && A.density) || istype(A,/obj/vehicle/sealed/mecha) || istype(A,/obj/machinery/door))
 		var/blast_dir = src.dir
 		A.visible_message("<span class='danger'>\The [A] begins to glow!</span>")
 		spawn(2 SECONDS)
@@ -334,7 +334,7 @@
 	impact_sounds = 'sound/items/bikehorn.ogg'
 	icon = 'icons/obj/items.dmi'
 	icon_state = "banana"
-	range = 200
+	range = WORLD_ICON_SIZE * 200
 
 /obj/projectile/bullet/honker/Initialize(mapload)
 	. = ..()
@@ -390,7 +390,7 @@
 	..()
 
 /obj/projectile/plasma/on_impact(var/atom/A)
-	if(istype(A,/turf/simulated/shuttle/wall) || istype(A,/turf/simulated/wall) || (istype(A,/turf/simulated/mineral) && A.density) || istype(A,/obj/mecha) || istype(A,/obj/machinery/door))
+	if(istype(A,/turf/simulated/shuttle/wall) || istype(A,/turf/simulated/wall) || (istype(A,/turf/simulated/mineral) && A.density) || istype(A,/obj/vehicle/sealed/mecha) || istype(A,/obj/machinery/door))
 		var/blast_dir = src.dir
 		A.visible_message("<span class='danger'>\The [A] is engulfed in roiling plasma!</span>")
 		var/blastloc = get_step(A, blast_dir)
@@ -410,7 +410,7 @@
 	..()
 
 /obj/projectile/plasma/hot/on_impact(var/atom/A)
-	if(istype(A,/turf/simulated/shuttle/wall) || istype(A,/turf/simulated/wall) || (istype(A,/turf/simulated/mineral) && A.density) || istype(A,/obj/mecha) || istype(A,/obj/machinery/door))
+	if(istype(A,/turf/simulated/shuttle/wall) || istype(A,/turf/simulated/wall) || (istype(A,/turf/simulated/mineral) && A.density) || istype(A,/obj/vehicle/sealed/mecha) || istype(A,/obj/machinery/door))
 		var/blast_dir = src.dir
 		A.visible_message("<span class='danger'>\The [A] is engulfed in roiling plasma!</span>")
 		var/blastloc = get_step(A, blast_dir)

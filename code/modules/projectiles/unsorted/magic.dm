@@ -403,13 +403,12 @@
 	damage = 0
 	var/proxdet = TRUE
 
-/obj/projectile/magic/aoe/Range()
+/obj/projectile/magic/aoe/Moved(atom/old_loc, movement_dir, forced, list/old_locs, momentum_change)
+	. = ..()
 	if(proxdet)
 		for(var/mob/living/L in range(1, get_turf(src)))
 			if(L.stat != DEAD && L != firer && !L.anti_magic_check())
-				return Bump(L)
-	..()
-
+				Bump(L)
 
 /obj/projectile/magic/aoe/lightning
 	name = "lightning bolt"

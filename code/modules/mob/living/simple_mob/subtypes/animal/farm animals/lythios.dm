@@ -41,7 +41,7 @@
 	attacktext = list("kicked","impales","gores")
 
 	say_list_type = /datum/say_list/goat
-	ai_holder_type = /datum/ai_holder/simple_mob/retaliate
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/retaliate
 
 	meat_amount = 4
 	bone_amount = 2

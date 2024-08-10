@@ -1,31 +1,37 @@
 /obj/item/ammo_casing
 	name = "bullet casing"
 	desc = "A bullet casing."
-	icon = 'icons/obj/ammo.dmi'
-	icon_state = "s-casing"
+	icon = 'icons/modules/projectiles/casings/slim.dmi'
+	icon_state = "small"
 	slot_flags = SLOT_BELT | SLOT_EARS
 	item_flags = ITEM_EASY_LATHE_DECONSTRUCT | ITEM_ENCUMBERS_WHILE_HELD
 	throw_force = 1
 	w_class = WEIGHT_CLASS_TINY
-	preserve_item = 1
 	drop_sound = 'sound/items/drop/ring.ogg'
 	pickup_sound = 'sound/items/pickup/ring.ogg'
 
-	//! Casing
+	//* Casing
 	/// casing flags - see __DEFINES/projectiles/ammo_casing.dm
 	var/casing_flags = NONE
+	/// what types of primer we react to
+	var/casing_primer = CASING_PRIMER_CHEMICAL
 	/// projectile type
 	var/projectile_type
+	/// caliber - set to typepath of datum for compile checking
+	///
+	/// * may be typepath of caliber (recommended)
+	/// * may be instance of caliber (not recommended, but allowable for special cases)
+	/// * may NOT be string of caliber, currently
+	var/caliber
 	/// stored projectile - either null for un-init'd, FALSE for empty, or an instance
-	VAR_PRIVATE/obj/projectile/stored
+	VAR_PROTECTED/obj/projectile/stored
 
-	//! Icon
+	//* Icon
 	/// switch to "[initial(state)]-spent" after expenditure
 	var/icon_spent = TRUE
 
 	//! unsorted / legacy
 	var/leaves_residue = 1
-	var/caliber = ""					//Which kind of guns it can be loaded into
 	var/fall_sounds = list('sound/weapons/guns/casingfall1.ogg','sound/weapons/guns/casingfall2.ogg','sound/weapons/guns/casingfall3.ogg')
 
 /obj/item/ammo_casing/Initialize(mapload)
@@ -39,6 +45,9 @@
 	if(stored)
 		QDEL_NULL(stored)
 	return ..()
+
+/obj/item/ammo_casing/get_intrinsic_worth(flags)
+	return loaded()? ..() : 0
 
 //removes the projectile from the ammo casing
 // todo: refactor for actual on-shot or whatever
@@ -108,7 +117,7 @@
 /obj/item/ammo_casing/proc/init_projectile()
 	if(istype(stored))
 		CRASH("double init?")
-	stored = new projectile_type
+	stored = new projectile_type(src)
 	return stored
 
 /obj/item/ammo_casing/update_icon_state()
@@ -129,3 +138,18 @@
 		mag.quick_gather(get_turf(src), user)
 		return CLICKCHAIN_DID_SOMETHING | CLICKCHAIN_DO_NOT_PROPAGATE
 	return ..()
+
+//* Caliber *//
+
+/obj/item/ammo_casing/proc/get_caliber_string()
+	return resolve_caliber(caliber)?.caliber
+
+/obj/item/ammo_casing/proc/get_caliber()
+	RETURN_TYPE(/datum/ammo_caliber)
+	return resolve_caliber(caliber)
+
+//* Generic - Spent Subtype *//
+
+/obj/item/ammo_casing/spent
+	icon_state = /obj/item/ammo_casing::icon_state + "-spent"
+	stored = FALSE

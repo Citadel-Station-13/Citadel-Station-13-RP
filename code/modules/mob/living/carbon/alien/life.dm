@@ -1,6 +1,5 @@
 // Alien larva are quite simple.
 /mob/living/carbon/alien/Life(seconds, times_fired)
-	blinded = null
 	. = ..()
 	if(.)
 		return
@@ -36,30 +35,23 @@
 	if(status_flags & STATUS_GODMODE)	return 0
 
 	if(stat == DEAD)
-		blinded = 1
 		silent = 0
 	else
 		update_health()
 		if(health <= 0)
 			death()
-			blinded = 1
 			silent = 0
 			return 1
 
 		if(!IS_CONSCIOUS(src))
-			blinded = 1
 			adjustHalLoss(-3)
 		else if(IS_PRONE(src))
 			adjustHalLoss(-3)
 
 		// Eyes and blindness.
-		if(!has_eyes())
-			SetBlinded(1)
-			blinded =    1
+		if(!has_eyes() && !HAS_TRAIT_FROM(src, TRAIT_BLIND, TRAIT_BLINDNESS_NO_EYES))
+			add_blindness_source(TRAIT_BLINDNESS_NO_EYES)
 			eye_blurry = 1
-		else if(eye_blind)
-			AdjustBlinded(-1)
-			blinded =    1
 		else if(eye_blurry)
 			eye_blurry = max(eye_blurry-1, 0)
 
@@ -96,10 +88,7 @@
 			healths.icon_state = "health7"
 
 	if ( stat != 2)
-		if(blinded)
-			overlay_fullscreen("blind", /atom/movable/screen/fullscreen/scaled/blind)
-		else
-			clear_fullscreen("blind")
+		//Blindness is handled by the modifier
 		if(disabilities & DISABILITY_NEARSIGHTED)
 			overlay_fullscreen("impaired", /atom/movable/screen/fullscreen/scaled/impaired, 1)
 		else

@@ -12,7 +12,7 @@
 	item_state = "jetboots"
 	icon = 'icons/obj/clothing/shoes.dmi'
 	// resistance_flags = FIRE_PROOF
-	action_button_name = "Activate Jump Boots"
+	item_action_name = "Activate Jump Boots"
 	permeability_coefficient = 0.05
 	var/jumpdistance = 5 //-1 from to see the actual distance, e.g 4 goes over 3 tiles
 	var/jumpspeed = 3
@@ -20,7 +20,7 @@
 	var/recharging_time = 0 //time until next dash
 	// var/jumping = FALSE //are we mid-jump? We have no throw_at_old callback, so we have to check user.throwing.
 
-/obj/item/clothing/shoes/bhop/ui_action_click()
+/obj/item/clothing/shoes/bhop/ui_action_click(datum/action/action, datum/event_args/actor/actor)
 	var/mob/living/user = loc
 	if(!isliving(user))
 		return

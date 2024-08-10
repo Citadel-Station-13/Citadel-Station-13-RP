@@ -136,8 +136,9 @@
 	},
 /obj/machinery/door/airlock/vault{
 	name = "REACTOR ROOM";
-	req_one_access = list(10)
+	req_one_access = null
 	},
+/obj/map_helper/access_helper/airlock/station/engineering/engine,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_room)
 "gN" = (
@@ -566,14 +567,15 @@
 /turf/simulated/floor/reinforced,
 /area/engineering/engine_room)
 "Cu" = (
-/obj/machinery/door/airlock/vault{
-	name = "REACTOR ROOM";
-	req_one_access = list(10)
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/door/firedoor,
 /obj/machinery/atmospherics/pipe/simple/hidden/fuel,
+/obj/machinery/door/airlock/vault{
+	name = "REACTOR ROOM";
+	req_one_access = null
+	},
+/obj/map_helper/access_helper/airlock/station/engineering/engine,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_room)
 "CF" = (
@@ -639,8 +641,9 @@
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/vault{
 	name = "REACTOR ROOM";
-	req_one_access = list(10)
+	req_one_access = null
 	},
+/obj/map_helper/access_helper/airlock/station/engineering/engine,
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
 "Fp" = (
@@ -750,8 +753,9 @@
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/vault{
 	name = "REACTOR ROOM";
-	req_one_access = list(10)
+	req_one_access = null
 	},
+/obj/map_helper/access_helper/airlock/station/engineering/engine,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_room)
 "JB" = (
@@ -762,7 +766,10 @@
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
 	},
-/obj/machinery/door/airlock/hatch,
+/obj/map_helper/access_helper/airlock/station/maintenance,
+/obj/machinery/door/airlock/hatch{
+	req_one_access = null
+	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_room)
 "JR" = (
@@ -1020,8 +1027,9 @@
 	},
 /obj/machinery/door/airlock/vault{
 	name = "REACTOR ROOM";
-	req_one_access = list(10)
+	req_one_access = null
 	},
+/obj/map_helper/access_helper/airlock/station/engineering/engine,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_room)
 "RH" = (
@@ -1064,8 +1072,9 @@
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/vault{
 	name = "REACTOR ROOM";
-	req_one_access = list(10)
+	req_one_access = null
 	},
+/obj/map_helper/access_helper/airlock/station/engineering/engine,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_room)
 "Td" = (
@@ -1190,7 +1199,10 @@
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
 	},
-/obj/machinery/door/airlock/hatch,
+/obj/map_helper/access_helper/airlock/station/maintenance,
+/obj/machinery/door/airlock/hatch{
+	req_one_access = null
+	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_room)
 "Vv" = (

@@ -224,7 +224,7 @@
 	var/curhealth = health
 	. = ..()
 	if(health < curhealth && on == TRUE)
-		react_to_attack(user)
+		react_to_attack_polaris(user)
 
 /mob/living/bot/secbot/bullet_act(var/obj/projectile/P)
 	var/curhealth = health
@@ -232,14 +232,14 @@
 	. = ..()
 	//if we already have a target just ignore to avoid lots of checking
 	if(!target && health < curhealth && shooter && (shooter in view(world.view, src)))
-		react_to_attack(shooter)
+		react_to_attack_polaris(shooter)
 
 /mob/living/bot/secbot/attack_generic(var/mob/attacker)
 	if(attacker)
-		react_to_attack(attacker)
+		react_to_attack_polaris(attacker)
 	..()
 
-/mob/living/bot/secbot/proc/react_to_attack(mob/attacker)
+/mob/living/bot/secbot/proc/react_to_attack_polaris(mob/attacker)
 	if(!on)		// We don't want it to react if it's off
 		return
 
@@ -393,7 +393,7 @@
 		var/mob/living/L = M
 		if(istype(L, /mob/living/simple_mob/slime/xenobio))
 			var/mob/living/simple_mob/slime/xenobio/S = L
-			var/datum/ai_holder/simple_mob/xenobio_slime/sai = S.ai_holder
+			var/datum/ai_holder/polaris/simple_mob/xenobio_slime/sai = S.ai_holder
 			if(!S.is_justified_to_discipline() && !sai?.rabid) //will kill angry slimes.
 				attacked = FALSE //quit abusing the damn slimes. I don't care if they're hurting you.
 				return

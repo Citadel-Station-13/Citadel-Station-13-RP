@@ -197,7 +197,7 @@
 	O.forceMove(src.loc)
 	if (user != O)
 		for(var/mob/B in viewers(user, 3))
-			if ((B.client && !( B.blinded )))
+			if ((B.client && !( B.has_status_effect(/datum/status_effect/sight/blindness) )))
 				to_chat(B, "<span class='warning'>\The [user] stuffs [O] into [src]!</span>")
 	return
 

@@ -357,6 +357,14 @@
 	material = /datum/material/wood_plank/hardwood
 	description_info = "Rich, lustrous hardwood, imported from offworld at moderate expense. Mostly used for luxurious furniture, and not very good for weapons or other structures."
 
+/obj/item/stack/material/wood/ironwood
+	name = "ironwood plank"
+	color = "#666666"
+	material = /datum/material/wood_plank/ironwood
+	description_info = "A especially dense wood said to be stronger than iron. Grown from ironwood trees native to the Alraune homeworld of Loam."
+	catalogue_delay = 2 SECONDS
+	catalogue_data = list(/datum/category_item/catalogue/flora/ironwood)
+
 /obj/item/stack/material/log
 	name = "log"
 	icon_state = "sheet-log"
@@ -404,6 +412,37 @@
 	else
 		return ..()
 
+/obj/item/stack/material/log/ironwood
+	material = /datum/material/wood_log/ironwood
+	color = "#666666"
+	plank_type = /obj/item/stack/material/wood/ironwood
+	description_info = "Use inhand to craft things. You will need something very sharp to cut it into planks though"
+	catalogue_delay = 2 SECONDS
+	catalogue_data = list(/datum/category_item/catalogue/flora/ironwood)
+
+
+/obj/item/stack/material/log/ironwood/attackby(obj/item/I, mob/living/user, list/params, clickchain_flags, damage_multiplier)
+	if(!istype(I) || I.damage_force <= 20) //You will need at least PLASTEEL Tools to cut this.
+		return ..()
+	if(CHECK_MULTIPLE_BITFIELDS(I.damage_mode, DAMAGE_MODE_EDGE | DAMAGE_MODE_SHARP) || (I.edge && I.sharp))
+		var/time = (3 SECONDS / max(I.damage_force / 10, 1)) * I.tool_speed
+		user.setClickCooldown(time)
+		if(do_after(user, time, src) && use(1))
+			to_chat(user, "<span class='notice'>You cut up a log into planks.</span>")
+			playsound(get_turf(src), 'sound/effects/woodcutting.ogg', 50, 1)
+			var/obj/item/stack/material/wood/existing_wood = null
+			for(var/obj/item/stack/material/wood/M in user.loc)
+				if(M.material.name == src.material.name)
+					existing_wood = M
+					break
+
+			var/obj/item/stack/material/wood/new_wood = new plank_type(user.loc)
+			new_wood.amount = 2
+			if(existing_wood && new_wood.transfer_to(existing_wood))
+				to_chat(user, "<span class='notice'>You add the newly-formed wood to the stack. It now contains [existing_wood.amount] planks.</span>")
+	else
+		to_chat(user, "<span class='notice'>You will need a stronger cut to cut this wood into planks.</span>")
+		return ..()
 
 /obj/item/stack/material/cloth
 	name = "cloth"

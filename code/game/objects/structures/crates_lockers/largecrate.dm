@@ -4,6 +4,7 @@
 	icon = 'icons/obj/storage.dmi'
 	icon_state = "densecrate"
 	density = 1
+	worth_intrinsic = 200
 	var/list/starts_with
 	var/storage_capacity = 2 * MOB_LARGE //This is so that someone can't pack hundreds of items in a locker/crate
 							  //then open it in a populated area to crash clients.
@@ -94,7 +95,7 @@
 /obj/structure/largecrate/hoverpod/attackby(obj/item/W as obj, mob/user as mob)
 	if(W.is_crowbar())
 		var/obj/item/mecha_parts/mecha_equipment/ME
-		var/obj/mecha/working/hoverpod/H = new (loc)
+		var/obj/vehicle/sealed/mecha/working/hoverpod/H = new (loc)
 
 		ME = new /obj/item/mecha_parts/mecha_equipment/tool/hydraulic_clamp
 		ME.attach(H)
@@ -106,12 +107,6 @@
 	name = "vehicle crate"
 	desc = "It comes in a box for the consumer's sake. ..How is this lighter?"
 	icon_state = "vehiclecrate"
-
-/obj/structure/largecrate/vehicle/Initialize(mapload)
-	. = ..()
-	spawn(1)
-		for(var/obj/O in contents)
-			O.update_icon()
 
 /obj/structure/largecrate/vehicle/bike
 	name = "spacebike crate"
