@@ -4,10 +4,10 @@
 /datum/parry_frame/passive_block/energy
 	parry_sfx = 'sound/weapons/blade1.ogg'
 
-#warn icon state as -active
 /obj/item/melee/transforming/energy
 	armor_penetration = 50
 	atom_flags = NOCONDUCT | NOBLOODY
+
 	var/lrange = 2
 	var/lpower = 2
 	var/lcolor = "#0099FF"
@@ -18,38 +18,24 @@
 	var/hitcost = 120
 	var/obj/item/cell/bcell = null
 	var/cell_type = /obj/item/cell/device
-	item_icons = list(
-			SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand_melee.dmi',
-			SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_melee.dmi',
-			)
 
 	passive_parry = /datum/passive_parry/melee/energy
 
 	activation_sound = 'sound/weapons/saberon.ogg'
 	deactivation_sound = 'sound/weapons/saberoff.ogg'
 
-/obj/item/melee/transforming/energy/proc/activate(mob/living/user)
-	if(active)
-		return
-	active = 1
-	if(rainbow)
-		item_state = "[icon_state]_blade_rainbow"
-	else
-		item_state = "[icon_state]_blade"
-	throw_force = active_throw_force
+/obj/item/melee/transforming/energy/examine(mob/user, dist)
+	. = ..()
+	if(colorable)
+		. += SPAN_NOTICE("Alt-click to recolor it.")
+
+/obj/item/melee/transforming/energy/on_activate(datum/event_args/actor/actor, silent)
+	. = ..()
 	set_light(lrange, lpower, lcolor)
-	to_chat(user, "<span class='notice'>Alt-click to recolor it.</span>")
 
-/obj/item/melee/transforming/energy/proc/deactivate(mob/living/user)
-	if(!active)
-		return
-	item_state = "[icon_state]"
-	embed_chance = initial(embed_chance)
-	throw_force = initial(throw_force)
-	update_icon()
-	set_light(0,0)
-
-#warn parse all
+/obj/item/melee/transforming/energy/on_deactivate(datum/event_args/actor/actor, silent)
+	. = ..()
+	set_light(0)
 
 /obj/item/melee/transforming/energy/proc/use_charge(var/cost)
 	if(active)
@@ -68,33 +54,16 @@
 		if(!bcell)
 			. += "<span class='warning'>The blade does not have a power source installed.</span>"
 
-/obj/item/melee/transforming/energy/attack_self(mob/user)
-	. = ..()
-	if(.)
-		return
+/obj/item/melee/transforming/energy/toggle(datum/event_args/actor/actor, silent)
 	if(use_cell)
 		if((!bcell || bcell.charge < hitcost) && !active)
-			to_chat(user, "<span class='notice'>\The [src] does not seem to have power.</span>")
-			return
-
-	var/datum/gender/TU = GLOB.gender_datums[user.get_visible_gender()]
-	if (active)
-		if ((MUTATION_CLUMSY in user.mutations) && prob(50))
-			user.visible_message("<span class='danger'>\The [user] accidentally cuts [TU.himself] with \the [src].</span>",\
-			"<span class='danger'>You accidentally cut yourself with \the [src].</span>")
-			var/mob/living/carbon/human/H = ishuman(user)? user : null
-			H.take_random_targeted_damage(brute = 5, burn = 5)
-		deactivate(user)
-	else
-		activate(user)
-
-	if(istype(user,/mob/living/carbon/human))
-		var/mob/living/carbon/human/H = user
-		H.update_inv_l_hand()
-		H.update_inv_r_hand()
-
-	add_fingerprint(user)
-	return
+			if(!silent)
+				actor.chat_feedback(
+					"<span class='notice'>\The [src] does not seem to have power.</span>",
+					target = src,
+				)
+			return FALSE
+	return ..()
 
 /obj/item/melee/transforming/energy/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	. = ..()
@@ -134,22 +103,13 @@
 /obj/item/melee/transforming/energy/get_cell(inducer)
 	return bcell
 
-/obj/item/melee/transforming/energy/update_icon()
-	. = ..()
-	var/mutable_appearance/blade_overlay = mutable_appearance(icon, "[icon_state]_blade")
-	blade_overlay.color = lcolor
-	color = lcolor
+/obj/item/melee/transforming/energy/build_active_overlay()
+	var/image/creating = ..()
 	if(rainbow)
-		blade_overlay = mutable_appearance(icon, "[icon_state]_blade_rainbow")
-		blade_overlay.color = "FFFFFF"
-		color = "FFFFFF"
-	cut_overlays()		//So that it doesn't keep stacking overlays non-stop on top of each other
-	if(active)
-		add_overlay(blade_overlay)
-	if(istype(usr,/mob/living/carbon/human))
-		var/mob/living/carbon/human/H = usr
-		H.update_inv_l_hand()
-		H.update_inv_r_hand()
+		creating.icon_state += "-rainbow"
+	else
+		creating.color = lcolor
+	return creating
 
 /obj/item/melee/transforming/energy/AltClick(mob/living/user)
 	if(!colorable) //checks if is not colorable

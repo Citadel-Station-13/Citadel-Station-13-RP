@@ -49,6 +49,8 @@
 	if(.)
 		return
 	add_fingerprint(e_args.performer)
+	toggle(e_args)
+	return CLICKCHAIN_DO_NOT_PROPAGATE
 
 /**
  * actor can be /datum/event_args/actor or a single mob.

@@ -37,6 +37,12 @@
 	var/active_damage_type
 	var/inactive_damage_type
 
+	//* active / inactive effects *//
+
+	var/list/active_attack_verbs
+	var/list/inactive_attack_verbs
+	#warn handle specially, typelist?
+
 	//* active / inactive inventory costs *//
 
 	var/active_weight_class
@@ -74,11 +80,18 @@
 		return
 	. += build_active_overlay()
 
+/obj/item/shield/transforming/proc/build_active_overlay()
+	RETURN_TYPE(/image)
+	var/image/creating = image(icon, "[base_icon_state || icon_state]-active")
+	return creating
+
 /obj/item/melee/transforming/on_attack_self(datum/event_args/actor/e_args)
 	. = ..()
 	if(.)
 		return
 	add_fingerprint(e_args.performer)
+	toggle(e_args)
+	return CLICKCHAIN_DO_NOT_PROPAGATE
 
 /**
  * actor can be /datum/event_args/actor or a single mob.
@@ -114,6 +127,8 @@
 	if(!silent && activation_sound)
 		playsound(src, activation_sound, toggle_sound_volume, TRUE)
 
+	// todo: logging
+
 /**
  * actor can be /datum/event_args/actor or a single mob.
  */
@@ -135,3 +150,5 @@
 
 	if(!silent && (activation_sound || deactivation_sound))
 		playsound(src, deactivation_sound || activation_sound, toggle_sound_volume, TRUE)
+
+	// todo: logging

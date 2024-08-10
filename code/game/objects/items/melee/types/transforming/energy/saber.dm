@@ -1,12 +1,8 @@
-#warn icon state as -active
 /obj/item/melee/transforming/energy/sword
-	name = "energy sword"
-	desc = "May the damage_force be within you."
-	icon_state = "esword"
-	item_state = "esword"
-	active_damage_force = 30
-	active_throw_force = 20
-	active_weight_class = WEIGHT_CLASS_BULKY
+	name = "energy saber"
+	desc = "May the fourth be within you."
+	icon_state = "saber"
+	base_icon_state = "saber"
 	damage_force = 3
 	throw_force = 5
 	throw_speed = 1
@@ -14,34 +10,34 @@
 	w_class = WEIGHT_CLASS_SMALL
 	atom_flags = NOBLOODY
 	origin_tech = list(TECH_MAGNET = 3, TECH_ILLEGAL = 4)
-	sharp = 1
-	edge = 1
 	colorable = TRUE
 	drop_sound = 'sound/items/drop/sword.ogg'
 	pickup_sound = 'sound/items/pickup/sword.ogg'
+
+	active_damage_force = 30
+	active_throw_force = 20
+	active_weight_class = WEIGHT_CLASS_BULKY
+	active_damage_mode = DAMAGE_MODE_SHARP | DAMAGE_MODE_EDGE
+	active_attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
 
 	passive_parry = /datum/passive_parry{
 		parry_chance_default = 60;
 		parry_chance_projectile = 65;
 	}
 
-/obj/item/melee/transforming/energy/sword/dropped(mob/user, atom_flags, atom/newLoc)
+/obj/item/melee/transforming/energy/sword/on_activate(datum/event_args/actor/actor, silent)
 	. = ..()
-	if(!istype(loc,/mob))
-		deactivate(user)
+	actor.chat_feedback(
+		SPAN_WARNING("You energize \the [src]."),
+		target = src,
+	)
 
-/obj/item/melee/transforming/energy/sword/activate(mob/living/user)
-	if(!active)
-		to_chat(user, "<span class='notice'>\The [src] is now energised.</span>")
-
-	..()
-	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
-
-/obj/item/melee/transforming/energy/sword/deactivate(mob/living/user)
-	if(active)
-		to_chat(user, "<span class='notice'>\The [src] deactivates!</span>")
-	..()
-	attack_verb = list()
+/obj/item/melee/transforming/energy/sword/on_deactivate(datum/event_args/actor/actor, silent)
+	. = ..()
+	actor.chat_feedback(
+		SPAN_WARNING("You de-energize \the [src]."),
+		target = src,
+	)
 
 /obj/item/melee/transforming/energy/sword/passive_parry_intercept(mob/defending, list/shieldcall_args, datum/passive_parry/parry_data)
 	. = ..()
@@ -62,20 +58,20 @@
 			return
 		else
 			to_chat(user, "<span class='notice'>You combine the two energy swords, making a single supermassive blade! You're cool.</span>")
-			new /obj/item/melee/transforming/energy/sword/dualsaber(user.drop_location())
+			new /obj/item/melee/transforming/energy/sword/dual(user.drop_location())
 			qdel(W)
 			qdel(src)
 	else
 		return ..()
 
-/obj/item/melee/transforming/energy/sword/pirate
+/obj/item/melee/transforming/energy/sword/cutlass
 	name = "energy cutlass"
 	desc = "Arrrr matey."
 	icon_state = "cutlass"
 	base_icon_state = "cutlass"
 	colorable = TRUE
 
-/obj/item/melee/transforming/energy/sword/dualsaber
+/obj/item/melee/transforming/energy/sword/dual
 	name = "double-bladed energy sword"
 	desc = "Handle with care."
 	icon_state = "saber-dual"
@@ -123,15 +119,14 @@
 /obj/item/melee/transforming/energy/sword/charge/dualsaber
 	name = "double-bladed charge sword"
 	desc = "Make sure you bought batteries."
-	icon_state = "dualsaber"
-	item_state = "dualsaber"
+	icon_state = "saber-dual"
+	base_icon_state = "saber-dual"
 	damage_force = 3
 	active_damage_force = 50
 	throw_force = 5
 	throw_speed = 3
 	armor_penetration = 30
 	colorable = TRUE
-	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
 	hitcost = 150
 
 	passive_parry = /datum/passive_parry{

@@ -22,7 +22,7 @@
 /datum/uplink_item/item/visible_weapons/energy_sword_pirate
 	name = "Energy Cutlass, Colorable"
 	item_cost = 40
-	path = /obj/item/melee/transforming/energy/sword/pirate
+	path = /obj/item/melee/transforming/energy/sword/cutlass
 
 /datum/uplink_item/item/visible_weapons/energy_spear
 	name = "Energy Spear, Colorable"
