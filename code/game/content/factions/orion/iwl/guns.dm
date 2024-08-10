@@ -14,6 +14,8 @@
 	load_method = MAGAZINE
 	slot_flags = SLOT_BACK
 	one_handed_penalty = 40 // The weapon itself is heavy
+	render_use_legacy_by_default = FALSE
+	item_state = null
 
 /obj/item/gun/ballistic/automatic/k25/update_icon()
 	. = ..()
