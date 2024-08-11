@@ -39,8 +39,8 @@
 
 	//* active / inactive effects *//
 
-	var/list/active_attack_verbs
-	var/list/inactive_attack_verbs
+	var/list/active_attack_verb
+	var/list/inactive_attack_verb
 
 	//* active / inactive inventory costs *//
 
@@ -66,10 +66,10 @@
 
 /obj/item/melee/transforming/Initialize(mapload)
 	. = ..()
-	if(active_attack_verbs)
-		active_attack_verbs = typelist(NAMEOF(src, active_attack_verbs), active_attack_verbs)
-	if(inactive_attack_verbs)
-		inactive_attack_verbs = typelist(NAMEOF(src, inactive_attack_verbs), inactive_attack_verbs)
+	if(islist(active_attack_verb))
+		active_attack_verb = typelist(NAMEOF(src, active_attack_verb), active_attack_verb)
+	if(islist(inactive_attack_verb))
+		inactive_attack_verb = typelist(NAMEOF(src, inactive_attack_verb), inactive_attack_verb)
 
 /obj/item/melee/transforming/passive_parry_intercept(mob/defending, list/shieldcall_args, datum/passive_parry/parry_data)
 	if(!active && no_block_while_off)
@@ -133,7 +133,7 @@
 	set_weight_class(VALUE_OR_DEFAULT(active_weight_class, initial(w_class)))
 	set_weight_volume(VALUE_OR_DEFAULT(active_weight_volume, initial(weight_volume)))
 
-	active_verb = active_attack_verbs
+	attack_verb = active_attack_verb
 
 	if(!silent && activation_sound)
 		playsound(src, activation_sound, toggle_sound_volume, TRUE)
@@ -159,7 +159,7 @@
 	set_weight_class(VALUE_OR_DEFAULT(inactive_weight_class, initial(w_class)))
 	set_weight_volume(VALUE_OR_DEFAULT(inactive_weight_volume, initial(weight_volume)))
 
-	active_verb = inactive_attack_verbs
+	active_verb = inactive_attack_verb
 
 	if(!silent && (activation_sound || deactivation_sound))
 		playsound(src, deactivation_sound || activation_sound, toggle_sound_volume, TRUE)

@@ -69,7 +69,7 @@
 	. = ..()
 	if(active && use_cell)
 		if(!use_charge(hitcost))
-			deactivate(user)
+			set_activation(FALSE)
 			visible_message("<span class='notice'>\The [src]'s blade flickers, before deactivating.</span>")
 
 /obj/item/melee/transforming/energy/attackby(obj/item/W, mob/user)
@@ -95,7 +95,7 @@
 			bcell.forceMove(get_turf(loc))
 			bcell = null
 			to_chat(user, "<span class='notice'>You remove the cell from \the [src].</span>")
-			deactivate()
+			set_activation(FALSE)
 			update_icon()
 			return
 	return ..()
@@ -125,9 +125,8 @@
 		if(energy_color_input)
 			lcolor = "#[sanitize_hexcolor(energy_color_input)]"
 			color = lcolor
-			deactivate()
 		update_icon()
-	. = ..()
+	return ..()
 
 // todo: no inhand!
 // /obj/item/melee/transforming/energy/spear
