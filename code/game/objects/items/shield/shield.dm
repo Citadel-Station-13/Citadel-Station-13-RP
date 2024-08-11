@@ -3,7 +3,11 @@
 
 /datum/passive_parry/shield
 	parry_arc = 135
-	#warn default sound
+	parry_frame = /datum/parry_frame/shield
+
+/datum/parry_frame/shield
+	parry_sfx = /datum/soundbyte/grouped/block_metal_with_metal
+
 
 /obj/item/shield
 	name = "shield"

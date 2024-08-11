@@ -182,8 +182,10 @@ INITIALIZE_IMMEDIATE(/atom/movable/render/parry_frame)
 
 	/// a sound, or a list of sounds that can be played when we're hit
 	/// list can be weighted by associated number for relative chance
-	var/list/parry_sfx
-	#warn default
+	///
+	/// * sound can be a file
+	/// * sound can be a /datum/soundbyte typepath or instance
+	var/list/parry_sfx = /datum/soundbyte/grouped/metal_parry
 	/// a typepath of /atom/movable/parry_frame to use as our visual; this is placed in the defending atom's vis_contents
 	var/parry_vfx = /atom/movable/parry_frame
 	#warn default
