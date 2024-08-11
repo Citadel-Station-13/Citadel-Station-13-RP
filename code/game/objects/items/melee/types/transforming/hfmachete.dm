@@ -1,4 +1,4 @@
-/obj/item/melee/transforming/energy/hfmachete
+/obj/item/melee/transforming/hfmachete
 	name = "high-frequency machete"
 	desc = "A high-frequency broad blade used either as an implement or in combat like a short sword."
 	icon_state = "hfmachete"
@@ -26,32 +26,21 @@
 	active_weight_class = WEIGHT_CLASS_BULKY
 	inactive_weight_class = WEIGHT_CLASS_NORMAL
 
-#warn parse
-/obj/item/melee/transforming/energy/hfmachete/proc/toggleActive(mob/user, var/togglestate = "")
-	switch(togglestate)
-		if("on")
-			active = 1
-		if("off")
-			active = 0
-		else
-			active = !active
-	if(active)
-		throw_force = 20
-		throw_speed = 3
-		// sharpness = 1.7
-		// sharpness_flags += HOT_EDGE | CUT_WALL | CUT_AIRLOCK - if only there  a good sharpness system
-		armor_penetration = 100
-		to_chat(user, "<span class='warning'> [src] starts vibrating.</span>")
-	else
-		throw_force = initial(throw_force)
-		throw_speed = initial(throw_speed)
-		// sharpness = initial(sharpness)
-		// sharpness_flags = initial(sharpness_flags) - if only there was a good sharpness system
-		armor_penetration = initial(armor_penetration)
-		to_chat(user, "<span class='notice'> [src] stops vibrating.</span>")
-	update_icon()
+/obj/item/melee/transforming/hfmachete/on_activate(datum/event_args/actor/actor, silent)
+	. = ..()
+	actor.chat_feedback(
+		SPAN_WARNING("You energize \the [src]."),
+		target = src,
+	)
 
-/obj/item/melee/transforming/energy/hfmachete/afterattack(atom/target, mob/user, clickchain_flags, list/params)
+/obj/item/melee/transforming/hfmachete/on_deactivate(datum/event_args/actor/actor, silent)
+	. = ..()
+	actor.chat_feedback(
+		SPAN_WARNING("You de-energize \the [src]."),
+		target = src,
+	)
+
+/obj/item/melee/transforming/hfmachete/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))
 		return
 	..()
