@@ -55,11 +55,13 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/power/apc/critical, 22)
 /obj/machinery/power/apc/critical
 	is_critical = 1
 
+#warn redo
 /// High capacity cell APCs
 CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/power/apc/high, 22)
 /obj/machinery/power/apc/high
 	cell_type = /obj/item/cell/high
 
+#warn redo
 /// Super capacity cell APCS
 CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/power/apc/super, 22)
 /obj/machinery/power/apc/super
@@ -70,6 +72,7 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/power/apc/super/critical, 22)
 /obj/machinery/power/apc/super/critical
 	is_critical = 1
 
+#warn redo
 /// APCS with hyper cells. How lewd
 CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/power/apc/hyper, 22)
 /obj/machinery/power/apc/hyper
