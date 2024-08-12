@@ -35,7 +35,13 @@
 	var/typegen_material_small_multiply = 1
 	var/typegen_material_medium_multiply = 5
 	var/typegen_material_large_multiply = 20
-	var/typegen_material_weapon_multipliy = 3.5
+	var/typegen_material_weapon_multiply = 3.5
+
+	//* Charge *//
+	/// current charge
+	var/charge
+	/// maximum charge
+	var/max_charge = 1000
 
 	//* Configuration *//
 	/// allow rechargers
@@ -63,8 +69,6 @@
 	//* legacy below *//
 	/// Are we EMP immune?
 	var/emp_proof = FALSE
-	var/charge
-	var/max_charge = 1000
 	var/rigged = 0		// true if rigged to explode
 	var/minor_fault = 0 //If not 100% reliable, it will build up faults.
 	var/last_use = 0 // A tracker for use in self-charging
@@ -281,7 +285,7 @@
 		return PROCESS_KILL
 	if(world.time < last_use + self_recharge_delay)
 		return
-	give(self_Recharge_amount * delta_time)
+	give(self_recharge_amount * delta_time)
 
 //* Rendering *//
 
