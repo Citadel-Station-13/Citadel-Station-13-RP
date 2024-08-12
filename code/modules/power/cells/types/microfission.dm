@@ -40,7 +40,7 @@ POWER_CELL_GENERATE_TYPES(/obj/item/cell/microfission)
 	/// minimum recharge per second
 	var/regen_min_per_second = STATIC_KW_TO_CELL_UNITS(2.5, 1)
 	/// maximum recharge per second
-	var/regen_max_per_second = STATIC_KW_TO_CELL_UNITS(25. 1)
+	var/regen_max_per_second = STATIC_KW_TO_CELL_UNITS(25, 1)
 	/// at what % of [regen_initial] we start to have regen drop
 	var/regen_drop_start = 2 / 3
 	/// at what % of [regen_initial] we fall to minimum regen

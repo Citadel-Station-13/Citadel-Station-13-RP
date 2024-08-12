@@ -271,7 +271,7 @@
 /**
  * Returns ratio remaining, [0, 1]
  */
-/obj/item/cell/proc/percent()
+/obj/item/cell/proc/ratio()
 	return max_charge ? (charge / max_charge) : 0
 
 //* Processing *//
