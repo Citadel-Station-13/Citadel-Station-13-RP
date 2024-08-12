@@ -6,7 +6,7 @@
 	damage = 65
 	stun = 1
 	weaken = 1
-	penetrating = 5
+	legacy_penetrating = 5
 	armor_penetration = 70
 
 /obj/projectile/bullet/magnetic/slug
@@ -53,7 +53,7 @@
 	agony = 50
 	incendiary = 1
 	flammability = 0 //Deuterium and Tritium are both held in water, but the object moving so quickly will ignite the target.
-	penetrating = 2
+	legacy_penetrating = 2
 	embed_chance = 0
 	armor_penetration = 40
 	range = WORLD_ICON_SIZE * 20
@@ -101,7 +101,7 @@
 	damage = 100 //Much harder to get than tritium - needs mhydrogen
 	flammability = -1
 	armor_penetration = 50
-	penetrating = 3
+	legacy_penetrating = 3
 
 /obj/projectile/bullet/magnetic/fuelrod/phoron
 	name = "blazing fuel rod"
@@ -110,7 +110,7 @@
 	incendiary = 2
 	flammability = 2
 	armor_penetration = 60
-	penetrating = 5
+	legacy_penetrating = 5
 	irradiate = 20
 	detonate_mob = 1
 
@@ -122,7 +122,7 @@
 	flammability = 4
 	weaken = 2
 	armor_penetration = 100
-	penetrating = 100 //Theoretically, this shouldn't stop flying for a while, unless someone lines it up with a wall or fires it into a mountain.
+	legacy_penetrating = 100 //Theoretically, this shouldn't stop flying for a while, unless someone lines it up with a wall or fires it into a mountain.
 	irradiate = 120
 	range = WORLD_ICON_SIZE * 75
 	searing = 1
@@ -147,7 +147,7 @@
 	damage = 20
 	incendiary = 1
 	armor_penetration = 20
-	penetrating = 0
+	legacy_penetrating = 0
 	damage_flag = ARMOR_MELEE
 	irradiate = 20
 	range = WORLD_ICON_SIZE * 6
@@ -174,7 +174,7 @@
 	damage = 30
 	incendiary = 2
 	armor_penetration = 20
-	penetrating = 0
+	legacy_penetrating = 0
 	damage_flag = ARMOR_MELEE
 	irradiate = 20
 	range = WORLD_ICON_SIZE * 12

@@ -25,6 +25,24 @@
 		return
 	shake_camera(L, 3, 2)
 
+/obj/projectile/bullet/process_legacy_penetration(atom/A)
+	var/chance = damage
+	if(istype(A, /turf/simulated/wall))
+		var/turf/simulated/wall/W = A
+		chance = round(damage/W.material_outer.density*1.8)
+	else if(istype(A, /obj/machinery/door))
+		var/obj/machinery/door/D = A
+		chance = round(damage/D.integrity_max*180)
+		if(D.glass) chance *= 2
+	else if(istype(A, /obj/structure/girder))
+		chance = 100
+	else if(ismob(A))
+		chance = damage >= 20 && prob(damage)
+
+	. = prob(chance)
+	if(.)
+		damage *= 0.7
+
 /* short-casing projectiles, like the kind used in pistols or SMGs */
 
 /obj/projectile/bullet/pistol // 9mm pistols and most SMGs. Sacrifice power for capacity.
@@ -222,7 +240,7 @@
 /obj/projectile/bullet/rifle
 	fire_sound = 'sound/weapons/Gunshot_generic_rifle.ogg'
 	armor_penetration = 15
-	penetrating = 1
+	legacy_penetrating = 1
 
 /obj/projectile/bullet/rifle/a762
 	fire_sound = 'sound/weapons/weaponsounds_heavyrifleshot.ogg'
@@ -246,7 +264,7 @@
 /obj/projectile/bullet/rifle/a762/hp
 	damage = 40
 	armor_penetration = -50
-	penetrating = 0
+	legacy_penetrating = 0
 
 /obj/projectile/bullet/rifle/a762/hunter // Optimized for killing simple animals and not people, because Balance(tm)
 	damage = 25
@@ -278,19 +296,19 @@
 /obj/projectile/bullet/rifle/a556/hp
 	damage = 35
 	armor_penetration = -50
-	penetrating = 0
+	legacy_penetrating = 0
 
 /obj/projectile/bullet/rifle/a556/hunter
 	damage = 15
 	SA_bonus_damage = 35 // 50 total on animals.
 	SA_vulnerability = MOB_CLASS_ANIMAL
 
-/obj/projectile/bullet/rifle/a12_7mm // 14.5×114mm is bigger than a .50 BMG round.
+/obj/projectile/bullet/rifle/a12_7mm
 	fire_sound = 'sound/weapons/Gunshot_cannon.ogg' // This is literally an anti-tank rifle caliber. It better sound like a fucking cannon.
 	damage = 80
 	stun = 3
 	weaken = 3
-	penetrating = 5
+	legacy_penetrating = 5
 	armor_penetration = 80
 	hitscan = 1 //so the PTR isn't useless as a sniper weapon
 
@@ -468,7 +486,7 @@
 	incendiary = 1
 	flammability = 4
 	armor_penetration = 40
-	penetrating = 5
+	legacy_penetrating = 5
 	combustion = TRUE
 
 /obj/projectile/bullet/incendiary/caseless/on_impact_new(atom/target, impact_flags, def_zone, blocked)
@@ -488,7 +506,7 @@
 	damage_type = BRUTE
 	incendiary = 1
 	flammability = 4
-	penetrating = 1
+	legacy_penetrating = 1
 	combustion = TRUE
 
 

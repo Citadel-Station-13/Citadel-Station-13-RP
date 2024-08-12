@@ -172,7 +172,7 @@
 	icon_state = "lightning"
 	range = WORLD_ICON_SIZE * 6
 	power = 5 // This fires really fast, so this may add up if someone keeps standing in the beam.
-	penetrating = 5
+	legacy_penetrating = 5
 
 /obj/projectile/beam/lightning/energy_siphon/on_impact_new(atom/target, impact_flags, def_zone, blocked)
 	. = ..()

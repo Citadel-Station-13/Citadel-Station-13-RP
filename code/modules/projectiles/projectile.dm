@@ -283,7 +283,7 @@
 	var/nodamage = 0 //Determines if the projectile will skip any damage inflictions
 	var/taser_effect = 0 //If set then the projectile will apply it's agony damage using stun_effect_act() to mobs it hits, and other damage will be ignored
 	var/projectile_type = /obj/projectile
-	var/penetrating = 0 //If greater than zero, the projectile will pass through dense objects as specified by on_penetrate()
+	var/legacy_penetrating = 0 //If greater than zero, the projectile will pass through dense objects as specified by on_penetrate()
 		//Effects
 	var/incendiary = 0 //1 for ignite on hit, 2 for trail of fire. 3 maybe later for burst of fire around the impact point. - Mech
 	var/flammability = 0 //Amount of fire stacks to add for the above.
@@ -368,60 +368,7 @@
 
 	return TRUE
 
-/obj/projectile/Bump(atom/A)
-	impact_loop(A.loc, A)
-	#warn ugh
-
-	var/distance = get_dist(starting, get_turf(src))
-	var/turf/target_turf = get_turf(A)
-	var/passthrough = FALSE
-
-	if(ismob(A))
-		var/mob/M = A
-		if(istype(A, /mob/living))
-			//if they have a neck grab on someone, that person gets hit instead
-			var/obj/item/grab/G = locate() in M
-			if(G && G.state >= GRAB_NECK)
-				if(G.affecting.stat == DEAD)
-					var/shield_chance = min(80, (30 * (M.mob_size / 10)))	//Small mobs have a harder time keeping a dead body as a shield than a human-sized one. Unathi would have an easier job, if they are made to be SIZE_LARGE in the future. -Mech
-					if(prob(shield_chance))
-						visible_message("<span class='danger'>\The [M] uses [G.affecting] as a shield!</span>")
-						if(Bump(G.affecting))
-							return
-					else
-						visible_message("<span class='danger'>\The [M] tries to use [G.affecting] as a shield, but fails!</span>")
-				else
-					visible_message("<span class='danger'>\The [M] uses [G.affecting] as a shield!</span>")
-					if(Bump(G.affecting))
-						return //If Bump() returns 0 (keep going) then we continue on to attack M.
-
-			passthrough = !projectile_attack_mob(M, distance)
-		else
-			passthrough = 1 //so ghosts don't stop bullets
-	else
-		passthrough = (A.bullet_act(src, def_zone) == PROJECTILE_CONTINUE) //backwards compatibility
-		if(isturf(A))
-			for(var/obj/O in A)
-				O.bullet_act(src)
-			for(var/mob/living/M in A)
-				projectile_attack_mob(M, distance)
-
-	//penetrating projectiles can pass through things that otherwise would not let them
-	if(!passthrough && penetrating > 0)
-		if(check_penetrate(A))
-			passthrough = TRUE
-		penetrating--
-
-	if(passthrough)
-		trajectory_ignore_forcemove = TRUE
-		forceMove(target_turf)
-		permutated.Add(A)
-		trajectory_ignore_forcemove = FALSE
-		return FALSE
-
-	if(A)
-		on_impact(A)
-
+/obj/projectile/proc/process_legacy_penetration(atom/A)
 	return TRUE
 
 //TODO: make it so this is called more reliably, instead of sometimes by bullet_act() and sometimes not
@@ -607,12 +554,6 @@
 	if(damage_type == BRUTE || damage_type == BURN)
 		return damage
 	return 0
-
-//return 1 if the projectile should be allowed to pass through after all, 0 if not.
-/obj/projectile/proc/check_penetrate(atom/A)
-#warn rid OFF
-	SHOULD_NOT_OVERRIDE(TRUE)
-	return 1
 
 /obj/projectile/proc/check_fire(atom/target as mob, mob/living/user as mob)  //Checks if you can hit them or not.
 	check_trajectory(target, user, pass_flags, atom_flags)
@@ -904,6 +845,8 @@
 
 //* Lifetime & Deletion *//
 
+// todo: on_lifetime() --> expire()
+
 /**
  * Called to delete if:
  *
@@ -959,6 +902,9 @@
 		if(impact_flags & PROJECTILE_IMPACT_PIERCE)
 			keep_going = TRUE
 			impact_flags = on_pierce(target, impact_flags, def_zone)
+		// are we otherwise meant to keep going?
+		else if(impact_flags & PROJECTILE_IMPACT_FLAGS_SHOULD_GO_THROUGH)
+			keep_going = TRUE
 
 	// did anything triggered up above trigger a delete?
 	if(impact_flags & PROJECTILE_IMPACT_FLAGS_SHOULD_DELETE)
@@ -1131,9 +1077,13 @@
  * * blocked - 0 to 100+ blocked percent
  * * impact_flags - impact flags passed in
  * * hit_zone - zone to hit
+ *
+ * @return BULLET_ACT_* flags to append into the calling bullet_act().
  */
 /obj/projectile/proc/process_damage_instance(atom/target, blocked, impact_flags, hit_zone)
-	#warn this currently doesn't actually hit armor/shieldcalls...
+	. = NONE
+
+	#warn this currently doesn't actually hit armor/low level shieldcalls...
 	#warn make sure SECOND_CALL is used on shieldcalls
 	//! LEGACY COMBAT CODE
 	if(isliving(target))
@@ -1177,6 +1127,10 @@
 	for(var/datum/projectile_effect/effect as anything in additional_projectile_effects)
 		if(effect.hook_damage)
 			effect.on_damage(src, target, impact_flags, hit_zone, blocked)
+
+	if(legacy_penetrating > 0)
+		if(process_legacy_penetration(target))
+			. |= PROJECTILE_IMPACT_PIERCE | PROJECTILE_IMPACT_PASSTHROUGH
 
 /**
  * wip algorithm to dampen a projectile when it pierces

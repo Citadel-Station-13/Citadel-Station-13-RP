@@ -486,6 +486,26 @@
 //* Projectile Handling *//
 
 /mob/living/bullet_act(obj/projectile/proj, impact_flags, def_zone, blocked)
+	//! LEGACY
+
+	// Using someone as a shield
+	// todo: need a counter to this..
+	for(var/mob/living/victim in get_grabbing_of_state(GRAB_NECK))
+		if(Victim.stat == DEAD)
+			var/shield_chance = min(80, (30 * (M.mob_size / 10)))	//Small mobs have a harder time keeping a dead body as a shield than a human-sized one. Unathi would have an easier job, if they are made to be SIZE_LARGE in the future. -Mech
+			if(prob(shield_chance))
+				visible_message("<span class='danger'>\The [M] uses [Victim] as a shield!</span>")
+				if(!(proj.impact_redirect(victim, args) | (PROJECTILE_IMPACT_FLAGS_SHOULD_GO_THROUGH | PROJECTILE_IMPACT_DUPLICATE)))
+					return
+			else
+				visible_message("<span class='danger'>\The [M] tries to use [Victim] as a shield, but fails!</span>")
+		else
+			visible_message("<span class='danger'>\The [M] uses [Victim] as a shield!</span>")
+			if(!(proj.impact_redirect(victim, args) | (PROJECTILE_IMPACT_FLAGS_SHOULD_GO_THROUGH | PROJECTILE_IMPACT_DUPLICATE)))
+				return
+
+	//! END
+
 	. = ..()
 	if(. & PROJECTILE_IMPACT_FLAGS_TARGET_ABORT)
 		return
@@ -504,7 +524,7 @@
 
 	//! END
 
-	proj.process_damage_instance(src, blocked, impact_flags, def_zone)
+	. |= proj.process_damage_instance(src, blocked, impact_flags, def_zone)
 
 /mob/living/get_bullet_impact_effect_type(var/def_zone)
 	return BULLET_IMPACT_MEAT

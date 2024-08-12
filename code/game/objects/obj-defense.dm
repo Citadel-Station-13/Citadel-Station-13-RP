@@ -33,7 +33,7 @@
 	)
 	return NONE
 
-/obj/unarmed_act(mob/attacker, datum/unarmed_attack/style, target_zone, mult = 1)
+/obj/unarmed_act(mob/attacker, datum/unarmed_attack/style, target_zone, datum/event_args/actor/clickchain/clickchain)
 	var/shieldcall_returns = atom_shieldcall_handle_unarmed_melee(style, clickchain, FALSE, NONE)
 	if(shieldcall_returns & SHIELDCALL_FLAGS_BLOCK_ATTACK)
 		return CLICKCHAIN_FULL_BLOCKED

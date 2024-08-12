@@ -509,7 +509,7 @@
 	var/list/old_grabbed
 	if(allow_grabbed)
 		old_grabbed = list()
-		for(var/mob/M in grabbing())
+		for(var/mob/M in get_grabbing())
 			if(check_grab(M) < allow_grabbed)
 				continue
 			old_grabbed += M
@@ -537,7 +537,7 @@
 /mob/getLocationTransitForceMoveTargets(atom/destination, recurse_levels = 0, allow_buckled = TRUE, allow_pulled = TRUE, allow_grabbed = GRAB_PASSIVE)
 	. = ..()
 	if(allow_grabbed)
-		var/list/grabbing = grabbing()
+		var/list/grabbing = get_grabbing()
 		for(var/mob/M in grabbing)
 			if(check_grab(M) < allow_grabbed)
 				continue

@@ -6,7 +6,6 @@
 
 	var/spell/targeted/projectile/carried
 
-	penetrating = 0
 	range = WORLD_ICON_SIZE * 10 //set by the duration of the spell
 
 	var/proj_trail = 0 //if it leaves a trail
