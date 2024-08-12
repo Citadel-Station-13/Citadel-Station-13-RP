@@ -2,6 +2,7 @@
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
 /obj/item/cell/large
+	worth_intrinsic = 100
 
 /obj/item/cell/large/infinite
 	name = "large power cell (fractal)"

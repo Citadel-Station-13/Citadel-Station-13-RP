@@ -99,6 +99,10 @@
 		STOP_PROCESSING(SSobj, src)
 	return ..()
 
+/obj/item/cell/get_worth(flags)
+	. = ..()
+	. *= cell_datum?.worth_multiplier
+
 /obj/item/cell/get_rating()
 	return rating
 

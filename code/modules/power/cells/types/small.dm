@@ -2,3 +2,4 @@
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
 /obj/item/cell/small
+	worth_intrinsic = 10

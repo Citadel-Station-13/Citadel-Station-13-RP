@@ -93,6 +93,7 @@
 	self_recharge = TRUE
 	charge_amount = 750
 
+// todo: this isn't even a fucking cell get it out of here
 //Not actually a cell, but if people look for it, they'll probably look near other cells
 /obj/item/fbp_backup_cell
 	name = "backup battery"

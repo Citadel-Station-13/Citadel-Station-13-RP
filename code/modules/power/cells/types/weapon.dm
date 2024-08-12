@@ -2,3 +2,4 @@
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
 /obj/item/cell/weapon
+	worth_intrinsic = 30

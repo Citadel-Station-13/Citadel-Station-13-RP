@@ -5,6 +5,13 @@
  * Encapsulates power cell behavior.
  */
 /datum/power_cell
+	/// worth multiplier
+	///
+	/// * this is because i am just frankly not going to manually set worth on every subtype, lol
+	/// * set to null to say "we have no worth" (useful for infinite cells)
+	/// * null behaves like 0 right now but might not later
+	/// * fuck inheritance, lol!
+	var/worth_multiplier = 1
 
 /**
  * Intercepts 'use' behavior
