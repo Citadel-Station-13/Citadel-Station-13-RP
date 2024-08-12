@@ -28,6 +28,7 @@
  * Datastructure for block data, now far more simplified.
  *
  * * Please avoid anonymous typing this where possible, this is a heavy datum and caching helps a lot.
+ * * The reason this is separate from parrying is because block system is far more focused on exact damage simulation, while parrying is focused on deflecting a hit and handling the effects of that.
  *
  * todo: this should be a serializable prototype
  */

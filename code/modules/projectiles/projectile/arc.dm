@@ -153,6 +153,8 @@
 /obj/projectile/arc/emp_blast
 	name = "emp blast"
 	icon_state = "bluespace"
+
+/obj/projectile/arc/emp_blast/on_impact_new(atom/target, impact_flags, def_zone, blocked)
 	var/turf/T = target
 	empulse(T, 2, 4, 7, 10) // Normal EMP grenade.
 	return impact_flags
