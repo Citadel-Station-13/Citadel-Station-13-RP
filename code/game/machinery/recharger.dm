@@ -230,7 +230,17 @@
 	plane = TURF_PLANE
 	layer = ABOVE_TURF_LAYER
 	base_power_draw = 30000
-	allowed_devices = list(/obj/item/gun/energy, /obj/item/gun/magnetic, /obj/item/melee/baton, /obj/item/flashlight, /obj/item/cell/device, /obj/item/ammo_casing/microbattery, /obj/item/ammo_magazine/microbattery, /obj/item/gun/ballistic/microbattery)
+	allowed_devices = list(
+		/obj/item/gun/energy,
+		/obj/item/gun/magnetic,
+		/obj/item/melee/baton,
+		/obj/item/flashlight,
+		/obj/item/cell/small,
+		/obj/item/cell/weapon,
+		/obj/item/ammo_casing/microbattery,
+		/obj/item/ammo_magazine/microbattery,
+		/obj/item/gun/ballistic/microbattery,
+	)
 	icon_state_charged = "wrecharger2"
 	icon_state_charging = "wrecharger1"
 	icon_state_idle = "wrecharger0"

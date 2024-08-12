@@ -40,7 +40,6 @@
 /obj/item/defib_kit/loaded //starts with a cell
 	bcell = /obj/item/cell/apc
 
-
 /obj/item/defib_kit/update_icon()
 
 	cut_overlays()

@@ -44,9 +44,9 @@
 		return
 
 	if(istype(W, /obj/item/cell) && anchored)
-		if(istype(W, /obj/item/cell/device))
-			to_chat(user, SPAN_WARNING("\The [src] isn't fitted for that type of cell."))
-			return
+		// if(istype(W, /obj/item/cell/device))
+		// 	to_chat(user, SPAN_WARNING("\The [src] isn't fitted for that type of cell."))
+		// 	return
 
 		if(charging)
 			to_chat(user, SPAN_WARNING("There is already [charging] in [src]."))
