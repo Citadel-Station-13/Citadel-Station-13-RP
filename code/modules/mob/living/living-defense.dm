@@ -503,6 +503,18 @@
 			visible_message("<span class='danger'>\The [src] uses [victim] as a shield!</span>")
 			if(!(proj.impact_redirect(victim, args) | (PROJECTILE_IMPACT_FLAGS_SHOULD_GO_THROUGH | PROJECTILE_IMPACT_DUPLICATE)))
 				return
+	// Process baymiss & zonemiss
+	def_zone = process_bullet_miss(proj, impact_flags, def_zone, blocked)
+	if(!def_zone)
+		if(!proj.silenced)
+			visible_message(SPAN_WARNING("\The [proj] misses [src] narrowly!"))
+			playsound(src, pick(proj.miss_sounds), 60, TRUE)
+		add_attack_logs(
+			proj.firer,
+			src,
+			"shot with [src] ([type]) (missed)",
+		)
+		return PROJECTILE_IMPACT_PASSTHROUGH
 
 	//! END
 
@@ -545,3 +557,19 @@
 
 /mob/living/get_bullet_impact_effect_type(var/def_zone)
 	return BULLET_IMPACT_MEAT
+
+/**
+ * @return zone to hit, or null to miss
+ */
+/mob/living/proc/process_bullet_miss(obj/projectile/proj, impact_flags, def_zone, blocked)
+	var/hit_probability = process_baymiss(proj)
+	if(!prob(hit_probability))
+		return null
+	return def_zone
+
+/**
+ * * our_opinion is intentionally mutable.
+ */
+/mob/living/proc/process_baymiss(obj/projectile/proj, our_opinion = 100)
+	our_opinion = clamp(our_opinion - get_evasion(), 5, INFINITY)
+	return proj.process_accuracy(src, our_opinion, proj.distance_travelled)

@@ -331,34 +331,6 @@
 	cleanup_hitscan_tracers()
 	return ..()
 
-//Called when the projectile intercepts a mob. Returns 1 if the projectile hit the mob, 0 if it missed and should keep flying.
-#warn get rid of
-/obj/projectile/proc/projectile_attack_mob(mob/living/target_mob, distance, miss_modifier = 0)
-	SHOULD_NOT_OVERRIDE(TRUE)
-	if(!istype(target_mob))
-		return
-
-	//roll to-hit
-	miss_modifier = max(15*(distance-2) - accuracy + miss_modifier + target_mob.get_evasion(), 0)
-	var/hit_zone = get_zone_with_miss_chance(def_zone, target_mob, miss_modifier, ranged_attack=(distance > 1 || original != target_mob)) //if the projectile hits a target we weren't originally aiming at then retain the chance to miss
-
-	var/result = PROJECTILE_FORCE_MISS
-	if(hit_zone)
-		def_zone = hit_zone //set def_zone, so if the projectile ends up hitting someone else later (to be implemented), it is more likely to hit the same part
-		result = target_mob.bullet_act(src, def_zone)
-
-	if(result == PROJECTILE_FORCE_MISS)
-		if(!silenced)
-			visible_message("<span class='notice'>\The [src] misses [target_mob] narrowly!</span>")
-			playsound(target_mob.loc, pick(miss_sounds), 60, 1)
-		return FALSE
-
-	//sometimes bullet_act() will want the projectile to continue flying
-	if (result == PROJECTILE_CONTINUE)
-		return FALSE
-
-	return TRUE
-
 /obj/projectile/proc/process_legacy_penetration(atom/A)
 	return TRUE
 
@@ -1029,6 +1001,10 @@
 /**
  * processes default hit probability for baymiss
  *
+ * * This is called by things like /mob/living as needed; there is no default baymiss handling on /projectile anymore.
+ * * More than 100 target_opinion means that much % more than 100 of *not missing*.
+ * * e.g. 200 target_opinion makes a 75% inherent hit chance (25% miss chance) to 87.5% hit cahnce (12.5% miss chance)
+ *
  * @params
  * * target - what we're hitting
  * * target_opinion - the return from processing hit chance on their side
@@ -1039,7 +1015,7 @@
 /obj/projectile/proc/process_accuracy(atom/target, target_opinion = 100, distance = distance_travelled)
 	if(accuracy_disabled)
 		return 100
-	. = target_opinion
+	. = 100
 	// perform accuracy curving
 	if(distance > accuracy_perfect_range)
 		// the 'd' stands for 'go to desmos'; link at the top of the file in 'Combat - Accuracy'.
@@ -1053,6 +1029,12 @@
 		else
 			// above 1: divisor for miss chance
 			. = 1 - ((1 - .) / accuracy_overall_modify)
+	if(target_opinion < 100)
+		. *= (target_opinion / 100)
+	else if(target_opinion > 100)
+		if(. < 100)
+			var/missing = 100 - .
+			. += missing - (missing / (target_opinion / 100))
 
 /**
  * Applies the standard damage instance to an entity.
