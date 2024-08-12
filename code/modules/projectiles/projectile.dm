@@ -353,15 +353,6 @@
 			playsound(target_mob.loc, pick(miss_sounds), 60, 1)
 		return FALSE
 
-	//hit messages
-	if(silenced)
-		to_chat(target_mob, "<span class='danger'>You've been hit in the [parse_zone(def_zone)] by \the [src]!</span>")
-	else
-		visible_message("<span class='danger'>\The [target_mob] is hit by \the [src] in the [parse_zone(def_zone)]!</span>")//X has fired Y is now given by the guns so you cant tell who shot you if you could not see the shooter
-
-	if(istype(firer, /mob) && istype(target_mob))
-		add_attack_logs(firer,target_mob,"Shot with \a [src.type] projectile")
-
 	//sometimes bullet_act() will want the projectile to continue flying
 	if (result == PROJECTILE_CONTINUE)
 		return FALSE
@@ -370,21 +361,6 @@
 
 /obj/projectile/proc/process_legacy_penetration(atom/A)
 	return TRUE
-
-//TODO: make it so this is called more reliably, instead of sometimes by bullet_act() and sometimes not
-/obj/projectile/proc/on_hit(atom/target, blocked = 0, def_zone)
-	SHOULD_NOT_OVERRIDE(TRUE)
-	#warn kill
-	if(blocked >= 100)
-		return 0//Full block
-	if(!isliving(target))
-		return 0
-//	if(isanimal(target))	return 0
-	var/mob/living/L = target
-	L.apply_effects(stun, weaken, paralyze, irradiate, stutter, eyeblur, drowsy, agony, blocked, incendiary, flammability) // add in AGONY!
-	if(modifier_type_to_apply)
-		L.add_modifier(modifier_type_to_apply, modifier_duration)
-	return 1
 
 /obj/projectile/proc/legacy_on_range() //if we want there to be effects when they reach the end of their range
 	finalize_hitscan_tracers(impact_effect = FALSE, kick_forwards = 8)
@@ -681,7 +657,7 @@
 		return TRUE
 	return blocker_opinion
 
-/obj/projectile/Crossed(atom/movable/AM) //A mob moving on a tile with a projectile is hit by it.
+/obj/projectile/Crossed(atom/movable/AM)
 	..()
 	scan_crossed_atom(AM)
 
@@ -690,6 +666,10 @@
 	if(!should_impact(target))
 		return
 	impact(target)
+
+/obj/projectile/Bump(atom/A)
+	. = ..()
+	impact_loop(get_turf(A), A)
 
 /obj/projectile/forceMove(atom/target)
 	var/is_a_jump = isturf(target) != isturf(loc) || target.z != z || !trajectory_ignore_forcemove
@@ -989,6 +969,11 @@
 		var/turf/T = get_turf(target)
 		if(T)
 			T.hotspot_expose(700, 5)
+	if(isliving(target))
+		var/mob/living/L = target
+		L.apply_effects(stun, weaken, paralyze, irradiate, stutter, eyeblur, drowsy, agony, blocked, incendiary, flammability)
+		if(modifier_type_to_apply)
+			L.add_modifier(modifier_type_to_apply, modifier_duration)
 	//! end
 	return impact_flags
 

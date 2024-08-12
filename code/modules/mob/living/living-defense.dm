@@ -507,8 +507,25 @@
 	//! END
 
 	. = ..()
+
+	// todo: better logging
 	if(. & PROJECTILE_IMPACT_FLAGS_TARGET_ABORT)
+		add_attack_logs(
+			proj.firer,
+			src,
+			"shot with [src] ([type]) (aborted)",
+		)
 		return
+	add_attack_logs(
+		proj.firer,
+		src,
+		"shot with [src] ([type])",
+	)
+	// emit feedback/workspaces/Citadel-Station-13-RP/code/modules/random_map
+	if(proj.silenced)
+		to_chat(src, SPAN_DANGER("You've been hit in the [parse_zone(def_zone)] with \the [proj]!"))
+	else
+		visible_message(SPAN_DANGER("\The [src] is hit by [proj] in the [parse_zone(def_zone)]"))
 
 	//! LEGACY
 
