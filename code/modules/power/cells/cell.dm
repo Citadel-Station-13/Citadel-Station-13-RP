@@ -15,11 +15,9 @@
 	throw_range = 5
 	w_class = WEIGHT_CLASS_NORMAL
 
-	//* Identity *//
-	/// base name; set on subtypes so [POWER_CELL_GENERATE_TYPES] works properly
-	var/cell_name = "unknown"
-	/// description appended to basic description by [POWER_CELL_GENERATE_TYPES].
-	var/cell_desc = "You don't know what this one does."
+	//* Behavior *//
+	/// cell component; loaded at init, set to typepath or anonymous type
+	var/datum/power_cell/cell_datum
 
 	//* Capacity - Type Generation *//
 

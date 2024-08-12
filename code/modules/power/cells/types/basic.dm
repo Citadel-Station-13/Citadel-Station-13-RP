@@ -1,6 +1,8 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2024 silicons                             *//
 
+#warn new way
+
 POWER_CELL_GENERATE_TYPES(/obj/item/cell/basic)
 /obj/item/cell/basic
 	cell_name = "basic"

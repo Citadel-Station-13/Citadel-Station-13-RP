@@ -31,6 +31,7 @@ DEFINE_BITFIELD_NEW(cell_type, list(
 ##TYPEPATH/small { \
 	name = "small power cell (" + ##TYPEPATH::cell_name + ")"; \
 	desc = "A small power cell used in handheld electronics. " + ##TYPEPATH::cell_desc; \
+	cell_type = CELL_TYPE_SMALL; \
 	rendering_system = TRUE; \
 	indicator_count = 4; \
 	max_charge = ##TYPEPATH::typegen_capacity_small * ##TYPEPATH::typegen_capacity_multiplier; \
@@ -39,6 +40,7 @@ DEFINE_BITFIELD_NEW(cell_type, list(
 ##TYPEPATH/medium { \
 	name = "medium power cell (" + ##TYPEPATH::cell_name + ")"; \
 	desc = "A decently sized cell used in many pieces of modern equipment. " + ##TYPEPATH::cell_desc; \
+	cell_type = CELL_TYPE_MEDIUM; \
 	rendering_system = TRUE; \
 	indicator_count = 4; \
 	max_charge = ##TYPEPATH::typegen_capacity_medium * ##TYPEPATH::typegen_capacity_multiplier; \
@@ -47,6 +49,7 @@ DEFINE_BITFIELD_NEW(cell_type, list(
 ##TYPEPATH/large { \
 	name = "large power cell (" + ##TYPEPATH::cell_name + ")"; \
 	desc = "A bulky power cell used in industrial equipment and power supply systems. " + ##TYPEPATH::cell_desc; \
+	cell_type = CELL_TYPE_LARGE; \
 	rendering_system = TRUE; \
 	indicator_count = 4; \
 	max_charge = ##TYPEPATH::typegen_capacity_large * ##TYPEPATH::typegen_capacity_multiplier; \
@@ -55,6 +58,7 @@ DEFINE_BITFIELD_NEW(cell_type, list(
 ##TYPEPATH/weapon { \
 	name = "weapon power cell (" + ##TYPEPATH::cell_name + ")"; \
 	desc = "A power cell accepted by many kinds of handheld weaponry. " + ##TYPEPATH::cell_desc; \
+	cell_type = CELL_TYPE_WEAPON; \
 	rendering_system = TRUE; \
 	indicator_count = 4; \
 	max_charge = ##TYPEPATH::typegen_capacity_weapon * ##TYPEPATH::typegen_capacity_multiplier; \
