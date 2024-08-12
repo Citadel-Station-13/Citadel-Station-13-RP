@@ -51,20 +51,21 @@
 	. = ..()
 	if(. & PROJECTILE_IMPACT_FLAGS_TARGET_ABORT)
 		return
-	// todo: maybe the projectile side should handle this?
-	run_damage_instance(
-		proj.get_structure_damage() * (1 - (blocked / 100)),
-		proj.damage_type,
-		proj.damage_tier,
-		proj.damage_flag,
-		proj.damage_mode,
-		ATTACK_TYPE_PROJECTILE,
-		proj,
-		NONE,
-		def_zone,
-		null,
-		null,
-	)
+	if(!(. & PROJECTILE_IMPACT_BLOCKED))
+		// todo: maybe the projectile side should handle this?
+		run_damage_instance(
+			proj.get_structure_damage() * (1 - (blocked / 100)),
+			proj.damage_type,
+			proj.damage_tier,
+			proj.damage_flag,
+			proj.damage_mode,
+			ATTACK_TYPE_PROJECTILE,
+			proj,
+			NONE,
+			def_zone,
+			null,
+			null,
+		)
 	if(QDELETED(src))
 		. |= PROJECTILE_IMPACT_TARGET_DELETED
 

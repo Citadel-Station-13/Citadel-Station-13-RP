@@ -501,8 +501,11 @@
 	icon_state = "plasma3"
 	rad_power = RAD_INTENSITY_PROJ_ARC_HORROR_PRIEST
 
-/obj/projectile/arc/radioactive/priest/on_impact(turf/T)
+/obj/projectile/arc/radioactive/priest/on_impact_new(atom/target, impact_flags, def_zone, blocked)
 	. = ..()
+	if(!isturf(target))
+		return
+	var/turf/T = target
 	new /obj/effect/explosion(T)
 	explosion(T, 0, 1, 4)
 

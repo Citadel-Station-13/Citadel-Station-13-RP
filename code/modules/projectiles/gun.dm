@@ -330,9 +330,10 @@
 	if(!istype(A))
 		return ..()
 	if(user.a_intent == INTENT_HARM) //point blank shooting
-		if (A == user && user.zone_sel.selecting == O_MOUTH && !mouthshoot)
-			handle_suicide(user)
-			return
+		// todo: disabled for now
+		// if (A == user && user.zone_sel.selecting == O_MOUTH && !mouthshoot)
+		// 	handle_suicide(user)
+		// 	return
 		var/mob/living/L = user
 		if(user && user.client && istype(L) && L.aiming && L.aiming.active && L.aiming.aiming_at != A && A != user)
 			PreFire(A,user) //They're using the new gun system, locate what they're aiming at.
@@ -729,44 +730,45 @@
 	else
 		playsound(user, shot_sound, 50, 1)
 
+// todo: rework all this this is fucking dumb
 //Suicide handling.
-/obj/item/gun/var/mouthshoot = 0 //To stop people from suiciding twice... >.>
+// /obj/item/gun/var/mouthshoot = 0 //To stop people from suiciding twice... >.>
 
-/obj/item/gun/proc/handle_suicide(mob/living/user)
-	if(!ishuman(user))
-		return
-	var/mob/living/carbon/human/M = user
+// /obj/item/gun/proc/handle_suicide(mob/living/user)
+// 	if(!ishuman(user))
+// 		return
+// 	var/mob/living/carbon/human/M = user
 
-	mouthshoot = 1
-	M.visible_message("<font color='red'>[user] sticks their gun in their mouth, ready to pull the trigger...</font>")
-	if(!do_after(user, 40))
-		M.visible_message("<font color=#4F49AF>[user] decided life was worth living</font>")
-		mouthshoot = 0
-		return
-	var/obj/projectile/in_chamber = consume_next_projectile()
-	if (istype(in_chamber))
-		user.visible_message("<span class = 'warning'>[user] pulls the trigger.</span>")
-		play_fire_sound(M, in_chamber)
-		if(istype(in_chamber, /obj/projectile/beam/lasertag))
-			user.show_message("<span class = 'warning'>You feel rather silly, trying to commit suicide with a toy.</span>")
-			mouthshoot = 0
-			return
+// 	mouthshoot = 1
+// 	M.visible_message("<font color='red'>[user] sticks their gun in their mouth, ready to pull the trigger...</font>")
+// 	if(!do_after(user, 40))
+// 		M.visible_message("<font color=#4F49AF>[user] decided life was worth living</font>")
+// 		mouthshoot = 0
+// 		return
+// 	var/obj/projectile/in_chamber = consume_next_projectile()
+// 	if (istype(in_chamber))
+// 		user.visible_message("<span class = 'warning'>[user] pulls the trigger.</span>")
+// 		play_fire_sound(M, in_chamber)
+// 		if(istype(in_chamber, /obj/projectile/beam/lasertag))
+// 			user.show_message("<span class = 'warning'>You feel rather silly, trying to commit suicide with a toy.</span>")
+// 			mouthshoot = 0
+// 			return
 
-		in_chamber.on_hit(M)
-		if(in_chamber.damage_type != HALLOSS && !in_chamber.nodamage)
-			log_and_message_admins("[key_name(user)] commited suicide using \a [src]")
-			user.apply_damage(in_chamber.damage*2.5, in_chamber.damage_type, "head", used_weapon = "Point blank shot in the mouth with \a [in_chamber]", sharp=1)
-			user.death()
-		else if(in_chamber.damage_type == HALLOSS)
-			to_chat(user, "<span class = 'notice'>Ow...</span>")
-			user.apply_effect(110,AGONY,0)
-		qdel(in_chamber)
-		mouthshoot = 0
-		return
-	else
-		handle_click_empty(user)
-		mouthshoot = 0
-		return
+// 		in_chamber.on_hit(M)
+// 		if(in_chamber.damage_type != HALLOSS && !in_chamber.nodamage)
+// 			log_and_message_admins("[key_name(user)] commited suicide using \a [src]")
+// 			user.apply_damage(in_chamber.damage*2.5, in_chamber.damage_type, "head", used_weapon = "Point blank shot in the mouth with \a [in_chamber]", sharp=1)
+// 			user.death()
+// 		else if(in_chamber.damage_type == HALLOSS)
+// 			to_chat(user, "<span class = 'notice'>Ow...</span>")
+// 			user.apply_effect(110,AGONY,0)
+// 		qdel(in_chamber)
+// 		mouthshoot = 0
+// 		return
+// 	else
+// 		handle_click_empty(user)
+// 		mouthshoot = 0
+// 		return
 
 /obj/item/gun/proc/toggle_scope(var/zoom_amount=2.0)
 	//looking through a scope limits your periphereal vision

@@ -101,7 +101,6 @@
 			proj.reflected = 1
 
 		return PROJECTILE_IMPACT_REFLECT
-	#warn above; blocked modifier?
 	return ..()
 
 /*

@@ -103,7 +103,11 @@
 
 // This is a test projectile in the sense that its testing the code to make sure it works,
 // as opposed to a 'can I hit this thing' projectile.
-/obj/projectile/arc/test/on_impact(turf/T)
+/obj/projectile/arc/test/on_impact_new(atom/target, impact_flags, def_zone, blocked)
+	. = ..()
+	if(!isturf(target))
+		return
+	var/turf/T = target
 	new /obj/effect/explosion(T)
 	T.color = "#FF0000"
 
@@ -114,7 +118,11 @@
 	damage = 15
 	damage_type = BURN
 
-/obj/projectile/arc/blue_energy/on_impact(turf/T)
+/obj/projectile/arc/blue_energy/on_impact_new(atom/target, impact_flags, def_zone, blocked)
+	. = ..()
+	if(!isturf(target))
+		return
+	var/turf/T = target
 	for(var/mob/living/L in T)
 		projectile_attack_mob(L) // Everything on the turf it lands gets hit.
 
@@ -129,7 +137,11 @@
 	var/fragment_amount = 63 // Same as a grenade.
 	var/spread_range = 7
 
-/obj/projectile/arc/fragmentation/on_impact(turf/T)
+/obj/projectile/arc/fragmentation/on_impact_new(atom/target, impact_flags, def_zone, blocked)
+	. = ..()
+	if(!isturf(target))
+		return
+	var/turf/T = target
 	fragmentate(T, fragment_amount, spread_range, fragment_types)
 
 /obj/projectile/arc/fragmentation/mortar
@@ -141,12 +153,14 @@
 /obj/projectile/arc/emp_blast
 	name = "emp blast"
 	icon_state = "bluespace"
-
-/obj/projectile/arc/emp_blast/on_impact(turf/T)
+	var/turf/T = target
 	empulse(T, 2, 4, 7, 10) // Normal EMP grenade.
+	return impact_flags
 
-/obj/projectile/arc/emp_blast/weak/on_impact(turf/T)
+/obj/projectile/arc/emp_blast/weak/on_impact_new(atom/target, impact_flags, def_zone, blocked)
+	var/turf/T = target
 	empulse(T, 1, 2, 3, 4) // Sec EMP grenade.
+	return impact_flags
 
 // Radiation arc shot
 /obj/projectile/arc/radioactive
@@ -156,5 +170,9 @@
 	icon_scale_y = 2
 	var/rad_power = RAD_INTENSITY_PROJ_ARC
 
-/obj/projectile/arc/radioactive/on_impact(turf/T)
+/obj/projectile/arc/radioactive/on_impact_new(atom/target, impact_flags, def_zone, blocked)
+	. = ..()
+	if(!isturf(target))
+		return
+	var/turf/T = target
 	radiation_pulse(T, rad_power)

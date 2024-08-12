@@ -1161,7 +1161,7 @@
 		return ..()
 
 	src.log_message("Hit by projectile. Type: [proj.name]([proj.damage_flag]).",1)
-	call((proc_res["dynbulletdamage"]||src), "dynbulletdamage")(proj) //calls equipment
+	impact_flags |= call((proc_res["dynbulletdamage"]||src), "dynbulletdamage")(proj) //calls equipment
 	return ..()
 
 /obj/vehicle/sealed/mecha/proc/dynbulletdamage(var/obj/projectile/Proj)
@@ -1204,7 +1204,7 @@
 		if(pass_damage < temp_damage_minimum)//too pathetic to really damage you.
 			src.occupant_message("<span class='notice'>The armor deflects incoming projectile.</span>")
 			src.visible_message("The [src.name] armor deflects\the [Proj]")
-			return
+			return PROJECTILE_IMPACT_BLOCKED
 
 		else if(Proj.armor_penetration < temp_minimum_penetration)	//If you don't have enough pen, you won't do full damage
 			src.occupant_message("<span class='notice'>\The [Proj] struggles to pierce \the [src] armor.</span>")
@@ -1239,9 +1239,6 @@
 
 				if(prob(15))
 					break //give a chance to exit early
-
-	Proj.on_hit(src) //on_hit just returns if it's argument is not a living mob so does this actually do anything?
-	return
 
 //This refer to whenever you are caught in an explosion.
 /obj/vehicle/sealed/mecha/legacy_ex_act(severity)

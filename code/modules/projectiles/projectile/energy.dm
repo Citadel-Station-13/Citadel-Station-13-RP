@@ -18,10 +18,11 @@
 	var/brightness = 7
 	var/light_colour = "#ffffff"
 
-/obj/projectile/energy/flash/on_impact(var/atom/A)
-	var/turf/T = flash_range? src.loc : get_turf(A)
-	if(!istype(T)) return
-
+/obj/projectile/energy/flash/on_impact_new(atom/target, impact_flags, def_zone, blocked)
+	. = ..()
+	if(!isturf(target))
+		return
+	var/turf/T = get_turf(target)
 	//blind adjacent people
 	for (var/mob/living/carbon/M in viewers(T, flash_range))
 		if(M.eyecheck() < 1)
