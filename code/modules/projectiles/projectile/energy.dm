@@ -58,11 +58,9 @@
 	incendiary = 1
 	flammability = 2
 
-/obj/projectile/energy/flash/flare/on_impact(var/atom/A)
+/obj/projectile/energy/flash/flare/on_impact_new(atom/target, impact_flags, def_zone, blocked)
 	light_colour = pick("#e58775", "#ffffff", "#90ff90", "#a09030")
-
-	..() //initial flash
-
+	. = ..()
 	//residual illumination
 	new /obj/effect/particle_effect/smoke/illumination(src.loc, rand(190,240) SECONDS, 8, 3, light_colour) //same lighting power as flare
 
