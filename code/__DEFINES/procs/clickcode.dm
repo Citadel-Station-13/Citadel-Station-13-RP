@@ -19,7 +19,9 @@
  */
 
 /// stop the click chain from proceeding past this point; usually used if we're deleting or being inserted
-/// DO NOT ABUSE THIS PROC TO INTERRUPT AFTERATTACKS WITHOUT CARE; this is NOT what this is here for!
+///
+/// * This is an unconditional abort.
+/// * DO NOT ABUSE THIS PROC TO INTERRUPT AFTERATTACKS WITHOUT CARE; this is NOT what this is here for!
 #define CLICKCHAIN_DO_NOT_PROPAGATE			(1<<0)
 /// person can reach us normally
 #define CLICKCHAIN_HAS_PROXIMITY			(1<<1)
@@ -41,7 +43,14 @@
 /// this is a reflex counterattack by something
 ///
 /// * used to prevent loops where both parties reactively attack each other instantly.
-#define CLICKCHAIN_REFLEX_COUTEr			(1<<9)
+#define CLICKCHAIN_REFLEX_COUNTER			(1<<9)
+/// put this in if we should entirely abort the attack
+#define CLICKCHAIN_FULL_BLOCKED				(1<<10)
+
+/// check these for 'unconditional abort'
+#define CLICKCHAIN_FLAGS_UNCONDITIONAL_ABORT (CLICKCHAIN_DO_NOT_PROPAGATE)
+/// check these for 'abort attack'
+#define CLICKCHAIN_FLAGS_ATTACK_ABORT (CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_FULL_BLOCKED)
 
 //! Reachability Depths - checked from level of DirectAccess and turf adjacency.
 /// default reachability depth

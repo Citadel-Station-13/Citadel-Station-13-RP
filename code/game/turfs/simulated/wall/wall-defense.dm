@@ -21,6 +21,9 @@
 		return
 
 /turf/simulated/wall/unarmed_act(mob/attacker, datum/unarmed_attack/style, target_zone, mult)
+	var/shieldcall_returns = atom_shieldcall_handle_unarmed_melee(style, clickchain, FALSE, NONE)
+	if(shieldcall_returns & SHIELDCALL_FLAGS_BLOCK_ATTACK)
+		return CLICKCHAIN_FULL_BLOCKED
 	// todo: maybe the unarmed_style side should handle this?
 	run_damage_instance(
 		style.damage * mult,
@@ -37,7 +40,10 @@
 	)
 	return NONE
 
-/turf/simulated/wall/melee_act(mob/user, obj/item/weapon, target_zone, mult)
+/turf/simulated/wall/melee_act(mob/user, obj/item/weapon, target_zone, datum/event_args/actor/clickchain/clickchain)
+	var/shieldcall_returns = atom_shieldcall_handle_item_melee(weapon, clickchain, FALSE, NONE)
+	if(shieldcall_returns & SHIELDCALL_FLAGS_BLOCK_ATTACK)
+		return CLICKCHAIN_FULL_BLOCKED
 	// todo: maybe the item side should handle this?
 	run_damage_instance(
 		weapon.damage_force * mult,

@@ -33,6 +33,9 @@
  *
  * todo: add clickchain datum, instead of multiplier
  *
+ * * check CLICKCHAIN_FLAGS_* as needed, especially UNCONDITIONAL_ABORT and ATTACK_ABORT
+ * * clickchain flags are sent down through parent calls.
+ *
  * @params
  * * user - person attacking
  * * weapon - weapon used
@@ -41,8 +44,7 @@
  *
  * @return clickchain flags to append
  */
-#warn mob-level shieldcalls
-/atom/proc/melee_act(mob/user, obj/item/weapon, target_zone, mult = 1)
+/atom/proc/melee_act(mob/user, obj/item/weapon, target_zone, datum/event_args/actor/clickchain/clickchain)
 	return CLICKCHAIN_DO_NOT_ATTACK
 
 /**
@@ -58,7 +60,6 @@
  *
  * @return clickchain flags to append
  */
-#warn mob-level shieldcalls
 /atom/proc/unarmed_act(mob/attacker, datum/unarmed_attack/style, target_zone, mult = 1)
 	return CLICKCHAIN_DO_NOT_ATTACK
 
@@ -90,7 +91,6 @@
  *
  * @return new impact_flags
  */
-#warn mob-level shieldcalls
 /atom/proc/bullet_act(obj/projectile/proj, impact_flags, def_zone, blocked)
 	// lower calls can change flags before we trigger
 	// check if we're still hitting
@@ -102,11 +102,7 @@
 	if(impact_flags & PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT)
 		return impact_flags
 	// 1. fire shieldcalls
-	var/shieldcall_returns = NONE
-	for(var/datum/shieldcall/shieldcall as anything in shieldcalls)
-		shieldcall_returns |= shieldcall.handle_bullet(src, shieldcall_returns, FALSE, args)
-		if(shieldcall_returns & SHIELDCALL_FLAGS_SHOULD_TERMINATE)
-			break
+	var/shieldcall_returns = atom_shieldcall_handle_bullet(args, FALSE, NONE)
 	// check if we're still hitting
 	if(impact_flags & PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT)
 		return impact_flags

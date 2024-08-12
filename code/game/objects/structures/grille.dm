@@ -103,7 +103,7 @@
 		return FALSE
 	return ..()
 
-/obj/structure/grille/melee_act(mob/user, obj/item/weapon, target_zone, mult)
+/obj/structure/grille/melee_act(mob/user, obj/item/weapon, target_zone, datum/event_args/actor/clickchain/clickchain)
 	if(shock(user, 70, weapon))
 		return FALSE
 	return ..()

@@ -620,8 +620,10 @@
 	. = ..()
 	aggro_for(6 SECONDS)
 
-/obj/machinery/porta_turret/melee_act(mob/user, obj/item/weapon, target_zone, mult)
+/obj/machinery/porta_turret/melee_act(mob/user, obj/item/weapon, target_zone, datum/event_args/actor/clickchain/clickchain)
 	. = ..()
+	if(. & CLICKCHAIN_FLAGS_ATTACK_ABORT)
+		return
 	if(. > 0)
 		aggro_for(6 SECONDS, user)
 

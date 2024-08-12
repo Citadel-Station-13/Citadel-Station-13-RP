@@ -49,8 +49,6 @@
 	. = ..()
 	// shieldcall must be deleted after unregister
 	QDEL_NULL(shieldcall)
-	// get rid of visual
-	QDEL_NULL(visual)
 
 /datum/component/parry_frame/RegisterWithParent()
 	var/atom/movable/AM = parent
@@ -233,6 +231,14 @@
 	var/list/parry_sfx = /datum/soundbyte/grouped/metal_parry
 	/// a typepath of /atom/movable/parry_frame to use as our visual; this is placed in the defending atom's vis_contents
 	var/parry_vfx = /atom/movable/parry_frame/default
+	/// "[person] [start_verb] with [item]"
+	var/start_verb = "shifts into a defensive stance"
+	/// "[person] [block_verb] [attack_text] with [item]"
+	var/block_verb = "parries"
+	/// "[person] [deflect_verb] [attack_text] with [item]"
+	///
+	/// * used if an attack was redirected and not just blocked
+	var/deflect_verb = "deflects"
 
 #warn impl all
 

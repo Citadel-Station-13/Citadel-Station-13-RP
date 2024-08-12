@@ -411,7 +411,7 @@
 		visible = SPAN_DANGER("[target] has been [islist(attack_verb)? pick(attack_verb) : attack_verb] with [src] by [clickchain.performer]!")
 	)
 	// damage
-	target.melee_act(clickchain.performer, src, mult = mult)
+	target.melee_act(clickchain.performer, src, null, clickchain)
 	// animate
 	target.animate_hit_by_weapon(clickchain.performer, src)
 
