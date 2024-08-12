@@ -19,7 +19,7 @@
 		return CLICKCHAIN_FULL_BLOCKED
 	// todo: maybe the item side should handle this?
 	run_damage_instance(
-		weapon.damage_force * mult,
+		weapon.damage_force * (clickchain ? clickchain.damage_multiplier : 1),
 		weapon.damtype,
 		weapon.damage_tier,
 		weapon.damage_flag,
@@ -39,7 +39,7 @@
 		return CLICKCHAIN_FULL_BLOCKED
 	// todo: maybe the unarmed_style side should handle this?
 	run_damage_instance(
-		style.damage * mult,
+		style.damage * (clickchain ? clickchain.damage_multiplier : 1),
 		style.damage_type,
 		style.damage_tier,
 		style.damage_flag,
