@@ -8,7 +8,7 @@
 	var/base_state = "dartgun"
 	origin_tech = list(TECH_COMBAT = 7, TECH_MATERIAL = 6, TECH_BIO = 5, TECH_MAGNET = 2, TECH_ILLEGAL = 3)
 
-	regex_this_caliber = /datum/ammo_caliber/dart
+	caliber = /datum/ammo_caliber/dart
 	fire_sound = 'sound/weapons/empty.ogg'
 	fire_sound_text = "a metallic click"
 	recoil = 0

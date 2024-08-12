@@ -6,7 +6,7 @@
 /obj/item/ammo_casing/p_pellet
 	name = "pellet"
 	desc = "Also know as a BB, it is shot from airguns for recreational shooting."
-	regex_this_caliber = /datum/ammo_caliber/pellet
+	caliber = /datum/ammo_caliber/pellet
 	icon = 'icons/obj/gun/ballistic/caseless/pellet.dmi'
 	icon_state = "pellet_single"
 	projectile_type = /obj/projectile/bullet/practice

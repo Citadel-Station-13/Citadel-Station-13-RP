@@ -4,7 +4,7 @@
 /obj/item/ammo_casing/biomatter
 	name = "biomatter globule"
 	desc = "Globular biomatter rendered and ready for compression."
-	regex_this_caliber = /datum/ammo_caliber/biomatter
+	caliber = /datum/ammo_caliber/biomatter
 
 	icon = 'icons/modules/projectiles/casings/bio.dmi'
 	icon_state = "globule"

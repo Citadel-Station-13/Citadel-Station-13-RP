@@ -22,7 +22,7 @@
 	/// * may be typepath of caliber (recommended)
 	/// * may be instance of caliber (not recommended, but allowable for special cases)
 	/// * may NOT be string of caliber, currently
-	var/regex_this_caliber
+	var/caliber
 	/// stored projectile - either null for un-init'd, FALSE for empty, or an instance
 	VAR_PROTECTED/obj/projectile/stored
 
@@ -142,11 +142,11 @@
 //* Caliber *//
 
 /obj/item/ammo_casing/proc/get_caliber_string()
-	return resolve_caliber(regex_this_caliber)?.caliber
+	return resolve_caliber(caliber)?.caliber
 
 /obj/item/ammo_casing/proc/get_caliber()
 	RETURN_TYPE(/datum/ammo_caliber)
-	return resolve_caliber(regex_this_caliber)
+	return resolve_caliber(caliber)
 
 //* Generic - Spent Subtype *//
 
