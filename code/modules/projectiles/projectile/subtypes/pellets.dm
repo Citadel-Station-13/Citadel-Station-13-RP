@@ -125,9 +125,6 @@
 	name = "metal fragment"
 	damage = 9  //Big chunks flying off.
 
-	base_spread = 0 //causes it to be treated as a shrapnel explosion instead of cone
-	spread_step = 20
-
 	armor_penetration = 20
 
 	silenced = 1
