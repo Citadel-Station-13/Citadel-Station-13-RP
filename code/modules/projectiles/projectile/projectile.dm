@@ -1070,9 +1070,14 @@
 /obj/projectile/proc/process_damage_instance(atom/target, blocked, impact_flags, hit_zone)
 	. = NONE
 
-	#warn this currently doesn't actually hit armor/low level shieldcalls...
-	#warn make sure SECOND_CALL is used on shieldcalls
 	//! LEGACY COMBAT CODE
+	// SHIM!!!
+	var/list/shieldcall_modified_args = target.run_damage_instance(damage, damage_type, damage_tier, damage_flag, damage_mode, ATTACK_TYPE_PROJECTILE, src, SHIELDCALL_FLAG_SECOND_CALL, hit_zone)
+	// todo: this handling very obviously should not be here
+	// dear lord this code is a dumpster fire
+	if(shieldcall_modified_args[SHIELDCALL_ARG_FLAGS] & SHIELDCALL_FLAGS_BLOCK_ATTACK)
+		return
+	// END
 	if(isliving(target))
 		var/mob/living/L = target
 		//Armor
