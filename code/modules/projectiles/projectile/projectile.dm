@@ -210,6 +210,8 @@
 	/// Originally clicked target
 	var/atom/original_target
 
+	//* legacy below *//
+
 	//Fired processing vars
 	var/fired = FALSE	//Have we been fired yet
 
@@ -884,8 +886,6 @@
 			qdel(src)
 			return impact_flags
 
-	#warn insert rest of behavior here
-
 	// see if we should keep going or delete
 	if(keep_going)
 		if(loc == where_we_were)
@@ -1008,14 +1008,17 @@
  * * More than 100 target_opinion means that much % more than 100 of *not missing*.
  * * e.g. 200 target_opinion makes a 75% inherent hit chance (25% miss chance) to 87.5% hit cahnce (12.5% miss chance)
  *
+ * todo: 0 to 100 for accuracy might not be amazing; maybe allow negative values evasion-style?
+ *
  * @params
  * * target - what we're hitting
  * * target_opinion - the return from processing hit chance on their side
  * * distance - distance in pixels
+ * * impact_check - are we checking for impact? this way things like pellets can do their own rolls after 100% hitting
  *
- * @return hit probability
+ * @return hit probability as % in [0, 100]; > 100 is allowed.
  */
-/obj/projectile/proc/process_accuracy(atom/target, target_opinion = 100, distance = distance_travelled)
+/obj/projectile/proc/process_accuracy(atom/target, target_opinion = 100, distance = distance_travelled, impact_check)
 	if(accuracy_disabled)
 		return 100
 	. = 100
@@ -1038,6 +1041,20 @@
 		if(. < 100)
 			var/missing = 100 - .
 			. += missing - (missing / (target_opinion / 100))
+
+/**
+ * processes zone accuracy
+ *
+ * * this is here to override 'special' baymiss, like 'don't even hit this zone' systems.
+ *
+ * @params
+ * * target - what we're hitting
+ * * target_opinion - the return from processing hit zone on their side
+ * * distance - distance in pixels
+ * * impact_check - are we checking for impact? this way things like pellets can do their own processing
+ */
+/obj/projectile/proc/process_zone_miss(atom/target, target_opinion, distance, impact_check)
+	return target_opinion
 
 /**
  * Applies the standard damage instance to an entity.

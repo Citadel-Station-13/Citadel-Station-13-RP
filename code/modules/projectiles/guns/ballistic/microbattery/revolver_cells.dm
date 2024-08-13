@@ -40,8 +40,6 @@
 	damage = 2
 	agony = 20
 	pellets = 6			//number of pellets
-	base_spread = 90	//lower means the pellets spread more across body parts. If zero then this is considered a shrapnel explosion instead of a shrapnel cone
-	spread_step = 10
 	embed_chance = 0
 	sharp = 0
 	damage_flag = ARMOR_MELEE

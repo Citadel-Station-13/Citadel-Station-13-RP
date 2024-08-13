@@ -1448,6 +1448,7 @@
 #include "code\game\objects\explosion.dm"
 #include "code\game\objects\explosion_recursive.dm"
 #include "code\game\objects\items-carry_weight.dm"
+#include "code\game\objects\items-defense.dm"
 #include "code\game\objects\items-interaction.dm"
 #include "code\game\objects\items.dm"
 #include "code\game\objects\materials.dm"

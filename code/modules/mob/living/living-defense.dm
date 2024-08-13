@@ -505,6 +505,7 @@
 				return
 	// Process baymiss & zonemiss
 	def_zone = process_bullet_miss(proj, impact_flags, def_zone, blocked)
+	def_zone = proj.process_zone_miss(src, def_zone, proj.distance_travelled, TRUE)
 	if(!def_zone)
 		if(!proj.silenced)
 			visible_message(SPAN_WARNING("\The [proj] misses [src] narrowly!"))
@@ -569,7 +570,15 @@
 
 /**
  * * our_opinion is intentionally mutable.
+ *
+ * todo: 0 to 100 for accuracy might not be amazing; maybe allow negative values evasion-style?
+ *
+ * @params
+ * * proj - the projectile
+ * * our_opinion - base probability of hitting
+ *
+ * @return 0 to 100 % probability of hitting
  */
 /mob/living/proc/process_baymiss(obj/projectile/proj, our_opinion = 100)
 	our_opinion = clamp(our_opinion - get_evasion(), 5, INFINITY)
-	return proj.process_accuracy(src, our_opinion, proj.distance_travelled)
+	return proj.process_accuracy(src, our_opinion, proj.distance_travelled, TRUE)

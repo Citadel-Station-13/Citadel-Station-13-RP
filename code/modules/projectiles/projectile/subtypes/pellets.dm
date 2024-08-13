@@ -13,10 +13,16 @@
 	var/pellet_loss = 0.5 / WORLD_ICON_SIZE
 	/// last distance travelled
 	var/pellet_loss_last_distance = 0
-
-	#warn this
-	var/base_spread = 90	//lower means the pellets spread more across body parts. If zero then this is considered a shrapnel explosion instead of a shrapnel cone
-	var/spread_step = 10	//higher means the pellets spread more across body parts with distance
+	/// base spread chance to not hit center mass / the target limb
+	///
+	/// * in 0 to 100 prob() value
+	var/pellet_zone_spread = 10
+	/// min distance before spread
+	var/pellet_zone_spread_gain_threshold = 2 * WORLD_ICON_SIZE
+	/// spread chance per pixel to not hit center mass / target limb
+	///
+	/// * in 0 to 100 prob() value
+	var/pellet_zone_spread_gain = 9 / WORLD_ICON_SIZE // complete spread after 2+10 tiles
 
 /obj/projectile/bullet/pellet/scan_moved_turf(turf/tile)
 	..()
@@ -41,41 +47,48 @@
 		return
 	pellets -= pellet_loss * travelled
 
+/obj/projectile/bullet/pellet/process_accuracy(atom/target, target_opinion, distance, impact_check)
+	if(impact_check)
+		return 100
+	return ..()
+
+/obj/projectile/bullet/pellet/process_zone_miss(atom/target, target_opinion, distance, impact_check)
+	if(impact_check)
+		// if being hit, always direct to our def_zone
+		return def_zone
+	return ..()
+
 /obj/projectile/bullet/pellet/process_damage_instance(atom/target, blocked, impact_flags, hit_zone)
-	#warn how to do hit_zone?
+	/**
+	 * What's going on here:
+	 *
+	 * It's too expensive to simulate too many bullet_act()'s for no reason, but pellets
+	 * aren't meant to hit one body part or even do one instance to every body part hit.
+	 *
+	 * Thus, we force process_damage_instance to do your dirty work as it's cheaper to run
+	 * lower level shieldcalls/armorcalls than to simulate high level bullet hits.
+	 */
+	var/original_hit_zone = hit_zone
+	var/zone_true_chance = 100 - (pellet_zone_spread + (distance_travelled > pellet_zone_spread_gain_threshold ? distance_travelled * pellet_zone_spread_gain : 0))
+	var/pellet_hit_chance = 100
+	. = NONE
+	if(isliving(target))
+		var/mob/living/living_target = target
+		pellet_hit_chance = living_target.process_baymiss(src)
+	var/hit_pellets = 0
 	for(var/i in 1 to ceil(pellets))
-		..(arglist(args))
-
-#warn below; prone mobs, rework accuracy, etc
-
-/obj/projectile/bullet/pellet/projectile_attack_mob(var/mob/living/target_mob, var/distance, var/miss_modifier)
-	if (pellets < 0) return 1
-
-	var/total_pellets = get_pellets(distance)
-	var/spread = max(base_spread - (spread_step*distance), 0)
-
-	//shrapnel explosions miss prone mobs with a chance that increases with distance
-	var/prone_chance = 0
-	if(!base_spread)
-		prone_chance = max(spread_step*(distance - 2), 0)
-
-	var/hits = 0
-	for (var/i in 1 to total_pellets)
-		if(target_mob.lying && target_mob != original && prob(prone_chance))
+		if(!prob(pellet_hit_chance))
 			continue
+		// args is just a list ref, so we can do this (directly modify args)
+		hit_zone = ran_zone(def_zone, zone_true_chance)
+		. |= ..()
+		++hit_pellets
+	pellets -= hit_pellets
+	hit_zone = original_hit_zone
+	if(pellets <= 0)
+		. |= PROJECTILE_IMPACT_DELETE
 
-		//pellet hits spread out across different zones, but 'aim at' the targeted zone with higher probability
-		//whether the pellet actually hits the def_zone or a different zone should still be determined by the parent using get_zone_with_miss_chance().
-		var/old_zone = def_zone
-		def_zone = ran_zone(def_zone, spread)
-		if (..()) hits++
-		def_zone = old_zone //restore the original zone the projectile was aimed at
-
-	pellets -= hits //each hit reduces the number of pellets left
-	if (hits >= total_pellets || pellets <= 0)
-		return 1
-	return 0
-
+// todo: this is only needed because process_damage_instance isn't used for structured right now!
 /obj/projectile/bullet/pellet/get_structure_damage()
 	return ..() * pellets
 
@@ -83,10 +96,6 @@
 /obj/projectile/bullet/pellet/fragment
 	damage = 10
 	armor_penetration = 30
-	range_step = 2 //projectiles lose a fragment each time they travel this distance. Can be a non-integer.
-
-	base_spread = 0 //causes it to be treated as a shrapnel explosion instead of cone
-	spread_step = 20
 
 	silenced = 1 //embedding messages are still produced so it's kind of weird when enabled.
 	muzzle_type = null

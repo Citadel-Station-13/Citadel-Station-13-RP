@@ -1,4 +1,4 @@
-
+// todo: this shouldn't be a signalled shieldcall, as 
 #warn test this
 /obj/item/clothing/suit/armor/laserproof
 	name = "ablative armor vest"

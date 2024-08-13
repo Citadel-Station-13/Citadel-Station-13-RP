@@ -171,17 +171,14 @@
 	damage = 13
 	pellets = 6
 	pellet_loss = 0.66 / WORLD_ICON_SIZE
-	spread_step = 10
 
 /obj/projectile/bullet/pellet/shotgun_improvised
 	name = "shrapnel"
 	damage = 4
 	pellets = 10
-	spread_step = 10
 
 /obj/projectile/bullet/pellet/shotgun/flak
 	damage = 2 //The main weapon using these fires four at a time, usually with different destinations. Usually.
-	spread_step = 30
 	armor_penetration = 10
 
 // This is my boomstick,
@@ -193,7 +190,6 @@
 	SA_vulnerability = MOB_CLASS_DEMONIC | MOB_CLASS_ABERRATION
 	embed_chance = -1
 	pellets = 6
-	spread_step = 20
 	holy = TRUE
 
 /obj/projectile/bullet/shotgun/stake
@@ -383,7 +379,6 @@
 	damage = 10
 	pellets = 8
 	pellet_loss = 1.5 / WORLD_ICON_SIZE
-	spread_step = 30
 
 /obj/projectile/bullet/pellet/blunderbuss/silver
 	damage = 5
@@ -401,7 +396,6 @@
 
 /obj/projectile/bullet/pellet/heavy_shotgun //I want this to use similar calcuations to blunderbuss shot for falloff.
 	damage = 3 //Fires five pellets at a time.
-	spread_step = 30
 	armor_penetration = 10
 
 /obj/projectile/bullet/pellet/heavy_shotgun/silver

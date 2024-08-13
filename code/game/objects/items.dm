@@ -762,16 +762,6 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 		var/datum/action/action = item_actions
 		action.revoke(user.inventory.actions)
 
-//* Armor *//
-
-/**
- * Called during a mob armor call cycle
- */
-/obj/item/proc/mob_armorcall(mob/defending, list/shieldcall_args, fake_attack)
-	// use our own armor
-	var/datum/armor/our_armor = fetch_armor()
-	our_armor.handle_shieldcall(shieldcall_args)
-
 //* Attack *//
 
 /**
