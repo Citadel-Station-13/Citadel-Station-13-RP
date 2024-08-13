@@ -914,6 +914,7 @@
 ///////////////////////////////////
 
 //ATM, the ignore_threshold is literally only used for the pulse rifles beams used mostly by deathsquads.
+// todo: this is uh, not a check, this is a **roll**.
 /obj/vehicle/sealed/mecha/proc/check_for_internal_damage(var/list/possible_int_damage,var/ignore_threshold=null)
 	if(!islist(possible_int_damage) || !length(possible_int_damage)) return
 	if(prob(30))
@@ -1226,10 +1227,10 @@
 		//AP projectiles have a chance to cause additional damage
 		if(Proj.legacy_penetrating)
 			var/distance = get_dist(Proj.starting, get_turf(loc))
-			var/hit_occupant = 1 //only allow the occupant_legacy to be hit once
+			var/hit_occupant = 1 //only allow the occupant to be hit once
 			for(var/i in 1 to min(Proj.legacy_penetrating, round(Proj.damage/15)))
 				if(src.occupant_legacy && hit_occupant && prob(20))
-					Proj.projectile_attack_mob(src.occupant_legacy, distance)
+					Proj.impact(occupant_legacy)
 					hit_occupant = 0
 				else
 					if(pass_damage > internal_damage_minimum)	//Only decently painful attacks trigger a chance of mech damage.
