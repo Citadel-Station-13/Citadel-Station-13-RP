@@ -40,6 +40,7 @@
 		"Cargo Tug Hauler Shuttle" = list("tradeport_tug"),
 		"Utility Micro Shuttle" = list("tradeport_utilitymicro"),
 		"Teshari Runabout Shuttle" = list("tradeport_runabout")
+		"Scoophead trade Shuttle" = list("tradeport_scoophead")
 		)
 
 /* // Old Restricted list. Leaving commented out for reference - Bloop
