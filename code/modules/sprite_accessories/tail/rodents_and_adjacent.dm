@@ -3,7 +3,7 @@
 	id = "tail_beaver"
 	icon_state = "beaver"
 	do_colouration = 1
-	color_blend_mode = ICON_MULTIPLY
+	legacy_use_additive_color_matrix = FALSE
 
 /datum/sprite_accessory/tail/redpanda
 	name = "red panda"
@@ -15,7 +15,7 @@
 	id = "tail_ringtail"
 	icon_state = "ringtail"
 	do_colouration = 1
-	color_blend_mode = ICON_MULTIPLY
+	legacy_use_additive_color_matrix = FALSE
 	extra_overlay = "ringtail_mark"
 
 /datum/sprite_accessory/tail/mouse
@@ -23,7 +23,7 @@
 	id = "tail_mouse"
 	icon_state = "mouse"
 	do_colouration = 1
-	color_blend_mode = ICON_MULTIPLY
+	legacy_use_additive_color_matrix = FALSE
 
 /datum/sprite_accessory/tail/mouse_pink
 	name = "mouse, pink"
@@ -35,7 +35,7 @@
 	id = "tail_skunk"
 	icon_state = "skunktail"
 	do_colouration = 1
-	color_blend_mode = ICON_MULTIPLY
+	legacy_use_additive_color_matrix = FALSE
 	extra_overlay = "skunktail_mark"
 
 /datum/sprite_accessory/tail/squirrel
@@ -43,7 +43,7 @@
 	id = "tail_squirrel"
 	icon_state = "squirrel"
 	do_colouration = 1
-	color_blend_mode = ICON_MULTIPLY
+	legacy_use_additive_color_matrix = FALSE
 
 /datum/sprite_accessory/tail/squirrel_orange
 	name = "squirel, orange"

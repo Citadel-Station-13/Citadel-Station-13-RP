@@ -184,9 +184,8 @@ var/global/list/image/splatter_cache=list()
 	if(random_icon_states.len)
 		for(var/obj/effect/debris/cleanable/blood/writing/W in loc)
 			random_icon_states.Remove(W.icon_state)
-		if(!LAZYLEN(random_icon_states))//If all iconstates are already in used by someone else on our tile, delete yourself
-			qdel(src)
-			return
+		if(!length(random_icon_states))
+			return INITIALIZE_HINT_QDEL
 		icon_state = pick(random_icon_states)
 	else
 		icon_state = "writing1"

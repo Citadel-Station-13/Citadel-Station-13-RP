@@ -69,7 +69,10 @@ SUBSYSTEM_DEF(preferences)
 		preferences_by_key[ckey] = initializing
 		if(initialized)
 			initializing.initialize()
-	return preferences_by_key[ckey]
+	var/datum/game_preferences/found = preferences_by_key[ckey]
+	if(initialized && !found.initialized)
+		found.initialize()
+	return found
 
 /datum/controller/subsystem/preferences/on_sql_reconnect()
 	for(var/ckey in SSpreferences.preferences_by_key)

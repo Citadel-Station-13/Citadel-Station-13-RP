@@ -109,11 +109,7 @@ SUBSYSTEM_DEF(overlays)
 		priority_overlays = null
 		our_overlays = null
 
-	if (alternate_appearances)
-		for(var/I in alternate_appearances)
-			var/datum/atom_hud/alternate_appearance/AA = alternate_appearances[I]
-			if(AA.transfer_overlays)
-				AA.copy_overlays(src, TRUE)
+	SEND_SIGNAL(src, COMSIG_ATOM_COMPILED_OVERLAYS)
 
 	atom_flags &= ~ATOM_OVERLAY_QUEUED
 

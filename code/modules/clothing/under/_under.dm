@@ -151,7 +151,7 @@
 //! Rendering
 // todo : NUKE THIS SHIT FROM ORBIT ~silicons
 //UNIFORM: Always appends "_s" to iconstate, stupidly.
-/obj/item/clothing/under/resolve_legacy_state(mob/M, datum/inventory_slot_meta/slot_meta, inhands, bodytype)
+/obj/item/clothing/under/resolve_legacy_state(mob/M, datum/inventory_slot/slot_meta, inhands, bodytype)
 	if(snowflake_worn_state && (slot_meta.id == SLOT_ID_UNIFORM))
 		return snowflake_worn_state + "_s"
 	return ..()
@@ -212,11 +212,11 @@
 		update_worn_icon()
 
 /obj/item/clothing/under/proc/autodetect_rolldown(bodytype)
-	var/datum/inventory_slot_meta/inventory/uniform/wow_this_sucks = resolve_inventory_slot_meta(SLOT_ID_UNIFORM)
+	var/datum/inventory_slot/inventory/uniform/wow_this_sucks = resolve_inventory_slot(SLOT_ID_UNIFORM)
 	return wow_this_sucks.check_rolldown_cache(bodytype, resolve_legacy_state(null, wow_this_sucks, FALSE, bodytype))
 
 /obj/item/clothing/under/proc/autodetect_rollsleeve(bodytype)
-	var/datum/inventory_slot_meta/inventory/uniform/wow_this_sucks = resolve_inventory_slot_meta(SLOT_ID_UNIFORM)
+	var/datum/inventory_slot/inventory/uniform/wow_this_sucks = resolve_inventory_slot(SLOT_ID_UNIFORM)
 	return wow_this_sucks.check_rollsleeve_cache(bodytype, resolve_legacy_state(null, wow_this_sucks, FALSE, bodytype))
 
 //! Examine

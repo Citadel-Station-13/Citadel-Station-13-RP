@@ -7,4 +7,4 @@
 	name = "dragonfly"
 	id = "wing_dragonfly"
 	icon_state = "dragonfly"
-	color_blend_mode = ICON_MULTIPLY
+	legacy_use_additive_color_matrix = FALSE

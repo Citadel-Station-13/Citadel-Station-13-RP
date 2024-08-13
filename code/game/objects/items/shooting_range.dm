@@ -66,6 +66,14 @@
 		icon_state = "target_q"
 		desc = "A shooting target with a threatening silhouette."
 		hp = 2350 // alium onest too kinda
+/obj/item/target/basic
+		icon_state = "target_a"
+		desc = "A plain square shooting target."
+		hp = 1500 // i guess syndie targets are sturdier?
+/obj/item/target/humanoid
+		icon_state = "target_b"
+		desc = "A shooting target that looks vaguely human shaped but not enough to cause controversy."
+		hp = 1800 // alium onest too kinda
 
 /obj/item/target/bullet_act(var/obj/projectile/Proj)
 	var/p_x = Proj.p_x + pick(0,0,0,0,0,-1,1) // really ugly way of coding "sometimes offset Proj.p_x!"
@@ -83,7 +91,7 @@
 		hp -= Proj.damage
 		if(hp <= 0)
 			for(var/mob/O in oviewers())
-				if ((O.client && !( O.blinded )))
+				if ((O.client && !( O.has_status_effect(/datum/status_effect/sight/blindness) )))
 					to_chat(O, "<span class='warning'>\The [src] breaks into tiny pieces and collapses!</span>")
 			qdel(src)
 

@@ -266,6 +266,18 @@
 	else
 		..()
 
+/mob/living/carbon/human/adjustHallucination(amount)
+	if(species.species_flags & NO_HALLUCINATION || isSynthetic())
+		hallucination = 0
+	else
+		..(amount)
+
+/mob/living/carbon/human/setHallucination(amount)
+	if(species.species_flags & NO_HALLUCINATION || isSynthetic())
+		hallucination = 0
+	else
+		..(amount)
+
 ////////////////////////////////////////////
 
 //Returns a list of damaged organs
@@ -292,7 +304,7 @@
 	if(!parts.len)	return
 	var/obj/item/organ/external/picked = pick(parts)
 	if(picked.heal_damage(brute,burn))
-		UpdateDamageIcon()
+		update_damage_overlay()
 	update_health()
 
 
@@ -316,7 +328,7 @@
 		parts -= picked
 	update_health()
 	if(update)
-		UpdateDamageIcon()
+		update_damage_overlay()
 
 
 ////////////////////////////////////////////

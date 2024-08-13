@@ -2,7 +2,7 @@
 	allowed_species = list(SPECIES_SHADEKIN)
 	var/color = BLUE_EYES
 	name = "Shadekin Blue Adaptation"
-	desc = "Makes your shadekin adapted as a Blue eyed kin! This gives you good energy regeneration in darkness, decreased regeneration in the light and unchanged health!"
+	desc = "Good energy regeneration in darkness, decreased regeneration in the light and unchanged health!"
 	cost = 0
 	custom_only = FALSE
 	var_changes = list(
@@ -18,10 +18,14 @@
 		)
 	)
 
+	group = /datum/trait_group/shadekin
+	group_short_name = "Blue-Eyed"
+	show_when_forbidden = FALSE
+
 /datum/trait/kintype/red
 	name = "Shadekin Red Adaptation"
 	color =	RED_EYES
-	desc = "Makes your shadekin adapted as a Red eyed kin! This gives you minimal energy regeneration in darkness, good regeneration in the light and increased health!"
+	desc = "Minimal energy regeneration in darkness, good regeneration in the light and increased health!"
 	var_changes = list(
 		"total_health" = 200,
 		"energy_light" = 1,
@@ -35,10 +39,14 @@
 		)
 	)
 
+	group = /datum/trait_group/shadekin
+	group_short_name = "Red-Eyed"
+	show_when_forbidden = FALSE
+
 /datum/trait/kintype/purple
 	name = "Shadekin Purple Adaptation"
 	color = PURPLE_EYES
-	desc = "Makes your shadekin adapted as a Purple eyed kin! This gives you very good energy regeneration in darkness, minor degeneration in the light and increased health!"
+	desc = "Very good energy regeneration in darkness, minor degeneration in the light and increased health!"
 	var_changes = list(
 		"total_health" = 150,
 		"energy_light" = -0.5,
@@ -52,10 +60,14 @@
 		)
 	)
 
+	group = /datum/trait_group/shadekin
+	group_short_name = "Purple-Eyed"
+	show_when_forbidden = FALSE
+
 /datum/trait/kintype/yellow
 	name = "Shadekin Yellow Adaptation"
 	color = YELLOW_EYES
-	desc = "Makes your shadekin adapted as a Yellow eyed kin! This gives you the highest energy regeneration in darkness, high degeneration in the light and unchanged health!"
+	desc = "Highest energy regeneration in darkness, high degeneration in the light and unchanged health!"
 	var_changes = list(
 		"total_health" = 100,
 		"energy_light" = -1,
@@ -69,10 +81,14 @@
 		)
 	)
 
+	group = /datum/trait_group/shadekin
+	group_short_name = "Yellow-Eyed"
+	show_when_forbidden = FALSE
+
 /datum/trait/kintype/green
 	name = "Shadekin Green Adaptation"
 	color = GREEN_EYES
-	desc = "Makes your shadekin adapted as a Green eyed kin! This gives you high energy regeneration in darkness, minor regeneration in the light and unchanged health!"
+	desc = "High energy regeneration in darkness, minor regeneration in the light and unchanged health!"
 	var_changes = list(
 		"total_health" = 100,
 		"energy_light" = 0.25,
@@ -86,10 +102,14 @@
 		)
 	)
 
+	group = /datum/trait_group/shadekin
+	group_short_name = "Green-Eyed"
+	show_when_forbidden = FALSE
+
 /datum/trait/kintype/orange
 	name = "Shadekin Orange Adaptation"
 	color = ORANGE_EYES
-	desc = "Makes your shadekin adapted as a Orange eyed kin! This gives you good energy regeneration in darkness, small degeneration in the light and increased health!"
+	desc = "Good energy regeneration in darkness, small degeneration in the light and increased health!"
 	var_changes = list(
 		"total_health" = 175,
 		"energy_light" = -0.5,
@@ -102,6 +122,10 @@
 			/datum/unarmed_attack/shadekinharmbap
 		)
 	)
+
+	group = /datum/trait_group/shadekin
+	group_short_name = "Orange-Eyed"
+	show_when_forbidden = FALSE
 
 /datum/trait/kintype/apply(datum/species/shadekin/S, mob/living/carbon/human/H)
 	if (istype(S))

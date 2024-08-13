@@ -75,7 +75,7 @@
 	var/integrated_light_power = 4.5
 	var/datum/wires/robot/wires
 
-//! ## Icon stuff
+	//* Icon stuff
 	/// Persistent icontype tracking allows for cleaner icon updates
 	var/icontype
 	/// Used to store the associations between sprite names and sprite index.
@@ -85,7 +85,7 @@
 	/// Remaining attempts to select icon before a selection is forced.
 	var/icon_selection_tries = 0
 
-//! ## Hud stuff
+	//* Hud stuff
 
 	var/atom/movable/screen/cells = null
 	var/atom/movable/screen/inv1 = null
@@ -1220,22 +1220,6 @@
 	lockdown = state
 	lockcharge = state
 	update_mobility()
-
-/mob/living/silicon/robot/mode()
-	set name = "Activate Held Object"
-	set category = VERB_CATEGORY_IC
-	set src = usr
-
-	if(world.time <= next_click) // Hard check, before anything else, to avoid crashing
-		return
-
-	next_click = world.time + 1
-
-	var/obj/item/W = get_active_held_item()
-	if (W)
-		W.attack_self(src)
-
-	return
 
 /mob/living/silicon/robot/proc/choose_icon(var/triesleft, var/list/module_sprites)
 	if(!module_sprites.len)

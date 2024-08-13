@@ -21,7 +21,7 @@
 /mob/proc/smart_equip(obj/item/I)
 	if(equip_to_appropriate_slot(I, INV_OP_SUPPRESS_WARNING))
 		return TRUE
-	if(equip_to_slot_if_possible(I, /datum/inventory_slot_meta/abstract/put_in_storage_try_active, INV_OP_SUPPRESS_WARNING))
+	if(equip_to_slot_if_possible(I, /datum/inventory_slot/abstract/put_in_storage_try_active, INV_OP_SUPPRESS_WARNING))
 		return TRUE
 	to_chat(src, SPAN_WARNING("You have nowhere to put [I]!"))
 	return FALSE

@@ -18,7 +18,11 @@ SUBSYSTEM_DEF(processing)
 		currentrun = processing.Copy()
 	//cache for sanic speed (lists are references anyways)
 	var/list/current_run = currentrun
-	var/dt = (subsystem_flags & SS_TICKER)? (wait * world.tick_lag) : max(world.tick_lag, wait * 0.1)
+	// tick_lag is in deciseconds
+	// in ticker, our wait is that many ds
+	// in non-ticker, our wait is either wait in ds, or a minimum of tick_lag in ds
+	// we convert it to seconds with * 0.1
+	var/dt = (subsystem_flags & SS_TICKER? (wait * world.tick_lag) : max(world.tick_lag, wait)) * 0.1
 
 	while(current_run.len)
 		var/datum/thing = current_run[current_run.len]
@@ -44,6 +48,9 @@ SUBSYSTEM_DEF(processing)
  * - Probability of something happening, do `if(DT_PROB(25, delta_time))`, not `if(prob(25))`. This way, if the subsystem wait is e.g. lowered, there won't be a higher chance of this event happening per second
  *
  * If you override this do not call parent, as it will return PROCESS_KILL. This is done to prevent objects that dont override process() from staying in the processing list
+ *
+ * @params
+ * * delta_time - time that should have elapsed, in seconds
  */
 /datum/proc/process(delta_time)
 	set waitfor = FALSE

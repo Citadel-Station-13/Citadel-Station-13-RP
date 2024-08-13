@@ -1,7 +1,7 @@
 // todo: this is awful and need to all be refactored
 // Putting these at /clothing/ level saves a lot of code duplication in armor/helmets/gauntlets/etc
 /obj/item/clothing
-	material_parts = MATERIAL_DEFAULT_NONE
+	material_parts = MATERIAL_DEFAULT_DISABLED
 	material_costs = 4000
 	material_primary = MATERIAL_PART_DEFAULT
 

@@ -91,6 +91,7 @@
 		O_BRAIN   = /obj/item/organ/internal/brain/vox,
 		O_EYES    = /obj/item/organ/internal/eyes,
 	)
+	vision_organ = O_EYES
 
 	unarmed_types = list(
 		/datum/unarmed_attack/stomp,
@@ -126,7 +127,7 @@
 		H.equip_to_slot_or_del(new /obj/item/tank/vox(H), SLOT_ID_BACK, INV_OP_SILENT | INV_OP_FLUFFLESS)
 		H.internal = H.back
 	else
-		H.equip_to_slot_or_del(new /obj/item/tank/vox(H), /datum/inventory_slot_meta/abstract/hand/right, INV_OP_SILENT | INV_OP_FLUFFLESS)
+		H.equip_to_slot_or_del(new /obj/item/tank/vox(H), /datum/inventory_slot/abstract/hand/right, INV_OP_SILENT | INV_OP_FLUFFLESS)
 		H.internal = H.r_hand
 	H.internal = locate(/obj/item/tank) in H.contents
 	if(istype(H.internal,/obj/item/tank) && H.internals)

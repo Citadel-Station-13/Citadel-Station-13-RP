@@ -11,14 +11,16 @@
 	preview_icon = 'icons/mob/species/vulpkanin/preview.dmi'
 	husk_icon    = 'icons/mob/species/vulpkanin/husk.dmi'
 
-	tail = "vulptail"
-	tail_animation = 'icons/mob/clothing/species/vulpkanin/tail.dmi' // probably need more than just one of each, but w/e
+	sprite_accessory_defaults = list(
+		SPRITE_ACCESSORY_SLOT_TAIL = /datum/sprite_accessory/tail/bodyset/vulpkanin,
+	)
 
 	max_additional_languages = 3
 	name_language   = LANGUAGE_ID_VULPKANIN
 	intrinsic_languages = LANGUAGE_ID_VULPKANIN
 
 	vision_innate = /datum/vision/baseline/species_tier_1
+	vision_organ = O_EYES
 
 	color_mult = 1
 

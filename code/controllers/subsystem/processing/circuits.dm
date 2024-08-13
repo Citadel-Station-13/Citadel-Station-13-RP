@@ -48,6 +48,11 @@ PROCESSING_SUBSYSTEM_DEF(circuit)
 		all_assemblies[name] = path
 		cached_assemblies[A] = new path
 
+	for(var/path in NON_STANDARD_CIRCUIT_LIST)
+		var/obj/item/A = path
+		var/name = initial(A.name)
+		all_assemblies[name] = path
+		cached_assemblies[A] = new path
 
 	circuit_fabricator_recipe_list["Assemblies"] = list(
 		/obj/item/electronic_assembly/tiny/default,

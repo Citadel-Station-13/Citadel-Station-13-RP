@@ -29,7 +29,7 @@
 	to_chat(M, "<span class='notice'><b>Be sure to examine your currently loaded lawset closely.</b>  Remember, your \
 	definiton of 'the station' is where your pod is, and unless your laws say otherwise, the entity that released you \
 	from the pod is not a crewmember.</span>")
-	R.ckey = M.ckey
+	M.transfer_client_to(R)
 	visible_message("<span class='warning'>As \the [src] opens, the eyes of the robot flicker as it is activated.</span>")
 	R.Namepick()
 	log_and_message_admins("successfully opened \a [src] and got a Lost Drone.")
@@ -55,7 +55,7 @@
 	to_chat(M, "<span class='notice'>You are a <b>Gravekeeper Drone</b>, activated once again to tend to the restful dead.</span>")
 	to_chat(M, "<span class='notice'><b>Be sure to examine your currently loaded lawset closely.</b>  Remember, your \
 	definiton of 'your gravesite' is where your pod is.</span>")
-	R.ckey = M.ckey
+	M.transfer_client_to(R)
 	visible_message("<span class='warning'>As \the [src] opens, the eyes of the robot flicker as it is activated.</span>")
 	R.Namepick()
 	..()
@@ -76,7 +76,7 @@
 	if(M.mind)
 		M.mind.transfer(R)
 	to_chat(M, "<span class='cult'>You are <b>[R]</b>, the remnant of some distant species, mechanical or flesh, living or dead.</span>")
-	R.ckey = M.ckey
+	M.transfer_client_to(R)
 	visible_message("<span class='cult'>As \the [src] shudders, it glows before lifting itself with three shimmering limbs!</span>")
 	spawn(3 SECONDS)
 		to_chat(R,"<span class='notice'>Many of your tools are standard drone devices, however others provide you with particular benefits.</span>")
@@ -126,7 +126,7 @@
 		to_chat(M, "<span class='notice'><b>Be sure to examine your currently loaded lawset closely.</b>  Remember, your \
 		definiton of 'the station' is where your pod is, and unless your laws say otherwise, the entity that released you \
 		from the pod is not a crewmember.</span>")
-		R.ckey = M.ckey
+		M.transfer_client_to(R)
 		visible_message("<span class='warning'>As \the [src] opens, the eyes of the robot flicker as it is activated.</span>")
 		R.Namepick()
 		log_and_message_admins("successfully opened \a [src] and got a Stray Drone.")

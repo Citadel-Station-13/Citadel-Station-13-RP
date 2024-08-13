@@ -52,8 +52,9 @@
 	id_tag = "engine_access_hatch";
 	locked = 1;
 	name = "Fusion Core Access";
-	req_access = list(11)
+	req_one_access = null
 	},
+/obj/map_helper/access_helper/airlock/station/engineering/engine,
 /turf/simulated/floor,
 /area/engineering/engine_room)
 "ah" = (
@@ -179,7 +180,10 @@
 /area/engineering/engine_room)
 "aE" = (
 /obj/machinery/door/firedoor/glass,
-/obj/machinery/door/airlock/glass/engineering,
+/obj/machinery/door/airlock/glass/engineering{
+	req_one_access = null
+	},
+/obj/map_helper/access_helper/airlock/station/engineering/engine,
 /turf/simulated/floor,
 /area/engineering/engine_room)
 "aF" = (
@@ -1257,7 +1261,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/door/blast/regular{
-	id = "EngineEmitterPortWest";
+	id = "EngineEmitterPortWest2";
 	name = "Engine Gas Storage"
 	},
 /turf/simulated/floor/tiled/steel_grid,
@@ -1268,7 +1272,7 @@
 	icon_state = "1-2"
 	},
 /obj/machinery/door/blast/regular{
-	id = "EngineEmitterPortWest";
+	id = "EngineEmitterPortWest2";
 	name = "Engine Gas Storage"
 	},
 /obj/machinery/button/remote/blast_door{

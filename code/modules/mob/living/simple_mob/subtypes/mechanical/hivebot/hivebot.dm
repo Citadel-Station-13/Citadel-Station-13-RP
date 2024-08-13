@@ -39,7 +39,7 @@
 	attacktext = list("clawed")
 	projectilesound = 'sound/weapons/Gunshot_old.ogg'
 
-	ai_holder_type = /datum/ai_holder/simple_mob/hivebot
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/hivebot
 	say_list_type = /datum/say_list/hivebot
 
 
@@ -67,7 +67,7 @@
 	legacy_melee_damage_lower = 8
 	legacy_melee_damage_upper = 8
 
-/datum/ai_holder/simple_mob/hivebot
+/datum/ai_holder/polaris/simple_mob/hivebot
 	pointblank = TRUE
 	conserve_ammo = TRUE
 	firing_lanes = TRUE

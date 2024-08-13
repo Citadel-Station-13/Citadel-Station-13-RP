@@ -210,19 +210,31 @@
 		if(temp_wing_style_id.apply_restrictions && (!(species_name in temp_wing_style_id.species_allowed)))
 			pref.wing_style_id = initial(pref.wing_style_id)
 
+/datum/category_item/player_setup_item/vore/ears/proc/should_override(datum/sprite_accessory/setting, datum/sprite_accessory/existing, datum/sprite_accessory/species)
+	if(species && (existing == species))
+		// if they're set by species, only override if we're set
+		return setting != null
+	// otherwise, override always
+	return TRUE
+
 /datum/category_item/player_setup_item/vore/ears/copy_to_mob(datum/preferences/prefs, mob/M, data, flags)
 	// todo: this is just a shim
 	if(!ishuman(M))
 		return TRUE
 	var/mob/living/carbon/human/character = M
 	var/datum/sprite_accessory/S = GLOB.sprite_accessory_ears[pref.ear_style_id]
-	character.ear_style = S
+	// todo: this is shitcode
+	if(should_override(S, character.ear_style, character.species?.sprite_accessory_defaults?[SPRITE_ACCESSORY_SLOT_EARS]))
+		character.ear_style = S
 	S = GLOB.sprite_accessory_tails[pref.tail_style_id]
-	character.tail_style = S
+	if(should_override(S, character.tail_style, character.species?.sprite_accessory_defaults?[SPRITE_ACCESSORY_SLOT_TAIL]))
+		character.tail_style = S
 	S = GLOB.sprite_accessory_wings[pref.wing_style_id]
-	character.wing_style = S
+	if(should_override(S, character.wing_style, character.species?.sprite_accessory_defaults?[SPRITE_ACCESSORY_SLOT_WINGS]))
+		character.wing_style = S
 	S = GLOB.sprite_accessory_ears[pref.horn_style_id]
-	character.horn_style = S
+	if(should_override(S, character.horn_style, character.species?.sprite_accessory_defaults?[SPRITE_ACCESSORY_SLOT_HORNS]))
+		character.horn_style = S
 
 	character.r_ears			= pref.r_ears
 	character.b_ears			= pref.b_ears
@@ -362,7 +374,7 @@
 		var/datum/sprite_accessory/ears/current = pref.ear_style_id && GLOB.sprite_accessory_ears[pref.ear_style_id]
 		for(var/id in GLOB.sprite_accessory_ears)
 			var/datum/sprite_accessory/ears/instance = GLOB.sprite_accessory_ears[id]
-			if(((!instance.ckeys_allowed) || (usr.ckey in instance.ckeys_allowed)) && ((!instance.apply_restrictions) || (species_name in instance.species_allowed)))
+			if(((!instance.apply_restrictions) || (species_name in instance.species_allowed)))
 				pretty_ear_styles[instance.name] = id
 
 		// Present choice to user
@@ -405,7 +417,7 @@
 		var/datum/sprite_accessory/ears/current = pref.horn_style_id && GLOB.sprite_accessory_ears[pref.horn_style_id]
 		for(var/id in GLOB.sprite_accessory_ears)
 			var/datum/sprite_accessory/ears/instance = GLOB.sprite_accessory_ears[id]
-			if(((!instance.ckeys_allowed) || (usr.ckey in instance.ckeys_allowed)) && ((!instance.apply_restrictions) || (species_name in instance.species_allowed)))
+			if(((!instance.apply_restrictions) || (species_name in instance.species_allowed)))
 				pretty_horn_styles[instance.name] = id
 
 		// Present choice to user
@@ -448,7 +460,7 @@
 		var/datum/sprite_accessory/tail/current = pref.tail_style_id && GLOB.sprite_accessory_tails[pref.tail_style_id]
 		for(var/id in GLOB.sprite_accessory_tails)
 			var/datum/sprite_accessory/tail/instance = GLOB.sprite_accessory_tails[id]
-			if(((!instance.ckeys_allowed) || (usr.ckey in instance.ckeys_allowed)) && ((!instance.apply_restrictions) || (species_name in instance.species_allowed)))
+			if(((!instance.apply_restrictions) || (species_name in instance.species_allowed)))
 				pretty_tail_styles[instance.name] = id
 
 		// Present choice to user
@@ -491,7 +503,7 @@
 		var/datum/sprite_accessory/wing/current = pref.wing_style_id && GLOB.sprite_accessory_wings[pref.wing_style_id]
 		for(var/id in GLOB.sprite_accessory_wings)
 			var/datum/sprite_accessory/wing/instance = GLOB.sprite_accessory_wings[id]
-			if(((!instance.ckeys_allowed) || (usr.ckey in instance.ckeys_allowed)) && ((!instance.apply_restrictions) || (species_name in instance.species_allowed)))
+			if(((!instance.apply_restrictions) || (species_name in instance.species_allowed)))
 				pretty_wing_styles[instance.name] = id
 
 		// Present choice to user

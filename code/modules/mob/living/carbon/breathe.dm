@@ -21,7 +21,7 @@
 
 	if(losebreath>0) //Suffocating so do not take a breath
 		AdjustLosebreath(stabilization? -5 : -1)
-		if (prob(10)) //Gasp per 10 ticks? Sounds about right.
+		if (prob(10) && !stat) //Gasp per 10 ticks? Sounds about right.
 			spawn emote("gasp")
 	else
 		//Okay, we can breathe, now check if we can get air
@@ -72,9 +72,9 @@
 
 	if(breath)
 		//handle mask filtering
-		if(istype(wear_mask, /obj/item/clothing/mask) && breath)
+		if(istype(wear_mask, /obj/item/clothing/mask))
 			var/obj/item/clothing/mask/M = wear_mask
-			var/datum/gas_mixture/gas_filtered = M.filter_air(breath)
+			var/datum/gas_mixture/gas_filtered = M.process_air(breath)
 			loc.assume_air(gas_filtered)
 		return breath
 	return null
@@ -96,4 +96,8 @@
 
 /mob/living/carbon/proc/handle_post_breath(datum/gas_mixture/breath)
 	if(breath)
-		loc?.assume_air(breath) //by default, exhale
+		if(istype(wear_mask, /obj/item/clothing/mask))
+			var/obj/item/clothing/mask/M = wear_mask
+			loc.assume_air(M.process_exhale(breath))
+		else
+			loc?.assume_air(breath) //by default, exhale

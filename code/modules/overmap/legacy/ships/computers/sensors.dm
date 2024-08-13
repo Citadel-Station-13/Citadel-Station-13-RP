@@ -6,6 +6,7 @@
 	circuit = /obj/item/circuitboard/sensors
 	extra_view = 4
 	var/obj/machinery/shipsensors/sensors
+	var/stored_points
 
 // fancy sprite
 /obj/machinery/computer/ship/sensors/adv
@@ -66,6 +67,7 @@
 	data["critical_heat"] = 0
 	data["status"] = "MISSING"
 	data["contacts"] = list()
+	data["points"] = 0
 
 	if(sensors)
 		data["on"] = sensors.use_power
@@ -93,6 +95,7 @@
 				bearing += 360
 			contacts.Add(list(list("name"=O.name, "ref"="\ref[O]", "bearing"=bearing)))
 		data["contacts"] = contacts
+		data["points"] = stored_points
 
 	return data
 
@@ -118,9 +121,8 @@
 			if(istype(O) && !QDELETED(O) && (O in view(7,linked)))
 				var/obj/item/paper/P = new /obj/item/paper(get_turf(src))
 				P.name = "paper (Sensor Scan - [O])"
-				P.info = O.get_scan_data(usr)
-				// TODO: strangle whoever made this, DO NOT MANUALLY CALL INIT
-				P.Initialize() // has to be called because the scanner desc uses a combination of html and markdown for some reason
+				P.info = replacetext(html_encode(O.get_scan_data(usr)), "\n", "<BR>")
+				P.init_parsepencode(P.info)
 				playsound(src, "sound/machines/printer.ogg", 30, 1)
 			. = TRUE
 

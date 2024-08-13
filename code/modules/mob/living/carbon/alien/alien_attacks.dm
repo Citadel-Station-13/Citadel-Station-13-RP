@@ -31,7 +31,7 @@
 
 			playsound(loc, 'sound/weapons/thudswoosh.ogg', 50, 1, -1)
 			for(var/mob/O in viewers(src, null))
-				if ((O.client && !( O.blinded )))
+				if ((O.client && !( O.has_status_effect(/datum/status_effect/sight/blindness) )))
 					O.show_message("<font color='red'>[L] has grabbed [src] passively!</font>", 1)
 
 		else
@@ -46,18 +46,18 @@
 						step_away(src,L,15)
 				playsound(loc, "punch", 25, 1, -1)
 				for(var/mob/O in viewers(src, null))
-					if ((O.client && !( O.blinded )))
+					if ((O.client && !( O.has_status_effect(/datum/status_effect/sight/blindness) )))
 						O.show_message("<font color='red'><B>[L] has punched [src]!</B></font>", 1)
 				if (damage > 4.9)
 					afflict_paralyze(20 * rand(10,15))
 					for(var/mob/O in viewers(L, null))
-						if ((O.client && !( O.blinded )))
+						if ((O.client && !( O.has_status_effect(/datum/status_effect/sight/blindness) )))
 							O.show_message("<font color='red'><B>[L] has weakened [src]!</B></font>", 1, "<font color='red'>You hear someone fall.</font>", 2)
 				adjustBruteLoss(damage)
 				update_health()
 			else
 				playsound(loc, 'sound/weapons/punchmiss.ogg', 25, 1, -1)
 				for(var/mob/O in viewers(src, null))
-					if ((O.client && !( O.blinded )))
+					if ((O.client && !( O.has_status_effect(/datum/status_effect/sight/blindness) )))
 						O.show_message("<font color='red'><B>[L] has attempted to punch [src]!</B></font>", 1)
 	return

@@ -612,6 +612,9 @@
 	name = "Aureate Kimono"
 	path = /obj/item/clothing/suit/storage/aureate
 
+/datum/loadout_entry/suit/aureate_kimono_dark
+	name = "Aureate Dark Kimono"
+	path = /obj/item/clothing/suit/storage/aureate/dark
 
 //Tajaran wears
 
@@ -684,3 +687,23 @@
 
 //Signalis Armor Accessories (no armor stats)//
 
+//Ranger Ponchos
+/datum/loadout_entry/suit/ranger_poncho
+	name = "Ranger poncho selection"
+	description = "A selection of colourful ponchos that match the common gaiter masks."
+	path = /obj/item/clothing/accessory/poncho/roles/ranger
+
+/datum/loadout_entry/suit/ranger_poncho/New()
+	..()
+	var/list/ranger_ponchos = list(
+		"red ranger poncho" = /obj/item/clothing/accessory/poncho/roles/ranger,
+		"tan ranger poncho" = /obj/item/clothing/accessory/poncho/roles/ranger/tan,
+		"gray ranger poncho" = /obj/item/clothing/accessory/poncho/roles/ranger/gray,
+		"green ranger poncho" = /obj/item/clothing/accessory/poncho/roles/ranger/green,
+		"blue ranger poncho" = /obj/item/clothing/accessory/poncho/roles/ranger/blue,
+		"purple ranger poncho" = /obj/item/clothing/accessory/poncho/roles/ranger/purple,
+		"orange ranger poncho" = /obj/item/clothing/accessory/poncho/roles/ranger/orange,
+		"charcoal ranger poncho" = /obj/item/clothing/accessory/poncho/roles/ranger/charcoal,
+		"white ranger poncho" = /obj/item/clothing/accessory/poncho/roles/ranger/snow
+	)
+	tweaks += new/datum/loadout_tweak/path(tim_sort(ranger_ponchos, GLOBAL_PROC_REF(cmp_text_asc)))

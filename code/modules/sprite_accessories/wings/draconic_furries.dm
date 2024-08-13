@@ -3,7 +3,7 @@
 	id = "wing_cyberdragon"
 	icon_state = "cyberdragon_s"
 	do_colouration = 1
-	color_blend_mode = ICON_MULTIPLY
+	legacy_use_additive_color_matrix = FALSE
 
 /datum/sprite_accessory/wing/cyberdragon_red
 	name = "Cyber dragon wing (red)"
@@ -16,7 +16,7 @@
 	id = "wing_cyberdragon2"
 	icon_state = "drago_wing"
 	do_colouration = 1
-	color_blend_mode = ICON_MULTIPLY
+	legacy_use_additive_color_matrix = FALSE
 	extra_overlay = "drago_wing_2"
 
 /datum/sprite_accessory/wing/drake_wing
@@ -24,4 +24,4 @@
 	id = "wing_drake"
 	icon_state = "drake_wing"
 	do_colouration = 1
-	color_blend_mode = ICON_MULTIPLY
+	legacy_use_additive_color_matrix = FALSE

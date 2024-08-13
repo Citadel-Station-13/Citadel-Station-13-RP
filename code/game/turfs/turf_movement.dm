@@ -7,6 +7,8 @@
  * Will return FALSE and terminate if the mover is moved away by a bump.
  */
 /turf/Enter(atom/movable/mover, atom/oldloc)
+	if(mover.pixel_movement)
+		return TRUE
 	// Do not call ..()
 	// Byond's default turf/Enter() doesn't have the behaviour we want with Bump()
 	// By default byond will call Bump() on the first dense object in contents
@@ -45,6 +47,8 @@
  * Will return FALSE and terminate if the mover is moved away by a bump.
  */
 /turf/Exit(atom/movable/mover, atom/newloc)
+	if(mover.pixel_movement)
+		return TRUE
 	// atom/Exit() overridden!
 	// todo: signal
 	var/ignore_bumps = mover.movement_type & MOVEMENT_UNSTOPPABLE

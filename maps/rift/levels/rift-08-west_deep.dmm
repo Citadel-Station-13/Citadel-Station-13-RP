@@ -993,8 +993,9 @@
 	},
 /obj/machinery/door/airlock/maintenance/rnd{
 	name = "Science Outpost Maintenance";
-	req_one_access = list(10,47)
+	req_one_access = null
 	},
+/obj/map_helper/access_helper/airlock/station/science/maintenance,
 /turf/simulated/floor/plating,
 /area/rnd/outpost/maintenance)
 "jL" = (
@@ -1458,7 +1459,6 @@
 /turf/simulated/floor/wood,
 /area/outpost/mining_main/outpost/recreation)
 "nb" = (
-/obj/machinery/door/airlock/maintenance/rnd,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 1
 	},
@@ -1467,6 +1467,10 @@
 	},
 /obj/structure/cable/green{
 	icon_state = "1-2"
+	},
+/obj/map_helper/access_helper/airlock/station/science/department,
+/obj/machinery/door/airlock/maintenance/rnd{
+	req_one_access = null
 	},
 /turf/simulated/floor/plating,
 /area/gateway/prep_room)
@@ -3028,8 +3032,9 @@
 	pressure_resistance = 750;
 	target_pressure = 750
 	},
+/obj/map_helper/access_helper/airlock/station/supply/maintenance,
 /obj/machinery/door/airlock/maintenance/engi{
-	req_one_access = list(10,48)
+	req_one_access = null
 	},
 /turf/simulated/floor/plating,
 /area/outpost/mining_main/outpost/maintenance/north)
@@ -3808,7 +3813,7 @@
 	icon_state = "1-2"
 	},
 /obj/machinery/door/airlock/maintenance/engi{
-	req_one_access = list(10,48)
+	req_one_access = null
 	},
 /turf/simulated/floor/plating,
 /area/outpost/mining_main/outpost/substation)
@@ -4241,8 +4246,7 @@
 "Mp" = (
 /obj/machinery/door/airlock/multi_tile/glass{
 	dir = 4;
-	name = "Material Processing";
-	req_one_access = list(48)
+	name = "Material Processing"
 	},
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -4250,6 +4254,7 @@
 /obj/machinery/door/firedoor{
 	dir = 8
 	},
+/obj/map_helper/access_helper/airlock/station/supply/department,
 /turf/simulated/floor/tiled/monotile,
 /area/outpost/mining_main/refinery)
 "MD" = (
@@ -4371,6 +4376,7 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
+/obj/map_helper/access_helper/airlock/station/supply/mining,
 /turf/simulated/floor/tiled/techfloor,
 /area/quartermaster/belterdock)
 "NV" = (
@@ -5021,8 +5027,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/door/airlock/maintenance/rnd{
 	name = "Science Outpost Maintenance";
-	req_one_access = list(10,47)
+	req_one_access = null
 	},
+/obj/map_helper/access_helper/airlock/station/science/maintenance,
 /turf/simulated/floor/plating,
 /area/rnd/outpost/maintenance)
 "UZ" = (

@@ -3372,25 +3372,40 @@
 		return
 	. = ..()
 
+/obj/item/pizzabox/margherita
+	name = "pizza box (margherita)"
+
 /obj/item/pizzabox/margherita/Initialize(mapload)
 	. = ..()
 	pizza = new /obj/item/reagent_containers/food/snacks/sliceable/pizza/margherita(src)
 	boxtag = "Margherita Deluxe"
+
+/obj/item/pizzabox/vegetable
+	name = "pizza box (vegetable)"
 
 /obj/item/pizzabox/vegetable/Initialize(mapload)
 	. = ..()
 	pizza = new /obj/item/reagent_containers/food/snacks/sliceable/pizza/vegetablepizza(src)
 	boxtag = "Gourmet Vegatable"
 
+/obj/item/pizzabox/mushroom
+	name = "pizza box (mushroom)"
+
 /obj/item/pizzabox/mushroom/Initialize(mapload)
 	. = ..()
 	pizza = new /obj/item/reagent_containers/food/snacks/sliceable/pizza/mushroompizza(src)
 	boxtag = "Mushroom Special"
 
+/obj/item/pizzabox/meat
+	name = "pizza box (meat)"
+
 /obj/item/pizzabox/meat/Initialize(mapload)
 	. = ..()
 	pizza = new /obj/item/reagent_containers/food/snacks/sliceable/pizza/meatpizza(src)
 	boxtag = "Meatlover's Supreme"
+
+/obj/item/pizzabox/pineapple
+	name = "pizza box (pineapple)"
 
 /obj/item/pizzabox/pineapple/Initialize(mapload)
 	. = ..()
@@ -5013,6 +5028,13 @@ END CITADEL CHANGE */
 /obj/item/reagent_containers/food/snacks/riztizkzi_sea/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("egg", 4)
+
+//for spawning in by admins, or loadout, since blood isn't added into the reagents otherwise.
+/obj/item/reagent_containers/food/snacks/riztizkzi_sea/include_blood
+
+/obj/item/reagent_containers/food/snacks/riztizkzi_sea/include_blood/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("blood", 15)
 
 /obj/item/reagent_containers/food/snacks/father_breakfast
 	name = "breakfast of champions"

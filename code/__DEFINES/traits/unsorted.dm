@@ -3,12 +3,6 @@
 Remember to update _globalvars/traits.dm if you're adding/removing/renaming traits.
 */
 
-//mob traits
-#define TRAIT_BLIND 			"blind"
-#define TRAIT_MUTE				"mute"
-
-#define TRAIT_DEAF				"deaf"
-
 ///Tracks whether we're gonna be a baby alien's mummy.
 #define TRAIT_XENO_HOST			"xeno_host"
 

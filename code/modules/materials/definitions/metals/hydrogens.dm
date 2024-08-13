@@ -20,6 +20,7 @@
 	stack_origin_tech = list(TECH_MATERIAL = 6, TECH_POWER = 6, TECH_MAGNET = 5)
 	is_fusion_fuel = 1
 	tgui_icon_key = "mhydrogen"
+	worth = 50
 
 /datum/material/hydrogen/tritium
 	name = "tritium"
@@ -31,6 +32,7 @@
 	sheet_plural_name = "ingots"
 	is_fusion_fuel = 1
 	tgui_icon_key = "ingots"
+	worth = 35
 
 /datum/material/hydrogen/deuterium
 	name = "deuterium"
@@ -42,3 +44,4 @@
 	sheet_plural_name = "ingots"
 	is_fusion_fuel = 1
 	tgui_icon_key = "ingots"
+	worth = 22.5

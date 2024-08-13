@@ -5,13 +5,13 @@
 	item_state = "boltaction"
 	w_class = WEIGHT_CLASS_BULKY
 	heavy = TRUE
-	caliber = "7.62mm"
+	caliber = /datum/ammo_caliber/a7_62mm
 	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2)
 	slot_flags = SLOT_BACK
 	//fire_sound = 'sound/weapons/rifleshot.ogg'
 	load_method = MAGAZINE // ToDo: Make it so MAGAZINE, SPEEDLOADER and SINGLE_CASING can all be used on the same gun.
-	magazine_type = /obj/item/ammo_magazine/m762garand
-	allowed_magazines = list(/obj/item/ammo_magazine/m762garand)
+	magazine_type = /obj/item/ammo_magazine/a7_62mm/garand
+	allowed_magazines = list(/obj/item/ammo_magazine/a7_62mm/garand)
 	auto_eject = 1
 	auto_eject_sound = 'sound/weapons/garand_ping.ogg'
 	one_handed_penalty = 15
@@ -28,7 +28,7 @@
 	desc = "A reproduction of the rare MIA Garand rifle. Most likely, it was once a standard Cybersun reproduction, modified by a competant gunsmith into a proper M1A model."
 	icon_state = "sgarand"
 	pin = /obj/item/firing_pin/explorer
-	magazine_type = /obj/item/ammo_magazine/m762garand/sniperhunter
+	magazine_type = /obj/item/ammo_magazine/a7_62mm/garand/sniperhunter
 	w_class = WEIGHT_CLASS_HUGE // We don't need this fitting in backpacks.
 	accuracy = 70 //Forced missing fucking sucks ass
 	scoped_accuracy = 100
@@ -47,7 +47,7 @@
 	item_state = "speargun"
 	w_class = WEIGHT_CLASS_BULKY
 	heavy = TRUE
-	caliber = "apidean"
+	caliber = /datum/ammo_caliber/biomatter/wax
 	origin_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 3, TECH_BIO = 7)
 	slot_flags = SLOT_BACK
 	fire_sound = 'sound/weapons/rifleshot.ogg'
@@ -59,4 +59,4 @@
 
 /obj/item/gun/ballistic/apinae_stinger/update_icon_state()
 	. = ..()
-	icon_state = "apigun-[ammo_magazine ? round(ammo_magazine.stored_ammo.len, 2) : "e"]"
+	icon_state = "apigun-[ammo_magazine ? round(ammo_magazine.amount_remaining(), 2) : "e"]"

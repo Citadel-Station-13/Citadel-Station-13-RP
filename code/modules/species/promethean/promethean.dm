@@ -60,12 +60,10 @@ var/datum/species/shapeshifter/promethean/prometheans
 
 	gluttonous = 0
 	virus_immune = TRUE
-	slowdown = -0.2
 	brute_mod = 0.9
 	burn_mod  = 1.1
 	oxy_mod   = 0
 	flash_mod = 0.5 //No centralized, lensed eyes.
-	item_slowdown_mod = 0.66
 
 	cloning_modifier = /datum/modifier/cloning_sickness/promethean
 
@@ -97,6 +95,7 @@ var/datum/species/shapeshifter/promethean/prometheans
 		O_REGOXY   = /obj/item/organ/internal/regennetwork/oxy,
 		O_REGTOX   = /obj/item/organ/internal/regennetwork/tox,
 	)
+	vision_organ = O_BRAIN //THey only really have the brain as neural point
 
 	dispersed_eyes = TRUE
 
@@ -170,9 +169,9 @@ var/datum/species/shapeshifter/promethean/prometheans
 	new /obj/item/reagent_containers/food/snacks/wrapped/proteinbar(L)
 	new /obj/item/tool/prybar/red(L)
 	if(H.backbag == 1)
-		H.equip_to_slot_or_del(L, /datum/inventory_slot_meta/abstract/hand/right)
+		H.equip_to_slot_or_del(L, /datum/inventory_slot/abstract/hand/right)
 	else
-		H.equip_to_slot_or_del(L, /datum/inventory_slot_meta/abstract/put_in_backpack)
+		H.equip_to_slot_or_del(L, /datum/inventory_slot/abstract/put_in_backpack)
 
 /datum/species/shapeshifter/promethean/hug(mob/living/carbon/human/H, mob/living/target)
 
