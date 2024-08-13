@@ -32,9 +32,16 @@
 
 	initial_restricted_waypoints = list(
 		"Beruang Trade Ship" = list("tradeport_hangar"),
-		"Udang Transport Shuttle" = list("tradeport_hangar_udang"),
-		"Scoophead trade Shuttle" = list("tradeport_hangar_scoophead")
+		"Udang Transport Shuttle" = list("tradeport_udang"),
+		"Scoophead trade Shuttle" = list("tradeport_scoophead"),
+		"Arrowhead Racing Shuttle" = list("tradeport_arrowhead"),
+		"Spacena Caravan Shuttle" = list("tradeport_caravan"),
+		"Spacena Adventurer Shuttle" = list("tradeport_adventurer"),
+		"Cargo Tug Hauler Shuttle" = list("tradeport_tug"),
+		"Utility Micro Shuttle" = list("tradeport_utilitymicro"),
+		"Teshari Runabout Shuttle" = list("tradeport_runabout")
 		)
+
 /* // Old Restricted list. Leaving commented out for reference - Bloop
 	initial_restricted_waypoints = list(
 		"Beruang Trade Ship" = list("tradeport_hangar"),
@@ -131,6 +138,48 @@
 	docking_controller = "tradeport_scoophead_dock"
 	base_turf = /turf/space
 	base_area = /area/space
+
+/obj/effect/shuttle_landmark/triumph/trade/arrowhead
+	name = "VIP suit docking hatch"
+	landmark_tag = "tradeport_arrowhead"
+	docking_controller = "tradeport_arrowhead_dock"
+	base_turf = /turf/space
+	base_area = /area/space
+
+/obj/effect/shuttle_landmark/triumph/trade/caravan
+	name = "Caravan Docking Bay 2 Spot"
+	landmark_tag = "tradeport_caravan"
+	docking_controller = "tradeport_caravan_dock"
+	base_turf = /turf/simulated/floor/reinforced
+	base_area = /area/tradeport/dock2
+
+/obj/effect/shuttle_landmark/triumph/trade/adventurer
+	name = "Adventurer Docking Bay 2 Spot"
+	landmark_tag = "tradeport_adventurer"
+	docking_controller = "tradeport_adventurer_dock"
+	base_turf = /turf/simulated/floor/reinforced
+	base_area = /area/tradeport/dock2
+
+/obj/effect/shuttle_landmark/triumph/trade/tug
+	name = "Tug Hauler Docking Bay 2 Spot"
+	landmark_tag = "tradeport_tug"
+	docking_controller = "tradeport_tug_dock"
+	base_turf = /turf/simulated/floor/reinforced
+	base_area = /area/tradeport/dock2
+
+/obj/effect/shuttle_landmark/triumph/trade/utilitymicro
+	name = "Utility and service Docking Bay 2 Spot"
+	landmark_tag = "tradeport_utilitymicro"
+	docking_controller = "tradeport_utilitymicro_dock"
+	base_turf = /turf/simulated/floor/reinforced
+	base_area = /area/tradeport/dock2
+
+/obj/effect/shuttle_landmark/triumph/trade/runabout
+	name = "Teshari Runabout Docking Bay 2 Spot"
+	landmark_tag = "tradeport_runabout"
+	docking_controller = "tradeport_runabout_dock"
+	base_turf = /turf/simulated/floor/reinforced
+	base_area = /area/tradeport/dock2
 
 // Todo
 /*

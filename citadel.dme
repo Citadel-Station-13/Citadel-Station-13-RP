@@ -3263,6 +3263,7 @@
 #include "code\modules\maps\templates\shuttles\admin_spawn\shelter_5.dm"
 #include "code\modules\maps\templates\shuttles\admin_spawn\shelter_6.dm"
 #include "code\modules\maps\templates\shuttles\admin_spawn\vespa.dm"
+#include "code\modules\maps\templates\shuttles\admin_spawn\nebula_civ_shuttles.dm"
 #include "code\modules\maps\templates\shuttles\map_specific\virgo2_shuttles.dm"
 #include "code\modules\maps\templates\submaps\class_d\class_d.dm"
 #include "code\modules\maps\templates\submaps\class_h\class_h.dm"

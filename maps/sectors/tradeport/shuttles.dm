@@ -39,7 +39,7 @@
 	shuttle_area = list(/area/shuttle/udang)
 	current_location = "tradeport_udang"
 	docking_controller_tag = "tradeport_udang_docker"
-	fuel_consumption = 6
+	fuel_consumption = 4
 	move_time = 10
 
 /obj/overmap/entity/visitable/ship/landable/trade/udang
@@ -67,7 +67,7 @@
 	shuttle_area = list(/area/shuttle/scoophead)
 	current_location = "tradeport_scoophead"
 	docking_controller_tag = "tradeport_scoophead_docker"
-	fuel_consumption = 6
+	fuel_consumption = 4
 	move_time = 10
 
 /obj/overmap/entity/visitable/ship/landable/trade/scoophead
@@ -87,3 +87,180 @@
 	name = "Scoophead trade Shuttle"
 	icon_state = "shuttle"
 
+//Arrowhead Shuttle
+
+/datum/shuttle/autodock/overmap/trade/arrowhead
+	name = "Arrowhead Racing Shuttle"
+	warmup_time = 8
+	shuttle_area = list(/area/shuttle/arrowhead)
+	current_location = "tradeport_arrowhead"
+	docking_controller_tag = "tradeport_arrowhead_docker"
+	fuel_consumption = 5
+	move_time = 10
+
+/obj/overmap/entity/visitable/ship/landable/trade/arrowhead
+	name = "Arrowhead Racing Shuttle"
+	desc = "A ex-racing shuttle, part of the VIP suite of the Nebula Motel."
+	scanner_name = "Arrowhead Racing Shuttle"
+	scanner_desc = @{"[i]Registration[/i]: ---
+[i]Class[/i]: Racing Shuttle
+[i]Transponder[/i]: Transmitting (CIV), Registered with the FTU, non-hostile
+[b]Notice[/b]: Racing shuttle, winner of the 2542 Voidline gold trophy"}
+	color = "#002d75" //Darkblue
+	fore_dir = WEST
+	vessel_mass = 10000
+	vessel_size = SHIP_SIZE_SMALL
+	shuttle = "Arrowhead Racing Shuttle"
+
+/obj/machinery/computer/shuttle_control/explore/arrowhead
+	name = "short jump console"
+	shuttle_tag = "Arrowhead Racing Shuttle"
+
+/area/shuttle/arrowhead
+	name = "Arrowhead Racing Shuttle"
+	icon_state = "shuttle"
+
+//Spacena Caravan Shuttle
+
+/datum/shuttle/autodock/overmap/trade/caravan
+	name = "Spacena Caravan Shuttle"
+	warmup_time = 8
+	shuttle_area = list(/area/shuttle/caravan)
+	current_location = "tradeport_caravan"
+	docking_controller_tag = "tradeport_caravan_docker"
+	fuel_consumption = 3
+	move_time = 10
+
+/obj/overmap/entity/visitable/ship/landable/trade/caravan
+	name = "Spacena Caravan Shuttle"
+	desc = "A cheap shuttle made for people wanting to live in their shuttle or travel."
+	scanner_name = "Spacena Caravan Shuttle"
+	scanner_desc = @{"[i]Registration[/i]: ---
+[i]Class[/i]: Spacena Caravan Shuttle
+[i]Transponder[/i]: Transmitting (CIV), Registered with the FTU, non-hostile
+[b]Notice[/b]: Caravan shuttle, cheap, comfy, fragile."}
+	color = "#8f6f4b" //Brown
+	fore_dir = WEST
+	vessel_mass = 6000
+	vessel_size = SHIP_SIZE_SMALL
+	shuttle = "Spacena Caravan Shuttle"
+
+/obj/machinery/computer/shuttle_control/explore/caravan
+	name = "short jump console"
+	shuttle_tag = "Spacena Caravan Shuttle"
+
+/area/shuttle/caravan
+	name = "Spacena Caravan Shuttle"
+	icon_state = "shuttle"
+
+//Spacena adventurer Shuttle
+
+/datum/shuttle/autodock/overmap/trade/adventurer
+	name = "Spacena Adventurer Shuttle"
+	warmup_time = 8
+	shuttle_area = list(/area/shuttle/adventurer)
+	current_location = "tradeport_adventurer"
+	docking_controller_tag = "tradeport_adventurer_docker"
+	fuel_consumption = 3
+	move_time = 10
+
+/obj/overmap/entity/visitable/ship/landable/trade/adventurer
+	name = "Spacena adventurer Shuttle"
+	desc = "A cheap shuttle, variant of the Spacena Caravan, made for more versatile use."
+	color = "#323f55" //Blue grey
+	fore_dir = WEST
+	vessel_mass = 6000
+	vessel_size = SHIP_SIZE_SMALL
+	shuttle = "Spacena Adventurer Shuttle"
+
+/obj/machinery/computer/shuttle_control/explore/adventurer
+	name = "short jump console"
+	shuttle_tag = "Spacena Adventurer Shuttle"
+
+/area/shuttle/adventurer
+	name = "Spacena Adventurer Shuttle"
+	icon_state = "shuttle"
+
+//Cargo tug Shuttle
+
+/datum/shuttle/autodock/overmap/trade/tug
+	name = "Cargo Tug Hauler Shuttle"
+	warmup_time = 8
+	shuttle_area = list(/area/shuttle/tug)
+	current_location = "tradeport_tug"
+	docking_controller_tag = "tradeport_tug_docker"
+	fuel_consumption = 4
+	move_time = 10
+
+/obj/overmap/entity/visitable/ship/landable/trade/tug
+	name = "Cargo Tug Hauler Shuttle"
+	desc = "A Shuttle made to tug barge, offering a high ammount of cargo ."
+	color = "#6b6d52"
+	fore_dir = WEST
+	vessel_mass = 9000
+	vessel_size = SHIP_SIZE_SMALL
+	shuttle = "Cargo Tug Hauler Shuttle"
+
+/obj/machinery/computer/shuttle_control/explore/tug
+	name = "short jump console"
+	shuttle_tag = "Cargo Tug Hauler Shuttle"
+
+/area/shuttle/tug
+	name = "Cargo Tug Hauler Shuttle"
+	icon_state = "shuttle"
+
+//Utility Micro Shuttle
+
+/datum/shuttle/autodock/overmap/trade/utilitymicro
+	name = "Utility Micro Shuttle"
+	warmup_time = 8
+	shuttle_area = list(/area/shuttle/utilitymicro)
+	current_location = "tradeport_utilitymicro"
+	docking_controller_tag = "tradeport_utilitymicro_docker"
+	fuel_consumption = 1
+	move_time = 10
+
+/obj/overmap/entity/visitable/ship/landable/trade/utilitymicro
+	name = "Utility Micro Shuttle"
+	desc = "A Shuttle made to tug barge, offering a high ammount of cargo ."
+	color = "#6b6d52"
+	fore_dir = WEST
+	vessel_mass = 8000
+	vessel_size = SHIP_SIZE_SMALL
+	shuttle = "Utility Micro Shuttle"
+
+/obj/machinery/computer/shuttle_control/explore/utilitymicro
+	name = "short jump console"
+	shuttle_tag = "Utility Micro Shuttle"
+
+/area/shuttle/utilitymicro
+	name = "Utility Micro Shuttle"
+	icon_state = "shuttle"
+
+//Teshari Runabout
+
+/datum/shuttle/autodock/overmap/trade/runabout
+	name = "Teshari Runabout Shuttle"
+	warmup_time = 8
+	shuttle_area = list(/area/shuttle/runabout)
+	current_location = "tradeport_runabout"
+	docking_controller_tag = "tradeport_runabout_docker"
+	fuel_consumption = 3
+	move_time = 10
+
+/obj/overmap/entity/visitable/ship/landable/trade/runabout
+	name = "Teshari Runabout Shuttle"
+	desc = "A teshari Design... At least the hull is, probably found in a shipyard, after being decommisionned. This shuttle might have been once a scout vessel linked with a other bigger teshari or skrell ship, and as been modified for civilian use."
+	color = "#aa499b"
+	fore_dir = WEST
+	vessel_mass = 10000
+	vessel_size = SHIP_SIZE_SMALL
+	shuttle = "Teshari Runabout Shuttle"
+
+/obj/machinery/computer/shuttle_control/explore/runabout
+	name = "short jump console"
+	shuttle_tag = "Teshari Runabout Shuttle"
+
+/area/shuttle/runabout
+	name = "teshari runabout shuttle"
+	icon_state = "shuttle"
