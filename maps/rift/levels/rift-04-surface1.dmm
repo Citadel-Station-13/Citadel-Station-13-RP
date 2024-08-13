@@ -1269,6 +1269,9 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/xenobiology/outpost_breakroom)
+"aWZ" = (
+/turf/simulated/floor/outdoors/dirt,
+/area/rift/station/public_garden)
 "aXw" = (
 /obj/structure/table/steel_reinforced,
 /obj/effect/floor_decal/borderfloorwhite{
@@ -1392,6 +1395,10 @@
 "bbD" = (
 /turf/simulated/wall/wood/hardwood,
 /area/crew_quarters/game_room)
+"bct" = (
+/obj/structure/flora/tree/jungle_small,
+/turf/simulated/floor/outdoors/dirt,
+/area/rift/station/public_garden)
 "bcB" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
@@ -3849,6 +3856,12 @@
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/rift/surfaceeva/airlock/main)
+"cEf" = (
+/obj/machinery/light/fairy{
+	dir = 4
+	},
+/turf/simulated/floor/outdoors/dirt,
+/area/rift/station/public_garden)
 "cEq" = (
 /obj/machinery/atmospherics/pipe/simple/visible/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/visible/supply,
@@ -5567,6 +5580,17 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/rnd/xenobiology/xenoflora)
+"dKT" = (
+/obj/machinery/light/fairy{
+	dir = 8
+	},
+/obj/structure/table/rack/shelf/steel,
+/obj/item/reagent_containers/food/condiment/hotsauce,
+/obj/item/reagent_containers/food/condiment/enzyme{
+	pixel_x = -8
+	},
+/turf/simulated/floor/outdoors/grass/heavy/interior,
+/area/rift/station/public_garden)
 "dLp" = (
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/purple/border,
@@ -7834,6 +7858,10 @@
 	},
 /turf/simulated/floor/carpet,
 /area/library/study)
+"fhU" = (
+/obj/spawner/window/low_wall/full/nogrille/firelocks,
+/turf/simulated/floor/plating,
+/area/rift/surfacebase/outside/outside1)
 "fic" = (
 /obj/structure/cable/green{
 	icon_state = "1-2"
@@ -8010,10 +8038,6 @@
 /obj/map_helper/access_helper/airlock/station/medical/department,
 /turf/simulated/floor/plating,
 /area/medical/psych)
-"fnO" = (
-/obj/machinery/appliance/cooker/grill/stand,
-/turf/simulated/floor/outdoors/grass/heavy/interior,
-/area/rift/station/public_garden)
 "foq" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 9
@@ -9370,6 +9394,13 @@
 	},
 /turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
 /area/medical/virologymaint)
+"gnI" = (
+/obj/machinery/light/fairy{
+	dir = 8
+	},
+/obj/structure/table/woodentable,
+/turf/simulated/floor/outdoors/grass/heavy/interior,
+/area/rift/station/public_garden)
 "gnN" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 9
@@ -11103,6 +11134,10 @@
 /obj/effect/floor_decal/industrial/warning/corner,
 /turf/simulated/floor/reinforced/lythios43c,
 /area/rift/surfacebase/outside/outside1)
+"hjX" = (
+/obj/machinery/appliance/cooker/grill/stand,
+/turf/simulated/floor/outdoors/dirt,
+/area/rift/station/public_garden)
 "hkg" = (
 /obj/structure/closet/secure_closet/hydroponics{
 	name = "Xenobotanist's locker";
@@ -18732,6 +18767,10 @@
 	},
 /turf/simulated/floor/lino,
 /area/security/detectives_office)
+"lSZ" = (
+/obj/structure/table/bench/wooden,
+/turf/simulated/floor/outdoors/dirt,
+/area/rift/station/public_garden)
 "lTj" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
@@ -22916,6 +22955,10 @@
 	},
 /turf/simulated/floor/wood,
 /area/maintenance/research/lower)
+"ooG" = (
+/obj/structure/flora/ausbushes/fullgrass,
+/turf/simulated/floor/outdoors/dirt,
+/area/rift/station/public_garden)
 "ooN" = (
 /obj/machinery/atmospherics/pipe/simple/visible,
 /obj/structure/catwalk,
@@ -25881,6 +25924,13 @@
 /obj/structure/table/rack/shelf,
 /turf/simulated/floor/wood,
 /area/tether/surfacebase/entertainment)
+"qaY" = (
+/obj/machinery/light/fairy{
+	dir = 8
+	},
+/obj/structure/closet/secure_closet/freezer/meat,
+/turf/simulated/floor/outdoors/grass/heavy/interior,
+/area/rift/station/public_garden)
 "qbe" = (
 /obj/machinery/light,
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
@@ -27911,6 +27961,14 @@
 /obj/machinery/portable_atmospherics/canister/nitrogen,
 /turf/simulated/floor/tiled/steel_dirty,
 /area/rnd/tankstorage)
+"rlP" = (
+/obj/machinery/light/fairy{
+	dir = 8
+	},
+/obj/structure/table/rack/shelf/steel,
+/obj/item/reagent_containers/food/condiment/soysauce,
+/turf/simulated/floor/outdoors/grass/heavy/interior,
+/area/rift/station/public_garden)
 "rmq" = (
 /obj/effect/floor_decal/corner/beige{
 	dir = 5
@@ -34560,6 +34618,12 @@
 /obj/structure/closet/crate/engineering,
 /turf/simulated/floor/tiled/steel,
 /area/quartermaster/warehouse)
+"uOC" = (
+/obj/machinery/light/fairy{
+	dir = 8
+	},
+/turf/simulated/floor/outdoors/dirt,
+/area/rift/station/public_garden)
 "uOW" = (
 /obj/structure/flora/grass/green{
 	pixel_x = -13
@@ -38066,13 +38130,6 @@
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/rift/surfaceeva/aa/surface_south)
-"xaV" = (
-/obj/machinery/light/fairy{
-	dir = 4
-	},
-/obj/structure/flora/ausbushes/ppflowers,
-/turf/simulated/floor/outdoors/grass/heavy/interior,
-/area/rift/station/public_garden)
 "xbi" = (
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 10
@@ -39792,6 +39849,10 @@
 /obj/machinery/door/firedoor,
 /turf/simulated/floor/plating,
 /area/maintenance/evahallway)
+"xZf" = (
+/obj/structure/flora/pottedplant/largebush,
+/turf/simulated/floor/outdoors/grass/heavy/interior,
+/area/rift/station/public_garden)
 "xZu" = (
 /obj/effect/floor_decal/spline/plain{
 	dir = 1
@@ -64633,10 +64694,10 @@ jLa
 lIw
 ngE
 oKV
-rpP
+aWZ
 sur
-rpP
-rpP
+aWZ
+aWZ
 rpP
 rpP
 qKO
@@ -64827,11 +64888,11 @@ jLa
 lIw
 ngE
 oKV
-rpP
-rpP
+aWZ
+aWZ
 qDk
-rpP
-rpP
+aWZ
+aWZ
 skM
 qKO
 qKO
@@ -65025,8 +65086,8 @@ rpP
 sxj
 jIa
 rpP
+aWZ
 eGP
-rpP
 wKe
 xST
 wKe
@@ -65218,8 +65279,8 @@ nLh
 qyE
 rpP
 qDk
-rpP
-rpP
+aWZ
+aWZ
 qDk
 rpP
 rpP
@@ -65412,8 +65473,8 @@ hMq
 qyE
 rpP
 rpP
-eGP
-rpP
+bct
+aWZ
 skM
 rpP
 bfY
@@ -65606,8 +65667,8 @@ hMq
 hMq
 rpP
 rpP
-rpP
-qDk
+aWZ
+ooG
 rpP
 rpP
 rpP
@@ -65798,9 +65859,9 @@ gzd
 gzd
 gzd
 hMq
+gnI
 wGa
-wGa
-baN
+uOC
 baN
 baN
 baN
@@ -65993,9 +66054,9 @@ gzd
 gzd
 hMq
 mbJ
-mbJ
+qyE
 rpP
-fnO
+hjX
 sQo
 qyE
 qyE
@@ -66186,10 +66247,10 @@ gzd
 gzd
 gzd
 hMq
-qyE
-qyE
 rpP
-fnO
+rpP
+aWZ
+aWZ
 rpP
 mbJ
 mbJ
@@ -66380,10 +66441,10 @@ hgE
 kCW
 gzd
 hMq
-xaV
-nNl
-nNl
-nNl
+cEf
+cEf
+cEf
+cEf
 nNl
 xxe
 xxe
@@ -66572,16 +66633,16 @@ hgE
 hgE
 hgE
 gzd
-gzd
+fhU
 hMq
 rpP
+qDk
+xZf
 rpP
 rpP
-rpP
-rpP
-bfY
-rpP
-rpP
+skM
+aWZ
+aWZ
 skM
 rpP
 hZP
@@ -66766,16 +66827,16 @@ hgE
 hgE
 gzd
 gzd
-gzd
-hMq
-rpP
-rpP
-eGP
-qDk
+fhU
 rpP
 rpP
 rpP
 rpP
+rpP
+aWZ
+aWZ
+xiB
+aWZ
 qDk
 rpP
 qKO
@@ -66960,16 +67021,16 @@ hgE
 gzd
 gzd
 gzd
-gzd
-hMq
+fhU
+qDk
+aWZ
+aWZ
 rpP
 rpP
-rpP
-rpP
-rpP
-rpP
-rpP
-eGP
+lSZ
+xiB
+xiB
+aWZ
 rpP
 rpP
 qKO
@@ -67154,16 +67215,16 @@ hgE
 hgE
 gzd
 gzd
-gzd
-hMq
-skM
+fhU
 rpP
-jIa
-rpP
-bfY
+aWZ
+aWZ
 rpP
 rpP
-rpP
+lSZ
+xiB
+xiB
+xiB
 rpP
 rpP
 wKe
@@ -67348,18 +67409,18 @@ hgE
 hgE
 hgE
 gzd
-gzd
+fhU
 hMq
 rpP
 rpP
 rpP
 rpP
-rpP
-rpP
-rpP
+aWZ
+hjX
+aWZ
 jIa
 rpP
-eGP
+rpP
 sur
 rpP
 ufa
@@ -67546,15 +67607,15 @@ gzd
 hMq
 hMq
 sQo
-rpP
-rpP
-eGP
-rpP
+jIa
+skM
+aWZ
+aWZ
+aWZ
 sxj
 rpP
 rpP
-rpP
-rpP
+eGP
 hMq
 hMq
 hMq
@@ -67741,9 +67802,9 @@ gzd
 hMq
 baN
 tHO
-baN
-baN
-baN
+qaY
+dKT
+rlP
 nAK
 hMq
 hMq
