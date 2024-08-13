@@ -106,7 +106,8 @@
 	outputs = list(
 		"registered name" = IC_PINTYPE_STRING,
 		"assignment" = IC_PINTYPE_STRING,
-		"passkey" = IC_PINTYPE_STRING
+		"passkey" = IC_PINTYPE_STRING,
+		"rank" = IC_PINTYPE_STRING
 	)
 	activators = list(
 		"on read" = IC_PINTYPE_PULSE_OUT
@@ -125,11 +126,12 @@
 	if(card) // An ID card.
 		set_pin_data(IC_OUTPUT, 1, card.registered_name)
 		set_pin_data(IC_OUTPUT, 2, card.assignment)
+		set_pin_data(IC_OUTPUT, 4, card.rank)
 
 	else if(length(access))	// A non-card object that has access levels.
 		set_pin_data(IC_OUTPUT, 1, null)
 		set_pin_data(IC_OUTPUT, 2, null)
-
+		set_pin_data(IC_OUTPUT, 4, null)
 	else
 		return FALSE
 
