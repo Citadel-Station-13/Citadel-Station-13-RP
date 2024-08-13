@@ -21,7 +21,7 @@
 
 	if(explosion_size)
 		on_explosion(O)
-	src.fragmentate(O, num_fragments, spread_range, fragment_types)
+	shrapnel_explosion(num_fragments, spread_range, fragment_types)
 	qdel(src)
 
 /obj/item/grenade/explosive/proc/on_explosion(var/turf/O)
@@ -37,34 +37,6 @@
 
 	fragment_types = list(/obj/projectile/bullet/pellet/fragment)
 	num_fragments = 200  //total number of fragments produced by the grenade
-
-
-
-/obj/proc/fragmentate(var/turf/T=get_turf(src), var/fragment_number = 30, var/spreading_range = 5, var/list/fragtypes=list(/obj/projectile/bullet/pellet/fragment/))
-	set waitfor = 0
-	var/list/target_turfs = getcircle(T, spreading_range)
-	var/fragments_per_projectile = round(fragment_number/target_turfs.len)
-
-	for(var/turf/O in target_turfs)
-		sleep(0)
-		var/fragment_type = pickweight(fragtypes)
-		var/obj/projectile/bullet/pellet/fragment/P = new fragment_type(T)
-		P.pellets = fragments_per_projectile
-		P.shot_from = name
-
-		P.old_style_target(O)
-		P.fire()
-
-		//Make sure to hit any mobs in the source turf
-		for(var/mob/living/M in T)
-			//lying on a frag grenade while the grenade is on the ground causes you to absorb most of the shrapnel.
-			//you will most likely be dead, but others nearby will be spared the fragments that hit you instead.
-			if(M.lying && isturf(src.loc))
-				P.projectile_attack_mob(M, 0, 5)
-			else if(!M.lying && src.loc != get_turf(src)) //if it's not on the turf, it must be in the mob!
-				P.projectile_attack_mob(M, 0, 25) //you're holding a grenade, dude!
-			else
-				P.projectile_attack_mob(M, 0, 100) //otherwise, allow a decent amount of fragments to pass
 
 /obj/item/grenade/explosive/mini
 	name = "mini fragmentation grenade"

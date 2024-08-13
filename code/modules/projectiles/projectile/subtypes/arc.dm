@@ -44,7 +44,7 @@
 	if(!isturf(target))
 		return
 	var/turf/T = target
-	fragmentate(T, fragment_amount, spread_range, fragment_types)
+	T.shrapnel_explosion(fragment_amount, spread_range, fragment_types, src, name, firer)
 
 /obj/projectile/arc/fragmentation/mortar
 	icon_state = "mortar"

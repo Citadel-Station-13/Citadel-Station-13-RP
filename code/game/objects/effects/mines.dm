@@ -170,7 +170,7 @@
 	var/turf/O = get_turf(src)
 	if(!O)
 		return
-	src.fragmentate(O, 20, 7, list(/obj/projectile/bullet/pellet/fragment)) //only 20 weak fragments because you're stepping directly on it
+	shrapnel_explosion(20, 7, /obj/projectile/bullet/pellet/fragment)
 	visible_message("\The [src.name] detonates!")
 	spawn(0)
 		qdel(s)
