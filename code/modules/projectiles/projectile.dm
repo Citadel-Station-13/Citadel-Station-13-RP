@@ -94,10 +94,12 @@
 	///
 	/// * this is a static typelist on this typepath
 	/// * do not under any circumstances edit this
-	VAR_PROTECTED/list/base_projectile_effects
+	/// * this is /tmp because this should never change on a typepath
+	VAR_PROTECTED/tmp/list/base_projectile_effects
 	/// projectile effects
 	///
 	/// * this is configured at runtime and can be edited
+	/// * this is non /tmp because this is infact serializable
 	VAR_PROTECTED/list/additional_projectile_effects
 
 	//* Configuration *//
@@ -321,7 +323,8 @@
 	var/no_attack_log = FALSE
 
 /obj/projectile/Initialize(mapload)
-	#warn projectile effects
+	if(islist(base_projectile_effects))
+		base_projectile_effects = typelist(NAMEOF(src, base_projectile_effects), base_projectile_effects)
 	return ..()
 
 /obj/projectile/Destroy()
