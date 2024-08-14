@@ -137,6 +137,7 @@
 /obj/item/hardsuit_module/mounted/Initialize(mapload)
 	. = ..()
 	gun = new gun_type(src)
+	gun.safety_state = GUN_SAFETY_OFF
 
 /obj/item/hardsuit_module/mounted/engage(atom/target)
 
