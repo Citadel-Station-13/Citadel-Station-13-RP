@@ -764,132 +764,167 @@
 	icon_state = "shuttle"
 	dynamic_lighting = 0
 
-
+/* Disabled here since they are used elsewhere
 // Lavaland
 /area/shuttle/excursion/lavaland
 	name = "Shuttle Landing Point"
 	area_flags = AREA_RAD_SHIELDED
 
 /area/lavaland
-	name = "Lava Land"
+	name = "Surt"
 	icon_state = "away"
 	requires_power = 1
 	dynamic_lighting = 1
 
 /area/lavaland/horrors
-	name = "Lava Land - Horrors"
+	name = "Surt - Horrors"
 
 /area/lavaland/dogs
-	name = "Lava Land - Dogs"
+	name = "Surt - Dogs"
 
 /area/lavaland/idleruins
-	name = "Lava Land - Idle Ruins"
+	name = "Surt - Idle Ruins"
 
 /area/lavaland/ashlander_camp
-	name = "Lava Land - Ashlander Camp"
+	name = "Surt - Ashlander Camp"
 
 /area/lavaland/bosses
-	name = "Lava Land - Boss"
+	name = "Surt - Boss"
 	requires_power = 0
 
 /area/lavaland/central/base
-	name = "Lava Land (Center) - Mining Base"
+	name = "Surt Outpost"
 	icon_state = "green"
 
 /area/lavaland/central/base/common
-	name = "Lava Land (Center) - Mining Base"
+	name = "Surt Outpost - Common Areas"
+	icon_state = "blue"
+
+/area/lavaland/central/base/airlock
+	name = "Surt Outpost - Airlock"
+	icon_state = "blue"
+
+/area/lavaland/central/base/pads
+	name = "Surt Outpost - Landing Pads"
+	icon_state = "blue"
+
+/area/lavaland/central/base/teleporter
+	name = "Surt Outpost - Teleporter"
+	icon_state = "blue"
+
+
+/area/lavaland/central/base/mining_storage
+	name = "Surt Outpost - Mining Storage"
+	icon_state = "blue"
+
+/area/lavaland/central/base/engine
+	name = "Surt Outpost - Engine Room"
+	icon_state = "blue"
+
+/area/lavaland/central/base/dorms
+	name = "Surt Outpost - Engine Dorms"
+	icon_state = "blue"
+
+/area/lavaland/central/base/teleporter
+	name = "Surt Outpost - Teleporter"
+	icon_state = "blue"
+
+/area/lavaland/central/base/exterior
+	name = "Surt Outpost - Exterior Scaffold"
 	icon_state = "blue"
 
 /area/lavaland/central/explored
-	name = "Lava Land (Center) - Thoroughfare"
+	name = "Surt (Center) - Thoroughfare"
 	icon_state = "red"
 	ambience = AMBIENCE_LAVA
 
 /area/lavaland/central/unexplored
-	name = "Lava Land (Center) - Unknown"
+	name = "Surt (Center) - Unknown"
 	icon_state = "yellow"
 	ambience = AMBIENCE_LAVA
 
 /area/lavaland/central/transit
-	name = "Lava Land (Center) - Transit"
+	name = "Surt (Center) - Transit"
 	icon_state = "blue"
 
 /area/lavaland/north/explored
-	name = "Lava Land (North) - Thoroughfare"
+	name = "Surt (North) - Thoroughfare"
 	icon_state = "red"
 	ambience = AMBIENCE_LAVA
 
 /area/lavaland/north/unexplored
-	name = "Lava Land (North) - Unknown"
+	name = "Surt (North) - Unknown"
 	icon_state = "yellow"
 	ambience = AMBIENCE_LAVA
 
 /area/lavaland/south/explored
-	name = "Lava Land (South) - Thoroughfare"
+	name = "Surt (South) - Thoroughfare"
 	icon_state = "red"
 	ambience = AMBIENCE_LAVA
 
 /area/lavaland/south/unexplored
-	name = "Lava Land (South) - Unknown"
+	name = "Surt (South) - Unknown"
 	icon_state = "yellow"
 	ambience = AMBIENCE_LAVA
 
 /area/lavaland/east/explored
-	name = "Lava Land (East) - Thoroughfare"
+	name = "Surt (East) - Thoroughfare"
 	icon_state = "red"
 	ambience = AMBIENCE_LAVA
 
 /area/lavaland/east/unexplored
-	name = "Lava Land (East) - Unknown"
+	name = "Surt (East) - Unknown"
 	icon_state = "yellow"
 	ambience = AMBIENCE_LAVA
 
 /area/lavaland/east/transit
-	name = "Lava Land (East) - Transit"
+	name = "Surt (East) - Transit"
 	icon_state = "blue"
 
 /area/lavaland/east/ashlander_village
-	name = "Lava Land (East) - Ashlander Village"
+	name = "Surt (East) - Ashlander Village"
 	icon_state = "blue"
 
 /area/lavaland/west/explored
-	name = "Lava Land (West) - Thoroughfare"
+	name = "Surt (West) - Thoroughfare"
 	icon_state = "red"
 	ambience = AMBIENCE_LAVA
+
+*/
 
 //These were from the Colony Event. Just holding onto them for now.
 /*
 /area/lavaland/east/colony
-	name = "Lava Land (East) - Colony"
+	name = "Surt (East) - Colony"
 	icon_state = "blue"
 
 /area/lavaland/east/lab
-	name = "Lava Land (East) - S4"
+	name = "Surt (East) - S4"
 
 /area/lavaland/east/lab/core
-	name = "Lava Land (East) - S4"
+	name = "Surt (East) - S4"
 	icon_state = "blue"
 
 /area/lavaland/east/lab/containment
-	name = "Lava Land (East) - S4 Containment"
+	name = "Surt (East) - S4 Containment"
 	icon_state = "blue"
 
 /area/lavaland/east/lab/bunker
-	name = "Lava Land (East) - S4 Bunker"
+	name = "Surt (East) - S4 Bunker"
 	icon_state = "blue"
 */
 
 /area/lavaland/west/unexplored
-	name = "Lava Land (West) - Unknown"
+	name = "Surt (West) - Unknown"
 	icon_state = "yellow"
 	ambience = AMBIENCE_LAVA
 
 /area/lavaland/dungeon/exterior
-	name = "Lava Land (Dungeon) - Unknown"
+	name = "Surt (Dungeon) - Unknown"
 	icon_state = "yellow"
 
 /area/lavaland/dungeon/facility
-	name = "Lava Land (Dungeon) - Pump Facility"
+	name = "Surt (Dungeon) - Pump Facility"
 	icon_state = "blue"
 
 // Aerostat

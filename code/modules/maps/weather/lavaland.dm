@@ -13,8 +13,8 @@
 	seconds_in_day = 2 HOURS
 
 /datum/planet/lavaland
-	name = "Lava Land"
-	desc = "The fabled."
+	name = "Surt"
+	desc = "The volcanic homeworld home to the Bronze Age Scori and NT mining operations."
 	current_time = new /datum/time/lavaland()
 	weather_holder = /datum/weather_holder/lavaland
 

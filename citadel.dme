@@ -3226,6 +3226,7 @@
 #include "code\modules\maps\overmap\planets\classh.dm"
 #include "code\modules\maps\overmap\planets\classm.dm"
 #include "code\modules\maps\overmap\planets\classp.dm"
+#include "code\modules\maps\overmap\planets\lavaland.dm"
 #include "code\modules\maps\overmap\planets\miaphus.dm"
 #include "code\modules\maps\overmap\planets\virgo2.dm"
 #include "code\modules\maps\overmap\planets\virgo4.dm"
