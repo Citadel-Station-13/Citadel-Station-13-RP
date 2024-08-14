@@ -439,6 +439,15 @@
 	},
 /turf/simulated/floor/plating,
 /area/lavaland/central/base/engine)
+"ie" = (
+/obj/effect/shuttle_landmark{
+	base_turf = /turf/simulated/floor/tiled/steel_dirty/lavaland/exterior;
+	base_area = /area/lavaland/central/base/pads;
+	name = "Surt Outpost Pad 2a";
+	landmark_tag = "surt_pad_2a"
+	},
+/turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
+/area/lavaland/central/base/pads)
 "ig" = (
 /obj/structure/cable/green{
 	icon_state = "2-4"
@@ -533,6 +542,15 @@
 	},
 /turf/simulated/floor/tiled,
 /area/lavaland/central/base/dorms)
+"jK" = (
+/obj/effect/shuttle_landmark{
+	base_turf = /turf/simulated/floor/tiled/steel_dirty/lavaland/exterior;
+	base_area = /area/lavaland/central/base/pads;
+	name = "Surt Outpost Pad 2d";
+	landmark_tag = "surt_pad_2d"
+	},
+/turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
+/area/lavaland/central/base/pads)
 "jO" = (
 /obj/structure/curtain/ashlander,
 /turf/simulated/floor/bone/lavaland,
@@ -1469,6 +1487,15 @@
 "sQ" = (
 /turf/simulated/wall/r_wall,
 /area/lavaland/central/base/pads)
+"sT" = (
+/obj/effect/shuttle_landmark{
+	base_turf = /turf/simulated/floor/tiled/steel_dirty/lavaland/exterior;
+	base_area = /area/lavaland/central/base/pads;
+	name = "Surt Outpost Pad 1a";
+	landmark_tag = "surt_pad_1a"
+	},
+/turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
+/area/lavaland/central/base/pads)
 "sV" = (
 /obj/machinery/door/firedoor{
 	req_one_access = list(48)
@@ -1615,8 +1642,17 @@
 /obj/effect/shuttle_landmark{
 	base_turf = /turf/simulated/floor/tiled/steel_dirty/lavaland/exterior;
 	base_area = /area/lavaland/central/base/pads;
-	id = "surt_pad_2b";
-	name = "Surt Outpost Pad 2b"
+	name = "Surt Outpost Pad 2b";
+	landmark_tag = "surt_pad_2b"
+	},
+/turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
+/area/lavaland/central/base/pads)
+"uy" = (
+/obj/effect/shuttle_landmark{
+	base_turf = /turf/simulated/floor/tiled/steel_dirty/lavaland/exterior;
+	base_area = /area/lavaland/central/base/pads;
+	name = "Surt Outpost Pad 1c";
+	landmark_tag = "surt_pad_1c"
 	},
 /turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
 /area/lavaland/central/base/pads)
@@ -2056,15 +2092,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/lavaland/central/base/common)
-"zs" = (
-/obj/effect/shuttle_landmark{
-	base_turf = /turf/simulated/floor/tiled/steel_dirty/lavaland/exterior;
-	base_area = /area/lavaland/central/base/pads;
-	id = "surt_pad_1a";
-	name = "Surt Outpost Pad 1a"
-	},
-/turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
-/area/lavaland/central/base/pads)
 "zt" = (
 /obj/machinery/vending/fitness,
 /obj/machinery/camera/network/mining{
@@ -2193,15 +2220,6 @@
 /obj/machinery/vending/cola,
 /turf/simulated/floor/tiled,
 /area/lavaland/central/base/common)
-"AM" = (
-/obj/effect/shuttle_landmark{
-	base_turf = /turf/simulated/floor/tiled/steel_dirty/lavaland/exterior;
-	base_area = /area/lavaland/central/base/pads;
-	id = "surt_pad_1c";
-	name = "Surt Outpost Pad 1c"
-	},
-/turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
-/area/lavaland/central/base/pads)
 "AO" = (
 /turf/simulated/wall/r_wall,
 /area/lavaland/central/base/common)
@@ -2222,6 +2240,15 @@
 "Bu" = (
 /turf/simulated/floor/tiled,
 /area/lavaland/central/base/airlock)
+"BX" = (
+/obj/effect/shuttle_landmark{
+	base_turf = /turf/simulated/floor/tiled/steel_dirty/lavaland/exterior;
+	base_area = /area/lavaland/central/base/pads;
+	name = "Surt Outpost Pad 2c";
+	landmark_tag = "surt_pad_2c"
+	},
+/turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
+/area/lavaland/central/base/pads)
 "BY" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/fire_alarm/west_mount{
@@ -2264,15 +2291,6 @@
 	},
 /turf/simulated/floor/outdoors/lavaland,
 /area/lavaland/central/base/exterior)
-"CT" = (
-/obj/effect/shuttle_landmark{
-	base_turf = /turf/simulated/floor/tiled/steel_dirty/lavaland/exterior;
-	base_area = /area/lavaland/central/base/pads;
-	id = "surt_pad_2d";
-	name = "Surt Outpost Pad 2d"
-	},
-/turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
-/area/lavaland/central/base/pads)
 "CX" = (
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging{
 	dir = 10
@@ -2371,15 +2389,6 @@
 	},
 /turf/simulated/floor/tiled/old_tile,
 /area/lavaland/central/base/common)
-"Fc" = (
-/obj/effect/shuttle_landmark{
-	base_turf = /turf/simulated/floor/tiled/steel_dirty/lavaland/exterior;
-	base_area = /area/lavaland/central/base/pads;
-	id = "surt_pad_1d";
-	name = "Surt Outpost Pad 1d"
-	},
-/turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
-/area/lavaland/central/base/pads)
 "Fe" = (
 /obj/map_helper/airlock/sensor/ext_sensor,
 /obj/machinery/airlock_sensor/airlock_exterior{
@@ -2491,15 +2500,6 @@
 /obj/machinery/mineral/equipment_vendor,
 /turf/simulated/floor/tiled,
 /area/lavaland/central/base/airlock)
-"GF" = (
-/obj/effect/shuttle_landmark{
-	base_turf = /turf/simulated/floor/tiled/steel_dirty/lavaland/exterior;
-	base_area = /area/lavaland/central/base/pads;
-	id = "surt_pad_2a";
-	name = "Surt Outpost Pad 2a"
-	},
-/turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
-/area/lavaland/central/base/pads)
 "GT" = (
 /obj/effect/debris/cleanable/dirt,
 /obj/machinery/fire_alarm/north_mount,
@@ -3202,8 +3202,8 @@
 /obj/effect/shuttle_landmark{
 	base_turf = /turf/simulated/floor/tiled/steel_dirty/lavaland/exterior;
 	base_area = /area/lavaland/central/base/pads;
-	id = "surt_pad_1b";
-	name = "Surt Outpost Pad 1b"
+	name = "Surt Outpost Pad 1b";
+	landmark_tag = "surt_pad_1b"
 	},
 /turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
 /area/lavaland/central/base/pads)
@@ -3350,20 +3350,20 @@
 	},
 /turf/simulated/floor/tiled,
 /area/lavaland/central/base/dorms)
-"SQ" = (
-/obj/effect/shuttle_landmark{
-	base_turf = /turf/simulated/floor/tiled/steel_dirty/lavaland/exterior;
-	base_area = /area/lavaland/central/base/pads;
-	id = "surt_pad_2c";
-	name = "Surt Outpost Pad 2c"
-	},
-/turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
-/area/lavaland/central/base/pads)
 "SZ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled/old_tile,
 /area/lavaland/central/base/common)
+"Tq" = (
+/obj/effect/shuttle_landmark{
+	base_turf = /turf/simulated/floor/tiled/steel_dirty/lavaland/exterior;
+	base_area = /area/lavaland/central/base/pads;
+	name = "Surt Outpost Pad 1d";
+	landmark_tag = "surt_pad_1d"
+	},
+/turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
+/area/lavaland/central/base/pads)
 "Ty" = (
 /obj/structure/table/woodentable,
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
@@ -5882,7 +5882,7 @@ Yb
 Yb
 Yb
 Yb
-GF
+ie
 Yb
 Yb
 Yb
@@ -5911,7 +5911,7 @@ Yb
 Yb
 Yb
 Yb
-zs
+sT
 Yb
 Yb
 Yb
@@ -8009,7 +8009,7 @@ ZK
 sQ
 ix
 Yb
-SQ
+BX
 Yb
 Yb
 Yb
@@ -8038,7 +8038,7 @@ YJ
 ch
 ix
 Yb
-AM
+uy
 Yb
 Yb
 Yb
@@ -9369,7 +9369,7 @@ ix
 Yb
 Yb
 Yb
-CT
+jK
 Yb
 Yb
 Yb
@@ -9398,7 +9398,7 @@ lb
 Yb
 Yb
 Yb
-Fc
+Tq
 Yb
 Yb
 Yb
