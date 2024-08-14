@@ -49,6 +49,7 @@
 		qdel(src)
 		return
 
+// todo: /banana_peel
 /obj/item/bananapeel
 	name = "banana peel"
 	desc = "A peel from a banana."
@@ -59,3 +60,11 @@
 	throw_force = 0
 	throw_speed = 4
 	throw_range = 20
+
+/obj/item/bananapeel/Crossed(atom/movable/AM as mob|obj)
+	. = ..()
+	if(AM.is_incorporeal())
+		return
+	if (istype(AM, /mob/living))
+		var/mob/living/M = AM
+		M.slip("the [src.name]",4)

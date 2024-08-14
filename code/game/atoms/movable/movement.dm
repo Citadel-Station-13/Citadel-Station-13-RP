@@ -422,8 +422,10 @@
  *
  * Do not do anything that will re-move the atom, or bad things happen.
  * Use spawn(0) to yield behavior until after the movement call stack is done if you want to do that.
+ *
+ * todo: audit all child calls, they should all have the same proc signature as this one.
  */
-/atom/movable/Crossed(atom/movable/AM, oldloc)
+/atom/movable/Crossed(atom/movable/AM)
 	SHOULD_CALL_PARENT(TRUE)
 	. = ..()
 	SEND_SIGNAL(src, COMSIG_MOVABLE_CROSSED, AM)
@@ -631,7 +633,7 @@
 				for(var/atom/movable/AM in destination)
 					if(AM == src)
 						continue
-					AM.Crossed(src, oldloc)
+					AM.Crossed(src)
 
 				// moved
 				Moved(oldloc, NONE, TRUE)
