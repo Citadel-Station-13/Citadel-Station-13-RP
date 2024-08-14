@@ -1614,14 +1614,6 @@
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled/steel,
 /area/rnd/research)
-"aZi" = (
-/obj/machinery/door/window/brigdoor/eastleft{
-	dir = 2;
-	name = "Cafe Access";
-	req_access = list(25)
-	},
-/turf/simulated/floor/wood,
-/area/rift/station/public_garden/gantry)
 "aZm" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 4
@@ -21060,9 +21052,6 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
-/obj/structure/cable/green{
-	icon_state = "2-4"
-	},
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/bar/lounge)
 "nfd" = (
@@ -22840,12 +22829,6 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/security/hallway)
-"oks" = (
-/obj/structure/bed/chair/wood{
-	dir = 1
-	},
-/turf/simulated/floor/wood,
-/area/rift/station/public_garden/gantry)
 "okK" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 10
@@ -24557,6 +24540,10 @@
 /obj/effect/floor_decal/sign/dock/one,
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/hammerhead/general)
+"pnE" = (
+/obj/machinery/media/jukebox,
+/turf/simulated/floor/wood,
+/area/rift/station/public_garden/gantry)
 "pnZ" = (
 /obj/effect/floor_decal/borderfloorwhite,
 /obj/effect/floor_decal/corner/paleblue/border,
@@ -30755,7 +30742,6 @@
 /turf/simulated/floor/tiled/monowhite,
 /area/medical/sleeper)
 "tvC" = (
-/obj/machinery/media/jukebox,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 9
 	},
@@ -32637,11 +32623,6 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/security/security_equiptment_storage)
-"uLI" = (
-/obj/structure/table/woodentable,
-/obj/item/storage/box/glasses,
-/turf/simulated/floor/wood,
-/area/rift/station/public_garden/gantry)
 "uLN" = (
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/lightgrey/border,
@@ -33739,6 +33720,10 @@
 /obj/structure/flora/ausbushes/ywflowers,
 /turf/simulated/floor/outdoors/snow/lythios43c,
 /area/rift/surfacebase/outside/outside2)
+"vmE" = (
+/obj/item/reagent_containers/food/condiment/small/packet/matchapowder,
+/turf/simulated/floor/glass/reinforced,
+/area/rift/station/public_garden/gantry)
 "vmU" = (
 /obj/effect/floor_decal/steeldecal/steel_decals_central6,
 /obj/effect/floor_decal/steeldecal/steel_decals10{
@@ -37540,6 +37525,7 @@
 /obj/structure/table/rack/shelf/steel,
 /obj/item/reagent_containers/food/drinks/shaker,
 /obj/item/storage/box/glasses,
+/obj/item/reagent_containers/food/condiment/small/packet/matchapowder,
 /turf/simulated/floor/wood,
 /area/rift/station/public_garden/gantry)
 "xQu" = (
@@ -63062,7 +63048,7 @@ qDS
 xVY
 xVY
 sCU
-xVY
+vmE
 xVY
 xVY
 xVY
@@ -63842,8 +63828,8 @@ iyU
 mwQ
 elp
 wna
-aos
-oks
+pnE
+wna
 cdC
 xSd
 tvC
@@ -64424,8 +64410,8 @@ iyU
 mwQ
 xQs
 wna
-uLI
-bqF
+aos
+jSM
 wmR
 daT
 wwx
@@ -64618,7 +64604,7 @@ iyU
 sxn
 xMz
 wna
-aZi
+wna
 vzI
 tqm
 efB
@@ -65204,8 +65190,8 @@ xMz
 iyU
 uKr
 vtU
-vtU
-vtU
+bOO
+oXW
 vtU
 vtU
 vtU
@@ -65397,8 +65383,8 @@ bOO
 aIZ
 iyU
 dJA
-bOO
-bOO
+vtU
+vtU
 bOO
 bOO
 bOO
