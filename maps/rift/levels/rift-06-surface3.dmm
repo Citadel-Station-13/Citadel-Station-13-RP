@@ -1902,12 +1902,9 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/bar)
 "age" = (
-/obj/structure/lattice,
-/obj/machinery/door/firedoor/glass,
-/obj/structure/cable{
-	icon_state = "32-1"
-	},
-/turf/simulated/open,
+/obj/machinery/power/apc/west_mount,
+/obj/structure/cable,
+/turf/simulated/floor/plating,
 /area/maintenance/substation/surface_three)
 "agf" = (
 /obj/structure/closet/emcloset,
@@ -2054,13 +2051,14 @@
 /turf/simulated/open/lythios43c,
 /area/rift/surfacebase/outside/outside3)
 "agK" = (
-/obj/structure/cable/green{
-	icon_state = "1-2"
-	},
 /obj/item/stool/padded,
 /obj/landmark/spawnpoint/job/assistant,
 /obj/effect/floor_decal/spline/plain{
 	dir = 1
+	},
+/obj/structure/cable/green{
+	dir = 1;
+	icon_state = "2-4"
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/bar)
@@ -6846,6 +6844,9 @@
 	},
 /obj/machinery/power/terminal{
 	dir = 4
+	},
+/obj/structure/cable{
+	icon_state = "1-8"
 	},
 /obj/structure/cable{
 	icon_state = "2-8"
@@ -12337,7 +12338,12 @@
 /turf/simulated/floor/tiled/steel,
 /area/hallway/secondary/docking_hallway)
 "aLh" = (
-/turf/simulated/floor/plating,
+/obj/structure/lattice,
+/obj/machinery/door/firedoor/glass,
+/obj/structure/cable{
+	icon_state = "32-2"
+	},
+/turf/simulated/open,
 /area/maintenance/substation/surface_three)
 "aLi" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
@@ -15530,6 +15536,7 @@
 	},
 /obj/effect/floor_decal/corner/beige/diagonal,
 /obj/structure/table/standard,
+/obj/item/reagent_containers/food/condiment/soysauce,
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/bar)
 "aUJ" = (
@@ -17667,6 +17674,11 @@
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/techfloor/grid/lythios43c,
 /area/shuttle/oldcentury)
+"bRX" = (
+/obj/structure/table/woodentable,
+/obj/item/tool/wrench,
+/turf/simulated/floor/glass,
+/area/crew_quarters/bar)
 "bSo" = (
 /obj/effect/floor_decal/corner/grey/diagonal,
 /obj/structure/cable/green{
@@ -18529,6 +18541,16 @@
 "dDI" = (
 /turf/simulated/wall/r_wall/prepainted/command,
 /area/crew_quarters/heads/blueshield)
+"dHb" = (
+/obj/item/stool/padded,
+/obj/effect/floor_decal/spline/plain{
+	dir = 1
+	},
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/wood,
+/area/crew_quarters/bar)
 "dIa" = (
 /obj/spawner/window/low_wall/full/nogrille/firelocks,
 /obj/effect/paint/violet,
@@ -20979,9 +21001,6 @@
 /obj/structure/disposalpipe/junction{
 	dir = 8
 	},
-/obj/machinery/atmospherics/component/unary/vent_pump/on{
-	dir = 8
-	},
 /obj/structure/cable/green{
 	icon_state = "2-8"
 	},
@@ -20989,6 +21008,10 @@
 	icon_state = "4-8"
 	},
 /obj/structure/table/woodentable,
+/obj/item/storage/toolbox/mechanical{
+	pixel_y = 9
+	},
+/obj/item/storage/box/cups,
 /turf/simulated/floor/wood,
 /area/crew_quarters/bar)
 "iav" = (
@@ -23873,6 +23896,15 @@
 	},
 /turf/simulated/wall/rshull,
 /area/shuttle/oldcentury)
+"nrc" = (
+/obj/effect/floor_decal/corner/beige/diagonal,
+/obj/structure/table/standard,
+/obj/item/reagent_containers/food/condiment/spacespice{
+	pixel_y = 4;
+	pixel_x = -1
+	},
+/turf/simulated/floor/tiled/white,
+/area/crew_quarters/bar)
 "nsi" = (
 /obj/structure/railing{
 	dir = 8
@@ -25256,11 +25288,11 @@
 /turf/simulated/floor/plating,
 /area/maintenance/bar/lower)
 "qnV" = (
-/obj/structure/cable{
-	icon_state = "2-4"
-	},
 /obj/machinery/light/small{
 	dir = 8
+	},
+/obj/structure/cable{
+	icon_state = "1-4"
 	},
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -25411,8 +25443,6 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
-/obj/structure/reagent_dispensers/water_cooler/full,
-/obj/item/reagent_containers/glass/cooler_bottle,
 /turf/simulated/floor/wood,
 /area/crew_quarters/bar)
 "qGN" = (
@@ -26340,6 +26370,9 @@
 	},
 /obj/effect/floor_decal/spline/plain{
 	dir = 6
+	},
+/obj/structure/cable/green{
+	icon_state = "1-4"
 	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/crew_quarters/bar)
@@ -27344,6 +27377,9 @@
 "uTO" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/bar)
 "uTP" = (
@@ -27383,8 +27419,8 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
-/obj/structure/table/woodentable,
-/obj/item/storage/box/cups,
+/obj/structure/reagent_dispensers/water_cooler/full,
+/obj/item/reagent_containers/glass/cooler_bottle,
 /turf/simulated/floor/wood,
 /area/crew_quarters/bar)
 "vam" = (
@@ -27670,7 +27706,7 @@
 /obj/effect/floor_decal/corner/beige/full{
 	dir = 8
 	},
-/obj/structure/table/rack/shelf,
+/obj/structure/closet/crate/bin,
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/bar)
 "vtz" = (
@@ -28265,6 +28301,7 @@
 /obj/structure/disposalpipe/segment,
 /obj/effect/floor_decal/corner/beige/diagonal,
 /obj/structure/table/standard,
+/obj/item/reagent_containers/food/condiment/hotsauce,
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/bar)
 "wfu" = (
@@ -40733,7 +40770,7 @@ fyl
 aym
 fsc
 fNy
-eXD
+nrc
 aHQ
 aNg
 aUj
@@ -40920,7 +40957,7 @@ ppQ
 asL
 aKG
 pKJ
-kIf
+dHb
 aUm
 fyl
 wTF
@@ -41114,7 +41151,7 @@ kkA
 aMa
 kkA
 aEp
-kIf
+dHb
 aUm
 fQQ
 fQQ
@@ -41311,7 +41348,7 @@ aZP
 agK
 aUm
 agN
-agN
+bRX
 aNx
 aQg
 amd
