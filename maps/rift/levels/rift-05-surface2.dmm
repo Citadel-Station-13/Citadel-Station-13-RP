@@ -6004,9 +6004,6 @@
 /turf/simulated/open,
 /area/rift/station/public_garden/gantry)
 "dJH" = (
-/obj/machinery/camera/network/civilian{
-	dir = 4
-	},
 /obj/structure/stairs/spawner/south,
 /obj/machinery/light{
 	dir = 8;
@@ -21745,6 +21742,9 @@
 	},
 /obj/effect/floor_decal/corner/black/diagonal,
 /obj/machinery/smartfridge/drinks,
+/obj/machinery/camera/network/civilian{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/bar/lounge)
 "nDj" = (
@@ -25710,9 +25710,8 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_4)
 "qhc" = (
-/obj/structure/catwalk,
 /obj/machinery/light,
-/turf/simulated/open,
+/turf/simulated/floor/glass/reinforced,
 /area/rift/station/public_garden/gantry)
 "qhj" = (
 /obj/effect/floor_decal/borderfloor,
@@ -33720,10 +33719,6 @@
 /obj/structure/flora/ausbushes/ywflowers,
 /turf/simulated/floor/outdoors/snow/lythios43c,
 /area/rift/surfacebase/outside/outside2)
-"vmE" = (
-/obj/item/reagent_containers/food/condiment/small/packet/matchapowder,
-/turf/simulated/floor/glass/reinforced,
-/area/rift/station/public_garden/gantry)
 "vmU" = (
 /obj/effect/floor_decal/steeldecal/steel_decals_central6,
 /obj/effect/floor_decal/steeldecal/steel_decals10{
@@ -34671,15 +34666,6 @@
 /obj/machinery/power/breakerbox/activated{
 	RCon_tag = "Research Main Substation Bypass"
 	},
-/obj/structure/cable{
-	icon_state = "1-4"
-	},
-/obj/structure/cable{
-	icon_state = "0-4"
-	},
-/obj/structure/cable{
-	icon_state = "2-4"
-	},
 /turf/simulated/floor,
 /area/maintenance/substation/surface_two)
 "vWA" = (
@@ -34914,7 +34900,7 @@
 /turf/simulated/open,
 /area/rnd/outpost/xenobiology/outpost_slimepens)
 "wgd" = (
-/obj/structure/cable{
+/obj/structure/cable/green{
 	icon_state = "0-2"
 	},
 /obj/machinery/bioscan_antenna/permanent{
@@ -35737,6 +35723,9 @@
 /obj/machinery/door/airlock/maintenance/common,
 /obj/structure/catwalk,
 /obj/machinery/door/firedoor/glass,
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
 /turf/simulated/floor/plating,
 /area/crew_quarters/bar/lounge)
 "wGI" = (
@@ -63048,7 +63037,7 @@ qDS
 xVY
 xVY
 sCU
-vmE
+xVY
 xVY
 xVY
 xVY
@@ -64993,10 +64982,10 @@ iyU
 iyU
 iyU
 iyU
-iyU
-iyU
-iyU
-iyU
+xVY
+xVY
+xVY
+xVY
 iyU
 iyU
 iyU
