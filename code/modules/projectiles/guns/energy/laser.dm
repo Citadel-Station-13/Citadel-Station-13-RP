@@ -102,7 +102,7 @@
 	icon_state = "alienpistol"
 	item_state = "alienpistol"
 	fire_delay = 10 // Handguns should be inferior to two-handed weapons. Even alien ones I suppose.
-	charge_cost = 240 // Five shots.
+	charge_cost = 240 // Ten shots.
 
 	projectile_type = /obj/projectile/beam/cyan
 	cell_type = /obj/item/cell/device/weapon/recharge/alien // Self charges.
