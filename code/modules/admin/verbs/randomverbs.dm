@@ -170,7 +170,7 @@
 	if(!check_rights(R_ADMIN))
 		return
 
-	var/msg = input("Message:", "Enter the text you wish to appear to everyone on this Z level:") as text|null
+	var/msg = input("Enter the text you wish to appear to everyone on this Z level:", "Z Narrate:") as text|null
 
 	if (!msg)
 		return
