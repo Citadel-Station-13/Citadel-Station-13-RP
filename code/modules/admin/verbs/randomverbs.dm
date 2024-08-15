@@ -175,7 +175,7 @@
 	if (!msg)
 		return
 
-	for(var/mob/M in view(192)) //Yes this is lazy
+	for(var/mob/M in range(192)) //Yes this is lazy
 		to_chat(M, msg)
 
 	log_admin("ZNarrate: [key_name(usr)] at [ADMIN_COORDJMP(usr)]: [msg]")
