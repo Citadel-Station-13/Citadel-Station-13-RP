@@ -882,6 +882,10 @@
 		M.Move(get_step(obstacle,src.dir))
 	else if(istype(obstacle, /obj))//Then we check for regular obstacles.
 		var/obj/O = obstacle
+		if(emulate_door_bumps)
+			if(istype(O, /obj/machinery/door))
+				for(var/m in occupants)
+					O.Bumped(m)
 
 		if(phasing && get_charge()>=phasing_energy_drain)//Phazon check. This could use an improvement elsewhere.
 			spawn()
