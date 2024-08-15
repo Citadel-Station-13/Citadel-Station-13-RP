@@ -13212,7 +13212,7 @@
 	icon_state = "1-8"
 	},
 /turf/simulated/floor,
-/area/maintenance/research/rnd)
+/area/maintenance/substation/surface_two)
 "itG" = (
 /turf/simulated/wall/prepainted,
 /area/crew_quarters/pool/emergency_closet)
@@ -16725,7 +16725,7 @@
 	RCon_tag = "Research Main Substation Bypass"
 	},
 /turf/simulated/floor,
-/area/maintenance/research/rnd)
+/area/maintenance/substation/surface_two)
 "kFB" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -18745,7 +18745,7 @@
 	icon_state = "0-2"
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/research/rnd)
+/area/maintenance/substation/surface_two)
 "lQj" = (
 /obj/structure/closet/crate{
 	name = "Grenade Crate"
@@ -19794,7 +19794,7 @@
 	icon_state = "1-4"
 	},
 /turf/simulated/floor,
-/area/maintenance/research/rnd)
+/area/maintenance/substation/surface_two)
 "mua" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
@@ -34940,7 +34940,7 @@
 	icon_state = "0-2"
 	},
 /turf/simulated/floor,
-/area/maintenance/research/rnd)
+/area/maintenance/substation/surface_two)
 "vZs" = (
 /obj/effect/floor_decal/borderfloorwhite/corner,
 /obj/effect/floor_decal/corner/paleblue/bordercorner,
@@ -50617,11 +50617,11 @@ sQQ
 hvh
 hvh
 hvh
-eTP
-eTP
-eTP
-eTP
-eTP
+uuN
+uuN
+uuN
+uuN
+uuN
 aoY
 qBI
 qBI
@@ -51199,7 +51199,7 @@ tvM
 kVL
 guD
 fzG
-pBA
+eTP
 lPk
 mtI
 kFy
