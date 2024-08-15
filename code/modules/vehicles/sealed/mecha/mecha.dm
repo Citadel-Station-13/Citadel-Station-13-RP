@@ -1377,6 +1377,10 @@
 //////////////////////
 
 /obj/vehicle/sealed/mecha/attackby(obj/item/W as obj, mob/user as mob)
+	if(istype(W, /obj/item/kit/paint))
+		var/obj/item/kit/paint/P = W
+		P.customize(src, user)
+		return
 	if(istype(W, /obj/item/robotanalyzer))
 		var/obj/item/robotanalyzer/RA = W
 		RA.do_scan(src, user)
