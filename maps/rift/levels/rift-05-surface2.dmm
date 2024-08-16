@@ -13238,6 +13238,10 @@
 /obj/structure/cable{
 	icon_state = "0-2"
 	},
+/obj/effect/decal/warning_stripes,
+/obj/structure/sign/warning/falling{
+	pixel_y = 30
+	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/surface_two)
 "ixd" = (
@@ -22878,6 +22882,9 @@
 	icon_state = "32-1"
 	},
 /obj/structure/cable,
+/obj/structure/sign/warning/falling{
+	pixel_x = -28
+	},
 /turf/simulated/open,
 /area/maintenance/substation/surface_two)
 "oiz" = (
@@ -28624,8 +28631,8 @@
 /area/security/security_equiptment_storage)
 "rOm" = (
 /obj/machinery/power/sensor{
-	name = "Powernet Sensor - Research Main Subgrid";
-	name_tag = "Research Main Subgrid"
+	name = "Powernet Sensor - Surface 2";
+	name_tag = "Surface 2 Subgrid"
 	},
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -31040,6 +31047,10 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/security/hallway)
+"tyQ" = (
+/obj/machinery/holopad,
+/turf/simulated/floor/wood,
+/area/crew_quarters/bar/lounge)
 "tzc" = (
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/door/airlock/glass/security{
@@ -50230,7 +50241,7 @@ jYd
 dqp
 qTL
 ouF
-pqG
+tyQ
 fQm
 nKH
 uuN
