@@ -365,6 +365,9 @@
  * Do not do anything that will re-move the atom, or bad things happen.
  * Use spawn(0) to yield behavior until after the movement call stack is done if you want to do that.
  *
+ * todo: old_locs is not actually real used right now
+ * todo: momentum_change is not actually used right now
+ *
  * @params
  * * old_loc is the location prior to the move. Can be null to indicate nullspace.
  * * movement_dir is the direction the movement took place. Can be NONE if it was some sort of teleport.
@@ -788,11 +791,11 @@
 	var/old_type = movement_type & MOVEMENT_TYPES
 
 	#define RESET_MOVE_TYPE(type) movement_type = (movement_type & ~(movement_type & MOVEMENT_TYPES)) | type
-	if(HAS_TRAIT(src, TRAIT_ATOM_PHASING))
+	if(HAS_TRAIT(src, TRAIT_MOVABLE_PHASING))
 		RESET_MOVE_TYPE(MOVEMENT_PHASING)
-	else if(HAS_TRAIT(src, TRAIT_ATOM_FLYING))
+	else if(HAS_TRAIT(src, TRAIT_MOVABLE_FLYING))
 		RESET_MOVE_TYPE(MOVEMENT_FLYING)
-	else if(HAS_TRAIT(src, TRAIT_ATOM_FLOATING))
+	else if(HAS_TRAIT(src, TRAIT_MOVABLE_FLOATING))
 		RESET_MOVE_TYPE(MOVEMENT_FLOATING)
 	else
 		RESET_MOVE_TYPE(MOVEMENT_GROUND)
@@ -806,30 +809,6 @@
 	on_update_movement_type(old_type, new_type)
 
 /atom/movable/proc/on_update_movement_type(old_type, new_type)
-
-/atom/movable/proc/add_atom_flying(source)
-	ADD_TRAIT(src, TRAIT_ATOM_FLYING, source)
-	update_movement_type()
-
-/atom/movable/proc/add_atom_phasing(source)
-	ADD_TRAIT(src, TRAIT_ATOM_PHASING, source)
-	update_movement_type()
-
-/atom/movable/proc/add_atom_floating(source)
-	ADD_TRAIT(src, TRAIT_ATOM_FLOATING, source)
-	update_movement_type()
-
-/atom/movable/proc/remove_atom_flying(source)
-	REMOVE_TRAIT(src, TRAIT_ATOM_FLYING, source)
-	update_movement_type()
-
-/atom/movable/proc/remove_atom_phasing(source)
-	REMOVE_TRAIT(src, TRAIT_ATOM_PHASING, source)
-	update_movement_type()
-
-/atom/movable/proc/remove_atom_floating(source)
-	REMOVE_TRAIT(src, TRAIT_ATOM_FLOATING, source)
-	update_movement_type()
 
 //? Glide Size
 

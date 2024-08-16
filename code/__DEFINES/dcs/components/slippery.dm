@@ -21,5 +21,9 @@
 #define SLIP_CLASS_KINESIS (1<<3)
 /// ice-like surfaces
 #define SLIP_CLASS_ICE (1<<4)
+/// foam surfaces
+///
+/// * not necessarily as bad as [SLIP_CLASS_OIL] but also specialized
+#define SLIP_CLASS_FOAM (1<<5)
 
 // todo: DEFINE_BITFIELD_NEW

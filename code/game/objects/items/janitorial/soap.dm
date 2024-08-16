@@ -1,3 +1,5 @@
+/datum/component/slippery/soap
+
 /obj/item/soap
 	name = "soap"
 	desc = "A cheap bar of soap. Doesn't smell."
@@ -13,19 +15,12 @@
 
 /obj/item/soap/Initialize(mapload)
 	. = ..()
+	AddComponent(/datum/component/slippery/soap)
 	create_reagents(5)
 	wet()
 
 /obj/item/soap/proc/wet()
 	reagents.add_reagent("cleaner", 5)
-
-/obj/item/soap/Crossed(atom/movable/AM as mob|obj)
-	. = ..()
-	if(AM.is_incorporeal())
-		return
-	if(istype(AM, /mob/living))
-		var/mob/living/M = AM
-		M.slip("the [src.name]",3)
 
 /obj/item/soap/pre_attack(atom/target, mob/user, clickchain_flags, list/params)
 	//I couldn't feasibly  fix the overlay bugs caused by cleaning items we are wearing.

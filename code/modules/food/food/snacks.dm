@@ -4286,6 +4286,8 @@ END CITADEL CHANGE */
 	nutriment_desc = list("margarine" = 1)
 	nutriment_amt = 20
 
+/datum/component/slippery/butter
+
 /obj/item/reagent_containers/food/snacks/spreads/butter
 	name = "butter"
 	desc = "A stick of pure butterfat made from milk products."
@@ -4294,13 +4296,9 @@ END CITADEL CHANGE */
 	nutriment_desc = list("butter" = 1)
 	nutriment_amt = 0
 
-/obj/item/reagent_containers/food/snacks/spreads/butter/Crossed(atom/movable/AM as mob|obj)
+/obj/item/reagent_containers/food/snacks/spreads/butter/Initialize(mapload)
 	. = ..()
-	if(AM.is_incorporeal())
-		return
-	if (istype(AM, /mob/living))
-		var/mob/living/M = AM
-		M.slip("the [src.name]",4)
+	AddComponent(/datum/component/slippery/butter)
 
 /obj/item/reagent_containers/food/snacks/spreads/Initialize(mapload)
 	. = ..()
