@@ -32,7 +32,7 @@
 	var/r_hand = null
 	var/l_hand = null
 	// In the list(path=count,otherpath=count) format
-	var/list/uniform_accessories = list() // webbing, armbands etc - fits in /datum/inventory_slot_meta/abstract/attach_as_accessory
+	var/list/uniform_accessories = list() // webbing, armbands etc - fits in /datum/inventory_slot/abstract/attach_as_accessory
 	var/list/backpack_contents = list()
 
 	var/id_type
@@ -88,12 +88,12 @@
 	for(var/path in backpack_contents)
 		var/number = backpack_contents[path]
 		for(var/i=0,i<number,i++)
-			H.equip_to_slot_or_del(new path(H), /datum/inventory_slot_meta/abstract/put_in_backpack)
+			H.equip_to_slot_or_del(new path(H), /datum/inventory_slot/abstract/put_in_backpack)
 
 	post_equip(H)
 
 	if(W) // We set ID info last to ensure the ID photo is as correct as possible.
-		H.set_id_info(W)
+		H.set_id_info(W, H.client)
 	return 1
 
 /datum/outfit/proc/equip_base(mob/living/carbon/human/H)
@@ -139,7 +139,7 @@
 	for(var/path in uniform_accessories)
 		var/number = uniform_accessories[path]
 		for(var/i=0,i<number,i++)
-			H.equip_to_slot_or_del(new path(H), /datum/inventory_slot_meta/abstract/attach_as_accessory, INV_OP_FLUFFLESS | INV_OP_SILENT)
+			H.equip_to_slot_or_del(new path(H), /datum/inventory_slot/abstract/attach_as_accessory, INV_OP_FLUFFLESS | INV_OP_SILENT)
 
 	if(H.species)
 		H.species.equip_survival_gear(H, flags&OUTFIT_EXTENDED_SURVIVAL, flags&OUTFIT_COMPREHENSIVE_SURVIVAL)
@@ -174,7 +174,7 @@
 	tim_sort(GLOB.PDAs, GLOBAL_PROC_REF(cmp_name_asc))
 	if(H.equip_to_slot_if_possible(pda, pda_slot))
 		return pda
-	if(H.force_equip_to_slot(pda, /datum/inventory_slot_meta/abstract/put_in_backpack))
+	if(H.force_equip_to_slot(pda, /datum/inventory_slot/abstract/put_in_backpack))
 		return pda
 	if(H.equip_to_slot_or_del(pda, SLOT_ID_HANDS))
 		return pda
@@ -218,8 +218,8 @@
 	uniform = /obj/item/clothing/under/oricon/mildress/marine/command
 	back = /obj/item/storage/backpack/satchel
 	belt = /obj/item/gun/ballistic/revolver/consul
-	l_pocket = /obj/item/ammo_magazine/s44
-	r_pocket = /obj/item/ammo_magazine/s44
+	l_pocket = /obj/item/ammo_magazine/a44/speedloader
+	r_pocket = /obj/item/ammo_magazine/a44/speedloader
 	r_hand = /obj/item/clothing/accessory/holster/hip
 	l_hand = /obj/item/clothing/accessory/tie/black
 

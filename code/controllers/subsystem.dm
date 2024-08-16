@@ -67,10 +67,15 @@
 
 	//# The following variables are managed by the MC and should not be modified directly.
 
-	/// Last world.time the subsystem completed a run (as in wasn't paused by [MC_TICK_CHECK]).
+	/// Last world.time we did a full ignite()/fire() without pausing
+	///
+	/// * this is set by the MC's processing loop
+	/// * this is a heuristic; subsystems that have weird pausing behaviors won't work right with this.
+	/// * this is why it's crucial subsystems call pause() if they didn't finish a run!
 	var/last_fire = 0
-
-	/// Scheduled world.time for next fire().
+	/// Scheduled world.time for next ignite().
+	///
+	/// * this is set by the MC's processing loop
 	var/next_fire = 0
 
 	/// Running average of the amount of milliseconds it takes the subsystem to complete a run (including all resumes but not the time spent paused).
@@ -81,12 +86,6 @@
 
 	/// Running average of the amount of tick usage (in percents of a game tick) the subsystem has spent past its allocated time without pausing.
 	var/tick_overrun = 0
-
-	/// How much of a tick (in percents of a tick) were we allocated last fire.
-	var/tick_allocation_last = 0
-
-	/// How much of a tick (in percents of a tick) do we get allocated by the mc on avg.
-	var/tick_allocation_avg = 0
 
 	/// Tracks the current execution state of the subsystem. Used to handle subsystems that sleep in fire so the mc doesn't run them again while they are sleeping.
 	var/state = SS_IDLE
@@ -102,9 +101,6 @@
 
 	/// Tracks the amount of completed runs for the subsystem.
 	var/times_fired = 0
-
-	/// How many fires have we been requested to postpone.
-	var/postponed_fires = 0
 
 	/// Time the subsystem entered the queue, (for timing and priority reasons).
 	var/queued_time = 0
@@ -122,10 +118,32 @@
 	var/static/list/failure_strikes
 
 	/// Next subsystem in the queue of subsystems to run this tick.
+	///
+	/// * the queue is a doubly-linked non-circular linked list
 	var/datum/controller/subsystem/queue_next
-
 	/// Previous subsystem in the queue of subsystems to run this tick.
+	///
+	/// * the queue is a doubly-linked non-circular linked list
 	var/datum/controller/subsystem/queue_prev
+
+	//* Recomputed at start of Loop(), as well as on changes *//
+
+	/// The **nominal** world.time in deciseconds, before runs
+	var/nominal_dt_ds
+	/// The **nominal** world.time in seconds, before runs
+	var/nominal_dt_s
+
+	//* Tracked by ignite() *//
+
+	/// running average of our 'personal' tick drift
+	///
+	/// * this is pretty much time dilation for this subsystem
+	/// * this is based on wait time; e.g. 100% means we're running twice as slow, etc
+	var/tick_dilation_avg = 0
+	/// How much of a tick (in percents of a tick) were we allocated last fire.
+	var/tick_allocation_last = 0
+	/// How much of a tick (in percents of a tick) do we get allocated by the mc on avg.
+	var/tick_allocation_avg = 0
 
 	/**
 	 * # Do not blindly add vars here to the bottom, put it where it goes above.
@@ -185,6 +203,12 @@
 		enqueue()
 		state = SS_PAUSED
 		queued_time = QT
+	else
+		// track time between runs
+		var/full_run_took = world.time - last_fire
+		var/new_tick_dilation = (full_run_took / nominal_dt_ds) * 100 - 100
+		tick_dilation_avg = max(0, MC_AVERAGE_SLOW(tick_dilation_avg, new_tick_dilation))
+		last_fire = world.time
 
 /**
  * previously, this would have been named 'process()' but that name is used everywhere for different things!
@@ -195,7 +219,6 @@
 	subsystem_flags |= SS_NO_FIRE
 	CRASH("Subsystem [src]([type]) does not fire() but did not set the SS_NO_FIRE flag. Please add the SS_NO_FIRE flag to any subsystem that doesn't fire so it doesn't get added to the processing list and waste cpu.")
 
-
 /datum/controller/subsystem/Destroy()
 	dequeue()
 	can_fire = 0
@@ -204,7 +227,6 @@
 		Master.subsystems -= src
 
 	return ..()
-
 
 /**
  * Queue it to run.
@@ -249,7 +271,9 @@
 	queued_time = world.time
 	queued_priority = SS_priority
 	state = SS_QUEUED
-	if (SS_flags & SS_BACKGROUND) // Update our running total.
+
+	/// update the running total of priorities in the queue of the MC
+	if (SS_flags & SS_BACKGROUND)
 		Master.queue_priority_count_bg += SS_priority
 	else
 		Master.queue_priority_count += SS_priority
@@ -276,15 +300,14 @@
 		queue_node.queue_prev = src
 
 /datum/controller/subsystem/proc/dequeue()
+	// eject from doubly linked list
 	if (queue_next)
 		queue_next.queue_prev = queue_prev
-
 	if (queue_prev)
 		queue_prev.queue_next = queue_next
-
+	// ensure MC's references aren't us
 	if (src == Master.queue_tail)
 		Master.queue_tail = queue_prev
-
 	if (src == Master.queue_head)
 		Master.queue_head = queue_next
 
@@ -323,7 +346,7 @@
  */
 /datum/controller/subsystem/stat_entry()
 	if(can_fire && !(SS_NO_FIRE & subsystem_flags))
-		. = "[round(cost,1)]ms|[round(tick_usage,1)]%([round(tick_overrun,1)]%)|[round(ticks,0.1)]&emsp;"
+		. = "[round(cost,1)]ms | D:[round(tick_dilation_avg,1)]% | U:[round(tick_usage,1)]% | O:[round(tick_overrun,1)]% | T:[round(ticks,0.1)]&emsp;"
 	else
 		. = "OFFLINE&emsp;"
 
@@ -351,7 +374,6 @@
 	if(next_fire - world.time < wait)
 		next_fire += (wait*cycles)
 
-
 /**
  * Usually called via datum/controller/subsystem/New() when replacing a subsystem (i.e. due to a recurring crash).
  * Should attempt to salvage what it can from the old instance of subsystem.
@@ -366,9 +388,10 @@
 			// This is so the subsystem doesn't rapid fire to make up missed ticks causing more lag
 			if (var_value)
 				next_fire = world.time + wait
-
 		if (NAMEOF(src, queued_priority)) // Editing this breaks things.
 			return FALSE
+		if (NAMEOF(src, wait))
+			return set_wait(var_value)
 
 	. = ..()
 
@@ -406,7 +429,29 @@
 	return
 
 /**
+ * Called when world ticklag is changed
+ *
+ * @params
+ * * old_ticklag
+ * * new_ticklag
+ */
+/datum/controller/subsystem/proc/on_ticklag_changed(old_ticklag, new_ticklag)
+	return
+
+/**
  * Called when SQL is reconnected after being disconnected
  */
 /datum/controller/subsystem/proc/on_sql_reconnect()
 	return
+
+//* Wait *//
+
+/datum/controller/subsystem/proc/set_wait(new_wait)
+	ASSERT(isnum(new_wait))
+	src.wait = new_wait
+	recompute_wait_dt()
+	return TRUE
+
+/datum/controller/subsystem/proc/recompute_wait_dt()
+	nominal_dt_ds = max(world.tick_lag, (subsystem_flags & SS_TICKER)? (wait * world.tick_lag) : (wait))
+	nominal_dt_s = nominal_dt_ds * 0.1

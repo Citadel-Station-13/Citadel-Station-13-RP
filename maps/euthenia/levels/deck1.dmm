@@ -1087,9 +1087,6 @@
 	dir = 5
 	},
 /obj/map_helper/network_builder/power_cable/green/auto,
-/obj/structure/cable/green{
-	icon_state = "1-8"
-	},
 /turf/simulated/floor/reinforced,
 /area/security/tactical)
 "bia" = (
@@ -1830,9 +1827,7 @@
 /area/crew_quarters/bar)
 "bTF" = (
 /obj/structure/catwalk,
-/obj/machinery/door/firedoor{
-	dir = 2
-	},
+/obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/maintenance/common,
 /turf/simulated/floor/tiled/techmaint,
 /area/main_map/maintenance/deck_one)
@@ -1874,15 +1869,12 @@
 /area/maintenance/security/port)
 "bWL" = (
 /obj/structure/sign/directions/security{
-	dir = 2;
 	pixel_y = -4
 	},
 /obj/structure/sign/directions/medical{
-	dir = 2;
 	pixel_y = 8
 	},
 /obj/structure/sign/directions/science{
-	dir = 2;
 	pixel_y = 3
 	},
 /turf/simulated/wall/r_wall,
@@ -2217,13 +2209,6 @@
 "cmR" = (
 /turf/simulated/floor/crystal,
 /area/space)
-"cnb" = (
-/obj/map_helper/network_builder/power_cable/green/auto,
-/obj/structure/cable/green{
-	icon_state = "2-8"
-	},
-/turf/simulated/floor/lino,
-/area/security/detectives_office)
 "cnv" = (
 /obj/machinery/door/window/eastleft{
 	dir = 1
@@ -2474,9 +2459,6 @@
 /area/crew_quarters/bar)
 "cyF" = (
 /obj/map_helper/network_builder/power_cable/green/auto,
-/obj/structure/cable/green{
-	icon_state = "1-2"
-	},
 /turf/simulated/floor/tiled/dark,
 /area/security/armoury)
 "cyI" = (
@@ -3815,9 +3797,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/map_helper/network_builder/power_cable/green/auto,
-/obj/structure/cable/green{
-	icon_state = "1-2"
-	},
 /turf/simulated/floor/tiled/techmaint,
 /area/rnd/research/researchdivision)
 "ekO" = (
@@ -4060,13 +4039,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/wood,
 /area/crew_quarters/captain)
-"etO" = (
-/obj/map_helper/network_builder/power_cable/green/auto,
-/obj/structure/cable/green{
-	icon_state = "1-2"
-	},
-/turf/simulated/floor/tiled,
-/area/tether/surfacebase/security/briefingroom)
 "euS" = (
 /obj/structure/bed/chair/comfy/purp,
 /obj/item/radio/intercom{
@@ -4210,13 +4182,6 @@
 /obj/landmark/spawnpoint/job/medical_doctor,
 /turf/simulated/floor/tiled/white,
 /area/medical/surgery2)
-"eBW" = (
-/obj/map_helper/network_builder/power_cable/green/auto,
-/obj/structure/cable/green{
-	icon_state = "4-8"
-	},
-/turf/simulated/floor/plating,
-/area/main_map/maintenance/deck_one/aft/starboard)
 "eCl" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 6
@@ -5853,19 +5818,6 @@
 	},
 /turf/simulated/floor,
 /area/holodeck_control)
-"glF" = (
-/obj/map_helper/network_builder/power_cable/green/auto,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 8
-	},
-/obj/structure/cable/green{
-	icon_state = "4-8"
-	},
-/obj/structure/cable/green{
-	icon_state = "1-8"
-	},
-/turf/simulated/floor/lino,
-/area/security/detectives_office)
 "glV" = (
 /obj/structure/closet/bombclosetsecurity,
 /obj/effect/floor_decal/corner/blue{
@@ -6009,9 +5961,6 @@
 /area/medical/medbay)
 "gue" = (
 /obj/map_helper/network_builder/power_cable/green/auto,
-/obj/structure/cable/green{
-	icon_state = "4-8"
-	},
 /turf/simulated/floor/plating,
 /area/main_map/maintenance/deck_one/forward/starboard)
 "gul" = (
@@ -6157,7 +6106,6 @@
 "gDQ" = (
 /obj/machinery/door/window{
 	desc = "Electric Hazard Behind. Enter at own risk";
-	dir = 2;
 	name = "Electron Reservoir";
 	req_one_access = list()
 	},
@@ -6168,9 +6116,6 @@
 	dir = 10
 	},
 /obj/map_helper/network_builder/power_cable/green/auto,
-/obj/structure/cable/green{
-	icon_state = "4-8"
-	},
 /turf/simulated/floor/tiled/dark,
 /area/security/warden)
 "gDV" = (
@@ -6779,9 +6724,6 @@
 	dir = 1
 	},
 /obj/map_helper/network_builder/power_cable/green/auto,
-/obj/structure/cable/green{
-	icon_state = "1-2"
-	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/bar)
 "hrh" = (
@@ -6967,13 +6909,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/main_map/hallway/deck1)
-"hBJ" = (
-/obj/map_helper/network_builder/power_cable/green/auto,
-/obj/structure/cable/green{
-	icon_state = "4-8"
-	},
-/turf/simulated/floor/tiled/techmaint,
-/area/main_map/maintenance/deck_one/forward/port)
 "hBV" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -7485,13 +7420,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled,
 /area/main_map/hallway/deck1)
-"ijP" = (
-/obj/map_helper/network_builder/power_cable/green/auto,
-/obj/structure/cable/green{
-	icon_state = "4-8"
-	},
-/turf/simulated/floor/tiled/techmaint,
-/area/main_map/maintenance/deck_one/aft/port)
 "ijT" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -7650,9 +7578,7 @@
 	id = "kitchen-c";
 	name = "Kitchen Service Shutters"
 	},
-/obj/machinery/door/firedoor{
-	dir = 2
-	},
+/obj/machinery/door/firedoor,
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/kitchen)
 "iuu" = (
@@ -7666,14 +7592,6 @@
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/plating,
 /area/main_map/maintenance/deck_one/forward/starboard)
-"iuI" = (
-/obj/map_helper/network_builder/power_cable/green/auto,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/structure/cable/green{
-	icon_state = "1-2"
-	},
-/turf/simulated/floor/wood,
-/area/tether/surfacebase/security/iaa/officecommon)
 "iuK" = (
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 10
@@ -8193,9 +8111,7 @@
 	id = "bar";
 	name = "Bar Shutters"
 	},
-/obj/machinery/door/firedoor{
-	dir = 2
-	},
+/obj/machinery/door/firedoor,
 /turf/simulated/floor/wood,
 /area/crew_quarters/bar_backroom)
 "iXF" = (
@@ -8227,9 +8143,6 @@
 /area/medical/surgery_hallway)
 "iYM" = (
 /obj/map_helper/network_builder/power_cable/green/auto,
-/obj/structure/cable/green{
-	icon_state = "0-2"
-	},
 /obj/machinery/power/apc/north_mount,
 /turf/simulated/floor/wood,
 /area/tether/surfacebase/security/iaa/officeb)
@@ -8803,9 +8716,6 @@
 /area/space)
 "jSR" = (
 /obj/map_helper/network_builder/power_cable/green/auto,
-/obj/structure/cable/green{
-	icon_state = "4-8"
-	},
 /turf/simulated/floor/crystal,
 /area/space)
 "jSV" = (
@@ -9011,9 +8921,6 @@
 	pixel_y = -25
 	},
 /obj/map_helper/network_builder/power_cable/green/auto,
-/obj/structure/cable/green{
-	icon_state = "1-4"
-	},
 /turf/simulated/floor/tiled/dark,
 /area/security/riot_control)
 "kgz" = (
@@ -9994,9 +9901,6 @@
 /area/medical/surgery_hallway)
 "lhu" = (
 /obj/map_helper/network_builder/power_cable/green/auto,
-/obj/structure/cable/green{
-	icon_state = "0-2"
-	},
 /obj/machinery/power/apc/north_mount,
 /turf/simulated/floor/wood,
 /area/tether/surfacebase/security/iaa/officea)
@@ -10114,16 +10018,6 @@
 /obj/structure/table/glass,
 /turf/simulated/floor/crystal,
 /area/space)
-"lqe" = (
-/obj/map_helper/network_builder/power_cable/green/auto,
-/obj/structure/cable/green{
-	icon_state = "4-8"
-	},
-/obj/structure/cable/green{
-	icon_state = "1-4"
-	},
-/turf/simulated/floor/tiled/techmaint,
-/area/main_map/maintenance/deck_one/aft/port)
 "lqo" = (
 /obj/machinery/door/airlock/security{
 	name = "Equipment Storage";
@@ -10318,9 +10212,7 @@
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology/xenoflora)
 "lDo" = (
-/obj/machinery/door/firedoor{
-	dir = 2
-	},
+/obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/maintenance/common,
 /turf/simulated/floor/tiled/techmaint,
 /area/main_map/maintenance/deck_one)
@@ -10547,9 +10439,6 @@
 /obj/machinery/door/airlock/glass,
 /obj/map_helper/network_builder/power_cable/green/auto,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/structure/cable/green{
-	icon_state = "1-2"
-	},
 /turf/simulated/floor/wood,
 /area/tether/surfacebase/security/iaa/officecommon)
 "lVy" = (
@@ -11050,9 +10939,6 @@
 /area/tether/surfacebase/security/lobby)
 "myV" = (
 /obj/map_helper/network_builder/power_cable/green/auto,
-/obj/structure/cable/green{
-	icon_state = "1-2"
-	},
 /turf/simulated/floor/wood,
 /area/rift/station/fighter_bay/hangar)
 "mzs" = (
@@ -11194,9 +11080,7 @@
 	id = "kitchen-c";
 	name = "Kitchen Service Shutters"
 	},
-/obj/machinery/door/firedoor{
-	dir = 2
-	},
+/obj/machinery/door/firedoor,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled/dark,
@@ -11628,17 +11512,6 @@
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/main_map/hallway/deck1/fore)
-"ncf" = (
-/obj/map_helper/network_builder/power_cable/green/auto,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/structure/cable/green{
-	icon_state = "2-4"
-	},
-/obj/structure/cable/green{
-	icon_state = "1-2"
-	},
-/turf/simulated/floor/wood,
-/area/tether/surfacebase/security/iaa/officecommon)
 "nch" = (
 /obj/structure/catwalk,
 /obj/structure/handrail,
@@ -11699,13 +11572,6 @@
 "niL" = (
 /turf/simulated/wall,
 /area/main_map/maintenance/deck_one)
-"njl" = (
-/obj/map_helper/network_builder/power_cable/green/auto,
-/obj/structure/cable/green{
-	icon_state = "1-2"
-	},
-/turf/simulated/floor/tiled,
-/area/rnd/research_foyer)
 "njr" = (
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 1
@@ -11822,9 +11688,6 @@
 "nsv" = (
 /obj/landmark/spawnpoint/job/xenobotanist,
 /obj/map_helper/network_builder/power_cable/green/auto,
-/obj/structure/cable/green{
-	icon_state = "4-8"
-	},
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology/xenoflora)
 "nsF" = (
@@ -13059,9 +12922,6 @@
 	},
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /obj/map_helper/network_builder/power_cable/green/auto,
-/obj/structure/cable/green{
-	icon_state = "4-8"
-	},
 /turf/simulated/floor/tiled/techfloor,
 /area/rnd/lab)
 "oPS" = (
@@ -14252,13 +14112,6 @@
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/bar)
-"qju" = (
-/obj/map_helper/network_builder/power_cable/green/auto,
-/obj/structure/cable/green{
-	icon_state = "4-8"
-	},
-/turf/simulated/floor/tiled/techmaint,
-/area/tether/surfacebase/security/hallway)
 "qjL" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 10
@@ -14705,13 +14558,6 @@
 "qPR" = (
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/kitchen)
-"qQe" = (
-/obj/map_helper/network_builder/power_cable/green/auto,
-/obj/structure/cable/green{
-	icon_state = "1-2"
-	},
-/turf/simulated/floor/tiled/techmaint,
-/area/tether/surfacebase/security/hallway)
 "qQh" = (
 /obj/machinery/atmospherics/portables_connector{
 	dir = 4
@@ -14743,7 +14589,6 @@
 	pixel_y = 8
 	},
 /obj/structure/sign/directions/science{
-	dir = 2;
 	pixel_y = 3
 	},
 /turf/simulated/wall/r_wall/prepainted/security,
@@ -15041,16 +14886,6 @@
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/tiled/monotile,
 /area/security/security_lockerroom)
-"rkO" = (
-/obj/map_helper/network_builder/power_cable/green/auto,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 8
-	},
-/obj/structure/cable/green{
-	icon_state = "4-8"
-	},
-/turf/simulated/floor/lino,
-/area/security/detectives_office)
 "rlz" = (
 /obj/structure/cable/green{
 	icon_state = "0-2"
@@ -15218,9 +15053,7 @@
 	id = "bar";
 	name = "Bar Shutters"
 	},
-/obj/machinery/door/firedoor{
-	dir = 2
-	},
+/obj/machinery/door/firedoor,
 /turf/simulated/floor/wood,
 /area/crew_quarters/bar_backroom)
 "ryY" = (
@@ -16194,13 +16027,6 @@
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/white,
 /area/security/forensics)
-"sSM" = (
-/obj/map_helper/network_builder/power_cable/green/auto,
-/obj/structure/cable/green{
-	icon_state = "4-8"
-	},
-/turf/simulated/floor/tiled/steel_ridged,
-/area/rnd/lab)
 "sTr" = (
 /obj/machinery/light/small{
 	dir = 4
@@ -16261,9 +16087,6 @@
 	req_one_access = list(38,63);
 	name = "Security";
 	dir = 4
-	},
-/obj/structure/cable/green{
-	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/security/lobby)
@@ -17988,13 +17811,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/bridge/bunker)
-"uDN" = (
-/obj/map_helper/network_builder/power_cable/green/auto,
-/obj/structure/cable/green{
-	icon_state = "1-2"
-	},
-/turf/simulated/floor/tiled/monotile,
-/area/main_map/hallway/deck1)
 "uDX" = (
 /turf/simulated/wall/prepainted/civilian,
 /area/crew_quarters/sleep/Dorm_9)
@@ -19912,7 +19728,6 @@
 "wKE" = (
 /obj/map_helper/network_builder/power_cable/green/auto,
 /obj/machinery/power/apc/south_mount,
-/obj/structure/cable/green,
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology/xenoflora_storage)
 "wKM" = (
@@ -20416,9 +20231,6 @@
 	name = "Port to Isolation"
 	},
 /obj/map_helper/network_builder/power_cable/green/auto,
-/obj/structure/cable/green{
-	icon_state = "1-2"
-	},
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology/xenoflora_storage)
 "xmr" = (
@@ -29711,7 +29523,7 @@ jxY
 nUG
 utf
 wmH
-etO
+wmH
 cnV
 ogl
 vJv
@@ -30069,7 +29881,7 @@ uYz
 uYz
 wyy
 uYz
-ijP
+kyq
 oPU
 udV
 rlz
@@ -30246,8 +30058,8 @@ lNy
 woI
 nwT
 lZM
-iuI
-ncf
+lZM
+lZM
 lTE
 dzd
 vjr
@@ -30263,7 +30075,7 @@ tzX
 uYz
 wyy
 eVK
-lqe
+kyq
 oPU
 udV
 rlz
@@ -30284,7 +30096,7 @@ noW
 noW
 xGQ
 vJv
-qju
+lQr
 vJv
 vJv
 vJv
@@ -30457,7 +30269,7 @@ uYz
 uYz
 wyy
 uYz
-ijP
+kyq
 oPU
 udV
 rlz
@@ -30479,7 +30291,7 @@ noW
 xGQ
 nIK
 tZG
-qQe
+lQr
 lQr
 lQr
 lQr
@@ -31029,7 +30841,7 @@ pnj
 wlt
 iUL
 ksA
-rkO
+hCZ
 fZn
 sft
 hqk
@@ -31223,7 +31035,7 @@ pnj
 jwH
 iUL
 nLj
-glF
+hCZ
 dhu
 dhu
 dqF
@@ -31417,7 +31229,7 @@ pnj
 jwH
 iUL
 xYN
-cnb
+gqK
 boO
 xdn
 xdn
@@ -32047,7 +31859,7 @@ nxa
 fXo
 kij
 kij
-eBW
+iTi
 hRN
 nRO
 mXs
@@ -32629,7 +32441,7 @@ ybO
 fXo
 kij
 kij
-eBW
+iTi
 hRN
 fgQ
 vgu
@@ -34571,7 +34383,7 @@ gwD
 gwD
 gwD
 gwD
-sSM
+ric
 vpO
 xXS
 xdy
@@ -36127,7 +35939,7 @@ jBS
 dOS
 gbT
 ncr
-njl
+ncr
 wUy
 usR
 psH
@@ -36494,7 +36306,7 @@ rFf
 rFf
 heZ
 qci
-uDN
+dzd
 dzd
 heZ
 qAV
@@ -44213,7 +44025,7 @@ hso
 hso
 emW
 wtd
-hBJ
+kUQ
 sCK
 sCK
 sCK

@@ -93,17 +93,6 @@
 	M.swap_hand()
 	return TRUE
 
-/datum/keybinding/mob/activate_inhand
-	hotkey_keys = list("Z", "Southeast") // PAGEDOWN
-	name = "activate_inhand"
-	full_name = "Activate in-hand"
-	description = "Uses whatever item you have inhand"
-
-/datum/keybinding/mob/activate_inhand/down(client/user)
-	var/mob/M = user.mob
-	M.mode()
-	return TRUE
-
 /datum/keybinding/mob/multihand_wield
 	hotkey_keys = list("ShiftX")
 	classic_keys = list("X")
@@ -195,7 +184,7 @@
 	description = "Does a subtle emote that's invisible to ghosts."
 
 /datum/keybinding/mob/subtler/down(client/user)
-	user.mob.subtle_wrapper()
+	user.mob.subtler_wrapper()
 	return TRUE
 
 /datum/keybinding/mob/drop_item

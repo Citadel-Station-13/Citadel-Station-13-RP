@@ -803,12 +803,6 @@ GLOBAL_LIST_INIT(freon_color_matrix, list("#2E5E69", "#60A2A8", "#A1AFB1", rgb(0
 		obj_flags &= ~FROZEN
 */
 
-/// Generate a filename for this asset
-/// The same asset will always lead to the same asset name
-/// (Generated names do not include file extention.)
-/proc/generate_asset_name(file)
-	return "asset.[md5(fcopy_rsc(file))]"
-
 /**
  * Converts an icon to base64. Operates by putting the icon in the iconCache savefile,
  * exporting it as text, and then parsing the base64 from that.
@@ -831,8 +825,6 @@ GLOBAL_LIST_INIT(freon_color_matrix, list("#2E5E69", "#60A2A8", "#A1AFB1", rgb(0
 		return
 //	if(SSlag_switch.measures[DISABLE_USR_ICON2HTML] && usr && !HAS_TRAIT(usr, TRAIT_BYPASS_MEASURES))
 //		return
-
-	var/key
 	var/icon/I = thing
 
 	if (!target)
@@ -850,14 +842,10 @@ GLOBAL_LIST_INIT(freon_color_matrix, list("#2E5E69", "#60A2A8", "#A1AFB1", rgb(0
 
 	if (!isicon(I))
 		if (isfile(thing)) //special snowflake
-			var/name = SANITIZE_FILENAME("[generate_asset_name(thing)].png")
-			if (!SSassets.cache[name])
-				SSassets.transport.register_asset(name, thing)
-			for (var/thing2 in targets)
-				SSassets.transport.send_assets(thing2, name)
+			var/url = SSassets.send_anonymous_file(targets, I, "png")
 			if(sourceonly)
-				return SSassets.transport.get_asset_url(name)
-			return "<img class='[extra_classes] icon icon-misc' src='[SSassets.transport.get_asset_url(name)]'>"
+				return url
+			return "<img class='[extra_classes] icon icon-misc' src='[url]'>"
 		var/atom/A = thing
 
 		I = A.icon
@@ -885,14 +873,10 @@ GLOBAL_LIST_INIT(freon_color_matrix, list("#2E5E69", "#60A2A8", "#A1AFB1", rgb(0
 
 	I = icon(I, icon_state, dir, frame, moving)
 
-	key = "[generate_asset_name(I)].png"
-	if(!SSassets.cache[key])
-		SSassets.transport.register_asset(key, I)
-	for (var/thing2 in targets)
-		SSassets.transport.send_assets(thing2, key)
+	var/url = SSassets.send_anonymous_file(targets, I, "png")
 	if(sourceonly)
-		return SSassets.transport.get_asset_url(key)
-	return "<img class='[extra_classes] icon icon-[icon_state]' src='[SSassets.transport.get_asset_url(key)]'>"
+		return url
+	return "<img class='[extra_classes] icon icon-[icon_state]' src='[url]'>"
 
 /proc/icon2base64html(thing)
 	if (!thing)

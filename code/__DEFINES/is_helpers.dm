@@ -27,7 +27,7 @@
 
 //Datums
 
-#define isTaurTail(A)	istype(A, /datum/sprite_accessory/tail/taur)
+#define isTaurTail(A)	istype(A, /datum/sprite_accessory/tail/legacy_taur)
 
 //Turfs
 
@@ -52,9 +52,9 @@
 
 #define ismachinery(A) (istype(A, /obj/machinery))
 
-#define ismecha(A) (istype(A, /obj/mecha))
+#define ismecha(A) (istype(A, /obj/vehicle/sealed/mecha))
 
-#define isvehicle(A) (istype(A, /obj/vehicle_old) || istype(A, /obj/vehicle) || istype(A, /obj/mecha))
+#define isvehicle(A) (istype(A, /obj/vehicle_old) || istype(A, /obj/vehicle) || istype(A, /obj/vehicle/sealed/mecha))
 
 #define isorgan(A) istype(A, /obj/item/organ/external)
 

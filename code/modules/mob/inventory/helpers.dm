@@ -100,12 +100,12 @@
 /**
  * Attempt to shove an item being held into a storage in a given slot
  */
-/mob/proc/attempt_put_held_item_into_storage_in_slot(obj/item/inserting, datum/inventory_slot_meta/slot_like, silent, mob/initiator = src)
+/mob/proc/attempt_put_held_item_into_storage_in_slot(obj/item/inserting, datum/inventory_slot/slot_like, silent, mob/initiator = src)
 	if(isnull(inserting))
 		inserting = get_active_held_item()
 	if(!is_holding(inserting))
 		return
-	slot_like = resolve_inventory_slot_meta(slot_like)
+	slot_like = resolve_inventory_slot(slot_like)
 	var/obj/item/equipped = item_by_slot_id(slot_like.id)
 	if(isnull(equipped))
 		if(!silent)
@@ -122,8 +122,8 @@
 /**
  * Attempt to grab an item from a given slot into hand.
  */
-/mob/proc/attempt_grab_item_out_of_storage_in_slot(datum/inventory_slot_meta/slot_like, silent, mob/initiator = src)
-	slot_like = resolve_inventory_slot_meta(slot_like)
+/mob/proc/attempt_grab_item_out_of_storage_in_slot(datum/inventory_slot/slot_like, silent, mob/initiator = src)
+	slot_like = resolve_inventory_slot(slot_like)
 	var/obj/item/equipped = item_by_slot_id(slot_like.id)
 	if(isnull(equipped))
 		if(!silent)
@@ -159,8 +159,8 @@
  * Automatically either put in hand object into a storage in a given slot, or
  * draw an item from that storage into hand.
  */
-/mob/proc/auto_held_insert_or_draw_via_slot(datum/inventory_slot_meta/slot_like, silent, mob/initiator = src)
-	slot_like = resolve_inventory_slot_meta(slot_like)
+/mob/proc/auto_held_insert_or_draw_via_slot(datum/inventory_slot/slot_like, silent, mob/initiator = src)
+	slot_like = resolve_inventory_slot(slot_like)
 	var/obj/item/holding = get_active_held_item()
 	var/obj/item/in_slot = item_by_slot_id(slot_like.id)
 	if(isnull(in_slot) || isnull(in_slot.obj_storage))

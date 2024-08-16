@@ -12,6 +12,11 @@
 	if(message)
 		me_verb_subtle(message)
 
+/mob/proc/subtler_wrapper()
+	var/message = input("","subtler (text)") as message|null
+	if(message)
+		subtler_anti_ghost(message)
+
 /mob/verb/whisper(message as text)
 	set name = "Whisper"
 	set category = VERB_CATEGORY_IC

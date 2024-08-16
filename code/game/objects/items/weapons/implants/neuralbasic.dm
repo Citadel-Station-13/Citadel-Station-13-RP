@@ -101,7 +101,7 @@ Implant Specifics:<BR>"}
 			if(robotic_brain)
 				to_chat(H, "<span class='critical'>WARNING. Fault dete-ct-- in the \the [src].</span>")
 			H.Confuse(30)
-			H.AdjustBlinded(5)
+			H.apply_status_effect(/datum/status_effect/sight/blindness, 5 SECONDS)
 		my_brain.take_damage(15)
 		my_brain = null
 	return

@@ -3,7 +3,7 @@
 	id = "shark_ears"
 	icon_state = "shark_ears"
 	do_colouration = 1
-	color_blend_mode = ICON_MULTIPLY
+	legacy_use_additive_color_matrix = FALSE
 
 /datum/sprite_accessory/ears/sharkears/upper
 	name = "shark ears upper"
@@ -20,7 +20,7 @@
 	id = "shark_fin"
 	icon_state = "shark_fin"
 	do_colouration = 1
-	color_blend_mode = ICON_MULTIPLY
+	legacy_use_additive_color_matrix = FALSE
 
 /datum/sprite_accessory/ears/sharkfinalt
 	name = "shark fin alt"

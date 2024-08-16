@@ -62,7 +62,7 @@
 	)
 	contraband = list(
 		/obj/item/reagent_containers/food/drinks/cans/thirteenloko = 5,
-		/obj/item/reagent_containers/food/snacks/liquidfood = 6,
+		/obj/item/reagent_containers/food/snacks/liquid = 6,
 		/obj/item/reagent_containers/food/drinks/cans/dumbjuice = 4,
 		/obj/item/reagent_containers/food/drinks/cans/geometer = 2
 	)

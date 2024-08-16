@@ -384,7 +384,7 @@
 	icon_state = "gaiter_red"
 	slot_flags = SLOT_TIE | SLOT_MASK
 	slot = ACCESSORY_SLOT_DECOR
-	action_button_name = "Adjust Gaiter"
+	item_action_name = "Adjust Gaiter"
 
 /obj/item/clothing/accessory/gaiter/attack_self(mob/user)
 	. = ..()
@@ -405,6 +405,30 @@
 /obj/item/clothing/accessory/gaiter/gray
 	name = "neck gaiter (gray)"
 	icon_state = "gaiter_gray"
+
+/obj/item/clothing/accessory/gaiter/green
+	name = "neck gaiter (green)"
+	icon_state = "gaiter_green"
+
+/obj/item/clothing/accessory/gaiter/blue
+	name = "neck gaiter (blue)"
+	icon_state = "gaiter_blue"
+
+/obj/item/clothing/accessory/gaiter/purple
+	name = "neck gaiter (purple)"
+	icon_state = "gaiter_purple"
+
+/obj/item/clothing/accessory/gaiter/orange
+	name = "neck gaiter (orange)"
+	icon_state = "gaiter_orange"
+
+/obj/item/clothing/accessory/gaiter/charcoal
+	name = "neck gaiter (charcoal)"
+	icon_state = "gaiter_charcoal"
+
+/obj/item/clothing/accessory/gaiter/snow
+	name = "neck gaiter (white)"
+	icon_state = "gaiter_snow"
 
 /obj/item/clothing/accessory/halfcape
 	name = "half cape"
@@ -670,7 +694,7 @@
 		M.afflict_paralyze(20 * 10)
 	return
 
-/obj/item/clothing/accessory/collar/shock/attack_self(mob/user as mob, flag1)
+/obj/item/clothing/accessory/collar/shock/attack_self(mob/user)
 	if(!istype(user, /mob/living/carbon/human))
 		return
 	user.set_machine(src)

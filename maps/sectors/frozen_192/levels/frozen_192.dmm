@@ -948,6 +948,11 @@
 	icon_state = "tile_full"
 	},
 /area/class_p/unexplored)
+"Wc" = (
+/obj/structure/table/standard,
+/obj/item/clothing/mask/warmer,
+/turf/simulated/floor/classp,
+/area/class_p/unexplored)
 "Wr" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply,
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
@@ -31161,7 +31166,7 @@ yW
 at
 at
 Pr
-cp
+Wc
 yW
 iL
 iL

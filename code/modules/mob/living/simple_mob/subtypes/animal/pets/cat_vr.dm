@@ -55,7 +55,7 @@
 
 /mob/living/simple_mob/animal/passive/cat/tabiranth/handle_special()
 	. = ..()
-	if (has_AI() && friend)
+	if (has_polaris_AI() && friend)
 		var/friend_dist = get_dist(src,friend)
 		if (friend_dist <= 1)
 			if (friend.stat >= DEAD || friend.health <= config_legacy.health_threshold_softcrit)

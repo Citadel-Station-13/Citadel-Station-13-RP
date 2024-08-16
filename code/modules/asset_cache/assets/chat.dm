@@ -1,12 +1,12 @@
-/datum/asset/spritesheet/chat
+/datum/asset_pack/spritesheet/chat
 	name = "chat"
 
-/datum/asset/spritesheet/chat/create_spritesheets()
-	InsertAll("emoji", EMOJI_SET)
-	InsertAll("emoji", EMOJI32_SET)
+/datum/asset_pack/spritesheet/chat/generate()
+	insert_all("emoji", EMOJI_SET)
+	insert_all("emoji", EMOJI32_SET)
 	/*
 	// pre-loading all lanugage icons also helps to avoid meta
-	InsertAll("language", 'icons/misc/language.dmi')
+	insert_all("language", 'icons/misc/language.dmi')
 	// catch languages which are pulling icons from another file
 	for(var/path in typesof(/datum/language))
 		var/datum/language/L = path

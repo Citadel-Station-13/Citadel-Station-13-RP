@@ -117,18 +117,25 @@
 			// fancy = user.client.prefs.tgui_fancy,
 			fancy = TRUE,
 			assets = list(
-				get_asset_datum(/datum/asset/simple/tgui),
-			))
+				/datum/asset_pack/simple/tgui,
+			),
+		)
 	else
 		window.send_message("ping")
-	var/flush_queue = window.send_asset(get_asset_datum(
-		/datum/asset/simple/namespaced/fontawesome))
-	flush_queue |= window.send_asset(get_asset_datum(
-		/datum/asset/simple/namespaced/tgfont))
-	for(var/datum/asset/asset in src_object.ui_assets(user))
-		flush_queue |= window.send_asset(asset)
+	var/flush_queue = FALSE
+	flush_queue |= window.send_asset(/datum/asset_pack/simple/fontawesome)
+	flush_queue |= window.send_asset(/datum/asset_pack/simple/tgfont)
+	// prep assets
+	var/list/assets_immediate = list()
+	var/list/assets_deferred = list()
+	// fetch wanted assets
+	src_object.ui_asset_injection(src, assets_immediate, assets_deferred)
+	// send all immediate assets
+	for(var/datum/asset_pack/assetlike as anything in assets_immediate)
+		flush_queue |= window.send_asset(assetlike)
+	// ensure all assets are loaded before continuing
 	if (flush_queue)
-		user.client.browse_queue_flush()
+		user.client.asset_cache_flush_browse_queue()
 	window.send_message("update", get_payload(
 		with_data = TRUE,
 		with_static_data = TRUE,
@@ -142,6 +149,9 @@
 	src_object.on_ui_open(user, src)
 	for(var/datum/module as anything in modules_registered)
 		module.on_ui_open(user, src, TRUE)
+	// now send deferred asets
+	for(var/datum/asset_pack/assetlike as anything in assets_deferred)
+		window.send_asset(assetlike)
 	return TRUE
 
 /**
@@ -216,7 +226,7 @@
  *
  * return bool - true if an asset was actually sent
  */
-/datum/tgui/proc/send_asset(datum/asset/asset)
+/datum/tgui/proc/send_asset(datum/asset_pack/asset)
 	if(!window)
 		CRASH("send_asset() was called either without calling open() first or when open() did not return TRUE.")
 	return window.send_asset(asset)

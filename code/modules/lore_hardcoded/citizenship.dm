@@ -69,6 +69,13 @@
 	desc = "Exiles from Unathi Clans. They are unwelcome in Unathi society by and large, and often resort to crime. Those who are not killed \
 	often flee to the Frontier, where they may find opportunities for a new life."
 
+/datum/lore/character_background/citizenship/vulpunitedstar
+	name = "Vulpkanin United Star"
+	id = "vulpunitedstar"
+	desc = "The Vulpkanin United Star is the galactic voice of all Vulpkanin from the Vazzend and other claimed systems. It is a relative newcomer \
+	on the galactic stage, having been conceived only a couple of centuries ago. Though it doesn't enjoy as much power or influence as the neighboring \
+	Vikara Combine, the VUS advocates for peace and open borders with most other galactic nations, and invests plenty of resources into the sciences."
+
 /datum/lore/character_background/citizenship/custom
 	name = "Other"
 	id = "custom"

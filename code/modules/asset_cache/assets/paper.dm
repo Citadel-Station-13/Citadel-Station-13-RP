@@ -1,4 +1,4 @@
-/datum/asset/spritesheet/simple/paper
+/datum/asset_pack/spritesheet/simple/paper
 	name = "paper"
 	assets = list(
 		"stamp-clown" = 'icons/stamp_icons/large_stamp-clown.png',
@@ -17,3 +17,6 @@
 		"stamp-centcom" = 'icons/stamp_icons/large_stamp-centcom.png',
 		"stamp-syndicate" = 'icons/stamp_icons/large_stamp-syndicate.png'
 	)
+	do_not_separate = TRUE
+	absolute = TRUE
+	do_not_mangle = TRUE

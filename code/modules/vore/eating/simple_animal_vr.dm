@@ -38,6 +38,10 @@
 	var/mob/living/carbon/human/user = usr
 	if(!istype(user) || user.stat) return
 
+	if(!istype(src.ai_holder, /datum/ai_holder/polaris))
+		return
+	var/datum/ai_holder/polaris/ai_holder = src.ai_holder
+
 	if(!vore_selected)
 		to_chat(user, "<span class='warning'>[src] isn't planning on eating anything much less digesting it.</span>")
 		return
@@ -72,6 +76,9 @@
 	to_chat(user, "[src] is now using [vore_selected.fancy_vore ? "Fancy" : "Classic"] vore sounds.")
 
 /mob/living/simple_mob/attackby(var/obj/item/O, var/mob/user)
+	if(!istype(src.ai_holder, /datum/ai_holder/polaris))
+		return ..()
+	var/datum/ai_holder/polaris/ai_holder = src.ai_holder
 	if (istype(O, /obj/item/newspaper) && !(ckey || (ai_holder.hostile && faction != user.faction)) && isturf(user.loc))
 		if (ai_holder.retaliate && prob(vore_pounce_chance/2)) // This is a gamble!
 			user.afflict_paralyze(20 * 5) //They get tackled anyway whether they're edible or not.

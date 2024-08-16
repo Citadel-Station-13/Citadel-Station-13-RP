@@ -41,6 +41,7 @@
 	max_age = 130
 
 	vision_innate = /datum/vision/baseline/species_tier_2
+	vision_organ = O_EYES
 
 	flash_mod  = 1.2
 	chemOD_mod = 0.9

@@ -33,7 +33,7 @@
 				tally += (halloss / 45) //halloss shouldn't slow you down if you can't even feel it
 
 	var/hungry = (500 - nutrition)/5 // So overeat would be 100 and default level would be 80
-	if (hungry >= 70)
+	if (m_intent == MOVE_INTENT_RUN && hungry >= 70)//You can walk while hungry, but you cant run so fast while hungry
 		tally += hungry/50
 
 	if(reagents.has_reagent("numbenzyme"))
@@ -132,6 +132,16 @@
 				else if(direct & global.reverse_dir[WH.wind_dir])
 					. += (WH.wind_speed / 3)
 
+	if(species.light_slowdown || species.dark_slowdown)
+		var/lumcount = T.get_lumcount()
+		var/mod
+		if(lumcount == 0)
+			mod = species.dark_slowdown
+		else if(lumcount == 1)
+			mod = species.light_slowdown
+		else
+			mod = (lumcount * species.light_slowdown) + (LERP(species.dark_slowdown, 0, lumcount))
+		. += mod
 #undef HUMAN_LOWEST_SLOWDOWN
 
 /mob/living/carbon/human/Process_Spacemove(dir)

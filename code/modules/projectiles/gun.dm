@@ -9,6 +9,9 @@
 	var/name = "default"
 	var/list/settings = list()
 
+	/// state key for rendering, if any
+	var/render_key
+
 /datum/firemode/New(obj/item/gun/gun, list/properties = null)
 	..()
 	if(!properties) return
@@ -31,11 +34,9 @@
 /obj/item/gun
 	name = "gun"
 	desc = "Its a gun. It's pretty terrible, though."
+	description_info = "This is a gun.  To fire the weapon, ensure your intent is *not* set to 'help', have your gun mode set to 'fire', \
+		then click where you want to fire."
 	icon = 'icons/obj/gun/ballistic.dmi'
-	item_icons = list(
-		SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand_guns.dmi',
-		SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_guns.dmi',
-		)
 	icon_state = "detective"
 	item_state = "gun"
 	item_flags = ITEM_ENCUMBERS_WHILE_HELD | ITEM_ENCUMBERS_ONLY_HELD
@@ -52,6 +53,7 @@
 	origin_tech = list(TECH_COMBAT = 1)
 	attack_verb = list("struck", "hit", "bashed")
 	zoomdevicename = "scope"
+	inhand_default_type = INHAND_DEFAULT_ICON_GUNS
 
 	var/burst = 1
 	var/fire_delay = 6 	//delay after shooting before the gun can be used again
@@ -72,6 +74,7 @@
 	var/mode_name = null
 	var/projectile_type = /obj/projectile	//On ballistics, only used to check for the cham gun
 	var/holy = FALSE //For Divinely blessed guns
+	// todo: this should be on /ballistic, and be `internal_chambered`.
 	var/obj/item/ammo_casing/chambered = null
 
 	var/wielded_item_state
@@ -96,9 +99,6 @@
 	/// whether or not we have safeties and if safeties are on
 	var/safety_state = GUN_SAFETY_ON
 
-	var/dna_lock = 0				//whether or not the gun is locked to dna
-	var/obj/item/dnalockingchip/attached_lock
-
 	var/last_shot = 0			//records the last shot fired
 
 	var/charge_sections = 4
@@ -120,6 +120,93 @@
 	var/unstable = 0
 	var/destroyed = 0
 
+	//* Rendering
+	/// renderer datum we use for world rendering of the gun item itself
+	/// set this in prototype to a path
+	/// if null, we will not perform default rendering/updating of item states.
+	///
+	/// * anonymous types are allowed and encouraged.
+	/// * the renderer defaults to [base_icon_state || initial(icon_state)] for the base icon state to append to.
+	var/datum/gun_item_renderer/item_renderer
+	/// for de-duping
+	var/static/list/item_renderer_store = list()
+	/// renderer datum we use for mob rendering of the gun when held / worn
+	/// set this in prototype to a path
+	/// if null, we will not perform default rendering/updating of onmob states
+	///
+	/// * anonymous types are allowed and encouraged.
+	/// * the renderer defaults to [base_icon_state || render_mob_base || initial(icon_state)] for the base icon state to append to.
+	var/datum/gun_mob_renderer/mob_renderer
+	/// for de-duping
+	var/static/list/mob_renderer_store = list()
+	/// base onmob state override so we don't use [base_icon_state] if overridden
+	//  todo: impl
+	var/render_mob_base
+	/// render as -wield if we're wielded? applied at the end of our worn state no matter what
+	///
+	/// * ignores [mob_renderer]
+	/// * ignores [render_additional_exclusive] / [render_additional_worn]
+	//  todo: impl
+	var/render_mob_wielded = FALSE
+	/// state to add as an append
+	///
+	/// * segment and overlay renders add [base_icon_state]-[append]
+	/// * state renders set state to [base_icon_state]-[append]-[...rest]
+	var/render_additional_state
+	/// only render [render_additional_state]
+	var/render_additional_exclusive = FALSE
+	/// [render_additional_state] and [render_additional_exclusive] apply to worn sprites
+	//  todo: impl
+	var/render_additional_worn = FALSE
+	/// use the old render system, if item_renderer and mob_renderer are not set
+	//  todo: remove
+	var/render_use_legacy_by_default = TRUE
+
+/obj/item/gun/Initialize(mapload)
+	. = ..()
+
+	// instantiate & dedupe renderers
+	var/requires_icon_update
+	if(item_renderer)
+		if(ispath(item_renderer) || IS_ANONYMOUS_TYPEPATH(item_renderer))
+			item_renderer = new item_renderer
+		var/item_renderer_key = item_renderer.dedupe_key()
+		item_renderer = item_renderer_store[item_renderer_key] || (item_renderer_store[item_renderer_key] = item_renderer)
+		requires_icon_update = TRUE
+	if(mob_renderer)
+		if(ispath(mob_renderer) || IS_ANONYMOUS_TYPEPATH(mob_renderer))
+			mob_renderer = new mob_renderer
+		var/mob_renderer_key = mob_renderer.dedupe_key()
+		mob_renderer = mob_renderer_store[mob_renderer_key] || (mob_renderer_store[mob_renderer_key] = mob_renderer)
+		requires_icon_update = TRUE
+	if(requires_icon_update)
+		update_icon()
+
+	//! LEGACY: if neither of these are here, we are using legacy render.
+	if(!item_renderer && !mob_renderer && render_use_legacy_by_default)
+		item_icons = list(
+			SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand_guns.dmi',
+			SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_guns.dmi',
+			)
+
+	for(var/i in 1 to firemodes.len)
+		var/key = firemodes[i]
+		if(islist(key))
+			firemodes[i] = new /datum/firemode(src, key)
+		else if(IS_ANONYMOUS_TYPEPATH(key))
+			firemodes[i] = new key
+		else if(ispath(key))
+			firemodes[i] = new key
+	if(length(firemodes))
+		sel_mode = 0
+		switch_firemodes()
+
+	if(isnull(scoped_accuracy))
+		scoped_accuracy = accuracy
+
+	if(pin)
+		pin = new pin(src)
+
 /obj/item/gun/CtrlClick(mob/user)
 	if(can_flashlight && ishuman(user) && src.loc == usr && !user.incapacitated(INCAPACITATION_ALL))
 		toggle_flashlight()
@@ -136,24 +223,6 @@
 
 	playsound(src, 'sound/machines/button.ogg', 25)
 	update_icon()
-
-/obj/item/gun/Initialize(mapload)
-	. = ..()
-	for(var/i in 1 to firemodes.len)
-		firemodes[i] = new /datum/firemode(src, firemodes[i])
-
-	if(isnull(scoped_accuracy))
-		scoped_accuracy = accuracy
-
-	if(dna_lock)
-		attached_lock = new /obj/item/dnalockingchip(src)
-	if(!dna_lock)
-		remove_obj_verb(src, /obj/item/gun/verb/remove_dna)
-		remove_obj_verb(src, /obj/item/gun/verb/give_dna)
-		remove_obj_verb(src, /obj/item/gun/verb/allow_dna)
-
-	if(pin)
-		pin = new pin(src)
 
 /obj/item/gun/update_twohanding()
 	if(one_handed_penalty)
@@ -199,21 +268,6 @@
 		return 0
 
 	var/mob/living/M = user
-	if(dna_lock && attached_lock.stored_dna)
-		if(!authorized_user(user))
-			if(attached_lock.safety_level == 0)
-				to_chat(M, "<span class='danger'>\The [src] buzzes in dissapointment and displays an invalid DNA symbol.</span>")
-				return 0
-			if(!attached_lock.exploding)
-				if(attached_lock.safety_level == 1)
-					to_chat(M, "<span class='danger'>\The [src] hisses in dissapointment.</span>")
-					visible_message("<span class='game say'><span class='name'>\The [src]</span> announces, \"Self-destruct occurring in ten seconds.\"</span>", "<span class='game say'><span class='name'>\The [src]</span> announces, \"Self-destruct occurring in ten seconds.\"</span>")
-					attached_lock.exploding = 1
-					spawn(100)
-						explosion(src, 0, 0, 3, 4)
-						sleep(1)
-						qdel(src)
-					return 0
 	if(MUTATION_HULK in M.mutations)
 		to_chat(M, "<span class='danger'>Your fingers are much too large for the trigger guard!</span>")
 		return 0
@@ -280,35 +334,6 @@
 	return ..() //Pistolwhippin'
 
 /obj/item/gun/attackby(obj/item/A, mob/user)
-	if(istype(A, /obj/item/dnalockingchip))
-		if(dna_lock)
-			to_chat(user, "<span class='notice'>\The [src] already has a [attached_lock].</span>")
-			return
-		if(!user.attempt_insert_item_for_installation(A, src))
-			return
-		to_chat(user, "<span class='notice'>You insert \the [A] into \the [src].</span>")
-		attached_lock = A
-		dna_lock = 1
-		add_obj_verb(src, /obj/item/gun/verb/remove_dna)
-		add_obj_verb(src, /obj/item/gun/verb/give_dna)
-		add_obj_verb(src, /obj/item/gun/verb/allow_dna)
-		return
-
-	if(A.is_screwdriver())
-		if(dna_lock && attached_lock && !attached_lock.controller_lock)
-			to_chat(user, "<span class='notice'>You begin removing \the [attached_lock] from \the [src].</span>")
-			playsound(src, A.tool_sound, 50, 1)
-			if(do_after(user, 25 * A.tool_speed))
-				to_chat(user, "<span class='notice'>You remove \the [attached_lock] from \the [src].</span>")
-				user.put_in_hands(attached_lock)
-				dna_lock = 0
-				attached_lock = null
-				remove_obj_verb(src, /obj/item/gun/verb/remove_dna)
-				remove_obj_verb(src, /obj/item/gun/verb/give_dna)
-				remove_obj_verb(src, /obj/item/gun/verb/allow_dna)
-		else
-			to_chat(user, "<span class='warning'>\The [src] is not accepting modifications at this time.</span>")
-
 	if(A.is_multitool())
 		if(!scrambled)
 			to_chat(user, "<span class='notice'>You begin scrambling \the [src]'s electronic pins.</span>")
@@ -355,12 +380,6 @@
 	..()
 
 /obj/item/gun/emag_act(var/remaining_charges, var/mob/user)
-	if(dna_lock && attached_lock.controller_lock)
-		to_chat(user, "<span class='notice'>You short circuit the internal locking mechanisms of \the [src]!</span>")
-		attached_lock.controller_dna = null
-		attached_lock.controller_lock = 0
-		attached_lock.stored_dna = list()
-		return 1
 	if(pin)
 		pin.emag_act(remaining_charges, user)
 
@@ -566,7 +585,7 @@
 		for(var/mob/living/L in oview(2,user))
 			if(L.stat)
 				continue
-			if(L.blinded)
+			if(L.has_status_effect(/datum/status_effect/sight/blindness))
 				to_chat(L, "You hear a [fire_sound_text]!")
 				continue
 			to_chat(L, 	"<span class='danger'>\The [user] fires \the [src][pointblank ? " point blank at \the [target]":""][reflex ? " by reflex":""]!</span>")
@@ -780,8 +799,9 @@
 		sel_mode = 1
 	var/datum/firemode/new_mode = firemodes[sel_mode]
 	new_mode.apply_to(src)
-	to_chat(user, "<span class='notice'>\The [src] is now set to [new_mode.name].</span>")
-	playsound(loc, selector_sound, 50, 1)
+	if(user)
+		to_chat(user, "<span class='notice'>\The [src] is now set to [new_mode.name].</span>")
+		playsound(loc, selector_sound, 50, 1)
 	return new_mode
 
 /obj/item/gun/attack_self(mob/user)
@@ -852,3 +872,34 @@
  */
 /obj/item/gun/proc/check_safety()
 	return (safety_state == GUN_SAFETY_ON)
+
+// PENDING FIREMODE REWORK
+/obj/item/gun/proc/legacy_get_firemode()
+	return firemodes[sel_mode]
+
+//* Ammo *//
+
+/**
+ * Gets the ratio of our ammo left
+ *
+ * * Used by rendering
+ *
+ * @return number as 0 to 1, inclusive
+ */
+/obj/item/gun/proc/get_ammo_ratio()
+	return 0
+
+//* Rendering *//
+
+/obj/item/gun/update_icon(updates)
+	if(!item_renderer && !mob_renderer)
+		return ..()
+	cut_overlays()
+	var/ratio_left = get_ammo_ratio()
+	var/datum/firemode/using_firemode = legacy_get_firemode()
+	item_renderer?.render(src, ratio_left, using_firemode?.render_key)
+	var/needs_worn_update = mob_renderer?.render(src, ratio_left, using_firemode?.render_key)
+	// todo: render_mob_wielded
+	if(needs_worn_update)
+		update_worn_icon()
+	return ..()

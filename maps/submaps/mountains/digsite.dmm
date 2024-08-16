@@ -70,7 +70,7 @@
 /turf/simulated/wall,
 /area/submap/cave/digsite)
 "t" = (
-/obj/item/frame/apc,
+/obj/item/frame2/apc,
 /obj/item/module/power_control,
 /turf/simulated/floor/plating/external,
 /area/submap/cave/digsite)

@@ -4,7 +4,7 @@
 	id = "ears_kitty_color"
 	icon_state = "kitty"
 	do_colouration = 1
-	color_blend_mode = ICON_MULTIPLY
+	legacy_use_additive_color_matrix = FALSE
 	extra_overlay = "kittyinner"
 
 /datum/sprite_accessory/ears/kittyr
@@ -13,6 +13,6 @@
 	icon = 'icons/mob/sprite_accessories/ears_uneven.dmi'
 	icon_state = "kittyrinner"
 	do_colouration = 1
-	color_blend_mode = ICON_MULTIPLY
+	legacy_use_additive_color_matrix = FALSE
 	extra_overlay = "kittyr"
 

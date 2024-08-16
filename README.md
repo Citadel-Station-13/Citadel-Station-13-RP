@@ -56,8 +56,12 @@ These are also the folders you are likely going to encounter while managing the 
 - /config: server configuration
   - /legacy: legacy configuration data go in here
 - /data: server persistent data
+  - /asset-cache - default location for caching of generated assets
+  - /asset-root - default location for generated assets to be served in webroot mode
   - /logs: logs are dumped in here
   - /players: player data, like saves and characters get dumped in here
+- /tmp: server scratch space
+  - /assets - for asset generation
   
 You only need to make the top level folders (e.g. config, data) static folders in TGS4.
 

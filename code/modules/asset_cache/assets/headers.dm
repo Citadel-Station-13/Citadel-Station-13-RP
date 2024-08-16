@@ -1,4 +1,4 @@
-/datum/asset/simple/headers
+/datum/asset_pack/simple/headers
 	assets = list(
 		"alarm_green.gif" = 'icons/program_icons/alarm_green.gif',
 		"alarm_red.gif" = 'icons/program_icons/alarm_red.gif',
@@ -29,3 +29,4 @@
 		"borg_mon.gif" = 'icons/program_icons/borg_mon.gif',
 		"robotact.gif" = 'icons/program_icons/robotact.gif'
 	)
+	absolute = TRUE

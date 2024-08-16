@@ -193,7 +193,7 @@
 			M.druggy = max(M.druggy, 5)
 	if(alien != IS_DIONA)
 		M.drowsyness = max(0, M.drowsyness - 6 * removed * chem_effective)//reduces drowsyness to zero
-		M.hallucination = max(0, M.hallucination - 9 * removed * chem_effective)//reduces hallucination to 0
+		M.adjustHallucination(-9 * removed * chem_effective) //reduces hallucination to 0
 		M.adjustToxLoss(-4 * removed * chem_effective)//Removes toxin damage
 		if(prob(10))
 			M.remove_a_modifier_of_type(/datum/modifier/poisoned)//Removes the poisoned effect, which is super rare of its own
@@ -469,7 +469,7 @@
 	..()
 	if(alien == IS_SLIME)
 		M.add_chemical_effect(CE_SLOWDOWN, 1)
-	M.hallucination = max(M.hallucination, 2)
+	M.setHallucination(max(M.hallucination, 2))
 
 /datum/reagent/tramadol
 	name = "Tramadol"
@@ -492,7 +492,7 @@
 
 /datum/reagent/tramadol/overdose(mob/living/carbon/M, alien)
 	..()
-	M.hallucination = max(M.hallucination, 2)
+	M.setHallucination(max(M.hallucination, 2))
 
 /datum/reagent/oxycodone
 	name = "Oxycodone"
@@ -518,7 +518,7 @@
 /datum/reagent/oxycodone/overdose(mob/living/carbon/M, alien)
 	..()
 	M.druggy = max(M.druggy, 10)
-	M.hallucination = max(M.hallucination, 3)
+	M.setHallucination(max(M.hallucination, 3))
 
 /datum/reagent/numbing_enzyme//Moved from Chemistry-Reagents-Medicine_vr.dm
 	name = "Numbing Enzyme"//Obtained from vore bellies, and numbing bite trait custom species
@@ -552,8 +552,8 @@
 				H.losebreath = 10
 				H.adjustOxyLoss(5)
 		if(prob(2))
-			to_chat(H,"<span class='warning'>You feel a dull pain behind your eyes and at thee back of your head...</span>")
-			H.hallucination += 20 //It messes with your mind for some reason.
+			to_chat(H,"<span class='warning'>You feel a dull pain behind your eyes and at the back of your head...</span>")
+			H.adjustHallucination(20) //It messes with your mind for some reason.
 			H.eye_blurry += 20 //Groggy vision for a small bit.
 		if(prob(3))
 			to_chat(H,"<span class='warning'>You shiver, your body continually being assaulted by the sensation of pins and needles.</span>")
@@ -591,7 +591,7 @@
 	M.adjust_stunned(20 * -1)
 	M.adjust_paralyzed(20 * -1)
 	holder.remove_reagent("mindbreaker", 5)
-	M.hallucination = max(0, M.hallucination - 10)//Primary use
+	M.adjustHallucination(-10) //Primary use
 	M.adjustToxLoss(5 * removed * chem_effective) // It used to be incredibly deadly due to an oversight. Not anymore!
 	M.ceiling_chemical_effect(CE_PAINKILLER, 20 * chem_effective)
 
@@ -653,7 +653,6 @@
 
 /datum/reagent/imidazoline/affect_blood(mob/living/carbon/M, alien, removed)
 	M.eye_blurry = max(M.eye_blurry - 5, 0)
-	M.AdjustBlinded(-5)
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
 		var/obj/item/organ/internal/eyes/E = H.internal_organs_by_name[O_EYES]
@@ -663,7 +662,7 @@
 			if(E.damage > 0)
 				E.heal_damage_i(5 * removed, can_revive = TRUE)
 			if(E.damage <= 5 && E.organ_tag == O_EYES)
-				H.sdisabilities &= ~SDISABILITY_NERVOUS
+				H.remove_blindness_source(TRAIT_BLINDNESS_EYE_DMG)
 
 /datum/reagent/peridaxon
 	name = "Peridaxon"
@@ -686,7 +685,7 @@
 				H.Confuse(5)
 			if(I.damage <= 5 && I.organ_tag == O_EYES)
 				H.eye_blurry = min(M.eye_blurry + 10, 100) //Eyes need to reset, or something
-				H.sdisabilities &= ~SDISABILITY_NERVOUS
+				H.remove_blindness_source(TRAIT_BLINDNESS_EYE_DMG)
 		if(alien == IS_SLIME)
 			H.ceiling_chemical_effect(CE_PAINKILLER, 20)
 			if(prob(33))
@@ -711,7 +710,7 @@
 				H.Confuse(5)
 			if(I.damage <= 5 && I.organ_tag == O_EYES)
 				H.eye_blurry = min(M.eye_blurry + 10, 100) //Eyes need to reset, or something
-				H.sdisabilities &= ~SDISABILITY_NERVOUS
+				H.remove_blindness_source(TRAIT_BLINDNESS_EYE_DMG)
 		if(alien == IS_SLIME)
 			H.ceiling_chemical_effect(CE_PAINKILLER, 20)
 			if(prob(33))
@@ -1188,7 +1187,7 @@
 	if(prob(20))
 		M.make_dizzy(5)
 	if(prob(20))
-		M.hallucination = max(M.hallucination, 10)
+		M.setHallucination(max(M.hallucination, 10))
 
 	//One of the levofloxacin side effects is 'spontaneous tendon rupture', which I'll immitate here. 1:1000 chance, so, pretty darn rare.
 	if(ishuman(M) && rand(1,10000) == 1)
@@ -1421,11 +1420,11 @@
 	else
 		if(world.time > data + ANTIDEPRESSANT_MESSAGE_DELAY)
 			data = world.time
-			if(prob(90))
-				to_chat(M, "<span class='notice'>Your mind feels much more stable.</span>")
-			else
+			if(prob(1))
 				to_chat(M, "<span class='warning'>Your mind breaks apart...</span>")
-				M.hallucination += 200
+				M.adjustHallucination(200)
+			else
+				to_chat(M, "<span class='notice'>Your mind feels much more stable.</span>")
 
 /datum/reagent/adranol//Moved from Chemistry-Reagents-Medicine_vr.dm
 	name = "Adranol"
@@ -1523,7 +1522,7 @@
 	M.adjustHalLoss(1)
 	if(!M.confused) M.confused = 1
 	M.confused = max(M.confused, 20)
-	M.hallucination += 15
+	M.adjustHallucination(15)
 
 	for(var/belly in M.vore_organs)
 		var/obj/belly/B = belly
@@ -1629,4 +1628,4 @@
 /datum/reagent/neuratrextate/overdose(mob/living/carbon/M)
 	..()
 	M.druggy += 30
-	M.hallucination += 20
+	M.adjustHallucination(20)

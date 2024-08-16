@@ -4,7 +4,6 @@
 	construction_type = /obj/item/pipe/trinary/flippable
 	pipe_state = "mixer"
 	density = 0
-	level = 1
 
 	name = "Gas mixer"
 

@@ -249,7 +249,7 @@
 			holder_slot_icons[cache_entry] = holder_mob_icon_cache[cache_key]
 	return ..()
 
-/obj/item/holder/human/resolve_worn_assets(mob/M, datum/inventory_slot_meta/slot_meta, inhands, bodytype)
+/obj/item/holder/human/resolve_worn_assets(mob/M, datum/inventory_slot/slot_meta, inhands, bodytype)
 	var/list/generated = list()
 	generated.len = WORN_DATA_LIST_SIZE
 	generated[WORN_DATA_ICON] = holder_slot_icons[slot_meta.id]

@@ -36,6 +36,7 @@
 	icon = 'icons/obj/atmospherics/mainspipe.dmi'
 	plane = TURF_PLANE
 	layer = PIPE_LAYER
+	hides_underfloor_defaulting = TRUE
 
 	var/volume = 0
 
@@ -67,11 +68,6 @@
 	aux = new(src)
 	aux.volume = volume
 	aux.nodes.len = nodes.len
-
-/obj/machinery/atmospherics/mains_pipe/hide(var/i)
-	if(level == 1 && istype(loc, /turf/simulated))
-		invisibility = i ? 101 : 0
-	update_icon()
 
 /obj/machinery/atmospherics/mains_pipe/proc/burst()
 	for(var/obj/machinery/atmospherics/pipe/mains_component/pipe in contents)
@@ -183,16 +179,13 @@
 
 	..() // initialize internal pipes
 
-	var/turf/T = src.loc			// hide if turf is not intact
-	if(level == 1 && !T.is_plating()) hide(1)
 	update_icon()
 
 /obj/machinery/atmospherics/mains_pipe/simple/hidden
-	level = 1
 	icon_state = "intact-f"
 
 /obj/machinery/atmospherics/mains_pipe/simple/visible
-	level = 2
+	hides_underfloor = OBJ_UNDERFLOOR_NEVER
 	icon_state = "intact"
 
 /obj/machinery/atmospherics/mains_pipe/manifold
@@ -245,8 +238,6 @@
 
 	..() // initialize internal pipes
 
-	var/turf/T = src.loc			// hide if turf is not intact
-	if(level == 1 && !T.is_plating()) hide(1)
 	update_icon()
 
 /obj/machinery/atmospherics/mains_pipe/manifold/update_icon_state()
@@ -254,11 +245,10 @@
 	icon_state = "manifold[invisibility ? "-f" : "" ]"
 
 /obj/machinery/atmospherics/mains_pipe/manifold/hidden
-	level = 1
 	icon_state = "manifold-f"
 
 /obj/machinery/atmospherics/mains_pipe/manifold/visible
-	level = 2
+	hides_underfloor = OBJ_UNDERFLOOR_NEVER
 	icon_state = "manifold"
 
 /obj/machinery/atmospherics/mains_pipe/manifold4w
@@ -296,8 +286,6 @@
 
 	..() // initialize internal pipes
 
-	var/turf/T = src.loc			// hide if turf is not intact
-	if(level == 1 && !T.is_plating()) hide(1)
 	update_icon()
 
 /obj/machinery/atmospherics/mains_pipe/manifold4w/update_icon_state()
@@ -305,11 +293,10 @@
 	icon_state = "manifold4w[invisibility ? "-f" : "" ]"
 
 /obj/machinery/atmospherics/mains_pipe/manifold4w/hidden
-	level = 1
 	icon_state = "manifold4w-f"
 
 /obj/machinery/atmospherics/mains_pipe/manifold4w/visible
-	level = 2
+	hides_underfloor = OBJ_UNDERFLOOR_NEVER
 	icon_state = "manifold4w"
 
 /obj/machinery/atmospherics/mains_pipe/split
@@ -358,8 +345,6 @@
 			if(N1 && N2)
 				N1.merge(N2)
 
-	var/turf/T = src.loc			// hide if turf is not intact
-	if(level == 1 && !T.is_plating()) hide(1)
 	update_icon()
 
 /obj/machinery/atmospherics/mains_pipe/split/update_icon_state()
@@ -377,18 +362,15 @@
 	split_node = supply
 */
 /obj/machinery/atmospherics/mains_pipe/split/hidden/supply
-	level = 1
 	icon_state = "split-supply-f"
 /obj/machinery/atmospherics/mains_pipe/split/hidden/scrubbers
-	level = 1
 	icon_state = "split-scrubbers-f"
 /obj/machinery/atmospherics/mains_pipe/split/hidden/aux
-	level = 1
 	icon_state = "split-aux-f"
 
 
 /obj/machinery/atmospherics/mains_pipe/split/visible/suppy
-	level = 2
+	hides_underfloor = OBJ_UNDERFLOOR_NEVER
 	icon_state = "split-supply"
 
 /obj/machinery/atmospherics/mains_pipe/split/scrubbers
@@ -400,7 +382,7 @@
 
 
 /obj/machinery/atmospherics/mains_pipe/split/visible
-	level = 2
+	hides_underfloor = OBJ_UNDERFLOOR_NEVER
 	icon_state = "split-scrubbers"
 
 /obj/machinery/atmospherics/mains_pipe/split/aux
@@ -411,7 +393,7 @@
 	split_node = aux
 
 /obj/machinery/atmospherics/mains_pipe/split/visible
-	level = 2
+	hides_underfloor = OBJ_UNDERFLOOR_NEVER
 	icon_state = "split-aux"
 
 /obj/machinery/atmospherics/mains_pipe/split3
@@ -480,8 +462,6 @@
 			if(N1 && N2)
 				N1.merge(N2)
 
-	var/turf/T = src.loc			// hide if turf is not intact
-	if(level == 1 && !T.is_plating()) hide(1)
 	update_icon()
 
 /obj/machinery/atmospherics/mains_pipe/split3/update_icon()
@@ -499,11 +479,10 @@
 	return A
 
 /obj/machinery/atmospherics/mains_pipe/split3/hidden
-	level = 1
 	icon_state = "split-t-f"
 
 /obj/machinery/atmospherics/mains_pipe/split3/visible
-	level = 2
+	hides_underfloor = OBJ_UNDERFLOOR_NEVER
 	icon_state = "split-t"
 
 /obj/machinery/atmospherics/mains_pipe/cap
@@ -530,14 +509,11 @@
 
 	..()
 
-	var/turf/T = src.loc	// hide if turf is not intact
-	if(level == 1 && !T.is_plating()) hide(1)
 	update_icon()
 
 /obj/machinery/atmospherics/mains_pipe/cap/hidden
-	level = 1
 	icon_state = "cap-f"
 
 /obj/machinery/atmospherics/mains_pipe/cap/visible
-	level = 2
+	hides_underfloor = OBJ_UNDERFLOOR_NEVER
 	icon_state = "cap"

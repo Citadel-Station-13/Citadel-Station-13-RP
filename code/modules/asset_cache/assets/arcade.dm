@@ -1,4 +1,4 @@
-/datum/asset/simple/arcade
+/datum/asset_pack/simple/arcade
 	assets = list(
 		"boss1.gif" = 'icons/ui_icons/arcade/boss1.gif',
 		"boss2.gif" = 'icons/ui_icons/arcade/boss2.gif',

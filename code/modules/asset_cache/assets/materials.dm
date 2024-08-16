@@ -1,5 +1,5 @@
-/datum/asset/spritesheet/materials
+/datum/asset_pack/spritesheet/materials
 	name = "sheetmaterials"
 
-/datum/asset/spritesheet/materials/create_spritesheets()
-	InsertAll("stack", 'icons/interface/materials.dmi')
+/datum/asset_pack/spritesheet/materials/generate()
+	insert_all("stack", 'icons/interface/materials.dmi')

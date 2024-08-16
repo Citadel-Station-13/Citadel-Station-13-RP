@@ -105,7 +105,13 @@
 			for(var/mob/living/M in neighbor)
 				if(seed.get_trait(TRAIT_SPREAD) >= 2 && (M.lying || prob(round(seed.get_trait(TRAIT_POTENCY)))))
 					entangle(M)
-
+	if(is_mature() && seed.get_trait(TRAIT_CARNIVOROUS))
+		for(var/obj/effect/plant/thing in loc)
+			if(thing != src)
+				if(thing.seed != seed)
+					thing.vine_overrun(src,src)
+				else
+					thing.die_off(TRUE) // let's just make sure there's only one
 	if(is_mature() && neighbors.len && prob(spread_chance))
 		//spread to 1-3 adjacent turfs depending on yield trait.
 		var/max_spread = between(1, round(seed.get_trait(TRAIT_YIELD)*3/14), 3)

@@ -17,6 +17,11 @@
 /// From a flashbulb
 #define FLASH_TRAIT "flash"
 
+//* Machinery *//
+
+/// cryotube
+#define CRYO_TUBE_TRAIT "cryotube"
+
 //? Mob Sources
 
 /// From species

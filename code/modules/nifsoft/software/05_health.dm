@@ -114,7 +114,7 @@
 					W.heal_damage(0.1)
 					EO.update_damages()
 					if(EO.update_icon())
-						nif.human.UpdateDamageIcon(1)
+						nif.human.update_damage_overlay(1)
 					nif.use_charge(0.1)
 					return TRUE //Return entirely, we only heal one at a time.
 				else if(mode == 1)

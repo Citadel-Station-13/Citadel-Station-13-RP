@@ -381,13 +381,6 @@ CREATE TABLE IF NOT EXISTS `%_PREFIX_%privacy` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-CREATE TABLE IF NOT EXISTS `%_PREFIX_%vr_player_hours` (
-  `ckey` varchar(32) CHARACTER SET latin1 COLLATE latin1_general_ci NOT NULL,
-  `department` varchar(64) CHARACTER SET latin1 COLLATE latin1_general_ci NOT NULL,
-  `hours` double NOT NULL,
-  PRIMARY KEY (`ckey`,`department`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
 CREATE TABLE IF NOT EXISTS `%_PREFIX_%death` (
   `id` INT(11) NOT NULL AUTO_INCREMENT ,
   `pod` TEXT NOT NULL COMMENT 'Place of death' ,

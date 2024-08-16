@@ -17,6 +17,8 @@
 	throw_range = 5
 	w_class = WEIGHT_CLASS_SMALL
 
+	worth_intrinsic = 35
+
 	//Cost to make in the autolathe
 	materials_base = list(MAT_STEEL = 70, MAT_GLASS = 30)
 
@@ -315,10 +317,10 @@
 
 			if (E.damage >= E.min_broken_damage)
 				to_chat(user, "<span class='danger'>You go blind!</span>")
-				user.sdisabilities |= SDISABILITY_NERVOUS
+				user.remove_blindness_source( TRAIT_BLINDNESS_EYE_DMG)
 			else if (E.damage >= E.min_bruised_damage)
 				to_chat(user, "<span class='danger'>You go blind!</span>")
-				user.Blind(5)
+				user.apply_status_effect(/datum/status_effect/sight/blindness, 5 SECONDS)
 				user.eye_blurry = 5
 				user.disabilities |= DISABILITY_NEARSIGHTED
 				spawn(100)
@@ -575,6 +577,7 @@
 	icon_state = "arcwelder"
 	max_fuel = 0	//We'll handle the consumption later.
 	item_state = "ewelder"
+	worth_intrinsic = 70
 	var/obj/item/cell/power_supply //What type of power cell this uses
 	var/charge_cost = 24	//The rough equivalent of 1 unit of fuel, based on us wanting 10 welds per battery
 	var/cell_type = /obj/item/cell/device
@@ -719,11 +722,11 @@
 	..()
 
 	if(equip_mount && equip_mount.chassis)
-		var/obj/mecha/M = equip_mount.chassis
+		var/obj/vehicle/sealed/mecha/M = equip_mount.chassis
 		if(M.selected == equip_mount && get_fuel())
-			setWelding(TRUE, M.occupant)
+			setWelding(TRUE, M.occupant_legacy)
 		else
-			setWelding(FALSE, M.occupant)
+			setWelding(FALSE, M.occupant_legacy)
 
 #undef WELDER_FUEL_BURN_INTERVAL
 
@@ -750,8 +753,11 @@
 		M.update_inv_l_hand()
 		M.update_inv_r_hand()
 
-/obj/item/weldingtool/electric/crystal/attack_self(var/mob/living/carbon/human/user)
-	if(user.species.name == SPECIES_ADHERENT)
+/obj/item/weldingtool/electric/crystal/attack_self(mob/user)
+	var/mob/living/carbon/human/H = user
+	if(!istype(H))
+		return
+	if(H.species.name == SPECIES_ADHERENT)
 		if(user.nutrition >= 40)
 			setWelding(!welding, user)
 		else

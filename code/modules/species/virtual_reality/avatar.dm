@@ -16,6 +16,7 @@
 	species_spawn_flags =		SPECIES_SPAWN_SPECIAL
 
 	speech_bubble_appearance = "cyber"
+	vision_organ = O_EYES
 
 	assisted_langs = list()
 

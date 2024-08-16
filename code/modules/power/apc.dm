@@ -698,7 +698,7 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/power/apc, 22)
 					"<span class='notice'>You disassembled the broken APC frame.</span>",\
 					"You hear welding.")
 			else
-				new /obj/item/frame/apc(loc)
+				new /obj/item/frame2/apc(loc)
 				user.visible_message(\
 					"<span class='warning'>[src] has been cut from the wall by [user.name] with the [WT.name].</span>",\
 					"<span class='notice'>You cut the APC frame from the wall.</span>",\
@@ -706,7 +706,7 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/power/apc, 22)
 			qdel(src)
 			return
 	else if (opened && ((machine_stat & BROKEN) || hacker || emagged))
-		if (istype(W, /obj/item/frame/apc) && (machine_stat & BROKEN))
+		if (istype(W, /obj/item/frame2/apc) && (machine_stat & BROKEN))
 			if(cell)
 				to_chat(user, "<span class='warning'>You need to remove the power cell first.</span>")
 				return
