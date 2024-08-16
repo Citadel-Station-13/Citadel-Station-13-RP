@@ -53,6 +53,7 @@
 	if(source == parent)
 		return
 	// no more locker exploit
+	// basically, don't slip if they're exiting onto the tile we're on
 	if(old_loc?.loc == parent:loc)
 		return
 	if(!isliving(source))
@@ -64,5 +65,6 @@
 	if(living_source.resting)
 		return
 	if(!(living_source.movement_type & MOVEMENT_GROUND))
+		return
 	// end
 	living_source.slip_act(slip_class, parent, hard_strength, soft_strength)
