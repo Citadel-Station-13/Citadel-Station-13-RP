@@ -45,12 +45,47 @@
 	integrity = 200
 	integrity_max = 200
 
-	//* Balancing Configuration *//
+	//* Firing Configuration *//
 	/// delay between shots in deciseconds
 	///
 	/// * decimal values are valid
-	var/firing_cooldown = 2 SECONDS
+	/// * if we are firing a burst, this is from the end of the burst.
+	var/fire_delay = 1.5 SECONDS
+	/// burst amount
+	var/fire_burst = 1
+	/// burst delay
+	var/fire_burst_spacing = 1.5
+	/// allow shooting non-center-mass
 	///
+	/// * This makes the turret into a toxic PvPer.
+	/// * This is a dangerous flag to set.
+	var/fire_curve_shots = FALSE
+	/// Do we suppressive fire?
+	///
+	/// * This means we fire off center mass as long as they're vaguely in view.
+	/// * if [fire_curve_shots] is on, this means we aim center at a pixel that should hit them.
+	var/fire_suppressive = FALSE
+	/// Suppressive fire dispersion center
+	var/fire_suppressive_dispersion_center = 5
+	/// Suppressive fire dispersion deviation
+	var/fire_suppressive_dispersion_deviation = 5
+
+	//* Turret Configuration *//
+	/// our range
+	var/engagement_range = 7
+	/// our maximum engagement range (for already engaged targets)
+	var/disengagement_range = 12
+
+	//* Projectile Configuration *//
+	/// projectile type to fire. overrides every other projectile_use_* when set
+	//  todo: mode support
+	var/projectile_use_type
+
+	//* State *//
+	/// last time we fired
+	var/last_fire
+	/// next time we can fire
+	var/next_fire
 
 	//* Legacy below. *//
 
@@ -74,15 +109,11 @@
 	/// Holder for the shot when emagged.
 	var/lethal_projectile = null
 	/// Holder for power needed.
-	var/reqpower = 500
+	// todo: rework this
+	var/reqpower = 750
 	var/turret_type = "normal"
 	var/icon_color = "blue"
 	var/lethal_icon_color = "blue"
-
-	///TRUE: if the turret is cooling down from a shot, FALSE: turret is ready to fire.
-	var/last_fired = FALSE
-	/// 1.5 seconds between each shot.
-	var/shot_delay = 1.5 SECONDS
 
 	/// Checks if the perp is set to arrest.
 	var/check_arrest = TRUE
@@ -217,13 +248,14 @@
 			lethal_icon_color = "red"
 			lethal_projectile = /obj/projectile/beam/burstlaser
 			lethal_shot_sound = 'sound/weapons/Laser.ogg'
-			shot_delay = 1 SECOND
+			fire_burst = 3
+			fire_burst_spacing = 1.5
 
 		if(/obj/item/gun/energy/phasegun)
 			icon_color = "orange"
 			lethal_icon_color = "orange"
 			lethal_projectile = /obj/projectile/energy/phase/heavy
-			shot_delay = 1 SECOND
+			fire_delay = 1 SECOND
 
 		if(/obj/item/gun/energy/gun)
 			lethal_icon_color = "red"
@@ -341,10 +373,11 @@
 /obj/machinery/porta_turret/power_change()
 	// todo: machinery/proc/on_online(), machinery/proc/on_offline()?
 	if(powered())
-		ai_holder.
+		ai_holder.set_enabled(TRUE)
 		machine_stat &= ~NOPOWER
 		update_icon()
 	else
+		ai_holder.set_enabled(FALSE)
 		spawn(rand(0, 15))
 			machine_stat |= NOPOWER
 			update_icon()
@@ -423,6 +456,7 @@
 		enabled = FALSE //turns off the turret temporarily
 		sleep(60) //6 seconds for the traitor to gtfo of the area before the turret decides to ruin his shit
 		enabled = TRUE //turns it back on. The cover popUp() popDown() are automatically called in process(), no need to define it here
+		fire_delay *= 0.5 // :trol:
 		return 1
 
 /obj/machinery/porta_turret/damage_integrity(amount, gradual, do_not_break)
@@ -432,12 +466,19 @@
 
 /obj/machinery/porta_turret/bullet_act(obj/projectile/P, def_zone)
 	aggro_for(6 SECONDS)
+	if(P.firer)
+		// todo: proper AI provoke API.
+		var/datum/ai_holder/turret/snowflake_ai_holder = ai_holder
+		snowflake_ai_holder.retaliate(P.firer)
 	return ..()
 
 /obj/machinery/porta_turret/melee_act(mob/user, obj/item/weapon, target_zone, mult)
 	. = ..()
 	if(. > 0)
 		aggro_for(6 SECONDS, user)
+	// todo: proper AI provoke API.
+	var/datum/ai_holder/turret/snowflake_ai_holder = ai_holder
+	snowflake_ai_holder.retaliate(user)
 
 /obj/machinery/porta_turret/emp_act(severity)
 	if(enabled)
@@ -465,7 +506,6 @@
 
 /obj/machinery/porta_turret/process(delta_time)
 	//the main machinery process
-
 	if(machine_stat & (NOPOWER|BROKEN))
 		//if the turret has no power or is broken, make the turret pop down if it hasn't already
 		popDown()
@@ -476,18 +516,10 @@
 		popDown()
 		return
 
-	var/list/targets = list()			//list of primary targets
-	var/list/secondarytargets = list()	//targets that are least important
-
-	for(var/mob/M in mobs_in_xray_view(world.view, src))
-		assess_and_assign(M, targets, secondarytargets)
-
-	if(!tryToShootAt(targets))
-		if(!tryToShootAt(secondarytargets)) // if no valid targets, go for secondary targets
-			timeout--
-			if(timeout <= 0)
-				spawn()
-					popDown() // no valid targets, close the cover
+	timeout--
+	if(timeout <= 0)
+		spawn()
+			popDown() // no valid targets, close the cover
 
 	if(auto_repair && (integrity < integrity_max))
 		use_power(20000)
@@ -500,6 +532,7 @@
 		if(TURRET_SECONDARY_TARGET)
 			secondarytargets += L
 
+// todo: put this on ai holder side
 /obj/machinery/porta_turret/proc/assess_living(mob/living/L)
 	if(!istype(L))
 		return TURRET_NOT_TARGET
@@ -520,9 +553,6 @@
 		return TURRET_NOT_TARGET	//move onto next potential victim!
 
 	if(get_dist(src, L) > 7)	//if it's too far away, why bother?
-		return TURRET_NOT_TARGET
-
-	if(!(L in check_trajectory(L, src)))	//check if we have true line of sight
 		return TURRET_NOT_TARGET
 
 	if(emagged)		// If emagged not even the dead get a rest
@@ -549,7 +579,7 @@
 		if(assess_perp(L) < 4)
 			return TURRET_NOT_TARGET	//if threat level < 4, keep going
 
-	if(L.lying)		//if the perp is lying down, it's still a target but a less-important target
+	if(L.stat)		//if the perp is lying down, it's still a target but a less-important target
 		return check_down ? TURRET_SECONDARY_TARGET : TURRET_NOT_TARGET
 
 	return TURRET_PRIORITY_TARGET	//if the perp has passed all previous tests, congrats, it is now a "shoot-me!" nominee
@@ -563,16 +593,7 @@
 
 	return H.assess_perp(src, check_access, check_weapons, check_records, check_arrest)
 
-/obj/machinery/porta_turret/proc/tryToShootAt(list/mob/living/targets)
-	if(targets.len && last_target && (last_target in targets) && target(last_target))
-		return 1
-
-	while(targets.len > 0)
-		var/mob/living/M = pick(targets)
-		targets -= M
-		if(target(M))
-			return 1
-
+// todo: the ai holder should control pop up / down.
 
 /obj/machinery/porta_turret/proc/popUp()	//pops the turret up
 	if(disabled)
@@ -584,6 +605,10 @@
 	set_raised_raising(raised, 1)
 	update_icon()
 
+	// they should be awake but just in case
+	var/datum/ai_holder/turret/turret_ai = ai_holder
+	turret_ai.wake()
+
 	var/atom/flick_holder = new /atom/movable/porta_turret_cover(loc)
 	flick_holder.layer = layer + 0.1
 	flick("popup_[turret_type]", flick_holder)
@@ -592,7 +617,7 @@
 
 	set_raised_raising(1, 0)
 	update_icon()
-	timeout = 10
+	timeout = max(10, timeout)
 
 /obj/machinery/porta_turret/proc/popDown()	//pops the turret down
 	last_target = null
@@ -605,6 +630,10 @@
 	set_raised_raising(raised, 1)
 	update_icon()
 
+	// they should already be idle but just in case
+	var/datum/ai_holder/turret/turret_ai = ai_holder
+	turret_ai.idle()
+
 	var/atom/flick_holder = new /atom/movable/porta_turret_cover(loc)
 	flick_holder.layer = layer + 0.1
 	flick("popdown_[turret_type]", flick_holder)
@@ -613,59 +642,68 @@
 
 	set_raised_raising(0, 0)
 	update_icon()
-	timeout = 10
 
 /obj/machinery/porta_turret/proc/set_raised_raising(incoming_raised, incoming_raising)
 	raised = incoming_raised
 	raising = incoming_raising
+	set_density(raised || raising)
 	density = raised || raising
 
-/obj/machinery/porta_turret/proc/target(mob/living/target)
-	if(disabled)
-		return
+/**
+ * @return TRUE on success
+ */
+/obj/machinery/porta_turret/proc/try_fire_at(atom/target, angle)
+	if(is_on_cooldown())
+		return FALSE
+	return fire_at(target, angle)
+
+/obj/machinery/porta_turret/proc/fire_at(atom/target, angle)
+	// are we raised?
+	if(!raised)
+		return FALSE
+	// do we even have a target
+	if(isnull(target) && isnull(angle))
+		return FALSE
+	// are they on turf on our level?
+	if(target && (!target.x || target.z != z))
+		return FALSE
+	// do we need to resolve angle?
+	if(isnull(angle))
+		angle = arctan(y - target.y, x - target.x)
+	// face
 	if(target)
-		last_target = target
-		spawn()
-			popUp() //pop the turret up if it's not already up.
-		setDir(get_dir(src, target)) //even if you can't shoot, follow the target
-		shootAt(target)
-		return 1
-	return
-
-/obj/machinery/porta_turret/proc/shootAt(mob/living/target)
-	set waitfor = FALSE
-	//any emagged turrets will shoot extremely fast! This not only is deadly, but drains a lot power!
-	if(!(emagged || attacked)) //if it hasn't been emagged or attacked, it has to obey a cooldown rate
-		if(last_fired || !raised) //prevents rapid-fire shooting, unless it's been emagged
-			return
-		last_fired = TRUE
-		spawn()
-			sleep(shot_delay)
-			last_fired = FALSE
-
-	var/turf/T = get_turf(src)
-	var/turf/U = get_turf(target)
-	if(!istype(T) || !istype(U))
-		return
-
-	if(!raised) //the turret has to be raised in order to fire - makes sense, right?
-		return
-
-	update_icon()
-	var/obj/projectile/A
-	if(emagged || lethal)
-		A = new lethal_projectile(loc)
-		playsound(loc, lethal_shot_sound, 75, 1)
+		setDir(get_dir(src, target))
 	else
-		A = new projectile(loc)
-		playsound(loc, shot_sound, 75, 1)
+		setDir(angle2dir(angle))
 
-	// Lethal/emagged turrets use twice the power due to higher energy beams
-	// Emagged turrets again use twice as much power due to higher firing rates
-	use_power(reqpower * (2 * (emagged || lethal)) * (2 * emagged))
+	// fire
+	last_fire = world.time
+	next_fire = world.time + fire_delay + ((fire_burst - 1) * fire_burst_spacing)
+	update_icon()
+
+	INVOKE_ASYNC(src, PROC_REF(fire_at_impl), target, angle)
+
+/obj/machinery/porta_turret/proc/fire_at_impl(atom/target, angle)
+	for(var/i in 1 to fire_burst)
+		var/real_angle = fire_suppressive ? (angle + gaussian(fire_suppressive_dispersion_center, fire_suppressive_dispersion_deviation)) : angle
+		shoot(target, real_angle)
+		use_power(reqpower)
+
+/obj/machinery/porta_turret/proc/shoot(atom/target, angle)
+	var/obj/projectile/proj
+	if(projectile_use_type)
+		proj = new projectile_use_type(loc)
+		playsound(loc, proj.fire_sound || lethal_shot_sound || shot_sound, 75, TRUE)
+	else if(emagged || lethal)
+		proj = new lethal_projectile(loc)
+		playsound(loc, lethal_shot_sound, 75, TRUE)
+	else
+		proj = new projectile(loc)
+		playsound(loc, shot_sound, 75, TRUE)
 
 	//Turrets aim for the center of mass by default.
 	//If the target is grabbing someone then the turret smartly aims for extremities
+	// todo: this doesn't even do anything lol grab code doesn't care :/
 	var/def_zone
 	var/obj/item/grab/G = locate() in target
 	if(G && G.state >= GRAB_NECK) //works because mobs are currently not allowed to upgrade to NECK if they are grabbing two people.
@@ -674,17 +712,31 @@
 		def_zone = pick(BP_TORSO, BP_GROIN)
 
 	//Shooting Code:
-	A.firer = src
-	A.old_style_target(target)
-	A.launch_projectile_from_turf(target, def_zone, src)
-
-	// Reset the time needed to go back down, since we just tried to shoot at someone.
-	timeout = 10
+	proj.firer = src
+	proj.def_zone = def_zone
+	proj.original_atom = target
+	proj.fire(angle)
 
 /obj/machinery/porta_turret/proc/aggro_for(seconds, mob/aggressor)
 	timeout = round(seconds / 2)
 	spawn(-1)
 		popUp()
+
+//* Firing - Cooldown *//
+
+/**
+ * @return TRUE if the turret is ready to shoot
+ */
+/obj/machinery/porta_turret/proc/is_on_cooldown()
+	return next_fire > world.time
+
+/**
+ * @return ds until we can fire
+ */
+/obj/machinery/porta_turret/proc/get_remaining_cooldown()
+	return max(0, next_fire - world.time)
+
+// todo: everything below this line should be redone
 
 /datum/turret_checks
 	var/enabled
@@ -717,3 +769,4 @@
 
 /atom/movable/porta_turret_cover
 	icon = 'icons/obj/turrets.dmi'
+	mouse_opacity = FALSE

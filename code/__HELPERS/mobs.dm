@@ -5,7 +5,7 @@
 	return occupants
 
 /obj/vehicle_old/train/get_mob()
-	return buckled_mobs
+	return SAFEPICK(buckled_mobs)
 
 /mob/get_mob()
 	return src

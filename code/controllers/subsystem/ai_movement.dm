@@ -88,7 +88,8 @@ SUBSYSTEM_DEF(ai_movement)
 				being_processed.ticking_next.ticking_previous = being_processed.ticking_previous
 				being_processed.ticking_previous.ticking_next = being_processed.ticking_next
 
-			if(reschedule_delay)
+			// need the movement_ticking check so we don't get re-scheduled after stop_moving() is called
+			if(reschedule_delay && being_processed.movement_ticking)
 				// insert; we now set its ticking_(next|previous)
 				// note that we don't do catchup
 				var/inject_offset = ((now_index_raw + round(DS2TICKS(reschedule_delay))) % bucket_amount) + 1
