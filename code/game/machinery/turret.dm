@@ -32,6 +32,7 @@
 #define TURRET_SECONDARY_TARGET 1
 #define TURRET_NOT_TARGET 0
 
+// todo: /obj/machinery/turret
 /obj/machinery/porta_turret
 	name = "turret"
 	catalogue_data = list(/datum/category_item/catalogue/technology/turret)
