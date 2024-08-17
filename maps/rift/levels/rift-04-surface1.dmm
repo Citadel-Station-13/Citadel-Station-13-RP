@@ -1584,7 +1584,7 @@
 	pixel_x = -47;
 	pixel_y = -11
 	},
-/turf/simulated/floor/outdoors/beach/sand/dirtlight,
+/turf/simulated/floor/outdoors/dirtlight,
 /area/rift/station/public_garden)
 "bix" = (
 /obj/structure/closet/l3closet/scientist/double,
@@ -2798,7 +2798,7 @@
 	dir = 8
 	},
 /obj/structure/table/bench/wooden,
-/turf/simulated/floor/outdoors/beach/sand/dirtlight,
+/turf/simulated/floor/outdoors/dirtlight,
 /area/rift/station/public_garden)
 "bTu" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -3839,7 +3839,7 @@
 /obj/structure/window/wooden{
 	dir = 8
 	},
-/turf/simulated/floor/outdoors/beach/sand/dirtlight,
+/turf/simulated/floor/outdoors/dirtlight,
 /area/rift/station/public_garden)
 "cCA" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
@@ -3919,9 +3919,10 @@
 /turf/simulated/floor/plating,
 /area/rnd/outpost/xenobiology/outpost_office)
 "cFG" = (
-/turf/simulated/floor/water/beach/corner{
+/obj/effect/floor_decal/river_beach_corner_edge{
 	dir = 1
 	},
+/turf/simulated/floor/water/indoors,
 /area/rift/station/public_garden)
 "cGn" = (
 /obj/item/stool/padded,
@@ -6161,10 +6162,6 @@
 /obj/structure/cable/green,
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/medbreak)
-"dYf" = (
-/obj/structure/flora/ausbushes/ywflowers,
-/turf/simulated/floor/outdoors/beach/sand/desert/indoors,
-/area/rift/station/public_garden)
 "dYn" = (
 /obj/machinery/portable_atmospherics/powered/scrubber/huge/stationary{
 	name = "Research Testing Scrubber";
@@ -7037,7 +7034,7 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/patient_a)
 "ezp" = (
-/turf/simulated/floor/outdoors/beach/sand/dirtlight,
+/turf/simulated/floor/outdoors/dirtlight,
 /area/rift/station/public_garden)
 "ezu" = (
 /obj/machinery/light{
@@ -9474,12 +9471,6 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/quartermaster/delivery)
-"gmR" = (
-/obj/effect/floor_decal/river_beach_edge,
-/turf/simulated/floor/water/beach{
-	dir = 10
-	},
-/area/rift/station/public_garden)
 "gmT" = (
 /obj/spawner/window/low_wall/full/nogrille/firelocks,
 /obj/effect/paint/beastybrown,
@@ -11857,9 +11848,10 @@
 "hFZ" = (
 /obj/structure/railing,
 /obj/machinery/light/fairy,
-/turf/simulated/floor/water/beach{
+/obj/effect/floor_decal/river_beach_edge{
 	dir = 10
 	},
+/turf/simulated/floor/water/indoors,
 /area/rift/station/public_garden)
 "hGd" = (
 /obj/structure/filingcabinet,
@@ -14429,7 +14421,7 @@
 /area/library)
 "jdR" = (
 /obj/structure/flora/tree/jungle_small,
-/turf/simulated/floor/outdoors/beach/sand/dirtlight,
+/turf/simulated/floor/outdoors/dirtlight,
 /area/rift/station/public_garden)
 "jdT" = (
 /obj/machinery/power/apc/west_mount,
@@ -23108,7 +23100,7 @@
 	dir = 4
 	},
 /obj/effect/overlay/coconut,
-/turf/simulated/floor/outdoors/beach/sand/dirtlight,
+/turf/simulated/floor/outdoors/dirtlight,
 /area/rift/station/public_garden)
 "omm" = (
 /obj/machinery/atmospherics/portables_connector,
@@ -24887,9 +24879,10 @@
 /turf/simulated/open/lythios43c,
 /area/rift/surfacebase/outside/outside1)
 "plI" = (
-/turf/simulated/floor/water/beach{
+/obj/effect/floor_decal/river_beach_edge{
 	dir = 10
 	},
+/turf/simulated/floor/water/indoors,
 /area/rift/station/public_garden)
 "pmA" = (
 /obj/structure/table/rack/steel,
@@ -25189,7 +25182,7 @@
 /obj/machinery/light/fairy{
 	dir = 8
 	},
-/turf/simulated/floor/outdoors/beach/sand/dirtlight,
+/turf/simulated/floor/outdoors/dirtlight,
 /area/rift/station/public_garden)
 "puV" = (
 /obj/effect/floor_decal/industrial/halfstair,
@@ -26454,7 +26447,7 @@
 /area/maintenance/lowmedbaymaint)
 "qjB" = (
 /obj/machinery/appliance/cooker/grill/stand,
-/turf/simulated/floor/outdoors/beach/sand/dirtlight,
+/turf/simulated/floor/outdoors/dirtlight,
 /area/rift/station/public_garden)
 "qkv" = (
 /obj/machinery/light{
@@ -28234,7 +28227,8 @@
 "rlL" = (
 /obj/structure/railing,
 /obj/machinery/light/fairy,
-/turf/simulated/floor/water/beach,
+/obj/effect/floor_decal/river_beach_edge,
+/turf/simulated/floor/water/indoors,
 /area/rift/station/public_garden)
 "rmq" = (
 /obj/effect/floor_decal/corner/beige{
@@ -29690,7 +29684,7 @@
 	dir = 4
 	},
 /obj/effect/floor_decal/river_beach_edge,
-/turf/simulated/floor/water/beach,
+/turf/simulated/floor/water/indoors,
 /area/rift/station/public_garden)
 "scF" = (
 /obj/machinery/portable_atmospherics/canister/oxygen,
@@ -30623,7 +30617,7 @@
 /area/rnd/outpost/xenobiology/outpost_breakroom)
 "sxb" = (
 /obj/effect/floor_decal/river_beach_edge,
-/turf/simulated/floor/water/beach,
+/turf/simulated/floor/water/indoors,
 /area/rift/station/public_garden)
 "sxf" = (
 /obj/spawner/window/low_wall/full/nogrille/firelocks,
@@ -37720,7 +37714,7 @@
 /area/medical/recoveryrestroom)
 "wwP" = (
 /obj/structure/table/bench/wooden,
-/turf/simulated/floor/outdoors/beach/sand/dirtlight,
+/turf/simulated/floor/outdoors/dirtlight,
 /area/rift/station/public_garden)
 "wwV" = (
 /obj/structure/table/rack,
@@ -39349,7 +39343,7 @@
 /area/rnd/outpost/xenobiology/outpost_south_airlock)
 "xvZ" = (
 /obj/effect/overlay/coconut,
-/turf/simulated/floor/outdoors/beach/sand/dirtlight,
+/turf/simulated/floor/outdoors/dirtlight,
 /area/rift/station/public_garden)
 "xwp" = (
 /obj/effect/floor_decal/industrial/warning/dust{
@@ -39739,9 +39733,6 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/rift/trade_shop)
-"xHa" = (
-/turf/simulated/floor/outdoors/beach/sand/dirt,
-/area/rift/station/public_garden)
 "xHM" = (
 /obj/structure/catwalk,
 /obj/structure/disposalpipe/segment,
@@ -40054,7 +40045,8 @@
 /obj/machinery/light/fairy{
 	dir = 8
 	},
-/turf/simulated/floor/water/beach,
+/obj/effect/floor_decal/river_beach_edge,
+/turf/simulated/floor/water/indoors,
 /area/rift/station/public_garden)
 "xSV" = (
 /turf/simulated/floor/snow/gravsnow,
@@ -64348,7 +64340,7 @@ iJU
 iJU
 cBI
 vuC
-gmR
+sxb
 tlw
 xiB
 hMq
@@ -67064,8 +67056,8 @@ qDk
 rpP
 rpP
 eGP
-dYf
 ezp
+iuZ
 iuZ
 rry
 blB
@@ -67648,8 +67640,8 @@ rpP
 rpP
 rpP
 ezp
-xHa
-xHa
+rpP
+rpP
 rpP
 wKe
 wKe
@@ -67841,7 +67833,7 @@ eGP
 rpP
 rpP
 wZk
-ezp
+rpP
 jIa
 rpP
 rpP
@@ -68035,7 +68027,7 @@ jIa
 skM
 rpP
 rpP
-ezp
+rpP
 sxj
 rpP
 rpP
