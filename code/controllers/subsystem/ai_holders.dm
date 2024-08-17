@@ -119,9 +119,16 @@ SUBSYSTEM_DEF(ai_holders)
 
 /datum/controller/subsystem/ai_holders/proc/bucket_evict(datum/ai_holder/holder)
 	ASSERT(holder.ticking_position)
-	if(buckets[holder.ticking_position] == holder)
-		buckets[holder.ticking_position] = holder.ticking_next
-	if(holder.ticking_next != holder)
+	// if we're linking to ourselves, we're the head of the linked list
+	if(holder.ticking_next == holder)
+#ifdef CF_AI_HOLDER_DEBUG_ASSERTIONS
+		ASSERT(buckets[holder.ticking_position] == holder)
+#endif
+		buckets[holder.ticking_position] = null
+	// else, eject from linked list
+	else
+		if(buckets[holder.ticking_position] == holder)
+			buckets[holder.ticking_position] = holder.ticking_next
 		holder.ticking_next.ticking_previous = holder.ticking_previous
 		holder.ticking_previous.ticking_next = holder.ticking_next
 	holder.ticking_next = holder.ticking_previous = null

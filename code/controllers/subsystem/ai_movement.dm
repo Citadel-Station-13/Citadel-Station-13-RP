@@ -212,7 +212,10 @@ SUBSYSTEM_DEF(ai_movement)
 				buckets[holder.movement_bucket_position] = next
 		else
 			// if we are linking to ourselves, we must be the head
-			buckets[holder.movement_bucket_position] = next
+#ifdef CF_AI_HOLDER_DEBUG_ASSERTIONS
+			ASSERT(buckets[holder.movement_bucket_position] == holder)
+#endif
+			buckets[holder.movement_bucket_position] = null
 	holder.movement_bucket_prev = holder.movement_bucket_next = holder.movement_bucket_position = null
 	holder.movement_ticking = FALSE
 	holder.movement_cycle = 0
