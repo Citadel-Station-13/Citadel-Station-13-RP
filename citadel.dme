@@ -1312,6 +1312,7 @@
 #include "code\game\machinery\syndicatebeacon.dm"
 #include "code\game\machinery\transportpod.dm"
 #include "code\game\machinery\turnstile.dm"
+#include "code\game\machinery\turret-ai_holder.dm"
 #include "code\game\machinery\turret.dm"
 #include "code\game\machinery\turret_control.dm"
 #include "code\game\machinery\vitals_monitor.dm"
