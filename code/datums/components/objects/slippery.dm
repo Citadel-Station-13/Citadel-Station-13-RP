@@ -49,22 +49,22 @@
 	if(isturf(new_loc))
 		RegisterSignal(new_loc, COMSIG_ATOM_ENTERED, PROC_REF(on_enter))
 
-/datum/component/slippery/proc/on_enter(atom/movable/source, atom/old_loc)
+/datum/component/slippery/proc/on_enter(turf/source, atom/movable/entering, atom/old_loc)
 	if(source == parent)
 		return
 	// no more locker exploit
 	// basically, don't slip if they're exiting onto the tile we're on
 	if(old_loc?.loc == parent:loc)
 		return
-	if(!isliving(source))
+	if(!isliving(entering))
 		return
-	var/mob/living/living_source = source
+	var/mob/living/living_entering = entering
 	// todo: refactor these
-	if(living_source.is_incorporeal())
+	if(living_entering.is_incorporeal())
 		return
-	if(living_source.resting)
+	if(living_entering.resting)
 		return
-	if(!(living_source.movement_type & MOVEMENT_GROUND))
+	if(!(living_entering.movement_type & MOVEMENT_GROUND))
 		return
 	// end
-	living_source.slip_act(slip_class, parent, hard_strength, soft_strength)
+	living_entering.slip_act(slip_class, parent, hard_strength, soft_strength)
