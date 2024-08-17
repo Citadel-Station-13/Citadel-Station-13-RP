@@ -46,6 +46,10 @@
 /datum/ai_holder/New(atom/movable/agent)
 	ASSERT(!agent.ai_holder)
 	set_agent(agent)
+	if(!disabled)
+		on_enable()
+	else
+		on_disable()
 
 /datum/ai_holder/Destroy()
 	stop_ticking()
@@ -91,6 +95,8 @@
 /**
  * called on disable
  *
+ * * called once on init if we default to disabled
+ * * this should be idempotent
  * * ticking will automatically be dropped on disable
  */
 /datum/ai_holder/proc/on_disable()
@@ -100,6 +106,8 @@
 /**
  * called on re-enable
  *
+ * * called once on init if we default to enabled
+ * * this should be idempotent
  * * you should resume ticking here
  */
 /datum/ai_holder/proc/on_enable()
