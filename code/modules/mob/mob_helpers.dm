@@ -190,10 +190,12 @@
 		miss_chance = base_miss_chance[zone]
 	if (zone == "eyes" || zone == "mouth")
 		miss_chance = base_miss_chance["head"]
-	miss_chance = max(miss_chance + miss_chance_mod, 0)
+	//miss_chance = max(miss_chance + miss_chance_mod, 0) --Removes baymiss--
+	if(prob(miss_chance_mod)) //this is here in case I missed any baymiss removal fringe cases or if anyone makes uses of the evasion stat e.g. in mobs otherwise removal very similar to other bay adapted servers
+		return null
 	if(prob(miss_chance))
-		if(prob(70))
-			return null
+		//if(prob(70))
+		//	return null --Baymiss removal--
 		return pick(base_miss_chance)
 	return zone
 
