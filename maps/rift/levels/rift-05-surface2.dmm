@@ -16775,7 +16775,7 @@
 	dir = 4
 	},
 /obj/machinery/power/breakerbox/activated{
-	RCon_tag = "Research Main Substation Bypass"
+	RCon_tag = "Surface 2 Substation Bypass"
 	},
 /turf/simulated/floor,
 /area/maintenance/substation/surface_two)
@@ -49098,10 +49098,10 @@ nxY
 piR
 piR
 nxY
-jFC
-jFC
-jFC
-jFC
+nxY
+nxY
+nxY
+nxY
 jFC
 jFC
 jFC
