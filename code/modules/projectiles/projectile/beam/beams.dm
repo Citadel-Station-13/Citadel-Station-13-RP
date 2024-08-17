@@ -210,12 +210,12 @@
 /obj/projectile/beam/stun/weak
 	name = "weak stun beam"
 	icon_state = "stun"
-	agony = 25
+	agony = 27.5
 
 /obj/projectile/beam/stun/med
 	name = "stun beam"
 	icon_state = "stun"
-	agony = 30
+	agony = 40
 
 //Disabler Beams - It didn't feel right just to recolor Stun beams. We have uses for them still.
 /obj/projectile/beam/disabler
