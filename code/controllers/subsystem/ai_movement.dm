@@ -81,7 +81,7 @@ SUBSYSTEM_DEF(ai_movement)
 		while((being_processed = buckets[bucket_offset]))
 			var/reschedule_delay = being_processed.move(++being_processed.movement_cycle)
 			// check if we are still ticking; if not, we got ejected, so we abort as we don't need to eject or insert again
-			if(being_processed.movement_ticking)
+			if(buckets[bucket_offset] == being_processed)
 				// eject; we don't change being_processed.ticking_(next|previous)
 				if(being_processed.movement_bucket_next == being_processed)
 					buckets[bucket_offset] = null
@@ -105,8 +105,7 @@ SUBSYSTEM_DEF(ai_movement)
 						being_processed.movement_bucket_next = being_processed.movement_bucket_prev = being_processed
 					being_processed.movement_bucket_position = inject_offset
 				else
-					// we were already evicted so mark as such
-					being_processed.movement_bucket_position = null
+					// get out
 					unregister_moving(being_processed)
 			if(MC_TICK_CHECK)
 				break
