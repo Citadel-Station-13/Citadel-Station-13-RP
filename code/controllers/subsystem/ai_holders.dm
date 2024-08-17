@@ -73,9 +73,9 @@ SUBSYSTEM_DEF(ai_holders)
 			if(buckets[bucket_offset] == being_processed)
 				// eject; we don't change being_processed.ticking_(next|previous)
 				if(being_processed.ticking_next == being_processed)
-					#ifdef CF_AI_HOLDER_DEBUG_ASSERTIONS
-							ASSERT(buckets[bucket_offset] == holder)
-					#endif
+#ifdef CF_AI_HOLDER_DEBUG_ASSERTIONS
+					ASSERT(buckets[bucket_offset] == being_processed)
+#endif
 					buckets[bucket_offset] = null
 				else
 					buckets[bucket_offset] = being_processed.ticking_next

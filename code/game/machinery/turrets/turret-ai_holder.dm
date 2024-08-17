@@ -270,10 +270,10 @@
 
 	for(var/atom/evaluating as anything in to_evaluate)
 		if(evaluating in engaging_targets)
-			if(get_dist(evaluating, turret) > turret.engagement_range)
+			if(get_dist(evaluating, turret) > turret.disengagement_range)
 				continue
 		else
-			if(get_dist(evaluating, turret) > turret.disengagement_range)
+			if(get_dist(evaluating, turret) > turret.engagement_range)
 				continue
 		if(isnull(evaluate_angle_for_target(evaluating)))
 			continue
