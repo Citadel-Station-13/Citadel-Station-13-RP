@@ -107,8 +107,8 @@
 /datum/ai_holder/turret/proc/evaluate_angle_for_target(atom/target)
 	var/obj/machinery/porta_turret/turret = agent
 
-	var/dty = turret.y - target.y
-	var/dtx = turret.x - target.x
+	var/dty = target.x - turret.x
+	var/dtx = target.y - turret.y
 	var/center_mass_angle = arctan(dty, dtx)
 	// are we hitting center mass?
 	. = trace_trajectory(target, center_mass_angle) ? center_mass_angle : null

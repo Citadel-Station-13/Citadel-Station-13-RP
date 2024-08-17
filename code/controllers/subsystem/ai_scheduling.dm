@@ -10,7 +10,7 @@
  * Handles ticking AI holders
  */
 SUBSYSTEM_DEF(ai_scheduling)
-	name = "AI Holders"
+	name = "AI Scheduling"
 	subsystem_flags = NONE
 	priority = FIRE_PRIORITY_AI_SCHEDULING
 	wait = 0

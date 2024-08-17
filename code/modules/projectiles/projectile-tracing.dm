@@ -3,7 +3,12 @@
 //* Copyright (c) 2024 Citadel Station developers.          *//
 
 /obj/projectile/trace
+	atom_flags = ATOM_ABSTRACT | ATOM_NONWORLD
+	invisibility = INVISIBILITY_ABSTRACT
 	hitscan = TRUE
+	has_tracer = FALSE
+	damage = 0
+	nodamage = TRUE
 	/// did we manage to hit the given target?
 	var/could_hit_target = FALSE
 

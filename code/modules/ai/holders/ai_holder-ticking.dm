@@ -30,6 +30,7 @@
 	ticking_cycles = 0
 	ticking = delay
 	SSai_holders.bucket_insert(src)
+	SSai_holders.active_holders += src
 
 /**
  * Stops ticking
@@ -40,6 +41,7 @@
 	if(!ticking)
 		return
 	SSai_holders.bucket_evict(src)
+	SSai_holders.active_holders -= src
 	ticking = null
 	ticking_cycles = null
 
