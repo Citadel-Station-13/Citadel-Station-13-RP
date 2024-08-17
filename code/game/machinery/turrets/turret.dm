@@ -371,11 +371,11 @@
 /obj/machinery/porta_turret/power_change()
 	// todo: machinery/proc/on_online(), machinery/proc/on_offline()?
 	if(powered())
-		ai_holder.set_enabled(TRUE)
+		ai_holder?.set_enabled(TRUE)
 		machine_stat &= ~NOPOWER
 		update_icon()
 	else
-		ai_holder.set_enabled(FALSE)
+		ai_holder?.set_enabled(FALSE)
 		spawn(rand(0, 15))
 			machine_stat |= NOPOWER
 			update_icon()

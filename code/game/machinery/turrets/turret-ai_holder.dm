@@ -166,14 +166,20 @@
 /datum/ai_holder/turret/proc/engage()
 	if(disabled)
 		return
+	var/obj/machinery/porta_turret/turret = agent
+	// reset timeout
+	turret.timeout = 10
+	// reassert ticking
+	if(ticking != combat_retarget_pulse_time)
+		set_ticking(combat_retarget_pulse_time)
+	// make sure we're firing (movement rebuilds aren't consistent)
+	// todo: this is why we shouldn't use movement for this..
+	if(!movement_ticking)
+		start_moving(turret.get_remaining_cooldown())
 	if(in_combat)
 		return
 	in_combat = TRUE
 	awake = TRUE
-	set_ticking(combat_retarget_pulse_time)
-	// start firing
-	var/obj/machinery/porta_turret/turret = agent
-	start_moving(turret.get_remaining_cooldown())
 	if(!turret.raised)
 		INVOKE_ASYNC(turret, TYPE_PROC_REF(/obj/machinery/porta_turret, popUp))
 

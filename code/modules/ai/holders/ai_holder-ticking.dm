@@ -27,10 +27,11 @@
 	ASSERT(delay <= AI_SCHEDULING_LIMIT)
 	if(ticking > 0)
 		SSai_holders.bucket_evict(src)
+	else
+		SSai_holders.active_holders += src
 	ticking_cycles = 0
 	ticking = delay
 	SSai_holders.bucket_insert(src)
-	SSai_holders.active_holders += src
 
 /**
  * Stops ticking
