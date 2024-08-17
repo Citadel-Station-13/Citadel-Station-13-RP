@@ -67,4 +67,8 @@
 	if(!(living_entering.movement_type & MOVEMENT_GROUND))
 		return
 	// end
-	living_entering.slip_act(slip_class, parent, hard_strength, soft_strength)
+
+	// check for yanks
+	spawn(0)
+		if(living_entering.loc == source)
+			living_entering.slip_act(slip_class, parent, hard_strength, soft_strength)
