@@ -81,12 +81,12 @@ SUBSYSTEM_DEF(ai_movement)
 		while((being_processed = buckets[bucket_offset]))
 			var/reschedule_delay = being_processed.move(++being_processed.movement_cycle)
 			// eject; we don't change being_processed.ticking_(next|previous)
-			if(being_processed.ticking_next == being_processed)
+			if(being_processed.movement_bucket_next == being_processed)
 				buckets[bucket_offset] = null
 			else
-				buckets[bucket_offset] = being_processed.ticking_next
-				being_processed.ticking_next.ticking_previous = being_processed.ticking_previous
-				being_processed.ticking_previous.ticking_next = being_processed.ticking_next
+				buckets[bucket_offset] = being_processed.movement_bucket_next
+				being_processed.movement_bucket_next.movement_bucket_previous = being_processed.movement_bucket_previous
+				being_processed.movement_bucket_previous.movement_bucket_next = being_processed.movement_bucket_next
 
 			// need the movement_ticking check so we don't get re-scheduled after stop_moving() is called
 			if(reschedule_delay && being_processed.movement_ticking)
@@ -95,13 +95,13 @@ SUBSYSTEM_DEF(ai_movement)
 				var/inject_offset = ((now_index_raw + round(DS2TICKS(reschedule_delay))) % bucket_amount) + 1
 				if(buckets[inject_offset])
 					var/datum/ai_holder/being_injected = buckets[inject_offset]
-					being_processed.ticking_next = being_injected
-					being_processed.ticking_previous = being_injected.ticking_previous
-					being_processed.ticking_previous.ticking_next = being_processed
-					being_processed.ticking_next.ticking_previous = being_processed
+					being_processed.movement_bucket_next = being_injected
+					being_processed.movement_bucket_previous = being_injected.movement_bucket_previous
+					being_processed.movement_bucket_previous.movement_bucket_next = being_processed
+					being_processed.movement_bucket_next.movement_bucket_previous = being_processed
 				else
 					buckets[inject_offset] = being_processed
-					being_processed.ticking_next = being_processed.ticking_previous = being_processed
+					being_processed.movement_bucket_next = being_processed.movement_bucket_previous = being_processed
 				being_processed.movement_bucket_position = inject_offset
 			else
 				// we were already evicted so mark as such
