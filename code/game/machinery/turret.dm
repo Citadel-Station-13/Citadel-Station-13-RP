@@ -55,6 +55,15 @@
 	integrity = 200
 	integrity_max = 200
 
+	//* Balancing Configuration *//
+	/// delay between shots in deciseconds
+	///
+	/// * decimal values are valid
+	var/firing_cooldown = 2 SECONDS
+	///
+
+	//* Legacy below. *//
+
 	/// If the turret cover is "open" and the turret is raised.
 	var/raised = FALSE
 	/// If the turret is currently opening or closing its cover.
@@ -785,7 +794,6 @@
 	ailock = TC.ailock
 
 	power_change()
-
 
 /atom/movable/porta_turret_cover
 	icon = 'icons/obj/turrets.dmi'
