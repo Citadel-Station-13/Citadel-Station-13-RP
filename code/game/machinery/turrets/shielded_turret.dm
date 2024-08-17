@@ -17,6 +17,8 @@
 	shield_projector.shield_regen_amount = shield_regen_amount
 	shield_projector.size_x = shield_size_x
 	shield_projector.size_y = shield_size_y
+
+	// we do this here so that the above changes get included
 	shield_projector.always_on = TRUE
 	shield_projector.create_shields()
 	return ..()
