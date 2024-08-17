@@ -683,9 +683,10 @@
 
 /obj/machinery/porta_turret/proc/fire_at_impl(atom/target, angle)
 	for(var/i in 1 to fire_burst)
+		// todo: track target if they've moved
 		var/real_angle = angle
 		if(fire_suppressive)
-			var/dispersion = gaussian(fire_suppressive_dispersion_deviation)
+			var/dispersion = gaussian(0, fire_suppressive_dispersion_deviation)
 			real_angle += dispersion
 		shoot(target, real_angle)
 		use_power(reqpower)
