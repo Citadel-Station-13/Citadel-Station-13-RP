@@ -56,6 +56,7 @@
 #define SMITE_DROP_LIMB_RANDOM		"Remove one(1) arm and one(1) leg"
 #define SMITE_DROP_LIMB_ALL			"Remove all(4) limbs"
 #define SMITE_DROP_LIMB_PICK		"Remove one specific limb"
+#define SMITE_VALIDHUNT				"Declare KOS (and optionally noncanon)"
 
 #define ADMIN_LOOKUP(user)           ("[key_name_admin(user)][ADMIN_QUE(user)]")
 #define ADMIN_LOOKUPFLW(user)        ("[key_name_admin(user)][ADMIN_QUE(user)] [ADMIN_FLW(user)]")
