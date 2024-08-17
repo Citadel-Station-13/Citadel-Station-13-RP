@@ -372,10 +372,13 @@ meteor_act
 			zone = ran_zone(BP_TORSO,75)	//Hits a random part of the body, geared towards the chest
 
 		//check if we hit
+		/*
 		var/miss_chance = 15
 		var/distance = get_dist(TT.initial_turf, loc)
 		miss_chance = max(5 * (distance - 2), 0)
 		zone = get_zone_with_miss_chance(zone, src, miss_chance, ranged_attack=1)
+		*/
+		//Removes baymiss.
 
 		if(zone && TT.thrower != src)
 			var/shield_check = check_shields(throw_damage, O, TT.thrower, zone, "[O]")
