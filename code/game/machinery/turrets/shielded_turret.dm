@@ -1,5 +1,5 @@
 /obj/machinery/porta_turret/stationary/shielded
-	var/obj/item/shield_projector/shield_projector
+	var/obj/item/shield_projector/rectangle/shield_projector
 	var/shield_health = 150
 	var/shield_regen_delay = 10 SECONDS
 	var/shield_regen_amount = 10
