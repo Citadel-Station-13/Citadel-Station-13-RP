@@ -529,19 +529,6 @@
 
 	..()
 
-/obj/machinery/porta_turret/ai_defense/emp_act(severity)
-	if(prob(33)) // One in three chance to resist an EMP.  This is significant if an AoE EMP is involved against multiple turrets.
-		return
-	..()
-
-/obj/machinery/porta_turret/alien/emp_act(severity) // This is overrided to give an EMP resistance as well as avoid scambling the turret settings.
-	if(prob(75)) // Superior alien technology, I guess.
-		return
-	enabled = FALSE
-	spawn(rand(1 MINUTE, 2 MINUTES))
-		if(!enabled)
-			enabled = TRUE
-
 /obj/machinery/porta_turret/atom_break()
 	. = ..()
 	spark_system.start()	//creates some sparks because they look cool
@@ -1026,6 +1013,11 @@
 	integrity = 250 // Since lasers do 40 each.
 	integrity_max = 250
 
+/obj/machinery/porta_turret/ai_defense/emp_act(severity)
+	if(prob(33)) // One in three chance to resist an EMP.  This is significant if an AoE EMP is involved against multiple turrets.
+		return
+	..()
+
 /datum/category_item/catalogue/anomalous/precursor_a/alien_turret
 	name = "Precursor Alpha Object - Turrets"
 	desc = "An autonomous defense turret created by unknown ancient aliens. It utilizes an \
@@ -1052,6 +1044,14 @@
 	integrity = 250 // Similar to the AI turrets.
 	integrity_max = 250
 	turret_type = "alien"
+
+/obj/machinery/porta_turret/alien/emp_act(severity) // This is overrided to give an EMP resistance as well as avoid scambling the turret settings.
+	if(prob(75)) // Superior alien technology, I guess.
+		return
+	enabled = FALSE
+	spawn(rand(1 MINUTE, 2 MINUTES))
+		if(!enabled)
+			enabled = TRUE
 
 /obj/machinery/porta_turret/alien/destroyed // Turrets that are already dead, to act as a warning of what the rest of the submap contains.
 	name = "broken interior anti-boarding turret"
