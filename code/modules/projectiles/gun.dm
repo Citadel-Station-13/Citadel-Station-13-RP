@@ -11,6 +11,9 @@
 
 	/// state key for rendering, if any
 	var/render_key
+	/// firemode color, used if we're doing colored `-firemode` sprite or colored `-ammo` sprite
+	var/render_color
+	#warn impl
 
 /datum/firemode/New(obj/item/gun/gun, list/properties = null)
 	..()

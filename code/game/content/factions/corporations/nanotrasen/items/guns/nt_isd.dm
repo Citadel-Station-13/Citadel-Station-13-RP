@@ -13,62 +13,87 @@
  */
 /obj/item/gun/energy/nt_isd
 
-#warn impl all
-
 //* Energy Sidearm *//
 
 /datum/firemode/energy/nt_isd/sidearm
 
 /datum/firemode/energy/nt_isd/sidearm/stun
+	name = "disrupt"
+	render_color = "#ffff00"
 
 /datum/firemode/energy/nt_isd/sidearm/disable
+	name = "disable"
+	render_color = "#77ffff"
 
 /datum/firemode/energy/nt_isd/sidearm/lethal
+	name = "kill"
+	render_color = "#ff0000"
 
 /obj/item/gun/energy/nt_isd/sidearm
 	name = "hybrid taser"
 	desc = "A versatile energy sidearm used by corporate security."
 	description_fluff = {""}
 
+#warn impl
+
 //* Energy Carbine *//
 
 /datum/firemode/energy/nt_isd/carbine
 
 /datum/firemode/energy/nt_isd/carbine/disable
+	name = "disable"
+	render_color = "#77ffff"
 
 /datum/firemode/energy/nt_isd/carbine/shock
+	name = "shock"
+	render_color = "#ffff00"
 
 /datum/firemode/energy/nt_isd/carbine/kill
+	name = "kill"
+	render_color = "#ff0000"
 
 /obj/item/gun/energy/nt_isd/carbine
 	name = "energy carbine"
 	desc = "A versatile energy carbine used by corporate security."
 	description_fluff = {""}
 
+#warn impl
+
 //* Energy Lance *//
 
 /datum/firemode/energy/nt_isd/lance
 
 /datum/firemode/energy/nt_isd/lance/kill
+	name = "kill"
+	render_color = "#00ff00"
 
 /obj/item/gun/energy/nt_isd/lance
 	name = "energy lance"
 	desc = "A particle rifle used by corporate security. Shoots focused particle beams."
 	description_fluff = {""}
 
+#warn impl
+
 //* Multiphase Sidearm *//
 
 /datum/firemode/energy/nt_isd/multiphase
 
 /datum/firemode/energy/nt_isd/multiphase/disable
+	name = "disable"
+	render_color = "#77ffff"
 
 /datum/firemode/energy/nt_isd/multiphase/kill
+	name = "kill"
+	render_color = "#ff0000"
 
 // todo: this is an ion beam, not an EMP pulse
 /datum/firemode/energy/nt_isd/multiphase/ion
+	name = "ion"
+	render_color = "#456aaa"
 
 /obj/item/gun/energy/nt_isd/multiphase
-
 	name = "multiphase sidearm"
-	desc = "A rare sidearm as versatile as it is expensive."
+	desc = "A sidearm as versatile as it is expensive."
 	description_fluff = {""}
+
+#warn impl
