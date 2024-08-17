@@ -33,6 +33,7 @@
 #define TURRET_NOT_TARGET 0
 
 // todo: /obj/machinery/turret
+// todo: spatial grid listeners
 /obj/machinery/porta_turret
 	name = "turret"
 	catalogue_data = list(/datum/category_item/catalogue/technology/turret)
@@ -133,6 +134,9 @@
 	var/can_salvage = TRUE
 
 /obj/machinery/porta_turret/Initialize(mapload)
+	// create AI holder
+	ai_holder = new /datum/ai_holder/turret(src)
+
 	//Sets up a spark system
 	spark_system = new /datum/effect_system/spark_spread
 	spark_system.set_up(5, 0, src)
@@ -406,14 +410,15 @@
 		return 1
 
 /obj/machinery/porta_turret/power_change()
+	// todo: machinery/proc/on_online(), machinery/proc/on_offline()?
 	if(powered())
+		ai_holder.
 		machine_stat &= ~NOPOWER
 		update_icon()
 	else
 		spawn(rand(0, 15))
 			machine_stat |= NOPOWER
 			update_icon()
-
 
 /obj/machinery/porta_turret/attackby(obj/item/I, mob/user)
 	if(machine_stat & BROKEN)

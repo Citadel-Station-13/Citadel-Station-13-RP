@@ -75,3 +75,32 @@
  */
 /datum/ai_holder/proc/unregister_agent(atom/movable/agent)
 	return
+
+/**
+ * set if we're enabled
+ */
+/datum/ai_holder/proc/set_enabled(value)
+	if(disabled == !value)
+		return
+	disabled = !value
+	if(disabled)
+		on_disable()
+	else
+		on_enable()
+
+/**
+ * called on disable
+ *
+ * * ticking will automatically be dropped on disable
+ */
+/datum/ai_holder/proc/on_disable()
+	SHOULD_CALL_PARENT(TRUE)
+	stop_ticking()
+
+/**
+ * called on re-enable
+ *
+ * * you should resume ticking here
+ */
+/datum/ai_holder/proc/on_enable()
+	SHOULD_CALL_PARENT(TRUE)
