@@ -263,8 +263,12 @@
 	var/list/atom/tail = list()
 
 	for(var/atom/evaluating as anything in to_evaluate)
-		if(get_dist(evaluating, turret) > turret.engagement_range)
-			continue
+		if(evaluating in engaging_targets)
+			if(get_dist(evaluating, turret) > turret.engagement_range)
+				continue
+		else
+			if(get_dist(evaluating, turret) > turret.disengagement_range)
+				continue
 		if(isnull(evaluate_angle_for_target(evaluating)))
 			continue
 		switch(turret.assess_living(evaluating))
