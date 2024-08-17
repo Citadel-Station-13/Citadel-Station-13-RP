@@ -132,18 +132,24 @@
 	/// If false, salvaging doesn't give you anything.
 	var/can_salvage = TRUE
 
-/obj/machinery/porta_turret/crescent
-	req_one_access = list(ACCESS_CENTCOM_ERT)
-	enabled = FALSE
-	ailock = TRUE
-	check_synth = FALSE
-	check_access = TRUE
-	check_arrest = TRUE
-	check_records = TRUE
-	check_weapons = TRUE
-	check_anomalies = TRUE
-	check_all = FALSE
-	check_down = TRUE
+/obj/machinery/porta_turret/Initialize(mapload)
+	//Sets up a spark system
+	spark_system = new /datum/effect_system/spark_spread
+	spark_system.set_up(5, 0, src)
+	spark_system.attach(src)
+
+	setup()
+
+	// If turrets ever switch overlays, this will need to be cached and reapplied each time overlays_cut() is called.
+	var/image/turret_opened_overlay = image(icon, "open_[turret_type]")
+	turret_opened_overlay.layer = layer-0.1
+	add_overlay(turret_opened_overlay)
+	return ..()
+
+/obj/machinery/porta_turret/Destroy()
+	qdel(spark_system)
+	spark_system = null
+	return ..()
 
 /obj/machinery/porta_turret/can_catalogue(mob/user) // Dead turrets can't be scanned.
 	if(machine_stat & BROKEN)
@@ -220,25 +226,6 @@
 			check_weapons = value
 
 		return 1
-
-/obj/machinery/porta_turret/Initialize(mapload)
-	//Sets up a spark system
-	spark_system = new /datum/effect_system/spark_spread
-	spark_system.set_up(5, 0, src)
-	spark_system.attach(src)
-
-	setup()
-
-	// If turrets ever switch overlays, this will need to be cached and reapplied each time overlays_cut() is called.
-	var/image/turret_opened_overlay = image(icon, "open_[turret_type]")
-	turret_opened_overlay.layer = layer-0.1
-	add_overlay(turret_opened_overlay)
-	return ..()
-
-/obj/machinery/porta_turret/Destroy()
-	qdel(spark_system)
-	spark_system = null
-	return ..()
 
 /obj/machinery/porta_turret/update_icon()
 	if(machine_stat & BROKEN) // Turret is dead.
@@ -1122,3 +1109,16 @@
 	turret_type = "blue"
 	installation = /obj/item/gun/energy/lasertag/blue
 	check_synth = TRUE // Used to target red players
+
+/obj/machinery/porta_turret/crescent
+	req_one_access = list(ACCESS_CENTCOM_ERT)
+	enabled = FALSE
+	ailock = TRUE
+	check_synth = FALSE
+	check_access = TRUE
+	check_arrest = TRUE
+	check_records = TRUE
+	check_weapons = TRUE
+	check_anomalies = TRUE
+	check_all = FALSE
+	check_down = TRUE
