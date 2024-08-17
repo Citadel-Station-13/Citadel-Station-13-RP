@@ -93,7 +93,7 @@
 		list(mode_name="lethal", projectile_type=/obj/projectile/beam, modifystate="nucgunkill", charge_cost = 480),
 		)
 
-/obj/item/gun/energy/gun/multiphase
+/obj/item/gun/energy/nt_isd/multiphase
 	name = "\improper X-01 MultiPhase Energy Gun"
 	desc = "This is an expensive, modern recreation of an antique laser gun. This gun has several unique firemodes, but lacks the ability to recharge over time."
 	icon = 'icons/obj/multiphase.dmi'

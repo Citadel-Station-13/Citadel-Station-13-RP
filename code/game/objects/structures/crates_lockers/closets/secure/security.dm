@@ -120,7 +120,7 @@
 		/obj/item/tool/crowbar/red,
 		/obj/item/flash,
 		/obj/item/melee/baton/loaded,
-		/obj/item/gun/energy/gun/multiphase,
+		/obj/item/gun/energy/nt_isd/multiphase,
 		/obj/item/melee/telebaton,
 		/obj/item/storage/box/survival_knife,
 		/obj/item/gps/security/hos,
