@@ -259,14 +259,12 @@
 /turf/simulated/floor/tiled/monotile,
 /area/hallway/primary/surfacethree)
 "aaS" = (
-/obj/structure/table/woodentable,
-/obj/item/storage/pill_bottle/dice_nerd{
-	pixel_x = 2;
-	pixel_y = 2
+/obj/item/material/ashtray/glass,
+/obj/effect/floor_decal/spline/plain{
+	dir = 4
 	},
-/obj/item/storage/pill_bottle/dice{
-	pixel_x = -2;
-	pixel_y = -2
+/obj/structure/bed/chair/sofa/black/right{
+	dir = 1
 	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/crew_quarters/bar)
@@ -466,12 +464,7 @@
 	pixel_x = -32
 	},
 /obj/structure/bed/chair/sofa/black/left{
-	dir = 4
-	},
-/obj/structure/flora/pottedplant/largebush{
-	pixel_y = 22;
-	pixel_x = -9;
-	layer = 3
+	dir = 1
 	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/crew_quarters/bar)
@@ -659,10 +652,13 @@
 /turf/simulated/shuttle/wall/voidcraft/hard_corner,
 /area/shuttle/civvie/cockpit)
 "ach" = (
-/obj/structure/bed/chair/sofa/black/left,
 /obj/machinery/status_display{
 	pixel_y = 30
 	},
+/obj/effect/floor_decal/spline/plain{
+	dir = 4
+	},
+/obj/structure/bed/chair/sofa/black/left,
 /turf/simulated/floor/carpet/bcarpet,
 /area/crew_quarters/bar)
 "aci" = (
@@ -4709,9 +4705,6 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/bridge/bunker)
 "aoH" = (
-/obj/structure/bed/chair/sofa/black/corner{
-	dir = 1
-	},
 /obj/machinery/holoposter{
 	pixel_y = 32
 	},
@@ -4719,6 +4712,7 @@
 	pixel_x = -32;
 	pixel_y = -3
 	},
+/obj/structure/bed/chair/sofa/black/right,
 /turf/simulated/floor/carpet/bcarpet,
 /area/crew_quarters/bar)
 "aoM" = (
@@ -5701,10 +5695,7 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
-/obj/effect/floor_decal/spline/plain{
-	dir = 4
-	},
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/wood,
 /area/crew_quarters/bar)
 "aru" = (
 /obj/machinery/door/airlock/glass_external/public{
@@ -6152,12 +6143,6 @@
 	},
 /obj/structure/window/reinforced{
 	dir = 8
-	},
-/obj/structure/ladder{
-	pixel_y = 16;
-	climb_time = 5;
-	desc = "A ladder. You can climb it up and down. This one looks slick and easy to use.";
-	name = "oiled ladder"
 	},
 /obj/machinery/door/blast/shutters{
 	dir = 8;
@@ -7961,13 +7946,10 @@
 /turf/simulated/floor,
 /area/shuttle/civvie/general)
 "axY" = (
-/obj/effect/floor_decal/spline/fancy/wood{
-	dir = 8
-	},
 /obj/structure/bed/chair{
 	dir = 8
 	},
-/turf/simulated/floor/wood,
+/turf/simulated/floor/glass,
 /area/crew_quarters/bar)
 "axZ" = (
 /obj/structure/closet/chefcloset,
@@ -11390,8 +11372,10 @@
 	name = "Bar requests console";
 	pixel_x = -32
 	},
-/obj/structure/bed/chair/sofa/black/right{
-	dir = 4
+/obj/structure/table/woodentable,
+/obj/item/storage/rollingpapers{
+	pixel_y = 10;
+	pixel_x = -3
 	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/crew_quarters/bar)
@@ -11919,10 +11903,8 @@
 	name = "brown curtain";
 	pixel_x = -32
 	},
-/obj/structure/bed/chair/sofa/black/corner{
-	dir = 4
-	},
 /obj/effect/floor_decal/spline/plain,
+/obj/machinery/vending/cigarette,
 /turf/simulated/floor/carpet/bcarpet,
 /area/crew_quarters/bar)
 "aJZ" = (
@@ -11995,24 +11977,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/shuttle/courser/cockpit)
-"aKg" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/structure/disposalpipe/segment,
-/obj/structure/cable/green{
-	icon_state = "1-2"
-	},
-/obj/item/material/ashtray/glass,
-/obj/effect/floor_decal/spline/plain{
-	dir = 8
-	},
-/obj/effect/floor_decal/spline/fancy/wood{
-	dir = 4
-	},
-/obj/structure/railing/grey{
-	dir = 8
-	},
-/turf/simulated/floor/wood,
-/area/crew_quarters/bar)
 "aKi" = (
 /obj/effect/spider/stickyweb,
 /turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
@@ -16986,6 +16950,9 @@
 /turf/simulated/floor/wood,
 /area/bridge/bunker)
 "aZm" = (
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 8
+	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/bar)
 "aZn" = (
@@ -17386,6 +17353,9 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 8
+	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/bar)
 "btC" = (
@@ -17529,9 +17499,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/effect/floor_decal/spline/fancy/wood/corner{
-	dir = 8
-	},
+/obj/effect/floor_decal/spline/fancy/wood,
 /turf/simulated/floor/wood,
 /area/crew_quarters/bar)
 "bIZ" = (
@@ -18583,11 +18551,10 @@
 /turf/simulated/floor/plating,
 /area/rift/turbolift/maint)
 "dMD" = (
-/obj/structure/table/woodentable,
-/obj/item/flame/candle,
-/obj/item/clothing/suit/storage/hooded/fake_cult_robes_new{
-	desc = "A costume of unknown origin. The cheap plastic squeaks with every motion. Any similarities to real life groups would only be noticed by the gullible, or the purposefully prickly."
+/obj/effect/floor_decal/spline/plain{
+	dir = 4
 	},
+/obj/structure/table/woodentable,
 /turf/simulated/floor/carpet/bcarpet,
 /area/crew_quarters/bar)
 "dOT" = (
@@ -20453,10 +20420,9 @@
 /turf/simulated/floor/plating,
 /area/bridge/bridge_hallway)
 "gNz" = (
-/obj/structure/bed/chair/sofa/black/right{
-	dir = 1
+/obj/effect/floor_decal/spline/plain{
+	dir = 6
 	},
-/obj/effect/floor_decal/spline/plain,
 /turf/simulated/floor/carpet/bcarpet,
 /area/crew_quarters/bar)
 "gOf" = (
@@ -21008,9 +20974,6 @@
 	icon_state = "4-8"
 	},
 /obj/structure/table/woodentable,
-/obj/item/storage/toolbox/mechanical{
-	pixel_y = 9
-	},
 /obj/item/storage/box/cups,
 /turf/simulated/floor/wood,
 /area/crew_quarters/bar)
@@ -21375,6 +21338,9 @@
 	dir = 4
 	},
 /obj/structure/disposalpipe/segment{
+	dir = 8
+	},
+/obj/effect/floor_decal/spline/fancy/wood/corner{
 	dir = 8
 	},
 /turf/simulated/floor/wood,
@@ -23956,15 +23922,6 @@
 	},
 /turf/simulated/floor/reinforced,
 /area/rnd/telescience_lab/chamber)
-"nFa" = (
-/obj/structure/cable/green{
-	icon_state = "1-2"
-	},
-/obj/effect/floor_decal/spline/plain{
-	dir = 4
-	},
-/turf/simulated/floor/carpet/bcarpet,
-/area/crew_quarters/bar)
 "nFC" = (
 /obj/machinery/power/breakerbox/activated{
 	RCon_tag = "Exploration Substation Bypass"
@@ -26041,14 +25998,7 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
-/obj/structure/bed/chair/comfy/black{
-	dir = 8;
-	pixel_y = 19
-	},
-/obj/effect/floor_decal/spline/plain{
-	dir = 4
-	},
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/wood,
 /area/crew_quarters/bar)
 "rRF" = (
 /obj/machinery/door/airlock/voidcraft/vertical{
@@ -26382,13 +26332,10 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
-/obj/effect/floor_decal/spline/plain{
-	dir = 6
-	},
 /obj/structure/cable/green{
 	icon_state = "1-4"
 	},
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/wood,
 /area/crew_quarters/bar)
 "sOk" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
@@ -28032,18 +27979,6 @@
 /obj/structure/table/steel,
 /turf/simulated/floor/plating,
 /area/maintenance/bar/lower)
-"vQK" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/structure/cable/green{
-	icon_state = "4-8"
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/turf/simulated/floor/wood,
-/area/crew_quarters/bar)
 "vQL" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -28995,6 +28930,21 @@
 "xxP" = (
 /turf/simulated/wall/prepainted/civilian,
 /area/crew_quarters/bar_backroom)
+"xxX" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 1
+	},
+/turf/simulated/floor/wood,
+/area/crew_quarters/bar)
 "xyj" = (
 /obj/structure/disposalpipe/segment{
 	dir = 8
@@ -40392,7 +40342,7 @@ dMD
 aaS
 gNz
 anX
-aKg
+wNX
 wNX
 uQd
 xCT
@@ -40582,7 +40532,7 @@ xqb
 aNu
 aeS
 art
-nFa
+rRh
 rRh
 sOh
 aFw
@@ -41558,7 +41508,7 @@ rQU
 bIN
 axY
 axY
-cOE
+xxX
 iIQ
 woK
 exk
@@ -41752,7 +41702,7 @@ cSf
 iLo
 aZm
 btB
-vQK
+cOE
 qVq
 hwA
 vcT
