@@ -97,3 +97,31 @@
 	description_fluff = {""}
 
 #warn impl
+
+//* Projectiles *//
+
+/obj/projectile/nt_isd
+
+/obj/projectile/nt_isd/laser/sidearm
+	name = "phaser blast"
+
+/obj/projectile/nt_isd/laser
+	name = "laser"
+
+/obj/projectile/nt_isd/laser/multiphase
+
+/obj/projectile/nt_isd/laser/lance
+	name = "particle beam"
+
+/obj/projectile/nt_isd/shock
+	name = "energy beam"
+
+/obj/projectile/nt_isd/electrode
+	name = "stun bolt"
+
+// todo: this shouldn't be an emp, this should be like synthetik's
+/obj/projectile/nt_isd/ion
+	name = "ion bolt"
+
+
+#warn impl all + sprites
