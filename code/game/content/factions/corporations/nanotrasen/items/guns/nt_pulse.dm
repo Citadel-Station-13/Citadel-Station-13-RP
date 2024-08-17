@@ -4,7 +4,7 @@
 /datum/firemode/energy/nt_pulse
 
 /**
- * NT's primary military energy rifles
+ * NT's military (Asset Protection & Emergency Responder) energy rifles
  */
 /obj/item/gun/energy/nt_pulse
 	// intentionally the same as all pulse weapons to save memory
