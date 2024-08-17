@@ -10,11 +10,13 @@
 	check_all = TRUE
 
 /obj/machinery/porta_turret/stationary/shielded/Initialize(mapload)
-	shield_projector = new /obj/item/shield_projector/rectangle/automatic(src)
+	shield_projector = new /obj/item/shield_projector/rectangle(src)
 	shield_projector.shield_health = shield_health
 	shield_projector.max_shield_health = shield_health
 	shield_projector.shield_regen_delay = shield_regen_delay
 	shield_projector.shield_regen_amount = shield_regen_amount
 	shield_projector.size_x = shield_size_x
 	shield_projector.size_y = shield_size_y
+	shield_projector.always_on = TRUE
+	shield_projector.create_shields()
 	return ..()
