@@ -107,8 +107,8 @@
 /datum/ai_holder/turret/proc/evaluate_angle_for_target(atom/target)
 	var/obj/machinery/porta_turret/turret = agent
 
-	var/dty = target.x - turret.x
-	var/dtx = target.y - turret.y
+	var/dtx = target.x - turret.x
+	var/dty = target.y - turret.y
 	var/center_mass_angle = arctan(dty, dtx)
 	// are we hitting center mass?
 	. = trace_trajectory(target, center_mass_angle) ? center_mass_angle : null
@@ -122,7 +122,7 @@
 		var/cw_angle
 		var/ccw_angle
 		// this aims for second pixel to allow for minute errors to not impact targeting.
-		switch(get_dir(src, target))
+		switch(get_dir(turret, target))
 			if(NORTHWEST)
 				cw_angle = arctan(dty + ((WORLD_ICON_SIZE * 0.5 - 2) / WORLD_ICON_SIZE), dtx + ((WORLD_ICON_SIZE * 0.5 - 2) / WORLD_ICON_SIZE))
 				ccw_angle = arctan(dty - ((WORLD_ICON_SIZE * 0.5 - 2) / WORLD_ICON_SIZE), dtx - ((WORLD_ICON_SIZE * 0.5 - 2) / WORLD_ICON_SIZE))

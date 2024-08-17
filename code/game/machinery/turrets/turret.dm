@@ -65,8 +65,6 @@
 	/// * This means we fire off center mass as long as they're vaguely in view.
 	/// * if [fire_curve_shots] is on, this means we aim center at a pixel that should hit them.
 	var/fire_suppressive = FALSE
-	/// Suppressive fire dispersion center
-	var/fire_suppressive_dispersion_center = 5
 	/// Suppressive fire dispersion deviation
 	var/fire_suppressive_dispersion_deviation = 5
 
@@ -685,9 +683,13 @@
 
 /obj/machinery/porta_turret/proc/fire_at_impl(atom/target, angle)
 	for(var/i in 1 to fire_burst)
-		var/real_angle = fire_suppressive ? (angle + gaussian(fire_suppressive_dispersion_center, fire_suppressive_dispersion_deviation)) : angle
+		var/real_angle = angle
+		if(fire_suppressive)
+			var/dispersion = gaussian(fire_suppressive_dispersion_deviation)
+			real_angle += dispersion
 		shoot(target, real_angle)
 		use_power(reqpower)
+		sleep(fire_burst_spacing)
 
 /obj/machinery/porta_turret/proc/shoot(atom/target, angle)
 	var/obj/projectile/proj
