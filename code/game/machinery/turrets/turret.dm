@@ -1,8 +1,3 @@
-/*		Portable Turrets:
-		Constructed from metal, a gun of choice, and a prox sensor.
-		This code is slightly more documented than normal, as requested by XSI on IRC.
-*/
-
 /datum/category_item/catalogue/technology/turret
 	name = "Turrets"
 	desc = "This imtimidating machine is essentially an automated gun. It is able to \
@@ -26,11 +21,6 @@
 	advanced integrated weapons, and some may even have been built with EM hardening in \
 	mind."
 	value = CATALOGUER_REWARD_MEDIUM
-
-
-#define TURRET_PRIORITY_TARGET 2
-#define TURRET_SECONDARY_TARGET 1
-#define TURRET_NOT_TARGET 0
 
 // todo: /obj/machinery/turret
 // todo: spatial grid listeners
@@ -727,7 +717,3 @@
 
 /atom/movable/porta_turret_cover
 	icon = 'icons/obj/turrets.dmi'
-
-#undef TURRET_PRIORITY_TARGET
-#undef TURRET_SECONDARY_TARGET
-#undef TURRET_NOT_TARGET
