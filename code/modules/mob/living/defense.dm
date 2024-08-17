@@ -276,13 +276,13 @@
 		var/dtype = O.damtype
 		var/throw_damage = O.throw_force * TT.get_damage_multiplier(src)
 
-		var/miss_chance = 15
+		/*var/miss_chance = 15
 		var/distance = get_dist(TT.initial_turf, loc)
 		miss_chance = max(5 * (distance - 2), 0)
 
 		if (prob(miss_chance))
 			visible_message("<font color=#4F49AF>\The [O] misses [src] narrowly!</font>")
-			return COMPONENT_THROW_HIT_PIERCE | COMPONENT_THROW_HIT_NEVERMIND
+			return COMPONENT_THROW_HIT_PIERCE | COMPONENT_THROW_HIT_NEVERMIND */ //Removes baymiss
 
 		src.visible_message("<font color='red'>[src] has been hit by [O].</font>")
 		var/armor = run_armor_check(null, "melee")
