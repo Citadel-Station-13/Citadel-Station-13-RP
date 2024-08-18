@@ -390,5 +390,7 @@ INITIALIZE_IMMEDIATE(/atom/movable/render/parry_frame)
 //* -- VFX Default -- *//
 
 /atom/movable/render/parry_frame/default
+	icon = 'icons/effects/defensive/main_parry.dmi'
+	icon_state = "hold"
 
 #warn impl main's
