@@ -36205,10 +36205,6 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/virologyaccess)
-"vLD" = (
-/obj/structure/stairs/spawner/south,
-/turf/simulated/floor/wood,
-/area/rift/station/public_garden)
 "vLK" = (
 /obj/structure/closet/crate,
 /obj/item/circuitboard/machine/lathe/autolathe,
@@ -66915,7 +66911,7 @@ iuZ
 rry
 blB
 hZP
-tlw
+bBD
 ncs
 qKO
 qKO
@@ -67303,8 +67299,8 @@ ezp
 ezp
 ezp
 qKO
-vLD
-dyv
+qKO
+qKO
 qKO
 qKO
 uYb
