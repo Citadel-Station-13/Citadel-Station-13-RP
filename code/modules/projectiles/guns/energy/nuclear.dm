@@ -88,8 +88,8 @@
 	one_handed_penalty = 30 // It's rather bulky at the fore, so holding it in one hand is harder than with two.
 
 	firemodes = list(
-		list(mode_name="stun", projectile_type=/obj/projectile/beam/stun, modifystate="nucgunstun", charge_cost = 240),
-		list(mode_name="lethal", projectile_type=/obj/projectile/beam, modifystate="nucgunkill", charge_cost = 480),
+		list(mode_name="stun", projectile_type=/obj/projectile/beam/stun, modifystate="nucgunstun", charge_cost = 240), //10 shots
+		list(mode_name="lethal", projectile_type=/obj/projectile/beam, modifystate="nucgunkill", charge_cost = 240),    //10 shots
 		)
 
 /obj/item/gun/energy/gun/multiphase
