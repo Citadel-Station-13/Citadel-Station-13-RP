@@ -81,7 +81,7 @@
 		if(!attacked && !emagged)
 			attacked = TRUE
 			spawn()
-				sleep(60)
+				sleep(6 SECONDS)
 				attacked = FALSE
 
 /obj/machinery/porta_turret/industrial/attack_generic(mob/living/L, damage)
