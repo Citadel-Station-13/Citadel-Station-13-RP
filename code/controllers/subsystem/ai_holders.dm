@@ -16,7 +16,7 @@ SUBSYSTEM_DEF(ai_holders)
 	wait = 0
 
 	/// all ticking ai holders
-	var/static/list/datum/ai_holder/active_holders
+	var/static/list/datum/ai_holder/active_holders = list()
 	/// rolling bucket list; these hold the head node of linked ai_holders.
 	///
 	/// the head bucket is the last one we processed
@@ -34,7 +34,6 @@ SUBSYSTEM_DEF(ai_holders)
 	var/bucket_fps
 
 /datum/controller/subsystem/ai_holders/Initialize()
-	active_holders = list()
 	rebuild()
 	return ..()
 
