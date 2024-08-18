@@ -13310,7 +13310,7 @@
 /turf/simulated/floor/outdoors/snow/lythios43c,
 /area/rift/surfacebase/underground/under1)
 "PA" = (
-/turf/simulated/floor/outdoors/beach/sand/desert,
+/turf/simulated/floor/outdoors/beach/sand/desert/indoors,
 /area/rift/surfacebase/underground/under1)
 "PC" = (
 /obj/machinery/air_alarm{
@@ -41766,8 +41766,8 @@ aa
 aa
 PA
 PA
-PA
 UM
+Xo
 Xo
 Xo
 aa
@@ -41960,8 +41960,8 @@ aa
 aa
 PA
 PA
-vM
-MR
+UM
+Xo
 Xo
 Xo
 aa
@@ -42929,7 +42929,7 @@ aa
 aa
 aa
 PA
-MR
+UM
 Xo
 Xo
 Xo

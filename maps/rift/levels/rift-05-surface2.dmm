@@ -9530,8 +9530,8 @@
 	},
 /obj/machinery/button/remote/blast_door{
 	dir = 4;
-	id = "bar_shutters";
-	name = "Bar Shutter control";
+	id = "bar_shutters_lounge";
+	name = "Bar Lounge Shutter control";
 	pixel_x = -25;
 	pixel_y = 9;
 	req_one_access = list(25)
@@ -25554,8 +25554,8 @@
 "pVC" = (
 /obj/machinery/door/blast/shutters{
 	dir = 2;
-	id = "bar_shutters";
-	name = "Bar Shutters"
+	id = "bar_shutters_lounge";
+	name = "Bar Lounge Shutters"
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/bar/lounge)
