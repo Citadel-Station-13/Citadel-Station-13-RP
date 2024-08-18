@@ -13,16 +13,24 @@
 	var/could_hit_target = FALSE
 	/// delete on hitting target?
 	var/del_on_success = FALSE
+	/// do we check opacity?
+	var/check_opacity = FALSE
 
 /obj/projectile/trace/Bump(atom/A)
 	. = ..()
+	if(A.opacity && check_opacity)
+		qdel(src)
+		return
 	if(A == original)
 		could_hit_target = TRUE
 		if(del_on_success)
 			qdel(src)
+			return
 
-/obj/projectile/trace/proc/prepare_trace(atom/target)
+/obj/projectile/trace/proc/prepare_trace(atom/target, pass_flags = ATOM_PASS_GLASS | ATOM_PASS_GRILLE | ATOM_PASS_TABLE, check_opacity)
+	src.pass_flags = pass_flags
 	src.original = target
+	src.check_opacity = check_opacity
 	src.range = max(src.range, (get_dist(src, target) + 1) * WORLD_ICON_SIZE)
 
 /**

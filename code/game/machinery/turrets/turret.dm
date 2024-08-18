@@ -523,22 +523,14 @@
 		use_power(20000)
 		heal_integrity(1)
 
-/obj/machinery/porta_turret/proc/assess_and_assign(mob/living/L, list/targets, list/secondarytargets)
-	switch(assess_living(L))
-		if(TURRET_PRIORITY_TARGET)
-			targets += L
-		if(TURRET_SECONDARY_TARGET)
-			secondarytargets += L
-
 // todo: put this on ai holder side
 /obj/machinery/porta_turret/proc/assess_living(mob/living/L)
+	L = ismovable(L)? L.get_mob() : null
+
 	if(!istype(L))
 		return TURRET_NOT_TARGET
 
 	if(L.invisibility >= INVISIBILITY_LEVEL_ONE) // Cannot see him. see_invisible is a mob-var
-		return TURRET_NOT_TARGET
-
-	if(!L)
 		return TURRET_NOT_TARGET
 
 	if(faction && L.faction == faction)
@@ -550,17 +542,15 @@
 	if(L.stat == DEAD && !emagged)		//if the perp is dead, no need to bother really
 		return TURRET_NOT_TARGET	//move onto next potential victim!
 
-	if(get_dist(src, L) > 7)	//if it's too far away, why bother?
-		return TURRET_NOT_TARGET
-
 	if(emagged)		// If emagged not even the dead get a rest
 		return L.stat ? TURRET_SECONDARY_TARGET : TURRET_PRIORITY_TARGET
 
+	// todo: target var should make this unnecessary, but maybe have it just pass through the AI?
 	if(lethal && locate(/mob/living/silicon/ai) in get_turf(L))		//don't accidentally kill the AI!
 		return TURRET_NOT_TARGET
 
 	if(check_synth || check_all)	//If it's set to attack all non-silicons or everything, target them!
-		if(L.lying)
+		if(L.stat != CONSCIOUS)
 			return check_down ? TURRET_SECONDARY_TARGET : TURRET_NOT_TARGET
 		return TURRET_PRIORITY_TARGET
 
@@ -577,7 +567,7 @@
 		if(assess_perp(L) < 4)
 			return TURRET_NOT_TARGET	//if threat level < 4, keep going
 
-	if(L.stat)		//if the perp is lying down, it's still a target but a less-important target
+	if(L.stat != CONSCIOUS)		//if the perp is lying down, it's still a target but a less-important target
 		return check_down ? TURRET_SECONDARY_TARGET : TURRET_NOT_TARGET
 
 	return TURRET_PRIORITY_TARGET	//if the perp has passed all previous tests, congrats, it is now a "shoot-me!" nominee
