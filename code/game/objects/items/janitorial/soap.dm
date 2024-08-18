@@ -1,38 +1,26 @@
-/* Clown Items
- * Contains:
- * 		Banana Peels
- *		Soap
- *		Bike Horns
- */
+/datum/component/slippery/soap
 
-/*
- * Banana Peals
- */
-/obj/item/bananapeel/Crossed(atom/movable/AM as mob|obj)
-	. = ..()
-	if(AM.is_incorporeal())
-		return
-	if (istype(AM, /mob/living))
-		var/mob/living/M = AM
-		M.slip("the [src.name]",4)
-/*
- * Soap
- */
+/obj/item/soap
+	name = "soap"
+	desc = "A cheap bar of soap. Doesn't smell."
+	gender = PLURAL
+	icon = 'icons/obj/items.dmi'
+	icon_state = "soap"
+	atom_flags = NOCONDUCT
+	w_class = WEIGHT_CLASS_SMALL
+	slot_flags = SLOT_HOLSTER
+	throw_force = 0
+	throw_speed = 4
+	throw_range = 20
+
 /obj/item/soap/Initialize(mapload)
 	. = ..()
+	AddComponent(/datum/component/slippery/soap)
 	create_reagents(5)
 	wet()
 
 /obj/item/soap/proc/wet()
 	reagents.add_reagent("cleaner", 5)
-
-/obj/item/soap/Crossed(atom/movable/AM as mob|obj)
-	. = ..()
-	if(AM.is_incorporeal())
-		return
-	if(istype(AM, /mob/living))
-		var/mob/living/M = AM
-		M.slip("the [src.name]",3)
 
 /obj/item/soap/pre_attack(atom/target, mob/user, clickchain_flags, list/params)
 	//I couldn't feasibly  fix the overlay bugs caused by cleaning items we are wearing.
@@ -66,17 +54,21 @@
 		return CLICKCHAIN_DO_NOT_PROPAGATE
 	return ..()
 
-/*
- * Bike Horns
- */
-/obj/item/bikehorn/attack_self(mob/user)
+/obj/item/soap/nanotrasen
+	desc = "A Nanotrasen-brand bar of soap. Smells of phoron."
+	icon_state = "soapnt"
+
+/obj/item/soap/deluxe
+	icon_state = "soapdeluxe"
+
+/obj/item/soap/deluxe/Initialize(mapload)
 	. = ..()
-	if(.)
-		return
-	if (spam_flag == 0)
-		spam_flag = 1
-		playsound(src.loc, 'sound/items/bikehorn.ogg', 50, 1)
-		src.add_fingerprint(user)
-		spawn(20)
-			spam_flag = 0
-	return
+	desc = "A deluxe Waffle Co. brand bar of soap. Smells of [pick("lavender", "vanilla", "strawberry", "chocolate" ,"space")]."
+
+/obj/item/soap/syndie
+	desc = "An untrustworthy bar of soap. Smells of fear."
+	icon_state = "soapsyndie"
+
+/obj/item/soap/primitive
+	desc = "Lye and fat processed into a solid state. This hand crafted bar is unscented and uneven."
+	icon_state = "soapprim"
