@@ -26,7 +26,7 @@
 
 /obj/projectile/trace/Moved()
 	. = ..()
-	if(check_opacity)
+	if(check_opacity && isturf(loc))
 		// *sigh* //
 		var/turf/T = loc
 		if(T.has_opaque_atom)
