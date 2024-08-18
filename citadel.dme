@@ -1423,6 +1423,7 @@
 #include "code\game\machinery\turrets\turret_frame.dm"
 #include "code\game\machinery\turrets\subtypes\lasertag.dm"
 #include "code\game\machinery\turrets\subtypes\misc.dm"
+#include "code\game\machinery\turrets\subtypes\shielded_turret.dm"
 #include "code\game\machinery\vending\drinks.dm"
 #include "code\game\machinery\vending\engineering.dm"
 #include "code\game\machinery\vending\loadout.dm"

@@ -15,24 +15,6 @@
 		return list(src, load)
 	return src
 
-/proc/mobs_in_view(range, source)
-	var/list/mobs = list()
-	for(var/atom/movable/AM in view(range, source))
-		var/M = AM.get_mob()
-		if(M)
-			mobs += M
-
-	return mobs
-
-/proc/mobs_in_xray_view(range, source)
-	var/list/mobs = list()
-	for(var/atom/movable/AM in orange(range, source))
-		var/M = AM.get_mob()
-		if(M)
-			mobs += M
-
-	return mobs
-
 /proc/random_hair_style(gender, species = SPECIES_HUMAN)
 	var/list/valid = list()
 	for(var/id in GLOB.sprite_accessory_hair)
