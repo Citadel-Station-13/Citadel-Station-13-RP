@@ -18,14 +18,19 @@
 
 /obj/projectile/trace/Bump(atom/A)
 	. = ..()
-	if(A.opacity && check_opacity)
-		qdel(src)
-		return
 	if(A == original)
 		could_hit_target = TRUE
 		if(del_on_success)
 			qdel(src)
 			return
+
+/obj/projectile/trace/Moved()
+	. = ..()
+	if(check_opacity)
+		// *sigh* //
+		var/turf/T = loc
+		if(T.has_opaque_atom)
+			qdel(src)
 
 /obj/projectile/trace/proc/prepare_trace(atom/target, pass_flags = ATOM_PASS_GLASS | ATOM_PASS_GRILLE | ATOM_PASS_TABLE, check_opacity)
 	src.pass_flags = pass_flags
