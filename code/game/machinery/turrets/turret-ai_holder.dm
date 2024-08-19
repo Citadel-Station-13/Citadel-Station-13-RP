@@ -54,10 +54,10 @@
 	if(time_left > 0)
 		return time_left
 	if(turret.raising)
-		return 5 // wait 5 deciseconds to retry; we do not have enough granular control over popup/popdown so we just spinlock on it
+		return 0.5 SECONDS // wait 5 deciseconds to retry; we do not have enough granular control over popup/popdown so we just spinlock on it
 	else if(!turret.raised)
 		INVOKE_ASYNC(turret, TYPE_PROC_REF(/obj/machinery/porta_turret, popUp))
-		return 5 // ditto
+		return 0.5 SECONDS // ditto
 
 	var/atom/to_shoot_at
 	var/angle
