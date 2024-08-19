@@ -184,7 +184,7 @@
 		ZTRAIT_GRAVITY,
 	)
 	base_turf = /turf/simulated/floor/outdoors/safeice/lythios43c
-	flags = LEGACY_LEVEL_CONTACT|LEGACY_LEVEL_PLAYER|LEGACY_LEVEL_CONSOLES|LEGACY_LEVEL_SEALED
+	flags = LEGACY_LEVEL_CONTACT|LEGACY_LEVEL_PLAYER|LEGACY_LEVEL_CONSOLES
 	planet_path = /datum/planet/lythios43c
 	link_above = /datum/map_level/rift/station/underground_deep
 	link_west = /datum/map_level/rift/base
@@ -206,7 +206,7 @@
 		ZTRAIT_LEGACY_HOLOMAP_SMOOSH,
 	)
 	base_turf = /turf/simulated/floor/outdoors/safeice/lythios43c
-	flags = LEGACY_LEVEL_STATION|LEGACY_LEVEL_CONTACT|LEGACY_LEVEL_PLAYER|LEGACY_LEVEL_CONSOLES|LEGACY_LEVEL_SEALED
+	flags = LEGACY_LEVEL_STATION|LEGACY_LEVEL_CONTACT|LEGACY_LEVEL_PLAYER|LEGACY_LEVEL_CONSOLES
 	planet_path = /datum/planet/lythios43c
 	link_below = /datum/map_level/rift/station/underground_floor
 	link_above = /datum/map_level/rift/station/underground_shallow
@@ -229,7 +229,7 @@
 		ZTRAIT_LEGACY_HOLOMAP_SMOOSH,
 	)
 	base_turf = /turf/simulated/open
-	flags = LEGACY_LEVEL_STATION|LEGACY_LEVEL_CONTACT|LEGACY_LEVEL_PLAYER|LEGACY_LEVEL_CONSOLES|LEGACY_LEVEL_SEALED
+	flags = LEGACY_LEVEL_STATION|LEGACY_LEVEL_CONTACT|LEGACY_LEVEL_PLAYER|LEGACY_LEVEL_CONSOLES
 	planet_path = /datum/planet/lythios43c
 	link_below = /datum/map_level/rift/station/underground_deep
 	link_above = /datum/map_level/rift/station/surface_low

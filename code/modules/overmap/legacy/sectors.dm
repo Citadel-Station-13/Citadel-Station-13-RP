@@ -77,26 +77,16 @@
 //This is called later in the init order by SSshuttles to populate sector objects. Importantly for subtypes, shuttles will be created by then.
 /obj/overmap/entity/visitable/proc/populate_sector_objects()
 
-/obj/overmap/entity/visitable/proc/get_areas()
-	. = list()
-	for(var/area/A)
-		if (A.z in map_z)
-			. += A
-
 /obj/overmap/entity/visitable/proc/register_z_levels()
 	for(var/zlevel in map_z)
 		map_sectors["[zlevel]"] = src
 
 	(LEGACY_MAP_DATUM).player_levels |= map_z
-	if(!in_space)
-		(LEGACY_MAP_DATUM).sealed_levels |= map_z
 
 /obj/overmap/entity/visitable/proc/unregister_z_levels()
 	map_sectors -= map_z
 
 	(LEGACY_MAP_DATUM).player_levels -= map_z
-	if(!in_space)
-		(LEGACY_MAP_DATUM).sealed_levels -= map_z
 
 /obj/overmap/entity/visitable/get_scan_data()
 	if(!known)

@@ -254,8 +254,6 @@
 			loaded_station.admin_levels += z_index
 		if((level_or_path.flags & LEGACY_LEVEL_CONTACT) || level_or_path.has_trait(ZTRAIT_STATION))
 			loaded_station.contact_levels += z_index
-		if((level_or_path.flags & LEGACY_LEVEL_SEALED))
-			loaded_station.sealed_levels += z_index
 		if((level_or_path.flags & LEGACY_LEVEL_CONSOLES) || level_or_path.has_trait(ZTRAIT_STATION))
 			loaded_station.map_levels += z_index
 		// Holomaps
