@@ -17,12 +17,15 @@
 	var/check_opacity = FALSE
 
 /obj/projectile/trace/Bump(atom/A)
-	. = ..()
 	if(A == original)
 		could_hit_target = TRUE
 		if(del_on_success)
 			qdel(src)
 			return
+	return ..()
+
+/obj/projectile/trace/projectile_attack_mob()
+	return
 
 /obj/projectile/trace/Moved()
 	. = ..()
