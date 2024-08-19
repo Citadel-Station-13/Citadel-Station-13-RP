@@ -28,7 +28,8 @@
 	//* location *//
 	/// our location, if any
 	var/datum/overmap_location/location
-	/// our location initializer, 
+	/// our location initializer,
+	#warn that
 
 	//* overmap *//
 	/// if we're currently in an overmap; if so, which?
@@ -93,15 +94,3 @@
 
 /obj/overmap/entity/get_bounds_overlay()
 	return SSovermaps.entity_bounds_overlay(bound_x, bound_y, bound_width, bound_height)
-
-/**
- * called when we join an overmap
- */
-/obj/overmap/entity/proc/on_overmap_join(datum/overmap/map)
-	src.overmap = map
-
-/**
- * called when we leave an overmap
- */
-/obj/overmap/entity/proc/on_overmap_leave(datum/overmap/map)
-	src.overmap = map
