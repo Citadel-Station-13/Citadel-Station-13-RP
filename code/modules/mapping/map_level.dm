@@ -2,6 +2,7 @@
  * a struct for holding information about a zlevel
  */
 /datum/map_level
+	//* Core *//
 	/// id - must be globally unique across all possible maps
 	/// if we are New()'d with a map, this is namespaced with that map automatically! you do not need
 	/// to namespace map levels yourself.
@@ -10,41 +11,46 @@
 	/// * if this is null, one will be assigned.
 	/// * this is used to generate mangling ID.
 	var/id
+	/// friendly debug / code name of level
+	var/name
 	/// explicit mangling id
 	var/mangling_id
 	/// is this a hardcoded level? generally should be 'yes';
 	/// if it is, it's registered in the by-typepath lookup
 	var/hardcoded = FALSE
+	/// are we modified from our prototype/definition?
+	var/tmp/modified = FALSE
 
-	/// friendly debug / code name of level
-	var/name
-	/// player visible id for technical displays - randomized if unset
-	var/display_id
-	/// player visible name for non-technical displays - randomized if unset
-	var/display_name
-	/// host /datum/map, if any
-	var/datum/map/parent_map
+	//* Attributes *//
 	/// traits
 	var/list/traits
 	/// attributes associated key-values
 	var/list/attributes
+
+	//* File *//
 	/// absolute path from server current directory to map; overrides relative_path
 	var/absolute_path
 	/// relative path. useless outside of manual maploads, as we can't parse relative path from DM yet.
 	var/relative_path
-	/// are we modified from our prototype/definition?
-	var/tmp/modified = FALSE
+
+	//* Fluff *//
+	/// player visible id for technical displays - randomized if unset
+	var/display_id
+	/// player visible name for non-technical displays - randomized if unset
+	var/display_name
+
+	//* Instance / Orchestration *//
+	/// host /datum/map, if any
+	var/datum/map/parent_map
+
+	//* Linkage *//
 	/// linkage enum
-	//  todo: this is not implemented yet
 	var/linkage = Z_LINKAGE_NORMAL
+	#warn Z_LINKAGE_FORCED should be taken into account during struct stitching
 	/// transition enum
 	var/transition = Z_TRANSITION_DEFAULT
 	/// set to FALSE if transition borders are defined via /turf/level_border, to disable trampling the turf into /turf/level_border
 	var/transition_trampling = TRUE
-	/// base turf typepath for this level
-	var/base_turf = /turf/space
-	/// base area typepath for this level
-	var/base_area = /area/space
 	/// id of north zlevel - overrides linkage if set. can be set to path, autoconverts to id on new.
 	/// can also be set to instance - used for structs.
 	var/link_north
@@ -63,24 +69,86 @@
 	/// id of above zlevel - overrides linkage if set. can be set to path, autoconverts to id on new.
 	/// can also be set to instance - used for structs.
 	var/link_above
+
+	//* Turf Properties *//
+	/// base turf typepath for this level
+	var/base_turf = /turf/space
+	/// base area typepath for this level
+	var/base_area = /area/space
 	/// gas string / atmosphere path / atmosphere id for indoors air
 	/// if atmosphere path, it'll be automatically packed to ID on serialize, as we don't want to serialize paths to disk.
 	var/air_indoors = GAS_STRING_STP
 	/// gas string / atmosphere path / atmosphere id for outdoors air
 	/// if atmosphere path, it'll be automatically packed to ID on serialize, as we don't want to serialize paths to disk.
 	var/air_outdoors = GAS_STRING_VACUUM
-	/// load orientation - overridden if loaded as part of a /datum/map
-	var/orientation = SOUTH
 
 	//* Loading *//
 	/// are we loaded in
 	var/tmp/loaded = FALSE
 	/// our zlevel once loaded
 	var/tmp/z_index
+	/// load orientation - overridden if loaded as part of a /datum/map
+	var/orientation = SOUTH
+
+	//* Simulation *//
+	/// canonical height of level in meters
+	///
+	/// * '100m' means that the level above is 100m above us, and we're 100m below the above level
+	/// * basically, this is the height from ground before the next level, not the height below ground
+	/// * if null, will inherit from the map_struct we're in (or default to a sane value)
+	/// * if non-null, the struct will force that z-plane to be that height
+	/// * if non-null and two levels have different values, the struct will runtime.
+	var/ceiling_height
+	/// default ceiling height if not inheriting from struct or specified
+	var/ceiling_height_default = 5 // crawl, xenohybrids.
+
+	//* Structs / Stitching / Virtual Coordinates *//
+	/// the struct we belong to, if any
+	var/tmp/datum/map_struct/struct
+	/// the index in our struct's [levels] list
+	var/tmp/struct_level_index
+	/// our virtual x on the struct; this is not tile coordinates, this is struct coordinates
+	var/tmp/struct_x
+	/// our virtual y on the struct; this is not tile coordinates, this is struct coordinates
+	var/tmp/struct_y
+	/// the coordinate we are actually on, zlevel wise
+	///
+	/// * basically for fluff and simulation, not byond engine
+	/// * this is used for virtual coordinates as the 'z'
+	var/tmp/struct_z
+	/// the coordinate of the lower-left / southwest corner border of the map
+	///
+	/// * this is not 1,1 on the map, this is 0,0 on the map.
+	/// * this is the turf right **outside** the on the lower left corner.
+	/// * basically for fluff and simulation, not byond engine
+	/// * 0-indexed for ease of use by implementations of get virtual coord.
+	/// * this is used for virtual coordinates as the 'x + [tile.x]'
+	var/tmp/virtual_alignment_x
+	/// the coordinate of the lower-left / southwest corner border of the map
+	///
+	/// * this is not 1,1 on the map, this is 0,0 on the map.
+	/// * this is the turf right **outside** the on the lower left corner.
+	/// * basically for fluff and simulation, not byond engine
+	/// * 0-indexed for ease of use by implementations of get virtual coord.
+	/// * this is used for virtual coordinates as the 'y + [tile.y]'
+	var/tmp/virtual_alignment_y
+	/// the canonical height from ground floor that we are
+	///
+	/// * virtual_z = 0 is always 0
+	/// * virtual_z = 1 is the ceiling_height of virtual_z = 0
+	/// * virtual_z = -1 is the subtracted ceiling height of virtual_z = -1
+	var/tmp/virtual_elevation
+	/// our placement in a struct
+	///
+	/// * must be list(x, y, z)
+	/// * the indices are zlevel, with the 'center ground floor' being list(0, 0, 0)
+	var/struct_create_pos
+	/// our struct binding id. if null, we use the null-value id struct for the map
+	var/struct_create_id
 
 	//* Persistence *//
 	/// loaded persistence metadata, if any
-	var/datum/map_level_persistence/persistence
+	var/tmp/datum/map_level_persistence/persistence
 	/// allow persistence?
 	var/persistence_allowed = FALSE
 	/// override level id for persistence so two levels are considered the same

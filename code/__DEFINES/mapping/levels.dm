@@ -3,8 +3,11 @@
 //? "linkage"
 
 // Linkage types - Normal linkage variables override these, so don't set them if you use these.
+
 /// Default - don't preprocess for unlinked sides, just leave them empty
 #define Z_LINKAGE_NORMAL "normal"
+/// Forced - disallow things like map_struct's to set our linkages.
+#define Z_LINKAGE_FORCED "forced"
 /// Crosslinked - crosslink with other crosslinked zlevels at random using some semblence of continuity
 // todo: crosslink support
 // #define Z_LINKAGE_CROSSLINKED "crosslink"

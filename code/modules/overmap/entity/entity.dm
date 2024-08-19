@@ -25,6 +25,11 @@
 	/// next id
 	var/static/id_next = 0
 
+	//* location *//
+	/// our location, if any
+	var/datum/overmap_location/location
+	/// our location initializer, 
+
 	//* overmap *//
 	/// if we're currently in an overmap; if so, which?
 	var/datum/overmap/overmap

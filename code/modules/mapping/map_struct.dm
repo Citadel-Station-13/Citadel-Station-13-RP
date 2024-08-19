@@ -2,44 +2,56 @@
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
 /**
- * # World Structs
+ * # Map Structs
  *
- * Used to bunch zlevels up into managed sectors
- * Internally is used by overmaps to act as level-collections
- * Internally is used to resolve what levels corrospond to what world-sectors.
+ * * Used to bunch zlevels up into managed sectors
+ * * Internally is used by overmaps to act as level-collections
+ * * Internally is used to resolve what levels corrospond to what world-sectors.
  */
 /datum/map_struct
-	#warn add id, random_id
-	/// Z grid - list("x,y,z" = level). Spaces are allowed.
-	var/list/z_grid
-	/// Horizontally loop
-	var/loop_horizontal = FALSE
-	/// Vertically loop
-	var/loop_vertical = FALSE
-	/// Distance in meters between zlevels
-	var/z_canonical_dist = 0
+	//* Core *//
+	/// our id
+	///
+	/// * must be globally (persistence-compatible) unique
+	/// * if not provided, will be randomly generated.
+	var/id
 
-	// Transient variables
-	/// Constructed?
+	//* Simulation *//
+	/// default ceiling height
+	var/ceiling_height_default = 5
+
+	//* State *//
+	/// are we built / created and ready for operation?
 	var/tmp/constructed = FALSE
-	/// space_level datums in us
-	var/tmp/list/datum/space_level/levels
-	/// Width - x
-	var/tmp/width
-	/// Height - y
-	var/tmp/height
-	/// Depth - z
-	var/tmp/depth
-	/// Real zlevel indices - ordered same as levels in z_grid!
-	var/tmp/list/real_indices
-	/// Planes - generated at runtime, lowest to highest - lists are unordered z-indices in a plane
-	var/tmp/list/planes
-	/// ZStacks - generated at runtime, unordered - the lists are ordered z-indices
-	var/tmp/list/stacks
-	/// z plane lookup - ordered same as levels in z_grid
-	var/tmp/list/plane_lookup
-	/// z stack lookup - ordered same as levels in z_grid
-	var/tmp/list/stack_lookup
+	/// the map_level datums in us
+	///
+	/// * this is an ordered list
+	var/tmp/list/datum/map_level/levels
+	/// the real zlevel indices
+	///
+	/// * this is an ordered list, with indices the same as [levels]
+	var/tmp/list/z_indices
+
+	//* Generated Data *//
+	/// list of stringified z coordinates to the level datum
+	///
+	/// * "x,y,z" is the format
+	var/tmp/list/z_grid
+	/// total width of all levels
+	///
+	/// * if a level is at 0,0,0 and another is at 5,0,0 with nothing in between, our width is 5
+	var/tmp/sparse_size_x
+	/// total height of all levels
+	///
+	/// * if a level is at 0,0,0 and another is at 0,5,0 with nothing in between, our height is 5
+	var/tmp/sparse_size_y
+	/// total depth of all levels
+	///
+	/// * if a level is at 0,0,0 and another is at 0,0,5 with nothing in between, our depth is 5
+	var/tmp/sparse_size_z
+
+	#warn below
+
 	/// Regex
 	var/static/regex/grid_parser = new(@"([\n]+),([\n)]+,([\n]+)", "g")
 	/// the overmap object we're attached to
@@ -176,65 +188,6 @@
 	// register
 	Register()
 	constructed = TRUE
-
-/datum/map_struct/proc/build_stacks(list/z_grid, list/bottom_keys)
-	. = list()
-	for(var/bottom in bottom_keys)
-		var/datum/space_level/B = SSmapping.keyed_levels[bottom]
-		var/list/constructed = list()
-		do
-			constructed += B.z_value
-			B = _scan_dir(z_grid, B.struct_x, B.struct_y, B.struct_z, UP)
-		while(B)
-		. += constructed
-
-/datum/map_struct/proc/get_bottom_level_keys(list/z_grid)
-	. = list()
-	var/list/possible = z_grid.Copy()
-	var/list/reverse = list()
-	for(var/key in z_grid)
-		reverse[z_grid[key]] = key
-	do
-		// pop one
-		var/key = possible[1]
-		var/id = z_grid[key]
-		var/datum/space_level/L = SSmapping.keyed_levels[id]
-		possible.Cut(1,2)
-		grid_parser.Find(key)
-		var/x = text2num(grid_parser.group[1])
-		var/y = text2num(grid_parser.group[2])
-		var/z = text2num(grid_parser.group[3])
-		L.struct_x = x
-		L.struct_y = y
-		L.struct_z = z
-		// continually cut everything above us
-		var/datum/space_level/L2 = _scan_dir(z_grid, x, y, z, UP)
-		if(reverse[L2.id] in possible)
-			do
-				possible -= reverse[L2.id]
-				L2 = _scan_dir(z_grid, L2.struct_x, L2.struct_y, L2.struct_z, UP)
-			while(L2)
-		// if this is bottom
-		var/datum/space_level/L2 = _scan_dir(z_grid, x, y, z, DOWN)
-		if(!L2)
-			. += key
-	while(possible.len)
-
-/datum/map_struct/proc/_scan_dir(list/grid, x, y, z, dir)
-	switch(dir)
-		if(UP)
-			. = grid["[x],[y],[z+1]"]
-		if(DOWN)
-			. = grid["[x],[y],[z-1]"]
-		if(EAST)
-			. = grid["[x-1],[y],[z]"]
-		if(WEST)
-			. = grid["[x+1],[y],[z]"]
-		if(NORTH)
-			. = grid["[x],[y+1],[z]"]
-		if(SOUTH)
-			. = grid["[x],[y-1],[z]"]
-	return SSmapping.keyed_levels[.]
 
 /datum/map_struct/proc/Deconstruct(rebuild = TRUE)
 	if(!constructed)

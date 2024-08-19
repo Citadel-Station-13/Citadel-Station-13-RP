@@ -34,16 +34,21 @@
 	var/list/cached_level_north
 	/// Ordered lookup list for south transition
 	var/list/cached_level_south
-	/// Z access lookup - z = list() of zlevels it can access. For performance, this is currently only including bidirectional links, AND does not support looping.
+	/// Z access lookup - z = list() of zlevels it can directly access vertically
+	/// * For performance, this is currently only including bidirectional links
+	/// * For performance, this does not support looping.
+	/// * This is a direct stack lookup. This does not take map_struct's into account.
+	/// * You should only be using this for technical use cases like z-rendering and whatnot,
+	///   for fluff this is not sufficient to determine if something is actually above/below if it's not actually connected.
 	var/list/z_stack_lookup
 	/// does z stack lookup need a rebuild?
 	var/z_stack_dirty = TRUE
 
 	//* struct system
 	/// Active world_structs
-	var/static/list/datum/world_struct/structs = list()
+	var/static/list/datum/map_struct/structs = list()
 	/// World struct lookup by level
-	var/static/list/datum/world_struct/struct_by_z = list()
+	var/static/list/datum/map_struct/struct_by_z = list()
 
 //* Rebuilds / Caching
 
@@ -416,7 +421,11 @@
 	while(. in random_fluff_level_hashes)
 	random_fluff_level_hashes += .
 
-//* Z stacks
+//* Structs *//
+
+#warn impl
+
+//* Z-stacks *//
 
 /**
  * Gets the sorted Z stack list of a level - the levels accessible from a single level, in multiz
