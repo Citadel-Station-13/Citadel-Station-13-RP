@@ -258,6 +258,12 @@
 		cost = 4,
 		time = 3 SECONDS,
 	)
+	. += create_stack_recipe_datum(
+		category = "frames",
+		name = "window tint control frame",
+		product = /obj/item/frame/window_tint_control,
+		cost = 4,
+	)
 
 /datum/material/steel/hull
 	id = "steel_hull"

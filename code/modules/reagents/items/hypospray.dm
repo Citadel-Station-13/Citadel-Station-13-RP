@@ -60,6 +60,14 @@
 	icon_state = "[initial(icon_state)][vial_state]"
 	return ..()
 
+/obj/item/hypospray/update_overlays()
+	. = ..()
+	switch(inject_mode)
+		if(HYPOSPRAY_MODE_INJECT)
+			. += "inject"
+		if(HYPOSPRAY_MODE_SPRAY)
+			. += "spray"
+
 /obj/item/hypospray/attack_hand(mob/user, list/params)
 	if(user.is_holding_inactive(src))
 		if(isnull(loaded))

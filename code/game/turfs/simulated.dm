@@ -139,19 +139,19 @@
 
 	var/slip_dist = 1
 	var/slip_stun = 6
-	var/floor_type = "wet"
+	var/class = SLIP_CLASS_WATER
 
 	switch(src.wet)
 		if(2) // Lube
-			floor_type = "slippery"
 			slip_dist = 4
 			slip_stun = 10
+			class = SLIP_CLASS_LUBRICANT
 		if(3) // Ice
-			floor_type = "icy"
 			slip_stun = 4
 			slip_dist = 2
+			class = SLIP_CLASS_ICE
 
-	if(M.slip("the [floor_type] floor", slip_stun))
+	if(M.slip_act(class, src, slip_stun, slip_stun) > 0)
 		for(var/i = 1 to slip_dist)
 			step(M, M.dir)
 			sleep(1)
