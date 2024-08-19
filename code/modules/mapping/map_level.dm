@@ -142,9 +142,12 @@
 	///
 	/// * must be list(x, y, z)
 	/// * the indices are zlevel, with the 'center ground floor' being list(0, 0, 0)
+	/// * either no levels on a map can have this specified or all of them must have it specified
+	/// * if none of them are specified, if the map needs to create a struct it will
+	///      automatically 'fit' and center the map to 0,0,0 upwards with northeast bias; this means that
+	///      the map is centered on 0,0, the bottom level is zlevel 0, and if it isn't an odd number of
+	///      levels, the map will be shifted north-east to support everything.
 	var/struct_create_pos
-	/// our struct binding id. if null, we use the null-value id struct for the map
-	var/struct_create_id
 
 	//* Persistence *//
 	/// loaded persistence metadata, if any

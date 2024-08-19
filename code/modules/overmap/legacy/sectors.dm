@@ -83,21 +83,6 @@
 		if (A.z in map_z)
 			. += A
 
-/obj/overmap/entity/visitable/proc/find_z_levels()
-	if(!LAZYLEN(map_z)) // If map_z is already populated use it as-is, otherwise start with connected z-levels.
-		map_z = GetConnectedZlevels(z)
-	if(LAZYLEN(extra_z_levels))
-		for(var/thing in extra_z_levels)
-			var/datum/map_level/level
-			if(ispath(thing))
-				level = SSmapping.typed_levels[thing]
-			else if(istext(thing))
-				level = SSmapping.keyed_levels[thing]
-			if(isnull(level))
-				STACK_TRACE("failed to find level [thing] during init")
-				continue
-			map_z |= level.z_index
-
 /obj/overmap/entity/visitable/proc/register_z_levels()
 	for(var/zlevel in map_z)
 		map_sectors["[zlevel]"] = src

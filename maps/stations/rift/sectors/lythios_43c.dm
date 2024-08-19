@@ -30,26 +30,12 @@
 		"Pirate Skiff" = list("rift_pirate_dock"),
 		)
 
-//Despite not being in the multi-z complex, these levels are part of the overmap sector
-/* This should be placed in the map's define files.
-
-/obj/overmap/entity/visitable/sector/lythios43c
 	extra_z_levels = list(
-		Z_LEVEL_WEST_PLAIN,
-		Z_LEVEL_WEST_CAVERN,
-		Z_LEVEL_WEST_DEEP,
-		Z_LEVEL_WEST_BASE
+		/datum/map_level/rift/plains,
+		/datum/map_level/rift/caves,
+		/datum/map_level/rift/deep,
+		/datum/map_level/rift/base,
 	)
-	levels_for_distress = list(
-		Z_LEVEL_DEBRISFIELD,
-		Z_LEVEL_MININGPLANET,
-		Z_LEVEL_UNKNOWN_PLANET,
-		Z_LEVEL_DESERT_PLANET,
-		Z_LEVEL_GAIA_PLANET,
-		Z_LEVEL_FROZEN_PLANET
-		)
-*/
-
 
 /obj/overmap/entity/visitable/sector/lythios43c/Crossed(var/atom/movable/AM)
 	. = ..()
@@ -71,3 +57,24 @@
 	//For ships, it's safe to assume they're big enough to not be sneaky
 	else if(istype(AM, /obj/overmap/entity/visitable/ship))
 		SSlegacy_atc.msg(message)
+
+//! legacy below
+
+/// This is the effect that slams people into the ground upon dropping out of the sky //
+
+/obj/effect/step_trigger/teleporter/planetary_fall/lythios43c
+	planet_path = /datum/planet/lythios43c
+
+/// Temporary place for this
+// Spawner for lythios animals
+/obj/tether_away_spawner/lythios_animals
+	name = "Lythios Animal Spawner"
+	faction = "lythios"
+	atmos_comp = TRUE
+	prob_spawn = 100
+	mobs_to_pick_from = list(
+		/mob/living/simple_mob/animal/icegoat = 2,
+		/mob/living/simple_mob/animal/passive/woolie = 3,
+		/mob/living/simple_mob/animal/passive/furnacegrub,
+		/mob/living/simple_mob/animal/horing = 2
+	)
