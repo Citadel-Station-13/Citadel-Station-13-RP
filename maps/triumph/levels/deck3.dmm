@@ -20163,8 +20163,8 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/medbay4)
 "qCZ" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/purple{
-	dir = 4
+/obj/machinery/atmospherics/pipe/simple/visible/purple{
+	dir = 8
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology)
