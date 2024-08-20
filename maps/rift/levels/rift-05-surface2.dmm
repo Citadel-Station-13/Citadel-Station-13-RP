@@ -8760,6 +8760,10 @@
 "fIg" = (
 /obj/structure/table/hardwoodtable,
 /obj/effect/floor_decal/corner/black/diagonal,
+/obj/item/reagent_containers/food/drinks/shaker,
+/obj/item/reagent_containers/food/drinks/shaker{
+	pixel_x = 7
+	},
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/bar/lounge)
 "fIH" = (
@@ -9523,18 +9527,6 @@
 	dir = 8;
 	light_range = 12;
 	old_wall = 1
-	},
-/obj/machinery/light_switch{
-	dir = 8;
-	pixel_x = -24
-	},
-/obj/machinery/button/remote/blast_door{
-	dir = 4;
-	id = "bar_shutters_lounge";
-	name = "Bar Lounge Shutter control";
-	pixel_x = -25;
-	pixel_y = 9;
-	req_one_access = list(25)
 	},
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/bar/lounge)
@@ -20375,14 +20367,6 @@
 /obj/effect/floor_decal/steeldecal/steel_decals5,
 /turf/simulated/floor/tiled/steel,
 /area/crew_quarters/sleep)
-"mGu" = (
-/obj/structure/table/hardwoodtable,
-/obj/item/reagent_containers/food/drinks/shaker,
-/obj/item/reagent_containers/food/drinks/shaker{
-	pixel_x = 7
-	},
-/turf/simulated/floor/wood,
-/area/crew_quarters/bar/lounge)
 "mGL" = (
 /obj/machinery/air_alarm{
 	dir = 1;
@@ -28686,6 +28670,18 @@
 "rOE" = (
 /obj/effect/floor_decal/corner/black/diagonal,
 /obj/structure/bed/chair/sofa/beige/left,
+/obj/machinery/button/remote/blast_door{
+	id = "bar_shutters_lounge";
+	name = "Bar Lounge Shutter control";
+	pixel_x = 6;
+	pixel_y = 33;
+	req_one_access = list(25)
+	},
+/obj/machinery/light_switch{
+	dir = 1;
+	pixel_x = -4;
+	pixel_y = 31
+	},
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/bar/lounge)
 "rOF" = (
@@ -29008,13 +29004,6 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/medical/reception)
-"saG" = (
-/obj/structure/table/hardwoodtable,
-/obj/item/reagent_containers/food/drinks/bottle/ambrosia_mead{
-	pixel_x = -1
-	},
-/turf/simulated/floor/wood,
-/area/crew_quarters/bar/lounge)
 "saL" = (
 /obj/structure/railing{
 	dir = 8
@@ -29406,6 +29395,9 @@
 	pixel_y = -28
 	},
 /obj/item/deck/tarot,
+/obj/item/reagent_containers/food/drinks/bottle/ambrosia_mead{
+	pixel_x = -1
+	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/crew_quarters/bar/lounge)
 "spg" = (
@@ -30725,11 +30717,6 @@
 /obj/random/maintenance/research,
 /turf/simulated/floor/plating,
 /area/maintenance/asmaint2)
-"top" = (
-/turf/simulated/wall/r_wall/prepainted,
-/turf/simulated/wall/r_wall/prepainted,
-/turf/simulated/wall/r_wall/prepainted,
-/area/crew_quarters/bar/lounge)
 "toG" = (
 /obj/structure/table/steel,
 /obj/item/integrated_electronics/debugger{
@@ -49088,8 +49075,8 @@ jUi
 bfg
 oRV
 oRV
+oLJ
 nxY
-top
 nxY
 nxY
 piR
@@ -49282,8 +49269,8 @@ suF
 amw
 kNR
 oRV
-saG
-pVC
+oLJ
+nxY
 gfQ
 qQk
 pRF
@@ -49476,8 +49463,8 @@ qXG
 vUk
 cHW
 oRV
-mGu
-pVC
+nxY
+nxY
 rOE
 fIg
 ehE
