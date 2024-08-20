@@ -18386,16 +18386,6 @@
 	},
 /turf/simulated/floor/grass,
 /area/rnd/research_foyer_auxiliary)
-"pmc" = (
-/obj/effect/floor_decal/techfloor{
-	dir = 1
-	},
-/obj/machinery/door/airlock/glass/research{
-	name = "Research Lobby";
-	req_one_access = null
-	},
-/turf/simulated/floor/tiled,
-/area/hallway/primary/aft)
 "pmG" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
@@ -48528,7 +48518,7 @@ cTS
 uWQ
 mAp
 oBJ
-pmc
+trm
 pWp
 hXs
 cbh
