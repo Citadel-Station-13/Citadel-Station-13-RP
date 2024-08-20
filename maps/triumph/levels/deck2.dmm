@@ -553,9 +553,7 @@
 /area/station/stairs_two)
 "bx" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/structure/curtain/black{
-	anchored = 1
-	},
+/obj/structure/curtain/black,
 /turf/simulated/floor/plating,
 /area/triumph/surfacebase/bar_backroom)
 "by" = (
@@ -3699,7 +3697,6 @@
 "le" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
 /obj/structure/curtain/open/bed{
-	anchored = 1;
 	name = "curtain"
 	},
 /turf/simulated/floor/plating,
@@ -8972,6 +8969,1407 @@
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/plating,
 /area/maintenance/bar/lower)
+"Ay" = (
+/obj/structure/table/marble,
+/obj/machinery/door/blast/shutters{
+	dir = 4;
+	id = "bar";
+	name = "Bar Shutters"
+	},
+/obj/machinery/door/firedoor{
+	dir = 8
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 3
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 3
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 3
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 3
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 3
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 3
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 3
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 3
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 3
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 3
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 3
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 3
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 3
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 3
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 3
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 3
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 3
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 3
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 3
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 3
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 3
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 3
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 3
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 3
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 3
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 3
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 3
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 3
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 3
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 3
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 3
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 3
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 3
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 3
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 3
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 3
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 3
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 3
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 3
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 3
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 3
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 3
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 3
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 3
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 3
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 3
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 3
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 3
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 3
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 13
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 3
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 5
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 5
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 5
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 5
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 5
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 5
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 5
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 5
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 5
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 5
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 5
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 5
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 5
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 5
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 5
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 5
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 5
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 5
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 5
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 5
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 5
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 5
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 5
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 5
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 5
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 5
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 5
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 5
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 5
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 5
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 5
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 5
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 5
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 5
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 5
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 5
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 5
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 5
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 5
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 5
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 5
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 5
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 5
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 5
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 5
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 5
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 5
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 5
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 5
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 5
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 7
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 7
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 7
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 7
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 7
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 7
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 7
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 7
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 7
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 7
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 7
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 7
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 7
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 7
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 7
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 7
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 7
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 7
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 7
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 7
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 7
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 7
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 7
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 7
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 7
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 7
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 7
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 7
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 7
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 7
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 7
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 7
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 7
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 7
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 7
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 7
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 7
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 7
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 7
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 7
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 7
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 7
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 7
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 7
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 7
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 7
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 7
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 7
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 7
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 7
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 9
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 9
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 9
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 9
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 9
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 9
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 9
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 9
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 9
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 9
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 9
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 9
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 9
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 9
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 9
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 9
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 9
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 9
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 9
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 9
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 9
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 9
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 9
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 9
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 9
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 9
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 9
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 9
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 9
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 9
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 9
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 9
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 9
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 9
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 9
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 9
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 9
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 9
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 9
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 9
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 9
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 9
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 9
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 9
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 9
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 9
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 9
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 9
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 9
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 9
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 11
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 11
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 11
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 11
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 11
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 11
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 11
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 11
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 11
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 11
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 11
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 11
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 11
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 11
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 11
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 11
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 11
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 11
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 11
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 11
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 11
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 11
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 11
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 11
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 11
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 11
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 11
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 11
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 11
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 11
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 11
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 11
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 11
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 11
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 11
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 11
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 11
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 11
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 11
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 11
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 11
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 11
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 11
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 11
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 11
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 11
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 11
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 11
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 11
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 11
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 13
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 13
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 13
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 13
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 13
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 13
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 13
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 13
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 13
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 13
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 13
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 13
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 13
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 13
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 13
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 13
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 13
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 13
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 13
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 13
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 13
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 13
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 13
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 13
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 13
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 13
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 13
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 13
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 13
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 13
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 13
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 13
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 13
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 13
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 13
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 13
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 13
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 13
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 13
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 13
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 13
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 13
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 13
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 13
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 13
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 13
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 13
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 13
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 13
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 13
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 1
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 1
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 1
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 1
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 1
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 1
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 1
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 1
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 1
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 1
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 1
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 1
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 1
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 1
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 1
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 1
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 1
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 1
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 1
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 1
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 1
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 1
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 1
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 1
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 1
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 1
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 1
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 1
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 1
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 1
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 1
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 1
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 1
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 1
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 1
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 1
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 1
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 1
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 1
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 1
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 1
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 1
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 1
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 1
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 1
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 1
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 1
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 1
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 1
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 1
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = -1
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = -1
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = -1
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = -1
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = -1
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = -1
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = -1
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = -1
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = -1
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = -1
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = -1
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = -1
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = -1
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = -1
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = -1
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = -1
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = -1
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = -1
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = -1
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = -1
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = -1
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = -1
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = -1
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = -1
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = -1
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = -1
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = -1
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = -1
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = -1
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = -1
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = -1
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = -1
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = -1
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = -1
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = -1
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = -1
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = -1
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = -1
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = -1
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = -1
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = -1
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = -1
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = -1
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = -1
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = -1
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = -1
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = -1
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = -1
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = -1
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = -1
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 15
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 15
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 15
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 15
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 15
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 15
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 15
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 15
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 15
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 15
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 15
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 15
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 15
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 15
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 15
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 15
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 15
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 15
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 15
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 15
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 15
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 15
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 15
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 15
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 15
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 15
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 15
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 15
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 15
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 15
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 15
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 15
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 15
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 15
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 15
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 15
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 15
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 15
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 15
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 15
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 15
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 15
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 15
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 15
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 15
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 15
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 15
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 15
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 15
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 15
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 13
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 11
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 9
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 7
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 5
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 3
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 3
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 5
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 7
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 9
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 11
+	},
+/obj/item/clothing/mask/smokable/cigarette{
+	pixel_y = 13
+	},
+/turf/simulated/floor/tiled/dark,
+/area/crew_quarters/bar)
 "Az" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 5
@@ -11931,7 +13329,6 @@
 "Kj" = (
 /obj/spawner/window/reinforced/full/firelocks,
 /obj/structure/curtain/open/bed{
-	anchored = 1;
 	name = "curtain"
 	},
 /turf/simulated/floor/plating,
@@ -12845,7 +14242,6 @@
 "Nb" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
 /obj/structure/curtain/open/bed{
-	anchored = 1;
 	name = "curtain"
 	},
 /obj/effect/paint_stripe/palebottlegreen,
@@ -23243,7 +24639,7 @@ cW
 cW
 cW
 cW
-cW
+DT
 cW
 cW
 cW
@@ -26732,7 +28128,7 @@ wX
 wX
 de
 Ov
-wX
+Ay
 rg
 LR
 LR
