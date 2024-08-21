@@ -36,7 +36,7 @@
 /datum/shuttle/autodock/overmap/trade/udang
 	name = "Udang Transport Shuttle"
 	warmup_time = 6
-	shuttle_area = list(/area/shuttle/udang)
+	shuttle_area = list(/area/shuttle/udang/cockpit, /area/shuttle/udang/main)
 	current_location = "tradeport_udang"
 	docking_controller_tag = "tradeport_udang_docker"
 	fuel_consumption = 4
@@ -64,7 +64,7 @@
 /datum/shuttle/autodock/overmap/trade/scoophead
 	name = "Scoophead trade Shuttle"
 	warmup_time = 5
-	shuttle_area = list(/area/shuttle/scoophead)
+	shuttle_area = list(/area/shuttle/scoophead/cockpit, /area/shuttle/scoophead/main, /area/shuttle/scoophead/office)
 	current_location = "tradeport_scoophead"
 	docking_controller_tag = "tradeport_scoophead_docker"
 	fuel_consumption = 4

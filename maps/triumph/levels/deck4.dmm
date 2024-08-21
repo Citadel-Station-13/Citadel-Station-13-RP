@@ -5348,6 +5348,10 @@
 	dir = 9
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden,
+/obj/machinery/light{
+	dir = 8;
+	light_range = 12
+	},
 /turf/simulated/floor/tiled/dark,
 /area/hallway/secondary/docking_hallway)
 "dBq" = (
@@ -12352,6 +12356,17 @@
 	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/hallway/secondary/civilian_hallway_mid)
+"ivQ" = (
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden,
+/obj/machinery/light{
+	dir = 8;
+	light_range = 12
+	},
+/turf/simulated/floor/tiled/dark,
+/area/hallway/secondary/docking_hallway)
 "ivS" = (
 /obj/effect/floor_decal/spline/plain{
 	dir = 1
@@ -23287,6 +23302,9 @@
 "qey" = (
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 5
+	},
+/obj/machinery/camera/network/civilian{
+	dir = 8
 	},
 /turf/simulated/floor/tiled/dark,
 /area/hallway/secondary/docking_hallway)
@@ -59072,7 +59090,7 @@ tyc
 dBb
 xoA
 xoA
-xoA
+ivQ
 xoA
 cnE
 keJ

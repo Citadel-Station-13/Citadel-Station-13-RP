@@ -1008,6 +1008,7 @@
 #include "code\game\area\Tether_areas.dm"
 #include "code\game\area\station\exporation.dm"
 #include "code\game\area\station\security_areas.dm"
+#include "code\game\area\station\shuttle_area.dm"
 #include "code\game\atoms\action_feedback.dm"
 #include "code\game\atoms\appearance.dm"
 #include "code\game\atoms\atom.dm"

@@ -39,8 +39,7 @@
 		"Spacena Adventurer Shuttle" = list("tradeport_adventurer"),
 		"Cargo Tug Hauler Shuttle" = list("tradeport_tug"),
 		"Utility Micro Shuttle" = list("tradeport_utilitymicro"),
-		"Teshari Runabout Shuttle" = list("tradeport_runabout"),
-		"Scoophead trade Shuttle" = list("tradeport_scoophead"),
+		"Teshari Runabout Shuttle" = list("tradeport_runabout")
 		)
 
 /* // Old Restricted list. Leaving commented out for reference - Bloop
