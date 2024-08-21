@@ -3657,6 +3657,12 @@
 /obj/map_helper/access_helper/airlock/station/medical/department,
 /turf/simulated/floor/tiled/white,
 /area/medical/ward)
+"ddT" = (
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/assembly/chargebay)
 "ddX" = (
 /obj/structure/table/reinforced,
 /obj/item/paicard,
@@ -5491,6 +5497,9 @@
 	req_access = list(29,47);
 	req_one_access = list(47)
 	},
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/techfloor,
 /area/assembly/chargebay)
 "eJc" = (
@@ -6390,6 +6399,8 @@
 	id = "mechbay-inner";
 	name = "Mech Bay"
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled/techfloor,
 /area/assembly/chargebay)
 "fsS" = (
@@ -8189,6 +8200,12 @@
 	},
 /turf/simulated/floor/tiled,
 /area/hallway/primary/starboard)
+"gSR" = (
+/obj/effect/floor_decal/industrial/warning/dust,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/turf/simulated/floor/tiled/dark,
+/area/assembly/robotics/surgery)
 "gTY" = (
 /obj/structure/table/glass,
 /obj/item/storage/box/monkeycubes,
@@ -13125,6 +13142,18 @@
 	},
 /turf/simulated/floor/reinforced,
 /area/rnd/xenobiology)
+"kQP" = (
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/dark,
+/area/assembly/robotics/surgery)
 "kQU" = (
 /turf/simulated/wall/r_wall/prepainted/science,
 /area/rnd/xenobiology/xenoflora_storage)
@@ -27856,6 +27885,15 @@
 /obj/effect/floor_decal/techfloor/corner,
 /turf/simulated/floor/tiled,
 /area/triumph/station/stairs_three)
+"xaP" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 9
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 5
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/assembly/chargebay)
 "xbs" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
@@ -42493,7 +42531,7 @@ fiD
 idK
 yhE
 ikR
-qog
+ddT
 qog
 ogL
 dbo
@@ -42684,10 +42722,10 @@ sBB
 qpQ
 eJc
 xkd
-vdw
-yhE
+kQP
+gSR
 fsM
-qog
+xaP
 qog
 drq
 dbo
