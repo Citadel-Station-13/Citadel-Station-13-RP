@@ -234,8 +234,8 @@
 						/mob/living/simple_mob/vore/aggressive/dino,
 						/mob/living/simple_mob/animal/space/alien,
 						/mob/living/simple_mob/animal/space/alien/drone,
-						/mob/living/simple_mob/animal/space/alien/sentinel,
-						/mob/living/simple_mob/animal/space/alien/queen,
+						/mob/living/simple_mob/animal/space/alien/basic_spitter,
+						/mob/living/simple_mob/animal/space/alien/monarch,
 						/mob/living/simple_mob/vore/aggressive/corrupthound))
 	return ..()
 

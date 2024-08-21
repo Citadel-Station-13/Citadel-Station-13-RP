@@ -152,4 +152,4 @@
 	spot_add(4,3,/obj/random/roguemineloot) //Right loot
 
 	if(prob(30))
-		spot_add(3,3,/mob/living/simple_mob/animal/space/alien/sentinel/praetorian) //And maybe a big friend for big loot.
+		spot_add(3,3,/mob/living/simple_mob/animal/space/alien/warrior) //And maybe a big friend for big loot.
