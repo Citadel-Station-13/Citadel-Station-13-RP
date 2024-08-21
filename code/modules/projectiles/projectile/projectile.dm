@@ -940,6 +940,7 @@
  */
 /obj/projectile/proc/on_impact(atom/target, impact_flags, def_zone, efficiency = 1)
 	//! legacy shit
+	var/blocked = clamp((1 - efficiency) * 100, 0, 100)
 	if(damage && damage_type == BURN)
 		var/turf/T = get_turf(target)
 		if(T)

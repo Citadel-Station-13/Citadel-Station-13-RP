@@ -108,7 +108,7 @@
 	if(impact_flags & PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT)
 		return impact_flags
 	// we are hitting; gather flags as needed
-	return proj.on_impact_new(src, impact_flags, def_zone, blocked)
+	return proj.on_impact(src, impact_flags, def_zone, efficiency)
 
 
 //* Hitsound API *//
@@ -387,6 +387,7 @@
  * * contact_specific - SHIELDCALL_CONTACT_SPECIFIC_*
  * * fake_attack - just checking!
  * * shieldcall_flags - shieldcall flags. [code/__DEFINES/combat/shieldcall.dm]
+ * * clickchain_flags - clickchain flags. [code/__DEFINES/procs/clickcode.dm]
  *
  * @return SHIELDCALL_FLAG_* flags
  */
@@ -404,12 +405,13 @@
  * @params
  * * style - the unarmed_attack datum being used
  * * e_args (optional) the clickchain event, if any; **This is mutable.**
- * * fake_attack - just checking!
- * * shieldcall_flags - shieldcall flags. [code/__DEFINES/combat/shieldcall.dm]
+ * * fake_attack - (optional) just checking!
+ * * shieldcall_flags - (optional) shieldcall flags. [code/__DEFINES/combat/shieldcall.dm]
+ * * clickchain_flags - (optional) clickchain flags. [code/__DEFINES/procs/clickcode.dm]
  *
  * @return SHIELDCALL_FLAG_* flags
  */
-/atom/proc/atom_shieldcall_handle_unarmed_melee(datum/unarmed_attack/style, datum/event_args/actor/clickchain/e_args, fake_attack, shieldcall_flags)
+/atom/proc/atom_shieldcall_handle_unarmed_melee(datum/unarmed_attack/style, datum/event_args/actor/clickchain/e_args, fake_attack, shieldcall_flags, clickchain_flags)
 	SEND_SIGNAL(src, COMSIG_ATOM_SHIELDCALL_ITERATION, ATOM_SHIELDCALL_ITERATING_UNARMED_MELEE)
 	. = shieldcall_flags
 	for(var/datum/shieldcall/shieldcall as anything in shieldcalls)
@@ -423,12 +425,13 @@
  * @params
  * * weapon - the item being used to swing with
  * * e_args - (optional) the clickchain event, if any; **This is mutable.**
- * * fake_attack - just checking!
- * * shieldcall_flags - shieldcall flags. [code/__DEFINES/combat/shieldcall.dm]
+ * * fake_attack - (optional) just checking!
+ * * shieldcall_flags - (optional) shieldcall flags. [code/__DEFINES/combat/shieldcall.dm]
+ * * clickchain_flags - (optional) clickchain flags. [code/__DEFINES/procs/clickcode.dm]
  *
  * @return SHIELDCALL_FLAG_* flags
  */
-/atom/proc/atom_shieldcall_handle_item_melee(obj/item/weapon, datum/event_args/actor/clickchain/e_args, fake_attack, shieldcall_flags)
+/atom/proc/atom_shieldcall_handle_item_melee(obj/item/weapon, datum/event_args/actor/clickchain/e_args, fake_attack, shieldcall_flags, clickchain_flags)
 	SEND_SIGNAL(src, COMSIG_ATOM_SHIELDCALL_ITERATION, ATOM_SHIELDCALL_ITERATING_ITEM_MELEE)
 	. = shieldcall_flags
 	for(var/datum/shieldcall/shieldcall as anything in shieldcalls)
