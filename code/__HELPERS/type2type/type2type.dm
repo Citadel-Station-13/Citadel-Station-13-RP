@@ -136,6 +136,9 @@
  * Gets the direction of an angle, in degrees, that is clockwise of north
  *
  * todo: verify math and do documentation
+ *
+ * @params
+ * * degree - angle clockwise of north
  */
 /proc/angle2dir(degree)
 	degree = (degree + 22.5) % 365 // 22.5 = 45 / 2

@@ -113,6 +113,9 @@ DEFINE_BITFIELD(runlevels, list(
 #define INIT_ORDER_CHEMISTRY       60
 #define INIT_ORDER_MATERIALS       55
 #define INIT_ORDER_PHOTOGRAPHY     50
+#define INIT_ORDER_AI_SCHEDULING   48
+#define INIT_ORDER_AI_MOVEMENT     48
+#define INIT_ORDER_AI_HOLDERS      48
 #define INIT_ORDER_MAPPING         45
 #define INIT_ORDER_SPATIAL_GRIDS   43 // must be after SSmapping so we know world.maxx and world.maxy
 #define INIT_ORDER_GAME_WORLD      40

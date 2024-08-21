@@ -256,7 +256,7 @@
 			var/obj/item/integrated_circuit/C = locate(params["ref"]) in assembly_components
 			if(!istype(C))
 				return
-			C.remove(usr, TRUE, index = params["index"])
+			C.remove(usr, FALSE, index = params["index"])
 			return TRUE
 
 		if("bottom_circuit")

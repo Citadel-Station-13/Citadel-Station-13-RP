@@ -87,7 +87,7 @@
 		return
 	if(slips && istype(AM, /mob/living))
 		var/mob/living/M = AM
-		M.slip("the foam", 6)
+		M.slip_act(SLIP_CLASS_FOAM, src, 5, 7.5)
 
 /datum/effect_system/foam_spread
 	/// The size of the foam spread.
