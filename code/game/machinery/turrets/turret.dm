@@ -465,10 +465,10 @@
 /obj/machinery/porta_turret/bullet_act(obj/projectile/proj, impact_flags, def_zone, blocked)
 	. = ..()
 	aggro_for(6 SECONDS)
-	if(P.firer)
+	if(proj.firer)
 		// todo: proper AI provoke API.
 		var/datum/ai_holder/turret/snowflake_ai_holder = ai_holder
-		snowflake_ai_holder.retaliate(P.firer)
+		snowflake_ai_holder.retaliate(proj.firer)
 
 /obj/machinery/porta_turret/melee_act(mob/user, obj/item/weapon, target_zone, datum/event_args/actor/clickchain/clickchain)
 	. = ..()
