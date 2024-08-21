@@ -63,7 +63,7 @@
 	var/detonate_mob = 0 //Will this fuelrod explode when it hits a mob?
 	var/energetic_impact = 0 //Does this fuelrod cause a bright flash on impact with a mob?
 
-/obj/projectile/bullet/magnetic/fuelrod/on_impact_new(atom/target, impact_flags, def_zone, blocked)
+/obj/projectile/bullet/magnetic/fuelrod/on_impact(atom/target, impact_flags, def_zone, efficiency)
 	if(searing)
 		blocked = 0
 	. = ..()
@@ -130,7 +130,7 @@
 	detonate_mob = 1
 	energetic_impact = 1
 
-/obj/projectile/bullet/magnetic/fuelrod/supermatter/on_impact_new(atom/target, impact_flags, def_zone, blocked)
+/obj/projectile/bullet/magnetic/fuelrod/supermatter/on_impact(atom/target, impact_flags, def_zone, efficiency)
 	. = ..()
 	if(. & PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT)
 		return
@@ -157,7 +157,7 @@
 		return PROJECTILE_IMPACT_PIERCE | impact_flags
 	return ..()
 
-/obj/projectile/bullet/magnetic/bore/on_impact_new(atom/target, impact_flags, def_zone, blocked)
+/obj/projectile/bullet/magnetic/bore/on_impact(atom/target, impact_flags, def_zone, efficiency)
 	. = ..()
 	if(PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT)
 		return

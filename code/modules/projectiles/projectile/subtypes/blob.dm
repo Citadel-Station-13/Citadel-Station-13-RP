@@ -25,7 +25,7 @@
 	reagents = null
 	..()
 
-/obj/projectile/energy/blob/on_impact_new(atom/target, impact_flags, def_zone, blocked)
+/obj/projectile/energy/blob/on_impact(atom/target, impact_flags, def_zone, efficiency)
 	. = ..()
 	if(. & PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT)
 		return

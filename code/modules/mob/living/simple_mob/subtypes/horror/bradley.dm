@@ -48,7 +48,7 @@
 	playsound(src, 'sound/h_sounds/mumble.ogg', 50, 1)
 	..()
 
-/mob/living/simple_mob/horror/bradley/bullet_act(obj/projectile/proj, impact_flags, def_zone, blocked)
+/mob/living/simple_mob/horror/bradley/bullet_act(obj/projectile/proj, impact_flags, def_zone, efficiency)
 	. = ..()
 	playsound(src, 'sound/h_sounds/holla.ogg', 50, 1)
 

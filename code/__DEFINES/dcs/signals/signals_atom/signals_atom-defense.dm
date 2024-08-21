@@ -1,14 +1,15 @@
 //* This file is explicitly licensed under the MIT license. *//
-//* Copyright (c) 2024 silicons                             *//
+//* Copyright (c) Citadel Station Developers                *//
 
 // todo: integrity signals?
 
 /// called from bullet_act(): (args)
 #define COMSIG_ATOM_BULLET_ACT "bullet_act"
 	#define BULLET_ACT_ARG_PROJECTILE 1
+	/// index of arg for PROJECTILE_IMPACT_* flags
 	#define BULLET_ACT_ARG_FLAGS 2
 	#define BULLET_ACT_ARG_ZONE 3
-	#define BULLET_ACT_ARG_BLOCKED 4
+	#define BULLET_ACT_ARG_EFFICIENCY 4
 
 /// called from run_armorcalls(): (list/shieldcall_args, fake_attack)
 ///

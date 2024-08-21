@@ -12,7 +12,7 @@
 	name = "bolt of death"
 	icon_state = "pulse1_bl"
 
-/obj/projectile/magic/death/on_impact_new(atom/target, impact_flags, def_zone)
+/obj/projectile/magic/death/on_impact(atom/target, impact_flags, def_zone, efficiency)
 	. = ..()
 	if(. & PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT)
 		return
@@ -30,7 +30,7 @@
 	damage_type = OXY
 	nodamage = 1
 
-/obj/projectile/magic/resurrection/on_impact_new(atom/target, impact_flags, def_zone)
+/obj/projectile/magic/resurrection/on_impact(atom/target, impact_flags, def_zone, efficiency)
 	. = ..()
 	if(. & PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT)
 		return
@@ -54,7 +54,7 @@
 	var/inner_tele_radius = 0
 	var/outer_tele_radius = 6
 
-/obj/projectile/magic/teleport/on_impact_new(atom/target, impact_flags, def_zone)
+/obj/projectile/magic/teleport/on_impact(atom/target, impact_flags, def_zone, efficiency)
 	. = ..()
 	if(. & PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT)
 		return
@@ -83,7 +83,7 @@
 	nodamage = 1
 	var/list/door_types = list(/obj/structure/simple_door/wood, /obj/structure/simple_door/iron, /obj/structure/simple_door/silver, /obj/structure/simple_door/gold, /obj/structure/simple_door/uranium, /obj/structure/simple_door/sandstone, /obj/structure/simple_door/phoron, /obj/structure/simple_door/diamond)
 
-/obj/projectile/magic/door/on_impact_new(atom/target, impact_flags, def_zone)
+/obj/projectile/magic/door/on_impact(atom/target, impact_flags, def_zone, efficiency)
 	. = ..()
 	if(. & PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT)
 		return
@@ -309,7 +309,7 @@
 	sharp = TRUE
 	magic = TRUE
 
-/obj/projectile/magic/spellblade/on_impact_new(atom/target, impact_flags, def_zone)
+/obj/projectile/magic/spellblade/on_impact(atom/target, impact_flags, def_zone, efficiency)
 	. = ..()
 	if(. & PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT)
 		return
@@ -331,7 +331,7 @@
 	magic = TRUE
 	impact_sounds = 'sound/weapons/barragespellhit.ogg'
 
-/obj/projectile/magic/arcane_barrage/on_impact_new(atom/target, impact_flags, def_zone)
+/obj/projectile/magic/arcane_barrage/on_impact(atom/target, impact_flags, def_zone, efficiency)
 	. = ..()
 	if(. & PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT)
 		return
@@ -368,7 +368,7 @@
 	return ..()
 */
 
-/obj/projectile/magic/locker/on_impact_new(atom/target, impact_flags, def_zone)
+/obj/projectile/magic/locker/on_impact(atom/target, impact_flags, def_zone, efficiency)
 	. = ..()
 	if(. & PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT)
 		return
@@ -447,7 +447,7 @@
 		chain = caster.Beam(src, icon_state = "lightning[rand(1, 12)]", time = INFINITY, maxdistance = INFINITY)
 	..()
 
-/obj/projectile/magic/aoe/lightning/on_impact_new(atom/target, impact_flags, def_zone)
+/obj/projectile/magic/aoe/lightning/on_impact(atom/target, impact_flags, def_zone, efficiency)
 	. = ..()
 	if(. & PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT)
 		return
@@ -476,7 +476,7 @@
 	var/exp_flash = 3
 	var/exp_fire = 2
 
-/obj/projectile/magic/aoe/fireball/on_impact_new(atom/target, impact_flags, def_zone)
+/obj/projectile/magic/aoe/fireball/on_impact(atom/target, impact_flags, def_zone, efficiency)
 	. = ..()
 	if(. & PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT)
 		return
@@ -498,7 +498,7 @@
 	exp_flash = 4
 	exp_fire= 5
 
-/obj/projectile/magic/aoe/fireball/infernal/on_impact_new(atom/target, impact_flags, def_zone)
+/obj/projectile/magic/aoe/fireball/infernal/on_impact(atom/target, impact_flags, def_zone, efficiency)
 	. = ..()
 	if(. & PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT)
 		return
@@ -514,7 +514,7 @@
 	var/mob/living/victim = null
 	var/used = 0
 
-/obj/projectile/magic/nuclear/on_impact_new(atom/target, impact_flags, def_zone)
+/obj/projectile/magic/nuclear/on_impact(atom/target, impact_flags, def_zone, efficiency)
 	. = ..()
 	if(. & PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT)
 		return
@@ -555,7 +555,7 @@
 	damage = 4
 	var/fire_stacks = 4
 
-/obj/projectile/magic/spellcard/book/spark/on_impact_new(atom/target, impact_flags, def_zone)
+/obj/projectile/magic/spellcard/book/spark/on_impact(atom/target, impact_flags, def_zone, efficiency)
 	. = ..()
 	if(. & PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT)
 		return

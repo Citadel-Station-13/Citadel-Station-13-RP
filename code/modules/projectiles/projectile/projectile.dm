@@ -927,18 +927,18 @@
  *
  * * Please take into account impact_flags.
  * * Most impact flags returned are not re-checked for performance; pierce/phase calculations should be done in pre_impact().
- * * please see [/atom/proc/bullet_act()] for information on the parameters.
+ * * please see [/atom/proc/bullet_act(obj/projectile/proj, impact_flags, def_zone, efficiency)
  *
  * Things to keep in mind, if you ignore the above and didn't read bullet_act():
  * * Parameters are changed directly, as a function's arguments are just a list passed down in ..() if nothing is in the ()
- * * 'blocked' is extremely powerful
+ * * 'efficiency' is extremely powerful
  * * impact_flags having PROJECTILE_IMPACT_DELETE is a good sign to delete and do nothing else.
  *
  * todo: add PROJECTILE_IMPACT_DELETE_AFTER as opposed to DELETE? so rest of effects can still run
  *
  * @return new impact_flags; only PROJECTILE_IMPACT_DELETE is rechecked.
  */
-/obj/projectile/proc/on_impact_new(atom/target, impact_flags, def_zone, blocked)
+/obj/projectile/proc/on_impact(atom/target, impact_flags, def_zone, efficiency = 1)
 	//! legacy shit
 	if(damage && damage_type == BURN)
 		var/turf/T = get_turf(target)

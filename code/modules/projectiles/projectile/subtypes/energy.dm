@@ -18,7 +18,7 @@
 	var/brightness = 7
 	var/light_colour = "#ffffff"
 
-/obj/projectile/energy/flash/on_impact_new(atom/target, impact_flags, def_zone, blocked)
+/obj/projectile/energy/flash/on_impact(atom/target, impact_flags, def_zone, efficiency)
 	. = ..()
 	if(!isturf(target))
 		return
@@ -58,7 +58,7 @@
 	incendiary = 1
 	flammability = 2
 
-/obj/projectile/energy/flash/flare/on_impact_new(atom/target, impact_flags, def_zone, blocked)
+/obj/projectile/energy/flash/flare/on_impact(atom/target, impact_flags, def_zone, efficiency)
 	light_colour = pick("#e58775", "#ffffff", "#90ff90", "#a09030")
 	. = ..()
 	//residual illumination
@@ -202,7 +202,7 @@
 			to_chat(M, "<span class='danger'>Your ears start to ring!</span>")
 	M.update_icons() //Just to apply matrix transform for laying asap
 
-/obj/projectile/energy/plasmastun/on_impact_new(atom/target, impact_flags, def_zone, blocked)
+/obj/projectile/energy/plasmastun/on_impact(atom/target, impact_flags, def_zone, efficiency)
 	. = ..()
 	bang(target)
 	return . | PROJECTILE_IMPACT_DELETE

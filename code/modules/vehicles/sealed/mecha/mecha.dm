@@ -968,7 +968,7 @@
 ////////  Health related procs  ////////
 ////////////////////////////////////////
 
-/obj/vehicle/sealed/mecha/bullet_act(obj/projectile/Proj)
+/obj/vehicle/sealed/mecha/bullet_act(obj/projectile/proj, impact_flags, def_zone, efficiency)
 	. = ..()
 
 
@@ -1159,7 +1159,7 @@
 	return
 
 
-/obj/vehicle/sealed/mecha/bullet_act(obj/projectile/proj, impact_flags, def_zone, blocked)
+/obj/vehicle/sealed/mecha/bullet_act(obj/projectile/proj, impact_flags, def_zone, efficiency)
 	if(istype(proj, /obj/projectile/test))
 		var/obj/projectile/test/Test = proj
 		Test.hit |= occupant_legacy // Register a hit on the occupant, for things like turrets, or in simple-mob cases stopping friendly fire in firing line mode.

@@ -47,7 +47,7 @@
 	else
 		return ..()
 
-/obj/structure/target_stake/bullet_act(obj/projectile/proj, impact_flags, def_zone, blocked)
+/obj/structure/target_stake/bullet_act(obj/projectile/proj, impact_flags, def_zone, efficiency)
 	if(pinned_target)
 		return proj.impact_redirect(pinned_target, args)
 	return ..()

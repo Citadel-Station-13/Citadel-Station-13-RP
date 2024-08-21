@@ -3,7 +3,7 @@
 
 //* Projectile Handling *//
 
-/mob/living/bullet_act(obj/projectile/proj, impact_flags, def_zone, blocked)
+/mob/living/bullet_act(obj/projectile/proj, impact_flags, def_zone, efficiency)
 	//! LEGACY
 
 	// Using someone as a shield

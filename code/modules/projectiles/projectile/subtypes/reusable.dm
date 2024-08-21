@@ -62,7 +62,7 @@
 	icon_state = "plunger"
 	ammo_type = /obj/item/ammo_casing/arrow/plunger
 
-/obj/projectile/bullet/reusable/plunger/on_impact_new(atom/target, impact_flags, def_zone, blocked)
+/obj/projectile/bullet/reusable/plunger/on_impact(atom/target, impact_flags, def_zone, efficiency)
 	. = ..()
 	// use target abort as this is a target effect.
 	if(. & PROJECTILE_IMPACT_FLAGS_TARGET_ABORT)

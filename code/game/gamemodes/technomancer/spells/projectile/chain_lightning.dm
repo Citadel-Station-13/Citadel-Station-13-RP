@@ -36,7 +36,7 @@
 
 // todo: rework this shit :/
 
-/obj/projectile/beam/chain_lightning/on_impact_new(atom/target, impact_flags, def_zone, blocked)
+/obj/projectile/beam/chain_lightning/on_impact(atom/target, impact_flags, def_zone, efficiency)
 	. = ..()
 	if(. & (PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT | PROJECTILE_IMPACT_BLOCKED))
 		return

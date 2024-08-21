@@ -75,23 +75,24 @@
  * as it won't propagate to the `.`  (default return) variable after.
  *
  * Things to keep in mind
- * * 'blocked' arg is **extremely** powerful. Please don't raise it to high values for no reason.
- * * use PROJECTILE_IMPACT_BLOCKED instead of setting blocked to 100 if an impact is entirely blocked
- * * semantically, blocked 100 means shield from all damaged, IMPACT_BLOCKED means it hit something else
+ * * 'efficiency' arg is **extremely** powerful. Please don't lower it to dismal values for no reason.
+ * * use PROJECTILE_IMPACT_BLOCKED instead of setting efficiency to 0 if an impact is entirely blocked
+ * * semantically, efficiency 0 means shield from all damages, IMPACT_BLOCKED means it hit something else
  * * please return if `. & PROJECTILE_IMPACT_FLAGS_TARGET_ABORT` after `..()`, as that signals we are done and should stop.
+ * * efficiency is defaulted to 1 in the parent call. if you are doing behavior before ..(), make sure you default it to 1 yourself!
  *
  * @params
  * * proj - the projectile
  * * impact_flags - PROJECTILE_IMPACT_* flags
  * * def_zone - impacting zone; calculated by projectile side, usually
- * * blocked - 0 to 100, inclusive; % block to enforce. this should affect most damage/stun/etc values
+ * * efficiency - 0 to 1, inclusive. ratio of effects, including damage, to pass through. defaulted to 1 at base of [/atom/proc/bullet_act()]
  *
  * todo: add PROJECTILE_IMPACT_DELETE_AFTER as opposed to DELETE? so rest of effects can still run
  * todo: shieldcalls still fire if target aborts without unconditional abort, they should not do that.
  *
  * @return new impact_flags
  */
-/atom/proc/bullet_act(obj/projectile/proj, impact_flags, def_zone, blocked)
+/atom/proc/bullet_act(obj/projectile/proj, impact_flags, def_zone, efficiency = 1)
 	// lower calls can change flags before we trigger
 	// check if we're still hitting
 	if(impact_flags & PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT)

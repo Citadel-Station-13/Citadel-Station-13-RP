@@ -151,7 +151,7 @@
 /obj/projectile/sonic/strong
 	damage = 45
 
-/obj/projectile/sonic/strong/on_impact_new(atom/target, impact_flags, def_zone, blocked)
+/obj/projectile/sonic/strong/on_impact(atom/target, impact_flags, def_zone, efficiency)
 	. = ..()
 	if(. & PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT)
 		return

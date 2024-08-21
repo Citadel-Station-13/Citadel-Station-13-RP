@@ -19,7 +19,7 @@
 	return TRUE
 
 /*
-/obj/machinery/turnstile/bullet_act(obj/item/projectile/P, def_zone)
+/obj/machinery/turnstile/bullet_act(obj/projectile/proj, impact_flags, def_zone, efficiency)
 	return -1 //Pass through!
 */
 

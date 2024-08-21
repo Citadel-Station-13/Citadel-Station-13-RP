@@ -58,7 +58,7 @@
 
 	..() // Does the regular launching stuff.
 
-/obj/projectile/energy/hook/on_impact_new(atom/target, impact_flags, def_zone)
+/obj/projectile/energy/hook/on_impact(atom/target, impact_flags, def_zone, efficiency)
 	. = ..()
 	if(. & PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT)
 		return

@@ -75,7 +75,7 @@
 		desc = "A shooting target that looks vaguely human shaped but not enough to cause controversy."
 		hp = 1800 // alium onest too kinda
 
-/obj/item/target/bullet_act(obj/projectile/proj, impact_flags, def_zone, blocked)
+/obj/item/target/bullet_act(obj/projectile/proj, impact_flags, def_zone, efficiency)
 	. = ..()
 
 	var/p_x = proj.p_x + pick(0,0,0,0,0,-1,1) // really ugly way of coding "sometimes offset proj.p_x!"

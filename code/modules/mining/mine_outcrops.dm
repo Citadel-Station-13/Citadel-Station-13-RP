@@ -108,7 +108,7 @@
 		return
 	. = ..()
 
-/obj/structure/outcrop/bullet_act(obj/projectile/proj, impact_flags, def_zone, blocked)
+/obj/structure/outcrop/bullet_act(obj/projectile/proj, impact_flags, def_zone, efficiency)
 	. = ..()
 	if(. & PROJECTILE_IMPACT_FLAGS_TARGET_ABORT)
 		return

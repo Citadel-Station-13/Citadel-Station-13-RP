@@ -10,7 +10,7 @@
 /obj/projectile/forcebolt/strong
 	name = "force bolt"
 
-/obj/projectile/forcebolt/on_impact_new(atom/target, impact_flags, def_zone, blocked)
+/obj/projectile/forcebolt/on_impact(atom/target, impact_flags, def_zone, efficiency)
 	. = ..()
 	if(ismovable(target))
 		var/atom/movable/movable_target = target

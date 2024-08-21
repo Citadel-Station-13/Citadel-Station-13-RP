@@ -64,7 +64,7 @@
 	sharp = 0
 	damage_flag = ARMOR_MELEE
 
-/obj/projectile/bullet/stripper/on_impact_new(atom/target, impact_flags, def_zone, blocked)
+/obj/projectile/bullet/stripper/on_impact(atom/target, impact_flags, def_zone, efficiency)
 	. = ..()
 	if(. & PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT)
 		return
@@ -94,7 +94,7 @@
 	tracer_type = /obj/effect/projectile/tracer/laser_omni
 	impact_type = /obj/effect/projectile/impact/laser_omni
 
-/obj/projectile/beam/final_option/on_impact_new(atom/target, impact_flags, def_zone, blocked)
+/obj/projectile/beam/final_option/on_impact(atom/target, impact_flags, def_zone, efficiency)
 	. = ..()
 	if(. & PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT)
 		return

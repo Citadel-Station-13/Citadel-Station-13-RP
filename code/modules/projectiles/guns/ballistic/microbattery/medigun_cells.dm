@@ -20,7 +20,7 @@
 	tracer_type = /obj/effect/projectile/tracer/medigun
 	impact_type = /obj/effect/projectile/impact/medigun
 
-/obj/projectile/beam/medical_cell/on_impact_new(atom/target, impact_flags, def_zone)
+/obj/projectile/beam/medical_cell/on_impact(atom/target, impact_flags, def_zone, efficiency)
 	. = ..()
 	if(ishuman(target))
 		on_hit_legacy(target)

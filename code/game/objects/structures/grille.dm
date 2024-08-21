@@ -43,7 +43,7 @@
 		return TRUE
 	return ..()
 
-/obj/structure/grille/bullet_act(obj/projectile/proj, impact_flags, def_zone, blocked)
+/obj/structure/grille/bullet_act(obj/projectile/proj, impact_flags, def_zone, efficiency)
 	if(proj.original_target == src)
 		impact_flags |= PROJECTILE_IMPACT_TRIVIAL
 	else

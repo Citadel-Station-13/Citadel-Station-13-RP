@@ -91,7 +91,7 @@
 /obj/projectile/beam/stun/xeno/weak //Weaker variant for non-research equipment, turrets, or rapid fire types.
 	agony = 3
 
-/obj/projectile/beam/stun/xeno/on_impact_new(atom/target, impact_flags, def_zone, blocked)
+/obj/projectile/beam/stun/xeno/on_impact(atom/target, impact_flags, def_zone, efficiency)
 	. = ..()
 	if(. & PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT)
 		return

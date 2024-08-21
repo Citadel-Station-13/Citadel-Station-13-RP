@@ -261,7 +261,7 @@
 			req_access += pick(get_all_station_access())
 	..()
 
-/obj/structure/closet/crate/secure/bullet_act(obj/projectile/proj, impact_flags, def_zone, blocked)
+/obj/structure/closet/crate/secure/bullet_act(obj/projectile/proj, impact_flags, def_zone, efficiency)
 	if(!(proj.damage_type == BRUTE || proj.damage_type == BURN))
 		return ..()
 

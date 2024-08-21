@@ -5,7 +5,7 @@
 
 // This is a test projectile in the sense that its testing the code to make sure it works,
 // as opposed to a 'can I hit this thing' projectile.
-/obj/projectile/arc/test/on_impact_new(atom/target, impact_flags, def_zone, blocked)
+/obj/projectile/arc/test/on_impact(atom/target, impact_flags, def_zone, efficiency)
 	. = ..()
 	if(!isturf(target))
 		return
@@ -20,7 +20,7 @@
 	damage = 15
 	damage_type = BURN
 
-/obj/projectile/arc/blue_energy/on_impact_new(atom/target, impact_flags, def_zone, blocked)
+/obj/projectile/arc/blue_energy/on_impact(atom/target, impact_flags, def_zone, efficiency)
 	. = ..()
 	if(!isturf(target))
 		return
@@ -39,7 +39,7 @@
 	var/fragment_amount = 63 // Same as a grenade.
 	var/spread_range = 7
 
-/obj/projectile/arc/fragmentation/on_impact_new(atom/target, impact_flags, def_zone, blocked)
+/obj/projectile/arc/fragmentation/on_impact(atom/target, impact_flags, def_zone, efficiency)
 	. = ..()
 	if(!isturf(target))
 		return
@@ -56,12 +56,12 @@
 	name = "emp blast"
 	icon_state = "bluespace"
 
-/obj/projectile/arc/emp_blast/on_impact_new(atom/target, impact_flags, def_zone, blocked)
+/obj/projectile/arc/emp_blast/on_impact(atom/target, impact_flags, def_zone, efficiency)
 	var/turf/T = target
 	empulse(T, 2, 4, 7, 10) // Normal EMP grenade.
 	return impact_flags
 
-/obj/projectile/arc/emp_blast/weak/on_impact_new(atom/target, impact_flags, def_zone, blocked)
+/obj/projectile/arc/emp_blast/weak/on_impact(atom/target, impact_flags, def_zone, efficiency)
 	var/turf/T = target
 	empulse(T, 1, 2, 3, 4) // Sec EMP grenade.
 	return impact_flags
@@ -74,7 +74,7 @@
 	icon_scale_y = 2
 	var/rad_power = RAD_INTENSITY_PROJ_ARC
 
-/obj/projectile/arc/radioactive/on_impact_new(atom/target, impact_flags, def_zone, blocked)
+/obj/projectile/arc/radioactive/on_impact(atom/target, impact_flags, def_zone, efficiency)
 	. = ..()
 	if(!isturf(target))
 		return

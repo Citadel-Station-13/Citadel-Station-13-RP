@@ -32,7 +32,7 @@
 
 	var/power = 60				//How hard it will hit for with electrocute_act().
 
-/obj/projectile/beam/lightning/on_impact_new(atom/target, impact_flags, def_zone, blocked)
+/obj/projectile/beam/lightning/on_impact(atom/target, impact_flags, def_zone, efficiency)
 	. = ..()
 	if(. & (PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT | PROJECTILE_IMPACT_BLOCKED))
 		return

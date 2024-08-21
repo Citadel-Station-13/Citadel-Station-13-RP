@@ -34,7 +34,7 @@
 	vacuum_traversal = 0
 	range = WORLD_ICON_SIZE * 5 //Scary name, but just deletes the projectile after this range
 
-/obj/projectile/sickshot/on_impact_new(atom/target, impact_flags, def_zone, blocked)
+/obj/projectile/sickshot/on_impact(atom/target, impact_flags, def_zone, efficiency)
 	. = ..()
 	if(. & PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT)
 		return

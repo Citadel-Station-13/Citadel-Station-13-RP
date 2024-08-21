@@ -227,7 +227,7 @@
 	name = "rocket"
 	icon_state = "mortar"
 
-/obj/projectile/arc/explosive_rocket/on_impact_new(atom/target, impact_flags, def_zone, blocked)
+/obj/projectile/arc/explosive_rocket/on_impact(atom/target, impact_flags, def_zone, efficiency)
 	. = ..()
 	if(!isturf(target))
 		return
@@ -248,7 +248,7 @@
 	name = "micro singularity"
 	icon_state = "bluespace"
 
-/obj/projectile/arc/microsingulo/on_impact_new(atom/target, impact_flags, def_zone, blocked)
+/obj/projectile/arc/microsingulo/on_impact(atom/target, impact_flags, def_zone, efficiency)
 	. = ..()
 	if(!isturf(target))
 		return

@@ -36,7 +36,7 @@
 	vacuum_traversal = 0
 	range = WORLD_ICON_SIZE * 6 //Scary name, but just deletes the projectile after this range
 
-/obj/projectile/pummel/on_impact_new(atom/target, impact_flags, def_zone, blocked)
+/obj/projectile/pummel/on_impact(atom/target, impact_flags, def_zone, efficiency)
 	. = ..()
 	if(. & PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT)
 		return

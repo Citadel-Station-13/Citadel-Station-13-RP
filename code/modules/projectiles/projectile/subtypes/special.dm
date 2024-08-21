@@ -17,7 +17,7 @@
 	var/sev3_range = 1
 	var/sev4_range = 1
 
-/obj/projectile/ion/on_impact_new(atom/target, impact_flags, def_zone, blocked)
+/obj/projectile/ion/on_impact(atom/target, impact_flags, def_zone, efficiency)
 	. = ..()
 	if(. & PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT)
 		return
@@ -44,7 +44,7 @@
 	sharp = 1
 	edge = 1
 
-/obj/projectile/bullet/gyro/on_impact_new(atom/target, impact_flags, def_zone, blocked)
+/obj/projectile/bullet/gyro/on_impact(atom/target, impact_flags, def_zone, efficiency)
 	. = ..()
 	if(. & PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT)
 		return
@@ -67,7 +67,7 @@
 
 	combustion = FALSE
 
-/obj/projectile/temp/on_impact_new(atom/target, impact_flags, def_zone, blocked)
+/obj/projectile/temp/on_impact(atom/target, impact_flags, def_zone, efficiency)
 	. = ..()
 	if(. & PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT)
 		return
@@ -139,7 +139,7 @@
 
 	combustion = FALSE
 
-/obj/projectile/energy/floramut/on_impact_new(atom/target, impact_flags, def_zone, blocked)
+/obj/projectile/energy/floramut/on_impact(atom/target, impact_flags, def_zone, efficiency)
 	. = ..()
 	if(. & PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT)
 		return
@@ -196,7 +196,7 @@
 	light_power = 0.5
 	light_color = "#FFFFFF"
 
-/obj/projectile/energy/florayield/on_impact_new(atom/target, impact_flags, def_zone, blocked)
+/obj/projectile/energy/florayield/on_impact(atom/target, impact_flags, def_zone, efficiency)
 	. = ..()
 	if(. & PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT)
 		return
@@ -212,7 +212,7 @@
 	name = "flayer ray"
 	combustion = FALSE
 
-/obj/projectile/beam/mindflayer/on_impact_new(atom/target, impact_flags, def_zone, blocked)
+/obj/projectile/beam/mindflayer/on_impact(atom/target, impact_flags, def_zone, efficiency)
 	. = ..()
 	if(. & PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT)
 		return
@@ -239,7 +239,7 @@
 
 	combustion = FALSE
 
-/obj/projectile/bola/on_impact_new(atom/target, impact_flags, def_zone, blocked)
+/obj/projectile/bola/on_impact(atom/target, impact_flags, def_zone, efficiency)
 	. = ..()
 	if(. & PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT)
 		return
@@ -260,7 +260,7 @@
 
 	combustion = FALSE
 
-/obj/projectile/webball/on_impact_new(atom/target, impact_flags, def_zone, blocked)
+/obj/projectile/webball/on_impact(atom/target, impact_flags, def_zone, efficiency)
 	. = ..()
 	if(. & PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT)
 		return
@@ -287,7 +287,7 @@
 	tracer_type = /obj/effect/projectile/tungsten/tracer
 	impact_type = /obj/effect/projectile/tungsten/impact
 
-/obj/projectile/beam/tungsten/on_impact_new(atom/target, impact_flags, def_zone)
+/obj/projectile/beam/tungsten/on_impact(atom/target, impact_flags, def_zone, efficiency)
 	. = ..()
 	if(. & PROJECTILE_IMPACT_BLOCKED)
 		return
@@ -400,7 +400,7 @@
 	light_color = "#00ccff"
 	var/heavy = FALSE
 
-/obj/projectile/plasma/on_impact_new(atom/target, impact_flags, def_zone)
+/obj/projectile/plasma/on_impact(atom/target, impact_flags, def_zone, efficiency)
 	. = ..()
 	if(. & PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT)
 		return

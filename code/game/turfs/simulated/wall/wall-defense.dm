@@ -60,7 +60,7 @@
 	)
 	return NONE
 
-/turf/simulated/wall/bullet_act(obj/projectile/proj, impact_flags, def_zone, blocked)
+/turf/simulated/wall/bullet_act(obj/projectile/proj, impact_flags, def_zone, efficiency)
 	. = ..()
 	if(. & PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT)
 		return

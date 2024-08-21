@@ -66,7 +66,7 @@ var/const/MAX_ACTIVE_TIME = 400
 		Die()
 	return
 
-/obj/item/clothing/mask/facehugger/bullet_act(obj/projectile/proj, impact_flags, def_zone, blocked)
+/obj/item/clothing/mask/facehugger/bullet_act(obj/projectile/proj, impact_flags, def_zone, efficiency)
 	. = ..()
 	Die()
 
@@ -351,7 +351,7 @@ var/const/MAX_ACTIVE_TIME = 400
 		Die()
 	return
 
-/mob/living/simple_mob/animal/space/alien/facehugger/bullet_act()
+/mob/living/simple_mob/animal/space/alien/facehugger/bullet_act(obj/projectile/proj, impact_flags, def_zone, efficiency)
 	Die()
 	return
 

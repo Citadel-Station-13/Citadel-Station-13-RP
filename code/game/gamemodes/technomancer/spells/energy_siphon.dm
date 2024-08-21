@@ -174,7 +174,7 @@
 	power = 5 // This fires really fast, so this may add up if someone keeps standing in the beam.
 	legacy_penetrating = 5
 
-/obj/projectile/beam/lightning/energy_siphon/on_impact_new(atom/target, impact_flags, def_zone, blocked)
+/obj/projectile/beam/lightning/energy_siphon/on_impact(atom/target, impact_flags, def_zone, efficiency)
 	. = ..()
 	if(. & PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT)
 		return
