@@ -315,6 +315,11 @@
 	return frame.active_parry.handle_bullet(defending, shieldcall_returns, fake_attack, efficiency, bullet_act_args)
 
 /datum/parry_frame/proc/handle_bullet(atom/defending, shieldcall_returns, fake_attack, efficiency, list/bullet_act_args)
+	var/obj/projectile/proj = bullet_act_args[BULLET_ACT_ARG_PROJECTILE]
+	var/estimated_severity = clamp(proj.damage / 80 * 100, 0, 1)
+	bullet_act_args[BULLET_ACT_ARG_BLOCKED] = (100 - bullet_act_args[BULLET_ACT_ARG_BLOCKED]) 
+	perform_audiovisuals(defending, ATTACK_TYPE_PROJECTILE, efficiency, proj, shieldcall_returns, estimated_severity)
+	perform_aftereffects(defending, ATTACK_TYPE_PROJECTILE, efficiency, proj, shieldcall_returns)
 	#warn impl
 
 //* Bindings - Melee *//
