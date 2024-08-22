@@ -322,7 +322,7 @@
 	movement_sound = 'sound/mobs/biomorphs/vanguard_move.ogg'
 	projectiletype = /obj/projectile/energy/acid
 	projectilesound = 'sound/effects/splat.ogg'
-	/datum/ai_holder/polaris/simple_mob/ranged/aggressive
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/ranged/aggressive
 
 /datum/category_item/catalogue/fauna/feral_alien/monarch
 	name = "Feral Xenomorph - Monarch"
@@ -367,7 +367,7 @@
 	attack_sound =  'sound/mobs/biomorphs/monarch_attack.ogg'
 	movement_sound = 'sound/mobs/biomorphs/monarch_move.ogg'
 	melee_attack_delay = 4
-	/datum/ai_holder/polaris/simple_mob/ranged/aggressive
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/ranged/aggressive/priest
 	special_attack_min_range = 3
 	special_attack_max_range = 12 //Normal view range is 7 this can begin charging from outside normal view You may expand it.
 	special_attack_cooldown = 15 SECONDS
