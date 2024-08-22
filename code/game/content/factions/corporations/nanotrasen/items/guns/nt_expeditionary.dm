@@ -47,22 +47,27 @@
 /obj/item/ammo_casing/nt_expeditionary/pistol_light
 	name = "ammo casing (NT-9)"
 	desc = "A standardized 9mm cartridge for NT Expeditionary kinetics. This one seems to be for lightweight pistols and sidearms."
+	caliber = /datum/ammo_caliber/nt_expeditionary/light_sidearm
 
 /obj/item/ammo_casing/nt_expeditionary/pistol_heavy
 	name = "ammo casing (NT-9-magnum)"
 	desc = "A standardized 9mm cartridge for NT Expeditionary kinetics. This one seems to be for heavy-duty sidearms."
+	caliber = /datum/ammo_caliber/nt_expeditionary/heavy_sidearm
 
 /obj/item/ammo_casing/nt_expeditionary/rifle_light
 	name = "ammo casing (NT-7.5-SR)"
 	desc = "A standardized 7.5x39mm cartridge for NT Expeditionary kinetics. This one seems to be for lightweight automatics."
+	caliber = /datum/ammo_caliber/nt_expeditionary/light_rifle
 
 /obj/item/ammo_casing/nt_expeditionary/rifle_heavy
 	name = "ammo casing (NT-7.5-LR)"
 	desc = "A standardized 7.5x54mm cartridge for NT Expeditionary kinetics. This one seems to be for heavy rifles."
+	caliber = /datum/ammo_caliber/nt_expeditionary/heavy_rifle
 
 /obj/item/ammo_casing/nt_expeditionary/antimaterial
 	name = "ammo casing (NT-12.5-antimaterial)"
 	desc = "A standardized 12.5x92mm cartridge for NT Expeditionary kinetics. This one seems ridiculous large, and is probably for a very powerful weapon."
+	caliber = /datum/ammo_caliber/nt_expeditionary/antimaterial
 
 //* Magazines *//
 

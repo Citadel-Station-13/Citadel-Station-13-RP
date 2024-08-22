@@ -24,7 +24,7 @@
 	icon = 'icons/content/factions/corporations/nanotrasen/items/gun/expeditionary/shotgun.dmi'
 	caliber = /datum/ammo_caliber/a12g
 
-//* Basic Shotgun *//
+//* Pump Shotgun *//
 
 /**
  * * Requires pumping.
