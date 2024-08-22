@@ -33,13 +33,16 @@
 	icon_state = "warrior_animations"
 	icon_living = "warrior_animations"
 	icon_dead = "warrior_dead"
-	icon_gib = "syndicate_gib"
+	icon_gib = "gibbed-a-small"
+	var/butcherable = FALSE
 	icon_rest = "warrior_sleep"
 	movement_cooldown = 2
 	base_pixel_x = -8
 	base_pixel_y = 1
 	icon_scale_x = 1.1
 	icon_scale_y = 1.1
+	attack_sound = 'sound/mobs/biomorphs/warrior_attack.ogg'
+	movement_sound = 'sound/mobs/biomorphs/warrior_move.ogg'
 	catalogue_data = list(/datum/category_item/catalogue/fauna/feral_alien/warrior)
 	ai_holder_type = /datum/ai_holder/polaris/simple_mob/melee/evasive
 
@@ -88,6 +91,8 @@
 	icon_living = "drone_animations"
 	icon_dead = "drone_dead"
 	icon_rest = "drone_sleep"
+	icon_gib = "gibbed-a-small"
+	gib_on_butchery = "gibbed-a-small-corpse"
 	maxHealth = 150
 	health = 150
 	base_pixel_x = -8
@@ -95,6 +100,8 @@
 	legacy_melee_damage_lower = 20
 	legacy_melee_damage_upper = 20
 	faction = "xeno"
+	attack_sound =  'sound/mobs/biomorphs/drone_attack.ogg'
+	movement_sound = 'sound/mobs/biomorphs/drone_move.ogg'
 	catalogue_data = list(/datum/category_item/catalogue/fauna/feral_alien/drone)
 	ai_holder_type = /datum/ai_holder/polaris/simple_mob/melee
 
@@ -117,6 +124,8 @@
 	icon_living = "basic_spitter_walk"
 	icon_dead = "basic_spitter_dead"
 	icon_rest = "basic_spitter_sleep"
+	icon_gib = "gibbed-a-small"
+	gib_on_butchery = "gibbed-a-small-corpse"
 	maxHealth = 200
 	health = 200
 	legacy_melee_damage_lower = 10
@@ -126,8 +135,10 @@
 	movement_cooldown = 3
 	projectiletype = /obj/projectile/energy/neurotoxin
 	projectilesound = 'sound/effects/splat.ogg'
+	attack_sound =  'sound/mobs/biomorphs/spitter_attack.ogg'
+	movement_sound = 'sound/mobs/biomorphs/spitter_move.ogg'
 	catalogue_data = list(/datum/category_item/catalogue/fauna/feral_alien/spitter)
-	ai_holder_type = /datum/ai_holder/polaris/hostile/ranged/robust/on_engagement
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/ranged/kiting/threatening
 
 /mob/living/simple_mob/animal/space/alien/adv_spitter
 	name = "advanced xenomorph spitter"
@@ -137,6 +148,8 @@
 	icon_living = "advanced_spitter_walk"
 	icon_dead = "advanced_spitter_dead"
 	icon_rest = "advanced_spitter_sleep"
+	icon_gib = "gibbed-a-small"
+	gib_on_butchery = "gibbed-a-small-corpse"
 	maxHealth = 350
 	health = 350
 	legacy_melee_damage_lower = 20
@@ -149,8 +162,10 @@
 	icon_scale_y = 1.1
 	projectiletype = /obj/projectile/energy/acid
 	projectilesound = 'sound/effects/splat.ogg'
+	attack_sound = 'sound/mobs/biomorphs/spitter_attack.ogg'
+	movement_sound = 'sound/mobs/biomorphs/spitter_move.ogg'
 	catalogue_data = list(/datum/category_item/catalogue/fauna/feral_alien/spitter)
-	ai_holder_type = /datum/ai_holder/polaris/hostile/ranged/robust/on_engagement
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/ranged/kiting/threatening
 
 /mob/living/simple_mob/animal/space/alien/breaker
 	name = "xenomorph line breaker"
@@ -160,6 +175,8 @@
 	icon_living = "breaker_animations"
 	icon_dead = "breaker_dead"
 	icon_rest = "breaker_sleep"
+	icon_gib = "gibbed-a"
+	gib_on_butchery = "gibbed-a-corpse"
 	health = 800
 	maxHealth = 800
 	armor_legacy_mob = list(
@@ -298,6 +315,8 @@
 	icon_living = "vanguard_run"
 	icon_dead = "vanguard_dead"
 	icon_rest = "vanguard_sleep"
+	icon_gib = "gibbed-a"
+	gib_on_butchery = "gibbed-a-corpse"
 	health = 600
 	maxHealth = 600
 	armor_legacy_mob = list(
@@ -345,6 +364,8 @@
 	icon_living = "monarch_run"
 	icon_dead = "monarch_dead"
 	icon_rest = "monarch_sleep"
+	icon_gib = "gibbed-a"
+	gib_on_butchery = "gibbed-a-corpse"
 	health = 1500
 	maxHealth = 1500
 	armor_legacy_mob = list(
@@ -463,7 +484,193 @@
 		else
 			to_chat(L, SPAN_WARNING( "\The [src] punches you with incredible force, but you remain in place."))
 
+/mob/living/simple_mob/animal/space/alien/breaker/death()
+	..()
+	visible_message("[src] lets out a waning guttural screech, green blood bubbling from its maw...")
+	playsound(src, 'sound/mobs/biomorphs/breaker_death_hiss.ogg', 100, 1)
+
+/mob/living/simple_mob/animal/space/alien/monarch/death()
+	..()
+	visible_message("[src] lets out a waning guttural screech, green blood bubbling from its maw...")
+	playsound(src, 'sound/mobs/biomorphs/monarch_death_hiss.ogg', 100, 1)
+
 /mob/living/simple_mob/animal/space/alien/death()
 	..()
 	visible_message("[src] lets out a waning guttural screech, green blood bubbling from its maw...")
-	playsound(src, 'sound/voice/hiss6.ogg', 100, 1)
+	playsound(src, 'sound/mobs/biomorphs/xenomorph_death_hiss.ogg', 100, 1)
+
+/mob/living/simple_mob/animal/space/alien/special/burrower
+	name = "xenomorph burrower"
+	icon = 'icons/mob/biomorphs/burrower.dmi'
+	desc = ""
+	icon_state = "burrow_walk"
+	icon_living = "burrow_walk"
+	icon_dead = "burrow_dead"
+	icon_rest = "burrow_sleep"
+	maxHealth = 300
+	health = 300
+	legacy_melee_damage_lower = 35
+	legacy_melee_damage_upper = 40
+	faction = "xeno"
+	movement_cooldown = 0
+	icon_scale_x = 0.7
+	icon_scale_y = 0.7
+	base_pixel_x = -16
+	base_pixel_y = -5
+	attack_sound =  'sound/weapons/bite.ogg'
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/melee/tunneler
+
+	// Tunneling is a special attack, similar to the hunter's Leap.
+	special_attack_min_range = 2
+	special_attack_max_range = 6
+	special_attack_cooldown = 10 SECONDS
+
+	var/tunnel_warning = 0.5 SECONDS	// How long the dig telegraphing is.
+	var/tunnel_tile_speed = 2			// How long to wait between each tile. Higher numbers result in an easier to dodge tunnel attack.
+
+/mob/living/simple_mob/animal/giant_spider/tunneler/frequent
+	special_attack_cooldown = 5 SECONDS
+
+/mob/living/simple_mob/animal/giant_spider/tunneler/fast
+	tunnel_tile_speed = 1
+
+/mob/living/simple_mob/animal/giant_spider/tunneler/should_special_attack(atom/A)
+	// Make sure its possible for the spider to reach the target so it doesn't try to go through a window.
+	var/turf/destination = get_turf(A)
+	var/turf/starting_turf = get_turf(src)
+	var/turf/T = starting_turf
+	for(var/i = 1 to get_dist(starting_turf, destination))
+		if(T == destination)
+			break
+
+		T = get_step(T, get_dir(T, destination))
+		if(T.check_density(ignore_mobs = TRUE))
+			return FALSE
+	return T == destination
+
+
+/mob/living/simple_mob/animal/space/alien/special/burrower/do_special_attack(atom/A)
+	set waitfor = FALSE
+	set_AI_busy(TRUE)
+
+	// Save where we're gonna go soon.
+	var/turf/destination = get_turf(A)
+	var/turf/starting_turf = get_turf(src)
+
+	// Telegraph to give a small window to dodge if really close.
+	do_windup_animation(A, tunnel_warning)
+	sleep(tunnel_warning) // For the telegraphing.
+
+	// Do the dig!
+	visible_message(SPAN_DANGER("\The [src] tunnels towards \the [A]!"))
+	submerge()
+
+	if(handle_tunnel(destination) == FALSE)
+		set_AI_busy(FALSE)
+		emerge()
+		return FALSE
+
+	// Did we make it?
+	if(!(src in destination))
+		set_AI_busy(FALSE)
+		emerge()
+		return FALSE
+
+	var/overshoot = TRUE
+
+	// Test if something is at destination.
+	for(var/mob/living/L in destination)
+		if(L == src)
+			continue
+
+		visible_message(SPAN_DANGER("\The [src] erupts from underneath, and hits \the [L]!"))
+		playsound(L, 'sound/weapons/heavysmash.ogg', 75, 1)
+		L.afflict_paralyze(20 * 3)
+		overshoot = FALSE
+
+	if(!overshoot) // We hit the target, or something, at destination, so we're done.
+		set_AI_busy(FALSE)
+		emerge()
+		return TRUE
+
+	// Otherwise we need to keep going.
+	to_chat(src, SPAN_WARNING( "You overshoot your target!"))
+	playsound(src, 'sound/weapons/punchmiss.ogg', 75, 1)
+	var/dir_to_go = get_dir(starting_turf, destination)
+	for(var/i = 1 to rand(2, 4))
+		destination = get_step(destination, dir_to_go)
+
+	if(handle_tunnel(destination) == FALSE)
+		set_AI_busy(FALSE)
+		emerge()
+		return FALSE
+
+	set_AI_busy(FALSE)
+	emerge()
+	return FALSE
+
+
+
+// Does the tunnel movement, stuns enemies, etc.
+/mob/living/simple_mob/animal/space/alien/special/burrower/proc/handle_tunnel(turf/destination)
+	var/turf/T = get_turf(src) // Hold our current tile.
+
+	// Regular tunnel loop.
+	for(var/i = 1 to get_dist(src, destination))
+		if(stat)
+			return FALSE // We died or got knocked out on the way.
+		if(loc == destination)
+			break // We somehow got there early.
+
+		// Update T.
+		T = get_step(src, get_dir(src, destination))
+		if(T.check_density(ignore_mobs = TRUE))
+			to_chat(src, SPAN_CRITICAL("You hit something really solid!"))
+			playsound(src, "punch", 75, 1)
+			afflict_paralyze(20 * 5)
+			add_modifier(/datum/modifier/tunneler_vulnerable, 10 SECONDS)
+			return FALSE // Hit a wall.
+
+		// Stun anyone in our way.
+		for(var/mob/living/L in T)
+			playsound(L, 'sound/weapons/heavysmash.ogg', 75, 1)
+			L.afflict_paralyze(20 * 2)
+
+		// Get into the tile.
+		forceMove(T)
+
+		// Visuals and sound.
+		dig_under_floor(get_turf(src))
+		playsound(src, 'sound/effects/break_stone.ogg', 75, 1)
+		sleep(tunnel_tile_speed)
+
+// For visuals.
+/mob/living/simple_mob/animal/space/alien/special/burrower/proc/submerge()
+	alpha = 0
+	dig_under_floor(get_turf(src))
+	new /obj/effect/temporary_effect/tunneler_hole(get_turf(src))
+
+// Ditto.
+/mob/living/simple_mob/animal/space/alien/special/burrower/proc/emerge()
+	alpha = 255
+	dig_under_floor(get_turf(src))
+	new /obj/effect/temporary_effect/tunneler_hole(get_turf(src))
+
+/mob/living/simple_mob/animal/space/alien/special/burrower/proc/dig_under_floor(turf/T)
+	new /obj/item/stack/ore/glass(T) // This will be rather weird when on station but the alternative is too much work.
+
+/obj/effect/temporary_effect/tunneler_hole
+	name = "hole"
+	desc = "A collapsing tunnel hole."
+	icon_state = "tunnel_hole"
+	time_to_die = 1 MINUTE
+
+/datum/modifier/tunneler_vulnerable
+	name = "Vulnerable"
+	desc = "You are vulnerable to more harm than usual."
+	on_created_text = "<span class='warning'>You feel vulnerable...</span>"
+	on_expired_text = "<span class='notice'>You feel better.</span>"
+	stacks = MODIFIER_STACK_EXTEND
+
+	incoming_damage_percent = 2
+	evasion = -100
