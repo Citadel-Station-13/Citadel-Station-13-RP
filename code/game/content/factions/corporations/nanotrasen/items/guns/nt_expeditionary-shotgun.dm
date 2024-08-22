@@ -38,7 +38,7 @@
 		the XNS Mk.6 or “Standby” is designed around a tube magazine using 12-gauge ammunition.
 		Rugged, if not fancy, this weapon is a good fallback option for anyone
 		requiring access to a long arm when out on their own or in small groups.
-	"} + "<br>" +/obj/item/gun/ballistic/nt_expeditionary::description_fluff
+	"} + "<br>"
 	icon_state = "pump"
 	#warn pump-open
 
@@ -60,7 +60,7 @@
 		specialist security personnel supporting work crews, the somewhat bulky weapon
 		lives up to its name in helping deter both hostile animals and bandits from
 		thinking they can make an easy score.
-	"} + "<br>" +/obj/item/gun/ballistic/nt_expeditionary::description_fluff
+	"} + "<br>"
 	icon_state = "semiauto"
 	#warn semiauto-empty (magout)
 

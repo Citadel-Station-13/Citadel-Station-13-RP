@@ -17,7 +17,7 @@
 		the experience, but the performance on target leaves little to complain about.
 		Feeding from medium-sized magazines, this full-sized service pistol is seen when
 		fighting is expected and not simply a possibility.
-	"} + "<br>" +/obj/item/gun/ballistic/nt_expeditionary::description_fluff
+	"} + "<br>"
 
 /obj/item/gun/ballistic/nt_expeditionary/heavy_sidearm/revolver
 	name = "heavy revolver"
@@ -28,7 +28,7 @@
 		Sporting a medium-capacity cylinder and an inline barrel design to reduce muzzle flip,
 		this weapon is seen in the hands of those who prefer style over functionality or want
 		the fine trigger control a triple-action revolver provides.
-	"} + "<br>" +/obj/item/gun/ballistic/nt_expeditionary::description_fluff
+	"} + "<br>"
 
 /obj/item/gun/ballistic/nt_expeditionary/heavy_sidearm/smg
 	name = "submachine gun"
@@ -40,6 +40,6 @@
 		punchy ammunition makes its unique sound hard to mistake when seen clearing rooms or
 		in dense jungle foliage, where the high-velocity rounds batter aside light cover
 		with relative ease.
-	"} + "<br>" +/obj/item/gun/ballistic/nt_expeditionary::description_fluff
+	"} + "<br>"
 
 #warn impl all

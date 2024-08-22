@@ -16,7 +16,7 @@
 		and accurately (for its uncanny size) punching above its paygrade.
 		Unfortunately, the downsides of using such a heavy caliber in a pistol limits its
 		practical use. This is nonetheless seen now and then in the hands of enthusiasts.
-	"} + "<br>" +/obj/item/gun/ballistic/nt_expeditionary::description_fluff
+	"} + "<br>"
 
 /obj/item/gun/ballistic/nt_expeditionary/light_rifle/semirifle
 	name = "semi-automatic rifle"
@@ -28,7 +28,7 @@
 		The basic design is fitted with a zero magnification optic and comes packaged with
 		relatively compact magazines. However, larger magazines will also work with this
 		workhorse of a weapon.
-	"} + "<br>" +/obj/item/gun/ballistic/nt_expeditionary::description_fluff
+	"} + "<br>"
 
 /obj/item/gun/ballistic/nt_expeditionary/light_rifle/autorifle
 	name = "automatic rifle"
@@ -40,7 +40,7 @@
 		this rifle still sports a zero-magnification optic and adds a short vertical grip as
 		standard to the forward handguard. Issued with larger magazines to make better use of
 		the automatic fire this weapon is capable of.
-	"} + "<br>" +/obj/item/gun/ballistic/nt_expeditionary::description_fluff
+	"} + "<br>"
 
 /obj/item/gun/ballistic/nt_expeditionary/light_rifle/pdw
 	name = "personal defense weapon"
@@ -52,7 +52,7 @@
 		control of the parent, but chopping the barrel and adding the compensator of the Mod.1,
 		this weapon's ability to fold away helps make it easy to package and
 		store inside cramped cockpits and into survival kits with its compact magazines.
-	"} + "<br>" +/obj/item/gun/ballistic/nt_expeditionary::description_fluff
+	"} + "<br>"
 
 /obj/item/gun/ballistic/nt_expeditionary/light_rifle/lmg
 	name = "squad automatic weapon"
@@ -63,6 +63,6 @@
 		and the option to feed from larger box and drum magazines, this gives a heavy punch to
 		recon teams and security units while keeping a common set of parts
 		to reduce the complexities of servicing and maintaining the series as a whole.
-	"} + "<br>" +/obj/item/gun/ballistic/nt_expeditionary::description_fluff
+	"} + "<br>"
 
 #warn impl all

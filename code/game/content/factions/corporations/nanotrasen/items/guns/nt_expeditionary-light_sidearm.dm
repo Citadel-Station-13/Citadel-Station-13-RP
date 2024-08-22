@@ -20,7 +20,7 @@
 		packing a little more punch than traditional sidearms in this caliber.
 		A small compensator and internal recoil dampeners make the increase in felt recoil negligible,
 		while its magazine gives it enough ammunition for those in a pinch to take chance shots.
-	"} + "<br>" +/obj/item/gun/ballistic/nt_expeditionary::description_fluff
+	"} + "<br>"
 
 //* SMG *//
 
@@ -33,6 +33,6 @@
 		keep it handy, the simple “Buzzer” does tend to make more sound and fury than an effective
 		combat weapon, but it will certainly raise the alarm when its shrill report sounds in
 		the dead of night.
-	"} + "<br>" +/obj/item/gun/ballistic/nt_expeditionary::description_fluff
+	"} + "<br>"
 
 #warn impl all

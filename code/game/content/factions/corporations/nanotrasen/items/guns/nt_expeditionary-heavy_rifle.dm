@@ -15,7 +15,7 @@
 		this is the go-to hunting rifle for long-range patrols.
 		Light, uncomplicated, and rugged, the “Old Man” has nothing fancy about it.
 		But, time and again, it works, day in, and day out.
-	"} + "<br>" +/obj/item/gun/ballistic/nt_expeditionary::description_fluff
+	"} + "<br>"
 
 /obj/item/gun/ballistic/nt_expeditionary/heavy_rifle/semirifle
 	name = "heavy rifle"
@@ -27,7 +27,7 @@
 		positively have to blow a fist-sized hole in something and don't have time to wait.
 		A scaled-up version of the Scout, with box magazines, this long gun is often seen issued
 		to hunters looking to take down game to sustain an expedition.
-	"} + "<br>" +/obj/item/gun/ballistic/nt_expeditionary::description_fluff
+	"} + "<br>"
 
 /obj/item/gun/ballistic/nt_expeditionary/heavy_rifle/autorifle
 	name = "heavy automatic rifle"
@@ -39,7 +39,7 @@
 		the handguard and a fixed stock was installed to handle the 'roller coaster' as one test
 		participant described the experience. Limiting the rifle
 		to burst fire keeps the rifle on target through most situations.
-	"} + "<br>" +/obj/item/gun/ballistic/nt_expeditionary::description_fluff
+	"} + "<br>"
 
 /obj/item/gun/ballistic/nt_expeditionary/heavy_rifle/lmg
 	name = "light machine gun"
@@ -52,6 +52,6 @@
 		this weapon is seen in the guard towers of base camps and atop vehicles in addition to
 		dedicated machine gun teams. The patter this weapon makes as it suppresses any hostile
 		force makes this weapon's name a logical choice.
-	"} + "<br>" +/obj/item/gun/ballistic/nt_expeditionary::description_fluff
+	"} + "<br>"
 
 #warn impl all
