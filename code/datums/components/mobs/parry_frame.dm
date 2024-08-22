@@ -354,8 +354,8 @@
 
 //* Bindings - Melee *//
 
-/datum/shieldcall/bound/parry_frame/handle_item_melee(atom/
-	var/datum/component/parry_frame/frame = bounddefending, shieldcall_returns, fake_attack, obj/item/weapon, datum/event_args/actor/clickchain/e_args)
+/datum/shieldcall/bound/parry_frame/handle_item_melee(atom/defending, shieldcall_returns, fake_attack, obj/item/weapon, datum/event_args/actor/clickchain/e_args)
+	var/datum/component/parry_frame/frame = bound
 	var/efficiency = frame.active_parry.calculate_parry_efficiency(frame.start_time, world.time)
 	. = frame.active_parry.handle_item_melee(defending, shieldcall_returns, fake_attack, efficiency, weapon, e_args)
 	frame.on_parry(ATTACK_TYPE_MELEE, weapon, ., efficiency)

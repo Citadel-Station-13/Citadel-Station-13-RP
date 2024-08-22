@@ -53,7 +53,7 @@
 	)
 	return NONE
 
-/obj/bullet_act(obj/projetile/proj, impact_flags, def_zone, efficiency)
+/obj/bullet_act(obj/projectile/proj, impact_flags, def_zone, efficiency)
 	. = ..()
 	if(. & PROJECTILE_IMPACT_FLAGS_TARGET_ABORT)
 		return
