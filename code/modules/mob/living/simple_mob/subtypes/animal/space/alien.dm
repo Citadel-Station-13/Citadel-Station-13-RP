@@ -91,7 +91,7 @@
 	maxHealth = 150
 	health = 150
 	base_pixel_x = -8
-	movement_cooldown = 1
+	movement_cooldown = -0.2
 	legacy_melee_damage_lower = 20
 	legacy_melee_damage_upper = 20
 	faction = "xeno"
@@ -117,6 +117,7 @@
 	icon_living = "basic_spitter_walk"
 	icon_dead = "basic_spitter_dead"
 	icon_rest = "basic_spitter_sleep"
+	maxHealth = 200
 	health = 200
 	legacy_melee_damage_lower = 10
 	legacy_melee_damage_upper = 10
@@ -126,29 +127,30 @@
 	projectiletype = /obj/projectile/energy/neurotoxin
 	projectilesound = 'sound/effects/splat.ogg'
 	catalogue_data = list(/datum/category_item/catalogue/fauna/feral_alien/spitter)
-	ai_holder_type = /datum/ai_holder/polaris/simple_mob/ranged/kiting
+	ai_holder_type = /datum/ai_holder/polaris/hostile/ranged/robust/on_engagement
 
 /mob/living/simple_mob/animal/space/alien/adv_spitter
-    name = "advanced xenomorph spitter"
-    icon = 'icons/mob/biomorphs/spitter.dmi'
-    desc = "It didn't take long for the Hive Structure to evolve a improved version of the basic Spitter caste to fulfill its military requirements. The advanced Spitter is terrifying to meet on the battlefield, standing at the height of the common warrior and lobbing incessant, armor, flesh and metal melting blobs of unfiltered acid at whatever the Hive deems a threat."
-    icon_state = "advanced_spitter_walk"
-    icon_living = "advanced_spitter_walk"
-    icon_dead = "advanced_spitter_dead"
-    icon_rest = "advanced_spitter_sleep"
-    health = 350
-    legacy_melee_damage_lower = 20
-    legacy_melee_damage_upper = 20
-    faction = "xeno"
-    movement_cooldown = 4
-    base_pixel_x = -8
-    base_pixel_y = 1
-    icon_scale_x = 1.1
-    icon_scale_y = 1.1
-    projectiletype = /obj/projectile/energy/acid
-    projectilesound = 'sound/effects/splat.ogg'
-    catalogue_data = list(/datum/category_item/catalogue/fauna/feral_alien/spitter)
-    ai_holder_type = /datum/ai_holder/polaris/simple_mob/ranged/kiting/threatening
+	name = "advanced xenomorph spitter"
+	icon = 'icons/mob/biomorphs/spitter.dmi'
+	desc = "It didn't take long for the Hive Structure to evolve a improved version of the basic Spitter caste to fulfill its military requirements. The advanced Spitter is terrifying to meet on the battlefield, standing at the height of the common warrior and lobbing incessant, armor, flesh and metal melting blobs of unfiltered acid at whatever the Hive deems a threat."
+	icon_state = "advanced_spitter_walk"
+	icon_living = "advanced_spitter_walk"
+	icon_dead = "advanced_spitter_dead"
+	icon_rest = "advanced_spitter_sleep"
+	maxHealth = 350
+	health = 350
+	legacy_melee_damage_lower = 20
+	legacy_melee_damage_upper = 20
+	faction = "xeno"
+	movement_cooldown = 4
+	base_pixel_x = -8
+	base_pixel_y = 1
+	icon_scale_x = 1.1
+	icon_scale_y = 1.1
+	projectiletype = /obj/projectile/energy/acid
+	projectilesound = 'sound/effects/splat.ogg'
+	catalogue_data = list(/datum/category_item/catalogue/fauna/feral_alien/spitter)
+	ai_holder_type = /datum/ai_holder/polaris/hostile/ranged/robust/on_engagement
 
 /mob/living/simple_mob/animal/space/alien/breaker
 	name = "xenomorph line breaker"
@@ -158,8 +160,8 @@
 	icon_living = "breaker_animations"
 	icon_dead = "breaker_dead"
 	icon_rest = "breaker_sleep"
-	health = 700
-	maxHealth = 700
+	health = 800
+	maxHealth = 800
 	armor_legacy_mob = list(
 		"melee" = 50,
 		"bullet" = 20,
@@ -169,8 +171,8 @@
 		"bio" = 100,
 		"rad" = 100,
 	)
-	legacy_melee_damage_lower = 30
-	legacy_melee_damage_upper = 45
+	legacy_melee_damage_lower = 50
+	legacy_melee_damage_upper = 50
 	faction = "xeno"
 	movement_cooldown = 2
 	base_pixel_x = -17
@@ -179,17 +181,17 @@
 	icon_scale_y = 1.3
 	attack_sound =  'sound/mobs/biomorphs/breaker_attack.ogg'
 	movement_sound = 'sound/mobs/biomorphs/breaker_walk_stomp.ogg'
-	melee_attack_delay = 6
+	melee_attack_delay = 4
 	special_attack_min_range = 3
-	special_attack_max_range = 8 //Normal view range is 7 this can begin charging from outside normal view You may expand it.
-	special_attack_cooldown = 20 SECONDS
+	special_attack_max_range = 12 //Normal view range is 7 this can begin charging from outside normal view You may expand it.
+	special_attack_cooldown = 10 SECONDS
 	var/charging = 0
-	var/charging_warning = 2 SECONDS
+	var/charging_warning = 1 SECONDS
 	var/charge_damage_mode = DAMAGE_MODE_PIERCE | DAMAGE_MODE_SHARP ///You may want to change this
 	var/charge_damage_flag = ARMOR_MELEE
 	var/charge_damage_tier = MELEE_TIER_HEAVY
 	var/charge_damage = 60
-/datum/ai_holder/polaris/simple_mob/ranged/aggressive/priest //temporary until we get proper AI for xenomorphs.//
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/destructive //temporary until we get proper AI for xenomorphs.//
 
 /mob/living/simple_mob/animal/space/alien/breaker/update_icon()
 	if(charging)
@@ -278,14 +280,14 @@
 
 /datum/category_item/catalogue/fauna/feral_alien/sentinel/vanguard
 	name = "Feral Xenomorph - Praetorian"
-	desc = "The Xenomorph Praetorian is not often seen amongst \
+	desc = "The Xenomorph Vanguard is not often seen amongst \
 	standard Xeno incursions. Spawned in large Hives to serve as \
-	bodyguards to an Empress, the Praetorian clade are powerful, and \
-	nightmarishly effective in close combat. Spotting a Praetorian in \
+	bodyguards to a Monarch, the Vanguard clade are powerful, and \
+	nightmarishly effective in close combat. Spotting a Vanguard in \
 	the field is often grounds to call for an immediate withdrawal and \
-	orbital bombardment. On the rare occasions where Praetorians are \
+	orbital bombardment. On the rare occasions where Vanguard are \
 	cut off from the greater Hive, they remain formidable foes and will \
-	die to protect their Queen. Kill on sight."
+	die to protect their Monarch. Kill on sight."
 	value = CATALOGUER_REWARD_MEDIUM
 
 /mob/living/simple_mob/animal/space/alien/vanguard
@@ -296,8 +298,8 @@
 	icon_living = "vanguard_run"
 	icon_dead = "vanguard_dead"
 	icon_rest = "vanguard_sleep"
-	health = 500
-	maxHealth = 500
+	health = 600
+	maxHealth = 600
 	armor_legacy_mob = list(
 		"melee" = 20,
 		"bullet" = 50,
@@ -311,7 +313,7 @@
 	legacy_melee_damage_upper = 40
 	attack_armor_type = DAMAGE_MODE_PIERCE | DAMAGE_MODE_SHARP
 	faction = "xeno"
-	movement_cooldown = 5
+	movement_cooldown = 3
 	base_pixel_x = -18
 	base_pixel_y = 2
 	icon_scale_x = 1.2
@@ -320,7 +322,7 @@
 	movement_sound = 'sound/mobs/biomorphs/vanguard_move.ogg'
 	projectiletype = /obj/projectile/energy/acid
 	projectilesound = 'sound/effects/splat.ogg'
-	ai_holder_type = /datum/ai_holder/polaris/simple_mob/intentional/adv_dark_gygax
+	/datum/ai_holder/polaris/simple_mob/ranged/aggressive
 
 /datum/category_item/catalogue/fauna/feral_alien/monarch
 	name = "Feral Xenomorph - Monarch"
@@ -343,8 +345,8 @@
 	icon_living = "monarch_run"
 	icon_dead = "monarch_dead"
 	icon_rest = "monarch_sleep"
-	health = 1000
-	maxHealth = 1000
+	health = 1500
+	maxHealth = 1500
 	armor_legacy_mob = list(
 		"melee" = 50,
 		"bullet" = 50,
@@ -357,7 +359,7 @@
 	legacy_melee_damage_lower = 70
 	legacy_melee_damage_upper = 50
 	faction = "xeno"
-	movement_cooldown = 8
+	movement_cooldown = 4
 	base_pixel_x = -15
 	base_pixel_y = 6
 	icon_scale_x = 1.5
@@ -365,19 +367,17 @@
 	attack_sound =  'sound/mobs/biomorphs/monarch_attack.ogg'
 	movement_sound = 'sound/mobs/biomorphs/monarch_move.ogg'
 	melee_attack_delay = 4
-	projectiletype = /obj/projectile/energy/acid
-	projectilesound = 'sound/effects/splat.ogg'
-	ai_holder_type = /datum/ai_holder/polaris/simple_mob/intentional/adv_dark_gygax
+	/datum/ai_holder/polaris/simple_mob/ranged/aggressive
 	special_attack_min_range = 3
 	special_attack_max_range = 12 //Normal view range is 7 this can begin charging from outside normal view You may expand it.
 	special_attack_cooldown = 15 SECONDS
 	var/charging = 0
-	var/charging_warning = 2 SECONDS
+	var/charging_warning = 0 SECONDS
 	var/charge_damage_mode = DAMAGE_MODE_PIERCE | DAMAGE_MODE_SHARP ///You may want to change this
 	var/charge_damage_flag = ARMOR_MELEE
 	var/charge_damage_tier = MELEE_TIER_HEAVY
 	var/charge_damage = 80
-/datum/ai_holder/polaris/simple_mob/ranged/aggressive/priest
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/ranged/aggressive/priest
 
 /mob/living/simple_mob/animal/space/alien/breaker/update_icon()
 	if(charging)
@@ -385,7 +385,7 @@
 	..()
 
 /mob/living/simple_mob/animal/space/alien/monarch/do_special_attack(atom/A)
-	var/charge_warmup = 1 SECOND // How long the leap telegraphing is.
+	var/charge_warmup = 0 SECOND // How long the leap telegraphing is.
 	var/charge_sound = 'sound/mobs/biomorphs/monarch_charge.ogg'
 	set waitfor = FALSE
 	set_AI_busy(TRUE)
