@@ -883,7 +883,6 @@
 #include "code\datums\recipe\stack_recipes\frame.dm"
 #include "code\datums\recipe\stack_recipes\misc.dm"
 #include "code\datums\recipe\stack_recipes\structures.dm"
-#include "code\datums\repositories\ammomaterial.dm"
 #include "code\datums\repositories\cameras.dm"
 #include "code\datums\repositories\crew.dm"
 #include "code\datums\repositories\decls.dm"

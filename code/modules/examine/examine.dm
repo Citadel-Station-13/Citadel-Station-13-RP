@@ -9,7 +9,7 @@
 
 /atom/
 	var/description_info = null //Helpful blue text.
-	var/description_fluff = null //Green text about the atom's fluff, if any exists.
+	var/description_fluff
 	var/description_antag = null //Malicious red text, for the antags.
 
 //Override these if you need special behaviour for a specific type.

@@ -80,28 +80,23 @@
 
 //* Weapons *//
 
+/**
+ * Naming scheme:
+ *
+ * XN<T> Mk.<V>
+ *
+ * Where 'T' is type, and 'V' is some version.
+ *
+ * e.g. XNS Mk.6 -> T = S for shotgun, prototype 6.
+ */
 /obj/item/gun/ballistic/nt_expeditionary
 	description_fluff = {"
-		Part of the experimental lineage of chemical-primed kinetic weaponry developed as part of a joint effort
-		between Hephaestus Industries and the Nanotrasen Research Division. Created both to enhance compatibility as well
-		as well as to improve security on installations operated by the Triumvirate, the 'NT Expeditionary' line boasts an
-		above-average reliability rating, as well as being easy to restock out on the Frontier.
+		This weapon is part of the experimental lineage of chemical-primed kinetic weaponry developed as part of a joint effort between Hephaestus Industries and the Nanotrasen Research Division. Created both to enhance compatibility as well as to improve security on installations operated by the Triumvirate, the 'NT Expeditionary' line boasts an above-average reliability rating
+		in addition to being rather simple to restock out on the Frontier.
 	"}
 
 #warn impl
 /**
-
-New weapons line organization: Model Designation: X (Expeditionary) N (NanoTrasen) *type* (Shotgun, rifle, pistol, Machine Pistol, etc) Mark X
-
-These weapons are part of a new series developed by NT, and soon to be manufactured via Hephaustus industries
-
-(Shotguns)
-
-XNS Mk.6 “Standby”
-	A pump-action design based on the proven pump-action mechanism developed centuries ago, the XNS Mk.6 or “Standby” is designed around a six-shot tube magazine using 12-gauge ammunition. Rugged, if not fancy, this weapon is a good fallback option for anyone requiring access to a long arm when out on their own or in small groups.
-
-XNS Mk.7 “Peacemaker”
-	A semiautomatic evolution of the XNS Mk.6, using an internal inertial locking system and muzzle brake. Big, blocky, and using 10-round detachable box magazines of 12-gauge ammunition, the barrel tends to get quite warm if fired without pause. A common sight seen with specialist security personnel supporting work crews, the somewhat bulky weapon lives up to its name in helping deter both hostile animals and bandits from thinking they can make an easy score
 
 ---
 
