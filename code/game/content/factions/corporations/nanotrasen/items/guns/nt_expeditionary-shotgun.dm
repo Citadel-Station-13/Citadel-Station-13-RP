@@ -52,7 +52,7 @@
  */
 /obj/item/gun/ballistic/nt_expeditionary/shotgun/semiauto
 	name = "semi-automatic shotgun"
-	desc = "The XNS MK.7 \"Peacemaker\" pump-action shotgun; a refined design output by the Nanotrasen Research Division in conjunction with Hephaestus Industries."
+	desc = "The XNS MK.7 \"Peacemaker\" semi-automatic shotgun; a refined design output by the Nanotrasen Research Division in conjunction with Hephaestus Industries."
 	description_fluff = {"
 		A semiautomatic evolution of the XNS Mk.6, using an internal inertial locking system and
 		muzzle brake. Big, blocky, and using detachable box magazines of 12-gauge ammunition,

@@ -5,6 +5,8 @@
 	abstract_type = /obj/item/gun/ballistic/nt_expeditionary/heavy_sidearm
 	caliber = /datum/ammo_caliber/nt_expeditionary/heavy_sidearm
 
+#warn sprites
+
 /obj/item/gun/ballistic/nt_expeditionary/heavy_sidearm/pistol
 	name = "heavy pistol"
 	desc = "The XNS MK.6 \"Standby\" pump-action shotgun; a refined design output by the Nanotrasen Research Division in conjunction with Hephaestus Industries."
@@ -14,7 +16,7 @@
 		Rugged, if not fancy, this weapon is a good fallback option for anyone
 		requiring access to a long arm when out on their own or in small groups.
 	"} + "<br>" +/obj/item/gun/ballistic/nt_expeditionary::description_fluff
-	
+
 /obj/item/gun/ballistic/nt_expeditionary/heavy_sidearm/revolver
 	name = "heavy revolver"
 	desc = "The XNS MK.6 \"Standby\" pump-action shotgun; a refined design output by the Nanotrasen Research Division in conjunction with Hephaestus Industries."

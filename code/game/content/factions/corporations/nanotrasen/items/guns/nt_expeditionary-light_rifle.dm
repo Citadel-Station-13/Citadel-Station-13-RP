@@ -5,6 +5,8 @@
 	abstract_type = /obj/item/gun/ballistic/nt_expeditionary/light_rifle
 	caliber = /datum/ammo_caliber/nt_expeditionary/light_rifle
 
+#warn sprites
+
 /obj/item/gun/ballistic/nt_expeditionary/light_rifle/semirifle
 	name = "semi-automatic rifle"
 	desc = "The XNS MK.6 \"Standby\" pump-action shotgun; a refined design output by the Nanotrasen Research Division in conjunction with Hephaestus Industries."
