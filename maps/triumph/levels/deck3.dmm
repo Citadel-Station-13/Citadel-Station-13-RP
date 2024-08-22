@@ -92,7 +92,7 @@
 	},
 /obj/machinery/button/remote/blast_door{
 	dir = 1;
-	id = "xenobiovs6";
+	id = "xenobiovs5";
 	name = "Divider Blast Doors";
 	pixel_y = -38;
 	req_one_access = list(29,47)
@@ -11553,6 +11553,13 @@
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/maintenance/substation/research)
+"jwk" = (
+/obj/machinery/light{
+	dir = 4;
+	use_power = 0
+	},
+/turf/simulated/floor/tiled,
+/area/rnd/xenobiology)
 "jwM" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -12915,7 +12922,7 @@
 	},
 /obj/machinery/button/remote/blast_door{
 	dir = 4;
-	id = "xenobiovs2";
+	id = "xenobiovs";
 	name = "Containment Blast Doors";
 	pixel_x = -38;
 	req_access = list(55)
@@ -13478,7 +13485,7 @@
 "lcH" = (
 /obj/machinery/button/remote/blast_door{
 	dir = 1;
-	id = "xenobiovs5";
+	id = "xenobiovs6";
 	name = "Divider Blast Doors";
 	pixel_y = -38;
 	req_one_access = list(29,47)
@@ -15002,6 +15009,9 @@
 /obj/machinery/disposal,
 /obj/structure/disposalpipe/trunk{
 	dir = 8
+	},
+/obj/machinery/light{
+	dir = 1
 	},
 /turf/simulated/floor/reinforced,
 /area/rnd/xenobiology)
@@ -27532,9 +27542,6 @@
 /obj/machinery/recharger/wallcharger{
 	pixel_x = -22
 	},
-/obj/machinery/light{
-	dir = 8
-	},
 /obj/effect/floor_decal/borderfloor{
 	dir = 8
 	},
@@ -37665,7 +37672,7 @@ xjy
 vjC
 eWW
 kmH
-eWW
+jwk
 rXQ
 eWW
 rOo
