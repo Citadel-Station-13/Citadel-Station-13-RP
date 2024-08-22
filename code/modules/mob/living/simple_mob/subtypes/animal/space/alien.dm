@@ -674,3 +674,30 @@
 
 	incoming_damage_percent = 2
 	evasion = -100
+
+/mob/living/simple_mob/animal/space/alien/special/marksman
+	name = "xenomorph marksman"
+	icon = 'icons/mob/biomorphs/marksman.dmi'
+	desc = "A hulking beast which doesn't resemble any type of Xenomorph you've ever seen. It looks sloppily done, genetic strands grafted onto eachother, but it seems like it can lob acid pretty far."
+	icon_state = "marksman_walk"
+	icon_living = "marksman_walk"
+	icon_dead = "marksman_dead"
+	icon_rest = "marksman_sleep"
+	icon_gib = "gibbed-a"
+	gib_on_butchery = "gibbed-a"
+	maxHealth = 250
+	health = 250
+	legacy_melee_damage_lower = 10
+	legacy_melee_damage_upper = 10
+	faction = "xeno"
+	movement_cooldown = 4
+	base_pixel_x = -8
+	base_pixel_y = 1
+	icon_scale_x = 1.1
+	icon_scale_y = 1.1
+	projectiletype = /obj/projectile/energy/acid
+	projectilesound = 'sound/effects/splat.ogg'
+	attack_sound = 'sound/mobs/biomorphs/spitter_attack.ogg'
+	movement_sound = 'sound/mobs/biomorphs/spitter_move.ogg'
+	catalogue_data = list(/datum/category_item/catalogue/fauna/feral_alien/spitter)
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/ranged/kiting/sniper
