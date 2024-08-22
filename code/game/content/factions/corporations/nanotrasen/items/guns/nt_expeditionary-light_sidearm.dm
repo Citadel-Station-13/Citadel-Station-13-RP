@@ -13,7 +13,7 @@
 
 /obj/item/gun/ballistic/nt_expeditionary/light_sidearm/pistol
 	name = "light pistol"
-	desc = "The XNP MK.1 \"Noisy Moth\" pistol; a refined design output by the Nanotrasen Research Division in conjunction with Hephaestus Industries."
+	desc = "The XNP Mk.1 \"Noisy Moth\" pistol; a refined design output by the Nanotrasen Research Division in conjunction with Hephaestus Industries."
 	description_fluff = {"
 		A hold-out semiautomatic pistol designed to fit in the pocket and with an easy-to-use
 		system of controls, the “Noisy Moth” is chambered in a lengthened version of the classic 9mm,
@@ -26,7 +26,7 @@
 
 /obj/item/gun/ballistic/nt_expeditionary/light_sidearm/smg
 	name = "machine pistol"
-	desc = "The XNMP MK.3 \"Buzzer\" machine pistol; a refined design output by the Nanotrasen Research Division in conjunction with Hephaestus Industries."
+	desc = "The XNMP Mk.3 \"Buzzer\" machine pistol; a refined design output by the Nanotrasen Research Division in conjunction with Hephaestus Industries."
 	description_fluff = {"
 		A personal defense weapon with collapsing stock, the “Buzzer” is chambered in 9x29mm.
 		A short-barreled weapon easily hung on a belt, and feeding from medium-sized magazines to

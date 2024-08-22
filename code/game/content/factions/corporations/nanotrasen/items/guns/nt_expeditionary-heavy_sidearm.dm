@@ -9,32 +9,37 @@
 
 /obj/item/gun/ballistic/nt_expeditionary/heavy_sidearm/pistol
 	name = "heavy pistol"
-	desc = "The XNS MK.6 \"Standby\" pump-action shotgun; a refined design output by the Nanotrasen Research Division in conjunction with Hephaestus Industries."
+	desc = "The XNP Mk.2 \"Angry Moth\" sidearm; a refined design output by the Nanotrasen Research Division in conjunction with Hephaestus Industries."
 	description_fluff = {"
-		A pump-action design based on the proven pump-action mechanism developed centuries ago,
-		the XNS Mk.6 or “Standby” is designed around a tube magazine using 12-gauge ammunition.
-		Rugged, if not fancy, this weapon is a good fallback option for anyone
-		requiring access to a long arm when out on their own or in small groups.
+		Taking the original XNP Mk.1 to the next level, this time upscaling the frame to accept a
+		magnum 9x34mm cartridge, the “Angry Moth” sidearm is best described
+		as “Shaking hands with danger”. The recoil it imparts will make it hard to forget
+		the experience, but the performance on target leaves little to complain about.
+		Feeding from medium-sized magazines, this full-sized service pistol is seen when
+		fighting is expected and not simply a possibility.
 	"} + "<br>" +/obj/item/gun/ballistic/nt_expeditionary::description_fluff
 
 /obj/item/gun/ballistic/nt_expeditionary/heavy_sidearm/revolver
 	name = "heavy revolver"
-	desc = "The XNS MK.6 \"Standby\" pump-action shotgun; a refined design output by the Nanotrasen Research Division in conjunction with Hephaestus Industries."
+	desc = "The XNP Mk.5 \"Roller\" revolver; a refined design output by the Nanotrasen Research Division in conjunction with Hephaestus Industries."
 	description_fluff = {"
-		A pump-action design based on the proven pump-action mechanism developed centuries ago,
-		the XNS Mk.6 or “Standby” is designed around a tube magazine using 12-gauge ammunition.
-		Rugged, if not fancy, this weapon is a good fallback option for anyone
-		requiring access to a long arm when out on their own or in small groups.
+		Something of a pet project of one member of the XN design team, the “Roller” harkens back
+		to the revolvers of old, but chambered in the magnum 9x34mm cartridge.
+		Sporting a medium-capacity cylinder and an inline barrel design to reduce muzzle flip,
+		this weapon is seen in the hands of those who prefer style over functionality or want
+		the fine trigger control a triple-action revolver provides.
 	"} + "<br>" +/obj/item/gun/ballistic/nt_expeditionary::description_fluff
 
 /obj/item/gun/ballistic/nt_expeditionary/heavy_sidearm/smg
 	name = "submachine gun"
-	desc = "The XNS MK.6 \"Standby\" pump-action shotgun; a refined design output by the Nanotrasen Research Division in conjunction with Hephaestus Industries."
+	desc = "The XNMP Mk.8 \"Buzzsaw\" submachine gun; a refined design output by the Nanotrasen Research Division in conjunction with Hephaestus Industries."
 	description_fluff = {"
-		A pump-action design based on the proven pump-action mechanism developed centuries ago,
-		the XNS Mk.6 or “Standby” is designed around a tube magazine using 12-gauge ammunition.
-		Rugged, if not fancy, this weapon is a good fallback option for anyone
-		requiring access to a long arm when out on their own or in small groups.
+		Taking design notes from the Mk.3 “Buzzer, the “Buzzsaw” sports a longer barrel,
+		a thicker receiver, and a folding stock typically seen on rifles.
+		Using the magnum 9x34mm round in long-form magazines, the “Buzzsaw”'s high rate of fire and
+		punchy ammunition makes its unique sound hard to mistake when seen clearing rooms or
+		in dense jungle foliage, where the high-velocity rounds batter aside light cover
+		with relative ease.
 	"} + "<br>" +/obj/item/gun/ballistic/nt_expeditionary::description_fluff
 
 #warn impl all
