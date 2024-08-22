@@ -59,7 +59,11 @@
 	AM.unregister_shieldcall(shieldcall)
 
 /datum/component/parry_frame/proc/on_parry(attack_type, datum/weapon, shieldcall_returns, efficiency)
-	#warn impl - drop count
+	++hit_count
+	// check drop
+	if(hit_count > active_parry.parry_drop_after_hits)
+		qdel(src)
+		return
 
 //* -- Shieldcall -- *//
 
@@ -246,8 +250,7 @@
  * * active efficiency if in active (from 0)
  * * linear falloff to 0 if in spindown (from active time end)
  */
-/datum/parry_frame/proc/calculate_parry_efficiency(start_time, current_time)
-	var/time_into_parry = current_time - start_time
+/datum/parry_frame/proc/calculate_parry_efficiency(time_into_parry)
 	if(time_into_parry < parry_timing_start)
 		return 0
 	if(time_into_parry <= parry_timing_perfect)
@@ -259,6 +262,15 @@
 		return 0
 	var/time_into_drop = time_into_parry - parry_timing_active
 	return parry_efficiency_active - (parry_efficiency_active - parry_efficiency_floor) * ((time_into_drop) / parry_timing_stop)
+
+/**
+ * @params
+ * * time_into_parry - ds elapsed since parry start
+ *
+ * @return TRUE / FALSE
+ */
+/datum/parry_frame/proc/is_parry_perfect(time_into_parry)
+	return (time_into_parry >= parry_timing_start) && (time_into_parry <= parry_timing_perfect)
 
 /**
  * Called when parrying something
@@ -335,7 +347,7 @@
 
 /datum/shieldcall/bound/parry_frame/handle_bullet(atom/defending, shieldcall_returns, fake_attack, list/bullet_act_args)
 	var/datum/component/parry_frame/frame = bound
-	var/efficiency = frame.active_parry.calculate_parry_efficiency(frame.start_time, world.time)
+	var/efficiency = frame.active_parry.calculate_parry_efficiency(frame.start_time - world.time)
 	. = frame.active_parry.handle_bullet(defending, shieldcall_returns, fake_attack, efficiency, bullet_act_args)
 	frame.on_parry(ATTACK_TYPE_PROJECTILE, bullet_act_args[BULLET_ACT_ARG_PROJECTILE], ., efficiency)
 
@@ -356,7 +368,7 @@
 
 /datum/shieldcall/bound/parry_frame/handle_item_melee(atom/defending, shieldcall_returns, fake_attack, obj/item/weapon, datum/event_args/actor/clickchain/e_args)
 	var/datum/component/parry_frame/frame = bound
-	var/efficiency = frame.active_parry.calculate_parry_efficiency(frame.start_time, world.time)
+	var/efficiency = frame.active_parry.calculate_parry_efficiency(frame.start_time - world.time)
 	. = frame.active_parry.handle_item_melee(defending, shieldcall_returns, fake_attack, efficiency, weapon, e_args)
 	frame.on_parry(ATTACK_TYPE_MELEE, weapon, ., efficiency)
 
@@ -372,7 +384,7 @@
 
 /datum/shieldcall/bound/parry_frame/handle_unarmed_melee(atom/defending, shieldcall_returns, fake_attack, datum/unarmed_attack/style, datum/event_args/actor/clickchain/e_args)
 	var/datum/component/parry_frame/frame = bound
-	var/efficiency = frame.active_parry.calculate_parry_efficiency(frame.start_time, world.time)
+	var/efficiency = frame.active_parry.calculate_parry_efficiency(frame.start_time - world.time)
 	. = frame.active_parry.handle_unarmed_melee(defending, shieldcall_returns, fake_attack, efficiency, style, e_args)
 	frame.on_parry(ATTACK_TYPE_UNARMED, style, ., efficiency)
 
@@ -388,7 +400,7 @@
 
 /datum/shieldcall/bound/parry_frame/handle_touch(atom/defending, shieldcall_returns, fake_attack, datum/event_args/actor/clickchain/e_args, contact_flags, contact_specific)
 	var/datum/component/parry_frame/frame = bound
-	var/efficiency = frame.active_parry.calculate_parry_efficiency(frame.start_time, world.time)
+	var/efficiency = frame.active_parry.calculate_parry_efficiency(frame.start_time - world.time)
 	. = frame.active_parry.handle_touch(defending, shieldcall_returns, fake_attack, efficiency, e_args, contact_flags, contact_specific)
 	frame.on_parry(ATTACK_TYPE_TOUCH, null, ., efficiency)
 
@@ -406,7 +418,7 @@
 
 /datum/shieldcall/bound/parry_frame/handle_throw_impact(atom/defending, shieldcall_returns, fake_attack, datum/thrownthing/thrown)
 	var/datum/component/parry_frame/frame = bound
-	var/efficiency = frame.active_parry.calculate_parry_efficiency(frame.start_time, world.time)
+	var/efficiency = frame.active_parry.calculate_parry_efficiency(frame.start_time - world.time)
 	. = frame.active_parry.handle_throw_impact(defending, shieldcall_returns, fake_attack, efficiency, thrown)
 	frame.on_parry(ATTACK_TYPE_THROWN, thrown, ., efficiency)
 
