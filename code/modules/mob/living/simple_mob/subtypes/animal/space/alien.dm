@@ -502,7 +502,7 @@
 /mob/living/simple_mob/animal/space/alien/special/burrower
 	name = "xenomorph burrower"
 	icon = 'icons/mob/biomorphs/burrower.dmi'
-	desc = ""
+	desc = "A utter abomination which appears to be some sort of mesh between a spider and a Xenomorph."
 	icon_state = "burrow_walk"
 	icon_living = "burrow_walk"
 	icon_dead = "burrow_dead"
