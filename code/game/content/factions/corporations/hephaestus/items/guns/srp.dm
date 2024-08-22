@@ -7,6 +7,7 @@
  * * Uses restricted NT-protomag antimaterial caliber.
  * * Single-shot.
  * * Extremely powerful. Non-acquirable by most means.
+ * * Synchronous Slide Charging is inbuilt and non-replaceable.
  */
 /obj/item/gun/ballistic/magnetic/nt_protomag/srp
 	name = "anti-material rifle"
@@ -18,6 +19,10 @@
 		by this rifle is enough to fracture bone and dent a domestic synthetic's chassis - restricting its
 		use to the few combat androids sturdy enough to use it in sustained fire. The line was discontinued
 		by treaty after the War, with few surviving prototypes able to be found here and there around the Frontier.
+		While technically developed in part with the 'Nanotrasen Protomag' series of prototype mag-charged
+		weapons, this rifle was ultimately abandoned entirely by Nanotrasen due to the existence of their
+		existing pulse weapons, given the similar penetration of pulse weapons despite having a fraction
+		of the recoil.
 	"}
 
 #warn impl all
