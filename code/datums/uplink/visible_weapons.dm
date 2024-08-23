@@ -24,10 +24,10 @@
 	item_cost = 40
 	path = /obj/item/melee/transforming/energy/sword/cutlass
 
-/datum/uplink_item/item/visible_weapons/energy_spear
-	name = "Energy Spear, Colorable"
-	item_cost = 50
-	path = /obj/item/melee/transforming/energy/spear
+// /datum/uplink_item/item/visible_weapons/energy_spear
+// 	name = "Energy Spear, Colorable"
+// 	item_cost = 50
+// 	path = /obj/item/melee/transforming/energy/spear
 
 /datum/uplink_item/item/visible_weapons/claymore
 	name = "Claymore"

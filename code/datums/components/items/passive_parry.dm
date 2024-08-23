@@ -339,7 +339,7 @@ GLOBAL_LIST_EMPTY(passive_parry_data)
 		parry_frame = new parry_frame
 	else if(ispath(parry_frame))
 		parry_frame = new parry_frame
-	else if(istype(parry_frame))
+	else if(istype(parry_frame, /datum/parry_frame))
 	else
 		CRASH("invalid parry frame")
 

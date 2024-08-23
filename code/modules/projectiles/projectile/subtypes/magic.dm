@@ -36,8 +36,8 @@
 /obj/item/ammo_casing/magic/honk
 	projectile_type = /obj/projectile/bullet/honker
 
-/obj/item/ammo_casing/magic/locker
-	projectile_type = /obj/projectile/magic/locker
+// /obj/item/ammo_casing/magic/locker
+	// projectile_type = /obj/projectile/magic/locker
 
 //Spell book ammo casing
 /obj/item/ammo_casing/magic/book

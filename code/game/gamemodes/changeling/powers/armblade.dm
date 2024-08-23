@@ -52,6 +52,9 @@
 //       - insufficient armor penetration (ironically) for citrp combat balancing directives
 //       - need to rethink changeling defensives in general, they shouldn't be reliant on parrying
 
+/datum/parry_frame/passive_block/armblade
+	parry_sfx = 'sound/weapons/slash.ogg'
+
 /obj/item/melee/changeling
 	name = "arm weapon"
 	desc = "A grotesque weapon made out of bone and flesh that cleaves through people as a hot knife through butter."
@@ -70,9 +73,7 @@
 	passive_parry = /datum/passive_parry/melee{
 		parry_chance_default = 40;
 		parry_chance_projectile = 15;
-		parry_frame = /datum/parry_frame/passive_block{
-			parry_sfx = 'sound/weapons/slash.ogg';
-		};
+		parry_frame = /datum/parry_frame/passive_block/armblade;
 	}
 
 /obj/item/melee/changeling/Initialize(mapload)
@@ -130,9 +131,7 @@
 	passive_parry = /datum/passive_parry/melee{
 		parry_chance_default = 60;
 		parry_chance_projectile = 25;
-		parry_frame = /datum/parry_frame/passive_block{
-			parry_sfx = 'sound/weapons/slash.ogg';
-		};
+		parry_frame = /datum/parry_frame/passive_block/armblade;
 	}
 
 /obj/item/melee/changeling/arm_blade/greater
@@ -143,9 +142,7 @@
 	passive_parry = /datum/passive_parry/melee{
 		parry_chance_default = 70;
 		parry_chance_projectile = 35;
-		parry_frame = /datum/parry_frame/passive_block{
-			parry_sfx = 'sound/weapons/slash.ogg';
-		};
+		parry_frame = /datum/parry_frame/passive_block/armblade;
 	}
 
 /obj/item/melee/changeling/claw
@@ -160,9 +157,7 @@
 	passive_parry = /datum/passive_parry/melee{
 		parry_chance_default = 50;
 		parry_chance_projectile = 15;
-		parry_frame = /datum/parry_frame/passive_block{
-			parry_sfx = 'sound/weapons/slash.ogg';
-		};
+		parry_frame = /datum/parry_frame/passive_block/armblade;
 	}
 
 /obj/item/melee/changeling/claw/greater
@@ -174,7 +169,5 @@
 	passive_parry = /datum/passive_parry/melee{
 		parry_chance_default = 60;
 		parry_chance_projectile = 25;
-		parry_frame = /datum/parry_frame/passive_block{
-			parry_sfx = 'sound/weapons/slash.ogg';
-		};
+		parry_frame = /datum/parry_frame/passive_block/armblade;
 	}

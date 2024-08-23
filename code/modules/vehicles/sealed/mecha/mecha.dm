@@ -1230,7 +1230,6 @@
 
 		//AP projectiles have a chance to cause additional damage
 		if(Proj.legacy_penetrating)
-			var/distance = get_dist(Proj.starting, get_turf(loc))
 			var/hit_occupant = 1 //only allow the occupant to be hit once
 			for(var/i in 1 to min(Proj.legacy_penetrating, round(Proj.damage/15)))
 				if(src.occupant_legacy && hit_occupant && prob(20))

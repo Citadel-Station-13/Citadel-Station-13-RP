@@ -4,7 +4,8 @@
 /**
  * Checks if an attacking atom is within the defensive arc of a defending atom.
  *
- * This does not support pixel movement.
+ * * This does not support pixel movement.
+ * * A null source is always inside defensive arc.
  *
  * Attacking entity can be:
  *
@@ -37,9 +38,11 @@
 		if(istype(attacking, /datum/thrownthing))
 			var/datum/thrownthing/thrown = attacking
 			atom_source = thrown.thrownthing
-		else
+		else if(isatom(attacking))
 			atom_source = attacking
-		their_angle = dir2angle(get_dir(defending, attacking))
+		else
+			return TRUE
+		their_angle = dir2angle(get_dir(defending, atom_source))
 		// if we're rounding up our arc, we boost our arc since it's an atom source to nearest 45
 		if(round_up_arc)
 			arc = CEILING(arc, 45)

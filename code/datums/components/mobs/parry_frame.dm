@@ -21,7 +21,7 @@
 	/// world time of drop
 	var/drop_time
 	/// registered shieldcall
-	var/datum/shieldcall/bound/shieldcall
+	var/datum/shieldcall/bound/parry_frame/shieldcall
 
 /**
  * * frame - the parry frame
@@ -299,8 +299,7 @@
  */
 /datum/parry_frame/proc/perform_audiovisuals(atom/defending, attack_type, efficiency, datum/weapon, shieldcall_flags, severity = 75, attack_text, tool_text)
 	playsound(defending, parry_sfx, severity, TRUE)
-	var/atom/movable/render/parry_frame/frame_render = new parry_vfx(null, defending, src)
-
+	new parry_vfx(null, defending, src)
 	var/parry_verb
 	if((attack_type & parry_redirect_attack_types) && (efficiency >= parry_efficiency_redirection))
 		parry_verb = deflect_verb
@@ -345,7 +344,8 @@
 				if(parry_redirect_return_to_sender && aggressor)
 					outgoing_angle = arctan(aggressor.y - defending.y, aggressor.x - defending.x)
 				else
-					outgoing_angle = turn(proj.angle) + rand(-parry_redirect_arc, parry_redirect_arc)
+					// todo: this should be angle of incidence maybe?
+					outgoing_angle = turn(proj.angle, 180) + rand(-parry_redirect_arc, parry_redirect_arc)
 				proj.set_angle(outgoing_angle)
 				. |= SHIELDCALL_FLAG_ATTACK_REDIRECT
 
@@ -543,6 +543,6 @@ INITIALIZE_IMMEDIATE(/atom/movable/render/parry_frame)
 	icon = 'icons/effects/defensive/main_parry.dmi'
 	icon_state = "hold"
 
-/atom/movable/render/parry_frame/default/proc/single()
+/atom/movable/render/parry_frame/default/single()
 	animate(src, time = 0.3 SECONDS, alpha = 0)
 	qdel_time = 0.3 SECONDS

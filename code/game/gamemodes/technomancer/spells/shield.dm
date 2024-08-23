@@ -45,8 +45,6 @@
 
 /obj/item/spell/shield/proc/shieldcall(mob/user, list/shieldcall_args, fake_attack)
 	var/damage = shieldcall_args[SHIELDCALL_ARG_DAMAGE]
-	var/damage_source = shieldcall_args[SHIELDCALL_ARG_WEAPON]
-	var/def_zone = shieldcall_args[SHIELDCALL_ARG_HIT_ZONE]
 
 	if(user.incapacitated())
 		return 0

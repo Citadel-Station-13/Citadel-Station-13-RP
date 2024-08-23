@@ -286,7 +286,6 @@
 	var/SA_vulnerability = null // What kind of simple animal the above bonus damage should be applied to. Set to null to apply to all SAs.
 	var/nodamage = 0 //Determines if the projectile will skip any damage inflictions
 	var/taser_effect = 0 //If set then the projectile will apply it's agony damage using stun_effect_act() to mobs it hits, and other damage will be ignored
-	var/projectile_type = /obj/projectile
 	var/legacy_penetrating = 0 //If greater than zero, the projectile will pass through dense objects as specified by on_penetrate()
 		//Effects
 	var/incendiary = 0 //1 for ignite on hit, 2 for trail of fire. 3 maybe later for burst of fire around the impact point. - Mech
@@ -1068,7 +1067,7 @@
  *
  * @return BULLET_ACT_* flags to append into the calling bullet_act().
  */
-/obj/projectile/proc/process_damage_instance(atom/target, blocked, impact_flags, hit_zone)
+/obj/projectile/proc/process_impact_damage(atom/target, blocked, impact_flags, hit_zone)
 	. = NONE
 
 	//! LEGACY COMBAT CODE

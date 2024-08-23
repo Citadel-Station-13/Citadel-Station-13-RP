@@ -27,9 +27,6 @@
 	icon_state = "staffofhealing"
 	item_state = "staffofhealing"
 
-/obj/item/gun/magic/staff/healing/handle_suicide() //Stops people trying to commit suicide to heal themselves
-	return
-
 /*
 /obj/item/gun/magic/staff/chaos
 	name = "staff of chaos"
@@ -98,12 +95,12 @@
 	return ..()
 */
 
-/obj/item/gun/magic/staff/locker
-	name = "staff of the locker"
-	desc = "An artefact that expells encapsulating bolts, for incapacitating thy enemy."
-	fire_sound = 'sound/magic/staff_change.ogg'
-	ammo_type = /obj/item/ammo_casing/magic/locker
-	icon_state = "locker"
-	item_state = "locker"
-	max_charges = 6
-	recharge_rate = 4
+// /obj/item/gun/magic/staff/locker
+// 	name = "staff of the locker"
+// 	desc = "An artefact that expells encapsulating bolts, for incapacitating thy enemy."
+// 	fire_sound = 'sound/magic/staff_change.ogg'
+// 	ammo_type = /obj/item/ammo_casing/magic/locker
+// 	icon_state = "locker"
+// 	item_state = "locker"
+// 	max_charges = 6
+// 	recharge_rate = 4

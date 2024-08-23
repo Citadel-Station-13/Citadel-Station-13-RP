@@ -37,9 +37,7 @@
 	UnregisterSignal(user, COMSIG_ATOM_SHIELDCALL)
 
 /obj/item/clothing/suit/armor/tesla/proc/shieldcall(mob/user, list/shieldcall_args, fake_attack)
-	var/damage = shieldcall_args[SHIELDCALL_ARG_DAMAGE]
 	var/damage_source = shieldcall_args[SHIELDCALL_ARG_WEAPON]
-	var/def_zone = shieldcall_args[SHIELDCALL_ARG_HIT_ZONE]
 
 	var/datum/event_args/actor/clickchain/clickchain = shieldcall_args[SHIELDCALL_ARG_CLICKCHAIN]
 	var/mob/attacker = clickchain?.performer

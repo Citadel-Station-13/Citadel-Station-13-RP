@@ -23,9 +23,6 @@
 			return
 	return ..()
 
-/obj/projectile/trace/projectile_attack_mob()
-	return
-
 /obj/projectile/trace/Moved()
 	. = ..()
 	if(check_opacity && isturf(loc))

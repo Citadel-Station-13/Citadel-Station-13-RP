@@ -103,7 +103,7 @@
 	if(impact_flags & PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT)
 		return impact_flags
 	// 1. fire shieldcalls
-	var/shieldcall_returns = atom_shieldcall_handle_bullet(args, FALSE, NONE)
+	atom_shieldcall_handle_bullet(args, FALSE, NONE)
 	// check if we're still hitting
 	if(impact_flags & PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT)
 		return impact_flags

@@ -19,9 +19,7 @@
 
 	passive_parry = /datum/passive_parry/shield{
 		parry_chance_default = 50;
-		parry_frame = /datum/parry_frame/passive_block{
-			parry_sfx = 'sound/weapons/blade1.ogg';
-		};
+		parry_frame = /datum/parry_frame/passive_block/energy;
 	}
 
 	var/lrange = 1.5
