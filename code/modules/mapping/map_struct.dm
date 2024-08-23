@@ -150,10 +150,16 @@
  * * Will also verify integrity of zlevels and whatnot.
  */
 /datum/map_struct/proc/construct(list/z_grid = src.z_grid, link = TRUE)
-	// assemble levels
+	// level datums
 	var/list/datum/map_level/levels = list()
+	// real z-indices
 	var/list/level_indices = list()
+	// "[x],[y]" = list(levels with x, y)
+	var/list/x_y_stacks = list()
+	// "[z]" = list(levels in z)
+	var/list/z_planes = list()
 
+	// assemble levels
 	for(var/tuple in z_grid)
 		var/level_id_or_instance = z_grid[tuple]
 		var/datum/map_level/resolved
@@ -169,17 +175,42 @@
 			CRASH("FATAL: duplicate level")
 		if(!resolved.loaded)
 			CRASH("FATAL: attempted to include an unloaded level in a struct. structs do not currently support lazy-loading.")
+
+		// add to levels list
 		levels += resolved
 		level_indices += resolved.z_index
+		resolved.struct_level_index = length(levels)
 
-	// "[x],[y]" = list(levels with x, y)
-	var/list/x_y_stacks = list()
-	// "[z]" = list(levels in z)
-	var/list/z_planes = list()
+		// parse coords
+		grid_parser.Find(tuple)
+		var/x = text2num(grid_parser.group[1])
+		var/y = text2num(grid_parser.group[2])
+		var/z = text2num(grid_parser.group[3])
+
+		// set coords
+		resolved.struct_x = x
+		resolved.struct_y = y
+		resolved.struct_z = z
+
+		// resolve x_y_stacks and z_planes
+		var/list/x_y_stack = x_y_stacks["[x],[y]"]
+		if(x_y_stack)
+			x_y_stack += resolved
+		else
+			x_y_stacks["[x],[y]"] = list(resolved)
+		var/list/z_plane = z_planes["[x],[y]"]
+		if(z_plane)
+			z_plane += resolved
+		else
+			z_planes["[x],[y]"] = list(resolved)
 
 	// sort x_y_stacks by level z index
+	for(var/i in 1 to length(x_y_stacks))
+		var/list/stack = x_y_stacks[i]
+		tim_sort(stack, /proc/cmp_map_level_struct_z)
 
 	// set level data
+	#warn virtual_alignment_x/y/elevation
 	for(var/datum/map_level/level as anything in levels)
 
 	// set our data
@@ -419,3 +450,8 @@
  */
 /datum/map_struct/proc/immutable_z_list()
 	return z_indices
+
+//* Helpers *//
+
+/proc/cmp_map_level_struct_z(datum/map_level/A, datum/map_level/B)
+	return A.struct_z - B.struct_z
