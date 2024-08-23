@@ -172,7 +172,10 @@
 	/// status effects to apply on hit to attacker
 	///
 	/// supports:
-	/// * normal status effects; associate to duration
+	/// * /datum/status_effect status effects; associate to duration
+	///
+	/// does not support:
+	/// * any status effect supertype that isn't listed above. right now, that's grouped and stacking.
 	var/list/parry_counter_effects
 
 	//* Counter Effects - Projectiles / Vector *//
@@ -336,9 +339,12 @@
 	// effects that are only valid if we have a retaliation target
 	if(aggressor)
 		if(ismob(aggressor))
+			var/mob/aggressor_mob = aggressor
 			for(var/key in parry_counter_effects)
 				var/value = parry_counter_effects[key]
-		#warn impl - countereffects
+				if(ispath(key, /datum/status_effect))
+					aggressor_mob.apply_status_effect(key, value)
+
 		if(parry_counter_attack)
 			// RIP AND TEAR
 			// todo: counterattacks are offline due to clickchain not being entirely nailed down
@@ -457,7 +463,7 @@
 	var/datum/component/parry_frame/frame = bound
 	if(!(frame.active_parry.parry_attack_types & ATTACK_TYPE_THROWN))
 		return
-	if(e_args && !check_defensive_arc_tile(defending, thrown, frame.active_parry.parry_arc, !frame.active_parry.parry_arc_round_down))
+	if(!check_defensive_arc_tile(defending, thrown, frame.active_parry.parry_arc, !frame.active_parry.parry_arc_round_down))
 		return
 	var/efficiency = frame.active_parry.calculate_parry_efficiency(frame.start_time - world.time)
 	. = frame.active_parry.handle_throw_impact(defending, shieldcall_returns, fake_attack, efficiency, thrown)
