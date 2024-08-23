@@ -1,3 +1,4 @@
+// todo: completely rework this stupid shit, why are mech paint kits in here?
 /obj/item/kit
 	icon_state = "modkit"
 	icon = 'icons/obj/device.dmi'
@@ -250,14 +251,6 @@
 		M.icon = new_icon_file
 	M.update_icon()
 	use(1, user)
-
-/obj/vehicle/sealed/mecha/attackby(var/obj/item/W, var/mob/user)
-	if(istype(W, /obj/item/kit/paint))
-		var/obj/item/kit/paint/P = W
-		P.customize(src, user)
-		return
-	else
-		return ..()
 
 //Ripley APLU kits.
 /obj/item/kit/paint/ripley
