@@ -523,16 +523,16 @@
 	no_variants = FALSE
 
 /obj/item/stack/material/glass/phoronglass
-	name = "borosilicate glass"
-	desc = "This sheet is special platinum-glass alloy designed to withstand large temperatures"
+	name = "phorosilicate glass"
+	desc = "A sheet of phorosilicate glass, a glass made out of quarz and phoron. Simple but effective Able to withstand extreme temperatures." // PLATINUM GLASS. PLATINUM.. WHAT THE HELL
 	singular_name = "borosilicate glass sheet"
 	icon_state = "sheet-phoronglass"
 	material = /datum/material/glass/phoron
 	no_variants = FALSE
 
 /obj/item/stack/material/glass/phoronrglass
-	name = "reinforced borosilicate glass"
-	desc = "This sheet is special platinum-glass alloy designed to withstand large temperatures. It is reinforced with few rods."
+	name = "reinforced phorosilicate glass"
+	desc = "A sheet of phorosilicate glass, a glass made out of quarz and phoron. Simple but effective Able to withstand extreme temperatures. It is reinforced with steelrods."
 	singular_name = "reinforced borosilicate glass sheet"
 	icon_state = "sheet-phoronrglass"
 	material = /datum/material/glass/phoron/reinforced
