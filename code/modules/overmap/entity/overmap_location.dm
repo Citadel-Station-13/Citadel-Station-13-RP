@@ -27,6 +27,6 @@
  *
  * @return null if there are none / this is not semantically an entity on a z
  */
-/datum/overmap_location/proc/get_z_index_random()
+/datum/overmap_location/proc/get_random_z_index()
 
 #warn impl

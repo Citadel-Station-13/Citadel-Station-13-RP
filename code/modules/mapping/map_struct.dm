@@ -258,122 +258,15 @@
 		level.virtual_alignment_x = 0
 		level.virtual_alignment_y = 0
 		level.virtual_elevation = 0
+		level.struct = null
+		level.struct_x = level.struct_y = level.struct_z = null
+		level.struct_level_index = null
 
 	constructed = FALSE
 
 #warn below
 
 #warn parse this file
-
-// The below code is a monstrosity.
-// I am so sorry.
-
-/datum/map_struct/proc/Construct(list/z_grid = src.z_grid, rebuild = TRUE)
-	if(constructed)
-		CRASH("Attempted to construct a constructed struct. This is pretty much universally a bad idea.")
-	src.z_grid = z_grid
-	if(!length(z_grid))
-		CRASH("No zlevels")
-	if(!Verify())
-		CRASH("World struct failed verification")
-	// determine dimensions and link + mark real zlevels
-	planes = list()
-	real_indices = list()
-	width = 0
-	height = 0
-	depth = 0
-	// first build x/y/z data and planes
-	var/min_x
-	var/min_y
-	var/min_z
-	var/max_x
-	var/max_y
-	var/max_z
-	var/list/plane_cache = list()
-	for(var/key in z_grid)
-		var/id = z_grid[key]
-		var/datum/space_level/L = SSmapping.keyed_levels[id]
-		real_indices += L.z_value
-		grid_parser.Find(key)
-		var/x = text2num(grid_parser.group[1])
-		var/y = text2num(grid_parser.group[2])
-		var/z = text2num(grid_parser.group[3])
-		L.struct_x = x
-		L.struct_y = y
-		L.struct_z = z
-		if(!plane_cache["[z]"])
-			plane_cache["[z]"] = list(z)
-		else
-			plane_cache["[z]"] |= z
-		if(key == z_grid[1])
-			min_x = max_x = x
-			min_y = max_y = y
-			min_z = max_z = z
-		else
-			min_x = min(min_x, x)
-			max_x = max(max_x, x)
-			min_y = min(min_y, y)
-			max_y = max(max_y, y)
-			min_z = min(min_z, z)
-			max_z = max(max_z, z)
-	for(var/z_text in plane_cache)
-		planes += plane_cache[z_text]
-	width = max_x - min_x + 1
-	height = max_y - min_y + 1
-	depth = max_z - min_z + 1
-	// now to build the vertical linkages and stacks
-	// oh god this is going to be messy
-	var/list/bottom_keys = get_bottom_level_keys(z_grid)
-	stacks = build_stacks(z_grid, bottom_keys)
-	// lastly, build plane and stack lookups
-	ASSERT(real_indices.len == z_grid.len)
-	plane_lookup = list()
-	plane_lookup.len = real_indices.len
-	for(var/i in 1 to real_indices.len)
-		var/z = real_indices[i]
-		var/list/found
-		for(var/j in 1 to planes)
-			var/list/L = planes[j]
-			if(L.Find(z))
-				plane_lookup[i] = L
-				break
-	stack_lookup = list()
-	stack_lookup.len = real_indices.len
-	for(var/i in 1 to real_indices.len)
-		var/z = real_indices[i]
-		var/list/found
-		for(var/j in 1 to stacks)
-			var/list/L = stacks[j]
-			if(L.Find(z))
-				plane_lookup[i] = L
-				break
-	// register
-	Register()
-	constructed = TRUE
-
-/datum/map_struct/proc/Deconstruct(rebuild = TRUE)
-	if(!constructed)
-		CRASH("Tried to deconstruct a map_struct that isn't constructed.")
-	for(var/datum/space_level/L as anything in levels)
-		var/had_up_down = L.resolve_level_in_dir(UP) || L.resolve_level_in_dir(DOWN)
-		var/had_adjacent = L.resolve_level_in_dir(NORTH) || L.resolve_level_in_dir(SOUTH) || L.resolve_level_in_dir(EAST) || L.resolve_level_in_dir(WEST)
-		L.struct = null
-		L.set_down(null)
-		L.set_east(null)
-		L.set_west(null)
-		L.set_south(null)
-		L.set_north(null)
-		L.set_up(null)
-		L.struct_x = 0
-		L.struct_y = 0
-		L.struct_z = 0
-		if(rebuild)
-			if(had_adjacent)
-				INVOKE_ASYNC(L, /datum/space_level/proc/rebuild_transitions)
-			if(had_up_down)
-				INVOKE_ASYNC(L, /datum/space_level/proc/rebuild_turfs)
-	Unregister(rebuild)
-	constructed = FALSE
 
 /datum/map_struct/proc/Register(rebuild = TRUE)
 	SSmapping.structs += src

@@ -159,7 +159,7 @@ SUBSYSTEM_DEF(shuttle)
 	var/landmarks_to_check = landmarks_awaiting_sector.Copy()
 	for(var/thing in landmarks_to_check)
 		var/obj/effect/shuttle_landmark/automatic/landmark = thing
-		if(landmark.z in given_sector.map_z)
+		if(landmark.z in given_sector.location?.get_z_indices())
 			given_sector.add_landmark(landmark, landmark.shuttle_restricted)
 			landmarks_awaiting_sector -= landmark
 
