@@ -23,10 +23,7 @@
 	var/start_x			//Coordinates for self placing
 	var/start_y			//will use random values if unset
 
-	var/base = 0		//starting sector, counts as station_levels
 	var/in_space = 1	//can be accessed via lucky EVA
-
-	var/hide_from_reports = FALSE
 
 	var/sensors
 

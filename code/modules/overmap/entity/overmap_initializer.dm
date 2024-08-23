@@ -13,5 +13,13 @@
  * * this keeps /datum/overmap_location simple as it doesn't have any init logic at all.
  */
 /datum/overmap_initializer
+	//! LEGACY
+	var/unknown_name = "unknown sector"
+	var/unknown_state = "unknown"
+	var/real_name = "map object"
+	var/scanner_desc = "!! No Data Available !!"
+	var/scannable = TRUE
+	var/icon_state = "generic"
+	//! END
 
 #warn impl

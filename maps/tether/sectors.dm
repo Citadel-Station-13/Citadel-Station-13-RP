@@ -17,7 +17,6 @@
 [i]Class[/i]: Installation
 [i]Transponder[/i]: Transmitting (CIV), Nanotrasen IFF
 [b]Notice[/b]: Nanotrasen Base, authorized personnel only"}
-	base = 1
 	icon_state = "globe"
 	color = "#d35b5b"
 	initial_generic_waypoints = list(

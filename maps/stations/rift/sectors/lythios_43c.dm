@@ -5,7 +5,6 @@
 [b][i]Class[/i][/b]: ALPHA SITE
 [b][i]Transponder[/i][/b]: Transmitting (MIL), Nanotrasen IFF
 [b][i]Notice[/i][/b]: RESTRICTED AREA, authorized personnel only"}
-	base = TRUE
 	icon_state = "globe"
 	color = "#5bbbd3"
 	start_x = 15
