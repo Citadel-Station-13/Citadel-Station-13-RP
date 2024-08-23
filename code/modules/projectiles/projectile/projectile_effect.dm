@@ -17,7 +17,7 @@
 	var/hook_damage = FALSE
 
 /**
- * * you'll note that [blocked] is not a thing here
+ * * you'll note that [efficiency] is not a thing here
  * * this is because this runs regardless of target's opinion
  * * this means you should probably be careful and check impact_flags!
  *
@@ -27,7 +27,7 @@
 	return impact_flags
 
 /**
- * * you'll note that [blocked] **is** a thing here
+ * * you'll note that [efficiency] **is** a thing here
  * * this only runs if we're able to damage the target
  *
  * @return new impact flags
