@@ -40,6 +40,7 @@
 		. = COMPONENT_INCOMPATIBLE
 		CRASH("attempted to start a parry that ended in the past.")
 	shieldcall = new(src)
+	shieldcall.tool_text = "[parent]"
 	var/delete_in = src.drop_time - world.time
 	QDEL_IN(src, delete_in)
 	// this is non-transferable, duh
@@ -72,6 +73,9 @@
  */
 /datum/shieldcall/bound/parry_frame
 	expected_type = /datum/component/parry_frame
+
+	/// text to describe the used tool, if any
+	var/tool_text
 
 //* -- Parry Frame -- *//
 
@@ -252,8 +256,6 @@
 	/// * used if an attack was redirected and not just blocked
 	var/deflect_verb = "deflects"
 
-#warn impl all
-
 /**
  * * 0 if in spinup
  * * perfect efficiency if in perfect (from 0)
@@ -292,11 +294,22 @@
  * * weapon - (optional) incoming weapon, depends on ATTACK_TYPE
  * * shieldcall_flags - (optional) the attack's shieldcall flags
  * * severity - (optional) arbitrary 0 to 100 severity of how bad the hit is estimated to be
+ * * attack_text - (optional) text to describe the attack
+ * * tool_text - (optional) text to describe the parry tool
  */
-/datum/parry_frame/proc/perform_audiovisuals(atom/defending, attack_type, efficiency, datum/weapon, shieldcall_flags, severity = 75)
+/datum/parry_frame/proc/perform_audiovisuals(atom/defending, attack_type, efficiency, datum/weapon, shieldcall_flags, severity = 75, attack_text, tool_text)
 	playsound(defending, parry_sfx, severity, TRUE)
 	var/atom/movable/render/parry_frame/frame_render = new parry_vfx(null, defending, src)
-	#warn impl text feedback
+
+	var/parry_verb
+	if((attack_type & parry_redirect_attack_types) && (efficiency >= parry_efficiency_redirection))
+		parry_verb = deflect_verb
+	else
+		parry_verb = block_verb
+
+	defending.visible_message(
+		SPAN_WARNING("[defending] [parry_verb] the [attack_text || "attack"][tool_text && " with the [tool_text]"]!"),
+	)
 
 /**
  * Called when something is parried
@@ -377,16 +390,16 @@
 	if(!check_defensive_arc_tile(defending, bullet_act_args[BULLET_ACT_ARG_PROJECTILE], frame.active_parry.parry_arc, !frame.active_parry.parry_arc_round_down))
 		return
 	var/efficiency = frame.active_parry.calculate_parry_efficiency(frame.start_time - world.time)
-	. = frame.active_parry.handle_bullet(defending, shieldcall_returns, fake_attack, efficiency, bullet_act_args)
+	. = frame.active_parry.handle_bullet(defending, shieldcall_returns, fake_attack, efficiency, bullet_act_args, tool_text)
 	frame.on_parry(ATTACK_TYPE_PROJECTILE, bullet_act_args[BULLET_ACT_ARG_PROJECTILE], ., efficiency)
 
-/datum/parry_frame/proc/handle_bullet(atom/defending, shieldcall_returns, fake_attack, efficiency, list/bullet_act_args)
+/datum/parry_frame/proc/handle_bullet(atom/defending, shieldcall_returns, fake_attack, efficiency, list/bullet_act_args, tool_text)
 	// todo: doesn't take into account any damage randomization
 	var/obj/projectile/proj = bullet_act_args[BULLET_ACT_ARG_PROJECTILE]
 	var/estimated_severity = clamp(proj.damage / 80 * 100, 0, 1)
 	bullet_act_args[BULLET_ACT_ARG_EFFICIENCY] = bullet_act_args[BULLET_ACT_ARG_EFFICIENCY] * clamp(efficiency, 0, 1)
 	shieldcall_returns = perform_aftereffects(defending, ATTACK_TYPE_PROJECTILE, efficiency, proj, shieldcall_returns)
-	perform_audiovisuals(defending, ATTACK_TYPE_PROJECTILE, efficiency, proj, shieldcall_returns, estimated_severity)
+	perform_audiovisuals(defending, ATTACK_TYPE_PROJECTILE, efficiency, proj, shieldcall_returns, estimated_severity, "[proj]", tool_text)
 	if(. & (SHIELDCALL_FLAG_ATTACK_PASSTHROUGH | SHIELDCALL_FLAG_ATTACK_REDIRECT))
 		bullet_act_args[BULLET_ACT_ARG_FLAGS] |= PROJECTILE_IMPACT_REFLECT
 	if(parry_always_prevents_contact || (parry_can_prevent_contact && (efficiency >= parry_efficiency_blocked)))
@@ -402,15 +415,15 @@
 	if(e_args && !check_defensive_arc_tile(defending, e_args.performer, frame.active_parry.parry_arc, !frame.active_parry.parry_arc_round_down))
 		return
 	var/efficiency = frame.active_parry.calculate_parry_efficiency(frame.start_time - world.time)
-	. = frame.active_parry.handle_item_melee(defending, shieldcall_returns, fake_attack, efficiency, weapon, e_args)
+	. = frame.active_parry.handle_item_melee(defending, shieldcall_returns, fake_attack, efficiency, weapon, e_args, tool_text)
 	frame.on_parry(ATTACK_TYPE_MELEE, weapon, ., efficiency)
 
-/datum/parry_frame/proc/handle_item_melee(atom/defending, shieldcall_returns, fake_attack, efficiency, obj/item/weapon, datum/event_args/actor/clickchain/e_args)
+/datum/parry_frame/proc/handle_item_melee(atom/defending, shieldcall_returns, fake_attack, efficiency, obj/item/weapon, datum/event_args/actor/clickchain/e_args, tool_text)
 	// todo: doesn't take into account any damage randomization
 	var/estimated_severity = clamp(weapon.damage_force * e_args.damage_multiplier / 80 * 100, 0, 1)
 	e_args.damage_multiplier *= clamp(efficiency, 0, 1)
 	shieldcall_returns = perform_aftereffects(defending, ATTACK_TYPE_MELEE, efficiency, weapon, shieldcall_returns, e_args)
-	perform_audiovisuals(defending, ATTACK_TYPE_MELEE, efficiency, weapon, shieldcall_returns, estimated_severity)
+	perform_audiovisuals(defending, ATTACK_TYPE_MELEE, efficiency, weapon, shieldcall_returns, estimated_severity, "[weapon]", tool_text)
 	if(parry_always_prevents_contact || (parry_can_prevent_contact && (efficiency >= parry_efficiency_blocked)))
 		. |= SHIELDCALL_FLAG_ATTACK_BLOCKED
 	return shieldcall_returns
@@ -422,16 +435,16 @@
 	if(e_args && !check_defensive_arc_tile(defending, e_args.performer, frame.active_parry.parry_arc, !frame.active_parry.parry_arc_round_down))
 		return
 	var/efficiency = frame.active_parry.calculate_parry_efficiency(frame.start_time - world.time)
-	. = frame.active_parry.handle_unarmed_melee(defending, shieldcall_returns, fake_attack, efficiency, style, e_args)
+	. = frame.active_parry.handle_unarmed_melee(defending, shieldcall_returns, fake_attack, efficiency, style, e_args, tool_text)
 	frame.on_parry(ATTACK_TYPE_UNARMED, style, ., efficiency)
 
-/datum/parry_frame/proc/handle_unarmed_melee(atom/defending, shieldcall_returns, fake_attack, efficiency, datum/unarmed_attack/style, datum/event_args/actor/clickchain/e_args)
+/datum/parry_frame/proc/handle_unarmed_melee(atom/defending, shieldcall_returns, fake_attack, efficiency, datum/unarmed_attack/style, datum/event_args/actor/clickchain/e_args, tool_text)
 	. = shieldcall_returns
 	// todo: doesn't take into account any damage randomization
 	var/estimated_severity = clamp(style.damage * e_args.damage_multiplier / 80 * 100, 0, 1)
 	e_args.damage_multiplier *= clamp(efficiency, 0, 1)
 	shieldcall_returns = perform_aftereffects(defending, ATTACK_TYPE_UNARMED, efficiency, style, shieldcall_returns, e_args)
-	perform_audiovisuals(defending, ATTACK_TYPE_UNARMED, efficiency, style, shieldcall_returns, estimated_severity)
+	perform_audiovisuals(defending, ATTACK_TYPE_UNARMED, efficiency, style, shieldcall_returns, estimated_severity, "[style]", tool_text)
 	if(parry_always_prevents_contact || (parry_can_prevent_contact && (efficiency >= parry_efficiency_blocked)))
 		. |= SHIELDCALL_FLAG_ATTACK_BLOCKED
 	return shieldcall_returns
@@ -443,16 +456,16 @@
 	if(e_args && !check_defensive_arc_tile(defending, e_args.performer, frame.active_parry.parry_arc, !frame.active_parry.parry_arc_round_down))
 		return
 	var/efficiency = frame.active_parry.calculate_parry_efficiency(frame.start_time - world.time)
-	. = frame.active_parry.handle_touch(defending, shieldcall_returns, fake_attack, efficiency, e_args, contact_flags, contact_specific)
+	. = frame.active_parry.handle_touch(defending, shieldcall_returns, fake_attack, efficiency, e_args, contact_flags, contact_specific, tool_text)
 	frame.on_parry(ATTACK_TYPE_TOUCH, null, ., efficiency)
 
-/datum/parry_frame/proc/handle_touch(atom/defending, shieldcall_returns, fake_attack, efficiency, datum/event_args/actor/clickchain/e_args, contact_flags, contact_specific)
+/datum/parry_frame/proc/handle_touch(atom/defending, shieldcall_returns, fake_attack, efficiency, datum/event_args/actor/clickchain/e_args, contact_flags, contact_specific, tool_text)
 	. = shieldcall_returns
 	// todo: doesn't take into account any damage randomization
 	var/estimated_severity = 50
 	e_args.damage_multiplier *= clamp(efficiency, 0, 1)
 	shieldcall_returns = perform_aftereffects(defending, ATTACK_TYPE_TOUCH, efficiency, null, shieldcall_returns, e_args)
-	perform_audiovisuals(defending, ATTACK_TYPE_TOUCH, efficiency, null, shieldcall_returns, estimated_severity)
+	perform_audiovisuals(defending, ATTACK_TYPE_TOUCH, efficiency, null, shieldcall_returns, estimated_severity, "[e_args?.performer]", tool_text)
 	if(parry_always_prevents_contact || (parry_can_prevent_contact && (efficiency >= parry_efficiency_blocked)))
 		. |= SHIELDCALL_FLAG_ATTACK_BLOCKED
 	return shieldcall_returns
@@ -466,16 +479,16 @@
 	if(!check_defensive_arc_tile(defending, thrown, frame.active_parry.parry_arc, !frame.active_parry.parry_arc_round_down))
 		return
 	var/efficiency = frame.active_parry.calculate_parry_efficiency(frame.start_time - world.time)
-	. = frame.active_parry.handle_throw_impact(defending, shieldcall_returns, fake_attack, efficiency, thrown)
+	. = frame.active_parry.handle_throw_impact(defending, shieldcall_returns, fake_attack, efficiency, thrown, tool_text)
 	frame.on_parry(ATTACK_TYPE_THROWN, thrown, ., efficiency)
 
-/datum/parry_frame/proc/handle_throw_impact(atom/defending, shieldcall_returns, fake_attack, efficiency, datum/thrownthing/thrown)
+/datum/parry_frame/proc/handle_throw_impact(atom/defending, shieldcall_returns, fake_attack, efficiency, datum/thrownthing/thrown, tool_text)
 	. = shieldcall_returns
 	// todo: doesn't take into account any damage randomization
 	// todo: why isn't thrownthing just with a get_damage() or a better inflict_damage() and get_damage_tuple() idfk man
 	var/estimated_severity = clamp(thrown.thrownthing.throw_force * thrown.get_damage_multiplier() / 80 * 100, 0, 1)
 	thrown.damage_multiplier *= clamp(efficiency, 0, 1)
-	shieldcall_returns = perform_aftereffects(defending, ATTACK_TYPE_THROWN, efficiency, thrown, shieldcall_returns)
+	shieldcall_returns = perform_aftereffects(defending, ATTACK_TYPE_THROWN, efficiency, thrown, shieldcall_returns, "[thrown.thrownthing]", tool_text)
 	perform_audiovisuals(defending, ATTACK_TYPE_THROWN, efficiency, thrown, shieldcall_returns, estimated_severity)
 	if(parry_always_prevents_contact || (parry_can_prevent_contact && (efficiency >= parry_efficiency_blocked)))
 		. |= SHIELDCALL_FLAG_ATTACK_BLOCKED
@@ -489,15 +502,18 @@ INITIALIZE_IMMEDIATE(/atom/movable/render/parry_frame)
  */
 /atom/movable/render/parry_frame
 	var/atom/movable/bound
+	/// set this in your custom procs for cycle and single/spinup/spindown
+	var/qdel_time = 1 SECONDS
 
-/atom/movable/render/parry_frame/Initialize(mapload, atom/movable/bind_to, datum/parry_frame/frame)
+/atom/movable/render/parry_frame/Initialize(mapload, atom/movable/bind_to, datum/parry_frame/frame, single_deflect)
 	SHOULD_CALL_PARENT(FALSE)
 	if(!istype(frame))
 		. = INITIALIZE_HINT_QDEL
 		CRASH("no valid frame, this is bad")
 	src.bound = bind_to
 	bind_to.vis_contents += src
-	cycle(frame)
+	cycle(frame, single_deflect)
+	QDEL_IN(src, qdel_time)
 	return INITIALIZE_HINT_NORMAL
 
 /atom/movable/render/parry_frame/Destroy()
@@ -505,9 +521,15 @@ INITIALIZE_IMMEDIATE(/atom/movable/render/parry_frame)
 	bound = null
 	return ..()
 
-/atom/movable/render/parry_frame/proc/cycle(datum/parry_frame/frame)
+/atom/movable/render/parry_frame/proc/cycle(datum/parry_frame/frame, single_deflect)
+	if(single_deflect)
+		single()
+		return
 	spinup(frame.parry_timing_start)
 	addtimer(CALLBACK(src, PROC_REF(spindown), frame.parry_timing_stop), max(frame.parry_timing_active, frame.parry_timing_perfect))
+
+/atom/movable/render/parry_frame/proc/single()
+	return
 
 /atom/movable/render/parry_frame/proc/spinup(start_time)
 	return
@@ -521,4 +543,6 @@ INITIALIZE_IMMEDIATE(/atom/movable/render/parry_frame)
 	icon = 'icons/effects/defensive/main_parry.dmi'
 	icon_state = "hold"
 
-#warn impl main's
+/atom/movable/render/parry_frame/default/proc/single()
+	animate(src, time = 0.3 SECONDS, alpha = 0)
+	qdel_time = 0.3 SECONDS
