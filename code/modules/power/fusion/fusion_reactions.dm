@@ -152,7 +152,7 @@ var/list/fusion_reactions
 /singleton/fusion_reaction/hydrogen_hydrogen
 	p_react = "hydrogen"
 	s_react = "hydrogen"
-	minimum_energy_level = FUSION_HEAT_CAP * 0.75
+	minimum_energy_level = FUSION_HEAT_CAP * 0.745
 	energy_consumption = 0
 	energy_production = 20
 	radiation = 5
