@@ -1,6 +1,9 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
-/datum/overmap_initializer/shuttle
+/**
+ * Allows someone to load a map from their disk.
+ */
+/datum/admin_modal/load_custom_map
 
-// todo: implement this file; requires shuttles V2
+#warn impl all
