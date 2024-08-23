@@ -150,8 +150,8 @@
 	icon_rest = "advanced_spitter_sleep"
 	icon_gib = "gibbed-a-small"
 	gib_on_butchery = "gibbed-a-small-corpse"
-	maxHealth = 350
-	health = 350
+	maxHealth = 250
+	health = 250
 	legacy_melee_damage_lower = 20
 	legacy_melee_damage_upper = 20
 	faction = "xeno"
@@ -341,7 +341,7 @@
 	movement_sound = 'sound/mobs/biomorphs/vanguard_move.ogg'
 	projectiletype = /obj/projectile/energy/acid
 	projectilesound = 'sound/effects/splat.ogg'
-	ai_holder_type = /datum/ai_holder/polaris/simple_mob/ranged/aggressive
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/ranged/aggressive/priest
 
 /datum/category_item/catalogue/fauna/feral_alien/monarch
 	name = "Feral Xenomorph - Monarch"
@@ -388,6 +388,8 @@
 	attack_sound =  'sound/mobs/biomorphs/monarch_attack.ogg'
 	movement_sound = 'sound/mobs/biomorphs/monarch_move.ogg'
 	melee_attack_delay = 4
+	projectiletype = /obj/projectile/energy/acid
+	projectilesound = 'sound/effects/splat.ogg'
 	ai_holder_type = /datum/ai_holder/polaris/simple_mob/ranged/aggressive/priest
 	special_attack_min_range = 3
 	special_attack_max_range = 12 //Normal view range is 7 this can begin charging from outside normal view You may expand it.
