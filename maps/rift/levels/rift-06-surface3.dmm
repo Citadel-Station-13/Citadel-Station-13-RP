@@ -17643,8 +17643,8 @@
 /obj/structure/cable/cyan{
 	icon_state = "0-4"
 	},
-/obj/machinery/power/apc/high/south_mount,
 /obj/effect/debris/cleanable/dirt,
+/obj/machinery/power/apc/alarms_hidden/south_mount,
 /turf/simulated/floor/tiled/old_tile/gray,
 /area/shuttle/oldcentury/cockpit)
 "bPV" = (
@@ -19642,7 +19642,6 @@
 /turf/simulated/wall/rshull,
 /area/shuttle/oldcentury/main)
 "fxP" = (
-/obj/machinery/power/apc/high/west_mount,
 /obj/structure/cable/cyan{
 	icon_state = "0-4"
 	},
@@ -19653,6 +19652,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan,
 /obj/effect/debris/cleanable/dirt,
+/obj/machinery/power/apc/alarms_hidden/west_mount,
 /turf/simulated/floor/tiled/monodark,
 /area/shuttle/oldcentury/main)
 "fyf" = (
@@ -25215,8 +25215,8 @@
 /obj/structure/cable/cyan{
 	icon_state = "0-4"
 	},
-/obj/machinery/power/apc/high/west_mount,
 /obj/effect/debris/cleanable/dirt,
+/obj/machinery/power/apc/alarms_hidden/west_mount,
 /turf/simulated/floor,
 /area/shuttle/oldcentury/main)
 "qdg" = (
