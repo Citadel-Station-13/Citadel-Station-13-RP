@@ -4372,7 +4372,7 @@
 "cJq" = (
 /obj/structure/table/woodentable,
 /obj/item/reagent_containers/food/drinks/britcup,
-/turf/simulated/floor/glass/reinforced,
+/turf/simulated/floor/wood,
 /area/rift/station/public_garden/gantry)
 "cJR" = (
 /obj/machinery/door/blast/regular{
@@ -5594,7 +5594,7 @@
 	desc = " ";
 	pixel_y = 24
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/tiled/monotechmaint,
 /area/rift/station/public_garden/gantry)
 "dzD" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan{
@@ -6845,10 +6845,6 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/medbay_primary_storage)
-"emq" = (
-/obj/structure/catwalk,
-/turf/simulated/floor/plating,
-/area/rift/station/public_garden/gantry)
 "emu" = (
 /obj/structure/table/woodentable,
 /obj/machinery/air_alarm{
@@ -7386,6 +7382,12 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/security/armory/red)
+"eIC" = (
+/obj/machinery/light{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/monotechmaint,
+/area/rift/station/public_garden/gantry)
 "eJh" = (
 /obj/structure/bed/chair{
 	dir = 1
@@ -7580,7 +7582,7 @@
 	pixel_x = 3;
 	pixel_y = 1
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/tiled/monotechmaint,
 /area/rift/station/public_garden/gantry)
 "eSk" = (
 /obj/structure/window/reinforced{
@@ -20185,8 +20187,7 @@
 	dir = 1;
 	icon_state = "2-4"
 	},
-/obj/structure/catwalk,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tiled/monotechmaint,
 /area/rift/station/public_garden/gantry)
 "mDz" = (
 /obj/effect/floor_decal/borderfloor/corner{
@@ -23487,7 +23488,7 @@
 /obj/item/reagent_containers/food/drinks/tea{
 	pixel_y = 6
 	},
-/turf/simulated/floor/glass/reinforced,
+/turf/simulated/floor/wood,
 /area/rift/station/public_garden/gantry)
 "oFt" = (
 /turf/simulated/wall/prepainted/science,
@@ -25868,7 +25869,7 @@
 /area/crew_quarters/sleep/Dorm_4)
 "qhc" = (
 /obj/machinery/light,
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/tiled/monotechmaint,
 /area/rift/station/public_garden/gantry)
 "qhj" = (
 /obj/effect/floor_decal/borderfloor,
@@ -28825,7 +28826,7 @@
 /obj/item/reagent_containers/food/drinks/teapot{
 	pixel_y = 4
 	},
-/turf/simulated/floor/glass/reinforced,
+/turf/simulated/floor/wood,
 /area/rift/station/public_garden/gantry)
 "rTn" = (
 /turf/simulated/floor/carpet/blue,
@@ -33788,6 +33789,9 @@
 /obj/structure/catwalk,
 /turf/simulated/floor/plating/lythios43c,
 /area/rift/surfacebase/outside/outside2)
+"vit" = (
+/turf/simulated/floor/tiled/monotechmaint,
+/area/rift/station/public_garden/gantry)
 "viV" = (
 /obj/effect/floor_decal/borderfloorblack{
 	alpha = 255;
@@ -34257,9 +34261,6 @@
 /obj/machinery/cell_charger,
 /turf/simulated/floor/tiled/steel,
 /area/assembly/robotics)
-"vxn" = (
-/turf/simulated/floor/tiled/monotile,
-/area/rift/station/public_garden/gantry)
 "vxs" = (
 /obj/structure/barricade,
 /obj/effect/floor_decal/rust,
@@ -37987,7 +37988,7 @@
 	dir = 1
 	},
 /obj/structure/closet/crate/bin,
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/tiled/monotechmaint,
 /area/rift/station/public_garden/gantry)
 "xVY" = (
 /turf/simulated/floor/glass/reinforced,
@@ -63062,13 +63063,13 @@ mhS
 mDt
 xVY
 xVY
+vit
 xVY
 xVY
+vit
 xVY
 xVY
-xVY
-xVY
-xVY
+vit
 xVY
 xVY
 bom
@@ -63253,16 +63254,16 @@ qKP
 udo
 juX
 qDS
-emq
+vit
 xVY
 sCU
+vit
 xVY
 xVY
+vit
 xVY
 xVY
-xVY
-xVY
-sCU
+eIC
 xVY
 xVY
 kFS
@@ -63457,8 +63458,8 @@ vtU
 vtU
 vtU
 pbn
-xVY
-xVY
+vit
+vit
 kFS
 sxn
 pbn
@@ -63644,15 +63645,15 @@ xes
 bOO
 bOO
 fIH
-xVY
+vit
 sxn
 bOO
 bOO
 aIZ
 bOO
 eRV
-xVY
-xVY
+vit
+vit
 kFS
 sxn
 fIH
@@ -63838,15 +63839,15 @@ bOO
 bOO
 bOO
 aIZ
-xVY
+vit
 sxn
 edb
 edb
 wug
 bOO
 xVN
-xVY
-xVY
+vit
+vit
 sbD
 uXg
 kEa
@@ -64032,12 +64033,12 @@ npm
 bOO
 bOO
 jLY
-xVY
+vit
 mwQ
 elp
-xVY
 wna
-xVY
+wna
+wna
 cdC
 xSd
 tvC
@@ -64226,7 +64227,7 @@ npm
 npm
 bOO
 pbn
-vxn
+vit
 mwQ
 lXX
 cJq
@@ -64420,7 +64421,7 @@ npm
 npm
 bOO
 fIH
-xVY
+vit
 mwQ
 lXX
 rSU
@@ -64614,7 +64615,7 @@ npm
 npm
 bOO
 aIZ
-xVY
+vit
 mwQ
 lXX
 oFr
@@ -64808,12 +64809,12 @@ jMu
 npm
 bOO
 jLY
-xVY
+vit
 mwQ
 mmq
-xVY
 wna
-xVY
+wna
+wna
 tqm
 efB
 oXW
@@ -65002,7 +65003,7 @@ npm
 npm
 edb
 pbn
-vxn
+vit
 uXg
 jgu
 jgu
@@ -65196,12 +65197,12 @@ sWi
 iyU
 iyU
 iyU
-vxn
-xVY
-xVY
-xVY
-xVY
-vxn
+vit
+vit
+vit
+vit
+vit
+vit
 iyU
 iyU
 iyU

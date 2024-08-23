@@ -1289,6 +1289,11 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/underone)
+"cT" = (
+/turf/simulated/floor/water/beach{
+	dir = 4
+	},
+/area/rift/surfacebase/underground/under1)
 "cU" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
@@ -12396,11 +12401,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/drone_fabrication)
-"MR" = (
-/turf/simulated/floor/water/beach{
-	dir = 6
-	},
-/area/rift/surfacebase/underground/under1)
 "MS" = (
 /obj/machinery/door/airlock{
 	name = "Toilet"
@@ -41765,11 +41765,11 @@ aa
 aa
 aa
 PA
-PA
-UM
-Xo
-Xo
-Xo
+vM
+cT
+cT
+cT
+cT
 aa
 aa
 aa
@@ -41959,8 +41959,8 @@ aa
 aa
 aa
 PA
-PA
 UM
+Xo
 Xo
 Xo
 Xo
@@ -42153,8 +42153,8 @@ aa
 aa
 PA
 PA
-vM
-MR
+UM
+Xo
 Xo
 Xo
 Xo
