@@ -1061,13 +1061,13 @@
  *
  * @params
  * * target - thing being hit
- * * blocked - 0 to 100+ blocked percent
+ * * efficiency - 0 to 1+ - efficiency of hit, where 0% is full block
  * * impact_flags - impact flags passed in
  * * hit_zone - zone to hit
  *
  * @return BULLET_ACT_* flags to append into the calling bullet_act().
  */
-/obj/projectile/proc/process_impact_damage(atom/target, blocked, impact_flags, hit_zone)
+/obj/projectile/proc/process_impact_damage(atom/target, efficiency, impact_flags, hit_zone)
 	. = NONE
 
 	//! LEGACY COMBAT CODE
@@ -1085,7 +1085,7 @@
 		var/absorb = L.run_armor_check(hit_zone, src.damage_flag, src.armor_penetration)
 		var/proj_sharp = is_sharp(src)
 		var/proj_edge = has_edge(src)
-		var/final_damage = src.get_final_damage(src)
+		var/final_damage = src.get_final_damage(src) * efficiency
 
 		if ((proj_sharp || proj_edge) && (soaked >= round(src.damage*0.8)))
 			proj_sharp = 0
@@ -1115,10 +1115,10 @@
 
 	for(var/datum/projectile_effect/effect as anything in base_projectile_effects)
 		if(effect.hook_damage)
-			effect.on_damage(src, target, impact_flags, hit_zone, blocked)
+			effect.on_damage(src, target, impact_flags, hit_zone, efficiency)
 	for(var/datum/projectile_effect/effect as anything in additional_projectile_effects)
 		if(effect.hook_damage)
-			effect.on_damage(src, target, impact_flags, hit_zone, blocked)
+			effect.on_damage(src, target, impact_flags, hit_zone, efficiency)
 
 	if(legacy_penetrating > 0)
 		if(process_legacy_penetration(target))

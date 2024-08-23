@@ -60,7 +60,7 @@
 	if(!(. & PROJECTILE_IMPACT_BLOCKED))
 		// todo: maybe the projectile side should handle this?
 		run_damage_instance(
-			proj.get_structure_damage() * (1 - (blocked / 100)),
+			proj.get_structure_damage() * efficiency,
 			proj.damage_type,
 			proj.damage_tier,
 			proj.damage_flag,

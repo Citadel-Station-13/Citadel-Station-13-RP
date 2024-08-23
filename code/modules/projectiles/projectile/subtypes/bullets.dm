@@ -430,8 +430,8 @@
 	if(isliving(target))
 		var/mob/living/L = target
 		var/throwdir = get_dir(firer,L)
-		if(prob(10) && !blocked)
-			L.afflict_stun(20 * 1)
+		if(prob(10) && (efficiency >= 0.9))
+			L.afflict_stun(2 SECONDS)
 			L.Confuse(1)
 		L.throw_at_old(get_edge_target_turf(L, throwdir), rand(3,6), 10)
 

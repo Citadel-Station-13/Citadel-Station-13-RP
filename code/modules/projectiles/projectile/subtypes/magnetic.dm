@@ -64,9 +64,9 @@
 	var/energetic_impact = 0 //Does this fuelrod cause a bright flash on impact with a mob?
 
 /obj/projectile/bullet/magnetic/fuelrod/on_impact(atom/target, impact_flags, def_zone, efficiency)
-	if(searing)
-		blocked = 0
 	. = ..()
+	if(searing)
+		efficiency = max(efficiency, 1)
 	if(. & PROJECTILE_IMPACT_BLOCKED)
 		return
 

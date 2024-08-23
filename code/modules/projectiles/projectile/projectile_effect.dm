@@ -32,7 +32,7 @@
  *
  * @return new impact flags
  */
-/datum/projectile_effect/proc/on_damage(obj/projectile/proj, atom/target, impact_flags, def_zone, blocked)
+/datum/projectile_effect/proc/on_damage(obj/projectile/proj, atom/target, impact_flags, def_zone, efficiency)
 	return impact_flags
 
 /**

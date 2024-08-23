@@ -23,7 +23,7 @@
 			if(!(proj.impact_redirect(victim, args) | (PROJECTILE_IMPACT_FLAGS_SHOULD_GO_THROUGH | PROJECTILE_IMPACT_DUPLICATE)))
 				return
 	// Process baymiss & zonemiss
-	def_zone = process_bullet_miss(proj, impact_flags, def_zone, blocked)
+	def_zone = process_bullet_miss(proj, impact_flags, def_zone, efficiency)
 	def_zone = proj.process_zone_miss(src, def_zone, proj.distance_travelled, TRUE)
 	if(!def_zone)
 		if(!proj.silenced)
@@ -73,7 +73,7 @@
 
 	//! END
 
-	. |= proj.process_impact_damage(src, blocked, impact_flags, def_zone)
+	. |= proj.process_impact_damage(src, efficiency, impact_flags, def_zone)
 
 /mob/living/get_bullet_impact_effect_type(var/def_zone)
 	return BULLET_IMPACT_MEAT
@@ -81,7 +81,7 @@
 /**
  * @return zone to hit, or null to miss
  */
-/mob/living/proc/process_bullet_miss(obj/projectile/proj, impact_flags, def_zone, blocked)
+/mob/living/proc/process_bullet_miss(obj/projectile/proj, impact_flags, def_zone, efficiency)
 	var/hit_probability = process_baymiss(proj)
 	if(!prob(hit_probability))
 		return null

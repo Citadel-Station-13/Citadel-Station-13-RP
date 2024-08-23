@@ -65,7 +65,7 @@
 	. = ..()
 	if(. & PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT)
 		return
-	if((. & PROJECTILE_IMPACT_BLOCKED) || blocked > 5)
+	if((. & PROJECTILE_IMPACT_BLOCKED) || (efficiency < 0.95))
 		return
 	if(isliving(target))
 		var/mob/living/L = target

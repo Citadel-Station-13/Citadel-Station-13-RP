@@ -20,7 +20,8 @@
 		var/mob/living/L = target
 		if(L.anti_magic_check())
 			L.visible_message("<span class='warning'>[src] vanishes on contact with [target]!</span>")
-			return blocked
+			. |= PROJECTILE_IMPACT_DELETE
+			return
 		L.death(0)
 
 /obj/projectile/magic/resurrection
@@ -38,7 +39,8 @@
 		var/mob/living/L = target
 		if(L.anti_magic_check())
 			L.visible_message("<span class='warning'>[src] vanishes on contact with [L]!</span>")
-			return blocked
+			. |= PROJECTILE_IMPACT_DELETE
+			return
 		if(L.revive(full_heal = TRUE))
 			to_chat(L, "<span class='notice'>You rise with a start, you're alive!!!</span>")
 		else if(L.stat != DEAD)
@@ -62,7 +64,8 @@
 		var/mob/L = target
 		if(L.anti_magic_check())
 			L.visible_message("<span class='warning'>[src] fizzles on contact with [target]!</span>")
-			return blocked
+			. |= PROJECTILE_IMPACT_DELETE
+			return
 	var/teleammount = 0
 	var/teleloc = target
 	if(!isturf(target))
