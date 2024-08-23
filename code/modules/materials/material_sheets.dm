@@ -524,7 +524,7 @@
 
 /obj/item/stack/material/glass/phoronglass
 	name = "phorosilicate glass"
-	desc = "A sheet of phorosilicate glass, a glass made out of quarz and phoron. Simple but effective Able to withstand extreme temperatures." // PLATINUM GLASS. PLATINUM.. WHAT THE HELL
+	desc = "A sheet of phorosilicate glass, a glass made out of quartz and phoron. Simple but effective, it's able to withstand extreme temperatures." // PLATINUM GLASS. PLATINUM.. WHAT THE HELL
 	singular_name = "borosilicate glass sheet"
 	icon_state = "sheet-phoronglass"
 	material = /datum/material/glass/phoron
@@ -532,7 +532,7 @@
 
 /obj/item/stack/material/glass/phoronrglass
 	name = "reinforced phorosilicate glass"
-	desc = "A sheet of phorosilicate glass, a glass made out of quarz and phoron. Simple but effective Able to withstand extreme temperatures. It is reinforced with steelrods."
+	desc = "A sheet of phorosilicate glass, a glass made out of quartz and phoron. Simple but effective, it's able to withstand extreme temperatures. It is reinforced with steel rods."
 	singular_name = "reinforced borosilicate glass sheet"
 	icon_state = "sheet-phoronrglass"
 	material = /datum/material/glass/phoron/reinforced
