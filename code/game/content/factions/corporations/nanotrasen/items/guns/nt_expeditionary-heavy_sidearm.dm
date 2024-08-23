@@ -1,6 +1,24 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2024 silicons                             *//
 
+//* Ammo Casings *//
+
+/obj/item/ammo_casing/nt_expeditionary/pistol_heavy
+	name = "ammo casing (NT-9-magnum)"
+	desc = "A standardized 9mm cartridge for NT Expeditionary kinetics. This one seems to be for heavy-duty sidearms."
+	caliber = /datum/ammo_caliber/nt_expeditionary/heavy_sidearm
+	projectile_type = /obj/projectile/bullet/nt_expeditionary/pistol_heavy
+
+//* Projectiles *//
+
+/obj/projectile/bullet/nt_expeditionary/pistol_heavy
+	name = "heavy bullet"
+	damage = 35
+	damage_tier = LERP(BULLET_TIER_LOW, BULLET_TIER_MEDIUM, 0.95)
+	armor_penetration = 20
+
+//* Heavy Sidearms *//
+
 /obj/item/gun/ballistic/nt_expeditionary/heavy_sidearm
 	abstract_type = /obj/item/gun/ballistic/nt_expeditionary/heavy_sidearm
 	caliber = /datum/ammo_caliber/nt_expeditionary/heavy_sidearm

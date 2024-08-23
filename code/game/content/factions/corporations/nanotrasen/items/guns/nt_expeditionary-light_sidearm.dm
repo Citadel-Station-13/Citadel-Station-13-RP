@@ -1,6 +1,22 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2024 silicons                             *//
 
+//* Ammo Casings *//
+
+/obj/item/ammo_casing/nt_expeditionary/pistol_light
+	name = "ammo casing (NT-9)"
+	desc = "A standardized 9mm cartridge for NT Expeditionary kinetics. This one seems to be for lightweight pistols and sidearms."
+	caliber = /datum/ammo_caliber/nt_expeditionary/light_sidearm
+	projectile_type = /obj/projectile/bullet/nt_expeditionary/pistol_light
+
+//* Projectiles *//
+
+/obj/projectile/bullet/nt_expeditionary/pistol_light
+	name = "bullet"
+	damage = 35
+	damage_tier = LERP(BULLET_TIER_LOW, BULLET_TIER_MEDIUM, 0.25)
+	armor_penetration = 10
+
 //* Light Sidearms *//
 
 /obj/item/gun/ballistic/nt_expeditionary/light_sidearm

@@ -1,6 +1,24 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2024 silicons                             *//
 
+//* Ammo Casings *//
+
+/obj/item/ammo_casing/nt_expeditionary/antimaterial
+	name = "ammo casing (NT-12.5-antimaterial)"
+	desc = "A standardized 12.5x92mm cartridge for NT Expeditionary kinetics. This one seems ridiculous large, and is probably for a very powerful weapon."
+	caliber = /datum/ammo_caliber/nt_expeditionary/antimaterial
+	projectile_type = /obj/projectile/bullet/nt_expeditionary/antimaterial
+
+//* Projectiles *//
+
+/obj/projectile/bullet/nt_expeditionary/antimaterial
+	name = "antimaterial sabot"
+	damage = 55
+	damage_tier = LERP(BULLET_TIER_HIGH, BULLET_TIER_EXTREME, 1)
+	armor_penetration = 75
+
+//* Antimaterial Weapons *//
+
 /obj/item/gun/ballistic/nt_expeditionary/antimaterial
 	abstract_type = /obj/item/gun/ballistic/nt_expeditionary/antimaterial
 	caliber = /datum/ammo_caliber/nt_expeditionary/antimaterial

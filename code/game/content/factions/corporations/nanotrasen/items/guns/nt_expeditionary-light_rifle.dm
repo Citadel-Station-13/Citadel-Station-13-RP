@@ -1,6 +1,24 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2024 silicons                             *//
 
+//* Ammo Casings *//
+
+/obj/item/ammo_casing/nt_expeditionary/rifle_light
+	name = "ammo casing (NT-7.5-SR)"
+	desc = "A standardized 7.5x39mm cartridge for NT Expeditionary kinetics. This one seems to be for lightweight automatics."
+	caliber = /datum/ammo_caliber/nt_expeditionary/light_rifle
+	projectile_type = /obj/projectile/bullet/nt_expeditionary/rifle_light
+
+//* Projectiles *//
+
+/obj/projectile/bullet/nt_expeditionary/rifle_light
+	name = "rifle bullet"
+	damage = 35
+	damage_tier = LERP(BULLET_TIER_MEDIUM, BULLET_TIER_HIGH, 0.5)
+	armor_penetration = 35
+
+//* Light Rifles *//
+
 /obj/item/gun/ballistic/nt_expeditionary/light_rifle
 	abstract_type = /obj/item/gun/ballistic/nt_expeditionary/light_rifle
 	caliber = /datum/ammo_caliber/nt_expeditionary/light_rifle
