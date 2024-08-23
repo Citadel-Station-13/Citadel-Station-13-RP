@@ -116,6 +116,14 @@
 	/// * basically for fluff and simulation, not byond engine
 	/// * this is used for virtual coordinates as the 'z'
 	var/tmp/struct_z
+	/// our placement in a struct
+	///
+	/// * must be list(x, y, z)
+	/// * the indices are zlevel, with the 'center ground floor' being list(0, 0, 0)
+	/// * all levels on a map must have this specified if the map is going to build a struct.
+	var/struct_create_pos
+
+	//* Virtual Coordinates *//
 	/// the coordinate of the lower-left / southwest corner border of the map
 	///
 	/// * this is not 1,1 on the map, this is 0,0 on the map.
@@ -123,7 +131,7 @@
 	/// * basically for fluff and simulation, not byond engine
 	/// * 0-indexed for ease of use by implementations of get virtual coord.
 	/// * this is used for virtual coordinates as the 'x + [tile.x]'
-	var/tmp/virtual_alignment_x
+	var/tmp/virtual_alignment_x = 0
 	/// the coordinate of the lower-left / southwest corner border of the map
 	///
 	/// * this is not 1,1 on the map, this is 0,0 on the map.
@@ -131,23 +139,13 @@
 	/// * basically for fluff and simulation, not byond engine
 	/// * 0-indexed for ease of use by implementations of get virtual coord.
 	/// * this is used for virtual coordinates as the 'y + [tile.y]'
-	var/tmp/virtual_alignment_y
+	var/tmp/virtual_alignment_y = 0
 	/// the canonical height from ground floor that we are
 	///
 	/// * virtual_z = 0 is always 0
 	/// * virtual_z = 1 is the ceiling_height of virtual_z = 0
 	/// * virtual_z = -1 is the subtracted ceiling height of virtual_z = -1
-	var/tmp/virtual_elevation
-	/// our placement in a struct
-	///
-	/// * must be list(x, y, z)
-	/// * the indices are zlevel, with the 'center ground floor' being list(0, 0, 0)
-	/// * either no levels on a map can have this specified or all of them must have it specified
-	/// * if none of them are specified, if the map needs to create a struct it will
-	///      automatically 'fit' and center the map to 0,0,0 upwards with northeast bias; this means that
-	///      the map is centered on 0,0, the bottom level is zlevel 0, and if it isn't an odd number of
-	///      levels, the map will be shifted north-east to support everything.
-	var/struct_create_pos
+	var/tmp/virtual_elevation = 0
 
 	//* Persistence *//
 	/// loaded persistence metadata, if any

@@ -60,10 +60,61 @@
 		CRASH("Attempted to destroy a constructed map_struct.")
 	return ..()
 
+/datum/map_struct/vv_edit_var(var_name, var_value, mass_edit, raw_edit)
+	switch(var_name)
+		if(NAMEOF(src, grid_parser))
+			return FALSE
+	return ..()
+
 /**
  * Sets all the transitions and whatnot for our map levels
+ *
+ * * This'll make them lead to adjacent levels.
+ * * This proc will trigger sleeping rebuilds of levels.
+ * * This proc is waitfor = FALSE, meaning the rebuilds go on in the background.
  */
 /datum/map_struct/proc/link_levels(rebuild = TRUE)
+	set waitfor = FALSE
+	for(var/datum/map_level/level as anything in levels)
+		var/datum/map_level/other
+		var/had_vertical = FALSE
+		var/had_horizontal = FALSE
+
+		other = z_grid["[level.x+1],[level.y],[level.z]"]
+		if(other)
+			level.link_east = other
+			had_horizontal = TRUE
+		other = z_grid["[level.x-1],[level.y],[level.z]"]
+		if(other)
+			level.link_west = other
+			had_horizontal = TRUE
+		other = z_grid["[level.x],[level.y+1],[level.z]"]
+		if(other)
+			level.link_north = other
+			had_horizontal = TRUE
+		other = z_grid["[level.x],[level.y-1],[level.z]"]
+		if(other)
+			level.link_south = other
+			had_horizontal = TRUE
+
+		other = z_grid["[level.x],[level.y],[level.z+1]"]
+		if(other)
+			level.link_above = other
+			had_vertical = TRUE
+		other = z_grid["[level.x],[level.y],[level.z-1]"]
+		if(other)
+			level.link_below = other
+			had_vertical = TRUE
+
+		if(rebuild)
+			if(had_horizontal)
+				level.rebuild_transitions()
+			if(had_vertical)
+				level.rebuild_vertical_levels()
+
+	if(rebuild)
+		SSmapping.rebuild_transitions()
+		SSmapping.rebuild_verticality()
 
 /**
  * Unsets all the transitions for our levels
@@ -88,20 +139,76 @@
 				level.rebuild_transitions()
 			if(had_vertical)
 				level.rebuild_vertical_levels()
+
 	if(rebuild)
 		SSmapping.rebuild_transitions()
 		SSmapping.rebuild_verticality()
 
+/**
+ * Builds and generates our data.
+ *
+ * * Will also verify integrity of zlevels and whatnot.
+ */
+/datum/map_struct/proc/construct(list/z_grid = src.z_grid, link = TRUE)
+	// assemble levels
+	var/list/datum/map_level/levels = list()
+	var/list/level_indices = list()
 
-	#warn below
+	for(var/tuple in z_grid)
+		var/level_id_or_instance = z_grid[tuple]
+		var/datum/map_level/resolved
+		if(istext(level_id_or_instance))
+			resolved = SSmapping.keyed_levels[level_id_or_instance]
+		else if(istype(level_id_or_instance, /datum/map_level))
+			resolved = level_id_or_instance
+		else if(ispath(level_id_or_instance, /datum/map_level))
+			resolved = SSmapping.typed_levels[level_id_or_instance]
+		if(!resolved)
+			CRASH("FATAL: failed to resolve a level during struct construction.")
+		if(resolved in levels)
+			CRASH("FATAL: duplicate level")
+		if(!resolved.loaded)
+			CRASH("FATAL: attempted to include an unloaded level in a struct. structs do not currently support lazy-loading.")
+		levels += resolved
+		level_indices += resolved.z_index
 
-	/// the overmap object we're attached to
-	var/tmp/obj/effect/overmap/visitable/overmap_sector
-	#warn hook/impl
-	#warn if we're deconstructed this needs to be delinked and instructed to create its own struct later
+	// "[x],[y]" = list(levels with x, y)
+	var/list/x_y_stacks = list()
+	// "[z]" = list(levels in z)
+	var/list/z_planes = list()
+
+	// sort x_y_stacks by level z index
+
+	// set level data
+	for(var/datum/map_level/level as anything in levels)
+
+	// set our data
+	src.z_grid = z_grid
+	src.z_indices = level_indices
+	src.levels = levels
+
+	if(link)
+		link_levels()
+
+	constructed = TRUE
+
+/**
+ * Completely destroys our state and unbinds levels.
+ */
+/datum/map_struct/proc/deconstruct(unlink = TRUE)
+	if(unlink)
+		unlink_levels()
+
+	for(var/datum/map_level/level as anything in levels)
+		level.virtual_alignment_x = 0
+		level.virtual_alignment_y = 0
+		level.virtual_elevation = 0
+
+	constructed = FALSE
+
+#warn below
 
 #warn parse this file
-#warn vvguard the parser
 
 // The below code is a monstrosity.
 // I am so sorry.
@@ -294,6 +401,8 @@
 			stack_trace("Duplicate level ID [id]")
 			. = FALSE
 		idmap[id] = TRUE
+
+#warn above
 
 //* Z-Access *//
 
