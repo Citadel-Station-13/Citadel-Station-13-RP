@@ -159,6 +159,13 @@
 	// "[z]" = list(levels in z)
 	var/list/z_planes = list()
 
+	var/min_x = INFINITY
+	var/min_y = INFINITY
+	var/min_z = INFINITY
+	var/max_x = -INFINITY
+	var/max_y = -INFINITY
+	var/max_z = -INFINITY
+
 	// assemble levels
 	for(var/tuple in z_grid)
 		var/level_id_or_instance = z_grid[tuple]
@@ -186,6 +193,20 @@
 		var/x = text2num(grid_parser.group[1])
 		var/y = text2num(grid_parser.group[2])
 		var/z = text2num(grid_parser.group[3])
+
+		if(!ISINRANGE(x, -(SHORT_REAL_LIMIT * 0.5), (SHORT_REAL_LIMIT * 0.5)) || (round(x) != x))
+			CRASH("[x] out of bounds or fractional")
+		if(!ISINRANGE(y, -(SHORT_REAL_LIMIT * 0.5), (SHORT_REAL_LIMIT * 0.5)) || (round(x) != x))
+			CRASH("[y] out of bounds or fractional")
+		if(!ISINRANGE(z, -(SHORT_REAL_LIMIT * 0.5), (SHORT_REAL_LIMIT * 0.5)) || (round(x) != x))
+			CRASH("[z] out of bounds or fractional")
+
+		min_x = min(min_x, x)
+		max_x = max(max_x, x)
+		min_y = min(min_y, y)
+		max_y = max(max_y, y)
+		min_z = min(min_z, z)
+		max_z = max(max_z, z)
 
 		// set coords
 		resolved.struct_x = x
@@ -217,6 +238,9 @@
 	src.z_grid = z_grid
 	src.z_indices = level_indices
 	src.levels = levels
+	src.sparse_size_x = max_x - min_x + 1
+	src.sparse_size_y = max_y - min_y + 1
+	src.sparse_size_z = max_z - min_z + 1
 
 	if(link)
 		link_levels()
@@ -292,41 +316,6 @@
 			max_y = max(max_y, y)
 			min_z = min(min_z, z)
 			max_z = max(max_z, z)
-		var/datum/space_level/them
-		var/has_up_down = FALSE
-		var/has_adjacent = FALSE
-		#warn fuck
-		// we can build horizontals now, since they aren't as complicated
-		them = _scan_dir(z_grid, x, y, z, EAST)
-		if(them)
-			L.set_east(them)
-			has_adjacent = TRUE
-		them = _scan_dir(z_grid, x, y, z, WEST)
-		if(them)
-			L.set_west(them)
-			has_adjacent = TRUE
-		them = _scan_dir(z_grid, x, y, z, NORTH)
-		if(them)
-			L.set_north(them)
-			has_adjacent = TRUE
-		them = _scan_dir(z_grid, x, y, z, SOUTH)
-		if(them)
-			L.set_south(them)
-			has_adjacent = TRUE
-		// build verticals too
-		them = _scan_dir(z_grid, x, y, z, UP)
-		if(them)
-			L.set_up(them)
-			has_up_down = TRUE
-		them = _scan_dir(z_grid, x, y, z, DOWN)
-		if(them)
-			L.set_down(them)
-			has_up_down = TRUE
-		if(rebuild)
-			if(has_adjacent)
-				L.rebuild_transitions()
-			if(has_up_down)
-				L.rebuild_turfs()
 	for(var/z_text in plane_cache)
 		planes += plane_cache[z_text]
 	width = max_x - min_x + 1
