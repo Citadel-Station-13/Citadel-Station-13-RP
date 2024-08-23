@@ -50,10 +50,51 @@
 	/// * if a level is at 0,0,0 and another is at 0,0,5 with nothing in between, our depth is 5
 	var/tmp/sparse_size_z
 
+	//* Internal *//
+	/// Regex used to parse grid lists for `x,y,z` coord's
+	var/static/regex/grid_parser = new(@"([\n]+),([\n)]+,([\n]+)", "g")
+
+/datum/map_struct/Destroy(force)
+	if(constructed)
+		. = QDEL_HINT_LETMELIVE
+		CRASH("Attempted to destroy a constructed map_struct.")
+	return ..()
+
+/**
+ * Sets all the transitions and whatnot for our map levels
+ */
+/datum/map_struct/proc/link_levels(rebuild = TRUE)
+
+/**
+ * Unsets all the transitions for our levels
+ *
+ * * This'll make them lead nowhere.
+ * * This proc will trigger sleeping rebuilds of levels.
+ * * This proc is waitfor = FALSE, meaning the rebuilds go on in the background.
+ */
+/datum/map_struct/proc/unlink_levels(rebuild = TRUE)
+	set waitfor = FALSE
+	for(var/datum/map_level/level as anything in levels)
+		var/had_vertical = level.link_above || level.link_below
+		var/had_horizontal = level.link_east || level.link_west || level.link_north || level.link_south
+		level.link_above = null
+		level.link_below = null
+		level.link_east = null
+		level.link_west = null
+		level.link_north = null
+		level.link_south = null
+		if(rebuild)
+			if(had_horizontal)
+				level.rebuild_transitions()
+			if(had_vertical)
+				level.rebuild_vertical_levels()
+	if(rebuild)
+		SSmapping.rebuild_transitions()
+		SSmapping.rebuild_verticality()
+
+
 	#warn below
 
-	/// Regex
-	var/static/regex/grid_parser = new(@"([\n]+),([\n)]+,([\n]+)", "g")
 	/// the overmap object we're attached to
 	var/tmp/obj/effect/overmap/visitable/overmap_sector
 	#warn hook/impl
@@ -61,12 +102,6 @@
 
 #warn parse this file
 #warn vvguard the parser
-
-/datum/map_struct/Destroy(force)
-	if(constructed)
-		. = QDEL_HINT_LETMELIVE
-		CRASH("Attempted to destroy a constructed map_struct.")
-	return ..()
 
 // The below code is a monstrosity.
 // I am so sorry.
@@ -260,16 +295,18 @@
 			. = FALSE
 		idmap[id] = TRUE
 
-//! level fetching
+//* Z-Access *//
+
 /**
  * returns mutable copy of real_indices
  */
-/datum/map_struct/proc/fetch_z_list()
-	return real_indices.Copy()
+/datum/map_struct/proc/mutable_z_list()
+	return z_indices.Copy()
 
 /**
  * directly fetches real indices
- * DO NOT MODIFY RETURNED LIST
+ *
+ * * Do not modify returned list.
  */
-/datum/map_struct/proc/direct_z_list()
-	return real_indices
+/datum/map_struct/proc/immutable_z_list()
+	return z_indices
