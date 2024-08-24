@@ -62,6 +62,7 @@
 		O_GBLADDER = /obj/item/organ/internal/diona/bladder,
 		O_POLYP    = /obj/item/organ/internal/diona/polyp,
 		O_ANCHOR   = /obj/item/organ/internal/diona/ligament,
+		O_FRUIT   = /obj/item/organ/internal/fruitgland,
 	)
 	vision_organ = O_BRAIN
 
@@ -90,6 +91,7 @@
 	inherent_verbs = list(
 		/mob/living/carbon/human/proc/diona_split_nymph,
 		/mob/living/carbon/human/proc/regenerate,
+		/mob/living/carbon/human/proc/alraune_fruit_select,
 	)
 
 	warning_low_pressure = 10
