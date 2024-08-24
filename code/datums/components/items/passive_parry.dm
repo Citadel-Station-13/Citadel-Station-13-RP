@@ -30,8 +30,8 @@
 	var/datum/callback/parry_intercept
 	/// our registered shieldcall
 	var/datum/shieldcall/bound/passive_parry/hooked_shieldcall
-	/// registered? just for optimizations
-	var/hooked = FALSE
+	/// the mob we're registered with right now
+	var/mob/hooked
 
 /datum/component/passive_parry/Initialize(datum/passive_parry/data, datum/callback/intercept)
 	. = ..()
@@ -84,39 +84,45 @@
 	UnregisterSignal(parent, COMSIG_ITEM_EQUIPPED)
 	if(hooked)
 		var/obj/item/item = parent
-		if(item.worn_mob())
-			on_unequipped(item, item.worn_mob(), item.worn_slot)
+		on_unequipped(item, hooked)
 
 /datum/component/passive_parry/proc/on_dropped(obj/item/source, inv_op_flags, atom/new_loc)
 	// delete on drop to save memory
 	qdel(src)
 
-/datum/component/passive_parry/proc/on_equipped(obj/item/source, mob/user, slot, inv_op_flags)
+/datum/component/passive_parry/proc/on_equipped(obj/item/source, mob/user, slot)
 	if(!check_slot(slot))
 		return
 	if(hooked)
 		return
-	hooked = TRUE
-
-	if(!user)
-		user = source.worn_mob()
-	if(!hooked_shieldcall)
-		hooked_shieldcall = new(src)
+	ASSERT(user)
+	hooked = user
+	hooked_shieldcall = new(src)
 	user.register_shieldcall(hooked_shieldcall)
+	RegisterSignal(user, COMSIG_ATOM_SHIELDCALL_ITERATION, PROC_REF(shieldcall_iterating))
 
-/datum/component/passive_parry/proc/on_unequipped(obj/item/source, mob/user, slot, inv_op_flags)
-	if(!hooked)
-		return
-	hooked = FALSE
-
-	if(!user)
-		user = source.worn_mob()
-	if(hooked_shieldcall)
-		user.unregister_shieldcall(hooked_shieldcall)
-		QDEL_NULL(hooked_shieldcall)
+/datum/component/passive_parry/proc/on_unequipped(obj/item/source, mob/user)
+	ASSERT(user == hooked)
+	hooked = null
+	user.unregister_shieldcall(hooked_shieldcall)
+	QDEL_NULL(hooked_shieldcall)
+	UnregisterSignal(user, COMSIG_ATOM_SHIELDCALL_ITERATION, PROC_REF(shieldcall_iterating))
 
 /datum/component/passive_parry/proc/check_slot(slot_id)
 	return islist(parry_data.parry_slot_id)? (slot_id in parry_data.parry_slot_id) : (!parry_data.parry_slot_id || (parry_data.parry_slot_id == slot_id))
+
+/datum/component/passive_parry/proc/shieldcall_iterating(mob/source, shieldcall_type)
+	var/datum/passive_parry/data = fetch_data(parry_data)
+	// normal shieldcal lhandlers handle it
+	if(!data.parry_frame_simulated)
+		return
+	// for now, we only care about if they already have a frame
+	// in the future, maybe this can fire as long as we aren't the source of a parry frame on them.
+	// todo: cooldown enforcement
+	// todo: mobility enforcement
+	// todo: full parry swing cycle?
+	if(!defending.GetComponent(/datum/component/parry_frame))
+		defending.AddComponent(/datum/component/parry_frame, resolved, data.parry_frame_timing)
 
 //* Bindings - Bullet *//
 
@@ -132,6 +138,8 @@
 
 /datum/component/passive_parry/proc/handle_bullet(atom/defending, shieldcall_returns, fake_attack, list/bullet_act_args)
 	var/datum/passive_parry/data = parry_data
+	if(data.parry_frame_simulated)
+		return
 	if(!prob(isnull(data.parry_chance_projectile) ? data.parry_chance_default : data.parry_chance_projectile))
 		return
 	if(!check_defensive_arc_tile(defending, bullet_act_args[BULLET_ACT_ARG_PROJECTILE], data.parry_arc, !data.parry_arc_round_down))
@@ -144,13 +152,7 @@
 	var/datum/parry_frame/resolved = ignite(defending, ATTACK_TYPE_PROJECTILE, bullet_act_args[BULLET_ACT_ARG_PROJECTILE])
 	if(!resolved)
 		return
-	if(!data.parry_frame_simulated)
-		resolved.handle_bullet(defending, shieldcall_returns | SHIELDCALL_FLAG_SINGLE_PARRY, fake_attack, data.parry_frame_efficiency, bullet_act_args, parent)
-	else
-		// for now, we only care about if they already have a frame
-		// in the future, maybe this can fire as long as we aren't the source of a parry frame on them.
-		if(!defending.GetComponent(/datum/component/parry_frame))
-			defending.AddComponent(/datum/component/parry_frame, resolved, data.parry_frame_timing)
+	return resolved.handle_bullet(defending, shieldcall_returns | SHIELDCALL_FLAG_SINGLE_PARRY, fake_attack, data.parry_frame_efficiency, bullet_act_args, parent)
 
 //* Bindings - Melee *//
 
@@ -166,6 +168,8 @@
 
 /datum/component/passive_parry/proc/handle_item_melee(atom/defending, shieldcall_returns, fake_attack, obj/item/weapon, datum/event_args/actor/clickchain/e_args)
 	var/datum/passive_parry/data = parry_data
+	if(data.parry_frame_simulated)
+		return
 	if(!prob(isnull(data.parry_chance_melee) ? data.parry_chance_default : data.parry_chance_melee))
 		return
 	if(!check_defensive_arc_tile(defending, e_args.performer, data.parry_arc, !data.parry_arc_round_down))
@@ -173,13 +177,7 @@
 	var/datum/parry_frame/resolved = ignite(defending, ATTACK_TYPE_MELEE, weapon)
 	if(!resolved)
 		return
-	if(!data.parry_frame_simulated)
-		resolved.handle_item_melee(defending, shieldcall_returns | SHIELDCALL_FLAG_SINGLE_PARRY, fake_attack, data.parry_frame_efficiency, weapon, e_args, parent)
-	else
-		// for now, we only care about if they already have a frame
-		// in the future, maybe this can fire as long as we aren't the source of a parry frame on them.
-		if(!defending.GetComponent(/datum/component/parry_frame))
-			defending.AddComponent(/datum/component/parry_frame, resolved, data.parry_frame_timing)
+	return resolved.handle_item_melee(defending, shieldcall_returns | SHIELDCALL_FLAG_SINGLE_PARRY, fake_attack, data.parry_frame_efficiency, weapon, e_args, parent)
 
 /datum/shieldcall/bound/passive_parry/handle_unarmed_melee(atom/defending, shieldcall_returns, fake_attack, datum/unarmed_attack/style, datum/event_args/actor/clickchain/e_args)
 	// todo: no support for fake attacks yet
@@ -193,6 +191,8 @@
 
 /datum/component/passive_parry/proc/handle_unarmed_melee(atom/defending, shieldcall_returns, fake_attack, datum/unarmed_attack/style, datum/event_args/actor/clickchain/e_args)
 	var/datum/passive_parry/data = parry_data
+	if(data.parry_frame_simulated)
+		return
 	if(!prob(isnull(data.parry_chance_melee) ? data.parry_chance_default : data.parry_chance_melee))
 		return
 	if(!check_defensive_arc_tile(defending, e_args.performer, data.parry_arc, !data.parry_arc_round_down))
@@ -200,13 +200,7 @@
 	var/datum/parry_frame/resolved = ignite(defending, ATTACK_TYPE_UNARMED, style)
 	if(!resolved)
 		return
-	if(!data.parry_frame_simulated)
-		resolved.handle_unarmed_melee(defending, shieldcall_returns | SHIELDCALL_FLAG_SINGLE_PARRY, fake_attack, data.parry_frame_efficiency, style, e_args, parent)
-	else
-		// for now, we only care about if they already have a frame
-		// in the future, maybe this can fire as long as we aren't the source of a parry frame on them.
-		if(!defending.GetComponent(/datum/component/parry_frame))
-			defending.AddComponent(/datum/component/parry_frame, resolved, data.parry_frame_timing)
+	return resolved.handle_unarmed_melee(defending, shieldcall_returns | SHIELDCALL_FLAG_SINGLE_PARRY, fake_attack, data.parry_frame_efficiency, style, e_args, parent)
 
 /datum/shieldcall/bound/passive_parry/handle_touch(atom/defending, shieldcall_returns, fake_attack, datum/event_args/actor/clickchain/e_args, contact_flags, contact_specific)
 	// todo: no support for fake attacks yet
@@ -220,6 +214,8 @@
 
 /datum/component/passive_parry/proc/handle_touch(atom/defending, shieldcall_returns, fake_attack, datum/event_args/actor/clickchain/e_args, contact_flags, contact_specific)
 	var/datum/passive_parry/data = parry_data
+	if(data.parry_frame_simulated)
+		return
 	if(!prob(isnull(data.parry_chance_touch) ? data.parry_chance_default : data.parry_chance_touch))
 		return
 	if(!check_defensive_arc_tile(defending, e_args.performer, data.parry_arc, !data.parry_arc_round_down))
@@ -227,13 +223,7 @@
 	var/datum/parry_frame/resolved = ignite(defending, ATTACK_TYPE_TOUCH, null)
 	if(!resolved)
 		return
-	if(!data.parry_frame_simulated)
-		resolved.handle_touch(defending, shieldcall_returns | SHIELDCALL_FLAG_SINGLE_PARRY, fake_attack, data.parry_frame_efficiency, e_args, contact_flags, contact_specific, parent)
-	else
-		// for now, we only care about if they already have a frame
-		// in the future, maybe this can fire as long as we aren't the source of a parry frame on them.
-		if(!defending.GetComponent(/datum/component/parry_frame))
-			defending.AddComponent(/datum/component/parry_frame, resolved, data.parry_frame_timing)
+	return resolved.handle_touch(defending, shieldcall_returns | SHIELDCALL_FLAG_SINGLE_PARRY, fake_attack, data.parry_frame_efficiency, e_args, contact_flags, contact_specific, parent)
 
 //* Bindings - Thrown *//
 
@@ -249,6 +239,8 @@
 
 /datum/component/passive_parry/proc/handle_throw_impact(atom/defending, shieldcall_returns, fake_attack, datum/thrownthing/thrown)
 	var/datum/passive_parry/data = parry_data
+	if(data.parry_frame_simulated)
+		return
 	if(!prob(isnull(data.parry_chance_thrown) ? data.parry_chance_default : data.parry_chance_thrown))
 		return
 	if(!check_defensive_arc_tile(defending, thrown, data.parry_arc, !data.parry_arc_round_down))
@@ -256,13 +248,7 @@
 	var/datum/parry_frame/resolved = ignite(defending, ATTACK_TYPE_THROWN, thrown)
 	if(!resolved)
 		return
-	if(!data.parry_frame_simulated)
-		resolved.handle_throw_impact(defending, shieldcall_returns | SHIELDCALL_FLAG_SINGLE_PARRY, fake_attack, data.parry_frame_efficiency, thrown, parent)
-	else
-		// for now, we only care about if they already have a frame
-		// in the future, maybe this can fire as long as we aren't the source of a parry frame on them.
-		if(!defending.GetComponent(/datum/component/parry_frame))
-			defending.AddComponent(/datum/component/parry_frame, resolved, data.parry_frame_timing)
+	return resolved.handle_throw_impact(defending, shieldcall_returns | SHIELDCALL_FLAG_SINGLE_PARRY, fake_attack, data.parry_frame_efficiency, thrown, parent)
 
 //* Item *//
 

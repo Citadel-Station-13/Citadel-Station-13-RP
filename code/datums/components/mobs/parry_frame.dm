@@ -249,6 +249,7 @@
 	/// a typepath of /atom/movable/parry_frame to use as our visual; this is placed in the defending atom's vis_contents
 	var/parry_vfx = /atom/movable/render/parry_frame/default
 	/// "[person] [start_verb] with [item]"
+	//  todo: implement
 	var/start_verb = "shifts into a defensive stance"
 	/// "[person] [block_verb] [attack_source_descriptor] with [item]"
 	var/block_verb = "parries"
