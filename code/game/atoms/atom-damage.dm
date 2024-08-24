@@ -50,8 +50,22 @@
 		return
 	if(inflict_damage_type_special(args))
 		return
+	switch(damage_type)
+		if(BRUTE)
+		if(BURN)
+		else
+			return // normal atoms can't take non brute-burn damage
 	// default atom damage handling
-	inflict_atom_damage(damage, damage_tier, damage_flag, damage_mode, attack_type, weapon)
+	inflict_atom_damage(
+		damage,
+		damage_type,
+		damage_tier,
+		damage_flag,
+		damage_mode,
+		hit_zone,
+		attack_type,
+		weapon,
+	)
 
 /**
  * decodes damage type to what it should actually do

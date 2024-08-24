@@ -187,7 +187,7 @@
 /**
  * The big, bad proc that deals with inbound shieldcalls.
  */
-/datum/armor/proc/handle_shieldcall(list/shieldcall_args)
+/datum/armor/proc/handle_shieldcall(list/shieldcall_args, fake_attack)
 	shieldcall_args[SHIELDCALL_ARG_DAMAGE] = resultant_damage(
 		shieldcall_args[SHIELDCALL_ARG_DAMAGE],
 		shieldcall_args[SHIELDCALL_ARG_DAMAGE_TIER],

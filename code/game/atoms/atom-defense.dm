@@ -365,7 +365,7 @@
 	if(shieldcall_args[SHIELDCALL_ARG_FLAGS] & SHIELDCALL_FLAG_TERMINATE)
 		return
 	var/datum/armor/our_armor = fetch_armor()
-	our_armor.handle_shieldcall(src, shieldcall_args, fake_attack)
+	our_armor.handle_shieldcall(shieldcall_args, fake_attack)
 
 /atom/proc/register_shieldcall(datum/shieldcall/delegate)
 	LAZYINITLIST(shieldcalls)
