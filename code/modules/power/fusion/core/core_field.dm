@@ -488,7 +488,7 @@ GLOBAL_VAR_INIT(max_fusion_air_heat, INFINITY)
 	STOP_PROCESSING(SSobj, src)
 	. = ..()
 
-/obj/effect/fusion_em_field/bullet_act(obj/projectile/proj, impact_flags, def_zone, efficiency)
+/obj/effect/fusion_em_field/on_bullet_act(obj/projectile/proj, impact_flags, list/bullet_act_args)
 	AddEnergy(proj.damage)
 	update_icon()
 	impact_flags &= ~PROJECTILE_IMPACT_FLAGS_SHOULD_GO_THROUGH

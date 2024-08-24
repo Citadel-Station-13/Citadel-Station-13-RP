@@ -64,7 +64,7 @@
 			return FALSE
 	return TRUE
 
-/obj/effect/directional_shield/bullet_act(obj/projectile/proj, impact_flags, def_zone, efficiency)
+/obj/effect/directional_shield/on_bullet_act(obj/projectile/proj, impact_flags, list/bullet_act_args)
 	impact_flags &= ~PROJECTILE_IMPACT_FLAGS_SHOULD_NOT_HIT
 	. = ..()
 	if(. & PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT)

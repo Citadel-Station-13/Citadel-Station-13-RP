@@ -60,16 +60,12 @@
 	)
 	return NONE
 
-/turf/simulated/wall/bullet_act(obj/projectile/proj, impact_flags, def_zone, efficiency)
-	. = ..()
-	if(. & PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT)
-		return
-
+/turf/simulated/wall/on_bullet_act(obj/projectile/proj, impact_flags, list/bullet_act_args)
 	// todo: this method of detecting destruction is shitcode but turf refs don't change so qdeleted() won't work
 	var/old_type = type
 	// todo: maybe the projectile side should handle this?
 	run_damage_instance(
-		proj.get_structure_damage() * efficiency,
+		proj.get_structure_damage() * bullet_act_args[BULLET_ACT_ARG_EFFICIENCY],
 		proj.damage_type,
 		proj.damage_tier,
 		proj.damage_flag,
@@ -77,15 +73,15 @@
 		ATTACK_TYPE_PROJECTILE,
 		proj,
 		NONE,
-		def_zone,
+		bullet_act_args[BULLET_ACT_ARG_ZONE],
 		null,
 		null,
 	)
 	// turf refs don't change so while QDELETED() doesn't work this is a close approximate
 	// until we have a better system or we decide to pay some overhead to track with a number or something
 	if(old_type != type)
-		. |= PROJECTILE_IMPACT_TARGET_DELETED
-		return
+		impact_flags |= PROJECTILE_IMPACT_TARGET_DELETED
+		return ..()
 
 	//! legacy code handling
 	if((proj.projectile_type & (PROJECTILE_TYPE_ENERGY | PROJECTILE_TYPE_BEAM)) && !proj.nodamage && proj.damage)
@@ -96,3 +92,5 @@
 	if(proj.ricochet_sounds && prob(15))
 		playsound(src, pick(proj.ricochet_sounds), 75, TRUE)
 	//! end
+
+	return ..()

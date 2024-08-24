@@ -291,7 +291,7 @@ CREATE_STANDARD_TURFS(/turf/unsimulated/mineral)
 						new oretype(src)
 				resources[ore] = 0
 
-/turf/simulated/mineral/bullet_act(obj/projectile/proj, impact_flags, def_zone, efficiency)
+/turf/simulated/mineral/on_bullet_act(obj/projectile/proj, impact_flags, list/bullet_act_args)
 	. = ..()
 	if(proj.excavation_amount)
 		var/newDepth = excavation_level + proj.excavation_amount // Used commonly below

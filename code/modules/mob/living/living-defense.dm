@@ -3,45 +3,45 @@
 
 //* Projectile Handling *//
 
-/mob/living/bullet_act(obj/projectile/proj, impact_flags, def_zone, efficiency)
-	//! LEGACY
+/mob/living/on_bullet_act(obj/projectile/proj, impact_flags, list/bullet_act_args)
+	if((impact_flags & PROJECTILE_IMPACT_FLAGS_TARGET_ABORT))
+		//! LEGACY
 
-	// Using someone as a shield
-	// todo: need a counter to this..
-	for(var/mob/living/victim in get_grabbing_of_state(GRAB_NECK))
-		if(victim.stat == DEAD)
-			// small mobs are penalized; this is a holdover.
-			var/shield_chance = min(80, (30 * (mob_size / 10)))
-			if(prob(shield_chance))
+		// Using someone as a shield
+		// todo: need a counter to this..
+		for(var/mob/living/victim in get_grabbing_of_state(GRAB_NECK))
+			if(victim.stat == DEAD)
+				// small mobs are penalized; this is a holdover.
+				var/shield_chance = min(80, (30 * (mob_size / 10)))
+				if(prob(shield_chance))
+					visible_message("<span class='danger'>\The [src] uses [victim] as a shield!</span>")
+					if(!(proj.impact_redirect(victim, args) | (PROJECTILE_IMPACT_FLAGS_SHOULD_GO_THROUGH | PROJECTILE_IMPACT_DUPLICATE)))
+						return
+				else
+					visible_message("<span class='danger'>\The [src] tries to use [victim] as a shield, but fails!</span>")
+			else
 				visible_message("<span class='danger'>\The [src] uses [victim] as a shield!</span>")
 				if(!(proj.impact_redirect(victim, args) | (PROJECTILE_IMPACT_FLAGS_SHOULD_GO_THROUGH | PROJECTILE_IMPACT_DUPLICATE)))
 					return
-			else
-				visible_message("<span class='danger'>\The [src] tries to use [victim] as a shield, but fails!</span>")
-		else
-			visible_message("<span class='danger'>\The [src] uses [victim] as a shield!</span>")
-			if(!(proj.impact_redirect(victim, args) | (PROJECTILE_IMPACT_FLAGS_SHOULD_GO_THROUGH | PROJECTILE_IMPACT_DUPLICATE)))
-				return
-	// Process baymiss & zonemiss
-	def_zone = process_bullet_miss(proj, impact_flags, def_zone, efficiency)
-	def_zone = proj.process_zone_miss(src, def_zone, proj.distance_travelled, TRUE)
-	if(!def_zone)
-		if(!proj.silenced)
-			visible_message(SPAN_WARNING("\The [proj] misses [src] narrowly!"))
-			playsound(src, pick(proj.miss_sounds), 60, TRUE)
-		add_attack_logs(
-			proj.firer,
-			src,
-			"shot with [src] ([type]) (missed)",
-		)
-		return PROJECTILE_IMPACT_PASSTHROUGH
+		// Process baymiss & zonemiss
+		bullet_act_args[BULLET_ACT_ARG_ZONE] = process_bullet_miss(proj, impact_flags, bullet_act_args[BULLET_ACT_ARG_ZONE], bullet_act_args[BULLET_ACT_ARG_EFFICIENCY])
+		bullet_act_args[BULLET_ACT_ARG_ZONE] = proj.process_zone_miss(src, bullet_act_args[BULLET_ACT_ARG_ZONE], proj.distance_travelled, TRUE)
+		if(!bullet_act_args[BULLET_ACT_ARG_ZONE])
+			if(!proj.silenced)
+				visible_message(SPAN_WARNING("\The [proj] misses [src] narrowly!"))
+				playsound(src, pick(proj.miss_sounds), 60, TRUE)
+			add_attack_logs(
+				proj.firer,
+				src,
+				"shot with [src] ([type]) (missed)",
+			)
+			impact_flags |= PROJECTILE_IMPACT_PASSTHROUGH
+			return ..()
 
 	//! END
 
-	. = ..()
-
 	// todo: better logging
-	if(. & PROJECTILE_IMPACT_FLAGS_TARGET_ABORT)
+	if(impact_flags & PROJECTILE_IMPACT_FLAGS_TARGET_ABORT)
 		add_attack_logs(
 			proj.firer,
 			src,
@@ -55,9 +55,9 @@
 	)
 	// emit feedback/workspaces/Citadel-Station-13-RP/code/modules/random_map
 	if(proj.silenced)
-		to_chat(src, SPAN_DANGER("You've been hit in the [parse_zone(def_zone)] with \the [proj]!"))
+		to_chat(src, SPAN_DANGER("You've been hit in the [parse_zone(bullet_act_args[BULLET_ACT_ARG_ZONE])] with \the [proj]!"))
 	else
-		visible_message(SPAN_DANGER("\The [src] is hit by [proj] in the [parse_zone(def_zone)]"))
+		visible_message(SPAN_DANGER("\The [src] is hit by [proj] in the [parse_zone(bullet_act_args[BULLET_ACT_ARG_ZONE])]"))
 
 	//! LEGACY
 
@@ -73,7 +73,9 @@
 
 	//! END
 
-	. |= proj.process_impact_damage(src, efficiency, impact_flags, def_zone)
+	// todo: this should just be in base projectile on_impact
+	impact_flags |= proj.process_impact_damage(src, bullet_act_args[BULLET_ACT_ARG_EFFICIENCY], impact_flags, bullet_act_args[BULLET_ACT_ARG_ZONE])
+	return ..()
 
 /mob/living/get_bullet_impact_effect_type(var/def_zone)
 	return BULLET_IMPACT_MEAT

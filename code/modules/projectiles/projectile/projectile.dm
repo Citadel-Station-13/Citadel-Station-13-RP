@@ -926,10 +926,12 @@
  *
  * * Please take into account impact_flags.
  * * Most impact flags returned are not re-checked for performance; pierce/phase calculations should be done in pre_impact().
- * * please see [/atom/proc/bullet_act(obj/projectile/proj, impact_flags, def_zone, efficiency)
+ * * please see [/atom/proc/on_bullet_act(obj/projectile/proj, impact_flags, list/bullet_act_args)
+ * * Args at this point are no longer mutable.
  *
  * Things to keep in mind, if you ignore the above and didn't read bullet_act():
- * * Parameters are changed directly, as a function's arguments are just a list passed down in ..() if nothing is in the ()
+ * * Args are changed directly and passed up, but not passed back down. This means setting efficiency at base of /on_impact doesn't change a subtype's call
+ * * This also means you need to default efficiency to 1 if you have things acting on it, as it won't be propagated for you.
  * * 'efficiency' is extremely powerful
  * * impact_flags having PROJECTILE_IMPACT_DELETE is a good sign to delete and do nothing else.
  *

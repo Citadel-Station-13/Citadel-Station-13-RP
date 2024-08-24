@@ -195,7 +195,7 @@
 		set_light(max(1,min(5,rad_glow/15)), max(1,min(10,rad_glow/25)), color)
 		update_icon()
 
-/mob/living/simple_mob/slime/promethean/bullet_act(obj/projectile/proj, impact_flags, def_zone, efficiency)
+/mob/living/simple_mob/slime/promethean/on_bullet_act(obj/projectile/proj, impact_flags, list/bullet_act_args)
 	if(humanform)
 		return proj.impact_redirect(humanform, args)
 	return ..()

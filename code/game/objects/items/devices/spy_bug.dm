@@ -109,7 +109,7 @@
 			qdel(src)
 		..()
 
-/obj/item/camerabug/bullet_act(obj/projectile/proj, impact_flags, def_zone, efficiency)
+/obj/item/camerabug/on_bullet_act(obj/projectile/proj, impact_flags, list/bullet_act_args)
 	. = ..()
 	if(. & PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT)
 		return

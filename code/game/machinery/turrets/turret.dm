@@ -462,7 +462,7 @@
 	if(!gradual && prob(45) && amount > 5)
 		spark_system.start()
 
-/obj/machinery/porta_turret/bullet_act(obj/projectile/proj, impact_flags, def_zone, efficiency)
+/obj/machinery/porta_turret/on_bullet_act(obj/projectile/proj, impact_flags, list/bullet_act_args)
 	. = ..()
 	aggro_for(6 SECONDS)
 	if(proj.firer)

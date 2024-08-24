@@ -117,7 +117,7 @@
 	check_stability()
 	return
 
-/obj/machinery/power/am_control_unit/bullet_act(obj/projectile/proj, impact_flags, def_zone, efficiency)
+/obj/machinery/power/am_control_unit/on_bullet_act(obj/projectile/proj, impact_flags, list/bullet_act_args)
 	if(proj.damage_flag != ARMOR_BULLET)
 		stability -= proj.damage
 	return ..()

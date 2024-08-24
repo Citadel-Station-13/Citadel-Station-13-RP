@@ -26,7 +26,7 @@
 			return 0
 	return 1
 
-/obj/machinery/door/blast/puzzle/bullet_act(obj/projectile/proj, impact_flags, def_zone, efficiency)
+/obj/machinery/door/blast/puzzle/on_bullet_act(obj/projectile/proj, impact_flags, list/bullet_act_args)
 	impact_flags &= ~PROJECTILE_IMPACT_FLAGS_SHOULD_GO_THROUGH
 	return ..()
 

@@ -32,7 +32,7 @@
 		density = 0
 		name = "collector [mysize] OFF"
 
-/obj/effect/fusion_particle_catcher/bullet_act(obj/projectile/proj, impact_flags, def_zone, efficiency)
+/obj/effect/fusion_particle_catcher/on_bullet_act(obj/projectile/proj, impact_flags, list/bullet_act_args)
 	parent.AddEnergy(proj.damage)
 	update_icon()
 	impact_flags |= PROJECTILE_IMPACT_FLAGS_SHOULD_GO_THROUGH

@@ -30,16 +30,7 @@
 	item_state = "lgloves"
 	loc.assume_air(air_contents)
 
-/obj/item/latexballon/legacy_ex_act(severity)
-	burst()
-	switch(severity)
-		if (1)
-			qdel(src)
-		if (2)
-			if (prob(50))
-				qdel(src)
-
-/obj/item/latexballon/bullet_act(obj/projectile/proj, impact_flags, def_zone, efficiency)
+/obj/item/latexballon/inflict_atom_damage(damage, damage_type, damage_tier, damage_flag, damage_mode, hit_zone, attack_type, datum/weapon)
 	. = ..()
 	burst()
 

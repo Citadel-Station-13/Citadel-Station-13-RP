@@ -98,7 +98,7 @@
 	check_stability()
 	return
 
-/obj/machinery/am_shielding/bullet_act(obj/projectile/proj, impact_flags, def_zone, efficiency)
+/obj/machinery/am_shielding/on_bullet_act(obj/projectile/proj, impact_flags, list/bullet_act_args)
 	. = ..()
 
 	if(proj.damage_flag != "bullet")

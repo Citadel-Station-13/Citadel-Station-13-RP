@@ -64,7 +64,7 @@ GLOBAL_LIST_BOILERPLATE(all_singularities, /obj/singularity)
 		if(3)
 			energy -= round(((energy+1)/4),1)
 
-/obj/singularity/bullet_act(obj/projectile/proj, impact_flags, def_zone, efficiency)
+/obj/singularity/on_bullet_act(obj/projectile/proj, impact_flags, list/bullet_act_args)
 	return PROJECTILE_IMPACT_DELETE
 
 /obj/singularity/Bump(atom/A)

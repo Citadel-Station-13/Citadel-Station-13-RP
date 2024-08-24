@@ -123,7 +123,7 @@
 	else
 		..()
 
-/obj/vehicle_old/bullet_act(obj/projectile/proj, impact_flags, def_zone, efficiency)
+/obj/vehicle_old/on_bullet_act(obj/projectile/proj, impact_flags, list/bullet_act_args)
 	. = ..()
 	health -= proj.get_structure_damage()
 	healthcheck()

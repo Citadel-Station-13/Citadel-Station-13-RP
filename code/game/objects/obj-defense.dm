@@ -53,14 +53,11 @@
 	)
 	return NONE
 
-/obj/bullet_act(obj/projectile/proj, impact_flags, def_zone, efficiency)
-	. = ..()
-	if(. & PROJECTILE_IMPACT_FLAGS_TARGET_ABORT)
-		return
-	if(!(. & PROJECTILE_IMPACT_BLOCKED))
+/obj/on_bullet_act(obj/projectile/proj, impact_flags, list/bullet_act_args)
+	if(!(impact_flags & PROJECTILE_IMPACT_BLOCKED))
 		// todo: maybe the projectile side should handle this?
 		run_damage_instance(
-			proj.get_structure_damage() * efficiency,
+			proj.get_structure_damage() * bullet_act_args[BULLET_ACT_ARG_EFFICIENCY],
 			proj.damage_type,
 			proj.damage_tier,
 			proj.damage_flag,
@@ -68,12 +65,13 @@
 			ATTACK_TYPE_PROJECTILE,
 			proj,
 			NONE,
-			def_zone,
+			bullet_act_args[BULLET_ACT_ARG_ZONE],
 			null,
 			null,
 		)
 	if(QDELETED(src))
-		. |= PROJECTILE_IMPACT_TARGET_DELETED
+		impact_flags |= PROJECTILE_IMPACT_TARGET_DELETED
+	return ..()
 
 /obj/throw_impacted(atom/movable/AM, datum/thrownthing/TT)
 	. = ..()

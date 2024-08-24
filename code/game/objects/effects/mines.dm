@@ -29,7 +29,7 @@
 	qdel(s)
 	qdel(src)
 
-/obj/effect/mine/bullet_act(obj/projectile/proj, impact_flags, def_zone, efficiency)
+/obj/effect/mine/on_bullet_act(obj/projectile/proj, impact_flags, list/bullet_act_args)
 	. = ..()
 	spawn(0)
 		explode()

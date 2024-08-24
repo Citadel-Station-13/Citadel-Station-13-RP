@@ -84,7 +84,7 @@
 
 	return ..()
 
-/obj/structure/reagent_dispensers/fueltank/bullet_act(obj/projectile/proj, impact_flags, def_zone, efficiency)
+/obj/structure/reagent_dispensers/fueltank/on_bullet_act(obj/projectile/proj, impact_flags, list/bullet_act_args)
 	. = ..()
 	if(proj.get_structure_damage())
 		if(istype(proj.firer))

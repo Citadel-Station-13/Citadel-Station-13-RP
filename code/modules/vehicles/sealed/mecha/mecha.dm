@@ -961,16 +961,6 @@
 			occupant_message("<font color='blue'><b>Internal fire extinquished.</b></font>")
 		if(MECHA_INT_TANK_BREACH)
 			occupant_message("<font color='blue'><b>Damaged internal tank has been sealed.</b></font>")
-	return
-
-
-////////////////////////////////////////
-////////  Health related procs  ////////
-////////////////////////////////////////
-
-/obj/vehicle/sealed/mecha/bullet_act(obj/projectile/proj, impact_flags, def_zone, efficiency)
-	. = ..()
-
 
 /obj/vehicle/sealed/mecha/proc/take_damage_legacy(amount, type="brute")
 	update_damage_alerts()
@@ -1159,7 +1149,7 @@
 	return
 
 
-/obj/vehicle/sealed/mecha/bullet_act(obj/projectile/proj, impact_flags, def_zone, efficiency)
+/obj/vehicle/sealed/mecha/on_bullet_act(obj/projectile/proj, impact_flags, list/bullet_act_args)
 	if(istype(proj, /obj/projectile/test))
 		var/obj/projectile/test/Test = proj
 		Test.hit |= occupant_legacy // Register a hit on the occupant, for things like turrets, or in simple-mob cases stopping friendly fire in firing line mode.

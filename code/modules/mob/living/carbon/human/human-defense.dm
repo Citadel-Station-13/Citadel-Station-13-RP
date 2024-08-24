@@ -3,7 +3,7 @@
 
 //* Projectile Handling *//
 
-/mob/living/carbon/human/bullet_act(obj/projectile/proj, impact_flags, def_zone, efficiency)
+/mob/living/carbon/human/on_bullet_act(obj/projectile/proj, impact_flags, list/bullet_act_args)
 	. = ..()
 	if(. & PROJECTILE_IMPACT_FLAGS_TARGET_ABORT)
 		return

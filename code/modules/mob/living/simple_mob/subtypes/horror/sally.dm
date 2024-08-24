@@ -47,7 +47,7 @@
 	playsound(src, 'sound/h_sounds/lynx.ogg', 50, 1)
 	..()
 
-/mob/living/simple_mob/horror/Sally/bullet_act(obj/projectile/proj, impact_flags, def_zone, efficiency)
+/mob/living/simple_mob/horror/Sally/on_bullet_act(obj/projectile/proj, impact_flags, list/bullet_act_args)
 	. = ..()
 	playsound(src, 'sound/h_sounds/holla.ogg', 50, 1)
 

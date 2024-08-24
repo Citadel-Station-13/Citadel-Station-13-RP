@@ -78,14 +78,13 @@
  * * 'efficiency' arg is **extremely** powerful. Please don't lower it to dismal values for no reason.
  * * use PROJECTILE_IMPACT_BLOCKED instead of setting efficiency to 0 if an impact is entirely blocked
  * * semantically, efficiency 0 means shield from all damages, IMPACT_BLOCKED means it hit something else
- * * please return if `. & PROJECTILE_IMPACT_FLAGS_TARGET_ABORT` after `..()`, as that signals we are done and should stop.
- * * efficiency is defaulted to 1 in the parent call. if you are doing behavior before ..(), make sure you default it to 1 yourself!
+ * * bullet_act is this way because we don't make a `/datum/event_args/actor/clickchain` with every call, so it needs a way of propagating blocking behavior and impact flags up/down the chain.
  *
  * @params
  * * proj - the projectile
  * * impact_flags - PROJECTILE_IMPACT_* flags
  * * def_zone - impacting zone; calculated by projectile side, usually
- * * efficiency - 0 to 1, inclusive. ratio of effects, including damage, to pass through. defaulted to 1 at base of [/atom/proc/bullet_act()]
+ * * efficiency - 0 to 1, inclusive. ratio of effects, including damage, to pass through.
  *
  * todo: add PROJECTILE_IMPACT_DELETE_AFTER as opposed to DELETE? so rest of effects can still run
  * todo: shieldcalls still fire if target aborts without unconditional abort, they should not do that.
@@ -93,6 +92,8 @@
  * @return new impact_flags
  */
 /atom/proc/bullet_act(obj/projectile/proj, impact_flags, def_zone, efficiency = 1)
+	SHOULD_NOT_OVERRIDE(TRUE)
+	SHOULD_NOT_SLEEP(TRUE)
 	// lower calls can change flags before we trigger
 	// check if we're still hitting
 	if(impact_flags & PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT)
@@ -107,9 +108,34 @@
 	// check if we're still hitting
 	if(impact_flags & PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT)
 		return impact_flags
+	// 2. fire on_bullet_act
+	impact_flags |= on_bullet_act(proj, impact_flags, def_zone, efficiency, args)
+	if(impact_flags & PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT)
+		return impact_flags
 	// we are hitting; gather flags as needed
 	return proj.on_impact(src, impact_flags, def_zone, efficiency)
 
+/**
+ * So, turns out, BYOND passes `args` list **down** on a ..() via arglist(args) equivalent but not back up.
+ *
+ * This means that modified bullet act args can't actually propagate through.
+ * To handle this, we have this function to actually perform the effects of said bullet act.
+ *
+ * * This is called before the projectile-side impact, which is where the damage is usually inflicted.
+ * * Always call `return ..()` last.
+ * * Modify `impact_flags` directly, so that it propagates up.
+ * * This is because `args` only propagates up by default, not back down.
+ * * An arg-set up the chain (closer to /atom) cannot impact a lower (further sub-type) on_bullet_act's values.
+ * * A reference to `bullet_act`'s arg-list is provided so that you can edit efficiency, and def_zone.
+ *   Fight the urge to touch projectile or impact_flags directly, as impact_flags should be passed via return.
+ *
+ * @params
+ * * proj - hitting projectile; immutable
+ * * impact_flags - impact flags; immutable. edit directly before ..() call, return edited values after.
+ * * bullet_act_args - access to the rest of the args in `bullet_act`. Mutable, except for the projectile and the impact flags.
+ */
+/atom/proc/on_bullet_act(obj/projectile/proj, impact_flags, list/bullet_act_args)
+	return impact_flags
 
 //* Hitsound API *//
 

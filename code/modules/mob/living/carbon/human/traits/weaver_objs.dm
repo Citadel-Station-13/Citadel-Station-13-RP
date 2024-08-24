@@ -22,7 +22,7 @@ var/global/list/weavable_items = list()
 		visible_message("<span class='warning'>\The [src] has been [W.get_attack_verb(src, user)] with \the [W][(user ? " by [user]." : ".")]</span>")
 		qdel(src)
 
-/obj/effect/weaversilk/bullet_act(obj/projectile/proj, impact_flags, def_zone, efficiency)
+/obj/effect/weaversilk/on_bullet_act(obj/projectile/proj, impact_flags, list/bullet_act_args)
 	. = ..()
 	if(proj.get_structure_damage())
 		qdel(src)
