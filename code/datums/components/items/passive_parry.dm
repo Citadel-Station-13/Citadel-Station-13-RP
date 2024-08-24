@@ -127,7 +127,7 @@
 	// todo: mobility enforcement
 	// todo: full parry swing cycle?
 	if(!source.GetComponent(/datum/component/parry_frame))
-		source.AddComponent(/datum/component/parry_frame, data, data.parry_frame_timing)
+		source.AddComponent(/datum/component/parry_frame, resolved, data.parry_frame_timing)
 
 //* Bindings - Bullet *//
 
