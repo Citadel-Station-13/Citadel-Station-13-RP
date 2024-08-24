@@ -1,5 +1,5 @@
 //* This file is explicitly licensed under the MIT license. *//
-//* Copyright (c) 2024 silicons                             *//
+//* Copyright (c) 2024 Citadel Station Developers           *//
 
 //! Welcome to hell.
 
@@ -67,12 +67,12 @@
  * Because this is the proc that calls on_impact(), handling is necessarily
  * done in here for a lot of things.
  *
- * Overrides should modify proc args directly (e.g. impact_flags) and then call ..()
- * if it needs to be taken account by default handling.
- *
- * Overrides can, but generally shouldn't modify the return value after ..() instead of before,
- * as the main processing will ignore said changes. Do not edit impact_flags arg after ..(),
- * as it won't propagate to the `.`  (default return) variable after.
+ * * Overrides should modify proc args directly (e.g. impact_flags) and then call ..()
+ *   if it needs to be taken account by default handling.
+ * * Overrides should not edit args after ..(), as args are only passed up, not down.
+ * * Overrides should, for that reason, always call ..() last.
+ * * This semantically means 'we are **about** to be hit, do anything for special processing'.
+ * * If you need to delete a projectile on impact, use `on_bullet_act()`; that's called after the contact actually happens.
  *
  * Things to keep in mind
  * * 'efficiency' arg is **extremely** powerful. Please don't lower it to dismal values for no reason.
@@ -92,8 +92,8 @@
  * @return new impact_flags
  */
 /atom/proc/bullet_act(obj/projectile/proj, impact_flags, def_zone, efficiency = 1)
-	SHOULD_NOT_OVERRIDE(TRUE)
 	SHOULD_NOT_SLEEP(TRUE)
+	SHOULD_CALL_PARENT(TRUE)
 	// lower calls can change flags before we trigger
 	// check if we're still hitting
 	if(impact_flags & PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT)
@@ -109,10 +109,10 @@
 	if(impact_flags & PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT)
 		return impact_flags
 	// 2. fire on_bullet_act
-	impact_flags |= on_bullet_act(proj, impact_flags, def_zone, efficiency, args)
+	impact_flags |= on_bullet_act(proj, impact_flags, args)
 	if(impact_flags & PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT)
 		return impact_flags
-	// we are hitting; gather flags as needed
+	// 3. fire projectile-side on_impact
 	return proj.on_impact(src, impact_flags, def_zone, efficiency)
 
 /**
@@ -121,13 +121,12 @@
  * This means that modified bullet act args can't actually propagate through.
  * To handle this, we have this function to actually perform the effects of said bullet act.
  *
+ * * This basically semantically means 'we are being hit, do effects for it'.
  * * This is called before the projectile-side impact, which is where the damage is usually inflicted.
- * * Always call `return ..()` last.
- * * Modify `impact_flags` directly, so that it propagates up.
- * * This is because `args` only propagates up by default, not back down.
- * * An arg-set up the chain (closer to /atom) cannot impact a lower (further sub-type) on_bullet_act's values.
- * * A reference to `bullet_act`'s arg-list is provided so that you can edit efficiency, and def_zone.
- *   Fight the urge to touch projectile or impact_flags directly, as impact_flags should be passed via return.
+ * * Modify `impact_flags` directly before ..(), and `.` after ..()
+ * * Check `.` after ..() if it isn't the last call so you know when to abort the processing as needed.
+ * * Args will propagate **up** (closer to /atom) `..()` calls, but not back down (if base `/atom` changes something you won't get it on your sub-type)
+ * * For this reason `bullet_act_args` is provided so you can mutably edit it. Do **not** edit the projectile or the impact flags; return the impact flags for automatic addition.
  *
  * @params
  * * proj - hitting projectile; immutable

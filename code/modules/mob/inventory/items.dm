@@ -34,7 +34,7 @@
 /obj/item/proc/equipped(mob/user, slot, flags)
 	SHOULD_CALL_PARENT(TRUE)
 	SEND_SIGNAL(src, COMSIG_ITEM_EQUIPPED, user, slot, flags)
-	SEND_SIGNAL(user, COMSIG_MOB_ITEM_EQUIPPED, user, slot, flags)
+	SEND_SIGNAL(user, COMSIG_MOB_ITEM_EQUIPPED, src, slot, flags)
 	worn_slot = slot
 	if(!(flags & INV_OP_IS_ACCESSORY))
 		// todo: shouldn't be in here
@@ -68,7 +68,7 @@
 /obj/item/proc/unequipped(mob/user, slot, flags)
 	SHOULD_CALL_PARENT(TRUE)
 	SEND_SIGNAL(src, COMSIG_ITEM_UNEQUIPPED, user, slot, flags)
-	SEND_SIGNAL(user, COMSIG_MOB_ITEM_UNEQUIPPED, user, slot, flags)
+	SEND_SIGNAL(user, COMSIG_MOB_ITEM_UNEQUIPPED, src, slot, flags)
 	worn_slot = null
 	if(!(flags & INV_OP_IS_ACCESSORY))
 		// todo: shouldn't be in here

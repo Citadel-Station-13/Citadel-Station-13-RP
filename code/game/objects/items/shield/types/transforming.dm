@@ -8,6 +8,9 @@
 	/// are we active?
 	var/active = FALSE
 	/// when active, do we use an overlay instead of an icon state?
+	///
+	/// * applies to regular overlay
+	/// * applies to worn overlay as well
 	var/active_via_overlay = FALSE
 
 	var/active_weight_class = WEIGHT_CLASS_BULKY
@@ -43,6 +46,16 @@
 	RETURN_TYPE(/image)
 	var/image/creating = image(icon, "[base_icon_state || icon_state]-active")
 	return creating
+
+/obj/item/shield/transforming/proc/build_active_worn_overlay(worn_state)
+	RETURN_TYPE(/image)
+	var/image/creating = image(icon, "[worn_state]-active")
+	return creating
+
+/obj/item/shield/transforming/render_apply_overlays(mutable_appearance/MA, bodytype, inhands, datum/inventory_slot/slot_meta, icon_used)
+	. = ..()
+	if(active_via_overlay)
+		MA.overlays += build_active_worn_overlay()
 
 /obj/item/shield/transforming/on_attack_self(datum/event_args/actor/e_args)
 	. = ..()

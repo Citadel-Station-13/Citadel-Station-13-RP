@@ -83,13 +83,15 @@
 	. = ..()
 	UnregisterSignal(parent, COMSIG_ITEM_EQUIPPED)
 	if(hooked)
-		on_unequipped(parent)
+		var/obj/item/item = parent
+		if(item.worn_mob())
+			on_unequipped(item, item.worn_mob(), item.worn_slot)
 
 /datum/component/passive_parry/proc/on_dropped(obj/item/source, inv_op_flags, atom/new_loc)
 	// delete on drop to save memory
 	qdel(src)
 
-/datum/component/passive_parry/proc/on_equipped(obj/item/source, mob/user, slot, accessory)
+/datum/component/passive_parry/proc/on_equipped(obj/item/source, mob/user, slot, inv_op_flags)
 	if(!check_slot(slot))
 		return
 	if(hooked)
@@ -102,7 +104,7 @@
 		hooked_shieldcall = new(src)
 	user.register_shieldcall(hooked_shieldcall)
 
-/datum/component/passive_parry/proc/on_unequipped(obj/item/source, mob/user, slot, accessory)
+/datum/component/passive_parry/proc/on_unequipped(obj/item/source, mob/user, slot, inv_op_flags)
 	if(!hooked)
 		return
 	hooked = FALSE

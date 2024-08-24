@@ -853,7 +853,7 @@
 			impact_flags = on_reflect(target, impact_flags, def_zone)
 		// else, is passthrough. do nothing
 	else
-		impact_flags = target.bullet_act(src, impact_flags, def_zone)
+		impact_flags = target.bullet_act(src, impact_flags, def_zone, 1)
 		// did we pierce?
 		if(impact_flags & PROJECTILE_IMPACT_PIERCE)
 			keep_going = TRUE
@@ -926,8 +926,8 @@
  *
  * * Please take into account impact_flags.
  * * Most impact flags returned are not re-checked for performance; pierce/phase calculations should be done in pre_impact().
- * * please see [/atom/proc/on_bullet_act(obj/projectile/proj, impact_flags, list/bullet_act_args)
- * * Args at this point are no longer mutable.
+ * * please see [/atom/proc/on_bullet_act(obj/projectile/proj, impact_flags, list/bullet_act_args)]
+ * * Args at this point are no longer mutable after the ..() call.
  *
  * Things to keep in mind, if you ignore the above and didn't read bullet_act():
  * * Args are changed directly and passed up, but not passed back down. This means setting efficiency at base of /on_impact doesn't change a subtype's call

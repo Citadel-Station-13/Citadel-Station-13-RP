@@ -22,6 +22,8 @@
 		parry_frame = /datum/parry_frame/passive_block/energy;
 	}
 
+	active_via_overlay = TRUE
+
 	var/lrange = 1.5
 	var/lpower = 1.5
 	var/lcolor = "#006AFF"
@@ -73,6 +75,12 @@
 	set_light(0)
 
 /obj/item/shield/transforming/energy/build_active_overlay()
+	var/image/built = ..()
+	if(lcolor)
+		built.color = lcolor
+	return built
+
+/obj/item/shield/transforming/energy/build_active_worn_overlay()
 	var/image/built = ..()
 	if(lcolor)
 		built.color = lcolor
