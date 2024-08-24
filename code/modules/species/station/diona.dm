@@ -16,6 +16,10 @@
 
 	max_additional_languages = 2
 	name_language = LANGUAGE_ID_DIONA
+	base_skin_colours = list(
+		"Standard"  = null,
+		"Alternate" = "alt",
+	)
 	intrinsic_languages = list(
 		LANGUAGE_ID_DIONA,
 		LANGUAGE_ID_DIONA_HIVEMIND
