@@ -9,6 +9,13 @@ SUBSYSTEM_DEF(overmap_physics)
 	/// currentrun
 	var/list/obj/overmap/entity/running
 
+	//* Global Tuning *//
+
+	/// hard movement limit in pixels / tick
+	///
+	/// * should be at or below 4 to prevent clipping through
+	var/global_interpolate_limit = 4
+
 /datum/controller/subsystem/overmap_physics/fire(resumed)
 	if(!resumed)
 		src.running = src.moving.Copy()
