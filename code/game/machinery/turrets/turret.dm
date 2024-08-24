@@ -574,7 +574,7 @@
 		if(assess_perp(L) < 4)
 			return TURRET_NOT_TARGET	//if threat level < 4, keep going
 
-	if(L.stat != CONSCIOUS)		//if the perp is lying down, it's still a target but a less-important target
+	if(L.stat != CONSCIOUS && (lethal || emagged))		//if the perp is lying down, it's still a target but a less-important target
 		return check_down ? TURRET_SECONDARY_TARGET : TURRET_NOT_TARGET
 
 	return TURRET_PRIORITY_TARGET	//if the perp has passed all previous tests, congrats, it is now a "shoot-me!" nominee
@@ -648,7 +648,7 @@
  * @return TRUE on success
  */
 /obj/machinery/porta_turret/proc/try_fire_at(atom/target, angle)
-	if(disabled || is_integrity_broken())
+	if(disabled || !enabled || is_integrity_broken())
 		return FALSE
 	if(is_on_cooldown())
 		return FALSE
