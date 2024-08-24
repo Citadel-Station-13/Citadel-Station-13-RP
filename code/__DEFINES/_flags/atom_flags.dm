@@ -115,7 +115,7 @@ DEFINE_BITFIELD(pass_flags_self, list(
 	BITFIELD(ATOM_PASS_BUCKLED),
 ))
 
-//? /atom/movable movement_type - only one should be on the atom at a time, but these are flags for quick checks.
+//? /atom/movable movement_type - only one primary type should be on the atom at a time, but these are flags for quick checks.
 /// Can not be stopped from moving from Cross(), CanPass(), or Uncross() failing. Still bumps everything it passes through, though.
 #define MOVEMENT_UNSTOPPABLE  (1<<0)
 /// Ground movement.

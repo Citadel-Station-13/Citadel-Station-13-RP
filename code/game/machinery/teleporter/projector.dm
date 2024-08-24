@@ -208,7 +208,6 @@
 		teleport_cost += S.w_class*BASE_ITEM_KJ_COST
 
 	if(istype(teleporting, /mob/))
-		var/mob/M = teleporting
 		teleport_cost += BASE_MOB_KJ_COST
 
 	if(current_joules >= teleport_cost)
