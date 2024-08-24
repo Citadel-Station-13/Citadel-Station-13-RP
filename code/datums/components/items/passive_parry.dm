@@ -145,7 +145,7 @@
 	if(!resolved)
 		return
 	if(!data.parry_frame_simulated)
-		resolved.handle_bullet(defending, shieldcall_returns, fake_attack, data.parry_frame_efficiency, bullet_act_args)
+		resolved.handle_bullet(defending, shieldcall_returns | SHIELDCALL_FLAG_SINGLE_PARRY, fake_attack, data.parry_frame_efficiency, bullet_act_args)
 	else
 		// for now, we only care about if they already have a frame
 		// in the future, maybe this can fire as long as we aren't the source of a parry frame on them.
@@ -174,7 +174,7 @@
 	if(!resolved)
 		return
 	if(!data.parry_frame_simulated)
-		resolved.handle_item_melee(defending, shieldcall_returns, fake_attack, data.parry_frame_efficiency, weapon, e_args)
+		resolved.handle_item_melee(defending, shieldcall_returns | SHIELDCALL_FLAG_SINGLE_PARRY, fake_attack, data.parry_frame_efficiency, weapon, e_args)
 	else
 		// for now, we only care about if they already have a frame
 		// in the future, maybe this can fire as long as we aren't the source of a parry frame on them.
@@ -201,7 +201,7 @@
 	if(!resolved)
 		return
 	if(!data.parry_frame_simulated)
-		resolved.handle_unarmed_melee(defending, shieldcall_returns, fake_attack, data.parry_frame_efficiency, style, e_args)
+		resolved.handle_unarmed_melee(defending, shieldcall_returns | SHIELDCALL_FLAG_SINGLE_PARRY, fake_attack, data.parry_frame_efficiency, style, e_args)
 	else
 		// for now, we only care about if they already have a frame
 		// in the future, maybe this can fire as long as we aren't the source of a parry frame on them.
@@ -228,7 +228,7 @@
 	if(!resolved)
 		return
 	if(!data.parry_frame_simulated)
-		resolved.handle_touch(defending, shieldcall_returns, fake_attack, data.parry_frame_efficiency, e_args, contact_flags, contact_specific)
+		resolved.handle_touch(defending, shieldcall_returns | SHIELDCALL_FLAG_SINGLE_PARRY, fake_attack, data.parry_frame_efficiency, e_args, contact_flags, contact_specific)
 	else
 		// for now, we only care about if they already have a frame
 		// in the future, maybe this can fire as long as we aren't the source of a parry frame on them.
@@ -257,7 +257,7 @@
 	if(!resolved)
 		return
 	if(!data.parry_frame_simulated)
-		resolved.handle_throw_impact(defending, shieldcall_returns, fake_attack, data.parry_frame_efficiency, thrown)
+		resolved.handle_throw_impact(defending, shieldcall_returns | SHIELDCALL_FLAG_SINGLE_PARRY, fake_attack, data.parry_frame_efficiency, thrown)
 	else
 		// for now, we only care about if they already have a frame
 		// in the future, maybe this can fire as long as we aren't the source of a parry frame on them.

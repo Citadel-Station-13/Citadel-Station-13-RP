@@ -33,6 +33,8 @@
 #define SHIELDCALL_FLAG_SKIP_ARMORCALLS (1<<8)
 /// do not call shieldcalls
 #define SHIELDCALL_FLAG_SKIP_SHIELDCALLS (1<<9)
+/// this is a passive / single parry
+#define SHIELDCALL_FLAG_SINGLE_PARRY (1<<10)
 
 /// these flags mean to stop processing the attack
 #define SHIELDCALL_FLAGS_BLOCK_ATTACK (SHIELDCALL_FLAG_ATTACK_BLOCKED)

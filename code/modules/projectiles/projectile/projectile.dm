@@ -1087,7 +1087,7 @@
 		var/absorb = L.run_armor_check(hit_zone, src.damage_flag, src.armor_penetration)
 		var/proj_sharp = is_sharp(src)
 		var/proj_edge = has_edge(src)
-		var/final_damage = src.get_final_damage(src) * efficiency
+		var/final_damage = src.get_final_damage(target) * efficiency
 
 		if ((proj_sharp || proj_edge) && (soaked >= round(src.damage*0.8)))
 			proj_sharp = 0
