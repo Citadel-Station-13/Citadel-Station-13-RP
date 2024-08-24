@@ -250,9 +250,9 @@
 	var/parry_vfx = /atom/movable/render/parry_frame/default
 	/// "[person] [start_verb] with [item]"
 	var/start_verb = "shifts into a defensive stance"
-	/// "[person] [block_verb] [attack_text] with [item]"
+	/// "[person] [block_verb] [attack_source_descriptor] with [item]"
 	var/block_verb = "parries"
-	/// "[person] [deflect_verb] [attack_text] with [item]"
+	/// "[person] [deflect_verb] [attack_source_descriptor] with [item]"
 	///
 	/// * used if an attack was redirected and not just blocked
 	var/deflect_verb = "deflects"
@@ -295,10 +295,10 @@
  * * weapon - (optional) incoming weapon, depends on ATTACK_TYPE
  * * shieldcall_flags - (optional) the attack's shieldcall flags
  * * severity - (optional) arbitrary 0 to 100 severity of how bad the hit is estimated to be
- * * attack_text - (optional) text to describe the attack
+ * * attack_source_descriptor - (optional) text, or an entity to describe the attack. entities will be automatically handled.
  * * tool_text - (optional) text to describe the parry tool
  */
-/datum/parry_frame/proc/perform_audiovisuals(atom/defending, attack_type, efficiency, datum/weapon, shieldcall_flags, severity = 75, attack_text, tool_text)
+/datum/parry_frame/proc/perform_audiovisuals(atom/defending, attack_type, efficiency, datum/weapon, shieldcall_flags, severity = 75, attack_source_descriptor, tool_text)
 	playsound(defending, (islist(parry_sfx) && length(parry_sfx)) ? pick(parry_sfx) : parry_sfx , severity, TRUE)
 	new parry_vfx(null, defending, src, shieldcall_flags & SHIELDCALL_FLAG_SINGLE_PARRY)
 	var/parry_verb
@@ -308,7 +308,7 @@
 		parry_verb = block_verb
 
 	defending.visible_message(
-		SPAN_WARNING("[defending] [parry_verb] the [attack_text || "attack"][tool_text && " with the [tool_text]"]!"),
+		SPAN_DANGER("[defending] [parry_verb] [attack_source_descriptor ? "\the [attack_source_descriptor]" : "the attack"][tool_text && " with \the [tool_text]"]!"),
 	)
 
 /**
@@ -402,7 +402,7 @@
 	var/estimated_severity = clamp(proj.damage / 20 * 75, 0, 100)
 	bullet_act_args[BULLET_ACT_ARG_EFFICIENCY] = bullet_act_args[BULLET_ACT_ARG_EFFICIENCY] * clamp(efficiency, 0, 1)
 	shieldcall_returns = perform_aftereffects(defending, ATTACK_TYPE_PROJECTILE, efficiency, proj, shieldcall_returns)
-	perform_audiovisuals(defending, ATTACK_TYPE_PROJECTILE, efficiency, proj, shieldcall_returns, estimated_severity, "[proj]", tool_text)
+	perform_audiovisuals(defending, ATTACK_TYPE_PROJECTILE, efficiency, proj, shieldcall_returns, estimated_severity, proj, tool_text)
 	if(. & (SHIELDCALL_FLAG_ATTACK_PASSTHROUGH | SHIELDCALL_FLAG_ATTACK_REDIRECT))
 		bullet_act_args[BULLET_ACT_ARG_FLAGS] |= PROJECTILE_IMPACT_REFLECT
 	if(parry_always_prevents_contact || (parry_can_prevent_contact && (efficiency >= parry_efficiency_blocked)))
@@ -426,7 +426,7 @@
 	var/estimated_severity = clamp(weapon.damage_force * e_args.damage_multiplier / 20 * 75, 0, 100)
 	e_args.damage_multiplier *= clamp(efficiency, 0, 1)
 	shieldcall_returns = perform_aftereffects(defending, ATTACK_TYPE_MELEE, efficiency, weapon, shieldcall_returns, e_args)
-	perform_audiovisuals(defending, ATTACK_TYPE_MELEE, efficiency, weapon, shieldcall_returns, estimated_severity, "[weapon]", tool_text)
+	perform_audiovisuals(defending, ATTACK_TYPE_MELEE, efficiency, weapon, shieldcall_returns, estimated_severity, weapon, tool_text)
 	if(parry_always_prevents_contact || (parry_can_prevent_contact && (efficiency >= parry_efficiency_blocked)))
 		. |= SHIELDCALL_FLAG_ATTACK_BLOCKED
 	return shieldcall_returns
@@ -447,7 +447,7 @@
 	var/estimated_severity = clamp(style.damage * e_args.damage_multiplier / 20 * 75, 0, 100)
 	e_args.damage_multiplier *= clamp(efficiency, 0, 1)
 	shieldcall_returns = perform_aftereffects(defending, ATTACK_TYPE_UNARMED, efficiency, style, shieldcall_returns, e_args)
-	perform_audiovisuals(defending, ATTACK_TYPE_UNARMED, efficiency, style, shieldcall_returns, estimated_severity, "[style]", tool_text)
+	perform_audiovisuals(defending, ATTACK_TYPE_UNARMED, efficiency, style, shieldcall_returns, estimated_severity, style, tool_text)
 	if(parry_always_prevents_contact || (parry_can_prevent_contact && (efficiency >= parry_efficiency_blocked)))
 		. |= SHIELDCALL_FLAG_ATTACK_BLOCKED
 	return shieldcall_returns
@@ -468,7 +468,7 @@
 	var/estimated_severity = 50
 	e_args.damage_multiplier *= clamp(efficiency, 0, 1)
 	shieldcall_returns = perform_aftereffects(defending, ATTACK_TYPE_TOUCH, efficiency, null, shieldcall_returns, e_args)
-	perform_audiovisuals(defending, ATTACK_TYPE_TOUCH, efficiency, null, shieldcall_returns, estimated_severity, "[e_args?.performer]", tool_text)
+	perform_audiovisuals(defending, ATTACK_TYPE_TOUCH, efficiency, null, shieldcall_returns, estimated_severity, performer, tool_text)
 	if(parry_always_prevents_contact || (parry_can_prevent_contact && (efficiency >= parry_efficiency_blocked)))
 		. |= SHIELDCALL_FLAG_ATTACK_BLOCKED
 	return shieldcall_returns
@@ -491,7 +491,7 @@
 	// todo: why isn't thrownthing just with a get_damage() or a better inflict_damage() and get_damage_tuple() idfk man
 	var/estimated_severity = clamp(thrown.thrownthing.throw_force * thrown.get_damage_multiplier() / 20 * 75, 0, 100)
 	thrown.damage_multiplier *= clamp(efficiency, 0, 1)
-	shieldcall_returns = perform_aftereffects(defending, ATTACK_TYPE_THROWN, efficiency, thrown, shieldcall_returns, "[thrown.thrownthing]", tool_text)
+	shieldcall_returns = perform_aftereffects(defending, ATTACK_TYPE_THROWN, efficiency, thrown, shieldcall_returns, thrownthing, tool_text)
 	perform_audiovisuals(defending, ATTACK_TYPE_THROWN, efficiency, thrown, shieldcall_returns, estimated_severity)
 	if(parry_always_prevents_contact || (parry_can_prevent_contact && (efficiency >= parry_efficiency_blocked)))
 		. |= SHIELDCALL_FLAG_ATTACK_BLOCKED

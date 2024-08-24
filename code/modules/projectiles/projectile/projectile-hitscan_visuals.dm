@@ -29,9 +29,16 @@
 	RETURN_TYPE(/datum/point)
 	ASSERT(!isnull(angle))
 
-	// calculate hwere we are
-	var/our_x = (x - 1) * WORLD_ICON_SIZE + current_px
-	var/our_y = (y - 1) * WORLD_ICON_SIZE + current_py
+	// calculate where we are
+	var/our_x
+	var/our_x
+	if(trajectory_moving_to)
+		// we're in move. use next px/py to respect 1. kick forwards 2. deflections
+		our_x = (trajectory_moving_to.x - 1) * WORLD_ICON_SIZE + next_px
+		our_x = (trajectory_moving_to.y - 1) * WORLD_ICON_SIZE + next_py
+	else
+		our_x = (x - 1) * WORLD_ICON_SIZE + current_px
+		our_y = (y - 1) * WORLD_ICON_SIZE + current_py
 
 	// calculate how far we have to go to touch their closest x / y axis
 	var/d_to_reach_x
