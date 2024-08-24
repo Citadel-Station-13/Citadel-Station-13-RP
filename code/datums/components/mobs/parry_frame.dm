@@ -399,7 +399,7 @@
 /datum/parry_frame/proc/handle_bullet(atom/defending, shieldcall_returns, fake_attack, efficiency, list/bullet_act_args, tool_text)
 	// todo: doesn't take into account any damage randomization
 	var/obj/projectile/proj = bullet_act_args[BULLET_ACT_ARG_PROJECTILE]
-	var/estimated_severity = clamp(proj.damage / 40 * 100, 0, 100)
+	var/estimated_severity = clamp(proj.damage / 20 * 75, 0, 100)
 	bullet_act_args[BULLET_ACT_ARG_EFFICIENCY] = bullet_act_args[BULLET_ACT_ARG_EFFICIENCY] * clamp(efficiency, 0, 1)
 	shieldcall_returns = perform_aftereffects(defending, ATTACK_TYPE_PROJECTILE, efficiency, proj, shieldcall_returns)
 	perform_audiovisuals(defending, ATTACK_TYPE_PROJECTILE, efficiency, proj, shieldcall_returns, estimated_severity, "[proj]", tool_text)
@@ -423,7 +423,7 @@
 
 /datum/parry_frame/proc/handle_item_melee(atom/defending, shieldcall_returns, fake_attack, efficiency, obj/item/weapon, datum/event_args/actor/clickchain/e_args, tool_text)
 	// todo: doesn't take into account any damage randomization
-	var/estimated_severity = clamp(weapon.damage_force * e_args.damage_multiplier / 40 * 100, 0, 100)
+	var/estimated_severity = clamp(weapon.damage_force * e_args.damage_multiplier / 20 * 75, 0, 100)
 	e_args.damage_multiplier *= clamp(efficiency, 0, 1)
 	shieldcall_returns = perform_aftereffects(defending, ATTACK_TYPE_MELEE, efficiency, weapon, shieldcall_returns, e_args)
 	perform_audiovisuals(defending, ATTACK_TYPE_MELEE, efficiency, weapon, shieldcall_returns, estimated_severity, "[weapon]", tool_text)
@@ -444,7 +444,7 @@
 /datum/parry_frame/proc/handle_unarmed_melee(atom/defending, shieldcall_returns, fake_attack, efficiency, datum/unarmed_attack/style, datum/event_args/actor/clickchain/e_args, tool_text)
 	. = shieldcall_returns
 	// todo: doesn't take into account any damage randomization
-	var/estimated_severity = clamp(style.damage * e_args.damage_multiplier / 40 * 100, 0, 100)
+	var/estimated_severity = clamp(style.damage * e_args.damage_multiplier / 20 * 75, 0, 100)
 	e_args.damage_multiplier *= clamp(efficiency, 0, 1)
 	shieldcall_returns = perform_aftereffects(defending, ATTACK_TYPE_UNARMED, efficiency, style, shieldcall_returns, e_args)
 	perform_audiovisuals(defending, ATTACK_TYPE_UNARMED, efficiency, style, shieldcall_returns, estimated_severity, "[style]", tool_text)
@@ -489,7 +489,7 @@
 	. = shieldcall_returns
 	// todo: doesn't take into account any damage randomization
 	// todo: why isn't thrownthing just with a get_damage() or a better inflict_damage() and get_damage_tuple() idfk man
-	var/estimated_severity = clamp(thrown.thrownthing.throw_force * thrown.get_damage_multiplier() / 40 * 100, 0, 100)
+	var/estimated_severity = clamp(thrown.thrownthing.throw_force * thrown.get_damage_multiplier() / 20 * 75, 0, 100)
 	thrown.damage_multiplier *= clamp(efficiency, 0, 1)
 	shieldcall_returns = perform_aftereffects(defending, ATTACK_TYPE_THROWN, efficiency, thrown, shieldcall_returns, "[thrown.thrownthing]", tool_text)
 	perform_audiovisuals(defending, ATTACK_TYPE_THROWN, efficiency, thrown, shieldcall_returns, estimated_severity)

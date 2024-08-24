@@ -58,8 +58,11 @@
 			return TRUE
 	return ..()
 
+/**
+ * Can something cross under us without being blocked by us?
+ */
 /mob/proc/can_cross_under(atom/movable/mover)
-	return !mover.density && !mover.throwing
+	return !mover.density && !mover.throwing && !istype(mover, /obj/projectile)
 
 /**
   * Toggle the move intent of the mob
