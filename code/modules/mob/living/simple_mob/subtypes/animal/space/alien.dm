@@ -61,17 +61,14 @@
 	harm_intent_damage = 5
 	legacy_melee_damage_lower = 35
 	legacy_melee_damage_upper = 35
+	base_attack_cooldown = 9
+	attack_armor_pen = 15
 	attack_sharp = TRUE
 	attack_edge = TRUE
 	taser_kill = 0
 
 	attacktext = list("slashed")
 	attack_sound = 'sound/weapons/bladeslice.ogg'
-
-	meat_amount = 3
-	meat_type = /obj/item/reagent_containers/food/snacks/xenomeat
-	hide_amount = 2
-	hide_type = /obj/item/stack/xenochitin
 
 /datum/category_item/catalogue/fauna/feral_alien/drone
 	name = "Feral Xenomorph - Drone"
@@ -99,6 +96,7 @@
 	movement_cooldown = -0.2
 	legacy_melee_damage_lower = 20
 	legacy_melee_damage_upper = 20
+	base_attack_cooldown = 6
 	faction = "xeno"
 	attack_sound =  'sound/mobs/biomorphs/drone_attack.ogg'
 	movement_sound = 'sound/mobs/biomorphs/drone_move.ogg'
@@ -134,6 +132,7 @@
 	base_pixel_x = -8
 	movement_cooldown = 3
 	projectiletype = /obj/projectile/energy/neurotoxin
+	base_attack_cooldown = 9
 	projectilesound = 'sound/effects/splat.ogg'
 	attack_sound =  'sound/mobs/biomorphs/spitter_attack.ogg'
 	movement_sound = 'sound/mobs/biomorphs/spitter_move.ogg'
@@ -161,6 +160,7 @@
 	icon_scale_x = 1.1
 	icon_scale_y = 1.1
 	projectiletype = /obj/projectile/energy/acid
+	base_attack_cooldown = 12
 	projectilesound = 'sound/effects/splat.ogg'
 	attack_sound = 'sound/mobs/biomorphs/spitter_attack.ogg'
 	movement_sound = 'sound/mobs/biomorphs/spitter_move.ogg'
@@ -199,6 +199,7 @@
 	attack_sound =  'sound/mobs/biomorphs/breaker_attack.ogg'
 	movement_sound = 'sound/mobs/biomorphs/breaker_walk_stomp.ogg'
 	melee_attack_delay = 4
+	attack_armor_pen = 40
 	special_attack_min_range = 3
 	special_attack_max_range = 12 //Normal view range is 7 this can begin charging from outside normal view You may expand it.
 	special_attack_cooldown = 10 SECONDS
@@ -369,16 +370,17 @@
 	health = 1500
 	maxHealth = 1500
 	armor_legacy_mob = list(
-		"melee" = 50,
+		"melee" = 60,
 		"bullet" = 50,
-		"laser" = 60,
-		"energy" = 70,
+		"laser" = 80,
+		"energy" = 80,
 		"bomb" = 20,
 		"bio" = 100,
 		"rad" = 100,
 	)
 	legacy_melee_damage_lower = 70
 	legacy_melee_damage_upper = 50
+	attack_armor_pen = 60
 	faction = "xeno"
 	movement_cooldown = 4
 	base_pixel_x = -15

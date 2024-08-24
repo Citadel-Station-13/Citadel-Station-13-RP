@@ -140,7 +140,7 @@
 	fire_sound = 'sound/effects/splat.ogg'
 	damage = 5
 	damage_type = BIOACID
-	agony = 15
+	agony = 23
 	damage_flag = ARMOR_BIO
 	armor_penetration = 25	// It's acid-based
 
@@ -152,7 +152,7 @@
 	fire_sound = 'sound/effects/splat.ogg'
 	damage = 20
 	damage_type = BIOACID
-	agony = 20
+	agony = 30
 	damage_flag = ARMOR_BIO
 	armor_penetration = 25	// It's acid-based
 
