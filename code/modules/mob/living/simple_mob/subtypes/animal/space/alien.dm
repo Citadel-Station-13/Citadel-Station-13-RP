@@ -36,7 +36,7 @@
 	icon_gib = "gibbed-a-small"
 	var/butcherable = FALSE
 	icon_rest = "warrior_sleep"
-	movement_cooldown = 2
+	movement_cooldown = 1
 	base_pixel_x = -8
 	base_pixel_y = 1
 	icon_scale_x = 1.1
@@ -155,7 +155,7 @@
 	legacy_melee_damage_lower = 20
 	legacy_melee_damage_upper = 20
 	faction = "xeno"
-	movement_cooldown = 4
+	movement_cooldown = 2
 	base_pixel_x = -8
 	base_pixel_y = 1
 	icon_scale_x = 1.1
@@ -488,12 +488,12 @@
 
 /mob/living/simple_mob/animal/space/alien/breaker/death()
 	..()
-	visible_message("[src] lets out a waning guttural screech, green blood bubbling from its maw...")
+	visible_message("[src] emits a high pitched roar as its massive body stills, acidic blood pouring from its remains.")
 	playsound(src, 'sound/mobs/biomorphs/breaker_death_hiss.ogg', 100, 1)
 
 /mob/living/simple_mob/animal/space/alien/monarch/death()
 	..()
-	visible_message("[src] lets out a waning guttural screech, green blood bubbling from its maw...")
+	visible_message("[src] lets out a horrifying screech that echoes throughout your mind, it seems like it's finally over... Or is it?")
 	playsound(src, 'sound/mobs/biomorphs/monarch_death_hiss.ogg', 100, 1)
 
 /mob/living/simple_mob/animal/space/alien/death()

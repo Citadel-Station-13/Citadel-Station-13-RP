@@ -138,9 +138,9 @@
 	name = "neurotoxic spit"
 	icon_state = "neurotoxin"
 	fire_sound = 'sound/effects/splat.ogg'
-	damage = 10
+	damage = 5
 	damage_type = BIOACID
-	agony = 30
+	agony = 15
 	damage_flag = ARMOR_BIO
 	armor_penetration = 25	// It's acid-based
 
