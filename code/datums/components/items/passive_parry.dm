@@ -112,17 +112,22 @@
 	return islist(parry_data.parry_slot_id)? (slot_id in parry_data.parry_slot_id) : (!parry_data.parry_slot_id || (parry_data.parry_slot_id == slot_id))
 
 /datum/component/passive_parry/proc/shieldcall_iterating(mob/source, shieldcall_type)
+	SIGNAL_HANDLER
+	ASSERT(source == hooked)
 	var/datum/passive_parry/data = fetch_data(parry_data)
-	// normal shieldcal lhandlers handle it
+	// normal shieldcall handlers handle it
 	if(!data.parry_frame_simulated)
+		return
+	var/datum/parry_frame/resolved = ignite(source)
+	if(!resolved)
 		return
 	// for now, we only care about if they already have a frame
 	// in the future, maybe this can fire as long as we aren't the source of a parry frame on them.
 	// todo: cooldown enforcement
 	// todo: mobility enforcement
 	// todo: full parry swing cycle?
-	if(!defending.GetComponent(/datum/component/parry_frame))
-		defending.AddComponent(/datum/component/parry_frame, resolved, data.parry_frame_timing)
+	if(!source.GetComponent(/datum/component/parry_frame))
+		source.AddComponent(/datum/component/parry_frame, data, data.parry_frame_timing)
 
 //* Bindings - Bullet *//
 
@@ -255,6 +260,12 @@
 /**
  * Called by /datum/component/passive_parry when we're about to start up the parry frame
  * Called if parry intercept callback isn't set.
+ *
+ * @params
+ * * defending - mob being defended
+ * * attack_type - (optional) attack type
+ * * weapon - (optional) the weapon
+ * * parry_data - (optional) the existing parry data
  *
  * @return parry frame datum to use, or null to cancel
  */

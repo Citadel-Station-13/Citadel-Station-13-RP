@@ -262,6 +262,7 @@
  * @return args, modified, as list.
  */
 /atom/proc/check_armor(SHIELDCALL_PROC_HEADER)
+	SHOULD_NOT_SLEEP(TRUE)
 	run_armorcalls(args, TRUE)
 	return args
 
@@ -291,6 +292,7 @@
  * @return args, modified, as list.
  */
 /atom/proc/run_armor(SHIELDCALL_PROC_HEADER)
+	SHOULD_NOT_SLEEP(TRUE)
 	run_armorcalls(args, FALSE)
 	return args
 
@@ -327,6 +329,7 @@
  * @return args, modified, as list.
  */
 /atom/proc/atom_shieldcheck(SHIELDCALL_PROC_HEADER)
+	SHOULD_NOT_SLEEP(TRUE)
 	run_shieldcalls(args, TRUE)
 	return args
 
@@ -361,6 +364,7 @@
  * @return args, modified, as list.
  */
 /atom/proc/atom_shieldcall(SHIELDCALL_PROC_HEADER)
+	SHOULD_NOT_SLEEP(TRUE)
 	run_shieldcalls(args, FALSE)
 	return args
 
@@ -370,6 +374,7 @@
  * * This is a low level proc. Make sure you undersatnd how shieldcalls work [__DEFINES/combat/shieldcall.dm].
  */
 /atom/proc/run_shieldcalls(list/shieldcall_args, fake_attack)
+	SHOULD_NOT_SLEEP(TRUE)
 	SEND_SIGNAL(src, COMSIG_ATOM_SHIELDCALL, shieldcall_args, fake_attack)
 	if(shieldcall_args[SHIELDCALL_ARG_FLAGS] & SHIELDCALL_FLAG_TERMINATE)
 		return
@@ -386,6 +391,7 @@
  * * This is a low level proc. Make sure you undersatnd how shieldcalls work [__DEFINES/combat/shieldcall.dm].
  */
 /atom/proc/run_armorcalls(list/shieldcall_args, fake_attack)
+	SHOULD_NOT_SLEEP(TRUE)
 	SEND_SIGNAL(src, COMSIG_ATOM_ARMORCALL, shieldcall_args, fake_attack)
 	if(shieldcall_args[SHIELDCALL_ARG_FLAGS] & SHIELDCALL_FLAG_TERMINATE)
 		return
@@ -393,10 +399,12 @@
 	our_armor.handle_shieldcall(shieldcall_args, fake_attack)
 
 /atom/proc/register_shieldcall(datum/shieldcall/delegate)
+	SHOULD_NOT_SLEEP(TRUE)
 	LAZYINITLIST(shieldcalls)
 	BINARY_INSERT(delegate, shieldcalls, /datum/shieldcall, delegate, priority, COMPARE_KEY)
 
 /atom/proc/unregister_shieldcall(datum/shieldcall/delegate)
+	SHOULD_NOT_SLEEP(TRUE)
 	LAZYREMOVE(shieldcalls, delegate)
 
 //* Shieldcalls - Focused / High-Level *//
@@ -417,6 +425,7 @@
  * @return SHIELDCALL_FLAG_* flags
  */
 /atom/proc/atom_shieldcall_handle_touch(datum/event_args/actor/clickchain/e_args, contact_flags, contact_specific, fake_attack, shieldcall_flags)
+	SHOULD_NOT_SLEEP(TRUE)
 	SEND_SIGNAL(src, COMSIG_ATOM_SHIELDCALL_ITERATION, ATOM_SHIELDCALL_ITERATING_TOUCH)
 	. = shieldcall_flags
 	for(var/datum/shieldcall/shieldcall as anything in shieldcalls)
@@ -437,6 +446,7 @@
  * @return SHIELDCALL_FLAG_* flags
  */
 /atom/proc/atom_shieldcall_handle_unarmed_melee(datum/unarmed_attack/style, datum/event_args/actor/clickchain/e_args, fake_attack, shieldcall_flags, clickchain_flags)
+	SHOULD_NOT_SLEEP(TRUE)
 	SEND_SIGNAL(src, COMSIG_ATOM_SHIELDCALL_ITERATION, ATOM_SHIELDCALL_ITERATING_UNARMED_MELEE)
 	. = shieldcall_flags
 	for(var/datum/shieldcall/shieldcall as anything in shieldcalls)
@@ -457,6 +467,7 @@
  * @return SHIELDCALL_FLAG_* flags
  */
 /atom/proc/atom_shieldcall_handle_item_melee(obj/item/weapon, datum/event_args/actor/clickchain/e_args, fake_attack, shieldcall_flags, clickchain_flags)
+	SHOULD_NOT_SLEEP(TRUE)
 	SEND_SIGNAL(src, COMSIG_ATOM_SHIELDCALL_ITERATION, ATOM_SHIELDCALL_ITERATING_ITEM_MELEE)
 	. = shieldcall_flags
 	for(var/datum/shieldcall/shieldcall as anything in shieldcalls)
@@ -476,6 +487,7 @@
  * @return SHIELDCALL_FLAG_TERMINATE or NONE
  */
 /atom/proc/atom_shieldcall_handle_bullet(list/bullet_act_args, fake_attack, shieldcall_flags)
+	SHOULD_NOT_SLEEP(TRUE)
 	SEND_SIGNAL(src, COMSIG_ATOM_SHIELDCALL_ITERATION, ATOM_SHIELDCALL_ITERATING_BULLET_ACT)
 	. = shieldcall_flags
 	for(var/datum/shieldcall/shieldcall as anything in shieldcalls)
@@ -492,6 +504,7 @@
  * @return SHIELDCALL_FLAG_* flags
  */
 /atom/proc/atom_shieldcall_handle_throw_impact(datum/thrownthing/thrown, fake_attack, shieldcall_flags)
+	SHOULD_NOT_SLEEP(TRUE)
 	SEND_SIGNAL(src, COMSIG_ATOM_SHIELDCALL_ITERATION, ATOM_SHIELDCALL_ITERATING_THROW_IMPACT)
 	. = shieldcall_flags
 	for(var/datum/shieldcall/shieldcall as anything in shieldcalls)
