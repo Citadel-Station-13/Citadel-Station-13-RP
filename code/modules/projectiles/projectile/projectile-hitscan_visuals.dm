@@ -31,7 +31,7 @@
 
 	// calculate where we are
 	var/our_x
-	var/our_x
+	var/our_y
 	if(trajectory_moving_to)
 		// we're in move. use next px/py to respect 1. kick forwards 2. deflections
 		our_x = (trajectory_moving_to.x - 1) * WORLD_ICON_SIZE + next_px

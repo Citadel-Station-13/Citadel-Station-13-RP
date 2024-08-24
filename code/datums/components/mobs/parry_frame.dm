@@ -40,7 +40,7 @@
 		. = COMPONENT_INCOMPATIBLE
 		CRASH("attempted to start a parry that ended in the past.")
 	shieldcall = new(src)
-	shieldcall.tool_text = "[parent]"
+	shieldcall.tool_text = parent
 	var/delete_in = src.drop_time - world.time
 	QDEL_IN(src, delete_in)
 	// this is non-transferable, duh
@@ -468,7 +468,7 @@
 	var/estimated_severity = 50
 	e_args.damage_multiplier *= clamp(efficiency, 0, 1)
 	shieldcall_returns = perform_aftereffects(defending, ATTACK_TYPE_TOUCH, efficiency, null, shieldcall_returns, e_args)
-	perform_audiovisuals(defending, ATTACK_TYPE_TOUCH, efficiency, null, shieldcall_returns, estimated_severity, performer, tool_text)
+	perform_audiovisuals(defending, ATTACK_TYPE_TOUCH, efficiency, null, shieldcall_returns, estimated_severity, e_args.performer, tool_text)
 	if(parry_always_prevents_contact || (parry_can_prevent_contact && (efficiency >= parry_efficiency_blocked)))
 		. |= SHIELDCALL_FLAG_ATTACK_BLOCKED
 	return shieldcall_returns
@@ -491,7 +491,7 @@
 	// todo: why isn't thrownthing just with a get_damage() or a better inflict_damage() and get_damage_tuple() idfk man
 	var/estimated_severity = clamp(thrown.thrownthing.throw_force * thrown.get_damage_multiplier() / 20 * 75, 0, 100)
 	thrown.damage_multiplier *= clamp(efficiency, 0, 1)
-	shieldcall_returns = perform_aftereffects(defending, ATTACK_TYPE_THROWN, efficiency, thrown, shieldcall_returns, thrownthing, tool_text)
+	shieldcall_returns = perform_aftereffects(defending, ATTACK_TYPE_THROWN, efficiency, thrown, shieldcall_returns, thrown.thrownthing, tool_text)
 	perform_audiovisuals(defending, ATTACK_TYPE_THROWN, efficiency, thrown, shieldcall_returns, estimated_severity)
 	if(parry_always_prevents_contact || (parry_can_prevent_contact && (efficiency >= parry_efficiency_blocked)))
 		. |= SHIELDCALL_FLAG_ATTACK_BLOCKED
