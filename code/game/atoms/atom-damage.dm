@@ -18,9 +18,9 @@
 /atom/proc/run_damage_instance(SHIELDCALL_PROC_HEADER)
 	process_damage_instance(args, hit_zone)
 	if(shieldcall_flags & SHIELDCALL_FLAGS_BLOCK_ATTACK)
-		return args
+		return args.Copy() // args are only valid during a call; it's destroyed after.
 	inflict_damage_instance(arglist(args))
-	return args
+	return args.Copy() // args are only valid during a call; it's destroyed after.
 
 /**
  * process an instance of damage through defense handling.

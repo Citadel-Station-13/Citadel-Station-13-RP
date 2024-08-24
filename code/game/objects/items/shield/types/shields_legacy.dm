@@ -15,14 +15,14 @@
 	worth_intrinsic = 300
 	var/cooldown = 0 //shield bash cooldown. based on world.time
 
-/obj/item/shield/riot/passive_parry_intercept(mob/defending, list/shieldcall_args, datum/passive_parry/parry_data)
-	if(istype(shieldcall_args[SHIELDCALL_ARG_WEAPON], /obj/projectile))
-		var/obj/projectile/proj = shieldcall_args[SHIELDCALL_ARG_WEAPON]
+/obj/item/shield/riot/passive_parry_intercept(mob/defending, attack_type, datum/weapon, datum/passive_parry/parry_data)
+	if(istype(weapon, /obj/projectile))
+		var/obj/projectile/proj = weapon
 		if((is_sharp(proj) && proj.armor_penetration >= 10) || proj.damage_tier >= ARMOR_TIER_HIGH || istype(proj, /obj/projectile/beam))
 			//If we're at this point, the bullet/beam is going to go through the shield, however it will hit for less damage.
 			//Bullets get slowed down, while beams are diffused as they hit the shield, so these shields are not /completely/
 			//useless.  Extremely penetrating projectiles will go through the shield without less damage.
-			defending.visible_message("<span class='danger'>\The [defending]'s [src.name] is pierced by [resolve_shieldcall_attack_text(shieldcall_args)]!</span>")
+			defending.visible_message("<span class='danger'>\The [defending]'s [src.name] is pierced by [proj]!</span>")
 			proj.dampen_on_pierce_experimental(src, 20, ARMOR_TIER_HIGH)
 			return null
 	return ..()
@@ -60,22 +60,22 @@
 	. = embedded_flash.attack_self(user)
 	update_icon()
 
-/obj/item/shield/riot/flash/passive_parry_intercept(mob/defending, list/shieldcall_args, datum/passive_parry/parry_data)
+/obj/item/shield/riot/flash/passive_parry_intercept(mob/defending, attack_type, datum/weapon, datum/passive_parry/parry_data)
 	. = ..()
 	if(!.)
 		return
 	if(embedded_flash.broken)
 		return
-	if(!(shieldcall_args[SHIELDCALL_ARG_ATTACK_TYPE] & (ATTACK_TYPE_MELEE | ATTACK_TYPE_UNARMED)))
+	if(!(attack_type & (ATTACK_TYPE_MELEE | ATTACK_TYPE_UNARMED)))
 		return
-	var/datum/event_args/actor/clickchain/clickchain = shieldcall_args[SHIELDCALL_ARG_CLICKCHAIN]
-	var/mob/attacker = clickchain?.performer
-	if(attacker)
-		log_attack(key_name(attacker), key_name(defending), "flash shield auto-invoke")
-		embedded_flash.melee_interaction_chain(attacker, defending)
-	else
-		log_attack(key_name(attacker), "none (AoE)", "flash shield auto-invoke")
-		embedded_flash.attack_self(defending)
+	// var/datum/event_args/actor/clickchain/clickchain = shieldcall_args[SHIELDCALL_ARG_CLICKCHAIN]
+	// var/mob/attacker = clickchain?.performer
+	// if(attacker)
+	// 	log_attack(key_name(attacker), key_name(defending), "flash shield auto-invoke")
+	// 	embedded_flash.melee_interaction_chain(attacker, defending)
+	// else
+	log_attack(key_name(defending), "none (AoE)", "flash shield auto-invoke")
+	embedded_flash.attack_self(defending)
 	update_icon()
 
 /obj/item/shield/riot/flash/attackby(obj/item/W, mob/user)
@@ -188,9 +188,8 @@
 	throw_range = 6
 	materials_base = list(MAT_PLASTIC = 7500, "foam" = 1000)
 
-/obj/item/shield/riot/foam/passive_parry_intercept(mob/defending, list/shieldcall_args, datum/passive_parry/parry_data)
+/obj/item/shield/riot/foam/passive_parry_intercept(mob/defending, attack_type, datum/weapon, datum/passive_parry/parry_data)
 	var/allowed = FALSE
-	var/weapon = shieldcall_args[SHIELDCALL_ARG_WEAPON]
 	if(isobj(weapon))
 		var/obj/casted_object = weapon
 		if(istype(casted_object, /obj/projectile))

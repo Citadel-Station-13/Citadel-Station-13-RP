@@ -8,7 +8,7 @@
 		// just one zone
 		var/obj/item/organ/external/part = get_organ(filter_zone)
 		for(var/obj/item/I as anything in inventory?.items_that_cover(part.body_part_flags))
-			I.mob_armorcall(shieldcall_args, fake_attack)
+			I.mob_armorcall(src, shieldcall_args, fake_attack)
 			if(shieldcall_args[SHIELDCALL_ARG_FLAGS] & SHIELDCALL_FLAG_TERMINATE)
 				break
 		return
@@ -26,7 +26,7 @@
 		for(var/obj/item/I as anything in inventory?.items_that_cover(part.body_part_flags))
 			var/list/copied_args = args.Copy()
 			copied_args[SHIELDCALL_ARG_DAMAGE] = resultant
-			I.mob_armorcall(copied_args, fake_attack)
+			I.mob_armorcall(src, copied_args, fake_attack)
 			resultant = copied_args[SHIELDCALL_ARG_DAMAGE]
 		total += resultant * rel_size
 		total_size += rel_size

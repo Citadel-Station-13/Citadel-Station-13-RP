@@ -29,7 +29,7 @@
 	/// * this will be null'd, not qdel'd, when the component is qdel'd
 	var/datum/callback/parry_intercept
 	/// our registered shieldcall
-	var/datum/shieldcall/hooked_shieldcall
+	var/datum/shieldcall/bound/passive_parry/hooked_shieldcall
 	/// registered? just for optimizations
 	var/hooked = FALSE
 
@@ -128,7 +128,7 @@
 	// this works because the proc names and args and types are **exactly** matching
 	// this is why the procs are all together
 	// do NOT try this at home.
-	return bound:handle_item_melee(arglist(args))
+	return bound:handle_bullet(arglist(args))
 
 /datum/component/passive_parry/proc/handle_bullet(atom/defending, shieldcall_returns, fake_attack, list/bullet_act_args)
 	var/datum/passive_parry/data = parry_data

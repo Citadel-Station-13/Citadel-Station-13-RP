@@ -195,6 +195,10 @@
 			if(!attack)
 				return FALSE
 
+			if(atom_shieldcall_handle_unarmed_melee(attack, new /datum/event_args/actor/clickchain(user)) & SHIELDCALL_FLAGS_BLOCK_ATTACK)
+				H.do_attack_animation(src)
+				return FALSE
+
 			if(attack.unarmed_override(H, src, hit_zone))
 				return FALSE
 

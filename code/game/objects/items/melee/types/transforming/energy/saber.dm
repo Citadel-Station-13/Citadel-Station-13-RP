@@ -39,7 +39,7 @@
 		target = src,
 	)
 
-/obj/item/melee/transforming/energy/sword/passive_parry_intercept(mob/defending, list/shieldcall_args, datum/passive_parry/parry_data)
+/obj/item/melee/transforming/energy/sword/passive_parry_intercept(mob/defending, attack_type, datum/weapon, datum/passive_parry/parry_data)
 	. = ..()
 	if(!.)
 		return

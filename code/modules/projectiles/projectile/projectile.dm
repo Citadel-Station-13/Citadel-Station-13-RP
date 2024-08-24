@@ -827,7 +827,7 @@
  *
  * @return resultant impact_flags
  */
-/obj/projectile/proc/impact(atom/target, impact_flags, def_zone)
+/obj/projectile/proc/impact(atom/target, impact_flags, def_zone = src.def_zone || BP_TORSO)
 	SHOULD_NOT_OVERRIDE(TRUE)
 
 	if(impacted[target])
