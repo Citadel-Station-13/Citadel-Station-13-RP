@@ -7941,12 +7941,12 @@
 /area/tdome/tdome1)
 "En" = (
 /obj/structure/table/rack,
-/obj/item/gun/energy/pulse_rifle,
-/obj/item/gun/energy/pulse_rifle,
-/obj/item/gun/energy/pulse_rifle,
-/obj/item/gun/energy/pulse_rifle,
-/obj/item/gun/energy/pulse_rifle,
-/obj/item/gun/energy/pulse_rifle,
+/obj/item/gun/energy/nt_pulse/rifle,
+/obj/item/gun/energy/nt_pulse/rifle,
+/obj/item/gun/energy/nt_pulse/rifle,
+/obj/item/gun/energy/nt_pulse/rifle,
+/obj/item/gun/energy/nt_pulse/rifle,
+/obj/item/gun/energy/nt_pulse/rifle,
 /obj/item/storage/secure/briefcase/nsfw_pack,
 /turf/unsimulated/floor/dark,
 /area/centcom/specops)

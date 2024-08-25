@@ -1,6 +1,13 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2024 silicons                             *//
 
+//* Caliber *//
+
+/datum/ammo_caliber/nt_expeditionary/heavy_sidearm
+	caliber = "nt-heavy-sidearm"
+	diameter = 9
+	length = 34
+
 //* Ammo Casings *//
 
 /obj/item/ammo_casing/nt_expeditionary/pistol_heavy

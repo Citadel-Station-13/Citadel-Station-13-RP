@@ -1,6 +1,13 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2024 silicons                             *//
 
+//* Caliber *//
+
+/datum/ammo_caliber/nt_expeditionary/heavy_rifle
+	caliber = "nt-heavy-rifle"
+	diameter = 7.5
+	length = 54
+
 //* Ammo Casings *//
 
 /obj/item/ammo_casing/nt_expeditionary/rifle_heavy

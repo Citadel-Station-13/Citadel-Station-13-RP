@@ -6,31 +6,6 @@
 /datum/ammo_caliber/nt_expeditionary
 	abstract_type = /datum/ammo_caliber/nt_expeditionary
 
-/datum/ammo_caliber/nt_expeditionary/light_sidearm
-	caliber = "nt-light-sidearm"
-	diameter = 9
-	length = 29
-
-/datum/ammo_caliber/nt_expeditionary/heavy_sidearm
-	caliber = "nt-heavy-sidearm"
-	diameter = 9
-	length = 34
-
-/datum/ammo_caliber/nt_expeditionary/light_rifle
-	caliber = "nt-light-rifle"
-	diameter = 7.5
-	length = 39
-
-/datum/ammo_caliber/nt_expeditionary/heavy_rifle
-	caliber = "nt-heavy-rifle"
-	diameter = 7.5
-	length = 54
-
-/datum/ammo_caliber/nt_expeditionary/antimaterial
-	caliber = "nt-antimaterial"
-	diameter = 12
-	length = 92
-
 //* Ammo Casings *//
 
 /obj/item/ammo_casing/nt_expeditionary

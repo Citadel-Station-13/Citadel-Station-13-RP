@@ -11434,8 +11434,8 @@
 /area/admin_planet/croatoan/sci_entry_hallway)
 "Oo" = (
 /obj/structure/table/rack/shelf/steel,
-/obj/item/gun/energy/pulse_carbine,
-/obj/item/gun/energy/pulse_carbine,
+/obj/item/gun/energy/nt_pulse/carbine,
+/obj/item/gun/energy/nt_pulse/carbine,
 /turf/simulated/floor/reinforced,
 /area/admin_planet/croatoan/sec_armory)
 "Op" = (

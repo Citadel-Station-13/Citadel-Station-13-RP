@@ -1,13 +1,60 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2024 silicons                             *//
 
+//* Caliber *//
+
+/datum/ammo_caliber/nt_expeditionary/antimaterial
+	caliber = "nt-antimaterial"
+	diameter = 12
+	length = 92
+
 //* Ammo Casings *//
 
 /obj/item/ammo_casing/nt_expeditionary/antimaterial
 	name = "ammo casing (NT-12.5-antimaterial)"
-	desc = "A standardized 12.5x92mm cartridge for NT Expeditionary kinetics. This one seems ridiculous large, and is probably for a very powerful weapon."
+	desc = "A standardized 12.5x92mm cartridge for NT Expeditionary kinetics. This one seems ridiculously large, and is probably for a very powerful weapon."
+	icon = 'icons/content/factions/corporations/nanotrasen/items/guns/expeditionary/antimaterial-ammo.dmi'
+	icon_state = "basic"
+	icon_spent = TRUE
 	caliber = /datum/ammo_caliber/nt_expeditionary/antimaterial
 	projectile_type = /obj/projectile/bullet/nt_expeditionary/antimaterial
+
+	/// specifically for /obj/item/ammo_magazine/nt_expeditionary/antimaterial's
+	///
+	/// * null to default to "[base_icon_state || initial(icon_state)]"
+	var/magazine_state
+
+/obj/item/ammo_casing/nt_expeditionary/antimaterial/penetrator
+	icon_state = "penetrator"
+	// todo: implement
+
+/obj/item/ammo_casing/nt_expeditionary/antimaterial/emp
+	icon_state = "emp"
+	// todo: implement
+
+/obj/item/ammo_casing/nt_expeditionary/antimaterial/explosive
+	icon_state = "explosive"
+	// todo: implement
+
+/obj/item/ammo_casing/nt_expeditionary/antimaterial/titanium
+	icon_state = "titanium"
+	// todo: implement
+
+//* Magazines *//
+
+/obj/item/ammo_magazine/nt_expeditionary/antimaterial
+	name = "ammo magazine (NT-12.5-antimaterial)"
+	icon = 'icons/content/factions/corporations/nanotrasen/items/guns/expeditionary/antimaterial-ammo.dmi'
+	icon_state = "magazine"
+	base_icon_state = "magazine"
+	rendering_system = GUN_RENDERING_DISABLED
+	ammo_caliber = /datum/ammo_caliber/nt_expeditionary/antimaterial
+	ammo_max = 5
+	ammo_preload = /obj/item/ammo_casing/nt_expeditionary/antimaterial
+
+/obj/item/ammo_magazine/nt_expeditionary/antimaterial/update_overlays()
+	. = ..()
+	#warn impl; overlay via "[base_icon_state]-[casing.magazine_state]", shift -2, -2
 
 //* Projectiles *//
 
@@ -23,14 +70,16 @@
 	abstract_type = /obj/item/gun/ballistic/nt_expeditionary/antimaterial
 	caliber = /datum/ammo_caliber/nt_expeditionary/antimaterial
 
+// todo: placeholder sprite
 /obj/item/gun/ballistic/nt_expeditionary/antimaterial/singleshot
 	name = "anti-material rifle"
-	desc = "The XNS MK.6 \"Standby\" pump-action shotgun; a refined design output by the Nanotrasen Research Division in conjunction with Hephaestus Industries."
+	desc = "The XNR Mk.11 \"Immobilizer\" anti-material rifle; a refined design output by the Nanotrasen Research Division in conjunction with Hephaestus Industries."
 	description_fluff = {"
-		A pump-action design based on the proven pump-action mechanism developed centuries ago,
-		the XNS Mk.6 or “Standby” is designed around a tube magazine using 12-gauge ammunition.
-		Rugged, if not fancy, this weapon is a good fallback option for anyone
-		requiring access to a long arm when out on their own or in small groups.
+		A chemical-propelled knockoff of a prototype Hephaestus Industries anti-armour rifle from the days of the Phoron Wars,
+		the XNR Mk.11 "Immobilizer" is an accurate, long-range weapon intended for use on lighter mecha. Unfortunately, its performance
+		suffers against heavier armor due to the limitations of using traditional ammunition in such a 'portable' package.
+		Regardless, its relative ease of handling (and noted ability to be used by an unaugmented soldier) keeps it in the armories of some
+		corporate militaries and emergency responders.
 	"} + "<br>"
 
 #warn impl all

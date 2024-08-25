@@ -1,6 +1,13 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2024 silicons                             *//
 
+//* Caliber *//
+
+/datum/ammo_caliber/nt_expeditionary/light_rifle
+	caliber = "nt-light-rifle"
+	diameter = 7.5
+	length = 39
+
 //* Ammo Casings *//
 
 /obj/item/ammo_casing/nt_expeditionary/rifle_light
@@ -27,12 +34,12 @@
 
 /obj/item/gun/ballistic/nt_expeditionary/light_rifle/pistol
 	name = "high-caliber pistol"
-	desc = "The XNP Mk.9 \"David\" pistol; a refined design output by the Nanotrasen Research Division in conjunction with Hephaestus Industries."
+	desc = "The XNP Mk.9 \"David\" revolver; a refined design output by the Nanotrasen Research Division in conjunction with Hephaestus Industries."
 	description_fluff = {"
-		An oddball of a pistol, the Mark 9 was made as little more than a proof of concept.
+		An oddball of a revolver, the Mark 9 was made as little more than a proof of concept.
 		Chambering 7.5x39mm light rifle ammunition, the "David" sidearm is capable of consistently,
 		and accurately (for its uncanny size) punching above its paygrade.
-		Unfortunately, the downsides of using such a heavy caliber in a pistol limits its
+		Unfortunately, the downsides of using such a heavy caliber in a sidearm package limits its
 		practical use. This is nonetheless seen now and then in the hands of enthusiasts.
 	"} + "<br>"
 

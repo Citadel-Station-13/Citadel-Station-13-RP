@@ -1,6 +1,13 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2024 silicons                             *//
 
+//* Caliber *//
+
+/datum/ammo_caliber/nt_expeditionary/light_sidearm
+	caliber = "nt-light-sidearm"
+	diameter = 9
+	length = 29
+
 //* Ammo Casings *//
 
 /obj/item/ammo_casing/nt_expeditionary/pistol_light
