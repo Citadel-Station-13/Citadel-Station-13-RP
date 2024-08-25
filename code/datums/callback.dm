@@ -113,6 +113,7 @@
 	ASYNC
 		. = Invoke(arglist(args))
 	if(. == CALLBACK_SLEEP_SENTINEL)
+		. = null
 		CRASH("Callback slept on a no-sleeping invoke.")
 
 /**
