@@ -92,7 +92,7 @@
 	return def_zone
 
 /**
- * * our_opinion is intentionally mutable.
+ * * our_opinion is intentionally mutable; it is however only mutable from before ..(), so call ..() after modifying for pre-modification
  *
  * todo: 0 to 100 for accuracy might not be amazing; maybe allow negative values evasion-style?
  *

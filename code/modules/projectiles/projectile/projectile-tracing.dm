@@ -15,13 +15,17 @@
 	/// do we check opacity?
 	var/check_opacity = FALSE
 
-/obj/projectile/trace/Bump(atom/A)
-	if(A == original_target)
+/obj/projectile/trace/pre_impact(atom/target, impact_flags, def_zone)
+	if(target == original_target)
 		could_hit_target = TRUE
 		if(del_on_success)
-			qdel(src)
-			return
-	return ..()
+			return PROJECTILE_IMPACT_DELETE
+	. = ..()
+	// tracers only count as 'can move across' if pre_impact() says we should phase/pierce.
+	if(. & PROJECTILE_IMPACT_FLAGS_SHOULD_GO_THROUGH)
+		return PROJECTILE_IMPACT_PASSTHROUGH
+	else
+		return PROJECTILE_IMPACT_DELETE
 
 /obj/projectile/trace/Moved()
 	. = ..()
