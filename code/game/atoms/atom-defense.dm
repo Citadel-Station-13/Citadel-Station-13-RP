@@ -264,7 +264,7 @@
 /atom/proc/check_armor(SHIELDCALL_PROC_HEADER)
 	SHOULD_NOT_SLEEP(TRUE)
 	run_armorcalls(args, TRUE)
-	return args
+	return args.Copy()
 
 /**
  * runs an attack against armor
@@ -294,7 +294,7 @@
 /atom/proc/run_armor(SHIELDCALL_PROC_HEADER)
 	SHOULD_NOT_SLEEP(TRUE)
 	run_armorcalls(args, FALSE)
-	return args
+	return args.Copy()
 
 //* Shieldcalls *//
 
@@ -331,7 +331,7 @@
 /atom/proc/atom_shieldcheck(SHIELDCALL_PROC_HEADER)
 	SHOULD_NOT_SLEEP(TRUE)
 	run_shieldcalls(args, TRUE)
-	return args
+	return args.Copy()
 
 /**
  * runs an attack against shields
@@ -366,7 +366,7 @@
 /atom/proc/atom_shieldcall(SHIELDCALL_PROC_HEADER)
 	SHOULD_NOT_SLEEP(TRUE)
 	run_shieldcalls(args, FALSE)
-	return args
+	return args.Copy()
 
 /**
  * Runs a damage instance against shieldcalls
