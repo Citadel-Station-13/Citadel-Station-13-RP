@@ -414,7 +414,7 @@
 	// todo: doesn't take into account any damage randomization
 	var/obj/projectile/proj = bullet_act_args[BULLET_ACT_ARG_PROJECTILE]
 	var/estimated_severity = clamp(proj.damage / 20 * 75, 0, 100)
-	bullet_act_args[BULLET_ACT_ARG_EFFICIENCY] = bullet_act_args[BULLET_ACT_ARG_EFFICIENCY] * clamp(efficiency, 0, 1)
+	bullet_act_args[BULLET_ACT_ARG_EFFICIENCY] = bullet_act_args[BULLET_ACT_ARG_EFFICIENCY] * clamp(1 - efficiency, 0, 1)
 	. = perform_aftereffects(defending, ATTACK_TYPE_PROJECTILE, efficiency, proj, .)
 	perform_audiovisuals(defending, ATTACK_TYPE_PROJECTILE, efficiency, proj, ., estimated_severity, proj, tool_text)
 	if(. & (SHIELDCALL_FLAG_ATTACK_PASSTHROUGH | SHIELDCALL_FLAG_ATTACK_REDIRECT))
@@ -438,7 +438,7 @@
 	. = shieldcall_returns
 	// todo: doesn't take into account any damage randomization
 	var/estimated_severity = clamp(weapon.damage_force * e_args.damage_multiplier / 20 * 75, 0, 100)
-	e_args.damage_multiplier *= clamp(efficiency, 0, 1)
+	e_args.damage_multiplier *= clamp(1 - efficiency, 0, 1)
 	. = perform_aftereffects(defending, ATTACK_TYPE_MELEE, efficiency, weapon, ., e_args)
 	perform_audiovisuals(defending, ATTACK_TYPE_MELEE, efficiency, weapon, ., estimated_severity, weapon, tool_text)
 	if(parry_always_prevents_contact || (parry_can_prevent_contact && (efficiency >= parry_efficiency_blocked)))
@@ -458,7 +458,7 @@
 	. = shieldcall_returns
 	// todo: doesn't take into account any damage randomization
 	var/estimated_severity = clamp(style.damage * e_args.damage_multiplier / 20 * 75, 0, 100)
-	e_args.damage_multiplier *= clamp(efficiency, 0, 1)
+	e_args.damage_multiplier *= clamp(1 - efficiency, 0, 1)
 	. = perform_aftereffects(defending, ATTACK_TYPE_UNARMED, efficiency, style, ., e_args)
 	perform_audiovisuals(defending, ATTACK_TYPE_UNARMED, efficiency, style, ., estimated_severity, style, tool_text)
 	if(parry_always_prevents_contact || (parry_can_prevent_contact && (efficiency >= parry_efficiency_blocked)))
@@ -478,7 +478,7 @@
 	. = shieldcall_returns
 	// todo: doesn't take into account any damage randomization
 	var/estimated_severity = 50
-	e_args.damage_multiplier *= clamp(efficiency, 0, 1)
+	e_args.damage_multiplier *= clamp(1 - efficiency, 0, 1)
 	. = perform_aftereffects(defending, ATTACK_TYPE_TOUCH, efficiency, null, ., e_args)
 	perform_audiovisuals(defending, ATTACK_TYPE_TOUCH, efficiency, null, ., estimated_severity, e_args.performer, tool_text)
 	if(parry_always_prevents_contact || (parry_can_prevent_contact && (efficiency >= parry_efficiency_blocked)))
@@ -501,7 +501,7 @@
 	// todo: doesn't take into account any damage randomization
 	// todo: why isn't thrownthing just with a get_damage() or a better inflict_damage() and get_damage_tuple() idfk man
 	var/estimated_severity = clamp(thrown.thrownthing.throw_force * thrown.get_damage_multiplier() / 20 * 75, 0, 100)
-	thrown.damage_multiplier *= clamp(efficiency, 0, 1)
+	thrown.damage_multiplier *= clamp(1 - efficiency, 0, 1)
 	. = perform_aftereffects(defending, ATTACK_TYPE_THROWN, efficiency, thrown, ., thrown.thrownthing, tool_text)
 	perform_audiovisuals(defending, ATTACK_TYPE_THROWN, efficiency, thrown, ., estimated_severity)
 	if(parry_always_prevents_contact || (parry_can_prevent_contact && (efficiency >= parry_efficiency_blocked)))

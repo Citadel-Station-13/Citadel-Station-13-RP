@@ -7,7 +7,7 @@
 
 /datum/parry_frame/passive_block/shield
 	parry_sfx = /datum/soundbyte/grouped/block_metal_with_metal
-	block_verb = "blocks"
+	block_verb = "dampens"
 
 /obj/item/shield
 	name = "shield"
