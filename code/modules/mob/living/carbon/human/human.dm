@@ -1407,18 +1407,6 @@
 			return 1
 	return 0
 
-/mob/living/carbon/human/slip(var/slipped_on, stun_duration=8)
-	var/list/equipment = list(src.w_uniform,src.wear_suit,src.shoes)
-	var/footcoverage_check = FALSE
-	for(var/obj/item/clothing/C in equipment)
-		if(C.body_cover_flags & FEET)
-			footcoverage_check = TRUE
-			break
-	if((species.species_flags & NO_SLIP && !footcoverage_check) || (shoes && (shoes.clothing_flags & NOSLIP))) //Footwear negates a species' natural traction.
-		return 0
-	if(..(slipped_on,stun_duration))
-		return 1
-
 /mob/living/carbon/human/proc/relocate()
 	set category = VERB_CATEGORY_OBJECT
 	set name = "Relocate Joint"

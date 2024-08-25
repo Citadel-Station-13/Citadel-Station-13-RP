@@ -10,9 +10,10 @@
  * Handles ticking AI holders
  */
 SUBSYSTEM_DEF(ai_scheduling)
-	name = "AI Holders"
+	name = "AI Scheduling"
 	subsystem_flags = NONE
 	priority = FIRE_PRIORITY_AI_SCHEDULING
+	init_order = INIT_ORDER_AI_SCHEDULING
 	wait = 0
 
 	/// rolling bucket list; these hold the head node of linked ai_holders.
