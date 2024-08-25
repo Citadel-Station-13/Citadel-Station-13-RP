@@ -16,6 +16,7 @@
  * @return modified args
  */
 /atom/proc/run_damage_instance(SHIELDCALL_PROC_HEADER)
+	SHOULD_NOT_OVERRIDE(TRUE)
 	process_damage_instance(args, hit_zone)
 	if(shieldcall_flags & SHIELDCALL_FLAGS_BLOCK_ATTACK)
 		return args.Copy() // args are only valid during a call; it's destroyed after.
@@ -23,15 +24,25 @@
 	return args.Copy() // args are only valid during a call; it's destroyed after.
 
 /**
+ * [/atom/proc/run_damage_instance()], but doesn't actually do damage.
+ *
+ * @return modified args
+ */
+/atom/proc/check_damage_instance(SHIELDCALL_PROC_HEADER)
+	SHOULD_NOT_OVERRIDE(TRUE)
+	process_damage_instance(args, hit_zone, TRUE)
+	return args.Copy() // args are only valid during a call; it's destroyed after.
+
+/**
  * process an instance of damage through defense handling.
  */
-/atom/proc/process_damage_instance(list/shieldcall_args, filter_zone)
+/atom/proc/process_damage_instance(list/shieldcall_args, filter_zone, fake_attack)
 	if(!(shieldcall_args[SHIELDCALL_ARG_FLAGS] & SHIELDCALL_FLAG_SKIP_SHIELDCALLS))
-		run_shieldcalls(shieldcall_args, FALSE)
+		run_shieldcalls(shieldcall_args, fake_attack)
 	if(shieldcall_args[SHIELDCALL_ARG_FLAGS] & (SHIELDCALL_FLAGS_SHOULD_TERMINATE | SHIELDCALL_FLAGS_BLOCK_ATTACK))
 		return
 	if(!(shieldcall_args[SHIELDCALL_ARG_FLAGS] & SHIELDCALL_FLAG_SKIP_ARMORCALLS))
-		run_armorcalls(shieldcall_args, FALSE, filter_zone)
+		run_armorcalls(shieldcall_args, fake_attack, filter_zone)
 
 /**
  * inflict an instance of damage.

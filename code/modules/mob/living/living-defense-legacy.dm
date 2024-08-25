@@ -175,8 +175,9 @@
 /mob/living/proc/resolve_item_attack(obj/item/I, mob/living/user, var/target_zone)
 	SEND_SIGNAL(src, COMSIG_MOB_LEGACY_RESOLVE_ITEM_ATTACK, I, user, target_zone)
 
+	var/shieldcall_results = atom_shieldcall_handle_item_melee(I, new /datum/event_args/actor/clickchain(user), FALSE, NONE)
 	// todo: clickchain should be checked for damage mult
-	if(atom_shieldcall_handle_item_melee(I, new /datum/event_args/actor/clickchain(user), FALSE, NONE) & SHIELDCALL_FLAGS_BLOCK_ATTACK)
+	if(shieldcall_results & SHIELDCALL_FLAGS_BLOCK_ATTACK)
 		return
 
 	return target_zone

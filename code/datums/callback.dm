@@ -104,6 +104,18 @@
 	return call(object, delegate)(arglist(calling_arguments))
 
 /**
+ * Invoke this callback and crash if it sleeps.
+ *
+ * * Use when a callback should never sleep, as call() cannot be verified by static analysis.
+ */
+/datum/callback/proc/invoke_no_sleep(...)
+	. = CALLBACK_SLEEP_SENTINEL
+	ASYNC
+		. = Invoke(arglist(args))
+	if(. == CALLBACK_SLEEP_SENTINEL)
+		CRASH("Callback slept on a no-sleeping invoke.")
+
+/**
  * Invoke this callback async (waitfor=false)
  *
  * Calls the registered proc on the registered object, if the user ref

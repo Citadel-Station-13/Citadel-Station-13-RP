@@ -52,6 +52,9 @@ GLOBAL_LIST_EMPTY(unarmed_attack_cache)
 	var/eye_attack_text
 	var/eye_attack_text_victim
 
+/datum/unarmed_attack/operator""()
+	return pick(attack_verb_legacy)
+
 //* Feedback
 
 /datum/unarmed_attack/proc/get_sparring_variant()

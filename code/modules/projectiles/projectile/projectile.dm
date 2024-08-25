@@ -1069,12 +1069,12 @@
  *
  * @return BULLET_ACT_* flags to append into the calling bullet_act().
  */
-/obj/projectile/proc/process_impact_damage(atom/target, efficiency, impact_flags, hit_zone)
+/obj/projectile/proc/inflict_impact_damage(atom/target, efficiency, impact_flags, hit_zone)
 	. = NONE
 
 	//! LEGACY COMBAT CODE
 	// SHIM!!!
-	var/list/shieldcall_modified_args = target.run_damage_instance(damage, damage_type, damage_tier, damage_flag, damage_mode, ATTACK_TYPE_PROJECTILE, src, SHIELDCALL_FLAG_SECOND_CALL, hit_zone)
+	var/list/shieldcall_modified_args = target.check_damage_instance(damage, damage_type, damage_tier, damage_flag, damage_mode, ATTACK_TYPE_PROJECTILE, src, SHIELDCALL_FLAG_SECOND_CALL, hit_zone)
 	// todo: this handling very obviously should not be here
 	// dear lord this code is a dumpster fire
 	if(shieldcall_modified_args[SHIELDCALL_ARG_FLAGS] & SHIELDCALL_FLAGS_BLOCK_ATTACK)

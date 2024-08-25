@@ -53,9 +53,11 @@
 				visible_message("<font color='red'><B>[H] reaches for [src], but misses!</B></font>")
 				return FALSE
 
-		if(atom_shieldcall_handle_touch(new /datum/event_args/actor/clickchain(user)) & SHIELDCALL_FLAGS_BLOCK_ATTACK)
-			H.do_attack_animation(src)
-			return FALSE
+		if(user.a_intent != INTENT_HARM)
+			var/shieldcall_results = atom_shieldcall_handle_touch(new /datum/event_args/actor/clickchain(user))
+			if(shieldcall_results & SHIELDCALL_FLAGS_BLOCK_ATTACK)
+				H.do_attack_animation(src)
+				return FALSE
 
 	if(istype(user,/mob/living/carbon))
 		var/mob/living/carbon/C = user
@@ -195,7 +197,8 @@
 			if(!attack)
 				return FALSE
 
-			if(atom_shieldcall_handle_unarmed_melee(attack, new /datum/event_args/actor/clickchain(user)) & SHIELDCALL_FLAGS_BLOCK_ATTACK)
+			var/shieldcall_results = atom_shieldcall_handle_unarmed_melee(attack, new /datum/event_args/actor/clickchain(user))
+			if(shieldcall_results & SHIELDCALL_FLAGS_BLOCK_ATTACK)
 				H.do_attack_animation(src)
 				return FALSE
 

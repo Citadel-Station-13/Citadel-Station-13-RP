@@ -302,14 +302,26 @@
 /datum/parry_frame/proc/perform_audiovisuals(atom/defending, attack_type, efficiency, datum/weapon, shieldcall_flags, severity = 75, attack_source_descriptor, tool_text)
 	playsound(defending, (islist(parry_sfx) && length(parry_sfx)) ? pick(parry_sfx) : parry_sfx , severity, TRUE)
 	new parry_vfx(null, defending, src, shieldcall_flags & SHIELDCALL_FLAG_SINGLE_PARRY)
+
 	var/parry_verb
 	if((attack_type & parry_redirect_attack_types) && (efficiency >= parry_efficiency_redirection))
 		parry_verb = deflect_verb
 	else
 		parry_verb = block_verb
 
+	var/attack_descriptor = "the attack"
+	if(attack_source_descriptor)
+		// generic processing
+		attack_descriptor = "\the [attack_source_descriptor]"
+		// item processing
+		if(isitem(attack_source_descriptor))
+			var/obj/item/item_source_descriptor = attack_source_descriptor
+			var/mob/mob_holding_item = item_source_descriptor.worn_mob()
+			if(mob_holding_item)
+				attack_descriptor = "[mob_holding_item]'s [item_source_descriptor]"
+
 	defending.visible_message(
-		SPAN_DANGER("[defending] [parry_verb] [attack_source_descriptor ? "\the [attack_source_descriptor]" : "the attack"][tool_text && " with \the [tool_text]"]!"),
+		SPAN_DANGER("[defending] [parry_verb] [attack_descriptor][tool_text && " with \the [tool_text]"]!"),
 	)
 
 /**

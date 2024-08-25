@@ -383,6 +383,8 @@
  * checks if we're held in hand
  *
  * if so, returns mob we're in
+ *
+ * @return the mob holding us
  */
 /obj/item/proc/is_held()
 	return (worn_slot == SLOT_ID_HANDS)? worn_mob() : null
