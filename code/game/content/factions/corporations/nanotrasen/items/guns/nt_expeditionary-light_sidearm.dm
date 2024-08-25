@@ -10,15 +10,27 @@
 
 //* Ammo Casings *//
 
-/obj/item/ammo_casing/nt_expeditionary/pistol_light
+/obj/item/ammo_casing/nt_expeditionary/light_sidearm
 	name = "ammo casing (NT-9)"
 	desc = "A standardized 9mm cartridge for NT Expeditionary kinetics. This one seems to be for lightweight pistols and sidearms."
 	caliber = /datum/ammo_caliber/nt_expeditionary/light_sidearm
-	projectile_type = /obj/projectile/bullet/nt_expeditionary/pistol_light
+	projectile_type = /obj/projectile/bullet/nt_expeditionary/light_sidearm
+
+//* Magazines *//
+
+/obj/item/ammo_magazine/nt_expeditionary/light_sidearm
+	ammo_caliber = /datum/ammo_caliber/nt_expeditionary/light_sidearm
+	ammo_preload = /obj/projectile/bullet/nt_expeditionary/light_sidearm
+
+/obj/item/ammo_magazine/nt_expeditionary/light_sidearm/pistol
+
+/obj/item/ammo_magazine/nt_expeditionary/light_sidearm/smg
+
+#warn impl all
 
 //* Projectiles *//
 
-/obj/projectile/bullet/nt_expeditionary/pistol_light
+/obj/projectile/bullet/nt_expeditionary/light_sidearm
 	name = "bullet"
 	damage = 35
 	damage_tier = LERP(BULLET_TIER_LOW, BULLET_TIER_MEDIUM, 0.25)

@@ -10,15 +10,15 @@
 
 //* Ammo Casings *//
 
-/obj/item/ammo_casing/nt_expeditionary/rifle_heavy
+/obj/item/ammo_casing/nt_expeditionary/heavy_rifle
 	name = "ammo casing (NT-7.5-LR)"
 	desc = "A standardized 7.5x54mm cartridge for NT Expeditionary kinetics. This one seems to be for heavy rifles."
 	caliber = /datum/ammo_caliber/nt_expeditionary/heavy_rifle
-	projectile_type = /obj/projectile/bullet/nt_expeditionary/rifle_heavy
+	projectile_type = /obj/projectile/bullet/nt_expeditionary/heavy_rifle
 
 //* Projectiles *//
 
-/obj/projectile/bullet/nt_expeditionary/rifle_heavy
+/obj/projectile/bullet/nt_expeditionary/heavy_rifle
 	name = "heavy rifle bullet"
 	damage = 35
 	damage_tier = LERP(BULLET_TIER_MEDIUM, BULLET_TIER_HIGH, 1)
