@@ -830,6 +830,7 @@
 /obj/projectile/proc/impact(atom/target, impact_flags, def_zone = src.def_zone || BP_TORSO)
 	SHOULD_NOT_OVERRIDE(TRUE)
 
+	impacted[target] = TRUE
 	if(impacted[target])
 		return impact_flags | PROJECTILE_IMPACT_PASSTHROUGH | PROJECTILE_IMPACT_DUPLICATE | PROJECTILE_IMPACT_CONTINUE_LOOP
 	var/where_we_were = loc
@@ -1036,7 +1037,7 @@
 			. *= accuracy_overall_modify
 		else
 			// above 1: divisor for miss chance
-			. = 1 - ((1 - .) / accuracy_overall_modify)
+			. = 100 - ((100 - .) / accuracy_overall_modify)
 	if(target_opinion < 100)
 		. *= (target_opinion / 100)
 	else if(target_opinion > 100)
