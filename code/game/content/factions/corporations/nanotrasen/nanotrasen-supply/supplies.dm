@@ -145,7 +145,6 @@
 	contains = list(
 		/obj/item/grenade/explosive/ied/tyrmalin = 5,
 	)
-	worth = 375
 	container_type = /obj/structure/closet/crate/secure/gear
 	container_name = "Tyrmalin Mining Charge crate"
 	container_access = list(
@@ -157,7 +156,6 @@
 	contains = list(
 		/obj/item/grenade/explosive/ied/tyrmalin = 10,
 	)
-	worth = 740 //bulk buy is usually somewhat cheaper
 	container_type = /obj/structure/closet/crate/secure/gear
 	container_name = "Tyrmalin Mining Charge crate Bulkbuy!!!"
 	container_access = list(
