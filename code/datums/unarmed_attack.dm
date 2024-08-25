@@ -52,7 +52,7 @@ GLOBAL_LIST_EMPTY(unarmed_attack_cache)
 	var/eye_attack_text
 	var/eye_attack_text_victim
 
-/datum/unarmed_attack/operator""()
+/datum/unarmed_attack/proc/operator""()
 	return pick(attack_verb_legacy)
 
 //* Feedback

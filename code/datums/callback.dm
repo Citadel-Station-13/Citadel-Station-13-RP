@@ -70,6 +70,9 @@
 	if(usr)
 		user = WEAKREF(usr)
 
+/datum/callback/proc/operator""()
+	return "callback [object] ([ref(object)])[isdatum(object) ? " ([object.type])" : ""] args: \[[english_list(arguments)]\]"
+
 /**
  * Invoke this callback
  *
@@ -114,7 +117,7 @@
 		. = Invoke(arglist(args))
 	if(. == CALLBACK_SLEEP_SENTINEL)
 		. = null
-		CRASH("Callback slept on a no-sleeping invoke.")
+		CRASH("Callback [src] slept on a no-sleeping invoke.")
 
 /**
  * Invoke this callback async (waitfor=false)
