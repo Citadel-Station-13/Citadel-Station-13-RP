@@ -830,9 +830,9 @@
 /obj/projectile/proc/impact(atom/target, impact_flags, def_zone = src.def_zone || BP_TORSO)
 	SHOULD_NOT_OVERRIDE(TRUE)
 
-	impacted[target] = TRUE
 	if(impacted[target])
 		return impact_flags | PROJECTILE_IMPACT_PASSTHROUGH | PROJECTILE_IMPACT_DUPLICATE | PROJECTILE_IMPACT_CONTINUE_LOOP
+	impacted[target] = TRUE
 	var/where_we_were = loc
 	impact_flags = pre_impact(target, impact_flags, def_zone)
 	var/keep_going
@@ -1075,7 +1075,7 @@
 
 	//! LEGACY COMBAT CODE
 	// SHIM!!!
-	var/list/shieldcall_modified_args = target.run_damage_instance(damage, damage_type, damage_tier, damage_flag, damage_mode, ATTACK_TYPE_PROJECTILE, src, SHIELDCALL_FLAG_SECOND_CALL, hit_zone)
+	var/list/shieldcall_modified_args = target.check_damage_instance(damage, damage_type, damage_tier, damage_flag, damage_mode, ATTACK_TYPE_PROJECTILE, src, SHIELDCALL_FLAG_SECOND_CALL, hit_zone)
 	// todo: this handling very obviously should not be here
 	// dear lord this code is a dumpster fire
 	if(shieldcall_modified_args[SHIELDCALL_ARG_FLAGS] & SHIELDCALL_FLAGS_BLOCK_ATTACK)
