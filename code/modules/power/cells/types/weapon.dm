@@ -3,3 +3,6 @@
 
 /obj/item/cell/weapon
 	worth_intrinsic = 30
+	max_charge = POWER_CELL_CAPACITY_BASE * POWER_CELL_CAPACITY_MULTIPLIER_WEAPON
+	rendering_system = TRUE
+	indicator_count = 4

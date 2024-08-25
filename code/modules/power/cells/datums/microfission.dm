@@ -1,18 +1,23 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2024 Citadel Station Developers           *//
+
+POWER_CELL_GENERATE_TYPES(/datum/power_cell/microfission)
+/datum/power_cell/microfission
+	cell_name = "microfission"
+	cell_desc = "This one contains highly enriched nuclear material, which is constantly used to recharge the cell with an induced process."
+
+	typegen_visual_stripe_color = "#007700"
+	typegen_capacity_multiplier = 1 / 4 // we're, however, very small, because this is mostly just a nuclear accident in a can.
+
 #warn new way
 
 
-POWER_CELL_GENERATE_TYPES(/obj/item/cell/microfission)
 /**
  * COBALT-60: DROP AND RUN
  */
 /obj/item/cell/microfission
-	cell_name = "microfission"
-	cell_desc = "This one contains highly enriched nuclear material, which is constantly used to recharge the cell with an induced process."
 
 	can_be_recharged = FALSE
-	typegen_capacity_multiplier = 1 / 4 // we're, however, very small, because this is mostly just a nuclear accident in a can.
 
 	/// are we leaking?
 	var/leaking = FALSE

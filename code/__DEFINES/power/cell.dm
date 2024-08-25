@@ -26,41 +26,41 @@ DEFINE_BITFIELD_NEW(cell_type, list(
 	BITFIELD_NEW("Weapon", CELL_TYPE_WEAPON),
 ))
 
-/// generate /small, /medium, /large, and /weapon cells for a type
-#define POWER_CELL_GENERATE_TYPES(TYPEPATH) \
-##TYPEPATH/small { \
-	name = "small power cell (" + ##TYPEPATH::cell_name + ")"; \
-	desc = "A small power cell used in handheld electronics. " + ##TYPEPATH::cell_desc; \
-	cell_type = CELL_TYPE_SMALL; \
-	rendering_system = TRUE; \
-	indicator_count = 4; \
-	max_charge = ##TYPEPATH::typegen_capacity_small * ##TYPEPATH::typegen_capacity_multiplier; \
-	typegen_material_modify = ##TYPEPATH::typegen_material_small_multiply; \
+/// generate /small, /medium, /large, and /weapon cells for a power cell datum
+#define POWER_CELL_GENERATE_TYPES(DATUM_TYPEPATH) \
+/obj/item/cell/small/##TYPEPATH { \
+	name = "small power cell (" + ##DATUM_TYPEPATH::cell_name + ")"; \
+	desc = "A small power cell used in handheld electronics. " + ##DATUM_TYPEPATH::cell_desc; \
+	max_charge = /obj/item/cell/small::max_charge * ##DATUM_TYPEPATH::typegen_capacity_multiplier_small * ##DATUM_TYPEPATH::typegen_capacity_multiplier; \
+	typegen_material_modify = ##DATUM_TYPEPATH::typegen_material_multiply * ##DATUM_TYPEPATH::typegen_material_multiply_small; \
+	stripe_color = ##DATUM_TYPEPATH::typegen_visual_stripe_color; \
+	indicator_color = ##DATUM_TYPEPATH::typegen_visual_indicator_color; \
+	cell_datum = ##DATUM_TYPEPATH; \
 } \
-##TYPEPATH/medium { \
-	name = "medium power cell (" + ##TYPEPATH::cell_name + ")"; \
-	desc = "A decently sized cell used in many pieces of modern equipment. " + ##TYPEPATH::cell_desc; \
-	cell_type = CELL_TYPE_MEDIUM; \
-	rendering_system = TRUE; \
-	indicator_count = 4; \
-	max_charge = ##TYPEPATH::typegen_capacity_medium * ##TYPEPATH::typegen_capacity_multiplier; \
-	typegen_material_modify = ##TYPEPATH::typegen_material_medium_multiply; \
+/obj/item/cell/medium/##TYPEPATH { \
+	name = "medium power cell (" + ##DATUM_TYPEPATH::cell_name + ")"; \
+	desc = "A decently sized cell used in many pieces of modern equipment. " + ##DATUM_TYPEPATH::cell_desc; \
+	max_charge = /obj/item/cell/medium::max_charge * ##DATUM_TYPEPATH::typegen_capacitymultiplier__medium * ##DATUM_TYPEPATH::typegen_capacity_multiplier; \
+	typegen_material_modify = ##DATUM_TYPEPATH::typegen_material_multiply * ##DATUM_TYPEPATH::typegen_material_multiply_medium; \
+	stripe_color = ##DATUM_TYPEPATH::typegen_visual_stripe_color; \
+	indicator_color = ##DATUM_TYPEPATH::typegen_visual_indicator_color; \
+	cell_datum = ##DATUM_TYPEPATH; \
 } \
-##TYPEPATH/large { \
-	name = "large power cell (" + ##TYPEPATH::cell_name + ")"; \
-	desc = "A bulky power cell used in industrial equipment and power supply systems. " + ##TYPEPATH::cell_desc; \
-	cell_type = CELL_TYPE_LARGE; \
-	rendering_system = TRUE; \
-	indicator_count = 4; \
-	max_charge = ##TYPEPATH::typegen_capacity_large * ##TYPEPATH::typegen_capacity_multiplier; \
-	typegen_material_modify = ##TYPEPATH::typegen_material_large_multiply; \
+/obj/item/cell/large/##TYPEPATH { \
+	name = "large power cell (" + ##DATUM_TYPEPATH::cell_name + ")"; \
+	desc = "A bulky power cell used in industrial equipment and power supply systems. " + ##DATUM_TYPEPATH::cell_desc; \
+	max_charge = /obj/item/cell/large::max_charge * ##DATUM_TYPEPATH::typegen_capacity_multiplier_large * ##DATUM_TYPEPATH::typegen_capacity_multiplier; \
+	typegen_material_modify = ##DATUM_TYPEPATH::typegen_material_multiply * ##DATUM_TYPEPATH::typegen_material_multiply_large; \
+	stripe_color = ##DATUM_TYPEPATH::typegen_visual_stripe_color; \
+	indicator_color = ##DATUM_TYPEPATH::typegen_visual_indicator_color; \
+	cell_datum = ##DATUM_TYPEPATH; \
 } \
-##TYPEPATH/weapon { \
-	name = "weapon power cell (" + ##TYPEPATH::cell_name + ")"; \
-	desc = "A power cell accepted by many kinds of handheld weaponry. " + ##TYPEPATH::cell_desc; \
-	cell_type = CELL_TYPE_WEAPON; \
-	rendering_system = TRUE; \
-	indicator_count = 4; \
-	max_charge = ##TYPEPATH::typegen_capacity_weapon * ##TYPEPATH::typegen_capacity_multiplier; \
-	typegen_material_modify = ##TYPEPATH::typegen_material_weapon_multiply; \
+/obj/item/cell/weapon/##TYPEPATH { \
+	name = "weapon power cell (" + ##DATUM_TYPEPATH::cell_name + ")"; \
+	desc = "A power cell accepted by many kinds of handheld weaponry. " + ##DATUM_TYPEPATH::cell_desc; \
+	max_charge =  /obj/item/cell/weapon::max_charge + ##DATUM_TYPEPATH::typegen_capacity_multiplier_weapon * ##DATUM_TYPEPATH::typegen_capacity_multiplier; \
+	typegen_material_modify = ##DATUM_TYPEPATH::typegen_material_multiply * ##DATUM_TYPEPATH::typegen_material_multiply_weapon; \
+	stripe_color = ##DATUM_TYPEPATH::typegen_visual_stripe_color; \
+	indicator_color = ##DATUM_TYPEPATH::typegen_visual_indicator_color; \
+	cell_datum = ##DATUM_TYPEPATH; \
 }

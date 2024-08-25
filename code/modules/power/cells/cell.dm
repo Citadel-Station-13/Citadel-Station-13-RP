@@ -19,27 +19,13 @@
 	/// cell component; loaded at init, set to typepath or anonymous type
 	var/datum/power_cell/cell_datum
 
-	//* Capacity - Type Generation *//
-
-	var/typegen_capacity_multiplier = 1
-	var/typegen_capacity_small = POWER_CELL_CAPACITY_SMALL
-	var/typegen_capacity_medium = POWER_CELL_CAPACITY_MEDIUM
-	var/typegen_capacity_large = POWER_CELL_CAPACITY_LARGE
-	var/typegen_capacity_weapon = POWER_CELL_CAPACITY_WEAPON
-
-	//* Materials - Type Generation *//
-
-	var/typegen_material_modify = null
-	var/typegen_material_small_multiply = 1
-	var/typegen_material_medium_multiply = 5
-	var/typegen_material_large_multiply = 20
-	var/typegen_material_weapon_multiply = 3.5
-
 	//* Charge *//
 	/// current charge
 	var/charge
 	/// maximum charge
-	var/max_charge = 1000
+	///
+	/// * also used as a base for type generation
+	var/max_charge = POWER_CELL_CAPACITY_BASE
 
 	//* Configuration *//
 	/// allow rechargers
@@ -55,6 +41,10 @@
 	var/indicator_color = "#00aa00"
 	/// our stripe color; null for no stripe
 	var/stripe_color
+
+	//* -- Set by type generation -- *//
+
+	var/typegen_material_modify = null
 
 	//* Self Recharge *//
 	/// do we self recharge?

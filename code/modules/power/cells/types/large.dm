@@ -3,8 +3,6 @@
 
 /obj/item/cell/large
 	worth_intrinsic = 100
-
-/obj/item/cell/large/infinite
-	name = "large power cell (fractal)"
-	desc = "This one is unlike anything you've seen before, boasting a seemingly limitless energy output."
-	cell_datum = /datum/power_cell/infinite
+	max_charge = POWER_CELL_CAPACITY_BASE * POWER_CELL_CAPACITY_MULTIPLIER_LARGE
+	rendering_system = TRUE
+	indicator_count = 4

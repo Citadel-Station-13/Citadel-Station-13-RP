@@ -3,7 +3,7 @@
 
 #warn new way
 
-POWER_CELL_GENERATE_TYPES(/obj/item/cell/basic)
+// POWER_CELL_GENERATE_TYPES(/obj/item/cell/basic)
 /obj/item/cell/basic
 	cell_name = "basic"
 	cell_desc = "Tier 1: This one is a standard design, and performs about what you expect for a power cell."
