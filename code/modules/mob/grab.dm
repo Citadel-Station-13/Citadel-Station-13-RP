@@ -20,13 +20,17 @@
 
 /**
  * returns everyone we're grabbing, recursively; this can include ourselves!
+ *
+ * @return grabbed mobs associated to states
  */
-/mob/proc/get_grabbing_recursive(list/L = list())
+/mob/proc/get_grabbing_recursive(list/L = list(), safety = 15)
 	RETURN_TYPE(/list)
+	if(safety <= 0)
+		CRASH("infinite loop guard tripped")
 	. = L
 	for(var/obj/item/grab/G in get_held_items())
 		.[G.affecting] = max(.[G.affecting], G.state)
-		get_grabbing_recursive(G.affecting)
+		get_grabbing_recursive(G.affecting, --safety)
 
 /**
  * check the grab state of us to someone
