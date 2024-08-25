@@ -338,6 +338,8 @@
  * @return SHIELDCALL_* flags; these override the caller's!
  */
 /datum/parry_frame/proc/perform_aftereffects(atom/defending, attack_type, efficiency, datum/weapon, shieldcall_flags, datum/event_args/actor/clickchain/e_args)
+	. = shieldcall_flags
+
 	var/atom/movable/aggressor
 
 	// detect aggressor
@@ -378,8 +380,6 @@
 			//       we need clickchain flags to be actually checked in active block/parry so that REFLEX_COUNTER flagged clicks don't get re-parried.
 			pass()
 
-	return shieldcall_flags
-
 /**
  * Called to transmute an instance of damage into another instance of damage and apply it to the defender.
  */
@@ -410,17 +410,17 @@
 	frame.on_parry(ATTACK_TYPE_PROJECTILE, bullet_act_args[BULLET_ACT_ARG_PROJECTILE], ., efficiency)
 
 /datum/parry_frame/proc/handle_bullet(atom/defending, shieldcall_returns, fake_attack, efficiency, list/bullet_act_args, tool_text)
+	. = shieldcall_returns
 	// todo: doesn't take into account any damage randomization
 	var/obj/projectile/proj = bullet_act_args[BULLET_ACT_ARG_PROJECTILE]
 	var/estimated_severity = clamp(proj.damage / 20 * 75, 0, 100)
 	bullet_act_args[BULLET_ACT_ARG_EFFICIENCY] = bullet_act_args[BULLET_ACT_ARG_EFFICIENCY] * clamp(efficiency, 0, 1)
-	shieldcall_returns = perform_aftereffects(defending, ATTACK_TYPE_PROJECTILE, efficiency, proj, shieldcall_returns)
-	perform_audiovisuals(defending, ATTACK_TYPE_PROJECTILE, efficiency, proj, shieldcall_returns, estimated_severity, proj, tool_text)
+	. = perform_aftereffects(defending, ATTACK_TYPE_PROJECTILE, efficiency, proj, .)
+	perform_audiovisuals(defending, ATTACK_TYPE_PROJECTILE, efficiency, proj, ., estimated_severity, proj, tool_text)
 	if(. & (SHIELDCALL_FLAG_ATTACK_PASSTHROUGH | SHIELDCALL_FLAG_ATTACK_REDIRECT))
 		bullet_act_args[BULLET_ACT_ARG_FLAGS] |= PROJECTILE_IMPACT_REFLECT
 	if(parry_always_prevents_contact || (parry_can_prevent_contact && (efficiency >= parry_efficiency_blocked)))
 		bullet_act_args[BULLET_ACT_ARG_FLAGS] |= PROJECTILE_IMPACT_BLOCKED
-	return shieldcall_returns
 
 //* Bindings - Melee *//
 
@@ -435,14 +435,14 @@
 	frame.on_parry(ATTACK_TYPE_MELEE, weapon, ., efficiency)
 
 /datum/parry_frame/proc/handle_item_melee(atom/defending, shieldcall_returns, fake_attack, efficiency, obj/item/weapon, datum/event_args/actor/clickchain/e_args, tool_text)
+	. = shieldcall_returns
 	// todo: doesn't take into account any damage randomization
 	var/estimated_severity = clamp(weapon.damage_force * e_args.damage_multiplier / 20 * 75, 0, 100)
 	e_args.damage_multiplier *= clamp(efficiency, 0, 1)
-	shieldcall_returns = perform_aftereffects(defending, ATTACK_TYPE_MELEE, efficiency, weapon, shieldcall_returns, e_args)
-	perform_audiovisuals(defending, ATTACK_TYPE_MELEE, efficiency, weapon, shieldcall_returns, estimated_severity, weapon, tool_text)
+	. = perform_aftereffects(defending, ATTACK_TYPE_MELEE, efficiency, weapon, ., e_args)
+	perform_audiovisuals(defending, ATTACK_TYPE_MELEE, efficiency, weapon, ., estimated_severity, weapon, tool_text)
 	if(parry_always_prevents_contact || (parry_can_prevent_contact && (efficiency >= parry_efficiency_blocked)))
 		. |= SHIELDCALL_FLAG_ATTACK_BLOCKED
-	return shieldcall_returns
 
 /datum/shieldcall/bound/parry_frame/handle_unarmed_melee(atom/defending, shieldcall_returns, fake_attack, datum/unarmed_attack/style, datum/event_args/actor/clickchain/e_args)
 	var/datum/component/parry_frame/frame = bound
@@ -459,11 +459,10 @@
 	// todo: doesn't take into account any damage randomization
 	var/estimated_severity = clamp(style.damage * e_args.damage_multiplier / 20 * 75, 0, 100)
 	e_args.damage_multiplier *= clamp(efficiency, 0, 1)
-	shieldcall_returns = perform_aftereffects(defending, ATTACK_TYPE_UNARMED, efficiency, style, shieldcall_returns, e_args)
-	perform_audiovisuals(defending, ATTACK_TYPE_UNARMED, efficiency, style, shieldcall_returns, estimated_severity, style, tool_text)
+	. = perform_aftereffects(defending, ATTACK_TYPE_UNARMED, efficiency, style, ., e_args)
+	perform_audiovisuals(defending, ATTACK_TYPE_UNARMED, efficiency, style, ., estimated_severity, style, tool_text)
 	if(parry_always_prevents_contact || (parry_can_prevent_contact && (efficiency >= parry_efficiency_blocked)))
 		. |= SHIELDCALL_FLAG_ATTACK_BLOCKED
-	return shieldcall_returns
 
 /datum/shieldcall/bound/parry_frame/handle_touch(atom/defending, shieldcall_returns, fake_attack, datum/event_args/actor/clickchain/e_args, contact_flags, contact_specific)
 	var/datum/component/parry_frame/frame = bound
@@ -480,11 +479,10 @@
 	// todo: doesn't take into account any damage randomization
 	var/estimated_severity = 50
 	e_args.damage_multiplier *= clamp(efficiency, 0, 1)
-	shieldcall_returns = perform_aftereffects(defending, ATTACK_TYPE_TOUCH, efficiency, null, shieldcall_returns, e_args)
-	perform_audiovisuals(defending, ATTACK_TYPE_TOUCH, efficiency, null, shieldcall_returns, estimated_severity, e_args.performer, tool_text)
+	. = perform_aftereffects(defending, ATTACK_TYPE_TOUCH, efficiency, null, ., e_args)
+	perform_audiovisuals(defending, ATTACK_TYPE_TOUCH, efficiency, null, ., estimated_severity, e_args.performer, tool_text)
 	if(parry_always_prevents_contact || (parry_can_prevent_contact && (efficiency >= parry_efficiency_blocked)))
 		. |= SHIELDCALL_FLAG_ATTACK_BLOCKED
-	return shieldcall_returns
 
 //* Bindings - Thrown *//
 
@@ -504,11 +502,10 @@
 	// todo: why isn't thrownthing just with a get_damage() or a better inflict_damage() and get_damage_tuple() idfk man
 	var/estimated_severity = clamp(thrown.thrownthing.throw_force * thrown.get_damage_multiplier() / 20 * 75, 0, 100)
 	thrown.damage_multiplier *= clamp(efficiency, 0, 1)
-	shieldcall_returns = perform_aftereffects(defending, ATTACK_TYPE_THROWN, efficiency, thrown, shieldcall_returns, thrown.thrownthing, tool_text)
-	perform_audiovisuals(defending, ATTACK_TYPE_THROWN, efficiency, thrown, shieldcall_returns, estimated_severity)
+	. = perform_aftereffects(defending, ATTACK_TYPE_THROWN, efficiency, thrown, ., thrown.thrownthing, tool_text)
+	perform_audiovisuals(defending, ATTACK_TYPE_THROWN, efficiency, thrown, ., estimated_severity)
 	if(parry_always_prevents_contact || (parry_can_prevent_contact && (efficiency >= parry_efficiency_blocked)))
 		. |= SHIELDCALL_FLAG_ATTACK_BLOCKED
-	return shieldcall_returns
 
 //* -- VFX Render -- *//
 
