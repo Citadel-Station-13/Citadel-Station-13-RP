@@ -28,6 +28,7 @@
 
 /obj/item/gun/ballistic/nt_expeditionary/heavy_rifle
 	abstract_type = /obj/item/gun/ballistic/nt_expeditionary/heavy_rifle
+	icon = 'icons/content/factions/corporations/nanotrasen/items/guns/expeditionary/rifle-heavy.dmi'
 	caliber = /datum/ammo_caliber/nt_expeditionary/heavy_rifle
 
 #warn sprites

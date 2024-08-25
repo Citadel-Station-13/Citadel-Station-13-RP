@@ -28,6 +28,7 @@
 
 /obj/item/gun/ballistic/nt_expeditionary/light_sidearm
 	abstract_type = /obj/item/gun/ballistic/nt_expeditionary/light_sidearm
+	icon = 'icons/content/factions/corporations/nanotrasen/items/guns/expeditionary/sidearm-light.dmi'
 	caliber = /datum/ammo_caliber/nt_expeditionary/light_sidearm
 
 #warn sprites

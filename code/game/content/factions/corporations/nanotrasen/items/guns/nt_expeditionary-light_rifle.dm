@@ -28,6 +28,7 @@
 
 /obj/item/gun/ballistic/nt_expeditionary/light_rifle
 	abstract_type = /obj/item/gun/ballistic/nt_expeditionary/light_rifle
+	icon = 'icons/content/factions/corporations/nanotrasen/items/guns/expeditionary/rifle-light.dmi'
 	caliber = /datum/ammo_caliber/nt_expeditionary/light_rifle
 
 #warn sprites
