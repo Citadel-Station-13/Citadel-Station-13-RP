@@ -65,7 +65,7 @@
 
 /mob/living/simple_mob/construct/juggernaut/on_bullet_act(obj/projectile/proj, impact_flags, list/bullet_act_args)
 	var/reflectchance = 80 - round(proj.damage/3)
-	if(prob(reflectchance))
+	if(prob(reflectchance) && !istype(src, /mob/living/simple_mob/construct/juggernaut/behemoth))
 		var/damage_mod = rand(2,4)
 		var/projectile_dam_type = proj.damage_type
 		var/incoming_damage = (round(proj.damage / damage_mod) - (round((proj.damage / damage_mod) * 0.3)))
