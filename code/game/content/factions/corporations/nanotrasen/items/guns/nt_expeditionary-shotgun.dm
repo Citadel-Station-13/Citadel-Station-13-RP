@@ -1,5 +1,5 @@
 //* This file is explicitly licensed under the MIT license. *//
-//* Copyright (c) 2024 silicons                             *//
+//* Copyright (c) 2024 Citadel Station Developers           *//
 
 // todo: while this is all valid code, this file is commented out because the current weapon racking/pumping/chamber charging system is not good enough to support this.
 
