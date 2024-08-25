@@ -118,7 +118,7 @@
 /datum/rogue/asteroid/predef/cargo/angry/New()
 	..()
 	spot_add(2,2,/obj/random/roguemineloot) //EXTRA loot!
-	spot_add(2,2,/mob/living/simple_mob/animal/space/alien) //GRRR
+	spot_add(2,2,/mob/living/simple_mob/animal/space/alien/basic_spitter) //GRRR
 
 //Longer cargo container for higher difficulties
 /datum/rogue/asteroid/predef/cargo_large
