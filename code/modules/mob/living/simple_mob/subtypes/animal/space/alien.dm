@@ -532,13 +532,7 @@
 	var/tunnel_warning = 0.5 SECONDS	// How long the dig telegraphing is.
 	var/tunnel_tile_speed = 2			// How long to wait between each tile. Higher numbers result in an easier to dodge tunnel attack.
 
-/mob/living/simple_mob/animal/giant_spider/tunneler/frequent
-	special_attack_cooldown = 5 SECONDS
-
-/mob/living/simple_mob/animal/giant_spider/tunneler/fast
-	tunnel_tile_speed = 1
-
-/mob/living/simple_mob/animal/giant_spider/tunneler/should_special_attack(atom/A)
+/mob/living/simple_mob/animal/space/alien/special/burrower/should_special_attack(atom/A)
 	// Make sure its possible for the spider to reach the target so it doesn't try to go through a window.
 	var/turf/destination = get_turf(A)
 	var/turf/starting_turf = get_turf(src)
