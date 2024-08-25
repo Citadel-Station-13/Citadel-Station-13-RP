@@ -55,31 +55,32 @@
 	/// initialized on fire()
 	var/list/impacted
 
-	//*         -- Combat - Accuracy --              *//
-	//* https://www.desmos.com/calculator/ofz29ttxlw *//
+	//*            -- Combat - Accuracy --            *//
+	//* These are applied in additional to mob
+	//* evasion and miss handling! Projectiles should *//
+	//* generally be pretty accurate for that reason. *//
 
-	/// if enabled, baymiss is entirely disabled
+	/// if enabled, projectile-side baymiss is entirely disabled
+	///
+	/// * the target can still forcefully miss us, unfortunately, if it doesn't use the standard API
+	/// * this might be violently fixed in the future
 	var/accuracy_disabled = FALSE
 	/// perfect accuracy below this range (in pixels)
-	/// see desmos
 	///
 	/// * this means the projectile doesn't enforce inaccuracy; not the target!
 	/// * remember that even if a projectile clips a single pixel on a target turf, it hits.
 	var/accuracy_perfect_range = WORLD_ICON_SIZE * 5
-	/// +- tweak to calculated probability
-	/// see desmos
-	var/accuracy_curve_y_adjust = 15
-	/// this is really hard to explain, but it basically controls how steep the sigmoid
-	/// curve used for accuracy is
-	/// see desmos
-	var/accuracy_curve_factor = 11
-	/// x-shift
-	/// see desmos
-	var/accuracy_curve_x_shift = -8.4
-	/// accuracy range floor; accuracy doesn't decrease past this
-	/// see desmos
-	var/accuracy_floor_range = WORLD_ICON_SIZE * 30
+	/// linear - accuracy outside of perfect range
+	///
+	/// * [0, 100] inclusive as %
+	var/accuracy_drop_start = 100
+	/// linear - hit % falloff per pixel
+	var/accuracy_drop_slope = 5 / WORLD_ICON_SIZE
+	/// linear - lowest possible accuracy to drop to
+	var/accuracy_drop_end = 20
 	/// alter end result hit probability by this value
+	///
+	/// todo: is this really the best way?
 	///
 	/// * this is a multiplier for hit chance if less than 1
 	/// * this is a divisor for miss chance if more than 1
@@ -1027,10 +1028,10 @@
 	. = 100
 	// perform accuracy curving
 	if(distance > accuracy_perfect_range)
-		// the 'd' stands for 'go to desmos'; link at the top of the file in 'Combat - Accuracy'.
-		var/d = (min(distance, accuracy_floor_range) - accuracy_curve_x_shift - accuracy_curve_factor * 2) / accuracy_curve_factor
-		var/curved_percent = min(100, (-(d / sqrt(1 + d ** 2)) * 50) + 50 + accuracy_curve_y_adjust)
-		. *= curved_percent / 100
+		. = accuracy_drop_start
+		var/extra_distance = distance - accuracy_perfect_range
+		var/drop_percent = extra_distance * accuracy_drop_slope
+		. = clamp(. - drop_percent, ., accuracy_drop_end)
 	if(accuracy_overall_modify != 1)
 		if(accuracy_overall_modify < 1)
 			// below 1: multiplier for hit chance
@@ -1041,9 +1042,7 @@
 	if(target_opinion < 100)
 		. *= (target_opinion / 100)
 	else if(target_opinion > 100)
-		if(. < 100)
-			var/missing = 100 - .
-			. += missing - (missing / (target_opinion / 100))
+		. = 100 - ((100 - .) / (target_opinion / 100))
 
 /**
  * processes zone accuracy
