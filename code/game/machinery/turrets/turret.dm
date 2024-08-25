@@ -441,7 +441,8 @@
 		else
 			to_chat(user, "<span class='notice'>Access denied.</span>")
 
-		..()
+	else
+		return ..()
 
 /obj/machinery/porta_turret/emag_act(remaining_charges, mob/user)
 	if(!emagged)
