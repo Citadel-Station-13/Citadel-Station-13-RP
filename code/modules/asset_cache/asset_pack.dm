@@ -101,6 +101,15 @@
 	loaded = ASSET_FULLY_LOADED
 
 /**
+ * unload / reset
+ */
+/datum/asset_pack/proc/unload()
+	item_lookup = null
+	packed_items = null
+	loaded_urls = null
+	loaded = ASSET_NOT_LOADED
+
+/**
  * ensures we are pushed to a transport
  */
 /datum/asset_pack/proc/ensure_ready()

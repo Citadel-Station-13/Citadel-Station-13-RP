@@ -312,16 +312,16 @@
 	var/obj/item/reagent_containers/glass/beaker/current_beaker
 
 /obj/item/integrated_circuit/input/beaker_connector/ask_for_input(mob/living/user, obj/item/I,  a_intent)
-	if(!isobj(I))
-		return FALSE
 	if(!current_beaker)
-		attack_self(user)
-	else
+		if(!isobj(I))
+			return FALSE
 		attackby_react(I, user, a_intent)
+	else
+		attack_self(user)
 
 /obj/item/integrated_circuit/input/beaker_connector/attackby_react(var/obj/item/reagent_containers/I, var/mob/living/user)
 	//Check if it truly is a reagent container
-	if(!istype(I,/obj/item/reagent_containers/glass/beaker))
+	if(!(istype(I,/obj/item/reagent_containers/glass/beaker) || istype(I,/obj/item/reagent_containers/glass/hypovial)))
 		to_chat(user,"<span class='warning'>The [I.name] doesn't seem to fit in here.</span>")
 		return
 

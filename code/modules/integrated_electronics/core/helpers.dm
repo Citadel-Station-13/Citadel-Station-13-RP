@@ -69,7 +69,8 @@
 				new_data[i] = WEAKREF(dataRef)
 		return new_data
 	if(isweakref(data))
-		return data.resolve()
+		var/datum/weakref/d = data
+		return d.resolve()
 	return data
 
 /// Returns a list of parameters necessary to locate a pin in the assembly: component number, pin type and pin number
