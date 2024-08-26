@@ -1702,7 +1702,8 @@
 	},
 /obj/machinery/conveyor_switch{
 	pixel_y = 12;
-	tag = "cargoshuttle"
+	tag = "cargoshuttle";
+	id = "CVLoad"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
@@ -2136,7 +2137,8 @@
 "bxV" = (
 /obj/machinery/conveyor{
 	dir = 4;
-	tag = "cargoshuttle"
+	tag = "cargoshuttle";
+	id = "CVLoad"
 	},
 /obj/structure/railing,
 /obj/structure/railing{
@@ -2258,7 +2260,8 @@
 	},
 /obj/machinery/conveyor{
 	dir = 4;
-	tag = "cargoshuttle"
+	tag = "cargoshuttle";
+	id = "CVLoad"
 	},
 /obj/structure/railing,
 /turf/simulated/floor/plating,
@@ -2381,7 +2384,8 @@
 "bFI" = (
 /obj/structure/plasticflaps,
 /obj/machinery/conveyor{
-	tag = "mailroom"
+	tag = "mailroom";
+	id = "DLBelt"
 	},
 /turf/simulated/floor/plating,
 /area/quartermaster/delivery)
@@ -6961,7 +6965,8 @@
 	pixel_x = -32
 	},
 /obj/machinery/conveyor{
-	tag = "mailroom"
+	tag = "mailroom";
+	id = "DLBelt"
 	},
 /turf/simulated/floor/plating,
 /area/quartermaster/delivery)
@@ -9100,7 +9105,8 @@
 "gbL" = (
 /obj/machinery/conveyor{
 	dir = 4;
-	tag = "cargoshuttle"
+	tag = "cargoshuttle";
+	id = "CVLoad"
 	},
 /obj/structure/railing,
 /obj/machinery/camera/network/cargo,
@@ -10301,7 +10307,8 @@
 	},
 /obj/structure/disposalpipe/trunk,
 /obj/machinery/conveyor{
-	tag = "mailroom"
+	tag = "mailroom";
+	id = "DLBelt"
 	},
 /turf/simulated/floor/plating,
 /area/quartermaster/delivery)
@@ -10543,7 +10550,8 @@
 	dir = 1
 	},
 /obj/machinery/conveyor{
-	tag = "mailroom"
+	tag = "mailroom";
+	id = "DLBelt"
 	},
 /turf/simulated/floor/plating,
 /area/quartermaster/delivery)
@@ -18431,7 +18439,8 @@
 "lJv" = (
 /obj/machinery/conveyor{
 	dir = 4;
-	tag = "cargoshuttle"
+	tag = "cargoshuttle";
+	id = "CVLoad"
 	},
 /obj/machinery/door/blast/shutters{
 	density = 0;
@@ -23926,7 +23935,8 @@
 "oTu" = (
 /obj/machinery/conveyor_switch{
 	pixel_y = 12;
-	tag = "cargoshuttle"
+	tag = "cargoshuttle";
+	id = "CVLoad"
 	},
 /obj/effect/floor_decal/industrial/warning{
 	dir = 5
@@ -28591,7 +28601,8 @@
 "rEL" = (
 /obj/machinery/conveyor{
 	dir = 4;
-	tag = "cargoshuttle"
+	tag = "cargoshuttle";
+	id = "CVLoad"
 	},
 /obj/machinery/light{
 	dir = 8
@@ -30802,7 +30813,8 @@
 "sMB" = (
 /obj/machinery/conveyor{
 	dir = 4;
-	tag = "cargoshuttle"
+	tag = "cargoshuttle";
+	id = "CVLoad"
 	},
 /obj/machinery/door/firedoor/glass,
 /obj/structure/plasticflaps/mining,
@@ -31830,7 +31842,8 @@
 	dir = 4
 	},
 /obj/machinery/conveyor{
-	tag = "mailroom"
+	tag = "mailroom";
+	id = "DLBelt"
 	},
 /turf/simulated/floor/plating,
 /area/quartermaster/delivery)
@@ -32223,7 +32236,8 @@
 	},
 /obj/machinery/conveyor_switch/oneway{
 	convdir = -1;
-	tag = "mailroom"
+	tag = "mailroom";
+	id = "DLBelt"
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/quartermaster/delivery)
@@ -33143,7 +33157,8 @@
 "udl" = (
 /obj/machinery/conveyor{
 	dir = 4;
-	tag = "cargoshuttle"
+	tag = "cargoshuttle";
+	id = "CVLoad"
 	},
 /obj/structure/railing,
 /turf/simulated/floor/plating,
@@ -34887,7 +34902,8 @@
 "vaP" = (
 /obj/machinery/conveyor{
 	dir = 4;
-	tag = "cargoshuttle"
+	tag = "cargoshuttle";
+	id = "CVLoad"
 	},
 /obj/structure/railing,
 /turf/simulated/floor/plating,
@@ -36741,7 +36757,8 @@
 "wjJ" = (
 /obj/machinery/conveyor{
 	dir = 4;
-	tag = "cargoshuttle"
+	tag = "cargoshuttle";
+	id = "CVLoad"
 	},
 /turf/simulated/floor/plating,
 /area/quartermaster/hallway)
