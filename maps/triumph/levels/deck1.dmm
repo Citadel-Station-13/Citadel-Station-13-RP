@@ -1488,11 +1488,6 @@
 	},
 /turf/simulated/floor/reinforced/airless,
 /area/engineering/portnacelle)
-"eT" = (
-/obj/structure/catwalk,
-/obj/structure/railing,
-/turf/space/basic,
-/area/space)
 "eU" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 8
@@ -5392,14 +5387,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/engineering)
-"sa" = (
-/obj/structure/catwalk,
-/obj/structure/railing,
-/obj/structure/railing{
-	dir = 8
-	},
-/turf/space/basic,
-/area/space)
 "sc" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -6061,11 +6048,6 @@
 /obj/effect/paint_stripe/sun,
 /turf/simulated/floor,
 /area/storage/tech)
-"ua" = (
-/obj/structure/catwalk,
-/obj/structure/railing,
-/turf/space,
-/area/space)
 "ub" = (
 /obj/structure/cable/green{
 	icon_state = "1-8"
@@ -8743,6 +8725,16 @@
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/workshop)
+"Dn" = (
+/obj/machinery/atmospherics/pipe/simple/heat_exchanging{
+	dir = 10
+	},
+/obj/machinery/sparker{
+	id = "portnacelle_igniter";
+	pixel_x = 24
+	},
+/turf/simulated/floor/reinforced/airless,
+/area/engineering/portnacelle)
 "Do" = (
 /obj/structure/atmos_tank_segment/n2o2{
 	icon_state = "4,3"
@@ -11037,6 +11029,14 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/engineering/engine_airlock)
+"KW" = (
+/obj/structure/catwalk,
+/obj/structure/railing,
+/obj/structure/railing{
+	dir = 4
+	},
+/turf/space/basic,
+/area/space)
 "KX" = (
 /turf/simulated/wall/prepainted/engineering,
 /area/tcommsat/powercontrol)
@@ -11277,14 +11277,6 @@
 "LH" = (
 /obj/structure/catwalk,
 /turf/space,
-/area/space)
-"LI" = (
-/obj/structure/catwalk,
-/obj/structure/railing,
-/obj/structure/railing{
-	dir = 4
-	},
-/turf/space/basic,
 /area/space)
 "LJ" = (
 /obj/structure/atmos_tank_segment/air{
@@ -11952,16 +11944,10 @@
 /turf/simulated/floor/reinforced/airless,
 /area/engineering/portnacelle)
 "NY" = (
-/obj/machinery/sparker{
-	id = "starboardnacelle_igniter";
-	pixel_x = 24
-	},
-/obj/machinery/atmospherics/pipe/simple/heat_exchanging,
-/obj/machinery/atmospherics/pipe/simple/heat_exchanging{
-	dir = 4
-	},
-/turf/simulated/floor/reinforced/airless,
-/area/engineering/starboardnacelle)
+/obj/structure/catwalk,
+/obj/structure/railing,
+/turf/space/basic,
+/area/space)
 "Oa" = (
 /obj/machinery/atmospherics/pipe/simple/visible/cyan{
 	dir = 4
@@ -12206,6 +12192,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging{
 	dir = 9
+	},
+/obj/machinery/sparker{
+	id = "starboardnacelle_igniter";
+	pixel_x = 24
 	},
 /turf/simulated/floor/reinforced/airless,
 /area/engineering/starboardnacelle)
@@ -12763,16 +12753,10 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/atmos/storage)
 "QB" = (
-/obj/machinery/sparker{
-	id = "portnacelle_igniter";
-	pixel_x = 24
-	},
-/obj/machinery/atmospherics/pipe/simple/heat_exchanging,
-/obj/machinery/atmospherics/pipe/simple/heat_exchanging{
-	dir = 4
-	},
-/turf/simulated/floor/reinforced/airless,
-/area/engineering/portnacelle)
+/obj/structure/catwalk,
+/obj/structure/railing,
+/turf/space,
+/area/space)
 "QC" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/effect/floor_decal/industrial/warning{
@@ -12815,6 +12799,14 @@
 	},
 /turf/simulated/floor/tiled/hydro,
 /area/engineering/atmos)
+"QK" = (
+/obj/structure/catwalk,
+/obj/structure/railing,
+/obj/structure/railing{
+	dir = 8
+	},
+/turf/space/basic,
+/area/space)
 "QM" = (
 /obj/machinery/fire_alarm/east_mount,
 /obj/machinery/light{
@@ -28231,7 +28223,7 @@ Bp
 Wy
 oy
 LH
-sa
+QK
 he
 he
 TP
@@ -28425,7 +28417,7 @@ FQ
 Wy
 Oq
 Oq
-eT
+NY
 he
 he
 TP
@@ -28619,7 +28611,7 @@ kh
 JJ
 Zm
 Oq
-ua
+QB
 TP
 TP
 TP
@@ -28813,7 +28805,7 @@ Fi
 tA
 Zm
 Oq
-eT
+NY
 he
 he
 he
@@ -29007,7 +28999,7 @@ hw
 hw
 Zm
 Oq
-eT
+NY
 he
 he
 he
@@ -29201,7 +29193,7 @@ Jx
 mp
 Zm
 Oq
-eT
+NY
 he
 he
 he
@@ -29395,7 +29387,7 @@ Jx
 jU
 Zm
 Oq
-eT
+NY
 he
 he
 he
@@ -29551,7 +29543,7 @@ SP
 EZ
 Bx
 EY
-QB
+iF
 Cw
 Cw
 zM
@@ -29585,11 +29577,11 @@ Zm
 ON
 Nw
 Nw
-NY
+Jx
 mp
 Zm
 Oq
-eT
+NY
 he
 he
 he
@@ -29745,7 +29737,7 @@ SP
 EZ
 Bx
 Bx
-EY
+Dn
 Cw
 Cw
 Lb
@@ -29783,7 +29775,7 @@ OE
 Zm
 Zm
 Oq
-ua
+QB
 TP
 TP
 TP
@@ -29977,7 +29969,7 @@ Zm
 Zm
 Oq
 Oq
-eT
+NY
 he
 he
 he
@@ -30171,7 +30163,7 @@ TU
 TU
 TU
 SP
-LI
+KW
 he
 he
 he
