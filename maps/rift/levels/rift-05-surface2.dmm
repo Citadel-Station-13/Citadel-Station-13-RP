@@ -7626,7 +7626,9 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/heads/hos)
 "eTn" = (
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks{
+	id = "robotics_inner"
+	},
 /obj/machinery/door/blast/shutters{
 	density = 0;
 	dir = 2;
@@ -31433,7 +31435,9 @@
 /turf/simulated/floor/tiled/steel,
 /area/rift/stairwell/primary/surfacetwo)
 "tTI" = (
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks{
+	id = "robotics_outer"
+	},
 /obj/machinery/door/blast/shutters{
 	density = 0;
 	dir = 2;
