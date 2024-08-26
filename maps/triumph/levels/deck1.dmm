@@ -1488,6 +1488,11 @@
 	},
 /turf/simulated/floor/reinforced/airless,
 /area/engineering/portnacelle)
+"eT" = (
+/obj/structure/catwalk,
+/obj/structure/railing,
+/turf/space/basic,
+/area/space)
 "eU" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 8
@@ -5387,6 +5392,14 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/engineering)
+"sa" = (
+/obj/structure/catwalk,
+/obj/structure/railing,
+/obj/structure/railing{
+	dir = 8
+	},
+/turf/space/basic,
+/area/space)
 "sc" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -6048,6 +6061,11 @@
 /obj/effect/paint_stripe/sun,
 /turf/simulated/floor,
 /area/storage/tech)
+"ua" = (
+/obj/structure/catwalk,
+/obj/structure/railing,
+/turf/space,
+/area/space)
 "ub" = (
 /obj/structure/cable/green{
 	icon_state = "1-8"
@@ -11259,6 +11277,14 @@
 "LH" = (
 /obj/structure/catwalk,
 /turf/space,
+/area/space)
+"LI" = (
+/obj/structure/catwalk,
+/obj/structure/railing,
+/obj/structure/railing{
+	dir = 4
+	},
+/turf/space/basic,
 /area/space)
 "LJ" = (
 /obj/structure/atmos_tank_segment/air{
@@ -28010,8 +28036,8 @@ be
 fJ
 Wy
 oy
-Ap
-he
+gN
+aw
 he
 he
 TP
@@ -28204,8 +28230,8 @@ Az
 Bp
 Wy
 oy
-Ap
-he
+LH
+sa
 he
 he
 TP
@@ -28399,7 +28425,7 @@ FQ
 Wy
 Oq
 Oq
-he
+eT
 he
 he
 TP
@@ -28593,7 +28619,7 @@ kh
 JJ
 Zm
 Oq
-TP
+ua
 TP
 TP
 TP
@@ -28787,7 +28813,7 @@ Fi
 tA
 Zm
 Oq
-he
+eT
 he
 he
 he
@@ -28981,7 +29007,7 @@ hw
 hw
 Zm
 Oq
-he
+eT
 he
 he
 he
@@ -29175,7 +29201,7 @@ Jx
 mp
 Zm
 Oq
-he
+eT
 he
 he
 he
@@ -29369,7 +29395,7 @@ Jx
 jU
 Zm
 Oq
-he
+eT
 he
 he
 he
@@ -29563,7 +29589,7 @@ NY
 mp
 Zm
 Oq
-he
+eT
 he
 he
 he
@@ -29757,7 +29783,7 @@ OE
 Zm
 Zm
 Oq
-TP
+ua
 TP
 TP
 TP
@@ -29951,7 +29977,7 @@ Zm
 Zm
 Oq
 Oq
-he
+eT
 he
 he
 he
@@ -30145,7 +30171,7 @@ TU
 TU
 TU
 SP
-aw
+LI
 he
 he
 he
