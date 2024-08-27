@@ -70,7 +70,6 @@ GLOBAL_VAR_INIT(max_fusion_air_heat, INFINITY)
 	impact_flags |= PROJECTILE_IMPACT_DELETE
 	return ..()
 
-
 /obj/effect/fusion_em_field/CanAllowThrough(atom/movable/mover, turf/target)
 	if(istype(mover, /obj/projectile))
 		var/obj/projectile/proj = mover
@@ -463,12 +462,6 @@ GLOBAL_VAR_INIT(max_fusion_air_heat, INFINITY)
 		owned_core = null
 	STOP_PROCESSING(SSobj, src)
 	. = ..()
-
-/obj/effect/fusion_em_field/on_bullet_act(obj/projectile/proj, impact_flags, list/bullet_act_args)
-	AddEnergy(proj.damage)
-	update_icon()
-	impact_flags &= ~PROJECTILE_IMPACT_FLAGS_SHOULD_GO_THROUGH
-	return ..()
 
 //All procs below this point are called in _core.dm, starting at line 41.
 //Stability monitoring. Gives radio annoucements if field stability is below 80%
