@@ -20,6 +20,7 @@
 		"Standard"  = null,
 		"Alternate" = "alt",
 	)
+
 	intrinsic_languages = list(
 		LANGUAGE_ID_DIONA,
 		LANGUAGE_ID_DIONA_HIVEMIND
@@ -62,7 +63,6 @@
 		O_GBLADDER = /obj/item/organ/internal/diona/bladder,
 		O_POLYP    = /obj/item/organ/internal/diona/polyp,
 		O_ANCHOR   = /obj/item/organ/internal/diona/ligament,
-		O_FRUIT   = /obj/item/organ/internal/fruitgland,
 	)
 	vision_organ = O_BRAIN
 
@@ -91,7 +91,6 @@
 	inherent_verbs = list(
 		/mob/living/carbon/human/proc/diona_split_nymph,
 		/mob/living/carbon/human/proc/regenerate,
-		/mob/living/carbon/human/proc/alraune_fruit_select,
 	)
 
 	warning_low_pressure = 10
@@ -110,9 +109,11 @@
 
 	species_flags = NO_MINOR_CUT | IS_PLANT | NO_SCAN | NO_PAIN | NO_SLIP | NO_HALLUCINATION | NO_BLOOD | CONTAMINATION_IMMUNE
 	species_spawn_flags = SPECIES_SPAWN_CHARACTER | SPECIES_SPAWN_WHITELISTED
+	species_appearance_flags = HAS_BASE_SKIN_COLOR
 
 	blood_color = "#004400"
 	flesh_color = "#907E4A"
+	base_color = "#ffffff"
 
 	reagent_tag = IS_DIONA
 
