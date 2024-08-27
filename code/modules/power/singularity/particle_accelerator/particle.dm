@@ -45,6 +45,7 @@
 
 /obj/effect/accelerated_particle/Destroy()
 	STOP_PROCESSING(SSfastprocess, src)
+	return ..()
 
 /obj/effect/accelerated_particle/process(delta_time)
 	var/old_z = z

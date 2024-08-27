@@ -456,8 +456,6 @@ GLOBAL_VAR_INIT(max_fusion_air_heat, INFINITY)
 /obj/effect/fusion_em_field/Destroy()
 	set_light(0)
 	RadiateAll()
-	for(var/obj/effect/fusion_particle_catcher/catcher in particle_catchers)
-		qdel(catcher)
 	if(owned_core)
 		owned_core.owned_field = null
 		owned_core = null
