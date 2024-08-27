@@ -320,12 +320,13 @@ GLOBAL_VAR_INIT(max_fusion_air_heat, INFINITY)
 			)
 
 	icon = 'icons/obj/machines/power/fusion.dmi'
-	if(newsize>1)
-		icon = size_to_icon["[newsize]"]
-	icon_state = "emfield_s[newsize]"
+
+	if(new_size>1)
+		icon = size_to_icon["[new_size]"]
+	icon_state = "emfield_s[new_size]"
 	//! END
 
-	size = newsize
+	size = new_size
 
 	// this will shift locs!
 	var/new_additional_radius = (new_size - 1) / 2
