@@ -58,7 +58,8 @@
 		return def_zone
 	return ..()
 
-/obj/projectile/bullet/pellet/process_damage_instance(atom/target, blocked, impact_flags, hit_zone)
+// todo: "you are hit by [number of] pellets in the chest" support.
+/obj/projectile/bullet/pellet/inflict_impact_damage(atom/target, efficiency, impact_flags, hit_zone)
 	/**
 	 * What's going on here:
 	 *
@@ -75,6 +76,8 @@
 	if(isliving(target))
 		var/mob/living/living_target = target
 		pellet_hit_chance = living_target.process_baymiss(src)
+	if(!target.density)
+		pellet_hit_chance *= 0.2
 	var/hit_pellets = 0
 	for(var/i in 1 to ceil(pellets))
 		if(!prob(pellet_hit_chance))
@@ -87,6 +90,8 @@
 	hit_zone = original_hit_zone
 	if(pellets <= 0)
 		. |= PROJECTILE_IMPACT_DELETE
+	else
+		. |= PROJECTILE_IMPACT_PIERCE
 
 // todo: this is only needed because process_damage_instance isn't used for structured right now!
 /obj/projectile/bullet/pellet/get_structure_damage()

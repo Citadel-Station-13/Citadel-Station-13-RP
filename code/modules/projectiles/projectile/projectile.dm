@@ -671,6 +671,9 @@
 	// if we're being yanked, we'll get Moved() again
 	if(movable_flags & MOVABLE_IN_MOVED_YANK)
 		return
+	// not even fired yet
+	if(!fired)
+		return
 	// scan the turf for anything we need to hit
 	scan_moved_turf(loc)
 	// trigger effects
@@ -949,7 +952,7 @@
  * todo: add PROJECTILE_IMPACT_DELETE_AFTER as opposed to DELETE? so rest of effects can still run
  *
  * @return new impact_flags; only PROJECTILE_IMPACT_DELETE is rechecked.
- */
+	 */
 /obj/projectile/proc/on_impact(atom/target, impact_flags, def_zone, efficiency = 1)
 	//! legacy shit
 	var/blocked = clamp((1 - efficiency) * 100, 0, 100)

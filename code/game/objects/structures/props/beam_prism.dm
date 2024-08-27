@@ -131,7 +131,7 @@
 		visible_message("<span class='danger'>\The [src] redirects \the [proj]!</span>")
 	flick("[initial(icon_state)]+glow", src)
 
-	#warn test this lol
+	// todo: this is not the right way; visuals are weird and the raycast is :/
 	proj.physics_kick_forwards(16)
 	proj.set_angle(dir2angle(dir))
 	return PROJECTILE_IMPACT_REFLECT
