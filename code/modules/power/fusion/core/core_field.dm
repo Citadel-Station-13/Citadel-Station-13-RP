@@ -303,7 +303,7 @@ GLOBAL_VAR_INIT(max_fusion_air_heat, INFINITY)
  * * This will change `locs` of this field, and its bounds!
  */
 /obj/effect/fusion_em_field/proc/change_size(new_size = 1)
-	ASSERT(!(new_size - 1) % 2)
+	ASSERT(!((new_size - 1) % 2))
 	ASSERT(new_size <= 13)
 
 	if(new_size == size)
