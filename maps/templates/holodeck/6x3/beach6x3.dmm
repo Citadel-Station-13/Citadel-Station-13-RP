@@ -1,0 +1,59 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/turf/unsimulated/beach/sand{
+	icon_state = "beach"
+	},
+/area/holodeck/holodorm/source_beach)
+"d" = (
+/obj/effect/overlay/palmtree_r,
+/turf/simulated/floor/holofloor/beach/sand,
+/area/holodeck/holodorm/source_beach)
+"h" = (
+/obj/item/clothing/glasses/sunglasses,
+/turf/simulated/floor/holofloor/beach/sand,
+/area/holodeck/holodorm/source_beach)
+"k" = (
+/obj/effect/overlay/palmtree_l,
+/turf/simulated/floor/holofloor/beach/sand,
+/area/holodeck/holodorm/source_beach)
+"E" = (
+/turf/simulated/floor/holofloor/beach/sand,
+/area/holodeck/holodorm/source_beach)
+"T" = (
+/obj/effect/overlay/coconut,
+/turf/simulated/floor/holofloor/beach/sand,
+/area/holodeck/holodorm/source_beach)
+"Y" = (
+/turf/simulated/floor/holofloor/beach/water,
+/area/holodeck/holodorm/source_beach)
+
+(1,1,1) = {"
+d
+a
+Y
+"}
+(2,1,1) = {"
+E
+a
+Y
+"}
+(3,1,1) = {"
+T
+a
+Y
+"}
+(4,1,1) = {"
+h
+a
+Y
+"}
+(5,1,1) = {"
+k
+a
+Y
+"}
+(6,1,1) = {"
+E
+a
+Y
+"}
