@@ -1,5 +1,7 @@
-
-//For projectiles that actually represent clouds of projectiles
+// For projectiles that actually represent clouds of projectiles
+// todo: message handling for this type is all over the place
+// todo: target still makes message of being hit even if they weren't
+// todo: just handle message in this file lmao
 /obj/projectile/bullet/pellet
 	name = "shrapnel" //'shrapnel' sounds more dangerous (i.e. cooler) than 'pellet'
 
