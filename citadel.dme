@@ -4256,7 +4256,6 @@
 #include "code\modules\power\fission\rods.dm"
 #include "code\modules\power\fusion\_setup.dm"
 #include "code\modules\power\fusion\fusion_circuits.dm"
-#include "code\modules\power\fusion\fusion_particle_catcher.dm"
 #include "code\modules\power\fusion\fusion_reactions.dm"
 #include "code\modules\power\fusion\fusion_reagents.dm"
 #include "code\modules\power\fusion\magpower.dm"
