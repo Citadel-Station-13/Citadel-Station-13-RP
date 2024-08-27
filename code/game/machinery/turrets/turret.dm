@@ -370,7 +370,7 @@
 
 /obj/machinery/porta_turret/power_change()
 	// todo: machinery/proc/on_online(), machinery/proc/on_offline()?
-	if(powered())
+	if(powered() && !is_integrity_broken())
 		ai_holder?.set_enabled(TRUE)
 		machine_stat &= ~NOPOWER
 		update_icon()
@@ -503,6 +503,13 @@
 	. = ..()
 	spark_system.start()	//creates some sparks because they look cool
 	update_icon()
+	// todo: ugh this shouldn't work this way
+	power_change()
+
+/obj/machinery/porta_turret/atom_fix()
+	. = ..()
+	// todo: ugh this shouldn't work this way
+	power_change()
 
 /obj/machinery/porta_turret/process(delta_time)
 	//the main machinery process
@@ -643,6 +650,8 @@
  * @return TRUE on success
  */
 /obj/machinery/porta_turret/proc/try_fire_at(atom/target, angle)
+	if(disabled || is_integrity_broken())
+		return FALSE
 	if(is_on_cooldown())
 		return FALSE
 	return fire_at(target, angle)
