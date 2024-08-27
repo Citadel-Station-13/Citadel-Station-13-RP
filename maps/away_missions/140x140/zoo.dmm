@@ -6159,16 +6159,6 @@
 /obj/structure/flora/ausbushes/ppflowers,
 /turf/simulated/floor/grass,
 /area/awaymission/zoo)
-"rk" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/turf/simulated/floor/plating,
-/area/awaymission/zoo)
 "rl" = (
 /obj/machinery/space_heater,
 /turf/simulated/floor,
@@ -6812,19 +6802,6 @@
 	faction = "zoo"
 	},
 /turf/simulated/floor/holofloor/desert,
-/area/awaymission/zoo)
-"sF" = (
-/obj/effect/floor_decal/spline{
-	icon_state = "asteroid_edge_e";
-	name = "rocky edge"
-	},
-/mob/living/simple_mob/animal/space/alien/queen{
-	faction = "zoo"
-	},
-/turf/simulated/floor/holofloor/desert{
-	icon_state = "asteroidplating";
-	name = "scorched sand"
-	},
 /area/awaymission/zoo)
 "sG" = (
 /obj/landmark/away,
@@ -18291,7 +18268,7 @@ jS
 qH
 qO
 re
-rk
+qx
 rs
 jS
 hq
@@ -19843,7 +19820,7 @@ rx
 rx
 ry
 ry
-sF
+ry
 ry
 ry
 ry

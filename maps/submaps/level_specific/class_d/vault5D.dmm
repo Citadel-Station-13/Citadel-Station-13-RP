@@ -30,12 +30,12 @@
 /obj/structure/alien/weeds,
 /obj/structure/bed/nest,
 /obj/fiftyspawner/osmium,
+/mob/living/simple_mob/animal/space/alien/drone,
 /turf/simulated/mineral/floor/classd/indoors,
 /area/class_d/explored)
 "h" = (
 /obj/structure/alien/weeds,
 /obj/random/multiple/minevault,
-/mob/living/simple_mob/animal/space/alien/sentinel/praetorian,
 /turf/simulated/mineral/floor/classd/indoors,
 /area/class_d/explored)
 "i" = (
@@ -46,7 +46,7 @@
 "j" = (
 /obj/structure/alien/weeds,
 /obj/structure/alien/weeds/node,
-/mob/living/simple_mob/animal/space/alien/queen/empress,
+/mob/living/simple_mob/animal/space/alien/basic_spitter,
 /turf/simulated/mineral/floor/classd/indoors,
 /area/class_d/explored)
 "k" = (
@@ -59,6 +59,11 @@
 /obj/structure/alien/weeds,
 /obj/structure/bed/nest,
 /obj/fiftyspawner/durasteel,
+/turf/simulated/mineral/floor/classd/indoors,
+/area/class_d/explored)
+"W" = (
+/obj/structure/alien/weeds,
+/mob/living/simple_mob/animal/space/alien/drone,
 /turf/simulated/mineral/floor/classd/indoors,
 /area/class_d/explored)
 "X" = (
@@ -127,7 +132,7 @@ a
 a
 b
 f
-e
+W
 e
 e
 A
