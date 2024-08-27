@@ -43,6 +43,14 @@
 	origin_tech = list(TECH_MATERIAL = 1)
 	desc = "A sturdy pick fashioned from some animal's bone, wound with powerful sinew."
 
+/obj/item/pickaxe/bronze
+	name = "bronze pickaxe"
+	icon_state = "brpickaxe"
+	item_state = "brpickaxe"
+	digspeed = 30
+	origin_tech = list(TECH_MATERIAL = 1)
+	desc = "A primitive pickaxe made of bronze, and a handle of bone."
+
 /obj/item/pickaxe/silver
 	name = "silver pickaxe"
 	icon_state = "spickaxe"
@@ -298,6 +306,12 @@
 	attack_verb = list("slashed", "impaled", "stabbed", "sliced")
 	sharp = 1
 
+/obj/item/shovel/bronze
+	name = "bronze shovel"
+	desc = "A simple shovel made of bronze. Its wide head seems to be much simpler then modern shovels."
+	icon = 'icons/obj/lavaland.dmi'
+	icon_state = "shovel_bronze"
+
 /obj/item/shovel/spade
 	name = "spade"
 	desc = "A small tool for digging and moving dirt."
@@ -312,6 +326,12 @@
 	desc = "A small shove cruedly fashioned out of some beast's scapula."
 	icon = 'icons/obj/mining.dmi'
 	icon_state = "spade_bone"
+
+/obj/item/shovel/spade/bronze
+	name = "primitive spade"
+	desc = "A small shovel made of bronze. The design seems to have some ritual purposes."
+	icon = 'icons/obj/lavaland.dmi'
+	icon_state = "spade_bronze"
 
 /**********************Mining car (Crate like thing, not the rail car)**************************/
 

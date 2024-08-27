@@ -304,6 +304,15 @@
 	origin_tech = list(TECH_MATERIAL = 1, TECH_BIO = 1)
 	attack_verb = list("burnt")
 
+/obj/item/surgical/cautery_scori
+	name = "primitive cautery"
+	desc = "A burning gem held tightly by clamps of bone and sinew. This would be effective as cauterizing wounds."
+	icon = 'icons/obj/lavaland.dmi'
+	icon_state = "cautery_scori"
+	materials_base = list("bone" = 5000)
+	origin_tech = list(TECH_MATERIAL = 1, TECH_BIO = 1)
+	attack_verb = list("burnt")
+
 /obj/item/surgical/scalpel_primitive
 	name = "primitive scalpel"
 	desc = "Finely knapped glass attached to a carved bone by sinew. It seems like it'd be good at cutting."
@@ -327,6 +336,31 @@
 		                      "<span class='danger'>\The [user] is slitting [TU.his] stomach open with the [src.name]! It looks like [TU.hes] trying to commit seppuku.</span>"))
 		return (BRUTELOSS)
 
+/obj/item/surgical/scalpel_bronze
+	name = "bronze scalpel"
+	desc = "Finely shrapened bronze blade attached to a carved bone handle. Excellent for percise cutting"
+	icon = 'icons/obj/lavaland.dmi'
+	icon_state = "scalpel_bronze"
+	damage_force = 10.0
+	sharp = 1
+	edge = 1
+	w_class = WEIGHT_CLASS_TINY
+	slot_flags = SLOT_EARS
+	throw_force = 5.0
+	throw_speed = 3
+	throw_range = 5
+	origin_tech = list(TECH_MATERIAL = 1)
+	materials_base = list("bone" = 5000, MAT_BRONZE = 2500)
+	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
+
+
+/obj/item/surgical/scalpel_bronze/suicide_act(mob/user)
+		var/datum/gender/TU = GLOB.gender_datums[user.get_visible_gender()]
+		user.visible_message(pick("<span class='danger'>\The [user] is slitting [TU.his] wrists with the [src.name]! It looks like [TU.hes] trying to commit suicide.</span>", \
+		                      "<span class='danger'>\The [user] is slitting [TU.his] throat with the [src.name]! It looks like [TU.hes] trying to commit suicide.</span>", \
+		                      "<span class='danger'>\The [user] is slitting [TU.his] stomach open with the [src.name]! It looks like [TU.hes] trying to commit seppuku.</span>"))
+		return (BRUTELOSS)
+
 /obj/item/surgical/saw_primitive
 	name = "primitive bone saw"
 	desc = "An admittedly complex, yet still inferior tool, this bone saw uses knapped volcanic glass as cutting teeth."
@@ -342,8 +376,25 @@
 	sharp = 1
 	edge = 1
 
+/obj/item/surgical/saw_bronze
+	name = "bronze saw"
+	desc = "An saw made of bronze fused to bone. In absense of any wood to cut it may cut bone well.."
+	icon = 'icons/obj/lavaland.dmi'
+	icon_state = "saw_bronze"
+	damage_force = 15.0
+	w_class = WEIGHT_CLASS_NORMAL
+	throw_force = 9.0
+	throw_speed = 3
+	throw_range = 5
+	origin_tech = list(TECH_MATERIAL = 1)
+	materials_base = list("bone" = 6000, MAT_BRONZE = 4000)
+	attack_verb = list("attacked", "slashed", "sawed", "cut")
+	sharp = 1
+	edge = 1
+
 /obj/item/surgical/bonesetter_primitive
 	name = "primitive bone setter"
 	desc = "Large leg bones whittled down and woven together with sinew. Used to set other bones."
 	icon_state = "bone_setter_bone"
 	materials_base = list("bone" = 5000)
+
