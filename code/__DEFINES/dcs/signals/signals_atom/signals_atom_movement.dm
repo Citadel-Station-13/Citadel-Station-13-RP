@@ -4,11 +4,13 @@
  * * All signals send the source datum of the signal as the first argument
  */
 
-/// From base of atom/Entered(): (atom/movable/arrived, atom/old_loc, list/atom/old_locs)
+/// From base of atom/Entered(): (atom/movable/arrived, atom/old_loc)
 /// If you hook this and need to intercept movement, always check if the atom is still in us. If something else is intercepting movement, bad things will happen as the component signal will not stop propagating.
+//  todo: this does not support multi-tile objects well
 #define COMSIG_ATOM_ENTERED "atom_entered"
 /// From base of atom/Exited(): (atom/movable/gone, atom/new_loc)
 /// If you hook this and need to intercept movement, always check if the atom is still in us. If something else is intercepting movement, bad things will happen as the component signal will not stop propagating.
+//  todo: this does not support multi-tile objects well
 #define COMSIG_ATOM_EXITED "atom_exited"
 /// From base of atom/Bumped(): (/atom/movable)
 #define COMSIG_ATOM_BUMPED "atom_bumped"
