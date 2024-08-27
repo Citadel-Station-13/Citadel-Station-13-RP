@@ -6,7 +6,6 @@
 // Besides the visuals, arcing projectiles do not collide with anything until they reach the target, as they fly over them.
 // For best effect, use this only when it makes sense to do so, IE on the Surface. The projectiles don't care about ceilings or gravity.
 
-#warn test these
 /obj/projectile/arc
 	name = "arcing shot"
 	icon_state = "fireball" // WIP
