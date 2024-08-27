@@ -16,6 +16,8 @@
 
 	mz_flags = MZ_MIMIC_DEFAULTS
 
+CREATE_STANDARD_TURFS(/turf/simulated/floor/glass)
+
 /turf/simulated/floor/glass/Initialize()
 	. = ..()
 	return INITIALIZE_HINT_LATELOAD
@@ -35,3 +37,5 @@
 
 	// Currently if flooring is set, it breaks the layering of the glass floor.
 	// initial_flooring = /singleton/flooring/glass/reinforced
+
+CREATE_STANDARD_TURFS(/turf/simulated/floor/glass/reinforced)
