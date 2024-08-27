@@ -14275,9 +14275,11 @@
 /area/security/armory/blue)
 "jcV" = (
 /obj/effect/floor_decal/corner/black/diagonal,
-/obj/machinery/media/jukebox,
-/obj/machinery/light{
-	dir = 4
+/obj/machinery/media/jukebox{
+	pixel_x = 12;
+	name = "flush space jukebox";
+	desc = "Unlike most other jukeboxes that follow a standard center-of-certain-square-meter-footage alignment, this one was placed flush against a wall or window, making it possible to access things beyond it. Such innovation costs four hundred thousand thalers per jukebox, hence its scarcity. It looks like moving it would nullify this effect.";
+	density = 0
 	},
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/bar/lounge)
@@ -27125,6 +27127,7 @@
 	dir = 1;
 	icon_state = "2-4"
 	},
+/obj/machinery/light,
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/bar/lounge)
 "qTP" = (

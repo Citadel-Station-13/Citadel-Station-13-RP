@@ -7897,10 +7897,6 @@
 	},
 /turf/simulated/floor/carpet,
 /area/library/study)
-"fhU" = (
-/obj/spawner/window/low_wall/full/nogrille/firelocks,
-/turf/simulated/floor/plating,
-/area/rift/surfacebase/outside/outside1)
 "fic" = (
 /obj/structure/cable/green{
 	icon_state = "1-2"
@@ -66915,7 +66911,7 @@ hgE
 hgE
 hgE
 gzd
-fhU
+hMq
 hMq
 rpP
 qDk
@@ -67109,7 +67105,7 @@ hgE
 hgE
 gzd
 gzd
-fhU
+hMq
 rpP
 rpP
 rpP
@@ -67303,7 +67299,7 @@ hgE
 gzd
 gzd
 gzd
-fhU
+hMq
 qDk
 nvM
 aWZ
@@ -67497,7 +67493,7 @@ hgE
 hgE
 gzd
 gzd
-fhU
+hMq
 rpP
 uJU
 gBp
@@ -67691,7 +67687,7 @@ hgE
 hgE
 hgE
 gzd
-fhU
+hMq
 hMq
 rpP
 rpP
