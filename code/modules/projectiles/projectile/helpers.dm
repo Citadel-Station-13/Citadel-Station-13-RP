@@ -38,7 +38,7 @@
 		pellet_cloud.pellets = fragments_per_projectile
 		pellet_cloud.shot_from = shot_from_name
 		pellet_cloud.firer = firer
-		pellet_cloud.fire(arctan(T.y - y, T.x - x))
+		pellet_cloud.fire(arctan(T.y - y, T.x - x), null, TRUE)
 		. += pellet_cloud
 
 /**

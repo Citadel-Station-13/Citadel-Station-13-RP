@@ -257,7 +257,7 @@
 /obj/item/grab/throw_resolve_override(atom/movable/resolved, mob/user)
 	return TRUE
 
-/obj/item/grab/melee_object_hit(atom/target, datum/event_args/actor/clickchain/clickchain, clickchain_flags, mult)
+/obj/item/grab/melee_object_hit(atom/target, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
 	switch(state)
 		if(GRAB_PASSIVE)
 			clickchain.visible_feedback(

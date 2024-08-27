@@ -318,6 +318,8 @@
  * called when we're used to attack a non-mob
  * this doesn't actually need to be an obj.
  *
+ * todo: purge mult
+ *
  * @params
  * * target - atom being attacked
  * * clickchain - the /datum/event_args/actor/clickchain arguments included
@@ -343,16 +345,20 @@
 		return CLICKCHAIN_DO_NOT_PROPAGATE
 	//? legacy: decloak
 	clickchain.performer.break_cloak()
+	// set mult
+	clickchain.damage_multiplier *= mult
 	// click cooldown
 	// todo: clickcd rework
 	clickchain.performer.setClickCooldown(clickchain.performer.get_attack_speed(src))
 	// animation
 	clickchain.performer.animate_swing_at_target(target)
 	// perform the hit
-	. = melee_object_hit(target, clickchain, clickchain_flags, mult)
+	. = melee_object_hit(target, clickchain, clickchain_flags)
 
 /**
  * called at base of attack_object after standard melee attack misses
+ *
+ * todo: purge mult
  *
  * @return clickchain flags to append
  *
@@ -383,7 +389,7 @@
  * * clickchain_flags - __DEFINES/procs/clickcode.dm flags
  * * mult - damage multiplier
  */
-/obj/item/proc/melee_object_hit(atom/target, datum/event_args/actor/clickchain/clickchain, clickchain_flags, mult = 1)
+/obj/item/proc/melee_object_hit(atom/target, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
 	SHOULD_CALL_PARENT(TRUE)
 
 	// harmless, just tap them and leave

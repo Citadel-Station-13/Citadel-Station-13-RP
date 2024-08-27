@@ -257,7 +257,7 @@
 	var/p_x = 16
 	var/p_y = 16			// the pixel location of the tile that the player clicked. Default is the center
 
-	var/def_zone = ""	//Aiming at
+	var/def_zone = BP_TORSO
 	var/mob/firer = null//Who shot it
 	var/silenced = 0	//Attack message
 	var/shot_from = "" // name of the object which shot us
@@ -358,7 +358,7 @@
 
 	expire()
 
-/obj/projectile/proc/fire(set_angle_to, atom/direct_target)
+/obj/projectile/proc/fire(set_angle_to, atom/direct_target, no_source_check)
 	if(only_submunitions)	// refactor projectiles whwen holy shit this is awful lmao
 		// todo: this should make a muzzle flash
 		qdel(src)
@@ -367,7 +367,7 @@
 	// setup impact checking
 	impacted = list()
 	// make sure firer is in it
-	if(firer)
+	if(firer && !no_source_check)
 		impacted[firer] = TRUE
 		if(ismob(firer))
 			var/atom/buckle_iterating = firer.buckled

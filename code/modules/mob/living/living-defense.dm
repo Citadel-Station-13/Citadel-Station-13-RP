@@ -95,18 +95,21 @@
 
 /**
  * * our_opinion is intentionally mutable; it is however only mutable from before ..(), so call ..() after modifying for pre-modification
+ * * our_opinion and impact_check are defaulted in the base function; this means that if you need to use it before, default it yourself.
  *
  * todo: 0 to 100 for accuracy might not be amazing; maybe allow negative values evasion-style?
+ * todo: don't default our_opinion and impact_check so early wtf; BYOND proc structure disagrees with the design here.
  *
  * @params
  * * proj - the projectile
  * * our_opinion - base probability of hitting
+ * * impact_check - are we checking if we should impact at all? used by pellets.
  *
  * @return 0 to 100 % probability of hitting
  */
-/mob/living/proc/process_baymiss(obj/projectile/proj, our_opinion = 100)
+/mob/living/proc/process_baymiss(obj/projectile/proj, our_opinion = 100, impact_check = TRUE)
 	our_opinion = clamp(our_opinion - get_evasion(), 5, INFINITY)
-	return proj.process_accuracy(src, our_opinion, proj.distance_travelled, TRUE)
+	return proj.process_accuracy(src, our_opinion, proj.distance_travelled, impact_check)
 
 //* Misc Effects *//
 

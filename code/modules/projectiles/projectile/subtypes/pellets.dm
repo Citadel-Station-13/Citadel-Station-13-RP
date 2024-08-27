@@ -37,7 +37,7 @@
 
 /obj/projectile/bullet/pellet/Moved(atom/old_loc, movement_dir, forced, list/old_locs, momentum_change)
 	. = ..()
-	var/travelled = pellet_loss_last_distance - distance_travelled
+	var/travelled = distance_travelled - pellet_loss_last_distance
 	pellet_loss_last_distance = distance_travelled
 	if(pellet_loss_start > 0)
 		var/reduction = min(pellet_loss_start, travelled)
@@ -70,13 +70,14 @@
 	 * lower level shieldcalls/armorcalls than to simulate high level bullet hits.
 	 */
 	var/original_hit_zone = hit_zone
-	var/zone_true_chance = 100 - (pellet_zone_spread + (distance_travelled > pellet_zone_spread_gain_threshold ? distance_travelled * pellet_zone_spread_gain : 0))
+	var/distance_penalty = distance_travelled > pellet_zone_spread_gain_threshold ? (distance_travelled * pellet_zone_spread_gain) : 0
+	var/zone_true_chance = 100 - (pellet_zone_spread + distance_penalty)
 	var/pellet_hit_chance = 100
 	. = NONE
 	if(isliving(target))
 		var/mob/living/living_target = target
-		pellet_hit_chance = living_target.process_baymiss(src)
-	if(!target.density)
+		pellet_hit_chance = living_target.process_baymiss(src, impact_check = FALSE)
+	if(!target.density && (target != original_target))
 		pellet_hit_chance *= 0.2
 	var/hit_pellets = 0
 	for(var/i in 1 to ceil(pellets))
