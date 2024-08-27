@@ -133,6 +133,7 @@
 
 	#warn test this lol
 	proj.physics_kick_forwards(16)
+	proj.set_angle(dir2angle(dir))
 	return PROJECTILE_IMPACT_REFLECT
 
 /obj/structure/prop/prism/incremental

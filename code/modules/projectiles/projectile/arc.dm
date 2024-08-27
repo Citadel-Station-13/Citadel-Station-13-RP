@@ -11,6 +11,7 @@
 	name = "arcing shot"
 	icon_state = "fireball" // WIP
 	movement_type = MOVEMENT_UNSTOPPABLE
+	impact_ground_on_expiry = TRUE
 	plane = ABOVE_PLANE // Since projectiles are 'in the air', they might visually overlap mobs while in flight, so the projectile needs to be above their plane.
 	speed = 10 * WORLD_ICON_SIZE
 	var/fired_dir = null		// Which direction was the projectile fired towards. Needed to invert the projectile turning based on if facing left or right.

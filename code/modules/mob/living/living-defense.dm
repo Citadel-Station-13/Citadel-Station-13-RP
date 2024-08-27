@@ -53,13 +53,14 @@
 	add_attack_logs(
 		proj.firer,
 		src,
-		"shot with [src] ([type])",
+		"shot with [src] ([type])[(impact_flags & PROJECTILE_IMPACT_BLOCKED)? " (blocked)" : ""]",
 	)
-	// emit feedback/workspaces/Citadel-Station-13-RP/code/modules/random_map
-	if(proj.silenced)
-		to_chat(src, SPAN_DANGER("You've been hit in the [parse_zone(bullet_act_args[BULLET_ACT_ARG_ZONE])] with \the [proj]!"))
-	else
-		visible_message(SPAN_DANGER("\The [src] is hit by [proj] in the [parse_zone(bullet_act_args[BULLET_ACT_ARG_ZONE])]"))
+	// emit feedback
+	if(!(impact_flags & PROJECTILE_IMPACT_BLOCKED))
+		if(proj.silenced)
+			to_chat(src, SPAN_DANGER("You've been hit in the [parse_zone(bullet_act_args[BULLET_ACT_ARG_ZONE])] with \the [proj]!"))
+		else
+			visible_message(SPAN_DANGER("\The [src] is hit by [proj] in the [parse_zone(bullet_act_args[BULLET_ACT_ARG_ZONE])]"))
 
 	//! LEGACY
 

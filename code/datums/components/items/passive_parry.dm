@@ -279,6 +279,8 @@ GLOBAL_LIST_EMPTY(passive_parry_data)
  * get a cached version of a passive paary datum
  */
 /proc/resolve_passive_parry_data(datum/passive_parry/datalike)
+	if(isnull(datalike))
+		return
 	if(IS_ANONYMOUS_TYPEPATH(datalike))
 		return new datalike
 	if(istype(datalike))

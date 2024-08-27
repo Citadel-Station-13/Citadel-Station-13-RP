@@ -8,6 +8,9 @@
 	if(. & PROJECTILE_IMPACT_FLAGS_TARGET_ABORT)
 		return
 
+	if(impact_flags & PROJECTILE_IMPACT_BLOCKED)
+		return
+
 	// todo: this shit shouldn't be here
 	var/obj/item/organ/external/organ = get_organ()
 

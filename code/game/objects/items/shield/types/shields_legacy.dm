@@ -24,6 +24,7 @@
 			//useless. Extremely penetrating projectiles will go through the shield without less damage.
 			defending.visible_message("<span class='danger'>\The [defending]'s [src.name] is pierced by [proj]!</span>")
 			proj.dampen_on_pierce_experimental(src, 20, ARMOR_TIER_HIGH)
+			playsound(src, /datum/soundbyte/grouped/block_metal_with_metal, 65, TRUE)
 			return null
 	return ..()
 

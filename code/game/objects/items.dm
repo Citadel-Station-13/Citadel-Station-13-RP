@@ -815,6 +815,8 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 //* Combat *//
 
 /obj/item/proc/load_passive_parry()
+	if(!passive_parry)
+		return
 	passive_parry = resolve_passive_parry_data(passive_parry)
 	var/datum/component/passive_parry/loaded = GetComponent(/datum/component/passive_parry)
 	if(loaded)

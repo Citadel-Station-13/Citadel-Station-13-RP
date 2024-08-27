@@ -118,6 +118,10 @@
 	var/hitscan = FALSE
 	/// angle, in degrees **clockwise of north**
 	var/angle
+	/// angle to set to after impact processing.
+	///
+	/// * set instead of [angle] if set_angle is called during impact.
+	var/staged_angle
 	/// max distance in pixels
 	///
 	/// * please set this to a multiple of [WORLD_ICON_SIZE] so we scale with tile size.
@@ -898,10 +902,15 @@
 			if(trajectory_moving_to)
 				// create tracers
 				var/datum/point/visual_impact_point = get_intersection_point(trajectory_moving_to)
-				// kick it forwards a bit
-				visual_impact_point.shift_in_projectile_angle(angle, 2)
-				// draw
-				finalize_hitscan_tracers(visual_impact_point, impact_effect = TRUE)
+				// it's possible to not have an intersection point, if say, angle was being messed with mid-move
+				// this entire system is suboptimal design-wise but atleast it's fast.
+				if(visual_impact_point)
+					// kick it forwards a bit
+					visual_impact_point.shift_in_projectile_angle(angle, 2)
+					// draw
+					finalize_hitscan_tracers(visual_impact_point, impact_effect = TRUE)
+				else
+					finalize_hitscan_tracers(impact_effect = TRUE, kick_forwards = 32)
 			else
 				finalize_hitscan_tracers(impact_effect = TRUE, kick_forwards = 32)
 		expire(TRUE)
@@ -1077,6 +1086,8 @@
 	var/list/shieldcall_modified_args = target.check_damage_instance(damage, damage_type, damage_tier, damage_flag, damage_mode, ATTACK_TYPE_PROJECTILE, src, SHIELDCALL_FLAG_SECOND_CALL, hit_zone)
 	// todo: this handling very obviously should not be here
 	// dear lord this code is a dumpster fire
+	if(shieldcall_modified_args[SHIELDCALL_ARG_FLAGS] & SHIELDCALL_FLAGS_PIERCE_ATTACK)
+		. |= PROJECTILE_IMPACT_REFLECT
 	if(shieldcall_modified_args[SHIELDCALL_ARG_FLAGS] & SHIELDCALL_FLAGS_BLOCK_ATTACK)
 		return
 	// END
