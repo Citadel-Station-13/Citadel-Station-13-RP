@@ -119,7 +119,7 @@
 						B = T.take_blood(src,amount)
 						drawing = 0
 
-					if (B)
+					if (B && !(B in reagents.reagent_list))
 						reagents.reagent_list += B
 						reagents.update_total()
 						on_reagent_change()
