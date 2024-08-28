@@ -15,18 +15,19 @@
  *
  * * entities that are on z's like shuttles instead of owning them use the z level they're on
  *
- * @return null if there are none / this is not semantically an entity on a z
+ * @return null if there are none / this is not semantically an entity on a z, and list() if we're not in a level right now.
  */
 /datum/overmap_location/proc/get_z_indices()
 	RETURN_TYPE(/list)
 
 /**
- * get a random z-level from ourselves
+ * get our owned z-level indices
  *
- * * entities that are on z's like shuttles instead of owning them use the z level they're on
+ * * shuttles and similar entities don't own their indices.
  *
- * @return null if there are none / this is not semantically an entity on a z
+ * @return null if this is not semantically an entity on a z, and list() if none are owned, otherwise 
  */
-/datum/overmap_location/proc/get_random_z_index()
+/datum/overmap_location/proc/get_z_indices()
+	RETURN_TYPE(/list)
 
 #warn impl
