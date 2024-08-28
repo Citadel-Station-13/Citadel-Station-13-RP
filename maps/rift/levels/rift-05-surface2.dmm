@@ -2095,14 +2095,6 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/surgery2)
-"bgx" = (
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
-/obj/effect/paint/darkred,
-/obj/map_helper/electrochromatic_linker{
-	id = "sec_processing_l"
-	},
-/turf/simulated/floor/plating,
-/area/security/security_processing)
 "bgB" = (
 /obj/structure/curtain/open/bed{
 	name = "brown curtain";
@@ -7284,6 +7276,14 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/security/hallway)
+"eCP" = (
+/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
+/obj/effect/paint/babyblue,
+/obj/map_helper/electrochromatic_linker{
+	id = "resleeving-tint"
+	},
+/turf/simulated/floor/plating,
+/area/medical/resleeving)
 "eCU" = (
 /obj/effect/floor_decal/industrial/outline/grey,
 /obj/random/maintenance/research,
@@ -17695,6 +17695,14 @@
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_3)
+"ldw" = (
+/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
+/obj/effect/paint/darkred,
+/obj/map_helper/electrochromatic_linker{
+	id = "sec_processing_r"
+	},
+/turf/simulated/floor/plating,
+/area/security/security_processing)
 "ldL" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 4
@@ -19246,14 +19254,6 @@
 /obj/effect/floor_decal/spline/plain,
 /turf/simulated/floor/wood,
 /area/crew_quarters/heads/hos)
-"mcm" = (
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
-/obj/effect/paint/babyblue,
-/obj/map_helper/electrochromatic_linker{
-	id = "resleeving-tint"
-	},
-/turf/simulated/floor/plating,
-/area/medical/resleeving)
 "mcn" = (
 /obj/structure/window/reinforced{
 	dir = 1
@@ -19626,6 +19626,14 @@
 	},
 /turf/simulated/floor/wood,
 /area/tether/surfacebase/reading_room)
+"moI" = (
+/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
+/obj/effect/paint/darkred,
+/obj/map_helper/electrochromatic_linker{
+	id = "sec_processing_l"
+	},
+/turf/simulated/floor/plating,
+/area/security/security_processing)
 "moS" = (
 /obj/structure/toilet{
 	pixel_y = 9
@@ -22386,14 +22394,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled/freezer,
 /area/crew_quarters/pool)
-"nUd" = (
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
-/obj/effect/paint/darkred,
-/obj/map_helper/electrochromatic_linker{
-	id = "sec_processing_r"
-	},
-/turf/simulated/floor/plating,
-/area/security/security_processing)
 "nUf" = (
 /obj/machinery/holopad,
 /turf/simulated/floor/tiled/monowhite,
@@ -29057,6 +29057,9 @@
 /area/crew_quarters/pool)
 "sdE" = (
 /obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
+/obj/map_helper/electrochromatic_linker{
+	id = "sauna"
+	},
 /turf/simulated/floor/plating,
 /area/triumph/surfacebase/sauna)
 "sen" = (
@@ -35378,6 +35381,9 @@
 /obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
 /obj/structure/cable/green{
 	icon_state = "4-8"
+	},
+/obj/map_helper/electrochromatic_linker{
+	id = "sauna"
 	},
 /turf/simulated/floor/plating,
 /area/triumph/surfacebase/sauna)
@@ -48714,8 +48720,8 @@ oLJ
 oLJ
 kid
 kid
-mcm
-mcm
+eCP
+eCP
 kid
 kid
 kid
@@ -49299,7 +49305,7 @@ eYx
 gHr
 ixy
 odu
-mcm
+eCP
 jvX
 vjt
 wnW
@@ -49493,7 +49499,7 @@ eYx
 iKu
 kRa
 lto
-mcm
+eCP
 eUN
 dyj
 wBH
@@ -49687,7 +49693,7 @@ oUw
 dTk
 bor
 lto
-mcm
+eCP
 epz
 tQp
 xkt
@@ -57833,7 +57839,7 @@ yga
 xNm
 bhS
 nuH
-bgx
+moI
 pUO
 xQz
 owT
@@ -58027,7 +58033,7 @@ myF
 pwT
 bhS
 nuH
-bgx
+moI
 hGI
 ijR
 oZw
@@ -58221,7 +58227,7 @@ mJx
 wXp
 bhS
 nuH
-bgx
+moI
 eUi
 cCa
 fEm
@@ -58803,7 +58809,7 @@ tZG
 tiu
 bhS
 nuH
-nUd
+ldw
 fQG
 bBy
 bVn
@@ -58997,7 +59003,7 @@ tZG
 mve
 bhS
 nuH
-nUd
+ldw
 hGI
 ijR
 eTG
@@ -59191,7 +59197,7 @@ iFX
 eCN
 ohv
 oQS
-nUd
+ldw
 pUO
 mzx
 yaJ
