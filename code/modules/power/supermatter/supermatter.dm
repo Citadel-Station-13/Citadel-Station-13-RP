@@ -472,16 +472,16 @@
 	spawn(0)
 		if(their_loc != bumped_atom.loc)
 			return
-		if(istype(AM, /obj/effect))
+		if(istype(bumped_atom, /obj/effect))
 			return
-		if(istype(AM, /mob/living))
-			var/mob/living/M = AM
+		if(istype(bumped_atom, /mob/living))
+			var/mob/living/M = bumped_atom
 			var/datum/gender/T = GLOB.gender_datums[M.get_visible_gender()]
-			AM.visible_message("<span class=\"warning\">\The [AM] slams into \the [src] inducing a resonance... [T.his] body starts to glow and catch flame before flashing into ash.</span>",\
+			bumped_atom.visible_message("<span class=\"warning\">\The [bumped_atom] slams into \the [src] inducing a resonance... [T.his] body starts to glow and catch flame before flashing into ash.</span>",\
 			"<span class=\"danger\">You slam into \the [src] as your ears are filled with unearthly ringing. Your last thought is \"Oh, fuck.\"</span>",\
 			"<span class=\"warning\">You hear an uneartly ringing, then what sounds like a shrilling kettle as you are washed with a wave of heat.</span>")
 		else if(!grav_pulling) //To prevent spam, detonating supermatter does not indicate non-mobs being destroyed
-			AM.visible_message("<span class=\"warning\">\The [AM] smacks into \the [src] and rapidly flashes to ash.</span>",\
+			bumped_atom.visible_message("<span class=\"warning\">\The [bumped_atom] smacks into \the [src] and rapidly flashes to ash.</span>",\
 			"<span class=\"warning\">You hear a loud crack as you are washed with a wave of heat.</span>")
 
 		Consume(AM)
