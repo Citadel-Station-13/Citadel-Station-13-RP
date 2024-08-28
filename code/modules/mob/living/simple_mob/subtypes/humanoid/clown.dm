@@ -30,7 +30,7 @@
 	icon_gib = "clown_gib"
 	catalogue_data = list(/datum/category_item/catalogue/fauna/clown)
 
-	faction = "clown"
+	iff_factions = MOB_IFF_FACTION_MERCENARY_GROUP("clown")
 
 	loot_list = list(/obj/item/bikehorn = 100)
 

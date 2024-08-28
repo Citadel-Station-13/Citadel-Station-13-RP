@@ -26,9 +26,10 @@
 
 //? Alien factions
 
-#define MOB_IFF_FACTION_XENOMORPH "alien-xenomorph"
-#define MOB_IFF_FACTION_SLIME "alien-slime"
+#define MOB_IFF_FACTION_BLOB "alien-blob"
 #define MOB_IFF_FACTION_CHIMERIC "alien-chimeric"
+#define MOB_IFF_FACTION_SLIME "alien-slime"
+#define MOB_IFF_FACTION_XENOMORPH "alien-xenomorph"
 
 //? Animal factions ?//
 //* Farm refers to 'this would not be out of place in a normal earth farm that isn't in a horror series'
@@ -50,6 +51,8 @@
 #define MOB_IFF_FACTION_MUTANT "mutant"
 /// hydroponics gone wrong
 #define MOB_IFF_FACTION_PLANT "plant"
+/// is this a dune reference???
+#define MOB_IFF_FACTION_WORM "worm"
 
 //? Human factions ?//
 
