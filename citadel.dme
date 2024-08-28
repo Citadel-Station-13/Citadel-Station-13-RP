@@ -3286,7 +3286,7 @@
 #include "code\modules\maps\templates\submaps\debrisfield\debrisfield_old.dm"
 #include "code\modules\maps\templates\submaps\debrisfield\debrisfield_submaptemplate.dm"
 #include "code\modules\maps\templates\submaps\generic\generic_areas.dm"
-#include "code\modules\maps\templates\submaps\generic\generic_areas.dm"
+#include "code\modules\maps\templates\submaps\generic\generic_templates.dm"
 #include "code\modules\maps\templates\submaps\lavaland\lavaland.dm"
 #include "code\modules\maps\templates\submaps\lythios_rift\lyhtios.dm"
 #include "code\modules\maps\templates\submaps\lythios_rift\lythios_areas.dm"
