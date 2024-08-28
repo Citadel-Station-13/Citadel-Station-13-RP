@@ -49,11 +49,50 @@
 				last_resupply = world.time
 				break // Only one resupply per pulse.
 
+/mob/living/simple_mob/mechanical/hivebot/enigma/custodian/apply_melee_effects(atom/A)
+	if(isliving(A))
+		var/mob/living/L = A
+		if(L.mob_size <= MOB_MEDIUM)
+			visible_message(SPAN_DANGER("\The [src] sends \the [L] flying with their hydraulic fists!"))
+			playsound(src, 'sound/enigma/enigma_hit2.ogg', 50, 1)
+			var/throw_dir = get_dir(src, L)
+			var/throw_dist = L.incapacitated(INCAPACITATION_DISABLED) ? 4 : 1
+			L.throw_at_old(get_edge_target_turf(L, throw_dir), throw_dist, 1, src)
+		else
+			to_chat(L, SPAN_WARNING( "\The [src] punches you with incredible force, but you remain in place."))
+
 /obj/projectile/beam/cyan/hivebot
-	damage = 50
+	damage = 40
 	armor_penetration = 20
 
 // Melee
+
+/mob/living/simple_mob/mechanical/hivebot/enigma/custodian
+	name = "custodian"
+	icon = 'icons/mob/enigma.dmi'
+	desc = "A strangely shaped humanoid synthetic, standing taller than the average Human. Its armor seems reinforced against common energy and laser weapons, however likely less so against ballistics. Power seems to course through its arms, probably best to not let it hit you... A odd elaborate golden 'E' is etched into the side of its chassis."
+	icon_state = "custodian"
+	icon_living = "custodian"
+	maxHealth = 500
+	health = 500
+	armor_legacy_mob = list(
+			"melee"		= 20,
+			"bullet"	= 0,
+			"laser"		= 50,
+			"energy"	= 50,
+			"bomb"		= 100,
+			"bio"		= 100,
+			"rad"		= 100
+			)
+	legacy_melee_damage_lower = 40
+	legacy_melee_damage_upper = 40
+	movement_cooldown = 4
+	icon_scale_x = 1.4
+	icon_scale_y = 1.4
+	faction = "enigma"
+	attack_sound = 'sound/enigma/enigma_hit2.ogg'
+	movement_sound = 'sound/enigma/enigma_move2.ogg'
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/hivebot
 
 /mob/living/simple_mob/mechanical/hivebot/enigma/disassembler
 	name = "disassembler"
@@ -142,12 +181,13 @@
 	icon_living = "mimir"
 	icon_scale_x = 1.3
 	icon_scale_y = 1.3
-	maxHealth = 600
+	maxHealth = 1000
+	health = 1000
 	armor_legacy_mob = list(
 				"melee"		= 50,
 				"bullet"	= 50,
-				"laser"		= 50,
-				"energy"	= 50,
+				"laser"		= 60,
+				"energy"	= 60,
 				"bomb"		= 100,
 				"bio"		= 100,
 				"rad"		= 100
@@ -301,7 +341,7 @@
 	light_power = 5
 	light_color = "#2ECCFA"
 	pulses_remaining = 10
-	pulse_delay = 0.5 SECONDS
+	pulse_delay = 2 SECONDS
 
 /obj/effect/temporary_effect/pulse/microsingulo/on_pulse()
 	for(var/atom/A in range(pull_radius, src))
