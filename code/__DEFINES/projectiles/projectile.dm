@@ -58,6 +58,10 @@
 /// * this is separate from suppression / silencing projectile-side!
 /// * notably, this is an absolute that should be always obeyed; while things like special round effects can ignore normal suppression.
 #define PROJECTILE_IMPACT_SUPPRESS_MESSAGE (1<<14)		// phasing?
+/// do not process damage normally
+///
+/// * stops generic 'inflict damage instance' from being procced automatically.
+#define PROJECTILE_IMPACT_SKIP_STANDARD_DAMAGE (1<<15)
 
 /// any of these means the projectile should delete immediately
 #define PROJECTILE_IMPACT_FLAGS_SHOULD_DELETE (PROJECTILE_IMPACT_DELETE)

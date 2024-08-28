@@ -76,7 +76,7 @@
 
 	//! END
 
-	if(!(impact_flags & PROJECTILE_IMPACT_BLOCKED))
+	if(!(impact_flags & (PROJECTILE_IMPACT_BLOCKED | PROJECTILE_IMPACT_SKIP_STANDARD_DAMAGE)))
 		// todo: this should just be in base projectile on_impact
 		impact_flags |= proj.inflict_impact_damage(src, bullet_act_args[BULLET_ACT_ARG_EFFICIENCY], impact_flags, bullet_act_args[BULLET_ACT_ARG_ZONE])
 	return ..()

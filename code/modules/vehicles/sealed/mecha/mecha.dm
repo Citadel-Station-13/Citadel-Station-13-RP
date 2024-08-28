@@ -1157,6 +1157,7 @@
 
 	src.log_message("Hit by projectile. Type: [proj.name]([proj.damage_flag]).",1)
 	impact_flags |= call((proc_res["dynbulletdamage"]||src), "dynbulletdamage")(proj) //calls equipment
+	impact_flags |= PROJECTILE_IMPACT_SKIP_STANDARD_DAMAGE
 	return ..()
 
 /obj/vehicle/sealed/mecha/proc/dynbulletdamage(var/obj/projectile/Proj)

@@ -54,7 +54,7 @@
 	return NONE
 
 /obj/on_bullet_act(obj/projectile/proj, impact_flags, list/bullet_act_args)
-	if(!(impact_flags & PROJECTILE_IMPACT_BLOCKED))
+	if(!(impact_flags & (PROJECTILE_IMPACT_BLOCKED | PROJECTILE_IMPACT_SKIP_STANDARD_DAMAGE)))
 		// todo: maybe the projectile side should handle this?
 		run_damage_instance(
 			proj.get_structure_damage() * bullet_act_args[BULLET_ACT_ARG_EFFICIENCY],
