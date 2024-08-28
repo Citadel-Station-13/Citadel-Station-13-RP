@@ -2095,6 +2095,14 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/surgery2)
+"bgx" = (
+/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
+/obj/effect/paint/darkred,
+/obj/map_helper/electrochromatic_linker{
+	id = "sec_processing_l"
+	},
+/turf/simulated/floor/plating,
+/area/security/security_processing)
 "bgB" = (
 /obj/structure/curtain/open/bed{
 	name = "brown curtain";
@@ -2279,6 +2287,9 @@
 	spawn_grille = 0
 	},
 /obj/effect/paint/babyblue,
+/obj/map_helper/electrochromatic_linker{
+	id = "operating_theatre_2"
+	},
 /turf/simulated/floor/plating,
 /area/medical/surgery2)
 "bmY" = (
@@ -2748,6 +2759,9 @@
 	},
 /obj/structure/window/reinforced/tinted/frosted{
 	dir = 8
+	},
+/obj/map_helper/electrochromatic_linker{
+	id = "sec_processing_r"
 	},
 /turf/simulated/floor/tiled/red,
 /area/security/security_processing)
@@ -4235,6 +4249,9 @@
 	},
 /obj/structure/window/reinforced/tinted/frosted{
 	dir = 4
+	},
+/obj/map_helper/electrochromatic_linker{
+	id = "sec_processing_l"
 	},
 /turf/simulated/floor/tiled/red,
 /area/security/security_processing)
@@ -5753,6 +5770,9 @@
 /obj/machinery/holosign/surgery{
 	id = "operating_theatre_2"
 	},
+/obj/map_helper/electrochromatic_linker{
+	id = "operating_theatre_2"
+	},
 /obj/machinery/door/airlock/glass/medical/polarized{
 	id_tint = "operating_theatre_2";
 	name = "Operating Theatre 2";
@@ -6990,6 +7010,9 @@
 /obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
 /obj/effect/paint/darkred,
 /obj/structure/cable/green,
+/obj/map_helper/electrochromatic_linker{
+	id = "Interr"
+	},
 /turf/simulated/floor/plating,
 /area/security/interrogation)
 "etT" = (
@@ -7679,6 +7702,9 @@
 /obj/item/flashlight/lamp,
 /obj/structure/window/reinforced/tinted/frosted{
 	dir = 4
+	},
+/obj/map_helper/electrochromatic_linker{
+	id = "sec_processing_l"
 	},
 /turf/simulated/floor/tiled/red,
 /area/security/security_processing)
@@ -9107,6 +9133,9 @@
 /obj/structure/window/reinforced/tinted/frosted{
 	dir = 8
 	},
+/obj/map_helper/electrochromatic_linker{
+	id = "sec_processing_r"
+	},
 /turf/simulated/floor/tiled/red,
 /area/security/security_processing)
 "fQU" = (
@@ -9165,6 +9194,9 @@
 	spawn_grille = 0
 	},
 /obj/effect/paint/babyblue,
+/obj/map_helper/electrochromatic_linker{
+	id = "operating_theatre_1"
+	},
 /turf/simulated/floor/plating,
 /area/medical/surgery)
 "fTu" = (
@@ -11269,6 +11301,9 @@
 /obj/structure/disposalpipe/segment,
 /obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
 /obj/effect/paint/babyblue,
+/obj/map_helper/electrochromatic_linker{
+	id = "medbay_outer"
+	},
 /turf/simulated/floor/plating,
 /area/medical/reception)
 "hlW" = (
@@ -14389,6 +14424,9 @@
 	opacity = 0
 	},
 /obj/effect/paint/purplegray,
+/obj/map_helper/electrochromatic_linker{
+	id = "research_outer"
+	},
 /turf/simulated/floor/plating,
 /area/rnd/research)
 "jdp" = (
@@ -16804,6 +16842,9 @@
 /obj/structure/cable/green{
 	icon_state = "2-8"
 	},
+/obj/map_helper/electrochromatic_linker{
+	id = "Interr"
+	},
 /turf/simulated/floor/plating,
 /area/security/interrogation)
 "kHg" = (
@@ -18547,6 +18588,9 @@
 /area/maintenance/dormitory)
 "lIZ" = (
 /obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
+/obj/map_helper/electrochromatic_linker{
+	id = "research_inner"
+	},
 /turf/simulated/floor/plating,
 /area/rnd/research)
 "lJq" = (
@@ -19202,6 +19246,14 @@
 /obj/effect/floor_decal/spline/plain,
 /turf/simulated/floor/wood,
 /area/crew_quarters/heads/hos)
+"mcm" = (
+/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
+/obj/effect/paint/babyblue,
+/obj/map_helper/electrochromatic_linker{
+	id = "resleeving-tint"
+	},
+/turf/simulated/floor/plating,
+/area/medical/resleeving)
 "mcn" = (
 /obj/structure/window/reinforced{
 	dir = 1
@@ -19695,6 +19747,9 @@
 /obj/effect/paint/darkred,
 /obj/structure/cable/green{
 	icon_state = "0-2"
+	},
+/obj/map_helper/electrochromatic_linker{
+	id = "Interr"
 	},
 /turf/simulated/floor/plating,
 /area/security/interrogation)
@@ -22331,6 +22386,14 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled/freezer,
 /area/crew_quarters/pool)
+"nUd" = (
+/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
+/obj/effect/paint/darkred,
+/obj/map_helper/electrochromatic_linker{
+	id = "sec_processing_r"
+	},
+/turf/simulated/floor/plating,
+/area/security/security_processing)
 "nUf" = (
 /obj/machinery/holopad,
 /turf/simulated/floor/tiled/monowhite,
@@ -22755,6 +22818,9 @@
 	opacity = 0
 	},
 /obj/effect/paint/purplegray,
+/obj/map_helper/electrochromatic_linker{
+	id = "rd_office"
+	},
 /turf/simulated/floor/plating,
 /area/crew_quarters/heads/hor)
 "ofP" = (
@@ -25337,6 +25403,9 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/holosign/surgery{
+	id = "operating_theatre_1"
+	},
+/obj/map_helper/electrochromatic_linker{
 	id = "operating_theatre_1"
 	},
 /obj/map_helper/access_helper/airlock/station/medical/surgery,
@@ -31637,6 +31706,9 @@
 	opacity = 0
 	},
 /obj/effect/paint/darkred,
+/obj/map_helper/electrochromatic_linker{
+	id = "hos_office"
+	},
 /turf/simulated/floor/plating,
 /area/crew_quarters/heads/hos)
 "tZW" = (
@@ -34476,6 +34548,9 @@
 "vPP" = (
 /obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
 /obj/effect/paint/babyblue,
+/obj/map_helper/electrochromatic_linker{
+	id = "medbay_outer"
+	},
 /turf/simulated/floor/plating,
 /area/medical/reception)
 "vQg" = (
@@ -48639,8 +48714,8 @@ oLJ
 oLJ
 kid
 kid
-oFb
-oFb
+mcm
+mcm
 kid
 kid
 kid
@@ -49224,7 +49299,7 @@ eYx
 gHr
 ixy
 odu
-oFb
+mcm
 jvX
 vjt
 wnW
@@ -49418,7 +49493,7 @@ eYx
 iKu
 kRa
 lto
-oFb
+mcm
 eUN
 dyj
 wBH
@@ -49612,7 +49687,7 @@ oUw
 dTk
 bor
 lto
-oFb
+mcm
 epz
 tQp
 xkt
@@ -57758,7 +57833,7 @@ yga
 xNm
 bhS
 nuH
-keC
+bgx
 pUO
 xQz
 owT
@@ -57952,7 +58027,7 @@ myF
 pwT
 bhS
 nuH
-keC
+bgx
 hGI
 ijR
 oZw
@@ -58146,7 +58221,7 @@ mJx
 wXp
 bhS
 nuH
-keC
+bgx
 eUi
 cCa
 fEm
@@ -58728,7 +58803,7 @@ tZG
 tiu
 bhS
 nuH
-keC
+nUd
 fQG
 bBy
 bVn
@@ -58922,7 +58997,7 @@ tZG
 mve
 bhS
 nuH
-keC
+nUd
 hGI
 ijR
 eTG
@@ -59116,7 +59191,7 @@ iFX
 eCN
 ohv
 oQS
-keC
+nUd
 pUO
 mzx
 yaJ
