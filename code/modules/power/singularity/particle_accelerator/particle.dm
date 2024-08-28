@@ -8,6 +8,8 @@
 	anchored = TRUE
 	density = TRUE
 	generic_canpass = FALSE
+	plane = MOB_PLANE
+	layer = ABOVE_MOB_LAYER
 	var/movement_range = 10
 	var/energy = 10		//energy in eV
 	var/mega_energy = 0	//energy in MeV
