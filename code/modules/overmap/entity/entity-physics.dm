@@ -50,6 +50,12 @@
 	if(isnull(vy))
 		vel_y += vy
 
+	var/interpolate_limiter
+	if((interpolate_limiter = OVERMAP_DIST_TO_PIXEL(sqrt(vel_x ** 2 + vel_y ** 2))) > SSovermaps_physics.global_interpolate_limit)
+		interpolate_limiter = SSovermaps_physics.global_interpolate_limit / interpolate_limiter
+		vel_x *= interpolate_limiter
+		vel_y *= interpolate_limiter
+
 	if(QUANTIZE_OVERMAP_DISTANCE(vel_x) || QUANTIZE_OVERMAP_DISTANCE(vel_y))
 		activate_physics()
 	else
@@ -62,6 +68,12 @@
 		vel_x = vx
 	if(!isnull(vy))
 		vel_y = vy
+
+	var/interpolate_limiter
+	if((interpolate_limiter = OVERMAP_DIST_TO_PIXEL(sqrt(vel_x ** 2 + vel_y ** 2))) > SSovermaps_physics.global_interpolate_limit)
+		interpolate_limiter = SSovermaps_physics.global_interpolate_limit / interpolate_limiter
+		vel_x *= interpolate_limiter
+		vel_y *= interpolate_limiter
 
 	if(QUANTIZE_OVERMAP_DISTANCE(vel_x) || QUANTIZE_OVERMAP_DISTANCE(vel_y))
 		activate_physics()
