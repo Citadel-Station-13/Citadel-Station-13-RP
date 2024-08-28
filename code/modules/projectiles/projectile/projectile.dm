@@ -59,6 +59,9 @@
 	//* These are applied in additional to mob
 	//* evasion and miss handling! Projectiles should *//
 	//* generally be pretty accurate for that reason. *//
+	//*                                               *//
+	//* All accuracy ranges use **manhattan**         *//
+	//* distance, not euclidean!                      *//
 
 	/// if enabled, projectile-side baymiss is entirely disabled
 	///
@@ -69,7 +72,7 @@
 	///
 	/// * this means the projectile doesn't enforce inaccuracy; not the target!
 	/// * remember that even if a projectile clips a single pixel on a target turf, it hits.
-	var/accuracy_perfect_range = WORLD_ICON_SIZE * 5
+	var/accuracy_perfect_range = WORLD_ICON_SIZE * 7
 	/// linear - accuracy outside of perfect range
 	///
 	/// * [0, 100] inclusive as %
@@ -118,10 +121,8 @@
 	var/hitscan = FALSE
 	/// angle, in degrees **clockwise of north**
 	var/angle
-	/// angle to set to after impact processing.
-	///
-	/// * set instead of [angle] if set_angle is called during impact.
-	var/staged_angle
+	/// divisor to distance travelled at the **current** [angle] to get it to chebyshev dist
+	var/angle_chebyshev_divisor
 	/// max distance in pixels
 	///
 	/// * please set this to a multiple of [WORLD_ICON_SIZE] so we scale with tile size.
@@ -201,6 +202,10 @@
 	var/trajectory_penalty_applied = 0
 	/// currently travelled distance in pixels
 	var/distance_travelled
+	/// currently travelled distance in pixels
+	///
+	/// * this is in chebyshev distance, aka byond get_dist()
+	var/distance_travelled_chebyshev
 	/// if we get forcemoved, this gets reset to 0 as a trip
 	/// this way, we know exactly how far we moved
 	var/distance_travelled_this_iteration
