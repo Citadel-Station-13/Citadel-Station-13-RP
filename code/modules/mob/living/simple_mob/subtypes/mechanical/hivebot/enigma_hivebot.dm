@@ -240,8 +240,8 @@
 		max_shield_health = 150;
 		shield_regen_delay = 10 SECONDS;
 		shield_regen_amount = 10;
-		shield_size_x = 1;
-		shield_size_y = 1;
+		size_x = 1;
+		size_y = 1;
 		always_on = TRUE;
 	}
 	var/obj/item/shield_projector/shield_projector = new shield_type(src)
