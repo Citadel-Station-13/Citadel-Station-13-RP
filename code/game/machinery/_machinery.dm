@@ -156,7 +156,7 @@
 	///Volume of interface sounds.
 	var/clickvol = 40
 	var/obj/item/circuitboard/circuit = null
-	///If false, SSmachines. If true, SSfastprocess.
+	///If false, SSmachines. If true, SSprocess_5fps.
 	var/speed_process = FALSE
 
 	var/interaction_flags_machine = INTERACT_MACHINE_WIRES_IF_OPEN | INTERACT_MACHINE_ALLOW_SILICON | INTERACT_MACHINE_OPEN_SILICON | INTERACT_MACHINE_SET_MACHINE
@@ -176,7 +176,7 @@
 	if(!speed_process)
 		START_MACHINE_PROCESSING(src)
 	else
-		START_PROCESSING(SSfastprocess, src)
+		START_PROCESSING(SSprocess_5fps, src)
 
 	if(!mapload)	// area handles this
 		power_change()
@@ -186,7 +186,7 @@
 	if(!speed_process)
 		STOP_MACHINE_PROCESSING(src)
 	else
-		STOP_PROCESSING(SSfastprocess, src)
+		STOP_PROCESSING(SSprocess_5fps, src)
 	if(component_parts)
 		for(var/atom/A in component_parts)
 			if(A.loc == src) // If the components are inside the machine, delete them.

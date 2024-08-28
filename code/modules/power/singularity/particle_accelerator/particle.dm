@@ -46,10 +46,10 @@
 /obj/effect/accelerated_particle/Initialize(mapload, dir = SOUTH)
 	setDir(dir)
 	. = ..()
-	START_PROCESSING(SSfastprocess, src)
+	START_PROCESSING(SSprocess_5fps, src)
 
 /obj/effect/accelerated_particle/Destroy()
-	STOP_PROCESSING(SSfastprocess, src)
+	STOP_PROCESSING(SSprocess_5fps, src)
 	return ..()
 
 /obj/effect/accelerated_particle/process(delta_time)
