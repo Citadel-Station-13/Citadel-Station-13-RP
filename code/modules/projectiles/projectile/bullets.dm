@@ -37,7 +37,7 @@
 /obj/projectile/bullet/check_penetrate(var/atom/A)
 	if(!A || !A.density) return 1 //if whatever it was got destroyed when we hit it, then I guess we can just keep going
 
-	if(istype(A, /obj/mecha))
+	if(istype(A, /obj/vehicle/sealed/mecha))
 		return 1 //mecha have their own penetration handling
 
 	if(ismob(A))
@@ -325,7 +325,7 @@
 	SA_bonus_damage = 35 // 50 total on animals.
 	SA_vulnerability = MOB_CLASS_ANIMAL
 
-/obj/projectile/bullet/rifle/a127 // 14.5×114mm is bigger than a .50 BMG round.
+/obj/projectile/bullet/rifle/a12_7mm // 14.5×114mm is bigger than a .50 BMG round.
 	fire_sound = 'sound/weapons/Gunshot_cannon.ogg' // This is literally an anti-tank rifle caliber. It better sound like a fucking cannon.
 	damage = 80
 	stun = 3

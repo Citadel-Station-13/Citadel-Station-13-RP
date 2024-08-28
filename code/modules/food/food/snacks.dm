@@ -3372,25 +3372,40 @@
 		return
 	. = ..()
 
+/obj/item/pizzabox/margherita
+	name = "pizza box (margherita)"
+
 /obj/item/pizzabox/margherita/Initialize(mapload)
 	. = ..()
 	pizza = new /obj/item/reagent_containers/food/snacks/sliceable/pizza/margherita(src)
 	boxtag = "Margherita Deluxe"
+
+/obj/item/pizzabox/vegetable
+	name = "pizza box (vegetable)"
 
 /obj/item/pizzabox/vegetable/Initialize(mapload)
 	. = ..()
 	pizza = new /obj/item/reagent_containers/food/snacks/sliceable/pizza/vegetablepizza(src)
 	boxtag = "Gourmet Vegatable"
 
+/obj/item/pizzabox/mushroom
+	name = "pizza box (mushroom)"
+
 /obj/item/pizzabox/mushroom/Initialize(mapload)
 	. = ..()
 	pizza = new /obj/item/reagent_containers/food/snacks/sliceable/pizza/mushroompizza(src)
 	boxtag = "Mushroom Special"
 
+/obj/item/pizzabox/meat
+	name = "pizza box (meat)"
+
 /obj/item/pizzabox/meat/Initialize(mapload)
 	. = ..()
 	pizza = new /obj/item/reagent_containers/food/snacks/sliceable/pizza/meatpizza(src)
 	boxtag = "Meatlover's Supreme"
+
+/obj/item/pizzabox/pineapple
+	name = "pizza box (pineapple)"
 
 /obj/item/pizzabox/pineapple/Initialize(mapload)
 	. = ..()
@@ -4271,6 +4286,8 @@ END CITADEL CHANGE */
 	nutriment_desc = list("margarine" = 1)
 	nutriment_amt = 20
 
+/datum/component/slippery/butter
+
 /obj/item/reagent_containers/food/snacks/spreads/butter
 	name = "butter"
 	desc = "A stick of pure butterfat made from milk products."
@@ -4279,13 +4296,9 @@ END CITADEL CHANGE */
 	nutriment_desc = list("butter" = 1)
 	nutriment_amt = 0
 
-/obj/item/reagent_containers/food/snacks/spreads/butter/Crossed(atom/movable/AM as mob|obj)
+/obj/item/reagent_containers/food/snacks/spreads/butter/Initialize(mapload)
 	. = ..()
-	if(AM.is_incorporeal())
-		return
-	if (istype(AM, /mob/living))
-		var/mob/living/M = AM
-		M.slip("the [src.name]",4)
+	AddComponent(/datum/component/slippery/butter)
 
 /obj/item/reagent_containers/food/snacks/spreads/Initialize(mapload)
 	. = ..()
@@ -7027,3 +7040,27 @@ END CITADEL CHANGE */
 	icon_state = "meatsicle"
 	nutriment_amt = 6
 	nutriment_desc = list("frozen meat" = 1)
+
+// Macarons
+
+/obj/item/reagent_containers/food/snacks/macaron
+	name = "macaron"
+	nutriment_amt = 6
+	bitesize = 3
+	nutriment_desc = list("sugar")
+
+/obj/item/reagent_containers/food/snacks/macaron/red
+	desc = "A small sugary treat. This one is red!"
+	icon_state = "macaron_red"
+
+/obj/item/reagent_containers/food/snacks/macaron/yellow
+	desc = "A small sugary treat. This one is yellow!"
+	icon_state = "macaron_yellow"
+
+/obj/item/reagent_containers/food/snacks/macaron/purple
+	desc = "A small sugary treat. This one is purple!"
+	icon_state = "macaron_purple"
+
+/obj/item/reagent_containers/food/snacks/macaron/green
+	desc = "A small sugary treat. This one is green!"
+	icon_state = "macaron_green"

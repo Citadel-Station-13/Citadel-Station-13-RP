@@ -39,7 +39,7 @@
 	)
 	. += create_stack_recipe_datum(
 		name = "wax globule",
-		product = /obj/item/ammo_casing/organic/wax,
+		product = /obj/item/ammo_casing/biomatter/wax,
 		cost = 1,
 	)
 	. += create_stack_recipe_datum(

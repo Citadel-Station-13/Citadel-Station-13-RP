@@ -215,6 +215,7 @@
 	desc = "Used for clearing rooms of living things."
 	path = 1
 	stage = 2
+	worth_intrinsic = 150
 
 /obj/item/grenade/chem_grenade/incendiary/Initialize(mapload)
 	. = ..()

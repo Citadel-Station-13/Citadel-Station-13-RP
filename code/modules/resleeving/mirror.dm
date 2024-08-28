@@ -8,6 +8,7 @@
 	catalogue_data = /datum/category_item/catalogue/technology/resleeving
 	icon = 'icons/obj/mirror.dmi'
 	icon_state = "mirror_implant_f"
+	integrity_flags = INTEGRITY_INDESTRUCTIBLE
 	var/stored_mind = null
 	var/tmp/mob/living/carbon/human/human
 	item_flags = ITEM_NOBLUDGEON | ITEM_ENCUMBERS_WHILE_HELD

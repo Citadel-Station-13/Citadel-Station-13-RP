@@ -282,10 +282,10 @@
 				/obj/item/clothing/head/helmet/space/syndicate/black/red,
 				/obj/item/gun/ballistic/automatic/mini_uzi,
 				/obj/item/gun/ballistic/automatic/mini_uzi,
-				/obj/item/ammo_magazine/m45uzi,
-				/obj/item/ammo_magazine/m45uzi,
-				/obj/item/ammo_magazine/m45uzi/empty,
-				/obj/item/ammo_magazine/m45uzi/empty,
+				/obj/item/ammo_magazine/a45/uzi,
+				/obj/item/ammo_magazine/a45/uzi,
+				/obj/item/ammo_magazine/a45/uzi/empty,
+				/obj/item/ammo_magazine/a45/uzi/empty,
 				/obj/structure/closet/crate/plastic
 			),
 			prob(2);list(
@@ -299,15 +299,15 @@
 				/obj/item/clothing/suit/armor/vest,
 				/obj/item/gun/ballistic/garand,
 				/obj/item/gun/ballistic/garand,
-				/obj/item/ammo_magazine/m762garand,
-				/obj/item/ammo_magazine/m762garand,
+				/obj/item/ammo_magazine/a7_62mm/garand,
+				/obj/item/ammo_magazine/a7_62mm/garand,
 				/obj/structure/closet/crate/plastic
 			),
 			prob(2);list(
-				/obj/mecha/working/ripley/mining
+				/obj/vehicle/sealed/mecha/working/ripley/mining
 			),
 			prob(2);list(
-				/obj/mecha/working/hoverpod/combatpod
+				/obj/vehicle/sealed/mecha/working/hoverpod/combatpod
 			),
 			prob(2);list(
 				/obj/item/pickaxe/silver,

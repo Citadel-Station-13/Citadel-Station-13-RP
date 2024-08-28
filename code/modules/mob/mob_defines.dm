@@ -38,10 +38,6 @@
 	/// How are we intending to act? Help / harm / etc.
 	var/a_intent = INTENT_HELP
 
-	//? Economy
-	/// This mob's economic category
-	var/economic_category_mob = ECONOMIC_CATEGORY_MOB_DEFAULT
-
 	//? Perspectives
 	/// using perspective - if none, it'll be self - when client logs out, if using_perspective has reset_on_logout, this'll be unset.
 	var/datum/perspective/using_perspective
@@ -357,11 +353,7 @@
 
 	var/registered_z
 
-	/// For mechs and fighters ambiance. Can be used in other cases.
-	var/in_enclosed_vehicle = 0
-
 	var/last_radio_sound = -INFINITY
-
 
 	//? vorestation legacy
 	/// Allows flight.

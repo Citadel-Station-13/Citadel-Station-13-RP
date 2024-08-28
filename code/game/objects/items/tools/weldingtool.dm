@@ -17,6 +17,8 @@
 	throw_range = 5
 	w_class = WEIGHT_CLASS_SMALL
 
+	worth_intrinsic = 35
+
 	//Cost to make in the autolathe
 	materials_base = list(MAT_STEEL = 70, MAT_GLASS = 30)
 
@@ -362,12 +364,13 @@
 	eye_safety_modifier = 1 // Safer on eyes.
 
 /obj/item/weldingtool/bone
-	name = "primitive welding tool"
-	desc = "A curious welding tool that uses an anomalous ignition method."
+	name = "Elder's Bellows"
+	desc = "A curious welding tool that uses an anomalous crystal and a bellows to create heat."
+	icon = 'icons/obj/lavaland.dmi'
 	icon_state = "ashwelder"
 	max_fuel = 20
 	materials_base = list(MAT_METAL = 30, MAT_BONE = 10)
-	tool_speed = 1.5
+	tool_speed = 3 ///It doesn't get that hot
 	eye_safety_modifier = 3 // Safe for Scorians who don't have goggles.
 	always_process = TRUE
 
@@ -575,6 +578,7 @@
 	icon_state = "arcwelder"
 	max_fuel = 0	//We'll handle the consumption later.
 	item_state = "ewelder"
+	worth_intrinsic = 70
 	var/obj/item/cell/power_supply //What type of power cell this uses
 	var/charge_cost = 24	//The rough equivalent of 1 unit of fuel, based on us wanting 10 welds per battery
 	var/cell_type = /obj/item/cell/device
@@ -719,11 +723,11 @@
 	..()
 
 	if(equip_mount && equip_mount.chassis)
-		var/obj/mecha/M = equip_mount.chassis
+		var/obj/vehicle/sealed/mecha/M = equip_mount.chassis
 		if(M.selected == equip_mount && get_fuel())
-			setWelding(TRUE, M.occupant)
+			setWelding(TRUE, M.occupant_legacy)
 		else
-			setWelding(FALSE, M.occupant)
+			setWelding(FALSE, M.occupant_legacy)
 
 #undef WELDER_FUEL_BURN_INTERVAL
 
@@ -750,8 +754,11 @@
 		M.update_inv_l_hand()
 		M.update_inv_r_hand()
 
-/obj/item/weldingtool/electric/crystal/attack_self(var/mob/living/carbon/human/user)
-	if(user.species.name == SPECIES_ADHERENT)
+/obj/item/weldingtool/electric/crystal/attack_self(mob/user)
+	var/mob/living/carbon/human/H = user
+	if(!istype(H))
+		return
+	if(H.species.name == SPECIES_ADHERENT)
 		if(user.nutrition >= 40)
 			setWelding(!welding, user)
 		else

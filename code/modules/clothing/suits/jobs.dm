@@ -180,6 +180,7 @@
 	/obj/item/tool/crowbar, /obj/item/tool/screwdriver, /obj/item/weldingtool, /obj/item/tool/wirecutters, /obj/item/tool/wrench, /obj/item/tank/emergency/oxygen,
 	/obj/item/clothing/mask/gas, /obj/item/barrier_tape_roll/engineering)
 	body_cover_flags = UPPER_TORSO
+	worth_intrinsic = 50
 
 //Lawyer
 /obj/item/clothing/suit/storage/toggle/lawyer/bluejacket

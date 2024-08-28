@@ -8,6 +8,9 @@
 	integrity_enabled = TRUE
 	armor_type = /datum/armor/object/default
 
+	// Name says everything. I'm crying.
+	var/temporary_legacy_dont_auto_handle_obj_damage_for_mechs = FALSE
+
 	//? Flags
 	/// object flags, see __DEFINES/_flags/obj_flags.dm
 	var/obj_flags = OBJ_MELEE_TARGETABLE | OBJ_RANGE_TARGETABLE
@@ -16,8 +19,10 @@
 
 	//? Access - see [modules/jobs/access.dm]
 	/// If set, all of these accesses are needed to access this object.
+	//  todo: getter / setter, enforced cached & deduped lists
 	var/list/req_access
 	/// If set, at least one of these accesses are needed to access this object.
+	//  todo: getter / setter, enforced cached & deduped lists
 	var/list/req_one_access
 
 	//? Climbing
@@ -54,9 +59,30 @@
 	/// contributes to depth when we're on a turf
 	var/depth_projected = FALSE
 
-	//? Economy
+	//* Economy *//
 	/// economic category for objects
 	var/economic_category_obj = ECONOMIC_CATEGORY_OBJ_DEFAULT
+	/// intrinsic worth without accounting containing reagents / materials - applies in static and dynamic mode.
+	var/worth_intrinsic = 0
+	/// intrinsic elasticity as factor, 2 = 2x easy to inflate market
+	///
+	/// * set this to a multiple of WORTH_ELASTICITY_DEFAULT if possible.
+	var/worth_elasticity = WORTH_ELASTICITY_DEFAULT
+	/// default worth flags to use when buying
+	var/worth_buy_flags = GET_WORTH_INTRINSIC | GET_WORTH_CONTAINING
+	/// default worth flags to use when selling
+	var/worth_sell_flags = GET_WORTH_INTRINSIC | GET_WORTH_CONTAINING
+	/**
+	 * * DANGER * - do not touch this variable unless you know what you are doing.
+	 *
+	 * This signifies that procs have a non-negligible randomization on a *freshly-spawned* instance of this object.
+	 * This is not the case for most closets / lockers / crates / storage that spawn with items.
+	 * In those cases, use the other variables to control its static worth.
+	 *
+	 * This means that things like cargo should avoid "intuiting" the value of this object
+	 * through initial()'s alone.
+	 */
+	var/worth_dynamic = FALSE
 
 	//? Integrity
 	integrity = 200
@@ -229,7 +255,7 @@
 		// init material parts only if it wasn't initialized already
 		if(!(obj_flags & OBJ_MATERIAL_INITIALIZED))
 			init_material_parts()
-	if(hides_underfloor != OBJ_UNDERFLOOR_NEVER)
+	if(hides_underfloor != OBJ_UNDERFLOOR_NEVER && isturf(loc))
 		initialize_hiding_underfloor(mapload)
 	if (set_obj_flags)
 		var/flagslist = splittext(set_obj_flags,";")
@@ -265,7 +291,11 @@
 			old_turf.unregister_dangerous_object(src)
 			new_turf.register_dangerous_object(src)
 
-/obj/item/proc/is_used_on(obj/O, mob/user)
+/obj/worth_contents(flags)
+	. = ..()
+	if(obj_storage?.use_worth_containing)
+		for(var/obj/item/item in obj_storage.contents())
+			. += item
 
 /obj/proc/updateUsrDialog()
 	if(in_use)

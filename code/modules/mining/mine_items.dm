@@ -7,6 +7,7 @@
 	brightness_on = 6			// luminosity when on
 	light_color = "#ff9933" // A slight yellow/orange color.
 	light_wedge = LIGHT_OMNI
+	worth_intrinsic = 45
 
 /*****************************Pickaxe********************************/
 
@@ -21,6 +22,7 @@
 	item_state = "jackhammer"
 	w_class = WEIGHT_CLASS_BULKY
 	materials_base = list(MAT_STEEL = 3750)
+	worth_intrinsic = 75
 	var/digspeed = 40 //moving the delay to an item var so R&D can make improved picks. --NEO
 	var/sand_dig = FALSE
 	origin_tech = list(TECH_MATERIAL = 1, TECH_ENGINEERING = 1)
@@ -41,6 +43,14 @@
 	origin_tech = list(TECH_MATERIAL = 1)
 	desc = "A sturdy pick fashioned from some animal's bone, wound with powerful sinew."
 
+/obj/item/pickaxe/bronze
+	name = "bronze pickaxe"
+	icon_state = "brpickaxe"
+	item_state = "brpickaxe"
+	digspeed = 30
+	origin_tech = list(TECH_MATERIAL = 1)
+	desc = "A primitive pickaxe made of bronze, and a handle of bone."
+
 /obj/item/pickaxe/silver
 	name = "silver pickaxe"
 	icon_state = "spickaxe"
@@ -58,6 +68,7 @@
 	desc = "Yours is the drill that will pierce through the rock walls."
 	drill_verb = "drilling"
 	sand_dig = TRUE
+	worth_intrinsic = 125
 
 /obj/item/pickaxe/jackhammer
 	name = "sonic jackhammer"
@@ -67,6 +78,7 @@
 	origin_tech = list(TECH_MATERIAL = 3, TECH_POWER = 2, TECH_ENGINEERING = 2)
 	desc = "Cracks rocks with sonic blasts, perfect for killing cave lizards."
 	drill_verb = "hammering"
+	worth_intrinsic = 250
 
 /obj/item/pickaxe/gold
 	name = "golden pickaxe"
@@ -90,6 +102,7 @@
 	drill_sound = 'sound/items/Welder.ogg'
 	sharp = 1
 	edge = 1
+	worth_intrinsic = 175
 
 /obj/item/pickaxe/diamond
 	name = "diamond pickaxe"
@@ -109,6 +122,7 @@
 	desc = "Yours is the drill that will pierce the heavens!"
 	drill_verb = "drilling"
 	sand_dig = TRUE
+	worth_intrinsic = 350
 
 /obj/item/pickaxe/borgdrill
 	name = "enhanced sonic jackhammer"
@@ -134,6 +148,7 @@
 	attack_verb = list("mined", "pierced", "stabbed", "attacked")
 	drill_verb = "picking"
 	sharp = 1
+	worth_intrinsic = 75
 
 //Snowflake drill that works like a chainsaw! How fun. Honestly they should probably all work like this or something. I dunno. Might be a fun mining overhaul later.
 /obj/item/pickaxe/tyrmalin
@@ -145,6 +160,7 @@
 	var/max_fuel = 100
 	active = 0
 	var/jam_chance = TRUE
+	worth_intrinsic = 75
 
 /obj/item/pickaxe/tyrmalin/Initialize(mapload)
 	. = ..()
@@ -276,6 +292,7 @@
 	attack_verb = list("bashed", "bludgeoned", "thrashed", "whacked")
 	sharp = 0
 	edge = 1
+	worth_intrinsic = 50
 	var/digspeed = 40
 
 /obj/item/shovel/bone
@@ -288,6 +305,12 @@
 	tool_speed = 0.7
 	attack_verb = list("slashed", "impaled", "stabbed", "sliced")
 	sharp = 1
+
+/obj/item/shovel/bronze
+	name = "bronze shovel"
+	desc = "A simple shovel made of bronze. Its wide head seems to be much simpler then modern shovels."
+	icon = 'icons/obj/lavaland.dmi'
+	icon_state = "shovel_bronze"
 
 /obj/item/shovel/spade
 	name = "spade"
@@ -303,6 +326,12 @@
 	desc = "A small shove cruedly fashioned out of some beast's scapula."
 	icon = 'icons/obj/mining.dmi'
 	icon_state = "spade_bone"
+
+/obj/item/shovel/spade/bronze
+	name = "primitive spade"
+	desc = "A small shovel made of bronze. The design seems to have some ritual purposes."
+	icon = 'icons/obj/lavaland.dmi'
+	icon_state = "spade_bronze"
 
 /**********************Mining car (Crate like thing, not the rail car)**************************/
 

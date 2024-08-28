@@ -51,22 +51,27 @@ CREATE_STANDARD_TURFS(/turf/unsimulated/mineral)
 	var/ignore_oregen = FALSE
 	var/ignore_cavegen = FALSE
 
+CREATE_STANDARD_TURFS(/turf/simulated/mineral)
+
 /turf/simulated/mineral/rich
 	//Placeholder, go to the oregen stuff at the bottom to see the oregen weight
-
+CREATE_STANDARD_TURFS(/turf/simulated/mineral/rich)
 // Alternatives that ignore ore_gen and cavegen
 /turf/simulated/mineral/ignore_oregen
 	ignore_oregen = TRUE
 
+CREATE_STANDARD_TURFS(/turf/simulated/mineral/ignore_oregen)
 /turf/simulated/mineral/floor/ignore_oregen
 	ignore_oregen = TRUE
 
 /turf/simulated/mineral/ignore_cavegen
 	ignore_cavegen = TRUE
 
+CREATE_STANDARD_TURFS(/turf/simulated/mineral/ignore_cavegen)
 /turf/simulated/mineral/floor/ignore_cavegen
 	ignore_cavegen = TRUE
 
+CREATE_STANDARD_TURFS(/turf/simulated/mineral/floor/ignore_cavegen)
 /turf/simulated/mineral/floor/ignore_cavegen/has_air
 	initial_gas_mix = GAS_STRING_STP
 
@@ -328,8 +333,8 @@ CREATE_STANDARD_TURFS(/turf/unsimulated/mineral)
 		if(istype(R.module_active,/obj/item/pickaxe))
 			attackby(R.module_active,R)
 
-	else if(istype(AM,/obj/mecha))
-		var/obj/mecha/M = AM
+	else if(istype(AM,/obj/vehicle/sealed/mecha))
+		var/obj/vehicle/sealed/mecha/M = AM
 		if(istype(M.selected,/obj/item/mecha_parts/mecha_equipment/tool/drill))
 			M.selected.action(src)
 

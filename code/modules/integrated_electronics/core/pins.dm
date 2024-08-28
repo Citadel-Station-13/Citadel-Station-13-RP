@@ -21,7 +21,7 @@ D [1]/  ||
 /datum/integrated_io
 	var/name = "input/output"
 	var/obj/item/integrated_circuit/holder
-	var/datum/weakref/data  // This is a weakref, to reduce typecasts.  Note that oftentimes numbers and text may also occupy this.
+	var/data
 	var/list/linked = list()
 	var/io_type = DATA_CHANNEL
 	var/pin_type			// IC_INPUT, IC_OUTPUT, IC_ACTIVATOR - used in saving assembly wiring
@@ -146,7 +146,9 @@ list[](
 	return FALSE
 */
 
-/datum/integrated_io/proc/write_data_to_pin(new_data)
+/datum/integrated_io/proc/write_data_to_pin(datum/new_data)
+	if (istype(new_data) && !isweakref(new_data))
+		new_data = WEAKREF(new_data)
 	if(isnull(new_data) || isnum(new_data) || istext(new_data) || isweakref(new_data)) // Anything else is a type we don't want.
 		if(istext(new_data))
 			new_data = sanitizeSafe(new_data, MAX_MESSAGE_LEN, 0, 0)
@@ -154,13 +156,18 @@ list[](
 		holder.on_data_written()
 	else if(islist(new_data))
 		var/list/new_list = new_data
-		data = new_list.Copy(max(1,new_list.len - IC_MAX_LIST_LENGTH+1),0)
+		new_list = new_list.Copy(max(1,new_list.len - IC_MAX_LIST_LENGTH+1),0)
+		for(var/i in 1 to length(new_list))
+			var/datum/dataRef = new_list[i]
+			if(istype(dataRef) && !isweakref(dataRef))
+				new_list[i] = WEAKREF(dataRef)
+		data = new_list
 		holder.on_data_written()
 
 /datum/integrated_io/proc/push_data()
 	for(var/k in 1 to linked.len)
 		var/datum/integrated_io/io = linked[k]
-		io.write_data_to_pin(data)
+		io.write_data_to_pin(get_data())
 
 /datum/integrated_io/activate/push_data()
 	for(var/k in 1 to linked.len)
