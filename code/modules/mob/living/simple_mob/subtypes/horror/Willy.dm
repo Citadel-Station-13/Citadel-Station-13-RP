@@ -12,7 +12,6 @@
 	icon_living = "Willy"
 	icon_dead = "w_head"
 	icon_rest = "Willy"
-	faction = "horror"
 	icon = 'icons/mob/horror_show/GHPS.dmi'
 	icon_gib = "generic_gib"
 	catalogue_data = list(/datum/category_item/catalogue/fauna/horror/Willy)

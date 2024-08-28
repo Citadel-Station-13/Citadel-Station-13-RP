@@ -121,6 +121,7 @@
 	/// our IFF factions
 	///
 	/// * Do not read directly, use [code/modules/mob/mob-iff.dm] helpers.
+	/// * can be set to a string, or a list of strings.
 	var/iff_factions
 
 	//! Size

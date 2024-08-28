@@ -12,7 +12,6 @@
 	icon_living = "Helix"
 	icon_dead = "m_dead"
 	icon_rest = "Helix"
-	faction = "horror"
 	icon = 'icons/mob/horror_show/master.dmi'
 	icon_gib = "generic_gib"
 	anchored = 1

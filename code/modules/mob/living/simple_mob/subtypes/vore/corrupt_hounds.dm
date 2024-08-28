@@ -22,7 +22,7 @@
 	icon = 'icons/mob/vore64x32.dmi'
 	has_eye_glow = TRUE
 
-	faction = "hivebot"
+	iff_factions = MOB_IFF_FACTION_HIVEBOT
 
 	maxHealth = 200
 	health = 200

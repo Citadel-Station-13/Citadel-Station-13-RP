@@ -172,7 +172,8 @@
 
 /mob/living/simple_mob/animal/stormdrifter/bull/proc/RenameMount()
 	var/mob/M = usr
-	if(!M.mind)	return 0
+	if(!M.mind)
+		return 0
 	if(!M.faction == src.faction)
 		to_chat(M, "<span class='notice'>You don't feel familiar enough with this beast to name it.</span>")
 		return 0

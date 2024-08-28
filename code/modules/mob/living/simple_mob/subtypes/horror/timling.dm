@@ -12,7 +12,6 @@
 	icon_living = "timling"
 	icon_dead = "tt_head"
 	icon_rest = "timling"
-	faction = "horror"
 	icon = 'icons/mob/horror_show/tallhorror.dmi'
 	icon_gib = "generic_gib"
 	catalogue_data = list(/datum/category_item/catalogue/fauna/horror/TinyTim)

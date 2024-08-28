@@ -259,6 +259,7 @@
 #include "code\__DEFINES\mobs\biology.dm"
 #include "code\__DEFINES\mobs\characteristics.dm"
 #include "code\__DEFINES\mobs\grab.dm"
+#include "code\__DEFINES\mobs\iff.dm"
 #include "code\__DEFINES\mobs\intent.dm"
 #include "code\__DEFINES\mobs\life.dm"
 #include "code\__DEFINES\mobs\mobility.dm"
