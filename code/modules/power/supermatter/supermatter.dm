@@ -484,7 +484,7 @@
 			bumped_atom.visible_message("<span class=\"warning\">\The [bumped_atom] smacks into \the [src] and rapidly flashes to ash.</span>",\
 			"<span class=\"warning\">You hear a loud crack as you are washed with a wave of heat.</span>")
 
-		Consume(AM)
+		Consume(bumped_atom)
 
 /obj/machinery/power/supermatter/proc/Consume(var/mob/living/user)
 	// todo: rework the fucking supermatter so we don't need this
