@@ -17,9 +17,9 @@
 		if(L == src)
 			continue // Don't buff ourselves.
 		if(IIsAlly(L) && L.isSynthetic()) // Don't buff enemies.
-			L.add_modifier(/datum/modifier/aura/hivebot_commander_buff, null, src)
+			L.add_modifier(/datum/modifier/aura/hivebot_commander_buff/enigma, null, src)
 
-/datum/modifier/aura/hivebot_commander_buff
+/datum/modifier/aura/hivebot_commander_buff/enigma
 	name = "Strategicals"
 	on_created_text = "<span class='notice'>Signal established with commander. Optimizating combat performance...</span>"
 	on_expired_text = "<span class='warning'>Lost signal to commander. Optimization halting.</span>"
