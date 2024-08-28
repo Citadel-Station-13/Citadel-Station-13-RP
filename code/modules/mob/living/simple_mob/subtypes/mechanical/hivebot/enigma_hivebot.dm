@@ -234,6 +234,20 @@
 	base_attack_cooldown = 50
 // Boss
 
+/mob/living/simple_mob/mechanical/hivebot/enigma/sweeper/Initialize(mapload)
+	var/shield_type = /obj/item/shield_projector/rectangle{
+		shield_health = 150;
+		max_shield_health = 150;
+		shield_regen_delay = 10 SECONDS;
+		shield_regen_amount = 10;
+		shield_size_x = 1;
+		shield_size_y = 1;
+		always_on = TRUE;
+	}
+	var/obj/item/shield_projector/shield_projector = new shield_type(src)
+	shield_projector.create_shields()
+	return ..()
+
 // VERY POWERFUL! Uses ripped Advanced Dark Gygax code.
 /mob/living/simple_mob/mechanical/hivebot/enigma/mimir
 	name = "Mimir"
