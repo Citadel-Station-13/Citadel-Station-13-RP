@@ -61,10 +61,6 @@
 		else
 			to_chat(L, SPAN_WARNING( "\The [src] punches you with incredible force, but you remain in place."))
 
-/obj/projectile/beam/cyan/hivebot
-	damage = 40
-	armor_penetration = 20
-
 // Melee
 
 /mob/living/simple_mob/mechanical/hivebot/enigma/custodian
@@ -102,6 +98,16 @@
 	icon_living = "disassembler"
 	maxHealth = 200
 	health = 200
+	armor_legacy_mob = list(
+				"melee"		= 10,
+				"bullet"	= 0,
+				"laser"		= 30,
+				"energy"	= 30,
+				"bomb"		= 0,
+				"bio"		= 100,
+				"rad"		= 100
+				)
+
 	legacy_melee_damage_lower = 20
 	legacy_melee_damage_upper = 20
 	base_attack_cooldown = 6
@@ -121,6 +127,16 @@
 	icon_living = "research_director"
 	maxHealth = 600
 	health = 600
+	armor_legacy_mob = list(
+				"melee"		= 30,
+				"bullet"	= 20,
+				"laser"		= 50,
+				"energy"	= 50,
+				"bomb"		= 70,
+				"bio"		= 100,
+				"rad"		= 100
+				)
+
 	legacy_melee_damage_lower = 25
 	legacy_melee_damage_upper = 25
 	movement_cooldown = 5
@@ -139,6 +155,16 @@
 	icon_living = "archaeologist"
 	maxHealth = 150
 	health = 150
+	armor_legacy_mob = list(
+				"melee"		= 0,
+				"bullet"	= 0,
+				"laser"		= 30,
+				"energy"	= 30,
+				"bomb"		= 0,
+				"bio"		= 100,
+				"rad"		= 100
+				)
+
 	legacy_melee_damage_lower = 10
 	legacy_melee_damage_upper = 10
 	movement_cooldown = 2
@@ -160,6 +186,16 @@
 	icon_living = "atomizer"
 	maxHealth = 350
 	health = 350
+	armor_legacy_mob = list(
+				"melee"		= 0,
+				"bullet"	= 0,
+				"laser"		= 40,
+				"energy"	= 40,
+				"bomb"		= 10,
+				"bio"		= 100,
+				"rad"		= 100
+				)
+
 	legacy_melee_damage_lower = 0
 	legacy_melee_damage_upper = 0
 	movement_cooldown = 6
@@ -168,6 +204,34 @@
 	ai_holder_type = /datum/ai_holder/polaris/simple_mob/ranged/kiting
 	projectiletype = /obj/projectile/beam/cyan/hivebot
 
+/mob/living/simple_mob/mechanical/hivebot/enigma/sweeper
+	name = "sweeper"
+	icon = 'icons/mob/enigma.dmi'
+	desc = "A towering mechanical construct, radiating with power. Its gauntlet contains some sort of inbuild shield projector which it uses to advance without sustaining harm, while some sort of shoulder mounted armament can be seen on its back, pointing at anything it intends to obliterate. A odd golden 'E' symbol can be seen on its breast-plate."
+	icon_state = "sweeper"
+	icon_living = "sweeper"
+	maxHealth = 400
+	health = 400
+	armor_legacy_mob = list(
+				"melee"		= 20,
+				"bullet"	= 30,
+				"laser"		= 50,
+				"energy"	= 50,
+				"bomb"		= 40,
+				"bio"		= 100,
+				"rad"		= 100
+				)
+	legacy_melee_damage_lower = 20
+	legacy_melee_damage_upper = 20
+	movement_cooldown = 6
+	faction = "enigma"
+	attack_sound = 'sound/enigma/enigma_hit2.ogg'
+	movement_sound = 'sound/enigma/enigma_move2.ogg'
+	icon_scale_x = 1.4
+	icon_scale_y = 1.4
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/ranged/kiting
+	projectiletype = /obj/projectile/arc/fragmentation/mortar
+	base_attack_cooldown = 50
 // Boss
 
 // VERY POWERFUL! Uses ripped Advanced Dark Gygax code.
@@ -181,14 +245,15 @@
 	icon_living = "mimir"
 	icon_scale_x = 1.3
 	icon_scale_y = 1.3
+	movement_cooldown = 3
 	maxHealth = 1000
 	health = 1000
 	armor_legacy_mob = list(
 				"melee"		= 50,
 				"bullet"	= 50,
-				"laser"		= 60,
-				"energy"	= 60,
-				"bomb"		= 100,
+				"laser"		= 70,
+				"energy"	= 70,
+				"bomb"		= 50,
 				"bio"		= 100,
 				"rad"		= 100
 				)
