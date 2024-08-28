@@ -72,6 +72,7 @@
 		new /datum/data/mining_equipment("KA Range Increase",			/obj/item/ka_modkit/range,								1000),
 		new /datum/data/mining_equipment("KA Damage Increase",			/obj/item/ka_modkit/damage,								1000),
 		new /datum/data/mining_equipment("KA Cooldown Decrease",		/obj/item/ka_modkit/cooldown,							1200),
+		new /datum/data/mining_equipment("KA Capacity Increase",		/obj/item/ka_modkit/capacity,							1500),
 		new /datum/data/mining_equipment("KA Holster",				/obj/item/clothing/accessory/holster/waist/kinetic_accelerator,			350),
 		new /datum/data/mining_equipment("Fine Excavation Kit - Chisels",/obj/item/storage/excavation,								500),
 		new /datum/data/mining_equipment("Fine Excavation Kit - Measuring Tape",/obj/item/measuring_tape,							125),
