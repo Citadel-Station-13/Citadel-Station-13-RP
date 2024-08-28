@@ -72,6 +72,7 @@
 	///
 	/// * this means the projectile doesn't enforce inaccuracy; not the target!
 	/// * remember that even if a projectile clips a single pixel on a target turf, it hits.
+	/// * right now, accuracy is slightly more than it should be due to distance being ticked up post-impact.
 	var/accuracy_perfect_range = WORLD_ICON_SIZE * 7
 	/// linear - accuracy outside of perfect range
 	///
@@ -121,7 +122,7 @@
 	var/hitscan = FALSE
 	/// angle, in degrees **clockwise of north**
 	var/angle
-	/// divisor to distance travelled at the **current** [angle] to get it to chebyshev dist
+	/// multiplier to distance travelled at the **current** [angle] to get it to chebyshev dist
 	var/angle_chebyshev_divisor
 	/// max distance in pixels
 	///
@@ -189,11 +190,18 @@
 	/// the pixel location we're moving to, or the [current_px] after this iteration step
 	///
 	/// * used so stuff like hitscan deflections work based on the actual raycasted collision step, and not the prior step.
+	/// * only valid if [trajectory_moving_to] is set
 	var/next_px
 	/// the pixel location we're moving to, or the [current_px] after this iteration step
 	///
 	/// * used so stuff like hitscan deflections work based on the actual raycasted collision step, and not the prior step.
+	/// * only valid if [trajectory_moving_to] is set
 	var/next_py
+	/// the pixel distance we'll have travelled after the current Move()
+	///
+	/// * use this during impact processing or you'll be off by anywhere from 1 to 32 pixels.
+	/// * only valid if [trajectory_moving_to] is set
+	var/next_distance
 	/// used to track if we got kicked forwards after calling Move()
 	var/trajectory_kick_forwards = 0
 	/// to avoid going too fast when kicked forwards by a mirror, if we overshoot the pixels we're
@@ -202,10 +210,6 @@
 	var/trajectory_penalty_applied = 0
 	/// currently travelled distance in pixels
 	var/distance_travelled
-	/// currently travelled distance in pixels
-	///
-	/// * this is in chebyshev distance, aka byond get_dist()
-	var/distance_travelled_chebyshev
 	/// if we get forcemoved, this gets reset to 0 as a trip
 	/// this way, we know exactly how far we moved
 	var/distance_travelled_this_iteration
@@ -1039,7 +1043,9 @@
  *
  * @return hit probability as % in [0, 100]; > 100 is allowed.
  */
-/obj/projectile/proc/process_accuracy(atom/target, target_opinion = 100, distance = distance_travelled, impact_check)
+/obj/projectile/proc/process_accuracy(atom/target, target_opinion = 100, distance, impact_check)
+	if(isnull(distance))
+		distance = (trajectory_moving_to ? next_distance : distance_travelled) * angle_chebyshev_divisor
 	if(accuracy_disabled)
 		return 100
 	. = 100

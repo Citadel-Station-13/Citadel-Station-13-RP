@@ -7,6 +7,7 @@
 	icon_state = "particle1"//Need a new icon for this
 	anchored = TRUE
 	density = TRUE
+	generic_canpass = FALSE
 	var/movement_range = 10
 	var/energy = 10		//energy in eV
 	var/mega_energy = 0	//energy in MeV
@@ -17,6 +18,10 @@
 	var/turf/target
 	var/turf/source
 	var/movetotarget = 1
+
+/obj/effect/accelerated_particle/CanPassThrough(atom/blocker, turf/target, blocker_opinion)
+	SHOULD_CALL_PARENT(FALSE)
+	return TRUE
 
 /obj/effect/accelerated_particle/weak
 	icon_state = "particle0"

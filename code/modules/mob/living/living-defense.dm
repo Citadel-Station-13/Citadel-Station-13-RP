@@ -109,7 +109,7 @@
  */
 /mob/living/proc/process_baymiss(obj/projectile/proj, our_opinion = 100, impact_check = TRUE)
 	our_opinion = clamp(our_opinion - get_evasion(), 5, INFINITY)
-	return proj.process_accuracy(src, our_opinion, proj.distance_travelled, impact_check)
+	return proj.process_accuracy(src, our_opinion, null, impact_check)
 
 //* Misc Effects *//
 

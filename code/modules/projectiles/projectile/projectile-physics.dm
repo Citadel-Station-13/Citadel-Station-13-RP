@@ -109,7 +109,6 @@
 		// move forwards by 1 tile length
 		var/pixels_moved = physics_step(WORLD_ICON_SIZE)
 		distance_travelled += pixels_moved
-		distance_travelled_chebyshev += pixels_moved / angle_chebyshev_divisor
 		// if we're being yanked, yield
 		if(movable_flags & MOVABLE_IN_MOVED_YANK)
 			spawn(0)
@@ -157,7 +156,6 @@
 		// move
 		var/pixels_moved = physics_step(pixels_remaining)
 		distance_travelled += pixels_moved
-		distance_travelled_chebyshev = pixels_moved / angle_chebyshev_divisor
 		distance_travelled_this_iteration += pixels_moved
 		pixels_remaining -= pixels_moved
 		// we're being yanked, yield
@@ -308,6 +306,8 @@
 	if(move_to_target)
 		var/atom/old_loc = loc
 		trajectory_moving_to = move_to_target
+		// mark next distance so impact processing can work
+		next_distance = distance_travelled + .
 		if(!Move(move_to_target) && ((loc != move_to_target) || !trajectory_moving_to))
 			// if we don't successfully move, don't change anything, we didn't move.
 			. = 0
