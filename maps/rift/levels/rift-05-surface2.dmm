@@ -7626,9 +7626,7 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/heads/hos)
 "eTn" = (
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks{
-	id = "robotics_inner"
-	},
+/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
 /obj/machinery/door/blast/shutters{
 	density = 0;
 	dir = 2;
@@ -7638,6 +7636,9 @@
 	opacity = 0
 	},
 /obj/effect/paint/purplegray,
+/obj/map_helper/electrochromatic_linker{
+	id = "robotics_inner"
+	},
 /turf/simulated/floor/plating,
 /area/assembly/robotics)
 "eTD" = (
@@ -31435,9 +31436,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/rift/stairwell/primary/surfacetwo)
 "tTI" = (
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks{
-	id = "robotics_outer"
-	},
+/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
 /obj/machinery/door/blast/shutters{
 	density = 0;
 	dir = 2;
@@ -31447,6 +31446,9 @@
 	opacity = 0
 	},
 /obj/effect/paint/purplegray,
+/obj/map_helper/electrochromatic_linker{
+	id = "robotics_outer"
+	},
 /turf/simulated/floor/plating,
 /area/assembly/robotics)
 "tUr" = (
