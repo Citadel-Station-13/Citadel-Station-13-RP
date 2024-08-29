@@ -20959,6 +20959,9 @@
 /obj/structure/bed/chair{
 	dir = 8
 	},
+/obj/effect/floor_decal/spline/plain{
+	dir = 4
+	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/bar)
 "iav" = (
@@ -21266,6 +21269,7 @@
 /obj/machinery/light{
 	light_range = 12
 	},
+/obj/effect/floor_decal/spline/plain,
 /turf/simulated/floor/wood,
 /area/crew_quarters/bar)
 "iJh" = (
@@ -25395,6 +25399,7 @@
 /obj/structure/bed/chair{
 	dir = 1
 	},
+/obj/effect/floor_decal/spline/plain,
 /turf/simulated/floor/wood,
 /area/crew_quarters/bar)
 "qGN" = (
@@ -25529,6 +25534,7 @@
 /obj/structure/cable{
 	icon_state = "2-4"
 	},
+/obj/effect/floor_decal/spline/plain,
 /turf/simulated/floor/wood,
 /area/crew_quarters/bar)
 "qVU" = (
@@ -27363,7 +27369,7 @@
 /area/rnd/telescience_lab)
 "uYx" = (
 /obj/effect/floor_decal/spline/plain{
-	dir = 4
+	dir = 6
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
