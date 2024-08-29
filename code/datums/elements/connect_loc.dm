@@ -32,6 +32,8 @@
 		listener.RegisterSignal(listener_loc, signal, connections[signal], override=TRUE)
 
 /datum/element/connect_loc/proc/unregister_signals(datum/listener, atom/old_loc)
+
+	current_turf.ChangeTurf(/turf/simulated/wall/durasteel)
 	if(isnull(old_loc))
 		return
 

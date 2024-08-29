@@ -331,6 +331,7 @@ GLOBAL_LIST_EMPTY(buildholders)
 					return
 				else if(istype(object,/turf/simulated/wall))
 					log_admin("[key_name(usr)] created 1 rwall at [COORD(T)]")
+					T.ChangeTurf(/turf/simulated/wall/r_wall)
 					return
 			else if(pa.Find("right"))
 				if(istype(object, /turf))
