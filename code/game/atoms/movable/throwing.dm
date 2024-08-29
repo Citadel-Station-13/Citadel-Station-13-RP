@@ -186,7 +186,7 @@
 		// user momentum
 		var/user_speed = L.movement_delay()
 		// 1 decisecond of margin
-		if(L.last_move_dir && (L.last_move_time >= (world.time - user_speed + 1)))
+		if(L.last_move_dir && (L.last_self_move >= (world.time - user_speed + 1)))
 			user_speed = max(user_speed, world.tick_lag)
 			// convert to tiles per **decisecond**
 			user_speed = 1/user_speed
