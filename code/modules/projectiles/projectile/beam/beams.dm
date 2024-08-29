@@ -115,7 +115,7 @@
 	tracer_type = /obj/effect/projectile/tracer/laser_omni
 	impact_type = /obj/effect/projectile/impact/laser_omni
 
-/obj/projectile/beam/cyan/weak
+/obj/projectile/beam/weak
 	name = "weak cyan beam"
 	icon_state = "cyan"
 	fire_sound = 'sound/weapons/Taser.ogg'

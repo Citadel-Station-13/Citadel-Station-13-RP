@@ -224,8 +224,8 @@
 		max_shield_health = 150;
 		shield_regen_delay = 10 SECONDS;
 		shield_regen_amount = 10;
-		size_x = 0.5;
-		size_y = 0.5;
+		size_x = 1;
+		size_y = 1;
 		always_on = TRUE;
 	}
 	var/obj/item/shield_projector/shield_projector = new shield_type(src)
@@ -268,8 +268,8 @@
 		max_shield_health = 250;
 		shield_regen_delay = 5 SECONDS;
 		shield_regen_amount = 10;
-		size_x = 0.5;
-		size_y = 0.5;
+		size_x = 1;
+		size_y = 1;
 		always_on = TRUE;
 	}
 	var/obj/item/shield_projector/shield_projector = new shield_type(src)
@@ -285,6 +285,7 @@
 	icon = 'icons/mob/enigma.dmi'
 	desc = "A small robotic unit with a humanoid form. It carries gold markings on its head and face plate, along with shouldering some sort of alien energy weapon."
 	icon_living = "trooper"
+	icon_state = "trooper"
 	maxHealth = 250
 	health = 250
 	armor_legacy_mob = list(
@@ -303,7 +304,7 @@
 	faction = "enigma"
 	movement_sound = 'sound/enigma/enigma_move.ogg'
 	ai_holder_type = /datum/ai_holder/polaris/simple_mob/hivebot
-	projectiletype = /obj/projectile/beam/cyan/weak
+	projectiletype = /obj/projectile/beam/weak
 
 /mob/living/simple_mob/mechanical/hivebot/enigma/trooper/marksman
 	name = "marksman trooper"
@@ -356,7 +357,7 @@
 	movement_sound = 'sound/enigma/enigma_move.ogg'
 	ai_holder_type = /datum/ai_holder/polaris/simple_mob/ranged/kiting
 	projectiletype = /obj/projectile/ion
-
+	base_attack_cooldown = 25
 // Boss
 
 
@@ -394,10 +395,10 @@
 
 /mob/living/simple_mob/mechanical/hivebot/enigma/mimir/Initialize(mapload)
 	var/shield_type = /obj/item/shield_projector/rectangle{
-		shield_health = 300;
-		max_shield_health = 300;
+		shield_health = 500;
+		max_shield_health = 500;
 		shield_regen_delay = 5 SECONDS;
-		shield_regen_amount = 10;
+		shield_regen_amount = 30;
 		size_x = 1;
 		size_y = 1;
 		always_on = TRUE;
