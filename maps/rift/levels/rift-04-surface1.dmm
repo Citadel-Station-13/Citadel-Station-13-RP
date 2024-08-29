@@ -19477,10 +19477,6 @@
 	},
 /turf/simulated/floor/tiled/monowhite,
 /area/medical/psych_ward)
-"mpA" = (
-/obj/structure/undies_wardrobe,
-/turf/simulated/wall/r_wall/prepainted,
-/area/rift/surfacebase/outside/outside1)
 "mpD" = (
 /obj/machinery/atmospherics/component/unary/outlet_injector{
 	id = "violet_protocol";
@@ -46158,7 +46154,7 @@ iFN
 iFN
 iFN
 iFN
-mpA
+vUA
 vUA
 vUA
 iFN
