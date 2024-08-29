@@ -88,9 +88,14 @@
 //? specific types; projectiles may have one or more of these in addition to the above ?//
 
 /// photonic energy, basically (yes yes lasers are unrealistic i don't care)
-#define PROJECTILE_TYPE_PHOTONIC (1<<23)
+#define PROJECTILE_TYPE_PHOTONIC (1<<22)
 /// exotic energy or exotic matter
-#define PROJECTILE_TYPE_EXOTIC (1<<24)
+#define PROJECTILE_TYPE_EXOTIC (1<<23)
+
+//? special types
+
+/// trace projectile, aka "always let this through shields so stuff knows to fire at it"
+#define PROJECTILE_TYPE_TRACE (1<<24)
 
 DEFINE_BITFIELD_NEW(projectile_types, list(
 	/obj/projectile = list(

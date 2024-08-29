@@ -20,6 +20,7 @@
 	nodamage = TRUE
 	damage = 0
 	has_tracer = FALSE
+	projectile_type = PROJECTILE_TYPE_TRACE
 	var/list/hit = list()
 
 /obj/projectile/test/fire(angle, atom/direct_target)

@@ -8,6 +8,7 @@
 	has_tracer = FALSE
 	damage = 0
 	nodamage = TRUE
+	projectile_type = PROJECTILE_TYPE_TRACE
 	/// did we manage to hit the given target?
 	var/could_hit_target = FALSE
 	/// delete on hitting target?
