@@ -90,6 +90,20 @@
 	movement_sound = 'sound/enigma/enigma_move2.ogg'
 	ai_holder_type = /datum/ai_holder/polaris/simple_mob/hivebot
 
+/mob/living/simple_mob/mechanical/hivebot/enigma/custodian/Initialize(mapload)
+	var/shield_type = /obj/item/shield_projector/rectangle{
+		shield_health = 150;
+		max_shield_health = 150;
+		shield_regen_delay = 10 SECONDS;
+		shield_regen_amount = 10;
+		size_x = 1;
+		size_y = 1;
+		always_on = TRUE;
+	}
+	var/obj/item/shield_projector/shield_projector = new shield_type(src)
+	shield_projector.create_shields()
+	return ..()
+
 /mob/living/simple_mob/mechanical/hivebot/enigma/disassembler
 	name = "disassembler"
 	icon = 'icons/mob/enigma.dmi'
@@ -204,6 +218,21 @@
 	ai_holder_type = /datum/ai_holder/polaris/simple_mob/ranged/kiting
 	projectiletype = /obj/projectile/beam/cyan/hivebot
 
+/mob/living/simple_mob/mechanical/hivebot/enigma/atomizer/Initialize(mapload)
+	var/shield_type = /obj/item/shield_projector/rectangle{
+		shield_health = 150;
+		max_shield_health = 150;
+		shield_regen_delay = 10 SECONDS;
+		shield_regen_amount = 10;
+		size_x = 0.5;
+		size_y = 0.5;
+		always_on = TRUE;
+	}
+	var/obj/item/shield_projector/shield_projector = new shield_type(src)
+	shield_projector.create_shields()
+	return ..()
+
+
 /mob/living/simple_mob/mechanical/hivebot/enigma/sweeper
 	name = "sweeper"
 	icon = 'icons/mob/enigma.dmi'
@@ -227,26 +256,109 @@
 	faction = "enigma"
 	attack_sound = 'sound/enigma/enigma_hit2.ogg'
 	movement_sound = 'sound/enigma/enigma_move2.ogg'
-	icon_scale_x = 1.4
-	icon_scale_y = 1.4
+	icon_scale_x = 1.1
+	icon_scale_y = 1.1
 	ai_holder_type = /datum/ai_holder/polaris/simple_mob/ranged/kiting
 	projectiletype = /obj/projectile/arc/fragmentation/mortar
-	base_attack_cooldown = 50
-// Boss
+	base_attack_cooldown = 30
 
 /mob/living/simple_mob/mechanical/hivebot/enigma/sweeper/Initialize(mapload)
 	var/shield_type = /obj/item/shield_projector/rectangle{
-		shield_health = 150;
-		max_shield_health = 150;
-		shield_regen_delay = 10 SECONDS;
+		shield_health = 250;
+		max_shield_health = 250;
+		shield_regen_delay = 5 SECONDS;
 		shield_regen_amount = 10;
-		size_x = 1;
-		size_y = 1;
+		size_x = 0.5;
+		size_y = 0.5;
 		always_on = TRUE;
 	}
 	var/obj/item/shield_projector/shield_projector = new shield_type(src)
 	shield_projector.create_shields()
 	return ..()
+
+
+
+// Troopers
+
+/mob/living/simple_mob/mechanical/hivebot/enigma/trooper/basic
+	name = "trooper"
+	icon = 'icons/mob/enigma.dmi'
+	desc = "A small robotic unit with a humanoid form. It carries gold markings on its head and face plate, along with shouldering some sort of alien energy weapon."
+	icon_living = "trooper"
+	maxHealth = 250
+	health = 250
+	armor_legacy_mob = list(
+				"melee"		= 0,
+				"bullet"	= 0,
+				"laser"		= 20,
+				"energy"	= 20,
+				"bomb"		= 0,
+				"bio"		= 100,
+				"rad"		= 100
+				)
+
+	legacy_melee_damage_lower = 5
+	legacy_melee_damage_upper = 5
+	movement_cooldown = 2
+	faction = "enigma"
+	movement_sound = 'sound/enigma/enigma_move.ogg'
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/hivebot
+	projectiletype = /obj/projectile/beam/cyan/weak
+
+/mob/living/simple_mob/mechanical/hivebot/enigma/trooper/marksman
+	name = "marksman trooper"
+	icon = 'icons/mob/enigma.dmi'
+	desc = "A slightly taller robotic unit with a humanoid form. It has dark green markings on its faceplate, and seems to carry some sort of advanced energy sniper."
+	icon_state = "marksman"
+	icon_living = "marksman"
+	maxHealth = 200
+	health = 200
+	armor_legacy_mob = list(
+				"melee"		= 0,
+				"bullet"	= 0,
+				"laser"		= 50,
+				"energy"	= 50,
+				"bomb"		= 0,
+				"bio"		= 100,
+				"rad"		= 100
+				)
+
+	legacy_melee_damage_lower = 5
+	legacy_melee_damage_upper = 5
+	movement_cooldown = 4
+	faction = "enigma"
+	movement_sound = 'sound/enigma/enigma_move.ogg'
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/ranged/sniper
+	projectiletype = /obj/projectile/beam/xray
+
+/mob/living/simple_mob/mechanical/hivebot/enigma/trooper/magnetic
+	name = "magnetic trooper"
+	icon = 'icons/mob/enigma.dmi'
+	desc = "Another mechanical construct, this one looks more advanced than the others. Equipped with a extensively modified Ion weapon sporting abductor technology, better steer any machinery clear of this. It sports blue markings."
+	icon_state = "magnetic"
+	icon_living = "magnetic"
+	maxHealth = 300
+	health = 300
+	armor_legacy_mob = list(
+				"melee"		= 0,
+				"bullet"	= 20,
+				"laser"		= 30,
+				"energy"	= 30,
+				"bomb"		= 0,
+				"bio"		= 100,
+				"rad"		= 100
+				)
+
+	legacy_melee_damage_lower = 0
+	legacy_melee_damage_upper = 0
+	movement_cooldown = 2
+	faction = "enigma"
+	movement_sound = 'sound/enigma/enigma_move.ogg'
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/ranged/kiting
+	projectiletype = /obj/projectile/ion
+
+// Boss
+
 
 // VERY POWERFUL! Uses ripped Advanced Dark Gygax code.
 /mob/living/simple_mob/mechanical/hivebot/enigma/mimir
@@ -257,6 +369,7 @@
 	attack_sound = 'sound/enigma/enigma_hit2.ogg'
 	icon_state = "mimir"
 	icon_living = "mimir"
+	faction = "enigma"
 	icon_scale_x = 1.3
 	icon_scale_y = 1.3
 	movement_cooldown = 3
@@ -278,6 +391,20 @@
 	projectiletype = /obj/projectile/beam/cyan/hivebot
 	ai_holder_type = /datum/ai_holder/polaris/simple_mob/intentional/adv_dark_gygax
 	var/obj/effect/overlay/energy_ball/energy_ball = null
+
+/mob/living/simple_mob/mechanical/hivebot/enigma/mimir/Initialize(mapload)
+	var/shield_type = /obj/item/shield_projector/rectangle{
+		shield_health = 300;
+		max_shield_health = 300;
+		shield_regen_delay = 5 SECONDS;
+		shield_regen_amount = 10;
+		size_x = 1;
+		size_y = 1;
+		always_on = TRUE;
+	}
+	var/obj/item/shield_projector/shield_projector = new shield_type(src)
+	shield_projector.create_shields()
+	return ..()
 
 /mob/living/simple_mob/mechanical/hivebot/enigma/mimir/Destroy()
 	if(energy_ball)

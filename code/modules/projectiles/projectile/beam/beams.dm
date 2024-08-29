@@ -115,6 +115,18 @@
 	tracer_type = /obj/effect/projectile/tracer/laser_omni
 	impact_type = /obj/effect/projectile/impact/laser_omni
 
+/obj/projectile/beam/cyan/weak
+	name = "weak cyan beam"
+	icon_state = "cyan"
+	fire_sound = 'sound/weapons/Taser.ogg'
+	damage = 20
+	light_color = "#74b1c2"
+
+	muzzle_type = /obj/effect/projectile/muzzle/laser_omni
+	tracer_type = /obj/effect/projectile/tracer/laser_omni
+	impact_type = /obj/effect/projectile/impact/laser_omni
+
+
 /obj/projectile/beam/emitter
 	name = "emitter beam"
 	icon_state = "emitter"
