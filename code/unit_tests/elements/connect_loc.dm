@@ -34,6 +34,7 @@
 	TEST_ASSERT_EQUAL(watcher.times_called, 1, "After firing mock signal, connect_loc didn't send it")
 
 	current_turf.ChangeTurf(/turf/simulated/wall/durasteel)
+
 	SEND_SIGNAL(current_turf, COMSIG_MOCK_SIGNAL)
 	TEST_ASSERT_EQUAL(watcher.times_called, 2, "After changing turf, connect_loc didn't reconnect it")
 
