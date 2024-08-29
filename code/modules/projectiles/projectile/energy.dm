@@ -125,7 +125,8 @@
 /obj/projectile/energy/acid //Slightly up-gunned (Read: The thing does agony and checks bio resist) variant of the simple alien mob's projectile, for queens and sentinels.
 	name = "acidic spit"
 	icon_state = "neurotoxin"
-	damage = 30
+	fire_sound = 'sound/effects/splat.ogg'
+	damage = 40
 	damage_type = BURN
 	agony = 10
 	damage_flag = ARMOR_BIO
@@ -136,9 +137,10 @@
 /obj/projectile/energy/neurotoxin
 	name = "neurotoxic spit"
 	icon_state = "neurotoxin"
+	fire_sound = 'sound/effects/splat.ogg'
 	damage = 5
 	damage_type = BIOACID
-	agony = 80
+	agony = 23
 	damage_flag = ARMOR_BIO
 	armor_penetration = 25	// It's acid-based
 
@@ -147,11 +149,13 @@
 /obj/projectile/energy/neurotoxin/toxic //New alien mob projectile to match the player-variant's projectiles.
 	name = "neurotoxic spit"
 	icon_state = "neurotoxin"
+	fire_sound = 'sound/effects/splat.ogg'
 	damage = 20
 	damage_type = BIOACID
-	agony = 20
+	agony = 30
 	damage_flag = ARMOR_BIO
 	armor_penetration = 25	// It's acid-based
+
 
 /obj/projectile/energy/phoron
 	name = "phoron bolt"
