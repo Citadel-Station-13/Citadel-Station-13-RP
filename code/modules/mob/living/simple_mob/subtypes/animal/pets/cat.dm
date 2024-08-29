@@ -103,8 +103,8 @@
 		to_chat(L, SPAN_NOTICE("\The [src] is now your friend! Meow."))
 		visible_emote(pick("nuzzles [friend].", "brushes against [friend].", "rubs against [friend].", "purrs."))
 
-		if(has_AI())
-			var/datum/ai_holder/AI = ai_holder
+		if(has_polaris_AI())
+			var/datum/ai_holder/polaris/AI = ai_holder
 			AI.set_follow(friend)
 	else
 		to_chat(L, SPAN_NOTICE("[src] ignores you."))

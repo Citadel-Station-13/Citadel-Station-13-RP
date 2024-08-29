@@ -31,7 +31,7 @@ GLOBAL_LIST_EMPTY(cached_fish_sources)
 	var/fishing_difficulty = FISHING_DEFAULT_DIFFICULTY
 	/// How the spot type is described in fish catalog section about fish sources, will be skipped if null
 	var/catalog_description
-	/// Background image name from /datum/asset/simple/fishing_minigame
+	/// Background image name from /datum/asset_pack/simple/fishing_minigame
 	var/background = "fishing_background_default"
 
 /// Can we fish in this spot at all. Returns DENIAL_REASON or null if we're good to go

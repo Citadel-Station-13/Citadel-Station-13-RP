@@ -28,8 +28,11 @@
 	name = SPECIES_VR_UNATHI
 	icobase = 'icons/mob/species/unathi/body_greyscale.dmi'
 	deform  = 'icons/mob/species/unathi/deformed_body_greyscale.dmi'
-	tail = "sogtail"
-	tail_animation = 'icons/mob/species/unathi/tail_greyscale.dmi'
+
+	sprite_accessory_defaults = list(
+		SPRITE_ACCESSORY_SLOT_TAIL = /datum/sprite_accessory/tail/bodyset/unathi,
+	)
+
 	species_appearance_flags = HAS_HAIR_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_SKIN_COLOR | HAS_EYE_COLOR
 	has_limbs = list(
 		BP_TORSO  = list("path" = /obj/item/organ/external/chest/unathi),
@@ -51,8 +54,11 @@
 	name = "Virtual Reality Tajaran"
 	icobase = 'icons/mob/species/tajaran/body_greyscale.dmi'
 	deform  = 'icons/mob/species/tajaran/deformed_body_greyscale.dmi'
-	tail = "tajtail"
-	tail_animation = 'icons/mob/species/tajaran/tail_greyscale.dmi'
+
+	sprite_accessory_defaults = list(
+		SPRITE_ACCESSORY_SLOT_TAIL = /datum/sprite_accessory/tail/bodyset/tajaran,
+	)
+
 	species_appearance_flags = HAS_HAIR_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_SKIN_COLOR | HAS_EYE_COLOR
 	has_limbs = list(
 		BP_TORSO  = list("path" = /obj/item/organ/external/chest),

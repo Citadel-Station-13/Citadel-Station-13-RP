@@ -8,6 +8,8 @@
 	melting_point = T0C+371 //assuming heat resistant plastic
 	stack_origin_tech = list(TECH_MATERIAL = 3)
 
+	worth = 3.5
+
 	relative_integrity = 0.65
 	weight_multiplier = 0.75
 	density = 8 * 1

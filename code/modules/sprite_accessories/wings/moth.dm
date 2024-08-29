@@ -2,14 +2,13 @@
 	name = "moth wings"
 	id = "wing_moth"
 	icon_state = "moth"
-	clothing_can_hide = FALSE
 
 /datum/sprite_accessory/wing/mothc
 	name = "moth wings (colorable)"
 	id = "wing_moth_color"
 	icon_state = "moth"
 	do_colouration = 1
-	color_blend_mode = ICON_MULTIPLY
+	legacy_use_additive_color_matrix = FALSE
 
 /datum/sprite_accessory/wing/moth_atlas
 	name = "atlas moth wings"
@@ -29,8 +28,9 @@
 /datum/sprite_accessory/wing/moth_firewatch
 	name = "firewatch moth wings"
 	id = "wing_moth_firewatch"
-	icon_state = "moth_firewatch"
-	front_behind_system = TRUE
+	icon = 'icons/mob/sprite_accessory/wings/moth.dmi'
+	icon_state = "firewatch"
+	icon_sidedness = SPRITE_ACCESSORY_SIDEDNESS_FRONT_BEHIND
 
 /datum/sprite_accessory/wing/moth_full
 	name = "moth antenna and wings"

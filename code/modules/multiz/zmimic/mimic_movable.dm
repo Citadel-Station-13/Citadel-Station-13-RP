@@ -150,6 +150,7 @@
 	var/have_performed_fixup = FALSE
 
 /atom/movable/openspace/mimic/New()
+	SHOULD_CALL_PARENT(FALSE)
 	atom_flags |= ATOM_INITIALIZED
 	SSzcopy.openspace_overlays += 1
 

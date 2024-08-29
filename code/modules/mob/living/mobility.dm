@@ -22,6 +22,8 @@
 		stop_pulling()
 	if(!(mobility_flags & MOBILITY_CAN_STAND))
 		set_resting(TRUE)
+	else if(resting)
+		auto_resist_rest()
 
 /**
  * immediately sets whether or not we're prone.
@@ -29,6 +31,8 @@
  * does not set other mobility flags or update mobility.
  */
 /mob/living/proc/set_resting(value)
+	if(HAS_TRAIT(src, TRAIT_MOB_FORCED_STANDING))
+		value = FALSE
 	if(resting == value)
 		return
 	resting = value

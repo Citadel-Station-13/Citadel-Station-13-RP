@@ -73,6 +73,8 @@
 
 	slowdown = -0.5
 
+	vision_innate = /datum/vision/baseline/species_tier_2
+
 	hud_type = /datum/hud_data/adherent
 /*
 	available_cultural_info = list(
@@ -115,6 +117,7 @@
 		O_FLOAT        = /obj/item/organ/internal/powered/float,
 		O_JETS         = /obj/item/organ/internal/powered/jets,
 	)
+	vision_organ = O_EYES
 
 	move_trail = /obj/effect/debris/cleanable/blood/tracks/snake
 
@@ -132,7 +135,7 @@
 	wikilink = "N/A"
 
 /datum/species/adherent/equip_survival_gear(mob/living/carbon/human/H, extendedtank = FALSE, comprehensive = FALSE)
-	H.equip_to_slot_or_del(new /obj/item/storage/belt/utility/crystal, /datum/inventory_slot_meta/abstract/put_in_backpack)
+	H.equip_to_slot_or_del(new /obj/item/storage/belt/utility/crystal, /datum/inventory_slot/abstract/put_in_backpack)
 
 /datum/species/adherent/New()
 	/*equip_adjust = list(
@@ -164,8 +167,8 @@
 	return slowdown
 */
 /datum/species/adherent/handle_environment_special(mob/living/carbon/human/H, datum/gas_mixture/environment, dt)
-	for(var/i in H.overlays_standing)
-		H.cut_overlay(i)
+	for(var/key in H.standing_overlays)
+		H.cut_overlay(H.standing_overlays[key])
 	//Todo: find a better way to adjust clothing, than to wipe all overlays
 
 /datum/species/adherent/handle_fall_special(mob/living/carbon/human/H, turf/landing)

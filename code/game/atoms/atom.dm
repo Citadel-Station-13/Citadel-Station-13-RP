@@ -8,9 +8,13 @@
 	SET_APPEARANCE_FLAGS(TILE_MOVER)
 	layer = TURF_LAYER
 
-	//? Core
+	//* Core *//
 	/// Atom flags.
 	var/atom_flags = NONE
+	/// Prototype ID; persistence uses this to know what atom to load, even if the path changes in a refactor.
+	///
+	/// * this is very much a 'set this on type and all subtypes or don't set it at all' situation.
+	var/prototype_id
 
 	//? Interaction
 	/// Intearaction flags.
@@ -21,7 +25,6 @@
 	var/pass_flags_self = NONE
 
 	//? Unsorted / Legacy
-	var/level = 2
 	/// Used for changing icon states for different base sprites.
 	var/base_icon_state
 	/// Holder for the last time we have been bumped.
@@ -48,31 +51,6 @@
 	/// * this variable is not visible and should not be edited in the map editor.
 	var/tmp/list/context_menus
 
-	//? Economy
-	// todo: move all this to obj level, you aren't going to sell a fucking turf.
-	//       the procs can however stay.
-	/// intrinsic worth without accounting containing reagents / materials - applies in static and dynamic mode.
-	var/worth_intrinsic = 0
-	/// static worth of contents - only read if getting a static worth from typepath.
-	var/worth_containing = 0
-	/// static worth of raw materials - only read if getting a static worth from typepath.
-	var/worth_materials = 0
-	/// intrinsic worth default markup when buying as factor (2 for 2x)
-	var/worth_buy_factor = WORTH_BUY_FACTOR_DEFAULT
-	/// intrinsic elasticity as factor, 2 = 2x easy to inflate market
-	var/worth_elasticity = WORTH_ELASTICITY_DEFAULT
-	/**
-	 * * DANGER * - do not touch this variable unless you know what you are doing.
-	 *
-	 * This signifies that procs have a non-negligible randomization on a *freshly-spawned* instance of this object.
-	 * This is not the case for most closets / lockers / crates / storage that spawn with items.
-	 * In those cases, use the other variables to control its static worth.
-	 *
-	 * This means that things like cargo should avoid "intuiting" the value of this object
-	 * through initial()'s alone.
-	 */
-	var/worth_dynamic = FALSE
-
 	//? Integrity
 	/// max health
 	var/integrity_max
@@ -86,11 +64,9 @@
 	/// flags for resistances
 	var/integrity_flags = NONE
 
-	//? HUDs
-	/// This atom's HUD (med/sec, etc) images. Associative list.
-	var/list/image/hud_list = null
-	/// HUD images that this atom can provide.
-	var/list/hud_possible
+	//* HUDs (Atom)
+	/// atom hud typepath to image
+	var/list/image/atom_huds
 
 	//? Icon Smoothing
 	/// Icon-smoothing behavior.
@@ -222,6 +198,10 @@
 	/// Default sound played on a burn type impact. This is usually null for default.
 	var/hit_sound_burn
 
+/proc/lint__check_atom_new_doesnt_sleep()
+	SHOULD_NOT_SLEEP(TRUE)
+	var/atom/target
+	target.New()
 
 /**
  * Called when an atom is created in byond (built in engine proc)
@@ -234,12 +214,13 @@
  * We also generate a tag here if the DF_USE_TAG flag is set on the atom
  */
 /atom/New(loc, ...)
-	//atom creation method that preloads variables at creation
-	if(global.use_preloader && (src.type == global.preloader.target_path))//in case the instanciated atom is creating other atoms in New()
+	// atom creation method that preloads variables at creation
+	// todo: we shouldn't need a type check here.
+	if(global.dmm_preloader_active && global.dmm_preloader_target == type)
 		world.preloader_load(src)
 
 	if(datum_flags & DF_USE_TAG)
-		GenerateTag()
+		generate_tag()
 
 	var/do_initialize = SSatoms.initialized
 	if(do_initialize != INITIALIZATION_INSSATOMS)
@@ -247,6 +228,20 @@
 		if(SSatoms.InitAtom(src, args))
 			//we were deleted
 			return
+
+/**
+ * Called by the maploader if a dmm_context is set
+ */
+/atom/proc/preloading_instance(datum/dmm_context/context)
+	return
+
+/**
+ * hook for abstract direction sets from the maploader
+ *
+ * return FALSE to override maploader automatic rotation
+ */
+/atom/proc/preloading_dir(datum/dmm_context/context)
+	return TRUE
 
 /**
  * The primary method that objects are setup in SS13 with
@@ -336,10 +331,8 @@
  * * clears the light object
  */
 /atom/Destroy(force)
-	if(alternate_appearances)
-		for(var/current_alternate_appearance in alternate_appearances)
-			var/datum/atom_hud/alternate_appearance/selected_alternate_appearance = alternate_appearances[current_alternate_appearance]
-			selected_alternate_appearance.remove_from_hud(src)
+	for(var/hud_provider in atom_huds)
+		remove_atom_hud_provider(src, hud_provider)
 
 	if(reagents)
 		QDEL_NULL(reagents)
@@ -465,6 +458,8 @@
 	. += get_name_chaser(user)
 	if(desc)
 		. += "<hr>[desc]"
+	if(get_description_info() || get_description_fluff() || length(get_description_interaction(user)))
+		. += SPAN_TINYNOTICE("<a href='byond://winset?command=.statpanel_goto_tab \"Examine\"'>For more information, click here.</a>") //This feels VERY HACKY but eh its PROBABLY fine
 	if(integrity_flags & INTEGRITY_INDESTRUCTIBLE)
 		. += SPAN_NOTICE("It doesn't look like it can be damaged through common means.")
 /*
@@ -851,7 +846,23 @@
 /atom/proc/get_nametag_desc(mob/user)
 	return "" //Desc itself is often too long to use
 
-/atom/proc/GenerateTag()
+/**
+ * generates our locate() tag
+ *
+ * why would we use tags?
+ * i'm glad you asked!
+ *
+ * some atoms / datums have special needs of 'too critical to allow shared text refs to wreak havoc'
+ * yes, usually, people need to be gc-aware and not allow text ref reuse to break things
+ * unfortunately this is still going to be an issue for legacy code
+ *
+ * so we don't allow things like /mobs to ever share the same reference used for REF(),
+ * because the chances of a collision is just too high
+ *
+ * not only that, this is currently the way things like mobs can generate things like their render source/target UIDs
+ * in the future we'll need to change that to a better UID system for each system, but, for now, this is why.
+ */
+/atom/proc/generate_tag()
 	return
 
 /**
@@ -897,8 +908,10 @@
 /**
  * called when we're hit by a radiation wave
  *
- * this is only called on the top level atoms directly on a turf
- * for nested atoms, you need /datum/component/radiation_listener
+ * * this is only called directly on turfs
+ * * this is also called directly if an outgoing pulse is shielded by something, so it hits everything inside it instead
+ * * for any other atom on turf, you need /datum/component/radiation_listener
+ * * /datum/element/z_radiation_listener is needed if you want to listen to z-wide and other high-gain rad pulses
  */
 /atom/proc/rad_act(strength, datum/radiation_wave/wave)
 	SHOULD_CALL_PARENT(TRUE)

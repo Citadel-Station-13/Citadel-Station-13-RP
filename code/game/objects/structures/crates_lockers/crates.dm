@@ -1,5 +1,3 @@
-//This file was auto-corrected by findeclaration.exe on 25.5.2012 20:42:32
-
 /obj/structure/closet/crate
 	name = "crate"
 	desc = "A rectangular steel crate."
@@ -11,8 +9,8 @@
 	use_old_icon_update = TRUE
 	depth_level = 8
 	armor_type = /datum/armor/object/medium
+	worth_intrinsic = 45
 	var/points_per_crate = 5
-//	mouse_drag_pointer = MOUSE_ACTIVE_POINTER	//???
 	var/rigged = 0
 
 /obj/structure/closet/crate/CanPass(atom/movable/AM, turf/T)
@@ -50,6 +48,7 @@
 	icon_state = icon_opened
 	src.opened = 1
 	shake_climbers()
+	update_icon()
 	return 1
 
 /obj/structure/closet/crate/close()
@@ -74,6 +73,7 @@
 
 	icon_state = icon_closed
 	src.opened = 0
+	update_icon()
 	return 1
 
 /obj/structure/closet/crate/attackby(obj/item/W as obj, mob/user as mob)
@@ -351,7 +351,7 @@
 	//closet_appearance = /singleton/closet_appearance/crate/engineering
 
 	starts_with = list(
-		/obj/item/solar_assembly = 21,
+		/obj/item/frame2/solar_panel = 2,
 		/obj/item/circuitboard/solar_control,
 		/obj/item/tracker_electronics,
 		/obj/item/paper/solar)
@@ -518,6 +518,7 @@
 	icon_state = "largemetalsecure"
 	redlight = "largemetalr"
 	greenlight = "largemetalg"
+	worth_intrinsic = 200
 	//closet_appearance = /singleton/closet_appearance/large_crate/secure
 
 

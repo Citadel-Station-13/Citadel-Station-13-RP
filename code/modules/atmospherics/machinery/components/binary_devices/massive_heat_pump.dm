@@ -81,16 +81,10 @@
 	if((air1.temperature < 1) ||  (air2.temperature < 1))
 		return
 
-	var/power_draw = -1
+
 	//Now we are at the point where we need to actively pump
-	efficiency = get_thermal_efficiency()
-	var/energy_transfered = 0
-	CACHE_VSC_PROP(atmos_vsc, /atmos/heatpump/performance_factor, performance_factor)
-
-	energy_transfered = clamp(air2.get_thermal_energy_change(target_temp),performance_factor*power_rating,-performance_factor*power_rating)
-
-	power_draw = abs(energy_transfered/performance_factor)
-	air2.adjust_thermal_energy(-air1.adjust_thermal_energy(-energy_transfered*efficiency))//only adds the energy actually removed from air one to air two(- infront of air1 because energy was removed)
+	efficiency = get_thermal_efficiency(target_temp, air1, air2)
+	var/power_draw = pump_heat(target_temp, air1, air2, power_rating)
 
 	if (power_draw >= 0)
 		last_power_draw_legacy = power_draw
@@ -103,12 +97,6 @@
 			network2.update = 1
 
 	return 1
-
-/obj/machinery/atmospherics/component/binary/massive_heat_pump/proc/get_thermal_efficiency()
-	if((target_temp < air2.temperature))
-		return clamp((air2.temperature / air1.temperature) * EFFICIENCY_MULT, 0, 1 * EFFICIENCY_LIMIT_MULT)
-	else if((target_temp > air2.temperature))
-		return clamp((air1.temperature / air2.temperature) * EFFICIENCY_MULT, 0, 1 * EFFICIENCY_LIMIT_MULT)
 
 /obj/machinery/atmospherics/component/binary/massive_heat_pump/proc/handle_passive_flow()
 	var/air_heat_capacity = air1.heat_capacity()

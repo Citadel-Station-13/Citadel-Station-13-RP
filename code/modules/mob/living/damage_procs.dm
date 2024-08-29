@@ -9,8 +9,6 @@
 	standard 0 if fail
 */
 /mob/living/proc/apply_damage(var/damage = 0,var/damagetype = BRUTE, var/def_zone = null, var/blocked = 0, var/soaked = 0, var/used_weapon = null, var/sharp = 0, var/edge = 0)
-	if(GLOB.Debug2)
-		log_world("## DEBUG: apply_damage() was called on [src], with [damage] damage, and an armor value of [blocked].")
 	if(!damage || (blocked >= 100))
 		return 0
 	if(soaked)
@@ -106,6 +104,32 @@
 	return 1
 
 // todo: refactor above
+
+//* Damage *//
+
+/**
+ * @return amount healed
+ */
+/mob/living/proc/heal_brute_loss(amount)
+	return 0
+
+/**
+ * @return amount healed
+ */
+/mob/living/proc/heal_fire_loss(amount)
+	return 0
+
+/**
+ * @return amount healed
+ */
+/mob/living/proc/heal_tox_loss(amount)
+	return 0
+
+/**
+ * @return amount healed
+ */
+/mob/living/proc/heal_oxy_loss(amount)
+	return 0
 
 //* Raw Damage *//
 

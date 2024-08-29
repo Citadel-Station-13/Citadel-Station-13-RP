@@ -10,8 +10,10 @@
 	preview_icon = 'icons/mob/species/akula/preview.dmi'
 	husk_icon    = 'icons/mob/species/akula/husk.dmi'
 	default_bodytype = BODYTYPE_AKULA
-	tail = "tail"
-	icobase_tail = 1
+
+	sprite_accessory_defaults = list(
+		SPRITE_ACCESSORY_SLOT_TAIL = /datum/sprite_accessory/tail/bodyset/akula,
+	)
 
 	blurb = {"
 	The Akula are a species of amphibious humanoids like the Skrell, but have an appearance very similar to that of a shark.
@@ -38,6 +40,8 @@
 	// brute_mod  = 1.15
 	// burn_mod   = 1.15
 	// gluttonous = 1
+
+	vision_organ = O_EYES
 
 	color_mult = 1
 	water_movement = -4

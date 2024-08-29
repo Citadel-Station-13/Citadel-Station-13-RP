@@ -276,7 +276,7 @@
 
 	// pass attack self on to the card regardless of our shell
 	if(!istype(new_shell, /obj/item/paicard))
-		RegisterSignal(shell, COMSIG_ITEM_ATTACK_SELF, PROC_REF(pass_attack_self_to_card))
+		RegisterSignal(shell, COMSIG_ITEM_ACTIVATE_INHAND, PROC_REF(pass_attack_self_to_card))
 
 	update_chassis_actions()
 
@@ -461,15 +461,14 @@
 /mob/living/silicon/pai/proc/generate_actions()
 	for(var/path in actions_to_grant)
 		var/datum/action/pai/A = new path()
-		A.grant(src)
+		A.grant(actions_innate)
 		if(A.update_on_grant)
-			A.update_button()
+			A.update_buttons()
 
 /mob/living/silicon/pai/proc/update_chassis_actions()
 	for(var/datum/action/pai/A in actions)
 		if(A.update_on_chassis_change)
-			A.update_button()
-	update_action_buttons()
+			A.update_buttons()
 
 /mob/living/silicon/pai/proc/handle_hologram_destroy(var/obj/effect/pai_hologram/hologram)
 	active_holograms -= hologram

@@ -316,6 +316,7 @@
 	heat_protection_cover = UPPER_TORSO|LOWER_TORSO
 	max_heat_protection_temperature = ARMOR_MAX_HEAT_PROTECTION_TEMPERATURE
 	siemens_coefficient = 0.6
+	worth_intrinsic = 100
 
 /obj/item/clothing/suit/storage/vest/officer
 	name = "officer armor vest"
@@ -768,7 +769,7 @@
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "armor", SLOT_ID_LEFT_HAND = "armor")
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|ARMS
 	armor_type = /datum/armor/centcom/ert/paracausal
-	action_button_name = "Enable Armor Sigils"
+	item_action_name = "Enable Armor Sigils"
 
 	var/anti_magic = FALSE
 	var/blessed = FALSE
@@ -797,7 +798,7 @@
 	blood_overlay_type = "armor"
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO
 	armor_type = /datum/armor/centcom/ert/paracausal
-	action_button_name = "Enable Coat Sigils"
+	item_action_name = "Enable Coat Sigils"
 	valid_accessory_slots = null
 
 /obj/item/clothing/suit/armor/vest/wolftaur
@@ -814,7 +815,7 @@
 	if(!.)
 		return FALSE
 	var/mob/living/carbon/human/H
-	if(istype(H) && istype(H.tail_style, /datum/sprite_accessory/tail/taur/wolf))
+	if(istype(H) && istype(H.tail_style, /datum/sprite_accessory/tail/legacy_taur/wolf))
 		return
 	else
 		to_chat(H,"<span class='warning'>You need to have a wolf-taur half to wear this.</span>")

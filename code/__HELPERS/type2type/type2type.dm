@@ -134,6 +134,9 @@
 
 /**
  * Converts an angle (degrees) into an ss13 direction.
+ *
+ * @params
+ * * degree - angle clockwise of north
  */
 /proc/angle2dir(degree)
 	degree = (degree + 22.5) % 365 // 22.5 = 45 / 2
@@ -310,11 +313,6 @@
 			return "turf"
 		else //regex everything else (works for /proc too)
 			return lowertext(replacetext("[the_type]", "[type2parent(the_type)]/", ""))
-
-/// Return html to load a url.
-/// for use inside of browse() calls to html assets that might be loaded on a cdn.
-/proc/url2htmlloader(url)
-	return {"<html><head><meta http-equiv="refresh" content="0;URL='[url]'"/></head><body onLoad="parent.location='[url]'"></body></html>"}
 
 // Converts a string into ascii then converts it into hexadecimal.
 /proc/strtohex(str)

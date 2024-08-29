@@ -43,3 +43,5 @@
 		"You feel uncomfortably warm.",
 		"Your overheated skin itches."
 		)
+
+	vision_organ = O_EYES

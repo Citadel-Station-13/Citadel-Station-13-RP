@@ -11,12 +11,11 @@
 
 	connect_types = CONNECT_TYPE_REGULAR|CONNECT_TYPE_SCRUBBER //connects to regular and scrubber pipes
 
-	level = 1
-
 	hijack_require_exposed = TRUE
 	default_multitool_hijack = TRUE
 	tgui_interface = "AtmosVentScrubber"
 	atmos_component_ui_flags = NONE
+	hides_underfloor_underlays = TRUE
 
 	/// registered area
 	var/area/registered_area
@@ -61,6 +60,14 @@
 
 	var/radio_filter_out
 	var/radio_filter_in
+
+/obj/machinery/atmospherics/component/unary/vent_scrubber/high_power
+	name = "High power air scrubber"
+	power_rating = 15000
+	scrub_volume = 5000
+	expanded_power = 15000
+	expanded_scrub = 5000
+	scrub_boost = 100
 
 /obj/machinery/atmospherics/component/unary/vent_scrubber/Initialize(mapload)
 	. = ..()
@@ -124,7 +131,7 @@
 		var/turf/T = get_turf(src)
 		if(!istype(T))
 			return
-		if(!T.is_plating() && node && node.level == 1 && istype(node, /obj/machinery/atmospherics/pipe))
+		if(T.hides_underfloor_objects() && istype(node, /obj/machinery/atmospherics/pipe) && node.hides_underfloor == OBJ_UNDERFLOOR_ALWAYS)
 			return
 		else
 			if(node)
@@ -210,9 +217,9 @@
 
 	return 1
 
-/obj/machinery/atmospherics/component/unary/vent_scrubber/hide(var/i) //to make the little pipe section invisible, the icon changes.
+/obj/machinery/atmospherics/component/unary/vent_scrubber/update_hiding_underfloor(new_value)
+	. = ..()
 	update_icon()
-	update_underlays()
 
 /obj/machinery/atmospherics/component/unary/vent_scrubber/power_change()
 	var/old_stat = machine_stat
@@ -227,7 +234,7 @@
 		to_chat(user, "<span class='warning'>You cannot unwrench \the [src], turn it off first.</span>")
 		return 1
 	var/turf/T = src.loc
-	if (node && node.level==1 && isturf(T) && !T.is_plating())
+	if(T?.hides_underfloor_objects() && node?.hides_underfloor == OBJ_UNDERFLOOR_ALWAYS)
 		to_chat(user, "<span class='warning'>You must remove the plating first.</span>")
 		return 1
 	if(unsafe_pressure())

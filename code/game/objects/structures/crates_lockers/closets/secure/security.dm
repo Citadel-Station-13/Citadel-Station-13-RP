@@ -214,14 +214,14 @@
 		/obj/item/reagent_containers/spray/pepper,
 		/obj/item/flash,
 		/obj/item/gun/ballistic/revolver/consul,
-		/obj/item/ammo_magazine/s44,
-		/obj/item/ammo_magazine/s44,
-		/obj/item/ammo_magazine/s44,
-		/obj/item/ammo_magazine/s44,
-		/obj/item/ammo_magazine/s44/rubber,
-		/obj/item/ammo_magazine/s44/rubber,
-		/obj/item/ammo_magazine/s44/rubber,
-		/obj/item/ammo_magazine/s44/empty,
+		/obj/item/ammo_magazine/a44/speedloader,
+		/obj/item/ammo_magazine/a44/speedloader,
+		/obj/item/ammo_magazine/a44/speedloader,
+		/obj/item/ammo_magazine/a44/speedloader,
+		/obj/item/ammo_magazine/a44/speedloader/rubber,
+		/obj/item/ammo_magazine/a44/speedloader/rubber,
+		/obj/item/ammo_magazine/a44/speedloader/rubber,
+		/obj/item/ammo_magazine/a44/speedloader/empty,
 		/obj/item/melee/telebaton,
 
 		/obj/item/gps/command/blueshield,
@@ -360,8 +360,8 @@
 		/obj/item/clothing/accessory/badge/holo/detective,
 		/obj/item/clothing/gloves/forensic,
 		/obj/item/gun/ballistic/revolver/detective45,
-		/obj/item/ammo_magazine/s45/rubber,
-		/obj/item/ammo_magazine/s45/rubber,
+		/obj/item/ammo_magazine/a45/speedloader/rubber,
+		/obj/item/ammo_magazine/a45/speedloader/rubber,
 		/obj/item/reagent_containers/spray/pepper,
 		/obj/item/storage/belt/detective,
 		/obj/item/storage/box/evidence,
@@ -571,3 +571,12 @@ GLOBAL_LIST_BOILERPLATE(all_brig_closets, /obj/structure/closet/secure_closet/br
 	if(prob(75))
 		new /obj/item/storage/backpack/dufflebag/sec(src)
 	return ..()
+
+/obj/structure/closet/secure_closet/pelletguns
+	name = "pellet gun lockers"
+	desc = "Contains some pellet guns and pellets for recreational shooting. Can be issued to civilians without worry."
+	closet_appearance = /singleton/closet_appearance/secure_closet/security
+	req_access = list(ACCESS_SECURITY_BRIG)
+	starts_with = list(
+		/obj/item/gun/ballistic/caseless/pellet = 4,
+		/obj/item/ammo_magazine/pellets = 4)

@@ -85,7 +85,7 @@ var/list/ai_verbs_default = list(
 	/// Used to prevent dummy AIs from spawning with communicators.
 	var/is_dummy = FALSE
 
-//! ## MALF VARIABLES
+	//* MALF VARIABLES
 	/// Master var that determines if AI is malfunctioning.
 	var/malfunctioning = FALSE
 	/// Installed piece of hardware.

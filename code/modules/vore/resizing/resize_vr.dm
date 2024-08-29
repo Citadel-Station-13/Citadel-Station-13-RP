@@ -61,10 +61,10 @@ var/const/RESIZE_A_SMALLTINY = (RESIZE_SMALL + RESIZE_TINY) / 2
  * Resizes the mob immediately to the desired mod, animating it growing/shrinking.
  * It can be used by anything that calls it.
  */
-/mob/living/proc/resize(var/new_size, var/animate = FALSE)
+/mob/living/proc/resize(var/new_size, var/animate = FALSE, var/ignore_cooldown = FALSE)
 	if(size_multiplier == new_size)
 		return 1
-	if(last_special > world.time)
+	if(!ignore_cooldown && last_special > world.time)
 		to_chat(src, SPAN_WARNING("You are trying to resize to fast!"))
 		return 0
 	var/change = new_size - size_multiplier
@@ -82,12 +82,12 @@ var/const/RESIZE_A_SMALLTINY = (RESIZE_SMALL + RESIZE_TINY) / 2
 
 /mob/living/carbon/human/resize(var/new_size, var/animate = TRUE)
 	. = ..()
-	if(LAZYLEN(hud_list))
-		var/new_y_offset = (size_multiplier < 1 ? 27 : 32) * (size_multiplier - 1)
+	if(atom_huds)
 		//it lowers lesser than it raises when it comes to micros v. macros else the medHUD would bury the micro
-		for(var/key in hud_list)
-			var/image/HI = hud_list[key]
-			HI.pixel_y = new_y_offset
+		var/new_y_offset = (size_multiplier < 1 ? 27 : 32) * (size_multiplier - 1)
+		for(var/id in atom_huds)
+			var/image/image = atom_huds[id]
+			image.pixel_y = new_y_offset
 
 // Optimize mannequins - never a point to animating or doing HUDs on these.
 /mob/living/carbon/human/dummy/mannequin/resize(var/new_size, var/animate = TRUE)
@@ -200,14 +200,14 @@ var/const/RESIZE_A_SMALLTINY = (RESIZE_SMALL + RESIZE_TINY) / 2
 
 /mob/living/proc/inform_someone_you_just_stepped_over_them(mob/living/micro)
 	var/mob/living/carbon/human/H
-	var/datum/sprite_accessory/tail/taur/tail
+	var/datum/sprite_accessory/tail/legacy_taur/tail
 	tail = ishuman(src)? ((H = src) && isTaurTail(H.tail_style) && H.tail_style) : null
 	to_chat(src, tail? STEP_TEXT_OWNER_NON_SHITCODE(tail.msg_owner_help_run, micro) : "You carefully step over [micro].")
 	to_chat(micro, tail? STEP_TEXT_PREY_NON_SHITCODE(tail.msg_prey_help_run, src) : "[src] carefully steps over you.")
 
 /mob/living/proc/inform_someone_they_just_ran_under_you(mob/living/micro)
 	var/mob/living/carbon/human/H
-	var/datum/sprite_accessory/tail/taur/tail
+	var/datum/sprite_accessory/tail/legacy_taur/tail
 	tail = ishuman(src)? ((H = src) && isTaurTail(H.tail_style) && H.tail_style) : null
 	to_chat(micro, tail? STEP_TEXT_OWNER_NON_SHITCODE(tail.msg_prey_stepunder, src) : "You run between [src]'s legs.")
 	to_chat(src, tail? STEP_TEXT_PREY_NON_SHITCODE(tail.msg_owner_stepunder, micro) : "[micro] runs between your legs.")
@@ -226,7 +226,7 @@ var/const/RESIZE_A_SMALLTINY = (RESIZE_SMALL + RESIZE_TINY) / 2
 	if(isliving(AM))
 		var/fetish_content_check = stupid_fucking_micro_canpass_fetish_check(mover)
 		var/mob/living/carbon/human/H
-		var/datum/sprite_accessory/tail/taur/tail
+		var/datum/sprite_accessory/tail/legacy_taur/tail
 		switch(fetish_content_check)
 			if(NEITHER_OF_US_ARE_FETISH_CONTENT, WE_ARE_BOTH_MICROS)
 				return
@@ -329,7 +329,7 @@ var/const/RESIZE_A_SMALLTINY = (RESIZE_SMALL + RESIZE_TINY) / 2
 
 					//Human with taur tail, special messages are sent
 					else
-						var/datum/sprite_accessory/tail/taur/tail = H.tail_style
+						var/datum/sprite_accessory/tail/legacy_taur/tail = H.tail_style
 						to_chat(src,STEP_TEXT_OWNER("<span class='danger'>[tail.msg_owner_disarm_run]</span>"))
 						to_chat(tmob,STEP_TEXT_PREY("<span class='danger'>[tail.msg_prey_disarm_run]</span>"))
 
@@ -351,7 +351,7 @@ var/const/RESIZE_A_SMALLTINY = (RESIZE_SMALL + RESIZE_TINY) / 2
 
 					//Human with taur tail, special messages are sent
 					else
-						var/datum/sprite_accessory/tail/taur/tail = H.tail_style
+						var/datum/sprite_accessory/tail/legacy_taur/tail = H.tail_style
 						to_chat(src,STEP_TEXT_OWNER("<span class='danger'>[tail.msg_owner_disarm_walk]</span>"))
 						to_chat(tmob,STEP_TEXT_PREY("<span class='danger'>[tail.msg_prey_disarm_walk]</span>"))
 
@@ -383,7 +383,7 @@ var/const/RESIZE_A_SMALLTINY = (RESIZE_SMALL + RESIZE_TINY) / 2
 
 					//Human with taur tail, special messages are sent
 					else
-						var/datum/sprite_accessory/tail/taur/tail = H.tail_style
+						var/datum/sprite_accessory/tail/legacy_taur/tail = H.tail_style
 						to_chat(src,STEP_TEXT_OWNER("<span class='danger'>[tail.msg_owner_harm_run]</span>"))
 						to_chat(tmob,STEP_TEXT_PREY("<span class='danger'>[tail.msg_prey_harm_run]</span>"))
 
@@ -417,7 +417,7 @@ var/const/RESIZE_A_SMALLTINY = (RESIZE_SMALL + RESIZE_TINY) / 2
 
 					//Human with taur tail, special messages are sent
 					else
-						var/datum/sprite_accessory/tail/taur/tail = H.tail_style
+						var/datum/sprite_accessory/tail/legacy_taur/tail = H.tail_style
 						to_chat(src,STEP_TEXT_OWNER("<span class='danger'>[tail.msg_owner_harm_walk]</span>"))
 						to_chat(tmob,STEP_TEXT_PREY("<span class='danger'>[tail.msg_prey_harm_walk]</span>"))
 
@@ -450,14 +450,14 @@ var/const/RESIZE_A_SMALLTINY = (RESIZE_SMALL + RESIZE_TINY) / 2
 
 				//Human, taur, shoes = no grab, special message
 				else if(H.shoes)
-					var/datum/sprite_accessory/tail/taur/tail = H.tail_style
+					var/datum/sprite_accessory/tail/legacy_taur/tail = H.tail_style
 					to_chat(src,STEP_TEXT_OWNER("<span class='danger'>[tail.msg_owner_grab_fail]</span>"))
 					to_chat(tmob,STEP_TEXT_PREY("<span class='danger'>[tail.msg_prey_grab_fail]</span>"))
 					add_attack_logs(src,tmob,"Grabbed underfoot (taur, shoes)")
 
 				//Human, taur, no shoes = yes grab, special message
 				else
-					var/datum/sprite_accessory/tail/taur/tail = H.tail_style
+					var/datum/sprite_accessory/tail/legacy_taur/tail = H.tail_style
 					to_chat(src,STEP_TEXT_OWNER("<span class='danger'>[tail.msg_owner_grab_success]</span>"))
 					to_chat(tmob,STEP_TEXT_PREY("<span class='danger'>[tail.msg_prey_grab_success]</span>"))
 					equip_to_slot_if_possible(tmob.get_scooped(H), SLOT_ID_SHOES, INV_OP_SILENT)

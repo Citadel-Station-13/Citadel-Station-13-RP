@@ -1,4 +1,4 @@
-/datum/asset/simple/inventory
+/datum/asset_pack/simple/inventory
 	assets = list(
 		"inventory-glasses.png" = 'icons/ui_icons/inventory/glasses.png',
 		"inventory-head.png" = 'icons/ui_icons/inventory/head.png',

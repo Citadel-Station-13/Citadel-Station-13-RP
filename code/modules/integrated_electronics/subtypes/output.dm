@@ -80,10 +80,18 @@
 /obj/item/integrated_circuit/output/light/proc/update_lighting()
 	if(light_toggled)
 		if(assembly)
-			assembly.set_light(l_range = light_brightness, l_power = light_strength, l_color = light_rgb)
+			if(istype(assembly,/obj/item/electronic_assembly/clothing))
+				var/obj/item/electronic_assembly/clothing/assembly_c = assembly
+				assembly_c.clothing.set_light(l_range = light_brightness, l_power = light_strength, l_color = light_rgb)
+			else
+				assembly.set_light(l_range = light_brightness, l_power = light_strength, l_color = light_rgb)
 	else
 		if(assembly)
-			assembly.set_light(0)
+			if(istype(assembly,/obj/item/electronic_assembly/clothing))
+				var/obj/item/electronic_assembly/clothing/assembly_c = assembly
+				assembly_c.clothing.set_light(0)
+			else
+				assembly.set_light(0)
 	power_draw_idle = light_toggled ? light_brightness * light_brightness : 0 // Should be the same draw as regular lights.
 
 /obj/item/integrated_circuit/output/light/power_fail() // Turns off the flashlight if there's no power left.
@@ -411,7 +419,7 @@
 	spawn_flags = IC_SPAWN_DEFAULT|IC_SPAWN_RESEARCH
 	var/obj/effect/overlay/holographic/hologram = null // Reference to the hologram effect, and also used to see if component is active.
 	var/icon/holo_base = null // Uncolored holographic icon.
-//	var/datum/beam/holo_beam = null // A visual effect, to make it easy to know where a hologram is coming from.
+//	var/datum/beam_legacy/holo_beam = null // A visual effect, to make it easy to know where a hologram is coming from.
 	// It is commented out due to picking up the assembly killing the beam.
 
 /obj/item/integrated_circuit/output/holographic_projector/Destroy()

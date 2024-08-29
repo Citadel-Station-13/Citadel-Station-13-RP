@@ -1,11 +1,11 @@
 /atom/movable/proc/get_mob()
 	return
 
-/obj/mecha/get_mob()
-	return occupant
+/obj/vehicle/get_mob()
+	return occupants
 
 /obj/vehicle_old/train/get_mob()
-	return buckled_mobs
+	return SAFEPICK(buckled_mobs)
 
 /mob/get_mob()
 	return src
@@ -15,29 +15,11 @@
 		return list(src, load)
 	return src
 
-/proc/mobs_in_view(range, source)
-	var/list/mobs = list()
-	for(var/atom/movable/AM in view(range, source))
-		var/M = AM.get_mob()
-		if(M)
-			mobs += M
-
-	return mobs
-
-/proc/mobs_in_xray_view(range, source)
-	var/list/mobs = list()
-	for(var/atom/movable/AM in orange(range, source))
-		var/M = AM.get_mob()
-		if(M)
-			mobs += M
-
-	return mobs
-
 /proc/random_hair_style(gender, species = SPECIES_HUMAN)
 	var/list/valid = list()
 	for(var/id in GLOB.sprite_accessory_hair)
 		var/datum/sprite_accessory/hair/S = GLOB.sprite_accessory_hair[id]
-		if(S.gender != NEUTER && gender != S.gender)
+		if(!isnull(S.random_generation_gender) && gender != S.random_generation_gender)
 			continue
 		if(S.apply_restrictions && !(species in S.species_allowed))
 			continue
@@ -48,7 +30,7 @@
 	var/list/valid = list()
 	for(var/id in GLOB.sprite_accessory_facial_hair)
 		var/datum/sprite_accessory/facial_hair/S = GLOB.sprite_accessory_facial_hair[id]
-		if(S.gender != NEUTER && gender != S.gender)
+		if(!isnull(S.random_generation_gender) && gender != S.random_generation_gender)
 			continue
 		if(S.apply_restrictions && !(species in S.species_allowed))
 			continue

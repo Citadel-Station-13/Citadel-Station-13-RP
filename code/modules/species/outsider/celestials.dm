@@ -31,6 +31,7 @@
 
 	//Angels glow in the dark.
 	has_glowing_eyes = TRUE
+	vision_organ = O_EYES
 
 	//Physical resistances and Weaknesses.
 	flash_mod = 0.5
@@ -137,10 +138,14 @@
 
 	//Demons glow in the dark.
 	has_glowing_eyes = TRUE
+	vision_organ = O_EYES
 
 	//Physical resistances and Weaknesses.
 	flash_mod = 3.0
 	brute_mod = 0.85
+
+	dark_slowdown = -0.5
+	light_slowdown = 0.2
 
 	unarmed_types = list(
 		/datum/unarmed_attack/stomp,

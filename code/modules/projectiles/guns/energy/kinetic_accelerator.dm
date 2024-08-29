@@ -207,7 +207,7 @@
 	damage = 30
 	damage_type = BRUTE
 	damage_flag = ARMOR_BOMB
-	range = 4
+	range = WORLD_ICON_SIZE * 4
 	// log_override = TRUE
 
 	var/pressure_decrease_active = FALSE
@@ -241,7 +241,7 @@
 		pressure_decrease_active = TRUE
 	return ..()
 
-/obj/projectile/kinetic/on_range()
+/obj/projectile/kinetic/legacy_on_range()
 	strike_thing()
 	..()
 
@@ -362,8 +362,7 @@
 	cost = 25
 
 /obj/item/ka_modkit/range/modify_projectile(obj/projectile/kinetic/K)
-	K.range += modifier
-
+	K.range += modifier * WORLD_ICON_SIZE
 
 //Damage
 /obj/item/ka_modkit/damage

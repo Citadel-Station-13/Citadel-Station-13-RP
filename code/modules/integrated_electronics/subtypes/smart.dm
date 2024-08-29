@@ -21,7 +21,8 @@
 	if(!isweakref(I.data))
 		activate_pin(3)
 		return
-	var/atom/A = I.data.resolve()
+	var/datum/weakref/d = I.data
+	var/atom/A = d.resolve()
 	if(!A)
 		activate_pin(3)
 		return

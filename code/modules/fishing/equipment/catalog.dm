@@ -104,7 +104,6 @@
 	.["traits"] = trait_descriptions
 	return .
 
-/obj/item/book/fish_catalog/ui_assets(mob/user)
-	return list(
-		get_asset_datum(/datum/asset/spritesheet/fish)
-	)
+/obj/item/book/fish_catalog/ui_asset_injection(datum/tgui/ui, list/immediate, list/deferred)
+	immediate += /datum/asset_pack/spritesheet/fish
+	return ..()

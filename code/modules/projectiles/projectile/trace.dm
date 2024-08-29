@@ -13,9 +13,6 @@
 
 	return trace.launch_projectile(target) //Test it!
 
-/obj/projectile/proc/_check_fire(atom/target as mob, var/mob/living/user as mob)  //Checks if you can hit them or not.
-	check_trajectory(target, user, pass_flags, atom_flags)
-
 //"Tracing" projectile
 /obj/projectile/test //Used to see if you can hit them.
 	invisibility = 101 //Nope!  Can't see me!
@@ -25,10 +22,8 @@
 	has_tracer = FALSE
 	var/list/hit = list()
 
-/obj/projectile/test/process_hitscan()
-	. = ..()
-	if(!QDELING(src))
-		qdel(src)
+/obj/projectile/test/fire(angle, atom/direct_target)
+	..()
 	return hit
 
 /obj/projectile/test/Bump(atom/A)

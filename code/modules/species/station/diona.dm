@@ -16,6 +16,11 @@
 
 	max_additional_languages = 2
 	name_language = LANGUAGE_ID_DIONA
+	base_skin_colours = list(
+		"Standard"  = null,
+		"Alternate" = "alt",
+	)
+
 	intrinsic_languages = list(
 		LANGUAGE_ID_DIONA,
 		LANGUAGE_ID_DIONA_HIVEMIND
@@ -23,6 +28,8 @@
 	assisted_langs   = list(LANGUAGE_VOX)	// Diona are weird, let's just assume they can use basically any language.
 
 	slowdown = 2.5
+	light_slowdown = -0.5
+	dark_slowdown = 3
 	snow_movement  = -2 // Ignore light snow
 	water_movement = -4 // Ignore shallow water
 	hud_type = /datum/hud_data/diona
@@ -57,6 +64,7 @@
 		O_POLYP    = /obj/item/organ/internal/diona/polyp,
 		O_ANCHOR   = /obj/item/organ/internal/diona/ligament,
 	)
+	vision_organ = O_BRAIN
 
 	has_limbs = list(
 		BP_TORSO  = list("path" = /obj/item/organ/external/diona/chest),
@@ -101,9 +109,11 @@
 
 	species_flags = NO_MINOR_CUT | IS_PLANT | NO_SCAN | NO_PAIN | NO_SLIP | NO_HALLUCINATION | NO_BLOOD | CONTAMINATION_IMMUNE
 	species_spawn_flags = SPECIES_SPAWN_CHARACTER | SPECIES_SPAWN_WHITELISTED
+	species_appearance_flags = HAS_BASE_SKIN_COLOR
 
 	blood_color = "#004400"
 	flesh_color = "#907E4A"
+	base_color = "#ffffff"
 
 	reagent_tag = IS_DIONA
 
@@ -118,9 +128,9 @@
 
 /datum/species/diona/equip_survival_gear(mob/living/carbon/human/H)
 	if(H.backbag == 1)
-		H.equip_to_slot_or_del(new /obj/item/flashlight/flare(H), /datum/inventory_slot_meta/abstract/hand/right)
+		H.equip_to_slot_or_del(new /obj/item/flashlight/flare(H), /datum/inventory_slot/abstract/hand/right)
 	else
-		H.equip_to_slot_or_del(new /obj/item/flashlight/flare(H.back), /datum/inventory_slot_meta/abstract/put_in_backpack)
+		H.equip_to_slot_or_del(new /obj/item/flashlight/flare(H.back), /datum/inventory_slot/abstract/put_in_backpack)
 
 /datum/species/diona/handle_death(mob/living/carbon/human/H)
 

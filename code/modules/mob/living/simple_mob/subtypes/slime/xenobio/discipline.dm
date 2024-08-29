@@ -4,8 +4,8 @@
 /mob/living/simple_mob/slime/xenobio/proc/adjust_discipline(amount, silent)
 	if(amount > 0)
 		to_chat(src, SPAN_WARNING( "You've been disciplined!"))
-	if(has_AI())
-		var/datum/ai_holder/simple_mob/xenobio_slime/AI = ai_holder
+	if(has_polaris_AI())
+		var/datum/ai_holder/polaris/simple_mob/xenobio_slime/AI = ai_holder
 		AI.adjust_discipline(amount, silent)
 
 
@@ -17,7 +17,7 @@
 				return FALSE
 		return TRUE
 
-	else if(has_AI()) // Now for thoughtcrimes.
-		var/datum/ai_holder/simple_mob/xenobio_slime/AI = ai_holder
+	else if(has_polaris_AI()) // Now for thoughtcrimes.
+		var/datum/ai_holder/polaris/simple_mob/xenobio_slime/AI = ai_holder
 		return AI.is_justified_to_discipline() // Will return true if targeting a non-monkey.
 	return FALSE

@@ -69,7 +69,7 @@
 	faction = "lavaland"
 	speak_emote = list("chatters")
 	say_list_type = /datum/say_list/gutshank
-	ai_holder_type = /datum/ai_holder/simple_mob/melee
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/melee
 
 	var/datum/reagents/shank_gland = null
 	var/growing = 0
@@ -191,7 +191,7 @@
 	speak_emote = list("chatters")
 	say_list_type = /datum/say_list/gutshank
 	//I changed the ai_holder from simple/melee to retaliate/coop because when riding a Shank, it would override user inputs to charge non-faction mobs. Which is annoying.
-	ai_holder_type = /datum/ai_holder/simple_mob/retaliate/cooperative
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/retaliate/cooperative
 
 	buckle_lying = FALSE
 	buckle_max_mobs = 1

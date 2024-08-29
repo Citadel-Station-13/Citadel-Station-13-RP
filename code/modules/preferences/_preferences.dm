@@ -29,27 +29,27 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	return creating
 
 /datum/preferences
-	//! Intrinsics
+		//* Intrinsics
 	/// did we load yet?
 	var/initialized = FALSE
 
-	//! Error Handling
+		//* Error Handling
 	/// queued error messages to display
 	var/list/io_error_queue
 
-//! ## Doohickeys For Savefiles
+	//* ## Doohickeys For Savefiles
 	var/path
 	/// Holder so it doesn't default to slot 1, rather the last one used.
 	var/default_slot = 1
 	var/savefile_version = 0
 
 // todo: kick this out of prefs
-//! ## Non-Preference Stuff
+	//* ## Non-Preference Stuff
 	var/muted = 0
 	var/last_ip
 	var/last_id
 
-//! ## Cooldowns for saving/loading.
+	//* ## Cooldowns for saving/loading.
 //? ## These are four are all separate due to loading code calling these one after another.
 	var/saveprefcooldown
 	var/loadprefcooldown
@@ -60,7 +60,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	//? These lists may only ever contain associative key-values, where
 	//? values MUST be string, number, or null.
 	//? Savefiles do not play nice with typepaths.
-	//! Loaded data
+		//* Loaded data
 	/// character data
 	var/list/character
 	/// global data
@@ -68,13 +68,13 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	/// data for byond skin - checkboxes and whatnot; this is ENTIRELY synchronized by the skin system.
 	var/list/skin
 
-//! ## Game Preferences
+	//* ## Game Preferences
 	/// Special role selection.
 	var/be_special = 0
 	/// Event role prefs flag.
 	var/be_event_role = NONE
 
-//! ## Character Preferences
+	//* ## Character Preferences
 	/// Our character's name
 	var/real_name
 	/// Whether we are a random name every round
@@ -146,7 +146,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	/// Enable/disable markings on synth parts.
 	var/synth_markings = 1
 
-//! ## Background Preferences
+	//* ## Background Preferences
 	///Antag associated faction.
 	var/antag_faction = "None"
 	///How visible antag association is to others.
@@ -163,7 +163,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 	var/uplinklocation = "PDA"
 
-//! ## Mob Preview
+	//* ## Mob Preview
 	/// Should only be a key-value list of north/south/east/west = atom/movable/screen.
 	var/list/char_render_holders
 	var/static/list/preview_screen_locs = list(
@@ -174,13 +174,13 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 		"BG" = "character_preview_map:1,1 to 3,8"
 	)
 
-//! ## Skills Preferences - Depricated.
+	//* ## Skills Preferences - Depricated.
 	var/used_skillpoints = 0
 	var/skill_specialization = null
 	/// Skills can range from 0 to 3.
 	var/list/skills = list()
 
-//! ## Body Preferences
+	//* ## Body Preferences
 	/// Maps each organ to either null(intact), "cyborg" or "amputated"
 	/// will probably not be able to do this for head and torso ;)
 	var/list/organ_data = list()
@@ -195,7 +195,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 	var/list/body_descriptors = list()
 
-//! ## OOC Metadata
+	//* ## OOC Metadata
 	var/metadata = ""
 	var/headshot_url = ""
 	var/full_ref_url = ""
@@ -214,7 +214,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	var/datum/category_collection/player_setup_collection/player_setup
 	var/datum/browser/panel
 
-//! ## Character Directory Stuff
+	//* ## Character Directory Stuff
 	/// Should we show in Character Directory.
 	var/show_in_directory = 1
 	/// Sorting tag to use for vore-prefs.
@@ -426,3 +426,13 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	panel = new(user, "Character Slots", "Character Slots", 300, 390, src)
 	panel.set_content(dat)
 	panel.open()
+
+
+/datum/preferences/proc/get_trait_id_info()
+	. = list()
+	for (var/path in (pos_traits + neg_traits + neu_traits) - id_hidden_traits)
+		var/datum/trait/trait = all_traits[path]
+		if(istype(trait))
+			if(trait.extra_id_info)
+				.["[ckey(trait.name)]"] = trait.extra_id_info
+	return .

@@ -1,7 +1,6 @@
 /datum/role/job/station/off_duty/command
 	id = JOB_ID_OFFDUTY_COMMAND
 	title = "Off-duty Command"
-	timeoff_factor = -1
 	total_positions = -1
 	selection_color = "#9b633e"
 	minimal_access = list(

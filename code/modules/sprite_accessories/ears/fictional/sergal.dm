@@ -8,4 +8,4 @@
 	id = "ears_sergal_color"
 	icon_state = "serg_plain_s"
 	do_colouration = 1
-	color_blend_mode = ICON_MULTIPLY
+	legacy_use_additive_color_matrix = FALSE

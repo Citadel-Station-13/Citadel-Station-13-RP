@@ -1791,3 +1791,96 @@
 	set_trait(TRAIT_IDEAL_LIGHT, 1)
 	set_trait(TRAIT_NUTRIENT_CONSUMPTION, 0.1)
 	set_trait(TRAIT_WATER_CONSUMPTION, 0.1)
+
+//Exotic Seeds and Stuff
+
+/datum/seed/mushroom/fungiwheat
+	name = "fungiwheat"
+	seed_name = "black fungi-wheat spores"
+	display_name = "fungi-wheat stalks"
+	kitchen_tag = "wheat"
+	chems = list("nutriment" = list(1,25), "flour" = list(15,15))
+	catalog_data_grown = list(/datum/category_item/catalogue/flora/fungiwheat)
+
+/datum/seed/mushroom/fungiwheat/New()
+	..()
+	set_trait(TRAIT_IMMUTABLE,1)
+	set_trait(TRAIT_MATURATION,8)
+	set_trait(TRAIT_YIELD,4)
+	set_trait(TRAIT_POTENCY,0)
+	set_trait(TRAIT_PEST_TOLERANCE,8)
+	set_trait(TRAIT_PRODUCT_ICON,"wheat")
+	set_trait(TRAIT_PRODUCT_COLOUR,"#2e2f32")
+	set_trait(TRAIT_PLANT_COLOUR,"#2e2f32")
+	set_trait(TRAIT_PLANT_ICON,"stalk2")
+
+
+/datum/category_item/catalogue/flora/fungiwheat
+	name = "Flora - Black Fungiwheat"
+	desc = "A genetically engineered fungus created by the Department of Genetics Research on the Krisitik homeworld of Murith. It is a staple crop for the \
+	subterranean Krisitik and its coarse fungal flour is mold and pest resistant, dramatically increasing the shelf life of its products. \
+	The specific breeds of fungus used by the Krisitik are 'copyrighted' by the Department of Genetics Research and are grown exclusively \
+	at their hydroponic facilities however, recently lesser breeds of the fungus have been licensed to the wider galaxy as trade relations \
+	with the Krisitik improve."
+	value = CATALOGUER_REWARD_TRIVIAL
+
+/datum/seed/ironwood
+	name = "ironwood"
+	seed_name = "ironwood sapling"
+	display_name = "ironwood bonsai"
+	chems = list("woodpulp" = list(1,20))
+	has_item_product = /obj/item/stack/material/log/ironwood
+	catalog_data_grown = list(/datum/category_item/catalogue/flora/ironwood)
+
+/datum/seed/ironwood/New()
+	..()
+	set_trait(TRAIT_IMMUTABLE,1)
+	set_trait(TRAIT_MATURATION,15)
+	set_trait(TRAIT_PRODUCTION,5)
+	set_trait(TRAIT_YIELD,3)
+	set_trait(TRAIT_POTENCY,20)
+	set_trait(TRAIT_WATER_CONSUMPTION,3)
+	set_trait(TRAIT_NUTRIENT_CONSUMPTION,3)
+	set_trait(TRAIT_PRODUCT_ICON,"mushroom7")
+	set_trait(TRAIT_PRODUCT_COLOUR,"#5C5454")
+	set_trait(TRAIT_PLANT_COLOUR,"#666666")
+	set_trait(TRAIT_PLANT_ICON,"mushroom8")
+
+/datum/category_item/catalogue/flora/ironwood
+	name = "Flora - Ironwood Bonsais"
+	desc = "The Ironwood tree is a type of tree native to the Alraune homeworld of Loam whose wood is known to be exceptionally strong rivalling many metals in terms \
+	of durability. The intense amount of nutrients Ironwood Trees consume and their slow overall growth has prevented widescale adoption by the galaxy as a building material \
+	though it remains popular among the Alraune who see it as far more ethical then traditional steel. This miniature Ironwood tree was specifically bred by the Alraune \
+	to create an ironwood tree capable of growing in hydroponics trays, resulting in a 'Ironwood Bonsai'. Despite small yields it still provides more than enough material to \
+	use in ironwood crafts."
+	value = CATALOGUER_REWARD_TRIVIAL
+
+/datum/seed/creepermoss
+	name = "creepermoss"
+	seed_name = "creeper sphagnum"
+	display_name = "creeper sphagnum"
+	chems = list("nutriment" = list(2,10), "gunpowder" = list(2,6))
+	catalog_data_grown = list(/datum/category_item/catalogue/flora/creepermoss)
+
+/datum/seed/creepermoss/New()
+	..()
+	set_trait(TRAIT_HARVEST_REPEAT,1)
+	set_trait(TRAIT_MATURATION,6)
+	set_trait(TRAIT_PRODUCTION,6)
+	set_trait(TRAIT_YIELD,4)
+	set_trait(TRAIT_POTENCY,10)
+	set_trait(TRAIT_STINGS,1)
+	set_trait(TRAIT_PLANT_ICON,"bush5")
+	set_trait(TRAIT_PRODUCT_ICON,"nettles")
+	set_trait(TRAIT_PLANT_COLOUR,"#26d443")
+	set_trait(TRAIT_PRODUCT_COLOUR,"#26d443")
+
+/datum/category_item/catalogue/flora/creepermoss
+	name = "Flora - Creeper Sphagnum"
+	desc = "Creeper Sphagnum was developed by a long bankrupt genetics research company in attempts to create 'growable gunpowder'. Using sphagnum moss as base the \
+	experiment failed being unable to produce a gunpowder fit for modern cartridges. The company shortly after filed for bankruptcy and for a while it was thought \
+	the 'Creeper Sphagnum' would just become another failed genetic template to be archived for eternity. Years after the company closed PMCs and Orion Naval patrols began \
+	to find a mysterious new 'gunpowder moss' growing in pirate vessels and hideouts. It did not take long to link the new moss to the now bankrupt company but how \
+	the moss fell into pirate hands remains a mystery to this day. What is certain though is that Creeper Sphagnum is now grown across the frontier whether to make ammo \
+	for a Frontiersman's primitive homemade firearm or for explosives used in pirate raids."
+	value = CATALOGUER_REWARD_TRIVIAL

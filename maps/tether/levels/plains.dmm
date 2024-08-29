@@ -87,11 +87,6 @@
 "A" = (
 /turf/unsimulated/wall/planetary/virgo3b,
 /area/tether/outpost/exploration_shed)
-"B" = (
-/obj/effect/floor_decal/rust,
-/obj/effect/step_trigger/teleporter/from_plains,
-/turf/simulated/floor/tiled/steel_dirty/virgo3b,
-/area/tether/outpost/exploration_shed)
 "D" = (
 /mob/living/simple_mob/animal/passive/gaslamp,
 /turf/simulated/floor/outdoors/grass/sif/virgo3b,
@@ -22845,7 +22840,7 @@ u
 b
 "}
 (118,1,1) = {"
-B
+O
 O
 E
 O
@@ -23039,7 +23034,7 @@ u
 b
 "}
 (119,1,1) = {"
-B
+O
 O
 O
 O
@@ -23233,7 +23228,7 @@ u
 b
 "}
 (120,1,1) = {"
-B
+O
 O
 O
 O
@@ -23427,7 +23422,7 @@ u
 b
 "}
 (121,1,1) = {"
-B
+O
 O
 O
 O
@@ -23621,7 +23616,7 @@ u
 b
 "}
 (122,1,1) = {"
-B
+O
 O
 O
 O
@@ -23815,7 +23810,7 @@ u
 b
 "}
 (123,1,1) = {"
-B
+O
 O
 O
 O
@@ -24009,7 +24004,7 @@ u
 b
 "}
 (124,1,1) = {"
-B
+O
 O
 O
 O
@@ -24203,7 +24198,7 @@ u
 b
 "}
 (125,1,1) = {"
-B
+O
 O
 O
 O
@@ -24397,7 +24392,7 @@ u
 b
 "}
 (126,1,1) = {"
-B
+O
 O
 m
 G

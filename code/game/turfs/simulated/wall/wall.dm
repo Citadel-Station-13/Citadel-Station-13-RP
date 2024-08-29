@@ -6,10 +6,16 @@
 /turf/simulated/wall
 	name = "wall"
 	desc = "A huge chunk of iron used to separate rooms."
-	icon = 'icons/turf/walls/_previews.dmi'
-	icon_state = "solid"
+	color = /datum/material/steel::icon_colour
+	icon = /datum/material/steel::icon_base
+	icon_state = "wall-0"
 	base_icon_state = "wall"
-	color = "#666666"
+
+	#ifdef IN_MAP_EDITOR // Display disposal pipes etc. above walls in map editors.
+	layer = PLATING_LAYER
+	#else
+	layer = WALL_LAYER
+	#endif
 
 	integrity_enabled = TRUE
 	integrity = 200
@@ -18,16 +24,11 @@
 
 	armor_type = /datum/armor/object/heavy
 
-	#ifdef IN_MAP_EDITOR // Display disposal pipes etc. above walls in map editors.
-	layer = PLATING_LAYER
-	#endif
-
 	opacity = TRUE
 	density = TRUE
 	blocks_air = TRUE
-	layer = WALL_LAYER
 	rad_insulation = RAD_INSULATION_EXTREME
-//	air_status = AIR_STATUS_BLOCK
+	// air_status = AIR_STATUS_BLOCK
 	thermal_conductivity = WALL_HEAT_TRANSFER_COEFFICIENT
 	heat_capacity = 312500 //a little over 5 cm thick , 312500 for 1 m by 2.5 m by 0.25 m plasteel wall
 	baseturfs = /turf/simulated/floor/plating
@@ -48,12 +49,12 @@
 	var/active
 	var/can_open = FALSE
 
+	/// The material of the girders that are produced when the wall is dismantled.
+	var/datum/material/material_girder = /datum/material/steel
 	/// The base material of the wall.
 	var/datum/material/material_outer = /datum/material/steel
 	/// The reinforcement material of the wall.
 	var/datum/material/material_reinf
-	/// The material of the girders that are produced when the wall is dismantled.
-	var/datum/material/material_girder = /datum/material/steel
 
 	var/last_state
 	var/construction_stage
@@ -87,11 +88,15 @@
 	clear_plants()
 	return ..()
 
-// Walls always hide the stuff below them.
-/turf/simulated/wall/levelupdate()
-	for(var/obj/O in src)
-		O.hide(1)
-
+/// walls **do not** hide things underfloor
+/// why, even though it makes sense?
+/// because balance-wise we don't want to make you have to tear down
+/// walls just to run pipes through
+///
+/// if there's a way to do it later then we can set this back to yes but for now, hell no.
+/// do not change this without permission ~silicons
+/turf/simulated/wall/hides_underfloor_objects()
+	return FALSE
 
 /turf/simulated/wall/proc/clear_plants()
 	for(var/obj/effect/overlay/wallrot/WR in src)

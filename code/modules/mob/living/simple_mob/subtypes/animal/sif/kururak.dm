@@ -62,7 +62,7 @@
 		)
 
 	say_list_type = /datum/say_list/kururak
-	ai_holder_type = /datum/ai_holder/simple_mob/intentional/kururak
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/intentional/kururak
 
 	special_attack_min_range = 0
 	special_attack_max_range = 4
@@ -156,7 +156,7 @@
 			if(src.Adjacent(C))
 				choices += C
 
-		for(var/obj/mecha/M in view(1,src))
+		for(var/obj/vehicle/sealed/mecha/M in view(1,src))
 			if(src.Adjacent(M))
 				choices += M
 
@@ -181,7 +181,7 @@
 						if(flash_strength > 0)
 							to_chat(H, SPAN_ALIEN("You are disoriented by \the [src]!"))
 							H.Confuse(flash_strength + 5)
-							H.Blind(flash_strength)
+							H.apply_status_effect(/datum/status_effect/sight/blindness, flash_strength)
 							H.eye_blurry = max(H.eye_blurry, flash_strength + 5)
 							H.flash_eyes()
 							H.adjustHalLoss(flash_strength / 5)
@@ -210,7 +210,7 @@
 		for(var/mob/living/carbon/C in oviewers(special_attack_max_range, null))
 			var/safety = C.eyecheck()
 			if(!safety)
-				if(!C.blinded)
+				if(!C.has_status_effect(/datum/status_effect/sight/blindness))
 					C.flash_eyes()
 		for(var/mob/living/silicon/robot/R in oviewers(special_attack_max_range, null))
 			if(R.has_active_type(/obj/item/borg/combat/shield))
@@ -243,7 +243,7 @@
 			if(src.Adjacent(C))
 				choices += C
 
-		for(var/obj/mecha/M in view(1,src))
+		for(var/obj/vehicle/sealed/mecha/M in view(1,src))
 			if(src.Adjacent(M))
 				choices += M
 
@@ -270,13 +270,13 @@
 
 		L.add_modifier(/datum/modifier/grievous_wounds, 60 SECONDS)
 
-	else if(istype(A, /obj/mecha))
+	else if(istype(A, /obj/vehicle/sealed/mecha))
 		visible_message(SPAN_DANGER("\The [src] rakes its claws against \the [A]."))
-		var/obj/mecha/M = A
+		var/obj/vehicle/sealed/mecha/M = A
 		M.take_damage_legacy(damage_to_apply)
-		if(prob(3) && do_after(src, 5))
-			visible_message(SPAN_CRITICAL("\The [src]'s strike ripped \the [M]'s access hatch open, allowing it to drag [M.occupant] out!"))
-			M.go_out()
+		if(prob(3) && M.occupant_legacy && do_after(src, 5))
+			visible_message(SPAN_CRITICAL("\The [src]'s strike ripped \the [M]'s access hatch open, allowing it to drag [M.occupant_legacy] out!"))
+			M.mob_exit(M.occupant_legacy)
 
 	else
 		A.attack_generic(src, damage_to_apply, "rakes its claws against")	// Well it's not a mob, and it's not a mech.
@@ -294,7 +294,7 @@
 				continue
 			if(K.faction != src.faction)
 				continue
-			var/datum/ai_holder/AI = K.ai_holder
+			var/datum/ai_holder/polaris/AI = K.ai_holder
 			to_chat(K, SPAN_NOTICE("The pack leader wishes for you to follow them."))
 			AI.set_follow(src)
 
@@ -323,14 +323,14 @@
 	else
 		remove_modifiers_of_type(/datum/modifier/ace)
 
-/datum/ai_holder/simple_mob/intentional/kururak
+/datum/ai_holder/polaris/simple_mob/intentional/kururak
 	hostile = FALSE
 	retaliate = TRUE
 	cooperative = TRUE
 	can_flee = TRUE
 	flee_when_dying = TRUE
 
-/datum/ai_holder/simple_mob/intentional/kururak/handle_special_strategical()
+/datum/ai_holder/polaris/simple_mob/intentional/kururak/handle_special_strategical()
 	follow_distance = rand(initial(follow_distance), initial(follow_distance) + 2)
 	var/mob/living/simple_mob/animal/sif/kururak/K = holder
 
@@ -353,7 +353,7 @@
 	else
 		hostile = initial(hostile)
 
-/datum/ai_holder/simple_mob/intentional/kururak/pre_special_attack(atom/A)
+/datum/ai_holder/polaris/simple_mob/intentional/kururak/pre_special_attack(atom/A)
 	holder.a_intent = INTENT_HARM
 	if(isliving(A))
 		var/mob/living/L = A
@@ -369,10 +369,10 @@
 		if(issilicon(L) && holder.a_intent != INTENT_GRAB)
 			holder.a_intent = INTENT_DISARM
 
-	else if(istype(A, /obj/mecha))
+	else if(istype(A, /obj/vehicle/sealed/mecha))
 		holder.a_intent = INTENT_GRAB
 
-/datum/ai_holder/simple_mob/intentional/kururak/post_melee_attack()
+/datum/ai_holder/polaris/simple_mob/intentional/kururak/post_melee_attack()
 	if(holder.has_modifier_of_type(/datum/modifier/ace))
 		request_help()
 

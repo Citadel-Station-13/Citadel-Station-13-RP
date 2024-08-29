@@ -9,7 +9,6 @@
 	spawn_positions = -1
 	supervisors = "Nobody! You don't work here."
 	selection_color = "#515151"
-	timeoff_factor = 0
 
 	outfit_type = /datum/outfit/job/station/assistant
 	alt_titles = list(

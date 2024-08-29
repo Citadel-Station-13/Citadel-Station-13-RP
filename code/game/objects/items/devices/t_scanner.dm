@@ -110,14 +110,18 @@
 	. = list()
 
 	var/turf/center = get_turf(src.loc)
-	if(!center) return
+	if(!center)
+		return
 
+	// the reason we don't just obj in range is because some things
+	// will INVISIBILITY_ABSTRACt while hiding underfloor,
+	// so normal range won't pick it up
 	for(var/turf/T in range(scan_range, center))
-		if(!!T.is_plating())
+		if(!T.hides_underfloor_objects())
 			continue
 
 		for(var/obj/O in T.contents)
-			if(O.level != 1)
+			if(O.hides_underfloor == OBJ_UNDERFLOOR_NEVER)
 				continue
 			if(!O.invisibility)
 				continue //if it's already visible don't need an overlay for it

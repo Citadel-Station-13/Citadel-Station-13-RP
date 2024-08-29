@@ -13,6 +13,8 @@
 	anchored = TRUE
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 50
+	hides_underfloor = OBJ_UNDERFLOOR_UNLESS_PLACED_ONTOP
+	hides_underfloor_update_icon = TRUE
 
 	/// Radio frequency.
 	var/freq = 1449
@@ -35,7 +37,6 @@
 /obj/machinery/magnetic_module/Initialize(mapload, newdir)
 	. = ..()
 	var/turf/T = loc
-	hide(!T.is_plating())
 	center = T
 
 	spawn(10)	// must wait for map loading to finish
@@ -45,13 +46,9 @@
 	spawn()
 		magnetic_process()
 
-// update the invisibility and icon
-/obj/machinery/magnetic_module/hide(intact)
-	invisibility = intact ? 101 : 0
-	updateicon()
-
 // update the icon_state
-/obj/machinery/magnetic_module/proc/updateicon()
+/obj/machinery/magnetic_module/update_icon()
+	. = ..()
 	var/state="floor_magnet"
 	var/onstate=""
 	if(!on)
@@ -162,7 +159,7 @@
 					qdel(src)
 	*/
 
-	updateicon()
+	update_icon()
 
 /obj/machinery/magnetic_module/proc/magnetic_process() // proc that actually does the pull_active
 	if(pull_active)

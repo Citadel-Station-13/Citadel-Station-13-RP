@@ -12,5 +12,14 @@
 	var/list/say_messages
 	var/list/say_verbs
 
-/obj/item/clothing/mask/proc/filter_air(datum/gas_mixture/air)
+// gets one gas_mixture
+// that mixture is modified (and then used for breathing)
+// additionally removed gases can be returned to be passed to atmos
+/obj/item/clothing/mask/proc/process_air(datum/gas_mixture/air)
 	return
+
+//gets one gas_mixture (the exhale)
+//returns what should be passed to the environment
+/obj/item/clothing/mask/proc/process_exhale(datum/gas_mixture/air)
+	return
+

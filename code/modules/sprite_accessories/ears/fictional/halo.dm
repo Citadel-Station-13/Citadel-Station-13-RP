@@ -6,25 +6,25 @@
 	id = "halo_simple"
 	icon_state = "halosimple"
 	do_colouration = 1
-	color_blend_mode = ICON_MULTIPLY
+	legacy_use_additive_color_matrix = FALSE
 
 /datum/sprite_accessory/ears/halosimpleshatter
 	name = "halo - simple shattered"
 	id = "halo_simple_shatter"
 	icon_state = "halosimpleshatter"
 	do_colouration = 1
-	color_blend_mode = ICON_MULTIPLY
+	legacy_use_additive_color_matrix = FALSE
 
 /datum/sprite_accessory/ears/halobasicangel
 	name = "halo - basic"
 	id = "halo_basic_angel"
 	icon_state = "halobasic"
 	do_colouration = 1
-	color_blend_mode = ICON_MULTIPLY
+	legacy_use_additive_color_matrix = FALSE
 
 /datum/sprite_accessory/ears/halobasicshatter
 	name = "halo - basic shattered"
 	id = "halo_basic_shatter"
 	icon_state = "halobasicshatter"
 	do_colouration = 1
-	color_blend_mode = ICON_MULTIPLY
+	legacy_use_additive_color_matrix = FALSE

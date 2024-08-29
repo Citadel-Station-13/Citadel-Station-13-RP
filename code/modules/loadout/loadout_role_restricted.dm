@@ -32,7 +32,7 @@
 	slot = SLOT_ID_SHOES
 
 /datum/loadout_entry/restricted/security/accessory
-	slot = /datum/inventory_slot_meta/abstract/attach_as_accessory
+	slot = /datum/inventory_slot/abstract/attach_as_accessory
 
 //Medical
 /datum/loadout_entry/restricted/medical
@@ -58,7 +58,7 @@
 	slot = SLOT_ID_SHOES
 
 /datum/loadout_entry/restricted/medical/accessory
-	slot = /datum/inventory_slot_meta/abstract/attach_as_accessory
+	slot = /datum/inventory_slot/abstract/attach_as_accessory
 
 //Engineering
 /datum/loadout_entry/restricted/engineering
@@ -84,7 +84,7 @@
 	slot = SLOT_ID_SHOES
 
 /datum/loadout_entry/restricted/engineering/accessory
-	slot = /datum/inventory_slot_meta/abstract/attach_as_accessory
+	slot = /datum/inventory_slot/abstract/attach_as_accessory
 
 //Command
 /datum/loadout_entry/restricted/command
@@ -107,7 +107,7 @@
 	slot = SLOT_ID_SHOES
 
 /datum/loadout_entry/restricted/command/accessory
-	slot = /datum/inventory_slot_meta/abstract/attach_as_accessory
+	slot = /datum/inventory_slot/abstract/attach_as_accessory
 
 //Science
 /datum/loadout_entry/restricted/science
@@ -133,7 +133,7 @@
 	slot = SLOT_ID_SHOES
 
 /datum/loadout_entry/restricted/science/accessory
-	slot = /datum/inventory_slot_meta/abstract/attach_as_accessory
+	slot = /datum/inventory_slot/abstract/attach_as_accessory
 
 //Supply
 /datum/loadout_entry/restricted/supply
@@ -153,14 +153,14 @@
 	slot = SLOT_ID_SHOES
 
 /datum/loadout_entry/restricted/supply/accessory
-	slot = /datum/inventory_slot_meta/abstract/attach_as_accessory
+	slot = /datum/inventory_slot/abstract/attach_as_accessory
 
 //Service
 /datum/loadout_entry/restricted/service
 	allowed_roles = list("Head of Personnel", "Bartender", "Botanist", "Janitor", "Chef", "Librarian", "Chaplain")
 
 /datum/loadout_entry/restricted/service/accessory
-	slot = /datum/inventory_slot_meta/abstract/attach_as_accessory
+	slot = /datum/inventory_slot/abstract/attach_as_accessory
 
 /datum/loadout_entry/restricted/service/suit
 	slot = SLOT_ID_SUIT
@@ -184,7 +184,7 @@
 	slot = SLOT_ID_SHOES
 
 /datum/loadout_entry/restricted/misc/accessory
-	slot = /datum/inventory_slot_meta/abstract/attach_as_accessory
+	slot = /datum/inventory_slot/abstract/attach_as_accessory
 
 //*Multi-Department Combinations (Aka Multi-Department Drifting)
 //Security + Command

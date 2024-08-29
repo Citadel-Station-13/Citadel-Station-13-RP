@@ -763,7 +763,6 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/maintenance
 	area_flags = AREA_RAD_SHIELDED
 	sound_env = TUNNEL_ENCLOSED
-	turf_initializer = new /datum/turf_initializer/maintenance()
 	ambience = AMBIENCE_MAINTENANCE
 
 /area/maintenance/aft
@@ -2667,7 +2666,6 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	name = "\improper Research Outpost Maintenance"
 	area_flags = AREA_RAD_SHIELDED
 	sound_env = TUNNEL_ENCLOSED
-	turf_initializer = new /datum/turf_initializer/maintenance()
 	ambience = AMBIENCE_MAINTENANCE
 
 /area/rnd/outpost/underground

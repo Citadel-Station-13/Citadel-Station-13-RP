@@ -6,8 +6,13 @@
  */
 /mob/living
 	see_invisible = SEE_INVISIBLE_LIVING
-	movable_flags = MOVABLE_NO_THROW_SPIN | MOVABLE_NO_THROW_DAMAGE_SCALING | MOVABLE_NO_THROW_SPEED_SCALING
+	movable_flags = MOVABLE_NO_THROW_SPIN
 	buckle_flags = BUCKLING_PROJECTS_DEPTH
+
+	//* AI handling
+	/// AI agent type
+	/// While all /atom/movable's can have an ai holder, only /mob/living has an /Initialize() hook to make one.
+	var/ai_holder_type
 
 	//* Health and life related vars *//
 	/// Maximum health that should be possible.  Avoid adjusting this if you can, and instead use modifiers datums.

@@ -49,7 +49,7 @@
 	buckle_flags = BUCKLING_NO_USER_BUCKLE_OTHER_TO_SELF
 
 	say_list_type = /datum/say_list/horse
-	ai_holder_type = /datum/ai_holder/simple_mob/retaliate
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/retaliate
 
 	var/rideable = 0
 

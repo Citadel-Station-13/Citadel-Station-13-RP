@@ -28,12 +28,10 @@
 	if(!(slot in slots))
 		return
 	for(var/hud in huds)
-		var/datum/atom_hud/H = GLOB.huds[hud]
-		H.add_hud_to(M)
+		M.self_perspective.add_atom_hud(hud, ATOM_HUD_SOURCE_FOR_HUD_GRANTER_ON_EQUIPMENT_SLOT(slot))
 
 /datum/element/hud_granter/proc/on_unequip(datum/source, mob/M, slot)
 	if(!(slot in slots))
 		return
 	for(var/hud in huds)
-		var/datum/atom_hud/H = GLOB.huds[hud]
-		H.remove_hud_from(M)
+		M.self_perspective.remove_atom_hud(hud, ATOM_HUD_SOURCE_FOR_HUD_GRANTER_ON_EQUIPMENT_SLOT(slot))

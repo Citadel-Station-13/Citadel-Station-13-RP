@@ -54,7 +54,7 @@
 	attacktext = list("bit", "buffeted", "slashed")
 
 	say_list_type = /datum/say_list/glitterfly
-	ai_holder_type = /datum/ai_holder/simple_mob/melee/evasive/glitterfly
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/melee/evasive/glitterfly
 
 /mob/living/simple_mob/animal/sif/glitterfly/Initialize(mapload)
 	. = ..()
@@ -87,14 +87,14 @@
 	emote_see = list("vibrates","flutters", "twirls")
 	emote_hear = list("pips", "clicks", "chirps")
 
-/datum/ai_holder/simple_mob/melee/evasive/glitterfly
+/datum/ai_holder/polaris/simple_mob/melee/evasive/glitterfly
 	hostile = FALSE
 	can_flee = TRUE
 	flee_when_outmatched = TRUE
 	outmatched_threshold = 100
 	max_home_distance = 5
 
-/datum/ai_holder/simple_mob/melee/evasive/glitterfly/handle_special_strategical()
+/datum/ai_holder/polaris/simple_mob/melee/evasive/glitterfly/handle_special_strategical()
 	if(prob(1))
 		var/friendly_animal_corpse = FALSE
 		for(var/mob/living/simple_mob/animal/A in view(vision_range,holder))

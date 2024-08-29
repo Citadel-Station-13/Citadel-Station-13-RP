@@ -55,6 +55,7 @@
 		/datum/reagent/sulfur,
 		/datum/reagent/chlorine,
 	)
+	worth_intrinsic = 1000
 
 /obj/item/reagent_synth/bar
 	name = "reagent synthesis module (Bar)"
@@ -80,10 +81,12 @@
 		/datum/reagent/ethanol/ale,
 		/datum/reagent/ethanol/mead,
 	)
+	worth_intrinsic = 350
 
 /obj/item/reagent_synth/cafe
 	name = "reagent synthesis module (Cafe)"
 	reagents_provided = list(
+		/datum/reagent/water,
 		/datum/reagent/drink/coffee,
 		/datum/reagent/drink/coffee/cafe_latte,
 		/datum/reagent/drink/coffee/soy_latte,
@@ -92,12 +95,15 @@
 		/datum/reagent/drink/milk/cream,
 		/datum/reagent/drink/tea,
 		/datum/reagent/drink/ice,
+		/datum/reagent/drink/tea/icetea,
 		/datum/reagent/nutriment/mint,
+		/datum/reagent/sugar,
 		/datum/reagent/drink/juice/orange,
 		/datum/reagent/drink/juice/lemon,
 		/datum/reagent/drink/juice/lime,
 		/datum/reagent/drink/juice/berry,
 	)
+	worth_intrinsic = 350
 
 /obj/item/reagent_synth/drink
 	name = "reagent synthesis module (Soda)"
@@ -121,7 +127,9 @@
 		/datum/reagent/drink/soda/sassafras,
 		/datum/reagent/drink/soda/sarsaparilla,
 		/datum/reagent/drink/soda/gingerale,
+		/datum/reagent/drink/soda/lemon_lime,
 	)
+	worth_intrinsic = 350
 
 /obj/item/reagent_synth/medicine
 	name = "reagent synthesis module (Medicine)"
@@ -155,6 +163,7 @@
 		/datum/reagent/cryoxadone,
 		/datum/reagent/clonexadone,
 	)
+	worth_intrinsic = 4000
 
 /obj/item/reagent_synth/medicine_addon
 	reagents_provided = list(
@@ -167,6 +176,7 @@
 		/datum/reagent/nutriment,
 		/datum/reagent/nutriment/protein
 	)
+	worth_intrinsic = 2000
 
 /obj/item/reagent_synth/bioproduct
 	reagents_provided = list(
@@ -174,6 +184,7 @@
 		/datum/reagent/nutriment/protein,
 		/datum/reagent/drink/milk,
 	)
+	worth_intrinsic = 500
 
 /obj/item/reagent_synth/botanical
 	reagents_provided = list(
@@ -187,3 +198,4 @@
 		/datum/reagent/toxin/plantbgone,
 		/datum/reagent/calcium,
 	)
+	worth_intrinsic = 1000

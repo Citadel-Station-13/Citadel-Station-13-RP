@@ -1,13 +1,13 @@
 /**
  * The root type of complex mobs.
- * 
+ *
  * These mobs have:
  * * organ / bodypart simulation
  * * reagent metabolism
  * * species
  * * virus simulation
  * * and more.
- * 
+ *
  * todo: this should be carbon.dm at some point
  */
 /mob/living/carbon
@@ -17,6 +17,12 @@
 	//* Composition *//
 	/// species - datumized handling of racial intrinsics like health, environmental, breathing, etc. set using set_species() **only**
 	var/datum/species/species
+
+	//* Rendering *//
+	/// keyed overlay storage list
+	/// must map key to an overlay or a list of overlays
+	/// the overlay in question must be an image or a mutable appearance
+	var/list/standing_overlays = list()
 
 	var/list/stomach_contents = list()
 	///var/list/datum/disease2/disease/virus2 = list()

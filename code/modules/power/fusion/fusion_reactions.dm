@@ -125,7 +125,7 @@ var/list/fusion_reactions
 		if(T && (holder.z == T.z))
 			if(istype(mob, /mob/living/carbon/human))
 				var/mob/living/carbon/human/H = mob
-				H.hallucination += rand(100,150)
+				H.adjustHallucination(rand(100,150))
 
 	for(var/obj/machinery/fusion_fuel_injector/I in range(world.view, origin))
 		if(I.cur_assembly && I.cur_assembly.fuel_type == "supermatter")
@@ -143,7 +143,7 @@ var/list/fusion_reactions
 /singleton/fusion_reaction/boron_hydrogen
 	p_react = "boron"
 	s_react = "hydrogen"
-	minimum_energy_level = FUSION_HEAT_CAP * 0.5
+	minimum_energy_level = 78500 //Was unobtainable or rather unsustainable before
 	energy_consumption = 3
 	energy_production = 15
 	radiation = 3
@@ -152,7 +152,7 @@ var/list/fusion_reactions
 /singleton/fusion_reaction/hydrogen_hydrogen
 	p_react = "hydrogen"
 	s_react = "hydrogen"
-	minimum_energy_level = FUSION_HEAT_CAP * 0.75
+	minimum_energy_level = 117000 //So its actually unobtainable even with the new values I swear if engineering makes me add cold fusion I am going to not touch engineering for at least a month
 	energy_consumption = 0
 	energy_production = 20
 	radiation = 5

@@ -40,6 +40,7 @@
 		/datum/shuttle/autodock/overmap/emt,
 		/datum/shuttle/autodock/ferry/supply/cargo,
 		/datum/shuttle/autodock/ferry/belter,
+		/datum/shuttle/autodock/overmap/oldcentury,
 	)
 	full_name = "NSB Atlas"
 	use_overmap = TRUE

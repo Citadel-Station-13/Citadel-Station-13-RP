@@ -1452,6 +1452,13 @@
 	required_reagents = list("whiskey" = 1, "protein" = 1)
 	result_amount = 2
 
+/datum/chemical_reaction/drinks/drymonstertamer
+	name = "Dry Monster Tamer"
+	id = "drymonstertamer"
+	result = "drymonstertamer"
+	required_reagents = list("sassafras" = 1, "protein" = 1)
+	result_amount = 2
+
 /datum/chemical_reaction/drinks/phobos
 	name = "Phobos"
 	id = "phobos"

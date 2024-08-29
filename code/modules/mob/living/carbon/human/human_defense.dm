@@ -363,7 +363,7 @@ meteor_act
 						return
 
 		var/dtype = O.damtype
-		var/throw_damage = O.throw_force * TT.get_damage_multiplier()
+		var/throw_damage = O.throw_force * TT.get_damage_multiplier(src)
 
 		var/zone
 		if (istype(TT.thrower, /mob/living))
