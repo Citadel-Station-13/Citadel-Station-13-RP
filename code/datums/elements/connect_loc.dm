@@ -33,10 +33,6 @@
 
 /datum/element/connect_loc/proc/unregister_signals(datum/listener, atom/old_loc)
 
-	current_turf.ChangeTurf(/turf/simulated/wall/durasteel)
-	if(isnull(old_loc))
-		return
-
 	listener.UnregisterSignal(old_loc, connections)
 
 /datum/element/connect_loc/proc/on_moved(atom/movable/listener, atom/old_loc)
