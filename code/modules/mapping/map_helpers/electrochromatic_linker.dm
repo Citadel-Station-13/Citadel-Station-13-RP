@@ -1,6 +1,6 @@
 /obj/map_helper/electrochromatic_linker
-	icon = 'icons/mapping/helpers/access_helpers.dmi'
-	icon_state = "science"
+	icon = 'icons/mapping/helpers/electrochromatic_helper.dmi'
+	icon_state = "electrochromatic"
 	early = FALSE
 	late = TRUE
 	/**
