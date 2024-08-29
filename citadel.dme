@@ -2168,6 +2168,7 @@
 #include "code\modules\admin\view_variables\topic_list.dm"
 #include "code\modules\admin\view_variables\view_variables.dm"
 #include "code\modules\ai\ai_pathing.dm"
+#include "code\modules\ai\ai_tracking.dm"
 #include "code\modules\ai\holders\ai_holder-movement.dm"
 #include "code\modules\ai\holders\ai_holder-pathfinding.dm"
 #include "code\modules\ai\holders\ai_holder-scheduling.dm"
