@@ -164,6 +164,24 @@
 	name = "Century jump console"
 	shuttle_tag = "Civilian Century Shuttle"
 
+
+///Civilian Century Shuttle
+/area/shuttle/oldcentury
+	requires_power = 1
+	icon_state = "shuttle2"
+	dynamic_lighting = DYNAMIC_LIGHTING_ENABLED
+	area_flags = AREA_RAD_SHIELDED | AREA_FLAG_ERODING
+	sound_env = SMALL_ENCLOSED
+
+/area/shuttle/oldcentury/cockpit
+	name = "Century old Cockpit"
+
+/area/shuttle/oldcentury/main
+	name = "Main Century old Section"
+
+/area/shuttle/oldcentury/wing
+	name = "Century old wing"
+
 //EMT Shuttle
 /datum/shuttle/autodock/overmap/emt
 	name = "Dart EMT Shuttle"

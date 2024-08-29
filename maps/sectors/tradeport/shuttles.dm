@@ -56,8 +56,17 @@
 	shuttle_tag = "Udang Transport Shuttle"
 
 /area/shuttle/udang
-	name = "Udang Transport Shuttle"
-	icon_state = "shuttle"
+	requires_power = 1
+	icon_state = "shuttle2"
+	dynamic_lighting = DYNAMIC_LIGHTING_ENABLED
+	area_flags = AREA_RAD_SHIELDED | AREA_FLAG_ERODING
+	sound_env = SMALL_ENCLOSED
+
+/area/shuttle/udang/cockpit
+	name = "Udang Cockpit"
+
+/area/shuttle/udang/main
+	name = "Udang Main Section"
 
 //Scoophead trade Shuttle
 
@@ -84,9 +93,20 @@
 	shuttle_tag = "Scoophead trade Shuttle"
 
 /area/shuttle/scoophead
-	name = "Scoophead trade Shuttle"
-	icon_state = "shuttle"
+	requires_power = 1
+	icon_state = "shuttle2"
+	dynamic_lighting = DYNAMIC_LIGHTING_ENABLED
+	area_flags = AREA_RAD_SHIELDED | AREA_FLAG_ERODING
+	sound_env = SMALL_ENCLOSED
 
+/area/shuttle/scoophead/cockpit
+	name = "Scoophead Cockpit"
+
+/area/shuttle/scoophead/main
+	name = "Scoophead Trading Section"
+
+/area/shuttle/scoophead/office
+	name = "Scoophead Office"
 //Arrowhead Shuttle
 
 /datum/shuttle/autodock/overmap/trade/arrowhead
@@ -117,8 +137,12 @@
 	shuttle_tag = "Arrowhead Racing Shuttle"
 
 /area/shuttle/arrowhead
-	name = "Arrowhead Racing Shuttle"
-	icon_state = "shuttle"
+	name = "Arrowhead"
+	requires_power = 1
+	icon_state = "shuttle2"
+	dynamic_lighting = DYNAMIC_LIGHTING_ENABLED
+	area_flags = AREA_RAD_SHIELDED | AREA_FLAG_ERODING
+	sound_env = SMALL_ENCLOSED
 
 //Spacena Caravan Shuttle
 
@@ -150,8 +174,12 @@
 	shuttle_tag = "Spacena Caravan Shuttle"
 
 /area/shuttle/caravan
-	name = "Spacena Caravan Shuttle"
-	icon_state = "shuttle"
+	name = "Caravan"
+	requires_power = 1
+	icon_state = "shuttle2"
+	dynamic_lighting = DYNAMIC_LIGHTING_ENABLED
+	area_flags = AREA_RAD_SHIELDED | AREA_FLAG_ERODING
+	sound_env = SMALL_ENCLOSED
 
 //Spacena adventurer Shuttle
 
@@ -178,8 +206,12 @@
 	shuttle_tag = "Spacena Adventurer Shuttle"
 
 /area/shuttle/adventurer
-	name = "Spacena Adventurer Shuttle"
-	icon_state = "shuttle"
+	name = "Adventurer"
+	requires_power = 1
+	icon_state = "shuttle2"
+	dynamic_lighting = DYNAMIC_LIGHTING_ENABLED
+	area_flags = AREA_RAD_SHIELDED | AREA_FLAG_ERODING
+	sound_env = SMALL_ENCLOSED"
 
 //Cargo tug Shuttle
 
@@ -206,8 +238,12 @@
 	shuttle_tag = "Cargo Tug Hauler Shuttle"
 
 /area/shuttle/tug
-	name = "Cargo Tug Hauler Shuttle"
-	icon_state = "shuttle"
+	name = "Tug"
+	requires_power = 1
+	icon_state = "shuttle2"
+	dynamic_lighting = DYNAMIC_LIGHTING_ENABLED
+	area_flags = AREA_RAD_SHIELDED | AREA_FLAG_ERODING
+	sound_env = SMALL_ENCLOSED
 
 //Utility Micro Shuttle
 
@@ -234,8 +270,12 @@
 	shuttle_tag = "Utility Micro Shuttle"
 
 /area/shuttle/utilitymicro
-	name = "Utility Micro Shuttle"
-	icon_state = "shuttle"
+	name = "UMS"
+	requires_power = 1
+	icon_state = "shuttle2"
+	dynamic_lighting = DYNAMIC_LIGHTING_ENABLED
+	area_flags = AREA_RAD_SHIELDED | AREA_FLAG_ERODING
+	sound_env = SMALL_ENCLOSED
 
 //Teshari Runabout
 
@@ -262,5 +302,9 @@
 	shuttle_tag = "Teshari Runabout Shuttle"
 
 /area/shuttle/runabout
-	name = "teshari runabout shuttle"
-	icon_state = "shuttle"
+	name = "Teshari Runabout"
+	requires_power = 1
+	icon_state = "shuttle2"
+	dynamic_lighting = DYNAMIC_LIGHTING_ENABLED
+	area_flags = AREA_RAD_SHIELDED | AREA_FLAG_ERODING
+	sound_env = SMALL_ENCLOSED"
