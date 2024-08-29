@@ -65,6 +65,6 @@
 			if(istype(left_radio))
 				left_radio.talk_into(source, message, null, speech_verb, null)
 			if(istype(right_radio))
-				left_radio.talk_into(source, message, null, speech_verb, null)
+				right_radio.talk_into(source, message, null, speech_verb, null)
 
 		playsound(src, 'sound/items/tts/stopped_type.ogg', 25, TRUE)
