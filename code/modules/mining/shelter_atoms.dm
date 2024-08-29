@@ -108,12 +108,6 @@
 
 //Pod objects
 //Walls
-/turf/simulated/shuttle/wall/voidcraft/survival
-	name = "survival shelter"
-	stripe_color = "#efbc3b"
-
-/turf/simulated/shuttle/wall/voidcraft/survival/hard_corner
-	hard_corner = 1
 
 //Doors
 /obj/machinery/door/airlock/voidcraft/survival_pod
