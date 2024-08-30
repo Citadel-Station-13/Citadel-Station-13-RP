@@ -16,6 +16,11 @@
 
 	var/partialTag = "" //set by a partial tagger the first time round, then put in destinationTag if it goes through again.
 
+/obj/structure/disposalholder/Destroy()
+	QDEL_NULL(gas)
+	active = 0
+	return ..()
+
 // initialize a holder from the contents of a disposal unit
 /obj/structure/disposalholder/proc/init(var/obj/machinery/disposal/D, var/datum/gas_mixture/flush_gas)
 	gas = flush_gas// transfer gas resv. into holder object -- let's be explicit about the data this proc consumes, please.
@@ -127,29 +132,19 @@
 
 // called when player tries to move while in a pipe
 /obj/structure/disposalholder/relaymove(mob/user as mob)
-
 	if(!istype(user,/mob/living))
 		return
 
 	var/mob/living/U = user
-
 	if (U.stat || U.last_special <= world.time)
 		return
-
 	U.last_special = world.time+100
 
-	if (src.loc)
+	if(loc)
 		for (var/mob/M in hearers(src.loc.loc))
 			to_chat(M, "<FONT size=[max(0, 5 - get_dist(src, M))]>CLONG, clong!</FONT>")
-
-	playsound(src.loc, 'sound/effects/clang.ogg', 50, 0, 0)
+		playsound(src, 'sound/effects/clang.ogg', 50, 0, 0)
 
 // called to vent all gas in holder to a location
 /obj/structure/disposalholder/proc/vent_gas(var/atom/location)
 	location.assume_air(gas)  // vent all gas to turf
-	return
-
-/obj/structure/disposalholder/Destroy()
-	QDEL_NULL(gas)
-	active = 0
-	return ..()

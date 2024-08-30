@@ -86,13 +86,7 @@
 // this will be revealed if a T-scanner is used
 // if visible, use regular icon_state
 /obj/structure/disposalpipe/proc/updateicon()
-/*	if(invisibility)	//we hide things with alpha now, no need for transparent icons
-		icon_state = "[base_icon_state]f"
-	else
-		icon_state = base_icon_state*/
 	icon_state = base_icon_state
-	return
-
 
 // expel the held objects into a turf
 // called when there is a break in the pipe
@@ -108,7 +102,6 @@
 			AM.pipe_eject(0)
 		qdel(H)
 		return
-
 
 	if(!T.is_plating() && istype(T,/turf/simulated/floor)) //intact floor, pop the tile
 		var/turf/simulated/floor/F = T

@@ -1,3 +1,4 @@
+// todo: /obj/structure/large_parcel
 /obj/structure/bigDelivery
 	desc = "A big wrapped package."
 	name = "large parcel"
@@ -12,6 +13,18 @@
 	var/label_y
 	var/label_x
 	var/tag_x
+
+/obj/structure/bigDelivery/Destroy()
+	if(wrapped) //sometimes items can disappear. For example, bombs. --rastaf0
+		wrapped.forceMove(get_turf(src))
+		if(istype(wrapped, /obj/structure/closet))
+			var/obj/structure/closet/O = wrapped
+			O.sealed = 0
+		wrapped = null
+	var/turf/T = get_turf(src)
+	for(var/atom/movable/AM in contents)
+		AM.forceMove(T)
+	return ..()
 
 /obj/structure/bigDelivery/attack_hand(mob/user, list/params)
 	unwrap()
@@ -103,15 +116,3 @@
 		. +=  "<span class='notice'>It is labeled \"[sortTag]\"</span>"
 	if(examtext)
 		. += "<span class='notice'>It has a note attached which reads, \"[examtext]\"</span>"
-
-/obj/structure/bigDelivery/Destroy()
-	if(wrapped) //sometimes items can disappear. For example, bombs. --rastaf0
-		wrapped.forceMove(get_turf(src))
-		if(istype(wrapped, /obj/structure/closet))
-			var/obj/structure/closet/O = wrapped
-			O.sealed = 0
-		wrapped = null
-	var/turf/T = get_turf(src)
-	for(var/atom/movable/AM in contents)
-		AM.forceMove(T)
-	return ..()

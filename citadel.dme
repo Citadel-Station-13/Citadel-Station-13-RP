@@ -2903,6 +2903,7 @@
 #include "code\modules\identification\identification.dm"
 #include "code\modules\identification\item_procs.dm"
 #include "code\modules\industry\destination_tagger.dm"
+#include "code\modules\industry\package_wrapper.dm"
 #include "code\modules\industry\conveyors\conveyor.dm"
 #include "code\modules\industry\conveyors\conveyor_switch.dm"
 #include "code\modules\industry\disposals\disposal.dm"
