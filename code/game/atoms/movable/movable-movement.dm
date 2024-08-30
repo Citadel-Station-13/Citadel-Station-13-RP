@@ -278,25 +278,30 @@
 				newtonian_move(direct)
 		moving_diagonally = NOT_IN_DIAG_STEP
 		--in_move
+		// track movement if we're no longer in a move; this way this fires only once for diag steps
+		if(ai_tracking && !in_move)
+			ai_tracking.track_movement(time_since_last_move, . ? direct : NONE)
 		return
 
 	if(!loc || (loc == oldloc && oldloc != newloc))
 		last_move_dir = NONE
 		--in_move
-		ai_tracking?.track_movement(time_since_last_move, NONE)
+		// track movement if we're no longer in a move; this way this fires only once for diag steps
+		if(ai_tracking && !in_move)
+			ai_tracking.track_movement(time_since_last_move, NONE)
 		return FALSE
 
 	//movement failed due to buckled mob(s)
 	if(. && has_buckled_mobs() && !handle_buckled_mob_movement(loc, direct, glide_size_override))
+		last_move_dir = NONE
 		--in_move
-		ai_tracking?.track_movement(time_since_last_move, NONE)
+		// track movement if we're no longer in a move; this way this fires only once for diag steps
+		if(ai_tracking && !in_move)
+			ai_tracking.track_movement(time_since_last_move, NONE)
 		return FALSE
 
 	if(.)
 		Moved(oldloc, direct)
-		ai_tracking?.track_movement(time_since_last_move, direct)
-	else
-		ai_tracking?.track_movement(time_since_last_move, NONE)
 
 	if(. && pulling && pulling == pullee && pulling != moving_from_pull) //we were pulling a thing and didn't lose it during our move.
 		if(pulling.anchored)
@@ -324,6 +329,10 @@
 		set_glide_size(glide_size_override, FALSE)
 
 	--in_move
+
+	// track movement if we're no longer in a move; this way this fires only once for diag steps
+	if(ai_tracking && !in_move)
+		ai_tracking.track_movement(time_since_last_move, direct)
 
 	// legacy
 	move_speed = world.time - l_move_time

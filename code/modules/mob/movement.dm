@@ -537,7 +537,7 @@
   * * we are not restrained
   */
 /mob/proc/canface()
-	if(world.time <= last_turn)
+	if(world.time <= last_self_turn)
 		return FALSE
 	if(stat == DEAD || stat == UNCONSCIOUS)
 		return FALSE

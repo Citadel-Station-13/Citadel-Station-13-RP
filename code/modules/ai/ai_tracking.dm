@@ -22,17 +22,17 @@
 
 	// basic vel x / y immediate ; tracks within a second or two. only useful for current velocity. //
 
+	/// in tiles / second
 	var/imm_vel_x = 0
+	/// in tiles / second
 	var/imm_vel_y = 0
 
 	// average vel x / y ; uses a fast rolling average. use to suppress attempts at baiting shots. //
 
+	/// in tiles / second
 	var/fast_vel_x = 0
+	/// in tiles / second
 	var/fast_vel_y = 0
-
-	// movement volatility ; this is the approximate tile radius you need to aim to hit this person. this is high if they are rapidly dashing back and forth. //
-
-	var/vel_volatile_radius = 0
 
 /datum/ai_tracking/Destroy()
 	if(gc_timerid)
@@ -64,7 +64,28 @@
 			sx = 1
 		if(WEST)
 			sx = -1
+
+	var/imm_old_multiplier = max(0, ((1 SECONDS) - time) / (1 SECONDS))
+	var/imm_new_multiplier = 1 - imm_old_multiplier
+	imm_vel_x = (imm_vel_x) * imm_old_multiplier + sx
+	imm_vel_y = (imm_vel_y) * imm_old_multiplier + sy
+
+	var/fast_old_multiplier = max(0, ((5 SECONDS) - time) / (5 SECONDS))
+	var/fast_new_multiplier = 1 - fast_old_multiplier
+	fast_vel_x = (fast_vel_x) * fast_old_multiplier + sx / 5
+	fast_vel_y = (fast_vel_y) * fast_old_multiplier + sx / 5
+
+
 	#warn impl
+
+	if(usr)
+		to_chat(world, SPAN_NOTICE("imm: [imm_vel_x], [imm_vel_y]; fast: [fast_vel_x], [fast_vel_y]; calc uncert rad: [get_uncertainty_radius()]"))
+
+/**
+ * radius in tiles you have to aim to hit this person from the projected center of their immediate velocity
+ */
+/datum/ai_tracking/proc/get_uncertainty_radius()
+	return sqrt((imm_vel_x - fast_vel_x) ** 2 + (imm_vel_y - fast_vel_y) ** 2)
 
 /**
  * Tells us to flush movement state.
