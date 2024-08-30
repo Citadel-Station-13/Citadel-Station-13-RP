@@ -167,7 +167,7 @@
 	order.comment = "Voucher redemption"
 	order.ordered_at = stationdate2text() + " - " + stationtime2text()
 	order.status = SUP_ORDER_APPROVED		//auto approved
-	order.approved_by = "[src]"
+	order.approved_by = "[user]"
 	order.approved_at = stationdate2text() + " - " + stationtime2text()
 
 	SSsupply.order_history += order//tell supply the order exists.
@@ -224,7 +224,7 @@
 	name = "Laser reflector voucher"
 	desc = "A voucher redeemable, at any NT cargo department, for a single laser reflector."
 	icon_state = "engineering_voucher"
-	redeemable_for = new /datum/supply_pack/nanotrasen/engineering/engine/fusion_fuel_compressor
+	redeemable_for = new /datum/supply_pack/nanotrasen/engineering/reflector
 
 /obj/item/engineering_mystical_tech
 	name = "XYE"
