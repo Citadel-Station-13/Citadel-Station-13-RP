@@ -217,7 +217,7 @@
 	},
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/plating,
-/area/maintenance/research/rnd)
+/area/maintenance/substation/surface_two)
 "alZ" = (
 /obj/item/stool/padded,
 /obj/effect/floor_decal/borderfloor,
@@ -1005,6 +1005,9 @@
 /obj/effect/floor_decal/corner/black/diagonal,
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
+	},
+/obj/effect/floor_decal/spline/plain{
+	dir = 1
 	},
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/lounge)
@@ -3295,6 +3298,9 @@
 /obj/structure/bed/chair/sofa/black/left{
 	dir = 8
 	},
+/obj/machinery/fire_alarm/south_mount{
+	pixel_y = -24
+	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/crew_quarters/bar/lounge)
 "bXx" = (
@@ -3312,6 +3318,13 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/security/armory/blue)
+"bXE" = (
+/obj/effect/floor_decal/corner/black/diagonal,
+/obj/effect/floor_decal/spline/plain{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/dark,
+/area/crew_quarters/lounge)
 "bXR" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
 /obj/structure/cable/green{
@@ -5189,6 +5202,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 9
 	},
+/obj/effect/floor_decal/spline/plain/corner,
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/lounge)
 "drb" = (
@@ -6562,6 +6576,11 @@
 	},
 /turf/simulated/open,
 /area/rift/station/public_garden/gantry)
+"edT" = (
+/obj/effect/floor_decal/corner/black/diagonal,
+/obj/effect/floor_decal/spline/plain/corner,
+/turf/simulated/floor/tiled/dark,
+/area/crew_quarters/lounge)
 "eev" = (
 /obj/structure/railing,
 /obj/structure/railing{
@@ -9956,9 +9975,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 5
 	},
-/obj/machinery/floor_light/changing/prebuilt{
-	on = 1
-	},
+/obj/effect/floor_decal/spline/plain,
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/lounge)
 "gts" = (
@@ -13394,6 +13411,9 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
+/obj/effect/floor_decal/spline/plain{
+	dir = 4
+	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/bar/lounge)
 "iBU" = (
@@ -13499,6 +13519,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 9
 	},
+/obj/effect/floor_decal/spline/plain,
 /turf/simulated/floor/wood,
 /area/crew_quarters/bar/lounge)
 "iFX" = (
@@ -14040,6 +14061,9 @@
 /obj/effect/floor_decal/corner/black/diagonal,
 /obj/structure/table/hardwoodtable,
 /obj/item/reagent_containers/food/drinks/glass2/pitcher,
+/obj/item/reagent_containers/food/drinks/bottle/ambrosia_mead{
+	pixel_x = -1
+	},
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/lounge)
 "iWe" = (
@@ -15661,6 +15685,9 @@
 	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/effect/floor_decal/spline/plain{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/lounge)
 "jYp" = (
@@ -17555,6 +17582,9 @@
 	},
 /obj/structure/cable/green{
 	icon_state = "2-4"
+	},
+/obj/effect/floor_decal/spline/plain/corner{
+	dir = 8
 	},
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/lounge)
@@ -19899,6 +19929,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 6
 	},
+/obj/effect/floor_decal/spline/plain{
+	dir = 1
+	},
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/lounge)
 "mwd" = (
@@ -20581,6 +20614,9 @@
 	dir = 8
 	},
 /obj/effect/floor_decal/corner/black/diagonal,
+/obj/effect/floor_decal/spline/plain{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/lounge)
 "mOm" = (
@@ -20991,6 +21027,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
+/obj/effect/floor_decal/spline/plain/corner,
 /turf/simulated/floor/wood,
 /area/crew_quarters/bar/lounge)
 "mZa" = (
@@ -21227,6 +21264,13 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/holodeck_control)
+"ngJ" = (
+/obj/effect/floor_decal/corner/black/diagonal,
+/obj/effect/floor_decal/spline/plain/corner{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/dark,
+/area/crew_quarters/lounge)
 "ngO" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 10
@@ -21370,6 +21414,9 @@
 	},
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
+	},
+/obj/effect/floor_decal/spline/plain{
+	dir = 4
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/bar/lounge)
@@ -24395,9 +24442,7 @@
 /area/maintenance/dormitory)
 "pdF" = (
 /obj/effect/floor_decal/corner/black/diagonal,
-/obj/machinery/floor_light/changing/prebuilt{
-	on = 1
-	},
+/obj/effect/floor_decal/spline/plain,
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/lounge)
 "pdZ" = (
@@ -24791,6 +24836,7 @@
 	desc = "A commemoration for the greatest of efforts by the 'gratest' of crews. It lists, in rather small print, over a hundred names. You can swear you can spot yours.";
 	name = "\improper Employees of the Venusian Year"
 	},
+/obj/effect/floor_decal/spline/plain,
 /turf/simulated/floor/wood,
 /area/crew_quarters/bar/lounge)
 "pqQ" = (
@@ -29425,8 +29471,8 @@
 	pixel_y = -28
 	},
 /obj/item/deck/tarot,
-/obj/item/reagent_containers/food/drinks/bottle/ambrosia_mead{
-	pixel_x = -1
+/obj/item/toy/eight_ball{
+	pixel_x = 16
 	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/crew_quarters/bar/lounge)
@@ -30599,6 +30645,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
 	},
+/obj/effect/floor_decal/spline/plain/corner{
+	dir = 8
+	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/bar/lounge)
 "thO" = (
@@ -30908,6 +30957,9 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
+/obj/effect/floor_decal/spline/plain{
+	dir = 8
+	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/bar/lounge)
 "tsj" = (
@@ -31117,8 +31169,9 @@
 /obj/structure/sign/goldenplaque{
 	pixel_y = 30;
 	name = "The Least Dutiful of Atlas";
-	desc = "To be Off-duty is not an action or a way of life, but a mental state. Only those with the force of Will strong enough to remain inactive or leave during a crisis, uncaring for friend nor foe, are truly Least Dutiful. Stay Off-duty my friends. Half of the plaque is taken up by a mirror which only turns on after your ID is into view and it is of a certain property."
+	desc = "To be Off-duty is not an action or a way of life, but a mental state. Only those with the force of Will strong enough to remain inactive or leave during a crisis, uncaring for friend nor foe, are truly Least Dutiful. Stay Off-duty my friends. Half of the plaque is taken up by a mirror which only turns on after your ID is in view and is labelled as appropriately off-duty.."
 	},
+/obj/effect/floor_decal/spline/plain,
 /turf/simulated/floor/wood,
 /area/crew_quarters/bar/lounge)
 "tzc" = (
@@ -32963,6 +33016,7 @@
 	desc = " ";
 	pixel_y = 24
 	},
+/obj/effect/floor_decal/spline/plain,
 /turf/simulated/floor/wood,
 /area/crew_quarters/bar/lounge)
 "uNH" = (
@@ -36303,6 +36357,9 @@
 /area/crew_quarters/pool)
 "wVG" = (
 /obj/structure/reagent_dispensers/beerkeg,
+/obj/effect/floor_decal/spline/plain{
+	dir = 8
+	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/bar/lounge)
 "wVX" = (
@@ -49503,10 +49560,10 @@ tqY
 tqY
 rOE
 fIg
-ehE
+edT
 mNW
 mNW
-ehE
+ngJ
 neF
 uuN
 mYN
@@ -49700,7 +49757,7 @@ ehE
 pdF
 tGt
 tGt
-ehE
+bXE
 pgK
 uuN
 pqG
