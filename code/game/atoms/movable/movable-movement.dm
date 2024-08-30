@@ -280,7 +280,7 @@
 		--in_move
 		// track movement if we're no longer in a move; this way this fires only once for diag steps
 		if(ai_tracking && !in_move)
-			ai_tracking.track_movement(time_since_last_move, . ? direct : NONE)
+			ai_tracking.track_movement(time_since_last_move, . ? direct : (moving_diagonally == SECOND_DIAG_STEP ? first_step_dir : NONE))
 		return
 
 	if(!loc || (loc == oldloc && oldloc != newloc))
@@ -593,6 +593,9 @@
 // todo: step x, step y support
 /atom/movable/proc/doMove(atom/destination)
 	. = FALSE
+
+	// completely reset ai tracking
+	ai_tracking?.reset_movement()
 
 	++in_move
 
