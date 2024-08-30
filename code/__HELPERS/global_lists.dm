@@ -740,10 +740,11 @@ var/global/list/xenobio_gold_mobs_hostile = list(
 										/mob/living/simple_mob/animal/sif/savik,
 										/mob/living/simple_mob/animal/sif/shantak,
 //										/mob/living/simple_mob/animal/sif/siffet,
-										/mob/living/simple_mob/animal/space/alien,
+										/mob/living/simple_mob/animal/space/alien/warrior,
 										/mob/living/simple_mob/animal/space/alien/drone,
-										/mob/living/simple_mob/animal/space/alien/sentinel,
-										/mob/living/simple_mob/animal/space/alien/sentinel/praetorian,
+										/mob/living/simple_mob/animal/space/alien/basic_spitter,
+										/mob/living/simple_mob/animal/space/alien/adv_spitter,
+										/mob/living/simple_mob/animal/space/alien/vanguard,
 										/mob/living/simple_mob/animal/space/bats,
 										/mob/living/simple_mob/animal/space/bear,
 										/mob/living/simple_mob/animal/space/carp,
@@ -772,9 +773,6 @@ var/global/list/xenobio_gold_mobs_hostile = list(
 
 //TODO: literally none of these boss mobs exist in code, so I just shoved the aliens and dragon in as a placeholder for now
 var/global/list/xenobio_gold_mobs_bosses = list(
-										/mob/living/simple_mob/animal/space/alien/queen,
-										/mob/living/simple_mob/animal/space/alien/queen/empress,
-										/mob/living/simple_mob/animal/space/alien/queen/empress/mother,
 										/mob/living/simple_mob/vore/aggressive/dragon)
 //										/mob/living/simple_mob/vore/leopardmander,
 //										/mob/living/simple_mob/vore/leopardmander/blue,

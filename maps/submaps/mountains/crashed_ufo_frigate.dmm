@@ -309,11 +309,6 @@
 	},
 /turf/simulated/shuttle/floor/alienplating,
 /area/submap/cave/crashed_ufo_frigate)
-"bs" = (
-/obj/structure/alien/weeds/node,
-/mob/living/simple_mob/animal/space/alien/sentinel/praetorian,
-/turf/simulated/shuttle/floor/alien,
-/area/submap/cave/crashed_ufo_frigate)
 "bt" = (
 /obj/structure/loot_pile/maint/technical,
 /turf/simulated/shuttle/floor/alienplating,
@@ -352,10 +347,6 @@
 "bA" = (
 /obj/item/brokenbug,
 /turf/simulated/mineral/floor/ignore_mapgen,
-/area/submap/cave/crashed_ufo_frigate)
-"bB" = (
-/mob/living/simple_mob/animal/space/alien/sentinel,
-/turf/simulated/shuttle/floor/alien,
 /area/submap/cave/crashed_ufo_frigate)
 "bC" = (
 /obj/structure/prop/alien/computer/camera/flipped{
@@ -801,7 +792,7 @@ bi
 bp
 bn
 ap
-bB
+ap
 ap
 ap
 ap
@@ -963,7 +954,7 @@ bc
 ab
 ap
 ap
-bs
+aR
 aF
 ab
 al
