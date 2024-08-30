@@ -17,8 +17,14 @@
 
 	//* Movement *//
 
-	// last movement record
-	var/movement_record_last
+	// last movement flush
+	var/movement_flush_last
+
+	// basic stores //
+	var/moved_x_fast
+	var/moved_y_fast
+	var/moved_x_slow
+	var/moved_y_slow
 
 	// basic vel x / y immediate ; tracks within a second or two. only useful for current velocity. //
 
@@ -54,7 +60,6 @@
  * * dir - direction of move. if it's just a Move() or otherwie standing still, this is NONE.
  */
 /datum/ai_tracking/proc/track_movement(time, dir)
-	movement_record_last = world.time
 	var/sx
 	var/sy
 	switch(dir)
@@ -79,15 +84,25 @@
 			sy = -1
 			sx = -1
 
-	var/imm_old_multiplier = max(0, ((0.33 SECONDS) - time) / (0.33 SECONDS))
-	var/imm_new_multiplier = 1 - imm_old_multiplier
-	imm_vel_x = (imm_vel_x) * imm_old_multiplier + sx * 3
-	imm_vel_y = (imm_vel_y) * imm_old_multiplier + sy * 3
+	moved_x_fast += sx
+	moved_y_fast += sy
+	moved_x_slow += sx
+	moved_y_slow += sy
+
+	/// tiles / ds
+	var/immediate_speed = 10 / time
+	imm_vel_x = min(immediate_speed, imm_vel_x * 0.5 + immediate_speed * 0.5)
+	imm_vel_y = min(immediate_speed, imm_vel_y * 0.5 + immediate_speed * 0.5)
+
+	// var/imm_old_multiplier = max(0, ((0.33 SECONDS) - time) / (0.33 SECONDS))
+	// var/imm_new_multiplier = 1 - imm_old_multiplier
+	// imm_vel_x = (imm_vel_x) * imm_old_multiplier + sx * 3
+	// imm_vel_y = (imm_vel_y) * imm_old_multiplier + sy * 3
 
 	var/fast_old_multiplier = max(0, ((2 SECONDS) - time) / (2 SECONDS))
 	var/fast_new_multiplier = 1 - fast_old_multiplier
-	fast_vel_x = (fast_vel_x) * fast_old_multiplier + sx / 2
-	fast_vel_y = (fast_vel_y) * fast_old_multiplier + sy / 2
+	fast_vel_x = (fast_vel_x) * fast_old_multiplier + sx
+	fast_vel_y = (fast_vel_y) * fast_old_multiplier + sy
 
 	#warn impl
 
@@ -105,6 +120,7 @@
 /datum/ai_tracking/proc/reset_movement()
 	imm_vel_x = imm_vel_y = 0
 	fast_vel_x = fast_vel_y = 0
+	moved_x_fast = moved_y_fast = moved_y_fast = moved_y_slow = 0
 
 /**
  * Tells us to flush movement state.
@@ -112,9 +128,14 @@
  * * Always call this before checking movement vars.
  */
 /datum/ai_tracking/proc/flush_movement()
-	if(movement_record_last == world.time)
+	if(movement_flush_last == world.time)
 		return
-	track_movement(world.time - movement_record_last, NONE)
+
+	var/elapsed = world.time - movement_flush_last
+
+	// penalize immediate speed
+	imm_vel_x = min(imm_vel_x, 10 / elapsed)
+	imm_vel_y = min(imm_vel_y, 10 / elapsed)
 
 //* /atom/movable API *//
 
