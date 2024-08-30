@@ -13,8 +13,6 @@
 		dpdir = dir | turn(dir, 90) | turn(dir,180)
 	else // pipe-y
 		dpdir = dir | turn(dir,90) | turn(dir, -90)
-	return
-
 
 // next direction to move
 // if coming in from secondary dirs, then next is primary dir

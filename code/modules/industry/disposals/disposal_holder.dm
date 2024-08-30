@@ -16,7 +16,6 @@
 
 	var/partialTag = "" //set by a partial tagger the first time round, then put in destinationTag if it goes through again.
 
-
 // initialize a holder from the contents of a disposal unit
 /obj/structure/disposalholder/proc/init(var/obj/machinery/disposal/D, var/datum/gas_mixture/flush_gas)
 	gas = flush_gas// transfer gas resv. into holder object -- let's be explicit about the data this proc consumes, please.
@@ -50,7 +49,6 @@
 			var/mob/living/silicon/robot/drone/drone = AM
 			src.destinationTag = drone.mail_destination
 
-
 // start the movement process
 // argument is the disposal unit the holder started in
 /obj/structure/disposalholder/proc/start(var/obj/machinery/disposal/D)
@@ -63,8 +61,6 @@
 	setDir(DOWN)
 	spawn(1)
 		move()		// spawn off the movement process
-
-	return
 
 // movement process, persists while holder is moving through pipes
 /obj/structure/disposalholder/proc/move()
@@ -91,9 +87,6 @@
 		//
 		if(!(count--))
 			active = 0
-	return
-
-
 
 // find the turf which should contain the next pipe
 /obj/structure/disposalholder/proc/nextloc()
@@ -120,9 +113,7 @@
 		if(ismob(AM))
 			var/mob/M = AM
 			M.update_perspective()
-
 	qdel(other)
-
 
 /obj/structure/disposalholder/proc/settag(var/new_tag)
 	destinationTag = new_tag
@@ -133,7 +124,6 @@
 		partialTag = ""
 	else
 		partialTag = new_tag
-
 
 // called when player tries to move while in a pipe
 /obj/structure/disposalholder/relaymove(mob/user as mob)

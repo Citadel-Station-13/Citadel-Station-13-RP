@@ -8,4 +8,4 @@
 		dpdir = dir | turn(dir, 180)
 	else
 		dpdir = dir | turn(dir, -90)
-	return
+		

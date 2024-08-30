@@ -38,8 +38,6 @@
 		H.vent_gas(src.loc)
 		qdel(H)
 
-	return
-
 /obj/structure/disposaloutlet/attackby(obj/item/I, mob/user)
 	if(!I || !user)
 		return
