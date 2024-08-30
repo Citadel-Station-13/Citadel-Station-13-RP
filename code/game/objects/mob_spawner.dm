@@ -102,7 +102,7 @@ It also makes it so a ghost wont know where all the goodies/mobs are.
 	if(world.time > last_spawn + spawn_delay)
 		var/turf/mainloc = get_turf(src)
 		for(var/mob/living/A in range(range,mainloc))
-			if ((A.faction != mob_faction) && (A.move_speed < 12))
+			if (((!mob_faction || !A.has_iff_faction(mob_faction))) && (A.move_speed < 12))
 				var/chosen_mob = choose_spawn()
 				if(chosen_mob)
 					do_spawn(chosen_mob)

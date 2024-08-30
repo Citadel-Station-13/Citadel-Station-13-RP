@@ -96,20 +96,3 @@
 	vore_icons = 0
 	vore_digest_chance = 0
 	vore_absorb_chance = 0
-
-// Override stuff for holodeck carp to make them not digest when set to safe!
-/mob/living/simple_mob/animal/space/carp/holographic/init_vore()
-	. = ..()
-	var/safe = (faction == "neutral")
-	for(var/belly in vore_organs)
-		var/obj/belly/B = belly
-		B.digest_mode = safe ? DM_HOLD : vore_default_mode
-
-/mob/living/simple_mob/animal/space/carp/holographic/set_safety(var/safe)
-	. = ..()
-	for(var/belly in vore_organs)
-		var/obj/belly/B = belly
-		B.digest_mode = safe ? DM_HOLD : vore_default_mode
-
-/mob/living/simple_mob/animal/passive/mouse
-	faction = "mouse" //Giving mice a faction so certain mobs can get along with them.

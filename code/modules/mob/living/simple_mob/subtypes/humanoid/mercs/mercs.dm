@@ -54,7 +54,7 @@
 	icon_gib = "syndicate_gib"
 	catalogue_data = list(/datum/category_item/catalogue/fauna/mercenary/human)
 
-	faction = "syndicate"
+	iff_factions = MOB_IFF_FACTION_MERCENARY
 	movement_cooldown = 2
 
 	status_flags = 0
@@ -612,7 +612,7 @@
 	icon_living = "voxpirate"
 	icon_dead = "voxpirate_dead"
 
-	faction = "voxpirate"
+	iff_factions = MOB_IFF_FACTION_PIRATE
 	movement_cooldown = 4
 
 	status_flags = 0

@@ -7,17 +7,43 @@
 #warn should neutral be null?
 
 //? -- Special; These must start with '!' -- ?//
+//?                                          ?//
+//? These are only valid syntax in places    ?//
+//? where you should be using them, aka      ?//
+//? initializers.                            ?//
 
 /// get an arbitrary faction that's the same on a given /datum/map_level
 #define MOB_IFF_FACTION_BIND_TO_LEVEL "!bind-level"
-#warn impl
 /// get an arbitrary faction that's the same on a given /datum/map
 ///
 /// * acts like BIND_TO_LEVEL if there's no parent /datum/map for a /datum/map_level
 #define MOB_IFF_FACTION_BIND_TO_MAP "!bind-map"
-#warn impl
+/// get an arbitrary faction that's the same on a given /datum/map_level for a given key
+///
+/// * GROUP must be a string
+#define MOB_IFF_FACTION_BIND_TO_LEVEL_GROUP(GROUP) list(MOB_IFF_FACTION_BIND_TO_LEVEL = GROUP)
+/// get an arbitrary faction that's the same on a given /datum/map for a given key
+///
+/// * GROUP must be a string
+/// * acts like BIND_TO_LEVEL if there's no parent /datum/map for a /datum/map_level
+#define MOB_IFF_FACTION_BIND_TO_MAP_GROUP list(MOB_IFF_FACTION_BIND_TO_MAP = GROUP)
 
-// todo: "bind to /area"
+// todo: "bind to map template" (?)
+// todo: "bind to /area" (?)
+
+//? Default factions *//
+
+/// mobs have this by default
+///
+/// * this makes a lot of things assume that the mob is nonhostile.
+/// * this should be removed for hostile mobs
+#define MOB_IFF_FACTION_NEUTRAL "neutral"
+/// generic hostile mob faction
+///
+/// * do not check for this; most hostile mobs do not have this
+/// * having FACTION_NEUTRAL is an effect; having this is not, this is just a generic one so the mob has a faction.
+/// * you probably shouldn't even be using this unless you're doing BIND_TO_LEVEL/MAP_GROUP with this.
+#define MOB_IFF_FACTION_HOSTILE "hostile"
 
 //? AI / machine intelligence factions ?//
 
@@ -43,21 +69,27 @@
 /// cats, dogs
 #define MOB_IFF_FACTION_FARM_PET "pet"
 
-/// man's worst enemy
+/// man's worst enemy (spiders)
 #define MOB_IFF_FACTION_SPIDER "spider"
-/// fallout gone wrong - wait what?!
+/// fallout gone wrong - wait what?! (cockroaches)
 #define MOB_IFF_FACTION_ROACH "roach"
-/// biotech gone wrong
+/// biotech gone wrong (genetic horrors)
 #define MOB_IFF_FACTION_MUTANT "mutant"
-/// hydroponics gone wrong
+/// hydroponics gone wrong (literally any hostile plane)
 #define MOB_IFF_FACTION_PLANT "plant"
-/// is this a dune reference???
+/// is this a dune reference??? (space worms)
 #define MOB_IFF_FACTION_WORM "worm"
+/// we're going whaling! (space carps)
+#define MOB_IFF_FACTION_CARP "carp"
+/// the bane of engineering (solargrubs)
+#define MOB_IFF_FACTION_GRUB "grubs"
 
 //? Human factions ?//
 
 #define MOB_IFF_FACTION_MERCENARY "mercenary"
 #define MOB_IFF_FACTION_MERCENARY_GROUP(GROUP) ("mercenary-" + GROUP)
+#define MOB_IFF_FACTION_PIRATE "mercenary"
+#define MOB_IFF_FACTION_PIRATE_GROUP(GROUP) ("mercenary-" + GROUP)
 
 //? Paracausal factions ?//
 

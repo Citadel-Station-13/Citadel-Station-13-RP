@@ -24,7 +24,7 @@
 	gender = NEUTER
 	catalogue_data = list(/datum/category_item/catalogue/fauna/slime)
 
-	faction = "slime" // Note that slimes are hostile to other slimes of different color regardless of faction (unless Unified).
+	iff_factions = MOB_IFF_FACTION_SLIME // Note that slimes are hostile to other slimes of different color regardless of faction (unless Unified).
 	maxHealth = 150
 	movement_cooldown = 0
 	pass_flags = ATOM_PASS_TABLE

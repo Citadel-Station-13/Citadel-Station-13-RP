@@ -30,7 +30,8 @@
 	var/emp_light = 7
 	var/emp_long = 10
 
-	faction = "grubs"
+	iff_factions = MOB_IFF_FACTION_GRUB
+
 	maxHealth = 200 // Tanky fuckers.
 	health = 200 // Tanky fuckers.
 

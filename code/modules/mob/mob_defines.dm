@@ -122,7 +122,7 @@
 	///
 	/// * Do not read directly, use [code/modules/mob/mob-iff.dm] helpers.
 	/// * can be set to a string, or a list of strings.
-	var/iff_factions
+	var/iff_factions = MOB_IFF_FACTION_NEUTRAL
 
 	//! Size
 	//! todo kill this with fire it should just be part of icon_scale_x/y.

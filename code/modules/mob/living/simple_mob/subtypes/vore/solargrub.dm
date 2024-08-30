@@ -35,7 +35,8 @@ GLOBAL_LIST_EMPTY(solargrubs)
 	//var/adult_forms = "/mob/living/simple_mob/vore/solarmoth" // CHOMPEDIT VAR that decides what mob the queen form is. ex /mob/living/simple_mob/subtypes/vore/solarmoth; CitRP: Without lunarmoth, quoted out for fun;
 	// CHOMPEDIT End, Rykka waz here. *pawstamp*
 
-	faction = "grubs"
+	iff_factions = MOB_IFF_FACTION_GRUB
+
 	maxHealth = 50 //grubs can take a lot of harm
 	health = 50
 

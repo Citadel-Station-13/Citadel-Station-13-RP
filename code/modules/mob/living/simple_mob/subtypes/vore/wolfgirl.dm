@@ -8,7 +8,6 @@
 	icon_dead = "wolfgirl-dead"
 	icon = 'icons/mob/vore.dmi'
 
-	faction = "wolfgirl"
 	maxHealth = 30
 	health = 30
 
