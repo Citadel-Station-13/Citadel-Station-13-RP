@@ -2,7 +2,7 @@
 	id = "cardboard"
 	name = "cardboard"
 	stack_type = /obj/item/stack/material/cardboard
-	icon_base = 'icons/turf/walls/solid.dmi'
+	icon_base = 'icons/turf/walls/solid_wall.dmi'
 	icon_reinf = 'icons/turf/walls/reinforced_solid.dmi'
 	icon_colour = "#AAAAAA"
 	ignition_point = T0C+232 //"the temperature at which book-paper catches fire, and burns." close enough

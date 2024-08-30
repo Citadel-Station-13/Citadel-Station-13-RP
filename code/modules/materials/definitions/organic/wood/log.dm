@@ -1,7 +1,7 @@
 /datum/material/wood_log
 	id = "log"
 	name = "log"
-	icon_base = 'icons/turf/walls/log.dmi'
+	icon_base = 'icons/turf/walls/wood_wall.dmi' // TODO: make a log wall sprites
 	stack_type = /obj/item/stack/material/log
 	sheet_singular_name = null
 	sheet_plural_name = "pile"
