@@ -62,9 +62,9 @@
 			var/mob/living/carbon/human/H = source
 			var/obj/item/radio/headset/left_radio = H.l_ear
 			var/obj/item/radio/headset/right_radio = H.r_ear
-			if(istype(left_radio) && (message_mode == "headset" || left_radio.channels[message_mode]))
-				left_radio.talk_into(source, message, null, speech_verb, null)
-			if(istype(right_radio) && (message_mode == "headset" || right_radio.channels[message_mode]))
-				right_radio.talk_into(source, message, null, speech_verb, null)
+			if(istype(left_radio))
+				left_radio.talk_into(source, message, message_mode, speech_verb, null)
+			if(istype(right_radio))
+				right_radio.talk_into(source, message, message_mode, speech_verb, null)
 
 		playsound(src, 'sound/items/tts/stopped_type.ogg', 25, TRUE)
