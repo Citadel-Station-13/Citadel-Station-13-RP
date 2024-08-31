@@ -9,19 +9,19 @@
 /datum/outfit/ashlander/nomad
 	name = "Ashlander - Nomad"
 	belt = /obj/item/material/knife/tacknife/combatknife/bone
-	r_hand = /obj/item/material/twohanded/spear/bone
+	r_hand = /obj/item/material/twohanded/spear/bronze
 
 /datum/outfit/ashlander/craftsman
 	name = "Ashlander - Craftsman"
 	shoes = /obj/item/clothing/shoes/ashwalker
-	belt = /obj/item/pickaxe/bone
+	belt = /obj/item/pickaxe/bronze
 	r_hand = /obj/item/storage/bag/ore/ashlander
 
 /datum/outfit/ashlander/farmer
 	name = "Ashlander - Farmer"
 	shoes = /obj/item/clothing/shoes/ashwalker
 	gloves = /obj/item/clothing/gloves/goliath
-	l_pocket = /obj/item/material/knife/machete/hatchet/bone
+	l_pocket = /obj/item/material/knife/machete/hatchet/bronze
 	r_hand = /obj/item/reagent_containers/glass/stone
 	l_hand = /obj/item/storage/bag/plants/ashlander
 

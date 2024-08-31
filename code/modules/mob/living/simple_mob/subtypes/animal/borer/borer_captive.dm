@@ -54,6 +54,6 @@
 			remove_verb(src, /mob/living/carbon/proc/punish_host)
 			remove_verb(src, /mob/living/carbon/proc/spawn_larvae)
 
-		return
+		return TRUE
 
 	..()

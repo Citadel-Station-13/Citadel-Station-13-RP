@@ -44,7 +44,7 @@
 		var/new_window = new window_full_path(loc)
 		if (spawn_low_wall)
 			new low_wall_path(loc)
-		if(id && istype(window_full_path, /obj/structure/window/reinforced/polarized))
+		if(id && istype(new_window, /obj/structure/window/reinforced/polarized))
 			var/obj/structure/window/reinforced/polarized/P = new_window
 			P.id = id
 	else
