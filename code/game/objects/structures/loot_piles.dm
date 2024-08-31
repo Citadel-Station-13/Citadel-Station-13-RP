@@ -809,6 +809,9 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 /obj/structure/loot_pile/mecha/gygax/dark
 	icon_state = "darkgygax-broken"
 
+/obj/structure/loot_pile/mecha/mimir
+	icon_state = "mimir_wreck"
+
 // Todo: Better loot.
 /obj/structure/loot_pile/mecha/gygax/dark/adv
 	icon_state = "darkgygax_adv-broken"
