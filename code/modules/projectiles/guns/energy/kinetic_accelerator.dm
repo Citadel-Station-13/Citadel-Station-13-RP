@@ -363,17 +363,6 @@
 
 /obj/item/ka_modkit/range/modify_projectile(obj/projectile/kinetic/K)
 	K.range += modifier * WORLD_ICON_SIZE
-
-//Damage
-/obj/item/ka_modkit/damage
-	name = "damage increase"
-	desc = "Increases the damage of kinetic accelerator when installed."
-	modifier = 10
-
-/obj/item/ka_modkit/damage/modify_projectile(obj/projectile/kinetic/K)
-	K.damage += modifier
-
-
 //Cooldown
 /obj/item/ka_modkit/cooldown
 	name = "cooldown decrease"
