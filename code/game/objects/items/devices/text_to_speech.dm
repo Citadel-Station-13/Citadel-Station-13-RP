@@ -58,7 +58,7 @@
 		if(!whispering)
 			linked_user.say_overhead(message, FALSE, MESSAGE_RANGE_COMBAT_LOUD)
 
-		if(ishuman(source) && message_mode == "headset")
+		if(ishuman(source) && (message_mode == "headset" || department_radio_keys[message_mode]))
 			var/mob/living/carbon/human/H = source
 			var/obj/item/radio/headset/left_radio = H.l_ear
 			var/obj/item/radio/headset/right_radio = H.r_ear
