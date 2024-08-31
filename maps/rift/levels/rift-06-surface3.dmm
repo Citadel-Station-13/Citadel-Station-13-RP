@@ -29387,6 +29387,11 @@
 /obj/structure/cable/cyan{
 	icon_state = "2-8"
 	},
+/obj/machinery/light/small{
+	brightness_color = "#da7c02";
+	color = "#da7c02";
+	dir = 4
+	},
 /turf/simulated/floor/tiled/old_tile/blue,
 /area/shuttle/oldcentury/main)
 "ydr" = (

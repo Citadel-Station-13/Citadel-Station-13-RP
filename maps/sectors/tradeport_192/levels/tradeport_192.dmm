@@ -27,8 +27,7 @@
 /area/tradeport/atmospherics)
 "aaf" = (
 /obj/structure/barricade,
-/obj/effect/floor_decal/techfloor,
-/turf/simulated/floor/tiled/old_tile/green,
+/turf/simulated/floor/tiled/old_tile/beige,
 /area/tradeport/commhall)
 "aag" = (
 /obj/structure/cable/green{
@@ -341,7 +340,8 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 1
 	},
-/turf/simulated/floor/tiled/old_tile/green,
+/obj/effect/floor_decal/corner/green/border,
+/turf/simulated/floor/tiled,
 /area/tradeport/commhall)
 "abf" = (
 /obj/machinery/light{
@@ -448,7 +448,10 @@
 	dir = 1
 	},
 /obj/effect/floor_decal/techfloor,
-/turf/simulated/floor/tiled/old_tile/green,
+/obj/effect/floor_decal/corner/green/border{
+	dir = 1
+	},
+/turf/simulated/floor/tiled,
 /area/tradeport/commhall)
 "abB" = (
 /obj/structure/bed/padded,
@@ -1272,7 +1275,7 @@
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
-/turf/simulated/floor/tiled/techfloor/grid,
+/turf/simulated/floor/tiled/old_tile/beige,
 /area/tradeport/commhall)
 "aea" = (
 /obj/structure/cable/yellow{
@@ -2456,11 +2459,8 @@
 /turf/simulated/floor/tiled/old_tile/gray,
 /area/shuttle/trade_ship/general)
 "ahv" = (
-/obj/effect/floor_decal/techfloor{
-	dir = 8
-	},
 /obj/machinery/cryopod/robot/door/gateway,
-/turf/simulated/floor/tiled/old_tile/green,
+/turf/simulated/floor/tiled/old_tile/beige,
 /area/tradeport/commhall)
 "ahw" = (
 /obj/structure/cable/yellow{
@@ -3239,7 +3239,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/turf/simulated/floor/tiled/old_tile/green,
+/turf/simulated/floor/tiled,
 /area/tradeport/comroom)
 "ajA" = (
 /obj/structure/table/steel_reinforced,
@@ -3614,7 +3614,10 @@
 /turf/simulated/floor/carpet/bcarpet,
 /area/tradeport/cyndishow)
 "akD" = (
-/turf/simulated/floor/tiled/old_tile/green,
+/obj/effect/floor_decal/corner/green/border{
+	dir = 1
+	},
+/turf/simulated/floor/tiled,
 /area/tradeport/commhall)
 "akG" = (
 /obj/machinery/door/airlock/multi_tile/glass{
@@ -4377,7 +4380,7 @@
 /area/tradeport/safari)
 "amO" = (
 /obj/structure/inflatable/door,
-/turf/simulated/floor/tiled/old_tile/green,
+/turf/simulated/floor/tiled,
 /area/tradeport/commons)
 "amP" = (
 /obj/machinery/light{
@@ -4783,7 +4786,7 @@
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
 	},
-/turf/simulated/floor/tiled/old_tile/green,
+/turf/simulated/floor/tiled,
 /area/tradeport/commons)
 "aoj" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
@@ -5085,9 +5088,6 @@
 /turf/simulated/floor/wood,
 /area/tradeport/cyndi)
 "api" = (
-/obj/effect/floor_decal/techfloor{
-	dir = 8
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 8
 	},
@@ -5095,7 +5095,7 @@
 	dir = 4
 	},
 /obj/machinery/cryopod/robot/door/gateway,
-/turf/simulated/floor/tiled/old_tile/green,
+/turf/simulated/floor/tiled/old_tile/beige,
 /area/tradeport/commhall)
 "apj" = (
 /turf/simulated/wall/r_wall,
@@ -5160,7 +5160,8 @@
 	info = "WELCOME TO THE NEBULA MOTEL \ TO BUY A PASS, SEEK M4RIA, AT BEHIND THE COUNTER. \ \ We have 9 rooms. \ Room 1 to 4 have a small kitchen, and washing room. \  Room 1 and 4 have 1 Double bed. \2 has 1 single bed \3 have 2 single beds. \ Those rooms are 30 Thrallers the 3 to 5 hours. \ \ Room 5 to 8 have no kitchen, and washing room. \ Room 6 and 8 have 1 Double bed. \ 5 has 1 single bed \ 7 have 2 single beds. \ Those rooms are 15 Thrallers the 3 to 5 hours. \ \  Room 9 is our VIP Suite. This suite has 2 bed rooms, 1 office, 1 fully equipped kitchen, 1 washroom, 1 laundry room, And its own shuttle call the Arrowhead, used by ex Tajaran racer Cheuk'Yager. the suite is 80 Thrallers the 3 to 5 hours. \ \ The Sauna is free to use. The public laundry machine and public bathroom are free to use. Guest pass are available if the rooms are shared.";
 	name = "Nebula Motel"
 	},
-/turf/simulated/floor/tiled/old_tile/green,
+/obj/effect/floor_decal/corner/green/border,
+/turf/simulated/floor/tiled,
 /area/tradeport/commhall)
 "apw" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -5189,6 +5190,9 @@
 /obj/item/gps/internal/base{
 	name = "UtilityMicro beacon";
 	gps_tag = "UTILITY"
+	},
+/obj/machinery/light{
+	dir = 1
 	},
 /turf/simulated/floor/tiled/monotechmaint,
 /area/shuttle/utilitymicro)
@@ -6358,7 +6362,8 @@
 	dir = 1
 	},
 /obj/machinery/camera,
-/turf/simulated/floor/tiled/old_tile/green,
+/obj/effect/floor_decal/corner/green/border,
+/turf/simulated/floor/tiled,
 /area/tradeport/commhall)
 "ate" = (
 /obj/machinery/door/airlock/external/glass{
@@ -6385,22 +6390,23 @@
 /area/tradeport/comroom)
 "ati" = (
 /obj/machinery/door/firedoor,
-/obj/machinery/door/blast/regular{
-	density = 0;
-	dir = 4;
-	icon_state = "pdoor0";
-	id = "adventurer1";
-	name = "Spacenat Caravan Airlock";
-	opacity = 0
-	},
 /obj/machinery/button/remote/blast_door{
 	id = "adventurer1";
 	name = "Adventurer Back Door";
-	pixel_x = 30
+	pixel_x = 30;
+	req_one_access = list(1621)
 	},
 /obj/machinery/door/airlock/hatch{
-	name = "Adventurer Airtight Hatch";
-	req_one_access = list(1621)
+	name = "Caravan Airtight Hatch";
+	req_one_access = null
+	},
+/obj/machinery/door/blast/regular{
+	density = 0;
+	dir = 4;
+	icon_state = "pdoorc0";
+	id = "adventurer1";
+	name = "Spacenat Caravan Airlock";
+	opacity = 0
 	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/shuttle/adventurer)
@@ -6812,7 +6818,10 @@
 /obj/structure/sign/warning/mail_delivery{
 	pixel_y = -32
 	},
-/turf/simulated/floor/tiled/old_tile/green,
+/obj/effect/floor_decal/corner/green/border{
+	dir = 1
+	},
+/turf/simulated/floor/tiled,
 /area/tradeport/commhall)
 "auv" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
@@ -7012,7 +7021,10 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/effect/floor_decal/techfloor,
-/turf/simulated/floor/tiled/old_tile/green,
+/obj/effect/floor_decal/corner/green/border{
+	dir = 1
+	},
+/turf/simulated/floor/tiled,
 /area/tradeport/commhall)
 "auW" = (
 /obj/spawner/window/borosillicate/full/firelocks,
@@ -7079,6 +7091,11 @@
 /area/tradeport/cyndi)
 "ave" = (
 /obj/machinery/door/window,
+/obj/machinery/light{
+	dir = 8;
+	light_range = 12;
+	old_wall = 1
+	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/utilitymicro)
 "avg" = (
@@ -7343,13 +7360,15 @@
 	dir = 4;
 	pixel_y = 9;
 	id = "caravan2";
-	name = "Caravan Front Door"
+	name = "Caravan Front Door";
+	req_one_access = list(1620)
 	},
 /obj/machinery/button/remote/blast_door{
 	dir = 4;
 	pixel_y = -8;
 	id = "caravan1";
-	name = "Caravan Back Door"
+	name = "Caravan Back Door";
+	req_one_access = list(1620)
 	},
 /obj/structure/table/steel_reinforced,
 /turf/simulated/floor/tiled/old_tile/beige,
@@ -7566,7 +7585,8 @@
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
 	},
-/turf/simulated/floor/tiled/old_tile/green,
+/obj/effect/floor_decal/corner/green/border,
+/turf/simulated/floor/tiled,
 /area/tradeport/commhall)
 "awt" = (
 /obj/effect/floor_decal/techfloor{
@@ -7871,7 +7891,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 6
 	},
-/turf/simulated/floor/tiled/old_tile/green,
+/turf/simulated/floor/tiled,
 /area/tradeport/spine)
 "axi" = (
 /obj/structure/bed/chair{
@@ -8810,7 +8830,8 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 1
 	},
-/turf/simulated/floor/tiled/old_tile/green,
+/obj/effect/floor_decal/corner/green/border,
+/turf/simulated/floor/tiled,
 /area/tradeport/commhall)
 "azY" = (
 /obj/machinery/light,
@@ -8865,7 +8886,8 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/turf/simulated/floor/tiled/old_tile/green,
+/obj/effect/floor_decal/corner/green/border,
+/turf/simulated/floor/tiled,
 /area/tradeport/commhall)
 "aAg" = (
 /obj/machinery/door/airlock/glass_external{
@@ -9507,7 +9529,8 @@
 	dir = 1
 	},
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
-/turf/simulated/floor/tiled/old_tile/green,
+/obj/effect/floor_decal/corner/green/border,
+/turf/simulated/floor/tiled,
 /area/tradeport/commhall)
 "aBO" = (
 /obj/structure/cable/yellow{
@@ -9637,13 +9660,15 @@
 	dir = 4;
 	pixel_y = 9;
 	id = "Adventurer2";
-	name = "Adventurer Front Door"
+	name = "Adventurer Front Door";
+	req_one_access = list(1621)
 	},
 /obj/machinery/button/remote/blast_door{
 	dir = 4;
 	pixel_y = -8;
 	id = "adventurer1";
-	name = "Adventurer Back Door"
+	name = "Adventurer Back Door";
+	req_one_access = list(1621)
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/adventurer)
@@ -9808,7 +9833,10 @@
 /obj/effect/floor_decal/techfloor,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/turf/simulated/floor/tiled/old_tile/green,
+/obj/effect/floor_decal/corner/green/border{
+	dir = 1
+	},
+/turf/simulated/floor/tiled,
 /area/tradeport/commhall)
 "aCH" = (
 /obj/structure/bed/chair/bay/chair/padded/teal,
@@ -10000,7 +10028,10 @@
 	req_one_access = list(160)
 	},
 /obj/effect/floor_decal/techfloor,
-/turf/simulated/floor/tiled/old_tile/green,
+/obj/effect/floor_decal/corner/green/border{
+	dir = 1
+	},
+/turf/simulated/floor/tiled,
 /area/tradeport/commhall)
 "aDl" = (
 /obj/effect/floor_decal/industrial/warning{
@@ -11182,7 +11213,8 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/turf/simulated/floor/tiled/old_tile/green,
+/obj/effect/floor_decal/corner/green/border,
+/turf/simulated/floor/tiled,
 /area/tradeport/commhall)
 "aGM" = (
 /obj/structure/window/reinforced{
@@ -11335,7 +11367,8 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 1
 	},
-/turf/simulated/floor/tiled/old_tile/green,
+/obj/effect/floor_decal/corner/green/border,
+/turf/simulated/floor/tiled,
 /area/tradeport/commhall)
 "aHn" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden{
@@ -12080,7 +12113,8 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 1
 	},
-/turf/simulated/floor/tiled/old_tile/green,
+/obj/effect/floor_decal/corner/green/border,
+/turf/simulated/floor/tiled,
 /area/tradeport/commhall)
 "aJH" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
@@ -12331,17 +12365,17 @@
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
 "aKt" = (
+/obj/machinery/door/airlock/hatch{
+	name = "Tug Airtight Hatch";
+	req_one_access = null
+	},
 /obj/machinery/door/blast/regular{
 	density = 0;
 	dir = 4;
-	icon_state = "pdoor0";
+	icon_state = "pdoorc0";
 	id = "tugdoor2";
 	name = "Tug hauler shuttle Airlock";
 	opacity = 0
-	},
-/obj/machinery/door/airlock/hatch{
-	name = "Tug Airtight Hatch";
-	req_one_access = list(1622)
 	},
 /turf/simulated/floor/tiled/monotechmaint,
 /area/shuttle/tug)
@@ -12524,7 +12558,8 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 1
 	},
-/turf/simulated/floor/tiled/old_tile/green,
+/obj/effect/floor_decal/corner/green/border,
+/turf/simulated/floor/tiled,
 /area/tradeport/commhall)
 "aKX" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -12837,7 +12872,7 @@
 /area/tradeport/cyndi)
 "aLT" = (
 /obj/machinery/atmospherics/pipe/simple/hidden,
-/turf/simulated/floor/tiled/old_tile/green,
+/turf/simulated/floor/tiled,
 /area/tradeport/commons)
 "aLX" = (
 /obj/machinery/light{
@@ -13207,7 +13242,10 @@
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
-/turf/simulated/floor/tiled/old_tile/green,
+/obj/effect/floor_decal/corner/green/border{
+	dir = 1
+	},
+/turf/simulated/floor/tiled,
 /area/tradeport/commhall)
 "aMY" = (
 /obj/machinery/door/firedoor{
@@ -13598,8 +13636,7 @@
 /turf/simulated/wall/prepainted,
 /area/shuttle/utilitymicro)
 "aOb" = (
-/obj/effect/floor_decal/techfloor,
-/turf/simulated/floor/tiled/old_tile/green,
+/turf/simulated/floor/tiled/old_tile/beige,
 /area/tradeport/commhall)
 "aOc" = (
 /obj/structure/catwalk,
@@ -13729,22 +13766,23 @@
 /area/tradeport/cafeteria)
 "aOv" = (
 /obj/machinery/door/firedoor,
-/obj/machinery/door/blast/regular{
-	density = 0;
-	dir = 4;
-	icon_state = "pdoor0";
-	id = "Adventurer2";
-	name = "Spacenat Caravan Airlock";
-	opacity = 0
-	},
 /obj/machinery/button/remote/blast_door{
 	id = "Adventurer2";
 	name = "Adventurer Front Door";
-	pixel_x = -26
+	pixel_x = -26;
+	req_one_access = list(1621)
 	},
 /obj/machinery/door/airlock/hatch{
-	name = "Adventurer Airtight Hatch";
-	req_one_access = list(1621)
+	name = "Caravan Airtight Hatch";
+	req_one_access = null
+	},
+/obj/machinery/door/blast/regular{
+	density = 0;
+	dir = 4;
+	icon_state = "pdoorc0";
+	id = "Adventurer2";
+	name = "Spacenat Caravan Airlock";
+	opacity = 0
 	},
 /turf/simulated/floor/plating,
 /area/shuttle/adventurer)
@@ -14152,6 +14190,7 @@
 /obj/structure/panic_button{
 	pixel_y = -28
 	},
+/obj/machinery/light,
 /turf/simulated/floor/tiled/monodark,
 /area/shuttle/runabout)
 "aPP" = (
@@ -14193,7 +14232,7 @@
 /obj/machinery/door/firedoor{
 	req_one_access = list(160)
 	},
-/turf/simulated/floor/tiled/old_tile/green,
+/turf/simulated/floor/tiled,
 /area/tradeport/comroom)
 "aPW" = (
 /obj/machinery/access_button{
@@ -14406,22 +14445,23 @@
 /area/tradeport/cyndishow)
 "aQH" = (
 /obj/machinery/door/firedoor,
-/obj/machinery/door/blast/regular{
-	density = 0;
-	dir = 4;
-	icon_state = "pdoor0";
-	id = "caravan2";
-	name = "Spacenat Caravan Airlock";
-	opacity = 0
-	},
 /obj/machinery/button/remote/blast_door{
 	id = "caravan2";
 	name = "Caravan Front Door";
-	pixel_x = -25
+	pixel_x = -25;
+	req_one_access = list(1620)
 	},
 /obj/machinery/door/airlock/hatch{
 	name = "Caravan Airtight Hatch";
-	req_one_access = list(1620)
+	req_one_access = null
+	},
+/obj/machinery/door/blast/regular{
+	density = 0;
+	dir = 4;
+	icon_state = "pdoorc0";
+	id = "caravan2";
+	name = "Spacenat Caravan Airlock";
+	opacity = 0
 	},
 /turf/simulated/floor/plating,
 /area/shuttle/caravan)
@@ -14660,22 +14700,23 @@
 /area/shuttle/adventurer)
 "aRl" = (
 /obj/machinery/door/firedoor,
-/obj/machinery/door/blast/regular{
-	density = 0;
-	dir = 4;
-	icon_state = "pdoor0";
-	id = "caravan1";
-	name = "Spacenat Caravan Airlock";
-	opacity = 0
-	},
 /obj/machinery/button/remote/blast_door{
 	id = "caravan1";
 	name = "Caravan Back Door";
-	pixel_x = 26
+	pixel_x = 26;
+	req_one_access = list(1620)
 	},
 /obj/machinery/door/airlock/hatch{
 	name = "Caravan Airtight Hatch";
-	req_one_access = list(1620)
+	req_one_access = null
+	},
+/obj/machinery/door/blast/regular{
+	density = 0;
+	dir = 4;
+	icon_state = "pdoorc0";
+	id = "caravan1";
+	name = "Spacenat Caravan Airlock";
+	opacity = 0
 	},
 /turf/simulated/floor/plating,
 /area/shuttle/caravan)
@@ -14816,7 +14857,8 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 1
 	},
-/turf/simulated/floor/tiled/old_tile/green,
+/obj/effect/floor_decal/corner/green/border,
+/turf/simulated/floor/tiled,
 /area/tradeport/commhall)
 "aRE" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -15023,7 +15065,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/turf/simulated/floor/tiled/old_tile/green,
+/obj/effect/floor_decal/corner/green/border{
+	dir = 1
+	},
+/turf/simulated/floor/tiled,
 /area/tradeport/commhall)
 "aSl" = (
 /obj/structure/railing{
@@ -15113,7 +15158,10 @@
 	},
 /obj/structure/cable/yellow,
 /obj/effect/floor_decal/techfloor,
-/turf/simulated/floor/tiled/old_tile/green,
+/obj/effect/floor_decal/corner/green/border{
+	dir = 1
+	},
+/turf/simulated/floor/tiled,
 /area/tradeport/commhall)
 "aSA" = (
 /obj/structure/cable/yellow{
@@ -15246,7 +15294,8 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/turf/simulated/floor/tiled/old_tile/green,
+/obj/effect/floor_decal/corner/green/border,
+/turf/simulated/floor/tiled,
 /area/tradeport/commhall)
 "aSV" = (
 /obj/machinery/embedded_controller/radio/simple_docking_controller{
@@ -15511,7 +15560,10 @@
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
 	},
-/turf/simulated/floor/tiled/old_tile/green,
+/obj/effect/floor_decal/corner/green/border{
+	dir = 1
+	},
+/turf/simulated/floor/tiled,
 /area/tradeport/commhall)
 "aTF" = (
 /obj/machinery/light{
@@ -15576,7 +15628,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 10
 	},
-/turf/simulated/floor/tiled/old_tile/green,
+/turf/simulated/floor/tiled,
 /area/tradeport/spine)
 "aTU" = (
 /obj/effect/floor_decal/industrial/warning{
@@ -16114,13 +16166,10 @@
 /area/tradeport/dock2)
 "aVn" = (
 /obj/structure/barricade,
-/obj/effect/floor_decal/techfloor{
-	dir = 10
-	},
 /obj/machinery/light{
 	light_range = 12
 	},
-/turf/simulated/floor/tiled/old_tile/green,
+/turf/simulated/floor/tiled/old_tile/beige,
 /area/tradeport/commhall)
 "aVo" = (
 /turf/simulated/floor/carpet/patterened/blue,
@@ -16178,7 +16227,7 @@
 /turf/simulated/floor/tiled/monotechmaint,
 /area/tradeport/spine)
 "aVv" = (
-/turf/simulated/floor/tiled/old_tile/green,
+/turf/simulated/floor/tiled,
 /area/tradeport/commons)
 "aVA" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
@@ -16522,7 +16571,7 @@
 	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply,
-/turf/simulated/floor/tiled/techfloor/grid,
+/turf/simulated/floor/tiled/old_tile/beige,
 /area/tradeport/commhall)
 "aWF" = (
 /obj/machinery/door/window/southleft{
@@ -17219,7 +17268,8 @@
 /obj/machinery/atm{
 	pixel_y = 27
 	},
-/turf/simulated/floor/tiled/old_tile/green,
+/obj/effect/floor_decal/corner/green/border,
+/turf/simulated/floor/tiled,
 /area/tradeport/commhall)
 "aYJ" = (
 /obj/structure/railing{
@@ -17524,7 +17574,10 @@
 "aZI" = (
 /obj/machinery/light,
 /obj/effect/floor_decal/techfloor,
-/turf/simulated/floor/tiled/old_tile/green,
+/obj/effect/floor_decal/corner/green/border{
+	dir = 1
+	},
+/turf/simulated/floor/tiled,
 /area/tradeport/commhall)
 "aZK" = (
 /obj/structure/closet/secure_closet/freezer/fridge,
@@ -17794,7 +17847,7 @@
 /obj/effect/floor_decal/industrial/halfstair{
 	dir = 8
 	},
-/turf/simulated/floor/tiled/old_tile/green,
+/turf/simulated/floor/tiled,
 /area/tradeport/commhall)
 "buf" = (
 /obj/structure/bed/chair/sofa/brown/left{
@@ -18462,7 +18515,7 @@
 /obj/effect/floor_decal/industrial/halfstair{
 	dir = 8
 	},
-/turf/simulated/floor/tiled/old_tile/green,
+/turf/simulated/floor/tiled,
 /area/tradeport/commhall)
 "cSl" = (
 /turf/simulated/wall/r_wall,
@@ -18607,7 +18660,8 @@
 	id = "tugdoor2";
 	name = "Tug exit door";
 	pixel_y = 26;
-	pixel_x = -10
+	pixel_x = -10;
+	req_one_access = list(1622)
 	},
 /obj/machinery/embedded_controller/radio/airlock/docking_port{
 	pixel_y = 30;
@@ -18901,7 +18955,10 @@
 /turf/simulated/floor/carpet/turcarpet,
 /area/tradeport/motel)
 "dVV" = (
-/turf/simulated/floor/tiled/old_tile/green,
+/obj/effect/floor_decal/corner/green/border{
+	dir = 1
+	},
+/turf/simulated/floor/tiled,
 /area/tradeport/spine)
 "dWi" = (
 /obj/item/storage/laundry_basket{
@@ -18996,6 +19053,9 @@
 "edB" = (
 /obj/item/modular_computer/console/preset/civilian{
 	dir = 8
+	},
+/obj/machinery/light{
+	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/tug)
@@ -19389,7 +19449,10 @@
 "ffc" = (
 /obj/effect/floor_decal/techfloor,
 /obj/machinery/light,
-/turf/simulated/floor/tiled/old_tile/green,
+/obj/effect/floor_decal/corner/green/border{
+	dir = 1
+	},
+/turf/simulated/floor/tiled,
 /area/tradeport/commhall)
 "fft" = (
 /obj/machinery/vending/coffee,
@@ -19551,7 +19614,8 @@
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
 	},
-/turf/simulated/floor/tiled/old_tile/green,
+/obj/effect/floor_decal/corner/green/border,
+/turf/simulated/floor/tiled,
 /area/tradeport/commhall)
 "fsr" = (
 /obj/structure/table/rack/shelf/steel,
@@ -20436,7 +20500,8 @@
 	pixel_y = 22;
 	req_one_access = list(160)
 	},
-/turf/simulated/floor/tiled/old_tile/green,
+/obj/effect/floor_decal/corner/green/border,
+/turf/simulated/floor/tiled,
 /area/tradeport/commhall)
 "hre" = (
 /obj/effect/floor_decal/corner/blue/border,
@@ -20469,7 +20534,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/turf/simulated/floor/tiled/techfloor/grid,
+/turf/simulated/floor/tiled/old_tile/beige,
 /area/tradeport/commhall)
 "hxG" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/universal,
@@ -21052,6 +21117,14 @@
 /obj/structure/flora/ausbushes/fullgrass,
 /turf/simulated/floor/outdoors/grass/heavy/interior,
 /area/tradeport/safarizoo)
+"jfn" = (
+/obj/machinery/atmospherics/portables_connector,
+/obj/machinery/portable_atmospherics/canister/phoron,
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/monotechmaint,
+/area/shuttle/runabout)
 "jgk" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
 /obj/structure/window/reinforced/polarized{
@@ -21621,18 +21694,18 @@
 /turf/simulated/floor/carpet/bcarpet,
 /area/tradeport/cafeteria)
 "kGq" = (
+/obj/machinery/door/firedoor,
+/obj/machinery/door/airlock/hatch{
+	name = "Caravan Airtight Hatch";
+	req_one_access = null
+	},
 /obj/machinery/door/blast/regular{
 	density = 0;
 	dir = 4;
-	icon_state = "pdoor0";
+	icon_state = "pdoorc0";
 	id = "adventurer1";
 	name = "Spacenat Caravan Airlock";
 	opacity = 0
-	},
-/obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/hatch{
-	name = "Adventurer Airtight Hatch";
-	req_one_access = list(1621)
 	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/shuttle/adventurer)
@@ -21976,21 +22049,22 @@
 /obj/machinery/button/remote/blast_door{
 	id = "Runabout'";
 	name = "Runabout Door";
-	pixel_y = 29
-	},
-/obj/machinery/door/blast/regular{
-	density = 0;
-	icon_state = "pdoor0";
-	id = "Runabout'";
-	name = "Teshari Runabout Airlock";
-	opacity = 0
+	pixel_y = 29;
+	req_one_access = list(1623)
 	},
 /obj/machinery/door/airlock/hatch{
 	name = "Runabout airtight Hatch";
-	req_one_access = list(1623)
+	req_one_access = null
 	},
 /obj/structure/cable/orange{
 	icon_state = "4-8"
+	},
+/obj/machinery/door/blast/regular{
+	density = 0;
+	icon_state = "pdoor1";
+	id = "Runabout'";
+	name = "Teshari Runabout Airlock";
+	opacity = 0
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/runabout)
@@ -22109,7 +22183,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 1
 	},
-/turf/simulated/floor/tiled/old_tile/green,
+/turf/simulated/floor/tiled,
 /area/tradeport/spine)
 "lRr" = (
 /obj/effect/floor_decal/spline/fancy/wood{
@@ -22531,7 +22605,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 9
 	},
-/turf/simulated/floor/tiled/old_tile/green,
+/turf/simulated/floor/tiled,
 /area/tradeport/spine)
 "nfD" = (
 /obj/structure/bed/chair/comfy/black{
@@ -22597,13 +22671,10 @@
 /turf/simulated/floor/wood,
 /area/tradeport/motel)
 "nku" = (
-/obj/effect/floor_decal/techfloor{
-	dir = 1
-	},
 /obj/structure/cable/orange{
 	icon_state = "4-8"
 	},
-/turf/simulated/floor/tiled/old_tile/green,
+/turf/simulated/floor/tiled/old_tile/beige,
 /area/tradeport/commhall)
 "nlv" = (
 /obj/effect/floor_decal/spline/fancy/wood{
@@ -23184,8 +23255,8 @@
 /obj/machinery/door/blast/regular{
 	density = 0;
 	dir = 4;
-	icon_state = "pdoor0";
-	id = "tugdoor1";
+	icon_state = "pdoorc0";
+	id = "tugdoor2";
 	name = "Tug hauler shuttle Airlock";
 	opacity = 0
 	},
@@ -23278,28 +23349,32 @@
 	pixel_y = 7;
 	dir = 8;
 	id = "tugdoor1";
-	name = "Tug Barge door"
+	name = "Tug Barge door";
+	req_one_access = list(1622)
 	},
 /obj/machinery/button/remote/blast_door{
 	pixel_x = 33;
 	pixel_y = -2;
 	dir = 8;
 	id = "Tug2";
-	name = "Tug Air refuel"
+	name = "Tug Air refuel";
+	req_one_access = list(1622)
 	},
 /obj/machinery/button/remote/blast_door{
 	pixel_x = 23;
 	pixel_y = -2;
 	dir = 8;
 	id = "tugdoor2";
-	name = "Tug exit door"
+	name = "Tug exit door";
+	req_one_access = list(1622)
 	},
 /obj/machinery/button/remote/blast_door{
 	pixel_x = 33;
 	pixel_y = 7;
 	dir = 8;
 	id = "Tug1";
-	name = "Tug Refueling port"
+	name = "Tug Refueling port";
+	req_one_access = list(1622)
 	},
 /obj/structure/cable/green{
 	icon_state = "1-2"
@@ -24138,20 +24213,20 @@
 /turf/simulated/floor/tiled/monotechmaint,
 /area/tradeport/spine)
 "rjY" = (
-/obj/machinery/door/blast/regular{
-	density = 0;
-	dir = 4;
-	icon_state = "pdoor0";
-	id = "tugdoor1";
-	name = "Tug hauler shuttle Airlock";
-	opacity = 0
+/obj/structure/cable/green{
+	icon_state = "4-8"
 	},
 /obj/machinery/door/airlock/hatch{
 	name = "Tug Airtight Hatch";
-	req_one_access = list(1622)
+	req_one_access = null
 	},
-/obj/structure/cable/green{
-	icon_state = "4-8"
+/obj/machinery/door/blast/regular{
+	density = 0;
+	dir = 4;
+	icon_state = "pdoorc0";
+	id = "tugdoor2";
+	name = "Tug hauler shuttle Airlock";
+	opacity = 0
 	},
 /turf/simulated/floor/tiled/monotechmaint,
 /area/shuttle/tug)
@@ -24194,6 +24269,13 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/tradeport/motel/room1)
+"rnY" = (
+/obj/effect/floor_decal/techfloor,
+/obj/effect/floor_decal/corner/green/border{
+	dir = 1
+	},
+/turf/simulated/floor/tiled,
+/area/tradeport/commhall)
 "roq" = (
 /obj/structure/curtain/open/shower,
 /obj/machinery/shower{
@@ -24386,7 +24468,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 5
 	},
-/turf/simulated/floor/tiled/old_tile/green,
+/turf/simulated/floor/tiled,
 /area/tradeport/spine)
 "rJv" = (
 /obj/structure/cable/cyan{
@@ -24542,6 +24624,10 @@
 	},
 /turf/simulated/floor/tiled/old_tile/yellow,
 /area/shuttle/udang/cockpit)
+"scC" = (
+/obj/effect/floor_decal/corner/green/border,
+/turf/simulated/floor/tiled,
+/area/tradeport/spine)
 "sda" = (
 /obj/structure/table/woodentable,
 /obj/machinery/photocopier/faxmachine{
@@ -25203,16 +25289,17 @@
 /turf/simulated/floor/carpet/patterened/blue,
 /area/tradeport/motel/arcade)
 "tEl" = (
-/obj/machinery/door/blast/regular{
-	id = "Arrowhead Airlock"
-	},
 /obj/machinery/button/remote/blast_door{
 	id = "Arrowhead Airlock";
-	pixel_x = 25
+	pixel_x = 25;
+	req_one_access = list(1619)
 	},
 /obj/machinery/door/airlock/hatch{
 	name = "Arrowhead Airtight Hatch";
 	req_one_access = list(1619)
+	},
+/obj/machinery/door/blast/regular{
+	id = "Arrowhead Airlock"
 	},
 /obj/structure/cable/orange{
 	icon_state = "1-2"
@@ -25327,6 +25414,9 @@
 /obj/machinery/power/apc/alarms_hidden/north_mount,
 /obj/structure/cable/green{
 	icon_state = "0-2"
+	},
+/obj/machinery/light{
+	dir = 1
 	},
 /turf/simulated/floor/tiled/monodark,
 /area/shuttle/runabout)
@@ -25743,6 +25833,10 @@
 /obj/structure/sign/poster{
 	pixel_x = -32
 	},
+/obj/machinery/light{
+	dir = 8;
+	light_range = 12
+	},
 /turf/simulated/floor/tiled/old_tile/gray,
 /area/shuttle/udang/main)
 "uNt" = (
@@ -25765,15 +25859,12 @@
 /turf/simulated/floor/tiled/dark,
 /area/tradeport/motel/room4)
 "uRa" = (
-/obj/effect/floor_decal/techfloor{
-	dir = 1
-	},
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
 /obj/machinery/camera,
 /obj/structure/cable/orange{
 	icon_state = "4-8"
 	},
-/turf/simulated/floor/tiled/old_tile/green,
+/turf/simulated/floor/tiled/old_tile/beige,
 /area/tradeport/commhall)
 "uSu" = (
 /obj/structure/bed/chair,
@@ -25918,7 +26009,7 @@
 /obj/machinery/door/blast/regular{
 	density = 0;
 	dir = 4;
-	icon_state = "pdoor0";
+	icon_state = "pdoorc0";
 	id = "tugdoor2";
 	name = "Tug hauler shuttle Airlock";
 	opacity = 0
@@ -26178,6 +26269,7 @@
 /obj/structure/cable/green{
 	icon_state = "1-4"
 	},
+/obj/machinery/light,
 /turf/simulated/floor/tiled/monotechmaint,
 /area/shuttle/runabout)
 "vOu" = (
@@ -26404,9 +26496,6 @@
 /turf/simulated/floor/tiled/dark,
 /area/tradeport/motel/room3)
 "wEj" = (
-/obj/effect/floor_decal/techfloor{
-	dir = 9
-	},
 /obj/machinery/light{
 	dir = 1
 	},
@@ -26420,7 +26509,7 @@
 /obj/structure/cable/orange{
 	icon_state = "4-8"
 	},
-/turf/simulated/floor/tiled/old_tile/green,
+/turf/simulated/floor/tiled/old_tile/beige,
 /area/tradeport/commhall)
 "wFk" = (
 /obj/machinery/light/small{
@@ -26444,7 +26533,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/effect/floor_decal/techfloor,
-/turf/simulated/floor/tiled/old_tile/green,
+/turf/simulated/floor/tiled,
 /area/tradeport/spine)
 "wHA" = (
 /obj/structure/bed/chair/sofa/red/corner{
@@ -26965,7 +27054,8 @@
 /obj/machinery/computer/guestpass{
 	pixel_y = 25
 	},
-/turf/simulated/floor/tiled/old_tile/green,
+/obj/effect/floor_decal/corner/green/border,
+/turf/simulated/floor/tiled,
 /area/tradeport/commhall)
 "xLG" = (
 /obj/effect/floor_decal/spline/fancy/wood{
@@ -27158,7 +27248,10 @@
 /obj/structure/cable/orange{
 	icon_state = "5-10"
 	},
-/turf/simulated/floor/tiled/old_tile/green,
+/obj/effect/floor_decal/corner/green/border{
+	dir = 1
+	},
+/turf/simulated/floor/tiled,
 /area/tradeport/commhall)
 "ylo" = (
 /obj/structure/sink/kitchen{
@@ -35981,7 +36074,7 @@ xcH
 equ
 nku
 hwE
-aez
+aOb
 aaf
 aLj
 aYX
@@ -36564,7 +36657,7 @@ eIK
 aJE
 aLY
 gQd
-aOb
+rnY
 aLj
 aYX
 aXS
@@ -36952,7 +37045,7 @@ hHQ
 hqy
 aLY
 gQd
-aOb
+rnY
 avK
 aJp
 akj
@@ -37340,7 +37433,7 @@ vUB
 aSU
 aAC
 uvW
-aOb
+rnY
 aLj
 afj
 aje
@@ -37534,7 +37627,7 @@ gsC
 aJE
 atq
 aez
-aOb
+rnY
 aLj
 aJV
 aje
@@ -37728,7 +37821,7 @@ hHQ
 apt
 aBD
 aez
-aOb
+rnY
 axc
 aDZ
 aJV
@@ -37922,7 +38015,7 @@ hHQ
 azW
 aBD
 aez
-aOb
+rnY
 aKB
 aDZ
 aJV
@@ -38116,7 +38209,7 @@ hHQ
 azW
 aBD
 aez
-aOb
+rnY
 aLj
 aDZ
 aJV
@@ -38310,7 +38403,7 @@ xdV
 aGL
 aBD
 aez
-aOb
+rnY
 aLj
 xkn
 aJV
@@ -38892,7 +38985,7 @@ qcR
 aJE
 aBD
 aez
-aOb
+rnY
 aLj
 aDZ
 aJV
@@ -38910,7 +39003,7 @@ axv
 aLr
 vNr
 aec
-lKh
+jfn
 tqM
 vNG
 nhE
@@ -39086,7 +39179,7 @@ mMr
 aJE
 aBD
 aez
-aOb
+rnY
 afC
 aDZ
 aDZ
@@ -39280,7 +39373,7 @@ nvr
 aJE
 aBD
 aez
-aOb
+rnY
 aLl
 aDZ
 aDZ
@@ -39474,7 +39567,7 @@ guv
 fsb
 oMq
 aez
-aOb
+rnY
 aLj
 xkn
 aDZ
@@ -39668,7 +39761,7 @@ qcR
 act
 tgn
 aez
-aOb
+rnY
 aLj
 afD
 aoA
@@ -39862,7 +39955,7 @@ gbQ
 uEF
 aHS
 aez
-aOb
+rnY
 axX
 aJM
 axX
@@ -40056,7 +40149,7 @@ gbQ
 oYs
 fwn
 aez
-aOb
+rnY
 axX
 aSS
 axX
@@ -41220,7 +41313,7 @@ wKK
 atc
 aBD
 aez
-aOb
+rnY
 azy
 aFp
 azO
@@ -41414,7 +41507,7 @@ wKK
 hqy
 aBD
 aez
-aOb
+rnY
 aoN
 aNj
 aFq
@@ -41802,7 +41895,7 @@ wKK
 aJE
 aBD
 aez
-aOb
+rnY
 aoN
 aLi
 ayw
@@ -42772,7 +42865,7 @@ anq
 aJE
 axl
 aez
-aOb
+rnY
 anq
 acM
 aBC
@@ -43354,7 +43447,7 @@ anq
 aYI
 aJQ
 aez
-aOb
+rnY
 anq
 aLS
 alB
@@ -43742,7 +43835,7 @@ pFw
 aJE
 aJQ
 aez
-aOb
+rnY
 aEZ
 alB
 alB
@@ -44324,7 +44417,7 @@ anq
 aJE
 aJQ
 aez
-aOb
+rnY
 anq
 aer
 axq
@@ -44709,7 +44802,7 @@ alR
 asB
 abc
 ndU
-dVV
+scC
 aAq
 adT
 dVV

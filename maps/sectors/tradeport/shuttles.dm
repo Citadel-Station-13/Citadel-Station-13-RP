@@ -107,6 +107,13 @@
 
 /area/shuttle/scoophead/office
 	name = "Scoophead Office"
+
+/area/shuttle/scoophead/engineering
+	name = "Scoophead Engine Bay"
+
+/area/shuttle/scoophead/main2
+	name = "Scoophead TraderSection"
+
 //Arrowhead Shuttle
 
 /datum/shuttle/autodock/overmap/trade/arrowhead
