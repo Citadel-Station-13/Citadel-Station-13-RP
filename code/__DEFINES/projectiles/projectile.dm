@@ -58,6 +58,10 @@
 /// * this is separate from suppression / silencing projectile-side!
 /// * notably, this is an absolute that should be always obeyed; while things like special round effects can ignore normal suppression.
 #define PROJECTILE_IMPACT_SUPPRESS_MESSAGE (1<<14)		// phasing?
+/// do not process damage normally
+///
+/// * stops generic 'inflict damage instance' from being procced automatically.
+#define PROJECTILE_IMPACT_SKIP_STANDARD_DAMAGE (1<<15)
 
 /// any of these means the projectile should delete immediately
 #define PROJECTILE_IMPACT_FLAGS_SHOULD_DELETE (PROJECTILE_IMPACT_DELETE)
@@ -84,9 +88,14 @@
 //? specific types; projectiles may have one or more of these in addition to the above ?//
 
 /// photonic energy, basically (yes yes lasers are unrealistic i don't care)
-#define PROJECTILE_TYPE_PHOTONIC (1<<23)
+#define PROJECTILE_TYPE_PHOTONIC (1<<22)
 /// exotic energy or exotic matter
-#define PROJECTILE_TYPE_EXOTIC (1<<24)
+#define PROJECTILE_TYPE_EXOTIC (1<<23)
+
+//? special types
+
+/// trace projectile, aka "always let this through shields so stuff knows to fire at it"
+#define PROJECTILE_TYPE_TRACE (1<<24)
 
 DEFINE_BITFIELD_NEW(projectile_types, list(
 	/obj/projectile = list(

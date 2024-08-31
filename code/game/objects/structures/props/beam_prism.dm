@@ -133,7 +133,7 @@
 
 	// todo: this is not the right way; visuals are weird and the raycast is :/
 	proj.physics_kick_forwards(16)
-	proj.set_angle(dir2angle(dir))
+	proj.set_angle(degrees_from_north)
 	return PROJECTILE_IMPACT_REFLECT
 
 /obj/structure/prop/prism/incremental

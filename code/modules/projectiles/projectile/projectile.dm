@@ -59,6 +59,9 @@
 	//* These are applied in additional to mob
 	//* evasion and miss handling! Projectiles should *//
 	//* generally be pretty accurate for that reason. *//
+	//*                                               *//
+	//* All accuracy ranges use **manhattan**         *//
+	//* distance, not euclidean!                      *//
 
 	/// if enabled, projectile-side baymiss is entirely disabled
 	///
@@ -69,7 +72,8 @@
 	///
 	/// * this means the projectile doesn't enforce inaccuracy; not the target!
 	/// * remember that even if a projectile clips a single pixel on a target turf, it hits.
-	var/accuracy_perfect_range = WORLD_ICON_SIZE * 5
+	/// * right now, accuracy is slightly more than it should be due to distance being ticked up post-impact.
+	var/accuracy_perfect_range = WORLD_ICON_SIZE * 7
 	/// linear - accuracy outside of perfect range
 	///
 	/// * [0, 100] inclusive as %
@@ -118,10 +122,8 @@
 	var/hitscan = FALSE
 	/// angle, in degrees **clockwise of north**
 	var/angle
-	/// angle to set to after impact processing.
-	///
-	/// * set instead of [angle] if set_angle is called during impact.
-	var/staged_angle
+	/// multiplier to distance travelled at the **current** [angle] to get it to chebyshev dist
+	var/angle_chebyshev_divisor
 	/// max distance in pixels
 	///
 	/// * please set this to a multiple of [WORLD_ICON_SIZE] so we scale with tile size.
@@ -188,11 +190,18 @@
 	/// the pixel location we're moving to, or the [current_px] after this iteration step
 	///
 	/// * used so stuff like hitscan deflections work based on the actual raycasted collision step, and not the prior step.
+	/// * only valid if [trajectory_moving_to] is set
 	var/next_px
 	/// the pixel location we're moving to, or the [current_px] after this iteration step
 	///
 	/// * used so stuff like hitscan deflections work based on the actual raycasted collision step, and not the prior step.
+	/// * only valid if [trajectory_moving_to] is set
 	var/next_py
+	/// the pixel distance we'll have travelled after the current Move()
+	///
+	/// * use this during impact processing or you'll be off by anywhere from 1 to 32 pixels.
+	/// * only valid if [trajectory_moving_to] is set
+	var/next_distance
 	/// used to track if we got kicked forwards after calling Move()
 	var/trajectory_kick_forwards = 0
 	/// to avoid going too fast when kicked forwards by a mirror, if we overshoot the pixels we're
@@ -1034,7 +1043,9 @@
  *
  * @return hit probability as % in [0, 100]; > 100 is allowed.
  */
-/obj/projectile/proc/process_accuracy(atom/target, target_opinion = 100, distance = distance_travelled, impact_check)
+/obj/projectile/proc/process_accuracy(atom/target, target_opinion = 100, distance, impact_check)
+	if(isnull(distance))
+		distance = (trajectory_moving_to ? next_distance : distance_travelled) * angle_chebyshev_divisor
 	if(accuracy_disabled)
 		return 100
 	. = 100

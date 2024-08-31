@@ -85,7 +85,7 @@
 
 /obj/item/integrated_circuit/time/ticker/Destroy()
 	if(is_running)
-		STOP_PROCESSING(SSfastprocess, src)
+		STOP_PROCESSING(SSprocess_5fps, src)
 	return ..()
 
 /obj/item/integrated_circuit/time/ticker/on_data_written()

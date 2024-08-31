@@ -2,9 +2,9 @@
 	id = "cult"
 	name = "cult"
 	display_name = "disturbing stone"
-	icon_base = 'icons/turf/walls/cult.dmi'
+	icon_base = 'icons/turf/walls/cult_wall.dmi'
 	icon_colour = "#402821"
-	icon_reinf = "reinf_cult"
+	icon_base = 'icons/turf/walls/cult_wall.dmi' // TODO: something because this is dumb
 	shard_type = SHARD_STONE_PIECE
 	sheet_singular_name = "brick"
 	sheet_plural_name = "bricks"

@@ -57,10 +57,10 @@
 	. = ..()
 	if(istype(mover, /obj/projectile))
 		var/obj/projectile/P = mover
-		if(istype(P, /obj/projectile/test)) // Turrets need to try to kill the shield and so their test bullet needs to penetrate.
+		if(P.projectile_type & PROJECTILE_TYPE_TRACE)
 			return TRUE
 
-		if(get_dir(mover, target) & dir)
+		if(!(get_dir(mover, target) & dir))
 			return FALSE
 	return TRUE
 

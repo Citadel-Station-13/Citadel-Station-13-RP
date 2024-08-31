@@ -21,6 +21,9 @@
 	calculated_sdx = calculated_dx == 0? 0 : (calculated_dx > 0? 1 : -1)
 	calculated_sdy = calculated_dy == 0? 0 : (calculated_dy > 0? 1 : -1)
 
+	var/normalized_to_first_quadrant = MODULUS_F(new_angle, 90)
+	angle_chebyshev_divisor = cos(normalized_to_first_quadrant >= 45? (90 - normalized_to_first_quadrant) : normalized_to_first_quadrant)
+
 	// record our tracer's change
 	if(hitscanning)
 		record_hitscan_deflection()
@@ -104,7 +107,8 @@
 			break
 
 		// move forwards by 1 tile length
-		distance_travelled += physics_step(WORLD_ICON_SIZE)
+		var/pixels_moved = physics_step(WORLD_ICON_SIZE)
+		distance_travelled += pixels_moved
 		// if we're being yanked, yield
 		if(movable_flags & MOVABLE_IN_MOVED_YANK)
 			spawn(0)
@@ -302,6 +306,8 @@
 	if(move_to_target)
 		var/atom/old_loc = loc
 		trajectory_moving_to = move_to_target
+		// mark next distance so impact processing can work
+		next_distance = distance_travelled + .
 		if(!Move(move_to_target) && ((loc != move_to_target) || !trajectory_moving_to))
 			// if we don't successfully move, don't change anything, we didn't move.
 			. = 0
