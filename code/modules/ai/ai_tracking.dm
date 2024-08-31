@@ -101,8 +101,8 @@
 
 	var/fast_old_multiplier = max(0, ((2 SECONDS) - time) / (2 SECONDS))
 	var/fast_new_multiplier = 1 - fast_old_multiplier
-	fast_vel_x = (fast_vel_x) * fast_old_multiplier + sx
-	fast_vel_y = (fast_vel_y) * fast_old_multiplier + sy
+	fast_vel_x = (fast_vel_x) * fast_old_multiplier + imm_vel_x * fast_new_multiplier
+	fast_vel_y = (fast_vel_y) * fast_old_multiplier + imm_vel_y * fast_new_multiplier
 
 	#warn impl
 
