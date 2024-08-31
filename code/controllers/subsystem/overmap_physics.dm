@@ -1,3 +1,6 @@
+//* This file is explicitly licensed under the MIT license. *//
+//* Copyright (c) 2024 Citadel Station Developers           *//
+
 SUBSYSTEM_DEF(overmap_physics)
 	name = "Overmap Physics"
 	priority = FIRE_PRIORITY_OVERMAP_PHYSICS

@@ -129,13 +129,13 @@
 /obj/overmap/Crossed(var/obj/overmap/entity/visitable/other)
 	. = ..()
 	if(istype(other))
-		for(var/z in other.map_z)
+		for(var/z in other.get_z_indices())
 			SSparallax.queue_z_vis_update(z)
 
 /obj/overmap/Uncrossed(var/obj/overmap/entity/visitable/other)
 	. = ..()
 	if(istype(other))
-		for(var/z in other.map_z)
+		for(var/z in other.get_z_indices())
 			SSparallax.queue_z_vis_update(z)
 
 /obj/overmap/update_icon()

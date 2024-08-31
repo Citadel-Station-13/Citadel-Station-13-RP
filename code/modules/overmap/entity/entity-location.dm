@@ -10,6 +10,7 @@
  */
 /obj/overmap/entity/proc/get_z_indices()
 	RETURN_TYPE(/list)
+	return location?.get_z_indices()
 
 /**
  * get a random z-level in this entity
@@ -18,6 +19,5 @@
  *
  * @return null if there are none / this is not semantically an entity on a z
  */
-/obj/overmap/entity/proc/get_z_index_random()
-
-#warn impl all
+/obj/overmap/entity/proc/get_random_z_index()
+	return location?.get_random_z_index()

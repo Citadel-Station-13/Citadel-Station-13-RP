@@ -69,12 +69,6 @@ INITIALIZE_IMMEDIATE(/obj/landmark)
 			newplayer_start += loc
 			delete_on_roundstart = 1
 			return
-		if("prisonwarp")
-			prisonwarp += loc
-			delete_on_roundstart = 1
-			return
-		if("Holding Facility")
-			holdingfacility += loc
 		if("tdome1")
 			tdome1 += loc
 		if("tdome2")
