@@ -17,8 +17,8 @@
 
 	//* Movement *//
 
-	// last movement flush
-	var/movement_flush_last
+	// last movement record
+	var/movement_record_last
 
 	// basic stores //
 	var/moved_x_fast
@@ -33,12 +33,16 @@
 	/// in tiles / second
 	var/imm_vel_y = 0
 
+	var/static/imm_vel_multiplier = 0.1
+
 	// average vel x / y ; uses a fast rolling average. use to suppress attempts at baiting shots. //
 
 	/// in tiles / second
 	var/fast_vel_x = 0
 	/// in tiles / second
 	var/fast_vel_y = 0
+
+	var/static/fast_vel_multiplier = 2.5
 
 /datum/ai_tracking/Destroy()
 	if(gc_timerid)
@@ -60,6 +64,10 @@
  * * dir - direction of move. if it's just a Move() or otherwie standing still, this is NONE.
  */
 /datum/ai_tracking/proc/track_movement(time, dir)
+	var/elapsed = world.time - movement_record_last
+	// flush_movement()
+	movement_record_last = world.time
+
 	var/sx
 	var/sy
 	switch(dir)
@@ -91,16 +99,17 @@
 
 	/// tiles / ds
 	var/immediate_speed = 10 / time
-	imm_vel_x = min(immediate_speed, imm_vel_x * 0.5 + immediate_speed * 0.5)
-	imm_vel_y = min(immediate_speed, imm_vel_y * 0.5 + immediate_speed * 0.5)
+	var/imm_vel_inverse = 1 - imm_vel_multiplier
+	imm_vel_x = min(immediate_speed, imm_vel_x * imm_vel_multiplier + immediate_speed * imm_vel_inverse * sx)
+	imm_vel_y = min(immediate_speed, imm_vel_y * imm_vel_multiplier + immediate_speed * imm_vel_inverse * sy)
 
 	// var/imm_old_multiplier = max(0, ((0.33 SECONDS) - time) / (0.33 SECONDS))
 	// var/imm_new_multiplier = 1 - imm_old_multiplier
 	// imm_vel_x = (imm_vel_x) * imm_old_multiplier + sx * 3
 	// imm_vel_y = (imm_vel_y) * imm_old_multiplier + sy * 3
 
-	var/fast_old_multiplier = max(0, ((2 SECONDS) - time) / (2 SECONDS))
-	var/fast_new_multiplier = 1 - fast_old_multiplier
+	var/fast_new_multiplier = clamp(fast_vel_multiplier * (time / 10), 0, 1)
+	var/fast_old_multiplier = clamp(1 - fast_new_multiplier, 0, 1)
 	fast_vel_x = (fast_vel_x) * fast_old_multiplier + imm_vel_x * fast_new_multiplier
 	fast_vel_y = (fast_vel_y) * fast_old_multiplier + imm_vel_y * fast_new_multiplier
 
@@ -128,14 +137,18 @@
  * * Always call this before checking movement vars.
  */
 /datum/ai_tracking/proc/flush_movement()
-	if(movement_flush_last == world.time)
+	if(movement_record_last == world.time)
 		return
 
-	var/elapsed = world.time - movement_flush_last
+	var/elapsed = world.time - movement_record_last
+	movement_record_last = world.time
 
 	// penalize immediate speed
 	imm_vel_x = min(imm_vel_x, 10 / elapsed)
 	imm_vel_y = min(imm_vel_y, 10 / elapsed)
+	// penalize fast speed
+	fast_vel_x = min(fast_vel_x, 20 / elapsed)
+	fast_vel_y = min(fast_vel_y, 20 / elapsed)
 
 //* /atom/movable API *//
 
@@ -159,4 +172,5 @@
 		return
 	if(ai_tracking.last_requested + ai_tracking.gc_timeout > world.time)
 		return
+	deltimer(ai_tracking.gc_timerid)
 	QDEL_NULL(ai_tracking)
