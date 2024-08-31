@@ -406,6 +406,20 @@
 	minebot_exclusive = TRUE
 
 
+//Capacity
+/obj/item/ka_modkit/capacity
+	name = "capacity increase"
+	desc = "A cutdown accelerator frame that increases mod capacity while reducing damage. Not compatible with minebots."
+	modifier = -6
+	cost = -15
+	maximum_of_type = 2
+	minebot_upgrade = FALSE
+	denied_type = /obj/item/ka_modkit/capacity
+
+/obj/item/ka_modkit/capacity/modify_projectile(obj/projectile/kinetic/K)
+	K.damage += modifier
+
+
 //AoE blasts
 /obj/item/ka_modkit/aoe
 	modifier = 0
