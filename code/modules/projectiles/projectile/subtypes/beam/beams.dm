@@ -132,7 +132,8 @@
 	name = "emitter beam"
 	icon_state = "emitter"
 	fire_sound = 'sound/weapons/emitter.ogg'
-	damage = 0 // The actual damage is computed in /code/modules/power/singularity/emitter.dm
+	damage = 40
+	armor_penetration = 70
 	light_color = "#00CC33"
 	excavation_amount = 70 // 3 shots to mine a turf
 
