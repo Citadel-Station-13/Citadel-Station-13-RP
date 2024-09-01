@@ -18,7 +18,8 @@
 	icon_rest = "wah_rest"
 	icon = 'icons/mob/vore.dmi'
 
-	faction = "redpanda" //stop naming stuff vaguely
+	iff_factions = MOB_IFF_FACTION_NEUTRAL
+
 	maxHealth = 30
 	health = 30
 	randomized = TRUE

@@ -462,7 +462,6 @@
 	desc = "A heavily armed cultist with a mirror shield that hurts to look at."
 	icon_state = "cult_elite"
 	icon_living = "cult_elite"
-	faction = "cult"
 	catalogue_data = list(/datum/category_item/catalogue/fauna/cultist/elite)
 
 	status_flags = 0

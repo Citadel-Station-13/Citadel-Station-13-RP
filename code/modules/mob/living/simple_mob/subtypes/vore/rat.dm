@@ -15,7 +15,7 @@
 	icon_living = "rous"
 	icon_dead = "rous-dead"
 	icon_rest = "rous_rest"
-	faction = "mouse"
+	iff_factions = MOB_IFF_FACTION_FARM_PEST
 	icon = 'icons/mob/vore64x32.dmi'
 
 	maxHealth = 150

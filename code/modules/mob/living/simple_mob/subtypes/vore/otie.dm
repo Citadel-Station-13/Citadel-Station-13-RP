@@ -143,11 +143,6 @@
 	health = 200
 	tamed = 1
 	has_eye_glow = TRUE
-	loot_list = list(/obj/item/clothing/glasses/sunglasses/sechud,/obj/item/clothing/suit/armor/vest/alt)
-	vore_pounce_chance = 60 // Good boys don't do too much police brutality.
-
-	var/check_records = 0 // If true, arrests people without a record.
-	var/check_arrest = 1 // If true, arrests people who are set to arrest.
 
 /mob/living/simple_mob/otie/security/phoron
 	name = "mutated guard otie"
@@ -188,34 +183,11 @@
 		playsound(src.loc,'sound/items/eatfood.ogg', rand(10,50), 1)
 		if(!has_polaris_AI())//No autobarf on player control.
 			return
-		if(istype(O, /obj/item/reagent_containers/food/snacks/donut) && istype(src, /mob/living/simple_mob/otie/security))
-			to_chat(user,"<span class='notice'>The guard pup accepts your offer for their catch.</span>")
-			release_vore_contents()
-		else if(prob(2)) //Small chance to get prey out from non-sec oties.
+		if(prob(2)) //Small chance to get prey out from non-sec oties.
 			to_chat(user,"<span class='notice'>The pup accepts your offer for their catch.</span>")
 			release_vore_contents()
 		return
 	. = ..()
-
-/mob/living/simple_mob/otie/security/feed_grabbed_to_self(var/mob/living/user, var/mob/living/prey) // Make the gut start out safe for bellybrigging.
-	if(ishuman(prey))
-		vore_selected.digest_mode = DM_HOLD
-		if(check_threat(prey) >= 4)
-			GLOB.global_announcer.autosay("[src] has detained suspect <b>[target_name(prey)]</b> in <b>[get_area(src)]</b>.", "SmartCollar oversight", "Security")
-	if(istype(prey,/mob/living/simple_mob/animal/passive/mouse))
-		vore_selected.digest_mode = DM_DIGEST
-	. = ..()
-
-/mob/living/simple_mob/otie/security/proc/check_threat(var/mob/living/M)
-	if(!M || !ishuman(M) || M.stat == DEAD || src == M)
-		return 0
-	return M.assess_perp(0, 0, 0, check_records, check_arrest)
-
-/mob/living/simple_mob/otie/security/proc/target_name(mob/living/T)
-	if(ishuman(T))
-		var/mob/living/carbon/human/H = T
-		return H.get_id_name("unidentified person")
-	return "unidentified lifeform"
 
 //Pet 4 friendly
 
