@@ -109,7 +109,7 @@
 	on_created_text = "<span class='notice'>You drag part of The Dark into realspace, enveloping yourself.</span>"
 	on_expired_text = "<span class='warning'>You lose your grasp on The Dark and realspace reasserts itself.</span>"
 	stacks = MODIFIER_STACK_EXTEND
-	var/mob/living/simple_mob/shadekin/my_kin
+	var/mob/living/carbon/human/my_kin
 
 /datum/modifier/crew_shadekin/create_shade/tick()
 	if(my_kin.ability_flags & AB_PHASE_SHIFTED)
