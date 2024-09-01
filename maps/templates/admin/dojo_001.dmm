@@ -30,7 +30,7 @@
 /turf/simulated/floor/carpet,
 /area/space)
 "T" = (
-/turf/simulated/wall/log,
+/turf/simulated/wall/wood/log,
 /area/space)
 "V" = (
 /obj/structure/table/wooden_reinforced,
