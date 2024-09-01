@@ -194,45 +194,32 @@
 
 	if (affected.implants.len)
 
-		var/obj/item/obj = pick(affected.implants)
+		var/obj/item/obj = input("What do you want to extract?") in affected.implants
 
-		if(istype(obj,/obj/item/implant))
-			var/obj/item/implant/imp = obj
-			if (imp.islegal())
-				find_prob +=60
-			else
-				find_prob +=40
+		user.visible_message("<font color=#4F49AF>[user] takes something out of incision on [target]'s [affected.name] with \the [tool]!</font>", \
+		"<font color=#4F49AF>You take [obj] out of incision on [target]'s [affected.name]s with \the [tool]!</font>" )
+		affected.implants -= obj
+
+		target.update_hud_sec_implants()
+
+		//Handle possessive brain borers.
+		if(istype(obj,/mob/living/simple_mob/animal/borer))
+			var/mob/living/simple_mob/animal/borer/worm = obj
+			if(worm.controlling)
+				target.release_control()
+			worm.detatch()
+			worm.leave_host()
 		else
-			find_prob +=50
-
-		if (prob(find_prob))
-			user.visible_message("<font color=#4F49AF>[user] takes something out of incision on [target]'s [affected.name] with \the [tool]!</font>", \
-			"<font color=#4F49AF>You take [obj] out of incision on [target]'s [affected.name]s with \the [tool]!</font>" )
-			affected.implants -= obj
-
-			target.update_hud_sec_implants()
-
-			//Handle possessive brain borers.
-			if(istype(obj,/mob/living/simple_mob/animal/borer))
-				var/mob/living/simple_mob/animal/borer/worm = obj
-				if(worm.controlling)
-					target.release_control()
-				worm.detatch()
-				worm.leave_host()
-			else
-				obj.loc = get_turf(target)
-				obj.add_blood(target)
-				obj.update_icon()
-				if(istype(obj,/obj/item/implant))
-					var/obj/item/implant/imp = obj
-					imp.imp_in = null
-					imp.implanted = 0
-					if(istype(obj, /obj/item/implant/mirror))
-						target.mirror = null
-				else if(istype(tool,/obj/item/nif)){var/obj/item/nif/N = tool;N.unimplant(target)}
-		else
-			user.visible_message("<font color=#4F49AF>[user] removes \the [tool] from [target]'s [affected.name].</font>", \
-			"<font color=#4F49AF>There's something inside [target]'s [affected.name], but you just missed it this time.</font>" )
+			obj.loc = get_turf(target)
+			obj.add_blood(target)
+			obj.update_icon()
+			if(istype(obj,/obj/item/implant))
+				var/obj/item/implant/imp = obj
+				imp.imp_in = null
+				imp.implanted = 0
+				if(istype(obj, /obj/item/implant/mirror))
+					target.mirror = null
+			else if(istype(tool,/obj/item/nif)){var/obj/item/nif/N = tool;N.unimplant(target)}
 	else
 		user.visible_message("<font color=#4F49AF>[user] could not find anything inside [target]'s [affected.name], and pulls \the [tool] out.</font>", \
 		"<font color=#4F49AF>You could not find anything inside [target]'s [affected.name].</font>" )
