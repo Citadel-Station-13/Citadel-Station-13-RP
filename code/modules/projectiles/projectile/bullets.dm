@@ -339,7 +339,6 @@
 	damage = 60
 	penetrating = 1
 	armor_penetration = 60
-	//hitscan = 1 // fuck this shit
 
 /* Miscellaneous */
 
