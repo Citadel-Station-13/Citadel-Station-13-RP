@@ -60,9 +60,6 @@
 	buckle_flags = BUCKLING_NO_USER_BUCKLE_OTHER_TO_SELF
 	buckle_lying = FALSE
 
-	vore_active = TRUE
-	vore_capacity = 1
-	vore_pounce_chance = 15
 	vore_icons = SA_ICON_LIVING | SA_ICON_REST
 	vore_stomach_name = "fuel processor"
 	vore_stomach_flavor = "You have ended up in the fuel processor of this corrupted machine. This place was definitely not designed with safety and comfort in mind. The heated and cramped surroundings oozing potent fluids all over your form, eager to do nothing less than breaking you apart to fuel its rampage for the next few days... hours... minutes? Oh dear..."
@@ -76,8 +73,6 @@
 	icon_living = "prettyboi"
 	icon_dead = "prettyboi-dead"
 	icon_rest = "prettyboi_rest"
-
-	vore_pounce_chance = 40
 
 	attacktext = list("malsnuggled","scrunched","squeezed","assaulted","violated")
 
@@ -95,9 +90,6 @@
 
 	projectiletype = /obj/projectile/beam/sniper
 	projectilesound = 'sound/weapons/gauss_shoot.ogg'
-
-
-	vore_pounce_chance = 0 //It does ranged attacks anyway
 
 	ai_holder_type = /datum/ai_holder/polaris/simple_mob/ranged/sniper
 
@@ -117,12 +109,7 @@
 	projectiletype = /obj/projectile/bullet/rifle/a556
 	projectilesound = 'sound/weapons/Gunshot_light.ogg'
 
-
-	vore_pounce_chance = 0 //It does ranged attacks anyway
-
 	ai_holder_type = /datum/ai_holder/polaris/simple_mob/ranged/kiting
-
-
 
 /mob/living/simple_mob/vore/aggressive/corrupthound/sword
 	name = "fencer hound"
@@ -138,8 +125,6 @@
 	attack_sharp = 1
 	attack_edge = 1
 	attacktext = list("slashed")
-
-	vore_pounce_chance = 0 //No...
 
 /mob/living/simple_mob/vore/aggressive/corrupthound/sword/attackby(var/obj/item/O as obj, var/mob/user as mob)
 	if(O.damage_force)

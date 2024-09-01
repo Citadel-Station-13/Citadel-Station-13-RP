@@ -39,7 +39,6 @@
 	vore_capacity = 2
 	vore_max_size = RESIZE_HUGE
 	vore_min_size = RESIZE_SMALL
-	vore_pounce_chance = 0 // Beat them into crit before eating.
 	vore_icons = SA_ICON_LIVING
 
 /datum/ai_holder/polaris/simple_mob/melee/deathclaw

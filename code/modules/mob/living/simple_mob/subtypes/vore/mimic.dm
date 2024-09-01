@@ -98,7 +98,6 @@
 
 /mob/living/simple_mob/vore/aggressive/mimic
 	vore_active = 1
-	vore_pounce_chance = 10
 	swallowTime = 3 SECONDS
 	vore_capacity = 1
 	vore_default_mode = DM_DIGEST

@@ -39,7 +39,6 @@
 	vore_active = 1
 	vore_bump_chance = 10
 	vore_bump_emote	= "playfully lunges at"
-	vore_pounce_chance = 40
 	vore_default_mode = DM_HOLD
 	vore_icons = SA_ICON_LIVING
 

@@ -63,22 +63,12 @@
 	vore_max_size = RESIZE_TINY
 
 /mob/living/simple_mob/animal/passive/cat/fluff
-	vore_ignores_undigestable = 0
-	vore_pounce_chance = 100
-	vore_digest_chance = 0 // just use the toggle
-	vore_default_mode = DM_HOLD //can use the toggle if you wanna be catfood
-	vore_standing_too = TRUE //gonna get pounced
 
 /mob/living/simple_mob/animal/passive/fox
 	vore_active = 1
 	vore_max_size = RESIZE_TINY
 
 /mob/living/simple_mob/fox/fluff
-	vore_ignores_undigestable = 0
-	vore_pounce_chance = 100
-	vore_digest_chance = 0 // just use the toggle
-	vore_default_mode = DM_HOLD //can use the toggle if you wanna be foxfood
-	vore_standing_too = TRUE // gonna get pounced
 
 /mob/living/simple_mob/animal/space/goose
 	vore_active = 1
