@@ -7,6 +7,7 @@
 /obj/item/melee/transforming/energy
 	armor_penetration = 50
 	atom_flags = NOCONDUCT | NOBLOODY
+	active_via_overlay = TRUE
 
 	var/lrange = 2
 	var/lpower = 2

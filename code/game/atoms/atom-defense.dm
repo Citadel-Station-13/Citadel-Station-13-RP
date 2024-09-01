@@ -426,6 +426,10 @@
  */
 /atom/proc/atom_shieldcall_handle_touch(datum/event_args/actor/clickchain/e_args, contact_flags, contact_specific, fake_attack, shieldcall_flags)
 	SHOULD_NOT_SLEEP(TRUE)
+	// cannot parry yourself
+	if(e_args.performer == src)
+		return shieldcall_flags
+	// send query signal
 	SEND_SIGNAL(src, COMSIG_ATOM_SHIELDCALL_ITERATION, ATOM_SHIELDCALL_ITERATING_TOUCH)
 	. = shieldcall_flags
 	for(var/datum/shieldcall/shieldcall as anything in shieldcalls)
@@ -447,6 +451,10 @@
  */
 /atom/proc/atom_shieldcall_handle_unarmed_melee(datum/unarmed_attack/style, datum/event_args/actor/clickchain/e_args, fake_attack, shieldcall_flags, clickchain_flags)
 	SHOULD_NOT_SLEEP(TRUE)
+	// cannot parry yourself
+	if(e_args.performer == src)
+		return shieldcall_flags
+	// send query signal
 	SEND_SIGNAL(src, COMSIG_ATOM_SHIELDCALL_ITERATION, ATOM_SHIELDCALL_ITERATING_UNARMED_MELEE)
 	. = shieldcall_flags
 	for(var/datum/shieldcall/shieldcall as anything in shieldcalls)
@@ -468,6 +476,10 @@
  */
 /atom/proc/atom_shieldcall_handle_item_melee(obj/item/weapon, datum/event_args/actor/clickchain/e_args, fake_attack, shieldcall_flags, clickchain_flags)
 	SHOULD_NOT_SLEEP(TRUE)
+	// cannot parry yourself
+	if(e_args.performer == src)
+		return shieldcall_flags
+	// send query signal
 	SEND_SIGNAL(src, COMSIG_ATOM_SHIELDCALL_ITERATION, ATOM_SHIELDCALL_ITERATING_ITEM_MELEE)
 	. = shieldcall_flags
 	for(var/datum/shieldcall/shieldcall as anything in shieldcalls)
@@ -488,6 +500,11 @@
  */
 /atom/proc/atom_shieldcall_handle_bullet(list/bullet_act_args, fake_attack, shieldcall_flags)
 	SHOULD_NOT_SLEEP(TRUE)
+	// cannot parry yourself
+	var/obj/projectile/proj = bullet_act_args[BULLET_ACT_ARG_PROJECTILE]
+	if(proj.firer == src && (bullet_act_args[BULLET_ACT_ARG_FLAGS] & PROJECTILE_IMPACT_POINT_BLANK))
+		return shieldcall_flags
+	// send query signal
 	SEND_SIGNAL(src, COMSIG_ATOM_SHIELDCALL_ITERATION, ATOM_SHIELDCALL_ITERATING_BULLET_ACT)
 	. = shieldcall_flags
 	for(var/datum/shieldcall/shieldcall as anything in shieldcalls)
@@ -505,6 +522,10 @@
  */
 /atom/proc/atom_shieldcall_handle_throw_impact(datum/thrownthing/thrown, fake_attack, shieldcall_flags)
 	SHOULD_NOT_SLEEP(TRUE)
+	// cannot parry yourself
+	if(thrown.thrower == src && thrown.dist_travelled <= 1)
+		return shieldcall_flags
+	// send query signal
 	SEND_SIGNAL(src, COMSIG_ATOM_SHIELDCALL_ITERATION, ATOM_SHIELDCALL_ITERATING_THROW_IMPACT)
 	. = shieldcall_flags
 	for(var/datum/shieldcall/shieldcall as anything in shieldcalls)

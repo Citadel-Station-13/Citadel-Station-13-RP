@@ -55,7 +55,7 @@
 
 /obj/item/shield/transforming/energy/on_activate(datum/event_args/actor/actor, silent)
 	. = ..()
-	slot_flags = SLOT_EARS
+	slot_flags = NONE
 	if(!silent)
 		actor.chat_feedback(
 			SPAN_WARNING("You activate \the [src]."),
@@ -65,7 +65,7 @@
 
 /obj/item/shield/transforming/energy/on_deactivate(datum/event_args/actor/actor, silent)
 	. = ..()
-	slot_flags = NONE
+	slot_flags = SLOT_EARS
 	if(!silent)
 		actor.chat_feedback(
 			SPAN_WARNING("You collapse \the [src]."),

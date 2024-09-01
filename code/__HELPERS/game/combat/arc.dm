@@ -7,6 +7,8 @@
  * * This does not support pixel movement.
  * * A null source is always inside defensive arc.
  *
+ * todo: verify behavior.
+ *
  * Attacking entity can be:
  *
  * * /obj/projectile - treated as projectile
@@ -31,7 +33,8 @@
 		// projectile source
 		var/obj/projectile/proj = attacking
 		// projectile angle var is clockwise from north
-		their_angle = proj.angle
+		// turn it around to get the angle from our PoV
+		their_angle = (proj.angle + 180) % 360
 	else
 		// atom-ish source
 		var/atom/atom_source
@@ -46,7 +49,10 @@
 		// if we're rounding up our arc, we boost our arc since it's an atom source to nearest 45
 		if(round_up_arc)
 			arc = CEILING(arc, 45)
-	// get arc resolution
-	return (abs(our_angle - their_angle) % 180) <= arc
+	// normalize it to +- of our angle
+	their_angle -= our_angle
+	if(their_angle > 180)
+		their_angle -= 360
+	return abs(their_angle) <= (arc + 1) // +1 to take into account from % (non-float modulus)
 
 // todo: pixel movement variant for overmaps and others.

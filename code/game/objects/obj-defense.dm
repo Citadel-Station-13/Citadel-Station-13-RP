@@ -39,7 +39,7 @@
 		return CLICKCHAIN_FULL_BLOCKED
 	// todo: maybe the unarmed_style side should handle this?
 	run_damage_instance(
-		style.damage * (clickchain ? clickchain.damage_multiplier : 1),
+		style.get_unarmed_damage(attacker, src) * (clickchain ? clickchain.damage_multiplier : 1),
 		style.damage_type,
 		style.damage_tier,
 		style.damage_flag,

@@ -77,7 +77,7 @@
 	return ..()
 
 /obj/item/melee/transforming/update_icon_state()
-	icon_state = "[initial(icon_state)][active && !active_via_overlay ? "-active" : ""]"
+	icon_state = "[base_icon_state || initial(icon_state)][active && !active_via_overlay ? "-active" : ""]"
 	return ..()
 
 /obj/item/melee/transforming/update_overlays()
