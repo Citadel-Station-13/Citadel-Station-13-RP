@@ -55,7 +55,6 @@
 
 // Activate Noms!
 /mob/living/simple_mob/vore/bee
-	vore_icons = SA_ICON_LIVING
 
 /mob/living/simple_mob/vore/bee/apply_melee_effects(var/atom/A)
 	if(isliving(A))

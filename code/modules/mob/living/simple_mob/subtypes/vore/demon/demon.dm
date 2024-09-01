@@ -37,7 +37,6 @@
 	legacy_melee_damage_upper = 1
 	attacktext = list("clawed")
 
-	vore_icons = SA_ICON_LIVING
 
 	var/shifted_out = FALSE
 	var/shift_state = AB_SHIFT_NONE

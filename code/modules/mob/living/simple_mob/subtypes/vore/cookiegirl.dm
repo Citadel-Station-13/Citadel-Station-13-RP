@@ -20,7 +20,6 @@
 
 	// Activate Noms!
 /mob/living/simple_mob/vore/cookiegirl
-	vore_icons = SA_ICON_LIVING | SA_ICON_REST
 
 /datum/ai_holder/polaris/simple_mob/passive/cookiegirl/on_hear_say(mob/living/speaker, message)
 

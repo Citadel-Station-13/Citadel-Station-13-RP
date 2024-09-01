@@ -35,11 +35,6 @@
 	say_list_type = /datum/say_list/redpanda
 	ai_holder_type = /datum/ai_holder/polaris/simple_mob/passive
 
-// Activate Noms!
-/mob/living/simple_mob/vore/redpanda
-	vore_pounce_chance = 40
-	vore_icons = SA_ICON_LIVING
-
 /mob/living/simple_mob/vore/redpanda/fae
 	name = "dark wah"
 	desc = "Ominous, but still cute!"

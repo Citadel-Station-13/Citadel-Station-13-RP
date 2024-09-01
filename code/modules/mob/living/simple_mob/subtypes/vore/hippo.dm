@@ -55,7 +55,6 @@
 
 // Activate Noms!
 /mob/living/simple_mob/vore/hippo //I don't know why it's in a seperate line but everyone does it so i do it
-	vore_icons = SA_ICON_LIVING
 
 /mob/living/simple_mob/vore/hippo/MouseDroppedOnLegacy(mob/living/M, mob/living/user)
 	return

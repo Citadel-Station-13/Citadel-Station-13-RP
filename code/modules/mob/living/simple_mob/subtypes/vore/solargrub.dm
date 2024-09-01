@@ -129,9 +129,6 @@ GLOBAL_LIST_EMPTY(solargrubs)
 	new chosen_form(get_turf(src))
 	qdel(src)
 
-/mob/living/simple_mob/vore/solargrub //active noms
-	vore_pounce_chance = 0 //grubs only eat incapacitated targets
-
 /mob/living/simple_mob/vore/solargrub/apply_melee_effects(var/atom/A)
 	if(isliving(A))
 		var/mob/living/L = A

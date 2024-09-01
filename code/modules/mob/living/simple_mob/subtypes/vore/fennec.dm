@@ -36,7 +36,6 @@
 
 // Activate Noms!
 /mob/living/simple_mob/vore/fennec
-	vore_icons = SA_ICON_LIVING
 
 /datum/say_list/fennec
 	speak = list("SKREEEE!","Chrp?","Ararrrararr.")

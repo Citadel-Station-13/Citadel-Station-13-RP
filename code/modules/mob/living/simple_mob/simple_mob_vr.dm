@@ -1,15 +1,8 @@
-// Flags for specifying which states we have vore icon_states for.
-#define SA_ICON_LIVING	0x01
-#define SA_ICON_DEAD	0x02
-#define SA_ICON_REST	0x04
-
 /mob/living/simple_mob
 	base_attack_cooldown = 15
 
 	var/temperature_range = 40			// How close will they get to environmental temperature before their body stops changing its heat
 
-	var/vore_fullness = 0				// How "full" the belly is (controls icons)
-	var/vore_icons = 0					// Bitfield for which fields we have vore icons for.
 	var/life_disabled = 0				// For performance reasons
 
 	var/obj/item/radio/headset/mob_headset/mob_radio		//Adminbus headset for simplemob shenanigans.
@@ -24,35 +17,9 @@
 	if(access_card)
 		return access_card
 
-// Update fullness based on size & quantity of belly contents
-/mob/living/simple_mob/proc/update_fullness()
-	var/new_fullness = 0
-	for(var/belly in vore_organs)
-		var/obj/belly/B = belly
-		for(var/mob/living/M in B)
-			new_fullness += M.size_multiplier
-	new_fullness = round(new_fullness, 1) // Because intervals of 0.25 are going to make sprite artists cry.
-	vore_fullness = min(vore_capacity, new_fullness)
-
-/mob/living/simple_mob/update_icon()
-	. = ..()
-	if(vore_active)
-		update_fullness()
-		if(!vore_fullness)
-			return 0
-		else if((stat == CONSCIOUS) && (!icon_rest || !resting || !incapacitated(INCAPACITATION_DISABLED)) && (vore_icons & SA_ICON_LIVING))
-			icon_state = "[icon_living]-[vore_fullness]"
-		else if(stat >= DEAD && (vore_icons & SA_ICON_DEAD))
-			icon_state = "[icon_dead]-[vore_fullness]"
-		else if(((stat == UNCONSCIOUS) || resting || incapacitated(INCAPACITATION_DISABLED) ) && icon_rest && (vore_icons & SA_ICON_REST))
-			icon_state = "[icon_rest]-[vore_fullness]"
-
-/mob/living/simple_mob/proc/will_eat(var/mob/living/M)
-	return FALSE // no more mobvore
-
 /mob/living/simple_mob/death()
 	release_vore_contents()
-	. = ..()
+	return ..()
 
 // Make sure you don't call ..() on this one, otherwise you duplicate work.
 /mob/living/simple_mob/init_vore()

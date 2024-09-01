@@ -38,7 +38,6 @@
 
 // Activate Noms!
 /mob/living/simple_mob/vore/aggressive/dragon
-	vore_icons = SA_ICON_LIVING
 
 /mob/living/simple_mob/vore/aggressive/dragon/virgo3b
 	maxHealth = 200

@@ -60,7 +60,6 @@
 	buckle_flags = BUCKLING_NO_USER_BUCKLE_OTHER_TO_SELF
 	buckle_lying = FALSE
 
-	vore_icons = SA_ICON_LIVING | SA_ICON_REST
 
 	loot_list = list(/obj/item/borg/upgrade/syndicate = 6, /obj/item/borg/upgrade/vtec = 6, /obj/item/material/knife/ritual = 6, /obj/item/disk/nifsoft/compliance = 6)
 

@@ -38,7 +38,6 @@
 
 // Activate Noms!
 /mob/living/simple_mob/vore/aggressive/frog
-	vore_icons = SA_ICON_LIVING
 
 /mob/living/simple_mob/vore/aggressive/frog/space
 	name = "space frog"

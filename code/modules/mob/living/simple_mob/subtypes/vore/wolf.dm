@@ -30,7 +30,6 @@
 
 // Activate Noms!
 /mob/living/simple_mob/animal/wolf
-	vore_icons = SA_ICON_LIVING
 
 
 // Adds Phoron Wolf
