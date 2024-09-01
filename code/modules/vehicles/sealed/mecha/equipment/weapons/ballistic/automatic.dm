@@ -33,7 +33,6 @@
 	fire_sound = 'sound/weapons/Gunshot_cannon.ogg'
 	projectiles = 10 //Mag size
 	projectiles_per_shot = 1
-	deviation = 0.3
 	projectile_energy_cost = 100
 
 /obj/item/mecha_parts/mecha_equipment/weapon/ballistic/lmg/rigged
