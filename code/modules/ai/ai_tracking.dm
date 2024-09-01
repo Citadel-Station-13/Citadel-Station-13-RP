@@ -60,13 +60,15 @@
 /**
  * Tracks movement state
  *
+ * todo: this doesn't support forced movement or anything like that that is faster than a tile second
+ *
  * * time - time since last move
  * * dir - direction of move. if it's just a Move() or otherwie standing still, this is NONE.
  */
 /datum/ai_tracking/proc/track_movement(time, dir)
 	var/elapsed = world.time - movement_record_last
-	// flush_movement()
-	movement_record_last = world.time
+	// flushing changes last record
+	flush_movement()
 
 	var/sx
 	var/sy
