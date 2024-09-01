@@ -91,6 +91,16 @@
 	var/image/creating = image(icon, "[base_icon_state || icon_state]-active")
 	return creating
 
+/obj/item/shield/transforming/proc/build_active_worn_overlay(worn_state)
+	RETURN_TYPE(/image)
+	var/image/creating = image(icon, "[worn_state]-active")
+	return creating
+
+/obj/item/shield/transforming/render_apply_overlays(mutable_appearance/MA, bodytype, inhands, datum/inventory_slot/slot_meta, icon_used)
+	. = ..()
+	if(active_via_overlay && active)
+		MA.overlays += build_active_worn_overlay(MA.icon_state)
+
 /obj/item/melee/transforming/on_attack_self(datum/event_args/actor/e_args)
 	. = ..()
 	if(.)

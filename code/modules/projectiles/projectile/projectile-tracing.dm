@@ -9,15 +9,31 @@
 	damage = 0
 	nodamage = TRUE
 	projectile_type = PROJECTILE_TYPE_TRACE
+
 	/// did we manage to hit the given target?
 	var/could_hit_target = FALSE
 	/// delete on hitting target?
-	var/del_on_success = FALSE
+	var/del_on_success = TRUE
 	/// do we check opacity?
 	var/check_opacity = FALSE
+	/// do we only care about opacity, and not pass flags or anything else?
+	var/only_opacity = FALSE
+	/// do we only need to reach their turf?
+	var/require_turf_only = FALSE
+	/// target turf, if we only require reaching their turf
+	var/turf/require_turf_cached
+
+/obj/projectile/trace/CanPassThrough(atom/blocker, turf/target, blocker_opinion)
+	if(only_opacity && !blocker.opacity)
+		return TRUE
+	return ..()
 
 /obj/projectile/trace/pre_impact(atom/target, impact_flags, def_zone)
 	if(target == original_target)
+		could_hit_target = TRUE
+		if(del_on_success)
+			return PROJECTILE_IMPACT_DELETE
+	if(get_turf(target) == require_turf_cached)
 		could_hit_target = TRUE
 		if(del_on_success)
 			return PROJECTILE_IMPACT_DELETE
@@ -30,23 +46,21 @@
 
 /obj/projectile/trace/Moved()
 	. = ..()
+	if(require_turf_cached == loc)
+		could_hit_target = TRUE
+		if(del_on_success)
+			qdel(src)
+			return
 	if(check_opacity && isturf(loc))
 		// *sigh* //
 		var/turf/T = loc
 		if(T.has_opaque_atom)
 			qdel(src)
 
-/obj/projectile/trace/proc/prepare_trace(atom/target, pass_flags = ATOM_PASS_GLASS | ATOM_PASS_GRILLE | ATOM_PASS_TABLE, check_opacity)
-	src.pass_flags = pass_flags
-	src.original_target = target
-	src.check_opacity = check_opacity
-	src.range = max(src.range, (get_dist(src, target) + 1) * WORLD_ICON_SIZE)
-
 /**
- * Simple trace to see if we could hit a given target
+ * always call this before firing.
  */
-/obj/projectile/trace/proc/simple_trace(atom/target, angle)
-	prepare_trace(target)
-	fire(angle)
-	del_on_success = TRUE
-	return could_hit_target
+/obj/projectile/trace/proc/prepare_trace(atom/target)
+	src.original_target = target
+	if(require_turf_only)
+		src.require_turf_cached = get_turf(target)

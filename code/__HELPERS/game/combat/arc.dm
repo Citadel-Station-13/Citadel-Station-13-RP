@@ -53,6 +53,6 @@
 	their_angle -= our_angle
 	if(their_angle > 180)
 		their_angle -= 360
-	return abs(their_angle) <= (arc + 1) // +1 to take into account from % (non-float modulus)
+	return abs(their_angle) <= arc
 
 // todo: pixel movement variant for overmaps and others.

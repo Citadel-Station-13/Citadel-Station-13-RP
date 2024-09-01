@@ -34,7 +34,7 @@
 	/// drop projectiles sometimes?
 	var/legacy_projectile_damage_drop = TRUE
 	/// divisor to projectile damage before we drop the hit
-	var/legacy_projectile_damage_drop_divisor = 1.3
+	var/legacy_projectile_damage_drop_divisor = 1.6
 
 	activation_sound = 'sound/weapons/saberon.ogg'
 	deactivation_sound = 'sound/weapons/saberoff.ogg'
