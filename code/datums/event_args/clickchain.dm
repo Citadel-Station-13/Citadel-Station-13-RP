@@ -2,6 +2,8 @@
  * used to hold data about a click (melee/ranged/other) action
  *
  * the click may be real or fake.
+ *
+ * * clickchain flags are deliberately not stored in here; you're supposed to modify and return them a ton, so it's inefficient to put it in here.
  */
 /datum/event_args/actor/clickchain
 	/// optional: attack intent
