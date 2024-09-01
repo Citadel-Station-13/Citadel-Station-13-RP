@@ -44,10 +44,6 @@
 // Activate Noms!
 
 /mob/living/simple_mob/otie
-	vore_active = 1
-	vore_capacity = 1
-	vore_pounce_chance = 20
-	vore_icons = SA_ICON_LIVING | SA_ICON_REST
 
 /mob/living/simple_mob/otie/feral //gets the pet2tame feature. starts out hostile tho so get gamblin'
 	name = "mutated feral otie"
@@ -176,18 +172,6 @@
 	desc = "Madame Foster's personal guard dog, Frankie!  It seems he's gotten some new toys, a metal band on his head lets him manipulate objects with the power of his mind!  What do giant dogs even think about all day?"
 	mod_min = 150
 	mod_max = 150
-
-/mob/living/simple_mob/otie/attackby(var/obj/item/O, var/mob/user) // Trade donuts for bellybrig victims.
-	if(istype(O, /obj/item/reagent_containers/food))
-		qdel(O)
-		playsound(src.loc,'sound/items/eatfood.ogg', rand(10,50), 1)
-		if(!has_polaris_AI())//No autobarf on player control.
-			return
-		if(prob(2)) //Small chance to get prey out from non-sec oties.
-			to_chat(user,"<span class='notice'>The pup accepts your offer for their catch.</span>")
-			release_vore_contents()
-		return
-	. = ..()
 
 //Pet 4 friendly
 
