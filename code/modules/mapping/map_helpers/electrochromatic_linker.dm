@@ -12,6 +12,6 @@
 	for(var/obj/structure/window/reinforced/polarized/chromatic_window in loc)
 		chromatic_window.id = id
 	/**
-	 * Same behaviour needs to be applied to polarised airlocks, currently unable too
-	 */
-	return qdel(src)
+	* Same behaviour needs to be applied to polarised airlocks, currently unable too
+	*/
+	qdel(src)
