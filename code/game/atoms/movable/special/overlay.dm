@@ -7,7 +7,6 @@
 
 /atom/movable/overlay/attackby(obj/item/I, mob/user, list/params, clickchain_flags, damage_multiplier)
 	return master.attackby(arglist(args))
-		return src.master.attackby(a, b)
 
 /atom/movable/overlay/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	return master.attack_hand(arglist(args))
