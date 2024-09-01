@@ -103,9 +103,9 @@
  * Tells us to completely drop movement state.
  */
 /datum/ai_tracking/proc/reset_movement()
+	movement_record_last = world.time
 	imm_vel_x = imm_vel_y = 0
 	fast_vel_x = fast_vel_y = 0
-	moved_x_fast = moved_y_fast = moved_y_fast = moved_y_slow = 0
 
 /**
  * Tells us to flush movement state.
