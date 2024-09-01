@@ -180,6 +180,7 @@
 #include "code\__DEFINES\dcs\signals\signals_atom\signals_atom-buckling.dm"
 #include "code\__DEFINES\dcs\signals\signals_atom\signals_atom-context_system.dm"
 #include "code\__DEFINES\dcs\signals\signals_atom\signals_atom-defense.dm"
+#include "code\__DEFINES\dcs\signals\signals_atom\signals_atom-reachability.dm"
 #include "code\__DEFINES\dcs\signals\signals_atom\signals_atom-throwing.dm"
 #include "code\__DEFINES\dcs\signals\signals_atom\signals_atom-tool_system.dm"
 #include "code\__DEFINES\dcs\signals\signals_atom\signals_atom_appearance.dm"
