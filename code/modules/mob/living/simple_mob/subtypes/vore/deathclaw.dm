@@ -35,7 +35,6 @@
 
 // Activate Noms!
 /mob/living/simple_mob/vore/aggressive/deathclaw
-	vore_min_size = RESIZE_SMALL
 	vore_icons = SA_ICON_LIVING
 
 /datum/ai_holder/polaris/simple_mob/melee/deathclaw
