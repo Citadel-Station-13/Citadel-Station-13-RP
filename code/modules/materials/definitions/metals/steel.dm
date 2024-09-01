@@ -2,7 +2,7 @@
 	id = MAT_STEEL
 	name = MAT_STEEL
 	stack_type = /obj/item/stack/material/steel
-	icon_base = 'icons/turf/walls/metal_wall.dmi'
+	icon_base = 'icons/turf/walls/solid_wall.dmi'
 	icon_reinf = 'icons/turf/walls/solid_wall_reinforced.dmi'
 	icon_colour = "#666666"
 	table_icon_base = "metal"
@@ -257,6 +257,12 @@
 		product = /obj/structure/ladder_assembly,
 		cost = 4,
 		time = 3 SECONDS,
+	)
+	. += create_stack_recipe_datum(
+		category = "frames",
+		name = "window tint control frame",
+		product = /obj/item/frame/window_tint_control,
+		cost = 4,
 	)
 
 /datum/material/steel/hull

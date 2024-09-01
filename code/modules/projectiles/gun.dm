@@ -508,11 +508,10 @@
 			P.silenced = silenced
 
 			P.old_style_target(target)
+			play_fire_sound(P = projectile)
 			P.fire()
 
 			last_shot = world.time
-
-			play_fire_sound()
 
 			if(muzzle_flash)
 				set_light(muzzle_flash)
@@ -714,9 +713,9 @@
 		return
 
 	if(silenced)
-		playsound(user, shot_sound, 10, 1)
+		playsound(src, shot_sound, 10, 1)
 	else
-		playsound(user, shot_sound, 50, 1)
+		playsound(src, shot_sound, 50, 1)
 
 //Suicide handling.
 /obj/item/gun/var/mouthshoot = 0 //To stop people from suiciding twice... >.>

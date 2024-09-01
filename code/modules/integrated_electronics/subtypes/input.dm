@@ -106,14 +106,19 @@
 	outputs = list(
 		"registered name" = IC_PINTYPE_STRING,
 		"assignment" = IC_PINTYPE_STRING,
-		"passkey" = IC_PINTYPE_STRING
+		"passkey" = IC_PINTYPE_STRING,
+		"rank" = IC_PINTYPE_STRING
 	)
 	activators = list(
 		"on read" = IC_PINTYPE_PULSE_OUT
 	)
 
 /obj/item/integrated_circuit/input/card_reader/attackby_react(obj/item/I, mob/living/user, intent)
-	var/obj/item/card/id/card = I.GetIdCard()
+	var/obj/item/card/id/card
+	if(istype(I,/obj/item/card/id))
+		card = I
+	else
+		card = I.GetIdCard()
 	var/list/access = I.GetAccess()
 	var/json_access = json_encode(access)
 	var/passkey = add_data_signature(json_access)
@@ -121,11 +126,12 @@
 	if(card) // An ID card.
 		set_pin_data(IC_OUTPUT, 1, card.registered_name)
 		set_pin_data(IC_OUTPUT, 2, card.assignment)
+		set_pin_data(IC_OUTPUT, 4, card.rank)
 
 	else if(length(access))	// A non-card object that has access levels.
 		set_pin_data(IC_OUTPUT, 1, null)
 		set_pin_data(IC_OUTPUT, 2, null)
-
+		set_pin_data(IC_OUTPUT, 4, null)
 	else
 		return FALSE
 
@@ -360,6 +366,7 @@
 	spawn_flags = IC_SPAWN_RESEARCH
 	origin_tech = list(TECH_ENGINEERING = 3, TECH_DATA = 3, TECH_BIO = 4)
 	power_draw_per_use = 80
+	cooldown_per_use = 50
 
 /obj/item/integrated_circuit/input/examiner/do_work(ord)
 	if(ord == 1)

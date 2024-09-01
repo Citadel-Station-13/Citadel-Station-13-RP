@@ -2,7 +2,7 @@
 	name = "alien machine"
 	desc = "It's some kind of pod with strange wires and gadgets all over it."
 	icon = 'icons/obj/xenoarchaeology.dmi'
-	icon_state = "borgcharger0(old)"
+	icon_state = "replicator"
 	density = TRUE
 
 	idle_power_usage = 100

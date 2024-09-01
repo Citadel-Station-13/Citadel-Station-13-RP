@@ -1502,7 +1502,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 	if (istype(AM, /mob/living))
 		var/mob/living/M = AM
 
-		if(M.slip("the PDA",8) && M.real_name != src.owner && istype(src.cartridge, /obj/item/cartridge/clown))
+		if(M.slip_act(SLIP_CLASS_LUBRICANT, src, 5, 5) > 0 && M.real_name != src.owner && istype(src.cartridge, /obj/item/cartridge/clown))
 			if(src.cartridge.charges < 5)
 				src.cartridge.charges++
 

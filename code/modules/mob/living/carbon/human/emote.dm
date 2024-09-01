@@ -163,6 +163,102 @@
 			message = "roars!"
 			m_type = 2
 
+		if("xhiss2")
+			if(src.species.get_species_id() != SPECIES_ID_XENOHYBRID)
+				to_chat(src, "<span class='warning'>You aren't alien enough!</span>")
+				return
+			playsound(src.loc, 'sound/voice/xenos/xhiss2.ogg', 50, 0)
+			message = "hisses!"
+			m_type = 2
+
+		if("xhiss3")
+			if(src.species.get_species_id() != SPECIES_ID_XENOHYBRID)
+				to_chat(src, "<span class='warning'>You aren't alien enough!</span>")
+				return
+			playsound(src.loc, 'sound/voice/xenos/xhiss3.ogg', 50, 0)
+			message = "hisses!"
+			m_type = 2
+
+		if("xhiss4")
+			if(src.species.get_species_id() != SPECIES_ID_XENOHYBRID)
+				to_chat(src, "<span class='warning'>You aren't alien enough!</span>")
+				return
+			playsound(src.loc, 'sound/voice/xenos/xhiss4.ogg', 50, 0)
+			message = "hisses!"
+			m_type = 2
+
+		if("xhiss5")
+			if(src.species.get_species_id() != SPECIES_ID_XENOHYBRID)
+				to_chat(src, "<span class='warning'>You aren't alien enough!</span>")
+				return
+			playsound(src.loc, 'sound/voice/xenos/xhiss5.ogg', 50, 0)
+			message = "hisses!"
+			m_type = 2
+
+		if("xhiss6")
+			if(src.species.get_species_id() != SPECIES_ID_XENOHYBRID)
+				to_chat(src, "<span class='warning'>You aren't alien enough!</span>")
+				return
+			playsound(src.loc, 'sound/voice/xenos/xhiss6.ogg', 50, 0)
+			message = "hisses!"
+			m_type = 2
+
+		if("xroar1")
+			if(src.species.get_species_id() != SPECIES_ID_XENOHYBRID)
+				to_chat(src, "<span class='warning'>You aren't alien enough!</span>")
+				return
+			playsound(src.loc, 'sound/voice/xenos/xroar1.ogg', 50, 0)
+			message = "hisses!"
+			m_type = 2
+
+		if("xroar2")
+			if(src.species.get_species_id() != SPECIES_ID_XENOHYBRID)
+				to_chat(src, "<span class='warning'>You aren't alien enough!</span>")
+				return
+			playsound(src.loc, 'sound/voice/xenos/xroar2.ogg', 50, 0)
+			message = "hisses!"
+			m_type = 2
+
+		if("xroar3")
+			if(src.species.get_species_id() != SPECIES_ID_XENOHYBRID)
+				to_chat(src, "<span class='warning'>You aren't alien enough!</span>")
+				return
+			playsound(src.loc, 'sound/voice/xenos/xroar3.ogg', 50, 0)
+			message = "hisses!"
+			m_type = 2
+
+		if("xtalk1")
+			if(src.species.get_species_id() != SPECIES_ID_XENOHYBRID)
+				to_chat(src, "<span class='warning'>You aren't alien enough!</span>")
+				return
+			playsound(src.loc, 'sound/voice/xenos/xtalk1.ogg', 50, 0)
+			message = "hisses!"
+			m_type = 2
+
+		if("xtalk2")
+			if(src.species.get_species_id() != SPECIES_ID_XENOHYBRID)
+				to_chat(src, "<span class='warning'>You aren't alien enough!</span>")
+				return
+			playsound(src.loc, 'sound/voice/xenos/xtalk2.ogg', 50, 0)
+			message = "hisses!"
+			m_type = 2
+
+		if("xtalk3")
+			if(src.species.get_species_id() != SPECIES_ID_XENOHYBRID)
+				to_chat(src, "<span class='warning'>You aren't alien enough!</span>")
+				return
+			playsound(src.loc, 'sound/voice/xenos/xtalk3.ogg', 50, 0)
+			message = "hisses!"
+			m_type = 2
+
+		if("xroar")
+			if(src.species.get_species_id() != SPECIES_ID_XENOHYBRID)
+				to_chat(src, "<span class='warning'>You aren't alien enough!</span>")
+				return
+			playsound(src.loc, 'sound/voice/xenos/alien_roar1.ogg', 50, 0)
+			message = "roars!"
+			m_type = 2
+
 		if("xgrowl")
 			if(src.species.get_species_id() != SPECIES_ID_XENOHYBRID)
 				to_chat(src, "<span class='warning'>You aren't alien enough!</span>")

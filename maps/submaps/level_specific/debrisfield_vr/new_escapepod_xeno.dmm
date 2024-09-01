@@ -27,11 +27,6 @@
 /obj/structure/alien/resin/membrane,
 /turf/simulated/floor/airless,
 /area/submap/debrisfield_vr/misc_debris)
-"t" = (
-/obj/structure/alien/weeds,
-/mob/living/simple_mob/animal/space/alien/sentinel,
-/turf/simulated/floor/airless,
-/area/submap/debrisfield_vr/misc_debris)
 "v" = (
 /obj/machinery/door/airlock/external{
 	density = 0;
@@ -50,6 +45,11 @@
 /obj/structure/alien/weeds,
 /obj/structure/alien/resin/wall,
 /turf/simulated/wall/rshull,
+/area/submap/debrisfield_vr/misc_debris)
+"R" = (
+/obj/structure/alien/weeds,
+/mob/living/simple_mob/animal/space/alien/basic_spitter,
+/turf/simulated/floor/airless,
 /area/submap/debrisfield_vr/misc_debris)
 "T" = (
 /obj/structure/grille/broken,
@@ -93,13 +93,13 @@ D
 a
 k
 A
-t
+U
 D
 "}
 (4,1,1) = {"
 a
 U
-U
+R
 U
 a
 "}

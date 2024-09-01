@@ -351,6 +351,10 @@
 	brute = round(brute * brute_mod, 0.1)
 	burn = round(burn * burn_mod, 0.1)
 
+	// todo: better way to godmode
+	if(src.owner?.status_flags & STATUS_GODMODE)
+		return 0
+
 	if(!brute && !burn)
 		return 0
 

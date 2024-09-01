@@ -23,61 +23,6 @@
 // Okay! Here we go!
 //
 
-/mob/living/simple_mob/animal/space/alien
-	vore_active = 1
-	icon = 'icons/mob/vore.dmi'
-	icon_state = "xenohunter"
-	icon_living = "xenohunter"
-	icon_dead = "xenohunter-dead"
-	icon_gib = "gibbed-a"
-	vore_icons = SA_ICON_LIVING
-
-/mob/living/simple_mob/animal/space/alien/drone
-	vore_active = 1
-	icon = 'icons/mob/vore.dmi'
-	icon_state = "xenodrone"
-	icon_living = "xenodrone"
-	icon_dead = "xenodrone-dead"
-	icon_gib = "gibbed-a"
-	vore_icons = SA_ICON_LIVING
-
-/mob/living/simple_mob/animal/space/alien/sentinel
-	vore_active = 1
-	icon = 'icons/mob/vore.dmi'
-	icon_state = "xenosentinel"
-	icon_living = "xenosentinel"
-	icon_dead = "xenosentinel-dead"
-	icon_gib = "gibbed-a"
-	vore_icons = SA_ICON_LIVING
-
-/mob/living/simple_mob/animal/space/alien/queen
-	vore_active = 1
-	icon = 'icons/mob/vore.dmi'
-	icon_state = "xenoqueen"
-	icon_living = "xenoqueen"
-	icon_dead = "xenoqueen-dead"
-	icon_gib = "gibbed-a"
-	vore_icons = SA_ICON_LIVING
-
-/mob/living/simple_mob/animal/space/alien/queen/empress
-	vore_active = 1
-	icon = 'icons/mob/vore64x64.dmi'
-	icon_state = "queen_s"
-	icon_living = "queen_s"
-	icon_dead = "queen_dead"
-	vore_icons = SA_ICON_LIVING | SA_ICON_REST
-	base_pixel_x = -16
-
-	vore_capacity = 3
-	vore_pounce_chance = 75
-
-/mob/living/simple_mob/animal/space/alien/sentinel/praetorian
-	icon = 'icons/mob/vore64x64.dmi'
-	vore_icons = SA_ICON_LIVING | SA_ICON_REST
-
-/mob/living/simple_mob/animal/space/alien/queen/empress/mother
-	vore_icons = FALSE
-
 /mob/living/simple_mob/animal/space/bear
 	vore_active = 1
 	icon = 'icons/mob/vore.dmi'

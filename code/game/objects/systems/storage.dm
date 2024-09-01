@@ -456,7 +456,7 @@
 			target = parent,
 		)
 		return TRUE
-	if(!actor.performer.Reachability(parent))
+	if(!actor.performer.Reachability(indirection || parent))
 		return TRUE
 	if(!try_insert(inserting, actor, silent, suppressed))
 		return TRUE

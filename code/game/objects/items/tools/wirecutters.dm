@@ -59,6 +59,15 @@
 	tool_speed = 1.25
 	random_color = FALSE
 
+/obj/item/tool/wirecutters/bronze
+	name = "bronze shears"
+	desc = "Bronze cutters made of a single piece of forged bronze simply but effective."
+	icon = 'icons/obj/lavaland.dmi'
+	icon_state = "cutters_bronze"
+	item_state = "cutters_brass"
+	tool_speed = 1.25
+	random_color = FALSE
+
 /obj/item/tool/wirecutters/brass
 	name = "brass wirecutters"
 	desc = "Brass plated wirecutters that never seem to lose their edge."

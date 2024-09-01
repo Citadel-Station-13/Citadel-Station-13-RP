@@ -22,6 +22,8 @@
 		stop_pulling()
 	if(!(mobility_flags & MOBILITY_CAN_STAND))
 		set_resting(TRUE)
+	else if(resting)
+		auto_resist_rest()
 
 /**
  * immediately sets whether or not we're prone.

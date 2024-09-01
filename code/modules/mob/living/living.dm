@@ -462,9 +462,6 @@ default behaviour is:
 
 	return FALSE
 
-/mob/living/proc/slip(var/slipped_on,stun_duration=8)
-	return 0
-
 //damage/heal the mob ears and adjust the deaf amount
 /mob/living/adjustEarDamage(var/damage, var/deaf)
 	ear_damage = max(0, ear_damage + damage)
