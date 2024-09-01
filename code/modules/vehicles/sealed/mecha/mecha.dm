@@ -306,12 +306,14 @@
 		M.forceMove(get_turf(src))
 		if(M != src.occupant_legacy)
 			step_rand(M)
+
 	for(var/atom/movable/A in src.cargo)
 		A.forceMove(get_turf(src))
 		var/turf/T = get_turf(A)
 		if(T)
 			T.Entered(A)
 		step_rand(A)
+	cargo = list()
 
 	if(prob(30))
 		explosion(get_turf(loc), 0, 0, 1, 3)
@@ -1251,9 +1253,9 @@
 		src.log_append_to_last("Armor saved, changing severity to [severity].")
 	switch(severity)
 		if(1.0)
-			src.take_damage_legacy(initial(src.integrity)/2, "bomb")
+			src.take_damage_legacy(initial(src.integrity)/1.25, "bomb")
 		if(2.0)
-			src.take_damage_legacy(initial(src.integrity)/4, "bomb")
+			src.take_damage_legacy(initial(src.integrity)/2.5, "bomb")
 			src.check_for_internal_damage(list(MECHA_INT_FIRE,MECHA_INT_TEMP_CONTROL,MECHA_INT_TANK_BREACH,MECHA_INT_CONTROL_LOST,MECHA_INT_SHORT_CIRCUIT),1)
 		if(3.0)
 			src.take_damage_legacy(initial(src.integrity)/8, "bomb")
@@ -2702,7 +2704,6 @@
 	// 	removing.mobility_flags = NONE
 	removing.clear_alert("charge")
 	removing.clear_alert("mech damage")
-	removing.reset_perspective()
 
 	if(occupant_legacy == removing)
 		occupant_legacy = null

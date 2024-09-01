@@ -464,6 +464,7 @@
 /mob/living/proc/reagent_permeability()
 	return 1
 
+// todo: rework
 // Returns a number to determine if something is harder or easier to hit than normal.
 /mob/living/proc/get_evasion()
 	var/result = evasion // First we get the 'base' evasion.  Generally this is zero.
@@ -472,14 +473,6 @@
 			result += M.evasion
 	return result
 
+// todo: rework
 /mob/living/proc/get_accuracy_penalty()
-	// Certain statuses make it harder to score a hit.
-	var/accuracy_penalty = 0
-	if(has_status_effect(/datum/status_effect/sight/blindness))
-		accuracy_penalty += 75
-	if(eye_blurry)
-		accuracy_penalty += 30
-	if(confused)
-		accuracy_penalty += 45
-
-	return accuracy_penalty
+	return 0

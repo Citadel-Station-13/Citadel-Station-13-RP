@@ -30,7 +30,7 @@
 	. = L
 	for(var/obj/item/grab/G in get_held_items())
 		.[G.affecting] = max(.[G.affecting], G.state)
-		get_grabbing_recursive(G.affecting, --safety)
+		get_grabbing_recursive(., --safety)
 
 /**
  * check the grab state of us to someone

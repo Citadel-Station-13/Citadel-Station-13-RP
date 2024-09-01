@@ -4474,7 +4474,7 @@
 #include "code\modules\projectiles\projectile\subtypes\hook.dm"
 #include "code\modules\projectiles\projectile\subtypes\magic.dm"
 #include "code\modules\projectiles\projectile\subtypes\magnetic.dm"
-#include "code\modules\projectiles\projectile\subtypes\pellets.dm"
+#include "code\modules\projectiles\projectile\subtypes\pellet.dm"
 #include "code\modules\projectiles\projectile\subtypes\reusable.dm"
 #include "code\modules\projectiles\projectile\subtypes\scatter.dm"
 #include "code\modules\projectiles\projectile\subtypes\special.dm"

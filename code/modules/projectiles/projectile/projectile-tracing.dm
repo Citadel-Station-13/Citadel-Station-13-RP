@@ -46,6 +46,8 @@
 
 /obj/projectile/trace/Moved()
 	. = ..()
+	if(QDELETED(src))
+		return
 	if(require_turf_cached == loc)
 		could_hit_target = TRUE
 		if(del_on_success)
