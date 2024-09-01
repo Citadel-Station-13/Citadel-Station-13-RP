@@ -35,6 +35,11 @@
 	set_ticking(idle_retarget_pulse_time)
 
 /datum/ai_holder/turret/tick(cycles)
+	var/obj/machinery/porta_turret/turret = agent
+	// check if we should do anything
+	if(turret.disabled || !turret.enabled)
+		idle()
+		return
 	// first, evaluate
 	var/found_in_wake_range = continuous_evaluation()
 	// then,
