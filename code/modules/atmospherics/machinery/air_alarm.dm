@@ -514,7 +514,7 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/air_alarm, 26)
 /obj/machinery/air_alarm/attack_ai(mob/user)
 	ui_interact(user)
 
-/obj/machinery/air_alarm/attack_hand(mob/user, list/params)
+/obj/machinery/air_alarm/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	. = ..()
 	if(.)
 		return

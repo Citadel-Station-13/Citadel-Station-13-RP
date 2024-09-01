@@ -176,7 +176,7 @@
 
 //Pet 4 friendly
 
-/mob/living/simple_mob/otie/attack_hand(mob/user, list/params)
+/mob/living/simple_mob/otie/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 
 	var/mob/living/M = user
 	if(!istype(M))

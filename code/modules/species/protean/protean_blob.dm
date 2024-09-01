@@ -257,7 +257,7 @@
 	else
 		return ..()
 
-/mob/living/simple_mob/protean_blob/attack_hand(mob/user, list/params)
+/mob/living/simple_mob/protean_blob/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	var/mob/living/L = user
 	if(!istype(L))
 		return

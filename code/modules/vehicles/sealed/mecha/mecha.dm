@@ -1041,7 +1041,7 @@
 		qdel(src)
 	return
 
-/obj/vehicle/sealed/mecha/attack_hand(mob/user, list/params)
+/obj/vehicle/sealed/mecha/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(user == occupant_legacy)
 		show_radial_occupant(user)
 		return

@@ -133,7 +133,7 @@
 	..()
 
 //default attack_hand behaviour
-/obj/item/clothing/accessory/attack_hand(mob/user, list/params)
+/obj/item/clothing/accessory/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(accessory_host)
 		return	//we aren't an object on the ground so don't call parent
 	..()
