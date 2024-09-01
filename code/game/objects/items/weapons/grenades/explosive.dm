@@ -107,6 +107,7 @@
 	explosion_size = 1
 	det_time = 20
 	range = 3
+	worth_intrinsic = 75
 
 /obj/item/grenade/explosive/ied/tyrmalin/on_explosion(var/turf/O)
 	if(explosion_size)

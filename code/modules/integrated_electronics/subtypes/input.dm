@@ -366,6 +366,7 @@
 	spawn_flags = IC_SPAWN_RESEARCH
 	origin_tech = list(TECH_ENGINEERING = 3, TECH_DATA = 3, TECH_BIO = 4)
 	power_draw_per_use = 80
+	cooldown_per_use = 50
 
 /obj/item/integrated_circuit/input/examiner/do_work(ord)
 	if(ord == 1)

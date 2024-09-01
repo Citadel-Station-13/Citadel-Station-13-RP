@@ -2,20 +2,11 @@
 "a" = (
 /turf/template_noop,
 /area/template_noop)
-"b" = (
-/obj/structure/alien/weeds,
-/mob/living/simple_mob/animal/space/alien/sentinel,
-/turf/simulated/mineral/floor/classd/indoors,
-/area/class_d/explored)
-"f" = (
-/obj/structure/alien/weeds,
-/mob/living/simple_mob/animal/space/alien/sentinel/praetorian,
-/turf/simulated/mineral/floor/classd/indoors,
-/area/class_d/explored)
-"h" = (
+"g" = (
 /obj/structure/alien/weeds,
 /obj/structure/alien/weeds,
-/mob/living/simple_mob/animal/space/alien/queen/empress,
+/obj/structure/alien/weeds,
+/mob/living/simple_mob/animal/space/alien/basic_spitter,
 /turf/simulated/mineral/floor/classd/indoors,
 /area/class_d/explored)
 "i" = (
@@ -27,12 +18,6 @@
 /obj/structure/alien/weeds,
 /obj/random/multiple/voidsuit/mining,
 /obj/random/humanoidremains,
-/turf/simulated/mineral/floor/classd/indoors,
-/area/class_d/explored)
-"k" = (
-/obj/structure/alien/weeds,
-/obj/structure/alien/weeds/node,
-/mob/living/simple_mob/animal/space/alien/drone,
 /turf/simulated/mineral/floor/classd/indoors,
 /area/class_d/explored)
 "m" = (
@@ -72,12 +57,6 @@
 "w" = (
 /turf/simulated/mineral/floor/classd/indoors,
 /area/class_d/explored)
-"x" = (
-/obj/structure/alien/weeds,
-/obj/structure/alien/weeds,
-/mob/living/simple_mob/animal/space/alien/sentinel,
-/turf/simulated/mineral/floor/classd/indoors,
-/area/class_d/explored)
 "y" = (
 /obj/structure/alien/weeds,
 /obj/structure/alien/resin/wall,
@@ -105,6 +84,11 @@
 /obj/random/energy,
 /turf/simulated/mineral/floor/classd/indoors,
 /area/class_d/explored)
+"F" = (
+/obj/structure/alien/weeds,
+/mob/living/simple_mob/animal/space/alien/warrior,
+/turf/simulated/mineral/floor/classd/indoors,
+/area/class_d/explored)
 "H" = (
 /obj/structure/alien/weeds,
 /obj/random/trash_pile,
@@ -123,6 +107,11 @@
 "M" = (
 /obj/structure/alien/resin/wall,
 /obj/structure/alien/weeds,
+/turf/simulated/mineral/floor/classd/indoors,
+/area/class_d/explored)
+"N" = (
+/obj/structure/alien/weeds,
+/mob/living/simple_mob/animal/space/alien/adv_spitter,
 /turf/simulated/mineral/floor/classd/indoors,
 /area/class_d/explored)
 "O" = (
@@ -239,7 +228,7 @@ p
 p
 p
 p
-b
+s
 s
 s
 X
@@ -262,7 +251,7 @@ p
 K
 s
 r
-r
+g
 s
 s
 s
@@ -284,7 +273,7 @@ W
 O
 q
 r
-x
+q
 p
 p
 p
@@ -396,8 +385,8 @@ p
 p
 p
 P
+N
 s
-U
 p
 p
 p
@@ -418,7 +407,7 @@ p
 p
 i
 R
-f
+s
 s
 P
 p
@@ -463,7 +452,7 @@ p
 y
 y
 s
-h
+q
 q
 E
 p
@@ -482,12 +471,12 @@ s
 s
 p
 s
-b
+s
 y
 q
 q
 L
-U
+F
 p
 p
 p
@@ -501,14 +490,14 @@ a
 p
 p
 p
-b
+s
 s
 q
 q
 Z
 q
 s
-f
+s
 i
 p
 p
@@ -526,9 +515,9 @@ p
 P
 s
 s
-b
+s
 y
-k
+X
 s
 s
 P
@@ -550,7 +539,7 @@ p
 p
 P
 y
-s
+F
 P
 p
 p
