@@ -25,7 +25,7 @@
 	fire_cooldown = 2
 
 /obj/item/mecha_parts/mecha_equipment/weapon/ballistic/gauss_rifle
-	name = "\improper Gauss Rifle"
+	name = "\improper gauss rifle"
 	desc = "The current standard in non-laser, anti-armor firepower, this weapon is the same as those mounted on light tanks for their primary weapon. Fires a single nickle-iron slug at high speed. Requires a long charge time between shots. "
 	icon_state = "mecha_uac2-rig"
 	equip_cooldown = 4 SECONDS
