@@ -23,14 +23,17 @@
  *
  * @return grabbed mobs associated to states
  */
-/mob/proc/get_grabbing_recursive(list/L = list(), safety = 15)
+/mob/proc/get_grabbing_recursive(list/L = list(), safety = 15, list/processed = list())
 	RETURN_TYPE(/list)
+	if(processed[src])
+		return
+	processed[src] = TRUE
 	if(safety <= 0)
 		CRASH("infinite loop guard tripped")
 	. = L
 	for(var/obj/item/grab/G in get_held_items())
 		.[G.affecting] = max(.[G.affecting], G.state)
-		get_grabbing_recursive(., --safety)
+		G.affecting.get_grabbing_recursive(., --safety, processed)
 
 /**
  * check the grab state of us to someone

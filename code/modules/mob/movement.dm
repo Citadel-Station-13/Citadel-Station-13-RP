@@ -284,7 +284,7 @@
 	//Something with pulling things
 	if(locate(/obj/item/grab, mob))
 		add_delay_grab = 7
-		var/list/grabbed = mob.get_grabbing_recursive()
+		var/list/grabbed = mob.get_grabbing_recursive() + src // im fucking screaming; this is because old code always considers self as grabbed.
 		if(grabbed)
 			if(grabbed.len == 2)
 				grabbed -= mob
