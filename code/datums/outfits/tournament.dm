@@ -4,7 +4,7 @@
 	head = /obj/item/clothing/head/helmet/thunderdome
 	suit = /obj/item/clothing/suit/armor/vest
 	l_hand = /obj/item/material/knife
-	r_hand = /obj/item/gun/energy/pulse_rifle
+	r_hand = /obj/item/gun/energy/nt_pulse/rifle
 	r_pocket = /obj/item/grenade/smokebomb
 	shoes = /obj/item/clothing/shoes/black
 

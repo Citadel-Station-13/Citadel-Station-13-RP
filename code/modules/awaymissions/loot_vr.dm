@@ -161,7 +161,7 @@
 					prob(6);/obj/item/gun/ballistic/automatic/lmg,\
 					prob(6);/obj/item/gun/energy/lasercannon,\
 					prob(5);/obj/item/gun/ballistic/automatic/bullpup,\
-					prob(5);/obj/item/gun/energy/pulse_rifle,\
+					prob(5);/obj/item/gun/energy/nt_pulse/rifle,\
 				/*	prob(4);/obj/item/gun/ballistic/automatic/battlerifle,\ */
 					prob(3);/obj/item/gun/ballistic/deagle/camo,\
 					prob(3);/obj/item/gun/energy/gun/nuclear,\
