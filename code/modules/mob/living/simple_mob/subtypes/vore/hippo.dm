@@ -55,15 +55,6 @@
 
 // Activate Noms!
 /mob/living/simple_mob/vore/hippo //I don't know why it's in a seperate line but everyone does it so i do it
-	vore_active = 1
-	vore_capacity = 1
-	vore_bump_chance = 15
-	vore_bump_emote = "lazily wraps its tentacles around"
-	vore_default_mode = DM_HOLD
-	vore_digest_chance = 10
-	vore_escape_chance = 20
-	vore_stomach_name = "rumen" //First stomach of a ruminant. It's where the pre digestion bacteria stuff happens. Very warm.
-	vore_stomach_flavor	= "You are squeezed into the sweltering insides of the herbivore rumen."
 	vore_icons = SA_ICON_LIVING
 
 /mob/living/simple_mob/vore/hippo/MouseDroppedOnLegacy(mob/living/M, mob/living/user)

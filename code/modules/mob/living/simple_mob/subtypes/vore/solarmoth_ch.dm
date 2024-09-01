@@ -153,11 +153,6 @@
 
 
 /mob/living/simple_mob/vore/solarmoth //active noms
-	vore_bump_chance = 50
-	vore_bump_emote = "applies minimal effort to try and slurp up"
-	vore_active = 1
-	vore_capacity = 1
-	vore_default_mode = DM_DIGEST
 
 /mob/living/simple_mob/vore/solarmoth/lunarmoth
 	name = "Lunarmoth"

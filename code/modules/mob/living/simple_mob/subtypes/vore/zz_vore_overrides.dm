@@ -10,7 +10,6 @@
 
 ## For anything that previously inhertied from: /mob/living/simple_mob/hostile/vore/large ##
 
-	vore_active = 1
 	icon = 'icons/mob/vore64x64.dmi'
 	old_x = -16
 	old_y = -16
@@ -24,7 +23,6 @@
 //
 
 /mob/living/simple_mob/animal/space/bear
-	vore_active = 1
 	icon = 'icons/mob/vore.dmi'
 	icon_state = "spacebear"
 	icon_living = "spacebear"
@@ -36,7 +34,6 @@
 	name = "Hudson"
 
 /mob/living/simple_mob/animal/space/bear/brown
-	vore_active = 1
 	icon = 'icons/mob/vore.dmi'
 	name = "brown bear"
 	icon_state = "brownbear"
@@ -47,7 +44,6 @@
 
 /mob/living/simple_mob/animal/space/carp
 	icon = 'icons/mob/vore.dmi'
-	vore_active = 1
 	vore_icons = SA_ICON_LIVING
 
 /mob/living/simple_mob/animal/space/carp/large
@@ -58,34 +54,23 @@
 	vore_icons = 0
 
 /mob/living/simple_mob/animal/passive/cat
-	vore_active = 1
 	//specific_targets = 0 // Targeting UNLOCKED
-	vore_max_size = RESIZE_TINY
 
 /mob/living/simple_mob/animal/passive/cat/fluff
 
 /mob/living/simple_mob/animal/passive/fox
-	vore_active = 1
-	vore_max_size = RESIZE_TINY
 
 /mob/living/simple_mob/fox/fluff
 
 /mob/living/simple_mob/animal/space/goose
-	vore_active = 1
-	vore_max_size = RESIZE_SMALL
 
 /mob/living/simple_mob/animal/passive/penguin
-	vore_active = 1
-	vore_max_size = RESIZE_SMALL
 
 
 /mob/living/simple_mob/hostile/carp/pike
-	vore_active = 1
 
 /mob/living/simple_mob/animal/space/carp/holographic
 	vore_icons = 0
-	vore_digest_chance = 0
-	vore_absorb_chance = 0
 
 // Override stuff for holodeck carp to make them not digest when set to safe!
 /mob/living/simple_mob/animal/space/carp/holographic/init_vore()

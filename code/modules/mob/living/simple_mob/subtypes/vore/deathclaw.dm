@@ -35,9 +35,6 @@
 
 // Activate Noms!
 /mob/living/simple_mob/vore/aggressive/deathclaw
-	vore_active = 1
-	vore_capacity = 2
-	vore_max_size = RESIZE_HUGE
 	vore_min_size = RESIZE_SMALL
 	vore_icons = SA_ICON_LIVING
 

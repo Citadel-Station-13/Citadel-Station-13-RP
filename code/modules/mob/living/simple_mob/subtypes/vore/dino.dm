@@ -42,7 +42,6 @@
 
 // Activate Noms!
 /mob/living/simple_mob/vore/aggressive/dino
-	vore_active = 1
 	swallowTime = 1 SECOND // Hungry little bastards.
 	vore_icons = SA_ICON_LIVING
 

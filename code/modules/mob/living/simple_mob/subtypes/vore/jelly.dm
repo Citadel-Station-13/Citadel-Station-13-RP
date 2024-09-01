@@ -33,7 +33,6 @@
 
 // Activate Noms!
 /mob/living/simple_mob/animal/space/jelly
-	vore_active = 1
 	vore_icons = SA_ICON_LIVING
 	swallowTime = 2 SECONDS // Hungry little bastards.
 

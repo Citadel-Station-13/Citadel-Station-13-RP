@@ -38,8 +38,6 @@
 
 // Activate Noms!
 /mob/living/simple_mob/vore/aggressive/dragon
-	vore_active = 1
-	vore_capacity = 2
 	vore_icons = SA_ICON_LIVING
 
 /mob/living/simple_mob/vore/aggressive/dragon/virgo3b

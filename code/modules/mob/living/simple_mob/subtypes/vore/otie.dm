@@ -44,8 +44,6 @@
 // Activate Noms!
 
 /mob/living/simple_mob/otie
-	vore_active = 1
-	vore_capacity = 1
 	vore_icons = SA_ICON_LIVING | SA_ICON_REST
 
 /mob/living/simple_mob/otie/feral //gets the pet2tame feature. starts out hostile tho so get gamblin'
