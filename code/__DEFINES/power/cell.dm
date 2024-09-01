@@ -35,15 +35,17 @@ DEFINE_BITFIELD_NEW(cell_type, list(
 	typegen_material_modify = ##DATUM_TYPEPATH::typegen_material_multiply * ##DATUM_TYPEPATH::typegen_material_multiply_small; \
 	stripe_color = ##DATUM_TYPEPATH::typegen_visual_stripe_color; \
 	indicator_color = ##DATUM_TYPEPATH::typegen_visual_indicator_color; \
+	typegen_active = TRUE; \
 	cell_datum = ##DATUM_TYPEPATH; \
 } \
 /obj/item/cell/medium/##TYPEPATH { \
 	name = "medium power cell (" + ##DATUM_TYPEPATH::cell_name + ")"; \
 	desc = "A decently sized cell used in many pieces of modern equipment. " + ##DATUM_TYPEPATH::cell_desc; \
-	max_charge = /obj/item/cell/medium::max_charge * ##DATUM_TYPEPATH::typegen_capacitymultiplier__medium * ##DATUM_TYPEPATH::typegen_capacity_multiplier; \
+	max_charge = /obj/item/cell/medium::max_charge * ##DATUM_TYPEPATH::typegen_capacity_multiplier_medium * ##DATUM_TYPEPATH::typegen_capacity_multiplier; \
 	typegen_material_modify = ##DATUM_TYPEPATH::typegen_material_multiply * ##DATUM_TYPEPATH::typegen_material_multiply_medium; \
 	stripe_color = ##DATUM_TYPEPATH::typegen_visual_stripe_color; \
 	indicator_color = ##DATUM_TYPEPATH::typegen_visual_indicator_color; \
+	typegen_active = TRUE; \
 	cell_datum = ##DATUM_TYPEPATH; \
 } \
 /obj/item/cell/large/##TYPEPATH { \
@@ -53,6 +55,7 @@ DEFINE_BITFIELD_NEW(cell_type, list(
 	typegen_material_modify = ##DATUM_TYPEPATH::typegen_material_multiply * ##DATUM_TYPEPATH::typegen_material_multiply_large; \
 	stripe_color = ##DATUM_TYPEPATH::typegen_visual_stripe_color; \
 	indicator_color = ##DATUM_TYPEPATH::typegen_visual_indicator_color; \
+	typegen_active = TRUE; \
 	cell_datum = ##DATUM_TYPEPATH; \
 } \
 /obj/item/cell/weapon/##TYPEPATH { \
@@ -62,5 +65,6 @@ DEFINE_BITFIELD_NEW(cell_type, list(
 	typegen_material_modify = ##DATUM_TYPEPATH::typegen_material_multiply * ##DATUM_TYPEPATH::typegen_material_multiply_weapon; \
 	stripe_color = ##DATUM_TYPEPATH::typegen_visual_stripe_color; \
 	indicator_color = ##DATUM_TYPEPATH::typegen_visual_indicator_color; \
+	typegen_active = TRUE; \
 	cell_datum = ##DATUM_TYPEPATH; \
 }

@@ -35,24 +35,23 @@
 	icon_state = "gsaberoff"
 	icon_override = 'icons/vore/custom_guns_vr.dmi'
 	item_state = "gsaberoff"
+	atom_flags = NOBLOODY
 	max_charge = 2400
-	charge_amount = 20
+	self_recharge_amount = 20
 	damage_force = 3
 	throw_force = 5
 	throw_speed = 1
 	throw_range = 5
 	w_class = WEIGHT_CLASS_SMALL
 	origin_tech = list(TECH_MAGNET = 3, TECH_COMBAT = 5)
+	damage_mode = NONE
+	armor_penetration = 50
 
 	var/active = 0
 	var/active_force = 30
 	var/active_throwforce = 20
 	var/active_w_class = WEIGHT_CLASS_BULKY
 	var/active_embed_chance = 0		//In the off chance one of these is supposed to embed, you can just tweak this var
-	sharp = 0
-	edge = 0
-	armor_penetration = 50
-	atom_flags = NOBLOODY
 	var/lrange = 2
 	var/lpower = 2
 	var/lcolor = "#800080"

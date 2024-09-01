@@ -15,6 +15,19 @@
 	throw_range = 5
 	w_class = WEIGHT_CLASS_NORMAL
 
+	//* -- Set by type generation -- *//
+
+	/// should we run typegen from the power cell datum we're provided?
+	///
+	/// These things are affected, on the power cell datum side
+	/// * typegen_capacity
+	/// * typegen_material
+	/// * typegen_visual
+	/// * typegen_worth
+	///
+	/// This should never be modified after Initialize() runs.
+	var/tmp/typegen_active = FALSE
+
 	//* Behavior *//
 	/// cell component; loaded at init, set to typepath or anonymous type
 	var/datum/power_cell/cell_datum
@@ -42,10 +55,6 @@
 	/// our stripe color; null for no stripe
 	var/stripe_color
 
-	//* -- Set by type generation -- *//
-
-	var/typegen_material_modify = null
-
 	//* Self Recharge *//
 	/// do we self recharge?
 	var/self_recharge = FALSE
@@ -69,6 +78,7 @@
 	var/overlay_full_state = "cell-o2" // Overlay used when fully charged.
 
 /obj/item/cell/Initialize(mapload)
+	#warn cell datum; use it to do materials mod
 	if(!isnull(typegen_material_modify) && !is_typelist(NAMEOF(src, materials_base), materials_base))
 		if(has_typelist(NAMEOF(src, materials_base)))
 			materials_base = get_typelist(NAMEOF(src, materials_base))
@@ -91,7 +101,8 @@
 
 /obj/item/cell/get_worth(flags)
 	. = ..()
-	. *= cell_datum?.worth_multiplier
+	if(typegen_active)
+		. *= cell_datum?.worth_multiplier
 
 /obj/item/cell/get_rating()
 	return rating

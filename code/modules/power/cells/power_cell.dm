@@ -48,6 +48,17 @@
 	/// compounded with [typegen_material_multiply]
 	var/typegen_material_multiply_weapon = 1
 
+	/// sets base materials; negative values are allowed
+	///
+	/// * this is applied before typegen material multiply
+	var/list/typegen_materials_base
+	#warn impl
+	/// added to the base materials; negative values are allowed
+	///
+	/// * this is applied after typegen material multiply
+	var/list/typegen_materials_base_adjust
+	#warn impl
+
 	//* Visuals - Type Generation *//
 
 	/// color of the cell's stripe
@@ -59,11 +70,9 @@
 
 	/// worth multiplier
 	///
-	/// * this is because i am just frankly not going to manually set worth on every subtype, lol
 	/// * set to null to say "we have no worth" (useful for infinite cells)
 	/// * null behaves like 0 right now but might not later
-	/// * fuck inheritance, lol!
-	var/worth_multiplier = 1
+	var/typegen_worth_multiplier = 1
 
 /**
  * Intercepts 'use' behavior
