@@ -112,13 +112,13 @@
 		creating.color = lcolor
 	return creating
 
-/obj/item/shield/transforming/energy/build_active_worn_overlay()
-	var/image/built = ..()
+/obj/item/melee/transforming/energy/build_active_worn_overlay()
+	var/image/creating = ..()
 	if(rainbow)
 		creating.icon_state += "-rainbow"
 	else
 		creating.color = lcolor
-	return built
+	return creating
 
 /obj/item/melee/transforming/energy/AltClick(mob/living/user)
 	if(!colorable) //checks if is not colorable
