@@ -59,7 +59,6 @@
 	icon_living = "polarbear"
 	icon_dead = "polarbear-dead"
 	icon_gib = "bear-gib"
-	vore_active = 1
 	say_list_type = /datum/say_list/polar_bear
 
 	faction = "polar"
