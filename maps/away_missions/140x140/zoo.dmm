@@ -7328,7 +7328,7 @@
 /turf/simulated/floor/holofloor/grass,
 /area/awaymission/zoo)
 "ua" = (
-/mob/living/simple_mob/fox{
+/mob/living/simple_mob/passive/fox{
 	faction = "zoo"
 	},
 /turf/simulated/floor/holofloor/snow,

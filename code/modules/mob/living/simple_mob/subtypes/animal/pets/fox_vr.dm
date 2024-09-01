@@ -122,58 +122,6 @@
 		var/datum/ai_holder/polaris/AI = ai_holder
 		AI.set_follow(friend)
 
-/* Old fox friend AI, I'm not sure how to add the fancy "friend is dead" stuff so I'm commenting it out for someone else to figure it out, this is just baseline stuff.
-//Basic friend AI
-/mob/living/simple_mob/animal/passive/fox/fluff
-	var/mob/living/carbon/human/friend
-	var/befriend_job = null
-
-/mob/living/simple_mob/animal/passive/fox/fluff/Life(seconds, times_fired)
-	. = ..()
-	if(!. || !friend) return
-
-	var/friend_dist = get_dist(src,friend)
-
-	if (friend_dist <= 4)
-		if(stance == STANCE_IDLE)
-			if(set_follow(friend))
-				handle_stance(STANCE_FOLLOW)
-
-	if (friend_dist <= 1)
-		if (friend.stat >= DEAD || friend.health <= config_legacy.health_threshold_softcrit)
-			if (prob((friend.stat < DEAD)? 50 : 15))
-				var/verb = pick("yaps", "howls", "whines")
-				audible_emote(pick("[verb] in distress.", "[verb] anxiously."))
-		else
-			if (prob(5))
-				visible_emote(pick("nips [friend].",
-								   "brushes against [friend].",
-								   "tugs on [friend].",
-								   "chrrrrs."))
-	else if (friend.health <= 50)
-		if (prob(10))
-			var/verb = pick("yaps", "howls", "whines")
-			audible_emote("[verb] anxiously.")
-
-/mob/living/simple_mob/animal/passive/fox/fluff/verb/friend()
-	set name = "Become Friends"
-	set category = VERB_CATEGORY_IC
-	set src in view(1)
-
-	if(friend && usr == friend)
-		setDir(get_dir(src, friend))
-		say("Yap!")
-		return
-
-	if (!(ishuman(usr) && befriend_job && usr.job == befriend_job))
-		to_chat(usr, "<span class='notice'>[src] ignores you.</span>")
-		return
-
-	friend = usr
-
-	setDir(get_dir(src, friend))
-	say("Yap!")
-*/
 /obj/item/reagent_containers/food/snacks/meat/fox
 	name = "Fox meat"
 	desc = "The fox doesn't say a goddamn thing, now."
