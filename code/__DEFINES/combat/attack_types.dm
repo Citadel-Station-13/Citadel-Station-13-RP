@@ -9,3 +9,10 @@
 #define ATTACK_TYPE_THROWN (1<<2)
 /// damage source is /mob
 #define ATTACK_TYPE_UNARMED (1<<3)
+/// we're being contacted by something
+///
+/// * used internally by parry frames, mostly
+/// * damage source is null
+#define ATTACK_TYPE_TOUCH (1<<4)
+/// a damage instance created by a block / parry frame transmuting damage and passing it to the user
+#define ATTACK_TYPE_DEFENSIVE_PASSTHROUGH (1<<5)

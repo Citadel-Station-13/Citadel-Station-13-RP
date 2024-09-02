@@ -143,7 +143,7 @@ Divergence proc, used in mutation to make unique datums.
 /mob/living/simple_mob/xeno/proc/BuildReagentLists()
 	return
 
-/mob/living/simple_mob/xeno/bullet_act(var/obj/projectile/P)
+/mob/living/simple_mob/xeno/on_bullet_act(obj/projectile/proj, impact_flags, list/bullet_act_args)
 	//Shamelessly stolen from ablative armor.
 	if((traitdat.traits[TRAIT_XENO_CHROMATIC]) && istype(P, /obj/projectile/beam))
 		visible_message("<span class='danger'>)\The beam reflects off of the [src]!</span>")

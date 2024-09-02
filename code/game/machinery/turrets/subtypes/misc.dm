@@ -75,7 +75,7 @@
 	integrity_max = 200
 	turret_type = "industrial"
 
-/obj/machinery/porta_turret/industrial/bullet_act(obj/projectile/Proj)
+/obj/machinery/porta_turret/industrial/on_bullet_act(obj/projectile/proj, impact_flags, list/bullet_act_args)
 	. = ..()
 	if(enabled)
 		if(!attacked && !emagged)
