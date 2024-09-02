@@ -99,30 +99,6 @@
 				message = "looks."
 			m_type = 1
 
-		if("beep")
-			if (emote_target)
-				message = "beeps at [emote_target]."
-			else
-				message = "beeps."
-			playsound(src.loc, 'sound/machines/twobeep.ogg', 50, 0)
-			m_type = 1
-
-		if("ping")
-			if (emote_target)
-				message = "pings at [emote_target]."
-			else
-				message = "pings."
-			playsound(src.loc, 'sound/machines/ping.ogg', 50, 0)
-			m_type = 1
-
-		if("buzz")
-			if (emote_target)
-				message = "buzzes at [emote_target]."
-			else
-				message = "buzzes."
-			playsound(src.loc, 'sound/machines/buzz-sigh.ogg', 50, 0)
-			m_type = 1
-
 		if("spin")
 			message = "spins!"
 			m_type = 1
@@ -132,59 +108,6 @@
 					unbuckle_mob(L, BUCKLE_OP_FORCE)
 					L.throw_at(get_edge_target_turf(get_turf(src), dir), 7, 1, THROW_AT_IS_GENTLE, src)
 			spin(15, 1)
-
-		if("yes", "ye")
-			if (emote_target)
-				message = "emits an affirmative blip at [emote_target]."
-			else
-				message = "emits an affirmative blip."
-			playsound(src, 'sound/machines/synth_yes.ogg', 50, 0)
-			m_type = 1
-
-		if("no")
-			if (emote_target)
-				message = "emits a negative blip at [emote_target]."
-			else
-				message = "emits a negative blip."
-			playsound(src.loc, 'sound/machines/synth_no.ogg', 50, 0)
-			m_type = 1
-
-		if("scary")
-			if (emote_target)
-				message = "emits a disconcerting tone at [emote_target]."
-			else
-				message = "emits a disconcerting tone."
-			playsound(src.loc, 'sound/machines/synth_scary.ogg', 50, 0)
-			m_type = 1
-
-		if("dwoop")
-			if (emote_target)
-				message = "chirps happily at [emote_target]."
-			else
-				message = "chirps happily."
-			playsound(src.loc, 'sound/machines/dwoop.ogg', 50, 0)
-			m_type = 1
-
-		if("startup")
-			message = "chimes to life."
-			playsound(src.loc, 'sound/machines/synth_startup.ogg', 50)
-			m_type = 1
-
-		if("shutdown")
-			message = "emits a nostalgic tone as they fall silent."
-			playsound(src.loc, 'sound/machines/synth_shutdown.ogg', 50)
-			m_type = 1
-
-		if("error")
-			message = "experiences a system error."
-			playsound(src.loc, 'sound/machines/synth_error.ogg', 50)
-			m_type = 1
-
-		if("die")
-			message = "crumples, their chassis colder and more lifeless than usual."
-			playsound(src.loc, 'sound/machines/synth_gameover.ogg', 50)
-			m_type = 1
-
 		if("flip")
 			if(!CHECK_ALL_MOBILITY(src, MOBILITY_CAN_MOVE | MOBILITY_CAN_USE))
 				to_chat(src, "<span class='warning'>You can't *flip in your current state!</span>")

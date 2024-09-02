@@ -47,30 +47,12 @@
 			if(!M)
 				param = null
 
-			else if(act == "chime")
-				display_msg = "chimes"
-				use_sound = 'sound/machines/chime.ogg'
-			else if(act == "warn")
-				display_msg = "blares an alarm"
-				use_sound = 'sound/machines/warning-buzzer.ogg'
 			else if(act == "honk")
 				display_msg = "honks"
 				use_sound = 'sound/items/bikehorn.ogg'
-			else if(act == "ping")
-				display_msg = "pings"
-				use_sound = 'sound/machines/ping.ogg'
-			else if(act == "yes" || act == "ye")
-				display_msg = "emits an affirmative blip"
-				use_sound = 'sound/machines/synth_yes.ogg'
-			else if(act == "no")
-				display_msg = "emits a negative blip"
-				use_sound = 'sound/machines/synth_no.ogg'
 			else if(act == "dwoop")
 				display_msg = "chirps happily"
 				use_sound = 'sound/machines/dwoop.ogg'
-			else if(act == "scary")
-				display_msg = "emits a disconcerting tone"
-				use_sound = 'sound/machines/synth_scary.ogg'
 			else if(act == "startup")
 				display_msg = "chimes to life"
 				use_sound = 'sound/machines/synth_startup.ogg'

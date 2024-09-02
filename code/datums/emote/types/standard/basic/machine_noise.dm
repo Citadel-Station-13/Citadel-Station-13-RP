@@ -25,46 +25,31 @@
 	sfx = 'sound/machines/buzz-two.ogg'
 
 /datum/emote/standard/basic/machine_noise/chime
-	bindings = ""
-	feedback_1_direct_append = ""
-	sfx = ''
+	bindings = "chime"
+	feedback_1_direct_append = "chimes."
+	sfx = 'sound/machines/chime.ogg'
 
-/datum/emote/standard/basic/machine_noise/
-	bindings = ""
-	feedback_1_direct_append = ""
-	sfx = ''
+/datum/emote/standard/basic/machine_noise/warn
+	bindings = "warn"
+	feedback_1_direct_append = "blares an alarm."
+	sfx = 'sound/machines/warning-buzzer.ogg'
 
-/datum/emote/standard/basic/machine_noise/
-	bindings = ""
-	feedback_1_direct_append = ""
-	sfx = ''
+/datum/emote/standard/basic/machine_noise/ping
+	bindings = "ping"
+	feedback_1_direct_append = "pings."
+	sfx = 'sound/machines/ping.ogg'
 
-/datum/emote/standard/basic/machine_noise/
-	bindings = ""
-	feedback_1_direct_append = ""
-	sfx = ''
+/datum/emote/standard/basic/machine_noise/yes
+	bindings = "yes"
+	feedback_1_direct_append = "emits an affirmative blip."
+	sfx = 'sound/machines/synth_yes.ogg'
 
-/datum/emote/standard/basic/machine_noise/
-	bindings = ""
-	feedback_1_direct_append = ""
-	sfx = ''
+/datum/emote/standard/basic/machine_noise/no
+	bindings = "no"
+	feedback_1_direct_append = "emits a negative blip."
+	sfx = 'sound/machines/synth_no.ogg'
 
-/datum/emote/standard/basic/machine_noise/
-	bindings = ""
-	feedback_1_direct_append = ""
-	sfx = ''
-
-/datum/emote/standard/basic/machine_noise/
-	bindings = ""
-	feedback_1_direct_append = ""
-	sfx = ''
-
-/datum/emote/standard/basic/machine_noise/
-	bindings = ""
-	feedback_1_direct_append = ""
-	sfx = ''
-
-/datum/emote/standard/basic/machine_noise/
-	bindings = ""
-	feedback_1_direct_append = ""
-	sfx = ''
+/datum/emote/standard/basic/machine_noise/scary
+	bindings = "scary"
+	feedback_1_direct_append = "emits a disconcerting tone."
+	sfx = 'sound/machines/synth_scary.ogg'
