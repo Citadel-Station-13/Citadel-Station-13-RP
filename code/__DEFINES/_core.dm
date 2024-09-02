@@ -12,5 +12,8 @@
 /// * put the stack trace in stack trace storage
 #define stack_trace(message) _stack_trace(message, __FILE__, __LINE__)
 
+/// get variable if not null or
+#define VALUE_OR_DEFAULT(VAL, DEFAULT) (isnull(VAL)? (DEFAULT) : (VAL))
+
 /// byond bug https://secure.byond.com/forum/?post=2072419
 #define BLOCK_BYOND_BUG_2072419

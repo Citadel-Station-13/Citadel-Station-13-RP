@@ -7,6 +7,7 @@
 
 	//The radius of the circle used to launch projectiles. Lower values mean less projectiles are used but if set too low gaps may appear in the spread pattern
 	var/spread_range = 7
+	var/total_pellets = 1 // default value of 1 just forces one per turf as we round up
 
 	loadable = FALSE
 
@@ -17,11 +18,8 @@
 	if(!O)
 		return
 
-	src.launch_many_projectiles(O, spread_range, projectile_types)
-
+	shrapnel_explosion(total_pellets, spread_range, projectile_types)
 	qdel(src)
-
-
 
 /obj/item/grenade/shooter/rubber
 	name = "rubber pellet grenade"
@@ -47,30 +45,3 @@
 /obj/item/grenade/shooter/energy/tesla
 	name = "tesla grenade"
 	projectile_types = list(/obj/projectile/beam/chain_lightning/lesser)
-
-
-// This is just fragmentate, but less specific. Don't know how to make either of them less awful, at the moment
-/obj/proc/launch_many_projectiles(var/turf/T=get_turf(src), var/spreading_range = 5, var/list/projectiletypes=list(/obj/projectile/bullet/pistol/rubber))
-	set waitfor = 0
-	var/list/target_turfs = getcircle(T, spreading_range)
-
-	for(var/turf/O in target_turfs)
-		sleep(0)
-		var/shot_type = pick(projectiletypes)
-
-		var/obj/projectile/P = new shot_type(T)
-		P.shot_from = src.name
-
-		P.old_style_target(O)
-		P.fire()
-
-		//Make sure to hit any mobs in the source turf
-		for(var/mob/living/M in T)
-			//lying on a frag grenade while the grenade is on the ground causes you to absorb most of the shrapnel.
-			//you will most likely be dead, but others nearby will be spared the fragments that hit you instead.
-			if(M.lying && isturf(src.loc))
-				P.projectile_attack_mob(M, 0, 5)
-			else if(!M.lying && src.loc != get_turf(src)) //if it's not on the turf, it must be in the mob!
-				P.projectile_attack_mob(M, 0, 25) //you're holding a grenade, dude!
-			else
-				P.projectile_attack_mob(M, 0, 100) //otherwise, allow a decent amount of fragments to pass

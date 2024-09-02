@@ -427,9 +427,6 @@
 			. += M
 	. -= src
 
-/mob/proc/ret_grab(obj/effect/list_container/mobl/L as obj, flag)
-	return
-
 /**
  * Get the notes of this mob
  *

@@ -151,8 +151,11 @@
 /obj/projectile/sonic/strong
 	damage = 45
 
-/obj/projectile/sonic/strong/on_hit(var/atom/movable/target, var/blocked = 0)
+/obj/projectile/sonic/strong/on_impact(atom/target, impact_flags, def_zone, efficiency)
+	. = ..()
+	if(. & PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT)
+		return
 	if(ismob(target))
+		var/mob/M = target
 		var/throwdir = get_dir(firer,target)
-		target.throw_at_old(get_edge_target_turf(target, throwdir), rand(1,6), 10)
-		return 1
+		M.throw_at_old(get_edge_target_turf(target, throwdir), rand(1,6), 10)
