@@ -1,7 +1,7 @@
 // todo: can element this by usign 3 signals instead of 2, one to receive a keybind signal.
 /datum/component/wielding
 	registered_type = /datum/component/wielding
-	
+
 	/// hands needed
 	var/hands
 	/// lazylist
@@ -91,6 +91,7 @@
 
 /datum/component/wielding/proc/offhand_destroyed(obj/item/offhand/wielding/I)
 	unwield()
+
 /obj/item/offhand/wielding
 	name = "wielding offhand"
 	desc = "You shouldn't be able to see this."
@@ -103,9 +104,20 @@
 		host = null
 	return ..()
 
-// item procs
+//* Item Hooks *//
+
+/**
+ * Called when wielded via wielding component.
+ *
+ * * This is a default hook that's always executed, even if there's a callback provided to the component.
+ */
 /obj/item/proc/on_wield(mob/user, hands)
 	return
 
+/**
+ * Called when wielded via wielding component.
+ *
+ * * This is a default hook that's always executed, even if there's a callback provided to the component.
+ */
 /obj/item/proc/on_unwield(mob/user, hands)
 	return
