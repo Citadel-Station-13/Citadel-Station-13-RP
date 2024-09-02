@@ -73,7 +73,7 @@
 /obj/item/stolenpackage,
 /obj/item/plastique,
 /obj/item/plastique,
-/obj/item/melee/energy/sword/pirate,
+/obj/item/melee/transforming/energy/sword/cutlass,
 /turf/space,
 /area/awaymission/zoo)
 "aj" = (
@@ -7328,7 +7328,7 @@
 /turf/simulated/floor/holofloor/grass,
 /area/awaymission/zoo)
 "ua" = (
-/mob/living/simple_mob/fox{
+/mob/living/simple_mob/animal/passive/fox{
 	faction = "zoo"
 	},
 /turf/simulated/floor/holofloor/snow,

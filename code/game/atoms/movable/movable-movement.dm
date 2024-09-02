@@ -461,13 +461,21 @@
  * Make sure you know what you're doing if you override or call this.
  *
  * This *must* be a pure proc. You cannot act on the atom if you override this! Use Bump() for that.
+ *
+ * * **warning**: `newloc` is a ss13 construct. BYOND-native pixel movement doesn't have that.
+ *
+ * @params
+ * * AM - the thing trying to un-overlap us
+ * * newloc - (optional) where they're going
  */
 /atom/movable/Uncross(atom/movable/AM, atom/newloc)
 	. = TRUE
 	if(SEND_SIGNAL(src, COMSIG_MOVABLE_UNCROSS, AM) & COMPONENT_MOVABLE_BLOCK_UNCROSS)
 		return FALSE
-	if(isturf(newloc) && !CheckExit(AM, newloc))
-		return FALSE
+	if(isturf(newloc))
+		var/our_opinion = CheckExit(AM, newloc)
+		if(!our_opinion && (AM.generic_canpass || !AM.CanPassThrough(src, newloc, our_opinion)))
+			return FALSE
 
 /**
  * Called when something uncrosses us.
@@ -537,7 +545,7 @@
 	var/list/old_grabbed
 	if(allow_grabbed)
 		old_grabbed = list()
-		for(var/mob/M in grabbing())
+		for(var/mob/M in get_grabbing())
 			if(check_grab(M) < allow_grabbed)
 				continue
 			old_grabbed += M
@@ -565,7 +573,7 @@
 /mob/getLocationTransitForceMoveTargets(atom/destination, recurse_levels = 0, allow_buckled = TRUE, allow_pulled = TRUE, allow_grabbed = GRAB_PASSIVE)
 	. = ..()
 	if(allow_grabbed)
-		var/list/grabbing = grabbing()
+		var/list/grabbing = get_grabbing()
 		for(var/mob/M in grabbing)
 			if(check_grab(M) < allow_grabbed)
 				continue

@@ -47,9 +47,6 @@
 	. = ..()
 	if(.)
 		return
-	if(istype(mover, /obj/projectile))
-		var/obj/projectile/P = mover
-		return !P.can_hit_target(src, P.permutated, src == P.original, TRUE)
 	// thrown things still hit us even when nondense
 	if(can_cross_under(mover))
 		return TRUE
@@ -61,8 +58,11 @@
 			return TRUE
 	return ..()
 
+/**
+ * Can something cross under us without being blocked by us?
+ */
 /mob/proc/can_cross_under(atom/movable/mover)
-	return !mover.density && !mover.throwing
+	return !mover.density && !mover.throwing && !istype(mover, /obj/projectile)
 
 /**
   * Toggle the move intent of the mob
@@ -284,7 +284,7 @@
 	//Something with pulling things
 	if(locate(/obj/item/grab, mob))
 		add_delay_grab = 7
-		var/list/grabbed = mob.ret_grab()
+		var/list/grabbed = mob.get_grabbing_recursive() + src // im fucking screaming; this is because old code always considers self as grabbed.
 		if(grabbed)
 			if(grabbed.len == 2)
 				grabbed -= mob

@@ -11,7 +11,7 @@
  * * limit_text - text to append at the end if we were limited. defaults to "..."
  */
 /proc/english_list(list/input, nothing_text = "nothing", and_text = " and ", comma_text = ", ", final_comma_text = "", limit, limit_text = "...")
-	var/total = input.len
+	var/total = length(input)
 	var/limited = FALSE
 	if(!isnull(limit))
 		if(total > limit)
