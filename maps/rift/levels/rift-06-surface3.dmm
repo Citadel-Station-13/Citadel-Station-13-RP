@@ -22806,6 +22806,12 @@
 /obj/landmark/spawnpoint/job/pilot,
 /turf/simulated/floor/wood,
 /area/exploration/pilot_Office)
+"lvC" = (
+/obj/structure/bed/chair/sofa/black/left{
+	dir = 1
+	},
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/rift/surfacebase/outside/outside3)
 "lxt" = (
 /obj/effect/paint/black,
 /obj/effect/paint_stripe/violet,
@@ -39383,7 +39389,7 @@ aOi
 aOi
 acH
 acH
-acH
+lvC
 aOi
 aOi
 aOi

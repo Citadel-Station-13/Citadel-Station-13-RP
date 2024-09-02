@@ -6849,7 +6849,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/security/hallway)
 "elp" = (
-/obj/structure/bed/chair/sofa/orange/right,
+/obj/structure/bed/chair/sofa/purp/right,
 /turf/simulated/floor/wood,
 /area/rift/station/public_garden/gantry)
 "emd" = (
@@ -19105,7 +19105,7 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/surgery_hallway)
 "lXX" = (
-/obj/structure/bed/chair/sofa/orange,
+/obj/structure/bed/chair/sofa/purp,
 /turf/simulated/floor/wood,
 /area/rift/station/public_garden/gantry)
 "lYG" = (
@@ -19561,7 +19561,7 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_1)
 "mmq" = (
-/obj/structure/bed/chair/sofa/orange/left,
+/obj/structure/bed/chair/sofa/purp/left,
 /turf/simulated/floor/wood,
 /area/rift/station/public_garden/gantry)
 "mmM" = (
@@ -20224,10 +20224,10 @@
 /turf/simulated/open,
 /area/rift/station/fighter_bay/transport_tunnel_garage_maint)
 "mDt" = (
-/obj/machinery/atmospherics/pipe/simple/visible/scrubbers{
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 9
 	},
-/obj/machinery/atmospherics/pipe/simple/visible/supply{
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 9
 	},
 /obj/structure/cable/green{
@@ -21241,6 +21241,10 @@
 	pixel_y = -32
 	},
 /obj/item/deck/tarot,
+/obj/machinery/light/flamp{
+	pixel_x = -16;
+	pixel_y = 16
+	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/crew_quarters/bar/lounge)
 "ngb" = (
@@ -29471,9 +29475,7 @@
 	pixel_y = -28
 	},
 /obj/item/deck/tarot,
-/obj/item/toy/eight_ball{
-	pixel_x = 16
-	},
+/obj/item/toy/eight_ball,
 /turf/simulated/floor/carpet/bcarpet,
 /area/crew_quarters/bar/lounge)
 "spg" = (
@@ -30959,6 +30961,10 @@
 	},
 /obj/effect/floor_decal/spline/plain{
 	dir = 8
+	},
+/obj/machinery/light_switch{
+	dir = 4;
+	pixel_x = 24
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/bar/lounge)
