@@ -140,6 +140,28 @@
 		/datum/access/station/supply/mining,
 	)
 
+/datum/supply_pack/nanotrasen/misc/mining_charges_smallbulk_tyrmalin
+	name = "Tyrmalin Mining Charge Crate"
+	contains = list(
+		/obj/item/grenade/explosive/ied/tyrmalin = 5,
+	)
+	container_type = /obj/structure/closet/crate/secure/gear
+	container_name = "Tyrmalin Mining Charge crate"
+	container_access = list(
+		/datum/access/station/supply/mining,
+	)
+
+/datum/supply_pack/nanotrasen/misc/mining_charges_largebulk_tyrmalin
+	name = "Bulkpurchase Tyrmalin Mining Charge Crate"
+	contains = list(
+		/obj/item/grenade/explosive/ied/tyrmalin = 10,
+	)
+	container_type = /obj/structure/closet/crate/secure/gear
+	container_name = "Tyrmalin Mining Charge crate Bulkbuy!!!"
+	container_access = list(
+		/datum/access/station/supply/mining,
+	)
+
 /datum/supply_pack/nanotrasen/misc/breathing_nitrogen
 	name = "Emergency Nitrogen Supplies"
 	contains = list(
