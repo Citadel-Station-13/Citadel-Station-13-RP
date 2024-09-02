@@ -21,6 +21,10 @@
 	var/active = FALSE
 	/// our archway controller datum
 	var/datum/quantum_archway/controller
+	/// our cached id
+	///
+	/// * intentionally not allowed to be edited by mapper. use the linker helper.
+	var/tmp/rebuild_id
 
 /obj/machinery/quantum_archway_segment/Initialize()
 	form_network()
