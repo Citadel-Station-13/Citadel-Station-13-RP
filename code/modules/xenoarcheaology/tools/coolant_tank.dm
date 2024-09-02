@@ -9,9 +9,10 @@
 	. = ..()
 	reagents.add_reagent("coolant", 1000)
 
-/obj/structure/reagent_dispensers/coolanttank/bullet_act(var/obj/projectile/Proj)
-	if(Proj.get_structure_damage())
-		if(!istype(Proj ,/obj/projectile/beam/lasertag) && !istype(Proj ,/obj/projectile/beam/practice) ) // TODO: make this not terrible
+/obj/structure/reagent_dispensers/coolanttank/on_bullet_act(obj/projectile/proj, impact_flags, list/bullet_act_args)
+	. = ..()
+	if(proj.get_structure_damage())
+		if(!istype(proj ,/obj/projectile/beam/lasertag) && !istype(proj ,/obj/projectile/beam/practice) ) // TODO: make this not terrible
 			explode()
 
 /obj/structure/reagent_dispensers/coolanttank/legacy_ex_act()
