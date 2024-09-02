@@ -296,10 +296,10 @@ CREATE_STANDARD_TURFS(/turf/simulated/mineral/floor/ignore_cavegen)
 						new oretype(src)
 				resources[ore] = 0
 
-/turf/simulated/mineral/bullet_act(var/obj/projectile/Proj) // only emitters for now
+/turf/simulated/mineral/on_bullet_act(obj/projectile/proj, impact_flags, list/bullet_act_args)
 	. = ..()
-	if(Proj.excavation_amount)
-		var/newDepth = excavation_level + Proj.excavation_amount // Used commonly below
+	if(proj.excavation_amount)
+		var/newDepth = excavation_level + proj.excavation_amount // Used commonly below
 		if(newDepth >= 200) // first, if the turf is completely drilled then don't bother checking for finds and just drill it
 			GetDrilled(0)
 			return
@@ -312,8 +312,8 @@ CREATE_STANDARD_TURFS(/turf/simulated/mineral/floor/ignore_cavegen)
 				if(prob(50))
 					artifact_debris()
 
-		excavation_level += Proj.excavation_amount
-		update_archeo_overlays(Proj.excavation_amount)
+		excavation_level += proj.excavation_amount
+		update_archeo_overlays(proj.excavation_amount)
 
 /turf/simulated/mineral/Bumped(AM)
 

@@ -45,14 +45,10 @@
 		return
 
 
-/mob/living/simple_mob/illusion/bullet_act(obj/projectile/P)
-	if(!P)
-		return
-
+/mob/living/simple_mob/illusion/on_bullet_act(obj/projectile/proj, impact_flags, list/bullet_act_args)
 	if(realistic)
 		return ..()
-
-	return PROJECTILE_FORCE_MISS
+	return PROJECTILE_IMPACT_PHASE
 
 /mob/living/simple_mob/illusion/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	var/mob/living/M = user

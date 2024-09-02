@@ -27,13 +27,6 @@
 	icon_scale_x = 1.2
 	icon_scale_y = 1.2
 
-/obj/vehicle/sealed/mecha/working/ripley/Destroy()
-	for(var/atom/movable/A in src.cargo)
-		A.forceMove(loc)
-		step_rand(A)
-	cargo.Cut()
-	..()
-
 /obj/vehicle/sealed/mecha/working/ripley/firefighter
 	desc = "Standard APLU chassis was refitted with additional thermal protection and cistern."
 	name = "APLU \"Firefighter\""
