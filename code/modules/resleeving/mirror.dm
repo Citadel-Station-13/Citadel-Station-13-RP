@@ -81,6 +81,10 @@
 				forceMove(MT)
 				MT.imp = src
 
+/obj/item/implant/mirror/surgically_remove(mob/living/carbon/human/target, obj/item/organ/external/chest/removing_from)
+	. = ..()
+	target.mirror = null
+
 /obj/item/implant/mirror/positronic
 	name = "Synthetic Mirror"
 	desc = "An altered form of the common mirror designed to work with synthetic brains."
