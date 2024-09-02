@@ -32,7 +32,7 @@
 
 		//Machine-only emotes
 		if("beep", "buzz", "buzz2", "chime", "die", "dwoop", "error", "honk", "no", "ping", "rcough", "rsneeze", "scary", "shutdown","startup", "warn", "ye", "yes")
-
+			#warn splice into machine_noise.dm
 			var/obj/item/organ/o = internal_organs_by_name[O_VOICE]
 			if(!isSynthetic() && (!o || !(o.robotic >= ORGAN_ASSISTED)))
 				to_chat(src, "<span class='warning'>You are not a synthetic.</span>")
@@ -47,17 +47,9 @@
 			if(!M)
 				param = null
 
-			var/display_msg = "beeps"
-			var/use_sound = 'sound/machines/twobeep.ogg'
-			if(act == "buzz")
-				display_msg = "buzzes"
-				use_sound = 'sound/machines/buzz-sigh.ogg'
 			else if(act == "chime")
 				display_msg = "chimes"
 				use_sound = 'sound/machines/chime.ogg'
-			else if(act == "buzz2")
-				display_msg = "buzzes twice"
-				use_sound = 'sound/machines/buzz-two.ogg'
 			else if(act == "warn")
 				display_msg = "blares an alarm"
 				use_sound = 'sound/machines/warning-buzzer.ogg'
