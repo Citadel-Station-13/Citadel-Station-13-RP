@@ -2,9 +2,6 @@
 //* Copyright (c) 2024 Citadel Station developers.          *//
 
 //*                 IFF Factions                  *//
-//*                                               *//
-//* On new system, neutral faction is just null.  *//
-#warn should neutral be null?
 
 //? -- Special; These must start with '!' -- ?//
 //?                                          ?//
