@@ -14141,7 +14141,8 @@
 "YT" = (
 /obj/machinery/atmospherics/component/binary/pump/high_power/on{
 	dir = 1;
-	name = "Air Supply"
+	name = "Air Supply";
+	target_pressure = 1000
 	},
 /turf/simulated/floor/plating,
 /area/tradeport/atmospherics)
