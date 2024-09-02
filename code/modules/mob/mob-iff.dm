@@ -61,11 +61,11 @@
 	if(islist(new_factions))
 		for(var/i in 1 to length(new_factions))
 			var/faction = new_factions[i]
-			if(islist(faction) || faction[1] == "!")
+			if(islist(faction) || ispath(faction) || faction[1] == "!")
 				faction = process_iff_faction(faction)
 				new_factions[i] = faction
 			continue // nothing otherwise to do yet
-	else if(islist(new_factions) || new_factions[1] == "!")
+	else if(islist(new_factions) || ispath(new_factions) || new_factions[1] == "!")
 		new_factions = process_iff_faction(new_factions)
 
 	iff_factions = new_factions

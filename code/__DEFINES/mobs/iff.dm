@@ -30,6 +30,7 @@
 
 // todo: "bind to map template" (?)
 // todo: "bind to /area" (?)
+// todo: "bind to specific type" handling; maybe just input typepath?
 
 /// automatically detect what we should bind to
 ///

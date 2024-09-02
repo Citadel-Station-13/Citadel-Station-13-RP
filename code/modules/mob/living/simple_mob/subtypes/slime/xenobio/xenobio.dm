@@ -279,7 +279,7 @@
 	if(untamable_inherit)
 		baby.untamable = untamable
 	baby.untamable_inherit = untamable_inherit
-	baby.faction = faction
+	baby.copy_iff_factions(src)
 	baby.friends = friends.Copy()
 
 	if(no_step != 1)
