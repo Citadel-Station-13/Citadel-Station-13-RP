@@ -36,10 +36,6 @@
 
 // Activate Noms!
 /mob/living/simple_mob/vore/aggressive/panther
-	vore_active = 1
-	vore_capacity = 2
-	vore_pounce_chance = 10
-	vore_icons = SA_ICON_LIVING | SA_ICON_REST
 
 /datum/say_list/panther
 	speak = list("RAWR!","Rawr!","GRR!","Growl!")
