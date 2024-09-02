@@ -554,7 +554,7 @@ Add those other swinging traps you mentioned above!
 /* This is all per-tick processing stuff. It isn't working the way I want, so I'm reverting it.
 
 if (istype(AM, /mob/living))
-		START_PROCESSING(SSfastprocess, src)
+		START_PROCESSING(SSprocess_5fps, src)
 		var/mob/living/M = AM
 		M.visible_message("<span class='danger'>[M] is slashed by the spinning blades!</span>", \
 						"<span class='userdanger'>You are slashed by the spinning blades!</span>")
@@ -565,7 +565,7 @@ if (istype(AM, /mob/living))
 	M.apply_damage(damage, BRUTE)
 
 /obj/effect/trap/pop_up/pillar/Destroy()
-	STOP_PROCESSING(SSfastprocess, src)
+	STOP_PROCESSING(SSprocess_5fps, src)
 	return ..()
 */
 

@@ -47,8 +47,7 @@
 	else
 		return ..()
 
-/obj/structure/target_stake/bullet_act(obj/projectile/P, def_zone)
+/obj/structure/target_stake/on_bullet_act(obj/projectile/proj, impact_flags, list/bullet_act_args)
 	if(pinned_target)
-		return pinned_target.bullet_act(P, def_zone)
-	else
-		return ..()
+		return proj.impact_redirect(pinned_target, args)
+	return ..()

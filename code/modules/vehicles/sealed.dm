@@ -176,7 +176,7 @@
  * * silent - suppress user messages
  * * suppressed - suppress external messages
  */
-/obj/vehicle/sealed/proc/mob_exit(mob/exiting, datum/event_args/actor/actor, atom/new_loc, silent, suppressed)
+/obj/vehicle/sealed/proc/mob_exit(mob/exiting, datum/event_args/actor/actor, atom/new_loc = drop_location(), silent, suppressed)
 	var/old_control_flags = occupants[exiting]
 	remove_occupant(exiting)
 	exiting.forceMove(new_loc)
