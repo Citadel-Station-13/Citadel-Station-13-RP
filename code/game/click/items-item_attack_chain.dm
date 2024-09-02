@@ -22,14 +22,14 @@
 
 	. = clickchain_flags
 
-	. |= SEND_SIGNAL(src, COMSIG_ITEM_USING_AS_ITEM, target, e_args, clickchain_flags, reachability_flags)
+	. |= SEND_SIGNAL(src, COMSIG_ITEM_USING_AS_ITEM, target, e_args, clickchain_flags, reachability_check)
 	if(. & CLICKCHAIN_DO_NOT_PROPAGATE)
 		return
 	. |= using_as_item(target, e_args, clickchain_flags, reachability_check)
 	if(. & CLICKCHAIN_DO_NOT_PROPAGATE)
 		return
 
-	. |= SEND_SIGNAL(src, COMSIG_ATOM_USING_ITEM_ON, src, e_args, clickchain_flags, reachability_flags)
+	. |= SEND_SIGNAL(src, COMSIG_ATOM_USING_ITEM_ON, src, e_args, clickchain_flags, reachability_check)
 	if(. & CLICKCHAIN_DO_NOT_PROPAGATE)
 		return
 	. |= target.using_item_on(src, e_args, clickchain_flags, reachability_check)
