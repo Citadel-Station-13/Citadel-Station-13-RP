@@ -7,7 +7,8 @@
 	desc = "A big stompy mech!"
 	icon = 'icons/mecha/mecha.dmi'
 
-	faction = "syndicate"
+	iff_factions = MOB_IFF_FACTION_MERCENARY
+
 	movement_cooldown = 5
 	movement_sound = "mechstep" // This gets fed into playsound(), which can also take strings as a 'group' of sound files.
 	turn_sound = 'sound/mecha/mechturn.ogg'
@@ -70,7 +71,7 @@
 	// 'Eject' our pilot, if one exists.
 	if(pilot_type)
 		var/mob/living/L = new pilot_type(loc)
-		L.faction = src.faction
+		L.copy_iff_factions(src)
 
 	new wreckage(loc) // Leave some wreckage.
 

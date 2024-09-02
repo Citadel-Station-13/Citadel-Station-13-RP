@@ -28,13 +28,13 @@
 			if(MOB_IFF_FACTION_BIND_TO_MAP)
 				#warn impl
 				return "[prepend]-[descriptor[descriptor[1]]]"
-	switch(string)
+	switch(descriptor)
 		if(MOB_IFF_FACTION_BIND_TO_LEVEL)
 			#warn impl
 		if(MOB_IFF_FACTION_BIND_TO_MAP)
 			#warn impl
 		else
-			return string
+			return descriptor
 
 //* Direct Operations *//
 

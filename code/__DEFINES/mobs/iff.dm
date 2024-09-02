@@ -31,6 +31,19 @@
 // todo: "bind to map template" (?)
 // todo: "bind to /area" (?)
 
+/// automatically detect what we should bind to
+///
+/// * submap
+/// * map
+/// todo: impl
+#define MOB_IFF_FACTION_BIND_AUTO MOB_IFF_FACTION_BIND_TO_MAP
+/// automatically detect what we should bind to, and use a specific separated group
+///
+/// * submap
+/// * map
+/// todo: impl
+#define MOB_IFF_FACTION_BIND_AUTO_GROUP(GROUP) list(MOB_IFF_FACTION_BIND_TO_MAP = GROUP)
+
 //? Default factions *//
 
 /// mobs have this by default
@@ -55,6 +68,7 @@
 #define MOB_IFF_FACTION_BLOB "alien-blob"
 #define MOB_IFF_FACTION_CHIMERIC "alien-chimeric"
 #define MOB_IFF_FACTION_SLIME "alien-slime"
+#define MOB_IFF_FACTION_STATUE "alien-statue"
 #define MOB_IFF_FACTION_XENOMORPH "alien-xenomorph"
 
 //? Animal factions ?//

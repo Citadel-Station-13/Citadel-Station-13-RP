@@ -35,7 +35,8 @@
 	icon_living = "mouse_gray"
 	icon_dead = "mouse_gray_dead"
 	icon_rest = "mouse_gray_sleep"
-	faction = "mouse_army"
+
+	iff_factions = MOB_IFF_FACTION_FARM_PEST
 
 	maxHealth = 50
 	health = 50

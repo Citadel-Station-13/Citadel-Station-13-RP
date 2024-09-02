@@ -64,7 +64,7 @@
 	if(total_spawns > 0)
 		total_spawns--
 	if(mob_faction)
-		L.faction = mob_faction
+		L.set_iff_factions(mob_faction)
 	return L
 
 /obj/structure/mob_spawner/proc/get_death_report(var/mob/living/L)
@@ -279,7 +279,7 @@ It also makes it so a ghost wont know where all the goodies/mobs are.
 		my_mob.low_priority = TRUE
 
 		if(faction)
-			my_mob.faction = faction
+			my_mob.set_iff_factions(faction)
 
 		if(atmos_comp)
 			var/turf/T = get_turf(src)

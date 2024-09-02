@@ -39,7 +39,7 @@
 	icon_dead = "drone_dead"
 	has_eye_glow = TRUE
 
-	faction = "malf_drone"
+	iff_factions = MOB_IFF_FACTION_MERCENARY
 
 	maxHealth = 50 // Shield has 150 for total of 200.
 	health = 50

@@ -17,7 +17,7 @@
 	icon_gib = "bat_dead"
 	catalogue_data = list(/datum/category_item/catalogue/fauna/bats)
 
-	faction = "scarybat"
+	iff_factions = MOB_IFF_FACTION_BIND_TO_MAP
 
 	maxHealth = 20
 	health = 20

@@ -62,7 +62,8 @@
 
 	see_in_dark = 6
 	universal_understand = 1
-	faction = "roaches"
+
+	iff_factions = MOB_IFF_FACTION_ROACH
 
 	mob_size = MOB_SMALL
 	pass_flags = ATOM_PASS_TABLE
@@ -377,7 +378,7 @@
 	item_state = "uberfallen"
 	icon_living = "uberfallen"
 	icon_dead = "uberfallen_dead"
-	faction = "synthtide"
+
 	catalogue_data = list(/datum/category_item/catalogue/fauna/roach/uberfallen)
 	maxHealth = 30
 	health = 30

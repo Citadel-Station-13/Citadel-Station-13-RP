@@ -145,7 +145,7 @@
 	var/mob_count = 0				// Are there enough mobs to consider grenading?
 	var/turf/T = get_turf(A)
 	for(var/mob/M in range(T, 2))
-		if(M.faction == faction) 	// Don't grenade our friends
+		if(shares_iff_faction(M))
 			return FALSE
 		if(M in oview(src, special_attack_max_range))	// And lets check if we can actually see at least two people before we throw a grenade
 			if(!M.stat)			// Dead things don't warrant a grenade

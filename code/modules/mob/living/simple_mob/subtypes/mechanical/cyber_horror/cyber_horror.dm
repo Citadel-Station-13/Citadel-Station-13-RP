@@ -22,7 +22,7 @@
 	icon_gib = "cyber_horror_dead"
 	catalogue_data = list(/datum/category_item/catalogue/fauna/cyberhorror)
 
-	faction = "synthtide"
+	iff_factions = MOB_IFF_FACTION_MUTANT
 
 	ai_holder_type = /datum/ai_holder/polaris/simple_mob/melee/evasive
 
@@ -461,7 +461,7 @@
 	var/mob_count = 0				// Are there enough mobs?
 	var/turf/T = get_turf(A)
 	for(var/mob/M in range(T, 2))
-		if(M.faction == faction) 	// Don't grenade our friends
+		if(shares_iff_faction(M))
 			return FALSE
 		if(M in oview(src, special_attack_max_range))
 			if(!M.stat)
