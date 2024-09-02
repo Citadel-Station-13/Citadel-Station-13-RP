@@ -130,13 +130,6 @@
 	to_chat(target,"You've been hit by bluespace artillery!")
 	log_and_message_admins("[key_name(target)] has been hit by Bluespace Artillery fired by [key_name(user ? user : usr)]")
 
-	var/obj/effect/stop/S
-	S = new /obj/effect/stop
-	S.victim = target
-	S.loc = target.loc
-	spawn(20)
-		qdel(S)
-
 	var/turf/simulated/floor/T = get_turf(target)
 	if(istype(T))
 		if(prob(80))	T.break_tile_to_plating()

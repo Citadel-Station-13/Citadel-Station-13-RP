@@ -213,11 +213,9 @@
 	src.cleanup(8)
 	..()
 
-/obj/machinery/shieldwallgen/bullet_act(var/obj/projectile/Proj)
-	storedpower -= 400 * Proj.get_structure_damage()
-	..()
-	return
-
+/obj/machinery/shieldwallgen/on_bullet_act(obj/projectile/proj, impact_flags, list/bullet_act_args)
+	. = ..()
+	storedpower -= 400 * proj.get_structure_damage()
 
 //////////////Containment Field START
 /obj/machinery/shieldwall
@@ -277,18 +275,15 @@
 		else
 			gen_secondary.storedpower -= power_usage
 
-
-/obj/machinery/shieldwall/bullet_act(var/obj/projectile/Proj)
+/obj/machinery/shieldwall/on_bullet_act(obj/projectile/proj, impact_flags, list/bullet_act_args)
+	. = ..()
 	if(needs_power)
 		var/obj/machinery/shieldwallgen/G
 		if(prob(50))
 			G = gen_primary
 		else
 			G = gen_secondary
-		G.storedpower -= 400 * Proj.get_structure_damage()
-	..()
-	return
-
+		G.storedpower -= 400 * proj.get_structure_damage()
 
 /obj/machinery/shieldwall/legacy_ex_act(severity)
 	if(needs_power)

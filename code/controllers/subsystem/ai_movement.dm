@@ -83,15 +83,14 @@ SUBSYSTEM_DEF(ai_movement)
 			var/reschedule_delay = being_processed.move(++being_processed.movement_cycle)
 			// check if we are still ticking; if not, we got ejected, so we abort as we don't need to eject or insert again
 			if(buckets[bucket_offset] == being_processed)
-				// eject; we don't change being_processed.ticking_(next|previous)
-				if(being_processed.movement_bucket_next == being_processed)
-					buckets[bucket_offset] = null
-				else
-					buckets[bucket_offset] = being_processed.movement_bucket_next
-					being_processed.movement_bucket_next.movement_bucket_prev = being_processed.movement_bucket_prev
-					being_processed.movement_bucket_prev.movement_bucket_next = being_processed.movement_bucket_next
-
 				if(reschedule_delay)
+					// eject; we don't change being_processed.ticking_(next|previous)
+					if(being_processed.movement_bucket_next == being_processed)
+						buckets[bucket_offset] = null
+					else
+						buckets[bucket_offset] = being_processed.movement_bucket_next
+						being_processed.movement_bucket_next.movement_bucket_prev = being_processed.movement_bucket_prev
+						being_processed.movement_bucket_prev.movement_bucket_next = being_processed.movement_bucket_next
 					// insert; we now set its ticking_(next|previous)
 					// note that we don't do catchup
 					var/inject_offset = ((now_index_raw + round(DS2TICKS(reschedule_delay))) % bucket_amount) + 1

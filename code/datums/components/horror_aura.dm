@@ -11,7 +11,7 @@ It also serves the purposes of portraying the Lore accurate effect of "Acausal L
 /datum/component/horror_aura/Initialize(radius)
 	if(radius)
 		src.radius = radius
-	if(. & COMPONENT_INCOMPATIBLE)
+	if(. == COMPONENT_INCOMPATIBLE)
 		return
 	else if(!istype(parent))
 		return COMPONENT_INCOMPATIBLE

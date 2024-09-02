@@ -182,11 +182,9 @@
 		if(L == src)
 			continue
 
-		if(ishuman(L))
-			var/mob/living/carbon/human/H = L
-			if(H.check_shields(damage = 0, damage_source = src, attacker = src, def_zone = null, attack_text = "the leap"))
- // We were blocked.
-				continue
+		var/list/shieldcall_result = L.atom_shieldcall(40, BRUTE, MELEE_TIER_MEDIUM, ARMOR_MELEE, NONE, ATTACK_TYPE_MELEE)
+		if(shieldcall_result[SHIELDCALL_ARG_FLAGS] & SHIELDCALL_FLAGS_BLOCK_ATTACK)
+			continue
 
 		victim = L
 		break
@@ -299,7 +297,7 @@
 	..() // For the poison.
 
 // Force unstealthing if attacked.
-/mob/living/simple_mob/mechanical/cyber_horror/tajaran/bullet_act(obj/projectile/P)
+/mob/living/simple_mob/mechanical/cyber_horror/tajaran/on_bullet_act(obj/projectile/proj, impact_flags, list/bullet_act_args)
 	. = ..()
 	break_cloak()
 
@@ -435,7 +433,10 @@
 	damage = 15
 	damage_type = BRUTE
 
-/obj/projectile/arc/blue_energy/priest/on_hit(var/atom/target, var/blocked = 0)
+/obj/projectile/arc/blue_energy/priest/on_impact(atom/target, impact_flags, def_zone, efficiency)
+	. = ..()
+	if(. & PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT)
+		return
 	if(ishuman(target))
 		var/mob/living/carbon/human/M = target
 		M.Confuse(rand(3,5))
@@ -500,8 +501,11 @@
 	icon_state = "plasma3"
 	rad_power = RAD_INTENSITY_PROJ_ARC_HORROR_PRIEST
 
-/obj/projectile/arc/radioactive/priest/on_impact(turf/T)
+/obj/projectile/arc/radioactive/priest/on_impact(atom/target, impact_flags, def_zone, efficiency)
 	. = ..()
+	if(!isturf(target))
+		return
+	var/turf/T = target
 	new /obj/effect/explosion(T)
 	explosion(T, 0, 1, 4)
 

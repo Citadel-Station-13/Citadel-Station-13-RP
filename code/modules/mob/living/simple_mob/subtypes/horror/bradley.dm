@@ -47,9 +47,9 @@
 	playsound(src, 'sound/h_sounds/mumble.ogg', 50, 1)
 	..()
 
-/mob/living/simple_mob/horror/bradley/bullet_act()
+/mob/living/simple_mob/horror/bradley/on_bullet_act(obj/projectile/proj, impact_flags, list/bullet_act_args)
+	. = ..()
 	playsound(src, 'sound/h_sounds/holla.ogg', 50, 1)
-	..()
 
 /mob/living/simple_mob/horror/bradley/attack_hand(mob/user, list/params)
 	playsound(src, 'sound/h_sounds/holla.ogg', 50, 1)

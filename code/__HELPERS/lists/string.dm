@@ -1,8 +1,10 @@
 /**
  * Returns a list in plain english as a string.
+ *
+ * * input - (optional) list or null; if null, we use empty_text
  */
 /proc/english_list(list/input, nothing_text = "nothing", and_text = " and ", comma_text = ", ", final_comma_text = "" )
-	var/total = input.len
+	var/total = length(input)
 	if (!total)
 		return "[nothing_text]"
 	else if (total == 1)
