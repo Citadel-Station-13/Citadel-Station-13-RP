@@ -119,10 +119,13 @@
 
 /**
  * angle is clockwise from north
+ *
+ * @return self
  */
 /datum/point/proc/shift_in_projectile_angle(angle, distance)
 	x += sin(angle) * distance
 	y += cos(angle) * distance
+	return src
 
 /**
  * doesn't use set base pixel x/y

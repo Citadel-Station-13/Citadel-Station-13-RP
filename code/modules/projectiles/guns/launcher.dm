@@ -14,11 +14,6 @@
 /obj/item/gun/launcher/can_hit(var/mob/living/target as mob, var/mob/living/user as mob)
 	return 1
 
-//Override this to avoid a runtime with suicide handling.
-/obj/item/gun/launcher/handle_suicide(mob/living/user)
-	to_chat(user, "<font color='red'>Shooting yourself with \a [src] is pretty tricky. You can't seem to manage it.</font>")
-	return
-
 /obj/item/gun/launcher/proc/update_release_force(obj/projectile)
 	return 0
 
