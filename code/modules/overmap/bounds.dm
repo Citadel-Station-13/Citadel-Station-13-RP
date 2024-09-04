@@ -20,6 +20,8 @@
 	var/mutable_appearance/MA = new
 	. = MA
 	MA.appearance_flags = KEEP_APART | RESET_TRANSFORM
+	// mutable appearance is not FLOAT_PLANE by default
+	MA.plane = FLOAT_PLANE
 	MA.icon = I
 	MA.color = color
 	MA.alpha = 160
@@ -59,6 +61,8 @@
 	var/mutable_appearance/MA = new
 	. = MA
 	MA.appearance_flags = KEEP_APART | RESET_TRANSFORM
+	// mutable appearance is not FLOAT_PLANE by default
+	MA.plane = FLOAT_PLANE
 	MA.icon = I
 	MA.alpha = 160
 	MA.filters = filter(

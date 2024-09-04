@@ -84,6 +84,8 @@
 			clone.icon = icon
 			clone.icon_state = icon_state
 			clone.overlays = GetOverlays()
+			clone.layer = FLOAT_LAYER
+			clone.plane = FLOAT_PLANE
 			// do NOT inherit our overlays! parallax layers should never have overlays,
 			// because if it inherited us it'll result in exponentially increasing overlays
 			// due to cut_overlays() above over there being a queue operation and not instant!

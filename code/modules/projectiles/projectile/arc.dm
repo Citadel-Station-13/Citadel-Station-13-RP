@@ -10,6 +10,7 @@
 	name = "arcing shot"
 	icon_state = "fireball" // WIP
 	movement_type = MOVEMENT_UNSTOPPABLE
+	impact_ground_on_expiry = TRUE
 	plane = ABOVE_PLANE // Since projectiles are 'in the air', they might visually overlap mobs while in flight, so the projectile needs to be above their plane.
 	speed = 10 * WORLD_ICON_SIZE
 	var/fired_dir = null		// Which direction was the projectile fired towards. Needed to invert the projectile turning based on if facing left or right.
@@ -17,8 +18,6 @@
 	var/visual_y_offset = -16 // Adjusts how high the projectile and its shadow start, visually. This is so the projectile and shadow align with the center of the tile.
 	var/obj/effect/projectile_shadow/shadow = null // Visual indicator for the projectile's 'true' position. Needed due to being bound to two dimensions in reality.
 
-/obj/projectile/arc/Bump()
-	return
 
 /obj/projectile/arc/Initialize(mapload)
 	shadow = new(get_turf(src))
@@ -27,7 +26,6 @@
 /obj/projectile/arc/Destroy()
 	QDEL_NULL(shadow)
 	return ..()
-
 
 /obj/projectile/arc/proc/calculate_initial_pixel_distance(atom/user, atom/target)
 	var/datum/point/A = new(user)
@@ -43,12 +41,6 @@
 	var/datum/point/current_point = new(src)
 	var/datum/point/starting_point = new(starting)
 	return pixel_length_between_points(current_point, starting_point)
-
-/obj/projectile/arc/legacy_on_range()
-	if(loc)
-		on_impact(loc)
-	return ..()
-
 
 /obj/projectile/arc/launch_projectile(atom/target, target_zone, mob/user, params, angle_override, forced_spread = 0)
 	fired_dir = get_dir(user, target) // Used to determine if the projectile should turn in the air.
@@ -93,7 +85,6 @@
 			shadow.pixel_x = pixel_x
 			shadow.pixel_y = pixel_y + visual_y_offset
 
-
 /obj/effect/projectile_shadow
 	name = "shadow"
 	desc = "You better avoid the thing coming down!"
@@ -102,64 +93,13 @@
 	anchored = TRUE
 	animate_movement = 0 // Just like the projectile it's following.
 
-//////////////
-//	Subtypes
-//////////////
+//* We do not hit normally. *//
 
-// This is a test projectile in the sense that its testing the code to make sure it works,
-// as opposed to a 'can I hit this thing' projectile.
-/obj/projectile/arc/test/on_impact(turf/T)
-	new /obj/effect/explosion(T)
-	T.color = "#FF0000"
+/obj/projectile/arc/scan_crossed_atom(atom/movable/target)
+	return
 
-// Generic, Hivebot related
-/obj/projectile/arc/blue_energy
-	name = "energy missile"
-	icon_state = "force_missile"
-	damage = 15
-	damage_type = BURN
+/obj/projectile/arc/scan_moved_turf(turf/tile)
+	return
 
-/obj/projectile/arc/blue_energy/on_impact(turf/T)
-	for(var/mob/living/L in T)
-		projectile_attack_mob(L) // Everything on the turf it lands gets hit.
-
-// Fragmentation arc shot
-/obj/projectile/arc/fragmentation
-	name = "fragmentation shot"
-	icon_state = "shell"
-	var/list/fragment_types = list(
-		/obj/projectile/bullet/pellet/fragment, /obj/projectile/bullet/pellet/fragment, \
-		/obj/projectile/bullet/pellet/fragment, /obj/projectile/bullet/pellet/fragment/strong
-		)
-	var/fragment_amount = 63 // Same as a grenade.
-	var/spread_range = 7
-
-/obj/projectile/arc/fragmentation/on_impact(turf/T)
-	fragmentate(T, fragment_amount, spread_range, fragment_types)
-
-/obj/projectile/arc/fragmentation/mortar
-	icon_state = "mortar"
-	fragment_amount = 10
-	spread_range = 3
-
-// EMP arc shot
-/obj/projectile/arc/emp_blast
-	name = "emp blast"
-	icon_state = "bluespace"
-
-/obj/projectile/arc/emp_blast/on_impact(turf/T)
-	empulse(T, 2, 4, 7, 10) // Normal EMP grenade.
-
-/obj/projectile/arc/emp_blast/weak/on_impact(turf/T)
-	empulse(T, 1, 2, 3, 4) // Sec EMP grenade.
-
-// Radiation arc shot
-/obj/projectile/arc/radioactive
-	name = "radiation blast"
-	icon_state = "green_pellet"
-	icon_scale_x = 2
-	icon_scale_y = 2
-	var/rad_power = RAD_INTENSITY_PROJ_ARC
-
-/obj/projectile/arc/radioactive/on_impact(turf/T)
-	radiation_pulse(T, rad_power)
+/obj/projectile/arc/impact_loop(turf/was_moving_onto, atom/bumped)
+	return

@@ -59,14 +59,26 @@ GLOBAL_REAL_LIST(armor_enums) = list(
 	ARMOR_ACID,
 )
 
+GLOBAL_REAL_LIST(armor_types) = list(
+	ARMOR_MELEE,
+	ARMOR_BULLET,
+	ARMOR_LASER,
+	ARMOR_ENERGY,
+	ARMOR_BOMB,
+	ARMOR_BIO,
+	ARMOR_RAD,
+	ARMOR_FIRE,
+	ARMOR_ACID,
+)
+
 //? --- armor tiers ---
 
-#define ARMOR_TIER_DEFAULT 0
+#define ARMOR_TIER_DEFAULT ARMOR_TIER_BASELINE
 
 #define ARMOR_TIER_LAUGHABLE -3
 #define ARMOR_TIER_LOW -2
 #define ARMOR_TIER_BELOW -1
-#define ARMOR_TIER_NORMAL 0
+#define ARMOR_TIER_BASELINE 0
 #define ARMOR_TIER_ABOVE 1
 #define ARMOR_TIER_HIGH 2
 #define ARMOR_TIER_OVERWHELMING 3
@@ -76,37 +88,49 @@ GLOBAL_REAL_LIST(armor_enums) = list(
 
 //? melee
 
-#define MELEE_TIER_DEFAULT ARMOR_TIER_DEFAULT
+#define MELEE_TIER_DEFAULT MELEE_TIER_MEDIUM
 
 #define MELEE_TIER_UNARMED_DEFAULT ARMOR_TIER_LOW
 #define MELEE_TIER_UNARMED_FISTS ARMOR_TIER_LOW
 #define MELEE_TIER_UNARMED_CLAW ARMOR_TIER_BELOW
-#define MELEE_TIER_LIGHT ARMOR_TIER_DEFAULT
+#define MELEE_TIER_LIGHT ARMOR_TIER_BASELINE
 #define MELEE_TIER_MEDIUM ARMOR_TIER_ABOVE
 #define MELEE_TIER_HEAVY ARMOR_TIER_HIGH
 #define MELEE_TIER_EXTREME ARMOR_TIER_OVERWHELMING
 
 //? bullet
 
-#define BULLET_TIER_DEFAULT ARMOR_TIER_DEFAULT
+#define BULLET_TIER_DEFAULT BULLET_TIER_MEDIUM
 
-#define BULLET_TIER_LAUGHABLE ARMOR_TIER_BELOW       //! super improvised rounds / pistols / whatever.
-#define BULLET_TIER_LOW ARMOR_TIER_DEFAULT           //! pistols
-#define BULLET_TIER_MEDIUM ARMOR_TIER_ABOVE          //! smgs
-#define BULLET_TIER_HIGH ARMOR_TIER_HIGH             //! rifles
-#define BULLET_TIER_EXTREME ARMOR_TIER_OVERWHELMING  //! lmgs, light mech weapons
-#define BULLET_TIER_RIDICULOUS ARMOR_TIER_RIDICULOUS //! heavy mech weapons
+/// super improvised rounds / pistols / whatever.
+#define BULLET_TIER_LAUGHABLE ARMOR_TIER_BELOW
+/// pistols
+#define BULLET_TIER_LOW ARMOR_TIER_BASELINE
+/// smgs
+#define BULLET_TIER_MEDIUM ARMOR_TIER_ABOVE
+/// rifles
+#define BULLET_TIER_HIGH ARMOR_TIER_HIGH
+/// lmgs, light mech weapons
+#define BULLET_TIER_EXTREME ARMOR_TIER_OVERWHELMING
+/// heavy mech weapons
+#define BULLET_TIER_RIDICULOUS ARMOR_TIER_RIDICULOUS
 
 //? laser
 
-#define LASER_TIER_DEFAULT ARMOR_TIER_DEFAULT
+#define LASER_TIER_DEFAULT LASER_TIER_MEDIUM
 
-#define LASER_TIER_LAUGHABLE ARMOR_TIER_BELOW        //! improvised laser focis / etc
-#define LASER_TIER_LOW ARMOR_TIER_DEFAULT            //! low tier lasers
-#define LASER_TIER_MEDIUM ARMOR_TIER_ABOVE           //! laser carbines, energy guns, etc
-#define LASER_TIER_HIGH ARMOR_TIER_HIGH              //! x-ray rifles, snipers
-#define LASER_TIER_EXTREME ARMOR_TIER_OVERWHELMING   //! mech weapons, usualy
-#define LASER_TIER_RIDICULOUS ARMOR_TIER_RIDICULOUS  //! power transmission laser?
+/// improvised laser focis / etc
+#define LASER_TIER_LAUGHABLE ARMOR_TIER_BELOW
+/// low tier lasers
+#define LASER_TIER_LOW ARMOR_TIER_BASELINE
+/// laser carbines, energy guns, etc
+#define LASER_TIER_MEDIUM ARMOR_TIER_ABOVE
+/// x-ray rifles, snipers
+#define LASER_TIER_HIGH ARMOR_TIER_HIGH
+/// mech weapons, usualy
+#define LASER_TIER_EXTREME ARMOR_TIER_OVERWHELMING
+/// power transmission laser?
+#define LASER_TIER_RIDICULOUS ARMOR_TIER_RIDICULOUS
 
 //? --- armor calculations ---
 
