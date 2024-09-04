@@ -244,18 +244,36 @@
 		transition = data["transition"]
 	if(!isnull(data["base_turf"]))
 		base_turf = text2path(data["base_turf"])
+
+	// Resolve links, including if they got serlalized as typepaths.
+	// todo: typepaths should be trampled into ids on save instead.
+	var/resolving_link
+	var/maybe_link_path
 	if(!isnull(data["link_north"]))
-		link_north = data["link_north"]
+		resolving_link = data["north"]
+		maybe_link_path = text2path(resolving_link)
+		link_north = ispath(maybe_link_path) ? maybe_link_path : resolving_link
 	if(!isnull(data["link_south"]))
-		link_south = data["link_south"]
+		resolving_link = data["south"]
+		maybe_link_path = text2path(resolving_link)
+		link_south = ispath(maybe_link_path) ? maybe_link_path : resolving_link
 	if(!isnull(data["link_above"]))
-		link_above = data["link_above"]
+		resolving_link = data["above"]
+		maybe_link_path = text2path(resolving_link)
+		link_above = ispath(maybe_link_path) ? maybe_link_path : resolving_link
 	if(!isnull(data["link_below"]))
-		link_below = data["link_below"]
+		resolving_link = data["below"]
+		maybe_link_path = text2path(resolving_link)
+		link_below = ispath(maybe_link_path) ? maybe_link_path : resolving_link
 	if(!isnull(data["link_west"]))
-		link_west = data["link_west"]
+		resolving_link = data["west"]
+		maybe_link_path = text2path(resolving_link)
+		link_west = ispath(maybe_link_path) ? maybe_link_path : resolving_link
 	if(!isnull(data["link_east"]))
-		link_east = data["link_east"]
+		resolving_link = data["east"]
+		maybe_link_path = text2path(resolving_link)
+		link_east = ispath(maybe_link_path) ? maybe_link_path : resolving_link
+
 	if(!isnull(data["air_indoors"]))
 		air_indoors = data["air_indoors"]
 	if(!isnull(data["air_outdoors"]))
