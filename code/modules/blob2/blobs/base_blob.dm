@@ -255,8 +255,8 @@ var/list/blobs = list()
 /obj/structure/blob/on_bullet_act(obj/projectile/proj, impact_flags, list/bullet_act_args)
 	. = ..()
 
-	if(isliving(P.firer))
-		var/mob/living/L = P.firer
+	if(isliving(proj.firer))
+		var/mob/living/L = proj.firer
 		if(L.has_iff_faction(MOB_IFF_FACTION_BLOB))
 			return TRUE
 
