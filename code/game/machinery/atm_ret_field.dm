@@ -223,9 +223,9 @@
 
 /obj/structure/atmospheric_retention_field/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(density)
-		visible_message("You touch the retention field, and it crackles faintly. Tingly!")
+		to_chat(user, "You touch the retention field, and it crackles faintly. Tingly!")
 	else
-		visible_message("You try to touch the retention field, but pass through it like it isn't even there.")
+		to_chat(user, "You try to touch the retention field, but pass through it like it isn't even there.")
 
 /obj/structure/atmospheric_retention_field/legacy_ex_act()
 	return

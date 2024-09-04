@@ -624,7 +624,7 @@
 	return
 
 /obj/vehicle/sealed/mecha/proc/interface_action(obj/machinery/target)
-	if(istype(target, /obj/machinery/access_button))
+	if(istype(target, /obj/machinery/access_button) || istype(target, /obj/machinery/button/remote/blast_door))
 		src.occupant_message("<span class='notice'>Interfacing with [target].</span>")
 		src.log_message("Interfaced with [target].")
 		target.attack_hand(src.occupant_legacy)
