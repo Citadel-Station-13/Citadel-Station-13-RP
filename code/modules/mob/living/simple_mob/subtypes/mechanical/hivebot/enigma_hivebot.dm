@@ -358,6 +358,50 @@
 	ai_holder_type = /datum/ai_holder/polaris/simple_mob/ranged/kiting
 	projectiletype = /obj/projectile/ion
 	base_attack_cooldown = 25
+
+//P4 units - Anything nanotechnology paired with abductor tech - Elite units
+
+/mob/living/simple_mob/mechanical/hivebot/enigma/P4/Wraith
+	name = "wraith"
+	icon = 'icons/mob/enigma.dmi'
+	desc = "A sleek, black bipedal combat unit with an unsettling, advanced design. Its chassis being an amalgamation of various prosthetic and synthetic components or at least mimicking such. The unit is constantly shifting and releasing a thin trail of metallic dust as it moves. Spines bristling with antigrav particles protrude from its arms, shoulders, and back, while its featureless faceplate continuously warps. The unit shudders and vibrates with uncanny precision. It wields a modified particle weapon resembling a Hephaestus G40. A capital Sigma symbol is etched on its chest, and a circular power pack on its back hums with gravity-defying particles"
+	icon_living = "wraith"
+	icon_state = "wraith"
+	maxHealth = 200 //More armored but less max HP and also has a shield
+	health = 200
+	evasion = 15 //Superior reflexes due to nanotech and being build for combat
+	armor_legacy_mob = list(
+				"melee"		= 5,
+				"bullet"	= 20,
+				"laser"		= 30,
+				"energy"	= 30,
+				"bomb"		= 20,
+				"bio"		= 100,
+				"rad"		= 100
+				)
+
+	legacy_melee_damage_lower = 18
+	legacy_melee_damage_upper = 18 //It hits you with a hardened nanite fist. Thats supposed to hurt  
+	movement_cooldown = 1 //again faster than standard grunts
+	faction = "enigma"
+	movement_sound = 'sound/enigma/enigma_move.ogg'
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/ranged/kiting //Made to draw fire hence kiting
+	projectiletype = /obj/projectile/beam/antigravbeamwraith
+
+/mob/living/simple_mob/mechanical/hivebot/enigma/P4/Wraith/Initialize(mapload) //Gives the unit a weak overshield since it would be very unfun to fight kiting AI with actual proper health regen as initially intended
+	var/shield_type = /obj/item/shield_projector/rectangle{
+		shield_health = 50;
+		max_shield_health = 50;
+		shield_regen_delay = 10 SECONDS;
+		shield_regen_amount = 10;
+		size_x = 1;
+		size_y = 1;
+		always_on = TRUE;
+	}
+	var/obj/item/shield_projector/shield_projector = new shield_type(src)
+	shield_projector.create_shields()
+	return ..()	
+	
 // Boss
 
 
