@@ -70,7 +70,7 @@
 
 	/// worth multiplier
 	///
-	/// * set to null to say "we have no worth" (useful for infinite cells)
+	/// * set to null to say "we have no worth / are invaluable" (useful for infinite cells)
 	/// * null behaves like 0 right now but might not later
 	var/typegen_worth_multiplier = 1
 

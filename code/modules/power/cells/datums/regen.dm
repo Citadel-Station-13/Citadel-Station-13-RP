@@ -1,5 +1,10 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2024 silicons                             *//
+
+POWER_CELL_GENERATE_TYPES(/datum/power_cell/regen)
+/datum/power_cell/regen
+	functional = TRUE
+
 #warn new way
 
 // POWER_CELL_GENERATE_TYPES(/obj/item/cell/regen)

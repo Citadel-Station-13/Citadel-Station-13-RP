@@ -25,6 +25,17 @@
 	/// * typegen_visual
 	/// * typegen_worth
 	///
+	/// The following things are statically set by the #define generator
+	/// * indicator color
+	/// * stripe color
+	/// * charge capacity
+	///
+	/// The following things are set at init
+	/// * materials
+	///
+	/// The following things are read at runtime
+	/// * worth
+	///
 	/// This should never be modified after Initialize() runs.
 	var/tmp/typegen_active = FALSE
 

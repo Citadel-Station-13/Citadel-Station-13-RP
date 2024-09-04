@@ -3,6 +3,8 @@
 
 POWER_CELL_GENERATE_TYPES(/datum/power_cell/microfission)
 /datum/power_cell/microfission
+	functional = TRUE
+
 	cell_name = "microfission"
 	cell_desc = "This one contains highly enriched nuclear material, which is constantly used to recharge the cell with an induced process."
 
