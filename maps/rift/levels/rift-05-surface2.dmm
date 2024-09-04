@@ -2279,6 +2279,9 @@
 	spawn_grille = 0
 	},
 /obj/effect/paint/babyblue,
+/obj/map_helper/electrochromatic_linker{
+	id = "operating_theatre_2"
+	},
 /turf/simulated/floor/plating,
 /area/medical/surgery2)
 "bmY" = (
@@ -2748,6 +2751,9 @@
 	},
 /obj/structure/window/reinforced/tinted/frosted{
 	dir = 8
+	},
+/obj/map_helper/electrochromatic_linker{
+	id = "sec_processing_r"
 	},
 /turf/simulated/floor/tiled/red,
 /area/security/security_processing)
@@ -4235,6 +4241,9 @@
 	},
 /obj/structure/window/reinforced/tinted/frosted{
 	dir = 4
+	},
+/obj/map_helper/electrochromatic_linker{
+	id = "sec_processing_l"
 	},
 /turf/simulated/floor/tiled/red,
 /area/security/security_processing)
@@ -5753,6 +5762,9 @@
 /obj/machinery/holosign/surgery{
 	id = "operating_theatre_2"
 	},
+/obj/map_helper/electrochromatic_linker{
+	id = "operating_theatre_2"
+	},
 /obj/machinery/door/airlock/glass/medical/polarized{
 	id_tint = "operating_theatre_2";
 	name = "Operating Theatre 2";
@@ -6990,6 +7002,9 @@
 /obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
 /obj/effect/paint/darkred,
 /obj/structure/cable/green,
+/obj/map_helper/electrochromatic_linker{
+	id = "Interr"
+	},
 /turf/simulated/floor/plating,
 /area/security/interrogation)
 "etT" = (
@@ -7261,6 +7276,14 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/security/hallway)
+"eCP" = (
+/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
+/obj/effect/paint/babyblue,
+/obj/map_helper/electrochromatic_linker{
+	id = "resleeving-tint"
+	},
+/turf/simulated/floor/plating,
+/area/medical/resleeving)
 "eCU" = (
 /obj/effect/floor_decal/industrial/outline/grey,
 /obj/random/maintenance/research,
@@ -7636,6 +7659,9 @@
 	opacity = 0
 	},
 /obj/effect/paint/purplegray,
+/obj/map_helper/electrochromatic_linker{
+	id = "robotics_inner"
+	},
 /turf/simulated/floor/plating,
 /area/assembly/robotics)
 "eTD" = (
@@ -7676,6 +7702,9 @@
 /obj/item/flashlight/lamp,
 /obj/structure/window/reinforced/tinted/frosted{
 	dir = 4
+	},
+/obj/map_helper/electrochromatic_linker{
+	id = "sec_processing_l"
 	},
 /turf/simulated/floor/tiled/red,
 /area/security/security_processing)
@@ -9104,6 +9133,9 @@
 /obj/structure/window/reinforced/tinted/frosted{
 	dir = 8
 	},
+/obj/map_helper/electrochromatic_linker{
+	id = "sec_processing_r"
+	},
 /turf/simulated/floor/tiled/red,
 /area/security/security_processing)
 "fQU" = (
@@ -9162,6 +9194,9 @@
 	spawn_grille = 0
 	},
 /obj/effect/paint/babyblue,
+/obj/map_helper/electrochromatic_linker{
+	id = "operating_theatre_1"
+	},
 /turf/simulated/floor/plating,
 /area/medical/surgery)
 "fTu" = (
@@ -11266,6 +11301,9 @@
 /obj/structure/disposalpipe/segment,
 /obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
 /obj/effect/paint/babyblue,
+/obj/map_helper/electrochromatic_linker{
+	id = "medbay_outer"
+	},
 /turf/simulated/floor/plating,
 /area/medical/reception)
 "hlW" = (
@@ -14386,6 +14424,9 @@
 	opacity = 0
 	},
 /obj/effect/paint/purplegray,
+/obj/map_helper/electrochromatic_linker{
+	id = "research_outer"
+	},
 /turf/simulated/floor/plating,
 /area/rnd/research)
 "jdp" = (
@@ -16801,6 +16842,9 @@
 /obj/structure/cable/green{
 	icon_state = "2-8"
 	},
+/obj/map_helper/electrochromatic_linker{
+	id = "Interr"
+	},
 /turf/simulated/floor/plating,
 /area/security/interrogation)
 "kHg" = (
@@ -17651,6 +17695,14 @@
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_3)
+"ldw" = (
+/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
+/obj/effect/paint/darkred,
+/obj/map_helper/electrochromatic_linker{
+	id = "sec_processing_r"
+	},
+/turf/simulated/floor/plating,
+/area/security/security_processing)
 "ldL" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 4
@@ -18544,6 +18596,9 @@
 /area/maintenance/dormitory)
 "lIZ" = (
 /obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
+/obj/map_helper/electrochromatic_linker{
+	id = "research_inner"
+	},
 /turf/simulated/floor/plating,
 /area/rnd/research)
 "lJq" = (
@@ -19571,6 +19626,14 @@
 	},
 /turf/simulated/floor/wood,
 /area/tether/surfacebase/reading_room)
+"moI" = (
+/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
+/obj/effect/paint/darkred,
+/obj/map_helper/electrochromatic_linker{
+	id = "sec_processing_l"
+	},
+/turf/simulated/floor/plating,
+/area/security/security_processing)
 "moS" = (
 /obj/structure/toilet{
 	pixel_y = 9
@@ -19692,6 +19755,9 @@
 /obj/effect/paint/darkred,
 /obj/structure/cable/green{
 	icon_state = "0-2"
+	},
+/obj/map_helper/electrochromatic_linker{
+	id = "Interr"
 	},
 /turf/simulated/floor/plating,
 /area/security/interrogation)
@@ -22752,6 +22818,9 @@
 	opacity = 0
 	},
 /obj/effect/paint/purplegray,
+/obj/map_helper/electrochromatic_linker{
+	id = "rd_office"
+	},
 /turf/simulated/floor/plating,
 /area/crew_quarters/heads/hor)
 "ofP" = (
@@ -25334,6 +25403,9 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/holosign/surgery{
+	id = "operating_theatre_1"
+	},
+/obj/map_helper/electrochromatic_linker{
 	id = "operating_theatre_1"
 	},
 /obj/map_helper/access_helper/airlock/station/medical/surgery,
@@ -28985,6 +29057,9 @@
 /area/crew_quarters/pool)
 "sdE" = (
 /obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
+/obj/map_helper/electrochromatic_linker{
+	id = "sauna"
+	},
 /turf/simulated/floor/plating,
 /area/triumph/surfacebase/sauna)
 "sen" = (
@@ -31443,6 +31518,9 @@
 	opacity = 0
 	},
 /obj/effect/paint/purplegray,
+/obj/map_helper/electrochromatic_linker{
+	id = "robotics_outer"
+	},
 /turf/simulated/floor/plating,
 /area/assembly/robotics)
 "tUr" = (
@@ -31631,6 +31709,9 @@
 	opacity = 0
 	},
 /obj/effect/paint/darkred,
+/obj/map_helper/electrochromatic_linker{
+	id = "hos_office"
+	},
 /turf/simulated/floor/plating,
 /area/crew_quarters/heads/hos)
 "tZW" = (
@@ -34470,6 +34551,9 @@
 "vPP" = (
 /obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
 /obj/effect/paint/babyblue,
+/obj/map_helper/electrochromatic_linker{
+	id = "medbay_outer"
+	},
 /turf/simulated/floor/plating,
 /area/medical/reception)
 "vQg" = (
@@ -35297,6 +35381,9 @@
 /obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
 /obj/structure/cable/green{
 	icon_state = "4-8"
+	},
+/obj/map_helper/electrochromatic_linker{
+	id = "sauna"
 	},
 /turf/simulated/floor/plating,
 /area/triumph/surfacebase/sauna)
@@ -48633,8 +48720,8 @@ oLJ
 oLJ
 kid
 kid
-oFb
-oFb
+eCP
+eCP
 kid
 kid
 kid
@@ -49218,7 +49305,7 @@ eYx
 gHr
 ixy
 odu
-oFb
+eCP
 jvX
 vjt
 wnW
@@ -49412,7 +49499,7 @@ eYx
 iKu
 kRa
 lto
-oFb
+eCP
 eUN
 dyj
 wBH
@@ -49606,7 +49693,7 @@ oUw
 dTk
 bor
 lto
-oFb
+eCP
 epz
 tQp
 xkt
@@ -57752,7 +57839,7 @@ yga
 xNm
 bhS
 nuH
-keC
+moI
 pUO
 xQz
 owT
@@ -57946,7 +58033,7 @@ myF
 pwT
 bhS
 nuH
-keC
+moI
 hGI
 ijR
 oZw
@@ -58140,7 +58227,7 @@ mJx
 wXp
 bhS
 nuH
-keC
+moI
 eUi
 cCa
 fEm
@@ -58722,7 +58809,7 @@ tZG
 tiu
 bhS
 nuH
-keC
+ldw
 fQG
 bBy
 bVn
@@ -58916,7 +59003,7 @@ tZG
 mve
 bhS
 nuH
-keC
+ldw
 hGI
 ijR
 eTG
@@ -59110,7 +59197,7 @@ iFX
 eCN
 ohv
 oQS
-keC
+ldw
 pUO
 mzx
 yaJ

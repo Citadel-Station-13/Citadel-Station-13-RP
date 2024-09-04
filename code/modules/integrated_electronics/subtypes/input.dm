@@ -1080,7 +1080,7 @@ GLOBAL_DATUM_INIT(circuit_translation_context, /datum/translation_context/simple
 	if(signlang)
 		activate_pin(2)
 
-/obj/item/integrated_circuit/input/microphone/sign/hear_signlang(text, verb, datum/language/speaking, mob/M as mob)
+/obj/item/integrated_circuit/input/microphone/sign/hear_signlang(mob/M as mob, text, verb, datum/language/speaking)
 	hear_talk(M, text, verb, speaking)
 	return
 

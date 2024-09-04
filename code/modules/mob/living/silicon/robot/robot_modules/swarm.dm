@@ -27,4 +27,4 @@
 
 /obj/item/robot_module/drone/swarm/melee/get_modules()
 	. = ..()
-	. |= /obj/item/melee/energy/sword/ionic_rapier/lance
+	. |= /obj/item/melee/transforming/energy/sword/ionic_rapier/lance

@@ -223,7 +223,7 @@
 	kinetic_gun = null
 	return ..()
 
-/obj/projectile/kinetic/Bump(atom/target)
+/obj/projectile/kinetic/pre_impact(atom/target, impact_flags, def_zone)
 	if(kinetic_gun)
 		var/list/mods = kinetic_gun.get_modkits()
 		for(var/obj/item/ka_modkit/M in mods)
@@ -234,20 +234,15 @@
 		pressure_decrease_active = TRUE
 	return ..()
 
-/obj/projectile/kinetic/projectile_attack_mob(mob/living/target_mob, distance, miss_modifier)
-	if(!pressure_decrease_active && !lavaland_environment_check(get_turf(src)))
-		name = "weakened [name]"
-		damage = damage * pressure_decrease
-		pressure_decrease_active = TRUE
-	return ..()
-
 /obj/projectile/kinetic/legacy_on_range()
 	strike_thing()
 	..()
 
-/obj/projectile/kinetic/on_hit(atom/target)
-	strike_thing(target)
+/obj/projectile/kinetic/on_impact(atom/target, impact_flags, def_zone, efficiency)
 	. = ..()
+	if(. & PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT)
+		return
+	strike_thing(target)
 
 /obj/projectile/kinetic/proc/strike_thing(atom/target)
 	if(!pressure_decrease_active && !lavaland_environment_check(get_turf(src)))

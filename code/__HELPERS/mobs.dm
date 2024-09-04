@@ -2,7 +2,7 @@
 	return
 
 /obj/vehicle/get_mob()
-	return occupants
+	return SAFEPICK(occupants)
 
 /obj/vehicle_old/train/get_mob()
 	return SAFEPICK(buckled_mobs)

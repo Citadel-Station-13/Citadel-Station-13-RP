@@ -80,7 +80,7 @@
 	. += create_stack_recipe_datum(
 		name = "rack",
 		product = /obj/structure/table/rack,
-		cost = 1,
+		cost = 2,
 		time = 0.5 SECONDS,
 	)
 	. += create_stack_recipe_datum(

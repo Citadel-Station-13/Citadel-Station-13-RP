@@ -76,7 +76,7 @@
 		/obj/item/surgical/scalpel/laser3 = 95, \
 		/obj/item/surgical/scalpel/laser2 = 85, \
 		/obj/item/surgical/scalpel/laser1 = 75, \
-		/obj/item/melee/energy/sword = 5
+		/obj/item/melee/transforming/energy/sword = 5
 	)
 	priority = 2
 	req_open = 0

@@ -2066,6 +2066,11 @@
 "agL" = (
 /obj/item/folder/blue,
 /obj/structure/table/wooden_reinforced,
+/obj/machinery/button/windowtint/multitint{
+	pixel_x = -8;
+	pixel_y = 7;
+	id = "pathfinder_office"
+	},
 /turf/simulated/floor/tiled/monotile,
 /area/exploration/pathfinder_office)
 "agN" = (
@@ -19893,6 +19898,9 @@
 	opacity = 0
 	},
 /obj/effect/paint/commandblue,
+/obj/map_helper/electrochromatic_linker{
+	id = "hop_office"
+	},
 /turf/simulated/floor/plating,
 /area/crew_quarters/heads/hop)
 "fUe" = (
@@ -21063,6 +21071,9 @@
 "igJ" = (
 /obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
 /obj/effect/paint/violet,
+/obj/map_helper/electrochromatic_linker{
+	id = "pathfinder_office"
+	},
 /turf/simulated/floor/plating,
 /area/exploration/pathfinder_office)
 "iio" = (
@@ -21188,6 +21199,9 @@
 	id = "hop_office"
 	},
 /obj/effect/paint/commandblue,
+/obj/map_helper/electrochromatic_linker{
+	id = "hop_office"
+	},
 /turf/simulated/floor/plating,
 /area/crew_quarters/heads/hop)
 "iCv" = (
@@ -22196,6 +22210,9 @@
 	req_one_access = null
 	},
 /obj/map_helper/access_helper/airlock/station/command/bridge,
+/obj/map_helper/electrochromatic_linker{
+	id = "bridge_tint"
+	},
 /turf/simulated/floor/tiled/dark,
 /area/bridge)
 "khK" = (
@@ -22509,6 +22526,9 @@
 	},
 /obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
 /obj/effect/paint/commandblue,
+/obj/map_helper/electrochromatic_linker{
+	id = "bridge_tint"
+	},
 /turf/simulated/floor/plating,
 /area/bridge)
 "kQV" = (
@@ -23441,6 +23461,9 @@
 	req_one_access = null
 	},
 /obj/map_helper/access_helper/airlock/station/command/bridge,
+/obj/map_helper/electrochromatic_linker{
+	id = "bridge_tint"
+	},
 /turf/simulated/floor/tiled/dark,
 /area/bridge)
 "mCH" = (
@@ -24438,6 +24461,9 @@
 "oJN" = (
 /obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
 /obj/effect/paint/commandblue,
+/obj/map_helper/electrochromatic_linker{
+	id = "blueshieldoffice"
+	},
 /turf/simulated/floor/plating,
 /area/crew_quarters/heads/blueshield)
 "oLI" = (
@@ -24666,6 +24692,9 @@
 	req_one_access = null
 	},
 /obj/map_helper/access_helper/airlock/station/command/bridge,
+/obj/map_helper/electrochromatic_linker{
+	id = "bridge_tint"
+	},
 /turf/simulated/floor/tiled/dark,
 /area/bridge)
 "pis" = (
@@ -25454,6 +25483,9 @@
 	opacity = 0
 	},
 /obj/effect/paint/commandblue,
+/obj/map_helper/electrochromatic_linker{
+	id = "bridge_tint"
+	},
 /turf/simulated/floor/plating,
 /area/bridge)
 "qKs" = (
@@ -26545,6 +26577,11 @@
 /obj/structure/flora/pottedplant/smallcactus{
 	pixel_y = 12
 	},
+/obj/machinery/button/windowtint/multitint{
+	pixel_x = 9;
+	pixel_y = 8;
+	id = "blueshieldoffice"
+	},
 /turf/simulated/floor/carpet/blue,
 /area/crew_quarters/heads/blueshield)
 "toU" = (
@@ -27118,6 +27155,9 @@
 	opacity = 0
 	},
 /obj/effect/paint/commandblue,
+/obj/map_helper/electrochromatic_linker{
+	id = "bridge_tint"
+	},
 /turf/simulated/floor/plating,
 /area/bridge)
 "uyX" = (
@@ -28302,6 +28342,9 @@
 "wns" = (
 /obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
 /obj/effect/paint/commandblue,
+/obj/map_helper/electrochromatic_linker{
+	id = "meeting_tint"
+	},
 /turf/simulated/floor/plating,
 /area/bridge/bridge_hallway)
 "wnH" = (
@@ -28553,6 +28596,9 @@
 "wTS" = (
 /obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
 /obj/effect/paint/commandblue,
+/obj/map_helper/electrochromatic_linker{
+	id = "meeting_tint"
+	},
 /turf/simulated/floor/plating,
 /area/bridge/meeting_room)
 "wUC" = (

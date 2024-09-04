@@ -290,14 +290,14 @@ GLOBAL_LIST_EMPTY(movespeed_modification_cache)
 	cached_multiplicative_slowdown = min(., 10 / MOVESPEED_ABSOLUTE_MINIMUM_TILES_PER_SECOND)
 	if(!client)
 		return
-	var/diff = (last_move_time - move_delay) - cached_multiplicative_slowdown
+	var/diff = (last_self_move - move_delay) - cached_multiplicative_slowdown
 	if(diff > 0)
 		// your delay decreases, "give" the delay back to the client
 		if(move_delay > world.time + 1.5)
 			move_delay -= diff
 #ifdef SMOOTH_MOVEMENT
 		var/timeleft = world.time - move_delay
-		var/elapsed = world.time - last_move_time
+		var/elapsed = world.time - last_self_move
 		var/glide_size_current = glide_size
 		if((timeleft <= 0) || (elapsed > 20))
 			SMOOTH_GLIDE_SIZE(src, 16, TRUE)
