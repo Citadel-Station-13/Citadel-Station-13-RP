@@ -2843,7 +2843,7 @@
 "ik" = (
 /mob/living/simple_mob/humanoid/merc/ranged{
 	desc = "He doesn't seem like he's looking for a fight.";
-	iff_Factions = "neutral";
+	iff_factions = "neutral";
 	friendly = "hugs";
 	name = "Mercenary"
 	},
