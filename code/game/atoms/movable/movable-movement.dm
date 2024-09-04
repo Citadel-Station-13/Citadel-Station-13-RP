@@ -208,77 +208,96 @@
 	if(glide_size_override)
 		set_glide_size(glide_size_override, FALSE)
 
-	if(loc != newloc)
-		if (!(direct & (direct - 1))) //Cardinal move
-			. = ..()
-		else //Diagonal move, split it into cardinal moves
-			moving_diagonally = FIRST_DIAG_STEP
-			var/first_step_dir
-			// The `&& moving_diagonally` checks are so that a force_move taking
-			// place due to a Crossed, Bumped, etc. call will interrupt
-			// the second half of the diagonal movement, or the second attempt
-			// at a first half if step() fails because we hit something.
-			if (direct & NORTH)
-				if (direct & EAST)
-					if (step(src, NORTH) && moving_diagonally)
-						first_step_dir = NORTH
-						moving_diagonally = SECOND_DIAG_STEP
-						. = step(src, EAST)
-					else if (moving_diagonally && step(src, EAST))
-						first_step_dir = EAST
-						moving_diagonally = SECOND_DIAG_STEP
-						. = step(src, NORTH)
-				else if (direct & WEST)
-					if (step(src, NORTH) && moving_diagonally)
-						first_step_dir = NORTH
-						moving_diagonally = SECOND_DIAG_STEP
-						. = step(src, WEST)
-					else if (moving_diagonally && step(src, WEST))
-						first_step_dir = WEST
-						moving_diagonally = SECOND_DIAG_STEP
-						. = step(src, NORTH)
-			else if (direct & SOUTH)
-				if (direct & EAST)
-					if (step(src, SOUTH) && moving_diagonally)
-						first_step_dir = SOUTH
-						moving_diagonally = SECOND_DIAG_STEP
-						. = step(src, EAST)
-					else if (moving_diagonally && step(src, EAST))
-						first_step_dir = EAST
-						moving_diagonally = SECOND_DIAG_STEP
-						. = step(src, SOUTH)
-				else if (direct & WEST)
-					if (step(src, SOUTH) && moving_diagonally)
-						first_step_dir = SOUTH
-						moving_diagonally = SECOND_DIAG_STEP
-						. = step(src, WEST)
-					else if (moving_diagonally && step(src, WEST))
-						first_step_dir = WEST
-						moving_diagonally = SECOND_DIAG_STEP
-						. = step(src, SOUTH)
-			if(moving_diagonally == SECOND_DIAG_STEP)
-				if(!.)
-					setDir(first_step_dir)
-				else if (!inertia_moving)
-					inertia_next_move = world.time + inertia_move_delay
-					newtonian_move(direct)
-			moving_diagonally = NOT_IN_DIAG_STEP
-			--in_move
-			return
-	else		// trying to move to the same place
+	var/time_since_last_move = world.time - last_move
+	last_move = world.time
+
+	// trying to move to the same place
+	if(loc == newloc)
 		if(direct)
 			last_move_dir = direct
 			setDir(direct)
 		--in_move
-		return TRUE		// not moving is technically success
+		ai_tracking?.track_movement(time_since_last_move, NONE)
+		// not moving is technically success
+		return TRUE
+
+	//Cardinal move
+	if (!(direct & (direct - 1)))
+		. = ..()
+	//Diagonal move, split it into cardinal moves
+	else
+		moving_diagonally = FIRST_DIAG_STEP
+		var/first_step_dir
+		// The `&& moving_diagonally` checks are so that a force_move taking
+		// place due to a Crossed, Bumped, etc. call will interrupt
+		// the second half of the diagonal movement, or the second attempt
+		// at a first half if step() fails because we hit something.
+		if (direct & NORTH)
+			if (direct & EAST)
+				if (step(src, NORTH) && moving_diagonally)
+					first_step_dir = NORTH
+					moving_diagonally = SECOND_DIAG_STEP
+					. = step(src, EAST)
+				else if (moving_diagonally && step(src, EAST))
+					first_step_dir = EAST
+					moving_diagonally = SECOND_DIAG_STEP
+					. = step(src, NORTH)
+			else if (direct & WEST)
+				if (step(src, NORTH) && moving_diagonally)
+					first_step_dir = NORTH
+					moving_diagonally = SECOND_DIAG_STEP
+					. = step(src, WEST)
+				else if (moving_diagonally && step(src, WEST))
+					first_step_dir = WEST
+					moving_diagonally = SECOND_DIAG_STEP
+					. = step(src, NORTH)
+		else if (direct & SOUTH)
+			if (direct & EAST)
+				if (step(src, SOUTH) && moving_diagonally)
+					first_step_dir = SOUTH
+					moving_diagonally = SECOND_DIAG_STEP
+					. = step(src, EAST)
+				else if (moving_diagonally && step(src, EAST))
+					first_step_dir = EAST
+					moving_diagonally = SECOND_DIAG_STEP
+					. = step(src, SOUTH)
+			else if (direct & WEST)
+				if (step(src, SOUTH) && moving_diagonally)
+					first_step_dir = SOUTH
+					moving_diagonally = SECOND_DIAG_STEP
+					. = step(src, WEST)
+				else if (moving_diagonally && step(src, WEST))
+					first_step_dir = WEST
+					moving_diagonally = SECOND_DIAG_STEP
+					. = step(src, SOUTH)
+		if(moving_diagonally == SECOND_DIAG_STEP)
+			if(!.)
+				setDir(first_step_dir)
+			else if (!inertia_moving)
+				inertia_next_move = world.time + inertia_move_delay
+				newtonian_move(direct)
+		moving_diagonally = NOT_IN_DIAG_STEP
+		--in_move
+		// track movement if we're no longer in a move; this way this fires only once for diag steps
+		if(ai_tracking && !in_move)
+			ai_tracking.track_movement(time_since_last_move, . ? direct : (moving_diagonally == SECOND_DIAG_STEP ? first_step_dir : NONE))
+		return
 
 	if(!loc || (loc == oldloc && oldloc != newloc))
 		last_move_dir = NONE
 		--in_move
-		return
+		// track movement if we're no longer in a move; this way this fires only once for diag steps
+		if(ai_tracking && !in_move)
+			ai_tracking.track_movement(time_since_last_move, NONE)
+		return FALSE
 
-	if(. && has_buckled_mobs() && !handle_buckled_mob_movement(loc, direct, glide_size_override)) //movement failed due to buckled mob(s)
+	//movement failed due to buckled mob(s)
+	if(. && has_buckled_mobs() && !handle_buckled_mob_movement(loc, direct, glide_size_override))
+		last_move_dir = NONE
 		--in_move
+		// track movement if we're no longer in a move; this way this fires only once for diag steps
+		if(ai_tracking && !in_move)
+			ai_tracking.track_movement(time_since_last_move, NONE)
 		return FALSE
 
 	if(.)
@@ -310,6 +329,10 @@
 		set_glide_size(glide_size_override, FALSE)
 
 	--in_move
+
+	// track movement if we're no longer in a move; this way this fires only once for diag steps
+	if(ai_tracking && !in_move)
+		ai_tracking.track_movement(time_since_last_move, direct)
 
 	// legacy
 	move_speed = world.time - l_move_time
@@ -578,6 +601,9 @@
 // todo: step x, step y support
 /atom/movable/proc/doMove(atom/destination)
 	. = FALSE
+
+	// completely reset ai tracking
+	ai_tracking?.reset_movement()
 
 	++in_move
 

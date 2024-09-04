@@ -3,6 +3,7 @@
  *
  * the click may be real or fake.
  *
+ * * clickchain flags are deliberately not stored in here; you're supposed to modify and return them a ton, so it's inefficient to put it in here.
  * * This is required for item swings / interaction, usually, not just base /event_args/actor.
  */
 /datum/event_args/actor/clickchain
