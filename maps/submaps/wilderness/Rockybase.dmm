@@ -435,7 +435,7 @@
 	dir = 8
 	},
 /mob/living/bot/farmbot{
-	faction = "malf_drone";
+	iff_factions = "malf_drone";
 	name = "Mr. Weddleton"
 	},
 /turf/simulated/floor/tiled,

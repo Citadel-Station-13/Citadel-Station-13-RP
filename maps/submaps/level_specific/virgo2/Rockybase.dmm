@@ -24,7 +24,7 @@
 /mob/living/simple_mob/mechanical/combat_drone{
 	ai_holder_type = /datum/ai_holder/polaris/simple_mob/ranged/kiting/threatening/returnhome;
 	desc = "An automated combat drone with an aged apperance.";
-	faction = "syndicate";
+	iff_factions = "syndicate";
 	maxbodytemp = 900
 	},
 /turf/simulated/mineral/floor/ignore_mapgen/virgo2,
@@ -341,7 +341,7 @@
 /mob/living/simple_mob/mechanical/combat_drone{
 	ai_holder_type = /datum/ai_holder/polaris/simple_mob/ranged/kiting/threatening/returnhome;
 	desc = "An automated combat drone with an aged apperance.";
-	faction = "syndicate";
+	iff_factions = "syndicate";
 	maxbodytemp = 900
 	},
 /turf/simulated/floor/tiled/techfloor/virgo2,
