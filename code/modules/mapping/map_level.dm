@@ -45,23 +45,41 @@
 	var/base_turf = /turf/space
 	/// base area typepath for this level
 	var/base_area = /area/space
-	/// id of north zlevel - overrides linkage if set. can be set to path, autoconverts to id on new.
-	/// can also be set to instance - used for structs.
+	/// id of north zlevel - overrides linkage if set.
+	///
+	/// * can also be set to path
+	/// * can also be set to instance - used for structs
+	/// * do not manually set it to levelpath::id, map levels generate ids dynamically!
 	var/link_north
-	/// id of south zlevel - overrides linkage if set. can be set to path, autoconverts to id on new.
-	/// can also be set to instance - used for structs.
+	/// id of south zlevel - overrides linkage if set.
+	///
+	/// * can also be set to path
+	/// * can also be set to instance - used for structs
+	/// * do not manually set it to levelpath::id, map levels generate ids dynamically! can also be set to instance - used for structs.
 	var/link_south
-	/// id of west zlevel - overrides linkage if set. can be set to path, autoconverts to id on new.
-	/// can also be set to instance - used for structs.
+	/// id of west zlevel - overrides linkage if set.
+	///
+	/// * can also be set to path
+	/// * can also be set to instance - used for structs
+	/// * do not manually set it to levelpath::id, map levels generate ids dynamically! can also be set to instance - used for structs.
 	var/link_west
-	/// id of east zlevel - overrides linkage if set. can be set to path, autoconverts to id on new.
-	/// can also be set to instance - used for structs.
+	/// id of east zlevel - overrides linkage if set.
+	///
+	/// * can also be set to path
+	/// * can also be set to instance - used for structs
+	/// * do not manually set it to levelpath::id, map levels generate ids dynamically! can also be set to instance - used for structs.
 	var/link_east
-	/// id of below zlevel - overrides linkage if set. can be set to path, autoconverts to id on new.
-	/// can also be set to instance - used for structs.
+	/// id of below zlevel - overrides linkage if set.
+	///
+	/// * can also be set to path
+	/// * can also be set to instance - used for structs
+	/// * do not manually set it to levelpath::id, map levels generate ids dynamically! can also be set to instance - used for structs.
 	var/link_below
-	/// id of above zlevel - overrides linkage if set. can be set to path, autoconverts to id on new.
-	/// can also be set to instance - used for structs.
+	/// id of above zlevel - overrides linkage if set.
+	///
+	/// * can also be set to path
+	/// * can also be set to instance - used for structs
+	/// * do not manually set it to levelpath::id, map levels generate ids dynamically! can also be set to instance - used for structs.
 	var/link_above
 	/// gas string / atmosphere path / atmosphere id for indoors air
 	/// if atmosphere path, it'll be automatically packed to ID on serialize, as we don't want to serialize paths to disk.
@@ -151,16 +169,6 @@
 
 	if(!isnull(parent_map))
 		id = "[parent_map.id]-[id]"
-
-	#define UNPACK_LINK(vname) if(ispath(vname, /datum/map_level)) { var/datum/map_level/cast_##vname = vname; vname = initial(cast_##vname.id) ; }
-	UNPACK_LINK(link_north)
-	UNPACK_LINK(link_south)
-	UNPACK_LINK(link_east)
-	UNPACK_LINK(link_west)
-	UNPACK_LINK(link_below)
-	UNPACK_LINK(link_above)
-	BLOCK_BYOND_BUG_2072419
-	#undef UNPACK_LINK
 
 /datum/map_level/Destroy()
 	if(loaded)
