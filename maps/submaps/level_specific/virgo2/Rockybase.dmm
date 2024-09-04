@@ -114,7 +114,7 @@
 /area/submap/virgo2/Rockybase)
 "ax" = (
 /mob/living/bot/cleanbot{
-	faction = "malf_drone"
+	iff_factions = "malf_drone"
 	},
 /turf/simulated/floor/tiled/techfloor/virgo2,
 /area/submap/virgo2/Rockybase)
@@ -307,7 +307,7 @@
 /area/submap/virgo2/Rockybase)
 "bf" = (
 /mob/living/bot/farmbot{
-	faction = "malf_drone"
+	iff_factions = "malf_drone"
 	},
 /turf/simulated/floor/tiled/techfloor/virgo2,
 /area/submap/virgo2/Rockybase)

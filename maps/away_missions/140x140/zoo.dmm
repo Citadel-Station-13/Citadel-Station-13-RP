@@ -1539,7 +1539,7 @@
 /area/awaymission/zoo/pirateship)
 "eB" = (
 /mob/living/simple_mob/animal/space/alien{
-	faction = "pirate"
+	iff_factions = "pirate"
 	},
 /turf/simulated/floor/plating,
 /area/awaymission/zoo/pirateship)
