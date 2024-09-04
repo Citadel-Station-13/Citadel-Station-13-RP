@@ -38,6 +38,7 @@
 	///
 	/// This should never be modified after Initialize() runs.
 	var/tmp/typegen_active = FALSE
+	#warn we should set name and desc via macro too..
 
 	//* Behavior *//
 	/// cell component; loaded at init, set to typepath or anonymous type
@@ -113,7 +114,7 @@
 /obj/item/cell/get_worth(flags)
 	. = ..()
 	if(typegen_active)
-		. *= cell_datum?.worth_multiplier
+		. *= cell_datum?.typegen_worth_multiplier
 
 /obj/item/cell/get_rating()
 	return rating

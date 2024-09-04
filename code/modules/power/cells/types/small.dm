@@ -2,6 +2,7 @@
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
 /obj/item/cell/small
+	#warn sprite
 	worth_intrinsic = 10
 	max_charge = POWER_CELL_CAPACITY_BASE * POWER_CELL_CAPACITY_MULTIPLIER_SMALL
 	rendering_system = TRUE

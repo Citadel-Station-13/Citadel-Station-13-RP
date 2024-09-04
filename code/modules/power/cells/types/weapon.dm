@@ -2,6 +2,7 @@
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
 /obj/item/cell/weapon
+	#warn sprite
 	worth_intrinsic = 30
 	max_charge = POWER_CELL_CAPACITY_BASE * POWER_CELL_CAPACITY_MULTIPLIER_WEAPON
 	rendering_system = TRUE
