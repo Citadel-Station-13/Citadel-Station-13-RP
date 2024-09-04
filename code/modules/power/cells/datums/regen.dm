@@ -1,5 +1,5 @@
 //* This file is explicitly licensed under the MIT license. *//
-//* Copyright (c) 2024 silicons                             *//
+//* Copyright (c) 2024 Citadel Station Developers           *//
 
 POWER_CELL_GENERATE_TYPES(/datum/power_cell/regen, /regen)
 /datum/power_cell/regen
