@@ -96,7 +96,7 @@
 	. = ..()
 	if(.)
 		return
-	SEND_SIGNAL(src, COMSIG_MOB_LEGACY_ATTACK_HAND_INTERCEPT, user, params)
+	SEND_SIGNAL(src, COMSIG_MOB_LEGACY_ATTACK_HAND_INTERCEPT, user, e_args)
 	var/mob/living/L = user
 	if(!istype(L))
 		return
