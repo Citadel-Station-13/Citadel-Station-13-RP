@@ -29,7 +29,6 @@
 /turf/template_noop,
 /area/submap/Blackshuttledown)
 "ai" = (
-/turf/template_noop,
 /turf/simulated/shuttle/wall/dark{
 	icon_state = "dark6";
 	name = "Unknown Shuttle"
@@ -42,7 +41,6 @@
 	},
 /area/submap/Blackshuttledown)
 "ak" = (
-/turf/template_noop,
 /turf/simulated/shuttle/wall/dark{
 	icon_state = "dark10";
 	name = "Unknown Shuttle"
@@ -144,7 +142,6 @@
 /turf/simulated/floor/tiled/white,
 /area/submap/Blackshuttledown)
 "av" = (
-/turf/simulated/floor/tiled/steel,
 /turf/simulated/shuttle/wall/dark{
 	icon_state = "dark5";
 	name = "Unknown Shuttle"
@@ -202,14 +199,12 @@
 /turf/simulated/floor/tiled/white,
 /area/submap/Blackshuttledown)
 "aG" = (
-/turf/simulated/floor/tiled/steel,
 /turf/simulated/shuttle/wall/dark{
 	icon_state = "dark9";
 	name = "Unknown Shuttle"
 	},
 /area/submap/Blackshuttledown)
 "aH" = (
-/turf/simulated/floor/tiled/steel,
 /turf/simulated/shuttle/wall/dark{
 	icon_state = "dark6";
 	name = "Unknown Shuttle"
@@ -368,7 +363,6 @@
 /turf/simulated/floor/tiled/white,
 /area/submap/Blackshuttledown)
 "bf" = (
-/turf/simulated/floor/tiled/steel,
 /turf/simulated/shuttle/wall/dark{
 	icon_state = "dark10";
 	name = "Unknown Shuttle"
@@ -756,14 +750,12 @@
 /turf/simulated/floor/tiled/steel,
 /area/submap/Blackshuttledown)
 "cp" = (
-/turf/template_noop,
 /turf/simulated/shuttle/wall/dark{
 	icon_state = "dark5";
 	name = "Unknown Shuttle"
 	},
 /area/submap/Blackshuttledown)
 "cq" = (
-/turf/template_noop,
 /turf/simulated/shuttle/wall/dark{
 	icon_state = "dark9";
 	name = "Unknown Shuttle"

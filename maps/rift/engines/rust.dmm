@@ -172,10 +172,8 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor,
-/turf/simulated/floor,
 /area/template_noop)
 "iJ" = (
-/turf/simulated/floor,
 /turf/simulated/floor,
 /area/template_noop)
 "iN" = (
@@ -962,7 +960,6 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor,
-/turf/simulated/floor,
 /area/template_noop)
 "Pm" = (
 /obj/machinery/light{
@@ -1026,7 +1023,6 @@
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
 	},
-/turf/simulated/floor,
 /turf/simulated/floor,
 /area/template_noop)
 "Ta" = (

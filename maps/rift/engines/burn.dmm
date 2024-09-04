@@ -170,7 +170,6 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor,
-/turf/simulated/floor,
 /area/template_noop)
 "gK" = (
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging{
@@ -291,7 +290,6 @@
 /obj/structure/cable/cyan{
 	icon_state = "4-8"
 	},
-/turf/simulated/floor,
 /turf/simulated/floor,
 /area/template_noop)
 "nL" = (
@@ -534,13 +532,11 @@
 /area/engineering/engine_room)
 "Ab" = (
 /turf/simulated/floor,
-/turf/simulated/floor,
 /area/template_noop)
 "Ao" = (
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
 	},
-/turf/simulated/floor,
 /turf/simulated/floor,
 /area/template_noop)
 "AP" = (

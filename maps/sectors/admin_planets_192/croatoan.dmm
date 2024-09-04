@@ -6931,7 +6931,6 @@
 /area/admin_planet/croatoan/sec_holding_cells)
 "yj" = (
 /obj/structure/reagent_dispensers/virusfood,
-/turf/simulated/floor/reinforced,
 /turf/simulated/wall/durasteel,
 /area/admin_planet/croatoan/high_sec_science_virology_lab)
 "yl" = (
@@ -14126,7 +14125,6 @@
 /turf/simulated/floor/cult,
 /area/admin_planet/croatoan/extreme_security_containment_facilities)
 "Xt" = (
-/turf/simulated/floor/reinforced,
 /turf/simulated/wall/durasteel,
 /area/admin_planet/croatoan/high_sec_science_virology_lab)
 "Xv" = (
