@@ -88,6 +88,7 @@ GLOBAL_LIST_INIT(multiz_hole_baseturfs, typecacheof(list(
 	//       then we can skip all this bullshit and have proper space zmimic
 	//       as long as zm overhead isn't too high.
 	//* THIS CANNOT CALL ANY PROCS UP UNTIL 'new path'! *//
+	// todo: this entire switch section is kind of ass
 	switch(path)
 		if(null)
 			return
