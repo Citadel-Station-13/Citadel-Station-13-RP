@@ -310,7 +310,7 @@
 
 /obj/projectile/bullet/mecha/a12mm_gauss //Mecha gauss rifle round.
 	fire_sound = 'sound/weapons/Gunshot_cannon.ogg' // This is literally an anti-tank rifle caliber. It better sound like a fucking cannon.
-	damage = 60
+	damage = 70
 	legacy_penetrating = 1
 	armor_penetration = 60
 

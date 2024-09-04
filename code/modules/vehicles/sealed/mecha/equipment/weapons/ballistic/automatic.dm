@@ -15,7 +15,7 @@
 	name = "\improper AC 10"
 	desc = "The original in anti-mech firepower, the standard Hephaestus Autocannon MK10 design fires AP slugs in order to damage other heavy armor suits. This does mean its rate between bursts is longer than most."
 	icon_state = "mecha_uac2"
-	equip_cooldown = 2 SECONDS
+	equip_cooldown = 1 SECONDS
 	projectile = /obj/projectile/bullet/rifle/a762/ap
 	fire_sound = 'sound/weapons/Gunshot_deagle.ogg'
 	projectiles = 20 //Mag size
@@ -28,7 +28,7 @@
 	name = "\improper gauss rifle"
 	desc = "The current standard in non-laser, anti-armor firepower, this weapon is the same as those mounted on light tanks for their primary weapon. Fires a single nickle-iron slug at high speed. Requires a long charge time between shots. "
 	icon_state = "mecha_uac2-rig"
-	equip_cooldown = 4 SECONDS
+	equip_cooldown = 3 SECONDS
 	projectile = /obj/projectile/bullet/mecha/a12mm_gauss
 	fire_sound = 'sound/weapons/Gunshot_cannon.ogg'
 	projectiles = 10 //Mag size
