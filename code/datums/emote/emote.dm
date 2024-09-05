@@ -14,7 +14,14 @@ GLOBAL_LIST(emote_lookup)
 		if(initial(path.abstract_type) == path)
 			continue
 		var/datum/emote/instance = new path
-		#warn impl
+		GLOB.emotes += instance
+
+		for(var/binding in islist(instance.bindings) ? instance.bindings : list(instance.bindings))
+			if(GLOB.emote_lookup[binding])
+				var/datum/emote/existing = GLOB.emote_lookup[binding]
+				stack_trace("collision between [existing.type] and [type] on [binding]")
+				break
+			GLOB.emote_lookup[binding] = instance
 
 /**
  * Emotes!
@@ -44,9 +51,20 @@ GLOBAL_LIST(emote_lookup)
 
 #warn impl
 
+/datum/emote/New()
+	// preprocess bindings
+	if(binding_prefix)
+		if(islist(bindings))
+			for(var/i in 1 to length(bindings))
+				bindings[i] = "[binding_prefix]-[bindings[i]]"
+			else
+				bindings = "[binding_prefix]-[bindings]"
+
 //* Checks *//
 
 /**
+ * Paired with /mob/proc/filter_usable_emotes()!
+ *
  * @params
  * * actor - actor data
  * * arbitrary - arbitrary processed params

@@ -1,3 +1,87 @@
+
+//* Emote Module *//
+/**
+ * Specifically for invoking /datum/emote
+ *
+ * 'custom emotes' aka 'say'd actions' are not handled by this system.
+ */
+
+/**
+ * Description WIP
+ */
+/mob/proc/invoke_emote(key, raw_parameter_string, datum/event_args/actor/actor)
+	SHOULD_NOT_OVERRIDE(TRUE)
+	if(isnull(actor))
+		actor = new(src)
+	else if(isnull(actor.performer))
+		actor.performer = src
+	ASSERT(actor.performer == src)
+
+	var/special_result = process_emote_special(key, raw_parameter_string, actor)
+	if(!isnull(special_result))
+		return special_result
+
+	#warn impl
+
+/**
+ * @return TRUE if successful
+ */
+/mob/proc/process_emote(datum/emote/emote, raw_parameter_string, datum/event_args/actor/actor)
+	#warn impl
+
+/**
+ * Process legacy emotes
+ *
+ * @return TRUE or FALSE if handled, based on success / failure, and `null` if not handled.
+ */
+/mob/proc/process_emote_special(key, raw_parameter_string, datum/event_args/actor/actor)
+	return
+
+/**
+ * Return a list of /datum/emote's we can use
+ */
+/mob/proc/query_emote()
+	RETURN_TYPE(/list)
+	. = list()
+	#warn impl
+
+/**
+ * Return a list of legacy emotes associated to descriptions or null
+ */
+/mob/proc/query_emote_special()
+	RETURN_TYPE(/list)
+	return list(
+		"me" = "Input a custom emote for your character to perform.",
+	)
+
+/**
+ * Faster version of /datum/emote/can_use()
+ *
+ * Use against a list of emotes.
+ */
+/mob/proc/filter_usable_emotes(list/datum/emote/emotes = GLOB.emotes)
+	. = list()
+
+	for(var/datum/emote/emote as anything in emotes)
+		var/special_check = emote.can_use_special(src)
+		if(!isnull(special_check))
+			if(special_check)
+				. += emote
+			continue
+
+	#warn impl
+
+#warn below
+
+/**
+ * Legacy below
+ */
+
+/mob/proc/emote(var/act, var/type, var/message)
+	SHOULD_NOT_OVERRIDE(TRUE)
+	if(act == "me")
+		return custom_emote(type, message)
+
 // All mobs should have custom emote, really..
 //m_type == 1 --> visual.
 //m_type == 2 --> audible

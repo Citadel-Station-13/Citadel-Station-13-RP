@@ -22,5 +22,11 @@
 ///
 /// * does not imply the actor isn't stunned
 #define EMOTE_REQUIRE_USABLE_HAND (1<<2)
+/// has a body to act with
+///
+/// * so no brains
+#define EMOTE_REQUIRE_BODY (1<<3)
+/// require being able to make sounds at all
+#define EMOTE_REQUIRE_VOCALIZATION (1<<4)
 
 #warn impl all
