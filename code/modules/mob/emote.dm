@@ -59,16 +59,36 @@
  *
  * Use against a list of emotes.
  */
-/mob/proc/filter_usable_emotes(list/datum/emote/emotes = GLOB.emotes)
+/mob/proc/filter_usable_emotes(list/datum/emote/emotes = GLOB.emotes, check_mobility)
 	. = list()
 
+	var/our_emote_class = get_usable_emote_class()
+	var/our_emote_require = get_usable_emote_require()
+
 	for(var/datum/emote/emote as anything in emotes)
-		var/special_check = emote.can_use_special(src)
+		var/special_check = emote.can_use_special(actor)
 		if(!isnull(special_check))
 			if(special_check)
 				. += emote
 			continue
+		if(check_mobility && !(mobility_flags & emote.required_mobility_flags))
+			continue
+		if(!(our_emote_class & emote.emote_class))
+			continue
+		if(!(our_emote_require & emote.emote_require))
+			continue
+		. += emote
 
+/**
+ * Return emote classes we support.
+ */
+ /mob/proc/get_usable_emote_class()
+	#warn impl
+
+/**
+ * Return remote require flags we support
+ */
+/mob/proc/get_usable_emote_require()
 	#warn impl
 
 #warn below

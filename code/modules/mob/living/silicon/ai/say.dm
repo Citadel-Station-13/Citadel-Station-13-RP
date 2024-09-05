@@ -45,9 +45,3 @@
 		to_chat(src, "No holopad connected.")
 		return FALSE
 	return TRUE
-
-/mob/living/silicon/ai/emote(var/act, var/type, var/message)
-	if(holopad)
-		holopad_emote(message)
-	else //Emote normally, then.
-		..()

@@ -291,15 +291,6 @@
 				if (param)
 					message = "smooches [param]."
 			m_type = 1
-
-		if ("blink")
-			message = "blinks."
-			m_type = 1
-
-		if ("blink_r")
-			message = "blinks rapidly."
-			m_type = 1
-
 		if ("bow")
 			if (!src.buckled)
 				var/M = null
@@ -422,16 +413,6 @@
 				m_type = 2
 				if(HAS_TRAIT_FROM(src, TRAIT_MUTE, MIME_TRAIT))
 					m_type = 1
-
-		if("ara")
-			message = "aras."
-			var/use_sound
-			use_sound = pick('sound/voice/ara_ara1.ogg','sound/voice/ara_ara2.ogg')
-			playsound(src.loc, use_sound, 50, 0)
-
-		if("uwu")
-			message = "lets out a devious noise."
-			playsound(src.loc, 'sound/voice/uwu.ogg', 50, 0)
 
 		if ("drool")
 			message = "drools."

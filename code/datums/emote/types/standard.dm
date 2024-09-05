@@ -14,7 +14,7 @@
 
 	//* SFX *//
 
-	/// sound to play
+	/// sound to play, or a list of sounds to pick from (equal weight)
 	var/sfx
 	/// volume of sound to play
 	var/sfx_volume = 75

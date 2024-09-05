@@ -69,16 +69,26 @@ GLOBAL_LIST(emote_lookup)
  * * actor - actor data
  * * arbitrary - arbitrary processed params
  */
-/datum/emote/proc/can_use(datum/event_args/actor/actor, arbitrary)
+/datum/emote/proc/can_use(datum/event_args/actor/actor, arbitrary, check_mobility)
 	SHOULD_NOT_OVERRIDE(TRUE)
 
 	var/special_check = can_use_special(actor)
 	if(!isnull(special_check))
 		return special_check
 
-	#warn impl
+	if(check_mobility && !(actor.performer.mobility_flags & required_mobility_flags))
+		return FALSE
+	if(!(actor.performer.get_usable_emote_class() & emote_class))
+		return FALSE
+	if(!(actor.performer.get_usable_emote_require() & emote_require))
+		return FALSE
+	return TRUE
 
 /**
+ * @params
+ * * actor - (optional) the provided actor
+ * * arbitrary - (optional) arbitrary processed params
+ *
  * @return non-null TRUE / FALSE to override [can_use()]
  */
 /datum/emote/proc/can_use_special(datum/event_args/actor/actor, arbitrary)
