@@ -33,6 +33,7 @@
 
 /obj/item/ammo_magazine/a5_7mm
 	ammo_caliber = /datum/ammo_caliber/a5_7mm
+	ammo_preload = /obj/item/ammo_casing/a5_7mm
 
 /obj/item/ammo_magazine/a5_7mm/nt_les
 	name = "magazine (5.7x28mm)"

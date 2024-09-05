@@ -1,20 +1,20 @@
-/mob/living/carbon/human/check_mob_armor(damage, tier, flag, mode, attack_type, datum/weapon, target_zone)
-	var/obj/item/organ/external/part = get_organ(target_zone)
-	for(var/obj/item/I as anything in inventory?.items_that_cover(part.body_part_flags))
-		var/list/results = I.checking_mob_armor(arglist(args))
-		damage = results[1]
-		mode = results[4]
-	return ..()
+//* This file is explicitly licensed under the MIT license. *//
+//* Copyright (c) 2024 silicons                             *//
 
-/mob/living/carbon/human/run_mob_armor(damage, tier, flag, mode, attack_type, datum/weapon, target_zone)
-	var/obj/item/organ/external/part = get_organ(target_zone)
-	for(var/obj/item/I as anything in inventory?.items_that_cover(part.body_part_flags))
-		var/list/results = I.running_mob_armor(arglist(args))
-		damage = results[1]
-		mode = results[4]
-	return ..()
+/mob/living/carbon/human/run_armorcalls(list/shieldcall_args, fake_attack, filter_zone)
+	..() // perform default /mob level
 
-/mob/living/carbon/human/check_overall_armor(damage, tier, flag, mode, attack_type, datum/weapon, target_zone)
+	if(filter_zone)
+		// just one zone
+		var/obj/item/organ/external/part = get_organ(filter_zone)
+		for(var/obj/item/I as anything in inventory?.items_that_cover(part.body_part_flags))
+			I.mob_armorcall(src, shieldcall_args, fake_attack)
+			if(shieldcall_args[SHIELDCALL_ARG_FLAGS] & SHIELDCALL_FLAG_TERMINATE)
+				break
+		return
+
+	var/damage = shieldcall_args[SHIELDCALL_ARG_DAMAGE]
+	// all zones, uh oh, this is about to get very ugly
 	var/total = 0
 	var/total_size = 0
 	for(var/key in organs_by_name)
@@ -24,26 +24,10 @@
 		var/obj/item/organ/external/part = organs_by_name[key]
 		var/resultant = damage
 		for(var/obj/item/I as anything in inventory?.items_that_cover(part.body_part_flags))
-			var/list/results = I.checking_mob_armor(resultant, tier, flag, mode, attack_type, weapon, target_zone)
-			resultant = results[1]
+			var/list/copied_args = args.Copy()
+			copied_args[SHIELDCALL_ARG_DAMAGE] = resultant
+			I.mob_armorcall(src, copied_args, fake_attack)
+			resultant = copied_args[SHIELDCALL_ARG_DAMAGE]
 		total += resultant * rel_size
 		total_size += rel_size
-	damage = total / total_size
-	return ..()
-
-/mob/living/carbon/human/run_overall_armor(damage, tier, flag, mode, attack_type, datum/weapon, target_zone)
-	var/total = 0
-	var/total_size = 0
-	for(var/key in organs_by_name)
-		var/rel_size = organ_rel_size[key]
-		if(!rel_size)
-			continue
-		var/obj/item/organ/external/part = organs_by_name[key]
-		var/resultant = damage
-		for(var/obj/item/I as anything in inventory?.items_that_cover(part.body_part_flags))
-			var/list/results = I.running_mob_armor(resultant, tier, flag, mode, attack_type, weapon, target_zone)
-			resultant = results[1]
-		total += resultant * rel_size
-		total_size += rel_size
-	damage = total / total_size
-	return ..()
+	shieldcall_args[SHIELDCALL_ARG_DAMAGE] = total / total_size

@@ -174,12 +174,11 @@
 
 	..()
 
-/obj/vehicle_old/bike/bullet_act(var/obj/projectile/Proj)
+/obj/vehicle_old/bike/on_bullet_act(obj/projectile/proj, impact_flags, list/bullet_act_args)
 	if(has_buckled_mobs() && prob(protection_percent))
 		var/mob/living/L = pick(buckled_mobs)
-		L.bullet_act(Proj)
-		return
-	..()
+		return L.bullet_act(arglist(args))
+	return ..()
 
 /obj/vehicle_old/bike/update_icon()
 	cut_overlays()

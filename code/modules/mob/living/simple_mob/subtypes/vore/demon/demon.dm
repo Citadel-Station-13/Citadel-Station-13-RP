@@ -37,19 +37,11 @@
 	legacy_melee_damage_upper = 1
 	attacktext = list("clawed")
 
-	vore_active = TRUE
-	vore_icons = SA_ICON_LIVING
 
 	var/shifted_out = FALSE
 	var/shift_state = AB_SHIFT_NONE
 	var/last_shift = 0
 	var/is_shifting = FALSE
-
-/mob/living/simple_mob/vore/demon/init_vore()
-	..()
-	var/obj/belly/B = vore_selected
-	B.name = "Stomach"
-	B.desc = "You slide down the slick, slippery gullet of the creature. It's warm, and the air is thick. You can feel the doughy walls of the creatures gut push and knead into your form! Slimy juices coat your form stinging against your flesh as they waste no time to start digesting you. The creature's heartbeat and the gurgling of their stomach are all you can hear as your jostled about, treated like nothing but food."
 
 /mob/living/simple_mob/vore/demon/UnarmedAttack()
 	if(shifted_out)

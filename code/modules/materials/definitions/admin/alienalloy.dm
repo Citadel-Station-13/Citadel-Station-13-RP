@@ -40,8 +40,8 @@
 	id = "bedrock"
 	name = "bedrock"
 	display_name = "impassable rock"
-	icon_base = 'icons/turf/walls/rock.dmi'
-	icon_colour = "#FFFFFF"
+	icon_base = 'icons/turf/walls/natural.dmi'
+	icon_colour = COLOR_ASTEROID_ROCK
 
 /datum/material/alienalloy/alium
 	id = "abductor_alloy"

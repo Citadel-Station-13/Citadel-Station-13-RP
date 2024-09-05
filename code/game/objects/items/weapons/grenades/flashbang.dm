@@ -110,7 +110,7 @@
 	var/turf/O = get_turf(src)
 	if(!O)
 		return
-	src.fragmentate(O, num_fragments, spread_range, fragment_types)
+	shrapnel_explosion(num_fragments, spread_range, fragment_types)
 	..()
 
 /obj/item/grenade/flashbang/stingbang/shredbang
