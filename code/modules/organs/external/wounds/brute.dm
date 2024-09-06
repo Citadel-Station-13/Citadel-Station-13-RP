@@ -35,7 +35,7 @@
 	bleed_threshold = 5
 	wound_type = WOUND_TYPE_PIERCE
 
-/datum/wound/puncture/can_worsen(damage_type, damage)
+/datum/wound/puncture/can_worsen(woud_type, damage)
 	return 0 //puncture wounds cannot be enlargened
 
 /datum/wound/puncture/small

@@ -355,9 +355,8 @@
 
 // returns whether this wound can absorb the given amount of damage.
 // this will prevent large amounts of damage being trapped in less severe wound types
-#warn god damnit this proc doesn't behave properly
-/datum/wound/proc/can_worsen(damage_type, damage)
-	if (src.damage_type != damage_type)
+/datum/wound/proc/can_worsen(woud_type, damage)
+	if (src.woud_type != woud_type)
 		return 0	//incompatible damage types
 
 	if (src.amount > 1)
