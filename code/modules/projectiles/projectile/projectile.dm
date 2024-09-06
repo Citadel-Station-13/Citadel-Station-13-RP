@@ -1162,7 +1162,7 @@
 	var/tdiff = damage_tier - tier
 	var/dmult = src.damage / force
 	var/malus = dmult >= 1 ? ((1 / dmult) ** tdiff * 10) : (10 * ((1 / dmult) / (1 + tdiff)))
-	src.damage = clamp(src.damage - malus, src. * 0.5, src.damage_force)
+	src.damage = clamp(src.damage - malus, src.damage_force * 0.5, src.damage_force)
 
 //* Targeting *//
 
