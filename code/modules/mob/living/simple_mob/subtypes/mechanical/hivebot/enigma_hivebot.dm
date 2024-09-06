@@ -383,7 +383,6 @@
 	legacy_melee_damage_lower = 18
 	legacy_melee_damage_upper = 18 //It hits you with a hardened nanite fist. Thats supposed to hurt  
 	movement_cooldown = 1 //again faster than standard grunts
-	faction = "enigma"
 	movement_sound = 'sound/enigma/enigma_move.ogg'
 	ai_holder_type = /datum/ai_holder/polaris/simple_mob/ranged/kiting //Made to draw fire hence kiting
 	projectiletype = /obj/projectile/beam/antigravbeamwraith
