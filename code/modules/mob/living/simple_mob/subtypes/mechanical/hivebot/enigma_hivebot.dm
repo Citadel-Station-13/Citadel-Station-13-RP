@@ -435,7 +435,7 @@
 	// Leaping won't occur if its on cooldown.
 	special_attack_min_range = 2
 	special_attack_max_range = 8
-	special_attack_cooldown = 15 SECONDS //Phase coils are not trivial to minimize
+	special_attack_cooldown = 15 SECONDS //Phase coils are not trivial to miniaturize
 
 	var/leap_warmup = 1 SECOND // How long the leap telegraphing is.
 	var/leap_sound = 'sound/weapons/spiderlunge.ogg' //Temporary will have to soundmix something for it at a later date
