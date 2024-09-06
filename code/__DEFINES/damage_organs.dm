@@ -1,9 +1,5 @@
 // todo: these things should be damage modes / flags
 
-#define CUT       "cut"
-#define BRUISE    "bruise"
-#define PIERCE    "pierce"
-
 #define STUN      "stun"
 #define WEAKEN    "weaken"
 #define PARALYZE  "paralize"

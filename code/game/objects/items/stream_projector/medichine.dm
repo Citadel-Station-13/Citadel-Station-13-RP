@@ -714,7 +714,7 @@ GLOBAL_LIST_EMPTY(medichine_cell_datums)
 				continue
 			if(only_open && (wound.is_treated()))
 				continue
-			if(wound.damage_type == BURN)
+			if(wound.damage_type == WOUND_TYPE_BURN)
 				burn_loss_instances++
 			else
 				brute_loss_instances++
@@ -727,7 +727,7 @@ GLOBAL_LIST_EMPTY(medichine_cell_datums)
 	var/brute_heal_overrun = 0
 	for(var/datum/wound/wound as anything in wounds_healing)
 		var/effective_heal
-		if(wound.damage_type == BURN)
+		if(wound.damage_type == WOUND_TYPE_BURN)
 			if(!burn_healing_left)
 				continue
 			effective_heal = min(burn_heal_per + burn_heal_overrun, burn_healing_left)
