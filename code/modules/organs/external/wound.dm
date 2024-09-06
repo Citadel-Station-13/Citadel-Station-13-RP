@@ -190,7 +190,7 @@
 	var/max_bleeding_stage = 0
 	// todo: rename to wound_type
 	// one of WOUND_TYPE_CUT, WOUND_TYPE_PIERCE, WOUND_TYPE_BRUISE, WOUND_TYPE_BURN
-	var/damage_type = WOUND_TYPE_CUT
+	var/wound_type = WOUND_TYPE_CUT
 	// whether this wound needs a bandage/salve to heal at all
 	// the maximum amount of damage that this wound can have and still autoheal
 	var/autoheal_cutoff = 10
@@ -244,9 +244,9 @@
 
 // checks whether the wound has been appropriately treated
 /datum/wound/proc/is_treated()
-	if(damage_type == WOUND_TYPE_BRUISE || damage_type == WOUND_TYPE_CUT || damage_type == WOUND_TYPE_PIERCE)
+	if(wound_type == WOUND_TYPE_BRUISE || wound_type == WOUND_TYPE_CUT || wound_type == WOUND_TYPE_PIERCE)
 		return bandaged
-	else if(damage_type == WOUND_TYPE_BURN)
+	else if(wound_type == WOUND_TYPE_BURN)
 		return salved
 
 // Checks whether other other can be merged into src.
@@ -255,7 +255,7 @@
 		return 0
 	if (other.current_stage != src.current_stage)
 		return 0
-	if (other.damage_type != src.damage_type)
+	if (other.wound_type != src.wound_type)
 		return 0
 	if (!(other.can_autoheal()) != !(src.can_autoheal()))
 		return 0
@@ -296,7 +296,7 @@
 		return FALSE
 	if (is_treated() && damage < 25)	//anything less than a flesh wound (or equivalent) isn't infectable if treated properly
 		return FALSE
-	if (damage_type == WOUND_TYPE_BRUISE && !bleeding()) //bruises only infectable if bleeding
+	if (wound_type == WOUND_TYPE_BRUISE && !bleeding()) //bruises only infectable if bleeding
 		return FALSE
 
 
@@ -304,7 +304,7 @@
 		return TRUE
 
 	var/dam_coef = round(damage/10)
-	switch (damage_type)
+	switch (wound_type)
 		if (WOUND_TYPE_BRUISE)
 			return prob(dam_coef*5)
 		if (WOUND_TYPE_BURN)
@@ -356,6 +356,7 @@
 
 // returns whether this wound can absorb the given amount of damage.
 // this will prevent large amounts of damage being trapped in less severe wound types
+#warn god damnit this proc doesn't behave properly
 /datum/wound/proc/can_worsen(damage_type, damage)
 	if (src.damage_type != damage_type)
 		return 0	//incompatible damage types

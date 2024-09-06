@@ -504,7 +504,7 @@
 			break
 
 		// heal brute damage
-		if(W.damage_type == WOUND_TYPE_BURN)
+		if(W.wound_type == WOUND_TYPE_BURN)
 			burn = W.heal_damage(burn)
 		else
 			brute = W.heal_damage(brute)
