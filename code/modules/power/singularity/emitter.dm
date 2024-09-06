@@ -141,7 +141,7 @@
 			s.start()
 
 		var/obj/projectile/beam/emitter/A = get_emitter_beam()
-		A.damage = round(power_per_shot/EMITTER_DAMAGE_POWER_TRANSFER)
+		A.damage_force = round(power_per_shot/EMITTER_DAMAGE_POWER_TRANSFER)
 		A.firer = src
 		A.fire(dir2angle(dir))
 

@@ -157,7 +157,7 @@ field_generator power level display
 
 /obj/machinery/field_generator/on_bullet_act(obj/projectile/proj, impact_flags, list/bullet_act_args)
 	if(istype(proj, /obj/projectile/beam))
-		power += proj.damage * EMITTER_DAMAGE_POWER_TRANSFER
+		power += proj.damage_force * EMITTER_DAMAGE_POWER_TRANSFER
 		update_icon()
 		return PROJECTILE_IMPACT_DELETE
 	return ..()

@@ -965,7 +965,7 @@
 /obj/projectile/proc/on_impact(atom/target, impact_flags, def_zone, efficiency = 1)
 	//! legacy shit
 	var/blocked = clamp((1 - efficiency) * 100, 0, 100)
-	if(damage_force_force_force && damage_type == BURN)
+	if(damage_force && damage_type == BURN)
 		var/turf/T = get_turf(target)
 		if(T)
 			T.hotspot_expose(700, 5)
@@ -1097,7 +1097,7 @@
 
 	//! LEGACY COMBAT CODE
 	// SHIM!!!
-	var/list/shieldcall_modified_args = target.check_damage_instance(damage, damage_type, damage_tier, damage_flag, damage_mode, ATTACK_TYPE_PROJECTILE, src, SHIELDCALL_FLAG_SECOND_CALL, hit_zone)
+	var/list/shieldcall_modified_args = target.check_damage_instance(damage_force, damage_type, damage_tier, damage_flag, damage_mode, ATTACK_TYPE_PROJECTILE, src, SHIELDCALL_FLAG_SECOND_CALL, hit_zone)
 	// todo: this handling very obviously should not be here
 	// dear lord this code is a dumpster fire
 	if(shieldcall_modified_args[SHIELDCALL_ARG_FLAGS] & SHIELDCALL_FLAGS_PIERCE_ATTACK)
@@ -1114,7 +1114,7 @@
 		var/proj_edge = has_edge(src)
 		var/final_damage = src.get_final_damage(target) * efficiency
 
-		if ((proj_sharp || proj_edge) && (soaked >= round(src.damage*0.8)))
+		if ((proj_sharp || proj_edge) && (soaked >= round(src.damage_force*0.8)))
 			proj_sharp = 0
 			proj_edge = 0
 
@@ -1160,9 +1160,9 @@
  */
 /obj/projectile/proc/dampen_on_pierce_experimental(atom/entity, force, tier)
 	var/tdiff = damage_tier - tier
-	var/dmult = src.damage / force
+	var/dmult = src.damage_force / force
 	var/malus = dmult >= 1 ? ((1 / dmult) ** tdiff * 10) : (10 * ((1 / dmult) / (1 + tdiff)))
-	src.damage = clamp(src.damage - malus, src.damage_force * 0.5, src.damage_force)
+	src.damage_force = clamp(src.damage_force - malus, src.damage_force * 0.5, src.damage_force)
 
 //* Targeting *//
 
