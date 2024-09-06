@@ -68,7 +68,7 @@
 	if(istype(M,/mob/living))
 		var/mob/living/L = M
 		L.afflict_radiation(RAD_MOB_AFFLICT_DNA_INJECTOR)
-		L.apply_damage(max(2,L.getCloneLoss()), CLONE)
+		L.apply_damage(max(2,L.getCloneLoss()), DAMAGE_TYPE_CLONE)
 
 	if (!(MUTATION_NOCLONE in M.mutations)) // prevents drained people from having their DNA changed
 		if (buf.types & DNA2_BUF_UI)
