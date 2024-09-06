@@ -504,8 +504,8 @@
 	set_angle(get_visual_angle(source, target))
 
 /obj/projectile/proc/vol_by_damage()
-	if(damage)
-		return clamp((damage) * 0.67, 30, 100)// Multiply projectile damage by 0.67, then clamp the value between 30 and 100
+	if(damage_force)
+		return clamp((damage_force) * 0.67, 30, 100)// Multiply projectile damage by 0.67, then clamp the value between 30 and 100
 	else
 		return 50 //if the projectile doesn't do damage, play its hitsound at 50% volume.
 
@@ -518,7 +518,7 @@
 
 /obj/projectile/proc/get_structure_damage()
 	if(damage_type == BRUTE || damage_type == BURN)
-		return damage
+		return damage_force
 	return 0
 
 /obj/projectile/proc/check_fire(atom/target as mob, mob/living/user as mob)  //Checks if you can hit them or not.
@@ -550,7 +550,7 @@
 		var/damage_override = null
 
 		if(spread_submunition_damage)
-			damage_override = damage
+			damage_override = damage_force
 			if(nodamage)
 				damage_override = 0
 
@@ -568,7 +568,7 @@
 				SM.shot_from = shot_from
 				SM.silenced = silenced
 				if(!isnull(damage_override))
-					SM.damage = damage_override
+					SM.damage_force = damage_override
 				if(submunition_constant_spread)
 					SM.dispersion = 0
 					var/calculated = angle + round((count / amt - 0.5) * submunition_spread_max, 1)
@@ -613,7 +613,7 @@
  * @return Damage to apply to target.
  */
 /obj/projectile/proc/run_damage_vulnerability(atom/target)
-	var/final_damage = damage
+	var/final_damage = damage_force
 	if(isliving(target))
 		var/mob/living/L = target
 		if(issimple(target))
@@ -965,7 +965,7 @@
 /obj/projectile/proc/on_impact(atom/target, impact_flags, def_zone, efficiency = 1)
 	//! legacy shit
 	var/blocked = clamp((1 - efficiency) * 100, 0, 100)
-	if(damage && damage_type == BURN)
+	if(damage_force_force_force && damage_type == BURN)
 		var/turf/T = get_turf(target)
 		if(T)
 			T.hotspot_expose(700, 5)
@@ -1162,7 +1162,7 @@
 	var/tdiff = damage_tier - tier
 	var/dmult = src.damage / force
 	var/malus = dmult >= 1 ? ((1 / dmult) ** tdiff * 10) : (10 * ((1 / dmult) / (1 + tdiff)))
-	src.damage = clamp(src.damage - malus, src.damage * 0.5, src.damage)
+	src.damage = clamp(src.damage - malus, src. * 0.5, src.damage_force)
 
 //* Targeting *//
 
