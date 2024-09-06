@@ -188,7 +188,6 @@
 	var/internal = FALSE
 	// maximum stage at which bleeding should still happen. Beyond this stage bleeding is prevented.
 	var/max_bleeding_stage = 0
-	// todo: rename to wound_type
 	// one of WOUND_TYPE_CUT, WOUND_TYPE_PIERCE, WOUND_TYPE_BRUISE, WOUND_TYPE_BURN
 	var/wound_type = WOUND_TYPE_CUT
 	// whether this wound needs a bandage/salve to heal at all

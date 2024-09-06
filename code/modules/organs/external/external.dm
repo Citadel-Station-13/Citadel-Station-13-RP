@@ -849,7 +849,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 	//update damage counts
 	for(var/datum/wound/W as anything in wounds)
 		if(!W.internal) //so IB doesn't count towards crit/paincrit
-			if(W.damage_type == WOUND_TYPE_BURN)
+			if(W.wound_type == WOUND_TYPE_BURN)
 				burn_dam += W.damage
 			else
 				brute_dam += W.damage
@@ -1429,7 +1429,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 		if(W.internal && !open) continue // can't see internal wounds
 		var/this_wound_desc = W.desc
 
-		if(W.damage_type == WOUND_TYPE_BURN && W.salved)
+		if(W.wound_type == WOUND_TYPE_BURN && W.salved)
 			this_wound_desc = "salved [this_wound_desc]"
 
 		if(W.bleeding())

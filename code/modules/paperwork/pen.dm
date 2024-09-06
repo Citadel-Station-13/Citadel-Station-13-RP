@@ -214,7 +214,7 @@
 	sharp = initial(sharp)
 	edge = initial(edge)
 	set_weight_class(initial(w_class))
-	damtype = BRUTE
+	damtype = DAMAGE_TYPE_BRUTE
 	item_flags &= ~ITEM_THROW_UNCATCHABLE
 
 /obj/item/pen/blade/blue
