@@ -286,7 +286,7 @@
 
 	//? Damage - default handling
 	/// damage amount
-	var/damage = 10
+	var/damage_force = 10
 	/// damage tier - goes hand in hand with [damage_armor]
 	var/damage_tier = BULLET_TIER_DEFAULT
 	/// todo: legacy - BRUTE, BURN, TOX, OXY, CLONE, HALLOSS, ELECTROCUTE, BIOACID are the only things that should be in here
