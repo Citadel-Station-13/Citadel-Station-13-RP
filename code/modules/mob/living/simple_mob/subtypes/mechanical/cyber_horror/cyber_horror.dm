@@ -182,7 +182,7 @@
 		if(L == src)
 			continue
 
-		var/list/shieldcall_result = L.atom_shieldcall(40, BRUTE, MELEE_TIER_MEDIUM, ARMOR_MELEE, NONE, ATTACK_TYPE_MELEE)
+		var/list/shieldcall_result = L.atom_shieldcall(40, DAMAGE_TYPE_BRUTE, MELEE_TIER_MEDIUM, ARMOR_MELEE, NONE, ATTACK_TYPE_MELEE)
 		if(shieldcall_result[SHIELDCALL_ARG_FLAGS] & SHIELDCALL_FLAGS_BLOCK_ATTACK)
 			continue
 
@@ -324,7 +324,7 @@
 	name = "energy missle"
 	icon_state = "force_missile"
 	damage = 12
-	damage_type = BURN
+	damage_type = DAMAGE_TYPE_BURN
 
 //Direct Ranged Mob
 /mob/living/simple_mob/mechanical/cyber_horror/corgi
@@ -394,7 +394,7 @@
 	name = "energy missle"
 	icon_state = "force_missile"
 	damage = 12
-	damage_type = BURN
+	damage_type = DAMAGE_TYPE_BURN
 
 //Boss Mob - The High Priest
 /mob/living/simple_mob/mechanical/cyber_horror/priest
@@ -431,7 +431,7 @@
 	name = "nanite cloud"
 	icon_state = "particle-heavy"
 	damage = 15
-	damage_type = BRUTE
+	damage_type = DAMAGE_TYPE_BRUTE
 
 /obj/projectile/arc/blue_energy/priest/on_impact(atom/target, impact_flags, def_zone, efficiency)
 	. = ..()

@@ -349,7 +349,7 @@ This function restores all organs.
 	for(var/obj/item/organ/external/current_organ in organs)
 		current_organ.rejuvenate_legacy(ignore_prosthetic_prefs)
 
-/mob/living/carbon/human/apply_damage(var/damage = 0, var/damagetype = BRUTE, var/def_zone = null, var/blocked = 0, var/soaked = 0, var/sharp = 0, var/edge = 0, var/obj/used_weapon = null)
+/mob/living/carbon/human/apply_damage(var/damage = 0, var/damagetype = DAMAGE_TYPE_BRUTE, var/def_zone = null, var/blocked = 0, var/soaked = 0, var/sharp = 0, var/edge = 0, var/obj/used_weapon = null)
 	var/obj/item/organ/external/organ = null
 	if(isorgan(def_zone))
 		organ = def_zone
@@ -358,8 +358,8 @@ This function restores all organs.
 		organ = get_organ(check_zone(def_zone))
 
 	//Handle other types of damage
-	if((damagetype != BRUTE) && (damagetype != BURN))
-		if(damagetype == HALLOSS)
+	if((damagetype != DAMAGE_TYPE_BRUTE) && (damagetype != DAMAGE_TYPE_BURN))
+		if(damagetype == DAMAGE_TYPE_HALLOSS)
 			if((damage > 25 && prob(20)) || (damage > 50 && prob(60)))
 				if(organ && organ.organ_can_feel_pain() && !isbelly(loc) && !istype(loc, /obj/item/dogborg/sleeper))
 					emote("scream")
@@ -388,7 +388,7 @@ This function restores all organs.
 		log_world("## DEBUG: [src] was hit for [damage].")
 
 	switch(damagetype)
-		if(BRUTE)
+		if(DAMAGE_TYPE_BRUTE)
 			damageoverlaytemp = 20
 			damage = damage*species.brute_mod
 
@@ -403,7 +403,7 @@ This function restores all organs.
 				damage_mode = (edge? DAMAGE_MODE_EDGE : NONE) | (sharp? DAMAGE_MODE_SHARP : NONE),
 				weapon_descriptor = used_weapon,
 			)
-		if(BURN)
+		if(DAMAGE_TYPE_BURN)
 			damageoverlaytemp = 20
 			damage = damage*species.burn_mod
 

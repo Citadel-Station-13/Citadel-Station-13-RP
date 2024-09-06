@@ -75,8 +75,8 @@
 			visible_message("<span class='danger'>The [proj.name] bounces off of [src]'s shell!</span>", \
 						"<span class='userdanger'>The [proj.name] bounces off of [src]'s shell!</span>")
 			new /obj/item/material/shard/shrapnel(src.loc)
-			if(!(proj.damage_type == BRUTE || proj.damage_type == BURN))
-				projectile_dam_type = BRUTE
+			if(!(proj.damage_type == DAMAGE_TYPE_BRUTE || proj.damage_type == DAMAGE_TYPE_BURN))
+				projectile_dam_type = DAMAGE_TYPE_BRUTE
 				incoming_damage = round(incoming_damage / 4) //Damage from strange sources is converted to brute for physical projectiles, though severely decreased.
 			apply_damage(incoming_damage, projectile_dam_type, null, armorcheck, soakedcheck, is_sharp(proj), has_edge(proj), proj)
 			return ..()
@@ -85,8 +85,8 @@
 						"<span class='userdanger'>The [proj.name] gets reflected by [src]'s shell!</span>")
 			damage_mod = rand(3,5)
 			incoming_damage = (round(proj.damage / damage_mod) - (round((proj.damage / damage_mod) * 0.3)))
-			if(!(proj.damage_type == BRUTE || proj.damage_type == BURN))
-				projectile_dam_type = BURN
+			if(!(proj.damage_type == DAMAGE_TYPE_BRUTE || proj.damage_type == DAMAGE_TYPE_BURN))
+				projectile_dam_type = DAMAGE_TYPE_BURN
 				incoming_damage = round(incoming_damage / 4) //Damage from strange sources is converted to burn for energy-type projectiles, though severely decreased.
 			apply_damage(incoming_damage, proj.damage_type, null, armorcheck, soakedcheck, is_sharp(proj), has_edge(proj), proj)
 

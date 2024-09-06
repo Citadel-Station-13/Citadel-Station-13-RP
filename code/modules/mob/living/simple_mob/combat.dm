@@ -63,7 +63,7 @@
 			return FALSE // We missed.
 
 		var/datum/event_args/actor/clickchain/simulated_clickchain = new(src, target = L)
-		var/list/shieldcall_result = L.atom_shieldcall(damage_to_do, BRUTE, MELEE_TIER_MEDIUM, ARMOR_MELEE, NONE, ATTACK_TYPE_MELEE, clickchain = simulated_clickchain)
+		var/list/shieldcall_result = L.atom_shieldcall(damage_to_do, DAMAGE_TYPE_BRUTE, MELEE_TIER_MEDIUM, ARMOR_MELEE, NONE, ATTACK_TYPE_MELEE, clickchain = simulated_clickchain)
 		if(shieldcall_result[SHIELDCALL_ARG_FLAGS] & SHIELDCALL_FLAGS_BLOCK_ATTACK)
 			return FALSE
 

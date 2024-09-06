@@ -87,7 +87,7 @@
 	//! legacy code handling
 	if((proj.projectile_type & (PROJECTILE_TYPE_ENERGY | PROJECTILE_TYPE_BEAM)) && !proj.nodamage && proj.damage)
 		burn(2500)
-	if(proj.damage_type == BURN && proj.damage && !proj.nodamage)
+	if(proj.damage_type == DAMAGE_TYPE_BURN && proj.damage && !proj.nodamage)
 		if(thermite)
 			thermitemelt()
 	if(proj.ricochet_sounds && prob(15))

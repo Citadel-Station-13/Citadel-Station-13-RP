@@ -754,11 +754,11 @@
 // 			return
 
 // 		in_chamber.on_hit(M)
-// 		if(in_chamber.damage_type != HALLOSS && !in_chamber.nodamage)
+// 		if(in_chamber.damage_type != DAMAGE_TYPE_HALLOSS && !in_chamber.nodamage)
 // 			log_and_message_admins("[key_name(user)] commited suicide using \a [src]")
 // 			user.apply_damage(in_chamber.damage*2.5, in_chamber.damage_type, "head", used_weapon = "Point blank shot in the mouth with \a [in_chamber]", sharp=1)
 // 			user.death()
-// 		else if(in_chamber.damage_type == HALLOSS)
+// 		else if(in_chamber.damage_type == DAMAGE_TYPE_HALLOSS)
 // 			to_chat(user, "<span class = 'notice'>Ow...</span>")
 // 			user.apply_effect(110,AGONY,0)
 // 		qdel(in_chamber)

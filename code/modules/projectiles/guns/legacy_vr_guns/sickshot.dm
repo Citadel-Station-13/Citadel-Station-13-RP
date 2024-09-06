@@ -28,7 +28,7 @@
 	icon_state = "sound"
 	damage = 5
 	armor_penetration = 30
-	damage_type = BURN
+	damage_type = DAMAGE_TYPE_BURN
 	damage_flag = ARMOR_MELEE
 	embed_chance = 0
 	vacuum_traversal = 0

@@ -18,7 +18,7 @@
 	name = "energy missile"
 	icon_state = "force_missile"
 	damage = 15
-	damage_type = BURN
+	damage_type = DAMAGE_TYPE_BURN
 
 /obj/projectile/arc/blue_energy/on_impact(atom/target, impact_flags, def_zone, efficiency)
 	. = ..()

@@ -378,9 +378,9 @@
 						var/mob/living/carbon/C = L
 						var/damage_cycles = rand(3, 5)
 						for(var/I = 0, I < damage_cycles, I++)
-							C.apply_damage(damage = rand(10,20), damagetype = BIOACID, def_zone = pick(BP_ALL))
+							C.apply_damage(damage = rand(10,20), damagetype = DAMAGE_TYPE_BIOACID, def_zone = pick(BP_ALL))
 					else
-						L.apply_damage(damage = rand(10,60), damagetype = BIOACID)
+						L.apply_damage(damage = rand(10,60), damagetype = DAMAGE_TYPE_BIOACID)
 				continue
 
 	DumpStomach()

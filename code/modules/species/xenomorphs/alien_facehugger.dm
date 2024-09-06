@@ -167,8 +167,8 @@ var/const/MAX_ACTIVE_TIME = 400
 
 		if(target.isSynthetic())
 			visible_message(SPAN_DANGER("[src] tears across [target]'s body, but recoils!"))
-			target.apply_damage(10, BRUTE, BP_HEAD)
-			target.apply_damage(10, BRUTE, BP_TORSO)
+			target.apply_damage(10, DAMAGE_TYPE_BRUTE, BP_HEAD)
+			target.apply_damage(10, DAMAGE_TYPE_BRUTE, BP_TORSO)
 			return		// atleast you don't get gibbed
 
 		target.equip_to_slot_if_possible(src, SLOT_ID_MASK, INV_OP_FLUFFLESS)

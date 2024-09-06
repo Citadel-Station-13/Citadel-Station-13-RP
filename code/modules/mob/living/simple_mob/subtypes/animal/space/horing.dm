@@ -105,12 +105,12 @@
 		playsound(src, 'sound/effects/splat.ogg', 50, 1)
 		// todo: this ignores charge_damage
 		var/damage = rand(3,4)
-		M.apply_damage(2 * damage, BRUTE, BP_HEAD)
-		M.apply_damage(2 * damage, BRUTE, BP_TORSO)
-		M.apply_damage(0.5 * damage, BRUTE, BP_L_LEG)
-		M.apply_damage(0.5 * damage, BRUTE, BP_R_LEG)
-		M.apply_damage(0.5 * damage, BRUTE, BP_L_ARM)
-		M.apply_damage(0.5 * damage, BRUTE, BP_R_ARM)
+		M.apply_damage(2 * damage, DAMAGE_TYPE_BRUTE, BP_HEAD)
+		M.apply_damage(2 * damage, DAMAGE_TYPE_BRUTE, BP_TORSO)
+		M.apply_damage(0.5 * damage, DAMAGE_TYPE_BRUTE, BP_L_LEG)
+		M.apply_damage(0.5 * damage, DAMAGE_TYPE_BRUTE, BP_R_LEG)
+		M.apply_damage(0.5 * damage, DAMAGE_TYPE_BRUTE, BP_L_ARM)
+		M.apply_damage(0.5 * damage, DAMAGE_TYPE_BRUTE, BP_R_ARM)
 		blood_splatter(src, M, 1)
 
 /mob/living/simple_mob/animal/horing/handle_special()

@@ -34,7 +34,7 @@
 	weaken = 0
 	stun = 0
 	damage = 30
-	damage_type = SEARING
+	damage_type = DAMAGE_TYPE_SEARING
 	embed_chance = 0
 
 /obj/projectile/bullet/magnetic/heated/weak

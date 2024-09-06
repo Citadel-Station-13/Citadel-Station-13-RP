@@ -5,13 +5,13 @@
 	. = ..()
 	// todo: wave explosions
 	// no named arguments for speed reasons
-	run_damage_instance(power * (1 / 2.5) * (0.01 * rand(80, 120)), BRUTE, null, ARMOR_BOMB)
+	run_damage_instance(power * (1 / 2.5) * (0.01 * rand(80, 120)), DAMAGE_TYPE_BRUTE, null, ARMOR_BOMB)
 
 /obj/legacy_ex_act(severity, target)
 	. = ..()
 	// todo: wave explosions
 	// no named arguments for speed reasons
-	run_damage_instance(global._legacy_ex_atom_damage[severity] * (0.01 * rand(80, 120)), BRUTE, null, ARMOR_BOMB)
+	run_damage_instance(global._legacy_ex_atom_damage[severity] * (0.01 * rand(80, 120)), DAMAGE_TYPE_BRUTE, null, ARMOR_BOMB)
 
 /obj/melee_act(mob/user, obj/item/weapon, target_zone, datum/event_args/actor/clickchain/clickchain)
 	var/shieldcall_returns = atom_shieldcall_handle_item_melee(weapon, clickchain, FALSE, NONE)
@@ -96,7 +96,7 @@
 /obj/hitsound_melee(obj/item/I)
 	if(!isnull(material_primary))
 		var/datum/material/primary = get_primary_material()
-		. = I.damtype == BURN? primary.sound_melee_burn : primary.sound_melee_brute
+		. = I.damtype == DAMAGE_TYPE_BURN? primary.sound_melee_burn : primary.sound_melee_brute
 		if(!isnull(.))
 			return
 	return ..()
@@ -104,7 +104,7 @@
 /obj/hitsound_throwhit(obj/item/I)
 	if(!isnull(material_primary))
 		var/datum/material/primary = get_primary_material()
-		. = I.damtype == BURN? primary.sound_melee_burn : primary.sound_melee_brute
+		. = I.damtype == DAMAGE_TYPE_BURN? primary.sound_melee_burn : primary.sound_melee_brute
 		if(!isnull(.))
 			return
 	return ..()
@@ -112,7 +112,7 @@
 /obj/hitsound_unarmed(mob/M, datum/unarmed_attack/style)
 	if(!isnull(material_primary))
 		var/datum/material/primary = get_primary_material()
-		. = style.damage_type == BURN? primary.sound_melee_burn : primary.sound_melee_brute
+		. = style.damage_type == DAMAGE_TYPE_BURN? primary.sound_melee_burn : primary.sound_melee_brute
 		if(!isnull(.))
 			return
 	return ..()

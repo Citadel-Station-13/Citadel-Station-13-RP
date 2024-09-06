@@ -126,7 +126,7 @@
 	name = "energy missile"
 	icon_state = "force_missile"
 	damage = 15 // A bit stronger since arcing projectiles are much easier to avoid than traditional ones.
-	damage_type = BURN
+	damage_type = DAMAGE_TYPE_BURN
 
 // Very long ranged hivebot that rains down hell.
 // Their projectiles arc, meaning they go over everything until it hits the ground.

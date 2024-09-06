@@ -273,7 +273,7 @@
 		C.adjustBruteLoss(rand(5,10))
 		latched = TRUE
 	for(var/obj/vehicle/sealed/mecha/M in loc)
-		M.take_damage_legacy(20, BRUTE, null, null, null, 25)
+		M.take_damage_legacy(20, DAMAGE_TYPE_BRUTE, null, null, null, 25)
 	if(!latched)
 		retract()
 	else

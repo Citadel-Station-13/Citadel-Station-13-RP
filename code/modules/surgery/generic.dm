@@ -258,7 +258,7 @@
 		msg = "<font color='red'>[user]'s hand slips, damaging several organs in [target]'s lower abdomen with \the [tool]!</font>"
 		self_msg = "<font color='red'>Your hand slips, damaging several organs in [target]'s lower abdomen with \the [tool]!</font>"
 	user.visible_message(msg, self_msg)
-	target.apply_damage(12, BRUTE, affected, sharp=1)
+	target.apply_damage(12, DAMAGE_TYPE_BRUTE, affected, sharp=1)
 
 ///////////////////////////////////////////////////////////////
 // Cauterize Surgery
@@ -300,7 +300,7 @@
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
 	user.visible_message("<font color='red'>[user]'s hand slips, leaving a small burn on [target]'s [affected.name] with \the [tool]!</font>", \
 	"<font color='red'>Your hand slips, leaving a small burn on [target]'s [affected.name] with \the [tool]!</font>")
-	target.apply_damage(3, BURN, affected)
+	target.apply_damage(3, DAMAGE_TYPE_BURN, affected)
 
 ///////////////////////////////////////////////////////////////
 // Amputation Surgery

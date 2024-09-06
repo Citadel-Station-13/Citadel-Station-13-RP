@@ -290,7 +290,7 @@
 	/// damage tier - goes hand in hand with [damage_armor]
 	var/damage_tier = BULLET_TIER_DEFAULT
 	/// todo: legacy - BRUTE, BURN, TOX, OXY, CLONE, HALLOSS, ELECTROCUTE, BIOACID are the only things that should be in here
-	var/damage_type = BRUTE
+	var/damage_type = DAMAGE_TYPE_BRUTE
 	/// armor flag for damage - goes hand in hand with [damage_tier]
 	var/damage_flag = ARMOR_BULLET
 	/// damage mode - see [code/__DEFINES/combat/damage.dm]
@@ -512,12 +512,12 @@
 //Checks if the projectile is eligible for embedding. Not that it necessarily will.
 /obj/projectile/proc/can_embed()
 	//embed must be enabled and damage type must be brute
-	if(embed_chance == 0 || damage_type != BRUTE)
+	if(embed_chance == 0 || damage_type != DAMAGE_TYPE_BRUTE)
 		return 0
 	return 1
 
 /obj/projectile/proc/get_structure_damage()
-	if(damage_type == BRUTE || damage_type == BURN)
+	if(damage_type == DAMAGE_TYPE_BRUTE || damage_type == DAMAGE_TYPE_BURN)
 		return damage
 	return 0
 
@@ -965,7 +965,7 @@
 /obj/projectile/proc/on_impact(atom/target, impact_flags, def_zone, efficiency = 1)
 	//! legacy shit
 	var/blocked = clamp((1 - efficiency) * 100, 0, 100)
-	if(damage && damage_type == BURN)
+	if(damage && damage_type == DAMAGE_TYPE_BURN)
 		var/turf/T = get_turf(target)
 		if(T)
 			T.hotspot_expose(700, 5)
