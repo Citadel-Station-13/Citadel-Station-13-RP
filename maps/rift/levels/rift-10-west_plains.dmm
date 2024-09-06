@@ -2808,11 +2808,6 @@
 	},
 /turf/simulated/floor/tiled/steel_dirty/lythios43c,
 /area/construction/solars)
-"mK" = (
-/obj/effect/floor_decal/rust,
-/obj/structure/railing,
-/turf/simulated/floor/tiled/steel_dirty/lythios43c,
-/area/rift/surfacebase/outside/west)
 "mL" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /obj/machinery/light{
@@ -3974,6 +3969,16 @@
 /obj/structure/closet/lasertag/blue,
 /turf/simulated/floor/tiled/monotile/lythios43c,
 /area/rift/exterior/nuketown/interior)
+"sp" = (
+/obj/structure/cable/heavyduty{
+	icon_state = "4-8"
+	},
+/obj/structure/catwalk,
+/obj/structure/railing{
+	dir = 8
+	},
+/turf/simulated/floor/lythios43c,
+/area/rift/surfacebase/outside/west)
 "sq" = (
 /obj/structure/catwalk,
 /turf/simulated/floor,
@@ -5737,6 +5742,16 @@
 	},
 /turf/simulated/floor/reinforced/airless,
 /area/rnd/outpost/chamber)
+"zX" = (
+/obj/structure/cable/heavyduty{
+	icon_state = "4-8"
+	},
+/obj/structure/catwalk,
+/obj/structure/railing{
+	dir = 4
+	},
+/turf/simulated/floor/lythios43c,
+/area/rift/surfacebase/outside/west)
 "Aa" = (
 /obj/structure/bed/chair/office/light{
 	dir = 8
@@ -8254,6 +8269,13 @@
 /obj/machinery/space_heater,
 /turf/simulated/floor,
 /area/construction/solarscontrol)
+"MD" = (
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/structure/railing,
+/turf/simulated/floor/tiled/steel_dirty/lythios43c,
+/area/rift/surfacebase/outside/west)
 "ME" = (
 /obj/structure/reagent_dispensers/watertank,
 /obj/effect/floor_decal/rust,
@@ -10182,17 +10204,6 @@
 "Vn" = (
 /turf/simulated/floor/wood/lythios43c,
 /area/rift/surfacebase/outside/west)
-"Vo" = (
-/obj/effect/floor_decal/industrial/warning/dust{
-	dir = 8
-	},
-/obj/structure/railing{
-	dir = 8
-	},
-/obj/effect/floor_decal/rust,
-/obj/structure/railing,
-/turf/simulated/floor/tiled/steel_dirty/lythios43c,
-/area/rift/surfacebase/outside/west)
 "Vw" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 9
@@ -10401,13 +10412,6 @@
 	},
 /turf/simulated/open/lythios43c,
 /area/outpost/mining_main/outpost)
-"WL" = (
-/obj/effect/floor_decal/rust,
-/obj/structure/railing{
-	dir = 8
-	},
-/turf/simulated/floor/tiled/steel_dirty/lythios43c,
-/area/rift/surfacebase/outside/west)
 "WO" = (
 /obj/machinery/atmospherics/pipe/simple/visible/red,
 /turf/simulated/floor/tiled/white,
@@ -36176,41 +36180,41 @@ sv
 sv
 sv
 sv
+or
 sv
 sv
 sv
 sv
 sv
+or
 sv
 sv
 sv
 sv
 sv
-jn
-jn
-jn
+or
 qX
 PC
-jn
-jn
-jn
-jn
-jn
-jn
-jn
-jn
-jn
-jn
-jn
-jn
-jn
-jn
-jn
-jn
-jn
+or
+sv
+sv
+sv
+or
+sv
+sv
+sv
+sv
+sv
+or
+sv
+sv
+sv
+sv
+sv
+or
 qX
 qX
-jn
+or
 jn
 sv
 sv
@@ -36405,9 +36409,9 @@ ia
 lb
 lb
 hS
-Vo
+hS
+MD
 MW
-sv
 sv
 sv
 sv
@@ -36599,10 +36603,10 @@ wU
 wU
 wU
 wU
-mK
+wU
+lb
+MD
 MW
-sv
-sv
 sv
 sv
 sv
@@ -36794,8 +36798,8 @@ wU
 wU
 wU
 wU
-WL
-WL
+wU
+wU
 ce
 Do
 sv
@@ -36998,7 +37002,7 @@ sv
 sv
 sv
 sv
-sv
+gd
 sv
 mW
 wU
@@ -37142,7 +37146,7 @@ sv
 sv
 sv
 sv
-sv
+or
 Dx
 wU
 wU
@@ -37188,7 +37192,7 @@ SP
 Do
 sv
 sv
-sv
+gd
 sv
 sv
 sv
@@ -37380,15 +37384,15 @@ wU
 wU
 lb
 eZ
-sv
-sv
-sv
-gd
-sv
-sv
-sv
-sv
-mW
+dQ
+dQ
+dQ
+dQ
+dQ
+dQ
+dQ
+dQ
+sp
 wU
 dQ
 sv
@@ -37574,15 +37578,15 @@ wU
 lb
 lb
 eZ
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-mW
+dQ
+dQ
+dQ
+dQ
+dQ
+dQ
+dQ
+dQ
+zX
 wU
 sv
 dQ
@@ -37963,7 +37967,7 @@ lb
 fq
 Do
 sv
-sv
+PV
 sv
 sv
 sv
@@ -38356,7 +38360,7 @@ sv
 sv
 sv
 sv
-sv
+PV
 sv
 mW
 wU
@@ -38694,7 +38698,7 @@ sv
 sv
 sv
 sv
-sv
+or
 cU
 lb
 lb
@@ -38933,7 +38937,7 @@ lb
 fq
 Do
 sv
-sv
+Wp
 sv
 sv
 sv
@@ -39130,7 +39134,7 @@ sv
 sv
 sv
 sv
-sv
+PV
 sv
 sv
 sv
@@ -39902,14 +39906,14 @@ lb
 lb
 fq
 Do
+PV
 sv
 sv
 sv
 sv
+Wp
 sv
-sv
-sv
-sv
+PV
 mW
 dQ
 dQ
@@ -40291,14 +40295,14 @@ wU
 SP
 Do
 sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-mW
+dQ
+dQ
+dQ
+dQ
+dQ
+dQ
+dQ
+sp
 dQ
 dQ
 sv
@@ -40485,14 +40489,14 @@ wU
 SP
 Do
 sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-mW
+dQ
+dQ
+dQ
+dQ
+dQ
+dQ
+dQ
+zX
 dQ
 dQ
 dQ
@@ -40679,7 +40683,7 @@ wU
 SP
 Do
 sv
-sv
+dQ
 Pq
 Pq
 Pq
@@ -40828,7 +40832,7 @@ sv
 sv
 sv
 sv
-sv
+or
 Dx
 wU
 wU
@@ -40873,7 +40877,7 @@ wU
 SP
 Do
 sv
-sv
+dQ
 Pq
 em
 ag
@@ -41066,8 +41070,8 @@ wU
 wU
 wU
 eZ
-sv
-sv
+dQ
+dQ
 Pq
 ha
 lz
@@ -41260,8 +41264,8 @@ wU
 wU
 wU
 eZ
-sv
-sv
+dQ
+dQ
 Pq
 FO
 VW
@@ -41843,7 +41847,7 @@ lb
 mX
 Do
 sv
-sv
+Wp
 sv
 sv
 sv
@@ -42186,7 +42190,7 @@ PP
 PP
 PP
 sv
-hi
+or
 Dx
 wU
 wU
@@ -42396,30 +42400,30 @@ lb
 lb
 lb
 fq
-Do
+or
+sv
+sv
+sv
+sv
+sv
+jn
+or
+jn
+jn
+jn
+jn
+jn
+or
 jn
 jn
 jn
 jn
 jn
 jn
-jn
-jn
-jn
-jn
-jn
-jn
-jn
-jn
-jn
-jn
-jn
-jn
-jn
-jn
+or
 FP
 FP
-jn
+or
 jn
 sv
 sv
@@ -42623,7 +42627,7 @@ sv
 sv
 sv
 sv
-sv
+Wp
 sv
 sv
 pn
@@ -43160,6 +43164,7 @@ sv
 sv
 sv
 sv
+or
 sv
 sv
 sv
@@ -43168,8 +43173,7 @@ sv
 sv
 sv
 sv
-sv
-sv
+or
 sv
 sv
 sv

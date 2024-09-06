@@ -328,6 +328,9 @@
 /obj/structure/cable/orange{
 	icon_state = "4-8"
 	},
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/tradeport/dock2)
 "aaZ" = (
@@ -5116,6 +5119,9 @@
 	pixel_x = 22;
 	req_one_access = list(160)
 	},
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/tradeport/comroom)
 "anO" = (
@@ -5790,6 +5796,9 @@
 /turf/simulated/floor/tiled/old_tile/red,
 /area/tradeport/security)
 "apB" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/tradeport/comroom)
 "apC" = (
@@ -6489,6 +6498,9 @@
 "aru" = (
 /obj/structure/sign/nosmoking_2{
 	pixel_x = 32
+	},
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/tradeport/dock2)
@@ -8466,6 +8478,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 8
 	},
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/tradeport/dock2)
 "aww" = (
@@ -8822,6 +8837,9 @@
 	dir = 4
 	},
 /obj/machinery/vending/fuelvendor,
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/tradeport/comroom)
 "axl" = (
@@ -9105,6 +9123,9 @@
 /obj/machinery/embedded_controller/radio/airlock/docking_port{
 	pixel_x = 27;
 	id_tag = "tradeport_utilitymicro_dock"
+	},
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/tradeport/dock2)
@@ -9627,6 +9648,9 @@
 	pixel_x = 27;
 	id_tag = "tradeport_runabout_dock"
 	},
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/tradeport/dock2)
 "azn" = (
@@ -9824,6 +9848,9 @@
 "azN" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/fuel{
 	dir = 1
+	},
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/tradeport/dock2)
@@ -10221,6 +10248,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 8
 	},
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/tradeport/comroom)
 "aAP" = (
@@ -10599,6 +10629,7 @@
 /obj/structure/window/reinforced/polarized{
 	id = "udang_cargo"
 	},
+/obj/effect/floor_decal/borderfloorblack,
 /turf/simulated/floor/tiled/old_tile/yellow,
 /area/shuttle/udang/main)
 "aBI" = (
@@ -12559,9 +12590,6 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 1
 	},
-/obj/machinery/atm{
-	pixel_y = 27
-	},
 /obj/structure/cable/orange{
 	icon_state = "1-4";
 	dir = 1
@@ -12754,6 +12782,7 @@
 /obj/structure/window/reinforced/polarized{
 	id = "udang_cargo"
 	},
+/obj/effect/floor_decal/borderfloorblack,
 /turf/simulated/floor/tiled/old_tile/yellow,
 /area/shuttle/udang/main)
 "aHl" = (
@@ -13741,23 +13770,6 @@
 "aJQ" = (
 /obj/effect/debris/cleanable/blood,
 /obj/item/bone/skull,
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/structure/window/reinforced,
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/obj/machinery/door/window/westleft{
-	name = "rare item display case";
-	req_access = list(160)
-	},
-/obj/structure/table/marble,
-/obj/item/melee/transforming/hfmachete,
 /turf/simulated/floor/outdoors/ice,
 /area/tradeport/cyndishow)
 "aJR" = (
@@ -14561,6 +14573,9 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
 	},
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 5
+	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/tradeport/comroom)
 "aMj" = (
@@ -14620,6 +14635,9 @@
 /obj/machinery/light{
 	dir = 8;
 	light_range = 12
+	},
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 10
 	},
 /turf/simulated/floor/tiled/old_tile/yellow,
 /area/shuttle/udang/main)
@@ -15287,6 +15305,9 @@
 	icon_state = "1-2"
 	},
 /obj/structure/marker_beacon/yellow,
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 5
+	},
 /turf/simulated/floor/tiled/old_tile/yellow,
 /area/shuttle/udang/main)
 "aOk" = (
@@ -15358,6 +15379,9 @@
 /obj/machinery/embedded_controller/radio/airlock/docking_port{
 	pixel_x = 27;
 	id_tag = "tradeport_caravan_dock"
+	},
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/tradeport/dock2)
@@ -15528,6 +15552,7 @@
 /obj/structure/window/reinforced/polarized{
 	id = "udang_cargo"
 	},
+/obj/effect/floor_decal/borderfloorblack,
 /turf/simulated/floor/tiled/old_tile/yellow,
 /area/shuttle/udang/main)
 "aOR" = (
@@ -15824,6 +15849,9 @@
 /obj/structure/cable/orange{
 	icon_state = "4-8"
 	},
+/obj/machinery/atm{
+	pixel_y = 27
+	},
 /turf/simulated/floor/tiled/old_tile/beige,
 /area/tradeport/commhall)
 "aPL" = (
@@ -15838,6 +15866,9 @@
 /area/tradeport/cyndishow)
 "aPN" = (
 /obj/structure/marker_beacon/yellow,
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 9
+	},
 /turf/simulated/floor/tiled/old_tile/yellow,
 /area/shuttle/udang/main)
 "aPO" = (
@@ -15946,6 +15977,9 @@
 /obj/machinery/embedded_controller/radio/airlock/docking_port{
 	pixel_x = 27;
 	id_tag = "tradeport_tug_dock"
+	},
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/tradeport/dock2)
@@ -16835,6 +16869,7 @@
 /obj/structure/bed/chair/shuttle{
 	dir = 4
 	},
+/obj/effect/floor_decal/borderfloorblack,
 /turf/simulated/floor/tiled/old_tile/yellow,
 /area/shuttle/udang/main)
 "aSu" = (
@@ -16995,6 +17030,9 @@
 /area/tradeport/commhall)
 "aSX" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 8
+	},
+/obj/effect/floor_decal/borderfloorblack{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
@@ -17248,6 +17286,9 @@
 "aTE" = (
 /obj/structure/closet/walllocker/emergsuit_wall{
 	pixel_y = 30
+	},
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 1
 	},
 /turf/simulated/floor/tiled/old_tile/yellow,
 /area/shuttle/udang/main)
@@ -18101,6 +18142,9 @@
 /obj/structure/window/reinforced/polarized{
 	id = "udang_cargo"
 	},
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 6
+	},
 /turf/simulated/floor/tiled/old_tile/yellow,
 /area/shuttle/udang/main)
 "aVL" = (
@@ -18355,6 +18399,9 @@
 	pixel_x = 27;
 	id_tag = "tradeport_adventurer_dock"
 	},
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/tradeport/dock2)
 "aWx" = (
@@ -18364,6 +18411,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 8
+	},
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/tradeport/comroom)
@@ -18666,6 +18716,9 @@
 /obj/item/paper{
 	info = "WELCOME TO THE NEBULA MOTEL \ TO BUY A PASS, SEEK M4RIA, AT BEHIND THE COUNTER. \ \ We have 9 rooms. \ Room 1 to 4 have a small kitchen, and washing room. \  Room 1 and 4 have 1 Double bed. \2 has 1 single bed \3 have 2 single beds. \ Those rooms are 30 Thrallers the 3 to 5 hours. \ \ Room 5 to 8 have no kitchen, and washing room. \ Room 6 and 8 have 1 Double bed. \ 5 has 1 single bed \ 7 have 2 single beds. \ Those rooms are 15 Thrallers the 3 to 5 hours. \ \  Room 9 is our VIP Suite. This suite has 2 bed rooms, 1 office, 1 fully equipped kitchen, 1 washroom, 1 laundry room, And its own shuttle call the Arrowhead, used by ex Tajaran racer Cheuk'Yager. the suite is 80 Thrallers the 3 to 5 hours. \ \ The Sauna is free to use. The public laundry machine and public bathroom are free to use. Guest pass are available if the rooms are shared.";
 	name = "Nebula Motel"
+	},
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/tradeport/comroom)
@@ -19318,6 +19371,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
 "aZf" = (
+/obj/effect/floor_decal/borderfloorblack,
 /turf/simulated/floor/tiled/old_tile/yellow,
 /area/shuttle/udang/main)
 "aZg" = (
@@ -19563,6 +19617,9 @@
 /area/shuttle/trade_ship/cockpit)
 "aZQ" = (
 /obj/structure/marker_beacon/yellow,
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 1
+	},
 /turf/simulated/floor/tiled/old_tile/gray,
 /area/shuttle/udang/main)
 "aZS" = (
@@ -20002,6 +20059,12 @@
 	},
 /turf/simulated/floor/tiled/steel_dirty/dark,
 /area/shuttle/arrowhead)
+"cJU" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/tradeport/dock2)
 "cKy" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 5
@@ -20323,6 +20386,12 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/scoophead/main2)
+"edq" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techfloor/monogrid,
+/area/tradeport/dock2)
 "efP" = (
 /obj/structure/railing/grey{
 	dir = 4
@@ -21520,6 +21589,13 @@
 	},
 /turf/simulated/floor/tiled/old_tile/white,
 /area/tradeport/motel/room4)
+"hIN" = (
+/obj/structure/marker_beacon/yellow,
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/old_tile/yellow,
+/area/shuttle/udang/main)
 "hLk" = (
 /obj/machinery/atmospherics/portables_connector,
 /obj/machinery/portable_atmospherics/canister/empty/phoron,
@@ -21543,6 +21619,12 @@
 	},
 /turf/simulated/floor/tiled/neutral,
 /area/tradeport/commons)
+"hOK" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 9
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/tradeport/comroom)
 "hPt" = (
 /obj/structure/table/bench/wooden,
 /obj/structure/flora/pottedplant/tropical{
@@ -22917,6 +22999,12 @@
 	},
 /turf/simulated/floor/wood/classm,
 /area/tradeport/motel/vip)
+"lYg" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/old_tile/yellow,
+/area/shuttle/udang/main)
 "lZF" = (
 /obj/machinery/button/remote/blast_door{
 	id = "Arrowhead Airlock";
@@ -40533,22 +40621,22 @@ anj
 aLZ
 aws
 aOo
-asG
+hOK
 aXr
 aSX
 apB
-aGQ
-aGQ
-aGQ
+edq
+edq
+edq
 awv
-aGQ
+edq
 aaY
 awv
-aGQ
-aGQ
+edq
+edq
 aru
-aGQ
-aGQ
+edq
+edq
 agD
 alq
 alq
@@ -40925,7 +41013,7 @@ aMi
 aAN
 axj
 anN
-asa
+cJU
 aQa
 aOt
 aWw
@@ -51946,8 +52034,8 @@ acJ
 aLe
 acW
 awT
-awV
-awV
+awT
+awT
 aLE
 awV
 akw
@@ -52138,10 +52226,10 @@ aQX
 aBn
 akK
 aGu
+aGu
+aGu
 aYh
 awT
-awV
-awV
 abU
 awV
 aEh
@@ -52332,10 +52420,10 @@ aJX
 aBt
 aOC
 aOC
+aOC
+aOC
 ajn
 awT
-awV
-awV
 abU
 awV
 awV
@@ -52526,10 +52614,10 @@ aeK
 aqR
 ayq
 aYs
+aYs
+aYs
 aDY
 awT
-awV
-awV
 abU
 awV
 awV
@@ -59340,7 +59428,7 @@ acd
 aZH
 arv
 awe
-aPN
+hIN
 aSt
 aUh
 aRl
@@ -59534,7 +59622,7 @@ acd
 mhM
 aDp
 aXS
-aZf
+lYg
 aHk
 aDz
 aos
@@ -59922,7 +60010,7 @@ acd
 mhM
 aLQ
 aAj
-aZf
+lYg
 aOQ
 avK
 aSr
