@@ -308,6 +308,12 @@
 	armor_penetration = 80
 	hitscan = 1 //so the PTR isn't useless as a sniper weapon
 
+/obj/projectile/bullet/mecha/a12mm_gauss //Mecha gauss rifle round.
+	fire_sound = 'sound/weapons/Gunshot_cannon.ogg' // This is literally an anti-tank rifle caliber. It better sound like a fucking cannon.
+	damage = 60
+	legacy_penetrating = 1
+	armor_penetration = 60
+
 /* Miscellaneous */
 
 /obj/projectile/bullet/suffocationbullet//How does this even work?
