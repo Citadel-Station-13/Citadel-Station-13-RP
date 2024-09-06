@@ -19,7 +19,8 @@
 	icon_state = "snake"
 	icon = 'icons/mob/vore64x64.dmi'
 
-	faction = "snake"
+	iff_factions = MOB_IFF_FACTION_FARM_PEST
+
 	maxHealth = 200
 	health = 200
 	randomized = TRUE

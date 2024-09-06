@@ -136,7 +136,7 @@
 	..()
 
 /mob/living/blob_act(var/obj/structure/blob/B)
-	if(stat == DEAD || faction == "blob")
+	if(stat == DEAD || has_iff_faction(MOB_IFF_FACTION_BLOB))
 		return
 
 	var/damage = rand(30, 40)

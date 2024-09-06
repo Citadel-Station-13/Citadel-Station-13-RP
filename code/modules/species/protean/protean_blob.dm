@@ -9,7 +9,8 @@
 	icon_rest = "rest"
 	icon_dead = "puddle"
 
-	faction = "neutral"
+	iff_factions = MOB_IFF_FACTION_NEUTRAL
+
 	maxHealth = 250
 	health = 250
 	say_list_type = /datum/say_list/protean_blob

@@ -479,7 +479,7 @@ I'm commenting this out until I have time to make this less stupid.
 // fuck this
 /obj/nuclear_mistake_spawner
 	name = "the Underdark's revenge"
-	desc = "hardcoded piece of that that should never be seen PLEASE report this if you do"
+	desc = "hardcoded piece of trash that should never be seen PLEASE report this if you do"
 	icon = 'icons/mob/screen1.dmi'
 	icon_state = "x"
 	invisibility = 101
@@ -536,7 +536,8 @@ I'm commenting this out until I have time to make this less stupid.
 		my_mob.low_priority = TRUE
 
 		if(faction)
-			my_mob.faction = faction
+			my_mob.clear_iff_factions()
+			my_mob.add_iff_faction(faction)
 
 		if(atmos_comp)
 			var/turf/T = get_turf(src)

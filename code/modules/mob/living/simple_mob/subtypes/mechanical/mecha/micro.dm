@@ -19,7 +19,8 @@
 	icon = 'icons/mecha/micro.dmi'
 	icon_state = "whisker"
 	wreckage = /obj/structure/loot_pile/mecha/mouse_tank
-	faction = "mouse_army"
+
+	iff_factions = MOB_IFF_FACTION_FARM_PEST
 
 	maxHealth = 150
 	armor_legacy_mob = list(

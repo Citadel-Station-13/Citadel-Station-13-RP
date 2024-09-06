@@ -15,7 +15,6 @@
 	icon_living = "otie"
 	icon_dead = "otie-dead"
 	icon_rest = "otie_rest"
-	faction = "otie"
 	maxHealth = 150
 	health = 150
 	randomized = TRUE
@@ -53,7 +52,6 @@
 	icon_living = "photie"
 	icon_dead = "photie-dead"
 	icon_rest = "photie_rest"
-	faction = "virgo3b"
 	tame_chance = 5 // Only a 1 in 20 chance of success. It's feral. What do you expect?
 	// Lazy way of making sure this otie survives outside.
 	min_oxy = 0
@@ -74,7 +72,6 @@
 	icon_living = "hotie"
 	icon_dead = "hotie-dead"
 	icon_rest = "hotie_rest"
-	faction = "cult"
 	tame_chance = 20
 	// Lazy way of making sure this otie survives outside.
 	min_oxy = 0
@@ -91,13 +88,13 @@
 /mob/living/simple_mob/otie/red/friendly //gets the pet2tame feature and doesn't kill you right away
 	name = "red otie"
 	desc = "Seems this ominous looking longdog has been infused with wicked infernal forces. This one seems rather peaceful though."
-	faction = "neutral"
+	iff_factions = MOB_IFF_FACTION_NEUTRAL
 	tamed = 1
 
 /mob/living/simple_mob/otie/friendly //gets the pet2tame feature and doesn't kill you right away
 	name = "otie"
 	desc = "The classic bioengineered longdog. This one might even tolerate you!"
-	faction = "neutral"
+	iff_factions = MOB_IFF_FACTION_NEUTRAL
 	tamed = 1
 
 /mob/living/simple_mob/otie/cotie //same as above but has a little collar :v
@@ -106,7 +103,7 @@
 	icon_state = "cotie"
 	icon_living = "cotie"
 	icon_rest = "cotie_rest"
-	faction = "neutral"
+	iff_factions = MOB_IFF_FACTION_NEUTRAL
 	tamed = 1
 
 /mob/living/simple_mob/otie/cotie/phoron //friendly phoron pup with collar
@@ -134,12 +131,11 @@
 	icon_living = "sotie"
 	icon_rest = "sotie_rest"
 	icon_dead = "sotie-dead"
-	faction = "neutral"
+	iff_factions = MOB_IFF_FACTION_NEUTRAL
 	maxHealth = 200 //armored or something
 	health = 200
 	tamed = 1
 	has_eye_glow = TRUE
-	loot_list = list(/obj/item/clothing/glasses/sunglasses/sechud,/obj/item/clothing/suit/armor/vest/alt)
 
 /mob/living/simple_mob/otie/security/phoron
 	name = "mutated guard otie"
@@ -194,7 +190,7 @@
 						AI.set_follow(friend)
 						if(tamed != 1)
 							tamed = 1
-							faction = M.faction
+							copy_iff_factions(M)
 					sleep(1 SECOND)
 
 		if(INTENT_GRAB)

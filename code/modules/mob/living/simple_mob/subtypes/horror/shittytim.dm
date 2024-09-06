@@ -12,7 +12,6 @@
 	icon_living = "shitty_tim"
 	icon_dead = "tst_head"
 	icon_rest = "shitty_tim"
-	faction = "horror"
 	icon = 'icons/mob/horror_show/tallhorror.dmi'
 	icon_gib = "generic_gib"
 	catalogue_data = list(/datum/category_item/catalogue/fauna/horror/BigTim)

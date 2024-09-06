@@ -12,7 +12,6 @@
 	icon_living = "Rickey"
 	icon_dead = "r_head"
 	icon_rest = "Rickey"
-	faction = "horror"
 	icon = 'icons/mob/horror_show/GHPS.dmi'
 	icon_gib = "generic_gib"
 	catalogue_data = list(/datum/category_item/catalogue/fauna/horror/Rickey)

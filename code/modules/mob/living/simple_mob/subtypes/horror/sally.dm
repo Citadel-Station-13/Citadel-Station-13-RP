@@ -12,7 +12,6 @@
 	icon_living = "Sally"
 	icon_dead = "ws_head"
 	icon_rest = "Sally"
-	faction = "horror"
 	icon = 'icons/mob/horror_show/widehorror.dmi'
 	icon_gib = "generic_gib"
 	catalogue_data = list(/datum/category_item/catalogue/fauna/horror/Sally)

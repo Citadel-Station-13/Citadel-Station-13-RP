@@ -428,11 +428,11 @@
 
 /mob/living/simple_mob/animal/space/carp/holodeck/proc/set_safety(var/safe)
 	if (safe)
-		faction = "neutral"
+		set_iff_factions(MOB_IFF_FACTION_NEUTRAL)
 		legacy_melee_damage_lower = 0
 		legacy_melee_damage_upper = 0
 	else
-		faction = "carp"
+		set_iff_factions(MOB_IFF_FACTION_CARP)
 		legacy_melee_damage_lower = initial(legacy_melee_damage_lower)
 		legacy_melee_damage_upper = initial(legacy_melee_damage_upper)
 

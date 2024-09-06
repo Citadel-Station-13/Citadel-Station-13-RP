@@ -8,7 +8,8 @@
 	icon_dead = "fennix_dead"
 	icon = 'icons/mob/vore.dmi'
 
-	faction = "fennec" // Will protec other fenfens
+	iff_factions = MOB_IFF_FACTION_FARM_NEUTRAL
+
 	maxHealth = 60
 	health = 60
 
