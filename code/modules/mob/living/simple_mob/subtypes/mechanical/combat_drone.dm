@@ -81,7 +81,7 @@
 	return TRUE
 
 /obj/projectile/beam/drone
-	damage = 10
+	damage_force = 10
 
 /obj/item/shield_projector/rectangle/automatic/drone
 	shield_health = 150

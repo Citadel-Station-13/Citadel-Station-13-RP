@@ -64,7 +64,7 @@
 /obj/projectile/icicle
 	name = "icicle"
 	icon_state = "ice_2"
-	damage = 40
+	damage_force = 40
 	damage_type = BRUTE
 	damage_flag = ARMOR_MELEE
 	armor_penetration = 30
