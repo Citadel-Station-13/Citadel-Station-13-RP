@@ -7,6 +7,7 @@
 	icon_state = "base"
 	use_power = USE_POWER_IDLE
 	initialize_directions = 0
+	pipe_flags = PIPING_DEFAULT_LAYER_ONLY | PIPING_ONE_PER_TURF
 	construction_type = /obj/item/pipe/quaternary
 	hides_underfloor_underlays = TRUE
 

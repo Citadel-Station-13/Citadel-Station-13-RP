@@ -12,6 +12,7 @@
 	equip_sound = 'sound/items/toolbelt_equip.ogg'
 	drop_sound = 'sound/items/drop/toolbelt.ogg'
 	pickup_sound = 'sound/items/pickup/toolbelt.ogg'
+	worth_intrinsic = 50
 	var/show_above_suit = 0
 
 /obj/item/storage/belt/verb/toggle_layer()
@@ -261,8 +262,8 @@
 		/obj/item/cell/device/weapon,
 		/obj/item/material/butterfly,
 		/obj/item/material/knife,
-		/obj/item/melee/transforming/sword,
-		/obj/item/shield/energy,
+		/obj/item/melee/transforming/energy/sword,
+		/obj/item/shield/transforming/energy,
 		/obj/item/ammo_casing/,
 		/obj/item/ammo_magazine/,
 		/obj/item/storage/box/beanbags,
@@ -409,6 +410,7 @@
 	icon_state = "janitor"
 	max_items = 7
 	max_single_weight_class = WEIGHT_CLASS_NORMAL
+	worth_intrinsic = 35
 	insertion_whitelist = list(
 		/obj/item/clothing/glasses,
 		/obj/item/flashlight,
@@ -432,6 +434,7 @@
 	name = "excavation gear-belt"
 	desc = "Can hold various excavation gear."
 	icon_state = "gear"
+	worth_intrinsic = 65
 	insertion_whitelist = list(
 		/obj/item/storage/box/samplebags,
 		/obj/item/core_sampler,
@@ -568,7 +571,7 @@
 		/obj/item/gun/energy/lasertag,
 		/obj/item/gun/energy/netgun,
 		/obj/item/gun/energy/phasegun/pistol,
-		/obj/item/gun/energy/pulse_pistol,
+		/obj/item/gun/energy/pulse_carbine,
 		/obj/item/gun/energy/retro,
 		/obj/item/gun/energy/service,
 		/obj/item/gun/energy/stunrevolver,

@@ -66,9 +66,9 @@ var/const/MAX_ACTIVE_TIME = 400
 		Die()
 	return
 
-/obj/item/clothing/mask/facehugger/bullet_act()
+/obj/item/clothing/mask/facehugger/on_bullet_act(obj/projectile/proj, impact_flags, list/bullet_act_args)
+	. = ..()
 	Die()
-	return
 
 /obj/item/clothing/mask/facehugger/fire_act(datum/gas_mixture/air, exposed_temperature, exposed_volume)
 	if(exposed_temperature > T0C+80)
@@ -351,7 +351,7 @@ var/const/MAX_ACTIVE_TIME = 400
 		Die()
 	return
 
-/mob/living/simple_mob/animal/space/alien/facehugger/bullet_act()
+/mob/living/simple_mob/animal/space/alien/facehugger/on_bullet_act(obj/projectile/proj, impact_flags, list/bullet_act_args)
 	Die()
 	return
 

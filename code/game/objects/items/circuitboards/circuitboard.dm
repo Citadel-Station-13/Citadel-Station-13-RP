@@ -19,6 +19,7 @@
 	throw_force = 5
 	throw_speed = 3
 	throw_range = 15
+	worth_intrinsic = 45
 	var/build_path = null
 	var/board_type = new /datum/frame/frame_types/computer
 	/**

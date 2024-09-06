@@ -223,7 +223,7 @@
 	kinetic_gun = null
 	return ..()
 
-/obj/projectile/kinetic/Bump(atom/target)
+/obj/projectile/kinetic/pre_impact(atom/target, impact_flags, def_zone)
 	if(kinetic_gun)
 		var/list/mods = kinetic_gun.get_modkits()
 		for(var/obj/item/ka_modkit/M in mods)
@@ -234,20 +234,15 @@
 		pressure_decrease_active = TRUE
 	return ..()
 
-/obj/projectile/kinetic/projectile_attack_mob(mob/living/target_mob, distance, miss_modifier)
-	if(!pressure_decrease_active && !lavaland_environment_check(get_turf(src)))
-		name = "weakened [name]"
-		damage_force = damage * pressure_decrease
-		pressure_decrease_active = TRUE
-	return ..()
-
 /obj/projectile/kinetic/legacy_on_range()
 	strike_thing()
 	..()
 
-/obj/projectile/kinetic/on_hit(atom/target)
-	strike_thing(target)
+/obj/projectile/kinetic/on_impact(atom/target, impact_flags, def_zone, efficiency)
 	. = ..()
+	if(. & PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT)
+		return
+	strike_thing(target)
 
 /obj/projectile/kinetic/proc/strike_thing(atom/target)
 	if(!pressure_decrease_active && !lavaland_environment_check(get_turf(src)))
@@ -363,17 +358,6 @@
 
 /obj/item/ka_modkit/range/modify_projectile(obj/projectile/kinetic/K)
 	K.range += modifier * WORLD_ICON_SIZE
-
-//Damage
-/obj/item/ka_modkit/damage
-	name = "damage increase"
-	desc = "Increases the damage of kinetic accelerator when installed."
-	modifier = 10
-
-/obj/item/ka_modkit/damage/modify_projectile(obj/projectile/kinetic/K)
-	K.damage += modifier
-
-
 //Cooldown
 /obj/item/ka_modkit/cooldown
 	name = "cooldown decrease"
@@ -404,6 +388,20 @@
 	cost = 0
 	minebot_upgrade = TRUE
 	minebot_exclusive = TRUE
+
+
+//Capacity
+/obj/item/ka_modkit/capacity
+	name = "capacity increase"
+	desc = "A cutdown accelerator frame that increases mod capacity while reducing damage. Not compatible with minebots."
+	modifier = -6
+	cost = -15
+	maximum_of_type = 2
+	minebot_upgrade = FALSE
+	denied_type = /obj/item/ka_modkit/capacity
+
+/obj/item/ka_modkit/capacity/modify_projectile(obj/projectile/kinetic/K)
+	K.damage += modifier
 
 
 //AoE blasts

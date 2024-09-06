@@ -15,10 +15,10 @@
 	if(exposed_temperature > 300 + T0C)
 		damage_integrity(5)
 
-/obj/effect/spider/melee_act(mob/user, obj/item/weapon, target_zone, mult)
-	if(weapon.damtype == BURN)
-		mult *= 2
-	return ..()
+/obj/effect/spider/process_damage_instance(list/shieldcall_args, filter_zone)
+	. = ..()
+	if(shieldcall_args[SHIELDCALL_ARG_DAMAGE_TYPE])
+		shieldcall_args[SHIELDCALL_ARG_DAMAGE] *= 2
 
 /obj/effect/spider/stickyweb
 	icon_state = "stickyweb1"

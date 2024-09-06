@@ -16,7 +16,7 @@
 		/obj/item/cell/high,
 		/obj/item/card/id/syndicate,
 		/obj/item/multitool,
-		/obj/item/shield/energy,
+		/obj/item/shield/transforming/energy,
 		/obj/item/clothing/shoes/magboots)
 
 
@@ -35,7 +35,7 @@
 	desc = "It's a storage unit for nuclear-operative gear."
 
 	starts_with = list(
-	/obj/item/ammo_magazine/m10mm = 5,
+	/obj/item/ammo_magazine/a10mm = 5,
 	/obj/item/storage/box/handcuffs,
 	/obj/item/storage/box/flashbangs,
 	/obj/item/gun/energy/gun = 5,

@@ -163,6 +163,25 @@
 	message_admins("<span class='adminnotice'><b> LocalNarrate: [key_name_admin(usr)] at [ADMIN_COORDJMP(A)]:</b> [msg]<BR></span>")
 	// SSblackbox.record_feedback("tally", "admin_verb", 1, "Local Narrate") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
+/client/proc/cmd_admin_z_narrate()
+	set category = "Special Verbs"
+	set name = "Z Narrate"
+
+	if(!check_rights(R_ADMIN))
+		return
+
+	var/msg = input("Enter the text you wish to show an entire Z level:", "Z Narrate:") as text|null
+
+	if (!msg)
+		return
+
+	for(var/mob/M in range(192)) //Yes this is lazy
+		to_chat(M, msg)
+
+	log_admin("ZNarrate: [key_name(usr)] at [ADMIN_COORDJMP(usr)]: [msg]")
+	message_admins("<span class='adminnotice'><b> ZNarrate: [key_name_admin(usr)] at [ADMIN_COORDJMP(usr)]:</b> [msg]<BR></span>")
+
+
 /client/proc/cmd_admin_godmode(mob/M as mob in GLOB.mob_list)
 	set category = "Special Verbs"
 	set name = "Godmode"
@@ -501,7 +520,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 		new_character.dna.ResetUIFrom(new_character)
 		new_character.sync_organ_dna()
 	if(inhabit)
-		new_character.key = player_key
+		new_character.set_ckey(ckey(player_key))
 		//Were they any particular special role? If so, copy.
 		if(new_character.mind)
 			var/datum/antagonist/antag_data = get_antag_data(new_character.mind.special_role)

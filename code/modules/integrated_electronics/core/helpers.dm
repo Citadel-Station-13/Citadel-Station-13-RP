@@ -21,12 +21,6 @@
 
 
 /obj/item/integrated_circuit/proc/set_pin_data(pin_type, pin_number, datum/new_data)
-	if(islist(new_data))
-		for(var/i in 1 to length(new_data))
-			if (istype(new_data) && !isweakref(new_data))
-				new_data[i] = WEAKREF(new_data[i])
-	if (istype(new_data) && !isweakref(new_data))
-		new_data = WEAKREF(new_data)
 	var/datum/integrated_io/pin = get_pin_ref(pin_type, pin_number)
 	return pin.write_data_to_pin(new_data)
 
@@ -67,11 +61,16 @@
 
 /datum/integrated_io/proc/get_data()
 	if(islist(data))
-		for(var/i in 1 to length(data))
-			if(isweakref(data[i]))
-				data[i] = data[i].resolve()
+		var/list/d = data
+		var/list/new_data = d.Copy(max(1,d.len - IC_MAX_LIST_LENGTH+1),0)
+		for(var/i in 1 to length(new_data))
+			var/datum/dataRef = new_data[i]
+			if(istype(dataRef) && !isweakref(dataRef))
+				new_data[i] = WEAKREF(dataRef)
+		return new_data
 	if(isweakref(data))
-		return data.resolve()
+		var/datum/weakref/d = data
+		return d.resolve()
 	return data
 
 /// Returns a list of parameters necessary to locate a pin in the assembly: component number, pin type and pin number

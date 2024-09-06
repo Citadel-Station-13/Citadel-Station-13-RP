@@ -40,7 +40,6 @@
 	meat_amount = 2
 
 	showvoreprefs = 0
-	vore_active = 1
 
 	var/morphed = FALSE
 	var/tooltip = TRUE

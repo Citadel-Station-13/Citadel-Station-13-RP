@@ -73,7 +73,7 @@
 /obj/item/stolenpackage,
 /obj/item/plastique,
 /obj/item/plastique,
-/obj/item/melee/transforming/sword/pirate,
+/obj/item/melee/transforming/energy/sword/cutlass,
 /turf/space,
 /area/awaymission/zoo)
 "aj" = (
@@ -2634,10 +2634,10 @@
 /area/awaymission/zoo/syndieship)
 "hK" = (
 /obj/structure/closet,
-/obj/item/reagent_containers/food/snacks/liquidfood,
-/obj/item/reagent_containers/food/snacks/liquidfood,
-/obj/item/reagent_containers/food/snacks/liquidfood,
-/obj/item/reagent_containers/food/snacks/liquidfood,
+/obj/item/reagent_containers/food/snacks/liquid,
+/obj/item/reagent_containers/food/snacks/liquid,
+/obj/item/reagent_containers/food/snacks/liquid,
+/obj/item/reagent_containers/food/snacks/liquid,
 /obj/machinery/light{
 	dir = 4
 	},
@@ -6159,16 +6159,6 @@
 /obj/structure/flora/ausbushes/ppflowers,
 /turf/simulated/floor/grass,
 /area/awaymission/zoo)
-"rk" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/turf/simulated/floor/plating,
-/area/awaymission/zoo)
 "rl" = (
 /obj/machinery/space_heater,
 /turf/simulated/floor,
@@ -6813,19 +6803,6 @@
 	},
 /turf/simulated/floor/holofloor/desert,
 /area/awaymission/zoo)
-"sF" = (
-/obj/effect/floor_decal/spline{
-	icon_state = "asteroid_edge_e";
-	name = "rocky edge"
-	},
-/mob/living/simple_mob/animal/space/alien/queen{
-	faction = "zoo"
-	},
-/turf/simulated/floor/holofloor/desert{
-	icon_state = "asteroidplating";
-	name = "scorched sand"
-	},
-/area/awaymission/zoo)
 "sG" = (
 /obj/landmark/away,
 /turf/simulated/floor/tiled/neutral,
@@ -7351,7 +7328,7 @@
 /turf/simulated/floor/holofloor/grass,
 /area/awaymission/zoo)
 "ua" = (
-/mob/living/simple_mob/fox{
+/mob/living/simple_mob/animal/passive/fox{
 	faction = "zoo"
 	},
 /turf/simulated/floor/holofloor/snow,
@@ -18291,7 +18268,7 @@ jS
 qH
 qO
 re
-rk
+qx
 rs
 jS
 hq
@@ -19843,7 +19820,7 @@ rx
 rx
 ry
 ry
-sF
+ry
 ry
 ry
 ry

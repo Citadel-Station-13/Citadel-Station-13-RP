@@ -289,8 +289,8 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 /obj/item/clothing/mask/smokable/cigarette/attackby(obj/item/W as obj, mob/user as mob)
 	..()
 
-	if(istype(W, /obj/item/melee/transforming/sword))
-		var/obj/item/melee/transforming/sword/S = W
+	if(istype(W, /obj/item/melee/transforming/energy/sword))
+		var/obj/item/melee/transforming/energy/sword/S = W
 		if(S.active)
 			light("<span class='warning'>[user] swings their [W], barely missing their nose. They light their [name] in the process.</span>")
 
@@ -321,19 +321,25 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 			quench()
 
 /obj/item/clothing/mask/smokable/cigarette/import
-	name = "cigarette"
-	desc = "A roll of tobacco and blended herbs."
+	desc = "A roll of exotic blended herbs."
 	icon_state = "cigimp"
 	item_state = "cigimp"
-	throw_speed = 0.5
-	w_class = WEIGHT_CLASS_TINY
-	slot_flags = SLOT_EARS | SLOT_MASK
-	attack_verb = list("burnt", "singed")
 	type_butt = /obj/item/cigbutt/imp
-	chem_volume = 15
-	max_smoketime = 300
-	smoketime = 300
-	nicotine_amt = 2
+	nicotine_amt = 0
+
+/obj/item/clothing/mask/smokable/cigarette/light
+	icon_state = "ciglite"
+	item_state = "ciglite"
+	type_butt = /obj/item/cigbutt/light
+	nicotine_amt = 1
+
+
+/obj/item/clothing/mask/smokable/cigarette/herbal
+	desc = "A roll of aromatic blended herbs."
+	icon_state = "cigherbal"
+	item_state = "cigherbal"
+	type_butt = /obj/item/cigbutt/herbal
+	nicotine_amt = 0
 
 ////////////
 // CIGARS //
@@ -419,9 +425,13 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	user.update_inv_r_hand(1)
 
 /obj/item/cigbutt/imp
-	name = "cigarette butt"
-	desc = "A manky old cigarette butt."
 	icon_state = "cigimpbutt"
+
+/obj/item/cigbutt/light
+	icon_state = "ciglitebutt"
+
+/obj/item/cigbutt/herbal
+	icon_state = "cigherbalbutt"
 
 /////////////////
 //SMOKING PIPES//
@@ -454,7 +464,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 			quench()
 
 /obj/item/clothing/mask/smokable/pipe/attackby(obj/item/W as obj, mob/user as mob)
-	if(istype(W, /obj/item/melee/transforming/sword))
+	if(istype(W, /obj/item/melee/transforming/energy/sword))
 		return
 
 	..()
@@ -605,6 +615,9 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	if(!base_state)
 		base_state = icon_state
 	if(!lit)
+		if(return_air_immutable()?.moles_by_flag(GAS_FLAG_OXIDIZER)<0.01)
+			user.visible_message("<span class='notice'>The [name] fails to light.")
+			return
 		lit = 1
 		icon_state = "[base_state]on"
 		item_state = "[base_state]on"
@@ -660,6 +673,15 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 /obj/item/flame/lighter/process(delta_time)
 	var/turf/location = get_turf(src)
 	if(location)
+		var/datum/gas_mixture/env=location.return_air_immutable()
+		if(env?.moles_by_flag(GAS_FLAG_OXIDIZER)<0.01)
+			visible_message("<span class='notice'>The [name] suddenly goes out.")
+			lit=0
+			icon_state = "[base_state]"
+			item_state = "[base_state]"
+			set_light(0)
+			STOP_PROCESSING(SSobj, src)
+			return
 		location.hotspot_expose(700, 5)
 	return
 

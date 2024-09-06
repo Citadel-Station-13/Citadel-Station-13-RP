@@ -240,7 +240,7 @@
 	if(!speed_process)
 		START_MACHINE_PROCESSING(src)
 	else
-		START_PROCESSING(SSfastprocess, src)
+		START_PROCESSING(SSprocess_5fps, src)
 	update_appearance()
 
 	//! Plumbing Signal

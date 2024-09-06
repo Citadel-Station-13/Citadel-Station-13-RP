@@ -272,7 +272,7 @@
 		C.afflict_stun(20 * 2)
 		C.adjustBruteLoss(rand(5,10))
 		latched = TRUE
-	for(var/obj/mecha/M in loc)
+	for(var/obj/vehicle/sealed/mecha/M in loc)
 		M.take_damage_legacy(20, BRUTE, null, null, null, 25)
 	if(!latched)
 		retract()

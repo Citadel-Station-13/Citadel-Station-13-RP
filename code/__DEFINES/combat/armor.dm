@@ -59,14 +59,26 @@ GLOBAL_REAL_LIST(armor_enums) = list(
 	ARMOR_ACID,
 )
 
+GLOBAL_REAL_LIST(armor_types) = list(
+	ARMOR_MELEE,
+	ARMOR_BULLET,
+	ARMOR_LASER,
+	ARMOR_ENERGY,
+	ARMOR_BOMB,
+	ARMOR_BIO,
+	ARMOR_RAD,
+	ARMOR_FIRE,
+	ARMOR_ACID,
+)
+
 //? --- armor tiers ---
 
-#define ARMOR_TIER_DEFAULT 0
+#define ARMOR_TIER_DEFAULT ARMOR_TIER_BASELINE
 
 #define ARMOR_TIER_LAUGHABLE -3
 #define ARMOR_TIER_LOW -2
 #define ARMOR_TIER_BELOW -1
-#define ARMOR_TIER_NORMAL 0
+#define ARMOR_TIER_BASELINE 0
 #define ARMOR_TIER_ABOVE 1
 #define ARMOR_TIER_HIGH 2
 #define ARMOR_TIER_OVERWHELMING 3
@@ -84,7 +96,7 @@ GLOBAL_REAL_LIST(armor_enums) = list(
 #define MELEE_TIER_HEAVY ARMOR_TIER_ABOVE
 #define MELEE_TIER_EXTREME ARMOR_TIER_HIGH
 
-#define MELEE_TIER_DEFAULT MELEE_TIER_LIGHT
+#define MELEE_TIER_DEFAULT MELEE_TIER_MEDIUM
 
 //? bullet
 
@@ -92,7 +104,7 @@ GLOBAL_REAL_LIST(armor_enums) = list(
 #define BULLET_TIER_LAUGHABLE ARMOR_TIER_LOW
 /// pistols
 #define BULLET_TIER_LOW ARMOR_TIER_BELOW
-/// pistols
+/// heavy pistols, light rifles
 #define BULLET_TIER_MEDIUM ARMOR_TIER_NORMAL
 /// rifles
 #define BULLET_TIER_HIGH ARMOR_TIER_ABOVE
@@ -108,7 +120,7 @@ GLOBAL_REAL_LIST(armor_enums) = list(
 /// improvised laser focis / etc
 #define LASER_TIER_LAUGHABLE ARMOR_TIER_LOW
 /// low tier lasers
-#define LASER_TIER_LOW ARMOR_TIER_LOW
+#define LASER_TIER_LOW ARMOR_TIER_BELOW
 /// laser carbines, energy guns, etc
 #define LASER_TIER_MEDIUM ARMOR_TIER_NORMAL
 /// x-ray rifles, snipers

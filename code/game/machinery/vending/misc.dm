@@ -46,6 +46,8 @@
 		/obj/item/storage/fancy/cigarettes/luckystars = 5,
 		/obj/item/storage/fancy/cigarettes/jerichos = 5,
 		/obj/item/storage/fancy/cigarettes/menthols = 5,
+		/obj/item/storage/fancy/cigarettes/kingsilvers = 2,
+		/obj/item/storage/fancy/cigarettes/subrosas = 2,
 		/obj/item/storage/rollingpapers = 5,
 		/obj/item/storage/rollingblunts = 5,
 		/obj/item/storage/box/matches = 10,
@@ -67,6 +69,8 @@
 		/obj/item/storage/fancy/cigarettes/luckystars = 17,
 		/obj/item/storage/fancy/cigarettes/jerichos = 22,
 		/obj/item/storage/fancy/cigarettes/menthols = 18,
+		/obj/item/storage/fancy/cigarettes/kingsilvers = 27,
+		/obj/item/storage/fancy/cigarettes/subrosas = 22,
 		/obj/item/storage/rollingpapers = 15,
 		/obj/item/storage/rollingblunts = 25,
 		/obj/item/storage/box/matches = 3,
@@ -241,4 +245,28 @@
 		/obj/item/reagent_containers/hypospray/glukoz/oxyduo = 75,
 		/obj/item/reagent_containers/hypospray/glukoz/pyrholidon = 50,
 		/obj/item/reagent_containers/hypospray/glukoz/viraplus = 25,
+	)
+
+
+/obj/machinery/vending/gaia
+	name = "Happy Trails Resort Pass Booth"
+	desc = "Automated seller of day passes for the Happy Trails Resort Company."
+	icon = 'icons/obj/vending.dmi'
+	icon_state = "gaia"
+	icon_vend = "gaia-vend"
+	product_slogans = "A paradise for every species: Brought to you by Happy Trails!"
+	product_ads = "The weather can't be better!; Climates for every species!; Try our VIP Pass!; The sun never sets in paradise!"
+
+	products = list(
+		/obj/item/card/id/external/gaia = 30,
+		/obj/item/card/id/external/gaia/vip = 15,
+	)
+
+	contraband = list(
+		/obj/item/card/id/external/gaia/staff = 4,
+	)
+
+	prices = list(
+		/obj/item/card/id/external/gaia = 150,
+		/obj/item/card/id/external/gaia/vip = 250,
 	)

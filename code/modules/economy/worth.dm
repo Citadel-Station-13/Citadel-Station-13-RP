@@ -10,39 +10,63 @@
 /**
  * gets our worth
  */
-/atom/proc/worth(flags = GET_WORTH_DEFAULT, buying)
-	return worth_provider().get_worth(flags, buying)
+/atom/proc/worth(flags = GET_WORTH_FLAGS_DEFAULT)
+	return worth_provider().get_worth(flags)
+
+/**
+ * used to change the "real" target of what we're checking the worth of.
+ *
+ * useful for things like skateboards and roller beds.
+ */
+/atom/proc/worth_provider()
+	RETURN_TYPE(/atom)
+	return src
 
 /**
  * estimate our total worth
  *
+ * * Do not call this directly, call worth()
+ *
+ * todo: a way to get itemized worth
+ * todo: the way must respect obfuscation (e.g. not accessing real names of undiscovered gases)
+ *
  * @params
  * * flags - see [code/__DEFINES/economy/worth.dm]
- * * buying - buying instead of selling
  *
  * @return worth as number
  */
-/atom/proc/get_worth(flags, buying)
+/atom/proc/get_worth(flags)
+	return 0
+
+//* Objs *//
+
+/obj/get_worth(flags)
 	. = 0
 	if(flags & GET_WORTH_INTRINSIC)
-		. = worth_intrinsic
+		var/intrinsic = get_intrinsic_worth(flags)
+		. += intrinsic
 	if(flags & GET_WORTH_MATERIALS)
-		. += get_materials_worth(flags, buying)
+		var/materials = get_materials_worth(flags)
+		. += materials
 	if(flags & GET_WORTH_CONTAINING)
-		. += get_containing_worth(flags, buying)
-	if(buying)
-		. *= worth_buy_factor
+		var/containing = get_containing_worth(flags)
+		. += containing
+
+/**
+ * estimate our intrinsic worth
+ */
+/obj/proc/get_intrinsic_worth(flags)
+	return worth_intrinsic
 
 /**
  * estimate our raw materials worth
  *
  * @params
  * * flags - see [code/__DEFINES/economy/worth.dm]
- * * buying - buying instead of selling
  *
  * @return worth as number
  */
-/atom/proc/get_materials_worth(flags, buying)
+/obj/proc/get_materials_worth(flags)
 	return 0
 
 /**
@@ -50,72 +74,16 @@
  *
  * @params
  * * flags - see [code/__DEFINES/economy/worth.dm]
- * * buying - buying instead of selling
  *
  * @return worth as number
  */
-/atom/proc/get_containing_worth(flags, buying)
+/obj/proc/get_containing_worth(flags)
 	. = 0
-	for(var/atom/target as anything in worth_containing(flags, buying))
-		. += target.worth(flags, buying)
+	for(var/obj/target as anything in worth_contents(flags))
+		. += target.worth(flags)
 
 /**
  * gets relevant atoms inside us to be checked for containing worth
  */
-/atom/proc/worth_containing(flags, buying)
+/obj/proc/worth_contents(flags)
 	return list()
-
-/**
- * used to change the "real" target of what we're checking the worth of.
- *
- * usefulf for things like skateboards and roller beds.
- */
-/atom/proc/worth_provider()
-	RETURN_TYPE(/atom)
-	return src
-
-/**
- * estimate a typepath's worth
- *
- * @params
- * * path - typepath to estimate
- * * flags - see [code/__DEFINES/economy/worth.dm]
- * * buying - buying instead of selling
- *
- * @return worth as number or null if unable
- */
-/proc/get_worth_static(path, flags = GET_WORTH_DEFAULT, buying)
-	var/atom/fetching = path
-	if(initial(fetching.worth_dynamic))
-		return null
-	. = initial(fetching.worth_intrinsic)
-	. += get_materials_worth_static(path, flags, buying)
-	. += get_containing_worth_static(path, flags, buying)
-
-/**
- * estimates a typepath's raw materials worth
- *
- * @params
- * * path - typepath to estimate
- * * flags - see [code/__DEFINES/economy/worth.dm]
- * * buying - buying instead of selling
- *
- * @return worth as number or null if unable
- */
-/proc/get_materials_worth_static(path, flags, buying)
-	var/atom/fetching = path
-	return initial(fetching.worth_materials)
-
-/**
- * estimates a typepath's contents worth
- *
- * @params
- * * path - typepath to estimate
- * * flags - see [code/__DEFINES/economy/worth.dm]
- * * buying - buying instead of selling
- *
- * @return worth as number or null if unable
- */
-/proc/get_containing_worth_static(path, flags, buying)
-	var/atom/fetching = path
-	return initial(fetching.worth_containing)

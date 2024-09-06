@@ -18,7 +18,7 @@
 	blood_overlay_type = "armor"
 	weight = ITEM_WEIGHT_BASELINE
 	armor_type = /datum/armor/none
-	action_button_name = "Toggle Shield Projector"
+	item_action_name = "Toggle Shield Projector"
 	var/active = 0
 	var/damage_to_energy_multiplier = 50.0 //Determines how much energy to charge for blocking, e.g. 20 damage attack = 750 energy cost
 	var/datum/effect_system/spark_spread/spark_system = null
@@ -33,7 +33,25 @@
 	qdel(spark_system)
 	return ..()
 
-/obj/item/clothing/suit/armor/shield/handle_shield(mob/user, var/damage, atom/damage_source = null, mob/attacker = null, var/def_zone = null, var/attack_text = "the attack")
+/obj/item/clothing/suit/armor/shield/equipped(mob/user, slot, flags)
+	. = ..()
+	if(slot == SLOT_ID_HANDS)
+		return
+	// if you're reading this: this is not the right way to do shieldcalls
+	// this is just a lazy implementation
+	// signals have highest priority, this as a piece of armor shouldn't have that.
+	RegisterSignal(user, COMSIG_ATOM_SHIELDCALL, PROC_REF(shieldcall))
+
+/obj/item/clothing/suit/armor/shield/unequipped(mob/user, slot, flags)
+	. = ..()
+	if(slot == SLOT_ID_HANDS)
+		return
+	UnregisterSignal(user, COMSIG_ATOM_SHIELDCALL)
+
+/obj/item/clothing/suit/armor/shield/proc/shieldcall(mob/user, list/shieldcall_args, fake_attack)
+	var/damage = shieldcall_args[SHIELDCALL_ARG_DAMAGE]
+	var/damage_source = shieldcall_args[SHIELDCALL_ARG_WEAPON]
+
 	//Since this is a pierce of armor that is passive, we do not need to check if the user is incapacitated.
 	if(!active)
 		return 0
@@ -66,12 +84,11 @@
 			P.agony -= agony_blocked
 		P.damage = P.damage - damage_blocked
 
-	user.visible_message("<span class='danger'>\The [user]'s [src] absorbs [attack_text]!</span>")
+	user.visible_message("<span class='danger'>\The [user]'s [src] absorbs the attack!</span>")
 	to_chat(user, "<span class='warning'>Your shield has absorbed most of \the [damage_source].</span>")
 
 	spark_system.start()
 	playsound(user.loc, 'sound/weapons/blade1.ogg', 50, 1)
-	return 0 // This shield does not block all damage, so returning 0 is needed to tell the game to apply the new damage.
 
 /obj/item/clothing/suit/armor/shield/attack_self(mob/user)
 	. = ..()
@@ -79,9 +96,7 @@
 		return
 	active = !active
 	to_chat(user, "<span class='notice'>You [active ? "" : "de"]activate \the [src].</span>")
-	update_icon()
-	user.update_inv_wear_suit()
-	user.update_action_buttons()
+	update_full_icon()
 
 /obj/item/clothing/suit/armor/shield/update_icon()
 	icon_state = "shield_armor_[active]"

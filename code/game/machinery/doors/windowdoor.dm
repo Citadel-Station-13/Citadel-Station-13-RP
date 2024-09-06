@@ -67,10 +67,10 @@
 			if(density && src.check_access(bot.botcard))
 				open()
 				addtimer(CALLBACK(src, PROC_REF(close)), 50)
-		else if(istype(AM, /obj/mecha))
-			var/obj/mecha/mecha = AM
+		else if(istype(AM, /obj/vehicle/sealed/mecha))
+			var/obj/vehicle/sealed/mecha/mecha = AM
 			if(density)
-				if(mecha.occupant && src.allowed(mecha.occupant))
+				if(mecha.occupant_legacy && src.allowed(mecha.occupant_legacy))
 					open()
 					addtimer(CALLBACK(src, PROC_REF(close)), 50)
 		return
@@ -194,7 +194,7 @@
 			return
 
 		//Emags and ninja swords? You may pass.
-		if (istype(I, /obj/item/melee/transforming/blade))
+		if (istype(I, /obj/item/melee/ninja_energy_blade))
 			if(emag_act(10, user))
 				var/datum/effect_system/spark_spread/spark_system = new /datum/effect_system/spark_spread()
 				spark_system.set_up(5, 0, src.loc)

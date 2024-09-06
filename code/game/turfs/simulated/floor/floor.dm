@@ -40,6 +40,8 @@
 	var/singleton/flooring/flooring
 	var/mineral = MAT_STEEL
 
+CREATE_STANDARD_TURFS(/turf/simulated/floor)
+
 /turf/simulated/floor/is_plating()
 	return !flooring
 
@@ -124,6 +126,7 @@
 		var/list/underfloor_decals = old_decals
 		old_decals = decals
 		decals = underfloor_decals
+		color = null
 
 		if(place_product)
 			flooring.drop_product(src)
@@ -234,3 +237,5 @@
 		add_overlay(GLOB.no_ceiling_image, TRUE)
 	else
 		cut_overlay(GLOB.no_ceiling_image, TRUE)
+
+

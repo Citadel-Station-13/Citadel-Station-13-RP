@@ -1,7 +1,7 @@
 /obj/item/syringe_cartridge
 	name = "syringe gun cartridge"
 	desc = "An impact-triggered compressed gas cartridge that can be fitted to a syringe for rapid injection."
-	icon = 'icons/obj/ammo.dmi'
+	icon = 'icons/modules/projectiles/casings/syringe.dmi'
 	icon_state = "syringe-cartridge"
 	var/icon_flight = "syringe-cartridge-flight" //so it doesn't look so weird when shot
 	materials_base = list(MAT_STEEL = 125, MAT_GLASS = 375)

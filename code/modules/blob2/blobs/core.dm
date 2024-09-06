@@ -158,7 +158,7 @@ var/list/blob_cores = list()
 			if(!desired_blob_type && !isnull(difficulty_threshold))
 				desired_blob_type = get_random_blob_type()
 			var/mob/observer/blob/B = new(loc, TRUE, 60, desired_blob_type)
-			B.key = C.key
+			C.transfer_to(B)
 			B.blob_core = src
 			src.overmind = B
 			update_icon()

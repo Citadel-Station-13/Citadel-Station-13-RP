@@ -9,6 +9,8 @@
 	layer = UNDER_JUNK_LAYER
 	armor_type = /datum/armor/object/medium
 
+	worth_intrinsic = 25
+
 	integrity = 200
 	integrity_max = 200
 
@@ -312,7 +314,7 @@
 			return
 		if(!user.attempt_insert_item_for_installation(I, opened? loc : src))
 			return
-	else if(istype(I, /obj/item/melee/transforming/blade))
+	else if(istype(I, /obj/item/melee/ninja_energy_blade))
 		if(emag_act(INFINITY, user, "<span class='danger'>The locker has been sliced open by [user] with \an [I]</span>!", "<span class='danger'>You hear metal being sliced and sparks flying.</span>"))
 			var/datum/effect_system/spark_spread/spark_system = new /datum/effect_system/spark_spread()
 			spark_system.set_up(5, 0, loc)

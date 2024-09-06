@@ -13,6 +13,8 @@
 	anchored = 1
 	animate_movement=1
 	light_range = 3
+	// todo: uses old integrity for now
+	integrity_flags = INTEGRITY_INDESTRUCTIBLE
 
 	buckle_allowed = TRUE
 	buckle_flags = BUCKLING_PASS_PROJECTILES_UPWARDS
@@ -121,9 +123,9 @@
 	else
 		..()
 
-/obj/vehicle_old/bullet_act(var/obj/projectile/Proj)
-	health -= Proj.get_structure_damage()
-	..()
+/obj/vehicle_old/on_bullet_act(obj/projectile/proj, impact_flags, list/bullet_act_args)
+	. = ..()
+	health -= proj.get_structure_damage()
 	healthcheck()
 
 /obj/vehicle_old/proc/adjust_health(amount)

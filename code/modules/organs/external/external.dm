@@ -351,6 +351,10 @@
 	brute = round(brute * brute_mod, 0.1)
 	burn = round(burn * burn_mod, 0.1)
 
+	// todo: better way to godmode
+	if(src.owner?.status_flags & STATUS_GODMODE)
+		return 0
+
 	if(!brute && !burn)
 		return 0
 
@@ -1265,7 +1269,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 /obj/item/organ/external/proc/embed(var/obj/item/W, var/silent = 0)
 	if(!owner || loc != owner)
 		return
-	if(owner.species.species_flags & IS_SLIME)
+	if(owner.species.reagent_tag == IS_SLIME)
 		create_wound( WOUND_TYPE_CUT, 15 )  //fixes proms being bugged into paincrit;instead whatever would embed now just takes a chunk out
 		src.visible_message("<font color='red'>[owner] has been seriously wounded by [W]!</font>")
 		W.add_blood(owner)

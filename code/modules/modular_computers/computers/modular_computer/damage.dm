@@ -51,12 +51,12 @@
  * "Burn" damage is equally strong against internal components and exterior casing
  * "Brute" damage mostly damages the casing.
  */
-/obj/item/modular_computer/bullet_act(obj/projectile/Proj)
+/obj/item/modular_computer/on_bullet_act(obj/projectile/proj, impact_flags, list/bullet_act_args)
 	. = ..()
-	switch(Proj.damage_type)
+	switch(proj.damage_type)
 		if(DAMAGE_TYPE_BRUTE)
-			take_damage_legacy(Proj.damage, Proj.damage / 2)
+			take_damage_legacy(proj.damage, proj.damage / 2)
 		if(DAMAGE_TYPE_HALLOSS, DAMAGE_TYPE_ELECTROCUTE)
-			take_damage_legacy(Proj.damage, Proj.damage / 3, 0)
+			take_damage_legacy(proj.damage, proj.damage / 3, 0)
 		if(DAMAGE_TYPE_BURN, DAMAGE_TYPE_BIOACID)
-			take_damage_legacy(Proj.damage, Proj.damage / 1.5)
+			take_damage_legacy(proj.damage, proj.damage / 1.5)

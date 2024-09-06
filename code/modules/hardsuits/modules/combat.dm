@@ -137,6 +137,7 @@
 /obj/item/hardsuit_module/mounted/Initialize(mapload)
 	. = ..()
 	gun = new gun_type(src)
+	gun.safety_state = GUN_SAFETY_OFF
 
 /obj/item/hardsuit_module/mounted/engage(atom/target)
 
@@ -201,7 +202,7 @@
 /obj/item/hardsuit_module/mounted/energy_blade/process(delta_time)
 
 	if(holder && holder.wearer)
-		if(!(locate(/obj/item/melee/transforming/blade) in holder.wearer))
+		if(!(locate(/obj/item/melee/ninja_energy_blade) in holder.wearer))
 			deactivate()
 			return 0
 
@@ -218,7 +219,7 @@
 		deactivate()
 		return
 
-	var/obj/item/melee/transforming/blade/blade = new(M)
+	var/obj/item/melee/ninja_energy_blade/blade = new(M)
 	blade.creator = M
 	M.put_in_hands(blade)
 
@@ -231,7 +232,7 @@
 	if(!M)
 		return
 
-	for(var/obj/item/melee/transforming/blade/blade in M.contents)
+	for(var/obj/item/melee/ninja_energy_blade/blade in M.contents)
 		qdel(blade)
 
 /obj/item/hardsuit_module/fabricator

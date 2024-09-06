@@ -427,7 +427,7 @@
 	var/list/creatures = list()
 	var/list/namecounts = list()
 	for(var/mob/M in mobs)
-		if(isobserver(M) && ghostfollow && M.client?.holder && M.client.holder.fakekey && M.get_preference_toggle(/datum/game_preference_toggle/admin/stealth_hides_ghost))
+		if(isobserver(M) && ghostfollow && M.client.is_under_stealthmin() && M.get_preference_toggle(/datum/game_preference_toggle/admin/stealth_hides_ghost))
 			continue
 		var/name = M.name
 		if (name in names)
@@ -997,7 +997,7 @@
 				return FALSE
 		if(/obj/item/pickaxe/plasmacutter)
 			return 3800
-		if(/obj/item/melee/transforming)
+		if(/obj/item/melee/transforming/energy)
 			return 3500
 		else
 			return FALSE

@@ -156,7 +156,7 @@
 			if(src.Adjacent(C))
 				choices += C
 
-		for(var/obj/mecha/M in view(1,src))
+		for(var/obj/vehicle/sealed/mecha/M in view(1,src))
 			if(src.Adjacent(M))
 				choices += M
 
@@ -243,7 +243,7 @@
 			if(src.Adjacent(C))
 				choices += C
 
-		for(var/obj/mecha/M in view(1,src))
+		for(var/obj/vehicle/sealed/mecha/M in view(1,src))
 			if(src.Adjacent(M))
 				choices += M
 
@@ -270,13 +270,13 @@
 
 		L.add_modifier(/datum/modifier/grievous_wounds, 60 SECONDS)
 
-	else if(istype(A, /obj/mecha))
+	else if(istype(A, /obj/vehicle/sealed/mecha))
 		visible_message(SPAN_DANGER("\The [src] rakes its claws against \the [A]."))
-		var/obj/mecha/M = A
+		var/obj/vehicle/sealed/mecha/M = A
 		M.take_damage_legacy(damage_to_apply)
-		if(prob(3) && do_after(src, 5))
-			visible_message(SPAN_CRITICAL("\The [src]'s strike ripped \the [M]'s access hatch open, allowing it to drag [M.occupant] out!"))
-			M.go_out()
+		if(prob(3) && M.occupant_legacy && do_after(src, 5))
+			visible_message(SPAN_CRITICAL("\The [src]'s strike ripped \the [M]'s access hatch open, allowing it to drag [M.occupant_legacy] out!"))
+			M.mob_exit(M.occupant_legacy)
 
 	else
 		A.attack_generic(src, damage_to_apply, "rakes its claws against")	// Well it's not a mob, and it's not a mech.
@@ -369,7 +369,7 @@
 		if(issilicon(L) && holder.a_intent != INTENT_GRAB)
 			holder.a_intent = INTENT_DISARM
 
-	else if(istype(A, /obj/mecha))
+	else if(istype(A, /obj/vehicle/sealed/mecha))
 		holder.a_intent = INTENT_GRAB
 
 /datum/ai_holder/polaris/simple_mob/intentional/kururak/post_melee_attack()
