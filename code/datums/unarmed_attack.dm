@@ -21,7 +21,7 @@ GLOBAL_LIST_EMPTY(unarmed_attack_cache)
 	/// damage tier
 	var/damage_tier = MELEE_TIER_UNARMED_DEFAULT
 	/// damage type
-	var/damage_type = BRUTE
+	var/damage_type = DAMAGE_TYPE_BRUTE
 	/// damage flag
 	var/damage_flag = ARMOR_MELEE
 	/// flat damage buff when attacking structures

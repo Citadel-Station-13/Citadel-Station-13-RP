@@ -122,7 +122,7 @@
 		apply_effect(EYE_BLUR, stun_amount)
 
 	if (agony_amount)
-		apply_damage(agony_amount, HALLOSS, def_zone, 0, used_weapon)
+		apply_damage(agony_amount, DAMAGE_TYPE_HALLOSS, def_zone, 0, used_weapon)
 		apply_effect(STUTTER, agony_amount/10)
 		apply_effect(EYE_BLUR, agony_amount/10)
 
@@ -142,7 +142,7 @@
 	var/damage = rand(30, 40)
 	var/armor_pen = 0
 	var/armor_check = "melee"
-	var/damage_type = BRUTE
+	var/damage_type = DAMAGE_TYPE_BRUTE
 	var/attack_message = "The blob attacks you!"
 	var/attack_verb = "attacks"
 	var/def_zone = pick(BP_HEAD, BP_TORSO, BP_GROIN, BP_L_ARM, BP_R_ARM, BP_L_LEG, BP_R_LEG)
@@ -159,8 +159,8 @@
 		attack_verb = blob.attack_verb
 		B.overmind.blob_type.on_attack(B, src, def_zone)
 
-	if( (damage_type == TOX || damage_type == OXY) && isSynthetic()) // Borgs and FBPs don't really handle tox/oxy damage the same way other mobs do.
-		damage_type = BRUTE
+	if( (damage_type == DAMAGE_TYPE_TOX || damage_type == DAMAGE_TYPE_OXY) && isSynthetic()) // Borgs and FBPs don't really handle tox/oxy damage the same way other mobs do.
+		damage_type = DAMAGE_TYPE_BRUTE
 		damage *= 0.66 // Take 2/3s as much damage.
 
 	visible_message("<span class='danger'>\The [B] [attack_verb] \the [src]!</span>", "<span class='danger'>[attack_message]!</span>")
@@ -192,7 +192,7 @@
 
 	standard_weapon_hit_effects(I, user, effective_force, blocked, soaked, hit_zone)
 
-	if(I.damtype == BRUTE && prob(33)) // Added blood for whacking non-humans too
+	if(I.damtype == DAMAGE_TYPE_BRUTE && prob(33)) // Added blood for whacking non-humans too
 		var/turf/simulated/location = get_turf(src)
 		if(istype(location)) location.add_blood_floor(src)
 
