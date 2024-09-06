@@ -438,7 +438,7 @@
 	special_attack_cooldown = 15 SECONDS //Phase coils are not trivial to miniaturize
 
 	var/leap_warmup = 1 SECOND // How long the leap telegraphing is.
-	var/leap_sound = 'sound/weapons/spiderlunge.ogg' //Temporary will have to soundmix something for it at a later date
+	var/leap_sound = 'sound/weapons/Phasecoilengage.ogg' 
 
 // Multiplies damage if the victim is stunned in some form, including a successful leap.
 /mob/living/simple_mob/mechanical/hivebot/enigma/P4/Banshee/apply_bonus_melee_damage(atom/A, damage_amount)
