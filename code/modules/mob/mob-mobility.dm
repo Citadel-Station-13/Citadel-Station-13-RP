@@ -1,5 +1,5 @@
 //* This file is explicitly licensed under the MIT license. *//
-//* Copyright (c) 2024 silicons                             *//
+//* Copyright (c) 2024 Citadel Station Developers           *//
 
 //! Mobility: The ability of mobs to perform actions.
 //? We primarily use flags and a proc to differentiate this

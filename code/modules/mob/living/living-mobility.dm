@@ -1,5 +1,5 @@
 //* This file is explicitly licensed under the MIT license. *//
-//* Copyright (c) 2024 silicons                             *//
+//* Copyright (c) 2024 Citadel Station Developers           *//
 
 /mob/living/update_mobility(blocked, forced)
 	// this proc looks mildly heretical and pyramid of doomy
