@@ -176,7 +176,7 @@
 	return
 
 
-/obj/machinery/power/am_control_unit/attack_hand(mob/user, list/params)
+/obj/machinery/power/am_control_unit/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(anchored)
 		interact(user)
 	return

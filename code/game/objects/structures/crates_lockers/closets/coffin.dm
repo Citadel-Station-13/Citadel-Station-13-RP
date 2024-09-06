@@ -34,7 +34,7 @@
 	use_old_icon_update = TRUE
 	obj_flags = OBJ_MELEE_TARGETABLE
 
-/obj/structure/closet/grave/attack_hand(mob/user, list/params)
+/obj/structure/closet/grave/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(opened)
 		visible_message("<span class='notice'>[user] starts to climb into \the [src.name].</span>", \
 						"<span class='notice'>You start to lower yourself into \the [src.name].</span>")
