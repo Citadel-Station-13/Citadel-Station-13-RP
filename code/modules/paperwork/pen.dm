@@ -192,7 +192,7 @@
 	edge = 1
 	set_weight_class(active_w_class)
 	playsound(src, 'sound/weapons/saberon.ogg', 15, 1)
-	damtype = SEARING
+	damtype = DAMAGE_TYPE_SEARING
 	item_flags |= ITEM_THROW_UNCATCHABLE
 
 	attack_verb |= list(\

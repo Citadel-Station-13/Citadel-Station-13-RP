@@ -527,9 +527,9 @@
 
 	var/damage_amount
 	switch(damage_type)
-		if(BRUTE)
+		if(DAMAGE_TYPE_BRUTE)
 			damage_amount = brute_dam
-		if(WOUND_TYPE_BURN)
+		if(DAMAGE_TYPE_BURN)
 			damage_amount = burn_dam
 		if("omni")
 			damage_amount = max(brute_dam,burn_dam)
@@ -562,9 +562,9 @@
 		return FALSE
 
 	switch(damage_type)
-		if(BRUTE)
+		if(DAMAGE_TYPE_BRUTE)
 			src.heal_damage(repair_amount, 0, 0, 1)
-		if(WOUND_TYPE_BURN)
+		if(DAMAGE_TYPE_BURN)
 			src.heal_damage(0, repair_amount, 0, 1)
 		if("omni")
 			src.heal_damage(repair_amount, repair_amount, 0, 1)
