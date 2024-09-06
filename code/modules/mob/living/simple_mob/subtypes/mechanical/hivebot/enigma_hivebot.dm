@@ -364,7 +364,7 @@
 /mob/living/simple_mob/mechanical/hivebot/enigma/P4/Wraith
 	name = "wraith"
 	icon = 'icons/mob/enigma.dmi'
-	desc = "A sleek, black bipedal combat unit with an unsettling, advanced nanotech design. Its chassis being an amalgamation of various prosthetic and synthetic components or at least mimicking such. The unit is constantly shifting and is surrounded by a thin trail of metallic dust as it moves. Spines emitting an antigrav field protrude from its arms, shoulders, and back, while its featureless faceplate continuously warps. The unit shudders and vibrates with uncanny precision. It wields a modified particle weapon resembling a Hephaestus G40. A capital Sigma symbol is etched on its chest, and a circular power pack on its back hums with gravity-defying particles"
+	desc = "A sleek, black bipedal combat unit with an unsettling, advanced nanotech design. Its chassis being an amalgamation of various prosthetic and synthetic components or at least mimicking such. The unit is constantly shifting and is surrounded by a thin trail of metallic dust as it moves. Spines emitting an antigrav field protrude from its arms, shoulders, and back, while its featureless faceplate displays an alien magenta glow under constant shifting and warping. The unit shudders and vibrates with uncanny precision. It wields a modified particle weapon resembling a Hephaestus G40. A capital Sigma symbol is etched on its chest, and a circular power pack on its back hums with gravity-defying particles"
 	icon_living = "wraith"
 	icon_state = "wraith"
 	maxHealth = 200 //More armored but less max HP and also has a shield
