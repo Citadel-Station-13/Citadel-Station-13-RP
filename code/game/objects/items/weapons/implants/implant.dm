@@ -92,6 +92,10 @@
 	else
 		..()
 
+/obj/item/implant/surgically_remove(mob/living/carbon/human/target, obj/item/organ/external/chest/removing_from)
+	. = ..()
+	imp_in = null
+	implanted = 0
 //////////////////////////////
 //	Tracking Implant
 //////////////////////////////

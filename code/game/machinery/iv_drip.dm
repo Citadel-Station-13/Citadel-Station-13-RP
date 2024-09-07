@@ -166,7 +166,7 @@
 	else
 		return ..()
 
-/obj/machinery/iv_drip/attack_hand(mob/user, list/params)
+/obj/machinery/iv_drip/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(reagent_container)
 		reagent_container.loc = get_turf(src)
 		reagent_container = null
@@ -240,7 +240,7 @@
 	if(!speed_process)
 		START_MACHINE_PROCESSING(src)
 	else
-		START_PROCESSING(SSfastprocess, src)
+		START_PROCESSING(SSprocess_5fps, src)
 	update_appearance()
 
 	//! Plumbing Signal

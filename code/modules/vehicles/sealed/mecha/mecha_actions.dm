@@ -68,7 +68,7 @@
 		return
 	var/obj/vehicle/sealed/mecha/chassis = target
 	chassis.lights()
-	button_icon_state = "mech_lights_[chassis.lights ? "off" : "on"]"
+	button_icon_state = "mech_lights_[chassis.lights ? "on" : "off"]"
 	update_buttons()
 
 /datum/action/mecha/mech_toggle_internals
@@ -80,7 +80,7 @@
 	if(.)
 		return
 	var/obj/vehicle/sealed/mecha/chassis = target
-	button_icon_state = "mech_internals_[chassis.use_internal_tank ? "off" : "on"]"
+	button_icon_state = "mech_internals_[chassis.use_internal_tank ? "on" : "off"]"
 	update_buttons()
 	chassis.internal_tank()
 
@@ -105,7 +105,7 @@
 		return
 	var/obj/vehicle/sealed/mecha/chassis = target
 	chassis.strafing()
-	button_icon_state = "mech_strafe_[chassis.strafing ? "off" : "on"]"
+	button_icon_state = "mech_strafe_[chassis.strafing ? "on" : "off"]"
 	update_buttons()
 
 /datum/action/mecha/mech_defence_mode
@@ -118,7 +118,7 @@
 		return
 	var/obj/vehicle/sealed/mecha/chassis = target
 	chassis.defence_mode()
-	button_icon_state = "mech_defense_mode_[chassis.defence_mode ? "off" : "on"]"
+	button_icon_state = "mech_defense_mode_[chassis.defence_mode ? "on" : "off"]"
 	update_buttons()
 
 /datum/action/mecha/mech_overload_mode
@@ -131,7 +131,7 @@
 		return
 	var/obj/vehicle/sealed/mecha/chassis = target
 	chassis.overload()
-	button_icon_state = "mech_overload_[chassis.overload ? "off" : "on"]"
+	button_icon_state = "mech_overload_[chassis.overload ? "on" : "off"]"
 	update_buttons()
 
 /datum/action/mecha/mech_smoke
@@ -155,7 +155,7 @@
 		return
 	var/obj/vehicle/sealed/mecha/chassis = target
 	chassis.zoom()
-	button_icon_state = "mech_zoom_[chassis.zoom ? "off" : "on"]"
+	button_icon_state = "mech_zoom_[chassis.zoom ? "on" : "off"]"
 	update_buttons()
 
 /datum/action/mecha/mech_toggle_thrusters
@@ -168,7 +168,7 @@
 		return
 	var/obj/vehicle/sealed/mecha/chassis = target
 	chassis.thrusters()
-	button_icon_state = "mech_thrusters_[chassis.thrusters ? "off" : "on"]"
+	button_icon_state = "mech_thrusters_[chassis.thrusters ? "on" : "off"]"
 	update_buttons()
 
 /datum/action/mecha/mech_cycle_equip	//I'll be honest, i don't understand this part, buuuuuut it works!
@@ -241,7 +241,7 @@
 	if(.)
 		return
 	var/obj/vehicle/sealed/mecha/chassis = target
-	button_icon_state = "mech_phasing_[chassis.phasing ? "off" : "on"]"
+	button_icon_state = "mech_phasing_[chassis.phasing ? "on" : "off"]"
 	update_buttons()
 	chassis.phasing()
 
@@ -254,7 +254,7 @@
 	if(.)
 		return
 	var/obj/vehicle/sealed/mecha/chassis = target
-	button_icon_state = "mech_phasing_[chassis.cloaked ? "off" : "on"]"
+	button_icon_state = "mech_phasing_[chassis.cloaked ? "on" : "off"]"
 	update_buttons()
 	chassis.toggle_cloaking()
 

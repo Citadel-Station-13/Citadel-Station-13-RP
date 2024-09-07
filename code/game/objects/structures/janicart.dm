@@ -89,7 +89,7 @@ GLOBAL_LIST_BOILERPLATE(all_janitorial_carts, /obj/structure/janitorialcart)
 		mybag.attackby(I, user)
 
 
-/obj/structure/janitorialcart/attack_hand(mob/user, list/params)
+/obj/structure/janitorialcart/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	nano_ui_interact(user)
 	return
 
@@ -177,6 +177,7 @@ GLOBAL_LIST_BOILERPLATE(all_janitorial_carts, /obj/structure/janitorialcart)
 	anchored = 1
 	density = 1
 	atom_flags = OPENCONTAINER
+	integrity_flags = INTEGRITY_INDESTRUCTIBLE
 	//copypaste sorry
 	var/amount_per_transfer_from_this = 5 //shit I dunno, adding this so syringes stop runtime erroring. --NeoFite
 	var/obj/item/storage/bag/trash/mybag	= null
@@ -210,7 +211,7 @@ GLOBAL_LIST_BOILERPLATE(all_janitorial_carts, /obj/structure/janitorialcart)
 		to_chat(user, "<span class='notice'>You hook the trashbag onto the [callme].</span>")
 		mybag = I
 
-/obj/structure/bed/chair/janicart/attack_hand(mob/user, list/params)
+/obj/structure/bed/chair/janicart/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(mybag)
 		user.grab_item_from_interacted_with(mybag, src)
 		mybag = null
@@ -279,13 +280,10 @@ GLOBAL_LIST_BOILERPLATE(all_janitorial_carts, /obj/structure/janitorialcart)
 					L.pixel_x = -13
 					L.pixel_y = 7
 
-/obj/structure/bed/chair/janicart/bullet_act(var/obj/projectile/Proj)
-	if(has_buckled_mobs())
-		if(prob(85))
-			var/mob/living/L = pick(buckled_mobs)
-			return L.bullet_act(Proj)
-	visible_message("<span class='warning'>[Proj] ricochets off the [callme]!</span>")
-
+/obj/structure/bed/chair/janicart/on_bullet_act(obj/projectile/proj, impact_flags, list/bullet_act_args)
+	if(has_buckled_mobs() && prob(85))
+		return proj.impact_redirect(pick(buckled_mobs), args)
+	return ..()
 
 /obj/item/key
 	name = "key"

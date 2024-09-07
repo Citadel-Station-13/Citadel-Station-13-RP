@@ -9,7 +9,7 @@
 	icon_rest = "thrumbo_rest"
 	maxHealth = 500
 	health = 500
-	faction = "horing"
+	iff_factions = MOB_IFF_FACTION_BIND_TO_MAP
 	pixel_x = -16
 	special_attack_min_range = 3
 	special_attack_max_range = 8

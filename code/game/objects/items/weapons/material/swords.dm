@@ -11,18 +11,16 @@
 	pickup_sound = 'sound/items/pickup/sword.ogg'
 	force_multiplier = 1.5
 
+	passive_parry = /datum/passive_parry/melee{
+		parry_chance_default = 50;
+		parry_chance_projectile = 10;
+	}
+
 /obj/item/material/sword/plasteel
 	material_parts = /datum/material/plasteel
 
 /obj/item/material/sword/durasteel
 	material_parts = /datum/material/durasteel
-
-/obj/item/material/sword/handle_shield(mob/user, var/damage, atom/damage_source = null, mob/attacker = null, var/def_zone = null, var/attack_text = "the attack")
-	if(unique_parry_check(user, attacker, damage_source) && prob(50))
-		user.visible_message("<span class='danger'>\The [user] parries [attack_text] with \the [src]!</span>")
-		playsound(user.loc, 'sound/weapons/punchmiss.ogg', 50, 1)
-		return 1
-	return 0
 
 /obj/item/material/sword/suicide_act(mob/user)
 	var/datum/gender/TU = GLOB.gender_datums[user.get_visible_gender()]
@@ -63,31 +61,13 @@
 			SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_melee.dmi',
 			)
 
-/obj/item/material/sword/sabre/handle_shield(mob/user, var/damage, atom/damage_source = null, mob/attacker = null, var/def_zone = null, var/attack_text = "the attack")
-	if(default_parry_check(user, attacker, damage_source) && prob(60))
-		user.visible_message("<span class='danger'>\The [user] parries [attack_text] with \the [src]!</span>")
+	passive_parry = /datum/passive_parry/melee{
+		parry_chance_default = 50;
+	}
 
-		playsound(user.loc, 'sound/items/drop/knife.ogg', 50, 1)
-		return 1
-	if(unique_parry_check(user, attacker, damage_source) && prob(50))
-		user.visible_message("<span class='danger'>\The [user] deflects [attack_text] with \the [src]!</span>")
-
-		playsound(user.loc, 'sound/weapons/plasma_cutter.ogg', 50, 1)
-		return 1
-
-	return 0
-
-/obj/item/material/sword/sabre/unique_parry_check(mob/user, mob/attacker, atom/damage_source)
-	if(user.incapacitated() || !istype(damage_source, /obj/projectile/))
-		return 0
-
-	var/bad_arc = global.reverse_dir[user.dir]
-	if(!check_shield_arc(user, bad_arc, damage_source, attacker))
-		return 0
-
-	return 1
-
-//meant to play when unsheathing the blade from the sabre sheath.
+// meant to play when unsheathing the blade from the sabre sheath.
+// todo: -_- this should be on the sheath
+// todo: we need a better way to do unsheath sounds for weapons and storage...
 /obj/item/material/sword/sabre/on_enter_storage(datum/object_system/storage/storage)
 	. = ..()
 	playsound(loc, 'sound/effects/holster/sheathin.ogg', 50, 1)
