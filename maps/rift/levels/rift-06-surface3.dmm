@@ -16738,9 +16738,6 @@
 	req_one_access = null
 	},
 /obj/map_helper/access_helper/airlock/station/command/bridge,
-/obj/map_helper/electrochromatic_linker{
-	id = "bridge_tint"
-	},
 /turf/simulated/floor/tiled/dark,
 /area/bridge)
 "bis" = (
@@ -17622,9 +17619,6 @@
 	req_one_access = null
 	},
 /obj/map_helper/access_helper/airlock/station/command/bridge,
-/obj/map_helper/electrochromatic_linker{
-	id = "bridge_tint"
-	},
 /turf/simulated/floor/tiled/dark,
 /area/bridge)
 "cPs" = (
@@ -17832,9 +17826,6 @@
 	opacity = 0
 	},
 /obj/effect/paint/commandblue,
-/obj/map_helper/electrochromatic_linker{
-	id = "hop_office"
-	},
 /turf/simulated/floor/plating,
 /area/crew_quarters/heads/hop)
 "dha" = (
@@ -18152,9 +18143,6 @@
 "dRg" = (
 /obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
 /obj/effect/paint/commandblue,
-/obj/map_helper/electrochromatic_linker{
-	id = "blueshieldoffice"
-	},
 /turf/simulated/floor/plating,
 /area/crew_quarters/heads/blueshield)
 "dRq" = (
@@ -19212,9 +19200,6 @@
 	opacity = 0
 	},
 /obj/effect/paint/commandblue,
-/obj/map_helper/electrochromatic_linker{
-	id = "bridge_tint"
-	},
 /turf/simulated/floor/plating,
 /area/bridge)
 "fAb" = (
@@ -19511,6 +19496,13 @@
 /area/exploration/pilot_Office)
 "fYG" = (
 /obj/landmark/observer_spawn,
+/obj/structure/bed/chair/sofa/black/right,
+/obj/item/reagent_containers/food/drinks/coffee{
+	pixel_y = 1;
+	pixel_x = -1;
+	desc = "An unassuming, painfully average-looking cup of coffee. It smells vaguely of space truck. It looks like it was placed here to take up a seat for someone.";
+	name = "\improper Lukewarm Cup of Coffee"
+	},
 /turf/simulated/floor/glass/reinforced,
 /area/crew_quarters/bar)
 "fYJ" = (
@@ -19601,6 +19593,12 @@
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/exploration/pilot_prep)
+"gdK" = (
+/obj/structure/bed/chair/sofa/black/right{
+	dir = 1
+	},
+/turf/simulated/floor/glass/reinforced,
+/area/crew_quarters/bar)
 "ghf" = (
 /obj/effect/floor_decal/corner/grey/diagonal,
 /obj/structure/cable/green{
@@ -20037,9 +20035,6 @@
 "gQu" = (
 /obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
 /obj/effect/paint/commandblue,
-/obj/map_helper/electrochromatic_linker{
-	id = "meeting_tint"
-	},
 /turf/simulated/floor/plating,
 /area/bridge/bridge_hallway)
 "gTy" = (
@@ -20750,9 +20745,6 @@
 	opacity = 0
 	},
 /obj/effect/paint/commandblue,
-/obj/map_helper/electrochromatic_linker{
-	id = "bridge_tint"
-	},
 /turf/simulated/floor/plating,
 /area/bridge)
 "iio" = (
@@ -23074,9 +23066,6 @@
 	id = "hop_office"
 	},
 /obj/effect/paint/commandblue,
-/obj/map_helper/electrochromatic_linker{
-	id = "hop_office"
-	},
 /turf/simulated/floor/plating,
 /area/crew_quarters/heads/hop)
 "mpP" = (
@@ -24093,6 +24082,10 @@
 /obj/map_helper/airlock/sensor/chamber_sensor,
 /turf/simulated/floor/tiled/steel_grid,
 /area/rift/surfaceeva/airlock/arrivals)
+"ofH" = (
+/obj/structure/bed/chair/sofa/black/left,
+/turf/simulated/floor/glass/reinforced,
+/area/crew_quarters/bar)
 "ogS" = (
 /obj/structure/railing,
 /obj/structure/flora/ausbushes/ywflowers,
@@ -24969,6 +24962,12 @@
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/shuttle/civvie/general)
+"pXI" = (
+/obj/structure/bed/chair/sofa/black/left{
+	dir = 1
+	},
+/turf/simulated/floor/glass/reinforced,
+/area/crew_quarters/bar)
 "pYn" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -26022,9 +26021,6 @@
 "siB" = (
 /obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
 /obj/effect/paint/violet,
-/obj/map_helper/electrochromatic_linker{
-	id = "pathfinder_office"
-	},
 /turf/simulated/floor/plating,
 /area/exploration/pathfinder_office)
 "sja" = (
@@ -26522,11 +26518,6 @@
 "ttV" = (
 /obj/item/folder/blue,
 /obj/structure/table/wooden_reinforced,
-/obj/machinery/button/windowtint/multitint{
-	pixel_x = -8;
-	pixel_y = 7;
-	id = "pathfinder_office"
-	},
 /turf/simulated/floor/tiled/monotile,
 /area/exploration/pathfinder_office)
 "tuh" = (
@@ -26656,6 +26647,13 @@
 /obj/effect/floor_decal/spline/plain,
 /obj/structure/railing/grey,
 /turf/simulated/floor/wood,
+/area/crew_quarters/bar)
+"tGv" = (
+/obj/structure/table/woodentable,
+/obj/item/reagent_containers/food/drinks/cans/cola_coffee{
+	pixel_y = 5
+	},
+/turf/simulated/floor/glass/reinforced,
 /area/crew_quarters/bar)
 "tHH" = (
 /obj/machinery/air_alarm{
@@ -27477,6 +27475,13 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/secondary/docking_hallway2)
+"vgS" = (
+/obj/structure/table/woodentable,
+/obj/item/flame/lighter/zippo/cowgirl{
+	pixel_y = 4
+	},
+/turf/simulated/floor/glass/reinforced,
+/area/crew_quarters/bar)
 "vgY" = (
 /obj/structure/panic_button{
 	pixel_x = -26
@@ -27532,9 +27537,6 @@
 	},
 /obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
 /obj/effect/paint/commandblue,
-/obj/map_helper/electrochromatic_linker{
-	id = "bridge_tint"
-	},
 /turf/simulated/floor/plating,
 /area/bridge)
 "vlu" = (
@@ -27575,11 +27577,6 @@
 /obj/structure/table/wooden_reinforced,
 /obj/structure/flora/pottedplant/smallcactus{
 	pixel_y = 12
-	},
-/obj/machinery/button/windowtint/multitint{
-	pixel_x = 9;
-	pixel_y = 8;
-	id = "blueshieldoffice"
 	},
 /turf/simulated/floor/carpet/blue,
 /area/crew_quarters/heads/blueshield)
@@ -27696,9 +27693,6 @@
 "vwG" = (
 /obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
 /obj/effect/paint/commandblue,
-/obj/map_helper/electrochromatic_linker{
-	id = "meeting_tint"
-	},
 /turf/simulated/floor/plating,
 /area/bridge/meeting_room)
 "vwM" = (
@@ -29040,9 +29034,6 @@
 	req_one_access = null
 	},
 /obj/map_helper/access_helper/airlock/station/command/bridge,
-/obj/map_helper/electrochromatic_linker{
-	id = "bridge_tint"
-	},
 /turf/simulated/floor/tiled/dark,
 /area/bridge)
 "xDL" = (
@@ -40803,7 +40794,7 @@ ukF
 eik
 nwf
 kqe
-kqe
+tGv
 nzb
 tmB
 wej
@@ -40996,7 +40987,7 @@ cSn
 idL
 itf
 oJI
-kqe
+pXI
 fYG
 xkm
 vak
@@ -41190,8 +41181,8 @@ kkA
 oMi
 itf
 oJI
-kqe
-kqe
+gdK
+ofH
 sOO
 rVs
 tcQ
@@ -41384,7 +41375,7 @@ tnS
 kjC
 scn
 oJI
-kqe
+vgS
 kqe
 lwI
 jSy

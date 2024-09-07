@@ -47,9 +47,6 @@
 /area/security/tactical)
 "abg" = (
 /obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
-/obj/map_helper/electrochromatic_linker{
-	id = "sauna"
-	},
 /turf/simulated/floor/plating,
 /area/triumph/surfacebase/sauna)
 "abV" = (
@@ -2214,9 +2211,6 @@
 	opacity = 0
 	},
 /obj/effect/paint/purplegray,
-/obj/map_helper/electrochromatic_linker{
-	id = "robotics_inner"
-	},
 /turf/simulated/floor/plating,
 /area/assembly/robotics)
 "biH" = (
@@ -9416,9 +9410,6 @@
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
-/obj/map_helper/electrochromatic_linker{
-	id = "Interr"
-	},
 /turf/simulated/floor/plating,
 /area/security/interrogation)
 "fZv" = (
@@ -13294,9 +13285,6 @@
 /obj/structure/disposalpipe/segment,
 /obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
 /obj/effect/paint/babyblue,
-/obj/map_helper/electrochromatic_linker{
-	id = "medbay_outer"
-	},
 /turf/simulated/floor/plating,
 /area/medical/reception)
 "inX" = (
@@ -14229,9 +14217,6 @@
 /obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
 /obj/effect/paint/darkred,
 /obj/structure/cable/green,
-/obj/map_helper/electrochromatic_linker{
-	id = "Interr"
-	},
 /turf/simulated/floor/plating,
 /area/security/interrogation)
 "iXc" = (
@@ -15128,7 +15113,8 @@
 	desc = " ";
 	pixel_y = 24
 	},
-/turf/simulated/floor/tiled/monotechmaint,
+/obj/structure/catwalk,
+/turf/simulated/open,
 /area/rift/station/public_garden/gantry)
 "jzo" = (
 /obj/effect/floor_decal/steeldecal/steel_decals6{
@@ -16017,7 +16003,8 @@
 /area/medical/resleeving)
 "kcL" = (
 /obj/machinery/light,
-/turf/simulated/floor/tiled/monotechmaint,
+/obj/structure/catwalk,
+/turf/simulated/open,
 /area/rift/station/public_garden/gantry)
 "kcQ" = (
 /obj/structure/table,
@@ -16036,9 +16023,6 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/holosign/surgery{
-	id = "operating_theatre_2"
-	},
-/obj/map_helper/electrochromatic_linker{
 	id = "operating_theatre_2"
 	},
 /obj/machinery/door/airlock/glass/medical/polarized{
@@ -16147,14 +16131,6 @@
 /area/crew_quarters/heads/hos)
 "kid" = (
 /turf/simulated/wall/r_wall/prepainted/medical,
-/area/medical/resleeving)
-"kip" = (
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
-/obj/effect/paint/babyblue,
-/obj/map_helper/electrochromatic_linker{
-	id = "resleeving-tint"
-	},
-/turf/simulated/floor/plating,
 /area/medical/resleeving)
 "kiq" = (
 /obj/machinery/door/firedoor/glass,
@@ -17254,9 +17230,6 @@
 	opacity = 0
 	},
 /obj/effect/paint/purplegray,
-/obj/map_helper/electrochromatic_linker{
-	id = "rd_office"
-	},
 /turf/simulated/floor/plating,
 /area/crew_quarters/heads/hor)
 "kPS" = (
@@ -20954,9 +20927,6 @@
 "mQt" = (
 /obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
 /obj/effect/paint/babyblue,
-/obj/map_helper/electrochromatic_linker{
-	id = "medbay_outer"
-	},
 /turf/simulated/floor/plating,
 /area/medical/reception)
 "mRj" = (
@@ -23281,14 +23251,6 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/security/hallway)
-"oqU" = (
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
-/obj/effect/paint/darkred,
-/obj/map_helper/electrochromatic_linker{
-	id = "sec_processing_l"
-	},
-/turf/simulated/floor/plating,
-/area/security/security_processing)
 "ora" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -25960,9 +25922,6 @@
 /obj/structure/cable/green{
 	icon_state = "2-8"
 	},
-/obj/map_helper/electrochromatic_linker{
-	id = "Interr"
-	},
 /turf/simulated/floor/plating,
 /area/security/interrogation)
 "qgp" = (
@@ -28087,9 +28046,6 @@
 /obj/structure/window/reinforced/tinted/frosted{
 	dir = 8
 	},
-/obj/map_helper/electrochromatic_linker{
-	id = "sec_processing_r"
-	},
 /turf/simulated/floor/tiled/red,
 /area/security/security_processing)
 "rqo" = (
@@ -28571,14 +28527,6 @@
 	},
 /turf/simulated/open,
 /area/maintenance/substation/research/xenobiology_lab)
-"rHv" = (
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
-/obj/effect/paint/darkred,
-/obj/map_helper/electrochromatic_linker{
-	id = "sec_processing_r"
-	},
-/turf/simulated/floor/plating,
-/area/security/security_processing)
 "rHN" = (
 /obj/effect/floor_decal/spline/plain{
 	dir = 4
@@ -28659,9 +28607,6 @@
 	opacity = 0
 	},
 /obj/effect/paint/purplegray,
-/obj/map_helper/electrochromatic_linker{
-	id = "robotics_outer"
-	},
 /turf/simulated/floor/plating,
 /area/assembly/robotics)
 "rJG" = (
@@ -28878,9 +28823,6 @@
 	spawn_grille = 0
 	},
 /obj/effect/paint/babyblue,
-/obj/map_helper/electrochromatic_linker{
-	id = "operating_theatre_1"
-	},
 /turf/simulated/floor/plating,
 /area/medical/surgery)
 "rPk" = (
@@ -29558,9 +29500,6 @@
 	spawn_grille = 0
 	},
 /obj/effect/paint/babyblue,
-/obj/map_helper/electrochromatic_linker{
-	id = "operating_theatre_2"
-	},
 /turf/simulated/floor/plating,
 /area/medical/surgery2)
 "soJ" = (
@@ -32517,9 +32456,6 @@
 /obj/machinery/holosign/surgery{
 	id = "operating_theatre_1"
 	},
-/obj/map_helper/electrochromatic_linker{
-	id = "operating_theatre_1"
-	},
 /obj/map_helper/access_helper/airlock/station/medical/surgery,
 /obj/machinery/door/airlock/glass/medical/polarized{
 	id_tint = "operating_theatre_1";
@@ -32752,9 +32688,6 @@
 	opacity = 0
 	},
 /obj/effect/paint/darkred,
-/obj/map_helper/electrochromatic_linker{
-	id = "hos_office"
-	},
 /turf/simulated/floor/plating,
 /area/crew_quarters/heads/hos)
 "uEv" = (
@@ -32860,9 +32793,6 @@
 	},
 /obj/structure/window/reinforced/tinted/frosted{
 	dir = 8
-	},
-/obj/map_helper/electrochromatic_linker{
-	id = "sec_processing_r"
 	},
 /turf/simulated/floor/tiled/red,
 /area/security/security_processing)
@@ -34099,9 +34029,6 @@
 /obj/structure/window/reinforced/tinted/frosted{
 	dir = 4
 	},
-/obj/map_helper/electrochromatic_linker{
-	id = "sec_processing_l"
-	},
 /turf/simulated/floor/tiled/red,
 /area/security/security_processing)
 "vnk" = (
@@ -34428,9 +34355,6 @@
 /area/rift/surfacebase/outside/outside2)
 "vxB" = (
 /obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
-/obj/map_helper/electrochromatic_linker{
-	id = "research_inner"
-	},
 /turf/simulated/floor/plating,
 /area/rnd/research)
 "vyj" = (
@@ -34623,9 +34547,6 @@
 /obj/item/flashlight/lamp,
 /obj/structure/window/reinforced/tinted/frosted{
 	dir = 4
-	},
-/obj/map_helper/electrochromatic_linker{
-	id = "sec_processing_l"
 	},
 /turf/simulated/floor/tiled/red,
 /area/security/security_processing)
@@ -35682,9 +35603,6 @@
 /obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
 /obj/structure/cable/green{
 	icon_state = "4-8"
-	},
-/obj/map_helper/electrochromatic_linker{
-	id = "sauna"
 	},
 /turf/simulated/floor/plating,
 /area/triumph/surfacebase/sauna)
@@ -38233,9 +38151,6 @@
 	opacity = 0
 	},
 /obj/effect/paint/purplegray,
-/obj/map_helper/electrochromatic_linker{
-	id = "research_outer"
-	},
 /turf/simulated/floor/plating,
 /area/rnd/research)
 "xYb" = (
@@ -49053,8 +48968,8 @@ oLJ
 oLJ
 kid
 kid
-kip
-kip
+oFb
+oFb
 kid
 kid
 kid
@@ -49638,7 +49553,7 @@ eYx
 gHr
 ixy
 odu
-kip
+oFb
 jvX
 vjt
 wnW
@@ -49832,7 +49747,7 @@ eYx
 iKu
 kRa
 lto
-kip
+oFb
 eUN
 dyj
 wBH
@@ -50026,7 +49941,7 @@ oUw
 dTk
 bor
 lto
-kip
+oFb
 epz
 tQp
 xkt
@@ -58172,7 +58087,7 @@ yga
 xNm
 bhS
 nuH
-oqU
+keC
 pUO
 xQz
 owT
@@ -58366,7 +58281,7 @@ myF
 pwT
 bhS
 nuH
-oqU
+keC
 hGI
 ijR
 oZw
@@ -58560,7 +58475,7 @@ mJx
 wXp
 bhS
 nuH
-oqU
+keC
 vGJ
 vnh
 fEm
@@ -59142,7 +59057,7 @@ uDC
 tiu
 bhS
 nuH
-rHv
+keC
 rqf
 uIR
 bVn
@@ -59336,7 +59251,7 @@ uDC
 mve
 bhS
 nuH
-rHv
+keC
 hGI
 ijR
 eTG
@@ -59530,7 +59445,7 @@ iFX
 eCN
 ohv
 oQS
-rHv
+keC
 pUO
 mzx
 yaJ
@@ -63830,7 +63745,7 @@ xes
 bOO
 bOO
 fIH
-jkt
+iyU
 sxn
 bOO
 bOO
@@ -64024,7 +63939,7 @@ bOO
 bOO
 bOO
 aIZ
-jkt
+iyU
 sxn
 edb
 edb
@@ -64218,7 +64133,7 @@ npm
 bOO
 bOO
 jLY
-jkt
+iyU
 xXp
 ehM
 wna
@@ -64412,7 +64327,7 @@ npm
 npm
 bOO
 pbn
-jkt
+iyU
 xXp
 nhr
 tWW
@@ -64606,7 +64521,7 @@ npm
 npm
 bOO
 fIH
-jkt
+iyU
 xXp
 nhr
 rih
@@ -64800,7 +64715,7 @@ npm
 npm
 bOO
 aIZ
-jkt
+iyU
 xXp
 nhr
 jXE
@@ -64994,7 +64909,7 @@ jMu
 npm
 bOO
 jLY
-jkt
+iyU
 xXp
 uik
 wna
@@ -65188,7 +65103,7 @@ npm
 npm
 edb
 pbn
-jkt
+iyU
 uXg
 aov
 aov
@@ -65382,12 +65297,12 @@ sWi
 iyU
 iyU
 iyU
-jkt
-jkt
-jkt
-jkt
-jkt
-jkt
+iyU
+iyU
+iyU
+iyU
+iyU
+iyU
 iyU
 iyU
 iyU
