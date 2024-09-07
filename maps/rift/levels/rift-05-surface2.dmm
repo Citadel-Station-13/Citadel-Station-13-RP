@@ -14422,6 +14422,9 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 8
 	},
+/obj/machinery/light_switch{
+	pixel_y = -24
+	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/bar/lounge)
 "jbT" = (
@@ -29647,10 +29650,6 @@
 	},
 /obj/effect/floor_decal/spline/plain{
 	dir = 8
-	},
-/obj/machinery/light_switch{
-	dir = 4;
-	pixel_x = 24
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/bar/lounge)
