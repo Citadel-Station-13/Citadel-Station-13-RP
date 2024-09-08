@@ -28,7 +28,6 @@
 /turf/simulated/mineral/floor/ignore_mapgen/virgo2,
 /area/submap/virgo2/Blackshuttledown)
 "ai" = (
-/turf/simulated/mineral/floor/ignore_mapgen/virgo2,
 /turf/simulated/shuttle/wall/dark{
 	icon_state = "dark6";
 	name = "Unknown Shuttle"
@@ -41,7 +40,6 @@
 	},
 /area/submap/virgo2/Blackshuttledown)
 "ak" = (
-/turf/simulated/mineral/floor/ignore_mapgen/virgo2,
 /turf/simulated/shuttle/wall/dark{
 	icon_state = "dark10";
 	name = "Unknown Shuttle"
@@ -114,7 +112,6 @@
 /turf/simulated/floor/tiled/steel,
 /area/submap/virgo2/Blackshuttledown)
 "au" = (
-/turf/simulated/mineral/floor/ignore_mapgen/virgo2,
 /turf/simulated/shuttle/wall/dark{
 	icon_state = "dark5";
 	name = "Unknown Shuttle"
@@ -141,7 +138,6 @@
 /turf/simulated/floor/tiled/steel,
 /area/submap/virgo2/Blackshuttledown)
 "az" = (
-/turf/simulated/mineral/floor/ignore_mapgen/virgo2,
 /turf/simulated/shuttle/wall/dark{
 	icon_state = "dark9";
 	name = "Unknown Shuttle"

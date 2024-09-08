@@ -148,7 +148,6 @@
 /area/shuttle/supply)
 "cJ" = (
 /turf/space,
-/turf/space,
 /area/space)
 "cU" = (
 /obj/structure/holostool,
@@ -234,7 +233,6 @@
 /obj/structure/shuttle/engine/propulsion{
 	icon_state = "burst_r"
 	},
-/turf/space,
 /turf/simulated/shuttle/plating/airless/carry{
 	dir = 1
 	},
@@ -1129,7 +1127,6 @@
 	landmark_tag = "supply_cc";
 	name = "Centcom Supply Depot"
 	},
-/turf/space,
 /turf/simulated/shuttle/plating/airless/carry{
 	dir = 1
 	},
@@ -1439,7 +1436,6 @@
 /obj/structure/shuttle/engine/propulsion{
 	icon_state = "burst_l"
 	},
-/turf/space,
 /turf/simulated/shuttle/plating/airless/carry{
 	dir = 1
 	},
@@ -1498,7 +1494,6 @@
 /area/holodeck/source_boxingcourt)
 "Io" = (
 /obj/structure/shuttle/engine/propulsion,
-/turf/space,
 /turf/simulated/shuttle/plating/airless/carry{
 	dir = 1
 	},
