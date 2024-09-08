@@ -288,7 +288,7 @@
 
 	nano_ui_interact(user)
 
-/obj/machinery/porta_turret/attack_hand(mob/user, list/params)
+/obj/machinery/porta_turret/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(isLocked(user))
 		return
 
@@ -441,7 +441,8 @@
 		else
 			to_chat(user, "<span class='notice'>Access denied.</span>")
 
-		..()
+	else
+		return ..()
 
 /obj/machinery/porta_turret/emag_act(remaining_charges, mob/user)
 	if(!emagged)
@@ -462,16 +463,18 @@
 	if(!gradual && prob(45) && amount > 5)
 		spark_system.start()
 
-/obj/machinery/porta_turret/bullet_act(obj/projectile/P, def_zone)
+/obj/machinery/porta_turret/on_bullet_act(obj/projectile/proj, impact_flags, list/bullet_act_args)
+	. = ..()
 	aggro_for(6 SECONDS)
-	if(P.firer)
+	if(proj.firer)
 		// todo: proper AI provoke API.
 		var/datum/ai_holder/turret/snowflake_ai_holder = ai_holder
-		snowflake_ai_holder.retaliate(P.firer)
-	return ..()
+		snowflake_ai_holder.retaliate(proj.firer)
 
-/obj/machinery/porta_turret/melee_act(mob/user, obj/item/weapon, target_zone, mult)
+/obj/machinery/porta_turret/melee_act(mob/user, obj/item/weapon, target_zone, datum/event_args/actor/clickchain/clickchain)
 	. = ..()
+	if(. & CLICKCHAIN_FLAGS_ATTACK_ABORT)
+		return
 	if(. > 0)
 		aggro_for(6 SECONDS, user)
 	// todo: proper AI provoke API.
@@ -540,7 +543,7 @@
 	if(L.invisibility >= INVISIBILITY_LEVEL_ONE) // Cannot see him. see_invisible is a mob-var
 		return TURRET_NOT_TARGET
 
-	if(faction && L.faction == faction)
+	if(faction && L.has_iff_faction(faction))
 		return TURRET_NOT_TARGET
 
 	if(!emagged && issilicon(L) && check_all == FALSE)	// Don't target silica, unless told to neutralize everything.
@@ -574,7 +577,7 @@
 		if(assess_perp(L) < 4)
 			return TURRET_NOT_TARGET	//if threat level < 4, keep going
 
-	if(L.stat != CONSCIOUS)		//if the perp is lying down, it's still a target but a less-important target
+	if(L.stat != CONSCIOUS && (lethal || emagged))		//if the perp is lying down, it's still a target but a less-important target
 		return check_down ? TURRET_SECONDARY_TARGET : TURRET_NOT_TARGET
 
 	return TURRET_PRIORITY_TARGET	//if the perp has passed all previous tests, congrats, it is now a "shoot-me!" nominee
@@ -648,7 +651,7 @@
  * @return TRUE on success
  */
 /obj/machinery/porta_turret/proc/try_fire_at(atom/target, angle)
-	if(disabled || is_integrity_broken())
+	if(disabled || !enabled || is_integrity_broken())
 		return FALSE
 	if(is_on_cooldown())
 		return FALSE

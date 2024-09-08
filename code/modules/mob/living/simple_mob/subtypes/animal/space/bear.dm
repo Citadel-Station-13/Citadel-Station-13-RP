@@ -19,7 +19,7 @@
 	icon_gib = "bear_gib"
 	catalogue_data = list(/datum/category_item/catalogue/fauna/space_bear)
 
-	faction = "russian"
+	iff_factions = MOB_IFF_FACTION_BIND_TO_MAP
 
 	maxHealth = 125
 	health = 125

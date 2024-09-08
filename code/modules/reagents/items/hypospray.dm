@@ -68,7 +68,7 @@
 		if(HYPOSPRAY_MODE_SPRAY)
 			. += "spray"
 
-/obj/item/hypospray/attack_hand(mob/user, list/params)
+/obj/item/hypospray/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(user.is_holding_inactive(src))
 		if(isnull(loaded))
 			user.action_feedback(SPAN_WARNING("[src] has no vial loaded."), src)

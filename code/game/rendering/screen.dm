@@ -36,7 +36,7 @@
 	G.s_click(src)
 	return 1
 
-/atom/movable/screen/grab/attack_hand(mob/user, list/params)
+/atom/movable/screen/grab/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	return
 
 /atom/movable/screen/grab/attackby()
@@ -422,9 +422,6 @@
 			var/darkness = round(1 - T.get_lumcount(),0.1)
 			to_chat(usr,"<span class='notice'><b>Darkness:</b> [darkness]</span>")
 		if("energy")
-			var/mob/living/simple_mob/shadekin/SK = usr
-			if(istype(SK))
-				to_chat(usr,"<span class='notice'><b>Energy:</b> [SK.energy] ([SK.dark_gains])</span>")
 			var/mob/living/carbon/human/H = usr
 			if(istype(H) && istype(H.species, /datum/species/shadekin))
 				to_chat(usr,"<span class='notice'><b>Energy:</b> [H.shadekin_get_energy(H)]</span>")

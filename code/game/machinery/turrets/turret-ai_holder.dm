@@ -35,6 +35,11 @@
 	set_ticking(idle_retarget_pulse_time)
 
 /datum/ai_holder/turret/tick(cycles)
+	var/obj/machinery/porta_turret/turret = agent
+	// check if we should do anything
+	if(turret.disabled || !turret.enabled)
+		idle()
+		return
 	// first, evaluate
 	var/found_in_wake_range = continuous_evaluation()
 	// then,
@@ -156,7 +161,8 @@
  */
 /datum/ai_holder/turret/proc/trace_trajectory(atom/target, angle)
 	var/obj/projectile/trace/trace = new(agent.loc)
-	trace.prepare_trace(target, null, TRUE)
+	trace.only_opacity = TRUE
+	trace.prepare_trace(target)
 	trace.fire(angle)
 	return trace.could_hit_target
 

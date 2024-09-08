@@ -18,7 +18,11 @@
 
 	mob_class = MOB_CLASS_PLANT
 
-	faction = "plants"
+	iff_factions = list(
+		MOB_IFF_FACTION_BIND_TO_MAP,
+		MOB_IFF_FACTION_PLANT,
+	)
+
 	maxHealth = 250
 	health = 250
 	poison_resist = 1.0

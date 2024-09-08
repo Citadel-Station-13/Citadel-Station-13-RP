@@ -116,25 +116,5 @@
 	icon_state = "begin"
 	anchored = TRUE
 
-/obj/effect/list_container
-	name = "list container"
-
-/obj/effect/list_container/mobl
-	name = "mobl"
-	var/master = null
-
-	var/list/container = list(  )
-
-/obj/effect/stop
-	icon_state = "empty"
-	name = "Geas"
-	desc = "You can't resist."
-	var/atom/movable/victim
-
-/obj/effect/stop/Uncross(atom/movable/AM)
-	. = ..()
-	if(AM == victim)
-		return FALSE
-
 /obj/effect/spawner
 	name = "object spawner"

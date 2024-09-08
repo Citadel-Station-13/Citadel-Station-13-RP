@@ -114,8 +114,6 @@
 			continue //skip monkeys and leavers
 		if (istype(M, /mob/new_player))
 			continue
-		if(M.stat == DEAD && M.get_preference_toggle(/datum/game_preference_toggle/observer/ghost_ears))
-			listening|=M
 
 	for(var/mob/M in listening)
 		to_chat(M, "[icon2html(thing = holder_atom, target = M)] <b>[holder_atom]</b> reverberates, \"<font color=#4F49AF>[msg]</font>\"")

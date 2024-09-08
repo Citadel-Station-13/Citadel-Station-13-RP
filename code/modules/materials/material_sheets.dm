@@ -299,7 +299,7 @@
 	update_mass()
 	return
 
-/obj/item/stack/material/supermatter/attack_hand(mob/user, list/params)
+/obj/item/stack/material/supermatter/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	. = ..()
 
 	update_mass()

@@ -77,7 +77,7 @@
 
 /datum/component/riding_handler/Initialize()
 	. = ..()
-	if(. & COMPONENT_INCOMPATIBLE)
+	if(. == COMPONENT_INCOMPATIBLE)
 		return
 	if(!istype(parent, expected_typepath))
 		return COMPONENT_INCOMPATIBLE
@@ -127,7 +127,7 @@
 /datum/component/riding_handler/proc/signal_hook_pre_buckle_mob(atom/movable/source, mob/M, flags, mob/user, semantic)
 	SIGNAL_HANDLER_DOES_SLEEP
 	if(!check_rider(M, semantic, TRUE, user = user))
-		return COMPONENT_BLOCK_BUCKLE_OPERATION
+		return SIGNAL_RAISE_BLOCK_BUCKLE_OPERATION
 
 /datum/component/riding_handler/proc/signal_hook_pixel_offset_changed(atom/movable/source)
 	full_update_riders(null, TRUE)

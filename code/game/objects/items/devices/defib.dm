@@ -67,7 +67,7 @@
 /obj/item/defib_kit/ui_action_click(datum/action/action, datum/event_args/actor/actor)
 	toggle_paddles()
 
-/obj/item/defib_kit/attack_hand(mob/user, list/params)
+/obj/item/defib_kit/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(loc == user)
 		toggle_paddles()
 	else
