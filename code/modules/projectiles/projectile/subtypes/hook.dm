@@ -8,7 +8,7 @@
 
 	var/beam_state = "b_beam"
 
-	damage = 5
+	damage_force = 5
 	speed = 7.5 * WORLD_ICON_SIZE
 	damage_type = BURN
 	damage_flag = ARMOR_ENERGY
@@ -39,7 +39,7 @@
 		switch(launcher_intent)
 			if(INTENT_HARM)
 				damage_flag = ARMOR_BULLET
-				damage *= 3
+				damage_force *= 3
 				sharp = 1
 				agony = 20
 			if(INTENT_GRAB)
@@ -186,4 +186,4 @@
 	name = "green orb"
 	icon_state = "green_laser"
 	beam_state = "n_beam"
-	damage = 3
+	damage_force = 3

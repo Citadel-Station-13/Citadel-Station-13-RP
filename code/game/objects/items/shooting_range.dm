@@ -90,7 +90,7 @@
 
 	if( virtualIcon.GetPixel(p_x, p_y) ) // if the located pixel isn't blank (null)
 
-		hp -= proj.damage
+		hp -= proj.damage_force
 		if(hp <= 0)
 			for(var/mob/O in oviewers())
 				if ((O.client && !( O.has_status_effect(/datum/status_effect/sight/blindness) )))
@@ -111,7 +111,7 @@
 			bmark.pixel_x--
 			bmark.pixel_y--
 
-			if(proj.damage >= 20 || istype(proj, /obj/projectile/beam/practice))
+			if(proj.damage_force >= 20 || istype(proj, /obj/projectile/beam/practice))
 				bmark.icon_state = "scorch"
 				bmark.setDir(pick(NORTH,SOUTH,EAST,WEST)) // random scorch design
 
@@ -123,12 +123,12 @@
 			// Bullets are hard. They make dents!
 			bmark.icon_state = "dent"
 
-		if(proj.damage >= 10 && bulletholes.len <= 35) // maximum of 35 bullet holes
+		if(proj.damage_force >= 10 && bulletholes.len <= 35) // maximum of 35 bullet holes
 			if(decaltype == 2) // bullet
-				if(prob(proj.damage+30)) // bullets make holes more commonly!
+				if(prob(proj.damage_force+30)) // bullets make holes more commonly!
 					new/datum/bullethole(src, bmark.pixel_x, bmark.pixel_y) // create new bullet hole
 			else // Lasers!
-				if(prob(proj.damage-10)) // lasers make holes less commonly
+				if(prob(proj.damage_force-10)) // lasers make holes less commonly
 					new/datum/bullethole(src, bmark.pixel_x, bmark.pixel_y) // create new bullet hole
 
 		// draw bullet holes

@@ -54,7 +54,7 @@
 
 // The hivebot's default projectile.
 /obj/projectile/bullet/hivebot
-	damage = 10
+	damage_force = 10
 	damage_type = BRUTE
 	sharp = FALSE
 	edge = FALSE

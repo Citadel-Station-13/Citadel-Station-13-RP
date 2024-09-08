@@ -130,7 +130,7 @@
 
 /obj/machinery/particle_smasher/on_bullet_act(obj/projectile/proj, impact_flags, list/bullet_act_args)
 	if(istype(proj, /obj/projectile/beam))
-		if(proj.damage >= 50)
+		if(proj.damage_force >= 50)
 			TryCraft()
 		return PROJECTILE_IMPACT_DELETE
 	return ..()

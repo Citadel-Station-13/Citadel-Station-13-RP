@@ -204,7 +204,7 @@
 /obj/projectile/kinetic
 	name = "kinetic force"
 	icon_state = null
-	damage = 30
+	damage_force = 30
 	damage_type = BRUTE
 	damage_flag = ARMOR_BOMB
 	range = WORLD_ICON_SIZE * 4
@@ -215,7 +215,7 @@
 	var/obj/item/gun/energy/kinetic_accelerator/kinetic_gun
 
 /obj/projectile/kinetic/premium
-	damage = 40
+	damage_force = 40
 	damage_type = BRUTE
 	range = 5
 
@@ -230,7 +230,7 @@
 			M.projectile_prehit(src, target, kinetic_gun)
 	if(!pressure_decrease_active && !lavaland_environment_check(get_turf(src)))
 		name = "weakened [name]"
-		damage = damage * pressure_decrease
+		damage_force = damage_force * pressure_decrease
 		pressure_decrease_active = TRUE
 	return ..()
 
@@ -247,7 +247,7 @@
 /obj/projectile/kinetic/proc/strike_thing(atom/target)
 	if(!pressure_decrease_active && !lavaland_environment_check(get_turf(src)))
 		name = "weakened [name]"
-		damage = damage * pressure_decrease
+		damage_force = damage_force * pressure_decrease
 		pressure_decrease_active = TRUE
 	var/turf/target_turf = get_turf(target)
 	if(!target_turf)
@@ -401,7 +401,7 @@
 	denied_type = /obj/item/ka_modkit/capacity
 
 /obj/item/ka_modkit/capacity/modify_projectile(obj/projectile/kinetic/K)
-	K.damage += modifier
+	K.damage_force += modifier
 
 
 //AoE blasts
@@ -444,8 +444,8 @@
 		for(var/mob/living/L in range(1, target_turf) - K.firer - target)
 			var/armor = L.run_armor_check(K.def_zone, K.damage_flag)
 			// var/armor = L.run_armor_check(K.def_zone, K.flag, null, null, K.armour_penetration)
-			L.apply_damage(K.damage*modifier, K.damage_type, K.def_zone, armor)
-			// L.apply_damage(K.damage*modifier, K.damage_type, K.def_zone, armor)
+			L.apply_damage(K.damage_force*modifier, K.damage_type, K.def_zone, armor)
+			// L.apply_damage(K.damage_force*modifier, K.damage_type, K.def_zone, armor)
 			to_chat(L, "<span class='userdanger'>You're struck by a [K.name]!</span>")
 
 /obj/item/ka_modkit/aoe/turfs

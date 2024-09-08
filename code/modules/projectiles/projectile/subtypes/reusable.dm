@@ -22,7 +22,7 @@
 /obj/projectile/bullet/reusable/arrow
 	name = "wooden arrow"
 	desc = "Woosh!"
-	damage = 15
+	damage_force = 15
 	icon_state = "arrow"
 	ammo_type = /obj/item/ammo_casing/arrow/wood
 	//broken_type = /obj/item/trash/broken_arrow
@@ -31,20 +31,20 @@
 /obj/projectile/bullet/reusable/arrow/bone
 	name = "bone arrow"
 	desc = "Arrow made of bone and sinew."
-	damage = 15
+	damage_force = 15
 	icon_state = "arrow"
 	ammo_type = /obj/item/ammo_casing/arrow/bone
 
 /obj/projectile/bullet/reusable/arrow/ash
 	name = "ashen arrow"
 	desc = "Fire harderned arrow."
-	damage = 25
+	damage_force = 25
 	ammo_type = /obj/item/ammo_casing/arrow/ash
 
 /obj/projectile/bullet/reusable/arrow/bone_ap //AP for ashwalkers
 	name = "hardened bone arrow"
 	desc = "Arrow made of bone and sinew."
-	damage = 35
+	damage_force = 35
 	armor_penetration = 10
 	ammo_type = /obj/item/ammo_casing/arrow/bone_ap
 
@@ -58,7 +58,7 @@
 /obj/projectile/bullet/reusable/plunger
 	name = "plunger"
 	desc = "It's a plunger, for plunging."
-	damage = 15
+	damage_force = 15
 	icon_state = "plunger"
 	ammo_type = /obj/item/ammo_casing/arrow/plunger
 
@@ -81,13 +81,13 @@
 /obj/projectile/bullet/reusable/foam
 	name = "foam dart"
 	desc = "A soft projectile made out of orange foam with a blue plastic tip."
-	damage = 0
+	damage_force = 0
 	ammo_type = /obj/item/ammo_casing/foam
 	embed_chance = 0 // nope
 
 /obj/projectile/bullet/reusable/foam/riot
 	name = "riot dart"
 	desc = "A flexible projectile made out of hardened orange foam with a red plastic tip."
-	damage = 10
+	damage_force = 10
 	damage_type = HALLOSS
 	ammo_type = /obj/item/ammo_casing/foam/riot

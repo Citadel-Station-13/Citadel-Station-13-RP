@@ -89,7 +89,7 @@
 	name = "dark matter bolt"
 	icon_state = "darkb"
 	fire_sound = 'sound/weapons/eLuger.ogg'
-	damage = 35
+	damage_force = 35
 	armor_penetration = 35
 	damage_type = BRUTE
 	damage_flag = ARMOR_ENERGY
@@ -105,7 +105,7 @@
 	name = "dark matter pellet"
 	icon_state = "dark_pellet"
 	fire_sound = 'sound/weapons/eLuger.ogg'
-	damage = 20
+	damage_force = 20
 	armor_penetration = 35
 	damage_type = BRUTE
 	damage_flag = ARMOR_ENERGY
@@ -138,7 +138,7 @@
 	name = "sonic pulse"
 	icon_state = "sound"
 	fire_sound = 'sound/effects/basscannon.ogg'
-	damage = 5
+	damage_force = 5
 	armor_penetration = 30
 	damage_type = BRUTE
 	damage_flag = ARMOR_MELEE
@@ -149,7 +149,7 @@
 	agony = 50
 
 /obj/projectile/sonic/strong
-	damage = 45
+	damage_force = 45
 
 /obj/projectile/sonic/strong/on_impact(atom/target, impact_flags, def_zone, efficiency)
 	. = ..()

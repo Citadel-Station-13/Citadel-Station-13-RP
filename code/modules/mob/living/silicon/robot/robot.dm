@@ -538,7 +538,7 @@
 	if(. & PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT)
 		return
 	// todo: why is this in bullet act and not where we take damage maybe?
-	if(prob(75) && proj.damage > 0)
+	if(prob(75) && proj.damage_force > 0)
 		spark_system.start()
 
 /mob/living/silicon/robot/attackby(obj/item/W as obj, mob/user as mob)

@@ -265,7 +265,7 @@
 	if(!(proj.damage_type == BRUTE || proj.damage_type == BURN))
 		return ..()
 
-	if(locked && tamper_proof && integrity <= proj.damage)
+	if(locked && tamper_proof && integrity <= proj.damage_force)
 		if(tamper_proof == 2) // Mainly used for events to prevent any chance of opening the box improperly.
 			visible_message("<font color='red'><b>The anti-tamper mechanism of [src] triggers an explosion!</b></font>")
 			var/turf/T = get_turf(src.loc)

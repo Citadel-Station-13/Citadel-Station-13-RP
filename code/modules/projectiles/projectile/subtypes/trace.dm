@@ -18,7 +18,7 @@
 	invisibility = 101 //Nope!  Can't see me!
 	hitscan = TRUE
 	nodamage = TRUE
-	damage = 0
+	damage_force = 0
 	has_tracer = FALSE
 	projectile_type = PROJECTILE_TYPE_TRACE
 	var/list/hit = list()
