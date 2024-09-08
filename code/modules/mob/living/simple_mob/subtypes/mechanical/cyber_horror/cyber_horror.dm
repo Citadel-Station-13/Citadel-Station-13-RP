@@ -432,7 +432,7 @@
 	name = "nanite cloud"
 	icon_state = "particle-heavy"
 	damage_force = 15
-	damage_type = BRUTE
+	damage_type = DAMAGE_TYPE_BRUTE
 
 /obj/projectile/arc/blue_energy/priest/on_impact(atom/target, impact_flags, def_zone, efficiency)
 	. = ..()

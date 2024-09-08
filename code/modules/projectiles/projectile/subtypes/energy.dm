@@ -2,7 +2,7 @@
 	name = "energy"
 	icon_state = "spark"
 	damage_force = 0
-	damage_type = BURN
+	damage_type = DAMAGE_TYPE_BURN
 	damage_flag = ARMOR_ENERGY
 	projectile_type = PROJECTILE_TYPE_ENERGY
 	var/flash_strength = 10
@@ -104,7 +104,7 @@
 	name = "dart"
 	icon_state = "toxin"
 	damage_force = 5
-	damage_type = TOX
+	damage_type = DAMAGE_TYPE_TOX
 	agony = 120
 	damage_flag = ARMOR_ENERGY
 
@@ -114,7 +114,7 @@
 	name = "bolt"
 	icon_state = "cbbolt"
 	damage_force = 10
-	damage_type = TOX
+	damage_type = DAMAGE_TYPE_TOX
 	agony = 40
 	stutter = 10
 
@@ -127,7 +127,7 @@
 	icon_state = "neurotoxin"
 	fire_sound = 'sound/effects/splat.ogg'
 	damage_force = 40
-	damage_type = BURN
+	damage_type = DAMAGE_TYPE_BURN
 	agony = 10
 	damage_flag = ARMOR_BIO
 	armor_penetration = 25	// It's acid
@@ -139,7 +139,7 @@
 	icon_state = "neurotoxin"
 	fire_sound = 'sound/effects/splat.ogg'
 	damage_force = 5
-	damage_type = BIOACID
+	damage_type = DAMAGE_TYPE_BIOACID
 	agony = 23
 	damage_flag = ARMOR_BIO
 	armor_penetration = 25	// It's acid-based
@@ -151,7 +151,7 @@
 	icon_state = "neurotoxin"
 	fire_sound = 'sound/effects/splat.ogg'
 	damage_force = 20
-	damage_type = BIOACID
+	damage_type = DAMAGE_TYPE_BIOACID
 	agony = 30
 	damage_flag = ARMOR_BIO
 	armor_penetration = 25	// It's acid-based
@@ -162,7 +162,7 @@
 	icon_state = "energy"
 	fire_sound = 'sound/effects/stealthoff.ogg'
 	damage_force = 20
-	damage_type = TOX
+	damage_type = DAMAGE_TYPE_TOX
 	irradiate = 20
 	light_range = 2
 	light_power = 0.5

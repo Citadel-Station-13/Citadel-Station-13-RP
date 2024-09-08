@@ -3,7 +3,7 @@
 	icon_state = "ion"
 	fire_sound = 'sound/weapons/Laser.ogg'
 	damage_force = 0
-	damage_type = BURN
+	damage_type = DAMAGE_TYPE_BURN
 	nodamage = 1
 	damage_flag = ARMOR_ENERGY
 	light_range = 2
@@ -56,7 +56,7 @@
 	icon_state = "ice_2"
 	fire_sound = 'sound/weapons/pulse3.ogg'
 	damage_force = 0
-	damage_type = BURN
+	damage_type = DAMAGE_TYPE_BURN
 	pass_flags = ATOM_PASS_TABLE | ATOM_PASS_GLASS | ATOM_PASS_GRILLE
 	nodamage = 1
 	damage_flag = ARMOR_ENERGY // It actually checks heat/cold protection.
@@ -103,7 +103,7 @@
 	icon = 'icons/obj/meteor.dmi'
 	icon_state = "smallf"
 	damage_force = 0
-	damage_type = BRUTE
+	damage_type = DAMAGE_TYPE_BRUTE
 	nodamage = 1
 	damage_flag = ARMOR_BULLET
 
@@ -122,7 +122,7 @@
 /obj/projectile/meteor/slug
 	name = "meteor"
 	damage_force = 25
-	damage_type = BRUTE
+	damage_type = DAMAGE_TYPE_BRUTE
 	nodamage = 0
 
 /obj/projectile/energy/floramut
@@ -130,7 +130,7 @@
 	icon_state = "energy"
 	fire_sound = 'sound/effects/stealthoff.ogg'
 	damage_force = 0
-	damage_type = TOX
+	damage_type = DAMAGE_TYPE_TOX
 	nodamage = 1
 	damage_flag = ARMOR_ENERGY
 	light_range = 2
@@ -179,7 +179,7 @@
 	icon_state = "energy2"
 	fire_sound = 'sound/effects/stealthoff.ogg'
 	damage_force = 0
-	damage_type = TOX
+	damage_type = DAMAGE_TYPE_TOX
 	nodamage = 1
 	damage_flag = ARMOR_ENERGY
 	var/singleton/plantgene/gene = null
@@ -189,7 +189,7 @@
 	icon_state = "energy2"
 	fire_sound = 'sound/effects/stealthoff.ogg'
 	damage_force = 0
-	damage_type = TOX
+	damage_type = DAMAGE_TYPE_TOX
 	nodamage = 1
 	damage_flag = ARMOR_ENERGY
 	light_range = 2
@@ -277,7 +277,7 @@
 	fire_sound = 'sound/weapons/gauss_shoot.ogg'
 	pass_flags = ATOM_PASS_TABLE | ATOM_PASS_GRILLE
 	damage_force = 70
-	damage_type = BURN
+	damage_type = DAMAGE_TYPE_BURN
 	damage_flag = ARMOR_LASER
 	light_range = 4
 	light_power = 3
@@ -372,7 +372,7 @@
 //Bio-Organic
 /obj/projectile/bullet/organic
 	damage_force = 10
-	damage_type = BRUTE
+	damage_type = DAMAGE_TYPE_BRUTE
 	damage_flag = ARMOR_BULLET
 	impact_sounds = 'sound/effects/splat.ogg'
 	icon_state = "organic"
@@ -384,7 +384,7 @@
 
 /obj/projectile/bullet/organic/stinger
 	damage_force = 15
-	damage_type = TOX
+	damage_type = DAMAGE_TYPE_TOX
 	impact_sounds = 'sound/weapons/bladeslice.ogg'
 	icon_state = "SpearFlight"
 
@@ -393,7 +393,7 @@
 	name ="plasma bolt"
 	icon_state= "fuel-tritium"
 	damage_force = 50
-	damage_type = BURN
+	damage_type = DAMAGE_TYPE_BURN
 	damage_flag = ARMOR_ENERGY
 	light_range = 4
 	light_power = 3

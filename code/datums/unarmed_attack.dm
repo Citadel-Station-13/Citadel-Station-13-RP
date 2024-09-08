@@ -327,4 +327,4 @@ GLOBAL_LIST_EMPTY(unarmed_attack_cache)
 	attack_verb_legacy = list("tapped", "lightly struck")
 	damage = 5
 	damage_mode = NONE
-	damage_type = AGONY
+	damage_type = DAMAGE_TYPE_AGONY

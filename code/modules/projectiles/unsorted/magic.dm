@@ -113,7 +113,7 @@
 	name = "bolt of change"
 	icon_state = "ice_1"
 	damage_force = 0
-	damage_type = BURN
+	damage_type = DAMAGE_TYPE_BURN
 	nodamage = 1
 
 /obj/projectile/magic/change/on_hit(atom/change)
@@ -262,7 +262,7 @@
 	name = "bolt of animation"
 	icon_state = "red_1"
 	damage_force = 0
-	damage_type = BURN
+	damage_type = DAMAGE_TYPE_BURN
 	nodamage = 1
 
 /obj/projectile/magic/animate/on_hit(atom/target, blocked = FALSE)
@@ -308,7 +308,7 @@
 	name = "blade energy"
 	icon_state = "lavastaff"
 	damage_force = 15
-	damage_type = BURN
+	damage_type = DAMAGE_TYPE_BURN
 	sharp = TRUE
 	magic = TRUE
 
@@ -328,7 +328,7 @@
 	name = "arcane bolt"
 	icon_state = "arcane_barrage"
 	damage_force = 20
-	damage_type = BURN
+	damage_type = DAMAGE_TYPE_BURN
 	nodamage = 0
 	armor_penetration = 0
 	magic = TRUE
@@ -436,7 +436,7 @@
 	name = "lightning bolt"
 	icon_state = "tesla_projectile"	//Better sprites are REALLY needed and appreciated!~
 	damage_force = 15
-	damage_type = BURN
+	damage_type = DAMAGE_TYPE_BURN
 	nodamage = 0
 	magic = TRUE
 
@@ -470,7 +470,7 @@
 	name = "bolt of fireball"
 	icon_state = "fireball"
 	damage_force = 10
-	damage_type = BRUTE
+	damage_type = DAMAGE_TYPE_BRUTE
 	nodamage = 0
 
 	//explosion values

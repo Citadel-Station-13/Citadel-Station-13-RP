@@ -3,7 +3,7 @@
 	icon_state = "bullet"
 	fire_sound = 'sound/weapons/weaponsounds_rifleshot.ogg'
 	damage_force = 60
-	damage_type = BRUTE
+	damage_type = DAMAGE_TYPE_BRUTE
 	nodamage = 0
 	damage_flag = ARMOR_BULLET
 	embed_chance = 20	//Modified in the actual embed process, but this should keep embed chance about the same
@@ -447,7 +447,7 @@
 	name = "incendiary bullet"
 	icon_state = "bullet_alt"
 	damage_force = 15
-	damage_type = BURN
+	damage_type = DAMAGE_TYPE_BURN
 	incendiary = 1
 	flammability = 2
 
@@ -455,7 +455,7 @@
 	name = "dragonsbreath pellet"
 	icon_state = "bullet_alt"
 	damage_force = 10
-	damage_type = BURN
+	damage_type = DAMAGE_TYPE_BURN
 	incendiary = 1
 	flammability = 2
 
@@ -482,7 +482,7 @@
 	name = "12.7mm phoron slug"
 	icon_state = "bullet_alt"
 	damage_force = 60
-	damage_type = BRUTE
+	damage_type = DAMAGE_TYPE_BRUTE
 	incendiary = 1
 	flammability = 4
 	armor_penetration = 40

@@ -4,7 +4,7 @@
 	fire_sound = 'sound/weapons/weaponsounds_laserstrong.ogg'
 	pass_flags = ATOM_PASS_TABLE | ATOM_PASS_GLASS | ATOM_PASS_GRILLE
 	damage_force = 40
-	damage_type = BURN
+	damage_type = DAMAGE_TYPE_BURN
 	damage_flag = ARMOR_LASER
 	projectile_type = PROJECTILE_TYPE_BEAM | PROJECTILE_TYPE_PHOTONIC
 	eyeblur = 4
@@ -24,7 +24,7 @@
 	name = "laser"
 	icon_state = "laser"
 	damage_force = 0
-	damage_type = BURN
+	damage_type = DAMAGE_TYPE_BURN
 	damage_flag = ARMOR_LASER
 	eyeblur = 2
 	impact_sounds = null
