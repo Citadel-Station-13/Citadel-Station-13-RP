@@ -1,7 +1,7 @@
 /obj/projectile/magic
 	name = "bolt of nothing"
 	icon_state = "energy"
-	damage = 0
+	damage_force = 0
 	damage_type = OXY
 	nodamage = 1
 	armor_penetration = 100
@@ -27,7 +27,7 @@
 /obj/projectile/magic/resurrection
 	name = "bolt of resurrection"
 	icon_state = "ion"
-	damage = 0
+	damage_force = 0
 	damage_type = OXY
 	nodamage = 1
 
@@ -50,7 +50,7 @@
 /obj/projectile/magic/teleport
 	name = "bolt of teleportation"
 	icon_state = "bluespace"
-	damage = 0
+	damage_force = 0
 	damage_type = OXY
 	nodamage = 1
 	var/inner_tele_radius = 0
@@ -81,7 +81,7 @@
 /obj/projectile/magic/door
 	name = "bolt of door creation"
 	icon_state = "energy"
-	damage = 0
+	damage_force = 0
 	damage_type = OXY
 	nodamage = 1
 	var/list/door_types = list(/obj/structure/simple_door/wood, /obj/structure/simple_door/iron, /obj/structure/simple_door/silver, /obj/structure/simple_door/gold, /obj/structure/simple_door/uranium, /obj/structure/simple_door/sandstone, /obj/structure/simple_door/phoron, /obj/structure/simple_door/diamond)
@@ -112,7 +112,7 @@
 /obj/projectile/magic/change
 	name = "bolt of change"
 	icon_state = "ice_1"
-	damage = 0
+	damage_force = 0
 	damage_type = BURN
 	nodamage = 1
 
@@ -261,7 +261,7 @@
 /obj/projectile/magic/animate
 	name = "bolt of animation"
 	icon_state = "red_1"
-	damage = 0
+	damage_force = 0
 	damage_type = BURN
 	nodamage = 1
 
@@ -307,7 +307,7 @@
 /obj/projectile/magic/spellblade
 	name = "blade energy"
 	icon_state = "lavastaff"
-	damage = 15
+	damage_force = 15
 	damage_type = BURN
 	sharp = TRUE
 	magic = TRUE
@@ -327,7 +327,7 @@
 /obj/projectile/magic/arcane_barrage
 	name = "arcane bolt"
 	icon_state = "arcane_barrage"
-	damage = 20
+	damage_force = 20
 	damage_type = BURN
 	nodamage = 0
 	armor_penetration = 0
@@ -422,7 +422,7 @@
 /obj/projectile/magic/aoe
 	name = "Area Bolt"
 	desc = "What the fuck does this do?!"
-	damage = 0
+	damage_force = 0
 	var/proxdet = TRUE
 
 /obj/projectile/magic/aoe/Moved(atom/old_loc, movement_dir, forced, list/old_locs, momentum_change)
@@ -435,7 +435,7 @@
 /obj/projectile/magic/aoe/lightning
 	name = "lightning bolt"
 	icon_state = "tesla_projectile"	//Better sprites are REALLY needed and appreciated!~
-	damage = 15
+	damage_force = 15
 	damage_type = BURN
 	nodamage = 0
 	magic = TRUE
@@ -469,7 +469,7 @@
 /obj/projectile/magic/aoe/fireball
 	name = "bolt of fireball"
 	icon_state = "fireball"
-	damage = 10
+	damage_force = 10
 	damage_type = BRUTE
 	nodamage = 0
 
@@ -543,7 +543,7 @@
 	desc = "A piece of paper enchanted to give it extreme durability and stiffness, along with a very hot burn to anyone unfortunate enough to get hit by a charged one."
 	icon_state = "spellcard"
 	damage_type = BURN
-	damage = 2
+	damage_force = 2
 
 /obj/projectile/magic/spellcard/book
 	nodamage = FALSE
@@ -551,11 +551,11 @@
 	desc = "A piece of paper enchanted to give it extreme durability and stiffness, along with a very hot burn to anyone unfortunate enough to get hit by a charged one."
 	icon_state = "spellcard"
 	damage_type = BURN
-	damage = 12
+	damage_force = 12
 	magic = TRUE
 
 /obj/projectile/magic/spellcard/book/spark
-	damage = 4
+	damage_force = 4
 	var/fire_stacks = 4
 
 /obj/projectile/magic/spellcard/book/spark/on_impact(atom/target, impact_flags, def_zone, efficiency)
@@ -573,17 +573,17 @@
 		M.IgniteMob()
 		return
 	else
-		damage = 20 //If we are a simplemob we deal 5x damage
+		damage_force = 20 //If we are a simplemob we deal 5x damage
 
 /obj/projectile/magic/spellcard/book/shock
-	damage = 0
+	damage_force = 0
 	stutter = 5
 	agony = 20
 	stun = 10
 
 /* //Still need help on healing procs.
 /obj/projectile/magic/spellcard/book/heal
-	damage = 0
+	damage_force = 0
 	nodamage  = TRUE
 
 /obj/projectile/magic/spellcard/book/heal/on_hit(atom/target, blocked = FALSE)

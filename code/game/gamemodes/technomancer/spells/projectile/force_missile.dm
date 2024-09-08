@@ -22,6 +22,6 @@
 /obj/projectile/force_missile
 	name = "force missile"
 	icon_state = "force_missile"
-	damage = 25
+	damage_force = 25
 	damage_type = BRUTE
 	damage_flag = ARMOR_MELEE

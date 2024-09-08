@@ -172,7 +172,7 @@
 	. = ..()
 	update_icon()
 
-/obj/item/reagent_containers/glass/beaker/attack_hand(mob/user, list/params)
+/obj/item/reagent_containers/glass/beaker/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	..()
 	update_icon()
 

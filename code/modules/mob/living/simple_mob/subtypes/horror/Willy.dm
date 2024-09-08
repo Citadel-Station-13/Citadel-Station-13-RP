@@ -12,7 +12,6 @@
 	icon_living = "Willy"
 	icon_dead = "w_head"
 	icon_rest = "Willy"
-	faction = "horror"
 	icon = 'icons/mob/horror_show/GHPS.dmi'
 	icon_gib = "generic_gib"
 	catalogue_data = list(/datum/category_item/catalogue/fauna/horror/Willy)
@@ -54,7 +53,7 @@
 	. = ..()
 	playsound(src, 'sound/h_sounds/holla.ogg', 50, 1)
 
-/mob/living/simple_mob/horror/Willy/attack_hand(mob/user, list/params)
+/mob/living/simple_mob/horror/Willy/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	playsound(src, 'sound/h_sounds/holla.ogg', 50, 1)
 	..()
 

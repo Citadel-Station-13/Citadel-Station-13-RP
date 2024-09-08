@@ -266,8 +266,7 @@
 		if(istype(S))
 			S.overmind = O
 			O.blob_mobs.Add(S)
-		else
-			S.faction = "blob"
+		S.add_iff_faction(MOB_IFF_FACTION_BLOB)
 		S.update_icons()
 
 /datum/blob_type/fulminant_organism/on_death(obj/structure/blob/B)
@@ -277,8 +276,7 @@
 		if(istype(S))
 			S.overmind = B.overmind
 			B.overmind.blob_mobs.Add(S)
-		else
-			S.faction = "blob"
+		S.add_iff_faction(MOB_IFF_FACTION_BLOB)
 		S.update_icons()
 
 
@@ -500,7 +498,7 @@
 	for(var/mob/living/L in range(get_turf(victim), 1)) // We don't use orange(), in case there is more than one mob on the target tile.
 		if(L == victim) // Already hit.
 			continue
-		if(L.faction == "blob") // No friendly fire
+		if(L.has_iff_faction(MOB_IFF_FACTION_BLOB))
 			continue
 		L.blob_act()
 

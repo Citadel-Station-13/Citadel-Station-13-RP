@@ -145,7 +145,7 @@
 /obj/machinery/door/window/attack_ai(mob/user as mob)
 	return src.attack_hand(user)
 
-/obj/machinery/door/window/attack_hand(mob/user, list/params)
+/obj/machinery/door/window/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(user.a_intent == INTENT_HARM)
 		return ..()
 	src.add_fingerprint(user)

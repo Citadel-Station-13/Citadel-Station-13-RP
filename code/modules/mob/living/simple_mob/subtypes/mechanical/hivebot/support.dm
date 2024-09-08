@@ -54,7 +54,7 @@
 	for(var/mob/living/L in hearers(7, src))
 		if(!L.ai_holder)
 			continue
-		if(L.faction != src.faction)
+		if(!L.shares_iff_faction(src))
 			continue
 		var/datum/ai_holder/polaris/AI = L.ai_holder
 		AI.set_follow(src)

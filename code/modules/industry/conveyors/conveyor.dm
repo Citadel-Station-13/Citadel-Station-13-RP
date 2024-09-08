@@ -162,7 +162,7 @@
 	return ..()
 
 // attack with hand, move pulled object onto conveyor
-/obj/machinery/conveyor/attack_hand(mob/user, list/params)
+/obj/machinery/conveyor/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(!CHECK_ALL_MOBILITY(user, MOBILITY_CAN_MOVE | MOBILITY_CAN_USE))
 		return
 	if(isnull(user.pulling) || user.pulling.anchored)

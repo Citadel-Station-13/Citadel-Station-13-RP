@@ -53,7 +53,7 @@
 /obj/projectile/bullet/chemdart
 	name = "dart"
 	icon_state = "dart"
-	damage = 5
+	damage_force = 5
 	var/reagent_amount = 15
 	range = WORLD_ICON_SIZE * 15
 

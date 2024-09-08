@@ -646,7 +646,7 @@ About the new airlock wires panel:
 					last_spark = world.time
 	return ..()
 
-/obj/machinery/door/airlock/attack_hand(mob/user, list/params)
+/obj/machinery/door/airlock/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(!istype(usr, /mob/living/silicon))
 		if(src.isElectrified())
 			if(src.shock(user, 100))

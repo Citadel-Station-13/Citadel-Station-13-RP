@@ -569,7 +569,7 @@
 	name = "inversion beam"
 	icon_state = "invert"
 	fire_sound = 'sound/weapons/spiderlunge.ogg'
-	damage = 15
+	damage_force = 15
 	damage_type = BURN
 	damage_flag = ARMOR_LASER
 	armor_penetration = 60
