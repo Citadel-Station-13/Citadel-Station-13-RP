@@ -119,7 +119,7 @@
 /obj/projectile/beam/weak
 	name = "weak cyan beam"
 	icon_state = "cyan"
-	fire_sound = 'sound/weapons/Dissolverray.ogg'
+	fire_sound = 'sound/weapons/Dissolverry.ogg'
 	damage_force = 20
 	light_color = "#74b1c2"
 
