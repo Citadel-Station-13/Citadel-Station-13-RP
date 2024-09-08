@@ -2,7 +2,7 @@
 	name = "bolt of nothing"
 	icon_state = "energy"
 	damage_force = 0
-	damage_type = OXY
+	damage_type = DAMAGE_TYPE_OXY
 	nodamage = 1
 	armor_penetration = 100
 	var/magic = TRUE
@@ -28,7 +28,7 @@
 	name = "bolt of resurrection"
 	icon_state = "ion"
 	damage_force = 0
-	damage_type = OXY
+	damage_type = DAMAGE_TYPE_OXY
 	nodamage = 1
 
 /obj/projectile/magic/resurrection/on_impact(atom/target, impact_flags, def_zone, efficiency)
@@ -51,7 +51,7 @@
 	name = "bolt of teleportation"
 	icon_state = "bluespace"
 	damage_force = 0
-	damage_type = OXY
+	damage_type = DAMAGE_TYPE_OXY
 	nodamage = 1
 	var/inner_tele_radius = 0
 	var/outer_tele_radius = 6
@@ -82,7 +82,7 @@
 	name = "bolt of door creation"
 	icon_state = "energy"
 	damage_force = 0
-	damage_type = OXY
+	damage_type = DAMAGE_TYPE_OXY
 	nodamage = 1
 	var/list/door_types = list(/obj/structure/simple_door/wood, /obj/structure/simple_door/iron, /obj/structure/simple_door/silver, /obj/structure/simple_door/gold, /obj/structure/simple_door/uranium, /obj/structure/simple_door/sandstone, /obj/structure/simple_door/phoron, /obj/structure/simple_door/diamond)
 
