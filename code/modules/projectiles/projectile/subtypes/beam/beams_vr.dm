@@ -49,7 +49,7 @@
 /obj/projectile/beam/medigun
 	name = "healing beam"
 	icon_state = "healbeam"
-	damage = 0 //stops it damaging walls
+	damage_force = 0 //stops it damaging walls
 	nodamage = TRUE
 	damage_type = BURN
 	damage_flag = ARMOR_LASER

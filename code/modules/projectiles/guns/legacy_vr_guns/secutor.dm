@@ -56,7 +56,7 @@
 	muzzle_type = /obj/effect/projectile/muzzle/secutorkill
 	tracer_type = /obj/effect/projectile/tracer/secutorkill
 	impact_type = /obj/effect/projectile/impact/secutorkill
-	damage = 20
+	damage_force = 20
 
 //--------------- Projectiles ----------------
 /obj/projectile/energy/electrode/secutor
@@ -75,7 +75,7 @@
 	light_power = 0.6
 	light_color = "#cea036"
 	range = WORLD_ICON_SIZE * 20
-	damage = 5 //minor penalty for repeated FF
+	damage_force = 5 //minor penalty for repeated FF
 	SA_bonus_damage = 25	// 30 total on animals - lowest of all phasers
 	SA_vulnerability = MOB_CLASS_ANIMAL
 

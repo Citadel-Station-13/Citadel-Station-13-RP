@@ -624,7 +624,7 @@
 	return
 
 /obj/vehicle/sealed/mecha/proc/interface_action(obj/machinery/target)
-	if(istype(target, /obj/machinery/access_button))
+	if(istype(target, /obj/machinery/access_button) || istype(target, /obj/machinery/button/remote/blast_door))
 		src.occupant_message("<span class='notice'>Interfacing with [target].</span>")
 		src.log_message("Interfaced with [target].")
 		target.attack_hand(src.occupant_legacy)
@@ -1032,7 +1032,7 @@
 		qdel(src)
 	return
 
-/obj/vehicle/sealed/mecha/attack_hand(mob/user, list/params)
+/obj/vehicle/sealed/mecha/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(user == occupant_legacy)
 		show_radial_occupant(user)
 		return
@@ -1192,7 +1192,7 @@
 	if(!(Proj.nodamage))
 		var/ignore_threshold
 
-		var/pass_damage = Proj.damage
+		var/pass_damage = Proj.damage_force
 		var/pass_damage_reduc_mod
 		for(var/obj/item/mecha_parts/mecha_equipment/ME in equipment)
 			pass_damage = ME.handle_projectile_contact(Proj, pass_damage)
@@ -1222,7 +1222,7 @@
 		//AP projectiles have a chance to cause additional damage
 		if(Proj.legacy_penetrating)
 			var/hit_occupant = 1 //only allow the occupant to be hit once
-			for(var/i in 1 to min(Proj.legacy_penetrating, round(Proj.damage/15)))
+			for(var/i in 1 to min(Proj.legacy_penetrating, round(Proj.damage_force/15)))
 				if(src.occupant_legacy && hit_occupant && prob(20))
 					Proj.impact(occupant_legacy)
 					hit_occupant = 0

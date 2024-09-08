@@ -207,7 +207,7 @@
 	user.visible_message(SPAN_NOTICE("Something knocks on [src]."))
 	playsound(loc, 'sound/effects/Glasshit.ogg', 50, TRUE)
 
-/obj/structure/window/attack_hand(mob/user, list/params)
+/obj/structure/window/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(user.a_intent == INTENT_HARM)
 		return ..()
 

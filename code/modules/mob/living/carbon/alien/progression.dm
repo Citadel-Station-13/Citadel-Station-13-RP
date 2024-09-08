@@ -30,8 +30,7 @@
 
 	transfer_languages(src, adult)
 
-	if(src.faction != "neutral")
-		adult.faction = src.faction
+	adult.copy_iff_factions(src)
 
 	if(mind)
 		mind.transfer(adult)

@@ -34,8 +34,8 @@
 
 // Adds Phoron Wolf
 /mob/living/simple_mob/animal/wolf/phoron
+	iff_factions = MOB_IFF_FACTION_BIND_TO_LEVEL
 
-	faction = "underdark"
 	movement_cooldown = 0
 
 	harm_intent_damage = 5

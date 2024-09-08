@@ -24,7 +24,7 @@
 	mob_size = MOB_SMALL //Foxes are not smaller than cats so bumping them up to small
 	randomized = TRUE
 
-	faction = "fox"
+	iff_factions = MOB_IFF_FACTION_BIND_TO_MAP
 
 	response_help = "scritches"
 	response_disarm = "gently pushes aside"

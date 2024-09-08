@@ -64,11 +64,11 @@
 	AddComponent(/datum/component/horror_aura/strong)
 
 /mob/living/simple_mob/construct/juggernaut/on_bullet_act(obj/projectile/proj, impact_flags, list/bullet_act_args)
-	var/reflectchance = 80 - round(proj.damage/3)
+	var/reflectchance = 80 - round(proj.damage_force/3)
 	if(prob(reflectchance) && !istype(src, /mob/living/simple_mob/construct/juggernaut/behemoth))
 		var/damage_mod = rand(2,4)
 		var/projectile_dam_type = proj.damage_type
-		var/incoming_damage = (round(proj.damage / damage_mod) - (round((proj.damage / damage_mod) * 0.3)))
+		var/incoming_damage = (round(proj.damage_force / damage_mod) - (round((proj.damage_force / damage_mod) * 0.3)))
 		var/armorcheck = run_armor_check(null, proj.damage_flag)
 		var/soakedcheck = get_armor_soak(null, proj.damage_flag)
 		if(!(istype(proj, /obj/projectile/energy) || istype(proj, /obj/projectile/beam)))
@@ -84,7 +84,7 @@
 			visible_message("<span class='danger'>The [proj.name] gets reflected by [src]'s shell!</span>", \
 						"<span class='userdanger'>The [proj.name] gets reflected by [src]'s shell!</span>")
 			damage_mod = rand(3,5)
-			incoming_damage = (round(proj.damage / damage_mod) - (round((proj.damage / damage_mod) * 0.3)))
+			incoming_damage = (round(proj.damage_force / damage_mod) - (round((proj.damage_force / damage_mod) * 0.3)))
 			if(!(proj.damage_type == BRUTE || proj.damage_type == BURN))
 				projectile_dam_type = BURN
 				incoming_damage = round(incoming_damage / 4) //Damage from strange sources is converted to burn for energy-type projectiles, though severely decreased.
@@ -138,7 +138,7 @@
 							)
 
 /mob/living/simple_mob/construct/juggernaut/behemoth/on_bullet_act(obj/projectile/proj, impact_flags, list/bullet_act_args)
-	var/reflectchance = 80 - round(proj.damage/3)
+	var/reflectchance = 80 - round(proj.damage_force/3)
 	if(prob(reflectchance))
 		visible_message("<span class='danger'>The [proj.name] gets reflected by [src]'s shell!</span>", \
 						"<span class='userdanger'>The [proj.name] gets reflected by [src]'s shell!</span>")
