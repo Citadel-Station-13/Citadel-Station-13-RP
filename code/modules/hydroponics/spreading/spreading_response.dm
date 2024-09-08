@@ -34,7 +34,7 @@
 	if(!M.apply_damage(base_damage, DAMAGE_TYPE_BRUTE, target_zone, blocked, soaked, used_weapon=src))
 		return 0
 
-/obj/effect/plant/attack_hand(mob/user, list/params)
+/obj/effect/plant/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	manual_unbuckle(user)
 
 /obj/effect/plant/attack_generic(var/mob/user)

@@ -2,6 +2,9 @@
 // Enigma hivebots are usually significantly tougher than baseline Hivebots, and are modified with salvaged abductor parts.
 // These Hivebots are often meant for Event purposes, and carry a different faction than baseline Hivebots. Use these carefully!
 
+/mob/living/simple_mob/mechanical/hivebot/enigma
+	iff_factions = MOB_IFF_FACTION_HIVEBOT
+
 // Code Stuff
 /mob/living/simple_mob/mechanical/hivebot/enigma/death()
 	..()
@@ -85,7 +88,6 @@
 	movement_cooldown = 4
 	icon_scale_x = 1.4
 	icon_scale_y = 1.4
-	faction = "enigma"
 	attack_sound = 'sound/enigma/enigma_hit2.ogg'
 	movement_sound = 'sound/enigma/enigma_move2.ogg'
 	ai_holder_type = /datum/ai_holder/polaris/simple_mob/hivebot
@@ -126,7 +128,6 @@
 	legacy_melee_damage_upper = 20
 	base_attack_cooldown = 6
 	movement_cooldown = 1
-	faction = "enigma"
 	attack_sound = 'sound/enigma/enigma_hit.ogg'
 	movement_sound = 'sound/enigma/enigma_move.ogg'
 	ai_holder_type = /datum/ai_holder/polaris/simple_mob/hivebot
@@ -156,7 +157,6 @@
 	movement_cooldown = 5
 	base_pixel_x = 1.5
 	base_pixel_y = 1.5
-	faction = "enigma"
 	attack_sound =  'sound/weapons/slash.ogg'
 	movement_sound = 'sound/enigma/enigma_move.ogg'
 	ai_holder_type = /datum/ai_holder/polaris/simple_mob/event
@@ -182,7 +182,6 @@
 	legacy_melee_damage_lower = 10
 	legacy_melee_damage_upper = 10
 	movement_cooldown = 2
-	faction = "enigma"
 	attack_sound = 'sound/items/drill_hit.ogg'
 	movement_sound = 'sound/enigma/enigma_move.ogg'
 	ai_holder_type = /datum/ai_holder/polaris/simple_mob/event
@@ -213,7 +212,6 @@
 	legacy_melee_damage_lower = 0
 	legacy_melee_damage_upper = 0
 	movement_cooldown = 6
-	faction = "enigma"
 	movement_sound = 'sound/enigma/enigma_move.ogg'
 	ai_holder_type = /datum/ai_holder/polaris/simple_mob/ranged/kiting
 	projectiletype = /obj/projectile/beam/cyan/hivebot
@@ -253,7 +251,6 @@
 	legacy_melee_damage_lower = 20
 	legacy_melee_damage_upper = 20
 	movement_cooldown = 6
-	faction = "enigma"
 	attack_sound = 'sound/enigma/enigma_hit2.ogg'
 	movement_sound = 'sound/enigma/enigma_move2.ogg'
 	icon_scale_x = 1.1
@@ -301,7 +298,6 @@
 	legacy_melee_damage_lower = 5
 	legacy_melee_damage_upper = 5
 	movement_cooldown = 2
-	faction = "enigma"
 	movement_sound = 'sound/enigma/enigma_move.ogg'
 	ai_holder_type = /datum/ai_holder/polaris/simple_mob/hivebot
 	projectiletype = /obj/projectile/beam/weak
@@ -327,7 +323,6 @@
 	legacy_melee_damage_lower = 5
 	legacy_melee_damage_upper = 5
 	movement_cooldown = 4
-	faction = "enigma"
 	movement_sound = 'sound/enigma/enigma_move.ogg'
 	ai_holder_type = /datum/ai_holder/polaris/simple_mob/ranged/sniper
 	projectiletype = /obj/projectile/beam/xray
@@ -353,7 +348,6 @@
 	legacy_melee_damage_lower = 0
 	legacy_melee_damage_upper = 0
 	movement_cooldown = 2
-	faction = "enigma"
 	movement_sound = 'sound/enigma/enigma_move.ogg'
 	ai_holder_type = /datum/ai_holder/polaris/simple_mob/ranged/kiting
 	projectiletype = /obj/projectile/ion
@@ -370,7 +364,6 @@
 	attack_sound = 'sound/enigma/enigma_hit2.ogg'
 	icon_state = "mimir"
 	icon_living = "mimir"
-	faction = "enigma"
 	icon_scale_x = 1.3
 	icon_scale_y = 1.3
 	movement_cooldown = 3

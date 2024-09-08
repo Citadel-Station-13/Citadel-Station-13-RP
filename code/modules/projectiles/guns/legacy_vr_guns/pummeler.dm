@@ -29,8 +29,8 @@
 /obj/projectile/pummel
 	name = "sonic blast"
 	icon_state = "sound"
-	damage = 5
-	damage_type = DAMAGE_TYPE_BRUTE
+	damage_force = 5
+	damage_type = BRUTE
 	damage_flag = ARMOR_MELEE
 	embed_chance = 0
 	vacuum_traversal = 0

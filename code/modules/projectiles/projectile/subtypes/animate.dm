@@ -1,8 +1,8 @@
 /obj/projectile/animate
 	name = "bolt of animation"
 	icon_state = "ice_1"
-	damage = 0
-	damage_type = DAMAGE_TYPE_BURN
+	damage_force = 0
+	damage_type = BURN
 	nodamage = 1
 	damage_flag = ARMOR_ENERGY
 	light_range = 2

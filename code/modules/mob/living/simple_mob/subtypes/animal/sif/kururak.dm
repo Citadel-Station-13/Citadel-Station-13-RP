@@ -23,7 +23,7 @@
 	tt_desc = "S Felidae fluctursora"
 	catalogue_data = list(/datum/category_item/catalogue/fauna/kururak)
 
-	faction = "kururak"
+	iff_factions = MOB_IFF_FACTION_BIND_TO_MAP
 
 	icon_state = "bigcat"
 	icon_living = "bigcat"
@@ -292,7 +292,7 @@
 				continue
 			if(!K.ai_holder)
 				continue
-			if(K.faction != src.faction)
+			if(!K.shares_iff_faction(src))
 				continue
 			var/datum/ai_holder/polaris/AI = K.ai_holder
 			to_chat(K, SPAN_NOTICE("The pack leader wishes for you to follow them."))

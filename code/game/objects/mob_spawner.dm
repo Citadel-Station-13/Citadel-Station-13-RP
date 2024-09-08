@@ -64,7 +64,7 @@
 	if(total_spawns > 0)
 		total_spawns--
 	if(mob_faction)
-		L.faction = mob_faction
+		L.set_iff_factions(mob_faction)
 	return L
 
 /obj/structure/mob_spawner/proc/get_death_report(var/mob/living/L)
@@ -102,7 +102,7 @@ It also makes it so a ghost wont know where all the goodies/mobs are.
 	if(world.time > last_spawn + spawn_delay)
 		var/turf/mainloc = get_turf(src)
 		for(var/mob/living/A in range(range,mainloc))
-			if ((A.faction != mob_faction) && (A.move_speed < 12))
+			if (((!mob_faction || !A.has_iff_faction(mob_faction))) && (A.move_speed < 12))
 				var/chosen_mob = choose_spawn()
 				if(chosen_mob)
 					do_spawn(chosen_mob)
@@ -279,7 +279,7 @@ It also makes it so a ghost wont know where all the goodies/mobs are.
 		my_mob.low_priority = TRUE
 
 		if(faction)
-			my_mob.faction = faction
+			my_mob.set_iff_factions(faction)
 
 		if(atmos_comp)
 			var/turf/T = get_turf(src)

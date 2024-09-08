@@ -2,8 +2,8 @@
 	name = "ion bolt"
 	icon_state = "ion"
 	fire_sound = 'sound/weapons/Laser.ogg'
-	damage = 0
-	damage_type = DAMAGE_TYPE_BURN
+	damage_force = 0
+	damage_type = BURN
 	nodamage = 1
 	damage_flag = ARMOR_ENERGY
 	light_range = 2
@@ -39,7 +39,7 @@
 /obj/projectile/bullet/gyro
 	name ="explosive bolt"
 	icon_state= "bolter"
-	damage = 50
+	damage_force = 50
 	damage_flag = ARMOR_BULLET
 	sharp = 1
 	edge = 1
@@ -55,8 +55,8 @@
 	name = "freeze beam"
 	icon_state = "ice_2"
 	fire_sound = 'sound/weapons/pulse3.ogg'
-	damage = 0
-	damage_type = DAMAGE_TYPE_BURN
+	damage_force = 0
+	damage_type = BURN
 	pass_flags = ATOM_PASS_TABLE | ATOM_PASS_GLASS | ATOM_PASS_GRILLE
 	nodamage = 1
 	damage_flag = ARMOR_ENERGY // It actually checks heat/cold protection.
@@ -102,8 +102,8 @@
 	name = "meteor"
 	icon = 'icons/obj/meteor.dmi'
 	icon_state = "smallf"
-	damage = 0
-	damage_type = DAMAGE_TYPE_BRUTE
+	damage_force = 0
+	damage_type = BRUTE
 	nodamage = 1
 	damage_flag = ARMOR_BULLET
 
@@ -121,16 +121,16 @@
 
 /obj/projectile/meteor/slug
 	name = "meteor"
-	damage = 25
-	damage_type = DAMAGE_TYPE_BRUTE
+	damage_force = 25
+	damage_type = BRUTE
 	nodamage = 0
 
 /obj/projectile/energy/floramut
 	name = "alpha somatoray"
 	icon_state = "energy"
 	fire_sound = 'sound/effects/stealthoff.ogg'
-	damage = 0
-	damage_type = DAMAGE_TYPE_TOX
+	damage_force = 0
+	damage_type = TOX
 	nodamage = 1
 	damage_flag = ARMOR_ENERGY
 	light_range = 2
@@ -178,8 +178,8 @@
 	name = "gamma somatoray"
 	icon_state = "energy2"
 	fire_sound = 'sound/effects/stealthoff.ogg'
-	damage = 0
-	damage_type = DAMAGE_TYPE_TOX
+	damage_force = 0
+	damage_type = TOX
 	nodamage = 1
 	damage_flag = ARMOR_ENERGY
 	var/singleton/plantgene/gene = null
@@ -188,8 +188,8 @@
 	name = "beta somatoray"
 	icon_state = "energy2"
 	fire_sound = 'sound/effects/stealthoff.ogg'
-	damage = 0
-	damage_type = DAMAGE_TYPE_TOX
+	damage_force = 0
+	damage_type = TOX
 	nodamage = 1
 	damage_flag = ARMOR_ENERGY
 	light_range = 2
@@ -223,7 +223,7 @@
 /obj/projectile/chameleon
 	name = "bullet"
 	icon_state = "bullet"
-	damage = 1 // stop trying to murderbone with a fake gun dumbass!!!
+	damage_force = 1 // stop trying to murderbone with a fake gun dumbass!!!
 	embed_chance = 0 // nope
 	nodamage = 1
 	damage_type = DAMAGE_TYPE_HALLOSS
@@ -232,7 +232,7 @@
 /obj/projectile/bola
 	name = "bola"
 	icon_state = "bola"
-	damage = 5
+	damage_force = 5
 	embed_chance = 0 //Nada.
 	damage_type = DAMAGE_TYPE_HALLOSS
 	muzzle_type = null
@@ -253,7 +253,7 @@
 /obj/projectile/webball
 	name = "ball of web"
 	icon_state = "bola"
-	damage = 10
+	damage_force = 10
 	embed_chance = 0 //Nada.
 	damage_type = DAMAGE_TYPE_BRUTE
 	muzzle_type = null
@@ -276,8 +276,8 @@
 	icon_state = "energy"
 	fire_sound = 'sound/weapons/gauss_shoot.ogg'
 	pass_flags = ATOM_PASS_TABLE | ATOM_PASS_GRILLE
-	damage = 70
-	damage_type = DAMAGE_TYPE_BURN
+	damage_force = 70
+	damage_type = BURN
 	damage_flag = ARMOR_LASER
 	light_range = 4
 	light_power = 3
@@ -343,7 +343,7 @@
 				explosion(blastloc, -1, -1, 2, 3)
 
 /obj/projectile/bullet/honker
-	damage = 0
+	damage_force = 0
 	nodamage = TRUE
 	impact_sounds = 'sound/items/bikehorn.ogg'
 	icon = 'icons/obj/items.dmi'
@@ -355,7 +355,7 @@
 	SpinAnimation()
 
 /obj/projectile/bullet/honker/lethal
-	damage = 20
+	damage_force = 20
 	nodamage = FALSE
 	damage_type = DAMAGE_TYPE_BRUTE
 
@@ -364,15 +364,15 @@
 	SpinAnimation()
 
 /obj/projectile/bullet/honker/lethal/light
-	damage = 10
+	damage_force = 10
 
 /obj/projectile/bullet/honker/lethal/heavy
-	damage = 40
+	damage_force = 40
 
 //Bio-Organic
 /obj/projectile/bullet/organic
-	damage = 10
-	damage_type = DAMAGE_TYPE_BRUTE
+	damage_force = 10
+	damage_type = BRUTE
 	damage_flag = ARMOR_BULLET
 	impact_sounds = 'sound/effects/splat.ogg'
 	icon_state = "organic"
@@ -383,8 +383,8 @@
 	icon_state = "organic"
 
 /obj/projectile/bullet/organic/stinger
-	damage = 15
-	damage_type = DAMAGE_TYPE_TOX
+	damage_force = 15
+	damage_type = TOX
 	impact_sounds = 'sound/weapons/bladeslice.ogg'
 	icon_state = "SpearFlight"
 
@@ -392,8 +392,8 @@
 /obj/projectile/plasma
 	name ="plasma bolt"
 	icon_state= "fuel-tritium"
-	damage = 50
-	damage_type = DAMAGE_TYPE_BURN
+	damage_force = 50
+	damage_type = BURN
 	damage_flag = ARMOR_ENERGY
 	light_range = 4
 	light_power = 3
@@ -413,7 +413,7 @@
 
 /obj/projectile/plasma/hot
 	name ="heavy plasma bolt"
-	damage = 75
+	damage_force = 75
 	light_range = 5
 	light_power = 4
 	light_color = "#00ccff"

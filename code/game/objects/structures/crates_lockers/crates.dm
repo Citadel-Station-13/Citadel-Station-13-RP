@@ -201,7 +201,7 @@
 	else
 		to_chat(usr, "<span class='warning'>This mob type can't use this verb.</span>")
 
-/obj/structure/closet/crate/secure/attack_hand(mob/user, list/params)
+/obj/structure/closet/crate/secure/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	src.add_fingerprint(user)
 	if(locked)
 		src.togglelock(user)
@@ -265,7 +265,7 @@
 	if(!(proj.damage_type == DAMAGE_TYPE_BRUTE || proj.damage_type == DAMAGE_TYPE_BURN))
 		return ..()
 
-	if(locked && tamper_proof && integrity <= proj.damage)
+	if(locked && tamper_proof && integrity <= proj.damage_force)
 		if(tamper_proof == 2) // Mainly used for events to prevent any chance of opening the box improperly.
 			visible_message("<font color='red'><b>The anti-tamper mechanism of [src] triggers an explosion!</b></font>")
 			var/turf/T = get_turf(src.loc)

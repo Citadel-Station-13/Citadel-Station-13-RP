@@ -9,7 +9,7 @@
 /obj/machinery/recipe_lookup/proc/display_options()
 	return tgui_input_list(usr, "Pick a [result_type_name] to view its recipe.", "Select [result_type_name]", recipe_list)
 
-/obj/machinery/recipe_lookup/attack_hand(mob/user)
+/obj/machinery/recipe_lookup/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	// regular use checks
 	if (!isliving(user))
 		return FALSE

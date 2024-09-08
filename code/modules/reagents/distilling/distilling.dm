@@ -107,7 +107,7 @@
 
 	..()
 
-/obj/machinery/portable_atmospherics/powered/reagent_distillery/attack_hand(mob/user, list/params)
+/obj/machinery/portable_atmospherics/powered/reagent_distillery/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	var/list/options = list()
 	options["examine"] = radial_examine
 	options["use"] = radial_use

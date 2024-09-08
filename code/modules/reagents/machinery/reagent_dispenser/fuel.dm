@@ -39,7 +39,7 @@
 		if(rig)
 			. += "<span class='notice'>There is some kind of device rigged to the tank.</span>"
 
-/obj/structure/reagent_dispensers/fueltank/attack_hand()
+/obj/structure/reagent_dispensers/fueltank/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if (rig)
 		usr.visible_message("[usr] begins to detach [rig] from \the [src].", "You begin to detach [rig] from \the [src]")
 		if(do_after(usr, 20))

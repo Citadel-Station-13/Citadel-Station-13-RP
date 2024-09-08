@@ -58,7 +58,7 @@ GLOBAL_LIST_EMPTY(medichine_cell_datums)
 /obj/item/stream_projector/medichine/valid_target(atom/entity)
 	return isliving(entity)
 
-/obj/item/stream_projector/medichine/attack_hand(mob/user, list/params)
+/obj/item/stream_projector/medichine/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(user.is_holding_inactive(src))
 		if(isnull(inserted_cartridge))
 			user.action_feedback(SPAN_WARNING("[src] has no vial loaded."), src)

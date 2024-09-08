@@ -70,7 +70,7 @@
 			P.legacy_redirect(P.starting.x, P.starting.y, curloc, user)
 			P.reflected = 1
 			if(check_for_scepter())
-				P.damage = P.damage * 1.5
+				P.damage_force = P.damage_force * 1.5
 
 			spark_system.start()
 			playsound(user.loc, 'sound/weapons/blade1.ogg', 50, 1)

@@ -84,6 +84,13 @@
 	/// do we have a species statpanel?
 	var/species_statpanel = FALSE
 
+	//* IFF *//
+
+	/// Inherent IFF factions
+	///
+	/// * This isn't the best way to do this, but it works.
+	var/list/iff_factions_inherent
+
 	//? Icons
 	/// Normal icon set.
 	var/icobase      = 'icons/mob/species/human/body.dmi'
@@ -545,6 +552,9 @@
 	for(var/datum/ability/ability as anything in abilities)
 		ability.associate(H)
 
+	for(var/faction in iff_factions_inherent)
+		H.add_iff_faction(faction)
+
 /**
  * called when we are removed from a mob
  */
@@ -571,6 +581,9 @@
 
 	for(var/datum/ability/ability as anything in abilities)
 		ability.disassociate(H)
+
+	for(var/faction in iff_factions_inherent)
+		H.remove_iff_faction(faction)
 
 /datum/species/proc/sanitize_species_name(var/name)
 	return sanitizeName(name, MAX_NAME_LEN)

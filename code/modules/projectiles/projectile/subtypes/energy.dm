@@ -1,8 +1,8 @@
 /obj/projectile/energy
 	name = "energy"
 	icon_state = "spark"
-	damage = 0
-	damage_type = DAMAGE_TYPE_BURN
+	damage_force = 0
+	damage_type = BURN
 	damage_flag = ARMOR_ENERGY
 	projectile_type = PROJECTILE_TYPE_ENERGY
 	var/flash_strength = 10
@@ -12,7 +12,7 @@
 	name = "chemical shell"
 	icon_state = "bullet"
 	fire_sound = 'sound/weapons/gunshot_pathetic.ogg'
-	damage = 5
+	damage_force = 5
 	range = WORLD_ICON_SIZE * 15 //if the shell hasn't hit anything after travelling this far it just explodes.
 	var/flash_range = 0
 	var/brightness = 7
@@ -51,7 +51,7 @@
 //No longer blinds, and flash strength has been greatly lowered but now set's on fire.
 /obj/projectile/energy/flash/flare
 	fire_sound = 'sound/weapons/grenade_launcher.ogg'
-	damage = 20
+	damage_force = 20
 	flash_range = 1
 	brightness = 15
 	flash_strength = 10
@@ -80,7 +80,7 @@
 
 /obj/projectile/energy/electrode/stunshot
 	name = "stunshot"
-	damage = 5
+	damage_force = 5
 	agony = 80
 
 /obj/projectile/energy/electrode/goldenbolt	// MIGHTY GOLDEN BOLT
@@ -103,8 +103,8 @@
 /obj/projectile/energy/dart
 	name = "dart"
 	icon_state = "toxin"
-	damage = 5
-	damage_type = DAMAGE_TYPE_TOX
+	damage_force = 5
+	damage_type = TOX
 	agony = 120
 	damage_flag = ARMOR_ENERGY
 
@@ -113,21 +113,21 @@
 /obj/projectile/energy/bolt
 	name = "bolt"
 	icon_state = "cbbolt"
-	damage = 10
-	damage_type = DAMAGE_TYPE_TOX
+	damage_force = 10
+	damage_type = TOX
 	agony = 40
 	stutter = 10
 
 /obj/projectile/energy/bolt/large
 	name = "largebolt"
-	damage = 20
+	damage_force = 20
 
 /obj/projectile/energy/acid //Slightly up-gunned (Read: The thing does agony and checks bio resist) variant of the simple alien mob's projectile, for queens and sentinels.
 	name = "acidic spit"
 	icon_state = "neurotoxin"
 	fire_sound = 'sound/effects/splat.ogg'
-	damage = 40
-	damage_type = DAMAGE_TYPE_BURN
+	damage_force = 40
+	damage_type = BURN
 	agony = 10
 	damage_flag = ARMOR_BIO
 	armor_penetration = 25	// It's acid
@@ -138,8 +138,8 @@
 	name = "neurotoxic spit"
 	icon_state = "neurotoxin"
 	fire_sound = 'sound/effects/splat.ogg'
-	damage = 5
-	damage_type = DAMAGE_TYPE_BIOACID
+	damage_force = 5
+	damage_type = BIOACID
 	agony = 23
 	damage_flag = ARMOR_BIO
 	armor_penetration = 25	// It's acid-based
@@ -150,8 +150,8 @@
 	name = "neurotoxic spit"
 	icon_state = "neurotoxin"
 	fire_sound = 'sound/effects/splat.ogg'
-	damage = 20
-	damage_type = DAMAGE_TYPE_BIOACID
+	damage_force = 20
+	damage_type = BIOACID
 	agony = 30
 	damage_flag = ARMOR_BIO
 	armor_penetration = 25	// It's acid-based
@@ -161,8 +161,8 @@
 	name = "phoron bolt"
 	icon_state = "energy"
 	fire_sound = 'sound/effects/stealthoff.ogg'
-	damage = 20
-	damage_type = DAMAGE_TYPE_TOX
+	damage_force = 20
+	damage_type = TOX
 	irradiate = 20
 	light_range = 2
 	light_power = 0.5
@@ -176,7 +176,7 @@
 	fire_sound = 'sound/weapons/blaster.ogg'
 	armor_penetration = 10
 	range = WORLD_ICON_SIZE * 4
-	damage = 5
+	damage_force = 5
 	agony = 55
 	damage_type = DAMAGE_TYPE_BURN
 	vacuum_traversal = 0	//Projectile disappears in empty space
@@ -215,7 +215,7 @@
 	name = "suppressive pellet"
 	icon_state = "blue_pellet"
 	fire_sound = 'sound/weapons/Laser.ogg'
-	damage = 5
+	damage_force = 5
 	armor_penetration = 75
 	pass_flags = ATOM_PASS_TABLE | ATOM_PASS_GLASS | ATOM_PASS_GRILLE
 	damage_type = DAMAGE_TYPE_BURN
@@ -229,7 +229,7 @@
 	name = "phase wave"
 	icon_state = "phase"
 	range = WORLD_ICON_SIZE * 25
-	damage = 5
+	damage_force = 5
 	SA_bonus_damage = 45	// 50 total on animals
 	SA_vulnerability = MOB_CLASS_ANIMAL
 
@@ -243,5 +243,5 @@
 
 /obj/projectile/energy/phase/heavy/cannon
 	range = WORLD_ICON_SIZE * 30
-	damage = 15
+	damage_force = 15
 	SA_bonus_damage = 60	// 75 total on animals

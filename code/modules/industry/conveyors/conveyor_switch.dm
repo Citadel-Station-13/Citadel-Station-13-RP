@@ -51,7 +51,7 @@
 		C.setmove()
 
 // attack with hand, switch position
-/obj/machinery/conveyor_switch/attack_hand(mob/user, list/params)
+/obj/machinery/conveyor_switch/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(!allowed(user))
 		to_chat(user, "<span class='warning'>Access denied.</span>")
 		return
@@ -112,7 +112,7 @@
 	desc = "A conveyor control switch. It appears to only go in one direction."
 
 // attack with hand, switch position
-/obj/machinery/conveyor_switch/oneway/attack_hand(mob/user, list/params)
+/obj/machinery/conveyor_switch/oneway/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(position == 0)
 		position = convdir
 	else

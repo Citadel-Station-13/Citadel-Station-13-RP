@@ -22,7 +22,7 @@
 	icon_gib = "cyber_horror_dead"
 	catalogue_data = list(/datum/category_item/catalogue/fauna/cyberhorror)
 
-	faction = "synthtide"
+	iff_factions = MOB_IFF_FACTION_MUTANT
 
 	ai_holder_type = /datum/ai_holder/polaris/simple_mob/melee/evasive
 
@@ -323,7 +323,7 @@
 /obj/projectile/arc/blue_energy
 	name = "energy missle"
 	icon_state = "force_missile"
-	damage = 12
+	damage_force = 12
 	damage_type = DAMAGE_TYPE_BURN
 
 //Direct Ranged Mob
@@ -389,11 +389,12 @@
 
 //These are the projectiles mobs use
 /obj/projectile/beam/drone
-	damage = 3
+	damage_force = 3
+
 /obj/projectile/arc/blue_energy
 	name = "energy missle"
 	icon_state = "force_missile"
-	damage = 12
+	damage_force = 12
 	damage_type = DAMAGE_TYPE_BURN
 
 //Boss Mob - The High Priest
@@ -430,8 +431,8 @@
 /obj/projectile/arc/blue_energy/priest
 	name = "nanite cloud"
 	icon_state = "particle-heavy"
-	damage = 15
-	damage_type = DAMAGE_TYPE_BRUTE
+	damage_force = 15
+	damage_type = BRUTE
 
 /obj/projectile/arc/blue_energy/priest/on_impact(atom/target, impact_flags, def_zone, efficiency)
 	. = ..()
@@ -462,7 +463,7 @@
 	var/mob_count = 0				// Are there enough mobs?
 	var/turf/T = get_turf(A)
 	for(var/mob/M in range(T, 2))
-		if(M.faction == faction) 	// Don't grenade our friends
+		if(shares_iff_faction(M))
 			return FALSE
 		if(M in oview(src, special_attack_max_range))
 			if(!M.stat)

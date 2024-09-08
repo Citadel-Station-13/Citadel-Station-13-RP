@@ -1289,6 +1289,11 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/underone)
+"cT" = (
+/turf/simulated/floor/water/beach{
+	dir = 4
+	},
+/area/rift/surfacebase/underground/under1)
 "cU" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
@@ -7098,6 +7103,9 @@
 	},
 /turf/simulated/floor/concrete/rng/indoors,
 /area/rift/station/fighter_bay/transport_tunnel_garage)
+"vM" = (
+/turf/simulated/floor/water/beach/corner,
+/area/rift/surfacebase/underground/under1)
 "vP" = (
 /obj/item/stack/tile/floor,
 /obj/machinery/light/small{
@@ -13301,6 +13309,9 @@
 /obj/structure/snowman,
 /turf/simulated/floor/outdoors/snow/lythios43c,
 /area/rift/surfacebase/underground/under1)
+"PA" = (
+/turf/simulated/floor/outdoors/beach/sand/desert/indoors,
+/area/rift/surfacebase/underground/under1)
 "PC" = (
 /obj/machinery/air_alarm{
 	dir = 4;
@@ -13534,6 +13545,10 @@
 "Qx" = (
 /obj/structure/flora/ausbushes/lavendergrass,
 /turf/simulated/floor/outdoors/snow/lythios43c,
+/area/rift/surfacebase/underground/under1)
+"Qy" = (
+/obj/structure/closet/crate/mimic,
+/turf/simulated/floor/holofloor/beach/water,
 /area/rift/surfacebase/underground/under1)
 "Qz" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -14700,6 +14715,9 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
 /turf/simulated/floor/plating,
 /area/rift/station/fighter_bay/hangar)
+"UM" = (
+/turf/simulated/floor/water/beach,
+/area/rift/surfacebase/underground/under1)
 "UN" = (
 /obj/effect/floor_decal/rust,
 /obj/structure/sink{
@@ -15046,6 +15064,10 @@
 	},
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
+"VI" = (
+/obj/item/beach_ball,
+/turf/simulated/floor/water/beach,
+/area/rift/surfacebase/underground/under1)
 "VJ" = (
 /obj/effect/floor_decal/rust,
 /obj/structure/railing{
@@ -15538,6 +15560,9 @@
 /obj/machinery/nanite_chamber,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/station/protean_nanite_room)
+"Xo" = (
+/turf/simulated/floor/holofloor/beach/water,
+/area/rift/surfacebase/underground/under1)
 "Xp" = (
 /turf/simulated/wall/prepainted/engineering/atmos,
 /area/engineering/atmos/hallway)
@@ -41739,12 +41764,12 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
+PA
+vM
+cT
+cT
+cT
+cT
 aa
 aa
 aa
@@ -41933,12 +41958,12 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
+PA
+UM
+Xo
+Xo
+Xo
+Xo
 aa
 aa
 aa
@@ -42126,13 +42151,13 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+PA
+PA
+UM
+Xo
+Xo
+Xo
+Xo
 aa
 aa
 aa
@@ -42320,13 +42345,13 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+PA
+PA
+VI
+Qy
+Xo
+Xo
+Xo
 aa
 aa
 aa
@@ -42514,13 +42539,13 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+PA
+PA
+UM
+Xo
+Xo
+Xo
+Xo
 aa
 aa
 aa
@@ -42709,12 +42734,12 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
+PA
+UM
+Xo
+Xo
+Xo
+Xo
 aa
 aa
 aa
@@ -42903,12 +42928,12 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
+PA
+UM
+Xo
+Xo
+Xo
+Xo
 aa
 aa
 aa

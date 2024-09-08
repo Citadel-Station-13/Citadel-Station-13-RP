@@ -656,7 +656,7 @@
 				damage_mult = 2.5
 			else if(grabstate >= GRAB_AGGRESSIVE)
 				damage_mult = 1.5
-	P.damage *= damage_mult
+	P.damage_force *= damage_mult
 
 /obj/item/gun/proc/process_accuracy(obj/projectile, mob/living/user, atom/target, var/burst, var/held_twohanded)
 	var/obj/projectile/P = projectile
@@ -756,7 +756,7 @@
 // 		in_chamber.on_hit(M)
 // 		if(in_chamber.damage_type != DAMAGE_TYPE_HALLOSS && !in_chamber.nodamage)
 // 			log_and_message_admins("[key_name(user)] commited suicide using \a [src]")
-// 			user.apply_damage(in_chamber.damage*2.5, in_chamber.damage_type, "head", used_weapon = "Point blank shot in the mouth with \a [in_chamber]", sharp=1)
+// 			user.apply_damage(in_chamber.damage_force*2.5, in_chamber.damage_type, "head", used_weapon = "Point blank shot in the mouth with \a [in_chamber]", sharp=1)
 // 			user.death()
 // 		else if(in_chamber.damage_type == DAMAGE_TYPE_HALLOSS)
 // 			to_chat(user, "<span class = 'notice'>Ow...</span>")

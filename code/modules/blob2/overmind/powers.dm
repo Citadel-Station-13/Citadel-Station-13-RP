@@ -207,7 +207,7 @@
 	for(var/mob/living/L in view(src))
 		if(L.stat == DEAD)
 			continue // Already dying or dead.
-		if(L.faction == "blob")
+		if(L.has_iff_faction(MOB_IFF_FACTION_BLOB))
 			continue // No friendly fire.
 		if(locate(/obj/structure/blob) in L.loc)
 			continue // Already has a blob over them.
