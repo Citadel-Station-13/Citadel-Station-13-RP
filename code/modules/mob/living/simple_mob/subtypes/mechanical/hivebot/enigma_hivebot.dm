@@ -380,6 +380,7 @@
 	movement_sound = 'sound/enigma/enigma_move.ogg'
 	ai_holder_type = /datum/ai_holder/polaris/simple_mob/ranged/kiting //Made to draw fire hence kiting
 	projectiletype = /obj/projectile/beam/antigravbeamwraith
+	base_attack_cooldown = 10 //1 attacks per second
 
 /mob/living/simple_mob/mechanical/hivebot/enigma/P4/Wraith/Initialize(mapload) //Gives the unit a weak overshield since it would be very unfun to fight kiting AI with actual proper health regen as initially intended
 	var/shield_type = /obj/item/shield_projector/rectangle{
@@ -414,9 +415,10 @@
 				"rad"		= 100
 				)
 
-	legacy_melee_damage_lower = 37 //armed with two arm mounted phase blades 
-	legacy_melee_damage_upper = 37 //I hate damage variance
+	legacy_melee_damage_lower = 35 //armed with two arm mounted phase blades 
+	legacy_melee_damage_upper = 35 //I hate damage variance
 	attack_armor_pen = 25
+	base_attack_cooldown = 7 //1.3 attacks per second
 	movement_cooldown = 0 //MUCH faster
 	movement_sound = 'sound/enigma/enigma_move.ogg'
 	ai_holder_type = /datum/ai_holder/polaris/simple_mob/hivebot //hit and Run Melee is broken for when more than 1 player is visible
