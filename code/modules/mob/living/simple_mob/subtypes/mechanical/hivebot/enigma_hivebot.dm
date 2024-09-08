@@ -414,12 +414,12 @@
 				"rad"		= 100
 				)
 
-	legacy_melee_damage_lower = 32 //armed with two arm mounted phase blades 
-	legacy_melee_damage_upper = 32 //I hate damage variance
+	legacy_melee_damage_lower = 37 //armed with two arm mounted phase blades 
+	legacy_melee_damage_upper = 37 //I hate damage variance
 	attack_armor_pen = 25
 	movement_cooldown = 0 //MUCH faster
 	movement_sound = 'sound/enigma/enigma_move.ogg'
-	ai_holder_type = /datum/ai_holder/polaris/simple_mob/melee/hit_and_run //VERY obnoxious
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/hivebot //hit and Run Melee is broken for when more than 1 player is visible
 
 	player_msg = "You are very fast, and <b>can perform a leaping attack</b> by clicking on someone from a short distance away.<br>\
 	If the leap succeeds, the target will be knocked down briefly and you will be on top of them.<br>\
