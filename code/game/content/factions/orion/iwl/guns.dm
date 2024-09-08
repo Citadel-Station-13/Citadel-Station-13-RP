@@ -49,4 +49,4 @@
 // 	projectile_type = /obj/projectile/bullet/rifle/s72
 
 // /obj/projectile/bullet/rifle/s72
-// 	damage = 35
+// 	damage_force = 35

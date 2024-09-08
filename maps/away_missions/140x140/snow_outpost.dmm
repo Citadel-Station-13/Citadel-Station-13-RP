@@ -853,7 +853,6 @@
 /turf/simulated/floor/snow/snow2,
 /area/awaymission/snow_outpost/outside/nospawn)
 "dN" = (
-/turf/simulated/floor/snow/snow2,
 /turf/simulated/shuttle/wall/dark{
 	icon_state = "dark6";
 	name = "Unknown Shuttle"
@@ -866,7 +865,6 @@
 	},
 /area/awaymission/snow_outpost/outside/nospawn)
 "dP" = (
-/turf/simulated/floor/snow/snow2,
 /turf/simulated/shuttle/wall/dark{
 	icon_state = "dark10";
 	name = "Unknown Shuttle"
@@ -972,7 +970,6 @@
 /turf/simulated/floor/tiled/white,
 /area/awaymission/snow_outpost/powered)
 "eb" = (
-/turf/simulated/floor/tiled/steel,
 /turf/simulated/shuttle/wall/dark{
 	icon_state = "dark5";
 	name = "Unknown Shuttle"
@@ -1030,14 +1027,12 @@
 /turf/simulated/floor/tiled/white,
 /area/awaymission/snow_outpost/powered)
 "em" = (
-/turf/simulated/floor/tiled/steel,
 /turf/simulated/shuttle/wall/dark{
 	icon_state = "dark9";
 	name = "Unknown Shuttle"
 	},
 /area/awaymission/snow_outpost/powered)
 "en" = (
-/turf/simulated/floor/tiled/steel,
 /turf/simulated/shuttle/wall/dark{
 	icon_state = "dark6";
 	name = "Unknown Shuttle"
@@ -1196,7 +1191,6 @@
 /turf/simulated/floor/tiled/white,
 /area/awaymission/snow_outpost/powered)
 "eL" = (
-/turf/simulated/floor/tiled/steel,
 /turf/simulated/shuttle/wall/dark{
 	icon_state = "dark10";
 	name = "Unknown Shuttle"
@@ -2350,14 +2344,12 @@
 /turf/simulated/floor/tiled/steel,
 /area/awaymission/snow_outpost/powered)
 "iU" = (
-/turf/simulated/floor/snow/snow2,
 /turf/simulated/shuttle/wall/dark{
 	icon_state = "dark5";
 	name = "Unknown Shuttle"
 	},
 /area/awaymission/snow_outpost/outside/nospawn)
 "iV" = (
-/turf/simulated/floor/snow/snow2,
 /turf/simulated/shuttle/wall/dark{
 	icon_state = "dark9";
 	name = "Unknown Shuttle"
@@ -2531,7 +2523,6 @@
 /turf/simulated/floor/plating/outdoors,
 /area/awaymission/snow_outpost/dark)
 "DR" = (
-/turf/simulated/floor/tiled/steel,
 /turf/simulated/shuttle/wall/dark{
 	icon_state = "dark9";
 	name = "Unknown Shuttle"

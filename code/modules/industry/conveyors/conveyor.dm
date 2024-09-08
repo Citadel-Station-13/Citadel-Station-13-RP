@@ -4,6 +4,7 @@
 
 //conveyor2 is pretty much like the original, except it supports corners, but not diverters.
 //note that corner pieces transfer stuff clockwise when running forward, and anti-clockwise backwards.
+// todo: main-like stacks of conveyor belts.
 
 /obj/machinery/conveyor
 	icon = 'icons/obj/recycling.dmi'
@@ -26,11 +27,6 @@
 
 	var/id = ""			// the control ID	- must match controller ID
 
-/obj/machinery/conveyor/centcom_auto
-	id = "round_end_belt"
-
-
-
 	// create a conveyor
 /obj/machinery/conveyor/Initialize(mapload, newdir, on = 0)
 	. = ..()
@@ -51,6 +47,12 @@
 	component_parts += new /obj/item/stock_parts/motor(src)
 	component_parts += new /obj/item/stack/cable_coil(src,5)
 	RefreshParts()
+
+/obj/machinery/conveyor/examine(mob/user, dist)
+	. = ..()
+	// give a hint about catastrophic crowding
+	if(length(loc?.contents) > TURF_CROWDING_HARD_LIMIT)
+		. += SPAN_WARNING("There's far too many things on [src] for it to move!")
 
 /obj/machinery/conveyor/proc/setmove()
 	if(operating == FORWARDS)
@@ -97,36 +99,43 @@
 			AM.set_glide_size(conveyor_glide_size)
 	icon_state = "conveyor[operating]"
 
-	// machine process
-	// move items to the target location
+// machine process
+// move items to the target location
 /obj/machinery/conveyor/process(delta_time)
 	if(machine_stat & (BROKEN | NOPOWER))
 		return
 	if(!operating)
 		return
 	use_power(10)
-	var/list/affecting = loc.contents - src		// moved items will be all in loc
-	addtimer(CALLBACK(src, PROC_REF(convey), affecting), 1)
+	// check catastrophic crowding
+	if(length(loc.contents) > TURF_CROWDING_HARD_LIMIT)
+		return
+	// todo: this is still kind of tick-dependent, and will result in issues
+	// todo: conveyors should be on their own subsystem that lets it run a collect-sweep cycle?
+	addtimer(CALLBACK(src, PROC_REF(convey), loc.contents.Copy()), 1)
 
-/obj/machinery/conveyor/proc/convey(list/affecting)
-	var/turf/T = get_step(src, movedir)
-	if(!T)
+/**
+ * Conveys a list of movables.
+ *
+ * * This does filter to make sure the movables in question are still in us.
+ * * This is done in a separate proc so that order of operations from process() is canonical.
+ */
+/obj/machinery/conveyor/proc/convey(list/atom/movable/to_convey)
+	var/turf/target_turf = get_step(src, movedir)
+	if(!target_turf)
 		return
-	affecting.len = max(min(affecting.len, 150 - T.contents.len), 0)
-	if(!affecting.len)
+	// limit items to soft crowding limit
+	to_convey.len = clamp(TURF_CROWDING_SOFT_LIMIT - length(target_turf.contents), 0, length(to_convey))
+	if(!length(to_convey))
 		return
-	var/items_moved = 0
-	for(var/atom/movable/A in affecting)
-		if(!A.anchored)
-			if(A.loc == src.loc) // prevents the object from being affected if it's not currently here.
-				step(A,movedir)
-				++items_moved
-		if(items_moved >= 50)
-			break
-/*
-		if((A.loc == loc) && A.has_gravity())
-			A.ConveyorMove(movedir)
-*/
+	// move items
+	for(var/atom/movable/AM in to_convey)
+		// todo: movement force check?
+		if(AM.anchored)
+			continue
+		if(AM.loc != loc)
+			continue
+		step(AM, movedir)
 
 // attack with item, place item on conveyor
 /obj/machinery/conveyor/attackby(var/obj/item/I, mob/user)
@@ -153,7 +162,7 @@
 	return ..()
 
 // attack with hand, move pulled object onto conveyor
-/obj/machinery/conveyor/attack_hand(mob/user, list/params)
+/obj/machinery/conveyor/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(!CHECK_ALL_MOBILITY(user, MOBILITY_CAN_MOVE | MOBILITY_CAN_USE))
 		return
 	if(isnull(user.pulling) || user.pulling.anchored)
@@ -200,137 +209,3 @@
 /obj/machinery/conveyor/power_change()
 	..()
 	update()
-
-// the conveyor control switch
-//
-//
-
-/obj/machinery/conveyor_switch
-
-	name = "conveyor switch"
-	desc = "A conveyor control switch."
-	icon = 'icons/obj/recycling.dmi'
-	icon_state = "switch-off"
-	var/position = 0			// 0 off, -1 reverse, 1 forward
-	var/last_pos = -1			// last direction setting
-	var/operated = 1			// true if just operated
-
-	var/id = "" 				// must match conveyor IDs to control them
-
-	var/list/conveyors		// the list of converyors that are controlled by this switch
-	anchored = 1
-
-/obj/machinery/conveyor_switch/two_way_on
-	position = 1
-
-
-/obj/machinery/conveyor_switch/Initialize(mapload)
-	. = ..()
-	update()
-	return INITIALIZE_HINT_LATELOAD
-
-/obj/machinery/conveyor_switch/LateInitialize()
-	conveyors = list()
-	for(var/obj/machinery/conveyor/C in GLOB.machines)
-		if(C.id == id)
-			conveyors += C
-
-// update the icon depending on the position
-
-/obj/machinery/conveyor_switch/proc/update()
-	if(position<0)
-		icon_state = "switch-rev"
-	else if(position>0)
-		icon_state = "switch-fwd"
-	else
-		icon_state = "switch-off"
-
-
-// timed process
-// if the switch changed, update the linked conveyors
-
-/obj/machinery/conveyor_switch/process(delta_time)
-	if(!operated)
-		return
-	operated = 0
-
-	for(var/obj/machinery/conveyor/C in conveyors)
-		C.operating = position
-		C.setmove()
-
-// attack with hand, switch position
-/obj/machinery/conveyor_switch/attack_hand(mob/user, list/params)
-	if(!allowed(user))
-		to_chat(user, "<span class='warning'>Access denied.</span>")
-		return
-
-	if(position == 0)
-		if(last_pos < 0)
-			position = 1
-			last_pos = 0
-		else
-			position = -1
-			last_pos = 0
-	else
-		last_pos = position
-		position = 0
-
-	operated = 1
-	update()
-
-	// find any switches with same id as this one, and set their positions to match us
-	for(var/obj/machinery/conveyor_switch/S in GLOB.machines)
-		if(S.id == src.id)
-			S.position = position
-			S.update()
-
-/obj/machinery/conveyor_switch/attackby(var/obj/item/I, mob/user)
-	if(default_deconstruction_screwdriver(user, I))
-		return
-
-	if(istype(I, /obj/item/weldingtool))
-		if(panel_open)
-			var/obj/item/weldingtool/WT = I
-			if(!WT.remove_fuel(0, user))
-				to_chat(user, "The welding tool must be on to complete this task.")
-				return
-			playsound(src, WT.tool_sound, 50, 1)
-			if(do_after(user, 20 * WT.tool_speed))
-				if(!src || !WT.isOn()) return
-				to_chat(user, "<span class='notice'>You deconstruct the frame.</span>")
-				new /obj/item/stack/material/steel( src.loc, 2 )
-				qdel(src)
-				return
-
-	if(istype(I, /obj/item/multitool))
-		if(panel_open)
-			var/input = sanitize(input(usr, "What id would you like to give this conveyor switch?", "Multitool-Conveyor interface", id))
-			if(!input)
-				to_chat(user, "No input found. Please hang up and try your call again.")
-				return
-			id = input
-			conveyors = list() // Clear list so they aren't double added.
-			for(var/obj/machinery/conveyor/C in GLOB.machines)
-				if(C.id == id)
-					conveyors += C
-			return
-
-/obj/machinery/conveyor_switch/oneway
-	var/convdir = 1 //Set to 1 or -1 depending on which way you want the convayor to go. (In other words keep at 1 and set the proper dir on the belts.)
-	desc = "A conveyor control switch. It appears to only go in one direction."
-
-// attack with hand, switch position
-/obj/machinery/conveyor_switch/oneway/attack_hand(mob/user, list/params)
-	if(position == 0)
-		position = convdir
-	else
-		position = 0
-
-	operated = 1
-	update()
-
-	// find any switches with same id as this one, and set their positions to match us
-	for(var/obj/machinery/conveyor_switch/S in GLOB.machines)
-		if(S.id == src.id)
-			S.position = position
-			S.update()

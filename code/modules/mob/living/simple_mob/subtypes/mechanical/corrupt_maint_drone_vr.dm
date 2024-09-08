@@ -26,7 +26,7 @@
 	icon_living = "corrupt-repairbot"
 	hovering = FALSE // Can trigger landmines.
 
-	faction = "hivebot"
+	iff_factions = MOB_IFF_FACTION_HIVEBOT
 	maxHealth = 25
 	health = 25
 	movement_cooldown = 0

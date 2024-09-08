@@ -19,7 +19,7 @@
 	tt_desc = "S Anatidae vitriae"
 	catalogue_data = list(/datum/category_item/catalogue/fauna/crystalduck)
 
-	faction = "duck"
+	iff_factions = MOB_IFF_FACTION_FARM_NEUTRAL
 
 	icon_state = "duck"
 	icon_living = "duck"

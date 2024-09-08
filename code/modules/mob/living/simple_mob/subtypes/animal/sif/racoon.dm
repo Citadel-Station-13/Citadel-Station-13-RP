@@ -17,7 +17,7 @@
 	tt_desc = "S Procyon cogitae"
 	catalogue_data = list(/datum/category_item/catalogue/fauna/sakimm)
 
-	faction = "sakimm"
+	iff_factions = MOB_IFF_FACTION_BIND_TO_MAP
 
 	icon_state = "raccoon"
 	icon_living = "raccoon"
@@ -349,4 +349,4 @@
 /mob/living/simple_mob/animal/sif/sakimm/dexter
 	name = "Dexter"
 	desc = "A tame, oversized rodent with hands. It seems really friendly."
-	faction = "neutral"
+	iff_factions = MOB_IFF_FACTION_NEUTRAL

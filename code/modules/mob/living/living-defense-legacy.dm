@@ -92,11 +92,11 @@
 	return 0
 
 // Clicking with an empty hand
-/mob/living/attack_hand(mob/user, list/params)
+/mob/living/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	. = ..()
 	if(.)
 		return
-	SEND_SIGNAL(src, COMSIG_MOB_LEGACY_ATTACK_HAND_INTERCEPT, user, params)
+	SEND_SIGNAL(src, COMSIG_MOB_LEGACY_ATTACK_HAND_INTERCEPT, user, e_args)
 	var/mob/living/L = user
 	if(!istype(L))
 		return
@@ -136,7 +136,7 @@
 	..()
 
 /mob/living/blob_act(var/obj/structure/blob/B)
-	if(stat == DEAD || faction == "blob")
+	if(stat == DEAD || has_iff_faction(MOB_IFF_FACTION_BLOB))
 		return
 
 	var/damage = rand(30, 40)

@@ -201,7 +201,7 @@
 
 /mob/living/simple_mob/slime/xenobio/dark_purple/on_bullet_act(obj/projectile/proj, impact_flags, list/bullet_act_args)
 	. = ..()
-	if(proj.damage_type && proj.damage_type == BURN && proj.damage) // Most bullets won't trigger the explosion, as a mercy towards Security.
+	if(proj.damage_type && proj.damage_type == BURN && proj.damage_force) // Most bullets won't trigger the explosion, as a mercy towards Security.
 		log_and_message_admins("[src] ignited due to bring hit by a burning projectile[proj.firer ? " by [key_name(proj.firer)]" : ""].")
 		ignite()
 
@@ -654,7 +654,7 @@
 
 /mob/living/simple_mob/slime/xenobio/oil/on_bullet_act(obj/projectile/proj, impact_flags, list/bullet_act_args)
 	. = ..()
-	if(proj.damage_type && proj.damage_type == BURN && proj.damage) // Most bullets won't trigger the explosion, as a mercy towards Security.
+	if(proj.damage_type && proj.damage_type == BURN && proj.damage_force) // Most bullets won't trigger the explosion, as a mercy towards Security.
 		log_and_message_admins("[src] exploded due to bring hit by a burning projectile[proj.firer ? " by [key_name(proj.firer)]" : ""].")
 		explode()
 

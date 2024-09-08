@@ -66,7 +66,8 @@
 	bone_type = /obj/item/stack/material/chitin
 	bone_amount = 5
 
-	faction = "lavaland"
+	iff_factions = MOB_IFF_FACTION_BIND_TO_MAP
+
 	speak_emote = list("chatters")
 	say_list_type = /datum/say_list/gutshank
 	ai_holder_type = /datum/ai_holder/polaris/simple_mob/melee
@@ -187,7 +188,8 @@
 	bone_type = /obj/item/stack/material/chitin
 	bone_amount = 5
 
-	faction = "lavaland"
+	iff_factions = MOB_IFF_FACTION_BIND_TO_MAP
+
 	speak_emote = list("chatters")
 	say_list_type = /datum/say_list/gutshank
 	//I changed the ai_holder from simple/melee to retaliate/coop because when riding a Shank, it would override user inputs to charge non-faction mobs. Which is annoying.
@@ -219,8 +221,9 @@
 
 /mob/living/simple_mob/animal/shank/proc/RenameMount()
 	var/mob/M = usr
-	if(!M.mind)	return 0
-	if(!M.faction == src.faction)
+	if(!M.mind)
+		return 0
+	if(!shares_iff_faction(M))
 		to_chat(M, "<span class='notice'>You don't feel familiar enough with this beast to name it.</span>")
 		return 0
 

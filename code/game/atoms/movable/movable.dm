@@ -25,6 +25,8 @@
 	//* AI Holders
 	/// AI holder bound to us
 	var/datum/ai_holder/ai_holder
+	/// AI tracking datum. Handled by procs in [code/modules/ai/ai_tracking.dm].
+	var/datum/ai_tracking/ai_tracking
 
 	//? Intrinsics
 	/// movable flags - see [code/__DEFINES/_flags/atoms.dm]
@@ -36,28 +38,39 @@
 	/// Set this to TRUE if we are not a [TILE_MOVER]!
 	var/pixel_movement = FALSE
 	/// Whatever we're pulling.
+	///
 	/// * this variable is not visible and should not be edited in the map editor.
 	var/tmp/atom/movable/pulling
 	/// Who's currently pulling us
+	///
 	/// * this variable is not visible and should not be edited in the map editor.
 	var/tmp/atom/movable/pulledby
 	/// If false makes [CanPass][/atom/proc/CanPass] call [CanPassThrough][/atom/movable/proc/CanPassThrough] on this type instead of using default behaviour
+	///
 	/// * this variable is not visible and should not be edited in the map editor.
 	var/tmp/generic_canpass = TRUE
 	/// Pass flags.
 	var/pass_flags = NONE
 	/// movement calls we're in
+	///
 	/// * this variable is not visible and should not be edited in the map editor.
 	var/tmp/in_move = 0
 	/// a direction, or null
+	///
 	/// * this variable is not visible and should not be edited in the map editor.
 	var/tmp/moving_diagonally = NOT_IN_DIAG_STEP
 	/// attempt to resume grab after moving instead of before. This is what atom/movable is pulling us during move-from-pulling.
+	///
 	/// * this variable is not visible and should not be edited in the map editor.
 	var/tmp/atom/movable/moving_from_pull
 	/// Direction of our last move.
+	///
 	/// * this variable is not visible and should not be edited in the map editor.
 	var/tmp/last_move_dir = NONE
+	/// world.time of our last move
+	///
+	/// * this variable is not visible and should not be edited in the map editor.
+	var/tmp/last_move
 	/// Our default glide_size. Null to use global default.
 	var/default_glide_size
 	/// Movement types, see [code/__DEFINES/flags/movement.dm]
