@@ -1,4 +1,34 @@
+// Walls
+
+/datum/material/alienalloy/hardenedstone
+	id = "hardenedstone"
+	name = "hardenedstone"
+
+	// Becomes "[display_name] wall" in the UI.
+	display_name = "hardened stone"
+
+	icon_base = 'code/game/content/factions/derelict/derelict.dmi/cave_walls.dmi'
+	icon_colour = "#422d0e"
+	wall_stripe_icon = null // leave null
+
+/turf/simulated/wall/event/cave_wall
+	icon = 'code/game/content/factions/derelict/derelict.dmi/cave_walls.dmi'
+	material_outer = /datum/material/alienalloy/hardenedstone
+	name = "cave wall"
+	desc = "A wall consisting of impenetrable rock. No way you're getting past this without heavy excavation equipment."
+	description_info = "No way you can get past this..."
+	block_tele = TRUE
+	integrity_enabled = 0
+
+
 // Floors
+
+/turf/simulated/floor/event/grass
+	footstep_sounds = list("human" = list(
+		'sound/effects/footstep/asteroid1.ogg',
+		'sound/effects/footstep/asteroid2.ogg',
+		'sound/effects/footstep/asteroid3.ogg',
+		'sound/effects/footstep/asteroid4.ogg'))
 
 /turf/simulated/floor/event/crystal_floor
 	name = "crystal patch"

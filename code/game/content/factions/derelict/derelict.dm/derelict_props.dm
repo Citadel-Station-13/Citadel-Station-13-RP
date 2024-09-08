@@ -165,6 +165,20 @@
 	light_power = 2
 	light_range = 7
 
+/obj/structure/event/prop/light2
+	icon_state = "light2"
+	name = "lighting emplacement"
+	desc = "A proper lighting tube, mounted onto a tripod. Runs on emergency power linked to a power source in the area."
+	light_power = 2
+	light_range = 6
+
+/obj/structure/event/prop/light3
+	icon_state = "light3"
+	name = "lighting emplacement"
+	desc = "A proper lighting tube, mounted onto a tripod. Runs on emergency power linked to a power source in the area."
+	light_power = 2
+	light_range = 6
+
 /obj/structure/event/prop/tank
 	icon_state = "tank"
 	name = "storage tank"
@@ -288,3 +302,21 @@
 	name = "excavation drill"
 	desc = "A towering drill that extends deep into the earth. Whatever it's being used for, it appears to be offline at the moment."
 	bound_height = 64
+
+// 96X96 Props
+
+/obj/structure/event/prop/closed_derelict_gate
+	icon = 'code/game/content/factions/derelict/derelict.dmi/derelict_doors 96x96.dmi'
+	icon_state = "derelict_gate_closed"
+	name = "derelict gate"
+	desc = "A massive gate that unfortunately doesn't seem to function anymore. It's covered in odd symbols."
+	bounds = "96,32"
+	opacity = 1
+
+/obj/structure/event/prop/opened_derelict_gate
+	icon = 'code/game/content/factions/derelict/derelict.dmi/derelict_doors 96x96.dmi'
+	icon_state = "derelict_gate_open"
+	name = "derelict gate"
+	desc = "A massive gate that appears to have been forced open. There's no hope of getting it back closed."
+	bounds = "96,32"
+	density = 0

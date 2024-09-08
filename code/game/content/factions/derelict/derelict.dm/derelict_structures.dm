@@ -17,6 +17,8 @@
 	icon = 'code/game/content/factions/derelict/derelict.dmi/derelict_walls.dmi'
 	material_outer = /datum/material/alienalloy/derelictalloy
 	name = "derelict wall"
+	desc = "A wall made up of some sort of strange alloy... It has lots of pipes, tubes and other utility structure on full display."
+	description_info = "Maybe it's best NOT to compromise a excavation site due to curiosity?"
 	block_tele = TRUE
 	integrity_enabled = 0
 
@@ -117,4 +119,17 @@
 /obj/effect/decal/event/derelict_floor_corner3
 	icon = 'code/game/content/factions/derelict/derelict.dmi/derelict_tiles.dmi'
 	icon_state = "derelict_floor_corner3"
+	integrity_enabled = 0
+
+
+// Misc
+
+/turf/simulated/floor/event/concrete
+	icon = 'code/game/content/factions/derelict/derelict.dmi/derelict_tiles.dmi'
+	icon_state = "concrete"
+	integrity_enabled = 0
+
+/turf/simulated/floor/event/asphalt
+	icon = 'code/game/content/factions/derelict/derelict.dmi/derelict_tiles.dmi'
+	icon_state = "asphalt"
 	integrity_enabled = 0
