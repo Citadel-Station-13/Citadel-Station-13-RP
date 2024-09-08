@@ -23,6 +23,7 @@
 		return
 	if(attempt_vr(src,"handle_emote_vr",list(act,m_type,message)))
 		return // Custom Emote Handler
+	#warn purge
 	switch(act)
 
 		if ("airguitar")

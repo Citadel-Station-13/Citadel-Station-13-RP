@@ -10,6 +10,7 @@
 		act = copytext(act,1,length(act))
 	var/muzzled = is_muzzled()
 
+	#warn purge
 	switch(act)
 		if ("me")
 			if(silent)

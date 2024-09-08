@@ -19,6 +19,7 @@
 				emote_target = viewed
 				break
 
+	#warn purge
 	switch(act)
 		if ("me")
 			if (src.client)

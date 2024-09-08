@@ -82,8 +82,8 @@
 /**
  * Return emote classes we support.
  */
- /mob/proc/get_usable_emote_class()
-	#warn impl
+/mob/proc/get_usable_emote_class()
+	return emote_class
 
 /**
  * Return remote require flags we support

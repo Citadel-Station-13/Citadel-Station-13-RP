@@ -56,6 +56,10 @@
 	/// Atom we're buckl**ing** to. Used to stop stuff like lava from incinerating those who are mid buckle.
 	var/atom/movable/buckling
 
+	//* Emotes *//
+	/// our default emote classes
+	var/emote_class = EMOTE_CLASS_DEFAULT
+
 	//* HUD (Atom)
 	/// HUDs to initialize, typepaths
 	var/list/atom_huds_to_initialize
@@ -197,8 +201,6 @@
 	 */
 	var/atom/movable/screen/zone_sel/zone_sel = null
 
-	/// Allows all mobs to use the me verb by default, will have to manually specify they cannot.
-	var/use_me = 1
 	var/damageoverlaytemp = 0
 	var/computer_id = null
 	var/obj/machinery/machine = null
