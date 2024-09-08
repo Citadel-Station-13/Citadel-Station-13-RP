@@ -440,7 +440,7 @@
 	if(isliving(A))
 		var/mob/living/L = A
 		if(L.incapacitated(INCAPACITATION_DISABLED))
-			return damage_amount * 1.1 //lets not make it oneshot
+			return damage_amount * 1.2 //lets not make it oneshot
 	return ..()
 
 
