@@ -36,7 +36,7 @@
 //* Caliber *//
 
 // todo: proper diameter/length def
-/datum/caliber/nt_protomag
+/datum/ammo_caliber/nt_protomag
 	caliber = "nt-protomag"
 
 //* -- Ammo & Projectiles -- *//
@@ -46,7 +46,7 @@
 /obj/item/ammo_casing/nt_protomag
 	name = "protomag casing"
 	desc = "An obnoxiously long casing for some kind of rifle."
-	caliber = /datum/caliber/nt_protomag
+	caliber = /datum/ammo_caliber/nt_protomag
 
 /obj/projectile/bullet/nt_protomag
 	#warn impl all

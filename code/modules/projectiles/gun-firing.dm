@@ -16,7 +16,7 @@
  * * target - (optional) what we're firing at
  * * actor - (optional) the person who initiated the firing
  */
-/obj/item/gun/proc/firing_cycle(atom/firer, angle, firing_flags, datum/firemode/firemode, atom/target, datum/evetn_args/actor/actor)
+/obj/item/gun/proc/firing_cycle(atom/firer, angle, firing_flags, datum/firemode/firemode, atom/target, datum/event_args/actor/actor)
 	SHOULD_NOT_OVERRIDE(TRUE)
 
 	#warn start_firing_cycle, end_firing_cycle

@@ -24,7 +24,7 @@
 		if(!do_after(user, 10, src))
 			break
 		playsound(get_turf(src),'sound/weapons/hardlight_bow_charge.ogg',25,1)
-		if(power_supply.give(phase_power) < phase_power)
+		if(obj_cell_slot?.cell?.give(phase_power) < phase_power)
 			break
 
 	recharging = 0
