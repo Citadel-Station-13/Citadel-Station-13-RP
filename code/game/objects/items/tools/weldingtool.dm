@@ -364,12 +364,13 @@
 	eye_safety_modifier = 1 // Safer on eyes.
 
 /obj/item/weldingtool/bone
-	name = "primitive welding tool"
-	desc = "A curious welding tool that uses an anomalous ignition method."
+	name = "Elder's Bellows"
+	desc = "A curious welding tool that uses an anomalous crystal and a bellows to create heat."
+	icon = 'icons/obj/lavaland.dmi'
 	icon_state = "ashwelder"
 	max_fuel = 20
 	materials_base = list(MAT_METAL = 30, MAT_BONE = 10)
-	tool_speed = 1.5
+	tool_speed = 3 ///It doesn't get that hot
 	eye_safety_modifier = 3 // Safe for Scorians who don't have goggles.
 	always_process = TRUE
 
@@ -650,7 +651,7 @@
 		update_icon()
 		return 0
 
-/obj/item/weldingtool/electric/attack_hand(mob/user, list/params)
+/obj/item/weldingtool/electric/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(user.get_inactive_held_item() == src)
 		if(power_supply)
 			power_supply.update_icon()
@@ -753,8 +754,11 @@
 		M.update_inv_l_hand()
 		M.update_inv_r_hand()
 
-/obj/item/weldingtool/electric/crystal/attack_self(var/mob/living/carbon/human/user)
-	if(user.species.name == SPECIES_ADHERENT)
+/obj/item/weldingtool/electric/crystal/attack_self(mob/user)
+	var/mob/living/carbon/human/H = user
+	if(!istype(H))
+		return
+	if(H.species.name == SPECIES_ADHERENT)
 		if(user.nutrition >= 40)
 			setWelding(!welding, user)
 		else

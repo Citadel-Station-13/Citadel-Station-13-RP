@@ -79,9 +79,9 @@
 	/// Next world.time we will be able to move.
 	var/move_delay = 0
 	/// Last world.time we finished a normal, non relay/intercepted move
-	var/last_move_time = 0
+	var/last_self_move = 0
 	/// Last world.time we turned in our spot without moving (see: facing directions)
-	var/last_turn = 0
+	var/last_self_turn = 0
 	/// Tracks if we have gravity from environment right now.
 	var/in_gravity
 
@@ -116,6 +116,13 @@
 	//? Inventory
 	/// our inventory datum, if any.
 	var/datum/inventory/inventory
+
+	//* IFF *//
+	/// our IFF factions
+	///
+	/// * Do not read directly, use [code/modules/mob/mob-iff.dm] helpers.
+	/// * can be set to a string, or a list of strings.
+	var/iff_factions = MOB_IFF_FACTION_NEUTRAL
 
 	//! Size
 	//! todo kill this with fire it should just be part of icon_scale_x/y.
@@ -292,8 +299,6 @@
 
 	var/voice_name = "unidentifiable voice"
 
-	///Used for checking whether hostile simple animals will attack you, possibly more stuff later.
-	var/faction = "neutral"
 	/// To prevent pAIs/mice/etc from getting antag in autotraitor and future auto- modes. Uses inheritance instead of a bunch of typechecks.
 	// todo: what the fuck
 	var/can_be_antagged = FALSE

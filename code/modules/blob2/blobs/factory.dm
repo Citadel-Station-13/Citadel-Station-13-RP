@@ -35,7 +35,7 @@
 	var/mob/living/simple_mob/blob/spore/S = null
 	if(overmind)
 		S = new overmind.blob_type.spore_type(src.loc, src)
-		S.faction = "blob"
+		S.set_iff_factions(MOB_IFF_FACTION_BLOB)
 		if(istype(S))
 			S.overmind = overmind
 			overmind.blob_mobs.Add(S)

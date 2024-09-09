@@ -30,7 +30,7 @@
 		inserted_id.forceMove(loc) //Prevents deconstructing from deleting whatever ID was inside it.
 	. = ..()
 
-/obj/machinery/mineral/processing_unit_console/attack_hand(mob/user, list/params)
+/obj/machinery/mineral/processing_unit_console/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(..())
 		return
 	interact(user)
@@ -199,9 +199,9 @@
 	speed_process = !speed_process // switching gears
 	if(speed_process) // high gear
 		STOP_MACHINE_PROCESSING(src)
-		START_PROCESSING(SSfastprocess, src)
+		START_PROCESSING(SSprocess_5fps, src)
 	else // low gear
-		STOP_PROCESSING(SSfastprocess, src)
+		STOP_PROCESSING(SSprocess_5fps, src)
 		START_MACHINE_PROCESSING(src)
 
 /obj/machinery/mineral/processing_unit/process(delta_time)

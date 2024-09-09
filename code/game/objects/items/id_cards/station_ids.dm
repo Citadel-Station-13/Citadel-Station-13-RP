@@ -71,7 +71,6 @@
 	. += "</div>"
 	if(Adjacent(user))
 		. += SPAN_NOTICE("<b>Alt-click</b> to [extra_info_visible ? "close" : "open"] the confidential information flap.")
-	return .
 
 /obj/item/card/id/get_description_info()
 	. = ..()

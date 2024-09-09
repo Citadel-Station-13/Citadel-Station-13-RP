@@ -41,7 +41,7 @@
     name = "Weapon - Misplaced militia rifles"
     contains = list(
 		/obj/item/gun/ballistic/shotgun/pump/rifle = 3,
-		/obj/item/ammo_magazine/clip/c762 = 6,
+		/obj/item/ammo_magazine/a7_62mm/clip = 6,
 	)
     legacy_contraband = 1
     container_type = /obj/structure/closet/crate/secure/weapon
@@ -78,8 +78,8 @@
 	new /obj/item/clothing/suit/storage/vest/heavy/merc(src)
 	new /obj/item/clothing/glasses/night(src)
 	new /obj/item/storage/box/anti_photons(src)
-	new /obj/item/ammo_magazine/clip/c12g/pellet(src)
-	new /obj/item/ammo_magazine/clip/c12g(src)
+	new /obj/item/ammo_magazine/a12g/clip/pellet(src)
+	new /obj/item/ammo_magazine/a12g/clip(src)
 
 /obj/item/storage/box/cargo_null_entry_kit/doctor
 	name = "doctor's kit"
@@ -96,7 +96,7 @@
 	name = "sapper's kit"
 
 /obj/item/storage/box/cargo_null_entry_kit/sapper/legacy_spawn_contents()
-	new /obj/item/melee/energy/sword/ionic_rapier(src)
+	new /obj/item/melee/transforming/energy/sword/ionic_rapier(src)
 	new /obj/item/storage/box/syndie_kit/space(src)
 	new /obj/item/storage/box/syndie_kit/demolitions(src)
 	new /obj/item/multitool/ai_detector(src)
@@ -122,7 +122,7 @@
 	new /obj/item/gun/energy/ionrifle/pistol(src)
 	new /obj/item/clothing/glasses/thermal/syndi(src)
 	new /obj/item/card/emag(src)
-	new /obj/item/ammo_magazine/m45/ap(src)
+	new /obj/item/ammo_magazine/a45/ap(src)
 	new /obj/item/material/knife/tacknife/combatknife(src)
 	new /obj/item/clothing/mask/balaclava(src)
 

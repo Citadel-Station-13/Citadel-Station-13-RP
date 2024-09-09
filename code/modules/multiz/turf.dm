@@ -113,9 +113,6 @@
 		return TRUE	// impact!
 	return ..()
 
-/turf/check_impact(atom/movable/falling_atom)
-	return TRUE
-
 //* lookups
 
 /turf/proc/above()

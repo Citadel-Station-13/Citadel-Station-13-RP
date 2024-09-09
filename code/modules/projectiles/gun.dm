@@ -60,6 +60,16 @@
 	origin_tech = list(TECH_COMBAT = 1)
 	attack_verb = list("struck", "hit", "bashed")
 	zoomdevicename = "scope"
+	inhand_default_type = INHAND_DEFAULT_ICON_GUNS
+
+	//* Accuracy, Dispersion, Instability *//
+
+	/// entirely disable baymiss on fired projectiles
+	///
+	/// * this is a default value; set to null by default to have the projectile's say.
+	var/accuracy_disabled = null
+
+	// legacy below //
 
 	var/burst = 1
 	var/fire_delay = 6 	//delay after shooting before the gun can be used again
@@ -80,6 +90,7 @@
 	var/mode_name = null
 	var/projectile_type = /obj/projectile	//On ballistics, only used to check for the cham gun
 	var/holy = FALSE //For Divinely blessed guns
+	// todo: this should be on /ballistic, and be `internal_chambered`.
 	var/obj/item/ammo_casing/chambered = null
 
 	var/wielded_item_state
@@ -177,14 +188,26 @@
 	/// for de-duping
 	var/static/list/mob_renderer_store = list()
 	/// base onmob state override so we don't use [base_icon_state] if overridden
+	//  todo: impl
 	var/render_mob_base
 	/// render as -wield if we're wielded? applied at the end of our worn state no matter what
 	///
 	/// * ignores [mob_renderer]
-	/// * ignores [render_mob_exclusive]
+	/// * ignores [render_additional_exclusive] / [render_additional_worn]
 	//  todo: impl
 	var/render_mob_wielded = FALSE
+	/// state to add as an append
+	///
+	/// * segment and overlay renders add [base_icon_state]-[append]
+	/// * state renders set state to [base_icon_state]-[append]-[...rest]
+	var/render_additional_state
+	/// only render [render_additional_state]
+	var/render_additional_exclusive = FALSE
+	/// [render_additional_state] and [render_additional_exclusive] apply to worn sprites
+	//  todo: impl
+	var/render_additional_worn = FALSE
 	/// use the old render system, if item_renderer and mob_renderer are not set
+	//  todo: remove
 	var/render_use_legacy_by_default = TRUE
 
 /obj/item/gun/Initialize(mapload)
@@ -208,7 +231,7 @@
 		update_icon()
 
 	//! LEGACY: if neither of these are here, we are using legacy render.
-	if(!item_renderer && !mob_renderer && !render_use_legacy_by_default)
+	if(!item_renderer && !mob_renderer && render_use_legacy_by_default)
 		item_icons = list(
 			SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand_guns.dmi',
 			SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_guns.dmi',
@@ -366,9 +389,10 @@
 	if(!istype(A))
 		return ..()
 	if(user.a_intent == INTENT_HARM) //point blank shooting
-		if (A == user && user.zone_sel.selecting == O_MOUTH && !mouthshoot)
-			handle_suicide(user)
-			return
+		// todo: disabled for now
+		// if (A == user && user.zone_sel.selecting == O_MOUTH && !mouthshoot)
+		// 	handle_suicide(user)
+		// 	return
 		var/mob/living/L = user
 		if(user && user.client && istype(L) && L.aiming && L.aiming.active && L.aiming.aiming_at != A && A != user)
 			PreFire(A,user) //They're using the new gun system, locate what they're aiming at.
@@ -546,18 +570,17 @@
 			var/acc = burst_accuracy[min(i, burst_accuracy.len)]
 			var/disp = dispersion[min(i, dispersion.len)]
 
-			P.accuracy = accuracy + acc
+			P.accuracy_overall_modify *= 1 + acc / 100
 			P.dispersion = disp
 
 			P.shot_from = src.name
 			P.silenced = silenced
 
 			P.old_style_target(target)
+			play_fire_sound(P = projectile)
 			P.fire()
 
 			last_shot = world.time
-
-			play_fire_sound()
 
 			if(muzzle_flash)
 				set_light(muzzle_flash)
@@ -692,7 +715,7 @@
 				damage_mult = 2.5
 			else if(grabstate >= GRAB_AGGRESSIVE)
 				damage_mult = 1.5
-	P.damage *= damage_mult
+	P.damage_force *= damage_mult
 
 /obj/item/gun/proc/process_accuracy(obj/projectile, mob/living/user, atom/target, var/burst, var/held_twohanded)
 	var/obj/projectile/P = projectile
@@ -708,22 +731,24 @@
 			disp_mod += one_handed_penalty*0.5 //dispersion per point of two-handedness
 
 	//Accuracy modifiers
-	P.accuracy = accuracy + acc_mod
-	P.dispersion = disp_mod
+	if(!isnull(accuracy_disabled))
+		P.accuracy_disabled = accuracy_disabled
 
-	P.accuracy -= user.get_accuracy_penalty()
+	P.accuracy_overall_modify *= 1 + (acc_mod / 100)
+	P.accuracy_overall_modify *= 1 - (user.get_accuracy_penalty() / 100)
+	P.dispersion = disp_mod
 
 	//accuracy bonus from aiming
 	if (aim_targets && (target in aim_targets))
 		//If you aim at someone beforehead, it'll hit more often.
 		//Kinda balanced by fact you need like 2 seconds to aim
 		//As opposed to no-delay pew pew
-		P.accuracy += 30
+		P.accuracy_overall_modify *= 1.3
 
 	// Some modifiers make it harder or easier to hit things.
 	for(var/datum/modifier/M in user.modifiers)
 		if(!isnull(M.accuracy))
-			P.accuracy += M.accuracy
+			P.accuracy_overall_modify += 1 + (M.accuracy / 100)
 		if(!isnull(M.accuracy_dispersion))
 			P.dispersion = max(P.dispersion + M.accuracy_dispersion, 0)
 
@@ -759,9 +784,9 @@
 		return
 
 	if(silenced)
-		playsound(user, shot_sound, 10, 1)
+		playsound(src, shot_sound, 10, 1)
 	else
-		playsound(user, shot_sound, 50, 1)
+		playsound(src, shot_sound, 50, 1)
 
 /obj/item/gun/proc/toggle_scope(var/zoom_amount=2.0)
 	//looking through a scope limits your periphereal vision

@@ -7,7 +7,7 @@
 	icon_state = "human_male"
 	gender = NEUTER
 
-	faction = list("statue")
+	iff_factions = MOB_IFF_FACTION_STATUE
 
 	mob_class = MOB_CLASS_ABERRATION
 

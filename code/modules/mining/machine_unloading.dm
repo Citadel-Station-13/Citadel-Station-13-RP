@@ -27,7 +27,7 @@
 
 /obj/machinery/mineral/unloading_machine/process(delta_time)
 	if(output && input)
-		if(length(output.loc.contents) > 100)		// let's not!
+		if(length(output.loc.contents) > TURF_CROWDING_SOFT_LIMIT)		// let's not!
 			return
 		var/obj/structure/ore_box/O = locate() in input.loc
 		if(O)

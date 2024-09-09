@@ -1,5 +1,6 @@
+
 //* This file is explicitly licensed under the MIT license. *//
-//* Copyright (c) 2024 silicons                             *//
+//* Copyright (c) 2024 Citadel Station developers.          *//
 
 /datum/ai_holder
 	/// what holder is running after us
@@ -26,6 +27,8 @@
 	ASSERT(delay <= AI_SCHEDULING_LIMIT)
 	if(ticking > 0)
 		SSai_holders.bucket_evict(src)
+	else
+		SSai_holders.active_holders += src
 	ticking_cycles = 0
 	ticking = delay
 	SSai_holders.bucket_insert(src)
@@ -39,6 +42,7 @@
 	if(!ticking)
 		return
 	SSai_holders.bucket_evict(src)
+	SSai_holders.active_holders -= src
 	ticking = null
 	ticking_cycles = null
 

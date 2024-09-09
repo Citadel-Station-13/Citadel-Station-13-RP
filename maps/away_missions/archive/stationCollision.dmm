@@ -109,7 +109,6 @@
 /turf/simulated/shuttle/wall/dark,
 /area/awaymission/syndishuttle)
 "aD" = (
-/turf/simulated/shuttle/wall/dark,
 /turf/space,
 /area/awaymission/syndishuttle)
 "aH" = (
@@ -285,7 +284,6 @@
 /turf/simulated/shuttle/plating,
 /area/awaymission/syndishuttle)
 "bF" = (
-/turf/simulated/floor/airless,
 /turf/simulated/shuttle/wall{
 	dir = 4;
 	icon_state = "diagonalWall3"
@@ -356,13 +354,6 @@
 	},
 /turf/simulated/shuttle/plating,
 /area/awaymission/syndishuttle)
-"cc" = (
-/mob/living/simple_mob/animal/space/alien/sentinel{
-	fireloss = 200;
-	stat = 2
-	},
-/turf/simulated/floor/airless,
-/area/awaymission/research)
 "ce" = (
 /mob/living/simple_mob/creature{
 	name = "Experiment 35b"
@@ -513,10 +504,6 @@
 /area/awaymission/research)
 "cH" = (
 /obj/item/toy/plushie/face_hugger,
-/mob/living/simple_mob/animal/space/alien/queen{
-	fireloss = 300;
-	stat = 2
-	},
 /turf/simulated/floor/airless,
 /area/awaymission/research)
 "cI" = (
@@ -1142,9 +1129,6 @@
 	},
 /turf/simulated/floor/airless,
 /area/awaymission/northblock)
-"fc" = (
-/turf/simulated/floor,
-/area/awaymission/northblock)
 "fd" = (
 /obj/machinery/light/small,
 /turf/simulated/floor/airless,
@@ -1384,7 +1368,6 @@
 /turf/simulated/shuttle/plating,
 /area/awaymission/arrivalblock)
 "fT" = (
-/turf/space,
 /turf/simulated/shuttle/wall,
 /area/awaymission/arrivalblock)
 "fU" = (
@@ -2791,7 +2774,7 @@
 /turf/simulated/floor,
 /area/awaymission/arrivalblock)
 "kN" = (
-/obj/item/melee/energy/sword,
+/obj/item/melee/transforming/energy/sword,
 /obj/item/clothing/shoes/syndigaloshes,
 /obj/item/clothing/under/syndicate,
 /obj/effect/decal/remains/human{
@@ -3925,7 +3908,7 @@ ap
 ae
 ae
 af
-fc
+aN
 fj
 aj
 aa
@@ -4387,7 +4370,7 @@ dS
 ap
 ew
 ap
-fc
+aN
 fm
 ap
 fG
@@ -4519,7 +4502,7 @@ dU
 ap
 ew
 ap
-fc
+aN
 aj
 ft
 fH
@@ -4585,7 +4568,7 @@ ap
 ap
 ew
 ap
-fc
+aN
 aj
 ft
 fI
@@ -5102,7 +5085,7 @@ ap
 ap
 by
 bw
-cc
+bw
 cm
 bw
 by

@@ -87,9 +87,10 @@ var/list/fusion_cores = list()
 		owned_field.AddParticles(name, quantity)
 		. = 1
 
-/obj/machinery/power/fusion_core/bullet_act(var/obj/projectile/Proj)
+/obj/machinery/power/fusion_core/on_bullet_act(obj/projectile/proj, impact_flags, list/bullet_act_args)
 	if(owned_field)
-		. = owned_field.bullet_act(Proj)
+		return proj.impact_redirect(owned_field, args)
+	return ..()
 
 /obj/machinery/power/fusion_core/proc/set_strength(var/value)
 	value = clamp(value, MIN_FIELD_STR, MAX_FIELD_STR)
@@ -98,7 +99,7 @@ var/list/fusion_cores = list()
 	if(owned_field)
 		owned_field.ChangeFieldStrength(value)
 
-/obj/machinery/power/fusion_core/attack_hand(mob/user, list/params)
+/obj/machinery/power/fusion_core/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(!Adjacent(user)) // As funny as it was for the AI to hug-kill the tokamak field from a distance...
 		return
 	visible_message("<span class='notice'>\The [user] hugs \the [src] to make it feel better!</span>")

@@ -3,7 +3,7 @@
 	desc = "The Lumoco Arms HE Colt is a choice revolver for when you absolutely, positively need to put a hole in the other guy. Uses .357 rounds."
 	icon_state = "revolver"
 	item_state = "revolver"
-	caliber = ".357"
+	caliber = /datum/ammo_caliber/a357
 	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2)
 	handle_casings = CYCLE_CASINGS
 	max_shells = 6
@@ -55,7 +55,7 @@
 	name = "Adhomai knife revolver"
 	desc = "An ornate knife revolver from an Adhomai gunsmith. Popular among Tajaran nobility just before the civil war and even to this day, many of these revolvers found their way into the market when they were taken as trophies by Grand People's Army soldiers and DPRA guerillas."
 	icon_state = "knifegun"
-	caliber = ".38"
+	caliber = /datum/ammo_caliber/a38
 	ammo_type = /obj/item/ammo_casing/a38
 	damage_force = 15
 	sharp = 1
@@ -65,7 +65,7 @@
 	name = "revolver"
 	desc = "A cheap Martian knock-off of a Smith & Wesson Model 10. Uses .38-Special rounds."
 	icon_state = "detective"
-	caliber = ".38"
+	caliber = /datum/ammo_caliber/a38
 	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2)
 	ammo_type = /obj/item/ammo_casing/a38
 
@@ -91,7 +91,7 @@
 	name = ".45 revolver"
 	desc = "A fancy replica of an old revolver, modified for .45 rounds and a seven-shot cylinder."
 	icon_state = "detective"
-	caliber = ".45"
+	caliber = /datum/ammo_caliber/a45
 	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2)
 	ammo_type = /obj/item/ammo_casing/a45/rubber
 	max_shells = 7
@@ -145,7 +145,7 @@
 	name = "\improper Deckard .38"
 	desc = "A custom-built revolver, based off the semi-popular Detective Special model. Uses .38-Special rounds."
 	icon_state = "deckard-empty"
-	caliber = ".38"
+	caliber = /datum/ammo_caliber/a38
 	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2)
 	ammo_type = /obj/item/ammo_casing/a38
 
@@ -170,18 +170,18 @@
 	desc = "Looks almost like the real thing! Ages 8 and up."
 	icon_state = "revolver"
 	item_state = "revolver"
-	caliber = "caps"
+	caliber = /datum/ammo_caliber/cap_gun
 	origin_tech = list(TECH_COMBAT = 1, TECH_MATERIAL = 1)
 	handle_casings = CYCLE_CASINGS
 	max_shells = 7
-	ammo_type = /obj/item/ammo_casing/cap
+	ammo_type = /obj/item/ammo_casing/cap_gun
 	projectile_type = /obj/projectile/bullet/pistol/strong
 
 /obj/item/gun/ballistic/revolver/judge
 	name = "\"The Judge\""
 	desc = "A revolving hand-shotgun by Cybersun Industries that packs the power of a 12 guage in the palm of your hand (if you don't break your wrist). Uses 12g rounds."
 	icon_state = "judge"
-	caliber = "12g"
+	caliber = /datum/ammo_caliber/a12g
 	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2, TECH_ILLEGAL = 4)
 	max_shells = 5
 	recoil = 2 // ow my fucking hand
@@ -198,11 +198,11 @@
 	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2)
 	handle_casings = CYCLE_CASINGS
 	max_shells = 9
-	caliber = ".38"
+	caliber = /datum/ammo_caliber/a38
 	ammo_type = /obj/item/ammo_casing/a38
 	projectile_type = /obj/projectile/bullet/pistol
 	var/secondary_max_shells = 1
-	var/secondary_caliber = "12g"
+	var/secondary_caliber = /datum/ammo_caliber/a12g
 	var/secondary_ammo_type = /obj/item/ammo_casing/a12g
 	var/flipped_firing = 0
 	var/list/secondary_loaded = list()
@@ -290,7 +290,7 @@
 	desc = "A rugged top break revolver based on the Webley Mk. VI model, with modern improvements. Uses .44 magnum rounds."
 	icon_state = "webley2"
 	item_state = "webley2"
-	caliber = ".44"
+	caliber = /datum/ammo_caliber/a44
 	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2)
 	handle_casings = CYCLE_CASINGS
 	max_shells = 6
@@ -313,7 +313,7 @@
 	desc = "A powerful hand cannon made famous by the legendary lawman that wielded it. Even to this day people follow in his legacy. 'Are you feeling lucky punk?'"
 	icon_state = "dirty_harry"
 	item_state = "revolver"
-	caliber = ".44"
+	caliber = /datum/ammo_caliber/a44
 	fire_sound = 'sound/weapons/Gunshot_deagle.ogg'
 	origin_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 2)
 	handle_casings = CYCLE_CASINGS
@@ -329,7 +329,7 @@
 	name = "\improper Ogre combat revolver"
 	desc = "The NT-R-7 'Ogre' combat revolver is tooled for Nanotrasen special operations. Chambered in .44 Magnum with an advanced high-speed firing mechanism, it serves as the perfect sidearm for any off the books endeavor."
 	icon_state = "combatrevolver"
-	caliber = ".44"
+	caliber = /datum/ammo_caliber/a44
 	fire_delay = 5.7
 	origin_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 3)
 	ammo_type = /obj/item/ammo_casing/a44
