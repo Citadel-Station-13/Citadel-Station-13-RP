@@ -16,7 +16,7 @@
 	var/glove_level = 2			//What "layer" the glove is on
 	var/overgloves = 0			//Used by gauntlets and arm_guards
 	var/punch_force = 0			//How much damage do these gloves add to a punch?
-	var/punch_damtype = BRUTE	//What type of damage does this make fists be?
+	var/punch_damtype = DAMAGE_TYPE_BRUTE	//What type of damage does this make fists be?
 	body_cover_flags = HANDS
 	slot_flags = SLOT_GLOVES
 	attack_verb = list("challenged")

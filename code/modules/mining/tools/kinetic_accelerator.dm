@@ -197,7 +197,7 @@
 	name = "kinetic force"
 	icon_state = null
 	damage_force = 30
-	damage_type = BRUTE
+	damage_type = DAMAGE_TYPE_BRUTE
 	damage_flag = ARMOR_BOMB
 	range = WORLD_ICON_SIZE * 4
 	// log_override = TRUE
@@ -208,7 +208,7 @@
 
 /obj/projectile/kinetic/premium
 	damage_force = 40
-	damage_type = BRUTE
+	damage_type = DAMAGE_TYPE_BRUTE
 	range = 5
 
 /obj/projectile/kinetic/Destroy()

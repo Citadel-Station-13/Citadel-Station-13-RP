@@ -59,7 +59,7 @@
 	add_attack_logs(user, target, "attacked", "[name]", "(INTENT: [uppertext(user.a_intent)]) (DAMTYPE: [uppertext(damtype)])")
 	var/drill_force = damage_force	//Couldn't manage it otherwise.
 	if(ishuman(target))
-		target.apply_damage(drill_force, BRUTE)
+		target.apply_damage(drill_force, DAMAGE_TYPE_BRUTE)
 		return
 
 	else if(istype(target, /mob/living/simple_mob))

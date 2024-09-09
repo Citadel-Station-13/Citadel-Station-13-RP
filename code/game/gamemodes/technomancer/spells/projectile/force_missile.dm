@@ -23,5 +23,5 @@
 	name = "force missile"
 	icon_state = "force_missile"
 	damage_force = 25
-	damage_type = BRUTE
+	damage_type = DAMAGE_TYPE_BRUTE
 	damage_flag = ARMOR_MELEE

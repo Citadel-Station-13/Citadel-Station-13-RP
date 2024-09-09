@@ -155,7 +155,7 @@
 					if(!do_mob(usr, target, 50))
 						usr.visible_message("<span class='notice'>\The [usr]'s hand slips and pricks \the [target].</span>",
 									"<span class='notice'>Your hand slips and pricks \the [target].</span>")
-						target.apply_damage(3, BRUTE, pick(BP_R_ARM, BP_L_ARM))
+						target.apply_damage(3, DAMAGE_TYPE_BRUTE, pick(BP_R_ARM, BP_L_ARM))
 						return
 					usr.visible_message("<span class='notice'>\The [usr] hooks \the [target] up to \the [src].</span>",
 									"<span class='notice'>You hook \the [target] up to \the [src].</span>")
@@ -393,7 +393,7 @@
 	if(attached)
 		if(!Adjacent(attached))
 			visible_message("The needle is ripped out of [src.attached], doesn't that hurt?")
-			attached.apply_damage(3, BRUTE, pick(BP_R_ARM, BP_L_ARM))
+			attached.apply_damage(3, DAMAGE_TYPE_BRUTE, pick(BP_R_ARM, BP_L_ARM))
 			attached = null
 			update_icon()
 
