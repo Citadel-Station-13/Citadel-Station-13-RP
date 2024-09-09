@@ -132,7 +132,7 @@
 	icon_state = "darkb"
 	fire_sound = 'sound/weapons/SuperHeavyLaser.ogg' //Knowers will recognize it
 	damage_force = 30 //Targets energy armor which is kinda rare
-	damage_type = BRUTE //Dark energy displaces instead of burning
+	damage_type = DAMAGE_TYPE_BRUTE //Dark energy displaces instead of burning
 	damage_flag = ARMOR_ENERGY
 	irradiate= 5 //Scifi Antigrav bullshit side effect
 	light_color = "#8902f0" //Purple
