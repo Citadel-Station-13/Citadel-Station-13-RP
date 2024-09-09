@@ -62,6 +62,7 @@ GLOBAL_LIST_INIT(ore_data, initialize_ore_data())
 	spread_chance = 25
 	ore = /obj/item/stack/ore/coal
 	scan_icon = "mineral_common"
+	compresses_to = "carbon"
 
 /datum/ore/glass
 	name = "sand"
