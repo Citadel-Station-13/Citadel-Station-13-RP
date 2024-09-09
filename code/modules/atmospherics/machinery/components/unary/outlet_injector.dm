@@ -193,9 +193,6 @@
 		broadcast_status()
 	update_icon()
 
-/obj/machinery/atmospherics/component/unary/outlet_injector/hide(var/i)
-	update_underlays()
-
 /obj/machinery/atmospherics/component/unary/outlet_injector/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	ui_interact(user)
 

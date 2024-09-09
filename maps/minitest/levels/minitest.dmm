@@ -2898,12 +2898,10 @@
 /area/shuttle/webdemo)
 "hA" = (
 /obj/structure/shuttle/engine/heater,
-/turf/space,
 /turf/simulated/shuttle/plating/carry,
 /area/shuttle/webdemo)
 "hB" = (
 /obj/structure/shuttle/engine/propulsion,
-/turf/space,
 /turf/simulated/shuttle/plating/carry,
 /area/shuttle/webdemo)
 "hC" = (
@@ -2914,7 +2912,6 @@
 /obj/machinery/ion_engine{
 	dir = 1
 	},
-/turf/space,
 /turf/simulated/shuttle/plating/carry,
 /area/shuttle/overmapdemo)
 "hH" = (
@@ -3106,7 +3103,6 @@
 /area/space)
 "sA" = (
 /obj/structure/shuttle/engine/heater,
-/turf/space,
 /turf/simulated/shuttle/plating/carry,
 /area/shuttle/multidemo)
 "ts" = (
@@ -3621,7 +3617,6 @@
 /area/medical/medbay)
 "Pg" = (
 /obj/structure/shuttle/engine/propulsion,
-/turf/space,
 /turf/simulated/shuttle/plating/carry,
 /area/shuttle/multidemo)
 "Ps" = (

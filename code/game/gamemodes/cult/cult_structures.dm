@@ -46,12 +46,13 @@
 /obj/structure/cult/pylon/attackby(obj/item/W as obj, mob/user as mob)
 	attackpylon(user, W.damage_force)
 
-/obj/structure/cult/pylon/inflict_atom_damage(damage, tier, flag, mode, attack_type, datum/weapon, gradual)
+/obj/structure/cult/pylon/inflict_atom_damage(damage, damage_type, damage_tier, damage_flag, damage_mode, hit_zone, attack_type, datum/weapon)
 	pylonhit(damage)
 	return damage
 
-/obj/structure/cult/pylon/bullet_act(var/obj/projectile/Proj)
-	pylonhit(Proj.get_structure_damage())
+/obj/structure/cult/pylon/on_bullet_act(obj/projectile/proj, impact_flags, list/bullet_act_args)
+	. = ..()
+	pylonhit(proj.get_structure_damage())
 
 /obj/structure/cult/pylon/proc/pylonhit(var/damage)
 	if(!isbroken)

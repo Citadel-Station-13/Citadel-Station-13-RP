@@ -14,7 +14,7 @@
 /obj/item/proc/equipped(mob/user, slot, flags)
 	SHOULD_CALL_PARENT(TRUE)
 	SEND_SIGNAL(src, COMSIG_ITEM_EQUIPPED, user, slot, flags)
-	SEND_SIGNAL(user, COMSIG_MOB_ITEM_EQUIPPED, user, slot, flags)
+	SEND_SIGNAL(user, COMSIG_MOB_ITEM_EQUIPPED, src, slot, flags)
 	worn_slot = slot
 	if(!(flags & INV_OP_IS_ACCESSORY))
 		// todo: shouldn't be in here
@@ -47,7 +47,7 @@
 /obj/item/proc/unequipped(mob/user, slot, flags)
 	SHOULD_CALL_PARENT(TRUE)
 	SEND_SIGNAL(src, COMSIG_ITEM_UNEQUIPPED, user, slot, flags)
-	SEND_SIGNAL(user, COMSIG_MOB_ITEM_UNEQUIPPED, user, slot, flags)
+	SEND_SIGNAL(user, COMSIG_MOB_ITEM_UNEQUIPPED, src, slot, flags)
 	worn_slot = null
 	if(!(flags & INV_OP_IS_ACCESSORY))
 		// todo: shouldn't be in here
@@ -124,11 +124,20 @@
  */
 /obj/item/proc/pickup(mob/user, flags, atom/oldLoc)
 	SHOULD_CALL_PARENT(TRUE)
+
+	// we load the component here as it hooks equipped,
+	// so loading it here means it can still handle the equipped signal.
+	if(passive_parry)
+		LoadComponent(/datum/component/passive_parry, passive_parry)
+
 	SEND_SIGNAL(src, COMSIG_ITEM_PICKUP, user, flags, oldLoc)
 	SEND_SIGNAL(user, COMSIG_MOB_ITEM_PICKUP, src, flags, oldLoc)
+
 	reset_pixel_offsets()
 	hud_layerise()
+
 	item_flags |= ITEM_IN_INVENTORY
+
 	// todo: should this be here
 	transform = null
 	if(isturf(oldLoc) && !(flags & (INV_OP_SILENT | INV_OP_DIRECTLY_EQUIPPING)))

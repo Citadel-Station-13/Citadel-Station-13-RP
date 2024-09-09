@@ -406,7 +406,7 @@ steam.start() -- spawns the effect
 		return
 	if(!ismovable(holder))
 		return
-	START_PROCESSING(SSfastprocess, src)
+	START_PROCESSING(SSprocess_5fps, src)
 	on = TRUE
 
 /datum/effect_system/ion_trail_follow/process(wait)
@@ -425,7 +425,7 @@ steam.start() -- spawns the effect
 		return
 	oldposition = null
 	on = FALSE
-	STOP_PROCESSING(SSfastprocess, src)
+	STOP_PROCESSING(SSprocess_5fps, src)
 
 /////////////////////////////////////////////
 //////// Attach a steam trail to an object (eg. a reacting beaker) that will follow it

@@ -162,7 +162,7 @@
 	if(target_zone == "head" && istype(L, /mob/living/carbon/))
 		user.visible_message("<span class='danger'>\The [user] smashes [src] over [L]'s head!</span>")
 		if(weaken_duration)
-			L.apply_effect(min(weaken_duration, 5), WEAKEN, blocked) // Never weaken more than a flash!
+			L.apply_effect(min(weaken_duration, 5), WEAKEN) // Never weaken more than a flash!
 	else
 		user.visible_message("<span class='danger'>\The [user] smashes [src] into [L]!</span>")
 

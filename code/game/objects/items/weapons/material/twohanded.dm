@@ -27,6 +27,9 @@
 	attack_sound = "swing_hit"
 	drop_sound = 'sound/items/drop/sword.ogg'
 	pickup_sound = 'sound/items/pickup/sword.ogg'
+	passive_parry = /datum/passive_parry/melee{
+		parry_chance_melee = 15;
+	}
 
 /obj/item/material/twohanded/update_worn_icon()
 	var/mob/living/M = loc
@@ -49,14 +52,6 @@
 /obj/item/material/twohanded/Initialize(mapload, material_key)
 	. = ..()
 	update_icon()
-
-//Allow a small chance of parrying melee attacks when wielded - maybe generalize this to other weapons someday
-/obj/item/material/twohanded/handle_shield(mob/user, var/damage, atom/damage_source = null, mob/attacker = null, var/def_zone = null, var/attack_text = "the attack")
-	if(wielded && default_parry_check(user, attacker, damage_source) && prob(15))
-		user.visible_message("<span class='danger'>\The [user] parries [attack_text] with \the [src]!</span>")
-		playsound(user.loc, 'sound/weapons/punchmiss.ogg', 50, 1)
-		return 1
-	return 0
 
 /obj/item/material/twohanded/update_icon()
 	icon_state = "[base_icon][wielded]"

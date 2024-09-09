@@ -25,7 +25,7 @@
 /area/debrisfield/derelict)
 "ap" = (
 /mob/living/simple_mob/mechanical/infectionbot{
-	faction = "derelict"
+	iff_factions = "derelict"
 	},
 /turf/simulated/floor/tiled/asteroid_steel/airless,
 /area/debrisfield/derelict)
@@ -82,7 +82,7 @@
 /area/debrisfield/derelict)
 "aA" = (
 /mob/living/simple_mob/mechanical/infectionbot{
-	faction = "derelict"
+	iff_factions = "derelict"
 	},
 /turf/simulated/floor/tiled/airless,
 /area/debrisfield/derelict)
@@ -139,7 +139,7 @@
 "aR" = (
 /obj/mob_spawner/derelict/corrupt_maint_swarm,
 /mob/living/simple_mob/mechanical/corrupt_maint_drone{
-	faction = "derelict"
+	iff_factions = "derelict"
 	},
 /turf/simulated/floor/tiled/airless,
 /area/debrisfield/derelict)
@@ -246,7 +246,7 @@
 "bo" = (
 /obj/mob_spawner/derelict/corrupt_maint_swarm,
 /mob/living/simple_mob/mechanical/corrupt_maint_drone{
-	faction = "derelict"
+	iff_factions = "derelict"
 	},
 /turf/simulated/floor/tiled/asteroid_steel/airless,
 /area/debrisfield/derelict)
@@ -283,7 +283,7 @@
 /area/debrisfield/derelict)
 "bu" = (
 /mob/living/simple_mob/mechanical/infectionbot{
-	faction = "derelict"
+	iff_factions = "derelict"
 	},
 /turf/simulated/floor/tiled/white/airless,
 /area/debrisfield/derelict)

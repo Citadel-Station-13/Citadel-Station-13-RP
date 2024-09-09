@@ -18,7 +18,7 @@
 /obj/machinery/button/attackby(obj/item/W, mob/user)
 	return attack_hand(user)
 
-/obj/machinery/button/attack_hand(obj/item/W, mob/user)
+/obj/machinery/button/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(..())
 		return TRUE
 	playsound(src, 'sound/machines/button.ogg', 100, TRUE)

@@ -8,7 +8,7 @@
 	icon = 'icons/mob/possessed.dmi'
 	icon_state = "eva-rig"
 
-	faction = "Possessed"
+	iff_factions = MOB_IFF_FACTION_BIND_TO_MAP
 	movement_cooldown = 10
 
 	health = 200

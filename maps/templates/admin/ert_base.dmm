@@ -197,7 +197,6 @@
 	dir = 4;
 	icon_state = "propulsion_r"
 	},
-/turf/space,
 /turf/simulated/shuttle/plating/airless/carry,
 /area/shuttle/specops/centcom)
 "ax" = (
@@ -255,7 +254,6 @@
 /obj/structure/shuttle/engine/propulsion{
 	dir = 4
 	},
-/turf/space,
 /turf/simulated/shuttle/plating/airless/carry,
 /area/shuttle/specops/centcom)
 "aF" = (
@@ -552,7 +550,6 @@
 	dir = 4;
 	icon_state = "propulsion_l"
 	},
-/turf/space,
 /turf/simulated/shuttle/plating/airless/carry,
 /area/shuttle/specops/centcom)
 "bh" = (
@@ -1357,16 +1354,16 @@
 /area/shuttle/specops/centcom)
 "cL" = (
 /obj/structure/table/rack/steel,
-/obj/item/melee/energy/sword,
-/obj/item/melee/energy/sword,
-/obj/item/melee/energy/sword,
-/obj/item/melee/energy/sword,
-/obj/item/melee/energy/sword,
-/obj/item/shield/energy,
-/obj/item/shield/energy,
-/obj/item/shield/energy,
-/obj/item/shield/energy,
-/obj/item/shield/energy,
+/obj/item/melee/transforming/energy/sword,
+/obj/item/melee/transforming/energy/sword,
+/obj/item/melee/transforming/energy/sword,
+/obj/item/melee/transforming/energy/sword,
+/obj/item/melee/transforming/energy/sword,
+/obj/item/shield/transforming/energy,
+/obj/item/shield/transforming/energy,
+/obj/item/shield/transforming/energy,
+/obj/item/shield/transforming/energy,
+/obj/item/shield/transforming/energy,
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/specops/centcom)
 "cM" = (

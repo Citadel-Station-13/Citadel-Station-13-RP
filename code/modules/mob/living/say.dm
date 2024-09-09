@@ -236,7 +236,7 @@ var/list/channel_to_radio_key = new
 		verb = speaking.speech_verb
 		w_not_heard = "[speaking.speech_verb] something [w_adverb]"
 
-	var/list/message_args = list("message" = message, "whispering" = whispering, "cancelled" = FALSE)
+	var/list/message_args = list("message" = message, "whispering" = whispering, "cancelled" = FALSE, "message_mode" = message_mode)
 
 	SEND_SIGNAL(src, COMSIG_MOB_SAY, message_args)
 

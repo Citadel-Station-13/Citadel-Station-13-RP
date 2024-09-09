@@ -239,16 +239,7 @@
 /obj/item/holo/esword/red
 	lcolor = "#FF0000"
 
-/obj/item/holo/esword/handle_shield(mob/user, var/damage, atom/damage_source = null, mob/attacker = null, var/def_zone = null, var/attack_text = "the attack")
-	if(active && default_parry_check(user, attacker, damage_source) && prob(50))
-		user.visible_message("<span class='danger'>\The [user] parries [attack_text] with \the [src]!</span>")
-
-		var/datum/effect_system/spark_spread/spark_system = new /datum/effect_system/spark_spread()
-		spark_system.set_up(5, 0, user.loc)
-		spark_system.start()
-		playsound(user.loc, 'sound/weapons/blade1.ogg', 50, 1)
-		return TRUE
-	return FALSE
+// todo: the parry system was removed from this because that sucks maybe readd it later lol
 
 /obj/item/holo/esword/attack_self(mob/user, datum/event_args/actor/e_args)
 	. = ..()
@@ -434,11 +425,11 @@
 
 /mob/living/simple_mob/animal/space/carp/holodeck/proc/set_safety(var/safe)
 	if (safe)
-		faction = "neutral"
+		set_iff_factions(MOB_IFF_FACTION_NEUTRAL)
 		legacy_melee_damage_lower = 0
 		legacy_melee_damage_upper = 0
 	else
-		faction = "carp"
+		set_iff_factions(MOB_IFF_FACTION_CARP)
 		legacy_melee_damage_lower = initial(legacy_melee_damage_lower)
 		legacy_melee_damage_upper = initial(legacy_melee_damage_upper)
 

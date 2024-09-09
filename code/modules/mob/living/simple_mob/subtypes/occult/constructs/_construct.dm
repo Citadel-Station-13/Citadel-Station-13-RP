@@ -81,7 +81,7 @@
 				"rad" = 100)
 
 	can_be_antagged = TRUE
-	faction = "cult"
+	iff_factions = MOB_IFF_FACTION_SANGUINE_CULT
 
 	supernatural = TRUE
 

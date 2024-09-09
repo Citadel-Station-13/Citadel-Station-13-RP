@@ -53,12 +53,14 @@ var/list/blobs = list()
 		return TRUE
 	else if(istype(mover, /mob/living))
 		var/mob/living/L = mover
-		if(L.faction == "blob")
+		if(L.has_iff_faction(MOB_IFF_FACTION_BLOB))
 			return TRUE
 	else if(istype(mover, /obj/projectile))
 		var/obj/projectile/P = mover
-		if(istype(P.firer) && P.firer.faction == "blob")
-			return TRUE
+		if(isliving(P.firer))
+			var/mob/living/L = P.firer
+			if(L.has_iff_faction(MOB_IFF_FACTION_BLOB))
+				return TRUE
 	return FALSE
 
 /obj/structure/blob/examine(mob/user, dist)
@@ -250,18 +252,19 @@ var/list/blobs = list()
 	adjust_integrity_blob(-damage)
 	return
 
-/obj/structure/blob/bullet_act(var/obj/projectile/P)
-	if(!P)
-		return
+/obj/structure/blob/on_bullet_act(obj/projectile/proj, impact_flags, list/bullet_act_args)
+	. = ..()
 
-	if(istype(P.firer) && P.firer.faction == "blob")
-		return
+	if(isliving(proj.firer))
+		var/mob/living/L = proj.firer
+		if(L.has_iff_faction(MOB_IFF_FACTION_BLOB))
+			return TRUE
 
-	var/damage = P.get_structure_damage() // So tasers don't hurt the blob.
+	var/damage = proj.get_structure_damage() // So tasers don't hurt the blob.
 	if(!damage)
 		return
 
-	switch(P.damage_type)
+	switch(proj.damage_type)
 		if(BRUTE)
 			if(overmind)
 				damage *= overmind.blob_type.brute_multiplier
@@ -270,11 +273,9 @@ var/list/blobs = list()
 				damage *= overmind.blob_type.burn_multiplier
 
 	if(overmind)
-		damage = overmind.blob_type.on_received_damage(src, damage, P.damage_type, P.firer)
+		damage = overmind.blob_type.on_received_damage(src, damage, proj.damage_type, proj.firer)
 
 	adjust_integrity_blob(-damage)
-
-	return ..()
 
 /obj/structure/blob/water_act(amount)
 	if(overmind)
@@ -304,4 +305,4 @@ var/list/blobs = list()
 	qdel(src)
 
 /turf/simulated/wall/blob_act()
-	inflict_atom_damage(100, flag = ARMOR_MELEE, attack_type = ATTACK_TYPE_MELEE)
+	inflict_atom_damage(100, damage_flag = ARMOR_MELEE, attack_type = ATTACK_TYPE_MELEE)

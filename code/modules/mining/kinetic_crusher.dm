@@ -307,11 +307,11 @@
 	name = "destabilizing force"
 	icon_state = "pulse1"
 	nodamage = TRUE
-	damage = 0 //We're just here to mark people. This is still a melee weapon.
+	damage_force = 0 //We're just here to mark people. This is still a melee weapon.
 	damage_type = BRUTE
 	damage_flag = ARMOR_BOMB
 	range = WORLD_ICON_SIZE * 6
-	accuracy = INFINITY	// NO.
+	accuracy_disabled = TRUE
 	// log_override = TRUE
 	var/obj/item/kinetic_crusher/hammer_synced
 
@@ -319,7 +319,10 @@
 	hammer_synced = null
 	return ..()
 
-/obj/projectile/destabilizer/on_hit(atom/target, blocked = FALSE)
+/obj/projectile/destabilizer/on_impact(atom/target, impact_flags, def_zone, efficiency)
+	. = ..()
+	if(. & PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT)
+		return
 	if(isliving(target))
 		var/mob/living/L = target
 		if(hammer_synced.can_mark(L))
@@ -341,7 +344,6 @@
 		var/turf/simulated/mineral/M = target_turf
 		new /obj/effect/temp_visual/kinetic_blast(M)
 		M.GetDrilled(firer)
-	..()
 
 /*
 //trophies

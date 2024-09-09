@@ -281,10 +281,10 @@
 	..()
 
 /obj/projectile/beam/drone
-	damage = 15
+	damage_force = 15
 
 /obj/projectile/beam/pulse/drone
-	damage = 10
+	damage_force = 10
 
 // A slightly easier drone, for POIs.
 // Difference is that it should not be faster than you.

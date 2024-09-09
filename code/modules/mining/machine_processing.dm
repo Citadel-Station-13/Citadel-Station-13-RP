@@ -199,9 +199,9 @@
 	speed_process = !speed_process // switching gears
 	if(speed_process) // high gear
 		STOP_MACHINE_PROCESSING(src)
-		START_PROCESSING(SSfastprocess, src)
+		START_PROCESSING(SSprocess_5fps, src)
 	else // low gear
-		STOP_PROCESSING(SSfastprocess, src)
+		STOP_PROCESSING(SSprocess_5fps, src)
 		START_MACHINE_PROCESSING(src)
 
 /obj/machinery/mineral/processing_unit/process(delta_time)

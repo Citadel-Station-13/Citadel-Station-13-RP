@@ -1256,7 +1256,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 /obj/item/organ/external/proc/embed(var/obj/item/W, var/silent = 0)
 	if(!owner || loc != owner)
 		return
-	if(owner.species.species_flags & IS_SLIME)
+	if(owner.species.reagent_tag == IS_SLIME)
 		create_wound( CUT, 15 )  //fixes proms being bugged into paincrit;instead whatever would embed now just takes a chunk out
 		src.visible_message("<font color='red'>[owner] has been seriously wounded by [W]!</font>")
 		W.add_blood(owner)

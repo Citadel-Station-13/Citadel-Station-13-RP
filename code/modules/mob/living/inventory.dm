@@ -60,7 +60,7 @@
 /mob/living/init_inventory()
 	inventory = new(src)
 
-//* carry weight
+//* Carry Weight *//
 
 // don't call this you shouldn't need to
 /mob/living/update_carry_slowdown()

@@ -259,6 +259,8 @@ var/global/list/light_type_cache = list()
 	 * This is used to calc the probability the light burns out
 	 */
 	var/switchcount = 0
+	///Does not reset pixel adjustments (best used in mapmaker only)
+	var/custom_placement = FALSE
 
 
 	/// TRUE if rigged to explode.
@@ -384,6 +386,7 @@ var/global/list/light_type_cache = list()
 	light_type = /obj/item/light/bulb/strong
 	construct_type = /obj/machinery/light_construct/flamp
 	shows_alerts = FALSE
+	custom_placement = TRUE
 	var/lamp_shade = 1
 
 /obj/machinery/light/flamp/update_icon()
@@ -521,7 +524,8 @@ var/global/list/light_type_cache = list()
 				base_pixel_x = 10
 			if(WEST)
 				base_pixel_x = -10
-	reset_pixel_offsets()
+	if(!custom_placement)
+		reset_pixel_offsets()
 
 /obj/machinery/light/flamp/update_icon()
 	if(lamp_shade)

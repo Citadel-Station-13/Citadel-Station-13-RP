@@ -128,7 +128,7 @@
 	id = "placeholder_id_do_not_use" //This has to be this way, otherwise it will control ALL doors if left blank.
 	var/obj/machinery/door/airlock/voidcraft/survival_pod/door
 
-/obj/machinery/button/remote/airlock/survival_pod/attack_hand(obj/item/W, mob/user as mob)
+/obj/machinery/button/remote/airlock/survival_pod/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(..()) return 1 //1 is failure on machines (for whatever reason)
 	if(!door)
 		var/turf/dT = get_step(src,dir)
