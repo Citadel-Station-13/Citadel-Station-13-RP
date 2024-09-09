@@ -25,7 +25,7 @@
 /obj/projectile/overload
 	name = "overloaded bolt"
 	icon_state = "bluespace"
-	damage_type = BURN
+	damage_type = DAMAGE_TYPE_BURN
 	armor_penetration = 100
 
 /obj/item/spell/projectile/overload/make_projectile(obj/projectile/projectile_type, mob/living/user)

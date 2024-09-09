@@ -371,7 +371,7 @@
 			if(amount_soaked >= damage)
 				continue // No need to apply damage.
 
-			H.apply_damage(damage, BRUTE, target_zone, amount_blocked, amount_soaked, used_weapon = "hail")
+			H.apply_damage(damage, DAMAGE_TYPE_BRUTE, target_zone, amount_blocked, amount_soaked, used_weapon = "hail")
 			if(show_message)
 				to_chat(H, effect_message)
 

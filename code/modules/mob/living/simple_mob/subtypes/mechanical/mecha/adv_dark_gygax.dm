@@ -122,7 +122,7 @@
 	name = "homing bolt"
 	icon_state = "force_missile"
 	damage_force = 20
-	damage_type = BURN
+	damage_type = DAMAGE_TYPE_BURN
 	damage_flag = ARMOR_LASER
 	speed = 5 * WORLD_ICON_SIZE
 	homing_turn_speed = 85
