@@ -69,6 +69,17 @@
 	/// * this is a default value; set to null by default to have the projectile's say.
 	var/accuracy_disabled = null
 
+	//* Firing *//
+
+	/// the current firing cycle
+	///
+	/// * to interrupt a firing cycle, just change it.
+	var/tmp/firing_cycle
+	/// the next firing cycle
+	///
+	/// * static var; technically can collide. realistically, won't.
+	var/static/firing_cycle_next = 0
+
 	// legacy below //
 
 	var/burst = 1

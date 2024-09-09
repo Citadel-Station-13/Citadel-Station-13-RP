@@ -1,14 +1,44 @@
 //* This file is explicitly licensed under the MIT license. *//
-//* Copyright (c) 2024 silicons                             *//
+//* Copyright (c) 2024 Citadel Station Developers           *//
 
 //* Firing Cycle *//
 
-#warn impl all
+/**
+ * async proc to start a firing cycle
+ *
+ * @return firing cycle ID
+ */
+/obj/item/gun/proc/start_firing_cycle(atom/firer, angle, firing_flags, datum/firemode/firemode, atom/target, datum/event_args/actor/actor)
+	SHOULD_CALL_PARENT(TRUE)
+	SHOULD_NOT_SLEEP(TRUE)
+	#warn impl
+
+/**
+ * returns a given firing cycle ID; if none is provided, we interrupt any active firing cycle.
+ */
+/obj/item/gun/proc/interrupt_firing_cycle(cycle_id)
+	SHOULD_NOT_SLEEP(TRUE)
+	SHOULD_NOT_OVERRIDE(TRUE)
+
+	firing_cycle = firing_cycle + 1
+
+/**
+ * Hook for firing cycle start
+ */
+/obj/item/gun/proc/on_firing_cycle_start(atom/firer, angle, firing_flags, datum/firemode/firemode, atom/target, datum/event_args/actor/actor)
+	SHOULD_NOT_SLEEP(TRUE)
+
+/**
+ * Hook for firing cycle end
+ */
+/obj/item/gun/proc/on_firing_cycle_end(atom/firer, angle, firing_flags, datum/firemode/firemode, atom/target, datum/event_args/actor/actor, iterations_fired, last_firing_result)
+	SHOULD_NOT_SLEEP(TRUE)
 
 /**
  * called exactly once at the start of a firing cycle to start it
  *
  * @params
+ * * cycle_id - the cycle id to use; this is provided by start_firing_cycle
  * * firer - the thing physically firing us; whether a turret or a person
  * * angle - the angle to fire in.
  * * firing_flags - GUN_FIRING_* flags
@@ -16,10 +46,34 @@
  * * target - (optional) what we're firing at
  * * actor - (optional) the person who initiated the firing
  */
-/obj/item/gun/proc/firing_cycle(atom/firer, angle, firing_flags, datum/firemode/firemode, atom/target, datum/event_args/actor/actor)
+/obj/item/gun/proc/firing_cycle(cycle_id, atom/firer, angle, firing_flags, datum/firemode/firemode, atom/target, datum/event_args/actor/actor)
 	SHOULD_NOT_OVERRIDE(TRUE)
+	PRIVATE_PROC(TRUE) // only base of /start_firing_cycle is allowed to call us
 
-	#warn start_firing_cycle, end_firing_cycle
+	/**
+	 * As a word of warning, any proc called in this proc must be SHOULD_NOT_SLEEP.
+	 * If this is ever violated bad things may happen and things may explode.
+	 */
+
+	firing_cycle = cycle_id
+
+	var/interrupted = FALSE
+
+	on_firing_cycle_start(firer, angle, firing_flags, firemode, target, actor)
+
+	var/iteration
+	var/iteration_delay
+
+	for(var/iteration in 1 to iterations)
+		var/result = fire(firer, angle, firing_flags, firemode, iteration, target, actor)
+		if(!post_fire(firer, angle, firing_flags, firemode, iteration, result, target, actor))
+			break
+		sleep(iteration_delay)
+		if(firing_cycle != cycle_id)
+			interrupted = TRUE
+			break
+
+	on_firing_cycle_end(firer, angle, firing_flags, firemode, iteratino, target, actor)
 
 //* Firing *//
 
@@ -36,3 +90,32 @@
  * * actor - (optional) the person who initiated the firing
  */
 /obj/item/gun/proc/fire(atom/firer, angle, firing_flags, datum/firemode/firemode, iteration, atom/target, datum/event_args/actor/actor)
+	SHOULD_NOT_SLEEP(TRUE)
+	#warn impl; check unmount
+
+/**
+ * Called to handle post fire
+ *
+ * @return FALSE to abort firing cycle
+ */
+/obj/item/gun/proc/post_fire(atom/firer, angle, firing_flags, datum/firemode/firemode, iteration, firing_result, atom/target, datum/event_args/actor/actor)
+	SHOULD_NOT_SLEEP(TRUE)
+	switch(firing_result)
+		if(GUN_FIRED_SUCCESS)
+			return TRUE
+		if(GUN_FIRED_FAIL_EMPTY, GUN_FIRED_FAIL_INERT)
+			post_empty_fire(actor, target)
+		else
+			return FALSE
+
+//* Firing - Default Handlers (Overridable) *//
+
+/**
+ * Called if someone tries to fire us without live ammo in the chamber (or chamber-equivalent)
+ *
+ * @params
+ * * actor - (optional) the actor tuple describing who's firing us, if any.
+ * * target - (optional) what we were being fired at
+ */
+/obj/item/gun/proc/post_empty_fire(datum/event_args/actor/actor, atom/target)
+	#warn impl

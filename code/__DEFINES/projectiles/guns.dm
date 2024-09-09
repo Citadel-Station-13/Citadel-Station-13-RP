@@ -15,13 +15,17 @@
 /// * "This happens all the time" is not a valid excuse to not log a gunshot.
 #define GUN_FIRING_NO_LOGGING (1<<3)
 
-//* firing result from firing procs *//
+//*            firing result from firing procs                 *//
+//* these are flags but should be returned only one at a time. *//
+//*            they are flags for fast comparisons.            *//
 
 /// fired
-#define GUN_FIRED_SUCCESS 1
+#define GUN_FIRED_SUCCESS 0
 /// unknown failure
-#define GUN_FIRED_FAIL_UNKNOWN 2
+#define GUN_FIRED_FAIL_UNKNOWN (1<<0)
 /// failed - round wasn't live or the right primer type
-#define GUN_FIRED_FAIL_INERT 3
+#define GUN_FIRED_FAIL_INERT (1<<1)
 /// failed - out of ammo
-#define GUN_FIRED_FAIL_EMPTY 4
+#define GUN_FIRED_FAIL_EMPTY (1<<2)
+/// failed - we're no longer being held / mounted / whatever
+#define GUN_FIRED_FAIL_UNMOUNTED (1<<3)
