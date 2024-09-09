@@ -49,15 +49,16 @@
 		user.action_feedback(SPAN_WARNING("You can't do that right now."), src)
 		return
 
-	// todo: rewrite this part iin hand rewrite
 	if (hasorgans(user))
 		var/mob/living/carbon/human/H = user
-		var/obj/item/organ/external/temp = H.organs_by_name[H.hand? "l_hand" : "r_hand"]
+		var/obj/item/organ/external/temp = H.organs_by_name["r_hand"]
+		if (H.active_hand % 2)
+			temp = H.organs_by_name["l_hand"]
+		if(temp && !temp.is_usable())
+			to_chat(user, "<span class='notice'>You try to move your [temp.name], but cannot!</span>")
+			return
 		if(!temp)
 			to_chat(user, "<span class='notice'>You try to use your hand, but realize it is no longer attached!</span>")
-			return
-		if(!temp.is_usable())
-			to_chat(user, "<span class='notice'>You try to move your [temp.name], but cannot!</span>")
 			return
 
 	var/old_loc = src.loc
