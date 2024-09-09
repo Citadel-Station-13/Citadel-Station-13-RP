@@ -159,7 +159,7 @@
 
 /obj/projectile/bullet/magnetic/bore/on_impact(atom/target, impact_flags, def_zone, efficiency)
 	. = ..()
-	if(PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT)
+	if(. & PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT)
 		return
 	if(istype(target, /turf/simulated/mineral))
 		var/turf/simulated/mineral/MI = target
