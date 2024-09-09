@@ -43,8 +43,8 @@
 	if(istype(weapon, /obj/projectile))
 		var/obj/projectile/casted_projectile = weapon
 		if(legacy_projectile_damage_drop)
-			if((is_sharp(casted_projectile) && casted_projectile.damage > 10) || (casted_projectile.projectile_type & PROJECTILE_TYPE_BEAM))
-				if(prob(casted_projectile.damage / legacy_projectile_damage_drop_divisor))
+			if((is_sharp(casted_projectile) && casted_projectile.damage_force > 10) || (casted_projectile.projectile_type & PROJECTILE_TYPE_BEAM))
+				if(prob(casted_projectile.damage_force / legacy_projectile_damage_drop_divisor))
 					return // drop the shield
 	. = ..()
 	if(!.)

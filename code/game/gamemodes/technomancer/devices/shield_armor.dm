@@ -82,7 +82,7 @@
 		if(P.agony)
 			var/agony_blocked = P.agony * (modified_block_percentage / 100)
 			P.agony -= agony_blocked
-		P.damage = P.damage - damage_blocked
+		P.damage_force = P.damage_force - damage_blocked
 
 	user.visible_message("<span class='danger'>\The [user]'s [src] absorbs the attack!</span>")
 	to_chat(user, "<span class='warning'>Your shield has absorbed most of \the [damage_source].</span>")

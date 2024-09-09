@@ -1192,7 +1192,7 @@
 	if(!(Proj.nodamage))
 		var/ignore_threshold
 
-		var/pass_damage = Proj.damage
+		var/pass_damage = Proj.damage_force
 		var/pass_damage_reduc_mod
 		for(var/obj/item/mecha_parts/mecha_equipment/ME in equipment)
 			pass_damage = ME.handle_projectile_contact(Proj, pass_damage)
@@ -1222,7 +1222,7 @@
 		//AP projectiles have a chance to cause additional damage
 		if(Proj.legacy_penetrating)
 			var/hit_occupant = 1 //only allow the occupant to be hit once
-			for(var/i in 1 to min(Proj.legacy_penetrating, round(Proj.damage/15)))
+			for(var/i in 1 to min(Proj.legacy_penetrating, round(Proj.damage_force/15)))
 				if(src.occupant_legacy && hit_occupant && prob(20))
 					Proj.impact(occupant_legacy)
 					hit_occupant = 0

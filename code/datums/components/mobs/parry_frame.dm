@@ -413,7 +413,7 @@
 	. = shieldcall_returns
 	// todo: doesn't take into account any damage randomization
 	var/obj/projectile/proj = bullet_act_args[BULLET_ACT_ARG_PROJECTILE]
-	var/estimated_severity = clamp(proj.damage / 20 * 75, 0, 100)
+	var/estimated_severity = clamp(proj.damage_force / 20 * 75, 0, 100)
 	bullet_act_args[BULLET_ACT_ARG_EFFICIENCY] = bullet_act_args[BULLET_ACT_ARG_EFFICIENCY] * clamp(1 - efficiency, 0, 1)
 	. = perform_aftereffects(defending, ATTACK_TYPE_PROJECTILE, efficiency, proj, .)
 	perform_audiovisuals(defending, ATTACK_TYPE_PROJECTILE, efficiency, proj, ., estimated_severity, proj, tool_text)

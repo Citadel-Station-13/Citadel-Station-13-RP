@@ -1360,14 +1360,12 @@
 /obj/machinery/atmospherics/component/unary/engine{
 	dir = 1
 	},
-/turf/space,
 /turf/simulated/shuttle/plating/airless/carry,
 /area/shuttle/curabitur/curashuttle/eng)
 "cP" = (
 /obj/machinery/ion_engine{
 	dir = 1
 	},
-/turf/space,
 /turf/simulated/shuttle/plating/airless/carry,
 /area/shuttle/curabitur/curashuttle/eng)
 "dF" = (

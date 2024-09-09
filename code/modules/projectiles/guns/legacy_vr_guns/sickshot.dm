@@ -26,7 +26,7 @@
 /obj/projectile/sickshot
 	name = "discombobulator pulse"
 	icon_state = "sound"
-	damage = 5
+	damage_force = 5
 	armor_penetration = 30
 	damage_type = BURN
 	damage_flag = ARMOR_MELEE
