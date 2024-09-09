@@ -11,6 +11,17 @@
 /obj/item/gun/proc/start_firing_cycle(atom/firer, angle, firing_flags, datum/firemode/firemode, atom/target, datum/event_args/actor/actor)
 	SHOULD_CALL_PARENT(TRUE)
 	SHOULD_NOT_SLEEP(TRUE)
+
+	/**
+	 * it's important we invoke async, **not** spawn(0)
+	 *
+	 * this is so debugging and other systems that care about call stack
+	 * still attribute the call to the user until it sleeps for the first time
+	 *
+	 * just because we support async doesn't mean we actually want it
+	 * to be async unless it needs to be; there's no reason to do so
+	 * (and if something weird is going on we do want the initial proc to be attributed to the caller)
+	 */
 	#warn impl
 
 /**
@@ -61,19 +72,22 @@
 
 	on_firing_cycle_start(firer, angle, firing_flags, firemode, target, actor)
 
-	var/iteration
+	var/iterations
 	var/iteration_delay
+
+	#warn impl stuff
 
 	for(var/iteration in 1 to iterations)
 		var/result = fire(firer, angle, firing_flags, firemode, iteration, target, actor)
 		if(!post_fire(firer, angle, firing_flags, firemode, iteration, result, target, actor))
 			break
-		sleep(iteration_delay)
-		if(firing_cycle != cycle_id)
-			interrupted = TRUE
-			break
+		if(iteration != iterations)
+			sleep(iteration_delay)
+			if(firing_cycle != cycle_id)
+				interrupted = TRUE
+				break
 
-	on_firing_cycle_end(firer, angle, firing_flags, firemode, iteratino, target, actor)
+	on_firing_cycle_end(firer, angle, firing_flags, firemode, iteration, target, actor)
 
 //* Firing *//
 
@@ -104,7 +118,7 @@
 		if(GUN_FIRED_SUCCESS)
 			return TRUE
 		if(GUN_FIRED_FAIL_EMPTY, GUN_FIRED_FAIL_INERT)
-			post_empty_fire(actor, target)
+			post_empty_fire(firing_flags, actor, target)
 		else
 			return FALSE
 
@@ -114,8 +128,21 @@
  * Called if someone tries to fire us without live ammo in the chamber (or chamber-equivalent)
  *
  * @params
+ * * firing_flags - our firing flags
  * * actor - (optional) the actor tuple describing who's firing us, if any.
  * * target - (optional) what we were being fired at
  */
-/obj/item/gun/proc/post_empty_fire(datum/event_args/actor/actor, atom/target)
+/obj/item/gun/proc/post_empty_fire(firing_flags, datum/event_args/actor/actor, atom/target)
+	if(!(firing_flags & GUN_FIRING_NO_CLICK_EMPTY))
+		// default click empty
+		default_click_empty()
 	#warn impl
+
+// todo: actor / event_args support
+/obj/item/gun/proc/default_click_empty()
+	var/mob/holding_us = worn_mob()
+	if(holding_us)
+		holding_us.visible_message(SPAN_WARNING("*click click*"), SPAN_WARNING("*click*"))
+	else if(isturf(loc))
+		visible_message(SPAN_WARNING("*click click*"), SPAN_WARNING("*click*"))
+	playsound(src, 'sound/weapons/empty.ogg', 75, TRUE)

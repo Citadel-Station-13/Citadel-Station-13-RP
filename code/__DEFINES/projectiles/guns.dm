@@ -14,6 +14,10 @@
 /// * This is an extremely dangerous flag. Do not use unless you are already logging it somewhere else.
 /// * "This happens all the time" is not a valid excuse to not log a gunshot.
 #define GUN_FIRING_NO_LOGGING (1<<3)
+/// do not call default click empty
+#define GUN_FIRING_NO_CLICK_EMPTY (1<<4)
+/// suppressed shot
+#define GUN_FIRING_SUPPRESSED (1<<5)
 
 //*            firing result from firing procs                 *//
 //* these are flags but should be returned only one at a time. *//

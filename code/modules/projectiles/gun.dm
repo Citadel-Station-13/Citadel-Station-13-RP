@@ -631,8 +631,9 @@
 		set_light(0)
 
 //obtains the next projectile to fire
+#warn get rid of this
 /obj/item/gun/proc/consume_next_projectile()
-	return null
+	SHOULD_NOT_OVERRIDE(TRUE)
 
 //used by aiming code
 /obj/item/gun/proc/can_hit(atom/target as mob, var/mob/living/user as mob)
@@ -642,14 +643,6 @@
 	//on the other side of a window if it makes a difference. Or if they run behind a window, too bad.
 	if(check_trajectory(target, user))
 		return 1 // Magic numbers are fun.
-
-//called if there was no projectile to shoot
-/obj/item/gun/proc/handle_click_empty(mob/user)
-	if (user)
-		user.visible_message("*click click*", "<span class='danger'>*click*</span>")
-	else
-		visible_message("*click click*")
-	playsound(src, 'sound/weapons/empty.ogg', 100, 1)
 
 /obj/item/gun/proc/handle_click_safety(mob/user)
 	user.visible_message(SPAN_WARNING("[user] squeezes the trigger of \the [src] but it doesn't move!"), SPAN_WARNING("You squeeze the trigger but it doesn't move!"), range = MESSAGE_RANGE_COMBAT_SILENCED)
