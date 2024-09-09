@@ -28,7 +28,7 @@
 	charge_cost = 1200
 	battery_lock = TRUE
 	fire_sound = 'sound/weapons/kenetic_accel.ogg'
-
+	render_use_legacy_by_default = FALSE
 	var/overheat_time = 16
 	var/holds_charge = FALSE
 	var/unique_frequency = FALSE // modified by KA modkits

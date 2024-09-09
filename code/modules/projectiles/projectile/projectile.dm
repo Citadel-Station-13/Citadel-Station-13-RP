@@ -964,16 +964,10 @@
 	 */
 /obj/projectile/proc/on_impact(atom/target, impact_flags, def_zone, efficiency = 1)
 	//! legacy shit
-	var/blocked = clamp((1 - efficiency) * 100, 0, 100)
 	if(damage_force && damage_type == BURN)
 		var/turf/T = get_turf(target)
 		if(T)
 			T.hotspot_expose(700, 5)
-	if(isliving(target))
-		var/mob/living/L = target
-		L.apply_effects(stun, weaken, paralyze, irradiate, stutter, eyeblur, drowsy, agony, blocked, incendiary, flammability)
-		if(modifier_type_to_apply)
-			L.add_modifier(modifier_type_to_apply, modifier_duration)
 	//! end
 	return impact_flags
 
@@ -1138,6 +1132,11 @@
 
 		if(!src.nodamage)
 			L.apply_damage(final_damage, src.damage_type, hit_zone, absorb, soaked, 0, src, sharp=proj_sharp, edge=proj_edge)
+
+		// todo: some of these dont' make sense to be armor'd (last two), some do; please refactor this
+		L.apply_effects(stun, weaken, paralyze, irradiate, stutter, eyeblur, drowsy, agony, clamp((1 - efficiency) * 100 + absorb, 0, 100), incendiary, flammability)
+		if(modifier_type_to_apply)
+			L.add_modifier(modifier_type_to_apply, modifier_duration)
 	//! END
 
 	for(var/datum/projectile_effect/effect as anything in base_projectile_effects)
