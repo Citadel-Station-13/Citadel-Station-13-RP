@@ -8,7 +8,9 @@
  */
 /obj/item/gun_component
 	name = "gun component"
-	desc = "A thing, that probably goes in a gun."
+	desc = "A thing, that probably goes in a gun. Why are you seeing this?"
+	icon = 'icons/modules/projectiles/gun_components.dmi'
+	icon_state = "" // empty state
 
 	/// component slot
 	///
@@ -23,9 +25,15 @@
 /**
  * returns if we should fit on a gun
  *
- * we get the final say
+ * * we get the final say
+ * * this includes if the gun is already overcrowded! be careful with this
+ *
+ * @params
+ * * gun - the gun we tried to attach to
+ * * gun_opinion - what the gun had to say about it
+ * * gun_is_full - is the gun out of slots for us? we can still override but this is to separate it from gun_opinion.
  */
-/obj/item/gun_component/proc/fits_on_gun(obj/item/gun/gun, gun_opinion)
+/obj/item/gun_component/proc/fits_on_gun(obj/item/gun/gun, gun_opinion, gun_is_full)
 	return TRUE
 
 /**
