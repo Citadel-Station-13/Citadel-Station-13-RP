@@ -20,28 +20,20 @@
 	icon = 'icons/obj/gun/energy.dmi'
 	icon_state = "kineticgun"
 	item_state = "kineticgun"
-	// ammo_type = list(/obj/item/ammo_casing/energy/kinetic)
 	cell_type = /obj/item/cell/device/weapon/empproof
 	clothing_flags = NONE
 	charge_meter = FALSE
-	// obj_flags = UNIQUE_RENAME
-	// weapon_weight = WEAPON_LIGHT
-	// can_flashlight = 1
-	// flight_x_offset = 15
-	// flight_y_offset = 9
-	// automatic_charge_overlays = FALSE
+
 	projectile_type = /obj/projectile/kinetic
 	charge_cost = 1200
 	battery_lock = TRUE
 	fire_sound = 'sound/weapons/kenetic_accel.ogg'
+	render_use_legacy_by_default = FALSE
 	var/overheat_time = 16
 	var/holds_charge = FALSE
 	var/unique_frequency = FALSE // modified by KA modkits
 	var/overheat = FALSE
 	var/emptystate = "kineticgun_empty"
-	// can_bayonet = TRUE
-	// knife_x_offset = 20
-	// knife_y_offset = 12
 
 	var/max_mod_capacity = 100
 	var/list/modkits = list()
@@ -230,7 +222,7 @@
 			M.projectile_prehit(src, target, kinetic_gun)
 	if(!pressure_decrease_active && !lavaland_environment_check(get_turf(src)))
 		name = "weakened [name]"
-		damage_force = damage * pressure_decrease
+		damage_force = damage_force * pressure_decrease
 		pressure_decrease_active = TRUE
 	return ..()
 
@@ -247,7 +239,7 @@
 /obj/projectile/kinetic/proc/strike_thing(atom/target)
 	if(!pressure_decrease_active && !lavaland_environment_check(get_turf(src)))
 		name = "weakened [name]"
-		damage_force = damage * pressure_decrease
+		damage_force = damage_force * pressure_decrease
 		pressure_decrease_active = TRUE
 	var/turf/target_turf = get_turf(target)
 	if(!target_turf)
@@ -401,7 +393,7 @@
 	denied_type = /obj/item/ka_modkit/capacity
 
 /obj/item/ka_modkit/capacity/modify_projectile(obj/projectile/kinetic/K)
-	K.damage += modifier
+	K.damage_force += modifier
 
 
 //AoE blasts
@@ -444,8 +436,8 @@
 		for(var/mob/living/L in range(1, target_turf) - K.firer - target)
 			var/armor = L.run_armor_check(K.def_zone, K.damage_flag)
 			// var/armor = L.run_armor_check(K.def_zone, K.flag, null, null, K.armour_penetration)
-			L.apply_damage(K.damage*modifier, K.damage_type, K.def_zone, armor)
-			// L.apply_damage(K.damage*modifier, K.damage_type, K.def_zone, armor)
+			L.apply_damage(K.damage_force*modifier, K.damage_type, K.def_zone, armor)
+			// L.apply_damage(K.damage_force*modifier, K.damage_type, K.def_zone, armor)
 			to_chat(L, "<span class='userdanger'>You're struck by a [K.name]!</span>")
 
 /obj/item/ka_modkit/aoe/turfs

@@ -51,7 +51,7 @@
 	qdel(src)
 	return CLICKCHAIN_DO_NOT_PROPAGATE
 
-/obj/structure/bed/chair/attack_hand(mob/user)
+/obj/structure/bed/chair/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(!stacked_size)
 		return ..()
 	var/obj/item/material/twohanded/folded_metal_chair/F = new(loc)
@@ -290,7 +290,7 @@
 			occupant.apply_effect(6, STUN, blocked)
 			occupant.apply_effect(6, WEAKEN, blocked)
 			occupant.apply_effect(6, STUTTER, blocked)
-			occupant.apply_damage(10, BRUTE, def_zone, blocked, soaked)
+			occupant.apply_damage(10, DAMAGE_TYPE_BRUTE, def_zone, blocked, soaked)
 			playsound(src.loc, 'sound/weapons/punch1.ogg', 50, 1, -1)
 			if(istype(A, /mob/living))
 				var/mob/living/victim = A
@@ -300,7 +300,7 @@
 				victim.apply_effect(6, STUN, blocked)
 				victim.apply_effect(6, WEAKEN, blocked)
 				victim.apply_effect(6, STUTTER, blocked)
-				victim.apply_damage(10, BRUTE, def_zone, blocked, soaked)
+				victim.apply_damage(10, DAMAGE_TYPE_BRUTE, def_zone, blocked, soaked)
 			occupant.visible_message("<span class='danger'>[occupant] crashed into \the [A]!</span>")
 
 /obj/structure/bed/chair/office/light

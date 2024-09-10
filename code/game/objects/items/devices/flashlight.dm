@@ -189,7 +189,7 @@
 		return CLICKCHAIN_DO_NOT_PROPAGATE
 	return ..()
 
-/obj/item/flashlight/attack_hand(mob/user, list/params)
+/obj/item/flashlight/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(user.get_inactive_held_item() == src)
 		if(cell)
 			cell.update_appearance()

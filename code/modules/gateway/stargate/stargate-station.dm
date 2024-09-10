@@ -84,7 +84,7 @@
 	update_icon()
 
 
-/obj/machinery/gateway/centerstation/attack_hand(mob/user, list/params)
+/obj/machinery/gateway/centerstation/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(!ready)
 		detect()
 		return

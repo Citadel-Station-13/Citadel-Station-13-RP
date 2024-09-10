@@ -15,7 +15,7 @@
 
 	mob_class = MOB_CLASS_ABERRATION
 
-	faction = "creature"
+	iff_factions = MOB_IFF_FACTION_MUTANT
 
 	maxHealth = 40
 	health = 40
@@ -61,7 +61,7 @@
 /mob/living/simple_mob/creature/cult
 	mob_class = MOB_CLASS_DEMONIC
 
-	faction = "cult"
+	iff_factions = MOB_IFF_FACTION_SANGUINE_CULT
 
 	min_oxy = 0
 	max_oxy = 0

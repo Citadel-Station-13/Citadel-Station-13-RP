@@ -103,7 +103,7 @@
 	name = "pulse"
 	icon_state = "u_laser"
 	fire_sound = 'sound/weapons/gauss_shoot.ogg'
-	damage = 60
+	damage_force = 60
 	damage_tier = LASER_TIER_EXTREME
 	armor_penetration = 75
 	light_color = "#0066FF"
@@ -113,5 +113,5 @@
 	impact_type = /obj/effect/projectile/impact/laser_pulse
 
 /obj/projectile/beam/pulse/shotgun
-	damage = 50
+	damage_force = 50
 	armor_penetration = 25

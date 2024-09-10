@@ -1,3 +1,4 @@
+// todo: these things should be damage modes / flags
 
 #define STUN      "stun"
 #define WEAKEN    "weaken"

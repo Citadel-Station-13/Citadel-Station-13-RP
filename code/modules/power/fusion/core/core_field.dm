@@ -65,7 +65,7 @@ GLOBAL_VAR_INIT(max_fusion_air_heat, INFINITY)
 /obj/effect/fusion_em_field/bullet_act(obj/projectile/proj, impact_flags, def_zone, efficiency)
 	if(!(proj.projectile_type & PROJECTILE_TYPE_BEAM))
 		return ..()
-	AddEnergy(proj.damage)
+	AddEnergy(proj.damage_force)
 	update_icon()
 	impact_flags |= PROJECTILE_IMPACT_DELETE
 	return ..()

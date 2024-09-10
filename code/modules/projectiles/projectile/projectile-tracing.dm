@@ -6,7 +6,7 @@
 	invisibility = INVISIBILITY_ABSTRACT
 	hitscan = TRUE
 	has_tracer = FALSE
-	damage = 0
+	damage_force = 0
 	nodamage = TRUE
 	projectile_type = PROJECTILE_TYPE_TRACE
 

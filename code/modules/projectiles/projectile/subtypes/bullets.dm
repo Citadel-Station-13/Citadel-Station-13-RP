@@ -26,22 +26,22 @@
 	shake_camera(L, 3, 2)
 
 /obj/projectile/bullet/process_legacy_penetration(atom/A)
-	var/chance = damage
+	var/chance = damage_force
 	if(istype(A, /turf/simulated/wall))
 		var/turf/simulated/wall/W = A
-		chance = round(damage/W.material_outer.density*1.8)
+		chance = round(damage_force/W.material_outer.density*1.8)
 	else if(istype(A, /obj/machinery/door))
 		var/obj/machinery/door/D = A
-		chance = round(damage/D.integrity_max*180)
+		chance = round(damage_force/D.integrity_max*180)
 		if(D.glass) chance *= 2
 	else if(istype(A, /obj/structure/girder))
 		chance = 100
 	else if(ismob(A))
-		chance = damage >= 20 && prob(damage)
+		chance = damage_force >= 20 && prob(damage_force)
 
 	. = prob(chance)
 	if(.)
-		damage *= 0.7
+		damage_force *= 0.7
 
 /* short-casing projectiles, like the kind used in pistols or SMGs */
 
@@ -179,8 +179,6 @@
 
 /obj/projectile/bullet/pellet/shotgun/flak
 	damage_force = 2 //The main weapon using these fires four at a time, usually with different destinations. Usually.
-	range_step = 2
-	spread_step = 30
 	armor_penetration = 10
 
 // This is my boomstick,
@@ -310,6 +308,12 @@
 	armor_penetration = 80
 	hitscan = 1 //so the PTR isn't useless as a sniper weapon
 
+/obj/projectile/bullet/mecha/a12mm_gauss //Mecha gauss rifle round.
+	fire_sound = 'sound/weapons/Gunshot_cannon.ogg' // This is literally an anti-tank rifle caliber. It better sound like a fucking cannon.
+	damage_force = 60
+	legacy_penetrating = 1
+	armor_penetration = 60
+
 /* Miscellaneous */
 
 /obj/projectile/bullet/suffocationbullet//How does this even work?
@@ -368,8 +372,7 @@
 	fire_sound = 'sound/weapons/weaponsounds_heavypistolshot.ogg'
 	damage_force = 60
 	speed = 8.3 * WORLD_ICON_SIZE
-=======
-	damage = 60
+
 /obj/projectile/bullet/musket/silver // What its a classic
 	damage_force = 25
 	SA_bonus_damage = 75

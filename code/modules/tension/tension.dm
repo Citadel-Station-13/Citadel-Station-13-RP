@@ -35,8 +35,8 @@
 		if(P.nodamage || P.taser_effect) // Tasers are somewhat less scary.
 			potential_damage = P.agony / 2
 		else
-			potential_damage = P.damage
-			if(P.damage_type == HALLOSS) // Not sure if any projectiles do this, but can't be too safe.
+			potential_damage = P.damage_force
+			if(P.damage_type == DAMAGE_TYPE_HALLOSS) // Not sure if any projectiles do this, but can't be too safe.
 				potential_damage /= 2
 			// Rubber bullets, I guess.
 			potential_damage += P.agony / 2
@@ -69,7 +69,7 @@
 	if(incapacitated(INCAPACITATION_DISABLED))
 		return 0 // Can't currently hurt you if it's stunned.
 
-	var/friendly = threatened.faction == faction
+	var/friendly = threatened.shares_iff_faction(src)
 
 	var/threat = guess_threat_level(threatened)
 
@@ -192,7 +192,7 @@
 			P = new G.projectile_type()
 
 			if(P) // Does the gun even have a projectile type?
-				weapon_damage = P.damage
+				weapon_damage = P.damage_force
 				if(will_point_blank && a_intent == INTENT_HARM)
 					weapon_damage *= 1.5
 				weapon_attack_speed = G.fire_delay / (1 SECOND)

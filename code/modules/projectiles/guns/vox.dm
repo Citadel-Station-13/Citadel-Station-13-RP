@@ -140,6 +140,7 @@
 	fire_sound = 'sound/effects/basscannon.ogg'
 
 	damage_force = 5
+	armor_penetration = 30
 	damage_type = DAMAGE_TYPE_BRUTE
 	damage_flag = ARMOR_MELEE
 	damage_tier = MELEE_TIER_HEAVY

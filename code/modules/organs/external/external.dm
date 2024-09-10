@@ -504,7 +504,7 @@
 			break
 
 		// heal brute damage
-		if(W.wound_type == BURN)
+		if(W.wound_type == WOUND_TYPE_BURN)
 			burn = W.heal_damage(burn)
 		else
 			brute = W.heal_damage(brute)
@@ -527,9 +527,9 @@
 
 	var/damage_amount
 	switch(damage_type)
-		if(BRUTE)
+		if(DAMAGE_TYPE_BRUTE)
 			damage_amount = brute_dam
-		if(BURN)
+		if(DAMAGE_TYPE_BURN)
 			damage_amount = burn_dam
 		if("omni")
 			damage_amount = max(brute_dam,burn_dam)
@@ -562,9 +562,9 @@
 		return FALSE
 
 	switch(damage_type)
-		if(BRUTE)
+		if(DAMAGE_TYPE_BRUTE)
 			src.heal_damage(repair_amount, 0, 0, 1)
-		if(BURN)
+		if(DAMAGE_TYPE_BURN)
 			src.heal_damage(0, repair_amount, 0, 1)
 		if("omni")
 			src.heal_damage(repair_amount, repair_amount, 0, 1)
@@ -849,7 +849,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 	//update damage counts
 	for(var/datum/wound/W as anything in wounds)
 		if(!W.internal) //so IB doesn't count towards crit/paincrit
-			if(W.wound_type == BURN)
+			if(W.wound_type == WOUND_TYPE_BURN)
 				burn_dam += W.damage
 			else
 				brute_dam += W.damage
@@ -862,7 +862,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 
 		wound_tally += W.amount
 
-	//things tend to bleed if they are CUT OPEN
+	//things tend to bleed if they are WOUND_TYPE_CUT OPEN
 	if (open && !clamped && (H && H.should_have_organ(O_HEART)))
 		status |= ORGAN_BLEEDING
 
@@ -1429,7 +1429,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 		if(W.internal && !open) continue // can't see internal wounds
 		var/this_wound_desc = W.desc
 
-		if(W.wound_type == BURN && W.salved)
+		if(W.wound_type == WOUND_TYPE_BURN && W.salved)
 			this_wound_desc = "salved [this_wound_desc]"
 
 		if(W.bleeding())

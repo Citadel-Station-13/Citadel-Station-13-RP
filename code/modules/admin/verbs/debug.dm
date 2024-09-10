@@ -54,7 +54,7 @@
 			else
 				to_chat(user, "<span class='warning'>DPS calculation by this verb is not supported for \the [G]'s type. Energy or Ballistic only, sorry.</span>")
 
-			weapon_damage = P.damage
+			weapon_damage = P.damage_force
 			weapon_attack_speed = G.fire_delay / 10
 			qdel(P)
 

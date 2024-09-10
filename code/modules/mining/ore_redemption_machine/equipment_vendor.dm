@@ -119,7 +119,7 @@
 	else
 		icon_state = "[initial(icon_state)]-off"
 
-/obj/machinery/mineral/equipment_vendor/attack_hand(mob/user, list/params)
+/obj/machinery/mineral/equipment_vendor/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(..())
 		return
 	interact(user)

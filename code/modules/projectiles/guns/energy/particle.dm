@@ -190,6 +190,6 @@
 /turf/simulated/mineral/on_bullet_act(obj/projectile/proj, impact_flags, list/bullet_act_args)
 	. = ..()
 	if(istype(proj, /obj/projectile/bullet/particle))
-		if(prob(proj.damage))
+		if(prob(proj.damage_force))
 			GetDrilled()
 

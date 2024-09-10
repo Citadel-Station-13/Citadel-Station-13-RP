@@ -1,5 +1,5 @@
 //* This file is explicitly licensed under the MIT license. *//
-//* Copyright (c) 2023 Citadel Station developers.          *//
+//* Copyright (c) 2024 Citadel Station Developers           *//
 
 //? damage types
 
@@ -33,7 +33,7 @@
 /// todo: better hybrid type handling
 #define DAMAGE_TYPE_SEARING "searing"
 
-//? damage_mode bitfield
+//? damage_mode bitfield ?//
 
 /// sharp weapons like knives, spears, etc
 #define DAMAGE_MODE_SHARP (1<<0)

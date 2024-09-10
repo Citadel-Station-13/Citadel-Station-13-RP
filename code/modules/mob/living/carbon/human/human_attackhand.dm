@@ -25,7 +25,7 @@
 			return u_attack
 	return null
 
-/mob/living/carbon/human/attack_hand(mob/user, list/params)
+/mob/living/carbon/human/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	var/datum/gender/TT = GLOB.gender_datums[user.get_visible_gender()]
 	var/mob/living/carbon/human/H = user
 	if(istype(H))
@@ -328,7 +328,7 @@
 	var/obj/item/organ/external/affecting = get_organ(ran_zone(dam_zone))
 	var/armor_block = run_armor_check(affecting, armor_type, armor_pen)
 	var/armor_soak = get_armor_soak(affecting, armor_type, armor_pen)
-	apply_damage(damage, BRUTE, affecting, armor_block, armor_soak, sharp = a_sharp, edge = a_edge)
+	apply_damage(damage, DAMAGE_TYPE_BRUTE, affecting, armor_block, armor_soak, sharp = a_sharp, edge = a_edge)
 	update_health()
 	return TRUE
 

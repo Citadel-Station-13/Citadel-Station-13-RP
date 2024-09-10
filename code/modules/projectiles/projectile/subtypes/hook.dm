@@ -9,8 +9,8 @@
 	var/beam_state = "b_beam"
 
 	damage_force = 5
-	damage_type = DAMAGE_TYPE_BURN
 	speed = 7.5 * WORLD_ICON_SIZE
+	damage_type = DAMAGE_TYPE_BURN
 	damage_flag = ARMOR_ENERGY
 	armor_penetration = 15
 
@@ -39,7 +39,7 @@
 		switch(launcher_intent)
 			if(INTENT_HARM)
 				damage_flag = ARMOR_BULLET
-				damage *= 3
+				damage_force *= 3
 				sharp = 1
 				agony = 20
 			if(INTENT_GRAB)

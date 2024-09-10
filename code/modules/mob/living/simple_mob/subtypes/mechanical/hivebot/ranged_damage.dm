@@ -87,7 +87,7 @@
 	icon_state = "explosion_particle"
 	modifier_type_to_apply = /datum/modifier/fire
 	modifier_duration = 6 SECONDS // About 15 damage per stack, as Life() ticks every two seconds.
-	damage = 0
+	damage_force = 0
 	nodamage = TRUE
 
 
@@ -128,7 +128,7 @@
 	damage_force = 25
 	damage_flag = ARMOR_LASER
 	damage_tier = LASER_TIER_HIGH
-	damage_type = BURN
+	damage_type = DAMAGE_TYPE_BURN
 
 // Very long ranged hivebot that rains down hell.
 // Their projectiles arc, meaning they go over everything until it hits the ground.
@@ -274,5 +274,5 @@
 
 
 /obj/projectile/beam/cyan/hivebot
-	damage = 45
+	damage_force = 45
 	armor_penetration = 15

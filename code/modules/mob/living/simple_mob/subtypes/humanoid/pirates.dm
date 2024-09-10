@@ -25,7 +25,7 @@
 	icon_dead = "piratemelee_dead"
 	catalogue_data = list(/datum/category_item/catalogue/fauna/pirate)
 
-	faction = "pirate"
+	iff_factions = MOB_IFF_FACTION_PIRATE
 
 	response_help = "pushes"
 	response_disarm = "shoves"

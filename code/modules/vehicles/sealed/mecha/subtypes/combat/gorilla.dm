@@ -126,7 +126,7 @@
 	name ="armor-piercing shell"
 	icon = 'icons/obj/projectiles.dmi'
 	icon_state = "shell"
-	damage = 1000 // In order to 1-hit any other mech and royally fuck anyone unfortunate enough to get in the way.
+	damage_force = 1000 // In order to 1-hit any other mech and royally fuck anyone unfortunate enough to get in the way.
 
 /obj/projectile/bullet/cannon/on_impact(atom/target, impact_flags, def_zone, efficiency)
 	. = ..()
@@ -144,7 +144,7 @@
 /obj/projectile/bullet/cannon/weak
 	name ="canister shell"
 	icon_state = "canister"
-	damage = 120 //Do not get fucking shot.
+	damage_force = 120 //Do not get fucking shot.
 
 /* // GLITCHY UND LAGGY. Will later look into fixing.
 /obj/item/mecha_parts/mecha_equipment/weapon/ballistic/mg42

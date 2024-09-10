@@ -26,6 +26,9 @@
 	desc = "Warriors serve as the primary combat caste within a Hive Structure, while having fewer numbers than the endless drone hordes, they are none-the-less extremely formidable. "
 	value = CATALOGUER_REWARD_MEDIUM
 
+/mob/living/simple_mob/animal/space/alien
+	iff_factions = MOB_IFF_FACTION_XENOMORPH
+
 /mob/living/simple_mob/animal/space/alien/warrior
 	name = "xenomorph warrior"
 	desc = "A feral Xenomorph that plays the part of the Hive Structures main fighter. Standing at an even larger stance than a drone, its exoskeleton is fully militarized, intended to take hits from both melee and ranged alike. Its claws can easily tear through armor and flesh, while its acid does the rest."
@@ -46,7 +49,6 @@
 	catalogue_data = list(/datum/category_item/catalogue/fauna/feral_alien/warrior)
 	ai_holder_type = /datum/ai_holder/polaris/simple_mob/melee/evasive
 
-	faction = "xeno"
 
 	mob_class = MOB_CLASS_ABERRATION
 
@@ -97,7 +99,6 @@
 	legacy_melee_damage_lower = 20
 	legacy_melee_damage_upper = 20
 	base_attack_cooldown = 6
-	faction = "xeno"
 	attack_sound =  'sound/mobs/biomorphs/drone_attack.ogg'
 	movement_sound = 'sound/mobs/biomorphs/drone_move.ogg'
 	catalogue_data = list(/datum/category_item/catalogue/fauna/feral_alien/drone)
@@ -128,7 +129,6 @@
 	health = 200
 	legacy_melee_damage_lower = 10
 	legacy_melee_damage_upper = 10
-	faction = "xeno"
 	base_pixel_x = -8
 	movement_cooldown = 3
 	projectiletype = /obj/projectile/energy/neurotoxin
@@ -153,7 +153,6 @@
 	health = 250
 	legacy_melee_damage_lower = 20
 	legacy_melee_damage_upper = 20
-	faction = "xeno"
 	movement_cooldown = 2
 	base_pixel_x = -8
 	base_pixel_y = 1
@@ -190,7 +189,6 @@
 	)
 	legacy_melee_damage_lower = 50
 	legacy_melee_damage_upper = 50
-	faction = "xeno"
 	movement_cooldown = 2
 	base_pixel_x = -17
 	base_pixel_y = 6
@@ -275,12 +273,12 @@
 		playsound(src, "sound/mobs/biomorphs/breaker_charge_hit.ogg", 50, 1)
 		// todo: this ignores charge_damage
 		var/damage = rand(3,4)
-		M.apply_damage(2 * damage, BRUTE, BP_HEAD)
-		M.apply_damage(2 * damage, BRUTE, BP_TORSO)
-		M.apply_damage(0.5 * damage, BRUTE, BP_L_LEG)
-		M.apply_damage(0.5 * damage, BRUTE, BP_R_LEG)
-		M.apply_damage(0.5 * damage, BRUTE, BP_L_ARM)
-		M.apply_damage(0.5 * damage, BRUTE, BP_R_ARM)
+		M.apply_damage(2 * damage, DAMAGE_TYPE_BRUTE, BP_HEAD)
+		M.apply_damage(2 * damage, DAMAGE_TYPE_BRUTE, BP_TORSO)
+		M.apply_damage(0.5 * damage, DAMAGE_TYPE_BRUTE, BP_L_LEG)
+		M.apply_damage(0.5 * damage, DAMAGE_TYPE_BRUTE, BP_R_LEG)
+		M.apply_damage(0.5 * damage, DAMAGE_TYPE_BRUTE, BP_L_ARM)
+		M.apply_damage(0.5 * damage, DAMAGE_TYPE_BRUTE, BP_R_ARM)
 		blood_splatter(src, M, 1)
 
 /mob/living/simple_mob/animal/space/alien/breaker/apply_melee_effects(atom/A)
@@ -332,7 +330,6 @@
 	legacy_melee_damage_lower = 40
 	legacy_melee_damage_upper = 40
 	attack_armor_type = DAMAGE_MODE_PIERCE | DAMAGE_MODE_SHARP
-	faction = "xeno"
 	movement_cooldown = 3
 	base_pixel_x = -18
 	base_pixel_y = 2
@@ -381,7 +378,6 @@
 	legacy_melee_damage_lower = 70
 	legacy_melee_damage_upper = 50
 	attack_armor_pen = 60
-	faction = "xeno"
 	movement_cooldown = 4
 	base_pixel_x = -15
 	base_pixel_y = 6
@@ -468,12 +464,12 @@
 		playsound(src, "sound/mobs/biomorphs/monarch_charge.ogg", 50, 1)
 		// todo: this ignores charge_damage
 		var/damage = rand(3,4)
-		M.apply_damage(2 * damage, BRUTE, BP_HEAD)
-		M.apply_damage(2 * damage, BRUTE, BP_TORSO)
-		M.apply_damage(0.5 * damage, BRUTE, BP_L_LEG)
-		M.apply_damage(0.5 * damage, BRUTE, BP_R_LEG)
-		M.apply_damage(0.5 * damage, BRUTE, BP_L_ARM)
-		M.apply_damage(0.5 * damage, BRUTE, BP_R_ARM)
+		M.apply_damage(2 * damage, DAMAGE_TYPE_BRUTE, BP_HEAD)
+		M.apply_damage(2 * damage, DAMAGE_TYPE_BRUTE, BP_TORSO)
+		M.apply_damage(0.5 * damage, DAMAGE_TYPE_BRUTE, BP_L_LEG)
+		M.apply_damage(0.5 * damage, DAMAGE_TYPE_BRUTE, BP_R_LEG)
+		M.apply_damage(0.5 * damage, DAMAGE_TYPE_BRUTE, BP_L_ARM)
+		M.apply_damage(0.5 * damage, DAMAGE_TYPE_BRUTE, BP_R_ARM)
 		blood_splatter(src, M, 1)
 
 /mob/living/simple_mob/animal/space/alien/monarch/apply_melee_effects(atom/A)
@@ -515,7 +511,6 @@
 	health = 300
 	legacy_melee_damage_lower = 35
 	legacy_melee_damage_upper = 40
-	faction = "xeno"
 	movement_cooldown = 0
 	icon_scale_x = 0.7
 	icon_scale_y = 0.7
@@ -687,7 +682,6 @@
 	health = 250
 	legacy_melee_damage_lower = 10
 	legacy_melee_damage_upper = 10
-	faction = "xeno"
 	movement_cooldown = 4
 	base_pixel_x = -8
 	base_pixel_y = 1

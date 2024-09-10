@@ -85,7 +85,7 @@
 	if(!has_buckled_mobs())
 		anchored = FALSE
 
-/obj/item/beartrap/attack_hand(mob/user, list/params)
+/obj/item/beartrap/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	// check unbuckle first
 	if(click_unbuckle_interaction(user))
 		return CLICKCHAIN_DO_NOT_PROPAGATE
@@ -128,7 +128,7 @@
 	if(soaked >= 30)
 		return
 
-	if(!L.apply_damage(trap_damage, BRUTE, target_zone, blocked, soaked, used_weapon=src))
+	if(!L.apply_damage(trap_damage, DAMAGE_TYPE_BRUTE, target_zone, blocked, soaked, used_weapon=src))
 		return 0
 
 	//trap the victim in place

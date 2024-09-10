@@ -304,7 +304,7 @@
 		if(!amount)
 			break
 
-/obj/item/stack/attack_hand(mob/user, list/params)
+/obj/item/stack/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(user.get_inactive_held_item() == src)
 		change_stack(user, 1)
 	else

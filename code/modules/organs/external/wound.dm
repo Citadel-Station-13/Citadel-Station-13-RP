@@ -203,6 +203,8 @@
 	//* Metadata - defined by typepath; should not be changed. *//
 
 	/// WOUND_TYPE_* define
+	///
+	/// *  one of WOUND_TYPE_CUT, WOUND_TYPE_PIERCE, WOUND_TYPE_BRUISE, WOUND_TYPE_BURN
 	var/wound_type = WOUND_TYPE_OTHER
 
 /datum/wound/New(damage)

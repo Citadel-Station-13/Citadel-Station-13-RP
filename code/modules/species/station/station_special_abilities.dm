@@ -396,7 +396,7 @@
 			if(src.nutrition > 901) //prevent going into the fat ranges of nutrition needlessly and prevents minmaxing certain racial traits/abilities that rely on nutrition via farming one victim
 				src.nutrition = 900
 			if(B.nutrition < 100)
-				B.apply_damage(15, BRUTE, BP_TORSO) // if they have nothing to give, this just harms them
+				B.apply_damage(15, DAMAGE_TYPE_BRUTE, BP_TORSO) // if they have nothing to give, this just harms them
 			B.bitten = 1 //debuff tracking for balance
 	else if(!istype(B,/mob/living/carbon) && src.isSynthetic() || istype(B,/mob/living/carbon) && B.isSynthetic() && src.isSynthetic()) // for synths to feed on robots and other synths
 		if(do_after(src, 50, B))
@@ -406,7 +406,7 @@
 				src.nutrition += 300
 				B.nutrition -= 150
 			if(B.nutrition < 100)
-				B.apply_damage(15, BRUTE, BP_TORSO)
+				B.apply_damage(15, DAMAGE_TYPE_BRUTE, BP_TORSO)
 	else if(istype(B,/mob/living/silicon) && !istype(src,/mob/living/silicon))
 		if(do_after(src, 50, B))
 			to_chat(src, "You don't sense any viable blood...")
@@ -474,7 +474,7 @@
 				C.nutrition = (C.nutrition + T.nutrition)
 				T.nutrition = 0 //Completely drained of everything.
 				var/damage_to_be_applied = T.species.total_health //Get their max health.
-				T.apply_damage(damage_to_be_applied, HALLOSS) //Knock em out.
+				T.apply_damage(damage_to_be_applied, DAMAGE_TYPE_HALLOSS) //Knock em out.
 				C.absorbing_prey = 0
 				if(T.isSynthetic())
 					to_chat(C, "<span class='notice'>You have siphoned the power out of [T], causing them to crumple on the floor.</span>")
@@ -562,7 +562,7 @@
 					nutrition = (nutrition + T.nutrition)
 					T.nutrition = 0 //Completely drained of everything.
 					var/damage_to_be_applied = T.species.total_health //Get their max health.
-					T.apply_damage(damage_to_be_applied, HALLOSS) //Knock em out.
+					T.apply_damage(damage_to_be_applied, DAMAGE_TYPE_HALLOSS) //Knock em out.
 					absorbing_prey = 0 //Clean this up before we return
 					return
 				if(T.isSynthetic())
@@ -573,7 +573,7 @@
 					to_chat(T, "<span class='danger'>An odd sensation flows through your body as you as [src] begins to drain you to dangerous levels!</span>")
 			if(51 to 98)
 				if(T.stat == DEAD)
-					T.apply_damage(500, OXY) //Bit of fluff.
+					T.apply_damage(500, DAMAGE_TYPE_OXY) //Bit of fluff.
 					absorbing_prey = 0
 					if(T.isSynthetic())
 						to_chat(src, "<span class='notice'>You have completely drained the power from [T], shutting them down for good.</span>")
@@ -591,7 +591,7 @@
 				if(drain_finalized != 1)
 					stage = 51
 			if(100) //They shouldn't  survive long enough to get here, but just in case.
-				T.apply_damage(500, OXY) //Kill them.
+				T.apply_damage(500, DAMAGE_TYPE_OXY) //Kill them.
 				absorbing_prey = 0
 				if(T.isSynthetic())
 					to_chat(src, "<span class='notice'>You have completely drained the power from [T], shutting them down for good.</span>")
@@ -802,7 +802,7 @@
 
 		//Removing an internal organ
 		if(T_int && T_int.damage >= 25) //Internal organ and it's been severely damaged
-			T.apply_damage(15, BRUTE, T_ext) //Damage the external organ they're going through.
+			T.apply_damage(15, DAMAGE_TYPE_BRUTE, T_ext) //Damage the external organ they're going through.
 			T_int.removed()
 			if(B)
 				T_int.forceMove(B) //Move to pred's gut
@@ -817,7 +817,7 @@
 
 			//Is it groin/chest? You can't remove those.
 			if(T_ext.cannot_amputate)
-				T.apply_damage(25, BRUTE, T_ext)
+				T.apply_damage(25, DAMAGE_TYPE_BRUTE, T_ext)
 				visible_message("<span class='danger'>[src] severely damages [T]'s [T_ext.name]!</span>")
 			else if(B)
 				T_ext.forceMove(B)
@@ -830,7 +830,7 @@
 		else
 			if(T_int)
 				T_int.take_damage(25 - T_int.damage)
-			T.apply_damage(25, BRUTE, T_ext)
+			T.apply_damage(25, DAMAGE_TYPE_BRUTE, T_ext)
 			visible_message("<span class='danger'>[src] severely damages [T]'s [T_ext.name]!</span>")
 
 		add_attack_logs(src,T,"Shredded (hardvore)")

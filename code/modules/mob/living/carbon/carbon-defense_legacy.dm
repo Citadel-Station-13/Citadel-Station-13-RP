@@ -30,7 +30,7 @@
 	apply_damage(effective_force, I.damtype, hit_zone, blocked, soaked, sharp=weapon_sharp, edge=weapon_edge, used_weapon=I)
 
 	//Melee weapon embedded object code.
-	if (I && I.damtype == BRUTE && !I.anchored && !is_robot_module(I) && I.embed_chance > 0)
+	if (I && I.damtype == DAMAGE_TYPE_BRUTE && !I.anchored && !is_robot_module(I) && I.embed_chance > 0)
 		var/damage = effective_force
 		if (blocked)
 			damage *= (100 - blocked)/100
@@ -67,7 +67,7 @@
 	if (shock_damage<1)
 		return 0
 
-	src.apply_damage(shock_damage, BURN, def_zone, used_weapon="Electrocution")
+	src.apply_damage(shock_damage, DAMAGE_TYPE_BURN, def_zone, used_weapon="Electrocution")
 	playsound(loc, /datum/soundbyte/grouped/sparks, 50, 1, -1)
 	if (shock_damage > 15)
 		src.visible_message(
@@ -102,7 +102,7 @@
 // Knifing
 /mob/living/carbon/proc/attack_throat(obj/item/W, obj/item/grab/G, mob/user)
 
-	if(!((W.damage_mode & DAMAGE_MODE_EDGE) || W.edge) || !W.damage_force || W.damtype != BRUTE)
+	if(!((W.damage_mode & DAMAGE_MODE_EDGE) || W.edge) || !W.damage_force || W.damtype != DAMAGE_TYPE_BRUTE)
 		return 0 //unsuitable weapon
 
 	user.visible_message("<span class='danger'>\The [user] begins to slit [src]'s throat with \the [W]!</span>")
@@ -150,7 +150,7 @@
 
 /mob/living/carbon/proc/shank_attack(obj/item/W, obj/item/grab/G, mob/user, hit_zone)
 
-	if(!(W.sharp || (W.damage_mode & DAMAGE_MODE_SHARP)) || !W.damage_force || W.damtype != BRUTE)
+	if(!(W.sharp || (W.damage_mode & DAMAGE_MODE_SHARP)) || !W.damage_force || W.damtype != DAMAGE_TYPE_BRUTE)
 		return 0 //unsuitable weapon
 
 	user.visible_message("<span class='danger'>\The [user] plunges \the [W] into \the [src]!</span>")

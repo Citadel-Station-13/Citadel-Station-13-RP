@@ -126,7 +126,7 @@
 	name = "acidic spit"
 	icon_state = "neurotoxin"
 	fire_sound = 'sound/effects/splat.ogg'
-	damage = 40
+	damage_force = 40
 	damage_type = DAMAGE_TYPE_BURN
 	agony = 10
 	damage_flag = ARMOR_BIO
@@ -138,9 +138,9 @@
 	name = "neurotoxic spit"
 	icon_state = "neurotoxin"
 	fire_sound = 'sound/effects/splat.ogg'
-	damage = 5
-	agony = 80
+	damage_force = 5
 	damage_type = DAMAGE_TYPE_BIOACID
+	agony = 23
 	damage_flag = ARMOR_BIO
 	armor_penetration = 25	// It's acid-based
 
@@ -149,7 +149,10 @@
 /obj/projectile/energy/neurotoxin/toxic //New alien mob projectile to match the player-variant's projectiles.
 	name = "neurotoxic spit"
 	icon_state = "neurotoxin"
+	fire_sound = 'sound/effects/splat.ogg'
 	damage_force = 20
+	damage_type = DAMAGE_TYPE_BIOACID
+	agony = 30
 	damage_flag = ARMOR_BIO
 	damage_type = DAMAGE_TYPE_BIOACID
 	agony = 30

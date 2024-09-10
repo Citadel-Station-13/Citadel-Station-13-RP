@@ -5,7 +5,7 @@
 /obj/projectile/bullet/pellet
 	name = "shrapnel" //'shrapnel' sounds more dangerous (i.e. cooler) than 'pellet'
 
-	damage = 20
+	damage_force = 20
 
 	/// number of pelelts
 	var/pellets = 4
@@ -102,36 +102,36 @@
 
 //Explosive grenade projectile, borrowed from fragmentation grenade code.
 /obj/projectile/bullet/pellet/fragment
-	damage = 10
+	damage_force = 10
 	armor_penetration = 30
 
 	silenced = 1 //embedding messages are still produced so it's kind of weird when enabled.
 	muzzle_type = null
 
 /obj/projectile/bullet/pellet/fragment/strong
-	damage = 15
+	damage_force = 15
 	armor_penetration = 20
 
 /obj/projectile/bullet/pellet/fragment/weak
-	damage = 4
+	damage_force = 4
 	armor_penetration = 40
 
 /obj/projectile/bullet/pellet/fragment/rubber
 	name = "stingball shrapnel"
-	damage = 3
+	damage_force = 3
 	agony = 8
 	sharp = FALSE
 	edge = FALSE
 	damage_flag = ARMOR_MELEE
 
 /obj/projectile/bullet/pellet/fragment/rubber/strong
-	damage = 8
+	damage_force = 8
 	agony = 16
 
 // Tank rupture fragments
 /obj/projectile/bullet/pellet/fragment/tank
 	name = "metal fragment"
-	damage = 9  //Big chunks flying off.
+	damage_force = 9  //Big chunks flying off.
 
 	armor_penetration = 20
 
@@ -141,13 +141,13 @@
 
 /obj/projectile/bullet/pellet/fragment/tank/small
 	name = "small metal fragment"
-	damage = 6
+	damage_force = 6
 	armor_penetration = 5
 	pellets = 5
 
 /obj/projectile/bullet/pellet/fragment/tank/big
 	name = "large metal fragment"
-	damage = 17
+	damage_force = 17
 	armor_penetration = 10
 	pellet_loss = 0.2 / WORLD_ICON_SIZE
 	pellets = 1

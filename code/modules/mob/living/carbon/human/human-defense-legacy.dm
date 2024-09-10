@@ -227,7 +227,7 @@
 		forcesay(hit_appends)	//forcesay checks stat already
 
 	if(prob(25 + (effective_force * 2)))
-		if(!((I.damtype == BRUTE) || (I.damtype == HALLOSS)))
+		if(!((I.damtype == DAMAGE_TYPE_BRUTE) || (I.damtype == DAMAGE_TYPE_HALLOSS)))
 			return
 
 		if(!(I.atom_flags & NOBLOODY))
@@ -274,7 +274,7 @@
 	if(!organ || (organ.dislocated == 2) || (organ.dislocated == -1) || blocked >= 100)
 		return 0
 
-	if(W.damtype != BRUTE)
+	if(W.damtype != DAMAGE_TYPE_BRUTE)
 		return 0
 
 	if(soaked >= round(effective_force*0.8))
@@ -374,7 +374,7 @@
 			apply_damage(throw_damage, dtype, zone, armor, soaked, is_sharp(O), has_edge(O), O)
 
 		//thrown weapon embedded object code.
-		if(dtype == BRUTE && istype(O,/obj/item))
+		if(dtype == DAMAGE_TYPE_BRUTE && istype(O,/obj/item))
 			var/obj/item/I = O
 			if (!is_robot_module(I))
 				var/sharp = is_sharp(I)
@@ -476,7 +476,7 @@
 /mob/living/carbon/human/proc/handle_suit_punctures(var/damtype, var/damage, var/def_zone)
 
 	// Tox and oxy don't matter to suits.
-	if(damtype != BURN && damtype != BRUTE) return
+	if(damtype != DAMAGE_TYPE_BURN && damtype != DAMAGE_TYPE_BRUTE) return
 
 	// The hardsuit might soak this hit, if we're wearing one.
 	if(back && istype(back,/obj/item/hardsuit))

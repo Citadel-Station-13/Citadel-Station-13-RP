@@ -304,25 +304,25 @@
 			if(target_armor >= 60)
 				var/turf/T = get_step(H, pick(GLOB.alldirs - src.dir))
 				H.throw_at_old(T, 1, 1, src)
-				H.apply_damage(20, BURN, def_zone)
+				H.apply_damage(20, DAMAGE_TYPE_BURN, def_zone)
 				if(target_limb)
 					armor_special = 2
 					target_limb.fracture()
 
 			else if(target_armor >= 45)
-				H.apply_damage(15, BURN, def_zone)
+				H.apply_damage(15, DAMAGE_TYPE_BURN, def_zone)
 				if(target_limb)
 					armor_special = 1
 					target_limb.dislocate()
 
 			else if(target_armor >= 30)
-				H.apply_damage(10, BURN, def_zone)
+				H.apply_damage(10, DAMAGE_TYPE_BURN, def_zone)
 				if(prob(30) && target_limb)
 					armor_special = 1
 					target_limb.dislocate()
 
 			else if(target_armor >= 15)
-				H.apply_damage(5, BURN, def_zone)
+				H.apply_damage(5, DAMAGE_TYPE_BURN, def_zone)
 				if(prob(15) && target_limb)
 					armor_special = 1
 					target_limb.dislocate()
