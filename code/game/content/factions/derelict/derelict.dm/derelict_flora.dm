@@ -30,6 +30,13 @@
 		'sound/effects/footstep/asteroid3.ogg',
 		'sound/effects/footstep/asteroid4.ogg'))
 
+/turf/simulated/floor/event/desert
+	footstep_sounds = list("human" = list(
+		'sound/effects/footstep/asteroid1.ogg',
+		'sound/effects/footstep/asteroid2.ogg',
+		'sound/effects/footstep/asteroid3.ogg',
+		'sound/effects/footstep/asteroid4.ogg'))
+
 /turf/simulated/floor/event/crystal_floor
 	name = "crystal patch"
 	icon = 'code/game/content/factions/derelict/derelict.dmi/derelict_flora.dmi'
@@ -41,12 +48,24 @@
 	icon = 'code/game/content/factions/derelict/derelict.dmi/derelict_flora.dmi'
 	icon_state = "dirt1"
 	integrity_enabled = 0
+	footstep_sounds = list("human" = list(
+		'sound/effects/footstep/asteroid1.ogg',
+		'sound/effects/footstep/asteroid2.ogg',
+		'sound/effects/footstep/asteroid3.ogg',
+		'sound/effects/footstep/asteroid4.ogg'))
+
 
 /turf/simulated/floor/event/grass/dirt2
 	name = "dirt"
 	icon = 'code/game/content/factions/derelict/derelict.dmi/derelict_flora.dmi'
 	icon_state = "dirt2"
 	integrity_enabled = 0
+	footstep_sounds = list("human" = list(
+		'sound/effects/footstep/asteroid1.ogg',
+		'sound/effects/footstep/asteroid2.ogg',
+		'sound/effects/footstep/asteroid3.ogg',
+		'sound/effects/footstep/asteroid4.ogg'))
+
 
 /turf/simulated/floor/event/cave1
 	name = "cave floor"
@@ -59,6 +78,110 @@
 	icon = 'code/game/content/factions/derelict/derelict.dmi/derelict_flora.dmi'
 	icon_state = "grass1"
 	integrity_enabled = 0
+	footstep_sounds = list("human" = list(
+		'sound/effects/footstep/asteroid1.ogg',
+		'sound/effects/footstep/asteroid2.ogg',
+		'sound/effects/footstep/asteroid3.ogg',
+		'sound/effects/footstep/asteroid4.ogg'))
+
+/turf/simulated/floor/event/desert/desert1
+	name = "sand"
+	icon = 'code/game/content/factions/derelict/derelict.dmi/derelict_flora.dmi'
+	icon_state = "desert1"
+	integrity_enabled = 0
+	footstep_sounds = list("human" = list(
+		'sound/effects/footstep/asteroid1.ogg',
+		'sound/effects/footstep/asteroid2.ogg',
+		'sound/effects/footstep/asteroid3.ogg',
+		'sound/effects/footstep/asteroid4.ogg'))
+
+/turf/simulated/floor/event/desert/desert2
+	name = "sand"
+	icon = 'code/game/content/factions/derelict/derelict.dmi/derelict_flora.dmi'
+	icon_state = "desert2"
+	integrity_enabled = 0
+	footstep_sounds = list("human" = list(
+		'sound/effects/footstep/asteroid1.ogg',
+		'sound/effects/footstep/asteroid2.ogg',
+		'sound/effects/footstep/asteroid3.ogg',
+		'sound/effects/footstep/asteroid4.ogg'))
+
+/turf/simulated/floor/event/desert/desert3
+	name = "sand"
+	icon = 'code/game/content/factions/derelict/derelict.dmi/derelict_flora.dmi'
+	icon_state = "desert3"
+	integrity_enabled = 0
+	footstep_sounds = list("human" = list(
+		'sound/effects/footstep/asteroid1.ogg',
+		'sound/effects/footstep/asteroid2.ogg',
+		'sound/effects/footstep/asteroid3.ogg',
+		'sound/effects/footstep/asteroid4.ogg'))
+
+/turf/simulated/floor/event/desert/crust1
+	name = "rocky sand"
+	icon = 'code/game/content/factions/derelict/derelict.dmi/derelict_flora.dmi'
+	icon_state = "crust1"
+	integrity_enabled = 0
+	footstep_sounds = list("human" = list(
+		'sound/effects/footstep/asteroid1.ogg',
+		'sound/effects/footstep/asteroid2.ogg',
+		'sound/effects/footstep/asteroid3.ogg',
+		'sound/effects/footstep/asteroid4.ogg'))
+
+/turf/simulated/floor/event/desert/crust2
+	name = "rocky sand"
+	icon = 'code/game/content/factions/derelict/derelict.dmi/derelict_flora.dmi'
+	icon_state = "crust2"
+	integrity_enabled = 0
+	footstep_sounds = list("human" = list(
+		'sound/effects/footstep/asteroid1.ogg',
+		'sound/effects/footstep/asteroid2.ogg',
+		'sound/effects/footstep/asteroid3.ogg',
+		'sound/effects/footstep/asteroid4.ogg'))
+
+/turf/simulated/floor/event/desert/crust3
+	name = "rocky sand"
+	icon = 'code/game/content/factions/derelict/derelict.dmi/derelict_flora.dmi'
+	icon_state = "crust3"
+	integrity_enabled = 0
+	footstep_sounds = list("human" = list(
+		'sound/effects/footstep/asteroid1.ogg',
+		'sound/effects/footstep/asteroid2.ogg',
+		'sound/effects/footstep/asteroid3.ogg',
+		'sound/effects/footstep/asteroid4.ogg'))
+
+/turf/simulated/floor/event/desert/dirt1
+	name = "dirt"
+	icon = 'code/game/content/factions/derelict/derelict.dmi/derelict_flora.dmi'
+	icon_state = "desert_dirt1"
+	integrity_enabled = 0
+	footstep_sounds = list("human" = list(
+		'sound/effects/footstep/asteroid1.ogg',
+		'sound/effects/footstep/asteroid2.ogg',
+		'sound/effects/footstep/asteroid3.ogg',
+		'sound/effects/footstep/asteroid4.ogg'))
+
+/turf/simulated/floor/event/desert/dirt2
+	name = "dirt"
+	icon = 'code/game/content/factions/derelict/derelict.dmi/derelict_flora.dmi'
+	icon_state = "desert_dirt2"
+	integrity_enabled = 0
+	footstep_sounds = list("human" = list(
+		'sound/effects/footstep/asteroid1.ogg',
+		'sound/effects/footstep/asteroid2.ogg',
+		'sound/effects/footstep/asteroid3.ogg',
+		'sound/effects/footstep/asteroid4.ogg'))
+
+/turf/simulated/floor/event/desert/dirt3
+	name = "dirt"
+	icon = 'code/game/content/factions/derelict/derelict.dmi/derelict_flora.dmi'
+	icon_state = "desert_dirt3"
+	integrity_enabled = 0
+	footstep_sounds = list("human" = list(
+		'sound/effects/footstep/asteroid1.ogg',
+		'sound/effects/footstep/asteroid2.ogg',
+		'sound/effects/footstep/asteroid3.ogg',
+		'sound/effects/footstep/asteroid4.ogg'))
 
 // Decals
 
@@ -127,6 +250,8 @@
 	name = "grass"
 	icon = 'code/game/content/factions/derelict/derelict.dmi/derelict_flora.dmi'
 	anchored = 1
+	density = 0
+	opacity = 0
 
 /obj/structure/flora/grass/event/sparse_grass1
 	icon_state = "sparsegrass1"
@@ -190,4 +315,66 @@
 
 /obj/structure/flora/grass/event/purple_flowers1
 	icon_state = "ppflowers1"
+
+/obj/structure/flora/grass/event/heavy_grass1
+	icon_state = "heavygrass_1"
+
+/obj/structure/flora/grass/event/heavy_grass2
+	icon_state = "heavygrass_2"
+
+/obj/structure/flora/grass/event/heavy_grass3
+	icon_state = "heavygrass_3"
+
+/obj/structure/flora/grass/event/heavy_grass4
+	icon_state = "heavygrass_4"
+
+/obj/structure/flora/grass/event/heavy_grass5
+	icon_state = "heavygrass5"
+
+/obj/structure/flora/grass/event/cactus1
+	icon_state = "cactus_1"
+	name = "cactus"
+
+/obj/structure/flora/grass/event/cactus2
+	icon_state = "cactus_2"
+	name = "cactus"
+
+/obj/structure/flora/grass/event/cactus3
+	icon_state = "cactus_3"
+	name = "cactus"
+
+/obj/structure/flora/grass/event/cactus4
+	icon_state = "cactus_4"
+	name = "cactus"
+
+/obj/structure/flora/grass/event/cactus5
+	icon_state = "cactus_5"
+	name = "cactus"
+
+/obj/structure/flora/grass/event/cacti1
+	icon_state = "cacti_1"
+	name = "cacti"
+
+/obj/structure/flora/grass/event/cacti2
+	icon_state = "cacti_2"
+	name = "cacti"
+
+// Trees
+
+/obj/structure/flora/tree/tree1
+	icon = 'code/game/content/factions/derelict/derelict.dmi/derelict_flora.dmi'
+	icon_state = "tree_1"
+
+/obj/structure/flora/tree/tree2
+	icon = 'code/game/content/factions/derelict/derelict.dmi/derelict_flora.dmi'
+	icon_state = "tree_2"
+
+/obj/structure/flora/tree/tree3
+	icon = 'code/game/content/factions/derelict/derelict.dmi/derelict_flora.dmi'
+	icon_state = "tree_3"
+
+/obj/structure/flora/tree/tree4
+	icon = 'code/game/content/factions/derelict/derelict.dmi/derelict_flora.dmi'
+	icon_state = "tree_4"
+
 

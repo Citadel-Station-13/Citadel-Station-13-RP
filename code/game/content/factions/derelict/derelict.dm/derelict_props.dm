@@ -247,6 +247,24 @@
 	desc = "A standard storage barrel."
 	allow_unanchor = 1
 
+/obj/structure/event/prop/derelict_tube1
+	icon_state = "tube1"
+	name = "derelict tube"
+	desc = "A mysterious tube shaped object."
+	allow_unanchor = 1
+
+/obj/structure/event/prop/derelict_tube2
+	icon_state = "tube2"
+	name = "ancient tube"
+	desc = "A mysterious tube shaped object."
+	allow_unanchor = 1
+
+/obj/structure/event/prop/derelict_collumn
+	icon_state = "collumn"
+	name = "derelict collumn"
+	desc = "A dim collumn. Looks odd."
+	allow_unanchor = 1
+
 // 32x32 Props
 
 /obj/structure/event/prop/fuel_crawler
@@ -255,7 +273,7 @@
 	name = "fuel crawler"
 	desc = "A large crawler vehicle, designed to carry various types of fuel long distances."
 	bounds = "64,32"
-	bound_height = 32
+	bound_height = 64
 	bound_width = 64
 
 /obj/structure/event/prop/crawler
@@ -264,7 +282,7 @@
 	name = "crawler"
 	desc = "A old and tested ATV design commonly seen throughout the frontier. Hard to break, easy to maintain and able to be fitted for about any role you can think of."
 	bounds = "64,32"
-	bound_height = 32
+	bound_height = 64
 	bound_width = 64
 
 /obj/structure/event/prop/covered_crawler
@@ -273,7 +291,7 @@
 	name = "cargo crawler"
 	desc = "A crawler that's been refitted to carry heavy amounts of various cargo. Comes with a cover to protect its cargo from the weather."
 	bounds = "64,32"
-	bound_height = 32
+	bound_height = 64
 	bound_width = 64
 
 /obj/structure/event/prop/mining_truck
@@ -282,7 +300,7 @@
 	name = "mining truck"
 	desc = "A standard truck that seems to be carrying quite a lot of mining and excavation gear, all very heavy duty."
 	bounds = "64,32"
-	bound_height = 32
+	bound_height = 64
 	bound_width = 64
 
 /obj/structure/event/prop/tractor
@@ -291,7 +309,7 @@
 	name = "cargo tractor"
 	desc = "A heavy duty cargo tractor, usually utilized to carry some VERY heavy equipment."
 	bounds = "64,64"
-	bound_height = 32
+	bound_height = 64
 	bound_width = 64
 
 // 64X64 Props
