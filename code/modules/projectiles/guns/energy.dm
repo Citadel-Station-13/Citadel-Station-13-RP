@@ -102,7 +102,7 @@
 	..()
 	update_icon()
 
-/obj/item/gun/energy/process_next_projectile()
+/obj/item/gun/energy/process_next_projectile(iteration, firing_flags, datum/firemode/firemode, datum/event_args/actor/actor, atom/firer)
 	if(!obj_cell_slot?.cell)
 		return null
 	if(!ispath(projectile_type))

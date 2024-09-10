@@ -26,7 +26,7 @@
 	var/max_charge = 0
 	charge_sections = 5
 
-/obj/item/gun/ballistic/microbattery/process_next_projectile()
+/obj/item/gun/ballistic/microbattery/process_next_projectile(iteration, firing_flags, datum/firemode/firemode, datum/event_args/actor/actor, atom/firer)
 	if(chambered && ammo_magazine)
 		var/obj/item/ammo_casing/microbattery/batt = chambered
 		if(batt.shots_left)

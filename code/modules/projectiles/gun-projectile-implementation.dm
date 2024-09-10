@@ -20,6 +20,14 @@
  *
  * * Things like jams go in here.
  * * Things like 'the next bullet is empty so we fail' go in here
+ * * Everything is optional here. Things like portable turrets reserve the right to 'pull' from the gun without caring about params.
+ *
+ * @params
+ * * iteration - (optional) the iteration of the fire
+ * * firing_flags - (optional) GUN_FIRING_* flags
+ * * firemode - (optional) the firemode
+ * * actor - (optional) the initiator
+ * * firer - (optional) the actual firer.
  */
-/obj/item/gun/proc/process_next_projectile()
+/obj/item/gun/proc/process_next_projectile(iteration, firing_flags, datum/firemode/firemode, datum/event_args/actor/actor, atom/firer)
 	#warn impl

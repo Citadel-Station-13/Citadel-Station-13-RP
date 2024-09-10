@@ -165,7 +165,7 @@
 	qdel(loaded)
 	loaded = null
 
-/obj/item/gun/magnetic/process_next_projectile()
+/obj/item/gun/magnetic/process_next_projectile(iteration, firing_flags, datum/firemode/firemode, datum/event_args/actor/actor, atom/firer)
 	if(!check_ammo() || !capacitor || capacitor.charge < power_cost)
 		return
 
@@ -206,7 +206,7 @@
 	capacitor = new /obj/item/stock_parts/capacitor
 	return ..()
 
-/obj/item/gun/magnetic/fuelrod/process_next_projectile()
+/obj/item/gun/magnetic/fuelrod/process_next_projectile(iteration, firing_flags, datum/firemode/firemode, datum/event_args/actor/actor, atom/firer)
 	if(!check_ammo() || !capacitor || capacitor.charge < power_cost)
 		return
 

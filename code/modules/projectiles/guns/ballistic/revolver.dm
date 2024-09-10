@@ -31,7 +31,7 @@
 		chamber_offset = rand(0,max_shells - loaded.len)
 
 // todo: dumb
-/obj/item/gun/ballistic/revolver/process_next_projectile()
+/obj/item/gun/ballistic/revolver/process_next_projectile(iteration, firing_flags, datum/firemode/firemode, datum/event_args/actor/actor, atom/firer)
 	if(chamber_offset)
 		chamber_offset--
 		return

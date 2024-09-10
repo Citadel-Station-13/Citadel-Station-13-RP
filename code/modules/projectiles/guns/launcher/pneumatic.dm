@@ -83,12 +83,12 @@
 		return
 	eject_tank(user)
 
-/obj/item/gun/launcher/pneumatic/process_next_entity()
+/obj/item/gun/launcher/pneumatic/process_next_entity(iteration, firing_flags, datum/firemode/firemode, datum/event_args/actor/actor, atom/firer)
 	if(!item_storage.contents.len)
-		return null
+		return GUN_FIRED_FAIL_EMPTY
 	if (!tank)
-		to_chat(user, "There is no gas tank in [src]!")
-		return null
+		actor?.chat_feedback(SPAN_WARNING("There's no gas tank in [src]!"), src)
+		return GUN_FIRED_FAIL_INERT
 
 	var/environment_pressure = 10
 	var/turf/T = get_turf(src)
@@ -99,8 +99,9 @@
 
 	fire_pressure = (tank.air_contents.return_pressure() - environment_pressure)*pressure_setting/100
 	if(fire_pressure < 10)
-		to_chat(user, "There isn't enough gas in the tank to fire [src].")
-		return null
+		// todo: ughhhh this should misfire not do this
+		actor?.chat_feedback(SPAN_WARNING("There's not enough gas in the tank to fire [src]!"), src)
+		return GUN_FIRED_FAIL_INERT
 
 	var/obj/item/launched = item_storage.contents[1]
 	item_storage.obj_storage.remove(launched, src)

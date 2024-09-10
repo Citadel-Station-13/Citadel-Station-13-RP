@@ -81,7 +81,7 @@
 		return
 	return ..()
 
-/obj/item/gun/launcher/crossbow/process_next_entity()
+/obj/item/gun/launcher/crossbow/process_next_entity(iteration, firing_flags, datum/firemode/firemode, datum/event_args/actor/actor, atom/firer)
 	return bolt
 
 /obj/item/gun/launcher/crossbow/handle_post_fire(mob/user, atom/target)

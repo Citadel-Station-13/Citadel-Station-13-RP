@@ -46,7 +46,7 @@
 /obj/item/gun/launcher/spikethrower/update_release_force()
 	return
 
-/obj/item/gun/launcher/spikethrower/process_next_entity()
+/obj/item/gun/launcher/spikethrower/process_next_entity(iteration, firing_flags, datum/firemode/firemode, datum/event_args/actor/actor, atom/firer)
 	if(spikes < 1) return null
 	spikes--
 	return new /obj/item/spike(src)

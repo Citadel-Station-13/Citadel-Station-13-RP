@@ -2,7 +2,7 @@
  * Ballistic Guns
  *
  * These are guns that fire primarily ammo casings.
- * 
+ *
  * They have simulation / support for both direct-load / internal magazines, as well as
  * attached / inserted external magazines.
  */
@@ -77,7 +77,8 @@
 	if(magazine_type)
 		icon_state = "[silenced_state][magazine_state]"
 
-/obj/item/gun/ballistic/consume_next_projectile()
+// todo: rework
+/obj/item/gun/ballistic/process_next_projectile(iteration, firing_flags, datum/firemode/firemode, datum/event_args/actor/actor, atom/firer)
 	//get the next casing
 	if(loaded.len)
 		chambered = loaded[1] //load next casing.

@@ -380,7 +380,7 @@
 			var/obj/item/gun/G = gun_type
 			src.gun_choices[initial(G.name)] = gun_type
 
-/obj/item/gun/energy/chameleon/process_next_projectile()
+/obj/item/gun/energy/chameleon/process_next_projectile(iteration, firing_flags, datum/firemode/firemode, datum/event_args/actor/actor, atom/firer)
 	var/obj/projectile/P = ..()
 	if(istype(P) && ispath(copy_projectile))
 		P.name = initial(copy_projectile.name)

@@ -84,7 +84,7 @@
 	var/max_darts = 1
 	var/obj/item/syringe_cartridge/next
 
-/obj/item/gun/launcher/syringe/process_next_entity()
+/obj/item/gun/launcher/syringe/process_next_entity(iteration, firing_flags, datum/firemode/firemode, datum/event_args/actor/actor, atom/firer)
 	if(next)
 		next.prime()
 		return next

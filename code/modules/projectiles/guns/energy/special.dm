@@ -77,7 +77,7 @@
 
 	to_chat(usr, "<span class='info'>You set the [src]'s targeted genetic area to [genemask].</span>")
 
-/obj/item/gun/energy/floragun/process_next_projectile()
+/obj/item/gun/energy/floragun/process_next_projectile(iteration, firing_flags, datum/firemode/firemode, datum/event_args/actor/actor, atom/firer)
 	. = ..()
 	var/obj/projectile/energy/floramut/gene/G = .
 	if(istype(G))

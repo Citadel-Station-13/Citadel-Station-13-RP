@@ -108,7 +108,7 @@
 		item_state = "[initial(item_state)]"
 		collapsed = 1
 
-/obj/item/gun/ballistic/rocket/collapsible/process_next_projectile()
+/obj/item/gun/ballistic/rocket/collapsible/process_next_projectile(iteration, firing_flags, datum/firemode/firemode, datum/event_args/actor/actor, atom/firer)
 	. = ..()
 	if(empty)
 		return
@@ -127,7 +127,7 @@
 	unstable = 1
 
 // todo: dumb
-/obj/item/gun/ballistic/rocket/tyrmalin/process_next_projectile()
+/obj/item/gun/ballistic/rocket/tyrmalin/process_next_projectile(iteration, firing_flags, datum/firemode/firemode, datum/event_args/actor/actor, atom/firer)
 	. = ..()
 	if(.)
 		if(unstable)
@@ -154,7 +154,6 @@
 					return 1
 
 		if(destroyed)
-			to_chat(user, "<span class='notice'>The [src] is broken!</span>")
 			handle_click_empty()
 			return
 
