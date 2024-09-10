@@ -19,7 +19,7 @@
 	layer = 3.3 //3.3 so its above windows, not the same as them. anything below 3.3 puts the curtain beneath the window sprite in current build
 	opacity = 0
 
-/obj/structure/curtain/attack_hand(mob/user, list/params)
+/obj/structure/curtain/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	playsound(get_turf(loc), "rustle", 15, 1, -5)
 	toggle()
 	..()

@@ -160,13 +160,13 @@
 	. = hitsound_override(I.damtype, I.damage_mode, ATTACK_TYPE_MELEE, I)
 	if(.)
 		return
-	. = (I.damtype == BURN? hit_sound_burn : hit_sound_brute) || I.attack_sound
+	. = (I.damtype == DAMAGE_TYPE_BURN? hit_sound_burn : hit_sound_brute) || I.attack_sound
 	if(.)
 		return
 	switch(I.damtype)
-		if(BRUTE)
+		if(DAMAGE_TYPE_BRUTE)
 			return "swing_hit"
-		if(BURN)
+		if(DAMAGE_TYPE_BURN)
 			return "'sound/items/welder.ogg"
 		else
 			return "swing_hit"
@@ -185,13 +185,13 @@
 	. = hitsound_override(I.damtype, I.damage_mode, ATTACK_TYPE_THROWN, I)
 	if(.)
 		return
-	. = (I.damtype == BURN? hit_sound_burn : hit_sound_brute)  || I.attack_sound
+	. = (I.damtype == DAMAGE_TYPE_BURN? hit_sound_burn : hit_sound_brute)  || I.attack_sound
 	if(.)
 		return
 	switch(I.damtype)
-		if(BRUTE)
+		if(DAMAGE_TYPE_BRUTE)
 			return "swing_hit"
-		if(BURN)
+		if(DAMAGE_TYPE_BURN)
 			return 'sound/items/welder.ogg'
 		else
 			return "swing_hit"
@@ -202,7 +202,7 @@
 	if(.)
 		return
 	// todo: way to override this from style side? we don't just want hitsound brute/burn.
-	. = (style.damage_type == BURN? hit_sound_burn : hit_sound_brute) || style.attack_sound
+	. = (style.damage_type == DAMAGE_TYPE_BURN? hit_sound_burn : hit_sound_brute) || style.attack_sound
 
 
 //* Armor *//

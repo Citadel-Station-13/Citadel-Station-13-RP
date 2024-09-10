@@ -42,7 +42,7 @@
 /obj/machinery/power/powered()
 	return 1 //doesn't require an external power source
 
-/obj/machinery/power/port_gen/attack_hand(mob/user, list/params)
+/obj/machinery/power/port_gen/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(..())
 		return
 	if(!anchored)
@@ -302,7 +302,7 @@
 			return
 	return ..()
 
-/obj/machinery/power/port_gen/pacman/attack_hand(mob/user, list/params)
+/obj/machinery/power/port_gen/pacman/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	..()
 	if (!anchored)
 		return
@@ -609,11 +609,11 @@
 
 /obj/machinery/power/rtg/abductor/on_bullet_act(obj/projectile/proj, impact_flags, list/bullet_act_args)
 	. = ..()
-	if(!going_kaboom && istype(proj) && !proj.nodamage && ((proj.damage_type == BURN) || (proj.damage_type == BRUTE)))
+	if(!going_kaboom && istype(proj) && !proj.nodamage && ((proj.damage_type == DAMAGE_TYPE_BURN) || (proj.damage_type == DAMAGE_TYPE_BRUTE)))
 		log_and_message_admins("[ADMIN_LOOKUPFLW(proj.firer)] triggered an Abductor Core explosion at [x],[y],[z] via projectile.")
 		asplod()
 
-/obj/machinery/power/rtg/abductor/attack_hand(mob/user, list/params)
+/obj/machinery/power/rtg/abductor/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(!istype(user) || (. = ..()))
 		return
 

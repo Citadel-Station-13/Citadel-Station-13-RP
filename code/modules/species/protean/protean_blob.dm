@@ -9,7 +9,8 @@
 	icon_rest = "rest"
 	icon_dead = "puddle"
 
-	faction = "neutral"
+	iff_factions = MOB_IFF_FACTION_NEUTRAL
+
 	maxHealth = 250
 	health = 250
 	say_list_type = /datum/say_list/protean_blob
@@ -257,7 +258,7 @@
 	else
 		return ..()
 
-/mob/living/simple_mob/protean_blob/attack_hand(mob/user, list/params)
+/mob/living/simple_mob/protean_blob/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	var/mob/living/L = user
 	if(!istype(L))
 		return

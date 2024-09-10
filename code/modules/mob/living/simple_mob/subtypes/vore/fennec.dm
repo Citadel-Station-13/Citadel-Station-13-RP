@@ -17,7 +17,8 @@
 	icon_rest = "fennec_rest"
 	icon = 'icons/mob/vore.dmi'
 
-	faction = "fennec"
+	iff_factions = MOB_IFF_FACTION_FARM_NEUTRAL
+
 	maxHealth = 30
 	health = 30
 	randomized = TRUE

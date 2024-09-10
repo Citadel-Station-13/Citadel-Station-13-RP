@@ -10,7 +10,7 @@
 	name = "\improper healing beam"
 	icon_state = "medbeam"
 	nodamage = 1
-	damage = 0
+	damage_force = 0
 	damage_flag = ARMOR_LASER
 	light_color = "#80F5FF"
 

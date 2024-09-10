@@ -30,7 +30,7 @@ var/const/MAX_ACTIVE_TIME = 400
 	var/strength = 5
 	var/attached = 0
 
-/obj/item/clothing/mask/facehugger/attack_hand(mob/user, list/params)
+/obj/item/clothing/mask/facehugger/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if((stat == CONSCIOUS && !sterile))
 		if(Attach(user))
 			return
@@ -167,8 +167,8 @@ var/const/MAX_ACTIVE_TIME = 400
 
 		if(target.isSynthetic())
 			visible_message(SPAN_DANGER("[src] tears across [target]'s body, but recoils!"))
-			target.apply_damage(10, BRUTE, BP_HEAD)
-			target.apply_damage(10, BRUTE, BP_TORSO)
+			target.apply_damage(10, DAMAGE_TYPE_BRUTE, BP_HEAD)
+			target.apply_damage(10, DAMAGE_TYPE_BRUTE, BP_TORSO)
 			return		// atleast you don't get gibbed
 
 		target.equip_to_slot_if_possible(src, SLOT_ID_MASK, INV_OP_FLUFFLESS)
@@ -315,7 +315,7 @@ var/const/MAX_ACTIVE_TIME = 400
 	var/strength = 5
 	var/attached = 0
 
-/mob/living/simple_mob/animal/space/alien/facehugger/attack_hand(mob/user, list/params)
+/mob/living/simple_mob/animal/space/alien/facehugger/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 
 	if((stat == CONSCIOUS && !sterile))
 		if(Attach(user))

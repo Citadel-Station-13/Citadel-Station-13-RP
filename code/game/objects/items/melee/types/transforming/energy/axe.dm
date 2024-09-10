@@ -18,7 +18,7 @@
 	active_damage_force = 60
 	active_throw_force = 35
 	active_weight_class = WEIGHT_CLASS_HUGE
-	active_damage_type = SEARING
+	active_damage_type = DAMAGE_TYPE_SEARING
 
 /obj/item/melee/transforming/energy/axe/on_activate(datum/event_args/actor/actor, silent)
 	. = ..()

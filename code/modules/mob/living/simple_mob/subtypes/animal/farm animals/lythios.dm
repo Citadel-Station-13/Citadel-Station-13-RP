@@ -22,7 +22,7 @@
 	icon_dead = "icegoat_dead"
 	catalogue_data = list(/datum/category_item/catalogue/fauna/livestock/icegoat)
 
-	faction = "goat"
+	iff_factions = MOB_IFF_FACTION_FARM_ANIMAL
 
 	minbodytemp = 180
 	maxbodytemp = 275
@@ -117,7 +117,7 @@
 	icon_dead = "woolie_dead"
 	catalogue_data = list(/datum/category_item/catalogue/fauna/livestock/woolie)
 
-	faction = "goat"
+	iff_factions = MOB_IFF_FACTION_FARM_ANIMAL
 
 	minbodytemp = 180
 	maxbodytemp = 300
@@ -189,7 +189,8 @@
 	minbodytemp = 180
 	maxbodytemp = 350
 
-	faction = "grubs"
+	iff_factions = MOB_IFF_FACTION_FARM_ANIMAL
+
 	maxHealth = 50
 	health = 50
 

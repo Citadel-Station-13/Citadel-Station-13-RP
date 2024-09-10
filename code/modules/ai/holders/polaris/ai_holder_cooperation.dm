@@ -32,8 +32,9 @@
 
 	// Find another AI-controlled mob in the same faction if possible.
 	var/mob/living/first_friend
+	// todo: this isn't good because we now use factions for different reasons than binding, so all of the same map is often just friends under this defintion
 	for(var/mob/living/L in living_mob_list)
-		if(L.faction == holder.faction && L.ai_holder)
+		if(L.shares_iff_faction(holder) && L.ai_holder)
 			first_friend = L
 			break
 

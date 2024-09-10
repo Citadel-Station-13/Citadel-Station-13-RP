@@ -169,7 +169,7 @@
 	damage_force = 10
 	throw_force = 3
 	w_class = WEIGHT_CLASS_NORMAL
-	damtype = HALLOSS
+	damtype = DAMAGE_TYPE_HALLOSS
 	attack_verb = list("flogged", "whipped", "lashed", "disciplined", "chastised", "flayed")
 
 //General use
@@ -597,7 +597,7 @@
 
 	..()
 
-/obj/item/perfect_tele/attack_hand(mob/user, list/params)
+/obj/item/perfect_tele/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(user.get_inactive_held_item() == src && power_source)
 		to_chat(user,"<span class='notice'>You eject \the [power_source] from \the [src].</span>")
 		user.put_in_hands(power_source)
@@ -859,7 +859,7 @@
 	tele_hand = null
 	return ..()
 
-/obj/item/perfect_tele_beacon/attack_hand(mob/user, list/params)
+/obj/item/perfect_tele_beacon/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if((user.ckey != creator) && !(user.ckey in warned_users))
 		warned_users |= user.ckey
 		var/choice = alert(user,"This device is a translocator beacon. Having it on your person may mean that anyone \
@@ -1308,7 +1308,7 @@
 	item_icons = list(SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand_melee.dmi', SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_melee.dmi', SLOT_ID_BACK = 'icons/vore/custom_items_vr.dmi', SLOT_ID_SUIT = 'icons/vore/custom_items_vr.dmi')
 	var/active_state = "wolfgirlsword"
 	allowed = list(/obj/item/shield/fluff/wolfgirlshield)
-	damtype = HALLOSS
+	damtype = DAMAGE_TYPE_HALLOSS
 
 /obj/item/melee/fluffstuff/wolfgirlsword/dropped(mob/user, flags, atom/newLoc)
 	..()
@@ -1324,7 +1324,7 @@
 	sharp = 1
 	edge = 1
 	icon_state = "[active_state]_sharp"
-	damtype = BRUTE
+	damtype = DAMAGE_TYPE_BRUTE
 
 
 /obj/item/melee/fluffstuff/wolfgirlsword/deactivate(mob/living/user)

@@ -158,7 +158,7 @@
 			roll_and_drop(user.loc)
 		return
 
-/obj/structure/sign/poster/attack_hand(mob/user, list/params)
+/obj/structure/sign/poster/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 
 	if(ruined)
 		return

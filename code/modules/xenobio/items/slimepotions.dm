@@ -204,6 +204,7 @@
 	qdel(src)
 
 // Makes slimes not kill (most) humanoids but still fight spiders/carp/bears/etc.
+// todo: this is janky as shit, it doesn't take into account someone's primary faction vs all of someone's factions
 /obj/item/slimepotion/loyalty
 	name = "slime loyalty agent"
 	desc = "A potent chemical mix that makes an animal deeply loyal to the species of whoever applies this, and will attack threats to them."
@@ -225,7 +226,7 @@
 	if(S.stat == DEAD)
 		to_chat(user, SPAN_WARNING("The animal is dead!"))
 		return
-	if(S.faction == user.faction)
+	if(S.shares_iff_faction(user))
 		to_chat(user, SPAN_WARNING("\The [S] is already loyal to your species!"))
 		return
 	if(!S.has_polaris_AI())
@@ -239,7 +240,7 @@
 
 	to_chat(user, SPAN_NOTICE("You feed \the [S] the agent. It will now try to murder things that want to murder you instead."))
 	to_chat(S, SPAN_NOTICE("\The [user] feeds you \the [src], and feel that the others will regard you as an outsider now."))
-	S.faction = user.faction
+	S.add_iff_faction(user.iff_factions)
 	AI.lost_target() // So hostile things stop attacking people even if not hostile anymore.
 	playsound(src, 'sound/effects/bubbles.ogg', 50, 1)
 	qdel(src)

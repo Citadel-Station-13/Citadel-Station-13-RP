@@ -6,7 +6,7 @@
 		return CLICKCHAIN_DO_NOT_PROPAGATE
 	return ..()
 
-/atom/movable/attack_hand(mob/user, list/params)
+/atom/movable/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(user.a_intent == INTENT_HARM)
 		return ..()
 	. = ..()
