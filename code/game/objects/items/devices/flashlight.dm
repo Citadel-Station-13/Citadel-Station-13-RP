@@ -351,7 +351,7 @@
 /obj/item/flashlight/flare/proc/turn_off()
 	on = FALSE
 	src.damage_force = initial(src.damage_force)
-	src.damtype = initial(src.damtype)
+	src.damage_type = initial(src.damage_type)
 	update_appearance()
 
 /obj/item/flashlight/flare/attack_self(mob/user)

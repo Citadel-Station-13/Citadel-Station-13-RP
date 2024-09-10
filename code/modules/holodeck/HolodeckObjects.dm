@@ -213,7 +213,7 @@
 	return
 
 /obj/item/holo
-	damtype = DAMAGE_TYPE_HALLOSS
+	damage_type = DAMAGE_TYPE_HALLOSS
 
 /obj/item/holo/esword
 	desc = "May the force be within you. Sorta."

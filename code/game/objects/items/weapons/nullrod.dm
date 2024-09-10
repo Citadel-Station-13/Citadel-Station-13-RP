@@ -109,7 +109,7 @@
 	item_state = "disintegrate"
 	name = "god hand"
 	desc = "This hand of yours glows with an awesome power!"
-	damtype = DAMAGE_TYPE_BURN
+	damage_type = DAMAGE_TYPE_BURN
 	attack_verb = list("punched", "cross countered", "pummeled")
 
 /obj/item/nullrod/godhand/Initialize(mapload)

@@ -192,7 +192,7 @@
 	edge = 1
 	set_weight_class(active_w_class)
 	playsound(src, 'sound/weapons/saberon.ogg', 15, 1)
-	damtype = DAMAGE_TYPE_SEARING
+	damage_type = DAMAGE_TYPE_SEARING
 	item_flags |= ITEM_THROW_UNCATCHABLE
 
 	attack_verb |= list(\
@@ -214,7 +214,7 @@
 	sharp = initial(sharp)
 	edge = initial(edge)
 	set_weight_class(initial(w_class))
-	damtype = DAMAGE_TYPE_BRUTE
+	damage_type = DAMAGE_TYPE_BRUTE
 	item_flags &= ~ITEM_THROW_UNCATCHABLE
 
 /obj/item/pen/blade/blue

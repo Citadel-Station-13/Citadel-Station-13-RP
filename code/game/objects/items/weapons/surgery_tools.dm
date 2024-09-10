@@ -162,7 +162,7 @@
 	icon_state = "adv_saw"
 	item_state = "saw3"
 	attack_sound = 'sound/weapons/emitter2.ogg'
-	damtype = DAMAGE_TYPE_SEARING
+	damage_type = DAMAGE_TYPE_SEARING
 	w_class = WEIGHT_CLASS_BULKY
 	origin_tech = list(TECH_BIO = 4, TECH_MATERIAL = 6, TECH_MAGNET = 6)
 	materials_base = list(MAT_STEEL = 12500)
