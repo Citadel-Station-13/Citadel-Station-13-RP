@@ -1,7 +1,6 @@
 /obj/item/gun/magic/wand
 	name = "wand of nothing"
 	desc = "It's not just a stick, it's a MAGIC stick!"
-	ammo_type = /obj/item/ammo_casing/magic
 	icon_state = "nothingwand"
 	item_state = "wand"
 	w_class = WEIGHT_CLASS_SMALL
@@ -59,7 +58,7 @@
 	name = "wand of death"
 	desc = "This deadly wand overwhelms the victim's body with pure energy, slaying them without fail."
 	fire_sound = 'sound/magic/wandodeath.ogg'
-	ammo_type = /obj/item/ammo_casing/magic/death
+	projectile_type = /obj/projectile/magic/death
 	icon_state = "deathwand"
 	max_charges = 3 //3, 2, 2, 1
 
@@ -155,7 +154,7 @@
 /obj/item/gun/magic/wand/door
 	name = "wand of door creation"
 	desc = "This particular wand can create doors in any wall for the unscrupulous wizard who shuns teleportation magics."
-	ammo_type = /obj/item/ammo_casing/magic/door
+	projectile_type = /obj/projectile/magic/door
 	icon_state = "doorwand"
 	fire_sound = 'sound/magic/staff_door.ogg'
 	max_charges = 20 //20, 10, 10, 7
