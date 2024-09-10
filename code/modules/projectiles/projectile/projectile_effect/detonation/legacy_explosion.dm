@@ -7,3 +7,4 @@
 	var/sev_3
 
 /datum/projectile_effect/detonation/legacy_explosion/detonation(turf/where)
+	explosion(where, sev_1, sev_2, sev_3)

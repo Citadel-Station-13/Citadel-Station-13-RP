@@ -1,19 +1,13 @@
-// Uncomment this define to check for possible lengthy processing of emp_act()s.
-// If emp_act() takes more than defined deciseconds (1/10 seconds) an admin message and log is created.
-// I do not recommend having this uncommented on main server, it probably causes a bit more lag, espicially with larger EMPs.
-
-// #define EMPDEBUG 10
-
-/proc/empulse(turf/epicenter, first_range, second_range, third_range, fourth_range, log = FALSE)
+/proc/empulse(turf/epicenter, first_range, second_range, third_range, fourth_range, log = TRUE, message_admins = FALSE)
 	if(!epicenter)
 		return
 
 	if(!istype(epicenter, /turf))
 		epicenter = get_turf(epicenter.loc)
 
-	if(log)
+	if(message_admins)
 		message_admins("EMP with size ([first_range], [second_range], [third_range], [fourth_range]) in area [epicenter.loc.name] ")
-		log_game("EMP with size ([first_range], [second_range], [third_range], [fourth_range]) in area [epicenter.loc.name] ")
+	log_game("EMP with size ([first_range], [second_range], [third_range], [fourth_range]) in area [epicenter.loc.name] ")
 
 	if(first_range > 1)
 		var/obj/effect/overlay/pulse = new /obj/effect/overlay(epicenter)

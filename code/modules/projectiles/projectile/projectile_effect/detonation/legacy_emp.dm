@@ -8,3 +8,4 @@
 	var/sev_4
 
 /datum/projectile_effect/detonation/legacy_emp/detonation(turf/where)
+	empulse(where, sev_1, sev_2, sev_3, sev_4)
