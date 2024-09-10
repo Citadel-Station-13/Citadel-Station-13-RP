@@ -667,6 +667,7 @@
 
 //called after successfully firing
 /obj/item/gun/proc/handle_post_fire(mob/user, atom/target, var/pointblank=0, var/reflex=0)
+	SHOULD_NOT_OVERRIDE(TRUE)
 	if(fire_anim)
 		flick(fire_anim, src)
 

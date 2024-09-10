@@ -4391,6 +4391,7 @@
 #include "code\modules\projectiles\firing_pin.dm"
 #include "code\modules\projectiles\ammunition\ammo_caliber.dm"
 #include "code\modules\projectiles\ammunition\ammo_casing.dm"
+#include "code\modules\projectiles\ammunition\ammo_handful.dm"
 #include "code\modules\projectiles\ammunition\ammo_magazine.dm"
 #include "code\modules\projectiles\ammunition\calibers\normal\a10g.dm"
 #include "code\modules\projectiles\ammunition\calibers\normal\a10mm.dm"
