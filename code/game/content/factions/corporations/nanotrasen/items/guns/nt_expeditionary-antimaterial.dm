@@ -60,7 +60,7 @@
 
 /obj/projectile/bullet/nt_expeditionary/antimaterial
 	name = "antimaterial sabot"
-	damage = 55
+	damage_force = 55
 	damage_tier = LERP(BULLET_TIER_HIGH, BULLET_TIER_EXTREME, 1)
 	armor_penetration = 75
 

@@ -20,7 +20,7 @@
 
 /obj/projectile/bullet/nt_expeditionary/heavy_rifle
 	name = "heavy rifle bullet"
-	damage = 40
+	damage_force = 40
 	damage_tier = LERP(BULLET_TIER_MEDIUM, BULLET_TIER_HIGH, 1)
 	armor_penetration = 50
 

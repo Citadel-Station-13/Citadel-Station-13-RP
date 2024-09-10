@@ -337,8 +337,8 @@
 			return RESOLVE(link_above)
 		if(DOWN)
 			return RESOLVE(link_below)
-
-		pass() // macro used immediately before being undefined; BYOND bug 2072419
+		else
+			pass() // macro used immediately before being undefined; BYOND bug 2072419
 		#undef RESOLVE
 
 /**
