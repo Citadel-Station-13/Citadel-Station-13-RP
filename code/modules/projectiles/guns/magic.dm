@@ -16,7 +16,8 @@
 	pin = /obj/item/firing_pin/magic
 
 	/// the projectile type we generate
-	var/projectile_type
+	//  todo: this should be on /obj/item/gun/magic/basic
+	projectile_type = /obj/projectile/magic
 
 /obj/item/gun/magic/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	if(no_den_usage)
@@ -45,12 +46,9 @@
 /obj/item/gun/magic/process(delta_time)
 	charge_tick++
 	if(charge_tick < recharge_rate || charges >= max_charges)
-		return 0
+		return
 	charge_tick = 0
 	charges++
-	if(charges == 1)
-		recharge_newshot()
-	return 1
 
 /obj/item/gun/magic/consume_next_projectile()
 	if(charges <= 0)

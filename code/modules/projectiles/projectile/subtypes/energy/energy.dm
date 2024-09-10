@@ -9,6 +9,7 @@
 	var/flash_range = 0
 	var/brightness = 7
 	var/light_colour = "#ffffff"
+	var/flash_strength = 10
 
 /obj/projectile/energy/flash/on_impact(atom/target, impact_flags, def_zone, efficiency)
 	. = ..()

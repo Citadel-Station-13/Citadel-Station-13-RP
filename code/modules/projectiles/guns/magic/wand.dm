@@ -134,7 +134,7 @@
 /obj/item/gun/magic/wand/teleport
 	name = "wand of teleportation"
 	desc = "This wand will wrench targets through space and time to move them somewhere else."
-	ammo_type = /obj/item/ammo_casing/magic/teleport
+	projectile_type = /obj/projectile/magic/teleport
 	fire_sound = 'sound/magic/wand_teleport.ogg'
 	icon_state = "telewand"
 	max_charges = 10 //10, 5, 5, 4
@@ -174,7 +174,7 @@
 	name = "wand of fireball"
 	desc = "This wand shoots scorching balls of fire that explode into destructive flames."
 	fire_sound = 'sound/magic/fireball.ogg'
-	ammo_type = /obj/item/ammo_casing/magic/fireball
+	projectile_type = /obj/projectile/magic/aoe/fireball
 	icon_state = "firewand"
 	max_charges = 8 //8, 4, 4, 3
 
@@ -190,7 +190,7 @@
 /obj/item/gun/magic/wand/arcane
 	name = "wand of arcane missile"
 	desc = "This wand fires off small bolts of concentrated magic energy, searing any victim."
-	ammo_type = /obj/item/ammo_casing/magic/arcane_barrage
+	projectile_type = /obj/projectile/magic/arcane_barrage
 	fire_sound = 'sound/weapons/mmlbuster.ogg'
 	icon_state = "arcanewand"
 	max_charges = 20 //20, 10, 10, 7

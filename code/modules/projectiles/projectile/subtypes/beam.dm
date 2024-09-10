@@ -13,7 +13,6 @@
 	damage_flag = ARMOR_LASER
 	projectile_type = PROJECTILE_TYPE_BEAM | PROJECTILE_TYPE_PHOTONIC
 	eyeblur = 4
-	var/frequency = 1
 	hitscan = TRUE
 	embed_chance = 0
 	light_range = 2

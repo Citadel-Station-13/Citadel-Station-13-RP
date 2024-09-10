@@ -12,4 +12,3 @@
 	damage_type = DAMAGE_TYPE_BURN
 	damage_flag = ARMOR_ENERGY
 	projectile_type = PROJECTILE_TYPE_ENERGY
-	var/flash_strength = 10
