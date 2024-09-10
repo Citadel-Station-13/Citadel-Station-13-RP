@@ -631,9 +631,9 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 				to_chat(user, "<span class='warning'>You burn yourself while lighting the lighter.</span>")
 				var/mob/living/carbon/human/H = ishuman(user)? user : null
 				if (user.get_held_item_of_index(1) == src)
-					H?.apply_damage(2,BURN,"l_hand")
+					H?.apply_damage(2,DAMAGE_TYPE_BURN,"l_hand")
 				else
-					H?.apply_damage(2,BURN,"r_hand")
+					H?.apply_damage(2,DAMAGE_TYPE_BURN,"r_hand")
 				user.visible_message("<span class='notice'>After a few attempts, [user] manages to light the [src], they however burn their finger in the process.</span>")
 
 		set_light(2)

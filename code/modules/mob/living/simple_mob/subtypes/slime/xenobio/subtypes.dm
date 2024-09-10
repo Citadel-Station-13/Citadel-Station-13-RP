@@ -201,12 +201,13 @@
 
 /mob/living/simple_mob/slime/xenobio/dark_purple/on_bullet_act(obj/projectile/proj, impact_flags, list/bullet_act_args)
 	. = ..()
-	if(proj.damage_type && proj.damage_type == BURN && proj.damage_force) // Most bullets won't trigger the explosion, as a mercy towards Security.
+	// Most bullets won't trigger the explosion, as a mercy towards Security.
+	if(proj.damage_type && proj.damage_type == DAMAGE_TYPE_BURN && proj.damage_force)
 		log_and_message_admins("[src] ignited due to bring hit by a burning projectile[proj.firer ? " by [key_name(proj.firer)]" : ""].")
 		ignite()
 
 /mob/living/simple_mob/slime/xenobio/dark_purple/attackby(var/obj/item/W, var/mob/user)
-	if(istype(W) && W.damage_force && W.damtype == BURN)
+	if(istype(W) && W.damage_force && W.damtype == DAMAGE_TYPE_BURN)
 		log_and_message_admins("[src] ignited due to being hit with a burning weapon ([W]) by [key_name(user)].")
 		ignite()
 	else
@@ -654,12 +655,13 @@
 
 /mob/living/simple_mob/slime/xenobio/oil/on_bullet_act(obj/projectile/proj, impact_flags, list/bullet_act_args)
 	. = ..()
-	if(proj.damage_type && proj.damage_type == BURN && proj.damage_force) // Most bullets won't trigger the explosion, as a mercy towards Security.
+	// Most bullets won't trigger the explosion, as a mercy towards Security.
+	if(proj.damage_type && proj.damage_type == DAMAGE_TYPE_BURN && proj.damage_force)
 		log_and_message_admins("[src] exploded due to bring hit by a burning projectile[proj.firer ? " by [key_name(proj.firer)]" : ""].")
 		explode()
 
 /mob/living/simple_mob/slime/xenobio/oil/attackby(obj/item/W, mob/living/user)
-	if(istype(W) && W.damage_force && W.damtype == BURN)
+	if(istype(W) && W.damage_force && W.damtype == DAMAGE_TYPE_BURN)
 		log_and_message_admins("[src] exploded due to being hit with a burning weapon ([W]) by [key_name(user)].")
 		explode()
 	else

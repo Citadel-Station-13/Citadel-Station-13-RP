@@ -187,7 +187,7 @@
 			damage_mode = DAMAGE_MODE_SHARP,
 			weapon_descriptor = "a needle",
 		)
-		chosen_limb.create_wound(CUT, 5)
+		chosen_limb.create_wound(WOUND_TYPE_CUT, 5)
 		detach_iv()
 		return PROCESS_KILL
 

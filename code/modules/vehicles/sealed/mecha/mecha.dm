@@ -975,7 +975,7 @@
 		log_append_to_last("Took [damage] points of damage. Damage type: \"[type]\".",1)
 	return
 
-/obj/vehicle/sealed/mecha/proc/components_handle_damage(var/damage, var/type = BRUTE)
+/obj/vehicle/sealed/mecha/proc/components_handle_damage(var/damage, var/type = DAMAGE_TYPE_BRUTE)
 	var/obj/item/mecha_parts/component/armor/AC = internal_components[MECH_ARMOR]
 
 	if(AC)
@@ -1186,7 +1186,7 @@
 		src.log_append_to_last("Armor saved.")
 		return
 
-	if(Proj.damage_type == HALLOSS)
+	if(Proj.damage_type == DAMAGE_TYPE_HALLOSS)
 		use_power(Proj.agony * 5)
 
 	if(!(Proj.nodamage))
