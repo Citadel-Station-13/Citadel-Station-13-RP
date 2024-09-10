@@ -109,7 +109,6 @@
 /turf/simulated/shuttle/wall/dark,
 /area/awaymission/syndishuttle)
 "aD" = (
-/turf/simulated/shuttle/wall/dark,
 /turf/space,
 /area/awaymission/syndishuttle)
 "aH" = (
@@ -285,7 +284,6 @@
 /turf/simulated/shuttle/plating,
 /area/awaymission/syndishuttle)
 "bF" = (
-/turf/simulated/floor/airless,
 /turf/simulated/shuttle/wall{
 	dir = 4;
 	icon_state = "diagonalWall3"
@@ -1370,7 +1368,6 @@
 /turf/simulated/shuttle/plating,
 /area/awaymission/arrivalblock)
 "fT" = (
-/turf/space,
 /turf/simulated/shuttle/wall,
 /area/awaymission/arrivalblock)
 "fU" = (
@@ -2777,7 +2774,7 @@
 /turf/simulated/floor,
 /area/awaymission/arrivalblock)
 "kN" = (
-/obj/item/melee/energy/sword,
+/obj/item/melee/transforming/energy/sword,
 /obj/item/clothing/shoes/syndigaloshes,
 /obj/item/clothing/under/syndicate,
 /obj/effect/decal/remains/human{

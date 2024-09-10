@@ -427,11 +427,11 @@
 	. = CLICKCHAIN_DO_NOT_PROPAGATE
 	if(!target.mind)
 		return
-	if(target.faction == user.faction)
+	if(target.shares_iff_faction(user))
 		to_chat(target, "<span class='notice'>You are graced by the familiar gaze of the Mother for a brief moment.</span>")
 
 	to_chat(user, "<span class='notice'>You smear the Mark of the Mother on [target]'s forehead using the [src].</span>")
 	to_chat(target, "<span class='notice'>You sense an unfamiliar presence looming over you. It encases you in a gentle, all-encompassing warmth.</span>")
-	target.faction = user.faction
+	target.copy_iff_factions(user)
 	playsound(src, pick(use_sound), 25)
 	qdel(src)

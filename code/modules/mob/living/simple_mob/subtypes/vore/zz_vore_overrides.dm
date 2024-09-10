@@ -24,6 +24,3 @@
 /mob/living/simple_mob/animal/space/carp/holographic
 
 /mob/living/simple_mob/animal/space/carp/holographic
-
-/mob/living/simple_mob/animal/passive/mouse
-	faction = "mouse" //Giving mice a faction so certain mobs can get along with them.

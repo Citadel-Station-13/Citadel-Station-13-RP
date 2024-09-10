@@ -55,6 +55,15 @@
 	zoomdevicename = "scope"
 	inhand_default_type = INHAND_DEFAULT_ICON_GUNS
 
+	//* Accuracy, Dispersion, Instability *//
+
+	/// entirely disable baymiss on fired projectiles
+	///
+	/// * this is a default value; set to null by default to have the projectile's say.
+	var/accuracy_disabled = null
+
+	// legacy below //
+
 	var/burst = 1
 	var/fire_delay = 6 	//delay after shooting before the gun can be used again
 	var/burst_delay = 2	//delay between shots, if firing in bursts
@@ -321,9 +330,10 @@
 	if(!istype(A))
 		return ..()
 	if(user.a_intent == INTENT_HARM) //point blank shooting
-		if (A == user && user.zone_sel.selecting == O_MOUTH && !mouthshoot)
-			handle_suicide(user)
-			return
+		// todo: disabled for now
+		// if (A == user && user.zone_sel.selecting == O_MOUTH && !mouthshoot)
+		// 	handle_suicide(user)
+		// 	return
 		var/mob/living/L = user
 		if(user && user.client && istype(L) && L.aiming && L.aiming.active && L.aiming.aiming_at != A && A != user)
 			PreFire(A,user) //They're using the new gun system, locate what they're aiming at.
@@ -501,7 +511,7 @@
 			var/acc = burst_accuracy[min(i, burst_accuracy.len)]
 			var/disp = dispersion[min(i, dispersion.len)]
 
-			P.accuracy = accuracy + acc
+			P.accuracy_overall_modify *= 1 + acc / 100
 			P.dispersion = disp
 
 			P.shot_from = src.name
@@ -646,7 +656,7 @@
 				damage_mult = 2.5
 			else if(grabstate >= GRAB_AGGRESSIVE)
 				damage_mult = 1.5
-	P.damage *= damage_mult
+	P.damage_force *= damage_mult
 
 /obj/item/gun/proc/process_accuracy(obj/projectile, mob/living/user, atom/target, var/burst, var/held_twohanded)
 	var/obj/projectile/P = projectile
@@ -662,22 +672,24 @@
 			disp_mod += one_handed_penalty*0.5 //dispersion per point of two-handedness
 
 	//Accuracy modifiers
-	P.accuracy = accuracy + acc_mod
-	P.dispersion = disp_mod
+	if(!isnull(accuracy_disabled))
+		P.accuracy_disabled = accuracy_disabled
 
-	P.accuracy -= user.get_accuracy_penalty()
+	P.accuracy_overall_modify *= 1 + (acc_mod / 100)
+	P.accuracy_overall_modify *= 1 - (user.get_accuracy_penalty() / 100)
+	P.dispersion = disp_mod
 
 	//accuracy bonus from aiming
 	if (aim_targets && (target in aim_targets))
 		//If you aim at someone beforehead, it'll hit more often.
 		//Kinda balanced by fact you need like 2 seconds to aim
 		//As opposed to no-delay pew pew
-		P.accuracy += 30
+		P.accuracy_overall_modify *= 1.3
 
 	// Some modifiers make it harder or easier to hit things.
 	for(var/datum/modifier/M in user.modifiers)
 		if(!isnull(M.accuracy))
-			P.accuracy += M.accuracy
+			P.accuracy_overall_modify += 1 + (M.accuracy / 100)
 		if(!isnull(M.accuracy_dispersion))
 			P.dispersion = max(P.dispersion + M.accuracy_dispersion, 0)
 
@@ -717,44 +729,45 @@
 	else
 		playsound(src, shot_sound, 50, 1)
 
+// todo: rework all this this is fucking dumb
 //Suicide handling.
-/obj/item/gun/var/mouthshoot = 0 //To stop people from suiciding twice... >.>
+// /obj/item/gun/var/mouthshoot = 0 //To stop people from suiciding twice... >.>
 
-/obj/item/gun/proc/handle_suicide(mob/living/user)
-	if(!ishuman(user))
-		return
-	var/mob/living/carbon/human/M = user
+// /obj/item/gun/proc/handle_suicide(mob/living/user)
+// 	if(!ishuman(user))
+// 		return
+// 	var/mob/living/carbon/human/M = user
 
-	mouthshoot = 1
-	M.visible_message("<font color='red'>[user] sticks their gun in their mouth, ready to pull the trigger...</font>")
-	if(!do_after(user, 40))
-		M.visible_message("<font color=#4F49AF>[user] decided life was worth living</font>")
-		mouthshoot = 0
-		return
-	var/obj/projectile/in_chamber = consume_next_projectile()
-	if (istype(in_chamber))
-		user.visible_message("<span class = 'warning'>[user] pulls the trigger.</span>")
-		play_fire_sound(M, in_chamber)
-		if(istype(in_chamber, /obj/projectile/beam/lasertag))
-			user.show_message("<span class = 'warning'>You feel rather silly, trying to commit suicide with a toy.</span>")
-			mouthshoot = 0
-			return
+// 	mouthshoot = 1
+// 	M.visible_message("<font color='red'>[user] sticks their gun in their mouth, ready to pull the trigger...</font>")
+// 	if(!do_after(user, 40))
+// 		M.visible_message("<font color=#4F49AF>[user] decided life was worth living</font>")
+// 		mouthshoot = 0
+// 		return
+// 	var/obj/projectile/in_chamber = consume_next_projectile()
+// 	if (istype(in_chamber))
+// 		user.visible_message("<span class = 'warning'>[user] pulls the trigger.</span>")
+// 		play_fire_sound(M, in_chamber)
+// 		if(istype(in_chamber, /obj/projectile/beam/lasertag))
+// 			user.show_message("<span class = 'warning'>You feel rather silly, trying to commit suicide with a toy.</span>")
+// 			mouthshoot = 0
+// 			return
 
-		in_chamber.on_hit(M)
-		if(in_chamber.damage_type != HALLOSS && !in_chamber.nodamage)
-			log_and_message_admins("[key_name(user)] commited suicide using \a [src]")
-			user.apply_damage(in_chamber.damage*2.5, in_chamber.damage_type, "head", used_weapon = "Point blank shot in the mouth with \a [in_chamber]", sharp=1)
-			user.death()
-		else if(in_chamber.damage_type == HALLOSS)
-			to_chat(user, "<span class = 'notice'>Ow...</span>")
-			user.apply_effect(110,AGONY,0)
-		qdel(in_chamber)
-		mouthshoot = 0
-		return
-	else
-		handle_click_empty(user)
-		mouthshoot = 0
-		return
+// 		in_chamber.on_hit(M)
+// 		if(in_chamber.damage_type != HALLOSS && !in_chamber.nodamage)
+// 			log_and_message_admins("[key_name(user)] commited suicide using \a [src]")
+// 			user.apply_damage(in_chamber.damage_force*2.5, in_chamber.damage_type, "head", used_weapon = "Point blank shot in the mouth with \a [in_chamber]", sharp=1)
+// 			user.death()
+// 		else if(in_chamber.damage_type == HALLOSS)
+// 			to_chat(user, "<span class = 'notice'>Ow...</span>")
+// 			user.apply_effect(110,AGONY,0)
+// 		qdel(in_chamber)
+// 		mouthshoot = 0
+// 		return
+// 	else
+// 		handle_click_empty(user)
+// 		mouthshoot = 0
+// 		return
 
 /obj/item/gun/proc/toggle_scope(var/zoom_amount=2.0)
 	//looking through a scope limits your periphereal vision

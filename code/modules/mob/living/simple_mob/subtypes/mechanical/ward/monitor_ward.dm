@@ -40,7 +40,7 @@
 
 // For PoIs.
 /mob/living/simple_mob/mechanical/ward/monitor/syndicate
-	faction = "syndicate"
+	iff_factions = MOB_IFF_FACTION_MERCENARY
 
 /mob/living/simple_mob/mechanical/ward/monitor/crew
 	icon_state = "ward-nt"

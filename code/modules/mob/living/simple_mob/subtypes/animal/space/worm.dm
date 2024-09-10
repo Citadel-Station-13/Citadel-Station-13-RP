@@ -15,7 +15,7 @@
 	movement_cooldown = 0
 	movement_sound = 'sound/effects/sand_step.ogg'
 
-	faction = "worm"
+	iff_factions = MOB_IFF_FACTION_WORM
 
 	status_flags = 0
 	universal_speak = 0
@@ -143,7 +143,7 @@
 			var/mob/living/simple_mob/animal/space/space_worm/newSegment = new segment_type(loc)
 			current.Attach(newSegment)
 			current = newSegment
-			current.faction = faction
+			current.copy_iff_factions(src)
 
 /mob/living/simple_mob/animal/space/space_worm/head/verb/toggle_devour()
 	set name = "Toggle Feeding"
@@ -404,7 +404,7 @@
 
 /mob/living/simple_mob/animal/space/space_worm/proc/update_body_faction()
 	if(next)	// Keep us on the same page, here.
-		faction = next.faction
+		copy_iff_factions(next)
 	if(previous)
 		previous.update_body_faction()
 		return 1

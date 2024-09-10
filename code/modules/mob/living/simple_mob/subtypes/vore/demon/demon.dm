@@ -11,9 +11,10 @@
 	icon_rest = "boxfox_rest"
 	icon = 'icons/mob/demon_vr.dmi'
 
-	faction = "demon"
-	maxHealth = 30
-	health = 30
+	iff_factions = MOB_IFF_FACTION_SANGUINE_CULT
+
+	maxHealth = 300
+	health = 300
 	movement_cooldown = 0
 
 	vision_innate = /datum/vision/baseline/demon
@@ -33,8 +34,8 @@
 	response_disarm = "pushes"
 	response_harm = "hits"
 
-	legacy_melee_damage_lower = 3
-	legacy_melee_damage_upper = 1
+	legacy_melee_damage_lower = 10
+	legacy_melee_damage_upper = 20
 	attacktext = list("clawed")
 
 

@@ -17,7 +17,7 @@
 
 	attacktext = list("mauled")
 
-	faction = "deathclaw"
+	iff_factions = MOB_IFF_FACTION_MUTANT
 
 	maxHealth = 200
 	health = 200

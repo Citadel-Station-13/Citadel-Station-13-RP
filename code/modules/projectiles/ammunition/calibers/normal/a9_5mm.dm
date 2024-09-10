@@ -30,4 +30,4 @@
 //* Projectiles *//
 
 /obj/projectile/bullet/rifle/a95
-	damage = 40
+	damage_force = 40
