@@ -108,11 +108,7 @@
 		item_state = "[initial(item_state)]"
 		collapsed = 1
 
-/obj/item/gun/ballistic/rocket/collapsible/examine(mob/user, dist)
-	. = ..()
-	return
-
-/obj/item/gun/ballistic/rocket/collapsible/consume_next_projectile(mob/user as mob)
+/obj/item/gun/ballistic/rocket/collapsible/process_next_projectile()
 	. = ..()
 	if(empty)
 		return
@@ -130,13 +126,14 @@
 	handle_casings = HOLD_CASINGS
 	unstable = 1
 
-/obj/item/gun/ballistic/rocket/tyrmalin/consume_next_projectile(mob/user as mob)
+// todo: dumb
+/obj/item/gun/ballistic/rocket/tyrmalin/process_next_projectile()
 	. = ..()
 	if(.)
 		if(unstable)
 			switch(rand(1,100))
 				if(1 to 5)
-					to_chat(user, "<span class='danger'>The rocket primer activates early!</span>")
+					visible_message("<span class='danger'>The rocket primer on [src] activates early!</span>")
 					icon_state = "rokkitlauncher-malfunction"
 					spawn(rand(2 SECONDS, 5 SECONDS))
 						if(src && !destroyed)
@@ -146,7 +143,7 @@
 							qdel(src)
 					return ..()
 				if(6 to 20)
-					to_chat(user, "<span class='notice'>The rocket flares out in the tube!</span>")
+					visible_message("<span class='notice'>The rocket in [src] flares out in the tube!</span>")
 					playsound(src, 'sound/machines/button.ogg', 25)
 					icon_state = "rokkitlauncher-broken"
 					destroyed = 1

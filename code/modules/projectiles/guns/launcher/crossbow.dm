@@ -72,10 +72,16 @@
 /obj/item/gun/launcher/crossbow/update_release_force()
 	release_force = tension*release_speed
 
-/obj/item/gun/launcher/crossbow/consume_next_projectile(mob/user=null)
+/obj/item/gun/launcher/crossbow/start_firing_cycle(atom/firer, angle, firing_flags, datum/firemode/firemode, atom/target, datum/event_args/actor/actor)
 	if(tension <= 0)
-		to_chat(user, "<span class='warning'>\The [src] is not drawn back!</span>")
-		return null
+		actor?.chat_feedback(
+			SPAN_WARNING("The bolt on [src] isn't drawn back!"),
+			target = src,
+		)
+		return
+	return ..()
+
+/obj/item/gun/launcher/crossbow/process_next_entity()
 	return bolt
 
 /obj/item/gun/launcher/crossbow/handle_post_fire(mob/user, atom/target)

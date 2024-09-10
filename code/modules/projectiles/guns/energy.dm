@@ -102,7 +102,7 @@
 	..()
 	update_icon()
 
-/obj/item/gun/energy/consume_next_projectile()
+/obj/item/gun/energy/process_next_projectile()
 	if(!obj_cell_slot?.cell)
 		return null
 	if(!ispath(projectile_type))

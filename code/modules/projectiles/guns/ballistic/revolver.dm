@@ -30,7 +30,8 @@
 	if(rand(1,max_shells) > loaded.len)
 		chamber_offset = rand(0,max_shells - loaded.len)
 
-/obj/item/gun/ballistic/revolver/consume_next_projectile()
+// todo: dumb
+/obj/item/gun/ballistic/revolver/process_next_projectile()
 	if(chamber_offset)
 		chamber_offset--
 		return

@@ -83,7 +83,7 @@
 		return
 	eject_tank(user)
 
-/obj/item/gun/launcher/pneumatic/consume_next_projectile(mob/user=null)
+/obj/item/gun/launcher/pneumatic/process_next_entity()
 	if(!item_storage.contents.len)
 		return null
 	if (!tank)

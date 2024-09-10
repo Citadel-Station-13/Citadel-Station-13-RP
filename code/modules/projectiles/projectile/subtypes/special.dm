@@ -390,31 +390,18 @@
 
 //Plasma Burst
 /obj/projectile/plasma
-	name ="plasma bolt"
+	name = "plasma bolt"
 	icon_state= "fuel-tritium"
-	damage_force = 50
-	damage_type = BURN
+	damage_force = 20
+	damage_type = DAMAGE_TYPE_BURN
 	damage_flag = ARMOR_ENERGY
 	light_range = 4
 	light_power = 3
 	light_color = "#00ccff"
-	var/heavy = FALSE
-
-/obj/projectile/plasma/on_impact(atom/target, impact_flags, def_zone, efficiency)
-	. = ..()
-	if(. & PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT)
-		return
-
-	var/blast_dir = src.dir
-	target.visible_message("<span class='danger'>\The [target] is engulfed in roiling plasma!</span>")
-	var/blastloc = get_step(target, blast_dir)
-	if(blastloc)
-		explosion(blastloc, -1, 0, heavy? 2 : 1, heavy? 3 : 2)
 
 /obj/projectile/plasma/hot
-	name ="heavy plasma bolt"
-	damage_force = 75
+	name = "heavy plasma bolt"
+	damage_force = 35
 	light_range = 5
 	light_power = 4
 	light_color = "#00ccff"
-	heavy = TRUE

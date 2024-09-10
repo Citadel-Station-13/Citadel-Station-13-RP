@@ -249,12 +249,13 @@
 	caliber = initial(ammo.caliber)
 	return ..()
 
-/obj/item/gun/ballistic/pirate/consume_next_projectile(mob/user as mob)
+// todo: dumb
+/obj/item/gun/ballistic/pirate/process_next_projectile()
 	. = ..()
 	if(.)
 		if(unstable)
 			if(prob(10))
-				to_chat(user, "<span class='danger'>The barrel bursts open as the gun backfires!</span>")
+				visible_message("<span class='danger'>The barrel bursts open on [src] as the gun backfires!</span>")
 				name = "destroyed zip gun"
 				desc = "The barrel has burst. It seems inoperable."
 				icon_state = "[initial(icon_state)]-destroyed"
@@ -263,8 +264,6 @@
 					explosion(get_turf(src), -1, 0, 2, 3)
 
 		if(destroyed)
-			to_chat(user, "<span class='notice'>The [src] is broken!</span>")
-			handle_click_empty()
 			return
 
 /obj/item/gun/ballistic/pirate/Fire(atom/target, mob/living/user, clickparams, pointblank, reflex)

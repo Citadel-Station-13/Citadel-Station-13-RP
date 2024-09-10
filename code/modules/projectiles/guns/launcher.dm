@@ -25,3 +25,9 @@
 	projectile.forceMove(get_turf(user))
 	projectile.throw_at_old(target, throw_distance, release_force, user)
 	return 1
+
+/**
+ * Returns the next /atom/movable to throw, or a GUN_FIRED_* for fail satus.
+ */
+/obj/item/gun/launcher/proc/process_next_entity()
+	return

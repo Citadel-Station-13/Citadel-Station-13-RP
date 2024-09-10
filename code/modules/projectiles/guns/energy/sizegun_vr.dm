@@ -34,7 +34,7 @@
 	. = ..()
 	select_size()
 
-/obj/item/gun/energy/sizegun/consume_next_projectile()
+/obj/item/gun/energy/sizegun/process_next_projectile()
 	. = ..()
 	var/obj/projectile/beam/sizelaser/G = .
 	if(istype(G))

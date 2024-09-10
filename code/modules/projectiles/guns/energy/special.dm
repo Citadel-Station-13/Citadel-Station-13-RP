@@ -77,9 +77,7 @@
 
 	to_chat(usr, "<span class='info'>You set the [src]'s targeted genetic area to [genemask].</span>")
 
-	return
-
-/obj/item/gun/energy/floragun/consume_next_projectile()
+/obj/item/gun/energy/floragun/process_next_projectile()
 	. = ..()
 	var/obj/projectile/energy/floramut/gene/G = .
 	if(istype(G))
@@ -495,23 +493,6 @@
 	else
 		return
 
-/obj/item/gun/energy/plasma/consume_next_projectile(mob/user as mob)
-	. = ..()
-	if(src.projectile_type == /obj/projectile/plasma/hot)
-		switch(rand(1,6))
-			if(1)
-				to_chat(user, "<span class='danger'>The containment coil catastrophically overheats!</span>")
-				overheating = 1
-				spawn(rand(2 SECONDS,5 SECONDS))
-					if(src)
-						visible_message("<span class='critical'>\The [src] detonates!</span>")
-						explosion(get_turf(src), -1, 0, 2, 3)
-						qdel(chambered)
-						qdel(src)
-				return ..()
-			if(2 to 6)
-				return ..()
-
 /obj/item/gun/energy/plasma/pistol
 	name = "\improper Wyrm plasma pistol"
 	desc = "This scaled down NT-PLP-EX 'Wyrm' plasma pistol fires magnetically contained balls of plasma at high velocity. Due to the volatility of the round, the weapon is known to overheat and fail catastrophically if fired too frequently."
@@ -531,21 +512,3 @@
 		update_held_icon()
 	else
 		return
-
-/obj/item/gun/energy/plasma/pistol/consume_next_projectile(mob/user as mob)
-	. = ..()
-	if(.)
-		if(src.projectile_type == /obj/projectile/plasma/hot)
-			switch(rand(1,6))
-				if(1)
-					to_chat(user, "<span class='danger'>The containment coil catastrophically overheats!</span>")
-					overheating = 1
-					spawn(rand(2 SECONDS,5 SECONDS))
-						if(src)
-							visible_message("<span class='critical'>\The [src] detonates!</span>")
-							explosion(get_turf(src), -1, 0, 2, 3)
-							qdel(chambered)
-							qdel(src)
-					return ..()
-				if(2 to 6)
-					return ..()

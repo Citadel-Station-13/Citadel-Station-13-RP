@@ -21,10 +21,8 @@
 	var/animated_pump = 0 //This is for cyling animations.
 	var/empty_sprite = 0 //This is just a dirty var so it doesn't fudge up.
 
-/obj/item/gun/ballistic/shotgun/pump/consume_next_projectile()
-	if(chambered)
-		return chambered.get_projectile()
-	return null
+/obj/item/gun/ballistic/shotgun/pump/process_next_projectile()
+	return chambered?.get_projectile()
 
 /obj/item/gun/ballistic/shotgun/pump/attack_self(mob/user)
 	// todo: this breaks other attack self interactions :(

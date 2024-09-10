@@ -6,7 +6,7 @@
 /**
  * async proc to start a firing cycle
  *
- * @return firing cycle ID
+ * @return firing cycle ID on success, null on fail.
  */
 /obj/item/gun/proc/start_firing_cycle(atom/firer, angle, firing_flags, datum/firemode/firemode, atom/target, datum/event_args/actor/actor)
 	SHOULD_CALL_PARENT(TRUE)
@@ -73,21 +73,29 @@
 	on_firing_cycle_start(firer, angle, firing_flags, firemode, target, actor)
 
 	var/iterations
+	var/iterations_fired = 0
 	var/iteration_delay
+	var/last_firing_result
 
 	#warn impl stuff
 
 	for(var/iteration in 1 to iterations)
-		var/result = fire(firer, angle, firing_flags, firemode, iteration, target, actor)
-		if(!post_fire(firer, angle, firing_flags, firemode, iteration, result, target, actor))
+		last_firing_result = fire(firer, angle, firing_flags, firemode, iteration, target, actor)
+
+		switch(last_firing_result)
+			if(GUN_FIRED_SUCCESS)
+				iterations_fired++
+
+		if(!post_fire(firer, angle, firing_flags, firemode, iteration, last_firing_result, target, actor))
 			break
+
 		if(iteration != iterations)
 			sleep(iteration_delay)
 			if(firing_cycle != cycle_id)
 				interrupted = TRUE
 				break
 
-	on_firing_cycle_end(firer, angle, firing_flags, firemode, iteration, target, actor)
+	on_firing_cycle_end(firer, angle, firing_flags, firemode, target, actor, iterations_fired, last_firing_result)
 
 //* Firing *//
 

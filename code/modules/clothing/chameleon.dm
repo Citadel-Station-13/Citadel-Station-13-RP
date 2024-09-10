@@ -380,9 +380,9 @@
 			var/obj/item/gun/G = gun_type
 			src.gun_choices[initial(G.name)] = gun_type
 
-/obj/item/gun/energy/chameleon/consume_next_projectile()
+/obj/item/gun/energy/chameleon/process_next_projectile()
 	var/obj/projectile/P = ..()
-	if(P && ispath(copy_projectile))
+	if(istype(P) && ispath(copy_projectile))
 		P.name = initial(copy_projectile.name)
 		P.icon = initial(copy_projectile.icon)
 		P.icon_state = initial(copy_projectile.icon_state)
