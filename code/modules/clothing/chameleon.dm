@@ -366,7 +366,7 @@
 	projectile_type = /obj/projectile/chameleon
 	charge_meter = 0
 	charge_cost = 48 //uses next to no power, since it's just holograms
-	battery_lock = 1
+	legacy_battery_lock = 1
 
 	var/obj/projectile/copy_projectile
 	var/global/list/gun_choices

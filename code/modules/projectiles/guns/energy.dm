@@ -31,8 +31,7 @@
 	var/charge_tick = 0
 	var/charge_delay = 75	//delay between firing and charging
 
-	var/battery_lock = 0	//If set, weapon cannot switch batteries
-	#warn dela with this
+	var/legacy_battery_lock = 0	//If set, weapon cannot switch batteries
 
 /obj/item/gun/energy/Initialize(mapload)
 	if(self_recharge)
@@ -177,3 +176,11 @@
 	if(!cell)
 		return 0
 	return cell.charge / cell.maxcharge
+
+
+//* Power *//
+
+/obj/item/gun/energy/object_cell_slot_mutable(mob/user, datum/object_system/cell_slot/slot)
+	if(legacy_battery_lock)
+		return FALSE
+	return ..()

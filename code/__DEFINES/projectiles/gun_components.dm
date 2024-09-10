@@ -37,7 +37,7 @@
 /// component used for accelerating the projectile.
 #define GUN_COMPONENT_ACCELERATION_COIL "magnetic-coil"
 
-//* - generally energy - *//
+//* - generally particle (energy) - *//
 
 /// component used to (re)-focus the energy beam being emit
 #define GUN_COMPONENT_FOCUSING_LENS "focusing-lens"

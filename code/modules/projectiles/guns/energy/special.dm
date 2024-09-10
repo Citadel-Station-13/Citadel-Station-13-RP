@@ -46,7 +46,7 @@
 	modifystate = "floramut"
 	cell_type = /obj/item/cell/device/weapon/recharge
 	no_pin_required = 1
-	battery_lock = 1
+	legacy_battery_lock = 1
 	var/singleton/plantgene/gene = null
 
 	firemodes = list(
@@ -140,7 +140,7 @@
 	projectile_type = /obj/projectile/change
 	origin_tech = null
 	cell_type = /obj/item/cell/device/weapon/recharge
-	battery_lock = 1
+	legacy_battery_lock = 1
 	charge_meter = 0
 
 /obj/item/gun/energy/staff/special_check(var/mob/user)
@@ -193,7 +193,7 @@
 	charge_cost = 24 // 100 shots, it's a spray and pray (to RNGesus) weapon.
 	projectile_type = /obj/projectile/energy/blue_pellet
 	cell_type = /obj/item/cell/device/weapon/recharge
-	battery_lock = 1
+	legacy_battery_lock = 1
 	accuracy = 75 // Suppressive weapons don't work too well if there's no risk of being hit.
 	burst_delay = 1 // Burst faster than average.
 	origin_tech = list(TECH_COMBAT = 6, TECH_MAGNET = 6, TECH_ILLEGAL = 6)
@@ -331,7 +331,7 @@
 	fire_delay = 10		//Old pistol
 	charge_cost = 480	//to compensate a bit for self-recharging
 	cell_type = /obj/item/cell/device/weapon/recharge/captain
-	battery_lock = 1
+	legacy_battery_lock = 1
 	one_handed_penalty = 0
 	safety_state = GUN_SAFETY_OFF
 
@@ -417,7 +417,7 @@
 	fire_delay = 10
 	charge_cost = 800
 	cell_type = /obj/item/cell/device/weapon/recharge/captain
-	battery_lock = 1
+	legacy_battery_lock = 1
 	one_handed_penalty = 0
 
 /obj/item/gun/energy/ermitter
@@ -454,7 +454,7 @@
 	fire_delay = 20
 	charge_cost = 600
 	cell_type = /obj/item/cell/device/weapon
-	battery_lock = 1
+	legacy_battery_lock = 1
 	slot_flags = SLOT_BACK
 	w_class = WEIGHT_CLASS_BULKY
 	heavy = TRUE

@@ -163,6 +163,11 @@
 	///
 	/// * This is a lazy list.
 	var/list/obj/item/gun_component/modular_components
+	/// lazy way to set internal slots, because this is modified so often
+	///
+	/// * literally not checked past init, it's used to generate the typelist
+	/// * if it's specified in the list, the list's copy is used instead.
+	var/modular_component_slots_internal = INFINITY
 	/// allowed component slots, associated to amount
 	///
 	/// * this is typelist()'d; if you want to change it later, make a copy!
@@ -224,7 +229,7 @@
 /obj/item/gun/Initialize(mapload)
 	. = ..()
 
-	// instantiate & dedupe renderers
+	// instantiate & dedupe renderers //
 	var/requires_icon_update
 	if(item_renderer)
 		if(ispath(item_renderer) || IS_ANONYMOUS_TYPEPATH(item_renderer))
@@ -241,7 +246,9 @@
 	if(requires_icon_update)
 		update_icon()
 
-	//! LEGACY: if neither of these are here, we are using legacy render.
+	//! LEGACY BELOW !//
+
+	// if neither of these are here, we are using legacy render. //
 	if(!item_renderer && !mob_renderer && render_use_legacy_by_default)
 		item_icons = list(
 			SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand_guns.dmi',
@@ -266,12 +273,23 @@
 	if(pin)
 		pin = new pin(src)
 
-	// cell system
+	//! LEGACY ABOVE !//
+
+	// cell system //
 	if(cell_system)
 		var/datum/object_system/cell_slot/slot = init_cell_slot(cell_type)
 		slot.legacy_use_device_cells = cell_system_legacy_use_device
 		slot.remove_yank_offhand = TRUE
 		slot.remove_yank_context = TRUE
+
+	// modular components //
+	if(islist(modular_component_slots) && !(modular_component_slots = get_typelist(NAMEOF(src, modular_component_slots))))
+		// if it's 1. a list and 2. we can't grab a typelist for it,
+		// we make it, patching internal modules lazily
+		var/internal_modules_patch = modular_component_slots[GUN_COMPONENT_INTERNAL_MODULE]
+		if(isnull(internal_modules_patch))
+			modular_component_slots[GUN_COMPONENT_INTERNAL_MODULE] = modular_component_slots_internal
+		modular_component_slots = typelist(NAMEOF(src, modular_component_slots), modular_component_slots)
 
 /obj/item/gun/examine(mob/user, dist)
 	. = ..()

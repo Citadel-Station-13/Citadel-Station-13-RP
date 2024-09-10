@@ -118,9 +118,7 @@
 					explosion(get_turf(src), -1, 0, 2, 3)
 
 		if(destroyed)
-			to_chat(user, "<span class='notice'>The [src] is broken!</span>")
-			handle_click_empty()
-			return
+			return GUN_FIRED_FAIL_INERT
 
 /obj/item/gun/ballistic/contender/pipegun/Fire(atom/target, mob/living/user, clickparams, pointblank, reflex)
 	. = ..()

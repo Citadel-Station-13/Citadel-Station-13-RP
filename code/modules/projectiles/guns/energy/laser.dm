@@ -123,7 +123,7 @@
 	fire_delay = 10		//Old pistol
 	charge_cost = 480	//to compensate a bit for self-recharging
 	cell_type = /obj/item/cell/device/weapon/recharge/captain
-	battery_lock = 1
+	legacy_battery_lock = 1
 
 /obj/item/gun/energy/lasercannon
 	name = "laser cannon"
@@ -133,7 +133,7 @@
 	origin_tech = list(TECH_COMBAT = 4, TECH_MATERIAL = 3, TECH_POWER = 3)
 	slot_flags = SLOT_BELT|SLOT_BACK
 	projectile_type = /obj/projectile/beam/heavylaser/cannon
-	battery_lock = 1
+	legacy_battery_lock = 1
 	fire_delay = 20
 	w_class = WEIGHT_CLASS_BULKY
 	heavy = TRUE
@@ -203,7 +203,7 @@
 	pin = /obj/item/firing_pin/explorer
 	cell_type = /obj/item/cell/device/weapon/recharge/sniper
 	accuracy = 45 //Modifications include slightly better hip-firing furniture.
-	battery_lock = 1 //With the change that the normal DMR can now change the weapon cell, we need to add this here so people can't take out the self-recharging special cell.
+	legacy_battery_lock = 1 //With the change that the normal DMR can now change the weapon cell, we need to add this here so people can't take out the self-recharging special cell.
 	scoped_accuracy = 100
 	charge_cost = 600
 
@@ -254,7 +254,7 @@
 	materials_base = list(MAT_STEEL = 2000)
 	projectile_type = /obj/projectile/beam/lasertag/blue
 	cell_type = /obj/item/cell/device/weapon/recharge
-	battery_lock = 1
+	legacy_battery_lock = 1
 
 /obj/item/gun/energy/lasertag/blue
 	icon_state = "bluetag"
@@ -321,7 +321,8 @@
 	if(.)
 		if(unstable)
 			if(prob(10))
-				to_chat(user, "<span class='danger'>The cell overcooks and ruptures!</span>")
+				// todo: actor support if we keep this shit
+				visible_message("<span class='danger'>The cell overcooks and ruptures!</span>")
 				spawn(rand(2 SECONDS,5 SECONDS))
 					if(!QDELETED(src))
 						visible_message("<span class='critical'>\The [src] detonates!</span>")

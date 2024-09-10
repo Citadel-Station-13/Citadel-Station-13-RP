@@ -7,7 +7,7 @@
 	item_state = "bow_pipe"
 	slot_flags = SLOT_BACK | SLOT_BELT
 	charge_cost = 1200
-	battery_lock = 1
+	legacy_battery_lock = 1
 	pin = /obj/item/firing_pin/explorer
 	projectile_type = /obj/projectile/ion
 

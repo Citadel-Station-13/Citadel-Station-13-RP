@@ -10,6 +10,8 @@
  * this way we have separation between behaviors only needed on guns that shoot
  * /obj/projectile's. that said, this is a little annoying to do (path length bloat)
  * so for now we put the projectile procs in their own file.
+ *
+ * maybe we won't do it after all due to path length bloat but the current method definitely just sucks.
  */
 
 /**
@@ -30,4 +32,6 @@
  * * firer - (optional) the actual firer.
  */
 /obj/item/gun/proc/process_next_projectile(iteration, firing_flags, datum/firemode/firemode, datum/event_args/actor/actor, atom/firer)
-	#warn impl
+	. = GUN_FIRED_FAIL_UNKNOWN
+	// todo: on base /gun/projectile?
+	CRASH("attempted to process next projectile on base /gun")

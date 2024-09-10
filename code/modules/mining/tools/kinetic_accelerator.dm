@@ -26,7 +26,7 @@
 
 	projectile_type = /obj/projectile/kinetic
 	charge_cost = 1200
-	battery_lock = TRUE
+	legacy_battery_lock = TRUE
 	fire_sound = 'sound/weapons/kenetic_accel.ogg'
 	render_use_legacy_by_default = FALSE
 	var/overheat_time = 16

@@ -14,7 +14,7 @@
 	origin_tech = list(TECH_BLUESPACE = 4)
 	modifystate = "sizegun-shrink"
 	no_pin_required = 1
-	battery_lock = 1
+	legacy_battery_lock = 1
 	var/size_set_to = 1
 	firemodes = list(
 		list(mode_name		= "select size",
@@ -110,5 +110,5 @@
 	origin_tech = list(TECH_BLUESPACE = 4)
 	modifystate = "sizegun-shrink"
 	no_pin_required = 1
-	battery_lock = 1
+	legacy_battery_lock = 1
 	firemodes = list()

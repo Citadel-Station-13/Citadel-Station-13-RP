@@ -37,7 +37,7 @@
 	fire_delay = 6	//This one's not a handgun, it should have the same fire delay as everything else
 	self_recharge = 1
 	modifystate = null
-	battery_lock = 1
+	legacy_battery_lock = 1
 	recharge_time = 6 // every 6 ticks, recharge 2 shots. Slightly slower than AEG.
 	charge_delay = 10 //Starts recharging faster after firing than an AEG though.
 	one_handed_penalty = 15
@@ -51,7 +51,7 @@
 	slot_flags = SLOT_BACK
 	origin_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 5, TECH_POWER = 4, TECH_MAGNET = 4)
 	projectile_type = /obj/projectile/bullet/particle/heavy
-	battery_lock = 1
+	legacy_battery_lock = 1
 	fire_delay = 15 // fires faster than a laser cannon. c'mon, it's an awesome-but-impractical endgame gun.
 	w_class = WEIGHT_CLASS_HUGE // So it can't fit in a backpack.
 	damage_force = 10

@@ -432,16 +432,16 @@
 /obj/item/gun/energy/netgun,
 /obj/item/gun/energy/sniperrifle,
 /obj/item/gun/energy/gun/martin{
-	battery_lock = 0
+	legacy_battery_lock = 0
 	},
 /obj/item/gun/energy/gun/martin{
-	battery_lock = 0
+	legacy_battery_lock = 0
 	},
 /obj/item/gun/energy/gun/martin{
-	battery_lock = 0
+	legacy_battery_lock = 0
 	},
 /obj/item/gun/energy/gun/martin{
-	battery_lock = 0
+	legacy_battery_lock = 0
 	},
 /obj/item/cell/device/weapon,
 /obj/item/cell/device/weapon,
