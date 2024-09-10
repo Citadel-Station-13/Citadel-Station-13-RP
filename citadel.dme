@@ -4499,6 +4499,7 @@
 #include "code\modules\projectiles\projectile\subtypes\change.dm"
 #include "code\modules\projectiles\projectile\subtypes\energy.dm"
 #include "code\modules\projectiles\projectile\subtypes\forcebolt.dm"
+#include "code\modules\projectiles\projectile\subtypes\ion.dm"
 #include "code\modules\projectiles\projectile\subtypes\pellet.dm"
 #include "code\modules\projectiles\projectile\subtypes\scatter.dm"
 #include "code\modules\projectiles\projectile\subtypes\unsorted.dm"

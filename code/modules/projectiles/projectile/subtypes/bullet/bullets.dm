@@ -157,7 +157,7 @@
 	SA_vulnerability = MOB_CLASS_DEMONIC | MOB_CLASS_ABERRATION
 	holy = TRUE
 
-//EMP shotgun 'slug', it's basically a beanbag that pops a tiny emp when it hits. //Not currently used
+//EMP shotgun 'slug', it's basically a beanbag that pops a tiny emp when it hits.
 /obj/projectile/bullet/shotgun/ion
 	name = "ion slug"
 	fire_sound = 'sound/weapons/gunshot/gunshot_tech_huge.ogg'
@@ -165,15 +165,13 @@
 	embed_chance = 0
 	sharp = 0
 	damage_flag = ARMOR_MELEE
-
 	combustion = FALSE
 
-/obj/projectile/bullet/shotgun/ion/on_impact(atom/target, impact_flags, def_zone, efficiency)
-	. = ..()
-	if(. & PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT)
-		return
-	empulse(target, 0, 0, 2, 0)	//Only affects what it hits
-	. |= PROJECTILE_IMPACT_DELETE
+	base_projectile_effects = list(
+		/datum/projectile_effect/detonation/legacy_emp{
+			sev_3 = 2;
+		}
+	)
 
 //Frag shot
 /obj/projectile/bullet/shotgun/frag12
