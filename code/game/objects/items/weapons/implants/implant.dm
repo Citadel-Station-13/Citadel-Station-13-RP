@@ -61,7 +61,7 @@
 		)
 	else
 		var/mob/living/M = imp_in
-		M.apply_damage(15,BURN)
+		M.apply_damage(15,DAMAGE_TYPE_BURN)
 	name = "melted implant"
 	desc = "Charred circuit in melted plastic case. Wonder what that used to be..."
 	icon_state = "implant_melted"
@@ -260,7 +260,7 @@ Implant Specifics:<BR>"}
 					if (istype(part,/obj/item/organ/external/chest) ||	\
 						istype(part,/obj/item/organ/external/groin) ||	\
 						istype(part,/obj/item/organ/external/head))
-						part.create_wound(BRUISE, 80)	//mangle them instead
+						part.create_wound(WOUND_TYPE_BRUISE, 80)	//mangle them instead
 						explosion(get_turf(imp_in), -1, -1, 1, 3)
 						qdel(src)
 					else
@@ -336,7 +336,7 @@ Implant Specifics:<BR>"}
 				if (istype(part,/obj/item/organ/external/chest) ||	\
 					istype(part,/obj/item/organ/external/groin) ||	\
 					istype(part,/obj/item/organ/external/head))
-					part.create_wound(BRUISE, 80)	//mangle them instead
+					part.create_wound(WOUND_TYPE_BRUISE, 80)	//mangle them instead
 				else
 					part.droplimb(0,DROPLIMB_BLUNT)
 			explosion(get_turf(imp_in), -1, -1, 1, 3)

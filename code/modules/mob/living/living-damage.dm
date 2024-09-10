@@ -8,7 +8,7 @@
 	Returns
 	standard 0 if fail
 */
-/mob/living/proc/apply_damage(var/damage = 0,var/damagetype = BRUTE, var/def_zone = null, var/blocked = 0, var/soaked = 0, var/used_weapon = null, var/sharp = 0, var/edge = 0)
+/mob/living/proc/apply_damage(var/damage = 0,var/damagetype = DAMAGE_TYPE_BRUTE, var/def_zone = null, var/blocked = 0, var/soaked = 0, var/used_weapon = null, var/sharp = 0, var/edge = 0)
 	if(!damage || (blocked >= 100))
 		return 0
 	if(soaked)
@@ -18,26 +18,26 @@
 			damage -= soaked
 	blocked = (100-blocked)/100
 	switch(damagetype)
-		if(BRUTE)
+		if(DAMAGE_TYPE_BRUTE)
 			adjustBruteLoss(damage * blocked)
-		if(BURN)
+		if(DAMAGE_TYPE_BURN)
 			if(MUTATION_COLD_RESIST in mutations)
 				damage = 0
 			adjustFireLoss(damage * blocked)
-		if(SEARING)
-			apply_damage(damage / 3, BURN, def_zone, blocked, soaked, used_weapon, sharp, edge)
-			apply_damage(damage / 3 * 2, BRUTE, def_zone, blocked, soaked, used_weapon, sharp, edge)
-		if(TOX)
+		if(DAMAGE_TYPE_SEARING)
+			apply_damage(damage / 3, DAMAGE_TYPE_BURN, def_zone, blocked, soaked, used_weapon, sharp, edge)
+			apply_damage(damage / 3 * 2, DAMAGE_TYPE_BRUTE, def_zone, blocked, soaked, used_weapon, sharp, edge)
+		if(DAMAGE_TYPE_TOX)
 			adjustToxLoss(damage * blocked)
-		if(OXY)
+		if(DAMAGE_TYPE_OXY)
 			adjustOxyLoss(damage * blocked)
-		if(CLONE)
+		if(DAMAGE_TYPE_CLONE)
 			adjustCloneLoss(damage * blocked)
-		if(HALLOSS)
+		if(DAMAGE_TYPE_HALLOSS)
 			adjustHalLoss(damage * blocked)
-		if(ELECTROCUTE)
+		if(DAMAGE_TYPE_ELECTROCUTE)
 			electrocute_act(damage, used_weapon, 1.0, def_zone)
-		if(BIOACID)
+		if(DAMAGE_TYPE_BIOACID)
 			if(isSynthetic())
 				adjustFireLoss(damage * blocked)
 			else
@@ -50,12 +50,12 @@
 /mob/living/proc/apply_damages(var/brute = 0, var/burn = 0, var/tox = 0, var/oxy = 0, var/clone = 0, var/halloss = 0, var/def_zone = null, var/blocked = 0)
 	if(blocked >= 100)
 		return 0
-	if(brute)	apply_damage(brute, BRUTE, def_zone, blocked)
-	if(burn)	apply_damage(burn, BURN, def_zone, blocked)
-	if(tox)		apply_damage(tox, TOX, def_zone, blocked)
-	if(oxy)		apply_damage(oxy, OXY, def_zone, blocked)
-	if(clone)	apply_damage(clone, CLONE, def_zone, blocked)
-	if(halloss) apply_damage(halloss, HALLOSS, def_zone, blocked)
+	if(brute)	apply_damage(brute, DAMAGE_TYPE_BRUTE, def_zone, blocked)
+	if(burn)	apply_damage(burn, DAMAGE_TYPE_BURN, def_zone, blocked)
+	if(tox)		apply_damage(tox, DAMAGE_TYPE_TOX, def_zone, blocked)
+	if(oxy)		apply_damage(oxy, DAMAGE_TYPE_OXY, def_zone, blocked)
+	if(clone)	apply_damage(clone, DAMAGE_TYPE_CLONE, def_zone, blocked)
+	if(halloss) apply_damage(halloss, DAMAGE_TYPE_HALLOSS, def_zone, blocked)
 	return 1
 
 
@@ -213,8 +213,8 @@
 		return
 
 	var/weapon_descriptor = RESOLVE_SHIELDCALL_WEAPON_DESCRIPTOR(args)
-	var/brute = damage_type == BRUTE? damage : 0
-	var/burn = damage_type == BURN? damage : 0
+	var/brute = damage_type == DAMAGE_TYPE_BRUTE? damage : 0
+	var/burn = damage_type == DAMAGE_TYPE_BURN? damage : 0
 
 	if(hit_zone)
 		take_targeted_damage(brute, burn, damage_mode, hit_zone, weapon_descriptor)

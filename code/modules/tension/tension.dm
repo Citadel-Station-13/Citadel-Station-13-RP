@@ -36,7 +36,7 @@
 			potential_damage = P.agony / 2
 		else
 			potential_damage = P.damage_force
-			if(P.damage_type == HALLOSS) // Not sure if any projectiles do this, but can't be too safe.
+			if(P.damage_type == DAMAGE_TYPE_HALLOSS) // Not sure if any projectiles do this, but can't be too safe.
 				potential_damage /= 2
 			// Rubber bullets, I guess.
 			potential_damage += P.agony / 2

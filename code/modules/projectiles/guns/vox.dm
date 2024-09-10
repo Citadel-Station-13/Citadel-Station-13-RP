@@ -80,7 +80,7 @@
 	nodamage = 1
 	taser_effect = 1
 	agony = 55
-	damage_type = HALLOSS
+	damage_type = DAMAGE_TYPE_HALLOSS
 	light_color = "#8837A3"
 
 	muzzle_type = /obj/effect/projectile/muzzle/darkmatterstun
@@ -93,7 +93,7 @@
 	fire_sound = 'sound/weapons/eLuger.ogg'
 	damage_force = 35
 	armor_penetration = 35
-	damage_type = BRUTE
+	damage_type = DAMAGE_TYPE_BRUTE
 	damage_flag = ARMOR_ENERGY
 	light_color = "#8837A3"
 
@@ -109,7 +109,7 @@
 	fire_sound = 'sound/weapons/eLuger.ogg'
 	damage_force = 20
 	armor_penetration = 35
-	damage_type = BRUTE
+	damage_type = DAMAGE_TYPE_BRUTE
 	damage_flag = ARMOR_ENERGY
 	light_color = "#8837A3"
 
@@ -142,7 +142,7 @@
 	fire_sound = 'sound/effects/basscannon.ogg'
 	damage_force = 5
 	armor_penetration = 30
-	damage_type = BRUTE
+	damage_type = DAMAGE_TYPE_BRUTE
 	damage_flag = ARMOR_MELEE
 	embed_chance = 0
 	vacuum_traversal = 0

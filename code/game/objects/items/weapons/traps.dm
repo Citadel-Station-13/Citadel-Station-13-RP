@@ -128,7 +128,7 @@
 	if(soaked >= 30)
 		return
 
-	if(!L.apply_damage(trap_damage, BRUTE, target_zone, blocked, soaked, used_weapon=src))
+	if(!L.apply_damage(trap_damage, DAMAGE_TYPE_BRUTE, target_zone, blocked, soaked, used_weapon=src))
 		return 0
 
 	//trap the victim in place

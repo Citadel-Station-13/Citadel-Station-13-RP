@@ -65,7 +65,7 @@
 	name = "icicle"
 	icon_state = "ice_2"
 	damage_force = 40
-	damage_type = BRUTE
+	damage_type = DAMAGE_TYPE_BRUTE
 	damage_flag = ARMOR_MELEE
 	armor_penetration = 30
 	speed = 7.5 * WORLD_ICON_SIZE
