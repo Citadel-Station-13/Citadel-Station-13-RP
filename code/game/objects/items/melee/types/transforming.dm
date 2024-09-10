@@ -133,7 +133,7 @@
 	damage_force = VALUE_OR_DEFAULT(active_damage_force, initial(damage_force))
 	damage_tier = VALUE_OR_DEFAULT(active_damage_tier, initial(damage_tier))
 	damage_mode = VALUE_OR_DEFAULT(active_damage_mode, initial(damage_mode))
-	damage_type = VALUE_OR_DEFAULT(active_damage_type, initial(damtype))
+	damage_type = VALUE_OR_DEFAULT(active_damage_type, initial(damage_type))
 
 	throw_force = VALUE_OR_DEFAULT(active_throw_force, initial(throw_force))
 	throw_resist = VALUE_OR_DEFAULT(active_throw_resist, initial(throw_resist))
@@ -159,7 +159,7 @@
 	damage_force = VALUE_OR_DEFAULT(inactive_damage_force, initial(damage_force))
 	damage_tier = VALUE_OR_DEFAULT(inactive_damage_tier, initial(damage_tier))
 	damage_mode = VALUE_OR_DEFAULT(inactive_damage_mode, initial(damage_mode))
-	damage_type = VALUE_OR_DEFAULT(inactive_damage_type, initial(damtype))
+	damage_type = VALUE_OR_DEFAULT(inactive_damage_type, initial(damage_type))
 
 	throw_force = VALUE_OR_DEFAULT(inactive_throw_force, initial(throw_force))
 	throw_resist = VALUE_OR_DEFAULT(inactive_throw_resist, initial(throw_resist))

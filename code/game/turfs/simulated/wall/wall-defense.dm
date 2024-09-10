@@ -47,7 +47,7 @@
 	// todo: maybe the item side should handle this?
 	run_damage_instance(
 		weapon.damage_force * (clickchain ? clickchain.damage_multiplier : 1),
-		weapon.damtype,
+		weapon.damage_type,
 		weapon.damage_tier,
 		weapon.damage_flag,
 		weapon.damage_mode,

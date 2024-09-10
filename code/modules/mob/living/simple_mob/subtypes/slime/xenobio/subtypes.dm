@@ -207,7 +207,7 @@
 		ignite()
 
 /mob/living/simple_mob/slime/xenobio/dark_purple/attackby(var/obj/item/W, var/mob/user)
-	if(istype(W) && W.damage_force && W.damtype == DAMAGE_TYPE_BURN)
+	if(istype(W) && W.damage_force && W.damage_type == DAMAGE_TYPE_BURN)
 		log_and_message_admins("[src] ignited due to being hit with a burning weapon ([W]) by [key_name(user)].")
 		ignite()
 	else
@@ -661,7 +661,7 @@
 		explode()
 
 /mob/living/simple_mob/slime/xenobio/oil/attackby(obj/item/W, mob/living/user)
-	if(istype(W) && W.damage_force && W.damtype == DAMAGE_TYPE_BURN)
+	if(istype(W) && W.damage_force && W.damage_type == DAMAGE_TYPE_BURN)
 		log_and_message_admins("[src] exploded due to being hit with a burning weapon ([W]) by [key_name(user)].")
 		explode()
 	else
