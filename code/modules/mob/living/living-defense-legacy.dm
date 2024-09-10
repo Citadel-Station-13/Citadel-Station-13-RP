@@ -222,7 +222,10 @@
 /mob/living/throw_impacted(atom/movable/AM, datum/thrownthing/TT)
 	if(istype(AM, /obj))
 		var/obj/O = AM
-		var/dtype = O.damage_type
+		var/dtype = DAMAGE_TYPE_BRUTE
+		if(isitem(AM))
+			var/obj/item/impacting_item = AM
+			dtype = impacting_item.damage_type
 		var/throw_damage = O.throw_force * TT.get_damage_multiplier(src)
 
 		var/miss_chance = 15
