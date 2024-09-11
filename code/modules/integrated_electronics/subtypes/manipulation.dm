@@ -691,7 +691,7 @@
 	if(isliving(target))
 		if(ishuman(target))
 			var/mob/living/carbon/human/S = target
-			S.apply_damage(drill_force, BRUTE)
+			S.apply_damage(drill_force, DAMAGE_TYPE_BRUTE)
 			return
 		else if(issimple(target))
 			var/mob/living/simple_mob/S = target

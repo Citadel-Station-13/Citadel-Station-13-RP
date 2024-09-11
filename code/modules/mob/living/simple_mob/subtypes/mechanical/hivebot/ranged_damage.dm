@@ -87,7 +87,7 @@
 	icon_state = "explosion_particle"
 	modifier_type_to_apply = /datum/modifier/fire
 	modifier_duration = 6 SECONDS // About 15 damage per stack, as Life() ticks every two seconds.
-	damage = 0
+	damage_force = 0
 	nodamage = TRUE
 
 
@@ -125,8 +125,9 @@
 /obj/projectile/arc/blue_energy
 	name = "energy missile"
 	icon_state = "force_missile"
-	damage = 15 // A bit stronger since arcing projectiles are much easier to avoid than traditional ones.
-	damage_type = BURN
+	// A bit stronger since arcing projectiles are much easier to avoid than traditional ones.
+	damage_force = 15 // A bit stronger since arcing projectiles are much easier to avoid than traditional ones.
+	damage_type = DAMAGE_TYPE_BURN
 
 // Very long ranged hivebot that rains down hell.
 // Their projectiles arc, meaning they go over everything until it hits the ground.
@@ -249,7 +250,7 @@
 
 
 /obj/projectile/beam/smalllaser/hivebot
-	damage = 25
+	damage_force = 25
 	agony = 20
 	muzzle_type = /obj/effect/projectile/muzzle/lightning
 	tracer_type = /obj/effect/projectile/tracer/lightning
@@ -273,5 +274,5 @@
 
 
 /obj/projectile/beam/cyan/hivebot
-	damage = 45
+	damage_force = 45
 	armor_penetration = 15

@@ -14,6 +14,8 @@
 	mob_swap_flags = ~HEAVY
 	mob_push_flags = ~HEAVY
 
+	iff_factions = MOB_IFF_FACTION_BIND_AUTO
+
 	//? Attacks - Basic
 	/// melee style
 	var/datum/unarmed_attack/melee_style

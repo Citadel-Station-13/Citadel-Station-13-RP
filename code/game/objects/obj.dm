@@ -211,7 +211,6 @@
 	var/pry = 0			//Used in attackby() to open doors
 	//! LEGACY: DO NOT USE
 	var/in_use = 0 // If we have a user using us, this will be set on. We will check if the user has stopped using us, and thus stop updating and LAGGING EVERYTHING!
-	var/damtype = "brute"
 	// todo: /obj/item level, /obj/projectile level, how to deal with armor?
 	var/armor_penetration = 0
 	var/show_messages
@@ -529,7 +528,7 @@
 /obj/proc/do_climb_target(mob/living/climber)
 	return get_turf(src)
 
-/obj/attack_hand(mob/user, list/params)
+/obj/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(user.a_intent == INTENT_HARM)
 		return ..()
 	. = ..()

@@ -12,7 +12,7 @@
 	if(Adjacent(user))
 		attack_hand(user)
 
-/obj/structure/adherent_pylon/attack_hand(mob/user, list/params)
+/obj/structure/adherent_pylon/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	charge_user(user)
 
 /obj/structure/adherent_pylon/proc/charge_user(var/mob/living/user)
@@ -29,7 +29,7 @@
 		H.nutrition = 400
 		return
 	if(isrobot(user))
-		user.apply_damage(80, BURN, def_zone = BP_TORSO)
+		user.apply_damage(80, DAMAGE_TYPE_BURN, def_zone = BP_TORSO)
 		visible_message("<span class='danger'>Electricity arcs off [user] as it touches \the [src]!</span>")
 		to_chat(user, "<span class='danger'><b>You detect damage to your components!</b></span>")
 	else if(istype(H) && H.species.get_species_id() != SPECIES_ID_ADHERENT)

@@ -277,7 +277,6 @@
 	dir = 4;
 	icon_state = "propulsion_r"
 	},
-/turf/space,
 /turf/simulated/shuttle/plating/airless/carry,
 /area/shuttle/trade)
 "aP" = (
@@ -346,7 +345,6 @@
 /obj/structure/shuttle/engine/propulsion{
 	dir = 4
 	},
-/turf/space,
 /turf/simulated/shuttle/plating/airless/carry,
 /area/shuttle/trade)
 "ba" = (
@@ -600,7 +598,6 @@
 	dir = 4;
 	icon_state = "propulsion_l"
 	},
-/turf/space,
 /turf/simulated/shuttle/plating/airless/carry,
 /area/shuttle/trade)
 "bE" = (

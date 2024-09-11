@@ -103,7 +103,7 @@
 		return TRUE
 	return FALSE
 
-/obj/machinery/atmospherics/component/quaternary/attack_hand(mob/user, list/params)
+/obj/machinery/atmospherics/component/quaternary/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(..())
 		return
 

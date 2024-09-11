@@ -92,11 +92,11 @@
 	return 0
 
 // Clicking with an empty hand
-/mob/living/attack_hand(mob/user, list/params)
+/mob/living/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	. = ..()
 	if(.)
 		return
-	SEND_SIGNAL(src, COMSIG_MOB_LEGACY_ATTACK_HAND_INTERCEPT, user, params)
+	SEND_SIGNAL(src, COMSIG_MOB_LEGACY_ATTACK_HAND_INTERCEPT, user, e_args)
 	var/mob/living/L = user
 	if(!istype(L))
 		return
@@ -122,7 +122,7 @@
 		apply_effect(EYE_BLUR, stun_amount)
 
 	if (agony_amount)
-		apply_damage(agony_amount, HALLOSS, def_zone, 0, used_weapon)
+		apply_damage(agony_amount, DAMAGE_TYPE_HALLOSS, def_zone, 0, used_weapon)
 		apply_effect(STUTTER, agony_amount/10)
 		apply_effect(EYE_BLUR, agony_amount/10)
 
@@ -136,13 +136,13 @@
 	..()
 
 /mob/living/blob_act(var/obj/structure/blob/B)
-	if(stat == DEAD || faction == "blob")
+	if(stat == DEAD || has_iff_faction(MOB_IFF_FACTION_BLOB))
 		return
 
 	var/damage = rand(30, 40)
 	var/armor_pen = 0
 	var/armor_check = "melee"
-	var/damage_type = BRUTE
+	var/damage_type = DAMAGE_TYPE_BRUTE
 	var/attack_message = "The blob attacks you!"
 	var/attack_verb = "attacks"
 	var/def_zone = pick(BP_HEAD, BP_TORSO, BP_GROIN, BP_L_ARM, BP_R_ARM, BP_L_LEG, BP_R_LEG)
@@ -159,8 +159,8 @@
 		attack_verb = blob.attack_verb
 		B.overmind.blob_type.on_attack(B, src, def_zone)
 
-	if( (damage_type == TOX || damage_type == OXY) && isSynthetic()) // Borgs and FBPs don't really handle tox/oxy damage the same way other mobs do.
-		damage_type = BRUTE
+	if( (damage_type == DAMAGE_TYPE_TOX || damage_type == DAMAGE_TYPE_OXY) && isSynthetic()) // Borgs and FBPs don't really handle tox/oxy damage the same way other mobs do.
+		damage_type = DAMAGE_TYPE_BRUTE
 		damage *= 0.66 // Take 2/3s as much damage.
 
 	visible_message("<span class='danger'>\The [B] [attack_verb] \the [src]!</span>", "<span class='danger'>[attack_message]!</span>")
@@ -192,7 +192,7 @@
 
 	standard_weapon_hit_effects(I, user, effective_force, blocked, soaked, hit_zone)
 
-	if(I.damtype == BRUTE && prob(33)) // Added blood for whacking non-humans too
+	if(I.damage_type == DAMAGE_TYPE_BRUTE && prob(33)) // Added blood for whacking non-humans too
 		var/turf/simulated/location = get_turf(src)
 		if(istype(location)) location.add_blood_floor(src)
 
@@ -214,7 +214,7 @@
 		weapon_sharp = 0
 		weapon_edge = 0
 
-	apply_damage(effective_force, I.damtype, hit_zone, blocked, soaked, sharp=weapon_sharp, edge=weapon_edge, used_weapon=I)
+	apply_damage(effective_force, I.damage_type, hit_zone, blocked, soaked, sharp=weapon_sharp, edge=weapon_edge, used_weapon=I)
 
 	return 1
 
@@ -222,7 +222,10 @@
 /mob/living/throw_impacted(atom/movable/AM, datum/thrownthing/TT)
 	if(istype(AM, /obj))
 		var/obj/O = AM
-		var/dtype = O.damtype
+		var/dtype = DAMAGE_TYPE_BRUTE
+		if(isitem(AM))
+			var/obj/item/impacting_item = AM
+			dtype = impacting_item.damage_type
 		var/throw_damage = O.throw_force * TT.get_damage_multiplier(src)
 
 		var/miss_chance = 15

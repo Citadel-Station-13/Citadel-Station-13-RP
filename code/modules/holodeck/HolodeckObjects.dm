@@ -157,7 +157,7 @@
 	if(armor_soak >= damage)
 		return TRUE
 
-	target.apply_damage(damage, HALLOSS, affecting, armor_block, armor_soak)
+	target.apply_damage(damage, DAMAGE_TYPE_HALLOSS, affecting, armor_block, armor_soak)
 	if(damage >= 9)
 		target.visible_message("<font color='red'><B>[user] has weakened [target]!</B></font>")
 		target.apply_effect(4, WEAKEN, armor_block)
@@ -213,7 +213,7 @@
 	return
 
 /obj/item/holo
-	damtype = HALLOSS
+	damage_type = DAMAGE_TYPE_HALLOSS
 
 /obj/item/holo/esword
 	desc = "May the force be within you. Sorta."
@@ -359,7 +359,7 @@
 /obj/machinery/readybutton/attackby(obj/item/W as obj, mob/user as mob)
 	to_chat(user, "The device is a solid button, there's nothing you can do with it!")
 
-/obj/machinery/readybutton/attack_hand(mob/user, list/params)
+/obj/machinery/readybutton/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 
 	if(user.stat || machine_stat & (NOPOWER|BROKEN))
 		to_chat(user, "This device is not powered.")
@@ -428,11 +428,11 @@
 
 /mob/living/simple_mob/animal/space/carp/holodeck/proc/set_safety(var/safe)
 	if (safe)
-		faction = "neutral"
+		set_iff_factions(MOB_IFF_FACTION_NEUTRAL)
 		legacy_melee_damage_lower = 0
 		legacy_melee_damage_upper = 0
 	else
-		faction = "carp"
+		set_iff_factions(MOB_IFF_FACTION_CARP)
 		legacy_melee_damage_lower = initial(legacy_melee_damage_lower)
 		legacy_melee_damage_upper = initial(legacy_melee_damage_upper)
 

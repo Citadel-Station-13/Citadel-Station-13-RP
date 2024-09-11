@@ -396,7 +396,7 @@
 			// riding same thing, don't block each other
 			return TRUE
 	// can't throw blob stuff through blob stuff
-	if(istype(mover, /obj/structure/blob) && faction == "blob" && !mover.throwing) //Blobs should ignore things on their faction.
+	if(istype(mover, /obj/structure/blob) && has_iff_faction(MOB_IFF_FACTION_BLOB) && !mover.throwing) //Blobs should ignore things on their faction.
 		return TRUE
 
 /mob/living/CheckExit(atom/movable/AM, atom/newLoc)

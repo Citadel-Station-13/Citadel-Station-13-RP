@@ -15,13 +15,13 @@
 	var/obj/item/organ/external/organ = get_organ()
 
 	if(!proj.nodamage)
-		organ.add_autopsy_data("[proj.name]", proj.damage)
+		organ.add_autopsy_data("[proj.name]", proj.damage_force)
 
 	//Shrapnel
 	if(proj.can_embed())
 		var/armor = getarmor_organ(organ, "bullet")
 		if(!prob(armor/2))		//Even if the armor doesn't stop the bullet from hurting you, it might stop it from embedding.
-			var/hit_embed_chance = proj.embed_chance + (proj.damage - armor)	//More damage equals more chance to embed
+			var/hit_embed_chance = proj.embed_chance + (proj.damage_force - armor)	//More damage equals more chance to embed
 			if(prob(max(hit_embed_chance, 0)))
 				var/obj/item/material/shard/shrapnel/SP = new()
 				SP.name = (proj.name != "shrapnel")? "[proj.name] shrapnel" : "shrapnel"

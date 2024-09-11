@@ -286,11 +286,11 @@
 
 	//? Damage - default handling
 	/// damage amount
-	var/damage = 10
+	var/damage_force = 10
 	/// damage tier - goes hand in hand with [damage_armor]
 	var/damage_tier = BULLET_TIER_DEFAULT
-	/// todo: legacy - BRUTE, BURN, TOX, OXY, CLONE, HALLOSS, ELECTROCUTE, BIOACID are the only things that should be in here
-	var/damage_type = BRUTE
+	/// damage type - DAMAGE_TYPE_* define
+	var/damage_type = DAMAGE_TYPE_BRUTE
 	/// armor flag for damage - goes hand in hand with [damage_tier]
 	var/damage_flag = ARMOR_BULLET
 	/// damage mode - see [code/__DEFINES/combat/damage.dm]
@@ -504,21 +504,21 @@
 	set_angle(get_visual_angle(source, target))
 
 /obj/projectile/proc/vol_by_damage()
-	if(damage)
-		return clamp((damage) * 0.67, 30, 100)// Multiply projectile damage by 0.67, then clamp the value between 30 and 100
+	if(damage_force)
+		return clamp((damage_force) * 0.67, 30, 100)// Multiply projectile damage by 0.67, then clamp the value between 30 and 100
 	else
 		return 50 //if the projectile doesn't do damage, play its hitsound at 50% volume.
 
 //Checks if the projectile is eligible for embedding. Not that it necessarily will.
 /obj/projectile/proc/can_embed()
 	//embed must be enabled and damage type must be brute
-	if(embed_chance == 0 || damage_type != BRUTE)
+	if(embed_chance == 0 || damage_type != DAMAGE_TYPE_BRUTE)
 		return 0
 	return 1
 
 /obj/projectile/proc/get_structure_damage()
-	if(damage_type == BRUTE || damage_type == BURN)
-		return damage
+	if(damage_type == DAMAGE_TYPE_BRUTE || damage_type == DAMAGE_TYPE_BURN)
+		return damage_force
 	return 0
 
 /obj/projectile/proc/check_fire(atom/target as mob, mob/living/user as mob)  //Checks if you can hit them or not.
@@ -550,7 +550,7 @@
 		var/damage_override = null
 
 		if(spread_submunition_damage)
-			damage_override = damage
+			damage_override = damage_force
 			if(nodamage)
 				damage_override = 0
 
@@ -568,7 +568,7 @@
 				SM.shot_from = shot_from
 				SM.silenced = silenced
 				if(!isnull(damage_override))
-					SM.damage = damage_override
+					SM.damage_force = damage_override
 				if(submunition_constant_spread)
 					SM.dispersion = 0
 					var/calculated = angle + round((count / amt - 0.5) * submunition_spread_max, 1)
@@ -604,7 +604,7 @@
 	return fire(angle_override, direct_target)
 
 /**
- * Standard proc to determine damage when impacting something. This does not affect the special damage variables/effect variables, only damage and damtype.
+ * Standard proc to determine damage when impacting something. This does not affect the special damage variables/effect variables, only damage and damage_type.
  * May or may not be called before/after armor calculations.
  *
  * @params
@@ -613,7 +613,7 @@
  * @return Damage to apply to target.
  */
 /obj/projectile/proc/run_damage_vulnerability(atom/target)
-	var/final_damage = damage
+	var/final_damage = damage_force
 	if(isliving(target))
 		var/mob/living/L = target
 		if(issimple(target))
@@ -964,16 +964,10 @@
 	 */
 /obj/projectile/proc/on_impact(atom/target, impact_flags, def_zone, efficiency = 1)
 	//! legacy shit
-	var/blocked = clamp((1 - efficiency) * 100, 0, 100)
-	if(damage && damage_type == BURN)
+	if(damage_force && damage_type == DAMAGE_TYPE_BURN)
 		var/turf/T = get_turf(target)
 		if(T)
 			T.hotspot_expose(700, 5)
-	if(isliving(target))
-		var/mob/living/L = target
-		L.apply_effects(stun, weaken, paralyze, irradiate, stutter, eyeblur, drowsy, agony, blocked, incendiary, flammability)
-		if(modifier_type_to_apply)
-			L.add_modifier(modifier_type_to_apply, modifier_duration)
 	//! end
 	return impact_flags
 
@@ -1097,7 +1091,7 @@
 
 	//! LEGACY COMBAT CODE
 	// SHIM!!!
-	var/list/shieldcall_modified_args = target.check_damage_instance(damage, damage_type, damage_tier, damage_flag, damage_mode, ATTACK_TYPE_PROJECTILE, src, SHIELDCALL_FLAG_SECOND_CALL, hit_zone)
+	var/list/shieldcall_modified_args = target.check_damage_instance(damage_force, damage_type, damage_tier, damage_flag, damage_mode, ATTACK_TYPE_PROJECTILE, src, SHIELDCALL_FLAG_SECOND_CALL, hit_zone)
 	// todo: this handling very obviously should not be here
 	// dear lord this code is a dumpster fire
 	if(shieldcall_modified_args[SHIELDCALL_ARG_FLAGS] & SHIELDCALL_FLAGS_PIERCE_ATTACK)
@@ -1114,7 +1108,7 @@
 		var/proj_edge = has_edge(src)
 		var/final_damage = src.get_final_damage(target) * efficiency
 
-		if ((proj_sharp || proj_edge) && (soaked >= round(src.damage*0.8)))
+		if ((proj_sharp || proj_edge) && (soaked >= round(src.damage_force*0.8)))
 			proj_sharp = 0
 			proj_edge = 0
 
@@ -1138,6 +1132,11 @@
 
 		if(!src.nodamage)
 			L.apply_damage(final_damage, src.damage_type, hit_zone, absorb, soaked, 0, src, sharp=proj_sharp, edge=proj_edge)
+
+		// todo: some of these dont' make sense to be armor'd (last two), some do; please refactor this
+		L.apply_effects(stun, weaken, paralyze, irradiate, stutter, eyeblur, drowsy, agony, clamp((1 - efficiency) * 100 + absorb, 0, 100), incendiary, flammability)
+		if(modifier_type_to_apply)
+			L.add_modifier(modifier_type_to_apply, modifier_duration)
 	//! END
 
 	for(var/datum/projectile_effect/effect as anything in base_projectile_effects)
@@ -1160,9 +1159,9 @@
  */
 /obj/projectile/proc/dampen_on_pierce_experimental(atom/entity, force, tier)
 	var/tdiff = damage_tier - tier
-	var/dmult = src.damage / force
+	var/dmult = src.damage_force / force
 	var/malus = dmult >= 1 ? ((1 / dmult) ** tdiff * 10) : (10 * ((1 / dmult) / (1 + tdiff)))
-	src.damage = clamp(src.damage - malus, src.damage * 0.5, src.damage)
+	src.damage_force = clamp(src.damage_force - malus, src.damage_force * 0.5, src.damage_force)
 
 //* Targeting *//
 

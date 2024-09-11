@@ -34,7 +34,8 @@
 	icon_dead = "carp_dead"
 	icon_gib = "carp_gib"
 
-	faction = "carp"
+	iff_factions = MOB_IFF_FACTION_CARP
+
 	maxHealth = 25
 	health = 25
 	randomized = TRUE

@@ -54,7 +54,7 @@
 	icon_gib = "syndicate_gib"
 	catalogue_data = list(/datum/category_item/catalogue/fauna/mercenary/human)
 
-	faction = "syndicate"
+	iff_factions = MOB_IFF_FACTION_MERCENARY
 	movement_cooldown = 2
 
 	status_flags = 0
@@ -95,7 +95,7 @@
 	var/mob_count = 0				// Are there enough mobs to consider grenading?
 	var/turf/T = get_turf(A)
 	for(var/mob/M in range(T, 2))
-		if(M.faction == faction) 	// Don't grenade our friends
+		if(shares_iff_faction(M))
 			return FALSE
 		if(M in oview(src, special_attack_max_range))	// And lets check if we can actually see at least two people before we throw a grenade
 			if(!M.stat)			// Dead things don't warrant a grenade
@@ -607,7 +607,7 @@
 	icon_living = "voxpirate"
 	icon_dead = "voxpirate_dead"
 
-	faction = "voxpirate"
+	iff_factions = MOB_IFF_FACTION_PIRATE
 	movement_cooldown = 4
 
 	status_flags = 0

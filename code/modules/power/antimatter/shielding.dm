@@ -102,7 +102,7 @@
 	. = ..()
 
 	if(proj.damage_flag != "bullet")
-		stability -= proj.damage/2
+		stability -= proj.damage_force / 2
 
 /obj/machinery/am_shielding/update_icon()
 	cut_overlays()

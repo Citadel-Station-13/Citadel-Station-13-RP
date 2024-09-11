@@ -16,7 +16,7 @@
 		var/mob/living/M = target
 		if(M.stat>1) return
 		if(chassis.occupant_legacy.a_intent == INTENT_HARM || istype(chassis.occupant_legacy,/mob/living/carbon/brain)) //No tactile feedback for brains
-			M.apply_damage(dam_force, BRUTE)
+			M.apply_damage(dam_force, DAMAGE_TYPE_BRUTE)
 			M.adjustOxyLoss(round(dam_force/2))
 			M.update_health()
 			occupant_message("<span class='warning'>You pierce [target] with [src.name]. The blade goes all the way through.</span>")
@@ -24,7 +24,7 @@
 			chassis.visible_message("<span class='warning'>[chassis] stabs [target].</span>")
 		else if(chassis.occupant_legacy.a_intent == INTENT_DISARM && enable_special)
 			playsound(src, 'sound/weapons/punchmiss.ogg', 10, 1, -2)
-			M.apply_damage(dam_force/2, BRUTE)
+			M.apply_damage(dam_force/2, DAMAGE_TYPE_BRUTE)
 			M.adjustOxyLoss(round(dam_force/3))
 			M.update_health()
 			occupant_message("<span class='warning'>You slaps [target] with the flat of [src.name]. Something cracks.</span>")
@@ -46,7 +46,7 @@
 	add_attack_logs(user, target, "attacked", "[name]", "(INTENT: [uppertext(user.a_intent)]) (DAMTYPE: [uppertext(damtype)])")
 	var/blade_force = force	//Couldn't manage it otherwise.
 	if(ishuman(target))
-		target.apply_damage(blade_force, BRUTE)
+		target.apply_damage(blade_force, DAMAGE_TYPE_BRUTE)
 		return
 
 	else if(istype(target, /mob/living/simple_mob))
@@ -81,7 +81,7 @@
 		var/mob/living/M = target
 		if(M.stat>1) return
 		if(chassis.occupant_legacy.a_intent == INTENT_HARM || istype(chassis.occupant_legacy,/mob/living/carbon/brain)) //No tactile feedback for brains
-			M.apply_damage(dam_force, BURN)
+			M.apply_damage(dam_force, DAMAGE_TYPE_BURN)
 			M.adjust_fire_stacks(1)
 			M.update_health()
 			occupant_message("<span class='warning'>You pierce [target] with [src.name]. The blade goes all the way through.</span>")
@@ -89,7 +89,7 @@
 			chassis.visible_message("<span class='warning'>[chassis] stabs [target].</span>")
 		else if(chassis.occupant_legacy.a_intent == INTENT_DISARM && enable_special)
 			playsound(src, 'sound/weapons/punchmiss.ogg', 10, 1, -2)
-			M.apply_damage(dam_force/2, BRUTE)
+			M.apply_damage(dam_force/2, DAMAGE_TYPE_BRUTE)
 			M.adjustOxyLoss(round(dam_force/3))
 			M.update_health()
 			occupant_message("<span class='warning'>You slaps [target] with the flat of [src.name]. Something cracks.</span>")

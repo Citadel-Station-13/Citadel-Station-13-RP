@@ -29,7 +29,7 @@
 	icon_living = "basic"
 	catalogue_data = list(/datum/category_item/catalogue/technology/drone/hivebot/basic)
 
-	faction = "hivebot"
+	iff_factions = MOB_IFF_FACTION_HIVEBOT
 
 	maxHealth = 3 LASERS_TO_KILL
 	health = 3 LASERS_TO_KILL
@@ -54,8 +54,8 @@
 
 // The hivebot's default projectile.
 /obj/projectile/bullet/hivebot
-	damage = 10
-	damage_type = BRUTE
+	damage_force = 10
+	damage_type = DAMAGE_TYPE_BRUTE
 	sharp = FALSE
 	edge = FALSE
 

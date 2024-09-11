@@ -61,7 +61,8 @@
 	icon_gib = "bear-gib"
 	say_list_type = /datum/say_list/polar_bear
 
-	faction = "polar"
+	iff_factions = MOB_IFF_FACTION_BIND_TO_MAP
+
 	maxHealth = 80
 	health = 80 // Polar bear will fuck you up.
 
@@ -89,13 +90,10 @@
 	..()
 
 /mob/living/simple_mob/animal/sif/sakimm/polar
-	faction = "polar"
 
 /mob/living/simple_mob/animal/sif/diyaab/polar
-	faction = "polar"
 
 /mob/living/simple_mob/animal/sif/shantak/polar
-	faction = "polar"
 
 // -- Items -- //
 

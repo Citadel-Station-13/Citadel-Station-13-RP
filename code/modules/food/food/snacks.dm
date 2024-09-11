@@ -3273,7 +3273,7 @@
 
 	add_overlay(overlays_to_add)
 
-/obj/item/pizzabox/attack_hand(mob/user, list/params)
+/obj/item/pizzabox/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 
 	if( open && pizza )
 		user.put_in_hands( pizza )
@@ -4807,7 +4807,7 @@ END CITADEL CHANGE */
 	bitesize = 1
 	nutriment_amt = 10
 
-/obj/item/reagent_containers/food/snacks/chipplate/attack_hand(mob/user, list/params)
+/obj/item/reagent_containers/food/snacks/chipplate/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	// todo: sigh, no ..(); shift over to on_attack_hand
 	var/obj/item/reagent_containers/food/snacks/returningitem = new vendingobject(loc)
 	returningitem.reagents.clear_reagents()

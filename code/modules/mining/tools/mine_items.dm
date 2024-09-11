@@ -94,7 +94,7 @@
 	icon_state = "plasmacutter"
 	item_state = "gun"
 	w_class = WEIGHT_CLASS_NORMAL //it is smaller than the pickaxe
-	damtype = "fire"
+	damage_type = DAMAGE_TYPE_BURN
 	digspeed = 20 //Can slice though normal walls, all girders, or be used in reinforced wall deconstruction/ light thermite on fire
 	origin_tech = list(TECH_MATERIAL = 4, TECH_PHORON = 3, TECH_ENGINEERING = 3)
 	desc = "A rock cutter that uses bursts of hot plasma. You could use it to cut limbs off of xenos! Or, you know, mine stuff."
@@ -391,7 +391,7 @@
 	else
 		..()
 
-/obj/item/stack/flag/attack_hand(mob/user, list/params)
+/obj/item/stack/flag/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(upright)
 		upright = 0
 		icon_state = base_state
