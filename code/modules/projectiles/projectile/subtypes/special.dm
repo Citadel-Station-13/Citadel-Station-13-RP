@@ -208,6 +208,28 @@
 	else if (istype(target, /mob/living/carbon/))
 		M.show_message("<font color=#4F49AF>The radiation beam dissipates harmlessly through your body.</font>")
 
+// Special beam for the geist mob.
+/obj/projectile/beam/geist
+	name = "geist beam"
+	icon_state = "energy2"
+	fire_sound = 'sound/effects/stealthoff.ogg'
+	agony = 15
+	damage_force = 15
+	light_color = "#f8f8f8"
+	light_range = 3
+	light_power = 2
+
+	muzzle_type = /obj/effect/projectile/muzzle/laser_omni
+	tracer_type = /obj/effect/projectile/tracer/laser_omni
+	impact_type = /obj/effect/projectile/impact/laser_omni
+
+// Special beam for the vortex mob.
+/obj/projectile/beam/stun/vortex
+	name = "stun beam"
+	icon_state = "stun"
+	agony = 30
+	light_color = "#000000"
+
 /obj/projectile/beam/mindflayer
 	name = "flayer ray"
 	combustion = FALSE
