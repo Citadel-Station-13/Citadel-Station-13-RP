@@ -291,7 +291,7 @@
 	var/damage_force = 10
 	/// damage tier - goes hand in hand with [damage_armor]
 	var/damage_tier = BULLET_TIER_DEFAULT
-	/// todo: legacy - BRUTE, BURN, TOX, OXY, CLONE, HALLOSS, ELECTROCUTE, BIOACID are the only things that should be in here
+	/// damage type - DAMAGE_TYPE_* define
 	var/damage_type = DAMAGE_TYPE_BRUTE
 	/// armor flag for damage - goes hand in hand with [damage_tier]
 	var/damage_flag = ARMOR_BULLET
@@ -617,7 +617,7 @@
 	return fire(angle_override, direct_target)
 
 /**
- * Standard proc to determine damage when impacting something. This does not affect the special damage variables/effect variables, only damage and damtype.
+ * Standard proc to determine damage when impacting something. This does not affect the special damage variables/effect variables, only damage and damage_type.
  * May or may not be called before/after armor calculations.
  *
  * @params

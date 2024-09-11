@@ -98,7 +98,7 @@
 /obj/projectile/beam/weak
 	name = "weak cyan beam"
 	icon_state = "cyan"
-	fire_sound = 'sound/weapons/Taser.ogg'
+	fire_sound = 'sound/weapons/Dissolverray.ogg'
 	damage_force = 20
 	light_color = "#74b1c2"
 
@@ -106,6 +106,19 @@
 	tracer_type = /obj/effect/projectile/tracer/laser_omni
 	impact_type = /obj/effect/projectile/impact/laser_omni
 
+/obj/projectile/beam/antigravbeamwraith
+	name = "dark energy beam"
+	icon_state = "darkb"
+	fire_sound = 'sound/weapons/SuperHeavyLaser.ogg' //Knowers will recognize it
+	damage_force = 30 //Targets energy armor which is kinda rare
+	damage_type = DAMAGE_TYPE_BRUTE //Dark energy displaces instead of burning
+	damage_flag = ARMOR_ENERGY
+	irradiate= 5 //Scifi Antigrav bullshit side effect
+	light_color = "#8902f0" //Purple
+
+	muzzle_type = /obj/effect/projectile/muzzle/darkmatter
+	tracer_type = /obj/effect/projectile/tracer/darkmatter
+	impact_type = /obj/effect/projectile/impact/darkmatter	
 
 /obj/projectile/beam/emitter
 	name = "emitter beam"
