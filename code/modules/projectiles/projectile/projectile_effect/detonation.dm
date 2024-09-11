@@ -24,18 +24,20 @@
 	// if we're not hitting don't do anything
 	if(impact_flags & PROJECTILE_IMPACT_FLAGS_SHOULD_NOT_HIT)
 		return
-	// don't do anything if we're not on a turf for some reason
-	if(!isturf(proj.loc))
+	// don't do anything if we're not hitting a turf
+	// moving_to just makes sure we still go off if target is deleted
+	var/turf/target_turf = get_turf(target) || proj.trajectory_moving_to
+	if(!isturf(target_turf))
 		return
 	// prevent_pierce forces detonation + deletion on impact always
 	if(detonate_prevent_pierce)
-		detonation(proj.loc)
+		detonation(target_turf)
 		return impact_flags | PROJECTILE_IMPACT_DELETE
 	// if we're piercing, we will return
 	// pierce means going through, even if it's not piercing.
 	if((impact_flags & PROJECTILE_IMPACT_FLAGS_SHOULD_GO_THROUGH) && !detonate_on_pierce)
 		return
-	detonation(proj.loc)
+	detonation(target_turf)
 
 /datum/projectile_effect/detonation/on_lifetime(obj/projectile/proj, impact_ground_on_expiry)
 	if(!detonate_on_lifetime || impact_ground_on_expiry) // if impacting ground that'll handle it
