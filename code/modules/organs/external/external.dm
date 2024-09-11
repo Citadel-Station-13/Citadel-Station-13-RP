@@ -186,9 +186,9 @@
 	var/burn_damage = 0
 	switch(severity)
 		if (1)
-			burn_damage += rand(10, 14)
+			burn_damage += rand(8, 10)
 		if (2)
-			burn_damage += rand(7, 8.5)
+			burn_damage += rand(6.5, 8)
 		if(3)
 			burn_damage += rand(4, 8)
 		if(4)

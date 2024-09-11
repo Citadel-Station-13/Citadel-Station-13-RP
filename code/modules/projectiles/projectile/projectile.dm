@@ -394,9 +394,10 @@
 	impacted = list()
 	// handle direct hit
 	if(direct_target)
-		if(!impact(direct_target, PROJECTILE_IMPACT_POINT_BLANK, def_zone) & PROJECTILE_IMPACT_FLAGS_SHOULD_GO_THROUGH)
-			// todo: this should make a muzzle flash
-			qdel(src)
+		// todo: this should make a muzzle flash
+		impact(direct_target, PROJECTILE_IMPACT_POINT_BLANK, def_zone)
+		// todo: janky but whatever it works
+		if(QDELETED(src))
 			return
 	// make sure firer is in it
 	if(firer && !no_source_check)
