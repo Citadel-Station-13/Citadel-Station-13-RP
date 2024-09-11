@@ -392,6 +392,12 @@
 
 	// setup impact checking
 	impacted = list()
+	// handle direct hit
+	if(direct_target)
+		if(!impact(direct_target, PROJECTILE_IMPACT_POINT_BLANK, def_zone) & PROJECTILE_IMPACT_FLAGS_SHOULD_GO_THROUGH)
+			// todo: this should make a muzzle flash
+			qdel(src)
+			return
 	// make sure firer is in it
 	if(firer && !no_source_check)
 		impacted[firer] = TRUE
@@ -409,14 +415,6 @@
 	// set angle if needed
 	if(isnum(set_angle_to))
 		set_angle(set_angle_to)
-	// handle direct hit
-	if(direct_target)
-		if(direct_target.bullet_act(src, PROJECTILE_IMPACT_POINT_BLANK, def_zone) & PROJECTILE_IMPACT_FLAGS_SHOULD_GO_THROUGH)
-			impacted[direct_target] = TRUE
-		else
-			// todo: this should make a muzzle flash
-			qdel(src)
-			return
 	// setup physics
 	setup_physics()
 
