@@ -449,7 +449,7 @@
 /obj/item/storage/box/matches/attackby(obj/item/flame/match/W as obj, mob/user as mob)
 	if(istype(W) && !W.lit && !W.burnt)
 		W.lit = 1
-		W.damtype = "burn"
+		W.damage_type = "burn"
 		W.icon_state = "match_lit"
 		START_PROCESSING(SSobj, W)
 	W.update_icon()

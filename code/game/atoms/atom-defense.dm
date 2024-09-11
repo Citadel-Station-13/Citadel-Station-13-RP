@@ -157,13 +157,13 @@
 	. = I.attacksound_override(src, ATTACK_TYPE_MELEE)
 	if(!isnull(.))
 		return
-	. = hitsound_override(I.damtype, I.damage_mode, ATTACK_TYPE_MELEE, I)
+	. = hitsound_override(I.damage_type, I.damage_mode, ATTACK_TYPE_MELEE, I)
 	if(.)
 		return
-	. = (I.damtype == DAMAGE_TYPE_BURN? hit_sound_burn : hit_sound_brute) || I.attack_sound
+	. = (I.damage_type == DAMAGE_TYPE_BURN? hit_sound_burn : hit_sound_brute) || I.attack_sound
 	if(.)
 		return
-	switch(I.damtype)
+	switch(I.damage_type)
 		if(DAMAGE_TYPE_BRUTE)
 			return "swing_hit"
 		if(DAMAGE_TYPE_BURN)
@@ -173,7 +173,7 @@
 
 /atom/proc/hitsound_projectile(obj/projectile/P)
 	//? todo: projectile gets final say
-	. = hitsound_override(P.damtype, P.damage_mode, ATTACK_TYPE_PROJECTILE, P)
+	. = hitsound_override(P.damage_type, P.damage_mode, ATTACK_TYPE_PROJECTILE, P)
 	if(.)
 		return
 	return islist(P.impact_sounds)? pick(P.impact_sounds) : P.impact_sounds
@@ -182,13 +182,13 @@
 	. = I.attacksound_override(src, ATTACK_TYPE_THROWN)
 	if(!isnull(.))
 		return
-	. = hitsound_override(I.damtype, I.damage_mode, ATTACK_TYPE_THROWN, I)
+	. = hitsound_override(I.damage_type, I.damage_mode, ATTACK_TYPE_THROWN, I)
 	if(.)
 		return
-	. = (I.damtype == DAMAGE_TYPE_BURN? hit_sound_burn : hit_sound_brute)  || I.attack_sound
+	. = (I.damage_type == DAMAGE_TYPE_BURN? hit_sound_burn : hit_sound_brute)  || I.attack_sound
 	if(.)
 		return
-	switch(I.damtype)
+	switch(I.damage_type)
 		if(DAMAGE_TYPE_BRUTE)
 			return "swing_hit"
 		if(DAMAGE_TYPE_BURN)
@@ -248,7 +248,7 @@
  *
  * @params
  * * damage - raw damage
- * * damtype - damage type
+ * * damage_type - damage type
  * * tier - penetration / attack tier
  * * flag - armor flag as seen in [code/__DEFINES/combat/armor.dm]
  * * mode - damage_mode
@@ -278,7 +278,7 @@
  *
  * @params
  * * damage - raw damage
- * * damtype - damage type
+ * * damage_type - damage type
  * * tier - penetration / attack tier
  * * flag - armor flag as seen in [code/__DEFINES/combat/armor.dm]
  * * mode - damage_mode
@@ -315,7 +315,7 @@
  *
  * @params
  * * damage - raw damage
- * * damtype - damage type
+ * * damage_type - damage type
  * * damage_tier - penetration / attack tier
  * * damage_flag - armor flag as seen in [code/__DEFINES/combat/armor.dm]
  * * damage_mode - damage_mode
@@ -350,7 +350,7 @@
  *
  * @params
  * * damage - raw damage
- * * damtype - damage type
+ * * damage_type - damage type
  * * damage_tier - penetration / attack tier
  * * damage_flag - armor flag as seen in [code/__DEFINES/combat/armor.dm]
  * * damage_mode - damage_mode
