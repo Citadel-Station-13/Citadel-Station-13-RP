@@ -1,29 +1,35 @@
-///do not do anything after firing. Manual action, like pump shotguns, or guns that want to define custom behaviour
-#define HOLD_CASINGS	0
-///drop spent casings on the ground after firing
-#define EJECT_CASINGS	2
-///cycle casings, like a revolver. Also works for multibarrelled guns
-#define CYCLE_CASINGS	3
-//Gun loading types
-///The gun only accepts ammo_casings. ammo_magazines should never have this as their mag_type.
-#define SINGLE_CASING 	1
-///Transfers casings from the mag to the gun when used.
-#define SPEEDLOADER 	2
-///The magazine item itself goes inside the gun
-#define MAGAZINE 		4
-#define BULLET_IMPACT_NONE  "none"
-#define BULLET_IMPACT_METAL "metal"
-#define BULLET_IMPACT_MEAT  "meat"
+//* This file is explicitly licensed under the MIT license. *//
+//* Copyright (c) 2024 Citadel Station Developers           *//
 
-#define SOUNDS_BULLET_MEAT  list('sound/effects/projectile_impact/bullet_meat1.ogg', 'sound/effects/projectile_impact/bullet_meat2.ogg', 'sound/effects/projectile_impact/bullet_meat3.ogg', 'sound/effects/projectile_impact/bullet_meat4.ogg')
-#define SOUNDS_BULLET_METAL  list('sound/effects/projectile_impact/bullet_metal1.ogg', 'sound/effects/projectile_impact/bullet_metal2.ogg', 'sound/effects/projectile_impact/bullet_metal3.ogg')
-#define SOUNDS_LASER_MEAT  list('sound/effects/projectile_impact/energy_meat1.ogg','sound/effects/projectile_impact/energy_meat2.ogg')
-#define SOUNDS_LASER_METAL  list('sound/effects/projectile_impact/energy_metal1.ogg','sound/effects/projectile_impact/energy_metal2.ogg')
+//* firing_flags on gun firing procs *//
 
-// safety states
-/// no safeties are on this gun
-#define GUN_NO_SAFETY				-1
-/// safety off
-#define GUN_SAFETY_OFF				0
-/// safety on
-#define GUN_SAFETY_ON				1
+/// perform pointblanking
+#define GUN_FIRING_POINT_BLANK (1<<0)
+/// track the target instead of just using angle
+#define GUN_FIRING_TRACK_TARGET (1<<1)
+/// this is a reflex fire by aiming
+#define GUN_FIRING_BY_REFLEX (1<<2)
+/// do not log
+///
+/// * This is an extremely dangerous flag. Do not use unless you are already logging it somewhere else.
+/// * "This happens all the time" is not a valid excuse to not log a gunshot.
+#define GUN_FIRING_NO_LOGGING (1<<3)
+/// do not call default click empty
+#define GUN_FIRING_NO_CLICK_EMPTY (1<<4)
+/// suppressed shot
+#define GUN_FIRING_SUPPRESSED (1<<5)
+
+//*            firing result from firing procs                 *//
+//* these are flags but should be returned only one at a time. *//
+//*            they are flags for fast comparisons.            *//
+
+/// fired
+#define GUN_FIRED_SUCCESS 0
+/// unknown failure
+#define GUN_FIRED_FAIL_UNKNOWN (1<<0)
+/// failed - round wasn't live or the right primer type
+#define GUN_FIRED_FAIL_INERT (1<<1)
+/// failed - out of ammo
+#define GUN_FIRED_FAIL_EMPTY (1<<2)
+/// failed - we're no longer being held / mounted / whatever
+#define GUN_FIRED_FAIL_UNMOUNTED (1<<3)

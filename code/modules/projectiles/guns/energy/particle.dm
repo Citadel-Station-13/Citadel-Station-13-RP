@@ -37,7 +37,7 @@
 	fire_delay = 6	//This one's not a handgun, it should have the same fire delay as everything else
 	self_recharge = 1
 	modifystate = null
-	battery_lock = 1
+	legacy_battery_lock = 1
 	recharge_time = 6 // every 6 ticks, recharge 2 shots. Slightly slower than AEG.
 	charge_delay = 10 //Starts recharging faster after firing than an AEG though.
 	one_handed_penalty = 15
@@ -51,7 +51,7 @@
 	slot_flags = SLOT_BACK
 	origin_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 5, TECH_POWER = 4, TECH_MAGNET = 4)
 	projectile_type = /obj/projectile/bullet/particle/heavy
-	battery_lock = 1
+	legacy_battery_lock = 1
 	fire_delay = 15 // fires faster than a laser cannon. c'mon, it's an awesome-but-impractical endgame gun.
 	w_class = WEIGHT_CLASS_HUGE // So it can't fit in a backpack.
 	damage_force = 10
@@ -71,7 +71,7 @@
 		var/datum/gas_mixture/environment = T ? T.return_air() : null
 		var/pressure =  environment ? environment.return_pressure() : 0
 
-		if (!power_supply || power_supply.charge < charge_cost)
+		if (!obj_cell_slot.cell || obj_cell_slot.cell.charge < charge_cost)
 			user.visible_message("<span class='warning'>*click*</span>", "<span class='danger'>*click*</span>")
 			playsound(src.loc, 'sound/weapons/empty.ogg', 100, 1)
 			return 0
@@ -93,7 +93,7 @@
 		playsound(src.loc, 'sound/weapons/empty.ogg', 100, 1)
 	else if (severity <= 60) //50% chance of fizzling and wasting a shot
 		user.visible_message("<span class='warning'>\The [user] fires \the [src], but the shot fizzles in the air!</span>", "<span class='danger'>You fire \the [src], but the shot fizzles in the air!</span>")
-		power_supply.charge -= charge_cost
+		obj_cell_slot.cell.charge -= charge_cost
 		playsound(src.loc, fire_sound, 100, 1)
 		var/datum/effect_system/spark_spread/sparks = new /datum/effect_system/spark_spread()
 		sparks.set_up(2, 1, T)
@@ -101,7 +101,7 @@
 		update_icon()
 	else if (severity <= 80) //20% chance of shorting out and emptying the cell
 		user.visible_message("<span class='warning'>\The [user] pulls the trigger, but \the [src] shorts out!</span>", "<span class='danger'>You pull the trigger, but \the [src] shorts out!</span>")
-		power_supply.charge = 0
+		obj_cell_slot.cell.charge = 0
 		var/datum/effect_system/spark_spread/sparks = new /datum/effect_system/spark_spread()
 		sparks.set_up(2, 1, T)
 		sparks.start()
@@ -111,9 +111,9 @@
 		var/datum/effect_system/spark_spread/sparks = new /datum/effect_system/spark_spread()
 		sparks.set_up(2, 1, T)
 		sparks.start()
-		power_supply.charge = 0
-		power_supply.maxcharge = 1 //just to avoid div/0 runtimes
-		power_supply.desc += " It seems to be burnt out!"
+		obj_cell_slot.cell.charge = 0
+		obj_cell_slot.cell.maxcharge = 1 //just to avoid div/0 runtimes
+		obj_cell_slot.cell.desc += " It seems to be burnt out!"
 		desc += " The casing is covered in scorch-marks."
 		fire_delay += fire_delay // even if you swap out the cell for a good one, the gun's cluckety-clucked.
 		charge_cost += charge_cost

@@ -274,3 +274,10 @@
 	var/datum/gender/TU = GLOB.gender_datums[user.get_visible_gender()]
 	user.visible_message("<span class='danger'>\The [user] is licking the electrodes of \the [src]! It looks like [TU.he] [TU.is] trying to commit suicide.</span>")
 	return (FIRELOSS)
+
+//* Setters *//
+
+/obj/item/cell/proc/set_charge(amount, update)
+	charge = clamp(amount, 0, maxcharge)
+	if(update)
+		update_icon()

@@ -14,7 +14,7 @@
 	origin_tech = list(TECH_BLUESPACE = 4)
 	modifystate = "sizegun-shrink"
 	no_pin_required = 1
-	battery_lock = 1
+	legacy_battery_lock = 1
 	var/size_set_to = 1
 	firemodes = list(
 		list(mode_name		= "select size",
@@ -34,7 +34,7 @@
 	. = ..()
 	select_size()
 
-/obj/item/gun/energy/sizegun/consume_next_projectile()
+/obj/item/gun/energy/sizegun/process_next_projectile(iteration, firing_flags, datum/firemode/firemode, datum/event_args/actor/actor, atom/firer)
 	. = ..()
 	var/obj/projectile/beam/sizelaser/G = .
 	if(istype(G))
@@ -110,5 +110,5 @@
 	origin_tech = list(TECH_BLUESPACE = 4)
 	modifystate = "sizegun-shrink"
 	no_pin_required = 1
-	battery_lock = 1
+	legacy_battery_lock = 1
 	firemodes = list()

@@ -15,8 +15,8 @@
 	weight = ITEM_WEIGHT_GUN_BULKY
 	encumbrance = ITEM_ENCUMBRANCE_GUN_BULKY
 	fire_delay = 1
+	cell_type = /obj/item/cell/hyper
 
-	var/initial_cell_type = /obj/item/cell/hyper
 	var/initial_capacitor_type = /obj/item/stock_parts/capacitor/adv
 	var/empty_sound = 'sound/machines/twobeep.ogg'
 
@@ -24,7 +24,6 @@
 	capacitor = new initial_capacitor_type(src)
 	capacitor.charge = capacitor.max_charge
 
-	cell = new initial_cell_type(src)
 	if (ispath(loaded))
 		loaded = new loaded
 	return ..()
@@ -59,7 +58,7 @@
 	desc = "The Mars Military Industries MI-227 Meteor. Originally a vehicle-mounted turret weapon for heavy anti-vehicular and anti-structural fire, the fact that it was made man-portable is mindboggling in itself."
 	icon_state = "heavy_railgun"
 
-	initial_cell_type = /obj/item/cell/infinite
+	cell_type = /obj/item/cell/infinite
 	initial_capacitor_type = /obj/item/stock_parts/capacitor/super
 	fire_delay = 0
 
@@ -86,7 +85,7 @@
 	icon_state = "flechette_gun"
 	item_state = "z8carbine"
 
-	initial_cell_type = /obj/item/cell/hyper
+	cell_type = /obj/item/cell/hyper
 	initial_capacitor_type = /obj/item/stock_parts/capacitor/adv
 
 	fire_delay = 0
@@ -117,7 +116,7 @@
 
 	removable_components = TRUE
 
-	initial_cell_type = /obj/item/cell/high
+	cell_type = /obj/item/cell/high
 	initial_capacitor_type = /obj/item/stock_parts/capacitor
 
 	fire_delay = 8
@@ -149,7 +148,7 @@
 
 	w_class = WEIGHT_CLASS_NORMAL
 
-	initial_cell_type = /obj/item/cell/high
+	cell_type = /obj/item/cell/high
 	initial_capacitor_type = /obj/item/stock_parts/capacitor
 
 	slot_flags = SLOT_BELT|SLOT_HOLSTER
@@ -178,7 +177,7 @@
 	icon_state = "railgun_sifguard"
 	item_state = "z8carbine"
 
-	initial_cell_type = /obj/item/cell/high
+	cell_type = /obj/item/cell/high
 	initial_capacitor_type = /obj/item/stock_parts/capacitor/adv
 
 	slot_flags = SLOT_BACK

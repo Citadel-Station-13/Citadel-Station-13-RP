@@ -1,3 +1,14 @@
+/**
+ * Firing pins used to pretty much control who can use how many guns.
+ *
+ * The old system was lockboxes; those weren't really fun and there wasn't a good way
+ * to bypass it without an emag.
+ *
+ * Nowadays we just use firing pins and control who can print those.
+ *
+ * In the future, this system may be augmented or replaced, as to make it more
+ * valuable to have a weapon (as opposed to a pin for one).
+ */
 /obj/item/firing_pin
 	name = "electronic firing pin"
 	desc = "A small authentication device, to be inserted into a firearm receiver to allow operation. NT safety regulations require all new designs to incorporate one."
@@ -83,7 +94,6 @@
 	if(istype(get_area(src), /area/rnd/research/testingrange) || istype(get_area(src), /area/security/range))
 		return TRUE
 	return FALSE
-
 
 // Implant pin, checks for implant
 /obj/item/firing_pin/implant
@@ -197,15 +207,15 @@
 	return lock_override
 
 //Allows swiping an armoury access ID on an explorer locked gun to unlock it
-/obj/item/gun/attackby(obj/item/I, mob/user)
+/obj/item/gun/attackby(obj/item/I, mob/living/user, list/params, clickchain_flags, damage_multiplier)
 	if((istype(I, /obj/item/card/id)) && pin)
 		pin.attackby(I, user)
 	else
 		return ..()
 
-/obj/item/firing_pin/explorer/attackby(obj/item/card/ID, mob/user)
+/obj/item/firing_pin/explorer/attackby(obj/item/I, mob/living/user, list/params, clickchain_flags, damage_multiplier)
 	..()
-	if(check_access(ID))
+	if(check_access(I))
 		locked = !locked
 		to_chat(user, "<span class='warning'>You [locked ? "enable" : "disable"] the safety lock on \the [src].</span>")
 	else

@@ -1,3 +1,9 @@
+/**
+ * Magic "Guns"
+ *
+ * These quite literally just use magic. They contain default handling for charges,
+ * self charging, etc, but that's it; they don't support cells or casings or anything like that.
+ */
 /obj/item/gun/magic
 	name = "magic staff"
 	desc = "This staff is boring to watch because even though it came first you've seen everything it can do in other staves for years."
@@ -61,7 +67,7 @@
 		recharge_newshot()
 	return 1
 
-/obj/item/gun/magic/consume_next_projectile()
+/obj/item/gun/magic/process_next_projectile(iteration, firing_flags, datum/firemode/firemode, datum/event_args/actor/actor, atom/firer)
 	return chambered?.get_projectile()
 
 /obj/item/gun/magic/proc/shoot_with_empty_chamber(mob/living/user as mob|obj)

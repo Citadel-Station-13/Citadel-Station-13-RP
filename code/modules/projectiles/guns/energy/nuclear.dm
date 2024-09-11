@@ -81,7 +81,7 @@
 	heavy = TRUE
 	fire_delay = 6	//This one's not a handgun, it should have the same fire delay as everything else
 	cell_type = /obj/item/cell/device/weapon/recharge
-	battery_lock = 1
+	legacy_battery_lock = 1
 	modifystate = null
 
 //	requires_two_hands = 1
@@ -107,7 +107,7 @@
 	damage_force = 10 //for the HOS to lay down a good beating in desperate situations. Holdover from TG.
 	w_class = WEIGHT_CLASS_NORMAL
 	fire_delay = 6	//standard rate
-	battery_lock = 0
+	legacy_battery_lock = 0
 	modifystate = null
 
 	firemodes = list(

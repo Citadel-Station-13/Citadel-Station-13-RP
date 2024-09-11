@@ -8,7 +8,7 @@
 	fire_sound = 'sound/weapons/laser_rifle_1.wav'
 	origin_tech = list(TECH_COMBAT = 4, TECH_MAGNET = 2, TECH_POWER = 4)
 	charge_cost = 300
-	battery_lock = 1
+	legacy_battery_lock = 1
 
 	var/recharging = 0
 	var/phase_power = 75
@@ -30,7 +30,7 @@
 		if(!do_after(user, 10, src))
 			break
 		playsound(get_turf(src),'sound/items/change_drill.ogg',25,1)
-		if(power_supply.give(phase_power) < phase_power)
+		if(obj_cell_slot?.cell?.give(phase_power) < phase_power)
 			break
 
 	recharging = 0
@@ -119,7 +119,7 @@
 		if(!do_after(user, 10, src))
 			break
 		playsound(get_turf(src),'sound/items/change_drill.ogg',25,1)
-		if(power_supply.give(phase_power) < phase_power)
+		if(obj_cell_slot?.cell?.give(phase_power) < phase_power)
 			break
 
 	recharging = 0

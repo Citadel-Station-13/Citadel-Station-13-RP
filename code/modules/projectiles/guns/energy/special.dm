@@ -46,7 +46,7 @@
 	modifystate = "floramut"
 	cell_type = /obj/item/cell/device/weapon/recharge
 	no_pin_required = 1
-	battery_lock = 1
+	legacy_battery_lock = 1
 	var/singleton/plantgene/gene = null
 
 	firemodes = list(
@@ -77,9 +77,7 @@
 
 	to_chat(usr, "<span class='info'>You set the [src]'s targeted genetic area to [genemask].</span>")
 
-	return
-
-/obj/item/gun/energy/floragun/consume_next_projectile()
+/obj/item/gun/energy/floragun/process_next_projectile(iteration, firing_flags, datum/firemode/firemode, datum/event_args/actor/actor, atom/firer)
 	. = ..()
 	var/obj/projectile/energy/floramut/gene/G = .
 	if(istype(G))
@@ -142,7 +140,7 @@
 	projectile_type = /obj/projectile/change
 	origin_tech = null
 	cell_type = /obj/item/cell/device/weapon/recharge
-	battery_lock = 1
+	legacy_battery_lock = 1
 	charge_meter = 0
 
 /obj/item/gun/energy/staff/special_check(var/mob/user)
@@ -195,7 +193,7 @@
 	charge_cost = 24 // 100 shots, it's a spray and pray (to RNGesus) weapon.
 	projectile_type = /obj/projectile/energy/blue_pellet
 	cell_type = /obj/item/cell/device/weapon/recharge
-	battery_lock = 1
+	legacy_battery_lock = 1
 	accuracy = 75 // Suppressive weapons don't work too well if there's no risk of being hit.
 	burst_delay = 1 // Burst faster than average.
 	origin_tech = list(TECH_COMBAT = 6, TECH_MAGNET = 6, TECH_ILLEGAL = 6)
@@ -221,7 +219,7 @@
 	charge_cost = 10000 // Uses large cells, can at max have 3 shots.
 	projectile_type = /obj/projectile/beam/tungsten
 	cell_type = /obj/item/cell/high
-	accept_cell_type = /obj/item/cell
+	cell_system_legacy_use_device = FALSE
 
 	accuracy = 75
 	charge_meter = 0
@@ -249,7 +247,7 @@
 	var/beameffect = user.Beam(target_turf,icon_state="sat_beam",icon='icons/effects/beam.dmi',time=31, maxdistance=10,beam_type=/obj/effect/ebeam)
 	if(beameffect)
 		user.visible_message("<span class='cult'>[user] aims \the [src] at \the [A].</span>")
-	if(power_supply && power_supply.charge >= charge_cost) //Do a delay for pointblanking too.
+	if(obj_cell_slot.cell && obj_cell_slot.cell.charge >= charge_cost) //Do a delay for pointblanking too.
 		power_cycle = TRUE
 		if(do_after(user, 30))
 			if(A.loc == target_turf)
@@ -316,7 +314,7 @@
 
 	projectile_type = /obj/projectile/beam/medigun
 
-	accept_cell_type = /obj/item/cell
+	cell_system_legacy_use_device = FALSE
 	cell_type = /obj/item/cell/high
 	charge_cost = 2500
 
@@ -333,7 +331,7 @@
 	fire_delay = 10		//Old pistol
 	charge_cost = 480	//to compensate a bit for self-recharging
 	cell_type = /obj/item/cell/device/weapon/recharge/captain
-	battery_lock = 1
+	legacy_battery_lock = 1
 	one_handed_penalty = 0
 	safety_state = GUN_SAFETY_OFF
 
@@ -419,7 +417,7 @@
 	fire_delay = 10
 	charge_cost = 800
 	cell_type = /obj/item/cell/device/weapon/recharge/captain
-	battery_lock = 1
+	legacy_battery_lock = 1
 	one_handed_penalty = 0
 
 /obj/item/gun/energy/ermitter
@@ -431,7 +429,7 @@
 	fire_delay = 2 SECONDS
 	charge_cost = 900
 	cell_type = /obj/item/cell
-	accept_cell_type = /obj/item/cell
+	cell_system_legacy_use_device = FALSE
 	slot_flags = SLOT_BELT|SLOT_BACK
 	w_class = WEIGHT_CLASS_BULKY
 	heavy = TRUE
@@ -456,7 +454,7 @@
 	fire_delay = 20
 	charge_cost = 600
 	cell_type = /obj/item/cell/device/weapon
-	battery_lock = 1
+	legacy_battery_lock = 1
 	slot_flags = SLOT_BACK
 	w_class = WEIGHT_CLASS_BULKY
 	heavy = TRUE
@@ -495,23 +493,6 @@
 	else
 		return
 
-/obj/item/gun/energy/plasma/consume_next_projectile(mob/user as mob)
-	. = ..()
-	if(src.projectile_type == /obj/projectile/plasma/hot)
-		switch(rand(1,6))
-			if(1)
-				to_chat(user, "<span class='danger'>The containment coil catastrophically overheats!</span>")
-				overheating = 1
-				spawn(rand(2 SECONDS,5 SECONDS))
-					if(src)
-						visible_message("<span class='critical'>\The [src] detonates!</span>")
-						explosion(get_turf(src), -1, 0, 2, 3)
-						qdel(chambered)
-						qdel(src)
-				return ..()
-			if(2 to 6)
-				return ..()
-
 /obj/item/gun/energy/plasma/pistol
 	name = "\improper Wyrm plasma pistol"
 	desc = "This scaled down NT-PLP-EX 'Wyrm' plasma pistol fires magnetically contained balls of plasma at high velocity. Due to the volatility of the round, the weapon is known to overheat and fail catastrophically if fired too frequently."
@@ -531,21 +512,3 @@
 		update_held_icon()
 	else
 		return
-
-/obj/item/gun/energy/plasma/pistol/consume_next_projectile(mob/user as mob)
-	. = ..()
-	if(.)
-		if(src.projectile_type == /obj/projectile/plasma/hot)
-			switch(rand(1,6))
-				if(1)
-					to_chat(user, "<span class='danger'>The containment coil catastrophically overheats!</span>")
-					overheating = 1
-					spawn(rand(2 SECONDS,5 SECONDS))
-						if(src)
-							visible_message("<span class='critical'>\The [src] detonates!</span>")
-							explosion(get_turf(src), -1, 0, 2, 3)
-							qdel(chambered)
-							qdel(src)
-					return ..()
-				if(2 to 6)
-					return ..()

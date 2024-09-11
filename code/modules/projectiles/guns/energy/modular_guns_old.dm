@@ -129,7 +129,7 @@
 
 /obj/item/gun/energy/modular/load_ammo(var/obj/item/C, mob/user)
 	if(istype(C, cell_type))
-		if(self_recharge || battery_lock)
+		if(self_recharge || legacy_battery_lock)
 			to_chat(user, "<span class='notice'>[src] does not have a battery port.</span>")
 			return
 		var/obj/item/cell/P = C

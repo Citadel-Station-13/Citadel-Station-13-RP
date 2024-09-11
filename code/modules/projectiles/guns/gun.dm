@@ -30,7 +30,14 @@
 	for(var/propname in settings)
 		gun.vars[propname] = settings[propname]
 
-//Parent gun type. Guns are weapons that can be aimed at mobs and act over a distance
+/**
+ * Guns
+ *
+ * A gun is a weapon that can be aimed and fired at someone or something over a distance.
+ *
+ *
+ * todo: /obj/item/gun/projectile vs /obj/item/gun/launcher
+ */
 /obj/item/gun
 	name = "gun"
 	desc = "Its a gun. It's pretty terrible, though."
@@ -61,6 +68,17 @@
 	///
 	/// * this is a default value; set to null by default to have the projectile's say.
 	var/accuracy_disabled = null
+
+	//* Firing *//
+
+	/// the current firing cycle
+	///
+	/// * to interrupt a firing cycle, just change it.
+	var/tmp/firing_cycle
+	/// the next firing cycle
+	///
+	/// * static var; technically can collide. realistically, won't.
+	var/static/firing_cycle_next = 0
 
 	// legacy below //
 
@@ -129,6 +147,43 @@
 	var/unstable = 0
 	var/destroyed = 0
 
+	                    //* THIS IS A WIP SYSTEM!! *//
+	                    // todo: well, finish this.
+	//*                      Modular Components                           *//
+	//* Generalized, and efficient modular component support at base /gun *//
+	//* level.                                                            *//
+
+	/// System flag for using modular component system
+	///
+	/// * Firing cycles are more expensive when modular components are invoked.
+	/// * This is because modular components use signal and API hooks that are not necessary for most guns.
+	/// * Thus, keep this off if it's not a modular weapon. It won't break it, but it's needless overhead.
+	var/modular_system = FALSE
+	/// currently installed components.
+	///
+	/// * This is a lazy list.
+	var/list/obj/item/gun_component/modular_components
+	/// lazy way to set internal slots, because this is modified so often
+	///
+	/// * literally not checked past init, it's used to generate the typelist
+	/// * if it's specified in the list, the list's copy is used instead.
+	var/modular_component_slots_internal = INFINITY
+	/// allowed component slots, associated to amount
+	///
+	/// * this is typelist()'d; if you want to change it later, make a copy!
+	var/list/modular_component_slots
+
+	//*                            Power                                  *//
+	//* Because the use of power is such a common case on /gun, it's been *//
+	//* hoisted to the base /obj/item/gun level for handling.             *//
+
+	/// do we use a cell slot?
+	var/cell_system = FALSE
+	/// cell type to start with
+	var/cell_type = /obj/item/cell/device/weapon
+	/// -_-
+	var/cell_system_legacy_use_device = TRUE
+
 	//* Rendering
 	/// renderer datum we use for world rendering of the gun item itself
 	/// set this in prototype to a path
@@ -174,7 +229,7 @@
 /obj/item/gun/Initialize(mapload)
 	. = ..()
 
-	// instantiate & dedupe renderers
+	// instantiate & dedupe renderers //
 	var/requires_icon_update
 	if(item_renderer)
 		if(ispath(item_renderer) || IS_ANONYMOUS_TYPEPATH(item_renderer))
@@ -191,7 +246,9 @@
 	if(requires_icon_update)
 		update_icon()
 
-	//! LEGACY: if neither of these are here, we are using legacy render.
+	//! LEGACY BELOW !//
+
+	// if neither of these are here, we are using legacy render. //
 	if(!item_renderer && !mob_renderer && render_use_legacy_by_default)
 		item_icons = list(
 			SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand_guns.dmi',
@@ -215,6 +272,42 @@
 
 	if(pin)
 		pin = new pin(src)
+
+	//! LEGACY ABOVE !//
+
+	// cell system //
+	if(cell_system)
+		var/datum/object_system/cell_slot/slot = init_cell_slot(cell_type)
+		slot.legacy_use_device_cells = cell_system_legacy_use_device
+		slot.remove_yank_offhand = TRUE
+		slot.remove_yank_context = TRUE
+
+	// modular components //
+	if(islist(modular_component_slots))
+		var/list/existing_typelist = get_typelist(NAMEOF(src, modular_component_slots))
+		if(existing_typelist)
+			modular_component_slots = existing_typelist
+		else
+			// if it's 1. a list and 2. we can't grab a typelist for it,
+			// we make it, patching internal modules lazily
+			var/internal_modules_patch = modular_component_slots[GUN_COMPONENT_INTERNAL_MODULE]
+			if(isnull(internal_modules_patch))
+				modular_component_slots[GUN_COMPONENT_INTERNAL_MODULE] = modular_component_slots_internal
+			modular_component_slots = typelist(NAMEOF(src, modular_component_slots), modular_component_slots)
+
+/obj/item/gun/examine(mob/user, dist)
+	. = ..()
+	if(!no_pin_required)
+		if(pin)
+			. += "It has \a [pin] installed."
+		else
+			. += "It doesn't have a firing pin installed, and won't fire."
+	if(firemodes.len > 1)
+		var/datum/firemode/current_mode = firemodes[sel_mode]
+		. += "The fire selector is set to [current_mode.name]."
+	if(safety_state != GUN_NO_SAFETY)
+		to_chat(user, SPAN_NOTICE("The safety is [check_safety() ? "on" : "off"]."))
+	#warn component examine
 
 /obj/item/gun/CtrlClick(mob/user)
 	if(can_flashlight && ishuman(user) && src.loc == usr && !user.incapacitated(INCAPACITATION_ALL))
@@ -258,7 +351,6 @@
 				item_state_slots[SLOT_ID_LEFT_HAND] = initial(item_state)
 				item_state_slots[SLOT_ID_RIGHT_HAND] = initial(item_state)
 	..()
-
 
 //Checks whether a given mob can use the gun
 //Any checks that shouldn't result in handle_click_empty() being called if they fail should go here.
@@ -561,8 +653,9 @@
 		set_light(0)
 
 //obtains the next projectile to fire
+#warn get rid of this
 /obj/item/gun/proc/consume_next_projectile()
-	return null
+	SHOULD_NOT_OVERRIDE(TRUE)
 
 //used by aiming code
 /obj/item/gun/proc/can_hit(atom/target as mob, var/mob/living/user as mob)
@@ -573,19 +666,12 @@
 	if(check_trajectory(target, user))
 		return 1 // Magic numbers are fun.
 
-//called if there was no projectile to shoot
-/obj/item/gun/proc/handle_click_empty(mob/user)
-	if (user)
-		user.visible_message("*click click*", "<span class='danger'>*click*</span>")
-	else
-		visible_message("*click click*")
-	playsound(src, 'sound/weapons/empty.ogg', 100, 1)
-
 /obj/item/gun/proc/handle_click_safety(mob/user)
 	user.visible_message(SPAN_WARNING("[user] squeezes the trigger of \the [src] but it doesn't move!"), SPAN_WARNING("You squeeze the trigger but it doesn't move!"), range = MESSAGE_RANGE_COMBAT_SILENCED)
 
 //called after successfully firing
 /obj/item/gun/proc/handle_post_fire(mob/user, atom/target, var/pointblank=0, var/reflex=0)
+	SHOULD_NOT_OVERRIDE(TRUE)
 	if(fire_anim)
 		flick(fire_anim, src)
 
@@ -729,46 +815,6 @@
 	else
 		playsound(src, shot_sound, 50, 1)
 
-// todo: rework all this this is fucking dumb
-//Suicide handling.
-// /obj/item/gun/var/mouthshoot = 0 //To stop people from suiciding twice... >.>
-
-// /obj/item/gun/proc/handle_suicide(mob/living/user)
-// 	if(!ishuman(user))
-// 		return
-// 	var/mob/living/carbon/human/M = user
-
-// 	mouthshoot = 1
-// 	M.visible_message("<font color='red'>[user] sticks their gun in their mouth, ready to pull the trigger...</font>")
-// 	if(!do_after(user, 40))
-// 		M.visible_message("<font color=#4F49AF>[user] decided life was worth living</font>")
-// 		mouthshoot = 0
-// 		return
-// 	var/obj/projectile/in_chamber = consume_next_projectile()
-// 	if (istype(in_chamber))
-// 		user.visible_message("<span class = 'warning'>[user] pulls the trigger.</span>")
-// 		play_fire_sound(M, in_chamber)
-// 		if(istype(in_chamber, /obj/projectile/beam/lasertag))
-// 			user.show_message("<span class = 'warning'>You feel rather silly, trying to commit suicide with a toy.</span>")
-// 			mouthshoot = 0
-// 			return
-
-// 		in_chamber.on_hit(M)
-// 		if(in_chamber.damage_type != DAMAGE_TYPE_HALLOSS && !in_chamber.nodamage)
-// 			log_and_message_admins("[key_name(user)] commited suicide using \a [src]")
-// 			user.apply_damage(in_chamber.damage_force*2.5, in_chamber.damage_type, "head", used_weapon = "Point blank shot in the mouth with \a [in_chamber]", sharp=1)
-// 			user.death()
-// 		else if(in_chamber.damage_type == DAMAGE_TYPE_HALLOSS)
-// 			to_chat(user, "<span class = 'notice'>Ow...</span>")
-// 			user.apply_effect(110,AGONY,0)
-// 		qdel(in_chamber)
-// 		mouthshoot = 0
-// 		return
-// 	else
-// 		handle_click_empty(user)
-// 		mouthshoot = 0
-// 		return
-
 /obj/item/gun/proc/toggle_scope(var/zoom_amount=2.0)
 	//looking through a scope limits your periphereal vision
 	//still, increase the view size by a tiny amount so that sniping isn't too restricted to NSEW
@@ -788,19 +834,6 @@
 	if(!zoom)
 		accuracy = initial(accuracy)
 		recoil = initial(recoil)
-
-/obj/item/gun/examine(mob/user, dist)
-	. = ..()
-	if(!no_pin_required)
-		if(pin)
-			. += "It has \a [pin] installed."
-		else
-			. += "It doesn't have a firing pin installed, and won't fire."
-	if(firemodes.len > 1)
-		var/datum/firemode/current_mode = firemodes[sel_mode]
-		. += "The fire selector is set to [current_mode.name]."
-	if(safety_state != GUN_NO_SAFETY)
-		to_chat(user, SPAN_NOTICE("The safety is [check_safety() ? "on" : "off"]."))
 
 /obj/item/gun/proc/switch_firemodes(mob/user)
 	if(firemodes.len <= 1)

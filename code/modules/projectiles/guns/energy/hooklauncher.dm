@@ -27,7 +27,7 @@
 	w_class = WEIGHT_CLASS_TINY
 
 	cell_type = /obj/item/cell/device/weapon/recharge/alien
-	battery_lock = TRUE
+	legacy_battery_lock = TRUE
 	charge_cost = 400
 	charge_meter = FALSE
 
