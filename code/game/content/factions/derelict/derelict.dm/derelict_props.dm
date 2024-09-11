@@ -338,3 +338,12 @@
 	desc = "A massive gate that appears to have been forced open. There's no hope of getting it back closed."
 	bounds = "96,32"
 	density = 0
+
+/obj/structure/event/prop/derelict_core
+	icon = 'code/game/content/factions/derelict/derelict.dmi/96x96 props.dmi'
+	icon_state = "core"
+	name = "gargatuan core"
+	desc = "Some sort of... Core, it's gargatuan in size and appears to flicker with brief power. There's a number of ports and slots built into the frame."
+	bounds = "96,32"
+	density = 1
+	opacity = 1
