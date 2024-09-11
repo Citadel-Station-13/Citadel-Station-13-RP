@@ -105,6 +105,8 @@
 	///
 	/// * this is configured at runtime and can be edited
 	/// * this is non /tmp because this is infact serializable
+	/// * you must set this to a list of instances to use it; this is an advanced feature, and there's no guard-rails!
+	/// * the projectile will never modify the instances in here.
 	VAR_PROTECTED/list/additional_projectile_effects
 
 	//* Configuration *//
@@ -339,7 +341,22 @@
 
 /obj/projectile/Initialize(mapload)
 	if(islist(base_projectile_effects))
-		base_projectile_effects = typelist(NAMEOF(src, base_projectile_effects), base_projectile_effects)
+		var/list/existing_typelist = get_typelist(NAMEOF(src, base_projectile_effects))
+		if(existing_typelist)
+			base_projectile_effects = existing_typelist
+		else
+			// generate, and process one
+			for(var/i in 1 to length(base_projectile_effects))
+				var/datum/projectile_effect/effectlike = base_projectile_effects[i]
+				if(ispath(effectlike))
+					effectlike = new effectlike
+				else if(IS_ANONYMOUS_TYPEPATH(effectlike))
+					effectlike = new effectlike
+				else if(istype(effectlike))
+				else
+					stack_trace("tried to make a projectile with an invalid effect in base_projectile_effects")
+				base_projectile_effects[i] = effectlike
+			base_projectile_effects = typelist(NAMEOF(src, base_projectile_effects), base_projectile_effects)
 	return ..()
 
 /obj/projectile/Destroy()
