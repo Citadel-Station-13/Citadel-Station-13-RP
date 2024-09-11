@@ -173,11 +173,11 @@
 	if (safety_disabled)
 		item_power_usage = 2500
 		for(var/obj/item/holo/esword/H in linkedholodeck)
-			H.damtype = DAMAGE_TYPE_BRUTE
+			H.damage_type = DAMAGE_TYPE_BRUTE
 	else
 		item_power_usage = initial(item_power_usage)
 		for(var/obj/item/holo/esword/H in linkedholodeck)
-			H.damtype = initial(H.damtype)
+			H.damage_type = initial(H.damage_type)
 
 	for(var/mob/living/simple_mob/animal/space/carp/holodeck/C in holographic_mobs)
 		C.set_safety(!safety_disabled)

@@ -110,15 +110,15 @@
 				var/mob/living/L = user
 				L.take_random_targeted_damage(brute = 2*damage_force)
 			return
-		var/old_damtype = damtype
+		var/old_damage_type = damage_type
 		var/old_attack_verb = attack_verb
 		var/old_force = damage_force
 		if(user.a_intent != INTENT_HARM)
-			damtype = DAMAGE_TYPE_HALLOSS
+			damage_type = DAMAGE_TYPE_HALLOSS
 			attack_verb = list("suppressed")
 			damage_force = on_pain_force
 		. = ..()
-		damtype = old_damtype
+		damage_type = old_damage_type
 		attack_verb = old_attack_verb
 		damage_force = old_force
 	else
@@ -221,7 +221,7 @@
 	desc = "A training sword made of wood and shaped like a katana."
 	icon_state = "bokken"
 	slot_flags = SLOT_BELT | SLOT_BACK
-	damtype = DAMAGE_TYPE_HALLOSS
+	damage_type = DAMAGE_TYPE_HALLOSS
 	damage_force = 5
 	throw_force = 5
 	attack_verb = list("whacked", "smacked", "struck")
@@ -351,7 +351,7 @@
 	desc = "A heavy wooden club reinforced with metal studs. Ancient Terran Oni were often depicted carrying this weapon."
 	icon_state = "kanabo"
 	slot_flags = SLOT_BACK
-	damtype = DAMAGE_TYPE_BRUTE
+	damage_type = DAMAGE_TYPE_BRUTE
 	damage_force = 15
 	throw_force = 5
 	attack_verb = list("battered", "hammered", "struck")

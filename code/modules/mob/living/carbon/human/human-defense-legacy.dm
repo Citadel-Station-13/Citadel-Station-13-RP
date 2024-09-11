@@ -227,7 +227,7 @@
 		forcesay(hit_appends)	//forcesay checks stat already
 
 	if(prob(25 + (effective_force * 2)))
-		if(!((I.damtype == DAMAGE_TYPE_BRUTE) || (I.damtype == DAMAGE_TYPE_HALLOSS)))
+		if(!((I.damage_type == DAMAGE_TYPE_BRUTE) || (I.damage_type == DAMAGE_TYPE_HALLOSS)))
 			return
 
 		if(!(I.atom_flags & NOBLOODY))
@@ -274,7 +274,7 @@
 	if(!organ || (organ.dislocated == 2) || (organ.dislocated == -1) || blocked >= 100)
 		return 0
 
-	if(W.damtype != DAMAGE_TYPE_BRUTE)
+	if(W.damage_type != DAMAGE_TYPE_BRUTE)
 		return 0
 
 	if(soaked >= round(effective_force*0.8))
@@ -317,7 +317,11 @@
 						throw_mode_off()
 						return
 
-		var/dtype = O.damtype
+		var/dtype = DAMAGE_TYPE_BRUTE
+		if(isitem(AM))
+			var/obj/item/impacting_item = AM
+			dtype = impacting_item.damage_type
+			
 		var/throw_damage = O.throw_force * TT.get_damage_multiplier(src)
 
 		var/zone
@@ -473,10 +477,10 @@
 		w_uniform.add_blood(source)
 		update_inv_w_uniform(0)
 
-/mob/living/carbon/human/proc/handle_suit_punctures(var/damtype, var/damage, var/def_zone)
+/mob/living/carbon/human/proc/handle_suit_punctures(var/damage_type, var/damage, var/def_zone)
 
 	// Tox and oxy don't matter to suits.
-	if(damtype != DAMAGE_TYPE_BURN && damtype != DAMAGE_TYPE_BRUTE) return
+	if(damage_type != DAMAGE_TYPE_BURN && damage_type != DAMAGE_TYPE_BRUTE) return
 
 	// The hardsuit might soak this hit, if we're wearing one.
 	if(back && istype(back,/obj/item/hardsuit))
@@ -488,7 +492,7 @@
 	if(!istype(wear_suit,/obj/item/clothing/suit/space)) return
 	var/obj/item/clothing/suit/space/SS = wear_suit
 	var/penetrated_dam = max(0,(damage - SS.breach_threshold))
-	if(penetrated_dam) SS.create_breaches(damtype, penetrated_dam)
+	if(penetrated_dam) SS.create_breaches(damage_type, penetrated_dam)
 
 /mob/living/carbon/human/reagent_permeability()
 	var/perm = 0
