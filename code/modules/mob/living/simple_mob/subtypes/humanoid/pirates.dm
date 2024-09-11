@@ -352,9 +352,6 @@
 
 	loot_list = list(/obj/item/melee/transforming/energy/sword/cutlass = 100, /obj/item/clothing/suit/armor/riot/alt = 100)
 
-	corpse = /obj/spawner/corpse/pirate/mate
-
-///////////////////////////////
 //		Mate Pistolier
 ///////////////////////////////
 /mob/living/simple_mob/humanoid/pirate/mate/ranged

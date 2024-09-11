@@ -372,7 +372,6 @@
 	fire_sound = 'sound/weapons/weaponsounds_heavypistolshot.ogg'
 	damage_force = 60
 	speed = 8.3 * WORLD_ICON_SIZE
-	armor_penetration = -50
 
 /obj/projectile/bullet/musket/silver // What its a classic
 	damage_force = 25

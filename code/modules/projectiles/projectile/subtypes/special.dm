@@ -41,8 +41,7 @@
 	icon_state= "bolter"
 	damage_force = 50
 	damage_flag = ARMOR_BULLET
-	sharp = 1
-	edge = 1
+	damage_mode = DAMAGE_MODE_PIERCE
 
 /obj/projectile/bullet/gyro/on_impact(atom/target, impact_flags, def_zone, efficiency)
 	. = ..()

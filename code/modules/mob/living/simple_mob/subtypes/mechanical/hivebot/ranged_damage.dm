@@ -125,8 +125,9 @@
 /obj/projectile/arc/blue_energy
 	name = "energy missile"
 	icon_state = "force_missile"
-	// A bit stronger since arcing projectiles are much easier to avoid than traditional ones.
-	damage_force = 15 // A bit stronger since arcing projectiles are much easier to avoid than traditional ones.
+	damage_force = 25
+	damage_flag = ARMOR_LASER
+	damage_tier = LASER_TIER_HIGH
 	damage_type = DAMAGE_TYPE_BURN
 
 // Very long ranged hivebot that rains down hell.
@@ -247,7 +248,6 @@
 	health = 4 LASERS_TO_KILL
 
 	catalogue_data = list(/datum/category_item/catalogue/technology/drone/hivebot/suppressor)
-
 
 /obj/projectile/beam/smalllaser/hivebot
 	damage_force = 25

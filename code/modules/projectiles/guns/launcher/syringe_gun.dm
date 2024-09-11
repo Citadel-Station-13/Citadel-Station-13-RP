@@ -23,7 +23,7 @@
 			return
 		syringe = I
 		to_chat(user, "<span class='notice'>You carefully insert [syringe] into [src].</span>")
-		sharp = 1
+		damage_mode = DAMAGE_MODE_SHARP
 		name = "syringe dart"
 		update_icon()
 
@@ -36,7 +36,7 @@
 		playsound(src, 'sound/weapons/empty.ogg', 50, 1)
 		user.grab_item_from_interacted_with(syringe, src)
 		syringe = null
-		sharp = initial(sharp)
+		damage_mode = NONE
 		name = initial(name)
 		update_icon()
 

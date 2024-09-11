@@ -1006,10 +1006,6 @@
 /proc/is_sharp(obj/O as obj)
 	if(!O)
 		return FALSE
-	if(O.sharp)
-		return TRUE
-	if(O.edge)
-		return TRUE
 	if(isitem(O))
 		var/obj/item/I = O
 		if(I.damage_mode & DAMAGE_MODE_SHARP)
@@ -1020,8 +1016,6 @@
 /proc/has_edge(obj/O as obj)
 	if(!O)
 		return FALSE
-	if(O.edge)
-		return TRUE
 	if(isitem(O))
 		var/obj/item/I = O
 		if(I.damage_mode & DAMAGE_MODE_EDGE)

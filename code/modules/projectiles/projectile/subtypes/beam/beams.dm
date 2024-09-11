@@ -77,7 +77,7 @@
 
 /obj/projectile/beam/heavylaser/cannon
 	damage_force = 80
-	armor_penetration = 45
+	armor_penetration = 50
 	light_color = "#FF0D00"
 
 /obj/projectile/beam/xray

@@ -52,7 +52,7 @@
 /datum/outfit/ashlander/priest
 	name = "Ashlander - Priest"
 	suit = /obj/item/clothing/suit/ashen_vestment
-	belt = /obj/item/melee/ashlander/elder
+	belt = /obj/item/melee/transforming/ashlander_elder
 	l_pocket = /obj/item/elderstone
 
 //Pirates!

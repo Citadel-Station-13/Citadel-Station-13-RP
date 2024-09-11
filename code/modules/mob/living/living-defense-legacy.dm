@@ -41,41 +41,6 @@
 			log_world("## DEBUG: Armor when [src] was attacked was [armor].")
 	return armor
 
-/*
-	//Old armor code here.
-	if(armour_pen >= 100)
-		return 0 //might as well just skip the processing
-
-	var/armor = legacy_mob_armor(def_zone, attack_flag)
-	var/absorb = 0
-
-	//Roll armour
-	if(prob(armor))
-		absorb += 1
-	if(prob(armor))
-		absorb += 1
-
-	//Roll penetration
-	if(prob(armour_pen))
-		absorb -= 1
-	if(prob(armour_pen))
-		absorb -= 1
-
-	if(absorb >= 2)
-		if(absorb_text)
-			show_message("[absorb_text]")
-		else
-			show_message("<span class='warning'>Your armor absorbs the blow!</span>")
-		return 2
-	if(absorb == 1)
-		if(absorb_text)
-			show_message("[soften_text]",4)
-		else
-			show_message("<span class='warning'>Your armor softens the blow!</span>")
-		return 1
-	return 0
-*/
-
 //Certain pieces of armor actually absorb flat amounts of damage from income attacks
 /mob/living/proc/get_armor_soak(var/def_zone = null, var/attack_flag = "melee", var/armour_pen = 0)
 	var/soaked = legacy_mob_soak(def_zone, attack_flag)

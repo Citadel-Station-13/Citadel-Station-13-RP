@@ -1,8 +1,9 @@
-/obj/projectile/bullet/pistol/rubber/strong //"rubber" bullets for revolvers and matebas
+//"rubber" bullets for revolvers and matebas
+/obj/projectile/bullet/pistol/rubber/strong
 	damage_force = 10
 	agony = 60
 	embed_chance = 0
-	sharp = 0
+	damage_mode = NONE
 	damage_flag = ARMOR_MELEE
 
 /obj/projectile/energy/flash/strong

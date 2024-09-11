@@ -188,8 +188,6 @@
 	var/internal = FALSE
 	// maximum stage at which bleeding should still happen. Beyond this stage bleeding is prevented.
 	var/max_bleeding_stage = 0
-	// one of WOUND_TYPE_CUT, WOUND_TYPE_PIERCE, WOUND_TYPE_BRUISE, WOUND_TYPE_BURN
-	var/wound_type = WOUND_TYPE_CUT
 	// whether this wound needs a bandage/salve to heal at all
 	// the maximum amount of damage that this wound can have and still autoheal
 	var/autoheal_cutoff = 10
@@ -201,6 +199,13 @@
 	// helper lists
 	var/tmp/list/desc_list = list()
 	var/tmp/list/damage_list = list()
+
+	//* Metadata - defined by typepath; should not be changed. *//
+
+	/// WOUND_TYPE_* define
+	///
+	/// *  one of WOUND_TYPE_CUT, WOUND_TYPE_PIERCE, WOUND_TYPE_BRUISE, WOUND_TYPE_BURN
+	var/wound_type = WOUND_TYPE_OTHER
 
 /datum/wound/New(damage)
 
@@ -355,8 +360,8 @@
 
 // returns whether this wound can absorb the given amount of damage.
 // this will prevent large amounts of damage being trapped in less severe wound types
-/datum/wound/proc/can_worsen(woud_type, damage)
-	if (src.wound_type != woud_type)
+/datum/wound/proc/can_worsen(wound_type, damage)
+	if (src.wound_type != wound_type)
 		return 0	//incompatible damage types
 
 	if (src.amount > 1)

@@ -130,5 +130,3 @@
  */
 /mob/living/proc/slip_act(slip_class, source, hard_strength, soft_strength, suppressed)
 	return 1
-//* This file is explicitly licensed under the MIT license. *//
-//* Copyright (c) 2024 Citadel Station developers.          *//
