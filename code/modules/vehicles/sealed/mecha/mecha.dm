@@ -946,10 +946,10 @@
 	if(!pr_internal_damage) return
 
 	internal_damage |= int_dam_flag
-	pr_internal_damage.start()
+	spawn(-1)
+		pr_internal_damage.start()
 	log_append_to_last("Internal damage of type [int_dam_flag].",1)
 	occupant_legacy << sound('sound/mecha/internaldmgalarm.ogg',volume=50) //Better sounding.
-	return
 
 /obj/vehicle/sealed/mecha/proc/clearInternalDamage(int_dam_flag)
 	internal_damage &= ~int_dam_flag

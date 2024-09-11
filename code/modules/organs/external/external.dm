@@ -379,7 +379,8 @@
 	if(is_broken() && brute && !(damage_mode & DAMAGE_MODE_GRADUAL))
 		jostle_bone(brute)
 		if(organ_can_feel_pain() && IS_CONSCIOUS(owner) && prob(40))
-			owner.emote("scream")	//getting hit on broken hand hurts
+			spawn(-1)
+				owner.emote("scream")	//getting hit on broken hand hurts
 
 	// todo: optimization
 	// legacy: autopsy data
