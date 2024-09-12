@@ -226,13 +226,3 @@
 				m_type = 2
 			else
 				to_chat(src, "You're not a cat!")
-
-		if ("help")
-			to_chat(src, "salute, bow-(none)/mob, clap, flap, aflap, twitch, twitch_s, nod, deathgasp, glare-(none)/mob, stare-(none)/mob, look, beep, ping, \nbuzz, law, halt, yes, no")
-		else
-			to_chat(src, "<font color=#4F49AF>Unusable emote '[act]'. Say *help for a list.</font>")
-
-	if ((message && src.stat == 0))
-		custom_emote(m_type,message)
-
-	return

@@ -42,40 +42,50 @@
 	///
 	/// * %USER% is replaced with the user.
 	/// * If the replacement is at the start of the string, it'll be capitalized as needed.
+	/// * HTML is valid
 	var/feedback_special_miming
 	/// targeted version of miming
 	///
 	/// * %USER% is replaced with the user.
 	/// * %TARGET% is replaced with a target.
 	/// * If the replacement is at the start of the string, it'll be capitalized as needed.
+	/// * HTML is valid
 	var/feedback_special_miming_targeted
 
 	/// if existing, and we're muzzled, we immediately switch to this
 	///
 	/// * %USER% is replaced with the user.
 	/// * If the replacement is at the start of the string, it'll be capitalized as needed.
+	/// * HTML is valid
 	var/feedback_special_muzzled
 	/// targeted version of muzzled
 	///
 	/// * %USER% is replaced with the user.
 	/// * %TARGET% is replaced with a target.
 	/// * If the replacement is at the start of the string, it'll be capitalized as needed.
+	/// * HTML is valid
 	var/feedback_special_miming_targeted
 	/// audible descriptor for muzzled
+	///
+	/// * HTML is valid
 	var/feedback_special_muzzled_audible
 
 	/// the default feedback string
 	///
 	/// * If heard, audible has %USER% replaced with "someone" if the viewer is blind.
 	/// * If the replacement is at the start of the string, it'll be capitalized as needed.
+	/// * HTML is valid
 	var/feedback_default = "%USER% does something that isn't implemented by the coders. (Yell at coders, someone forgot a default string.)"
 	/// the default targeted feedback sting
 	///
 	/// * %USER% is replaced with the user.
 	/// * %TARGET% is replaced with a target.
 	/// * If the replacement is at the start of the string, it'll be capitalized as needed.
+	/// * HTML is valid
 	var/feedback_default_targeted
 	/// the default audible descriptor
+	///
+	/// * HTML is valid
 	var/feedback_default_audible = "You hear something that isn't implemented by the coders. (Yell at coders, someone forgot a default string.)"
 
 	//* Parameter *//
@@ -90,7 +100,7 @@
 	/// requires a target?
 	var/target_required = FALSE
 	/// maximum distance target can be from us
-	var/max_distance = 7
+	var/target_range = 7
 
 /datum/emote/standard/basic/New()
 	if(isnull(parameter_description))

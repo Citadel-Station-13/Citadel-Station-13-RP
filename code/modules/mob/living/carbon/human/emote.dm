@@ -103,34 +103,6 @@
 				message = "makes a kissing mouth."
 			m_type = 1
 
-		if("smooch")
-			if (param)
-				var/M = null
-				for (var/mob/A in view(1,src.loc))
-					if (param == A.name)
-						M = A
-						break
-				if (!M)
-					param = null
-
-				if (param)
-					message = "smooches [param]."
-			m_type = 1
-		if ("bow")
-			if (!src.buckled)
-				var/M = null
-				if (param)
-					for (var/mob/A in view(null, null))
-						if (param == A.name)
-							M = A
-							break
-				if (!M)
-					param = null
-
-				if (param)
-					message = "bows to [param]."
-				else
-					message = "bows."
 			m_type = 1
 
 		if ("custom")
@@ -621,10 +593,6 @@
 				else
 					message = "makes a weak noise."
 					m_type = 2
-
-		if ("wink")
-			message = "winks."
-			m_type = 1
 
 		if ("yawn")
 			if (!muzzled)
