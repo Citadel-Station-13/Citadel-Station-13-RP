@@ -768,25 +768,6 @@
 				else
 					message = "makes a very loud noise."
 					m_type = 2
-		if("squeak","squeaks")
-			if HAS_TRAIT_FROM(src, TRAIT_MUTE, MIME_TRAIT)
-				message = "acts out a soft squeak."
-				m_type = 1
-			else
-				if(!muzzled)
-					message = "squeaks!"
-					m_type = 2
-					playsound(loc, "sound/effects/mouse_squeak.ogg", 50, 1)
-
-		if("meow", "meows")
-			if HAS_TRAIT_FROM(src, TRAIT_MUTE, MIME_TRAIT)
-				message = "acts out a soft mrowl."
-				m_type = 1
-			else
-				if(!muzzled)
-					message = "mrowls!"
-					m_type = 2
-					playsound(loc, 'sound/voice/meow1.ogg', 50, 1)
 
 		if("snap", "snaps")
 			m_type = 2
@@ -1016,17 +997,6 @@
 		if ("mlem")
 			message = "mlems [get_visible_gender() == MALE ? "his" : get_visible_gender() == FEMALE ? "her" : "their"] tongue up over [get_visible_gender() == MALE ? "his" : get_visible_gender() == FEMALE ? "her" : "their"] nose. Mlem."
 			m_type = 1
-///////////////////////// EMOTES PORTED FROM MAIN START
-		if ("awoo")
-			m_type = 2
-			message = "lets out an awoo."
-			playsound(loc, 'sound/voice/awoo.ogg', 50, 1, -1)
-		if ("nya")
-			message = "lets out a nya."
-			m_type = 2
-			var/use_sound
-			use_sound = pick('sound/voice/nya.ogg')
-			playsound(src.loc, use_sound, 50, 0)
 		if ("nyaha")
 			if(!spam_flag)
 				var/list/catlaugh = list('sound/voice/catpeople/nyaha.ogg', 'sound/voice/catpeople/nyahaha1.ogg', 'sound/voice/catpeople/nyahaha2.ogg', 'sound/voice/catpeople/nyahehe.ogg')
