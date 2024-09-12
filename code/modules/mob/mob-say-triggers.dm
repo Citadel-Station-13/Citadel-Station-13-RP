@@ -17,7 +17,7 @@
 	if(!message)
 		return
 
-	set_ver(message)
+	set_verb(message)
 
 /mob/verb/say_verb(message as text)
 	set name = "Say"
@@ -61,7 +61,7 @@
 	// clear typing indicator
 	set_typing_indicator(FALSE)
 	// perform say
-	say(message, whispering = TRUE)
+	whisper(message)
 
 //* Emote *//
 

@@ -7,6 +7,8 @@
  *
  * Eventually, they'll be used with a proper saycode call-chain and tokenzier
  * to enable language fragment support and more.
+ *
+ * * Unlike saycode, there's no custom_emote() default wrapper, because custom emotes have so many things to customize.
  */
 
 /**

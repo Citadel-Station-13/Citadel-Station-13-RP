@@ -1,6 +1,9 @@
 /mob/proc/say(var/message, var/datum/language/speaking = null, var/verb="says", var/alt_name="", var/whispering = 0)
 	return
 
+/mob/proc/whisper(var/message, var/datum/language/speaking = null, var/verb="says", var/alt_name="")
+	say(message, speaking, ver, alt_name, TRUE)
+
 /mob/proc/say_dead(var/message)
 	if(!client)
 		return // Clientless mobs shouldn't be trying to talk in deadchat.

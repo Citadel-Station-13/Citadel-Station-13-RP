@@ -29,7 +29,6 @@
 
 	if (message)
 		message = say_emphasis(message)
-		SEND_SIGNAL(src, COMSIG_MOB_SUBTLE_EMOTE, src, message)
 
 		var/list/vis_mobs = new()
 		var/list/vis_objs = new()
