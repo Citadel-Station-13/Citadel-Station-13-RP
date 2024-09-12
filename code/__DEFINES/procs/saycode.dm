@@ -8,3 +8,8 @@
 #define SAYCODE_TYPE_LIVING 4
 /// it just works
 #define SAYCODE_TYPE_ALWAYS 5
+/// special
+///
+/// * runtime / stack traces if used in actual saycode
+/// * used in emotes for automatically generating both visible and audible messages
+#define SAYCODE_TYPE_AUTO 6

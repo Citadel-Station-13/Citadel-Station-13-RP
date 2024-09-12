@@ -435,14 +435,6 @@
 					message = "makes a noise."
 					m_type = 2
 
-		if ("twitch")
-			message = "twitches."
-			m_type = 1
-
-		if ("twitch_v")
-			message = "twitches violently."
-			m_type = 1
-
 		if ("faint")
 			message = "faints."
 			if(!IS_CONSCIOUS(src))
@@ -697,25 +689,6 @@
 				else
 					message = "says, \"[M], please. He had a family.\" [src.name] takes a drag from a cigarette and blows his name out in smoke."
 					m_type = 2
-
-		if ("point")
-			if (!src.restrained())
-				var/mob/M = null
-				if (param)
-					for (var/atom/A as mob|obj|turf|area in view(null, null))
-						if (param == A.name)
-							M = A
-							break
-
-				if (!M)
-					message = "points."
-				else
-					pointed(M)
-
-				if (M)
-					message = "points to [M]."
-				else
-			m_type = 1
 
 		if("crack")
 			if(!restrained())

@@ -10,7 +10,7 @@
 	//* Feedback *//
 
 	/// outgoing saycode type flags
-	var/feedback_saycode_type = SAYCODE_TYPE_VISIBLE
+	var/feedback_saycode_type = SAYCODE_TYPE_AUTO
 
 	//* SFX *//
 

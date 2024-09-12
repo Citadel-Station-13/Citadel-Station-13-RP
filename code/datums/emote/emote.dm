@@ -57,8 +57,8 @@ GLOBAL_LIST(emote_lookup)
 		if(islist(bindings))
 			for(var/i in 1 to length(bindings))
 				bindings[i] = "[binding_prefix]-[bindings[i]]"
-			else
-				bindings = "[binding_prefix]-[bindings]"
+		else
+			bindings = "[binding_prefix]-[bindings]"
 
 //* Checks *//
 

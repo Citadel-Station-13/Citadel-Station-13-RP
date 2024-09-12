@@ -12,5 +12,5 @@
 /datum/emote/standard/basic/general/blink_fast
 	name = "blink (fast)"
 	desc = "Rapidly blink your eyes."
-	bindings = "blink_fast"
+	bindings = "blink-fast"
 	feedback_1_direct_append = "blinks rapidly."
