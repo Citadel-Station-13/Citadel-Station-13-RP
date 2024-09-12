@@ -64,6 +64,7 @@
 
 	var/our_emote_class = get_usable_emote_class()
 	var/our_emote_require = get_usable_emote_require()
+	var/datum/event_args/actor/actor = new(src)
 
 	for(var/datum/emote/emote as anything in emotes)
 		var/special_check = emote.can_use_special(actor)
