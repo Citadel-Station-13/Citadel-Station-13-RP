@@ -1138,8 +1138,6 @@
 	icon_state = "stunstaff00"
 	var/base_icon = "stunstaff"
 	damage_force = 5
-	sharp = 0
-	edge = 0
 	throw_force = 7
 	w_class = WEIGHT_CLASS_HUGE
 	origin_tech = list(TECH_COMBAT = 2)
@@ -1234,8 +1232,6 @@
 	var/active_throwforce
 	var/active_w_class
 	var/active_embed_chance = 0
-	sharp = 0
-	edge = 0
 
 /obj/item/melee/fluffstuff/proc/activate(mob/living/user)
 	if(active)
@@ -1244,8 +1240,6 @@
 	embed_chance = active_embed_chance
 	damage_force = active_force
 	throw_force = active_throwforce
-	sharp = 1
-	edge = 1
 	set_weight_class(active_w_class)
 	playsound(user, 'sound/weapons/sparkle.ogg', 50, 1)
 
@@ -1257,8 +1251,6 @@
 	embed_chance = initial(embed_chance)
 	damage_force = initial(damage_force)
 	throw_force = initial(throw_force)
-	sharp = initial(sharp)
-	edge = initial(edge)
 	set_weight_class(initial(w_class))
 
 /obj/item/melee/fluffstuff/attack_self(mob/user)

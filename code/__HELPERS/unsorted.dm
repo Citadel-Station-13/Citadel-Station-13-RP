@@ -1003,29 +1003,29 @@
 			return FALSE
 
 /// Whether or not the given item counts as sharp in terms of dealing damage.
+// todo: deprecrated
 /proc/is_sharp(obj/O as obj)
 	if(!O)
 		return FALSE
-	if(O.sharp)
-		return TRUE
-	if(O.edge)
-		return TRUE
 	if(isitem(O))
 		var/obj/item/I = O
-		if(I.damage_mode & DAMAGE_MODE_SHARP)
-			return TRUE
+		return I.damage_mode & (DAMAGE_MODE_SHARP | DAMAGE_MODE_EDGE)
+	else if(istype(O, /obj/projectile))
+		var/obj/projectile/proj = O
+		return proj.damage_mode & (DAMAGE_MODE_SHARP | DAMAGE_MODE_EDGE)
 	return FALSE
 
 /// Whether or not the given item counts as cutting with an edge in terms of removing limbs.
+// todo: deprecrated
 /proc/has_edge(obj/O as obj)
 	if(!O)
 		return FALSE
-	if(O.edge)
-		return TRUE
 	if(isitem(O))
 		var/obj/item/I = O
-		if(I.damage_mode & DAMAGE_MODE_EDGE)
-			return TRUE
+		return I.damage_mode & (DAMAGE_MODE_EDGE)
+	else if(istype(O, /obj/projectile))
+		var/obj/projectile/proj = O
+		return proj.damage_mode & (DAMAGE_MODE_EDGE)
 	return FALSE
 
 /// Returns 1 if the given item is capable of popping things like balloons, inflatable barriers, or cutting police tape.

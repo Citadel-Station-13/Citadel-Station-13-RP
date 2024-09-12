@@ -61,8 +61,7 @@
 	damage_force = 30
 	throw_force = 10
 	w_class = WEIGHT_CLASS_NORMAL
-	sharp = 1
-	edge = 1
+	damage_mode = DAMAGE_MODE_SHARP | DAMAGE_MOD_EDGE
 	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
 	attack_sound = 'sound/weapons/bladeslice.ogg'
 	can_speak = 1
@@ -155,8 +154,7 @@
 	damage_force = 30
 	throw_force = 10
 	w_class = WEIGHT_CLASS_NORMAL
-	sharp = 1
-	edge = 1
+	damage_mode = DAMAGE_MODE_SHARP | DAMAGE_MOD_EDGE
 	reach = 2
 	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
 	attack_sound = 'sound/items/bikehorn.ogg'
@@ -182,8 +180,7 @@
 	damage_force = 30
 	throw_force = 10
 	w_class = WEIGHT_CLASS_NORMAL
-	sharp = 1
-	edge = 1
+	damage_mode = DAMAGE_MODE_SHARP | DAMAGE_MOD_EDGE
 	attack_verb = list("grasped", "torn", "cut", "pierced", "lashed")
 	attack_sound = 'sound/weapons/bladeslice.ogg'
 	armor_penetration = 10
@@ -227,8 +224,7 @@
 	w_class = WEIGHT_CLASS_NORMAL
 	slot_flags = SLOT_BELT
 	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut", "chopped")
-	sharp = 1
-	edge = 1
+	damage_mode = DAMAGE_MODE_SHARP | DAMAGE_MOD_EDGE
 
 /obj/item/melee/ashlander/elder
 	name = "elder bone sword"
