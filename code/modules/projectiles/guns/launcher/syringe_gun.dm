@@ -23,7 +23,7 @@
 			return
 		syringe = I
 		to_chat(user, "<span class='notice'>You carefully insert [syringe] into [src].</span>")
-		damage_mode |= DAMAGE_MODE_SHARP1
+		damage_mode |= DAMAGE_MODE_SHARP
 		name = "syringe dart"
 		update_icon()
 
