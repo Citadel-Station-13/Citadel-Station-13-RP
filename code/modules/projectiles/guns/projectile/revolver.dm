@@ -58,7 +58,7 @@
 	caliber = /datum/ammo_caliber/a38
 	ammo_type = /obj/item/ammo_casing/a38
 	damage_force = 15
-	damage_mode = DAMAGE_MODE_SHARP | DAMAGE_MOD_EDGE
+	damage_mode = DAMAGE_MODE_SHARP | DAMAGE_MODE_EDGE
 
 /obj/item/gun/ballistic/revolver/detective
 	name = "revolver"

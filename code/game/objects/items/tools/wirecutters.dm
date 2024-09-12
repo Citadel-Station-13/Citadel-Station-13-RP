@@ -20,7 +20,7 @@
 	tool_sound = 'sound/items/wirecutter.ogg'
 	drop_sound = 'sound/items/drop/wirecutter.ogg'
 	pickup_sound = 'sound/items/pickup/wirecutter.ogg'
-	damage_mode = DAMAGE_MODE_SHARP | DAMAGE_MOD_EDGE
+	damage_mode = DAMAGE_MODE_SHARP | DAMAGE_MODE_EDGE
 	tool_speed = 1
 	var/random_color = TRUE
 

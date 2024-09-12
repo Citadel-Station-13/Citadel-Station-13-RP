@@ -11,7 +11,7 @@
 	w_class = WEIGHT_CLASS_NORMAL
 	origin_tech = list(TECH_MAGNET = 3, TECH_COMBAT = 4)
 	attack_verb = list("attacked", "chopped", "cleaved", "torn", "cut")
-	damage_mode = DAMAGE_MODE_SHARP | DAMAGE_MOD_EDGE
+	damage_mode = DAMAGE_MODE_SHARP | DAMAGE_MODE_EDGE
 	can_cleave = TRUE
 
 	active_damage_force = 60

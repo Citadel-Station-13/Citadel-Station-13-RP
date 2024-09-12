@@ -8,7 +8,7 @@
 	item_state = "ionrapier"
 	active_damage_force = 10
 	active_throw_force = 3
-	damage_mode = DAMAGE_MODE_SHARP | DAMAGE_MOD_EDGE
+	damage_mode = DAMAGE_MODE_SHARP | DAMAGE_MODE_EDGE
 	armor_penetration = 0
 	atom_flags = NOBLOODY
 	lrange = 2

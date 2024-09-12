@@ -67,7 +67,7 @@
 	embed_chance = active_embed_chance
 	damage_force = active_force
 	throw_force = active_throwforce
-	damage_mode = DAMAGE_MODE_SHARP | DAMAGE_MOD_EDGE
+	damage_mode = DAMAGE_MODE_SHARP | DAMAGE_MODE_EDGE
 	set_weight_class(active_w_class)
 	playsound(user, 'sound/weapons/saberon.ogg', 50, 1)
 	set_light(lrange, lpower, lcolor)

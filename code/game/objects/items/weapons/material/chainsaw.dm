@@ -124,7 +124,7 @@
 	damage_force = 30
 	throw_force = 10
 	w_class = WEIGHT_CLASS_NORMAL
-	damage_mode = DAMAGE_MODE_SHARP | DAMAGE_MOD_EDGE
+	damage_mode = DAMAGE_MODE_SHARP | DAMAGE_MODE_EDGE
 	attack_verb = list("sawed", "torn", "cut", "chopped", "diced")
 	attack_sound = 'sound/weapons/chainsaw_attack.ogg'
 	armor_penetration = 30

@@ -100,7 +100,7 @@
 	desc = "A rock cutter that uses bursts of hot plasma. You could use it to cut limbs off of xenos! Or, you know, mine stuff."
 	drill_verb = "cutting"
 	drill_sound = 'sound/items/Welder.ogg'
-	damage_mode = DAMAGE_MODE_SHARP | DAMAGE_MOD_EDGE
+	damage_mode = DAMAGE_MODE_SHARP | DAMAGE_MODE_EDGE
 	worth_intrinsic = 175
 
 /obj/item/pickaxe/diamond
