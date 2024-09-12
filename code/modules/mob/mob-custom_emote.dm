@@ -9,18 +9,18 @@
 /**
  * Relay a raw incoming custom emote
  */
-/mob/proc/run_custom_emote(emote_text)
+/mob/proc/run_custom_emote(emote_text, subtle, anti_ghost)
 	SHOULD_NOT_OVERRIDE(TRUE)
 	#warn impl
 
 /**
  * Perform special preprocessing on an incoming custom emote
  */
-/mob/proc/process_custom_emote(emote_text)
+/mob/proc/process_custom_emote(emote_text, subtle, anti_ghost)
 	return emote_text
 
 /**
  * Emit a custom emote
  */
-/mob/proc/emit_custom_emote(emote_text)
+/mob/proc/emit_custom_emote(emote_text, subtle, anti_ghost)
 	#warn impl

@@ -29,6 +29,11 @@
 	feedback_1_direct_append = "chimes."
 	sfx = 'sound/machines/chime.ogg'
 
+/datum/emote/standard/basic/machine_noise/dwoop
+	bindings = "dwoop"
+	feedback_1_direct_append = "chirps happily."
+	sfx = 'sound/machines/dwoop.ogg'
+
 /datum/emote/standard/basic/machine_noise/warn
 	bindings = "warn"
 	feedback_1_direct_append = "blares an alarm."

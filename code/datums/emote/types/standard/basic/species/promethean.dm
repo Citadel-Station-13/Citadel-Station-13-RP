@@ -3,4 +3,17 @@
 
 /datum/emote/standard/basic/species/promethean
 	abstract_type = /datum/emote/standard/basic/species/promethean
+	binding_prefix = "slime"
 	required_species_id = /datum/species/shapeshifter/promethean::id
+
+/datum/emote/standard/basic/species/promethean/check_species(mob/actor)
+	if(istype(actor, /mob/living/simple_mob/slime))
+		return TRUE
+	return ..()
+
+/datum/emote/standard/basic/species/promethean/squish
+	bindings = "squish"
+	feedback_saycode_type = SAYCODE_TYPE_VISIBLE
+	feedback_1_direct_append = "squishes."
+	sfx = 'sound/effects/slime_squish.ogg'
+	sfx_volume = 50

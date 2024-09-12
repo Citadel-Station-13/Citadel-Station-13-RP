@@ -10,26 +10,26 @@
 	required_mobility_flags = MOBILITY_IS_CONSCIOUS
 
 /datum/emote/standard/basic/synth_sfx/honk
-	bindings = ""
-	feedback_1_direct_append = ""
-	sfx = ''
+	bindings = "honk"
+	feedback_1_direct_append = "honks."
+	sfx = 'sound/items/bikehorn.ogg'
 
 /datum/emote/standard/basic/synth_sfx/gameover
-	bindings = ""
-	feedback_1_direct_append = ""
-	sfx = ''
+	bindings = "gameover"
+	feedback_1_direct_append = "crumples, their chassis colder and more lifeless than usual."
+	sfx = 'sound/machines/synth_gameoverp.ogg'
 
 /datum/emote/standard/basic/synth_sfx/xp_startup
-	bindings = ""
-	feedback_1_direct_append = ""
-	sfx = ''
+	bindings = "startup-xp"
+	feedback_1_direct_append = "chimes to life."
+	sfx = 'sound/machines/synth_startup.ogg'
 
 /datum/emote/standard/basic/synth_sfx/xp_shutdown
-	bindings = ""
-	feedback_1_direct_append = ""
-	sfx = ''
+	bindings = "shutdown-xp"
+	feedback_1_direct_append = "emits a nostalgic tone as they fall silent."
+	sfx = 'sound/machines/synth_shutdown.ogg'
 
 /datum/emote/standard/basic/synth_sfx/xp_error
-	bindings = ""
-	feedback_1_direct_append = ""
-	sfx = ''
+	bindings = "error-xp"
+	feedback_1_direct_append = "experiences a system error."
+	sfx = 'sound/machines/synth_error.ogg'

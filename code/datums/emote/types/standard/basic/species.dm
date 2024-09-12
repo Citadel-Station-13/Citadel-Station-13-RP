@@ -11,15 +11,20 @@
 /datum/emote/standard/basic/species/can_use_special(datum/event_args/actor/actor, arbitrary)
 	if(!required_species_id)
 		return ..()
-	var/mob/living/carbon/human/human = actor?.performer
-	if(!human)
+	if(!actor?.performer)
 		return ..()
+	if(!check_species(actor.performer))
+		return FALSE
+	return ..()
+
+/datum/emote/standard/basic/species/proc/check_species(mob/actor)
+	var/mob/living/carbon/human/human = actor
+	if(!istype(human))
+		return FALSE
 	if(islist(required_species_id))
 		if(!(human.species.id in required_species_id))
 			return FALSE
 	else
 		if(!(human.species.id == required_species_id))
 			return FALSE
-	return ..()
-
-
+	return TRUE

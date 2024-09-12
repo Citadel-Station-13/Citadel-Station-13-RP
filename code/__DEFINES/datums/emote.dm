@@ -30,3 +30,8 @@
 #define EMOTE_REQUIRE_VOCALIZATION (1<<4)
 
 #warn impl all
+
+//* emote arbitrary key-value store key's *//
+
+#define EMOTE_PARAMETER_KEY_TARGET "target"
+#define EMOTE_PARAMETER_KEY_CUSTOM "custom"

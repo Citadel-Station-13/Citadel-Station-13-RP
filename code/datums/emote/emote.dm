@@ -41,6 +41,8 @@ GLOBAL_LIST(emote_lookup)
 	var/bindings
 	/// a prefix to use before our binding
 	var/binding_prefix
+	/// parameter help string rendered as "[binding] [parameter_description]"
+	var/parameter_description
 
 	/// our emote classes
 	var/emote_class = EMOTE_CLASS_DEFAULT

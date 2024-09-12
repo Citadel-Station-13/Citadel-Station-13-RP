@@ -7,11 +7,6 @@
 /datum/emote/standard
 	abstract_type = /datum/emote/standard
 
-	//* Feedback *//
-
-	/// outgoing saycode type flags
-	var/feedback_saycode_type = SAYCODE_TYPE_AUTO
-
 	//* SFX *//
 
 	/// sound to play, or a list of sounds to pick from (equal weight)
