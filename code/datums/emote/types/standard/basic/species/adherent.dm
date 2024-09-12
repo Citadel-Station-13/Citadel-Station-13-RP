@@ -10,4 +10,4 @@
 	bindings = "chime"
 	sfx = 'sound/machines/achime.ogg'
 	sfx_volume = 50
-	feedback_1_direct_append = "chimes!"
+	feedback_default = "%USER% chimes!"

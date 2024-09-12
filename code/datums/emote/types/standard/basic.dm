@@ -19,35 +19,63 @@
 	/// outgoing saycode type flags
 	var/feedback_saycode_type = SAYCODE_TYPE_AUTO
 
+	/**
+	 * Override order as follows:
+	 *
+	 * 1. Miming, if miming
+	 * 2. Muzzled, if muzzled
+	 * 3. Targeted, if there is a target
+	 * 4. Default
+	 */
+
+	/// if existing, and we're miming, we immediately switch saycode mode to visible if we're on auto
+	///
+	/// * %USER% is replaced with the user.
+	/// * %TARGET% is replaced with a target, if one exists
+	/// * If the hearer is blind / cannot see someone, it's replaced with 'someone' instead of the user / target
+	/// * If the replacement is at the start of the string, it'll be capitalized as needed.
+	var/feedback_special_miming
+
+	/// if existing, and we're muzzled, we immediately switch to this
+	///
+	/// * %USER% is replaced with the user.
+	/// * %TARGET% is replaced with a target, if one exists
+	/// * If the hearer is blind / cannot see someone, it's replaced with 'someone' instead of the user / target
+	/// * If the replacement is at the start of the string, it'll be capitalized as needed.
+	var/feedback_special_muzzled
+	/// audible descriptor for muzzled; if empty string, we render no message. if null, we default to muzzled.
+	///
+	/// * %USER% is replaced with the user.
+	/// * %TARGET% is replaced with a target, if one exists
+	/// * If the hearer is blind / cannot see someone, it's replaced with 'someone' instead of the user / target
+	/// * If the replacement is at the start of the string, it'll be capitalized as needed.
+	var/feedback_special_muzzled_audible
+
 	/// if existing, we jump immediately if there is a target set to this,
 	/// replacing %USER% with the user and %TARGET% with the target
 	///
 	/// * If heard, audible has %USER% replaced with "someone" if the viewer is blind.
 	/// * If heard, audible has %TARGET% replaced with "someone" if the viewer is blind.
 	/// * If the replacement is at the start of the string, it'll be capitalized as needed.
-	var/feedback_special_targeted_replace
+	/// * Overridden by both miming and muzzled overrides, if they exist.
+	var/feedback_special_targeted
 	/// Audible descriptor override; other rules still apply for targeted replace
 	///
 	/// * requires the normal message to be set for this to be invoked.
-	var/feedback_special_targeted_replace_audible
+	var/feedback_special_targeted_audible
 
-	/// if existing, we jump priority 1 to "[user] [feedback_direct]"
+	/// the default feedback string
 	///
-	/// * If heard, audible is "[can see user? user : "Someone"] [feedback_direct]"
-	var/feedback_1_direct_append
-	/// Audible descriptor override; other rules still apply for direct append
-	///
-	/// * requires the normal message to be set for this to be invoked.
-	var/feedback_1_direct_append_audible
-	/// if existing, we jump priority 2 to "[replacetext(feedback_user_replace, "%USER%", "[user]")]"
-	///
-	/// * If heard, audible has %USER% replaced with "[can see user? user : "Someone"]""
+	/// * If heard, audible has %USER% replaced with "someone" if the viewer is blind.
 	/// * If the replacement is at the start of the string, it'll be capitalized as needed.
-	var/feedback_2_user_replace
-	/// Audible descriptor override; other rules still apply for user replace.
+	/// * Overridden by targeted, miming, and muzzled overrides, if they exist.
+	var/feedback_default
+	/// the default audible feedback string
 	///
-	/// * requires the normal message to be set for this to be invoked.
-	var/feedback_2_user_replace_audible
+	/// * If heard, audible has %USER% replaced with "someone" if the viewer is blind.
+	/// * If the replacement is at the start of the string, it'll be capitalized as needed.
+	/// * Overridden by targeted, miming, and muzzled overrides, if they exist.
+	var/feedback_default_audible
 
 	//* Parameter *//
 
