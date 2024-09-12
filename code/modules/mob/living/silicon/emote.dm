@@ -36,25 +36,6 @@
 		if ("custom")
 			return custom_emote(m_type, message)
 
-		if ("salute")
-			if (!src.buckled)
-				if (emote_target)
-					message = "salutes to [emote_target]."
-				else
-					message = "salutes."
-			m_type = 1
-		if ("bow")
-			if (!src.buckled)
-				if (emote_target)
-					message = "bows to [emote_target]."
-				else
-					message = "bows."
-			m_type = 1
-
-		if ("clap")
-			if (!src.restrained())
-				message = "claps."
-				m_type = 2
 		if ("flap")
 			if (!src.restrained())
 				message = "flaps its wings."
@@ -65,39 +46,8 @@
 				message = "flaps its wings ANGRILY!"
 				m_type = 2
 
-		if ("twitch")
-			message = "twitches."
-			m_type = 1
-
-		if ("twitch_v")
-			message = "twitches violently."
-			m_type = 1
-
-		if ("nod")
-			message = "nods."
-			m_type = 1
-
 		if ("deathgasp")
 			message = "shudders violently for a moment, then becomes motionless, its eyes slowly darkening."
-			m_type = 1
-
-		if ("glare")
-			if (emote_target)
-				message = "glares at [emote_target]."
-			else
-				message = "glares."
-
-		if ("stare")
-			if (emote_target)
-				message = "stares at [emote_target]."
-			else
-				message = "stares."
-
-		if ("look")
-			if (emote_target)
-				message = "looks at [emote_target]."
-			else
-				message = "looks."
 			m_type = 1
 
 		if("spin")
