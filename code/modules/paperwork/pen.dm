@@ -207,8 +207,7 @@
 	embed_chance = initial(embed_chance)
 	damage_force = initial(damage_force)
 	throw_force = initial(throw_force)
-	sharp = initial(sharp)
-	edge = initial(edge)
+	damage_mode = initial(damage_mode)
 	set_weight_class(initial(w_class))
 	damage_type = DAMAGE_TYPE_BRUTE
 	item_flags &= ~ITEM_THROW_UNCATCHABLE

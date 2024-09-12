@@ -102,7 +102,7 @@
 // Knifing
 /mob/living/carbon/proc/attack_throat(obj/item/W, obj/item/grab/G, mob/user)
 
-	if(!((W.damage_mode & DAMAGE_MODE_EDGE) || W.edge) || !W.damage_force || W.damage_type != DAMAGE_TYPE_BRUTE)
+	if(!(W.damage_mode & DAMAGE_MODE_EDGE) || !W.damage_force || W.damage_type != DAMAGE_TYPE_BRUTE)
 		return 0 //unsuitable weapon
 
 	user.visible_message("<span class='danger'>\The [user] begins to slit [src]'s throat with \the [W]!</span>")
@@ -123,7 +123,7 @@
 	var/total_damage = 0
 	for(var/i in 1 to 3)
 		var/damage = min(W.damage_force*1.5, 20)*damage_mod
-		apply_damage(damage, W.damage_type, "head", 0, sharp=W.sharp||(W.damage_mode & DAMAGE_MODE_EDGE), edge=W.edge||(W.damage_mode & DAMAGE_MODE_EDGE))
+		apply_damage(damage, W.damage_type, "head", 0, sharp = (W.damage_mode & DAMAGE_MODE_EDGE), edge = (W.damage_mode & DAMAGE_MODE_EDGE))
 		total_damage += damage
 
 	var/oxyloss = total_damage
@@ -156,7 +156,7 @@
 	user.visible_message("<span class='danger'>\The [user] plunges \the [W] into \the [src]!</span>")
 
 	var/damage = shank_armor_helper(W, G, user)
-	apply_damage(damage, W.damage_type, "torso", 0, sharp=W.sharp||(W.damage_mode & DAMAGE_MODE_EDGE), edge=W.edge||(W.damage_mode & DAMAGE_MODE_EDGE))
+	apply_damage(damage, W.damage_type, "torso", 0, sharp = (W.damage_mode & DAMAGE_MODE_EDGE), edge = (W.damage_mode & DAMAGE_MODE_EDGE))
 
 	if(W.attack_sound)
 		playsound(loc, W.attack_sound, 50, 1, -1)

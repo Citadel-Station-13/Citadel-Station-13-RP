@@ -139,7 +139,7 @@
 
 	muzzle_type = /obj/effect/projectile/muzzle/darkmatter
 	tracer_type = /obj/effect/projectile/tracer/darkmatter
-	impact_type = /obj/effect/projectile/impact/darkmatter	
+	impact_type = /obj/effect/projectile/impact/darkmatter
 
 /obj/projectile/beam/emitter
 	name = "emitter beam"
@@ -330,7 +330,6 @@
 	icon_state = "laser"
 	damage_force = 15
 	damage_type = DAMAGE_TYPE_ELECTROCUTE //You should be safe inside a voidsuit
-	sharp = FALSE //"Wide" spectrum beam
 	light_color = "#A9980A"
 
 	excavation_amount = 200 // Good at shooting rocks

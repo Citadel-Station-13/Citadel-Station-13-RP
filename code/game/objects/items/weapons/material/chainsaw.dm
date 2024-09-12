@@ -41,8 +41,7 @@
 			attack_verb = list("shredded", "ripped", "torn")
 			playsound(src, 'sound/weapons/chainsaw_startup.ogg',40,1)
 			damage_force = active_force
-			edge = 1
-			sharp = 1
+			damage_mode = DAMAGE_MODE_EDGE | DAMAGE_MODE_SHARP
 			on = 1
 			update_icon()
 		else

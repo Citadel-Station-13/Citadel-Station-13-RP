@@ -1313,8 +1313,7 @@
 
 	..()
 	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
-	sharp = 1
-	edge = 1
+	damage_mode = DAMAGE_MODE_SHARP | DAMAGE_MODE_EDGE
 	icon_state = "[active_state]_sharp"
 	damage_type = DAMAGE_TYPE_BRUTE
 

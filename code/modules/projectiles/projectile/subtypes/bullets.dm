@@ -338,7 +338,7 @@
 	fire_sound = 'sound/soundbytes/effects/explosion/explosion1.ogg'
 	damage_force = 20
 	embed_chance = 0
-	edge = 1
+	damage_mode = DAMAGE_MODE_EDGE
 
 /obj/projectile/bullet/burstbullet/on_impact(atom/target, impact_flags, def_zone, efficiency)
 	. = ..()
@@ -352,7 +352,6 @@
 	fire_sound = 'sound/soundbytes/effects/explosion/explosion1.ogg'
 	damage_force = 20
 	embed_chance = 0
-	edge = 1
 	SA_bonus_damage = 40 // 60 total damage against demons.
 	SA_vulnerability = MOB_CLASS_DEMONIC | MOB_CLASS_ABERRATION
 	holy = TRUE

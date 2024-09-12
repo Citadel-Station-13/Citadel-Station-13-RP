@@ -321,7 +321,7 @@
 		if(isitem(AM))
 			var/obj/item/impacting_item = AM
 			dtype = impacting_item.damage_type
-			
+
 		var/throw_damage = O.throw_force * TT.get_damage_multiplier(src)
 
 		var/zone
@@ -412,7 +412,7 @@
 
 			if(!O || !src) return
 
-			if(O.loc == src && O.sharp) //Projectile is embedded and suitable for pinning.
+			if(O.loc == src && is_sharp(O)) //Projectile is embedded and suitable for pinning.
 				var/turf/T = near_wall(dir,2)
 				if(T)
 					forceMove(T)
@@ -553,7 +553,7 @@
 	var/damage = shank_armor_helper(W, G, user)
 	var/obj/item/organ/external/chest = get_organ(hit_zone)
 
-	if(W.edge || (W.damage_mode & DAMAGE_MODE_EDGE))
+	if(W.damage_mode & DAMAGE_MODE_EDGE)
 		organ_chance = 75
 	user.next_move = world.time + 20
 	user.visible_message("<span class='danger'>\The [user] begins to twist \the [W] around inside [src]'s [chest]!</span>")
