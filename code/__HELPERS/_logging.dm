@@ -162,7 +162,10 @@ GLOBAL_LIST_INIT(testing_global_profiler, list("_PROFILE_NAME" = "Global"))
 
 /proc/log_emote(text, mob/speaker)
 	if (config_legacy.log_emote)
-		WRITE_LOG(GLOB.world_game_log, "EMOTE: [speaker.simple_info_line()]: [html_decode(text)]")
+		if(speaker)
+			WRITE_LOG(GLOB.world_game_log, "EMOTE: [speaker.simple_info_line()]: [text]")
+		else
+			WRITE_LOG(GLOB.world_game_log, "EMOTE: [text]")
 
 	if(speaker.client)
 		speaker.dialogue_log += "<b>([time_stamp()])</b> (<b>[speaker]/[speaker.client]</b>) <u>EMOTE:</u> - <span style='color:#CCBADC'>[text]</span>"
@@ -170,11 +173,17 @@ GLOBAL_LIST_INIT(testing_global_profiler, list("_PROFILE_NAME" = "Global"))
 
 /proc/log_subtle(text, mob/speaker)
 	if (config_legacy.log_emote)
-		WRITE_LOG(GLOB.world_game_log, "SUBTLE: [speaker.simple_info_line()]: [html_decode(text)]")
+		if(speaker)
+			WRITE_LOG(GLOB.world_game_log, "SUBTLE: [speaker.simple_info_line()]: [text]")
+		else
+			WRITE_LOG(GLOB.world_game_log, "SUBTLE: [text]")
 
 /proc/log_subtle_anti_ghost(text, mob/speaker)
 	if (config_legacy.log_emote)
-		WRITE_LOG(GLOB.world_game_log, "SUBTLER: [speaker.simple_info_line()]: [html_decode(text)]")
+		if(speaker)
+			WRITE_LOG(GLOB.world_game_log, "SUBTLER: [speaker.simple_info_line()]: [text]")
+		else
+			WRITE_LOG(GLOB.world_game_log, "SUBTLE: [text]")
 
 /proc/log_subtle_vore(text, mob/speaker)
 	if (config_legacy.log_emote)

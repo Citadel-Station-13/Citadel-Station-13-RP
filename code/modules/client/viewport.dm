@@ -53,6 +53,9 @@ GLOBAL_VAR_INIT(game_view_y, 15)
 // minimum size viewports can be
 GLOBAL_VAR_INIT(min_client_view_x, 15)
 GLOBAL_VAR_INIT(min_client_view_y, 15)
+// the radius that things like saycode operates on
+// todo: update this as needed
+GLOBAL_VAR_INIT(game_view_radius, 9)
 // these two variables, if set, lock all clients to a certain viewsize no matter what
 GLOBAL_VAR(lock_client_view_x)
 GLOBAL_VAR(lock_client_view_y)

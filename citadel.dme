@@ -3516,6 +3516,8 @@
 #include "code\modules\mob\mob-damage.dm"
 #include "code\modules\mob\mob-defense.dm"
 #include "code\modules\mob\mob-keybind-triggers.dm"
+#include "code\modules\mob\mob-say-triggers.dm"
+#include "code\modules\mob\mob-say.dm"
 #include "code\modules\mob\mob.dm"
 #include "code\modules\mob\mob_defines.dm"
 #include "code\modules\mob\mob-iff.dm"
