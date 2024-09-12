@@ -17,6 +17,16 @@
 	//* Feedback *//
 
 	/// outgoing saycode type flags
+	///
+	/// If set to AUTO, the following happens:
+	/// * If the hearer can see, normal / visible text is used
+	/// * If the hearer can't see an actor, 'someone / something' replaces that actor
+	/// * If the hearer cannot see, audible is used with no replacement.
+	///
+	/// If set to anything that isn't AUTO, the following happens:
+	/// * ALWAYS, LIVING, CONSCIOUS will always use visible string, never audible
+	/// * VISIBLE will always use visible string, never audible
+	/// * AUDIBLE will always use audible string, falling back to visible if it exists
 	var/feedback_saycode_type = SAYCODE_TYPE_AUTO
 
 	/**
@@ -31,51 +41,42 @@
 	/// if existing, and we're miming, we immediately switch saycode mode to visible if we're on auto
 	///
 	/// * %USER% is replaced with the user.
-	/// * %TARGET% is replaced with a target, if one exists
-	/// * If the hearer is blind / cannot see someone, it's replaced with 'someone' instead of the user / target
 	/// * If the replacement is at the start of the string, it'll be capitalized as needed.
 	var/feedback_special_miming
+	/// targeted version of miming
+	///
+	/// * %USER% is replaced with the user.
+	/// * %TARGET% is replaced with a target.
+	/// * If the replacement is at the start of the string, it'll be capitalized as needed.
+	var/feedback_special_miming_targeted
 
 	/// if existing, and we're muzzled, we immediately switch to this
 	///
 	/// * %USER% is replaced with the user.
-	/// * %TARGET% is replaced with a target, if one exists
-	/// * If the hearer is blind / cannot see someone, it's replaced with 'someone' instead of the user / target
 	/// * If the replacement is at the start of the string, it'll be capitalized as needed.
 	var/feedback_special_muzzled
-	/// audible descriptor for muzzled; if empty string, we render no message. if null, we default to muzzled.
+	/// targeted version of muzzled
 	///
 	/// * %USER% is replaced with the user.
-	/// * %TARGET% is replaced with a target, if one exists
-	/// * If the hearer is blind / cannot see someone, it's replaced with 'someone' instead of the user / target
+	/// * %TARGET% is replaced with a target.
 	/// * If the replacement is at the start of the string, it'll be capitalized as needed.
+	var/feedback_special_miming_targeted
+	/// audible descriptor for muzzled
 	var/feedback_special_muzzled_audible
-
-	/// if existing, we jump immediately if there is a target set to this,
-	/// replacing %USER% with the user and %TARGET% with the target
-	///
-	/// * If heard, audible has %USER% replaced with "someone" if the viewer is blind.
-	/// * If heard, audible has %TARGET% replaced with "someone" if the viewer is blind.
-	/// * If the replacement is at the start of the string, it'll be capitalized as needed.
-	/// * Overridden by both miming and muzzled overrides, if they exist.
-	var/feedback_special_targeted
-	/// Audible descriptor override; other rules still apply for targeted replace
-	///
-	/// * requires the normal message to be set for this to be invoked.
-	var/feedback_special_targeted_audible
 
 	/// the default feedback string
 	///
 	/// * If heard, audible has %USER% replaced with "someone" if the viewer is blind.
 	/// * If the replacement is at the start of the string, it'll be capitalized as needed.
-	/// * Overridden by targeted, miming, and muzzled overrides, if they exist.
-	var/feedback_default
-	/// the default audible feedback string
+	var/feedback_default = "%USER% does something that isn't implemented by the coders. (Yell at coders, someone forgot a default string.)"
+	/// the default targeted feedback sting
 	///
-	/// * If heard, audible has %USER% replaced with "someone" if the viewer is blind.
+	/// * %USER% is replaced with the user.
+	/// * %TARGET% is replaced with a target.
 	/// * If the replacement is at the start of the string, it'll be capitalized as needed.
-	/// * Overridden by targeted, miming, and muzzled overrides, if they exist.
-	var/feedback_default_audible
+	var/feedback_default_targeted
+	/// the default audible descriptor
+	var/feedback_default_audible = "You hear something that isn't implemented by the coders. (Yell at coders, someone forgot a default string.)"
 
 	//* Parameter *//
 
