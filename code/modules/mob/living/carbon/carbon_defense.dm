@@ -150,7 +150,7 @@
 
 /mob/living/carbon/proc/shank_attack(obj/item/W, obj/item/grab/G, mob/user, hit_zone)
 
-	if(!(W.sharp || (W.damage_mode & DAMAGE_MODE_SHARP)) || !W.damage_force || W.damage_type != DAMAGE_TYPE_BRUTE)
+	if(!(W.damage_mode & DAMAGE_MODE_SHARP) || !W.damage_force || W.damage_type != DAMAGE_TYPE_BRUTE)
 		return 0 //unsuitable weapon
 
 	user.visible_message("<span class='danger'>\The [user] plunges \the [W] into \the [src]!</span>")
@@ -168,7 +168,7 @@
 /mob/living/carbon/proc/shank_armor_helper(obj/item/W, obj/item/grab/G, mob/user)
 	var/damage = W.damage_force
 	var/damage_mod = 1
-	if(W.edge || (W.damage_mode & DAMAGE_MODE_EDGE))
+	if(W.damage_mode & DAMAGE_MODE_EDGE)
 		damage = damage * 1.25 //small damage bonus for having sharp and edge
 
 	var/obj/item/clothing/suit/worn_suit

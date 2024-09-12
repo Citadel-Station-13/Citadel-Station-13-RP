@@ -1032,7 +1032,7 @@
 /proc/can_puncture(obj/item/W as obj) //For the record, WHAT THE HELL IS THIS METHOD OF DOING IT?
 	if(!W)
 		return FALSE
-	if(W.sharp)
+	if(W.damage_mode & DAMAGE_MODE_SHARP)
 		return TRUE
 	return ( \
 		W.is_screwdriver()                                    || \

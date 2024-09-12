@@ -439,7 +439,7 @@
 	// Alright, our hand works? Time to try the catching.
 	var/catch_chance = 90	// Default 90% catch rate
 
-	if(O.sharp)
+	if(is_sharp(O))
 		catch_chance -= 50	// Catching knives is hard
 
 	catch_chance -= get_accuracy_penalty()	// Same issues with shooting a gun, or swinging a weapon

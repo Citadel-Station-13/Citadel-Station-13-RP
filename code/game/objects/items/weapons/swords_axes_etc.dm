@@ -310,7 +310,6 @@
 	damage_force = 15
 	damage_tier = MELEE_TIER_MEDIUM
 	slot_flags = SLOT_BACK
-	sharp = 1
 	attack_sound = "swing_hit"
 	attack_verb = list("smashed", "slammed", "whacked", "thwacked")
 	icon_state = "bostaff0"
