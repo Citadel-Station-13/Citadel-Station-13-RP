@@ -8,7 +8,7 @@
 	/// * these are ids, not uids.
 	var/required_species_id
 
-/datum/emote/standard/basic/species/can_use_special(datum/event_args/actor/actor, arbitrary)
+/datum/emote/standard/basic/species/can_use_special(datum/event_args/actor/actor, list/arbitrary)
 	if(!required_species_id)
 		return ..()
 	if(!actor?.performer)

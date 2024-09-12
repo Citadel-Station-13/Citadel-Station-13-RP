@@ -100,8 +100,6 @@
 
 /mob/proc/emote(var/act, var/type, var/message)
 	SHOULD_NOT_OVERRIDE(TRUE)
-	if(act == "me")
-		return custom_emote(type, message)
 
 // All mobs should have custom emote, really..
 //m_type == 1 --> visual.

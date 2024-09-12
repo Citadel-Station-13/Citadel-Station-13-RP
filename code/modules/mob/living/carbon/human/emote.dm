@@ -26,11 +26,6 @@
 	#warn purge
 	switch(act)
 
-		if ("airguitar")
-			if (!src.restrained())
-				message = "is strumming the air and headbanging like a safari chimp."
-				m_type = 1
-
 		//Machine-only emotes
 		if("beep", "buzz", "buzz2", "chime", "die", "dwoop", "error", "honk", "no", "ping", "rcough", "rsneeze", "scary", "shutdown","startup", "warn", "ye", "yes")
 			#warn splice into machine_noise.dm
@@ -136,43 +131,6 @@
 				return
 			return custom_emote(m_type, message)
 
-		if ("salute")
-			if (!src.buckled)
-				var/M = null
-				if (param)
-					for (var/mob/A in view(null, null))
-						if (param == A.name)
-							M = A
-							break
-				if (!M)
-					param = null
-
-				if (param)
-					message = "salutes to [param]."
-				else
-					message = "salutes."
-			m_type = 1
-
-		if ("fullsalute")
-			if (!src.buckled)
-				var/M = null
-				if (param)
-					for (var/mob/A in view(null, null))
-						if (param == A.name)
-							M = A
-							break
-				if (!M)
-					param = null
-
-				if (param)
-					message = "salutes to [param]."
-				else
-					message = "salutes."
-
-				playsound(src.loc, 'sound/misc/salute.ogg', 30, 0)
-			m_type = 1
-
-
 		if ("choke")
 			if HAS_TRAIT_FROM(src, TRAIT_MUTE, MIME_TRAIT)
 				message = "clutches [T.his] throat desperately!"
@@ -184,18 +142,6 @@
 				else
 					message = "makes a strong noise."
 					m_type = 2
-
-		if ("clap")
-			if (!src.restrained())
-				message = "claps."
-				var/use_sound
-				use_sound = pick('sound/misc/clapping.ogg','sound/voice/clap2.ogg','sound/voice/clap3.ogg','sound/voice/clap4.ogg')
-				playsound(src.loc, use_sound, 50, 0)
-
-		if("golfclap")
-			if (!src.restrained())
-				message = "claps very slowly."
-				playsound(src.loc, 'sound/voice/golfclap.ogg', 50, 0)
 
 		if ("flap")
 			if (!src.restrained())
@@ -292,22 +238,6 @@
 						else
 							if(species.male_cough_sounds)
 								playsound(src, pick(species.male_cough_sounds), 120)
-
-		if ("frown")
-			message = "frowns."
-			m_type = 1
-
-		if ("nod")
-			message = "nods."
-			m_type = 1
-
-		if ("blush")
-			message = "blushes."
-			m_type = 1
-
-		if ("wave")
-			message = "waves."
-			m_type = 1
 
 		if ("gasp")
 			if HAS_TRAIT_FROM(src, TRAIT_MUTE, MIME_TRAIT)
@@ -492,17 +422,8 @@
 				playsound(src, 'sound/voice/knuckles.ogg', 50, 1,)
 				m_type = 1
 
-		if ("raise")
-			if (!src.restrained())
-				message = "raises a hand."
-			m_type = 1
-
 		if("shake")
 			message = "shakes [T.his] head."
-			m_type = 1
-
-		if ("shrug")
-			message = "shrugs."
 			m_type = 1
 
 		if ("signal")
@@ -514,16 +435,6 @@
 					else if (t1 <= 10 && (!src.r_hand && !src.l_hand))
 						message = "raises [t1] finger\s."
 			m_type = 1
-
-		if ("smile")
-			message = "smiles."
-			m_type = 1
-
-		if ("shiver")
-			message = "shivers."
-			m_type = 2
-			if HAS_TRAIT_FROM(src, TRAIT_MUTE, MIME_TRAIT)
-				m_type = 1
 
 		if ("pale")
 			message = "goes pale for a second."
@@ -835,21 +746,9 @@
 				to_chat(src, usage)
 				return
 
-		if ("help")
-			to_chat(src, "nyaha, ara, awoo, bark, bleat, blink, blink_r, blush, bow-(none)/mob, burp, chirp, choke, chuckle, clap, collapse, cough, cry, custom, deathgasp, drool, eyebrow, fastsway/qwag, \
-					flip, frown, gasp, giggle, glare-(none)/mob, grin, groan, grumble, handshake, hiss, hug-(none)/mob, laugh, look-(none)/mob, mar, merp, moan, mrrp, mumble, nod, nya, pale, peep, point-atom, prbt, \
-					raise, roll, salute, fullsalute, scream, sneeze, shake, shiver, shrug, sigh, signal-#1-10, slap-(none)/mob, smile, sneeze, sniff, snore, stare-(none)/mob, stopsway/swag, squeak, sway/wag, swish, tremble, twitch, \
-					twitch_v, uwu, vomit, weh, whimper, wink, yawn. Moth: mchitter, mlaugh, mscream, msqueak. Synthetics: beep, buzz, buzz2, chime, die, dwoop, error, honk, no, ping, rcough, rsneeze, scary, \
-					shutdown, startup, warn, ye, yes. Vox: shriekshort, shriekloud")
-
 		else
 			to_chat(src, "<font color=#4F49AF>Unusable emote '[act]'. Say *help for a list.</font>")
 			return
-
-	if (message)
-		custom_emote(m_type,message)
-
-
 
 /mob/living/carbon/human/proc/set_pose(new_pose)
 	pose = sanitize(new_pose)

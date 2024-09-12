@@ -24,6 +24,12 @@
 
 	// todo: vfx support
 
+/**
+ * Gets a SFX to play.
+ */
+/datum/emote/standard/proc/get_sfx(datum/event_args/actor/actor, list/arbitrary)
+	return islist(sfx) ? (length(sfx) ? pick(sfx) : null) : sfx
+
 #warn impl
 
 

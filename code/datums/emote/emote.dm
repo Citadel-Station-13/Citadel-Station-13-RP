@@ -71,7 +71,7 @@ GLOBAL_LIST(emote_lookup)
  * * actor - actor data
  * * arbitrary - arbitrary processed params
  */
-/datum/emote/proc/can_use(datum/event_args/actor/actor, arbitrary, check_mobility)
+/datum/emote/proc/can_use(datum/event_args/actor/actor, list/arbitrary, check_mobility)
 	SHOULD_NOT_OVERRIDE(TRUE)
 
 	var/special_check = can_use_special(actor)
@@ -93,7 +93,7 @@ GLOBAL_LIST(emote_lookup)
  *
  * @return non-null TRUE / FALSE to override [can_use()]
  */
-/datum/emote/proc/can_use_special(datum/event_args/actor/actor, arbitrary)
+/datum/emote/proc/can_use_special(datum/event_args/actor/actor, list/arbitrary)
 	return
 
 //* Execution *//
@@ -105,14 +105,14 @@ GLOBAL_LIST(emote_lookup)
  * @return the 'arbitrary' param passed into the rest of the emote call chain
  */
 /datum/emote/proc/process_parameters(datum/event_args/actor/actor, parameter_string)
-	return parameter_string
+	return list(EMOTE_PARAMETER_KEY_ORIGINAL = parameter_string)
 
 /**
  * Blocking proc.
  *
  * Tries to run an emote, if someone's allowed to.
  */
-/datum/emote/proc/try_run_emote(datum/event_args/actor/actor, arbitrary)
+/datum/emote/proc/try_run_emote(datum/event_args/actor/actor, list/arbitrary)
 	#warn impl
 
 /**
@@ -124,5 +124,5 @@ GLOBAL_LIST(emote_lookup)
  * * actor - actor data
  * * arbitrary - arbitrary processed params
  */
-/datum/emote/proc/run_emote(datum/event_args/actor/actor, arbitrary)
+/datum/emote/proc/run_emote(datum/event_args/actor/actor, list/arbitrary)
 	#warn impl

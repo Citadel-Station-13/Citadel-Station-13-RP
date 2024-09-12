@@ -2,7 +2,7 @@
 	return
 
 /mob/proc/whisper(var/message, var/datum/language/speaking = null, var/verb="says", var/alt_name="")
-	say(message, speaking, ver, alt_name, TRUE)
+	say(message, speaking, verb, alt_name, TRUE)
 
 /mob/proc/say_dead(var/message)
 	if(!client)

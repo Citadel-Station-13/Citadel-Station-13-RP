@@ -17,7 +17,7 @@
 	if(!message)
 		return
 
-	set_verb(message)
+	say_verb(message)
 
 /mob/verb/say_verb(message as text)
 	set name = "Say"

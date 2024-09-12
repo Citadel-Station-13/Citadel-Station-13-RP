@@ -33,5 +33,7 @@
 
 //* emote arbitrary key-value store key's *//
 
+/// the original parameter string passed in
+#define EMOTE_PARAMETER_KEY_ORIGINAL "original"
 #define EMOTE_PARAMETER_KEY_TARGET "target"
 #define EMOTE_PARAMETER_KEY_CUSTOM "custom"

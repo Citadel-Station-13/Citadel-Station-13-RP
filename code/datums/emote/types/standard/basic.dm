@@ -90,6 +90,11 @@
 
 	//* Parameter *//
 
+	/// has a custom parameter
+	///
+	/// * if enabled, it goes *before* target
+	/// * this means that it must be specified to specify a target at all
+	var/parameter_custom = FALSE
 	/// your custom parameter help string
 	var/parameter_custom_description
 
