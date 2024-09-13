@@ -136,3 +136,11 @@
 	req_tech = list(TECH_BLUESPACE = 5, TECH_MATERIAL = 6, TECH_BIO = 5)
 	materials_base = list(MAT_STEEL = 4000, MAT_GLASS = 2000, MAT_URANIUM = 500, MAT_GOLD = 500, MAT_SILVER = 500)
 	build_path = /obj/item/reagent_synth/chemistry
+
+/datum/design/science/size_standardization
+	design_name = "Size Standardization Bracelet"
+	desc = "A bracelet that changes the size of the wearer to the galactic standard."
+	id = "sizestandardbracelet"
+	req_tech = list(TECH_BLUESPACE = 5, TECH_MATERIAL = 3, TECH_BIO = 4)
+	materials_base = list(MAT_STEEL = 1000)
+	build_path = /obj/item/clothing/gloves/size
