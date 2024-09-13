@@ -486,6 +486,7 @@
 		pin.emag_act(remaining_charges, user)
 
 /obj/item/gun/proc/Fire(atom/target, mob/living/user, clickparams, pointblank=0, reflex=0)
+	SHOULD_NOT_OVERRIDE(TRUE)
 	if(!user || !target) return
 	if(target.z != user.z) return
 
@@ -573,6 +574,7 @@
 
 // Similar to the above proc, but does not require a user, which is ideal for things like turrets.
 /obj/item/gun/proc/Fire_userless(atom/target)
+	SHOULD_NOT_OVERRIDE(TRUE)
 	if(!target)
 		return
 
