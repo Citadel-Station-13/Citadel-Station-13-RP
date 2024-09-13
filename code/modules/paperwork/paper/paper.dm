@@ -154,6 +154,8 @@
 		dist = get_dist(src, user.camera)
 	else //cyborg or AI not seeing through a camera
 		dist = get_dist(src, user)
+	SSassets.send_asset_pack(user.client, /datum/asset_pack/simple/logos)
+	user.client.asset_cache_flush_browse_queue()
 	if(dist < 2)
 		usr << browse("<HTML><HEAD><TITLE>[name]</TITLE></HEAD><BODY>[info][stamps]</BODY></HTML>", "window=[name]")
 		onclose(usr, "[name]")
@@ -420,6 +422,8 @@
 
 		update_space(t)
 
+		SSassets.send_asset_pack(user.client, /datum/asset_pack/simple/logos)
+		user.client.asset_cache_flush_browse_queue()
 		usr << browse("<HTML><HEAD><TITLE>[name]</TITLE></HEAD><BODY>[info_links][stamps]</BODY></HTML>", "window=[name]") // Update the window
 
 		update_icon()
@@ -470,6 +474,8 @@
 		if ( istype(RP) && RP.mode == 2 )
 			RP.RenamePaper(user,src)
 		else
+			SSassets.send_asset_pack(user.client, /datum/asset_pack/simple/logos)
+			user.client.asset_cache_flush_browse_queue()
 			user << browse("<HTML><HEAD><TITLE>[name]</TITLE></HEAD><BODY>[info_links][stamps]</BODY></HTML>", "window=[name]")
 		return
 
