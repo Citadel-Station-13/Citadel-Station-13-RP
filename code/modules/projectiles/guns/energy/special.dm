@@ -28,6 +28,9 @@
 	charge_cost = 480
 	projectile_type = /obj/projectile/ion/pistol
 
+/obj/item/gun/energy/ionrifle/weak
+	projectile_type = /obj/projectile/ion/small
+
 /obj/item/gun/energy/decloner
 	name = "biological demolecularisor"
 	desc = "A gun that discharges high amounts of controlled radiation to slowly break a target into component elements."
@@ -77,7 +80,7 @@
 
 	to_chat(usr, "<span class='info'>You set the [src]'s targeted genetic area to [genemask].</span>")
 
-/obj/item/gun/energy/floragun/process_next_projectile(iteration, firing_flags, datum/firemode/firemode, datum/event_args/actor/actor, atom/firer)
+/obj/item/gun/energy/floragun/consume_next_projectile(iteration, firing_flags, datum/firemode/firemode, datum/event_args/actor/actor, atom/firer)
 	. = ..()
 	var/obj/projectile/energy/floramut/gene/G = .
 	if(istype(G))
@@ -290,15 +293,10 @@
 		else
 			if(beameffect)
 				qdel(beameffect)
-			handle_click_empty(user)
+			post_empty_fire(actor = new /datum/event_args/actor(user))
 		power_cycle = FALSE
 	else
 		to_chat(user, "<span class='notice'>\The [src] is already powering up!</span>")
-
-//_vr Items:
-
-/obj/item/gun/energy/ionrifle/weak
-	projectile_type = /obj/projectile/ion/small
 
 /obj/item/gun/energy/medigun //Adminspawn/ERT etc
 	name = "directed restoration system"

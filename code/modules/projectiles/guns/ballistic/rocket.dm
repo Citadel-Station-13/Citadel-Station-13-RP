@@ -59,10 +59,10 @@
 	return null
 */
 
-/obj/item/gun/ballistic/rocket/handle_post_fire(mob/user, atom/target)
-	message_admins("[key_name_admin(user)] fired a rocket from a rocket launcher ([src.name]) at [target].")
-	log_game("[key_name_admin(user)] used a rocket launcher ([src.name]) at [target].")
-	..()
+// /obj/item/gun/ballistic/rocket/handle_post_fire(mob/user, atom/target)
+// 	message_admins("[key_name_admin(user)] fired a rocket from a rocket launcher ([src.name]) at [target].")
+// 	log_game("[key_name_admin(user)] used a rocket launcher ([src.name]) at [target].")
+// 	..()
 
 /obj/item/gun/ballistic/rocket/collapsible
 	name = "disposable rocket launcher"
@@ -108,7 +108,7 @@
 		item_state = "[initial(item_state)]"
 		collapsed = 1
 
-/obj/item/gun/ballistic/rocket/collapsible/process_next_projectile(iteration, firing_flags, datum/firemode/firemode, datum/event_args/actor/actor, atom/firer)
+/obj/item/gun/ballistic/rocket/collapsible/consume_next_projectile(iteration, firing_flags, datum/firemode/firemode, datum/event_args/actor/actor, atom/firer)
 	. = ..()
 	if(empty)
 		return
@@ -127,7 +127,7 @@
 	unstable = 1
 
 // todo: dumb
-/obj/item/gun/ballistic/rocket/tyrmalin/process_next_projectile(iteration, firing_flags, datum/firemode/firemode, datum/event_args/actor/actor, atom/firer)
+/obj/item/gun/ballistic/rocket/tyrmalin/consume_next_projectile(iteration, firing_flags, datum/firemode/firemode, datum/event_args/actor/actor, atom/firer)
 	. = ..()
 	if(.)
 		if(unstable)

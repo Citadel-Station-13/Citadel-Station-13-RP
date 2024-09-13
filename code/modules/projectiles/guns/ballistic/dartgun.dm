@@ -52,7 +52,7 @@
 	else
 		icon_state = "[base_state]"
 
-/obj/item/gun/ballistic/dartgun/process_next_projectile(iteration, firing_flags, datum/firemode/firemode, datum/event_args/actor/actor, atom/firer)
+/obj/item/gun/ballistic/dartgun/consume_next_projectile(iteration, firing_flags, datum/firemode/firemode, datum/event_args/actor/actor, atom/firer)
 	. = ..()
 	var/obj/projectile/bullet/chemdart/dart = .
 	if(istype(dart))

@@ -40,7 +40,7 @@
 
 	var/recharge_timerid
 
-/obj/item/gun/energy/kinetic_accelerator/process_next_projectile(iteration, firing_flags, datum/firemode/firemode, datum/event_args/actor/actor, atom/firer)
+/obj/item/gun/energy/kinetic_accelerator/consume_next_projectile(iteration, firing_flags, datum/firemode/firemode, datum/event_args/actor/actor, atom/firer)
 	if(overheat)
 		return GUN_FIRED_FAIL_EMPTY
 	. = ..()

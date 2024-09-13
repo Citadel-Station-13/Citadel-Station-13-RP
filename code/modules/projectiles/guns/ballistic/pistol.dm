@@ -250,7 +250,7 @@
 	return ..()
 
 // todo: dumb
-/obj/item/gun/ballistic/pirate/process_next_projectile(iteration, firing_flags, datum/firemode/firemode, datum/event_args/actor/actor, atom/firer)
+/obj/item/gun/ballistic/pirate/consume_next_projectile(iteration, firing_flags, datum/firemode/firemode, datum/event_args/actor/actor, atom/firer)
 	. = ..()
 	if(.)
 		if(unstable)

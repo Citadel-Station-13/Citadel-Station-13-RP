@@ -220,7 +220,7 @@
 		to_chat(user, "<span class='warning'>You [locked ? "enable" : "disable"] the safety lock on \the [src].</span>")
 	else
 		to_chat(user, "<span class='warning'>Access denied.</span>")
-	user.visible_message("<span class='notice'>[user] swipes \the [ID] against \the [src].</span>")
+	user.visible_message("<span class='notice'>[user] swipes \the [I] against \the [src].</span>")
 
 /obj/item/firing_pin/emag_act(var/remaining_charges, var/mob/user)
 	if(emagged)

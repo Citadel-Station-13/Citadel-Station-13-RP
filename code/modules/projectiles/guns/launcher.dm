@@ -29,6 +29,6 @@
 /**
  * Returns the next /atom/movable to throw, or a GUN_FIRED_* for fail satus.
  */
-/obj/item/gun/launcher/proc/process_next_entity(iteration, firing_flags, datum/firemode/firemode, datum/event_args/actor/actor, atom/firer)
+/obj/item/gun/launcher/proc/consume_next_throwable(iteration, firing_flags, datum/firemode/firemode, datum/event_args/actor/actor, atom/firer)
 	. = GUN_FIRED_FAIL_UNKNOWN
-	CRASH("attempted to process_next_entity on base /gun/launcher")
+	CRASH("attempted to consume_next_throwable on base /gun/launcher")

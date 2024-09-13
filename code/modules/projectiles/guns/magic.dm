@@ -67,7 +67,7 @@
 		recharge_newshot()
 	return 1
 
-/obj/item/gun/magic/process_next_projectile(iteration, firing_flags, datum/firemode/firemode, datum/event_args/actor/actor, atom/firer)
+/obj/item/gun/magic/consume_next_projectile(iteration, firing_flags, datum/firemode/firemode, datum/event_args/actor/actor, atom/firer)
 	return chambered?.get_projectile()
 
 /obj/item/gun/magic/proc/shoot_with_empty_chamber(mob/living/user as mob|obj)

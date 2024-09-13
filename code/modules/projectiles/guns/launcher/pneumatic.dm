@@ -83,7 +83,7 @@
 		return
 	eject_tank(user)
 
-/obj/item/gun/launcher/pneumatic/process_next_entity(iteration, firing_flags, datum/firemode/firemode, datum/event_args/actor/actor, atom/firer)
+/obj/item/gun/launcher/pneumatic/consume_next_throwable(iteration, firing_flags, datum/firemode/firemode, datum/event_args/actor/actor, atom/firer)
 	if(!item_storage.contents.len)
 		return GUN_FIRED_FAIL_EMPTY
 	if (!tank)

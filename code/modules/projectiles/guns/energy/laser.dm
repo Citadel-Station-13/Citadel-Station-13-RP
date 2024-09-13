@@ -316,7 +316,7 @@
 	unstable = 1
 
 // todo: this is dumb
-/obj/item/gun/energy/zip/process_next_projectile(iteration, firing_flags, datum/firemode/firemode, datum/event_args/actor/actor, atom/firer)
+/obj/item/gun/energy/zip/consume_next_projectile(iteration, firing_flags, datum/firemode/firemode, datum/event_args/actor/actor, atom/firer)
 	. = ..()
 	if(.)
 		if(unstable)
