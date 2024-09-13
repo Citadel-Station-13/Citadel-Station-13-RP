@@ -422,8 +422,8 @@
 
 		update_space(t)
 
-		SSassets.send_asset_pack(user.client, /datum/asset_pack/simple/logos)
-		user.client.asset_cache_flush_browse_queue()
+		SSassets.send_asset_pack(usr.client, /datum/asset_pack/simple/logos)
+		usr.client.asset_cache_flush_browse_queue()
 		usr << browse("<HTML><HEAD><TITLE>[name]</TITLE></HEAD><BODY>[info_links][stamps]</BODY></HTML>", "window=[name]") // Update the window
 
 		update_icon()
