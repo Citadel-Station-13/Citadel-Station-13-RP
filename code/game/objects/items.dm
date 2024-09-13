@@ -111,7 +111,10 @@
 	var/damage_tier = MELEE_TIER_MEDIUM
 	/// damage_mode bitfield - see [code/__DEFINES/combat/damage.dm]
 	var/damage_mode = NONE
-	// todo: port over damtype
+	/// DAMAGE_TYPE_* enum
+	///
+	/// * This is the primary damage type this object does on usage as a melee / thrown weapon.
+	var/damage_type = DAMAGE_TYPE_BRUTE
 
 	//* Storage *//
 	/// storage cost for volumetric storage

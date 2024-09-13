@@ -588,7 +588,7 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 
 		var/use_amt = min(src.amount, CEILING(S.burn_dam / 20, 1), 5)
 		if(can_use(use_amt))
-			if(S.robo_repair(5*use_amt, BURN, "some damaged wiring", src, user))
+			if(S.robo_repair(5*use_amt, DAMAGE_TYPE_BURN, "some damaged wiring", src, user))
 				use(use_amt)
 		return
 	return ..()

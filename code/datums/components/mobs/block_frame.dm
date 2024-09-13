@@ -64,7 +64,7 @@
 	/// ratio [0, INFINITY] of inbound damage to convert to another type
 	var/block_transmute = 0
 	/// damage type to transmute to
-	var/block_transmute_type = HALLOSS
+	var/block_transmute_type = DAMAGE_TYPE_HALLOSS
 	/// damage flag the transmuted damage counts as; null = inherit from attack
 	///
 	/// * only used if block_transmute_simulation is on

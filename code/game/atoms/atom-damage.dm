@@ -62,8 +62,8 @@
 	if(inflict_damage_type_special(args))
 		return
 	switch(damage_type)
-		if(BRUTE)
-		if(BURN)
+		if(DAMAGE_TYPE_BRUTE)
+		if(DAMAGE_TYPE_BURN)
 		else
 			return // normal atoms can't take non brute-burn damage
 	// default atom damage handling

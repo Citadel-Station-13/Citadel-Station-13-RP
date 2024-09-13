@@ -570,7 +570,7 @@
 	icon_state = "invert"
 	fire_sound = 'sound/weapons/spiderlunge.ogg'
 	damage_force = 15
-	damage_type = BURN
+	damage_type = DAMAGE_TYPE_BURN
 	damage_flag = ARMOR_LASER
 	armor_penetration = 60
 	light_range = 2

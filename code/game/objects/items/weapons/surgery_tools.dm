@@ -106,20 +106,20 @@
 	name = "laser scalpel"
 	desc = "A scalpel augmented with a directed laser, for more precise cutting without blood entering the field.  This one looks basic and could be improved."
 	icon_state = "scalpel_laser1_on"
-	damtype = "fire"
+	damage_type = DAMAGE_TYPE_BURN
 
 /obj/item/surgical/scalpel/laser2
 	name = "laser scalpel"
 	desc = "A scalpel augmented with a directed laser, for more precise cutting without blood entering the field.  This one looks somewhat advanced."
 	icon_state = "scalpel_laser2_on"
-	damtype = "fire"
+	damage_type = DAMAGE_TYPE_BURN
 	damage_force = 12.0
 
 /obj/item/surgical/scalpel/laser3
 	name = "laser scalpel"
 	desc = "A scalpel augmented with a directed laser, for more precise cutting without blood entering the field.  This one looks to be the pinnacle of precision energy cutlery!"
 	icon_state = "scalpel_laser3_on"
-	damtype = "fire"
+	damage_type = DAMAGE_TYPE_BURN
 	damage_force = 15.0
 
 /obj/item/surgical/scalpel/manager
@@ -162,7 +162,7 @@
 	icon_state = "adv_saw"
 	item_state = "saw3"
 	attack_sound = 'sound/weapons/emitter2.ogg'
-	damtype = SEARING
+	damage_type = DAMAGE_TYPE_SEARING
 	w_class = WEIGHT_CLASS_BULKY
 	origin_tech = list(TECH_BIO = 4, TECH_MATERIAL = 6, TECH_MAGNET = 6)
 	materials_base = list(MAT_STEEL = 12500)

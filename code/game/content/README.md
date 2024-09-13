@@ -17,3 +17,4 @@ As an example: Even Nanotrasen itself is not required for the **game** to work -
 
 - Factions don't necessarily need to be a single faction. E.g. 'pirates' is a generic faction, but they certainly aren't just all a big allied corporation.
 - Things in here can be as small as an item, to a whole world system like the Clockwork Cult.
+- If something is in a faction it **does not mean** it's faction-exclusive. It just specifies that it either 

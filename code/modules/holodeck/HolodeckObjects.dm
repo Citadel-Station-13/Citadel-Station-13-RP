@@ -157,7 +157,7 @@
 	if(armor_soak >= damage)
 		return TRUE
 
-	target.apply_damage(damage, HALLOSS, affecting, armor_block, armor_soak)
+	target.apply_damage(damage, DAMAGE_TYPE_HALLOSS, affecting, armor_block, armor_soak)
 	if(damage >= 9)
 		target.visible_message("<font color='red'><B>[user] has weakened [target]!</B></font>")
 		target.apply_effect(4, WEAKEN, armor_block)
@@ -213,7 +213,7 @@
 	return
 
 /obj/item/holo
-	damtype = HALLOSS
+	damage_type = DAMAGE_TYPE_HALLOSS
 
 /obj/item/holo/esword
 	desc = "May the force be within you. Sorta."
