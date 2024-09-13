@@ -289,8 +289,8 @@
 	var/damage_force = 10
 	/// damage tier - goes hand in hand with [damage_armor]
 	var/damage_tier = BULLET_TIER_DEFAULT
-	/// todo: legacy - BRUTE, BURN, TOX, OXY, CLONE, HALLOSS, ELECTROCUTE, BIOACID are the only things that should be in here
-	var/damage_type = BRUTE
+	/// damage type - DAMAGE_TYPE_* define
+	var/damage_type = DAMAGE_TYPE_BRUTE
 	/// armor flag for damage - goes hand in hand with [damage_tier]
 	var/damage_flag = ARMOR_BULLET
 	/// damage mode - see [code/__DEFINES/combat/damage.dm]
@@ -512,12 +512,12 @@
 //Checks if the projectile is eligible for embedding. Not that it necessarily will.
 /obj/projectile/proc/can_embed()
 	//embed must be enabled and damage type must be brute
-	if(embed_chance == 0 || damage_type != BRUTE)
+	if(embed_chance == 0 || damage_type != DAMAGE_TYPE_BRUTE)
 		return 0
 	return 1
 
 /obj/projectile/proc/get_structure_damage()
-	if(damage_type == BRUTE || damage_type == BURN)
+	if(damage_type == DAMAGE_TYPE_BRUTE || damage_type == DAMAGE_TYPE_BURN)
 		return damage_force
 	return 0
 
@@ -604,7 +604,7 @@
 	return fire(angle_override, direct_target)
 
 /**
- * Standard proc to determine damage when impacting something. This does not affect the special damage variables/effect variables, only damage and damtype.
+ * Standard proc to determine damage when impacting something. This does not affect the special damage variables/effect variables, only damage and damage_type.
  * May or may not be called before/after armor calculations.
  *
  * @params
@@ -964,16 +964,10 @@
 	 */
 /obj/projectile/proc/on_impact(atom/target, impact_flags, def_zone, efficiency = 1)
 	//! legacy shit
-	var/blocked = clamp((1 - efficiency) * 100, 0, 100)
-	if(damage_force && damage_type == BURN)
+	if(damage_force && damage_type == DAMAGE_TYPE_BURN)
 		var/turf/T = get_turf(target)
 		if(T)
 			T.hotspot_expose(700, 5)
-	if(isliving(target))
-		var/mob/living/L = target
-		L.apply_effects(stun, weaken, paralyze, irradiate, stutter, eyeblur, drowsy, agony, blocked, incendiary, flammability)
-		if(modifier_type_to_apply)
-			L.add_modifier(modifier_type_to_apply, modifier_duration)
 	//! end
 	return impact_flags
 
@@ -1138,6 +1132,11 @@
 
 		if(!src.nodamage)
 			L.apply_damage(final_damage, src.damage_type, hit_zone, absorb, soaked, 0, src, sharp=proj_sharp, edge=proj_edge)
+
+		// todo: some of these dont' make sense to be armor'd (last two), some do; please refactor this
+		L.apply_effects(stun, weaken, paralyze, irradiate, stutter, eyeblur, drowsy, agony, clamp((1 - efficiency) * 100 + absorb, 0, 100), incendiary, flammability)
+		if(modifier_type_to_apply)
+			L.add_modifier(modifier_type_to_apply, modifier_duration)
 	//! END
 
 	for(var/datum/projectile_effect/effect as anything in base_projectile_effects)

@@ -4,7 +4,7 @@
 	fire_sound = 'sound/weapons/weaponsounds_laserstrong.ogg'
 	pass_flags = ATOM_PASS_TABLE | ATOM_PASS_GLASS | ATOM_PASS_GRILLE
 	damage_force = 40
-	damage_type = BURN
+	damage_type = DAMAGE_TYPE_BURN
 	damage_flag = ARMOR_LASER
 	projectile_type = PROJECTILE_TYPE_BEAM | PROJECTILE_TYPE_PHOTONIC
 	eyeblur = 4
@@ -24,7 +24,7 @@
 	name = "laser"
 	icon_state = "laser"
 	damage_force = 0
-	damage_type = BURN
+	damage_type = DAMAGE_TYPE_BURN
 	damage_flag = ARMOR_LASER
 	eyeblur = 2
 	impact_sounds = null
@@ -119,7 +119,7 @@
 /obj/projectile/beam/weak
 	name = "weak cyan beam"
 	icon_state = "cyan"
-	fire_sound = 'sound/weapons/Taser.ogg'
+	fire_sound = 'sound/weapons/Dissolverray.ogg'
 	damage_force = 20
 	light_color = "#74b1c2"
 
@@ -127,6 +127,19 @@
 	tracer_type = /obj/effect/projectile/tracer/laser_omni
 	impact_type = /obj/effect/projectile/impact/laser_omni
 
+/obj/projectile/beam/antigravbeamwraith
+	name = "dark energy beam"
+	icon_state = "darkb"
+	fire_sound = 'sound/weapons/SuperHeavyLaser.ogg' //Knowers will recognize it
+	damage_force = 30 //Targets energy armor which is kinda rare
+	damage_type = DAMAGE_TYPE_BRUTE //Dark energy displaces instead of burning
+	damage_flag = ARMOR_ENERGY
+	irradiate= 5 //Scifi Antigrav bullshit side effect
+	light_color = "#8902f0" //Purple
+
+	muzzle_type = /obj/effect/projectile/muzzle/darkmatter
+	tracer_type = /obj/effect/projectile/tracer/darkmatter
+	impact_type = /obj/effect/projectile/impact/darkmatter	
 
 /obj/projectile/beam/emitter
 	name = "emitter beam"
@@ -145,7 +158,7 @@
 	name = "lasertag beam"
 	damage_force = 0
 	eyeblur = 0
-	damage_type = BURN
+	damage_type = DAMAGE_TYPE_BURN
 	damage_flag = ARMOR_LASER
 
 	combustion = FALSE
@@ -216,7 +229,7 @@
 	nodamage = 1
 	taser_effect = 1
 	agony = 40
-	damage_type = HALLOSS
+	damage_type = DAMAGE_TYPE_HALLOSS
 	light_color = "#FFFFFF"
 	impact_sounds = null
 
@@ -244,7 +257,7 @@
 	nodamage = 1
 	taser_effect = 1
 	agony = 30
-	damage_type = HALLOSS
+	damage_type = DAMAGE_TYPE_HALLOSS
 	light_color = "#FFFFFF"
 
 	combustion = FALSE
@@ -290,7 +303,7 @@
 /obj/projectile/beam/shock
 	name = "shock beam"
 	icon_state = "lightning"
-	damage_type = ELECTROCUTE
+	damage_type = DAMAGE_TYPE_ELECTROCUTE
 
 	muzzle_type = /obj/effect/projectile/muzzle/lightning
 	tracer_type = /obj/effect/projectile/tracer/lightning
@@ -316,7 +329,7 @@
 	name = "point defense salvo"
 	icon_state = "laser"
 	damage_force = 15
-	damage_type = ELECTROCUTE //You should be safe inside a voidsuit
+	damage_type = DAMAGE_TYPE_ELECTROCUTE //You should be safe inside a voidsuit
 	sharp = FALSE //"Wide" spectrum beam
 	light_color = "#A9980A"
 

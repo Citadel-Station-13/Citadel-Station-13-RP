@@ -627,8 +627,8 @@
 
 	var/armor = target.run_armor_check(BP_HEAD, "melee")
 	var/soaked = target.get_armor_soak(BP_HEAD, "melee")
-	target.apply_damage(damage, BRUTE, BP_HEAD, armor, soaked)
-	attacker.apply_damage(10, BRUTE, BP_HEAD, attacker.run_armor_check(BP_HEAD), attacker.get_armor_soak(BP_HEAD), "melee")
+	target.apply_damage(damage, DAMAGE_TYPE_BRUTE, BP_HEAD, armor, soaked)
+	attacker.apply_damage(10, DAMAGE_TYPE_BRUTE, BP_HEAD, attacker.run_armor_check(BP_HEAD), attacker.get_armor_soak(BP_HEAD), "melee")
 
 	if(!armor && target.headcheck(BP_HEAD) && prob(damage))
 		target.apply_effect(20, PARALYZE)

@@ -47,7 +47,7 @@
 	// todo: maybe the item side should handle this?
 	run_damage_instance(
 		weapon.damage_force * (clickchain ? clickchain.damage_multiplier : 1),
-		weapon.damtype,
+		weapon.damage_type,
 		weapon.damage_tier,
 		weapon.damage_flag,
 		weapon.damage_mode,
@@ -87,7 +87,7 @@
 	//! legacy code handling
 	if((proj.projectile_type & (PROJECTILE_TYPE_ENERGY | PROJECTILE_TYPE_BEAM)) && !proj.nodamage && proj.damage_force)
 		burn(2500)
-	if(proj.damage_type == BURN && proj.damage_force && !proj.nodamage)
+	if(proj.damage_type == DAMAGE_TYPE_BURN && proj.damage_force && !proj.nodamage)
 		if(thermite)
 			thermitemelt()
 	if(proj.ricochet_sounds && prob(15))

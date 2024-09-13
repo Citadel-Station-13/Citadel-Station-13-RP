@@ -275,7 +275,7 @@
 	to_chat(user, "<span class='notice'>You ignite the [src]'s sacred flame.</span>")
 	playsound(loc, 'sound/weapons/gun_flamethrower3.ogg', 50, 1)
 	src.damage_force = 20
-	src.damtype = "fire"
+	src.damage_type = DAMAGE_TYPE_BURN
 	src.set_weight_class(WEIGHT_CLASS_BULKY)
 	src.attack_sound = 'sound/weapons/gun_flamethrower2.ogg'
 	active = 1
@@ -285,7 +285,7 @@
 	to_chat(user, "<span class='notice'>You douse \the [src]'s sacred flame.</span>")
 	playsound(loc, 'sound/weapons/gun_flamethrower1.ogg', 50, 1)
 	src.damage_force = 20
-	src.damtype = "brute"
+	src.damage_type = DAMAGE_TYPE_BRUTE
 	src.set_weight_class(initial(src.w_class))
 	src.attack_sound = initial(src.attack_sound)
 	src.active = 0
@@ -517,7 +517,7 @@
 				T.visible_message("<span class='danger'>\The [src] turns on.</span>")
 			playsound(loc, acti_sound, 50, 1)
 			src.damage_force = 15
-			src.damtype = "fire"
+			src.damage_type = DAMAGE_TYPE_BURN
 			src.set_weight_class(WEIGHT_CLASS_BULKY)
 			src.attack_sound = 'sound/items/welder.ogg'
 			src.sharp = 1
@@ -536,7 +536,7 @@
 			T.visible_message("<span class='warning'>\The [src] turns off.</span>")
 		playsound(loc, deac_sound, 50, 1)
 		src.damage_force = 3
-		src.damtype = "brute"
+		src.damage_type = DAMAGE_TYPE_BRUTE
 		src.set_weight_class(initial(src.w_class))
 		src.active = 0
 		src.sharp = 0

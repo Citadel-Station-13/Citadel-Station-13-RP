@@ -409,7 +409,7 @@
 		playsound(get_turf(src), 'sound/machines/defib_failed.ogg', 50, 0)
 		return
 
-	H.apply_damage(burn_damage_amt, BURN, BP_TORSO)
+	H.apply_damage(burn_damage_amt, DAMAGE_TYPE_BURN, BP_TORSO)
 
 	//set oxyloss so that the patient is just barely in crit, if possible
 	var/barely_in_crit = config_legacy.health_threshold_crit - 1

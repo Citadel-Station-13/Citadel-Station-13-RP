@@ -144,6 +144,9 @@
 	var/max_equip = 2
 	var/datum/events/events
 
+	/// outgoing melee damage (legacy var)
+	var/damtype
+
 //mechaequipt2 stuffs
 	var/list/hull_equipment = new
 	var/list/weapon_equipment = new
@@ -949,7 +952,7 @@
 		log_append_to_last("Took [damage] points of damage. Damage type: \"[type]\".",1)
 	return
 
-/obj/vehicle/sealed/mecha/proc/components_handle_damage(var/damage, var/type = BRUTE)
+/obj/vehicle/sealed/mecha/proc/components_handle_damage(var/damage, var/type = DAMAGE_TYPE_BRUTE)
 	var/obj/item/mecha_parts/component/armor/AC = internal_components[MECH_ARMOR]
 
 	if(AC)
@@ -1160,7 +1163,7 @@
 		src.log_append_to_last("Armor saved.")
 		return
 
-	if(Proj.damage_type == HALLOSS)
+	if(Proj.damage_type == DAMAGE_TYPE_HALLOSS)
 		use_power(Proj.agony * 5)
 
 	if(!(Proj.nodamage))
@@ -1325,7 +1328,7 @@
 		pass_damage = (pass_damage*pass_damage_reduc_mod)	//Apply the reduction of damage from not having enough armor penetration. This is not regular armor values at play.
 		for(var/obj/item/mecha_parts/mecha_equipment/ME in equipment)
 			pass_damage = ME.handle_projectile_contact(W, user, pass_damage)
-		src.take_damage_legacy(pass_damage,W.damtype)	//The take_damage_legacy() proc handles armor values
+		src.take_damage_legacy(pass_damage, W.damage_type)	//The take_damage_legacy() proc handles armor values
 		if(pass_damage > internal_damage_minimum)	//Only decently painful attacks trigger a chance of mech damage.
 			src.check_for_internal_damage(list(MECHA_INT_TEMP_CONTROL,MECHA_INT_TANK_BREACH,MECHA_INT_CONTROL_LOST))
 	return

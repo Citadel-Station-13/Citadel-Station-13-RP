@@ -317,8 +317,8 @@
 
 		if(burn_user)
 			H.visible_message("<span class='danger'>\The [src] flashes as it scorches [H]'s hands!</span>")
-			H.apply_damage(amount / 2 + 5, BURN, "r_hand", used_weapon="Supermatter Chunk")
-			H.apply_damage(amount / 2 + 5, BURN, "l_hand", used_weapon="Supermatter Chunk")
+			H.apply_damage(amount / 2 + 5, DAMAGE_TYPE_BURN, "r_hand", used_weapon="Supermatter Chunk")
+			H.apply_damage(amount / 2 + 5, DAMAGE_TYPE_BURN, "l_hand", used_weapon="Supermatter Chunk")
 			H.drop_item_to_ground(src)
 			return
 
@@ -326,7 +326,7 @@
 		burn_user = FALSE
 
 	if(burn_user)
-		M.apply_damage(amount, BURN, null, used_weapon="Supermatter Chunk")
+		M.apply_damage(amount, DAMAGE_TYPE_BURN, null, used_weapon="Supermatter Chunk")
 
 /obj/item/stack/material/supermatter/legacy_ex_act(severity)	// An incredibly hard to manufacture material, SM chunks are unstable by their 'stabilized' nature.
 	if(prob((4 / severity) * 20))

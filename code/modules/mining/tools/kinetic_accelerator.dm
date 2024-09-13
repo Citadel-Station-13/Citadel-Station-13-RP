@@ -20,28 +20,20 @@
 	icon = 'icons/obj/gun/energy.dmi'
 	icon_state = "kineticgun"
 	item_state = "kineticgun"
-	// ammo_type = list(/obj/item/ammo_casing/energy/kinetic)
 	cell_type = /obj/item/cell/device/weapon/empproof
 	clothing_flags = NONE
 	charge_meter = FALSE
-	// obj_flags = UNIQUE_RENAME
-	// weapon_weight = WEAPON_LIGHT
-	// can_flashlight = 1
-	// flight_x_offset = 15
-	// flight_y_offset = 9
-	// automatic_charge_overlays = FALSE
+
 	projectile_type = /obj/projectile/kinetic
 	charge_cost = 1200
 	battery_lock = TRUE
 	fire_sound = 'sound/weapons/kenetic_accel.ogg'
+	render_use_legacy_by_default = FALSE
 	var/overheat_time = 16
 	var/holds_charge = FALSE
 	var/unique_frequency = FALSE // modified by KA modkits
 	var/overheat = FALSE
 	var/emptystate = "kineticgun_empty"
-	// can_bayonet = TRUE
-	// knife_x_offset = 20
-	// knife_y_offset = 12
 
 	var/max_mod_capacity = 100
 	var/list/modkits = list()
@@ -205,7 +197,7 @@
 	name = "kinetic force"
 	icon_state = null
 	damage_force = 30
-	damage_type = BRUTE
+	damage_type = DAMAGE_TYPE_BRUTE
 	damage_flag = ARMOR_BOMB
 	range = WORLD_ICON_SIZE * 4
 	// log_override = TRUE
@@ -216,7 +208,7 @@
 
 /obj/projectile/kinetic/premium
 	damage_force = 40
-	damage_type = BRUTE
+	damage_type = DAMAGE_TYPE_BRUTE
 	range = 5
 
 /obj/projectile/kinetic/Destroy()

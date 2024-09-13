@@ -27,16 +27,19 @@
 	/// the action will check for
 	var/item_action_mobility_flags = MOBILITY_CAN_HOLD | MOBILITY_CAN_USE
 
-	//* Combat
+	//* Combat *//
 	/// Amount of damage we do on melee.
 	var/damage_force = 0
 	/// armor flag for melee attacks
 	var/damage_flag = ARMOR_MELEE
 	/// damage tier
-	var/damage_tier = MELEE_TIER_DEFAULT
+	var/damage_tier = MELEE_TIER_MEDIUM
 	/// damage_mode bitfield - see [code/__DEFINES/combat/damage.dm]
 	var/damage_mode = NONE
-	// todo: port over damtype
+	/// DAMAGE_TYPE_* enum
+	///
+	/// * This is the primary damage type this object does on usage as a melee / thrown weapon.
+	var/damage_type = DAMAGE_TYPE_BRUTE
 	/// passive parry data / frame
 	///
 	/// * anonymous typepath is allowed

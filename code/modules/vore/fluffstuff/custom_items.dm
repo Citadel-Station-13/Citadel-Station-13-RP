@@ -169,7 +169,7 @@
 	damage_force = 10
 	throw_force = 3
 	w_class = WEIGHT_CLASS_NORMAL
-	damtype = HALLOSS
+	damage_type = DAMAGE_TYPE_HALLOSS
 	attack_verb = list("flogged", "whipped", "lashed", "disciplined", "chastised", "flayed")
 
 //General use
@@ -1302,7 +1302,7 @@
 	item_icons = list(SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand_melee.dmi', SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_melee.dmi', SLOT_ID_BACK = 'icons/vore/custom_items_vr.dmi', SLOT_ID_SUIT = 'icons/vore/custom_items_vr.dmi')
 	var/active_state = "wolfgirlsword"
 	allowed = list(/obj/item/shield/fluff/wolfgirlshield)
-	damtype = HALLOSS
+	damage_type = DAMAGE_TYPE_HALLOSS
 
 /obj/item/melee/fluffstuff/wolfgirlsword/dropped(mob/user, flags, atom/newLoc)
 	..()
@@ -1318,7 +1318,7 @@
 	sharp = 1
 	edge = 1
 	icon_state = "[active_state]_sharp"
-	damtype = BRUTE
+	damage_type = DAMAGE_TYPE_BRUTE
 
 
 /obj/item/melee/fluffstuff/wolfgirlsword/deactivate(mob/living/user)
