@@ -521,18 +521,10 @@
 
 	next_fire_time = world.time + shoot_time
 
-	var/held_twohanded = (user.can_wield_item(src) && src.is_held_twohanded(user))
-
 	//actually attempt to shoot
 	var/turf/targloc = get_turf(target) //cache this in case target gets deleted during shooting, e.g. if it was a securitron that got destroyed.
 
 	for(var/i in 1 to burst)
-		var/obj/projectile = consume_next_projectile(user)
-		if(!projectile)
-			handle_click_empty(user)
-			break
-
-		user.newtonian_move(get_dir(target, user))		// Recoil
 
 		process_accuracy(projectile, user, target, i, held_twohanded)
 
@@ -651,11 +643,6 @@
 
 	if(muzzle_flash)
 		set_light(0)
-
-//obtains the next projectile to fire
-#warn get rid of this
-/obj/item/gun/proc/consume_next_projectile()
-	SHOULD_NOT_OVERRIDE(TRUE)
 
 //used by aiming code
 /obj/item/gun/proc/can_hit(atom/target as mob, var/mob/living/user as mob)

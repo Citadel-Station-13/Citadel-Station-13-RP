@@ -115,6 +115,23 @@
 	SHOULD_NOT_SLEEP(TRUE)
 	#warn impl; check unmount
 
+	// todo: sigh
+	var/held_twohanded = TRUE
+	if(ismob(user))
+		var/mob/mob_firer = firer
+		held_twohanded = mob_firer.can_wield_item(src) && is_held_twohanded(mob_firer)
+
+	// point of no return
+	var/obj/projectile/firing_projectile = consume_next_projectile(iteration, firing_flags, firemode, actor, firer)
+	if(!istype(firing_projectile))
+		// it's an error code if it's not real
+		return firing_projectile
+
+	// todo: do we really need to newtonian move always?
+	if(ismovable(firer))
+		var/atom/movable/movable_firer = firer
+		movable_firer.newtonian_move(angle2dir(angle))
+
 /**
  * Called to handle post fire
  *
