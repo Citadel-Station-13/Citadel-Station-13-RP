@@ -53,12 +53,14 @@ var/list/blobs = list()
 		return TRUE
 	else if(istype(mover, /mob/living))
 		var/mob/living/L = mover
-		if(L.faction == "blob")
+		if(L.has_iff_faction(MOB_IFF_FACTION_BLOB))
 			return TRUE
 	else if(istype(mover, /obj/projectile))
 		var/obj/projectile/P = mover
-		if(istype(P.firer) && P.firer.faction == "blob")
-			return TRUE
+		if(isliving(P.firer))
+			var/mob/living/L = P.firer
+			if(L.has_iff_faction(MOB_IFF_FACTION_BLOB))
+				return TRUE
 	return FALSE
 
 /obj/structure/blob/examine(mob/user, dist)
@@ -224,8 +226,8 @@ var/list/blobs = list()
 	playsound(loc, 'sound/effects/attackblob.ogg', 50, 1)
 	visible_message("<span class='danger'>\The [src] has been attacked with \the [W][(user ? " by [user]." : ".")]</span>")
 	var/damage = W.damage_force
-	switch(W.damtype)
-		if(BURN)
+	switch(W.damage_type)
+		if(DAMAGE_TYPE_BURN)
 			if(overmind)
 				damage *= overmind.blob_type.burn_multiplier
 			else
@@ -235,7 +237,7 @@ var/list/blobs = list()
 				playsound(src.loc, 'sound/items/welder.ogg', 100, 1)
 			else
 				playsound(src, 'sound/weapons/tap.ogg', 50, 1)
-		if(BRUTE)
+		if(DAMAGE_TYPE_BRUTE)
 			if(overmind)
 				damage *= overmind.blob_type.brute_multiplier
 			else
@@ -246,25 +248,27 @@ var/list/blobs = list()
 			else
 				playsound(src, 'sound/weapons/tap.ogg', 50, 1)
 	if(overmind)
-		damage = overmind.blob_type.on_received_damage(src, damage, W.damtype, user)
+		damage = overmind.blob_type.on_received_damage(src, damage, W.damage_type, user)
 	adjust_integrity_blob(-damage)
 	return
 
 /obj/structure/blob/on_bullet_act(obj/projectile/proj, impact_flags, list/bullet_act_args)
 	. = ..()
 
-	if(istype(proj.firer) && proj.firer.faction == "blob")
-		return
+	if(isliving(proj.firer))
+		var/mob/living/L = proj.firer
+		if(L.has_iff_faction(MOB_IFF_FACTION_BLOB))
+			return TRUE
 
 	var/damage = proj.get_structure_damage() // So tasers don't hurt the blob.
 	if(!damage)
 		return
 
 	switch(proj.damage_type)
-		if(BRUTE)
+		if(DAMAGE_TYPE_BRUTE)
 			if(overmind)
 				damage *= overmind.blob_type.brute_multiplier
-		if(BURN)
+		if(DAMAGE_TYPE_BURN)
 			if(overmind)
 				damage *= overmind.blob_type.burn_multiplier
 

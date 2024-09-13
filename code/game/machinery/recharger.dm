@@ -101,7 +101,7 @@
 	else if(default_part_replacement(user, G))
 		return
 
-/obj/machinery/recharger/attack_hand(mob/user, list/params)
+/obj/machinery/recharger/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(istype(user,/mob/living/silicon))
 		return
 

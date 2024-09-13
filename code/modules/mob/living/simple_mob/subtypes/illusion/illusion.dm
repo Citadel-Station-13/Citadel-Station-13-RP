@@ -50,7 +50,7 @@
 		return ..()
 	return PROJECTILE_IMPACT_PHASE
 
-/mob/living/simple_mob/illusion/attack_hand(mob/user, list/params)
+/mob/living/simple_mob/illusion/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	var/mob/living/M = user
 	if(!istype(M))
 		return

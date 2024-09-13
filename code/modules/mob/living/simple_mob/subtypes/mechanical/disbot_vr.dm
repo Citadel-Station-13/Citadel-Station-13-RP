@@ -35,7 +35,9 @@
 	response_help = "pets the"
 	response_disarm = "gently pushes aside the"
 	response_harm = "hits the"
-	faction = "vagrant"
+
+	iff_factions = MOB_IFF_FACTION_SWARMER
+
 	harm_intent_damage = 3
 	legacy_melee_damage_lower = 6
 	legacy_melee_damage_upper = 9

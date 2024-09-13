@@ -27,6 +27,11 @@
 
 	// todo: inject something here for 'used as item' much like /tg/, to get rid of attackby pattern
 
+	var/datum/event_args/actor/clickchain/e_args = new(user)
+
+	if((. |= item_attack_chain(target, e_args, ., params)) & CLICKCHAIN_DO_NOT_PROPAGATE)
+		return
+
 	if((. |= tool_attack_chain(target, user, ., params)) & CLICKCHAIN_DO_NOT_PROPAGATE)
 		return
 
@@ -211,10 +216,10 @@
 	if(!hit_zone)
 		// missed
 		// log
-		add_attack_logs(user, L, "missed with [src] DT [damtype] F [damage_force] I [user.a_intent]")
+		add_attack_logs(user, L, "missed with [src] DT [damage_type] F [damage_force] I [user.a_intent]")
 		return melee_mob_miss(L, user, clickchain_flags, params, mult, target_zone, intent)
 	// log
-	add_attack_logs(user, L, "attacked with [src] DT [damtype] F [damage_force] I [user.a_intent]")
+	add_attack_logs(user, L, "attacked with [src] DT [damage_type] F [damage_force] I [user.a_intent]")
 	// hit
 	return melee_mob_hit(L, user, clickchain_flags, params, mult, target_zone, intent)
 
@@ -293,7 +298,7 @@
 	if(isliving(target))
 		var/mob/living/casted = target
 		newhp = casted.health
-	log_attack(key_name(src), key_name(target), "attacked with [src] [src.damtype]-[src.damage_force]=[src.damage_tier] newhp ~[newhp || "unknown"]")
+	log_attack(key_name(src), key_name(target), "attacked with [src] [src.damage_type]-[src.damage_force]=[src.damage_tier] newhp ~[newhp || "unknown"]")
 
 	return NONE
 
@@ -425,7 +430,7 @@
 	// todo: better logging
 	// todo: entity ids?
 	var/newhp = target.integrity
-	log_attack(key_name(src), "[target] ([ref(target)])", "attacked with [src] [src.damtype]-[src.damage_force]=[src.damage_tier] newhp ~[newhp || "unknown"]")
+	log_attack(key_name(src), "[target] ([ref(target)])", "attacked with [src] [src.damage_type]-[src.damage_force]=[src.damage_tier] newhp ~[newhp || "unknown"]")
 
 	return NONE
 

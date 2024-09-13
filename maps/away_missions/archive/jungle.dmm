@@ -661,7 +661,6 @@
 /turf/simulated/floor/outdoors/dirt,
 /area/jungle/crash_ship_source)
 "dA" = (
-/turf/simulated/floor/outdoors/dirt,
 /turf/simulated/shuttle/wall,
 /area/jungle/crash_ship_source)
 "dB" = (
@@ -689,7 +688,6 @@
 /turf/simulated/floor/tiled/white,
 /area/jungle/crash_ship_source)
 "dF" = (
-/turf/simulated/floor/tiled/white,
 /turf/simulated/shuttle/wall{
 	icon_state = "swall_c"
 	},

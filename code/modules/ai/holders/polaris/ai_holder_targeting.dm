@@ -143,7 +143,7 @@
 		var/obj/machinery/porta_turret/P = the_target
 		if(P.machine_stat & BROKEN)
 			return FALSE // Already dead.
-		if(P.faction == holder.faction)
+		if(holder.has_iff_faction(P.faction))
 			return FALSE // Don't shoot allied turrets.
 		if(!P.raised && !P.raising)
 			return FALSE // Turrets won't get hurt if they're still in their cover.

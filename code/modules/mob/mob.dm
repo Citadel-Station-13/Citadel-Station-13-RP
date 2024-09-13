@@ -47,6 +47,8 @@
 	initialize_actionspeed()
 	// ssd overlay
 	update_ssd_overlay()
+	// iff factions
+	init_iff()
 	return ..()
 
 /mob/Destroy()

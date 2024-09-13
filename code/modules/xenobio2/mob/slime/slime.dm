@@ -86,7 +86,7 @@ Slime definitions, Life and New live here.
 		languages += L
 	speak += "[station_name()]?"
 	traitdat.source = "Slime"
-	resistances[BURN] = 4
-	resistances[BRUTE] = 0.2
-	resistances[TOX] = 1.5
+	resistances[DAMAGE_TYPE_BURN] = 4
+	resistances[DAMAGE_TYPE_BRUTE] = 0.2
+	resistances[DAMAGE_TYPE_TOX] = 1.5
 	GenerateChild()

@@ -109,7 +109,7 @@
 	item_state = "disintegrate"
 	name = "god hand"
 	desc = "This hand of yours glows with an awesome power!"
-	damtype = BURN
+	damage_type = DAMAGE_TYPE_BURN
 	attack_verb = list("punched", "cross countered", "pummeled")
 
 /obj/item/nullrod/godhand/Initialize(mapload)
@@ -359,7 +359,7 @@
 	if(used_blessing)
 	else if(user.mind && (user.mind.isholy))
 		to_chat(user, "You are blessed by Carp-Sie. Wild space carp will no longer attack you.")
-		user.faction |= "carp"
+		user.add_iff_faction(MOB_IFF_FACTION_CARP)
 		used_blessing = TRUE
 
 /obj/item/nullrod/claymore/bostaff //May as well make it a "claymore" and inherit the blocking

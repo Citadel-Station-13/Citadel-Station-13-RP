@@ -75,7 +75,7 @@
 /obj/machinery/computer/HolodeckControl/attack_ai(var/mob/user as mob)
 	return src.attack_hand(user)
 
-/obj/machinery/computer/HolodeckControl/attack_hand(mob/user, list/params)
+/obj/machinery/computer/HolodeckControl/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(..())
 		return
 	user.set_machine(src)
@@ -173,11 +173,11 @@
 	if (safety_disabled)
 		item_power_usage = 2500
 		for(var/obj/item/holo/esword/H in linkedholodeck)
-			H.damtype = BRUTE
+			H.damage_type = DAMAGE_TYPE_BRUTE
 	else
 		item_power_usage = initial(item_power_usage)
 		for(var/obj/item/holo/esword/H in linkedholodeck)
-			H.damtype = initial(H.damtype)
+			H.damage_type = initial(H.damage_type)
 
 	for(var/mob/living/simple_mob/animal/space/carp/holodeck/C in holographic_mobs)
 		C.set_safety(!safety_disabled)

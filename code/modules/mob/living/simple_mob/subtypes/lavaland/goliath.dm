@@ -74,7 +74,8 @@
 	hide_amount = 10
 	exotic_amount = 10
 
-	faction = "lavaland"
+	iff_factions = MOB_IFF_FACTION_BIND_TO_MAP
+
 	speak_emote = list("bellows")
 	say_list_type = /datum/say_list/goliath
 	ai_holder_type = /datum/ai_holder/polaris/simple_mob/melee/goliath
@@ -273,7 +274,7 @@
 		C.adjustBruteLoss(rand(5,10))
 		latched = TRUE
 	for(var/obj/vehicle/sealed/mecha/M in loc)
-		M.take_damage_legacy(20, BRUTE, null, null, null, 25)
+		M.take_damage_legacy(20, DAMAGE_TYPE_BRUTE, null, null, null, 25)
 	if(!latched)
 		retract()
 	else

@@ -518,7 +518,7 @@
 		playsound(user, 'sound/mecha/mechstep.ogg', 20, 1)
 		cooldown = world.time
 
-/obj/item/toy/prize/attack_hand(mob/user, list/params)
+/obj/item/toy/prize/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(loc == user)
 		if(cooldown < world.time - 8)
 			to_chat(user, "<span class='notice'>You play with [src].</span>")
@@ -926,7 +926,7 @@
 	density = 1
 	var/phrase = "I don't want to exist anymore!"
 
-/obj/structure/plushie/attack_hand(mob/user, list/params)
+/obj/structure/plushie/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
 	if(user.a_intent == INTENT_HELP)
 		user.visible_message("<span class='notice'><b>\The [user]</b> hugs [src]!</span>","<span class='notice'>You hug [src]!</span>")

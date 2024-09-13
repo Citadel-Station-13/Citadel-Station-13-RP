@@ -37,7 +37,7 @@
 
 /obj/projectile/bullet/pellet/e_shot_stun
 	icon_state = "spell"
-	damage = 2
+	damage_force = 2
 	agony = 20
 	pellets = 6			//number of pellets
 	embed_chance = 0
@@ -87,7 +87,7 @@
 	icon_state = "omnilaser"
 	nodamage = 1
 	agony = 5
-	damage_type = HALLOSS
+	damage_type = DAMAGE_TYPE_HALLOSS
 	light_color = "#00CC33"
 
 	muzzle_type = /obj/effect/projectile/muzzle/laser_omni

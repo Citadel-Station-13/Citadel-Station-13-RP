@@ -514,6 +514,18 @@
 	id = "mech_lmg"
 	build_path = /obj/item/mecha_parts/mecha_equipment/weapon/ballistic/lmg
 
+/datum/design/science/mecha/lmg_heavy
+	design_name = "AC 10"
+	id = "mech_lmg_heavy"
+	build_path = /obj/item/mecha_parts/mecha_equipment/weapon/ballistic/lmg_heavy
+	materials_base = list(MAT_STEEL = 12000, MAT_GLASS = 4000, MAT_PLASTIC = 3000, MAT_SILVER = 1500, MAT_COPPER = 4000)
+
+/datum/design/science/mecha/gauss_rifle
+	design_name = "Gauss Rifle"
+	id = "mech_gauss_rifle"
+	build_path = /obj/item/mecha_parts/mecha_equipment/weapon/ballistic/gauss_rifle
+	materials_base = list(MAT_STEEL = 16000, MAT_GLASS = 8000, MAT_PLASTIC = 4000, MAT_SILVER = 3500, MAT_COPPER = 8000)
+
 /datum/design/science/mecha/rigged_lmg
 	design_name = "Jury-Rigged Machinegun"
 	id = "mech_lmg-r"

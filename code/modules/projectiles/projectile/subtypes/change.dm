@@ -1,8 +1,8 @@
 /obj/projectile/change
 	name = "bolt of change"
 	icon_state = "ice_1"
-	damage = 0
-	damage_type = BURN
+	damage_force = 0
+	damage_type = DAMAGE_TYPE_BURN
 	nodamage = 1
 	damage_flag = ARMOR_ENERGY
 

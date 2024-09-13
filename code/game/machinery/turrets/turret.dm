@@ -288,7 +288,7 @@
 
 	nano_ui_interact(user)
 
-/obj/machinery/porta_turret/attack_hand(mob/user, list/params)
+/obj/machinery/porta_turret/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(isLocked(user))
 		return
 
@@ -543,7 +543,7 @@
 	if(L.invisibility >= INVISIBILITY_LEVEL_ONE) // Cannot see him. see_invisible is a mob-var
 		return TURRET_NOT_TARGET
 
-	if(faction && L.faction == faction)
+	if(faction && L.has_iff_faction(faction))
 		return TURRET_NOT_TARGET
 
 	if(!emagged && issilicon(L) && check_all == FALSE)	// Don't target silica, unless told to neutralize everything.
