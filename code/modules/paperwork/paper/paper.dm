@@ -9,14 +9,6 @@
 #define MODE_WRITING 1
 #define MODE_STAMPING 2
 
-/**
- * Paper is now using markdown (like in github pull notes) for ALL rendering
- * so we do loose a bit of functionality but we gain in easy of use of
- * paper and getting rid of that crashing bug
- */
-/obj/item/paper
-
-
 /obj/item/paper
 	name = "sheet of paper"
 	gender = NEUTER
@@ -104,6 +96,10 @@
 	return
 
 /obj/item/paper/proc/show_content(var/mob/user, var/forceshow=0)
+	if(!user.client)
+		return
+	SSassets.send_asset_pack(user.client, /datum/asset_pack/simple/logos)
+	user.client.asset_cache_flush_browse_queue()
 	if(!(istype(user, /mob/living/carbon/human) || istype(user, /mob/observer/dead) || istype(user, /mob/living/silicon)) && !forceshow)
 		user << browse("<HTML><HEAD><TITLE>[name]</TITLE></HEAD><BODY>[stars(info)][stamps]</BODY></HTML>", "window=[name]")
 		onclose(user, "[name]")
@@ -296,8 +292,8 @@
 		t = replacetext(t, "\[/grid\]", "</td></tr></table>")
 		t = replacetext(t, "\[row\]", "</td><tr>")
 		t = replacetext(t, "\[cell\]", "<td>")
-		t = replacetext(t, "\[logo\]", "<img src = ntlogo.png>")
-		t = replacetext(t, "\[sglogo\]", "<img src = sglogo.png>")
+		t = replacetext(t, "\[logo\]", "<img src = nanotrasen-blue.png>")
+		t = replacetext(t, "\[sglogo\]", "<img src = solgov-logo.png>")
 
 		t = "<font face=\"[deffont]\" color=[P ? P.pen_color : "black"]>[t]</font>"
 	else // If it is a crayon, and he still tries to use these, make them empty!
