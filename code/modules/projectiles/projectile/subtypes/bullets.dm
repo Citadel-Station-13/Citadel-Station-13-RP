@@ -7,7 +7,7 @@
 	nodamage = 0
 	damage_flag = ARMOR_BULLET
 	embed_chance = 20	//Modified in the actual embed process, but this should keep embed chance about the same
-	sharp = 1
+	damage_mode = DAMAGE_MODE_SHARP | DAMAGE_MODE_PIERCE
 	projectile_type = PROJECTILE_TYPE_KINETIC
 
 	muzzle_type = /obj/effect/projectile/muzzle/bullet
@@ -123,22 +123,21 @@
 	embed_chance = -1
 	holy = TRUE
 
-/obj/projectile/bullet/pistol/rubber/strong // "Rubber" bullets for high power pistols.
-	fire_sound = 'sound/weapons/weaponsounds_heavypistolshot.ogg' // Rubber shots have less powder, but these still have more punch than normal rubber shot.
-	damage_force = 10
-	agony = 60
-	embed_chance = 0
-	sharp = 0
-	damage_flag = ARMOR_MELEE
-
 /obj/projectile/bullet/pistol/rubber // "Rubber" bullets for all other pistols.
 	name = "rubber bullet"
 	damage_force = 5
 	agony = 40
 	embed_chance = 0
-	sharp = 0
+	damage_mode = NONE
 	damage_flag = ARMOR_MELEE
 	fire_sound ='sound/weapons/weaponsounds_smallpistolshot.ogg' // It may be rubber shots but it's still a gun homie it shouldn't be as pathetic as it was
+
+/obj/projectile/bullet/pistol/rubber/strong // "Rubber" bullets for high power pistols.
+	fire_sound = 'sound/weapons/weaponsounds_heavypistolshot.ogg' // Rubber shots have less powder, but these still have more punch than normal rubber shot.
+	damage_force = 10
+	agony = 60
+	embed_chance = 0
+	damage_flag = ARMOR_MELEE
 
 /obj/projectile/bullet/pistol/spin // Special weak ammo for Service Spin mode.
 	fire_sound = 'sound/weapons/weaponsounds_smallpistolshot.ogg'
@@ -160,7 +159,7 @@
 	damage_force = 20
 	agony = 60
 	embed_chance = 0
-	sharp = 0
+	damage_mode = NONE
 	damage_flag = ARMOR_MELEE
 
 //Should do about 80 damage at 1 tile distance (adjacent), and 50 damage at 3 tiles distance.
@@ -207,7 +206,7 @@
 	fire_sound = 'sound/weapons/gunshot/gunshot_tech_huge.ogg'
 	damage_force = 15
 	embed_chance = 0
-	sharp = 0
+	damage_mode = NONE
 	damage_flag = ARMOR_MELEE
 
 	combustion = FALSE
@@ -339,7 +338,7 @@
 	fire_sound = 'sound/soundbytes/effects/explosion/explosion1.ogg'
 	damage_force = 20
 	embed_chance = 0
-	edge = 1
+	damage_mode = DAMAGE_MODE_EDGE
 
 /obj/projectile/bullet/burstbullet/on_impact(atom/target, impact_flags, def_zone, efficiency)
 	. = ..()
@@ -353,7 +352,6 @@
 	fire_sound = 'sound/soundbytes/effects/explosion/explosion1.ogg'
 	damage_force = 20
 	embed_chance = 0
-	edge = 1
 	SA_bonus_damage = 40 // 60 total damage against demons.
 	SA_vulnerability = MOB_CLASS_DEMONIC | MOB_CLASS_ABERRATION
 	holy = TRUE
@@ -522,7 +520,7 @@
 	damage_force = 0
 	nodamage = 1
 	embed_chance = 0
-	sharp = 0
+	damage_mode = NONE
 	incendiary = 1
 	flammability = 4
 
@@ -539,7 +537,7 @@
 	damage_force = 0
 	nodamage = 1
 	embed_chance = 0
-	sharp = 0
+	damage_mode = NONE
 
 /obj/projectile/bullet/blank/cap/process(delta_time)
 	loc = null

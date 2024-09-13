@@ -293,7 +293,7 @@
 			if(!O || !src)
 				return
 
-			if(O.sharp) //Projectile is suitable for pinning.
+			if(is_sharp(O)) //Projectile is suitable for pinning.
 				if(soaked >= round(throw_damage*0.8))
 					return
 

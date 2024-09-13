@@ -147,8 +147,7 @@
 			)
 	item_state = "armblade"
 	damage_force = 15 // same damage_force as a drill
-	sharp = TRUE
-	edge = TRUE
+	damage_mode = DAMAGE_MODE_SHARP | DAMAGE_MODE_EDGE
 	var/SA_bonus_damage = 35 // 50 total against animals and aberrations.
 	var/SA_vulnerability = MOB_CLASS_ANIMAL | MOB_CLASS_ABERRATION
 
@@ -173,8 +172,7 @@
 	damage_force = 5 // HAVING A STICK JAMMED INTO YOU IS LIKELY BAD FOR YOUR HEALTH // well to be fair most of the damage comes from the embed not the stab
 	w_class = WEIGHT_CLASS_SMALL
 	materials_base = list(MAT_STEEL = 2500)
-	sharp = TRUE
-	edge = TRUE
+	damage_mode = DAMAGE_MODE_EDGE | DAMAGE_MODE_SHARP
 	icon_state = "embed_spike"
 	item_icons = list(
 			SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand_material.dmi',
@@ -312,7 +310,6 @@
 	damage_force = 15
 	damage_tier = MELEE_TIER_MEDIUM
 	slot_flags = SLOT_BACK
-	sharp = 1
 	attack_sound = "swing_hit"
 	attack_verb = list("smashed", "slammed", "whacked", "thwacked")
 	icon_state = "bostaff0"

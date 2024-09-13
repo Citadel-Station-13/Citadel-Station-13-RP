@@ -120,8 +120,7 @@
 	name = "stingball shrapnel"
 	damage_force = 3
 	agony = 8
-	sharp = FALSE
-	edge = FALSE
+	damage_mode = NONE
 	damage_flag = ARMOR_MELEE
 
 /obj/projectile/bullet/pellet/fragment/rubber/strong

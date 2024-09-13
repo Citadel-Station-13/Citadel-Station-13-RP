@@ -1,7 +1,6 @@
 /obj/item/material/harpoon
 	name = "harpoon"
-	sharp = 1
-	edge = 0
+	damage_mode = DAMAGE_MODE_SHARP
 	desc = "A common design throughout the galaxy, this is a metal spear used for hunting fish (or people in voidsuits, to devestating effect)."
 	icon_state = "harpoon"
 	item_state = "harpoon"

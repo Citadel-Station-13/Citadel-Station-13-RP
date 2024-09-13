@@ -14,7 +14,7 @@
 	volume = 15
 	w_class = WEIGHT_CLASS_TINY
 	slot_flags = SLOT_EARS
-	sharp = 1
+	damage_mode = DAMAGE_MODE_SHARP
 	integrity_flags = INTEGRITY_ACIDPROOF
 	rad_flags = RAD_NO_CONTAMINATE
 	item_flags = ITEM_NOBLUDGEON | ITEM_ENCUMBERS_WHILE_HELD | ITEM_EASY_LATHE_DECONSTRUCT
