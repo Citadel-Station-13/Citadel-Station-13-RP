@@ -14,7 +14,7 @@
 	nodamage = 0
 	damage_flag = ARMOR_BULLET
 	embed_chance = 20	//Modified in the actual embed process, but this should keep embed chance about the same
-	sharp = 1
+	damage_mode = DAMAGE_MODE_SHARP | DAMAGE_MODE_PIERCE
 	projectile_type = PROJECTILE_TYPE_KINETIC
 
 	muzzle_type = /obj/effect/projectile/muzzle/bullet

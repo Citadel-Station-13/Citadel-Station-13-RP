@@ -3,9 +3,6 @@
 	icon_state= "bolter"
 	damage_force = 50
 	damage_flag = ARMOR_BULLET
-	sharp = 1
-	edge = 1
-
 /obj/projectile/bullet/gyro/on_impact(atom/target, impact_flags, def_zone, efficiency)
 	. = ..()
 	if(. & PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT)
