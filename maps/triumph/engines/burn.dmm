@@ -183,7 +183,7 @@
 	name = "Engine Radiator Viewport Shutter";
 	opacity = 0
 	},
-/turf/simulated/floor,
+/turf/simulated/floor/reinforced/airless,
 /area/engineering/engine_room)
 "gU" = (
 /obj/structure/sign/fire,
@@ -563,7 +563,7 @@
 	name = "Engine Radiator Viewport Shutter";
 	opacity = 0
 	},
-/turf/simulated/floor,
+/turf/simulated/floor/reinforced/airless,
 /area/engineering/engine_room)
 "xl" = (
 /obj/machinery/computer/general_air_control/large_tank_control{
@@ -710,7 +710,7 @@
 	name = "Engine Radiator Viewport Shutter";
 	opacity = 0
 	},
-/turf/simulated/floor,
+/turf/simulated/floor/reinforced/airless,
 /area/engineering/engine_room)
 "Ce" = (
 /obj/structure/window/phoronreinforced{
@@ -858,7 +858,7 @@
 	name = "Engine Radiator Viewport Shutter";
 	opacity = 0
 	},
-/turf/simulated/floor,
+/turf/simulated/floor/reinforced/airless,
 /area/engineering/engine_room)
 "HF" = (
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging/junction{
@@ -1060,7 +1060,7 @@
 	name = "Engine Radiator Viewport Shutter";
 	opacity = 0
 	},
-/turf/simulated/floor,
+/turf/simulated/floor/reinforced/airless,
 /area/engineering/engine_room)
 "PH" = (
 /obj/machinery/atmospherics/component/binary/circulator{
@@ -1146,7 +1146,7 @@
 	name = "Engine Radiator Viewport Shutter";
 	opacity = 0
 	},
-/turf/simulated/floor,
+/turf/simulated/floor/reinforced/airless,
 /area/engineering/engine_room)
 "Rn" = (
 /obj/machinery/atmospherics/component/binary/pump{
@@ -1311,7 +1311,7 @@
 	name = "Engine Radiator Viewport Shutter";
 	opacity = 0
 	},
-/turf/simulated/floor,
+/turf/simulated/floor/reinforced/airless,
 /area/engineering/engine_room)
 "VA" = (
 /obj/machinery/atmospherics/pipe/manifold/visible/black{
@@ -1351,7 +1351,7 @@
 	name = "Engine Radiator Viewport Shutter";
 	opacity = 0
 	},
-/turf/simulated/floor,
+/turf/simulated/floor/reinforced/airless,
 /area/engineering/engine_room)
 "Wr" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -1392,7 +1392,7 @@
 	name = "Engine Radiator Viewport Shutter";
 	opacity = 0
 	},
-/turf/simulated/floor,
+/turf/simulated/floor/reinforced/airless,
 /area/engineering/engine_room)
 "Xs" = (
 /obj/machinery/atmospherics/pipe/manifold/visible/green{
