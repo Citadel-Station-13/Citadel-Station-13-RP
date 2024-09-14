@@ -2211,6 +2211,9 @@
 	opacity = 0
 	},
 /obj/effect/paint/purplegray,
+/obj/map_helper/electrochromatic_linker{
+	id = "robotics-inner"
+	},
 /turf/simulated/floor/plating,
 /area/assembly/robotics)
 "biH" = (
@@ -3098,7 +3101,7 @@
 	pixel_y = -6
 	},
 /obj/machinery/button/windowtint{
-	id = "rd_office";
+	id = "rd-office";
 	pixel_x = -32;
 	pixel_y = -6
 	},
@@ -5897,6 +5900,9 @@
 "dDP" = (
 /obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
 /obj/effect/paint/darkred,
+/obj/map_helper/electrochromatic_linker{
+	id = "warden-office"
+	},
 /turf/simulated/floor/plating,
 /area/security/warden)
 "dEc" = (
@@ -6762,7 +6768,7 @@
 	},
 /obj/effect/floor_decal/corner/paleblue/border,
 /obj/machinery/button/windowtint/multitint{
-	id = "operating_theatre_1";
+	id = "operating-theatre-1";
 	pixel_x = -24;
 	pixel_y = 7
 	},
@@ -6861,6 +6867,9 @@
 "eke" = (
 /obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
 /obj/effect/paint/darkred,
+/obj/map_helper/electrochromatic_linker{
+	id = "sec-locker"
+	},
 /turf/simulated/floor/plating,
 /area/security/security_lockerroom)
 "eko" = (
@@ -7005,6 +7014,9 @@
 	},
 /obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
 /obj/effect/paint/darkred,
+/obj/map_helper/electrochromatic_linker{
+	id = "warden-office"
+	},
 /turf/simulated/floor/plating,
 /area/security/warden)
 "eoA" = (
@@ -9409,6 +9421,9 @@
 /obj/effect/paint/darkred,
 /obj/structure/cable/green{
 	icon_state = "0-2"
+	},
+/obj/map_helper/electrochromatic_linker{
+	id = "Interr"
 	},
 /turf/simulated/floor/plating,
 /area/security/interrogation)
@@ -12317,7 +12332,7 @@
 	},
 /obj/effect/floor_decal/corner/paleblue/border,
 /obj/machinery/button/windowtint/multitint{
-	id = "operating_theatre_2";
+	id = "operating-theatre-2";
 	pixel_x = -24;
 	pixel_y = 7
 	},
@@ -13278,6 +13293,11 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/security/hallway)
+"inb" = (
+/obj/effect/paint/babyblue,
+/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/turf/simulated/floor/plating,
+/area/medical/resleeving)
 "inj" = (
 /obj/structure/sign/department/medbay{
 	pixel_x = -32
@@ -13285,6 +13305,9 @@
 /obj/structure/disposalpipe/segment,
 /obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
 /obj/effect/paint/babyblue,
+/obj/map_helper/electrochromatic_linker{
+	id = "medbay-outer"
+	},
 /turf/simulated/floor/plating,
 /area/medical/reception)
 "inX" = (
@@ -14217,6 +14240,9 @@
 /obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
 /obj/effect/paint/darkred,
 /obj/structure/cable/green,
+/obj/map_helper/electrochromatic_linker{
+	id = "Interr"
+	},
 /turf/simulated/floor/plating,
 /area/security/interrogation)
 "iXc" = (
@@ -14459,12 +14485,12 @@
 	pixel_y = 24
 	},
 /obj/machinery/button/windowtint{
-	id = "research_outer";
+	id = "research-outer";
 	pixel_x = 22;
 	pixel_y = 32
 	},
 /obj/machinery/button/windowtint{
-	id = "research_inner";
+	id = "research-inner";
 	pixel_x = 22;
 	pixel_y = 24
 	},
@@ -14733,17 +14759,34 @@
 	dir = 1
 	},
 /obj/machinery/button/windowtint{
-	id = "robotics_inner";
+	id = "robotics-inner";
 	pixel_x = -22;
 	pixel_y = 24
 	},
 /obj/machinery/button/windowtint{
-	id = "robotics_outer";
+	id = "robotics-outer";
 	pixel_x = -22;
 	pixel_y = 32
 	},
 /turf/simulated/floor/tiled/steel,
 /area/assembly/robotics)
+"jmT" = (
+/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
+/obj/machinery/door/blast/shutters{
+	density = 0;
+	dir = 2;
+	icon_state = "shutter0";
+	id = "hos";
+	layer = 3.1;
+	name = "Head of Security's Office Shutters";
+	opacity = 0
+	},
+/obj/effect/paint/darkred,
+/obj/map_helper/electrochromatic_linker{
+	id = "warden-office"
+	},
+/turf/simulated/floor/plating,
+/area/crew_quarters/heads/hos)
 "jnl" = (
 /obj/structure/bed/chair{
 	dir = 4
@@ -16049,6 +16092,9 @@
 "keC" = (
 /obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
 /obj/effect/paint/darkred,
+/obj/map_helper/electrochromatic_linker{
+	id = "sec-processing-l"
+	},
 /turf/simulated/floor/plating,
 /area/security/security_processing)
 "keH" = (
@@ -17233,6 +17279,9 @@
 	opacity = 0
 	},
 /obj/effect/paint/purplegray,
+/obj/map_helper/electrochromatic_linker{
+	id = "rd-office"
+	},
 /turf/simulated/floor/plating,
 /area/crew_quarters/heads/hor)
 "kPS" = (
@@ -20930,6 +20979,9 @@
 "mQt" = (
 /obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
 /obj/effect/paint/babyblue,
+/obj/map_helper/electrochromatic_linker{
+	id = "medbay-outer"
+	},
 /turf/simulated/floor/plating,
 /area/medical/reception)
 "mRj" = (
@@ -22423,7 +22475,7 @@
 	},
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /obj/machinery/button/windowtint{
-	id = "seclocker";
+	id = "sec-locker";
 	pixel_x = 26;
 	pixel_y = 4;
 	req_access = list(2)
@@ -23656,6 +23708,9 @@
 "oFb" = (
 /obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
 /obj/effect/paint/babyblue,
+/obj/map_helper/electrochromatic_linker{
+	id = "resleeving-tint"
+	},
 /turf/simulated/floor/plating,
 /area/medical/resleeving)
 "oFt" = (
@@ -24686,6 +24741,14 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacetwo)
+"phz" = (
+/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
+/obj/effect/paint/babyblue,
+/obj/map_helper/electrochromatic_linker{
+	id = "medbay-outer"
+	},
+/turf/simulated/floor/plating,
+/area/medical/resleeving)
 "pic" = (
 /obj/effect/floor_decal/rust,
 /obj/structure/catwalk,
@@ -24699,6 +24762,23 @@
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/maintenance/asmaint2)
+"piB" = (
+/obj/machinery/door/blast/shutters{
+	density = 0;
+	dir = 2;
+	icon_state = "shutter0";
+	id = "warden";
+	layer = 3.1;
+	name = "Warden's Office Shutters";
+	opacity = 0
+	},
+/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
+/obj/effect/paint/darkred,
+/obj/map_helper/electrochromatic_linker{
+	id = "hos-office"
+	},
+/turf/simulated/floor/plating,
+/area/security/warden)
 "pjd" = (
 /obj/item/radio/intercom/department/security{
 	dir = 8;
@@ -25924,6 +26004,9 @@
 	},
 /obj/structure/cable/green{
 	icon_state = "2-8"
+	},
+/obj/map_helper/electrochromatic_linker{
+	id = "Interr"
 	},
 /turf/simulated/floor/plating,
 /area/security/interrogation)
@@ -27811,7 +27894,7 @@
 	req_access = list(2)
 	},
 /obj/machinery/button/windowtint{
-	id = "hos_office";
+	id = "hos-office";
 	pixel_x = -18;
 	pixel_y = -26;
 	req_access = list(58)
@@ -28610,6 +28693,9 @@
 	opacity = 0
 	},
 /obj/effect/paint/purplegray,
+/obj/map_helper/electrochromatic_linker{
+	id = "robotics-outer"
+	},
 /turf/simulated/floor/plating,
 /area/assembly/robotics)
 "rJG" = (
@@ -28826,6 +28912,9 @@
 	spawn_grille = 0
 	},
 /obj/effect/paint/babyblue,
+/obj/map_helper/electrochromatic_linker{
+	id = "operating-theatre-2"
+	},
 /turf/simulated/floor/plating,
 /area/medical/surgery)
 "rPk" = (
@@ -29503,6 +29592,9 @@
 	spawn_grille = 0
 	},
 /obj/effect/paint/babyblue,
+/obj/map_helper/electrochromatic_linker{
+	id = "operating-theatre-2"
+	},
 /turf/simulated/floor/plating,
 /area/medical/surgery2)
 "soJ" = (
@@ -32687,8 +32779,19 @@
 	opacity = 0
 	},
 /obj/effect/paint/darkred,
+/obj/map_helper/electrochromatic_linker{
+	id = "hos-office"
+	},
 /turf/simulated/floor/plating,
 /area/crew_quarters/heads/hos)
+"uEt" = (
+/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
+/obj/effect/paint/babyblue,
+/obj/map_helper/electrochromatic_linker{
+	id = "resleeving-tint"
+	},
+/turf/simulated/floor/plating,
+/area/medical/reception)
 "uEv" = (
 /obj/structure/bed/chair/office/dark{
 	dir = 4
@@ -34354,6 +34457,9 @@
 /area/rift/surfacebase/outside/outside2)
 "vxB" = (
 /obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
+/obj/map_helper/electrochromatic_linker{
+	id = "research-inner"
+	},
 /turf/simulated/floor/plating,
 /area/rnd/research)
 "vyj" = (
@@ -34391,6 +34497,23 @@
 /obj/item/handcuffs/fuzzy,
 /turf/simulated/floor/plating,
 /area/maintenance/dormitory)
+"vzm" = (
+/obj/machinery/door/blast/shutters{
+	density = 0;
+	dir = 2;
+	icon_state = "shutter0";
+	id = "warden";
+	layer = 3.1;
+	name = "Warden's Office Shutters";
+	opacity = 0
+	},
+/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
+/obj/effect/paint/darkred,
+/obj/map_helper/electrochromatic_linker{
+	id = "sec-locker"
+	},
+/turf/simulated/floor/plating,
+/area/security/warden)
 "vzn" = (
 /obj/effect/floor_decal/borderfloor/corner{
 	dir = 1
@@ -34665,6 +34788,9 @@
 	},
 /obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
 /obj/effect/paint/darkred,
+/obj/map_helper/electrochromatic_linker{
+	id = "warden-office"
+	},
 /turf/simulated/floor/plating,
 /area/security/warden)
 "vKo" = (
@@ -36156,6 +36282,14 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/crew_quarters/sleep/Dorm_6)
+"wQz" = (
+/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
+/obj/effect/paint/darkred,
+/obj/map_helper/electrochromatic_linker{
+	id = "warden-office"
+	},
+/turf/simulated/floor/plating,
+/area/security/security_lockerroom)
 "wQJ" = (
 /obj/effect/floor_decal/industrial/outline/red,
 /obj/structure/table/rack/shelf/steel,
@@ -36690,7 +36824,7 @@
 	pixel_y = -26
 	},
 /obj/machinery/button/windowtint/multitint{
-	id = "medbay_outer";
+	id = "medbay-outer";
 	pixel_x = 2;
 	pixel_y = -24
 	},
@@ -37853,7 +37987,7 @@
 	dir = 4
 	},
 /obj/machinery/button/windowtint/multitint{
-	id = "sec_processing_l";
+	id = "sec-processing-l";
 	pixel_x = -24;
 	pixel_y = 26;
 	req_access = list(1)
@@ -38150,6 +38284,9 @@
 	opacity = 0
 	},
 /obj/effect/paint/purplegray,
+/obj/map_helper/electrochromatic_linker{
+	id = "research-outer"
+	},
 /turf/simulated/floor/plating,
 /area/rnd/research)
 "xYb" = (
@@ -38318,7 +38455,7 @@
 /area/security/security_processing)
 "yem" = (
 /obj/machinery/button/windowtint{
-	id = "warden_office";
+	id = "warden-office";
 	pixel_x = -18;
 	pixel_y = 6;
 	req_access = list(3)
@@ -48972,8 +49109,8 @@ oFb
 kid
 kid
 kid
-oFb
-oFb
+inb
+inb
 kid
 oRV
 oRV
@@ -49940,7 +50077,7 @@ oUw
 dTk
 bor
 lto
-oFb
+phz
 epz
 tQp
 xkt
@@ -52854,7 +52991,7 @@ mGl
 aaA
 vwR
 vYO
-mQt
+uEt
 rYY
 jMc
 rRs
@@ -56335,7 +56472,7 @@ ryQ
 ryQ
 ryQ
 mWB
-eke
+wQz
 rNb
 rVb
 rNb
@@ -57500,7 +57637,7 @@ uKa
 bFQ
 oeO
 wsa
-vKj
+vzm
 tiu
 bhS
 kxd
@@ -57888,7 +58025,7 @@ rAw
 rdE
 kAI
 fxc
-vKj
+piB
 tiu
 bhS
 rrl
@@ -59052,7 +59189,7 @@ nzt
 woR
 bxf
 nyI
-uDC
+jmT
 tiu
 bhS
 nuH

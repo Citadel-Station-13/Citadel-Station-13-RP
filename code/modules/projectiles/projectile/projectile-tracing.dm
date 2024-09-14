@@ -20,8 +20,19 @@
 	var/only_opacity = FALSE
 	/// do we only need to reach their turf?
 	var/require_turf_only = FALSE
+	/// go through everything until hitting target
+	var/bypass_everything_until_target = FALSE
 	/// target turf, if we only require reaching their turf
 	var/turf/require_turf_cached
+
+	/// things that were hit
+	var/list/atom/scanned_atoms = list()
+
+/obj/projectile/trace/Destroy()
+	// you get until the end of the call stack to access the entities hit.
+	spawn(0)
+		scanned_atoms = null
+	return ..()
 
 /obj/projectile/trace/CanPassThrough(atom/blocker, turf/target, blocker_opinion)
 	if(only_opacity && !blocker.opacity)
@@ -33,10 +44,13 @@
 		could_hit_target = TRUE
 		if(del_on_success)
 			return PROJECTILE_IMPACT_DELETE
+	else if(bypass_everything_until_target)
+		impact_flags |= PROJECTILE_IMPACT_PASSTHROUGH
 	if(get_turf(target) == require_turf_cached)
 		could_hit_target = TRUE
 		if(del_on_success)
 			return PROJECTILE_IMPACT_DELETE
+	scanned_atoms += target
 	. = ..()
 	// tracers only count as 'can move across' if pre_impact() says we should phase/pierce.
 	if(. & PROJECTILE_IMPACT_FLAGS_SHOULD_GO_THROUGH)
@@ -61,8 +75,23 @@
 
 /**
  * always call this before firing.
+ *
+ * * this should be called when we're on turf
+ * * this'll set angle if auto_set_angle is set
+ *
+ * @return TRUE / FALSE; FALSE if we failed
  */
-/obj/projectile/trace/proc/prepare_trace(atom/target)
+/obj/projectile/trace/proc/prepare_trace(atom/target, auto_set_angle)
+	if(!z)
+		return FALSE
+	var/turf/target_turf = get_turf(target)
+	if(!target_turf)
+		return FALSE
+
 	src.original_target = target
+	if(auto_set_angle)
+		src.set_angle(arctan(target_turf.y - loc.y, target_turf.x - loc.x))
 	if(require_turf_only)
 		src.require_turf_cached = get_turf(target)
+
+	return TRUE

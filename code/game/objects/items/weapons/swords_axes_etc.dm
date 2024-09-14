@@ -110,15 +110,15 @@
 				var/mob/living/L = user
 				L.take_random_targeted_damage(brute = 2*damage_force)
 			return
-		var/old_damtype = damtype
+		var/old_damage_type = damage_type
 		var/old_attack_verb = attack_verb
 		var/old_force = damage_force
 		if(user.a_intent != INTENT_HARM)
-			damtype = DAMAGE_TYPE_HALLOSS
+			damage_type = DAMAGE_TYPE_HALLOSS
 			attack_verb = list("suppressed")
 			damage_force = on_pain_force
 		. = ..()
-		damtype = old_damtype
+		damage_type = old_damage_type
 		attack_verb = old_attack_verb
 		damage_force = old_force
 	else
@@ -147,8 +147,7 @@
 			)
 	item_state = "armblade"
 	damage_force = 15 // same damage_force as a drill
-	sharp = TRUE
-	edge = TRUE
+	damage_mode = DAMAGE_MODE_SHARP | DAMAGE_MODE_EDGE
 	var/SA_bonus_damage = 35 // 50 total against animals and aberrations.
 	var/SA_vulnerability = MOB_CLASS_ANIMAL | MOB_CLASS_ABERRATION
 
@@ -173,8 +172,7 @@
 	damage_force = 5 // HAVING A STICK JAMMED INTO YOU IS LIKELY BAD FOR YOUR HEALTH // well to be fair most of the damage comes from the embed not the stab
 	w_class = WEIGHT_CLASS_SMALL
 	materials_base = list(MAT_STEEL = 2500)
-	sharp = TRUE
-	edge = TRUE
+	damage_mode = DAMAGE_MODE_EDGE | DAMAGE_MODE_SHARP
 	icon_state = "embed_spike"
 	item_icons = list(
 			SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand_material.dmi',
@@ -221,7 +219,7 @@
 	desc = "A training sword made of wood and shaped like a katana."
 	icon_state = "bokken"
 	slot_flags = SLOT_BELT | SLOT_BACK
-	damtype = DAMAGE_TYPE_HALLOSS
+	damage_type = DAMAGE_TYPE_HALLOSS
 	damage_force = 5
 	throw_force = 5
 	attack_verb = list("whacked", "smacked", "struck")
@@ -312,7 +310,6 @@
 	damage_force = 15
 	damage_tier = MELEE_TIER_MEDIUM
 	slot_flags = SLOT_BACK
-	sharp = 1
 	attack_sound = "swing_hit"
 	attack_verb = list("smashed", "slammed", "whacked", "thwacked")
 	icon_state = "bostaff0"
@@ -351,7 +348,7 @@
 	desc = "A heavy wooden club reinforced with metal studs. Ancient Terran Oni were often depicted carrying this weapon."
 	icon_state = "kanabo"
 	slot_flags = SLOT_BACK
-	damtype = DAMAGE_TYPE_BRUTE
+	damage_type = DAMAGE_TYPE_BRUTE
 	damage_force = 15
 	throw_force = 5
 	attack_verb = list("battered", "hammered", "struck")

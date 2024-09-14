@@ -21,9 +21,7 @@
 */
 	attack_sound = 'sound/weapons/bladeslice.ogg'
 	attack_verb = list("smashed", "crushed", "cleaved", "chopped", "pulped")
-	sharp = TRUE
-	edge = TRUE
-	// sharpness = SHARP_EDGED
+	damage_mode = DAMAGE_MODE_SHARP | DAMAGE_MODE_EDGE
 	item_action_name = "Toggle Light"
 	light_wedge = LIGHT_WIDE
 	// actions_types = list(/datum/action/item_action/toggle_light)

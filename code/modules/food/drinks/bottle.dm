@@ -189,8 +189,7 @@
 	item_state = "beer"
 	atom_flags = NOCONDUCT
 	attack_verb = list("stabbed", "slashed", "attacked")
-	sharp = 1
-	edge = 0
+	damage_mode = DAMAGE_MODE_SHARP
 	var/icon/broken_outline = icon('icons/obj/drinks.dmi', "broken")
 
 /obj/item/reagent_containers/food/drinks/bottle/redeemersbrew

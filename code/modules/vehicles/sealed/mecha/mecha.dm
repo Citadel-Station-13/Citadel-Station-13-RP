@@ -144,6 +144,9 @@
 	var/max_equip = 2
 	var/datum/events/events
 
+	/// outgoing melee damage (legacy var)
+	var/damtype
+
 //mechaequipt2 stuffs
 	var/list/hull_equipment = new
 	var/list/weapon_equipment = new
@@ -946,10 +949,10 @@
 	if(!pr_internal_damage) return
 
 	internal_damage |= int_dam_flag
-	pr_internal_damage.start()
+	spawn(-1)
+		pr_internal_damage.start()
 	log_append_to_last("Internal damage of type [int_dam_flag].",1)
 	occupant_legacy << sound('sound/mecha/internaldmgalarm.ogg',volume=50) //Better sounding.
-	return
 
 /obj/vehicle/sealed/mecha/proc/clearInternalDamage(int_dam_flag)
 	internal_damage &= ~int_dam_flag
@@ -1146,15 +1149,8 @@
 			src.take_damage_legacy(pass_damage)	//The take_damage_legacy() proc handles armor values
 			if(pass_damage > internal_damage_minimum)	//Only decently painful attacks trigger a chance of mech damage.
 				src.check_for_internal_damage(list(MECHA_INT_TEMP_CONTROL,MECHA_INT_TANK_BREACH,MECHA_INT_CONTROL_LOST))
-	return
-
 
 /obj/vehicle/sealed/mecha/on_bullet_act(obj/projectile/proj, impact_flags, list/bullet_act_args)
-	if(istype(proj, /obj/projectile/test))
-		var/obj/projectile/test/Test = proj
-		Test.hit |= occupant_legacy // Register a hit on the occupant, for things like turrets, or in simple-mob cases stopping friendly fire in firing line mode.
-		return ..()
-
 	src.log_message("Hit by projectile. Type: [proj.name]([proj.damage_flag]).",1)
 	impact_flags |= call((proc_res["dynbulletdamage"]||src), "dynbulletdamage")(proj) //calls equipment
 	impact_flags |= PROJECTILE_IMPACT_SKIP_STANDARD_DAMAGE
@@ -1351,7 +1347,7 @@
 		pass_damage = (pass_damage*pass_damage_reduc_mod)	//Apply the reduction of damage from not having enough armor penetration. This is not regular armor values at play.
 		for(var/obj/item/mecha_parts/mecha_equipment/ME in equipment)
 			pass_damage = ME.handle_projectile_contact(W, user, pass_damage)
-		src.take_damage_legacy(pass_damage,W.damtype)	//The take_damage_legacy() proc handles armor values
+		src.take_damage_legacy(pass_damage, W.damage_type)	//The take_damage_legacy() proc handles armor values
 		if(pass_damage > internal_damage_minimum)	//Only decently painful attacks trigger a chance of mech damage.
 			src.check_for_internal_damage(list(MECHA_INT_TEMP_CONTROL,MECHA_INT_TANK_BREACH,MECHA_INT_CONTROL_LOST))
 	return
