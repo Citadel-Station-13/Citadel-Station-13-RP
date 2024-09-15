@@ -1,7 +1,7 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
-//? damage types 
+//? damage types
 
 //* direct damage types; maps to most systems in the game *//
 
@@ -42,6 +42,8 @@
 /// pulse lasers, etc, basically blows a crater
 #define DAMAGE_MODE_ABLATING (1<<2)
 /// specifically highly-piercing weapons like bullets, even worse than sharp.
+///
+/// * for pierce-ness checks, 'sharp withot edge' is fine. having this flag is pretty much second tier of piercing.
 #define DAMAGE_MODE_PIERCE (1<<3)
 /// messy, shredded wounds instead of a clean cut / pierce. strong.
 #define DAMAGE_MODE_SHRED (1<<4)
