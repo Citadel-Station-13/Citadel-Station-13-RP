@@ -4,7 +4,7 @@
 	icon = 'icons/obj/xenoarchaeology.dmi'
 	icon_state = "sliver1"
 	w_class = WEIGHT_CLASS_TINY
-	sharp = 1
+	damage_mode = DAMAGE_MODE_SHARP
 	var/datum/geosample/geological_data
 
 /obj/item/rocksliver/Initialize(mapload)

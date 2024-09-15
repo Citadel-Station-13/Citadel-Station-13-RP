@@ -41,7 +41,7 @@
 	agony = 20
 	pellets = 6			//number of pellets
 	embed_chance = 0
-	sharp = 0
+	damage_mode = NONE
 	damage_flag = ARMOR_MELEE
 
 /obj/item/ammo_casing/microbattery/combat/ion
@@ -61,7 +61,7 @@
 	nodamage = 1
 	agony = 5
 	embed_chance = 0
-	sharp = 0
+	damage_mode = NONE
 	damage_flag = ARMOR_MELEE
 
 /obj/projectile/bullet/stripper/on_impact(atom/target, impact_flags, def_zone, efficiency)

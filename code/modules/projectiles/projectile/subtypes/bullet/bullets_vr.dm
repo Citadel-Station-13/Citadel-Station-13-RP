@@ -2,7 +2,6 @@
 	damage_force = 10
 	agony = 60
 	embed_chance = 0
-	sharp = 0
 	damage_flag = ARMOR_MELEE
 
 /obj/projectile/energy/flash/strong

@@ -318,8 +318,7 @@
 	damage_force = 25
 	slot_flags = SLOT_BACK
 	origin_tech = list(TECH_COMBAT = 4, TECH_MATERIAL = 2, TECH_OCCULT = 1)
-	sharp = 1
-	edge = 1
+	damage_mode = DAMAGE_MODE_SHARP | DAMAGE_MODE_EDGE
 	holy = TRUE
 
 /obj/item/gun/ballistic/shotgun/underslung

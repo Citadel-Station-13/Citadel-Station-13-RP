@@ -309,7 +309,7 @@
 	icon_state = "lavastaff"
 	damage_force = 15
 	damage_type = DAMAGE_TYPE_BURN
-	sharp = TRUE
+	damage_mode = DAMAGE_MODE_SHARP | DAMAGE_MODE_EDGE
 	magic = TRUE
 
 /obj/projectile/magic/spellblade/on_impact(atom/target, impact_flags, def_zone, efficiency)

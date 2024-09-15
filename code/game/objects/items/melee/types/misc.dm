@@ -58,8 +58,7 @@
 	damage_force = 30
 	throw_force = 10
 	w_class = WEIGHT_CLASS_NORMAL
-	sharp = 1
-	edge = 1
+	damage_mode = DAMAGE_MODE_SHARP | DAMAGE_MODE_EDGE
 	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
 	attack_sound = 'sound/weapons/bladeslice.ogg'
 	can_speak = 1
@@ -152,8 +151,7 @@
 	damage_force = 30
 	throw_force = 10
 	w_class = WEIGHT_CLASS_NORMAL
-	sharp = 1
-	edge = 1
+	damage_mode = DAMAGE_MODE_SHARP | DAMAGE_MODE_EDGE
 	reach = 2
 	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
 	attack_sound = 'sound/items/bikehorn.ogg'
@@ -179,8 +177,7 @@
 	damage_force = 30
 	throw_force = 10
 	w_class = WEIGHT_CLASS_NORMAL
-	sharp = 1
-	edge = 1
+	damage_mode = DAMAGE_MODE_SHARP | DAMAGE_MODE_EDGE
 	attack_verb = list("grasped", "torn", "cut", "pierced", "lashed")
 	attack_sound = 'sound/weapons/bladeslice.ogg'
 	armor_penetration = 10
@@ -224,8 +221,7 @@
 	w_class = WEIGHT_CLASS_NORMAL
 	slot_flags = SLOT_BELT
 	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut", "chopped")
-	sharp = 1
-	edge = 1
+	damage_mode = DAMAGE_MODE_SHARP | DAMAGE_MODE_EDGE
 
 /obj/item/melee/ashlander/elder
 	name = "elder bone sword"
@@ -307,7 +303,7 @@
 	damage_force = 8
 	throw_force = 5
 	w_class = WEIGHT_CLASS_SMALL
-	sharp = 1
+	damage_mode = DAMAGE_MODE_SHARP
 
 //I would like two-handed weapons that don't use our annoying material system, resulting in a "Steel Mjollnir". Drives me crazy.
 /obj/item/melee/twohanded
@@ -353,7 +349,6 @@
 	force_wielded = 75
 	force_unwielded = 50
 	w_class = WEIGHT_CLASS_HUGE
-	edge = 1
 	attack_verb = list("attacked", "smashed", "crushed", "wacked", "pounded")
 	armor_penetration = 50
 	weight = ITEM_WEIGHT_BASELINE
@@ -520,8 +515,7 @@
 			src.damage_type = DAMAGE_TYPE_BURN
 			src.set_weight_class(WEIGHT_CLASS_BULKY)
 			src.attack_sound = 'sound/items/welder.ogg'
-			src.sharp = 1
-			src.edge = 1
+			damage_mode = DAMAGE_MODE_SHARP | DAMAGE_MODE_EDGE
 			active = 1
 			update_icon()
 		else
@@ -537,10 +531,9 @@
 		playsound(loc, deac_sound, 50, 1)
 		src.damage_force = 3
 		src.damage_type = DAMAGE_TYPE_BRUTE
+		damage_mode = NONE
 		src.set_weight_class(initial(src.w_class))
 		src.active = 0
-		src.sharp = 0
-		src.edge = 0
 		src.attack_sound = initial(src.attack_sound)
 		update_icon()
 
