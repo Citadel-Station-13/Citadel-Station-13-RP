@@ -173,6 +173,11 @@
 	dir = 4
 	},
 /obj/structure/window/phoronreinforced,
+/obj/machinery/door/blast/regular{
+	dir = 4;
+	id = "SupermatterPort";
+	name = "Reactor Blast Door"
+	},
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
 "hR" = (
@@ -369,14 +374,6 @@
 	name = "Reactor Blast Doors";
 	pixel_x = -25;
 	pixel_y = -5;
-	req_access = list(10)
-	},
-/obj/machinery/button/remote/blast_door{
-	desc = "A remote control-switch for the engine control room blast doors.";
-	id = "EngineBlast";
-	name = "Engine Monitoring Room Blast Doors";
-	pixel_x = -25;
-	pixel_y = 5;
 	req_access = list(10)
 	},
 /obj/structure/cable/yellow{
@@ -889,6 +886,11 @@
 	},
 /obj/structure/window/phoronreinforced{
 	dir = 4
+	},
+/obj/machinery/door/blast/regular{
+	dir = 4;
+	id = "SupermatterPort";
+	name = "Reactor Blast Door"
 	},
 /turf/simulated/floor,
 /area/engineering/engine_room)
