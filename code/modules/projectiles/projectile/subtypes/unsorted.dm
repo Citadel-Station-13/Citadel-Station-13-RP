@@ -1,49 +1,8 @@
-/obj/projectile/ion
-	name = "ion bolt"
-	icon_state = "ion"
-	fire_sound = 'sound/weapons/Laser.ogg'
-	damage_force = 0
-	damage_type = DAMAGE_TYPE_BURN
-	nodamage = 1
-	damage_flag = ARMOR_ENERGY
-	light_range = 2
-	light_power = 0.5
-	light_color = "#55AAFF"
-
-	combustion = FALSE
-
-	var/sev1_range = 0
-	var/sev2_range = 1
-	var/sev3_range = 1
-	var/sev4_range = 1
-
-/obj/projectile/ion/on_impact(atom/target, impact_flags, def_zone, efficiency)
-	. = ..()
-	if(. & PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT)
-		return
-	empulse(target, sev1_range, sev2_range, sev3_range, sev4_range)
-	return . | PROJECTILE_IMPACT_DELETE
-
-/obj/projectile/ion/small
-	sev1_range = -1
-	sev2_range = 0
-	sev3_range = 0
-	sev4_range = 1
-
-/obj/projectile/ion/pistol
-	sev1_range = 0
-	sev2_range = 0
-	sev3_range = 0
-	sev4_range = 0
-
 /obj/projectile/bullet/gyro
 	name ="explosive bolt"
 	icon_state= "bolter"
 	damage_force = 50
 	damage_flag = ARMOR_BULLET
-	sharp = 1
-	edge = 1
-
 /obj/projectile/bullet/gyro/on_impact(atom/target, impact_flags, def_zone, efficiency)
 	. = ..()
 	if(. & PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT)

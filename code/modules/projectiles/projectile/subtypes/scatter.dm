@@ -2,7 +2,6 @@
 /*
  * Home of the purely submunition projectiles.
  */
-
 /obj/projectile/scatter
 	name = "scatter projectile"
 	icon = 'icons/obj/projectiles.dmi'

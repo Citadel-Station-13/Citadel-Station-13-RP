@@ -194,7 +194,7 @@
 		origin_tech = typelist(NAMEOF(src, origin_tech), origin_tech)
 	//Potential memory optimization: Making embed chance a getter if unset.
 	if(embed_chance == EMBED_CHANCE_UNSET)
-		if(sharp)
+		if(damage_mode & DAMAGE_MODE_SHARP)
 			embed_chance = max(5, round(damage_force/w_class))
 		else
 			embed_chance = max(5, round(damage_force/(w_class*3)))
@@ -786,7 +786,7 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
  * * strict - require us to be toggled to sharp mode if there's multiple modes of attacking.
  */
 /obj/item/proc/is_sharp(strict)
-	return sharp || (damage_mode & DAMAGE_MODE_SHARP)
+	return (damage_mode & DAMAGE_MODE_SHARP)
 
 /**
  * can be edged; even if not being used as such
@@ -795,7 +795,7 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
  * * strict - require us to be toggled to sharp mode if there's multiple modes of attacking.
  */
 /obj/item/proc/is_edge(strict)
-	return sharp || (damage_mode & DAMAGE_MODE_EDGE)
+	return (damage_mode & DAMAGE_MODE_EDGE)
 
 /**
  * can be piercing; even if not being used as such
