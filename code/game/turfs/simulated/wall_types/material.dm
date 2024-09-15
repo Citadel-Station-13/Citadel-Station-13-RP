@@ -19,7 +19,7 @@ BASIC_WALL_DEF(TypeName, GirderMaterial, OuterMaterial){\
 /turf/simulated/wall/##TypeName
 
 
-REINF_WALL_DEF(r_wall, /datum/material/steel, /datum/material/steel, /datum/material/steel)
+REINF_WALL_DEF(r_wall, /datum/material/steel, /datum/material/plasteel, /datum/material/plasteel)
 	rad_insulation = RAD_INSULATION_SUPER
 
 // Steel hull walls

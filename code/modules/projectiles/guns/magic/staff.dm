@@ -23,7 +23,7 @@
 	name = "staff of healing"
 	desc = "An artefact that spits bolts of restoring magic which can remove ailments of all kinds and even raise the dead."
 	fire_sound = 'sound/magic/staff_healing.ogg'
-	ammo_type = /obj/item/ammo_casing/magic/heal
+	projectile_type = /obj/projectile/magic/resurrection
 	icon_state = "staffofhealing"
 	item_state = "staffofhealing"
 
@@ -51,7 +51,7 @@
 	name = "staff of door creation"
 	desc = "An artefact that spits bolts of transformative magic that can create doors in walls."
 	fire_sound = 'sound/magic/staff_door.ogg'
-	ammo_type = /obj/item/ammo_casing/magic/door
+	projectile_type = /obj/projectile/magic/door
 	icon_state = "staffofdoor"
 	item_state = "staffofdoor"
 	max_charges = 10
@@ -62,7 +62,7 @@
 	name = "staff of the honkmother"
 	desc = "Honk."
 	fire_sound = 'sound/items/airhorn.ogg'
-	ammo_type = /obj/item/ammo_casing/magic/honk
+	projectile_type = /obj/projectile/bullet/honker/lethal/heavy
 	icon_state = "honker"
 	item_state = "honker"
 	max_charges = 4

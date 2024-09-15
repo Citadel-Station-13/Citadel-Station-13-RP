@@ -40,7 +40,7 @@
 			if(INTENT_HARM)
 				damage_flag = ARMOR_BULLET
 				damage_force *= 3
-				sharp = 1
+				damage_mode |= DAMAGE_MODE_SHARP
 				agony = 20
 			if(INTENT_GRAB)
 				damage_flag = ARMOR_MELEE

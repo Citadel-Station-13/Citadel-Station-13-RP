@@ -8,7 +8,8 @@
 /atom/proc/legacy_ex_act(severity, target)
 	set waitfor = FALSE
 
-/atom/proc/emp_act(var/severity)
+/atom/proc/emp_act(severity)
+	SHOULD_NOT_SLEEP(TRUE)
 	// todo: SHOULD_CALL_PARENT(TRUE)
 	SEND_SIGNAL(src, COMSIG_ATOM_EMP_ACT, severity)
 

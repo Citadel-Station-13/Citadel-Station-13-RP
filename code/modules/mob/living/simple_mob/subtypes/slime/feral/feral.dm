@@ -71,7 +71,7 @@
 	speed = 7.5 * WORLD_ICON_SIZE
 	icon_scale_x = 2 // It hits like a truck.
 	icon_scale_y = 2
-	sharp = TRUE
+	damage_mode = DAMAGE_MODE_SHARP | DAMAGE_MODE_PIERCE
 
 /obj/projectile/icicle/on_impact(atom/target, impact_flags, def_zone, efficiency)
 	. = ..()

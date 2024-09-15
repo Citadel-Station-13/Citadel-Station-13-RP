@@ -84,8 +84,7 @@
 	icon_state = "survivalknife"
 	item_state = "knife"
 	max_combined_volume = WEIGHT_VOLUME_TINY * 3
-	sharp = 1
-	edge = 1
+	damage_mode = DAMAGE_MODE_SHARP | DAMAGE_MODE_EDGE
 	damage_force = 15
 	throw_force = 15
 	attack_verb = list("stabbed", "chopped", "cut")
