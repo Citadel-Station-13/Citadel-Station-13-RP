@@ -46,3 +46,10 @@
 
 /// byond bug https://secure.byond.com/forum/?post=2072419
 #define BLOCK_BYOND_BUG_2072419
+
+//* Null Handling *//
+
+/// get variable if not null or
+///
+/// todo: the name isn't very specific on how it works for nulls
+#define VALUE_OR_DEFAULT(VAL, DEFAULT) (isnull(VAL)? (DEFAULT) : (VAL))
