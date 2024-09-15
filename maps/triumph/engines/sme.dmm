@@ -161,25 +161,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_room)
-"hJ" = (
-/obj/structure/window/phoronreinforced{
-	dir = 1
-	},
-/obj/structure/grille,
-/obj/structure/window/phoronreinforced{
-	dir = 8
-	},
-/obj/structure/window/phoronreinforced{
-	dir = 4
-	},
-/obj/structure/window/phoronreinforced,
-/obj/machinery/door/blast/regular{
-	dir = 4;
-	id = "SupermatterPort";
-	name = "Reactor Blast Door"
-	},
-/turf/simulated/floor/plating,
-/area/engineering/engine_room)
 "hR" = (
 /obj/machinery/atmospherics/pipe/manifold/visible/green{
 	dir = 1
@@ -1435,9 +1416,9 @@ Za
 WZ
 WZ
 WZ
-hJ
 dF
-hJ
+dF
+dF
 WZ
 WZ
 WZ
