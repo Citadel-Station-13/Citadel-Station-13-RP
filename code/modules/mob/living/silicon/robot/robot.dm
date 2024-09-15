@@ -533,11 +533,13 @@
 /mob/living/silicon/robot/restrained()
 	return 0
 
-/mob/living/silicon/robot/bullet_act(var/obj/projectile/Proj)
-	..(Proj)
-	if(prob(75) && Proj.damage > 0)
+/mob/living/silicon/robot/on_bullet_act(obj/projectile/proj, impact_flags, list/bullet_act_args)
+	. = ..()
+	if(. & PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT)
+		return
+	// todo: why is this in bullet act and not where we take damage maybe?
+	if(prob(75) && proj.damage_force > 0)
 		spark_system.start()
-	return 2
 
 /mob/living/silicon/robot/attackby(obj/item/W as obj, mob/user as mob)
 	if (istype(W, /obj/item/handcuffs)) // fuck i don't even know why isrobot() in handcuff code isn't working so this will have to do
@@ -830,7 +832,7 @@
 	module = null
 	updatename("Default")
 
-/mob/living/silicon/robot/attack_hand(mob/user, list/params)
+/mob/living/silicon/robot/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	. = ..()
 	if(. & CLICKCHAIN_DO_NOT_PROPAGATE)
 		return

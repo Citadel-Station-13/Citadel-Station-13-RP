@@ -12,6 +12,8 @@
 
 	var/crossed_dirs = NONE
 
+CREATE_STANDARD_TURFS(/turf/simulated/floor/outdoors/snow)
+
 /turf/simulated/floor/outdoors/snow/Entered(atom/movable/AM)
 	if(AM.hovering || AM.is_incorporeal()) // Flying things shouldn't make footprints.
 		return ..()
@@ -39,7 +41,7 @@
 	else
 		..()
 
-/turf/simulated/floor/outdoors/snow/attack_hand(mob/user, list/params)
+/turf/simulated/floor/outdoors/snow/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	visible_message("[user] starts scooping up some snow.", "You start scooping up some snow.")
 	if(do_after(user, 1 SECOND))
 		user.put_in_hands_or_drop(new /obj/item/stack/material/snow)
@@ -58,6 +60,8 @@
 	desc = "Looks slippery."
 	edge_blending_priority = 0
 
+CREATE_STANDARD_TURFS(/turf/simulated/floor/outdoors/ice)
+
 /turf/simulated/floor/outdoors/ice/Entered(var/mob/living/M)
 	. = ..()
 	if(istype(M, /mob/living))
@@ -72,6 +76,8 @@
 	desc = "Looks slippery."
 	slowdown = 4
 	edge_blending_priority = 0
+
+CREATE_STANDARD_TURFS(/turf/simulated/floor/outdoors/shelfice)
 
 // Ice that is safe to walk on.
 /turf/simulated/floor/outdoors/safeice

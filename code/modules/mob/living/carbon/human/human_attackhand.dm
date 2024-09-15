@@ -25,7 +25,7 @@
 			return u_attack
 	return null
 
-/mob/living/carbon/human/attack_hand(mob/user, list/params)
+/mob/living/carbon/human/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	var/datum/gender/TT = GLOB.gender_datums[user.get_visible_gender()]
 	var/mob/living/carbon/human/H = user
 	if(istype(H))
@@ -53,9 +53,11 @@
 				visible_message("<font color='red'><B>[H] reaches for [src], but misses!</B></font>")
 				return FALSE
 
-		if(H != src && check_shields(0, null, H, H.zone_sel.selecting, H.name))
-			H.do_attack_animation(src)
-			return FALSE
+		if(user.a_intent != INTENT_HARM)
+			var/shieldcall_results = atom_shieldcall_handle_touch(new /datum/event_args/actor/clickchain(user))
+			if(shieldcall_results & SHIELDCALL_FLAGS_BLOCK_ATTACK)
+				H.do_attack_animation(src)
+				return FALSE
 
 	if(istype(user,/mob/living/carbon))
 		var/mob/living/carbon/C = user
@@ -195,6 +197,11 @@
 			if(!attack)
 				return FALSE
 
+			var/shieldcall_results = atom_shieldcall_handle_unarmed_melee(attack, new /datum/event_args/actor/clickchain(user))
+			if(shieldcall_results & SHIELDCALL_FLAGS_BLOCK_ATTACK)
+				H.do_attack_animation(src)
+				return FALSE
+
 			if(attack.unarmed_override(H, src, hit_zone))
 				return FALSE
 
@@ -321,7 +328,7 @@
 	var/obj/item/organ/external/affecting = get_organ(ran_zone(dam_zone))
 	var/armor_block = run_armor_check(affecting, armor_type, armor_pen)
 	var/armor_soak = get_armor_soak(affecting, armor_type, armor_pen)
-	apply_damage(damage, BRUTE, affecting, armor_block, armor_soak, sharp = a_sharp, edge = a_edge)
+	apply_damage(damage, DAMAGE_TYPE_BRUTE, affecting, armor_block, armor_soak, sharp = a_sharp, edge = a_edge)
 	update_health()
 	return TRUE
 

@@ -48,7 +48,6 @@
 /obj/machinery/atmospherics/component/unary/engine{
 	dir = 8
 	},
-/turf/space,
 /turf/simulated/shuttle/plating/airless/carry,
 /area/submap/debrisfield_vr/tinyshuttle/engine)
 "ai" = (
@@ -1055,7 +1054,6 @@
 /turf/simulated/floor/reinforced/airless,
 /area/submap/debrisfield_vr/tinyshuttle/hangar)
 "cb" = (
-/turf/space,
 /turf/simulated/shuttle/plating/airless/carry,
 /area/submap/debrisfield_vr/tinyshuttle/hangar)
 "cc" = (
@@ -1093,7 +1091,6 @@
 /area/submap/debrisfield_vr/tinyshuttle/engine)
 "cf" = (
 /obj/item/material/shard/phoron,
-/turf/space,
 /turf/simulated/shuttle/plating/airless/carry,
 /area/submap/debrisfield_vr/tinyshuttle/hangar)
 "cg" = (
@@ -1117,7 +1114,6 @@
 "ci" = (
 /obj/structure/lattice,
 /mob/living/simple_mob/mechanical/combat_drone/lesser,
-/turf/space,
 /turf/simulated/shuttle/plating/airless/carry,
 /area/submap/debrisfield_vr/tinyshuttle/hangar)
 "cj" = (
@@ -1139,7 +1135,6 @@
 /area/submap/debrisfield_vr/tinyshuttle/crew)
 "cl" = (
 /obj/effect/decal/mecha_wreckage/baron,
-/turf/space,
 /turf/simulated/shuttle/plating/airless/carry,
 /area/submap/debrisfield_vr/tinyshuttle/hangar)
 "cm" = (

@@ -8,7 +8,7 @@
 	throw_speed = 3
 	throw_range = 7
 	throw_force = 10
-	damtype = BURN
+	damage_type = DAMAGE_TYPE_BURN
 	damage_force = 10
 	attack_sound = 'sound/items/welder2.ogg'
 

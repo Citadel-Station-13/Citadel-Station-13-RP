@@ -6,6 +6,9 @@
  *
  * each effect potentially has its own amount of variable arguments that
  * can be passed into apply_status_effect. they will be detailed per-file.
+ *
+ * todo: /datum/prototype/status_effect
+ * todo: /datum/prototype/status_effect/simple for normal ones.
  */
 /datum/status_effect
 	abstract_type = /datum/status_effect
@@ -196,9 +199,11 @@
 /**
  * remove a status effect
  *
+ * * will remove grouped effects entirely.
+ *
  * @params
  * * path - path to effect
- * * stacks - stacks to remove for grouped and stacking, default is all.
+ * * stacks - stacks to remove for stacking, default is all.
  *
  * @return stacks **left**. for single effects this is probably 0.
  */

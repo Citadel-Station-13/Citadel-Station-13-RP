@@ -159,6 +159,13 @@
  */
 //#define DO_NOT_DEFER_ASSETS
 
+// ## AI Holders
+
+/**
+ * Enables high-overhead debug assertions.
+ */
+#define CF_AI_HOLDER_DEBUG_ASSERTIONS
+
 // ## Atmospherics
 
 //? Gasmixtures

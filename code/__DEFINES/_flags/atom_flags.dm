@@ -65,7 +65,7 @@ DEFINE_BITFIELD(atom_flags, list(
 ///
 /// * INTEGRITY_INDESTRUCTIBLE does not imply this.
 #define MOVABLE_NO_LOST_IN_SPACE		(1<<3)
-/// We are currently about to be yanked by a Moved() triggering a Move()
+/// We are currently about to be yanked by a Moved(), Entered(), or Exited() triggering a Move()
 ///
 /// * used so things like projectile hitscans know to yield
 #define MOVABLE_IN_MOVED_YANK			(1<<4)
@@ -92,11 +92,13 @@ DEFINE_BITFIELD(movable_flags, list(
 #define ATOM_PASS_OVERHEAD_THROW	(1<<7)
 /// let buckled mobs pass always
 #define ATOM_PASS_BUCKLED			(1<<8)
+/// "please don't interact with us"
+#define ATOM_PASS_INCORPOREAL		(1<<9)
 
 /// all actual pass flags / maximum pass
 #define ATOM_PASS_ALL (ATOM_PASS_TABLE | ATOM_PASS_GLASS | ATOM_PASS_GRILLE | \
  ATOM_PASS_BLOB | ATOM_PASS_MOB | ATOM_PASS_THROWN | ATOM_PASS_CLICK | \
- ATOM_PASS_OVERHEAD_THROW | ATOM_PASS_BUCKLED)
+ ATOM_PASS_OVERHEAD_THROW | ATOM_PASS_BUCKLED | ATOM_PASS_INCORPOREAL)
 
 DEFINE_BITFIELD(pass_flags, list(
 	BITFIELD(ATOM_PASS_TABLE),
@@ -108,6 +110,7 @@ DEFINE_BITFIELD(pass_flags, list(
 	BITFIELD(ATOM_PASS_CLICK),
 	BITFIELD(ATOM_PASS_OVERHEAD_THROW),
 	BITFIELD(ATOM_PASS_BUCKLED),
+	BITFIELD(ATOM_PASS_INCORPOREAL),
 ))
 
 DEFINE_BITFIELD(pass_flags_self, list(
@@ -120,9 +123,10 @@ DEFINE_BITFIELD(pass_flags_self, list(
 	BITFIELD(ATOM_PASS_CLICK),
 	BITFIELD(ATOM_PASS_OVERHEAD_THROW),
 	BITFIELD(ATOM_PASS_BUCKLED),
+	BITFIELD(ATOM_PASS_INCORPOREAL),
 ))
 
-//? /atom/movable movement_type - only one should be on the atom at a time, but these are flags for quick checks.
+//? /atom/movable movement_type - only one primary type should be on the atom at a time, but these are flags for quick checks.
 /// Can not be stopped from moving from Cross(), CanPass(), or Uncross() failing. Still bumps everything it passes through, though.
 #define MOVEMENT_UNSTOPPABLE  (1<<0)
 /// Ground movement.

@@ -3155,7 +3155,6 @@
 /area/tether/surfacebase/servicebackroom)
 "bGd" = (
 /obj/structure/shuttle/engine/propulsion,
-/turf/simulated/floor/reinforced,
 /turf/simulated/shuttle/plating/carry,
 /area/shuttle/tether)
 "bGk" = (
@@ -37500,7 +37499,6 @@
 /turf/simulated/floor/tiled/dark,
 /area/tether/surfacebase/topairlock)
 "wix" = (
-/turf/space,
 /turf/simulated/wall/shull,
 /area/shuttle/tourbus/general)
 "wiD" = (

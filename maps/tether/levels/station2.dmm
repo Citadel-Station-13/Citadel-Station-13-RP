@@ -18010,7 +18010,6 @@
 /turf/simulated/floor/tiled,
 /area/hallway/station/port)
 "KF" = (
-/turf/space,
 /turf/simulated/floor/wood,
 /area/tether/station/visitorhallway/office)
 "KG" = (

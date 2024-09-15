@@ -20,7 +20,7 @@
 	pickup_sound = 'sound/items/pickup/screwdriver.ogg'
 	materials_base = list(MAT_STEEL = 75)
 	attack_verb = list("stabbed")
-	sharp  = 1
+	damage_mode = DAMAGE_MODE_SHARP
 	tool_speed = 1
 	var/random_color = TRUE
 
@@ -75,6 +75,14 @@
 	icon_state = "screwdriver_bone"
 	random_color = FALSE
 	tool_speed = 1.25
+
+/obj/item/tool/screwdriver/bronze
+	name = "bronze chisel"
+	desc = "A flat point chisel made of bronze, used to carve bone. It may make a good screwdriver in a pinch."
+	icon = 'icons/obj/lavaland.dmi'
+	icon_state = "screwdriver_bronze"
+	item_state = "screwdriver_brass"
+	random_color = FALSE
 
 /obj/item/tool/screwdriver/brass
 	name = "brass screwdriver"

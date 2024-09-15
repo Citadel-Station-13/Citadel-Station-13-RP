@@ -428,7 +428,7 @@
 	icon_state = "ermitter_gun"
 	item_state = "pulse"
 	projectile_type = /obj/projectile/beam/emitter
-	fire_delay = 10
+	fire_delay = 2 SECONDS
 	charge_cost = 900
 	cell_type = /obj/item/cell
 	accept_cell_type = /obj/item/cell

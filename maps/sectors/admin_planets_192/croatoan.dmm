@@ -324,15 +324,6 @@
 /obj/spawner/corpse/scientist,
 /turf/simulated/floor/reinforced,
 /area/admin_planet/croatoan/high_sec_science_entrance)
-"aZ" = (
-/obj/structure/railing{
-	dir = 8
-	},
-/obj/effect/floor_decal/borderfloor{
-	dir = 8
-	},
-/turf/simulated/floor/tiled/external,
-/area/admin_planet/croatoan/civilian/dorms)
 "ba" = (
 /obj/effect/floor_decal/corner_oldtile/red/diagonal,
 /obj/structure/table/wooden_reinforced,
@@ -1797,22 +1788,6 @@
 	},
 /turf/simulated/floor/reinforced,
 /area/admin_planet/croatoan/high_sec_science_containment_cells)
-"fA" = (
-/obj/structure/railing{
-	dir = 1
-	},
-/obj/structure/railing{
-	dir = 4
-	},
-/obj/machinery/light/flamp/noshade,
-/obj/effect/floor_decal/borderfloor{
-	dir = 1
-	},
-/obj/effect/floor_decal/borderfloor{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/external,
-/area/admin_planet/croatoan/civilian/dorms)
 "fB" = (
 /obj/effect/floormimic/plating/guaranteed,
 /turf/simulated/floor/old_tile,
@@ -2046,6 +2021,22 @@
 /obj/effect/floor_decal/corner/grey/diagonal,
 /turf/simulated/floor/tiled/white,
 /area/admin_planet/croatoan/civ_bar_public)
+"gC" = (
+/obj/structure/railing{
+	dir = 1
+	},
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/machinery/light/flamp/noshade,
+/obj/effect/floor_decal/borderfloor{
+	dir = 1
+	},
+/obj/effect/floor_decal/borderfloor{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/outdoors,
+/area/admin_planet/croatoan/civilian/dorms)
 "gE" = (
 /obj/machinery/door/airlock/highsecurity{
 	name = "High Security Science Wing Containment Access";
@@ -2558,6 +2549,21 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/admin_planet/croatoan/sci_entry_hallway)
+"ir" = (
+/obj/structure/railing{
+	dir = 1
+	},
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/effect/floor_decal/borderfloor{
+	dir = 1
+	},
+/obj/effect/floor_decal/borderfloor{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/outdoors,
+/area/admin_planet/croatoan/civilian/dorms)
 "is" = (
 /obj/structure/table/standard,
 /obj/item/storage/box/bodybags,
@@ -2618,12 +2624,6 @@
 	},
 /turf/simulated/floor/reinforced,
 /area/admin_planet/croatoan/sci_canister_storage)
-"iI" = (
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
-/turf/simulated/floor/tiled/external,
-/area/admin_planet/croatoan/civilian/dorms)
 "iJ" = (
 /obj/machinery/light{
 	dir = 4
@@ -4085,6 +4085,22 @@
 /obj/item/pen,
 /turf/simulated/floor/reinforced,
 /area/admin_planet/croatoan/high_sec_science_observation)
+"oj" = (
+/obj/structure/railing{
+	dir = 1
+	},
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/machinery/light/flamp/noshade,
+/obj/effect/floor_decal/borderfloor{
+	dir = 8
+	},
+/obj/effect/floor_decal/borderfloor{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/outdoors,
+/area/admin_planet/croatoan/civilian/dorms)
 "ol" = (
 /obj/machinery/light{
 	dir = 1
@@ -4227,6 +4243,12 @@
 	},
 /turf/simulated/floor/tiled/monowhite,
 /area/admin_planet/croatoan/med_chemistry)
+"oG" = (
+/obj/effect/floor_decal/industrial/halfstair{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/outdoors,
+/area/admin_planet/croatoan/civilian/dorms)
 "oH" = (
 /obj/effect/floor_decal/corner/lightorange/border{
 	dir = 6
@@ -4395,6 +4417,9 @@
 	},
 /turf/simulated/floor/tiled/steel_dirty/red,
 /area/admin_planet/croatoan/sec_equipment_storage)
+"pg" = (
+/turf/simulated/floor/tiled/outdoors,
+/area/admin_planet/croatoan/civilian/dorms)
 "ph" = (
 /obj/structure/atmospheric_retention_field,
 /obj/machinery/door/airlock/external{
@@ -5050,15 +5075,6 @@
 /obj/random/obstruction,
 /turf/simulated/floor/reinforced,
 /area/admin_planet/croatoan/high_sec_science_control_center)
-"rI" = (
-/obj/effect/floor_decal/industrial/halfstair{
-	dir = 1
-	},
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
-/turf/simulated/floor/tiled/external,
-/area/admin_planet/croatoan/civilian/dorms)
 "rJ" = (
 /turf/simulated/wall/r_wall/prepainted/security,
 /area/admin_planet/croatoan/sec_main_hallway)
@@ -5515,12 +5531,6 @@
 /obj/effect/floor_decal/corner_techfloor_grid/diagonal,
 /turf/simulated/floor/tiled/dark,
 /area/admin_planet/croatoan/med_storage)
-"ti" = (
-/obj/structure/table/borosilicate,
-/obj/item/ammo_magazine/a357/speedloader,
-/obj/item/ammo_magazine/a357/speedloader,
-/turf/simulated/floor/tiled/steel_dirty/red,
-/area/admin_planet/croatoan/sec_hos_office)
 "tn" = (
 /obj/structure/table/standard,
 /obj/effect/floor_decal/corner/grey/diagonal,
@@ -5852,6 +5862,15 @@
 /obj/item/electronic_assembly/large/default,
 /turf/simulated/floor/tiled/techmaint,
 /area/admin_planet/croatoan/sci_circuitry_lab)
+"uo" = (
+/obj/structure/railing{
+	dir = 1
+	},
+/obj/effect/floor_decal/borderfloor{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/outdoors,
+/area/admin_planet/croatoan/civilian/dorms)
 "uq" = (
 /obj/machinery/door/airlock/highsecurity{
 	name = "High Security Science Wing Containment Access";
@@ -6912,7 +6931,6 @@
 /area/admin_planet/croatoan/sec_holding_cells)
 "yj" = (
 /obj/structure/reagent_dispensers/virusfood,
-/turf/simulated/floor/reinforced,
 /turf/simulated/wall/durasteel,
 /area/admin_planet/croatoan/high_sec_science_virology_lab)
 "yl" = (
@@ -7464,6 +7482,15 @@
 /obj/machinery/appliance/cooker/oven,
 /turf/simulated/floor/tiled/white,
 /area/admin_planet/croatoan/civ_kitchen)
+"zZ" = (
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/effect/floor_decal/borderfloor{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/outdoors,
+/area/admin_planet/croatoan/civilian/dorms)
 "Aa" = (
 /obj/effect/floor_decal/corner/grey/diagonal,
 /obj/machinery/light{
@@ -7898,6 +7925,15 @@
 /obj/machinery/light/flamp/noshade,
 /turf/simulated/floor/outdoors/snow/classp/no_tree,
 /area/admin_planet/croatoan/mountain_plains)
+"BM" = (
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/effect/floor_decal/borderfloor{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/outdoors,
+/area/admin_planet/croatoan/civilian/dorms)
 "BN" = (
 /obj/machinery/seed_extractor,
 /obj/effect/floor_decal/corner/lime/border{
@@ -7937,6 +7973,12 @@
 /obj/effect/floor_decal/corner/paleblue/border,
 /turf/simulated/floor/tiled/white,
 /area/admin_planet/croatoan/med_treatment)
+"BY" = (
+/obj/structure/table/borosilicate,
+/obj/item/ammo_magazine/a357/speedloader,
+/obj/item/ammo_magazine/a357/speedloader,
+/turf/simulated/floor/tiled/steel_dirty/red,
+/area/admin_planet/croatoan/sec_hos_office)
 "Cc" = (
 /obj/structure/closet/secure_closet/hos2,
 /turf/simulated/floor/tiled/steel_dirty/red,
@@ -8088,6 +8130,15 @@
 /obj/structure/table/hardwoodtable,
 /turf/simulated/floor/tiled/dark,
 /area/admin_planet/croatoan/civ_bar_public)
+"CG" = (
+/obj/effect/floor_decal/industrial/halfstair{
+	dir = 1
+	},
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/tiled/outdoors,
+/area/admin_planet/croatoan/civilian/dorms)
 "CI" = (
 /obj/machinery/power/apc/alarms_hidden/north_mount,
 /obj/effect/floor_decal/corner/paleblue/border{
@@ -8515,21 +8566,6 @@
 /obj/random/obstruction,
 /turf/simulated/floor/tiled/steel,
 /area/admin_planet/croatoan/sci_entry_hallway)
-"Ex" = (
-/obj/structure/railing{
-	dir = 1
-	},
-/obj/structure/railing{
-	dir = 4
-	},
-/obj/effect/floor_decal/borderfloor{
-	dir = 1
-	},
-/obj/effect/floor_decal/borderfloor{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/external,
-/area/admin_planet/croatoan/civilian/dorms)
 "Ez" = (
 /obj/machinery/light{
 	dir = 1
@@ -8936,21 +8972,6 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/admin_planet/croatoan/sec_holding_cells)
-"FI" = (
-/obj/structure/railing{
-	dir = 1
-	},
-/obj/structure/railing{
-	dir = 8
-	},
-/obj/effect/floor_decal/borderfloor{
-	dir = 1
-	},
-/obj/effect/floor_decal/borderfloor{
-	dir = 8
-	},
-/turf/simulated/floor/tiled/external,
-/area/admin_planet/croatoan/civilian/dorms)
 "FJ" = (
 /obj/machinery/porta_turret{
 	emagged = 1
@@ -9254,6 +9275,21 @@
 	},
 /turf/simulated/floor/tiled/steel_dirty/red,
 /area/admin_planet/croatoan/sec_equipment_storage)
+"GQ" = (
+/obj/structure/railing{
+	dir = 1
+	},
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/effect/floor_decal/borderfloor{
+	dir = 1
+	},
+/obj/effect/floor_decal/borderfloor{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/outdoors,
+/area/admin_planet/croatoan/civilian/dorms)
 "GT" = (
 /obj/structure/closet/crate/corporate/aether,
 /obj/machinery/light,
@@ -9456,22 +9492,6 @@
 "HK" = (
 /turf/simulated/floor/concrete/tile/classm/outdoors,
 /area/admin_planet/croatoan/mountain_plains)
-"HM" = (
-/obj/structure/railing{
-	dir = 1
-	},
-/obj/structure/railing{
-	dir = 8
-	},
-/obj/machinery/light/flamp/noshade,
-/obj/effect/floor_decal/borderfloor{
-	dir = 8
-	},
-/obj/effect/floor_decal/borderfloor{
-	dir = 1
-	},
-/turf/simulated/floor/tiled/external,
-/area/admin_planet/croatoan/civilian/dorms)
 "HO" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -10287,12 +10307,6 @@
 	},
 /turf/simulated/floor/reinforced,
 /area/admin_planet/croatoan/high_sec_science_lower_checkpoint)
-"Kz" = (
-/obj/effect/floor_decal/industrial/halfstair{
-	dir = 1
-	},
-/turf/simulated/floor/tiled/external,
-/area/admin_planet/croatoan/civilian/dorms)
 "KB" = (
 /obj/effect/floor_decal/corner/red/border{
 	dir = 1
@@ -10302,12 +10316,6 @@
 	},
 /turf/simulated/floor/tiled/steel_dirty/red,
 /area/admin_planet/croatoan/sec_operations_center)
-"KC" = (
-/obj/machinery/holoposter{
-	pixel_y = -32
-	},
-/turf/simulated/floor/tiled/external,
-/area/admin_planet/croatoan/civilian/dorms)
 "KD" = (
 /obj/effect/floor_decal/corner/lightorange/border{
 	dir = 4
@@ -12257,6 +12265,12 @@
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/admin_planet/croatoan/sci_circuitry_lab)
+"QN" = (
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/tiled/outdoors,
+/area/admin_planet/croatoan/civilian/dorms)
 "QO" = (
 /obj/effect/floor_decal/corner/lightorange/border,
 /obj/machinery/chemical_dispenser/full,
@@ -12306,106 +12320,6 @@
 /obj/random/obstruction,
 /turf/simulated/floor/tiled/techfloor,
 /area/admin_planet/croatoan/med_checkpoint_lower)
-"QU" = (
-/obj/structure/closet/crate/secure/weapon,
-/obj/item/storage/box/stunshells/large,
-/obj/item/storage/box/stunshells/large,
-/obj/item/storage/box/shotgunshells/large,
-/obj/item/storage/box/shotgunshells/large,
-/obj/item/storage/box/shotgunshells/large,
-/obj/item/storage/box/shotgunshells/large,
-/obj/item/storage/box/shotgunammo/large,
-/obj/item/storage/box/shotgunammo/large,
-/obj/item/storage/box/shotgunammo/large,
-/obj/item/storage/box/shotgunammo/large,
-/obj/item/ammo_magazine/a5_7mm/five_seven/ap,
-/obj/item/ammo_magazine/a5_7mm/five_seven/ap,
-/obj/item/ammo_magazine/a5_7mm/five_seven/ap,
-/obj/item/ammo_magazine/a5_7mm/five_seven/ap,
-/obj/item/ammo_magazine/a5_7mm/five_seven/ap,
-/obj/item/ammo_magazine/a5_7mm/five_seven/ap,
-/obj/item/ammo_magazine/a5_7mm/five_seven/ap,
-/obj/item/ammo_magazine/a5_7mm/five_seven/ap,
-/obj/item/ammo_magazine/a9mm/top_mount{
-	pixel_x = 1;
-	pixel_y = -5
-	},
-/obj/item/ammo_magazine/a9mm/top_mount{
-	pixel_x = 1;
-	pixel_y = -5
-	},
-/obj/item/ammo_magazine/a9mm/top_mount{
-	pixel_x = 1;
-	pixel_y = -5
-	},
-/obj/item/ammo_magazine/a9mm/top_mount{
-	pixel_x = 1;
-	pixel_y = -5
-	},
-/obj/item/ammo_magazine/a9mm/top_mount{
-	pixel_x = 1;
-	pixel_y = -5
-	},
-/obj/item/ammo_magazine/a9mm/top_mount{
-	pixel_x = 1;
-	pixel_y = -5
-	},
-/obj/item/ammo_magazine/a9mm/top_mount{
-	pixel_x = 1;
-	pixel_y = -5
-	},
-/obj/item/ammo_magazine/a9mm/top_mount{
-	pixel_x = 1;
-	pixel_y = -5
-	},
-/obj/item/ammo_magazine/a7_62mm,
-/obj/item/ammo_magazine/a7_62mm,
-/obj/item/ammo_magazine/a7_62mm,
-/obj/item/ammo_magazine/a7_62mm,
-/obj/item/ammo_magazine/a7_62mm,
-/obj/item/ammo_magazine/a44,
-/obj/item/ammo_magazine/a44,
-/obj/item/ammo_magazine/a45,
-/obj/item/ammo_magazine/a45,
-/obj/item/ammo_magazine/a12g/drum,
-/obj/item/ammo_magazine/a12g/drum,
-/obj/item/ammo_magazine/a5_56mm,
-/obj/item/ammo_magazine/a5_56mm,
-/obj/item/ammo_magazine/a45/uzi,
-/obj/item/ammo_magazine/a45/uzi,
-/obj/item/ammo_magazine/a5_7mm/five_seven,
-/obj/item/ammo_magazine/a5_7mm/five_seven,
-/obj/item/ammo_magazine/a5_7mm/nt_les,
-/obj/item/ammo_magazine/a5_7mm/nt_les,
-/obj/item/ammo_magazine/a5_7mm/harpy_smg,
-/obj/item/ammo_magazine/a5_7mm/harpy_smg,
-/obj/item/ammo_magazine/m5mmcaseless,
-/obj/item/ammo_magazine/m5mmcaseless,
-/obj/item/ammo_magazine/a75,
-/obj/item/ammo_magazine/a75,
-/obj/item/ammo_magazine/a7_62mm,
-/obj/item/ammo_magazine/a7_62mm,
-/obj/item/ammo_magazine/a7_62mm/garand,
-/obj/item/ammo_magazine/a7_62mm/garand,
-/obj/item/ammo_magazine/a7_62mm,
-/obj/item/ammo_magazine/a7_62mm,
-/obj/item/ammo_magazine/a7_62mm/svd,
-/obj/item/ammo_magazine/a7_62mm/svd,
-/obj/item/ammo_magazine/a7_92mm,
-/obj/item/ammo_magazine/a7_92mm,
-/obj/item/ammo_magazine/m95,
-/obj/item/ammo_magazine/m95,
-/obj/item/ammo_magazine/a9mm,
-/obj/item/ammo_magazine/a9mm,
-/obj/item/ammo_magazine/a9mm/top_mount,
-/obj/item/ammo_magazine/a9mm/top_mount,
-/obj/item/ammo_magazine/a9mm/top_mount,
-/obj/item/ammo_magazine/a9mm/top_mount,
-/obj/machinery/light/small/emergency{
-	dir = 1
-	},
-/turf/simulated/floor/reinforced,
-/area/admin_planet/croatoan/sec_armory)
 "QV" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 4
@@ -13064,6 +12978,12 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/admin_planet/croatoan/sec_forensics_lab)
+"To" = (
+/obj/machinery/holoposter{
+	pixel_y = -32
+	},
+/turf/simulated/floor/tiled/outdoors,
+/area/admin_planet/croatoan/civilian/dorms)
 "Tp" = (
 /obj/item/paper{
 	name = "WORK ORDER: RUSTING PHORON PIPES";
@@ -13341,9 +13261,6 @@
 "Ur" = (
 /turf/simulated/wall/dungeon,
 /area/admin_planet/croatoan/mountain)
-"Us" = (
-/turf/simulated/floor/tiled/external,
-/area/admin_planet/croatoan/civilian/dorms)
 "Uu" = (
 /obj/structure/table/reinforced,
 /obj/item/defib_kit,
@@ -13803,15 +13720,6 @@
 	},
 /turf/simulated/floor/concrete/tile/classm,
 /area/admin_planet/croatoan/civ_bar_public)
-"VV" = (
-/obj/structure/railing{
-	dir = 4
-	},
-/obj/effect/floor_decal/borderfloor{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/external,
-/area/admin_planet/croatoan/civilian/dorms)
 "VW" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/item/paper{
@@ -14049,15 +13957,6 @@
 	},
 /turf/simulated/floor/reinforced,
 /area/admin_planet/croatoan/high_sec_science_checkpoint)
-"WR" = (
-/obj/structure/railing{
-	dir = 1
-	},
-/obj/effect/floor_decal/borderfloor{
-	dir = 1
-	},
-/turf/simulated/floor/tiled/external,
-/area/admin_planet/croatoan/civilian/dorms)
 "WS" = (
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 8
@@ -14226,7 +14125,6 @@
 /turf/simulated/floor/cult,
 /area/admin_planet/croatoan/extreme_security_containment_facilities)
 "Xt" = (
-/turf/simulated/floor/reinforced,
 /turf/simulated/wall/durasteel,
 /area/admin_planet/croatoan/high_sec_science_virology_lab)
 "Xv" = (
@@ -14415,6 +14313,106 @@
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/admin_planet/croatoan/sci_circuitry_lab)
+"Yl" = (
+/obj/structure/closet/crate/secure/weapon,
+/obj/item/storage/box/stunshells/large,
+/obj/item/storage/box/stunshells/large,
+/obj/item/storage/box/shotgunshells/large,
+/obj/item/storage/box/shotgunshells/large,
+/obj/item/storage/box/shotgunshells/large,
+/obj/item/storage/box/shotgunshells/large,
+/obj/item/storage/box/shotgunammo/large,
+/obj/item/storage/box/shotgunammo/large,
+/obj/item/storage/box/shotgunammo/large,
+/obj/item/storage/box/shotgunammo/large,
+/obj/item/ammo_magazine/a5_7mm/five_seven/ap,
+/obj/item/ammo_magazine/a5_7mm/five_seven/ap,
+/obj/item/ammo_magazine/a5_7mm/five_seven/ap,
+/obj/item/ammo_magazine/a5_7mm/five_seven/ap,
+/obj/item/ammo_magazine/a5_7mm/five_seven/ap,
+/obj/item/ammo_magazine/a5_7mm/five_seven/ap,
+/obj/item/ammo_magazine/a5_7mm/five_seven/ap,
+/obj/item/ammo_magazine/a5_7mm/five_seven/ap,
+/obj/item/ammo_magazine/a9mm/top_mount{
+	pixel_x = 1;
+	pixel_y = -5
+	},
+/obj/item/ammo_magazine/a9mm/top_mount{
+	pixel_x = 1;
+	pixel_y = -5
+	},
+/obj/item/ammo_magazine/a9mm/top_mount{
+	pixel_x = 1;
+	pixel_y = -5
+	},
+/obj/item/ammo_magazine/a9mm/top_mount{
+	pixel_x = 1;
+	pixel_y = -5
+	},
+/obj/item/ammo_magazine/a9mm/top_mount{
+	pixel_x = 1;
+	pixel_y = -5
+	},
+/obj/item/ammo_magazine/a9mm/top_mount{
+	pixel_x = 1;
+	pixel_y = -5
+	},
+/obj/item/ammo_magazine/a9mm/top_mount{
+	pixel_x = 1;
+	pixel_y = -5
+	},
+/obj/item/ammo_magazine/a9mm/top_mount{
+	pixel_x = 1;
+	pixel_y = -5
+	},
+/obj/item/ammo_magazine/a7_62mm,
+/obj/item/ammo_magazine/a7_62mm,
+/obj/item/ammo_magazine/a7_62mm,
+/obj/item/ammo_magazine/a7_62mm,
+/obj/item/ammo_magazine/a7_62mm,
+/obj/item/ammo_magazine/a44,
+/obj/item/ammo_magazine/a44,
+/obj/item/ammo_magazine/a45,
+/obj/item/ammo_magazine/a45,
+/obj/item/ammo_magazine/a12g/drum,
+/obj/item/ammo_magazine/a12g/drum,
+/obj/item/ammo_magazine/a5_56mm,
+/obj/item/ammo_magazine/a5_56mm,
+/obj/item/ammo_magazine/a45/uzi,
+/obj/item/ammo_magazine/a45/uzi,
+/obj/item/ammo_magazine/a5_7mm/five_seven,
+/obj/item/ammo_magazine/a5_7mm/five_seven,
+/obj/item/ammo_magazine/a5_7mm/nt_les,
+/obj/item/ammo_magazine/a5_7mm/nt_les,
+/obj/item/ammo_magazine/a5_7mm/harpy_smg,
+/obj/item/ammo_magazine/a5_7mm/harpy_smg,
+/obj/item/ammo_magazine/m5mmcaseless,
+/obj/item/ammo_magazine/m5mmcaseless,
+/obj/item/ammo_magazine/a75,
+/obj/item/ammo_magazine/a75,
+/obj/item/ammo_magazine/a7_62mm,
+/obj/item/ammo_magazine/a7_62mm,
+/obj/item/ammo_magazine/a7_62mm/garand,
+/obj/item/ammo_magazine/a7_62mm/garand,
+/obj/item/ammo_magazine/a7_62mm,
+/obj/item/ammo_magazine/a7_62mm,
+/obj/item/ammo_magazine/a7_62mm/svd,
+/obj/item/ammo_magazine/a7_62mm/svd,
+/obj/item/ammo_magazine/a7_92mm,
+/obj/item/ammo_magazine/a7_92mm,
+/obj/item/ammo_magazine/m95,
+/obj/item/ammo_magazine/m95,
+/obj/item/ammo_magazine/a9mm,
+/obj/item/ammo_magazine/a9mm,
+/obj/item/ammo_magazine/a9mm/top_mount,
+/obj/item/ammo_magazine/a9mm/top_mount,
+/obj/item/ammo_magazine/a9mm/top_mount,
+/obj/item/ammo_magazine/a9mm/top_mount,
+/obj/machinery/light/small/emergency{
+	dir = 1
+	},
+/turf/simulated/floor/reinforced,
+/area/admin_planet/croatoan/sec_armory)
 "Ym" = (
 /obj/effect/floor_decal/corner/red/border{
 	dir = 4
@@ -28731,9 +28729,9 @@ HK
 Rr
 gY
 Rr
-HM
-aZ
-aZ
+oj
+BM
+BM
 qp
 Cl
 Cl
@@ -28925,9 +28923,9 @@ HK
 Rr
 gY
 Rr
-WR
-Us
-Us
+uo
+pg
+pg
 qp
 RB
 FU
@@ -29119,9 +29117,9 @@ HK
 Rr
 Rr
 Rr
-Ex
-Us
-Us
+GQ
+pg
+pg
 qp
 FU
 Op
@@ -29313,9 +29311,9 @@ HK
 HK
 HK
 HK
-Kz
-Us
-Us
+oG
+pg
+pg
 st
 Ze
 hF
@@ -29507,9 +29505,9 @@ HK
 HK
 HK
 HK
-Kz
-Us
-KC
+oG
+pg
+To
 qp
 tN
 hF
@@ -29701,9 +29699,9 @@ yg
 yg
 yg
 yg
-rI
-iI
-iI
+CG
+QN
+QN
 Zm
 JE
 aQ
@@ -29895,9 +29893,9 @@ HK
 gY
 gY
 gY
-FI
-Us
-Us
+ir
+pg
+pg
 qp
 eF
 FU
@@ -30089,9 +30087,9 @@ HK
 gY
 Rr
 gY
-WR
-Us
-Us
+uo
+pg
+pg
 YN
 eF
 FU
@@ -30283,9 +30281,9 @@ HK
 gY
 gY
 Rr
-fA
-VV
-VV
+gC
+zZ
+zZ
 qp
 eF
 FU
@@ -43849,7 +43847,7 @@ Ur
 Rt
 Rt
 Rt
-QU
+Yl
 yu
 MM
 MM
@@ -45031,7 +45029,7 @@ wN
 pS
 Or
 pS
-ti
+BY
 NI
 pS
 pc

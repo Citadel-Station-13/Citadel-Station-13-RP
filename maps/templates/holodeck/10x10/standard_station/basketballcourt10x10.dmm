@@ -1,0 +1,270 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/turf/simulated/floor/holofloor/tiled,
+/area/holodeck/source_basketball)
+"b" = (
+/obj/effect/floor_decal/corner/green{
+	dir = 5
+	},
+/turf/simulated/floor/holofloor/tiled,
+/area/holodeck/source_basketball)
+"g" = (
+/obj/effect/floor_decal/corner/green/full{
+	dir = 1
+	},
+/turf/simulated/floor/holofloor/tiled,
+/area/holodeck/source_basketball)
+"k" = (
+/obj/effect/floor_decal/corner/red/full,
+/turf/simulated/floor/holofloor/tiled,
+/area/holodeck/source_basketball)
+"q" = (
+/obj/machinery/door/window/holowindoor{
+	base_state = "right";
+	dir = 4;
+	icon_state = "right";
+	name = "Green Team"
+	},
+/turf/simulated/floor/holofloor/tiled/dark,
+/area/holodeck/source_basketball)
+"r" = (
+/obj/effect/floor_decal/corner/green{
+	dir = 6
+	},
+/turf/simulated/floor/holofloor/tiled,
+/area/holodeck/source_basketball)
+"s" = (
+/obj/structure/holostool,
+/obj/structure/window/reinforced/holowindow{
+	dir = 4
+	},
+/turf/simulated/floor/holofloor/tiled,
+/area/holodeck/source_basketball)
+"t" = (
+/obj/effect/floor_decal/corner/red/full{
+	dir = 1
+	},
+/turf/simulated/floor/holofloor/tiled,
+/area/holodeck/source_basketball)
+"v" = (
+/obj/effect/floor_decal/corner/red{
+	dir = 9
+	},
+/turf/simulated/floor/holofloor/tiled,
+/area/holodeck/source_basketball)
+"w" = (
+/obj/effect/floor_decal/corner/red{
+	dir = 5
+	},
+/turf/simulated/floor/holofloor/tiled,
+/area/holodeck/source_basketball)
+"y" = (
+/obj/structure/holostool,
+/turf/simulated/floor/holofloor/tiled,
+/area/holodeck/source_basketball)
+"A" = (
+/obj/effect/floor_decal/corner/red{
+	dir = 10
+	},
+/turf/simulated/floor/holofloor/tiled,
+/area/holodeck/source_basketball)
+"C" = (
+/obj/item/beach_ball/holoball,
+/obj/effect/floor_decal/corner/red{
+	dir = 10
+	},
+/turf/simulated/floor/holofloor/tiled,
+/area/holodeck/source_basketball)
+"F" = (
+/obj/effect/floor_decal/corner/red/full{
+	dir = 8
+	},
+/turf/simulated/floor/holofloor/tiled,
+/area/holodeck/source_basketball)
+"G" = (
+/obj/effect/floor_decal/corner/green/full,
+/turf/simulated/floor/holofloor/tiled,
+/area/holodeck/source_basketball)
+"I" = (
+/obj/effect/floor_decal/corner/red{
+	dir = 6
+	},
+/turf/simulated/floor/holofloor/tiled,
+/area/holodeck/source_basketball)
+"K" = (
+/obj/structure/holohoop,
+/obj/effect/floor_decal/corner/red{
+	dir = 5
+	},
+/turf/simulated/floor/holofloor/tiled,
+/area/holodeck/source_basketball)
+"L" = (
+/obj/effect/floor_decal/corner/green/full{
+	dir = 4
+	},
+/turf/simulated/floor/holofloor/tiled,
+/area/holodeck/source_basketball)
+"M" = (
+/obj/machinery/door/window/holowindoor{
+	dir = 4;
+	name = "Red Team"
+	},
+/turf/simulated/floor/holofloor/tiled/dark,
+/area/holodeck/source_basketball)
+"P" = (
+/obj/effect/floor_decal/corner/green{
+	dir = 9
+	},
+/turf/simulated/floor/holofloor/tiled,
+/area/holodeck/source_basketball)
+"S" = (
+/obj/effect/floor_decal/corner/green{
+	dir = 10
+	},
+/turf/simulated/floor/holofloor/tiled,
+/area/holodeck/source_basketball)
+"U" = (
+/obj/structure/holohoop{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/green{
+	dir = 10
+	},
+/turf/simulated/floor/holofloor/tiled,
+/area/holodeck/source_basketball)
+"V" = (
+/obj/effect/floor_decal/corner/green/full{
+	dir = 8
+	},
+/turf/simulated/floor/holofloor/tiled,
+/area/holodeck/source_basketball)
+"Y" = (
+/obj/effect/floor_decal/corner/red/full{
+	dir = 4
+	},
+/turf/simulated/floor/holofloor/tiled,
+/area/holodeck/source_basketball)
+"Z" = (
+/turf/simulated/floor/holofloor/tiled/dark,
+/area/holodeck/source_basketball)
+
+(1,1,1) = {"
+Z
+Z
+Z
+Z
+Z
+Z
+Z
+Z
+Z
+Z
+"}
+(2,1,1) = {"
+y
+y
+Z
+y
+y
+y
+y
+Z
+y
+y
+"}
+(3,1,1) = {"
+s
+s
+M
+s
+s
+s
+s
+q
+s
+s
+"}
+(4,1,1) = {"
+F
+v
+v
+v
+k
+V
+P
+P
+P
+G
+"}
+(5,1,1) = {"
+w
+a
+a
+a
+A
+b
+a
+a
+a
+S
+"}
+(6,1,1) = {"
+F
+v
+w
+a
+A
+b
+a
+S
+P
+G
+"}
+(7,1,1) = {"
+K
+a
+w
+a
+C
+b
+a
+S
+a
+U
+"}
+(8,1,1) = {"
+t
+I
+w
+a
+A
+b
+a
+S
+r
+L
+"}
+(9,1,1) = {"
+w
+a
+a
+a
+A
+b
+a
+a
+a
+S
+"}
+(10,1,1) = {"
+t
+I
+I
+I
+Y
+g
+r
+r
+r
+L
+"}

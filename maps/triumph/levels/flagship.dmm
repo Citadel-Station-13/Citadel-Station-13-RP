@@ -14,6 +14,15 @@
 	icon_state = "dark"
 	},
 /area/centcom/security)
+"ag" = (
+/obj/structure/bed/chair/shuttle{
+	dir = 1
+	},
+/obj/structure/closet/walllocker/emergsuit_wall{
+	pixel_y = -26
+	},
+/turf/simulated/shuttle/floor/black,
+/area/shuttle/escape)
 "ah" = (
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/corner/blue/border,
@@ -583,12 +592,12 @@
 /turf/unsimulated/floor/steel,
 /area/centcom/security)
 "bV" = (
-/obj/machinery/vending/cigarette,
 /obj/machinery/light{
 	dir = 8;
 	use_power = 0;
 	old_wall = 1
 	},
+/obj/structure/closet/emcloset,
 /turf/simulated/shuttle/floor/darkred,
 /area/shuttle/escape)
 "bX" = (
@@ -1154,8 +1163,8 @@
 	},
 /area/centcom/medical)
 "dx" = (
-/obj/item/bedsheet/medical,
-/obj/structure/bed/padded,
+/obj/structure/medical_stand/anesthetic,
+/obj/structure/bed/roller,
 /turf/simulated/shuttle/floor,
 /area/shuttle/escape)
 "dy" = (
@@ -1390,7 +1399,7 @@
 /obj/structure/table/rack,
 /obj/item/clothing/under/color/red,
 /obj/item/clothing/shoes/brown,
-/obj/item/melee/energy/axe,
+/obj/item/melee/transforming/energy/axe,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -1842,17 +1851,17 @@
 /area/centcom/specops)
 "fK" = (
 /obj/structure/table/rack,
-/obj/item/shield/energy,
-/obj/item/shield/energy,
-/obj/item/shield/energy,
-/obj/item/shield/energy,
-/obj/item/shield/energy,
+/obj/item/shield/transforming/energy,
+/obj/item/shield/transforming/energy,
+/obj/item/shield/transforming/energy,
+/obj/item/shield/transforming/energy,
+/obj/item/shield/transforming/energy,
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/item/melee/energy/sword,
-/obj/item/melee/energy/sword,
-/obj/item/melee/energy/sword,
-/obj/item/melee/energy/sword,
-/obj/item/melee/energy/sword,
+/obj/item/melee/transforming/energy/sword,
+/obj/item/melee/transforming/energy/sword,
+/obj/item/melee/transforming/energy/sword,
+/obj/item/melee/transforming/energy/sword,
+/obj/item/melee/transforming/energy/sword,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/structure/window/reinforced{
 	dir = 1
@@ -1964,6 +1973,13 @@
 "ga" = (
 /turf/unsimulated/wall,
 /area/centcom/living)
+"gb" = (
+/obj/structure/handrail,
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/turf/simulated/shuttle/floor/darkred,
+/area/shuttle/escape)
 "gc" = (
 /obj/structure/table/reinforced,
 /obj/item/paper_bin{
@@ -2001,6 +2017,13 @@
 	},
 /turf/unsimulated/floor/wood,
 /area/centcom/restaurant)
+"gg" = (
+/obj/structure/handrail,
+/obj/structure/closet/walllocker/emergsuit_wall{
+	pixel_y = 32
+	},
+/turf/simulated/shuttle/floor/black,
+/area/shuttle/escape)
 "gh" = (
 /obj/effect/floor_decal/corner/grey/diagonal{
 	dir = 4
@@ -2274,6 +2297,15 @@
 	icon_state = "white"
 	},
 /area/centcom/medical)
+"gS" = (
+/obj/structure/handrail{
+	dir = 1
+	},
+/obj/machinery/status_display{
+	pixel_y = -32
+	},
+/turf/simulated/shuttle/floor/black,
+/area/shuttle/escape)
 "gW" = (
 /obj/structure/table/glass,
 /obj/item/storage/firstaid/regular,
@@ -2288,6 +2320,15 @@
 	icon_state = "white"
 	},
 /area/centcom/medical)
+"gX" = (
+/obj/random/firstaid,
+/obj/item/storage/firstaid/adv,
+/obj/item/storage/firstaid/bonemed,
+/obj/item/storage/firstaid/clotting,
+/obj/item/storage/firstaid/clotting,
+/obj/structure/table/reinforced,
+/turf/simulated/shuttle/floor,
+/area/shuttle/escape)
 "gY" = (
 /obj/structure/sign/nanotrasen,
 /turf/unsimulated/wall,
@@ -2645,11 +2686,19 @@
 	icon_state = "white"
 	},
 /area/centcom/control)
+"im" = (
+/obj/machinery/computer/communications{
+	dir = 4
+	},
+/obj/machinery/keycard_auth{
+	pixel_x = -24;
+	pixel_y = -24
+	},
+/turf/simulated/shuttle/floor/white,
+/area/shuttle/escape)
 "in" = (
-/obj/machinery/light{
-	dir = 4;
-	use_power = 0;
-	old_wall = 1
+/obj/structure/handrail{
+	dir = 8
 	},
 /turf/simulated/shuttle/floor/white,
 /area/shuttle/escape)
@@ -2700,6 +2749,19 @@
 	},
 /turf/unsimulated/floor/steel,
 /area/centcom/security)
+"iC" = (
+/obj/structure/fans/tiny,
+/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks{
+	id = "emergency_medical"
+	},
+/obj/machinery/door/blast/regular/open{
+	id = "emergency_shuttle_lockdown";
+	name = "Emergency Shuttle Blast Door"
+	},
+/turf/unsimulated/floor{
+	name = "plating"
+	},
+/area/shuttle/escape)
 "iE" = (
 /turf/unsimulated/floor/steel{
 	icon_state = "white"
@@ -3392,6 +3454,19 @@
 /obj/spawner/window/low_wall/borosillicate/full/firelocks,
 /turf/simulated/floor/plating,
 /area/shuttle/specops/engine)
+"kX" = (
+/obj/structure/handrail{
+	dir = 1
+	},
+/obj/machinery/door/window/brigdoor/southright{
+	dir = 8;
+	name = "holding cell"
+	},
+/obj/machinery/status_display{
+	pixel_y = -32
+	},
+/turf/simulated/shuttle/floor/darkred,
+/area/shuttle/escape)
 "kY" = (
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/borderfloor/corner2{
@@ -3455,6 +3530,13 @@
 	},
 /turf/unsimulated/floor/steel,
 /area/centcom/evac)
+"lo" = (
+/obj/structure/handrail,
+/obj/machinery/vending/wallmed1/public{
+	pixel_y = 32
+	},
+/turf/simulated/shuttle/floor/black,
+/area/shuttle/escape)
 "lp" = (
 /obj/machinery/computer/card{
 	dir = 4
@@ -3756,6 +3838,12 @@
 	icon_state = "carpet"
 	},
 /area/centcom/command)
+"mb" = (
+/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks{
+	id = "emergency_cockpit"
+	},
+/turf/simulated/floor,
+/area/shuttle/escape)
 "md" = (
 /obj/structure/window/reinforced{
 	dir = 1
@@ -3902,9 +3990,8 @@
 	},
 /area/centcom/security)
 "mA" = (
-/obj/machinery/optable,
-/obj/machinery/oxygen_pump/anesthetic{
-	pixel_y = 29
+/obj/machinery/sleep_console{
+	dir = 4
 	},
 /turf/simulated/shuttle/floor,
 /area/shuttle/escape)
@@ -3986,8 +4073,10 @@
 	},
 /area/centcom/specops)
 "mE" = (
-/obj/spawner/window/low_wall/reinforced/full,
 /obj/structure/fans/tiny,
+/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks{
+	id = "emergency_medical"
+	},
 /turf/unsimulated/floor{
 	name = "plating"
 	},
@@ -4005,6 +4094,15 @@
 /obj/map_helper/access_helper/airlock/station/command/vault,
 /turf/simulated/floor/reinforced,
 /area/centcom/command)
+"mG" = (
+/obj/structure/bed/chair/shuttle{
+	dir = 8
+	},
+/obj/machinery/status_display{
+	pixel_y = -32
+	},
+/turf/simulated/shuttle/floor/white,
+/area/shuttle/escape)
 "mH" = (
 /obj/effect/floor_decal/corner/grey/diagonal{
 	dir = 4
@@ -4101,6 +4199,18 @@
 	icon_state = "dark"
 	},
 /area/centcom/specops)
+"mU" = (
+/obj/item/defib_kit,
+/obj/structure/table/reinforced,
+/obj/item/storage/firstaid/surgery,
+/obj/item/reagent_containers/spray/cleaner{
+	desc = "Someone has crossed out the Space from Space Cleaner and written in Surgery. 'Do not remove under punishment of death!!!' is scrawled on the back.";
+	name = "Surgery Cleaner";
+	pixel_x = 2;
+	pixel_y = 2
+	},
+/turf/simulated/shuttle/floor,
+/area/shuttle/escape)
 "mV" = (
 /obj/structure/bed/chair/office/dark{
 	dir = 4
@@ -4345,17 +4455,17 @@
 /area/centcom/security)
 "nz" = (
 /obj/structure/table/rack,
-/obj/item/shield/energy,
-/obj/item/shield/energy,
-/obj/item/shield/energy,
-/obj/item/shield/energy,
-/obj/item/shield/energy,
+/obj/item/shield/transforming/energy,
+/obj/item/shield/transforming/energy,
+/obj/item/shield/transforming/energy,
+/obj/item/shield/transforming/energy,
+/obj/item/shield/transforming/energy,
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/item/melee/energy/sword,
-/obj/item/melee/energy/sword,
-/obj/item/melee/energy/sword,
-/obj/item/melee/energy/sword,
-/obj/item/melee/energy/sword,
+/obj/item/melee/transforming/energy/sword,
+/obj/item/melee/transforming/energy/sword,
+/obj/item/melee/transforming/energy/sword,
+/obj/item/melee/transforming/energy/sword,
+/obj/item/melee/transforming/energy/sword,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -4475,6 +4585,13 @@
 	icon_state = "white"
 	},
 /area/centcom/control)
+"nU" = (
+/obj/structure/bed/chair/shuttle,
+/obj/structure/closet/walllocker/emergsuit_wall{
+	pixel_y = 32
+	},
+/turf/simulated/shuttle/floor/darkred,
+/area/shuttle/escape)
 "nV" = (
 /obj/structure/table/rack,
 /obj/structure/window/reinforced,
@@ -4630,6 +4747,15 @@
 	icon_state = "white"
 	},
 /area/centcom/bathroom)
+"ov" = (
+/obj/structure/table/reinforced,
+/obj/item/radio{
+	pixel_x = 2;
+	pixel_y = 2
+	},
+/obj/item/radio,
+/turf/simulated/shuttle/floor/darkred,
+/area/shuttle/escape)
 "ox" = (
 /obj/structure/flora/ausbushes/ywflowers,
 /turf/simulated/floor/outdoors/grass/heavy/interior,
@@ -4646,6 +4772,13 @@
 	icon_state = "white"
 	},
 /area/centcom/medical)
+"oz" = (
+/obj/structure/bed/chair/shuttle,
+/obj/structure/closet/walllocker/emergsuit_wall{
+	pixel_y = 32
+	},
+/turf/simulated/shuttle/floor/black,
+/area/shuttle/escape)
 "oA" = (
 /obj/structure/table/standard,
 /obj/effect/floor_decal/borderfloor{
@@ -4703,7 +4836,11 @@
 /area/centcom/living)
 "oL" = (
 /obj/structure/fans/tiny,
-/obj/spawner/window/low_wall/reinforced/full,
+/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/machinery/door/blast/regular/open{
+	id = "emergency_shuttle_lockdown";
+	name = "Emergency Shuttle Blast Door"
+	},
 /turf/simulated/floor,
 /area/shuttle/escape)
 "oN" = (
@@ -5147,6 +5284,24 @@
 	icon_state = "dark"
 	},
 /area/centcom/specops)
+"qk" = (
+/obj/structure/closet/walllocker/autolok_wall{
+	pixel_y = 32
+	},
+/obj/machinery/light{
+	dir = 4;
+	use_power = 0
+	},
+/turf/simulated/shuttle/floor/white,
+/area/shuttle/escape)
+"qm" = (
+/obj/machinery/light{
+	dir = 4;
+	use_power = 0
+	},
+/obj/machinery/vending/fitness,
+/turf/simulated/shuttle/floor/darkred,
+/area/shuttle/escape)
 "qn" = (
 /obj/machinery/door/firedoor,
 /turf/unsimulated/floor/steel,
@@ -5263,6 +5418,13 @@
 	icon_state = "white"
 	},
 /area/centcom/medical)
+"qH" = (
+/obj/structure/handrail,
+/obj/machinery/status_display{
+	pixel_y = 32
+	},
+/turf/simulated/shuttle/floor,
+/area/shuttle/escape)
 "qI" = (
 /obj/structure/table/rack,
 /obj/item/hardsuit_module/chem_dispenser/combat,
@@ -6655,6 +6817,13 @@
 /obj/item/clothing/glasses/welding,
 /turf/unsimulated/floor/steel,
 /area/centcom/control)
+"uV" = (
+/obj/structure/closet/hydrant{
+	dir = 4;
+	pixel_x = -32
+	},
+/turf/simulated/shuttle/floor/white,
+/area/shuttle/escape)
 "uW" = (
 /obj/item/storage/belt/security/tactical,
 /obj/item/storage/belt/security/tactical,
@@ -6898,6 +7067,10 @@
 /obj/machinery/light/flamp/noshade,
 /turf/unsimulated/floor/steel,
 /area/centcom/evac)
+"vR" = (
+/obj/machinery/vending/mre,
+/turf/simulated/shuttle/floor/darkred,
+/area/shuttle/escape)
 "vS" = (
 /obj/structure/sign/greencross,
 /turf/unsimulated/wall,
@@ -7402,6 +7575,17 @@
 	},
 /turf/unsimulated/floor/steel,
 /area/centcom/control)
+"xj" = (
+/obj/structure/fans/tiny,
+/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks{
+	id = "emergency_security"
+	},
+/obj/machinery/door/blast/regular/open{
+	id = "emergency_shuttle_lockdown";
+	name = "Emergency Shuttle Blast Door"
+	},
+/turf/simulated/floor,
+/area/shuttle/escape)
 "xk" = (
 /obj/machinery/computer/crew{
 	dir = 4
@@ -7450,7 +7634,7 @@
 /obj/item/clothing/suit/armor/tdome/red,
 /obj/item/clothing/head/helmet/thunderdome,
 /obj/item/melee/baton/loaded,
-/obj/item/melee/energy/sword,
+/obj/item/melee/transforming/energy/sword,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -8089,7 +8273,7 @@
 /obj/structure/table/rack,
 /obj/item/clothing/under/color/green,
 /obj/item/clothing/shoes/brown,
-/obj/item/melee/energy/axe,
+/obj/item/melee/transforming/energy/axe,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -8421,9 +8605,11 @@
 /turf/unsimulated/floor/steel,
 /area/centcom/control)
 "AA" = (
-/obj/structure/table/steel,
-/obj/item/defib_kit,
-/turf/simulated/shuttle/floor,
+/obj/structure/fans/tiny,
+/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks{
+	id = "emergency_medical"
+	},
+/turf/simulated/floor,
 /area/shuttle/escape)
 "AB" = (
 /obj/structure/table/standard,
@@ -9233,6 +9419,14 @@
 	},
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/escape)
+"Dp" = (
+/obj/machinery/button/windowtint{
+	id = "emergency_medical";
+	pixel_x = 24;
+	pixel_y = -24
+	},
+/turf/simulated/shuttle/floor,
+/area/shuttle/escape)
 "Dq" = (
 /obj/machinery/telecomms/processor/preset_cent,
 /turf/unsimulated/floor{
@@ -9430,6 +9624,12 @@
 	},
 /turf/unsimulated/floor/steel,
 /area/centcom/evac)
+"Ef" = (
+/obj/structure/shuttle/engine/propulsion{
+	dir = 1
+	},
+/turf/simulated/shuttle/plating/airless/carry,
+/area/shuttle/escape)
 "Eg" = (
 /obj/structure/sign/securearea{
 	name = "\improper ARMORY";
@@ -9749,6 +9949,17 @@
 /obj/machinery/portable_atmospherics/powered/scrubber/huge/stationary/shuttle,
 /turf/unsimulated/floor/steel,
 /area/centcom/evac)
+"Fl" = (
+/obj/structure/fans/tiny,
+/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks{
+	id = "emergency_cockpit"
+	},
+/obj/machinery/door/blast/regular/open{
+	id = "emergency_shuttle_lockdown";
+	name = "Emergency Shuttle Blast Door"
+	},
+/turf/simulated/floor,
+/area/shuttle/escape)
 "Fm" = (
 /obj/structure/window/reinforced,
 /turf/unsimulated/floor/steel,
@@ -9975,9 +10186,13 @@
 /turf/unsimulated/floor/steel,
 /area/centcom/main_hall)
 "FX" = (
-/obj/structure/bed/chair/shuttle{
-	dir = 1
+/obj/machinery/button/remote/blast_door{
+	id = "emergency_shuttle_lockdown";
+	name = "Emergency Blast Doors";
+	pixel_x = -24;
+	pixel_y = -7
 	},
+/obj/machinery/pointdefense_control,
 /turf/simulated/shuttle/floor/white,
 /area/shuttle/escape)
 "FY" = (
@@ -10693,7 +10908,7 @@
 /obj/item/clothing/suit/armor/tdome/green,
 /obj/item/clothing/head/helmet/thunderdome,
 /obj/item/melee/baton/loaded,
-/obj/item/melee/energy/sword,
+/obj/item/melee/transforming/energy/sword,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -10838,6 +11053,12 @@
 	icon_state = "lino"
 	},
 /area/centcom/command)
+"ID" = (
+/obj/structure/closet/walllocker/emergsuit_wall{
+	pixel_y = 32
+	},
+/turf/simulated/shuttle/floor/black,
+/area/shuttle/escape)
 "IG" = (
 /obj/structure/table/reinforced,
 /obj/item/tool/crowbar,
@@ -11081,6 +11302,10 @@
 	icon_state = "white"
 	},
 /area/centcom/medical)
+"Jr" = (
+/obj/structure/shuttle/engine/propulsion,
+/turf/simulated/shuttle/plating/airless/carry,
+/area/shuttle/escape)
 "Js" = (
 /obj/machinery/r_n_d/protolathe,
 /turf/unsimulated/floor/steel,
@@ -12392,6 +12617,12 @@
 	icon_state = "white"
 	},
 /area/centcom/medical)
+"No" = (
+/obj/structure/closet/walllocker/emergsuit_wall{
+	pixel_y = -26
+	},
+/turf/simulated/shuttle/floor/black,
+/area/shuttle/escape)
 "Nq" = (
 /obj/structure/table/rack,
 /obj/structure/window/reinforced{
@@ -12783,13 +13014,11 @@
 /turf/simulated/shuttle/floor,
 /area/shuttle/escape)
 "Oz" = (
-/obj/machinery/vending/fitness,
-/obj/machinery/light{
-	dir = 8;
-	use_power = 0;
-	old_wall = 1
+/obj/structure/fans/tiny,
+/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks{
+	id = "emergency_security"
 	},
-/turf/simulated/shuttle/floor/darkred,
+/turf/simulated/floor,
 /area/shuttle/escape)
 "OA" = (
 /obj/machinery/tele_pad,
@@ -12885,13 +13114,10 @@
 	},
 /area/centcom/bathroom)
 "OZ" = (
-/obj/structure/table/steel,
-/obj/random/firstaid,
-/obj/item/storage/firstaid/adv,
-/obj/item/storage/firstaid/bonemed,
-/obj/item/storage/firstaid/clotting,
-/obj/item/storage/firstaid/clotting,
-/turf/simulated/shuttle/floor,
+/obj/structure/handrail{
+	dir = 1
+	},
+/turf/simulated/shuttle/floor/darkred,
 /area/shuttle/escape)
 "Pa" = (
 /obj/effect/floor_decal/industrial/warning/dust/corner,
@@ -12918,6 +13144,17 @@
 	},
 /turf/simulated/shuttle/wall/voidcraft,
 /area/shuttle/specops/engine)
+"Ph" = (
+/obj/structure/handrail{
+	dir = 1
+	},
+/obj/machinery/button/windowtint{
+	id = "emergency_security";
+	pixel_x = 8;
+	pixel_y = -24
+	},
+/turf/simulated/shuttle/floor/darkred,
+/area/shuttle/escape)
 "Pj" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 6
@@ -12946,11 +13183,10 @@
 /turf/simulated/floor/plating,
 /area/shuttle/specops/engine)
 "Pn" = (
-/obj/machinery/light{
-	dir = 4;
-	use_power = 0
+/obj/machinery/sleeper{
+	dir = 4
 	},
-/turf/simulated/shuttle/floor/white,
+/turf/simulated/shuttle/floor,
 /area/shuttle/escape)
 "Po" = (
 /obj/effect/floor_decal/derelict/d13,
@@ -13256,6 +13492,13 @@
 	icon_state = "white"
 	},
 /area/centcom/medical)
+"PY" = (
+/obj/structure/table/reinforced,
+/obj/machinery/holoplant{
+	pixel_y = 6
+	},
+/turf/simulated/shuttle/floor/darkred,
+/area/shuttle/escape)
 "Qa" = (
 /obj/structure/table/steel,
 /obj/item/storage/firstaid/regular,
@@ -13303,6 +13546,10 @@
 	icon_state = "dark"
 	},
 /area/centcom/security)
+"Qd" = (
+/obj/machinery/vending/blood,
+/turf/simulated/shuttle/floor,
+/area/shuttle/escape)
 "Qg" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 8
@@ -13564,6 +13811,17 @@
 	},
 /turf/unsimulated/floor/steel,
 /area/centcom/security)
+"QW" = (
+/obj/structure/closet/walllocker/autolok_wall{
+	pixel_y = -26
+	},
+/obj/machinery/light{
+	dir = 4;
+	use_power = 0;
+	old_wall = 1
+	},
+/turf/simulated/shuttle/floor/white,
+/area/shuttle/escape)
 "QX" = (
 /obj/machinery/shieldwallgen,
 /turf/unsimulated/floor{
@@ -13766,6 +14024,9 @@
 	old_wall = 1;
 	use_power = 0
 	},
+/obj/machinery/status_display{
+	pixel_y = -32
+	},
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/escape)
 "Ry" = (
@@ -13945,6 +14206,9 @@
 "Sg" = (
 /obj/structure/bed/chair/shuttle{
 	dir = 8
+	},
+/obj/structure/closet/walllocker/emergsuit_wall{
+	pixel_y = 32
 	},
 /turf/simulated/shuttle/floor,
 /area/shuttle/escape)
@@ -14477,6 +14741,12 @@
 	icon_state = "white"
 	},
 /area/centcom/control)
+"TV" = (
+/obj/machinery/computer/crew{
+	dir = 4
+	},
+/turf/simulated/shuttle/floor/white,
+/area/shuttle/escape)
 "TW" = (
 /obj/effect/floor_decal/steeldecal/steel_decals9,
 /obj/effect/floor_decal/steeldecal/steel_decals9{
@@ -14826,6 +15096,15 @@
 	icon_state = "dark"
 	},
 /area/centcom/specops)
+"Vm" = (
+/obj/structure/handrail{
+	dir = 1
+	},
+/obj/structure/closet/walllocker/emergsuit_wall{
+	pixel_y = -26
+	},
+/turf/simulated/shuttle/floor/black,
+/area/shuttle/escape)
 "Vn" = (
 /obj/structure/table/standard,
 /obj/effect/floor_decal/borderfloor{
@@ -15082,6 +15361,13 @@
 /obj/structure/closet/secure_closet/hop,
 /turf/unsimulated/floor/steel,
 /area/centcom/command)
+"Wj" = (
+/obj/structure/handrail,
+/obj/machinery/status_display{
+	pixel_y = 32
+	},
+/turf/simulated/shuttle/floor/black,
+/area/shuttle/escape)
 "Wk" = (
 /obj/structure/sign/warning/caution,
 /turf/unsimulated/wall,
@@ -15403,7 +15689,22 @@
 	},
 /area/centcom/security)
 "Xq" = (
-/obj/structure/bed/chair/shuttle,
+/obj/structure/table/reinforced,
+/obj/machinery/button/windowtint{
+	id = "emergency_cockpit";
+	pixel_x = -24;
+	pixel_y = 6
+	},
+/obj/machinery/keycard_auth{
+	pixel_x = -24;
+	pixel_y = -8
+	},
+/obj/item/folder/blue,
+/obj/item/radio,
+/obj/item/radio{
+	pixel_x = 2;
+	pixel_y = 2
+	},
 /turf/simulated/shuttle/floor/white,
 /area/shuttle/escape)
 "Xr" = (
@@ -15744,7 +16045,6 @@
 	},
 /area/centcom/control)
 "Yr" = (
-/turf/space/basic,
 /turf/unsimulated/wall,
 /area/space)
 "Yt" = (
@@ -16234,6 +16534,14 @@
 	icon_state = "white"
 	},
 /area/centcom/medical)
+"Zy" = (
+/obj/machinery/light{
+	dir = 4;
+	use_power = 0
+	},
+/obj/structure/closet/firecloset/full/double,
+/turf/simulated/shuttle/floor/darkred,
+/area/shuttle/escape)
 "ZA" = (
 /obj/effect/floor_decal/borderfloorwhite,
 /obj/effect/floor_decal/corner/paleblue/border,
@@ -16296,6 +16604,10 @@
 	icon_state = "steel"
 	},
 /area/centcom/bathroom)
+"ZM" = (
+/obj/machinery/power/pointdefense,
+/turf/simulated/floor/plating/eris/under,
+/area/shuttle/escape)
 "ZN" = (
 /obj/structure/sign/department/armory,
 /turf/unsimulated/wall,
@@ -29061,11 +29373,11 @@ AF
 AF
 AF
 jQ
-oL
-oL
-oL
-oL
-oL
+jQ
+Fl
+Fl
+Fl
+jQ
 jQ
 AF
 AF
@@ -29253,15 +29565,15 @@ AF
 AF
 AF
 AF
-AF
-jQ
+ZM
+Fl
 Xq
-yz
+TV
 PU
-yz
+im
 FX
-jQ
-AF
+Fl
+ZM
 AF
 AF
 AF
@@ -29446,17 +29758,17 @@ AF
 AF
 AF
 AF
-AF
-AF
+Ef
 jQ
-Xq
-yz
+wG
 QG
-yz
-FX
+QG
+QG
+QG
+mG
+wG
 jQ
-AF
-AF
+Jr
 AF
 AF
 AF
@@ -29643,11 +29955,11 @@ AF
 jQ
 jQ
 jQ
-wG
-Pn
+qk
+in
 yz
 in
-wG
+QW
 jQ
 jQ
 jQ
@@ -29836,14 +30148,14 @@ AF
 AF
 jQ
 bV
-al
 wG
-jQ
+mb
+mb
 Kg
-jQ
+mb
+mb
 wG
-va
-Oz
+bV
 jQ
 AF
 AF
@@ -30029,15 +30341,15 @@ AF
 AF
 AF
 jQ
-Gg
-yz
+Wj
+uV
 Ui
 pa
 yz
 pa
 Ui
-yz
-Jg
+uV
+gS
 jQ
 AF
 AF
@@ -30223,7 +30535,7 @@ AF
 AF
 AF
 jQ
-NW
+oz
 yz
 Ew
 NW
@@ -30231,7 +30543,7 @@ yz
 Ew
 NW
 yz
-Dm
+ag
 jQ
 AF
 AF
@@ -30999,7 +31311,7 @@ AF
 AF
 AF
 jQ
-NW
+oz
 yz
 Ew
 NW
@@ -31007,7 +31319,7 @@ yz
 Ew
 NW
 yz
-Dm
+ag
 jQ
 AF
 AF
@@ -31195,12 +31507,12 @@ AF
 jQ
 Gg
 yz
-Pn
 yz
 yz
 yz
 yz
-Pn
+yz
+yz
 Jg
 jQ
 AF
@@ -31387,15 +31699,15 @@ AF
 AF
 AF
 jQ
-jQ
-oL
-oL
-wG
-CG
-CG
-wG
-oL
-oL
+al
+vR
+Zy
+ov
+yz
+yz
+PY
+qm
+va
 jQ
 AF
 AF
@@ -31581,15 +31893,15 @@ AF
 AF
 AF
 jQ
-Ne
+jQ
 AA
-OZ
-jQ
-Gg
-Jg
-jQ
-ze
-lM
+AA
+wG
+gg
+Vm
+wG
+Oz
+Oz
 jQ
 AF
 AF
@@ -31775,15 +32087,15 @@ AF
 AF
 AF
 jQ
-Sp
-Sp
-Sp
+Ne
+mU
+gX
 mE
 CG
 CG
-oL
-nb
-lM
+Oz
+ze
+OZ
 jQ
 AF
 AF
@@ -31975,9 +32287,9 @@ dx
 mE
 CG
 CG
-oL
+Oz
 nb
-lM
+Ph
 jQ
 AF
 AF
@@ -32162,17 +32474,17 @@ AF
 AF
 AF
 AF
-jQ
+iC
 mA
 Sp
 dx
 jQ
-Gg
+lo
 Jg
 jQ
-nb
-lM
-jQ
+nU
+OZ
+xj
 AF
 AF
 AF
@@ -32356,8 +32668,8 @@ AF
 AF
 AF
 AF
-jQ
-Sp
+iC
+Pn
 Sp
 Sp
 Cw
@@ -32365,8 +32677,8 @@ CG
 CG
 uq
 lM
-lM
-jQ
+OZ
+xj
 AF
 AF
 AF
@@ -32551,15 +32863,15 @@ AF
 AF
 AF
 jQ
-Sp
-Sp
-Sp
+qH
+Dp
+Qd
 jQ
 Gg
 Jg
 jQ
-lM
-lM
+gb
+kX
 jQ
 AF
 AF
@@ -32749,8 +33061,8 @@ Sg
 Xs
 wG
 wG
-CG
-CG
+ID
+No
 jQ
 FB
 ya

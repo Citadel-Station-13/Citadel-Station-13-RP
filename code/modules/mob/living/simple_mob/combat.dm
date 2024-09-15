@@ -62,10 +62,10 @@
 			playsound(src, 'sound/weapons/punchmiss.ogg', 75, 1)
 			return FALSE // We missed.
 
-		if(ishuman(L))
-			var/mob/living/carbon/human/H = L
-			if(H.check_shields(damage = damage_to_do, damage_source = src, attacker = src, def_zone = null, attack_text = "the attack"))
-				return FALSE // We were blocked.
+		var/datum/event_args/actor/clickchain/simulated_clickchain = new(src, target = L)
+		var/list/shieldcall_result = L.atom_shieldcall(damage_to_do, DAMAGE_TYPE_BRUTE, MELEE_TIER_MEDIUM, ARMOR_MELEE, NONE, ATTACK_TYPE_MELEE, clickchain = simulated_clickchain)
+		if(shieldcall_result[SHIELDCALL_ARG_FLAGS] & SHIELDCALL_FLAGS_BLOCK_ATTACK)
+			return FALSE
 
 	if(apply_attack(A, damage_to_do))
 		apply_melee_effects(A)
@@ -138,7 +138,7 @@
 
 	// For some reason there isn't an argument for accuracy, so access the projectile directly instead.
 	// Also, placing dispersion here instead of in forced_spread will randomize the chosen angle between dispersion and -dispersion in fire() instead of having to do that here.
-	P.accuracy += calculate_accuracy()
+	P.accuracy_overall_modify *= 1 + calculate_accuracy() / 100
 	P.dispersion += calculate_dispersion()
 
 	P.launch_projectile(target = A, target_zone = null, user = src, params = null, angle_override = null, forced_spread = 0)

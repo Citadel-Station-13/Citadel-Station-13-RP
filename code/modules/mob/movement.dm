@@ -47,9 +47,6 @@
 	. = ..()
 	if(.)
 		return
-	if(istype(mover, /obj/projectile))
-		var/obj/projectile/P = mover
-		return !P.can_hit_target(src, P.permutated, src == P.original, TRUE)
 	// thrown things still hit us even when nondense
 	if(can_cross_under(mover))
 		return TRUE
@@ -61,8 +58,11 @@
 			return TRUE
 	return ..()
 
+/**
+ * Can something cross under us without being blocked by us?
+ */
 /mob/proc/can_cross_under(atom/movable/mover)
-	return !mover.density && !mover.throwing
+	return !mover.density && !mover.throwing && !istype(mover, /obj/projectile)
 
 /**
   * Toggle the move intent of the mob
@@ -284,7 +284,7 @@
 	//Something with pulling things
 	if(locate(/obj/item/grab, mob))
 		add_delay_grab = 7
-		var/list/grabbed = mob.ret_grab()
+		var/list/grabbed = mob.get_grabbing_recursive() + src // im fucking screaming; this is because old code always considers self as grabbed.
 		if(grabbed)
 			if(grabbed.len == 2)
 				grabbed -= mob
@@ -352,14 +352,14 @@
 	// preserve momentum: for non-evenly-0.5-multiple movespeeds (HELLO, DIAGONAL MOVES),
 	// we need to store how much we're cheated out of our tick and carry it through
 	// make an intelligent guess at if they're trying to keep moving, tho!
-	if(mob.last_move_time > (world.time - add_delay * 1.25))
+	if(mob.last_self_move > (world.time - add_delay * 1.25))
 		mob.move_delay = old_delay + add_delay
 	else
 		mob.move_delay = world.time + add_delay
 
 	SMOOTH_GLIDE_SIZE(mob, DELAY_TO_GLIDE_SIZE(add_delay))
 
-	mob.last_move_time = world.time
+	mob.last_self_move = world.time
 
 /mob/proc/SelfMove(turf/T, dir)
 	in_selfmove = TRUE
@@ -537,7 +537,7 @@
   * * we are not restrained
   */
 /mob/proc/canface()
-	if(world.time <= last_turn)
+	if(world.time <= last_self_turn)
 		return FALSE
 	if(stat == DEAD || stat == UNCONSCIOUS)
 		return FALSE
@@ -554,7 +554,7 @@
 	if(!canface())
 		return FALSE
 	setDir(EAST)
-	last_turn = world.time
+	last_self_turn = world.time
 	return TRUE
 
 ///Hidden verb to turn west
@@ -564,7 +564,7 @@
 	if(!canface())
 		return FALSE
 	setDir(WEST)
-	last_turn = world.time
+	last_self_turn = world.time
 	return TRUE
 
 ///Hidden verb to turn north
@@ -574,7 +574,7 @@
 	if(!canface())
 		return FALSE
 	setDir(NORTH)
-	last_turn = world.time
+	last_self_turn = world.time
 	return TRUE
 
 ///Hidden verb to turn south
@@ -584,7 +584,7 @@
 	if(!canface())
 		return FALSE
 	setDir(SOUTH)
-	last_turn = world.time
+	last_self_turn = world.time
 	return TRUE
 
 //! Pixel Shifting

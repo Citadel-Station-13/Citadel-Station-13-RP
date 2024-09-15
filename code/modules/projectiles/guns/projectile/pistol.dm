@@ -74,7 +74,7 @@
 	icon_state = "colt-taj"
 
 /*//apart of reskins that have two sprites, touching may result in frustration and breaks
-/obj/item/gun/ballistic/colt/detective/attack_hand(mob/user, list/params)
+/obj/item/gun/ballistic/colt/detective/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(!unique_reskin && loc == user)
 		reskin_gun(user)
 		return
@@ -86,7 +86,7 @@
 	desc = "The NT Mk58 is a cheap, ubiquitous sidearm, produced by a Nanotrasen subsidiary. Found pretty much everywhere humans are. This one is a less-lethal variant that only accepts .45 rubber or flash magazines."
 	icon_state = "secguncomp"
 	magazine_type = /obj/item/ammo_magazine/a45/rubber
-	allowed_magazines = list(/obj/item/ammo_magazine/a45/rubber, /obj/item/ammo_magazine/a45/flash, /obj/item/ammo_magazine/a45/practice)
+//	allowed_magazines = list(/obj/item/ammo_magazine/a45/rubber, /obj/item/ammo_magazine/a45/flash, /obj/item/ammo_magazine/a45/practice)
 	projectile_type = /obj/projectile/bullet/pistol/medium
 	caliber = /datum/ammo_caliber/a45
 	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2)
@@ -273,7 +273,7 @@
 		to_chat(user, "<span class='notice'>\The [src] is completely inoperable!</span>")
 		handle_click_empty()
 
-/obj/item/gun/ballistic/pirate/attack_hand(mob/user, list/params)
+/obj/item/gun/ballistic/pirate/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(user.get_inactive_held_item() == src && destroyed)
 		to_chat(user, "<span class='danger'>\The [src]'s chamber is too warped to extract the casing!</span>")
 		return
@@ -320,7 +320,7 @@
 /obj/item/gun/ballistic/p92x/sec
 	desc = "A widespread sidearm called the P92X which is used by military, police, and security forces across the galaxy. This one is a less-lethal variant that only accepts 9mm rubber or flash magazines."
 	magazine_type = /obj/item/ammo_magazine/a9mm/rubber
-	allowed_magazines = list(/obj/item/ammo_magazine/a9mm/rubber, /obj/item/ammo_magazine/a9mm/flash)
+//	allowed_magazines = list(/obj/item/ammo_magazine/a9mm/rubber, /obj/item/ammo_magazine/a9mm/flash)
 
 //Ported this over from the _vr before deletion. Commenting them out because I'm not sure we want these in.
 /*
@@ -403,7 +403,7 @@
 	else
 		..()
 
-/obj/item/gun/ballistic/konigin/attack_hand(mob/user, list/params)
+/obj/item/gun/ballistic/konigin/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(user.get_inactive_held_item() == src && use_shotgun)
 		shotgun.unload_ammo(user)
 	else
@@ -536,11 +536,6 @@
 	magazine_type = /obj/item/ammo_magazine/foam/pistol
 	allowed_magazines = list(/obj/item/ammo_magazine/foam/pistol)
 	fire_sound = 'sound/items/syringeproj.ogg'
-
-/obj/item/gun/ballistic/pistol/foam/handle_suicide(mob/living/user)
-	user.show_message("<span class = 'warning'>You feel rather silly, trying to commit suicide with a toy.</span>")
-	mouthshoot = 0
-	return
 
 /obj/item/gun/ballistic/pistol/foam/blue
 	icon_state = "toy_pistol_blue"

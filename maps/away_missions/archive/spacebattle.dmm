@@ -5,7 +5,6 @@
 /turf/space,
 /area)
 "ac" = (
-/turf/simulated/shuttle/wall/dark,
 /turf/space,
 /area/awaymission/spacebattle/syndicate2)
 "ad" = (
@@ -73,7 +72,6 @@
 /turf/simulated/floor,
 /area/awaymission/spacebattle/syndicate2)
 "av" = (
-/turf/simulated/shuttle/wall/dark,
 /turf/space,
 /area/awaymission/spacebattle/syndicate3)
 "aw" = (
@@ -132,7 +130,6 @@
 /turf/simulated/floor,
 /area/awaymission/spacebattle/syndicate2)
 "aP" = (
-/turf/simulated/shuttle/wall/dark,
 /turf/space,
 /area/awaymission/spacebattle/syndicate1)
 "aQ" = (
@@ -270,7 +267,7 @@
 /area/awaymission/spacebattle/syndicate3)
 "bw" = (
 /obj/structure/table/reinforced,
-/obj/item/melee/energy/sword,
+/obj/item/melee/transforming/energy/sword,
 /turf/simulated/floor,
 /area/awaymission/spacebattle/syndicate1)
 "bx" = (
@@ -307,7 +304,6 @@
 /turf/simulated/floor/plating,
 /area/awaymission/spacebattle/syndicate1)
 "bJ" = (
-/turf/simulated/shuttle/wall/dark,
 /turf/space,
 /area/awaymission/spacebattle/cruiser)
 "bK" = (
@@ -812,7 +808,6 @@
 /turf/simulated/floor/plating,
 /area/awaymission/spacebattle/cruiser)
 "et" = (
-/turf/simulated/shuttle/wall/dark,
 /turf/space,
 /area/awaymission/spacebattle/syndicate4)
 "eu" = (
@@ -888,7 +883,7 @@
 /turf/simulated/floor,
 /area/awaymission/spacebattle/cruiser)
 "eR" = (
-/obj/item/shield/energy,
+/obj/item/shield/transforming/energy,
 /turf/simulated/floor,
 /area/awaymission/spacebattle/cruiser)
 "eT" = (
@@ -929,7 +924,7 @@
 /area/awaymission/spacebattle/cruiser)
 "fa" = (
 /obj/spawner/corpse/syndicatesoldier,
-/obj/item/melee/energy/sword,
+/obj/item/melee/transforming/energy/sword,
 /obj/effect/debris/cleanable/blood,
 /turf/simulated/floor,
 /area/awaymission/spacebattle/cruiser)
@@ -1196,7 +1191,6 @@
 	},
 /area/awaymission/spacebattle/syndicate7)
 "gV" = (
-/turf/simulated/shuttle/wall/dark,
 /turf/space,
 /area/awaymission/spacebattle/syndicate7)
 "gW" = (
@@ -1561,7 +1555,6 @@
 /turf/simulated/shuttle/wall/dark,
 /area)
 "iE" = (
-/turf/simulated/shuttle/wall/dark,
 /turf/space,
 /area)
 "iF" = (
@@ -1594,7 +1587,6 @@
 	},
 /area)
 "iL" = (
-/turf/simulated/shuttle/wall/dark,
 /turf/space,
 /area/awaymission/spacebattle/syndicate5)
 "iM" = (
@@ -1644,7 +1636,6 @@
 /turf/space,
 /area/awaymission/spacebattle/syndicate5)
 "jc" = (
-/turf/simulated/shuttle/wall/dark,
 /turf/space,
 /area/awaymission/spacebattle/syndicate6)
 "jd" = (

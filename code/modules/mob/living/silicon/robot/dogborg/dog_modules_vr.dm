@@ -335,8 +335,7 @@
 	icon_state = "swordtail"
 	desc = "A glowing pink dagger normally attached to the end of a cyborg's tail. It appears to be extremely sharp."
 	damage_force = 20 //Takes 5 hits to 100-0
-	sharp = 1
-	edge = 1
+	damage_mode = DAMAGE_MODE_SHARP | DAMAGE_MODE_EDGE
 	throw_force = 0 //This shouldn't be thrown in the first place.
 	attack_sound = 'sound/weapons/blade1.ogg'
 	attack_verb = list("slashed", "stabbed", "jabbed", "mauled", "sliced")
@@ -447,7 +446,7 @@
 			return
 	var/armor_block = run_armor_check(T, "melee")
 	var/armor_soak = get_armor_soak(T, "melee")
-	T.apply_damage(20, HALLOSS,, armor_block, armor_soak)
+	T.apply_damage(20, DAMAGE_TYPE_HALLOSS,, armor_block, armor_soak)
 	if(prob(33))
 		T.apply_effect(3, WEAKEN, armor_block)
 

@@ -77,7 +77,7 @@
 			to_chat(user, "<span class='warning'>You'll need to turn [src] on to patch the damage on [H]'s [S.name]!</span>")
 			return NONE
 
-		if(S.robo_repair(15, BRUTE, "some dents", src, user))
+		if(S.robo_repair(15, DAMAGE_TYPE_BRUTE, "some dents", src, user))
 			remove_fuel(1, user)
 		return NONE
 	return ..()
@@ -253,7 +253,7 @@
 				T.visible_message("<span class='danger'>\The [src] turns on.</span>")
 			playsound(loc, acti_sound, 50, 1)
 			src.damage_force = 15
-			src.damtype = "fire"
+			src.damage_type = DAMAGE_TYPE_BURN
 			src.set_weight_class(WEIGHT_CLASS_BULKY)
 			src.attack_sound = 'sound/items/welder.ogg'
 			welding = 1
@@ -275,7 +275,7 @@
 			T.visible_message("<span class='warning'>\The [src] turns off.</span>")
 		playsound(loc, deac_sound, 50, 1)
 		src.damage_force = 3
-		src.damtype = "brute"
+		src.damage_type = DAMAGE_TYPE_BRUTE
 		src.set_weight_class(initial(src.w_class))
 		src.welding = 0
 		src.attack_sound = initial(src.attack_sound)
@@ -364,12 +364,13 @@
 	eye_safety_modifier = 1 // Safer on eyes.
 
 /obj/item/weldingtool/bone
-	name = "primitive welding tool"
-	desc = "A curious welding tool that uses an anomalous ignition method."
+	name = "Elder's Bellows"
+	desc = "A curious welding tool that uses an anomalous crystal and a bellows to create heat."
+	icon = 'icons/obj/lavaland.dmi'
 	icon_state = "ashwelder"
 	max_fuel = 20
 	materials_base = list(MAT_METAL = 30, MAT_BONE = 10)
-	tool_speed = 1.5
+	tool_speed = 3 ///It doesn't get that hot
 	eye_safety_modifier = 3 // Safe for Scorians who don't have goggles.
 	always_process = TRUE
 
@@ -650,7 +651,7 @@
 		update_icon()
 		return 0
 
-/obj/item/weldingtool/electric/attack_hand(mob/user, list/params)
+/obj/item/weldingtool/electric/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(user.get_inactive_held_item() == src)
 		if(power_supply)
 			power_supply.update_icon()

@@ -5,6 +5,7 @@
 	icon = 'icons/mapping/spawners/spawners.dmi'
 	icon_state = ""
 	layer = MID_LANDMARK_LAYER
+	anchored = TRUE
 	/// lateload?
 	var/late = FALSE
 

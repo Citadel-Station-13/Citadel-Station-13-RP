@@ -34,7 +34,7 @@
 /obj/item/robot_module/robot/syndicate/get_modules()
 	. = ..()
 	. |= list(
-		/obj/item/melee/energy/sword,
+		/obj/item/melee/transforming/energy/sword,
 	)
 
 /obj/item/robot_module/robot/syndicate/handle_special_module_init(mob/living/silicon/robot/R)
@@ -89,7 +89,7 @@
 		/obj/item/multitool/ai_detector,
 		/obj/item/pickaxe/plasmacutter,
 		/obj/item/rcd/electric/mounted/borg/lesser, // Can't eat rwalls to prevent AI core cheese.
-		/obj/item/melee/energy/sword/ionic_rapier,
+		/obj/item/melee/transforming/energy/sword/ionic_rapier,
 
 		// FBP repair.
 		/obj/item/robotanalyzer,

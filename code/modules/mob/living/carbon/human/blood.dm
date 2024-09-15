@@ -181,9 +181,9 @@ var/const/CE_STABLE_THRESHOLD = 0.5
 				continue
 			for(var/datum/wound/W as anything in temp.wounds)
 				if(W.bleeding())
-					if(W.damage_type == PIERCE) //gunshots and spear stabs bleed more
+					if(W.wound_type == WOUND_TYPE_PIERCE) //gunshots and spear stabs bleed more
 						blood_loss_divisor = max(blood_loss_divisor - 5, 1)
-					else if(W.damage_type == BRUISE) //bruises bleed less
+					else if(W.wound_type == WOUND_TYPE_BRUISE) //bruises bleed less
 						blood_loss_divisor = max(blood_loss_divisor + 5, 1)
 					//the farther you get from those vital regions, the less you bleed
 					//depending on how dangerous bleeding turns out to be, it might be better to only apply the reduction to hands and feet

@@ -4410,7 +4410,7 @@
 	dir = 8
 	},
 /mob/living/simple_mob/animal/giant_spider/pepper{
-	faction = "pirate";
+	iff_factions = "pirate";
 	name = "First Mate Lil Peppies"
 	},
 /turf/simulated/floor/wood,
@@ -5314,14 +5314,14 @@
 /area/piratebase/captain)
 "Wc" = (
 /obj/structure/table/rack/shelf/steel,
-/obj/item/melee/energy/sword/pirate{
+/obj/item/melee/transforming/energy/sword/cutlass{
 	pixel_x = 5
 	},
-/obj/item/melee/energy/sword/pirate{
+/obj/item/melee/transforming/energy/sword/cutlass{
 	pixel_x = 5;
 	pixel_y = 5
 	},
-/obj/item/melee/energy/sword/pirate{
+/obj/item/melee/transforming/energy/sword/cutlass{
 	pixel_x = 5;
 	pixel_y = 10
 	},

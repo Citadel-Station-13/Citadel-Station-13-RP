@@ -201,7 +201,7 @@
 	else
 		to_chat(usr, "<span class='warning'>This mob type can't use this verb.</span>")
 
-/obj/structure/closet/crate/secure/attack_hand(mob/user, list/params)
+/obj/structure/closet/crate/secure/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	src.add_fingerprint(user)
 	if(locked)
 		src.togglelock(user)
@@ -211,7 +211,7 @@
 /obj/structure/closet/crate/secure/attackby(obj/item/W as obj, mob/user as mob)
 	if(is_type_in_list(W, list(/obj/item/packageWrap, /obj/item/stack/cable_coil, /obj/item/radio/electropack, /obj/item/tool/wirecutters)))
 		return ..()
-	if(istype(W, /obj/item/melee/energy/blade))
+	if(istype(W, /obj/item/melee/ninja_energy_blade))
 		emag_act(INFINITY, user)
 	if(!opened)
 		src.togglelock(user)
@@ -261,17 +261,17 @@
 			req_access += pick(get_all_station_access())
 	..()
 
-/obj/structure/closet/crate/secure/bullet_act(var/obj/projectile/Proj)
-	if(!(Proj.damage_type == BRUTE || Proj.damage_type == BURN))
-		return
+/obj/structure/closet/crate/secure/on_bullet_act(obj/projectile/proj, impact_flags, list/bullet_act_args)
+	if(!(proj.damage_type == DAMAGE_TYPE_BRUTE || proj.damage_type == DAMAGE_TYPE_BURN))
+		return ..()
 
-	if(locked && tamper_proof && integrity <= Proj.damage)
+	if(locked && tamper_proof && integrity <= proj.damage_force)
 		if(tamper_proof == 2) // Mainly used for events to prevent any chance of opening the box improperly.
 			visible_message("<font color='red'><b>The anti-tamper mechanism of [src] triggers an explosion!</b></font>")
 			var/turf/T = get_turf(src.loc)
 			explosion(T, 0, 0, 0, 1) // Non-damaging, but it'll alert security.
 			qdel(src)
-			return
+			return impact_flags
 		var/open_chance = rand(1,5)
 		switch(open_chance)
 			if(1)
@@ -287,12 +287,9 @@
 				qdel(src)
 			if(5)
 				visible_message("<font color='green'><b>The anti-tamper mechanism of [src] fails!</b></font>")
-		return
+		return impact_flags
 
-	..()
-
-	return
-
+	return ..()
 
 /obj/structure/closet/crate/plastic
 	name = "plastic crate"

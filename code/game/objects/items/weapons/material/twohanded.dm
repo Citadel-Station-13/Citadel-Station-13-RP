@@ -28,6 +28,10 @@
 	drop_sound = 'sound/items/drop/sword.ogg'
 	pickup_sound = 'sound/items/pickup/sword.ogg'
 
+	passive_parry = /datum/passive_parry/melee{
+		parry_chance_melee = 15;
+	}
+
 /obj/item/material/twohanded/update_held_icon()
 	var/mob/living/M = loc
 	if(istype(M) && M.can_wield_item(src) && is_held_twohanded(M))
@@ -49,14 +53,6 @@
 /obj/item/material/twohanded/Initialize(mapload, material_key)
 	. = ..()
 	update_icon()
-
-//Allow a small chance of parrying melee attacks when wielded - maybe generalize this to other weapons someday
-/obj/item/material/twohanded/handle_shield(mob/user, var/damage, atom/damage_source = null, mob/attacker = null, var/def_zone = null, var/attack_text = "the attack")
-	if(wielded && default_parry_check(user, attacker, damage_source) && prob(15))
-		user.visible_message("<span class='danger'>\The [user] parries [attack_text] with \the [src]!</span>")
-		playsound(user.loc, 'sound/weapons/punchmiss.ogg', 50, 1)
-		return 1
-	return 0
 
 /obj/item/material/twohanded/update_icon()
 	icon_state = "[base_icon][wielded]"
@@ -120,6 +116,15 @@
 	material_parts = /datum/material/bone
 	icon_state = "bone_axe0"
 	base_icon = "bone_axe"
+	material_color = FALSE
+
+/obj/item/material/twohanded/fireaxe/bronze
+	name = "Bronze Battleaxe"
+	desc = "A large twohanded battleaxe made of bronze. Its double head marks it a tool for combat alone."
+	material_parts = /datum/material/bronze
+	icon = 'icons/obj/lavaland.dmi'
+	icon_state = "bronze_axe0"
+	base_icon = "bronze_axe"
 	material_color = FALSE
 
 /obj/item/material/twohanded/fireaxe/plasteel
@@ -236,6 +241,19 @@
 
 /obj/item/material/twohanded/spear/durasteel
 	material_parts = /datum/material/durasteel
+
+/obj/item/material/twohanded/spear/bronze
+	name = "spear"
+	desc = "A spear of bone shaft and bronze head. Simplicity never goes out of style."
+	material_parts = /datum/material/bronze
+	icon = 'icons/obj/lavaland.dmi'
+	icon_state = "bronze_spear0"
+	base_icon = "bronze_spear"
+	material_color = 0
+
+
+/obj/item/material/twohanded/spear/bronze/Initialize(mapload, material_key)
+	..(mapload,"bronze")
 
 //Sledgehammers. Slightly less force than fire axes, but breaks bones easier.
 

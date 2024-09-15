@@ -1,7 +1,6 @@
 /obj/item/material/harpoon
 	name = "harpoon"
-	sharp = 1
-	edge = 0
+	damage_mode = DAMAGE_MODE_SHARP
 	desc = "A common design throughout the galaxy, this is a metal spear used for hunting fish (or people in voidsuits, to devestating effect)."
 	icon_state = "harpoon"
 	item_state = "harpoon"
@@ -34,6 +33,14 @@
 	desc = "A broad, flat piece of bone knapped to a sharp edge. A truly primitive weapon."
 	icon_state = "hatchet_bone"
 	material_parts = /datum/material/bone
+
+/obj/item/material/knife/machete/hatchet/bronze
+	name = "bronze hatchet"
+	desc = "A bronze axe head on a bone handle. You can't make an axe much simpler."
+	icon = 'icons/obj/lavaland.dmi'
+	icon_state = "hatchet_bronze"
+	item_state = "hatchet_bronze"
+	material_parts = /datum/material/bronze
 
 /obj/item/material/knife/machete/hatchet/unathiknife
 	name = "duelling knife"

@@ -1,0 +1,47 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/obj/structure/flora/ausbushes/brflowers,
+/turf/simulated/floor/holofloor/grass,
+/area/holodeck/holodorm/source_garden)
+"D" = (
+/obj/structure/flora/ausbushes/ywflowers,
+/turf/simulated/floor/holofloor/grass,
+/area/holodeck/holodorm/source_garden)
+"X" = (
+/obj/structure/flora/ausbushes/ywflowers,
+/obj/landmark{
+	name = "Catgirl Spawn"
+	},
+/turf/simulated/floor/holofloor/grass,
+/area/holodeck/holodorm/source_garden)
+
+(1,1,1) = {"
+a
+D
+a
+"}
+(2,1,1) = {"
+D
+a
+D
+"}
+(3,1,1) = {"
+a
+X
+a
+"}
+(4,1,1) = {"
+D
+a
+D
+"}
+(5,1,1) = {"
+a
+D
+a
+"}
+(6,1,1) = {"
+D
+a
+D
+"}

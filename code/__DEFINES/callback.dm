@@ -1,5 +1,7 @@
 /// A shorthand for the callback datum, [documented here](datum/callback.html)
 #define CALLBACK new /datum/callback
+/// Arbitrary sentinel value for making sure a callback didn't sleep
+#define CALLBACK_SLEEP_SENTINEL "___THE PROC SLEPT___"
 
 /// Varset callback for a list
 #define VARSET_LIST_CALLBACK(target, var_name, var_value) CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(___callbackvarset), ##target, ##var_name, ##var_value)
