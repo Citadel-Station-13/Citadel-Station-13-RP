@@ -39,7 +39,7 @@
 	STOP_PROCESSING(SSobj, src)
 	return ..()
 
-/obj/item/melee/ninja_energy_blade/attack_self(mob/user)
+/obj/item/melee/ninja_energy_blade/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return

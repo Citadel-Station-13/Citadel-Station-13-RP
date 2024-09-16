@@ -56,7 +56,7 @@
 	on = 0
 	update_icon()
 
-/obj/item/chainsaw/attack_self(mob/user)
+/obj/item/chainsaw/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return

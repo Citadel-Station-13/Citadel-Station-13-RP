@@ -189,7 +189,7 @@
 	icon_state = "box"
 	var/cattype = /mob/living/simple_mob/animal/passive/cat
 
-/obj/item/cat_box/attack_self(mob/user)
+/obj/item/cat_box/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return

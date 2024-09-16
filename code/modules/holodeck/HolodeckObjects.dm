@@ -241,7 +241,7 @@
 
 // todo: the parry system was removed from this because that sucks maybe readd it later lol
 
-/obj/item/holo/esword/attack_self(mob/user)
+/obj/item/holo/esword/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return

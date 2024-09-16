@@ -33,7 +33,7 @@
 	if(!owner)
 		STOP_PROCESSING(SSobj, src)
 
-/obj/item/clothing/accessory/collar/vmcrystal/attack_self(mob/user)
+/obj/item/clothing/accessory/collar/vmcrystal/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return

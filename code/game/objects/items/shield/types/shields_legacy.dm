@@ -54,7 +54,7 @@
 		return ..()
 	return embedded_flash.attack_mob(arglist(args))
 
-/obj/item/shield/riot/flash/attack_self(mob/user)
+/obj/item/shield/riot/flash/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
