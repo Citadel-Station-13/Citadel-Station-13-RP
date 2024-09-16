@@ -277,7 +277,7 @@
 		return
 	return ..()
 
-/obj/item/disk/nifsoft/compliance/attack_self(mob/user)
+/obj/item/disk/nifsoft/compliance/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
