@@ -504,7 +504,7 @@ GLOBAL_LIST_INIT(orion_events, generate_orion_events())
 	else
 		. += SPAN_NOTICE("There's a little switch on the bottom. It's flipped up.")
 
-/obj/item/orion_ship/attack_self(mob/user)
+/obj/item/orion_ship/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return

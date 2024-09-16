@@ -59,7 +59,7 @@
 	drop_sound = 'sound/items/drop/crowbar.ogg'
 	pickup_sound = 'sound/items/pickup/crowbar.ogg'
 
-/obj/item/melee/telebaton/attack_self(mob/user)
+/obj/item/melee/telebaton/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -196,7 +196,7 @@
 	damage_force = 0
 	attack_sound = "sound/items/bikehorn.ogg"
 
-/obj/item/melee/stool/faiza/attack_self(mob/user)
+/obj/item/melee/stool/faiza/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return

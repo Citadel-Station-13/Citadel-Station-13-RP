@@ -65,7 +65,7 @@
 	else
 		..()
 
-/obj/item/clothing/attack_self(mob/user)
+/obj/item/clothing/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return

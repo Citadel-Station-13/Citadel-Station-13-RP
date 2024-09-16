@@ -174,14 +174,15 @@
  * todo: please stop overriding this, use on_attack_self.
  * todo: nuke mob/user.
  * todo: rename this to like /activate_inhand, /on_activate_inhand
+ * todo: actor is not currently always given.
  *
  * @params
- * * actor - the event_args that spawned this call
  * * user - The person using us in hand; stop using this, this is deprecated
+ * * actor - the event_args that spawned this call
  *
  * @return TRUE to signal to overrides to stop the chain and do nothing.
  */
-/obj/item/proc/attack_self(mob/user, datum/event_args/actor/actor = new /datum/event_args/actor(user))
+/obj/item/proc/attack_self(mob/user, datum/event_args/actor/actor)
 	// todo: this should realistically be SHOULD_NOT_OVERRIDE but there's a massive number of overrides (some unnecessary), so this is for a later date
 	// SHOULD_NOT_OVERRIDE(TRUE) // may be re-evaluated later
 	SEND_SIGNAL(src, COMSIG_ITEM_ACTIVATE_INHAND, actor)
