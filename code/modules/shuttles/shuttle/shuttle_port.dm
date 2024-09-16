@@ -101,8 +101,6 @@
 /obj/shuttle_port/grid_finished(grid_flags, rotation_angle)
 	return
 
-#warn make sure the sprites are aligned so that it looks good from map editor (denotes center position & aims outwards)
-
 #define SHUTTLE_PORT_PATH(PATH) \
 /obj/shuttle_port/##PATH/primary { \
 	primary_port = TRUE; \
@@ -136,10 +134,12 @@ SHUTTLE_PORT_PATH(two_wide/left_aligned/north)
 SHUTTLE_PORT_PATH(two_wide/left_aligned/south)
 	dir = SOUTH
 	port_offset = 1
+	pixel_x = -32
 
 SHUTTLE_PORT_PATH(two_wide/left_aligned/east)
 	dir = EAST
 	port_offset = 1
+	pixel_y = -32
 
 SHUTTLE_PORT_PATH(two_wide/left_aligned/west)
 	dir = WEST
