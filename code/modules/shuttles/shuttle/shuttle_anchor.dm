@@ -88,6 +88,21 @@
 	invisibility = INVISIBILITY_NONE
 #endif
 
+	/// shuttle datum
+	var/tmp/datum/shuttle/shuttle
+
+	/// see main documentation
+	var/tmp/size_x
+	/// see main documentation
+	var/tmp/size_y
+	/// see main documentation
+	var/tmp/offset_x
+	/// see main documentation
+	var/tmp/offset_y
+
+	/// are we moving right now?
+	var/tmp/anchor_moving = FALSE
+
 // This file is WIP, and is just here so mappers can start using them.
 
 //* Movement Hooks ; We don't allow normal movement. *//

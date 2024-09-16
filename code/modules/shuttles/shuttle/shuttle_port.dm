@@ -21,6 +21,9 @@
 	invisibility = INVISIBILITY_NONE
 #endif
 
+	/// shuttle datum
+	var/tmp/datum/shuttle/shuttle
+
 	/// dock width - this is how wide the airlock/otherwise opening is.
 	///
 	/// the port is left-aligned to the width when looking north
@@ -53,9 +56,19 @@
 	/// * if this isn't set, we'll assign it a random one on init
 	var/port_id
 
+	/// registered shuttle hooks
+	var/tmp/list/datum/shuttle_hook/hooks
+
 	/// is this the primary port?
 	/// if it is, this is what we align with for roundstart loading.
 	var/primary_port = FALSE
+
+	/// are we moving right now?
+	var/tmp/port_moving = FALSE
+
+/obj/shuttle_port/preloading_instance(with_id)
+	. = ..()
+	port_id = SSmapping.mangled_persistent_id(port_id, with_id)
 
 // This file is WIP, and is just here so mappers can start using them.
 

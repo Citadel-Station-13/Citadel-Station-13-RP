@@ -6,7 +6,7 @@
  * like mass.
  */
 /datum/shuttle_descriptor
-	//* Flight (overmaps / web)
+	//* Flight (overmaps / web) *//
 	/// mass in kilotons
 	//  todo: in-game mass calculations? only really relevant for drone tbh
 	var/mass = 5
@@ -17,7 +17,7 @@
 	/// * null = use orientation at takeoff
 	var/preferred_orientation
 
-	//* Jumps (ferry & moving to/from overmaps)
+	//* Jumps (ferry & moving to/from overmaps) *//
 	/// engine charging time when starting a move
 	//  todo: should have support for being based on in game machinery (?)
 	var/jump_charging_time = 10 SECONDS
