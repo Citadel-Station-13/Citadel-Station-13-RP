@@ -66,9 +66,8 @@
  *
  * ## Mappers
  *
- * You only need to place down:
- * * The master anchor, somewhere on the shuttle (usually a central location)
- * * At least one port anchor if you want it to dock to airlocks, aligned to the airlock in question.
+ * * You don't need to put down anchors at all, they auto-generate.
+ * * If you place one anyways, it'll be respected. That said, the size will be auto-generated too, and overwrite them.
  *
  * Do not mess with the variables; the init system will set them.
  */
@@ -81,6 +80,7 @@
 	icon_state = "main"
 	plane = DEBUG_PLANE
 	layer = DEBUG_LAYER_SHUTTLE_MARKERS
+	atom_flags = ATOM_ABSTRACT | ATOM_NONWORLD
 
 #ifndef CF_SHUTTLE_VISUALIZE_BOUNDING_BOXES
 	invisibility = INVISIBILITY_ABSTRACT
@@ -89,19 +89,19 @@
 #endif
 
 	/// shuttle datum
-	var/datum/shuttle/shuttle
+	var/tmp/datum/shuttle/shuttle
 
 	/// see main documentation
-	var/size_x
+	var/tmp/size_x
 	/// see main documentation
-	var/size_y
+	var/tmp/size_y
 	/// see main documentation
-	var/offset_x
+	var/tmp/offset_x
 	/// see main documentation
-	var/offset_y
+	var/tmp/offset_y
 
 	/// are we moving right now?
-	var/anchor_moving = FALSE
+	var/tmp/anchor_moving = FALSE
 
 /obj/shuttle_anchor/Destroy(force)
 	if(!force && !shuttle.being_deleted)
@@ -654,19 +654,6 @@
 
 	return ordered_turfs_at
 
-/obj/shuttle_anchor/forceMove()
-	CRASH("attempted to forcemove a shuttle anchor")
-
-/obj/shuttle_anchor/setDir(ndir)
-	if(!anchor_moving)
-		CRASH("attempted to setDir an anchor")
-	return ..()
-
-/obj/shuttle_anchor/abstract_move(atom/new_loc)
-	if(!anchor_moving)
-		CRASH("attempted to abstract_move a shuttle anchor")
-	return ..()
-
 /**
  * usually only callable by admins
  *
@@ -682,6 +669,23 @@
 		return FALSE
 
 	return shuttle.aligned_translation(location, direction, use_after_turfs = new_ordered_turfs)
+
+//* Movement Hooks ; We don't allow normal movement. *//
+
+/obj/shuttle_anchor/forceMove()
+	CRASH("attempted to forcemove a shuttle anchor")
+
+/obj/shuttle_anchor/setDir(ndir)
+	if(!anchor_moving)
+		CRASH("attempted to setDir an anchor")
+	return ..()
+
+/obj/shuttle_anchor/abstract_move(atom/new_loc)
+	if(!anchor_moving)
+		CRASH("attempted to abstract_move a shuttle anchor")
+	return ..()
+
+//* Grid Hooks ; Shuttle manually moves us. *//
 
 /obj/shuttle_anchor/grid_move(grid_flags, turf/new_turf)
 	return

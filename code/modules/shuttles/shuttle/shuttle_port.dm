@@ -13,6 +13,7 @@
 	icon_state = "dock"
 	plane = DEBUG_PLANE
 	layer = DEBUG_LAYER_SHUTTLE_MARKERS
+	atom_flags = ATOM_ABSTRACT | ATOM_NONWORLD
 
 #ifndef CF_SHUTTLE_VISUALIZE_BOUNDING_BOXES
 	invisibility = INVISIBILITY_ABSTRACT
@@ -21,7 +22,7 @@
 #endif
 
 	/// shuttle datum
-	var/datum/shuttle/shuttle
+	var/tmp/datum/shuttle/shuttle
 
 	/// dock width - this is how wide the airlock/otherwise opening is.
 	///
@@ -56,14 +57,14 @@
 	var/port_id
 
 	/// registered shuttle hooks
-	var/list/datum/shuttle_hook/hooks
+	var/tmp/list/datum/shuttle_hook/hooks
 
 	/// is this the primary port?
 	/// if it is, this is what we align with for roundstart loading.
 	var/primary_port = FALSE
 
 	/// are we moving right now?
-	var/port_moving = FALSE
+	var/tmp/port_moving = FALSE
 
 /obj/shuttle_port/preloading_instance(with_id)
 	. = ..()
