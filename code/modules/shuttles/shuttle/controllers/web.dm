@@ -1,5 +1,5 @@
 //* This file is explicitly licensed under the MIT license. *//
-//* Copyright (c) 2024 silicons                             *//
+//* Copyright (c) 2024 Citadel Station Developers           *//
 
 // todo: this entire file needs to be persistence-capable, right now we don't need it tho so everything uses typepaths.
 
