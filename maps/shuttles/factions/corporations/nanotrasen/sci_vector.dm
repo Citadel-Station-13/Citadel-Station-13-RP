@@ -11,4 +11,6 @@
 		mass = 25;
 	}
 
-	#warn finish map
+	#warn finish map halfway
+
+// todo: finish map
