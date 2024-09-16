@@ -844,10 +844,10 @@
 	inventory.update_slot_render(SLOT_ID_LEGCUFFED)
 
 /mob/living/carbon/human/update_inv_hand(index)
-	if(isnull(held_items[index]))
+	if(isnull(inventory.held_items[index]))
 		remove_standing_overlay(HUMAN_OVERLAY_HAND(index))
 		return
 	set_standing_overlay(
 		HUMAN_OVERLAY_HAND(index),
-		held_items[index].render_mob_appearance(src, index, BODYTYPE_DEFAULT),
+		inventory.held_items[index].render_mob_appearance(src, index, BODYTYPE_DEFAULT),
 	)
