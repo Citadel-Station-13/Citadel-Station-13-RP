@@ -1,6 +1,8 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2024 silicons                             *//
 
+//* ----- Click Triggers ----- */
+
 //* Attack Hand *//
 
 /obj/item/on_attack_hand(datum/event_args/actor/clickchain/e_args)
@@ -160,7 +162,9 @@
 /mob/observer/dead/CanSlideItem(obj/item/I, turf/over)
 	return is_spooky
 
-//* Inhand Triggers *//
+//* ------ Inhand Triggers ------ *//
+
+//* Attack Self *//
 
 /**
  * Called when the item is in the active hand, and clicked; alternately, there is an 'activate held object' verb or you can hit pagedown.
@@ -170,14 +174,15 @@
  * todo: please stop overriding this, use on_attack_self.
  * todo: nuke mob/user.
  * todo: rename this to like /activate_inhand, /on_activate_inhand
+ * todo: actor is not currently always given.
  *
  * @params
- * * actor - the event_args that spawned this call
  * * user - The person using us in hand; stop using this, this is deprecated
+ * * actor - the event_args that spawned this call
  *
  * @return TRUE to signal to overrides to stop the chain and do nothing.
  */
-/obj/item/proc/attack_self(mob/user, datum/event_args/actor/actor = new /datum/event_args/actor(user))
+/obj/item/proc/attack_self(mob/user, datum/event_args/actor/actor)
 	// todo: this should realistically be SHOULD_NOT_OVERRIDE but there's a massive number of overrides (some unnecessary), so this is for a later date
 	// SHOULD_NOT_OVERRIDE(TRUE) // may be re-evaluated later
 	SEND_SIGNAL(src, COMSIG_ITEM_ACTIVATE_INHAND, actor)
@@ -213,6 +218,8 @@
 		return TRUE
 	return FALSE
 
+//* Unique Action *//
+
 /**
  * Called when a mob uses our unique aciton.
  *
@@ -237,6 +244,8 @@
 /obj/item/proc/on_unique_action(datum/event_args/actor/e_args)
 	return FALSE
 
+//* Defensive Toggle *//
+
 /**
  * Called when a mob uses our defensive toggle action.
  *
@@ -260,6 +269,8 @@
  */
 /obj/item/proc/on_defensive_toggle(datum/event_args/actor/e_args)
 	return FALSE
+
+//* Defensive Trigger *//
 
 /**
  * Called when a mob uses our defensive trigger action.
