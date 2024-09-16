@@ -1,6 +1,8 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2024 silicons                             *//
 
+//* ----- Click Triggers ----- */
+
 //* Attack Hand *//
 
 /obj/item/on_attack_hand(datum/event_args/actor/clickchain/e_args)
@@ -160,7 +162,9 @@
 /mob/observer/dead/CanSlideItem(obj/item/I, turf/over)
 	return is_spooky
 
-//* Inhand Triggers *//
+//* ------ Inhand Triggers ------ *//
+
+//* Attack Self *//
 
 /**
  * Called when the item is in the active hand, and clicked; alternately, there is an 'activate held object' verb or you can hit pagedown.
@@ -213,6 +217,8 @@
 		return TRUE
 	return FALSE
 
+//* Unique Action *//
+
 /**
  * Called when a mob uses our unique aciton.
  *
@@ -237,6 +243,8 @@
 /obj/item/proc/on_unique_action(datum/event_args/actor/e_args)
 	return FALSE
 
+//* Defensive Toggle *//
+
 /**
  * Called when a mob uses our defensive toggle action.
  *
@@ -260,6 +268,8 @@
  */
 /obj/item/proc/on_defensive_toggle(datum/event_args/actor/e_args)
 	return FALSE
+
+//* Defensive Trigger *//
 
 /**
  * Called when a mob uses our defensive trigger action.
