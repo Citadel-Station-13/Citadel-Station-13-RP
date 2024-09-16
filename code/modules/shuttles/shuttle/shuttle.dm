@@ -18,9 +18,7 @@
  * todo: serialize/deserialize, but should it be on this side or the map tempalte side? we want save/loadable.
  */
 /datum/shuttle
-	//* Intrinsics
-	/// real / code name
-	var/name = "Unnamed Shuttle"
+	//* Intrinsics *//
 	/// are we mid-delete? controls whether we, and our components are immune to deletion.
 	var/being_deleted = FALSE
 	/// our globally persistent-unique identifier string
@@ -31,7 +29,7 @@
 	/// to our controller, as well as things like overmaps.
 	var/datum/shuttle_descriptor/descriptor
 
-	//* Composition
+	//* Composition *//
 	/// our shuttle controller
 	var/datum/shuttle_controller/controller
 	/// our physical shuttle object
@@ -46,13 +44,13 @@
 	/// the areas in our shuttle, associated to a truthy value
 	var/list/area/shuttle/areas
 
-	//* Docking
+	//* Docking *//
 	/// where we are docked, if any
 	var/obj/shuttle_dock/docked
 	/// the port we're using
 	var/obj/shuttle_port/docked_via_port
 
-	//* Movement - Ephemeral / In-Move
+	//* Movement - Ephemeral / In-Move *//
 	/// current direction of motion, used to calculate things like visuals and roadkill
 	var/translating_physics_direction
 	/// corrosponds, index-wise, to the left-to-right strip of clear turfs in front of the shuttle in the direction of motion
@@ -82,15 +80,17 @@
 	/// current length of side
 	var/translating_side_length
 
-	//* Hooks
+	//* Hooks *//
 	/// registered shuttle hooks
 	var/list/datum/shuttle_hook/hooks
 
-	//* Identity
-	/// player-facing name
-	var/display_name
+	//* Identity *//
+	/// real / code name
+	var/name = "Unnamed Shuttle"
+	/// description for things like admin interfaces
+	var/desc = "Some kind of shuttle. The coder forgot to set this."
 
-	//* Preview
+	//* Preview *//
 	/// lower-left aligned preview overlay; used for shuttle dockers and similar
 	/// the generated preview will be **north** facing
 	/// turn it via transform matrices only!
@@ -102,12 +102,12 @@
 	/// last time preview was regenerated
 	var/preview_generated_at
 
-	//* Structure
+	//* Structure *//
 	/// if set, we generate a ceiling above the shuttle of this type, on the bottom of the turf stack.
 	//  todo: vv hook this
 	var/ceiling_type = /turf/simulated/shuttle_ceiling
 
-	//* Transit
+	//* Transit *//
 
 	//? This is in shuttle, not controller, because
 	//? we cannot afford a memory leak in transit and therefore
@@ -124,7 +124,7 @@
 	/// Current transit reservation
 	var/datum/turf_reservation/transit/transit_reservation
 
-	//* legacy stuff
+	//* legacy stuff *//
 	// todo: this should be a default, and engine/takeoff type (?) can override
 	var/legacy_sound_takeoff = 'sound/effects/shuttles/shuttle_takeoff.ogg'
 	var/legacy_sound_landing = 'sound/effects/shuttles/shuttle_landing.ogg'
