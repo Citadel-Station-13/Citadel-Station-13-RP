@@ -19,8 +19,6 @@
  */
 /datum/shuttle
 	//* Intrinsics *//
-	/// real / code name
-	var/name = "Unnamed Shuttle"
 	/// our unique template id; this is *not* our ID and is *not* unique!
 	var/template_id
 	/// our descriptor instance; this is what determines how we act
