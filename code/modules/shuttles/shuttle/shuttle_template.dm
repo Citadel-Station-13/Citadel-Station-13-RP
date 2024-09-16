@@ -124,6 +124,8 @@
 /datum/shuttle_template/proc/instance_descriptor()
 	if(istype(descriptor))
 		return descriptor.clone()
+	else if(IS_ANONYMOUS_TYPEPATH(descriptor))
+		return new descriptor
 	else if(ispath(descriptor, /datum/shuttle_descriptor))
 		return new descriptor
 	CRASH("what? [descriptor] ([REF(descriptor)])")
