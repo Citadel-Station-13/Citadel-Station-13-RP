@@ -112,7 +112,7 @@
 	else
 		return ..()
 
-/obj/item/melee/baton/attack_self(mob/user)
+/obj/item/melee/baton/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return

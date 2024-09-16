@@ -89,7 +89,7 @@
 	spark_system.start()
 	playsound(user.loc, 'sound/weapons/blade1.ogg', 50, 1)
 
-/obj/item/clothing/suit/armor/shield/attack_self(mob/user)
+/obj/item/clothing/suit/armor/shield/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
