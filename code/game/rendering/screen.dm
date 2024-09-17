@@ -1,5 +1,5 @@
 //* This file is explicitly licensed under the MIT license. *//
-//* Copyright (c) 2023 Citadel Station developers.          *//
+//* Copyright (c) 2024 Citadel Station Developers           *//
 
 /atom/movable/screen
 	appearance_flags = PIXEL_SCALE | NO_CLIENT_COLOR

@@ -1,5 +1,5 @@
 //* This file is explicitly licensed under the MIT license. *//
-//* Copyright (c) 2024 silicons                             *//
+//* Copyright (c) 2024 Citadel Station Developers           *//
 
 /**
  * Inventory slots specifically, not hands.
@@ -12,7 +12,7 @@
 	var/list/atom/movable/screen/inventory/slot/slot_by_id
 	/// ordered hand objects
 	var/list/atom/movable/inventory/hand/hands
-	
+
 	/// swap hand object
 	var/atom/movable/inventory/swap_hand/swap_hand
 	/// equip object
