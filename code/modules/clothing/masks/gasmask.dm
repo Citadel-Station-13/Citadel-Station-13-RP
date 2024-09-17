@@ -80,7 +80,7 @@
 	set src in usr
 	adjust_mask(usr)
 
-/obj/item/clothing/mask/gas/half/attack_self(mob/user)
+/obj/item/clothing/mask/gas/half/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -123,7 +123,7 @@
 			to_chat(user, "Your mask moves to cover your mouth.")
 	return
 
-/obj/item/clothing/mask/gas/swat/vox/attack_self(mob/user)
+/obj/item/clothing/mask/gas/swat/vox/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return

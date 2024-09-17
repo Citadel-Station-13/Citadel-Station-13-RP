@@ -152,7 +152,7 @@
 	attack_verb = list("drilled")
 	worth_intrinsic = 250 // this is gonna be very useful/powerful later
 
-/obj/item/pickaxe/excavationdrill/attack_self(mob/user)
+/obj/item/pickaxe/excavationdrill/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
