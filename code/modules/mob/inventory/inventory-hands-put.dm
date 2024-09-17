@@ -1,5 +1,5 @@
 //* This file is explicitly licensed under the MIT license. *//
-//* Copyright (c) 2024 silicons                             *//
+//* Copyright (c) 2024 Citadel Station Developers           *//
 
 //* Procs in this file are mirrored to the /mob level for ease of use.        *//
 //*                                                                           *//
@@ -56,17 +56,6 @@
 
 /mob/proc/put_in_right_hand(obj/item/I, flags)
 	for(var/i in 1 to length(inventory?.held_items) step 2)
-		if(put_in_hand(I, i, flags))
-			return TRUE
-	return FALSE
-
-/mob/proc/put_in_active_hand(obj/item/I, flags)
-	return put_in_hand(I, active_hand, flags)
-
-/mob/proc/put_in_inactive_hand(obj/item/I, flags)
-	for(var/i in 1 to length(inventory?.held_items))
-		if(i == active_hand)
-			continue
 		if(put_in_hand(I, i, flags))
 			return TRUE
 	return FALSE

@@ -1,5 +1,5 @@
 //* This file is explicitly licensed under the MIT license. *//
-//* Copyright (c) 2024 silicons                             *//
+//* Copyright (c) 2024 Citadel Station Developers           *//
 
 //* Hands are weird. Unlike inventory slots, they tend to be very tightly  *//
 //* coupled to organ state, so it's not a good thing to have all behavior  *//

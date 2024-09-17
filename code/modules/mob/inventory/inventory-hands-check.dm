@@ -1,5 +1,5 @@
 //* This file is explicitly licensed under the MIT license. *//
-//* Copyright (c) 2024 silicons                             *//
+//* Copyright (c) 2024 Citadel Station Developers           *//
 
 //* Procs in this file are mirrored to the /mob level for ease of use.        *//
 //*                                                                           *//

@@ -1,5 +1,5 @@
 //* This file is explicitly licensed under the MIT license. *//
-//* Copyright (c) 2024 silicons                             *//
+//* Copyright (c) 2024 Citadel Station Developers           *//
 
 //* Procs in this file are mirrored to the /mob level for ease of use.        *//
 //*                                                                           *//
@@ -62,20 +62,112 @@
 
 /**
  * Get an indexed list of weakrefs or nulls of held items.
- *
- * * returns null if we have no inventory.
  */
 /mob/proc/get_held_items_as_weakrefs()
 	RETURN_TYPE(/list)
 	if(!inventory)
-		return
+		return list()
 	. = new /list(length(inventory.held_items))
 	for(var/i in 1 to length(inventory.held_items))
 		.[i] = WEAKREF(inventory.held_items[i])
 
-#warn mirror & check below
+//* Iteration *//
 
-//* By Side *//
+/**
+ * @return list of held items
+ */
+/datum/inventory/proc/get_held_items()
+	RETURN_TYPE(/list)
+	. = list()
+	for(var/obj/item/I in held_items)
+		return I
+
+/**
+ * @return list of held items
+ */
+/mob/proc/get_held_items()
+	RETURN_TYPE(/list)
+	. = list()
+	for(var/obj/item/I in inventory?.held_items)
+		. += I
+
+/**
+ * @return list of held items of type
+ */
+/datum/inventory/proc/get_held_items_of_type(type)
+	RETURN_TYPE(/list)
+	. = list()
+	for(var/obj/item/I as anything in held_items)
+		if(istype(I, type))
+			. += I
+
+/**
+ * @return list of held items of type
+ */
+/datum/inventory/proc/get_held_items_of_type(type)
+	RETURN_TYPE(/list)
+	. = list()
+	for(var/obj/item/I as anything in inventory?.held_items)
+		if(istype(I, type))
+			. += I
+
+/**
+ * @return first held item of type, if found
+ */
+/datum/inventory/proc/get_held_item_of_type(type)
+	RETURN_TYPE(/obj/item)
+	for(var/obj/item/I as anything in held_items)
+		if(istype(I, type))
+			return I
+
+/**
+ * @return first held item of type, if found
+ */
+/mob/proc/get_held_item_of_type(type)
+	RETURN_TYPE(/obj/item)
+	for(var/obj/item/I as anything in inventory?.held_items)
+		if(istype(I, type))
+			return I
+
+/**
+ * @return list of full hands
+ */
+/datum/inventory/proc/get_full_hand_indices()
+	. = list()
+	for(var/i in 1 to length(held_items))
+		if(held_items[i])
+			. += i
+
+/**
+ * @return list of full hands
+ */
+/mob/proc/get_full_hand_indices()
+	. = list()
+	for(var/i in 1 to length(inventory?.held_items))
+		if(inventory.held_items[i])
+			. += i
+
+/**
+ * @return list of empty hands
+ */
+/datum/inventory/proc/get_empty_hand_indices()
+	. = list()
+	for(var/i in 1 to length(held_items))
+		if(!held_items[i])
+			. += i
+
+/**
+ * @return list of empty hands
+ */
+/mob/proc/get_empty_hand_indices()
+	. = list()
+	for(var/i in 1 to length(inventory?.held_items))
+		if(!inventory.held_items[i])
+			. += i
+
+//*                   By Side                       *//
+//* This is not on /datum/inventory level as        *//
+//* oftentimes a mob has no semantic 'sided hands'. *//
 
 /**
  * returns first item on left
@@ -118,49 +210,3 @@
 		if(isnull(inventory?.held_items[i]))
 			continue
 		. += inventory?.held_items[i]
-
-//* Iteration *//
-
-/**
- * returns held items
- */
-/mob/proc/get_held_items()
-	. = list()
-	for(var/obj/item/I in inventory?.held_items)
-		. += I
-
-/**
- * get held items of type
- */
-/mob/proc/get_held_items_of_type(type)
-	. = list()
-	for(var/obj/item/I as anything in get_held_items())
-		if(istype(I, type))
-			. += I
-
-/**
- * get first held item of type
- */
-/mob/proc/get_held_item_of_type(type)
-	RETURN_TYPE(/obj/item)
-	for(var/obj/item/I as anything in get_held_items())
-		if(istype(I, type))
-			return I
-
-/**
- * get full indices
- */
-/mob/proc/get_full_hand_indices()
-	. = list()
-	for(var/i in 1 to length(inventory?.held_items))
-		if(!isnull(inventory?.held_items[i]))
-			. += i
-
-/**
- * get empty indices
- */
-/mob/proc/get_empty_hand_indices()
-	. = list()
-	for(var/i in 1 to length(inventory?.held_items))
-		if(isnull(inventory?.held_items[i]))
-			. += i

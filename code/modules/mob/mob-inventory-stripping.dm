@@ -1,5 +1,7 @@
 //* This file is explicitly licensed under the MIT license. *//
-//* Copyright (c) 2023 Citadel Station developers.          *//
+//* Copyright (c) 2024 Citadel Station Developers           *//
+
+// todo: this should be just mob-interaction-panel and be a tgui interaction panel lol
 
 /**
  * Stripping system

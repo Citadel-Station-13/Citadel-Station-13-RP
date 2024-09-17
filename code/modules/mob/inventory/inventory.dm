@@ -1,5 +1,5 @@
 //* This file is explicitly licensed under the MIT license. *//
-//* Copyright (c) 2024 silicons                             *//
+//* Copyright (c) 2024 Citadel Station Developers           *//
 
 /**
  * mob inventory data goes in here.
@@ -97,7 +97,7 @@
 /**
  * called when an item is moved from one slot to another
  */
-/datum/inventory/proc/item_exited(obj/item/item, datum/inventory_slot/from_slot, datum/inventory_slot/to_slot)
+/datum/inventory/proc/item_swapped(obj/item/item, datum/inventory_slot/from_slot, datum/inventory_slot/to_slot)
 	hud?.move_item(item, from_slot, to_slot)
 
 #warn hook above 3

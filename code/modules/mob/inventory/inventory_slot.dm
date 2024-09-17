@@ -1,5 +1,5 @@
 //* This file is explicitly licensed under the MIT license. *//
-//* Copyright (c) 2024 silicons                             *//
+//* Copyright (c) 2024 Citadel Station Developers           *//
 
 /// global slot meta cache - all ids must be string!
 /// initialized by SSearly_init
@@ -69,11 +69,11 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 		CRASH("Failed to do type lookup for [type].")
 
 /**
- * inventory slot meta
+ * inventory slot metadata
  * stores all the required information for an inventory slot
  *
- * **Typepaths for these are used directly in most circumstances of slot IDs**
- * **Use get_inventory_slot_meta(id) to automatically translate anything to the static datum.**
+ * **Typepaths for these are used directly in many circumstances instead of their slot IDs**
+ * **Use resolve_inventory_slot(id) to automatically translate anything to the static datum.**
  *
  * ABSTRACT SLOTS:
  * Abstract slots attempts to do something special, based on mob.
@@ -100,7 +100,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	/// our screen loc
 	var/hud_position
 	#warn uh oh!
-	/// our nominal 
+	/// our nominal
 
 	//* Grammar
 	/// player friendly name
