@@ -130,11 +130,7 @@ AI MODULES
 	desc = "A 'safeguard' AI module: 'Safeguard <name>. Anyone threatening or attempting to harm <name> is no longer to be considered a crew member, and is a threat which must be neutralized.'"
 	origin_tech = list(TECH_DATA = 3, TECH_MATERIAL = 4)
 
-<<<<<<< HEAD
-/obj/item/aiModule/safeguard/attack_self(mob/user, datum/event_args/actor/e_args)
-=======
 /obj/item/aiModule/safeguard/attack_self(mob/user, datum/event_args/actor/actor)
->>>>>>> upstream/master
 	. = ..()
 	if(.)
 		return
@@ -163,11 +159,7 @@ AI MODULES
 	desc = "A 'one crew member' AI module: 'Only <name> is a crew member.'"
 	origin_tech = list(TECH_DATA = 3, TECH_MATERIAL = 6) //made with diamonds!
 
-<<<<<<< HEAD
-/obj/item/aiModule/oneHuman/attack_self(mob/user, datum/event_args/actor/e_args)
-=======
 /obj/item/aiModule/oneHuman/attack_self(mob/user, datum/event_args/actor/actor)
->>>>>>> upstream/master
 	. = ..()
 	if(.)
 		return
@@ -251,11 +243,7 @@ AI MODULES
 	desc = "A 'freeform' AI module: '<freeform>'"
 	origin_tech = list(TECH_DATA = 4, TECH_MATERIAL = 4)
 
-<<<<<<< HEAD
-/obj/item/aiModule/freeform/attack_self(mob/user, datum/event_args/actor/e_args)
-=======
 /obj/item/aiModule/freeform/attack_self(mob/user, datum/event_args/actor/actor)
->>>>>>> upstream/master
 	. = ..()
 	if(.)
 		return
@@ -374,11 +362,7 @@ AI MODULES
 	desc = "A 'freeform' Core AI module: '<freeform>'"
 	origin_tech = list(TECH_DATA = 3, TECH_MATERIAL = 6)
 
-<<<<<<< HEAD
-/obj/item/aiModule/freeformcore/attack_self(mob/user, datum/event_args/actor/e_args)
-=======
 /obj/item/aiModule/freeformcore/attack_self(mob/user, datum/event_args/actor/actor)
->>>>>>> upstream/master
 	. = ..()
 	if(.)
 		return
@@ -405,11 +389,7 @@ AI MODULES
 	desc = "A hacked AI law module: '<freeform>'"
 	origin_tech = list(TECH_DATA = 3, TECH_MATERIAL = 6, TECH_ILLEGAL = 7)
 
-<<<<<<< HEAD
-/obj/item/aiModule/syndicate/attack_self(mob/user, datum/event_args/actor/e_args)
-=======
 /obj/item/aiModule/syndicate/attack_self(mob/user, datum/event_args/actor/actor)
->>>>>>> upstream/master
 	. = ..()
 	if(.)
 		return

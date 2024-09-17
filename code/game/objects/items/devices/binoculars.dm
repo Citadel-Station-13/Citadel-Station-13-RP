@@ -12,11 +12,7 @@
 	//materials_base = list("metal" = 50, MAT_GLASS = 50)
 
 
-<<<<<<< HEAD
-/obj/item/binoculars/attack_self(mob/user, datum/event_args/actor/e_args)
-=======
 /obj/item/binoculars/attack_self(mob/user, datum/event_args/actor/actor)
->>>>>>> upstream/master
 	. = ..()
 	if(.)
 		return

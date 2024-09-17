@@ -41,11 +41,7 @@
 		closed_state = "[initial(icon_state)]"
 	. = ..()
 
-<<<<<<< HEAD
-/obj/item/storage/trinketbox/attack_self(mob/user, datum/event_args/actor/e_args)
-=======
 /obj/item/storage/trinketbox/attack_self(mob/user, datum/event_args/actor/actor)
->>>>>>> upstream/master
 	. = ..()
 	if(.)
 		return

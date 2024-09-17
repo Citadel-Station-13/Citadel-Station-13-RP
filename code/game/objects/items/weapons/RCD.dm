@@ -103,11 +103,7 @@
 	return TRUE
 
 // Changes which mode it is on.
-<<<<<<< HEAD
-/obj/item/rcd/attack_self(mob/user, datum/event_args/actor/e_args)
-=======
 /obj/item/rcd/attack_self(mob/user, datum/event_args/actor/actor)
->>>>>>> upstream/master
 	. = ..()
 	if(.)
 		return
@@ -367,11 +363,7 @@
 /obj/item/rcd/electric/mounted/hardsuit
 
 // Old method for swapping modes as there is no way to bring up the radial.
-<<<<<<< HEAD
-/obj/item/rcd/electric/mounted/hardsuit/attack_self(mob/user, datum/event_args/actor/e_args)
-=======
 /obj/item/rcd/electric/mounted/hardsuit/attack_self(mob/user, datum/event_args/actor/actor)
->>>>>>> upstream/master
 	. = ..()
 	if(.)
 		return

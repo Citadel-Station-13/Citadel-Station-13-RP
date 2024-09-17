@@ -49,11 +49,7 @@
 	. = ..()
 	. += "[icon2html(thing = src, target = user)] [src.name] contains [src.reagents.total_volume] units of water left!"
 
-<<<<<<< HEAD
-/obj/item/extinguisher/attack_self(mob/user, datum/event_args/actor/e_args)
-=======
 /obj/item/extinguisher/attack_self(mob/user, datum/event_args/actor/actor)
->>>>>>> upstream/master
 	. = ..()
 	if(.)
 		return

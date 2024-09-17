@@ -98,11 +98,7 @@
 		)
 	starts_with = list(/obj/item/pen/crayon/chalk, /obj/item/reagent_containers/pill/nutriment, /obj/item/gps/survival)
 
-<<<<<<< HEAD
-/obj/item/storage/box/survival_knife/attack_self(mob/user, datum/event_args/actor/e_args)
-=======
 /obj/item/storage/box/survival_knife/attack_self(mob/user, datum/event_args/actor/actor)
->>>>>>> upstream/master
 	return
 
 /obj/item/storage/box/papersack

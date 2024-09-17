@@ -23,11 +23,7 @@
 		to_chat(user, "<span class='warning'>There are not enough telecrystals to do that.</span>")
 	return NONE
 
-<<<<<<< HEAD
-/obj/item/stack/telecrystal/attack_self(mob/user, datum/event_args/actor/e_args)
-=======
 /obj/item/stack/telecrystal/attack_self(mob/user, datum/event_args/actor/actor)
->>>>>>> upstream/master
 	. = ..()
 	if(.)
 		return

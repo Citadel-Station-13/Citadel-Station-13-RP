@@ -31,11 +31,7 @@
 	. = ..()
 	update_icon()
 
-<<<<<<< HEAD
-/obj/item/melee/umbrella/attack_self(mob/user, datum/event_args/actor/e_args)
-=======
 /obj/item/melee/umbrella/attack_self(mob/user, datum/event_args/actor/actor)
->>>>>>> upstream/master
 	. = ..()
 	if(.)
 		return
@@ -247,11 +243,7 @@
 		if(SA_vulnerability & tm.mob_class)
 			tm.apply_damage(SA_bonus_damage) // fuck em
 
-<<<<<<< HEAD
-/obj/item/melee/ashlander/elder/attack_self(mob/user, datum/event_args/actor/e_args)
-=======
 /obj/item/melee/ashlander/elder/attack_self(mob/user, datum/event_args/actor/actor)
->>>>>>> upstream/master
 	. = ..()
 	if(.)
 		return
@@ -328,11 +320,7 @@
 		parry_chance_melee = 15;
 	}
 
-<<<<<<< HEAD
-/obj/item/melee/twohanded/attack_self(mob/user, datum/event_args/actor/e_args)
-=======
 /obj/item/melee/twohanded/attack_self(mob/user, datum/event_args/actor/actor)
->>>>>>> upstream/master
 	. = ..()
 	if(.)
 		return
@@ -466,11 +454,7 @@
 		if (istype(location, /turf))
 			location.hotspot_expose(700, 50, 1)
 
-<<<<<<< HEAD
-/obj/item/melee/thermalcutter/attack_self(mob/user, datum/event_args/actor/e_args)
-=======
 /obj/item/melee/thermalcutter/attack_self(mob/user, datum/event_args/actor/actor)
->>>>>>> upstream/master
 	. = ..()
 	if(.)
 		return

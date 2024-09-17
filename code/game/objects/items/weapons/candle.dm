@@ -61,11 +61,7 @@
 		var/turf/T = loc
 		T.hotspot_expose(700, 5)
 
-<<<<<<< HEAD
-/obj/item/flame/candle/attack_self(mob/user, datum/event_args/actor/e_args)
-=======
 /obj/item/flame/candle/attack_self(mob/user, datum/event_args/actor/actor)
->>>>>>> upstream/master
 	. = ..()
 	if(.)
 		return

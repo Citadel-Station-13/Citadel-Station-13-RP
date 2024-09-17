@@ -6,11 +6,7 @@
 	var/datum/seed/last_seed
 	var/list/last_reagents
 
-<<<<<<< HEAD
-/obj/item/plant_analyzer/attack_self(mob/user, datum/event_args/actor/e_args)
-=======
 /obj/item/plant_analyzer/attack_self(mob/user, datum/event_args/actor/actor)
->>>>>>> upstream/master
 	. = ..()
 	if(.)
 		return

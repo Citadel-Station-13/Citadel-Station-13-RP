@@ -82,11 +82,7 @@ GLOBAL_LIST_BOILERPLATE(all_beacons, /obj/item/radio/beacon)
 	desc = "A label on it reads: <i>Activate to have a singularity beacon teleported to your location</i>."
 	origin_tech = list(TECH_BLUESPACE = 1, TECH_ILLEGAL = 7)
 
-<<<<<<< HEAD
-/obj/item/radio/beacon/syndicate/attack_self(mob/user, datum/event_args/actor/e_args)
-=======
 /obj/item/radio/beacon/syndicate/attack_self(mob/user, datum/event_args/actor/actor)
->>>>>>> upstream/master
 	. = ..()
 	if(.)
 		return

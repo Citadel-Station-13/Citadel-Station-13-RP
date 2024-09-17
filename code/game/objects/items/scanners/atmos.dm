@@ -38,11 +38,7 @@
 
 	return atmosanalyzer_scan(src, air, user)
 
-<<<<<<< HEAD
-/obj/item/atmos_analyzer/attack_self(mob/user, datum/event_args/actor/e_args)
-=======
 /obj/item/atmos_analyzer/attack_self(mob/user, datum/event_args/actor/actor)
->>>>>>> upstream/master
 	. = ..()
 	if(.)
 		return

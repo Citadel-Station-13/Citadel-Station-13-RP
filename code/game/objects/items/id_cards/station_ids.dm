@@ -182,11 +182,7 @@
 		dat += "The confidential information flap is closed."
 	return dat
 
-<<<<<<< HEAD
-/obj/item/card/id/attack_self(mob/user, datum/event_args/actor/e_args)
-=======
 /obj/item/card/id/attack_self(mob/user, datum/event_args/actor/actor)
->>>>>>> upstream/master
 	. = ..()
 	if(.)
 		return

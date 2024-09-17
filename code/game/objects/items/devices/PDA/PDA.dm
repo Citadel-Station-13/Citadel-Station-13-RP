@@ -322,11 +322,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 	return 1
 
 
-<<<<<<< HEAD
-/obj/item/pda/ai/attack_self(mob/user, datum/event_args/actor/e_args)
-=======
 /obj/item/pda/ai/attack_self(mob/user, datum/event_args/actor/actor)
->>>>>>> upstream/master
 	. = ..()
 	if(.)
 		return
@@ -678,11 +674,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 	ui.set_auto_update(auto_update)
 
 //NOTE: graphic resources are loaded on client login
-<<<<<<< HEAD
-/obj/item/pda/attack_self(mob/user, datum/event_args/actor/e_args)
-=======
 /obj/item/pda/attack_self(mob/user, datum/event_args/actor/actor)
->>>>>>> upstream/master
 	. = ..()
 	if(.)
 		return

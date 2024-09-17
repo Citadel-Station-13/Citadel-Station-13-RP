@@ -74,11 +74,7 @@
 /obj/item/gripper/CtrlClick(mob/user)
 	drop_item()
 
-<<<<<<< HEAD
-/obj/item/gripper/attack_self(mob/user, datum/event_args/actor/e_args)
-=======
 /obj/item/gripper/attack_self(mob/user, datum/event_args/actor/actor)
->>>>>>> upstream/master
 	. = ..()
 	if(.)
 		return
@@ -317,11 +313,7 @@
 
 /obj/item/gripper/no_use //Used when you want to hold and put items in other things, but not able to 'use' the item
 
-<<<<<<< HEAD
-/obj/item/gripper/no_use/attack_self(mob/user, datum/event_args/actor/e_args)
-=======
 /obj/item/gripper/no_use/attack_self(mob/user, datum/event_args/actor/actor)
->>>>>>> upstream/master
 	return
 
 /obj/item/gripper/no_use/organ/robotics

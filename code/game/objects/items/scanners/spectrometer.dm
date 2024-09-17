@@ -28,11 +28,7 @@
 	else
 		icon_state = initial(icon_state)
 
-<<<<<<< HEAD
-/obj/item/mass_spectrometer/attack_self(mob/user, datum/event_args/actor/e_args)
-=======
 /obj/item/mass_spectrometer/attack_self(mob/user, datum/event_args/actor/actor)
->>>>>>> upstream/master
 	. = ..()
 	if(.)
 		return

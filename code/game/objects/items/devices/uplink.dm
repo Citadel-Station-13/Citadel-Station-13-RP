@@ -224,11 +224,7 @@
 	hidden_uplink = new(src, target_mind, telecrystals)
 	icon_state = "radio"
 
-<<<<<<< HEAD
-/obj/item/radio/uplink/attack_self(mob/user, datum/event_args/actor/e_args)
-=======
 /obj/item/radio/uplink/attack_self(mob/user, datum/event_args/actor/actor)
->>>>>>> upstream/master
 	. = ..()
 	if(.)
 		return
@@ -239,11 +235,7 @@
 	. = ..()
 	hidden_uplink = new(src)
 
-<<<<<<< HEAD
-/obj/item/multitool/uplink/attack_self(mob/user, datum/event_args/actor/e_args)
-=======
 /obj/item/multitool/uplink/attack_self(mob/user, datum/event_args/actor/actor)
->>>>>>> upstream/master
 	. = ..()
 	if(.)
 		return

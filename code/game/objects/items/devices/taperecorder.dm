@@ -341,11 +341,7 @@
 	canprint = 1
 
 
-<<<<<<< HEAD
-/obj/item/tape_recorder/attack_self(mob/user, datum/event_args/actor/e_args)
-=======
 /obj/item/tape_recorder/attack_self(mob/user, datum/event_args/actor/actor)
->>>>>>> upstream/master
 	. = ..()
 	if(.)
 		return
@@ -393,11 +389,7 @@
 /obj/item/cassette_tape/fire_act()
 	ruin()
 
-<<<<<<< HEAD
-/obj/item/cassette_tape/attack_self(mob/user, datum/event_args/actor/e_args)
-=======
 /obj/item/cassette_tape/attack_self(mob/user, datum/event_args/actor/actor)
->>>>>>> upstream/master
 	. = ..()
 	if(.)
 		return

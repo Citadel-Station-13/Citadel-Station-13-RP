@@ -19,11 +19,7 @@
 	pickup_sound = 'sound/items/pickup/glass.ogg'
 	var/is_reinforced = 0
 
-<<<<<<< HEAD
-/obj/item/stack/material/glass/attack_self(mob/user, datum/event_args/actor/e_args)
-=======
 /obj/item/stack/material/glass/attack_self(mob/user, datum/event_args/actor/actor)
->>>>>>> upstream/master
 	. = ..()
 	if(.)
 		return

@@ -220,11 +220,7 @@ var/list/global/tank_gauge_cache = list()
 
 
 
-<<<<<<< HEAD
-/obj/item/tank/attack_self(mob/user, datum/event_args/actor/e_args)
-=======
 /obj/item/tank/attack_self(mob/user, datum/event_args/actor/actor)
->>>>>>> upstream/master
 	. = ..()
 	if(.)
 		return

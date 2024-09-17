@@ -56,11 +56,7 @@
 	colour = pick("red","orange","yellow","jade","cyan","purple","pink","maroon","black","white")
 	name = "[colour] lipstick"
 
-<<<<<<< HEAD
-/obj/item/lipstick/attack_self(mob/user, datum/event_args/actor/e_args)
-=======
 /obj/item/lipstick/attack_self(mob/user, datum/event_args/actor/actor)
->>>>>>> upstream/master
 	. = ..()
 	if(.)
 		return
@@ -106,11 +102,7 @@
 	icon = 'icons/obj/items.dmi'
 	icon_state = "purplecomb"
 
-<<<<<<< HEAD
-/obj/item/haircomb/attack_self(mob/user, datum/event_args/actor/e_args)
-=======
 /obj/item/haircomb/attack_self(mob/user, datum/event_args/actor/actor)
->>>>>>> upstream/master
 	. = ..()
 	if(.)
 		return
@@ -138,11 +130,7 @@
 	icon_state = "trinketbox"
 	var/list/ui_users = list()
 
-<<<<<<< HEAD
-/obj/item/makeover/attack_self(mob/user, datum/event_args/actor/e_args)
-=======
 /obj/item/makeover/attack_self(mob/user, datum/event_args/actor/actor)
->>>>>>> upstream/master
 	. = ..()
 	if(.)
 		return

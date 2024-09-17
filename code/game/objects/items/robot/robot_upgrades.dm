@@ -39,11 +39,7 @@
 	item_state = "cyborg_upgrade"
 	var/heldname = "default name"
 
-<<<<<<< HEAD
-/obj/item/borg/upgrade/rename/attack_self(mob/user, datum/event_args/actor/e_args)
-=======
 /obj/item/borg/upgrade/rename/attack_self(mob/user, datum/event_args/actor/actor)
->>>>>>> upstream/master
 	. = ..()
 	if(.)
 		return

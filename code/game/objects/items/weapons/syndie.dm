@@ -78,11 +78,7 @@
 	var/detonator_mode = 0
 	var/obj/item/syndie/c4explosive/bomb
 
-<<<<<<< HEAD
-/obj/item/flame/lighter/zippo/c4detonator/attack_self(mob/user, datum/event_args/actor/e_args)
-=======
 /obj/item/flame/lighter/zippo/c4detonator/attack_self(mob/user, datum/event_args/actor/actor)
->>>>>>> upstream/master
 	if(!detonator_mode)
 		..()
 
