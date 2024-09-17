@@ -7,7 +7,7 @@
 	id = "nt-vector"
 	relative_path = "sci_vector.dmm"
 
-	descriptor = /datum/shuttle_descriptor {
+	descriptor = /datum/shuttle_descriptor{
 		mass = 25;
 	}
 
