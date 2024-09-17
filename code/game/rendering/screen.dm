@@ -16,3 +16,13 @@
 /atom/movable/screen/Destroy()
 	master = null
 	return ..()
+
+//* Default Click Handling *//
+
+/atom/movable/screen/proc/on_click(mob/user, list/params)
+
+/atom/movable/screen/proc/on_doubleclick(mob/user, list/params)
+
+/atom/movable/screen
+
+#warn impl all

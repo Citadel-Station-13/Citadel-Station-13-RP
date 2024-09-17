@@ -786,4 +786,4 @@
 
 /obj/item/gun/ballistic/automatic/lmg/foam/update_icon()
 	. = ..()
-	update_held_icon()
+	update_worn_icon()
