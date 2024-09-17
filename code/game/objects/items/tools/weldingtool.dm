@@ -151,7 +151,11 @@
 		if (istype(location, /turf))
 			location.hotspot_expose(700, 50, 1)
 
+<<<<<<< HEAD
 /obj/item/weldingtool/attack_self(mob/user, datum/event_args/actor/e_args)
+=======
+/obj/item/weldingtool/attack_self(mob/user, datum/event_args/actor/actor)
+>>>>>>> upstream/master
 	. = ..()
 	if(.)
 		return
@@ -747,7 +751,11 @@
 	item_state = welding ? "crystal_tool_lit"  : "crystal_tool"
 	update_worn_icon()
 
+<<<<<<< HEAD
 /obj/item/weldingtool/electric/crystal/attack_self(mob/user, datum/event_args/actor/e_args)
+=======
+/obj/item/weldingtool/electric/crystal/attack_self(mob/user, datum/event_args/actor/actor)
+>>>>>>> upstream/master
 	var/mob/living/carbon/human/H = user
 	if(!istype(H))
 		return

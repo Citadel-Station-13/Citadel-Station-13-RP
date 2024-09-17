@@ -138,7 +138,11 @@ GLOBAL_LIST_INIT(default_medbay_channels, list(
 			radio_controller.remove_object(src, radiochannels[ch_name])
 	return ..()
 
+<<<<<<< HEAD
 /obj/item/radio/attack_self(mob/user, datum/event_args/actor/e_args)
+=======
+/obj/item/radio/attack_self(mob/user, datum/event_args/actor/actor)
+>>>>>>> upstream/master
 	. = ..()
 	if(.)
 		return

@@ -82,7 +82,7 @@
 	update_icon()
 	..()
 
-/obj/item/gun/launcher/crossbow/attack_self(mob/user, datum/event_args/actor/e_args)
+/obj/item/gun/launcher/crossbow/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return

@@ -46,7 +46,7 @@
 				return
 		update_icon()
 
-/obj/item/multitool/attack_self(mob/user, datum/event_args/actor/e_args)
+/obj/item/multitool/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return

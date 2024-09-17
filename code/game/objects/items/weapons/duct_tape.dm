@@ -129,7 +129,11 @@
 				return
 	return ..()
 
+<<<<<<< HEAD
 /obj/item/duct_tape_roll/attack_self(mob/user, datum/event_args/actor/e_args)
+=======
+/obj/item/duct_tape_roll/attack_self(mob/user, datum/event_args/actor/actor)
+>>>>>>> upstream/master
 	. = ..()
 	if(.)
 		return
@@ -180,7 +184,11 @@
 	name = W.name + " (taped)"
 	copy_overlays(W)
 
+<<<<<<< HEAD
 /obj/item/duct_tape_piece/attack_self(mob/user, datum/event_args/actor/e_args)
+=======
+/obj/item/duct_tape_piece/attack_self(mob/user, datum/event_args/actor/actor)
+>>>>>>> upstream/master
 	. = ..()
 	if(.)
 		return

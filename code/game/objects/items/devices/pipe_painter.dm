@@ -22,7 +22,11 @@
 
 	P.change_color(pipe_colors[mode])
 
+<<<<<<< HEAD
 /obj/item/pipe_painter/attack_self(mob/user, datum/event_args/actor/e_args)
+=======
+/obj/item/pipe_painter/attack_self(mob/user, datum/event_args/actor/actor)
+>>>>>>> upstream/master
 	. = ..()
 	if(.)
 		return

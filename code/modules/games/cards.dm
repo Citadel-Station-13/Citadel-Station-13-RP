@@ -212,7 +212,7 @@
 
 	..()
 
-/obj/item/deck/attack_self(mob/user, datum/event_args/actor/e_args)
+/obj/item/deck/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -275,7 +275,7 @@
 	pickup_sound = 'sound/items/pickup/paper.ogg'
 
 
-/obj/item/pack/attack_self(mob/user, datum/event_args/actor/e_args)
+/obj/item/pack/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -337,7 +337,7 @@
 	if(!cards.len)
 		qdel(src)
 
-/obj/item/hand/attack_self(mob/user, datum/event_args/actor/e_args)
+/obj/item/hand/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return

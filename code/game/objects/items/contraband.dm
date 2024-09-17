@@ -50,7 +50,7 @@
 	worth_intrinsic = 200
 	w_class = WEIGHT_CLASS_HUGE
 
-/obj/item/stolenpackage/attack_self(mob/user, datum/event_args/actor/e_args)
+/obj/item/stolenpackage/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -179,7 +179,7 @@
 	worth_intrinsic = 350
 	w_class = WEIGHT_CLASS_HUGE
 
-/obj/item/stolenpackageplus/attack_self(mob/user, datum/event_args/actor/e_args)
+/obj/item/stolenpackageplus/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -245,7 +245,7 @@
 	w_class = WEIGHT_CLASS_HUGE
 	worth_intrinsic = 400
 
-/obj/item/mechasalvage/attack_self(mob/user, datum/event_args/actor/e_args)
+/obj/item/mechasalvage/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return

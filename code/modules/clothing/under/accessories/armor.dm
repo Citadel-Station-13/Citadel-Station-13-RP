@@ -496,7 +496,7 @@
 	camera_networks = list(NETWORK_CIV_HELMETS)
 
 
-/obj/item/clothing/accessory/armor/helmetcamera/attack_self(mob/user, datum/event_args/actor/e_args)
+/obj/item/clothing/accessory/armor/helmetcamera/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return

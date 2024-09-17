@@ -22,7 +22,11 @@
 		to_chat(user, "<span class='notice'>You have to go closer if you want to read it.</span>")
 
 //hit yourself with it
+<<<<<<< HEAD
 /obj/item/holowarrant/attack_self(mob/user, datum/event_args/actor/e_args)
+=======
+/obj/item/holowarrant/attack_self(mob/user, datum/event_args/actor/actor)
+>>>>>>> upstream/master
 	. = ..()
 	if(.)
 		return

@@ -81,7 +81,7 @@
 
 
 // Syndicate stamp to forge documents.
-/obj/item/stamp/chameleon/attack_self(mob/user, datum/event_args/actor/e_args)
+/obj/item/stamp/chameleon/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return

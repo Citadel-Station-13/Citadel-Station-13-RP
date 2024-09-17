@@ -10,7 +10,11 @@
 	var/obj/item/implant/imp = null
 	var/active = 1
 
+<<<<<<< HEAD
 /obj/item/implanter/attack_self(mob/user, datum/event_args/actor/e_args)
+=======
+/obj/item/implanter/attack_self(mob/user, datum/event_args/actor/actor)
+>>>>>>> upstream/master
 	. = ..()
 	if(.)
 		return

@@ -41,7 +41,7 @@
 		update_icon()
 		return
 
-/obj/item/glass_jar/attack_self(mob/user, datum/event_args/actor/e_args)
+/obj/item/glass_jar/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return

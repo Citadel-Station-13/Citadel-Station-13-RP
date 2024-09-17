@@ -27,7 +27,7 @@
 	else
 		return ..()
 
-/obj/item/picket_sign/attack_self(mob/user, datum/event_args/actor/e_args)
+/obj/item/picket_sign/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return

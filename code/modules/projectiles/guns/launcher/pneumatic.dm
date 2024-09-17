@@ -77,7 +77,7 @@
 	else if(istype(W) && item_storage.obj_storage.can_be_inserted(W))
 		item_storage.obj_storage.try_insert(W, new /datum/event_args/actor(user))
 
-/obj/item/gun/launcher/pneumatic/attack_self(mob/user, datum/event_args/actor/e_args)
+/obj/item/gun/launcher/pneumatic/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return

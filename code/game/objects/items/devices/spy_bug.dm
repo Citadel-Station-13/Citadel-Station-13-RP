@@ -20,7 +20,11 @@
 	. = ..()
 	camera = new camtype(src)
 
+<<<<<<< HEAD
 /obj/item/camerabug/attack_self(mob/user, datum/event_args/actor/e_args)
+=======
+/obj/item/camerabug/attack_self(mob/user, datum/event_args/actor/actor)
+>>>>>>> upstream/master
 	. = ..()
 	if(.)
 		return
@@ -138,7 +142,11 @@
 	var/obj/machinery/camera/bug/selected_camera
 	var/list/obj/machinery/camera/bug/cameras = new()
 
+<<<<<<< HEAD
 /obj/item/bug_monitor/attack_self(mob/user, datum/event_args/actor/e_args)
+=======
+/obj/item/bug_monitor/attack_self(mob/user, datum/event_args/actor/actor)
+>>>>>>> upstream/master
 	. = ..()
 	if(.)
 		return

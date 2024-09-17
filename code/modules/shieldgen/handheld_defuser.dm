@@ -44,7 +44,7 @@
 	else
 		icon_state = "hdiffuser_off"
 
-/obj/item/shield_diffuser/attack_self(mob/user, datum/event_args/actor/e_args)
+/obj/item/shield_diffuser/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return

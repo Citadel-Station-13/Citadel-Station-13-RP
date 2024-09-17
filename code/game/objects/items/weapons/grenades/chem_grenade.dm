@@ -24,10 +24,14 @@
 	QDEL_LIST_NULL(beakers)
 	return ..()
 
+<<<<<<< HEAD
 /obj/item/grenade/chem_grenade/attack_self(mob/user, datum/event_args/actor/e_args)
 	. = ..()
 	if(.)
 		return
+=======
+/obj/item/grenade/chem_grenade/attack_self(mob/user, datum/event_args/actor/actor)
+>>>>>>> upstream/master
 	if(!stage || stage==1)
 		if(detonator)
 //				detonator.loc=src.loc

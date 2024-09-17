@@ -26,7 +26,11 @@ GLOBAL_LIST_BOILERPLATE(all_mops, /obj/item/mop)
 	create_reagents(30)
 
 
+<<<<<<< HEAD
 /obj/item/mop/attack_self(mob/user, datum/event_args/actor/e_args)
+=======
+/obj/item/mop/attack_self(mob/user, datum/event_args/actor/actor)
+>>>>>>> upstream/master
 	. = ..()
 	if(.)
 		return

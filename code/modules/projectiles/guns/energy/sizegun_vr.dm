@@ -27,7 +27,7 @@
 	. = ..()
 	add_obj_verb(src, /obj/item/gun/energy/sizegun/proc/select_size)
 
-/obj/item/gun/energy/sizegun/attack_self(mob/user, datum/event_args/actor/e_args)
+/obj/item/gun/energy/sizegun/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return

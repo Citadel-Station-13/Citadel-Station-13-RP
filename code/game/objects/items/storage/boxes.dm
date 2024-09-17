@@ -43,7 +43,11 @@
 // todo: implement dynamic state, like how /tg/ boxes work
 
 // BubbleWrap - A box can be folded up to make card
+<<<<<<< HEAD
 /obj/item/storage/box/attack_self(mob/user, datum/event_args/actor/e_args)
+=======
+/obj/item/storage/box/attack_self(mob/user, datum/event_args/actor/actor)
+>>>>>>> upstream/master
 	. = ..()
 	if(.)
 		return

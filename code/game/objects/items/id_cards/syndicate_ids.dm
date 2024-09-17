@@ -29,7 +29,11 @@
 		if(player_is_antag(user.mind))
 			to_chat(user, "<span class='notice'>The microscanner activates as you pass it over the ID, copying its access.</span>")
 
+<<<<<<< HEAD
 /obj/item/card/id/syndicate/attack_self(mob/user, datum/event_args/actor/e_args)
+=======
+/obj/item/card/id/syndicate/attack_self(mob/user, datum/event_args/actor/actor)
+>>>>>>> upstream/master
 	. = ..()
 	if(.)
 		return

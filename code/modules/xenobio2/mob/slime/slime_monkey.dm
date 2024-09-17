@@ -8,7 +8,7 @@ Slime cube lives here.
 	icon_state = "slime cube"
 	var/searching = 0
 
-/obj/item/slime_cube/attack_self(mob/user, datum/event_args/actor/e_args)
+/obj/item/slime_cube/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return

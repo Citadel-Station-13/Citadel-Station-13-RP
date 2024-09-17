@@ -198,7 +198,7 @@
 		user.forceMove(picked)
 		shieldcall_args[SHIELDCALL_ARG_FLAGS] |= SHIELDCALL_FLAG_ATTACK_BLOCKED | SHIELDCALL_FLAG_ATTACK_PASSTHROUGH
 
-/obj/item/clothing/suit/armor/reactive/attack_self(mob/user, datum/event_args/actor/e_args)
+/obj/item/clothing/suit/armor/reactive/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -757,7 +757,7 @@
 	var/anti_magic = FALSE
 	var/blessed = FALSE
 
-/obj/item/clothing/suit/armor/vest/para/attack_self(mob/user, datum/event_args/actor/e_args)
+/obj/item/clothing/suit/armor/vest/para/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return

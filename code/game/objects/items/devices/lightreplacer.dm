@@ -135,7 +135,11 @@
 			return
 
 
+<<<<<<< HEAD
 /obj/item/lightreplacer/attack_self(mob/user, datum/event_args/actor/e_args)
+=======
+/obj/item/lightreplacer/attack_self(mob/user, datum/event_args/actor/actor)
+>>>>>>> upstream/master
 	. = ..()
 	if(.)
 		return

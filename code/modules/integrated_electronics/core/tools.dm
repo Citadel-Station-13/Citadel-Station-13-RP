@@ -77,7 +77,7 @@
 				[io.name] are not connected.</span>")
 				return
 
-/obj/item/integrated_electronics/wirer/attack_self(mob/user, datum/event_args/actor/e_args)
+/obj/item/integrated_electronics/wirer/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -115,7 +115,7 @@
 	var/accepting_refs = FALSE
 	var/copy_values = FALSE
 
-/obj/item/integrated_electronics/debugger/attack_self(mob/user, datum/event_args/actor/e_args)
+/obj/item/integrated_electronics/debugger/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -247,10 +247,14 @@
 	var/datum/integrated_io/selected_io = null
 	var/mode = 0
 
+<<<<<<< HEAD
 /obj/item/multitool/attack_self(mob/user, datum/event_args/actor/e_args)
 	. = ..()
 	if(.)
 		return
+=======
+/obj/item/multitool/attack_self(mob/user, datum/event_args/actor/actor)
+>>>>>>> upstream/master
 	if(selected_io)
 		selected_io = null
 		to_chat(user, "<span class='notice'>You clear the wired connection from the multitool.</span>")

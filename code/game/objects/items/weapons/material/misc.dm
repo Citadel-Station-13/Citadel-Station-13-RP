@@ -102,7 +102,11 @@
 	w_class = WEIGHT_CLASS_SMALL
 	attack_verb = list("mushed", "splatted", "splooshed", "splushed") // Words that totally exist.
 
+<<<<<<< HEAD
 /obj/item/material/snow/snowball/attack_self(mob/user, datum/event_args/actor/e_args)
+=======
+/obj/item/material/snow/snowball/attack_self(mob/user, datum/event_args/actor/actor)
+>>>>>>> upstream/master
 	. = ..()
 	if(.)
 		return

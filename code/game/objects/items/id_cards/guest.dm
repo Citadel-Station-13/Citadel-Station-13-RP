@@ -65,7 +65,11 @@
 	. += SPAN_NOTICE("Issuer name: [giver_name]")
 	. += SPAN_NOTICE("Issuer rank: [giver_rank]")
 
+<<<<<<< HEAD
 /obj/item/card/id/guest/attack_self(mob/user, datum/event_args/actor/e_args)
+=======
+/obj/item/card/id/guest/attack_self(mob/user, datum/event_args/actor/actor)
+>>>>>>> upstream/master
 	. = ..()
 	if(.)
 		return

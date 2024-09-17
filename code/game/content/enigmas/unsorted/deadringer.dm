@@ -28,7 +28,7 @@
 		reveal()
 		watchowner = null
 
-/obj/item/deadringer/attack_self(mob/user, datum/event_args/actor/e_args)
+/obj/item/deadringer/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return

@@ -250,7 +250,7 @@ GLOBAL_LIST_EMPTY(all_cataloguers)
 /obj/item/cataloguer/proc/adjust_points(amount)
 	points_stored = max(0, points_stored += amount)
 
-/obj/item/cataloguer/attack_self(mob/user, datum/event_args/actor/e_args)
+/obj/item/cataloguer/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return

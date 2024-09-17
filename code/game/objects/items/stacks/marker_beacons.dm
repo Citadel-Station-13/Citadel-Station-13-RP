@@ -50,7 +50,11 @@ var/list/marker_beacon_colors = list(
 /obj/item/stack/marker_beacon/update_icon()
 	icon_state = "[initial(icon_state)][lowertext(picked_color)]"
 
+<<<<<<< HEAD
 /obj/item/stack/marker_beacon/attack_self(mob/user, datum/event_args/actor/e_args)
+=======
+/obj/item/stack/marker_beacon/attack_self(mob/user, datum/event_args/actor/actor)
+>>>>>>> upstream/master
 	. = ..()
 	if(.)
 		return

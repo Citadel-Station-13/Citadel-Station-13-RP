@@ -118,7 +118,7 @@
 	inject_amount = amount
 	usr.action_feedback(SPAN_NOTICE("[src] is now set to inject [amount] per use."), src)
 
-/obj/item/hypospray/attack_self(mob/user, datum/event_args/actor/e_args)
+/obj/item/hypospray/attack_self(mob/user, datum/event_args/actor/actor)
 	switch(inject_mode)
 		if(HYPOSPRAY_MODE_INJECT)
 			inject_mode = HYPOSPRAY_MODE_SPRAY

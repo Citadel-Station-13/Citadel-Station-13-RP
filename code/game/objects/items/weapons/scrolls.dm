@@ -10,7 +10,11 @@
 	throw_range = 20
 	origin_tech = list(TECH_BLUESPACE = 4)
 
+<<<<<<< HEAD
 /obj/item/teleportation_scroll/attack_self(mob/user, datum/event_args/actor/e_args)
+=======
+/obj/item/teleportation_scroll/attack_self(mob/user, datum/event_args/actor/actor)
+>>>>>>> upstream/master
 	. = ..()
 	if(.)
 		return

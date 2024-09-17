@@ -27,7 +27,7 @@
 	to_chat(usr, "New scan range set to [scanrange] step(s) around user, including current location.")
 	. = ..()
 
-/obj/item/mining_scanner/attack_self(mob/user, datum/event_args/actor/e_args)
+/obj/item/mining_scanner/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return

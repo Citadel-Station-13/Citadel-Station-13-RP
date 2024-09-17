@@ -145,7 +145,7 @@
 	w_class = WEIGHT_CLASS_NORMAL
 	materials_base = list(MAT_STEEL = 4000, MAT_GLASS = 1000)
 
-/obj/item/cell_charger_kit/attack_self(mob/user, datum/event_args/actor/e_args)
+/obj/item/cell_charger_kit/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return

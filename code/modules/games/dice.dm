@@ -55,7 +55,7 @@
 	sides = 10
 	result = 10
 
-/obj/item/dice/attack_self(mob/user, datum/event_args/actor/e_args)
+/obj/item/dice/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -148,7 +148,7 @@
 		/obj/item/dice,
 		)
 
-/obj/item/storage/dicecup/attack_self(mob/user, datum/event_args/actor/e_args)
+/obj/item/storage/dicecup/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return

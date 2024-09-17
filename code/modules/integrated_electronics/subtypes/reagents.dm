@@ -345,7 +345,7 @@
 	activate_pin(1)
 	activate_pin(3)
 
-/obj/item/integrated_circuit/input/beaker_connector/attack_self(mob/user, datum/event_args/actor/e_args)
+/obj/item/integrated_circuit/input/beaker_connector/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return

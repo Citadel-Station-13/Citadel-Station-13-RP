@@ -200,7 +200,7 @@
 			weapon_descriptor = "electromagnetic overload",
 		)
 
-/obj/item/organ/external/attack_self(mob/user, datum/event_args/actor/e_args)
+/obj/item/organ/external/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
