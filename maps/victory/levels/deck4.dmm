@@ -1708,10 +1708,10 @@
 /turf/simulated/floor/wood,
 /area/bridge/meeting_room)
 "bTg" = (
-/obj/structure/bed/chair/comfy/black{
+/obj/overmap/entity/visitable/ship/triumph,
+/obj/structure/bed/chair/bay/comfy/black{
 	dir = 4
 	},
-/obj/overmap/entity/visitable/ship/triumph,
 /turf/simulated/floor/tiled/dark,
 /area/bridge)
 "bTI" = (
@@ -4673,10 +4673,10 @@
 /turf/simulated/floor/carpet,
 /area/bridge/office)
 "fgr" = (
-/obj/structure/bed/chair/comfy/black{
+/obj/machinery/atmospherics/component/unary/vent_pump/on,
+/obj/structure/bed/chair/bay/comfy/black{
 	dir = 8
 	},
-/obj/machinery/atmospherics/component/unary/vent_pump/on,
 /turf/simulated/floor/tiled/dark,
 /area/bridge)
 "fgz" = (
@@ -5175,7 +5175,7 @@
 /obj/effect/floor_decal/corner/yellow{
 	dir = 10
 	},
-/obj/structure/bed/chair/comfy/black{
+/obj/structure/bed/chair/bay/comfy/black{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/dark,
@@ -7621,7 +7621,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/exploration/courser_dock)
 "ioL" = (
-/obj/structure/bed/chair/comfy/black{
+/obj/structure/bed/chair/bay/comfy/black{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/dark,
@@ -14424,6 +14424,13 @@
 	},
 /turf/simulated/floor/wood,
 /area/hydroponics/garden)
+"pzm" = (
+/obj/machinery/door/blast/regular{
+	id = "sensor-shroud";
+	name = "Sensor Shroud"
+	},
+/turf/space,
+/area/space)
 "pzo" = (
 /obj/machinery/photocopier,
 /obj/machinery/camera/network/exploration,
@@ -14766,7 +14773,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/exploration/excursion_dock)
 "pXa" = (
-/obj/structure/bed/chair/office/dark,
+/obj/structure/bed/chair/bay/comfy/black,
 /turf/simulated/floor/tiled/dark,
 /area/bridge)
 "pYI" = (
@@ -15651,11 +15658,18 @@
 /turf/simulated/shuttle/floor/voidcraft,
 /area/shuttle/excursion/general)
 "qWo" = (
-/obj/structure/bed/chair/comfy/black{
-	dir = 4
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
+	},
+/obj/structure/bed/chair/bay/comfy/black{
+	dir = 4
+	},
+/obj/machinery/button/remote/blast_door{
+	dir = 8;
+	id = "sensor-shroud";
+	name = "Sensor Shroud";
+	pixel_x = 32;
+	req_access = list(19)
 	},
 /turf/simulated/floor/carpet/purcarpet,
 /area/bridge)
@@ -57375,7 +57389,7 @@ cZC
 kyG
 myo
 vYC
-jNg
+pzm
 vYC
 jNg
 jNg
