@@ -1,6 +1,11 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
+//* Init *//
+
+/mob/proc/init_inventory()
+	return
+
 //* Carry Weight *//
 
 /mob/proc/update_carry_slowdown()

@@ -7,10 +7,16 @@
 //* and the enforcement of 'mob.inventory' access, but given the overhead of  *//
 //* a proc-call, this is currently not done.                                  *//
 
-#warn mirror & check below
+// todo: return INV_RETURN_*
+/datum/inventory/proc/put_in_hand(obj/item/I, index, inv_op_flags)
+	#warn impl & below
 
-/mob/proc/put_in_hand(obj/item/I, index, flags)
-	return equip_hand_impl(I, index, flags)
+/mob/proc/put_in_hand(obj/item/I, index, inv_op_flags)
+	return equip_hand_impl(I, index, inv_op_flags)
+
+// todo: return INV_RETURN_*
+/datum/inventory/proc/put_in_hands(obj/item/I, inv_op_flags)
+	#warn impl & below
 
 /mob/proc/put_in_hands(obj/item/I, flags)
 	if(is_holding(I))
@@ -26,16 +32,40 @@
 	return put_in_active_hand(I, flags) || put_in_inactive_hand(I, flags)
 
 /**
- * put in hands or forcemove to drop location
- * allows an optional param for where to drop on fail
+ * puts an item in hands or forcemoves to drop_loc
  *
- * @return TRUE/FALSE based on put in hand or dropped to ground
+ * * drop_loc defaults to the owner's location, if any owner is there.
+ * * not having a valid drop_loc is a runtime error.
+ *
+ * @return INV_RETURN_*
  */
-/mob/proc/put_in_hands_or_drop(obj/item/I, flags, atom/drop_loc = drop_location())
-	if(!put_in_hands(I, flags))
+/datum/inventory/proc/put_in_hands_or_drop(obj/item/I, inv_op_flags, atom/drop_loc)
+	if(isnull(drop_loc))
+		drop_loc = owner?.drop_location()
+	if(isnull(drop_loc))
+		CRASH("invalid drop location; placing stuff into nullspace is usually an error.")
+
+	var/result = put_in_hands(I, inv_op_flags)
+
+	// todo: switch(result) once put_in_hands uses INV_RETURN_*; convert this
+	if(!result)
 		I.forceMove(drop_loc)
-		return FALSE
-	return TRUE
+		return INV_RETURN_FAILED
+	return INV_RETURN_SUCCESS
+
+/**
+ * puts an item in hands or forcemoves to drop_loc
+ *
+ * * drop_loc defaults to the owner's location, if any owner is there.
+ * * not having a valid drop_loc is a runtime error.
+ *
+ * @return INV_RETURN_*
+ */
+/mob/proc/put_in_hands_or_drop(obj/item/I, inv_op_flags, atom/drop_loc)
+	// inventory null --> INV_RETURN_FAILED, as that's also #define'd to be null
+	return inventory?.put_in_hands_or_drop(I, inv_op_flags, drop_loc)
+
+#warn mirror & check below
 
 /**
  * put in hands or del
@@ -48,18 +78,6 @@
 		return FALSE
 	return TRUE
 
-/mob/proc/put_in_left_hand(obj/item/I, flags)
-	for(var/i in 1 to length(inventory?.held_items) step 2)
-		if(put_in_hand(I, i, flags))
-			return TRUE
-	return FALSE
-
-/mob/proc/put_in_right_hand(obj/item/I, flags)
-	for(var/i in 1 to length(inventory?.held_items) step 2)
-		if(put_in_hand(I, i, flags))
-			return TRUE
-	return FALSE
-
 /mob/proc/put_in_hand_or_del(obj/item/I, index, flags)
 	. = put_in_hand(I, index, flags)
 	if(!.)
@@ -69,3 +87,21 @@
 	. = put_in_hand(I, index, flags)
 	if(!.)
 		I.forceMove(drop_loc)
+
+#warn mirror & check above
+
+//*                   By Side                       *//
+//* This is not on /datum/inventory level as        *//
+//* oftentimes a mob has no semantic 'sided hands'. *//
+
+/mob/proc/put_in_left_hand(obj/item/I, inv_op_flags)
+	for(var/i in 1 to length(inventory?.held_items) step 2)
+		if(put_in_hand(I, i, inv_op_flags))
+			return TRUE
+	return FALSE
+
+/mob/proc/put_in_right_hand(obj/item/I, flags)
+	for(var/i in 1 to length(inventory?.held_items) step 2)
+		if(put_in_hand(I, i, inv_op_flags))
+			return TRUE
+	return FALSE

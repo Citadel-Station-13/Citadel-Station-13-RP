@@ -102,12 +102,7 @@
 
 #warn hook above 3
 
-//? init
-
-/mob/proc/init_inventory()
-	return
-
-//! unsorted below
+//! unsorted / legacy below
 
 /mob/proc/handle_item_denesting(obj/item/I, old_slot, flags, mob/user)
 	// if the item was inside something,

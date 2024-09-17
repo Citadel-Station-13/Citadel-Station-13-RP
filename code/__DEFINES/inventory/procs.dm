@@ -49,13 +49,16 @@
 /// no sound, warnings, etc, entirely
 #define INV_OP_SILENT				(INV_OP_SUPPRESS_SOUND | INV_OP_SUPPRESS_WARNING)
 
-// todo: INV_OP_RECRUSE
+// todo: INV_OP_RECURSE for nested / worn-over pieces
 
 //* Inventory Return Flags *//
+
+// todo: should these be flags? maybe they should just be an enum?
 
 /// Failed
 ///
 /// * Yes, on a failure, we just return null.
+/// * This is to fail truthy checks, and be a valid switch() return.
 #define INV_RETURN_FAILED null
 /// Success
 #define INV_RETURN_SUCCESS (1<<0)
