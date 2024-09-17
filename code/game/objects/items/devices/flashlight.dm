@@ -116,7 +116,7 @@
 /obj/item/flashlight/AltClick(mob/user)
 	attack_self(user)
 
-/obj/item/flashlight/attack_self(mob/user)
+/obj/item/flashlight/attack_self(mob/user, datum/event_args/actor/actor)
 	if(power_use)
 		if(!isturf(user.loc))
 			to_chat(user, "You cannot turn the light on while in this [user.loc].") //To prevent some lighting anomalities.
@@ -354,7 +354,7 @@
 	src.damage_type = initial(src.damage_type)
 	update_appearance()
 
-/obj/item/flashlight/flare/attack_self(mob/user)
+/obj/item/flashlight/flare/attack_self(mob/user, datum/event_args/actor/actor)
 
 	// Usual checks
 	if(!fuel)
@@ -411,7 +411,7 @@
 	on = FALSE
 	update_appearance()
 
-/obj/item/flashlight/glowstick/attack_self(mob/user)
+/obj/item/flashlight/glowstick/attack_self(mob/user, datum/event_args/actor/actor)
 
 	if(!fuel)
 		to_chat(user, SPAN_NOTICE("The glowstick has already been turned on."))

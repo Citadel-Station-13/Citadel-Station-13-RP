@@ -151,7 +151,7 @@
 		if (istype(location, /turf))
 			location.hotspot_expose(700, 50, 1)
 
-/obj/item/weldingtool/attack_self(mob/user)
+/obj/item/weldingtool/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -754,7 +754,7 @@
 		M.update_inv_l_hand()
 		M.update_inv_r_hand()
 
-/obj/item/weldingtool/electric/crystal/attack_self(mob/user)
+/obj/item/weldingtool/electric/crystal/attack_self(mob/user, datum/event_args/actor/actor)
 	var/mob/living/carbon/human/H = user
 	if(!istype(H))
 		return

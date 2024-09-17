@@ -514,7 +514,7 @@
 			return TRUE
 	return ..()
 
-/obj/item/electronic_assembly/attack_self(mob/user)
+/obj/item/electronic_assembly/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return

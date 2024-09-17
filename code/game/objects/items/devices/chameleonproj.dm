@@ -24,7 +24,7 @@
 	. = ..()
 	disrupt()
 
-/obj/item/chameleon/attack_self(mob/user)
+/obj/item/chameleon/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return

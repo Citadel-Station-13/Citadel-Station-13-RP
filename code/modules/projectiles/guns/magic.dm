@@ -12,9 +12,12 @@
 	var/recharge_rate = 4
 	var/charge_tick = 0
 	var/can_charge = 1
-	var/ammo_type = /obj/projectile/magic
 	var/no_den_usage
 	pin = /obj/item/firing_pin/magic
+
+	/// the projectile type we generate
+	//  todo: this should be on /obj/item/gun/magic/basic
+	projectile_type = /obj/projectile/magic
 
 /obj/item/gun/magic/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	if(no_den_usage)
@@ -29,22 +32,11 @@
 		return
 	. = ..()
 
-/obj/item/gun/magic/proc/recharge_newshot()
-	if(charges && chambered && !chambered.get_projectile())
-		chambered.newshot()
-
-/obj/item/gun/magic/proc/process_chamber()
-	if(chambered && !chambered.get_projectile()) //if BB is null, i.e the shot has been fired...
-		charges--//... drain a charge
-		recharge_newshot()
-
 /obj/item/gun/magic/Initialize(mapload)
 	. = ..()
 	charges = max_charges
-	chambered = new ammo_type(src)
 	if(can_charge)
 		START_PROCESSING(SSobj, src)
-
 
 /obj/item/gun/magic/Destroy()
 	if(can_charge)
@@ -54,26 +46,14 @@
 /obj/item/gun/magic/process(delta_time)
 	charge_tick++
 	if(charge_tick < recharge_rate || charges >= max_charges)
-		return 0
+		return
 	charge_tick = 0
 	charges++
-	if(charges == 1)
-		recharge_newshot()
-	return 1
 
 /obj/item/gun/magic/consume_next_projectile()
+	if(charges <= 0)
+		return null
 	return chambered?.get_projectile()
 
-/obj/item/gun/magic/proc/shoot_with_empty_chamber(mob/living/user as mob|obj)
+/obj/item/gun/magic/handle_click_empty(mob/user)
 	to_chat(user, "<span class='warning'>The [name] whizzles quietly.</span>")
-
-/obj/item/gun/magic/suicide_act(mob/user)
-	user.visible_message("<span class='suicide'>[user] is twisting [src] above their head, releasing a magical blast! It looks like they are trying to commit suicide!</span>")
-	playsound(loc, fire_sound, 50, 1, -1)
-	return (FIRELOSS)
-
-/obj/item/gun/magic/vv_edit_var(var_name, var_value)
-	. = ..()
-	switch(var_name)
-		if(NAMEOF(src, charges))
-			recharge_newshot()

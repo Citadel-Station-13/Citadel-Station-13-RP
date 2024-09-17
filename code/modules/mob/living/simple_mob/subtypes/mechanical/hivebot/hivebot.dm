@@ -56,8 +56,7 @@
 /obj/projectile/bullet/hivebot
 	damage_force = 10
 	damage_type = DAMAGE_TYPE_BRUTE
-	sharp = FALSE
-	edge = FALSE
+	damage_mode = NONE
 
 /mob/living/simple_mob/mechanical/hivebot/swarm
 	name = "swarm hivebot"
