@@ -72,7 +72,7 @@
 		var/turf/real_target = ToTurf
 		AM.locationTransitForceMove(real_target, allow_pulled = FALSE, allow_grabbed = GRAB_AGGRESSIVE)
 
-/obj/item/bluespace_harpoon/attack_self(mob/user)
+/obj/item/bluespace_harpoon/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return

@@ -49,7 +49,7 @@
 				M.put_in_hands(trash)
 		qdel(src)
 
-/obj/item/reagent_containers/food/snacks/attack_self(mob/user)
+/obj/item/reagent_containers/food/snacks/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -1004,7 +1004,7 @@
 	heated_reagents = list("doctorsdelight" = 5, "hyperzine" = 0.75, "synaptizine" = 0.25)
 	var/has_been_heated = 0
 
-/obj/item/reagent_containers/food/snacks/donkpocket/sinpocket/attack_self(mob/user)
+/obj/item/reagent_containers/food/snacks/donkpocket/sinpocket/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -1858,7 +1858,7 @@
 	. = ..()
 	reagents.add_reagent("protein", 10)
 
-/obj/item/reagent_containers/food/snacks/monkeycube/attack_self(mob/user)
+/obj/item/reagent_containers/food/snacks/monkeycube/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -3298,7 +3298,7 @@
 		return
 	. = ..()
 
-/obj/item/pizzabox/attack_self(mob/user)
+/obj/item/pizzabox/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
