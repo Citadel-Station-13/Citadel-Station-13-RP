@@ -3,48 +3,58 @@
 /obj/machinery/door/blast/regular,
 /obj/structure/atmospheric_retention_field,
 /turf/simulated/floor/plating/indoors,
-/area/space)
+/area/shuttle/nanotrasen/sci_vector/service)
 "aU" = (
 /obj/structure/handrail,
 /turf/simulated/floor/plating/indoors,
-/area/space)
+/area/shuttle/nanotrasen/sci_vector/service)
 "aZ" = (
 /obj/structure/handrail,
 /turf/space/basic,
-/area/space)
+/area/shuttle/nanotrasen/sci_vector/excursion)
 "bF" = (
 /obj/machinery/power/smes,
 /turf/simulated/floor/plating/indoors,
-/area/space)
+/area/shuttle/nanotrasen/sci_vector/engineering)
 "ch" = (
 /obj/machinery/atmospherics/pipe/tank{
 	dir = 4
 	},
 /turf/simulated/floor/plating/indoors,
-/area/space)
+/area/shuttle/nanotrasen/sci_vector/engineering)
+"cv" = (
+/obj/effect/decal/warning_stripes,
+/turf/simulated/floor/plating/indoors,
+/area/shuttle/nanotrasen/sci_vector/engineering)
+"cW" = (
+/obj/structure/bed/chair/bay/comfy{
+	dir = 8
+	},
+/turf/simulated/floor/plating/indoors,
+/area/shuttle/nanotrasen/sci_vector/excursion)
 "dl" = (
 /obj/structure/handrail{
 	dir = 8
 	},
 /turf/simulated/floor/plating/indoors,
-/area/space)
+/area/shuttle/nanotrasen/sci_vector/excursion)
 "du" = (
 /obj/machinery/door/airlock/glass/research,
 /turf/simulated/floor/plating/indoors,
-/area/space)
+/area/shuttle/nanotrasen/sci_vector/excursion)
 "dw" = (
 /obj/machinery/power/apc/east_mount,
 /obj/machinery/recharge_station,
 /turf/simulated/floor/plating/indoors,
-/area/space)
+/area/shuttle/nanotrasen/sci_vector/cockpit)
 "eh" = (
 /obj/machinery/telecomms/server,
 /turf/simulated/floor/plating/indoors,
-/area/space)
+/area/shuttle/nanotrasen/sci_vector/engineering)
 "eu" = (
 /obj/structure/table/rack/shelf/steel,
 /turf/simulated/floor/plating/indoors,
-/area/space)
+/area/shuttle/nanotrasen/sci_vector/crew)
 "fc" = (
 /obj/structure/window/reinforced{
 	dir = 8
@@ -53,46 +63,69 @@
 	dir = 4
 	},
 /turf/simulated/floor/plating/indoors,
-/area/space)
+/area/shuttle/nanotrasen/sci_vector/cockpit)
+"fX" = (
+/turf/simulated/wall/r_wall/prepainted/science,
+/area/shuttle/nanotrasen/sci_vector/excursion)
 "fY" = (
 /obj/structure/bed/chair/bay/comfy,
 /turf/simulated/floor/plating/indoors,
-/area/space)
+/area/shuttle/nanotrasen/sci_vector/crew)
 "hA" = (
 /obj/effect/decal/warning_stripes,
 /obj/effect/decal/warning_stripes,
 /turf/simulated/floor/plating/indoors,
-/area/space)
+/area/shuttle/nanotrasen/sci_vector/service)
+"jw" = (
+/turf/simulated/floor/plating/indoors,
+/area/shuttle/nanotrasen/sci_vector/service)
 "kn" = (
 /obj/spawner/window/reinforced/full,
 /obj/spawner/window/reinforced/full,
 /turf/simulated/floor/plating/indoors,
-/area/space)
+/area/shuttle/nanotrasen/sci_vector/excursion)
 "kR" = (
 /obj/effect/decal/warning_stripes,
 /turf/simulated/floor/plating/indoors,
-/area/space)
+/area/shuttle/nanotrasen/sci_vector/service)
 "lE" = (
 /obj/machinery/atmospherics/component/unary/engine/bigger,
 /turf/space/basic,
-/area/space)
+/area/shuttle/nanotrasen/sci_vector/service)
 "mY" = (
 /obj/structure/closet/secure_closet/engineering_welding,
 /turf/simulated/floor/plating/indoors,
-/area/space)
+/area/shuttle/nanotrasen/sci_vector/excursion)
 "oj" = (
 /obj/structure/closet/secure_closet/xenoarchaeologist,
 /obj/machinery/power/apc/east_mount,
 /turf/simulated/floor/plating/indoors,
-/area/space)
+/area/shuttle/nanotrasen/sci_vector/excursion)
 "oy" = (
 /obj/spawner/window/reinforced/full,
 /turf/simulated/floor/plating/indoors,
-/area/space)
+/area/shuttle/nanotrasen/sci_vector/crew)
+"oG" = (
+/turf/space/basic,
+/area/shuttle/nanotrasen/sci_vector/service)
 "pj" = (
 /obj/structure/closet/secure_closet/xenoarchaeologist,
 /turf/simulated/floor/plating/indoors,
-/area/space)
+/area/shuttle/nanotrasen/sci_vector/excursion)
+"ps" = (
+/obj/machinery/door/airlock/external/glass,
+/turf/simulated/floor/plating/indoors,
+/area/shuttle/nanotrasen/sci_vector/airlock)
+"pu" = (
+/obj/structure/handrail{
+	dir = 1
+	},
+/turf/simulated/floor/plating/indoors,
+/area/shuttle/nanotrasen/sci_vector/engineering)
+"qA" = (
+/obj/machinery/suit_storage_unit/exploration,
+/turf/simulated/floor/plating/indoors,
+/area/shuttle/nanotrasen/sci_vector/cockpit)
 "rb" = (
 /obj/structure/bed/chair/bay/comfy{
 	dir = 1
@@ -101,78 +134,95 @@
 	dir = 4
 	},
 /turf/simulated/floor/plating/indoors,
-/area/space)
+/area/shuttle/nanotrasen/sci_vector/crew)
 "rw" = (
 /obj/structure/window/reinforced,
 /obj/machinery/suit_storage_unit/exploration,
 /turf/simulated/floor/plating/indoors,
-/area/space)
+/area/shuttle/nanotrasen/sci_vector/airlock)
+"rQ" = (
+/turf/simulated/floor/plating/indoors,
+/area/shuttle/nanotrasen/sci_vector/airlock)
 "sl" = (
 /obj/structure/table/rack/shelf,
 /turf/simulated/floor/plating/indoors,
-/area/space)
+/area/shuttle/nanotrasen/sci_vector/crew)
+"tF" = (
+/obj/machinery/power/apc/north_mount,
+/turf/simulated/floor/plating/indoors,
+/area/shuttle/nanotrasen/sci_vector/airlock)
 "uA" = (
 /obj/machinery/atmospherics/pipe/tank/air{
 	dir = 8
 	},
 /turf/simulated/floor/plating/indoors,
-/area/space)
+/area/shuttle/nanotrasen/sci_vector/engineering)
 "vU" = (
 /obj/structure/bed/chair/bay/comfy{
 	dir = 8
 	},
 /turf/simulated/floor/plating/indoors,
-/area/space)
+/area/shuttle/nanotrasen/sci_vector/cockpit)
 "wr" = (
 /obj/structure/window/reinforced{
 	dir = 8
 	},
 /obj/structure/table/rack/shelf,
 /turf/simulated/floor/plating/indoors,
-/area/space)
+/area/shuttle/nanotrasen/sci_vector/cockpit)
 "xj" = (
 /obj/machinery/artifact_scanpad,
 /turf/simulated/floor/plating/indoors,
-/area/space)
+/area/shuttle/nanotrasen/sci_vector/crew)
+"xr" = (
+/turf/simulated/floor/plating/indoors,
+/area/shuttle/nanotrasen/sci_vector/cockpit)
 "xv" = (
 /obj/machinery/computer/rdconsole{
 	dir = 4
 	},
 /turf/simulated/floor/plating/indoors,
-/area/space)
+/area/shuttle/nanotrasen/sci_vector/excursion)
 "xK" = (
 /obj/machinery/r_n_d/server,
 /turf/simulated/floor/plating/indoors,
-/area/space)
+/area/shuttle/nanotrasen/sci_vector/engineering)
+"xO" = (
+/obj/effect/decal/warning_stripes,
+/turf/simulated/floor/plating/indoors,
+/area/shuttle/nanotrasen/sci_vector/airlock)
+"yR" = (
+/turf/simulated/wall/r_wall/prepainted/science,
+/area/shuttle/nanotrasen/sci_vector/crew)
 "zu" = (
 /obj/structure/window/reinforced{
 	dir = 4
 	},
 /obj/effect/decal/warning_stripes,
 /turf/simulated/floor/plating/indoors,
-/area/space)
+/area/shuttle/nanotrasen/sci_vector/service)
 "zV" = (
 /obj/structure/handrail{
 	dir = 1
 	},
 /turf/simulated/floor/plating/indoors,
-/area/space)
+/area/shuttle/nanotrasen/sci_vector/airlock)
 "Ce" = (
 /obj/structure/handrail{
 	dir = 4
 	},
 /turf/simulated/floor/plating/indoors,
-/area/space)
+/area/shuttle/nanotrasen/sci_vector/airlock)
 "CI" = (
 /obj/machinery/suit_storage_unit/exploration,
 /turf/simulated/floor/plating/indoors,
-/area/space)
+/area/shuttle/nanotrasen/sci_vector/airlock)
 "CP" = (
 /obj/machinery/computer/nanite_chamber{
 	dir = 4
 	},
 /turf/simulated/floor/plating/indoors,
-/area/space)
+/area/shuttle/nanotrasen/sci_vector/service)
 "DK" = (
 /obj/structure/bed/chair/bay/comfy{
 	dir = 1
@@ -181,18 +231,18 @@
 	dir = 8
 	},
 /turf/simulated/floor/plating/indoors,
-/area/space)
+/area/shuttle/nanotrasen/sci_vector/crew)
 "DR" = (
 /obj/structure/dispenser/oxygen{
 	dir = 8
 	},
 /turf/simulated/floor/plating/indoors,
-/area/space)
+/area/shuttle/nanotrasen/sci_vector/excursion)
 "DS" = (
 /obj/structure/handrail,
 /obj/machinery/power/apc/north_mount,
 /turf/simulated/floor/plating/indoors,
-/area/space)
+/area/shuttle/nanotrasen/sci_vector/service)
 "EC" = (
 /obj/structure/window/reinforced{
 	dir = 4
@@ -202,7 +252,7 @@
 	},
 /obj/machinery/portable_atmospherics/canister/oxygen,
 /turf/simulated/floor/plating,
-/area/space)
+/area/shuttle/nanotrasen/sci_vector/service)
 "EG" = (
 /obj/structure/window/reinforced{
 	dir = 1
@@ -215,103 +265,144 @@
 	dir = 8
 	},
 /turf/simulated/floor/plating/indoors,
-/area/space)
+/area/shuttle/nanotrasen/sci_vector/engineering)
 "EQ" = (
 /obj/machinery/mech_recharger,
 /turf/simulated/floor/plating/indoors,
-/area/space)
+/area/shuttle/nanotrasen/sci_vector/service)
 "EX" = (
 /obj/structure/window/reinforced{
 	dir = 8
 	},
 /obj/effect/decal/warning_stripes,
 /turf/simulated/floor/plating/indoors,
-/area/space)
+/area/shuttle/nanotrasen/sci_vector/service)
+"Fx" = (
+/obj/spawner/window/reinforced/full,
+/turf/simulated/floor/plating/indoors,
+/area/shuttle/nanotrasen/sci_vector/cockpit)
+"Gt" = (
+/obj/effect/decal/warning_stripes,
+/turf/space/basic,
+/area/shuttle/nanotrasen/sci_vector/engineering)
 "GQ" = (
 /obj/machinery/artifact_harvester,
 /obj/structure/window/reinforced{
 	dir = 4
 	},
 /turf/simulated/floor/plating/indoors,
-/area/space)
+/area/shuttle/nanotrasen/sci_vector/crew)
 "Hs" = (
 /obj/machinery/nanite_chamber,
 /turf/simulated/floor/plating/indoors,
-/area/space)
+/area/shuttle/nanotrasen/sci_vector/service)
 "HY" = (
 /obj/structure/window/reinforced{
 	dir = 8
 	},
 /obj/structure/table/reinforced,
 /turf/simulated/floor/plating/indoors,
-/area/space)
+/area/shuttle/nanotrasen/sci_vector/cockpit)
+"Ib" = (
+/obj/machinery/door/airlock/glass/research,
+/turf/simulated/floor/plating/indoors,
+/area/shuttle/nanotrasen/sci_vector/cockpit)
 "Jr" = (
 /obj/machinery/exonet_node,
 /obj/machinery/power/apc/west_mount,
 /turf/simulated/floor/plating/indoors,
-/area/space)
+/area/shuttle/nanotrasen/sci_vector/engineering)
 "KS" = (
 /obj/machinery/atmospherics/pipe/tank/phoron{
 	dir = 8
 	},
 /turf/simulated/floor/plating/indoors,
-/area/space)
+/area/shuttle/nanotrasen/sci_vector/service)
 "Lv" = (
 /obj/effect/decal/warning_stripes,
 /turf/space/basic,
-/area/space)
+/area/shuttle/nanotrasen/sci_vector/service)
+"LZ" = (
+/obj/spawner/window/reinforced/full,
+/turf/simulated/floor/plating/indoors,
+/area/shuttle/nanotrasen/sci_vector/excursion)
 "Mz" = (
 /turf/space/basic,
 /area/space)
 "Ps" = (
 /turf/simulated/wall/r_wall/prepainted/science,
-/area/space)
+/area/shuttle/nanotrasen/sci_vector/service)
+"Pt" = (
+/obj/structure/handrail,
+/turf/simulated/floor/plating/indoors,
+/area/shuttle/nanotrasen/sci_vector/airlock)
 "PP" = (
 /obj/structure/handrail{
 	dir = 1
 	},
 /turf/space/basic,
-/area/space)
+/area/shuttle/nanotrasen/sci_vector/service)
 "Qc" = (
 /obj/structure/table/reinforced,
 /turf/simulated/floor/plating/indoors,
-/area/space)
+/area/shuttle/nanotrasen/sci_vector/crew)
 "QF" = (
 /obj/machinery/r_n_d/circuit_imprinter,
 /obj/structure/window/reinforced,
 /turf/simulated/floor/plating/indoors,
-/area/space)
+/area/shuttle/nanotrasen/sci_vector/excursion)
 "Rk" = (
 /obj/machinery/atmospherics/component/binary/pump/fuel{
 	dir = 4
 	},
 /turf/simulated/floor/plating/indoors,
-/area/space)
+/area/shuttle/nanotrasen/sci_vector/service)
 "RH" = (
 /obj/structure/closet/crate/freezer/rations,
 /turf/simulated/floor/plating/indoors,
-/area/space)
+/area/shuttle/nanotrasen/sci_vector/crew)
 "RR" = (
 /obj/machinery/artifact_analyser,
 /obj/structure/window/reinforced{
 	dir = 8
 	},
 /turf/simulated/floor/plating/indoors,
-/area/space)
+/area/shuttle/nanotrasen/sci_vector/crew)
 "RX" = (
 /obj/machinery/r_n_d/protolathe,
 /obj/structure/window/reinforced{
 	dir = 1
 	},
 /turf/simulated/floor/plating/indoors,
-/area/space)
+/area/shuttle/nanotrasen/sci_vector/excursion)
+"Su" = (
+/turf/simulated/wall/r_wall/prepainted/science,
+/area/shuttle/nanotrasen/sci_vector/cockpit)
+"Ti" = (
+/turf/simulated/wall/r_wall/prepainted/science,
+/area/shuttle/nanotrasen/sci_vector/engineering)
+"Vu" = (
+/obj/effect/decal/warning_stripes,
+/turf/space/basic,
+/area/shuttle/nanotrasen/sci_vector/excursion)
 "Wl" = (
 /obj/machinery/door/airlock/external/glass,
 /turf/simulated/floor/plating/indoors,
-/area/space)
+/area/shuttle/nanotrasen/sci_vector/engineering)
 "WQ" = (
 /turf/simulated/floor/plating/indoors,
-/area/space)
+/area/shuttle/nanotrasen/sci_vector/crew)
+"Xm" = (
+/obj/machinery/door/airlock/glass/research,
+/turf/simulated/floor/plating/indoors,
+/area/shuttle/nanotrasen/sci_vector/service)
+"Yh" = (
+/turf/simulated/floor/plating/indoors,
+/area/shuttle/nanotrasen/sci_vector/excursion)
+"Yj" = (
+/obj/machinery/door/airlock/glass/research,
+/turf/simulated/floor/plating/indoors,
+/area/shuttle/nanotrasen/sci_vector/engineering)
 "Yl" = (
 /obj/structure/window/reinforced{
 	dir = 4
@@ -321,7 +412,14 @@
 	},
 /obj/machinery/portable_atmospherics/canister/air,
 /turf/simulated/floor/plating,
-/area/space)
+/area/shuttle/nanotrasen/sci_vector/service)
+"YQ" = (
+/turf/simulated/floor/plating/indoors,
+/area/shuttle/nanotrasen/sci_vector/engineering)
+"Zt" = (
+/obj/spawner/window/reinforced/full,
+/turf/simulated/floor/plating/indoors,
+/area/shuttle/nanotrasen/sci_vector/service)
 "ZP" = (
 /obj/structure/window/reinforced{
 	dir = 8
@@ -331,7 +429,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/plating/indoors,
-/area/space)
+/area/shuttle/nanotrasen/sci_vector/service)
 
 (1,1,1) = {"
 Mz
@@ -503,8 +601,8 @@ Mz
 Mz
 Mz
 Mz
-Lv
-Lv
+Vu
+Vu
 Mz
 Mz
 Mz
@@ -533,15 +631,15 @@ Mz
 Mz
 Mz
 Mz
-Ps
+yR
 oy
-Ps
-Ps
-oy
-oy
+fX
+fX
+LZ
+LZ
 kn
-Ps
-Ps
+fX
+fX
 aZ
 Mz
 Mz
@@ -567,21 +665,21 @@ Mz
 oy
 Qc
 sl
-Ps
+fX
 mY
 RX
 xv
 QF
 DR
 pj
-Ps
-Wl
-Wl
+fX
+ps
+ps
 Ps
 Hs
 CP
 Ps
-Mz
+oG
 Mz
 Mz
 Mz
@@ -595,22 +693,22 @@ Mz
 Mz
 Mz
 Mz
-Ps
+yR
 Qc
 WQ
 WQ
 du
-WQ
-WQ
-vU
-WQ
-WQ
+Yh
+Yh
+cW
+Yh
+Yh
 pj
-oy
-aU
+LZ
+Pt
 zV
 Ps
-WQ
+jw
 hA
 kR
 Ps
@@ -631,22 +729,22 @@ oy
 fY
 WQ
 DK
-oy
-WQ
-WQ
-WQ
+LZ
+Yh
+Yh
+Yh
 dl
-WQ
+Yh
 oj
-oy
-aU
+LZ
+Pt
 zV
 Ps
-WQ
+jw
 zu
 zu
 Ps
-Mz
+oG
 Mz
 Mz
 Mz
@@ -663,16 +761,16 @@ oy
 fY
 WQ
 rb
-Ps
-oy
-oy
-oy
-Ps
+Su
+Fx
+Fx
+Fx
+Su
 du
-Ps
-Ps
-Wl
-Wl
+fX
+fX
+ps
+ps
 Ps
 aU
 EQ
@@ -691,22 +789,22 @@ Mz
 Mz
 Mz
 Mz
-Ps
+yR
 RR
 WQ
 RH
-Ps
+Su
 HY
 fc
 wr
-Ps
-WQ
+Su
+tF
 Ce
 Ce
-WQ
-WQ
-du
-WQ
+rQ
+rQ
+Xm
+jw
 EQ
 EQ
 aA
@@ -727,18 +825,18 @@ oy
 xj
 WQ
 WQ
-oy
-WQ
+Fx
+xr
 vU
-WQ
-du
-WQ
-WQ
-WQ
-WQ
-kR
-oy
-WQ
+xr
+Ib
+rQ
+rQ
+rQ
+rQ
+xO
+Zt
+jw
 EC
 Yl
 Ps
@@ -755,22 +853,22 @@ Mz
 Mz
 Mz
 Mz
-Ps
+yR
 GQ
 WQ
 eu
-Ps
-CI
-WQ
+Su
+qA
+xr
 dw
-Ps
+Su
 CI
 CI
 rw
-WQ
-WQ
-du
-WQ
+rQ
+rQ
+Xm
+jw
 EQ
 EQ
 aA
@@ -791,16 +889,16 @@ oy
 fY
 WQ
 DK
-Ps
-Ps
-du
-Ps
-Ps
-Ps
-Ps
-Ps
-du
-Ps
+Su
+Su
+Ib
+Su
+Su
+Ti
+Ti
+Ti
+Yj
+Ti
 Ps
 DS
 EQ
@@ -823,15 +921,15 @@ oy
 fY
 WQ
 rb
-Ps
+Ti
 ch
-WQ
-WQ
-Ps
+YQ
+YQ
+Ti
 Jr
 eh
 bF
-WQ
+YQ
 xK
 Ps
 Rk
@@ -851,26 +949,26 @@ Mz
 Mz
 Mz
 Mz
-Ps
+yR
 Qc
 WQ
 WQ
-du
-WQ
-WQ
-WQ
-du
-WQ
-WQ
-WQ
-WQ
-WQ
-du
-WQ
+Yj
+YQ
+YQ
+YQ
+Yj
+YQ
+YQ
+YQ
+YQ
+YQ
+Xm
+jw
 kR
 kR
 Ps
-Mz
+oG
 Mz
 Mz
 Mz
@@ -887,16 +985,16 @@ Mz
 oy
 Qc
 sl
-Ps
+Ti
 uA
-Ps
+Ti
 Wl
-Ps
+Ti
 bF
 EG
-kR
-kR
-kR
+cv
+cv
+cv
 Ps
 KS
 KS
@@ -917,23 +1015,23 @@ Mz
 Mz
 Mz
 Mz
-Ps
+yR
 oy
+Ti
+Ti
+Ti
+pu
+Ti
+Ti
+Ti
+Ti
+Ti
+Ti
 Ps
 Ps
 Ps
-zV
 Ps
-Ps
-Ps
-Ps
-Ps
-Ps
-Ps
-Ps
-Ps
-Ps
-Mz
+oG
 Mz
 Mz
 Mz
@@ -951,11 +1049,11 @@ Mz
 Mz
 Mz
 Mz
-Lv
-Lv
-Ps
+Gt
+Gt
+Ti
 Wl
-Ps
+Ti
 Mz
 Mz
 Mz

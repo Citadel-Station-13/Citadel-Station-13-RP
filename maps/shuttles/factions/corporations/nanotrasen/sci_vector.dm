@@ -14,3 +14,23 @@
 	#warn finish map halfway
 
 // todo: finish map
+
+/area/shuttle/nanotrasen/sci_vector
+
+/area/shuttle/nanotrasen/sci_vector/engineering
+	name = "NT-S Vector - Engineering Compartment"
+
+/area/shuttle/nanotrasen/sci_vector/service
+	name = "NT-S Vector - Service Compartment"
+
+/area/shuttle/nanotrasen/sci_vector/cockpit
+	name = "NT-S Vector - Cockpit"
+
+/area/shuttle/nanotrasen/sci_vector/crew
+	name = "NT-S Vector - Crew Compartment"
+
+/area/shuttle/nanotrasen/sci_vector/excursion
+	name = "NT-S Vector - Excursion Compartment"
+
+/area/shuttle/nanotrasen/sci_vector/airlock
+	name = "NT-S Vector - Airlock"

@@ -7,7 +7,7 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/plating/indoors,
-/area/space)
+/area/shuttle/nanotrasen/drone_prototype)
 "d" = (
 /obj/structure/handrail{
 	dir = 4
@@ -17,7 +17,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/plating/indoors,
-/area/space)
+/area/shuttle/nanotrasen/drone_prototype)
 "e" = (
 /obj/structure/handrail{
 	dir = 8
@@ -26,33 +26,34 @@
 	icon_state = "2-8"
 	},
 /turf/simulated/floor/plating/indoors,
-/area/space)
+/area/shuttle/nanotrasen/drone_prototype)
 "g" = (
 /obj/effect/floor_decal/industrial/warning/full,
 /obj/structure/cable{
 	icon_state = "0-2"
 	},
 /turf/simulated/floor/plating/indoors,
-/area/space)
+/area/shuttle/nanotrasen/drone_prototype)
 "h" = (
 /obj/structure/handrail{
 	dir = 8
 	},
 /turf/simulated/floor/plating/indoors,
-/area/space)
+/area/shuttle/nanotrasen/drone_prototype)
 "i" = (
 /turf/simulated/shuttle/wall/voidcraft,
-/area/space)
+/area/shuttle/nanotrasen/drone_prototype)
 "j" = (
 /obj/machinery/shipsensors,
+/obj/effect/floor_decal/industrial/warning/full,
 /turf/simulated/floor/plating/outdoors,
-/area/space)
+/area/shuttle/nanotrasen/drone_prototype)
 "k" = (
 /obj/structure/handrail{
 	dir = 4
 	},
 /turf/simulated/floor/plating/indoors,
-/area/space)
+/area/shuttle/nanotrasen/drone_prototype)
 "l" = (
 /obj/effect/floor_decal/industrial/warning/full,
 /obj/machinery/power/apc/south_mount,
@@ -60,53 +61,49 @@
 	icon_state = "0-4"
 	},
 /turf/simulated/floor/plating/indoors,
-/area/space)
+/area/shuttle/nanotrasen/drone_prototype)
 "q" = (
 /turf/simulated/wall/rshull,
-/area/space)
+/area/shuttle/nanotrasen/drone_prototype)
 "s" = (
 /obj/effect/floor_decal/industrial/warning/full,
 /obj/structure/cable{
 	icon_state = "0-4"
 	},
 /turf/simulated/floor/plating/indoors,
-/area/space)
+/area/shuttle/nanotrasen/drone_prototype)
 "t" = (
 /obj/structure/railing,
 /turf/simulated/floor/plating/indoors,
-/area/space)
+/area/shuttle/nanotrasen/drone_prototype)
 "w" = (
 /obj/effect/floor_decal/industrial/warning/full,
 /turf/simulated/floor/plating/indoors,
-/area/space)
-"y" = (
-/obj/effect/floor_decal/industrial/warning/full,
-/turf/space/basic,
-/area/space)
+/area/shuttle/nanotrasen/drone_prototype)
 "B" = (
 /obj/spawner/window/low_wall/reinforced/full,
 /turf/simulated/floor/plating/indoors,
-/area/space)
+/area/shuttle/nanotrasen/drone_prototype)
 "E" = (
 /turf/simulated/floor/plating/indoors,
-/area/space)
+/area/shuttle/nanotrasen/drone_prototype)
 "I" = (
 /obj/effect/floor_decal/industrial/warning/full,
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/plating/indoors,
-/area/space)
+/area/shuttle/nanotrasen/drone_prototype)
 "L" = (
 /obj/structure/table/rack/shelf,
 /turf/simulated/floor/plating/indoors,
-/area/space)
+/area/shuttle/nanotrasen/drone_prototype)
 "M" = (
 /obj/machinery/power/terminal{
 	dir = 1
 	},
 /turf/simulated/floor/plating/indoors,
-/area/space)
+/area/shuttle/nanotrasen/drone_prototype)
 "N" = (
 /obj/structure/railing{
 	dir = 1
@@ -115,11 +112,15 @@
 	icon_state = "1-8"
 	},
 /turf/simulated/floor/plating/indoors,
-/area/space)
+/area/shuttle/nanotrasen/drone_prototype)
 "P" = (
 /obj/machinery/door/airlock/external/glass,
 /turf/simulated/floor/plating/indoors,
-/area/space)
+/area/shuttle/nanotrasen/drone_prototype)
+"Q" = (
+/obj/effect/floor_decal/industrial/warning/full,
+/turf/space/basic,
+/area/shuttle/nanotrasen/drone_prototype)
 
 (1,1,1) = {"
 a
@@ -184,9 +185,9 @@ a
 a
 a
 a
-y
-y
-y
+Q
+Q
+Q
 a
 a
 a
@@ -326,7 +327,7 @@ a
 a
 a
 a
-a
+Q
 q
 B
 B
@@ -346,9 +347,9 @@ a
 a
 a
 a
-y
-y
-y
+Q
+Q
+Q
 a
 a
 a

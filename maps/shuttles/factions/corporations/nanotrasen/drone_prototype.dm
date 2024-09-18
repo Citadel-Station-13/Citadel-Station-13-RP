@@ -14,3 +14,6 @@
 	#warn finish map halfway
 
 // todo: finish map
+
+/area/shuttle/nanotrasen/drone_prototype
+	name = "V1 Sensor Drone"
