@@ -26,10 +26,10 @@
 
 /datum/mob_hud/inventory/New(mob/owner, datum/inventory/host)
 	src.host = host
-	src.rebuild(host.build_inventory_slots_with_remappings(), host.get_nominal_hand_count())
+	src.rebuild(host.build_inventory_slots_with_remappings(), length(host.held_items))
 	..()
 
-/datum/mob_hud/Destroy()
+/datum/mob_hud/inventory/Destroy()
 	host = null
 	cleanup()
 	return ..()
@@ -80,23 +80,63 @@
 	add_screen((use_self_hand = new))
 
 	// slots
+	rebuild_slots(inventory_slots_with_mappings)
+
+	// hands
+	rebuild_hands(number_of_hands)
+
+/**
+ * Rebuilds our slots. Doesn't rebuild anything else. Doesn't wipe old objects.
+ */
+/datum/mob_hud/inventory/proc/rebuild_slots(list/inventory_slots_with_mappings)
 	LAZYINITLIST(slot_by_id)
 	for(var/slot_id in inventory_slots_with_mappings)
 		var/datum/inventory_slot/slot = resolve_inventory_slot(slot_id)
 		if(!slot)
 			stack_trace("failed to fetch slot during hud rebuild: [slot_id]")
 			continue
-		slot_by_id += new /atom/movable/screen/inventory/slot(null, slot, inventory_slot_with_mappings[slot_id] || list())
+		slot_by_id += new /atom/movable/screen/inventory/slot(null, slot, inventory_slots_with_mappings[slot_id] || list())
 
-	// hands
-	rebuild_hands(number_of_hands)
+	// here is where we basically pull a CSS flexbox.
+
+	var/max_drawer_main = 0
+	var/max_drawer_cross = 0
+
+	var/min_hands_main = 0
+	var/max_hands_main = 0
+	var/max_hands_cross = 0
+
+	var/list/atom/movable/screen/inventory/slot/place_anywhere = list()
+	var/list/atom/movable/screen/inventory/slot/
+
+	for(var/id in slot_by_id)
+		var/atom/movable/screen/inventory/slot/slot_object = slot_by_id[id]
+
+		switch(slot_object.inventory_hud_anchor)
+			if(INVENTORY_HUD_ANCHOR_AUTOMATIC)
+			if(INVENTORY_HUD_ANCHOR_TO_DRAWER)
+			if(INVENTORY_HUD_ANCHOR_TO_HANDS)
+	#warn impl
 
 /**
- * Rebuilds our hands. Doesn't rebuild anything else.
+ * Rebuilds our hands. Doesn't rebuild anything else. Doesn't wipe old objects.
  */
 /datum/mob_hud/inventory/proc/rebuild_hands(number_of_hands)
 	LAZYINITLIST(hands)
-	#warn impl
+	if(length(hands) < number_of_hands)
+		var/old_length = length(hands)
+		hands.len = number_of_hands
+		for(var/i in old_length + 1 to number_of_hands)
+			var/atom/movable/screen/inventory/hand/hand_object = new(null, src, i)
+			add_screen(hand_object)
+			hands[i] = hand_object
+	else if(length(hands) > number_of_hands)
+		for(var/i in number_of_hands + 1 to length(hands))
+			if(!hands[i])
+				continue
+			remove_screen(hands[i])
+			qdel(hands[i])
+		hands.len = number_of_hands
 
 /datum/mob_hud/inventory/proc/all_slot_screen_objects(filter_by_class)
 	RETURN_TYPE(/list)
@@ -142,10 +182,11 @@
 	#warn impl
 
 /datum/mob_hud/inventory/proc/swap_active_hand(from_index, to_index)
-	var/atom/movable/screen/inventory/hands/old_hand = hands[from_index]
-	var/atom/movable/screen/inventory/hands/new_hand = hands[to_index]
+	var/atom/movable/screen/inventory/hand/old_hand = hands[from_index]
+	var/atom/movable/screen/inventory/hand/new_hand = hands[to_index]
 
-#warn impl all
+	old_hand.cut_overlay("[old_hand.icon_state]-active")
+	new_hand.add_overlay("[new_hand.icon_state]-active")
 
 /atom/movable/screen/inventory
 	name = "inventory"
@@ -184,6 +225,9 @@
 
 /**
  * Slot screen objects
+ *
+ * * Stores remappings so we don't have to do it separately
+ * * Stores calculated screen_loc so we don't have to recalculate unless slots are mutated.
  */
 /atom/movable/screen/inventory/slot
 	/// our inventory slot id
@@ -263,5 +307,5 @@
 /**
  * Button: 'activate inhand'
  */
-/atom/movable/screen/inventory/hands/use_self_hand
+/atom/movable/screen/inventory/use_self_hand
 	#warn does main have this?
