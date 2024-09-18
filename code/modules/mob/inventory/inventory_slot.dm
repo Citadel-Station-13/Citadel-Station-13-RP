@@ -97,10 +97,12 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	var/sort_order = 0
 
 	//* HUD
-	/// our screen loc
-	var/hud_position
-	#warn uh oh!
-	/// our nominal
+	/// our anchoring enum
+	var/inventory_hud_anchor = INVENTORY_HUD_ANCHOR_AUTOMATIC
+	/// preferred main axis offset
+	var/inventory_hud_main_axis = 0
+	/// preferred cross axis offset
+	var/inventory_hud_cross_axis = 0
 
 	//* Grammar
 	/// player friendly name
@@ -268,7 +270,10 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	sort_order = 2000
 	display_name = "back"
 	display_preposition = "on"
-	hud_position = ui_back
+
+	inventory_hud_anchor = INVENTORY_HUD_ANCHOR_TO_HANDS
+	inventory_hud_main_axis = -1
+
 	slot_equip_checks = SLOT_EQUIP_CHECK_USE_FLAGS
 	inventory_slot_flags = INV_SLOT_IS_RENDERED | INV_SLOT_IS_INVENTORY | INV_SLOT_IS_STRIPPABLE | INV_SLOT_CONSIDERED_WORN
 	slot_flags_required = SLOT_BACK
@@ -290,7 +295,10 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	sort_order = 5000
 	display_name = "body"
 	display_preposition = "on"
-	hud_position = ui_iclothing
+
+	inventory_hud_anchor = INVENTORY_HUD_ANCHOR_TO_DRAWER
+	inventory_hud_main_axis = 1
+
 	slot_equip_checks = SLOT_EQUIP_CHECK_USE_FLAGS
 	slot_flags_required = SLOT_ICLOTHING
 	inventory_slot_flags = INV_SLOT_IS_RENDERED | INV_SLOT_IS_INVENTORY | INV_SLOT_IS_STRIPPABLE | INV_SLOT_HUD_REQUIRES_EXPAND | INV_SLOT_CONSIDERED_WORN
@@ -414,7 +422,11 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	sort_order = 10000
 	display_name = "head"
 	display_preposition = "on"
-	hud_position = ui_head
+
+	inventory_hud_anchor = INVENTORY_HUD_ANCHOR_TO_DRAWER
+	inventory_hud_main_axis = 4
+	inventory_hud_cross_axis = 1
+
 	slot_equip_checks = SLOT_EQUIP_CHECK_USE_FLAGS
 	slot_flags_required = SLOT_HEAD
 	inventory_slot_flags = INV_SLOT_IS_RENDERED | INV_SLOT_IS_INVENTORY | INV_SLOT_IS_STRIPPABLE | INV_SLOT_HUD_REQUIRES_EXPAND | INV_SLOT_CONSIDERED_WORN
@@ -450,7 +462,10 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	display_name = "suit"
 	display_preposition = "over"
 
-	hud_position = ui_oclothing
+	inventory_hud_anchor = INVENTORY_HUD_ANCHOR_TO_DRAWER
+	inventory_hud_main_axis = 1
+	inventory_hud_cross_axis = 1
+
 	slot_equip_checks = SLOT_EQUIP_CHECK_USE_FLAGS
 	slot_flags_required = SLOT_OCLOTHING
 	inventory_slot_flags = INV_SLOT_IS_RENDERED | INV_SLOT_IS_INVENTORY | INV_SLOT_IS_STRIPPABLE | INV_SLOT_HUD_REQUIRES_EXPAND | INV_SLOT_CONSIDERED_WORN
@@ -518,7 +533,10 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	sort_order = 6000
 	display_name = "waist"
 	display_preposition = "on"
-	hud_position = ui_belt
+
+	inventory_hud_anchor = INVENTORY_HUD_ANCHOR_TO_DRAWER
+	inventory_hud_cross_axis = 4
+
 	slot_equip_checks = SLOT_EQUIP_CHECK_USE_FLAGS
 	slot_flags_required = SLOT_BELT
 	inventory_slot_flags = INV_SLOT_IS_RENDERED | INV_SLOT_IS_INVENTORY | INV_SLOT_IS_STRIPPABLE | INV_SLOT_CONSIDERED_WORN
@@ -550,14 +568,19 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	id = SLOT_ID_LEFT_POCKET
 	display_name = "left pocket"
 	display_preposition = "in"
-	hud_position = ui_storage1
+
+	inventory_hud_anchor = INVENTORY_HUD_ANCHOR_TO_HANDS
+	inventory_hud_main_axis = 1
 
 /datum/inventory_slot/inventory/pocket/right
 	name = "right pocket"
 	id = SLOT_ID_RIGHT_POCKET
 	display_name = "right pocket"
 	display_preposition = "in"
-	hud_position = ui_storage2
+
+
+	inventory_hud_anchor = INVENTORY_HUD_ANCHOR_TO_HANDS
+	inventory_hud_main_axis = 2
 
 /datum/inventory_slot/inventory/id
 	name = "id"
@@ -566,7 +589,10 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	sort_order = 3000
 	display_name = "badge"
 	display_preposition = "as"
-	hud_position = ui_id
+
+	inventory_hud_anchor = INVENTORY_HUD_ANCHOR_TO_DRAWER
+	inventory_hud_cross_axis = 3
+
 	slot_equip_checks = SLOT_EQUIP_CHECK_USE_FLAGS
 	slot_flags_required = SLOT_ID
 	inventory_slot_flags = INV_SLOT_IS_RENDERED | INV_SLOT_IS_INVENTORY | INV_SLOT_IS_STRIPPABLE | INV_SLOT_CONSIDERED_WORN
@@ -597,7 +623,10 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	sort_order = 4000
 	display_name = "feet"
 	display_preposition = "on"
-	hud_position = ui_shoes
+
+	inventory_hud_anchor = INVENTORY_HUD_ANCHOR_TO_DRAWER
+	inventory_hud_cross_axis = 3
+
 	slot_equip_checks = SLOT_EQUIP_CHECK_USE_FLAGS
 	slot_flags_required = SLOT_FEET
 	inventory_slot_flags = INV_SLOT_IS_RENDERED | INV_SLOT_IS_INVENTORY | INV_SLOT_IS_STRIPPABLE | INV_SLOT_CONSIDERED_WORN | INV_SLOT_HUD_REQUIRES_EXPAND
@@ -633,7 +662,11 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	sort_order = 6500
 	display_name = "hands"
 	display_preposition = "on"
-	hud_position = ui_gloves
+
+	inventory_hud_anchor = INVENTORY_HUD_ANCHOR_TO_DRAWER
+	inventory_hud_main_axis = 1
+	inventory_hud_cross_axis = 2
+
 	slot_equip_checks = SLOT_EQUIP_CHECK_USE_FLAGS
 	slot_flags_required = SLOT_GLOVES
 	inventory_slot_flags = INV_SLOT_IS_RENDERED | INV_SLOT_IS_INVENTORY | INV_SLOT_IS_STRIPPABLE | INV_SLOT_CONSIDERED_WORN | INV_SLOT_HUD_REQUIRES_EXPAND
@@ -656,7 +689,10 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	sort_order = 7500
 	display_name = "eyes"
 	display_preposition = "over"
-	hud_position = ui_glasses
+
+	inventory_hud_anchor = INVENTORY_HUD_ANCHOR_TO_DRAWER
+	inventory_hud_main_axis = 2
+
 	slot_equip_checks = SLOT_EQUIP_CHECK_USE_FLAGS
 	slot_flags_required = SLOT_EYES
 	inventory_slot_flags = INV_SLOT_IS_RENDERED | INV_SLOT_IS_INVENTORY | INV_SLOT_IS_STRIPPABLE | INV_SLOT_CONSIDERED_WORN | INV_SLOT_HUD_REQUIRES_EXPAND
@@ -679,7 +715,10 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	sort_order = 500
 	display_name = "suit"
 	display_preposition = "on"
-	hud_position = ui_sstore1
+
+	inventory_hud_anchor = INVENTORY_HUD_ANCHOR_TO_DRAWER
+	inventory_hud_cross_axis = 2
+
 	slot_equip_checks = SLOT_EQUIP_CHECK_USE_PROC
 	inventory_slot_flags = INV_SLOT_IS_RENDERED | INV_SLOT_IS_INVENTORY | INV_SLOT_IS_STRIPPABLE
 	render_layer = HUMAN_LAYER_SLOT_SUITSTORE
@@ -728,7 +767,11 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	id = SLOT_ID_LEFT_EAR
 	display_name = "left ear"
 	display_preposition = "on"
-	hud_position = ui_l_ear
+
+	inventory_hud_anchor = INVENTORY_HUD_ANCHOR_TO_DRAWER
+	inventory_hud_main_axis = 3
+	inventory_hud_cross_axis = 2
+
 	slot_equip_checks = SLOT_EQUIP_CHECK_USE_FLAGS
 	slot_flags_required = SLOT_EARS
 
@@ -738,7 +781,11 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	id = SLOT_ID_RIGHT_EAR
 	display_name = "right ear"
 	display_preposition = "on"
-	hud_position = ui_r_ear
+
+	inventory_hud_anchor = INVENTORY_HUD_ANCHOR_TO_DRAWER
+	inventory_hud_main_axis = 4
+	inventory_hud_cross_axis = 2
+
 	slot_equip_checks = SLOT_EQUIP_CHECK_USE_FLAGS
 	slot_flags_required = SLOT_EARS
 	render_layer = HUMAN_LAYER_SLOT_EARS
@@ -750,7 +797,11 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	sort_order = 9250
 	display_name = "face"
 	display_preposition = "on"
-	hud_position = ui_mask
+
+	inventory_hud_anchor = INVENTORY_HUD_ANCHOR_TO_DRAWER
+	inventory_hud_main_axis = 3
+	inventory_hud_cross_axis = 1
+
 	slot_equip_checks = SLOT_EQUIP_CHECK_USE_FLAGS
 	slot_flags_required = SLOT_MASK
 	render_default_icons = list(

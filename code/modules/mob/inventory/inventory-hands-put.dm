@@ -7,18 +7,15 @@
 //* and the enforcement of 'mob.inventory' access, but given the overhead of  *//
 //* a proc-call, this is currently not done.                                  *//
 
-// todo: return INV_RETURN_*
 /datum/inventory/proc/put_in_hand(obj/item/I, index, inv_op_flags)
-	#warn impl & below
-
-/mob/proc/put_in_hand(obj/item/I, index, inv_op_flags)
+	#warn impl & below, INV_RETURN_*
 	return equip_hand_impl(I, index, inv_op_flags)
 
-// todo: return INV_RETURN_*
-/datum/inventory/proc/put_in_hands(obj/item/I, inv_op_flags)
-	#warn impl & below
+/mob/proc/put_in_hand(obj/item/I, index, inv_op_flags)
+	return inventory?.put_in_hand(I, index, inv_op_flags)
 
-/mob/proc/put_in_hands(obj/item/I, flags)
+/datum/inventory/proc/put_in_hands(obj/item/I, inv_op_flags)
+	#warn impl & below, INV_RETURN_*
 	if(is_holding(I))
 		return TRUE
 
@@ -31,21 +28,25 @@
 
 	return put_in_active_hand(I, flags) || put_in_inactive_hand(I, flags)
 
+/mob/proc/put_in_hands(obj/item/I, inv_op_flags)
+	return inventory?.put_in_hands(I, inv_op_flags)
+
 /**
  * puts an item in hands or forcemoves to drop_loc
  *
+ * * if 'specific_index' is specified, this only tries to go to that hand index.
  * * drop_loc defaults to the owner's location, if any owner is there.
  * * not having a valid drop_loc is a runtime error.
  *
  * @return INV_RETURN_*
  */
-/datum/inventory/proc/put_in_hands_or_drop(obj/item/I, inv_op_flags, atom/drop_loc)
+/datum/inventory/proc/put_in_hands_or_drop(obj/item/I, inv_op_flags, atom/drop_loc, specific_index)
 	if(isnull(drop_loc))
 		drop_loc = owner?.drop_location()
 	if(isnull(drop_loc))
 		CRASH("invalid drop location; placing stuff into nullspace is usually an error.")
 
-	var/result = put_in_hands(I, inv_op_flags)
+	var/result = specific_index ? put_in_hand(I, specific_index, inv_op_flags) : put_in_hands(I, inv_op_flags)
 
 	// todo: switch(result) once put_in_hands uses INV_RETURN_*; convert this
 	if(!result)
@@ -56,39 +57,44 @@
 /**
  * puts an item in hands or forcemoves to drop_loc
  *
+ * * if 'specific_index' is specified, this only tries to go to that hand index.
  * * drop_loc defaults to the owner's location, if any owner is there.
  * * not having a valid drop_loc is a runtime error.
  *
  * @return INV_RETURN_*
  */
-/mob/proc/put_in_hands_or_drop(obj/item/I, inv_op_flags, atom/drop_loc)
+/mob/proc/put_in_hands_or_drop(obj/item/I, inv_op_flags, atom/drop_loc, specific_index)
 	// inventory null --> INV_RETURN_FAILED, as that's also #define'd to be null
-	return inventory?.put_in_hands_or_drop(I, inv_op_flags, drop_loc)
-
-#warn mirror & check below
+	return inventory?.put_in_hands_or_drop(I, inv_op_flags, drop_loc, specific_index)
 
 /**
- * put in hands or del
+ * puts an item in hands or deletes it
  *
- * @return TRUE/FALSE based on put in hand or del'd
+ * * if 'specific_index' is specified, this only tries to go to that hand index.
+ *
+ * @return INV_RETURN_*
  */
-/mob/proc/put_in_hands_or_del(obj/item/I, flags)
-	if(!put_in_hands(I, flags))
+/datum/inventory/proc/put_in_hands_or_del(obj/item/I, inv_op_flags, specific_index)
+	var/result = specific_index ? put_in_hand(I, specific_index, inv_op_flags) : put_in_hands(I, inv_op_flags)
+
+	// todo: switch(result) once put_in_hands uses INV_RETURN_*; convert this
+	if(!result)
 		qdel(I)
-		return FALSE
-	return TRUE
+		return INV_RETURN_FAILED
+	return INV_RETURN_SUCCESS
 
-/mob/proc/put_in_hand_or_del(obj/item/I, index, flags)
-	. = put_in_hand(I, index, flags)
-	if(!.)
-		qdel(I)
-
-/mob/proc/put_in_hand_or_drop(obj/item/I, index, flags, atom/drop_loc = drop_location())
-	. = put_in_hand(I, index, flags)
-	if(!.)
-		I.forceMove(drop_loc)
-
-#warn mirror & check above
+/**
+ * puts an item in hands or deletes it
+ *
+ * * if 'specific_index' is specified, this only tries to go to that hand index.
+ *
+ * @return INV_RETURN_*
+ */
+/mob/proc/put_in_hands_or_del(obj/item/I, inv_op_flags, specific_index)
+	if(inventory)
+		return inventory.put_in_hands_or_del(I, inv_op_flags, specific_index)
+	qdel(I)
+	return INV_RETURN_FAILED
 
 //*                   By Side                       *//
 //* This is not on /datum/inventory level as        *//
