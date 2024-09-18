@@ -2,6 +2,7 @@
 // todo: message handling for this type is all over the place
 // todo: target still makes message of being hit even if they weren't
 // todo: just handle message in this file lmao
+// todo: better description; this type does have an excuse to have special behavior.
 /obj/projectile/bullet/pellet
 	name = "shrapnel" //'shrapnel' sounds more dangerous (i.e. cooler) than 'pellet'
 
@@ -120,8 +121,7 @@
 	name = "stingball shrapnel"
 	damage_force = 3
 	agony = 8
-	sharp = FALSE
-	edge = FALSE
+	damage_mode = NONE
 	damage_flag = ARMOR_MELEE
 
 /obj/projectile/bullet/pellet/fragment/rubber/strong

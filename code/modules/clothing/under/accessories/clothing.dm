@@ -136,7 +136,7 @@
 	/obj/item/gun/ballistic, /obj/item/ammo_magazine, /obj/item/melee/baton)
 	item_action_name = "Adjust Cloak"
 
-/obj/item/clothing/accessory/poncho/rough_cloak/attack_self(mob/user)
+/obj/item/clothing/accessory/poncho/rough_cloak/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return

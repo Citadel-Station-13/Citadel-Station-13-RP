@@ -13554,6 +13554,7 @@
 	name = "Cell 1";
 	req_one_access = null
 	},
+/obj/map_helper/access_helper/airlock/station/security/department,
 /turf/simulated/floor/tiled/monodark,
 /area/security/prison/upper)
 "iFN" = (
@@ -16472,6 +16473,7 @@
 	name = "Cell 2";
 	req_one_access = null
 	},
+/obj/map_helper/access_helper/airlock/station/security/department,
 /turf/simulated/floor/tiled/monodark,
 /area/security/prison/upper)
 "kwz" = (
@@ -36659,6 +36661,7 @@
 	name = "Cell 1";
 	req_one_access = null
 	},
+/obj/map_helper/access_helper/airlock/station/security/department,
 /turf/simulated/floor/tiled/monodark,
 /area/security/prison/upper)
 "vYf" = (

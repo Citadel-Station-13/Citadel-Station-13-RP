@@ -61,7 +61,7 @@
 	temp_blade.set_active(TRUE)
 	concealed_blade = temp_blade
 
-/obj/item/cane/concealed/attack_self(mob/user)
+/obj/item/cane/concealed/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -131,7 +131,7 @@
 	damage_force = 3
 	var/on = 0
 
-/obj/item/cane/whitecane/collapsible/attack_self(mob/user)
+/obj/item/cane/whitecane/collapsible/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return

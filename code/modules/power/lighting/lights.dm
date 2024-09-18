@@ -279,7 +279,7 @@
 		)
 		status = LIGHT_BROKEN
 		damage_force = 5
-		sharp = 1
+		damage_mode |= DAMAGE_MODE_SHARP
 		playsound(src.loc, 'sound/effects/Glasshit.ogg', 75, TRUE)
 		update_icon()
 

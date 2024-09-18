@@ -76,8 +76,7 @@
 
 	if(istype(damage_source, /obj/projectile))
 		var/obj/projectile/P = damage_source
-		P.sharp = 0
-		P.edge = 0
+		P.damage_mode &= ~(DAMAGE_MODE_EDGE | DAMAGE_MODE_SHARP | DAMAGE_MODE_SHRED | DAMAGE_MODE_PIERCE)
 		P.embed_chance = 0
 		if(P.agony)
 			var/agony_blocked = P.agony * (modified_block_percentage / 100)
@@ -90,7 +89,7 @@
 	spark_system.start()
 	playsound(user.loc, 'sound/weapons/blade1.ogg', 50, 1)
 
-/obj/item/clothing/suit/armor/shield/attack_self(mob/user)
+/obj/item/clothing/suit/armor/shield/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
