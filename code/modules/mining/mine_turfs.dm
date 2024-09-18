@@ -51,22 +51,27 @@ CREATE_STANDARD_TURFS(/turf/unsimulated/mineral)
 	var/ignore_oregen = FALSE
 	var/ignore_cavegen = FALSE
 
+CREATE_STANDARD_TURFS(/turf/simulated/mineral)
+
 /turf/simulated/mineral/rich
 	//Placeholder, go to the oregen stuff at the bottom to see the oregen weight
-
+CREATE_STANDARD_TURFS(/turf/simulated/mineral/rich)
 // Alternatives that ignore ore_gen and cavegen
 /turf/simulated/mineral/ignore_oregen
 	ignore_oregen = TRUE
 
+CREATE_STANDARD_TURFS(/turf/simulated/mineral/ignore_oregen)
 /turf/simulated/mineral/floor/ignore_oregen
 	ignore_oregen = TRUE
 
 /turf/simulated/mineral/ignore_cavegen
 	ignore_cavegen = TRUE
 
+CREATE_STANDARD_TURFS(/turf/simulated/mineral/ignore_cavegen)
 /turf/simulated/mineral/floor/ignore_cavegen
 	ignore_cavegen = TRUE
 
+CREATE_STANDARD_TURFS(/turf/simulated/mineral/floor/ignore_cavegen)
 /turf/simulated/mineral/floor/ignore_cavegen/has_air
 	initial_gas_mix = GAS_STRING_STP
 
@@ -291,10 +296,10 @@ CREATE_STANDARD_TURFS(/turf/unsimulated/mineral)
 						new oretype(src)
 				resources[ore] = 0
 
-/turf/simulated/mineral/bullet_act(var/obj/projectile/Proj) // only emitters for now
+/turf/simulated/mineral/on_bullet_act(obj/projectile/proj, impact_flags, list/bullet_act_args)
 	. = ..()
-	if(Proj.excavation_amount)
-		var/newDepth = excavation_level + Proj.excavation_amount // Used commonly below
+	if(proj.excavation_amount)
+		var/newDepth = excavation_level + proj.excavation_amount // Used commonly below
 		if(newDepth >= 200) // first, if the turf is completely drilled then don't bother checking for finds and just drill it
 			GetDrilled(0)
 			return
@@ -307,8 +312,8 @@ CREATE_STANDARD_TURFS(/turf/unsimulated/mineral)
 				if(prob(50))
 					artifact_debris()
 
-		excavation_level += Proj.excavation_amount
-		update_archeo_overlays(Proj.excavation_amount)
+		excavation_level += proj.excavation_amount
+		update_archeo_overlays(proj.excavation_amount)
 
 /turf/simulated/mineral/Bumped(AM)
 

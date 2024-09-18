@@ -1,21 +1,39 @@
 /**
  * returns everyone we're grabbing associated to state
  */
-/mob/proc/grabbing()
+/mob/proc/get_grabbing()
 	RETURN_TYPE(/list)
 	. = list()
 	for(var/obj/item/grab/G in get_held_items())
 		.[G.affecting] = G.state
 
 /**
- * returns everyone we're grabbing, recursively; this can include ourselves!
+ * returns everyone we're grabbing that are at least the given grab state
  */
-/mob/proc/grabbing_recursive(list/L = list())
+/mob/proc/get_grabbing_of_state(state)
 	RETURN_TYPE(/list)
+	. = list()
+	for(var/obj/item/grab/G in get_held_items())
+		if(G.state < state)
+			continue
+		. += G.affecting
+
+/**
+ * returns everyone we're grabbing, recursively; this can include ourselves!
+ *
+ * @return grabbed mobs associated to states
+ */
+/mob/proc/get_grabbing_recursive(list/L = list(), safety = 15, list/processed = list())
+	RETURN_TYPE(/list)
+	if(processed[src])
+		return
+	processed[src] = TRUE
+	if(safety <= 0)
+		CRASH("infinite loop guard tripped")
 	. = L
 	for(var/obj/item/grab/G in get_held_items())
 		.[G.affecting] = max(.[G.affecting], G.state)
-		grabbing_recursive(G.affecting)
+		G.affecting.get_grabbing_recursive(., --safety, processed)
 
 /**
  * check the grab state of us to someone
@@ -222,7 +240,7 @@
 			if(!affecting.has_status_effect(/datum/status_effect/sight/blindness))
 				affecting.apply_status_effect(/datum/status_effect/sight/blindness, 3 SECONDS)
 
-/obj/item/grab/attack_self(mob/user)
+/obj/item/grab/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -242,7 +260,7 @@
 /obj/item/grab/throw_resolve_override(atom/movable/resolved, mob/user)
 	return TRUE
 
-/obj/item/grab/melee_object_hit(atom/target, datum/event_args/actor/clickchain/clickchain, clickchain_flags, mult)
+/obj/item/grab/melee_object_hit(atom/target, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
 	switch(state)
 		if(GRAB_PASSIVE)
 			clickchain.visible_feedback(
@@ -606,8 +624,8 @@
 
 	var/armor = target.run_armor_check(BP_HEAD, "melee")
 	var/soaked = target.get_armor_soak(BP_HEAD, "melee")
-	target.apply_damage(damage, BRUTE, BP_HEAD, armor, soaked)
-	attacker.apply_damage(10, BRUTE, BP_HEAD, attacker.run_armor_check(BP_HEAD), attacker.get_armor_soak(BP_HEAD), "melee")
+	target.apply_damage(damage, DAMAGE_TYPE_BRUTE, BP_HEAD, armor, soaked)
+	attacker.apply_damage(10, DAMAGE_TYPE_BRUTE, BP_HEAD, attacker.run_armor_check(BP_HEAD), attacker.get_armor_soak(BP_HEAD), "melee")
 
 	if(!armor && target.headcheck(BP_HEAD) && prob(damage))
 		target.apply_effect(20, PARALYZE)

@@ -43,7 +43,7 @@
 // todo: implement dynamic state, like how /tg/ boxes work
 
 // BubbleWrap - A box can be folded up to make card
-/obj/item/storage/box/attack_self(mob/user)
+/obj/item/storage/box/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -228,7 +228,7 @@
 /obj/item/storage/box/sniperammo
 	name = "box of 12.7mm shells"
 	desc = "It has a picture of a gun and several warning symbols on the front.<br>WARNING: Live ammunition. Misuse may result in serious injury or death."
-	starts_with = list(/obj/item/ammo_casing/a127 = 7)
+	starts_with = list(/obj/item/ammo_casing/a12_7mm = 7)
 	drop_sound = 'sound/items/drop/ammobox.ogg'
 	pickup_sound = 'sound/items/pickup/ammobox.ogg'
 
@@ -449,7 +449,7 @@
 /obj/item/storage/box/matches/attackby(obj/item/flame/match/W as obj, mob/user as mob)
 	if(istype(W) && !W.lit && !W.burnt)
 		W.lit = 1
-		W.damtype = "burn"
+		W.damage_type = "burn"
 		W.icon_state = "match_lit"
 		START_PROCESSING(SSobj, W)
 	W.update_icon()
@@ -687,20 +687,3 @@
 	max_items = 1
 	insertion_whitelist = list(/obj/item/clothing/suit/storage/hooded/rainponcho)
 	starts_with = list(/obj/item/clothing/suit/storage/hooded/rainponcho)
-
-//Foam Darts
-/obj/item/storage/box/foamdart
-	name = "box of foam darts"
-	desc = "It has a picture of some foam darts on it."
-	icon = 'icons/obj/ammo.dmi'
-	icon_state = "foambox"
-	item_state_slots = list(SLOT_ID_RIGHT_HAND = "syringe_kit", SLOT_ID_LEFT_HAND = "syringe_kit")
-	starts_with = list(/obj/item/ammo_casing/foam = 20)
-	drop_sound = 'sound/items/drop/ammobox.ogg'
-	pickup_sound = 'sound/items/pickup/ammobox.ogg'
-
-/obj/item/storage/box/foamdart/riot
-	name = "box of riot darts"
-	desc = "It has a picture of some angry looking foam darts on it."
-	icon_state = "foambox_riot"
-	starts_with = list(/obj/item/ammo_casing/foam/riot = 20)

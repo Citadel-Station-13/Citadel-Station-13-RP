@@ -81,7 +81,9 @@
 	var/mutable_appearance/under_ma
 
 	if(ispath(under))		// It's just a mapper-specified path
-		under_ma = new()
+		under_ma = new
+		under_ma.layer = FLOAT_LAYER
+		under_ma.plane = FLOAT_PLANE
 		under_ma.icon = initial(under.icon)
 		under_ma.icon_state = initial(under.icon_state)
 		under_ma.color = initial(under.color)

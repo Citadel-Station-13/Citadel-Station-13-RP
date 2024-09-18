@@ -62,7 +62,7 @@
 
 */
 
-/obj/structure/largecrate/attack_hand(mob/user, list/params)
+/obj/structure/largecrate/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	to_chat(user, "<span class='notice'>You need a crowbar to pry this open!</span>")
 	return
 
@@ -226,16 +226,15 @@
 
 /obj/structure/largecrate/animal/dangerous
 	name = "Dangerous Predator carrier"
-	starts_with = list(/mob/living/simple_mob/animal/space/alien)
+	starts_with = list(/mob/living/simple_mob/animal/space/alien/warrior)
 
 /obj/structure/largecrate/animal/dangerous/Initialize(mapload)
 	starts_with = list(pick(/mob/living/simple_mob/animal/space/carp/large,
 						/mob/living/simple_mob/vore/aggressive/deathclaw,
 						/mob/living/simple_mob/vore/aggressive/dino,
-						/mob/living/simple_mob/animal/space/alien,
 						/mob/living/simple_mob/animal/space/alien/drone,
-						/mob/living/simple_mob/animal/space/alien/sentinel,
-						/mob/living/simple_mob/animal/space/alien/queen,
+						/mob/living/simple_mob/animal/space/alien/basic_spitter,
+						/mob/living/simple_mob/animal/space/alien/monarch,
 						/mob/living/simple_mob/vore/aggressive/corrupthound))
 	return ..()
 

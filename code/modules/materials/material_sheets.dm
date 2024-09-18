@@ -91,7 +91,7 @@
 	if(M) M.update_strings()
 	return transfer
 
-/obj/item/stack/material/attack_self(mob/user)
+/obj/item/stack/material/attack_self(mob/user, datum/event_args/actor/actor)
 	if(!allow_window_autobuild || !material.build_windows(user, src))
 		return ..()
 
@@ -299,7 +299,7 @@
 	update_mass()
 	return
 
-/obj/item/stack/material/supermatter/attack_hand(mob/user, list/params)
+/obj/item/stack/material/supermatter/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	. = ..()
 
 	update_mass()
@@ -317,8 +317,8 @@
 
 		if(burn_user)
 			H.visible_message("<span class='danger'>\The [src] flashes as it scorches [H]'s hands!</span>")
-			H.apply_damage(amount / 2 + 5, BURN, "r_hand", used_weapon="Supermatter Chunk")
-			H.apply_damage(amount / 2 + 5, BURN, "l_hand", used_weapon="Supermatter Chunk")
+			H.apply_damage(amount / 2 + 5, DAMAGE_TYPE_BURN, "r_hand", used_weapon="Supermatter Chunk")
+			H.apply_damage(amount / 2 + 5, DAMAGE_TYPE_BURN, "l_hand", used_weapon="Supermatter Chunk")
 			H.drop_item_to_ground(src)
 			return
 
@@ -326,7 +326,7 @@
 		burn_user = FALSE
 
 	if(burn_user)
-		M.apply_damage(amount, BURN, null, used_weapon="Supermatter Chunk")
+		M.apply_damage(amount, DAMAGE_TYPE_BURN, null, used_weapon="Supermatter Chunk")
 
 /obj/item/stack/material/supermatter/legacy_ex_act(severity)	// An incredibly hard to manufacture material, SM chunks are unstable by their 'stabilized' nature.
 	if(prob((4 / severity) * 20))
@@ -393,7 +393,7 @@
 /obj/item/stack/material/log/attackby(obj/item/I, mob/living/user, list/params, clickchain_flags, damage_multiplier)
 	if(!istype(I) || I.damage_force <= 0)
 		return ..()
-	if(CHECK_MULTIPLE_BITFIELDS(I.damage_mode, DAMAGE_MODE_EDGE | DAMAGE_MODE_SHARP) || (I.edge && I.sharp))
+	if(CHECK_MULTIPLE_BITFIELDS(I.damage_mode, DAMAGE_MODE_EDGE | DAMAGE_MODE_SHARP))
 		var/time = (3 SECONDS / max(I.damage_force / 10, 1)) * I.tool_speed
 		user.setClickCooldown(time)
 		if(do_after(user, time, src) && use(1))
@@ -424,7 +424,7 @@
 /obj/item/stack/material/log/ironwood/attackby(obj/item/I, mob/living/user, list/params, clickchain_flags, damage_multiplier)
 	if(!istype(I) || I.damage_force <= 20) //You will need at least PLASTEEL Tools to cut this.
 		return ..()
-	if(CHECK_MULTIPLE_BITFIELDS(I.damage_mode, DAMAGE_MODE_EDGE | DAMAGE_MODE_SHARP) || (I.edge && I.sharp))
+	if(CHECK_MULTIPLE_BITFIELDS(I.damage_mode, DAMAGE_MODE_EDGE | DAMAGE_MODE_SHARP))
 		var/time = (3 SECONDS / max(I.damage_force / 10, 1)) * I.tool_speed
 		user.setClickCooldown(time)
 		if(do_after(user, time, src) && use(1))

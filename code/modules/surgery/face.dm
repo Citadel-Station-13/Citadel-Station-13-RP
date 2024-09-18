@@ -48,7 +48,7 @@
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
 	user.visible_message("<font color='red'>[user]'s hand slips, slicing [target]'s throat wth \the [tool]!</font>" , \
 	"<font color='red'>Your hand slips, slicing [target]'s throat wth \the [tool]!</font>" )
-	affected.create_wound(CUT, 60)
+	affected.create_wound(WOUND_TYPE_CUT, 60)
 	target.AdjustLosebreath(10)
 
 ///////////////////////////////////////////////////////////////
@@ -117,7 +117,7 @@
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
 	user.visible_message("<font color='red'>[user]'s hand slips, tearing skin on [target]'s face with \the [tool]!</font>", \
 	"<font color='red'>Your hand slips, tearing skin on [target]'s face with \the [tool]!</font>")
-	target.apply_damage(10, BRUTE, affected, sharp=1, sharp=1)
+	target.apply_damage(10, DAMAGE_TYPE_BRUTE, affected, sharp=1, sharp=1)
 
 ///////////////////////////////////////////////////////////////
 // Face Cauterizing Surgery
@@ -158,4 +158,4 @@
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
 	user.visible_message("<font color='red'>[user]'s hand slips, leaving a small burn on [target]'s face with \the [tool]!</font>", \
 	"<font color='red'>Your hand slips, leaving a small burn on [target]'s face with \the [tool]!</font>")
-	target.apply_damage(4, BURN, affected)
+	target.apply_damage(4, DAMAGE_TYPE_BURN, affected)

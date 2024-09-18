@@ -500,7 +500,7 @@ var/list/intents = list(INTENT_HELP,INTENT_DISARM,INTENT_GRAB,INTENT_HARM)
 	if(!istype(src.ai_holder, /datum/ai_holder/polaris))
 		return SAFE_PERP
 	var/datum/ai_holder/polaris/ai_holder = src.ai_holder
-	if(has_polaris_AI() && ai_holder.hostile && faction != "neutral")
+	if(has_polaris_AI() && ai_holder.hostile && !has_iff_faction(MOB_IFF_FACTION_NEUTRAL))
 		threatcount += 4
 	return threatcount
 

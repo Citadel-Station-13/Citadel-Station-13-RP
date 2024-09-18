@@ -129,8 +129,8 @@
 	for(var/i in 1 to length(levels))
 		if(ispath(levels[i]))
 			var/datum/map_level/level_path = levels[i]
-			var/datum/map_level/level_instance = new level_path
-			level_instance.hardcoded = TRUE
+			var/datum/map_level/level_instance = new level_path(src)
+			level_instance.hardcoded = TRUE // todo: map can just also not be hardcoded
 			levels[i] = level_instance
 			if(levels_match_mangling_id)
 				level_instance.mangling_id = mangling_id || id

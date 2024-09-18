@@ -33,9 +33,9 @@ DEFINE_BITFIELD(loadout_customize_flags, list(
 ))
 
 // *DO NOT RAISE THIS. This is for performance reasons.* //
-#define LOADOUT_MAX_SLOTS 10
+#define LOADOUT_MAX_SLOTS 16
 #define LOADOUT_SLOT_NAME_LENGTH 32
-#define LOADOUT_MAX_ITEMS 30
+#define LOADOUT_MAX_ITEMS 32
 /// Used in chargen for accessory loadout limit.
 #define LOADOUT_MAX_COST					20
 /// Used in chargen for accessory loadout limit on holidays.

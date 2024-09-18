@@ -133,7 +133,12 @@
 			return 10
 
 /**
- * Converts an angle (degrees) into an ss13 direction.
+ * Gets the direction of an angle, in degrees, that is clockwise of north
+ *
+ * todo: verify math and do documentation
+ *
+ * @params
+ * * degree - angle clockwise of north
  */
 /proc/angle2dir(degree)
 	degree = (degree + 22.5) % 365 // 22.5 = 45 / 2
@@ -151,10 +156,12 @@
 		return SOUTHWEST
 	if (degree < 315)
 		return WEST
-	return NORTH|WEST
+	return NORTHWEST
 
 /**
- * Returns the north-zero clockwise angle in degrees, given a direction.
+ * Gets the angle, in degrees, clockwise of north of a direction
+ *
+ * @return angle
  */
 /proc/dir2angle(direction)
 	switch (direction)

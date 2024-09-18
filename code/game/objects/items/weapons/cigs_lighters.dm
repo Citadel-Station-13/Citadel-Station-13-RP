@@ -64,7 +64,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 /obj/item/flame/match/proc/burn_out()
 	lit = 0
 	burnt = 1
-	damtype = "brute"
+	damage_type = DAMAGE_TYPE_BRUTE
 	icon_state = "match_burnt"
 	item_state = "cigoff"
 	name = "burnt match"
@@ -160,7 +160,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 /obj/item/clothing/mask/smokable/proc/light(var/flavor_text = "[usr] lights the [name].")
 	if(!src.lit)
 		src.lit = 1
-		damtype = "fire"
+		damage_type = DAMAGE_TYPE_BURN
 		if(reagents.get_reagent_amount("phoron")) // the phoron explodes when exposed to fire
 			var/datum/effect_system/reagents_explosion/e = new()
 			e.set_up(round(reagents.get_reagent_amount("phoron") / 2.5, 1), get_turf(src), 0, 0)
@@ -289,8 +289,8 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 /obj/item/clothing/mask/smokable/cigarette/attackby(obj/item/W as obj, mob/user as mob)
 	..()
 
-	if(istype(W, /obj/item/melee/energy/sword))
-		var/obj/item/melee/energy/sword/S = W
+	if(istype(W, /obj/item/melee/transforming/energy/sword))
+		var/obj/item/melee/transforming/energy/sword/S = W
 		if(S.active)
 			light("<span class='warning'>[user] swings their [W], barely missing their nose. They light their [name] in the process.</span>")
 
@@ -311,7 +311,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 			else
 				to_chat(user, "<span class='notice'>[src] is full.</span>")
 
-/obj/item/clothing/mask/smokable/cigarette/attack_self(mob/user)
+/obj/item/clothing/mask/smokable/cigarette/attack_self(mob/user, datum/event_args/actor/actor)
 	if(lit == 1)
 		if(user.a_intent == INTENT_HARM)
 			user.visible_message("<span class='notice'>[user] drops and treads on the lit [src], putting it out instantly.</span>")
@@ -454,7 +454,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	. = ..()
 	name = "empty [initial(name)]"
 
-/obj/item/clothing/mask/smokable/pipe/attack_self(mob/user)
+/obj/item/clothing/mask/smokable/pipe/attack_self(mob/user, datum/event_args/actor/actor)
 	if(lit == 1)
 		if(user.a_intent == INTENT_HARM)
 			user.visible_message("<span class='notice'>[user] empties the lit [src] on the floor!.</span>")
@@ -464,7 +464,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 			quench()
 
 /obj/item/clothing/mask/smokable/pipe/attackby(obj/item/W as obj, mob/user as mob)
-	if(istype(W, /obj/item/melee/energy/sword))
+	if(istype(W, /obj/item/melee/transforming/energy/sword))
 		return
 
 	..()
@@ -611,7 +611,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	item_state = icon_state
 	base_state = icon_state
 
-/obj/item/flame/lighter/attack_self(mob/user)
+/obj/item/flame/lighter/attack_self(mob/user, datum/event_args/actor/actor)
 	if(!base_state)
 		base_state = icon_state
 	if(!lit)
@@ -631,9 +631,9 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 				to_chat(user, "<span class='warning'>You burn yourself while lighting the lighter.</span>")
 				var/mob/living/carbon/human/H = ishuman(user)? user : null
 				if (user.get_held_item_of_index(1) == src)
-					H?.apply_damage(2,BURN,"l_hand")
+					H?.apply_damage(2,DAMAGE_TYPE_BURN,"l_hand")
 				else
-					H?.apply_damage(2,BURN,"r_hand")
+					H?.apply_damage(2,DAMAGE_TYPE_BURN,"r_hand")
 				user.visible_message("<span class='notice'>After a few attempts, [user] manages to light the [src], they however burn their finger in the process.</span>")
 
 		set_light(2)

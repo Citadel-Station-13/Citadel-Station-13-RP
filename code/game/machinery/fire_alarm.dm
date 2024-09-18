@@ -121,8 +121,9 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/fire_alarm/alarms_hidden, 21)
 /obj/machinery/fire_alarm/attack_ai(mob/user)
 	return attack_hand(user)
 
-/obj/machinery/fire_alarm/bullet_act()
-	return alarm()
+/obj/machinery/fire_alarm/on_bullet_act(obj/projectile/proj, impact_flags, list/bullet_act_args)
+	. = ..()
+	alarm()
 
 /obj/machinery/fire_alarm/emp_act(severity)
 	if(prob(50 / severity))
@@ -177,7 +178,7 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/fire_alarm/alarms_hidden, 21)
 	spawn(rand(0,15))
 		update_icon()
 
-/obj/machinery/fire_alarm/attack_hand(mob/user, list/params)
+/obj/machinery/fire_alarm/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(user.stat || machine_stat & (NOPOWER | BROKEN))
 		return
 

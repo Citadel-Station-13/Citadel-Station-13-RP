@@ -26,7 +26,6 @@ GLOBAL_VAR_INIT(max_fusion_air_heat, INFINITY)
 
 	var/obj/machinery/power/fusion_core/owned_core
 	var/list/dormant_reactant_quantities = list()
-	var/list/particle_catchers = list()
 
 	var/list/ignore_types
 
@@ -60,66 +59,23 @@ GLOBAL_VAR_INIT(max_fusion_air_heat, INFINITY)
 	if(!owned_core)
 		qdel(src)
 	id_tag = owned_core.id_tag
-	//create the gimmicky things to handle field collisions
-	var/obj/effect/fusion_particle_catcher/catcher
-
-	catcher = new (locate(src.x,src.y,src.z))
-	catcher.parent = src
-	catcher.SetSize(1)
-	particle_catchers.Add(catcher)
-
-	catcher = new (locate(src.x-1,src.y,src.z))
-	catcher.parent = src
-	catcher.SetSize(3)
-	particle_catchers.Add(catcher)
-	catcher = new (locate(src.x+1,src.y,src.z))
-	catcher.parent = src
-	catcher.SetSize(3)
-	particle_catchers.Add(catcher)
-	catcher = new (locate(src.x,src.y+1,src.z))
-	catcher.parent = src
-	catcher.SetSize(3)
-	particle_catchers.Add(catcher)
-	catcher = new (locate(src.x,src.y-1,src.z))
-	catcher.parent = src
-	catcher.SetSize(3)
-	particle_catchers.Add(catcher)
-
-	catcher = new (locate(src.x-2,src.y,src.z))
-	catcher.parent = src
-	catcher.SetSize(5)
-	particle_catchers.Add(catcher)
-	catcher = new (locate(src.x+2,src.y,src.z))
-	catcher.parent = src
-	catcher.SetSize(5)
-	particle_catchers.Add(catcher)
-	catcher = new (locate(src.x,src.y+2,src.z))
-	catcher.parent = src
-	catcher.SetSize(5)
-	particle_catchers.Add(catcher)
-	catcher = new (locate(src.x,src.y-2,src.z))
-	catcher.parent = src
-	catcher.SetSize(5)
-	particle_catchers.Add(catcher)
-
-	catcher = new (locate(src.x-3,src.y,src.z))
-	catcher.parent = src
-	catcher.SetSize(7)
-	particle_catchers.Add(catcher)
-	catcher = new (locate(src.x+3,src.y,src.z))
-	catcher.parent = src
-	catcher.SetSize(7)
-	particle_catchers.Add(catcher)
-	catcher = new (locate(src.x,src.y+3,src.z))
-	catcher.parent = src
-	catcher.SetSize(7)
-	particle_catchers.Add(catcher)
-	catcher = new (locate(src.x,src.y-3,src.z))
-	catcher.parent = src
-	catcher.SetSize(7)
-	particle_catchers.Add(catcher)
 
 	START_PROCESSING(SSobj, src)
+
+/obj/effect/fusion_em_field/bullet_act(obj/projectile/proj, impact_flags, def_zone, efficiency)
+	if(!(proj.projectile_type & PROJECTILE_TYPE_BEAM))
+		return ..()
+	AddEnergy(proj.damage_force)
+	update_icon()
+	impact_flags |= PROJECTILE_IMPACT_DELETE
+	return ..()
+
+/obj/effect/fusion_em_field/CanAllowThrough(atom/movable/mover, turf/target)
+	if(istype(mover, /obj/projectile))
+		var/obj/projectile/proj = mover
+		if(proj.projectile_type & PROJECTILE_TYPE_BEAM)
+			return FALSE
+	return TRUE
 
 /obj/effect/fusion_em_field/process(delta_time)
 	//make sure the field generator is still intact
@@ -340,8 +296,20 @@ GLOBAL_VAR_INIT(max_fusion_air_heat, INFINITY)
 			tick_instability += rand(30,50)
 			AM.emp_act(empsev)
 
-/obj/effect/fusion_em_field/proc/change_size(var/newsize = 1)
-	var/changed = 0
+/**
+ * Immediately change the field's size.
+ *
+ * * This is the radius of the field.
+ * * This will change `locs` of this field, and its bounds!
+ */
+/obj/effect/fusion_em_field/proc/change_size(new_size = 1)
+	ASSERT(!((new_size - 1) % 2))
+	ASSERT(new_size <= 13)
+
+	if(new_size == size)
+		return FALSE
+
+	//! LEGACY
 	var/static/list/size_to_icon = list(
 			"3" = 'icons/effects/96x96.dmi',
 			"5" = 'icons/effects/160x160.dmi',
@@ -351,19 +319,27 @@ GLOBAL_VAR_INIT(max_fusion_air_heat, INFINITY)
 			"13" = 'icons/effects/416x416.dmi'
 			)
 
-	if( ((newsize-1)%2==0) && (newsize<=13) )
-		icon = 'icons/obj/machines/power/fusion.dmi'
-		if(newsize>1)
-			icon = size_to_icon["[newsize]"]
-		icon_state = "emfield_s[newsize]"
-		pixel_x = ((newsize-1) * -16) * PIXEL_MULTIPLIER
-		pixel_y = ((newsize-1) * -16) * PIXEL_MULTIPLIER
-		size = newsize
-		changed = newsize
+	icon = 'icons/obj/machines/power/fusion.dmi'
 
-	for(var/obj/effect/fusion_particle_catcher/catcher in particle_catchers)
-		catcher.UpdateSize()
-	return changed
+	if(new_size>1)
+		icon = size_to_icon["[new_size]"]
+	icon_state = "emfield_s[new_size]"
+	//! END
+
+	size = new_size
+
+	// this will shift locs!
+	var/new_additional_radius = (new_size - 1) / 2
+	bound_x = -new_additional_radius * WORLD_ICON_SIZE
+	bound_y = -new_additional_radius * WORLD_ICON_SIZE
+	bound_width = new_additional_radius * 2 * WORLD_ICON_SIZE + WORLD_ICON_SIZE
+	bound_height = new_additional_radius * 2 * WORLD_ICON_SIZE + WORLD_ICON_SIZE
+
+	// shift visuals
+	pixel_x = -new_additional_radius * WORLD_ICON_SIZE
+	pixel_y = -new_additional_radius * WORLD_ICON_SIZE
+
+	return TRUE
 
 //the !!fun!! part
 /obj/effect/fusion_em_field/proc/React()
@@ -480,18 +456,12 @@ GLOBAL_VAR_INIT(max_fusion_air_heat, INFINITY)
 /obj/effect/fusion_em_field/Destroy()
 	set_light(0)
 	RadiateAll()
-	for(var/obj/effect/fusion_particle_catcher/catcher in particle_catchers)
-		qdel(catcher)
 	if(owned_core)
 		owned_core.owned_field = null
 		owned_core = null
 	STOP_PROCESSING(SSobj, src)
 	. = ..()
 
-/obj/effect/fusion_em_field/bullet_act(var/obj/projectile/Proj)
-	AddEnergy(Proj.damage)
-	update_icon()
-	return 0
 //All procs below this point are called in _core.dm, starting at line 41.
 //Stability monitoring. Gives radio annoucements if field stability is below 80%
 /obj/effect/fusion_em_field/proc/stability_monitor()

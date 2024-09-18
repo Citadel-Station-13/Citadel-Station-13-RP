@@ -182,7 +182,7 @@
 /obj/machinery/tele_projector/attack_ai()
 	attack_hand()
 
-/obj/machinery/tele_projector/attack_hand(mob/user, list/params)
+/obj/machinery/tele_projector/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(engaged)
 		disengage()
 	else
@@ -208,7 +208,6 @@
 		teleport_cost += S.w_class*BASE_ITEM_KJ_COST
 
 	if(istype(teleporting, /mob/))
-		var/mob/M = teleporting
 		teleport_cost += BASE_MOB_KJ_COST
 
 	if(current_joules >= teleport_cost)

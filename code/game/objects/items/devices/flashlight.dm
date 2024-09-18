@@ -116,7 +116,7 @@
 /obj/item/flashlight/AltClick(mob/user)
 	attack_self(user)
 
-/obj/item/flashlight/attack_self(mob/user)
+/obj/item/flashlight/attack_self(mob/user, datum/event_args/actor/actor)
 	if(power_use)
 		if(!isturf(user.loc))
 			to_chat(user, "You cannot turn the light on while in this [user.loc].") //To prevent some lighting anomalities.
@@ -189,7 +189,7 @@
 		return CLICKCHAIN_DO_NOT_PROPAGATE
 	return ..()
 
-/obj/item/flashlight/attack_hand(mob/user, list/params)
+/obj/item/flashlight/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(user.get_inactive_held_item() == src)
 		if(cell)
 			cell.update_appearance()
@@ -351,10 +351,10 @@
 /obj/item/flashlight/flare/proc/turn_off()
 	on = FALSE
 	src.damage_force = initial(src.damage_force)
-	src.damtype = initial(src.damtype)
+	src.damage_type = initial(src.damage_type)
 	update_appearance()
 
-/obj/item/flashlight/flare/attack_self(mob/user)
+/obj/item/flashlight/flare/attack_self(mob/user, datum/event_args/actor/actor)
 
 	// Usual checks
 	if(!fuel)
@@ -368,14 +368,14 @@
 	if(.)
 		user.visible_message(SPAN_NOTICE("[user] activates the flare."), SPAN_NOTICE("You pull the cord on the flare, activating it!"))
 		src.damage_force = on_damage
-		src.damtype = "fire"
+		src.damage_type = DAMAGE_TYPE_BURN
 		START_PROCESSING(SSobj, src)
 
 /obj/item/flashlight/flare/proc/ignite() //Used for flare launchers.
 	on = !on
 	update_appearance()
 	damage_force = on_damage
-	damtype = "fire"
+	damage_type = DAMAGE_TYPE_BURN
 	START_PROCESSING(SSobj, src)
 	return TRUE
 
@@ -411,7 +411,7 @@
 	on = FALSE
 	update_appearance()
 
-/obj/item/flashlight/glowstick/attack_self(mob/user)
+/obj/item/flashlight/glowstick/attack_self(mob/user, datum/event_args/actor/actor)
 
 	if(!fuel)
 		to_chat(user, SPAN_NOTICE("The glowstick has already been turned on."))

@@ -16,7 +16,9 @@
 	icon_dead = "goat_dead"
 	catalogue_data = list(/datum/category_item/catalogue/fauna/livestock/goat)
 
-	faction = "goat"
+	iff_factions = list(
+		MOB_IFF_FACTION_FARM_ANIMAL,
+	)
 
 	health = 40
 	maxHealth = 40

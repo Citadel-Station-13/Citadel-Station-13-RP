@@ -337,7 +337,7 @@
 	one_handed_penalty = 0
 	safety_state = GUN_SAFETY_OFF
 
-/obj/item/gun/energy/service/attack_self(mob/user)
+/obj/item/gun/energy/service/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -428,7 +428,7 @@
 	icon_state = "ermitter_gun"
 	item_state = "pulse"
 	projectile_type = /obj/projectile/beam/emitter
-	fire_delay = 10
+	fire_delay = 2 SECONDS
 	charge_cost = 900
 	cell_type = /obj/item/cell
 	accept_cell_type = /obj/item/cell

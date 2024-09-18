@@ -32,7 +32,7 @@
 	name = "Weapons - Experimental weapons crate"
 	contains = list(
 		/obj/item/gun/energy/xray = 2,
-		/obj/item/shield/energy = 2,
+		/obj/item/shield/transforming/energy = 2,
 	)
 	container_type = /obj/structure/closet/crate/secure/corporate/nanotrasen
 	container_name = "Experimental weapons crate"
@@ -109,7 +109,7 @@
 	contains = list(
 		/obj/item/assembly/timer,
 		/obj/item/gun/ballistic/shotgun/pump/rifle/practice = 2,
-		/obj/item/ammo_magazine/clip/c762/practice = 4,
+		/obj/item/ammo_magazine/a7_62mm/clip/practice = 4,
 		/obj/item/target = 2,
 		/obj/item/target/alien = 2,
 		/obj/item/target/syndicate = 2,
@@ -156,7 +156,7 @@
 /datum/supply_pack/nanotrasen/munitions/bsmgammo
 	name = "Ammunition - 9mm top mounted lethal"
 	contains = list(
-		/obj/item/ammo_magazine/m9mmt = 6,
+		/obj/item/ammo_magazine/a9mm/top_mount = 6,
 	)
 	worth = 250
 	container_name = "Ballistic ammunition crate"
@@ -164,7 +164,7 @@
 /datum/supply_pack/nanotrasen/munitions/bsmgammorubber
 	name = "Ammunition - 9mm top mounted rubber"
 	contains = list(
-		/obj/item/ammo_magazine/m9mmt/rubber = 6,
+		/obj/item/ammo_magazine/a9mm/top_mount/rubber = 6,
 	)
 	worth = 250
 	container_type = /obj/structure/closet/crate/secure
@@ -173,7 +173,7 @@
 /datum/supply_pack/nanotrasen/munitions/brifleammo
 	name = "Ammunition - 7.62mm lethal"
 	contains = list(
-		/obj/item/ammo_magazine/m762 = 6,
+		/obj/item/ammo_magazine/a7_62mm = 6,
 	)
 	worth = 250
 	container_type = /obj/structure/closet/crate/secure

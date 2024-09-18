@@ -256,7 +256,7 @@
 			var/obj/item/integrated_circuit/C = locate(params["ref"]) in assembly_components
 			if(!istype(C))
 				return
-			C.remove(usr, TRUE, index = params["index"])
+			C.remove(usr, FALSE, index = params["index"])
 			return TRUE
 
 		if("bottom_circuit")
@@ -514,7 +514,7 @@
 			return TRUE
 	return ..()
 
-/obj/item/electronic_assembly/attack_self(mob/user)
+/obj/item/electronic_assembly/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -609,7 +609,7 @@
 		return
 	..()
 
-/obj/item/electronic_assembly/attack_hand(mob/user, act_intent = user.a_intent, unarmed_attack_flags)
+/obj/item/electronic_assembly/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(anchored)
 		attack_self(user)
 		return
