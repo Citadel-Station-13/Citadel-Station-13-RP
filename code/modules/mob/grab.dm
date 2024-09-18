@@ -33,24 +33,8 @@
 		CRASH("infinite loop guard tripped")
 	. = L
 	for(var/obj/item/grab/G in get_held_items())
-		if(.[G.affecting] >= G.state)
-			continue
 		.[G.affecting] = max(.[G.affecting], G.state)
 		G.affecting.get_grabbing_recursive(., --safety, processed)
-
-/**
- * returns everyone we're grabbing, recursively; this can include ourselves!
- */
-/mob/proc/grabbing_recursive_flat(list/L = list())
-	RETURN_TYPE(/list)
-	if(src in L)
-		return
-	. = L
-	for(var/obj/item/grab/G in get_held_items())
-		if(G.affecting in .)
-			continue
-		. |= G.affecting
-		grabbing_recursive(G.affecting)
 
 /**
  * check the grab state of us to someone
@@ -187,7 +171,7 @@
 	if(state <= GRAB_AGGRESSIVE)
 		allow_upgrade = 1
 		//disallow upgrading if we're grabbing more than one person
-		if(length(assailant.grabbing()) > 1)
+		if(length(assailant.get_grabbing()) > 1)
 			allow_upgrade = 0
 
 		//disallow upgrading past aggressive if we're being grabbed aggressively

@@ -104,7 +104,7 @@
 /**
  * @return list of held items of type
  */
-/datum/inventory/proc/get_held_items_of_type(type)
+/mob/proc/get_held_items_of_type(type)
 	RETURN_TYPE(/list)
 	. = list()
 	for(var/obj/item/I as anything in inventory?.held_items)

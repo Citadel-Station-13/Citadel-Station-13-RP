@@ -11,7 +11,7 @@
  * * "but this is so low level it's hard to use for remote control"; that's what later on /datum/remote_control is for!
  * * mob_hud does not track screens/images unlike perspective! these are mostly stateless as they're externally synchronized.
  */
-/datum/mob_hud#
+/datum/mob_hud
 	/// mob we're for (aka rendering the state of)
 	var/mob/owner
 	/// users using us

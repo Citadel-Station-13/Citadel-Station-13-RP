@@ -100,7 +100,7 @@
 			return TRUE
 	return FALSE
 
-/mob/proc/put_in_right_hand(obj/item/I, flags)
+/mob/proc/put_in_right_hand(obj/item/I, inv_op_flags)
 	for(var/i in 1 to length(inventory?.held_items) step 2)
 		if(put_in_hand(I, i, inv_op_flags))
 			return TRUE
