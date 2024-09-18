@@ -34,7 +34,7 @@
 	if(istype(H) && H.species.get_species_id() == SPECIES_ID_ADHERENT && H.nutrition < H.species.max_nutrition)
 		H.nutrition = 400
 		return
-	log_and_message_admins("[user] has touched the adherent pylon", user)
+	log_and_message_admins("has touched the adherent pylon", user)
 	if(isrobot(user))
 		user.apply_damage(80, DAMAGE_TYPE_BURN, def_zone = BP_TORSO)
 		visible_message("<span class='danger'>Electricity arcs off [user] as it touches \the [src]!</span>")
