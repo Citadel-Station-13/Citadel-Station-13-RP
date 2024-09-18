@@ -5303,5 +5303,10 @@
 #include "maps\triumph\shuttles.dm"
 #include "maps\triumph\telecomms.dm"
 #include "maps\triumph\triumph.dm"
+#include "maps\victory\engines.dm"
+#include "maps\victory\sectors.dm"
+#include "maps\victory\shuttles.dm"
+#include "maps\victory\telecomms.dm"
+#include "maps\victory\triumph.dm"
 #include "maps\victory\victory-areas.dm"
 // END_INCLUDE
