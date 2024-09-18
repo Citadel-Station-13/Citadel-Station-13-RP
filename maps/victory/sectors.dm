@@ -1,5 +1,5 @@
 //////////////////////////////////////////////////////////////////////////
-// There is literally a dm file for triumph shuttles, why are these here//
+// There is literally a dm file for victory shuttles, why are these here//
 //////////////////////////////////////////////////////////////////////////
 // EXCURSION SHUTTLE DATA
 /obj/overmap/entity/visitable/ship/landable/excursion/victory

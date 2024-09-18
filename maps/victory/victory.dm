@@ -1,6 +1,6 @@
 /datum/map/station/victory
-	id = "triumph"
-	name = "World - Triumph"
+	id = "victory"
+	name = "World - Victory"
 	levels = list(
 		/datum/map_level/victory/ship/deck_one,
 		/datum/map_level/victory/ship/deck_two,
@@ -40,15 +40,15 @@
 		/datum/shuttle/autodock/ferry/belter,
 	)
 
-	full_name = "NSV Triumph"
+	full_name = "NSV Victory"
 
 	use_overmap = TRUE
 	overmap_size = 60
 	overmap_event_areas = 50
-	usable_email_tlds = list("triumph.nt")
+	usable_email_tlds = list("victory.nt")
 
-	station_name	= "NSV Triumph"
-	station_short	= "Triumph"
+	station_name	= "NSV Victory"
+	station_short	= "Victory"
 	dock_name		= "NDV Marksman"
 	dock_type		= "space"
 	boss_name		= "Central Command"
@@ -57,9 +57,9 @@
 	company_short	= "NT"
 	starsys_name	= "Sigmar Concord"
 
-	shuttle_docked_message = "This is the %dock_name% calling to the NSV Triumph. The scheduled crew transfer shuttle has docked with the NSV Triumph. Departing crew should board the shuttle within %ETD%."
+	shuttle_docked_message = "This is the %dock_name% calling to the NSV Victory. The scheduled crew transfer shuttle has docked with the NSV Victory. Departing crew should board the shuttle within %ETD%."
 	shuttle_leaving_dock = "The transfer shuttle has left the ship. Estimate %ETA% until the shuttle arrives at the %dock_name%."
-	shuttle_called_message = "This is the %dock_name% calling to the NSV Triumph. A scheduled crew transfer to the %dock_name% is commencing. Those departing should proceed to the shuttle bay within %ETA%."
+	shuttle_called_message = "This is the %dock_name% calling to the NSV Victory. A scheduled crew transfer to the %dock_name% is commencing. Those departing should proceed to the shuttle bay within %ETA%."
 	shuttle_recall_message = "The scheduled crew transfer has been cancelled."
 	shuttle_name = "Crew Hands Transfer"
 	emergency_shuttle_docked_message = "The evacuation shuttle has arrived at the ship. You have approximately %ETD% to board the shuttle."
@@ -84,7 +84,7 @@
 							NETWORK_ROBOTS,
 							NETWORK_SECURITY,
 							NETWORK_TCOMMS,
-							NETWORK_TRIUMPH
+							"Victory",
 							)
 	secondary_networks = list(
 							NETWORK_ERT,
@@ -117,14 +117,14 @@
 		/area/solar/)
 
 // For making the 4-in-1 holomap, we calculate some offsets
-/// Width and height of compiled in triumph z levels.
-#define TRIUMPH_MAP_SIZE 192
+/// Width and height of compiled in victory z levels.
+#define VICTORY_MAP_SIZE 192
 /// 40px central gutter between columns
-#define TRIUMPH_HOLOMAP_CENTER_GUTTER 20
+#define VICTORY_HOLOMAP_CENTER_GUTTER 20
 /// 100
-#define TRIUMPH_HOLOMAP_MARGIN_X ((HOLOMAP_ICON_SIZE - (2*TRIUMPH_MAP_SIZE) - TRIUMPH_HOLOMAP_CENTER_GUTTER) / 2)
+#define VICTORY_HOLOMAP_MARGIN_X ((HOLOMAP_ICON_SIZE - (2*VICTORY_MAP_SIZE) - VICTORY_HOLOMAP_CENTER_GUTTER) / 2)
 /// 60
-#define TRIUMPH_HOLOMAP_MARGIN_Y ((HOLOMAP_ICON_SIZE - (3*TRIUMPH_MAP_SIZE)) / 2)
+#define VICTORY_HOLOMAP_MARGIN_Y ((HOLOMAP_ICON_SIZE - (3*VICTORY_MAP_SIZE)) / 2)
 // We have a bunch of stuff common to the station z levels
 
 /datum/map_level/victory/ship
@@ -132,10 +132,10 @@
 	persistence_allowed = TRUE
 
 /datum/map_level/victory/ship/deck_one
-	id = "TriumphDeck1"
-	name = "Triumph - Deck 1"
-	display_id = "triumph-deck-1"
-	display_name = "NSV Triumph - Engineering Deck"
+	id = "VictoryDeck1"
+	name = "Victory - Deck 1"
+	display_id = "victory-deck-1"
+	display_name = "NSV Victory - Engineering Deck"
 	absolute_path = "maps/victory/levels/deck1.dmm"
 	traits = list(
 		ZTRAIT_STATION,
@@ -146,10 +146,10 @@
 	flags = LEGACY_LEVEL_STATION|LEGACY_LEVEL_CONTACT|LEGACY_LEVEL_PLAYER|LEGACY_LEVEL_CONSOLES
 
 /datum/map_level/victory/ship/deck_two
-	id = "TriumphDeck2"
-	name = "Triumph - Deck 2"
-	display_id = "triumph-deck-2"
-	display_name = "NSV Triumph - Service Deck"
+	id = "VictoryDeck2"
+	name = "Victory - Deck 2"
+	display_id = "victory-deck-2"
+	display_name = "NSV Victory - Service Deck"
 	absolute_path = "maps/victory/levels/deck2.dmm"
 	traits = list(
 		ZTRAIT_STATION,
@@ -162,10 +162,10 @@
 	flags = LEGACY_LEVEL_STATION|LEGACY_LEVEL_CONTACT|LEGACY_LEVEL_PLAYER|LEGACY_LEVEL_CONSOLES
 
 /datum/map_level/victory/ship/deck_three
-	id = "TriumphDeck3"
-	name = "Triumph - Deck 3"
-	display_id = "triumph-deck-3"
-	display_name = "NSV Triumph - Operations Deck"
+	id = "VictoryDeck3"
+	name = "Victory - Deck 3"
+	display_id = "victory-deck-3"
+	display_name = "NSV Victory - Operations Deck"
 	absolute_path = "maps/victory/levels/deck3.dmm"
 	traits = list(
 		ZTRAIT_STATION,
@@ -177,10 +177,10 @@
 	flags = LEGACY_LEVEL_STATION|LEGACY_LEVEL_CONTACT|LEGACY_LEVEL_PLAYER|LEGACY_LEVEL_CONSOLES
 
 /datum/map_level/victory/ship/deck_four
-	id = "TriumphDeck4"
-	name = "Triumph - Deck 4"
-	display_id = "triumph-deck-4"
-	display_name = "NSV Triumph - Command Deck"
+	id = "VictoryDeck4"
+	name = "Victory - Deck 4"
+	display_id = "victory-deck-4"
+	display_name = "NSV Victory - Command Deck"
 	absolute_path = "maps/victory/levels/deck4.dmm"
 	traits = list(
 		ZTRAIT_STATION,
@@ -191,16 +191,16 @@
 	flags = LEGACY_LEVEL_STATION|LEGACY_LEVEL_CONTACT|LEGACY_LEVEL_PLAYER|LEGACY_LEVEL_CONSOLES
 
 /datum/map_level/victory/flagship
-	id = "TriumphFlagship"
-	name = "Triumph - Centcom / Flagship"
-	display_id = "triumph-flagship"
-	display_name = "NSV Triumph - Flagship Offboarding"
+	id = "VictoryFlagship"
+	name = "Victory - Centcom / Flagship"
+	display_id = "victory-flagship"
+	display_name = "NSV Victory - Flagship Offboarding"
 	absolute_path = "maps/victory/levels/flagship.dmm"
 	flags = LEGACY_LEVEL_ADMIN|LEGACY_LEVEL_CONTACT
 
 /datum/map_level/victory/transit
-	id = "TriumphTransit"
-	name = "Triumph - Ships / Static Transit"
+	id = "VictoryTransit"
+	name = "Victory - Ships / Static Transit"
 	absolute_path = "maps/victory/levels/transit.dmm"
 	traits = list(
 		ZTRAIT_LEGACY_BELTER_TRANSIT,
@@ -208,12 +208,12 @@
 	flags = LEGACY_LEVEL_ADMIN
 
 /datum/map_level/victory/misc
-	id = "TriumphMisc"
-	name = "Triumph - Misc"
+	id = "VictoryMisc"
+	name = "Victory - Misc"
 	absolute_path = "maps/victory/levels/misc.dmm"
 	flags = LEGACY_LEVEL_ADMIN
 
-#undef TRIUMPH_MAP_SIZE
-#undef TRIUMPH_HOLOMAP_CENTER_GUTTER
-#undef TRIUMPH_HOLOMAP_MARGIN_X
-#undef TRIUMPH_HOLOMAP_MARGIN_Y
+#undef VICTORY_MAP_SIZE
+#undef VICTORY_HOLOMAP_CENTER_GUTTER
+#undef VICTORY_HOLOMAP_MARGIN_X
+#undef VICTORY_HOLOMAP_MARGIN_Y

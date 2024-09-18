@@ -146,7 +146,7 @@
 	name = "\improper Surface Checkpoint Hallway"
 //Misc
 /area/victory/surfacebase/shuttle_pad
-	name = "\improper Triumph Shuttle Pad"
+	name = "\improper Victory Shuttle Pad"
 /area/victory/surfacebase/reading_room
 	name = "\improper Reading Room"
 /area/victory/surfacebase/vacant_site
@@ -159,14 +159,14 @@
 	nightshift_level = NIGHTSHIFT_LEVEL_PUBLIC_FACILITIES
 
 /area/victory/surfacebase
-	name = "Triumph Debug Surface"
+	name = "Victory Debug Surface"
 
 /area/victory/transit
-	name = "Triumph Debug Transit"
+	name = "Victory Debug Transit"
 	requires_power = 0
 
 /area/victory/space
-	name = "Triumph Debug Space"
+	name = "Victory Debug Space"
 	requires_power = 0
 
 /area/victory/station/stairs_three

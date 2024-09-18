@@ -33,11 +33,11 @@
 	)
 
 /obj/machinery/telecomms/receiver/preset_right/victory
-//	id = "triumph_rx"
+//	id = "victory_rx"
 	freq_listening = list(AI_FREQ, SCI_FREQ, MED_FREQ, SUP_FREQ, SRV_FREQ, COMM_FREQ, ENG_FREQ, SEC_FREQ, ENT_FREQ, EXP_FREQ)
 
 /obj/machinery/telecomms/broadcaster/preset_right/victory
-//	id = "triumph_tx"
+//	id = "victory_tx"
 
 /obj/machinery/telecomms/bus/preset_two/victory
 	freq_listening = list(SUP_FREQ, SRV_FREQ, EXP_FREQ)

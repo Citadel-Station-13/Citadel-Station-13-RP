@@ -2815,19 +2815,19 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	dir = 4;
 	frequency = 1380;
-	id_tag = "triumph_specops_dock_pump"
+	id_tag = "victory_specops_dock_pump"
 	},
 /obj/machinery/airlock_sensor{
 	dir = 1;
 	frequency = 1380;
-	id_tag = "triumph_specops_dock";
+	id_tag = "victory_specops_dock";
 	pixel_y = -22
 	},
 /obj/map_helper/airlock/sensor/chamber_sensor,
 /obj/map_helper/airlock/atmos/chamber_pump,
 /obj/machinery/embedded_controller/radio/airlock/docking_port{
 	frequency = 1380;
-	id_tag = "triumph_specops_dock";
+	id_tag = "victory_specops_dock";
 	pixel_y = 32
 	},
 /turf/simulated/floor/tiled/dark,
@@ -3566,8 +3566,8 @@
 /obj/effect/shuttle_landmark{
 	base_area = /area/victory/surfacebase/tram;
 	base_turf = /turf/simulated/floor/tiled/techfloor/grid;
-	landmark_tag = "escape_triumph";
-	name = "Escape Shuttle Triumph"
+	landmark_tag = "escape_victory";
+	name = "Escape Shuttle Victory"
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/victory/surfacebase/tram)
@@ -5431,7 +5431,7 @@
 /area/shuttle/excursion/cockpit)
 "geL" = (
 /obj/structure/sign/goldenplaque{
-	desc = "This plaque is thankfully empty, but is dedicated to those that were killed in the line of duty protecting the NSV Triumph, and Nanotrasen as a whole.";
+	desc = "This plaque is thankfully empty, but is dedicated to those that were killed in the line of duty protecting the NSV Victory, and Nanotrasen as a whole.";
 	name = "Memorial Plaque";
 	pixel_y = 32
 	},
@@ -6553,7 +6553,7 @@
 /obj/machinery/access_button/airlock_exterior{
 	dir = 8;
 	frequency = 1380;
-	master_tag = "triumph_specops_dock";
+	master_tag = "victory_specops_dock";
 	pixel_y = 24
 	},
 /obj/machinery/door/airlock/glass_external{
@@ -6659,7 +6659,7 @@
 /obj/machinery/access_button/airlock_interior{
 	dir = 4;
 	frequency = 1380;
-	master_tag = "triumph_specops_dock";
+	master_tag = "victory_specops_dock";
 	pixel_y = 24
 	},
 /obj/machinery/door/firedoor/glass{

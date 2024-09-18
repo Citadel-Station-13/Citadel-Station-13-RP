@@ -1,10 +1,10 @@
 ////////////////////////////////////////
-// Triumph custom shuttle implemnetations
+// Victory custom shuttle implemnetations
 ////////////////////////////////////////
 
 /obj/machinery/computer/shuttle_control/victory_backup
-	name = "triumph backup shuttle control console"
-	shuttle_tag = "Triumph Backup"
+	name = "victory backup shuttle control console"
+	shuttle_tag = "Victory Backup"
 	req_one_access = list(ACCESS_COMMAND_BRIDGE,ACCESS_GENERAL_PILOT)
 
 /obj/machinery/computer/shuttle_control/multi/mercenary
@@ -39,7 +39,7 @@
 	warmup_time = 0
 	shuttle_area = list(/area/shuttle/excursion/victory)
 	shuttle_area = list(/area/shuttle/excursion/cockpit, /area/shuttle/excursion/general, /area/shuttle/excursion/cargo)
-	current_location = "triumph_excursion_hangar"
+	current_location = "victory_excursion_hangar"
 	docking_controller_tag = "expshuttle_docker"
 	landmark_transition = "nav_transit_exploration"
 	move_time = 20
@@ -60,7 +60,7 @@
 	warmup_time = 0
 	shuttle_area = list(/area/shuttle/courser/cockpit, /area/shuttle/courser/general, /area/shuttle/courser/battery)
 	//shuttle_area = list(/area/shuttle/excursion/cockpit, /area/shuttle/excursion/general, /area/shuttle/excursion/cargo)
-	current_location = "triumph_courser_hangar"
+	current_location = "victory_courser_hangar"
 	docking_controller_tag = "courser_docker"
 	landmark_transition = "nav_transit_courser"
 	move_time = 15
@@ -80,7 +80,7 @@
 	name = "Civilian Transport"
 	warmup_time = 10
 	shuttle_area = list(/area/shuttle/civvie/cockpit, /area/shuttle/civvie/general)
-	current_location = "triumph_civvie_home"
+	current_location = "victory_civvie_home"
 	docking_controller_tag = "civvie_docker"
 	landmark_transition = "nav_transit_civvie"
 	fuel_consumption = 10
@@ -101,7 +101,7 @@
 	name = "Mining Shuttle"
 	warmup_time = 10
 	shuttle_area = list(/area/shuttle/mining_ship/general)
-	current_location = "triumph_mining_port"
+	current_location = "victory_mining_port"
 	docking_controller_tag = "mining_docker"
 	landmark_transition = "nav_transit_mining"
 	move_time = 30
@@ -119,7 +119,7 @@
 	name = "Dart EMT Shuttle"
 	warmup_time = 5
 	shuttle_area = list(/area/shuttle/emt/general, /area/shuttle/emt/cockpit)
-	current_location = "triumph_emt_dock"
+	current_location = "victory_emt_dock"
 	docking_controller_tag = "emt_shuttle_docker"
 	landmark_transition = "nav_transit_emt"
 	move_time = 20
@@ -140,7 +140,7 @@
 	shuttle_area = /area/shuttle/escape
 	warmup_time = 10
 	landmark_offsite = "escape_cc"
-	landmark_station = "escape_triumph"
+	landmark_station = "escape_victory"
 	landmark_transition = "escape_transit"
 	move_time = SHUTTLE_TRANSIT_DURATION_RETURN
 

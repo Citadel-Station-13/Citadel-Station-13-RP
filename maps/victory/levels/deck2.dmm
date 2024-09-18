@@ -4576,7 +4576,7 @@
 /obj/map_helper/airlock/door/ext_door,
 /obj/machinery/access_button/airlock_exterior{
 	frequency = 1380;
-	master_tag = "triumph_annex_dock";
+	master_tag = "victory_annex_dock";
 	pixel_x = -24
 	},
 /obj/machinery/door/airlock/glass_external{
@@ -6907,7 +6907,7 @@
 	base_turf = /turf/simulated/floor/airless/ceiling;
 	docking_controller = "cargo_bay";
 	landmark_tag = "supply_dock";
-	name = "NSV Triumph Cargo Dock"
+	name = "NSV Victory Cargo Dock"
 	},
 /turf/simulated/floor/airless/ceiling,
 /area/space)
@@ -12295,7 +12295,7 @@
 	base_turf = /turf/space;
 	docking_controller = "belter_docking";
 	landmark_tag = "belter_station";
-	name = "NSV Triumph - Belter Shuttle"
+	name = "NSV Victory - Belter Shuttle"
 	},
 /turf/simulated/shuttle/plating/airless/carry,
 /area/space)
@@ -13146,7 +13146,7 @@
 /obj/map_helper/airlock/door/int_door,
 /obj/machinery/access_button/airlock_interior{
 	frequency = 1380;
-	master_tag = "triumph_annex_dock";
+	master_tag = "victory_annex_dock";
 	pixel_x = 26
 	},
 /obj/machinery/door/airlock/glass_external{
@@ -19396,7 +19396,7 @@
 	},
 /obj/machinery/embedded_controller/radio/airlock/docking_port{
 	frequency = 1380;
-	id_tag = "triumph_annex_dock";
+	id_tag = "victory_annex_dock";
 	pixel_x = 26;
 	pixel_y = -1
 	},
@@ -21101,12 +21101,12 @@
 "sHt" = (
 /obj/machinery/airlock_sensor{
 	dir = 1;
-	id_tag = "triumph_annex_dock";
+	id_tag = "victory_annex_dock";
 	pixel_x = -22
 	},
 /obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	frequency = 1380;
-	id_tag = "triumph_annex_dock_pump"
+	id_tag = "victory_annex_dock_pump"
 	},
 /obj/map_helper/airlock/sensor/chamber_sensor,
 /obj/map_helper/airlock/atmos/chamber_pump,
@@ -23669,7 +23669,7 @@
 /obj/machinery/embedded_controller/radio/airlock/docking_port{
 	dir = 4;
 	frequency = 1380;
-	id_tag = "triumph_space_mining_port";
+	id_tag = "victory_space_mining_port";
 	pixel_x = -26;
 	req_one_access = list(13)
 	},
