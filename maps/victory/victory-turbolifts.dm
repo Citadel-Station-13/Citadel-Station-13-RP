@@ -1,6 +1,6 @@
 
-/obj/turbolift_map_holder/triumph
-	name = "Triumph Climber"
+/obj/turbolift_map_holder/victory
+	name = "Victory Climber"
 	depth = 4
 	lift_size_x = 3
 	lift_size_y = 1
