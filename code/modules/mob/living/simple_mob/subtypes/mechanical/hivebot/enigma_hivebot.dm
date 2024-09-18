@@ -386,7 +386,7 @@
 	var/shield_type = /obj/item/shield_projector/rectangle{
 		shield_health = 50;
 		max_shield_health = 50;
-		shield_regen_delay = 20 SECONDS; //to prevent hit and run abuse -- not fond of my creations used to godmode eventmins even more unless things change in terms of taking pcs into consideration -Irkalla
+		shield_regen_delay = 20 SECONDS; //to prevent hit and run abuse
 		shield_regen_amount = 10;
 		size_x = 1;
 		size_y = 1;
