@@ -484,7 +484,7 @@
 		var/obj/item/resolved = ref?.resolve()
 		if(isnull(resolved))
 			continue
-		put_in_hand_or_drop(resolved, i)
+		put_in_hands_or_drop(resolved, specific_index = i)
 
 	if(!isnull(blob.mob_radio))
 		if(!equip_to_slots_if_possible(blob.mob_radio, list(

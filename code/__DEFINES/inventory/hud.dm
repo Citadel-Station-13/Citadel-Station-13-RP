@@ -25,4 +25,22 @@
 /// * axis cannot be specified for this
 #define INVENTORY_HUD_ANCHOR_AUTOMATIC "automatic"
 
-#warn impl all
+//* inventory_hud_class *//
+
+/// always visible
+#define INVENTORY_HUD_CLASS_ALWAYS "always"
+/// only when drawer is open
+#define INVENTORY_HUD_CLASS_DRAWER "drawer"
+
+//* inventory slot remappings for species *//
+
+/// inventory_hud_main_axis
+#define INVENTORY_SLOT_REMAP_MAIN_AXIS "main-axis"
+/// inventory_hud_cross_axis
+#define INVENTORY_SLOT_REMAP_CROSS_AXIS "cross-axis"
+/// name
+#define INVENTORY_SLOT_REMAP_NAME "name"
+/// inventory_hud_class
+#define INVENTORY_SLOT_REMAP_CLASS "class"
+/// inventory_hud_anchor
+#define INVENTORY_SLOT_REMAP_ANCHOR "anchor"

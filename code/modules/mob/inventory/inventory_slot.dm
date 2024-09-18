@@ -103,6 +103,8 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	var/inventory_hud_main_axis = 0
 	/// preferred cross axis offset
 	var/inventory_hud_cross_axis = 0
+	/// hud icon state in hud style
+	var/inventory_hud_icon_state = ""
 
 	//* Grammar
 	/// player friendly name
@@ -273,6 +275,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 
 	inventory_hud_anchor = INVENTORY_HUD_ANCHOR_TO_HANDS
 	inventory_hud_main_axis = -1
+	inventory_hud_icon_state = "back"
 
 	slot_equip_checks = SLOT_EQUIP_CHECK_USE_FLAGS
 	inventory_slot_flags = INV_SLOT_IS_RENDERED | INV_SLOT_IS_INVENTORY | INV_SLOT_IS_STRIPPABLE | INV_SLOT_CONSIDERED_WORN
@@ -298,6 +301,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 
 	inventory_hud_anchor = INVENTORY_HUD_ANCHOR_TO_DRAWER
 	inventory_hud_main_axis = 1
+	inventory_hud_icon_state = "uniform"
 
 	slot_equip_checks = SLOT_EQUIP_CHECK_USE_FLAGS
 	slot_flags_required = SLOT_ICLOTHING
@@ -426,6 +430,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	inventory_hud_anchor = INVENTORY_HUD_ANCHOR_TO_DRAWER
 	inventory_hud_main_axis = 4
 	inventory_hud_cross_axis = 1
+	inventory_hud_icon_state = "head"
 
 	slot_equip_checks = SLOT_EQUIP_CHECK_USE_FLAGS
 	slot_flags_required = SLOT_HEAD
@@ -465,6 +470,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	inventory_hud_anchor = INVENTORY_HUD_ANCHOR_TO_DRAWER
 	inventory_hud_main_axis = 1
 	inventory_hud_cross_axis = 1
+	inventory_hud_icon_state = "suit"
 
 	slot_equip_checks = SLOT_EQUIP_CHECK_USE_FLAGS
 	slot_flags_required = SLOT_OCLOTHING
@@ -536,6 +542,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 
 	inventory_hud_anchor = INVENTORY_HUD_ANCHOR_TO_DRAWER
 	inventory_hud_cross_axis = 4
+	inventory_hud_icon_state = "belt"
 
 	slot_equip_checks = SLOT_EQUIP_CHECK_USE_FLAGS
 	slot_flags_required = SLOT_BELT
@@ -571,6 +578,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 
 	inventory_hud_anchor = INVENTORY_HUD_ANCHOR_TO_HANDS
 	inventory_hud_main_axis = 1
+	inventory_hud_icon_state = "pocket"
 
 /datum/inventory_slot/inventory/pocket/right
 	name = "right pocket"
@@ -578,9 +586,9 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	display_name = "right pocket"
 	display_preposition = "in"
 
-
 	inventory_hud_anchor = INVENTORY_HUD_ANCHOR_TO_HANDS
 	inventory_hud_main_axis = 2
+	inventory_hud_icon_state = "pocket"
 
 /datum/inventory_slot/inventory/id
 	name = "id"
@@ -592,6 +600,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 
 	inventory_hud_anchor = INVENTORY_HUD_ANCHOR_TO_DRAWER
 	inventory_hud_cross_axis = 3
+	inventory_hud_icon_state = "id"
 
 	slot_equip_checks = SLOT_EQUIP_CHECK_USE_FLAGS
 	slot_flags_required = SLOT_ID
@@ -626,6 +635,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 
 	inventory_hud_anchor = INVENTORY_HUD_ANCHOR_TO_DRAWER
 	inventory_hud_cross_axis = 3
+	inventory_hud_icon_state = "shoes"
 
 	slot_equip_checks = SLOT_EQUIP_CHECK_USE_FLAGS
 	slot_flags_required = SLOT_FEET
@@ -666,6 +676,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	inventory_hud_anchor = INVENTORY_HUD_ANCHOR_TO_DRAWER
 	inventory_hud_main_axis = 1
 	inventory_hud_cross_axis = 2
+	inventory_hud_icon_state = "gloves"
 
 	slot_equip_checks = SLOT_EQUIP_CHECK_USE_FLAGS
 	slot_flags_required = SLOT_GLOVES
@@ -692,6 +703,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 
 	inventory_hud_anchor = INVENTORY_HUD_ANCHOR_TO_DRAWER
 	inventory_hud_main_axis = 2
+	inventory_hud_icon_state = "glasses"
 
 	slot_equip_checks = SLOT_EQUIP_CHECK_USE_FLAGS
 	slot_flags_required = SLOT_EYES
@@ -718,6 +730,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 
 	inventory_hud_anchor = INVENTORY_HUD_ANCHOR_TO_DRAWER
 	inventory_hud_cross_axis = 2
+	inventory_hud_icon_state = "suit-store"
 
 	slot_equip_checks = SLOT_EQUIP_CHECK_USE_PROC
 	inventory_slot_flags = INV_SLOT_IS_RENDERED | INV_SLOT_IS_INVENTORY | INV_SLOT_IS_STRIPPABLE
@@ -771,6 +784,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	inventory_hud_anchor = INVENTORY_HUD_ANCHOR_TO_DRAWER
 	inventory_hud_main_axis = 3
 	inventory_hud_cross_axis = 2
+	inventory_hud_icon_state = "ears"
 
 	slot_equip_checks = SLOT_EQUIP_CHECK_USE_FLAGS
 	slot_flags_required = SLOT_EARS
@@ -785,6 +799,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	inventory_hud_anchor = INVENTORY_HUD_ANCHOR_TO_DRAWER
 	inventory_hud_main_axis = 4
 	inventory_hud_cross_axis = 2
+	inventory_hud_icon_state = "ears"
 
 	slot_equip_checks = SLOT_EQUIP_CHECK_USE_FLAGS
 	slot_flags_required = SLOT_EARS
@@ -801,6 +816,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	inventory_hud_anchor = INVENTORY_HUD_ANCHOR_TO_DRAWER
 	inventory_hud_main_axis = 3
 	inventory_hud_cross_axis = 1
+	inventory_hud_icon_state = "mask"
 
 	slot_equip_checks = SLOT_EQUIP_CHECK_USE_FLAGS
 	slot_flags_required = SLOT_MASK
