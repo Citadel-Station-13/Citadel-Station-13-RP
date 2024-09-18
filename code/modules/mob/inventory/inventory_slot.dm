@@ -96,9 +96,13 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	/// display order - higher is upper. a <hr> is applied on 0.
 	var/sort_order = 0
 
-	//* HUD
+	//* HUD *//
+	/// do we render on hud at all?
+	var/inventory_hud_rendered = FALSE
 	/// our anchoring enum
 	var/inventory_hud_anchor = INVENTORY_HUD_ANCHOR_AUTOMATIC
+	/// our hiding class
+	var/inventory_hud_class = INVENTORY_HUD_CLASS_ALWAYS
 	/// preferred main axis offset
 	var/inventory_hud_main_axis = 0
 	/// preferred cross axis offset
@@ -264,6 +268,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 /datum/inventory_slot/inventory
 	abstract_type = /datum/inventory_slot/inventory
 	inventory_slot_flags = INV_SLOT_IS_RENDERED | INV_SLOT_IS_INVENTORY | INV_SLOT_IS_STRIPPABLE | INV_SLOT_HUD_REQUIRES_EXPAND | INV_SLOT_CONSIDERED_WORN
+	inventory_hud_rendered = TRUE
 
 /datum/inventory_slot/inventory/back
 	name = "back"
@@ -302,6 +307,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	inventory_hud_anchor = INVENTORY_HUD_ANCHOR_TO_DRAWER
 	inventory_hud_main_axis = 1
 	inventory_hud_icon_state = "uniform"
+	inventory_hud_class = INVENTORY_HUD_CLASS_DRAWER
 
 	slot_equip_checks = SLOT_EQUIP_CHECK_USE_FLAGS
 	slot_flags_required = SLOT_ICLOTHING
@@ -393,7 +399,6 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 		return FALSE
 	return ..()
 
-
 /datum/inventory_slot/inventory/uniform/render(mob/wearer, obj/item/item, bodytype)
 	. = ..()
 	if(!ishuman(wearer))
@@ -431,6 +436,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	inventory_hud_main_axis = 4
 	inventory_hud_cross_axis = 1
 	inventory_hud_icon_state = "head"
+	inventory_hud_class = INVENTORY_HUD_CLASS_DRAWER
 
 	slot_equip_checks = SLOT_EQUIP_CHECK_USE_FLAGS
 	slot_flags_required = SLOT_HEAD
@@ -471,6 +477,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	inventory_hud_main_axis = 1
 	inventory_hud_cross_axis = 1
 	inventory_hud_icon_state = "suit"
+	inventory_hud_class = INVENTORY_HUD_CLASS_DRAWER
 
 	slot_equip_checks = SLOT_EQUIP_CHECK_USE_FLAGS
 	slot_flags_required = SLOT_OCLOTHING
@@ -636,6 +643,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	inventory_hud_anchor = INVENTORY_HUD_ANCHOR_TO_DRAWER
 	inventory_hud_cross_axis = 3
 	inventory_hud_icon_state = "shoes"
+	inventory_hud_class = INVENTORY_HUD_CLASS_DRAWER
 
 	slot_equip_checks = SLOT_EQUIP_CHECK_USE_FLAGS
 	slot_flags_required = SLOT_FEET
@@ -677,6 +685,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	inventory_hud_main_axis = 1
 	inventory_hud_cross_axis = 2
 	inventory_hud_icon_state = "gloves"
+	inventory_hud_class = INVENTORY_HUD_CLASS_DRAWER
 
 	slot_equip_checks = SLOT_EQUIP_CHECK_USE_FLAGS
 	slot_flags_required = SLOT_GLOVES
@@ -704,6 +713,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	inventory_hud_anchor = INVENTORY_HUD_ANCHOR_TO_DRAWER
 	inventory_hud_main_axis = 2
 	inventory_hud_icon_state = "glasses"
+	inventory_hud_class = INVENTORY_HUD_CLASS_DRAWER
 
 	slot_equip_checks = SLOT_EQUIP_CHECK_USE_FLAGS
 	slot_flags_required = SLOT_EYES
@@ -785,6 +795,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	inventory_hud_main_axis = 3
 	inventory_hud_cross_axis = 2
 	inventory_hud_icon_state = "ears"
+	inventory_hud_class = INVENTORY_HUD_CLASS_DRAWER
 
 	slot_equip_checks = SLOT_EQUIP_CHECK_USE_FLAGS
 	slot_flags_required = SLOT_EARS
@@ -800,6 +811,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	inventory_hud_main_axis = 4
 	inventory_hud_cross_axis = 2
 	inventory_hud_icon_state = "ears"
+	inventory_hud_class = INVENTORY_HUD_CLASS_DRAWER
 
 	slot_equip_checks = SLOT_EQUIP_CHECK_USE_FLAGS
 	slot_flags_required = SLOT_EARS
@@ -817,6 +829,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	inventory_hud_main_axis = 3
 	inventory_hud_cross_axis = 1
 	inventory_hud_icon_state = "mask"
+	inventory_hud_class = INVENTORY_HUD_CLASS_DRAWER
 
 	slot_equip_checks = SLOT_EQUIP_CHECK_USE_FLAGS
 	slot_flags_required = SLOT_MASK

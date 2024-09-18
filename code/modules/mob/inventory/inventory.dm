@@ -16,12 +16,18 @@
 	/// our action holder
 	var/datum/action_holder/actions
 
+	//* Caches *//
+	/// cached overlays by slot id or hand index
+	var/list/rendered_normal_overlays = list()
+	/// cached overlays by slot id
+	// todo: emissives
+	// var/list/rendered_emissive_overlays = list()
+
 	//* HUD *//
 	/// our hud
 	var/datum/mob_hud/inventory/hud
 
 	//* Inventory *//
-
 	/// held items
 	///
 	/// * empty indices are null
@@ -30,12 +36,12 @@
 	/// * 2, 4, 6, ... are right
 	var/list/obj/item/held_items = list()
 
-	//* Caches *//
-	/// cached overlays by slot id or hand index
-	var/list/rendered_normal_overlays = list()
-	/// cached overlays by slot id
-	// todo: emissives
-	// var/list/rendered_emissive_overlays = list()
+	//* Slots *//
+	/// our base slot ids associated to remappings
+	///
+	/// * key: string id; value: remapping list with keys of INVENTORY_SLOT_REMAP_*
+	/// * never ever modify this list in-place, this is why it's private; this may be shared lists in species!
+	VAR_PRIVATE/list/base_inventory_slots
 
 /datum/inventory/New(mob/M)
 	if(!istype(M))
@@ -80,8 +86,6 @@
 	for(var/datum/action/action in actions.actions)
 		action.update_button_availability()
 
-#warn below
-
 /**
  * called when an item is added to inventory
  */
@@ -101,6 +105,18 @@
 	hud?.move_item(item, from_slot, to_slot)
 
 #warn hook above 3
+
+//* Slots *//
+
+/**
+ * @return list(id = list(INVENTORY_SLOT_REMAP_*))
+ */
+/datum/inventory/proc/build_inventory_slots_with_remappings()
+	return base_inventory_slots
+
+/datum/inventory/proc/set_base_inventory_slots(list/mapped_slots)
+	base_inventory_slots = mapped_slots
+	hud?.rebuild_slots(build_inventory_slots_with_remappings())
 
 //! unsorted / legacy below
 
