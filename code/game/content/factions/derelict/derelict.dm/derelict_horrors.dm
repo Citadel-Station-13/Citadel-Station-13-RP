@@ -42,7 +42,7 @@
 	legacy_melee_damage_lower = 0
 	legacy_melee_damage_upper = 0
 	base_attack_cooldown = 10
-	projectiletype = /obj/projectile/beam/geist
+	projectiletype = /obj/projectile/temp/hot
 	ai_holder_type = /datum/ai_holder/polaris/simple_mob/ranged/kiting/threatening
 
 /mob/living/simple_mob/animal/event/derelict/swarm
@@ -116,7 +116,7 @@
 	base_attack_cooldown = 11
 	attack_sound = 'sound/effects/stealthoff.ogg'
 	ai_holder_type = /datum/ai_holder/polaris/simple_mob/ranged/kiting/threatening
-	projectiletype = /obj/projectile/beam/stun/vortex
+	projectiletype = /obj/projectile/beam/stun
 
 /mob/living/simple_mob/animal/event/derelict/hallucination
 	name = "WE SEE YOU"
