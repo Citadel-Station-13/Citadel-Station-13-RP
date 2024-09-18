@@ -27,6 +27,9 @@
 		/datum/map/sector/roguemining_192/one,
 	)
 
+	// todo: remove after dev is done
+	allow_random_draw = FALSE
+
 	//* LEGACY BELOW *//
 
 	legacy_assert_shuttle_datums = list(
