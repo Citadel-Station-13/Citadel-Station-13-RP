@@ -11,14 +11,13 @@
 	w_class = WEIGHT_CLASS_NORMAL
 	origin_tech = list(TECH_MAGNET = 3, TECH_COMBAT = 4)
 	attack_verb = list("attacked", "chopped", "cleaved", "torn", "cut")
-	sharp = 1
-	edge = 1
+	damage_mode = DAMAGE_MODE_SHARP | DAMAGE_MODE_EDGE
 	can_cleave = TRUE
 
 	active_damage_force = 60
 	active_throw_force = 35
 	active_weight_class = WEIGHT_CLASS_HUGE
-	active_damage_type = SEARING
+	active_damage_type = DAMAGE_TYPE_SEARING
 
 /obj/item/melee/transforming/energy/axe/on_activate(datum/event_args/actor/actor, silent)
 	. = ..()

@@ -37,7 +37,7 @@
 		spawn(burst_time)
 			fieldsactive--
 
-/obj/item/resonator/attack_self(mob/user)
+/obj/item/resonator/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -97,7 +97,7 @@
 		if(creator)
 			add_attack_logs(creator, L, "used a resonator field on")
 		to_chat(L, "<span class='danger'>\The [src] ruptured with you in it!</span>")
-		L.apply_damage(resonance_damage, BRUTE)
+		L.apply_damage(resonance_damage, DAMAGE_TYPE_BRUTE)
 	qdel(src)
 
 

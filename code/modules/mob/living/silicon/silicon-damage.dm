@@ -8,7 +8,7 @@
 		return
 	// we only care about those
 	switch(damage_type)
-		if(BRUTE)
+		if(DAMAGE_TYPE_BRUTE)
 			adjustBruteLoss(damage)
-		if(BURN)
+		if(DAMAGE_TYPE_BURN)
 			adjustBruteLoss(damage)

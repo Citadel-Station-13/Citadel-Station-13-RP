@@ -21,9 +21,7 @@
 */
 	attack_sound = 'sound/weapons/bladeslice.ogg'
 	attack_verb = list("smashed", "crushed", "cleaved", "chopped", "pulped")
-	sharp = TRUE
-	edge = TRUE
-	// sharpness = SHARP_EDGED
+	damage_mode = DAMAGE_MODE_SHARP | DAMAGE_MODE_EDGE
 	item_action_name = "Toggle Light"
 	light_wedge = LIGHT_WIDE
 	// actions_types = list(/datum/action/item_action/toggle_light)
@@ -187,12 +185,12 @@
 		if(thrown? (get_dir(src, L) & L.dir) : ((user.dir & backstab_dir) && (L.dir & backstab_dir)))
 			if(!QDELETED(C))
 				C.total_damage += detonation_damage + backstab_bonus + thrown_bonus //cheat a little and add the total before killing it, so certain mobs don't have much lower chances of giving an item
-			L.apply_damage(detonation_damage + backstab_bonus + thrown_bonus, BRUTE, blocked = def_check)
+			L.apply_damage(detonation_damage + backstab_bonus + thrown_bonus, DAMAGE_TYPE_BRUTE, blocked = def_check)
 			playsound(src, 'sound/weapons/kenetic_accel.ogg', 100, 1) //Seriously who spelled it wrong
 		else
 			if(!QDELETED(C))
 				C.total_damage += detonation_damage + thrown_bonus
-			L.apply_damage(detonation_damage + thrown_bonus, BRUTE, blocked = def_check)
+			L.apply_damage(detonation_damage + thrown_bonus, DAMAGE_TYPE_BRUTE, blocked = def_check)
 
 /obj/item/kinetic_crusher/throw_impact(atom/A, datum/thrownthing/TT)
 	. = ..()
@@ -307,8 +305,9 @@
 	name = "destabilizing force"
 	icon_state = "pulse1"
 	nodamage = TRUE
-	damage_force = 0 //We're just here to mark people. This is still a melee weapon.
-	damage_type = BRUTE
+	// We're just here to mark people. This is still a melee weapon.
+	damage_force = 0
+	damage_type = DAMAGE_TYPE_BRUTE
 	damage_flag = ARMOR_BOMB
 	range = WORLD_ICON_SIZE * 6
 	accuracy_disabled = TRUE

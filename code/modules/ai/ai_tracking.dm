@@ -60,7 +60,6 @@
  * * dir - direction of move. if it's just a Move() or otherwie standing still, this is NONE.
  */
 /datum/ai_tracking/proc/track_movement(time, dir)
-	var/elapsed = max(world.time - movement_record_last, world.tick_lag)
 	// flushing changes last record
 	flush_movement()
 

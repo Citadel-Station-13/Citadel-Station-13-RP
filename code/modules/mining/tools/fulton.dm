@@ -1,5 +1,7 @@
 var/global/list/total_extraction_beacons = list()
 
+// todo: this should be included in the air-support module being added later, not just a mining exclusive
+
 /obj/item/extraction_pack
 	name = "fulton extraction pack"
 	desc = "A balloon pack that can be used to extract equipment or personnel to a Fulton Recovery Beacon. Anything not bolted down can be moved. Link the pack to a beacon by using the pack in hand."
@@ -29,7 +31,7 @@ var/global/list/total_extraction_beacons = list()
 	. = ..()
 	. +="It has [uses_left] use\s remaining."
 
-/obj/item/extraction_pack/attack_self(mob/user)
+/obj/item/extraction_pack/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -165,7 +167,7 @@ var/global/list/total_extraction_beacons = list()
 	icon = 'icons/obj/stock_parts.dmi'
 	icon_state = "subspace_amplifier"
 
-/obj/item/fulton_core/attack_self(mob/user)
+/obj/item/fulton_core/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return

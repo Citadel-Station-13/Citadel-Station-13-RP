@@ -81,8 +81,7 @@
 	desc = "Cut, cut, and once more cut."
 	icon_state = "scalpel"
 	damage_force = 10.0
-	sharp = 1
-	edge = 1
+	damage_mode = DAMAGE_MODE_SHARP | DAMAGE_MODE_EDGE
 	w_class = WEIGHT_CLASS_TINY
 	slot_flags = SLOT_EARS
 	throw_force = 5.0
@@ -106,20 +105,20 @@
 	name = "laser scalpel"
 	desc = "A scalpel augmented with a directed laser, for more precise cutting without blood entering the field.  This one looks basic and could be improved."
 	icon_state = "scalpel_laser1_on"
-	damtype = "fire"
+	damage_type = DAMAGE_TYPE_BURN
 
 /obj/item/surgical/scalpel/laser2
 	name = "laser scalpel"
 	desc = "A scalpel augmented with a directed laser, for more precise cutting without blood entering the field.  This one looks somewhat advanced."
 	icon_state = "scalpel_laser2_on"
-	damtype = "fire"
+	damage_type = DAMAGE_TYPE_BURN
 	damage_force = 12.0
 
 /obj/item/surgical/scalpel/laser3
 	name = "laser scalpel"
 	desc = "A scalpel augmented with a directed laser, for more precise cutting without blood entering the field.  This one looks to be the pinnacle of precision energy cutlery!"
 	icon_state = "scalpel_laser3_on"
-	damtype = "fire"
+	damage_type = DAMAGE_TYPE_BURN
 	damage_force = 15.0
 
 /obj/item/surgical/scalpel/manager
@@ -153,8 +152,7 @@
 	origin_tech = list(TECH_MATERIAL = 1, TECH_BIO = 1)
 	materials_base = list(MAT_STEEL = 20000, MAT_GLASS = 10000)
 	attack_verb = list("attacked", "slashed", "sawed", "cut")
-	sharp = 1
-	edge = 1
+	damage_mode = DAMAGE_MODE_SHARP | DAMAGE_MODE_EDGE
 
 /obj/item/surgical/circular_saw/manager
 	name = "energetic bone diverter"
@@ -162,7 +160,7 @@
 	icon_state = "adv_saw"
 	item_state = "saw3"
 	attack_sound = 'sound/weapons/emitter2.ogg'
-	damtype = SEARING
+	damage_type = DAMAGE_TYPE_SEARING
 	w_class = WEIGHT_CLASS_BULKY
 	origin_tech = list(TECH_BIO = 4, TECH_MATERIAL = 6, TECH_MAGNET = 6)
 	materials_base = list(MAT_STEEL = 12500)
@@ -318,8 +316,7 @@
 	desc = "Finely knapped glass attached to a carved bone by sinew. It seems like it'd be good at cutting."
 	icon_state = "scalpel_bone"
 	damage_force = 10.0
-	sharp = 1
-	edge = 1
+	damage_mode = DAMAGE_MODE_SHARP | DAMAGE_MODE_EDGE
 	w_class = WEIGHT_CLASS_TINY
 	slot_flags = SLOT_EARS
 	throw_force = 5.0
@@ -342,8 +339,7 @@
 	icon = 'icons/obj/lavaland.dmi'
 	icon_state = "scalpel_bronze"
 	damage_force = 10.0
-	sharp = 1
-	edge = 1
+	damage_mode = DAMAGE_MODE_SHARP | DAMAGE_MODE_EDGE
 	w_class = WEIGHT_CLASS_TINY
 	slot_flags = SLOT_EARS
 	throw_force = 5.0
@@ -373,8 +369,7 @@
 	origin_tech = list(TECH_MATERIAL = 1, TECH_BIO = 1)
 	materials_base = list("bone" = 6000, MAT_GLASS = 4000)
 	attack_verb = list("attacked", "slashed", "sawed", "cut")
-	sharp = 1
-	edge = 1
+	damage_mode = DAMAGE_MODE_SHARP | DAMAGE_MODE_EDGE
 
 /obj/item/surgical/saw_bronze
 	name = "bronze saw"
@@ -389,8 +384,7 @@
 	origin_tech = list(TECH_MATERIAL = 1)
 	materials_base = list("bone" = 6000, MAT_BRONZE = 4000)
 	attack_verb = list("attacked", "slashed", "sawed", "cut")
-	sharp = 1
-	edge = 1
+	damage_mode = DAMAGE_MODE_SHARP | DAMAGE_MODE_EDGE
 
 /obj/item/surgical/bonesetter_primitive
 	name = "primitive bone setter"

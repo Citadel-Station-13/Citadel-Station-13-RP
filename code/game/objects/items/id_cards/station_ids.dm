@@ -182,7 +182,7 @@
 		dat += "The confidential information flap is closed."
 	return dat
 
-/obj/item/card/id/attack_self(mob/user)
+/obj/item/card/id/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return

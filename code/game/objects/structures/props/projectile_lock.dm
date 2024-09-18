@@ -48,7 +48,7 @@
 	if(timing)
 		return PROJECTILE_IMPACT_DELETE
 
-	if(istype(proj, /obj/projectile/beam/heavylaser/cannon) || istype(proj, /obj/projectile/beam/emitter) || (proj.damage_force >= 80 && proj.damtype == BURN))
+	if(istype(proj, /obj/projectile/beam/heavylaser/cannon) || istype(proj, /obj/projectile/beam/emitter) || (proj.damage_force >= 80 && proj.damage_type == DAMAGE_TYPE_BURN))
 		toggle_lock()
 		visible_message("<span class='notice'>\The [src] [enabled ? "disengages" : "engages"] its locking mechanism.</span>")
 

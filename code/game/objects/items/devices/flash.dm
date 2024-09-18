@@ -203,7 +203,7 @@
 						H.eye_blurry = max(H.eye_blurry, flash_strength + 5)
 						H.flash_eyes()
 						H.adjustHalLoss(halloss_per_flash * (flash_strength / 5)) // Should take four flashes to stun.
-						H.apply_damage(10 * (H.species.flash_burn / 5), BURN, BP_HEAD, 0, 0, "Photon burns")
+						H.apply_damage(10 * (H.species.flash_burn / 5), DAMAGE_TYPE_BURN, BP_HEAD, 0, 0, "Photon burns")
 
 			else
 				flashfail = 1
@@ -243,7 +243,7 @@
 	else
 		user.visible_message("<span class='notice'>[user] fails to blind [M] with the flash!</span>")
 
-/obj/item/flash/attack_self(mob/user)
+/obj/item/flash/attack_self(mob/user, datum/event_args/actor/actor)
 	if(!user || !clown_check(user))
 		return
 
@@ -312,7 +312,7 @@
 		to_chat(user, "<span class='warning'>The bulb has burnt out!</span>")
 		update_icon()
 
-/obj/item/flash/synthetic/attack_self(mob/user)
+/obj/item/flash/synthetic/attack_self(mob/user, datum/event_args/actor/actor)
 	..()
 	if(!broken)
 		broken = 1

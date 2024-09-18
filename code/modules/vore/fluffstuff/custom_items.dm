@@ -86,7 +86,7 @@
 	icon_override = 'icons/vore/custom_items_vr.dmi'
 	item_state = "Flag_Nanotrasen_mob"
 
-/obj/item/flag/attack_self(mob/user)
+/obj/item/flag/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -169,7 +169,7 @@
 	damage_force = 10
 	throw_force = 3
 	w_class = WEIGHT_CLASS_NORMAL
-	damtype = HALLOSS
+	damage_type = DAMAGE_TYPE_HALLOSS
 	attack_verb = list("flogged", "whipped", "lashed", "disciplined", "chastised", "flayed")
 
 //General use
@@ -207,7 +207,7 @@
 	assignment = "CC Medical"
 	var/configured = 0
 
-/obj/item/card/id/centcom/station/fluff/aronai/attack_self(mob/user)
+/obj/item/card/id/centcom/station/fluff/aronai/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -321,7 +321,7 @@
     var/last_use = 0
     var/cooldown = 30
 
-/obj/item/cane/wand/attack_self(mob/user)
+/obj/item/cane/wand/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -445,7 +445,7 @@
 	icon_state = "dragor_dot"
 	w_class = WEIGHT_CLASS_SMALL
 
-/obj/item/fluff/dragor_dot/attack_self(mob/user)
+/obj/item/fluff/dragor_dot/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -476,7 +476,7 @@
 	desc = "A primarily blue ID with a holographic 'WAH' etched onto its back. The letters do not obscure anything important on the card. It is shiny and it feels very bumpy."
 	var/title_strings = list("Amaya Rahl's Wah-identification card", "Amaya Rahl's Wah-ID card")
 
-/obj/item/card/id/fluff/amaya/attack_self(mob/user)
+/obj/item/card/id/fluff/amaya/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -606,7 +606,7 @@
 	else
 		return ..()
 
-/obj/item/perfect_tele/attack_self(mob/user)
+/obj/item/perfect_tele/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -871,7 +871,7 @@
 
 	..()
 
-/obj/item/perfect_tele_beacon/attack_self(mob/user)
+/obj/item/perfect_tele_beacon/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -965,7 +965,7 @@
 		user.do_attack_animation(target)
 		user.setClickCooldown(DEFAULT_QUICK_COOLDOWN) //to prevent spam
 
-/obj/item/clothing/accessory/badge/holo/detective/ruda/attack_self(mob/user)
+/obj/item/clothing/accessory/badge/holo/detective/ruda/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -1138,8 +1138,6 @@
 	icon_state = "stunstaff00"
 	var/base_icon = "stunstaff"
 	damage_force = 5
-	sharp = 0
-	edge = 0
 	throw_force = 7
 	w_class = WEIGHT_CLASS_HUGE
 	origin_tech = list(TECH_COMBAT = 2)
@@ -1189,7 +1187,7 @@
 		spawn(0)
 			update_held_icon()
 
-/obj/item/melee/baton/fluff/stunstaff/attack_self(mob/user)
+/obj/item/melee/baton/fluff/stunstaff/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -1234,8 +1232,6 @@
 	var/active_throwforce
 	var/active_w_class
 	var/active_embed_chance = 0
-	sharp = 0
-	edge = 0
 
 /obj/item/melee/fluffstuff/proc/activate(mob/living/user)
 	if(active)
@@ -1244,8 +1240,6 @@
 	embed_chance = active_embed_chance
 	damage_force = active_force
 	throw_force = active_throwforce
-	sharp = 1
-	edge = 1
 	set_weight_class(active_w_class)
 	playsound(user, 'sound/weapons/sparkle.ogg', 50, 1)
 
@@ -1257,11 +1251,9 @@
 	embed_chance = initial(embed_chance)
 	damage_force = initial(damage_force)
 	throw_force = initial(throw_force)
-	sharp = initial(sharp)
-	edge = initial(edge)
 	set_weight_class(initial(w_class))
 
-/obj/item/melee/fluffstuff/attack_self(mob/user)
+/obj/item/melee/fluffstuff/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -1308,7 +1300,7 @@
 	item_icons = list(SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand_melee.dmi', SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_melee.dmi', SLOT_ID_BACK = 'icons/vore/custom_items_vr.dmi', SLOT_ID_SUIT = 'icons/vore/custom_items_vr.dmi')
 	var/active_state = "wolfgirlsword"
 	allowed = list(/obj/item/shield/fluff/wolfgirlshield)
-	damtype = HALLOSS
+	damage_type = DAMAGE_TYPE_HALLOSS
 
 /obj/item/melee/fluffstuff/wolfgirlsword/dropped(mob/user, flags, atom/newLoc)
 	..()
@@ -1321,10 +1313,9 @@
 
 	..()
 	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
-	sharp = 1
-	edge = 1
+	damage_mode = DAMAGE_MODE_SHARP | DAMAGE_MODE_EDGE
 	icon_state = "[active_state]_sharp"
-	damtype = BRUTE
+	damage_type = DAMAGE_TYPE_BRUTE
 
 
 /obj/item/melee/fluffstuff/wolfgirlsword/deactivate(mob/living/user)

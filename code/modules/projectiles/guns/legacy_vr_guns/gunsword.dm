@@ -49,8 +49,6 @@
 	var/active_throwforce = 20
 	var/active_w_class = WEIGHT_CLASS_BULKY
 	var/active_embed_chance = 0		//In the off chance one of these is supposed to embed, you can just tweak this var
-	sharp = 0
-	edge = 0
 	armor_penetration = 50
 	atom_flags = NOBLOODY
 	var/lrange = 2
@@ -67,8 +65,7 @@
 	embed_chance = active_embed_chance
 	damage_force = active_force
 	throw_force = active_throwforce
-	sharp = 1
-	edge = 1
+	damage_mode = DAMAGE_MODE_SHARP | DAMAGE_MODE_EDGE
 	set_weight_class(active_w_class)
 	playsound(user, 'sound/weapons/saberon.ogg', 50, 1)
 	set_light(lrange, lpower, lcolor)
@@ -86,14 +83,13 @@
 	embed_chance = initial(embed_chance)
 	damage_force = initial(damage_force)
 	throw_force = initial(throw_force)
-	sharp = initial(sharp)
-	edge = initial(edge)
+	damage_mode = initial(damage_mode)
 	set_weight_class(initial(w_class))
 	set_light(0,0)
 	attack_verb = list()
 
 
-/obj/item/cell/device/weapon/gunsword/attack_self(mob/user)
+/obj/item/cell/device/weapon/gunsword/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return

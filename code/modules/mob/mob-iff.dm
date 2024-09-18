@@ -10,7 +10,8 @@
 //* Init *//
 
 /mob/proc/init_iff()
-	if(!iff_factions)
+	// null is the only 'no faction' state of the var
+	if(isnull(iff_factions))
 		return
 	set_iff_factions(iff_factions)
 
@@ -47,6 +48,9 @@
 //* Direct Operations *//
 
 /mob/proc/add_iff_faction(string)
+	// the null faction is not a real faction, it's the lack of one
+	if(isnull(string))
+		return
 	if(islist(iff_factions))
 		iff_factions |= string
 	else if(iff_factions)
@@ -55,6 +59,9 @@
 		iff_factions = string
 
 /mob/proc/remove_iff_faction(string)
+	// the null faction is not a real faction, it's the lack of one
+	if(isnull(string))
+		return
 	if(islist(iff_factions))
 		iff_factions -= string
 		if(!length(iff_factions))
@@ -79,6 +86,9 @@
 	iff_factions = new_factions
 
 /mob/proc/has_iff_faction(string)
+	// the null faction is not a real faction, it's the lack of one
+	if(isnull(string))
+		return FALSE
 	return islist(iff_factions) ? (string in iff_factions) : (iff_factions == string)
 
 //* Generation / Resolution *//
@@ -115,3 +125,10 @@
 			return iff_factions in other.iff_factions
 		else if(other.iff_factions)
 			return iff_factions == other.iff_factions
+
+//* Notes *//
+
+/**
+ * A "add factions from other mob" helper is intentionally not provided because the system's semantics
+ * is usually not as simple as just adding factions from another mob.
+ */

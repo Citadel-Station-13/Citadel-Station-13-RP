@@ -48,7 +48,7 @@
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
 	user.visible_message("<font color='red'>[user]'s hand slips, tearing at [target]'s brainstem with \the [tool]!</font>" , \
 	"<font color='red'>Your hand slips, tearing at [target]'s brainstem with \the [tool]!</font>" )
-	affected.create_wound(PIERCE, 10)
+	affected.create_wound(WOUND_TYPE_PIERCE, 10)
 	target.adjust_unconscious(20 * 10)
 
 /////////////////////////////
@@ -88,7 +88,7 @@
 	//var/obj/item/organ/external/affected = target.get_organ(target_zone)
 	user.visible_message("<font color='red'>[user] almost loses their grip on the [tool]!</font>" , \
 	"<font color='red'>Your hand slips and nearly shreds [target]'s brainstem with \the [tool]!</font>" )
-	/*affected.create_wound(PIERCE, 10)
+	/*affected.create_wound(WOUND_TYPE_PIERCE, 10)
 	target.adjust_unconscious(20 * 15)
 	spawn()
 		for(var/obj/item/organ/internal/brain/O in affected.internal_organs)
@@ -128,7 +128,7 @@
 	//var/obj/item/organ/external/affected = target.get_organ(target_zone)
 	user.visible_message("<font color='red'>[user]'s hand slips, gouging [target]'s brainstem with \the [tool]!</font>" , \
 	"<font color='red'>Your hand slips, gouging [target]'s brainstem with \the [tool]!</font>" )
-	/*affected.create_wound(CUT, 5)
+	/*affected.create_wound(WOUND_TYPE_CUT, 5)
 	target.adjust_unconscious(20 * 10)
 	spawn()
 		for(var/obj/item/organ/internal/brain/O in affected.internal_organs) //If there's more than one...
@@ -168,7 +168,7 @@
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
 	user.visible_message("<font color='red'>[user]'s hand slips, tearing at [target]'s spinal cord with \the [tool]!</font>" , \
 	"<font color='red'>Your hand slips, tearing at [target]'s spinal cord with \the [tool]!</font>" )
-	affected.create_wound(PIERCE, 5)
+	affected.create_wound(WOUND_TYPE_PIERCE, 5)
 	target.adjust_unconscious(20 * 20)
 	spawn()
 		for(var/obj/item/organ/internal/brain/O in affected.internal_organs)
@@ -206,7 +206,7 @@
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
 	user.visible_message("<font color='red'>[user]'s hand slips, tearing at [target]'s spinal cord with \the [tool]!</font>" , \
 	"<font color='red'>Your hand slips, tearing at [target]'s spinal cord with \the [tool]!</font>" )
-	affected.create_wound(PIERCE, 5)
+	affected.create_wound(WOUND_TYPE_PIERCE, 5)
 	target.adjust_unconscious(20 * 15)
 	spawn()
 		for(var/obj/item/organ/internal/brain/O in affected.internal_organs)
@@ -246,7 +246,7 @@
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
 	user.visible_message("<font color='red'>[user]'s hand slips, gouging [target]'s brainstem with \the [tool]!</font>" , \
 	"<font color='red'>Your hand slips, gouging [target]'s brainstem with \the [tool]!</font>" )
-	affected.create_wound(CUT, 5)
+	affected.create_wound(WOUND_TYPE_CUT, 5)
 	target.adjust_unconscious(20 * 30)
 	spawn()
 		for(var/obj/item/organ/internal/brain/O in affected.internal_organs)
