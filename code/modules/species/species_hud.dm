@@ -9,25 +9,3 @@
 	var/has_throw = 1     // Set to draw throw button.
 	var/has_resist = 1    // Set to draw resist button.
 	var/has_internals = 1 // Set to draw the internals toggle button.
-
-	// Contains information on the position and tag for all inventory slots
-	// to be drawn for the mob. This is fairly delicate, try to avoid messing with it
-	// unless you know exactly what it does.
-	// keyed by slot ID.
-	var/list/gear = list(
-		SLOT_ID_UNIFORM =   list("loc" = ui_iclothing, "name" = "Uniform",      "slot" = SLOT_ID_UNIFORM, "state" = "center", "toggle" = 1),
-		SLOT_ID_SUIT =   list("loc" = ui_oclothing, "name" = "Suit",         "slot" = SLOT_ID_SUIT, "state" = "suit",   "toggle" = 1),
-		SLOT_ID_MASK =         list("loc" = ui_mask,      "name" = "Mask",         "slot" = SLOT_ID_MASK, "state" = "mask",   "toggle" = 1),
-		SLOT_ID_GLOVES =       list("loc" = ui_gloves,    "name" = "Gloves",       "slot" = SLOT_ID_GLOVES,    "state" = "gloves", "toggle" = 1),
-		SLOT_ID_GLASSES =         list("loc" = ui_glasses,   "name" = "Glasses",      "slot" = SLOT_ID_GLASSES,   "state" = "glasses","toggle" = 1),
-		SLOT_ID_LEFT_EAR =        list("loc" = ui_l_ear,     "name" = "Left Ear",     "slot" = SLOT_ID_LEFT_EAR,     "state" = "ears",   "toggle" = 1),
-		SLOT_ID_RIGHT_EAR =        list("loc" = ui_r_ear,     "name" = "Right Ear",    "slot" = SLOT_ID_RIGHT_EAR,     "state" = "ears",   "toggle" = 1),
-		SLOT_ID_HEAD =         list("loc" = ui_head,      "name" = "Hat",          "slot" = SLOT_ID_HEAD,      "state" = "hair",   "toggle" = 1),
-		SLOT_ID_SHOES =        list("loc" = ui_shoes,     "name" = "Shoes",        "slot" = SLOT_ID_SHOES,     "state" = "shoes",  "toggle" = 1),
-		SLOT_ID_SUIT_STORAGE = list("loc" = ui_sstore1,   "name" = "Suit Storage", "slot" = SLOT_ID_SUIT_STORAGE,   "state" = "suitstore"),
-		SLOT_ID_BACK =         list("loc" = ui_back,      "name" = "Back",         "slot" = SLOT_ID_BACK,      "state" = "back"),
-		SLOT_ID_WORN_ID =           list("loc" = ui_id,        "name" = "ID",           "slot" = SLOT_ID_WORN_ID,   "state" = "id"),
-		SLOT_ID_LEFT_POCKET =     list("loc" = ui_storage1,  "name" = "Left Pocket",  "slot" = SLOT_ID_LEFT_POCKET,   "state" = "pocket"),
-		SLOT_ID_RIGHT_POCKET =     list("loc" = ui_storage2,  "name" = "Right Pocket", "slot" = SLOT_ID_RIGHT_POCKET,   "state" = "pocket"),
-		SLOT_ID_BELT =         list("loc" = ui_belt,      "name" = "Belt",         "slot" = SLOT_ID_BELT,      "state" = "belt")
-		)

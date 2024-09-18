@@ -141,22 +141,16 @@
 		/datum/inventory_slot/inventory/back::id,
 		/datum/inventory_slot/inventory/ears/left::id = list(
 			INVENTORY_SLOT_REMAP_NAME = "Aux Port (1)",
+			INVENTORY_SLOT_REMAP_MAIN_AXIS = 1,
+			INVENTORY_SLOT_REMAP_CROSS_AXIS = 0,
 		),
 		/datum/inventory_slot/inventory/ears/right::id = list(
 			INVENTORY_SLOT_REMAP_NAME = "Aux Port (2)",
+			INVENTORY_SLOT_REMAP_MAIN_AXIS = 2,
+			INVENTORY_SLOT_REMAP_CROSS_AXIS = 0,
 		),
 		/datum/inventory_slot/inventory/belt::id,
 		/datum/inventory_slot/inventory/id::id,
-	)
-
-/datum/hud_data/adherent
-	has_internals = FALSE
-	gear = list(
-		SLOT_ID_LEFT_EAR = list("loc" = ui_iclothing, "name" = "Aux Port", "slot" = SLOT_ID_LEFT_EAR, "state" = "ears", "toggle" = 1),
-		SLOT_ID_HEAD     = list("loc" = ui_glasses,   "name" = "Hat",      "slot" = SLOT_ID_HEAD,     "state" = "hair", "toggle" = 1),
-		SLOT_ID_BACK     = list("loc" = ui_back,      "name" = "Back",     "slot" = SLOT_ID_BACK,     "state" = "back"),
-		SLOT_ID_WORN_ID  = list("loc" = ui_id,        "name" = "ID",       "slot" = SLOT_ID_WORN_ID,  "state" = "id"),
-		SLOT_ID_BELT     = list("loc" = ui_belt,      "name" = "Belt",     "slot" = SLOT_ID_BELT,     "state" = "belt"),
 	)
 
 /datum/species/adherent/equip_survival_gear(mob/living/carbon/human/H, extendedtank = FALSE, comprehensive = FALSE)

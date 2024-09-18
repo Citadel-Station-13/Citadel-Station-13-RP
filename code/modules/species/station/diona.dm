@@ -124,30 +124,25 @@
 	#warn remappings for hud positions
 	inventory_slots = list(
 		/datum/inventory_slot/inventory/back::id,
-		/datum/inventory_slot/inventory/suit::id,
+		/datum/inventory_slot/inventory/suit::id = list(
+			INVENTORY_SLOT_REMAP_MAIN_AXIS = 0,
+			INVENTORY_SLOT_REMAP_CROSS_AXIS = 1,
+		),
 		/datum/inventory_slot/inventory/suit_storage::id,
 		/datum/inventory_slot/inventory/uniform::id,
-		/datum/inventory_slot/inventory/ears/left::id,
+		/datum/inventory_slot/inventory/ears/left::id = list(
+			INVENTORY_SLOT_REMAP_MAIN_AXIS = 2,
+			INVENTORY_SLOT_REMAP_CROSS_AXIS = 2,
+		),
 		/datum/inventory_slot/inventory/ears/right::id,
 		/datum/inventory_slot/inventory/pocket/left::id,
 		/datum/inventory_slot/inventory/pocket/right::id,
 		/datum/inventory_slot/inventory/id::id,
-		/datum/inventory_slot/inventory/head::id,
+		/datum/inventory_slot/inventory/head::id = list(
+			INVENTORY_SLOT_REMAP_MAIN_AXIS = 1,
+			INVENTORY_SLOT_REMAP_CROSS_AXIS = 1,
+		),
 	)
-
-/datum/hud_data/diona
-	has_internals = 0
-	gear = list(
-		SLOT_ID_UNIFORM =   list("loc" = ui_iclothing, "name" = "Uniform",      "slot" = SLOT_ID_UNIFORM, "state" = "center", "toggle" = 1),
-		SLOT_ID_SUIT =   list("loc" = ui_shoes, "name" = "Suit",         "slot" = SLOT_ID_SUIT, "state" = "suit",   "toggle" = 1),
-		SLOT_ID_LEFT_EAR =        list("loc" = ui_gloves,     "name" = "Left Ear",     "slot" = SLOT_ID_LEFT_EAR,     "state" = "ears",   "toggle" = 1),
-		SLOT_ID_HEAD =         list("loc" = ui_oclothing,      "name" = "Hat",          "slot" = SLOT_ID_HEAD,      "state" = "hair",   "toggle" = 1),
-		SLOT_ID_SUIT_STORAGE = list("loc" = ui_sstore1,   "name" = "Suit Storage", "slot" = SLOT_ID_SUIT_STORAGE,   "state" = "suitstore"),
-		SLOT_ID_BACK =         list("loc" = ui_back,      "name" = "Back",         "slot" = SLOT_ID_BACK,      "state" = "back"),
-		SLOT_ID_WORN_ID =           list("loc" = ui_id,        "name" = "ID",           "slot" = SLOT_ID_WORN_ID,   "state" = "id"),
-		SLOT_ID_LEFT_POCKET =     list("loc" = ui_storage1,  "name" = "Left Pocket",  "slot" = SLOT_ID_LEFT_POCKET,   "state" = "pocket"),
-		SLOT_ID_RIGHT_POCKET =     list("loc" = ui_storage2,  "name" = "Right Pocket", "slot" = SLOT_ID_RIGHT_POCKET,   "state" = "pocket"),
-		)
 
 /datum/species/diona/can_understand(mob/other)
 	var/mob/living/carbon/alien/diona/D = other
