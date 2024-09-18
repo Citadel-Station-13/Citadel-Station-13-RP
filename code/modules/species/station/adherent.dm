@@ -136,7 +136,6 @@
 
 	//* Inventory *//
 
-	#warn hud remappings
 	inventory_slots = list(
 		/datum/inventory_slot/inventory/back::id,
 		/datum/inventory_slot/inventory/ears/left::id = list(

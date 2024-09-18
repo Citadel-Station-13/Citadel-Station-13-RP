@@ -152,7 +152,6 @@
  * whether it's from the ground, from a slot, or from another hand.
  */
 /mob/proc/equip_hand_impl(obj/item/I, index, flags)
-	PRIVATE_PROC(TRUE)
 	if(!I)
 		return TRUE
 	// let's not do that if it's deleted!

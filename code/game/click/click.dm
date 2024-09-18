@@ -1,7 +1,3 @@
-/*
-	Click code cleanup
-	~Sayu
-*/
 
 // 1 decisecond click delay (above and beyond mob/next_move)
 /mob/var/next_click = 0
@@ -20,21 +16,17 @@
 	if(!(atom_flags & ATOM_INITIALIZED))
 		to_chat(usr, SPAN_WARNING("[type] initialization failure. Click dropped. Contact a coder or admin."))
 		return
-	if(src)
-		SEND_SIGNAL(src, COMSIG_CLICK, location, control, params, usr)
-		usr.ClickOn(src, params)
+	SEND_SIGNAL(src, COMSIG_CLICK, location, control, params, usr)
+	usr.ClickOn(src, params)
 
 /atom/DblClick(var/location, var/control, var/params)
 	if(!(atom_flags & ATOM_INITIALIZED))
 		to_chat(usr, SPAN_WARNING("[type] initialization failure. Click dropped. Contact a coder or admin."))
 		return
-	if(src)
-		usr.DblClickOn(src, params)
+	usr.DblClickOn(src, params)
 
 /atom/MouseWheel(delta_x,delta_y,location,control,params)
 	usr.MouseWheelOn(src, delta_x, delta_y, params)
-
-
 
 /**
  * click handling entrypoint

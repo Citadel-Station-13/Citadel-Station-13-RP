@@ -19,10 +19,23 @@
 
 //* Default Click Handling *//
 
+/atom/movable/screen/Click(location, control, params)
+	if(!check_allowed(usr))
+		return
+	on_click(usr, params2list(params))
+
+/atom/movable/screen/DblClick(location, control, params)
+	if(!check_allowed(usr))
+		return
+	on_doubleclick(usr, params2list(params))
+
 /atom/movable/screen/proc/on_click(mob/user, list/params)
+	return
 
 /atom/movable/screen/proc/on_doubleclick(mob/user, list/params)
+	return
 
-/atom/movable/screen
-
-#warn impl all
+/atom/movable/screen/proc/check_allowed(mob/user)
+	if(hud_legacy?.mymob && user != hud_legacy.mymob)
+		return FALSE
+	return TRUE

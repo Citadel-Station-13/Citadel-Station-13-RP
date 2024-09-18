@@ -230,68 +230,6 @@
 		using.alpha = ui_alpha
 		hud.hotkeybuttons += using
 
-		//Equip detail
-		using = new /atom/movable/screen()
-		using.name = "equip"
-		using.icon = ui_style
-		using.icon_state = "act_equip"
-		using.screen_loc = ui_equip
-		using.color = ui_color
-		using.alpha = ui_alpha
-		hud.adding += using
-
-		//Hand slots themselves
-		var/atom/movable/screen/inventory/hand/right/right_hand = new
-		right_hand.index = 2
-		using = right_hand
-		using.hud_legacy = src
-		using.name = "r_hand"
-		using.icon = ui_style
-		using.icon_state = "r_hand_inactive"
-		if(!hand)	//This being 0 or null means the right hand is in use
-			using.icon_state = "r_hand_active"
-		using.screen_loc = ui_rhand
-		using.color = ui_color
-		using.alpha = ui_alpha
-		hud.r_hand_hud_object = using
-		hud.adding += using
-		hand_info["2"] = using.screen_loc
-
-		var/atom/movable/screen/inventory/hand/left/left_hand = new
-		left_hand.index = 1
-		using = left_hand
-		using.hud_legacy = src
-		using.name = "l_hand"
-		using.icon = ui_style
-		using.icon_state = "l_hand_inactive"
-		if(hand)	//This being 1 means the left hand is in use
-			using.icon_state = "l_hand_active"
-		using.screen_loc = ui_lhand
-		using.color = ui_color
-		using.alpha = ui_alpha
-		hud.l_hand_hud_object = using
-		hud.adding += using
-		hand_info["1"] = using.screen_loc
-
-		//Swaphand titlebar
-		using = new /atom/movable/screen/inventory/swap_hands
-		using.name = "hand"
-		using.icon = ui_style
-		using.icon_state = "hand1"
-		using.screen_loc = ui_swaphand1
-		using.color = ui_color
-		using.alpha = ui_alpha
-		hud.adding += using
-
-		using = new /atom/movable/screen/inventory/swap_hands
-		using.name = "hand"
-		using.icon = ui_style
-		using.icon_state = "hand2"
-		using.screen_loc = ui_swaphand2
-		using.color = ui_color
-		using.alpha = ui_alpha
-		hud.adding += using
-
 		//Throw button
 		throw_icon = new /atom/movable/screen()
 		throw_icon.icon = ui_style

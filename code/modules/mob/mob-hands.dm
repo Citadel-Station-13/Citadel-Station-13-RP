@@ -187,7 +187,7 @@
 
 	. = TRUE
 
-	hands_hud?.swap_active_hand(old_index, to_index)
+	inventory.hud?.swap_active_hand(old_index, to_index)
 
 	//! LEGACY
 	// We just swapped hands, so the thing in our inactive hand will notice it's not the focus
@@ -195,5 +195,3 @@
 		if(was_active.zoom)
 			was_active.zoom()
 	//! End
-
-#warn impl
