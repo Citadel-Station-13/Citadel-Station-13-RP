@@ -78,7 +78,6 @@
 	var/datum/dmm_parsed/parsed_map = src.parsed_map
 	if(isnull(parsed_map))
 		parsed_map = new(get_file())
-		parsed_map
 		if(cache_parsed_map)
 			src.parsed_map = parsed_map
 
