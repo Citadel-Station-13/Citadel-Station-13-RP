@@ -25,6 +25,8 @@
 
 	//* HUD *//
 	/// our hud
+	///
+	/// todo: can we render this per user mob? /datum/remote_control?
 	var/datum/mob_hud/inventory/hud
 
 	//* Inventory *//
