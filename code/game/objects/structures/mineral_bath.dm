@@ -8,6 +8,11 @@
 	opacity = FALSE
 	var/mob/living/occupant
 
+/obj/structure/adherent_bath/examine(mob/user, dist)
+	. = ..()
+	if(istype(H) && H.species.get_species_id() != SPECIES_ID_ADHERENT)
+		. += "It appears quite hot, taking a dip is quite hazardous."
+
 /obj/structure/adherent_bath/Destroy()
 	eject_occupant()
 	. = ..()

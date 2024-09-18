@@ -5248,6 +5248,10 @@
 	},
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
+"pm" = (
+/obj/effect/floor_decal/industrial/warning,
+/turf/simulated/floor/crystal,
+/area/rift/station/adherent_maintenance)
 "pn" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/blue{
 	dir = 6
@@ -6125,6 +6129,15 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/underone)
+"st" = (
+/obj/effect/floor_decal/industrial/warning{
+	dir = 4
+	},
+/obj/effect/floor_decal/industrial/warning/corner{
+	dir = 1
+	},
+/turf/simulated/floor/crystal,
+/area/rift/station/adherent_maintenance)
 "sy" = (
 /obj/machinery/atmospherics/portables_connector{
 	dir = 8
@@ -7260,9 +7273,8 @@
 /turf/simulated/floor/plating,
 /area/maintenance/engineering/upper)
 "ww" = (
-/obj/structure/sign/electricshock,
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/turf/simulated/floor/plating,
+/obj/structure/sign/signnew/danger,
+/turf/simulated/wall/prepainted,
 /area/rift/station/adherent_maintenance)
 "wx" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -7422,7 +7434,6 @@
 /turf/simulated/floor/plating,
 /area/maintenance/engineering)
 "wQ" = (
-/obj/structure/sign/signnew/danger,
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/rift/station/adherent_maintenance)
@@ -8425,8 +8436,9 @@
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
 "zM" = (
-/obj/machinery/atmospherics/component/unary/vent_pump/on{
-	dir = 1
+/obj/effect/floor_decal/industrial/warning/corner,
+/obj/effect/floor_decal/industrial/warning{
+	dir = 8
 	},
 /turf/simulated/floor/crystal,
 /area/rift/station/adherent_maintenance)
@@ -9075,8 +9087,7 @@
 "Ck" = (
 /obj/structure/fans/tiny,
 /obj/machinery/door/airlock/freezer{
-	name = "Prison Kitchen Freezer";
-	req_access = null
+	name = "Prison Kitchen Freezer"
 	},
 /turf/simulated/floor/tiled/freezer/cold,
 /area/security/prison/lower)
@@ -9767,6 +9778,9 @@
 	dir = 1;
 	pixel_y = -24
 	},
+/obj/effect/floor_decal/industrial/warning{
+	dir = 1
+	},
 /turf/simulated/floor/crystal,
 /area/rift/station/adherent_maintenance)
 "EE" = (
@@ -10204,6 +10218,10 @@
 /obj/structure/mirror/long/left,
 /turf/simulated/wall/r_wall/prepainted/security,
 /area/security/prison/lower)
+"FV" = (
+/obj/structure/adherent_pylon,
+/turf/simulated/floor/crystal,
+/area/rift/station/adherent_maintenance)
 "FW" = (
 /obj/machinery/camera/network/security{
 	dir = 1
@@ -11374,6 +11392,10 @@
 	},
 /turf/simulated/floor/concrete/indoors,
 /area/security/prison/lower)
+"JA" = (
+/obj/structure/sign/electricshock,
+/turf/simulated/wall/prepainted,
+/area/rift/station/adherent_maintenance)
 "JB" = (
 /obj/structure/bed/chair/bay{
 	dir = 1
@@ -12237,6 +12259,12 @@
 "Mo" = (
 /obj/machinery/camera/network/cargo{
 	dir = 1
+	},
+/obj/effect/floor_decal/industrial/warning{
+	dir = 8
+	},
+/obj/effect/floor_decal/industrial/warning/corner{
+	dir = 4
 	},
 /turf/simulated/floor/crystal,
 /area/rift/station/adherent_maintenance)
@@ -13772,8 +13800,11 @@
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/underone)
 "Rs" = (
-/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
-	dir = 1
+/obj/effect/floor_decal/industrial/warning/corner{
+	dir = 8
+	},
+/obj/effect/floor_decal/industrial/warning{
+	dir = 4
 	},
 /turf/simulated/floor/crystal,
 /area/rift/station/adherent_maintenance)
@@ -13930,10 +13961,10 @@
 /turf/simulated/floor/tiled,
 /area/maintenance/elevator)
 "RQ" = (
-/obj/structure/adherent_pylon,
 /obj/structure/cable/green{
 	icon_state = "1-4"
 	},
+/obj/effect/floor_decal/industrial/warning,
 /turf/simulated/floor/crystal,
 /area/rift/station/adherent_maintenance)
 "RR" = (
@@ -15182,9 +15213,14 @@
 /turf/simulated/floor,
 /area/hallway/primary/underone)
 "Wd" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/cable/green{
 	icon_state = "4-8"
+	},
+/obj/effect/floor_decal/industrial/warning/corner{
+	dir = 8
+	},
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
+	dir = 1
 	},
 /turf/simulated/floor/crystal,
 /area/rift/station/adherent_maintenance)
@@ -15753,7 +15789,8 @@
 /turf/simulated/wall/r_wall/prepainted/command,
 /area/tcommsat/computer)
 "Yb" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+/obj/effect/floor_decal/industrial/warning/corner,
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
 /turf/simulated/floor/crystal,
@@ -26618,10 +26655,10 @@ AS
 Cl
 eg
 rT
-zz
+ww
 Op
 PH
-PH
+pm
 Yt
 zz
 my
@@ -27009,7 +27046,7 @@ ru
 FL
 sf
 RQ
-PH
+FV
 ED
 zz
 my
@@ -27200,11 +27237,11 @@ Gj
 Vm
 NA
 fO
-ww
+wQ
 xy
 Wd
 zM
-PH
+st
 zz
 my
 sR
@@ -27394,10 +27431,10 @@ AS
 Cy
 eg
 rT
-zz
+JA
 Am
 Hj
-PH
+pm
 Yt
 zz
 my

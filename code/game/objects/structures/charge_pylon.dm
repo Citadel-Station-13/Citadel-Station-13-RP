@@ -8,6 +8,12 @@
 	opacity = FALSE
 	var/next_use
 
+/obj/structure/adherent_pylon/examine(mob/user, dist)
+	. = ..()
+	var/mob/living/carbon/human/H = user
+	if(istype(H) && H.species.get_species_id() != SPECIES_ID_ADHERENT)
+		. += "It seems to be throbbing with energy, touching it might be a bad idea."
+
 /obj/structure/adherent_pylon/attack_ai(var/mob/living/user)
 	if(Adjacent(user))
 		attack_hand(user)
@@ -28,6 +34,7 @@
 	if(istype(H) && H.species.get_species_id() == SPECIES_ID_ADHERENT && H.nutrition < H.species.max_nutrition)
 		H.nutrition = 400
 		return
+	log_and_message_admins("[user] has touched the adherent pylon", user)
 	if(isrobot(user))
 		user.apply_damage(80, DAMAGE_TYPE_BURN, def_zone = BP_TORSO)
 		visible_message("<span class='danger'>Electricity arcs off [user] as it touches \the [src]!</span>")
