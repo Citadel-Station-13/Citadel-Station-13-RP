@@ -1,40 +1,16 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
-"ah" = (
-/obj/machinery/door/airlock/multi_tile/glass{
-	dir = 8
-	},
-/turf/simulated/floor/plating/indoors,
-/area/space)
-"am" = (
-/obj/machinery/atmospherics/pipe/tank/carbon_dioxide{
-	dir = 4
-	},
-/turf/simulated/floor/plating/indoors,
-/area/space)
-"au" = (
-/obj/spawner/window/reinforced/full,
-/obj/spawner/window/reinforced/full,
-/turf/simulated/floor/plating/indoors,
-/area/space)
 "aA" = (
 /obj/machinery/door/blast/regular,
 /obj/structure/atmospheric_retention_field,
 /turf/simulated/floor/plating/indoors,
 /area/space)
 "aU" = (
-/obj/structure/bed/chair/shuttle{
-	dir = 8
-	},
+/obj/structure/handrail,
 /turf/simulated/floor/plating/indoors,
 /area/space)
 "aZ" = (
-/obj/machinery/computer/shuttle_control{
-	dir = 4
-	},
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/turf/simulated/floor/plating/indoors,
+/obj/structure/handrail,
+/turf/space/basic,
 /area/space)
 "bF" = (
 /obj/machinery/power/smes,
@@ -47,48 +23,39 @@
 /turf/simulated/floor/plating/indoors,
 /area/space)
 "dl" = (
-/turf/simulated/floor/plating,
+/obj/structure/handrail{
+	dir = 8
+	},
+/turf/simulated/floor/plating/indoors,
 /area/space)
 "du" = (
 /obj/machinery/door/airlock/glass/research,
 /turf/simulated/floor/plating/indoors,
 /area/space)
 "dw" = (
-/obj/structure/closet/secure_closet/engineering_welding,
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/structure/window/reinforced,
+/obj/machinery/power/apc/east_mount,
+/obj/machinery/recharge_station,
 /turf/simulated/floor/plating/indoors,
 /area/space)
 "eh" = (
-/obj/machinery/power/apc/east_mount,
-/obj/structure/table/rack/shelf,
+/obj/machinery/telecomms/server,
 /turf/simulated/floor/plating/indoors,
 /area/space)
 "eu" = (
-/obj/structure/handrail{
-	dir = 1
-	},
+/obj/structure/table/rack/shelf/steel,
 /turf/simulated/floor/plating/indoors,
 /area/space)
 "fc" = (
-/obj/spawner/window/reinforced/full,
-/turf/space/basic,
-/area/space)
-"fY" = (
-/obj/structure/table/rack/shelf,
 /obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/machinery/computer/shuttle_control{
 	dir = 4
 	},
 /turf/simulated/floor/plating/indoors,
 /area/space)
-"gE" = (
-/obj/machinery/artifact_analyser,
-/turf/simulated/floor/plating/outdoors,
-/area/space)
-"hy" = (
-/obj/machinery/artifact_harvester,
+"fY" = (
+/obj/structure/bed/chair/bay/comfy,
 /turf/simulated/floor/plating/indoors,
 /area/space)
 "hA" = (
@@ -96,15 +63,9 @@
 /obj/effect/decal/warning_stripes,
 /turf/simulated/floor/plating/indoors,
 /area/space)
-"iK" = (
-/turf/simulated/floor/plating/outdoors,
-/area/space)
-"jt" = (
-/turf/simulated/wall,
-/area/space)
 "kn" = (
-/obj/structure/window/reinforced,
-/obj/structure/table/rack/shelf,
+/obj/spawner/window/reinforced/full,
+/obj/spawner/window/reinforced/full,
 /turf/simulated/floor/plating/indoors,
 /area/space)
 "kR" = (
@@ -116,43 +77,35 @@
 /turf/space/basic,
 /area/space)
 "mY" = (
-/obj/structure/table/reinforced,
-/turf/simulated/floor/plating/outdoors,
+/obj/structure/closet/secure_closet/engineering_welding,
+/turf/simulated/floor/plating/indoors,
 /area/space)
 "oj" = (
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/turf/simulated/floor/plating,
+/obj/structure/closet/secure_closet/xenoarchaeologist,
+/obj/machinery/power/apc/east_mount,
+/turf/simulated/floor/plating/indoors,
 /area/space)
 "oy" = (
 /obj/spawner/window/reinforced/full,
 /turf/simulated/floor/plating/indoors,
 /area/space)
 "pj" = (
-/obj/spawner/window/low_wall/reinforced/full,
+/obj/structure/closet/secure_closet/xenoarchaeologist,
 /turf/simulated/floor/plating/indoors,
 /area/space)
-"qe" = (
-/obj/machinery/atmospherics/portables_connector{
+"rb" = (
+/obj/structure/bed/chair/bay/comfy{
+	dir = 1
+	},
+/obj/structure/window/reinforced{
 	dir = 4
 	},
 /turf/simulated/floor/plating/indoors,
 /area/space)
-"qj" = (
-/obj/machinery/computer/shuttle_control,
-/turf/space/basic,
-/area/space)
-"rb" = (
-/obj/machinery/atmospherics/component/binary/pump/fuel,
-/turf/simulated/floor/plating/indoors,
-/area/space)
 "rw" = (
-/obj/structure/anomaly_container,
-/turf/space/basic,
+/obj/structure/window/reinforced,
+/obj/machinery/suit_storage_unit/exploration,
+/turf/simulated/floor/plating/indoors,
 /area/space)
 "sl" = (
 /obj/structure/table/rack/shelf,
@@ -164,80 +117,31 @@
 	},
 /turf/simulated/floor/plating/indoors,
 /area/space)
-"uK" = (
-/obj/structure/handrail,
-/turf/space/basic,
-/area/space)
-"vu" = (
-/obj/structure/closet/secure_closet/xenoarchaeologist,
-/obj/structure/window/reinforced,
-/turf/simulated/floor/plating/indoors,
-/area/space)
 "vU" = (
-/obj/machinery/power/emitter{
-	dir = 4
-	},
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/turf/simulated/floor/plating/outdoors,
-/area/space)
-"wi" = (
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/structure/window/reinforced,
-/obj/machinery/door/window{
+/obj/structure/bed/chair/bay/comfy{
 	dir = 8
-	},
-/obj/structure/window/reinforced{
-	dir = 4
 	},
 /turf/simulated/floor/plating/indoors,
 /area/space)
 "wr" = (
-/obj/machinery/atmospherics/pipe/tank/phoron{
-	dir = 4
+/obj/structure/window/reinforced{
+	dir = 8
 	},
+/obj/structure/table/rack/shelf,
 /turf/simulated/floor/plating/indoors,
 /area/space)
 "xj" = (
-/obj/machinery/computer/shuttle_control{
-	dir = 4
-	},
-/turf/simulated/floor/plating/indoors,
-/area/space)
-"xp" = (
 /obj/machinery/artifact_scanpad,
 /turf/simulated/floor/plating/indoors,
 /area/space)
 "xv" = (
-/obj/structure/window/reinforced{
-	dir = 1
+/obj/machinery/computer/rdconsole{
+	dir = 4
 	},
-/turf/simulated/floor/plating/outdoors,
+/turf/simulated/floor/plating/indoors,
 /area/space)
 "xK" = (
 /obj/machinery/r_n_d/server,
-/turf/simulated/floor/plating/indoors,
-/area/space)
-"yC" = (
-/obj/machinery/atmospherics/pipe/tank/air{
-	dir = 8
-	},
-/obj/machinery/atmospherics/pipe/tank/air{
-	dir = 8
-	},
-/turf/simulated/floor/plating/indoors,
-/area/space)
-"yE" = (
-/obj/machinery/atmospherics/component/unary/engine/biggest{
-	dir = 1
-	},
-/turf/space/basic,
-/area/space)
-"yK" = (
-/obj/machinery/portable_atmospherics/hydroponics,
 /turf/simulated/floor/plating/indoors,
 /area/space)
 "zu" = (
@@ -248,25 +152,15 @@
 /turf/simulated/floor/plating/indoors,
 /area/space)
 "zV" = (
-/obj/machinery/r_n_d/destructive_analyzer,
-/turf/simulated/floor/plating/indoors,
-/area/space)
-"Ao" = (
-/obj/machinery/atmospherics/component/binary/pump/fuel{
-	dir = 8
+/obj/structure/handrail{
+	dir = 1
 	},
 /turf/simulated/floor/plating/indoors,
-/area/space)
-"AG" = (
-/obj/machinery/artifact_harvester,
-/obj/machinery/air_alarm{
-	dir = 8
-	},
-/turf/simulated/floor/plating/outdoors,
 /area/space)
 "Ce" = (
-/obj/structure/closet/secure_closet/engineering_electrical,
-/obj/structure/window/reinforced,
+/obj/structure/handrail{
+	dir = 4
+	},
 /turf/simulated/floor/plating/indoors,
 /area/space)
 "CI" = (
@@ -274,38 +168,40 @@
 /turf/simulated/floor/plating/indoors,
 /area/space)
 "CP" = (
-/obj/machinery/power/apc/east_mount,
+/obj/machinery/computer/nanite_chamber{
+	dir = 4
+	},
 /turf/simulated/floor/plating/indoors,
 /area/space)
-"DA" = (
-/obj/structure/handrail{
+"DK" = (
+/obj/structure/bed/chair/bay/comfy{
 	dir = 1
 	},
-/turf/space/basic,
-/area/space)
-"DK" = (
-/obj/structure/table/reinforced,
 /obj/structure/window/reinforced{
 	dir = 8
 	},
 /turf/simulated/floor/plating/indoors,
 /area/space)
 "DR" = (
-/obj/machinery/atmospherics/pipe/tank/phoron{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/tank/phoron{
-	dir = 4
+/obj/structure/dispenser/oxygen{
+	dir = 8
 	},
 /turf/simulated/floor/plating/indoors,
 /area/space)
 "DS" = (
-/obj/machinery/recharge_station,
+/obj/structure/handrail,
+/obj/machinery/power/apc/north_mount,
 /turf/simulated/floor/plating/indoors,
 /area/space)
 "EC" = (
-/obj/machinery/door/airlock/glass/research,
-/turf/simulated/floor/plating/outdoors,
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/machinery/portable_atmospherics/canister/oxygen,
+/turf/simulated/floor/plating,
 /area/space)
 "EG" = (
 /obj/structure/window/reinforced{
@@ -331,75 +227,33 @@
 /obj/effect/decal/warning_stripes,
 /turf/simulated/floor/plating/indoors,
 /area/space)
-"Gl" = (
-/obj/machinery/door/window/brigdoor,
-/turf/simulated/floor/plating/outdoors,
-/area/space)
 "GQ" = (
-/obj/machinery/r_n_d/protolathe,
+/obj/machinery/artifact_harvester,
+/obj/structure/window/reinforced{
+	dir = 4
+	},
 /turf/simulated/floor/plating/indoors,
 /area/space)
 "Hs" = (
 /obj/machinery/nanite_chamber,
 /turf/simulated/floor/plating/indoors,
 /area/space)
-"HK" = (
-/obj/machinery/door/airlock/external/glass,
-/turf/simulated/floor/plating,
-/area/space)
-"HQ" = (
-/obj/machinery/door/airlock/multi_tile/glass{
-	dir = 1
-	},
-/turf/simulated/floor/plating/indoors,
-/area/space)
 "HY" = (
-/obj/machinery/portable_atmospherics/canister/oxygen,
-/turf/space/basic,
-/area/space)
-"If" = (
-/obj/structure/table/rack/shelf,
 /obj/structure/window/reinforced{
 	dir = 8
 	},
+/obj/structure/table/reinforced,
 /turf/simulated/floor/plating/indoors,
-/area/space)
-"Jd" = (
-/obj/structure/table/rack/shelf,
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/turf/simulated/floor/plating/indoors,
-/area/space)
-"Je" = (
-/turf/simulated/floor/plating/indoors,
-/turf/simulated/wall/r_wall/prepainted/science,
 /area/space)
 "Jr" = (
-/obj/structure/bed/chair/shuttle{
-	dir = 1
-	},
-/turf/space/basic,
-/area/space)
-"JJ" = (
-/obj/structure/handrail,
+/obj/machinery/exonet_node,
+/obj/machinery/power/apc/west_mount,
 /turf/simulated/floor/plating/indoors,
-/area/space)
-"KA" = (
-/obj/structure/table/reinforced,
-/turf/space/basic,
 /area/space)
 "KS" = (
 /obj/machinery/atmospherics/pipe/tank/phoron{
 	dir = 8
 	},
-/turf/simulated/floor/plating/indoors,
-/area/space)
-"Lt" = (
-/obj/machinery/artifact_analyser,
 /turf/simulated/floor/plating/indoors,
 /area/space)
 "Lv" = (
@@ -409,40 +263,22 @@
 "Mz" = (
 /turf/space/basic,
 /area/space)
-"OD" = (
-/obj/spawner/window/reinforced/full,
-/turf/simulated/floor/plating,
-/area/space)
-"Pn" = (
-/obj/structure/closet/secure_closet/engineering_welding,
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/turf/simulated/floor/plating/indoors,
-/area/space)
 "Ps" = (
 /turf/simulated/wall/r_wall/prepainted/science,
 /area/space)
 "PP" = (
-/obj/machinery/door/airlock/glass/research,
-/turf/space/basic,
-/area/space)
-"PS" = (
 /obj/structure/handrail{
-	dir = 8
+	dir = 1
 	},
-/turf/simulated/floor/plating/indoors,
+/turf/space/basic,
 /area/space)
 "Qc" = (
 /obj/structure/table/reinforced,
 /turf/simulated/floor/plating/indoors,
 /area/space)
-"Qz" = (
-/obj/machinery/computer/rdconsole,
-/turf/simulated/floor/plating/indoors,
-/area/space)
 "QF" = (
-/obj/machinery/atmospherics/component/unary/engine/bigger,
+/obj/machinery/r_n_d/circuit_imprinter,
+/obj/structure/window/reinforced,
 /turf/simulated/floor/plating/indoors,
 /area/space)
 "Rk" = (
@@ -451,49 +287,19 @@
 	},
 /turf/simulated/floor/plating/indoors,
 /area/space)
-"Rw" = (
-/obj/machinery/air_alarm{
-	dir = 4
-	},
-/obj/machinery/radiocarbon_spectrometer,
-/turf/simulated/floor/plating/outdoors,
-/area/space)
 "RH" = (
-/obj/machinery/r_n_d/circuit_imprinter,
+/obj/structure/closet/crate/freezer/rations,
 /turf/simulated/floor/plating/indoors,
 /area/space)
 "RR" = (
-/obj/spawner/window/low_wall/reinforced/full,
-/turf/simulated/floor/plating/outdoors,
-/area/space)
-"RW" = (
-/obj/machinery/computer/nanite_chamber{
-	dir = 4
+/obj/machinery/artifact_analyser,
+/obj/structure/window/reinforced{
+	dir = 8
 	},
-/turf/space/basic,
+/turf/simulated/floor/plating/indoors,
 /area/space)
 "RX" = (
-/obj/effect/decal/warning_stripes,
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/turf/simulated/floor/plating/indoors,
-/area/space)
-"Sq" = (
-/obj/effect/decal/warning_stripes,
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/turf/simulated/floor/plating/indoors,
-/area/space)
-"Sr" = (
-/obj/structure/bed/chair/shuttle{
-	dir = 1
-	},
-/turf/simulated/floor/plating/indoors,
-/area/space)
-"Ts" = (
-/obj/structure/closet/secure_closet/xenoarchaeologist,
+/obj/machinery/r_n_d/protolathe,
 /obj/structure/window/reinforced{
 	dir = 1
 	},
@@ -503,49 +309,33 @@
 /obj/machinery/door/airlock/external/glass,
 /turf/simulated/floor/plating/indoors,
 /area/space)
-"WH" = (
-/obj/structure/closet/secure_closet/xenoarchaeologist,
-/turf/simulated/floor/plating/indoors,
-/area/space)
-"WN" = (
-/obj/machinery/artifact_scanpad,
-/turf/simulated/floor/plating/outdoors,
-/area/space)
 "WQ" = (
 /turf/simulated/floor/plating/indoors,
 /area/space)
 "Yl" = (
-/obj/structure/window/reinforced,
 /obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/machinery/power/smes,
-/turf/simulated/floor/plating/indoors,
-/area/space)
-"Zj" = (
-/obj/machinery/computer/nanite_chamber{
 	dir = 4
 	},
-/turf/simulated/floor/plating/indoors,
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/machinery/portable_atmospherics/canister/air,
+/turf/simulated/floor/plating,
 /area/space)
 "ZP" = (
-/obj/machinery/r_n_d/server,
-/turf/space/basic,
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/effect/decal/warning_stripes,
+/obj/machinery/atmospherics/component/binary/pump/fuel{
+	dir = 8
+	},
+/turf/simulated/floor/plating/indoors,
 /area/space)
 
 (1,1,1) = {"
 Mz
 Mz
-jt
-jt
-jt
-jt
-WQ
-WQ
-jt
-jt
-jt
-jt
 Mz
 Mz
 Mz
@@ -578,16 +368,6 @@ Mz
 (2,1,1) = {"
 Mz
 Mz
-jt
-Mz
-Mz
-Mz
-Mz
-Mz
-Mz
-Mz
-Mz
-jt
 Mz
 Mz
 Mz
@@ -620,16 +400,6 @@ Mz
 (3,1,1) = {"
 Mz
 Mz
-jt
-Mz
-Mz
-Mz
-Mz
-Mz
-Mz
-Mz
-Mz
-jt
 Mz
 Mz
 Mz
@@ -644,16 +414,16 @@ Mz
 Mz
 Mz
 Mz
-Ps
-Wl
-Wl
-Ps
-Ps
-Ps
 Mz
-Ps
-Ps
-Ps
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
 Mz
 Mz
 Mz
@@ -662,16 +432,6 @@ Mz
 (4,1,1) = {"
 Mz
 Mz
-jt
-Mz
-Mz
-Mz
-Mz
-Mz
-Mz
-Mz
-Mz
-jt
 Mz
 Mz
 Mz
@@ -686,17 +446,17 @@ Mz
 Mz
 Mz
 Mz
-oy
-WQ
-WQ
-oy
-WQ
-WQ
-Ps
-Ce
-WQ
-Pn
-Ps
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
 Mz
 Mz
 Mz
@@ -704,16 +464,6 @@ Mz
 (5,1,1) = {"
 Mz
 Mz
-jt
-Mz
-Mz
-Mz
-Mz
-Mz
-Mz
-Mz
-Mz
-jt
 Mz
 Mz
 Mz
@@ -728,42 +478,8 @@ Mz
 Mz
 Mz
 Mz
-Ps
-Wl
-Wl
-Ps
-WQ
-WQ
-du
-WQ
-WQ
-WQ
-WQ
-Ps
 Mz
 Mz
-"}
-(6,1,1) = {"
-Mz
-Mz
-jt
-Mz
-Mz
-Mz
-Mz
-Mz
-Mz
-Mz
-Mz
-jt
-Mz
-Mz
-Mz
-Ps
-fY
-fY
-Jd
-Ps
 Mz
 Mz
 Mz
@@ -776,97 +492,101 @@ Mz
 Mz
 Mz
 Mz
-Ps
-kR
-kR
-kR
-EG
-Ps
-lE
+"}
+(6,1,1) = {"
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Lv
+Lv
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Lv
+Lv
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
 Mz
 "}
 (7,1,1) = {"
 Mz
 Mz
-jt
 Mz
 Mz
 Mz
 Mz
 Mz
-Mz
-Mz
-Mz
-jt
-Mz
-Mz
-Mz
+Ps
 oy
-xj
-Qc
-xj
+Ps
+Ps
 oy
+oy
+kn
+Ps
+Ps
+aZ
 Mz
 Mz
-Mz
-Mz
-Mz
-Mz
-WQ
-WQ
-WQ
-WQ
-WQ
-WQ
-WQ
+PP
 Ps
 Ps
 Ps
-Ps
-Ps
-WQ
+lE
+Mz
+Mz
+Mz
+Mz
+Mz
 Mz
 "}
 (8,1,1) = {"
 Mz
 Mz
-jt
-jt
-jt
-jt
-WQ
-WQ
-jt
-jt
-jt
-jt
-Mz
-Mz
-Mz
-PP
-WQ
-CP
-WQ
-PP
 Mz
 Mz
 Mz
 Mz
-Mz
-Mz
-WQ
-WQ
-WQ
-WQ
-WQ
-WQ
-WQ
+oy
+Qc
+sl
 Ps
-kR
-WQ
-EQ
-EQ
-aA
+mY
+RX
+xv
+QF
+DR
+pj
+Ps
+Wl
+Wl
+Ps
+Hs
+CP
+Ps
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
 Mz
 "}
 (9,1,1) = {"
@@ -875,40 +595,30 @@ Mz
 Mz
 Mz
 Mz
-Mz
-Mz
-Mz
-Mz
-Mz
-Mz
-Mz
-Mz
-Mz
-Mz
 Ps
-bF
-Ps
-bF
-Ps
-Mz
-Mz
-Mz
-Mz
-Mz
-Mz
-Mz
-Mz
-Mz
-Mz
-Mz
+Qc
 WQ
 WQ
+du
+WQ
+WQ
+vU
+WQ
+WQ
+pj
+oy
+aU
+zV
 Ps
+WQ
+hA
 kR
-WQ
-EQ
-EQ
-aA
+Ps
+lE
+Mz
+Mz
+Mz
+Mz
 Mz
 "}
 (10,1,1) = {"
@@ -917,41 +627,31 @@ Mz
 Mz
 Mz
 Mz
-Mz
-Mz
-Mz
-Mz
-Mz
-Mz
-Mz
-Mz
-Mz
-Mz
-Ps
-Ps
-sl
-Ps
-Ps
-Mz
-Mz
-Mz
-Mz
-Mz
-Mz
-Mz
-Mz
-Mz
-Mz
-Mz
+oy
+fY
+WQ
+DK
+oy
 WQ
 WQ
-du
 WQ
+dl
 WQ
-RX
+oj
+oy
+aU
+zV
 Ps
+WQ
+zu
+zu
 Ps
-yE
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
 "}
 (11,1,1) = {"
 Mz
@@ -959,40 +659,30 @@ Mz
 Mz
 Mz
 Mz
-Mz
-Mz
-Mz
-Mz
-Mz
-Mz
-Mz
-Mz
-Mz
-Mz
-Mz
-Mz
-vU
-Rw
-iK
-WQ
-WQ
-pj
-sl
-sl
-Mz
-Mz
-Mz
-Mz
-Mz
-Mz
-WQ
-WQ
 oy
-kR
+fY
 WQ
-kR
-WQ
-Je
+rb
+Ps
+oy
+oy
+oy
+Ps
+du
+Ps
+Ps
+Wl
+Wl
+Ps
+aU
+EQ
+EQ
+aA
+Mz
+Mz
+Mz
+Mz
+Mz
 Mz
 "}
 (12,1,1) = {"
@@ -1001,40 +691,30 @@ Mz
 Mz
 Mz
 Mz
-Mz
-Mz
-Mz
-Mz
-Mz
-Mz
-Mz
-Mz
-Mz
-Qc
-Mz
-Mz
-Gl
-iK
-iK
-WQ
-WQ
-du
-WQ
-WQ
-Mz
-Mz
-Mz
-Mz
-Mz
-Mz
-WQ
-WQ
-du
-WQ
-WQ
-Sq
 Ps
-Je
+RR
+WQ
+RH
+Ps
+HY
+fc
+wr
+Ps
+WQ
+Ce
+Ce
+WQ
+WQ
+du
+WQ
+EQ
+EQ
+aA
+Mz
+Mz
+Mz
+Mz
+Mz
 Mz
 "}
 (13,1,1) = {"
@@ -1043,40 +723,30 @@ Mz
 Mz
 Mz
 Mz
-Mz
-Mz
-Mz
-Ps
-OD
-OD
-Ps
-Mz
-DS
-Mz
-Mz
-Mz
-xv
-mY
-iK
+oy
+xj
 WQ
 WQ
-pj
-sl
-sl
-Mz
-Mz
-Mz
-Mz
-Mz
-Mz
+oy
+WQ
+vU
+WQ
+du
 WQ
 WQ
-Ps
+WQ
+WQ
 kR
+oy
 WQ
-EQ
-EQ
-aA
+EC
+Yl
+Ps
+Mz
+Mz
+Mz
+Mz
+Mz
 Mz
 "}
 (14,1,1) = {"
@@ -1085,40 +755,30 @@ Mz
 Mz
 Mz
 Mz
-Mz
-Mz
-Mz
-OD
-dl
-dl
-HK
-Mz
-Mz
-Hs
-Mz
-Mz
-RR
-RR
-RR
-WQ
-WQ
-jt
-jt
 Ps
-Mz
+GQ
 WQ
-WQ
-WQ
-WQ
-WQ
-WQ
-WQ
+eu
 Ps
-kR
+CI
+WQ
+dw
+Ps
+CI
+CI
+rw
+WQ
+WQ
+du
 WQ
 EQ
 EQ
 aA
+Mz
+Mz
+Mz
+Mz
+Mz
 Mz
 "}
 (15,1,1) = {"
@@ -1127,40 +787,30 @@ Mz
 Mz
 Mz
 Mz
-Mz
-Mz
-Mz
-OD
-dl
-dl
-HK
-Mz
-Mz
-Zj
-Mz
-Mz
-WN
-iK
-EC
+oy
+fY
 WQ
-WQ
-HQ
-rw
-rw
-Mz
-WQ
-WQ
-WQ
-WQ
-WQ
-WQ
-WQ
+DK
+Ps
+Ps
+du
 Ps
 Ps
 Ps
 Ps
 Ps
-QF
+du
+Ps
+Ps
+DS
+EQ
+EQ
+aA
+Mz
+Mz
+Mz
+Mz
+Mz
 Mz
 "}
 (16,1,1) = {"
@@ -1169,39 +819,29 @@ Mz
 Mz
 Mz
 Mz
-Lv
-Mz
-Mz
+oy
+fY
+WQ
+rb
 Ps
-HK
-HK
+ch
+WQ
+WQ
 Ps
-Mz
+Jr
+eh
+bF
 WQ
-Mz
-Mz
-Mz
-gE
-AG
-pj
-WQ
-WQ
-WQ
-rw
-rw
-Mz
-Mz
-Mz
-Mz
-Mz
-Mz
-Mz
+xK
 Ps
-WQ
-wr
-DR
-Ao
+Rk
+ZP
+EX
 Ps
+lE
+Mz
+Mz
+Mz
 Mz
 Mz
 "}
@@ -1211,39 +851,29 @@ Mz
 Mz
 Mz
 Mz
-Mz
-qj
-Mz
-Mz
-Mz
-Mz
-Mz
-Mz
-Mz
 Ps
-Mz
-Mz
-Mz
-Mz
-Mz
-Mz
-Mz
-Mz
-Mz
-Mz
-Mz
-Ps
-Wl
-Wl
-Ps
+Qc
 WQ
 WQ
 du
-rb
 WQ
 WQ
 WQ
+du
+WQ
+WQ
+WQ
+WQ
+WQ
+du
+WQ
+kR
+kR
 Ps
+Mz
+Mz
+Mz
+Mz
 Mz
 Mz
 "}
@@ -1254,37 +884,27 @@ Mz
 Mz
 Mz
 Mz
-KA
-Mz
-Mz
-Mz
-Mz
-Mz
-Mz
-Mz
-Ps
-Mz
-Mz
-Mz
-Mz
-Mz
-HY
-Mz
-Mz
-Mz
-Mz
-Mz
 oy
-WQ
-WQ
-oy
-WQ
-WQ
+Qc
+sl
 Ps
-WQ
+uA
+Ps
+Wl
+Ps
+bF
+EG
+kR
+kR
+kR
+Ps
 KS
 KS
 Ps
+lE
+Mz
+Mz
+Mz
 Mz
 Mz
 Mz
@@ -1296,36 +916,26 @@ Mz
 Mz
 Mz
 Mz
-qj
-Jr
-Mz
-Mz
-Mz
-Mz
-Mz
-Mz
-Mz
-Mz
-Mz
-ZP
-Mz
-Mz
-Mz
-Mz
-Mz
-Mz
-Mz
 Mz
 Ps
-Wl
-Wl
+oy
+Ps
+Ps
+Ps
+zV
+Ps
+Ps
+Ps
+Ps
+Ps
+Ps
+Ps
 Ps
 Ps
 Ps
 Mz
-Ps
-Ps
-Ps
+Mz
+Mz
 Mz
 Mz
 Mz
@@ -1341,29 +951,19 @@ Mz
 Mz
 Mz
 Mz
-Mz
-Mz
-Mz
-Mz
-RW
-Mz
-Mz
-Mz
-Mz
-Mz
-Mz
-CI
-CI
-CI
-CI
+Lv
+Lv
+Ps
+Wl
+Ps
 Mz
 Mz
 Mz
 Mz
 Mz
 Mz
-Mz
-Mz
+Lv
+Lv
 Mz
 Mz
 Mz
@@ -1404,38 +1004,12 @@ Mz
 Mz
 Mz
 Mz
-Mz
-Mz
-Mz
-Mz
-Mz
-Mz
-Mz
-Mz
-Mz
-Mz
 "}
 (22,1,1) = {"
 Mz
 Mz
 Mz
 Mz
-WQ
-Mz
-Mz
-Mz
-Mz
-Mz
-Mz
-Mz
-Mz
-Mz
-Ps
-Mz
-Mz
-Mz
-WQ
-WQ
 Mz
 Mz
 Mz
@@ -1446,7 +1020,13 @@ Mz
 Mz
 Mz
 Mz
-fc
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
 Mz
 Mz
 Mz
@@ -1460,647 +1040,7 @@ Mz
 (23,1,1) = {"
 Mz
 Mz
-WQ
-WQ
-WQ
-WQ
-WQ
-WQ
 Mz
-Mz
-Mz
-Mz
-Mz
-Ps
-Mz
-Mz
-Mz
-Mz
-Mz
-Mz
-Mz
-Mz
-Lv
-Lv
-Ps
-Mz
-Mz
-Ps
-Mz
-Mz
-Mz
-Mz
-Mz
-Mz
-Mz
-Lv
-Lv
-Mz
-Mz
-Mz
-"}
-(24,1,1) = {"
-WQ
-WQ
-WQ
-WQ
-WQ
-WQ
-WQ
-WQ
-WQ
-WQ
-WQ
-dl
-lE
-Mz
-Mz
-Mz
-Mz
-Mz
-Mz
-oy
-oy
-oy
-Ps
-Ps
-Ps
-oy
-oy
-Ps
-oy
-oy
-Ps
-uK
-Mz
-Mz
-DA
-Ps
-Ps
-Ps
-lE
-Mz
-"}
-(25,1,1) = {"
-WQ
-WQ
-WQ
-WQ
-WQ
-WQ
-WQ
-WQ
-WQ
-WQ
-WQ
-WQ
-Mz
-Mz
-Mz
-Mz
-Mz
-Mz
-Ps
-Qc
-Qc
-Qc
-Zj
-Hs
-oy
-Ts
-WH
-vu
-Qc
-DS
-Qc
-Ps
-Wl
-Wl
-Ps
-WQ
-kR
-Ps
-Mz
-Mz
-"}
-(26,1,1) = {"
-WQ
-WQ
-WQ
-WQ
-WQ
-WQ
-WQ
-WQ
-Ps
-WQ
-WQ
-Ps
-Mz
-Mz
-Mz
-Mz
-Mz
-Ps
-Lt
-aU
-WQ
-aU
-WQ
-WQ
-HQ
-WQ
-WQ
-WQ
-WQ
-WQ
-WQ
-oy
-JJ
-eu
-Ps
-WQ
-hA
-kR
-Ps
-lE
-"}
-(27,1,1) = {"
-WQ
-WQ
-WQ
-WQ
-WQ
-WQ
-WQ
-WQ
-HQ
-EQ
-EQ
-aA
-Mz
-Mz
-WQ
-Mz
-Mz
-oy
-xp
-WQ
-WQ
-WQ
-WQ
-WQ
-WQ
-WQ
-WQ
-WQ
-PS
-WQ
-WQ
-oy
-JJ
-eu
-Ps
-WQ
-zu
-zu
-Ps
-Mz
-"}
-(28,1,1) = {"
-WQ
-WQ
-WQ
-WQ
-WQ
-WQ
-WQ
-WQ
-WQ
-EQ
-EQ
-aA
-Mz
-Mz
-Mz
-Mz
-Mz
-Ps
-hy
-WQ
-WQ
-WQ
-WQ
-WQ
-Ps
-CI
-CI
-CI
-Ps
-WQ
-ah
-Ps
-Wl
-Wl
-Ps
-WQ
-EQ
-EQ
-aA
-Mz
-"}
-(29,1,1) = {"
-WQ
-WQ
-WQ
-WQ
-WQ
-WQ
-WQ
-WQ
-Ps
-WQ
-WQ
-Ps
-Mz
-Mz
-Mz
-Mz
-Mz
-oy
-If
-WQ
-WQ
-WQ
-WQ
-WQ
-oy
-aZ
-DK
-aZ
-oy
-WQ
-WQ
-WQ
-WQ
-WQ
-du
-WQ
-EQ
-EQ
-aA
-Mz
-"}
-(30,1,1) = {"
-WQ
-WQ
-WQ
-WQ
-WQ
-WQ
-WQ
-WQ
-WQ
-WQ
-WQ
-WQ
-lE
-Mz
-Mz
-Mz
-Mz
-oy
-sl
-WQ
-WQ
-WQ
-WQ
-WQ
-PP
-aU
-WQ
-aU
-PP
-WQ
-WQ
-WQ
-WQ
-WQ
-oy
-WQ
-oj
-oj
-Ps
-Mz
-"}
-(31,1,1) = {"
-WQ
-WQ
-WQ
-WQ
-WQ
-WQ
-WQ
-WQ
-WQ
-WQ
-WQ
-dl
-Mz
-Mz
-Mz
-Mz
-Mz
-au
-fY
-WQ
-WQ
-yK
-yK
-yK
-Ps
-sl
-WQ
-eh
-Ps
-sl
-sl
-kn
-WQ
-WQ
-du
-WQ
-EQ
-EQ
-aA
-Mz
-"}
-(32,1,1) = {"
-Mz
-Mz
-WQ
-WQ
-WQ
-WQ
-WQ
-WQ
-WQ
-Mz
-Mz
-Mz
-Mz
-Mz
-Mz
-Mz
-Mz
-Ps
-oy
-du
-oy
-Ps
-Ps
-Ps
-Ps
-Ps
-du
-Ps
-Ps
-Ps
-Ps
-Ps
-WQ
-ah
-Ps
-WQ
-EQ
-EQ
-aA
-Mz
-"}
-(33,1,1) = {"
-Mz
-Mz
-Mz
-Mz
-WQ
-Mz
-Mz
-Mz
-Mz
-Mz
-Mz
-Ps
-OD
-OD
-Ps
-Mz
-Mz
-oy
-GQ
-WQ
-eu
-Ps
-am
-ch
-xK
-kR
-WQ
-Ps
-Yl
-bF
-dw
-qe
-Rk
-Ao
-Ps
-WQ
-EX
-EX
-Ps
-lE
-"}
-(34,1,1) = {"
-Mz
-Mz
-Mz
-Mz
-Mz
-Mz
-Mz
-Mz
-Mz
-Mz
-Mz
-Mz
-Mz
-Mz
-Mz
-Mz
-Mz
-oy
-Qz
-Sr
-WQ
-du
-WQ
-WQ
-WQ
-kR
-WQ
-du
-WQ
-WQ
-WQ
-WQ
-WQ
-WQ
-Ps
-WQ
-kR
-kR
-Ps
-Mz
-"}
-(35,1,1) = {"
-Ps
-HK
-HK
-Ps
-Mz
-Mz
-Mz
-Mz
-Mz
-Ps
-HK
-HK
-Ps
-Mz
-Mz
-Mz
-Mz
-Mz
-Ps
-zV
-RH
-Ps
-uA
-yC
-Ps
-Wl
-Wl
-Ps
-kR
-kR
-kR
-wi
-KS
-KS
-Ps
-WQ
-kR
-Ps
-lE
-Mz
-"}
-(36,1,1) = {"
-OD
-dl
-dl
-HK
-Mz
-Mz
-Mz
-Mz
-Mz
-OD
-dl
-dl
-HK
-Mz
-Mz
-Mz
-Mz
-Mz
-Mz
-oy
-oy
-Ps
-Ps
-Ps
-Ps
-JJ
-eu
-Ps
-Ps
-Ps
-Ps
-Ps
-Ps
-Ps
-Ps
-Ps
-Ps
-Ps
-Mz
-Mz
-"}
-(37,1,1) = {"
-OD
-dl
-dl
-HK
-Mz
-Mz
-Mz
-Mz
-Mz
-OD
-dl
-dl
-HK
-Mz
-Mz
-Mz
-Mz
-Mz
-Mz
-Mz
-Mz
-Mz
-Lv
-Lv
-Ps
-Wl
-Wl
-Ps
-Mz
-Mz
-Mz
-Mz
-Mz
-Mz
-Mz
-Lv
-Lv
-Mz
-Mz
-Mz
-"}
-(38,1,1) = {"
-Ps
-OD
-OD
-Ps
-Mz
-Mz
-Mz
-Mz
-Mz
-Ps
-OD
-OD
-Ps
 Mz
 Mz
 Mz
@@ -2129,17 +1069,7 @@ Mz
 Mz
 Mz
 "}
-(39,1,1) = {"
-Mz
-Mz
-Mz
-Mz
-Mz
-Mz
-Mz
-Mz
-Mz
-Mz
+(24,1,1) = {"
 Mz
 Mz
 Mz
@@ -2171,17 +1101,7 @@ Mz
 Mz
 Mz
 "}
-(40,1,1) = {"
-Mz
-Mz
-Mz
-OD
-OD
-Mz
-Mz
-Mz
-Mz
-Mz
+(25,1,1) = {"
 Mz
 Mz
 Mz
