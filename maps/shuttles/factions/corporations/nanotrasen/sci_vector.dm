@@ -11,8 +11,6 @@
 		mass = 25;
 	}
 
-	#warn finish map halfway
-
 // todo: finish map
 
 /area/shuttle/nanotrasen/sci_vector

@@ -11,8 +11,6 @@
 		mass = 5;
 	}
 
-	#warn finish map halfway
-
 // todo: finish map
 
 /area/shuttle/nanotrasen/drone_prototype
