@@ -10,8 +10,9 @@
 
 /obj/structure/adherent_bath/examine(mob/user, dist)
 	. = ..()
+	var/mob/living/carbon/human/H = user
 	if(istype(H) && H.species.get_species_id() != SPECIES_ID_ADHERENT)
-		. += "It appears quite hot, taking a dip is quite hazardous."
+		. += "It appears quite hot, taking a dip would be quite hazardous."
 
 /obj/structure/adherent_bath/Destroy()
 	eject_occupant()
