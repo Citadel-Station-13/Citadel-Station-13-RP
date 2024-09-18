@@ -3322,7 +3322,6 @@
 #include "code\modules\maps\templates\badmin_misc\fun.dm"
 #include "code\modules\maps\templates\badmin_misc\templates.dm"
 #include "code\modules\maps\templates\misc_presets\rift_shuttle_landmarks.dm"
-#include "code\modules\maps\templates\misc_presets\triumph_shuttle_landmarks.dm"
 #include "code\modules\maps\templates\shuttles\admin_spawn\_generic_shuttles.dm"
 #include "code\modules\maps\templates\shuttles\admin_spawn\abductor.dm"
 #include "code\modules\maps\templates\shuttles\admin_spawn\bearcat.dm"
@@ -5303,6 +5302,7 @@
 #include "maps\triumph\shuttles.dm"
 #include "maps\triumph\telecomms.dm"
 #include "maps\triumph\triumph-sectors.dm"
+#include "maps\triumph\triumph-shuttle-landmarks.dm"
 #include "maps\triumph\triumph.dm"
 #include "maps\victory\engines.dm"
 #include "maps\victory\sectors.dm"
@@ -5310,5 +5310,6 @@
 #include "maps\victory\telecomms.dm"
 #include "maps\victory\victory-areas.dm"
 #include "maps\victory\victory-sectors.dm"
+#include "maps\victory\victory-shuttle-landmarks.dm"
 #include "maps\victory\victory.dm"
 // END_INCLUDE
