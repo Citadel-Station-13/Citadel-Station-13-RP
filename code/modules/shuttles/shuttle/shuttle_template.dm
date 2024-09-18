@@ -29,6 +29,10 @@
 	var/relative_path
 
 	//* Functionality
+	/// our shuttle typepath
+	///
+	/// * yeah uh you probably shouldn't mess with this unless you know what you're doing
+	var/shuttle_type = /datum/shuttle
 	/// our descriptor, used for cross-interaction with other systems
 	/// this should not be a cached typepath, as opposed to a directly made typepath
 	/// or an instance.

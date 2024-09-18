@@ -22,8 +22,7 @@
 	var/descriptor = "Compartment"
 
 /area/shuttle/auto/before_bounds_initializing(datum/shuttle/from_shuttle, datum/turf_reservation/from_reservation, datum/shuttle_template/from_template)
-	. = ..()
-	auto_name_instance(shuttle.name, shuttle.display_name)
+	// todo: shuttle
 
 /area/shuttle/auto/proc/auto_name_instance(real_name, display_name)
 	src.name = "[real_name][count && " [count]"][descriptor && " [descriptor]"]"
