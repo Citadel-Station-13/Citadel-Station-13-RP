@@ -361,9 +361,9 @@
 	desc = "A sleek, black bipedal combat unit with an unsettling, advanced nanotech design. Its chassis being an amalgamation of various prosthetic and synthetic components or at least mimicking such. The unit is constantly shifting and is surrounded by a thin trail of metallic dust as it moves. Spines emitting an antigrav field protrude from its arms, shoulders, and back, while its featureless faceplate displays an alien magenta glow under constant shifting and warping. The unit shudders and vibrates with uncanny precision. It wields a modified particle weapon vaguely resembling a Hephaestus G40. A capital Sigma symbol is etched on its chest, and a circular power pack on its back hums with gravity-defying particles."
 	icon_living = "wraith"
 	icon_state = "wraith"
-	maxHealth = 150 //Lowered from 200 -- Armor also lowered a bit -- not fond of my creations used to godmode eventmins even more unless things change in terms of taking pcs into consideration -Irkalla 
+	maxHealth = 150 //Lowered from 200 -- Armor also lowered a bit 
 	health = 150
-	evasion = 5 //Lowered from 15 -- not fond of my creations used to godmode eventmins even more unless things change in terms of taking pcs into consideration -Irkalla 
+	evasion = 5 //Lowered from 15 
 	armor_legacy_mob = list(
 				"melee"		= 0,
 				"bullet"	= 10,
@@ -380,7 +380,7 @@
 	movement_sound = 'sound/enigma/enigma_move.ogg'
 	ai_holder_type = /datum/ai_holder/polaris/simple_mob/ranged/kiting //Made to draw fire hence kiting
 	projectiletype = /obj/projectile/beam/antigravbeamwraith
-	base_attack_cooldown = 15 //0.5 attacks per second -- raised from 10 or 1 attack per second -- Nobody should have access to Rahn from MO -Irkalla
+	base_attack_cooldown = 15 //0.5 attacks per second -- raised from 10 or 1 attack per second 
 
 /mob/living/simple_mob/mechanical/hivebot/enigma/P4/Wraith/Initialize(mapload) //Gives the unit a weak overshield since it would be very unfun to fight kiting AI with actual proper health regen as initially intended
 	var/shield_type = /obj/item/shield_projector/rectangle{
@@ -402,9 +402,9 @@
 	desc = "A horrific inorganic nanite abomination. This unit possess a jet black nanite frame with typical abductor technology augmentation. Armed with two strange humming blades it is well capable of both lethal takedowns and less lethal takedowns. The head tendrilled monstrosity is lightning fast and to make matters worse has some sort of short range teleportation pack installed on its back allowing it to effectively 'blink' out if needed to disengage. Additionally the entire body is covered in thin, purple colored phase coils allowing it to effectively leap. A capital greek Sigma is etched onto its nanite chest. Embedded in its right armblade is some sort of injector loaded with strange bits of electronics. The entire thing screams in agony in an ultrasonic frequency only audible to synthetics as it constantly shifts in and out of phase."
 	icon_living = "banshee"
 	icon_state = "banshee"
-	maxHealth = 75 //Glass Cannon -- Lowered from 100 -- same reason as with other changes -Irkalla
+	maxHealth = 75 //Glass Cannon -- Lowered from 100 
 	health = 75
-	evasion = 25 //Phase coils and bluespace blink device. Hard to hit. Trash hitpoints and armor. Lowered from 50 -- Same reasoning as above -- If our playerbase cant be trusted to have anything meaningful so cannot others -Irkalla
+	evasion = 25 //Phase coils and bluespace blink device. Hard to hit. Trash hitpoints and armor. Lowered from 50 --
 	armor_legacy_mob = list(
 				"melee"		= 5,
 				"bullet"	= 10,
@@ -415,10 +415,10 @@
 				"rad"		= 100
 				)
 
-	legacy_melee_damage_lower = 25 //armed with two arm mounted phase blades -- Lowered from 35 same reason as before
-	legacy_melee_damage_upper = 25 //I hate damage variance -- Lowered from 35 same reason as before
-	attack_armor_pen = 25 //Lowered from 50 -- Nah I dont like godmoding with a lack of consideration of narratives that others have played lets not give people with access to this an incentive -Irkalla
-	base_attack_cooldown = 12 //0.8 attacks per second -- same as above-- -Irkalla
+	legacy_melee_damage_lower = 25 //armed with two arm mounted phase blades -- Lowered from 35 
+	legacy_melee_damage_upper = 25 //I hate damage variance -- Lowered from 35 
+	attack_armor_pen = 25 //Lowered from 50 -- 
+	base_attack_cooldown = 12 //0.8 attacks per second 
 	movement_cooldown = 0 //MUCH faster
 	movement_sound = 'sound/enigma/enigma_move.ogg'
 	ai_holder_type = /datum/ai_holder/polaris/simple_mob/hivebot //hit and Run Melee is broken for when more than 1 player is visible
