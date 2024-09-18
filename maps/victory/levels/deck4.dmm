@@ -343,7 +343,7 @@
 	pixel_y = -24
 	},
 /turf/simulated/floor/tiled,
-/area/triumph/surfacebase/sauna)
+/area/victory/surfacebase/sauna)
 "avM" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -627,7 +627,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled/steel_grid,
-/area/triumph/surfacebase/tram)
+/area/victory/surfacebase/tram)
 "aIj" = (
 /turf/simulated/floor/tiled,
 /area/exploration/medical)
@@ -715,7 +715,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/triumph/surfacebase/tram)
+/area/victory/surfacebase/tram)
 "aKN" = (
 /obj/machinery/camera/network/exploration{
 	dir = 1
@@ -943,7 +943,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled/steel_grid,
-/area/triumph/surfacebase/tram)
+/area/victory/surfacebase/tram)
 "aXb" = (
 /obj/structure/table/woodentable,
 /obj/machinery/light/small{
@@ -1013,7 +1013,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
-/area/triumph/surfacebase/sauna)
+/area/victory/surfacebase/sauna)
 "ber" = (
 /obj/structure/cable/green{
 	icon_state = "1-2"
@@ -1093,14 +1093,14 @@
 	pixel_x = -28
 	},
 /turf/simulated/floor/tiled,
-/area/triumph/surfacebase/sauna)
+/area/victory/surfacebase/sauna)
 "bjg" = (
 /turf/simulated/wall/prepainted,
 /area/maintenance/substation/exploration)
 "bjw" = (
 /obj/structure/table/bench/wooden,
 /turf/simulated/floor/tiled,
-/area/triumph/surfacebase/sauna)
+/area/victory/surfacebase/sauna)
 "bkP" = (
 /obj/machinery/holopad,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -1211,7 +1211,7 @@
 	pixel_y = -22
 	},
 /turf/simulated/floor/tiled,
-/area/triumph/surfacebase/sauna)
+/area/victory/surfacebase/sauna)
 "bqQ" = (
 /obj/structure/table/standard,
 /obj/item/storage/toolbox/mechanical{
@@ -1225,7 +1225,7 @@
 /area/space)
 "brF" = (
 /turf/simulated/floor/tiled/dark,
-/area/triumph/station/stairs_four)
+/area/victory/station/stairs_four)
 "brQ" = (
 /obj/machinery/light{
 	dir = 4
@@ -1505,7 +1505,7 @@
 	},
 /obj/effect/mist,
 /turf/simulated/floor/water/pool,
-/area/triumph/surfacebase/sauna)
+/area/victory/surfacebase/sauna)
 "bMJ" = (
 /obj/machinery/door/airlock/maintenance/common,
 /turf/simulated/floor/plating,
@@ -1562,10 +1562,10 @@
 	dir = 1
 	},
 /turf/simulated/floor/water/deep/pool,
-/area/triumph/surfacebase/sauna)
+/area/victory/surfacebase/sauna)
 "bRS" = (
 /turf/simulated/floor/tiled,
-/area/triumph/surfacebase/sauna)
+/area/victory/surfacebase/sauna)
 "bRX" = (
 /obj/structure/table/reinforced,
 /obj/item/folder{
@@ -1607,7 +1607,7 @@
 /turf/simulated/floor/wood,
 /area/bridge/meeting_room)
 "bTg" = (
-/obj/overmap/entity/visitable/ship/triumph,
+/obj/overmap/entity/visitable/ship/victory,
 /obj/structure/bed/chair/bay/comfy/black{
 	dir = 4
 	},
@@ -1753,7 +1753,7 @@
 	pixel_y = -22
 	},
 /turf/simulated/floor/tiled,
-/area/triumph/surfacebase/sauna)
+/area/victory/surfacebase/sauna)
 "cci" = (
 /obj/effect/floor_decal/spline/fancy,
 /obj/machinery/door/firedoor{
@@ -1875,8 +1875,8 @@
 /turf/simulated/floor/tiled,
 /area/space)
 "cib" = (
-/obj/overmap/entity/visitable/ship/landable/excursion/triumph,
-/obj/effect/shuttle_landmark/triumph/deck4/excursion,
+/obj/overmap/entity/visitable/ship/landable/excursion/victory,
+/obj/effect/shuttle_landmark/victory/deck4/excursion,
 /obj/structure/handrail{
 	dir = 4
 	},
@@ -1940,8 +1940,8 @@
 /turf/simulated/floor/tiled,
 /area/space)
 "clE" = (
-/obj/effect/shuttle_landmark/triumph/deck4/civvie,
-/obj/overmap/entity/visitable/ship/landable/civvie/triumph,
+/obj/effect/shuttle_landmark/victory/deck4/civvie,
+/obj/overmap/entity/visitable/ship/landable/civvie/victory,
 /obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	dir = 4;
 	frequency = 1380;
@@ -2007,7 +2007,7 @@
 "cqF" = (
 /obj/machinery/vending/cola,
 /turf/simulated/floor/tiled/steel_grid,
-/area/triumph/surfacebase/tram)
+/area/victory/surfacebase/tram)
 "cri" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/grass,
@@ -2310,7 +2310,7 @@
 	dir = 10
 	},
 /turf/simulated/floor/tiled/freezer,
-/area/triumph/surfacebase/sauna)
+/area/victory/surfacebase/sauna)
 "cJE" = (
 /obj/structure/extinguisher_cabinet{
 	pixel_y = -31
@@ -2340,7 +2340,7 @@
 /area/crew_quarters/sleep/CE_quarters)
 "cMJ" = (
 /turf/simulated/wall/r_wall/prepainted,
-/area/triumph/surfacebase/tram)
+/area/victory/surfacebase/tram)
 "cOc" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
@@ -2375,7 +2375,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/triumph/surfacebase/tram)
+/area/victory/surfacebase/tram)
 "cRT" = (
 /obj/effect/floor_decal/steeldecal/steel_decals5{
 	dir = 8
@@ -2460,7 +2460,7 @@
 /obj/structure/table/bench/wooden,
 /obj/effect/mist,
 /turf/simulated/floor/wood,
-/area/triumph/surfacebase/sauna)
+/area/victory/surfacebase/sauna)
 "cVS" = (
 /obj/structure/handrail{
 	dir = 4
@@ -2530,7 +2530,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/triumph/surfacebase/tram)
+/area/victory/surfacebase/tram)
 "cZC" = (
 /obj/structure/table/reinforced,
 /turf/simulated/floor/carpet/purcarpet,
@@ -2594,7 +2594,7 @@
 /turf/simulated/wall/r_wall/prepainted/command,
 /area/maintenance/security/starboard)
 "dfU" = (
-/obj/effect/shuttle_landmark/triumph/deck4/specops,
+/obj/effect/shuttle_landmark/victory/deck4/specops,
 /turf/space,
 /area/space)
 "dgm" = (
@@ -2729,7 +2729,7 @@
 /obj/structure/table/bench/wooden,
 /obj/effect/mist,
 /turf/simulated/floor/wood,
-/area/triumph/surfacebase/sauna)
+/area/victory/surfacebase/sauna)
 "dos" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/structure/ship_munition/disperser_charge/fire,
@@ -2989,7 +2989,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled,
-/area/triumph/surfacebase/sauna)
+/area/victory/surfacebase/sauna)
 "dCl" = (
 /obj/structure/bed/chair/comfy/red{
 	dir = 1
@@ -3564,13 +3564,13 @@
 	dir = 4
 	},
 /obj/effect/shuttle_landmark{
-	base_area = /area/triumph/surfacebase/tram;
+	base_area = /area/victory/surfacebase/tram;
 	base_turf = /turf/simulated/floor/tiled/techfloor/grid;
 	landmark_tag = "escape_triumph";
 	name = "Escape Shuttle Triumph"
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/triumph/surfacebase/tram)
+/area/victory/surfacebase/tram)
 "eez" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 1
@@ -4004,7 +4004,7 @@
 	dir = 9
 	},
 /turf/simulated/floor/tiled/freezer,
-/area/triumph/surfacebase/sauna)
+/area/victory/surfacebase/sauna)
 "eIl" = (
 /obj/effect/mist,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -4017,7 +4017,7 @@
 	pixel_y = 32
 	},
 /turf/simulated/floor/wood,
-/area/triumph/surfacebase/sauna)
+/area/victory/surfacebase/sauna)
 "eIv" = (
 /obj/machinery/gateway{
 	dir = 1
@@ -4350,7 +4350,7 @@
 /area/maintenance/security/starboard)
 "eYk" = (
 /turf/simulated/floor/water/deep/pool,
-/area/triumph/surfacebase/sauna)
+/area/victory/surfacebase/sauna)
 "eYD" = (
 /obj/structure/table/reinforced,
 /obj/item/storage/secure/briefcase,
@@ -4636,7 +4636,7 @@
 	pixel_y = -31
 	},
 /turf/simulated/floor/tiled/dark,
-/area/triumph/station/stairs_four)
+/area/victory/station/stairs_four)
 "fnT" = (
 /obj/structure/window/reinforced{
 	dir = 8
@@ -4747,7 +4747,7 @@
 "ftb" = (
 /obj/structure/table/woodentable,
 /turf/simulated/floor/tiled/freezer,
-/area/triumph/surfacebase/sauna)
+/area/victory/surfacebase/sauna)
 "fth" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
@@ -4763,7 +4763,7 @@
 	pixel_y = 32
 	},
 /turf/simulated/floor/tiled/freezer,
-/area/triumph/surfacebase/sauna)
+/area/victory/surfacebase/sauna)
 "ftL" = (
 /obj/effect/floor_decal/chapel,
 /turf/simulated/floor/tiled/dark,
@@ -5522,7 +5522,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
-/area/triumph/surfacebase/sauna)
+/area/victory/surfacebase/sauna)
 "gjL" = (
 /obj/machinery/door/airlock/voidcraft/vertical{
 	name = "cockpit hatch"
@@ -5652,7 +5652,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/white,
-/area/triumph/surfacebase/sauna)
+/area/victory/surfacebase/sauna)
 "gnD" = (
 /obj/structure/table/bench,
 /turf/simulated/floor/wood,
@@ -5770,7 +5770,7 @@
 /obj/effect/mist,
 /obj/item/reagent_containers/food/drinks/bottle/patron,
 /turf/simulated/floor/wood,
-/area/triumph/surfacebase/sauna)
+/area/victory/surfacebase/sauna)
 "gwu" = (
 /obj/machinery/air_alarm{
 	frequency = 1441;
@@ -5841,7 +5841,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/water/pool,
-/area/triumph/surfacebase/sauna)
+/area/victory/surfacebase/sauna)
 "gBt" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -5909,7 +5909,7 @@
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /obj/machinery/camera/network/command,
 /turf/simulated/floor/tiled/dark,
-/area/triumph/station/stairs_four)
+/area/victory/station/stairs_four)
 "gER" = (
 /obj/structure/table/bench/padded,
 /turf/simulated/floor/wood,
@@ -5981,7 +5981,7 @@
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/plating,
-/area/triumph/station/stairs_four)
+/area/victory/station/stairs_four)
 "gKK" = (
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 1
@@ -6178,7 +6178,7 @@
 /obj/structure/table/woodentable,
 /obj/effect/mist,
 /turf/simulated/floor/wood,
-/area/triumph/surfacebase/sauna)
+/area/victory/surfacebase/sauna)
 "gZU" = (
 /turf/simulated/floor/tiled,
 /area/shuttle/excursion/cockpit)
@@ -6341,7 +6341,7 @@
 	},
 /obj/effect/mist,
 /turf/simulated/floor/water/pool,
-/area/triumph/surfacebase/sauna)
+/area/victory/surfacebase/sauna)
 "hgo" = (
 /obj/structure/railing{
 	dir = 4
@@ -6546,7 +6546,7 @@
 /obj/machinery/fire_alarm/north_mount,
 /obj/structure/table/bench/wooden,
 /turf/simulated/floor/tiled/freezer,
-/area/triumph/surfacebase/sauna)
+/area/victory/surfacebase/sauna)
 "htr" = (
 /obj/machinery/shield_diffuser,
 /obj/map_helper/airlock/door/ext_door,
@@ -6782,7 +6782,7 @@
 	pixel_x = -25
 	},
 /turf/simulated/floor/wood,
-/area/triumph/surfacebase/sauna)
+/area/victory/surfacebase/sauna)
 "hJO" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
 /turf/simulated/floor/wood,
@@ -7066,7 +7066,7 @@
 "ibx" = (
 /obj/structure/table/bench/wooden,
 /turf/simulated/floor/tiled/freezer,
-/area/triumph/surfacebase/sauna)
+/area/victory/surfacebase/sauna)
 "ibU" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -7184,7 +7184,7 @@
 /obj/item/clothing/under/swimsuit/stripper/cowbikini,
 /obj/item/reagent_containers/food/drinks/cans/waterbottle,
 /turf/simulated/floor/tiled,
-/area/triumph/surfacebase/sauna)
+/area/victory/surfacebase/sauna)
 "ihy" = (
 /turf/simulated/floor/tiled/monofloor,
 /area/hallway/primary/aft)
@@ -7243,7 +7243,7 @@
 	},
 /obj/structure/table/bench/wooden,
 /turf/simulated/floor/tiled/freezer,
-/area/triumph/surfacebase/sauna)
+/area/victory/surfacebase/sauna)
 "ikV" = (
 /turf/simulated/floor/tiled,
 /area/maintenance/cargo)
@@ -7385,7 +7385,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled,
-/area/triumph/surfacebase/tram)
+/area/victory/surfacebase/tram)
 "iui" = (
 /obj/structure/sign/deck/fourth,
 /turf/simulated/wall/prepainted/civilian,
@@ -7494,7 +7494,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/wood,
-/area/triumph/surfacebase/sauna)
+/area/victory/surfacebase/sauna)
 "izz" = (
 /obj/machinery/air_alarm{
 	dir = 1;
@@ -7504,7 +7504,7 @@
 /obj/structure/table/bench/wooden,
 /obj/effect/mist,
 /turf/simulated/floor/wood,
-/area/triumph/surfacebase/sauna)
+/area/victory/surfacebase/sauna)
 "izO" = (
 /obj/structure/cable/green{
 	icon_state = "2-4"
@@ -7551,7 +7551,7 @@
 /area/space)
 "iBH" = (
 /turf/simulated/wall/prepainted/command,
-/area/triumph/station/stairs_four)
+/area/victory/station/stairs_four)
 "iBS" = (
 /obj/machinery/atmospherics/component/unary/engine{
 	dir = 4
@@ -7566,7 +7566,7 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/dark,
-/area/triumph/station/stairs_four)
+/area/victory/station/stairs_four)
 "iBZ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -7610,14 +7610,14 @@
 /area/space)
 "iDg" = (
 /turf/simulated/open,
-/area/triumph/station/stairs_four)
+/area/victory/station/stairs_four)
 "iDW" = (
 /obj/machinery/light/small{
 	dir = 4
 	},
 /obj/structure/table/woodentable,
 /turf/simulated/floor/tiled/freezer,
-/area/triumph/surfacebase/sauna)
+/area/victory/surfacebase/sauna)
 "iEw" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /obj/structure/table/reinforced,
@@ -7824,7 +7824,7 @@
 	},
 /obj/structure/fans/tiny,
 /turf/simulated/floor/tiled,
-/area/triumph/surfacebase/sauna)
+/area/victory/surfacebase/sauna)
 "iQL" = (
 /obj/structure/table/bench/wooden,
 /turf/simulated/floor/wood,
@@ -7962,7 +7962,7 @@
 /obj/machinery/cryopod/robot/door/shuttle,
 /obj/machinery/door/firedoor,
 /turf/simulated/wall/r_wall/prepainted,
-/area/triumph/surfacebase/tram)
+/area/victory/surfacebase/tram)
 "iZf" = (
 /obj/structure/table/reinforced,
 /obj/item/clipboard,
@@ -8306,7 +8306,7 @@
 	},
 /obj/structure/window/basic/full,
 /turf/simulated/floor/plating,
-/area/triumph/surfacebase/sauna)
+/area/victory/surfacebase/sauna)
 "jpO" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -8476,7 +8476,7 @@
 	dir = 10
 	},
 /turf/simulated/floor/tiled,
-/area/triumph/surfacebase/sauna)
+/area/victory/surfacebase/sauna)
 "jxt" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -8487,7 +8487,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled,
-/area/triumph/surfacebase/sauna)
+/area/victory/surfacebase/sauna)
 "jys" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 1
@@ -8796,7 +8796,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/door/firedoor,
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/triumph/surfacebase/tram)
+/area/victory/surfacebase/tram)
 "jNH" = (
 /obj/structure/disposalpipe/segment{
 	dir = 2;
@@ -8846,7 +8846,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/freezer,
-/area/triumph/surfacebase/sauna)
+/area/victory/surfacebase/sauna)
 "jOI" = (
 /obj/effect/floor_decal/techfloor/orange,
 /obj/machinery/camera/network/civilian{
@@ -8917,7 +8917,7 @@
 	icon_state = "2-8"
 	},
 /turf/simulated/floor/tiled/dark,
-/area/triumph/station/stairs_four)
+/area/victory/station/stairs_four)
 "jRq" = (
 /obj/structure/catwalk,
 /obj/structure/cable{
@@ -9100,7 +9100,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled/steel_grid,
-/area/triumph/surfacebase/tram)
+/area/victory/surfacebase/tram)
 "jYs" = (
 /turf/simulated/wall/prepainted/command,
 /area/crew_quarters/heads/blueshield)
@@ -9237,7 +9237,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/dark,
-/area/triumph/station/stairs_four)
+/area/victory/station/stairs_four)
 "khl" = (
 /obj/structure/extinguisher_cabinet{
 	dir = 8;
@@ -9356,7 +9356,7 @@
 	name = "Restroom"
 	},
 /turf/simulated/floor/tiled,
-/area/triumph/surfacebase/sauna)
+/area/victory/surfacebase/sauna)
 "kot" = (
 /obj/machinery/air_alarm{
 	pixel_y = 22
@@ -9702,7 +9702,7 @@
 	},
 /obj/effect/mist,
 /turf/simulated/floor/water/pool,
-/area/triumph/surfacebase/sauna)
+/area/victory/surfacebase/sauna)
 "kHH" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
@@ -10000,7 +10000,7 @@
 	dir = 9
 	},
 /turf/simulated/floor/water/pool,
-/area/triumph/surfacebase/sauna)
+/area/victory/surfacebase/sauna)
 "kWJ" = (
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/hallway/primary/aft)
@@ -10012,7 +10012,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/white,
-/area/triumph/surfacebase/sauna)
+/area/victory/surfacebase/sauna)
 "kXr" = (
 /obj/structure/closet/secure_closet/personal,
 /obj/effect/floor_decal/steeldecal/steel_decals5,
@@ -10022,7 +10022,7 @@
 	pixel_y = -25
 	},
 /turf/simulated/floor/tiled,
-/area/triumph/surfacebase/sauna)
+/area/victory/surfacebase/sauna)
 "kXy" = (
 /obj/machinery/air_alarm{
 	dir = 4;
@@ -10077,7 +10077,7 @@
 	},
 /obj/machinery/light,
 /turf/simulated/floor/tiled,
-/area/triumph/surfacebase/sauna)
+/area/victory/surfacebase/sauna)
 "laK" = (
 /obj/machinery/door/window/brigdoor/eastleft{
 	req_access = null;
@@ -10402,7 +10402,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
-/area/triumph/surfacebase/sauna)
+/area/victory/surfacebase/sauna)
 "lyU" = (
 /obj/structure/cable/green{
 	icon_state = "1-2"
@@ -10421,7 +10421,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/triumph/surfacebase/tram)
+/area/victory/surfacebase/tram)
 "lzA" = (
 /obj/structure/table/rack,
 /obj/random/maintenance/security,
@@ -10472,7 +10472,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/steel_grid,
-/area/triumph/surfacebase/tram)
+/area/victory/surfacebase/tram)
 "lEq" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
@@ -10689,7 +10689,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/wood,
-/area/triumph/surfacebase/sauna)
+/area/victory/surfacebase/sauna)
 "lPB" = (
 /obj/machinery/light{
 	dir = 4
@@ -10885,7 +10885,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
-/area/triumph/surfacebase/sauna)
+/area/victory/surfacebase/sauna)
 "maM" = (
 /obj/machinery/light{
 	dir = 8
@@ -11251,7 +11251,7 @@
 	},
 /obj/map_helper/access_helper/airlock/station/command/bridge,
 /turf/simulated/floor/tiled/dark,
-/area/triumph/station/stairs_four)
+/area/victory/station/stairs_four)
 "mAC" = (
 /obj/machinery/access_button/airlock_exterior{
 	frequency = 1380;
@@ -11474,7 +11474,7 @@
 	},
 /obj/structure/closet/athletic_mixed,
 /turf/simulated/floor/tiled,
-/area/triumph/surfacebase/sauna)
+/area/victory/surfacebase/sauna)
 "mRF" = (
 /obj/machinery/atmospherics/pipe/tank/phoron{
 	volume = 20000
@@ -11617,7 +11617,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/water/pool,
-/area/triumph/surfacebase/sauna)
+/area/victory/surfacebase/sauna)
 "mXt" = (
 /obj/item/gun/ballistic/shotgun/flare,
 /obj/item/storage/box/flashshells,
@@ -11932,7 +11932,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled,
-/area/triumph/surfacebase/sauna)
+/area/victory/surfacebase/sauna)
 "ntW" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
@@ -12032,7 +12032,7 @@
 	},
 /obj/structure/closet/athletic_mixed,
 /turf/simulated/floor/tiled,
-/area/triumph/surfacebase/sauna)
+/area/victory/surfacebase/sauna)
 "nAF" = (
 /obj/machinery/atmospherics/component/binary/passive_gate/on{
 	dir = 4
@@ -12147,7 +12147,7 @@
 	dir = 5
 	},
 /turf/simulated/floor/water/pool,
-/area/triumph/surfacebase/sauna)
+/area/victory/surfacebase/sauna)
 "nHt" = (
 /obj/structure/cable/cyan{
 	icon_state = "2-4"
@@ -12244,7 +12244,7 @@
 	dir = 5
 	},
 /turf/simulated/floor/tiled,
-/area/triumph/surfacebase/sauna)
+/area/victory/surfacebase/sauna)
 "nLZ" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 1
@@ -12473,7 +12473,7 @@
 /area/crew_quarters/lounge/kitchen_freezer)
 "nZb" = (
 /turf/simulated/wall/r_wall/prepainted/exploration,
-/area/triumph/surfacebase/tram)
+/area/victory/surfacebase/tram)
 "nZl" = (
 /obj/machinery/door/airlock/command{
 	name = "Private Restroom";
@@ -12673,7 +12673,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/wood,
-/area/triumph/surfacebase/sauna)
+/area/victory/surfacebase/sauna)
 "olt" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -12763,7 +12763,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled,
-/area/triumph/surfacebase/sauna)
+/area/victory/surfacebase/sauna)
 "opn" = (
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/brown/border,
@@ -12807,7 +12807,7 @@
 "osa" = (
 /obj/machinery/camera/network/civilian,
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/triumph/surfacebase/tram)
+/area/victory/surfacebase/tram)
 "otM" = (
 /obj/structure/flora/ausbushes/ppflowers,
 /obj/effect/floor_decal/grass_edge{
@@ -12904,7 +12904,7 @@
 /obj/structure/table/bench/wooden,
 /obj/effect/mist,
 /turf/simulated/floor/wood,
-/area/triumph/surfacebase/sauna)
+/area/victory/surfacebase/sauna)
 "oAD" = (
 /obj/structure/cable/green{
 	icon_state = "1-2"
@@ -13024,7 +13024,7 @@
 	pixel_x = 11
 	},
 /turf/simulated/floor/tiled,
-/area/triumph/surfacebase/sauna)
+/area/victory/surfacebase/sauna)
 "oGx" = (
 /obj/structure/table/woodentable,
 /obj/item/flashlight/lamp/green,
@@ -13058,7 +13058,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/white,
-/area/triumph/surfacebase/sauna)
+/area/victory/surfacebase/sauna)
 "oIm" = (
 /obj/structure/closet,
 /obj/item/clothing/under/suit_jacket/red,
@@ -13143,7 +13143,7 @@
 /obj/spawner/window/low_wall/reinforced/full,
 /obj/effect/paint_stripe/commandblue,
 /turf/simulated/floor/tiled,
-/area/triumph/station/stairs_four)
+/area/victory/station/stairs_four)
 "oOL" = (
 /obj/structure/cable/cyan{
 	icon_state = "4-8"
@@ -13169,7 +13169,7 @@
 	},
 /obj/machinery/power/apc/north_mount,
 /turf/simulated/floor/tiled/dark,
-/area/triumph/station/stairs_four)
+/area/victory/station/stairs_four)
 "oPo" = (
 /turf/space/basic,
 /area/bridge)
@@ -13298,7 +13298,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/dark,
-/area/triumph/station/stairs_four)
+/area/victory/station/stairs_four)
 "oYa" = (
 /obj/effect/floor_decal/techfloor,
 /obj/effect/floor_decal/corner/red/border,
@@ -13334,7 +13334,7 @@
 	},
 /obj/structure/table/bench/wooden,
 /turf/simulated/floor/tiled/freezer,
-/area/triumph/surfacebase/sauna)
+/area/victory/surfacebase/sauna)
 "oYV" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 4
@@ -13474,7 +13474,7 @@
 /obj/effect/floor_decal/spline/plain,
 /obj/effect/mist,
 /turf/simulated/floor/water/pool,
-/area/triumph/surfacebase/sauna)
+/area/victory/surfacebase/sauna)
 "pgL" = (
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/hallway/primary/aft)
@@ -13549,13 +13549,13 @@
 /obj/machinery/door/firedoor,
 /obj/machinery/cryopod/robot/door/shuttle,
 /turf/simulated/floor/tiled,
-/area/triumph/surfacebase/tram)
+/area/victory/surfacebase/tram)
 "pkq" = (
 /obj/effect/floor_decal/spline/plain{
 	dir = 4
 	},
 /turf/simulated/floor/water/pool,
-/area/triumph/surfacebase/sauna)
+/area/victory/surfacebase/sauna)
 "plb" = (
 /obj/structure/closet/firecloset,
 /obj/machinery/air_alarm{
@@ -13646,7 +13646,7 @@
 	pixel_y = 32
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/triumph/surfacebase/tram)
+/area/victory/surfacebase/tram)
 "pqe" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
@@ -14084,7 +14084,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/triumph/surfacebase/tram)
+/area/victory/surfacebase/tram)
 "pRV" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -14199,7 +14199,7 @@
 	},
 /obj/machinery/holopad,
 /turf/simulated/floor/tiled/dark,
-/area/triumph/station/stairs_four)
+/area/victory/station/stairs_four)
 "qey" = (
 /obj/landmark/spawnpoint/job/pathfinder,
 /obj/structure/bed/chair/office/dark{
@@ -14353,7 +14353,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled/steel_grid,
-/area/triumph/surfacebase/tram)
+/area/victory/surfacebase/tram)
 "qln" = (
 /obj/machinery/door/airlock/command{
 	name = "Bridge Meeting Room";
@@ -14503,7 +14503,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled,
-/area/triumph/surfacebase/tram)
+/area/victory/surfacebase/tram)
 "qvM" = (
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/brown/border,
@@ -14810,7 +14810,7 @@
 	dir = 5
 	},
 /turf/simulated/floor/tiled/white,
-/area/triumph/surfacebase/sauna)
+/area/victory/surfacebase/sauna)
 "qOl" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/item/stack/flag/red,
@@ -14951,7 +14951,7 @@
 	anchored = 1
 	},
 /turf/simulated/floor/tiled,
-/area/triumph/surfacebase/tram)
+/area/victory/surfacebase/tram)
 "qVT" = (
 /obj/structure/cable/green{
 	icon_state = "1-2"
@@ -15110,7 +15110,7 @@
 "rbp" = (
 /obj/machinery/door/blast/regular,
 /turf/simulated/floor/plating,
-/area/triumph/surfacebase/tram)
+/area/victory/surfacebase/tram)
 "rbv" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/wood,
@@ -15118,7 +15118,7 @@
 "rbW" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /turf/simulated/floor/tiled,
-/area/triumph/surfacebase/sauna)
+/area/victory/surfacebase/sauna)
 "rcm" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -15267,7 +15267,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
-/area/triumph/surfacebase/sauna)
+/area/victory/surfacebase/sauna)
 "rlA" = (
 /obj/structure/cable/green{
 	icon_state = "1-2"
@@ -15368,7 +15368,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled/steel_grid,
-/area/triumph/surfacebase/tram)
+/area/victory/surfacebase/tram)
 "rui" = (
 /obj/machinery/light{
 	dir = 4
@@ -15605,7 +15605,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled/steel_grid,
-/area/triumph/surfacebase/tram)
+/area/victory/surfacebase/tram)
 "rJD" = (
 /obj/structure/cable/green{
 	icon_state = "2-8"
@@ -15756,7 +15756,7 @@
 /area/exploration/courser_dock)
 "rTZ" = (
 /turf/simulated/floor/tiled,
-/area/triumph/surfacebase/tram)
+/area/victory/surfacebase/tram)
 "rUz" = (
 /obj/machinery/computer/ship/navigation/telescreen{
 	pixel_y = -37
@@ -16002,7 +16002,7 @@
 	pixel_y = 32
 	},
 /turf/simulated/floor/tiled/steel_grid,
-/area/triumph/surfacebase/tram)
+/area/victory/surfacebase/tram)
 "sfh" = (
 /obj/structure/table/reinforced,
 /obj/machinery/air_alarm/alarms_hidden{
@@ -16066,7 +16066,7 @@
 	pixel_x = 24
 	},
 /turf/simulated/floor/tiled,
-/area/triumph/surfacebase/tram)
+/area/victory/surfacebase/tram)
 "sjP" = (
 /obj/structure/cable/green{
 	icon_state = "1-2"
@@ -16156,7 +16156,7 @@
 	anchored = 1
 	},
 /turf/simulated/floor/tiled/white,
-/area/triumph/surfacebase/sauna)
+/area/victory/surfacebase/sauna)
 "snQ" = (
 /obj/machinery/door/firedoor/glass,
 /obj/spawner/window/low_wall/full/nogrille,
@@ -16174,7 +16174,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
-/area/triumph/surfacebase/tram)
+/area/victory/surfacebase/tram)
 "sqd" = (
 /obj/structure/railing{
 	dir = 4
@@ -16185,7 +16185,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/triumph/surfacebase/tram)
+/area/victory/surfacebase/tram)
 "srQ" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -16262,7 +16262,7 @@
 	},
 /obj/effect/mist,
 /turf/simulated/floor/wood,
-/area/triumph/surfacebase/sauna)
+/area/victory/surfacebase/sauna)
 "svn" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/railing,
@@ -16483,7 +16483,7 @@
 /obj/machinery/door/firedoor,
 /obj/map_helper/access_helper/airlock/station/hangar,
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/triumph/surfacebase/tram)
+/area/victory/surfacebase/tram)
 "sGG" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -16615,7 +16615,7 @@
 	pixel_x = 32
 	},
 /turf/simulated/floor/tiled/dark,
-/area/triumph/station/stairs_four)
+/area/victory/station/stairs_four)
 "sQR" = (
 /obj/machinery/light{
 	dir = 8
@@ -16624,7 +16624,7 @@
 	pixel_x = -32
 	},
 /turf/simulated/floor/tiled,
-/area/triumph/surfacebase/tram)
+/area/victory/surfacebase/tram)
 "sRK" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled,
@@ -16745,7 +16745,7 @@
 	},
 /obj/structure/window/basic/full,
 /turf/simulated/floor/plating,
-/area/triumph/surfacebase/sauna)
+/area/victory/surfacebase/sauna)
 "sZk" = (
 /obj/structure/bed,
 /turf/simulated/floor/plating,
@@ -16815,7 +16815,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/steel_grid,
-/area/triumph/surfacebase/tram)
+/area/victory/surfacebase/tram)
 "tbQ" = (
 /obj/machinery/computer/ship/navigation/telescreen{
 	pixel_x = 32
@@ -17015,7 +17015,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/steel_grid,
-/area/triumph/surfacebase/tram)
+/area/victory/surfacebase/tram)
 "tnA" = (
 /obj/structure/closet/secure_closet/hop,
 /turf/simulated/floor/tiled/dark,
@@ -17209,7 +17209,7 @@
 /area/hallway/primary/aft)
 "twI" = (
 /turf/simulated/wall/prepainted,
-/area/triumph/surfacebase/sauna)
+/area/victory/surfacebase/sauna)
 "txj" = (
 /obj/item/radio/beacon,
 /obj/structure/cable/green{
@@ -17267,7 +17267,7 @@
 "tBo" = (
 /obj/structure/cable/green,
 /turf/simulated/floor/tiled,
-/area/triumph/surfacebase/tram)
+/area/victory/surfacebase/tram)
 "tCc" = (
 /obj/structure/bed/double/padded,
 /obj/item/bedsheet/hopdouble,
@@ -17346,7 +17346,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
-/area/triumph/surfacebase/sauna)
+/area/victory/surfacebase/sauna)
 "tDC" = (
 /obj/machinery/telecomms/relay/preset/telecomms,
 /turf/simulated/floor/airless,
@@ -17395,7 +17395,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
-/area/triumph/surfacebase/tram)
+/area/victory/surfacebase/tram)
 "tFU" = (
 /obj/machinery/porta_turret/crescent{
 	density = 1;
@@ -17438,7 +17438,7 @@
 "tJq" = (
 /obj/machinery/holopad,
 /turf/simulated/floor/tiled/steel_grid,
-/area/triumph/surfacebase/tram)
+/area/victory/surfacebase/tram)
 "tLe" = (
 /obj/machinery/suit_cycler/director,
 /turf/simulated/floor/wood,
@@ -17596,7 +17596,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
-/area/triumph/surfacebase/sauna)
+/area/victory/surfacebase/sauna)
 "tUt" = (
 /obj/machinery/airlock_sensor{
 	dir = 4;
@@ -17767,7 +17767,7 @@
 /obj/machinery/door/airlock/maintenance,
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/plating,
-/area/triumph/station/stairs_four)
+/area/victory/station/stairs_four)
 "ueQ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -17810,7 +17810,7 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/wall/prepainted/command,
-/area/triumph/station/stairs_four)
+/area/victory/station/stairs_four)
 "ufQ" = (
 /obj/structure/table/woodentable,
 /obj/item/paper_bin{
@@ -17907,7 +17907,7 @@
 	},
 /obj/structure/fans/tiny,
 /turf/simulated/floor/tiled,
-/area/triumph/surfacebase/sauna)
+/area/victory/surfacebase/sauna)
 "ulS" = (
 /obj/machinery/vending/snack,
 /turf/simulated/floor/carpet,
@@ -18033,7 +18033,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/triumph/surfacebase/tram)
+/area/victory/surfacebase/tram)
 "usG" = (
 /obj/machinery/shield_diffuser,
 /turf/simulated/floor/airless/ceiling,
@@ -18056,7 +18056,7 @@
 "uty" = (
 /obj/structure/table/woodentable,
 /turf/simulated/floor/tiled,
-/area/triumph/surfacebase/tram)
+/area/victory/surfacebase/tram)
 "uue" = (
 /turf/simulated/floor/wood,
 /area/hydroponics/garden)
@@ -18519,7 +18519,7 @@
 /area/space)
 "uUK" = (
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/triumph/surfacebase/tram)
+/area/victory/surfacebase/tram)
 "uVf" = (
 /obj/machinery/vending/cola,
 /turf/simulated/floor/carpet/bcarpet,
@@ -18771,7 +18771,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
-/area/triumph/surfacebase/sauna)
+/area/victory/surfacebase/sauna)
 "vkr" = (
 /obj/machinery/button/remote/blast_door{
 	dir = 1;
@@ -19259,7 +19259,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals5,
 /obj/machinery/recharge_station,
 /turf/simulated/floor/tiled,
-/area/triumph/surfacebase/sauna)
+/area/victory/surfacebase/sauna)
 "vNu" = (
 /obj/structure/undies_wardrobe,
 /turf/simulated/floor/wood,
@@ -19327,7 +19327,7 @@
 "vRx" = (
 /obj/structure/sign/deck/fourth,
 /turf/simulated/wall/prepainted,
-/area/triumph/station/stairs_four)
+/area/victory/station/stairs_four)
 "vRP" = (
 /obj/machinery/air_alarm/alarms_hidden{
 	dir = 4;
@@ -19419,8 +19419,8 @@
 	id_tag = "courser_docker";
 	pixel_x = 25
 	},
-/obj/effect/shuttle_landmark/triumph/deck4/courser,
-/obj/overmap/entity/visitable/ship/landable/courser/triumph,
+/obj/effect/shuttle_landmark/victory/deck4/courser,
+/obj/overmap/entity/visitable/ship/landable/courser/victory,
 /turf/simulated/floor/plating,
 /area/space)
 "vVT" = (
@@ -19809,7 +19809,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/white,
-/area/triumph/surfacebase/sauna)
+/area/victory/surfacebase/sauna)
 "wxJ" = (
 /obj/effect/floor_decal/chapel{
 	dir = 4
@@ -19829,7 +19829,7 @@
 /area/space)
 "wym" = (
 /turf/simulated/floor/tiled/steel_grid,
-/area/triumph/surfacebase/tram)
+/area/victory/surfacebase/tram)
 "wyP" = (
 /obj/landmark/spawnpoint/job/librarian,
 /obj/machinery/newscaster{
@@ -20161,7 +20161,7 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/dark,
-/area/triumph/station/stairs_four)
+/area/victory/station/stairs_four)
 "wVY" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -20179,12 +20179,12 @@
 /area/space)
 "wWq" = (
 /turf/simulated/wall/prepainted,
-/area/triumph/station/stairs_four)
+/area/victory/station/stairs_four)
 "wWR" = (
 /obj/machinery/fire_alarm/north_mount,
 /obj/machinery/vending/fitness,
 /turf/simulated/floor/tiled,
-/area/triumph/surfacebase/tram)
+/area/victory/surfacebase/tram)
 "wWT" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 4
@@ -20278,7 +20278,7 @@
 /area/space)
 "wZQ" = (
 /turf/simulated/wall/wood/hardwood,
-/area/triumph/surfacebase/sauna)
+/area/victory/surfacebase/sauna)
 "xaF" = (
 /obj/structure/closet/secure_closet/pathfinder,
 /obj/effect/floor_decal/industrial/outline/yellow,
@@ -20359,7 +20359,7 @@
 	icon_state = "1-8"
 	},
 /turf/simulated/floor/tiled/dark,
-/area/triumph/station/stairs_four)
+/area/victory/station/stairs_four)
 "xed" = (
 /obj/structure/table/woodentable,
 /obj/item/storage/box/glasses/meta,
@@ -20471,7 +20471,7 @@
 	name = "Public Heated Pool"
 	},
 /turf/simulated/floor/tiled,
-/area/triumph/surfacebase/sauna)
+/area/victory/surfacebase/sauna)
 "xjI" = (
 /obj/structure/table/woodentable,
 /obj/item/paper{
@@ -20521,7 +20521,7 @@
 /area/bridge/meeting_room)
 "xmk" = (
 /obj/structure/table/standard,
-/obj/item/multitool/triumph_buffered,
+/obj/item/multitool/victory_buffered,
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/brown/border,
 /turf/simulated/floor/tiled,
@@ -20682,7 +20682,7 @@
 	pixel_x = -25
 	},
 /turf/simulated/floor/tiled/freezer,
-/area/triumph/surfacebase/sauna)
+/area/victory/surfacebase/sauna)
 "xuK" = (
 /obj/machinery/door/firedoor/glass{
 	dir = 8
@@ -20710,7 +20710,7 @@
 	},
 /obj/effect/mist,
 /turf/simulated/floor/water/pool,
-/area/triumph/surfacebase/sauna)
+/area/victory/surfacebase/sauna)
 "xvH" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 9
@@ -20947,7 +20947,7 @@
 /obj/structure/table/bench/wooden,
 /obj/effect/mist,
 /turf/simulated/floor/wood,
-/area/triumph/surfacebase/sauna)
+/area/victory/surfacebase/sauna)
 "xIk" = (
 /obj/structure/table/woodentable,
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
@@ -20969,7 +20969,7 @@
 /turf/simulated/floor/tiled,
 /area/space)
 "xJO" = (
-/obj/effect/shuttle_landmark/triumph/deck4/excursion_space,
+/obj/effect/shuttle_landmark/victory/deck4/excursion_space,
 /turf/space,
 /area/space)
 "xJZ" = (
@@ -21163,7 +21163,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/dark,
-/area/triumph/station/stairs_four)
+/area/victory/station/stairs_four)
 "xZS" = (
 /obj/random/tech_supply,
 /obj/random/tech_supply,
@@ -21318,7 +21318,7 @@
 "yhF" = (
 /obj/machinery/door/blast/regular,
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/triumph/surfacebase/tram)
+/area/victory/surfacebase/tram)
 "yiH" = (
 /turf/simulated/wall/prepainted/civilian,
 /area/vacant/vacant_bar)
@@ -21357,7 +21357,7 @@
 	icon_state = "2-8"
 	},
 /turf/simulated/floor/tiled,
-/area/triumph/surfacebase/sauna)
+/area/victory/surfacebase/sauna)
 "ylC" = (
 /obj/structure/railing,
 /obj/structure/flora/ausbushes/brflowers,

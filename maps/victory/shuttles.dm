@@ -2,7 +2,7 @@
 // Triumph custom shuttle implemnetations
 ////////////////////////////////////////
 
-/obj/machinery/computer/shuttle_control/triumph_backup
+/obj/machinery/computer/shuttle_control/victory_backup
 	name = "triumph backup shuttle control console"
 	shuttle_tag = "Triumph Backup"
 	req_one_access = list(ACCESS_COMMAND_BRIDGE,ACCESS_GENERAL_PILOT)
@@ -34,17 +34,17 @@
 
 // EXCURSION SHUTTLE DATA
 
-/datum/shuttle/autodock/overmap/excursion/triumph
+/datum/shuttle/autodock/overmap/excursion/victory
 	name = "Excursion Shuttle"
 	warmup_time = 0
-	shuttle_area = list(/area/shuttle/excursion/triumph)
+	shuttle_area = list(/area/shuttle/excursion/victory)
 	shuttle_area = list(/area/shuttle/excursion/cockpit, /area/shuttle/excursion/general, /area/shuttle/excursion/cargo)
 	current_location = "triumph_excursion_hangar"
 	docking_controller_tag = "expshuttle_docker"
 	landmark_transition = "nav_transit_exploration"
 	move_time = 20
 
-/area/shuttle/excursion/triumph
+/area/shuttle/excursion/victory
 	name = "Excursion Shuttle"
 	icon_state = "shuttle"
 
@@ -55,7 +55,7 @@
 
 // COURSER SHUTTLE DATA
 
-/datum/shuttle/autodock/overmap/courser/triumph
+/datum/shuttle/autodock/overmap/courser/victory
 	name = "Courser Scouting Vessel"
 	warmup_time = 0
 	shuttle_area = list(/area/shuttle/courser/cockpit, /area/shuttle/courser/general, /area/shuttle/courser/battery)
@@ -76,7 +76,7 @@
 
 // Public Civilian Shuttle
 
-/datum/shuttle/autodock/overmap/civvie/triumph
+/datum/shuttle/autodock/overmap/civvie/victory
 	name = "Civilian Transport"
 	warmup_time = 10
 	shuttle_area = list(/area/shuttle/civvie/cockpit, /area/shuttle/civvie/general)
@@ -97,7 +97,7 @@
 
 // Mining Shuttle
 
-/datum/shuttle/autodock/overmap/mining/triumph
+/datum/shuttle/autodock/overmap/mining/victory
 	name = "Mining Shuttle"
 	warmup_time = 10
 	shuttle_area = list(/area/shuttle/mining_ship/general)
@@ -115,7 +115,7 @@
 	shuttle_tag = "Mining Shuttle"
 
 //EMT Shuttle
-/datum/shuttle/autodock/overmap/emt/triumph
+/datum/shuttle/autodock/overmap/emt/victory
 	name = "Dart EMT Shuttle"
 	warmup_time = 5
 	shuttle_area = list(/area/shuttle/emt/general, /area/shuttle/emt/cockpit)
@@ -134,7 +134,7 @@
 
 //////////////////////////////////////////////////////////////
 // Escape shuttle and pods
-/datum/shuttle/autodock/ferry/emergency/escape/triumph
+/datum/shuttle/autodock/ferry/emergency/escape/victory
 	name = "Escape"
 	location = FERRY_LOCATION_OFFSITE
 	shuttle_area = /area/shuttle/escape
@@ -145,7 +145,7 @@
 	move_time = SHUTTLE_TRANSIT_DURATION_RETURN
 
 // Supply shuttle
-/datum/shuttle/autodock/ferry/supply/cargo/triumph
+/datum/shuttle/autodock/ferry/supply/cargo/victory
 	name = "Supply"
 	location = FERRY_LOCATION_OFFSITE
 	shuttle_area = /area/shuttle/supply

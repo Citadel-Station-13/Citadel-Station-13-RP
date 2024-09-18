@@ -1,14 +1,14 @@
-/datum/map/station/triumph
+/datum/map/station/victory
 	id = "triumph"
 	name = "World - Triumph"
 	levels = list(
-		/datum/map_level/triumph/ship/deck_one,
-		/datum/map_level/triumph/ship/deck_two,
-		/datum/map_level/triumph/ship/deck_three,
-		/datum/map_level/triumph/ship/deck_four,
-		/datum/map_level/triumph/misc,
-		/datum/map_level/triumph/transit,
-		/datum/map_level/triumph/flagship,
+		/datum/map_level/victory/ship/deck_one,
+		/datum/map_level/victory/ship/deck_two,
+		/datum/map_level/victory/ship/deck_three,
+		/datum/map_level/victory/ship/deck_four,
+		/datum/map_level/victory/misc,
+		/datum/map_level/victory/transit,
+		/datum/map_level/victory/flagship,
 	)
 	width = 192
 	height = 192
@@ -30,13 +30,13 @@
 	//* LEGACY BELOW *//
 
 	legacy_assert_shuttle_datums = list(
-		/datum/shuttle/autodock/overmap/excursion/triumph,
-		/datum/shuttle/autodock/ferry/emergency/escape/triumph,
-		/datum/shuttle/autodock/ferry/supply/cargo/triumph,
-		/datum/shuttle/autodock/overmap/emt/triumph,
-		/datum/shuttle/autodock/overmap/mining/triumph,
-		/datum/shuttle/autodock/overmap/civvie/triumph,
-		/datum/shuttle/autodock/overmap/courser/triumph,
+		/datum/shuttle/autodock/overmap/excursion/victory,
+		/datum/shuttle/autodock/ferry/emergency/escape/victory,
+		/datum/shuttle/autodock/ferry/supply/cargo/victory,
+		/datum/shuttle/autodock/overmap/emt/victory,
+		/datum/shuttle/autodock/overmap/mining/victory,
+		/datum/shuttle/autodock/overmap/civvie/victory,
+		/datum/shuttle/autodock/overmap/courser/victory,
 		/datum/shuttle/autodock/ferry/belter,
 	)
 
@@ -127,90 +127,90 @@
 #define TRIUMPH_HOLOMAP_MARGIN_Y ((HOLOMAP_ICON_SIZE - (3*TRIUMPH_MAP_SIZE)) / 2)
 // We have a bunch of stuff common to the station z levels
 
-/datum/map_level/triumph/ship
+/datum/map_level/victory/ship
 	flags = LEGACY_LEVEL_STATION|LEGACY_LEVEL_CONTACT|LEGACY_LEVEL_PLAYER|LEGACY_LEVEL_CONSOLES
 	persistence_allowed = TRUE
 
-/datum/map_level/triumph/ship/deck_one
+/datum/map_level/victory/ship/deck_one
 	id = "TriumphDeck1"
 	name = "Triumph - Deck 1"
 	display_id = "triumph-deck-1"
 	display_name = "NSV Triumph - Engineering Deck"
-	absolute_path = "maps/triumph/levels/deck1.dmm"
+	absolute_path = "maps/victory/levels/deck1.dmm"
 	traits = list(
 		ZTRAIT_STATION,
 		ZTRAIT_FACILITY_SAFETY,
 	)
 	base_turf = /turf/space
-	link_above = /datum/map_level/triumph/ship/deck_two
+	link_above = /datum/map_level/victory/ship/deck_two
 	flags = LEGACY_LEVEL_STATION|LEGACY_LEVEL_CONTACT|LEGACY_LEVEL_PLAYER|LEGACY_LEVEL_CONSOLES
 
-/datum/map_level/triumph/ship/deck_two
+/datum/map_level/victory/ship/deck_two
 	id = "TriumphDeck2"
 	name = "Triumph - Deck 2"
 	display_id = "triumph-deck-2"
 	display_name = "NSV Triumph - Service Deck"
-	absolute_path = "maps/triumph/levels/deck2.dmm"
+	absolute_path = "maps/victory/levels/deck2.dmm"
 	traits = list(
 		ZTRAIT_STATION,
 		ZTRAIT_FACILITY_SAFETY,
 		ZTRAIT_LEGACY_BELTER_DOCK,
 	)
 	base_turf = /turf/simulated/open
-	link_above = /datum/map_level/triumph/ship/deck_three
-	link_below = /datum/map_level/triumph/ship/deck_one
+	link_above = /datum/map_level/victory/ship/deck_three
+	link_below = /datum/map_level/victory/ship/deck_one
 	flags = LEGACY_LEVEL_STATION|LEGACY_LEVEL_CONTACT|LEGACY_LEVEL_PLAYER|LEGACY_LEVEL_CONSOLES
 
-/datum/map_level/triumph/ship/deck_three
+/datum/map_level/victory/ship/deck_three
 	id = "TriumphDeck3"
 	name = "Triumph - Deck 3"
 	display_id = "triumph-deck-3"
 	display_name = "NSV Triumph - Operations Deck"
-	absolute_path = "maps/triumph/levels/deck3.dmm"
+	absolute_path = "maps/victory/levels/deck3.dmm"
 	traits = list(
 		ZTRAIT_STATION,
 		ZTRAIT_FACILITY_SAFETY,
 	)
 	base_turf = /turf/simulated/open
-	link_above = /datum/map_level/triumph/ship/deck_four
-	link_below = /datum/map_level/triumph/ship/deck_two
+	link_above = /datum/map_level/victory/ship/deck_four
+	link_below = /datum/map_level/victory/ship/deck_two
 	flags = LEGACY_LEVEL_STATION|LEGACY_LEVEL_CONTACT|LEGACY_LEVEL_PLAYER|LEGACY_LEVEL_CONSOLES
 
-/datum/map_level/triumph/ship/deck_four
+/datum/map_level/victory/ship/deck_four
 	id = "TriumphDeck4"
 	name = "Triumph - Deck 4"
 	display_id = "triumph-deck-4"
 	display_name = "NSV Triumph - Command Deck"
-	absolute_path = "maps/triumph/levels/deck4.dmm"
+	absolute_path = "maps/victory/levels/deck4.dmm"
 	traits = list(
 		ZTRAIT_STATION,
 		ZTRAIT_FACILITY_SAFETY,
 	)
 	base_turf = /turf/simulated/open
-	link_below = /datum/map_level/triumph/ship/deck_three
+	link_below = /datum/map_level/victory/ship/deck_three
 	flags = LEGACY_LEVEL_STATION|LEGACY_LEVEL_CONTACT|LEGACY_LEVEL_PLAYER|LEGACY_LEVEL_CONSOLES
 
-/datum/map_level/triumph/flagship
+/datum/map_level/victory/flagship
 	id = "TriumphFlagship"
 	name = "Triumph - Centcom / Flagship"
 	display_id = "triumph-flagship"
 	display_name = "NSV Triumph - Flagship Offboarding"
-	absolute_path = "maps/triumph/levels/flagship.dmm"
+	absolute_path = "maps/victory/levels/flagship.dmm"
 	flags = LEGACY_LEVEL_ADMIN|LEGACY_LEVEL_CONTACT
 
-/datum/map_level/triumph/transit
+/datum/map_level/victory/transit
 	id = "TriumphTransit"
 	name = "Triumph - Ships / Static Transit"
-	absolute_path = "maps/triumph/levels/transit.dmm"
+	absolute_path = "maps/victory/levels/transit.dmm"
 	traits = list(
 		ZTRAIT_LEGACY_BELTER_TRANSIT,
 	)
 	flags = LEGACY_LEVEL_ADMIN
 
-/datum/map_level/triumph/misc
+/datum/map_level/victory/misc
 	id = "TriumphMisc"
 	name = "Triumph - Misc"
-	absolute_path = "maps/triumph/levels/misc.dmm"
+	absolute_path = "maps/victory/levels/misc.dmm"
 	flags = LEGACY_LEVEL_ADMIN
 
 #undef TRIUMPH_MAP_SIZE

@@ -98,7 +98,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled,
-/area/triumph/surfacebase/mining_main/refinery)
+/area/victory/surfacebase/mining_main/refinery)
 "ahK" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -296,7 +296,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
-/area/triumph/surfacebase/mining_main/storage)
+/area/victory/surfacebase/mining_main/storage)
 "atx" = (
 /obj/effect/floor_decal/techfloor,
 /obj/machinery/computer/timeclock/premade/south,
@@ -402,7 +402,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
-/area/triumph/surfacebase/mining_main/storage)
+/area/victory/surfacebase/mining_main/storage)
 "axe" = (
 /obj/machinery/door/firedoor,
 /obj/structure/cable/green,
@@ -572,7 +572,7 @@
 	req_access = list()
 	},
 /turf/simulated/floor/tiled,
-/area/triumph/surfacebase/mining_main/refinery)
+/area/victory/surfacebase/mining_main/refinery)
 "aEf" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
@@ -693,7 +693,7 @@
 	icon_state = "2-8"
 	},
 /turf/simulated/floor/tiled,
-/area/triumph/surfacebase/mining_main/storage)
+/area/victory/surfacebase/mining_main/storage)
 "aFl" = (
 /obj/effect/floor_decal/steeldecal/steel_decals5{
 	dir = 4
@@ -791,7 +791,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled,
-/area/triumph/surfacebase/mining_main/storage)
+/area/victory/surfacebase/mining_main/storage)
 "aJV" = (
 /turf/simulated/wall/prepainted,
 /area/crew_quarters/sleep/Dorm_3)
@@ -907,7 +907,7 @@
 	},
 /obj/machinery/camera/network/cargo,
 /turf/simulated/floor/tiled,
-/area/triumph/surfacebase/mining_main/uxstorage)
+/area/victory/surfacebase/mining_main/uxstorage)
 "aOk" = (
 /obj/structure/toilet{
 	pixel_y = 10
@@ -947,7 +947,7 @@
 	icon_state = "0-4"
 	},
 /turf/simulated/floor/tiled,
-/area/triumph/surfacebase/mining_main/storage)
+/area/victory/surfacebase/mining_main/storage)
 "aRE" = (
 /obj/structure/undies_wardrobe,
 /turf/simulated/floor/wood,
@@ -1177,7 +1177,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled,
-/area/triumph/surfacebase/mining_main/storage)
+/area/victory/surfacebase/mining_main/storage)
 "aYd" = (
 /obj/structure/closet/hydrant{
 	pixel_x = 32
@@ -1215,7 +1215,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/wood,
-/area/triumph/surfacebase/bar_backroom)
+/area/victory/surfacebase/bar_backroom)
 "bbg" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/structure/closet/crate/trashcart,
@@ -1444,7 +1444,7 @@
 "bmz" = (
 /obj/machinery/mineral/unloading_machine,
 /turf/simulated/floor/tiled/steel_grid,
-/area/triumph/surfacebase/mining_main/refinery)
+/area/victory/surfacebase/mining_main/refinery)
 "bmO" = (
 /obj/structure/table/marble,
 /obj/effect/floor_decal/corner_oldtile/white/diagonal,
@@ -1905,7 +1905,7 @@
 "bDI" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
 /turf/simulated/floor/tiled,
-/area/triumph/surfacebase/mining_main/refinery)
+/area/victory/surfacebase/mining_main/refinery)
 "bED" = (
 /obj/effect/floor_decal/corner/green/full{
 	dir = 1
@@ -2060,7 +2060,7 @@
 	dir = 9
 	},
 /turf/simulated/floor/tiled,
-/area/triumph/surfacebase/mining_main/storage)
+/area/victory/surfacebase/mining_main/storage)
 "bOa" = (
 /obj/item/storage/secure/safe{
 	pixel_y = -26
@@ -2269,7 +2269,7 @@
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
 /obj/effect/paint_stripe/beastybrown,
 /turf/simulated/floor/plating,
-/area/triumph/surfacebase/mining_main/refinery)
+/area/victory/surfacebase/mining_main/refinery)
 "bVK" = (
 /obj/structure/bed/chair{
 	dir = 4
@@ -2681,7 +2681,7 @@
 "csX" = (
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /turf/simulated/floor/tiled,
-/area/triumph/surfacebase/mining_main/refinery)
+/area/victory/surfacebase/mining_main/refinery)
 "cus" = (
 /obj/structure/cable/green{
 	icon_state = "1-2"
@@ -2814,7 +2814,7 @@
 /area/space)
 "cAP" = (
 /turf/space/basic,
-/area/triumph/surfacebase/mining_main/uxstorage)
+/area/victory/surfacebase/mining_main/uxstorage)
 "cBq" = (
 /obj/machinery/air_alarm{
 	pixel_y = 22
@@ -3013,7 +3013,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled,
-/area/triumph/surfacebase/mining_main/refinery)
+/area/victory/surfacebase/mining_main/refinery)
 "cMH" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 9
@@ -3040,7 +3040,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
-/area/triumph/surfacebase/mining_main/storage)
+/area/victory/surfacebase/mining_main/storage)
 "cNY" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
@@ -3055,7 +3055,7 @@
 	dir = 10
 	},
 /turf/simulated/floor/tiled,
-/area/triumph/surfacebase/mining_main/storage)
+/area/victory/surfacebase/mining_main/storage)
 "cOq" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 1
@@ -3166,7 +3166,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled,
-/area/triumph/surfacebase/mining_main/storage)
+/area/victory/surfacebase/mining_main/storage)
 "cSy" = (
 /obj/structure/closet/wardrobe/green,
 /turf/simulated/floor/wood,
@@ -3429,7 +3429,7 @@
 	},
 /obj/map_helper/access_helper/airlock/station/external_airlock,
 /turf/simulated/floor/tiled,
-/area/triumph/surfacebase/mining_main/refinery)
+/area/victory/surfacebase/mining_main/refinery)
 "dcy" = (
 /obj/machinery/computer/cryopod/robot{
 	pixel_x = -31;
@@ -3581,7 +3581,7 @@
 	id_tag = "mining_fore_pump"
 	},
 /turf/simulated/floor/tiled,
-/area/triumph/surfacebase/mining_main/eva)
+/area/victory/surfacebase/mining_main/eva)
 "dkF" = (
 /obj/structure/sign/directions/evac{
 	dir = 8
@@ -3836,7 +3836,7 @@
 /area/crew_quarters/sleep/cryo)
 "dwp" = (
 /turf/space/basic,
-/area/triumph/surfacebase/mining_main/refinery)
+/area/victory/surfacebase/mining_main/refinery)
 "dwC" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 6
@@ -3945,7 +3945,7 @@
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
 /obj/effect/paint_stripe/beastybrown,
 /turf/simulated/floor/plating,
-/area/triumph/surfacebase/mining_main/storage)
+/area/victory/surfacebase/mining_main/storage)
 "dBz" = (
 /turf/simulated/wall,
 /area/space)
@@ -4064,7 +4064,7 @@
 	},
 /obj/map_helper/access_helper/airlock/station/supply/mining,
 /turf/simulated/floor/tiled,
-/area/triumph/surfacebase/mining_main/storage)
+/area/victory/surfacebase/mining_main/storage)
 "dFK" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -4480,7 +4480,7 @@
 	id = "mining_interior"
 	},
 /turf/simulated/floor/tiled/steel_grid,
-/area/triumph/surfacebase/mining_main/refinery)
+/area/victory/surfacebase/mining_main/refinery)
 "dZy" = (
 /obj/effect/floor_decal/steeldecal/steel_decals_central6{
 	dir = 4
@@ -4523,7 +4523,7 @@
 	},
 /obj/machinery/camera/network/cargo,
 /turf/simulated/floor/tiled/steel_grid,
-/area/triumph/surfacebase/mining_main/refinery)
+/area/victory/surfacebase/mining_main/refinery)
 "ebc" = (
 /obj/machinery/light/small{
 	dir = 8
@@ -5038,7 +5038,7 @@
 	name = "Brewster"
 	},
 /turf/simulated/floor/wood,
-/area/triumph/surfacebase/bar_backroom)
+/area/victory/surfacebase/bar_backroom)
 "eAb" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -5486,7 +5486,7 @@
 	icon_state = "1-8"
 	},
 /turf/simulated/floor/tiled,
-/area/triumph/surfacebase/mining_main/storage)
+/area/victory/surfacebase/mining_main/storage)
 "eVw" = (
 /obj/structure/window/reinforced/tinted{
 	dir = 1
@@ -5560,7 +5560,7 @@
 /obj/machinery/mineral/input,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/tiled,
-/area/triumph/surfacebase/mining_main/refinery)
+/area/victory/surfacebase/mining_main/refinery)
 "eXV" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
 /obj/effect/paint_stripe/beastybrown,
@@ -6419,7 +6419,7 @@
 	pixel_y = 30
 	},
 /turf/simulated/floor/wood,
-/area/triumph/surfacebase/bar_backroom)
+/area/victory/surfacebase/bar_backroom)
 "fEK" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -6683,7 +6683,7 @@
 	id = "mining_interior"
 	},
 /turf/simulated/floor/tiled/steel_grid,
-/area/triumph/surfacebase/mining_main/refinery)
+/area/victory/surfacebase/mining_main/refinery)
 "fON" = (
 /obj/machinery/door/blast/regular{
 	dir = 4;
@@ -6850,7 +6850,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
-/area/triumph/surfacebase/mining_main/storage)
+/area/victory/surfacebase/mining_main/storage)
 "fUp" = (
 /obj/machinery/light,
 /obj/effect/floor_decal/corner/black/full{
@@ -7029,7 +7029,7 @@
 	id = "mining_interior"
 	},
 /turf/simulated/floor/tiled/steel_grid,
-/area/triumph/surfacebase/mining_main/refinery)
+/area/victory/surfacebase/mining_main/refinery)
 "gbV" = (
 /obj/machinery/light/small,
 /turf/simulated/floor/tiled/white,
@@ -7553,7 +7553,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
-/area/triumph/surfacebase/mining_main/refinery)
+/area/victory/surfacebase/mining_main/refinery)
 "gEh" = (
 /turf/space/basic,
 /area/shuttle/belter)
@@ -7602,7 +7602,7 @@
 	},
 /obj/spawner/window/low_wall/reinforced/full,
 /turf/simulated/floor/plating,
-/area/triumph/surfacebase/mining_main/uxstorage)
+/area/victory/surfacebase/mining_main/uxstorage)
 "gHW" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 1
@@ -7700,7 +7700,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
-/area/triumph/surfacebase/mining_main/storage)
+/area/victory/surfacebase/mining_main/storage)
 "gPA" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 4
@@ -7754,7 +7754,7 @@
 /area/space)
 "gRy" = (
 /turf/simulated/wall/r_wall/prepainted/cargo,
-/area/triumph/surfacebase/mining_main/eva)
+/area/victory/surfacebase/mining_main/eva)
 "gRz" = (
 /obj/machinery/door/firedoor,
 /obj/structure/cable/green{
@@ -7785,7 +7785,7 @@
 /area/crew_quarters/sleep/cryo)
 "gST" = (
 /turf/simulated/floor/wood,
-/area/triumph/surfacebase/bar_backroom)
+/area/victory/surfacebase/bar_backroom)
 "gTg" = (
 /obj/machinery/air_alarm{
 	dir = 4;
@@ -7869,7 +7869,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply,
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
 /turf/simulated/floor/tiled,
-/area/triumph/surfacebase/mining_main/storage)
+/area/victory/surfacebase/mining_main/storage)
 "gWI" = (
 /obj/structure/table/steel,
 /obj/item/paper_bin{
@@ -7944,7 +7944,7 @@
 	},
 /obj/map_helper/access_helper/airlock/station/external_airlock,
 /turf/simulated/floor/tiled,
-/area/triumph/surfacebase/mining_main/refinery)
+/area/victory/surfacebase/mining_main/refinery)
 "gYF" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 9
@@ -8300,7 +8300,7 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled,
-/area/triumph/surfacebase/mining_main/storage)
+/area/victory/surfacebase/mining_main/storage)
 "hmg" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -8584,7 +8584,7 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled,
-/area/triumph/surfacebase/mining_main/refinery)
+/area/victory/surfacebase/mining_main/refinery)
 "hxl" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -8637,7 +8637,7 @@
 /obj/item/gun/energy/kinetic_accelerator,
 /obj/item/gun/energy/kinetic_accelerator,
 /turf/simulated/floor/tiled,
-/area/triumph/surfacebase/mining_main/storage)
+/area/victory/surfacebase/mining_main/storage)
 "hzo" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -8701,7 +8701,7 @@
 /area/maintenance/dormitory)
 "hCZ" = (
 /turf/simulated/wall/prepainted/cargo,
-/area/triumph/surfacebase/mining_main/refinery)
+/area/victory/surfacebase/mining_main/refinery)
 "hEf" = (
 /obj/machinery/seed_storage/garden,
 /obj/machinery/camera/network/civilian,
@@ -9397,7 +9397,7 @@
 /area/space)
 "irJ" = (
 /turf/simulated/wall/prepainted/cargo,
-/area/triumph/surfacebase/mining_main/uxstorage)
+/area/victory/surfacebase/mining_main/uxstorage)
 "irZ" = (
 /obj/effect/paint_stripe/palebottlegreen,
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
@@ -9766,7 +9766,7 @@
 	id = "mining_interior"
 	},
 /turf/simulated/floor/tiled/steel_grid,
-/area/triumph/surfacebase/mining_main/refinery)
+/area/victory/surfacebase/mining_main/refinery)
 "iPR" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
@@ -9776,7 +9776,7 @@
 	},
 /obj/machinery/suit_storage_unit/mining,
 /turf/simulated/floor/tiled,
-/area/triumph/surfacebase/mining_main/storage)
+/area/victory/surfacebase/mining_main/storage)
 "iQw" = (
 /obj/item/stool/padded,
 /obj/structure/cable/green{
@@ -10109,7 +10109,7 @@
 	dir = 9
 	},
 /turf/simulated/floor/tiled,
-/area/triumph/surfacebase/mining_main/storage)
+/area/victory/surfacebase/mining_main/storage)
 "jdy" = (
 /obj/structure/cable/green{
 	icon_state = "0-4"
@@ -10244,7 +10244,7 @@
 /turf/simulated/floor/plating,
 /area/quartermaster/warehouse)
 "jjU" = (
-/obj/effect/shuttle_landmark/triumph/deck2/starboard,
+/obj/effect/shuttle_landmark/victory/deck2/starboard,
 /turf/space,
 /area/space)
 "jjW" = (
@@ -10337,7 +10337,7 @@
 	anchored = 1
 	},
 /turf/simulated/floor/plating,
-/area/triumph/surfacebase/bar_backroom)
+/area/victory/surfacebase/bar_backroom)
 "joo" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -10375,7 +10375,7 @@
 /obj/item/suit_cooling_unit,
 /obj/item/duct_tape_roll,
 /turf/simulated/floor/tiled,
-/area/triumph/surfacebase/mining_main/storage)
+/area/victory/surfacebase/mining_main/storage)
 "jqp" = (
 /obj/machinery/light/small{
 	dir = 4
@@ -10862,7 +10862,7 @@
 	},
 /obj/map_helper/access_helper/airlock/station/supply/mining,
 /turf/simulated/floor/tiled,
-/area/triumph/surfacebase/mining_main/storage)
+/area/victory/surfacebase/mining_main/storage)
 "jPT" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -11374,7 +11374,7 @@
 	},
 /obj/machinery/portable_atmospherics/canister/air/airlock,
 /turf/simulated/floor/tiled/monotile,
-/area/triumph/surfacebase/mining_main/eva)
+/area/victory/surfacebase/mining_main/eva)
 "kgv" = (
 /obj/effect/floor_decal/techfloor,
 /obj/machinery/light,
@@ -11396,7 +11396,7 @@
 "kgZ" = (
 /obj/machinery/mineral/processing_unit,
 /turf/simulated/floor/tiled/steel_grid,
-/area/triumph/surfacebase/mining_main/refinery)
+/area/victory/surfacebase/mining_main/refinery)
 "khy" = (
 /obj/structure/table/woodentable,
 /obj/item/flashlight/lamp/green,
@@ -11633,7 +11633,7 @@
 	dir = 6
 	},
 /turf/simulated/floor/tiled,
-/area/triumph/surfacebase/mining_main/storage)
+/area/victory/surfacebase/mining_main/storage)
 "kuN" = (
 /obj/effect/floor_decal/industrial/danger{
 	dir = 9
@@ -11651,7 +11651,7 @@
 	},
 /obj/landmark/spawnpoint/job/shaft_miner,
 /turf/simulated/floor/tiled,
-/area/triumph/surfacebase/mining_main/storage)
+/area/victory/surfacebase/mining_main/storage)
 "kvl" = (
 /obj/machinery/shield_diffuser,
 /turf/simulated/floor/airless/ceiling,
@@ -11879,7 +11879,7 @@
 "kCG" = (
 /obj/machinery/camera/network/cargo,
 /turf/simulated/floor/tiled,
-/area/triumph/surfacebase/mining_main/refinery)
+/area/victory/surfacebase/mining_main/refinery)
 "kCQ" = (
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -11922,7 +11922,7 @@
 	},
 /obj/map_helper/access_helper/airlock/station/supply/cargo_bay,
 /turf/simulated/floor/tiled,
-/area/triumph/surfacebase/mining_main/eva)
+/area/victory/surfacebase/mining_main/eva)
 "kEv" = (
 /obj/structure/bookcase/legal/combo,
 /obj/item/book/manual/security_space_law,
@@ -12096,7 +12096,7 @@
 	},
 /obj/map_helper/access_helper/airlock/station/supply/cargo_bay,
 /turf/simulated/floor/tiled,
-/area/triumph/surfacebase/mining_main/storage)
+/area/victory/surfacebase/mining_main/storage)
 "kKj" = (
 /obj/structure/table/reinforced,
 /obj/item/cell/high{
@@ -12120,7 +12120,7 @@
 	obj_persist_static_id = "sheet-silo-mining"
 	},
 /turf/simulated/floor/tiled,
-/area/triumph/surfacebase/mining_main/refinery)
+/area/victory/surfacebase/mining_main/refinery)
 "kKR" = (
 /obj/machinery/computer/arcade/battle,
 /turf/simulated/floor/carpet/bcarpet,
@@ -12407,7 +12407,7 @@
 	},
 /obj/machinery/suit_storage_unit/mining,
 /turf/simulated/floor/tiled,
-/area/triumph/surfacebase/mining_main/storage)
+/area/victory/surfacebase/mining_main/storage)
 "lcG" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
@@ -13340,7 +13340,7 @@
 	pixel_y = 6
 	},
 /turf/simulated/floor/tiled,
-/area/triumph/surfacebase/mining_main/refinery)
+/area/victory/surfacebase/mining_main/refinery)
 "lIK" = (
 /obj/structure/extinguisher_cabinet{
 	pixel_y = -31
@@ -13679,7 +13679,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled,
-/area/triumph/surfacebase/mining_main/storage)
+/area/victory/surfacebase/mining_main/storage)
 "mbi" = (
 /obj/structure/table/marble,
 /obj/machinery/door/blast/shutters{
@@ -13925,7 +13925,7 @@
 /obj/machinery/camera/network/cargo,
 /obj/machinery/suit_storage_unit/mining,
 /turf/simulated/floor/tiled,
-/area/triumph/surfacebase/mining_main/storage)
+/area/victory/surfacebase/mining_main/storage)
 "mnT" = (
 /obj/machinery/power/apc/east_mount,
 /obj/structure/cable/green{
@@ -14002,7 +14002,7 @@
 /turf/simulated/floor/tiled,
 /area/quartermaster/warehouse)
 "mql" = (
-/obj/effect/shuttle_landmark/triumph/deck2/port,
+/obj/effect/shuttle_landmark/victory/deck2/port,
 /turf/space,
 /area/space)
 "mqs" = (
@@ -14021,7 +14021,7 @@
 /area/hallway/primary/port)
 "mqS" = (
 /turf/simulated/wall/r_wall/prepainted/cargo,
-/area/triumph/surfacebase/mining_main/refinery)
+/area/victory/surfacebase/mining_main/refinery)
 "mrE" = (
 /obj/structure/closet/l3closet/janitor,
 /turf/simulated/floor/tiled/dark,
@@ -14075,7 +14075,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/monotile,
-/area/triumph/surfacebase/mining_main/eva)
+/area/victory/surfacebase/mining_main/eva)
 "muD" = (
 /obj/effect/floor_decal/techfloor,
 /obj/machinery/door/firedoor{
@@ -14690,7 +14690,7 @@
 /area/crew_quarters/bar)
 "mWM" = (
 /turf/space/basic,
-/area/triumph/surfacebase/tram)
+/area/victory/surfacebase/tram)
 "mXS" = (
 /obj/machinery/door/airlock/glass,
 /obj/machinery/door/firedoor{
@@ -14837,7 +14837,7 @@
 	pixel_y = 14
 	},
 /turf/simulated/floor/tiled,
-/area/triumph/surfacebase/mining_main/refinery)
+/area/victory/surfacebase/mining_main/refinery)
 "nfV" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -14854,7 +14854,7 @@
 	},
 /obj/map_helper/access_helper/airlock/station/service/bar,
 /turf/simulated/floor/wood,
-/area/triumph/surfacebase/bar_backroom)
+/area/victory/surfacebase/bar_backroom)
 "ngv" = (
 /obj/machinery/door/firedoor{
 	dir = 1
@@ -14866,7 +14866,7 @@
 /area/space)
 "ngz" = (
 /turf/simulated/floor/tiled,
-/area/triumph/surfacebase/mining_main/storage)
+/area/victory/surfacebase/mining_main/storage)
 "ngI" = (
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -15020,7 +15020,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled,
-/area/triumph/surfacebase/mining_main/uxstorage)
+/area/victory/surfacebase/mining_main/uxstorage)
 "nol" = (
 /obj/item/radio/intercom{
 	dir = 8;
@@ -15179,7 +15179,7 @@
 	pixel_y = -31
 	},
 /turf/simulated/floor/tiled,
-/area/triumph/surfacebase/mining_main/eva)
+/area/victory/surfacebase/mining_main/eva)
 "ntN" = (
 /obj/machinery/fire_alarm/south_mount{
 	pixel_y = -24
@@ -15506,7 +15506,7 @@
 	dir = 6
 	},
 /turf/simulated/floor/tiled,
-/area/triumph/surfacebase/mining_main/uxstorage)
+/area/victory/surfacebase/mining_main/uxstorage)
 "nLo" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	frequency = 1379;
@@ -15623,7 +15623,7 @@
 	id_tag = "mining_fore_pump"
 	},
 /turf/simulated/floor/tiled,
-/area/triumph/surfacebase/mining_main/eva)
+/area/victory/surfacebase/mining_main/eva)
 "nQt" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -15648,7 +15648,7 @@
 	pixel_y = -37
 	},
 /turf/simulated/floor/tiled,
-/area/triumph/surfacebase/mining_main/storage)
+/area/victory/surfacebase/mining_main/storage)
 "nSs" = (
 /obj/effect/floor_decal/corner/red{
 	dir = 6
@@ -15830,7 +15830,7 @@
 /area/space)
 "nWr" = (
 /turf/simulated/wall/prepainted/cargo,
-/area/triumph/surfacebase/mining_main/storage)
+/area/victory/surfacebase/mining_main/storage)
 "nWy" = (
 /obj/effect/floor_decal/steeldecal/steel_decals5{
 	dir = 1
@@ -16185,7 +16185,7 @@
 	anchored = 1
 	},
 /turf/simulated/floor/wood,
-/area/triumph/surfacebase/bar_backroom)
+/area/victory/surfacebase/bar_backroom)
 "olj" = (
 /obj/machinery/recharger/wallcharger{
 	pixel_x = 4;
@@ -16324,7 +16324,7 @@
 /area/space)
 "osR" = (
 /turf/simulated/wall/prepainted/civilian,
-/area/triumph/surfacebase/bar_backroom)
+/area/victory/surfacebase/bar_backroom)
 "otq" = (
 /obj/structure/noticeboard{
 	pixel_y = 32
@@ -16814,8 +16814,8 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/obj/effect/shuttle_landmark/triumph/deck2/mining,
-/obj/overmap/entity/visitable/ship/landable/mining/triumph,
+/obj/effect/shuttle_landmark/victory/deck2/mining,
+/obj/overmap/entity/visitable/ship/landable/mining/victory,
 /turf/simulated/floor/tiled/steel,
 /area/space)
 "oSN" = (
@@ -16964,7 +16964,7 @@
 	},
 /obj/map_helper/access_helper/airlock/station/supply/cargo_bay,
 /turf/simulated/floor/tiled,
-/area/triumph/surfacebase/mining_main/storage)
+/area/victory/surfacebase/mining_main/storage)
 "paa" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
 /obj/structure/curtain/open/bed{
@@ -17024,7 +17024,7 @@
 	pixel_y = -32
 	},
 /turf/simulated/floor/tiled,
-/area/triumph/surfacebase/mining_main/storage)
+/area/victory/surfacebase/mining_main/storage)
 "pbY" = (
 /obj/effect/floor_decal/industrial/danger{
 	dir = 6
@@ -17225,7 +17225,7 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled,
-/area/triumph/surfacebase/mining_main/storage)
+/area/victory/surfacebase/mining_main/storage)
 "plg" = (
 /turf/space/basic,
 /area/crew_quarters/heads/hos)
@@ -17430,7 +17430,7 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled,
-/area/triumph/surfacebase/mining_main/refinery)
+/area/victory/surfacebase/mining_main/refinery)
 "pAI" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
 /turf/simulated/floor/tiled/dark,
@@ -18454,7 +18454,7 @@
 	},
 /obj/structure/closet/crate,
 /turf/simulated/floor/tiled,
-/area/triumph/surfacebase/mining_main/refinery)
+/area/victory/surfacebase/mining_main/refinery)
 "qwv" = (
 /obj/machinery/door/firedoor/glass{
 	dir = 8
@@ -18501,7 +18501,7 @@
 	pixel_y = 30
 	},
 /turf/simulated/floor/tiled,
-/area/triumph/surfacebase/mining_main/refinery)
+/area/victory/surfacebase/mining_main/refinery)
 "qzr" = (
 /obj/structure/closet/secure_closet/quartermaster,
 /obj/item/clothing/accessory/poncho/roles/cloak/qm,
@@ -18732,7 +18732,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
-/area/triumph/surfacebase/mining_main/refinery)
+/area/victory/surfacebase/mining_main/refinery)
 "qKC" = (
 /obj/structure/table/woodentable,
 /obj/machinery/recharger,
@@ -18849,13 +18849,13 @@
 	id = "mining_interior"
 	},
 /turf/simulated/floor/tiled/steel_grid,
-/area/triumph/surfacebase/mining_main/refinery)
+/area/victory/surfacebase/mining_main/refinery)
 "qPf" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 9
 	},
 /turf/simulated/floor/tiled,
-/area/triumph/surfacebase/mining_main/refinery)
+/area/victory/surfacebase/mining_main/refinery)
 "qQj" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 1
@@ -19460,7 +19460,7 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/wood,
-/area/triumph/surfacebase/bar_backroom)
+/area/victory/surfacebase/bar_backroom)
 "rnB" = (
 /obj/machinery/air_alarm{
 	dir = 4;
@@ -20192,7 +20192,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
-/area/triumph/surfacebase/mining_main/storage)
+/area/victory/surfacebase/mining_main/storage)
 "rRV" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
@@ -20235,7 +20235,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
-/area/triumph/surfacebase/mining_main/refinery)
+/area/victory/surfacebase/mining_main/refinery)
 "rUe" = (
 /obj/machinery/fitness/heavy/lifter,
 /obj/structure/window/reinforced/tinted{
@@ -20529,7 +20529,7 @@
 	},
 /obj/fiftyspawner/steel,
 /turf/simulated/floor/wood,
-/area/triumph/surfacebase/bar_backroom)
+/area/victory/surfacebase/bar_backroom)
 "sfB" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -20839,7 +20839,7 @@
 	id = "mining_interior"
 	},
 /turf/simulated/floor/tiled/steel_grid,
-/area/triumph/surfacebase/mining_main/refinery)
+/area/victory/surfacebase/mining_main/refinery)
 "sya" = (
 /obj/structure/closet/wardrobe/white,
 /turf/simulated/floor/wood,
@@ -20955,7 +20955,7 @@
 	},
 /obj/machinery/suit_storage_unit/mining,
 /turf/simulated/floor/tiled,
-/area/triumph/surfacebase/mining_main/storage)
+/area/victory/surfacebase/mining_main/storage)
 "sDt" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 10
@@ -21203,7 +21203,7 @@
 	},
 /obj/spawner/window/low_wall/reinforced/full,
 /turf/simulated/floor/plating,
-/area/triumph/surfacebase/mining_main/refinery)
+/area/victory/surfacebase/mining_main/refinery)
 "sKe" = (
 /obj/structure/undies_wardrobe,
 /turf/simulated/floor/tiled/white,
@@ -21259,7 +21259,7 @@
 	dir = 10
 	},
 /turf/simulated/floor/tiled,
-/area/triumph/surfacebase/mining_main/refinery)
+/area/victory/surfacebase/mining_main/refinery)
 "sNd" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
@@ -21744,7 +21744,7 @@
 	},
 /obj/map_helper/access_helper/airlock/station/supply/mining,
 /turf/simulated/floor/tiled,
-/area/triumph/surfacebase/mining_main/storage)
+/area/victory/surfacebase/mining_main/storage)
 "tiK" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -21857,7 +21857,7 @@
 /obj/item/paper_bin,
 /obj/item/pen,
 /turf/simulated/floor/wood,
-/area/triumph/surfacebase/bar_backroom)
+/area/victory/surfacebase/bar_backroom)
 "tnU" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -21978,7 +21978,7 @@
 	icon_state = "0-2"
 	},
 /turf/simulated/floor/tiled,
-/area/triumph/surfacebase/mining_main/storage)
+/area/victory/surfacebase/mining_main/storage)
 "tuS" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 5
@@ -22138,7 +22138,7 @@
 	},
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/tiled,
-/area/triumph/surfacebase/mining_main/refinery)
+/area/victory/surfacebase/mining_main/refinery)
 "tEg" = (
 /turf/simulated/wall,
 /area/crew_quarters/showers)
@@ -22168,7 +22168,7 @@
 	},
 /obj/structure/reagent_dispensers/beerkeg,
 /turf/simulated/floor/wood,
-/area/triumph/surfacebase/bar_backroom)
+/area/victory/surfacebase/bar_backroom)
 "tGf" = (
 /obj/machinery/door/blast/shutters{
 	dir = 8;
@@ -22425,7 +22425,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/bar)
 "tRn" = (
-/obj/effect/shuttle_landmark/triumph/deck2/trade,
+/obj/effect/shuttle_landmark/victory/deck2/trade,
 /turf/space,
 /area/space)
 "tRU" = (
@@ -22478,7 +22478,7 @@
 	},
 /obj/item/gun/ballistic/shotgun/doublebarrel,
 /turf/simulated/floor/wood,
-/area/triumph/surfacebase/bar_backroom)
+/area/victory/surfacebase/bar_backroom)
 "tSw" = (
 /obj/structure/cable/green{
 	icon_state = "1-2"
@@ -22545,7 +22545,7 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled,
-/area/triumph/surfacebase/mining_main/storage)
+/area/victory/surfacebase/mining_main/storage)
 "tWk" = (
 /obj/machinery/camera/network/security{
 	dir = 1
@@ -22935,7 +22935,7 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/wood,
-/area/triumph/surfacebase/bar_backroom)
+/area/victory/surfacebase/bar_backroom)
 "uqm" = (
 /obj/machinery/cryopod{
 	dir = 2
@@ -23213,7 +23213,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
-/area/triumph/surfacebase/mining_main/storage)
+/area/victory/surfacebase/mining_main/storage)
 "uHZ" = (
 /obj/structure/bed/chair,
 /turf/simulated/floor/tiled/monotile,
@@ -24003,7 +24003,7 @@
 	},
 /obj/map_helper/access_helper/airlock/station/service/bar,
 /turf/simulated/floor/plating,
-/area/triumph/surfacebase/bar_backroom)
+/area/victory/surfacebase/bar_backroom)
 "vtg" = (
 /obj/structure/closet{
 	name = "Evidence Closet"
@@ -24177,7 +24177,7 @@
 	light_range = 12
 	},
 /turf/simulated/floor/tiled,
-/area/triumph/surfacebase/mining_main/refinery)
+/area/victory/surfacebase/mining_main/refinery)
 "vyT" = (
 /obj/machinery/mineral/output,
 /obj/structure/window/reinforced,
@@ -24186,7 +24186,7 @@
 	id = "mining_interior"
 	},
 /turf/simulated/floor/tiled/steel_grid,
-/area/triumph/surfacebase/mining_main/refinery)
+/area/victory/surfacebase/mining_main/refinery)
 "vzq" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/item/clothing/ears/earmuffs,
@@ -24200,7 +24200,7 @@
 /area/security/range)
 "vAu" = (
 /turf/simulated/wall/r_wall/prepainted/cargo,
-/area/triumph/surfacebase/mining_main/uxstorage)
+/area/victory/surfacebase/mining_main/uxstorage)
 "vBf" = (
 /obj/machinery/fire_alarm/south_mount{
 	pixel_y = -24
@@ -24269,7 +24269,7 @@
 	anchored = 1
 	},
 /turf/simulated/floor/tiled,
-/area/triumph/surfacebase/mining_main/refinery)
+/area/victory/surfacebase/mining_main/refinery)
 "vEb" = (
 /obj/structure/bed/chair{
 	dir = 4
@@ -24333,7 +24333,7 @@
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /obj/landmark/spawnpoint/job/bartender,
 /turf/simulated/floor/wood,
-/area/triumph/surfacebase/bar_backroom)
+/area/victory/surfacebase/bar_backroom)
 "vIT" = (
 /obj/machinery/air_alarm{
 	pixel_y = 22
@@ -24641,7 +24641,7 @@
 /obj/structure/table/bench/padded,
 /obj/landmark/spawnpoint/job/shaft_miner,
 /turf/simulated/floor/tiled,
-/area/triumph/surfacebase/mining_main/storage)
+/area/victory/surfacebase/mining_main/storage)
 "wbI" = (
 /obj/machinery/door/firedoor/glass{
 	dir = 8
@@ -24735,7 +24735,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/monotile,
-/area/triumph/surfacebase/mining_main/eva)
+/area/victory/surfacebase/mining_main/eva)
 "wgv" = (
 /obj/random/trash_pile,
 /obj/machinery/light/small,
@@ -24842,7 +24842,7 @@
 /area/prison/cell_block)
 "wmr" = (
 /turf/simulated/wall/r_wall/prepainted/security,
-/area/triumph/surfacebase/tram)
+/area/victory/surfacebase/tram)
 "wmE" = (
 /obj/machinery/light_switch{
 	pixel_x = 25
@@ -26263,7 +26263,7 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/wood,
-/area/triumph/surfacebase/bar_backroom)
+/area/victory/surfacebase/bar_backroom)
 "xMQ" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -26344,7 +26344,7 @@
 /area/space)
 "xOq" = (
 /turf/simulated/wall/r_wall/prepainted/civilian,
-/area/triumph/surfacebase/bar_backroom)
+/area/victory/surfacebase/bar_backroom)
 "xOx" = (
 /obj/structure/bed/chair/office/light,
 /turf/simulated/floor/tiled/old_cargo/white,
@@ -26409,7 +26409,7 @@
 	icon_state = "1-8"
 	},
 /turf/simulated/floor/tiled,
-/area/triumph/surfacebase/mining_main/storage)
+/area/victory/surfacebase/mining_main/storage)
 "xSR" = (
 /obj/structure/dispenser{
 	phorontanks = 0
@@ -26512,7 +26512,7 @@
 	req_one_access = list(13,31)
 	},
 /turf/simulated/floor/tiled,
-/area/triumph/surfacebase/mining_main/refinery)
+/area/victory/surfacebase/mining_main/refinery)
 "yaJ" = (
 /obj/machinery/requests_console/preset/janitor{
 	pixel_x = -33
@@ -26570,7 +26570,7 @@
 /area/crew_quarters/toilet)
 "ycp" = (
 /turf/simulated/floor/tiled,
-/area/triumph/surfacebase/mining_main/refinery)
+/area/victory/surfacebase/mining_main/refinery)
 "ydc" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -26647,7 +26647,7 @@
 /obj/machinery/portable_atmospherics/canister/oxygen,
 /obj/effect/floor_decal/industrial/outline/blue,
 /turf/simulated/floor/tiled,
-/area/triumph/surfacebase/mining_main/uxstorage)
+/area/victory/surfacebase/mining_main/uxstorage)
 "ygn" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{

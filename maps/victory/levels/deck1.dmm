@@ -1653,7 +1653,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/atmos)
 "fY" = (
-/obj/machinery/telecomms/hub/preset/triumph,
+/obj/machinery/telecomms/hub/preset/victory,
 /turf/simulated/floor/tiled/dark{
 	initial_gas_mix = "n2=100;TEMP=80"
 	},
@@ -2160,7 +2160,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/engineering)
 "hL" = (
-/obj/effect/shuttle_landmark/triumph/deck1/port,
+/obj/effect/shuttle_landmark/victory/deck1/port,
 /turf/space,
 /area/space)
 "hM" = (
@@ -4753,7 +4753,7 @@
 /turf/simulated/floor/plating,
 /area/engineering/engine_eva)
 "rx" = (
-/obj/machinery/telecomms/receiver/preset_right/triumph,
+/obj/machinery/telecomms/receiver/preset_right/victory,
 /turf/simulated/floor/tiled/dark{
 	initial_gas_mix = "n2=100;TEMP=80"
 	},
@@ -5098,7 +5098,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/engi_engine)
 "sU" = (
-/obj/machinery/telecomms/broadcaster/preset_right/triumph,
+/obj/machinery/telecomms/broadcaster/preset_right/victory,
 /turf/simulated/floor/tiled/dark{
 	initial_gas_mix = "n2=100;TEMP=80"
 	},
@@ -5661,7 +5661,7 @@
 	},
 /area/tcommsat/chamber)
 "uG" = (
-/obj/machinery/telecomms/relay/preset/triumph/deck_two,
+/obj/machinery/telecomms/relay/preset/victory/deck_two,
 /obj/machinery/light/small,
 /turf/simulated/floor/tiled/dark{
 	initial_gas_mix = "n2=100;TEMP=80"
@@ -5867,7 +5867,7 @@
 /turf/simulated/floor/tiled,
 /area/engineering/hallway)
 "vr" = (
-/obj/effect/shuttle_landmark/triumph/deck1/starboard,
+/obj/effect/shuttle_landmark/victory/deck1/starboard,
 /turf/space,
 /area/space)
 "vs" = (
@@ -7517,7 +7517,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/engineering)
 "Bw" = (
-/obj/machinery/telecomms/relay/preset/triumph/deck_three,
+/obj/machinery/telecomms/relay/preset/victory/deck_three,
 /turf/simulated/floor/tiled/dark{
 	initial_gas_mix = "n2=100;TEMP=80"
 	},
@@ -7918,7 +7918,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ai_server_room)
 "CY" = (
-/obj/machinery/telecomms/relay/preset/triumph/deck_four,
+/obj/machinery/telecomms/relay/preset/victory/deck_four,
 /turf/simulated/floor/tiled/dark{
 	initial_gas_mix = "n2=100;TEMP=80"
 	},
@@ -8517,7 +8517,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/engi_engine)
 "Fm" = (
-/obj/machinery/telecomms/relay/preset/triumph/deck_one,
+/obj/machinery/telecomms/relay/preset/victory/deck_one,
 /turf/simulated/floor/tiled/dark{
 	initial_gas_mix = "n2=100;TEMP=80"
 	},
@@ -10188,7 +10188,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/tcommsat/computer)
 "Le" = (
-/obj/machinery/telecomms/bus/preset_two/triumph,
+/obj/machinery/telecomms/bus/preset_two/victory,
 /turf/simulated/floor/tiled/dark{
 	initial_gas_mix = "n2=100;TEMP=80"
 	},
@@ -13666,7 +13666,7 @@
 /turf/simulated/floor/tiled,
 /area/station/stairs_one)
 "XL" = (
-/obj/machinery/telecomms/server/presets/service/triumph,
+/obj/machinery/telecomms/server/presets/service/victory,
 /turf/simulated/floor/tiled/dark{
 	initial_gas_mix = "n2=100;TEMP=80"
 	},
@@ -14347,7 +14347,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/storage)
 "ZX" = (
-/obj/turbolift_map_holder/triumph,
+/obj/turbolift_map_holder/victory,
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/engineering/hallway/lower)
 "ZY" = (

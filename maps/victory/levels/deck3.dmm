@@ -70,7 +70,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled,
-/area/triumph/station/stairs_three)
+/area/victory/station/stairs_three)
 "ade" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
@@ -198,7 +198,7 @@
 	pixel_y = -22
 	},
 /turf/simulated/floor/tiled,
-/area/triumph/station/stairs_three)
+/area/victory/station/stairs_three)
 "amL" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
@@ -310,7 +310,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
-/area/triumph/station/stairs_three)
+/area/victory/station/stairs_three)
 "arH" = (
 /obj/structure/cable/green{
 	icon_state = "0-8"
@@ -739,7 +739,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
-/area/triumph/station/stairs_three)
+/area/victory/station/stairs_three)
 "aHX" = (
 /obj/effect/floor_decal/techfloor,
 /obj/machinery/fire_alarm/south_mount{
@@ -747,7 +747,7 @@
 	},
 /obj/structure/flora/pottedplant/stoutbush,
 /turf/simulated/floor/tiled,
-/area/triumph/station/stairs_three)
+/area/victory/station/stairs_three)
 "aIx" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/cable/green{
@@ -760,7 +760,7 @@
 	dir = 10
 	},
 /turf/simulated/floor/tiled,
-/area/triumph/station/stairs_three)
+/area/victory/station/stairs_three)
 "aIF" = (
 /obj/structure/sink{
 	dir = 4;
@@ -883,7 +883,7 @@
 	dir = 9
 	},
 /turf/simulated/floor/tiled,
-/area/triumph/station/stairs_three)
+/area/victory/station/stairs_three)
 "aPs" = (
 /obj/structure/lattice,
 /turf/space/basic,
@@ -1029,13 +1029,13 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled,
-/area/triumph/station/stairs_three)
+/area/victory/station/stairs_three)
 "aXm" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
-/area/triumph/station/stairs_three)
+/area/victory/station/stairs_three)
 "aXF" = (
 /obj/machinery/door/firedoor/glass,
 /obj/effect/floor_decal/borderfloor{
@@ -1057,7 +1057,7 @@
 /turf/simulated/floor/tiled{
 	icon_state = "techmaint"
 	},
-/area/triumph/station/stairs_three)
+/area/victory/station/stairs_three)
 "aXR" = (
 /obj/machinery/atmospherics/portables_connector,
 /turf/simulated/floor/tiled,
@@ -1116,7 +1116,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/wood,
-/area/triumph/station/stairs_three)
+/area/victory/station/stairs_three)
 "aZZ" = (
 /obj/machinery/light{
 	dir = 1
@@ -1449,7 +1449,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
-/area/triumph/station/stairs_three)
+/area/victory/station/stairs_three)
 "byw" = (
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 8
@@ -1695,7 +1695,7 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/ward)
 "bHu" = (
-/obj/effect/shuttle_landmark/triumph/deck3/port,
+/obj/effect/shuttle_landmark/victory/deck3/port,
 /turf/space,
 /area/space)
 "bHz" = (
@@ -1724,7 +1724,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
-/area/triumph/station/stairs_three)
+/area/victory/station/stairs_three)
 "bIW" = (
 /obj/structure/sign/department/robo,
 /turf/simulated/wall/prepainted/science,
@@ -1854,7 +1854,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled,
-/area/triumph/station/stairs_three)
+/area/victory/station/stairs_three)
 "bPH" = (
 /obj/machinery/light{
 	dir = 4
@@ -2020,7 +2020,7 @@
 /obj/structure/table/woodentable,
 /obj/structure/flora/pottedplant/bamboo,
 /turf/simulated/floor/wood,
-/area/triumph/station/stairs_three)
+/area/victory/station/stairs_three)
 "bYw" = (
 /obj/structure/table/glass,
 /obj/item/paper_bin{
@@ -2256,7 +2256,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled,
-/area/triumph/station/stairs_three)
+/area/victory/station/stairs_three)
 "cjf" = (
 /obj/machinery/door/firedoor/glass,
 /obj/effect/floor_decal/borderfloor{
@@ -2338,11 +2338,11 @@
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled,
-/area/triumph/station/stairs_three)
+/area/victory/station/stairs_three)
 "cny" = (
 /obj/structure/stairs/spawner/south,
 /turf/simulated/floor/tiled,
-/area/triumph/station/stairs_three)
+/area/victory/station/stairs_three)
 "coH" = (
 /obj/machinery/door/firedoor{
 	dir = 8
@@ -2744,7 +2744,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
-/area/triumph/station/stairs_three)
+/area/victory/station/stairs_three)
 "cGO" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
@@ -2900,7 +2900,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled,
-/area/triumph/station/stairs_three)
+/area/victory/station/stairs_three)
 "cPx" = (
 /obj/machinery/cell_charger,
 /obj/machinery/recharger/wallcharger{
@@ -3029,7 +3029,7 @@
 	pixel_y = 32
 	},
 /turf/simulated/floor/tiled,
-/area/triumph/station/stairs_three)
+/area/victory/station/stairs_three)
 "cWM" = (
 /obj/machinery/door/firedoor{
 	dir = 8
@@ -3083,7 +3083,7 @@
 "cZD" = (
 /obj/machinery/fire_alarm/north_mount,
 /turf/simulated/floor/wood,
-/area/triumph/station/stairs_three)
+/area/victory/station/stairs_three)
 "cZK" = (
 /obj/machinery/body_scanconsole,
 /turf/simulated/floor/tiled/white,
@@ -3097,7 +3097,7 @@
 	pixel_x = -23
 	},
 /turf/simulated/floor/tiled,
-/area/triumph/station/stairs_three)
+/area/victory/station/stairs_three)
 "dbb" = (
 /obj/machinery/door/window/brigdoor/northright{
 	name = "Containment Pen";
@@ -3451,12 +3451,12 @@
 /area/rnd/anomaly_lab)
 "dsY" = (
 /turf/simulated/floor/wood,
-/area/triumph/station/stairs_three)
+/area/victory/station/stairs_three)
 "dtz" = (
 /turf/simulated/floor/tiled{
 	icon_state = "techmaint"
 	},
-/area/triumph/station/stairs_three)
+/area/victory/station/stairs_three)
 "duc" = (
 /obj/structure/cable/green{
 	icon_state = "1-4"
@@ -3485,7 +3485,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled,
-/area/triumph/station/stairs_three)
+/area/victory/station/stairs_three)
 "dum" = (
 /obj/item/defib_kit/compact/loaded,
 /obj/item/defib_kit/compact/loaded,
@@ -3721,7 +3721,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
-/area/triumph/station/stairs_three)
+/area/victory/station/stairs_three)
 "dFm" = (
 /obj/machinery/air_alarm/monitor/isolation{
 	alarm_id = "isolation_one";
@@ -3843,7 +3843,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled,
-/area/triumph/station/stairs_three)
+/area/victory/station/stairs_three)
 "dKQ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -3923,7 +3923,7 @@
 /turf/simulated/floor/tiled{
 	icon_state = "techmaint"
 	},
-/area/triumph/station/stairs_three)
+/area/victory/station/stairs_three)
 "dNU" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /obj/landmark/spawnpoint/latejoin/station/gateway,
@@ -3958,7 +3958,7 @@
 	dir = 1
 	},
 /turf/simulated/open,
-/area/triumph/station/stairs_three)
+/area/victory/station/stairs_three)
 "dQN" = (
 /turf/simulated/wall/prepainted/medical,
 /area/crew_quarters/medical_restroom)
@@ -4030,7 +4030,7 @@
 	pixel_y = -31
 	},
 /turf/simulated/floor/tiled,
-/area/triumph/station/stairs_three)
+/area/victory/station/stairs_three)
 "dSY" = (
 /obj/machinery/light{
 	dir = 4
@@ -4162,7 +4162,7 @@
 	dir = 9
 	},
 /turf/simulated/floor/tiled,
-/area/triumph/station/stairs_three)
+/area/victory/station/stairs_three)
 "eat" = (
 /obj/item/storage/box/beakers{
 	pixel_x = 2;
@@ -4288,7 +4288,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
-/area/triumph/station/stairs_three)
+/area/victory/station/stairs_three)
 "eew" = (
 /obj/structure/cable/green{
 	icon_state = "1-2"
@@ -4363,7 +4363,7 @@
 /turf/simulated/floor/tiled{
 	icon_state = "techmaint"
 	},
-/area/triumph/station/stairs_three)
+/area/victory/station/stairs_three)
 "ego" = (
 /obj/effect/floor_decal/corner/blue/diagonal,
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
@@ -4720,12 +4720,12 @@
 	pixel_x = -23
 	},
 /turf/simulated/floor/tiled,
-/area/triumph/station/stairs_three)
+/area/victory/station/stairs_three)
 "eBL" = (
 /obj/structure/table/woodentable,
 /obj/item/paicard,
 /turf/simulated/floor/wood,
-/area/triumph/station/stairs_three)
+/area/victory/station/stairs_three)
 "eBV" = (
 /obj/structure/cable/green{
 	icon_state = "1-2"
@@ -5115,7 +5115,7 @@
 	},
 /obj/machinery/holopad,
 /turf/simulated/floor/tiled,
-/area/triumph/station/stairs_three)
+/area/victory/station/stairs_three)
 "eUy" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -5191,7 +5191,7 @@
 "eXe" = (
 /obj/machinery/light,
 /turf/simulated/floor/wood,
-/area/triumph/station/stairs_three)
+/area/victory/station/stairs_three)
 "eXE" = (
 /obj/structure/catwalk,
 /obj/structure/railing{
@@ -5333,7 +5333,7 @@
 	icon_state = "1-8"
 	},
 /turf/simulated/floor/tiled,
-/area/triumph/station/stairs_three)
+/area/victory/station/stairs_three)
 "fcw" = (
 /obj/machinery/air_alarm{
 	pixel_y = 22
@@ -5477,7 +5477,7 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled,
-/area/triumph/station/stairs_three)
+/area/victory/station/stairs_three)
 "fmi" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /turf/simulated/floor/tiled/white,
@@ -5534,7 +5534,7 @@
 	dir = 9
 	},
 /turf/simulated/floor/tiled,
-/area/triumph/station/stairs_three)
+/area/victory/station/stairs_three)
 "fqm" = (
 /obj/structure/bed/chair/office/dark{
 	dir = 1
@@ -5656,7 +5656,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
-/area/triumph/station/stairs_three)
+/area/victory/station/stairs_three)
 "fts" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/cable/green{
@@ -5838,7 +5838,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
-/area/triumph/station/stairs_three)
+/area/victory/station/stairs_three)
 "fBT" = (
 /obj/structure/table/reinforced,
 /obj/random/toy,
@@ -5861,7 +5861,7 @@
 "fDK" = (
 /obj/structure/closet/emcloset,
 /turf/simulated/floor/tiled,
-/area/triumph/station/stairs_three)
+/area/victory/station/stairs_three)
 "fDP" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -6402,7 +6402,7 @@
 	},
 /obj/structure/table/bench/padded,
 /turf/simulated/floor/tiled,
-/area/triumph/station/stairs_three)
+/area/victory/station/stairs_three)
 "gbZ" = (
 /obj/effect/floor_decal/spline/plain{
 	dir = 5
@@ -6418,7 +6418,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
-/area/triumph/station/stairs_three)
+/area/victory/station/stairs_three)
 "gcM" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
@@ -6460,7 +6460,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled,
-/area/triumph/station/stairs_three)
+/area/victory/station/stairs_three)
 "geD" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /obj/effect/floor_decal/industrial/warning{
@@ -7031,7 +7031,7 @@
 	dir = 6
 	},
 /turf/simulated/floor/tiled,
-/area/triumph/station/stairs_three)
+/area/victory/station/stairs_three)
 "gLF" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
@@ -7040,7 +7040,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled,
-/area/triumph/station/stairs_three)
+/area/victory/station/stairs_three)
 "gMn" = (
 /obj/machinery/air_alarm{
 	dir = 8;
@@ -7178,8 +7178,8 @@
 /area/medical/virologyisolation)
 "gUD" = (
 /obj/structure/bed/chair/wheelchair,
-/obj/effect/shuttle_landmark/triumph/deck3/emt,
-/obj/overmap/entity/visitable/ship/landable/emt/triumph,
+/obj/effect/shuttle_landmark/victory/deck3/emt,
+/obj/overmap/entity/visitable/ship/landable/emt/victory,
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 9
 	},
@@ -7268,7 +7268,7 @@
 	},
 /obj/machinery/door/airlock/glass,
 /turf/simulated/floor/tiled,
-/area/triumph/station/stairs_three)
+/area/victory/station/stairs_three)
 "gZg" = (
 /obj/machinery/light,
 /obj/structure/bed/roller,
@@ -7417,7 +7417,7 @@
 	dir = 5
 	},
 /turf/simulated/floor/tiled,
-/area/triumph/station/stairs_three)
+/area/victory/station/stairs_three)
 "hia" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/yellow{
 	dir = 4
@@ -7431,7 +7431,7 @@
 /turf/simulated/floor/tiled{
 	icon_state = "techmaint"
 	},
-/area/triumph/station/stairs_three)
+/area/victory/station/stairs_three)
 "hiV" = (
 /obj/machinery/light{
 	dir = 8
@@ -7458,7 +7458,7 @@
 	icon_state = "1-4"
 	},
 /turf/simulated/floor/tiled,
-/area/triumph/station/stairs_three)
+/area/victory/station/stairs_three)
 "hjJ" = (
 /obj/machinery/holopad/ship,
 /turf/simulated/floor/tiled,
@@ -7888,7 +7888,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
-/area/triumph/station/stairs_three)
+/area/victory/station/stairs_three)
 "hAY" = (
 /obj/structure/table/steel_reinforced,
 /obj/machinery/recharger,
@@ -7914,7 +7914,7 @@
 /area/maintenance/substation/medical)
 "hBs" = (
 /turf/simulated/floor/tiled,
-/area/triumph/station/stairs_three)
+/area/victory/station/stairs_three)
 "hBA" = (
 /obj/item/radio/intercom{
 	pixel_y = -24
@@ -8308,7 +8308,7 @@
 /turf/simulated/floor/tiled{
 	icon_state = "techmaint"
 	},
-/area/triumph/station/stairs_three)
+/area/victory/station/stairs_three)
 "hQw" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/yellow{
 	dir = 4
@@ -8353,7 +8353,7 @@
 	},
 /obj/machinery/holopad,
 /turf/simulated/floor/tiled,
-/area/triumph/station/stairs_three)
+/area/victory/station/stairs_three)
 "hRa" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -8662,7 +8662,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/wood,
-/area/triumph/station/stairs_three)
+/area/victory/station/stairs_three)
 "ieJ" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
@@ -8671,7 +8671,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled,
-/area/triumph/station/stairs_three)
+/area/victory/station/stairs_three)
 "ieR" = (
 /obj/structure/bed/chair/comfy/brown{
 	dir = 8
@@ -8718,7 +8718,7 @@
 "igt" = (
 /obj/machinery/holopad,
 /turf/simulated/floor/tiled,
-/area/triumph/station/stairs_three)
+/area/victory/station/stairs_three)
 "iiq" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -8730,7 +8730,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
-/area/triumph/station/stairs_three)
+/area/victory/station/stairs_three)
 "iiB" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 10
@@ -9240,7 +9240,7 @@
 "iCr" = (
 /obj/structure/stairs/spawner/north,
 /turf/simulated/floor/tiled,
-/area/triumph/station/stairs_three)
+/area/victory/station/stairs_three)
 "iCF" = (
 /obj/structure/toilet{
 	dir = 1
@@ -9288,7 +9288,7 @@
 	},
 /obj/machinery/door/firedoor,
 /turf/simulated/floor/tiled,
-/area/triumph/station/stairs_three)
+/area/victory/station/stairs_three)
 "iEL" = (
 /obj/machinery/camera/network/medbay{
 	network = list("Psychiatric")
@@ -9579,14 +9579,14 @@
 	},
 /obj/spawner/window/low_wall/reinforced/full,
 /turf/simulated/floor/plating,
-/area/triumph/station/stairs_three)
+/area/victory/station/stairs_three)
 "iST" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /obj/effect/floor_decal/techfloor/corner{
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
-/area/triumph/station/stairs_three)
+/area/victory/station/stairs_three)
 "iTl" = (
 /obj/structure/closet/secure_closet/scientist,
 /turf/simulated/floor/wood,
@@ -9632,14 +9632,14 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
-/area/triumph/station/stairs_three)
+/area/victory/station/stairs_three)
 "iVw" = (
 /obj/effect/floor_decal/techfloor/corner,
 /obj/effect/floor_decal/techfloor{
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
-/area/triumph/station/stairs_three)
+/area/victory/station/stairs_three)
 "iVG" = (
 /obj/machinery/camera/network/research{
 	dir = 4;
@@ -9741,7 +9741,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
-/area/triumph/station/stairs_three)
+/area/victory/station/stairs_three)
 "iZN" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -10296,7 +10296,7 @@
 "jzA" = (
 /obj/structure/window/reinforced,
 /turf/simulated/open,
-/area/triumph/station/stairs_three)
+/area/victory/station/stairs_three)
 "jzJ" = (
 /obj/machinery/photocopier,
 /obj/machinery/light{
@@ -10532,7 +10532,7 @@
 "jJY" = (
 /obj/machinery/light,
 /turf/simulated/floor/tiled,
-/area/triumph/station/stairs_three)
+/area/victory/station/stairs_three)
 "jLg" = (
 /obj/machinery/camera/network/medbay{
 	dir = 1
@@ -10550,7 +10550,7 @@
 "jMN" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /turf/simulated/floor/tiled,
-/area/triumph/station/stairs_three)
+/area/victory/station/stairs_three)
 "jNo" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
@@ -10615,7 +10615,7 @@
 	},
 /obj/machinery/door/airlock/glass,
 /turf/simulated/floor/tiled,
-/area/triumph/station/stairs_three)
+/area/victory/station/stairs_three)
 "jPu" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -10646,7 +10646,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
-/area/triumph/station/stairs_three)
+/area/victory/station/stairs_three)
 "jPU" = (
 /obj/item/bedsheet/medical,
 /obj/structure/bed/padded,
@@ -10710,7 +10710,7 @@
 	},
 /obj/machinery/vending/snack,
 /turf/simulated/floor/tiled,
-/area/triumph/station/stairs_three)
+/area/victory/station/stairs_three)
 "jUt" = (
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 1
@@ -10797,7 +10797,7 @@
 	},
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled,
-/area/triumph/station/stairs_three)
+/area/victory/station/stairs_three)
 "jZb" = (
 /obj/effect/floor_decal/techfloor,
 /obj/machinery/newscaster{
@@ -10902,7 +10902,7 @@
 	pixel_y = -22
 	},
 /turf/simulated/floor/tiled,
-/area/triumph/station/stairs_three)
+/area/victory/station/stairs_three)
 "kfN" = (
 /turf/simulated/floor/wood,
 /area/medical/psych/psych_2)
@@ -10911,7 +10911,7 @@
 	dir = 6
 	},
 /turf/simulated/floor/tiled,
-/area/triumph/station/stairs_three)
+/area/victory/station/stairs_three)
 "kgh" = (
 /turf/simulated/floor/tiled/white,
 /area/medical/sleeper)
@@ -11166,7 +11166,7 @@
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /obj/machinery/camera/network/civilian,
 /turf/simulated/floor/tiled,
-/area/triumph/station/stairs_three)
+/area/victory/station/stairs_three)
 "kxn" = (
 /obj/machinery/atmospherics/pipe/simple/visible{
 	dir = 9
@@ -11198,7 +11198,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
-/area/triumph/station/stairs_three)
+/area/victory/station/stairs_three)
 "kzm" = (
 /obj/machinery/light/small/emergency{
 	dir = 8
@@ -11610,7 +11610,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
-/area/triumph/station/stairs_three)
+/area/victory/station/stairs_three)
 "kXa" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -11720,7 +11720,7 @@
 	},
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled,
-/area/triumph/station/stairs_three)
+/area/victory/station/stairs_three)
 "lbw" = (
 /obj/machinery/door/firedoor{
 	dir = 8
@@ -11756,7 +11756,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
-/area/triumph/station/stairs_three)
+/area/victory/station/stairs_three)
 "lcH" = (
 /obj/machinery/button/remote/blast_door{
 	dir = 1;
@@ -11903,7 +11903,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled,
-/area/triumph/station/stairs_three)
+/area/victory/station/stairs_three)
 "lma" = (
 /obj/structure/toilet{
 	dir = 1
@@ -12042,7 +12042,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
-/area/triumph/station/stairs_three)
+/area/victory/station/stairs_three)
 "lrJ" = (
 /obj/machinery/door/firedoor{
 	dir = 8
@@ -12345,7 +12345,7 @@
 	},
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
 /turf/simulated/floor/tiled,
-/area/triumph/station/stairs_three)
+/area/victory/station/stairs_three)
 "lGk" = (
 /obj/structure/bookcase/manuals/research_and_development,
 /turf/simulated/floor/wood,
@@ -12358,7 +12358,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
-/area/triumph/station/stairs_three)
+/area/victory/station/stairs_three)
 "lGI" = (
 /obj/machinery/door/firedoor,
 /obj/spawner/window/low_wall/reinforced/full,
@@ -12387,7 +12387,7 @@
 	icon_state = "pipe-c"
 	},
 /turf/simulated/floor/tiled,
-/area/triumph/station/stairs_three)
+/area/victory/station/stairs_three)
 "lHT" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
@@ -12782,7 +12782,7 @@
 	dir = 5
 	},
 /turf/simulated/floor/tiled,
-/area/triumph/station/stairs_three)
+/area/victory/station/stairs_three)
 "mdU" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
@@ -12860,7 +12860,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled,
-/area/triumph/station/stairs_three)
+/area/victory/station/stairs_three)
 "mkj" = (
 /obj/machinery/portable_atmospherics/canister/phoron,
 /obj/machinery/camera/network/research{
@@ -13089,7 +13089,7 @@
 	pixel_x = -23
 	},
 /turf/simulated/floor/tiled,
-/area/triumph/station/stairs_three)
+/area/victory/station/stairs_three)
 "mxu" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
@@ -13310,7 +13310,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled,
-/area/triumph/station/stairs_three)
+/area/victory/station/stairs_three)
 "mGW" = (
 /obj/structure/railing{
 	dir = 1
@@ -13396,7 +13396,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
-/area/triumph/station/stairs_three)
+/area/victory/station/stairs_three)
 "mMS" = (
 /obj/machinery/door/firedoor/glass,
 /obj/effect/floor_decal/borderfloor{
@@ -13521,7 +13521,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled,
-/area/triumph/station/stairs_three)
+/area/victory/station/stairs_three)
 "mRv" = (
 /obj/structure/cable/green{
 	icon_state = "0-2"
@@ -13535,7 +13535,7 @@
 "mSd" = (
 /obj/machinery/fire_alarm/north_mount,
 /turf/simulated/floor/tiled,
-/area/triumph/station/stairs_three)
+/area/victory/station/stairs_three)
 "mSK" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /obj/item/radio/intercom{
@@ -13544,7 +13544,7 @@
 	pixel_y = 21
 	},
 /turf/simulated/floor/tiled,
-/area/triumph/station/stairs_three)
+/area/victory/station/stairs_three)
 "mSV" = (
 /obj/machinery/door/firedoor{
 	dir = 8
@@ -13851,7 +13851,7 @@
 "ngD" = (
 /obj/structure/bed/chair/comfy/beige,
 /turf/simulated/floor/wood,
-/area/triumph/station/stairs_three)
+/area/victory/station/stairs_three)
 "nhg" = (
 /obj/structure/window/reinforced{
 	dir = 4
@@ -13904,7 +13904,7 @@
 "njb" = (
 /obj/machinery/door/firedoor,
 /turf/simulated/floor/tiled,
-/area/triumph/station/stairs_three)
+/area/victory/station/stairs_three)
 "njl" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/black{
 	dir = 4
@@ -13973,7 +13973,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
-/area/triumph/station/stairs_three)
+/area/victory/station/stairs_three)
 "nok" = (
 /obj/machinery/mech_recharger,
 /obj/machinery/light{
@@ -14041,12 +14041,12 @@
 	},
 /obj/machinery/door/firedoor,
 /turf/simulated/floor/tiled,
-/area/triumph/station/stairs_three)
+/area/victory/station/stairs_three)
 "nrD" = (
 /obj/machinery/camera/network/civilian,
 /obj/machinery/fire_alarm/north_mount,
 /turf/simulated/floor/tiled,
-/area/triumph/station/stairs_three)
+/area/victory/station/stairs_three)
 "nsd" = (
 /obj/structure/closet/secure_closet/personal/patient,
 /turf/simulated/floor/tiled/white,
@@ -14093,7 +14093,7 @@
 	pixel_y = 32
 	},
 /turf/simulated/floor/tiled,
-/area/triumph/station/stairs_three)
+/area/victory/station/stairs_three)
 "nwm" = (
 /obj/machinery/washing_machine,
 /turf/simulated/floor/tiled/techfloor,
@@ -14143,7 +14143,7 @@
 /area/maintenance/medbay/fore)
 "nzx" = (
 /turf/simulated/open,
-/area/triumph/station/stairs_three)
+/area/victory/station/stairs_three)
 "nzW" = (
 /obj/structure/closet/firecloset/full,
 /obj/machinery/light{
@@ -14164,7 +14164,7 @@
 	dir = 10
 	},
 /turf/simulated/floor/tiled,
-/area/triumph/station/stairs_three)
+/area/victory/station/stairs_three)
 "nAR" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
@@ -14202,7 +14202,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
-/area/triumph/station/stairs_three)
+/area/victory/station/stairs_three)
 "nCS" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 5
@@ -14268,14 +14268,14 @@
 	pixel_y = 24
 	},
 /turf/simulated/floor/tiled,
-/area/triumph/station/stairs_three)
+/area/victory/station/stairs_three)
 "nJV" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /obj/effect/floor_decal/techfloor{
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
-/area/triumph/station/stairs_three)
+/area/victory/station/stairs_three)
 "nKo" = (
 /obj/machinery/atmospherics/pipe/simple/visible{
 	dir = 6
@@ -14384,7 +14384,7 @@
 	pixel_y = 32
 	},
 /turf/simulated/floor/tiled,
-/area/triumph/station/stairs_three)
+/area/victory/station/stairs_three)
 "nNk" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -14402,7 +14402,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
-/area/triumph/station/stairs_three)
+/area/victory/station/stairs_three)
 "nNn" = (
 /obj/machinery/door/firedoor/glass,
 /obj/effect/floor_decal/borderfloor{
@@ -14415,7 +14415,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
-/area/triumph/station/stairs_three)
+/area/victory/station/stairs_three)
 "nNX" = (
 /obj/machinery/door/airlock{
 	name = "Unit 2"
@@ -14438,7 +14438,7 @@
 	pixel_y = -24
 	},
 /turf/simulated/floor/tiled,
-/area/triumph/station/stairs_three)
+/area/victory/station/stairs_three)
 "nOJ" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 8
@@ -14604,7 +14604,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/rnd/research/testingrange)
 "nWQ" = (
-/obj/effect/shuttle_landmark/triumph/deck3/starboard,
+/obj/effect/shuttle_landmark/victory/deck3/starboard,
 /turf/space,
 /area/space)
 "nXe" = (
@@ -15012,7 +15012,7 @@
 	pixel_y = 21
 	},
 /turf/simulated/floor/tiled,
-/area/triumph/station/stairs_three)
+/area/victory/station/stairs_three)
 "opn" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 5
@@ -15337,7 +15337,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
-/area/triumph/station/stairs_three)
+/area/victory/station/stairs_three)
 "oHk" = (
 /obj/machinery/atmospherics/tvalve/bypass{
 	dir = 1;
@@ -15935,7 +15935,7 @@
 	},
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled,
-/area/triumph/station/stairs_three)
+/area/victory/station/stairs_three)
 "pch" = (
 /obj/machinery/atmospherics/portables_connector{
 	dir = 1;
@@ -15981,7 +15981,7 @@
 /turf/simulated/floor/tiled{
 	icon_state = "techmaint"
 	},
-/area/triumph/station/stairs_three)
+/area/victory/station/stairs_three)
 "pgh" = (
 /obj/machinery/sleeper{
 	dir = 4
@@ -16330,7 +16330,7 @@
 	dir = 6
 	},
 /turf/simulated/floor/tiled,
-/area/triumph/station/stairs_three)
+/area/victory/station/stairs_three)
 "puo" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 8
@@ -16358,7 +16358,7 @@
 	pixel_y = -31
 	},
 /turf/simulated/floor/tiled,
-/area/triumph/station/stairs_three)
+/area/victory/station/stairs_three)
 "pvs" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/black{
 	dir = 4
@@ -16740,7 +16740,7 @@
 	dir = 10
 	},
 /turf/simulated/floor/tiled,
-/area/triumph/station/stairs_three)
+/area/victory/station/stairs_three)
 "pMA" = (
 /obj/item/defib_kit/jumper_kit,
 /obj/machinery/newscaster{
@@ -17045,7 +17045,7 @@
 	pixel_y = 21
 	},
 /turf/simulated/floor/wood,
-/area/triumph/station/stairs_three)
+/area/victory/station/stairs_three)
 "pXL" = (
 /obj/machinery/door/firedoor,
 /obj/spawner/window/low_wall/reinforced/full,
@@ -17338,14 +17338,14 @@
 /area/medical/morgue)
 "qlw" = (
 /turf/simulated/wall/prepainted/medical,
-/area/triumph/station/stairs_three)
+/area/victory/station/stairs_three)
 "qlS" = (
 /obj/machinery/light{
 	dir = 4
 	},
 /obj/machinery/vending/cola,
 /turf/simulated/floor/tiled,
-/area/triumph/station/stairs_three)
+/area/victory/station/stairs_three)
 "qnh" = (
 /obj/structure/cable{
 	icon_state = "1-8"
@@ -17502,7 +17502,7 @@
 	pixel_y = -30
 	},
 /turf/simulated/floor/tiled,
-/area/triumph/station/stairs_three)
+/area/victory/station/stairs_three)
 "qwk" = (
 /obj/structure/cable/green{
 	icon_state = "0-4"
@@ -17803,7 +17803,7 @@
 /area/medical/psych_ward)
 "qIz" = (
 /turf/simulated/wall/prepainted,
-/area/triumph/station/stairs_three)
+/area/victory/station/stairs_three)
 "qJz" = (
 /obj/structure/closet/secure_closet/medical2,
 /turf/simulated/floor/tiled,
@@ -17949,7 +17949,7 @@
 	anchored = 1
 	},
 /turf/simulated/floor/tiled,
-/area/triumph/station/stairs_three)
+/area/victory/station/stairs_three)
 "qOd" = (
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/door/airlock/medical{
@@ -18181,7 +18181,7 @@
 	icon_state = "1-8"
 	},
 /turf/simulated/floor/tiled,
-/area/triumph/station/stairs_three)
+/area/victory/station/stairs_three)
 "qXe" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -18416,7 +18416,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
-/area/triumph/station/stairs_three)
+/area/victory/station/stairs_three)
 "rfd" = (
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 1
@@ -18479,7 +18479,7 @@
 /obj/effect/floor_decal/techfloor,
 /obj/machinery/light,
 /turf/simulated/floor/tiled,
-/area/triumph/station/stairs_three)
+/area/victory/station/stairs_three)
 "rjP" = (
 /obj/machinery/door/firedoor,
 /obj/spawner/window/low_wall/reinforced/full,
@@ -18718,7 +18718,7 @@
 /obj/machinery/door/firedoor,
 /obj/spawner/window/low_wall/reinforced/full,
 /turf/simulated/floor/plating,
-/area/triumph/station/stairs_three)
+/area/victory/station/stairs_three)
 "rut" = (
 /obj/structure/table/reinforced,
 /obj/item/reagent_containers/glass/beaker/large,
@@ -18882,7 +18882,7 @@
 "rEw" = (
 /obj/structure/closet/firecloset,
 /turf/simulated/floor/tiled,
-/area/triumph/station/stairs_three)
+/area/victory/station/stairs_three)
 "rFW" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -18967,7 +18967,7 @@
 "rIr" = (
 /obj/structure/sign/directions/evac,
 /turf/simulated/wall/prepainted,
-/area/triumph/station/stairs_three)
+/area/victory/station/stairs_three)
 "rIN" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply,
@@ -19286,7 +19286,7 @@
 /obj/machinery/door/airlock/glass,
 /obj/machinery/door/firedoor,
 /turf/simulated/floor/tiled,
-/area/triumph/station/stairs_three)
+/area/victory/station/stairs_three)
 "rVB" = (
 /obj/machinery/light{
 	dir = 1
@@ -19390,7 +19390,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
-/area/triumph/station/stairs_three)
+/area/victory/station/stairs_three)
 "sdA" = (
 /obj/structure/table/reinforced,
 /obj/machinery/cell_charger,
@@ -19583,7 +19583,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
-/area/triumph/station/stairs_three)
+/area/victory/station/stairs_three)
 "snQ" = (
 /obj/structure/table/standard,
 /obj/item/paicard,
@@ -19764,7 +19764,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
-/area/triumph/station/stairs_three)
+/area/victory/station/stairs_three)
 "syi" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -19799,7 +19799,7 @@
 	},
 /obj/machinery/light,
 /turf/simulated/floor/tiled,
-/area/triumph/station/stairs_three)
+/area/victory/station/stairs_three)
 "szg" = (
 /obj/machinery/atmospherics/portables_connector,
 /turf/simulated/floor/tiled,
@@ -19837,7 +19837,7 @@
 "sBd" = (
 /obj/structure/sign/deck/third,
 /turf/simulated/wall/prepainted,
-/area/triumph/station/stairs_three)
+/area/victory/station/stairs_three)
 "sBg" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled/techfloor,
@@ -19875,7 +19875,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled,
-/area/triumph/station/stairs_three)
+/area/victory/station/stairs_three)
 "sCJ" = (
 /obj/structure/cable/green{
 	icon_state = "1-2"
@@ -20002,7 +20002,7 @@
 "sIj" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled,
-/area/triumph/station/stairs_three)
+/area/victory/station/stairs_three)
 "sIr" = (
 /obj/structure/bed/chair{
 	dir = 1
@@ -20019,7 +20019,7 @@
 "sIX" = (
 /obj/machinery/vending/giftvendor,
 /turf/simulated/floor/tiled,
-/area/triumph/station/stairs_three)
+/area/victory/station/stairs_three)
 "sJj" = (
 /obj/structure/table/standard,
 /obj/item/storage/box/monkeycubes{
@@ -20332,7 +20332,7 @@
 	},
 /obj/spawner/window/low_wall/reinforced/full,
 /turf/simulated/floor/plating,
-/area/triumph/station/stairs_three)
+/area/victory/station/stairs_three)
 "tcG" = (
 /obj/structure/bed/chair{
 	dir = 8
@@ -20373,7 +20373,7 @@
 /turf/simulated/floor/tiled{
 	icon_state = "techmaint"
 	},
-/area/triumph/station/stairs_three)
+/area/victory/station/stairs_three)
 "teC" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -20388,7 +20388,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
-/area/triumph/station/stairs_three)
+/area/victory/station/stairs_three)
 "teE" = (
 /obj/structure/cable/green{
 	icon_state = "0-4"
@@ -20398,7 +20398,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled,
-/area/triumph/station/stairs_three)
+/area/victory/station/stairs_three)
 "tfa" = (
 /obj/structure/reagent_dispensers/watertank,
 /obj/effect/floor_decal/borderfloor{
@@ -20573,7 +20573,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
-/area/triumph/station/stairs_three)
+/area/victory/station/stairs_three)
 "tmX" = (
 /obj/effect/floor_decal/corner/blue{
 	dir = 5
@@ -20670,7 +20670,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled,
-/area/triumph/station/stairs_three)
+/area/victory/station/stairs_three)
 "trK" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -21043,7 +21043,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
-/area/triumph/station/stairs_three)
+/area/victory/station/stairs_three)
 "tKG" = (
 /turf/simulated/floor/airless,
 /area/space)
@@ -21118,7 +21118,7 @@
 	},
 /obj/machinery/door/airlock/glass,
 /turf/simulated/floor/tiled,
-/area/triumph/station/stairs_three)
+/area/victory/station/stairs_three)
 "tOc" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
@@ -21574,7 +21574,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
-/area/triumph/station/stairs_three)
+/area/victory/station/stairs_three)
 "ukZ" = (
 /obj/effect/floor_decal/borderfloorwhite,
 /obj/effect/floor_decal/corner/blue/border,
@@ -21674,7 +21674,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
-/area/triumph/station/stairs_three)
+/area/victory/station/stairs_three)
 "uri" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
@@ -22168,7 +22168,7 @@
 "uRJ" = (
 /obj/structure/sign/deck/third,
 /turf/simulated/wall/prepainted/medical,
-/area/triumph/station/stairs_three)
+/area/victory/station/stairs_three)
 "uSa" = (
 /obj/machinery/atmospherics/component/unary/heat_exchanger{
 	dir = 8
@@ -22400,7 +22400,7 @@
 	pixel_y = 25
 	},
 /turf/simulated/open,
-/area/triumph/station/stairs_three)
+/area/victory/station/stairs_three)
 "vfA" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
@@ -22430,7 +22430,7 @@
 	},
 /obj/effect/floor_decal/techfloor,
 /turf/simulated/floor/tiled,
-/area/triumph/station/stairs_three)
+/area/victory/station/stairs_three)
 "vgT" = (
 /obj/machinery/fire_alarm/north_mount,
 /obj/machinery/light/small{
@@ -22636,7 +22636,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled,
-/area/triumph/station/stairs_three)
+/area/victory/station/stairs_three)
 "vrY" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/black{
 	dir = 4
@@ -22698,7 +22698,7 @@
 /turf/simulated/floor/tiled{
 	icon_state = "techmaint"
 	},
-/area/triumph/station/stairs_three)
+/area/victory/station/stairs_three)
 "vtH" = (
 /obj/machinery/computer/robotics,
 /obj/machinery/camera/network/research,
@@ -22734,7 +22734,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
-/area/triumph/station/stairs_three)
+/area/victory/station/stairs_three)
 "vvQ" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
@@ -22894,7 +22894,7 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled,
-/area/triumph/station/stairs_three)
+/area/victory/station/stairs_three)
 "vEl" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -23163,7 +23163,7 @@
 	},
 /obj/machinery/power/apc/north_mount,
 /turf/simulated/floor/tiled,
-/area/triumph/station/stairs_three)
+/area/victory/station/stairs_three)
 "vQu" = (
 /obj/machinery/camera/network/research{
 	dir = 8;
@@ -23213,7 +23213,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
-/area/triumph/station/stairs_three)
+/area/victory/station/stairs_three)
 "vTa" = (
 /obj/machinery/camera/network/medbay{
 	dir = 8
@@ -23414,7 +23414,7 @@
 	pixel_y = -23
 	},
 /turf/simulated/floor/tiled,
-/area/triumph/station/stairs_three)
+/area/victory/station/stairs_three)
 "wbG" = (
 /obj/effect/floor_decal/borderfloorwhite/corner{
 	dir = 4
@@ -23542,7 +23542,7 @@
 	pixel_x = -33
 	},
 /turf/simulated/floor/tiled,
-/area/triumph/station/stairs_three)
+/area/victory/station/stairs_three)
 "wfo" = (
 /obj/structure/table/reinforced,
 /obj/machinery/recharger,
@@ -23592,7 +23592,7 @@
 	pixel_x = -23
 	},
 /turf/simulated/floor/tiled,
-/area/triumph/station/stairs_three)
+/area/victory/station/stairs_three)
 "wgT" = (
 /turf/simulated/floor/wood,
 /area/crew_quarters/medbreak)
@@ -24395,11 +24395,11 @@
 	pixel_y = -24
 	},
 /turf/simulated/floor/tiled,
-/area/triumph/station/stairs_three)
+/area/victory/station/stairs_three)
 "wZF" = (
 /obj/effect/floor_decal/techfloor/corner,
 /turf/simulated/floor/tiled,
-/area/triumph/station/stairs_three)
+/area/victory/station/stairs_three)
 "xav" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -24544,7 +24544,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply,
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
 /turf/simulated/floor/tiled,
-/area/triumph/station/stairs_three)
+/area/victory/station/stairs_three)
 "xht" = (
 /obj/machinery/shield_diffuser,
 /turf/simulated/floor/airless,
@@ -24631,7 +24631,7 @@
 "xki" = (
 /obj/structure/table/woodentable,
 /turf/simulated/floor/wood,
-/area/triumph/station/stairs_three)
+/area/victory/station/stairs_three)
 "xkX" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -24688,7 +24688,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled,
-/area/triumph/station/stairs_three)
+/area/victory/station/stairs_three)
 "xnR" = (
 /obj/structure/catwalk,
 /obj/structure/cable/green{
@@ -24939,7 +24939,7 @@
 /area/medical/sleeper)
 "xGm" = (
 /turf/simulated/wall/r_wall/prepainted,
-/area/triumph/station/stairs_three)
+/area/victory/station/stairs_three)
 "xGB" = (
 /obj/machinery/door/blast/regular{
 	dir = 8;
@@ -24957,7 +24957,7 @@
 	pixel_y = -31
 	},
 /turf/simulated/floor/tiled,
-/area/triumph/station/stairs_three)
+/area/victory/station/stairs_three)
 "xHi" = (
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 10
@@ -24984,7 +24984,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled,
-/area/triumph/station/stairs_three)
+/area/victory/station/stairs_three)
 "xHD" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -25013,7 +25013,7 @@
 	pixel_x = -28
 	},
 /turf/simulated/floor/tiled,
-/area/triumph/station/stairs_three)
+/area/victory/station/stairs_three)
 "xIl" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 10
@@ -25022,7 +25022,7 @@
 	dir = 9
 	},
 /turf/simulated/floor/tiled,
-/area/triumph/station/stairs_three)
+/area/victory/station/stairs_three)
 "xIp" = (
 /turf/simulated/wall/r_wall/prepainted/science,
 /area/rnd/anomaly_lab/containment_one)
@@ -25047,7 +25047,7 @@
 	},
 /obj/structure/table/bench/padded,
 /turf/simulated/floor/tiled,
-/area/triumph/station/stairs_three)
+/area/victory/station/stairs_three)
 "xJh" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
@@ -25251,7 +25251,7 @@
 "xTi" = (
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled,
-/area/triumph/station/stairs_three)
+/area/victory/station/stairs_three)
 "xTU" = (
 /obj/machinery/power/breakerbox/activated{
 	RCon_tag = "MEDICAL"

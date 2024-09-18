@@ -5303,4 +5303,5 @@
 #include "maps\triumph\shuttles.dm"
 #include "maps\triumph\telecomms.dm"
 #include "maps\triumph\triumph.dm"
+#include "maps\victory\victory-areas.dm"
 // END_INCLUDE
