@@ -8,25 +8,31 @@
 //* a proc-call, this is currently not done.                                  *//
 
 /datum/inventory/proc/put_in_hand(obj/item/I, index, inv_op_flags)
-	#warn impl & below, INV_RETURN_*
-	return equip_hand_impl(I, index, inv_op_flags)
+	return owner.equip_hand_impl(I, index, inv_op_flags) ? INV_RETURN_SUCCESS : INV_RETURN_FAILED
 
 /mob/proc/put_in_hand(obj/item/I, index, inv_op_flags)
 	return inventory?.put_in_hand(I, index, inv_op_flags)
 
 /datum/inventory/proc/put_in_hands(obj/item/I, inv_op_flags)
-	#warn impl & below, INV_RETURN_*
 	if(is_holding(I))
-		return TRUE
+		return INV_RETURN_SUCCESS
 
-	if(!(flags & INV_OP_NO_MERGE_STACKS) && istype(I, /obj/item/stack))
+	if(!(inv_op_flags & INV_OP_NO_MERGE_STACKS) && istype(I, /obj/item/stack))
 		var/obj/item/stack/S = I
 		for(var/obj/item/stack/held_stack in get_held_items())
 			if(S.can_merge(held_stack) && S.merge(held_stack))
 				to_chat(src, SPAN_NOTICE("Your [held_stack] stack now contains [held_stack.get_amount()] [held_stack.singular_name]\s."))
-				return TRUE
+				return INV_RETURN_SUCCESS
 
-	return put_in_active_hand(I, flags) || put_in_inactive_hand(I, flags)
+	for(var/i in 1 to length(held_items))
+		var/result = put_in_hand(I, i, inv_op_flags)
+
+		switch(result)
+			if(INV_RETURN_FAILED)
+			else
+				return result
+
+	return INV_RETURN_FAILED
 
 /mob/proc/put_in_hands(obj/item/I, inv_op_flags)
 	return inventory?.put_in_hands(I, inv_op_flags)

@@ -53,17 +53,17 @@
 
 //* Inventory Return Flags *//
 
-// todo: should these be flags? maybe they should just be an enum?
-
 /// Failed
 ///
 /// * Yes, on a failure, we just return null.
 /// * This is to fail truthy checks, and be a valid switch() return.
 #define INV_RETURN_FAILED null
 /// Success
-#define INV_RETURN_SUCCESS (1<<0)
+#define INV_RETURN_SUCCESS "success"
 /// Success, but was relocated instead of going to where it should go.
-#define INV_RETURN_RELOCATED (1<<1)
+#define INV_RETURN_RELOCATED "relocated"
+/// Success, and was deleted for it
+#define INV_RETURN_DELETED "deleted"
 
 //! return values from can_equip_conflict_check
 /// yes
