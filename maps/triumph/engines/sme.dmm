@@ -395,7 +395,7 @@
 /area/engineering/engine_room)
 "qb" = (
 /obj/structure/sign/warning/radioactive,
-/turf/simulated/wall/r_wall,
+/turf/simulated/wall/r_wall/prepainted/engineering,
 /area/engineering/engine_room)
 "qc" = (
 /obj/machinery/shield_diffuser,
@@ -1302,7 +1302,7 @@
 /turf/simulated/floor,
 /area/engineering/engine_room)
 "WZ" = (
-/turf/simulated/wall/r_wall,
+/turf/simulated/wall/r_wall/prepainted/engineering,
 /area/engineering/engine_room)
 "Xc" = (
 /obj/machinery/atmospherics/pipe/simple/visible/green,

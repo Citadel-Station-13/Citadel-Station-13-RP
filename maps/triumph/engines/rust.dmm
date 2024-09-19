@@ -275,7 +275,7 @@
 /area/engineering/engine_room)
 "aP" = (
 /obj/structure/sign/warning/radioactive,
-/turf/simulated/wall/r_wall,
+/turf/simulated/wall/r_wall/prepainted/engineering,
 /area/engineering/engine_room)
 "aY" = (
 /obj/machinery/atmospherics/pipe/manifold/visible/green{
@@ -606,7 +606,7 @@
 /turf/simulated/floor/reinforced/airless,
 /area/engineering/engine_room)
 "os" = (
-/turf/simulated/wall/r_wall,
+/turf/simulated/wall/r_wall/prepainted/engineering,
 /area/engineering/engine_room)
 "oE" = (
 /obj/structure/cable/cyan{

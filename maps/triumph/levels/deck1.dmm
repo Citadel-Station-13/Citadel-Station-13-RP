@@ -2775,9 +2775,6 @@
 	},
 /turf/simulated/floor/tiled/hydro,
 /area/engineering/atmos)
-"iY" = (
-/turf/simulated/wall/r_wall,
-/area/engineering/engine_room)
 "ja" = (
 /obj/structure/table/rack{
 	dir = 8;
@@ -27091,7 +27088,7 @@ cD
 cD
 cD
 cD
-iY
+cD
 cD
 cD
 cD
