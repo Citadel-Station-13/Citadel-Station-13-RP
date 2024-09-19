@@ -113,10 +113,11 @@ SUBSYSTEM_DEF(vote)
 				. = "Initiate Crew Transfer"
 			if(2)
 				. = CONFIG_GET(string/default_on_transfer_tie)
-	else if(LAZYLEN(winners) > 0)
+	if(LAZYLEN(winners) > 0)
 		if(LAZYLEN(winners) > 1)
 			text += "More than one winner, result chosen at random."
-		. = pick(winners)
+		if(!.)
+			. = pick(winners)
 		text += "<b>Vote Result: [.]</b>"
 	else
 		text += "<b>Vote Result: Inconclusive - No Votes!</b>"
