@@ -3772,7 +3772,7 @@
 /obj/structure/atmos_tank_segment/o2{
 	icon_state = "1,4"
 	},
-/obj/machinery/atmospherics/pipe/simple/visible/cyan,
+/obj/machinery/atmospherics/pipe/simple/visible/blue,
 /obj/structure/lattice,
 /turf/space/basic,
 /area/engineering/atmos/gas_storage)
@@ -6657,7 +6657,7 @@
 /obj/structure/atmos_tank_segment/o2{
 	icon_state = "1,3"
 	},
-/obj/machinery/atmospherics/pipe/simple/visible/cyan,
+/obj/machinery/atmospherics/pipe/simple/visible/blue,
 /turf/simulated/floor/reinforced/oxygen,
 /area/engineering/atmos/gas_storage)
 "we" = (
@@ -10223,6 +10223,12 @@
 /obj/effect/paint_stripe/pipecyan,
 /turf/simulated/floor/plating,
 /area/engineering/atmos/monitoring)
+"Ij" = (
+/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/machinery/atmospherics/pipe/simple/visible/blue,
+/obj/effect/paint_stripe/pipecyan,
+/turf/simulated/floor/plating,
+/area/engineering/atmos)
 "Ik" = (
 /obj/structure/cable{
 	icon_state = "0-4"
@@ -11298,6 +11304,11 @@
 /obj/structure/catwalk,
 /turf/space,
 /area/space)
+"LI" = (
+/obj/machinery/atmospherics/pipe/simple/visible/blue,
+/obj/structure/catwalk,
+/turf/simulated/floor/airless/ceiling,
+/area/engineering/atmos/gas_storage)
 "LJ" = (
 /obj/structure/atmos_tank_segment/air{
 	icon_state = "1,2"
@@ -35062,8 +35073,8 @@ Vl
 SX
 FX
 ke
-df
-EI
+Ij
+LI
 mm
 wd
 bB
