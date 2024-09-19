@@ -114,9 +114,9 @@ SUBSYSTEM_DEF(vote)
 			if(2)
 				. = CONFIG_GET(string/default_on_transfer_tie)
 	if(LAZYLEN(winners) > 0)
-		if(LAZYLEN(winners) > 1)
-			text += "More than one winner, result chosen at random."
 		if(!.)
+			if(LAZYLEN(winners) > 1)
+				text += "More than one winner, result chosen at random."
 			. = pick(winners)
 		text += "<b>Vote Result: [.]</b>"
 	else
