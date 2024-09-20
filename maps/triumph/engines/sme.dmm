@@ -54,6 +54,9 @@
 	id = "SupermatterPort";
 	name = "Reactor Blast Door"
 	},
+/obj/structure/window/phoronreinforced{
+	dir = 1
+	},
 /turf/simulated/floor,
 /area/engineering/engine_room)
 "bK" = (
@@ -362,6 +365,14 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/visible/red{
 	dir = 5
+	},
+/obj/machinery/button/remote/blast_door{
+	desc = "A remote control-switch for the engine control room blast doors.";
+	id = "EngineBlast";
+	name = "Engine Monitoring Room Blast Doors";
+	pixel_x = -25;
+	pixel_y = 5;
+	req_access = list(10)
 	},
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
@@ -858,22 +869,11 @@
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
 "FO" = (
-/obj/structure/grille,
-/obj/structure/window/phoronreinforced{
-	dir = 1
+/obj/map_helper/access_helper/airlock/station/engineering/engine,
+/obj/machinery/door/airlock/hatch/supermatter_access{
+	id_tag = "engine_access_hatch"
 	},
-/obj/structure/window/phoronreinforced{
-	dir = 8
-	},
-/obj/structure/window/phoronreinforced{
-	dir = 4
-	},
-/obj/machinery/door/blast/regular{
-	dir = 4;
-	id = "SupermatterPort";
-	name = "Reactor Blast Door"
-	},
-/turf/simulated/floor,
+/turf/simulated/floor/reinforced/airless,
 /area/engineering/engine_room)
 "FV" = (
 /obj/structure/cable/cyan{
