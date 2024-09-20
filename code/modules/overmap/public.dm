@@ -12,7 +12,25 @@
 	RETURN_TYPE(/obj/overmap/entity/visitable)
 	if(!isnum(what))
 		what = get_z(what) // todo: this doesn't support shuttles :/
-	if((LEGACY_MAP_DATUM).use_overmap)
-		return map_sectors["[what]"]
-	else
-		return null
+
+	return SSmapping.loaded_station.use_overmap ? SSovermaps.location_lookup[what]?.entity : null
+
+/**
+ * Gets the exact overmap entity something is on.
+ *
+ * * If the passed in atom is on a shuttle docked with another object, this returns the shuttle.
+ *
+ * @params
+ * * what - An /atom
+ */
+// todo: get_exact_overmap_entity()
+
+/**
+ * Gets the overmap entity owning our physical level
+ *
+ * * If the passed in atom is on a shuttle docked with another object, this returns the other object.
+ *
+ * @params
+ * * what - An /atom
+ */
+// todo: get_level_overmap_entity()

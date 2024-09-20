@@ -35,9 +35,6 @@
 	if(. == INITIALIZE_HINT_QDEL)
 		return
 
-	#warn location binding
-	register_z_levels() // This makes external calls to update global z level information.
-
 	docking_codes = "[ascii2text(rand(65,90))][ascii2text(rand(65,90))][ascii2text(rand(65,90))][ascii2text(rand(65,90))]"
 
 	// todo: This is shitcode but sue me tbh we gotta refactor this shit anyways to be overmap_initializer's
@@ -68,12 +65,6 @@
 //This is called later in the init order by SSshuttles to populate sector objects. Importantly for subtypes, shuttles will be created by then.
 /obj/overmap/entity/visitable/proc/populate_sector_objects()
 
-/obj/overmap/entity/visitable/proc/register_z_levels()
-	(LEGACY_MAP_DATUM).player_levels |= map_z
-
-/obj/overmap/entity/visitable/proc/unregister_z_levels()
-	(LEGACY_MAP_DATUM).player_levels -= map_z
-
 /obj/overmap/entity/visitable/get_scan_data()
 	if(!known)
 		known = TRUE
@@ -84,20 +75,11 @@
 	return ..()
 
 /obj/overmap/entity/visitable/proc/get_space_zlevels()
-	if(in_space)
-		return map_z
-	else
-		return list()
+	return in_space ? get_z_indices() : list()
 
 //Helper for init.
 /obj/overmap/entity/visitable/proc/check_ownership(obj/object)
-	var/area/A = get_area(object)
-	if(A in SSshuttle.shuttle_areas)
-		return 0
-	if(is_type_in_list(A, unowned_areas))
-		return 0
-	if(get_z(object) in map_z)
-		return 1
+	return get_overmap_sector(object) == src
 
 //If shuttle_name is false, will add to generic waypoints; otherwise will add to restricted. Does not do checks.
 /obj/overmap/entity/visitable/proc/add_landmark(obj/effect/shuttle_landmark/landmark, shuttle_name)

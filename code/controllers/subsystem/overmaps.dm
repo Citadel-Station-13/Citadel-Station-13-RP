@@ -21,8 +21,11 @@ SUBSYSTEM_DEF(overmaps)
 
 	/// Z-level ownership lookup
 	///
+	/// * This is the owning locations of levels.
+	/// * Non-owning locations aren't in here.
+	/// * A level can only be owned by one location at a time.
 	/// * Automatically managed by /datum/overmap_location registration
-	var/static/list/datum/overmap_location/level_ownership_lookup = list()
+	var/static/list/datum/overmap_location/location_lookup = list()
 
 /datum/controller/subsystem/overmaps/Initialize()
 	make_default_overmap()
@@ -31,8 +34,8 @@ SUBSYSTEM_DEF(overmaps)
 
 /datum/controller/subsystem/overmaps/on_max_z_changed(old_z_count, new_z_count)
 	. = ..()
-	if(length(level_ownership_lookup) < new_z_count)
-		level_ownership_lookup.len = new_z_count
+	if(length(location_lookup) < new_z_count)
+		location_lookup.len = new_z_count
 
 //! legacy code below
 
