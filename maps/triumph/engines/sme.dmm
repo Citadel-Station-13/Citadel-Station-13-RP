@@ -366,12 +366,12 @@
 /obj/machinery/atmospherics/pipe/simple/visible/red{
 	dir = 5
 	},
-/obj/machinery/button/remote/blast_door{
+/obj/machinery/button/remote/airlock{
+	pixel_y = 5;
+	pixel_x = -25;
 	desc = "A control for the locking bolts of the access hatch into the containment.";
 	id = "engine_access_hatch";
 	name = "Access Hatch";
-	pixel_x = -25;
-	pixel_y = 5;
 	req_access = list(10)
 	},
 /turf/simulated/floor/plating,
