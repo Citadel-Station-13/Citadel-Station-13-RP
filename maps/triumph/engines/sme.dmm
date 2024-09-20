@@ -372,7 +372,8 @@
 	desc = "A control for the locking bolts of the access hatch into the containment.";
 	id = "engine_access_hatch";
 	name = "Access Hatch";
-	req_access = list(10)
+	req_access = list(10);
+	specialfunctions = 4
 	},
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
