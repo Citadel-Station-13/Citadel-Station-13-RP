@@ -72,6 +72,8 @@
 /obj/overmap/entity/Destroy()
 	// stop physics
 	deactivate_physics()
+	// unbind location
+	QDEL_NULL(location)
 	return ..()
 
 /obj/overmap/entity/set_glide_size(new_glide_size, recursive)

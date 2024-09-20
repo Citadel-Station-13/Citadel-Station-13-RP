@@ -7,30 +7,6 @@
  * All adds/removes should go through this. Directly modifying zlevel amount/whatever is forbidden.
  */
 
-//* Rebuilds / Caching
-
-/datum/controller/subsystem/mapping/on_max_z_changed(old_z_count, new_z_count)
-	. = ..()
-	synchronize_datastructures()
-
-/**
- * Ensure all synchronized lists are valid
- */
-/datum/controller/subsystem/mapping/proc/synchronize_datastructures()
-#define SYNC(var) if(!var) { var = list() ; } ; if(var.len != world.maxz) { . = TRUE ; var.len = world.maxz; }
-	. = FALSE
-	SYNC(cached_level_up)
-	SYNC(cached_level_down)
-	SYNC(cached_level_east)
-	SYNC(cached_level_west)
-	SYNC(cached_level_north)
-	SYNC(cached_level_south)
-	SYNC(z_stack_lookup)
-	z_stack_dirty = FALSE
-	if(.)
-		z_stack_dirty = TRUE
-#undef SYNC
-
 /**
  * Call whenever a zlevel's up/down is modified
  *
@@ -184,6 +160,7 @@
 	level_or_path.z_index = z_index
 	ordered_levels[z_index] = level_or_path
 	level_or_path.loaded = TRUE
+	SEND_SIGNAL(levle_or_path, COMSIG_MAP_LEVEL_LOADED)
 	. = level_or_path
 
 	if(isnull(level_or_path.display_id))

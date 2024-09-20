@@ -12,6 +12,28 @@
 	/// owning entity, if any
 	var/obj/overmap/entity/entity
 
+/datum/overmap_location/New(location, obj/overmap/entity/entity)
+	if(entity)
+		if(entity.location)
+			stack_trace("entity [entity] already had a location")
+		else
+			src.entity = entity
+	if(location)
+		bind(location)
+
+/datum/overmap_location/Destroy()
+	if(entity.location == src)
+		entity.location = null
+	entity = null
+	unbind()
+	return ..()
+
+/datum/overmap_location/proc/bind(location)
+	CRASH("unimplemented proc called")
+
+/datum/overmap_location/proc/unbind()
+	CRASH("unimplemented proc called")
+
 /**
  * get our z-level indices
  *

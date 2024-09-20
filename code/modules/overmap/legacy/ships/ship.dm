@@ -122,12 +122,12 @@
 	if(still == old_still)
 		return
 	else if(still)
-		for(var/zz in map_z)
+		for(var/zz in get_owned_z_indices())
 			SSparallax.update_z_motion(zz)
 			// fuck you we're extra brutal today, decelration kills you too!
 			SSmapping.throw_movables_on_z_turfs_of_type(zz, /turf/space, fore_dir)
 	else
-		for(var/zz in map_z)
+		for(var/zz in get_owned_z_indices())
 			SSparallax.update_z_motion(zz)
 			SSmapping.throw_movables_on_z_turfs_of_type(zz, /turf/space, global.reverse_dir[fore_dir])
 

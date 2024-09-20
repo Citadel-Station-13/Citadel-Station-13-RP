@@ -11,15 +11,28 @@ SUBSYSTEM_DEF(overmaps)
 	/// (eventually we'll have proper bindings but for now, uh, this is how it is!)
 	var/const/default_overmap_id = "main"
 
-	//* Global Tuning *//
-
+	//*                    Global Tuning                       *//
+	//* Balance tuning goes in here; not sim                   *//
+	//* Example: 'thrust mult' is balance, 'sim speed' is sim. *//
 	/// applied to all ship thrust
 	var/global_thrust_multiplier = 2
+
+	//* Level System *//
+
+	/// Z-level ownership lookup
+	///
+	/// * Automatically managed by /datum/overmap_location registration
+	var/static/list/datum/overmap_location/level_ownership_lookup = list()
 
 /datum/controller/subsystem/overmaps/Initialize()
 	make_default_overmap()
 	rebuild_helm_computers()
 	return ..()
+
+/datum/controller/subsystem/overmaps/on_max_z_changed(old_z_count, new_z_count)
+	. = ..()
+	if(length(level_ownership_lookup) < new_z_count)
+		level_ownership_lookup.len = new_z_count
 
 //! legacy code below
 

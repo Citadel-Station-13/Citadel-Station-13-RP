@@ -12,7 +12,9 @@ SUBSYSTEM_DEF(overmap_physics)
 	/// currentrun
 	var/list/obj/overmap/entity/running
 
-	//* Global Tuning *//
+	//*                    Global Tuning                       *//
+	//* Sim tuning goes in here; not balance                   *//
+	//* Example: 'thrust mult' is balance, 'sim speed' is sim. *//
 
 	/// hard movement limit in pixels / tick
 	///
@@ -23,15 +25,10 @@ SUBSYSTEM_DEF(overmap_physics)
 	if(!resumed)
 		src.running = src.moving.Copy()
 	var/list/obj/overmap/entity/running = src.running
-	// tick_lag is in deciseconds
-	// in ticker, our wait is that many ds
-	// in non-ticker, our wait is either wait in ds, or a minimum of tick_lag in ds
-	// we convert it to seconds with * 0.1
-	var/dt = (subsystem_flags & SS_TICKER? (wait * world.tick_lag) : max(world.tick_lag, wait)) * 0.1
 	var/index = 0
 	for(index in length(running) to 1 step -1)
 		var/obj/overmap/entity/to_run = running[index]
-		to_run.physics_tick(dt)
+		to_run.physics_tick(nominal_dt_s)
 		if(MC_TICK_CHECK)
 			break
 	running.len -= length(running) - index

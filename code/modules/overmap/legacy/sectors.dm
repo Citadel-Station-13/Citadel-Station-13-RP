@@ -35,7 +35,7 @@
 	if(. == INITIALIZE_HINT_QDEL)
 		return
 
-	find_z_levels() // This populates map_z and assigns z levels to the ship.
+	#warn location binding
 	register_z_levels() // This makes external calls to update global z level information.
 
 	docking_codes = "[ascii2text(rand(65,90))][ascii2text(rand(65,90))][ascii2text(rand(65,90))][ascii2text(rand(65,90))]"
@@ -65,24 +65,13 @@
 		LAZYADD(SSshuttle.sectors_to_initialize, src) //Queued for further init. Will populate the waypoint lists; waypoints not spawned yet will be added in as they spawn.
 		SSshuttle.process_init_queues()
 
-// You generally shouldn't destroy these.
-/obj/overmap/entity/visitable/Destroy()
-	testing("Deleting [src] overmap sector at [x],[y]")
-	unregister_z_levels()
-	return ..()
-
 //This is called later in the init order by SSshuttles to populate sector objects. Importantly for subtypes, shuttles will be created by then.
 /obj/overmap/entity/visitable/proc/populate_sector_objects()
 
 /obj/overmap/entity/visitable/proc/register_z_levels()
-	for(var/zlevel in map_z)
-		map_sectors["[zlevel]"] = src
-
 	(LEGACY_MAP_DATUM).player_levels |= map_z
 
 /obj/overmap/entity/visitable/proc/unregister_z_levels()
-	map_sectors -= map_z
-
 	(LEGACY_MAP_DATUM).player_levels -= map_z
 
 /obj/overmap/entity/visitable/get_scan_data()

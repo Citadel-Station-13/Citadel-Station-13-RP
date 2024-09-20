@@ -8,6 +8,16 @@
 	/// the map level we're bound to
 	var/datum/map_level/level
 
+/datum/overmap_location/level/bind(datum/map_level/location)
+	if(!istype(location))
+		CRASH("unexpected type")
+	#warn impl
+
+/datum/overmap_location/level/unbind()
+	if(!level)
+		return
+	#warn impl
+
 /datum/overmap_location/level/get_z_indices()
 
 /datum/overmap_location/level/get_z_index_random()

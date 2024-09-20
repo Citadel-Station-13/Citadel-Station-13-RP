@@ -154,6 +154,25 @@ SUBSYSTEM_DEF(mapping)
 		reservation_spatial_lookups.len = new_z_count
 	// just to make sure order of ops / assumptions are right
 	ASSERT(length(ordered_levels) == world.maxz)
+	synchronize_datastructures()
+
+/**
+ * Ensure all synchronized lists are valid
+ */
+/datum/controller/subsystem/mapping/proc/synchronize_datastructures()
+#define SYNC(var) if(!var) { var = list() ; } ; if(var.len != world.maxz) { . = TRUE ; var.len = world.maxz; }
+	. = FALSE
+	SYNC(cached_level_up)
+	SYNC(cached_level_down)
+	SYNC(cached_level_east)
+	SYNC(cached_level_west)
+	SYNC(cached_level_north)
+	SYNC(cached_level_south)
+	SYNC(z_stack_lookup)
+	z_stack_dirty = FALSE
+	if(.)
+		z_stack_dirty = TRUE
+#undef SYNC
 
 //! Legacy Below !//
 

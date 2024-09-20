@@ -115,7 +115,7 @@
 	expire_skybox_representation()
 	build_skybox_representation()
 	for(var/obj/overmap/entity/visitable/O in loc)
-		for(var/z in O.map_z)
+		for(var/z in O.location?.get_owned_z_indices())
 			SSparallax.queue_z_vis_update(z)
 
 /obj/overmap/proc/get_scan_data(mob/user)

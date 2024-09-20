@@ -249,6 +249,8 @@
 
 	constructed = TRUE
 
+	SEND_SIGNAL(src, COMSIG_MAP_STRUCT_CONSTRUCTED)
+
 /**
  * Completely destroys our state and unbinds levels.
  */
@@ -265,6 +267,8 @@
 		level.struct_level_index = null
 
 	constructed = FALSE
+
+	SEND_SIGNAL(src, COMSIG_MAP_STRUCT_DECONSTRUCTED)
 
 //* Helpers *//
 

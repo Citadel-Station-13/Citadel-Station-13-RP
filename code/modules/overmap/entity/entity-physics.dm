@@ -22,6 +22,10 @@
 /obj/overmap/entity/process(delta_time)
 	physics_tick(delta_time)
 
+/**
+ * @params
+ * * dt - time passed in seconds
+ */
 /obj/overmap/entity/proc/physics_tick(dt)
 	if(!overmap || !isturf(loc))
 		initialize_physics()

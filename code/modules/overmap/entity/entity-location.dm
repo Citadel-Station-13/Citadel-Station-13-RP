@@ -2,23 +2,29 @@
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
 /**
+ * Checks if we're actually loaded in
+ */
+/obj/overmap/entity/proc/is_loaded_into_world()
+	return !isnull(location)
+
+/**
  * get our z-level indices
  *
  * * entities that are on z's like shuttles instead of owning them use the z level they're on
  *
- * @return null if there are none / this is not semantically an entity on a z, and list() if we're not in a level right now.
+ * @return list() of indices; empty list is possible.
  */
 /obj/overmap/entity/proc/get_z_indices()
 	RETURN_TYPE(/list)
-	return location?.get_z_indices()
+	return location ? location.get_owned_z_indices() : list()
 
 /**
  * get our owned z-level indices
  *
  * * shuttles and similar entities don't own their indices.
  *
- * @return null if this is not semantically an entity on a z, and list() if none are owned, otherwise
+ * @return list() of indices; empty list is possible.
  */
 /obj/overmap/entity/proc/get_owned_z_indices()
 	RETURN_TYPE(/list)
-	return location?.get_owned_z_indices()
+	return location ? location.get_owned_z_indices() : list()

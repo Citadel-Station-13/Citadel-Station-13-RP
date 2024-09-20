@@ -8,6 +8,16 @@
 	/// the map struct we're bound to
 	var/datum/map_struct/struct
 
+/datum/overmap_location/level/bind(datum/map_struct/location)
+	if(!istype(location))
+		CRASH("unexpected type")
+	#warn impl
+
+/datum/overmap_location/level/unbind()
+	if(!struct)
+		return
+	#warn impl
+
 /datum/overmap_location/struct/get_z_indices()
 
 /datum/overmap_location/struct/get_z_index_random()
