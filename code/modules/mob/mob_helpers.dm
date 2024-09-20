@@ -648,3 +648,25 @@ GLOBAL_VAR_INIT(organ_combined_size, 25 + 70 + 30 + 25 + 25 + 25 + 25 + 10 + 10 
 		return TRUE
 	else
 		return FALSE
+
+// asks ghosts to take control of a mob, ported from cit main
+/proc/offer_control(mob/M,ignore_category=null)
+	if(usr)
+		log_admin("[key_name(usr)] has offered control of ([key_name(M)]) to ghosts.")
+		message_admins("[key_name_admin(usr)] has offered control of ([ADMIN_LOOKUPFLW(M)]) to ghosts")
+	var/poll_message = "Do you want to play as [M.real_name ? M.real_name : M.name]?"
+	if(M.mind && M.mind.assigned_role)
+		poll_message = "[poll_message] Job:[M.mind.assigned_role]."
+	if(M.mind && M.mind.special_role)
+		poll_message = "[poll_message] Status:[M.mind.special_role]."
+	var/list/mob/candidates = pollCandidatesForMob(poll_message, ROLE_GHOST, 100, M, ignore_category)
+
+	if(LAZYLEN(candidates))
+		var/mob/C = pick(candidates)
+		message_admins("[key_name_admin(C)] has taken control of ([key_name_admin(M)])")
+		M.ghostize(FALSE, TRUE)
+		C.transfer_client_to(M, FALSE)
+		return TRUE
+	else
+		message_admins("No ghosts were willing to take control of [ADMIN_LOOKUPFLW(M)])")
+		return FALSE
