@@ -114,12 +114,12 @@
 			return ..()
 		if(user.Adjacent(src))
 			// check for equip
-			if(istype(over, /atom/movable/screen/inventory/hand))
-				var/atom/movable/screen/inventory/hand/H = over
+			if(istype(over, /atom/movable/screen/inventory/plate/hand))
+				var/atom/movable/screen/inventory/plate/hand/H = over
 				user.put_in_hand(src, H.index)
 				return CLICKCHAIN_DO_NOT_PROPAGATE
-			else if(istype(over, /atom/movable/screen/inventory/slot))
-				var/atom/movable/screen/inventory/slot/S = over
+			else if(istype(over, /atom/movable/screen/inventory/plate/slot))
+				var/atom/movable/screen/inventory/plate/slot/S = over
 				user.equip_to_slot_if_possible(src, S.slot_id)
 				return CLICKCHAIN_DO_NOT_PROPAGATE
 		// check for slide
@@ -138,12 +138,12 @@
 			return CLICKCHAIN_DO_NOT_PROPAGATE
 	else
 		// being held, check for attempt unequip
-		if(istype(over, /atom/movable/screen/inventory/hand))
-			var/atom/movable/screen/inventory/hand/H = over
+		if(istype(over, /atom/movable/screen/inventory/plate/hand))
+			var/atom/movable/screen/inventory/plate/hand/H = over
 			user.put_in_hand(src, H.index)
 			return CLICKCHAIN_DO_NOT_PROPAGATE
-		else if(istype(over, /atom/movable/screen/inventory/slot))
-			var/atom/movable/screen/inventory/slot/S = over
+		else if(istype(over, /atom/movable/screen/inventory/plate/slot))
+			var/atom/movable/screen/inventory/plate/slot/S = over
 			user.equip_to_slot_if_possible(src, S.slot_id)
 			return CLICKCHAIN_DO_NOT_PROPAGATE
 		else if(istype(over, /turf))

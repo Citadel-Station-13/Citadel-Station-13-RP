@@ -151,10 +151,6 @@
 		over.worn_hook_suppressed = FALSE
 		// put it back in the slot
 		_equip_slot(over, old_slot, flags)
-		// put it back on the screen
-		over.hud_layerise()
-		position_hud_item(over, old_slot)
-		client?.screen |= over
 
 /**
  * drop items if a bodypart is missing

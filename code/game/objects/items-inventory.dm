@@ -16,13 +16,7 @@
 	SEND_SIGNAL(src, COMSIG_ITEM_EQUIPPED, user, slot, flags)
 	SEND_SIGNAL(user, COMSIG_MOB_ITEM_EQUIPPED, src, slot, flags)
 	worn_slot = slot
-	if(!(flags & INV_OP_IS_ACCESSORY))
-		// todo: shouldn't be in here
-		hud_layerise()
-		// todo: shouldn't be in here
-		if(user)
-			user.position_hud_item(src, slot)
-			user.client?.screen |= src
+
 	if((slot != SLOT_ID_HANDS) && equip_sound)
 		playsound(src, equip_sound, 30, ignore_walls = FALSE)
 
@@ -49,12 +43,7 @@
 	SEND_SIGNAL(src, COMSIG_ITEM_UNEQUIPPED, user, slot, flags)
 	SEND_SIGNAL(user, COMSIG_MOB_ITEM_UNEQUIPPED, src, slot, flags)
 	worn_slot = null
-	if(!(flags & INV_OP_IS_ACCESSORY))
-		// todo: shouldn't be in here
-		hud_unlayerise()
-		// todo: shouldn't be in here
-		screen_loc = null
-		user?.client?.screen -= src
+	
 	if(!(flags & INV_OP_DIRECTLY_DROPPING) && (slot != SLOT_ID_HANDS) && unequip_sound)
 		playsound(src, unequip_sound, 30, ignore_walls = FALSE)
 
@@ -78,7 +67,7 @@
 /obj/item/proc/dropped(mob/user, flags, atom/newLoc)
 	SHOULD_CALL_PARENT(TRUE)
 
-	hud_unlayerise()
+	vis_flags &= ~(VIS_INHERIT_LAYER | VIS_INHERIT_PLANE)
 	item_flags &= ~ITEM_IN_INVENTORY
 
 	. = SEND_SIGNAL(src, COMSIG_ITEM_DROPPED, user, flags, newLoc)
@@ -137,6 +126,7 @@
 	hud_layerise()
 
 	item_flags |= ITEM_IN_INVENTORY
+	vis_flags |= (VIS_INHERIT_LAYER | VIS_INHERIT_PLANE)
 
 	// todo: should this be here
 	transform = null

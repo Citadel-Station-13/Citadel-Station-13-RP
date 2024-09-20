@@ -213,7 +213,6 @@
 		// take the old item off our screen
 		client?.screen -= to_wear_over
 		to_wear_over.screen_loc = null
-		to_wear_over.hud_unlayerise()
 		// we don't call slot re-equips here because the equip proc does this for us
 
 	return TRUE

@@ -12,9 +12,9 @@
 	var/list/hidden_classes
 
 	/// keyed slot id to screen object
-	var/list/atom/movable/screen/inventory/slot/slot_by_id
+	var/list/atom/movable/screen/inventory/plate/slot/slot_by_id
 	/// ordered hand objects
-	var/list/atom/movable/screen/inventory/hand/hands
+	var/list/atom/movable/screen/inventory/plate/hand/hands
 
 	/// swap hand object
 	var/atom/movable/screen/inventory/swap_hand/swap_hand
@@ -53,12 +53,12 @@
  */
 /datum/mob_hud/inventory/proc/cleanup()
 	// slots
-	var/list/atom/movable/screen/inventory/slot/slot_objects = all_slot_screen_objects()
+	var/list/atom/movable/screen/inventory/plate/slot/slot_objects = all_slot_screen_objects()
 	remove_screen(slot_objects)
 	QDEL_LIST(slot_objects)
 
 	// hands
-	var/list/atom/movable/screen/inventory/hand/hand_objects = all_hand_screen_objects()
+	var/list/atom/movable/screen/inventory/plate/hand/hand_objects = all_hand_screen_objects()
 	remove_screen(hand_objects)
 	QDEL_LIST(hand_objects)
 
@@ -95,7 +95,7 @@
 		if(!slot)
 			stack_trace("failed to fetch slot during hud rebuild: [slot_id]")
 			continue
-		slot_by_id += new /atom/movable/screen/inventory/slot(null, slot, inventory_slots_with_mappings[slot_id] || list())
+		slot_by_id += new /atom/movable/screen/inventory/plate/slot(null, slot, inventory_slots_with_mappings[slot_id] || list())
 
 	// here is where we basically pull a CSS flexbox.
 
@@ -106,11 +106,11 @@
 	var/max_hands_main = 0
 	var/max_hands_cross = 0
 
-	var/list/atom/movable/screen/inventory/slot/place_anywhere = list()
-	var/list/atom/movable/screen/inventory/slot/
+	var/list/atom/movable/screen/inventory/plate/slot/place_anywhere = list()
+	var/list/atom/movable/screen/inventory/plate/slot/
 
 	for(var/id in slot_by_id)
-		var/atom/movable/screen/inventory/slot/slot_object = slot_by_id[id]
+		var/atom/movable/screen/inventory/plate/slot/slot_object = slot_by_id[id]
 
 		switch(slot_object.inventory_hud_anchor)
 			if(INVENTORY_HUD_ANCHOR_AUTOMATIC)
@@ -127,7 +127,7 @@
 		var/old_length = length(hands)
 		hands.len = number_of_hands
 		for(var/i in old_length + 1 to number_of_hands)
-			var/atom/movable/screen/inventory/hand/hand_object = new(null, src, i)
+			var/atom/movable/screen/inventory/plate/hand/hand_object = new(null, src, i)
 			add_screen(hand_object)
 			hands[i] = hand_object
 	else if(length(hands) > number_of_hands)
@@ -144,12 +144,12 @@
 	if(filter_by_class)
 		if(islist(filter_by_class))
 			for(var/id in slot_by_id)
-				var/atom/movable/screen/inventory/slot/slot_object = slot_by_id[id]
+				var/atom/movable/screen/inventory/plate/slot/slot_object = slot_by_id[id]
 				if(slot_object.inventory_hud_class in filter_by_class)
 					. += slot_object
 		else
 			for(var/id in slot_by_id)
-				var/atom/movable/screen/inventory/slot/slot_object = slot_by_id[id]
+				var/atom/movable/screen/inventory/plate/slot/slot_object = slot_by_id[id]
 				if(slot_object.inventory_hud_class == filter_by_class)
 					. += slot_object
 	else
@@ -173,17 +173,22 @@
 		. += use_self_hand
 
 /datum/mob_hud/inventory/proc/add_item(obj/item/item, datum/inventory_slot/slot_or_index)
-	#warn impl
+	var/atom/movable/screen/inventory/plate/screen_obj = isnum(slot_or_index) ? hands[slot_or_index] : slot_by_id[slot_or_index.id]
+	screen_obj.bind_item(item)
 
 /datum/mob_hud/inventory/proc/remove_item(obj/item/item, datum/inventory_slot/slot_or_index)
-	#warn impl
+	var/atom/movable/screen/inventory/plate/screen_obj = isnum(slot_or_index) ? hands[slot_or_index] : slot_by_id[slot_or_index.id]
+	screen_obj.unbind_item(item)
 
 /datum/mob_hud/inventory/proc/move_item(obj/item/item, datum/inventory_slot/from_slot_or_index, datum/inventory_slot/to_slot_or_index)
-	#warn impl
+	var/atom/movable/screen/inventory/plate/old_screen_obj = isnum(from_slot_or_index) ? hands[from_slot_or_index] : slot_by_id[from_slot_or_index.id]
+	var/atom/movable/screen/inventory/plate/new_screen_obj = isnum(to_slot_or_index) ? hands[to_slot_or_index] : slot_by_id[to_slot_or_index.id]
+	old_screen_obj.unbind_item(item)
+	new_screen_obj.bind_item(item)
 
 /datum/mob_hud/inventory/proc/swap_active_hand(from_index, to_index)
-	var/atom/movable/screen/inventory/hand/old_hand = hands[from_index]
-	var/atom/movable/screen/inventory/hand/new_hand = hands[to_index]
+	var/atom/movable/screen/inventory/plate/hand/old_hand = hands[from_index]
+	var/atom/movable/screen/inventory/plate/hand/new_hand = hands[to_index]
 
 	old_hand.cut_overlay("[old_hand.icon_state]-active")
 	new_hand.add_overlay("[new_hand.icon_state]-active")
@@ -224,12 +229,28 @@
 #warn impl all
 
 /**
+ * Base type of item-holding screen objects
+ */
+/atom/movable/screen/inventory/plate
+
+/atom/movable/screen/inventory/plate/Destroy()
+	if(length(vis_contents) != 0)
+		vis_contents.len = 0
+	return ..()
+
+/atom/movable/screen/inventory/plate/proc/bind_item(obj/item/item)
+	vis_contents += item
+
+/atom/movable/screen/inventory/plate/proc/unbind_item(obj/item/item)
+	vis_contents -= item
+
+/**
  * Slot screen objects
  *
  * * Stores remappings so we don't have to do it separately
  * * Stores calculated screen_loc so we don't have to recalculate unless slots are mutated.
  */
-/atom/movable/screen/inventory/slot
+/atom/movable/screen/inventory/plate/slot
 	/// our inventory slot id
 	var/inventory_slot_id
 	/// our (potentially remapped) class
@@ -241,7 +262,7 @@
 	/// our (potentially remapped) anchor
 	var/inventory_hud_anchor = INVENTORY_HUD_ANCHOR_AUTOMATIC
 
-/atom/movable/screen/inventory/slot/Initialize(mapload, datum/mob_hud/inventory/hud, datum/inventory_slot/slot, list/slot_remappings)
+/atom/movable/screen/inventory/plate/slot/Initialize(mapload, datum/mob_hud/inventory/hud, datum/inventory_slot/slot, list/slot_remappings)
 	. = ..()
 	inventory_slot_id = slot.id
 	inventory_hud_class = slot_remappings[INVENTORY_SLOT_REMAP_CLASS] || slot.inventory_hud_class
@@ -250,31 +271,31 @@
 	inventory_hud_anchor = slot_remappings[INVENTORY_SLOT_REMAP_ANCHOR] || slot.inventory_hud_anchor
 	name = slot_remappings[INVENTORY_SLOT_REMAP_NAME] || slot.display_name || slot.name
 
-/atom/movable/screen/inventory/slot/sync_style(datum/hud_style/style, style_alpha, style_color)
+/atom/movable/screen/inventory/plate/slot/sync_style(datum/hud_style/style, style_alpha, style_color)
 	..()
 	icon = style.inventory_icons_slot
 
-/atom/movable/screen/inventory/slot/handle_inventory_click(mob/user, slot_or_index, obj/item/with_item)
+/atom/movable/screen/inventory/plate/slot/handle_inventory_click(mob/user, slot_or_index, obj/item/with_item)
 
 /**
  * Hand screen objects
  */
-/atom/movable/screen/inventory/hand
+/atom/movable/screen/inventory/plate/hand
 	/// target hand index
 	var/hand_index
 
-/atom/movable/screen/inventory/hand/Initialize(mapload, datum/inventory/host, hand_index)
+/atom/movable/screen/inventory/plate/hand/Initialize(mapload, datum/inventory/host, hand_index)
 	. = ..()
 	src.hand_index = hand_index
 	sync_index(hand_index)
 
-/atom/movable/screen/inventory/hand/sync_style(datum/hud_style/style, style_alpha, style_color)
+/atom/movable/screen/inventory/plate/hand/sync_style(datum/hud_style/style, style_alpha, style_color)
 	..()
 	icon = style.inventory_icons
 
-/atom/movable/screen/inventory/hand/handle_inventory_click(mob/user, slot_or_index, obj/item/with_item)
+/atom/movable/screen/inventory/plate/hand/handle_inventory_click(mob/user, slot_or_index, obj/item/with_item)
 
-/atom/movable/screen/inventory/hand/proc/sync_index(index = hand_index)
+/atom/movable/screen/inventory/plate/hand/proc/sync_index(index = hand_index)
 	screen_loc = SCREEN_LOC_INV_HAND(index)
 	var/index_of_side = round(index / 2)
 	name = "[index % 2? "left" : "right"] hand[index > 1? " #[index]" : ""]"

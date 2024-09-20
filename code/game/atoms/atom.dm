@@ -1087,11 +1087,6 @@
 	set_base_layer(HUD_LAYER_ITEM)
 	// appearance_flags |= NO_CLIENT_COLOR
 
-/atom/proc/hud_unlayerise()
-	plane = initial(plane)
-	set_base_layer(initial(layer))
-	// appearance_flags &= ~(NO_CLIENT_COLOR)
-
 /atom/proc/reset_plane_and_layer()
 	plane = initial(plane)
 	set_base_layer(initial(layer))

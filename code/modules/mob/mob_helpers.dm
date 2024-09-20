@@ -593,35 +593,6 @@ GLOBAL_VAR_INIT(organ_combined_size, 25 + 70 + 30 + 25 + 25 + 25 + 25 + 10 + 10 
 		var/area/A = get_area(src)
 		return A.sound_env
 
-/mob/proc/position_hud_item(obj/item/item, slot)
-	var/held = is_holding(item)
-
-	if(!slot)
-		slot = slot_id_by_item(item)
-
-	if(!istype(hud_used) || !slot || !LAZYLEN(hud_used.slot_info))
-		return
-
-	// They may have hidden their entire hud but the hands.
-	if(!hud_used.hud_shown && held)
-		item.screen_loc = null
-		return
-
-	// They may have hidden the icons in the bottom left with the hide button.
-	if(!hud_used.inventory_shown && !held && (resolve_inventory_slot(slot)?.inventory_slot_flags & INV_SLOT_HUD_REQUIRES_EXPAND))
-		item.screen_loc = null
-		return
-
-	var/screen_place = held? hud_used.hand_info["[get_held_index(item)]"] : hud_used.slot_info["[slot]"]
-	if(!screen_place)
-		item.screen_loc = null
-		return
-
-	if(item.base_pixel_x || item.base_pixel_y)
-		screen_place = pixel_shift_screen_loc(screen_place, item.base_pixel_x, item.base_pixel_y)
-
-	item.screen_loc = screen_place
-
 /mob/proc/can_see_reagents()
 	// Dead guys and silicons can always see reagents.
 	return stat == DEAD || issilicon(src)

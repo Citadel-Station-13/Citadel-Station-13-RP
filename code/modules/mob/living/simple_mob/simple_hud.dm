@@ -21,7 +21,7 @@
 
 	var/list/hud_elements = list()
 	var/atom/movable/screen/using
-	var/atom/movable/screen/inventory/slot/inv_box
+	var/atom/movable/screen/inventory/plate/slot/inv_box
 
 	var/has_hidden_gear
 	if(LAZYLEN(hud_gears))

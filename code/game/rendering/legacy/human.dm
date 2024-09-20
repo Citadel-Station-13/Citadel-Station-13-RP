@@ -17,7 +17,7 @@
 
 	var/list/hud_elements = list()
 	var/atom/movable/screen/using
-	var/atom/movable/screen/inventory/slot/inv_box
+	var/atom/movable/screen/inventory/plate/slot/inv_box
 
 	// Draw the attack intent dialogue.
 	using = new /atom/movable/screen()

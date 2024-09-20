@@ -217,15 +217,6 @@
 	SHOULD_NOT_OVERRIDE(TRUE)
 	. = _set_inv_slot(slot, I, flags) != INVENTORY_SLOT_DOES_NOT_EXIST
 
-/**
- * handles adding an item or updating an item to our hud
- */
-/mob/proc/_handle_inventory_hud_update(obj/item/I, slot)
-	var/datum/inventory_slot/meta = resolve_inventory_slot(slot)
-	I.screen_loc = meta.hud_position
-	if(client)
-		client.screen |= I
-
 //* Slot Change *//
 
 /**

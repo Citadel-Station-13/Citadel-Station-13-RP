@@ -8,18 +8,18 @@
 		return FALSE
 	return TRUE
 
-/atom/movable/screen/inventory/slot
+/atom/movable/screen/inventory/plate/slot
 	/// the ID of this slot
 	var/slot_id
 
-/atom/movable/screen/inventory/slot/Click()
+/atom/movable/screen/inventory/plate/slot/Click()
 	if(!check_inventory_usage(usr))
 		return
 
 	// usr.attack_ui(slot_id)
 
 // Hand slots are special to handle the handcuffs overlay
-/atom/movable/screen/inventory/hand
+/atom/movable/screen/inventory/plate/hand
 	/// hand index
 	var/index
 	/// are we the left hand
@@ -27,10 +27,10 @@
 	/// current handcuffed overlay
 	var/image/handcuff_overlay
 
-/atom/movable/screen/inventory/hand/Click()
+/atom/movable/screen/inventory/plate/hand/Click()
 	usr.activate_hand_of_index(index)
 
-/atom/movable/screen/inventory/hand/update_icon()
+/atom/movable/screen/inventory/plate/hand/update_icon()
 	..()
 	if(!hud)
 		return
@@ -45,11 +45,11 @@
 		if(C.handcuffed)
 			add_overlay(handcuff_overlay)
 
-/atom/movable/screen/inventory/hand/left
+/atom/movable/screen/inventory/plate/hand/left
 	name = "l_hand"
 	is_left_hand = TRUE
 
-/atom/movable/screen/inventory/hand/right
+/atom/movable/screen/inventory/plate/hand/right
 	name = "r_hand"
 	is_left_hand = FALSE
 
