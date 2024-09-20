@@ -219,7 +219,7 @@
 	hud_elements |= zone_sel
 
 	//Hand things
-	if(has_hands)
+	if(get_nominal_hand_count() > 0)
 		//Drop button
 		using = new /atom/movable/screen()
 		using.name = "drop"

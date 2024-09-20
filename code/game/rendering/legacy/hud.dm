@@ -141,8 +141,6 @@ GLOBAL_DATUM_INIT(global_hud, /datum/global_hud, new)
 	wiz_energy_display = null
 	blobpwrdisplay = null
 	blobhealthdisplay = null
-	r_hand_hud_object = null
-	l_hand_hud_object = null
 	action_intent = null
 	move_intent = null
 	adding = null

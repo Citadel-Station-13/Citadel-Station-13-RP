@@ -30,31 +30,4 @@
 /atom/movable/screen/inventory/plate/hand/Click()
 	usr.activate_hand_of_index(index)
 
-/atom/movable/screen/inventory/plate/hand/update_icon()
-	..()
-	if(!hud)
-		return
-	if(!handcuff_overlay)
-		handcuff_overlay = image(
-			"icon" = 'icons/mob/screen_gen.dmi',
-			"icon_state" = "[is_left_hand? "l_hand" : "r_hand"]_hud_handcuffs"
-		)
-	cut_overlays()
-	if(iscarbon(hud?.mymob))
-		var/mob/living/carbon/C = hud.mymob
-		if(C.handcuffed)
-			add_overlay(handcuff_overlay)
-
-/atom/movable/screen/inventory/plate/hand/left
-	name = "l_hand"
-	is_left_hand = TRUE
-
-/atom/movable/screen/inventory/plate/hand/right
-	name = "r_hand"
-	is_left_hand = FALSE
-
-/atom/movable/screen/inventory/swap_hands
-	name = "swap hands"
-
-/atom/movable/screen/inventory/swap_hands/Click()
-	usr.swap_hand()
+#warn parse above

@@ -283,6 +283,8 @@
 /atom/movable/screen/inventory/plate/hand
 	/// target hand index
 	var/hand_index
+	/// should we have handcuffed overlay?
+	var/handcuffed = FALSE
 
 /atom/movable/screen/inventory/plate/hand/Initialize(mapload, datum/inventory/host, hand_index)
 	. = ..()
@@ -301,6 +303,18 @@
 	name = "[index % 2? "left" : "right"] hand[index > 1? " #[index]" : ""]"
 	icon_state = "hand-[index % 2? "left" : "right"]"
 
+#warn hook
+/atom/movable/screen/inventory/plate/hand/proc/set_handcuffed(state)
+	if(state == handcuffed)
+		return
+	handcuffed = state
+	update_icon()
+
+/atom/movable/screen/inventory/plate/hand/update_overlays()
+	. = ..()
+	if(handcuffed)
+		. += image('icons/mob/screen_gen.dmi', "[hand_index % 2 ? "r_hand" : "l_hand"]_hud_handcuffs")
+
 /**
  * Button: 'swap hand'
  */
@@ -312,6 +326,8 @@
 	icon = style.inventory_icons_wide
 
 /atom/movable/screen/inventory/swap_hands/on_click(mob/user, list/params)
+	// todo: remote control
+	user.swap_hand()
 
 /**
  * Button: 'auto equip'
@@ -324,9 +340,14 @@
 	icon = style.inventory_icons
 
 /atom/movable/screen/inventory/equip_hand/on_click(mob/user, list/params)
+	// todo: remote control
+	user.attempt_smart_equip(user.get_active_held_item())
 
 /**
  * Button: 'activate inhand'
  */
 /atom/movable/screen/inventory/use_self_hand
 	#warn does main have this?
+
+/atom/movable/screen/inventory/use_self_hand/on_click(mob/user, list/params)
+	// todo: remote control
