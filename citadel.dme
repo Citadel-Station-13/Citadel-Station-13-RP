@@ -483,7 +483,6 @@
 #include "code\_globals\lists\mobs.dm"
 #include "code\_globals\lists\names.dm"
 #include "code\_globals\lists\objects.dm"
-#include "code\_globals\lists\poll_ignore.dm"
 #include "code\_globals\lists\reaction_recipes.dm"
 #include "code\_globals\lists\sounds.dm"
 #include "code\_globals\lists\typecache.dm"
