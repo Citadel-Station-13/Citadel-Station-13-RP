@@ -367,9 +367,9 @@
 	dir = 5
 	},
 /obj/machinery/button/remote/blast_door{
-	desc = "A remote control-switch for the engine control room blast doors.";
-	id = "EngineBlast";
-	name = "Engine Monitoring Room Blast Doors";
+	desc = "A control for the locking bolts of the access hatch into the containment.";
+	id = "engine_access_hatch";
+	name = "Access Hatch";
 	pixel_x = -25;
 	pixel_y = 5;
 	req_access = list(10)
