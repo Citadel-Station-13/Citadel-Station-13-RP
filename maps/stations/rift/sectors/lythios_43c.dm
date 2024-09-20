@@ -28,14 +28,7 @@
 		"NDV Quicksilver" = list("rift_specops_dock"),
 		"Pirate Skiff" = list("rift_pirate_dock"),
 		)
-
-	extra_z_levels = list(
-		/datum/map_level/rift/plains,
-		/datum/map_level/rift/caves,
-		/datum/map_level/rift/deep,
-		/datum/map_level/rift/base,
-	)
-
+		
 /obj/overmap/entity/visitable/sector/lythios43c/Crossed(var/atom/movable/AM)
 	. = ..()
 	announce_atc(AM,going = FALSE)

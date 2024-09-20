@@ -14,18 +14,6 @@
  * * It is usually already too late by the time Initialize() fires.
  * * By default, /datum/map (not /datum/map_level), /datum/map_template, /datum/shuttle_template are the three things that form new mangling boundaries/contexts.
  */
-/datum/controller/subsystem/mapping
-	/// used to ensure global-ness
-	//  todo: should this be here? this is used literally everywhere
-	var/static/round_global_descriptor
-	/// round-local hash storage for specific map ids
-	var/static/round_local_mangling_cache = list()
-	/// round-local hash storage for specific map ids, reverse lookup
-	var/static/round_local_mangling_reverse_cache = list()
-	/// round-local hash storage for obfuscated ids
-	var/static/round_local_obfuscation_cache = list()
-	/// round-local hash storage for obfuscated ids, reverse lookup
-	var/static/round_local_obfuscation_reverse_cache = list()
 
 /**
  * Called at init first thing to setup mangling data

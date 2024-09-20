@@ -6,21 +6,6 @@
  *
  * Allows dynamic loading of clusters of zlevels (maps) and the initialization of the server with a single station map.
  */
-/datum/controller/subsystem/mapping
-	/// station is loaded
-	var/world_is_loaded = FALSE
-	/// loaded station map
-	var/static/datum/map/station/loaded_station
-	/// next station map
-	var/datum/map/station/next_station
-	/// loaded maps
-	var/static/list/datum/map/loaded_maps = list()
-	/// available maps - k-v lookup by id
-	var/list/datum/map/keyed_maps
-
-/datum/controller/subsystem/mapping/Shutdown()
-	. = ..()
-	write_next_map()
 
 /**
  * initializes the key-value store of map datums.

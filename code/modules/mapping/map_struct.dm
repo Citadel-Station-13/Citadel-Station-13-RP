@@ -80,28 +80,28 @@
 		var/had_vertical = FALSE
 		var/had_horizontal = FALSE
 
-		other = z_grid["[level.x+1],[level.y],[level.z]"]
+		other = z_grid["[level.struct_x+1],[level.struct_y],[level.struct_z]"]
 		if(other)
 			level.link_east = other
 			had_horizontal = TRUE
-		other = z_grid["[level.x-1],[level.y],[level.z]"]
+		other = z_grid["[level.struct_x-1],[level.struct_y],[level.struct_z]"]
 		if(other)
 			level.link_west = other
 			had_horizontal = TRUE
-		other = z_grid["[level.x],[level.y+1],[level.z]"]
+		other = z_grid["[level.struct_x],[level.struct_y+1],[level.struct_z]"]
 		if(other)
 			level.link_north = other
 			had_horizontal = TRUE
-		other = z_grid["[level.x],[level.y-1],[level.z]"]
+		other = z_grid["[level.struct_x],[level.struct_y-1],[level.struct_z]"]
 		if(other)
 			level.link_south = other
 			had_horizontal = TRUE
 
-		other = z_grid["[level.x],[level.y],[level.z+1]"]
+		other = z_grid["[level.struct_x],[level.struct_y],[level.struct_z+1]"]
 		if(other)
 			level.link_above = other
 			had_vertical = TRUE
-		other = z_grid["[level.x],[level.y],[level.z-1]"]
+		other = z_grid["[level.struct_x],[level.struct_y],[level.struct_z-1]"]
 		if(other)
 			level.link_below = other
 			had_vertical = TRUE
@@ -182,6 +182,8 @@
 			CRASH("FATAL: duplicate level")
 		if(!resolved.loaded)
 			CRASH("FATAL: attempted to include an unloaded level in a struct. structs do not currently support lazy-loading.")
+		if(resolved.struct)
+			CRASH("FATAL: level already had struct")
 
 		// add to levels list
 		levels += resolved
@@ -263,75 +265,6 @@
 		level.struct_level_index = null
 
 	constructed = FALSE
-
-#warn below
-
-#warn parse this file
-
-/datum/map_struct/proc/Register(rebuild = TRUE)
-	SSmapping.structs += src
-	SSmapping.z_stack_dirty = TRUE
-	if(rebuild)
-		SSmapping.rebuild_struct_lookup()
-		SSmapping.rebuild_verticality()
-		SSmapping.rebuild_transitions()
-		SSmapping.RebuildCrosslinking()
-
-/datum/map_struct/proc/Unregister(rebuild = TRUE)
-	SSmapping.structs -= src
-	SSmapping.z_stack_dirty = TRUE
-	if(rebuild)
-		SSmapping.rebuild_struct_lookup()
-		SSmapping.rebuild_verticality()
-		SSmapping.rebuild_transitions()
-		SSmapping.RebuildCrosslinking()
-
-/**
- * Ensures all level IDs exist as currently instantiated levels,
- * and also ensures there's no dupe keys/IDs
- */
-/datum/map_struct/proc/Verify()
-	. = TRUE
-	var/list/keymap = list()
-	var/list/idmap = list()
-	for(var/key in z_grid)
-		if(keymap[key])
-			stack_trace("Duplicate key [key].")
-			. = FALSE
-		keymap[key] = TRUE
-		grid_parser.Find(key)
-		if(key != "[grid_parser.group[1]],[grid_parser.group[2]],[grid_parser.group[3]]")
-			stack_trace("Invalid key [key].")
-			. = FALSE
-		var/id = z_grid[key]
-		if(!SSmapping.keyed_levels[id])
-			stack_trace("Couldn't locate level id [id] in SSmapping keyed_levels list.")
-			. = FALSE
-		if(SSmapping.keyed_levels[id].struct)
-			stack_trace("Level id [id] was already in a struct.")
-			. = FALSE
-		if(idmap[id])
-			stack_trace("Duplicate level ID [id]")
-			. = FALSE
-		idmap[id] = TRUE
-
-#warn above
-
-//* Z-Access *//
-
-/**
- * returns mutable copy of real_indices
- */
-/datum/map_struct/proc/mutable_z_list()
-	return z_indices.Copy()
-
-/**
- * directly fetches real indices
- *
- * * Do not modify returned list.
- */
-/datum/map_struct/proc/immutable_z_list()
-	return z_indices
 
 //* Helpers *//
 

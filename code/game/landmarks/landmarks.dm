@@ -77,10 +77,6 @@ INITIALIZE_IMMEDIATE(/obj/landmark)
 			tdomeadmin += loc
 		if("tdomeobserve")
 			tdomeobserve += loc
-		if("prisonsecuritywarp")
-			prisonsecuritywarp += loc
-			delete_on_roundstart = 1
-			return
 		if("blobstart")
 			blobstart += loc
 			delete_on_roundstart = 1

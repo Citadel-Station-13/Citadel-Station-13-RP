@@ -373,11 +373,6 @@
 /datum/map/station/proc/get_network_access(var/network)
 	return 0
 
-// By default transition randomly to another zlevel
-/datum/map/station/proc/get_transit_zlevel(current_z_level)
-	. = SSmapping.crosslinked_levels() - current_z_level
-	return SAFEPICK(.)
-
 /datum/map/station/proc/get_empty_zlevel()
 	if(empty_levels == null)
 		var/datum/map_level/level = SSmapping.allocate_level()
@@ -400,12 +395,14 @@
 
 		// Just the sector we're in
 		if(!long_range || (om_range < 0))
-			return O.map_z.Copy()
+			return O.location?.get_z_indices() || list()
 
 		// Otherwise every sector we're on top of
 		var/list/connections = list()
 		for(var/obj/overmap/entity/visitable/V in bounds(O, om_range))
-			connections |= V.map_z	// Adding list to list adds contents
+			var/list/levels = V.location?.get_z_indices()
+			if(levels)
+				connections |= levels
 		return connections
 
 	// Traditional behavior

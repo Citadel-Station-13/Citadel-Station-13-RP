@@ -6,49 +6,6 @@
  *
  * All adds/removes should go through this. Directly modifying zlevel amount/whatever is forbidden.
  */
-/datum/controller/subsystem/mapping
-	//* level lookups
-	/// indexed level datums
-	var/static/list/datum/map_level/ordered_levels = list()
-	/// k-v id to level datum lookup
-	var/static/list/datum/map_level/keyed_levels = list()
-	/// typepath to level datum lookup
-	/// we do that because we automatically generate level ids
-	/// so we can't use initial(id)
-	var/static/list/datum/map_level/typed_levels = list()
-
-	//* level fluff lookups
-	/// literally just a random hexadecimal store to prevent collision
-	var/static/list/random_fluff_level_hashes = list()
-
-	//* multiz core
-	/// Ordered lookup list for multiz up
-	var/list/cached_level_up
-	/// Ordered lookup list for multiz down
-	var/list/cached_level_down
-	/// Ordered lookup list for east transition
-	var/list/cached_level_east
-	/// Ordered lookup list for west transition
-	var/list/cached_level_west
-	/// Ordered lookup list for north transition
-	var/list/cached_level_north
-	/// Ordered lookup list for south transition
-	var/list/cached_level_south
-	/// Z access lookup - z = list() of zlevels it can directly access vertically
-	/// * For performance, this is currently only including bidirectional links
-	/// * For performance, this does not support looping.
-	/// * This is a direct stack lookup. This does not take map_struct's into account.
-	/// * You should only be using this for technical use cases like z-rendering and whatnot,
-	///   for fluff this is not sufficient to determine if something is actually above/below if it's not actually connected.
-	var/list/z_stack_lookup
-	/// does z stack lookup need a rebuild?
-	var/z_stack_dirty = TRUE
-
-	//* struct system
-	/// Active world_structs
-	var/static/list/datum/map_struct/structs = list()
-	/// World struct lookup by level
-	var/static/list/datum/map_struct/struct_by_z = list()
 
 //* Rebuilds / Caching
 
@@ -69,7 +26,6 @@
 	SYNC(cached_level_north)
 	SYNC(cached_level_south)
 	SYNC(z_stack_lookup)
-	SYNC(struct_by_z)
 	z_stack_dirty = FALSE
 	if(.)
 		z_stack_dirty = TRUE
@@ -446,12 +402,6 @@
 	z_stack_lookup.len = world.maxz
 	var/list/left = list()
 	for(var/z in 1 to world.maxz)
-		// todo: stacks
-		// if(struct_by_z[z])
-		// 	var/datum/world_struct/struct = struct_by_z[z]
-		// 	z_stack_lookup[z] = struct.stack_lookup[struct.real_indices.Find(z)]
-		// else
-		// 	left += z
 		left += z
 	var/list/datum/map_level/bottoms = list()
 	// let's sing the bottom song
@@ -500,9 +450,5 @@
 		var/datum/map_level/level = ordered_levels[z]
 		level.link_above = null
 		level.link_below = null
-		// if(struct_by_z[z])
-		// 	var/datum/world_struct/struct = struct_by_z[z]
-		// 	struct.Deconstruct()
-		// 	qdel(struct)
 	stack_trace("WARNING: Up/Down loops found in zlevels [english_list(loops)]. This is not allowed and will cause both falling and zcopy to infinitely loop. All zlevels involved have been disconnected, and any structs involved have been destroyed.")
 	rebuild_verticality()

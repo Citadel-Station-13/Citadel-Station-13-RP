@@ -141,6 +141,7 @@
 	/// * the indices are zlevel, with the 'center ground floor' being list(0, 0, 0)
 	/// * all levels on a map must have this specified if the map is going to build a struct.
 	var/struct_create_pos
+	#warn hook
 
 	//* Virtual Coordinates *//
 	/// the coordinate of the lower-left / southwest corner border of the map

@@ -9,6 +9,8 @@
  * Descriptive, I know.
  */
 /datum/overmap_location
+	/// owning entity, if any
+	var/obj/overmap/entity/entity
 
 /**
  * get our z-level indices
@@ -25,9 +27,9 @@
  *
  * * shuttles and similar entities don't own their indices.
  *
- * @return null if this is not semantically an entity on a z, and list() if none are owned, otherwise 
+ * @return null if this is not semantically an entity on a z, and list() if none are owned, otherwise
  */
-/datum/overmap_location/proc/get_z_indices()
+/datum/overmap_location/proc/get_owned_z_indices()
 	RETURN_TYPE(/list)
 
 #warn impl
