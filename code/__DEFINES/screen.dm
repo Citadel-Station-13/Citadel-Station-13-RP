@@ -27,31 +27,27 @@
 //* These should be widescreen-agnostic and use anchorings   *//
 //* to the sides of the screen / center.                     *//
 
+//* Mob HUD - Inventory *//
+
 /// the bottom-left hand of hands HUD
-#define SCREEN_LOC_MOB_HANDS_HUD_ANCHOR "CENTER-1:16,BOTTOM+1:5"
+#define SCREEN_LOC_MOB_HUD_INVENTORY_HANDS_BOTTOM_LEFT "CENTER-1:16,BOTTOM+1:5"
+#define SCREEN_LOC_MOB_HUD_INVENTORY_HAND(HAND) "CENTER[index % 2? "" : "-1"]:16,BOTTOM[index < 2? "" : "+[(round(index / 2) - 1)]"]:5"
+#warn fill these in
+#define SCREEN_LOC_MOB_HUD_INVENTORY_HAND_SWAP(TOTAL_HANDS) ""
+#define SCREEN_LOC_MOB_HUD_INVENTORY_EQUIP_HAND(TOTAL_HANDS) ""
 
 /// the bottom-left drawer position of inventory HUD
-#define SCREEN_LOC_MOB_INVENTORY_HUD_ANCHOR "LEFT:6,BOTTOM:5"
+#define SCREEN_LOC_MOB_HUD_INVENTORY_DRAWER "LEFT:6,BOTTOM:5"
+
+#warn fill these in
+#define SCREEN_LOC_MOB_HUD_INVENTORY_SLOT_DRAWER_ALIGNED(MAIN_AXIS, CROSS_AXIS) ""
+#define SCREEN_LOC_MOB_HUD_INVENTORY_SLOT_HANDS_ALIGNED(MAIN_AXIS, CROSS_AXIS) ""
 
 #warn deal with this crap
 
 /// Hands
-#define SCREEN_LOC_INV_HAND(index) "CENTER[index % 2? "" : "-1"]:16,BOTTOM[index < 2? "" : "+[(round(index / 2) - 1)]"]:5"
-#define ui_swaphand1 "CENTER-1:16,BOTTOM+1:5"
-#define ui_swaphand2 "CENTER:16,BOTTOM+1:5"
-
-//Lower left, persistant menu
-#define ui_inventory "LEFT:6,BOTTOM:5"
-
-//Lower center, persistant menu
-#define ui_sstore1 "LEFT+2:10,BOTTOM:5"
-#define ui_id "LEFT+3:12,BOTTOM:5"
-#define ui_belt "LEFT+4:14,BOTTOM:5"
-#define ui_back "CENTER-2:14,BOTTOM:5"
 
 #define ui_equip "CENTER-1:16,BOTTOM+1:5"
-#define ui_storage1 "CENTER+1:16,BOTTOM:5"
-#define ui_storage2 "CENTER+2:16,BOTTOM:5"
 #define ui_smallquad "RIGHT-4:18,BOTTOM:4"
 
 ///aliens

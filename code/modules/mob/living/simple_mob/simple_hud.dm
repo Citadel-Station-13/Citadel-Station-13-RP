@@ -21,42 +21,6 @@
 
 	var/list/hud_elements = list()
 	var/atom/movable/screen/using
-	var/atom/movable/screen/inventory/plate/slot/inv_box
-
-	var/has_hidden_gear
-	if(LAZYLEN(hud_gears))
-		for(var/gear_slot in hud_gears)
-			inv_box = new /atom/movable/screen/inventory()
-			inv_box.icon = ui_style
-			inv_box.color = ui_color
-			inv_box.alpha = ui_alpha
-
-			var/list/slot_data =  hud_gears[gear_slot]
-			inv_box.name =        gear_slot
-			inv_box.screen_loc =  slot_data["loc"]
-			inv_box.slot_id =     slot_data["slot"]
-			inv_box.icon_state =  slot_data["state"]
-			slot_info["[inv_box.slot_id]"] = inv_box.screen_loc
-
-			if(slot_data["dir"])
-				inv_box.setDir(slot_data["dir"])
-
-			if(slot_data["toggle"])
-				other += inv_box
-				has_hidden_gear = 1
-			else
-				adding += inv_box
-
-	if(has_hidden_gear)
-		using = new /atom/movable/screen()
-		using.name = "toggle"
-		using.icon = ui_style
-		using.icon_state = "other"
-		using.screen_loc = ui_inventory
-		using.hud_layerise()
-		using.color = ui_color
-		using.alpha = ui_alpha
-		adding += using
 
 	//Intent Backdrop
 	using = new /atom/movable/screen()

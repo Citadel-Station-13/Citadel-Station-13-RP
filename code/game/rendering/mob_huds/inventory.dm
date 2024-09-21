@@ -16,13 +16,12 @@
 	/// ordered hand objects
 	var/list/atom/movable/screen/inventory/plate/hand/hands
 
+	/// drawer object
+	var/atom/movable/screen/inventory/drawer/button_drawer
 	/// swap hand object
-	var/atom/movable/screen/inventory/swap_hand/swap_hand
+	var/atom/movable/screen/inventory/swap_hand/button_swap_hand
 	/// equip object
-	var/atom/movable/screen/inventory/equip_hand/equip_hand
-	/// use hand on self object
-	var/atom/movable/screen/inventory/use_self_hand/use_self_hand
-	#warn add the drawer.
+	var/atom/movable/screen/inventory/equip_hand/button_equip_hand
 
 /datum/mob_hud/inventory/New(mob/owner, datum/inventory/host)
 	src.host = host
@@ -75,9 +74,9 @@
 	cleanup()
 
 	// buttons
-	add_screen((swap_hand = new))
-	add_screen((equip_hand = new))
-	add_screen((use_self_hand = new))
+	add_screen((button_swap_hand = new))
+	add_screen((button_equip_hand = new))
+	add_screen((button_drawer = new))
 
 	// slots
 	rebuild_slots(inventory_slots_with_mappings)
@@ -138,6 +137,9 @@
 			qdel(hands[i])
 		hands.len = number_of_hands
 
+	button_equip_hand?.screen_loc = SCREEN_LOC_MOB_HUD_INVENTORY_EQUIP_HAND(number_of_hands)
+	button_swap_hand?.screen_loc = SCREEN_LOC_MOB_HUD_INVENTORY_HAND_SWAP(number_of_hands)
+
 /datum/mob_hud/inventory/proc/all_slot_screen_objects(filter_by_class)
 	RETURN_TYPE(/list)
 	. = list()
@@ -165,12 +167,22 @@
 /datum/mob_hud/inventory/proc/all_button_screen_objects()
 	RETURN_TYPE(/list)
 	. = list()
-	if(swap_hand)
-		. += swap_hand
-	if(equip_hand)
-		. += equip_hand
-	if(use_self_hand)
-		. += use_self_hand
+	if(button_swap_hand)
+		. += button_swap_hand
+	if(button_equip_hand)
+		. += button_equip_hand
+	if(button_drawer)
+		. += button_drawer
+
+/datum/mob_hud/inventory/proc/toggle_hidden_class(class)
+	var/list/atom/movable/screen/inventory/affected = all_slot_screen_objects(class)
+	if(class in hidden_classes)
+		LAZYREMOVE(hidden_classes, class)
+		add_screen(affected)
+	else
+		LAZYADD(hidden_classes, class)
+		remove_screen(affected)
+	button_drawer?.update_icon()
 
 /datum/mob_hud/inventory/proc/add_item(obj/item/item, datum/inventory_slot/slot_or_index)
 	var/atom/movable/screen/inventory/plate/screen_obj = isnum(slot_or_index) ? hands[slot_or_index] : slot_by_id[slot_or_index.id]
@@ -193,6 +205,9 @@
 	old_hand.cut_overlay("[old_hand.icon_state]-active")
 	new_hand.add_overlay("[new_hand.icon_state]-active")
 
+/**
+ * Base type of inventory screen objects.
+ */
 /atom/movable/screen/inventory
 	name = "inventory"
 	icon = 'icons/screen/hud/midnight/inventory.dmi'
@@ -298,7 +313,7 @@
 /atom/movable/screen/inventory/plate/hand/handle_inventory_click(mob/user, slot_or_index, obj/item/with_item)
 
 /atom/movable/screen/inventory/plate/hand/proc/sync_index(index = hand_index)
-	screen_loc = SCREEN_LOC_INV_HAND(index)
+	screen_loc = SCREEN_LOC_MOB_HUD_INVENTORY_HAND(index)
 	var/index_of_side = round(index / 2)
 	name = "[index % 2? "left" : "right"] hand[index > 1? " #[index]" : ""]"
 	icon_state = "hand-[index % 2? "left" : "right"]"
@@ -318,6 +333,24 @@
 /**
  * Button: 'swap hand'
  */
+/atom/movable/screen/inventory/drawer
+	icon_state = "drawer"
+
+/atom/movable/screen/inventory/drawer/sync_style(datum/hud_style/style, style_alpha, style_color)
+	..()
+	icon = style.inventory_icons_wide
+
+/atom/movable/screen/inventory/drawer/on_click(mob/user, list/params)
+	// todo: remote control
+	hud.toggle_hidden_class(INVENTORY_HUD_CLASS_DRAWER)
+
+/atom/movable/screen/inventory/drawer/update_icon_state()
+	icon_state = "[INVENTORY_HUD_CLASS_DRAWER in hud.hidden_classes ? "drawer" : "drawer-active"]"
+	return ..()
+
+/**
+ * Button: 'swap hand'
+ */
 /atom/movable/screen/inventory/swap_hand
 	icon_state = "swap"
 
@@ -325,7 +358,7 @@
 	..()
 	icon = style.inventory_icons_wide
 
-/atom/movable/screen/inventory/swap_hands/on_click(mob/user, list/params)
+/atom/movable/screen/inventory/swap_hand/on_click(mob/user, list/params)
 	// todo: remote control
 	user.swap_hand()
 
@@ -342,12 +375,3 @@
 /atom/movable/screen/inventory/equip_hand/on_click(mob/user, list/params)
 	// todo: remote control
 	user.attempt_smart_equip(user.get_active_held_item())
-
-/**
- * Button: 'activate inhand'
- */
-/atom/movable/screen/inventory/use_self_hand
-	#warn does main have this?
-
-/atom/movable/screen/inventory/use_self_hand/on_click(mob/user, list/params)
-	// todo: remote control
