@@ -658,7 +658,7 @@ GLOBAL_VAR_INIT(organ_combined_size, 25 + 70 + 30 + 25 + 25 + 25 + 25 + 10 + 10 
 	var/datum/ghost_query/admin/query = new()
 	query.wait_time = 15 SECONDS
 	var/mob_name = M.real_name ? M.real_name : M.name
-	query.role = mob_name
+	query.role_name = mob_name
 	query.question = "Do you want to play as [mob_name]?"
 	spawn(0)
 		query.query()
