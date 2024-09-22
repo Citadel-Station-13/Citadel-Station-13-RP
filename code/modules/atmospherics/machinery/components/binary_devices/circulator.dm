@@ -48,10 +48,10 @@
 		else
 			input_air = air2
 			output_air = air1
-		last_pressure_delta = max(input_air.return_pressure() - output_air.return_pressure(), 0)
+		last_pressure_delta = max(input_air.return_pressure() - output_air.return_pressure() - 5, 0)
 
 		//only circulate air if there is a pressure difference (plus 5kPa kinetic, 10kPa static friction)
-		if(input_air.temperature > 0 && last_pressure_delta > 5)
+		if(input_air.temperature > 0 && last_pressure_delta > 10)
 
 			//Calculate necessary moles to transfer using PV = nRT
 			recent_moles_transferred = (last_pressure_delta*network1.volume/(input_air.temperature * R_IDEAL_GAS_EQUATION))/3 //uses the volume of the whole network, not just itself
