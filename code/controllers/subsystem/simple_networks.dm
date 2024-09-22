@@ -48,7 +48,7 @@ SUBSYSTEM_DEF(simple_networks)
  * * data - arbitrary list or null
  */
 /datum/proc/simple_network_send(id, message, list/data)
-	var/list/devices = SSnetworks.get_devices(id)
+	var/list/devices = SSsimple_networks.get_devices(id)
 	for(var/datum/D as anything in devices)
 		D.simple_network_receive(id, message, data, src)
 
@@ -88,13 +88,13 @@ SUBSYSTEM_DEF(simple_networks)
 	if(. & ELEMENT_INCOMPATIBLE)
 		return
 	src.id = id
-	if(SSnetworks.simple_network_lookup[id])
-		SSnetworks.simple_network_lookup[id] |= target
+	if(SSsimple_networks.simple_network_lookup[id])
+		SSsimple_networks.simple_network_lookup[id] |= target
 	else
-		SSnetworks.simple_network_lookup[id] = list(target)
+		SSsimple_networks.simple_network_lookup[id] = list(target)
 
 /datum/element/simple_network/Detach(datum/source)
-	SSnetworks.simple_network_lookup[id] -= source
-	if(!length(SSnetworks.simple_network_lookup[id]))
-		SSnetworks.simple_network_lookup -= id
+	SSsimple_networks.simple_network_lookup[id] -= source
+	if(!length(SSsimple_networks.simple_network_lookup[id]))
+		SSsimple_networks.simple_network_lookup -= id
 	return ..()
