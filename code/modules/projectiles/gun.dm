@@ -81,6 +81,7 @@
 	var/list/burst_accuracy = list(0) //allows for different accuracies for each shot in a burst. Applied on top of accuracy
 	var/list/dispersion = list(0)
 	var/mode_name = null
+	// todo: purge with fire
 	var/projectile_type = /obj/projectile	//On ballistics, only used to check for the cham gun
 	var/holy = FALSE //For Divinely blessed guns
 	// todo: this should be on /ballistic, and be `internal_chambered`.
@@ -564,15 +565,6 @@
 /obj/item/gun/proc/consume_next_projectile()
 	return null
 
-//used by aiming code
-/obj/item/gun/proc/can_hit(atom/target as mob, var/mob/living/user as mob)
-	if(!special_check(user))
-		return 2
-	//just assume we can shoot through glass and stuff. No big deal, the player can just choose to not target someone
-	//on the other side of a window if it makes a difference. Or if they run behind a window, too bad.
-	if(check_trajectory(target, user))
-		return 1 // Magic numbers are fun.
-
 //called if there was no projectile to shoot
 /obj/item/gun/proc/handle_click_empty(mob/user)
 	if (user)
@@ -816,7 +808,7 @@
 		playsound(loc, selector_sound, 50, 1)
 	return new_mode
 
-/obj/item/gun/attack_self(mob/user)
+/obj/item/gun/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return

@@ -1,3 +1,6 @@
+/**
+ * todo: refactor this maybe?
+ */
 /obj/projectile/animate
 	name = "bolt of animation"
 	icon_state = "ice_1"

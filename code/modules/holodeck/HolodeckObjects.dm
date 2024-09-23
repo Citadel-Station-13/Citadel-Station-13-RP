@@ -213,7 +213,7 @@
 	return
 
 /obj/item/holo
-	damtype = DAMAGE_TYPE_HALLOSS
+	damage_type = DAMAGE_TYPE_HALLOSS
 
 /obj/item/holo/esword
 	desc = "May the force be within you. Sorta."
@@ -241,7 +241,7 @@
 
 // todo: the parry system was removed from this because that sucks maybe readd it later lol
 
-/obj/item/holo/esword/attack_self(mob/user)
+/obj/item/holo/esword/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return

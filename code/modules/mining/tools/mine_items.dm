@@ -29,7 +29,7 @@
 	attack_verb = list("hit", "pierced", "sliced", "attacked")
 	var/drill_sound = 'sound/weapons/Genhit.ogg'
 	var/drill_verb = "drilling"
-	sharp = 1
+	damage_mode = DAMAGE_MODE_SHARP
 	var/active = 1
 
 	var/excavation_amount = 200
@@ -94,14 +94,13 @@
 	icon_state = "plasmacutter"
 	item_state = "gun"
 	w_class = WEIGHT_CLASS_NORMAL //it is smaller than the pickaxe
-	damtype = "fire"
+	damage_type = DAMAGE_TYPE_BURN
 	digspeed = 20 //Can slice though normal walls, all girders, or be used in reinforced wall deconstruction/ light thermite on fire
 	origin_tech = list(TECH_MATERIAL = 4, TECH_PHORON = 3, TECH_ENGINEERING = 3)
 	desc = "A rock cutter that uses bursts of hot plasma. You could use it to cut limbs off of xenos! Or, you know, mine stuff."
 	drill_verb = "cutting"
 	drill_sound = 'sound/items/Welder.ogg'
-	sharp = 1
-	edge = 1
+	damage_mode = DAMAGE_MODE_SHARP | DAMAGE_MODE_EDGE
 	worth_intrinsic = 175
 
 /obj/item/pickaxe/diamond
@@ -147,7 +146,6 @@
 	origin_tech = list(TECH_MATERIAL = 1, TECH_ENGINEERING = 1)
 	attack_verb = list("mined", "pierced", "stabbed", "attacked")
 	drill_verb = "picking"
-	sharp = 1
 	worth_intrinsic = 75
 
 //Snowflake drill that works like a chainsaw! How fun. Honestly they should probably all work like this or something. I dunno. Might be a fun mining overhaul later.
@@ -194,8 +192,6 @@
 			playsound(src, 'sound/weapons/chainsaw_startup.ogg',40,1)
 			damage_force = 15
 			damage_mode |= DAMAGE_MODE_SHARP | DAMAGE_MODE_EDGE
-			edge = TRUE
-			sharp = TRUE
 			active = TRUE
 			update_icon()
 		else
@@ -208,12 +204,10 @@
 	playsound(user, 'sound/weapons/chainsaw_turnoff.ogg',40,1)
 	damage_force = 3
 	damage_mode = initial(damage_mode)
-	edge = FALSE
-	sharp = FALSE
 	active = FALSE
 	update_icon()
 
-/obj/item/pickaxe/tyrmalin/attack_self(mob/user)
+/obj/item/pickaxe/tyrmalin/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -290,8 +284,7 @@
 	origin_tech = list(TECH_MATERIAL = 1, TECH_ENGINEERING = 1)
 	materials_base = list(MAT_STEEL = 50)
 	attack_verb = list("bashed", "bludgeoned", "thrashed", "whacked")
-	sharp = 0
-	edge = 1
+	damage_mode = DAMAGE_MODE_EDGE
 	worth_intrinsic = 50
 	var/digspeed = 40
 
@@ -304,7 +297,7 @@
 	throw_force = 12
 	tool_speed = 0.7
 	attack_verb = list("slashed", "impaled", "stabbed", "sliced")
-	sharp = 1
+	damage_mode = DAMAGE_MODE_SHARP | DAMAGE_MODE_EDGE
 
 /obj/item/shovel/bronze
 	name = "bronze shovel"
@@ -400,7 +393,7 @@
 	else
 		..()
 
-/obj/item/stack/flag/attack_self(mob/user)
+/obj/item/stack/flag/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return

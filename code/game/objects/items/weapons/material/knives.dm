@@ -52,7 +52,7 @@
 	icon_state = "boxcutter"
 	material_significance = MATERIAL_SIGNIFICANCE_WEAPON_ULTRALIGHT
 
-/obj/item/material/butterfly/attack_self(mob/user)
+/obj/item/material/butterfly/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return

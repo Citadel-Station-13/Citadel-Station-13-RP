@@ -240,7 +240,7 @@
 			if(!affecting.has_status_effect(/datum/status_effect/sight/blindness))
 				affecting.apply_status_effect(/datum/status_effect/sight/blindness, 3 SECONDS)
 
-/obj/item/grab/attack_self(mob/user)
+/obj/item/grab/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return

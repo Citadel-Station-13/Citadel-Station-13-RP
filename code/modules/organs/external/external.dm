@@ -186,9 +186,9 @@
 	var/burn_damage = 0
 	switch(severity)
 		if (1)
-			burn_damage += rand(10, 14)
+			burn_damage += rand(10, 12)
 		if (2)
-			burn_damage += rand(7, 8.5)
+			burn_damage += rand(6.5, 8)
 		if(3)
 			burn_damage += rand(4, 8)
 		if(4)
@@ -200,7 +200,7 @@
 			weapon_descriptor = "electromagnetic overload",
 		)
 
-/obj/item/organ/external/attack_self(mob/user)
+/obj/item/organ/external/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -379,7 +379,8 @@
 	if(is_broken() && brute && !(damage_mode & DAMAGE_MODE_GRADUAL))
 		jostle_bone(brute)
 		if(organ_can_feel_pain() && IS_CONSCIOUS(owner) && prob(40))
-			owner.emote("scream")	//getting hit on broken hand hurts
+			spawn(-1)
+				owner.emote("scream")	//getting hit on broken hand hurts
 
 	// todo: optimization
 	// legacy: autopsy data
