@@ -7327,14 +7327,12 @@
 /area/crew_quarters/heads/chief)
 "Ap" = (
 /obj/item/clothing/mask/breath,
-/obj/item/mining_scanner,
 /obj/item/tank/oxygen,
 /obj/machinery/air_alarm{
 	pixel_y = 22
 	},
 /obj/structure/table/rack/shelf,
 /obj/item/clothing/mask/gas,
-/obj/item/storage/bag/ore,
 /turf/simulated/floor/tiled/techmaint,
 /area/quartermaster/belterdock/gear)
 "Aq" = (
@@ -8813,7 +8811,6 @@
 /area/crew_quarters/heads/chief)
 "Gw" = (
 /obj/structure/closet/secure_closet/miner,
-/obj/item/gun/energy/kinetic_accelerator,
 /turf/simulated/floor/tiled/techmaint,
 /area/quartermaster/belterdock/gear)
 "Gx" = (
@@ -9237,9 +9234,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 1
 	},
-/obj/machinery/camera/network/engineering{
-	dir = 2
-	},
+/obj/machinery/camera/network/engineering,
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
 	},
@@ -9858,11 +9853,9 @@
 /area/engineering/atmos/hallway)
 "KI" = (
 /obj/item/clothing/mask/breath,
-/obj/item/mining_scanner,
 /obj/item/tank/oxygen,
 /obj/structure/table/rack/shelf,
 /obj/item/clothing/mask/gas,
-/obj/item/storage/bag/ore,
 /turf/simulated/floor/tiled/techmaint,
 /area/quartermaster/belterdock/gear)
 "KJ" = (
@@ -12164,7 +12157,6 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/door/firedoor/glass{
-	dir = 2;
 	req_one_access = list(18,47)
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -12203,9 +12195,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/machinery/camera/network/engineering{
-	dir = 2
-	},
+/obj/machinery/camera/network/engineering,
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
