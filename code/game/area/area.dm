@@ -53,6 +53,10 @@
 	/// default initial gas mix
 	var/initial_gas_mix = GAS_STRING_STP
 
+	//* Identity *//
+	/// player-facing name, overrides name when / if necessary.
+	var/display_name
+
 	//? nightshift
 	/// nightshift level
 	/// in general, nightshift must be at or above this level for it to proc on areas.

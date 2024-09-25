@@ -160,13 +160,6 @@
 	name = "\improper Reading Room"
 /area/triumph/surfacebase/vacant_site
 	name = "\improper Vacant Site"
-//Shuttle crashes
-/area/shuttle/triumph/crash1
-	name = "\improper Crash Site 1"
-	icon_state = "shuttle2"
-/area/shuttle/triumph/crash2
-	name = "\improper Crash Site 2"
-	icon_state = "shuttle2"
 
 // Class D world areas
 /area/class_d
