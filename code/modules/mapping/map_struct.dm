@@ -76,41 +76,44 @@
 /datum/map_struct/proc/link_levels(rebuild = TRUE)
 	set waitfor = FALSE
 	for(var/datum/map_level/level as anything in levels)
-		var/datum/map_level/other
-		var/had_vertical = FALSE
-		var/had_horizontal = FALSE
+		switch(level.linkage)
+			if(Z_LINKAGE_FORCED)
+			else
+				var/datum/map_level/other
+				var/had_vertical = FALSE
+				var/had_horizontal = FALSE
 
-		other = z_grid["[level.struct_x+1],[level.struct_y],[level.struct_z]"]
-		if(other)
-			level.link_east = other
-			had_horizontal = TRUE
-		other = z_grid["[level.struct_x-1],[level.struct_y],[level.struct_z]"]
-		if(other)
-			level.link_west = other
-			had_horizontal = TRUE
-		other = z_grid["[level.struct_x],[level.struct_y+1],[level.struct_z]"]
-		if(other)
-			level.link_north = other
-			had_horizontal = TRUE
-		other = z_grid["[level.struct_x],[level.struct_y-1],[level.struct_z]"]
-		if(other)
-			level.link_south = other
-			had_horizontal = TRUE
+				other = z_grid["[level.struct_x+1],[level.struct_y],[level.struct_z]"]
+				if(other)
+					level.link_east = other
+					had_horizontal = TRUE
+				other = z_grid["[level.struct_x-1],[level.struct_y],[level.struct_z]"]
+				if(other)
+					level.link_west = other
+					had_horizontal = TRUE
+				other = z_grid["[level.struct_x],[level.struct_y+1],[level.struct_z]"]
+				if(other)
+					level.link_north = other
+					had_horizontal = TRUE
+				other = z_grid["[level.struct_x],[level.struct_y-1],[level.struct_z]"]
+				if(other)
+					level.link_south = other
+					had_horizontal = TRUE
 
-		other = z_grid["[level.struct_x],[level.struct_y],[level.struct_z+1]"]
-		if(other)
-			level.link_above = other
-			had_vertical = TRUE
-		other = z_grid["[level.struct_x],[level.struct_y],[level.struct_z-1]"]
-		if(other)
-			level.link_below = other
-			had_vertical = TRUE
+				other = z_grid["[level.struct_x],[level.struct_y],[level.struct_z+1]"]
+				if(other)
+					level.link_above = other
+					had_vertical = TRUE
+				other = z_grid["[level.struct_x],[level.struct_y],[level.struct_z-1]"]
+				if(other)
+					level.link_below = other
+					had_vertical = TRUE
 
-		if(rebuild)
-			if(had_horizontal)
-				level.rebuild_transitions()
-			if(had_vertical)
-				level.rebuild_vertical_levels()
+				if(rebuild)
+					if(had_horizontal)
+						level.rebuild_transitions()
+					if(had_vertical)
+						level.rebuild_vertical_levels()
 
 	if(rebuild)
 		SSmapping.rebuild_transitions()
@@ -221,6 +224,7 @@
 			x_y_stack += resolved
 		else
 			x_y_stacks["[x],[y]"] = list(resolved)
+		#warn zplanes are wrong, verify ceiling height too
 		var/list/z_plane = z_planes["[x],[y]"]
 		if(z_plane)
 			z_plane += resolved
@@ -235,6 +239,10 @@
 	// set level data
 	#warn virtual_alignment_x/y/elevation
 	for(var/datum/map_level/level as anything in levels)
+		#warn take into account LEVEL_BORDER_WIDTH
+		level.virtual_alignment_x = level.struct_x * world.maxx
+		level.virtual_alignment_y = level.struct_y * world.maxy
+		#warn take into account zplanes
 
 	// set our data
 	src.z_grid = z_grid

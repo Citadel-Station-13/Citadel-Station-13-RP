@@ -7,6 +7,15 @@
  * Used to abstract the concept of location.
  *
  * Descriptive, I know.
+ *
+ * ## Abstract Procs
+ *
+ * These procs must be implemented on subtypes.
+ *
+ * * bind(location)
+ * * unbind()
+ * * get_z_indices()
+ * * get_owned_z_indices()
  */
 /datum/overmap_location
 	/// owning entity, if any
@@ -43,6 +52,7 @@
  */
 /datum/overmap_location/proc/get_z_indices()
 	RETURN_TYPE(/list)
+	CRASH("unimplemented proc called")
 
 /**
  * get our owned z-level indices
@@ -53,5 +63,4 @@
  */
 /datum/overmap_location/proc/get_owned_z_indices()
 	RETURN_TYPE(/list)
-
-#warn impl
+	CRASH("unimplemented proc called")

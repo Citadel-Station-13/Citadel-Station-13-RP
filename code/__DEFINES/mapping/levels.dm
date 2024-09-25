@@ -8,12 +8,6 @@
 #define Z_LINKAGE_NORMAL "normal"
 /// Forced - disallow things like map_struct's to set our linkages.
 #define Z_LINKAGE_FORCED "forced"
-/// Crosslinked - crosslink with other crosslinked zlevels at random using some semblence of continuity
-// todo: crosslink support
-// #define Z_LINKAGE_CROSSLINKED "crosslink"
-/// Selflooping - automatically link to itself for unlinked sides
-// todo: selfloop support
-// #define Z_LINKAGE_SELFLOOP "selfloop"
 
 //? "transition"
 

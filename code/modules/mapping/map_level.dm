@@ -46,7 +46,6 @@
 	//* Linkage *//
 	/// linkage enum
 	var/linkage = Z_LINKAGE_NORMAL
-	#warn Z_LINKAGE_FORCED should be taken into account during struct stitching
 	/// transition enum
 	var/transition = Z_TRANSITION_DEFAULT
 	/// set to FALSE if transition borders are defined via /turf/level_border, to disable trampling the turf into /turf/level_border
