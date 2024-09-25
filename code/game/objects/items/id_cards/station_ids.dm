@@ -711,56 +711,56 @@
 	desc = "A card that grants usage of Room 1 of the Nebula Motel"
 	icon_state = "guest"
 	job_access_type = null
-	access = list(1611)
+	access = list(161)
 
 /obj/item/card/id/external/nebula/room2
 	name = "Card to Room 2"
 	desc = "A card that grants usage of Room 2 of the Nebula Motel"
 	icon_state = "guest"
 	job_access_type = null
-	access = list(1612)
+	access = list(162)
 
 /obj/item/card/id/external/nebula/room3
 	name = "Card to Room 3"
 	desc = "A card that grants usage of Room 3 of the Nebula Motel"
 	icon_state = "guest"
 	job_access_type = null
-	access = list(1613)
+	access = list(163)
 
 /obj/item/card/id/external/nebula/room4
 	name = "Card to Room 4"
 	desc = "A card that grants usage of Room 4 of the Nebula Motel"
 	icon_state = "guest"
 	job_access_type = null
-	access = list(1614)
+	access = list(164)
 
 /obj/item/card/id/external/nebula/room5
 	name = "Card to Room 5"
 	desc = "A card that grants usage of Room 5 of the Nebula Motel"
 	icon_state = "guest"
 	job_access_type = null
-	access = list(1615)
+	access = list(165)
 
 /obj/item/card/id/external/nebula/room6
 	name = "Card to Room 5"
 	desc = "A card that grants usage of Room 6 of the Nebula Motel"
 	icon_state = "guest"
 	job_access_type = null
-	access = list(1616)
+	access = list(166)
 
 /obj/item/card/id/external/nebula/room7
 	name = "Card to Room 7"
 	desc = "A card that grants usage of Room 7 of the Nebula Motel"
 	icon_state = "guest"
 	job_access_type = null
-	access = list(1617)
+	access = list(167)
 
 /obj/item/card/id/external/nebula/room8
 	name = "Card to Room 8"
 	desc = "A card that grants usage of Room 8 of the Nebula Motel"
 	icon_state = "guest"
 	job_access_type = null
-	access = list(1618)
+	access = list(169)
 
 /obj/item/card/id/external/nebula/room9
 	name = "Card to the VIP Suit"
@@ -768,7 +768,7 @@
 	desc = "A card that grants usage to the VIP suite of the Nebula Motel, and its Arrowhead shuttle."
 	icon_state = "guest"
 	job_access_type = null
-	access = list(1619)
+	access = list(170)
 
 /obj/item/card/id/external/nebula/shuttle1
 	name = "Card of the Spacena Caravan"
@@ -776,7 +776,7 @@
 	desc = "A card that grants usage of the Spacena Carvan Shuttle."
 	icon_state = "guest-invalid"
 	job_access_type = null
-	access = list(1620)
+	access = list(171)
 
 /obj/item/card/id/external/nebula/shuttle2
 	name = "Card of the Spacena Adventurer"
@@ -784,7 +784,7 @@
 	desc = "A card that grants usage of the Spacena Adventurer Shuttle."
 	icon_state = "guest-invalid"
 	job_access_type = null
-	access = list(1621)
+	access = list(172)
 
 /obj/item/card/id/external/nebula/shuttle3
 	name = "Card of the Tug Haul Shuttle"
@@ -792,7 +792,7 @@
 	desc = "A card that grants usage of the Tug Haul Shuttle."
 	icon_state = "guest-invalid"
 	job_access_type = null
-	access = list(1622)
+	access = list(173)
 
 /obj/item/card/id/external/nebula/shuttle4
 	name = "Card of the Teshari Runabout Shuttle"
@@ -800,7 +800,7 @@
 	desc = "A card that grants usage of the Teshari Runabout Shuttle."
 	icon_state = "guest-invalid"
 	job_access_type = null
-	access = list(1623)
+	access = list(174)
 
 /obj/item/card/id/external/nebula/fuel
 	name = "Card for the pumps"
@@ -808,4 +808,4 @@
 	desc = "A card that grants usage of the pumps."
 	icon_state = "generic"
 	job_access_type = null
-	access = list(1624)
+	access = list(175)
