@@ -411,6 +411,8 @@ STANDARD_ACCESS_DATUM(ACCESS_FACTION_PIRATE, faction/pirate, "Pirate")
 #define ACCESS_FACTION_TRADER 160//General Beruang Trader Access
 STANDARD_ACCESS_DATUM(ACCESS_FACTION_TRADER, faction/trader, "Trader")
 
+//? Motel
+
 #define ACCESS_FACTION_MOTEL1 161//Motel-Inn-Room1
 STANDARD_ACCESS_DATUM(ACCESS_FACTION_MOTEL1, faction/trader/room1, "Nebula-Room-1")
 
