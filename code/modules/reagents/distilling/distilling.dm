@@ -248,7 +248,7 @@
 	if(!powered())
 		on = FALSE
 
-	if(!on || (use_atmos && (!connected_port || avg_pressure < 1000)))
+	if(!on || (use_atmos && (!connected_port || avg_pressure < 15)))
 		current_temp = round((current_temp + T20C) / 2)
 
 	else if(on)
@@ -261,7 +261,7 @@
 					shift_mod = -1
 				current_temp = clamp(round((current_temp + 1 * shift_mod) + (rand(-5, 5) / 10)), min_temp, max_temp)
 				use_power(power_rating)
-		else if(connected_port && avg_pressure > 1000)
+		else if(connected_port && avg_pressure > 15)
 			current_temp = round((current_temp + avg_temp) / 2)
 		else if(!run_pump)
 			visible_message("<span class='notice'>\The [src]'s motors wind down.</span>")
