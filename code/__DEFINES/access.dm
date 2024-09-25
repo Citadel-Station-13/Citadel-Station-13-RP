@@ -411,50 +411,6 @@ STANDARD_ACCESS_DATUM(ACCESS_FACTION_PIRATE, faction/pirate, "Pirate")
 #define ACCESS_FACTION_TRADER 160//General Beruang Trader Access
 STANDARD_ACCESS_DATUM(ACCESS_FACTION_TRADER, faction/trader, "Trader")
 
-//? Motel
-
-#define ACCESS_FACTION_MOTEL1 161//Motel-Inn-Room1
-STANDARD_ACCESS_DATUM(ACCESS_FACTION_MOTEL1, faction/trader/room1, "Nebula-Room-1")
-
-#define ACCESS_FACTION_MOTEL2 162//Motel-Inn-Room2
-STANDARD_ACCESS_DATUM(ACCESS_FACTION_MOTEL2, faction/trader/room2, "Nebula-Room-2")
-
-#define ACCESS_FACTION_MOTEL3 163//Motel-Inn-Room3
-STANDARD_ACCESS_DATUM(ACCESS_FACTION_MOTEL3, faction/trader/room3, "Nebula-Room-3")
-
-#define ACCESS_FACTION_MOTEL4 164//Motel-Inn-Room4
-STANDARD_ACCESS_DATUM(ACCESS_FACTION_MOTEL4, faction/trader/room4, "Nebula-Room-4")
-
-#define ACCESS_FACTION_MOTEL5 165//Motel-Inn-Room5
-STANDARD_ACCESS_DATUM(ACCESS_FACTION_MOTEL5, faction/trader/room5, "Nebula-Room-5")
-
-#define ACCESS_FACTION_MOTEL6 166//Motel-Inn-Room6
-STANDARD_ACCESS_DATUM(ACCESS_FACTION_MOTEL6, faction/trader/room6, "Nebula-Room-6")
-
-#define ACCESS_FACTION_MOTEL7 167//Motel-Inn-Room7
-STANDARD_ACCESS_DATUM(ACCESS_FACTION_MOTEL7, faction/trader/room7, "Nebula-Room-7")
-
-#define ACCESS_FACTION_MOTEL8 169//Motel-Inn-Room8
-STANDARD_ACCESS_DATUM(ACCESS_FACTION_MOTEL8, faction/trader/room8, "Nebula-Room-8")
-
-#define ACCESS_FACTION_MOTEL_VIP 170//Motel-Inn-VIP
-STANDARD_ACCESS_DATUM(ACCESS_FACTION_MOTEL_VIP, faction/trader/room/vip, "Nebula-Room-VIP")
-
-#define ACCESS_FACTION_MOTEL_SHUTTLE1 171 //Caravan
-STANDARD_ACCESS_DATUM(ACCESS_FACTION_MOTEL_SHUTTLE1, faction/trader/shuttle1, "Nebula-Shuttle-Carvan")
-
-#define ACCESS_FACTION_MOTEL_SHUTTLE2 172//Adventurer
-STANDARD_ACCESS_DATUM(ACCESS_FACTION_MOTEL_SHUTTLE2, faction/trader/shuttle2, "Nebula-Shuttle-Adventurer")
-
-#define ACCESS_FACTION_MOTEL_SHUTTLE3 173//TUG
-STANDARD_ACCESS_DATUM(ACCESS_FACTION_MOTEL_SHUTTLE3, faction/trader/shuttle3, "Nebula-Shuttle-Tug")
-
-#define ACCESS_FACTION_MOTEL_SHUTTLE4 174//Runabout
-STANDARD_ACCESS_DATUM(ACCESS_FACTION_MOTEL_SHUTTLE4, faction/trader/shuttle4, "Nebula-Shuttle-Runabout")
-
-#define ACCESS_FACTION_MOTEL_FUEL 175//FUEL
-STANDARD_ACCESS_DATUM(ACCESS_FACTION_MOTEL_FUEL, faction/trader/fuel, "Nebula-Fuel")
-
 //? Gaia Station
 
 #define ACCESS_GAIA_GUEST 250//Gaia Station Basic Access

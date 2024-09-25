@@ -271,41 +271,6 @@
 		/obj/item/card/id/external/gaia/vip = 250,
 	)
 
-/obj/machinery/vending/motel
-	name = "M4ria, Nebula Motel Vendor"
-	desc = "A service bot with a blond wig and a broken female voice. Her left arm seems to be have been fitted with a card reader. She seems to enjoy her work here."
-	icon = 'icons/obj/vending.dmi'
-	icon_state = "motel"
-	icon_deny = "motel-deny"
-	icon_vend = "motel-vend"
-	product_slogans = "A place to rest after a long journey !"
-	product_ads = "The VIP Room has a cool shuttle bundled in !; You can maybe see the zoo with Room 5 to 8 !; We clean regulary !; Pretty cheap !"
-
-	products = list(
-		/obj/item/card/id/external/nebula/room1 = 1,
-		/obj/item/card/id/external/nebula/room2 = 1,
-		/obj/item/card/id/external/nebula/room3 = 1,
-		/obj/item/card/id/external/nebula/room4 = 1,
-		/obj/item/card/id/external/nebula/room5 = 1,
-		/obj/item/card/id/external/nebula/room6 = 1,
-		/obj/item/card/id/external/nebula/room7 = 1,
-		/obj/item/card/id/external/nebula/room8 = 1,
-		/obj/item/card/id/external/nebula/room9 = 1,
-
-	)
-
-	prices = list(
-		/obj/item/card/id/external/nebula/room1 = 30,
-		/obj/item/card/id/external/nebula/room2 = 30,
-		/obj/item/card/id/external/nebula/room3 = 30,
-		/obj/item/card/id/external/nebula/room4 = 30,
-		/obj/item/card/id/external/nebula/room5 = 15,
-		/obj/item/card/id/external/nebula/room6 = 15,
-		/obj/item/card/id/external/nebula/room7 = 15,
-		/obj/item/card/id/external/nebula/room8 = 15,
-		/obj/item/card/id/external/nebula/room9 = 80,
-	)
-
 /obj/machinery/vending/farmer
 	name = "Miaphus Farmer"
 	desc = "A short tempered colonist vatborn from Miaphus, here to sell some products. A small chick is here with her."
@@ -421,50 +386,6 @@
 		/obj/item/clothing/shoes/boots/winter = 10,
 		/obj/item/clothing/suit/storage/hooded/wintercoat/olive = 15,
 		/obj/machinery/space_heater = 90,
-	)
-
-/obj/machinery/vending/rentshuttle
-	name = "Shuttle Renting Vendor"
-	desc = "This Nebula gas station employee oversees the location of cheap shuttles usable in dock 2. He also sells the ID card used to get fuel."
-	icon = 'icons/obj/vending.dmi'
-	icon_state = "rent"
-	icon_deny = "rent-deny"
-	icon_vend = "rent-vend"
-	product_slogans = "Our fleet of shuttles are ready to use !"
-	product_ads = "I must legaly tell you that our shuttle are of the lower quality."
-
-	products = list(
-		/obj/item/card/id/external/nebula/fuel = 15,
-		/obj/item/card/id/external/nebula/shuttle1 = 1,
-		/obj/item/card/id/external/nebula/shuttle2 = 1,
-		/obj/item/card/id/external/nebula/shuttle3 = 1,
-		/obj/item/card/id/external/nebula/shuttle4 = 1,
-	)
-
-	prices = list(
-		/obj/item/card/id/external/nebula/fuel = 40,
-		/obj/item/card/id/external/nebula/shuttle1 = 50,
-		/obj/item/card/id/external/nebula/shuttle2 = 50,
-		/obj/item/card/id/external/nebula/shuttle3 = 40,
-		/obj/item/card/id/external/nebula/shuttle4 = 50,
-	)
-
-/obj/machinery/vending/fuelvendor
-	name = "Fuel Vendor"
-	desc = "This Nebula gas station drone offers a ID card that unlocks the fuel pumps."
-	icon = 'icons/obj/vending.dmi'
-	icon_state = "fuel"
-	icon_deny = "fuel-deny"
-	icon_vend = "fuel-vend"
-	product_slogans = "I mean come on, people need to pay at one point : Don't worry, its cheap !"
-	product_ads = "The Dock 1 pumps are a bit more powerfull the dock 2 onces. ; MMh ? Hard time docking ? Ah sorry, we have NO ATC guy. ; No, we don't over to clean your shuttle."
-
-	products = list(
-		/obj/item/card/id/external/nebula/fuel = 15,
-	)
-
-	prices = list(
-		/obj/item/card/id/external/nebula/fuel = 40,
 	)
 
 /obj/machinery/vending/survivalist
