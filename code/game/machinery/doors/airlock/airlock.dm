@@ -1220,3 +1220,10 @@ About the new airlock wires panel:
 
 /obj/machinery/door/airlock/glass_external/public
 	req_one_access = list()
+
+/obj/machinery/door/airlock/hatch/supermatter_access
+	name = "Supermatter Access"
+	desc = "A reinforced hatch designed to withstand severe environmental hazards."
+	icon_state = "door_locked"
+	locked = TRUE
+	heat_resistance = 120000
