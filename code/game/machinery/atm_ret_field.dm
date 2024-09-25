@@ -8,8 +8,7 @@
 	density = FALSE
 	power_channel = ENVIRON	//so they shut off last
 	use_power = USE_POWER_IDLE
-	idle_power_usage = 10
-	active_power_usage = 2500
+	active_power_usage = 1000
 	var/ispowered = TRUE
 	var/isactive = FALSE
 	var/wasactive = FALSE		//controls automatic reboot after power-loss
@@ -27,17 +26,17 @@
 
 /obj/machinery/atmospheric_field_generator/impassable
 	desc = "An older model of ARF-G that generates an impassable retention field. Works just as well as the modern variety, but is slightly more energy-efficient.<br><br>Note: prolonged immersion in active atmospheric retention fields may have negative long-term health consequences."
-	active_power_usage = 2000
+	active_power_usage = 800
 	field_type = /obj/structure/atmospheric_retention_field/impassable
 
 /obj/machinery/atmospheric_field_generator/perma
 	name = "static atmospheric retention field generator"
 	desc = "A floor-mounted piece of equipment that generates an atmosphere-retaining energy field when powered and activated. This model is designed to always be active, though the field will still drop from loss of power or electromagnetic interference.<br><br>Note: prolonged immersion in active atmospheric retention fields may have negative long-term health consequences."
 	alwaysactive = TRUE
-	active_power_usage = 2000
+	active_power_usage = 800
 
 /obj/machinery/atmospheric_field_generator/perma/impassable
-	active_power_usage = 1500
+	active_power_usage = 800
 	field_type = /obj/structure/atmospheric_retention_field/impassable
 
 /obj/machinery/atmospheric_field_generator/attackby(obj/item/W as obj, mob/user as mob)
