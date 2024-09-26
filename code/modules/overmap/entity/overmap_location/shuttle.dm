@@ -2,6 +2,10 @@
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
 /datum/overmap_location/shuttle
+	//* Freeflight *//
+
+	//* Shuttle *//
+
 	/// the shuttle we're bound to
 	var/datum/shuttle/shuttle
 

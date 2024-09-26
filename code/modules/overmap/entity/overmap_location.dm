@@ -82,7 +82,21 @@
 /datum/overmap_location/proc/is_physically_level(z)
 	CRASH("unimplemented proc called")
 
+//* Instantiation *//
+
+/**
+ * Checks if we're loaded in.
+ */
+/datum/overmap_location/proc/get_load_status()
+	return OVERMAP_LOCATION_IS_LOADED
+
 //* Registration *//
+
+/**
+ * Checks if we've locked our levels
+ */
+/datum/overmap_location/proc/has_level_locks()
+	return !isnull(acquired_level_locks)
 
 /**
  * Registers our ownership to the levels we should own.

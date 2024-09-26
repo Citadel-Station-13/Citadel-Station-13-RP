@@ -25,6 +25,15 @@ SUBSYSTEM_DEF(overmaps)
 	/// * Non-owning locations aren't in here.
 	/// * A level can only be owned by one location at a time.
 	/// * Automatically managed by /datum/overmap_location registration
+	/// * Attempting to lock a level already locked by another level is an immediate runtime error.
+	///
+	/// todo: should locations be registered in global list when 'active'?
+	///       this would let us abstract handling away from entity entirely.
+	///
+	/// These axioms must be true at all times:
+	/// * A level is locked (registered here) if it's enclosed by an overmaps entity.
+	/// * A level is not locked if it's enclosed by no overmaps entity.
+	/// * A level is locked / unlocked as a location is assigned / un-assigned from an entity.
 	var/static/list/datum/overmap_location/location_enclosed_levels = list()
 
 /datum/controller/subsystem/overmaps/Initialize()
@@ -34,8 +43,8 @@ SUBSYSTEM_DEF(overmaps)
 
 /datum/controller/subsystem/overmaps/on_max_z_changed(old_z_count, new_z_count)
 	. = ..()
-	if(length(location_lookup) < new_z_count)
-		location_lookup.len = new_z_count
+	if(length(location_enclosed_levels) < new_z_count)
+		location_enclosed_levels.len = new_z_count
 
 //! legacy code below
 

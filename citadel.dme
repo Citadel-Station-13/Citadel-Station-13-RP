@@ -279,6 +279,7 @@
 #include "code\__DEFINES\mobs\wounds.dm"
 #include "code\__DEFINES\objects\objects.dm"
 #include "code\__DEFINES\objects\type_generation.dm"
+#include "code\__DEFINES\overmaps\location.dm"
 #include "code\__DEFINES\overmaps\misc.dm"
 #include "code\__DEFINES\overmaps\overmap.dm"
 #include "code\__DEFINES\power\balancing.dm"

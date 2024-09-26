@@ -2,10 +2,25 @@
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
 /**
- * Checks if we're actually loaded in
+ * Assigns us a location.
+ *
+ * * Will cause the location to acquire its level locks if it isn't already.
  */
-/obj/overmap/entity/proc/is_loaded_into_world()
-	return !isnull(location)
+/obj/overmap/entity/proc/set_location(datum/overmap_location/location)
+	if(!isnull(src.location))
+		// todo: swaps / de-assignment
+		CRASH("location de-assignment not implemented yet")
+
+	src.location = location
+
+	if(!src.location.has_level_locks())
+		src.location.acquire_level_locks()
+
+/**
+ * Checks loaded status
+ */
+/obj/overmap/entity/proc/get_location_load_status()
+	return location ? location.get_load_status() : OVERMAP_LOCATION_IS_NOT_LOADED
 
 /**
  * get our z-level indices
