@@ -100,6 +100,8 @@
 
 /obj/structure/flora/ausbushes/attackby(obj/item/W as obj, mob/user as mob)
 	// Dismantle
+	if(user.a_intent == INTENT_HARM) // who said you CAN'T touch grass (violently)?
+		return ..()
 	if(istype(W, /obj/item/shovel))
 		playsound(src.loc, W.tool_sound, 50, 1)
 		if(do_after(user, 10, src))
@@ -395,7 +397,7 @@
 /obj/structure/flora/sif
 	icon = 'icons/obj/flora/sifflora.dmi'
 
-/obj/structure/flora/sif/attack_hand(mob/user, list/params)
+/obj/structure/flora/sif/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if (user.a_intent == INTENT_HARM)
 		if(do_after(user, 5 SECONDS))
 			user.visible_message("\The [user] digs up \the [src.name].", "You dig up \the [src.name].")
@@ -516,7 +518,7 @@
 	var/gift_type = /obj/item/b_gift
 	var/list/ckeys_that_took = list()
 
-/obj/structure/flora/pumpkin/pumpkin_patch/presents/attack_hand(mob/user, list/params)
+/obj/structure/flora/pumpkin/pumpkin_patch/presents/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	. = ..()
 	if(.)
 		return

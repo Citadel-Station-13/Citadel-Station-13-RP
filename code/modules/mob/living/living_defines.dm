@@ -6,8 +6,13 @@
  */
 /mob/living
 	see_invisible = SEE_INVISIBLE_LIVING
-	movable_flags = MOVABLE_NO_THROW_SPIN | MOVABLE_NO_THROW_DAMAGE_SCALING | MOVABLE_NO_THROW_SPEED_SCALING
+	movable_flags = MOVABLE_NO_THROW_SPIN
 	buckle_flags = BUCKLING_PROJECTS_DEPTH
+
+	//* AI handling
+	/// AI agent type
+	/// While all /atom/movable's can have an ai holder, only /mob/living has an /Initialize() hook to make one.
+	var/ai_holder_type
 
 	//* Health and life related vars *//
 	/// Maximum health that should be possible.  Avoid adjusting this if you can, and instead use modifiers datums.
@@ -68,7 +73,9 @@
 
 	/// This is used to determine if the mob failed a breath. If they did fail a brath, they will attempt to breathe each tick, otherwise just once per 4 ticks.
 	var/failed_last_breath = 0
-	var/lastpuke = 0
+	var/lastpuke = 0//* This file is explicitly licensed under the MIT license. *//
+//* Copyright (c) 2024 Citadel Station developers.          *//
+
 
 	/// Makes attacks harder to land. Negative numbers increase hit chance.
 	var/evasion = 0

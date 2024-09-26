@@ -49,7 +49,9 @@
 		if(get_dist(user,src) <= 1) //not remotely though
 			return TryToSwitchState(user)
 
-/obj/structure/simple_door/attack_hand(mob/user, list/params)
+/obj/structure/simple_door/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
+	if(user.a_intent == INTENT_HARM)
+		return ..()
 	return TryToSwitchState(user)
 
 /obj/structure/simple_door/CanAllowThrough(atom/movable/mover, turf/target)
@@ -75,7 +77,7 @@
 					SwitchState()
 			else
 				SwitchState()
-	else if(istype(user, /obj/mecha))
+	else if(istype(user, /obj/vehicle/sealed/mecha))
 		SwitchState()
 
 /obj/structure/simple_door/proc/SwitchState()
@@ -122,10 +124,10 @@
 
 /obj/structure/simple_door/attackby(obj/item/W as obj, mob/user as mob)
 	if(user.a_intent == INTENT_HARM)
-		return
-	user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
-	var/datum/material/material = get_primary_material()
+		return ..()
 	if(istype(W,/obj/item/pickaxe))
+		user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
+		var/datum/material/material = get_primary_material()
 		var/obj/item/pickaxe/digTool = W
 		visible_message("<span class='danger'>[user] starts digging [src]!</span>")
 		if(do_after(user, digTool.digspeed * material.relative_integrity, src))

@@ -1,5 +1,5 @@
 //* This file is explicitly licensed under the MIT license. *//
-//* Copyright (c) 2023 Citadel Station developers.          *//
+//* Copyright (c) 2024 Citadel Station Developers           *//
 
 /**
  * a faction in the in-game universe
@@ -7,22 +7,36 @@
 /datum/world_faction
 	abstract_type = /datum/world_faction
 
+	//* identity / basics *//
+
 	/// name
-	var/name
+	var/name = "Unknown Faction"
 	/// id - must be unique
 	var/id
+	/// short description blurb
+	var/desc = "A faction of some kind. Someone forgot to describe it."
+
+	//* composition *//
 
 	/// storyteller faction path to init, if any
-	var/datum/storyteller_faction/faction_story
+	// var/datum/storyteller_faction/storyteller_faction
+	// todo: supply faction
+	/// supply faction path to init, if any
+	// var/datum/supply_faction/supply_faction
 
-	/// locations we're in - set to paths to turn into ids on New()
-	var/list/world_location_ids = list(
-		/datum/world_location/frontier,
+	//* world simulation *//
+
+	/// location ids we're in
+	var/list/location_ids = list(
+		/datum/world_location/frontier::id,
 	)
 
-/datum/world_faction/New()
-	for(var/i in 1 to length(world_location_ids))
-		var/datum/world_location/casted = world_location_ids[i]
-		if(!ispath(casted))
-			continue
-		world_location_ids[i] = initial(casted.id)
+	//* lore *//
+
+	// at some point we'll want a way to encapsulate lore generation for these..
+
+/**
+ * called if we're on the active map so we create all our datums
+ */
+/datum/world_faction/proc/prime()
+	return

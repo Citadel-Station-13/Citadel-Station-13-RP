@@ -28,8 +28,6 @@
 	var/fatigue_pressure = 55*ONE_ATMOSPHERE
 	alert_pressure = 55*ONE_ATMOSPHERE
 
-	level = 1
-
 /obj/machinery/atmospherics/pipe/zpipe/Initialize(mapload, newdir)
 	. = ..()
 	init_dir()
@@ -52,11 +50,6 @@
 			initialize_directions = EAST
 		if(SOUTHWEST)
 			initialize_directions = SOUTH
-
-/obj/machinery/atmospherics/pipe/zpipe/hide(var/i)
-	if(istype(loc, /turf/simulated))
-		invisibility = i ? 101 : 0
-	update_icon()
 
 /obj/machinery/atmospherics/pipe/zpipe/process(delta_time)
 	if(!parent) //This should cut back on the overhead calling build_network thousands of times per cycle
@@ -105,7 +98,6 @@
 
 /obj/machinery/atmospherics/pipe/zpipe/update_icon()
 	color = pipe_color
-	return
 
 /obj/machinery/atmospherics/pipe/zpipe/disconnect(obj/machinery/atmospherics/reference)
 	if(reference == node1)
@@ -123,11 +115,13 @@
 // the elusive up pipe //
 /////////////////////////
 /obj/machinery/atmospherics/pipe/zpipe/up
-		icon = 'icons/obj/structures.dmi'
-		icon_state = "up"
+	icon = 'icons/obj/structures.dmi'
+	icon_state = "up"
 
-		name = "upwards pipe"
-		desc = "A pipe segment to connect upwards."
+	name = "upwards pipe"
+	desc = "A pipe segment to connect upwards."
+
+	hides_underfloor = OBJ_UNDERFLOOR_NEVER
 
 /obj/machinery/atmospherics/pipe/zpipe/up/atmos_init()
 	normalize_dir()
@@ -150,11 +144,6 @@
 				if (check_connectable(target) && target.check_connectable(src))
 					node2 = target
 					break
-
-/*	Citadel change, why are upwards pipes capable of being hidden by tiles????
-	var/turf/T = src.loc			// hide if turf is not intact
-	hide(!T.is_plating())
-*/
 
 ///////////////////////
 // and the down pipe //
@@ -188,10 +177,6 @@
 				if (check_connectable(target) && target.check_connectable(src))
 					node2 = target
 					break
-
-
-	var/turf/T = src.loc			// hide if turf is not intact
-	if(level == 1 && !T.is_plating()) hide(1)	// but respect level
 
 ///////////////////////
 // supply/scrubbers  //

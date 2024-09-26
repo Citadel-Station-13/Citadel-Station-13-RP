@@ -181,9 +181,9 @@ var/const/CE_STABLE_THRESHOLD = 0.5
 				continue
 			for(var/datum/wound/W as anything in temp.wounds)
 				if(W.bleeding())
-					if(W.damage_type == PIERCE) //gunshots and spear stabs bleed more
+					if(W.wound_type == WOUND_TYPE_PIERCE) //gunshots and spear stabs bleed more
 						blood_loss_divisor = max(blood_loss_divisor - 5, 1)
-					else if(W.damage_type == BRUISE) //bruises bleed less
+					else if(W.wound_type == WOUND_TYPE_BRUISE) //bruises bleed less
 						blood_loss_divisor = max(blood_loss_divisor + 5, 1)
 					//the farther you get from those vital regions, the less you bleed
 					//depending on how dangerous bleeding turns out to be, it might be better to only apply the reduction to hands and feet
@@ -235,8 +235,12 @@ var/const/CE_STABLE_THRESHOLD = 0.5
 	var/datum/reagent/B = get_blood(container.reagents)
 	if(!B)
 		B = new /datum/reagent/blood
-	B.holder = container
+	B.holder = container.reagents
 	B.volume += amount
+	B.initialize_data()
+	// todo: burn this file with fire
+	container.reagents.reagent_list |= B
+	container.reagents.update_total()
 
 	//set reagent data
 	B.data["donor"] = src
@@ -298,7 +302,7 @@ var/const/CE_STABLE_THRESHOLD = 0.5
 		reagents.add_reagent("blood", amount, injected.data)
 		reagents.update_total()
 		return
-	
+
 	fixblood_if_broken()
 
 	var/datum/reagent/blood/our = get_blood(vessel)

@@ -4,12 +4,13 @@
 /obj/structure/closet/walllocker
 	desc = "A wall mounted storage locker."
 	name = "Wall Locker"
-	icon = 'icons/obj/walllocker.dmi'
-	icon_state = "wall-locker"
+	icon = 'icons/obj/closets/bases/wall.dmi'
+	icon_state = "base"
 	density = 0
 	anchored = 1
 	icon_closed = "wall-locker"
 	icon_opened = "wall-lockeropen"
+	closet_appearance = /singleton/closet_appearance/wall
 
 //spawns endless (3 sets) amounts of breathmask, emergency oxy tank and crowbar
 
@@ -27,7 +28,7 @@
 /obj/structure/closet/walllocker/emerglocker/attackby(obj/item/W as obj, mob/user as mob)
 	return
 
-/obj/structure/closet/walllocker/emerglocker/attack_hand(mob/user, list/params)
+/obj/structure/closet/walllocker/emerglocker/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if (istype(user, /mob/living/silicon/ai))	//Added by Strumpetplaya - AI shouldn't be able to
 		return									//activate emergency lockers.  This fixes that.  (Does this make sense, the AI can't call attack_hand, can it? --Mloc)
 	if(!amount)

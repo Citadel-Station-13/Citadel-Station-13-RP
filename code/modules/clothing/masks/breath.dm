@@ -9,7 +9,7 @@
 	gas_transfer_coefficient = 0.10
 	permeability_coefficient = 0.50
 	var/hanging = 0
-	action_button_name = "Adjust Breath Mask"
+	item_action_name = "Adjust Breath Mask"
 
 
 /obj/item/clothing/mask/breath/proc/adjust_mask(mob/user)
@@ -29,7 +29,7 @@
 			to_chat(user, "You pull the mask up to cover your face.")
 		update_worn_icon()
 
-/obj/item/clothing/mask/breath/attack_self(mob/user)
+/obj/item/clothing/mask/breath/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return

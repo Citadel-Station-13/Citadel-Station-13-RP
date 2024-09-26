@@ -29,6 +29,6 @@ This module **acts** for the world.
 
 This module has the core definitions and relationship definitions of things like world factions, locations, associated lore, etc.
 
-Management is currently done by SSstoryteller, but might be moved to static repositories to hold faction data later.
+Management is done by SSgame_world, but at some point, might be moved to a static repository.
 
 This is the only 'non-ticking' module; it **describes** the world, as opposed to acts as the world.

@@ -55,3 +55,16 @@
 		. = L[picked]
 		// Cut is far more efficient that Remove()
 		L.Cut(picked,picked+1)
+
+/**
+ * choose n from list non-inplace
+ */
+/proc/pick_n_from_list(list/L, n)
+	. = list()
+	// IMPORTANT - this makes it not modify original list
+	L = L.Copy()
+	n = min(n, length(L))
+	for(var/i in 1 to n)
+		var/index = rand(1, length(L))
+		. += L[index]
+		L.Cut(index, index + 1)

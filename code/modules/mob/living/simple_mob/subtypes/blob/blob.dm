@@ -33,7 +33,7 @@
 /mob/living/simple_mob/blob
 	icon = 'icons/mob/blob.dmi'
 	pass_flags = ATOM_PASS_BLOB | ATOM_PASS_TABLE
-	faction = "blob"
+	iff_factions = MOB_IFF_FACTION_BLOB
 	catalogue_data = list(/datum/category_item/catalogue/fauna/blob)
 
 	heat_damage_per_tick = 0
@@ -54,7 +54,7 @@
 	var/obj/structure/blob/factory/factory = null
 
 	mob_class = MOB_CLASS_SLIME
-	ai_holder_type = /datum/ai_holder/simple_mob/melee
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/melee
 
 /mob/living/simple_mob/blob/speech_bubble_appearance()
 	return "slime"

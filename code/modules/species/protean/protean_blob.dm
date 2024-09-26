@@ -9,7 +9,8 @@
 	icon_rest = "rest"
 	icon_dead = "puddle"
 
-	faction = "neutral"
+	iff_factions = MOB_IFF_FACTION_NEUTRAL
+
 	maxHealth = 250
 	health = 250
 	say_list_type = /datum/say_list/protean_blob
@@ -156,7 +157,7 @@
 /mob/living/simple_mob/protean_blob/death(gibbed, deathmessage = "dissolves away, leaving only a few spare parts!")
 	if(!QDELETED(humanform))
 		humanform.forceMove(loc)
-		humanform.ckey = ckey
+		transfer_client_to(humanform)
 		humanform.gib()
 	humanform = null
 	. = ..()
@@ -257,7 +258,7 @@
 	else
 		return ..()
 
-/mob/living/simple_mob/protean_blob/attack_hand(mob/user, list/params)
+/mob/living/simple_mob/protean_blob/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	var/mob/living/L = user
 	if(!istype(L))
 		return
@@ -329,7 +330,7 @@
 	for(var/datum/language/L in languages)
 		blob.add_language(L.name)
 	//Put our owner in it (don't transfer var/mind)
-	blob.ckey = ckey
+	transfer_client_to(blob)
 	temporary_form = blob
 
 	//Mail them to nullspace
@@ -471,7 +472,7 @@
 	forceMove(reform_spot)
 
 	//Put our owner in it (don't transfer var/mind)
-	ckey = blob.ckey
+	blob.transfer_client_to(src)
 	temporary_form = null
 
 	if(client && panel_selected)

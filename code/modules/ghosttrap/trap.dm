@@ -68,7 +68,7 @@ var/list/ghost_traps
 /datum/ghosttrap/proc/transfer_personality(var/mob/candidate, var/mob/target)
 	if(!assess_candidate(candidate))
 		return 0
-	target.ckey = candidate.ckey
+	candidate.transfer_client_to(target)
 	if(target.mind)
 		target.mind.assigned_role = "[ghost_trap_role]"
 	announce_ghost_joinleave(candidate, 0, "[ghost_trap_message]")

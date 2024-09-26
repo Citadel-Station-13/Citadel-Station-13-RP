@@ -29,7 +29,7 @@
 	icon_living = "basic"
 	catalogue_data = list(/datum/category_item/catalogue/technology/drone/hivebot/basic)
 
-	faction = "hivebot"
+	iff_factions = MOB_IFF_FACTION_HIVEBOT
 
 	maxHealth = 3 LASERS_TO_KILL
 	health = 3 LASERS_TO_KILL
@@ -39,7 +39,7 @@
 	attacktext = list("clawed")
 	projectilesound = 'sound/weapons/Gunshot_old.ogg'
 
-	ai_holder_type = /datum/ai_holder/simple_mob/hivebot
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/hivebot
 	say_list_type = /datum/say_list/hivebot
 
 
@@ -54,10 +54,9 @@
 
 // The hivebot's default projectile.
 /obj/projectile/bullet/hivebot
-	damage = 10
-	damage_type = BRUTE
-	sharp = FALSE
-	edge = FALSE
+	damage_force = 10
+	damage_type = DAMAGE_TYPE_BRUTE
+	damage_mode = NONE
 
 /mob/living/simple_mob/mechanical/hivebot/swarm
 	name = "swarm hivebot"
@@ -67,7 +66,7 @@
 	legacy_melee_damage_lower = 8
 	legacy_melee_damage_upper = 8
 
-/datum/ai_holder/simple_mob/hivebot
+/datum/ai_holder/polaris/simple_mob/hivebot
 	pointblank = TRUE
 	conserve_ammo = TRUE
 	firing_lanes = TRUE

@@ -18,6 +18,16 @@
 	/// mobs use ids as ref tags instead of actual refs.
 	var/static/next_mob_id = 0
 
+	//* Actions *//
+	/// our innate action holder; actions here aren't bound to what we're controlling / touching, but instead ourselves
+	///
+	/// * control and sight of these requires mindjacking, basically
+	var/datum/action_holder/actions_innate
+	/// our controlled action holder; actions here are bound to physical control, not our own body
+	///
+	/// * control and sight of these requires only control over motion / actions
+	var/datum/action_holder/actions_controlled
+
 	//? Rendering
 	/// Fullscreen objects
 	var/list/fullscreens = list()
@@ -27,10 +37,6 @@
 	var/m_intent = MOVE_INTENT_RUN
 	/// How are we intending to act? Help / harm / etc.
 	var/a_intent = INTENT_HELP
-
-	//? Economy
-	/// This mob's economic category
-	var/economic_category_mob = ECONOMIC_CATEGORY_MOB_DEFAULT
 
 	//? Perspectives
 	/// using perspective - if none, it'll be self - when client logs out, if using_perspective has reset_on_logout, this'll be unset.
@@ -73,9 +79,9 @@
 	/// Next world.time we will be able to move.
 	var/move_delay = 0
 	/// Last world.time we finished a normal, non relay/intercepted move
-	var/last_move_time = 0
+	var/last_self_move = 0
 	/// Last world.time we turned in our spot without moving (see: facing directions)
-	var/last_turn = 0
+	var/last_self_turn = 0
 	/// Tracks if we have gravity from environment right now.
 	var/in_gravity
 
@@ -110,6 +116,13 @@
 	//? Inventory
 	/// our inventory datum, if any.
 	var/datum/inventory/inventory
+
+	//* IFF *//
+	/// our IFF factions
+	///
+	/// * Do not read directly, use [code/modules/mob/mob-iff.dm] helpers.
+	/// * can be set to a string, or a list of strings.
+	var/iff_factions = MOB_IFF_FACTION_NEUTRAL
 
 	//! Size
 	//! todo kill this with fire it should just be part of icon_scale_x/y.
@@ -201,7 +214,6 @@
 	var/sdisabilities = 0	//?Carbon
 	var/disabilities = 0	//?Carbon
 	var/transforming = null	//?Carbon
-	var/eye_blind = null	//?Carbon
 	var/eye_blurry = null	//?Carbon
 	var/ear_deaf = null		//?Carbon
 	var/ear_damage = null	//?Carbon
@@ -215,7 +227,6 @@
 	var/gen_record = ""
 	var/exploit_record = ""
 	var/exploit_addons = list()		//Assorted things that show up at the end of the exploit_record list
-	var/blinded = null
 	var/bhunger = 0			//?Carbon
 	var/ajourn = 0
 	var/druggy = 0			//?Carbon
@@ -288,8 +299,6 @@
 
 	var/voice_name = "unidentifiable voice"
 
-	///Used for checking whether hostile simple animals will attack you, possibly more stuff later.
-	var/faction = "neutral"
 	/// To prevent pAIs/mice/etc from getting antag in autotraitor and future auto- modes. Uses inheritance instead of a bunch of typechecks.
 	// todo: what the fuck
 	var/can_be_antagged = FALSE
@@ -349,11 +358,7 @@
 
 	var/registered_z
 
-	/// For mechs and fighters ambiance. Can be used in other cases.
-	var/in_enclosed_vehicle = 0
-
 	var/last_radio_sound = -INFINITY
-
 
 	//? vorestation legacy
 	/// Allows flight.

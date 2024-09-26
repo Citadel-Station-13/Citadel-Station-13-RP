@@ -27,7 +27,7 @@
 	icon_living = "viscerator_attack"
 	hovering = TRUE // Won't trigger landmines.
 
-	faction = "syndicate"
+	iff_factions = MOB_IFF_FACTION_MERCENARY
 	maxHealth = 15
 	health = 15
 	movement_cooldown = 0
@@ -44,7 +44,7 @@
 	attack_sound = 'sound/weapons/bladeslice.ogg'
 	attacktext = list("cut", "sliced")
 
-	ai_holder_type = /datum/ai_holder/simple_mob/melee/evasive
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/melee/evasive
 
 /mob/living/simple_mob/mechanical/viscerator/death()
 	..(null,"is smashed into pieces!")

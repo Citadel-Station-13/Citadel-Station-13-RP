@@ -178,7 +178,7 @@
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
 	user.visible_message("<span class='warning'>[user]'s [tool.name] slips, damaging the internal structure of [target]'s [affected.name].</span>",
 	"<span class='warning'>Your [tool.name] slips, damaging the internal structure of [target]'s [affected.name].</span>")
-	target.apply_damage(rand(5,10), BURN, affected)
+	target.apply_damage(rand(5,10), DAMAGE_TYPE_BURN, affected)
 
 ///////////////////////////////////////////////////////////////
 // Burn Repair Surgery
@@ -226,7 +226,7 @@
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
 	user.visible_message("<span class='warning'>[user] causes a short circuit in [target]'s [affected.name]!</span>",
 	"<span class='warning'>You cause a short circuit in [target]'s [affected.name]!</span>")
-	target.apply_damage(rand(5,10), BURN, affected)
+	target.apply_damage(rand(5,10), DAMAGE_TYPE_BURN, affected)
 
 ///////////////////////////////////////////////////////////////
 // Robot Organ Surgery
@@ -280,8 +280,6 @@
 				user.visible_message("<span class='notice'>[user] repairs [target]'s [I.name] with [tool].</span>", \
 				"<span class='notice'>You repair [target]'s [I.name] with [tool].</span>" )
 				I.revive(TRUE)
-				if(I.organ_tag == O_EYES)
-					target.sdisabilities &= ~SDISABILITY_NERVOUS
 
 /datum/surgery_step/robotics/fix_organ_robotic/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	if (!hasorgans(target))
@@ -292,7 +290,7 @@
 	"<span class='warning'>Your hand slips, gumming up the mechanisms inside of [target]'s [affected.name] with \the [tool]!</span>")
 
 	target.adjustToxLoss(5)
-	affected.create_wound(CUT, 5)
+	affected.create_wound(WOUND_TYPE_CUT, 5)
 
 	for(var/obj/item/organ/internal/I in affected.internal_organs)
 		if(I)

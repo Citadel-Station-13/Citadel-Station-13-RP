@@ -10,7 +10,7 @@ GLOBAL_LIST_EMPTY(all_turbines)
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 100 //Watts, I hope.  Just enough to do the computer and display things.
 
-	var/max_power = 500000
+	var/max_power = 5 MEGAWATTS
 	var/thermal_efficiency = 0.65
 
 	var/obj/machinery/atmospherics/component/binary/circulator/circ1
@@ -188,7 +188,7 @@ GLOBAL_LIST_EMPTY(all_turbines)
 	else
 		..()
 
-/obj/machinery/power/generator/attack_hand(mob/user, list/params)
+/obj/machinery/power/generator/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	add_fingerprint(user)
 	if(machine_stat & (BROKEN|NOPOWER) || !anchored)
 		return

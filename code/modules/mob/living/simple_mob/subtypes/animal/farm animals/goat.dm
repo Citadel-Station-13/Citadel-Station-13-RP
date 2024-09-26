@@ -16,7 +16,9 @@
 	icon_dead = "goat_dead"
 	catalogue_data = list(/datum/category_item/catalogue/fauna/livestock/goat)
 
-	faction = "goat"
+	iff_factions = list(
+		MOB_IFF_FACTION_FARM_ANIMAL,
+	)
 
 	health = 40
 	maxHealth = 40
@@ -32,7 +34,7 @@
 	attacktext = list("kicked")
 
 	say_list_type = /datum/say_list/goat
-	ai_holder_type = /datum/ai_holder/simple_mob/retaliate
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/retaliate
 
 	meat_amount = 4
 	bone_amount = 2

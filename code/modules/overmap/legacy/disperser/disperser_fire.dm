@@ -61,7 +61,8 @@
 
 	for(var/obj/overmap/tiled/hazard/O in get_step(linked, overmapdir))
 		candidates += O
-
+	for(var/obj/overmap/entity/fluff/O in get_step(linked, overmapdir))
+		candidates += O
 	//Way to waste a charge
 	if(!length(candidates))
 		return TRUE
@@ -75,6 +76,14 @@
 /obj/machinery/computer/ship/disperser/proc/fire_at_event(obj/overmap/tiled/hazard/finaltarget, chargetype)
 	if(chargetype & finaltarget.weaknesses)
 		var/turf/T = finaltarget.loc
+		if(chargetype == OVERMAP_WEAKNESS_FIRE)
+			new /obj/effect/temp_visual/small_smoke (finaltarget.loc)
+		if(chargetype == OVERMAP_WEAKNESS_EMP)
+			new /obj/effect/temp_visual/shield_impact_effect (finaltarget.loc)
+		if(chargetype == OVERMAP_WEAKNESS_MINING)
+			new /obj/effect/temp_visual/resonance_crush  (finaltarget.loc)
+		if(chargetype == OVERMAP_WEAKNESS_EXPLOSIVE)
+			new /obj/effect/temp_visual/kinetic_blast (finaltarget.loc)
 		qdel(finaltarget)
 		GLOB.overmap_event_handler.update_hazards(T)
 

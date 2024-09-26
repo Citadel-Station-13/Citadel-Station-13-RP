@@ -6,8 +6,8 @@
 
 	name = "manual valve"
 	desc = "A pipe valve"
+	hides_underfloor_underlays = TRUE
 
-	level = 1
 	dir = SOUTH
 	initialize_directions = SOUTH|NORTH
 
@@ -36,9 +36,6 @@
 			return
 		add_underlay(T, node1, get_dir(src, node1))
 		add_underlay(T, node2, get_dir(src, node2))
-
-/obj/machinery/atmospherics/valve/hide(var/i)
-	update_underlays()
 
 /obj/machinery/atmospherics/valve/init_dir()
 	switch(dir)
@@ -130,7 +127,7 @@
 /obj/machinery/atmospherics/valve/attack_ai(mob/user as mob)
 	return
 
-/obj/machinery/atmospherics/valve/attack_hand(mob/user, list/params)
+/obj/machinery/atmospherics/valve/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	src.add_fingerprint(usr)
 	update_icon()
 	sleep(10)
@@ -234,7 +231,7 @@
 /obj/machinery/atmospherics/valve/digital/attack_ai(mob/user as mob)
 	return src.attack_hand(user)
 
-/obj/machinery/atmospherics/valve/digital/attack_hand(mob/user, list/params)
+/obj/machinery/atmospherics/valve/digital/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(!powered())
 		return
 	if(!src.allowed(user))

@@ -103,7 +103,7 @@
 	return TRUE
 
 // Changes which mode it is on.
-/obj/item/rcd/attack_self(mob/user)
+/obj/item/rcd/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -207,7 +207,7 @@
 
 	var/true_delay = rcd_results[RCD_VALUE_DELAY] * tool_speed
 
-	var/datum/beam/rcd_beam = null
+	var/datum/beam_legacy/rcd_beam = null
 	if(ranged)
 		var/atom/movable/beam_origin = user // This is needed because mecha pilots are inside an object and the beam won't be made if it tries to attach to them..
 		if(!isturf(beam_origin.loc))
@@ -363,7 +363,7 @@
 /obj/item/rcd/electric/mounted/hardsuit
 
 // Old method for swapping modes as there is no way to bring up the radial.
-/obj/item/rcd/electric/mounted/hardsuit/attack_self(mob/user)
+/obj/item/rcd/electric/mounted/hardsuit/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return

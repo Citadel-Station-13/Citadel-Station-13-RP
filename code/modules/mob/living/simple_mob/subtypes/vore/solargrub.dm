@@ -35,7 +35,8 @@ GLOBAL_LIST_EMPTY(solargrubs)
 	//var/adult_forms = "/mob/living/simple_mob/vore/solarmoth" // CHOMPEDIT VAR that decides what mob the queen form is. ex /mob/living/simple_mob/subtypes/vore/solarmoth; CitRP: Without lunarmoth, quoted out for fun;
 	// CHOMPEDIT End, Rykka waz here. *pawstamp*
 
-	faction = "grubs"
+	iff_factions = MOB_IFF_FACTION_GRUB
+
 	maxHealth = 50 //grubs can take a lot of harm
 	health = 50
 
@@ -51,7 +52,7 @@ GLOBAL_LIST_EMPTY(solargrubs)
 	response_disarm = "pushes"
 	response_harm = "roughly pushes"
 
-	ai_holder_type = /datum/ai_holder/simple_mob/retaliate/solargrub
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/retaliate/solargrub
 	say_list_type = /datum/say_list/solargrub
 
 	var/poison_per_bite = 5 //grubs cause a shock when they bite someone
@@ -87,55 +88,47 @@ GLOBAL_LIST_EMPTY(solargrubs)
 	if(stat != CONSCIOUS)
 		return
 
-	if(!ai_holder.target)
-			//first, check for potential cables nearby to powersink
-		var/turf/S = loc
-		attached = locate(/obj/structure/cable) in S
-		if(attached)
-			set_AI_busy(TRUE)
-			if(prob(2))
-				src.visible_message("<span class='notice'>\The [src] begins to sink power from the net.</span>")
-			if(prob(5))
-				var/datum/effect_system/spark_spread/sparks = new /datum/effect_system/spark_spread()
-				sparks.set_up(5, 0, get_turf(src))
-				sparks.start()
-			anchored = 1
-			PN = attached.powernet
-			PN.draw_power(power_drain)
-			charge += power_drain
-			for(var/obj/machinery/power/terminal/T in PN.nodes)
-				if(istype(T.master, /obj/machinery/power/apc))
-					var/obj/machinery/power/apc/A = T.master
-					if(A.operating && A.cell)
-						// they're now a threat
-						// but also fuck off with your *pawstamp* comments ~silicons
-						A.cell.use(DYNAMIC_KJ_TO_CELL_UNITS(4))
-		else if(!attached && anchored)
-			anchored = 0
-			PN = null
+	if(istype(src.ai_holder, /datum/ai_holder/polaris))
+		var/datum/ai_holder/polaris/ai_holder = src.ai_holder
+		if(!ai_holder.target)
+				//first, check for potential cables nearby to powersink
+			var/turf/S = loc
+			attached = locate(/obj/structure/cable) in S
+			if(attached)
+				set_AI_busy(TRUE)
+				if(prob(2))
+					src.visible_message("<span class='notice'>\The [src] begins to sink power from the net.</span>")
+				if(prob(5))
+					var/datum/effect_system/spark_spread/sparks = new /datum/effect_system/spark_spread()
+					sparks.set_up(5, 0, get_turf(src))
+					sparks.start()
+				anchored = 1
+				PN = attached.powernet
+				PN.draw_power(power_drain)
+				charge += power_drain
+				for(var/obj/machinery/power/terminal/T in PN.nodes)
+					if(istype(T.master, /obj/machinery/power/apc))
+						var/obj/machinery/power/apc/A = T.master
+						if(A.operating && A.cell)
+							// they're now a threat
+							// but also fuck off with your *pawstamp* comments ~silicons
+							A.cell.use(DYNAMIC_KJ_TO_CELL_UNITS(4))
+			else if(!attached && anchored)
+				anchored = 0
+				PN = null
 
-		// fuck you
-		if(prob(1) && charge >= 32000 && can_evolve == 1) // CitRP: We can quote this out and see what happens; && moth_amount <= 1) //it's reading from the moth_amount global list to determine if it can evolve. There should only ever be a maxcap of 1 existing solar moth alive at any time. TODO: make the code decrease the list after 1 has spawned this shift.
-			anchored = 0
-			PN = attached.powernet
-			release_vore_contents()
-			prey_excludes.Cut()
-			GLOB.moth_amount += 1 //CitRP: There was some magic going on around this here part, it might actualy be working.
-			death_star()
+			// fuck you
+			if(prob(1) && charge >= 32000 && can_evolve == 1) // CitRP: We can quote this out and see what happens; && moth_amount <= 1) //it's reading from the moth_amount global list to determine if it can evolve. There should only ever be a maxcap of 1 existing solar moth alive at any time. TODO: make the code decrease the list after 1 has spawned this shift.
+				anchored = 0
+				PN = attached.powernet
+				GLOB.moth_amount += 1 //CitRP: There was some magic going on around this here part, it might actualy be working.
+				death_star()
 
 /mob/living/simple_mob/vore/solargrub/proc/death_star()
 	visible_message("<span class='warning'>\The [src]'s shell rips open and evolves!</span>")
 	var/chosen_form = pickweight(adult_forms)
 	new chosen_form(get_turf(src))
 	qdel(src)
-
-/mob/living/simple_mob/vore/solargrub //active noms
-	vore_bump_chance = 50
-	vore_bump_emote = "applies minimal effort to try and slurp up"
-	vore_active = 1
-	vore_capacity = 1
-	vore_pounce_chance = 0 //grubs only eat incapacitated targets
-	vore_default_mode = DM_DIGEST
 
 /mob/living/simple_mob/vore/solargrub/apply_melee_effects(var/atom/A)
 	if(isliving(A))
@@ -177,7 +170,7 @@ GLOBAL_LIST_EMPTY(solargrubs)
 		set_light(2.5, 1, COLOR_YELLOW)
 		return 1
 
-/datum/ai_holder/simple_mob/retaliate/solargrub/react_to_attack(atom/movable/attacker)
+/datum/ai_holder/polaris/simple_mob/retaliate/solargrub/react_to_attack_polaris(atom/movable/attacker)
 	holder.anchored = 0
 	holder.set_AI_busy(FALSE)
 	..()

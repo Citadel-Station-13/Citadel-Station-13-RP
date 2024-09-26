@@ -12,7 +12,7 @@
 	icon_dead = "faithless_dead"
 	catalogue_data = list(/datum/category_item/catalogue/fauna/horror)
 
-	faction = "faithless"
+	iff_factions = MOB_IFF_FACTION_MUTANT
 
 	mob_class = MOB_CLASS_DEMONIC
 
@@ -33,7 +33,7 @@
 	attacktext = list("gripped")
 	attack_sound = 'sound/hallucinations/growl1.ogg'
 
-	ai_holder_type = /datum/ai_holder/simple_mob/melee
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/melee
 
 
 	taser_kill = FALSE
@@ -74,7 +74,7 @@
 
 // Cult Variant
 /mob/living/simple_mob/faithless/cult
-	faction = "cult"
+	iff_factions = MOB_IFF_FACTION_SANGUINE_CULT
 	supernatural = TRUE
 
 /mob/living/simple_mob/faithless/cult/cultify()

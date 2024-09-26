@@ -99,7 +99,7 @@
 	special_attack_cooldown = 10 SECONDS
 	projectiletype = /obj/projectile/energy/homing_bolt // We're now a bullet hell game.
 	projectilesound = 'sound/weapons/wave.ogg'
-	ai_holder_type = /datum/ai_holder/simple_mob/intentional/adv_dark_gygax
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/intentional/adv_dark_gygax
 	var/obj/effect/overlay/energy_ball/energy_ball = null
 
 /mob/living/simple_mob/mechanical/mecha/combat/gygax/dark/advanced/Destroy()
@@ -121,18 +121,16 @@
 /obj/projectile/energy/homing_bolt
 	name = "homing bolt"
 	icon_state = "force_missile"
-	damage = 20
-	damage_type = BURN
+	damage_force = 20
+	damage_type = DAMAGE_TYPE_BURN
 	damage_flag = ARMOR_LASER
+	speed = 5 * WORLD_ICON_SIZE
+	homing_turn_speed = 85
 
 /obj/projectile/energy/homing_bolt/launch_projectile(atom/target, target_zone, mob/user, params, angle_override, forced_spread = 0)
 	..()
 	if(target)
 		set_homing_target(target)
-
-/obj/projectile/energy/homing_bolt/fire(angle, atom/direct_target)
-	..()
-	set_pixel_speed(0.5)
 
 #define ELECTRIC_ZAP_POWER 20000
 
@@ -168,11 +166,11 @@
 				if(L.stat)
 					continue // Otherwise it can get pretty laggy if there's loads of corpses around.
 				L.inflict_shock_damage(i * 2)
-				if(L && L.has_AI()) // Some mobs delete themselves when dying.
-					L.ai_holder.react_to_attack(src)
+				if(L && L.has_polaris_AI()) // Some mobs delete themselves when dying.
+					L.ai_holder.react_to_attack_polaris(src)
 
-			else if(istype(thing, /obj/mecha))
-				var/obj/mecha/M = thing
+			else if(istype(thing, /obj/vehicle/sealed/mecha))
+				var/obj/vehicle/sealed/mecha/M = thing
 				M.take_damage_legacy(i * 2, "energy") // Mechs don't have a concept for siemens so energy armor check is the best alternative.
 
 		sleep(1 SECOND)
@@ -229,7 +227,11 @@
 	name = "rocket"
 	icon_state = "mortar"
 
-/obj/projectile/arc/explosive_rocket/on_impact(turf/T)
+/obj/projectile/arc/explosive_rocket/on_impact(atom/target, impact_flags, def_zone, efficiency)
+	. = ..()
+	if(!isturf(target))
+		return
+	var/turf/T = target
 	new /obj/effect/explosion(T) // Weak explosions don't produce this on their own, apparently.
 	explosion(T, 0, 0, 2, adminlog = FALSE)
 
@@ -246,9 +248,12 @@
 	name = "micro singularity"
 	icon_state = "bluespace"
 
-/obj/projectile/arc/microsingulo/on_impact(turf/T)
+/obj/projectile/arc/microsingulo/on_impact(atom/target, impact_flags, def_zone, efficiency)
+	. = ..()
+	if(!isturf(target))
+		return
+	var/turf/T = target
 	new /obj/effect/temporary_effect/pulse/microsingulo(T)
-
 
 /obj/effect/temporary_effect/pulse/microsingulo
 	name = "micro singularity"
@@ -271,7 +276,7 @@
 // The Advanced Dark Gygax's AI.
 // The mob has three special attacks, based on the current intent.
 // This AI choose the appropiate intent for the situation, and tries to ensure it doesn't kill itself by firing missiles at its feet.
-/datum/ai_holder/simple_mob/intentional/adv_dark_gygax
+/datum/ai_holder/polaris/simple_mob/intentional/adv_dark_gygax
 	conserve_ammo = TRUE					// Might help avoid 'I shoot the wall forever' cheese.
 	var/closest_desired_distance = 1		// Otherwise run up to them to be able to potentially shock or punch them.
 
@@ -284,7 +289,7 @@
 
 // Used to control the mob's positioning based on which special attack it has done.
 // Note that the intent will not change again until the next special attack is about to happen.
-/datum/ai_holder/simple_mob/intentional/adv_dark_gygax/on_engagement(atom/A)
+/datum/ai_holder/polaris/simple_mob/intentional/adv_dark_gygax/on_engagement(atom/A)
 	// Make the AI backpeddle if using an AoE special attack.
 	var/list/risky_intents = list(INTENT_GRAB, INTENT_HARM) // Mini-singulo and missiles.
 	if(holder.a_intent in risky_intents)
@@ -304,7 +309,7 @@
 
 // Changes the mob's intent, which controls which special attack is used.
 // INTENT_DISARM causes Electric Defense, INTENT_GRAB causes Micro-Singularity, and INTENT_HARM causes Missile Barrage.
-/datum/ai_holder/simple_mob/intentional/adv_dark_gygax/pre_special_attack(atom/A)
+/datum/ai_holder/polaris/simple_mob/intentional/adv_dark_gygax/pre_special_attack(atom/A)
 	if(isliving(A))
 		var/mob/living/target = A
 

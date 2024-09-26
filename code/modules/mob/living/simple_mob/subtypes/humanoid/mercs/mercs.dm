@@ -54,7 +54,7 @@
 	icon_gib = "syndicate_gib"
 	catalogue_data = list(/datum/category_item/catalogue/fauna/mercenary/human)
 
-	faction = "syndicate"
+	iff_factions = MOB_IFF_FACTION_MERCENARY
 	movement_cooldown = 2
 
 	status_flags = 0
@@ -74,7 +74,7 @@
 	corpse = /obj/spawner/corpse/syndicatesoldier
 	loot_list = list(/obj/item/material/knife/tacknife = 100)	// Might as well give it the knife
 
-	ai_holder_type = /datum/ai_holder/simple_mob/merc
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/merc
 	say_list_type = /datum/say_list/merc
 
 	// Grenade special attack vars
@@ -95,7 +95,7 @@
 	var/mob_count = 0				// Are there enough mobs to consider grenading?
 	var/turf/T = get_turf(A)
 	for(var/mob/M in range(T, 2))
-		if(M.faction == faction) 	// Don't grenade our friends
+		if(shares_iff_faction(M))
 			return FALSE
 		if(M in oview(src, special_attack_max_range))	// And lets check if we can actually see at least two people before we throw a grenade
 			if(!M.stat)			// Dead things don't warrant a grenade
@@ -123,23 +123,23 @@
 ////////////////////////////////
 //		Merc AI Types
 ////////////////////////////////
-/datum/ai_holder/simple_mob/merc
+/datum/ai_holder/polaris/simple_mob/merc
 	threaten = TRUE
 	returns_home = TRUE		// Stay close to the base...
 	wander = TRUE			// ... but "patrol" a little.
 
-/datum/ai_holder/simple_mob/merc/ranged
+/datum/ai_holder/polaris/simple_mob/merc/ranged
 	pointblank = TRUE		// They get close? Just shoot 'em!
 	firing_lanes = TRUE		// But not your buddies!
 	conserve_ammo = TRUE	// And don't go wasting bullets!
 
-/datum/ai_holder/simple_mob/merc/ranged/surpressor
+/datum/ai_holder/polaris/simple_mob/merc/ranged/surpressor
 	conserve_ammo = FALSE //For Surpressive Fire Mercs like the Heavy and Tommy-Las
 
-/datum/ai_holder/simple_mob/merc/ranged/shotgun
+/datum/ai_holder/polaris/simple_mob/merc/ranged/shotgun
 	max_range = 4 //Stop attempting to buckshot people from maximum vision range.
 
-/datum/ai_holder/simple_mob/merc/ranged/sweeper //Fully ultilize that auto-shotgun
+/datum/ai_holder/polaris/simple_mob/merc/ranged/sweeper //Fully ultilize that auto-shotgun
 	max_range = 4
 	conserve_ammo = FALSE
 
@@ -161,7 +161,7 @@
 	attack_edge = 1
 	attacktext = list("slashed")
 
-	loot_list = list(/obj/item/melee/energy/sword = 100, /obj/item/shield/energy = 100)
+	loot_list = list(/obj/item/melee/transforming/energy/sword = 100, /obj/item/shield/transforming/energy = 100)
 
 // They have a shield, so they try to block
 /mob/living/simple_mob/humanoid/merc/melee/sword/attackby(var/obj/item/O as obj, var/mob/user as mob)
@@ -169,7 +169,7 @@
 		if(prob(20))
 			visible_message("<span class='danger'>\The [src] blocks \the [O] with its shield!</span>")
 			if(user)
-				ai_holder.react_to_attack(user)
+				ai_holder.react_to_attack_polaris(user)
 			return
 		else
 			..()
@@ -177,16 +177,13 @@
 		to_chat(user, "<span class='warning'>This weapon is ineffective, it does no damage.</span>")
 		visible_message("<span class='warning'>\The [user] gently taps [src] with \the [O].</span>")
 
-/mob/living/simple_mob/humanoid/merc/melee/sword/bullet_act(var/obj/projectile/Proj)
-	if(!Proj)	return
+/mob/living/simple_mob/humanoid/merc/melee/sword/on_bullet_act(obj/projectile/proj, impact_flags, list/bullet_act_args)
 	if(prob(35))
-		visible_message("<span class='warning'>[src] blocks [Proj] with its shield!</span>")
-		if(Proj.firer)
-			ai_holder.react_to_attack(Proj.firer)
-		return
-	else
-		..()
-
+		visible_message("<span class='warning'>[src] blocks [proj] with its shield!</span>")
+		if(proj.firer)
+			ai_holder.react_to_attack_polaris(proj.firer)
+		return PROJECTILE_IMPACT_BLOCKED
+	return ..()
 
 ////////////////////////////////
 //			Ranged
@@ -205,7 +202,7 @@
 
 	needs_reload = TRUE
 	reload_max = 7		// Not the best default, but it fits the pistol
-	ai_holder_type = /datum/ai_holder/simple_mob/merc/ranged
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/merc/ranged
 
 // C20r SMG
 /mob/living/simple_mob/humanoid/merc/ranged/smg
@@ -216,7 +213,7 @@
 
 	loot_list = list(/obj/item/gun/ballistic/automatic/c20r = 100)
 
-	ai_holder_type = /datum/ai_holder/simple_mob/merc/ranged/surpressor
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/merc/ranged/surpressor
 
 	base_attack_cooldown = 5 // Two attacks a second or so.
 	reload_max = 20
@@ -318,7 +315,7 @@
 	reload_max = 4
 	reload_time = 1.5 SECONDS	// It's a shotgun, it takes a moment
 
-	ai_holder_type = /datum/ai_holder/simple_mob/merc/ranged/shotgun
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/merc/ranged/shotgun
 
 	special_attack_charges = 5
 
@@ -331,7 +328,7 @@
 
 	loot_list = list(/obj/item/gun/ballistic/garand/sniper = 100, /obj/item/clothing/head/cowboy_hat = 100)
 
-	ai_holder_type = /datum/ai_holder/simple_mob/ranged/kiting/sniper
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/ranged/kiting/sniper
 
 ////////////////////////////////
 //		Space Mercs
@@ -420,7 +417,7 @@
 
 	loot_list = list(/obj/item/gun/ballistic/shotgun/pump/combat = 100)
 
-	ai_holder_type = /datum/ai_holder/simple_mob/merc/ranged/shotgun
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/merc/ranged/shotgun
 
 //Auto-Shotgun Space Merc
 /mob/living/simple_mob/humanoid/merc/ranged/space/shotgun/auto
@@ -437,7 +434,7 @@
 
 	loot_list = list(/obj/item/gun/ballistic/automatic/as24 = 100)
 
-	ai_holder_type = /datum/ai_holder/simple_mob/merc/ranged/sweeper
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/merc/ranged/sweeper
 
 //Machine Gun Merc
 /mob/living/simple_mob/humanoid/merc/ranged/space/heavy
@@ -454,7 +451,7 @@
 
 	loot_list = list(/obj/item/gun/ballistic/automatic/lmg = 100)
 
-	ai_holder_type = /datum/ai_holder/simple_mob/merc/ranged/surpressor
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/merc/ranged/surpressor
 
 //Tommy-Las Merc
 /mob/living/simple_mob/humanoid/merc/ranged/space/tommylas
@@ -472,7 +469,7 @@
 
 	loot_list = list(/obj/item/gun/energy/tommylaser = 100)
 
-	ai_holder_type = /datum/ai_holder/simple_mob/merc/ranged/surpressor
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/merc/ranged/surpressor
 
 /mob/living/simple_mob/humanoid/merc/ranged/space/fal
 	name = "mercenary commando"
@@ -496,7 +493,7 @@
 	they've got a Corporate sponsor backing them up."
 	value = CATALOGUER_REWARD_MEDIUM
 
-/datum/ai_holder/simple_mob/merc/ranged/suppressor
+/datum/ai_holder/polaris/simple_mob/merc/ranged/suppressor
 	respect_alpha = FALSE // he really just shoots you
 	vision_range = 10 // plutonia experience
 
@@ -506,7 +503,7 @@
 	icon_state = "syndi-ranged-space-sup"
 	icon_living = "syndi-ranged-space-sup"
 	armor_legacy_mob = list(melee = 80, bullet = 65, laser = 50, energy = 15, bomb = 80, bio = 100, rad = 100) // this is the merc rig's stats
-	ai_holder_type = /datum/ai_holder/simple_mob/merc/ranged/suppressor
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/merc/ranged/suppressor
 	say_list_type = /datum/say_list/merc/elite
 	projectiletype = /obj/projectile/bullet/pistol/medium/ap/suppressor // it's high velocity
 	projectilesound = 'sound/weapons/doompistol.ogg' // converted from .wavs extracted from doom 2
@@ -546,22 +543,20 @@
 		if(prob(50))
 			visible_message("<span class='danger'>\The [src] blocks \the [O] with its shield!</span>")
 			if(user)
-				ai_holder.react_to_attack(user)
+				ai_holder.react_to_attack_polaris(user)
 			return
 		else
 			..()
 	else
 		visible_message("<span class='warning'>\The [user] gently taps [src] with \the [O].</span>")
 
-/mob/living/simple_mob/humanoid/merc/ranged/space/suppressor/bullet_act(var/obj/projectile/Proj)
-	if(!Proj)	return
+/mob/living/simple_mob/humanoid/merc/ranged/space/suppressor/on_bullet_act(obj/projectile/proj, impact_flags, list/bullet_act_args)
 	if(prob(50))
-		visible_message("<span class='warning'>[src] blocks [Proj] with its shield!</span>")
-		if(Proj.firer)
-			ai_holder.react_to_attack(Proj.firer)
-		return
-	else
-		..()
+		visible_message("<span class='warning'>[src] blocks [proj] with its shield!</span>")
+		if(proj.firer)
+			ai_holder.react_to_attack_polaris(proj.firer)
+		return PROJECTILE_IMPACT_BLOCKED
+	return ..()
 
 ////////////////////////////////
 //			PoI Mercs
@@ -612,7 +607,7 @@
 	icon_living = "voxpirate"
 	icon_dead = "voxpirate_dead"
 
-	faction = "voxpirate"
+	iff_factions = MOB_IFF_FACTION_PIRATE
 	movement_cooldown = 4
 
 	status_flags = 0
@@ -641,11 +636,11 @@
 
 	corpse = /obj/spawner/corpse/vox/pirate
 	loot_list = list(/obj/item/gun/ballistic/shotgun/pump/rifle/vox_hunting = 100,
-					/obj/item/ammo_magazine/clip/c762 = 30,
-					/obj/item/ammo_magazine/clip/c762 = 30
+					/obj/item/ammo_magazine/a7_62mm/clip = 30,
+					/obj/item/ammo_magazine/a7_62mm/clip = 30
 					)
 
-	ai_holder_type = /datum/ai_holder/simple_mob/merc
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/merc
 	say_list_type = /datum/say_list/merc/voxpirate
 
 /mob/living/simple_mob/humanoid/merc/voxpirate/pirate
@@ -681,9 +676,9 @@
 	attack_sharp = 1
 	attack_edge = 1
 
-	ai_holder_type = /datum/ai_holder/simple_mob/melee/evasive
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/melee/evasive
 	corpse = /obj/spawner/corpse/vox/boarder_m
-	loot_list = list(/obj/item/melee/energy/sword = 100)
+	loot_list = list(/obj/item/melee/transforming/energy/sword = 100)
 
 // They're good with the swords? I dunno. I like the idea they can deflect.
 /mob/living/simple_mob/humanoid/merc/voxpirate/boarder/attackby(var/obj/item/O, var/mob/user)
@@ -691,7 +686,7 @@
 		if(prob(20))
 			visible_message("<span class='danger'>\The [src] blocks \the [O] with its sword!</span>")
 			if(user)
-				ai_holder.react_to_attack(user)
+				ai_holder.react_to_attack_polaris(user)
 			return
 		else
 			..()
@@ -699,15 +694,13 @@
 		to_chat(user, "<span class='warning'>This weapon is ineffective, it does no damage.</span>")
 		visible_message("<span class='warning'>\The [user] gently taps [src] with \the [O].</span>")
 
-/mob/living/simple_mob/humanoid/merc/voxpirate/boarder/bullet_act(var/obj/projectile/Proj)
-	if(!Proj)	return
+/mob/living/simple_mob/humanoid/merc/voxpirate/boarder/on_bullet_act(obj/projectile/proj, impact_flags, list/bullet_act_args)
 	if(prob(35))
-		visible_message("<span class='warning'>[src] blocks [Proj] with its sword!</span>")
-		if(Proj.firer)
-			ai_holder.react_to_attack(Proj.firer)
-		return
-	else
-		..()
+		visible_message("<span class='warning'>[src] blocks [proj] with its sword!</span>")
+		if(proj.firer)
+			ai_holder.react_to_attack_polaris(proj.firer)
+		return PROJECTILE_IMPACT_BLOCKED
+	return ..()
 
 ////////////////////////////////
 //			Vox Ranged
@@ -724,11 +717,11 @@
 	projectiletype = /obj/projectile/bullet/pellet/shotgun
 	projectilesound = 'sound/weapons/Gunshot_shotgun.ogg'
 
-	ai_holder_type = /datum/ai_holder/simple_mob/merc/ranged/shotgun
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/merc/ranged/shotgun
 	corpse = /obj/spawner/corpse/vox/boarder_r
 	loot_list = list(/obj/item/gun/ballistic/shotgun/pump/combat = 100,
-					/obj/item/ammo_magazine/m12gdrum = 30,
-					/obj/item/ammo_magazine/m12gdrum = 30
+					/obj/item/ammo_magazine/a12g/drum = 30,
+					/obj/item/ammo_magazine/a12g/drum = 30
 					)
 
 	needs_reload = TRUE
@@ -755,7 +748,7 @@
 	projectiletype = /obj/projectile/ion
 	projectilesound = 'sound/weapons/Laser.ogg'
 
-	ai_holder_type = /datum/ai_holder/simple_mob/ranged/kiting
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/ranged/kiting
 	corpse = /obj/spawner/corpse/vox/boarder_t
 	loot_list = list(/obj/item/gun/energy/ionrifle)
 
@@ -787,7 +780,7 @@
 	projectiletype = /obj/projectile/sonic/weak
 	projectilesound = 'sound/effects/basscannon.ogg'
 
-	ai_holder_type = /datum/ai_holder/simple_mob/destructive
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/destructive
 	corpse = /obj/spawner/corpse/vox/suppressor
 	loot_list = list(/obj/item/gun/energy/sonic = 100)
 
@@ -819,7 +812,7 @@
 	projectiletype = /obj/projectile/beam/darkmatter
 	projectilesound = 'sound/weapons/eLuger.ogg'
 
-	ai_holder_type = /datum/ai_holder/simple_mob/destructive
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/destructive
 	corpse = /obj/spawner/corpse/vox/captain
 	loot_list = list(/obj/item/gun/energy/darkmatter = 100)
 

@@ -24,9 +24,14 @@ GLOBAL_LIST_INIT(multiz_hole_baseturfs, typecacheof(list(
 	if(turf_type)
 		ChangeTurf(turf_type)
 
-/turf/proc/CopyTurf(turf/T, copy_flags = NONE)
-	if(T.type != type)
-		T.ChangeTurf(type)
+/**
+ * @params
+ * * T - the turf to copy to
+ * * change_flags - ChangeTurf() flags
+ */
+/turf/proc/CopyTurf(turf/T, change_flags)
+	if(T.type != type || (change_flags & CHANGETURF_FORCEOP))
+		T.ChangeTurf(type, null, change_flags)
 	if(T.icon_state != icon_state)
 		T.icon_state = icon_state
 	if(T.icon != icon)
@@ -38,6 +43,8 @@ GLOBAL_LIST_INIT(multiz_hole_baseturfs, typecacheof(list(
 
 /**
  * get what /turf/baseturf_bottom should be
+ *
+ * todo: using a proc is inefficient. is there a better way? like a define?
  */
 /turf/proc/baseturf_core()
 	// todo: this is shitcode, pull it out on maploader refactor.
@@ -53,6 +60,8 @@ GLOBAL_LIST_INIT(multiz_hole_baseturfs, typecacheof(list(
 			. = /turf/simulated/open
 /**
  * get baseturf on bottom
+ *
+ * todo: using a proc is inefficient. is there a better way? like a define?
  */
 /turf/proc/baseturf_bottom()
 	. = islist(baseturfs)? baseturfs[1] : baseturfs
@@ -60,6 +69,8 @@ GLOBAL_LIST_INIT(multiz_hole_baseturfs, typecacheof(list(
 
 /**
  * get baseturf underneath
+ *
+ * todo: using a proc is inefficient. is there a better way? like a define?
  */
 /turf/proc/baseturf_underneath()
 	. = islist(baseturfs)? baseturfs[length(baseturfs)] : baseturfs
@@ -76,6 +87,8 @@ GLOBAL_LIST_INIT(multiz_hole_baseturfs, typecacheof(list(
 	//       we refactor ZAS
 	//       then we can skip all this bullshit and have proper space zmimic
 	//       as long as zm overhead isn't too high.
+	//* THIS CANNOT CALL ANY PROCS UP UNTIL 'new path'! *//
+	// todo: this entire switch section is kind of ass
 	switch(path)
 		if(null)
 			return
@@ -108,7 +121,7 @@ GLOBAL_LIST_INIT(multiz_hole_baseturfs, typecacheof(list(
 			if(istype(below, /turf/space))
 				path = /turf/space
 
-	if(!global.use_preloader && path == type && !(flags & CHANGETURF_FORCEOP) && (baseturfs == new_baseturfs)) // Don't no-op if the map loader requires it to be reconstructed, or if this is a new set of baseturfs
+	if(!global.dmm_preloader_active && path == type && !(flags & CHANGETURF_FORCEOP) && (baseturfs == new_baseturfs)) // Don't no-op if the map loader requires it to be reconstructed, or if this is a new set of baseturfs
 		return src
 	if(!(atom_flags & ATOM_INITIALIZED) || (flags & CHANGETURF_SKIP))
 		return new path(src)
@@ -364,6 +377,7 @@ GLOBAL_LIST_INIT(multiz_hole_baseturfs, typecacheof(list(
  * every if(!density) is a if(!istype(src, /turf/closed)) in this version.
  */
 /turf/proc/PlaceOnTop(list/new_baseturfs, turf/fake_turf_type, flags)
+	//* THIS CANNOT CALL ANY 'new'-CALLING PROCS UNTIL CHANGETURF CALLS! *//
 	var/area/turf_area = loc
 	if(new_baseturfs && !length(new_baseturfs))
 		new_baseturfs = list(new_baseturfs)
@@ -410,7 +424,7 @@ GLOBAL_LIST_INIT(multiz_hole_baseturfs, typecacheof(list(
 
 // Copy an existing turf and put it on top
 // Returns the new turf
-/turf/proc/CopyOnTop(turf/copytarget, ignore_bottom=1, depth=INFINITY, copy_air = FALSE)
+/turf/proc/CopyOnTop(turf/copytarget, ignore_bottom=1, depth=INFINITY, copy_flags)
 	var/list/new_baseturfs = list()
 	new_baseturfs += baseturfs
 	new_baseturfs += type
@@ -427,13 +441,13 @@ GLOBAL_LIST_INIT(multiz_hole_baseturfs, typecacheof(list(
 			target_baseturfs -= new_baseturfs & GLOB.blacklisted_automated_baseturfs
 			new_baseturfs += target_baseturfs
 
-	var/turf/newT = copytarget.CopyTurf(src, copy_air)
+	var/turf/newT = copytarget.CopyTurf(src, copy_flags)
 	newT.baseturfs = baseturfs_string_list(new_baseturfs, newT)
 	return newT
 
 //If you modify this function, ensure it works correctly with lateloaded map templates.
 /turf/proc/AfterChange(flags, oldType) //called after a turf has been replaced in ChangeTurf()
-	levelupdate()
+	update_underfloor_objects()
 	if (above)
 		above.update_mimic()
 

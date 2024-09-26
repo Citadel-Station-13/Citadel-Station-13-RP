@@ -8,7 +8,6 @@
 	icon_dead = "wolfgirl-dead"
 	icon = 'icons/mob/vore.dmi'
 
-	faction = "wolfgirl"
 	maxHealth = 30
 	health = 30
 
@@ -22,7 +21,7 @@
 	attacktext = list("slashed")
 
 	say_list_type = /datum/say_list/wolfgirl
-	ai_holder_type = /datum/ai_holder/simple_mob/retaliate/cooperative/wolfgirl
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/retaliate/cooperative/wolfgirl
 
 	var/loopstop = 0 //To prevent circular awoooos.
 /*
@@ -35,11 +34,8 @@
 */
 // Activate Noms!
 /mob/living/simple_mob/vore/wolfgirl
-	vore_active = 1
-	vore_pounce_chance = 40
-	vore_icons = SA_ICON_LIVING
 
-/datum/ai_holder/simple_mob/retaliate/cooperative/wolfgirl/on_hear_say(mob/living/speaker, message)
+/datum/ai_holder/polaris/simple_mob/retaliate/cooperative/wolfgirl/on_hear_say(mob/living/speaker, message)
 
 	if(!speaker.client)
 		return

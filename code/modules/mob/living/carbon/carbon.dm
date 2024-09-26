@@ -38,7 +38,7 @@
 				N.show_message("<font color='red'><B>[M] bursts out of [src]!</B></font>", 2)
 	..()
 
-/mob/living/carbon/attack_hand(mob/user, list/params)
+/mob/living/carbon/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	var/mob/living/carbon/M = user
 	if(!istype(M))
 		return ..()
@@ -252,15 +252,6 @@
 /mob/living/carbon/cannot_use_vents()
 	return
 
-/mob/living/carbon/slip(var/slipped_on,stun_duration=8)
-	if(buckled)
-		return 0
-	stop_pulling()
-	to_chat(src, "<span class='warning'>You slipped on [slipped_on]!</span>")
-	playsound(src.loc, 'sound/misc/slip.ogg', 50, 1, -3)
-	afflict_paralyze(20 * FLOOR(stun_duration/2, 1))
-	return 1
-
 /mob/living/carbon/proc/add_chemical_effect(var/effect, var/magnitude = 1)
 	if(effect in chem_effects)
 		chem_effects[effect] += magnitude
@@ -314,8 +305,8 @@
 	if(handcuffed)
 		drop_all_held_items()
 		stop_pulling()
-	update_action_buttons() //some of our action buttons might be unusable when we're handcuffed.
 	update_inv_handcuffed()
+	update_mobility()
 
 /mob/living/carbon/check_obscured_slots()
 	// if(slot)

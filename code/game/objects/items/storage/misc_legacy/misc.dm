@@ -84,8 +84,7 @@
 	icon_state = "survivalknife"
 	item_state = "knife"
 	max_combined_volume = WEIGHT_VOLUME_TINY * 3
-	sharp = 1
-	edge = 1
+	damage_mode = DAMAGE_MODE_SHARP | DAMAGE_MODE_EDGE
 	damage_force = 15
 	throw_force = 15
 	attack_verb = list("stabbed", "chopped", "cut")
@@ -99,7 +98,7 @@
 		)
 	starts_with = list(/obj/item/pen/crayon/chalk, /obj/item/reagent_containers/pill/nutriment, /obj/item/gps/survival)
 
-/obj/item/storage/box/survival_knife/attack_self(mob/user)
+/obj/item/storage/box/survival_knife/attack_self(mob/user, datum/event_args/actor/actor)
 	return
 
 /obj/item/storage/box/papersack

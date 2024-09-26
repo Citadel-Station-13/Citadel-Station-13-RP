@@ -2,7 +2,7 @@
 	id = "snow"
 	name = MAT_SNOW
 	stack_type = /obj/item/stack/material/snow
-	icon_base = 'icons/turf/walls/solid.dmi'
+	icon_base = 'icons/turf/walls/solid_wall.dmi'
 	icon_reinf = 'icons/turf/walls/reinforced_solid.dmi'
 	icon_colour = "#FFFFFF"
 	stack_origin_tech = list(TECH_MATERIAL = 1)

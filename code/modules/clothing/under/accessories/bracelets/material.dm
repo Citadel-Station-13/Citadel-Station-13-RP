@@ -1,5 +1,4 @@
 /obj/item/clothing/accessory/bracelet/material
-	abstract_type = /obj/item/clothing/accessory/bracelet/material
 	icon_state = "materialbracelet"
 	materials_base = null
 	material_parts = /datum/material/steel

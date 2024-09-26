@@ -3,7 +3,7 @@
 /mob/living/simple_mob/slime/xenobio
 	desc = "The most basic of slimes.  The grey slime has no remarkable qualities, however it remains one of the most useful colors for scientists."
 	layer = MOB_LAYER + 1 // Need them on top of other mobs or it looks weird when consuming something.
-	ai_holder_type = /datum/ai_holder/simple_mob/xenobio_slime // This should never be changed for xenobio slimes.
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/xenobio_slime // This should never be changed for xenobio slimes.
 	var/is_adult = FALSE // Slimes turn into adults when fed enough. Adult slimes are somewhat stronger, and can reproduce if fed enough.
 	var/maxHealth_adult = 200
 	var/power_charge = 0 // Disarm attacks can shock someone if high/lucky enough.
@@ -24,7 +24,7 @@
 	var/harmless = FALSE // Set to true when pacified. Makes the slime harmless, not get hungry, and not be able to grow/reproduce.
 
 /mob/living/simple_mob/slime/xenobio/Initialize(mapload, var/mob/living/simple_mob/slime/xenobio/my_predecessor)
-	ASSERT(ispath(ai_holder_type, /datum/ai_holder/simple_mob/xenobio_slime))
+	ASSERT(ispath(ai_holder_type, /datum/ai_holder/polaris/simple_mob/xenobio_slime))
 	number = rand(1, 1000)
 	update_name()
 
@@ -44,8 +44,8 @@
 	if(!predecessor)
 		return
 
-	var/datum/ai_holder/simple_mob/xenobio_slime/AI = ai_holder
-	var/datum/ai_holder/simple_mob/xenobio_slime/previous_AI = predecessor.ai_holder
+	var/datum/ai_holder/polaris/simple_mob/xenobio_slime/AI = ai_holder
+	var/datum/ai_holder/polaris/simple_mob/xenobio_slime/previous_AI = predecessor.ai_holder
 	ASSERT(istype(AI))
 	ASSERT(istype(previous_AI))
 
@@ -87,8 +87,8 @@
 	else if(harmless)
 		. += "It appears to have been pacified."
 	else
-		if(has_AI())
-			var/datum/ai_holder/simple_mob/xenobio_slime/AI = ai_holder
+		if(has_polaris_AI())
+			var/datum/ai_holder/polaris/simple_mob/xenobio_slime/AI = ai_holder
 			if(AI.rabid)
 				. += "It seems very, very angry and upset."
 			else if(AI.obedience >= 5)
@@ -139,8 +139,8 @@
 		mood = "sad"
 	else if(harmless)
 		mood = ":33"
-	else if(has_AI())
-		var/datum/ai_holder/simple_mob/xenobio_slime/AI = ai_holder
+	else if(has_polaris_AI())
+		var/datum/ai_holder/polaris/simple_mob/xenobio_slime/AI = ai_holder
 		if(AI.rabid)
 			mood = "angry"
 		else if(AI.target)
@@ -158,31 +158,30 @@
 /mob/living/simple_mob/slime/xenobio/proc/enrage()
 	if(harmless)
 		return
-	if(has_AI())
-		var/datum/ai_holder/simple_mob/xenobio_slime/AI = ai_holder
+	if(has_polaris_AI())
+		var/datum/ai_holder/polaris/simple_mob/xenobio_slime/AI = ai_holder
 		AI.enrage()
 
 /mob/living/simple_mob/slime/xenobio/proc/relax()
 	if(harmless)
 		return
-	if(has_AI())
-		var/datum/ai_holder/simple_mob/xenobio_slime/AI = ai_holder
+	if(has_polaris_AI())
+		var/datum/ai_holder/polaris/simple_mob/xenobio_slime/AI = ai_holder
 		AI.relax()
 
 /mob/living/simple_mob/slime/xenobio/proc/pacify()
 	harmless = TRUE
-	if(has_AI())
-		var/datum/ai_holder/simple_mob/xenobio_slime/AI = ai_holder
+	if(has_polaris_AI())
+		var/datum/ai_holder/polaris/simple_mob/xenobio_slime/AI = ai_holder
 		AI.pacify()
 
-	faction = "neutral"
+	set_iff_factions(MOB_IFF_FACTION_NEUTRAL)
 
 	// If for whatever reason the mob AI (or player) decides to try to attack something anyways.
 	legacy_melee_damage_upper = 0
 	legacy_melee_damage_lower = 0
 
 	update_mood()
-
 
 // These are verbs so that player slimes can evolve/split.
 /mob/living/simple_mob/slime/xenobio/verb/evolve()
@@ -252,7 +251,7 @@
 			if(src.mind)
 				src.mind.transfer(new_slime)
 			else
-				new_slime.key = src.key
+				transfer_client_to(new_slime)
 			qdel(src)
 		else
 			to_chat(src, SPAN_WARNING( "I am not ready to reproduce yet..."))
@@ -279,7 +278,7 @@
 	if(untamable_inherit)
 		baby.untamable = untamable
 	baby.untamable_inherit = untamable_inherit
-	baby.faction = faction
+	baby.copy_iff_factions(src)
 	baby.friends = friends.Copy()
 
 	if(no_step != 1)

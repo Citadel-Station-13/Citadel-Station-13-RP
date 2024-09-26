@@ -349,6 +349,15 @@
 
 	statpanel_tab = tab
 
+/**
+ * This cleanly and gracefully attempts to go to a specific tab via , for the hyperspecific purpose of interacting with the statpanel from other HTML UI
+ */
+/client/verb/hook_statpanel_goto_tab(tab as text)
+	set name = ".statpanel_goto_tab"
+	set hidden = TRUE
+	set instant = TRUE
+	src << output(tab, "statbrowser:change_tab")
+
 //! verb hooks - byond stat
 
 //! verb hooks - tab switcher

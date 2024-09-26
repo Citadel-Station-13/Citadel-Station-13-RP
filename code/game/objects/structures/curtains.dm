@@ -6,6 +6,12 @@
 	layer = ABOVE_MOB_LAYER
 	opacity = 1
 	density = 0
+	anchored = TRUE
+	integrity = 40
+	integrity_failure = 30
+	integrity_max = 40
+
+	var/obj/item/stack/mat = /obj/item/stack/material/plastic
 
 /obj/structure/curtain/open
 	icon_state = "open"
@@ -13,14 +19,7 @@
 	layer = 3.3 //3.3 so its above windows, not the same as them. anything below 3.3 puts the curtain beneath the window sprite in current build
 	opacity = 0
 
-/obj/structure/curtain/bullet_act(obj/projectile/P, def_zone)
-	if(!P.nodamage)
-		visible_message("<span class='warning'>[P] tears [src] down!</span>")
-		qdel(src)
-	else
-		..(P, def_zone)
-
-/obj/structure/curtain/attack_hand(mob/user, list/params)
+/obj/structure/curtain/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	playsound(get_turf(loc), "rustle", 15, 1, -5)
 	toggle()
 	..()
@@ -37,13 +36,14 @@
 		layer = 3.3
 
 /obj/structure/curtain/attackby(obj/item/P, mob/user)
+	if(user.a_intent == INTENT_HARM)
+		return ..()
 	if(P.is_wirecutter())
 		playsound(src, P.tool_sound, 50, 1)
-		to_chat(user, "<span class='notice'>You start to cut the shower curtains.</span>")
+		to_chat(user, "<span class='notice'>You start to cut [src].</span>")
 		if(do_after(user, 10))
-			to_chat(user, "<span class='notice'>You cut the shower curtains.</span>")
-			var/obj/item/stack/material/plastic/A = new /obj/item/stack/material/plastic( src.loc )
-			A.amount = 3
+			to_chat(user, "<span class='notice'>You cut [src].</span>")
+			new mat(src.loc, 3)
 			qdel(src)
 		return
 	else
@@ -96,6 +96,7 @@
 	desc = "A curtain fasioned out of Goliath hide - frequently used to keep flying ash out of a building."
 	icon = 'icons/obj/lavaland.dmi'
 	icon_state = "goliath_closed"
+	mat = /obj/item/stack/animalhide/goliath_hide
 
 /obj/structure/curtain/ashlander/toggle()
 	set_opacity(!opacity)
@@ -107,18 +108,4 @@
 		icon_state = "goliath_open"
 		plane = OBJ_PLANE
 		layer = 3.3
-
-/obj/structure/curtain/ashlander/attackby(obj/item/P, mob/user)
-	if(P.is_wirecutter())
-		playsound(src, P.tool_sound, 50, 1)
-		to_chat(user, "<span class='notice'>You start to cut the hide curtain.</span>")
-		if(do_after(user, 10))
-			to_chat(user, "<span class='notice'>You cut the hide curtain.</span>")
-			var/obj/item/stack/animalhide/goliath_hide/A = new /obj/item/stack/animalhide/goliath_hide( src.loc )
-			A.amount = 3
-			qdel(src)
-		return
-	else
-		src.attack_hand(user)
-	return
 

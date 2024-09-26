@@ -8,6 +8,7 @@
 	)
 	width = 100
 	height = 100
+	allow_random_draw = FALSE
 
 	//* LEGACY BELOW *//
 

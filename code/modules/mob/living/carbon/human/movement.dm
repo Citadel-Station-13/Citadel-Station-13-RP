@@ -132,6 +132,16 @@
 				else if(direct & global.reverse_dir[WH.wind_dir])
 					. += (WH.wind_speed / 3)
 
+	if(species.light_slowdown || species.dark_slowdown)
+		var/lumcount = T.get_lumcount()
+		var/mod
+		if(lumcount == 0)
+			mod = species.dark_slowdown
+		else if(lumcount == 1)
+			mod = species.light_slowdown
+		else
+			mod = (lumcount * species.light_slowdown) + (LERP(species.dark_slowdown, 0, lumcount))
+		. += mod
 #undef HUMAN_LOWEST_SLOWDOWN
 
 /mob/living/carbon/human/Process_Spacemove(dir)

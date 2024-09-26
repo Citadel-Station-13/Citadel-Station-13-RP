@@ -26,7 +26,7 @@
 		user.afflict_paralyze(20 * 3 * damage_force)
 		if(ishuman(user))
 			var/mob/living/carbon/human/H = user
-			H.apply_damage(2*damage_force, BRUTE, BP_HEAD)
+			H.apply_damage(2*damage_force, DAMAGE_TYPE_BRUTE, BP_HEAD)
 		else
 			L.take_random_targeted_damage(brute = 2*damage_force)
 		return
@@ -38,7 +38,9 @@
 	icon_state = "tonfa"
 	item_state = "tonfa"
 	atom_flags = NOBLOODY
-	defend_chance = 15
+	passive_parry = /datum/passive_parry{
+		parry_chance_melee = 15;
+	}
 
 //Telescopic baton
 /obj/item/melee/telebaton
@@ -57,7 +59,7 @@
 	drop_sound = 'sound/items/drop/crowbar.ogg'
 	pickup_sound = 'sound/items/pickup/crowbar.ogg'
 
-/obj/item/melee/telebaton/attack_self(mob/user)
+/obj/item/melee/telebaton/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -103,20 +105,20 @@
 			user.afflict_paralyze(20 * 3 * damage_force)
 			if(ishuman(user))
 				var/mob/living/carbon/human/H = user
-				H.apply_damage(2*damage_force, BRUTE, BP_HEAD)
+				H.apply_damage(2*damage_force, DAMAGE_TYPE_BRUTE, BP_HEAD)
 			else if(isliving(user))
 				var/mob/living/L = user
 				L.take_random_targeted_damage(brute = 2*damage_force)
 			return
-		var/old_damtype = damtype
+		var/old_damage_type = damage_type
 		var/old_attack_verb = attack_verb
 		var/old_force = damage_force
 		if(user.a_intent != INTENT_HARM)
-			damtype = HALLOSS
+			damage_type = DAMAGE_TYPE_HALLOSS
 			attack_verb = list("suppressed")
 			damage_force = on_pain_force
 		. = ..()
-		damtype = old_damtype
+		damage_type = old_damage_type
 		attack_verb = old_attack_verb
 		damage_force = old_force
 	else
@@ -145,11 +147,13 @@
 			)
 	item_state = "armblade"
 	damage_force = 15 // same damage_force as a drill
-	defend_chance = 20 // did you know melee weapons have a default 5% chance to block frontal melee?
-	sharp = TRUE
-	edge = TRUE
+	damage_mode = DAMAGE_MODE_SHARP | DAMAGE_MODE_EDGE
 	var/SA_bonus_damage = 35 // 50 total against animals and aberrations.
 	var/SA_vulnerability = MOB_CLASS_ANIMAL | MOB_CLASS_ABERRATION
+
+	passive_parry = /datum/passive_parry{
+		parry_chance_melee = 20;
+	}
 
 /obj/item/melee/disruptor/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	. = ..()
@@ -168,8 +172,7 @@
 	damage_force = 5 // HAVING A STICK JAMMED INTO YOU IS LIKELY BAD FOR YOUR HEALTH // well to be fair most of the damage comes from the embed not the stab
 	w_class = WEIGHT_CLASS_SMALL
 	materials_base = list(MAT_STEEL = 2500)
-	sharp = TRUE
-	edge = TRUE
+	damage_mode = DAMAGE_MODE_EDGE | DAMAGE_MODE_SHARP
 	icon_state = "embed_spike"
 	item_icons = list(
 			SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand_material.dmi',
@@ -193,7 +196,7 @@
 	damage_force = 0
 	attack_sound = "sound/items/bikehorn.ogg"
 
-/obj/item/melee/stool/faiza/attack_self(mob/user)
+/obj/item/melee/stool/faiza/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -216,7 +219,7 @@
 	desc = "A training sword made of wood and shaped like a katana."
 	icon_state = "bokken"
 	slot_flags = SLOT_BELT | SLOT_BACK
-	damtype = HALLOSS
+	damage_type = DAMAGE_TYPE_HALLOSS
 	damage_force = 5
 	throw_force = 5
 	attack_verb = list("whacked", "smacked", "struck")
@@ -307,7 +310,6 @@
 	damage_force = 15
 	damage_tier = MELEE_TIER_MEDIUM
 	slot_flags = SLOT_BACK
-	sharp = 1
 	attack_sound = "swing_hit"
 	attack_verb = list("smashed", "slammed", "whacked", "thwacked")
 	icon_state = "bostaff0"
@@ -346,7 +348,7 @@
 	desc = "A heavy wooden club reinforced with metal studs. Ancient Terran Oni were often depicted carrying this weapon."
 	icon_state = "kanabo"
 	slot_flags = SLOT_BACK
-	damtype = BRUTE
+	damage_type = DAMAGE_TYPE_BRUTE
 	damage_force = 15
 	throw_force = 5
 	attack_verb = list("battered", "hammered", "struck")

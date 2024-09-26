@@ -11,6 +11,7 @@
 	gas_groups = GAS_GROUP_CORE
 
 	default_tlv = list(16, 19, 70, 100)
+	worth = 0.05
 
 /datum/gas/nitrogen
 	id = GAS_ID_NITROGEN
@@ -22,6 +23,7 @@
 	gas_groups = GAS_GROUP_CORE
 
 	default_tlv = list(0, 0, 135, 140)
+	worth = 0.05
 
 /datum/gas/carbon_dioxide
 	id = GAS_ID_CARBON_DIOXIDE
@@ -33,6 +35,7 @@
 	gas_groups = GAS_GROUP_CORE
 
 	default_tlv = list(0, 0, 5, 10)
+	worth = 0.1
 
 /datum/gas/nitrous_oxide
 	id = GAS_ID_NITROUS_OXIDE
@@ -47,6 +50,7 @@
 	gas_groups = GAS_GROUP_CORE
 
 	default_tlv = list(0, 0, 3, 7)
+	worth = 0.25
 
 /datum/gas/hydrogen
 	id = GAS_ID_HYDROGEN
@@ -58,6 +62,7 @@
 	gas_groups = GAS_GROUP_CORE
 
 	default_tlv = list(0, 0, 0.25, 1)
+	worth = 0.25
 
 /datum/gas/phoron
 	id = GAS_ID_PHORON
@@ -80,3 +85,4 @@
 	gas_groups = GAS_GROUP_CORE
 
 	default_tlv = list(0, 0, 0.25, 0.5)
+	worth = 0.35

@@ -14,12 +14,14 @@
 /obj/structure/cult/pylon/swarm/CanAllowThrough(atom/movable/mover, turf/target)
 	if(istype(mover, /mob/living))
 		var/mob/living/L = mover
-		if(L.faction == "swarmer")
+		if(L.has_iff_faction(MOB_IFF_FACTION_SWARMER))
 			return TRUE
 	else if(istype(mover, /obj/projectile))
 		var/obj/projectile/P = mover
-		if(istype(P.firer) && P.firer.faction == "swarmer")
-			return TRUE
+		if(isliving(P.firer))
+			var/mob/living/L = P.firer
+			if(L.has_iff_faction(MOB_IFF_FACTION_SWARMER))
+				return TRUE
 	return ..()
 
 /obj/structure/cult/pylon/swarm/Initialize(mapload)
@@ -27,7 +29,7 @@
 	active_beams = list()
 
 /obj/structure/cult/pylon/swarm/Destroy()
-	for(var/datum/beam/B in active_beams)
+	for(var/datum/beam_legacy/B in active_beams)
 		QDEL_NULL(B)
 	active_beams = null
 	..()
@@ -89,7 +91,7 @@
 
 	for(var/mob/living/silicon/robot/drone/swarm/S in view(3, src))
 		var/has_beam = FALSE
-		for(var/datum/beam/B in active_beams)
+		for(var/datum/beam_legacy/B in active_beams)
 			if(B.target == S)
 				has_beam = TRUE
 				break

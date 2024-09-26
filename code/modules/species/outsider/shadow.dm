@@ -19,6 +19,8 @@
 	has_organ = list()
 	siemens_coefficient = 0
 
+	vision_organ = O_EYES
+
 	blood_color = "#CCCCCC"
 	flesh_color = "#AAAAAA"
 

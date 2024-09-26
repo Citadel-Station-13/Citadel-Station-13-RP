@@ -32,7 +32,7 @@
 
 	movement_cooldown = 0 // Hunters are FAST.
 
-	ai_holder_type = /datum/ai_holder/simple_mob/melee/hunter_spider
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/melee/hunter_spider
 
 	player_msg = "You are very fast, and <b>can perform a leaping attack</b> by clicking on someone from a short distance away.<br>\
 	If the leap succeeds, the target will be knocked down briefly and you will be on top of them.<br>\
@@ -87,10 +87,9 @@
 		if(L == src)
 			continue
 
-		if(ishuman(L))
-			var/mob/living/carbon/human/H = L
-			if(H.check_shields(damage = 0, damage_source = src, attacker = src, def_zone = null, attack_text = "the leap"))
-				continue // We were blocked.
+		var/list/shieldcall_result = L.atom_shieldcall(40, DAMAGE_TYPE_BRUTE, MELEE_TIER_MEDIUM, ARMOR_MELEE, NONE, ATTACK_TYPE_MELEE)
+		if(shieldcall_result[SHIELDCALL_ARG_FLAGS] & SHIELDCALL_FLAGS_BLOCK_ATTACK)
+			continue
 
 		victim = L
 		break
@@ -115,15 +114,15 @@
 
 
 // This AI would've isolated people it stuns with its 'leap' attack, by dragging them away.
-/datum/ai_holder/simple_mob/melee/hunter_spider
+/datum/ai_holder/polaris/simple_mob/melee/hunter_spider
 
 /*
 
-/datum/ai_holder/simple_mob/melee/hunter_spider/post_special_attack(mob/living/L)
+/datum/ai_holder/polaris/simple_mob/melee/hunter_spider/post_special_attack(mob/living/L)
 	drag_away(L)
 
 // Called after a successful leap.
-/datum/ai_holder/simple_mob/melee/hunter_spider/proc/drag_away(mob/living/L)
+/datum/ai_holder/polaris/simple_mob/melee/hunter_spider/proc/drag_away(mob/living/L)
 	to_chat(world, "Doing drag_away attack on [L]")
 	if(!istype(L))
 		to_chat(world, "Invalid type.")

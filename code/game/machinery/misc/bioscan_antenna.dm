@@ -23,11 +23,14 @@ GLOBAL_LIST_EMPTY(bioscan_antenna_list)
 	// todo: scaling levels of how accurate they are
 	// todo: multiz / world-sector functionality; for now one must be there for each zlevel
 
+/obj/machinery/bioscan_antenna/preloading_instance(datum/dmm_context/context)
+	. = ..()
+	if(network_key_obfuscated && !network_key)
+		network_key = SSmapping.obfuscated_round_local_id(network_key_obfuscated, context.mangling_id, "bioscan")
+
 /obj/machinery/bioscan_antenna/Initialize(mapload)
 	. = ..()
 	id = "[++id_next]"
-	if(network_key_obfuscated)
-		network_key = SSmapping.subtly_obfuscated_id(network_key_obfuscated, "bioscan_network")
 	change_network(network_key)
 
 /obj/machinery/bioscan_antenna/Destroy()
@@ -55,7 +58,7 @@ GLOBAL_LIST_EMPTY(bioscan_antenna_list)
 		.[TOOL_MULTITOOL] = "change network"
 	return merge_double_lazy_assoc_list(., ..())
 
-/obj/machinery/bioscan_antenna/attack_hand(mob/user, list/params)
+/obj/machinery/bioscan_antenna/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	// todo: better xenomorphs
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user

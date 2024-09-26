@@ -50,6 +50,7 @@
 	poison_type = null
 
 	vision_flags = SEE_SELF|SEE_MOBS
+	vision_organ = O_EYES
 
 	has_organ = list(
 		O_HEART =    /obj/item/organ/internal/heart,
@@ -83,6 +84,10 @@
 		BP_L_FOOT = list("path" = /obj/item/organ/external/foot/unseverable/xeno),
 		BP_R_FOOT = list("path" = /obj/item/organ/external/foot/right/unseverable/xeno)
 		)
+
+	iff_factions_inherent = list(
+		MOB_IFF_FACTION_XENOMORPH,
+	)
 
 /datum/species/xenos/get_bodytype_legacy()
 	return SPECIES_XENO

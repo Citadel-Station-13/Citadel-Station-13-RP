@@ -181,7 +181,7 @@
 				var/mob/living/carbon/human/H = mob
 				if(H.isSynthetic())
 					continue
-				H.hallucination += max(50, min(300, DETONATION_HALLUCINATION * sqrt(1 / (get_dist(mob, src) + 1)) ) )
+				H.adjustHallucination(DETONATION_HALLUCINATION * sqrt(1 / (get_dist(mob, src) + 1)))
 	spawn(pull_time)
 		explosion(get_turf(src), explosion_power, explosion_power * 2, explosion_power * 3, explosion_power * 4, 1)
 		sleep(5) //to allow the explosion to finish
@@ -239,16 +239,6 @@
 		else if(safe_warned && public_alert)
 			GLOB.global_announcer.autosay(alert_msg, "Supermatter Monitor")
 			public_alert = 0
-
-
-/obj/machinery/power/supermatter/get_transit_zlevel()
-	//don't send it back to the station -- most of the time
-	if(prob(99))
-		var/list/candidates = SSmapping.crosslinked_levels() - (LEGACY_MAP_DATUM).station_levels
-		. = SAFEPICK(candidates)
-		if(.)
-			return
-	return ..()
 
 /obj/machinery/power/supermatter/process(delta_time)
 
@@ -361,7 +351,7 @@
 		if(l.isSynthetic())
 			continue
 		if(!istype(l.glasses, /obj/item/clothing/glasses/meson)) // Only mesons can protect you!
-			l.hallucination = max(0, min(200, l.hallucination + power * config_hallucination_power * sqrt( 1 / max(1,get_dist(l, src)) ) ) )
+			l.adjustHallucination(power * config_hallucination_power * sqrt( 1 / max(1,get_dist(l, src)) ) )
 
 	//! uh oh!
 	radiation_pulse(src, clamp(power * 4, 0, 50000), RAD_FALLOFF_ENGINE_SUPERMATTER)
@@ -371,25 +361,26 @@
 
 	return 1
 
-
-/obj/machinery/power/supermatter/bullet_act(var/obj/projectile/Proj)
+/obj/machinery/power/supermatter/on_bullet_act(obj/projectile/proj, impact_flags, list/bullet_act_args)
 	var/turf/L = loc
-	if(!istype(L))		// We don't run process() when we are in space
-		return 0	// This stops people from being able to really power up the supermatter
-				// Then bring it inside to explode instantly upon landing on a valid turf.
+	// We don't run process() when we are in space
+	// This stops people from being able to really power up the supermatter
+	// Then bring it inside to explode instantly upon landing on a valid turf.
+	if(!istype(L))
+		return PROJECTILE_IMPACT_DELETE
 
 	var/added_energy
 	var/added_damage
-	var/proj_damage = Proj.get_structure_damage()
-	if(istype(Proj, /obj/projectile/beam))
+	var/proj_damage = proj.get_structure_damage()
+	if(istype(proj, /obj/projectile/beam))
 		added_energy = proj_damage * config_bullet_energy	* CHARGING_FACTOR / POWER_FACTOR
 		power += added_energy
 	else
 		added_damage = proj_damage * config_bullet_energy
 		damage += added_damage
 	if(added_energy || added_damage)
-		investigate_log("Hit by \"[Proj.name]\". +[added_energy] Energy, +[added_damage] Damage.", INVESTIGATE_SUPERMATTER)
-	return 0
+		investigate_log("Hit by \"[proj.name]\". +[added_energy] Energy, +[added_damage] Damage.", INVESTIGATE_SUPERMATTER)
+	return PROJECTILE_IMPACT_DELETE
 
 /obj/machinery/power/supermatter/attack_robot(mob/user as mob)
 	if(Adjacent(user))
@@ -401,7 +392,7 @@
 /obj/machinery/power/supermatter/attack_ai(mob/user as mob)
 	ui_interact(user)
 
-/obj/machinery/power/supermatter/attack_hand(mob/user, list/params)
+/obj/machinery/power/supermatter/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	var/datum/gender/TU = GLOB.gender_datums[user.get_visible_gender()]
 	user.visible_message("<span class=\"warning\">\The [user] reaches out and touches \the [src], inducing a resonance... [TU.his] body starts to glow and bursts into flames before flashing into ash.</span>",\
 		"<span class=\"danger\">You reach out and touch \the [src]. Everything starts burning and all you can hear is ringing. Your last thought is \"That was not a wise decision.\"</span>",\
@@ -475,20 +466,25 @@
 	Consume(W)
 
 
-/obj/machinery/power/supermatter/Bumped(atom/AM as mob|obj)
-	if(istype(AM, /obj/effect))
-		return
-	if(istype(AM, /mob/living))
-		var/mob/living/M = AM
-		var/datum/gender/T = GLOB.gender_datums[M.get_visible_gender()]
-		AM.visible_message("<span class=\"warning\">\The [AM] slams into \the [src] inducing a resonance... [T.his] body starts to glow and catch flame before flashing into ash.</span>",\
-		"<span class=\"danger\">You slam into \the [src] as your ears are filled with unearthly ringing. Your last thought is \"Oh, fuck.\"</span>",\
-		"<span class=\"warning\">You hear an uneartly ringing, then what sounds like a shrilling kettle as you are washed with a wave of heat.</span>")
-	else if(!grav_pulling) //To prevent spam, detonating supermatter does not indicate non-mobs being destroyed
-		AM.visible_message("<span class=\"warning\">\The [AM] smacks into \the [src] and rapidly flashes to ash.</span>",\
-		"<span class=\"warning\">You hear a loud crack as you are washed with a wave of heat.</span>")
+/obj/machinery/power/supermatter/Bumped(atom/movable/bumped_atom)
+	. = ..()
+	var/their_loc = bumped_atom.loc
+	spawn(0)
+		if(their_loc != bumped_atom.loc)
+			return
+		if(istype(bumped_atom, /obj/effect))
+			return
+		if(istype(bumped_atom, /mob/living))
+			var/mob/living/M = bumped_atom
+			var/datum/gender/T = GLOB.gender_datums[M.get_visible_gender()]
+			bumped_atom.visible_message("<span class=\"warning\">\The [bumped_atom] slams into \the [src] inducing a resonance... [T.his] body starts to glow and catch flame before flashing into ash.</span>",\
+			"<span class=\"danger\">You slam into \the [src] as your ears are filled with unearthly ringing. Your last thought is \"Oh, fuck.\"</span>",\
+			"<span class=\"warning\">You hear an uneartly ringing, then what sounds like a shrilling kettle as you are washed with a wave of heat.</span>")
+		else if(!grav_pulling) //To prevent spam, detonating supermatter does not indicate non-mobs being destroyed
+			bumped_atom.visible_message("<span class=\"warning\">\The [bumped_atom] smacks into \the [src] and rapidly flashes to ash.</span>",\
+			"<span class=\"warning\">You hear a loud crack as you are washed with a wave of heat.</span>")
 
-	Consume(AM)
+		Consume(bumped_atom)
 
 /obj/machinery/power/supermatter/proc/Consume(var/mob/living/user)
 	// todo: rework the fucking supermatter so we don't need this

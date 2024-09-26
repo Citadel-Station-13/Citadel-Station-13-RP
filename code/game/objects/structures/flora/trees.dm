@@ -65,10 +65,10 @@
 	animate(src, transform=turn(M, shake_animation_degrees * shake_dir), pixel_x=init_px + 2*shake_dir, time=1)
 	animate(transform=M, pixel_x=init_px, time=6, easing=ELASTIC_EASING)
 
-/obj/structure/flora/tree/inflict_atom_damage(damage, tier, flag, mode, attack_type, datum/weapon, gradual)
+/obj/structure/flora/tree/inflict_atom_damage(damage, damage_type, damage_tier, damage_flag, damage_mode, hit_zone, attack_type, datum/weapon)
 	. = ..()
 	// ruins some of the wood if you use high power modes or types
-	if(. > 5 && ((mode & (DAMAGE_MODE_ABLATING | DAMAGE_MODE_PIERCE | DAMAGE_MODE_SHRED)) || (flag == ARMOR_BOMB)))
+	if(. > 5 && ((damage_mode & (DAMAGE_MODE_ABLATING | DAMAGE_MODE_PIERCE | DAMAGE_MODE_SHRED)) || (damage_flag == ARMOR_BOMB)))
 		product_amount -= round((. * 0.5) / integrity_max * initial(product_amount))
 
 /obj/structure/flora/tree/atom_break()
@@ -133,7 +133,7 @@
 /obj/structure/flora/tree/pine/xmas/presents/choose_icon_state()
 	return "pinepresents"
 
-/obj/structure/flora/tree/pine/xmas/presents/attack_hand(mob/user, list/params)
+/obj/structure/flora/tree/pine/xmas/presents/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	. = ..()
 	if(.)
 		return

@@ -86,6 +86,7 @@
 		O_STOMACH   = /obj/item/organ/internal/stomach,
 		O_INTESTINE = /obj/item/organ/internal/intestine
 	)
+	vision_organ = O_EYES
 
 	unarmed_types = list(
 		/datum/unarmed_attack/stomp,
@@ -136,4 +137,4 @@
 
 	for(var/K in damageable)
 		if(!(K in covered))
-			H.apply_damage(light_amount/4, BURN, K, 0, 0, "Abnormal growths")
+			H.apply_damage(light_amount/4, DAMAGE_TYPE_BURN, K, 0, 0, "Abnormal growths")

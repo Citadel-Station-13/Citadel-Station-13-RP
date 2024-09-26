@@ -19,7 +19,7 @@ LINEN BINS
 	drop_sound = 'sound/items/drop/backpack.ogg'
 	pickup_sound = 'sound/items/pickup/backpack.ogg'
 
-/obj/item/bedsheet/attack_self(mob/user)
+/obj/item/bedsheet/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -216,7 +216,7 @@ LINEN BINS
 		hidden = I
 		to_chat(user, "<span class='notice'>You hide [I] among the sheets.</span>")
 
-/obj/structure/bedsheetbin/attack_hand(mob/user, list/params)
+/obj/structure/bedsheetbin/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(amount >= 1)
 		amount--
 

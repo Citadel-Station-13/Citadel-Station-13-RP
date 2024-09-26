@@ -163,6 +163,102 @@
 			message = "roars!"
 			m_type = 2
 
+		if("xhiss2")
+			if(src.species.get_species_id() != SPECIES_ID_XENOHYBRID)
+				to_chat(src, "<span class='warning'>You aren't alien enough!</span>")
+				return
+			playsound(src.loc, 'sound/voice/xenos/xhiss2.ogg', 50, 0)
+			message = "hisses!"
+			m_type = 2
+
+		if("xhiss3")
+			if(src.species.get_species_id() != SPECIES_ID_XENOHYBRID)
+				to_chat(src, "<span class='warning'>You aren't alien enough!</span>")
+				return
+			playsound(src.loc, 'sound/voice/xenos/xhiss3.ogg', 50, 0)
+			message = "hisses!"
+			m_type = 2
+
+		if("xhiss4")
+			if(src.species.get_species_id() != SPECIES_ID_XENOHYBRID)
+				to_chat(src, "<span class='warning'>You aren't alien enough!</span>")
+				return
+			playsound(src.loc, 'sound/voice/xenos/xhiss4.ogg', 50, 0)
+			message = "hisses!"
+			m_type = 2
+
+		if("xhiss5")
+			if(src.species.get_species_id() != SPECIES_ID_XENOHYBRID)
+				to_chat(src, "<span class='warning'>You aren't alien enough!</span>")
+				return
+			playsound(src.loc, 'sound/voice/xenos/xhiss5.ogg', 50, 0)
+			message = "hisses!"
+			m_type = 2
+
+		if("xhiss6")
+			if(src.species.get_species_id() != SPECIES_ID_XENOHYBRID)
+				to_chat(src, "<span class='warning'>You aren't alien enough!</span>")
+				return
+			playsound(src.loc, 'sound/voice/xenos/xhiss6.ogg', 50, 0)
+			message = "hisses!"
+			m_type = 2
+
+		if("xroar1")
+			if(src.species.get_species_id() != SPECIES_ID_XENOHYBRID)
+				to_chat(src, "<span class='warning'>You aren't alien enough!</span>")
+				return
+			playsound(src.loc, 'sound/voice/xenos/xroar1.ogg', 50, 0)
+			message = "hisses!"
+			m_type = 2
+
+		if("xroar2")
+			if(src.species.get_species_id() != SPECIES_ID_XENOHYBRID)
+				to_chat(src, "<span class='warning'>You aren't alien enough!</span>")
+				return
+			playsound(src.loc, 'sound/voice/xenos/xroar2.ogg', 50, 0)
+			message = "hisses!"
+			m_type = 2
+
+		if("xroar3")
+			if(src.species.get_species_id() != SPECIES_ID_XENOHYBRID)
+				to_chat(src, "<span class='warning'>You aren't alien enough!</span>")
+				return
+			playsound(src.loc, 'sound/voice/xenos/xroar3.ogg', 50, 0)
+			message = "hisses!"
+			m_type = 2
+
+		if("xtalk1")
+			if(src.species.get_species_id() != SPECIES_ID_XENOHYBRID)
+				to_chat(src, "<span class='warning'>You aren't alien enough!</span>")
+				return
+			playsound(src.loc, 'sound/voice/xenos/xtalk1.ogg', 50, 0)
+			message = "hisses!"
+			m_type = 2
+
+		if("xtalk2")
+			if(src.species.get_species_id() != SPECIES_ID_XENOHYBRID)
+				to_chat(src, "<span class='warning'>You aren't alien enough!</span>")
+				return
+			playsound(src.loc, 'sound/voice/xenos/xtalk2.ogg', 50, 0)
+			message = "hisses!"
+			m_type = 2
+
+		if("xtalk3")
+			if(src.species.get_species_id() != SPECIES_ID_XENOHYBRID)
+				to_chat(src, "<span class='warning'>You aren't alien enough!</span>")
+				return
+			playsound(src.loc, 'sound/voice/xenos/xtalk3.ogg', 50, 0)
+			message = "hisses!"
+			m_type = 2
+
+		if("xroar")
+			if(src.species.get_species_id() != SPECIES_ID_XENOHYBRID)
+				to_chat(src, "<span class='warning'>You aren't alien enough!</span>")
+				return
+			playsound(src.loc, 'sound/voice/xenos/alien_roar1.ogg', 50, 0)
+			message = "roars!"
+			m_type = 2
+
 		if("xgrowl")
 			if(src.species.get_species_id() != SPECIES_ID_XENOHYBRID)
 				to_chat(src, "<span class='warning'>You aren't alien enough!</span>")
@@ -1053,7 +1149,8 @@
 
 
 
-
+/mob/living/carbon/human/proc/set_pose(new_pose)
+	pose = sanitize(new_pose)
 
 /mob/living/carbon/human/verb/pose()
 	set name = "Set Pose"
@@ -1062,9 +1159,44 @@
 
 	var/datum/gender/T = GLOB.gender_datums[get_visible_gender()]
 
-	pose =  sanitize(input(usr, "This is [src]. [T.he]...", "Pose", null)  as text)
+	var/old_pose = pose
 
-	visible_emote("adjusts [T.his] posture.")
+	var/new_pose =  input(usr, "This is [src]. [T.he]...", "Pose", null)  as text|null
+
+	set_pose(new_pose)
+
+	if (length(pose)>0 && pose != old_pose)
+		visible_emote("adjusts [T.his] posture.")
+
+/mob/living/carbon/human/verb/timed_pose()
+	set name = "Set Pose (Temporary)"
+	set desc = "Sets a description which will be shown when someone examines you, expiring after a given number of seconds."
+	set category = VERB_CATEGORY_IC
+	var/datum/gender/T = GLOB.gender_datums[get_visible_gender()]
+
+	var/old_pose = pose
+
+	var/new_pose =  input(usr, "This is [src]. [T.he]...", "Pose", null)  as text|null
+
+	var/time = input(usr, "How long should the pose be visible (in seconds)?","Pose",60) as num|null
+
+	set_pose(new_pose)
+
+	if (length(pose)>0 && pose != old_pose)
+		visible_emote("adjusts [T.his] posture.")
+		addtimer(CALLBACK(src,PROC_REF(set_pose),""),time SECONDS)
+
+
+/mob/living/carbon/human/verb/silent_pose()
+	set name = "Set Pose (Stealth)"
+	set desc = "Sets a description which will be shown when someone examines you, without showing an adjustment message."
+	set category = VERB_CATEGORY_IC
+	var/datum/gender/T = GLOB.gender_datums[get_visible_gender()]
+
+	var/new_pose=input(usr, "This is [src]. [T.he]...", "Pose", null)  as text|null
+	set_pose(new_pose)
+
+
 
 /mob/living/carbon/human/verb/set_flavor()
 	set name = "Set Flavour Text"

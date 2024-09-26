@@ -12,7 +12,6 @@
 	icon_living = "Willy"
 	icon_dead = "w_head"
 	icon_rest = "Willy"
-	faction = "horror"
 	icon = 'icons/mob/horror_show/GHPS.dmi'
 	icon_gib = "generic_gib"
 	catalogue_data = list(/datum/category_item/catalogue/fauna/horror/Willy)
@@ -34,7 +33,7 @@
 
 
 	say_list_type = /datum/say_list/Willy
-	ai_holder_type = /datum/ai_holder/simple_mob/horror
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/horror
 
 	meat_amount = 3
 	meat_type = /obj/item/reagent_containers/food/snacks/meat/human
@@ -50,11 +49,11 @@
 	playsound(src, 'sound/h_sounds/sampler.ogg', 50, 1)
 	..()
 
-/mob/living/simple_mob/horror/Willy/bullet_act()
+/mob/living/simple_mob/horror/Willy/on_bullet_act(obj/projectile/proj, impact_flags, list/bullet_act_args)
+	. = ..()
 	playsound(src, 'sound/h_sounds/holla.ogg', 50, 1)
-	..()
 
-/mob/living/simple_mob/horror/Willy/attack_hand(mob/user, list/params)
+/mob/living/simple_mob/horror/Willy/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	playsound(src, 'sound/h_sounds/holla.ogg', 50, 1)
 	..()
 

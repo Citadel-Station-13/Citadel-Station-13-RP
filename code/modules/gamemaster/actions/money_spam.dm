@@ -19,7 +19,7 @@
 
 /datum/gm_action/pda_spam/start()
 	..()
-	while(world.time < last_spam_time + 3000)
+	if(last_spam_time + 3000 < world.time)
 		if(!node)
 			node = get_exonet_node()
 

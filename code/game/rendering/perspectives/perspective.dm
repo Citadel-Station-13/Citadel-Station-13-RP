@@ -187,7 +187,7 @@
  */
 /datum/perspective/proc/clear_mobs()
 	for(var/mob/M as anything in mobs)
-		remove_mobs(M)
+		remove_mob(M)
 
 /**
  * registers as a mob's current perspective
@@ -210,7 +210,7 @@
  * unregisters as a mob's current perspective
  * resets mob vars to initial() values
  */
-/datum/perspective/proc/remove_mobs(mob/M, switching = FALSE)
+/datum/perspective/proc/remove_mob(mob/M, switching = FALSE)
 	SHOULD_CALL_PARENT(TRUE)
 	M.sight = initial(M.sight)
 	M.see_in_dark = initial(M.see_in_dark)
@@ -778,7 +778,7 @@
  */
 /datum/perspective/self/temporary
 
-/datum/perspective/self/temporary/remove_mobs(mob/M, switching)
+/datum/perspective/self/temporary/remove_mob(mob/M, switching)
 	. = ..()
 	if(!length(mobs))
 		qdel(src)

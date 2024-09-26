@@ -21,7 +21,7 @@
 	say_verbs = list("mumbles", "says")
 
 // Clumsy folks can't take the mask off themselves.
-/obj/item/clothing/mask/muzzle/attack_hand(mob/user, list/params)
+/obj/item/clothing/mask/muzzle/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(user.item_by_slot_id(SLOT_ID_MASK) == src && !user.IsAdvancedToolUser())
 		return 0
 	..()
@@ -211,7 +211,7 @@
 	icon_state = "bandblack"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "bandblack", SLOT_ID_LEFT_HAND = "bandblack")
 
-/obj/item/clothing/mask/bandana/attack_self(mob/user)
+/obj/item/clothing/mask/bandana/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(src.icon_state == initial(icon_state))
 		src.icon_state = "[icon_state]_up"
@@ -275,7 +275,7 @@
 	icon_state = "plainmask"
 	inv_hide_flags = HIDEEARS|HIDEEYES|HIDEFACE
 
-/obj/item/clothing/mask/paper/attack_self(mob/user)
+/obj/item/clothing/mask/paper/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return

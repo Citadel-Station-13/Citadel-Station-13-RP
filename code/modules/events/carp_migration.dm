@@ -84,7 +84,7 @@ GLOBAL_LIST_INIT(carp_count,list())// a list of Z levels (string), associated wi
 		if(WEST)
 			return locate(clearance, rand(clearance, world.maxy - clearance), Z)
 
-/datum/event/carp_migration/proc/check_gib(var/mob/living/simple_mob/hostile/carp/M)	//awesome road kills
+/datum/event/carp_migration/proc/check_gib(var/mob/living/simple_mob/animal/space/carp/M)	//awesome road kills
 	if(M.health <= 0 && prob(60))
 		M.gib()
 

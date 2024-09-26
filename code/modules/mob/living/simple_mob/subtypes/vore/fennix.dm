@@ -8,7 +8,8 @@
 	icon_dead = "fennix_dead"
 	icon = 'icons/mob/vore.dmi'
 
-	faction = "fennec" // Will protec other fenfens
+	iff_factions = MOB_IFF_FACTION_FARM_NEUTRAL
+
 	maxHealth = 60
 	health = 60
 
@@ -22,7 +23,7 @@
 	attacktext = list("Bites")
 
 	say_list_type = /datum/say_list/fennix
-	ai_holder_type = /datum/ai_holder/simple_mob/retaliate/cooperative
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/retaliate/cooperative
 
 /datum/say_list/fennix
 	speak = list("SQUEL!","SQEL?","Skree.")
