@@ -15,6 +15,19 @@ The /area's in them that aren't `world.area` are used for the square bounding bo
 
 There is currently, as of December 2023, no way to expand the areas in game without admin intervention.
 
+## Factions
+
+Organize as an exmaple like this;
+
+`maps/shuttles/factions/corporations/nanotrasen/*`
+`maps/shuttles/factions/orion/tristar/*`
+`maps/shuttles/generic/civillian/*`
+`maps/shuttles/generic/outlaw/*`
+
+So on, so forth.
+
+Basically, just like the `code/game/content/*` and `icons/content/*` folders.
+
 # todo
 
 i'm kind of silly, we should finish the readme later ~silicons

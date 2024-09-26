@@ -29,6 +29,10 @@
 	var/relative_path
 
 	//* Functionality
+	/// our shuttle typepath
+	///
+	/// * yeah uh you probably shouldn't mess with this unless you know what you're doing
+	var/shuttle_type = /datum/shuttle
 	/// our descriptor, used for cross-interaction with other systems
 	/// this should not be a cached typepath, as opposed to a directly made typepath
 	/// or an instance.
@@ -74,7 +78,6 @@
 	var/datum/dmm_parsed/parsed_map = src.parsed_map
 	if(isnull(parsed_map))
 		parsed_map = new(get_file())
-		parsed_map
 		if(cache_parsed_map)
 			src.parsed_map = parsed_map
 
@@ -124,6 +127,8 @@
 /datum/shuttle_template/proc/instance_descriptor()
 	if(istype(descriptor))
 		return descriptor.clone()
+	else if(IS_ANONYMOUS_TYPEPATH(descriptor))
+		return new descriptor
 	else if(ispath(descriptor, /datum/shuttle_descriptor))
 		return new descriptor
 	CRASH("what? [descriptor] ([REF(descriptor)])")

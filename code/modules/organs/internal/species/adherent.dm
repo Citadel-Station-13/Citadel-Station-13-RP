@@ -35,7 +35,7 @@
 		action.button_icon_state = "[base_action_state]-[active ? "on" : "off"]"
 	return ..()
 
-/obj/item/organ/internal/powered/attack_self(mob/user)
+/obj/item/organ/internal/powered/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return

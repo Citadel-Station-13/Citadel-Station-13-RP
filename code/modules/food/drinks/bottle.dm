@@ -107,7 +107,7 @@
 		return
 	..()
 
-/obj/item/reagent_containers/food/drinks/bottle/attack_self(mob/user)
+/obj/item/reagent_containers/food/drinks/bottle/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return

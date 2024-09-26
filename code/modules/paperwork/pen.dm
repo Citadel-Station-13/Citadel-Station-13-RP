@@ -36,7 +36,7 @@
 	/// can we click?
 	var/clickable = TRUE
 
-/obj/item/pen/attack_self(mob/user)
+/obj/item/pen/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -72,7 +72,7 @@
 	playsound(src, 'sound/items/penclick.ogg', 50, 1)
 	return
 
-/obj/item/pen/multi/attack_self(mob/user)
+/obj/item/pen/multi/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -91,7 +91,7 @@
 /obj/item/pen/click
 	name = "clicker pen"
 
-/obj/item/pen/click/attack_self(mob/user)
+/obj/item/pen/click/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -256,7 +256,7 @@
 /obj/item/pen/chameleon
 	var/signature = ""
 
-/obj/item/pen/chameleon/attack_self(mob/user)
+/obj/item/pen/chameleon/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return

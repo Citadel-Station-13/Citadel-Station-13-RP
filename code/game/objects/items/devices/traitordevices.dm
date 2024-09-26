@@ -28,7 +28,7 @@ effective or pretty fucking useless.
 	var/times_used = 0 //Number of times it's been used.
 	var/max_uses = 2
 
-/obj/item/batterer/attack_self(mob/user)
+/obj/item/batterer/attack_self(mob/user, datum/event_args/actor/actor)
 	if(!user) 	return
 	if(times_used >= max_uses)
 		to_chat(user, "<span class='warning'>The mind batterer has been burnt out!</span>")

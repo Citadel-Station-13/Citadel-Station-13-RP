@@ -6,7 +6,7 @@
 	var/datum/seed/last_seed
 	var/list/last_reagents
 
-/obj/item/plant_analyzer/attack_self(mob/user)
+/obj/item/plant_analyzer/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return

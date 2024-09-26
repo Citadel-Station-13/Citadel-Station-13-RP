@@ -188,7 +188,7 @@
 	icon_state = "pilot_helmet2"
 	item_action_name = "Toggle Visor"
 
-/obj/item/clothing/head/pilot/alt/attack_self(mob/user)
+/obj/item/clothing/head/pilot/alt/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return

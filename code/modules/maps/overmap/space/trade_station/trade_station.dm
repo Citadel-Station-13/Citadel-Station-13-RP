@@ -69,29 +69,29 @@
 
 // Shuttle landmarks. Need to be removed at some point and generic waypoints used
 
-/obj/effect/shuttle_landmark/triumph/trade
+/obj/effect/shuttle_landmark/trade
 	name = "Near Nebula Gas Food Mart"
 
 // EXCLUSIVE TRADE PORT NAV POINTS
 
-/obj/effect/shuttle_landmark/triumph/trade/mining
+/obj/effect/shuttle_landmark/trade/mining
 	name = "Nebula Gas Landing Pad 2"
 
-/obj/effect/shuttle_landmark/triumph/trade/excursion
+/obj/effect/shuttle_landmark/trade/excursion
 	name = "Nebula Gas Landing Pad 3"
 
-/obj/effect/shuttle_landmark/triumph/trade/pirate
+/obj/effect/shuttle_landmark/trade/pirate
 	name = "Nebula Gas Landing Pad 4"
 
-/obj/effect/shuttle_landmark/triumph/trade/emt
+/obj/effect/shuttle_landmark/trade/emt
 	name = "Nebula Gas Landing Pad 5"
 
-/obj/effect/shuttle_landmark/triumph/trade/civvie
+/obj/effect/shuttle_landmark/trade/civvie
 	name = "Nebula Gas Landing Pad 6"
 
 // EXCLUSIVE TRADE PORT NAV POINT FOR DOCKING INSIDE
 
-/obj/effect/shuttle_landmark/triumph/trade/hangar
+/obj/effect/shuttle_landmark/trade/hangar
 	name = "Beruang Hangar"
 
 // Todo

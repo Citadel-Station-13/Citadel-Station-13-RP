@@ -14,7 +14,8 @@
 	var/obj/item/disk/nuclear/the_disk = null
 	var/active = 0
 
-/obj/item/pinpointer/attack_self(mob/user)
+
+/obj/item/pinpointer/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -65,7 +66,7 @@
 	var/turf/location = null
 	var/obj/target = null
 
-/obj/item/pinpointer/advpinpointer/attack_self(mob/user)
+/obj/item/pinpointer/advpinpointer/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -190,7 +191,7 @@
 	var/mode = 0	//Mode 0 locates disk, mode 1 locates the shuttle
 	var/obj/machinery/computer/shuttle_control/syndicate/home = null
 
-/obj/item/pinpointer/nukeop/attack_self(mob/user)
+/obj/item/pinpointer/nukeop/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -279,7 +280,7 @@
 	var/shuttle_comp_id = null
 	var/obj/machinery/computer/shuttle_control/our_shuttle = null
 
-/obj/item/pinpointer/shuttle/attack_self(mob/user)
+/obj/item/pinpointer/shuttle/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return

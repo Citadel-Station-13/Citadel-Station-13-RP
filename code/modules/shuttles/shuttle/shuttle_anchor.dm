@@ -67,7 +67,7 @@
  * ## Mappers
  *
  * * You don't need to put down anchors at all, they auto-generate.
- * * If you place one anyways, it'll be respected. That said, the size will be auto-generated too, and overwrite them.
+ * * If you place one anyways, it'll be respected. That said, the size will be auto-generated too.
  *
  * Do not mess with the variables; the init system will set them.
  */

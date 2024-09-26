@@ -53,8 +53,7 @@
 	/// default initial gas mix
 	var/initial_gas_mix = GAS_STRING_STP
 
-
-	//* Identity
+	//* Identity *//
 	/// player-facing name, overrides name when / if necessary.
 	var/display_name
 
