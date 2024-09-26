@@ -24,4 +24,7 @@
 /datum/overmap_location/level/get_owned_z_indices()
 	return list(level.z_index)
 
+/datum/overmap_location/level/is_physically_level(z)
+	return z == level.z_index
+
 #warn impl all

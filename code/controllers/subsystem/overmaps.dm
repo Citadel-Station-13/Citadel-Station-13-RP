@@ -25,7 +25,7 @@ SUBSYSTEM_DEF(overmaps)
 	/// * Non-owning locations aren't in here.
 	/// * A level can only be owned by one location at a time.
 	/// * Automatically managed by /datum/overmap_location registration
-	var/static/list/datum/overmap_location/location_lookup = list()
+	var/static/list/datum/overmap_location/location_enclosed_levels = list()
 
 /datum/controller/subsystem/overmaps/Initialize()
 	make_default_overmap()
@@ -107,6 +107,41 @@ SUBSYSTEM_DEF(overmaps)
 */
 
 //! end
+
+//* Overmap Entity *//
+
+/**
+ * Gets entity owning a level.
+ *
+ * * Something on a space turf outside of a shuttle in a freeflight level has its level
+ *   owned by the 'host' shuttle of that level.
+ * * A landed shuttle has its level owned by, obviously, the entity owning that level.
+ *
+ * @params
+ * * target - an /atom, or a z-index. atoms will be resolved to z-level.
+ */
+/datum/controller/subsystem/overmaps/proc/get_enclosing_overmap_entity(target)
+	if(isatom(target))
+		target = get_turf(target)?:z
+	if(!target)
+		return
+
+	#warn impl
+
+/**
+ * Gets entity the atom is physically on.
+ *
+ * * Something on a space turf outside of a shuttle in a shuttle interdiction / freeflight level
+ *   is on no entity, because it's.. physically not on an entity!
+ * * A landed shuttle has its contents owned by itself.
+ *
+ * @params
+ * * target - an /atom
+ */
+/datum/controller/subsystem/overmaps/proc/get_overmap_entity(atom/target)
+	#warn impl
+
+// todo: entity round-persistent-compatible GUID
 
 //* Overmap Management *//
 

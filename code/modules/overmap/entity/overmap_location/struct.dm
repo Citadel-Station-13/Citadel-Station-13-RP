@@ -24,4 +24,7 @@
 /datum/overmap_location/struct/get_owned_z_indices()
 	return struct.z_indices.Copy()
 
+/datum/overmap_location/struct/is_physically_level(z)
+	return SSmapping.ordered_levels[z]?.struct == struct
+
 #warn impl all
