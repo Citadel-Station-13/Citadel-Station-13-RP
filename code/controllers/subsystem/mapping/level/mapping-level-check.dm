@@ -5,4 +5,4 @@
  * Returns if a level is reasonably accessible by players.
  */
 /datum/controller/subsystem/mapping/proc/is_valid_player_level(z)
-	return loaded_station.use_overmap ? !!SSovermaps.location_lookup[z] : TRUE
+	return loaded_station.use_overmap ? !!SSovermaps.location_enclosed_levels[z] : TRUE
