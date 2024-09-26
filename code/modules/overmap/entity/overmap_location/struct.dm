@@ -8,18 +8,20 @@
 	/// the map struct we're bound to
 	var/datum/map_struct/struct
 
-/datum/overmap_location/level/bind(datum/map_struct/location)
+/datum/overmap_location/struct/bind(datum/map_struct/location)
 	if(!istype(location))
 		CRASH("unexpected type")
-	#warn impl
+	struct = location
 
-/datum/overmap_location/level/unbind()
+/datum/overmap_location/struct/unbind()
 	if(!struct)
 		return
-	#warn impl
+	struct = null
 
 /datum/overmap_location/struct/get_z_indices()
+	return struct.z_indices.Copy()
 
-/datum/overmap_location/struct/get_z_index_random()
+/datum/overmap_location/struct/get_owned_z_indices()
+	return struct.z_indices.Copy()
 
 #warn impl all

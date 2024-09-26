@@ -11,15 +11,17 @@
 /datum/overmap_location/level/bind(datum/map_level/location)
 	if(!istype(location))
 		CRASH("unexpected type")
-	#warn impl
+	level = location
 
 /datum/overmap_location/level/unbind()
 	if(!level)
 		return
-	#warn impl
+	level = null
 
 /datum/overmap_location/level/get_z_indices()
+	return list(level.z_index)
 
-/datum/overmap_location/level/get_z_index_random()
+/datum/overmap_location/level/get_owned_z_indices()
+	return list(level.z_index)
 
 #warn impl all

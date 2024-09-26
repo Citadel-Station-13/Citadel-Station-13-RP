@@ -5,18 +5,18 @@
 	/// the shuttle we're bound to
 	var/datum/shuttle/shuttle
 
-/datum/overmap_location/level/bind(datum/shuttle/location)
+/datum/overmap_location/shuttle/bind(datum/shuttle/location)
 	if(!istype(location))
 		CRASH("unexpected type")
-	#warn impl
+	shuttle = location
 
-/datum/overmap_location/level/unbind()
+/datum/overmap_location/shuttle/unbind()
 	if(!shuttle)
 		return
-	#warn impl
+	shuttle = null
 
-/datum/overmap_location/struct/get_z_indices()
+/datum/overmap_location/shuttle/get_z_indices()
 
-/datum/overmap_location/struct/get_z_index_random()
+/datum/overmap_location/shuttle/get_owned_z_indices()
 
 #warn impl all
