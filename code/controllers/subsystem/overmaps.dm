@@ -21,6 +21,7 @@ SUBSYSTEM_DEF(overmaps)
 
 	/// Z-level ownership lookup
 	///
+	/// * This is an indexed list, with the entry being the owning /datum/overmap_location of a level, if any.
 	/// * This is the owning locations of levels.
 	/// * Non-owning locations aren't in here.
 	/// * A level can only be owned by one location at a time.

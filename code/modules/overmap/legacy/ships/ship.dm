@@ -69,8 +69,9 @@
 
 	var/life = 0
 
+	var/list/our_levels = get_owned_z_indices()
 	for(var/mob/living/L in living_mob_list)
-		if(L.z in map_z) //Things inside things we'll consider shielded, otherwise we'd want to use get_z(L)
+		if(L.z in our_levels)
 			life++
 
 	. += {"\[i\]Life Signs\[/i\]: [life ? life : "None"]"}
