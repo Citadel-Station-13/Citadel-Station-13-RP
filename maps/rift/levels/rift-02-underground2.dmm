@@ -475,12 +475,6 @@
 "bO" = (
 /turf/simulated/wall/prepainted,
 /area/maintenance/chapel)
-"bT" = (
-/obj/machinery/requests_console/preset/engineering{
-	pixel_y = -30
-	},
-/turf/simulated/floor/tiled/monotile,
-/area/engineering/engine_monitoring)
 "bW" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 4
@@ -802,6 +796,9 @@
 	req_access = list(10)
 	},
 /obj/structure/table/marble,
+/obj/machinery/requests_console/preset/engineering{
+	pixel_y = 29
+	},
 /turf/simulated/floor/tiled/monotile,
 /area/engineering/engine_monitoring)
 "dE" = (
@@ -6805,6 +6802,10 @@
 /obj/machinery/camera/network/engineering{
 	dir = 1
 	},
+/obj/machinery/air_alarm{
+	dir = 1;
+	pixel_y = -25
+	},
 /turf/simulated/floor/tiled/monotile,
 /area/engineering/engine_monitoring)
 "xV" = (
@@ -7051,11 +7052,8 @@
 	name = "First Stage Engine Ejection - Blast Doors";
 	pixel_y = -32
 	},
-/obj/structure/window/basic{
+/obj/machinery/computer/rcon{
 	dir = 1
-	},
-/obj/structure/window/reinforced{
-	dir = 8
 	},
 /turf/simulated/floor/tiled,
 /area/crew_quarters/heads/chief)
@@ -9099,13 +9097,6 @@
 /turf/simulated/floor/plating,
 /area/maintenance/lower/mining)
 "HA" = (
-/obj/machinery/air_alarm{
-	dir = 1;
-	pixel_y = -25
-	},
-/obj/structure/closet/radiation,
-/obj/item/clothing/glasses/meson,
-/obj/item/clothing/glasses/meson,
 /obj/structure/window/reinforced{
 	dir = 8
 	},
@@ -24413,12 +24404,12 @@ sq
 sq
 sq
 sq
+sq
+sq
+sq
+sq
+sq
 cG
-sq
-sq
-sq
-sq
-sq
 sq
 sq
 sq
@@ -28292,7 +28283,7 @@ dD
 df
 gy
 df
-bT
+zG
 zJ
 RA
 ci
