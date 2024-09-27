@@ -70,7 +70,7 @@
 "an" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/fuel,
 /turf/simulated/floor,
-/area/ship/expe/engines)
+/area/ship/ghostship/engines2)
 "ao" = (
 /obj/structure/cable{
 	icon_state = "1-8"
@@ -78,7 +78,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/fuel,
 /obj/machinery/meter,
 /turf/simulated/floor,
-/area/ship/expe/engines)
+/area/ship/ghostship/engines2)
 "ap" = (
 /obj/machinery/portable_atmospherics/canister/air,
 /obj/machinery/air_alarm/alarms_hidden{
@@ -120,8 +120,9 @@
 /turf/simulated/floor,
 /area/ship/ghostship/atmospherics)
 "ax" = (
-/turf/simulated/wall/rpshull,
-/area/ship/expe/engines)
+/obj/machinery/door/airlock/multi_tile/metal/mait,
+/turf/simulated/floor/tiled/steel_dirty/silver,
+/area/ship/ghostship/maintenancerim)
 "ay" = (
 /obj/machinery/atmospherics/valve/open,
 /turf/simulated/floor,
@@ -303,7 +304,7 @@
 "aZ" = (
 /obj/machinery/atmospherics/component/binary/pump/fuel,
 /turf/simulated/floor,
-/area/ship/expe/engines)
+/area/ship/ghostship/engines2)
 "ba" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -337,7 +338,6 @@
 	dir = 4
 	},
 /obj/machinery/door/firedoor/glass,
-/obj/machinery/door/airlock/glass,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
@@ -591,6 +591,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/aux{
 	dir = 9
+	},
+/obj/item/paper{
+	name = "You Can't Leave";
+	id = You Can't Leave You Can't Leave You Can't Leave You Can't Leave You Can't Leave You Can't Leave You Can't Leave You Can't Leave You Can't Leave You Can't Leave You Can't Leave You Can't Leave You Can't Leave You Can't Leave You Can't Leave You Can't Leave You Can't LeaveYou Can't Leave You Can't Leave You Can't Leave You Can't Leave You Can't Leave You Can't Leave You Can't Leave You Can't Leave You Can't Leave You Can't Leave You Can't Leave You Can't Leave You Can't Leave You Can't Leave You Can't Leave"
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ghostship/northairlock)
@@ -888,6 +892,9 @@
 	},
 /obj/machinery/power/apc/alarms_hidden/north_mount,
 /obj/structure/closet/secure_closet/personal/cabinet,
+/obj/item/gun/ballistic/musket/pistol,
+/obj/item/reagent_containers/glass/powder_horn/filled,
+/obj/item/storage/box/munition_box,
 /turf/simulated/floor/wood,
 /area/ship/ghostship/cabin1)
 "cE" = (
@@ -902,6 +909,9 @@
 	},
 /obj/machinery/power/apc/alarms_hidden/north_mount,
 /obj/structure/closet/secure_closet/personal/cabinet,
+/obj/item/gun/ballistic/musket/pistol,
+/obj/item/reagent_containers/glass/powder_horn/filled,
+/obj/item/storage/box/munition_box,
 /turf/simulated/floor/wood,
 /area/ship/ghostship/cabin2)
 "cG" = (
@@ -936,6 +946,9 @@
 	},
 /obj/machinery/power/apc/alarms_hidden/north_mount,
 /obj/structure/closet/secure_closet/personal/cabinet,
+/obj/item/gun/ballistic/musket/pistol,
+/obj/item/reagent_containers/glass/powder_horn/filled,
+/obj/item/storage/box/munition_box,
 /turf/simulated/floor/wood,
 /area/ship/ghostship/cabin4)
 "cL" = (
@@ -952,6 +965,9 @@
 	},
 /obj/machinery/power/apc/alarms_hidden/north_mount,
 /obj/structure/closet/secure_closet/personal/cabinet,
+/obj/item/gun/ballistic/musket/pistol,
+/obj/item/reagent_containers/glass/powder_horn/filled,
+/obj/item/storage/box/munition_box,
 /turf/simulated/floor/wood,
 /area/ship/ghostship/cabin5)
 "cN" = (
@@ -997,6 +1013,9 @@
 	},
 /obj/machinery/power/apc/alarms_hidden/north_mount,
 /obj/structure/closet/secure_closet/personal/cabinet,
+/obj/item/gun/ballistic/musket/pistol,
+/obj/item/reagent_containers/glass/powder_horn/filled,
+/obj/item/storage/box/munition_box,
 /turf/simulated/floor/wood/broken,
 /area/ship/ghostship/cabin7)
 "cU" = (
@@ -1012,6 +1031,9 @@
 	},
 /obj/machinery/power/apc/alarms_hidden/north_mount,
 /obj/structure/closet/secure_closet/personal/cabinet,
+/obj/item/gun/ballistic/musket/pistol,
+/obj/item/reagent_containers/glass/powder_horn/filled,
+/obj/item/storage/box/munition_box,
 /turf/simulated/floor/wood,
 /area/ship/ghostship/cabin8)
 "cW" = (
@@ -1023,6 +1045,9 @@
 	},
 /obj/machinery/power/apc/alarms_hidden/north_mount,
 /obj/structure/closet/secure_closet/personal/cabinet,
+/obj/item/gun/ballistic/musket/pistol,
+/obj/item/reagent_containers/glass/powder_horn/filled,
+/obj/item/storage/box/munition_box,
 /turf/simulated/floor/wood/broken,
 /area/ship/ghostship/cabin9)
 "cY" = (
@@ -1105,6 +1130,10 @@
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/aux{
 	dir = 4
+	},
+/obj/item/paper{
+	name = "You Can't Leave";
+	id = You Can't Leave You Can't Leave You Can't Leave You Can't Leave You Can't Leave You Can't Leave You Can't Leave You Can't Leave You Can't Leave You Can't Leave You Can't Leave You Can't Leave You Can't Leave You Can't Leave You Can't Leave You Can't Leave You Can't LeaveYou Can't Leave You Can't Leave You Can't Leave You Can't Leave You Can't Leave You Can't Leave You Can't Leave You Can't Leave You Can't Leave You Can't Leave You Can't Leave You Can't Leave You Can't Leave You Can't Leave You Can't Leave"
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ghostship/southairlock)
@@ -1519,7 +1548,7 @@
 	dir = 5
 	},
 /turf/simulated/floor,
-/area/ship/expe/engines)
+/area/ship/ghostship/engines2)
 "ei" = (
 /obj/structure/sign/poster/nanotrasen,
 /turf/simulated/wall/rpshull,
@@ -1581,7 +1610,7 @@
 /turf/simulated/floor/wood/broken,
 /area/ship/ghostship/cabin2)
 "eq" = (
-/obj/machinery/door/airlock/glass,
+/obj/machinery/door/airlock/multi_tile/metal/mait,
 /turf/simulated/floor/tiled/steel_dirty/silver,
 /area/ship/ghostship/corridor3)
 "er" = (
@@ -1646,13 +1675,6 @@
 	},
 /turf/simulated/floor/flesh,
 /area/ship/ghostship/sm)
-"ey" = (
-/obj/machinery/door/airlock/glass,
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
-/turf/simulated/floor/tiled/steel_dirty/silver,
-/area/ship/ghostship/maintenancerim)
 "ez" = (
 /obj/machinery/light,
 /turf/simulated/floor/reinforced,
@@ -1827,32 +1849,14 @@
 	dir = 4
 	},
 /turf/simulated/floor,
-/area/ship/expe/engines)
-"eX" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/fuel{
-	dir = 4
-	},
-/turf/simulated/floor,
-/area/ship/expe/engines)
-"eY" = (
-/obj/machinery/atmospherics/pipe/manifold/hidden/fuel{
-	dir = 4
-	},
-/turf/simulated/floor,
-/area/ship/expe/engines)
-"eZ" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/fuel{
-	dir = 9
-	},
-/turf/simulated/floor,
-/area/ship/expe/engines)
+/area/ship/ghostship/engines2)
 "fa" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/fuel{
 	dir = 4
 	},
 /obj/machinery/meter,
 /turf/simulated/floor,
-/area/ship/expe/engines)
+/area/ship/ghostship/engines2)
 "fb" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/fuel{
 	dir = 4
@@ -2233,14 +2237,14 @@
 /obj/machinery/door/airlock/maintenance/common,
 /obj/machinery/atmospherics/pipe/simple/hidden/fuel,
 /turf/simulated/floor,
-/area/ship/expe/engines)
+/area/ship/ghostship/engines2)
 "fU" = (
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/fuel,
 /turf/simulated/floor,
-/area/ship/expe/engines)
+/area/ship/ghostship/engines2)
 "fV" = (
 /obj/machinery/atmospherics/component/unary/engine{
 	dir = 4
@@ -2991,7 +2995,6 @@
 /turf/simulated/floor/tiled/steel_dirty/silver,
 /area/ship/ghostship/corridor1)
 "hq" = (
-/obj/machinery/door/airlock/glass,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/door/firedoor/glass,
@@ -4303,6 +4306,9 @@
 	},
 /obj/machinery/power/apc/alarms_hidden/north_mount,
 /obj/structure/closet/secure_closet/personal/cabinet,
+/obj/item/gun/ballistic/musket/pistol,
+/obj/item/reagent_containers/glass/powder_horn/filled,
+/obj/item/storage/box/munition_box,
 /turf/simulated/floor/wood/broken,
 /area/ship/ghostship/cabin6)
 "jE" = (
@@ -5073,8 +5079,8 @@
 /turf/simulated/floor/tiled/steel_dirty/dark,
 /area/ship/ghostship/hangarcontrol)
 "lm" = (
-/obj/machinery/door/airlock/glass,
 /obj/machinery/door/firedoor/glass,
+/obj/machinery/door/airlock/multi_tile/metal/mait,
 /turf/simulated/floor/tiled/steel_dirty/silver,
 /area/ship/ghostship/corridor1)
 "ln" = (
@@ -6251,7 +6257,9 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/door/firedoor/glass,
-/obj/machinery/door/airlock/glass,
+/obj/machinery/door/airlock/multi_tile/metal/mait{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ghostship/corridor1)
 "nx" = (
@@ -6366,8 +6374,6 @@
 /obj/item/clothing/head/helmet,
 /obj/item/clothing/accessory/armor/helmcover/navy,
 /obj/item/clothing/accessory/armor/helmcover/navy,
-/obj/item/clothing/accessory/armor/tag/civsec,
-/obj/item/clothing/accessory/armor/tag/civsec,
 /turf/simulated/floor/tiled/steel_dirty/dark,
 /area/ship/ghostship/armoury)
 "nI" = (
@@ -6388,18 +6394,13 @@
 /turf/simulated/floor/tiled/steel_dirty/dark,
 /area/ship/ghostship/armoury)
 "nJ" = (
-/obj/machinery/door/airlock/security{
-	req_one_access = list()
-	},
 /obj/machinery/door/firedoor,
 /obj/effect/floor_decal/borderfloorblack/full,
 /obj/effect/floor_decal/corner/red/borderfull,
+/obj/machinery/door/airlock/multi_tile/metal/mait,
 /turf/simulated/floor/tiled/steel_dirty/dark,
 /area/ship/ghostship/sechall)
 "nK" = (
-/obj/machinery/door/airlock/security{
-	req_one_access = list()
-	},
 /obj/machinery/door/firedoor,
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -7828,6 +7829,9 @@
 	},
 /obj/machinery/power/apc/alarms_hidden/north_mount,
 /obj/structure/closet/secure_closet/personal/cabinet,
+/obj/item/gun/ballistic/musket/pistol,
+/obj/item/reagent_containers/glass/powder_horn/filled,
+/obj/item/storage/box/munition_box,
 /turf/simulated/floor/wood/broken,
 /area/ship/ghostship/cabin3)
 "qG" = (
@@ -9796,6 +9800,8 @@
 /obj/item/paper_bin,
 /obj/item/clothing/head/pirate,
 /obj/item/gun/ballistic/deagle/camo,
+/obj/item/melee/transforming/energy/sword/cutlass,
+/obj/item/melee/transforming/energy/sword/cutlass,
 /turf/simulated/floor/wood/broken,
 /area/ship/ghostship/captqua)
 "vy" = (
@@ -9843,16 +9849,11 @@
 /turf/simulated/wall/rpshull,
 /area/ship/ghostship/seclobby)
 "vG" = (
-/obj/machinery/door/airlock/glass/security{
-	req_one_access = list()
-	},
 /obj/machinery/door/firedoor,
+/obj/machinery/door/airlock/multi_tile/metal/mait,
 /turf/simulated/floor/tiled/steel_dirty/dark,
 /area/ship/ghostship/seclobby)
 "vH" = (
-/obj/machinery/door/airlock/glass/security{
-	req_one_access = list()
-	},
 /obj/machinery/door/firedoor,
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -9864,11 +9865,11 @@
 /turf/simulated/wall/rpshull,
 /area/ship/ghostship/medical)
 "vJ" = (
-/obj/machinery/door/airlock/multi_tile/glass,
 /obj/machinery/door/firedoor/glass,
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
+/obj/machinery/door/airlock/multi_tile/metal/mait,
 /turf/simulated/floor/tiled/white,
 /area/ship/ghostship/medical)
 "vK" = (
@@ -10480,7 +10481,7 @@
 /turf/simulated/floor,
 /area/ship/ghostship/maintenance2)
 "xl" = (
-/obj/machinery/door/airlock/glass,
+/obj/machinery/door/airlock/multi_tile/glass,
 /turf/simulated/floor/tiled/steel_dirty/silver,
 /area/ship/ghostship/maintenancerim)
 "xn" = (
@@ -10581,35 +10582,32 @@
 "xX" = (
 /obj/machinery/atmospherics/pipe/tank/phoron,
 /turf/simulated/floor,
-/area/ship/expe/engines)
+/area/ship/ghostship/engines2)
 "xY" = (
 /obj/structure/cable{
 	icon_state = "0-2"
 	},
 /obj/machinery/power/apc/alarms_hidden/north_mount,
 /turf/simulated/floor,
-/area/ship/expe/engines)
+/area/ship/ghostship/engines2)
 "xZ" = (
 /obj/machinery/air_alarm/alarms_hidden{
 	pixel_y = 26
 	},
 /turf/simulated/floor,
-/area/ship/expe/engines)
-"yb" = (
-/turf/simulated/floor,
-/area/ship/expe/engines)
+/area/ship/ghostship/engines2)
 "yd" = (
 /obj/structure/cable{
 	icon_state = "1-4"
 	},
 /turf/simulated/floor,
-/area/ship/expe/engines)
+/area/ship/ghostship/engines2)
 "ye" = (
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
 /turf/simulated/floor,
-/area/ship/expe/engines)
+/area/ship/ghostship/engines2)
 "yf" = (
 /obj/structure/table/standard,
 /obj/item/kit/paint/ripley/pirate,
@@ -10894,10 +10892,6 @@
 /obj/effect/debris/cleanable/dirt,
 /turf/space/basic,
 /area/ship/ghostship/hangar)
-"CD" = (
-/obj/vehicle/sealed/mecha/combat/fighter/gunpod/loaded,
-/turf/simulated/floor/reinforced,
-/area/ship/ghostship/porthangar)
 "Df" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -10934,7 +10928,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/item/paper{
 	name = "I can't feel it.";
-	info = "I can't feel it anymore. No matter how much I take, no matter what I take. I busted in here and tried to make it stronger but I don't feel anything. I have enough drugs in me to be dead and still I don't feel it. I just want to feel it! Why!" "
+	info = "I can't feel it anymore. No matter how much I take, no matter what I take. I busted in here and tried to make it stronger but I don't feel anything. I have enough drugs in me to be dead and still I don't feel it. I just want to feel it! Why!"
 	},
 /turf/simulated/floor/tiled/steel_dirty,
 /area/ship/ghostship/medicalchem)
@@ -14770,8 +14764,8 @@ eb
 eb
 eb
 eb
-ax
-ax
+eb
+eb
 aa
 aa
 aa
@@ -14906,16 +14900,16 @@ vT
 bz
 eb
 fO
-ax
-ax
-ax
-ax
-ax
-ax
-ax
-ax
-ax
-ax
+eb
+eb
+eb
+eb
+eb
+eb
+eb
+eb
+eb
+eb
 aa
 aa
 aa
@@ -15048,17 +15042,17 @@ oL
 bz
 bg
 fP
-ax
+eb
 xX
 an
 aZ
 an
 an
 eh
-ax
-ax
-ax
-ax
+eb
+eb
+eb
+eb
 aj
 aj
 aa
@@ -15190,17 +15184,17 @@ np
 bz
 bh
 fP
-ax
+eb
 xX
 an
 aZ
 an
 eh
 eW
-yb
-ax
-ax
-ax
+ec
+eb
+eb
+eb
 aj
 aj
 aj
@@ -15332,17 +15326,17 @@ oN
 cR
 bi
 fQ
-ax
+eb
 xX
 an
 aZ
 eh
 eW
-eX
-yb
-ax
-ax
-ax
+fb
+ec
+eb
+eb
+eb
 aj
 aj
 aj
@@ -15474,17 +15468,17 @@ oP
 oP
 bi
 fP
-ax
+eb
 xY
 yd
-yb
+ec
 eW
-eX
-eX
-yb
-yb
-ax
-ax
+fb
+fb
+ec
+ec
+eb
+eb
 aj
 aj
 aj
@@ -15616,17 +15610,17 @@ wC
 oP
 bi
 fP
-ax
+eb
 xZ
 ye
-yb
+ec
 fa
 fa
 fa
-yb
-yb
-ax
-ax
+ec
+ec
+eb
+eb
 aj
 aj
 aj
@@ -15762,13 +15756,13 @@ fT
 fU
 ao
 an
-eY
-eY
-eZ
-yb
-yb
-ax
-ax
+fS
+fS
+fW
+ec
+ec
+eb
+eb
 aj
 aj
 aj
@@ -15900,17 +15894,17 @@ wE
 oP
 aS
 fX
-ax
-ax
-ax
-ax
-ax
-ax
-ax
-ax
-ax
-ax
-ax
+eb
+eb
+eb
+eb
+eb
+eb
+eb
+eb
+eb
+eb
+eb
 aj
 aj
 aj
@@ -16044,15 +16038,15 @@ bC
 gK
 aS
 aS
-ax
-ax
-ax
-ax
-ax
-ax
-ax
-ax
-ax
+eb
+eb
+eb
+eb
+eb
+eb
+eb
+eb
+eb
 aj
 aj
 aj
@@ -16865,7 +16859,7 @@ sP
 sP
 sP
 cW
-xl
+ax
 bb
 bn
 cb
@@ -17007,7 +17001,7 @@ cP
 cP
 cP
 Kv
-ey
+dM
 dM
 bo
 cB
@@ -17037,7 +17031,7 @@ aN
 aN
 iA
 dM
-ey
+dM
 yB
 Xc
 Xc
@@ -18705,11 +18699,11 @@ aj
 cG
 gP
 cW
+fk
+eB
 cW
-CD
-cW
-cW
-CD
+fk
+eB
 cW
 aS
 aS
@@ -18847,11 +18841,11 @@ aj
 cG
 gP
 cW
+fk
+fk
 cW
-cW
-cW
-cW
-cW
+fk
+fk
 cW
 aS
 aS
@@ -19563,7 +19557,7 @@ cW
 cW
 cW
 cW
-eq
+nd
 nd
 ne
 pz
