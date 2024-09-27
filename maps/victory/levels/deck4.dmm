@@ -336,6 +336,10 @@
 /obj/item/reagent_containers/food/drinks/drinkingglass/shotglass,
 /turf/simulated/floor/wood/broken,
 /area/space)
+"atX" = (
+/obj/effect/floor_decal/corner_kafel,
+/turf/simulated/floor/tiled/dark,
+/area/space)
 "avM" = (
 /obj/machinery/air_alarm{
 	dir = 4;
@@ -2390,6 +2394,13 @@
 /obj/structure/window/basic/full,
 /turf/simulated/floor/plating,
 /area/hydroponics/garden)
+"cXP" = (
+/obj/machinery/porta_turret/crescent{
+	density = 1;
+	faction = "neutral"
+	},
+/turf/simulated/floor/airless/ceiling,
+/area/exploration/medical)
 "cXT" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 8
@@ -2608,6 +2619,10 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/wood,
 /area/victory/surfacebase/sauna)
+"doo" = (
+/obj/machinery/shield_diffuser,
+/turf/simulated/floor/airless/ceiling,
+/area/exploration/pilot_prep)
 "dos" = (
 /obj/machinery/chem_master/condimaster,
 /turf/simulated/floor/tiled,
@@ -2987,6 +3002,9 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 1
 	},
+/obj/effect/floor_decal/techfloor{
+	dir = 1
+	},
 /turf/simulated/floor/tiled/dark,
 /area/hallway/secondary/civilian_hallway_mid)
 "dHq" = (
@@ -3082,6 +3100,10 @@
 /obj/effect/floor_decal/steeldecal/steel_decals5,
 /turf/simulated/floor/tiled,
 /area/space)
+"dNj" = (
+/obj/effect/floor_decal/corner_oldtile,
+/turf/simulated/floor/tiled/dark,
+/area/hallway/primary/aft)
 "dNq" = (
 /obj/machinery/light{
 	dir = 1
@@ -3770,6 +3792,13 @@
 	},
 /turf/simulated/floor/tiled,
 /area/teleporter)
+"eyg" = (
+/obj/machinery/porta_turret/crescent{
+	density = 1;
+	faction = "neutral"
+	},
+/turf/simulated/floor/airless/ceiling,
+/area/exploration/pilot_prep)
 "eyi" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 6
@@ -4766,6 +4795,9 @@
 	dir = 1
 	},
 /obj/effect/floor_decal/techfloor/corner,
+/obj/effect/floor_decal/techfloor{
+	dir = 1
+	},
 /turf/simulated/floor/tiled/dark,
 /area/hallway/secondary/civilian_hallway_mid)
 "fDv" = (
@@ -5320,6 +5352,10 @@
 	},
 /turf/simulated/floor/lino,
 /area/crew_quarters/coffee_shop)
+"gis" = (
+/obj/machinery/shield_diffuser,
+/turf/simulated/floor/airless/ceiling,
+/area/crew_quarters/captain)
 "giv" = (
 /obj/effect/floor_decal/industrial/outline/red,
 /obj/structure/closet/secure_closet/guncabinet/excursion,
@@ -5459,9 +5495,14 @@
 /turf/simulated/floor/tiled,
 /area/space)
 "gnb" = (
-/obj/structure/lattice,
-/turf/space,
-/area/gateway)
+/obj/machinery/porta_turret/crescent{
+	density = 1;
+	faction = "neutral"
+	},
+/turf/simulated/floor/plating{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/space)
 "gnm" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 4
@@ -8955,6 +8996,10 @@
 /obj/item/storage/fancy/heartbox,
 /turf/simulated/floor/carpet,
 /area/space)
+"knL" = (
+/obj/machinery/shield_diffuser,
+/turf/simulated/floor/airless/ceiling,
+/area/maintenance/central)
 "kot" = (
 /obj/structure/closet,
 /obj/random/maintenance/security,
@@ -9237,6 +9282,10 @@
 	dir = 4
 	},
 /turf/simulated/floor/carpet,
+/area/space)
+"kHh" = (
+/obj/effect/floor_decal/borderfloor/shifted,
+/turf/simulated/floor/tiled/dark,
 /area/space)
 "kHn" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
@@ -11382,6 +11431,9 @@
 /turf/simulated/floor/wood,
 /area/space)
 "npu" = (
+/obj/effect/floor_decal/techfloor{
+	dir = 1
+	},
 /turf/simulated/floor/tiled/dark,
 /area/maintenance/substation/exploration)
 "npO" = (
@@ -12323,9 +12375,9 @@
 /turf/simulated/shuttle/floor/voidcraft,
 /area/exploration/excursion_dock)
 "oAa" = (
-/obj/structure/lattice,
-/turf/space,
-/area/exploration/showers)
+/obj/effect/floor_decal/borderfloorwhite/shifted,
+/turf/simulated/floor/tiled/dark,
+/area/hallway/primary/aft)
 "oAh" = (
 /obj/structure/bookcase,
 /obj/item/book/manual/command_guide,
@@ -16109,6 +16161,10 @@
 "tgG" = (
 /turf/simulated/wall/r_wall,
 /area/shuttle/courser/cockpit)
+"tgN" = (
+/obj/effect/floor_decal/carpet,
+/turf/simulated/floor/tiled/dark,
+/area/space)
 "tgY" = (
 /obj/machinery/body_scanconsole,
 /obj/effect/floor_decal/corner_steel_grid{
@@ -16776,6 +16832,9 @@
 /obj/effect/floor_decal/techfloor/corner{
 	dir = 1
 	},
+/obj/effect/floor_decal/techfloor{
+	dir = 1
+	},
 /turf/simulated/floor/tiled/dark,
 /area/hallway/secondary/civilian_hallway_mid)
 "tQt" = (
@@ -17083,12 +17142,14 @@
 /turf/simulated/floor/tiled,
 /area/maintenance/tool_storage)
 "uhY" = (
-/obj/machinery/porta_turret/crescent{
-	density = 1;
-	faction = "neutral"
+/obj/effect/floor_decal/techfloor{
+	dir = 1
 	},
-/turf/simulated/floor/airless/ceiling,
-/area/exploration/showers)
+/obj/effect/floor_decal/techfloor{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/dark,
+/area/hallway/secondary/civilian_hallway_mid)
 "ujK" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -17247,9 +17308,12 @@
 /turf/simulated/floor/airless/ceiling,
 /area/space)
 "usY" = (
-/obj/structure/lattice,
-/turf/space,
-/area/bridge/office)
+/obj/machinery/porta_turret/crescent{
+	density = 1;
+	faction = "neutral"
+	},
+/turf/simulated/floor/airless/ceiling,
+/area/crew_quarters/captain)
 "utu" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -17262,6 +17326,10 @@
 /obj/structure/table/woodentable,
 /turf/simulated/floor/tiled,
 /area/victory/surfacebase/tram)
+"utA" = (
+/obj/effect/floor_decal/corner,
+/turf/simulated/floor/tiled/dark,
+/area/space)
 "utU" = (
 /obj/machinery/shield_diffuser,
 /turf/simulated/floor/airless,
@@ -18151,6 +18219,10 @@
 /obj/effect/mist,
 /turf/simulated/floor/wood,
 /area/hydroponics/garden)
+"vyI" = (
+/obj/effect/floor_decal/borderfloorwhite/full,
+/turf/simulated/floor/tiled/dark,
+/area/hallway/primary/aft)
 "vzu" = (
 /obj/structure/flora/ausbushes/genericbush,
 /turf/simulated/floor/grass,
@@ -18211,6 +18283,10 @@
 /obj/machinery/door/airlock/glass,
 /turf/simulated/floor/tiled/dark,
 /area/maintenance/substation/exploration)
+"vEv" = (
+/obj/effect/floor_decal/carpet/blue,
+/turf/simulated/floor/tiled/dark,
+/area/space)
 "vEX" = (
 /obj/structure/dogbed{
 	name = "pet bed"
@@ -18761,21 +18837,9 @@
 /turf/simulated/floor/tiled,
 /area/space)
 "woV" = (
-/obj/structure/cable/green{
-	icon_state = "4-8"
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/obj/effect/floor_decal/steeldecal/steel_decals4,
-/obj/effect/floor_decal/steeldecal/steel_decals4{
-	dir = 10
-	},
-/turf/simulated/floor/tiled,
-/area/gateway/prep_room)
+/obj/machinery/shield_diffuser,
+/turf/simulated/floor/airless/ceiling,
+/area/maintenance/security/starboard)
 "wpZ" = (
 /obj/machinery/bodyscanner{
 	dir = 8
@@ -19553,6 +19617,10 @@
 /obj/effect/floor_decal/industrial/warning/full,
 /turf/simulated/floor/plating,
 /area/space)
+"xnK" = (
+/obj/effect/floor_decal/corner_techfloor_grid,
+/turf/simulated/floor/tiled/dark,
+/area/space)
 "xoh" = (
 /obj/machinery/gateway{
 	dir = 9
@@ -19833,6 +19901,10 @@
 	},
 /turf/simulated/floor/carpet/oracarpet,
 /area/space)
+"xFa" = (
+/obj/machinery/shield_diffuser,
+/turf/simulated/floor/airless/ceiling,
+/area/exploration/medical)
 "xFb" = (
 /obj/structure/closet/crate/trashcart,
 /obj/random/maintenance,
@@ -22705,7 +22777,7 @@ xRj
 xRj
 xRj
 xRj
-psc
+xRj
 dkX
 dkX
 dTn
@@ -22899,7 +22971,7 @@ xRj
 xRj
 xRj
 xRj
-xRj
+usG
 dkX
 dkX
 mne
@@ -22934,7 +23006,7 @@ uUK
 uUK
 uUK
 cMJ
-xRj
+usG
 xRj
 xRj
 jNg
@@ -23287,7 +23359,7 @@ ris
 ris
 ris
 ris
-oAa
+fXq
 euS
 euS
 joA
@@ -23322,7 +23394,7 @@ uUK
 uUK
 uKB
 cMJ
-psc
+usG
 xRj
 xRj
 jNg
@@ -23481,7 +23553,7 @@ ris
 ris
 ris
 ris
-oAa
+ris
 euS
 euS
 joA
@@ -23675,7 +23747,7 @@ ris
 ris
 ris
 ris
-oAa
+ris
 euS
 euS
 joA
@@ -23710,7 +23782,7 @@ uUK
 uUK
 uUK
 cMJ
-psc
+usG
 xRj
 xRj
 xRj
@@ -23868,8 +23940,8 @@ ris
 ris
 ris
 ris
-fXq
-uhY
+ris
+ris
 euS
 euS
 joA
@@ -24098,7 +24170,7 @@ uUK
 uUK
 uUK
 cMJ
-xRj
+usG
 xRj
 xRj
 xRj
@@ -24446,8 +24518,8 @@ dkX
 dkX
 dkX
 nTu
-nTu
-nTu
+xFa
+xFa
 nTu
 nTu
 nTu
@@ -24626,7 +24698,7 @@ xRj
 xRj
 xRj
 xRj
-psc
+xRj
 xRj
 xRj
 xRj
@@ -24640,7 +24712,7 @@ dkX
 dkX
 dkX
 nTu
-nTu
+cXP
 nTu
 nTu
 nTu
@@ -25218,7 +25290,7 @@ bFR
 bFR
 bFR
 bFR
-bFR
+doo
 nkp
 lta
 mEg
@@ -25411,8 +25483,8 @@ bFR
 bFR
 bFR
 bFR
-bFR
-bFR
+doo
+eyg
 nkp
 bmD
 mEg
@@ -25606,7 +25678,7 @@ bFR
 bFR
 bFR
 bFR
-bFR
+doo
 nkp
 jwy
 mEg
@@ -25664,7 +25736,7 @@ tAk
 mne
 mne
 sQl
-xRj
+usG
 xRj
 xRj
 xRj
@@ -25993,8 +26065,8 @@ iPx
 iPx
 iPx
 iPx
-oDJ
-mGa
+iPx
+iPx
 rVV
 jTN
 ium
@@ -26052,7 +26124,7 @@ njW
 mne
 mne
 sQl
-psc
+usG
 xRj
 xRj
 xRj
@@ -26188,7 +26260,7 @@ iPx
 iPx
 iPx
 iPx
-gnb
+iPx
 rVV
 bkR
 gBG
@@ -26246,7 +26318,7 @@ uRE
 mne
 mne
 sQl
-psc
+xRj
 xRj
 xRj
 xRj
@@ -26382,7 +26454,7 @@ iPx
 iPx
 iPx
 iPx
-gnb
+oDJ
 rVV
 tZN
 tZN
@@ -26440,7 +26512,7 @@ uRE
 mne
 mne
 sQl
-psc
+xRj
 xRj
 xRj
 xRj
@@ -26575,8 +26647,8 @@ iPx
 iPx
 iPx
 iPx
-iPx
-gnb
+oDJ
+mGa
 rVV
 tZN
 tZN
@@ -26634,8 +26706,8 @@ eJe
 mne
 mne
 sQl
-kze
-usG
+xRj
+xRj
 xRj
 xRj
 jNg
@@ -26769,8 +26841,8 @@ iPx
 iPx
 iPx
 iPx
+iPx
 oDJ
-mGa
 eEJ
 gxB
 gxB
@@ -27348,7 +27420,7 @@ xRj
 xRj
 xRj
 xRj
-woV
+tfx
 tfx
 tfx
 tfx
@@ -27604,7 +27676,7 @@ tAk
 tAk
 tAk
 sQl
-xRj
+usG
 xRj
 jNg
 jNg
@@ -27798,8 +27870,8 @@ tAk
 tAk
 tAk
 sQl
-xRj
-xRj
+kze
+usG
 jNg
 jNg
 jNg
@@ -27992,7 +28064,7 @@ mne
 mne
 sQl
 sQl
-xRj
+usG
 xRj
 jNg
 jNg
@@ -29860,7 +29932,7 @@ xRj
 xRj
 xRj
 xRj
-xRj
+usG
 dkX
 jMU
 jMU
@@ -29944,7 +30016,7 @@ aIY
 gJJ
 fYz
 sQl
-xRj
+usG
 xRj
 xRj
 xRj
@@ -30053,8 +30125,8 @@ xRj
 xRj
 xRj
 xRj
-xRj
-xRj
+usG
+kze
 dkX
 jMU
 jMU
@@ -30138,8 +30210,8 @@ xHD
 wVY
 fYz
 sQl
-jNg
-jNg
+kze
+usG
 xRj
 xRj
 xRj
@@ -30248,7 +30320,7 @@ xRj
 xRj
 xRj
 xRj
-xRj
+usG
 dkX
 jMU
 jMU
@@ -30332,8 +30404,8 @@ xHD
 wVY
 fYz
 sQl
-jNg
-jNg
+usG
+xRj
 xRj
 xRj
 xRj
@@ -30914,8 +30986,8 @@ fRJ
 bxc
 jOI
 sQl
-jNg
-jNg
+usG
+xRj
 xRj
 xRj
 xRj
@@ -31108,8 +31180,8 @@ hRF
 wVY
 qva
 sQl
-jNg
-jNg
+kze
+usG
 xRj
 xRj
 xRj
@@ -31302,8 +31374,8 @@ gKK
 wVY
 sho
 sQl
-jNg
-jNg
+usG
+xRj
 xRj
 xRj
 xRj
@@ -31412,7 +31484,7 @@ xRj
 xRj
 xRj
 xRj
-xRj
+usG
 dkX
 jMU
 jMU
@@ -31605,8 +31677,8 @@ xRj
 xRj
 xRj
 xRj
-xRj
-xRj
+usG
+kze
 dkX
 jMU
 jMU
@@ -31800,7 +31872,7 @@ xRj
 xRj
 xRj
 xRj
-xRj
+usG
 dkX
 jMU
 jMU
@@ -32188,7 +32260,7 @@ vTv
 jNg
 jNg
 jNg
-psc
+xRj
 dkX
 jMU
 jMU
@@ -33352,7 +33424,7 @@ xRj
 xRj
 xRj
 xRj
-jNg
+usG
 dkX
 mne
 mne
@@ -33630,7 +33702,7 @@ jMU
 jMU
 jMU
 sQl
-xRj
+usG
 xRj
 xRj
 xRj
@@ -33740,7 +33812,7 @@ xRj
 xRj
 xRj
 xRj
-psc
+usG
 dkX
 mne
 mne
@@ -33824,8 +33896,8 @@ jMU
 jMU
 jMU
 sQl
-xRj
-xRj
+kze
+usG
 xRj
 xRj
 xRj
@@ -33934,7 +34006,7 @@ xRj
 xRj
 xRj
 xRj
-psc
+xRj
 dkX
 mne
 mne
@@ -34018,7 +34090,7 @@ jMU
 jMU
 jMU
 sQl
-xRj
+usG
 xRj
 xRj
 xRj
@@ -34128,7 +34200,7 @@ xRj
 xRj
 xRj
 xRj
-psc
+xRj
 dkX
 mne
 mne
@@ -34321,8 +34393,8 @@ xRj
 xRj
 xRj
 xRj
-usG
-kze
+xRj
+xRj
 dkX
 fGf
 mne
@@ -34516,7 +34588,7 @@ xRj
 xRj
 xRj
 xRj
-jNg
+xRj
 dkX
 mne
 mne
@@ -34710,7 +34782,7 @@ xRj
 xRj
 xRj
 xRj
-jNg
+usG
 dkX
 mne
 mne
@@ -34903,8 +34975,8 @@ xRj
 xRj
 xRj
 xRj
-xRj
-jNg
+usG
+kze
 dkX
 mne
 mne
@@ -35098,7 +35170,7 @@ xRj
 xRj
 xRj
 xRj
-jNg
+usG
 dkX
 uCU
 mne
@@ -35959,7 +36031,7 @@ dZr
 jMU
 eDF
 sQl
-xRj
+usG
 xRj
 xRj
 xRj
@@ -36262,7 +36334,7 @@ xRj
 xRj
 xRj
 xRj
-jNg
+usG
 dkX
 mne
 mne
@@ -36347,7 +36419,7 @@ dZr
 jMU
 eDF
 sQl
-psc
+usG
 xRj
 xRj
 xRj
@@ -36455,8 +36527,8 @@ xRj
 xRj
 xRj
 xRj
-xRj
-tCX
+usG
+kze
 dkX
 mne
 mne
@@ -36541,7 +36613,7 @@ dZr
 jMU
 eDF
 sQl
-psc
+xRj
 xRj
 xRj
 xRj
@@ -36650,7 +36722,7 @@ xRj
 xRj
 xRj
 xRj
-psc
+usG
 dkX
 mne
 mne
@@ -36699,7 +36771,7 @@ iLD
 bjg
 npu
 dnj
-dnj
+xnK
 tAw
 aNK
 kCA
@@ -36735,7 +36807,7 @@ dZr
 jMU
 eDF
 sQl
-psc
+xRj
 xRj
 xRj
 xRj
@@ -36892,7 +36964,7 @@ iLD
 iLD
 bjg
 npu
-dnj
+tgN
 dnj
 tAw
 aNK
@@ -36929,8 +37001,8 @@ dZr
 sWz
 eDF
 dZr
-kze
-usG
+xRj
+xRj
 xRj
 xRj
 xRj
@@ -37085,10 +37157,10 @@ iLD
 jMU
 jMU
 dZr
-dnj
-dnj
-dnj
-tAw
+gER
+utA
+atX
+dNj
 aNK
 jyC
 jBQ
@@ -37279,9 +37351,9 @@ dZr
 dZr
 dZr
 dZr
+gER
 dnj
-dnj
-dnj
+vEv
 tAw
 aNK
 bSd
@@ -37474,8 +37546,8 @@ dnj
 dnj
 dnj
 dnj
-dnj
-tAw
+kHh
+vyI
 tAw
 aNK
 iKm
@@ -37668,7 +37740,7 @@ dnj
 dnj
 dnj
 dnj
-tAw
+oAa
 tAw
 tAw
 dZr
@@ -37863,7 +37935,7 @@ nIu
 ggL
 mlA
 tAw
-tAw
+oAa
 tAw
 dZr
 jDn
@@ -38203,7 +38275,7 @@ xRj
 xRj
 xRj
 xRj
-bzE
+jMU
 jMU
 jMU
 hfY
@@ -38287,7 +38359,7 @@ jMU
 jMU
 eDF
 sQl
-xRj
+usG
 xRj
 xRj
 xRj
@@ -38397,7 +38469,7 @@ xRj
 xRj
 xRj
 xRj
-bzE
+jMU
 jMU
 hfY
 hfY
@@ -38481,8 +38553,8 @@ eDF
 eDF
 eDF
 sQl
-xRj
-xRj
+kze
+usG
 xRj
 xRj
 xRj
@@ -38590,8 +38662,8 @@ xRj
 xRj
 xRj
 xRj
-xRj
-jMU
+usG
+gnb
 jMU
 jMU
 jMU
@@ -38638,7 +38710,7 @@ qHS
 vdF
 vdF
 vdF
-tAw
+eQL
 tAw
 tAw
 dZr
@@ -38675,7 +38747,7 @@ sQl
 sQl
 sQl
 sQl
-xRj
+usG
 xRj
 xRj
 xRj
@@ -38785,16 +38857,16 @@ xRj
 xRj
 xRj
 xRj
-xRj
-xRj
-xRj
+usG
 jMU
 jMU
 jMU
+jMU
+jMU
 hfY
 hfY
-hfY
-hfY
+usG
+gnb
 mZA
 mZA
 nct
@@ -38832,7 +38904,7 @@ qHS
 iZf
 iWC
 iWC
-tAw
+eQL
 tAw
 tAw
 dZr
@@ -38987,8 +39059,8 @@ xRj
 xRj
 xRj
 xRj
-xRj
-jMU
+usG
+usG
 mZA
 mZA
 mZA
@@ -39026,7 +39098,7 @@ qHS
 iZf
 iWC
 iWC
-tAw
+eQL
 tAw
 tAw
 dZr
@@ -39220,7 +39292,7 @@ iZf
 iZf
 iZf
 iZf
-tAw
+eQL
 pgL
 pfO
 fvW
@@ -39414,7 +39486,7 @@ mER
 mER
 mER
 iZf
-tAw
+eQL
 pgL
 aau
 pob
@@ -39828,7 +39900,7 @@ eKd
 jMU
 eDF
 sQl
-xRj
+usG
 xRj
 xRj
 xRj
@@ -40190,7 +40262,7 @@ oZB
 aLV
 jMU
 dZr
-tAw
+eQL
 tAw
 tAw
 cZJ
@@ -40216,7 +40288,7 @@ sDi
 sWz
 eDF
 sQl
-psc
+usG
 xRj
 xRj
 xRj
@@ -40346,7 +40418,7 @@ xRj
 xRj
 xRj
 xRj
-jMU
+usG
 nct
 nct
 nct
@@ -40410,7 +40482,7 @@ sDi
 jMU
 eDF
 sQl
-psc
+xRj
 xRj
 xRj
 xRj
@@ -40539,8 +40611,8 @@ xRj
 xRj
 xRj
 xRj
-xRj
-jMU
+usG
+gnb
 jMU
 jMU
 jMU
@@ -40604,7 +40676,7 @@ kaL
 jMU
 eDF
 sQl
-psc
+xRj
 xRj
 xRj
 xRj
@@ -40734,11 +40806,11 @@ xRj
 xRj
 xRj
 xRj
+usG
 xRj
 xRj
 xRj
-xRj
-utU
+jMU
 aNV
 jMU
 sQl
@@ -40798,8 +40870,8 @@ sDi
 jMU
 eDF
 sQl
-kze
-usG
+xRj
+xRj
 xRj
 xRj
 xRj
@@ -41512,7 +41584,7 @@ xRj
 xRj
 xRj
 xRj
-xRj
+usG
 oYa
 cpA
 hjz
@@ -41705,8 +41777,8 @@ xRj
 xRj
 xRj
 xRj
-xRj
-xRj
+usG
+kze
 oYa
 skW
 pob
@@ -41900,7 +41972,7 @@ xRj
 xRj
 xRj
 xRj
-xRj
+usG
 oYa
 hUE
 pob
@@ -41937,7 +42009,7 @@ gnD
 twI
 jrd
 fkm
-tAw
+eQL
 pgL
 cZJ
 dZr
@@ -41962,7 +42034,7 @@ jMU
 sWz
 eDF
 sQl
-xRj
+usG
 xRj
 xRj
 xRj
@@ -42117,8 +42189,8 @@ mYb
 mYb
 mYb
 mYb
-bZl
 tAw
+bZl
 xwU
 gva
 kDz
@@ -42156,8 +42228,8 @@ eDF
 jMU
 eDF
 sQl
-xRj
-xRj
+kze
+usG
 xRj
 xRj
 xRj
@@ -42311,8 +42383,8 @@ cEY
 doC
 kNR
 mYb
-xgP
 tAw
+xgP
 xwU
 gva
 rbW
@@ -42350,7 +42422,7 @@ sQl
 sQl
 sQl
 sQl
-xRj
+usG
 xRj
 xRj
 xRj
@@ -42505,8 +42577,8 @@ mYb
 mYb
 mYb
 mYb
-xgP
 tAw
+xgP
 xwU
 aMu
 ihi
@@ -42699,8 +42771,8 @@ cEY
 pAM
 uYs
 mYb
-xgP
 tAw
+xgP
 xwU
 ixz
 tTD
@@ -42893,8 +42965,8 @@ mYb
 mYb
 mYb
 mYb
-olt
 tAw
+olt
 xwU
 gva
 rbW
@@ -43087,8 +43159,8 @@ pMy
 iQL
 pRV
 mYb
-xgP
 tAw
+xgP
 xwU
 gva
 dfE
@@ -43258,8 +43330,8 @@ xRj
 xRj
 xRj
 xRj
-xRj
 oYa
+pob
 hOd
 xdD
 tCc
@@ -43281,8 +43353,8 @@ pqe
 iQL
 yey
 mYb
-xgP
 tAw
+xgP
 xwU
 gva
 iui
@@ -43452,8 +43524,8 @@ xRj
 xRj
 xRj
 xRj
-kze
 oYa
+pob
 pob
 pob
 pob
@@ -43475,8 +43547,8 @@ nCE
 iQL
 pyh
 mYb
-ceM
 tAw
+ceM
 xwU
 gva
 nxI
@@ -43647,7 +43719,7 @@ xRj
 xRj
 xRj
 oYa
-oYa
+pob
 rTo
 qik
 pob
@@ -43669,8 +43741,8 @@ uue
 nRR
 hZk
 mYb
-xgP
 tAw
+xgP
 xwU
 gva
 czH
@@ -43840,8 +43912,8 @@ xRj
 xRj
 xRj
 xRj
-kze
 oYa
+pob
 coK
 tRa
 bBC
@@ -43863,8 +43935,8 @@ cib
 dIE
 dIE
 dIE
-xgP
 tAw
+xgP
 xwU
 gva
 xPV
@@ -44057,8 +44129,8 @@ rZl
 rVI
 aMy
 dIE
-xgP
 tAw
+xgP
 xwU
 gva
 dth
@@ -44227,7 +44299,7 @@ xRj
 xRj
 xRj
 xRj
-xRj
+usG
 oYa
 kIZ
 lal
@@ -44251,8 +44323,8 @@ rZl
 rZl
 amc
 dIE
-xgP
 tAw
+xgP
 xwU
 gva
 wCb
@@ -44420,8 +44492,8 @@ xRj
 xRj
 xRj
 xRj
-xRj
-xRj
+utU
+kze
 oYa
 fKP
 gkR
@@ -44445,8 +44517,8 @@ rzL
 xKz
 vyg
 dIE
-xgP
 tAw
+xgP
 xwU
 vVS
 qXp
@@ -44615,7 +44687,7 @@ xRj
 xRj
 xRj
 xRj
-xRj
+usG
 oYa
 yfo
 gMJ
@@ -44639,8 +44711,8 @@ iQS
 rln
 tbQ
 dIE
-bZl
 tAw
+bZl
 xwU
 vVS
 cEb
@@ -44833,8 +44905,8 @@ iQS
 rln
 pGO
 dIE
-cTE
-ngd
+dnj
+xwO
 eUU
 lUh
 jMU
@@ -44862,8 +44934,8 @@ jMU
 jMU
 sQl
 sQl
-sQl
-xRj
+kze
+usG
 xRj
 xRj
 xRj
@@ -45027,8 +45099,8 @@ fmJ
 esr
 vdw
 dIE
-cTE
-ngd
+dnj
+xwO
 eUU
 lUh
 jMU
@@ -45056,7 +45128,7 @@ jMU
 jMU
 sQl
 sQl
-sQl
+usG
 xRj
 xRj
 xRj
@@ -45221,8 +45293,8 @@ kim
 kim
 gAb
 dIE
-cTE
-ngd
+dnj
+xwO
 eUU
 adp
 jMU
@@ -45250,7 +45322,7 @@ jMU
 jMU
 sQl
 sQl
-sQl
+xRj
 xRj
 xRj
 xRj
@@ -45415,9 +45487,9 @@ iLZ
 iLZ
 iLZ
 iLZ
-cTE
+dnj
+xwO
 eUU
-lUh
 lUh
 dZr
 eDF
@@ -45592,7 +45664,7 @@ xRj
 xRj
 xRj
 xRj
-xRj
+usG
 sQl
 sQl
 jMU
@@ -45609,8 +45681,8 @@ ueR
 oAD
 kKH
 kef
-mWz
 ngd
+mWz
 ngd
 ngd
 dZr
@@ -45803,7 +45875,7 @@ ipW
 ipW
 ipW
 xJZ
-mWz
+ngd
 mWz
 mWz
 ngd
@@ -45815,7 +45887,7 @@ eDF
 eDF
 jMU
 dZr
-ngd
+eez
 ngd
 ngd
 dnj
@@ -45980,7 +46052,7 @@ xRj
 xRj
 xRj
 xRj
-psc
+usG
 sQl
 sQl
 jMU
@@ -46009,7 +46081,7 @@ stV
 own
 own
 dZr
-ngd
+eez
 ngd
 ngd
 dnj
@@ -46174,7 +46246,7 @@ lLc
 xRj
 xRj
 xRj
-psc
+xRj
 sQl
 sQl
 dZr
@@ -46203,7 +46275,7 @@ kPs
 lmB
 whp
 dZr
-ngd
+uhY
 ngd
 ngd
 dZr
@@ -46368,7 +46440,7 @@ lLc
 xRj
 xRj
 xRj
-psc
+xRj
 sQl
 sQl
 jMU
@@ -46397,7 +46469,7 @@ qfo
 fMf
 iyz
 dZr
-ngd
+uhY
 ngd
 ngd
 dZr
@@ -46548,9 +46620,9 @@ jMU
 eYV
 eYV
 eYV
-eYV
-eYV
-eYV
+lLc
+lLc
+lLc
 lLc
 lLc
 lLc
@@ -46561,8 +46633,8 @@ lLc
 lLc
 xRj
 xRj
-usG
-kze
+xRj
+xRj
 sQl
 sQl
 sQl
@@ -46607,7 +46679,7 @@ dZr
 jMU
 eDF
 sQl
-xRj
+usG
 xRj
 xRj
 xRj
@@ -46742,9 +46814,9 @@ jMU
 eYV
 eYV
 eYV
+lLc
 eYV
-eYV
-eYV
+lLc
 lLc
 lLc
 lLc
@@ -46756,8 +46828,8 @@ lLc
 xRj
 xRj
 xRj
-xRj
-jNg
+usG
+kze
 sQl
 sQl
 sQl
@@ -46951,7 +47023,7 @@ xRj
 xRj
 xRj
 xRj
-jNg
+usG
 jNg
 sQl
 sQl
@@ -46995,7 +47067,7 @@ dZr
 jMU
 eDF
 sQl
-psc
+usG
 xRj
 xRj
 xRj
@@ -47189,7 +47261,7 @@ dZr
 sWz
 eDF
 sQl
-psc
+xRj
 xRj
 xRj
 xRj
@@ -47341,7 +47413,7 @@ xRj
 xRj
 xRj
 xRj
-sQl
+usG
 sQl
 sQl
 jMU
@@ -47383,7 +47455,7 @@ dZr
 jMU
 eDF
 sQl
-psc
+xRj
 xRj
 xRj
 xRj
@@ -47534,8 +47606,8 @@ xRj
 xRj
 xRj
 xRj
-xRj
-xRj
+usG
+gnb
 sQl
 sQl
 jMU
@@ -47577,8 +47649,8 @@ dZr
 jMU
 eDF
 sQl
-kze
-usG
+xRj
+xRj
 xRj
 xRj
 xRj
@@ -47729,7 +47801,7 @@ xRj
 xRj
 xRj
 xRj
-xRj
+usG
 sQl
 sQl
 jMU
@@ -48918,9 +48990,9 @@ qyL
 qyL
 tuO
 dZr
+xpv
 mWz
 mWz
-ngd
 dZr
 dZr
 dZr
@@ -49112,9 +49184,9 @@ kWJ
 kWJ
 qyL
 lUh
+xpv
 mWz
-ngd
-dZr
+dnj
 dZr
 jMU
 jMU
@@ -49129,7 +49201,7 @@ jMU
 jMU
 eDF
 sQl
-xRj
+usG
 xRj
 xRj
 xRj
@@ -49306,10 +49378,10 @@ kWJ
 kWJ
 kWJ
 ngd
+xpv
 mWz
-ngd
+dnj
 nzK
-eDF
 eDF
 eDF
 eDF
@@ -49323,8 +49395,8 @@ eDF
 jMU
 eDF
 sQl
-xRj
-xRj
+kze
+usG
 xRj
 vTv
 xRj
@@ -49476,7 +49548,7 @@ xRj
 xRj
 xRj
 xRj
-xPG
+mgO
 blv
 jTK
 kpe
@@ -49500,9 +49572,9 @@ kWJ
 kWJ
 kWJ
 ngd
+xpv
 mWz
-ngd
-dZr
+dnj
 dZr
 dZr
 dZr
@@ -49517,7 +49589,7 @@ jdj
 lft
 lft
 lft
-xRj
+usG
 xRj
 xRj
 xRj
@@ -49694,10 +49766,10 @@ kWJ
 kWJ
 qyL
 lUh
+xpv
 mWz
-ngd
+dnj
 dZr
-jMU
 jMU
 jMU
 jMU
@@ -49888,10 +49960,10 @@ qyL
 qyL
 tuO
 lUh
+xpv
 mWz
-ngd
+dnj
 dZr
-jMU
 jMU
 jMU
 jMU
@@ -50059,7 +50131,7 @@ xRj
 xRj
 xRj
 mgO
-usY
+xPG
 xwo
 xwo
 fJz
@@ -50082,10 +50154,10 @@ lUh
 lUh
 lUh
 lUh
+xpv
 mWz
 ngd
 lUh
-oPW
 oPW
 jMU
 jMU
@@ -50276,10 +50348,10 @@ mWz
 mWz
 mWz
 mWz
+xpv
 mWz
 ngd
 lUh
-oPW
 oPW
 jMU
 jMU
@@ -50447,7 +50519,7 @@ xRj
 xRj
 xRj
 xRj
-iMM
+knL
 ugo
 npO
 npO
@@ -50472,8 +50544,8 @@ ngd
 ngd
 ngd
 ngd
+xpv
 lUh
-oPW
 oPW
 jMU
 jMU
@@ -50873,7 +50945,7 @@ kyr
 kyr
 rQl
 sQl
-xRj
+usG
 dkf
 xRj
 xRj
@@ -51067,8 +51139,8 @@ jMU
 jMU
 rQl
 sQl
-xRj
-dkf
+kze
+woV
 xRj
 xRj
 xRj
@@ -51261,7 +51333,7 @@ jMU
 jMU
 rQl
 sQl
-xRj
+usG
 dkf
 dkf
 xRj
@@ -52424,8 +52496,8 @@ mUi
 fxw
 fVM
 cYi
+kze
 usG
-xRj
 xRj
 xRj
 xRj
@@ -52582,8 +52654,8 @@ xRj
 xRj
 xRj
 xRj
-xRj
-xRj
+usG
+gnb
 rQl
 rQl
 rQl
@@ -52618,8 +52690,8 @@ rvv
 vFv
 qDT
 cYi
-kze
 usG
+xRj
 xRj
 xRj
 xRj
@@ -52777,7 +52849,7 @@ xRj
 xRj
 xRj
 xRj
-xRj
+usG
 xRj
 rQl
 rQl
@@ -52812,7 +52884,7 @@ tLe
 aAh
 bGl
 cYi
-psc
+xRj
 xRj
 xRj
 xRj
@@ -53006,7 +53078,7 @@ cYi
 cYi
 cYi
 cYi
-psc
+xRj
 xRj
 xRj
 xRj
@@ -53200,7 +53272,7 @@ cYi
 cYi
 iPW
 iPW
-psc
+xRj
 xRj
 xRj
 xRj
@@ -53391,11 +53463,11 @@ cYi
 iPW
 cYi
 cYi
+usY
+gis
 iPW
-iPW
-iPW
-kze
-usG
+xRj
+xRj
 xRj
 xRj
 xRj
@@ -53556,8 +53628,8 @@ xRj
 xRj
 xRj
 xRj
-xRj
-xRj
+usG
+gnb
 rQl
 rQl
 rQl
@@ -53585,10 +53657,10 @@ cYi
 cYi
 cYi
 iPW
+gis
 iPW
 iPW
-iPW
-usG
+xRj
 xRj
 xRj
 xRj
@@ -53751,7 +53823,7 @@ xRj
 xRj
 xRj
 xRj
-xRj
+usG
 xRj
 rQl
 rQl
@@ -54166,9 +54238,9 @@ vYC
 vYC
 rQl
 jNg
-psc
-jNg
-jNg
+xRj
+xRj
+xRj
 xRj
 xRj
 xRj
@@ -54361,8 +54433,8 @@ vYC
 xAa
 jNg
 xRj
-jNg
-jNg
+xRj
+xRj
 jNg
 xRj
 xRj
@@ -54724,7 +54796,7 @@ xRj
 xRj
 xRj
 xRj
-psc
+xRj
 vYC
 vYC
 vYC
@@ -55304,8 +55376,8 @@ jNg
 jNg
 jNg
 jNg
-jNg
-bzE
+xRj
+xRj
 jNg
 jNg
 vYC
@@ -55498,12 +55570,12 @@ jNg
 jNg
 jNg
 jNg
-jNg
-bzE
-jNg
-jNg
+xRj
+xRj
 jNg
 jNg
+jNg
+xRj
 vYC
 vYC
 pNt
@@ -55519,7 +55591,7 @@ pNt
 pNt
 vYC
 vYC
-jNg
+xRj
 jNg
 jNg
 jNg
@@ -55692,12 +55764,12 @@ jNg
 jNg
 jNg
 jNg
-jNg
-bzE
-jNg
-jNg
+xRj
+xRj
 jNg
 jNg
+jNg
+usG
 rnI
 vYC
 oDs
@@ -55713,7 +55785,7 @@ oDs
 oDs
 vYC
 rnI
-jNg
+usG
 jNg
 jNg
 jNg
@@ -55886,16 +55958,16 @@ jNg
 jNg
 jNg
 jNg
-jNg
-bzE
-jNg
-jNg
+xRj
+xRj
 jNg
 jNg
+jNg
+xRj
 cgo
+xRj
 jNg
 jNg
-jNg
 pNt
 pNt
 pNt
@@ -55905,9 +55977,9 @@ pNt
 pNt
 jNg
 jNg
-jNg
+xRj
 cgo
-jNg
+xRj
 jNg
 jNg
 xRj
@@ -56080,8 +56152,8 @@ jNg
 jNg
 jNg
 jNg
-jNg
-bzE
+xRj
+xRj
 jNg
 jNg
 jNg
@@ -56274,8 +56346,8 @@ jNg
 jNg
 jNg
 jNg
-jNg
-bzE
+xRj
+xRj
 jNg
 jNg
 jNg
@@ -56468,30 +56540,30 @@ jNg
 jNg
 jNg
 jNg
-jNg
-psc
-psc
-psc
-psc
-psc
-bzE
-bzE
-bzE
-bzE
-psc
-psc
-psc
-bzE
-bzE
-bzE
-bzE
-psc
-psc
-bzE
-bzE
-bzE
-bzE
-bzE
+xRj
+xRj
+xRj
+xRj
+xRj
+xRj
+xRj
+xRj
+xRj
+xRj
+xRj
+xRj
+xRj
+xRj
+xRj
+xRj
+xRj
+xRj
+xRj
+xRj
+xRj
+xRj
+xRj
+xRj
 xRj
 xRj
 xRj
@@ -56664,28 +56736,28 @@ jNg
 jNg
 jNg
 jNg
-jNg
-jNg
-jNg
-jNg
-jNg
-jNg
-jNg
-jNg
-jNg
-jNg
-jNg
-jNg
-jNg
-jNg
-jNg
-jNg
-jNg
-jNg
-jNg
-jNg
-jNg
-jNg
+xRj
+xRj
+xRj
+xRj
+xRj
+xRj
+xRj
+xRj
+xRj
+xRj
+xRj
+xRj
+xRj
+xRj
+xRj
+xRj
+xRj
+xRj
+xRj
+xRj
+xRj
+xRj
 xRj
 xRj
 xRj
