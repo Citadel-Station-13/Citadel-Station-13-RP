@@ -288,10 +288,12 @@
 	brightness_on = 5
 	w_class = WEIGHT_CLASS_BULKY
 	power_use = 0
-	on = 1
 	light_wedge = LIGHT_OMNI
 	light_color = LIGHT_COLOR_FIRE
 	flashlight_range = 4
+
+/obj/item/flashlight/lamp/on
+	on = 1
 
 
 // green-shaded desk lamp
