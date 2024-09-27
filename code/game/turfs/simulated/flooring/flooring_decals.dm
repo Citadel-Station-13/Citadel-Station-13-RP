@@ -1196,6 +1196,65 @@ var/list/floor_decals = list()
 	name = "grass edge"
 	icon_state = "grass_edge_corner"
 
+// Victory colour decals
+
+/obj/effect/floor_decal/corner/darkblue
+	name = "darkblue corner"
+	color = COLOR_BLUE
+
+/obj/effect/floor_decal/corner/darkblue/diagonal
+	icon_state = "corner_white_diagonal"
+
+/obj/effect/floor_decal/corner/darkblue/full
+	icon_state = "corner_white_full"
+
+/obj/effect/floor_decal/corner/darkblue/three_quarters
+	icon_state = "corner_white_three_quarters"
+
+/obj/effect/floor_decal/corner/darkblue/border
+	icon_state = "bordercolor"
+
+/obj/effect/floor_decal/corner/darkblue/bordercorner
+	icon_state = "bordercolorcorner"
+
+/obj/effect/floor_decal/corner/darkblue/bordercorner2
+	icon_state = "bordercolorcorner2"
+
+/obj/effect/floor_decal/corner/darkblue/borderfull
+	icon_state = "bordercolorfull"
+
+/obj/effect/floor_decal/corner/darkblue/bordercee
+	icon_state = "bordercolorcee"
+
+/obj/effect/floor_decal/corner/gold
+	name = "gold corner"
+	color = COLOR_GOLD
+
+/obj/effect/floor_decal/corner/gold/diagonal
+	icon_state = "corner_white_diagonal"
+
+/obj/effect/floor_decal/corner/gold/full
+	icon_state = "corner_white_full"
+
+/obj/effect/floor_decal/corner/gold/three_quarters
+	icon_state = "corner_white_three_quarters"
+
+/obj/effect/floor_decal/corner/gold/border
+	icon_state = "bordercolor"
+
+/obj/effect/floor_decal/corner/gold/bordercorner
+	icon_state = "bordercolorcorner"
+
+/obj/effect/floor_decal/corner/gold/bordercorner2
+	icon_state = "bordercolorcorner2"
+
+/obj/effect/floor_decal/corner/gold/borderfull
+	icon_state = "bordercolorfull"
+
+/obj/effect/floor_decal/corner/gold/bordercee
+	icon_state = "bordercolorcee"
+
+
 //! ## VR FILE MERGE ## !//
 
 /obj/effect/floor_decal/flesh
