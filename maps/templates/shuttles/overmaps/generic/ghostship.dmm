@@ -10032,6 +10032,11 @@
 /obj/structure/closet/firecloset/full,
 /turf/simulated/floor,
 /area/ship/ghostship/maintenancerim)
+"xF" = (
+/obj/effect/debris/cleanable/dirt,
+/obj/machinery/floodlight,
+/turf/simulated/floor/reinforced,
+/area/ship/ghostship/hangar)
 "xG" = (
 /obj/machinery/light/small{
 	dir = 1
@@ -10147,7 +10152,7 @@
 /turf/simulated/floor/reinforced,
 /area/ship/ghostship/starboardhangar)
 "yu" = (
-/obj/overmap/entity/visitable/ship/vespa,
+/obj/overmap/entity/visitable/ship/ghostship,
 /turf/space,
 /area/space)
 "yv" = (
@@ -10455,7 +10460,7 @@
 	desc = "It is caked in dust and yet appears fresh. Something tells you that you shouldn't eat it."
 	},
 /obj/effect/debris/cleanable/dirt,
-/turf/space/basic,
+/turf/simulated/floor/reinforced,
 /area/ship/ghostship/hangar)
 "CJ" = (
 /turf/simulated/wall/rpshull,
@@ -10653,6 +10658,17 @@
 /obj/item/reagent_containers/syringe/drugs,
 /turf/simulated/floor/tiled/steel_dirty,
 /area/ship/ghostship/medicalchem)
+"HI" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/effect/debris/cleanable/dirt,
+/obj/machinery/floodlight,
+/turf/simulated/floor/tiled/techfloor,
+/area/ship/ghostship/hangar)
 "HL" = (
 /obj/machinery/door/airlock/glass_science{
 	req_one_access = list()
@@ -13380,7 +13396,7 @@ aa
 aa
 bz
 bz
-np
+HI
 lj
 jH
 hB
@@ -13966,7 +13982,7 @@ UY
 Cu
 UY
 hB
-hB
+xF
 pF
 dI
 bz
