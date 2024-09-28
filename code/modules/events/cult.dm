@@ -31,7 +31,7 @@
 	endWhen = 45
 
 /datum/event/cult/announce()
-	command_announcement.Announce("Attention [station_name()], unknown humanoid and non-humanoid entities are warping onto the ships! Advise immediate removal of these intruders before productivity aboard gets hindered!", "Screaming Signals Detected", new_sound = sound('sound/effects/c_alarm.mp3',volume=4))
+	command_announcement.Announce("Attention [station_name()], unknown humanoid and non-humanoid entities detected within the facility!", "Screaming Signals Detected", new_sound = sound('sound/effects/c_alarm.mp3',volume=4))
 
 
 /datum/event/cult/start()
