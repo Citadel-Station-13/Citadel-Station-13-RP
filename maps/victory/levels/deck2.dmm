@@ -193,6 +193,8 @@
 /obj/structure/table/reinforced,
 /obj/machinery/recharger,
 /obj/item/duct_tape_roll,
+/obj/effect/floor_decal/borderfloor,
+/obj/effect/floor_decal/corner/blue/border,
 /turf/simulated/floor/tiled,
 /area/quartermaster/office)
 "amW" = (
@@ -266,6 +268,12 @@
 	dir = 1
 	},
 /obj/machinery/camera/network/cargo,
+/obj/effect/floor_decal/borderfloor{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/blue/border{
+	dir = 1
+	},
 /turf/simulated/floor/tiled,
 /area/quartermaster/office)
 "auh" = (
@@ -610,6 +618,8 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/effect/floor_decal/borderfloor,
+/obj/effect/floor_decal/corner/blue/border,
 /turf/simulated/floor/tiled,
 /area/quartermaster/office)
 "aHW" = (
@@ -4220,6 +4230,12 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
+/obj/effect/floor_decal/borderfloor{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/blue/border{
+	dir = 1
+	},
 /turf/simulated/floor/tiled,
 /area/quartermaster/office)
 "eoz" = (
@@ -4567,6 +4583,12 @@
 "eGA" = (
 /obj/machinery/requests_console/preset/cargo{
 	pixel_x = 30
+	},
+/obj/effect/floor_decal/borderfloor{
+	dir = 5
+	},
+/obj/effect/floor_decal/corner/blue/border{
+	dir = 5
 	},
 /turf/simulated/floor/tiled,
 /area/quartermaster/office)
@@ -5280,6 +5302,8 @@
 "fjA" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/effect/floor_decal/borderfloor,
+/obj/effect/floor_decal/corner/blue/border,
 /turf/simulated/floor/tiled,
 /area/quartermaster/office)
 "fll" = (
@@ -5774,6 +5798,15 @@
 	},
 /turf/simulated/floor/tiled/old_cargo/white,
 /area/security/detectives_office)
+"fEM" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 6
+	},
+/obj/effect/floor_decal/corner/blue/border{
+	dir = 6
+	},
+/turf/simulated/floor/tiled,
+/area/quartermaster/foyer)
 "fEO" = (
 /obj/machinery/light/small{
 	dir = 1
@@ -8325,6 +8358,7 @@
 /obj/machinery/camera/network/cargo{
 	dir = 4
 	},
+/obj/effect/floor_decal/industrial/outline/blue,
 /turf/simulated/floor/tiled,
 /area/quartermaster/foyer)
 "igs" = (
@@ -8596,6 +8630,8 @@
 /obj/item/stamp/denied{
 	pixel_x = 7
 	},
+/obj/effect/floor_decal/borderfloor,
+/obj/effect/floor_decal/corner/blue/border,
 /turf/simulated/floor/tiled,
 /area/quartermaster/office)
 "iwa" = (
@@ -8748,6 +8784,8 @@
 /area/crew_quarters/heads/hos)
 "iFe" = (
 /obj/structure/bed/chair/office/dark,
+/obj/effect/floor_decal/borderfloor,
+/obj/effect/floor_decal/corner/blue/border,
 /turf/simulated/floor/tiled,
 /area/quartermaster/office)
 "iFF" = (
@@ -8816,6 +8854,12 @@
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 8
+	},
+/obj/effect/floor_decal/borderfloor{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/blue/border{
+	dir = 1
 	},
 /turf/simulated/floor/tiled,
 /area/quartermaster/office)
@@ -10724,6 +10768,8 @@
 	},
 /obj/structure/filingcabinet/chestdrawer,
 /obj/machinery/light,
+/obj/effect/floor_decal/borderfloor,
+/obj/effect/floor_decal/corner/blue/border,
 /turf/simulated/floor/tiled,
 /area/quartermaster/office)
 "kzC" = (
@@ -12737,6 +12783,12 @@
 	name = "Station Intercom (General)";
 	pixel_y = 26
 	},
+/obj/effect/floor_decal/borderfloor{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/blue/border{
+	dir = 1
+	},
 /turf/simulated/floor/tiled,
 /area/quartermaster/office)
 "mAr" = (
@@ -12848,6 +12900,12 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
+	},
+/obj/effect/floor_decal/borderfloor{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/blue/border{
+	dir = 8
 	},
 /turf/simulated/floor/tiled,
 /area/quartermaster/office)
@@ -13209,6 +13267,12 @@
 	},
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /obj/structure/closet/secure_closet/cargotech,
+/obj/effect/floor_decal/borderfloor{
+	dir = 9
+	},
+/obj/effect/floor_decal/corner/blue/border{
+	dir = 9
+	},
 /turf/simulated/floor/tiled,
 /area/quartermaster/office)
 "naI" = (
@@ -13510,6 +13574,13 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
+	},
+/obj/effect/floor_decal/borderfloor{
+	dir = 1
+	},
+/obj/effect/floor_decal/industrial/outline/blue,
+/obj/effect/floor_decal/corner/blue/border{
+	dir = 1
 	},
 /turf/simulated/floor/tiled,
 /area/quartermaster/office)
@@ -14694,6 +14765,12 @@
 /obj/machinery/camera/network/cargo{
 	dir = 4
 	},
+/obj/effect/floor_decal/borderfloor{
+	dir = 10
+	},
+/obj/effect/floor_decal/corner/blue/border{
+	dir = 10
+	},
 /turf/simulated/floor/tiled,
 /area/quartermaster/office)
 "oyT" = (
@@ -15612,6 +15689,12 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/steel,
+/area/space)
+"prK" = (
+/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/effect/paint_stripe/beastybrown,
+/obj/effect/mine/dnascramble,
+/turf/simulated/floor/plating,
 /area/space)
 "prL" = (
 /obj/effect/floor_decal/borderfloor{
@@ -17054,6 +17137,8 @@
 /obj/machinery/computer/supplycomp/control{
 	dir = 4
 	},
+/obj/effect/floor_decal/borderfloor,
+/obj/effect/floor_decal/corner/blue/border,
 /turf/simulated/floor/tiled,
 /area/quartermaster/office)
 "qQT" = (
@@ -19041,6 +19126,12 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
+/obj/effect/floor_decal/borderfloor{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/blue/border{
+	dir = 1
+	},
 /turf/simulated/floor/tiled,
 /area/quartermaster/office)
 "sJK" = (
@@ -19267,6 +19358,8 @@
 	},
 /obj/fiftyspawner/glass,
 /obj/fiftyspawner/steel,
+/obj/effect/floor_decal/borderfloor,
+/obj/effect/floor_decal/corner/blue/border,
 /turf/simulated/floor/tiled,
 /area/quartermaster/office)
 "sUc" = (
@@ -20310,6 +20403,12 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 4
 	},
+/obj/effect/floor_decal/borderfloor{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/blue/border{
+	dir = 1
+	},
 /turf/simulated/floor/tiled,
 /area/quartermaster/office)
 "tSD" = (
@@ -20664,6 +20763,12 @@
 /obj/machinery/light_switch{
 	pixel_x = 25;
 	pixel_y = 7
+	},
+/obj/effect/floor_decal/borderfloor{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/blue/border{
+	dir = 4
 	},
 /turf/simulated/floor/tiled,
 /area/quartermaster/office)
@@ -21557,6 +21662,8 @@
 /area/maintenance/bar/lower)
 "vjP" = (
 /obj/machinery/lathe/autolathe,
+/obj/effect/floor_decal/borderfloor,
+/obj/effect/floor_decal/corner/blue/border,
 /turf/simulated/floor/tiled,
 /area/quartermaster/office)
 "vks" = (
@@ -40370,7 +40477,7 @@ eUx
 jqw
 eGA
 umU
-mHd
+fEM
 nGc
 nst
 tYa
@@ -42116,7 +42223,7 @@ mpG
 eXV
 nuI
 lGK
-eXV
+prK
 lCA
 fCu
 oeH
