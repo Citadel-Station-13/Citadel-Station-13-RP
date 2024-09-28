@@ -1347,13 +1347,9 @@
 /turf/simulated/floor/tiled,
 /area/janitor)
 "bqx" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 9
-	},
-/obj/landmark/spawnpoint/job/janitor,
-/obj/structure/disposalpipe/segment,
+/obj/structure/closet/l3closet/janitor,
 /turf/simulated/floor/tiled/dark,
-/area/maintenance/bar/lower)
+/area/space)
 "bqC" = (
 /obj/machinery/door/firedoor,
 /obj/spawner/window/low_wall/reinforced/full,
@@ -3449,9 +3445,19 @@
 /turf/simulated/floor/tiled,
 /area/hydroponics)
 "dyV" = (
-/obj/structure/closet/l3closet/janitor,
-/turf/simulated/floor/tiled/dark,
-/area/maintenance/bar/lower)
+/obj/machinery/door/firedoor/border_only,
+/obj/machinery/conveyor{
+	dir = 4;
+	id = "QMLoad"
+	},
+/obj/machinery/shield_diffuser,
+/obj/map_helper/airlock/door/simple,
+/obj/machinery/door/airlock/glass_external{
+	req_one_access = null
+	},
+/obj/map_helper/access_helper/airlock/station/external_airlock,
+/turf/simulated/floor/plating,
+/area/quartermaster/warehouse)
 "dzb" = (
 /obj/structure/table/marble,
 /obj/machinery/chemical_dispenser/catering/bar_alc{
@@ -4881,9 +4887,11 @@
 /turf/simulated/floor/tiled,
 /area/victory/surfacebase/mining_main/refinery)
 "eXV" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint_stripe/beastybrown,
-/turf/simulated/floor/plating,
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
+	dir = 4
+	},
+/obj/landmark/spawnpoint/job/janitor,
+/turf/simulated/floor/tiled/dark,
 /area/space)
 "eXW" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
@@ -6355,15 +6363,9 @@
 /turf/simulated/floor/carpet/turcarpet,
 /area/crew_quarters/recreation_area_hallway)
 "gdK" = (
-/obj/structure/sign/securearea{
-	desc = "A warning sign which reads 'EXTERNAL AIRLOCK'";
-	icon_state = "space";
-	layer = 4;
-	name = "EXTERNAL AIRLOCK"
-	},
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint_stripe/beastybrown,
-/turf/simulated/floor/plating,
+/obj/structure/janitorialcart,
+/obj/item/reagent_containers/glass/bucket,
+/turf/simulated/floor/tiled/dark,
 /area/space)
 "geo" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
@@ -6948,9 +6950,6 @@
 "gMj" = (
 /turf/simulated/floor/tiled/dark,
 /area/vacant/vacant_shop)
-"gMr" = (
-/turf/simulated/floor/airless/ceiling,
-/area/quartermaster/warehouse)
 "gPl" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 4
@@ -7561,9 +7560,13 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_2)
 "hsN" = (
-/obj/structure/lattice,
-/turf/space,
-/area/quartermaster/warehouse)
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 9
+	},
+/obj/landmark/spawnpoint/job/janitor,
+/obj/structure/disposalpipe/segment,
+/turf/simulated/floor/tiled/dark,
+/area/space)
 "hta" = (
 /turf/simulated/floor/wood,
 /area/crew_quarters/recreation_area_hallway)
@@ -7964,14 +7967,8 @@
 /turf/simulated/floor/wood,
 /area/quartermaster/foyer)
 "hIL" = (
-/obj/machinery/door/firedoor/border_only,
-/obj/machinery/shield_diffuser,
-/obj/map_helper/airlock/door/simple,
-/obj/machinery/door/airlock/glass_external{
-	req_one_access = null
-	},
-/obj/map_helper/access_helper/airlock/station/external_airlock,
-/turf/simulated/floor/tiled,
+/obj/structure/lattice,
+/turf/simulated/floor/airless/ceiling,
 /area/maintenance/cargo)
 "hKh" = (
 /obj/machinery/camera/network/security,
@@ -12034,11 +12031,7 @@
 /turf/simulated/floor/tiled,
 /area/hallway/primary/port)
 "lGK" = (
-/obj/machinery/conveyor{
-	dir = 4;
-	id = "QMLoad"
-	},
-/turf/simulated/floor,
+/turf/simulated/floor/airless/ceiling,
 /area/maintenance/cargo)
 "lGL" = (
 /obj/structure/cable/green{
@@ -14205,13 +14198,6 @@
 /obj/effect/floor_decal/spline/fancy/wood,
 /turf/simulated/floor/wood,
 /area/station/stairs_two)
-"nUt" = (
-/obj/machinery/atmospherics/component/unary/vent_pump/on{
-	dir = 4
-	},
-/obj/landmark/spawnpoint/job/janitor,
-/turf/simulated/floor/tiled/dark,
-/area/maintenance/bar/lower)
 "nUH" = (
 /obj/structure/cable/green{
 	icon_state = "1-2"
@@ -14708,12 +14694,6 @@
 /obj/structure/closet/wardrobe,
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_3)
-"osG" = (
-/obj/machinery/camera/network/civilian{
-	dir = 8
-	},
-/turf/simulated/floor/tiled/dark,
-/area/maintenance/bar/lower)
 "osR" = (
 /turf/simulated/wall/prepainted/civilian,
 /area/victory/surfacebase/bar_backroom)
@@ -15691,11 +15671,12 @@
 /turf/simulated/floor/tiled/steel,
 /area/space)
 "prK" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint_stripe/beastybrown,
-/obj/effect/mine/dnascramble,
-/turf/simulated/floor/plating,
-/area/space)
+/obj/machinery/conveyor{
+	dir = 4;
+	id = "QMLoad"
+	},
+/turf/simulated/floor,
+/area/quartermaster/warehouse)
 "prL" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 9
@@ -16699,19 +16680,11 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/recreation_area_hallway)
 "qtb" = (
-/obj/machinery/door/firedoor/border_only,
-/obj/machinery/conveyor{
-	dir = 4;
-	id = "QMLoad"
-	},
-/obj/machinery/shield_diffuser,
-/obj/map_helper/airlock/door/simple,
-/obj/machinery/door/airlock/glass_external{
-	req_one_access = null
-	},
-/obj/map_helper/access_helper/airlock/station/external_airlock,
+/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/effect/paint_stripe/beastybrown,
+/obj/effect/mine/dnascramble,
 /turf/simulated/floor/plating,
-/area/maintenance/cargo)
+/area/quartermaster/warehouse)
 "qtl" = (
 /obj/structure/cable/green{
 	icon_state = "1-2"
@@ -18713,9 +18686,11 @@
 /turf/simulated/floor/wood,
 /area/vacant/vacant_shop)
 "stN" = (
-/obj/structure/lattice,
-/turf/simulated/floor/airless/ceiling,
-/area/quartermaster/warehouse)
+/obj/machinery/camera/network/civilian{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/dark,
+/area/space)
 "suq" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 1
@@ -34863,13 +34838,13 @@ wST
 qAJ
 wST
 wST
+uYk
+uYk
 fgu
-fgu
-fgu
-fgu
-wKL
-wKL
-giq
+uYk
+lCA
+lCA
+oWS
 aFH
 fZL
 xml
@@ -35056,14 +35031,14 @@ uYk
 uYk
 uYk
 uYk
-uYk
 fgu
-eVw
-qqu
-qqu
-cdV
+qAJ
+fgu
+fgu
+fgu
 wKL
-giq
+wKL
+wKL
 rfh
 jas
 xml
@@ -35251,13 +35226,13 @@ uYk
 uYk
 uYk
 uYk
+uYk
 fgu
-mrE
-fIK
-nUt
-ikk
+eVw
+qqu
+gdK
+cdV
 wKL
-giq
 rfh
 jas
 uKN
@@ -35445,13 +35420,13 @@ uYk
 uYk
 uYk
 uYk
-dEv
-dZk
-ooh
-bqx
-rtT
-dXb
-giq
+uYk
+fgu
+mrE
+fIK
+eXV
+ikk
+wKL
 rfh
 jas
 dGz
@@ -35639,13 +35614,13 @@ uYk
 uYk
 uYk
 uYk
-fgu
-iZs
-wqI
-fgu
-wKL
-wKL
-giq
+uYk
+dEv
+dZk
+ooh
+hsN
+rtT
+dXb
 rfh
 jas
 dGz
@@ -35833,13 +35808,13 @@ uYk
 uYk
 uYk
 uYk
+uYk
 fgu
-hUZ
-qDC
-fgu
-giq
-giq
-giq
+iZs
+wqI
+wKL
+wKL
+wKL
 rfh
 jas
 giq
@@ -36027,11 +36002,11 @@ uYk
 uYk
 uYk
 uYk
+uYk
 fgu
-wxv
-qix
-fgu
-giq
+hUZ
+qDC
+wKL
 aFH
 xml
 iWl
@@ -36221,11 +36196,11 @@ uYk
 uYk
 uYk
 uYk
+uYk
 fgu
-dyV
-osG
-fgu
-giq
+wxv
+qix
+wKL
 rfh
 xml
 xml
@@ -36415,11 +36390,11 @@ lCA
 lCA
 lCA
 iIG
+oWS
 wKL
+bqx
+stN
 wKL
-wKL
-wKL
-giq
 wLD
 vEk
 vEk
@@ -36610,10 +36585,10 @@ lCA
 iIG
 iIG
 lCA
-lCA
-lCA
-lCA
-giq
+wKL
+wKL
+wKL
+wKL
 wQg
 nXw
 aek
@@ -42207,23 +42182,23 @@ wjc
 wjc
 wjc
 wjc
-wjc
-wjc
-wjc
-wjc
 vFG
 vFG
-hsN
-gMr
-stN
-gMr
+jkE
+lCA
+ioP
+lCA
 lcT
 auN
 mpG
-eXV
-nuI
-lGK
+lcT
+mpG
 prK
+qtb
+lCA
+lGK
+lGK
+lCA
 lCA
 fCu
 oeH
@@ -42401,23 +42376,23 @@ wjc
 wjc
 wjc
 wjc
-wjc
-wjc
-wjc
-wjc
 jkE
 jkE
-hsN
-stN
-stN
-stN
+jkE
+ioP
+ioP
+ioP
 mEE
 hvw
 dZw
-gdK
+mEE
+dZw
+dyV
+mEE
+ioP
 hIL
-qtb
-gdK
+hIL
+ioP
 ioP
 fCu
 dod
@@ -42595,11 +42570,11 @@ wjc
 wjc
 wjc
 wjc
-wjc
-wjc
-wjc
-wjc
 jkE
+lCA
+lCA
+lCA
+lCA
 lCA
 lCA
 lCA
@@ -42790,10 +42765,6 @@ wjc
 wjc
 wjc
 wjc
-wjc
-wjc
-wjc
-wjc
 kAl
 vFG
 vFG
@@ -42811,6 +42782,10 @@ lCA
 lCA
 lCA
 lCA
+wjc
+wjc
+wjc
+wjc
 wjc
 wjc
 bOa
@@ -42984,10 +42959,6 @@ wjc
 wjc
 wjc
 wjc
-wjc
-wjc
-wjc
-wjc
 jkE
 vFG
 vFG
@@ -43005,6 +42976,10 @@ lCA
 lCA
 lCA
 lCA
+wjc
+wjc
+wjc
+wjc
 wjc
 wjc
 bOa
@@ -43178,10 +43153,6 @@ wjc
 wjc
 wjc
 wjc
-wjc
-wjc
-wjc
-wjc
 jkE
 vFG
 vFG
@@ -43199,6 +43170,10 @@ lCA
 lCA
 lCA
 fUZ
+wjc
+wjc
+wjc
+wjc
 wjc
 wjc
 wjc
@@ -43372,10 +43347,6 @@ wjc
 wjc
 wjc
 wjc
-wjc
-wjc
-wjc
-wjc
 kAl
 jkE
 jkE
@@ -43393,6 +43364,10 @@ lCA
 lCA
 lCA
 lCA
+wjc
+wjc
+wjc
+wjc
 wjc
 wjc
 wjc
@@ -43566,10 +43541,6 @@ wjc
 wjc
 wjc
 wjc
-wjc
-wjc
-wjc
-wjc
 jkE
 vFG
 vFG
@@ -43587,6 +43558,10 @@ lCA
 lCA
 lCA
 lCA
+wjc
+wjc
+wjc
+wjc
 wjc
 wjc
 wjc
@@ -43760,10 +43735,6 @@ wjc
 vFG
 wjc
 wjc
-wjc
-wjc
-wjc
-wjc
 jkE
 vFG
 vFG
@@ -43781,6 +43752,10 @@ lCA
 lCA
 lCA
 lCA
+wjc
+wjc
+wjc
+wjc
 wjc
 wjc
 wjc
@@ -43954,10 +43929,6 @@ wjc
 vFG
 wjc
 wjc
-wjc
-wjc
-wjc
-wjc
 kAl
 vFG
 vFG
@@ -43975,6 +43946,10 @@ omy
 jkE
 jkE
 omy
+wjc
+wjc
+wjc
+wjc
 wjc
 wjc
 wjc
@@ -44148,10 +44123,6 @@ wjc
 vFG
 wjc
 wjc
-wjc
-wjc
-wjc
-wjc
 jkE
 vFG
 vFG
@@ -44169,6 +44140,10 @@ vFG
 vFG
 vFG
 omy
+wjc
+wjc
+wjc
+wjc
 wjc
 wjc
 wjc
@@ -44342,10 +44317,6 @@ wjc
 vFG
 wjc
 wjc
-wjc
-wjc
-wjc
-wjc
 jkE
 jkE
 jkE
@@ -44363,6 +44334,10 @@ jkE
 jkE
 kAl
 omy
+wjc
+wjc
+wjc
+wjc
 wjc
 wjc
 wjc
@@ -44545,10 +44520,10 @@ vFG
 vFG
 vFG
 vFG
-vFG
-vFG
-vFG
-vFG
+wjc
+wjc
+wjc
+wjc
 wjc
 wjc
 wjc
@@ -44735,16 +44710,16 @@ vFG
 vFG
 vFG
 vFG
-vFG
-vFG
-vFG
-vFG
 xJN
 vFG
 vFG
 vFG
 vFG
 vFG
+wjc
+wjc
+wjc
+wjc
 wjc
 wjc
 wjc

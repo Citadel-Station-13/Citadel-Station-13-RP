@@ -444,10 +444,16 @@
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 5
 	},
-/obj/effect/floor_decal/borderfloorblack/corner{
+/obj/effect/floor_decal/borderfloorblack{
 	dir = 8
 	},
-/obj/effect/floor_decal/corner/darkblue/bordercorner{
+/obj/effect/floor_decal/corner/darkblue/border{
+	dir = 8
+	},
+/obj/effect/floor_decal/borderfloorblack/corner2{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/darkblue/bordercorner2{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/steel,
@@ -2992,26 +2998,26 @@
 /turf/simulated/floor/tiled,
 /area/space)
 "dAq" = (
-/obj/effect/floor_decal/steeldecal/steel_decals9,
-/obj/effect/floor_decal/steeldecal/steel_decals9{
-	dir = 4
+/obj/machinery/atmospherics/portables_connector{
+	dir = 1
 	},
-/obj/effect/floor_decal/borderfloorblack/corner{
-	dir = 4
+/obj/machinery/portable_atmospherics/canister/air/airlock,
+/turf/simulated/floor/plating,
+/area/exploration/pilot_prep)
+"dAK" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 8
 	},
-/obj/effect/floor_decal/corner/gold/bordercorner{
-	dir = 4
+/obj/effect/floor_decal/corner/darkblue/border{
+	dir = 8
+	},
+/obj/effect/floor_decal/borderfloorblack/corner2{
+	dir = 10
+	},
+/obj/effect/floor_decal/corner/darkblue/bordercorner2{
+	dir = 10
 	},
 /turf/simulated/floor/tiled/steel,
-/area/space)
-"dAK" = (
-/obj/effect/floor_decal/borderfloorblack/corner{
-	dir = 1
-	},
-/obj/effect/floor_decal/corner/darkblue/bordercorner{
-	dir = 1
-	},
-/turf/simulated/floor/tiled/steel_ridged,
 /area/hallway/primary/aft)
 "dBa" = (
 /obj/machinery/shower{
@@ -4865,8 +4871,18 @@
 /turf/simulated/floor/plating,
 /area/space)
 "fqB" = (
-/obj/effect/floor_decal/borderfloorblack/corner,
-/obj/effect/floor_decal/corner/gold/bordercorner,
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/gold/border{
+	dir = 4
+	},
+/obj/effect/floor_decal/borderfloorblack/corner2{
+	dir = 6
+	},
+/obj/effect/floor_decal/corner/gold/bordercorner2{
+	dir = 6
+	},
 /turf/simulated/floor/tiled,
 /area/hallway/primary/aft)
 "fqC" = (
@@ -5526,20 +5542,13 @@
 /turf/simulated/floor/wood,
 /area/space)
 "fZu" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
+/obj/machinery/atmospherics/portables_connector{
+	dir = 1
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/obj/effect/floor_decal/borderfloor{
-	dir = 8
-	},
-/obj/effect/floor_decal/corner/beige/border{
-	dir = 8
-	},
-/turf/simulated/floor/tiled,
-/area/bridge/hallway)
+/obj/machinery/portable_atmospherics/canister/air/airlock,
+/obj/machinery/light/small,
+/turf/simulated/floor/plating,
+/area/exploration/pilot_prep)
 "fZy" = (
 /turf/simulated/wall/prepainted/civilian,
 /area/crew_quarters/lounge/kitchen_freezer)
@@ -7169,6 +7178,7 @@
 /obj/machinery/door/firedoor/glass{
 	dir = 8
 	},
+/obj/effect/floor_decal/corner/gold/bordercorner2,
 /turf/simulated/floor/tiled/dark,
 /area/space)
 "hVY" = (
@@ -7512,14 +7522,11 @@
 /turf/simulated/floor/tiled,
 /area/space)
 "ipC" = (
-/obj/effect/floor_decal/borderfloorblack/corner{
-	dir = 4
+/obj/machinery/atmospherics/pipe/tank/air{
+	dir = 1
 	},
-/obj/effect/floor_decal/corner/gold/bordercorner{
-	dir = 4
-	},
-/turf/simulated/floor/tiled,
-/area/hallway/primary/aft)
+/turf/simulated/floor/plating,
+/area/exploration/pilot_prep)
 "ipW" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 4
@@ -8137,17 +8144,16 @@
 /turf/simulated/floor/tiled/steel,
 /area/hallway/secondary/civilian_hallway_mid)
 "iZR" = (
-/obj/effect/floor_decal/steeldecal/steel_decals10{
-	dir = 5
-	},
-/obj/effect/floor_decal/borderfloorblack/corner{
+/obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 1
 	},
-/obj/effect/floor_decal/corner/darkblue/bordercorner{
-	dir = 1
+/obj/machinery/meter{
+	frequency = 1443;
+	id = "dist_aux_meter";
+	name = "Distribution Loop"
 	},
-/turf/simulated/floor/tiled/steel,
-/area/hallway/primary/aft)
+/turf/simulated/floor/plating,
+/area/exploration/pilot_prep)
 "iZX" = (
 /obj/structure/cable/green,
 /obj/machinery/power/apc/east_mount,
@@ -8178,11 +8184,11 @@
 /turf/simulated/floor/carpet,
 /area/space)
 "jbr" = (
-/obj/effect/floor_decal/corner/red{
-	dir = 10
+/obj/machinery/atmospherics/pipe/manifold/hidden{
+	dir = 4
 	},
-/turf/simulated/floor/tiled/dark,
-/area/bridge)
+/turf/simulated/floor/plating,
+/area/exploration/pilot_prep)
 "jbB" = (
 /obj/structure/closet/crate/freezer/rations,
 /obj/effect/floor_decal/borderfloor{
@@ -12884,9 +12890,6 @@
 /turf/simulated/wall/prepainted,
 /area/maintenance/substation/security)
 "owq" = (
-/obj/effect/floor_decal/corner/red{
-	dir = 5
-	},
 /obj/structure/table/reinforced,
 /obj/item/flashlight/lamp,
 /obj/machinery/newscaster{
@@ -16863,8 +16866,12 @@
 /turf/simulated/floor/plating,
 /area/space)
 "thT" = (
-/obj/effect/floor_decal/borderfloorblack/corner,
-/obj/effect/floor_decal/corner/darkblue/bordercorner,
+/obj/effect/floor_decal/borderfloorblack,
+/obj/effect/floor_decal/corner/darkblue/border,
+/obj/effect/floor_decal/borderfloorblack/corner2{
+	alpha = 255
+	},
+/obj/effect/floor_decal/corner/darkblue/bordercorner2,
 /turf/simulated/floor/tiled/steel,
 /area/hallway/secondary/civilian_hallway_mid)
 "thX" = (
@@ -18371,14 +18378,11 @@
 /turf/simulated/wall/r_wall/prepainted/command,
 /area/crew_quarters/captain)
 "uOR" = (
-/obj/effect/floor_decal/borderfloorblack/corner{
-	dir = 4
+/obj/machinery/atmospherics/pipe/manifold/hidden{
+	dir = 1
 	},
-/obj/effect/floor_decal/corner/gold/bordercorner{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/steel_ridged,
-/area/space)
+/turf/simulated/floor/plating,
+/area/exploration/pilot_prep)
 "uPB" = (
 /obj/landmark/spawnpoint/job/mime,
 /turf/simulated/floor/carpet/bcarpet,
@@ -30431,13 +30435,13 @@ xvH
 cxg
 eRR
 vll
-cxg
-iZR
+dAK
+sZv
 sZv
 sZv
 cGC
-bhJ
-cxg
+xgP
+aBC
 eRR
 vll
 cxg
@@ -30825,7 +30829,7 @@ yfG
 qRx
 yfG
 yfG
-ipC
+eUU
 aau
 fqB
 yfG
@@ -30836,7 +30840,7 @@ qRx
 yfG
 yfG
 yfG
-ipC
+eUU
 aau
 fqB
 qRx
@@ -31234,8 +31238,8 @@ jMU
 jMU
 jMU
 jMU
-jMU
-jMU
+toF
+hFN
 rdJ
 wIX
 iGx
@@ -31428,8 +31432,8 @@ jMU
 jMU
 jMU
 jMU
-jMU
-jMU
+wwG
+syO
 rdJ
 pob
 pob
@@ -31622,8 +31626,8 @@ jMU
 jMU
 jMU
 jMU
-jMU
-jMU
+nAF
+ddG
 rdJ
 bfO
 pob
@@ -31791,7 +31795,7 @@ dNj
 dZr
 sXI
 sXI
-vNY
+goD
 dhw
 dZr
 jMU
@@ -31816,8 +31820,8 @@ jMU
 jMU
 jMU
 jMU
-jMU
-jMU
+ovp
+kxn
 rdJ
 wyc
 pob
@@ -32010,8 +32014,8 @@ jMU
 jMU
 jMU
 jMU
-jMU
-jMU
+fHh
+xYB
 rdJ
 wyc
 gsj
@@ -32179,7 +32183,7 @@ nnP
 dZr
 dZr
 dZr
-dAq
+leq
 cZJ
 dZr
 jMU
@@ -32204,8 +32208,8 @@ jMU
 jMU
 jMU
 jMU
-jMU
-jMU
+nuU
+oeU
 rdJ
 wyc
 hSU
@@ -32970,8 +32974,8 @@ jMU
 dZr
 dZr
 dZr
-dZr
-dZr
+jMU
+jMU
 jMU
 jMU
 jMU
@@ -33148,7 +33152,7 @@ nHP
 wyr
 dtw
 dtw
-uOR
+lch
 kHh
 xnK
 lUh
@@ -34096,8 +34100,8 @@ wtl
 szl
 wtl
 aGI
-kid
-kid
+iZR
+ipC
 kid
 jMU
 jMU
@@ -34290,8 +34294,8 @@ wtl
 kSZ
 wtl
 aGI
-kid
-kid
+uOR
+dAq
 kid
 jMU
 jMU
@@ -34484,8 +34488,8 @@ weh
 vTh
 lOs
 aGI
-kid
-kid
+jbr
+fZu
 kid
 jMU
 jMU
@@ -34540,8 +34544,8 @@ jMU
 jMU
 jMU
 jMU
-jMU
-jMU
+toF
+hFN
 sQl
 usG
 xRj
@@ -34734,8 +34738,8 @@ jMU
 jMU
 jMU
 jMU
-jMU
-jMU
+wwG
+syO
 sQl
 kze
 usG
@@ -34928,8 +34932,8 @@ jMU
 jMU
 jMU
 jMU
-jMU
-jMU
+nAF
+ddG
 sQl
 usG
 xRj
@@ -35122,8 +35126,8 @@ jMU
 jMU
 jMU
 jMU
-jMU
-jMU
+ovp
+kxn
 sQl
 xRj
 xRj
@@ -35316,8 +35320,8 @@ jMU
 jMU
 jMU
 jMU
-jMU
-jMU
+fHh
+xYB
 sQl
 xRj
 xRj
@@ -35510,8 +35514,8 @@ jMU
 jMU
 jMU
 jMU
-jMU
-jMU
+nuU
+oeU
 sQl
 xRj
 xRj
@@ -40474,8 +40478,8 @@ xRj
 xRj
 xRj
 xRj
-xRj
-xRj
+toF
+hFN
 xRj
 xRj
 xRj
@@ -40668,8 +40672,8 @@ xRj
 xRj
 xRj
 xRj
-xRj
-xRj
+wwG
+syO
 xRj
 xRj
 xRj
@@ -40862,8 +40866,8 @@ xRj
 xRj
 xRj
 xRj
-xRj
-xRj
+nAF
+ddG
 xRj
 xRj
 xRj
@@ -52919,8 +52923,8 @@ rQl
 ipd
 ipd
 ipd
-mBp
-mBp
+wOi
+wOi
 mBp
 wDH
 mBp
@@ -52932,7 +52936,7 @@ jJL
 hcK
 lKM
 mBp
-fZu
+jlu
 mBp
 wDH
 mBp
@@ -56033,7 +56037,7 @@ vYC
 vYC
 owq
 ioL
-jbr
+evM
 evM
 cvc
 gEG
