@@ -2259,6 +2259,16 @@
 	name = "gray leotard skinsuit"
 	icon_state = "skinsuitfemleo_g"
 
+/obj/item/clothing/under/skinsuit_striped
+	name = "skinsuit striped"
+	desc = "A dark skinsuit with white stripe embellishments, covering the contours. The latest in the line of skintight outfits that this crew in particular greatly prefers, to the point they now take up 30% of the sector's demands among NT's facilities."
+	body_cover_flags = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
+	icon = 'icons/clothing/uniform/misc/skin_taped.dmi'
+	icon_state = "skinsuit_taped"
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
+	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+
 //Alt Bodysuits
 /obj/item/clothing/under/bodysuit/alt
 	name = "alternate bodysuit"
