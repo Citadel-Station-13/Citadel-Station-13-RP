@@ -28,9 +28,18 @@
 	ammo_max = 5
 	ammo_preload = /obj/item/ammo_casing/nt_expeditionary/light_rifle
 
-/obj/item/ammo_magazine/nt_expeditionary/light_rifle/update_overlays()
+/obj/item/ammo_magazine/nt_expeditionary/light_rifle/speedloader
+
+/obj/item/ammo_magazine/nt_expeditionary/light_rifle/speedloader/update_icon(updates)
+	cut_overlays()
 	. = ..()
 	#warn impl; overlay via "[base_icon_state]-[casing.magazine_state]", shift -2, -2
+
+/obj/item/ammo_magazine/nt_expeditionary/light_rifle/magazine
+
+/obj/item/ammo_magazine/nt_expeditionary/light_rifle/magazine/extended
+
+/obj/item/ammo_magazine/nt_expeditionary/light_rifle/magazine/drum
 
 //* Projectiles *//
 

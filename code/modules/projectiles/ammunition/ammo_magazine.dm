@@ -93,8 +93,10 @@
 	//* Rendering
 	/// use default rendering system
 	/// in state mode, we will be "[base_icon_state]-[count]", from 0 to count (0 for empty)
-	/// in segements mode, we will repeatedly add "[base_icon_state]-ammo" with given offsets.
-	/// overlay mode is not supported
+	/// in segments mode, we will repeatedly add "[base_icon_state]-ammo" with given offsets.
+	///
+	/// * overlays moade is not supported;
+	///   todo: in overlays mode, we should be "[base_icon_state]-[count]" from 0 to count, overlaid, while we have ammo
 	var/rendering_system = GUN_RENDERING_DISABLED
 	/// number of states
 	var/rendering_count = 0

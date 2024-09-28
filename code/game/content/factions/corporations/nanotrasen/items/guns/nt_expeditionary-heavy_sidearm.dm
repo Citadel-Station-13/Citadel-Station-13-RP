@@ -19,22 +19,32 @@
 //* Magazines *//
 
 /obj/item/ammo_magazine/nt_expeditionary/heavy_sidearm
-	name = "ammo magazine (NT-7.5-LR)"
-	icon = 'icons/content/factions/corporations/nanotrasen/items/guns/expeditionary/rifle-heavy-ammo.dmi'
-	icon_state = "magazine"
-	base_icon_state = "magazine"
+	name = "ammo magazine (NT-9-LR)"
+	icon = 'icons/content/factions/corporations/nanotrasen/items/guns/expeditionary/sidearm-heavy-ammo.dmi'
 	rendering_system = GUN_RENDERING_DISABLED
 	ammo_caliber = /datum/ammo_caliber/nt_expeditionary/heavy_sidearm
 	ammo_max = 5
 	ammo_preload = /obj/item/ammo_casing/nt_expeditionary/heavy_sidearm
 
-/obj/item/ammo_magazine/nt_expeditionary/heavy_sidearm/update_overlays()
+/obj/item/ammo_magazine/nt_expeditionary/heavy_sidearm/speedloader
+	name = "speedloader (NT-9-LR)"
+	icon_state = "speedloader-1"
+	base_icon_state = "speedloader"
+
+/obj/item/ammo_magazine/nt_expeditionary/heavy_sidearm/speedloader/update_icon(updates)
+	cut_overlays()
 	. = ..()
 	#warn impl; overlay via "[base_icon_state]-[casing.magazine_state]", shift -2, -2
 
 /obj/item/ammo_magazine/nt_expeditionary/heavy_sidearm/pistol
+	name = "pistol magazine (NT-9-LR)"
+	icon_state = "magazine-5"
+	base_icon_state = "magazine"
 
 /obj/item/ammo_magazine/nt_expeditionary/heavy_sidearm/smg
+	name = "smg magazine (NT-9-LR)"
+	icon_state = "smg-1"
+	base_icon_state = "smg"
 
 #warn impl all
 
