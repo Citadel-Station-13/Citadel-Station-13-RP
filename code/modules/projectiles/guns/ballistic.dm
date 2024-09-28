@@ -17,6 +17,11 @@
 	/// If set, accepts ammo and magazines of this caliber.
 	var/caliber = /datum/ammo_caliber/a357
 
+	//* Rendering *//
+
+	/// Render `-unloaded` while unloaded
+	var/render_unloaded = FALSE
+
 	//! LEGACY BELOW
 
 	var/handle_casings = EJECT_CASINGS	//determines how spent casings should be handled

@@ -430,6 +430,18 @@
 /obj/item/ammo_magazine/proc/amount_missing(live_only)
 	return ammo_max - amount_remaining(live_only)
 
+/**
+ * Gets the predicted typepath of a casing a given index from the top, where 1 is the top.
+ *
+ * * Real casings are read.
+ * * Fake casings are predicted from the type that would have been lazy-generated.
+ * * Null if something isn't there / left
+ */
+/obj/item/ammo_magazine/proc/peek_path_of_position(index)
+	if(index > length(ammo_internal))
+		return (index - length(ammo_internal)) >= ammo_current ? ammo_preload : null
+	return ammo_internal[length(ammo_internal) - index]?.type
+
 //* Caliber *//
 
 /obj/item/ammo_magazine/proc/loads_caliber(datum/ammo_caliber/caliberlike)

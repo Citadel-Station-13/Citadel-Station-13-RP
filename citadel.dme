@@ -1076,7 +1076,6 @@
 #include "code\game\content\factions\corporations\nanotrasen\items\guns\nt_expeditionary-heavy_sidearm.dm"
 #include "code\game\content\factions\corporations\nanotrasen\items\guns\nt_expeditionary-light_rifle.dm"
 #include "code\game\content\factions\corporations\nanotrasen\items\guns\nt_expeditionary-light_sidearm.dm"
-#include "code\game\content\factions\corporations\nanotrasen\items\guns\nt_expeditionary-shotgun.dm"
 #include "code\game\content\factions\corporations\nanotrasen\items\guns\nt_pulse.dm"
 #include "code\game\content\factions\corporations\nanotrasen\nanotrasen-supply\animals.dm"
 #include "code\game\content\factions\corporations\nanotrasen\nanotrasen-supply\atmospherics.dm"

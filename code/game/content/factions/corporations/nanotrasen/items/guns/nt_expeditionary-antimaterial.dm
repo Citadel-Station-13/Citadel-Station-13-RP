@@ -52,9 +52,20 @@
 	ammo_max = 5
 	ammo_preload = /obj/item/ammo_casing/nt_expeditionary/antimaterial
 
-/obj/item/ammo_magazine/nt_expeditionary/antimaterial/update_overlays()
+/obj/item/ammo_magazine/nt_expeditionary/antimaterial/update_icon(updates)
+	cut_overlays()
 	. = ..()
-	#warn impl; overlay via "[base_icon_state]-[casing.magazine_state]", shift -2, -2
+	var/list/overlays_to_add = list()
+	for(var/i in 1 to min(5, amount_remaining()))
+		var/obj/item/ammo_casing/nt_expeditionary/antimaterial/casted_path_of_potential = peek_path_of_position(i)
+		var/append = "basic"
+		if(ispath(casted_path_of_potential, /obj/item/ammo_casing/nt_expeditionary/antimaterial))
+			append = initial(casted_path_of_potential.magazine_state)
+		var/image/overlay = image(icon, "magazine-[append]")
+		overlay.pixel_x = (i - 1) * -2
+		overlay.pixel_y = (i - 1) * 2
+		overlays_to_add += overlay
+	add_overlay(overlays_to_add)
 
 //* Projectiles *//
 
@@ -69,6 +80,7 @@
 /obj/item/gun/ballistic/nt_expeditionary/antimaterial
 	abstract_type = /obj/item/gun/ballistic/nt_expeditionary/antimaterial
 	caliber = /datum/ammo_caliber/nt_expeditionary/antimaterial
+	icon = 'icons/content/factions/corporations/nanotrasen/items/guns/expeditionary/antimaterial.dmi'
 
 // todo: placeholder sprite
 /obj/item/gun/ballistic/nt_expeditionary/antimaterial/singleshot
@@ -82,4 +94,6 @@
 		corporate militaries and emergency responders.
 	"} + "<br>"
 
-#warn impl all
+	icon_state = "rifle"
+
+	render_unloaded = TRUE

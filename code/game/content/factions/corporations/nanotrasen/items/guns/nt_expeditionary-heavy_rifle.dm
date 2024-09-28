@@ -16,6 +16,24 @@
 	caliber = /datum/ammo_caliber/nt_expeditionary/heavy_rifle
 	projectile_type = /obj/projectile/bullet/nt_expeditionary/heavy_rifle
 
+//* Magazines *//
+
+/obj/item/ammo_magazine/nt_expeditionary/heavy_rifle
+	name = "ammo magazine (NT-7.5-LR)"
+	icon = 'icons/content/factions/corporations/nanotrasen/items/guns/expeditionary/rifle-heavy-ammo.dmi'
+	icon_state = "magazine"
+	base_icon_state = "magazine"
+	rendering_system = GUN_RENDERING_DISABLED
+	ammo_caliber = /datum/ammo_caliber/nt_expeditionary/heavy_rifle
+	ammo_max = 5
+	ammo_preload = /obj/item/ammo_casing/nt_expeditionary/heavy_rifle
+
+/obj/item/ammo_magazine/nt_expeditionary/heavy_rifle
+
+/obj/item/ammo_magazine/nt_expeditionary/heavy_rifle/clip/update_icon(updates)
+
+	#warn impl; overlay via "[base_icon_state]-[casing.magazine_state]", shift -2, -2
+
 //* Projectiles *//
 
 /obj/projectile/bullet/nt_expeditionary/heavy_rifle
