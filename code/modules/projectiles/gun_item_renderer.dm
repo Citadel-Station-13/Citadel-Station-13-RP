@@ -153,11 +153,10 @@
  * * can optionally append a firemode key
  */
 /datum/gun_item_renderer/empty_state
-	var/use_firemode
 
 /datum/gun_item_renderer/empty_state/render(obj/item/gun/gun, ammo_ratio, firemode_key)
 	var/base_icon_state = gun.base_icon_state || initial(gun.icon_state)
-	gun.icon_state = "[base_icon_state][firemode_key && use_firemode ? "-[firemode_key]" : ""][ammo_ratoi ? "" : "-empty"]"
+	gun.icon_state = "[base_icon_state][firemode_key && use_firemode ? "-[firemode_key]" : ""][ammo_ratio ? "" : "-empty"]"
 
 /datum/gun_item_renderer/empty_state/dedupe_key()
 	return "empty_state-[use_firemode]"

@@ -39,7 +39,7 @@
 	"}
 	icon_state = "rifle"
 	base_icon_state = "rifle"
-	render_mob_base = "pulse"
+	base_mob_state = "pulse"
 	slot_flags = SLOT_BACK
 	// todo: firemode this
 	one_handed_penalty = 10
@@ -77,7 +77,7 @@
 	"}
 	icon_state = "carbine"
 	base_icon_state = "carbine"
-	render_mob_base = "pulse"
+	base_mob_state = "pulse"
 	slot_flags = SLOT_BELT
 	// todo: firemode this
 	fire_delay = 5 // might need to nerf this to 8 later, this is a very powerful weapon.

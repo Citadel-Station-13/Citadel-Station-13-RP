@@ -76,7 +76,7 @@
 	/// index 1 is the bottom, index ammo_internal.len is the top of the magazine.
 	/// peek/draw will peek/draw the last index first all the way to the first, and after that,
 	/// ammo_current is considered the 'reserve' pool (as just a number).
-	var/list/ammo_internal
+	var/list/obj/item/ammo_casing/ammo_internal
 	/// caliber - set to typepath to init
 	var/ammo_caliber
 	/// preloaded ammo type
