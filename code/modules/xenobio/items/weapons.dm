@@ -26,7 +26,7 @@
 			var/mob/living/carbon/human/H = L
 			if(H.species && H.species.get_species_id() == SPECIES_ID_PROMETHEAN)
 				var/agony_to_apply = 60 - agonyforce
-				H.apply_damage(agony_to_apply, HALLOSS)
+				H.apply_damage(agony_to_apply, DAMAGE_TYPE_HALLOSS)
 
 	return ..() // do normal effects too
 

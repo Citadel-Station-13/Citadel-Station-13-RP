@@ -26,7 +26,7 @@
 
 	return data
 
-/obj/item/destTagger/attack_self(mob/user)
+/obj/item/destTagger/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return

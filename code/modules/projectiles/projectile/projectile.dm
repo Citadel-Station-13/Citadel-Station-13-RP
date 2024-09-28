@@ -105,6 +105,8 @@
 	///
 	/// * this is configured at runtime and can be edited
 	/// * this is non /tmp because this is infact serializable
+	/// * you must set this to a list of instances to use it; this is an advanced feature, and there's no guard-rails!
+	/// * the projectile will never modify the instances in here.
 	VAR_PROTECTED/list/additional_projectile_effects
 
 	//* Configuration *//
@@ -289,8 +291,8 @@
 	var/damage_force = 10
 	/// damage tier - goes hand in hand with [damage_armor]
 	var/damage_tier = BULLET_TIER_DEFAULT
-	/// todo: legacy - BRUTE, BURN, TOX, OXY, CLONE, HALLOSS, ELECTROCUTE, BIOACID are the only things that should be in here
-	var/damage_type = BRUTE
+	/// damage type - DAMAGE_TYPE_* define
+	var/damage_type = DAMAGE_TYPE_BRUTE
 	/// armor flag for damage - goes hand in hand with [damage_tier]
 	var/damage_flag = ARMOR_BULLET
 	/// damage mode - see [code/__DEFINES/combat/damage.dm]
@@ -339,7 +341,22 @@
 
 /obj/projectile/Initialize(mapload)
 	if(islist(base_projectile_effects))
-		base_projectile_effects = typelist(NAMEOF(src, base_projectile_effects), base_projectile_effects)
+		var/list/existing_typelist = get_typelist(NAMEOF(src, base_projectile_effects))
+		if(existing_typelist)
+			base_projectile_effects = existing_typelist
+		else
+			// generate, and process one
+			for(var/i in 1 to length(base_projectile_effects))
+				var/datum/projectile_effect/effectlike = base_projectile_effects[i]
+				if(ispath(effectlike))
+					effectlike = new effectlike
+				else if(IS_ANONYMOUS_TYPEPATH(effectlike))
+					effectlike = new effectlike
+				else if(istype(effectlike))
+				else
+					stack_trace("tried to make a projectile with an invalid effect in base_projectile_effects")
+				base_projectile_effects[i] = effectlike
+			base_projectile_effects = typelist(NAMEOF(src, base_projectile_effects), base_projectile_effects)
 	return ..()
 
 /obj/projectile/Destroy()
@@ -375,6 +392,13 @@
 
 	// setup impact checking
 	impacted = list()
+	// handle direct hit
+	if(direct_target)
+		// todo: this should make a muzzle flash
+		impact(direct_target, PROJECTILE_IMPACT_POINT_BLANK, def_zone)
+		// todo: janky but whatever it works
+		if(QDELETED(src))
+			return
 	// make sure firer is in it
 	if(firer && !no_source_check)
 		impacted[firer] = TRUE
@@ -392,14 +416,6 @@
 	// set angle if needed
 	if(isnum(set_angle_to))
 		set_angle(set_angle_to)
-	// handle direct hit
-	if(direct_target)
-		if(direct_target.bullet_act(src, PROJECTILE_IMPACT_POINT_BLANK, def_zone) & PROJECTILE_IMPACT_FLAGS_SHOULD_GO_THROUGH)
-			impacted[direct_target] = TRUE
-		else
-			// todo: this should make a muzzle flash
-			qdel(src)
-			return
 	// setup physics
 	setup_physics()
 
@@ -512,17 +528,14 @@
 //Checks if the projectile is eligible for embedding. Not that it necessarily will.
 /obj/projectile/proc/can_embed()
 	//embed must be enabled and damage type must be brute
-	if(embed_chance == 0 || damage_type != BRUTE)
+	if(embed_chance == 0 || damage_type != DAMAGE_TYPE_BRUTE)
 		return 0
 	return 1
 
 /obj/projectile/proc/get_structure_damage()
-	if(damage_type == BRUTE || damage_type == BURN)
+	if(damage_type == DAMAGE_TYPE_BRUTE || damage_type == DAMAGE_TYPE_BURN)
 		return damage_force
 	return 0
-
-/obj/projectile/proc/check_fire(atom/target as mob, mob/living/user as mob)  //Checks if you can hit them or not.
-	check_trajectory(target, user, pass_flags, atom_flags)
 
 /**
  * i hate everything
@@ -604,7 +617,7 @@
 	return fire(angle_override, direct_target)
 
 /**
- * Standard proc to determine damage when impacting something. This does not affect the special damage variables/effect variables, only damage and damtype.
+ * Standard proc to determine damage when impacting something. This does not affect the special damage variables/effect variables, only damage and damage_type.
  * May or may not be called before/after armor calculations.
  *
  * @params
@@ -964,7 +977,7 @@
 	 */
 /obj/projectile/proc/on_impact(atom/target, impact_flags, def_zone, efficiency = 1)
 	//! legacy shit
-	if(damage_force && damage_type == BURN)
+	if(damage_force && damage_type == DAMAGE_TYPE_BURN)
 		var/turf/T = get_turf(target)
 		if(T)
 			T.hotspot_expose(700, 5)

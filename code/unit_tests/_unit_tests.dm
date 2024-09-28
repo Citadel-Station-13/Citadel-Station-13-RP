@@ -100,7 +100,6 @@
 // #include "keybinding_init.dm"
 // #include "machine_disassembly.dm"
 #include "map_template_paths.dm"
-// #include "medical_wounds.dm"
 // #include "merge_type.dm"
 // #include "metabolizing.dm"
 // #include "outfit_sanity.dm"

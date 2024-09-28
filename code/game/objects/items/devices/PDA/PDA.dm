@@ -322,7 +322,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 	return 1
 
 
-/obj/item/pda/ai/attack_self(mob/user)
+/obj/item/pda/ai/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -674,7 +674,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 	ui.set_auto_update(auto_update)
 
 //NOTE: graphic resources are loaded on client login
-/obj/item/pda/attack_self(mob/user)
+/obj/item/pda/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -1018,7 +1018,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 	if(i>=10 && i<= 20) //The PDA burns a hole in the holder.
 		j=1
 		if(M && isliving(M))
-			M.apply_damage( rand(30,60) , BURN)
+			M.apply_damage( rand(30,60) , DAMAGE_TYPE_BURN)
 		message += "You feel a searing heat! Your [P] is burning!"
 	if(i>=20 && i<=25) //EMP
 		empulse(P.loc, 1, 2, 4, 6, 1)

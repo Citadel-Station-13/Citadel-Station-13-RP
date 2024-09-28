@@ -291,7 +291,7 @@
 	set_pin_data(IC_OUTPUT, 4, contents)
 	push_data()
 
-/obj/item/integrated_circuit/manipulation/grabber/attack_self(mob/user)
+/obj/item/integrated_circuit/manipulation/grabber/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -691,7 +691,7 @@
 	if(isliving(target))
 		if(ishuman(target))
 			var/mob/living/carbon/human/S = target
-			S.apply_damage(drill_force, BRUTE)
+			S.apply_damage(drill_force, DAMAGE_TYPE_BRUTE)
 			return
 		else if(issimple(target))
 			var/mob/living/simple_mob/S = target
@@ -858,7 +858,7 @@
 	else
 		..()
 
-/obj/item/integrated_circuit/manipulation/weapon_firing/attack_self(mob/user)
+/obj/item/integrated_circuit/manipulation/weapon_firing/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -968,7 +968,7 @@
 	else
 		return ..()
 
-/obj/item/integrated_circuit/manipulation/grenade/attack_self(mob/user)
+/obj/item/integrated_circuit/manipulation/grenade/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return

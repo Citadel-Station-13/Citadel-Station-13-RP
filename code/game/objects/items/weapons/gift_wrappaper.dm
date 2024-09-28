@@ -40,7 +40,7 @@
 	if(!isnull(gift))
 		. += gift
 
-/obj/item/gift/attack_self(mob/user)
+/obj/item/gift/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -74,7 +74,7 @@
 
 	qdel(src)
 
-/obj/item/a_gift/attack_self(mob/user)
+/obj/item/a_gift/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -143,7 +143,7 @@
 	pixel_x = rand(-10,10)
 	pixel_y = rand(-10,10)
 
-/obj/item/gift/attack_self(mob/user)
+/obj/item/gift/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -158,7 +158,7 @@
 /obj/item/b_gift/legacy_ex_act()
 	qdel(src)
 
-/obj/item/b_gift/attack_self(mob/user)
+/obj/item/b_gift/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return

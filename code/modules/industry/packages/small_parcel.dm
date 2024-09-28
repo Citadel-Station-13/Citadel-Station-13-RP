@@ -12,7 +12,7 @@
 	var/nameset = 0
 	var/tag_x
 
-/obj/item/smallDelivery/attack_self(mob/user)
+/obj/item/smallDelivery/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
