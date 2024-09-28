@@ -93,7 +93,6 @@
 		Regardless, its relative ease of handling (and noted ability to be used by an unaugmented soldier) keeps it in the armories of some
 		corporate militaries and emergency responders.
 	"} + "<br>"
-
 	icon_state = "rifle"
-
 	render_unloaded = TRUE
+	load_method = SINGLE_CASING | MAGAZINE

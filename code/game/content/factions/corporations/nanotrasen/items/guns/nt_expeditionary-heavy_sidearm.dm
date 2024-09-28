@@ -76,6 +76,7 @@
 		Feeding from medium-sized magazines, this full-sized service pistol is seen when
 		fighting is expected and not simply a possibility.
 	"} + "<br>"
+	load_method = SINGLE_CASING | MAGAZINE
 
 /obj/item/gun/ballistic/nt_expeditionary/heavy_sidearm/revolver
 	name = "heavy revolver"
@@ -87,6 +88,7 @@
 		this weapon is seen in the hands of those who prefer style over functionality or want
 		the fine trigger control a triple-action revolver provides.
 	"} + "<br>"
+	load_method = SINGLE_CASING | SPEEDLOADER
 
 /obj/item/gun/ballistic/nt_expeditionary/heavy_sidearm/smg
 	name = "submachine gun"
@@ -99,5 +101,6 @@
 		in dense jungle foliage, where the high-velocity rounds batter aside light cover
 		with relative ease.
 	"} + "<br>"
+	load_method = SINGLE_CASING | MAGAZINE
 
 #warn impl all

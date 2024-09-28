@@ -70,6 +70,7 @@
 		A small compensator and internal recoil dampeners make the increase in felt recoil negligible,
 		while its magazine gives it enough ammunition for those in a pinch to take chance shots.
 	"} + "<br>"
+	load_method = SINGLE_CASING | MAGAZINE
 
 //* SMG *//
 
@@ -83,5 +84,6 @@
 		combat weapon, but it will certainly raise the alarm when its shrill report sounds in
 		the dead of night.
 	"} + "<br>"
+	load_method = SINGLE_CASING | MAGAZINE
 
 #warn impl all
