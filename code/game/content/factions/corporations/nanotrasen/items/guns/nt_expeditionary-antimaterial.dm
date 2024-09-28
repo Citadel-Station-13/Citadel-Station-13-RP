@@ -26,19 +26,19 @@
 
 /obj/item/ammo_casing/nt_expeditionary/antimaterial/penetrator
 	icon_state = "penetrator"
-	// todo: implement
+	// todo: implement casing + magazine
 
 /obj/item/ammo_casing/nt_expeditionary/antimaterial/emp
 	icon_state = "emp"
-	// todo: implement
+	// todo: implement casing + magazine
 
 /obj/item/ammo_casing/nt_expeditionary/antimaterial/explosive
 	icon_state = "explosive"
-	// todo: implement
+	// todo: implement casing + magazine
 
 /obj/item/ammo_casing/nt_expeditionary/antimaterial/titanium
 	icon_state = "titanium"
-	// todo: implement
+	// todo: implement casing + magazine
 
 //* Magazines *//
 
@@ -47,10 +47,10 @@
 	icon = 'icons/content/factions/corporations/nanotrasen/items/guns/expeditionary/antimaterial-ammo.dmi'
 	icon_state = "magazine"
 	base_icon_state = "magazine"
-	rendering_system = GUN_RENDERING_DISABLED
 	ammo_caliber = /datum/ammo_caliber/nt_expeditionary/antimaterial
 	ammo_max = 5
 	ammo_preload = /obj/item/ammo_casing/nt_expeditionary/antimaterial
+	magazine_type = MAGAZINE_TYPE_NORMAL
 
 /obj/item/ammo_magazine/nt_expeditionary/antimaterial/update_icon(updates)
 	cut_overlays()

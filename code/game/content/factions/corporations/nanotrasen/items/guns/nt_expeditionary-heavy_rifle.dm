@@ -13,26 +13,73 @@
 /obj/item/ammo_casing/nt_expeditionary/heavy_rifle
 	name = "ammo casing (NT-7.5-LR)"
 	desc = "A standardized 7.5x54mm cartridge for NT Expeditionary kinetics. This one seems to be for heavy rifles."
+	icon = 'icons/content/factions/corporations/nanotrasen/items/guns/expeditionary/heavy-rifle-ammo.dmi'
+	icon_state = "basic"
+	icon_spent = TRUE
 	caliber = /datum/ammo_caliber/nt_expeditionary/heavy_rifle
 	projectile_type = /obj/projectile/bullet/nt_expeditionary/heavy_rifle
+
+	/// specifically for /obj/item/ammo_magazine/nt_expeditionary/heavy_rifle's
+	///
+	/// * null to default to "[base_icon_state || initial(icon_state)]"
+	var/stripper_state
+
+/obj/item/ammo_casing/nt_expeditionary/antimaterial/piercing
+	icon_state = "piercing"
+	// todo: implement casing + magazine
+
+/obj/item/ammo_casing/nt_expeditionary/antimaterial/rubber
+	icon_state = "rubber"
+	// todo: implement casing + magazine
 
 //* Magazines *//
 
 /obj/item/ammo_magazine/nt_expeditionary/heavy_rifle
 	name = "ammo magazine (NT-7.5-LR)"
 	icon = 'icons/content/factions/corporations/nanotrasen/items/guns/expeditionary/rifle-heavy-ammo.dmi'
-	icon_state = "magazine"
-	base_icon_state = "magazine"
-	rendering_system = GUN_RENDERING_DISABLED
 	ammo_caliber = /datum/ammo_caliber/nt_expeditionary/heavy_rifle
-	ammo_max = 5
 	ammo_preload = /obj/item/ammo_casing/nt_expeditionary/heavy_rifle
 
-/obj/item/ammo_magazine/nt_expeditionary/heavy_rifle
+/obj/item/ammo_magazine/nt_expeditionary/heavy_rifle/stripper_clip
+	name = "stripper clip (NT-7.5-LR)"
+	icon_state = "stripper"
+	base_icon_state = "stripper"
+	ammo_max = 6
+	magazine_type = MAGAZINE_TYPE_CLIP
 
-/obj/item/ammo_magazine/nt_expeditionary/heavy_rifle/clip/update_icon(updates)
+/obj/item/ammo_magazine/nt_expeditionary/heavy_rifle/stripper_clip/update_icon(updates)
+	cut_overlays()
+	. = ..()
+	var/list/overlays_to_add = list()
+	for(var/i in 1 to min(5, amount_remaining()))
+		var/obj/item/ammo_casing/nt_expeditionary/heavy_rifle/casted_path_of_potential = peek_path_of_position(i)
+		var/append = "basic"
+		if(ispath(casted_path_of_potential, /obj/item/ammo_casing/nt_expeditionary/heavy_rifle))
+			append = initial(casted_path_of_potential.stripper_state)
+		var/image/overlay = image(icon, "stripper-[append]")
+		overlay.pixel_x = (i - 1) * -2 - 8
+		overlay.pixel_y = (i - 1) * 2 - 8
+		overlays_to_add += overlay
+	add_overlay(overlays_to_add)
 
-	#warn impl; overlay via "[base_icon_state]-[casing.magazine_state]", shift -2, -2
+/obj/item/ammo_magazine/nt_expeditionary/heavy_rifle/magazine
+	name = "ammo magazine (NT-7.5-LR)"
+	icon_state = "mag-basic-0"
+	base_icon_state = "mag-basic"
+	magazine_type = MAGAZINE_TYPE_NORMAL
+	ammo_max = 16
+
+/obj/item/ammo_magazine/nt_expeditionary/heavy_rifle/magazine/extended
+	name = "extended magazine (NT-7.5-LR)"
+	icon_state = "mag-ext-basic-0"
+	base_icon_state = "mag-ext-basic"
+	ammo_max = 24
+
+/obj/item/ammo_magazine/nt_expeditionary/heavy_rifle/magazine/drum
+	name = "drum magazine (NT-7.5-LR)"
+	icon_state = "mag-drum-basic-0"
+	base_icon_state = "mag-drum-basic"
+	ammo_max = 40
 
 //* Projectiles *//
 
@@ -49,8 +96,6 @@
 	icon = 'icons/content/factions/corporations/nanotrasen/items/guns/expeditionary/rifle-heavy.dmi'
 	caliber = /datum/ammo_caliber/nt_expeditionary/heavy_rifle
 
-#warn sprites
-
 /obj/item/gun/ballistic/nt_expeditionary/heavy_rifle/singleshot
 	name = "marksman rifle"
 	desc = "The XNR(S) Mk.10 \"Old Man\" marksman rifle; a refined design output by the Nanotrasen Research Division in conjunction with Hephaestus Industries."
@@ -60,6 +105,8 @@
 		Light, uncomplicated, and rugged, the “Old Man” has nothing fancy about it.
 		But, time and again, it works, day in, and day out.
 	"} + "<br>"
+	icon = "single"
+	item_renderer = /datum/gun_item_renderer/empty_state
 
 /obj/item/gun/ballistic/nt_expeditionary/heavy_rifle/semirifle
 	name = "heavy rifle"
@@ -72,6 +119,8 @@
 		A scaled-up version of the Scout, with box magazines, this long gun is often seen issued
 		to hunters looking to take down game to sustain an expedition.
 	"} + "<br>"
+	icon_state = "semi"
+	item_renderer = /datum/gun_item_renderer/empty_state
 
 /obj/item/gun/ballistic/nt_expeditionary/heavy_rifle/autorifle
 	name = "heavy automatic rifle"
@@ -84,6 +133,8 @@
 		participant described the experience. Limiting the rifle
 		to burst fire keeps the rifle on target through most situations.
 	"} + "<br>"
+	icon_state = "auto"
+	render_unloaded = TRUE
 
 /obj/item/gun/ballistic/nt_expeditionary/heavy_rifle/lmg
 	name = "light machine gun"
@@ -97,5 +148,7 @@
 		dedicated machine gun teams. The patter this weapon makes as it suppresses any hostile
 		force makes this weapon's name a logical choice.
 	"} + "<br>"
+	icon_state = "lmg"
 
-#warn impl all
+	// todo: rendering; how are we going to render both unloaded and open?
+	// todo: rendering; maybe expand the render additional to allow for generation of a list?

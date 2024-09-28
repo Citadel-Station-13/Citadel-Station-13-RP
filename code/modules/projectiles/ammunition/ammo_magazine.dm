@@ -113,6 +113,8 @@
 	/// add a specific overlay as "[base_icon_state]-[state]", useful for denoting different magazines
 	/// that look similar with a stripe
 	var/rendering_static_overlay
+	/// color the static overlay this way
+	var/rendering_static_overlay_color
 
 /obj/item/ammo_magazine/Initialize(mapload)
 	. = ..()
@@ -121,7 +123,10 @@
 	pixel_y = rand(-5, 5)
 
 	if(!isnull(rendering_static_overlay))
-		add_overlay(rendering_static_overlay, TRUE)
+		var/image/static_overlay = image(icon, rendering_static_overlay)
+		if(rendering_static_overlay_color)
+			static_overlay.color = rendering_static_overlay_color
+		add_overlay(static_overlay, TRUE)
 
 	if(ammo_legacy_init_everything)
 		instantiate_internal_list()
