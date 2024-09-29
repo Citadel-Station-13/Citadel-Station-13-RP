@@ -3385,12 +3385,6 @@
 /obj/machinery/door/window/southleft,
 /turf/simulated/floor/tiled,
 /area/medical/virologyaccess)
-"dbb" = (
-/obj/machinery/atmospherics/component/unary/engine{
-	dir = 4
-	},
-/turf/simulated/shuttle/plating/airless/carry,
-/area/space)
 "dbh" = (
 /obj/machinery/computer/security/mining{
 	dir = 8;
@@ -3901,9 +3895,6 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/space)
-"dwM" = (
-/turf/simulated/shuttle/wall/voidcraft/hard_corner,
-/area/space)
 "dxA" = (
 /obj/machinery/door/firedoor/glass,
 /obj/structure/cable/green{
@@ -4233,13 +4224,6 @@
 /obj/effect/floor_decal/corner/blue/border,
 /turf/simulated/floor/tiled/white,
 /area/medical/patient_c)
-"dLn" = (
-/obj/machinery/door/firedoor{
-	dir = 8
-	},
-/obj/spawner/window/low_wall/reinforced/full,
-/turf/simulated/floor/plating,
-/area/shuttle/emt/cockpit)
 "dLx" = (
 /obj/structure/table/steel_reinforced,
 /obj/machinery/fire_alarm/south_mount{
@@ -4467,7 +4451,7 @@
 	dir = 10
 	},
 /turf/simulated/floor/tiled/white,
-/area/shuttle/emt/general)
+/area/shuttle/emt/cockpit)
 "dTO" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 6
@@ -4637,7 +4621,7 @@
 	dir = 9
 	},
 /turf/simulated/floor/tiled/white,
-/area/shuttle/emt/general)
+/area/shuttle/emt/cockpit)
 "eat" = (
 /obj/item/storage/box/beakers{
 	pixel_x = 2;
@@ -5779,9 +5763,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/hallway/primary/starboard)
-"eXE" = (
-/turf/simulated/shuttle/wall/voidcraft/blue,
-/area/space)
 "eXW" = (
 /obj/machinery/air_alarm/monitor/isolation{
 	alarm_id = "isolation_two";
@@ -13099,7 +13080,7 @@
 /obj/map_helper/airlock/door/ext_door,
 /obj/map_helper/access_helper/airlock/station/medical/department,
 /turf/simulated/floor/tiled/white,
-/area/space)
+/area/shuttle/emt/general)
 "lsM" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/radiocarbon_spectrometer,
@@ -14204,7 +14185,7 @@
 	dir = 5
 	},
 /turf/simulated/floor/tiled/white,
-/area/shuttle/emt/general)
+/area/shuttle/emt/cockpit)
 "mvm" = (
 /obj/effect/floor_decal/steeldecal/steel_decals_central1,
 /obj/effect/floor_decal/steeldecal/steel_decals6,
@@ -14320,7 +14301,7 @@
 	},
 /obj/map_helper/access_helper/airlock/station/medical/department,
 /turf/simulated/floor/tiled/white,
-/area/space)
+/area/shuttle/emt/general)
 "mzX" = (
 /obj/machinery/ai_status_display{
 	pixel_y = -32
@@ -16119,10 +16100,6 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/assembly/robotics/surgery)
-"ogK" = (
-/obj/machinery/door/blast/regular,
-/turf/simulated/floor/plating,
-/area/shuttle/emt/general)
 "ogL" = (
 /obj/machinery/mech_recharger,
 /obj/machinery/camera/network/research{
@@ -16371,12 +16348,6 @@
 	},
 /turf/simulated/floor/wood,
 /area/rnd/research_restroom)
-"osV" = (
-/obj/machinery/light{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/techfloor/grid,
-/area/shuttle/emt/general)
 "otK" = (
 /obj/machinery/atmospherics/pipe/manifold/visible{
 	dir = 1
@@ -17272,9 +17243,6 @@
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/white,
 /area/space)
-"pcp" = (
-/turf/simulated/floor/tiled/techfloor/grid,
-/area/shuttle/emt/general)
 "pds" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 4
@@ -19338,7 +19306,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/white,
-/area/shuttle/emt/general)
+/area/shuttle/emt/cockpit)
 "qLf" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /obj/effect/floor_decal/techfloor{
@@ -24948,7 +24916,16 @@
 /turf/simulated/wall/r_wall/prepainted/science,
 /area/rnd/xenobiology)
 "vFG" = (
-/turf/simulated/shuttle/wall/voidcraft/blue,
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
+/obj/effect/floor_decal/borderfloorwhite{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/blue/border{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/white,
 /area/shuttle/emt/cockpit)
 "vFN" = (
 /obj/structure/table/steel,
@@ -52321,14 +52298,14 @@ lYt
 fLw
 pUq
 egt
-eXE
-dbb
-dbb
-eXE
-dbb
-dbb
-dbb
-eXE
+oku
+weg
+weg
+oku
+weg
+weg
+weg
+oku
 egt
 egt
 egt
@@ -52515,7 +52492,7 @@ qUK
 sLm
 pUq
 egt
-eXE
+oku
 qww
 mob
 hce
@@ -52709,7 +52686,7 @@ gzw
 qbE
 pUq
 hzW
-eXE
+oku
 lta
 kzf
 lyv
@@ -52903,7 +52880,7 @@ jYT
 jWy
 pUq
 egt
-eXE
+oku
 eQr
 aJg
 oku
@@ -53097,7 +53074,7 @@ jYT
 qbE
 pUq
 egt
-eXE
+oku
 tNu
 pDh
 oku
@@ -53108,7 +53085,7 @@ oku
 oku
 uuw
 bzj
-ogK
+dyS
 pRW
 pRW
 pRW
@@ -53291,7 +53268,7 @@ jYT
 qbE
 pUq
 egt
-eXE
+oku
 oku
 jYD
 oku
@@ -53302,7 +53279,7 @@ oku
 eaq
 dTF
 oku
-ogK
+dyS
 pRW
 pRW
 pRW
@@ -53493,10 +53470,10 @@ gIr
 pho
 jye
 qtW
-gIr
-xhP
 vFG
-ogK
+xhP
+oku
+dyS
 pRW
 pRW
 pRW
@@ -53689,8 +53666,8 @@ dKK
 oku
 qKR
 cEs
-vFG
-ogK
+oku
+dyS
 pRW
 pRW
 pRW
@@ -53873,7 +53850,7 @@ jYT
 qbE
 pUq
 egt
-eXE
+oku
 oku
 oku
 oku
@@ -53883,8 +53860,8 @@ kwz
 oku
 muS
 pZN
-vFG
-ogK
+oku
+dyS
 pRW
 pRW
 pRW
@@ -54076,9 +54053,9 @@ rnw
 kDA
 oku
 nBs
-dLn
-vFG
-ogK
+nBs
+oku
+dyS
 pRW
 pRW
 pRW
@@ -54269,10 +54246,10 @@ nOY
 rnw
 acD
 oku
-pcp
-pcp
-pcp
-ogK
+egt
+egt
+egt
+dyS
 pRW
 pRW
 pRW
@@ -54463,7 +54440,7 @@ fIs
 rnw
 gzO
 btU
-pcp
+egt
 egt
 egt
 dyS
@@ -54652,12 +54629,12 @@ egt
 egt
 egt
 egt
-qXe
+btU
 qNR
 lbw
 oXk
 btU
-pcp
+egt
 egt
 egt
 dyS
@@ -54837,7 +54814,7 @@ qjz
 qjz
 qjz
 qjz
-pRW
+pUq
 oGt
 jYT
 arr
@@ -54846,12 +54823,12 @@ egt
 egt
 egt
 egt
-dwM
+aKv
 aKv
 bJp
 aKv
 aKv
-pcp
+egt
 egt
 egt
 dyS
@@ -55040,12 +55017,12 @@ hzW
 egt
 egt
 egt
-dwM
+aKv
 aKv
 nBs
 aKv
 aKv
-pcp
+egt
 egt
 egt
 dyS
@@ -55234,12 +55211,12 @@ anE
 egt
 egt
 egt
-eXE
+oku
 aKv
 nBs
 aKv
 oku
-pcp
+egt
 egt
 egt
 dyS
@@ -55429,11 +55406,11 @@ ndI
 egt
 egt
 egt
-osV
-pcp
-pcp
-pcp
-pcp
+ndI
+egt
+egt
+egt
+egt
 mbs
 dyS
 dyS

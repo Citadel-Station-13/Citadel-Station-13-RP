@@ -8928,11 +8928,6 @@
 /obj/machinery/atmospherics/pipe/simple/visible/universal,
 /turf/simulated/floor/plating,
 /area/engineering/atmos)
-"Gh" = (
-/obj/structure/lattice,
-/obj/structure/lattice,
-/turf/space/basic,
-/area/space)
 "Gl" = (
 /obj/structure/window/reinforced{
 	dir = 1
@@ -9176,11 +9171,6 @@
 	},
 /turf/simulated/floor/reinforced/oxygen,
 /area/engineering/atmos)
-"He" = (
-/obj/structure/lattice,
-/obj/structure/lattice,
-/turf/space,
-/area/space)
 "Hf" = (
 /obj/structure/disposalpipe/segment,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -16188,7 +16178,7 @@ eb
 cd
 cd
 cd
-Gh
+cd
 cd
 cd
 cd
@@ -16231,7 +16221,7 @@ eb
 cd
 cd
 cd
-Gh
+cd
 cd
 cd
 cd
@@ -17158,7 +17148,7 @@ eb
 CT
 CT
 CT
-He
+CT
 CT
 CT
 CT
@@ -17201,7 +17191,7 @@ eb
 CT
 CT
 CT
-He
+CT
 CT
 CT
 CT

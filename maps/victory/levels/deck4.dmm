@@ -1831,11 +1831,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/exploration/excursion_dock)
-"car" = (
-/turf/simulated/floor/tiled/monofloor{
-	dir = 8
-	},
-/area/space)
 "caS" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/flora/pottedplant/orientaltree,
@@ -7742,10 +7737,12 @@
 /turf/simulated/floor/carpet/oracarpet,
 /area/space)
 "inw" = (
-/obj/machinery/atmospherics/pipe/simple/hidden,
-/obj/machinery/door/airlock/maintenance,
-/obj/map_helper/access_helper/airlock/station/exploration/department,
-/turf/simulated/floor/plating,
+/obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
+	dir = 8;
+	frequency = 1380;
+	id_tag = "deck4_dockarm2_pump"
+	},
+/turf/simulated/floor/tiled/dark,
 /area/space)
 "ioL" = (
 /obj/structure/bed/chair/bay/comfy/black{
@@ -8198,15 +8195,8 @@
 /turf/space/basic,
 /area/gateway)
 "iPD" = (
-/obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 5
-	},
-/obj/structure/cable/green{
-	icon_state = "1-2"
-	},
-/turf/simulated/floor/tiled/monofloor{
-	dir = 4
-	},
+/obj/map_helper/airlock/door/ext_door,
+/turf/space/basic,
 /area/space)
 "iPF" = (
 /obj/structure/table/woodentable,
@@ -11322,19 +11312,12 @@
 /turf/simulated/floor/plating,
 /area/space)
 "mdo" = (
-/obj/structure/cable/green{
-	icon_state = "1-2"
+/obj/machinery/shield_diffuser,
+/obj/machinery/door/airlock/glass_external{
+	req_one_access = null
 	},
-/obj/machinery/air_alarm{
-	dir = 4;
-	pixel_x = -23
-	},
-/obj/machinery/atmospherics/pipe/manifold/hidden{
-	dir = 8
-	},
-/turf/simulated/floor/tiled/monofloor{
-	dir = 4
-	},
+/obj/map_helper/access_helper/airlock/station/external_airlock,
+/turf/simulated/floor/tiled/dark,
 /area/space)
 "mew" = (
 /obj/structure/bed/chair/shuttle{
@@ -11565,17 +11548,12 @@
 /turf/simulated/floor/tiled,
 /area/crew_quarters/lounge/kitchen_freezer)
 "muZ" = (
-/obj/structure/cable/green{
-	icon_state = "1-2"
-	},
-/obj/machinery/door/firedoor,
 /obj/machinery/atmospherics/pipe/simple/hidden,
-/obj/map_helper/airlock/door/int_door,
-/obj/map_helper/access_helper/airlock/station/exploration/department,
 /obj/machinery/door/airlock/glass_external{
 	req_one_access = null
 	},
-/turf/simulated/floor/tiled,
+/obj/map_helper/access_helper/airlock/station/external_airlock,
+/turf/simulated/floor/tiled/dark,
 /area/space)
 "mvb" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -12432,9 +12410,11 @@
 /turf/simulated/wall/prepainted/security,
 /area/maintenance/security/port)
 "nwm" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/door/airlock/maintenance,
-/turf/simulated/floor/plating,
+/obj/machinery/door/airlock/glass_external{
+	req_one_access = null
+	},
+/obj/map_helper/access_helper/airlock/station/external_airlock,
+/turf/simulated/floor/tiled/dark,
 /area/space)
 "nwz" = (
 /obj/structure/shuttle/engine/heater{
@@ -13067,18 +13047,6 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/aft)
-"omA" = (
-/obj/structure/cable/green{
-	icon_state = "1-2"
-	},
-/obj/machinery/light{
-	dir = 8
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden,
-/turf/simulated/floor/tiled/monofloor{
-	dir = 4
-	},
-/area/space)
 "omT" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled/dark,
@@ -15323,16 +15291,15 @@
 /turf/simulated/floor/tiled,
 /area/hallway/secondary/civilian_hallway_mid)
 "qVT" = (
-/obj/structure/cable/green{
-	icon_state = "1-2"
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 5
 	},
-/obj/machinery/door/firedoor,
-/obj/map_helper/airlock/door/ext_door,
-/obj/map_helper/access_helper/airlock/station/exploration/department,
-/obj/machinery/door/airlock/glass_external{
-	req_one_access = null
+/obj/machinery/meter{
+	frequency = 1443;
+	id = "dist_aux_meter";
+	name = "Distribution Loop"
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/tiled/dark,
 /area/space)
 "qWg" = (
 /obj/machinery/door/blast/regular{
@@ -29999,7 +29966,7 @@ xRj
 xRj
 xRj
 xRj
-xRj
+iPD
 jNg
 sQl
 htr
@@ -33884,9 +33851,9 @@ rdJ
 aCx
 fjs
 eTc
-xST
-rhG
-tzn
+muZ
+qVT
+mdo
 xRj
 xRj
 xRj
@@ -34078,9 +34045,9 @@ gaj
 xHD
 lFl
 fYz
-mTa
-bew
-hoc
+nwm
+inw
+mdo
 xRj
 xRj
 xRj
@@ -40941,11 +40908,11 @@ jNg
 jNg
 jNg
 jNg
-dkX
-dkX
-dkX
-dkX
-rdJ
+xRj
+xRj
+xRj
+xRj
+xRj
 jNg
 jNg
 jNg
@@ -41135,11 +41102,11 @@ jNg
 jNg
 jNg
 jNg
-dkX
-toF
-hFN
-hFN
-nwm
+xRj
+xRj
+xRj
+xRj
+xRj
 jNg
 jNg
 jNg
@@ -41329,11 +41296,11 @@ jNg
 jNg
 jNg
 jNg
-dkX
-wwG
-syO
-rdJ
-rdJ
+xRj
+xRj
+xRj
+xRj
+xRj
 jNg
 jNg
 jNg
@@ -41523,11 +41490,11 @@ jNg
 jNg
 jNg
 jNg
-dkX
-nAF
-ddG
-rdJ
-rdJ
+xRj
+xRj
+xRj
+xRj
+xRj
 jNg
 jNg
 jNg
@@ -41717,11 +41684,11 @@ jNg
 jNg
 jNg
 jNg
-dkX
-ovp
-kxn
-rdJ
-rdJ
+xRj
+xRj
+xRj
+xRj
+xRj
 jNg
 jNg
 jNg
@@ -41911,11 +41878,11 @@ jNg
 jNg
 jNg
 jNg
-dkX
-fHh
-xYB
-rdJ
-rdJ
+xRj
+xRj
+xRj
+xRj
+xRj
 jNg
 jNg
 jNg
@@ -42105,11 +42072,11 @@ jNg
 jNg
 jNg
 jNg
-inw
-nuU
-oeU
-rdJ
-rdJ
+xRj
+xRj
+xRj
+xRj
+xRj
 jNg
 jNg
 jNg
@@ -42299,11 +42266,11 @@ jNg
 jNg
 jNg
 jNg
-rdJ
-rdJ
-rdJ
-rdJ
-rdJ
+xRj
+xRj
+xRj
+xRj
+xRj
 jNg
 jNg
 jNg
@@ -42493,11 +42460,11 @@ jNg
 jNg
 jNg
 jNg
-muZ
-mdo
-omA
-iPD
-qVT
+xRj
+xRj
+xRj
+xRj
+xRj
 jNg
 jNg
 jNg
@@ -42687,11 +42654,11 @@ jNg
 jNg
 jNg
 jNg
-leE
-qQJ
-pob
-qnG
-mAC
+xRj
+xRj
+xRj
+xRj
+xRj
 jNg
 jNg
 jNg
@@ -42881,11 +42848,11 @@ jNg
 jNg
 jNg
 jNg
-fiu
-car
-car
-car
-joN
+xRj
+xRj
+xRj
+xRj
+xRj
 jNg
 jNg
 jNg
@@ -43075,11 +43042,11 @@ jNg
 jNg
 jNg
 jNg
-rdJ
-iLb
-eGS
-rdJ
-rdJ
+xRj
+xRj
+xRj
+xRj
+xRj
 jNg
 jNg
 jNg
@@ -43269,11 +43236,11 @@ jNg
 jNg
 jNg
 jNg
-rdJ
-wIX
-iGx
-gja
-rdJ
+xRj
+xRj
+xRj
+xRj
+xRj
 jNg
 jNg
 jNg
@@ -43463,11 +43430,11 @@ jNg
 jNg
 jNg
 jNg
-rdJ
-pob
-pob
-tyc
-rdJ
+xRj
+xRj
+xRj
+xRj
+xRj
 jNg
 jNg
 jNg
@@ -43657,11 +43624,11 @@ jNg
 jNg
 jNg
 jNg
-rdJ
-bfO
-pob
-nMh
-rdJ
+xRj
+xRj
+xRj
+xRj
+xRj
 jNg
 jNg
 jNg
@@ -43851,11 +43818,11 @@ jNg
 jNg
 jNg
 jNg
-rdJ
-wyc
-pob
-cUt
-rdJ
+xRj
+xRj
+xRj
+xRj
+xRj
 jNg
 jNg
 jNg
@@ -44045,11 +44012,11 @@ jNg
 jNg
 jNg
 jNg
-rdJ
-wyc
-gsj
-kpN
-rdJ
+xRj
+xRj
+xRj
+xRj
+xRj
 jNg
 jNg
 jNg
@@ -44239,11 +44206,11 @@ jNg
 jNg
 jNg
 jNg
-rdJ
-wyc
-hSU
-kvI
-rdJ
+xRj
+xRj
+xRj
+xRj
+xRj
 jNg
 jNg
 jNg
@@ -44433,11 +44400,11 @@ jNg
 jNg
 jNg
 jNg
-rdJ
-scr
-aVF
-joU
-rdJ
+xRj
+xRj
+xRj
+xRj
+xRj
 jNg
 jNg
 jNg
@@ -44627,11 +44594,11 @@ jNg
 jNg
 jNg
 jNg
-rdJ
-qfY
-kIs
-bnJ
-pbY
+xRj
+xRj
+xRj
+xRj
+xRj
 jNg
 jNg
 jNg
@@ -44821,11 +44788,11 @@ jNg
 jNg
 jNg
 jNg
-rdJ
-pob
-kIs
-tVX
-rdJ
+xRj
+xRj
+xRj
+xRj
+xRj
 jNg
 jNg
 jNg
@@ -45015,11 +44982,11 @@ jNg
 jNg
 jNg
 jNg
-rdJ
-kHM
-kIs
-kcJ
-rdJ
+xRj
+xRj
+xRj
+xRj
+xRj
 jNg
 jNg
 jNg
@@ -45209,11 +45176,11 @@ jNg
 jNg
 jNg
 jNg
-rdJ
-rdJ
-wUf
-rdJ
-rdJ
+xRj
+xRj
+xRj
+xRj
+xRj
 jNg
 jNg
 jNg
@@ -45403,11 +45370,11 @@ jNg
 jNg
 jNg
 jNg
-rdJ
-nui
-apg
-khT
-rdJ
+xRj
+xRj
+xRj
+xRj
+xRj
 jNg
 jNg
 jNg
@@ -45597,11 +45564,11 @@ jNg
 jNg
 jNg
 jNg
-rdJ
-iLv
-kHn
-nHB
-gaj
+xRj
+xRj
+xRj
+xRj
+xRj
 jNg
 jNg
 jNg
@@ -45791,11 +45758,11 @@ jNg
 jNg
 jNg
 jNg
-rdJ
-suU
-xoZ
-fnT
-vGJ
+xRj
+xRj
+xRj
+xRj
+xRj
 jNg
 jNg
 jNg
@@ -45985,11 +45952,11 @@ jNg
 jNg
 jNg
 jNg
-rdJ
-tgY
-pdw
-vmt
-rdJ
+xRj
+xRj
+xRj
+xRj
+xRj
 jNg
 jNg
 jNg
@@ -46179,11 +46146,11 @@ jNg
 jNg
 jNg
 jNg
-rdJ
-lYx
-rdJ
-lYx
-rdJ
+xRj
+xRj
+xRj
+xRj
+xRj
 jNg
 jNg
 jNg
