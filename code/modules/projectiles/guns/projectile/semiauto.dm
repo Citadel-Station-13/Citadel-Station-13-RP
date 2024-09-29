@@ -62,9 +62,10 @@
 	icon_state = "apigun-[ammo_magazine ? round(ammo_magazine.amount_remaining(), 2) : "e"]"
 
 /obj/item/gun/ballistic/reconrifle
-	name = "Expeditionary Reconaissance Rifle"
-	desc = "A bullpup semi-automatic rifle outfitted with a 1.5x magnification scope. The purple stripe running the length of it's retro beige furniture indicates that this belongs to Nanotrasen Exploration personnel."
+	name = "Expeditionary Reconnaissance Rifle"
+	desc = "A bullpup semi-automatic designated marksman's rifle outfitted with a 1.5x magnification scope. The purple stripe running the length of it's retro beige furniture indicates that this belongs to Nanotrasen Exploration personnel."
 	icon_state = "reconrifle"
+	item_state = "reconrifle"
 	pin = /obj/item/firing_pin/explorer
 	slot_flags = SLOT_BACK
 	fire_sound = 'sound/weapons/Gunshot_heavy.ogg'
