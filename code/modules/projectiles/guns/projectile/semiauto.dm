@@ -63,7 +63,7 @@
 
 /obj/item/gun/ballistic/reconrifle
 	name = "Expeditionary Reconnaissance Rifle"
-	desc = "A bullpup semi-automatic designated marksman's rifle outfitted with a 1.5x magnification scope. The purple stripe running the length of it's retro beige furniture indicates that this belongs to Nanotrasen Exploration personnel."
+	desc = "A bullpup semi-automatic designated marksman's rifle outfitted with a 4x magnification scope. The purple stripe running the length of it's retro beige furniture indicates that this belongs to Nanotrasen Exploration personnel."
 	icon_state = "reconrifle"
 	item_state = "reconrifle"
 	pin = /obj/item/firing_pin/explorer
