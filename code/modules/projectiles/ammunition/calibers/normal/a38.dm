@@ -72,4 +72,3 @@
 	icon_state = "holy-6"
 	base_icon_state = "holy"
 	ammo_preload = /obj/item/ammo_casing/a38/silver
-	materials_base = list(MAT_STEEL = 780, MAT_SILVER = 600)

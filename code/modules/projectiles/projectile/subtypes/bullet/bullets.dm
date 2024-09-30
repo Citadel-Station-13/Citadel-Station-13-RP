@@ -26,7 +26,7 @@
 /obj/projectile/bullet/pistol/silver
 	damage_force = 15
 	SA_bonus_damage = 25 // 40 total against demons
-	SA_vulnerability = MOB_CLASS_DEMONIC
+	SA_vulnerability = MOB_CLASS_DEMONIC | MOB_CLASS_ABERRATION
 	embed_chance = -1
 	holy = TRUE
 
@@ -230,8 +230,8 @@
 
 /obj/projectile/bullet/rifle/a762/silver // Hunting Demons with bolt action rifles.
 	damage_force = 20
-	SA_bonus_damage = 50 // 70 total on animals.
-	SA_vulnerability = MOB_CLASS_DEMONIC
+	SA_bonus_damage = 50 // 70 total on demons.
+	SA_vulnerability = MOB_CLASS_DEMONIC | MOB_CLASS_ABERRATION
 	holy = TRUE
 
 /obj/projectile/bullet/rifle/a556
