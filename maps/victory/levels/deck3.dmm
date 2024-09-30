@@ -1200,7 +1200,7 @@
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/medical_restroom)
 "bbY" = (
-/obj/machinery/power/breakerbox/activated{
+/obj/machinery/power/breakerbox{
 	RCon_tag = "DECK 3 MAIN"
 	},
 /turf/simulated/floor/plating,
