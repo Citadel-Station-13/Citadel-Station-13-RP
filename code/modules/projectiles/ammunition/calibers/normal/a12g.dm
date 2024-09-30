@@ -129,7 +129,7 @@
 
 /obj/item/ammo_casing/a12g/silver
 	name = "Silver shotgun shell"
-	desc = "A 12 gauge shell filled with silver buckshot pellets. What are you hunting, ghosts?"
+	desc = "A 12 gauge shell filled with silver buckshot pellets. What are you hunting, werewolves?"
 	icon_state = "stake"
 	projectile_type = /obj/projectile/bullet/pellet/shotgun/silver
 	materials_base = list(MAT_STEEL = 360, MAT_SILVER = 240)
