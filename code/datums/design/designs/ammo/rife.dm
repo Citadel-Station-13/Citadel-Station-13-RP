@@ -48,3 +48,9 @@
 	lathe_type = LATHE_TYPE_AUTOLATHE
 	design_unlock = DESIGN_UNLOCK_INTRINSIC
 	build_path = /obj/item/ammo_magazine/a7_62mm/clip/practice
+
+/datum/design/ammo/rifle/c762_silver
+	id = "AmmoClip762mmSilver"
+	lathe_type = LATHE_TYPE_AUTOLATHE
+	design_unlock = DESIGN_UNLOCK_INTRINSIC
+	build_path = /obj/item/ammo_magazine/a7_62mm/clip/silver
