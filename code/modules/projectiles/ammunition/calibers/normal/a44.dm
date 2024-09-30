@@ -19,7 +19,7 @@
 	materials_base = list(MAT_STEEL = 60)
 
 /obj/item/ammo_casing/a44/silver
-	desc = "A .44 silver bullet casing. Bless and Sancitfied to banish otherworlds entities."
+	desc = "A .44 silver bullet casing."
 	icon_state = "large-white"
 	projectile_type = /obj/projectile/bullet/pistol/strong/silver
 	materials_base = list(MAT_STEEL = 350, MAT_SILVER = 200)

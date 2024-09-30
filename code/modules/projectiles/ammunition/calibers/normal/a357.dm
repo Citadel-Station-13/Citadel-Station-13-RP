@@ -16,7 +16,7 @@
 	caliber = /datum/ammo_caliber/a357
 
 /obj/item/ammo_casing/a357/silver
-	desc = "A .357 silver bullet casing. Bless and Sancitfied to banish otherworlds entities."
+	desc = "A .357 silver bullet casing."
 	icon_state = "large-white"
 	base_icon_state = "large-white"
 	materials_base = list(MAT_STEEL = 350, MAT_SILVER = 200)

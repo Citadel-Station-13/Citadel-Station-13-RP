@@ -55,7 +55,7 @@
 	projectile_type = /obj/projectile/bullet/rifle/a762/sniperhunter
 
 /obj/item/ammo_casing/a7_62mm/silver
-	desc = "A 7.62mm hunting bullet casing. Bless and Sancitfied to banish otherworlds entities."
+	desc = "A 7.62mm silver bullet casing. "
 	icon_state = "large-white"
 	projectile_type = /obj/projectile/bullet/rifle/a762/silver
 	materials_base = list(MAT_STEEL = 300, MAT_SILVER = 150)
@@ -78,6 +78,10 @@
 /obj/item/ammo_magazine/a7_62mm/ap
 	name = "magazine (7.62mm armor-piercing)"
 	ammo_preload = /obj/item/ammo_casing/a7_62mm/ap
+
+/obj/item/ammo_magazine/a7_62mm/silver
+	name = "magazine (7.62mm silver)"
+	ammo_preload = /obj/item/ammo_casing/a7_62mm/silver
 
 /obj/item/ammo_magazine/a7_62mm/empty
 	icon_state = "m762-0"

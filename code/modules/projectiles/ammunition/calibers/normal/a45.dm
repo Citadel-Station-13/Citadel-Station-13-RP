@@ -53,7 +53,7 @@
 
 /obj/item/ammo_casing/a45/silver
 	name = ".45 silver round"
-	desc = "A .45 silver bullet casing. Bless and Sancitfied to banish otherworlds entities."
+	desc = "A .45 silver bullet casing."
 	icon_state = "large-white"
 	projectile_type = /obj/projectile/bullet/pistol/silver
 	materials_base = list(MAT_STEEL = 130, MAT_SILVER = 100)

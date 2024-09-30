@@ -129,7 +129,7 @@
 
 /obj/item/ammo_casing/a12g/silver
 	name = "Silver shotgun shell"
-	desc = "A 12 gauge slug. Bless and Sancitfied to banish otherworlds entities."
+	desc = "A 12 gauge shell filled with silver buckshot pellets. What are you hunting, ghosts?"
 	icon_state = "stake"
 	projectile_type = /obj/projectile/bullet/pellet/shotgun/silver
 	materials_base = list(MAT_STEEL = 360, MAT_SILVER = 240)
@@ -137,7 +137,7 @@
 
 /obj/item/ammo_casing/a12g/stake
 	name = "Wooden stake shell"
-	desc = "A specialized shell designed to launch a wooden stake. Bless and Sancitfied to banish otherworlds entities."
+	desc = "A specialized shell designed to launch a wooden stake. Blessed and sanctified to banish otherworldly entities."
 	icon_state = "stake"
 	projectile_type = /obj/projectile/bullet/shotgun/stake
 	materials_base = list(MAT_STEEL = 500)
