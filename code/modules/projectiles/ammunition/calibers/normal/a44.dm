@@ -48,6 +48,10 @@
 	desc = "A magazine for .44 less-than-lethal ammo."
 	ammo_type = /obj/item/ammo_casing/a44/rubber
 
+/obj/item/ammo_magazine/a44/silver
+	name = "magazine (.44 silver)"
+	ammo_preload = /obj/item/ammo_casing/a44/silver
+
 /obj/item/ammo_magazine/a44/clip
 	name = "ammo clip (.44)"
 	desc = "A stripper clip for reloading .44 rounds into magazines."

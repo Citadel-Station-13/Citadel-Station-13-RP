@@ -97,6 +97,10 @@
 	name = "magazine (.45 AP)"
 	ammo_preload = /obj/item/ammo_casing/a45/ap
 
+/obj/item/ammo_magazine/a45/silver
+	name = "magazine (.45 silver)"
+	ammo_preload = /obj/item/ammo_casing/a45/silver
+
 /obj/item/ammo_magazine/a45/uzi
 	name = "stick magazine (.45)"
 	icon = 'icons/modules/projectiles/magazines/old_magazine_stick.dmi'

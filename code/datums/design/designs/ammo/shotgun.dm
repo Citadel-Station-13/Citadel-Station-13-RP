@@ -32,6 +32,12 @@
 	design_unlock = DESIGN_UNLOCK_INTRINSIC
 	build_path = /obj/item/ammo_casing/a12g/pellet
 
+/datum/design/ammo/shotgun/silver
+	id = "AmmoShotshellSilver"
+	lathe_type = LATHE_TYPE_AUTOLATHE
+	design_unlock = DESIGN_UNLOCK_INTRINSIC
+	build_path = /obj/item/ammo_casing/a12g/silver
+
 /datum/design/ammo/shotgun/stun
 	id = "AmmoShotshellStun"
 	lathe_type = LATHE_TYPE_AUTOLATHE
@@ -68,3 +74,10 @@
 	lathe_type = LATHE_TYPE_AUTOLATHE
 	design_unlock = DESIGN_UNLOCK_INTRINSIC
 	build_path = /obj/item/ammo_magazine/a12g/pouch
+
+
+/datum/design/ammo/shotgun/clip/dual/silver
+	id = "ClipShotgunSilver2"
+	lathe_type = LATHE_TYPE_AUTOLATHE
+	design_unlock = DESIGN_UNLOCK_INTRINSIC
+	build_path = /obj/item/ammo_magazine/a12g/clip/silver
