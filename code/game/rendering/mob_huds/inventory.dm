@@ -205,6 +205,8 @@
 	old_hand.cut_overlay("[old_hand.icon_state]-active")
 	new_hand.add_overlay("[new_hand.icon_state]-active")
 
+//* Inventory Screen Objects *//
+
 /**
  * Base type of inventory screen objects.
  */
@@ -291,6 +293,14 @@
 	icon = style.inventory_icons_slot
 
 /atom/movable/screen/inventory/plate/slot/handle_inventory_click(mob/user, slot_or_index, obj/item/with_item)
+	#warn impl
+
+/**
+ * comparator that sorts slots that are semantically closer to their anchors to be first,
+ * allowing a no-collision-or-cascading method of resolving slot alignment.
+ */
+/proc/cmp_inventory_slot_screen_object_for_anti_cascade(atom/movable/screen/inventory/plate/slot/A, atom/movable/screen/inventory/plate/slot/B)
+
 
 /**
  * Hand screen objects
@@ -311,6 +321,7 @@
 	icon = style.inventory_icons
 
 /atom/movable/screen/inventory/plate/hand/handle_inventory_click(mob/user, slot_or_index, obj/item/with_item)
+	#warn impl
 
 /atom/movable/screen/inventory/plate/hand/proc/sync_index(index = hand_index)
 	screen_loc = SCREEN_LOC_MOB_HUD_INVENTORY_HAND(index)
