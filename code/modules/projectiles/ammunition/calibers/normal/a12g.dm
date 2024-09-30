@@ -287,3 +287,9 @@
 	marking_color = PIPE_COLOR_YELLOW
 	ammo_preload = /obj/item/ammo_casing/a12g/stunshell
 	ammo_type = /obj/item/ammo_casing/a12g/stunshell
+
+/obj/item/ammo_magazine/a12g/pouch/full/silver
+	name = "shotgun slug holder (silver)"
+	marking_color = COLOR_WHITE
+	ammo_preload = /obj/item/ammo_casing/a12g/silver
+	ammo_type = /obj/item/ammo_casing/a12g/silver
