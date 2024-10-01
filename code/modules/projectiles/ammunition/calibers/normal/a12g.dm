@@ -128,7 +128,7 @@
 	worth_intrinsic = 50
 
 /obj/item/ammo_casing/a12g/silver
-	name = "Silver shotgun shell"
+	name = "silvershot shell"
 	desc = "A 12 gauge shell filled with silver buckshot pellets. What are you hunting, werewolves?"
 	icon_state = "stake"
 	projectile_type = /obj/projectile/bullet/pellet/shotgun/silver
