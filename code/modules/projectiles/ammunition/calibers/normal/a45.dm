@@ -99,6 +99,8 @@
 
 /obj/item/ammo_magazine/a45/silver
 	name = "magazine (.45 silver)"
+	icon_state = "45s-7"
+	base_icon_state = "45s"
 	ammo_preload = /obj/item/ammo_casing/a45/silver
 
 /obj/item/ammo_magazine/a45/uzi

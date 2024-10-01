@@ -81,6 +81,8 @@
 
 /obj/item/ammo_magazine/a7_62mm/silver
 	name = "magazine (7.62mm silver)"
+	icon_state = "m762s-1"
+	base_icon_state = "m762s"
 	ammo_preload = /obj/item/ammo_casing/a7_62mm/silver
 
 /obj/item/ammo_magazine/a7_62mm/empty
@@ -116,7 +118,7 @@
 	ammo_current = 0
 
 /obj/item/ammo_magazine/a7_62mm/clip
-	name = "ammo clip (7.62mm)"
+	name = "rifle clip (7.62mm)"
 	ammo_preload = /obj/item/ammo_casing/a7_62mm
 	materials_base = list(MAT_STEEL = 1000)
 	ammo_max = 5
