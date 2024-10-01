@@ -61,7 +61,7 @@
 	design_unlock = DESIGN_UNLOCK_INTRINSIC
 	build_path = /obj/item/ammo_magazine/a44/speedloader/rubber
 
-/datum/design/ammo/revolver/a44
+/datum/design/ammo/revolver/a44_silver
 	id = "AmmoSpeedloader44Silver"
 	lathe_type = LATHE_TYPE_AUTOLATHE
 	design_unlock = DESIGN_UNLOCK_INTRINSIC
