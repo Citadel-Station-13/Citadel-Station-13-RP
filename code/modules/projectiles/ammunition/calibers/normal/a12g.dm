@@ -222,7 +222,7 @@
 	ammo_type = /obj/item/ammo_casing/a12g/beanbag
 
 /obj/item/ammo_magazine/a12g/clip/silver
-	name = "ammo clip (12g buckshot)"
+	name = "ammo clip (12g silver)"
 	icon_state = "a12-silver-2"
 	base_icon_state = "a12-silver"
 	desc = "A color-coded metal clip for holding and quickly loading shotgun shells. This one is loaded with silver buckshot."
