@@ -131,7 +131,7 @@
 	name = "silver slug shell"
 	desc = "A 12 gauge shell holding a solid silver slug. What are you hunting, werewolves?"
 	icon_state = "silver"
-	projectile_type = /obj/projectile/bullet/pellet/shotgun/silver
+	projectile_type = /obj/projectile/bullet/shotgun/silver
 	materials_base = list(MAT_STEEL = 360, MAT_SILVER = 240)
 	worth_intrinsic = 75
 
