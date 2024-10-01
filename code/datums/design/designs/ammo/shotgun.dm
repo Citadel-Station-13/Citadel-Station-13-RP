@@ -69,7 +69,7 @@
 	design_unlock = DESIGN_UNLOCK_INTRINSIC
 	build_path = /obj/item/ammo_magazine/a12g/clip/pellet
 
-	/datum/design/ammo/shotgun/clip/dual/silver
+/datum/design/ammo/shotgun/clip/dual/silver
 	id = "ClipShotgunSilver2"
 	lathe_type = LATHE_TYPE_AUTOLATHE
 	design_unlock = DESIGN_UNLOCK_INTRINSIC
