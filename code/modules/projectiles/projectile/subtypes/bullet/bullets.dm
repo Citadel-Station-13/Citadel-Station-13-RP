@@ -137,7 +137,7 @@
 	armor_penetration = 10
 
 // This is my boomstick,
-/obj/projectile/bullet/pellet/shotgun/silver
+/obj/projectile/bullet/pellet/shotgun/silvershot
 	name = "shrapnel"
 	fire_sound = 'sound/weapons/weaponsounds_shotgunshot.ogg'
 	damage_force = 10
@@ -147,12 +147,22 @@
 	pellets = 6
 	holy = TRUE
 
+/obj/projectile/bullet/shotgun/silver
+	name = "slug"
+	fire_sound = 'sound/weapons/weaponsounds_shotgunshot.ogg'
+	damage_force = 50 // Silver would be lighter than a lead slug
+	armor_penetration = 15
+	SA_bonus_damage = 16
+	SA_vulnerability = MOB_CLASS_DEMONIC | MOB_CLASS_ABERRATION
+	holy = TRUE
+
+// This should be considerably better than silver and unavailable through normal means
 /obj/projectile/bullet/shotgun/stake
 	name = "stake"
 	fire_sound = 'sound/weapons/weaponsounds_shotgunshot.ogg'
 	damage_force = 50
 	armor_penetration = 15
-	SA_bonus_damage = 16 // Potential 156 Damage against demons at point blank.
+	SA_bonus_damage = 16
 	SA_vulnerability = MOB_CLASS_DEMONIC | MOB_CLASS_ABERRATION
 	holy = TRUE
 

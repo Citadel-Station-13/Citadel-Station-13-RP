@@ -128,16 +128,24 @@
 	worth_intrinsic = 50
 
 /obj/item/ammo_casing/a12g/silver
-	name = "silvershot shell"
-	desc = "A 12 gauge shell filled with silver buckshot pellets. What are you hunting, werewolves?"
-	icon_state = "stake"
+	name = "silver slug shell"
+	desc = "A 12 gauge shell holding a solid silver slug. What are you hunting, werewolves?"
+	icon_state = "silver"
 	projectile_type = /obj/projectile/bullet/pellet/shotgun/silver
 	materials_base = list(MAT_STEEL = 360, MAT_SILVER = 240)
 	worth_intrinsic = 75
 
+/obj/item/ammo_casing/a12g/silvershot
+	name = "silvershot shell"
+	desc = "A 12 gauge shell filled with silver buckshot pellets. What are you hunting, werewolves?"
+	icon_state = "silvershot"
+	projectile_type = /obj/projectile/bullet/pellet/shotgun/silvershot
+	materials_base = list(MAT_STEEL = 360, MAT_SILVER = 240)
+	worth_intrinsic = 75
+
 /obj/item/ammo_casing/a12g/stake
-	name = "Wooden stake shell"
-	desc = "A specialized shell designed to launch a wooden stake. Blessed and sanctified to banish otherworldly entities."
+	name = "holy flechette shell"
+	desc = "No ordinary shotgun shell, this appears to be an oversized iron nail of obscure provenance held in place by a wax sabot. Blessed and sanctified to banish otherworldly entities."
 	icon_state = "stake"
 	projectile_type = /obj/projectile/bullet/shotgun/stake
 	materials_base = list(MAT_STEEL = 500)
@@ -178,13 +186,13 @@
 	base_icon_state = "holyshotgun"
 	desc = "Thrice-blessed, this drum magazine is loaded with silver shot designed to combat supernatural threats."
 	materials_base = list(MAT_STEEL = 100, MAT_SILVER = 1100)
-	ammo_preload = /obj/item/ammo_casing/a12g/silver
+	ammo_preload = /obj/item/ammo_casing/a12g/silvershot
 	ammo_max = 12
 	rendering_system = GUN_RENDERING_DISABLED
 
 /obj/item/ammo_magazine/a12g/drum/holy/stake
 	name = "blessed drum magazine (stakes)"
-	desc = "Thrice-blessed, this drum magazine is loaded with wooden stakes soaked in sacred oils."
+	desc = "Thrice-blessed, this drum magazine is loaded with iron nails soaked in sacred oils."
 	ammo_preload = /obj/item/ammo_casing/a12g/stake
 
 //* Magazines - Clips
@@ -225,9 +233,25 @@
 	name = "ammo clip (12g silver)"
 	icon_state = "a12-silver-2"
 	base_icon_state = "a12-silver"
-	desc = "A color-coded metal clip for holding and quickly loading shotgun shells. This one is loaded with silver buckshot."
+	desc = "A color-coded metal clip for holding and quickly loading shotgun shells. This one is loaded with silver slugs."
 	ammo_preload = /obj/item/ammo_casing/a12g/silver
 	ammo_type = /obj/item/ammo_casing/a12g/silver
+
+/obj/item/ammo_magazine/a12g/clip/silvershot
+	name = "ammo clip (12g silvershot)"
+	icon_state = "a12-silver-2"
+	base_icon_state = "a12-silver"
+	desc = "A color-coded metal clip for holding and quickly loading shotgun shells. This one is loaded with silver buckshot."
+	ammo_preload = /obj/item/ammo_casing/a12g/silvershot
+	ammo_type = /obj/item/ammo_casing/a12g/silvershot
+
+/obj/item/ammo_magazine/a12g/clip/stake
+	name = "ammo clip (12g stakes)"
+	icon_state = "a12-stake-2"
+	base_icon_state = "a12-stake"
+	desc = "A color-coded metal clip for holding and quickly loading shotgun shells. This one is loaded with blessed iron nails."
+	ammo_preload = /obj/item/ammo_casing/a12g/stake
+	ammo_type = /obj/item/ammo_casing/a12g/stake
 
 //* Magazines - Pouches
 
@@ -288,8 +312,8 @@
 	ammo_preload = /obj/item/ammo_casing/a12g/stunshell
 	ammo_type = /obj/item/ammo_casing/a12g/stunshell
 
-/obj/item/ammo_magazine/a12g/pouch/full/silver
-	name = "shotgun slug holder (silver)"
+/obj/item/ammo_magazine/a12g/pouch/full/silvershot
+	name = "shotgun slug holder (silvershot)"
 	marking_color = COLOR_WHITE
-	ammo_preload = /obj/item/ammo_casing/a12g/silver
-	ammo_type = /obj/item/ammo_casing/a12g/silver
+	ammo_preload = /obj/item/ammo_casing/a12g/silvershot
+	ammo_type = /obj/item/ammo_casing/a12g/silvershot

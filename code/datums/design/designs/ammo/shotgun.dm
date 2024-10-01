@@ -75,6 +75,12 @@
 	design_unlock = DESIGN_UNLOCK_INTRINSIC
 	build_path = /obj/item/ammo_magazine/a12g/clip/silver
 
+/datum/design/ammo/shotgun/clip/dual/silvershot
+	id = "ClipShotgunSilvershot2"
+	lathe_type = LATHE_TYPE_AUTOLATHE
+	design_unlock = DESIGN_UNLOCK_INTRINSIC
+	build_path = /obj/item/ammo_magazine/a12g/clip/silvershot
+
 /datum/design/ammo/shotgun/pouch
 	id = "ShotgunShellPouch"
 	lathe_type = LATHE_TYPE_AUTOLATHE
