@@ -960,7 +960,7 @@ Swimsuits
 		altbodysuitfem_selection[initial(altbodysuitfem_type.name)] = altbodysuitfem_type
 	tweaks += new/datum/loadout_tweak/path(tim_sort(altbodysuitfem_selection, GLOBAL_PROC_REF(cmp_text_asc)))
 
-/datum/loadout_entry/uniform/skinsuit_selection
+/datum/loadout_entry/uniform/skinsuit_striped
 	name = "Skinsuit Striped"
 	path = /obj/item/clothing/under/skinsuit_striped
 
