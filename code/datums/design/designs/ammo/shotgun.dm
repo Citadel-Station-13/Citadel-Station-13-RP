@@ -38,6 +38,12 @@
 	design_unlock = DESIGN_UNLOCK_INTRINSIC
 	build_path = /obj/item/ammo_casing/a12g/silver
 
+/datum/design/ammo/shotgun/silvershot
+	id = "AmmoShotshellSilvershot"
+	lathe_type = LATHE_TYPE_AUTOLATHE
+	design_unlock = DESIGN_UNLOCK_INTRINSIC
+	build_path = /obj/item/ammo_casing/a12g/silvershot
+
 /datum/design/ammo/shotgun/stun
 	id = "AmmoShotshellStun"
 	lathe_type = LATHE_TYPE_AUTOLATHE
