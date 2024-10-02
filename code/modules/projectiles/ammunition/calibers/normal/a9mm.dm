@@ -43,7 +43,7 @@
 	desc = "A 9mm silver bullet casing."
 	icon_state = "small-silver"
 	projectile_type = /obj/projectile/bullet/pistol/silver
-	materials_base = list(MAT_STEEL = 130, MAT_SILVER = 100)
+	materials_base = list(MAT_STEEL = 40, MAT_SILVER = 30)
 
 /obj/item/ammo_magazine/a9mm
 	ammo_caliber = /datum/ammo_caliber/a9mm

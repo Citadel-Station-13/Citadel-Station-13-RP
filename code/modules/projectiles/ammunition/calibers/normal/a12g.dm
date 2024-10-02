@@ -132,7 +132,7 @@
 	desc = "A 12 gauge shell holding a solid silver slug. What are you hunting, werewolves?"
 	icon_state = "silver"
 	projectile_type = /obj/projectile/bullet/shotgun/silver
-	materials_base = list(MAT_STEEL = 360, MAT_SILVER = 240)
+	materials_base = list(MAT_STEEL = 200, MAT_SILVER = 200)
 	worth_intrinsic = 75
 
 /obj/item/ammo_casing/a12g/silvershot
@@ -140,7 +140,7 @@
 	desc = "A 12 gauge shell filled with silver buckshot pellets. What are you hunting, werewolves?"
 	icon_state = "silvershot"
 	projectile_type = /obj/projectile/bullet/pellet/shotgun/silvershot
-	materials_base = list(MAT_STEEL = 360, MAT_SILVER = 240)
+	materials_base = list(MAT_STEEL = 200, MAT_SILVER = 160)
 	worth_intrinsic = 75
 
 /obj/item/ammo_casing/a12g/stake
@@ -149,7 +149,7 @@
 	icon_state = "stake"
 	projectile_type = /obj/projectile/bullet/shotgun/stake
 	materials_base = list(MAT_STEEL = 500)
-	worth_intrinsic = 30
+	worth_intrinsic = 80
 
 //* Magazines - Drums
 

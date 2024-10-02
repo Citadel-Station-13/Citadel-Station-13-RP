@@ -19,7 +19,8 @@
 	desc = "A .357 silver bullet casing."
 	icon_state = "large-white"
 	base_icon_state = "large-white"
-	materials_base = list(MAT_STEEL = 350, MAT_SILVER = 200)
+	projectile_type = /obj/projectile/bullet/pistol/strong/silver
+	materials_base = list(MAT_STEEL = 170, MAT_SILVER = 80)
 
 /obj/item/ammo_casing/a357/stun
 	desc = "A .357 stun bullet casing."

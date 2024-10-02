@@ -22,7 +22,7 @@
 	desc = "A .44 silver bullet casing."
 	icon_state = "large-white"
 	projectile_type = /obj/projectile/bullet/pistol/strong/silver
-	materials_base = list(MAT_STEEL = 350, MAT_SILVER = 200)
+	materials_base = list(MAT_STEEL = 170, MAT_SILVER = 90)
 
 //* Magazines
 

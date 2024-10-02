@@ -58,7 +58,7 @@
 	desc = "A 7.62mm silver bullet casing."
 	icon_state = "large-white"
 	projectile_type = /obj/projectile/bullet/rifle/a762/silver
-	materials_base = list(MAT_STEEL = 300, MAT_SILVER = 150)
+	materials_base = list(MAT_STEEL = 150, MAT_SILVER = 100)
 
 //* Magazines *//
 
