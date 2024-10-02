@@ -3335,6 +3335,7 @@
 #include "code\modules\maps\templates\shuttles\admin_spawn\ert.dm"
 #include "code\modules\maps\templates\shuttles\admin_spawn\geckos.dm"
 #include "code\modules\maps\templates\shuttles\admin_spawn\generic_shuttle.dm"
+#include "code\modules\maps\templates\shuttles\admin_spawn\ghostship.dm"
 #include "code\modules\maps\templates\shuttles\admin_spawn\hybridshuttle.dm"
 #include "code\modules\maps\templates\shuttles\admin_spawn\itglight.dm"
 #include "code\modules\maps\templates\shuttles\admin_spawn\mackerels.dm"

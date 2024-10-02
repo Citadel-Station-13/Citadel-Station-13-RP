@@ -60,3 +60,38 @@
 /obj/item/gun/ballistic/apinae_stinger/update_icon_state()
 	. = ..()
 	icon_state = "apigun-[ammo_magazine ? round(ammo_magazine.amount_remaining(), 2) : "e"]"
+
+/obj/item/gun/ballistic/reconrifle
+	name = "Expeditionary Reconnaissance Rifle"
+	desc = "A bullpup semi-automatic designated marksman's rifle outfitted with a 4x magnification scope. The purple stripe running the length of it's retro beige furniture indicates that this belongs to Nanotrasen Exploration personnel."
+	icon_state = "reconrifle"
+	item_state = "reconrifle"
+	pin = /obj/item/firing_pin/explorer
+	slot_flags = SLOT_BACK
+	fire_sound = 'sound/weapons/Gunshot_heavy.ogg'
+	load_method = MAGAZINE
+	caliber = /datum/ammo_caliber/a7_62mm
+	magazine_type = /obj/item/ammo_magazine/a7_62mm
+	allowed_magazines = list(/obj/item/ammo_magazine/a7_62mm)
+	projectile_type = /obj/projectile/bullet/rifle/a762
+	w_class = WEIGHT_CLASS_HUGE
+	accuracy = 70
+	scoped_accuracy = 100
+	mag_insert_sound = 'sound/weapons/guns/interaction/batrifle_magin.ogg'
+	mag_remove_sound = 'sound/weapons/guns/interaction/batrifle_magout.ogg'
+	heavy = TRUE
+	one_handed_penalty = 20
+
+/obj/item/gun/ballistic/reconrifle/verb/scope()
+	set category = VERB_CATEGORY_OBJECT
+	set name = "Use Scope"
+	set popup_menu = 1
+
+	toggle_scope(2.0)
+
+/obj/item/gun/ballistic/reconrifle/update_icon_state()
+	. = ..()
+	if(ammo_magazine)
+		icon_state = initial(icon_state)
+	else
+		icon_state = "[initial(icon_state)]-empty"
