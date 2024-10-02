@@ -122,8 +122,8 @@
 
 /obj/item/ammo_magazine/a9mm/compact/silver
 	name = "compact magazine (9mm silver)"
-	icon_state = "9x19s-small-1"
-	base_icon_state = "9x19s-small"
+	icon_state = "9x19ag-small-1"
+	base_icon_state = "9x19ag-small"
 	ammo_preload = /obj/item/ammo_casing/a9mm/silver
 
 /obj/item/ammo_magazine/a9mm/compact/double

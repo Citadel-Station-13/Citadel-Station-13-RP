@@ -20,7 +20,7 @@
 
 /obj/item/ammo_casing/a44/silver
 	desc = "A .44 silver bullet casing."
-	icon_state = "large-white"
+	icon_state = "large-silver"
 	projectile_type = /obj/projectile/bullet/pistol/strong/silver
 	materials_base = list(MAT_STEEL = 170, MAT_SILVER = 90)
 
@@ -52,8 +52,8 @@
 
 /obj/item/ammo_magazine/a44/silver
 	name = "magazine (.44 silver)"
-	icon_state = "m44s-7"
-	base_icon_state = "m44s"
+	icon_state = "m44ag-7"
+	base_icon_state = "m44ag"
 	ammo_preload = /obj/item/ammo_casing/a44/silver
 
 /obj/item/ammo_magazine/a44/clip

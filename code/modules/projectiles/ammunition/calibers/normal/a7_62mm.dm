@@ -56,7 +56,7 @@
 
 /obj/item/ammo_casing/a7_62mm/silver
 	desc = "A 7.62mm silver bullet casing."
-	icon_state = "large-white"
+	icon_state = "large-silver"
 	projectile_type = /obj/projectile/bullet/rifle/a762/silver
 	materials_base = list(MAT_STEEL = 150, MAT_SILVER = 100)
 
@@ -81,8 +81,8 @@
 
 /obj/item/ammo_magazine/a7_62mm/silver
 	name = "magazine (7.62mm silver)"
-	icon_state = "m762s-1"
-	base_icon_state = "m762s"
+	icon_state = "m762ag-1"
+	base_icon_state = "m762ag"
 	ammo_preload = /obj/item/ammo_casing/a7_62mm/silver
 
 /obj/item/ammo_magazine/a7_62mm/empty

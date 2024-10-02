@@ -54,7 +54,7 @@
 /obj/item/ammo_casing/a45/silver
 	name = ".45 silver round"
 	desc = "A .45 silver bullet casing."
-	icon_state = "large-white"
+	icon_state = "large-silver"
 	projectile_type = /obj/projectile/bullet/pistol/silver
 	materials_base = list(MAT_STEEL = 60, MAT_SILVER = 50)
 
@@ -99,8 +99,8 @@
 
 /obj/item/ammo_magazine/a45/silver
 	name = "magazine (.45 silver)"
-	icon_state = "45s-7"
-	base_icon_state = "45s"
+	icon_state = "45ag-7"
+	base_icon_state = "45ag"
 	ammo_preload = /obj/item/ammo_casing/a45/silver
 
 /obj/item/ammo_magazine/a45/uzi
