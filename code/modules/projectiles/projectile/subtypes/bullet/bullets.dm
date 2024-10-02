@@ -24,8 +24,8 @@
 	embed_chance = -1
 
 /obj/projectile/bullet/pistol/silver
-	damage_force = 15
-	SA_bonus_damage = 25 // 40 total against demons
+	damage_force = 18 // 10% less than base
+	SA_bonus_damage = 8 // ~1.3x base to vulnerable
 	SA_vulnerability = MOB_CLASS_DEMONIC | MOB_CLASS_ABERRATION
 	embed_chance = -1
 	holy = TRUE
@@ -49,8 +49,8 @@
 	embed_chance = -1
 
 /obj/projectile/bullet/pistol/medium/silver
-	damage_force = 15
-	SA_bonus_damage = 45 // 60 total against demons
+	damage_force = 22 // ~10% less than base
+	SA_bonus_damage = 11 // ~1.3x base to vulnerable
 	SA_vulnerability = MOB_CLASS_DEMONIC | MOB_CLASS_ABERRATION
 	embed_chance = -1
 	holy = TRUE
@@ -73,8 +73,8 @@
 
 /obj/projectile/bullet/pistol/strong/silver //Because all Demons need to die
 	fire_sound = 'sound/weapons/weaponsounds_heavypistolshot.ogg'
-	damage_force = 40
-	SA_bonus_damage = 80 // 120 total against demons
+	damage_force = 54 // 10% less than base
+	SA_bonus_damage = 24 // 1.3x base to vulnerable
 	SA_vulnerability = MOB_CLASS_DEMONIC | MOB_CLASS_ABERRATION
 	embed_chance = -1
 	holy = TRUE
@@ -140,8 +140,8 @@
 /obj/projectile/bullet/pellet/shotgun/silvershot
 	name = "shrapnel"
 	fire_sound = 'sound/weapons/weaponsounds_shotgunshot.ogg'
-	damage_force = 10
-	SA_bonus_damage = 16 // Potential 156 Damage against demons at point blank.
+	damage_force = 12 // ~10% less than buckshot
+	SA_bonus_damage = 5 // ~1.3x buckshot to vulnerable
 	SA_vulnerability = MOB_CLASS_DEMONIC | MOB_CLASS_ABERRATION
 	embed_chance = -1
 	pellets = 6
@@ -150,19 +150,18 @@
 /obj/projectile/bullet/shotgun/silver
 	name = "slug"
 	fire_sound = 'sound/weapons/weaponsounds_shotgunshot.ogg'
-	damage_force = 50 // Silver would be lighter than a lead slug
-	armor_penetration = 15
-	SA_bonus_damage = 16
+	damage_force = 45 // 10% less than base
+	armor_penetration = 15 // same as base
+	SA_bonus_damage = 20 // 1.3x base to vulnerable
 	SA_vulnerability = MOB_CLASS_DEMONIC | MOB_CLASS_ABERRATION
 	holy = TRUE
 
-// This should be considerably better than silver and unavailable through normal means
-/obj/projectile/bullet/shotgun/stake
+/obj/projectile/bullet/shotgun/stake // adminspawn only
 	name = "stake"
 	fire_sound = 'sound/weapons/weaponsounds_shotgunshot.ogg'
 	damage_force = 50
 	armor_penetration = 15
-	SA_bonus_damage = 16
+	SA_bonus_damage = 30
 	SA_vulnerability = MOB_CLASS_DEMONIC | MOB_CLASS_ABERRATION
 	holy = TRUE
 
@@ -213,7 +212,7 @@
 	damage_force = 30
 	armor_penetration = 50 // At 30 or more armor, this will do more damage than standard rounds.
 
-/obj/projectile/bullet/rifle/a762/ap/silver
+/obj/projectile/bullet/rifle/a762/ap/silver // Only used by the Service Weapon
 	damage_force = 30
 	armor_penetration = 50 // At 30 or more armor, this will do more damage than standard rounds.
 	SA_bonus_damage = 30 // 60 total against demons
@@ -238,9 +237,9 @@
 	embed_chance = -1
 	speed = 25 * WORLD_ICON_SIZE
 
-/obj/projectile/bullet/rifle/a762/silver // Hunting Demons with bolt action rifles.
-	damage_force = 20
-	SA_bonus_damage = 50 // 70 total on demons.
+/obj/projectile/bullet/rifle/a762/silver
+	damage_force = 31 //~10% less than base
+	SA_bonus_damage = 15 // ~1.3x base to vulnerable
 	SA_vulnerability = MOB_CLASS_DEMONIC | MOB_CLASS_ABERRATION
 	holy = TRUE
 
@@ -336,9 +335,9 @@
 	speed = 8.3 * WORLD_ICON_SIZE
 	armor_penetration = -50
 
-/obj/projectile/bullet/musket/silver // What its a classic
-	damage_force = 25
-	SA_bonus_damage = 75
+/obj/projectile/bullet/musket/silver
+	damage_force = 54 // 10% less than base
+	SA_bonus_damage = 24 // 1.3x base to vulnerable
 	SA_vulnerability = MOB_CLASS_DEMONIC | MOB_CLASS_ABERRATION
 	embed_chance = -1
 	holy = TRUE
@@ -349,8 +348,8 @@
 	pellet_loss = 1.5 / WORLD_ICON_SIZE
 
 /obj/projectile/bullet/pellet/blunderbuss/silver
-	damage_force = 5
-	SA_bonus_damage = 15
+	damage_force = 9 // 10% less than base
+	SA_bonus_damage = 4 // 1.3x base to vulnerable
 	SA_vulnerability = MOB_CLASS_DEMONIC | MOB_CLASS_ABERRATION
 	embed_chance = -1
 	holy = TRUE
@@ -368,7 +367,7 @@
 
 /obj/projectile/bullet/pellet/heavy_shotgun/silver
 	damage_force = 3
-	SA_bonus_damage = 3
+	SA_bonus_damage = 1
 	SA_vulnerability = MOB_CLASS_DEMONIC | MOB_CLASS_ABERRATION
 	holy = TRUE
 
