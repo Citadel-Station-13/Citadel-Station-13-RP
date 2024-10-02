@@ -1,11 +1,13 @@
 /**
- * maps
- * clusters of zlevels, basically.
+ * # /datum/map
  *
- * when maps are loaded, areas are cached together to preserve byond-like behavior.
+ * * clusters of zlevels, basically.
+ * * when maps are loaded, areas are cached together to preserve byond-like behavior.
  */
 /datum/map
 	abstract_type = /datum/map
+
+	//* Core *//
 	/// id - must be unique
 	var/id
 	/// mangling id override
@@ -13,6 +15,26 @@
 	/// force mangling ids of levels to be the same
 	/// you usually want this to be on!
 	var/levels_match_mangling_id = TRUE
+
+	//* Overmaps *//
+	/// our overmap initializer
+	///
+	/// * if specified, our overmap location will be a /datum/overmap_location/struct
+	/// * will not be re-fired if overmaps side is what caused us to be loaded. remember,
+	///   /datum/overmap_initializer is a bi-directional binding to and from /datum/map!
+	var/datum/overmap_initializer/overmap_initializer
+	#warn impl
+
+	//* Structs *//
+	/// automatically make a struct on load
+	var/create_struct = TRUE
+	/// use a given struct id instead of randomly genearting one
+	///
+	/// * this ID will still be mangled
+	/// * anything using direct struct ID references will also need to be run through the mangling in-code.
+	var/create_struct_id
+	#warn impl
+
 	/// override map id for persistence so two maps are considered the same
 	/// two maps should **never** be loaded at the same time with the same persistence ID!
 	var/persistence_id
@@ -195,8 +217,6 @@
 	var/list/admin_levels = list()   // Z-levels for admin functionality (Centcom, shuttle transit, etc)
 	var/list/contact_levels = list() // Z-levels that can be contacted from the station, for eg announcements
 	var/list/player_levels = list()  // Z-levels a character can typically reach
-	var/list/sealed_levels = list()  // Z-levels that don't allow random transit at edge
-	var/list/xenoarch_exempt_levels = list()	//Z-levels exempt from xenoarch finds and digsites spawning.
 	// End Static Lists
 
 	// Z-levels available to various consoles, such as the crew monitor. Defaults to station_levels if unset.
@@ -353,11 +373,6 @@
 /datum/map/station/proc/get_network_access(var/network)
 	return 0
 
-// By default transition randomly to another zlevel
-/datum/map/station/proc/get_transit_zlevel(current_z_level)
-	. = SSmapping.crosslinked_levels() - current_z_level
-	return SAFEPICK(.)
-
 /datum/map/station/proc/get_empty_zlevel()
 	if(empty_levels == null)
 		var/datum/map_level/level = SSmapping.allocate_level()
@@ -380,12 +395,14 @@
 
 		// Just the sector we're in
 		if(!long_range || (om_range < 0))
-			return O.map_z.Copy()
+			return O.location?.get_z_indices() || list()
 
 		// Otherwise every sector we're on top of
 		var/list/connections = list()
 		for(var/obj/overmap/entity/visitable/V in bounds(O, om_range))
-			connections |= V.map_z	// Adding list to list adds contents
+			var/list/levels = V.location?.get_z_indices()
+			if(levels)
+				connections |= levels
 		return connections
 
 	// Traditional behavior

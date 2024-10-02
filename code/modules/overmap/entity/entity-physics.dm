@@ -1,3 +1,6 @@
+//* This file is explicitly licensed under the MIT license. *//
+//* Copyright (c) 2024 Citadel Station Developers           *//
+
 /**
  * (re)initialize physics
  *
@@ -19,6 +22,10 @@
 /obj/overmap/entity/process(delta_time)
 	physics_tick(delta_time)
 
+/**
+ * @params
+ * * dt - time passed in seconds
+ */
 /obj/overmap/entity/proc/physics_tick(dt)
 	if(!overmap || !isturf(loc))
 		initialize_physics()
@@ -47,6 +54,12 @@
 	if(isnull(vy))
 		vel_y += vy
 
+	var/interpolate_limiter
+	if((interpolate_limiter = OVERMAP_DIST_TO_PIXEL(sqrt(vel_x ** 2 + vel_y ** 2))) > SSovermap_physics.global_interpolate_limit)
+		interpolate_limiter = SSovermap_physics.global_interpolate_limit / interpolate_limiter
+		vel_x *= interpolate_limiter
+		vel_y *= interpolate_limiter
+
 	if(QUANTIZE_OVERMAP_DISTANCE(vel_x) || QUANTIZE_OVERMAP_DISTANCE(vel_y))
 		activate_physics()
 	else
@@ -59,6 +72,12 @@
 		vel_x = vx
 	if(!isnull(vy))
 		vel_y = vy
+
+	var/interpolate_limiter
+	if((interpolate_limiter = OVERMAP_DIST_TO_PIXEL(sqrt(vel_x ** 2 + vel_y ** 2))) > SSovermap_physics.global_interpolate_limit)
+		interpolate_limiter = SSovermap_physics.global_interpolate_limit / interpolate_limiter
+		vel_x *= interpolate_limiter
+		vel_y *= interpolate_limiter
 
 	if(QUANTIZE_OVERMAP_DISTANCE(vel_x) || QUANTIZE_OVERMAP_DISTANCE(vel_y))
 		activate_physics()

@@ -11,15 +11,41 @@ SUBSYSTEM_DEF(overmaps)
 	/// (eventually we'll have proper bindings but for now, uh, this is how it is!)
 	var/const/default_overmap_id = "main"
 
-	//* Global Tuning *//
-
+	//*                    Global Tuning                       *//
+	//* Balance tuning goes in here; not sim                   *//
+	//* Example: 'thrust mult' is balance, 'sim speed' is sim. *//
 	/// applied to all ship thrust
 	var/global_thrust_multiplier = 2
+
+	//* Level System *//
+
+	/// Z-level ownership lookup
+	///
+	/// * This is an indexed list, with the entry being the owning /datum/overmap_location of a level, if any.
+	/// * This is the owning locations of levels.
+	/// * Non-owning locations aren't in here.
+	/// * A level can only be owned by one location at a time.
+	/// * Automatically managed by /datum/overmap_location registration
+	/// * Attempting to lock a level already locked by another level is an immediate runtime error.
+	///
+	/// todo: should locations be registered in global list when 'active'?
+	///       this would let us abstract handling away from entity entirely.
+	///
+	/// These axioms must be true at all times:
+	/// * A level is locked (registered here) if it's enclosed by an overmaps entity.
+	/// * A level is not locked if it's enclosed by no overmaps entity.
+	/// * A level is locked / unlocked as a location is assigned / un-assigned from an entity.
+	var/static/list/datum/overmap_location/location_enclosed_levels = list()
 
 /datum/controller/subsystem/overmaps/Initialize()
 	make_default_overmap()
 	rebuild_helm_computers()
 	return ..()
+
+/datum/controller/subsystem/overmaps/on_max_z_changed(old_z_count, new_z_count)
+	. = ..()
+	if(length(location_enclosed_levels) < new_z_count)
+		location_enclosed_levels.len = new_z_count
 
 //! legacy code below
 
@@ -91,6 +117,41 @@ SUBSYSTEM_DEF(overmaps)
 */
 
 //! end
+
+//* Overmap Entity *//
+
+/**
+ * Gets entity owning a level.
+ *
+ * * Something on a space turf outside of a shuttle in a freeflight level has its level
+ *   owned by the 'host' shuttle of that level.
+ * * A landed shuttle has its level owned by, obviously, the entity owning that level.
+ *
+ * @params
+ * * target - an /atom, or a z-index. atoms will be resolved to z-level.
+ */
+/datum/controller/subsystem/overmaps/proc/get_enclosing_overmap_entity(target)
+	if(isatom(target))
+		target = get_turf(target)?:z
+	if(!target)
+		return
+
+	#warn impl
+
+/**
+ * Gets entity the atom is physically on.
+ *
+ * * Something on a space turf outside of a shuttle in a shuttle interdiction / freeflight level
+ *   is on no entity, because it's.. physically not on an entity!
+ * * A landed shuttle has its contents owned by itself.
+ *
+ * @params
+ * * target - an /atom
+ */
+/datum/controller/subsystem/overmaps/proc/get_overmap_entity(atom/target)
+	#warn impl
+
+// todo: entity round-persistent-compatible GUID
 
 //* Overmap Management *//
 

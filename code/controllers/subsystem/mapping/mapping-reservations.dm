@@ -4,39 +4,6 @@
 /**
  * turf reservation system
  */
-/datum/controller/subsystem/mapping
-	/// reserved levels allocated
-	var/static/reserved_level_count = 0
-	/// reserved turfs allowed - we can over-allocate this if we're only going to be slightly over and can always allocate atleast one level.
-	var/static/reserved_turfs_max = 192 * 192 * 3
-	/// allocated space reservations
-	var/static/list/datum/turf_reservation/reservations = list()
-	/// list of reserved z-indices for fast access
-	var/static/list/reserve_levels = list()
-	/// doing some blocking op on reservation system
-	var/static/reservation_blocking_op = FALSE
-	/// singleton area holding all free reservation turfs
-	var/static/area/reservation_unused/reservation_unallocated_area = new
-	/// spatial grid of turf reservations. the owner of a chunk is the bottom left tile's owner.
-	///
-	/// this is a list with length of world.maxz, with the actual spatial grid list being at the index of the z
-	/// e.g. to grab a reserved level's lookup, do `reservation_spatia_lookups[z_index]`
-	///
-	/// * null means that a level isn't a reservation level
-	/// * this also means that we can't zclear / 'free' reserved levels; they're effectively immovable due to this datastructure
-	/// * if it is a reserved level, it returns the spatial grid
-	/// * to get a chunk, do `spatial_lookup[ceil(where.x / TURF_CHUNK_RESOLUTION) + (ceil(where.y / TURF_CHUNK_RESOLUTION) - 1) * ceil(world.maxx / TURF_CHUNK_RESOLUTION)]`
-	/// * being in border counts as being in the reservation. you won't be soon, though.
-	var/static/list/reservation_spatial_lookups = list()
-
-/datum/controller/subsystem/mapping/on_max_z_changed(old_z_count, new_z_count)
-	. = ..()
-	if(length(reservation_spatial_lookups) < new_z_count)
-		reservation_spatial_lookups.len = new_z_count
-
-/datum/controller/subsystem/mapping/Recover()
-	. = ..()
-	reservation_blocking_op = FALSE
 
 /**
  * allocate a new reservation level

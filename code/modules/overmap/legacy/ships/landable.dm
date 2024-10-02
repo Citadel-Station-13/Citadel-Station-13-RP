@@ -62,12 +62,6 @@
 	register_z_levels()
 	testing("Setup overmap location for \"[name]\" containing Z [english_list(map_z)]")
 
-/obj/overmap/entity/visitable/ship/landable/get_areas()
-	var/datum/shuttle/shuttle_datum = SSshuttle.shuttles[shuttle]
-	if(!shuttle_datum)
-		return list()
-	return shuttle_datum.find_childfree_areas()
-
 /obj/overmap/entity/visitable/ship/landable/populate_sector_objects()
 	..()
 	var/datum/shuttle/shuttle_datum = SSshuttle.shuttles[shuttle]
