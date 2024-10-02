@@ -72,7 +72,7 @@
 /obj/item/gunbox/marksman/attack_self(mob/user, datum/event_args/actor/actor)
 	var/list/options = list()
 	options["Marksman Energy Rifle"] = list(/obj/item/gun/energy/sniperrifle/locked)
-	options["M1A Garand"] = list(/obj/item/gun/ballistic/garand/sniper, /obj/item/storage/belt/security/tactical/bandolier, /obj/item/ammo_magazine/a7_62mm/garand/sniperhunter, /obj/item/ammo_magazine/a7_62mm/garand/sniperhunter, /obj/item/ammo_magazine/a7_62mm/garand/sniperhunter, /obj/item/ammo_magazine/a7_62mm/garand/sniperhunter, /obj/item/ammo_magazine/a7_62mm/garand/sniperhunter, /obj/item/ammo_magazine/a7_62mm/garand/sniperhunter, /obj/item/ammo_magazine/a7_62mm/garand/sniperhunter) // 7 clips, 56 rounds
+	options["Expeditionary Reconnaissance Rifle"] = list(/obj/item/gun/ballistic/reconrifle, /obj/item/storage/belt/security/tactical/bandolier, /obj/item/ammo_magazine/a7_62mm, /obj/item/ammo_magazine/a7_62mm, /obj/item/ammo_magazine/a7_62mm, /obj/item/ammo_magazine/a7_62mm, /obj/item/ammo_magazine/a7_62mm, /obj/item/ammo_magazine/a7_62mm, /obj/item/ammo_magazine/a7_62mm, /obj/item/ammo_magazine/a7_62mm, /obj/item/ammo_magazine/a7_62mm, /obj/item/ammo_magazine/a7_62mm) // 10x 10rnd mags (max belt carry capacity)
 	var/choice = input(user,"Would you prefer a ballistic rifle or a laser?") as null|anything in options
 	if(src && choice)
 		var/list/things_to_spawn = options[choice]
