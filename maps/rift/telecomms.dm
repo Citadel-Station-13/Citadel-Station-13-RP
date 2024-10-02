@@ -39,7 +39,7 @@
 		"rus_relay", "rud_relay", "rbl_relay", "rbm_relay", "rbh_relay",
 		"c_relay", "m_relay", "r_relay", "sci_o_relay", "ud_relay",
 		"science", "medical", "supply", "service", "common", "command", "engineering", "security", "explorer", "unused",
-		"hb_relay", "receiverA", "broadcasterA"
+		"hb_relay", "receiverA", "broadcasterA", "surt_relay"
 	)
 
 /obj/machinery/telecomms/receiver/preset_right/rift
