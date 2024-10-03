@@ -197,9 +197,6 @@
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/space)
-"ax" = (
-/turf/simulated/wall/classg,
-/area/space)
 "ay" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
@@ -483,21 +480,6 @@
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/locker_room)
-"bt" = (
-/obj/machinery/access_button{
-	command = "cycle_int";
-	frequency = 1379;
-	master_tag = "sec_shuttle_airlock";
-	name = "interior access button";
-	pixel_x = -26;
-	pixel_y = 24;
-	req_one_access = list(1,2)
-	},
-/obj/machinery/atmospherics/pipe/manifold/visible{
-	dir = 8
-	},
-/turf/simulated/floor/plating,
-/area/space)
 "bv" = (
 /obj/machinery/portable_atmospherics/canister/oxygen,
 /turf/simulated/floor/plating,
@@ -1054,20 +1036,6 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/space)
-"dA" = (
-/obj/structure/table/steel,
-/obj/machinery/embedded_controller/radio/airlock/airlock_controller{
-	id_tag = "sec_shuttle_airlock";
-	pixel_y = 3;
-	req_access = list();
-	req_one_access = list(1,2);
-	tag_airpump = "sec_shuttle_pump";
-	tag_chamber_sensor = "sec_shuttle_sensor";
-	tag_exterior_door = "sec_shuttle_outer";
-	tag_interior_door = "sec_shuttle_inner"
-	},
-/turf/simulated/floor/tiled,
-/area/space)
 "dB" = (
 /turf/simulated/wall/r_wall/prepainted,
 /area/space)
@@ -1414,12 +1382,6 @@
 	dir = 8
 	},
 /turf/simulated/floor/plating,
-/area/space)
-"eK" = (
-/obj/effect/floor_decal/industrial/danger{
-	dir = 5
-	},
-/turf/simulated/floor/tiled/old_cargo/gray,
 /area/space)
 "eP" = (
 /obj/effect/floor_decal/corner/lightorange/bordercee{
@@ -2974,22 +2936,6 @@
 /obj/item/book/manual/supermatter_engine,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/space)
-"kb" = (
-/obj/machinery/door/blast/regular{
-	density = 0;
-	icon_state = "pdoor0";
-	id = "security_lockdown";
-	name = "Security Blast Doors";
-	opacity = 0
-	},
-/obj/structure/cable/green,
-/obj/machinery/door/firedoor/glass{
-	dir = 8
-	},
-/obj/spawner/window/low_wall/borosillicate/reinforced/full,
-/obj/effect/paint_stripe/darkred,
-/turf/simulated/floor,
-/area/space)
 "kc" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 1
@@ -3372,17 +3318,6 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techmaint,
-/area/space)
-"lF" = (
-/obj/machinery/door/firedoor/glass,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/door/airlock/glass/security{
-	name = "Shuttle Bay Control Room";
-	req_one_access = null
-	},
-/obj/map_helper/access_helper/airlock/station/security/brig,
-/turf/simulated/floor/tiled,
 /area/space)
 "lK" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -4070,12 +4005,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/engineering)
-"ow" = (
-/obj/structure/bed/chair/office/dark{
-	dir = 8
-	},
-/turf/simulated/floor/tiled,
-/area/space)
 "oy" = (
 /obj/machinery/atmospherics/component/unary/vent_pump{
 	dir = 1;
@@ -4357,19 +4286,6 @@
 /obj/machinery/suit_cycler/engineering,
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/locker_room)
-"pv" = (
-/obj/machinery/door/airlock/glass_external{
-	frequency = 1379;
-	icon_state = "door_locked";
-	id_tag = "sec_shuttle_inner";
-	locked = 1;
-	name = "Shuttle Internal Access";
-	req_one_access = null
-	},
-/obj/machinery/atmospherics/pipe/simple/visible,
-/obj/map_helper/access_helper/airlock/station/external_airlock,
-/turf/simulated/floor/tiled/old_cargo/gray,
-/area/space)
 "pw" = (
 /obj/structure/cable/green{
 	icon_state = "1-2"
@@ -4726,22 +4642,6 @@
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock,
 /turf/simulated/floor/tiled/white,
-/area/space)
-"qN" = (
-/obj/machinery/door/blast/regular{
-	density = 0;
-	icon_state = "pdoor0";
-	id = "security_lockdown";
-	name = "Security Blast Doors";
-	opacity = 0
-	},
-/obj/structure/cable/green,
-/obj/machinery/door/firedoor/glass{
-	dir = 8
-	},
-/obj/effect/paint_stripe/darkred,
-/obj/spawner/window/low_wall/borosillicate/reinforced/full,
-/turf/simulated/floor,
 /area/space)
 "qO" = (
 /obj/effect/floor_decal/techfloor/orange{
@@ -5711,12 +5611,6 @@
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/space)
-"uc" = (
-/obj/effect/floor_decal/industrial/danger{
-	dir = 6
-	},
-/turf/simulated/floor/tiled/old_cargo/gray,
-/area/space)
 "ue" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
@@ -6204,26 +6098,6 @@
 "vN" = (
 /obj/machinery/floodlight,
 /obj/effect/floor_decal/industrial/outline/yellow,
-/turf/simulated/floor/plating,
-/area/space)
-"vO" = (
-/obj/machinery/shield_diffuser,
-/obj/machinery/door/airlock/glass_external{
-	frequency = 1379;
-	icon_state = "door_locked";
-	id_tag = "sec_shuttle_outer";
-	locked = 1;
-	name = "Shuttle Exterior Access";
-	req_one_access = null
-	},
-/obj/machinery/door/blast/regular{
-	density = 0;
-	icon_state = "pdoor0";
-	id = "security_lockdown";
-	name = "Security Blast Doors";
-	opacity = 0
-	},
-/obj/map_helper/access_helper/airlock/station/external_airlock,
 /turf/simulated/floor/plating,
 /area/space)
 "vP" = (
@@ -6970,9 +6844,6 @@
 /obj/effect/floor_decal/industrial/outline/red,
 /turf/simulated/floor/tiled/dark,
 /area/engineering/engine_gas)
-"xW" = (
-/turf/simulated/wall/r_wall/prepainted/security,
-/area/space)
 "xX" = (
 /turf/simulated/wall/r_wall/prepainted/engineering/atmos,
 /area/engineering/atmos)
@@ -7416,17 +7287,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/space)
-"zw" = (
-/obj/effect/floor_decal/industrial/danger{
-	dir = 10
-	},
-/obj/machinery/light{
-	dir = 8
-	},
-/obj/machinery/mech_recharger,
-/obj/vehicle/sealed/mecha/combat/fighter/baron/sec/loaded,
-/turf/simulated/floor/tiled/old_cargo/gray,
-/area/space)
 "zx" = (
 /obj/structure/bed/chair/sofa/right,
 /turf/simulated/floor/plating,
@@ -7655,12 +7515,6 @@
 	},
 /obj/machinery/portable_atmospherics/canister/phoron,
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/space)
-"Ay" = (
-/obj/effect/floor_decal/industrial/danger{
-	dir = 9
-	},
-/turf/simulated/floor/tiled/old_cargo/gray,
 /area/space)
 "Az" = (
 /obj/structure/catwalk,
@@ -7919,17 +7773,6 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/space)
-"By" = (
-/obj/machinery/door/firedoor/glass{
-	dir = 8
-	},
-/obj/machinery/door/airlock/glass/security{
-	name = "Solitary Confinement 1";
-	req_one_access = null
-	},
-/obj/map_helper/access_helper/airlock/station/security/brig,
-/turf/simulated/floor/tiled/dark,
-/area/space)
 "Bz" = (
 /obj/structure/sign/warning{
 	name = "\improper DANGER: ENGINE EXHAUST"
@@ -8096,12 +7939,6 @@
 "BV" = (
 /turf/simulated/floor/airless/ceiling,
 /area/engineering/locker_room)
-"BW" = (
-/obj/machinery/atmospherics/component/unary/vent_pump/on{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/dark,
-/area/space)
 "BY" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/yellow{
 	dir = 4
@@ -8682,14 +8519,6 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/space)
-"Ej" = (
-/obj/effect/floor_decal/industrial/danger{
-	dir = 10
-	},
-/obj/machinery/mech_recharger,
-/obj/vehicle/sealed/mecha/combat/fighter/baron/sec/loaded,
-/turf/simulated/floor/tiled/old_cargo/gray,
 /area/space)
 "Ek" = (
 /obj/structure/table/reinforced,
@@ -9812,12 +9641,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/space)
-"HQ" = (
-/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/dark,
-/area/space)
 "HU" = (
 /obj/machinery/telecomms/bus/preset_three,
 /obj/machinery/light/small{
@@ -10503,15 +10326,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/space)
 "KC" = (
-/obj/effect/floor_decal/industrial/danger{
-	dir = 5
-	},
-/obj/item/radio/intercom{
-	dir = 1;
-	name = "Station Intercom (General)";
-	pixel_y = 26
-	},
-/turf/simulated/floor/tiled/old_cargo/gray,
+/turf/space/basic,
 /area/space)
 "KE" = (
 /turf/simulated/floor/airless/ceiling,
@@ -11355,10 +11170,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/space)
-"NB" = (
-/obj/machinery/door/blast/regular,
-/turf/simulated/floor/plating,
-/area/space)
 "NF" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -11661,16 +11472,6 @@
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled,
-/area/space)
-"OB" = (
-/obj/effect/floor_decal/industrial/danger{
-	dir = 9
-	},
-/obj/machinery/air_alarm{
-	dir = 4;
-	pixel_x = -22
-	},
-/turf/simulated/floor/tiled/old_cargo/gray,
 /area/space)
 "OC" = (
 /obj/machinery/button/remote/blast_door{
@@ -13161,21 +12962,6 @@
 /area/engineering/atmos)
 "Up" = (
 /obj/item/storage/box/glasses/mug,
-/turf/simulated/floor/plating,
-/area/space)
-"Uq" = (
-/obj/machinery/meter,
-/obj/machinery/atmospherics/pipe/manifold/hidden{
-	dir = 8
-	},
-/obj/machinery/camera/network/security{
-	dir = 4
-	},
-/obj/machinery/airlock_sensor{
-	id_tag = "sec_shuttle_sensor";
-	pixel_x = -24;
-	pixel_y = 10
-	},
 /turf/simulated/floor/plating,
 /area/space)
 "Us" = (
@@ -23647,197 +23433,6 @@ TP
 "}
 (47,1,1) = {"
 TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-kw
-QB
-QB
-QB
-kw
-DU
-IX
-ol
-ut
-HH
-LZ
-Qd
-zC
-oh
-Bq
-Bq
-Bq
-Bq
-Bq
-Bq
-Bq
-Bq
-Bq
-Bq
-Bq
-Bq
-Bq
-Bq
-Bq
-Bq
-Bq
-Bq
-Bq
-Bq
-cD
-QB
-QB
-QB
-QB
-QB
-dB
-QB
-kw
-kw
-kw
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
 "}
 (48,1,1) = {"
 TP
@@ -24221,7 +23816,7 @@ TP
 TP
 TP
 TP
-ax
+TP
 TP
 TP
 TP
@@ -24802,7 +24397,7 @@ TP
 TP
 TP
 TP
-ax
+KC
 TP
 TP
 TP
@@ -33493,19 +33088,19 @@ TP
 TP
 TP
 TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
 TP
 TP
 TP
@@ -33687,19 +33282,19 @@ TP
 TP
 TP
 TP
-TP
-TP
-TP
-TP
-TP
-TP
-xW
-xW
-xW
-xW
-TP
-TP
-TP
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
 TP
 TP
 TP
@@ -33881,19 +33476,19 @@ TP
 TP
 TP
 TP
-TP
-TP
-TP
-TP
-TP
-TP
-xW
-OB
-zw
-NB
-TP
-TP
-TP
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
 TP
 TP
 TP
@@ -34075,19 +33670,19 @@ TP
 TP
 TP
 TP
-TP
-xW
-By
-xW
-xW
-xW
-xW
 KC
-uc
-NB
-TP
-TP
-TP
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
 TP
 TP
 TP
@@ -34269,19 +33864,19 @@ TP
 TP
 TP
 TP
-TP
-xW
-ln
-pv
-bt
-Uq
-vO
-HQ
-BW
-NB
-TP
-TP
-TP
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
 TP
 TP
 TP
@@ -34463,19 +34058,19 @@ TP
 TP
 TP
 TP
-TP
-xW
-lF
-qN
-qN
-qN
-kb
-Ay
-Ej
-NB
-TP
-TP
-TP
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
 TP
 TP
 TP
@@ -34657,19 +34252,19 @@ TP
 TP
 TP
 TP
-TP
-xW
-QB
-QB
-ow
-dA
-qN
-eK
-uc
-NB
-TP
-TP
-TP
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
 TP
 TP
 TP
@@ -34851,19 +34446,19 @@ TP
 TP
 TP
 TP
-TP
-xW
-By
-xW
-xW
-xW
-xW
-xW
-xW
-xW
-TP
-TP
-TP
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
 TP
 TP
 TP
@@ -35045,19 +34640,19 @@ TP
 TP
 TP
 TP
-TP
-xW
-QB
-QB
-QB
-QB
-xW
-OB
-zw
-NB
-TP
-TP
-TP
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
 TP
 TP
 TP
@@ -35239,19 +34834,19 @@ TP
 TP
 TP
 TP
-TP
-xW
-By
-xW
-xW
-xW
-xW
 KC
-uc
-NB
-TP
-TP
-TP
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
 TP
 TP
 TP
@@ -35433,19 +35028,19 @@ TP
 TP
 TP
 TP
-TP
-xW
-ln
-pv
-bt
-Uq
-vO
-HQ
-BW
-NB
-TP
-TP
-TP
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
 TP
 TP
 TP
@@ -35627,19 +35222,19 @@ TP
 TP
 TP
 TP
-TP
-xW
-lF
-qN
-qN
-qN
-kb
-Ay
-Ej
-NB
-TP
-TP
-TP
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
 TP
 TP
 TP
@@ -35821,19 +35416,19 @@ TP
 TP
 TP
 TP
-TP
-xW
-QB
-QB
-ow
-dA
-qN
-eK
-uc
-NB
-TP
-TP
-TP
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
 TP
 TP
 TP
@@ -36015,19 +35610,19 @@ TP
 TP
 TP
 TP
-TP
-xW
-By
-xW
-xW
-xW
-xW
-xW
-xW
-xW
-TP
-TP
-TP
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
 TP
 TP
 TP
@@ -36209,19 +35804,19 @@ TP
 TP
 TP
 TP
-TP
-xW
-QB
-QB
-QB
-QB
-xW
-OB
-zw
-NB
-TP
-TP
-TP
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
 TP
 TP
 TP
@@ -36403,19 +35998,19 @@ TP
 TP
 TP
 TP
-TP
-xW
-By
-xW
-xW
-xW
-xW
 KC
-uc
-NB
-TP
-TP
-TP
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
 TP
 TP
 TP
@@ -36597,19 +36192,19 @@ TP
 TP
 TP
 TP
-TP
-xW
-ln
-pv
-bt
-Uq
-vO
-HQ
-BW
-NB
-TP
-TP
-TP
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
 TP
 TP
 TP
@@ -36791,19 +36386,19 @@ TP
 TP
 TP
 TP
-TP
-xW
-lF
-qN
-qN
-qN
-kb
-Ay
-Ej
-NB
-TP
-TP
-TP
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
 TP
 TP
 TP
@@ -36985,19 +36580,19 @@ TP
 TP
 TP
 TP
-TP
-xW
-QB
-QB
-ow
-dA
-qN
-eK
-uc
-NB
-TP
-TP
-TP
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
 TP
 TP
 TP
@@ -37179,19 +36774,19 @@ TP
 TP
 TP
 TP
-TP
-xW
-By
-xW
-xW
-xW
-xW
-xW
-xW
-xW
-TP
-TP
-TP
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
 TP
 TP
 TP
@@ -37373,19 +36968,19 @@ TP
 TP
 TP
 TP
-TP
-xW
-QB
-QB
-QB
-QB
-xW
-OB
-zw
-NB
-TP
-TP
-TP
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
 TP
 TP
 TP
@@ -37567,19 +37162,19 @@ TP
 TP
 TP
 TP
-TP
-xW
-By
-xW
-xW
-xW
-xW
 KC
-uc
-NB
-TP
-TP
-TP
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
 TP
 TP
 TP
@@ -37761,19 +37356,19 @@ TP
 TP
 TP
 TP
-TP
-xW
-ln
-pv
-bt
-Uq
-vO
-HQ
-BW
-NB
-TP
-TP
-TP
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
 TP
 TP
 TP
@@ -37955,19 +37550,19 @@ TP
 TP
 TP
 TP
-TP
-xW
-lF
-qN
-qN
-qN
-kb
-Ay
-Ej
-NB
-TP
-TP
-TP
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
 TP
 TP
 TP
@@ -38149,19 +37744,19 @@ TP
 TP
 TP
 TP
-TP
-xW
-QB
-QB
-ow
-dA
-qN
-eK
-uc
-NB
-TP
-TP
-TP
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
 TP
 TP
 TP
@@ -38343,19 +37938,19 @@ TP
 TP
 TP
 TP
-TP
-xW
-By
-xW
-xW
-xW
-xW
-xW
-xW
-xW
-TP
-TP
-TP
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
 TP
 TP
 TP
@@ -38537,19 +38132,19 @@ TP
 TP
 TP
 TP
-TP
-xW
-QB
-QB
-QB
-QB
-xW
-OB
-zw
-NB
-TP
-TP
-TP
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
 TP
 TP
 TP
@@ -38731,19 +38326,19 @@ TP
 TP
 TP
 TP
-TP
-xW
-By
-xW
-xW
-xW
-xW
 KC
-uc
-NB
-TP
-TP
-TP
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
 TP
 TP
 TP
@@ -38925,19 +38520,19 @@ TP
 TP
 TP
 TP
-TP
-xW
-ln
-pv
-bt
-Uq
-vO
-HQ
-BW
-NB
-TP
-TP
-TP
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
 TP
 TP
 TP
@@ -39119,19 +38714,19 @@ TP
 TP
 TP
 TP
-TP
-xW
-lF
-qN
-qN
-qN
-kb
-Ay
-Ej
-NB
-TP
-TP
-TP
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
 TP
 TP
 TP
@@ -39313,19 +38908,19 @@ TP
 TP
 TP
 TP
-TP
-xW
-QB
-QB
-ow
-dA
-qN
-eK
-uc
-NB
-TP
-TP
-TP
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
 TP
 TP
 TP
@@ -39507,19 +39102,19 @@ TP
 TP
 TP
 TP
-TP
-xW
-By
-xW
-xW
-xW
-xW
-xW
-xW
-NB
-TP
-TP
-TP
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
 TP
 TP
 TP
@@ -39701,19 +39296,19 @@ TP
 TP
 TP
 TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
 TP
 TP
 TP
@@ -39895,19 +39490,19 @@ TP
 TP
 TP
 TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
 TP
 TP
 TP
@@ -40089,19 +39684,19 @@ TP
 TP
 TP
 TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
 TP
 TP
 TP
@@ -40283,19 +39878,19 @@ TP
 TP
 TP
 TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
 TP
 TP
 TP
@@ -40477,19 +40072,19 @@ TP
 TP
 TP
 TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
 TP
 TP
 TP
@@ -40671,19 +40266,19 @@ TP
 TP
 TP
 TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
 TP
 TP
 TP
