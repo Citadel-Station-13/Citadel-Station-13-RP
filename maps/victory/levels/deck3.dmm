@@ -224,7 +224,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/medical/morgue)
+/area/space)
 "aju" = (
 /obj/effect/floor_decal/techfloor/corner,
 /turf/simulated/floor/tiled,
@@ -256,6 +256,12 @@
 	},
 /turf/simulated/floor/tiled,
 /area/hallway/primary/aft)
+"amG" = (
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/space)
 "amU" = (
 /obj/structure/table/steel_reinforced,
 /obj/machinery/computer/med_data/laptop,
@@ -1130,7 +1136,7 @@
 	name = "Robotics Operating Table"
 	},
 /turf/simulated/floor/tiled/old_tile/purple,
-/area/assembly/robotics/surgery)
+/area/rnd/robotics/surgeryroom1)
 "aZT" = (
 /obj/machinery/door/firedoor{
 	dir = 1
@@ -2026,7 +2032,7 @@
 	req_one_access = list(47)
 	},
 /turf/simulated/floor/tiled/dark,
-/area/assembly/robotics/surgery)
+/area/rnd/robotics/surgeryroom1)
 "bTw" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -2267,7 +2273,7 @@
 	dir = 6
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/medical/morgue)
+/area/space)
 "ccN" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -2706,7 +2712,7 @@
 	icon_state = "1-8"
 	},
 /turf/simulated/floor/tiled/dark,
-/area/assembly/robotics/surgery)
+/area/rnd/robotics/surgeryroom1)
 "cxJ" = (
 /turf/simulated/floor/plating,
 /area/maintenance/substation/medical_science)
@@ -3096,7 +3102,7 @@
 	pixel_y = 32
 	},
 /turf/simulated/floor/tiled/dark,
-/area/assembly/robotics/surgery)
+/area/rnd/robotics/surgeryroom1)
 "cRH" = (
 /obj/machinery/atmospherics/valve/digital{
 	dir = 4
@@ -3891,7 +3897,7 @@
 	network = list("Xenobiology")
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/medical/morgue)
+/area/space)
 "dCW" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -4292,7 +4298,7 @@
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/dark,
-/area/assembly/robotics/surgery)
+/area/rnd/robotics/surgeryroom1)
 "dVy" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 1
@@ -4400,7 +4406,7 @@
 	},
 /obj/structure/table/carbon/reinforced,
 /turf/simulated/floor/tiled/dark,
-/area/assembly/robotics/surgery)
+/area/rnd/robotics/surgeryroom1)
 "eam" = (
 /obj/machinery/door/firedoor{
 	dir = 8
@@ -5008,7 +5014,7 @@
 /turf/simulated/floor/tiled{
 	icon_state = "techmaint"
 	},
-/area/medical/morgue)
+/area/space)
 "eAv" = (
 /obj/structure/closet/secure_closet/personal/patient,
 /turf/simulated/floor/tiled/white,
@@ -5144,7 +5150,7 @@
 	pixel_y = 22
 	},
 /turf/simulated/floor/tiled/dark,
-/area/assembly/robotics/surgery)
+/area/rnd/robotics/surgeryroom1)
 "eJe" = (
 /obj/machinery/power/breakerbox/activated{
 	RCon_tag = "DECK 3 SUPPORT"
@@ -5718,7 +5724,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/dark,
-/area/assembly/robotics/surgery)
+/area/rnd/robotics/surgeryroom1)
 "fiF" = (
 /obj/machinery/door/firedoor{
 	dir = 1
@@ -5931,7 +5937,7 @@
 	req_access = list()
 	},
 /turf/simulated/floor/tiled/dark,
-/area/assembly/robotics/surgery)
+/area/rnd/robotics/surgeryroom1)
 "fsC" = (
 /obj/structure/sign/department/sci,
 /turf/simulated/wall/prepainted/science,
@@ -6379,7 +6385,7 @@
 	pixel_y = -22
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/medical/morgue)
+/area/space)
 "fKp" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -6939,7 +6945,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/dark,
-/area/assembly/robotics/surgery)
+/area/rnd/robotics/surgeryroom1)
 "gfA" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 5
@@ -7087,7 +7093,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/dark,
-/area/assembly/robotics/surgery)
+/area/rnd/robotics/surgeryroom1)
 "gmM" = (
 /obj/structure/cable/green{
 	icon_state = "1-2"
@@ -7774,7 +7780,7 @@
 /obj/item/storage/box/gloves,
 /obj/structure/table/carbon/reinforced,
 /turf/simulated/floor/tiled/dark,
-/area/assembly/robotics/surgery)
+/area/rnd/robotics/surgeryroom1)
 "gSJ" = (
 /obj/effect/floor_decal/techfloor/corner{
 	dir = 1
@@ -7787,7 +7793,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled/dark,
-/area/assembly/robotics/surgery)
+/area/rnd/robotics/surgeryroom1)
 "gSU" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -8206,7 +8212,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/medical/morgue)
+/area/space)
 "hnp" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 4
@@ -8910,7 +8916,7 @@
 	},
 /obj/structure/table/carbon/reinforced,
 /turf/simulated/floor/tiled/old_tile/purple,
-/area/assembly/robotics/surgery)
+/area/rnd/robotics/surgeryroom1)
 "hUa" = (
 /obj/machinery/air_alarm{
 	dir = 1;
@@ -8966,6 +8972,15 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/patient_wing)
+"hXW" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/space)
 "hYh" = (
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 1
@@ -9079,7 +9094,7 @@
 	},
 /obj/machinery/holopad,
 /turf/simulated/floor/tiled/dark,
-/area/assembly/robotics/surgery)
+/area/rnd/robotics/surgeryroom1)
 "idX" = (
 /obj/machinery/fire_alarm/east_mount,
 /turf/simulated/floor/wood,
@@ -9213,7 +9228,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/medical/morgue)
+/area/space)
 "ijz" = (
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 1
@@ -9286,7 +9301,7 @@
 "ilx" = (
 /obj/machinery/holopad,
 /turf/simulated/floor/tiled/techfloor,
-/area/medical/morgue)
+/area/space)
 "ilA" = (
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 4
@@ -9673,7 +9688,7 @@
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/dark,
-/area/assembly/robotics/surgery)
+/area/rnd/robotics/surgeryroom1)
 "izS" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -9870,7 +9885,7 @@
 	},
 /obj/machinery/power/apc/west_mount,
 /turf/simulated/floor/tiled/dark,
-/area/assembly/robotics/surgery)
+/area/rnd/robotics/surgeryroom1)
 "iIR" = (
 /obj/structure/table/standard,
 /obj/item/soap/nanotrasen,
@@ -11023,7 +11038,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/medical/morgue)
+/area/space)
 "jPR" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -11933,6 +11948,12 @@
 	},
 /turf/simulated/floor/carpet/sblucarpet,
 /area/medical/psych/psych_2)
+"kQH" = (
+/obj/structure/morgue{
+	dir = 2
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/space)
 "kQP" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -11944,7 +11965,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/dark,
-/area/assembly/robotics/surgery)
+/area/rnd/robotics/surgeryroom1)
 "kQU" = (
 /turf/simulated/wall/r_wall/prepainted/science,
 /area/rnd/xenobiology/xenoflora_storage)
@@ -12685,7 +12706,7 @@
 	pixel_x = 25
 	},
 /turf/simulated/floor/tiled/dark,
-/area/assembly/robotics/surgery)
+/area/rnd/robotics/surgeryroom1)
 "lBS" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 10
@@ -13656,7 +13677,7 @@
 	},
 /obj/effect/floor_decal/industrial/warning,
 /turf/simulated/floor/tiled/dark,
-/area/assembly/robotics/surgery)
+/area/rnd/robotics/surgeryroom1)
 "mzy" = (
 /obj/machinery/door/firedoor/glass,
 /obj/map_helper/airlock/door/ext_door,
@@ -15468,7 +15489,7 @@
 	pixel_y = 32
 	},
 /turf/simulated/floor/tiled/old_tile/purple,
-/area/assembly/robotics/surgery)
+/area/rnd/robotics/surgeryroom1)
 "ogu" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
@@ -15478,7 +15499,7 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/dark,
-/area/assembly/robotics/surgery)
+/area/rnd/robotics/surgeryroom1)
 "ogL" = (
 /obj/machinery/mech_recharger,
 /obj/machinery/camera/network/research{
@@ -15568,7 +15589,7 @@
 	icon_state = "2-4"
 	},
 /turf/simulated/floor/tiled/dark,
-/area/assembly/robotics/surgery)
+/area/rnd/robotics/surgeryroom1)
 "okJ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -15777,7 +15798,7 @@
 	pixel_y = 6
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/medical/morgue)
+/area/space)
 "owo" = (
 /obj/machinery/door/firedoor{
 	dir = 8
@@ -17236,12 +17257,12 @@
 	pixel_y = 32
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/medical/morgue)
+/area/space)
 "pHm" = (
 /obj/machinery/power/apc/south_mount,
 /obj/structure/cable/green,
 /turf/simulated/floor/tiled/techfloor,
-/area/medical/morgue)
+/area/space)
 "pHp" = (
 /obj/structure/bed/chair/office/dark,
 /obj/landmark/spawnpoint/job/roboticist,
@@ -17317,7 +17338,7 @@
 	},
 /obj/structure/table/carbon/reinforced,
 /turf/simulated/floor/tiled/old_tile/purple,
-/area/assembly/robotics/surgery)
+/area/rnd/robotics/surgeryroom1)
 "pMC" = (
 /obj/structure/closet/emcloset,
 /obj/machinery/camera/network/research{
@@ -18522,7 +18543,7 @@
 /obj/item/mmi/digital/posibrain,
 /obj/structure/table/carbon/reinforced,
 /turf/simulated/floor/tiled/dark,
-/area/assembly/robotics/surgery)
+/area/rnd/robotics/surgeryroom1)
 "qKR" = (
 /obj/structure/bed/chair{
 	dir = 4
@@ -19289,7 +19310,7 @@
 /obj/item/surgical/bioregen,
 /obj/structure/table/carbon/reinforced,
 /turf/simulated/floor/tiled/old_tile/purple,
-/area/assembly/robotics/surgery)
+/area/rnd/robotics/surgeryroom1)
 "rsx" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -21201,7 +21222,7 @@
 	},
 /obj/map_helper/access_helper/airlock/station/science/robotics,
 /turf/simulated/floor/tiled/techfloor,
-/area/medical/morgue)
+/area/rnd/robotics/surgeryroom1)
 "tbM" = (
 /obj/machinery/door/firedoor/glass{
 	dir = 4
@@ -21816,7 +21837,7 @@
 	},
 /obj/map_helper/access_helper/airlock/station/science/robotics,
 /turf/simulated/floor/tiled,
-/area/assembly/robotics/surgery)
+/area/rnd/robotics/surgeryroom1)
 "tGx" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/black,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -22141,7 +22162,7 @@
 /area/maintenance/fpmaint2)
 "tUr" = (
 /turf/simulated/floor/tiled/dark,
-/area/assembly/robotics/surgery)
+/area/rnd/robotics/surgeryroom1)
 "tVI" = (
 /obj/structure/toilet{
 	dir = 8
@@ -22860,8 +22881,8 @@
 /turf/simulated/floor/tiled,
 /area/rnd/anomaly_lab)
 "uEl" = (
-/turf/simulated/wall/prepainted/science,
-/area/medical/morgue)
+/turf/simulated/floor/tiled/techfloor,
+/area/space)
 "uEG" = (
 /obj/structure/closet{
 	name = "spare clothes"
@@ -22964,7 +22985,7 @@
 /area/rnd/chemistry_lab)
 "uJh" = (
 /turf/simulated/wall/prepainted/science,
-/area/assembly/robotics/surgery)
+/area/rnd/robotics/surgeryroom1)
 "uJJ" = (
 /obj/machinery/atmospherics/pipe/manifold4w/hidden/supply,
 /obj/structure/cable/green{
@@ -23189,7 +23210,7 @@
 	dir = 5
 	},
 /turf/simulated/floor/tiled/dark,
-/area/assembly/robotics/surgery)
+/area/rnd/robotics/surgeryroom1)
 "uSM" = (
 /obj/structure/table/reinforced,
 /obj/item/toy/eight_ball/conch,
@@ -23327,7 +23348,7 @@
 	dir = 10
 	},
 /turf/simulated/floor/tiled/dark,
-/area/assembly/robotics/surgery)
+/area/rnd/robotics/surgeryroom1)
 "vbA" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
@@ -23388,7 +23409,7 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/dark,
-/area/assembly/robotics/surgery)
+/area/rnd/robotics/surgeryroom1)
 "vez" = (
 /turf/simulated/wall/prepainted/science,
 /area/rnd/xenobiology/xenoflora)
@@ -23793,7 +23814,7 @@
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/medical/morgue)
+/area/space)
 "vBs" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/purple{
 	dir = 8
@@ -23808,7 +23829,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/dark,
-/area/assembly/robotics/surgery)
+/area/rnd/robotics/surgeryroom1)
 "vCa" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -24126,7 +24147,7 @@
 	network = list("Research","Toxins  Test  Area")
 	},
 /turf/simulated/floor/tiled/dark,
-/area/assembly/robotics/surgery)
+/area/rnd/robotics/surgeryroom1)
 "vRa" = (
 /obj/machinery/disposal,
 /turf/simulated/wall/prepainted/science,
@@ -24620,7 +24641,7 @@
 /obj/effect/floor_decal/industrial/warning/dust,
 /obj/structure/closet/crate/biohazard,
 /turf/simulated/floor/tiled/dark,
-/area/assembly/robotics/surgery)
+/area/rnd/robotics/surgeryroom1)
 "wiW" = (
 /obj/effect/floor_decal/corner/green{
 	dir = 9
@@ -25606,7 +25627,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/dark,
-/area/assembly/robotics/surgery)
+/area/rnd/robotics/surgeryroom1)
 "xki" = (
 /obj/structure/table/woodentable,
 /turf/simulated/floor/wood,
@@ -25876,7 +25897,7 @@
 	req_access = list()
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/medical/morgue)
+/area/space)
 "xyH" = (
 /obj/machinery/disposal,
 /turf/simulated/floor/tiled/white,
@@ -26580,7 +26601,7 @@
 "yhE" = (
 /obj/effect/floor_decal/industrial/warning/dust,
 /turf/simulated/floor/tiled/dark,
-/area/assembly/robotics/surgery)
+/area/rnd/robotics/surgeryroom1)
 "yic" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -37816,10 +37837,10 @@ iDh
 bBA
 xcB
 pjz
-kzb
-kzb
-kzb
-kzb
+pjz
+pjz
+pjz
+pjz
 syi
 wKq
 vMN
@@ -38010,10 +38031,10 @@ wfG
 aeS
 eVZ
 pjz
-kzb
-kzb
-kzb
-kzb
+pjz
+pjz
+pjz
+pjz
 syi
 vHw
 vMN
@@ -41261,11 +41282,11 @@ bds
 lAr
 dlc
 bXr
-uEl
-uEl
-uEl
-uEl
-uEl
+dzg
+dzg
+dzg
+dzg
+dzg
 aDx
 lPA
 vZg
@@ -41455,8 +41476,8 @@ eam
 bqS
 iJX
 iRy
-uEl
-tFQ
+dzg
+kQH
 xyo
 dCq
 eAh
@@ -41649,10 +41670,10 @@ bds
 bqS
 mIF
 iRy
-uEl
-tFQ
+dzg
+kQH
 ajj
-wpd
+uEl
 fJj
 aDx
 nTO
@@ -41843,8 +41864,8 @@ svR
 oIp
 mIF
 eyM
-uEl
-tFQ
+dzg
+kQH
 ije
 ilx
 ovX
@@ -42037,11 +42058,11 @@ svR
 ndE
 mIF
 iRy
-uEl
+dzg
 jPQ
 cbF
-dQR
-wpd
+amG
+uEl
 aDx
 wqB
 vZg
@@ -42231,11 +42252,11 @@ svR
 bqS
 mIF
 iRy
-uEl
+dzg
 pGO
-xkX
-wpd
-wpd
+hXW
+uEl
+uEl
 hDT
 vZg
 vZg
@@ -42425,8 +42446,8 @@ bds
 bqS
 mIF
 iRy
-uEl
-tFQ
+dzg
+kQH
 hnl
 vBb
 pHm
@@ -42619,11 +42640,11 @@ bds
 bqS
 wsg
 iRy
-uEl
-uEl
+uJh
+uJh
 tbn
-uEl
-uEl
+uJh
+uJh
 aDx
 nMh
 vZg
