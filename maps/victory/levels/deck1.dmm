@@ -948,10 +948,6 @@
 /obj/random/trash_pile,
 /turf/simulated/floor/plating,
 /area/space)
-"dc" = (
-/obj/structure/catwalk,
-/turf/simulated/floor/airless/ceiling,
-/area/space)
 "de" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
@@ -14734,6 +14730,13 @@
 
 (1,1,1) = {"
 he
+he
+he
+he
+he
+he
+he
+he
 TP
 TP
 TP
@@ -14916,18 +14919,18 @@ TP
 TP
 TP
 TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
+he
 he
 "}
 (2,1,1) = {"
 he
+he
+he
+he
+he
+he
+he
+he
 TP
 TP
 TP
@@ -15111,25 +15114,17 @@ TP
 TP
 TP
 TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
+he
 "}
 (3,1,1) = {"
 he
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
+he
+he
+he
+he
+he
+he
+he
 TP
 TP
 TP
@@ -15312,6 +15307,7 @@ TP
 TP
 TP
 TP
+he
 he
 "}
 (4,1,1) = {"
@@ -15425,7 +15421,6 @@ TP
 TP
 TP
 TP
-TP
 he
 he
 he
@@ -15507,6 +15502,7 @@ TP
 TP
 TP
 TP
+he
 "}
 (5,1,1) = {"
 he
@@ -38741,7 +38737,7 @@ he
 he
 he
 he
-TP
+he
 TP
 xW
 By
@@ -38929,13 +38925,13 @@ he
 he
 he
 he
-dc
-dc
-dc
-dc
-dc
-dc
-TP
+he
+he
+he
+he
+he
+he
+he
 TP
 xW
 ln
@@ -39129,7 +39125,7 @@ he
 he
 he
 he
-TP
+he
 TP
 xW
 lF
@@ -39323,7 +39319,7 @@ he
 he
 he
 he
-TP
+he
 TP
 xW
 QB
