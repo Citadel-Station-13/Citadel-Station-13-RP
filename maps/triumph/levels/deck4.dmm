@@ -3763,7 +3763,7 @@
 /area/hallway/primary/aft)
 "cHX" = (
 /obj/structure/table/woodentable,
-/obj/item/flashlight/lamp/green,
+/obj/item/flashlight/lamp/green/on,
 /turf/simulated/floor/carpet/bcarpet,
 /area/library)
 "cIw" = (
@@ -15216,10 +15216,7 @@
 /obj/machinery/light_switch{
 	pixel_y = -26
 	},
-/obj/item/flashlight/lamp/green{
-	pixel_x = 1;
-	pixel_y = 5
-	},
+/obj/item/flashlight/lamp/green/on,
 /turf/simulated/floor/carpet/bcarpet,
 /area/library/study)
 "ksv" = (
@@ -16932,7 +16929,7 @@
 /area/ai)
 "lEF" = (
 /obj/structure/table/woodentable,
-/obj/item/flashlight/lamp/green,
+/obj/item/flashlight/lamp/green/on,
 /turf/simulated/floor/wood,
 /area/library)
 "lFl" = (
@@ -21096,7 +21093,7 @@
 /area/triumph/surfacebase/sauna)
 "oGx" = (
 /obj/structure/table/woodentable,
-/obj/item/flashlight/lamp/green,
+/obj/item/flashlight/lamp/green/on,
 /obj/machinery/light/small{
 	dir = 4
 	},
@@ -25475,7 +25472,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/table/woodentable,
-/obj/item/flashlight/lamp/green,
+/obj/item/flashlight/lamp/green/on,
 /turf/simulated/floor/wood,
 /area/library)
 "rMx" = (
