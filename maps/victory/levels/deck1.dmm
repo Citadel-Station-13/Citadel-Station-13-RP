@@ -197,6 +197,9 @@
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/space)
+"ax" = (
+/turf/simulated/wall/classg,
+/area/space)
 "ay" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
@@ -24218,11 +24221,11 @@ TP
 TP
 TP
 TP
+ax
 TP
 TP
 TP
 TP
-dB
 "}
 (50,1,1) = {"
 TP
@@ -24799,7 +24802,7 @@ TP
 TP
 TP
 TP
-TP
+ax
 TP
 TP
 TP
