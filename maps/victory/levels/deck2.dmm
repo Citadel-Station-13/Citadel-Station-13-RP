@@ -45,12 +45,10 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/recreation_area)
 "afH" = (
-/obj/structure/closet/crate/bin{
-	anchored = 1
-	},
 /obj/structure/sign/department/interrogation{
 	pixel_y = -32
 	},
+/obj/machinery/disposal,
 /turf/simulated/floor/tiled/old_cargo/gray,
 /area/security/security_processing)
 "agu" = (
@@ -210,6 +208,7 @@
 	pixel_y = -37
 	},
 /obj/effect/floor_decal/industrial/outline/yellow,
+/obj/machinery/disposal,
 /turf/simulated/floor/tiled,
 /area/quartermaster/office)
 "aoL" = (
@@ -251,6 +250,10 @@
 	},
 /turf/simulated/floor/tiled,
 /area/hydroponics)
+"arQ" = (
+/obj/machinery/disposal,
+/turf/simulated/floor/wood,
+/area/security/breakroom)
 "asS" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -719,6 +722,10 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/security/hallway)
+"aLF" = (
+/obj/machinery/disposal,
+/turf/simulated/floor/wood,
+/area/crew_quarters/recreation_area)
 "aLL" = (
 /obj/effect/floor_decal/corner/green{
 	dir = 9
@@ -820,6 +827,10 @@
 	},
 /turf/simulated/floor/tiled,
 /area/station/stairs_two)
+"aRv" = (
+/obj/machinery/disposal,
+/turf/simulated/floor/tiled,
+/area/security/hanger)
 "aRE" = (
 /obj/structure/undies_wardrobe,
 /turf/simulated/floor/wood,
@@ -1286,6 +1297,16 @@
 	},
 /turf/simulated/floor/tiled,
 /area/hallway/primary/central_two)
+"blT" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 6
+	},
+/obj/effect/floor_decal/corner/red/border{
+	dir = 6
+	},
+/obj/machinery/disposal,
+/turf/simulated/floor/tiled/dark,
+/area/security/hallway)
 "bmp" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -2153,6 +2174,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
+/obj/machinery/disposal,
 /turf/simulated/floor/wood,
 /area/quartermaster/foyer)
 "cde" = (
@@ -2478,9 +2500,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/substation/civilian)
 "cuA" = (
-/obj/structure/closet/crate/bin{
-	anchored = 1
-	},
+/obj/machinery/disposal,
 /turf/simulated/floor/carpet,
 /area/security/detectives_office)
 "cuM" = (
@@ -2515,6 +2535,10 @@
 	},
 /turf/simulated/floor/tiled,
 /area/quartermaster/storage)
+"cyq" = (
+/obj/machinery/disposal,
+/turf/simulated/floor/wood,
+/area/quartermaster/qm)
 "cyv" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -2578,6 +2602,16 @@
 /obj/machinery/shield_diffuser,
 /obj/map_helper/access_helper/airlock/station/external_airlock,
 /turf/simulated/floor/plating,
+/area/security/hallway)
+"cAG" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 9
+	},
+/obj/effect/floor_decal/corner/red/border{
+	dir = 9
+	},
+/obj/machinery/disposal,
+/turf/simulated/floor/tiled/dark,
 /area/security/hallway)
 "cAP" = (
 /obj/structure/table/reinforced,
@@ -4466,6 +4500,7 @@
 /obj/effect/floor_decal/corner/red{
 	dir = 1
 	},
+/obj/machinery/disposal,
 /turf/simulated/floor/tiled,
 /area/security/security_lockerroom)
 "eou" = (
@@ -5348,6 +5383,7 @@
 /area/security/brig)
 "feP" = (
 /obj/effect/floor_decal/techfloor/corner,
+/obj/machinery/disposal,
 /turf/simulated/floor/tiled/dark,
 /area/vacant/vacant_shop)
 "feT" = (
@@ -6667,9 +6703,6 @@
 /obj/effect/floor_decal/corner/lime/border{
 	dir = 4
 	},
-/obj/structure/closet/crate/bin{
-	anchored = 1
-	},
 /turf/simulated/floor/tiled,
 /area/hydroponics)
 "gct" = (
@@ -7366,9 +7399,6 @@
 /obj/effect/floor_decal/corner/lime/border{
 	dir = 4
 	},
-/obj/structure/closet/crate/bin{
-	anchored = 1
-	},
 /obj/machinery/light{
 	dir = 4
 	},
@@ -7411,6 +7441,12 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/security/warden)
+"gRc" = (
+/obj/effect/floor_decal/borderfloor,
+/obj/effect/floor_decal/corner/lime/border,
+/obj/machinery/disposal,
+/turf/simulated/floor/tiled,
+/area/hydroponics)
 "gRd" = (
 /turf/simulated/floor/tiled/steel_grid,
 /area/quartermaster/delivery)
@@ -7993,6 +8029,7 @@
 /obj/effect/floor_decal/corner/red{
 	dir = 6
 	},
+/obj/machinery/disposal,
 /turf/simulated/floor/tiled/dark,
 /area/security/warden)
 "hou" = (
@@ -8764,6 +8801,7 @@
 /obj/structure/extinguisher_cabinet{
 	pixel_y = -31
 	},
+/obj/machinery/disposal,
 /turf/simulated/floor/tiled,
 /area/quartermaster/warehouse)
 "iam" = (
@@ -11857,6 +11895,16 @@
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/hallway/primary/central_two)
+"kSa" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 5
+	},
+/obj/effect/floor_decal/corner/red/border{
+	dir = 5
+	},
+/obj/machinery/disposal,
+/turf/simulated/floor/tiled/dark,
+/area/security/hallway)
 "kSb" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /obj/effect/floor_decal/techfloor{
@@ -13202,6 +13250,7 @@
 /obj/structure/extinguisher_cabinet{
 	pixel_y = -31
 	},
+/obj/machinery/disposal,
 /turf/simulated/floor/tiled,
 /area/quartermaster/storage)
 "mgb" = (
@@ -18030,9 +18079,6 @@
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
-/obj/structure/closet/crate/bin{
-	anchored = 1
-	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/bar)
 "qJs" = (
@@ -21317,6 +21363,13 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/space)
+"tDj" = (
+/obj/effect/floor_decal/techfloor{
+	dir = 9
+	},
+/obj/machinery/disposal,
+/turf/simulated/floor/tiled,
+/area/hallway/primary/starboard)
 "tDs" = (
 /obj/machinery/appliance/cooker/grill,
 /obj/effect/floor_decal/corner_oldtile/white/diagonal,
@@ -22536,14 +22589,12 @@
 /turf/simulated/floor/carpet/bcarpet,
 /area/crew_quarters/sleep/Dorm_11)
 "uMv" = (
-/obj/structure/closet/crate/bin{
-	anchored = 1
-	},
 /obj/item/radio/intercom{
 	dir = 1;
 	name = "Station Intercom (General)";
 	pixel_y = 26
 	},
+/obj/machinery/disposal,
 /turf/simulated/floor/tiled/old_tile/gray,
 /area/security/range)
 "uMw" = (
@@ -23473,9 +23524,7 @@
 /obj/structure/cable/green{
 	icon_state = "1-4"
 	},
-/obj/structure/closet/crate/bin{
-	anchored = 1
-	},
+/obj/machinery/disposal,
 /turf/simulated/floor/tiled,
 /area/victory/surfacebase/mining_main/refinery)
 "vEk" = (
@@ -24461,9 +24510,7 @@
 	name = "light switch ";
 	pixel_y = 26
 	},
-/obj/structure/closet/crate/bin{
-	anchored = 1
-	},
+/obj/machinery/disposal,
 /turf/simulated/floor/wood,
 /area/security/breakroom)
 "wJY" = (
@@ -24834,9 +24881,6 @@
 	},
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 4
-	},
-/obj/structure/closet/crate/bin{
-	anchored = 1
 	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/crew_quarters/bar)
@@ -32109,7 +32153,7 @@ mft
 mpF
 amn
 qHu
-dnz
+cAG
 bub
 qpc
 bCg
@@ -36181,7 +36225,7 @@ kAJ
 bRJ
 bRJ
 nJt
-qLm
+gRc
 hll
 bfv
 bfv
@@ -37176,7 +37220,7 @@ xbk
 mOi
 mOi
 uGf
-fOX
+blT
 coJ
 coJ
 wjc
@@ -37555,7 +37599,7 @@ mkl
 mkl
 mkl
 mkl
-dSl
+kSa
 gHW
 mWM
 tWk
@@ -38726,7 +38770,7 @@ tWk
 coJ
 gUO
 gcA
-gcA
+aRv
 cVe
 sKn
 omd
@@ -39440,7 +39484,7 @@ qvJ
 rPE
 xAR
 oDM
-xgY
+cyq
 lcG
 pEY
 oeN
@@ -41597,10 +41641,10 @@ fLt
 iAe
 ggC
 giq
-lCA
 giq
-owe
-owe
+giq
+giq
+giq
 giq
 giq
 giq
@@ -41638,7 +41682,7 @@ ftQ
 fMD
 jPj
 erM
-fqe
+arQ
 iUd
 coJ
 coJ
@@ -41795,7 +41839,7 @@ lCA
 lCA
 xrc
 xrc
-iAh
+xrc
 xrc
 xrc
 lCA
@@ -43555,7 +43599,7 @@ wLu
 lKc
 qgE
 tiK
-tiK
+kpy
 vvP
 ezY
 bKj
@@ -45480,9 +45524,9 @@ giq
 giq
 giq
 giq
-lCA
-lCA
-lCA
+giq
+giq
+giq
 giq
 giq
 giq
@@ -45660,7 +45704,7 @@ wjc
 wjc
 wjc
 shT
-obo
+aLF
 qsC
 dUX
 jkF
@@ -54602,7 +54646,7 @@ gEH
 gEH
 lbF
 dZW
-oRV
+tDj
 elM
 elM
 oUt
