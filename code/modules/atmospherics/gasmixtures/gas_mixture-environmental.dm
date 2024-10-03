@@ -1,0 +1,36 @@
+/**
+ * Hooks for environmental systems to manipualte their gas mixtures.
+ *
+ * This is currently for ZAS.
+ * This only makes sense on ZAS, because adding proc overhead into something like LINDA makes no sense.
+ */
+
+/**
+ * Default share gas implementation - shares with another gas_mixture non-canonically
+ * based on connecting tiles. Is just a wrapper to use a lookup table.
+ */
+/datum/gas_mixture/proc/environmental_share_simulated(datum/gas_mixture/other, tiles)
+#ifdef GASMIXTURE_ASSERTIONS
+	ASSERT(tiles > 0)
+#endif
+	var/static/list/lookup_table = list(
+		0.3,
+		0.4,
+		0.48,
+		0.54,
+		0.6,
+		0.66
+	)
+	if(tiles <= 0)
+		CRASH("sharing with tiles < 0 is a waste of time")
+	return share_with_mixture(other, lookup_table[min(tiles, 6)])
+
+/**
+ * default implementation to equalize with an unsimulated space
+ * by default, this will ramp up equalization to match our room, so we can't
+ * overpower say, 1 tile of unsimulated with a massive room.
+ */
+/datum/gas_mixture/proc/environmental_share_unsimulated(datum/gas_mixture/unsimulated)
+	var/static/list/sharing_lookup_table = list(0.30, 0.40, 0.48, 0.54, 0.60, 0.66)
+	var/computed_multiplier = max(group_multiplier, unsimulated.group_multiplier)
+	return share_with_immutable(unsimulated.gas, computed_multiplier, unsimulated.temperature, sharing_lookup_table[min(unsimulated.group_multiplier, 6)])
