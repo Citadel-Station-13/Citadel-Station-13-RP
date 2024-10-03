@@ -1,4 +1,6 @@
-
+/**
+ * A continuous
+ */
 /datum/pipeline
 	var/datum/gas_mixture/air
 

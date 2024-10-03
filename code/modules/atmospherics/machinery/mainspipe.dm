@@ -49,7 +49,6 @@
 	var/obj/machinery/atmospherics/pipe/mains_component/scrubbers
 	var/obj/machinery/atmospherics/pipe/mains_component/aux
 
-	var/minimum_temperature_difference = 300
 	var/thermal_conductivity = 0 //WALL_HEAT_TRANSFER_COEFFICIENT No
 
 	var/maximum_pressure = 70*ONE_ATMOSPHERE

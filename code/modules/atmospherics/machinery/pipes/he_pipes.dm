@@ -1,6 +1,6 @@
-//
-// Heat Exchanging Pipes - Behave like simple pipes
-//
+/**
+ * Pipes but they exchange heat with environment.
+ */
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging
 	icon = 'icons/atmos/heat.dmi'
 	icon_state = "intact"
@@ -17,10 +17,10 @@
 	var/surface = 2	//surface area in m^2
 	var/icon_temperature = T20C //stop small changes in temperature causing an icon refresh
 
-	minimum_temperature_difference = 0.01
 	thermal_conductivity = OPEN_HEAT_TRANSFER_COEFFICIENT
 
-	buckle_lying = 1
+	/// minimum temperature difference for heat exchanger pipes to exchange heat
+	var/minimum_temperature_difference = 0.01
 
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging/Initialize(mapload)
 	. = ..()
@@ -68,15 +68,25 @@
 		return
 
 	update_icon()
-	return
-
 
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging/process(delta_time)
 	if(!parent)
 		..()
 	else
+		// process against turf
+		// we check temperatures first, but we directly have parent pipeline-interact with location, rather than doing it ourselves.
+		// get immutable air references; we will directly call our pipeline's interact procs,
+		// instead of doing it ourselves.
+		var/datum/gas_mixture/our_air_immutable = parent.air
+		var/datum/gas_mixture/loc_air_immutable = loc.return_air_immutable()
+		if(loc_air_immutable && abs(loc_air_immutable.temperature - our_air_immutable.temperature) > minimum_temperature_difference)
+			// temperature difference is enough, process equalization
+
+		#warn above / below
+
 		var/datum/gas_mixture/pipe_air = return_air()
-		if(istype(loc, /turf/simulated/))
+
+		if(istype(loc, /turf/simulated))
 			var/turf/simulated/location_as_turf = loc
 			var/environment_temperature = 0
 			if(loc:blocks_air)
@@ -86,14 +96,16 @@
 				environment_temperature = environment.temperature
 			if((abs(environment_temperature-pipe_air.temperature) > minimum_temperature_difference) || (location_as_turf.special_temperature))
 				parent.temperature_interact(loc, volume, thermal_conductivity)
-		else if(istype(loc, /turf/space/))
+		else if(istype(loc, /turf/space))
 			parent.radiate_heat_to_space(surface, 1)
 
+		// process buckled mobs
 		if(has_buckled_mobs())
 			for(var/M in buckled_mobs)
 				var/mob/living/L = M
 
 				var/hc = pipe_air.heat_capacity()
+				// todo: this is not even close to someone's actual heat capacity lol
 				var/avg_temp = (pipe_air.temperature * hc + L.bodytemperature * 3500) / (hc + 3500)
 				pipe_air.temperature = avg_temp
 				L.bodytemperature = avg_temp
@@ -107,7 +119,7 @@
 				if(pipe_air.temperature > heat_limit + 1)
 					L.apply_damage(4 * log(pipe_air.temperature - heat_limit), DAMAGE_TYPE_BURN, BP_TORSO, used_weapon = "Excessive Heat")
 
-		//fancy radiation glowing
+		// process icon / glow
 		if(pipe_air.temperature && (icon_temperature > 500 || pipe_air.temperature > 500)) //start glowing at 500K
 			if(abs(pipe_air.temperature - icon_temperature) > 10)
 				icon_temperature = pipe_air.temperature
@@ -135,7 +147,6 @@
 	connect_types = CONNECT_TYPE_REGULAR|CONNECT_TYPE_HE
 	construction_type = /obj/item/pipe/directional
 	pipe_state = "junction"
-	minimum_temperature_difference = 300
 	thermal_conductivity = WALL_HEAT_TRANSFER_COEFFICIENT
 
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging/junction/init_dir()
