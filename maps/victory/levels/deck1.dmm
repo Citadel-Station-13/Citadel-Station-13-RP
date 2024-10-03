@@ -5181,6 +5181,10 @@
 	initial_gas_mix = "n2=100;TEMP=80"
 	},
 /area/space)
+"sn" = (
+/obj/structure/gravemarker,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/space)
 "so" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/black{
 	dir = 4
@@ -6993,6 +6997,13 @@
 "yf" = (
 /turf/space,
 /area/tcommsat/computer)
+"yg" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/fuel,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/gravemarker,
+/turf/simulated/floor/tiled/steel,
+/area/space)
 "yj" = (
 /obj/machinery/camera/network/command{
 	dir = 9
@@ -12137,6 +12148,13 @@
 /obj/effect/floor_decal/techfloor/orange,
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/storage)
+"QA" = (
+/obj/effect/floor_decal/corner/lightorange/border{
+	dir = 10
+	},
+/obj/structure/gravemarker,
+/turf/simulated/floor/tiled/white,
+/area/engineering/shield_gen)
 "QB" = (
 /turf/simulated/floor/plating,
 /area/space)
@@ -30542,7 +30560,7 @@ Dw
 TL
 lk
 lk
-Co
+QA
 vx
 lh
 VY
@@ -34423,7 +34441,7 @@ tt
 tt
 tt
 tt
-tt
+yg
 tt
 tt
 tt
@@ -41019,7 +41037,7 @@ tY
 dw
 eu
 CJ
-eu
+sn
 eu
 eu
 eu

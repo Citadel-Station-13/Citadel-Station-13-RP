@@ -1411,6 +1411,13 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/heads/cmo)
+"bwt" = (
+/obj/structure/cable/orange{
+	icon_state = "4-8"
+	},
+/obj/spawner/window/reinforced/full,
+/turf/simulated/floor/plating,
+/area/maintenance/substation/medical)
 "bwC" = (
 /obj/structure/cable/green{
 	icon_state = "1-2"
@@ -2700,6 +2707,9 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/assembly/robotics/surgery)
+"cxJ" = (
+/turf/simulated/floor/plating,
+/area/maintenance/substation/medical_science)
 "cym" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 9
@@ -2877,6 +2887,10 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/anomaly_lab/containment_two)
+"cFB" = (
+/obj/machinery/light,
+/turf/simulated/floor/plating,
+/area/maintenance/substation/research)
 "cGc" = (
 /obj/structure/cable/green{
 	icon_state = "0-2"
@@ -3137,18 +3151,24 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/medbay4)
 "cTK" = (
-/obj/structure/cable{
-	icon_state = "2-8"
+/obj/structure/cable/green{
+	icon_state = "4-8"
 	},
-/obj/structure/cable{
-	icon_state = "0-2"
+/obj/structure/cable/green{
+	icon_state = "1-4"
 	},
-/obj/machinery/power/terminal{
-	dir = 1
+/obj/structure/cable/green{
+	icon_state = "0-4"
 	},
-/obj/structure/catwalk,
+/obj/structure/cable/green{
+	icon_state = "2-4"
+	},
+/obj/machinery/power/sensor{
+	name = "Powernet Sensor - Deck 3 Subgrid";
+	name_tag = "Deck 3 Subgrid"
+	},
 /turf/simulated/floor/plating,
-/area/maintenance/substation/research)
+/area/maintenance/substation/medical)
 "cTS" = (
 /obj/machinery/power/apc/east_mount,
 /obj/structure/cable/green{
@@ -5126,11 +5146,11 @@
 /turf/simulated/floor/tiled/dark,
 /area/assembly/robotics/surgery)
 "eJe" = (
-/obj/machinery/light{
-	dir = 8
+/obj/machinery/power/breakerbox/activated{
+	RCon_tag = "DECK 3 SUPPORT"
 	},
 /turf/simulated/floor/plating,
-/area/space)
+/area/maintenance/substation/medical)
 "eJO" = (
 /obj/effect/floor_decal/techfloor/corner{
 	dir = 8
@@ -6327,14 +6347,12 @@
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/medical_restroom)
 "fIK" = (
-/obj/structure/cable{
-	icon_state = "1-4"
-	},
-/obj/structure/cable{
+/obj/structure/cable/orange{
 	icon_state = "4-8"
 	},
+/obj/spawner/window/reinforced/full,
 /turf/simulated/floor/plating,
-/area/maintenance/substation/medical)
+/area/maintenance/substation/research)
 "fIS" = (
 /obj/machinery/button/remote/airlock{
 	desc = "A remote control switch for the medbay recovery room door.";
@@ -6401,6 +6419,17 @@
 	},
 /turf/simulated/floor/tiled,
 /area/hallway/primary/starboard)
+"fKS" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/door/airlock/glass{
+	name = "Holodeck"
+	},
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/tiled,
+/area/maintenance/research)
 "fLa" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 1
@@ -6990,21 +7019,12 @@
 /turf/simulated/floor/tiled,
 /area/medical/surgeryprep)
 "gjw" = (
-/obj/machinery/door/firedoor/glass{
-	dir = 4
+/obj/structure/cable{
+	icon_state = "4-8"
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/obj/machinery/door/airlock/maintenance/rnd{
-	req_one_access = null
-	},
-/obj/map_helper/access_helper/airlock/station/science/maintenance,
+/obj/spawner/window/reinforced/full,
 /turf/simulated/floor/plating,
-/area/maintenance/substation/research)
+/area/maintenance/substation/medical)
 "gkl" = (
 /obj/structure/sink{
 	dir = 8;
@@ -7296,11 +7316,11 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/chemistry)
 "gyu" = (
-/obj/structure/cable/green{
-	icon_state = "1-8"
-	},
-/turf/simulated/floor/plating,
-/area/maintenance/substation/medical)
+/obj/machinery/door/firedoor,
+/obj/machinery/door/airlock/glass,
+/obj/map_helper/access_helper/airlock/station/maintenance,
+/turf/simulated/floor/tiled,
+/area/hallway/primary/starboard)
 "gzw" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -8449,11 +8469,8 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/sleeper)
 "hBp" = (
-/obj/structure/cable{
-	icon_state = "0-4"
-	},
-/obj/machinery/power/terminal{
-	dir = 1
+/obj/machinery/power/breakerbox{
+	RCon_tag = "DECK 3 MAIN"
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/medical)
@@ -8699,14 +8716,8 @@
 /turf/simulated/floor/tiled,
 /area/medical/virology)
 "hMz" = (
-/obj/machinery/power/smes/buildable{
-	RCon_tag = "Substation - Research"
-	},
-/obj/structure/cable/green{
-	icon_state = "0-4"
-	},
-/obj/structure/cable{
-	icon_state = "0-8"
+/obj/machinery/power/breakerbox{
+	RCon_tag = "DECK 3 MAIN"
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/research)
@@ -9045,15 +9056,11 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/rnd/workshop)
 "idf" = (
-/obj/structure/cable/green{
-	icon_state = "2-4"
+/obj/machinery/light{
+	dir = 1
 	},
-/obj/structure/cable/green{
-	icon_state = "0-4"
-	},
-/obj/machinery/power/sensor{
-	name = "Powernet Sensor - Medical Subgrid";
-	name_tag = "Medical Subgrid"
+/obj/structure/cable{
+	icon_state = "4-8"
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/medical)
@@ -9338,6 +9345,11 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
+/obj/map_helper/access_helper/airlock/station/maintenance,
+/obj/machinery/door/airlock/maintenance/engi{
+	req_one_access = null
+	},
+/obj/machinery/door/firedoor,
 /turf/simulated/floor/plating,
 /area/maintenance/substation/medical)
 "ioP" = (
@@ -10649,11 +10661,8 @@
 /turf/simulated/floor/tiled/white,
 /area/holodeck_control)
 "jvO" = (
-/obj/structure/cable/green,
-/obj/machinery/power/apc/east_mount,
-/obj/structure/catwalk,
-/turf/simulated/floor/plating,
-/area/maintenance/substation/research)
+/turf/simulated/wall/prepainted,
+/area/holodeck/alphadeck)
 "jwd" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
 /turf/simulated/floor/tiled/dark,
@@ -10692,6 +10701,12 @@
 /obj/effect/floor_decal/corner/blue/border,
 /turf/simulated/floor/tiled/white,
 /area/shuttle/emt/general)
+"jyg" = (
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/fpmaint2)
 "jym" = (
 /obj/structure/cable/green{
 	icon_state = "1-2"
@@ -10867,16 +10882,11 @@
 /turf/simulated/floor/tiled,
 /area/rnd/storage)
 "jGa" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/door/airlock/glass{
-	name = "Holodeck"
+/obj/structure/cable/orange{
+	icon_state = "4-8"
 	},
-/obj/structure/cable/green{
-	icon_state = "1-2"
-	},
-/turf/simulated/floor/tiled,
-/area/holodeck_control)
+/turf/simulated/floor/plating,
+/area/maintenance/fpmaint2)
 "jGo" = (
 /obj/structure/flora/pottedplant/tropical,
 /obj/effect/floor_decal/borderfloor{
@@ -10981,13 +10991,16 @@
 /turf/simulated/floor/tiled,
 /area/hallway/primary/aft)
 "jPu" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
+/obj/machinery/power/port_gen/pacman/mrs{
+	anchored = 1
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
+/obj/structure/cable/green{
+	icon_state = "0-4"
 	},
-/obj/structure/catwalk,
+/obj/machinery/air_alarm/north_mount,
+/obj/machinery/light{
+	dir = 8
+	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/research)
 "jPA" = (
@@ -12364,17 +12377,9 @@
 /turf/simulated/floor/airless/ceiling,
 /area/bridge)
 "lnk" = (
-/obj/structure/cable{
-	icon_state = "1-2"
+/obj/structure/cable/orange{
+	icon_state = "4-8"
 	},
-/obj/machinery/door/firedoor,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/structure/catwalk,
-/obj/machinery/door/airlock/maintenance/rnd{
-	req_one_access = null
-	},
-/obj/map_helper/access_helper/airlock/station/science/maintenance,
 /turf/simulated/floor/plating,
 /area/maintenance/substation/research)
 "lnu" = (
@@ -12575,6 +12580,15 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/rnd/testingroom)
+"lwk" = (
+/obj/machinery/light{
+	dir = 1
+	},
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/substation/research)
 "lwt" = (
 /obj/structure/table/reinforced,
 /obj/machinery/microwave,
@@ -12925,8 +12939,11 @@
 /turf/simulated/floor/plating,
 /area/crew_quarters/heads/cmo)
 "lLS" = (
-/obj/machinery/light{
-	dir = 1
+/obj/machinery/power/smes/buildable{
+	RCon_tag = "Deck 3 Grid"
+	},
+/obj/structure/cable/green{
+	icon_state = "0-4"
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/research)
@@ -13220,13 +13237,11 @@
 /turf/simulated/floor/tiled,
 /area/medical/reception)
 "lZR" = (
-/obj/machinery/atmospherics/component/unary/vent_pump/on{
-	dir = 1
+/obj/structure/cable{
+	icon_state = "4-8"
 	},
-/obj/machinery/light,
-/obj/effect/floor_decal/techfloor,
-/turf/simulated/floor/tiled,
-/area/hallway/primary/starboard)
+/turf/simulated/floor/plating,
+/area/maintenance/fpmaint2)
 "mai" = (
 /obj/machinery/door/firedoor{
 	dir = 8
@@ -13311,14 +13326,8 @@
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/medical_restroom)
 "mia" = (
-/obj/structure/cable/green{
-	icon_state = "0-8"
-	},
 /obj/structure/cable{
-	icon_state = "0-4"
-	},
-/obj/machinery/power/smes/buildable{
-	RCon_tag = "Substation - Medical"
+	icon_state = "2-8"
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/medical)
@@ -13891,12 +13900,17 @@
 /turf/simulated/floor/tiled,
 /area/rnd/hallway)
 "mKc" = (
-/obj/structure/cable/green{
-	icon_state = "1-2"
+/obj/machinery/power/port_gen/pacman/mrs{
+	anchored = 1
 	},
-/obj/machinery/door/airlock/glass,
-/obj/machinery/door/firedoor,
-/turf/simulated/floor/tiled,
+/obj/structure/cable/green{
+	icon_state = "0-4"
+	},
+/obj/machinery/air_alarm/north_mount,
+/obj/machinery/light{
+	dir = 8
+	},
+/turf/simulated/floor/plating,
 /area/maintenance/substation/medical)
 "mKe" = (
 /obj/structure/table/reinforced,
@@ -15204,13 +15218,19 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
-/obj/machinery/door/firedoor/glass{
-	dir = 4
+/obj/structure/cable/green{
+	icon_state = "1-4"
 	},
-/obj/machinery/door/airlock/maintenance/rnd{
-	req_one_access = null
+/obj/structure/cable/green{
+	icon_state = "0-4"
 	},
-/obj/map_helper/access_helper/airlock/station/science/department,
+/obj/structure/cable/green{
+	icon_state = "2-4"
+	},
+/obj/machinery/power/sensor{
+	name = "Powernet Sensor - Deck 3 Subgrid";
+	name_tag = "Deck 3 Subgrid"
+	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/research)
 "nTO" = (
@@ -16601,10 +16621,16 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/sleeper)
 "pgN" = (
-/obj/machinery/door/firedoor,
-/obj/spawner/window/low_wall/reinforced/full,
+/obj/machinery/power/terminal,
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/machinery/air_alarm/north_mount,
+/obj/structure/cable{
+	icon_state = "0-8"
+	},
 /turf/simulated/floor/plating,
-/area/holodeck_control)
+/area/maintenance/substation/research)
 "pgO" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -16990,11 +17016,9 @@
 /turf/simulated/floor/tiled,
 /area/hallway/primary/aft)
 "pyK" = (
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
-/turf/simulated/floor/plating,
-/area/maintenance/substation/medical)
+/obj/machinery/ai_status_display,
+/turf/simulated/wall/prepainted,
+/area/maintenance/research)
 "pyQ" = (
 /obj/machinery/door/firedoor,
 /obj/structure/cable/green{
@@ -17250,18 +17274,11 @@
 /turf/simulated/floor/tiled,
 /area/medical/reception)
 "pIb" = (
-/obj/structure/cable/green{
-	icon_state = "4-8"
+/obj/machinery/power/breakerbox/activated{
+	RCon_tag = "DECK 3 SUPPORT"
 	},
-/obj/machinery/door/firedoor/glass{
-	dir = 4
-	},
-/obj/machinery/door/airlock/maintenance/engi{
-	req_one_access = null
-	},
-/obj/map_helper/access_helper/airlock/station/maintenance,
 /turf/simulated/floor/plating,
-/area/maintenance/substation/medical)
+/area/maintenance/substation/research)
 "pKn" = (
 /obj/machinery/atmospherics/portables_connector,
 /obj/machinery/portable_atmospherics/canister/carbon_dioxide{
@@ -17706,22 +17723,14 @@
 /turf/simulated/floor/tiled,
 /area/medical/sleeper)
 "pZh" = (
-/obj/structure/cable/green{
-	icon_state = "4-8"
-	},
-/obj/machinery/power/sensor{
-	name = "Powernet Sensor - Research Subgrid";
-	name_tag = "Research Subgrid"
+/obj/machinery/power/smes/buildable{
+	RCon_tag = "Deck 3 Grid"
 	},
 /obj/structure/cable/green{
-	icon_state = "2-8"
-	},
-/obj/structure/catwalk,
-/obj/structure/cable/green{
-	icon_state = "0-8"
+	icon_state = "0-4"
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/substation/research)
+/area/maintenance/substation/medical)
 "pZu" = (
 /obj/machinery/atmospherics/pipe/simple/visible{
 	dir = 5
@@ -17815,16 +17824,10 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/rnd/reception_desk)
 "qgo" = (
-/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
-/obj/item/radio/intercom{
-	dir = 1;
-	name = "Station Intercom (General)";
-	pixel_y = 21
+/obj/structure/cable{
+	icon_state = "4-8"
 	},
-/obj/effect/floor_decal/techfloor{
-	dir = 1
-	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/plating,
 /area/hallway/primary/starboard)
 "qgp" = (
 /obj/structure/sign/biohazard{
@@ -17938,12 +17941,15 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/rnd/xenobiology/xenoflora_storage)
 "qli" = (
-/obj/effect/floor_decal/steeldecal/steel_decals_central1,
-/obj/effect/floor_decal/techfloor/corner{
-	dir = 1
+/obj/structure/cable/green{
+	icon_state = "4-8"
 	},
-/turf/simulated/floor/tiled,
-/area/hallway/primary/starboard)
+/obj/structure/cable/green{
+	icon_state = "0-8"
+	},
+/obj/machinery/power/apc/north_mount,
+/turf/simulated/floor/plating,
+/area/maintenance/substation/medical)
 "qls" = (
 /obj/machinery/suspension_gen,
 /turf/simulated/floor/tiled,
@@ -17971,12 +17977,10 @@
 /turf/simulated/floor/tiled,
 /area/medical/medbay_primary_storage)
 "qnh" = (
-/obj/structure/cable{
-	icon_state = "1-8"
+/obj/structure/cable/orange{
+	icon_state = "4-8"
 	},
-/obj/structure/cable/green{
-	icon_state = "2-4"
-	},
+/obj/machinery/light,
 /turf/simulated/floor/plating,
 /area/maintenance/substation/medical)
 "qnn" = (
@@ -18649,13 +18653,16 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/patient_d)
 "qPa" = (
-/obj/machinery/camera/network/civilian,
-/obj/machinery/fire_alarm/north_mount,
-/obj/effect/floor_decal/techfloor{
-	dir = 1
+/obj/machinery/power/terminal,
+/obj/structure/cable{
+	icon_state = "4-8"
 	},
-/turf/simulated/floor/tiled,
-/area/hallway/primary/starboard)
+/obj/machinery/air_alarm/north_mount,
+/obj/structure/cable{
+	icon_state = "0-8"
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/substation/medical)
 "qPc" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -19841,16 +19848,13 @@
 /turf/simulated/floor/carpet/tealcarpet,
 /area/medical/patient_d)
 "rOO" = (
-/obj/structure/cable{
-	icon_state = "1-2"
+/obj/structure/cable/green{
+	icon_state = "4-8"
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 10
+/obj/structure/cable/green{
+	icon_state = "0-8"
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 10
-	},
-/obj/structure/catwalk,
+/obj/machinery/power/apc/north_mount,
 /turf/simulated/floor/plating,
 /area/maintenance/substation/research)
 "rPC" = (
@@ -21020,12 +21024,11 @@
 /area/hallway/primary/starboard)
 "sTi" = (
 /obj/structure/cable/green{
-	icon_state = "1-2"
-	},
-/obj/item/radio/intercom{
 	dir = 8;
-	pixel_x = -28;
-	req_access = list()
+	icon_state = "2-4"
+	},
+/obj/structure/cable/green{
+	icon_state = "2-4"
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/medical)
@@ -21638,9 +21641,15 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/virologyaccess)
 "twM" = (
-/obj/structure/cable{
-	icon_state = "1-4"
+/obj/structure/cable/green{
+	dir = 1;
+	icon_state = "1-2"
 	},
+/obj/machinery/door/airlock/maintenance/engi{
+	req_one_access = null
+	},
+/obj/machinery/door/firedoor,
+/obj/map_helper/access_helper/airlock/station/engineering/department,
 /turf/simulated/floor/plating,
 /area/maintenance/substation/research)
 "twY" = (
@@ -21759,8 +21768,12 @@
 /turf/simulated/floor/tiled,
 /area/medical/medbay_primary_storage)
 "tEk" = (
-/obj/machinery/power/breakerbox/activated{
-	RCon_tag = "RESEARCH"
+/obj/structure/cable/green{
+	dir = 8;
+	icon_state = "2-4"
+	},
+/obj/structure/cable/green{
+	icon_state = "2-4"
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/research)
@@ -22033,12 +22046,14 @@
 /area/medical/medbay4)
 "tQL" = (
 /obj/structure/cable/green{
-	icon_state = "1-4"
+	dir = 1;
+	icon_state = "1-2"
 	},
-/obj/structure/cable/green,
-/obj/machinery/power/apc/west_mount{
-	cell_type = /obj/item/cell/super
+/obj/machinery/door/airlock/maintenance/engi{
+	req_one_access = null
 	},
+/obj/machinery/door/firedoor,
+/obj/map_helper/access_helper/airlock/station/engineering/department,
 /turf/simulated/floor/plating,
 /area/maintenance/substation/medical)
 "tQN" = (
@@ -23960,9 +23975,10 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/surgeryprep)
 "vIX" = (
-/obj/machinery/ai_status_display,
-/turf/simulated/wall/prepainted,
-/area/holodeck_control)
+/obj/machinery/door/firedoor,
+/obj/spawner/window/low_wall/reinforced/full,
+/turf/simulated/floor/plating,
+/area/holodeck/alphadeck)
 "vKw" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
@@ -24333,10 +24349,14 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/exam_room/exam_1)
 "waa" = (
-/obj/machinery/air_alarm{
-	dir = 8;
-	pixel_x = 24
+/obj/structure/cable/green{
+	icon_state = "4-8"
 	},
+/obj/map_helper/access_helper/airlock/station/maintenance,
+/obj/machinery/door/airlock/maintenance/engi{
+	req_one_access = null
+	},
+/obj/machinery/door/firedoor,
 /turf/simulated/floor/plating,
 /area/maintenance/substation/research)
 "wae" = (
@@ -24436,6 +24456,12 @@
 /obj/effect/floor_decal/industrial/outline/blue,
 /turf/simulated/floor/tiled/white,
 /area/medical/resleeving)
+"wdp" = (
+/obj/structure/cable{
+	icon_state = "2-8"
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/substation/research)
 "wdB" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
@@ -25292,15 +25318,11 @@
 /area/rnd/xenobiology)
 "wVf" = (
 /obj/structure/cable{
-	icon_state = "1-2"
+	icon_state = "4-8"
 	},
-/obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/maintenance/engi{
-	req_one_access = null
-	},
-/obj/map_helper/access_helper/airlock/station/maintenance,
+/obj/spawner/window/reinforced/full,
 /turf/simulated/floor/plating,
-/area/maintenance/substation/medical)
+/area/maintenance/substation/research)
 "wWa" = (
 /obj/structure/filingcabinet/chestdrawer,
 /obj/effect/floor_decal/corner/blue{
@@ -26304,14 +26326,10 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/teleporter/departing)
 "xTU" = (
-/obj/machinery/power/breakerbox/activated{
-	RCon_tag = "MEDICAL"
+/turf/simulated/floor/reinforced{
+	name = "Holodeck Projector Floor"
 	},
-/obj/machinery/light{
-	dir = 1
-	},
-/turf/simulated/floor/plating,
-/area/maintenance/substation/medical)
+/area/holodeck_control)
 "xUb" = (
 /obj/machinery/door/firedoor{
 	dir = 8
@@ -42237,7 +42255,7 @@ eEE
 eEE
 eEE
 eEE
-qjz
+eEE
 qjz
 pUq
 dVQ
@@ -42430,7 +42448,7 @@ uFa
 bYT
 eEE
 oYq
-eEE
+cxJ
 eEE
 qjz
 pUq
@@ -45531,9 +45549,9 @@ jWy
 tvV
 pUq
 pUq
-uwL
-qhO
-qbE
+ifg
+sLm
+ifg
 pUq
 pUq
 tvV
@@ -45725,9 +45743,9 @@ vzk
 rfd
 rfd
 pUq
-qPa
-qhO
-qbE
+cHC
+cHC
+cHC
 pUq
 rfd
 rfd
@@ -45920,8 +45938,8 @@ rfd
 rfd
 pUq
 qgo
-qhO
-lZR
+cHC
+cHC
 pUq
 rfd
 rfd
@@ -46113,9 +46131,9 @@ ifg
 pUq
 pUq
 pUq
-pUq
-cgQ
-pUq
+fLZ
+qjz
+qjz
 pUq
 pUq
 pUq
@@ -46306,12 +46324,12 @@ ifg
 ifg
 qjz
 qjz
-cgQ
-qjz
-qjz
-qjz
-qjz
-qjz
+chD
+gjw
+chD
+chD
+chD
+chD
 pUq
 fpV
 vKw
@@ -46501,11 +46519,11 @@ cHC
 qjz
 qjz
 chD
-chD
-chD
+qPa
+pZh
 chD
 mKc
-pUq
+chD
 pUq
 mDv
 vEl
@@ -46698,7 +46716,7 @@ chD
 idf
 sTi
 tQL
-ioN
+cTK
 eJe
 pUq
 ivz
@@ -46891,9 +46909,9 @@ qjz
 chD
 mia
 hBp
-ioN
-ioN
-qjz
+chD
+qli
+qnh
 pUq
 sLm
 aDX
@@ -47083,11 +47101,11 @@ cHC
 qjz
 qjz
 chD
-xTU
-fIK
+chD
+chD
+chD
 ioN
-ioN
-qjz
+bwt
 pUq
 kzM
 gzw
@@ -47276,12 +47294,12 @@ ifg
 cHC
 qjz
 qjz
-wVf
-pyK
-qnh
-gyu
-ioN
 qjz
+qjz
+qjz
+qjz
+sAZ
+oSi
 pUq
 wJW
 vKw
@@ -47470,12 +47488,12 @@ ifg
 ifg
 pUq
 pUq
-chD
-chD
-pIb
-chD
-chD
-pUq
+qjz
+qjz
+qjz
+qjz
+sAZ
+oSi
 pUq
 yeL
 gzw
@@ -50376,11 +50394,11 @@ wUs
 wUs
 ifg
 lay
-xHB
 bQh
 mcL
 tEs
 lKu
+tEs
 efr
 tEs
 qhO
@@ -50558,8 +50576,7 @@ eMZ
 wUs
 wUs
 wUs
-wUs
-wMp
+tcy
 wMp
 wMp
 wMp
@@ -50575,6 +50592,7 @@ mxz
 ixd
 kiA
 bxp
+qhO
 nAQ
 nAQ
 vvt
@@ -50752,8 +50770,7 @@ eMZ
 wUs
 wUs
 wUs
-wUs
-wMp
+tcy
 rvw
 nnJ
 snQ
@@ -50769,6 +50786,7 @@ vLl
 cyw
 dIf
 bxp
+qhO
 iST
 iST
 fuk
@@ -50946,8 +50964,7 @@ eMZ
 wUs
 wUs
 wUs
-wUs
-wMp
+tcy
 nnJ
 nnJ
 mOz
@@ -50963,6 +50980,7 @@ qhO
 qhg
 qhO
 bxp
+qhO
 iHO
 iHO
 nFw
@@ -51140,8 +51158,7 @@ eMZ
 wUs
 wUs
 wUs
-wUs
-vIX
+pyK
 nnJ
 nnJ
 nPr
@@ -51157,6 +51174,7 @@ oWl
 qhg
 aju
 mft
+ojq
 ojq
 ojq
 yah
@@ -51334,8 +51352,7 @@ eMZ
 wUs
 wUs
 wUs
-wUs
-wMp
+tcy
 kkX
 cLg
 mOj
@@ -51350,6 +51367,7 @@ wMp
 sLm
 aDX
 sLm
+pUq
 pUq
 pUq
 pUq
@@ -51528,8 +51546,7 @@ eMZ
 mbs
 wUs
 wUs
-wUs
-jGa
+fKS
 ocd
 vRE
 khL
@@ -51545,6 +51562,7 @@ tMu
 qhg
 qbE
 pUq
+pkD
 pkD
 pkD
 pkD
@@ -51722,8 +51740,7 @@ eMZ
 mbs
 wUs
 wUs
-wUs
-wMp
+tcy
 npO
 tBb
 rWV
@@ -51739,6 +51756,7 @@ nCE
 qhg
 hyb
 pUq
+pkD
 pkD
 pkD
 pkD
@@ -51916,8 +51934,7 @@ pRW
 mbs
 wUs
 wUs
-wUs
-wMp
+tcy
 ryc
 frJ
 nnJ
@@ -51933,6 +51950,7 @@ uwL
 xpI
 hyb
 pUq
+pkD
 pkD
 pkD
 pkD
@@ -52110,8 +52128,7 @@ pRW
 mbs
 wUs
 wUs
-wUs
-wMp
+tcy
 mai
 mai
 lTq
@@ -52127,6 +52144,7 @@ qhO
 qhg
 jWy
 pUq
+pkD
 pkD
 pkD
 pkD
@@ -52304,8 +52322,8 @@ pRW
 mbs
 wUs
 wUs
-wUs
-wMp
+tcy
+xTU
 jRK
 jRK
 jRK
@@ -52315,12 +52333,12 @@ jRK
 jRK
 jRK
 jRK
-jRK
-wMp
+jvO
 rXv
 qhg
 gvw
 pUq
+lZR
 pkD
 pkD
 pkD
@@ -52498,9 +52516,8 @@ pRW
 mbs
 wUs
 wUs
-wUs
-wMp
-jRK
+tcy
+xTU
 jRK
 jRK
 jRK
@@ -52510,17 +52527,18 @@ jRK
 jRK
 jRK
 mzX
-wMp
+jvO
 uwL
 fKt
 hyb
+pUq
+wVf
 rpj
 rpj
 rpj
-gjw
 rpj
-pkD
-pkD
+rpj
+rpj
 ifg
 mYS
 sIh
@@ -52692,8 +52710,8 @@ pRW
 mbs
 wUs
 wUs
-wUs
-wMp
+tcy
+xTU
 jRK
 jRK
 jRK
@@ -52703,18 +52721,18 @@ jRK
 jRK
 jRK
 jRK
-jRK
-wMp
+jvO
 mYS
 noT
 kXE
-rpj
+pUq
+pgN
 lLS
-pUI
-jPu
 rpj
-pkD
-pkD
+jPu
+pUI
+pUI
+pUI
 ifg
 ryR
 jYT
@@ -52886,8 +52904,8 @@ qBd
 mbs
 wUs
 wUs
-wUs
-wMp
+tcy
+xTU
 jRK
 jRK
 jRK
@@ -52897,18 +52915,18 @@ jRK
 jRK
 jRK
 jRK
-jRK
-pgN
+vIX
 uwL
 mAm
 jWy
-rpj
+pUq
+lwk
 tEk
 twM
-jPu
-rpj
-pkD
-pkD
+nTN
+pIb
+pUI
+pUI
 ifg
 uwL
 gzw
@@ -53080,8 +53098,8 @@ lmG
 mbs
 wUs
 wUs
-wUs
-wMp
+tcy
+xTU
 jRK
 jRK
 jRK
@@ -53091,18 +53109,18 @@ jRK
 jRK
 jRK
 jRK
-jRK
-wMp
+jvO
 uwL
 qhO
 hyb
-rpj
+pUq
+wdp
 hMz
-cTK
+rpj
 rOO
 lnk
-pkD
-pkD
+pUI
+cFB
 ifg
 dVQ
 pFp
@@ -53274,8 +53292,8 @@ qBd
 mbs
 wUs
 wUs
-wUs
-wMp
+tcy
+xTU
 jRK
 jRK
 jRK
@@ -53285,18 +53303,18 @@ jRK
 jRK
 jRK
 jRK
-jRK
-pgN
+vIX
 uwL
 qhO
 qbE
+pUq
 rpj
-pZh
-jvO
+rpj
+rpj
 waa
+fIK
 rpj
-pkD
-pkD
+pUI
 ifg
 uwL
 gzw
@@ -53468,8 +53486,8 @@ pRW
 mbs
 wUs
 wUs
-wUs
-wMp
+tcy
+xTU
 jRK
 jRK
 jRK
@@ -53479,19 +53497,19 @@ jRK
 jRK
 jRK
 jRK
-jRK
-wMp
+jvO
 nCE
 qxs
 fLw
-rpj
-nTN
-rpj
-rpj
-rpj
+pUq
 pkD
 pkD
-sLm
+pkD
+jyg
+jGa
+rpj
+pUI
+gyu
 qhO
 gzw
 qhO
@@ -53662,8 +53680,8 @@ pRW
 mbs
 wUs
 wUs
-wUs
-wMp
+tcy
+xTU
 jRK
 jRK
 jRK
@@ -53673,8 +53691,7 @@ jRK
 jRK
 jRK
 jRK
-jRK
-pgN
+vIX
 oGt
 qhO
 jWy
@@ -53684,7 +53701,8 @@ pkD
 pkD
 pkD
 pkD
-pkD
+rpj
+rpj
 ifg
 oGt
 jYT
@@ -53856,8 +53874,8 @@ pRW
 mbs
 wUs
 wUs
-wUs
-vdg
+ieR
+xTU
 jRK
 jRK
 jRK
@@ -53867,12 +53885,12 @@ jRK
 jRK
 jRK
 jRK
-jRK
-wMp
+jvO
 tJE
 qhO
 qbE
 pUq
+pkD
 pkD
 pkD
 pkD
@@ -54050,8 +54068,8 @@ pRW
 mbs
 wUs
 wUs
-wUs
-wMp
+tcy
+xTU
 jRK
 jRK
 jRK
@@ -54061,12 +54079,12 @@ jRK
 jRK
 jRK
 jRK
-jRK
-pgN
+vIX
 uwL
 kiA
 qhO
 cgQ
+pkD
 pkD
 pkD
 pkD
@@ -54244,8 +54262,7 @@ pRW
 mbs
 wUs
 wUs
-wUs
-wMp
+tcy
 wMp
 wMp
 vdg
@@ -54261,6 +54278,7 @@ dVQ
 qhO
 qbE
 pUq
+pkD
 pkD
 pkD
 pkD
@@ -54439,8 +54457,7 @@ mbs
 wUs
 wUs
 wUs
-wUs
-pUq
+tcy
 wMp
 tHz
 tHz
@@ -54460,7 +54477,8 @@ pkD
 pkD
 pkD
 pkD
-pUq
+pkD
+tUb
 ifg
 kzM
 iez
@@ -54634,8 +54652,7 @@ mbs
 wUs
 wUs
 wUs
-wUs
-wMp
+tcy
 wMp
 iKn
 xID
@@ -54644,17 +54661,18 @@ nnJ
 wCh
 nKo
 wWO
-ifg
+wMp
 aJe
 qhO
-qbE
+qhO
 pUq
 pkD
 pkD
 pkD
 pkD
 pkD
-pUq
+pkD
+tUb
 iym
 lyu
 gzw
@@ -54838,17 +54856,17 @@ pUq
 pUq
 pUq
 pUq
-cmn
-qli
+qhO
+xHB
 aju
-kUk
 pUq
 pkD
 pkD
 pkD
 pkD
 pkD
-pUq
+pkD
+tUb
 yeL
 qhO
 lYt
@@ -55035,8 +55053,8 @@ pUq
 uwL
 cGH
 vrc
-ifg
 pUq
+qjz
 pUq
 pUq
 pUq
@@ -55225,11 +55243,11 @@ teE
 teE
 pUq
 pUq
-iym
+cmn
 snO
 nFw
 qbE
-ifg
+pUq
 bge
 mna
 mna
