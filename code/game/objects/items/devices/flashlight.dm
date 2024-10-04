@@ -29,6 +29,7 @@
 	var/spawn_dir
 
 /obj/item/flashlight/Initialize(mapload)
+	set_flashlight()
 	. = ..()
 
 	if(power_use && cell_type)
@@ -288,11 +289,12 @@
 	brightness_on = 5
 	w_class = WEIGHT_CLASS_BULKY
 	power_use = 0
-	on = 1
 	light_wedge = LIGHT_OMNI
 	light_color = LIGHT_COLOR_FIRE
 	flashlight_range = 4
 
+/obj/item/flashlight/lamp/on
+	on = 1
 
 // green-shaded desk lamp
 /obj/item/flashlight/lamp/green
@@ -300,6 +302,9 @@
 	icon_state = "lampgreen"
 	brightness_on = 5
 	light_color = LIGHT_COLOR_TUNGSTEN
+
+/obj/item/flashlight/lamp/green/on
+	on = 1
 
 /obj/item/flashlight/lamp/verb/toggle_light()
 	set name = "Toggle light"
