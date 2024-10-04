@@ -104,3 +104,9 @@
 /area/victory/hallway/d1starboardhall
 	name = "\improper Deck 1 Starboard Hallway"
 	icon_state = "hallS"
+
+/** Science
+ */
+/area/rnd/robotics/morgue
+	name = "\improper Robotics Morgue"
+	icon_state = "robotics"
