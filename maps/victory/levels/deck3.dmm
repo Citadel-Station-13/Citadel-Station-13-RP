@@ -1165,7 +1165,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/wood,
-/area/space)
+/area/victory/hallway/d3fwdhall)
 "aZZ" = (
 /obj/machinery/air_alarm{
 	pixel_y = 22
@@ -2168,7 +2168,7 @@
 /obj/structure/table/woodentable,
 /obj/structure/flora/pottedplant/bamboo,
 /turf/simulated/floor/wood,
-/area/space)
+/area/victory/hallway/d3fwdhall)
 "bYw" = (
 /obj/structure/table/glass,
 /obj/effect/floor_decal/borderfloor,
@@ -3317,7 +3317,7 @@
 "cZD" = (
 /obj/machinery/fire_alarm/north_mount,
 /turf/simulated/floor/wood,
-/area/space)
+/area/victory/hallway/d3fwdhall)
 "cZK" = (
 /obj/machinery/body_scanconsole,
 /turf/simulated/floor/tiled/white,
@@ -3644,6 +3644,13 @@
 	},
 /turf/simulated/floor/tiled,
 /area/victory/hallway/d3starboardhall)
+"dot" = (
+/obj/machinery/door/firedoor{
+	dir = 8
+	},
+/obj/spawner/window/low_wall/reinforced/full,
+/turf/simulated/floor/plating,
+/area/victory/hallway/d3fwdhall)
 "doR" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -3734,7 +3741,7 @@
 /area/rnd/research/testingrange)
 "dsY" = (
 /turf/simulated/floor/wood,
-/area/space)
+/area/victory/hallway/d3fwdhall)
 "dtz" = (
 /turf/simulated/floor/tiled{
 	icon_state = "techmaint"
@@ -5105,7 +5112,7 @@
 /obj/structure/table/woodentable,
 /obj/item/paicard,
 /turf/simulated/floor/wood,
-/area/space)
+/area/victory/hallway/d3fwdhall)
 "eCw" = (
 /obj/structure/bed/chair,
 /turf/simulated/floor/tiled/white,
@@ -5569,7 +5576,7 @@
 "eXe" = (
 /obj/machinery/light,
 /turf/simulated/floor/wood,
-/area/space)
+/area/victory/hallway/d3fwdhall)
 "eXh" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 1
@@ -9262,7 +9269,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/wood,
-/area/space)
+/area/victory/hallway/d3fwdhall)
 "iez" = (
 /obj/machinery/holopad,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -14644,7 +14651,7 @@
 "ngD" = (
 /obj/structure/bed/chair/comfy/beige,
 /turf/simulated/floor/wood,
-/area/space)
+/area/victory/hallway/d3fwdhall)
 "nhg" = (
 /obj/structure/window/reinforced{
 	dir = 4
@@ -17950,7 +17957,7 @@
 	pixel_y = 21
 	},
 /turf/simulated/floor/wood,
-/area/space)
+/area/victory/hallway/d3fwdhall)
 "pXL" = (
 /obj/machinery/door/firedoor,
 /obj/spawner/window/low_wall/reinforced/full,
@@ -26102,7 +26109,7 @@
 "xki" = (
 /obj/structure/table/woodentable,
 /turf/simulated/floor/wood,
-/area/space)
+/area/victory/hallway/d3fwdhall)
 "xkX" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -58100,9 +58107,9 @@ qIz
 qIz
 qIz
 qIz
-pUq
+tUb
 tYH
-pUq
+tUb
 qIz
 qIz
 qIz
@@ -58472,7 +58479,7 @@ mDp
 mDp
 pRW
 pRW
-pRW
+pUq
 pRW
 pRW
 pRW
@@ -60621,11 +60628,11 @@ csb
 aaK
 csb
 mbs
-iRZ
-iRZ
-iRZ
-iRZ
-iRZ
+dot
+dot
+dot
+dot
+dot
 mbs
 aaK
 aaK

@@ -508,6 +508,10 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/engineering)
+"bA" = (
+/obj/structure/closet/firecloset,
+/turf/simulated/floor/tiled/techfloor,
+/area/space)
 "bB" = (
 /obj/structure/table/rack{
 	dir = 8;
@@ -688,6 +692,12 @@
 	},
 /turf/simulated/floor/reinforced/nitrogen,
 /area/engineering/atmos)
+"cg" = (
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/space)
 "ci" = (
 /obj/effect/floor_decal/industrial/danger{
 	dir = 1
@@ -869,6 +879,16 @@
 	},
 /turf/simulated/floor/tiled,
 /area/victory/hallway/d1fwdhall)
+"cG" = (
+/obj/structure/cable/green{
+	icon_state = "1-4"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 9
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/turf/simulated/floor/tiled/techfloor,
+/area/space)
 "cH" = (
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/corner/orange/border,
@@ -1116,6 +1136,15 @@
 "dB" = (
 /turf/simulated/wall/r_wall/prepainted,
 /area/space)
+"dD" = (
+/obj/structure/table/reinforced,
+/obj/item/radio,
+/obj/item/radio{
+	pixel_x = 2;
+	pixel_y = 3
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/space)
 "dE" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -1164,6 +1193,13 @@
 /obj/structure/railing,
 /turf/simulated/floor/plating,
 /area/maintenance/engineering)
+"dK" = (
+/obj/structure/bed/chair/bay/comfy,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/space)
 "dL" = (
 /obj/effect/floor_decal/borderfloorblack/corner{
 	alpha = 255;
@@ -1228,6 +1264,13 @@
 	},
 /turf/simulated/floor/plating,
 /area/engineering/atmos)
+"dZ" = (
+/obj/machinery/door/airlock{
+	id_tag = "bathroomlock15";
+	name = "Unit 1"
+	},
+/turf/simulated/floor/tiled/white,
+/area/victory/hallway/d1fwdmaint)
 "ea" = (
 /obj/machinery/recharge_station,
 /turf/simulated/floor/tiled/techfloor,
@@ -1619,10 +1662,6 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
-/obj/machinery/air_alarm{
-	dir = 4;
-	pixel_x = -23
-	},
 /turf/simulated/floor/tiled,
 /area/space)
 "fe" = (
@@ -1905,6 +1944,18 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/engineering/shield_gen)
+"ge" = (
+/obj/machinery/computer/med_data{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/paleblue{
+	dir = 10
+	},
+/obj/item/radio/intercom{
+	pixel_y = -24
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/space)
 "gg" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 4
@@ -2193,6 +2244,18 @@
 /obj/effect/floor_decal/industrial/outline/red,
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/portnacelle)
+"hb" = (
+/obj/structure/bed/chair/bay/comfy{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/yellow{
+	dir = 10
+	},
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/space)
 "hd" = (
 /obj/machinery/porta_turret/ai_defense,
 /turf/simulated/floor/tiled/techfloor,
@@ -2346,6 +2409,13 @@
 "hD" = (
 /turf/simulated/floor/reinforced/airmix,
 /area/engineering/atmos)
+"hE" = (
+/obj/machinery/door/window/brigdoor/westleft{
+	req_access = list(19)
+	},
+/obj/machinery/door/firedoor,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/space)
 "hF" = (
 /obj/structure/railing{
 	dir = 8
@@ -2459,6 +2529,18 @@
 /obj/machinery/atmospherics/pipe/simple/visible,
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/atmos)
+"ie" = (
+/obj/machinery/computer/transhuman/resleeving{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/paleblue{
+	dir = 10
+	},
+/obj/machinery/newscaster{
+	pixel_y = -32
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/space)
 "if" = (
 /obj/structure/sign/warning/fire,
 /turf/simulated/wall/r_wall/prepainted,
@@ -3021,6 +3103,22 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/engineering)
+"jQ" = (
+/obj/effect/floor_decal/corner/yellow{
+	dir = 10
+	},
+/obj/effect/floor_decal/corner/yellow{
+	dir = 4
+	},
+/obj/structure/bed/chair/bay/comfy{
+	dir = 1
+	},
+/obj/structure/cable/green{
+	icon_state = "0-8"
+	},
+/obj/machinery/power/apc/critical/east_mount,
+/turf/simulated/floor/tiled/techfloor,
+/area/space)
 "jR" = (
 /obj/structure/table/reinforced,
 /obj/item/paper_bin,
@@ -3028,6 +3126,12 @@
 /obj/item/stamp/ce,
 /turf/simulated/floor/tiled,
 /area/crew_quarters/heads/chief)
+"jS" = (
+/obj/effect/floor_decal/corner/paleblue{
+	dir = 5
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/space)
 "jT" = (
 /turf/simulated/wall/r_wall/prepainted/engineering,
 /area/maintenance/substation/engineering)
@@ -3451,6 +3555,13 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/starboardnacelle)
+"lo" = (
+/obj/machinery/air_alarm{
+	dir = 4;
+	pixel_x = -23
+	},
+/turf/simulated/floor/tiled,
+/area/space)
 "lp" = (
 /obj/structure/catwalk,
 /obj/machinery/door/firedoor,
@@ -4497,6 +4608,19 @@
 	},
 /turf/simulated/floor/tiled,
 /area/victory/hallway/d1fwdhall)
+"pi" = (
+/obj/effect/floor_decal/corner/paleblue{
+	dir = 10
+	},
+/obj/effect/floor_decal/corner/paleblue{
+	dir = 1
+	},
+/obj/structure/table/reinforced,
+/obj/machinery/computer/med_data/laptop{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/space)
 "pk" = (
 /obj/structure/table/standard,
 /obj/item/paper/monitorkey,
@@ -4890,6 +5014,14 @@
 	},
 /turf/simulated/floor/plating,
 /area/victory/hallway/d1fwdhall)
+"qH" = (
+/obj/structure/grille,
+/obj/structure/window/reinforced/polarized/full{
+	id = "bridge_interior"
+	},
+/obj/machinery/door/firedoor/glass,
+/turf/simulated/floor/plating,
+/area/space)
 "qI" = (
 /turf/simulated/wall/r_wall/prepainted/engineering,
 /area/engineering/engine_eva)
@@ -4914,6 +5046,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled,
+/area/space)
+"qP" = (
+/turf/simulated/wall/r_wall/prepainted/civilian,
 /area/space)
 "qQ" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
@@ -5265,6 +5400,10 @@
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/locker_room)
+"rS" = (
+/obj/structure/table/reinforced,
+/turf/simulated/floor/tiled/techfloor,
+/area/space)
 "rT" = (
 /obj/machinery/atmospherics/pipe/manifold/visible/red{
 	dir = 4
@@ -5320,6 +5459,25 @@
 /obj/effect/paint_stripe/sun,
 /turf/simulated/floor/plating,
 /area/tcommsat/computer)
+"sb" = (
+/obj/machinery/computer/rcon,
+/obj/effect/floor_decal/corner/yellow{
+	dir = 5
+	},
+/obj/effect/floor_decal/corner/yellow,
+/obj/machinery/newscaster{
+	pixel_y = 32
+	},
+/obj/item/radio/intercom{
+	dir = 4;
+	name = "Station Intercom (General)";
+	pixel_x = 23
+	},
+/obj/machinery/light/no_nightshift{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/space)
 "sc" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -6069,6 +6227,12 @@
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled/white,
 /area/engineering/engine_airlock)
+"uA" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 9
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/space)
 "uB" = (
 /obj/machinery/power/smes/buildable{
 	RCon_tag = "Engineering";
@@ -6419,6 +6583,9 @@
 "vC" = (
 /turf/simulated/floor/airless/ceiling,
 /area/victory/hallway/d1fwdmaint)
+"vF" = (
+/turf/simulated/wall/prepainted/civilian,
+/area/space)
 "vG" = (
 /obj/landmark/spawnpoint/job/ai,
 /obj/machinery/requests_console{
@@ -7093,6 +7260,15 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/victory/hallway/d1starboardhall)
+"xs" = (
+/obj/structure/table/standard,
+/obj/structure/bedsheetbin,
+/obj/random/soap,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 9
+	},
+/turf/simulated/floor/tiled/white,
+/area/victory/hallway/d1fwdmaint)
 "xu" = (
 /obj/landmark/spawnpoint/job/ai/secondary,
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
@@ -7457,6 +7633,12 @@
 	},
 /turf/simulated/floor/tiled,
 /area/victory/hallway/d1fwdhall)
+"yI" = (
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/space)
 "yJ" = (
 /turf/simulated/wall/r_wall/prepainted/engineering,
 /area/crew_quarters/heads/chief)
@@ -7465,6 +7647,12 @@
 /obj/machinery/atmospherics/pipe/manifold/visible/yellow,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/starboardnacelle)
+"yL" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/space)
 "yM" = (
 /obj/machinery/air_alarm{
 	pixel_y = 22
@@ -7507,6 +7695,9 @@
 	},
 /turf/simulated/floor/plating,
 /area/victory/hallway/d1fwdhall)
+"yQ" = (
+/turf/simulated/floor/tiled/white,
+/area/victory/hallway/d1fwdmaint)
 "yR" = (
 /obj/structure/sink{
 	pixel_y = 22
@@ -7631,6 +7822,16 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/victory/hallway/d1porthall)
+"zk" = (
+/obj/effect/floor_decal/corner/yellow{
+	dir = 9
+	},
+/obj/effect/floor_decal/corner/yellow,
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/space)
 "zl" = (
 /obj/machinery/computer/atmos_alert,
 /obj/machinery/camera/network/engineering,
@@ -8133,6 +8334,25 @@
 	initial_gas_mix = "n2=100;TEMP=80"
 	},
 /area/tcommsat/chamber)
+"AX" = (
+/obj/machinery/door/airlock/maintenance/command{
+	name = "Command Substation"
+	},
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
+/obj/machinery/door/blast/regular{
+	density = 0;
+	icon_state = "pdoor0";
+	id = "bridge_lockdown";
+	name = "Bridge Lockdown";
+	opacity = 0
+	},
+/obj/machinery/door/firedoor/glass,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/turf/simulated/floor/plating,
+/area/space)
 "Bc" = (
 /obj/structure/table/standard,
 /obj/structure/bedsheetbin,
@@ -8366,6 +8586,10 @@
 	},
 /turf/simulated/floor/reinforced/airless,
 /area/engineering/portnacelle)
+"BL" = (
+/obj/machinery/fire_alarm/north_mount,
+/turf/simulated/floor/tiled/white,
+/area/victory/hallway/d1fwdmaint)
 "BM" = (
 /obj/machinery/button/remote/blast_door{
 	id = "starboardnacelle_blastdoor";
@@ -8721,6 +8945,9 @@
 	},
 /turf/simulated/floor/reinforced/n20,
 /area/engineering/atmos)
+"CY" = (
+/turf/simulated/wall,
+/area/victory/hallway/d1fwdmaint)
 "CZ" = (
 /obj/landmark{
 	name = "carpspawn"
@@ -8739,6 +8966,15 @@
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/drone_fabrication)
+"Dg" = (
+/obj/effect/floor_decal/corner/paleblue{
+	dir = 9
+	},
+/obj/effect/floor_decal/corner/paleblue{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/space)
 "Dl" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -8865,6 +9101,17 @@
 "DC" = (
 /turf/simulated/wall/r_wall/prepainted/engineering,
 /area/tcommsat/chamber)
+"DD" = (
+/obj/machinery/light_switch{
+	dir = 8;
+	pixel_x = 24
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 9
+	},
+/turf/simulated/floor/tiled/white,
+/area/victory/hallway/d1fwdmaint)
 "DE" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
@@ -9157,6 +9404,16 @@
 	},
 /turf/simulated/floor/tiled,
 /area/space)
+"ED" = (
+/obj/structure/mirror{
+	dir = 4;
+	pixel_y = 32
+	},
+/obj/structure/sink{
+	pixel_y = 22
+	},
+/turf/simulated/floor/tiled/white,
+/area/victory/hallway/d1fwdmaint)
 "EG" = (
 /obj/structure/window/reinforced{
 	dir = 4
@@ -9701,6 +9958,14 @@
 /obj/machinery/power/shield_generator,
 /turf/simulated/floor/tiled/monowhite,
 /area/engineering/shield_gen)
+"Gb" = (
+/obj/machinery/computer/atmos_alert,
+/obj/effect/floor_decal/corner/yellow{
+	dir = 5
+	},
+/obj/machinery/fire_alarm/north_mount,
+/turf/simulated/floor/tiled/techfloor,
+/area/space)
 "Gc" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
@@ -9711,6 +9976,13 @@
 /obj/structure/table/woodentable,
 /turf/simulated/floor/wood,
 /area/space)
+"Gf" = (
+/obj/machinery/light/no_nightshift,
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/white,
+/area/victory/hallway/d1fwdmaint)
 "Gg" = (
 /obj/machinery/atmospherics/pipe/simple/visible/universal,
 /turf/simulated/floor/plating,
@@ -9958,6 +10230,16 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/starboardnacelle)
+"GT" = (
+/obj/machinery/computer/power_monitor,
+/obj/effect/floor_decal/corner/yellow{
+	dir = 5
+	},
+/obj/machinery/computer/ship/navigation/telescreen{
+	pixel_y = 27
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/space)
 "GV" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -10398,6 +10680,18 @@
 	},
 /turf/simulated/floor/tiled,
 /area/victory/hallway/d1fwdhall)
+"IJ" = (
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
+/obj/structure/closet/fireaxecabinet{
+	pixel_x = 32;
+	pixel_y = 30
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/turf/simulated/floor/tiled/techfloor,
+/area/space)
 "IM" = (
 /obj/machinery/atmospherics/pipe/simple/visible/yellow{
 	dir = 4
@@ -10656,6 +10950,14 @@
 "Ju" = (
 /turf/simulated/wall/r_wall/prepainted,
 /area/engineering/hallway/lower)
+"Jv" = (
+/obj/machinery/air_alarm{
+	dir = 8;
+	pixel_x = 25
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/turf/simulated/floor/tiled/white,
+/area/victory/hallway/d1fwdmaint)
 "Jx" = (
 /obj/machinery/button/ignition{
 	id = "starboardnacelle_igniter";
@@ -10966,6 +11268,12 @@
 /obj/structure/closet/radiation,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/space)
+"KB" = (
+/obj/machinery/door/airlock{
+	name = "Unit 2"
+	},
+/turf/simulated/floor/tiled/white,
+/area/victory/hallway/d1fwdmaint)
 "KC" = (
 /turf/space/basic,
 /area/space)
@@ -11046,6 +11354,9 @@
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/maintenance/substation/engineering)
+"KP" = (
+/turf/simulated/wall,
+/area/space)
 "KQ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/carpet/blucarpet,
@@ -11378,6 +11689,11 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled/steel_ridged,
 /area/victory/hallway/d1starboardhall)
+"LU" = (
+/obj/machinery/holopad,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/turf/simulated/floor/tiled/techfloor,
+/area/space)
 "LV" = (
 /obj/structure/cable/green{
 	icon_state = "1-2";
@@ -11423,6 +11739,20 @@
 /obj/effect/paint_stripe/sun,
 /turf/simulated/floor/plating,
 /area/tcommsat/computer)
+"Mf" = (
+/obj/machinery/button/remote/airlock{
+	id = "bathroomlock15";
+	name = "Bathroom Lock";
+	pixel_x = 5;
+	pixel_y = 24;
+	specialfunctions = 4
+	},
+/obj/machinery/light/small,
+/obj/structure/toilet{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/white,
+/area/victory/hallway/d1fwdmaint)
 "Mh" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -11487,6 +11817,13 @@
 /obj/effect/floor_decal/techfloor/orange,
 /turf/simulated/floor/tiled,
 /area/victory/hallway/d1starboardhall)
+"Ms" = (
+/obj/machinery/recharge_station,
+/obj/machinery/light/small{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/white,
+/area/victory/hallway/d1fwdmaint)
 "Mt" = (
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging{
 	dir = 10
@@ -11589,6 +11926,15 @@
 /obj/map_helper/access_helper/airlock/station/engineering/equipment,
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/storage)
+"ML" = (
+/obj/machinery/door/airlock{
+	name = "Restroom"
+	},
+/obj/machinery/door/firedoor,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/turf/simulated/floor/tiled/white,
+/area/space)
 "MM" = (
 /obj/structure/cable/green{
 	icon_state = "1-2"
@@ -11608,6 +11954,9 @@
 /obj/machinery/light/small,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/starboardnacelle)
+"MP" = (
+/turf/simulated/floor/tiled/techfloor,
+/area/space)
 "MQ" = (
 /turf/simulated/wall/r_wall/prepainted/command,
 /area/ai/foyer)
@@ -11998,6 +12347,15 @@
 /obj/structure/window/reinforced,
 /turf/simulated/floor/plating,
 /area/maintenance/trash_pit)
+"Od" = (
+/obj/effect/floor_decal/corner/yellow{
+	dir = 10
+	},
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/space)
 "Oe" = (
 /obj/structure/cable/green{
 	icon_state = "1-2";
@@ -12201,6 +12559,13 @@
 /obj/machinery/vending/coffee,
 /turf/simulated/floor/plating,
 /area/maintenance/engineering)
+"OK" = (
+/obj/structure/closet/emcloset,
+/obj/machinery/light/no_nightshift{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/space)
 "ON" = (
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging{
 	dir = 9
@@ -12486,6 +12851,9 @@
 	initial_gas_mix = "n2=100;TEMP=80"
 	},
 /area/tcommsat/chamber)
+"PV" = (
+/turf/simulated/wall/r_wall,
+/area/victory/hallway/d1fwdmaint)
 "PW" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 4
@@ -12765,6 +13133,19 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/engineering)
+"QZ" = (
+/obj/machinery/computer/med_data{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/paleblue{
+	dir = 10
+	},
+/obj/effect/floor_decal/corner/paleblue{
+	dir = 4
+	},
+/obj/machinery/light/no_nightshift,
+/turf/simulated/floor/tiled/techfloor,
+/area/space)
 "Rc" = (
 /obj/machinery/atmospherics/pipe/simple/visible/black,
 /obj/machinery/light{
@@ -13485,6 +13866,13 @@
 /obj/machinery/vending/tool,
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/storage)
+"Ts" = (
+/obj/effect/floor_decal/corner/paleblue{
+	dir = 5
+	},
+/obj/structure/bed/chair/bay/comfy,
+/turf/simulated/floor/tiled/techfloor,
+/area/space)
 "Tt" = (
 /obj/structure/railing,
 /turf/simulated/floor/plating,
@@ -13528,6 +13916,14 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/universal,
 /turf/simulated/floor/plating,
 /area/maintenance/trash_pit)
+"Tz" = (
+/obj/effect/floor_decal/corner/paleblue{
+	dir = 5
+	},
+/obj/effect/floor_decal/corner/paleblue,
+/obj/structure/bed/chair/bay/comfy,
+/turf/simulated/floor/tiled/techfloor,
+/area/space)
 "TA" = (
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 1
@@ -13766,6 +14162,13 @@
 /obj/machinery/door/firedoor,
 /turf/simulated/floor/plating,
 /area/maintenance/engineering)
+"Ur" = (
+/obj/machinery/air_alarm{
+	dir = 1;
+	pixel_y = -22
+	},
+/turf/simulated/floor/tiled/white,
+/area/victory/hallway/d1fwdmaint)
 "Us" = (
 /obj/machinery/atmospherics/component/unary/freezer{
 	dir = 4
@@ -14085,6 +14488,16 @@
 	},
 /turf/simulated/floor/tiled,
 /area/space)
+"Vp" = (
+/obj/machinery/computer/station_alert,
+/obj/effect/floor_decal/corner/yellow{
+	dir = 5
+	},
+/obj/effect/floor_decal/corner/yellow{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/space)
 "Vq" = (
 /obj/machinery/door/airlock{
 	name = "Shell Recharging"
@@ -14325,6 +14738,16 @@
 	},
 /turf/simulated/floor/bluegrid,
 /area/ai)
+"Wf" = (
+/obj/machinery/button/windowtint{
+	id = "bridge_interior";
+	pixel_y = -26
+	},
+/obj/structure/table/reinforced,
+/obj/item/storage/firstaid/regular,
+/obj/machinery/light/no_nightshift,
+/turf/simulated/floor/tiled/techfloor,
+/area/space)
 "Wg" = (
 /obj/effect/floor_decal/corner/lightorange/border{
 	dir = 4
@@ -14402,6 +14825,19 @@
 	},
 /turf/simulated/floor/tiled,
 /area/space)
+"Wy" = (
+/obj/structure/mirror{
+	dir = 4;
+	pixel_y = 32
+	},
+/obj/structure/sink{
+	pixel_y = 22
+	},
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/white,
+/area/victory/hallway/d1fwdmaint)
 "WA" = (
 /obj/structure/filingcabinet,
 /obj/machinery/camera/network/tcomms{
@@ -28941,10 +29377,10 @@ Wu
 cR
 CM
 tO
-JE
-JE
-GA
-JE
+KP
+KP
+CY
+KP
 JE
 cR
 MY
@@ -29135,10 +29571,10 @@ Wu
 ep
 CM
 Oj
-JE
-lm
-lm
-lm
+vF
+Mf
+CY
+Ms
 JE
 ep
 NQ
@@ -29329,10 +29765,10 @@ Wu
 cR
 CM
 tO
-JE
-lm
-lm
-lm
+vF
+dZ
+CY
+KB
 JE
 cR
 NQ
@@ -29523,10 +29959,10 @@ Wu
 ep
 CM
 Oj
-JE
-lm
-lm
-lm
+vF
+BL
+yQ
+yQ
 JE
 ep
 NQ
@@ -29717,10 +30153,10 @@ Wu
 cR
 CM
 tO
-JE
-lm
-lm
-lm
+vF
+ED
+yQ
+Ur
 JE
 ep
 NQ
@@ -29911,10 +30347,10 @@ Wu
 ep
 CM
 Oj
-JE
-lm
-lm
-lm
+vF
+Wy
+yQ
+Gf
 JE
 cR
 NQ
@@ -30105,10 +30541,10 @@ Wu
 cR
 CM
 tO
-JE
-lm
-lm
-lm
+ML
+DD
+Jv
+xs
 JE
 ep
 NQ
@@ -30299,10 +30735,10 @@ Br
 ep
 CM
 Oj
-JE
-lm
-lm
-lm
+qP
+PV
+PV
+PV
 JE
 cR
 NQ
@@ -32615,13 +33051,13 @@ OD
 WF
 JE
 JE
-JE
-JE
-JE
-JE
-JE
-JE
-JE
+tY
+qH
+qH
+hE
+qH
+qH
+tY
 JE
 JE
 VS
@@ -32809,13 +33245,13 @@ OD
 WF
 zb
 zb
-zb
-zb
-zb
-zb
-zb
-zb
-zb
+tY
+OK
+yI
+MP
+cg
+Wf
+tY
 zb
 zb
 VS
@@ -33003,13 +33439,13 @@ OD
 WF
 zb
 zb
-zb
-zb
-zb
-zb
-zb
-zb
-zb
+tY
+bA
+yL
+MP
+dK
+rS
+tY
 zb
 zb
 VS
@@ -33197,13 +33633,13 @@ OD
 WF
 zb
 zb
-zb
-zb
-zb
-zb
-zb
-zb
-zb
+AX
+IJ
+cG
+LU
+uA
+dD
+tY
 zb
 zb
 VS
@@ -33391,13 +33827,13 @@ OD
 WF
 zb
 zb
-zb
-zb
-zb
-zb
-zb
-zb
-zb
+tY
+Vp
+zk
+MP
+Dg
+pi
+tY
 zb
 zb
 VS
@@ -33435,17 +33871,17 @@ TP
 TP
 TP
 TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
 TP
 TP
 TP
@@ -33585,13 +34021,13 @@ OD
 WF
 zb
 zb
-zb
-zb
-zb
-zb
-zb
-zb
-zb
+tY
+Gb
+hb
+MP
+Ts
+ge
+tY
 zb
 zb
 VS
@@ -33629,17 +34065,17 @@ TP
 TP
 TP
 TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
 TP
 TP
 TP
@@ -33779,13 +34215,13 @@ OD
 WF
 zb
 zb
-zb
-zb
-zb
-zb
-zb
-zb
-zb
+tY
+GT
+Od
+MP
+jS
+ie
+tY
 zb
 zb
 VS
@@ -33823,17 +34259,17 @@ TP
 TP
 TP
 TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
 TP
 TP
 TP
@@ -33973,13 +34409,13 @@ OD
 WF
 zb
 zb
-zb
-zb
-zb
-zb
-zb
-zb
-zb
+tY
+sb
+jQ
+MP
+Tz
+QZ
+tY
 zb
 zb
 VS
@@ -34011,23 +34447,23 @@ TP
 TP
 TP
 TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
 TP
 TP
 TP
@@ -34167,13 +34603,13 @@ OD
 WF
 zb
 zb
-zb
-zb
-zb
-zb
-zb
-zb
-zb
+tY
+tY
+tY
+tY
+tY
+tY
+tY
 zb
 zb
 VS
@@ -34205,22 +34641,22 @@ TP
 TP
 TP
 TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
 KC
 KC
 KC
@@ -34359,17 +34795,17 @@ JE
 EM
 OD
 WF
-zb
+kw
 pU
 MR
 MR
 Qy
 Mh
-Qy
+lo
 MR
 MR
 pU
-zb
+kw
 VS
 bp
 Mr
@@ -34399,22 +34835,22 @@ TP
 TP
 TP
 TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
 KC
 KC
 KC
@@ -34593,22 +35029,22 @@ TP
 TP
 TP
 TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
 KC
 KC
 KC
@@ -34787,22 +35223,22 @@ TP
 TP
 TP
 TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
 KC
 KC
 KC
@@ -34981,22 +35417,22 @@ TP
 TP
 TP
 TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
 KC
 KC
 KC
@@ -35175,22 +35611,22 @@ TP
 TP
 TP
 TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
 KC
 KC
 KC
@@ -35369,22 +35805,22 @@ TP
 TP
 TP
 TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
 KC
 KC
 KC
@@ -35563,22 +35999,22 @@ TP
 TP
 TP
 TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
 KC
 KC
 KC
@@ -35757,22 +36193,22 @@ TP
 TP
 TP
 TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
 KC
 KC
 KC
@@ -35951,22 +36387,22 @@ TP
 TP
 TP
 TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
 KC
 KC
 KC
@@ -36145,22 +36581,22 @@ TP
 TP
 TP
 TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
 KC
 KC
 KC
@@ -36339,22 +36775,22 @@ TP
 TP
 TP
 TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
 KC
 KC
 KC
@@ -36533,22 +36969,22 @@ TP
 TP
 TP
 TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
 KC
 KC
 KC
@@ -36727,22 +37163,22 @@ TP
 TP
 TP
 TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
 KC
 KC
 KC
@@ -36915,28 +37351,28 @@ TP
 TP
 TP
 TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
 KC
 KC
 KC
@@ -37109,28 +37545,28 @@ TP
 TP
 TP
 TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
 KC
 KC
 KC
@@ -37303,28 +37739,28 @@ TP
 TP
 TP
 TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
 KC
 KC
 KC
@@ -37497,21 +37933,21 @@ TP
 TP
 TP
 TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
 TP
 TP
 TP
@@ -37691,21 +38127,21 @@ TP
 TP
 TP
 TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
 TP
 TP
 TP
@@ -37885,21 +38321,21 @@ TP
 TP
 TP
 TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
 TP
 TP
 TP
@@ -38079,21 +38515,21 @@ TP
 TP
 TP
 TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
 TP
 TP
 TP
@@ -38273,21 +38709,21 @@ TP
 TP
 TP
 TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
 TP
 TP
 TP
@@ -38467,21 +38903,21 @@ TP
 TP
 TP
 TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
 TP
 TP
 TP
@@ -38661,21 +39097,21 @@ TP
 TP
 TP
 TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
 TP
 TP
 TP
@@ -38855,21 +39291,21 @@ TP
 TP
 TP
 TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
 TP
 TP
 TP
@@ -39049,21 +39485,21 @@ TP
 TP
 TP
 TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
 TP
 TP
 TP
@@ -39243,21 +39679,21 @@ TP
 TP
 TP
 TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
 TP
 TP
 TP
@@ -39437,21 +39873,21 @@ TP
 TP
 TP
 TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
 TP
 TP
 TP
@@ -39631,21 +40067,21 @@ TP
 TP
 TP
 TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
 TP
 TP
 TP
@@ -39825,21 +40261,21 @@ TP
 TP
 TP
 TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
 TP
 TP
 TP
@@ -40019,21 +40455,21 @@ TP
 TP
 TP
 TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
 TP
 TP
 TP
@@ -40213,21 +40649,21 @@ TP
 TP
 TP
 TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
 TP
 TP
 TP
@@ -40407,21 +40843,21 @@ TP
 TP
 TP
 TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
 TP
 TP
 TP
@@ -40601,21 +41037,21 @@ TP
 TP
 TP
 TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
 TP
 TP
 TP
@@ -40795,21 +41231,21 @@ TP
 TP
 TP
 TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
 TP
 TP
 TP
@@ -40989,21 +41425,21 @@ TP
 TP
 TP
 TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
 TP
 TP
 TP
