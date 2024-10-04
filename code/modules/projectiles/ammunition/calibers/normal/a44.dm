@@ -12,7 +12,6 @@
 	materials_base = list(MAT_STEEL = 210)
 
 /obj/item/ammo_casing/a44/rubber
-	icon_state = "r-casing"
 	desc = "A .44 rubber bullet casing."
 	icon_state = "large-blue"
 	projectile_type = /obj/projectile/bullet/pistol/rubber/strong

@@ -15,7 +15,6 @@
 	projectile_type = /obj/projectile/bullet/pistol/rubber
 
 /obj/item/ammo_casing/a38/emp
-	name = ".38 haywire round"
 	desc = "A .38 bullet casing fitted with a single-use ion pulse generator."
 	icon_state = "small-tech"
 	projectile_type = /obj/projectile/ion/small
@@ -62,8 +61,8 @@
 
 /obj/item/ammo_magazine/a38/speedloader/emp
 	name = "speedloader (.38 haywire)"
-	icon_state = "bluetip-6"
-	base_icon_state = "bluetip"
+	icon_state = "tech-6"
+	base_icon_state = "tech"
 	ammo_preload = /obj/item/ammo_casing/a38/emp
 
 /obj/item/ammo_magazine/a38/speedloader/silver
