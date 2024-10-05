@@ -102,6 +102,12 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology)
+"adg" = (
+/obj/structure/bed/chair/office/dark{
+	dir = 1
+	},
+/turf/simulated/floor/wood,
+/area/space)
 "adj" = (
 /obj/machinery/light{
 	dir = 4
@@ -213,6 +219,10 @@
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /turf/simulated/floor/tiled/techfloor,
 /area/medical/morgue)
+"aif" = (
+/obj/machinery/computer/crew,
+/turf/simulated/floor/wood,
+/area/space)
 "aja" = (
 /obj/effect/floor_decal/techfloor,
 /obj/machinery/light,
@@ -1050,6 +1060,12 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/hallway)
+"aUj" = (
+/obj/structure/bed/chair/office/dark{
+	dir = 4
+	},
+/turf/simulated/floor/wood,
+/area/space)
 "aUo" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 6
@@ -1537,6 +1553,11 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/rnd/anomaly_lab/containment_two)
+"bAe" = (
+/obj/structure/table/reinforced,
+/obj/item/deskbell,
+/turf/simulated/floor/wood,
+/area/space)
 "bAI" = (
 /mob/living/bot/medibot/medass,
 /obj/structure/sign/warning/nosmoking_1{
@@ -2820,6 +2841,12 @@
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology/xenoflora)
+"cAh" = (
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/wood,
+/area/space)
 "cAA" = (
 /obj/machinery/door/firedoor/glass{
 	dir = 4
@@ -3001,6 +3028,14 @@
 /obj/effect/floor_decal/industrial/outline/red,
 /turf/simulated/floor/tiled,
 /area/rnd/research_foyer_auxiliary)
+"cJg" = (
+/obj/machinery/camera/network/medbay{
+	dir = 1
+	},
+/obj/structure/table/glass,
+/obj/item/retail_scanner/medical,
+/turf/simulated/floor/wood,
+/area/space)
 "cKJ" = (
 /obj/machinery/fire_alarm/north_mount,
 /turf/simulated/floor/tiled,
@@ -3482,6 +3517,12 @@
 /obj/machinery/light/small,
 /turf/simulated/floor/tiled/white,
 /area/holodeck_control)
+"dfI" = (
+/obj/structure/table/steel_reinforced,
+/obj/machinery/computer/med_data/laptop,
+/obj/item/hand_labeler,
+/turf/simulated/floor/wood,
+/area/space)
 "dgf" = (
 /turf/simulated/floor/plating,
 /area/victory/hallway/d3fwdhall)
@@ -7189,6 +7230,26 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/anomaly_lab)
+"glV" = (
+/obj/machinery/fire_alarm/south_mount{
+	pixel_y = -24
+	},
+/obj/structure/table/glass,
+/obj/item/radio{
+	pixel_x = 4;
+	pixel_y = -4
+	},
+/obj/item/radio{
+	pixel_x = -4
+	},
+/obj/item/radio{
+	pixel_x = 4;
+	pixel_y = 4
+	},
+/obj/item/hand_labeler,
+/obj/structure/cable/green,
+/turf/simulated/floor/wood,
+/area/space)
 "gmh" = (
 /obj/machinery/computer/arcade/battle,
 /obj/effect/floor_decal/corner/beige{
@@ -7350,6 +7411,14 @@
 /obj/item/deskbell,
 /turf/simulated/floor/tiled,
 /area/rnd/reception_desk)
+"gsQ" = (
+/obj/structure/table/reinforced,
+/obj/item/paper_bin,
+/obj/item/pen{
+	pixel_y = 4
+	},
+/turf/simulated/floor/wood,
+/area/space)
 "gtM" = (
 /obj/landmark{
 	name = "carpspawn"
@@ -7922,6 +7991,11 @@
 "gTY" = (
 /turf/space,
 /area/rnd/xenobiology)
+"gUv" = (
+/obj/machinery/power/apc/west_mount,
+/obj/machinery/papershredder,
+/turf/simulated/floor/wood,
+/area/space)
 "gUD" = (
 /obj/machinery/door/firedoor/glass{
 	dir = 4
@@ -10769,6 +10843,9 @@
 /obj/effect/floor_decal/corner/mauve/bordercorner,
 /turf/simulated/floor/tiled/techfloor,
 /area/assembly/robotics)
+"jsi" = (
+/turf/simulated/floor/wood,
+/area/space)
 "jsq" = (
 /obj/structure/sign/greencross{
 	name = "Authorized Medical Personnel Only";
@@ -11417,6 +11494,16 @@
 /obj/machinery/light,
 /turf/simulated/floor/tiled,
 /area/victory/hallway/d3porthall)
+"jXr" = (
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/wood,
+/area/space)
+"jXM" = (
+/obj/structure/table/reinforced,
+/turf/simulated/floor/wood,
+/area/space)
 "jYw" = (
 /obj/machinery/air_alarm/monitor/isolation{
 	alarm_id = "isolation_two";
@@ -13635,6 +13722,12 @@
 /obj/item/integrated_circuit_printer,
 /turf/simulated/floor/tiled/techfloor,
 /area/rnd/workshop)
+"mmf" = (
+/obj/machinery/computer/guestpass{
+	pixel_y = 24
+	},
+/turf/space/basic,
+/area/space)
 "mmt" = (
 /turf/simulated/floor/tiled/techfloor,
 /area/rnd/workshop)
@@ -16905,6 +16998,12 @@
 /turf/simulated/floor/tiled{
 	icon_state = "techmaint"
 	},
+/area/space)
+"pff" = (
+/obj/structure/cable/green{
+	icon_state = "2-8"
+	},
+/turf/simulated/floor/wood,
 /area/space)
 "pgh" = (
 /obj/machinery/sleeper{
@@ -21827,6 +21926,10 @@
 	},
 /turf/simulated/floor/airless/ceiling,
 /area/medical/psych_ward)
+"toT" = (
+/obj/structure/filingcabinet/chestdrawer,
+/turf/simulated/floor/wood,
+/area/space)
 "toX" = (
 /obj/structure/table/standard,
 /obj/item/melee/baton/slime/loaded,
@@ -21878,6 +21981,14 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/psych_ward)
+"tpZ" = (
+/obj/structure/filingcabinet/medical{
+	desc = "A large cabinet with hard copy medical records.";
+	name = "Medical Records"
+	},
+/obj/landmark/spawnpoint/job/medical_doctor,
+/turf/space/basic,
+/area/space)
 "tql" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 8
@@ -23329,6 +23440,13 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology/xenoflora)
+"uHA" = (
+/obj/machinery/air_alarm{
+	dir = 4;
+	pixel_x = -23
+	},
+/turf/simulated/floor/wood,
+/area/space)
 "uHG" = (
 /obj/machinery/light{
 	dir = 4
@@ -24160,6 +24278,11 @@
 /obj/effect/floor_decal/steeldecal/steel_decals6,
 /turf/simulated/floor/tiled,
 /area/victory/hallway/d3porthall)
+"vvK" = (
+/obj/machinery/photocopier,
+/obj/machinery/light/no_nightshift,
+/turf/simulated/floor/wood,
+/area/space)
 "vws" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
@@ -25477,6 +25600,10 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/medbay3)
+"wDr" = (
+/obj/landmark/spawnpoint/job/medical_doctor,
+/turf/space/basic,
+/area/space)
 "wDR" = (
 /obj/machinery/power/apc/east_mount,
 /obj/effect/floor_decal/borderfloor{
@@ -30179,11 +30306,11 @@ pRW
 pRW
 pRW
 pRW
-pRW
-pRW
-pRW
-pRW
-pRW
+jXM
+uHA
+cAh
+jsi
+gUv
 pRW
 pRW
 pRW
@@ -30373,11 +30500,11 @@ pRW
 pRW
 pRW
 pRW
-pRW
-pRW
-pRW
-pRW
-pRW
+jXM
+adg
+pff
+jXr
+glV
 pRW
 pRW
 pRW
@@ -30567,11 +30694,11 @@ pRW
 pRW
 pRW
 pRW
-pRW
-pRW
-pRW
-pRW
-pRW
+jXM
+toT
+jsi
+jsi
+cJg
 pRW
 pRW
 pRW
@@ -30761,11 +30888,11 @@ pRW
 pRW
 pRW
 pRW
-pRW
-pRW
-pRW
-pRW
-pRW
+jXM
+adg
+jsi
+jsi
+vvK
 pRW
 pRW
 pRW
@@ -30955,11 +31082,11 @@ pRW
 pRW
 pRW
 pRW
-pRW
-pRW
-pRW
-pRW
-pRW
+jXM
+aif
+jsi
+aUj
+dfI
 pRW
 pRW
 pRW
@@ -31149,11 +31276,11 @@ pRW
 pRW
 pRW
 pRW
-pRW
-pRW
-mDp
-mDp
-pRW
+jXM
+jXM
+gsQ
+bAe
+jXM
 pRW
 pRW
 pRW
@@ -31179,7 +31306,7 @@ pRW
 pRW
 pRW
 pRW
-pRW
+mmf
 pRW
 pRW
 pRW
@@ -33118,7 +33245,7 @@ pRW
 pRW
 pRW
 pRW
-pRW
+tpZ
 pRW
 pRW
 pRW
@@ -33314,7 +33441,7 @@ pRW
 pRW
 pRW
 pRW
-pRW
+wDr
 pRW
 pRW
 pRW
