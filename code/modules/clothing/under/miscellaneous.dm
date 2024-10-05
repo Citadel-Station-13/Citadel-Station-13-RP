@@ -1258,6 +1258,11 @@
 	desc = "A colorable leotard with a piece of semi-transparent cloth near the bust. Perfect for showing off cleavage. Bunny ears not included."
 	icon_state = "leotard_color"
 
+/obj/item/clothing/under/leotardwindow
+	name = "side-window leotard"
+	desc = "A revealing leotard with that exposes your sides."
+	icon_state = "leotard_window"
+
 /obj/item/clothing/under/bunnysuit_f
 	name = "bunny leotard (f)"
 	desc = "A black leotard, commonly used by casino workers to drive up tips. Bunny ears and tail sold separately."
