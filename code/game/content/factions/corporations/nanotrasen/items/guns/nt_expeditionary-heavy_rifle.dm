@@ -22,12 +22,14 @@
 	/// specifically for /obj/item/ammo_magazine/nt_expeditionary/heavy_rifle's
 	var/stripper_state = "basic"
 
-/obj/item/ammo_casing/nt_expeditionary/antimaterial/piercing
+/obj/item/ammo_casing/nt_expeditionary/heavy_rifle/piercing
 	icon_state = "piercing"
+	stripper_state = "piercing"
 	// todo: implement casing + magazine
 
-/obj/item/ammo_casing/nt_expeditionary/antimaterial/rubber
+/obj/item/ammo_casing/nt_expeditionary/heavy_rifle/rubber
 	icon_state = "rubber"
+	stripper_state = "rubber"
 	// todo: implement casing + magazine
 
 //* Magazines *//

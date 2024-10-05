@@ -16,6 +16,19 @@
 	caliber = /datum/ammo_caliber/nt_expeditionary/light_rifle
 	projectile_type = /obj/projectile/bullet/nt_expeditionary/light_rifle
 
+	/// specifically for /obj/item/ammo_magazine/nt_expeditionary/heavy_rifle's
+	var/speedloader_state = "basic"
+
+/obj/item/ammo_casing/nt_expeditionary/light_rifle/piercing
+	icon_state = "piercing"
+	speedloader_state = "piercing"
+	// todo: implement casing + magazine
+
+/obj/item/ammo_casing/nt_expeditionary/light_rifle/rubber
+	icon_state = "rubber"
+	speedloader_state = "rubber"
+	// todo: implement casing + magazine
+
 //* Magazines *//
 
 /obj/item/ammo_magazine/nt_expeditionary/light_rifle
@@ -56,8 +69,6 @@
 	icon = 'icons/content/factions/corporations/nanotrasen/items/guns/expeditionary/rifle-light.dmi'
 	caliber = /datum/ammo_caliber/nt_expeditionary/light_rifle
 
-#warn sprites
-
 /obj/item/gun/ballistic/nt_expeditionary/light_rifle/pistol
 	name = "high-caliber pistol"
 	desc = "The XNP Mk.9 \"David\" revolver; a refined design output by the Nanotrasen Research Division in conjunction with Hephaestus Industries."
@@ -69,6 +80,9 @@
 		practical use. This is nonetheless seen now and then in the hands of enthusiasts.
 	"} + "<br>"
 	load_method = SINGLE_CASING | SPEEDLOADER
+	icon_state = "revolver"
+	base_icon_state = "revolver"
+	render_break_state = BALLISTIC_RENDER_BREAK_OPEN
 
 /obj/item/gun/ballistic/nt_expeditionary/light_rifle/semirifle
 	name = "semi-automatic rifle"
@@ -82,6 +96,9 @@
 		workhorse of a weapon.
 	"} + "<br>"
 	load_method = SINGLE_CASING | MAGAZINE
+	icon_state = "semi-map"
+	base_icon_state = "semi"
+	render_magazine_overlay = MAGAZINE_CLASS_GENERIC
 
 /obj/item/gun/ballistic/nt_expeditionary/light_rifle/autorifle
 	name = "automatic rifle"
@@ -95,6 +112,9 @@
 		the automatic fire this weapon is capable of.
 	"} + "<br>"
 	load_method = SINGLE_CASING | MAGAZINE
+	icon_state = "auto-map"
+	base_icon_state = "auto"
+	render_magazine_overlay = MAGAZINE_CLASS_GENERIC
 
 /obj/item/gun/ballistic/nt_expeditionary/light_rifle/pdw
 	name = "personal defense weapon"
@@ -108,6 +128,9 @@
 		store inside cramped cockpits and into survival kits with its compact magazines.
 	"} + "<br>"
 	load_method = SINGLE_CASING | MAGAZINE
+	icon_state = "pdw-map"
+	base_icon_state = "pdw"
+	render_magazine_overlay = MAGAZINE_CLASS_GENERIC
 
 /obj/item/gun/ballistic/nt_expeditionary/light_rifle/lmg
 	name = "squad automatic weapon"
@@ -120,5 +143,8 @@
 		to reduce the complexities of servicing and maintaining the series as a whole.
 	"} + "<br>"
 	load_method = SINGLE_CASING | MAGAZINE
-
-#warn impl all
+	icon_state = "saw-map"
+	base_icon_state = "saw"
+	render_magazine_overlay = MAGAZINE_CLASS_GENERIC
+	render_bolt_overlay = BALLISTIC_RENDER_BOLT_CLOSE
+	render_break_overlay = BALLISTIC_RENDER_BREAK_BOTH
