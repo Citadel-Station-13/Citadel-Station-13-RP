@@ -203,10 +203,10 @@
 	health = 600
 	maxHealth = 600
 	armor_legacy_mob = list(
-		"melee" = 20,
-		"bullet" = 20,
-		"laser" = 70,
-		"energy" = 80,
+		"melee" = 40,
+		"bullet" = 50,
+		"laser" = 30,
+		"energy" = 20,
 		"bomb" = 0,
 		"bio" = 100,
 		"rad" = 100,
@@ -215,7 +215,7 @@
 	legacy_melee_damage_upper = 40
 	attack_armor_type = DAMAGE_MODE_PIERCE | DAMAGE_MODE_SHARP
 	attack_armor_pen = 30
-	movement_cooldown = 4
+	movement_cooldown = 2
 	base_pixel_x = -16
 	base_pixel_y = 2
 	icon_scale_x = 1.2
@@ -369,7 +369,7 @@
 	health = 200
 	legacy_melee_damage_lower = 15
 	legacy_melee_damage_upper = 15
-	movement_cooldown = 6
+	movement_cooldown = 3
 	base_pixel_x = -16
 	attack_sound = 'sound/mobs/biomorphs/spitter_attack.ogg'
 	ai_holder_type = /datum/ai_holder/polaris/simple_mob/melee
