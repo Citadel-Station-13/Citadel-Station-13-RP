@@ -20,9 +20,7 @@
 	projectile_type = /obj/projectile/bullet/nt_expeditionary/heavy_rifle
 
 	/// specifically for /obj/item/ammo_magazine/nt_expeditionary/heavy_rifle's
-	///
-	/// * null to default to "[base_icon_state || initial(icon_state)]"
-	var/stripper_state
+	var/stripper_state = "basic"
 
 /obj/item/ammo_casing/nt_expeditionary/antimaterial/piercing
 	icon_state = "piercing"

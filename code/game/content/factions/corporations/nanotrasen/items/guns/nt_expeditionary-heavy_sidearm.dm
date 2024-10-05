@@ -16,6 +16,9 @@
 	caliber = /datum/ammo_caliber/nt_expeditionary/heavy_sidearm
 	projectile_type = /obj/projectile/bullet/nt_expeditionary/heavy_sidearm
 
+	/// specifically for /obj/item/ammo_magazine/nt_expeditionary/heavy_rifle's
+	var/stripper_state = "basic"
+
 //* Magazines *//
 
 /obj/item/ammo_magazine/nt_expeditionary/heavy_sidearm
@@ -34,19 +37,29 @@
 /obj/item/ammo_magazine/nt_expeditionary/heavy_sidearm/speedloader/update_icon(updates)
 	cut_overlays()
 	. = ..()
-	#warn impl; overlay via "[base_icon_state]-[casing.magazine_state]", shift -2, -2
+	var/list/overlays_to_add = list()
+	for(var/i in 1 to min(4, amount_remaining()))
+		var/obj/item/ammo_casing/nt_expeditionary/heavy_sidearm/predicted_path = peek_path_of_position(i)
+		var/append = "basic"
+		if(ispath(predicted_path, /obj/item/ammo_casing/nt_expeditionary/heavy_sidearm))
+			append = initial(casted_path_of_potential.stripper_state)
+		var/image/overlay = image(icon, "speedloader-[append]")
+		overlay.pixel_x = (i - 1) * 2 - 1
+		overlay.pixel_y = (i - 1) * -2 + 1
+		overlays_to_add += overlay
+	add_overlay(overlays_to_add)
 
 /obj/item/ammo_magazine/nt_expeditionary/heavy_sidearm/pistol
 	name = "pistol magazine (NT-9-LR)"
 	icon_state = "magazine-5"
 	base_icon_state = "magazine"
+	rendering_static_overlay = "-stripe"
 
 /obj/item/ammo_magazine/nt_expeditionary/heavy_sidearm/smg
 	name = "smg magazine (NT-9-LR)"
 	icon_state = "smg-1"
 	base_icon_state = "smg"
-
-#warn impl all
+	rendering_static_overlay = "-stripe"
 
 //* Projectiles *//
 
@@ -63,8 +76,6 @@
 	icon = 'icons/content/factions/corporations/nanotrasen/items/guns/expeditionary/sidearm-heavy.dmi'
 	caliber = /datum/ammo_caliber/nt_expeditionary/heavy_sidearm
 
-#warn sprites
-
 /obj/item/gun/ballistic/nt_expeditionary/heavy_sidearm/pistol
 	name = "heavy pistol"
 	desc = "The XNP Mk.2 \"Angry Moth\" sidearm; a refined design output by the Nanotrasen Research Division in conjunction with Hephaestus Industries."
@@ -77,6 +88,8 @@
 		fighting is expected and not simply a possibility.
 	"} + "<br>"
 	load_method = SINGLE_CASING | MAGAZINE
+	icon_state = "pistol-map"
+	base_icon_state = "pistol"
 
 /obj/item/gun/ballistic/nt_expeditionary/heavy_sidearm/revolver
 	name = "heavy revolver"
@@ -89,6 +102,7 @@
 		the fine trigger control a triple-action revolver provides.
 	"} + "<br>"
 	load_method = SINGLE_CASING | SPEEDLOADER
+	icon_state = "revolver"
 
 /obj/item/gun/ballistic/nt_expeditionary/heavy_sidearm/smg
 	name = "submachine gun"
@@ -102,5 +116,6 @@
 		with relative ease.
 	"} + "<br>"
 	load_method = SINGLE_CASING | MAGAZINE
-
-#warn impl all
+	icon_state = "smg-map"
+	base_icon_state = "smg"
+	render_magazine_overlay = MAGAZINE_CLASS_GENERIC

@@ -19,8 +19,28 @@
 
 	//* Rendering *//
 
-	/// Render `-unloaded` while unloaded
-	var/render_unloaded = FALSE
+	/// Render an overlay when magazine is in.
+	///
+	/// todo: mob renderer integration
+	///
+	/// * This uses MAGAZINE_CLASS_* defines
+	/// * We'll look for a matching class that we support to render
+	/// * If we can't find one, we'll use any class that we have on ourselves
+	var/render_magazine_overlay = NONE
+	/// Render the chamber state.
+	///
+	/// todo: mob renderer integration
+	///
+	/// * uses BALLISTIC_RENDER_BOLT_* enms
+	var/render_bolt_overlay = BALLISTIC_RENDER_BOLT_NEVER
+	/// Render the state of a gun that's 'break action'
+	///
+	/// todo: mob renderer integration
+	///
+	/// * uses BALLISTIC_RENDER_BREAK_* enums
+	/// * This is also used for LMGs, and any other gun requiring this stuff.
+	var/render_break_overlay = BALLISTIC_RENDER_BREAK_NEVER
+	#warn impl above
 
 	//! LEGACY BELOW
 
@@ -371,3 +391,15 @@
 	var/datum/ammo_caliber/ours = resolve_caliber(caliber)
 	var/datum/ammo_caliber/theirs = resolve_caliber(caliberlike)
 	return ours.equivalent(theirs)
+
+//* Rendering *//
+
+/**
+ * Returns an overlay for a magazine. This can be a string, or anything else that goes into our 'overlays' list.
+ */
+/obj/item/gnu/ballistic/proc/get_magazine_overlay_for(obj/item/ammo_magazine/magazine)
+	if(!(magazine.magazine_class & render_magazine_overlay))
+		return
+	return global.magazine_class_bit_to_state[log(2, magazine.magazine_class)]
+
+#warn impl
