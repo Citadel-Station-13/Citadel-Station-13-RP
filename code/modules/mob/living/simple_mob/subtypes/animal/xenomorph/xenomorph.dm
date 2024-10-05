@@ -394,8 +394,8 @@
 	legacy_melee_damage_lower = 20
 	legacy_melee_damage_upper = 20
 	movement_cooldown = 3
-	base_pixel_x = -8
-	base_pixel_y = -4
+	base_pixel_x = -16
+	base_pixel_y = -3
 	icon_scale_x = 0.9
 	icon_scale_y = 0.9
 	projectiletype = /obj/projectile/potent_fire
