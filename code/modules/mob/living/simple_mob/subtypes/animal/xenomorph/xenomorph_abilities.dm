@@ -407,7 +407,6 @@
 	name = "ember"
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "explosion_particle"
-	projectilesound = 'sound/items/Welder.ogg'
 	modifier_type_to_apply = /datum/modifier/fire
 	modifier_duration = 12 SECONDS // About 15 damage per stack, as Life() ticks every two seconds.
 	damage_force = 0
