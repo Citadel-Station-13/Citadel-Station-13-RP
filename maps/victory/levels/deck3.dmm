@@ -2202,14 +2202,25 @@
 /turf/simulated/floor/tiled/monotile,
 /area/rnd/anomaly_lab)
 "caz" = (
-/obj/effect/floor_decal/borderfloorwhite{
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/effect/floor_decal/corner/beige/border{
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/turf/simulated/floor/tiled/white,
-/area/medical/medbay4)
+/obj/machinery/door/firedoor/glass{
+	dir = 4
+	},
+/obj/machinery/door/airlock/medical{
+	name = "Operating Theatre 1";
+	req_one_access = null
+	},
+/obj/map_helper/access_helper/airlock/station/medical/surgery,
+/turf/simulated/floor/plating,
+/area/space)
 "cbh" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -6634,9 +6645,8 @@
 /obj/effect/floor_decal/corner/beige/border{
 	dir = 4
 	},
-/obj/machinery/disposal,
 /turf/simulated/floor/tiled/white,
-/area/medical/medbay4)
+/area/space)
 "fUW" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 10
@@ -19855,23 +19865,15 @@
 /turf/simulated/floor/tiled,
 /area/space)
 "rRb" = (
-/obj/structure/closet/secure_closet/medical2,
-/obj/item/clothing/suit/straight_jacket,
-/obj/item/clothing/suit/straight_jacket,
-/obj/item/clothing/suit/straight_jacket,
-/obj/item/reagent_containers/glass/bottle/stoxin,
-/obj/item/reagent_containers/glass/bottle/stoxin,
-/obj/item/reagent_containers/glass/bottle/stoxin,
-/obj/item/storage/box/syringes,
-/obj/item/gun/launcher/syringe,
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 4
 	},
 /obj/effect/floor_decal/corner/beige/border{
 	dir = 4
 	},
+/obj/machinery/disposal,
 /turf/simulated/floor/tiled/white,
-/area/medical/medbay4)
+/area/space)
 "rRl" = (
 /obj/effect/floor_decal/steeldecal/steel_decals6,
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
@@ -24740,7 +24742,7 @@
 /area/rnd/research_foyer_auxiliary)
 "wtH" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
-/turf/space/basic,
+/turf/simulated/floor/plating,
 /area/space)
 "wtL" = (
 /obj/machinery/door/firedoor{
@@ -34288,8 +34290,8 @@ guA
 guA
 guA
 guA
-rRb
-gOV
+guA
+jPF
 kBS
 hrZ
 aPI
@@ -34479,12 +34481,12 @@ ryO
 goh
 jPF
 jPF
-caz
-caz
-fUM
-tQp
-tQp
-tQp
+jPF
+jPF
+jPF
+jPF
+jPF
+jPF
 tQp
 ntf
 glw
@@ -34672,12 +34674,12 @@ eHm
 xNy
 goh
 jPF
-tQp
-igd
-igd
-igd
-igd
-igd
+jPF
+vtj
+vtj
+vtj
+vtj
+vtj
 igd
 igd
 igd
@@ -34866,13 +34868,13 @@ eHm
 aHb
 goh
 jPF
-tQp
-rQF
-tWY
-nyz
-aLf
-okU
-wtH
+jPF
+fUM
+fUM
+rRb
+igd
+igd
+igd
 gVd
 mkA
 wdT
@@ -35061,12 +35063,12 @@ ryO
 cbw
 jPF
 tQp
-rUX
-vtj
-uLE
-vtj
-lar
-wtH
+igd
+igd
+igd
+igd
+igd
+igd
 aqP
 vtj
 vtj
@@ -35255,12 +35257,12 @@ pUq
 pUq
 pUq
 igd
-vIV
-cLl
-vtj
-crH
-vtj
-pEd
+rQF
+tWY
+nyz
+aLf
+okU
+wtH
 vtj
 vtj
 vtj
@@ -35449,11 +35451,11 @@ pUq
 qjz
 qjz
 igd
-bwC
-joq
-vOD
-xYq
-omH
+rUX
+vtj
+uLE
+vtj
+lar
 wtH
 vtj
 vtj
@@ -35643,15 +35645,15 @@ pUq
 qjz
 qjz
 igd
-wtH
-wtH
-wtH
-wtH
-wtH
-wtH
+vIV
+cLl
+vtj
+crH
+vtj
+caz
 vtj
 vtj
-egu
+vtj
 vtj
 igd
 aHi
@@ -35837,15 +35839,15 @@ pUq
 qjz
 qjz
 igd
+bwC
+joq
+vOD
+xYq
+omH
+wtH
 vtj
-vtj
-vtj
-vtj
-vtj
-vtj
-vtj
-vtj
-cJg
+egu
+dIJ
 vtj
 igd
 tQp
@@ -36031,15 +36033,15 @@ pUq
 pUq
 cgQ
 igd
-wtH
-wtH
-wtH
-wtH
-wtH
+igd
+igd
+igd
+igd
+igd
 wtH
 vtj
+cJg
 vtj
-dIJ
 vtj
 pjz
 jPF
@@ -36424,7 +36426,7 @@ cLl
 vtj
 jin
 vtj
-pEd
+caz
 vtj
 vtj
 vtj
@@ -57923,7 +57925,7 @@ mDp
 mDp
 pRW
 pRW
-pUq
+pRW
 pRW
 pRW
 pRW
