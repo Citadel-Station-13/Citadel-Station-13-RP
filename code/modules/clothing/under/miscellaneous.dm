@@ -1260,7 +1260,7 @@
 
 /obj/item/clothing/under/leotardwindow
 	name = "side-window leotard"
-	desc = "A revealing leotard with that exposes your sides."
+	desc = "A revealing leotard with a window that exposes your sides."
 	icon_state = "leotard_window"
 
 /obj/item/clothing/under/bunnysuit_f
