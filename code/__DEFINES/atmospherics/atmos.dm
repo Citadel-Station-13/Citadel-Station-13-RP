@@ -101,23 +101,3 @@
 //How many moles of fuel are contained within one solid/liquid fuel volume unit
 ///mol/volume unit
 #define LIQUIDFUEL_AMOUNT_TO_MOL		0.45
-/// Pipe-insulation rate divisor.
-#define NORMPIPERATE             30
-/// Heat-exchange pipe insulation.
-#define HEATPIPERATE             8
-/// Fraction of gas transfered per process.
-#define FLOWFRAC                 0.99
-//Flags for zone sleeping
-#define ZONE_ACTIVE   1
-#define ZONE_SLEEPING 0
-
-// Defines how much of certain gas do the Atmospherics tanks start with. Values are in kpa per tile (assuming 20C)
-/// A lot of N2 is needed to produce air mix, that's why we keep 90MPa of it
-#define ATMOSTANK_NITROGEN      90000
-/// O2 is also important for airmix, but not as much as N2 as it's only 21% of it.
-#define ATMOSTANK_OXYGEN        40000
-/// CO2 and PH are not critically important for station, only for toxins and alternative coolants, no need to store a lot of those.
-#define ATMOSTANK_CO2           25000
-#define ATMOSTANK_PHORON        25000
-/// N2O doesn't have a real useful use, i guess it's on station just to allow refilling of sec's riot control canisters?
-#define ATMOSTANK_NITROUSOXIDE  10000
