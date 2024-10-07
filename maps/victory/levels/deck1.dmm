@@ -1336,18 +1336,6 @@
 /obj/map_helper/access_helper/airlock/station/engineering/equipment,
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/storage)
-"dF" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 10
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/obj/machinery/air_alarm{
-	pixel_y = 22
-	},
-/turf/simulated/floor/tiled/white,
-/area/space)
 "dG" = (
 /obj/machinery/atmospherics/pipe/manifold/visible/blue{
 	dir = 8
@@ -2900,16 +2888,6 @@
 /obj/machinery/light,
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/atmos)
-"hP" = (
-/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
-/obj/structure/cable{
-	icon_state = "1-8"
-	},
-/turf/simulated/floor/tiled/white,
-/area/space)
 "hQ" = (
 /obj/machinery/power/sensor{
 	name = "Powernet Sensor - Telecomms Subgrid";
@@ -5763,19 +5741,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/portnacelle)
-"qj" = (
-/obj/structure/sink{
-	pixel_y = 22
-	},
-/obj/structure/mirror{
-	dir = 4;
-	pixel_y = 33
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 10
-	},
-/turf/simulated/floor/tiled/white,
-/area/space)
 "ql" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 8
@@ -5933,17 +5898,6 @@
 "qJ" = (
 /turf/simulated/floor/plating,
 /area/victory/hallway/d1aftmaint)
-"qL" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/obj/machinery/door/firedoor,
-/obj/machinery/door/airlock,
-/turf/simulated/floor/tiled/white,
-/area/space)
 "qO" = (
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 8
@@ -8933,16 +8887,6 @@
 "yQ" = (
 /turf/simulated/wall/r_wall/prepainted/engineering/atmos,
 /area/engineering/atmos/workshop)
-"yR" = (
-/obj/structure/sink{
-	pixel_y = 22
-	},
-/obj/structure/mirror{
-	dir = 4;
-	pixel_y = 33
-	},
-/turf/simulated/floor/tiled/white,
-/area/space)
 "yS" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan{
 	dir = 4
@@ -9678,15 +9622,6 @@
 	dir = 4
 	},
 /turf/simulated/floor/plating,
-/area/space)
-"Bc" = (
-/obj/structure/table/standard,
-/obj/structure/bedsheetbin,
-/obj/random/soap,
-/obj/machinery/light{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/white,
 /area/space)
 "Be" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -12277,15 +12212,6 @@
 /obj/random/powercell,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/space)
-"HY" = (
-/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
-	dir = 8
-	},
-/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
-	dir = 8
-	},
-/turf/simulated/floor/tiled/white,
-/area/space)
 "HZ" = (
 /obj/machinery/atmospherics/pipe/simple/visible/black,
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
@@ -13556,16 +13482,6 @@
 /obj/machinery/mech_recharger,
 /turf/simulated/floor,
 /area/space)
-"LD" = (
-/obj/structure/undies_wardrobe,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 10
-	},
-/obj/machinery/light/small{
-	dir = 1
-	},
-/turf/simulated/floor/tiled/white,
-/area/space)
 "LE" = (
 /obj/effect/floor_decal/corner_techfloor_grid{
 	dir = 5
@@ -14622,13 +14538,6 @@
 	},
 /turf/simulated/floor/bluegrid,
 /area/ai)
-"Ol" = (
-/obj/machinery/light/small{
-	dir = 1
-	},
-/obj/machinery/recharge_station,
-/turf/simulated/floor/tiled/white,
-/area/space)
 "Om" = (
 /obj/machinery/atmospherics/component/unary/outlet_injector{
 	frequency = 1443;
@@ -16608,25 +16517,6 @@
 	},
 /turf/space,
 /area/space)
-"Ua" = (
-/obj/machinery/washing_machine,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 6
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 6
-	},
-/obj/machinery/air_alarm{
-	pixel_y = 22
-	},
-/obj/machinery/power/apc/west_mount{
-	cell_type = /obj/item/cell/super
-	},
-/obj/structure/cable{
-	icon_state = "0-4"
-	},
-/turf/simulated/floor/tiled/white,
-/area/space)
 "Ub" = (
 /obj/structure/railing{
 	dir = 4
@@ -17093,12 +16983,6 @@
 "Vp" = (
 /obj/machinery/suit_storage_unit/engineering,
 /turf/simulated/floor/tiled,
-/area/space)
-"Vq" = (
-/obj/machinery/door/airlock{
-	name = "Shell Recharging"
-	},
-/turf/simulated/floor/tiled/white,
 /area/space)
 "Vr" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -17777,11 +17661,6 @@
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/storage)
-"Xs" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/turf/simulated/floor/tiled/white,
-/area/space)
 "Xt" = (
 /obj/structure/table/steel,
 /obj/item/aicard,
@@ -18557,17 +18436,6 @@
 	initial_gas_mix = "n2=100;TEMP=80"
 	},
 /area/tcommsat/chamber)
-"ZD" = (
-/obj/structure/toilet{
-	dir = 4
-	},
-/obj/machinery/light/small,
-/obj/landmark{
-	name = "xeno_spawn";
-	pixel_x = -1
-	},
-/turf/simulated/floor/tiled/white,
-/area/space)
 "ZE" = (
 /obj/structure/sign/fire,
 /turf/simulated/wall/r_wall/prepainted/engineering,
@@ -20263,7 +20131,7 @@ TP
 TP
 TP
 TP
-TP
+KC
 TP
 TP
 TP
@@ -20457,6 +20325,7 @@ TP
 TP
 TP
 TP
+KC
 TP
 TP
 TP
@@ -20487,11 +20356,10 @@ TP
 TP
 TP
 TP
-TP
-TP
-TP
-TP
-TP
+KC
+KC
+KC
+KC
 KC
 "}
 (10,1,1) = {"
@@ -20651,6 +20519,7 @@ TP
 TP
 TP
 TP
+KC
 TP
 TP
 TP
@@ -20681,11 +20550,10 @@ TP
 TP
 TP
 TP
-TP
-TP
-TP
-TP
-TP
+KC
+KC
+KC
+KC
 KC
 "}
 (11,1,1) = {"
@@ -20845,6 +20713,7 @@ TP
 TP
 TP
 TP
+KC
 TP
 TP
 TP
@@ -20875,11 +20744,10 @@ TP
 TP
 TP
 TP
-TP
-TP
-TP
-TP
-TP
+KC
+KC
+KC
+KC
 KC
 "}
 (12,1,1) = {"
@@ -21039,6 +20907,7 @@ TP
 TP
 TP
 TP
+KC
 TP
 TP
 TP
@@ -21069,11 +20938,10 @@ TP
 TP
 TP
 TP
-TP
-TP
-TP
-TP
-TP
+KC
+KC
+KC
+KC
 KC
 "}
 (13,1,1) = {"
@@ -21233,6 +21101,7 @@ TP
 TP
 TP
 TP
+KC
 TP
 TP
 TP
@@ -21263,11 +21132,10 @@ TP
 TP
 TP
 TP
-TP
-TP
-TP
-TP
-TP
+KC
+KC
+KC
+KC
 KC
 "}
 (14,1,1) = {"
@@ -21427,6 +21295,7 @@ TP
 TP
 TP
 TP
+KC
 TP
 TP
 TP
@@ -21457,11 +21326,10 @@ TP
 TP
 TP
 TP
-TP
-TP
-TP
-TP
-TP
+KC
+KC
+KC
+KC
 KC
 "}
 (15,1,1) = {"
@@ -21621,6 +21489,7 @@ TP
 TP
 TP
 TP
+KC
 TP
 TP
 TP
@@ -21651,11 +21520,10 @@ TP
 TP
 TP
 TP
-TP
-TP
-TP
-TP
-TP
+KC
+KC
+KC
+KC
 KC
 "}
 (16,1,1) = {"
@@ -21815,6 +21683,7 @@ TP
 TP
 TP
 TP
+KC
 TP
 TP
 TP
@@ -21845,11 +21714,10 @@ TP
 TP
 TP
 TP
-TP
-TP
-TP
-TP
-TP
+KC
+KC
+KC
+KC
 KC
 "}
 (17,1,1) = {"
@@ -22009,6 +21877,7 @@ TP
 TP
 TP
 TP
+KC
 TP
 TP
 TP
@@ -22039,11 +21908,10 @@ TP
 TP
 TP
 TP
-TP
-TP
-TP
-TP
-TP
+KC
+KC
+KC
+KC
 KC
 "}
 (18,1,1) = {"
@@ -22203,6 +22071,7 @@ TP
 TP
 TP
 TP
+KC
 TP
 TP
 TP
@@ -22233,11 +22102,10 @@ TP
 TP
 TP
 TP
-TP
-TP
-TP
-TP
-TP
+KC
+KC
+KC
+KC
 KC
 "}
 (19,1,1) = {"
@@ -22397,6 +22265,7 @@ TP
 TP
 TP
 TP
+KC
 TP
 TP
 TP
@@ -22427,11 +22296,10 @@ TP
 TP
 TP
 TP
-TP
-TP
-TP
-TP
-TP
+KC
+KC
+KC
+KC
 KC
 "}
 (20,1,1) = {"
@@ -22591,6 +22459,7 @@ TP
 TP
 TP
 TP
+KC
 TP
 TP
 TP
@@ -22621,11 +22490,10 @@ TP
 TP
 TP
 TP
-TP
-TP
-TP
-TP
-TP
+KC
+KC
+KC
+KC
 KC
 "}
 (21,1,1) = {"
@@ -22781,6 +22649,11 @@ TP
 TP
 TP
 TP
+KC
+KC
+KC
+KC
+KC
 TP
 TP
 TP
@@ -22811,15 +22684,10 @@ TP
 TP
 TP
 TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
+KC
+KC
+KC
+KC
 KC
 "}
 (22,1,1) = {"
@@ -22975,11 +22843,11 @@ TP
 TP
 TP
 TP
-TP
-TP
-TP
-TP
-TP
+KC
+KC
+KC
+KC
+KC
 TP
 TP
 TP
@@ -23169,11 +23037,11 @@ TP
 TP
 TP
 TP
-TP
-TP
-TP
-TP
-TP
+KC
+KC
+KC
+KC
+KC
 TP
 TP
 TP
@@ -23363,11 +23231,11 @@ TP
 TP
 TP
 TP
-TP
-TP
-TP
-TP
-TP
+KC
+KC
+KC
+KC
+KC
 TP
 TP
 TP
@@ -23557,11 +23425,11 @@ TP
 TP
 TP
 TP
-TP
-TP
-TP
-TP
-TP
+KC
+KC
+KC
+KC
+KC
 TP
 TP
 TP
@@ -23751,11 +23619,11 @@ TP
 TP
 TP
 TP
-TP
-TP
-TP
-TP
-TP
+KC
+KC
+KC
+KC
+KC
 TP
 TP
 TP
@@ -23945,11 +23813,11 @@ TP
 TP
 TP
 TP
-TP
-TP
-TP
-TP
-TP
+KC
+KC
+KC
+KC
+KC
 TP
 TP
 TP
@@ -24139,11 +24007,11 @@ TP
 TP
 TP
 TP
-TP
-TP
-TP
-TP
-TP
+KC
+KC
+KC
+KC
+KC
 TP
 TP
 TP
@@ -24333,11 +24201,11 @@ TP
 TP
 TP
 TP
-TP
-TP
-TP
-TP
-TP
+KC
+KC
+KC
+KC
+KC
 TP
 TP
 TP
@@ -24527,11 +24395,11 @@ TP
 TP
 TP
 TP
-TP
-TP
-TP
-TP
-TP
+KC
+KC
+KC
+KC
+KC
 TP
 TP
 TP
@@ -24721,11 +24589,11 @@ TP
 TP
 TP
 TP
-TP
-TP
-TP
-TP
-TP
+KC
+KC
+KC
+KC
+KC
 TP
 TP
 TP
@@ -24915,11 +24783,11 @@ TP
 TP
 TP
 TP
-TP
-TP
-TP
-TP
-TP
+KC
+KC
+KC
+KC
+KC
 TP
 TP
 TP
@@ -25109,11 +24977,11 @@ TP
 TP
 TP
 TP
-TP
-TP
-TP
-TP
-TP
+KC
+KC
+KC
+KC
+KC
 TP
 TP
 TP
@@ -25303,11 +25171,11 @@ TP
 TP
 TP
 TP
-TP
-TP
-TP
-TP
-TP
+KC
+KC
+KC
+KC
+KC
 TP
 TP
 TP
@@ -25497,11 +25365,11 @@ TP
 TP
 TP
 TP
-TP
-TP
-TP
-TP
-TP
+KC
+KC
+KC
+KC
+KC
 TP
 TP
 TP
@@ -25691,11 +25559,11 @@ TP
 TP
 TP
 TP
-TP
-TP
-TP
-TP
-TP
+KC
+KC
+KC
+KC
+KC
 TP
 TP
 TP
@@ -25885,11 +25753,11 @@ TP
 TP
 TP
 TP
-TP
-TP
-TP
-TP
-TP
+KC
+KC
+KC
+KC
+KC
 TP
 TP
 TP
@@ -26079,11 +25947,11 @@ TP
 TP
 TP
 TP
-TP
-TP
-TP
-TP
-TP
+KC
+KC
+KC
+KC
+KC
 TP
 TP
 TP
@@ -26273,11 +26141,11 @@ TP
 TP
 TP
 TP
-TP
-TP
-TP
-TP
-TP
+KC
+KC
+KC
+KC
+KC
 TP
 TP
 TP
@@ -26467,11 +26335,11 @@ TP
 TP
 TP
 TP
-TP
-TP
-TP
-TP
-TP
+KC
+KC
+KC
+KC
+KC
 TP
 TP
 TP
@@ -26661,11 +26529,11 @@ TP
 TP
 TP
 TP
-TP
-TP
-TP
-TP
-TP
+KC
+KC
+KC
+KC
+KC
 TP
 TP
 TP
@@ -26855,11 +26723,11 @@ TP
 TP
 TP
 TP
-TP
-TP
-TP
-TP
-TP
+KC
+KC
+KC
+KC
+KC
 TP
 TP
 TP
@@ -27049,11 +26917,11 @@ TP
 TP
 TP
 TP
-TP
-TP
-TP
-TP
-TP
+KC
+KC
+KC
+KC
+KC
 TP
 TP
 TP
@@ -27243,11 +27111,11 @@ TP
 TP
 TP
 TP
-TP
-TP
-TP
-TP
-TP
+KC
+KC
+KC
+KC
+KC
 TP
 TP
 TP
@@ -27437,11 +27305,11 @@ TP
 TP
 TP
 TP
-TP
-TP
-TP
-TP
-TP
+KC
+KC
+KC
+KC
+KC
 TP
 TP
 TP
@@ -27631,11 +27499,11 @@ TP
 TP
 TP
 TP
-TP
-TP
-TP
-TP
-TP
+KC
+KC
+KC
+KC
+KC
 TP
 TP
 TP
@@ -27825,11 +27693,11 @@ TP
 TP
 TP
 TP
-TP
-TP
-TP
-TP
-TP
+KC
+KC
+KC
+KC
+KC
 TP
 TP
 TP
@@ -28019,11 +27887,11 @@ TP
 TP
 TP
 TP
-TP
-TP
-TP
-TP
-TP
+KC
+KC
+KC
+KC
+KC
 TP
 TP
 TP
@@ -28213,11 +28081,11 @@ TP
 TP
 TP
 TP
-TP
-TP
-TP
-TP
-TP
+KC
+KC
+KC
+KC
+KC
 TP
 TP
 TP
@@ -28407,11 +28275,11 @@ TP
 TP
 TP
 TP
-TP
-TP
-TP
-TP
-TP
+KC
+KC
+KC
+KC
+KC
 TP
 TP
 TP
@@ -28601,11 +28469,11 @@ TP
 TP
 TP
 TP
-TP
-TP
-TP
-TP
-TP
+KC
+KC
+KC
+KC
+KC
 TP
 TP
 TP
@@ -28795,11 +28663,11 @@ TP
 TP
 TP
 TP
-TP
-TP
-TP
-TP
-TP
+KC
+KC
+KC
+KC
+KC
 TP
 TP
 TP
@@ -28989,11 +28857,11 @@ TP
 TP
 TP
 TP
-tk
-tk
-tk
-tk
-tk
+KC
+KC
+KC
+KC
+KC
 tk
 tk
 tk
@@ -29183,11 +29051,11 @@ TP
 TP
 TP
 TP
-tk
-Ol
-Ie
-tk
-ZD
+KC
+KC
+KC
+KC
+KC
 tk
 og
 tk
@@ -29377,11 +29245,11 @@ TP
 TP
 TP
 TP
-tk
-tk
-Vq
-tk
-qZ
+KC
+KC
+KC
+KC
+KC
 tk
 qZ
 tk
@@ -29571,11 +29439,11 @@ TP
 TP
 TP
 TP
-tk
-Ua
-Xs
-Xs
-HY
+KC
+KC
+KC
+KC
+KC
 Ki
 pe
 lK
@@ -29765,11 +29633,11 @@ TP
 TP
 TP
 TP
-lK
-hP
-pe
-tk
-qL
+KC
+KC
+KC
+KC
+KC
 tk
 tk
 tk
@@ -29959,11 +29827,11 @@ TP
 TP
 TP
 TP
-tk
-qj
-DE
-tk
-dF
+KC
+KC
+KC
+KC
+KC
 xI
 vh
 tk
@@ -30153,11 +30021,11 @@ TP
 TP
 TP
 TP
-tk
-yR
-Bc
-tk
-LD
+KC
+KC
+KC
+KC
+KC
 DE
 sH
 tk
@@ -30347,11 +30215,11 @@ TP
 TP
 TP
 TP
-tk
-tk
-tk
-tk
-tk
+KC
+KC
+KC
+KC
+KC
 tk
 tk
 tk
@@ -30541,11 +30409,11 @@ TP
 TP
 TP
 TP
-TP
-TP
-TP
-TP
-TP
+KC
+KC
+KC
+KC
+KC
 TP
 TP
 TP
@@ -30735,11 +30603,11 @@ TP
 TP
 TP
 TP
-TP
-TP
-TP
-TP
-TP
+KC
+KC
+KC
+KC
+KC
 TP
 TP
 TP
@@ -30929,11 +30797,11 @@ TP
 TP
 TP
 TP
-TP
-TP
-TP
-TP
-TP
+KC
+KC
+KC
+KC
+KC
 TP
 TP
 TP
@@ -31123,11 +30991,11 @@ TP
 TP
 TP
 TP
-TP
-TP
-TP
-TP
-TP
+KC
+KC
+KC
+KC
+KC
 TP
 TP
 TP
@@ -31317,11 +31185,11 @@ TP
 TP
 TP
 TP
-TP
-TP
-TP
-TP
-TP
+KC
+KC
+KC
+KC
+KC
 TP
 TP
 TP
@@ -31511,11 +31379,11 @@ TP
 TP
 TP
 TP
-TP
-TP
-TP
-TP
-TP
+KC
+KC
+KC
+KC
+KC
 TP
 TP
 TP
@@ -31705,11 +31573,11 @@ TP
 TP
 TP
 TP
-TP
-TP
-TP
-TP
-TP
+KC
+KC
+KC
+KC
+KC
 TP
 TP
 TP
@@ -31899,11 +31767,11 @@ TP
 TP
 TP
 TP
-TP
-TP
-TP
-TP
-TP
+KC
+KC
+KC
+KC
+KC
 TP
 TP
 TP
@@ -32097,7 +31965,7 @@ TP
 TP
 TP
 TP
-TP
+KC
 TP
 TP
 TP
@@ -32291,6 +32159,7 @@ TP
 TP
 TP
 TP
+KC
 TP
 TP
 TP
@@ -32321,11 +32190,10 @@ TP
 TP
 TP
 TP
-TP
-TP
-TP
-TP
-TP
+KC
+KC
+KC
+KC
 KC
 "}
 (71,1,1) = {"
@@ -32485,6 +32353,7 @@ TP
 TP
 TP
 TP
+KC
 TP
 TP
 TP
@@ -32515,11 +32384,10 @@ TP
 TP
 TP
 TP
-TP
-TP
-TP
-TP
-TP
+KC
+KC
+KC
+KC
 KC
 "}
 (72,1,1) = {"
@@ -32679,6 +32547,7 @@ TP
 TP
 TP
 TP
+KC
 TP
 TP
 TP
@@ -32709,11 +32578,10 @@ TP
 TP
 TP
 TP
-TP
-TP
-TP
-TP
-TP
+KC
+KC
+KC
+KC
 KC
 "}
 (73,1,1) = {"
@@ -32873,6 +32741,7 @@ TP
 TP
 TP
 TP
+KC
 TP
 TP
 TP
@@ -32903,11 +32772,10 @@ TP
 TP
 TP
 TP
-TP
-TP
-TP
-TP
-TP
+KC
+KC
+KC
+KC
 KC
 "}
 (74,1,1) = {"
@@ -33067,6 +32935,7 @@ TP
 TP
 TP
 TP
+KC
 TP
 TP
 TP
@@ -33097,11 +32966,10 @@ TP
 TP
 TP
 TP
-TP
-TP
-TP
-TP
-TP
+KC
+KC
+KC
+KC
 KC
 "}
 (75,1,1) = {"
@@ -33261,6 +33129,7 @@ TP
 TP
 TP
 TP
+KC
 TP
 TP
 TP
@@ -33291,11 +33160,10 @@ TP
 TP
 TP
 TP
-TP
-TP
-TP
-TP
-TP
+KC
+KC
+KC
+KC
 KC
 "}
 (76,1,1) = {"
@@ -33455,6 +33323,7 @@ TP
 TP
 TP
 TP
+KC
 TP
 TP
 TP
@@ -33485,11 +33354,10 @@ TP
 TP
 TP
 TP
-TP
-TP
-TP
-TP
-TP
+KC
+KC
+KC
+KC
 KC
 "}
 (77,1,1) = {"
@@ -33649,6 +33517,7 @@ TP
 TP
 TP
 TP
+KC
 TP
 TP
 TP
@@ -33679,11 +33548,10 @@ TP
 TP
 TP
 TP
-TP
-TP
-TP
-TP
-TP
+KC
+KC
+KC
+KC
 KC
 "}
 (78,1,1) = {"
@@ -33843,6 +33711,7 @@ TP
 TP
 TP
 TP
+KC
 TP
 TP
 TP
@@ -33873,11 +33742,10 @@ TP
 TP
 TP
 TP
-TP
-TP
-TP
-TP
-TP
+KC
+KC
+KC
+KC
 KC
 "}
 (79,1,1) = {"
@@ -34037,6 +33905,7 @@ TP
 TP
 TP
 TP
+KC
 TP
 TP
 TP
@@ -34067,11 +33936,10 @@ TP
 TP
 TP
 TP
-TP
-TP
-TP
-TP
-TP
+KC
+KC
+KC
+KC
 KC
 "}
 (80,1,1) = {"
@@ -34231,7 +34099,7 @@ TP
 TP
 TP
 TP
-TP
+KC
 TP
 TP
 TP
@@ -34262,10 +34130,10 @@ TP
 TP
 TP
 TP
-TP
-TP
-TP
-TP
+KC
+KC
+KC
+KC
 KC
 "}
 (81,1,1) = {"
@@ -34425,7 +34293,7 @@ TP
 TP
 TP
 TP
-TP
+KC
 TP
 TP
 TP
@@ -34456,10 +34324,10 @@ TP
 TP
 TP
 TP
-TP
-TP
-TP
-TP
+KC
+KC
+KC
+KC
 KC
 "}
 (82,1,1) = {"
@@ -34619,7 +34487,7 @@ TP
 TP
 TP
 TP
-TP
+KC
 TP
 TP
 TP
@@ -34650,10 +34518,10 @@ TP
 TP
 TP
 TP
-TP
-TP
-TP
-TP
+KC
+KC
+KC
+KC
 KC
 "}
 (83,1,1) = {"
@@ -34813,7 +34681,7 @@ TP
 TP
 TP
 TP
-TP
+KC
 TP
 TP
 TP
@@ -34844,10 +34712,10 @@ TP
 TP
 TP
 TP
-TP
-TP
-TP
-TP
+KC
+KC
+KC
+KC
 KC
 "}
 (84,1,1) = {"
@@ -35007,7 +34875,7 @@ TP
 TP
 TP
 TP
-TP
+KC
 TP
 TP
 TP
@@ -35038,10 +34906,10 @@ TP
 TP
 TP
 TP
-TP
-TP
-TP
-TP
+KC
+KC
+KC
+KC
 KC
 "}
 (85,1,1) = {"
@@ -35201,7 +35069,7 @@ TP
 TP
 TP
 TP
-TP
+KC
 TP
 TP
 TP
@@ -35232,10 +35100,10 @@ TP
 TP
 TP
 TP
-TP
-TP
-TP
-TP
+KC
+KC
+KC
+KC
 KC
 "}
 (86,1,1) = {"
@@ -35395,7 +35263,7 @@ TP
 TP
 TP
 TP
-TP
+KC
 TP
 TP
 TP
@@ -35426,10 +35294,10 @@ TP
 TP
 TP
 TP
-TP
-TP
-TP
-TP
+KC
+KC
+KC
+KC
 KC
 "}
 (87,1,1) = {"
@@ -35589,6 +35457,7 @@ TP
 TP
 TP
 TP
+KC
 TP
 TP
 TP
@@ -35619,11 +35488,10 @@ TP
 TP
 TP
 TP
-TP
-TP
-TP
-TP
-TP
+KC
+KC
+KC
+KC
 KC
 "}
 (88,1,1) = {"
@@ -35783,6 +35651,7 @@ TP
 TP
 TP
 TP
+KC
 TP
 TP
 TP
@@ -35813,11 +35682,10 @@ TP
 TP
 TP
 TP
-TP
-TP
-TP
-TP
-TP
+KC
+KC
+KC
+KC
 KC
 "}
 (89,1,1) = {"
@@ -35977,6 +35845,7 @@ TP
 TP
 TP
 TP
+KC
 TP
 TP
 TP
@@ -36007,11 +35876,10 @@ TP
 TP
 TP
 TP
-TP
-TP
-TP
-TP
-TP
+KC
+KC
+KC
+KC
 KC
 "}
 (90,1,1) = {"
@@ -36171,6 +36039,7 @@ TP
 TP
 TP
 TP
+KC
 TP
 TP
 TP
@@ -36201,11 +36070,10 @@ TP
 TP
 TP
 TP
-TP
-TP
-TP
-TP
-TP
+KC
+KC
+KC
+KC
 KC
 "}
 (91,1,1) = {"
@@ -36365,6 +36233,7 @@ TP
 TP
 TP
 TP
+KC
 TP
 TP
 TP
@@ -36395,11 +36264,10 @@ TP
 TP
 TP
 TP
-TP
-TP
-TP
-TP
-TP
+KC
+KC
+KC
+KC
 KC
 "}
 (92,1,1) = {"
@@ -36559,6 +36427,7 @@ TP
 TP
 TP
 TP
+KC
 TP
 TP
 TP
@@ -36589,11 +36458,10 @@ TP
 TP
 TP
 TP
-TP
-TP
-TP
-TP
-TP
+KC
+KC
+KC
+KC
 KC
 "}
 (93,1,1) = {"
@@ -36753,6 +36621,7 @@ TP
 TP
 TP
 TP
+KC
 TP
 TP
 TP
@@ -36783,11 +36652,10 @@ TP
 TP
 TP
 TP
-TP
-TP
-TP
-TP
-TP
+KC
+KC
+KC
+KC
 KC
 "}
 (94,1,1) = {"
@@ -36947,6 +36815,7 @@ TP
 TP
 TP
 TP
+KC
 TP
 TP
 TP
@@ -36977,11 +36846,10 @@ TP
 TP
 TP
 TP
-TP
-TP
-TP
-TP
-TP
+KC
+KC
+KC
+KC
 KC
 "}
 (95,1,1) = {"
@@ -37141,6 +37009,7 @@ TP
 TP
 TP
 TP
+KC
 TP
 TP
 TP
@@ -37171,11 +37040,10 @@ TP
 TP
 TP
 TP
-TP
-TP
-TP
-TP
-TP
+KC
+KC
+KC
+KC
 KC
 "}
 (96,1,1) = {"
@@ -37335,6 +37203,7 @@ TP
 TP
 TP
 TP
+KC
 TP
 TP
 TP
@@ -37365,11 +37234,10 @@ TP
 TP
 TP
 TP
-TP
-TP
-TP
-TP
-TP
+KC
+KC
+KC
+KC
 KC
 "}
 (97,1,1) = {"
@@ -37525,45 +37393,45 @@ KC
 KC
 KC
 KC
+TP
+TP
+TP
+TP
 KC
 KC
 KC
 KC
+TP
+TP
+TP
+TP
+TP
+TP
+TP
+TP
+TP
+TP
+TP
+TP
+TP
+TP
+TP
+TP
+TP
+TP
+TP
+TP
+TP
+TP
+TP
+TP
+TP
+TP
+TP
 KC
 KC
 KC
 KC
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
 KC
 "}
 (98,1,1) = {"
@@ -37719,45 +37587,45 @@ KC
 KC
 KC
 KC
+TP
+TP
+TP
+TP
 KC
 KC
 KC
 KC
+TP
+TP
+TP
+TP
+TP
+TP
+TP
+TP
+TP
+TP
+TP
+TP
+TP
+TP
+TP
+TP
+TP
+TP
+TP
+TP
+TP
+TP
+TP
+TP
+TP
+TP
+TP
 KC
 KC
 KC
 KC
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
 KC
 "}
 (99,1,1) = {"
@@ -37913,45 +37781,45 @@ KC
 KC
 KC
 KC
+TP
+TP
+TP
+TP
 KC
 KC
 KC
 KC
+TP
+TP
+TP
+TP
+TP
+TP
+TP
+TP
+TP
+TP
+TP
+TP
+TP
+TP
+TP
+TP
+TP
+TP
+TP
+TP
+TP
+TP
+TP
+TP
+TP
+TP
+TP
 KC
 KC
 KC
 KC
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
 KC
 "}
 (100,1,1) = {"
@@ -38107,45 +37975,45 @@ KC
 KC
 KC
 KC
+TP
+TP
+TP
+TP
 KC
 KC
 KC
 KC
+TP
+TP
+TP
+TP
+TP
+TP
+TP
+TP
+TP
+TP
+TP
+TP
+TP
+TP
+TP
+TP
+TP
+TP
+TP
+TP
+TP
+TP
+TP
+TP
+TP
+TP
+TP
 KC
 KC
 KC
 KC
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
 KC
 "}
 (101,1,1) = {"
@@ -38301,45 +38169,45 @@ KC
 KC
 KC
 KC
+TP
+TP
+TP
+TP
 KC
 KC
 KC
 KC
+TP
+TP
+TP
+TP
+TP
+TP
+TP
+TP
+TP
+TP
+TP
+TP
+TP
+TP
+TP
+TP
+TP
+TP
+TP
+TP
+TP
+TP
+TP
+TP
+TP
+TP
+TP
 KC
 KC
 KC
 KC
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
 KC
 "}
 (102,1,1) = {"
@@ -38495,45 +38363,45 @@ KC
 KC
 KC
 KC
+TP
+TP
+TP
+TP
 KC
 KC
 KC
 KC
+TP
+TP
+TP
+TP
+TP
+TP
+TP
+TP
+TP
+TP
+TP
+TP
+TP
+TP
+TP
+TP
+TP
+TP
+TP
+TP
+TP
+TP
+TP
+TP
+TP
+TP
+TP
 KC
 KC
 KC
 KC
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
 KC
 "}
 (103,1,1) = {"
@@ -38689,45 +38557,45 @@ KC
 KC
 KC
 KC
+TP
+TP
+TP
+TP
 KC
 KC
 KC
 KC
+TP
+TP
+TP
+TP
+TP
+TP
+TP
+TP
+TP
+TP
+TP
+TP
+TP
+TP
+TP
+TP
+TP
+TP
+TP
+TP
+TP
+TP
+TP
+TP
+TP
+TP
+TP
 KC
 KC
 KC
 KC
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
-TP
 KC
 "}
 (104,1,1) = {"
@@ -38918,10 +38786,10 @@ TP
 TP
 TP
 TP
-TP
-TP
-TP
-TP
+KC
+KC
+KC
+KC
 KC
 "}
 (105,1,1) = {"
