@@ -321,7 +321,7 @@
 //  *
 //  * @return the new temperature
 //  */
-// /proc/radiate_heat_to_space(temperature, surface_area = 1, heat_capacity, env_temperature)
+// /proc/share_heat_with_space(temperature, surface_area = 1, heat_capacity, env_temperature)
 // 	CRASH("radiate_heat not hooked")
 
 // /**
@@ -410,11 +410,11 @@
  * - target_pressure - how much to pump to
  */
 /proc/xgm_cheap_transfer_moles_single(datum/gas_mixture/sink, target_pressure)
-	var/sink_pressure = GAS_MIXTURE_PRESSURE(sink)
-	var/sink_temperature = GAS_MIXTURE_TEMPERATURE(sink)
+	var/sink_pressure = XGM_PRESSURE(sink)
+	var/sink_temperature = XGM_TEMPERATURE(sink)
 	if(!sink_pressure)
 		sink_temperature = T20C
-	return (((target_pressure - sink_pressure) * GAS_MIXTURE_VOLUME(sink)) / (R_IDEAL_GAS_EQUATION * sink_temperature)) * sink.group_multiplier
+	return (((target_pressure - sink_pressure) * XGM_VOLUME(sink)) / (R_IDEAL_GAS_EQUATION * sink_temperature)) * sink.group_multiplier
 
 /**
  * cheaply calculates approximate moles to get to target pressure for gasmixture
@@ -430,25 +430,25 @@
  */
 /proc/xgm_cheap_transfer_moles(datum/gas_mixture/source, datum/gas_mixture/sink, target_pressure, extra_volume, speedy)
 	//! LEGACY CODE; this is not mine.
-	var/source_moles = GAS_MIXTURE_TOTAL_MOLES(source)
+	var/source_moles = XGM_TOTAL_MOLES(source)
 	if(!source_moles)
 		CRASH("source is empty, this proc is a waste of time")
 	if(target_pressure == 0)
-		return -GAS_MIXTURE_TOTAL_MOLES(sink)
-	var/sink_moles = GAS_MIXTURE_TOTAL_MOLES(sink)
+		return -XGM_TOTAL_MOLES(sink)
+	var/sink_moles = XGM_TOTAL_MOLES(sink)
 	if(!sink_moles)
-		return (target_pressure * GAS_MIXTURE_VOLUME(sink)) / (R_IDEAL_GAS_EQUATION * GAS_MIXTURE_TEMPERATURE(source))
+		return (target_pressure * XGM_VOLUME(sink)) / (R_IDEAL_GAS_EQUATION * XGM_TEMPERATURE(source))
 
-	var/output_volume = (GAS_MIXTURE_VOLUME(sink) * sink.group_multiplier) + extra_volume
-	var/pressure_delta = target_pressure - GAS_MIXTURE_PRESSURE(sink)
+	var/output_volume = (XGM_VOLUME(sink) * sink.group_multiplier) + extra_volume
+	var/pressure_delta = target_pressure - XGM_PRESSURE(sink)
 
 	var/air_temperature = source.temperature
-	var/sink_temperature = GAS_MIXTURE_TEMPERATURE(sink)
+	var/sink_temperature = XGM_TEMPERATURE(sink)
 	if(sink_temperature != air_temperature)
 		//estimate the final temperature of the sink after transfer
 		var/estimate_moles = (pressure_delta * output_volume) / (sink_temperature * R_IDEAL_GAS_EQUATION)
-		var/sink_heat_capacity = GAS_MIXTURE_HEAT_CAPACITY(sink)
-		var/transfer_heat_capacity = GAS_MIXTURE_HEAT_CAPACITY(source) * estimate_moles / source_moles
+		var/sink_heat_capacity = XGM_HEAT_CAPACITY(sink)
+		var/transfer_heat_capacity = XGM_HEAT_CAPACITY(source) * estimate_moles / source_moles
 		air_temperature = (sink_temperature * sink_heat_capacity + air_temperature * transfer_heat_capacity) / (sink_heat_capacity + transfer_heat_capacity)
 
 	if(!speedy)

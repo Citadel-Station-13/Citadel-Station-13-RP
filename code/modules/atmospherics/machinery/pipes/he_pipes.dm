@@ -14,7 +14,8 @@
 
 	layer = PIPES_HE_LAYER
 	var/initialize_directions_he
-	var/surface = 2	//surface area in m^2
+	/// Our surface area in m^2
+	var/surface = 2
 	var/icon_temperature = T20C //stop small changes in temperature causing an icon refresh
 
 	thermal_conductivity = OPEN_HEAT_TRANSFER_COEFFICIENT
@@ -95,9 +96,9 @@
 				var/datum/gas_mixture/environment = loc.return_air()
 				environment_temperature = environment.temperature
 			if((abs(environment_temperature-pipe_air.temperature) > minimum_temperature_difference) || (location_as_turf.special_temperature))
-				parent.temperature_interact(loc, volume, thermal_conductivity)
+				parent.share_heat_with_turf(loc, volume, thermal_conductivity)
 		else if(istype(loc, /turf/space))
-			parent.radiate_heat_to_space(surface, 1)
+			parent.share_heat_with_space(surface, 1)
 
 		// process buckled mobs
 		if(has_buckled_mobs())
