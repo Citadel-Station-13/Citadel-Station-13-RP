@@ -1,13 +1,29 @@
+/**
+ * XGM-based gas mixtures from baystation.
+ */
 /datum/gas_mixture
-	/// Associative list of gas moles.
-	/// Gases with 0 moles are not tracked and are pruned by update_values()
+	/**
+	 * Associative list of gas ID to moles in us.
+	 *
+	 * * Gases with 0 moles are pruned automatically.
+	 * * This **is only** safe to directly edit, if update_values() is called after said edits.
+	 */
 	var/list/gas
-	/// Temperature in Kelvin of this gas mix.
+	/**
+	 * Temperature of this gas mixture in Kelvin.
+	 *
+	 * * This **is** safe to directly edit, if you know what you're doing
+	 *   and trigger updates accordingly for anything referencing this mixture.
+	 */
 	var/temperature = 0
-	/// Volume of this mix.
+	/**
+	 * Volume of this gas mixture in liters.
+	 */
 	var/volume = CELL_VOLUME
 
-	/// Sum of all the gas moles in this mix.  Updated by update_values()
+	/**
+	 * Sum of all moles in this mixture. Updated by update_values().
+	 */
 	var/total_moles = 0
 	/// Size of the group this gas_mixture is representing. 1 for singletons.
 	var/group_multiplier = 1
@@ -358,7 +374,8 @@
 /datum/gas_mixture/proc/copy_from_turf(turf/model)
 	parse_gas_string(model.initial_gas_mix, model)
 
-	//acounts for changes in temperature
+	// acounts for changes in temperature
+	// todo: this is silly and weird.
 	var/turf/model_parent = model.parent_type
 	if(model.temperature != initial(model.temperature) || model.temperature != initial(model_parent.temperature))
 		temperature = model.temperature

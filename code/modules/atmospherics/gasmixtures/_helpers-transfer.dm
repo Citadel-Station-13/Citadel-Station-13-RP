@@ -1,6 +1,16 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2023 Citadel Station developers.          *//
 
+// ----------------------------------------------------------------------------//
+/**
+ * Contains transfer helpers for operating with multiple gas mixtures
+ * in a generic way.
+ *
+ * * All procs should be prefixed with 'xgm_' to namespace them in the global scope.
+ * * This file contains 'transfer' helpers, which actually operate on gas mixtures.
+ */
+// ----------------------------------------------------------------------------//
+
 /**
  * @params
  * * source - mixture to pump from

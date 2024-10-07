@@ -38,13 +38,8 @@
  */
 #define THERMODYANMICS_CRITICAL_TEMPERATURE_OF_AIR     132.65
 
-/// (3 cm + 100 cm * sin(3deg))/(2*(3+100 cm)). Unitless ratio.
-//  todo: this is currently unused. it was used to multiply surface for solar heating.
-//  i removed it because its comments did absolutely nothing to say why the hell it's this specific value.
-// #define RADIATOR_EXPOSED_SURFACE_AREA_RATIO 0.04
-
 /**
- * Ratio of surface area exposed to theroetical star for radiative heating.
+ * Ratio of surface area exposed to theroetical star for radiative heating while in space.
  *
  * todo: wouldn't it be funny if this was based on overmap entity :drooling:
  */

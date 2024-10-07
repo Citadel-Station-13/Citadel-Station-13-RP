@@ -165,19 +165,24 @@
 	var/our_heat_capacity = air.heat_capacity()
 	var/fragment_heat_capacity = our_heat_capacity * (share_volume / air.volume)
 
+	/**
+	 * First deal with special heat exchanger temperature
+	 */
+	// todo: god damnit deal with this
+	if(target.temperature_for_heat_exchangers)
+		CACHE_VSC_PROP(atmos_vsc, /atmos/hepipes/thermal_conductivity, thermal_conductivity_setting)
+		var/delta_temp = target.temperature_for_heat_exchangers - air.temperature//2200C - 20C = 2180K
+		//assuming aluminium with thermal conductivity 235 W * K / m, Copper (400), Silver (430), steel (50), gold (320)
+		var/heat_gain = thermal_conductivity_setting * 100 * delta_temp//assuming 1 cm wall thickness, so delta_temp isnt multiplied
+		heat_gain = clamp(heat_gain, air.get_thermal_energy_change(target.temperature_for_heat_exchangers), -air.get_thermal_energy_change(modeled_location.temperature_for_heat_exchangers))
+		air.adjust_thermal_energy(heat_gain)
+		if(network)
+			network.update = 1
+
+
+
 	if(istype(target, /turf/simulated))
 		var/turf/simulated/modeled_location = target
-
-		// todo: god damnit deal with thi
-		if(modeled_location.temperature_for_heat_exchangers)//First do special interactions then the usuall stuff
-			CACHE_VSC_PROP(atmos_vsc, /atmos/hepipes/thermal_conductivity, thermal_conductivity_setting)
-			var/delta_temp = modeled_location.temperature_for_heat_exchangers - air.temperature//2200C - 20C = 2180K
-			//assuming aluminium with thermal conductivity 235 W * K / m, Copper (400), Silver (430), steel (50), gold (320)
-			var/heat_gain = thermal_conductivity_setting * 100 * delta_temp//assuming 1 cm wall thickness, so delta_temp isnt multiplied
-			heat_gain = clamp(heat_gain, air.get_thermal_energy_change(modeled_location.temperature_for_heat_exchangers), -air.get_thermal_energy_change(modeled_location.temperature_for_heat_exchangers))
-			air.adjust_thermal_energy(heat_gain)
-			if(network)
-				network.update = 1
 
 		if(modeled_location.blocks_air)
 
@@ -190,7 +195,7 @@
 				air.temperature -= heat/total_heat_capacity
 				modeled_location.temperature += heat/modeled_location.heat_capacity
 
-		else
+		else 
 			var/delta_temperature = 0
 			var/sharer_heat_capacity = 0
 
