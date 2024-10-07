@@ -59,4 +59,3 @@
 			M.show_message("<font color='red'>[src] screeches and explodes in a green flash.</font>")
 	playsound(src, 'sound/items/geiger/ext1.ogg', 100, 1)
 	ghostize()
-	qdel(src)
