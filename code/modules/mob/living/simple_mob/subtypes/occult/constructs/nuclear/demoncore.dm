@@ -29,7 +29,7 @@
 
 /mob/living/simple_mob/construct/nuclear/demoncore/Initialize(mapload)
 	. = ..()
-	AddComponent(/datum/component/horror_aura/)
+	AddComponent(/datum/component/horror_aura)
 	AddComponent(/datum/component/radioactive, 1000 , 0, TRUE, RAD_FALLOFF_CONTAMINATION_NORMAL)
 
 /mob/living/simple_mob/construct/nuclear/demoncore/handle_light()
