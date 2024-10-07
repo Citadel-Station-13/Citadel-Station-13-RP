@@ -690,3 +690,4 @@
 	movement_sound = 'sound/mobs/biomorphs/spitter_move.ogg'
 	catalogue_data = list(/datum/category_item/catalogue/fauna/feral_alien/spitter)
 	ai_holder_type = /datum/ai_holder/polaris/simple_mob/ranged/kiting/sniper
+

@@ -544,6 +544,11 @@
 	name = "Bomj Coat"
 	path = /obj/item/clothing/suit/storage/bomj
 
+/datum/loadout_entry/suit/cropped_turtle
+	name = "Turtleneck Cropped"
+	path = /obj/item/clothing/suit/storage/cropped_turtleneck
+
+
 /datum/loadout_entry/suit/violetjacket
 	name = "Violet Jacket"
 	path = /obj/item/clothing/suit/storage/violet
