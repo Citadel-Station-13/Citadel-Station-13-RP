@@ -1,14 +1,6 @@
 // Math constants.
-/// kPa.
-#define ONE_ATMOSPHERE             101.325
 /// (mol^3 * s^3) / (kg^3 * L).
 #define IDEAL_GAS_ENTROPY_CONSTANT 1164
-
-#define TN60C 213.15 //!  -60.0 degrees celcius
-#define T0C 273.15   //!    0.0 degrees celcius
-#define T20C 293.15  //!   20.0 degrees celcius
-#define T100C 373.15 //!  100.0 degrees celsius
-#define TCMB 2.7     //! -270.3 degrees celcius
 
 /// Percentage.
 #define O2STANDARD 0.21
@@ -83,15 +75,6 @@
  * stupid shit end
  */
 
-// Must be between 0 and 1. Values closer to 1 equalize temperature faster. Should not exceed 0.4, else strange heat flow occurs.
-#define  FLOOR_HEAT_TRANSFER_COEFFICIENT 0.4
-#define   WALL_HEAT_TRANSFER_COEFFICIENT 0.0
-#define   DOOR_HEAT_TRANSFER_COEFFICIENT 0.0
-/// A hack to partly simulate radiative heat.
-#define  SPACE_HEAT_TRANSFER_COEFFICIENT 0.2
-#define   OPEN_HEAT_TRANSFER_COEFFICIENT 0.4
-/// A hack for now.
-#define WINDOW_HEAT_TRANSFER_COEFFICIENT 0.1
 // Fire damage.
 #define CARBON_LIFEFORM_FIRE_RESISTANCE (T0C + 200)
 #define CARBON_LIFEFORM_FIRE_DAMAGE     4

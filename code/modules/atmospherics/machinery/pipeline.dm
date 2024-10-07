@@ -151,21 +151,34 @@
 
 //* Sharing - Temperature *//
 
+/**
+ * Processes heat exchange with turf.
+ *
+ * @params
+ * * target - the target turf
+ * * share_volume - the amount of volume of this pipeline to share with the turf
+ * * thermal_conductivity - relative thermal conductivity (so, cheat / penalty multiplier).
+ */
 /datum/pipeline/proc/share_heat_with_turf(turf/target, share_volume, thermal_conductivity)
-	var/total_heat_capacity = air.heat_capacity()
-	var/partial_heat_capacity = total_heat_capacity*(share_volume/air.volume)
+	var/anything_changed = FALSE
+
+	var/our_heat_capacity = air.heat_capacity()
+	var/fragment_heat_capacity = our_heat_capacity * (share_volume / air.volume)
 
 	if(istype(target, /turf/simulated))
 		var/turf/simulated/modeled_location = target
-		if(modeled_location.special_temperature)//First do special interactions then the usuall stuff
+
+		// todo: god damnit deal with thi
+		if(modeled_location.temperature_for_heat_exchangers)//First do special interactions then the usuall stuff
 			CACHE_VSC_PROP(atmos_vsc, /atmos/hepipes/thermal_conductivity, thermal_conductivity_setting)
-			var/delta_temp = modeled_location.special_temperature - air.temperature//2200C - 20C = 2180K
+			var/delta_temp = modeled_location.temperature_for_heat_exchangers - air.temperature//2200C - 20C = 2180K
 			//assuming aluminium with thermal conductivity 235 W * K / m, Copper (400), Silver (430), steel (50), gold (320)
 			var/heat_gain = thermal_conductivity_setting * 100 * delta_temp//assuming 1 cm wall thickness, so delta_temp isnt multiplied
-			heat_gain = clamp(heat_gain, air.get_thermal_energy_change(modeled_location.special_temperature), -air.get_thermal_energy_change(modeled_location.special_temperature))
+			heat_gain = clamp(heat_gain, air.get_thermal_energy_change(modeled_location.temperature_for_heat_exchangers), -air.get_thermal_energy_change(modeled_location.temperature_for_heat_exchangers))
 			air.adjust_thermal_energy(heat_gain)
 			if(network)
 				network.update = 1
+
 		if(modeled_location.blocks_air)
 
 			if((modeled_location.heat_capacity>0) && (partial_heat_capacity>0))

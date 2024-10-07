@@ -14,12 +14,15 @@
 
 	layer = PIPES_HE_LAYER
 	var/initialize_directions_he
-	/// Our surface area in m^2
-	var/surface = 2
 	var/icon_temperature = T20C //stop small changes in temperature causing an icon refresh
 
-	thermal_conductivity = OPEN_HEAT_TRANSFER_COEFFICIENT
 
+	/// Our surface area in m^2
+	var/surface = 2
+	/// thermal conductivity for normal heat exchange
+	var/thermal_conductivity = 0.4
+	/// thermal conductivity for space cooling, basically
+	var/blackbody_thermal_conductivity = 1
 	/// minimum temperature difference for heat exchanger pipes to exchange heat
 	var/minimum_temperature_difference = 0.01
 
@@ -79,36 +82,22 @@
 		// get immutable air references; we will directly call our pipeline's interact procs,
 		// instead of doing it ourselves.
 		var/datum/gas_mixture/our_air_immutable = parent.air
-		var/datum/gas_mixture/loc_air_immutable = loc.return_air_immutable()
-		if(loc_air_immutable && abs(loc_air_immutable.temperature - our_air_immutable.temperature) > minimum_temperature_difference)
-			// temperature difference is enough, process equalization
-
-		#warn above / below
-
-		var/datum/gas_mixture/pipe_air = return_air()
-
-		if(istype(loc, /turf/simulated))
-			var/turf/simulated/location_as_turf = loc
-			var/environment_temperature = 0
-			if(loc:blocks_air)
-				environment_temperature = loc:temperature
-			else
-				var/datum/gas_mixture/environment = loc.return_air()
-				environment_temperature = environment.temperature
-			if((abs(environment_temperature-pipe_air.temperature) > minimum_temperature_difference) || (location_as_turf.special_temperature))
+		if(istype(loc, /turf/space))
+			parent.share_heat_with_space(surface, blackbody_thermal_conductivity)
+		else
+			var/turf/loc_casted_as_turf = loc
+			if(loc_air_immutable && abs((loc_casted_as_turf.temperature_for_heat_exchangers || loc_casted_as_turf.return_temperature()) - our_air_immutable.temperature) > minimum_temperature_difference)
+				// temperature difference is enough, process equalization
 				parent.share_heat_with_turf(loc, volume, thermal_conductivity)
-		else if(istype(loc, /turf/space))
-			parent.share_heat_with_space(surface, 1)
 
 		// process buckled mobs
 		if(has_buckled_mobs())
 			for(var/M in buckled_mobs)
 				var/mob/living/L = M
 
-				var/hc = pipe_air.heat_capacity()
+				var/hc = our_air_immutable.heat_capacity()
 				// todo: this is not even close to someone's actual heat capacity lol
-				var/avg_temp = (pipe_air.temperature * hc + L.bodytemperature * 3500) / (hc + 3500)
-				pipe_air.temperature = avg_temp
+				var/avg_temp = (our_air_immutable.temperature * hc + L.bodytemperature * 3500) / (hc + 3500)
 				L.bodytemperature = avg_temp
 
 				var/heat_limit = 1000
@@ -117,13 +106,13 @@
 				if(istype(H) && H.species)
 					heat_limit = H.species.heat_level_3
 
-				if(pipe_air.temperature > heat_limit + 1)
-					L.apply_damage(4 * log(pipe_air.temperature - heat_limit), DAMAGE_TYPE_BURN, BP_TORSO, used_weapon = "Excessive Heat")
+				if(our_air_immutable.temperature > heat_limit + 1)
+					L.apply_damage(4 * log(our_air_immutable.temperature - heat_limit), DAMAGE_TYPE_BURN, BP_TORSO, used_weapon = "Excessive Heat")
 
 		// process icon / glow
-		if(pipe_air.temperature && (icon_temperature > 500 || pipe_air.temperature > 500)) //start glowing at 500K
-			if(abs(pipe_air.temperature - icon_temperature) > 10)
-				icon_temperature = pipe_air.temperature
+		if(our_air_immutable.temperature && (icon_temperature > 500 || our_air_immutable.temperature > 500)) //start glowing at 500K
+			if(abs(our_air_immutable.temperature - icon_temperature) > 10)
+				icon_temperature = our_air_immutable.temperature
 
 				var/h_r = heat2colour_r(icon_temperature)
 				var/h_g = heat2colour_g(icon_temperature)
@@ -148,7 +137,6 @@
 	connect_types = CONNECT_TYPE_REGULAR|CONNECT_TYPE_HE
 	construction_type = /obj/item/pipe/directional
 	pipe_state = "junction"
-	thermal_conductivity = WALL_HEAT_TRANSFER_COEFFICIENT
 
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging/junction/init_dir()
 	..()

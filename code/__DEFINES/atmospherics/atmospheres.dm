@@ -1,9 +1,19 @@
-// Atmosphere IDs
+//* Atmosphere IDs *//
 
-//? abstract ids
+//?                Abstract IDs                      ?//
+//? These will be converted by SSair during loading. ?//
+
+/// Use zlevel's outdoors air
 #define ATMOSPHERE_USE_OUTDOORS "!OUTDOORS"
+/// Use zlevel's indoors air
 #define ATMOSPHERE_USE_INDOORS "!INDOORS"
+/// Use area default
 #define ATMOSPHERE_USE_AREA "!AREA"
+
+//*                                                                  *//
+//* Prefer not using stuff below on turfs.                           *//
+//* You should almost always be using outdoors/indoors/area/static.  *//
+//*                                                                  *//
 
 // Tethermap
 /// Virgo 2 planetary atmosphere ID

@@ -118,6 +118,7 @@
 #include "code\__DEFINES\assets\medical.dm"
 #include "code\__DEFINES\atmospherics\atmos.dm"
 #include "code\__DEFINES\atmospherics\atmospheres.dm"
+#include "code\__DEFINES\atmospherics\constants-thermodynamics.dm"
 #include "code\__DEFINES\atmospherics\constants.dm"
 #include "code\__DEFINES\atmospherics\environmental.dm"
 #include "code\__DEFINES\atmospherics\gas_strings.dm"
