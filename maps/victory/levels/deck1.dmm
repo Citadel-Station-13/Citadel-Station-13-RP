@@ -447,11 +447,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/starboardnacelle)
-"bd" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/structure/curtain/black,
-/turf/simulated/floor/plating,
-/area/space)
 "be" = (
 /obj/structure/cable/green{
 	icon_state = "1-8"
@@ -25866,7 +25861,7 @@ TP
 TP
 TP
 TP
-TP
+KC
 TP
 TP
 TP
@@ -26060,7 +26055,7 @@ TP
 TP
 TP
 TP
-TP
+KC
 TP
 TP
 TP
@@ -26254,7 +26249,7 @@ TP
 TP
 TP
 TP
-TP
+KC
 TP
 TP
 TP
@@ -26448,7 +26443,7 @@ TP
 TP
 TP
 TP
-TP
+KC
 TP
 TP
 TP
@@ -26642,7 +26637,7 @@ TP
 TP
 TP
 TP
-TP
+KC
 TP
 TP
 TP
@@ -26836,7 +26831,7 @@ TP
 TP
 TP
 TP
-TP
+KC
 TP
 TP
 TP
@@ -27030,7 +27025,7 @@ TP
 TP
 TP
 TP
-TP
+KC
 TP
 TP
 TP
@@ -27224,7 +27219,7 @@ TP
 TP
 TP
 TP
-TP
+KC
 TP
 TP
 TP
@@ -27418,7 +27413,7 @@ TP
 TP
 TP
 TP
-TP
+KC
 TP
 TP
 TP
@@ -27612,7 +27607,7 @@ TP
 TP
 TP
 TP
-TP
+KC
 TP
 TP
 TP
@@ -27806,7 +27801,7 @@ TP
 TP
 TP
 TP
-TP
+KC
 TP
 TP
 TP
@@ -28000,7 +27995,7 @@ TP
 TP
 TP
 TP
-TP
+KC
 TP
 TP
 TP
@@ -28194,7 +28189,7 @@ TP
 TP
 TP
 TP
-TP
+KC
 TP
 TP
 TP
@@ -28388,7 +28383,7 @@ TP
 TP
 TP
 TP
-TP
+KC
 TP
 TP
 TP
@@ -28582,7 +28577,7 @@ TP
 TP
 TP
 TP
-TP
+KC
 TP
 TP
 TP
@@ -28776,7 +28771,7 @@ TP
 TP
 TP
 TP
-TP
+KC
 TP
 TP
 TP
@@ -28970,7 +28965,7 @@ TP
 TP
 TP
 TP
-TP
+KC
 TP
 TP
 TP
@@ -29164,7 +29159,7 @@ TP
 TP
 TP
 TP
-TP
+KC
 TP
 TP
 TP
@@ -29358,7 +29353,7 @@ TP
 TP
 TP
 TP
-TP
+KC
 TP
 TP
 TP
@@ -29552,7 +29547,7 @@ TP
 TP
 TP
 TP
-TP
+KC
 TP
 TP
 TP
@@ -29746,7 +29741,7 @@ TP
 TP
 TP
 TP
-TP
+KC
 TP
 TP
 TP
@@ -29940,7 +29935,7 @@ TP
 TP
 TP
 TP
-TP
+KC
 TP
 TP
 TP
@@ -30134,7 +30129,7 @@ TP
 TP
 TP
 TP
-TP
+KC
 TP
 TP
 TP
@@ -30328,7 +30323,7 @@ TP
 TP
 TP
 TP
-TP
+KC
 TP
 TP
 TP
@@ -30522,7 +30517,7 @@ TP
 TP
 TP
 TP
-TP
+KC
 TP
 TP
 TP
@@ -30716,7 +30711,7 @@ TP
 TP
 TP
 TP
-TP
+KC
 TP
 TP
 TP
@@ -30910,7 +30905,7 @@ TP
 TP
 TP
 TP
-TP
+KC
 TP
 TP
 TP
@@ -31104,7 +31099,7 @@ TP
 TP
 TP
 TP
-TP
+KC
 TP
 TP
 TP
@@ -31298,7 +31293,7 @@ TP
 TP
 TP
 TP
-TP
+KC
 TP
 TP
 TP
@@ -31492,7 +31487,7 @@ TP
 TP
 TP
 TP
-TP
+KC
 TP
 TP
 TP
@@ -31686,7 +31681,7 @@ TP
 TP
 TP
 TP
-TP
+KC
 TP
 TP
 TP
@@ -31880,7 +31875,7 @@ TP
 TP
 TP
 TP
-TP
+KC
 TP
 TP
 TP
@@ -32074,7 +32069,7 @@ TP
 TP
 TP
 TP
-TP
+KC
 TP
 TP
 TP
@@ -32268,7 +32263,7 @@ TP
 TP
 TP
 TP
-TP
+KC
 TP
 TP
 TP
@@ -32462,7 +32457,7 @@ TP
 TP
 TP
 TP
-TP
+KC
 TP
 TP
 TP
@@ -32656,7 +32651,7 @@ TP
 TP
 TP
 TP
-TP
+KC
 TP
 TP
 TP
@@ -32850,7 +32845,7 @@ TP
 TP
 TP
 TP
-TP
+KC
 TP
 TP
 TP
@@ -33044,7 +33039,7 @@ TP
 TP
 TP
 TP
-TP
+KC
 TP
 TP
 TP
@@ -33238,7 +33233,7 @@ TP
 TP
 TP
 TP
-TP
+KC
 TP
 TP
 TP
@@ -33432,7 +33427,7 @@ TP
 TP
 TP
 TP
-TP
+KC
 TP
 TP
 TP
@@ -33626,7 +33621,7 @@ TP
 TP
 TP
 TP
-TP
+KC
 TP
 TP
 TP
@@ -33820,7 +33815,7 @@ TP
 TP
 TP
 TP
-TP
+KC
 TP
 TP
 TP
@@ -34014,7 +34009,7 @@ QB
 hA
 KC
 yE
-bd
+KC
 TP
 TP
 TP
@@ -34208,7 +34203,7 @@ QB
 qy
 yE
 yE
-bd
+KC
 TP
 TP
 TP
@@ -34402,7 +34397,7 @@ zb
 yE
 yE
 yE
-bd
+KC
 TP
 TP
 TP
@@ -34596,7 +34591,7 @@ zb
 yE
 yE
 yE
-dB
+KC
 TP
 TP
 TP
