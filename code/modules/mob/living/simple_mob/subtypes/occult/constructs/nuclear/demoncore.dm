@@ -46,4 +46,3 @@
 	playsound(src, 'sound/items/geiger/ext1.ogg', 100, 1)
 	ghostize()
 	qdel(src)
-	return
