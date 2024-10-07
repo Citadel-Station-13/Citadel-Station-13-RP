@@ -4789,7 +4789,6 @@
 	},
 /obj/machinery/fire_alarm/north_mount,
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/item/gun/energy/kinetic_accelerator,
 /turf/simulated/floor/tiled,
 /area/quartermaster/belterdock/gear)
 "jM" = (
@@ -5065,7 +5064,6 @@
 	},
 /obj/structure/closet/secure_closet/miner,
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/item/gun/energy/kinetic_accelerator,
 /turf/simulated/floor/tiled,
 /area/quartermaster/belterdock/gear)
 "ko" = (
@@ -17704,7 +17702,6 @@
 	dir = 9
 	},
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/item/gun/energy/kinetic_accelerator,
 /turf/simulated/floor/tiled,
 /area/quartermaster/belterdock/gear)
 "Kb" = (
@@ -18009,9 +18006,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/hallway/station/port)
-"KF" = (
-/turf/simulated/floor/wood,
-/area/tether/station/visitorhallway/office)
 "KG" = (
 /obj/machinery/button/remote/blast_door{
 	id = "PubPrep";
@@ -24507,7 +24501,6 @@
 /obj/machinery/light,
 /obj/structure/closet/secure_closet/miner,
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/item/gun/energy/kinetic_accelerator,
 /turf/simulated/floor/tiled,
 /area/quartermaster/belterdock/gear)
 "XN" = (
@@ -55598,7 +55591,7 @@ IP
 yu
 Ys
 NJ
-KF
+vO
 BP
 sp
 HI
