@@ -15,7 +15,7 @@
 	 * * This **is** safe to directly edit, if you know what you're doing
 	 *   and trigger updates accordingly for anything referencing this mixture.
 	 */
-	var/temperature = 0
+	var/temperature = TCMB
 	/**
 	 * Volume of this gas mixture in liters.
 	 */
