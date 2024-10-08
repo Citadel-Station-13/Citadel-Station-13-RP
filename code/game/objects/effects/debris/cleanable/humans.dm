@@ -1,5 +1,4 @@
 
-
 /obj/effect/debris/cleanable/mucus
 	name = "mucus"
 	desc = "Disgusting mucus."

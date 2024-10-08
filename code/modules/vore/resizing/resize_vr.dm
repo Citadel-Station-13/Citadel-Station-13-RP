@@ -125,12 +125,8 @@ var/const/RESIZE_A_SMALLTINY = (RESIZE_SMALL + RESIZE_TINY) / 2
 	var/size_diff = M.get_effective_size() - get_effective_size()
 	if(!holder_default && holder_type)
 		holder_default = holder_type
-	if(!istype(M))
+	if(!istype(M) || !M.has_hands())
 		return FALSE
-	if(isanimal(M))
-		var/mob/living/simple_mob/SA = M
-		if(!SA.has_hands)
-			return FALSE
 	if(M.get_active_held_item() && !istype(M.get_active_held_item(), /obj/item/grab)) //scooper's hand is holding something that isn't a grab.
 		to_chat(M, SPAN_WARNING("You can't pick up someone with your occupied hand."))
 		return TRUE

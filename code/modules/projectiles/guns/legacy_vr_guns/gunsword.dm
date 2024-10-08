@@ -102,16 +102,10 @@
 			H?.take_random_targeted_damage(brute = 5, burn = 5)
 		deactivate(user)
 		update_icon()
-		update_held_icon()
 	else
 		activate(user)
 		update_icon()
-		update_held_icon()
-
-	if(istype(user,/mob/living/carbon/human))
-		var/mob/living/carbon/human/H = user
-		H.update_inv_l_hand()
-		H.update_inv_r_hand()
+	update_worn_icon()
 
 	add_fingerprint(user)
 	return

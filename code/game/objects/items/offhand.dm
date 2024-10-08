@@ -28,15 +28,15 @@
  * @params
  * - type - the type of the offhand
  * - index - hand index; null for any
- * - flags - inv flags
+ * - inv_op_flags - inv flags
  * - ... - the rest of the args are passed into New() of the offhand.
  */
-/mob/proc/allocate_offhand(type, index, flags, ...)
+/mob/proc/allocate_offhand(type, index, inv_op_flags, ...)
 	RETURN_TYPE(/obj/item/offhand)
 	var/obj/item/offhand/O = new type(arglist(list(src) + args.Copy(4)))
 	if(index)
-		if(put_in_hand_or_del(O, index, flags))
+		if(put_in_hands_or_del(O, inv_op_flags, index))
 			return O
 	else
-		if(put_in_hands_or_del(O, flags))
+		if(put_in_hands_or_del(O, inv_op_flags))
 			return O

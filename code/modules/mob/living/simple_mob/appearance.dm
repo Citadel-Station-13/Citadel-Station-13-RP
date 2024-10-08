@@ -26,12 +26,6 @@
 	else
 		icon_state = initial(icon_state)
 
-	if(has_hands)
-		if(r_hand_sprite)
-			add_overlay(r_hand_sprite)
-		if(l_hand_sprite)
-			add_overlay(l_hand_sprite)
-
 	if(has_eye_glow)
 		if(icon_state != icon_living)
 			remove_eyes()

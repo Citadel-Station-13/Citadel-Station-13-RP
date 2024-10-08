@@ -491,7 +491,7 @@
 	. = ..()
 	if(overheating)
 		icon_state = "prifle_overheat"
-		update_held_icon()
+		update_worn_icon()
 	else
 		return
 
@@ -528,7 +528,7 @@
 	. = ..()
 	if(overheating)
 		icon_state = "ppistol_overheat"
-		update_held_icon()
+		update_worn_icon()
 	else
 		return
 

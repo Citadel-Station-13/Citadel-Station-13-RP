@@ -20,7 +20,7 @@
 
 /obj/item/gun/ballistic/automatic/battlerifle/update_icon()
 	. = ..()
-	update_held_icon()
+	update_worn_icon()
 
 /obj/item/gun/ballistic/automatic/battlerifle/update_icon_state()
 	. = ..()
@@ -61,7 +61,7 @@
 
 /obj/item/gun/ballistic/automatic/pdw/update_icon()
 	. = ..()
-	update_held_icon()
+	update_worn_icon()
 
 /obj/item/gun/ballistic/automatic/pdw/update_icon_state()
 	. = ..()
@@ -102,7 +102,7 @@
 
 /obj/item/gun/ballistic/automatic/stg/update_icon()
 	. = ..()
-	update_held_icon()
+	update_worn_icon()
 
 /obj/item/gun/ballistic/automatic/stg/update_icon_state()
 	. = ..()

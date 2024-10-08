@@ -15,6 +15,7 @@
 			client.action_drawer.unregister_holder(actions_innate)
 		if(inventory)
 			client.action_drawer.unregister_holder(inventory.actions)
+	inventory?.hud?.remove_user(client)
 
 /**
  * Linter check, do not call.
