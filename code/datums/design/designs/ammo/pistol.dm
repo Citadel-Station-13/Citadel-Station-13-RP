@@ -13,6 +13,12 @@
 	design_unlock = DESIGN_UNLOCK_INTRINSIC
 	build_path = /obj/item/ammo_magazine/a44/rubber
 
+/datum/design/ammo/pistol/a44_silver
+	id = "AmmoPistol44Silver"
+	lathe_type = LATHE_TYPE_AUTOLATHE
+	design_unlock = DESIGN_UNLOCK_INTRINSIC
+	build_path = /obj/item/ammo_magazine/a44/silver
+
 /datum/design/ammo/pistol/a45
 	id = "AmmoPistol45"
 	lathe_type = LATHE_TYPE_AUTOLATHE
@@ -43,6 +49,13 @@
 	design_unlock = DESIGN_UNLOCK_INTRINSIC
 	build_path = /obj/item/ammo_magazine/a45/flash
 
+/datum/design/ammo/pistol/a45_silver
+	id = "AmmoPistol45Silver"
+	lathe_type = LATHE_TYPE_AUTOLATHE
+	design_unlock = DESIGN_UNLOCK_INTRINSIC
+	build_path = /obj/item/ammo_magazine/a45/silver
+
+
 /datum/design/ammo/pistol/a45_uzi
 	id = "AmmoUzi45"
 	lathe_type = LATHE_TYPE_AUTOLATHE
@@ -54,6 +67,12 @@
 	lathe_type = LATHE_TYPE_AUTOLATHE
 	design_unlock = DESIGN_UNLOCK_INTRINSIC
 	build_path = /obj/item/ammo_magazine/a9mm
+
+/datum/design/ammo/pistol/a9mm_silver
+	id = "AmmoPistol9mmSilver"
+	lathe_type = LATHE_TYPE_AUTOLATHE
+	design_unlock = DESIGN_UNLOCK_INTRINSIC
+	build_path = /obj/item/ammo_magazine/a9mm/silver
 
 /datum/design/ammo/pistol/a9mm_rubber
 	id = "AmmoPistol9mmRubber"
@@ -99,3 +118,9 @@
 	lathe_type = LATHE_TYPE_AUTOLATHE
 	design_unlock = DESIGN_UNLOCK_INTRINSIC
 	build_path = /obj/item/ammo_magazine/a9mm/compact/flash
+
+/datum/design/ammo/pistol/compact/a9mm_silver
+	id = "AmmoCompact9mmSilver"
+	lathe_type = LATHE_TYPE_AUTOLATHE
+	design_unlock = DESIGN_UNLOCK_INTRINSIC
+	build_path = /obj/item/ammo_magazine/a9mm/compact/silver

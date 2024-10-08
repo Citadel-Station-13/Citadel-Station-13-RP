@@ -303,8 +303,6 @@ var/const/MAX_ACTIVE_TIME = 400
 	icon_rest = "facehugger_inactive"
 	faction = "xeno"
 
-	mob_class = MOB_CLASS_ABERRATION
-
 	maxHealth = 50
 	health = 50
 

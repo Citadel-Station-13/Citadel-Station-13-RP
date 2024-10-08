@@ -19,7 +19,7 @@
 
 /obj/item/ammo_casing/a10g/silver
 	name = "heavy silver shotgun shell"
-	desc = "A brass jacketed 10 gauge filled with blessed silver shot."
+	desc = "A brass jacketed 10 gauge filled with silver shot."
 	projectile_type = /obj/projectile/scatter/heavy_shotgun/silver
 
 /obj/item/ammo_casing/a10g/grit
