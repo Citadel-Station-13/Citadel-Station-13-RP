@@ -70,9 +70,153 @@
 	. = ..()
 	port_id = SSmapping.mangled_persistent_id(port_id, with_id)
 
-// This file is WIP, and is just here so mappers can start using them.
+/obj/shuttle_port/Destroy(force)
+	if(!force && !shuttle.being_deleted)
+		. = QDEL_HINT_LETMELIVE
+		CRASH("attempted to delete a shuttle anchor")
+	shuttle = null
+	return ..()
 
-//* Movement Hooks ; We don't allow normal movement. *//
+/obj/shuttle_port/proc/before_bounds_initializing(datum/shuttle/from_shuttle, datum/turf_reservation/from_reservation, datum/shuttle_template/from_template)
+	shuttle = from_shuttle
+
+/obj/shuttle_port/proc/overall_width(direction)
+	return shuttle.anchor.overall_width(direction)
+
+/obj/shuttle_port/proc/overall_height(direction)
+	return shuttle.anchor.overall_height(direction)
+
+/**
+ * get rotated coordinates and direction when moved with another location on the shuttle
+ *
+ * @params
+ * * old_coords - list(x,y,z)
+ * * new_coords - list(x,y,z)
+ * * old_dir - old direction
+ * * new_dir - new direction
+ *
+ * @return list(x, y, z, dir)
+ */
+/obj/shuttle_port/proc/calculate_motion_with_respect_to(list/old_coords, list/new_coords, old_dir, new_dir)
+	return calculate_entity_motion_with_respect_to_moving_point(
+		list(src.x, src.y, src.z),
+		src.dir,
+		old_coords,
+		new_coords,
+		old_dir,
+		new_dir,
+	)
+
+/**
+ * @return turfs in square box, unfiltered
+ */
+/obj/shuttle_port/proc/aabb_ordered_turfs_here()
+	return shuttle.anchor.aabb_ordered_turfs_here()
+
+/**
+ * @params
+ * * location - turf or list(x,y,z)
+ * * direction - which way we should be facing when we're done
+ *
+ * @return turfs in square box, unfiltered. turfs that don't exist will be nulls.
+ */
+/obj/shuttle_port/proc/aabb_ordered_turfs_at(turf/location, direction = src.dir)
+	// unpack
+	var/new_x
+	var/new_y
+	var/new_z
+
+	if(islist(location))
+		new_x = location[1]
+		new_y = location[2]
+		new_z = location[3]
+	else
+		new_x = location.x
+		new_y = location.y
+		new_z = location.z
+
+	var/list/anchor_motion = shuttle.anchor.calculate_motion_with_respect_to(
+		list(src.x, src.y, src.z),
+		list(new_x, new_y, new_z),
+		src.dir,
+		direction,
+	)
+
+	return shuttle.anchor.aabb_ordered_turfs_at(anchor_motion, anchor_motion[4])
+
+/**
+ * checks if we'll clip a zlevel edge or another shuttle at a location
+ *
+ * * this is a hard clip check, if this returns null you CANNOT MOVE.
+ *
+ * @params
+ * * location - turf or list(x,y,z)
+ * * direction - which way we should be facing when we're done
+ *
+ * @return null if we will clip, list(ordered turfs) if we won't clip
+ */
+/obj/shuttle_port/proc/aabb_ordered_turfs_at_and_clip_check(turf/location, direction)
+	// unpack
+	var/new_x
+	var/new_y
+	var/new_z
+
+	if(islist(location))
+		new_x = location[1]
+		new_y = location[2]
+		new_z = location[3]
+	else
+		new_x = location.x
+		new_y = location.y
+		new_z = location.z
+
+	var/list/anchor_motion = shuttle.anchor.calculate_motion_with_respect_to(
+		list(src.x, src.y, src.z),
+		list(new_x, new_y, new_z),
+		src.dir,
+		direction,
+	)
+
+	return shuttle.anchor.aabb_ordered_turfs_at_and_clip_check(anchor_motion, anchor_motion[4])
+
+/**
+ * can we form an airtight seal at a given dock?
+ *
+ * @return SHUTTLE_DOCKING_SEAL_*
+ */
+/obj/shuttle_port/proc/check_dock_seal(obj/shuttle_dock/dock)
+	// facing north, pos 1 = where the dock obj actually is
+	var/our_left = 1 - port_offset
+	var/their_left = 1 - dock.dock_offset
+	var/our_right = port_width - port_offset
+	var/their_right = dock.dock_width - dock.dock_offset
+	var/our_tolerance = port_margin
+	var/their_tolerance = dock.dock_margin
+	var/left_distance = abs(our_left - their_left)
+	var/right_distance = abs(our_right - their_right)
+
+	var/has_mismatch = FALSE
+
+	if(our_left != their_left)
+		if(our_left < their_left)
+			if(our_tolerance < left_distance)
+				return SHUTTLE_DOCKING_SEAL_FAULT
+		if(our_left > their_left)
+			if(their_tolerance < left_distance)
+				return SHUTTLE_DOCKING_SEAL_FAULT
+		has_mismatch = TRUE
+	if(our_right != their_right)
+		if(our_right > their_right)
+			if(their_tolerance < right_distance)
+				return SHUTTLE_DOCKING_SEAL_FAULT
+		if(our_right < their_right)
+			if(our_tolerance < right_distance)
+				return SHUTTLE_DOCKING_SEAL_FAULT
+		has_mismatch = TRUE
+
+	return has_mismatch? SHUTTLE_DOCKING_SEAL_INCONVENIENT : SHUTTLE_DOCKING_SEAL_NOMINAL
+
+//* Regular Movement *//
 
 /obj/shuttle_port/forceMove()
 	CRASH("attempted to forceMove a shuttle port")

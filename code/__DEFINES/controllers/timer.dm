@@ -1,4 +1,7 @@
 //! ## Timing subsystem
+
+//* /datum/timedevent flags *//
+
 /**
  * Don't run if there is an identical unique timer active
  *
@@ -45,5 +48,18 @@ DEFINE_BITFIELD(timer_flags, list(
 	BITFIELD(TIMER_DELETE_ME),
 ))
 
+//* /datum/timedevent misc *//
+
 ///Empty ID define
 #define TIMER_ID_NULL -1
+
+//* Timer defines *//
+
+/**
+ * Create a new timer and add it to the queue.
+ * Arguments:
+ * * callback the callback to call on timer finish
+ * * wait deciseconds to run the timer for
+ * * atom_flags atom_flags for this timer, see: code\__DEFINES\subsystems.dm
+ */
+#define addtimer(args...) _addtimer(args, file = __FILE__, line = __LINE__)

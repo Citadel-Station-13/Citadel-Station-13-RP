@@ -16,10 +16,6 @@
 	vessel_size = SHIP_SIZE_SMALL
 	shuttle = "Beruang Trade Ship"
 
-/obj/machinery/computer/shuttle_control/explore/trade
-	name = "short jump console"
-	shuttle_tag = "Beruang Trade Ship"
-
 /area/shuttle/trade_ship
 	requires_power = 1
 	icon_state = "shuttle2"
@@ -30,3 +26,4 @@
 
 /area/shuttle/trade_ship/cockpit
 	name = "\improper Beruang Trade Shuttle Cockpit"
+	

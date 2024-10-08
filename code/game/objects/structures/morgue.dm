@@ -299,7 +299,7 @@ GLOBAL_LIST_BOILERPLATE(all_crematoriums, /obj/structure/morgue/crematorium)
 			return
 
 	else
-		if(!!length(src.search_contents_for(/obj/item/disk/nuclear)))
+		if(!!length(src.get_all_contents_filtered(cached_typecacheof(/obj/item/disk/nuclear))))
 			to_chat(user,"You get the feeling that you shouldn't cremate one of the items in the cremator.")
 			return
 
@@ -379,7 +379,7 @@ GLOBAL_LIST_BOILERPLATE(all_crematoriums, /obj/structure/morgue/crematorium)
 			M.show_message("<span class='warning'>You hear a hollow crackle.</span>", 1)
 			return
 	else
-		if(!!length(src.search_contents_for(/obj/item/disk/nuclear)))
+		if(!!length(src.get_all_contents_filtered(cached_typecacheof(/obj/item/disk/nuclear))))
 			to_chat(usr, "You get the feeling that you shouldn't cremate one of the items in the cremator.")
 			return
 
