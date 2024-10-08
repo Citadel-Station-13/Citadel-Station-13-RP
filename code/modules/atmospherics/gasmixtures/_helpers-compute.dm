@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------//
+//-----------------------------------------------------------------------------//
 /**
  * Contains transfer helpers for operating with multiple gas mixtures
  * in a generic way.
@@ -6,7 +6,7 @@
  * * All procs should be prefixed with 'xgm_' to namespace them in the global scope.
  * * This file contains 'check' helpers, which do not actually mutate the gas mixtures.
  */
-// ----------------------------------------------------------------------------//
+//-----------------------------------------------------------------------------//
 
 /**
  * cheaply calculates approximate moles to get to target pressure
@@ -71,8 +71,8 @@
 	if(sink_temperature != air_temperature)
 		//estimate the final temperature of the sink after transfer
 		var/estimate_moles = (pressure_delta * output_volume) / (sink_temperature * R_IDEAL_GAS_EQUATION)
-		var/sink_heat_capacity = XGM_HEAT_CAPACITY(sink)
-		var/transfer_heat_capacity = XGM_HEAT_CAPACITY(source) * estimate_moles / source_moles
+		var/sink_heat_capacity = sink.heat_capacity()
+		var/transfer_heat_capacity = source.heat_capacity() * estimate_moles / source_moles
 		air_temperature = (sink_temperature * sink_heat_capacity + air_temperature * transfer_heat_capacity) / (sink_heat_capacity + transfer_heat_capacity)
 
 	if(!speedy)

@@ -2333,6 +2333,7 @@
 #include "code\modules\atmospherics\gasmixtures\gas_mixture-environmental.dm"
 #include "code\modules\atmospherics\gasmixtures\gas_mixture-reactions.dm"
 #include "code\modules\atmospherics\gasmixtures\gas_mixture-share.dm"
+#include "code\modules\atmospherics\gasmixtures\gas_mixture-thermodynamics.dm"
 #include "code\modules\atmospherics\gasmixtures\gas_mixture.dm"
 #include "code\modules\atmospherics\gasmixtures\procedural_gas.dm"
 #include "code\modules\atmospherics\gasmixtures\gas_mixture\immutable.dm"

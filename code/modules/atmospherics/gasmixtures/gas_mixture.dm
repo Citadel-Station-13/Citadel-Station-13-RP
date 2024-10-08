@@ -136,50 +136,6 @@
 
 	return 1
 
-// todo: check above
-
-//! Thermodynamics
-/**
- * Returns the heat capacity of the gas mix based on the specific heat of the gases and their moles.
- *
- * takes group_multiplier into account.
- */
-/datum/gas_mixture/proc/heat_capacity()
-	. = 0
-	for(var/g in gas)
-		. += global.gas_data.specific_heats[g] * gas[g]
-	. *= group_multiplier
-
-/**
- * gets total thermal energy, taking into account group multiplier
- */
-/datum/gas_mixture/proc/thermal_energy()
-	return heat_capacity() * temperature
-
-/**
- * adjusts thermal energy in joules
- *
- * returns amount changed, so we can't go below TCMB; **amount changed is not absolute value**, e.g. inputting -10 will net you returned -10.
- */
-/datum/gas_mixture/proc/adjust_thermal_energy(joules)
-	if(!total_moles)
-		return 0
-	var/capacity = heat_capacity()
-	if(joules < 0)
-		joules = max(joules, -(temperature - TCMB) * capacity)
-	temperature += joules / capacity
-	return joules
-
-/**
- * returns thermal energy change in joules to get to a certain temperature
- */
-/datum/gas_mixture/proc/get_thermal_energy_change(target)
-	return heat_capacity() * (max(target, 0) - temperature)
-
-// todo: check below
-
-
-
 //Technically vacuum doesn't have a specific entropy. Just use a really big number (infinity would be ideal) here so that it's easy to add gas to vacuum and hard to take gas out.
 #define SPECIFIC_ENTROPY_VACUUM		150000
 

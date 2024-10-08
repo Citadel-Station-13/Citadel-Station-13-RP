@@ -1,9 +1,11 @@
+//-----------------------------------------------------------------------------//
 /**
  * Hooks for environmental systems to manipualte their gas mixtures.
  *
  * This is currently for ZAS.
- * This only makes sense on ZAS, because adding proc overhead into something like LINDA makes no sense.
+ * This probably only makes sense on ZAS, because proc overhead from these existing on ZAS isn't a huge deal.
  */
+//-----------------------------------------------------------------------------//
 
 /**
  * Default share gas implementation - shares with another gas_mixture non-canonically

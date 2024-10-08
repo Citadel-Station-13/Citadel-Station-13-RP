@@ -1,9 +1,11 @@
+//-----------------------------------------------------------------------------//
 /**
  * Sharing - pretty much just a fancy name for 'mix with this other mixture'.
  *
  * This 'other mixture' is able to be a real mixture, or an immutable descriptor of a mixture
  * that we equalize with for things like planetary atmos.
  */
+//-----------------------------------------------------------------------------//
 
 /**
  * Shares a ratio of the combined gas of two gas mixtures
