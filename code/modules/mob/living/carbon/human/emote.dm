@@ -23,16 +23,12 @@
 		return
 	if(attempt_vr(src,"handle_emote_vr",list(act,m_type,message)))
 		return // Custom Emote Handler
+	#warn purge
 	switch(act)
-
-		if ("airguitar")
-			if (!src.restrained())
-				message = "is strumming the air and headbanging like a safari chimp."
-				m_type = 1
 
 		//Machine-only emotes
 		if("beep", "buzz", "buzz2", "chime", "die", "dwoop", "error", "honk", "no", "ping", "rcough", "rsneeze", "scary", "shutdown","startup", "warn", "ye", "yes")
-
+			#warn splice into machine_noise.dm
 			var/obj/item/organ/o = internal_organs_by_name[O_VOICE]
 			if(!isSynthetic() && (!o || !(o.robotic >= ORGAN_ASSISTED)))
 				to_chat(src, "<span class='warning'>You are not a synthetic.</span>")
@@ -47,50 +43,6 @@
 			if(!M)
 				param = null
 
-			var/display_msg = "beeps"
-			var/use_sound = 'sound/machines/twobeep.ogg'
-			if(act == "buzz")
-				display_msg = "buzzes"
-				use_sound = 'sound/machines/buzz-sigh.ogg'
-			else if(act == "chime")
-				display_msg = "chimes"
-				use_sound = 'sound/machines/chime.ogg'
-			else if(act == "buzz2")
-				display_msg = "buzzes twice"
-				use_sound = 'sound/machines/buzz-two.ogg'
-			else if(act == "warn")
-				display_msg = "blares an alarm"
-				use_sound = 'sound/machines/warning-buzzer.ogg'
-			else if(act == "honk")
-				display_msg = "honks"
-				use_sound = 'sound/items/bikehorn.ogg'
-			else if(act == "ping")
-				display_msg = "pings"
-				use_sound = 'sound/machines/ping.ogg'
-			else if(act == "yes" || act == "ye")
-				display_msg = "emits an affirmative blip"
-				use_sound = 'sound/machines/synth_yes.ogg'
-			else if(act == "no")
-				display_msg = "emits a negative blip"
-				use_sound = 'sound/machines/synth_no.ogg'
-			else if(act == "dwoop")
-				display_msg = "chirps happily"
-				use_sound = 'sound/machines/dwoop.ogg'
-			else if(act == "scary")
-				display_msg = "emits a disconcerting tone"
-				use_sound = 'sound/machines/synth_scary.ogg'
-			else if(act == "startup")
-				display_msg = "chimes to life"
-				use_sound = 'sound/machines/synth_startup.ogg'
-			else if(act == "shutdown")
-				display_msg = "emits a nostalgic tone as they fall silent"
-				use_sound = 'sound/machines/synth_shutdown.ogg'
-			else if(act == "error")
-				display_msg = "experiences a system error"
-				use_sound = 'sound/machines/synth_error.ogg'
-			else if(act == "die")
-				display_msg = "crumples, their chassis colder and more lifeless than usual"
-				use_sound = 'sound/machines/synth_gameover.ogg'
 			else if(act == "rcough")
 				display_msg = "emits a robotic cough"
 				if(get_gender() == FEMALE)
@@ -111,166 +63,8 @@
 			playsound(src.loc, use_sound, 50, 0)
 			m_type = 1
 
-		//Promethean-only emotes
-		if("squish")
-			if(species.bump_flag != SLIME) //This should definitely do it.
-				to_chat(src, "<span class='warning'>You are not a slime thing!</span>")
-				return
-			playsound(src.loc, 'sound/effects/slime_squish.ogg', 50, 0) //Credit to DrMinky (freesound.org) for the sound.
-			message = "squishes."
-			m_type = 1
-
-		// SHRIEK VOXXY ONLY
-		if ("shriekloud")
-			if(src.species.get_species_id() != SPECIES_ID_VOX)
-				to_chat(src, "<span class='warning'>You aren't ear piercingly vocal enough!</span>")
-				return
-			playsound(src.loc, 'sound/voice/shrieksneeze.ogg', 50, 0)
-			message = "gives a short sharp shriek!"
-			m_type = 1
-
-		if ("shriekshort")
-			if(src.species.get_species_id() != SPECIES_ID_VOX)
-				to_chat(src, "<span class='warning'>You aren't noisy enough!</span>")
-				return
-			playsound(src.loc, 'sound/voice/shriekcough.ogg', 50, 0)
-			message = "gives a short, quieter shriek!"
-			m_type = 1
-
-		// SQUID GAMES
-		if ("achime")
-			if(src.species.get_species_id() != SPECIES_ID_ADHERENT)
-				to_chat(src, "<span class='warning'>You aren't floaty enough!</span>")
-				return
-			playsound(src.loc, 'sound/machines/achime.ogg', 50, 0)
-			message = "chimes!"
-			m_type = 1
-
-		//Xenomorph Hybrid
-		if("xhiss")
-			if(src.species.get_species_id() != SPECIES_ID_XENOHYBRID)
-				to_chat(src, "<span class='warning'>You aren't alien enough!</span>")
-				return
-			playsound(src.loc, 'sound/voice/xenos/alien_hiss3.ogg', 50, 0)
-			message = "hisses!"
-			m_type = 2
-
-		if("xroar")
-			if(src.species.get_species_id() != SPECIES_ID_XENOHYBRID)
-				to_chat(src, "<span class='warning'>You aren't alien enough!</span>")
-				return
-			playsound(src.loc, 'sound/voice/xenos/alien_roar1.ogg', 50, 0)
-			message = "roars!"
-			m_type = 2
-
-		if("xhiss2")
-			if(src.species.get_species_id() != SPECIES_ID_XENOHYBRID)
-				to_chat(src, "<span class='warning'>You aren't alien enough!</span>")
-				return
-			playsound(src.loc, 'sound/voice/xenos/xhiss2.ogg', 50, 0)
-			message = "hisses!"
-			m_type = 2
-
-		if("xhiss3")
-			if(src.species.get_species_id() != SPECIES_ID_XENOHYBRID)
-				to_chat(src, "<span class='warning'>You aren't alien enough!</span>")
-				return
-			playsound(src.loc, 'sound/voice/xenos/xhiss3.ogg', 50, 0)
-			message = "hisses!"
-			m_type = 2
-
-		if("xhiss4")
-			if(src.species.get_species_id() != SPECIES_ID_XENOHYBRID)
-				to_chat(src, "<span class='warning'>You aren't alien enough!</span>")
-				return
-			playsound(src.loc, 'sound/voice/xenos/xhiss4.ogg', 50, 0)
-			message = "hisses!"
-			m_type = 2
-
-		if("xhiss5")
-			if(src.species.get_species_id() != SPECIES_ID_XENOHYBRID)
-				to_chat(src, "<span class='warning'>You aren't alien enough!</span>")
-				return
-			playsound(src.loc, 'sound/voice/xenos/xhiss5.ogg', 50, 0)
-			message = "hisses!"
-			m_type = 2
-
-		if("xhiss6")
-			if(src.species.get_species_id() != SPECIES_ID_XENOHYBRID)
-				to_chat(src, "<span class='warning'>You aren't alien enough!</span>")
-				return
-			playsound(src.loc, 'sound/voice/xenos/xhiss6.ogg', 50, 0)
-			message = "hisses!"
-			m_type = 2
-
-		if("xroar1")
-			if(src.species.get_species_id() != SPECIES_ID_XENOHYBRID)
-				to_chat(src, "<span class='warning'>You aren't alien enough!</span>")
-				return
-			playsound(src.loc, 'sound/voice/xenos/xroar1.ogg', 50, 0)
-			message = "hisses!"
-			m_type = 2
-
-		if("xroar2")
-			if(src.species.get_species_id() != SPECIES_ID_XENOHYBRID)
-				to_chat(src, "<span class='warning'>You aren't alien enough!</span>")
-				return
-			playsound(src.loc, 'sound/voice/xenos/xroar2.ogg', 50, 0)
-			message = "hisses!"
-			m_type = 2
-
-		if("xroar3")
-			if(src.species.get_species_id() != SPECIES_ID_XENOHYBRID)
-				to_chat(src, "<span class='warning'>You aren't alien enough!</span>")
-				return
-			playsound(src.loc, 'sound/voice/xenos/xroar3.ogg', 50, 0)
-			message = "hisses!"
-			m_type = 2
-
-		if("xtalk1")
-			if(src.species.get_species_id() != SPECIES_ID_XENOHYBRID)
-				to_chat(src, "<span class='warning'>You aren't alien enough!</span>")
-				return
-			playsound(src.loc, 'sound/voice/xenos/xtalk1.ogg', 50, 0)
-			message = "hisses!"
-			m_type = 2
-
-		if("xtalk2")
-			if(src.species.get_species_id() != SPECIES_ID_XENOHYBRID)
-				to_chat(src, "<span class='warning'>You aren't alien enough!</span>")
-				return
-			playsound(src.loc, 'sound/voice/xenos/xtalk2.ogg', 50, 0)
-			message = "hisses!"
-			m_type = 2
-
-		if("xtalk3")
-			if(src.species.get_species_id() != SPECIES_ID_XENOHYBRID)
-				to_chat(src, "<span class='warning'>You aren't alien enough!</span>")
-				return
-			playsound(src.loc, 'sound/voice/xenos/xtalk3.ogg', 50, 0)
-			message = "hisses!"
-			m_type = 2
-
-		if("xroar")
-			if(src.species.get_species_id() != SPECIES_ID_XENOHYBRID)
-				to_chat(src, "<span class='warning'>You aren't alien enough!</span>")
-				return
-			playsound(src.loc, 'sound/voice/xenos/alien_roar1.ogg', 50, 0)
-			message = "roars!"
-			m_type = 2
-
-		if("xgrowl")
-			if(src.species.get_species_id() != SPECIES_ID_XENOHYBRID)
-				to_chat(src, "<span class='warning'>You aren't alien enough!</span>")
-				return
-			playsound(src.loc, 'sound/voice/xenos/alien_growl1.ogg', 50, 0)
-			message = "growls!"
-			m_type = 2
 
 		if("xkiss")
-			if(src.species.get_species_id() != SPECIES_ID_XENOHYBRID)
-				to_chat(src, "<span class='warning'>You aren't alien enough!</span>")
-				return
 			var/M = null
 			if (param)
 				for (var/mob/A in view(1,src.loc))
@@ -304,43 +98,6 @@
 				message = "makes a kissing mouth."
 			m_type = 1
 
-		if("smooch")
-			if (param)
-				var/M = null
-				for (var/mob/A in view(1,src.loc))
-					if (param == A.name)
-						M = A
-						break
-				if (!M)
-					param = null
-
-				if (param)
-					message = "smooches [param]."
-			m_type = 1
-
-		if ("blink")
-			message = "blinks."
-			m_type = 1
-
-		if ("blink_r")
-			message = "blinks rapidly."
-			m_type = 1
-
-		if ("bow")
-			if (!src.buckled)
-				var/M = null
-				if (param)
-					for (var/mob/A in view(null, null))
-						if (param == A.name)
-							M = A
-							break
-				if (!M)
-					param = null
-
-				if (param)
-					message = "bows to [param]."
-				else
-					message = "bows."
 			m_type = 1
 
 		if ("custom")
@@ -374,43 +131,6 @@
 				return
 			return custom_emote(m_type, message)
 
-		if ("salute")
-			if (!src.buckled)
-				var/M = null
-				if (param)
-					for (var/mob/A in view(null, null))
-						if (param == A.name)
-							M = A
-							break
-				if (!M)
-					param = null
-
-				if (param)
-					message = "salutes to [param]."
-				else
-					message = "salutes."
-			m_type = 1
-
-		if ("fullsalute")
-			if (!src.buckled)
-				var/M = null
-				if (param)
-					for (var/mob/A in view(null, null))
-						if (param == A.name)
-							M = A
-							break
-				if (!M)
-					param = null
-
-				if (param)
-					message = "salutes to [param]."
-				else
-					message = "salutes."
-
-				playsound(src.loc, 'sound/misc/salute.ogg', 30, 0)
-			m_type = 1
-
-
 		if ("choke")
 			if HAS_TRAIT_FROM(src, TRAIT_MUTE, MIME_TRAIT)
 				message = "clutches [T.his] throat desperately!"
@@ -422,18 +142,6 @@
 				else
 					message = "makes a strong noise."
 					m_type = 2
-
-		if ("clap")
-			if (!src.restrained())
-				message = "claps."
-				var/use_sound
-				use_sound = pick('sound/misc/clapping.ogg','sound/voice/clap2.ogg','sound/voice/clap3.ogg','sound/voice/clap4.ogg')
-				playsound(src.loc, use_sound, 50, 0)
-
-		if("golfclap")
-			if (!src.restrained())
-				message = "claps very slowly."
-				playsound(src.loc, 'sound/voice/golfclap.ogg', 50, 0)
 
 		if ("flap")
 			if (!src.restrained())
@@ -448,16 +156,6 @@
 				m_type = 2
 				if(HAS_TRAIT_FROM(src, TRAIT_MUTE, MIME_TRAIT))
 					m_type = 1
-
-		if("ara")
-			message = "aras."
-			var/use_sound
-			use_sound = pick('sound/voice/ara_ara1.ogg','sound/voice/ara_ara2.ogg')
-			playsound(src.loc, use_sound, 50, 0)
-
-		if("uwu")
-			message = "lets out a devious noise."
-			playsound(src.loc, 'sound/voice/uwu.ogg', 50, 0)
 
 		if ("drool")
 			message = "drools."
@@ -478,14 +176,6 @@
 				else
 					message = "makes a noise."
 					m_type = 2
-
-		if ("twitch")
-			message = "twitches."
-			m_type = 1
-
-		if ("twitch_v")
-			message = "twitches violently."
-			m_type = 1
 
 		if ("faint")
 			message = "faints."
@@ -548,22 +238,6 @@
 						else
 							if(species.male_cough_sounds)
 								playsound(src, pick(species.male_cough_sounds), 120)
-
-		if ("frown")
-			message = "frowns."
-			m_type = 1
-
-		if ("nod")
-			message = "nods."
-			m_type = 1
-
-		if ("blush")
-			message = "blushes."
-			m_type = 1
-
-		if ("wave")
-			message = "waves."
-			m_type = 1
 
 		if ("gasp")
 			if HAS_TRAIT_FROM(src, TRAIT_MUTE, MIME_TRAIT)
@@ -742,42 +416,14 @@
 					message = "says, \"[M], please. He had a family.\" [src.name] takes a drag from a cigarette and blows his name out in smoke."
 					m_type = 2
 
-		if ("point")
-			if (!src.restrained())
-				var/mob/M = null
-				if (param)
-					for (var/atom/A as mob|obj|turf|area in view(null, null))
-						if (param == A.name)
-							M = A
-							break
-
-				if (!M)
-					message = "points."
-				else
-					pointed(M)
-
-				if (M)
-					message = "points to [M]."
-				else
-			m_type = 1
-
 		if("crack")
 			if(!restrained())
 				message = "cracks [T.his] knuckles."
 				playsound(src, 'sound/voice/knuckles.ogg', 50, 1,)
 				m_type = 1
 
-		if ("raise")
-			if (!src.restrained())
-				message = "raises a hand."
-			m_type = 1
-
 		if("shake")
 			message = "shakes [T.his] head."
-			m_type = 1
-
-		if ("shrug")
-			message = "shrugs."
 			m_type = 1
 
 		if ("signal")
@@ -789,16 +435,6 @@
 					else if (t1 <= 10 && (!src.r_hand && !src.l_hand))
 						message = "raises [t1] finger\s."
 			m_type = 1
-
-		if ("smile")
-			message = "smiles."
-			m_type = 1
-
-		if ("shiver")
-			message = "shivers."
-			m_type = 2
-			if HAS_TRAIT_FROM(src, TRAIT_MUTE, MIME_TRAIT)
-				m_type = 1
 
 		if ("pale")
 			message = "goes pale for a second."
@@ -868,10 +504,6 @@
 				else
 					message = "makes a weak noise."
 					m_type = 2
-
-		if ("wink")
-			message = "winks."
-			m_type = 1
 
 		if ("yawn")
 			if (!muzzled)
@@ -1015,25 +647,6 @@
 				else
 					message = "makes a very loud noise."
 					m_type = 2
-		if("squeak","squeaks")
-			if HAS_TRAIT_FROM(src, TRAIT_MUTE, MIME_TRAIT)
-				message = "acts out a soft squeak."
-				m_type = 1
-			else
-				if(!muzzled)
-					message = "squeaks!"
-					m_type = 2
-					playsound(loc, "sound/effects/mouse_squeak.ogg", 50, 1)
-
-		if("meow", "meows")
-			if HAS_TRAIT_FROM(src, TRAIT_MUTE, MIME_TRAIT)
-				message = "acts out a soft mrowl."
-				m_type = 1
-			else
-				if(!muzzled)
-					message = "mrowls!"
-					m_type = 2
-					playsound(loc, 'sound/voice/meow1.ogg', 50, 1)
 
 		if("snap", "snaps")
 			m_type = 2
@@ -1133,21 +746,9 @@
 				to_chat(src, usage)
 				return
 
-		if ("help")
-			to_chat(src, "nyaha, ara, awoo, bark, bleat, blink, blink_r, blush, bow-(none)/mob, burp, chirp, choke, chuckle, clap, collapse, cough, cry, custom, deathgasp, drool, eyebrow, fastsway/qwag, \
-					flip, frown, gasp, giggle, glare-(none)/mob, grin, groan, grumble, handshake, hiss, hug-(none)/mob, laugh, look-(none)/mob, mar, merp, moan, mrrp, mumble, nod, nya, pale, peep, point-atom, prbt, \
-					raise, roll, salute, fullsalute, scream, sneeze, shake, shiver, shrug, sigh, signal-#1-10, slap-(none)/mob, smile, sneeze, sniff, snore, stare-(none)/mob, stopsway/swag, squeak, sway/wag, swish, tremble, twitch, \
-					twitch_v, uwu, vomit, weh, whimper, wink, yawn. Moth: mchitter, mlaugh, mscream, msqueak. Synthetics: beep, buzz, buzz2, chime, die, dwoop, error, honk, no, ping, rcough, rsneeze, scary, \
-					shutdown, startup, warn, ye, yes. Vox: shriekshort, shriekloud")
-
 		else
 			to_chat(src, "<font color=#4F49AF>Unusable emote '[act]'. Say *help for a list.</font>")
 			return
-
-	if (message)
-		custom_emote(m_type,message)
-
-
 
 /mob/living/carbon/human/proc/set_pose(new_pose)
 	pose = sanitize(new_pose)
@@ -1263,17 +864,6 @@
 		if ("mlem")
 			message = "mlems [get_visible_gender() == MALE ? "his" : get_visible_gender() == FEMALE ? "her" : "their"] tongue up over [get_visible_gender() == MALE ? "his" : get_visible_gender() == FEMALE ? "her" : "their"] nose. Mlem."
 			m_type = 1
-///////////////////////// EMOTES PORTED FROM MAIN START
-		if ("awoo")
-			m_type = 2
-			message = "lets out an awoo."
-			playsound(loc, 'sound/voice/awoo.ogg', 50, 1, -1)
-		if ("nya")
-			message = "lets out a nya."
-			m_type = 2
-			var/use_sound
-			use_sound = pick('sound/voice/nya.ogg')
-			playsound(src.loc, use_sound, 50, 0)
 		if ("nyaha")
 			if(!spam_flag)
 				var/list/catlaugh = list('sound/voice/catpeople/nyaha.ogg', 'sound/voice/catpeople/nyahaha1.ogg', 'sound/voice/catpeople/nyahaha2.ogg', 'sound/voice/catpeople/nyahehe.ogg')
