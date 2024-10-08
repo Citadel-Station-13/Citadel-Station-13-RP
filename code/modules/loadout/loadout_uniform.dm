@@ -526,6 +526,10 @@
 	name = "Colored Leotard"
 	path = /obj/item/clothing/under/leotardcolor
 
+/datum/loadout_entry/uniform/leotardwindow
+	name = "Window Leotard"
+	path = /obj/item/clothing/under/leotardwindow
+
 /datum/loadout_entry/uniform/bunnysuit_f
 	name = "Bunny Leotard - Female"
 	path = /obj/item/clothing/under/bunnysuit_f
