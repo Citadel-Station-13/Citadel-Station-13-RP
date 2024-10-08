@@ -77,6 +77,7 @@
 		fighting is expected and not simply a possibility.
 	"} + "<br>"
 	load_method = SINGLE_CASING | MAGAZINE
+	icon_state = "pistol"
 
 /obj/item/gun/ballistic/nt_expeditionary/heavy_sidearm/revolver
 	name = "heavy revolver"
@@ -89,6 +90,7 @@
 		the fine trigger control a triple-action revolver provides.
 	"} + "<br>"
 	load_method = SINGLE_CASING | SPEEDLOADER
+	icon_state = "revolver"
 
 /obj/item/gun/ballistic/nt_expeditionary/heavy_sidearm/smg
 	name = "submachine gun"
@@ -102,5 +104,7 @@
 		with relative ease.
 	"} + "<br>"
 	load_method = SINGLE_CASING | MAGAZINE
+	icon_state = "smg"
+	render_unloaded = TRUE
 
 #warn impl all

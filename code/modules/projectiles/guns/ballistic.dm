@@ -19,8 +19,11 @@
 
 	//* Rendering *//
 
-	/// Render `-unloaded` while unloaded
-	var/render_unloaded = FALSE
+	/// Render `-unloaded` while unloaded (uses magazine, but none is inserted)
+	var/render_unloaded_state = FALSE
+	/// Render `-mag` while magazine is in (uses magazine, and one is inserted) as an overlay
+	var/render_mag_overlay = FALSE
+	#warn impl these; how do we do them?
 
 	//! LEGACY BELOW
 

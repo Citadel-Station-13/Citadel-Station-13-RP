@@ -1068,7 +1068,6 @@
 #include "code\game\content\factions\corporations\gorlex\items\guns\phoron_spitter.dm"
 #include "code\game\content\factions\corporations\gorlex\items\guns\wild_hunt.dm"
 #include "code\game\content\factions\corporations\hephaestus\hephaestus-faction.dm"
-#include "code\game\content\factions\corporations\hephaestus\items\guns\srp.dm"
 #include "code\game\content\factions\corporations\nanotrasen\nanotrasen-faction.dm"
 #include "code\game\content\factions\corporations\nanotrasen\nanotrasen-supply.dm"
 #include "code\game\content\factions\corporations\nanotrasen\items\guns\nt_expeditionary-antimaterial.dm"
