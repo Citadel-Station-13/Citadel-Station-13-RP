@@ -88,7 +88,7 @@
 			var/turf/loc_casted_as_turf = loc
 			if(abs((loc_casted_as_turf.temperature_for_heat_exchangers || loc_casted_as_turf.return_temperature()) - our_air_immutable.temperature) > minimum_temperature_difference)
 				// temperature difference is enough, process equalization
-				parent.share_heat_with_turf(loc, volume, thermal_conductivity)
+				parent.turf_thermal_superconduction(loc, volume, thermal_conductivity, 1)
 		else
 			stack_trace("HE pipe was not on a turf but was processing. what the hell?")
 			qdel(src)

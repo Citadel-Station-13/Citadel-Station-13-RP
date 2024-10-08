@@ -4,59 +4,63 @@
 /**
  * Used to share a certain temperature & heat capacity's thermal energy with us.
  *
- * * This proc returns the thermal energy change to apply to the sharer. This means if we heat up,
+ * * This proc returns the temperature change to apply to the sharer. This means if we heat up,
  *   we will return a negative amount because the sharer is cooling!
- * * If it returns 1000, 1000J was imparted onto the sharer during the share.
+ * * If it returns 10, 10 degrees K was imparted onto the sharer during the share.
+ * * You can get thermal energy given / taken by multiplying the return with the heat capacity you passed in.
  * * Be very, very, very careful with this proc, as this will immediately slam
  *   into the zone for simulated turfs with no regards for area or any sanity limits.
  * * At '1' share_ratio, the sharer will be brought to the same resultant temperature as us if
  *   all of the thermal energy change is imparted back to it.
- * * share and total energy are different because a heat exchanger pipe only should ever
- *   share the thermal energy actually available in its 70 liters rather than being more
- *   powerful the bigger its parent pipeline is, but we need to hint that we're allowed to
- *   'overshoot' the actual thermal energy change (including even to below TCMB!!) if there's
- *   actually a lot more energy available to it than it's willing to share.
+ * * limit_ratio is provided so you can limit the amount of energy transferred to a single segment
+ *   of say, a heat exchanging pipeline, as while the entire pipeline has a lot of heat capacity,
+ *   an individual pipe segment does not.
+	// * someone please help do the algebra and see equalize_ratio and limit_ratio aren't just able to be collapsed into one term
  *
  * @params
  * * temperature - the temperature of the sharer
- * * heat_capacity - the total specific heat of the sharer
- * * share_energy - the thermal energy able to be shared this call. this is not an absolute value,
- *                  this is the thermal energy available in the part of the sharer that's being shared.
- * * total_energy - the total thermal energy available to the sharer. this is not
- *                  always the same as limit_thermal_energy, like in pipeline situations.
- * * share_ratio - the % of temperature difference to impart on us (and reflexively to the sharer).
+ * * heat_capacity - the specific heat of the sharer in J / K
+ * * limit_ratio - a multiplier for the part of 'heat_capacity' that can be drawn from / added to this tick.
+ * * equalize_ratio - a limit to delta-energy; 0.5 means only transfer up to 50% of the energy needed to equalize.
  *                 Be very, very careful when setting high values of this!
  * * cell_limit - the maximum effective volume in cells of the share. If we're in a zone with
  *                10 tiles and share_volume is only 2, we will at most equalize the energy
  *                in 1/5 of our zone. This is to artificially limit the effectiveness
  *                of exchanger pipes so they're not exchanging with the entire room.
  *
- * @return the thermal energy change to the sharer
+ * @return the temperature change to the sharer
  */
-/turf/proc/air_thermal_superconduction(temperature, heat_capacity, share_energy, total_energy, share_ratio, cell_limit)
-	// unsimulated turfs
+/turf/proc/air_thermal_superconduction(temperature, heat_capacity, limit_ratio, equalize_ratio, cell_limit)
+	// unsimulated mixtures
 	var/datum/gas_mixture/sharing_with_immutable = return_air_immutable()
-	// as unsimulated, our heat capacity is unbounded and limited to the input cell limit
-	var/our_heat_capacity = sharing_with_immutable.heat_capacity_singular() * cell_limit
-	// get midpoint temperature with (our energy + their energy) / (combined capacity)
-	var/midpoint_t = ((our_heat_capacity * sharing_with_immutable.temperature) + (heat_capacity * temperature)) \
-		/ (our_heat_capacity + heat_capacity)
-	// we can entirely skip our own temperature change as we're unsimulated, and only do theirs.
-	var/their_energy_change = (midpoint_t - temperature) * heat_capacity
-	return (midpoint_t - temperature) * heat_capacity
+	var/midpoint_t
+	var/our_heat_capacity = sharing_with_immutable.heat_capacity_singular()
+	// to avoid precision issues, we divide their capacity by cell limit instead of expand our capacity.
+	midpoint_t = ((our_heat_capacity * sharing_with_immutable.temperature) + ((heat_capacity / cell_limit) * temperature)) \
+		/ (our_heat_capacity + (heat_capacity / cell_limit))
+	// if this was an actual simulated turf, we'd need to calculate the change
+	// with equalize ratio, and then limit it with limit ratio
+	//
+	// since this is unsimulated, limit ratio is effectively just a secondary
+	// equalize ratio, as the total temperature change is tempered by the
+	// limit ratio limiting the availability of thermal energy to effect that change
+	// (we don't change but the opposite & equal change to the sharer still happens)
+	return (midpoint_t - temperature) * equalize_ratio * limit_ratio
 
-
-
-
-	var/delta_t = (sharing_with_immutable.temperature - temperature) * share_ratio
-	var/delta_e = delta_t * heat_capacity
-	if(delta_e > 0)
-		return delta_e // don't need to limit it
-	return clamp(
-		delta_t * heat_capacity,
-	)
-
-/turf/simulated/air_thermal_superconduction(temperature, heat_capacity, share_energy, total_energy, share_ratio, cell_limit)
+/turf/simulated/air_thermal_superconduction(temperature, heat_capacity, limit_ratio, equalize_ratio, cell_limit)
+	// simulated mixtures
+	// the trick is the rest of this proc works regardless of if we're in a zone or not,
+	// because we're using group multiplier manually with cell unit
 	var/datum/gas_mixture/sharing_with_mutable = return_air_mutable()
-
-#warn impl all
+	// this is with group multiplier taken into account
+	var/our_heat_capacity = sharing_with_mutable.heat_capacity_singular() * min(cell_limit, sharing_with_mutable.group_multiplier)
+	// limit ratio is applied here,
+	// it basically makes the sharer act like it's smaller than it actually is,
+	// which makes us undershoot
+	var/midpoint_t = ((our_heat_capacity * sharing_with_mutable.temperature) + (heat_capacity * temperature * limit_ratio)) / (heat_capacity * limit_ratio + our_heat_capacity)
+	// equalize ratio is a delta-energy modifier
+	// we don't want equalize ratio to affect target temperature, we only want it to affect transfer efficiency
+	var/delta_e_to_them = (midpoint_t - temperature) * heat_capacity * equalize_ratio
+	// impart temperature change on both
+	temperature += -delta_e_to_them / our_heat_capacity
+	return delta_e_to_them / heat_capacity

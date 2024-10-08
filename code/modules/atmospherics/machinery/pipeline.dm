@@ -164,10 +164,10 @@
  * @params
  * * target - the target turf
  * * share_volume - the amount of volume of this pipeline to share with the turf
- * * share_ratio - amount of energy difference to equalize this tick
- * * cell_limit - maximum number of turfs to share to (in ZAS this behaves like a second share_ratio limit)
+ * * equalize_ratio - amount of energy difference to equalize this tick
+ * * cell_limit - maximum number of turfs to share to (in ZAS this behaves like a second equalize_ratio limit)
  */
-/datum/pipeline/proc/turf_thermal_superconduction(turf/target, share_volume, share_ratio, cell_limit)
+/datum/pipeline/proc/turf_thermal_superconduction(turf/target, share_volume, equalize_ratio, cell_limit)
 	var/anything_changed = FALSE
 
 	// we know that heat capacity will never change through this proc
@@ -198,9 +198,8 @@
 	var/energy_shared = target.air_thermal_superconduction(
 		air.temperature,
 		our_heat_capacity,
-		our_energy * (share_volume / our_volume),
-		our_energy,
-		share_ratio,
+		share_volume / air.volume,
+		equalize_ratio,
 		cell_limit,
 	)
 
