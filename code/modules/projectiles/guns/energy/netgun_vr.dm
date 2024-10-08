@@ -22,7 +22,7 @@
 	var/list/overlays_to_add = list()
 
 	if(power_supply)
-		var/ratio = power_supply.charge / power_supply.maxcharge
+		var/ratio = power_supply.charge / power_supply.max_charge
 
 		if(power_supply.charge < charge_cost)
 			ratio = 0
