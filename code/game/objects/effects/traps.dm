@@ -73,9 +73,9 @@ Add those other swinging traps you mentioned above!
 
 /obj/effect/trap/Initialize(mapload)
 	. = ..()
-	RegisterSimpleNetwork(id)
+	simple_network_register(id)
 
-/obj/effect/trap/SimpleNetworkReceive(id, message, list/data, datum/sender)
+/obj/effect/trap/simple_network_receive(id, message, list/data, datum/sender)
 	. = ..()
 	trip()
 
@@ -335,7 +335,7 @@ Add those other swinging traps you mentioned above!
 
 /obj/effect/trap/launcher/Initialize(mapload)
 	. = ..()
-	RegisterSimpleNetwork(id)
+	simple_network_register(id)
 	START_PROCESSING(SSobj, src)
 
 /obj/effect/trap/launcher/fire()

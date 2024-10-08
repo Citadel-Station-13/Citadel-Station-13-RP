@@ -22,7 +22,7 @@
 	visible_message("<span class='danger'>You hear a click nearby!</span>")
 	update_icon()
 	playsound(src, 'sound/machines/click.ogg', 50, 1)
-	SimpleNetworkSend(id, "trip")
+	simple_network_send(id, "trip")
 	return
 
 /turf/simulated/floor/trap/update_icon()
@@ -50,7 +50,7 @@
 		visible_message("<span class='danger'>You hear a click nearby!</span>")
 		update_icon()
 		playsound(src, 'sound/machines/click.ogg', 50, 1)
-		SimpleNetworkSend(id, "trip")
+		simple_network_send(id, "trip")
 		return
 
 //Types
