@@ -347,7 +347,7 @@
 
 	armor_type = /datum/armor/physiology/roach/atomar
 
-	base_attack_cooldown = 4
+	base_attack_cooldown = 2 SECONDS
 	projectiletype = /obj/projectile/energy/blob/toxic
 	projectilesound = 'sound/effects/slime_squish.ogg'
 
@@ -426,7 +426,7 @@
 	taser_kill = 0
 	armor_type = /datum/armor/physiology/roach/strahland
 
-	base_attack_cooldown = 4
+	base_attack_cooldown = 2 SECONDS
 	projectiletype = /obj/projectile/energy/dart
 
 	ai_holder_type = /datum/ai_holder/polaris/simple_mob/ranged/kiting
