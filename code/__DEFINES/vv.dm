@@ -97,6 +97,7 @@
 #define VV_HK_EDIT_ARMOR "edit_armor"
 
 // /mob
+#define VV_HK_TRIGGER_OFFER_MOB_TO_GHOSTS "offer_mob_to_ghosts"
 /// used on /mob as well as /obj/item/organ
 #define VV_HK_ADD_PHYSIOLOGY_MODIFIER "add_physiology_mod"
 /// used on /mob as well as /obj/item/organ
