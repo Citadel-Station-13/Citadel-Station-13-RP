@@ -298,6 +298,7 @@
 #include "code\__DEFINES\procs\update_icon.dm"
 #include "code\__DEFINES\projectiles\ammo_casing.dm"
 #include "code\__DEFINES\projectiles\ammo_magazine.dm"
+#include "code\__DEFINES\projectiles\gun.dm"
 #include "code\__DEFINES\projectiles\guns.dm"
 #include "code\__DEFINES\projectiles\projectile.dm"
 #include "code\__DEFINES\projectiles\system.dm"

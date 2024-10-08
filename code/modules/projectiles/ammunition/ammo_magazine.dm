@@ -28,6 +28,11 @@
 	///
 	/// * this is a bitfield
 	var/magazine_type = MAGAZINE_TYPE_NORMAL
+	/// the class we ask the gun to render us as
+	///
+	/// * uses MAGAZINE_CLASS_* flags
+	/// * if our requested class isn't on a gun, the gun reserves the right to render us as the default class ('-mag')
+	var/magazine_class = MAGAZINE_CLASS_GENERIC
 
 	//* for magazines
 	/// magazine type - must match gun's to be fitted into it, if gun's is
@@ -56,7 +61,7 @@
 	/// sound for loading a piece of ammo
 	var/load_sound = 'sound/weapons/flipblade.ogg'
 
-	//* ammo storage *//
+	//* Ammo *//
 	/// max ammo in us
 	var/ammo_max = 7
 	/// currently stored ammo; defaults to ammo_max if unset
@@ -81,16 +86,19 @@
 	var/ammo_caliber
 	/// preloaded ammo type
 	var/ammo_preload
-	/// if set, only loads ammo of this type
-	var/ammo_type
+	/// if set, only loads ammo matching this restrict value
+	///
+	/// * ammo by default has their typepath as the restrict value
+	/// * ammo can set strings / enums to this too; make sure to #define them.
+	var/ammo_restrict
 	/// if set, doesn't allow subtypes
-	var/ammo_picky = FALSE
+	var/ammo_restrict_no_subtypes = FALSE
 	/// init all contents on initialize instead of lazy-drawing
 	///
 	/// * used for things like microbatteries / legacy content
 	var/ammo_legacy_init_everything = FALSE
 
-	//* Rendering
+	//* Rendering *//
 	/// use default rendering system
 	/// in state mode, we will be "[base_icon_state]-[count]", from 0 to count (0 for empty)
 	/// in segments mode, we will repeatedly add "[base_icon_state]-ammo" with given offsets.
@@ -139,17 +147,17 @@
 
 /obj/item/ammo_magazine/get_containing_worth(flags)
 	. = ..()
-	var/obj/item/ammo_casing/ammo_casted = ammo_type
+	var/obj/item/ammo_casing/ammo_casted = ammo_restrict
 	. += (isnull(ammo_current)? ammo_max : ammo_current) * initial(ammo_casted.worth_intrinsic)
 
 /obj/item/ammo_magazine/detect_material_base_costs()
 	. = ..()
-	if(isnull(ammo_type))
+	if(isnull(ammo_restrict))
 		return
 	var/shell_amount = isnull(ammo_current)? ammo_max : ammo_current
 	if(!shell_amount)
 		return
-	var/obj/item/ammo_casing/casing = new ammo_type
+	var/obj/item/ammo_casing/casing = new ammo_restrict
 	if(!istype(casing))
 		qdel(casing)
 		return
@@ -221,7 +229,7 @@
 /obj/item/ammo_magazine/proc/why_cant_load_casing(obj/item/ammo_casing/casing)
 	if(!loads_caliber(casing.caliber))
 		return "mismatched caliber"
-	if(ammo_type && (ammo_picky ? casing.type != ammo_type : !istype(casing, ammo_type)))
+	if(ammo_restrict && (ammo_restrict_no_subtypes ? casing.type != ammo_restrict : !istype(casing, ammo_restrict)))
 		return "mismatched ammo"
 
 /obj/item/ammo_magazine/on_attack_self(datum/event_args/actor/e_args)
