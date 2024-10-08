@@ -195,7 +195,7 @@
 	// calculated after snowflake heat exchanger temperature is checked
 	var/our_energy = our_heat_capacity * air.temperature
 
-	var/energy_shared = target.air_thermal_superconduction(
+	var/temperature_change = target.air_thermal_superconduction(
 		air.temperature,
 		our_heat_capacity,
 		share_volume / air.volume,
@@ -203,8 +203,8 @@
 		cell_limit,
 	)
 
-	if(energy_shared != 0)
-		air.adjust_thermal_energy(energy_shared)
+	if(temperature_change != 0)
+		air.temperature += temperature_change
 		anything_changed = TRUE
 
 	if(anything_changed)
