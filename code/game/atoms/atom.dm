@@ -25,8 +25,6 @@
 	var/pass_flags_self = NONE
 
 	//? Unsorted / Legacy
-	/// Used for changing icon states for different base sprites.
-	var/base_icon_state
 	/// Holder for the last time we have been bumped.
 	var/last_bumped = 0
 	/// The higher the germ level, the more germ on the atom.
@@ -151,7 +149,16 @@
 	/// contamination insulation; null defaults to rad_insulation, this is a multiplier. *never* set higher than 1!!
 	var/rad_stickiness = 1
 
-	//? Shieldcalls
+	//* Rendering *//
+
+	/// Used for changing icon states for different base sprites.
+	///
+	/// * Not used directly, but it's a frequent pattern to need to override this
+	///   and we don't want to always force usage of initial(icon_state)
+	var/base_icon_state
+
+	//* Shieldcalls *//
+
 	/// sorted priority list of datums for handling shieldcalls with
 	/// we use this instead of signals so we can enforce priorities
 	/// this is horrifying.

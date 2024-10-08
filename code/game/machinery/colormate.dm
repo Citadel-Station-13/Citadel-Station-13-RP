@@ -299,6 +299,7 @@
 		COLORTEST("00FF00", cm)
 		COLORTEST("0000FF", cm)
 		COLORTEST("FFFFFF", cm)
+		pass() // macro used immediately before being undefined; BYOND bug 2072419
 #undef COLORTEST
 		if(passed < minimum_matrix_tests)
 			temp = "Matrix is too dark. (passed [passed] out of [minimum_matrix_tests] required tests. Minimum lightness: [minimum_matrix_lightness])."

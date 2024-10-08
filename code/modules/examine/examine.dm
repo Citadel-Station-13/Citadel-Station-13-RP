@@ -9,7 +9,24 @@
 
 /atom/
 	var/description_info = null //Helpful blue text.
-	var/description_fluff = null //Green text about the atom's fluff, if any exists.
+
+	/**
+	 * Lore fluff.
+	 *
+	 * todo: rename this maybe, rework examines
+	 *
+	 * * "This snowflake weapon made for my Mary Sue was made by the Nanotrasen Department of Deniable Operations and fires 75x400mm artillery shells out of the barrel with the power of bluespace."
+	 */
+	var/description_fluff
+	/**
+	 * Lore fluff, part 2.
+	 *
+	 * todo: rename this maybe, rework examines
+	 *
+	 * * This is appended at the end of [description_fluff]. Useful for things like "this is part of a group of similar blah blah blah's".
+	 */
+	var/description_fluff_categorizer
+
 	var/description_antag = null //Malicious red text, for the antags.
 
 //Override these if you need special behaviour for a specific type.
@@ -19,9 +36,13 @@
 	return
 
 /atom/proc/get_description_fluff()
-	if(description_fluff)
-		return description_fluff
-	return
+	. = description_fluff
+	if(description_fluff_categorizer)
+		if(.)
+			. += "<hr>"
+			. += description_fluff_categorizer
+		else
+			. = description_fluff_categorizer
 
 /atom/proc/get_description_antag()
 	if(description_antag)

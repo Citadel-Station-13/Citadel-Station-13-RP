@@ -130,7 +130,11 @@
 	var/unstable = 0
 	var/destroyed = 0
 
-	//* Rendering
+	//* Rendering *//
+
+	/// Used instead of base_icon_state for the mob renderer, if this exists.
+	var/base_mob_state
+
 	/// renderer datum we use for world rendering of the gun item itself
 	/// set this in prototype to a path
 	/// if null, we will not perform default rendering/updating of item states.
@@ -149,25 +153,26 @@
 	var/datum/gun_mob_renderer/mob_renderer
 	/// for de-duping
 	var/static/list/mob_renderer_store = list()
-	/// base onmob state override so we don't use [base_icon_state] if overridden
-	//  todo: impl
-	var/render_mob_base
-	/// render as -wield if we're wielded? applied at the end of our worn state no matter what
+
+	/// render as -wield if we're wielded? applied at the end of our base worn state no matter what
+	///
+	///  todo: impl
 	///
 	/// * ignores [mob_renderer]
 	/// * ignores [render_additional_exclusive] / [render_additional_worn]
-	//  todo: impl
+	/// * ordering: [base]-wield-[additional]-[...rest]
 	var/render_mob_wielded = FALSE
 	/// state to add as an append
 	///
 	/// * segment and overlay renders add [base_icon_state]-[append]
-	/// * state renders set state to [base_icon_state]-[append]-[...rest]
+	/// * state renders set state to [base_icon_state]-[wield?]-[append]-[...rest]
 	var/render_additional_state
 	/// only render [render_additional_state]
 	var/render_additional_exclusive = FALSE
 	/// [render_additional_state] and [render_additional_exclusive] apply to worn sprites
 	//  todo: impl
 	var/render_additional_worn = FALSE
+
 	/// use the old render system, if item_renderer and mob_renderer are not set
 	//  todo: remove
 	var/render_use_legacy_by_default = TRUE

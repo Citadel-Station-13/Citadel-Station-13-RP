@@ -1,0 +1,150 @@
+//* This file is explicitly licensed under the MIT license. *//
+//* Copyright (c) 2024 Citadel Station Developers           *//
+
+//* Caliber *//
+
+/datum/ammo_caliber/nt_expeditionary/light_rifle
+	caliber = "nt-light-rifle"
+	diameter = 7.5
+	length = 39
+
+//* Ammo Casings *//
+
+/obj/item/ammo_casing/nt_expeditionary/light_rifle
+	name = "ammo casing (NT-7.5-SR)"
+	desc = "A standardized 7.5x39mm cartridge for NT Expeditionary kinetics. This one seems to be for lightweight automatics."
+	caliber = /datum/ammo_caliber/nt_expeditionary/light_rifle
+	projectile_type = /obj/projectile/bullet/nt_expeditionary/light_rifle
+
+	/// specifically for /obj/item/ammo_magazine/nt_expeditionary/heavy_rifle's
+	var/speedloader_state = "basic"
+
+/obj/item/ammo_casing/nt_expeditionary/light_rifle/piercing
+	icon_state = "piercing"
+	speedloader_state = "piercing"
+	// todo: implement casing + magazine
+
+/obj/item/ammo_casing/nt_expeditionary/light_rifle/rubber
+	icon_state = "rubber"
+	speedloader_state = "rubber"
+	// todo: implement casing + magazine
+
+//* Magazines *//
+
+/obj/item/ammo_magazine/nt_expeditionary/light_rifle
+	name = "ammo magazine (NT-7.5-LR)"
+	icon = 'icons/content/factions/corporations/nanotrasen/items/guns/expeditionary/rifle-light-ammo.dmi'
+	icon_state = "magazine"
+	base_icon_state = "magazine"
+	rendering_system = GUN_RENDERING_DISABLED
+	ammo_caliber = /datum/ammo_caliber/nt_expeditionary/light_rifle
+	ammo_max = 5
+	ammo_preload = /obj/item/ammo_casing/nt_expeditionary/light_rifle
+
+/obj/item/ammo_magazine/nt_expeditionary/light_rifle/speedloader
+
+/obj/item/ammo_magazine/nt_expeditionary/light_rifle/speedloader/update_icon(updates)
+	cut_overlays()
+	. = ..()
+	#warn impl; overlay via "[base_icon_state]-[casing.magazine_state]", shift -2, -2
+
+/obj/item/ammo_magazine/nt_expeditionary/light_rifle/magazine
+
+/obj/item/ammo_magazine/nt_expeditionary/light_rifle/magazine/extended
+
+/obj/item/ammo_magazine/nt_expeditionary/light_rifle/magazine/drum
+
+//* Projectiles *//
+
+/obj/projectile/bullet/nt_expeditionary/light_rifle
+	name = "rifle bullet"
+	damage_force = 35
+	damage_tier = LERP(BULLET_TIER_MEDIUM, BULLET_TIER_HIGH, 0.5)
+	armor_penetration = 35
+
+//* Light Rifles *//
+
+/obj/item/gun/ballistic/nt_expeditionary/light_rifle
+	abstract_type = /obj/item/gun/ballistic/nt_expeditionary/light_rifle
+	icon = 'icons/content/factions/corporations/nanotrasen/items/guns/expeditionary/rifle-light.dmi'
+	caliber = /datum/ammo_caliber/nt_expeditionary/light_rifle
+
+/obj/item/gun/ballistic/nt_expeditionary/light_rifle/pistol
+	name = "high-caliber pistol"
+	desc = "The XNP Mk.9 \"David\" revolver; a refined design output by the Nanotrasen Research Division in conjunction with Hephaestus Industries."
+	description_fluff = {"
+		An oddball of a revolver, the Mark 9 was made as little more than a proof of concept.
+		Chambering 7.5x39mm light rifle ammunition, the "David" sidearm is capable of consistently,
+		and accurately (for its uncanny size) punching above its paygrade.
+		Unfortunately, the downsides of using such a heavy caliber in a sidearm package limits its
+		practical use. This is nonetheless seen now and then in the hands of enthusiasts.
+	"} + "<br>"
+	load_method = SINGLE_CASING | SPEEDLOADER
+	icon_state = "revolver"
+	base_icon_state = "revolver"
+	render_break_state = BALLISTIC_RENDER_BREAK_OPEN
+
+/obj/item/gun/ballistic/nt_expeditionary/light_rifle/semirifle
+	name = "semi-automatic rifle"
+	desc = "The XNR Mk.4 \"Scout\" light rifle; a refined design output by the Nanotrasen Research Division in conjunction with Hephaestus Industries."
+	description_fluff = {"
+		The basis of a new family of carbines developed to make use of 7.5x39mm ammunition,
+		the “Scout is a traditional pattern of semi-automatic rifle with a mid-length barrel and
+		adjustable stock, using a short stroke gas piston to cycle the action.
+		The basic design is fitted with a zero magnification optic and comes packaged with
+		relatively compact magazines. However, larger magazines will also work with this
+		workhorse of a weapon.
+	"} + "<br>"
+	load_method = SINGLE_CASING | MAGAZINE
+	icon_state = "semi-map"
+	base_icon_state = "semi"
+	render_magazine_overlay = MAGAZINE_CLASS_GENERIC
+
+/obj/item/gun/ballistic/nt_expeditionary/light_rifle/autorifle
+	name = "automatic rifle"
+	desc = "The XNR Mk.4 Mod.1 \"Auto Scout\" light rifle; a refined design output by the Nanotrasen Research Division in conjunction with Hephaestus Industries."
+	description_fluff = {"
+		The first modification of the Mk.4 carbine, the “Auto Scout” is the next logical step
+		of the platform by adding an automatic fire control group. Still using the same short-stroke
+		gas piston and featuring a compensator on the end to help control recoil,
+		this rifle still sports a zero-magnification optic and adds a short vertical grip as
+		standard to the forward handguard. Issued with larger magazines to make better use of
+		the automatic fire this weapon is capable of.
+	"} + "<br>"
+	load_method = SINGLE_CASING | MAGAZINE
+	icon_state = "auto-map"
+	base_icon_state = "auto"
+	render_magazine_overlay = MAGAZINE_CLASS_GENERIC
+
+/obj/item/gun/ballistic/nt_expeditionary/light_rifle/pdw
+	name = "personal defense weapon"
+	desc = "The XNR Mk.4 Mod.2 \"Little Scout\" personal defense weapon; a refined design output by the Nanotrasen Research Division in conjunction with Hephaestus Industries."
+	description_fluff = {"
+		Taking the concept of the original “Scout” and chopping the barrel, this weapon is lighter,
+		more handy, and easier to carry when you need something more than a pistol,
+		but a rifle would interfere with other duties. Sticking to the semi-automatic fire
+		control of the parent, but chopping the barrel and adding the compensator of the Mod.1,
+		this weapon's ability to fold away helps make it easy to package and
+		store inside cramped cockpits and into survival kits with its compact magazines.
+	"} + "<br>"
+	load_method = SINGLE_CASING | MAGAZINE
+	icon_state = "pdw-map"
+	base_icon_state = "pdw"
+	render_magazine_overlay = MAGAZINE_CLASS_GENERIC
+
+/obj/item/gun/ballistic/nt_expeditionary/light_rifle/lmg
+	name = "squad automatic weapon"
+	desc = "The XNR Mk.4 Mod.3 \"Machine Scout\" squad automatic weapon; a refined design output by the Nanotrasen Research Division in conjunction with Hephaestus Industries."
+	description_fluff = {"
+		The final entry of the “Scout” series, the “Machine Scout” makes use of a heavier barrel,
+		a recoil compensating gyro on the bottom of the handguard,
+		and the option to feed from larger box and drum magazines, this gives a heavy punch to
+		recon teams and security units while keeping a common set of parts
+		to reduce the complexities of servicing and maintaining the series as a whole.
+	"} + "<br>"
+	load_method = SINGLE_CASING | MAGAZINE
+	icon_state = "saw-map"
+	base_icon_state = "saw"
+	render_magazine_overlay = MAGAZINE_CLASS_GENERIC
+	render_bolt_overlay = BALLISTIC_RENDER_BOLT_CLOSE
+	render_break_overlay = BALLISTIC_RENDER_BREAK_BOTH

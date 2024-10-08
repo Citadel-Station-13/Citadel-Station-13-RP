@@ -11,6 +11,8 @@
 
 	/// name
 	var/name = "Unknown Faction"
+	/// public abbreviation; if null, it doesn't have one
+	var/abbreviation
 	/// id - must be unique
 	var/id
 	/// short description blurb
