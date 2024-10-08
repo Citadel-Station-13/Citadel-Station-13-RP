@@ -288,7 +288,6 @@
 	construction_type = /obj/item/pipe/binary/bendable
 	pipe_state = "insulated"
 
-	thermal_conductivity = 0
 	maximum_pressure = 1000*ONE_ATMOSPHERE
 	fatigue_pressure = 900*ONE_ATMOSPHERE
 	alert_pressure = 900*ONE_ATMOSPHERE

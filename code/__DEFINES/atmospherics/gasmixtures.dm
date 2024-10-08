@@ -20,6 +20,7 @@
 /// * In Joules
 #define XGM_THERMAL_ENERGY_SINGULAR(GM) (GM.heat_capacity_singular() * GM.temperature)
 
-//? uniform properties ?//
+//? group multiplier independent ?//
 
 #define XGM_TEMPERATURE(GM) (GM.temperature)
+#define XGM_PRESSURE(GM) ((GM.total_moles * R_IDEAL_GAS_EQUATION * GM.temperature) / GM.volume)

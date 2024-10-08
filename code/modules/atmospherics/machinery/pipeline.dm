@@ -154,16 +154,26 @@
 /**
  * Processes heat exchange with turf.
  *
+ * * See /turf/proc/air_thermal_superconduction.
+ * * This is named superconduction because this isn't a normal share, this is effectively an equalize proc.
+ * * **Using this on space results in a share with an infinite air of TCMB.** You must use [share_heat_with_space()]
+ *   to use blackbody radiation cooling!
+ *
+ * todo: maybe we should start considering grouping massed heat exchanger pipes for speed?
+ *
  * @params
  * * target - the target turf
  * * share_volume - the amount of volume of this pipeline to share with the turf
- * * thermal_conductivity - relative thermal conductivity (so, cheat / penalty multiplier).
+ * * share_ratio - amount of energy difference to equalize this tick
+ * * cell_limit - maximum number of turfs to share to (in ZAS this behaves like a second share_ratio limit)
  */
-/datum/pipeline/proc/share_heat_with_turf(turf/target, share_volume, thermal_conductivity)
+/datum/pipeline/proc/turf_thermal_superconduction(turf/target, share_volume, share_ratio, cell_limit)
 	var/anything_changed = FALSE
 
+	// we know that heat capacity will never change through this proc
 	var/our_heat_capacity = air.heat_capacity()
-	var/fragment_heat_capacity = our_heat_capacity * (share_volume / air.volume)
+	// we know that volume will never change through this proc
+	var/our_volume = air.volume
 
 	/**
 	 * First deal with special heat exchanger temperature
@@ -174,73 +184,39 @@
 		var/delta_temp = target.temperature_for_heat_exchangers - air.temperature//2200C - 20C = 2180K
 		//assuming aluminium with thermal conductivity 235 W * K / m, Copper (400), Silver (430), steel (50), gold (320)
 		var/heat_gain = thermal_conductivity_setting * 100 * delta_temp//assuming 1 cm wall thickness, so delta_temp isnt multiplied
-		heat_gain = clamp(heat_gain, air.get_thermal_energy_change(target.temperature_for_heat_exchangers), -air.get_thermal_energy_change(modeled_location.temperature_for_heat_exchangers))
+		heat_gain = clamp(
+			heat_gain,
+			air.get_thermal_energy_change(target.temperature_for_heat_exchangers),
+			-air.get_thermal_energy_change(target.temperature_for_heat_exchangers)
+		)
 		air.adjust_thermal_energy(heat_gain)
-		if(network)
-			network.update = 1
+		anything_changed = TRUE
 
+	// calculated after snowflake heat exchanger temperature is checked
+	var/our_energy = our_heat_capacity * air.temperature
 
+	var/energy_shared = target.air_thermal_superconduction(
+		air.temperature,
+		our_heat_capacity,
+		our_energy * (share_volume / our_volume),
+		our_energy,
+		share_ratio,
+		cell_limit,
+	)
 
-	if(istype(target, /turf/simulated))
-		var/turf/simulated/modeled_location = target
+	if(energy_shared != 0)
+		air.adjust_thermal_energy(energy_shared)
+		anything_changed = TRUE
 
-		if(modeled_location.blocks_air)
-
-			if((modeled_location.heat_capacity>0) && (partial_heat_capacity>0))
-				var/delta_temperature = air.temperature - modeled_location.temperature
-
-				var/heat = thermal_conductivity*delta_temperature* \
-					(partial_heat_capacity*modeled_location.heat_capacity/(partial_heat_capacity+modeled_location.heat_capacity))
-
-				air.temperature -= heat/total_heat_capacity
-				modeled_location.temperature += heat/modeled_location.heat_capacity
-
-		else 
-			var/delta_temperature = 0
-			var/sharer_heat_capacity = 0
-
-			if(modeled_location.zone)
-				delta_temperature = (air.temperature - modeled_location.zone.air.temperature)
-				sharer_heat_capacity = modeled_location.zone.air.heat_capacity()
-			else
-				delta_temperature = (air.temperature - modeled_location.air.temperature)
-				sharer_heat_capacity = modeled_location.air.heat_capacity()
-
-			var/self_temperature_delta = 0
-			var/sharer_temperature_delta = 0
-
-			if((sharer_heat_capacity>0) && (partial_heat_capacity>0))
-				var/heat = thermal_conductivity*delta_temperature* \
-					(partial_heat_capacity*sharer_heat_capacity/(partial_heat_capacity+sharer_heat_capacity))
-
-				self_temperature_delta = -heat/total_heat_capacity
-				sharer_temperature_delta = heat/sharer_heat_capacity
-			else
-				return 1
-
-			air.temperature += self_temperature_delta
-
-			if(modeled_location.zone)
-				modeled_location.zone.air.temperature += sharer_temperature_delta/modeled_location.zone.air.group_multiplier
-			else
-				modeled_location.air.temperature += sharer_temperature_delta
-
-
-	else
-		if((target.heat_capacity>0) && (partial_heat_capacity>0))
-			var/delta_temperature = air.temperature - target.temperature
-
-			var/heat = thermal_conductivity*delta_temperature* \
-				(partial_heat_capacity*target.heat_capacity/(partial_heat_capacity+target.heat_capacity))
-
-			air.temperature -= heat/total_heat_capacity
-	if(network)
-		network.update = 1
+	if(anything_changed)
+		network?.update = TRUE
 
 /**
- * Runs space radiation simulation on the pipeline.
+ * Runs thermal radiation simulation on the pipeline.
  *
  * todo: emissivity, solar_absorptivity to model emission of low-frequency IR vs absorption of high-frequency solar radiation
+ * todo: this should be radiate_heat(), *gaining* heat from space should be simulated separately if possible.
+ * todo: maybe we should start considering grouping massed heat exchanger pipes for speed?
  *
  * @params
  * * surface - the m^2 surface area of the exposed surface to space
@@ -267,7 +243,7 @@
 	 *
 	 * * This currently does not take into account solar absorptivity.
 	 */
-	var/heat_gain = THERMODYNAMICS_THEORETICAL_STAR_EXPOSED_POWER_DENSITY * (THERMODYNAMICS_THEORETICAL_STAR_EXPOSURE_RATIO * surface) * thermal_conducitivity
+	var/heat_gain = THERMODYNAMICS_THEORETICAL_STAR_EXPOSED_POWER_DENSITY * (THERMODYNAMICS_THEORETICAL_STAR_EXPOSURE_RATIO * surface) * thermal_conductivity
 
 	/**
 	 * Perform radiation.
