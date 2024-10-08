@@ -1,0 +1,523 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/obj/structure/closet/secure_closet/freezer/meat,
+/obj/item/reagent_containers/food/drinks/soymilk,
+/obj/item/reagent_containers/food/drinks/soymilk,
+/obj/item/reagent_containers/food/drinks/bottle/milk,
+/obj/item/reagent_containers/food/drinks/bottle/milk,
+/obj/item/reagent_containers/food/drinks/bottle/cola,
+/obj/item/reagent_containers/food/drinks/bottle/cola,
+/obj/item/reagent_containers/food/drinks/bottle/cola,
+/obj/item/reagent_containers/food/drinks/bottle/cola,
+/obj/item/reagent_containers/food/drinks/bottle/cola,
+/obj/item/reagent_containers/food/drinks/bottle/cola,
+/obj/item/reagent_containers/food/drinks/bottle/cola,
+/obj/item/reagent_containers/food/drinks/bottle/cola,
+/obj/item/reagent_containers/food/drinks/bottle/cola,
+/obj/item/reagent_containers/food/drinks/bottle/cola,
+/obj/item/reagent_containers/food/drinks/bottle/cola,
+/obj/item/reagent_containers/food/drinks/bottle/cola,
+/obj/item/reagent_containers/food/drinks/bottle/cola,
+/obj/item/reagent_containers/food/drinks/bottle/cola,
+/obj/item/storage/box/glasses/meta,
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/caravan_b)
+"b" = (
+/obj/machinery/door/window/westright{
+	dir = 1
+	},
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/carpet/patterened/blue,
+/area/shuttle/caravan_b)
+"c" = (
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 9
+	},
+/turf/simulated/floor/carpet/patterened/red,
+/area/shuttle/caravan_b)
+"d" = (
+/turf/simulated/wall/wood/hardwood,
+/area/shuttle/caravan_b)
+"e" = (
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 1
+	},
+/turf/simulated/floor/carpet/patterened/red,
+/area/shuttle/caravan_b)
+"f" = (
+/obj/structure/bed/chair/comfy/brown{
+	dir = 8
+	},
+/obj/structure/closet/walllocker/emerglocker{
+	pixel_y = -32
+	},
+/obj/effect/floor_decal/spline/fancy/wood,
+/turf/simulated/floor/carpet/patterened/red,
+/area/shuttle/caravan_b)
+"g" = (
+/obj/structure/bed/chair/comfy/brown{
+	dir = 8
+	},
+/obj/structure/cable/green{
+	icon_state = "2-4"
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/caravan_b)
+"h" = (
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 5
+	},
+/obj/structure/bed/double/padded,
+/obj/item/bedsheet/hosdouble,
+/turf/simulated/floor/carpet/patterened/blue,
+/area/shuttle/caravan_b)
+"i" = (
+/obj/structure/table/steel_reinforced,
+/obj/item/gps/internal/base{
+	name = "Caravan Beacon";
+	gps_tag = "CARAVAN"
+	},
+/obj/machinery/computer/shuttle_control/explore/caravan_b,
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/caravan_b)
+"j" = (
+/obj/structure/cable/orange{
+	icon_state = "1-4"
+	},
+/turf/simulated/wall/prepainted,
+/area/shuttle/caravan_b)
+"k" = (
+/obj/structure/cable/green,
+/obj/structure/table/steel_reinforced,
+/obj/machinery/computer/ship/sensors{
+	dir = 1
+	},
+/obj/machinery/power/apc/alarms_hidden/south_mount,
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/caravan_b)
+"l" = (
+/obj/structure/table/steel,
+/obj/structure/sink/kitchen,
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/caravan_b)
+"n" = (
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/caravan_b)
+"o" = (
+/obj/machinery/telecomms/relay/preset/telecomms,
+/obj/structure/cable/green{
+	icon_state = "1-8"
+	},
+/turf/simulated/floor/plating,
+/area/shuttle/caravan_b)
+"p" = (
+/obj/structure/fuel_port{
+	dir = 4;
+	pixel_x = 29
+	},
+/obj/structure/closet/secure_closet/personal,
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan{
+	dir = 6
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/caravan_b)
+"q" = (
+/obj/structure/table/steel,
+/obj/machinery/microwave,
+/obj/machinery/light/small{
+	dir = 1
+	},
+/obj/machinery/air_alarm/alarms_hidden/north_mount,
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/caravan_b)
+"r" = (
+/obj/machinery/computer/ship/engines{
+	dir = 1
+	},
+/obj/structure/table/steel_reinforced,
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/caravan_b)
+"s" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/simulated/wall/wood/hardwood,
+/area/shuttle/caravan_b)
+"t" = (
+/obj/structure/table/steel,
+/obj/machinery/light/small{
+	dir = 1
+	},
+/obj/item/reagent_containers/glass/beaker{
+	pixel_x = 5
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/caravan_b)
+"u" = (
+/turf/simulated/wall/prepainted,
+/area/shuttle/caravan_b)
+"w" = (
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
+	dir = 1
+	},
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 5
+	},
+/turf/simulated/floor/carpet/patterened/red,
+/area/shuttle/caravan_b)
+"y" = (
+/obj/machinery/atmospherics/component/unary/engine{
+	dir = 8
+	},
+/turf/simulated/shuttle/plating/airless/carry,
+/area/shuttle/caravan_b)
+"z" = (
+/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/caravan_b)
+"A" = (
+/obj/machinery/door/firedoor,
+/obj/machinery/door/blast/regular{
+	density = 0;
+	dir = 4;
+	icon_state = "pdoor0";
+	id = "caravan1b";
+	name = "Spacenat Caravan Airlock";
+	opacity = 0
+	},
+/obj/machinery/button/remote/blast_door{
+	id = "caravan1b";
+	name = "Caravan Back Door";
+	pixel_x = 26
+	},
+/obj/machinery/door/airlock,
+/turf/simulated/floor/plating,
+/area/shuttle/caravan_b)
+"B" = (
+/obj/machinery/portable_atmospherics/canister/phoron,
+/obj/machinery/atmospherics/portables_connector{
+	dir = 1
+	},
+/turf/simulated/floor/plating,
+/area/shuttle/caravan_b)
+"C" = (
+/obj/structure/bed/chair/sofa/beige/left{
+	dir = 1
+	},
+/obj/effect/floor_decal/spline/fancy/wood,
+/turf/simulated/floor/carpet/patterened/red,
+/area/shuttle/caravan_b)
+"E" = (
+/obj/machinery/door/firedoor,
+/obj/machinery/door/blast/regular{
+	density = 0;
+	dir = 4;
+	icon_state = "pdoor0";
+	id = "caravan2b";
+	name = "Spacenat Caravan Airlock";
+	opacity = 0
+	},
+/obj/machinery/button/remote/blast_door{
+	id = "caravan2b";
+	name = "Caravan Front Door";
+	pixel_x = -25
+	},
+/obj/machinery/door/airlock,
+/turf/simulated/floor/plating,
+/area/shuttle/caravan_b)
+"F" = (
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 10
+	},
+/obj/machinery/shipsensors,
+/turf/simulated/floor/plating,
+/area/shuttle/caravan_b)
+"G" = (
+/obj/structure/cable/green{
+	icon_state = "2-4"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/simulated/wall/prepainted,
+/area/shuttle/caravan_b)
+"H" = (
+/obj/structure/sink{
+	dir = 8;
+	pixel_x = -12;
+	pixel_y = 2
+	},
+/obj/structure/toilet{
+	pixel_y = 10
+	},
+/obj/machinery/shower{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4
+	},
+/obj/structure/curtain/black,
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/caravan_b)
+"J" = (
+/obj/machinery/portable_atmospherics/canister/air/airlock,
+/obj/machinery/atmospherics/portables_connector,
+/obj/machinery/power/terminal{
+	dir = 4
+	},
+/obj/structure/cable/orange{
+	dir = 4
+	},
+/turf/simulated/floor/plating,
+/area/shuttle/caravan_b)
+"K" = (
+/obj/structure/cable/green{
+	icon_state = "1-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 6
+	},
+/obj/machinery/light/small{
+	dir = 4
+	},
+/obj/structure/table/bench/wooden,
+/turf/simulated/floor/carpet/patterened/blue,
+/area/shuttle/caravan_b)
+"L" = (
+/obj/structure/table/steel,
+/obj/machinery/computer/ship/navigation/telescreen{
+	pixel_y = -33
+	},
+/obj/effect/floor_decal/spline/fancy/wood,
+/turf/simulated/floor/carpet/patterened/red,
+/area/shuttle/caravan_b)
+"M" = (
+/obj/machinery/atmospherics/pipe/manifold/hidden{
+	dir = 1
+	},
+/turf/simulated/wall/prepainted,
+/area/shuttle/caravan_b)
+"N" = (
+/obj/machinery/button/remote/blast_door{
+	dir = 4;
+	pixel_y = 9;
+	id = "caravan2b";
+	name = "Caravan Front Door"
+	},
+/obj/machinery/button/remote/blast_door{
+	dir = 4;
+	pixel_y = -8;
+	id = "caravan1b";
+	name = "Caravan Back Door"
+	},
+/obj/structure/table/steel_reinforced,
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/caravan_b)
+"O" = (
+/obj/machinery/power/smes/buildable{
+	charge = 15000;
+	cur_coils = 3
+	},
+/obj/structure/cable/green{
+	icon_state = "0-2"
+	},
+/turf/simulated/floor/plating,
+/area/shuttle/caravan_b)
+"P" = (
+/obj/structure/bed/chair/comfy/brown{
+	dir = 4
+	},
+/obj/structure/panic_button{
+	pixel_y = -28
+	},
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 10
+	},
+/turf/simulated/floor/carpet/patterened/red,
+/area/shuttle/caravan_b)
+"Q" = (
+/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/turf/simulated/floor/tiled/old_tile/beige,
+/area/shuttle/caravan_b)
+"R" = (
+/obj/structure/curtain/black,
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/carpet/patterened/blue,
+/area/shuttle/caravan_b)
+"S" = (
+/obj/machinery/computer/ship/helm,
+/obj/structure/table/steel_reinforced,
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/caravan_b)
+"T" = (
+/obj/structure/cable/green{
+	icon_state = "2-4"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan{
+	dir = 9
+	},
+/turf/simulated/wall/prepainted,
+/area/shuttle/caravan_b)
+"U" = (
+/obj/structure/closet/walllocker/emerglocker{
+	pixel_y = -32
+	},
+/obj/machinery/light_switch{
+	dir = 1;
+	pixel_y = -24
+	},
+/obj/structure/bed/chair/sofa/beige/right{
+	dir = 1
+	},
+/obj/effect/floor_decal/spline/fancy/wood,
+/turf/simulated/floor/carpet/patterened/red,
+/area/shuttle/caravan_b)
+"V" = (
+/obj/machinery/computer/ship/navigation/telescreen{
+	pixel_x = 32
+	},
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 6
+	},
+/obj/effect/shuttle_landmark/shuttle_initializer/caravan_b,
+/obj/overmap/entity/visitable/ship/landable/caravan_b,
+/turf/simulated/floor/carpet/patterened/red,
+/area/shuttle/caravan_b)
+"X" = (
+/obj/machinery/atmospherics/portables_connector{
+	dir = 1
+	},
+/obj/machinery/portable_atmospherics/canister/empty/phoron,
+/turf/simulated/floor/plating,
+/area/shuttle/caravan_b)
+"Y" = (
+/obj/structure/closet/walllocker_double/south,
+/turf/simulated/floor/carpet/patterened/blue,
+/area/shuttle/caravan_b)
+"Z" = (
+/obj/structure/cable/green{
+	icon_state = "1-8"
+	},
+/obj/structure/shuttle/engine/heater{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4
+	},
+/turf/simulated/wall/prepainted,
+/area/shuttle/caravan_b)
+
+(1,1,1) = {"
+d
+z
+z
+z
+d
+"}
+(2,1,1) = {"
+z
+i
+N
+r
+z
+"}
+(3,1,1) = {"
+u
+S
+g
+k
+d
+"}
+(4,1,1) = {"
+E
+n
+c
+P
+d
+"}
+(5,1,1) = {"
+u
+q
+e
+L
+d
+"}
+(6,1,1) = {"
+Q
+l
+e
+f
+d
+"}
+(7,1,1) = {"
+d
+t
+e
+C
+d
+"}
+(8,1,1) = {"
+Q
+a
+e
+U
+d
+"}
+(9,1,1) = {"
+d
+p
+w
+V
+A
+"}
+(10,1,1) = {"
+u
+s
+R
+d
+u
+"}
+(11,1,1) = {"
+u
+H
+b
+Y
+u
+"}
+(12,1,1) = {"
+j
+G
+K
+h
+u
+"}
+(13,1,1) = {"
+J
+T
+Z
+M
+X
+"}
+(14,1,1) = {"
+O
+o
+y
+F
+B
+"}

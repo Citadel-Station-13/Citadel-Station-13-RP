@@ -37,6 +37,13 @@ right now its not a big priority - Bloop 2022
 	base_turf = /turf/space
 	base_area = /area/space
 
+/obj/effect/shuttle_landmark/triumph/deck4/udang
+	name = "NSV Triumph secondary civilian Dock"
+	landmark_tag = "triumph_udang_dock"
+	docking_controller = "triumph_udang_dock"
+	base_turf = /turf/space
+	base_area = /area/space
+
 /obj/effect/shuttle_landmark/triumph/deck3/emt
 	name = "NSV Triumph - EMT Shuttle Dock"
 	landmark_tag = "triumph_emt_dock"
@@ -155,6 +162,14 @@ right now its not a big priority - Bloop 2022
 /obj/effect/shuttle_landmark/transit/triumph/trade
 	name = "In transit"
 	landmark_tag = "nav_transit_trade"
+
+/obj/effect/shuttle_landmark/transit/triumph/trade/udang
+	name = "In transit"
+	landmark_tag = "nav_transit_trade_udang"
+
+/obj/effect/shuttle_landmark/transit/triumph/trade/scoophead
+	name = "In transit"
+	landmark_tag = "nav_transit_trade_scoophead"
 
 /obj/effect/shuttle_landmark/transit/triumph/emt
 	name = "In transit"
