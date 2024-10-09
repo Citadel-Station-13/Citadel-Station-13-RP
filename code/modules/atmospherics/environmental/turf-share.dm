@@ -34,10 +34,10 @@
 	#warn fix
 	// unsimulated mixtures
 	var/datum/gas_mixture/sharing_with_immutable = return_air_immutable()
-	var/midpoint_t
+	// to avoid precision issues, we only want our singular heat capacity
 	var/our_heat_capacity = sharing_with_immutable.heat_capacity_singular()
-	// to avoid precision issues, we divide their capacity by cell limit instead of expand our capacity.
-	midpoint_t = ((our_heat_capacity * sharing_with_immutable.temperature) + ((heat_capacity / cell_limit) * temperature)) \
+	// then, we divide their capacity by cell limit instead of expand our relative capacity.
+	var/midpoint_t = ((our_heat_capacity * sharing_with_immutable.temperature) + ((heat_capacity / cell_limit) * temperature)) \
 		/ (our_heat_capacity + (heat_capacity / cell_limit))
 	// if this was an actual simulated turf, we'd need to calculate the change
 	// with equalize ratio, and then limit it with limit ratio

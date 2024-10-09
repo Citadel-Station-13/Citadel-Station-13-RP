@@ -146,6 +146,7 @@
  * Share heat with another gasmixture.
  *
  * * Unweighted. 0.5 means take half of our mixture, half of their mixture, and equalize temperature between those parts.
+ * * Takes into account group multiplier. Does not allow limiting to a specific volume of such mixtures at this time.
  *
  * @return TRUE if the share did anything significant.
  */
@@ -164,7 +165,7 @@
 	var/their_thermal_energy = their_heat_capacity * other.temperature
 
 	var/combined_share_energy = our_thermal_energy * ratio + their_thermal_energy * ratio
-	var/target_share_temperature = combined_share_energy / combined_heat_capacity
+	var/target_share_temperature = combined_share_energy / (combined_heat_capacity * ratio)
 	var/inverse_ratio = 1 - ratio
 
 	// tl;dr
@@ -175,4 +176,4 @@
 	other.temperature = ((their_thermal_energy * inverse_ratio) + (target_share_temperature * their_heat_capacity * ratio)) / their_heat_capacity
 
 	return abs(our_old_temperature - temperature) > 0.001 || abs(their_old_temperature - other.temperature) > 0.001
-	#warn fix
+	#warn test
