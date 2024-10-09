@@ -164,13 +164,14 @@
 	var/their_thermal_energy = their_heat_capacity * other.temperature
 
 	var/combined_share_energy = our_thermal_energy * ratio + their_thermal_energy * ratio
+	var/target_share_temperature = combined_share_energy / combined_heat_capacity
 	var/inverse_ratio = 1 - ratio
 
 	// tl;dr
 	// 1. keep the parts of energy that isn't being shared
 	// 2. divide the combined share energy down half, giving each half of it to the part of the mixture being shared
 	// 3. combine the two sets of energy for the two mixtures to get the two new temperatures.
-	temperature = ((our_thermal_energy * inverse_ratio) + (combined_share_energy * 0.5)) / our_heat_capacity
-	other.temperature = ((their_thermal_energy * inverse_ratio) + (combined_share_energy * 0.5)) / their_heat_capacity
+	temperature = ((our_thermal_energy * inverse_ratio) + (target_share_temperature * our_heat_capacity * ratio)) / our_heat_capacity
+	other.temperature = ((their_thermal_energy * inverse_ratio) + (target_share_temperature * their_heat_capacity * ratio)) / their_heat_capacity
 
 	return abs(our_old_temperature - temperature) > 0.001 || abs(their_old_temperature - other.temperature) > 0.001

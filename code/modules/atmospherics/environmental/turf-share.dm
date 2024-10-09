@@ -31,6 +31,7 @@
  * @return the temperature change to the sharer
  */
 /turf/proc/air_thermal_superconduction(temperature, heat_capacity, limit_ratio, equalize_ratio, cell_limit)
+	#warn fix
 	// unsimulated mixtures
 	var/datum/gas_mixture/sharing_with_immutable = return_air_immutable()
 	var/midpoint_t
@@ -48,19 +49,27 @@
 	return (midpoint_t - temperature) * equalize_ratio * limit_ratio
 
 /turf/simulated/air_thermal_superconduction(temperature, heat_capacity, limit_ratio, equalize_ratio, cell_limit)
+	#warn fix
 	// simulated mixtures
 	// the trick is the rest of this proc works regardless of if we're in a zone or not,
 	// because we're using group multiplier manually with cell unit
 	var/datum/gas_mixture/sharing_with_mutable = return_air_mutable()
-	// this is with group multiplier taken into account
-	var/our_heat_capacity = sharing_with_mutable.heat_capacity_singular() * min(cell_limit, sharing_with_mutable.group_multiplier)
-	// limit ratio is applied here,
-	// it basically makes the sharer act like it's smaller than it actually is,
-	// which makes us undershoot
-	var/midpoint_t = ((our_heat_capacity * sharing_with_mutable.temperature) + (heat_capacity * temperature * limit_ratio)) / (heat_capacity * limit_ratio + our_heat_capacity)
+	// don't grab full heat capacity, that's a floating point precision issue
+	var/our_singular_heat_capacity = sharing_with_mutable.heat_capacity_singular()
+	// instead, just get how much bigger than a single tile we *should* be
+	var/our_size_multiplier = min(sharing_with_mutable.group_multiplier, cell_limit)
+	// and divide it out of their heat capacity,
+	// effectively making us relatively bigger than them
+	// also apply limit ratio here to make them even smaller than they are
+	var/their_effective_capacity = (heat_capacity / our_size_multiplier) * limit_ratio
+	// get the temperature 'goal'
+	var/midpoint_t = ((our_singular_heat_capacity * sharing_with_mutable.temperature) + (their_effective_capacity * temperature)) / (their_effective_capacity + our_singular_heat_capacity)
 	// equalize ratio is a delta-energy modifier
-	// we don't want equalize ratio to affect target temperature, we only want it to affect transfer efficiency
-	var/delta_e_to_them = (midpoint_t - temperature) * heat_capacity * equalize_ratio
-	// impart temperature change on both
-	temperature += -delta_e_to_them / our_heat_capacity
-	return delta_e_to_them / heat_capacity
+	// we don't want equalize ratio to affect the 'true' target temperature,
+	// only how much is actually transferred
+	// we also don't want to not multiply full energy transfer because it'll get precision issues
+	var/temperature_change_to_them = (midpoint_t - temperature) * equalize_ratio
+	// impart temperature change on us
+	sharing_with_mutable.temperature += (-temperature_change_to_them * (their_effective_capacity / our_singular_heat_capacity)) / our_size_multiplier
+	// return temperature change to them
+	return temperature_change_to_them * (their_effective_capacity / heat_capacity)
