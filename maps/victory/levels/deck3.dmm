@@ -15660,6 +15660,16 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology)
+"ojU" = (
+/obj/machinery/door/firedoor/glass{
+	dir = 4
+	},
+/obj/machinery/door/airlock/research{
+	id_tag = "researchdoor";
+	name = "Robotics Lab"
+	},
+/turf/simulated/floor/tiled,
+/area/rnd/hallway)
 "ojY" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -38662,7 +38672,7 @@ sCm
 sCm
 sCm
 bgJ
-sJr
+ojU
 ioP
 jtH
 fLZ
@@ -38856,7 +38866,7 @@ gzA
 gzA
 gzA
 tkE
-sJr
+ojU
 blx
 vgB
 fBE
