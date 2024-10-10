@@ -4,6 +4,9 @@
 	starts_with = null;
 	name = "Checkpoint Locker"
 	},
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
 /turf/simulated/floor/tiled/kafel_full/red,
 /area/space)
 "ad" = (
@@ -42,11 +45,27 @@
 	},
 /turf/simulated/floor/tiled/kafel_full/red,
 /area/space)
+"ar" = (
+/obj/effect/floor_decal/corner/red/border{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/red/border{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/red/border{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/kafel_full/red,
+/area/space)
 "aw" = (
 /obj/machinery/air_alarm/talon/south_mount,
 /turf/simulated/floor/tiled/techmaint{
 	color = "#A9A9A9"
 	},
+/area/space)
+"aI" = (
+/obj/structure/table/steel,
+/turf/simulated/floor/tiled/kafel_full/red,
 /area/space)
 "aU" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
@@ -72,6 +91,12 @@
 /obj/item/folder/red,
 /turf/simulated/floor/tiled/red,
 /area/space)
+"bs" = (
+/obj/machinery/light/spot{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/red,
+/area/space)
 "bv" = (
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -86,6 +111,72 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/kafel_full/gray,
+/area/space)
+"bF" = (
+/obj/structure/table/rack/shelf/steel,
+/obj/item/ammo_magazine/a9mm/top_mount,
+/obj/item/ammo_magazine/a9mm/top_mount{
+	pixel_x = -2;
+	pixel_y = -8
+	},
+/obj/item/ammo_magazine/a9mm/top_mount{
+	pixel_x = 1;
+	pixel_y = -5
+	},
+/obj/item/ammo_magazine/a9mm/top_mount{
+	pixel_x = 4;
+	pixel_y = 2
+	},
+/obj/item/ammo_magazine/a9mm/top_mount{
+	pixel_y = 5
+	},
+/obj/item/ammo_magazine/a9mm/top_mount{
+	pixel_y = 5
+	},
+/obj/item/ammo_magazine/a9mm/top_mount{
+	pixel_x = 4;
+	pixel_y = 2
+	},
+/obj/item/ammo_magazine/a9mm/top_mount{
+	pixel_x = 1;
+	pixel_y = -5
+	},
+/obj/item/ammo_magazine/a9mm/top_mount{
+	pixel_x = -2;
+	pixel_y = -8
+	},
+/obj/item/ammo_magazine/a9mm/top_mount,
+/obj/item/ammo_magazine/a9mm/top_mount,
+/obj/item/ammo_magazine/a9mm/top_mount{
+	pixel_x = -2;
+	pixel_y = -8
+	},
+/obj/item/ammo_magazine/a9mm/top_mount{
+	pixel_x = 1;
+	pixel_y = -5
+	},
+/obj/item/ammo_magazine/a9mm/top_mount{
+	pixel_x = 4;
+	pixel_y = 2
+	},
+/obj/item/ammo_magazine/a9mm/top_mount{
+	pixel_y = 5
+	},
+/obj/structure/window/phoronreinforced{
+	dir = 1
+	},
+/obj/structure/window/phoronreinforced{
+	dir = 4
+	},
+/obj/structure/window/phoronreinforced,
+/turf/simulated/floor/reinforced,
+/area/space)
+"bI" = (
+/obj/structure/table/borosilicate,
+/obj/machinery/computer/secure_data{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/steel_dirty/dark,
 /area/space)
 "bO" = (
 /obj/machinery/light/spot{
@@ -145,6 +236,23 @@
 	color = "#A9A9A9"
 	},
 /area/space)
+"cV" = (
+/obj/structure/table/steel,
+/turf/simulated/floor/tiled/dark{
+	color = "#A9A9A9"
+	},
+/area/space)
+"dh" = (
+/obj/machinery/camera/network/talon{
+	name = "andromeda";
+	network = list("AndromedaHaven");
+	dir = 1
+	},
+/obj/machinery/light/spot{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/kafel_full/red,
+/area/space)
 "dj" = (
 /obj/structure/table/hardwoodtable,
 /obj/machinery/vending/boozeomat{
@@ -155,10 +263,38 @@
 	},
 /turf/simulated/floor/wood,
 /area/space)
+"dt" = (
+/obj/machinery/door/airlock/security{
+	name = "Security Locker Room"
+	},
+/obj/machinery/door/firedoor/glass,
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/obj/map_helper/access_helper/airlock/station/security/equipment,
+/turf/simulated/wall/r_wall/prepainted/security{
+	integrity_flags = 1;
+	integrity_enabled = 0
+	},
+/area/space)
+"dw" = (
+/obj/structure/table/steel,
+/obj/machinery/computer/security{
+	network = list("AndromedaHaven");
+	dir = 8
+	},
+/turf/simulated/floor/tiled/dark{
+	color = "#A9A9A9"
+	},
+/area/space)
 "dH" = (
 /obj/structure/transit_tube/high_velocity,
 /obj/structure/plasticflaps,
 /turf/simulated/floor/tiled/kafel_full/yellow,
+/area/space)
+"dI" = (
+/obj/structure/cable,
+/turf/simulated/floor/tiled/kafel_full/red,
 /area/space)
 "dL" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
@@ -178,6 +314,33 @@
 /obj/machinery/power/apc/high/west_mount,
 /obj/structure/cable,
 /turf/simulated/floor/tiled/yellow,
+/area/space)
+"dR" = (
+/obj/structure/table/steel,
+/obj/machinery/computer/secure_data{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/dark{
+	color = "#A9A9A9"
+	},
+/area/space)
+"dT" = (
+/obj/machinery/camera/network/talon{
+	name = "andromeda";
+	network = list("AndromedaHaven");
+	dir = 1
+	},
+/turf/simulated/floor/tiled/kafel_full/red,
+/area/space)
+"ec" = (
+/obj/machinery/air_alarm/talon/south_mount,
+/obj/structure/cable{
+	icon_state = "1-4"
+	},
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled/red,
 /area/space)
 "el" = (
 /obj/structure/cable{
@@ -208,6 +371,7 @@
 	pixel_x = 5
 	},
 /obj/machinery/power/apc/high/west_mount,
+/obj/structure/cable,
 /turf/simulated/floor/tiled/kafel_full/red,
 /area/space)
 "eu" = (
@@ -270,6 +434,9 @@
 	},
 /turf/simulated/floor/tiled/yellow,
 /area/space)
+"fd" = (
+/turf/simulated/floor/plating,
+/area/space)
 "fC" = (
 /obj/machinery/light/spot{
 	dir = 4
@@ -298,11 +465,33 @@
 	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/space)
+"gb" = (
+/obj/machinery/power/apc/high/north_mount,
+/obj/structure/cable{
+	icon_state = "0-8"
+	},
+/turf/simulated/floor/tiled/monodark{
+	color = "#A9A9A9"
+	},
+/area/space)
 "gm" = (
 /obj/structure/extinguisher_cabinet{
 	pixel_y = 30
 	},
 /turf/simulated/floor/tiled/dark{
+	color = "#A9A9A9"
+	},
+/area/space)
+"gt" = (
+/obj/structure/table/rack/shelf/steel,
+/obj/item/shield/riot/tower/swat,
+/obj/item/shield/riot/tower/swat{
+	pixel_x = -4
+	},
+/obj/item/shield/riot/tower/swat{
+	pixel_x = 4
+	},
+/turf/simulated/floor/tiled/monodark{
 	color = "#A9A9A9"
 	},
 /area/space)
@@ -331,9 +520,35 @@
 /area/space)
 "gI" = (
 /obj/structure/table/rack/shelf/steel,
-/turf/simulated/floor/tiled/dark{
-	color = "#A9A9A9"
+/obj/item/storage/box/survival_knife{
+	pixel_x = -4;
+	pixel_y = -4
 	},
+/obj/item/storage/box/survival_knife{
+	pixel_x = 4;
+	pixel_y = 4
+	},
+/obj/item/storage/box/survival_knife{
+	pixel_x = 4;
+	pixel_y = -4
+	},
+/obj/item/storage/box/survival_knife{
+	pixel_x = -4;
+	pixel_y = 4
+	},
+/obj/item/storage/box/survival_knife,
+/obj/item/storage/box/survival_knife{
+	pixel_x = -4;
+	pixel_y = 4
+	},
+/obj/item/storage/box/survival_knife{
+	pixel_x = 4;
+	pixel_y = -4
+	},
+/obj/structure/window/phoronreinforced{
+	dir = 8
+	},
+/turf/simulated/floor/reinforced,
 /area/space)
 "gK" = (
 /obj/machinery/light/flamp{
@@ -344,6 +559,29 @@
 "gP" = (
 /obj/machinery/light/spot,
 /turf/simulated/floor/tiled/kafel_full/gray,
+/area/space)
+"gQ" = (
+/obj/structure/table/rack/shelf/steel,
+/obj/item/clothing/head/helmet/ballistic{
+	pixel_x = 5;
+	pixel_y = -5
+	},
+/obj/item/clothing/head/helmet/ballistic{
+	pixel_x = -5;
+	pixel_y = 4
+	},
+/obj/item/clothing/head/helmet/ballistic{
+	pixel_x = -5;
+	pixel_y = -5
+	},
+/obj/item/clothing/head/helmet/ballistic{
+	pixel_x = 5;
+	pixel_y = 4
+	},
+/obj/item/clothing/head/helmet/ballistic,
+/turf/simulated/floor/tiled/monodark{
+	color = "#A9A9A9"
+	},
 /area/space)
 "gS" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
@@ -391,6 +629,68 @@
 	},
 /turf/simulated/floor/tiled/kafel_full/yellow,
 /area/space)
+"hJ" = (
+/obj/structure/table/rack/shelf/steel,
+/obj/item/ammo_magazine/a10mm{
+	pixel_y = 7
+	},
+/obj/item/ammo_magazine/a10mm{
+	pixel_y = -9
+	},
+/obj/item/ammo_magazine/a10mm,
+/obj/item/ammo_magazine/a10mm{
+	pixel_y = -9
+	},
+/obj/item/ammo_magazine/a10mm{
+	pixel_y = -9
+	},
+/obj/item/ammo_magazine/a10mm{
+	pixel_y = -9
+	},
+/obj/item/ammo_magazine/a10mm{
+	pixel_y = 7
+	},
+/obj/item/ammo_magazine/a10mm{
+	pixel_y = 7
+	},
+/obj/item/ammo_magazine/a10mm{
+	pixel_y = 7
+	},
+/obj/item/ammo_magazine/a10mm,
+/obj/item/ammo_magazine/a10mm,
+/obj/item/ammo_magazine/a10mm,
+/obj/item/ammo_magazine/a10mm,
+/obj/item/ammo_magazine/a10mm,
+/obj/item/ammo_magazine/a10mm,
+/obj/item/ammo_magazine/a10mm{
+	pixel_y = 7
+	},
+/obj/item/ammo_magazine/a10mm{
+	pixel_y = 7
+	},
+/obj/item/ammo_magazine/a10mm{
+	pixel_y = 7
+	},
+/obj/item/ammo_magazine/a10mm{
+	pixel_y = -9
+	},
+/obj/item/ammo_magazine/a10mm{
+	pixel_y = -9
+	},
+/obj/item/ammo_magazine/a10mm{
+	pixel_y = -9
+	},
+/obj/machinery/door/window/brigdoor/northright{
+	name = "Armory Equipment Shelves";
+	dir = 2;
+	layer = 5
+	},
+/obj/machinery/door/window/brigdoor/northright{
+	name = "Armory Equipment Shelves";
+	layer = 5
+	},
+/turf/simulated/floor/reinforced,
+/area/space)
 "hO" = (
 /obj/structure/cable{
 	icon_state = "2-8"
@@ -403,6 +703,10 @@
 /obj/machinery/door/airlock/security{
 	name = "Security South Hallway"
 	},
+/obj/machinery/door/firedoor/glass{
+	dir = 4
+	},
+/obj/map_helper/access_helper/airlock/station/security/department,
 /turf/simulated/floor/tiled/red,
 /area/space)
 "hY" = (
@@ -451,6 +755,124 @@
 	},
 /turf/simulated/floor/tiled/kafel_full/yellow,
 /area/space)
+"iA" = (
+/obj/structure/table/rack/shelf/steel,
+/obj/item/clothing/accessory/storage/pouches{
+	pixel_x = -5;
+	pixel_y = 10
+	},
+/obj/item/clothing/accessory/storage/pouches{
+	pixel_x = -5;
+	pixel_y = 10
+	},
+/obj/item/clothing/accessory/storage/pouches{
+	pixel_x = -5;
+	pixel_y = 10
+	},
+/obj/item/clothing/accessory/storage/pouches{
+	pixel_x = -5;
+	pixel_y = 10
+	},
+/obj/item/clothing/accessory/storage/pouches{
+	pixel_x = -5;
+	pixel_y = 10
+	},
+/obj/item/clothing/accessory/storage/pouches{
+	pixel_x = -5;
+	pixel_y = 10
+	},
+/obj/item/clothing/accessory/storage/pouches{
+	pixel_x = -5;
+	pixel_y = 10
+	},
+/obj/item/clothing/accessory/storage/pouches/navy{
+	pixel_x = 6;
+	pixel_y = 10
+	},
+/obj/item/clothing/accessory/storage/pouches/navy{
+	pixel_x = 6;
+	pixel_y = 10
+	},
+/obj/item/clothing/accessory/storage/pouches/navy{
+	pixel_x = 6;
+	pixel_y = 10
+	},
+/obj/item/clothing/accessory/storage/pouches/navy{
+	pixel_x = 6;
+	pixel_y = 10
+	},
+/obj/item/clothing/accessory/storage/pouches/navy{
+	pixel_x = 6;
+	pixel_y = 10
+	},
+/obj/item/clothing/accessory/storage/pouches/navy{
+	pixel_x = 6;
+	pixel_y = 10
+	},
+/obj/item/clothing/accessory/storage/pouches/navy{
+	pixel_x = 6;
+	pixel_y = 10
+	},
+/obj/item/clothing/accessory/holster/leg{
+	pixel_x = -3;
+	pixel_y = -5
+	},
+/obj/item/clothing/accessory/holster/leg{
+	pixel_x = -3;
+	pixel_y = -5
+	},
+/obj/item/clothing/accessory/holster/leg{
+	pixel_x = -3;
+	pixel_y = -5
+	},
+/obj/item/clothing/accessory/holster/leg{
+	pixel_x = -3;
+	pixel_y = -5
+	},
+/obj/item/clothing/accessory/holster/leg{
+	pixel_x = -3;
+	pixel_y = -5
+	},
+/obj/item/clothing/accessory/holster/leg{
+	pixel_x = -3;
+	pixel_y = -5
+	},
+/obj/item/clothing/accessory/holster/leg{
+	pixel_x = -3;
+	pixel_y = -5
+	},
+/obj/item/clothing/accessory/holster/armpit{
+	pixel_x = 3;
+	pixel_y = -6
+	},
+/obj/item/clothing/accessory/holster/armpit{
+	pixel_x = 3;
+	pixel_y = -6
+	},
+/obj/item/clothing/accessory/holster/armpit{
+	pixel_x = 3;
+	pixel_y = -6
+	},
+/obj/item/clothing/accessory/holster/armpit{
+	pixel_x = 3;
+	pixel_y = -6
+	},
+/obj/item/clothing/accessory/holster/armpit{
+	pixel_x = 3;
+	pixel_y = -6
+	},
+/obj/item/clothing/accessory/holster/armpit{
+	pixel_x = 3;
+	pixel_y = -6
+	},
+/obj/item/clothing/accessory/holster/armpit{
+	pixel_x = 3;
+	pixel_y = -6
+	},
+/turf/simulated/floor/tiled/monodark{
+	color = "#A9A9A9"
+	},
+/area/space)
 "iE" = (
 /obj/structure/closet/secure_closet/security,
 /turf/simulated/floor/tiled/kafel_full/red,
@@ -461,6 +883,28 @@
 	pixel_y = 21
 	},
 /turf/simulated/floor/wood,
+/area/space)
+"iK" = (
+/obj/structure/table/steel,
+/obj/item/paper_bin{
+	pixel_x = -1;
+	pixel_y = 7
+	},
+/obj/item/pen{
+	pixel_y = 7
+	},
+/turf/simulated/floor/tiled/dark{
+	color = "#A9A9A9"
+	},
+/area/space)
+"iP" = (
+/obj/structure/bed/chair{
+	dir = 1
+	},
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/tiled/kafel_full/red,
 /area/space)
 "iY" = (
 /obj/machinery/door/window/brigdoor/eastleft{
@@ -481,6 +925,29 @@
 	color = "#A9A9A9"
 	},
 /area/space)
+"jf" = (
+/obj/machinery/door/airlock/security{
+	req_one_access = null;
+	name = "Checkpoint Access"
+	},
+/obj/map_helper/access_helper/airlock/station/security/department,
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/reinforced,
+/area/space)
+"ji" = (
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled/kafel_full/red,
+/area/space)
+"jk" = (
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/carpet/patterened,
+/area/space)
 "jp" = (
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -490,9 +957,33 @@
 	},
 /turf/simulated/floor/tiled/yellow,
 /area/space)
+"jt" = (
+/obj/effect/floor_decal/corner/red/bordercorner{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/red/bordercorner{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/red/bordercorner{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/kafel_full/red,
+/area/space)
+"ju" = (
+/obj/structure/bed/chair,
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/tiled/steel_dirty/dark,
+/area/space)
 "jC" = (
 /obj/structure/bed/chair/sofa/black/left,
 /turf/simulated/floor/carpet/bcarpet,
+/area/space)
+"jH" = (
+/obj/machinery/power/apc/high/east_mount,
+/obj/structure/cable,
+/turf/simulated/floor/tiled/kafel_full/red,
 /area/space)
 "jJ" = (
 /obj/structure/bed/chair/office/light{
@@ -510,7 +1001,28 @@
 	name = "Inner Checkpoint Blastdoor"
 	},
 /obj/machinery/door/firedoor/glass,
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
 /turf/simulated/floor/reinforced,
+/area/space)
+"jT" = (
+/obj/effect/floor_decal/carpet{
+	dir = 1
+	},
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/carpet/patterened,
+/area/space)
+"kg" = (
+/obj/effect/floor_decal/corner/red/border{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/red/border{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/kafel_full/red,
 /area/space)
 "kh" = (
 /obj/machinery/door/airlock/multi_tile{
@@ -532,6 +1044,12 @@
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/old_tile/purple,
 /area/space)
+"kC" = (
+/obj/structure/bed/chair{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/kafel_full/red,
+/area/space)
 "kH" = (
 /obj/structure/table/steel,
 /obj/machinery/recharger{
@@ -542,6 +1060,7 @@
 	pixel_x = -5;
 	pixel_y = 3
 	},
+/obj/machinery/light/spot,
 /turf/simulated/floor/tiled/kafel_full/red,
 /area/space)
 "kN" = (
@@ -552,6 +1071,9 @@
 	icon_state = "1-4"
 	},
 /turf/simulated/floor/tiled/yellow,
+/area/space)
+"kZ" = (
+/turf/simulated/floor/tiled/steel_dirty/dark,
 /area/space)
 "lj" = (
 /obj/effect/floor_decal/carpet/blue{
@@ -568,6 +1090,80 @@
 	dir = 8
 	},
 /turf/simulated/floor/carpet/bcarpet,
+/area/space)
+"ln" = (
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/reinforced,
+/area/space)
+"ls" = (
+/obj/effect/floor_decal/carpet{
+	dir = 1
+	},
+/obj/effect/floor_decal/carpet{
+	dir = 4
+	},
+/obj/effect/floor_decal/carpet{
+	dir = 5
+	},
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/obj/structure/cable{
+	icon_state = "2-4"
+	},
+/turf/simulated/floor/carpet/patterened,
+/area/space)
+"lz" = (
+/obj/machinery/lathe/autolathe,
+/obj/fiftyspawner/glass,
+/obj/fiftyspawner/glass,
+/obj/fiftyspawner/glass,
+/obj/fiftyspawner/steel,
+/obj/fiftyspawner/steel,
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/tiled/monodark{
+	color = "#A9A9A9"
+	},
+/area/space)
+"lM" = (
+/obj/structure/table/rack/shelf/steel,
+/obj/item/melee/baton/loaded{
+	pixel_y = -6
+	},
+/obj/item/melee/baton/loaded,
+/obj/item/melee/baton/loaded{
+	pixel_y = -2
+	},
+/obj/item/melee/baton/loaded{
+	pixel_y = 2
+	},
+/obj/item/melee/baton/loaded{
+	pixel_y = 6
+	},
+/obj/item/melee/baton/loaded{
+	pixel_y = 6
+	},
+/obj/item/melee/baton/loaded{
+	pixel_y = 2
+	},
+/obj/item/melee/baton/loaded{
+	pixel_y = -2
+	},
+/obj/item/melee/baton/loaded{
+	pixel_y = -6
+	},
+/obj/item/melee/baton/loaded,
+/turf/simulated/floor/tiled/monodark{
+	color = "#A9A9A9"
+	},
+/area/space)
+"lP" = (
+/obj/structure/table/borosilicate,
+/turf/simulated/floor/tiled/steel_dirty/dark,
 /area/space)
 "mh" = (
 /obj/structure/extinguisher_cabinet{
@@ -586,6 +1182,13 @@
 "mk" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
 /turf/simulated/floor/tiled/yellow,
+/area/space)
+"mn" = (
+/obj/machinery/air_alarm/talon/west_mount,
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/tiled/red,
 /area/space)
 "mo" = (
 /obj/machinery/light/flamp{
@@ -608,6 +1211,25 @@
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/techfloor,
 /area/space)
+"mu" = (
+/obj/structure/table/steel,
+/obj/machinery/computer/security{
+	network = list("AndromedaHaven");
+	dir = 4
+	},
+/turf/simulated/floor/tiled/dark{
+	color = "#A9A9A9"
+	},
+/area/space)
+"mv" = (
+/obj/machinery/door/firedoor/glass{
+	dir = 4
+	},
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/tiled/red,
+/area/space)
 "mO" = (
 /obj/machinery/door/firedoor/glass{
 	dir = 4
@@ -623,6 +1245,9 @@
 	req_one_access = list(1);
 	dir = 2
 	},
+/obj/structure/cable{
+	icon_state = "2-8"
+	},
 /turf/simulated/floor/tiled/red,
 /area/space)
 "nk" = (
@@ -634,11 +1259,21 @@
 /obj/machinery/air_alarm/talon/south_mount,
 /turf/simulated/floor/reinforced,
 /area/space)
+"np" = (
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/reinforced,
+/area/space)
 "nt" = (
 /obj/structure/cable{
 	icon_state = "1-4"
 	},
 /turf/simulated/floor/tiled/kafel_full/yellow,
+/area/space)
+"nD" = (
+/obj/machinery/air_alarm/talon/north_mount,
+/turf/simulated/floor/tiled/kafel_full/red,
 /area/space)
 "nH" = (
 /obj/machinery/camera/network/talon{
@@ -647,6 +1282,12 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor,
+/area/space)
+"nJ" = (
+/obj/structure/bed/chair/bay/chair/padded/red,
+/turf/simulated/floor/tiled/monodark{
+	color = "#A9A9A9"
+	},
 /area/space)
 "nM" = (
 /obj/structure/table/hardwoodtable,
@@ -697,6 +1338,16 @@
 	integrity_enabled = o
 	},
 /area/space)
+"oj" = (
+/obj/machinery/light/spot,
+/obj/machinery/door/firedoor/glass{
+	dir = 4;
+	req_one_access = list(18,47)
+	},
+/turf/simulated/floor/tiled/dark{
+	color = "#A9A9A9"
+	},
+/area/space)
 "op" = (
 /obj/machinery/vending/coffee,
 /turf/simulated/floor/tiled/yellow,
@@ -706,6 +1357,77 @@
 	dir = 4
 	},
 /turf/simulated/floor/carpet/patterened,
+/area/space)
+"ow" = (
+/obj/machinery/air_alarm/talon/north_mount,
+/turf/simulated/floor/tiled/red,
+/area/space)
+"oJ" = (
+/obj/machinery/door/airlock/security{
+	name = "Security Lobby"
+	},
+/obj/machinery/door/firedoor/glass{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/red,
+/area/space)
+"oQ" = (
+/obj/machinery/air_alarm/talon/north_mount,
+/turf/simulated/floor/tiled/monodark{
+	color = "#A9A9A9"
+	},
+/area/space)
+"pa" = (
+/obj/structure/table/rack/shelf/steel,
+/obj/item/cell/device/weapon{
+	pixel_x = 6;
+	pixel_y = -4
+	},
+/obj/item/cell/device/weapon{
+	pixel_x = -8;
+	pixel_y = -5
+	},
+/obj/item/cell/device/weapon{
+	pixel_x = -4;
+	pixel_y = -5
+	},
+/obj/item/cell/device/weapon{
+	pixel_y = -5
+	},
+/obj/item/cell/device/weapon{
+	pixel_x = 4;
+	pixel_y = -5
+	},
+/obj/item/cell/device/weapon{
+	pixel_x = 8;
+	pixel_y = -5
+	},
+/obj/item/cell/device/weapon{
+	pixel_x = -8;
+	pixel_y = 3
+	},
+/obj/item/cell/device/weapon{
+	pixel_x = -4;
+	pixel_y = 3
+	},
+/obj/item/cell/device/weapon{
+	pixel_y = 3
+	},
+/obj/item/cell/device/weapon{
+	pixel_x = 4;
+	pixel_y = 3
+	},
+/obj/item/cell/device/weapon{
+	pixel_x = 8;
+	pixel_y = 3
+	},
+/obj/structure/window/phoronreinforced{
+	dir = 8
+	},
+/obj/machinery/light/spot{
+	dir = 4
+	},
+/turf/simulated/floor/reinforced,
 /area/space)
 "pl" = (
 /turf/simulated/floor/wood,
@@ -750,11 +1472,68 @@
 /obj/item/clothing/head/helmet,
 /turf/simulated/floor/tiled/kafel_full/yellow,
 /area/space)
+"qE" = (
+/obj/structure/table/steel_reinforced,
+/obj/item/paper_bin{
+	pixel_y = 5
+	},
+/obj/item/pen,
+/obj/item/pen{
+	pixel_y = 7
+	},
+/obj/item/pen{
+	pixel_x = 5;
+	pixel_y = 5
+	},
+/obj/item/pen{
+	pixel_x = 2;
+	pixel_y = 2
+	},
+/obj/item/pen{
+	pixel_y = 4
+	},
+/obj/item/pen{
+	pixel_x = 4;
+	pixel_y = -3
+	},
+/obj/machinery/light/spot{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/kafel_full/red,
+/area/space)
 "qJ" = (
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/yellow,
+/area/space)
+"qL" = (
+/obj/machinery/light/spot{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/kafel_full/red,
+/area/space)
+"qP" = (
+/obj/structure/table/steel,
+/obj/item/tool/wrench,
+/obj/item/tool/crowbar,
+/obj/item/clipboard,
+/obj/item/hand_labeler,
+/obj/machinery/camera/network/talon{
+	name = "andromeda";
+	network = list("AndromedaHaven");
+	dir = 8
+	},
+/turf/simulated/floor/tiled/steel_dirty/dark,
+/area/space)
+"qZ" = (
+/obj/machinery/light/spot{
+	dir = 4
+	},
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/tiled/kafel_full/red,
 /area/space)
 "rd" = (
 /obj/machinery/camera/network/talon{
@@ -772,6 +1551,8 @@
 /obj/machinery/door/airlock/security{
 	name = "Security Locker Room"
 	},
+/obj/machinery/door/firedoor/glass,
+/obj/map_helper/access_helper/airlock/station/security/equipment,
 /turf/simulated/wall/r_wall/prepainted/security{
 	integrity_flags = 1;
 	integrity_enabled = 0
@@ -779,6 +1560,52 @@
 /area/space)
 "rp" = (
 /obj/structure/table/rack/shelf/steel,
+/obj/item/clothing/mask/gas/half{
+	pixel_y = -9
+	},
+/obj/item/clothing/mask/gas/half{
+	pixel_y = -4
+	},
+/obj/item/clothing/mask/gas/half{
+	pixel_y = 1
+	},
+/obj/item/clothing/mask/gas/half{
+	pixel_y = 4
+	},
+/obj/item/clothing/mask/gas/half{
+	pixel_y = 4
+	},
+/obj/item/clothing/mask/gas/half{
+	pixel_y = 1
+	},
+/obj/item/clothing/mask/gas/half{
+	pixel_y = -4
+	},
+/obj/item/clothing/mask/gas/half{
+	pixel_y = -9
+	},
+/turf/simulated/floor/tiled/dark{
+	color = "#A9A9A9"
+	},
+/area/space)
+"rE" = (
+/obj/machinery/camera/network/talon{
+	name = "andromeda";
+	network = list("AndromedaHaven");
+	dir = 4
+	},
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/tiled/red,
+/area/space)
+"rG" = (
+/obj/structure/cable{
+	icon_state = "2-4"
+	},
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
 /turf/simulated/floor/tiled/monodark{
 	color = "#A9A9A9"
 	},
@@ -787,10 +1614,46 @@
 /obj/structure/table/marble,
 /turf/simulated/floor/carpet/bcarpet,
 /area/space)
+"rL" = (
+/obj/machinery/door/airlock/security{
+	name = "Armory"
+	},
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/obj/machinery/door/firedoor/glass{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/steel_dirty/dark,
+/area/space)
 "rM" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/structure/closet/crate/plastic,
 /turf/simulated/floor/tiled/kafel_full/yellow,
+/area/space)
+"rO" = (
+/obj/structure/table/rack/shelf/steel,
+/obj/item/material/knife/machete{
+	pixel_x = -6
+	},
+/obj/item/material/knife/machete,
+/obj/item/material/knife/machete{
+	pixel_x = 6
+	},
+/obj/item/material/knife/machete{
+	pixel_x = 6
+	},
+/obj/item/material/knife/machete{
+	pixel_x = -6
+	},
+/obj/item/material/knife/machete,
+/obj/item/material/knife/machete,
+/obj/item/material/knife/machete{
+	pixel_x = -6
+	},
+/turf/simulated/floor/tiled/monodark{
+	color = "#A9A9A9"
+	},
 /area/space)
 "sc" = (
 /obj/machinery/air_alarm/talon/east_mount,
@@ -808,6 +1671,15 @@
 "si" = (
 /turf/simulated/floor/tiled/red,
 /area/space)
+"sl" = (
+/obj/machinery/door/airlock/security{
+	name = "Security Holding Cell"
+	},
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/tiled/kafel_full/red,
+/area/space)
 "sy" = (
 /obj/effect/floor_decal/carpet/blue{
 	dir = 4
@@ -823,6 +1695,87 @@
 	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/space)
+"sz" = (
+/obj/machinery/door/firedoor/glass{
+	dir = 4;
+	req_one_access = list(18,47)
+	},
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled/monodark{
+	color = "#A9A9A9"
+	},
+/area/space)
+"sF" = (
+/obj/machinery/door/airlock/security{
+	name = "Security Armory Hallway"
+	},
+/turf/simulated/wall/r_wall/prepainted/security{
+	integrity_flags = 1;
+	integrity_enabled = 0
+	},
+/area/space)
+"sH" = (
+/obj/structure/table/rack/shelf/steel,
+/obj/item/clothing/accessory/armor/legguards{
+	pixel_x = -3;
+	pixel_y = -4
+	},
+/obj/item/clothing/accessory/armor/legguards{
+	pixel_x = 7;
+	pixel_y = -4
+	},
+/obj/item/clothing/accessory/armor/legguards,
+/obj/item/clothing/accessory/armor/legguards{
+	pixel_x = -3;
+	pixel_y = -4
+	},
+/obj/item/clothing/accessory/armor/legguards{
+	pixel_x = 7;
+	pixel_y = -4
+	},
+/obj/item/clothing/accessory/armor/legguards,
+/obj/item/clothing/accessory/armor/legguards,
+/obj/item/clothing/accessory/armor/legguards{
+	pixel_x = -3;
+	pixel_y = -4
+	},
+/obj/item/clothing/accessory/armor/legguards{
+	pixel_x = 7;
+	pixel_y = -4
+	},
+/obj/item/clothing/accessory/armor/legguards,
+/obj/item/clothing/accessory/armor/armguards,
+/obj/item/clothing/accessory/armor/armguards{
+	pixel_y = 4
+	},
+/obj/item/clothing/accessory/armor/armguards{
+	pixel_y = 4
+	},
+/obj/item/clothing/accessory/armor/armguards{
+	pixel_y = 4
+	},
+/obj/item/clothing/accessory/armor/armguards{
+	pixel_y = 4
+	},
+/obj/item/clothing/accessory/armor/armguards{
+	pixel_y = 4
+	},
+/obj/item/clothing/accessory/armor/armguards,
+/obj/item/clothing/accessory/armor/armguards,
+/obj/item/clothing/accessory/armor/armguards,
+/obj/item/clothing/accessory/armor/armguards,
+/obj/item/clothing/accessory/armor/armguards,
+/obj/machinery/camera/network/talon{
+	name = "andromeda";
+	network = list("AndromedaHaven");
+	dir = 4
+	},
+/turf/simulated/floor/tiled/monodark{
+	color = "#A9A9A9"
+	},
+/area/space)
 "sZ" = (
 /obj/structure/table/steel_reinforced,
 /obj/machinery/computer/secure_data,
@@ -837,6 +1790,13 @@
 	},
 /turf/simulated/floor/tiled/kafel_full/gray,
 /area/space)
+"tr" = (
+/obj/machinery/power/apc/high/west_mount,
+/obj/structure/cable{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/red,
+/area/space)
 "tB" = (
 /obj/machinery/door/airlock/multi_tile{
 	dir = 4;
@@ -846,6 +1806,12 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor,
+/area/space)
+"tN" = (
+/obj/machinery/air_alarm/talon/south_mount,
+/turf/simulated/floor/tiled/dark{
+	color = "#A9A9A9"
+	},
 /area/space)
 "ub" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
@@ -882,13 +1848,50 @@
 	},
 /turf/simulated/floor/tiled/kafel_full/gray,
 /area/space)
+"up" = (
+/obj/machinery/door/airlock/security{
+	name = "Security Offices"
+	},
+/obj/map_helper/access_helper/airlock/station/security/department,
+/obj/machinery/door/firedoor/glass{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/kafel_full/red,
+/area/space)
 "uv" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
 /turf/simulated/floor/tiled/kafel_full/yellow,
 /area/space)
+"uH" = (
+/obj/structure/table/rack/shelf/steel,
+/obj/item/gun/ballistic/automatic/wt550{
+	pixel_y = 7
+	},
+/obj/item/gun/ballistic/automatic/wt550,
+/obj/item/gun/ballistic/automatic/wt550{
+	pixel_y = -6
+	},
+/obj/structure/window/phoronreinforced,
+/turf/simulated/floor/reinforced,
+/area/space)
 "uX" = (
 /obj/machinery/air_alarm/talon/east_mount,
 /turf/simulated/floor/wood,
+/area/space)
+"vc" = (
+/obj/structure/table/steel,
+/obj/machinery/computer/card{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/steel_dirty/dark,
+/area/space)
+"vg" = (
+/obj/structure/table/borosilicate,
+/obj/machinery/computer/security{
+	network = list("AndromedaHaven");
+	dir = 8
+	},
+/turf/simulated/floor/tiled/steel_dirty/dark,
 /area/space)
 "vv" = (
 /obj/structure/cable{
@@ -904,9 +1907,41 @@
 	color = "#A9A9A9"
 	},
 /area/space)
+"vA" = (
+/obj/machinery/door/airlock/security{
+	name = "Security Armory Hallway"
+	},
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/map_helper/access_helper/airlock/station/security/department,
+/obj/machinery/door/firedoor/glass{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/steel_dirty/dark,
+/area/space)
 "vI" = (
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/techfloor,
+/area/space)
+"vJ" = (
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/structure/cable{
+	icon_state = "2-8"
+	},
+/turf/simulated/floor/tiled/kafel_full/red,
+/area/space)
+"wb" = (
+/obj/machinery/door/airlock/security{
+	name = "Security North Hallway"
+	},
+/obj/machinery/door/firedoor/glass{
+	dir = 4
+	},
+/obj/map_helper/access_helper/airlock/station/security/department,
+/turf/simulated/floor/tiled/red,
 /area/space)
 "wq" = (
 /obj/structure/cable{
@@ -953,6 +1988,22 @@
 	},
 /turf/simulated/floor/tiled/yellow,
 /area/space)
+"wZ" = (
+/obj/machinery/door/airlock/security{
+	name = "Security Armory Hallway"
+	},
+/obj/map_helper/access_helper/airlock/station/security/department,
+/obj/machinery/door/firedoor/glass{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/steel_dirty/dark,
+/area/space)
+"xc" = (
+/obj/structure/cable{
+	icon_state = "1-8"
+	},
+/turf/simulated/floor/tiled/kafel_full/red,
+/area/space)
 "xh" = (
 /obj/machinery/light/spot{
 	dir = 8
@@ -961,11 +2012,38 @@
 	color = "#A9A9A9"
 	},
 /area/space)
+"xp" = (
+/obj/structure/table/rack/shelf/steel,
+/obj/item/gun/ballistic/automatic/c20r{
+	pixel_y = -6
+	},
+/obj/item/gun/ballistic/automatic/c20r,
+/obj/item/gun/ballistic/automatic/c20r{
+	pixel_y = 6
+	},
+/obj/machinery/door/window/brigdoor/northright{
+	name = "Armory Equipment Shelves";
+	dir = 2;
+	layer = 5
+	},
+/turf/simulated/floor/reinforced,
+/area/space)
 "xq" = (
 /obj/machinery/door/airlock/security{
 	name = "Security North Hallway"
 	},
+/obj/machinery/door/firedoor/glass{
+	dir = 4
+	},
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/map_helper/access_helper/airlock/station/security/department,
 /turf/simulated/floor/tiled/red,
+/area/space)
+"xz" = (
+/obj/structure/lattice,
+/turf/space/basic,
 /area/space)
 "xB" = (
 /obj/structure/table/rack/shelf/steel,
@@ -1079,6 +2157,15 @@
 	},
 /turf/simulated/floor/tiled/kafel_full/red,
 /area/space)
+"ye" = (
+/obj/structure/cable{
+	icon_state = "1-4"
+	},
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled/red,
+/area/space)
 "ym" = (
 /obj/machinery/door/airlock/multi_tile{
 	dir = 4;
@@ -1105,6 +2192,15 @@
 /obj/machinery/light/spot,
 /turf/simulated/floor/reinforced,
 /area/space)
+"yE" = (
+/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled/dark{
+	color = "#A9A9A9"
+	},
+/area/space)
 "yM" = (
 /obj/machinery/door/firedoor/glass{
 	dir = 4;
@@ -1126,6 +2222,10 @@
 	req_one_access = list(18,47)
 	},
 /turf/simulated/floor/tiled/kafel_full/yellow,
+/area/space)
+"yX" = (
+/obj/machinery/air_alarm/talon/east_mount,
+/turf/simulated/floor/reinforced,
 /area/space)
 "za" = (
 /obj/structure/bed/chair,
@@ -1155,6 +2255,14 @@
 	},
 /turf/simulated/floor/tiled/kafel_full/yellow,
 /area/space)
+"zA" = (
+/obj/machinery/door/airlock/security{
+	name = "Security Briefing Room"
+	},
+/obj/map_helper/access_helper/airlock/station/security/department,
+/obj/machinery/door/firedoor/glass,
+/turf/simulated/floor/tiled/kafel_full/red,
+/area/space)
 "zC" = (
 /obj/structure/cable{
 	icon_state = "2-4"
@@ -1167,6 +2275,13 @@
 	pixel_x = 30
 	},
 /turf/simulated/floor/wood,
+/area/space)
+"zT" = (
+/obj/machinery/power/apc/high/north_mount,
+/obj/structure/cable{
+	icon_state = "0-8"
+	},
+/turf/simulated/floor/tiled/kafel_full/red,
 /area/space)
 "zZ" = (
 /turf/simulated/floor/carpet/patterened,
@@ -1192,7 +2307,7 @@
 /obj/structure/table/reinforced,
 /obj/item/paper{
 	name = "Supply Transit System guide!";
-	info = "The transit system is hazardous! Do not enter the tube or you'll probably die. If you want to request something, input your order on the terminal to the south and then automated systems will fulfill your order. WITHIN REASON."
+	info = "This is the supply transit system. If you want something ordered, put a fax into the fax machine with a cargo request format and then send it to 'Central Command', it'll be read and offloaded automatically. DO NOT TAKE THE TRANSIT TUBE. YOU WILL DIE."
 	},
 /obj/machinery/door/firedoor/glass{
 	dir = 4;
@@ -1226,6 +2341,17 @@
 	},
 /turf/simulated/floor/tiled/kafel_full/yellow,
 /area/space)
+"AI" = (
+/obj/structure/table/rack/shelf/steel,
+/obj/item/gun/energy/sniperrifle{
+	pixel_y = 7
+	},
+/obj/item/gun/energy/sniperrifle{
+	pixel_y = -6
+	},
+/obj/structure/window/phoronreinforced,
+/turf/simulated/floor/reinforced,
+/area/space)
 "Bd" = (
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -1248,7 +2374,26 @@
 	name = "security reception";
 	req_one_access = list(1)
 	},
+/obj/structure/cable{
+	icon_state = "1-8"
+	},
 /turf/simulated/floor/tiled/red,
+/area/space)
+"Bu" = (
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/obj/structure/cable{
+	icon_state = "1-8"
+	},
+/turf/simulated/floor/reinforced,
+/area/space)
+"BA" = (
+/obj/structure/table/steel,
+/obj/machinery/computer/secure_data,
+/turf/simulated/floor/tiled/dark{
+	color = "#A9A9A9"
+	},
 /area/space)
 "BB" = (
 /obj/machinery/camera/network/talon{
@@ -1260,11 +2405,46 @@
 	color = "#A9A9A9"
 	},
 /area/space)
+"BC" = (
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled/steel_dirty/dark,
+/area/space)
+"BG" = (
+/obj/structure/cable{
+	icon_state = "2-4"
+	},
+/turf/simulated/floor/tiled/kafel_full/red,
+/area/space)
 "BK" = (
 /obj/item/modular_computer/console/preset/civilian{
 	dir = 1
 	},
 /turf/simulated/floor/carpet/lythios43c,
+/area/space)
+"BN" = (
+/obj/structure/table/rack/shelf/steel,
+/obj/item/gun/energy/gun/burst{
+	pixel_y = 9
+	},
+/obj/item/gun/energy/gun/burst{
+	pixel_y = -4
+	},
+/obj/machinery/door/window/brigdoor/northright{
+	name = "Armory Equipment Shelves";
+	dir = 2;
+	layer = 5
+	},
+/turf/simulated/floor/reinforced,
+/area/space)
+"BQ" = (
+/obj/structure/bed/chair/bay/chair/padded/red{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/monodark{
+	color = "#A9A9A9"
+	},
 /area/space)
 "BU" = (
 /obj/structure/cable{
@@ -1292,6 +2472,22 @@
 /obj/item/clothing/suit/storage/hazardvest,
 /turf/simulated/floor/tiled/kafel_full/yellow,
 /area/space)
+"Ca" = (
+/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/turf/simulated/floor/tiled/steel_dirty/dark,
+/area/space)
+"Cc" = (
+/obj/machinery/light/spot,
+/turf/simulated/floor/tiled/red,
+/area/space)
+"Cg" = (
+/obj/machinery/camera/network/talon{
+	name = "andromeda";
+	network = list("AndromedaHaven");
+	dir = 2
+	},
+/turf/simulated/floor/tiled/kafel_full/red,
+/area/space)
 "Ck" = (
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -1309,6 +2505,21 @@
 /area/space)
 "Cr" = (
 /turf/space/basic,
+/area/space)
+"CE" = (
+/obj/structure/table/borosilicate,
+/obj/item/paper_bin{
+	pixel_x = -1;
+	pixel_y = 7
+	},
+/obj/item/pen/fountain{
+	pixel_y = 4;
+	pixel_x = -2
+	},
+/obj/item/folder/blue{
+	pixel_x = 5
+	},
+/turf/simulated/floor/tiled/steel_dirty/dark,
 /area/space)
 "CR" = (
 /obj/structure/transit_tube/high_velocity,
@@ -1333,6 +2544,13 @@
 	color = "#A9A9A9"
 	},
 /area/space)
+"Dp" = (
+/obj/machinery/light/spot,
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled/red,
+/area/space)
 "Dw" = (
 /obj/machinery/vending/snack,
 /turf/simulated/floor/tiled/yellow,
@@ -1346,6 +2564,19 @@
 	},
 /obj/item/storage/firstaid,
 /turf/simulated/floor/tiled/yellow,
+/area/space)
+"DB" = (
+/obj/machinery/door/airlock/security{
+	name = "Security Offices"
+	},
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/map_helper/access_helper/airlock/station/security/department,
+/obj/machinery/door/firedoor/glass{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/kafel_full/red,
 /area/space)
 "DN" = (
 /obj/machinery/door/airlock/mining{
@@ -1372,6 +2603,14 @@
 	pixel_x = -6
 	},
 /obj/machinery/power/apc/high/east_mount,
+/obj/structure/cable,
+/turf/simulated/floor/tiled/kafel_full/red,
+/area/space)
+"Ek" = (
+/obj/machinery/power/apc/high/north_mount,
+/obj/structure/cable{
+	icon_state = "0-2"
+	},
 /turf/simulated/floor/tiled/kafel_full/red,
 /area/space)
 "En" = (
@@ -1381,15 +2620,29 @@
 /turf/simulated/floor/tiled/kafel_full/yellow,
 /area/space)
 "Ep" = (
-/obj/item/modular_computer/console/preset/civilian{
-	dir = 8;
-	pixel_x = 7
-	},
 /obj/machinery/door/firedoor/glass{
 	dir = 4;
 	req_one_access = list(18,47)
 	},
+/obj/structure/table/reinforced,
+/obj/machinery/photocopier/faxmachine{
+	name = "cargo request faxmachine";
+	desc = "A fax machine linked to an automated system that loads supplies.";
+	department = "Cargo"
+	},
 /turf/simulated/floor/tiled/kafel_full/yellow,
+/area/space)
+"EB" = (
+/obj/effect/floor_decal/corner/red/border{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/red/border{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/red/border{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/kafel_full/red,
 /area/space)
 "EK" = (
 /obj/structure/bed/chair/comfy/black{
@@ -1423,6 +2676,10 @@
 	},
 /turf/simulated/floor/tiled/kafel_full/yellow,
 /area/space)
+"Fa" = (
+/obj/machinery/papershredder,
+/turf/simulated/floor/tiled/steel_dirty/dark,
+/area/space)
 "Fb" = (
 /obj/structure/closet/secure_closet/security,
 /obj/structure/window/reinforced/tinted{
@@ -1439,6 +2696,51 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/yellow,
+/area/space)
+"Fn" = (
+/obj/effect/floor_decal/corner/red/bordercorner{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/red/bordercorner{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/red/bordercorner{
+	dir = 1
+	},
+/obj/structure/cable{
+	icon_state = "2-4"
+	},
+/turf/simulated/floor/tiled/kafel_full/red,
+/area/space)
+"Ft" = (
+/obj/structure/table/rack/shelf/steel,
+/obj/item/gunbox{
+	pixel_y = -4
+	},
+/obj/item/gunbox{
+	pixel_y = 4
+	},
+/obj/item/gunbox{
+	pixel_y = 8
+	},
+/obj/item/gunbox,
+/obj/item/gunbox,
+/obj/item/gunbox{
+	pixel_y = 8
+	},
+/obj/item/gunbox{
+	pixel_y = 4
+	},
+/obj/item/gunbox{
+	pixel_y = -4
+	},
+/obj/item/gunbox,
+/obj/item/gunbox{
+	pixel_y = 8
+	},
+/turf/simulated/floor/tiled/monodark{
+	color = "#A9A9A9"
+	},
 /area/space)
 "Fx" = (
 /turf/simulated/floor/tiled/yellow,
@@ -1462,6 +2764,34 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/yellow,
+/area/space)
+"Ge" = (
+/obj/structure/table/rack/shelf/steel,
+/obj/item/ammo_magazine/a7_62mm,
+/obj/item/ammo_magazine/a7_62mm,
+/obj/item/ammo_magazine/a7_62mm,
+/obj/item/ammo_magazine/a7_62mm,
+/obj/item/ammo_magazine/a7_62mm,
+/obj/item/ammo_magazine/a7_62mm,
+/obj/item/ammo_magazine/a7_62mm,
+/obj/item/ammo_magazine/a7_62mm,
+/obj/item/ammo_magazine/a7_62mm,
+/obj/item/ammo_magazine/a7_62mm,
+/obj/item/gun/ballistic/automatic/z8{
+	pixel_y = 8
+	},
+/obj/item/gun/ballistic/automatic/z8{
+	pixel_y = -5
+	},
+/obj/machinery/light/small/emergency{
+	dir = 1
+	},
+/obj/machinery/door/window/brigdoor/northright{
+	name = "Armory Equipment Shelves";
+	dir = 2;
+	layer = 5
+	},
+/turf/simulated/floor/reinforced,
 /area/space)
 "Gh" = (
 /obj/structure/bed/chair/sofa/black/right,
@@ -1494,11 +2824,20 @@
 /area/space)
 "GV" = (
 /obj/effect/floor_decal/carpet,
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/carpet/patterened,
 /area/space)
 "GY" = (
 /obj/machinery/door/airlock/security{
 	name = "Security Lobby"
+	},
+/obj/machinery/door/firedoor/glass{
+	dir = 4
+	},
+/obj/structure/cable{
+	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/red,
 /area/space)
@@ -1507,6 +2846,34 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/kafel_full/yellow,
+/area/space)
+"Hz" = (
+/obj/structure/table/rack/shelf/steel,
+/obj/item/clothing/glasses/sunglasses/sechud/tactical{
+	pixel_y = -8
+	},
+/obj/item/clothing/glasses/sunglasses/sechud/tactical{
+	pixel_y = -8
+	},
+/obj/item/clothing/glasses/sunglasses/sechud/tactical{
+	pixel_y = -5
+	},
+/obj/item/clothing/glasses/sunglasses/sechud/tactical{
+	pixel_y = -3
+	},
+/obj/item/clothing/glasses/sunglasses/sechud/tactical{
+	pixel_y = -1
+	},
+/obj/item/clothing/glasses/sunglasses/sechud/tactical{
+	pixel_y = 2
+	},
+/obj/item/clothing/glasses/sunglasses/sechud/tactical,
+/obj/structure/cable{
+	icon_state = "1-8"
+	},
+/turf/simulated/floor/tiled/dark{
+	color = "#A9A9A9"
+	},
 /area/space)
 "HH" = (
 /obj/structure/cable{
@@ -1521,6 +2888,15 @@
 /obj/machinery/air_alarm/talon/west_mount,
 /turf/simulated/floor/tiled/yellow,
 /area/space)
+"HT" = (
+/obj/machinery/door/firedoor/glass{
+	dir = 4;
+	req_one_access = list(18,47)
+	},
+/turf/simulated/floor/tiled/monodark{
+	color = "#A9A9A9"
+	},
+/area/space)
 "HY" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -1528,6 +2904,12 @@
 /turf/simulated/floor/tiled/dark{
 	color = "#A9A9A9"
 	},
+/area/space)
+"Ig" = (
+/obj/structure/cable{
+	icon_state = "1-4"
+	},
+/turf/simulated/floor/reinforced,
 /area/space)
 "Io" = (
 /obj/structure/table/steel_reinforced,
@@ -1538,6 +2920,16 @@
 	dir = 4
 	},
 /turf/simulated/floor/reinforced,
+/area/space)
+"Iv" = (
+/obj/effect/floor_decal/carpet{
+	dir = 8
+	},
+/obj/effect/floor_decal/carpet,
+/obj/effect/floor_decal/carpet{
+	dir = 10
+	},
+/turf/simulated/floor/carpet/patterened,
 /area/space)
 "Iw" = (
 /obj/structure/table/reinforced,
@@ -1550,11 +2942,24 @@
 	},
 /turf/simulated/floor/tiled/yellow,
 /area/space)
+"Iz" = (
+/obj/effect/floor_decal/carpet{
+	dir = 4
+	},
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/carpet/patterened,
+/area/space)
 "ID" = (
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/old_tile/purple,
+/area/space)
+"IH" = (
+/obj/structure/transit_tube/high_velocity,
+/turf/simulated/floor/plating,
 /area/space)
 "IJ" = (
 /obj/structure/cable{
@@ -1571,6 +2976,15 @@
 	pixel_y = -4
 	},
 /turf/simulated/floor/tiled/yellow,
+/area/space)
+"IN" = (
+/obj/structure/table/bench/steel,
+/obj/machinery/camera/network/talon{
+	name = "andromeda";
+	network = list("AndromedaHaven");
+	dir = 1
+	},
+/turf/simulated/floor/tiled/kafel_full/red,
 /area/space)
 "IR" = (
 /obj/structure/table/hardwoodtable,
@@ -1591,6 +3005,15 @@
 	},
 /turf/simulated/floor/wood,
 /area/space)
+"IW" = (
+/obj/machinery/light/small/emergency{
+	dir = 8
+	},
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/reinforced,
+/area/space)
 "IY" = (
 /obj/machinery/camera/network/talon{
 	name = "andromeda";
@@ -1608,6 +3031,10 @@
 /obj/structure/table/steel_reinforced,
 /turf/simulated/floor/tiled/red,
 /area/space)
+"Js" = (
+/obj/structure/table/bench/steel,
+/turf/simulated/floor/tiled/kafel_full/red,
+/area/space)
 "Jt" = (
 /obj/structure/window/reinforced{
 	dir = 4
@@ -1623,6 +3050,111 @@
 	},
 /obj/item/pen,
 /turf/simulated/floor/tiled/red,
+/area/space)
+"Ju" = (
+/obj/effect/floor_decal/carpet{
+	dir = 4
+	},
+/obj/effect/floor_decal/carpet,
+/obj/effect/floor_decal/carpet{
+	dir = 6
+	},
+/turf/simulated/floor/carpet/patterened,
+/area/space)
+"JB" = (
+/obj/structure/table/rack/shelf/steel,
+/obj/item/clothing/accessory/armor/armorplate/heavy{
+	pixel_x = -4;
+	pixel_y = -3
+	},
+/obj/item/clothing/accessory/armor/armorplate/heavy{
+	pixel_x = -4;
+	pixel_y = -3
+	},
+/obj/item/clothing/accessory/armor/armorplate/heavy{
+	pixel_x = -4;
+	pixel_y = -3
+	},
+/obj/item/clothing/accessory/armor/armorplate/heavy{
+	pixel_x = -4;
+	pixel_y = -3
+	},
+/obj/item/clothing/accessory/armor/armorplate/heavy{
+	pixel_x = -4;
+	pixel_y = -3
+	},
+/obj/item/clothing/accessory/armor/armorplate/ballistic{
+	pixel_x = -4;
+	pixel_y = 8
+	},
+/obj/item/clothing/accessory/armor/armorplate/ballistic{
+	pixel_x = -4;
+	pixel_y = 8
+	},
+/obj/item/clothing/accessory/armor/armorplate/ballistic{
+	pixel_x = -4;
+	pixel_y = 8
+	},
+/obj/item/clothing/accessory/armor/armorplate/ballistic{
+	pixel_x = -4;
+	pixel_y = 8
+	},
+/obj/item/clothing/accessory/armor/armorplate/ballistic{
+	pixel_x = -4;
+	pixel_y = 8
+	},
+/obj/item/clothing/accessory/armor/armorplate/tactical{
+	pixel_x = 5;
+	pixel_y = -3
+	},
+/obj/item/clothing/accessory/armor/armorplate/tactical{
+	pixel_x = 5;
+	pixel_y = -3
+	},
+/obj/item/clothing/accessory/armor/armorplate/tactical{
+	pixel_x = 5;
+	pixel_y = -3
+	},
+/obj/item/clothing/accessory/armor/armorplate/tactical{
+	pixel_x = 5;
+	pixel_y = -3
+	},
+/obj/item/clothing/accessory/armor/armorplate/tactical{
+	pixel_x = 5;
+	pixel_y = -3
+	},
+/obj/item/clothing/accessory/armor/armorplate/combat{
+	pixel_x = 5;
+	pixel_y = 8
+	},
+/obj/item/clothing/accessory/armor/armorplate/combat{
+	pixel_x = 5;
+	pixel_y = 8
+	},
+/obj/item/clothing/accessory/armor/armorplate/combat{
+	pixel_x = 5;
+	pixel_y = 8
+	},
+/obj/item/clothing/accessory/armor/armorplate/combat{
+	pixel_x = 5;
+	pixel_y = 8
+	},
+/obj/item/clothing/accessory/armor/armorplate/combat{
+	pixel_x = 5;
+	pixel_y = 8
+	},
+/turf/simulated/floor/tiled/monodark{
+	color = "#A9A9A9"
+	},
+/area/space)
+"JP" = (
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/obj/structure/cable{
+	icon_state = "2-4"
+	},
+/turf/simulated/floor/tiled/kafel_full/red,
 /area/space)
 "JQ" = (
 /obj/effect/floor_decal/carpet{
@@ -1653,6 +3185,35 @@
 	integrity_flags = 1;
 	integrity_enabled = 0
 	},
+/area/space)
+"Kg" = (
+/obj/structure/table/rack/shelf/steel,
+/obj/item/gun/energy/laser{
+	pixel_y = -8
+	},
+/obj/item/gun/energy/laser,
+/obj/item/gun/energy/laser{
+	pixel_y = 6
+	},
+/obj/structure/window/phoronreinforced,
+/turf/simulated/floor/reinforced,
+/area/space)
+"Kk" = (
+/obj/structure/cable{
+	icon_state = "2-4"
+	},
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/tiled/steel_dirty/dark,
+/area/space)
+"Kl" = (
+/obj/structure/table/borosilicate,
+/obj/item/modular_computer/laptop/preset/custom_loadout/standard/security/warden,
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/tiled/steel_dirty/dark,
 /area/space)
 "Kp" = (
 /obj/machinery/door/airlock/multi_tile{
@@ -1686,6 +3247,18 @@
 "KG" = (
 /obj/spawner/window/low_wall/borosillicate/reinforced/full/firelocks,
 /turf/simulated/floor/reinforced,
+/area/space)
+"KH" = (
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled/red,
+/area/space)
+"KM" = (
+/obj/machinery/door/window/brigdoor/northright{
+	name = "Holding Cell"
+	},
+/turf/simulated/floor/tiled/kafel_full/red,
 /area/space)
 "KY" = (
 /obj/structure/cable{
@@ -1754,6 +3327,13 @@
 /obj/machinery/air_alarm/talon/west_mount,
 /turf/simulated/floor/tiled/techfloor,
 /area/space)
+"LB" = (
+/obj/machinery/power/apc/high/west_mount,
+/obj/structure/cable{
+	icon_state = "0-4"
+	},
+/turf/simulated/floor/reinforced,
+/area/space)
 "LM" = (
 /obj/structure/table/reinforced,
 /obj/machinery/door/window/southright{
@@ -1766,6 +3346,17 @@
 	},
 /turf/simulated/floor/tiled/yellow,
 /area/space)
+"LP" = (
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/tiled/steel_dirty/dark,
+/area/space)
+"LS" = (
+/obj/machinery/power/apc/high/south_mount,
+/obj/structure/cable,
+/turf/simulated/floor/tiled/kafel_full/red,
+/area/space)
 "LW" = (
 /obj/machinery/camera/network/talon{
 	name = "andromeda";
@@ -1773,6 +3364,12 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/kafel_full/gray,
+/area/space)
+"Mj" = (
+/obj/machinery/light/spot{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/steel_dirty/dark,
 /area/space)
 "Mk" = (
 /obj/machinery/camera/network/talon{
@@ -1831,6 +3428,13 @@
 /turf/simulated/floor/tiled/techmaint{
 	color = "#A9A9A9"
 	},
+/area/space)
+"Nc" = (
+/obj/effect/floor_decal/carpet,
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/carpet/patterened,
 /area/space)
 "Ng" = (
 /obj/structure/cable,
@@ -1895,6 +3499,9 @@
 	pixel_y = -6
 	},
 /obj/item/clothing/head/helmet/combat,
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/tiled/monodark{
 	color = "#A9A9A9"
 	},
@@ -1903,9 +3510,20 @@
 /obj/machinery/door/airlock/security{
 	name = "Security Equipment Room"
 	},
+/obj/machinery/door/firedoor/glass{
+	dir = 4;
+	req_one_access = list(18,47)
+	},
+/obj/map_helper/access_helper/airlock/station/security/equipment,
 /turf/simulated/floor/tiled/dark{
 	color = "#A9A9A9"
 	},
+/area/space)
+"NN" = (
+/obj/structure/table/steel,
+/obj/machinery/photocopier,
+/obj/machinery/air_alarm/talon/west_mount,
+/turf/simulated/floor/tiled/steel_dirty/dark,
 /area/space)
 "Ok" = (
 /obj/machinery/vending/security{
@@ -1913,8 +3531,67 @@
 	},
 /turf/simulated/floor/tiled/kafel_full/red,
 /area/space)
+"OK" = (
+/obj/structure/closet/secure_closet/warden,
+/turf/simulated/floor/tiled/steel_dirty/dark,
+/area/space)
+"OM" = (
+/obj/structure/transit_tube/high_velocity,
+/obj/structure/lattice,
+/turf/space/basic,
+/area/space)
+"OR" = (
+/obj/structure/table/rack/shelf/steel,
+/obj/item/cell/device/weapon{
+	pixel_x = -8;
+	pixel_y = 3
+	},
+/obj/item/cell/device/weapon{
+	pixel_x = -4;
+	pixel_y = 3
+	},
+/obj/item/cell/device/weapon{
+	pixel_y = 3
+	},
+/obj/item/cell/device/weapon{
+	pixel_x = 4;
+	pixel_y = 3
+	},
+/obj/item/cell/device/weapon{
+	pixel_x = 8;
+	pixel_y = 3
+	},
+/obj/item/cell/device/weapon{
+	pixel_x = -8;
+	pixel_y = -5
+	},
+/obj/item/cell/device/weapon{
+	pixel_x = -4;
+	pixel_y = -5
+	},
+/obj/item/cell/device/weapon{
+	pixel_y = -5
+	},
+/obj/item/cell/device/weapon{
+	pixel_x = 4;
+	pixel_y = -5
+	},
+/obj/item/cell/device/weapon{
+	pixel_x = 8;
+	pixel_y = -5
+	},
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/tiled/monodark{
+	color = "#A9A9A9"
+	},
+/area/space)
 "OY" = (
 /obj/structure/window/reinforced,
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/tiled/red,
 /area/space)
 "PQ" = (
@@ -1942,6 +3619,91 @@
 	color = "#A9A9A9"
 	},
 /area/space)
+"Qz" = (
+/obj/structure/table/rack/shelf/steel,
+/obj/item/storage/box/shotgunshells/large{
+	pixel_y = 6
+	},
+/obj/item/storage/box/shotgunshells/large{
+	pixel_y = 6
+	},
+/obj/item/storage/box/shotgunshells/large{
+	pixel_y = 6
+	},
+/obj/item/storage/box/shotgunammo/large{
+	pixel_y = -6
+	},
+/obj/item/storage/box/shotgunammo/large{
+	pixel_y = -6
+	},
+/obj/item/storage/box/shotgunammo/large{
+	pixel_y = -6
+	},
+/obj/structure/window/phoronreinforced{
+	dir = 8
+	},
+/obj/structure/window/phoronreinforced{
+	dir = 1
+	},
+/obj/structure/window/phoronreinforced,
+/turf/simulated/floor/reinforced,
+/area/space)
+"QC" = (
+/obj/machinery/camera/network/talon{
+	name = "andromeda";
+	network = list("AndromedaHaven");
+	dir = 2
+	},
+/obj/structure/cable{
+	icon_state = "2-4"
+	},
+/turf/simulated/floor/tiled/red,
+/area/space)
+"QE" = (
+/obj/machinery/door/airlock/security{
+	name = "Wardens Office"
+	},
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/obj/map_helper/access_helper/airlock/station/security/armory,
+/obj/machinery/door/firedoor/glass{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/steel_dirty/dark,
+/area/space)
+"QF" = (
+/obj/machinery/door/window/brigdoor/northright{
+	name = "Security Equipment Shelves";
+	req_one_access = list(1);
+	dir = 8;
+	layer = 5
+	},
+/obj/structure/table/rack/shelf/steel,
+/obj/item/gun/ballistic/fiveseven{
+	pixel_y = 10
+	},
+/obj/item/gun/ballistic/fiveseven{
+	pixel_y = 6
+	},
+/obj/item/gun/ballistic/fiveseven{
+	pixel_y = 2
+	},
+/obj/item/gun/ballistic/fiveseven,
+/obj/item/gun/ballistic/fiveseven{
+	pixel_y = -2
+	},
+/obj/machinery/camera/network/talon{
+	name = "andromeda";
+	network = list("AndromedaHaven");
+	dir = 8
+	},
+/turf/simulated/floor/reinforced,
+/area/space)
+"QH" = (
+/obj/machinery/air_alarm/talon/east_mount,
+/turf/simulated/floor/tiled/kafel_full/red,
+/area/space)
 "QO" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -1961,6 +3723,14 @@
 	dir = 1
 	},
 /turf/simulated/floor/carpet/bcarpet,
+/area/space)
+"Rl" = (
+/obj/machinery/camera/network/talon{
+	name = "andromeda";
+	network = list("AndromedaHaven");
+	dir = 2
+	},
+/turf/simulated/floor/tiled/red,
 /area/space)
 "Rn" = (
 /obj/structure/table/reinforced,
@@ -1994,6 +3764,9 @@
 	dir = 4
 	},
 /obj/machinery/air_alarm/talon/west_mount,
+/obj/structure/cable{
+	icon_state = "2-4"
+	},
 /turf/simulated/floor/tiled/kafel_full/red,
 /area/space)
 "RE" = (
@@ -2007,6 +3780,12 @@
 	req_one_access = list(18,47)
 	},
 /turf/simulated/floor/tiled/kafel_full/yellow,
+/area/space)
+"RP" = (
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/tiled/red,
 /area/space)
 "RR" = (
 /obj/machinery/vending/cola{
@@ -2025,6 +3804,24 @@
 /area/space)
 "RS" = (
 /turf/simulated/floor/tiled/techfloor,
+/area/space)
+"RU" = (
+/obj/structure/table/steel_reinforced,
+/obj/machinery/recharger{
+	pixel_x = 4;
+	pixel_y = 3
+	},
+/obj/machinery/recharger{
+	pixel_x = -5;
+	pixel_y = 3
+	},
+/obj/machinery/recharger,
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/tiled/monodark{
+	color = "#A9A9A9"
+	},
 /area/space)
 "RV" = (
 /obj/structure/cable{
@@ -2066,11 +3863,41 @@
 /obj/effect/floor_decal/carpet{
 	dir = 10
 	},
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/carpet/patterened,
+/area/space)
+"SL" = (
+/obj/structure/table/rack/shelf/steel,
+/obj/item/storage/box/flashbangs{
+	pixel_x = -2;
+	pixel_y = -2
+	},
+/obj/item/storage/box/flashbangs{
+	pixel_y = 7
+	},
+/obj/item/storage/box/teargas{
+	pixel_x = 2;
+	pixel_y = 2
+	},
+/obj/item/storage/box/teargas{
+	pixel_y = 7
+	},
+/obj/machinery/door/window/brigdoor/northright{
+	name = "Security Equipment Shelves";
+	req_one_access = list(1);
+	dir = 8;
+	layer = 5
+	},
+/turf/simulated/floor/reinforced,
 /area/space)
 "SM" = (
 /obj/machinery/light/spot{
 	dir = 8
+	},
+/obj/structure/cable{
+	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/kafel_full/red,
 /area/space)
@@ -2131,6 +3958,14 @@
 /obj/item/storage/firstaid/o2,
 /obj/item/storage/firstaid/fire,
 /turf/simulated/floor/tiled/kafel_full/yellow,
+/area/space)
+"TA" = (
+/obj/structure/table/steel_reinforced,
+/obj/item/megaphone,
+/obj/machinery/light/spot{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/kafel_full/red,
 /area/space)
 "TB" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
@@ -2239,7 +4074,38 @@
 	dir = 8
 	},
 /obj/machinery/air_alarm/talon/east_mount,
+/obj/structure/cable{
+	icon_state = "2-8"
+	},
 /turf/simulated/floor/tiled/kafel_full/red,
+/area/space)
+"UA" = (
+/obj/machinery/door/airlock/security{
+	name = "Security Briefing Room"
+	},
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/obj/map_helper/access_helper/airlock/station/security/department,
+/obj/machinery/door/firedoor/glass,
+/turf/simulated/floor/tiled/kafel_full/red,
+/area/space)
+"UC" = (
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/machinery/camera/network/talon{
+	name = "andromeda";
+	network = list("AndromedaHaven");
+	dir = 2
+	},
+/turf/simulated/floor/tiled/steel_dirty/dark,
+/area/space)
+"UE" = (
+/obj/structure/table/steel,
+/obj/item/megaphone,
+/obj/item/storage/box/handcuffs,
+/turf/simulated/floor/tiled/steel_dirty/dark,
 /area/space)
 "UJ" = (
 /obj/machinery/camera/network/talon{
@@ -2249,9 +4115,57 @@
 	},
 /turf/simulated/floor/tiled/kafel_full/yellow,
 /area/space)
+"UN" = (
+/obj/machinery/light/spot,
+/obj/machinery/power/apc/high/south_mount,
+/obj/structure/cable,
+/turf/simulated/floor/tiled/steel_dirty/dark,
+/area/space)
+"UQ" = (
+/obj/structure/table/bench/steel,
+/obj/machinery/light/spot,
+/turf/simulated/floor/tiled/kafel_full/red,
+/area/space)
+"Ve" = (
+/obj/structure/table/rack/shelf/steel,
+/obj/item/gun/energy/gun{
+	pixel_y = -4
+	},
+/obj/item/gun/energy/gun,
+/obj/item/gun/energy/gun{
+	pixel_y = 4
+	},
+/obj/item/gun/energy/gun,
+/obj/item/gun/energy/gun{
+	pixel_y = -4
+	},
+/obj/item/gun/energy/gun{
+	pixel_y = 4
+	},
+/obj/item/gun/energy/gun,
+/obj/item/gun/energy/gun{
+	pixel_y = -4
+	},
+/turf/simulated/floor/tiled/monodark{
+	color = "#A9A9A9"
+	},
+/area/space)
 "Vf" = (
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/old_tile/purple,
+/area/space)
+"Vu" = (
+/obj/machinery/air_alarm/talon/east_mount,
+/turf/simulated/floor/tiled/steel_dirty/dark,
+/area/space)
+"Vz" = (
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/obj/structure/cable{
+	icon_state = "1-4"
+	},
+/turf/simulated/floor/reinforced,
 /area/space)
 "VE" = (
 /obj/machinery/door/airlock/mining{
@@ -2267,8 +4181,50 @@
 	},
 /turf/simulated/floor/tiled/kafel_full/yellow,
 /area/space)
+"VF" = (
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/tiled/kafel_full/red,
+/area/space)
 "VJ" = (
 /turf/simulated/floor/reinforced,
+/area/space)
+"VT" = (
+/obj/machinery/door/airlock/security{
+	name = "Security Offices"
+	},
+/obj/machinery/door/firedoor/glass{
+	dir = 4
+	},
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/map_helper/access_helper/airlock/station/security/department,
+/turf/simulated/floor/tiled/red,
+/area/space)
+"VX" = (
+/obj/structure/table/rack/shelf/steel,
+/obj/item/clothing/suit/armor/pcarrier/combat{
+	pixel_x = -5;
+	pixel_y = -5
+	},
+/obj/item/clothing/suit/armor/pcarrier/combat{
+	pixel_y = -5;
+	pixel_x = 6
+	},
+/obj/item/clothing/suit/armor/pcarrier/combat{
+	pixel_y = 6;
+	pixel_x = -5
+	},
+/obj/item/clothing/suit/armor/pcarrier/combat{
+	pixel_y = 6;
+	pixel_x = 6
+	},
+/obj/item/clothing/suit/armor/pcarrier/combat,
+/turf/simulated/floor/tiled/monodark{
+	color = "#A9A9A9"
+	},
 /area/space)
 "Wd" = (
 /obj/machinery/door/airlock/multi_tile{
@@ -2280,11 +4236,72 @@
 	color = "#A9A9A9"
 	},
 /area/space)
+"Wt" = (
+/obj/machinery/camera/network/talon{
+	name = "andromeda";
+	network = list("AndromedaHaven");
+	dir = 8
+	},
+/turf/simulated/floor/tiled/red,
+/area/space)
+"WD" = (
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/kafel_full/red,
+/area/space)
 "WK" = (
 /obj/structure/window/reinforced{
 	dir = 1
 	},
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/tiled/red,
+/area/space)
+"WP" = (
+/obj/structure/table/rack/shelf/steel,
+/obj/structure/window/phoronreinforced{
+	dir = 8
+	},
+/obj/item/ammo_magazine/a5_7mm/five_seven/highcap{
+	pixel_x = 5
+	},
+/obj/item/ammo_magazine/a5_7mm/five_seven/highcap{
+	pixel_x = -6
+	},
+/obj/item/ammo_magazine/a5_7mm/five_seven/highcap,
+/obj/item/ammo_magazine/a5_7mm/five_seven/highcap,
+/obj/item/ammo_magazine/a5_7mm/five_seven/highcap,
+/obj/item/ammo_magazine/a5_7mm/five_seven/highcap{
+	pixel_x = 5
+	},
+/obj/item/ammo_magazine/a5_7mm/five_seven/highcap{
+	pixel_x = 5
+	},
+/obj/item/ammo_magazine/a5_7mm/five_seven/highcap{
+	pixel_x = -6
+	},
+/obj/item/ammo_magazine/a5_7mm/five_seven/highcap{
+	pixel_x = -6
+	},
+/obj/item/ammo_magazine/a5_7mm/five_seven/highcap{
+	pixel_x = -6
+	},
+/obj/item/ammo_magazine/a5_7mm/five_seven/highcap{
+	pixel_x = -6
+	},
+/obj/item/ammo_magazine/a5_7mm/five_seven/highcap{
+	pixel_x = 5
+	},
+/obj/item/ammo_magazine/a5_7mm/five_seven/highcap{
+	pixel_x = 5
+	},
+/obj/item/ammo_magazine/a5_7mm/five_seven/highcap,
+/obj/item/ammo_magazine/a5_7mm/five_seven/highcap,
+/obj/item/ammo_magazine/a5_7mm/five_seven/highcap,
+/obj/item/ammo_magazine/a5_7mm/five_seven/highcap,
+/turf/simulated/floor/reinforced,
 /area/space)
 "WZ" = (
 /obj/structure/cable{
@@ -2323,16 +4340,41 @@
 	color = "#A9A9A9"
 	},
 /area/space)
+"Xh" = (
+/obj/structure/table/rack/shelf/steel,
+/obj/item/gun/ballistic/shotgun/pump/combat{
+	pixel_y = 6
+	},
+/obj/item/gun/ballistic/shotgun/pump/combat,
+/obj/item/gun/ballistic/shotgun/pump/combat{
+	pixel_y = -6
+	},
+/obj/structure/window/phoronreinforced,
+/turf/simulated/floor/reinforced,
+/area/space)
 "Xk" = (
 /obj/machinery/vending/coffee{
 	dir = 8
 	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/space)
+"Xp" = (
+/obj/machinery/power/apc/high/north_mount,
+/obj/structure/cable{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/dark{
+	color = "#A9A9A9"
+	},
+/area/space)
 "Xx" = (
 /obj/machinery/vending/security{
 	density = 0;
 	pixel_y = 22
+	},
+/obj/machinery/door/firedoor/glass{
+	dir = 4;
+	req_one_access = list(18,47)
 	},
 /turf/simulated/floor/tiled/dark{
 	color = "#A9A9A9"
@@ -2344,6 +4386,34 @@
 	integrity_enabled = 0
 	},
 /area/space)
+"XQ" = (
+/obj/structure/cable{
+	icon_state = "2-4"
+	},
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled/kafel_full/red,
+/area/space)
+"XR" = (
+/obj/structure/table/steel,
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/tiled/kafel_full/red,
+/area/space)
+"XZ" = (
+/obj/structure/cable{
+	icon_state = "2-8"
+	},
+/turf/simulated/floor/reinforced,
+/area/space)
+"Yc" = (
+/obj/machinery/light/small/emergency{
+	dir = 4
+	},
+/turf/simulated/floor/reinforced,
+/area/space)
 "Yd" = (
 /obj/machinery/door/airlock/security{
 	req_one_access = null;
@@ -2354,6 +4424,9 @@
 	name = "Outer Checkpoint Blastdoor"
 	},
 /obj/machinery/door/firedoor/glass,
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
 /turf/simulated/floor/reinforced,
 /area/space)
 "Yk" = (
@@ -2377,6 +4450,18 @@
 	pixel_y = 15
 	},
 /turf/simulated/floor/wood,
+/area/space)
+"YV" = (
+/obj/machinery/door/firedoor/glass{
+	dir = 4
+	},
+/obj/structure/cable{
+	icon_state = "2-4"
+	},
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/tiled/red,
 /area/space)
 "Zh" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
@@ -2444,6 +4529,18 @@
 	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/space)
+"ZK" = (
+/obj/machinery/door/airlock/highsecurity{
+	name = "High Security Armory"
+	},
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/obj/machinery/door/firedoor/glass{
+	dir = 1
+	},
+/turf/simulated/floor/reinforced,
+/area/space)
 "ZN" = (
 /obj/effect/floor_decal/carpet,
 /obj/effect/floor_decal/carpet{
@@ -2452,6 +4549,9 @@
 /obj/effect/floor_decal/carpet{
 	dir = 6
 	},
+/obj/structure/cable{
+	icon_state = "1-8"
+	},
 /turf/simulated/floor/carpet/patterened,
 /area/space)
 "ZQ" = (
@@ -2459,6 +4559,39 @@
 	dir = 8
 	},
 /turf/simulated/floor/carpet/bcarpet,
+/area/space)
+"ZV" = (
+/obj/structure/table/rack/shelf/steel,
+/obj/item/gun/energy/taser,
+/obj/item/gun/energy/taser,
+/obj/item/gun/energy/taser{
+	pixel_y = -4
+	},
+/obj/item/gun/energy/taser{
+	pixel_y = -4
+	},
+/obj/item/gun/energy/taser{
+	pixel_y = -2
+	},
+/obj/item/gun/energy/taser{
+	pixel_y = -2
+	},
+/obj/item/gun/energy/taser{
+	pixel_y = 2
+	},
+/obj/item/gun/energy/taser{
+	pixel_y = 2
+	},
+/obj/item/gun/energy/taser,
+/obj/item/gun/energy/taser{
+	pixel_y = -4
+	},
+/obj/machinery/light/spot{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/monodark{
+	color = "#A9A9A9"
+	},
 /area/space)
 
 (1,1,1) = {"
@@ -13061,32 +15194,32 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
+XL
+XL
+XL
+XL
+XL
+XL
+XL
+XL
+XL
+XL
+XL
+XL
+XL
+XL
+XL
+XL
+XL
+XL
+XL
+XL
+XL
+XL
+XL
+XL
+XL
+XL
 Cr
 Cr
 Cr
@@ -13255,32 +15388,32 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
+XL
+XL
+XL
+XL
+XL
+XL
+XL
+XL
+XL
+XL
+XL
+XL
+XL
+XL
+XL
+XL
+XL
+XL
+XL
+XL
+XL
+XL
+XL
+XL
+XL
+XL
 Cr
 Cr
 Cr
@@ -13449,32 +15582,32 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
+XL
+XL
+XL
+XL
+XL
+XL
+XL
+XL
+XL
+XL
+XL
+XL
+XL
+XL
+XL
+XL
+XL
+XL
+XL
+XL
+XL
+XL
+XL
+XL
+XL
+XL
 Cr
 Cr
 Cr
@@ -13643,32 +15776,32 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
+XL
+XL
+XL
+Xh
+LB
+XL
+XL
+XL
+gt
+JB
+sH
+VX
+gQ
+XL
+kZ
+kZ
+kZ
+Ca
+kZ
+kZ
+NN
+Fa
+OK
+XL
+XL
+XL
 Cr
 Cr
 Cr
@@ -13837,32 +15970,32 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
+XL
+XL
+XL
+xp
+XZ
+IW
+Ig
+XL
+in
+in
+in
+in
+in
+XL
+kZ
+kZ
+kZ
+Ca
+kZ
+kZ
+kZ
+kZ
+kZ
+XL
+XL
+XL
 Cr
 Cr
 Cr
@@ -14031,32 +16164,32 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
+XL
+XL
+XL
+uH
+VJ
+Qz
+ln
+XL
+oQ
+in
+in
+in
+in
+XL
+Mj
+kZ
+kZ
+Ca
+kZ
+kZ
+lP
+bI
+kZ
+XL
+XL
+XL
 Cr
 Cr
 Cr
@@ -14225,32 +16358,32 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
+XL
+XL
+XL
+Ge
+VJ
+hJ
+XZ
+ZK
+rG
+RU
+lz
+OR
+bv
+rL
+Kk
+LP
+LP
+QE
+LP
+ju
+Kl
+LP
+UN
+XL
+XL
+XL
 Cr
 Cr
 Cr
@@ -14419,32 +16552,32 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
+XL
+XL
+XL
+AI
+VJ
+bF
+VJ
+XL
+gb
+in
+in
+in
+in
+XL
+UC
+kZ
+kZ
+Ca
+kZ
+kZ
+CE
+vg
+kZ
+XL
+XL
+XL
 Cr
 Cr
 Cr
@@ -14613,32 +16746,32 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
+XL
+XL
+XL
+BN
+VJ
+Yc
+VJ
+XL
+in
+in
+in
+in
+in
+XL
+BC
+kZ
+kZ
+Ca
+kZ
+kZ
+kZ
+kZ
+kZ
+XL
+XL
+XL
 Cr
 Cr
 Cr
@@ -14807,32 +16940,32 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
+XL
+XL
+XL
+Kg
+yX
+XL
+XL
+XL
+rO
+Ve
+ZV
+Ft
+lM
+XL
+BC
+Vu
+kZ
+Ca
+kZ
+kZ
+qP
+vc
+UE
+XL
+XL
+XL
 Cr
 Cr
 Cr
@@ -15001,32 +17134,32 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
+XL
+XL
+XL
+XL
+XL
+XL
+XL
+XL
+XL
+XL
+XL
+XL
+XL
+XL
+vA
+XL
+wZ
+XL
+XL
+XL
+XL
+XL
+XL
+XL
+XL
+XL
 Cr
 Cr
 Cr
@@ -15195,34 +17328,34 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
+XL
+XL
+XL
+XL
+XL
+XL
+XL
+XL
+XL
+XL
+XL
+Mr
+Mr
+BG
+xc
+Mr
+Mr
+Mr
+Mr
+dh
+XL
+XL
+XL
+XL
+XL
+XL
+XL
+XL
 Cr
 Cr
 Cr
@@ -15389,34 +17522,34 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
+XL
+XL
+XL
+XL
+XL
+XL
+XL
+XL
+XL
+XL
+XL
+BA
+KC
+HY
+Mr
+Mr
+Mr
+KC
+KC
+dR
+XL
+XL
+XL
+XL
+XL
+XL
+XL
+XL
 Cr
 Cr
 Cr
@@ -15592,25 +17725,25 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
+XL
+XL
+cV
+BQ
+HY
+Mr
+Mr
+Mr
+KC
+nJ
+cV
+XL
+Cg
+Mr
+WD
+Mr
+Js
+XL
+XL
 Cr
 Cr
 Cr
@@ -15786,25 +17919,25 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
+XL
+XL
+iK
+dw
+HY
+SR
+od
+Iv
+KC
+dw
+iK
+XL
+nD
+Mr
+WD
+Mr
+IN
+XL
+XL
 Cr
 Cr
 Cr
@@ -15980,25 +18113,25 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
+XL
+XL
+qL
+Mr
+vJ
+jT
+jk
+Nc
+VF
+VF
+VF
+sl
+JP
+dI
+KM
+Mr
+UQ
+XL
+XL
 Cr
 Cr
 Cr
@@ -16174,6 +18307,25 @@ Cr
 Cr
 Cr
 Cr
+XL
+XL
+iK
+mu
+HY
+JQ
+ot
+Ju
+KC
+mu
+iK
+XL
+zT
+Mr
+WD
+Mr
+Js
+XL
+XL
 Cr
 Cr
 Cr
@@ -16188,36 +18340,17 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
+fd
+fd
+fd
+fd
+fd
+fd
+fd
+fd
+fd
+fd
+fd
 Cr
 Cr
 Cr
@@ -16368,6 +18501,25 @@ Cr
 Cr
 Cr
 Cr
+XL
+XL
+cV
+BQ
+HY
+Mr
+Mr
+Mr
+KC
+nJ
+cV
+XL
+SU
+Mr
+WD
+Mr
+Js
+XL
+XL
 Cr
 Cr
 Cr
@@ -16382,36 +18534,17 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
+fd
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+fd
 Cr
 Cr
 Cr
@@ -16562,6 +18695,25 @@ Cr
 Cr
 Cr
 Cr
+XL
+XL
+BA
+KC
+HY
+Mr
+Mr
+Mr
+KC
+KC
+dR
+XL
+XL
+XL
+XL
+XL
+XL
+XL
+XL
 Cr
 Cr
 Cr
@@ -16575,28 +18727,9 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
+fd
+fd
+xz
 Kf
 Kf
 KG
@@ -16604,9 +18737,9 @@ KG
 KG
 Kf
 Kf
-Cr
-Cr
-Cr
+xz
+fd
+fd
 Cr
 Cr
 Cr
@@ -16751,6 +18884,30 @@ Cr
 Cr
 Cr
 Cr
+XL
+XL
+XL
+XL
+XL
+XL
+XL
+Cg
+Mr
+XQ
+jH
+Mr
+QH
+Mr
+Mr
+Mr
+XL
+XL
+XL
+XL
+XL
+XL
+XL
+XL
 Cr
 Cr
 Cr
@@ -16763,34 +18920,10 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
+fd
+fd
+xz
+xz
 Kf
 Kf
 KG
@@ -16798,10 +18931,10 @@ ag
 KG
 Kf
 Kf
-Cr
-Cr
-Cr
-Cr
+xz
+xz
+fd
+fd
 Cr
 Cr
 Cr
@@ -16945,18 +19078,6 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
 XL
 XL
 XL
@@ -16965,6 +19086,19 @@ XL
 XL
 XL
 XL
+up
+DB
+XL
+XL
+XL
+up
+up
+XL
+XL
+XL
+XL
+XL
+XL
 XL
 XL
 Cr
@@ -16979,11 +19113,10 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
-Cr
-Cr
-Cr
+fd
+fd
+xz
+xz
 Kf
 Kf
 Kf
@@ -16993,10 +19126,10 @@ Ui
 Kf
 Kf
 Kf
-Cr
-Cr
-Cr
-Cr
+xz
+xz
+fd
+fd
 Cr
 Cr
 Cr
@@ -17139,18 +19272,18 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
+XL
+XL
+qE
+Mr
+aI
+kC
+Mr
+XL
+si
+KH
+XL
+XL
 XL
 si
 si
@@ -17161,6 +19294,7 @@ Fb
 Fb
 Fb
 XL
+XL
 Cr
 Cr
 Cr
@@ -17172,11 +19306,10 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
-Cr
-Cr
-Cr
+fd
+fd
+xz
+xz
 Kf
 Kf
 Kf
@@ -17188,10 +19321,10 @@ Kf
 Kf
 Kf
 Kf
-Cr
-Cr
-Cr
-Cr
+xz
+xz
+fd
+fd
 Cr
 Cr
 Cr
@@ -17333,18 +19466,18 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
+XL
+XL
+nD
+Mr
+aI
+kC
+Mr
+XL
+si
+KH
+XL
+sF
 XL
 si
 si
@@ -17352,8 +19485,9 @@ XL
 Mr
 Mr
 Mr
-Mr
-Mr
+BG
+LS
+XL
 XL
 Cr
 Cr
@@ -17366,10 +19500,9 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
-Cr
-Cr
+fd
+xz
+xz
 Kf
 Kf
 Kf
@@ -17383,9 +19516,9 @@ Yk
 Kf
 Kf
 Kf
-Cr
-Cr
-Cr
+xz
+xz
+fd
 Cr
 Cr
 Cr
@@ -17527,27 +19660,28 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
 XL
-si
-si
 XL
-Cr
-XL
+ar
+jt
+aI
+kC
+Mr
+zA
 si
+KH
+XL
+XL
+XL
+bs
 si
 rm
 Mr
 SR
 od
 SA
-Mr
+dT
+XL
 XL
 Cr
 Cr
@@ -17559,10 +19693,9 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
-Cr
-Cr
+fd
+fd
+xz
 Kf
 Kf
 Kf
@@ -17578,8 +19711,8 @@ Kb
 Kf
 Kf
 Kf
-Cr
-Cr
+xz
+fd
 Cr
 Cr
 Cr
@@ -17721,28 +19854,29 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
 XL
-si
-si
 XL
-Cr
-XL
-si
-si
-XL
+KC
+EB
 Mr
+Mr
+dT
+XL
+Rl
+Dp
+XL
+XL
+XL
+ow
+si
+XL
+nD
 hq
 zZ
 GV
 kH
 XL
+XL
 Cr
 Cr
 Cr
@@ -17752,11 +19886,10 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
-Cr
-Cr
-Cr
+fd
+fd
+xz
+xz
 Kf
 Kf
 EK
@@ -17772,8 +19905,8 @@ fT
 EK
 Kf
 Kf
-Cr
-Cr
+xz
+fd
 Cr
 Cr
 Cr
@@ -17915,28 +20048,29 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
 XL
-si
-si
 XL
-Cr
+kg
+Fn
+XR
+iP
+VF
+UA
+RP
+ec
 XL
-si
-si
-rm
-Mr
-JQ
-ot
+XL
+XL
+QC
+RP
+dt
+VF
+ls
+Iz
 ZN
 xT
 XL
+XL
 Cr
 Cr
 Cr
@@ -17945,12 +20079,11 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
+fd
+fd
+xz
+xz
+xz
 Kf
 Kf
 rJ
@@ -17966,8 +20099,8 @@ fT
 rJ
 Kf
 Kf
-Cr
-Cr
+xz
+fd
 Cr
 Cr
 Cr
@@ -18109,28 +20242,29 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
+XL
+XL
+Ek
+xc
+aI
+kC
+Mr
 XL
 si
-si
+KH
 XL
-Cr
 XL
-si
+XL
+KH
 si
 XL
 Mr
-Mr
+ji
 Mr
 Mr
 Ok
 XL
+XL
 Cr
 Cr
 Cr
@@ -18138,13 +20272,12 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
+fd
+fd
+xz
+xz
+xz
+fd
 KG
 KG
 ZJ
@@ -18160,8 +20293,8 @@ fT
 ZJ
 KG
 KG
-Cr
-Cr
+xz
+fd
 Cr
 Cr
 Cr
@@ -18303,42 +20436,42 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
+XL
+XL
+TA
+Mr
+aI
+kC
+Mr
 XL
 si
-si
+KH
 XL
-Cr
 XL
-si
+XL
+KH
 si
 XL
 MK
-MK
+yE
 NM
 MK
 MK
 XL
+XL
 Cr
 Cr
 Cr
 Cr
 Cr
 Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
+fd
+fd
+xz
+xz
+xz
+fd
+fd
 KG
 KG
 ip
@@ -18354,8 +20487,8 @@ fT
 gK
 KG
 KG
-Cr
-Cr
+xz
+fd
 Cr
 Cr
 Cr
@@ -18497,42 +20630,42 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
 XL
+XL
+XL
+XL
+XL
+XL
+XL
+XL
+wb
 xq
-xq
 XL
 XL
 XL
-hR
+VT
 hR
 XL
 KC
-KC
+HY
 in
 KC
 KC
 XL
+XL
 Cr
 Cr
 Cr
 Cr
 Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
+fd
+fd
+xz
+xz
+xz
+fd
+fd
+fd
 KG
 KG
 Sw
@@ -18548,8 +20681,8 @@ fT
 ZQ
 KG
 KG
-Cr
-Cr
+xz
+fd
 Cr
 Cr
 Cr
@@ -18691,20 +20824,20 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
+XL
+XL
+XL
+XL
+XL
+XL
+XL
 XL
 si
-si
-si
-si
-si
-si
+KH
+tr
+rE
+mn
+ye
 si
 XL
 KC
@@ -18713,20 +20846,20 @@ TC
 xB
 KC
 XL
+XL
 Cr
 Cr
 Cr
 Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
+fd
+fd
+xz
+xz
+xz
+fd
+fd
+fd
+fd
 Kf
 Kf
 Kw
@@ -18742,9 +20875,9 @@ fT
 Xk
 Kf
 Kf
-Cr
-Cr
-Cr
+xz
+fd
+fd
 Cr
 Cr
 Cr
@@ -18891,36 +21024,36 @@ Cr
 Cr
 Cr
 Cr
-Cr
+XL
 XL
 si
+KH
 si
 si
 si
-si
-si
+KH
 si
 XL
 Xx
-in
-in
-in
-KC
+sz
+HT
+HT
+oj
+XL
 XL
 Cr
 Cr
 Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
+fd
+fd
+xz
+xz
+xz
+fd
+fd
+fd
+fd
+fd
 Kf
 Kf
 Kf
@@ -18936,10 +21069,10 @@ RR
 Kf
 Kf
 Kf
-Cr
-Cr
-Cr
-Cr
+xz
+xz
+fd
+fd
 Cr
 Cr
 Cr
@@ -19085,36 +21218,36 @@ Cr
 Cr
 Cr
 Cr
-Cr
 XL
-si
+XL
+bs
 OY
 sZ
 qe
 si
 WK
-si
+Cc
 XL
-KC
+Xp
+Hz
+iA
 rp
-rp
-rp
-KC
+tN
+XL
 XL
 Cr
 Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
+fd
+fd
+xz
+xz
+xz
+fd
+fd
+fd
+fd
+fd
+fd
 Kf
 Kf
 Kf
@@ -19130,11 +21263,11 @@ Kf
 Kf
 Kf
 Kf
-Cr
-Cr
-Cr
-Cr
-Cr
+xz
+xz
+xz
+fd
+fd
 Cr
 Cr
 Cr
@@ -19279,7 +21412,7 @@ Cr
 Cr
 Cr
 Cr
-Cr
+XL
 XL
 si
 OY
@@ -19290,25 +21423,25 @@ WK
 si
 XL
 KC
-in
-in
-in
+KC
+KC
+KC
 KC
 XL
+XL
 Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
+fd
+fd
+xz
+xz
+xz
+fd
+fd
+fd
+fd
+fd
+fd
+fd
 Kf
 Kf
 Kf
@@ -19324,12 +21457,12 @@ Kf
 Kf
 Kf
 Kf
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
+fd
+xz
+xz
+xz
+fd
+fd
 Cr
 Cr
 Cr
@@ -19473,36 +21606,36 @@ Cr
 Cr
 Cr
 Cr
-Cr
+XL
 XL
 si
 mV
-si
-si
-si
+mv
+mv
+YV
 Bs
 si
 XL
-gI
-gI
-gI
-gI
+WP
+QF
+pa
+SL
 gI
 XL
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
+XL
+fd
+fd
+xz
+xz
+xz
+fd
+fd
+fd
+fd
+fd
+fd
+fd
+fd
 Kf
 Kf
 Kf
@@ -19518,13 +21651,13 @@ RS
 Kf
 Kf
 Kf
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
+fd
+fd
+xz
+xz
+xz
+fd
+fd
 Cr
 Cr
 Cr
@@ -19667,13 +21800,13 @@ Cr
 Cr
 Cr
 Cr
-Cr
+XL
 XL
 XL
 XL
 si
 si
-si
+KH
 XL
 XL
 XL
@@ -19684,20 +21817,20 @@ XL
 XL
 XL
 XL
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Kf
-Kf
+xz
+xz
+xz
+xz
+fd
+fd
+fd
+fd
+fd
+fd
+fd
+fd
+KG
+KG
 Kf
 RS
 KC
@@ -19713,13 +21846,13 @@ RS
 Kf
 Kf
 Kf
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
+fd
+fd
+xz
+xz
+xz
+fd
+fd
 Cr
 Cr
 Cr
@@ -19861,13 +21994,13 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
-Cr
+XL
+XL
+XL
 XL
 si
-si
-si
+Wt
+KH
 XL
 XL
 XL
@@ -19878,20 +22011,20 @@ XL
 XL
 XL
 XL
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Ky
-Ky
-Kf
+xz
+xz
+fd
+fd
+fd
+fd
+fd
+fd
+fd
+fd
+fd
+KG
+KG
+KG
 RS
 KC
 in
@@ -19906,20 +22039,20 @@ in
 KC
 RS
 Kf
-Ky
-Ky
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
+KG
+KG
+fd
+fd
+xz
+xz
+xz
+fd
+fd
+fd
+fd
+fd
+fd
+fd
 "}
 (91,1,1) = {"
 Cr
@@ -20057,9 +22190,9 @@ Cr
 Cr
 Cr
 Cr
-Cr
 XL
-GY
+XL
+oJ
 XL
 GY
 XL
@@ -20072,19 +22205,19 @@ ab
 es
 XL
 XL
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Ky
-Ky
-Ky
+xz
+xz
+fd
+fd
+fd
+fd
+fd
+fd
+fd
+fd
+KG
+KG
+KG
 vI
 KC
 in
@@ -20100,20 +22233,20 @@ in
 in
 KC
 RS
-Ky
-Ky
-Ky
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
+KG
+KG
+KG
+fd
+fd
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
 "}
 (92,1,1) = {"
 Cr
@@ -20255,15 +22388,15 @@ KC
 KC
 si
 si
-si
+KH
 XL
 XL
 XL
 XL
+ji
 Mr
 Mr
 Mr
-Mr
 XL
 XL
 XL
@@ -20277,7 +22410,7 @@ Ky
 Ky
 Ky
 Ky
-Ky
+KG
 RS
 Sm
 KC
@@ -20295,8 +22428,8 @@ KC
 KC
 KC
 vI
-Ky
-Ky
+KG
+KG
 Ky
 Ky
 KG
@@ -20449,12 +22582,12 @@ in
 in
 in
 in
-KC
+HY
 XL
 XL
 XL
 XL
-Mr
+ji
 Df
 Mr
 Mr
@@ -20490,7 +22623,7 @@ RS
 RS
 vI
 Qc
-Ky
+KG
 Ky
 Ky
 KG
@@ -20643,12 +22776,12 @@ in
 in
 in
 in
-KC
+HY
 Nr
 Ql
 VJ
 XL
-eu
+jf
 Io
 Io
 KG
@@ -20837,18 +22970,18 @@ in
 in
 in
 in
-KC
-Np
-Ql
-VJ
+hO
+TF
+gy
+np
 jS
-VJ
-VJ
-VJ
-VJ
+Bu
+np
+np
+np
 Yd
-VJ
-Ql
+np
+gy
 TF
 gy
 gy
@@ -21226,17 +23359,17 @@ in
 in
 in
 KC
-Nr
-Ql
-VJ
+kh
+gy
+np
 jS
-VJ
-VJ
-VJ
-VJ
+Vz
+np
+np
+np
 Yd
-VJ
-Ql
+np
+gy
 kh
 gy
 gy
@@ -21618,7 +23751,7 @@ Ky
 XL
 XL
 XL
-Mr
+ji
 ao
 Mr
 Mr
@@ -21654,7 +23787,7 @@ RS
 RS
 vI
 Qc
-Ky
+KG
 Ky
 Ky
 KG
@@ -21812,7 +23945,7 @@ Ky
 XL
 XL
 XL
-Mr
+ji
 Mr
 Mr
 Mr
@@ -21829,7 +23962,7 @@ Ky
 Ky
 Ky
 Ky
-Ky
+KG
 RS
 Sm
 KC
@@ -21847,8 +23980,8 @@ KC
 KC
 KC
 vI
-Ky
-Ky
+KG
+KG
 Ky
 Ky
 KG
@@ -22007,24 +24140,24 @@ Cr
 XL
 XL
 Uw
-SU
+qZ
 ab
 DY
 XL
 XL
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Ky
-Ky
-Ky
+xz
+xz
+fd
+fd
+fd
+fd
+fd
+fd
+fd
+fd
+KG
+KG
+KG
 vI
 KC
 in
@@ -22040,20 +24173,20 @@ in
 in
 KC
 RS
-Ky
-Ky
-Ky
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
+KG
+KG
+KG
+fd
+fd
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
 "}
 (102,1,1) = {"
 Cr
@@ -22206,20 +24339,20 @@ XL
 XL
 XL
 XL
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Ky
-Ky
-Ky
+xz
+xz
+fd
+fd
+fd
+fd
+fd
+fd
+fd
+fd
+fd
+KG
+KG
+KG
 RS
 KC
 KC
@@ -22233,21 +24366,21 @@ in
 in
 KC
 RS
-Ky
-Ky
-Ky
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
+KG
+KG
+KG
+fd
+fd
+xz
+xz
+xz
+fd
+fd
+fd
+fd
+fd
+fd
+fd
 "}
 (103,1,1) = {"
 Cr
@@ -22400,20 +24533,20 @@ XL
 XL
 XL
 XL
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Ky
-Ky
+xz
+xz
+xz
+fd
+fd
+fd
+fd
+fd
+fd
+fd
+fd
+fd
+KG
+KG
 mi
 RS
 KC
@@ -22427,15 +24560,15 @@ KC
 KC
 RS
 mi
-Ky
-Ky
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
+KG
+KG
+fd
+fd
+xz
+xz
+xz
+fd
+fd
 Cr
 Cr
 Cr
@@ -22593,20 +24726,20 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
+fd
+fd
+xz
+xz
+xz
+fd
+fd
+fd
+fd
+fd
+fd
+fd
+fd
+fd
 mi
 mi
 mi
@@ -22622,13 +24755,13 @@ RS
 mi
 mi
 mi
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
+fd
+fd
+xz
+xz
+xz
+fd
+fd
 Cr
 Cr
 Cr
@@ -22788,20 +24921,20 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
+fd
+fd
+xz
+xz
+xz
+fd
+fd
+fd
+fd
+fd
+fd
+fd
+fd
+fd
 mi
 mi
 mi
@@ -22815,13 +24948,13 @@ Zn
 mi
 mi
 mi
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
+fd
+fd
+xz
+xz
+xz
+fd
+fd
 Cr
 Cr
 Cr
@@ -22983,20 +25116,20 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
+fd
+fd
+xz
+xz
+xz
+fd
+fd
+fd
+fd
+fd
+fd
+fd
+fd
+fd
 mi
 mi
 Us
@@ -23008,13 +25141,13 @@ Us
 Us
 mi
 mi
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
+fd
+fd
+xz
+xz
+xz
+fd
+fd
 Cr
 Cr
 Cr
@@ -23178,19 +25311,19 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
+fd
+fd
+xz
+xz
+xz
+fd
+fd
+fd
+fd
+fd
+fd
+fd
+fd
 mi
 mi
 Us
@@ -23202,12 +25335,12 @@ Us
 gP
 mi
 mi
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
+fd
+xz
+xz
+xz
+fd
+fd
 Cr
 Cr
 Cr
@@ -23373,18 +25506,18 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
+fd
+fd
+xz
+xz
+xz
+fd
+fd
+fd
+fd
+fd
+fd
+fd
 mi
 mi
 Us
@@ -23396,15 +25529,15 @@ Us
 Us
 mi
 mi
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
+xz
+xz
+xz
+fd
+fd
+fd
+fd
+fd
+fd
 Cr
 Cr
 Cr
@@ -23568,17 +25701,17 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
+fd
+fd
+xz
+xz
+xz
+fd
+fd
+fd
+fd
+fd
+fd
 mi
 mi
 GC
@@ -23590,15 +25723,15 @@ LW
 Us
 mi
 mi
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+fd
 Cr
 Cr
 Cr
@@ -23763,10 +25896,10 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
-Cr
-Cr
+fd
+fd
+xz
+xz
 mi
 mi
 mi
@@ -23791,8 +25924,8 @@ mi
 mi
 mi
 mi
-Cr
-Cr
+xz
+fd
 Cr
 Cr
 Cr
@@ -23958,9 +26091,9 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
-Cr
+fd
+fd
+xz
 mi
 mi
 mi
@@ -23985,8 +26118,8 @@ Lg
 eP
 mi
 mi
-Cr
-Cr
+xz
+fd
 Cr
 Cr
 Cr
@@ -24153,8 +26286,8 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
+fd
+xz
 mi
 mi
 dM
@@ -24179,8 +26312,8 @@ GM
 Qb
 mi
 mi
-Cr
-Cr
+xz
+fd
 Cr
 Cr
 Cr
@@ -24347,8 +26480,8 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
+fd
+xz
 mi
 mi
 op
@@ -24373,8 +26506,8 @@ TB
 GM
 mi
 mi
-Cr
-Cr
+xz
+fd
 Cr
 Cr
 Cr
@@ -24541,8 +26674,8 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
+fd
+xz
 mi
 mi
 mi
@@ -24567,8 +26700,8 @@ RL
 RL
 mi
 mi
-Cr
-Cr
+xz
+fd
 Cr
 Cr
 Cr
@@ -24735,8 +26868,8 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
+fd
+xz
 mi
 mi
 Tv
@@ -24761,8 +26894,8 @@ RE
 Ue
 mi
 mi
-Cr
-Cr
+xz
+fd
 Cr
 Cr
 Cr
@@ -24929,8 +27062,8 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
+fd
+xz
 mi
 mi
 Iw
@@ -24955,8 +27088,8 @@ GM
 GM
 mi
 mi
-Cr
-Cr
+xz
+fd
 Cr
 Cr
 Cr
@@ -25123,8 +27256,8 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
+fd
+xz
 mi
 mi
 Tv
@@ -25149,8 +27282,8 @@ gS
 YA
 mi
 mi
-Cr
-Cr
+xz
+fd
 Cr
 Cr
 Cr
@@ -25317,8 +27450,8 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
+fd
+xz
 mi
 mi
 Rn
@@ -25343,8 +27476,8 @@ GM
 wE
 mi
 mi
-Cr
-Cr
+xz
+fd
 Cr
 Cr
 Cr
@@ -25511,8 +27644,8 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
+fd
+xz
 mi
 mi
 Tv
@@ -25537,8 +27670,8 @@ mi
 mi
 mi
 mi
-Cr
-Cr
+xz
+fd
 Cr
 Cr
 Cr
@@ -25705,8 +27838,8 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
+fd
+xz
 mi
 mi
 mi
@@ -25731,8 +27864,8 @@ mi
 mi
 mi
 mi
-Cr
-Cr
+xz
+fd
 Cr
 Cr
 Cr
@@ -25899,8 +28032,8 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
+fd
+xz
 mi
 mi
 mi
@@ -25917,16 +28050,16 @@ GM
 FH
 mi
 mi
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+fd
 Cr
 Cr
 Cr
@@ -26093,15 +28226,15 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
+fd
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
 mi
 mi
 FH
@@ -26111,16 +28244,16 @@ GM
 FH
 mi
 mi
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
+xz
+fd
+fd
+fd
+fd
+fd
+fd
+fd
+fd
+fd
 Cr
 Cr
 Cr
@@ -26287,15 +28420,15 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
+fd
+fd
+fd
+fd
+fd
+fd
+fd
+fd
+xz
 mi
 mi
 FH
@@ -26305,8 +28438,8 @@ GM
 FH
 mi
 mi
-Cr
-Cr
+xz
+fd
 Cr
 Cr
 Cr
@@ -26488,8 +28621,8 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
+fd
+xz
 mi
 mi
 Rd
@@ -26499,8 +28632,8 @@ Ep
 Rd
 mi
 mi
-Cr
-Cr
+xz
+fd
 Cr
 Cr
 Cr
@@ -26682,8 +28815,8 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
+fd
+xz
 mi
 mi
 gB
@@ -26693,8 +28826,8 @@ En
 gB
 mi
 mi
-Cr
-Cr
+xz
+fd
 Cr
 Cr
 Cr
@@ -26876,8 +29009,8 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
+fd
+xz
 mi
 mi
 mi
@@ -26887,8 +29020,8 @@ mi
 mi
 mi
 mi
-Cr
-Cr
+xz
+fd
 Cr
 Cr
 Cr
@@ -27070,8 +29203,8 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
+fd
+xz
 mi
 mi
 mi
@@ -27081,8 +29214,8 @@ mi
 mi
 mi
 mi
-Cr
-Cr
+xz
+fd
 Cr
 Cr
 Cr
@@ -27264,19 +29397,19 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-CR
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
+fd
+xz
+xz
+xz
+xz
+xz
+OM
+xz
+xz
+xz
+xz
+xz
+fd
 Cr
 Cr
 Cr
@@ -27458,19 +29591,19 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-CR
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
+fd
+fd
+fd
+fd
+fd
+fd
+IH
+fd
+fd
+fd
+fd
+fd
+fd
 Cr
 Cr
 Cr
