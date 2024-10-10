@@ -6539,9 +6539,6 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/virologyaccess)
-"fRF" = (
-/turf/space/basic,
-/area/victory/hallway/d3porthall)
 "fRZ" = (
 /obj/machinery/shower{
 	pixel_y = 16
@@ -9384,14 +9381,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/victory/hallway/d3starboardhall)
-"ira" = (
-/obj/machinery/door/airlock/medical{
-	id_tag = "MedicalResleeving";
-	name = "Resleeving Lab";
-	req_one_access = null
-	},
-/turf/simulated/floor/tiled/white,
-/area/medical/patient_wing)
 "irg" = (
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 10
@@ -22260,8 +22249,8 @@
 /turf/simulated/floor/tiled,
 /area/victory/hallway/d3afthall)
 "tPG" = (
-/turf/simulated/wall/prepainted/medical,
-/area/victory/hallway/d3afthall)
+/turf/simulated/open,
+/area/victory/hallway/d3fwdhall)
 "tPK" = (
 /obj/machinery/disposal,
 /turf/simulated/floor/tiled,
@@ -23654,7 +23643,7 @@
 /area/victory/hallway/d3starboardhall)
 "vgG" = (
 /obj/structure/stairs/spawner/north,
-/turf/space/basic,
+/turf/simulated/floor/tiled,
 /area/victory/hallway/d3porthall)
 "vha" = (
 /obj/machinery/washing_machine,
@@ -37891,7 +37880,7 @@ dKQ
 ttn
 igt
 frM
-tPG
+oaU
 oaU
 cFb
 mMN
@@ -37899,7 +37888,7 @@ llr
 qNL
 cFb
 oaU
-tPG
+oaU
 cBK
 gSa
 mmI
@@ -39865,7 +39854,7 @@ yfP
 sYQ
 nDp
 vpB
-ira
+wOk
 jPF
 vMN
 fjh
@@ -44883,7 +44872,7 @@ fKt
 fKt
 mGe
 vgG
-fRF
+jPR
 fvj
 dzs
 qPf
@@ -45077,7 +45066,7 @@ jPR
 mAe
 mGe
 vgG
-fRF
+jPR
 plm
 jPR
 qPf
@@ -55743,8 +55732,8 @@ mUh
 tUb
 ifg
 mna
-nPa
-nPa
+tPG
+tPG
 mna
 sTc
 qhO
@@ -55937,8 +55926,8 @@ tUb
 tUb
 ifg
 mna
-nPa
-nPa
+tPG
+tPG
 nPa
 lFV
 qhO
@@ -56131,8 +56120,8 @@ tUb
 pkD
 ifg
 mna
-nPa
-nPa
+tPG
+tPG
 nPa
 lFV
 qhO
@@ -56325,8 +56314,8 @@ pkD
 pkD
 ifg
 mna
-nPa
-nPa
+tPG
+tPG
 mna
 tcX
 kDb

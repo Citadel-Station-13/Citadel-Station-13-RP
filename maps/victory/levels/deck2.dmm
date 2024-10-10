@@ -10463,6 +10463,9 @@
 /obj/machinery/light,
 /turf/simulated/floor/tiled,
 /area/security/range)
+"jgX" = (
+/turf/simulated/open,
+/area/victory/hallway/d2fwdhall)
 "jhP" = (
 /obj/machinery/vending/hydroseeds,
 /obj/effect/floor_decal/corner/green{
@@ -24788,6 +24791,10 @@
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_3)
+"vLu" = (
+/obj/structure/sign/deck/second,
+/turf/simulated/wall/prepainted,
+/area/station/stairs_two)
 "vLy" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 1
@@ -38244,7 +38251,7 @@ cdV
 jnl
 iiP
 eIu
-vyT
+vLu
 oJt
 oJt
 hWi
@@ -38252,7 +38259,7 @@ xUJ
 jas
 oJt
 oJt
-vyT
+vLu
 ebS
 eIu
 qWi
@@ -56096,8 +56103,8 @@ cIi
 cIi
 dZW
 gEH
-wch
-wch
+jgX
+jgX
 gEH
 fLt
 fLt
@@ -56290,8 +56297,8 @@ cIi
 cIi
 dZW
 gEH
-wch
-wch
+jgX
+jgX
 wch
 fLt
 fLt
@@ -56484,8 +56491,8 @@ cIi
 cIi
 dZW
 gEH
-wch
-wch
+jgX
+jgX
 wch
 fLt
 fLt
@@ -56678,8 +56685,8 @@ cIi
 cIi
 dZW
 gEH
-wch
-wch
+jgX
+jgX
 gEH
 fLt
 fLt

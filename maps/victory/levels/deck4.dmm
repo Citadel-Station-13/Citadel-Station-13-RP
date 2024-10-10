@@ -25538,6 +25538,9 @@
 	},
 /turf/simulated/floor/tiled,
 /area/gateway/prep_room)
+"vgA" = (
+/turf/simulated/open,
+/area/victory/hallway/d4fwdhall)
 "vhm" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
@@ -47672,10 +47675,10 @@ pdu
 ucD
 ucD
 ucD
-xRj
-xRj
-xRj
-xRj
+ucD
+sQl
+sQl
+sQl
 xRj
 xRj
 xRj
@@ -47865,10 +47868,10 @@ nZR
 pdu
 ucD
 ucD
-xRj
-xRj
-xRj
-xRj
+ucD
+ucD
+sQl
+sQl
 xRj
 xRj
 xRj
@@ -48058,11 +48061,11 @@ wUJ
 uze
 pdu
 ucD
-xRj
-xRj
-xRj
-xRj
-xRj
+ucD
+ucD
+sQl
+sQl
+sQl
 xRj
 xRj
 xRj
@@ -48252,10 +48255,10 @@ wUJ
 uze
 pdu
 ucD
-xRj
-xRj
-xRj
-xRj
+sQl
+sQl
+sQl
+sQl
 xRj
 xRj
 xRj
@@ -48446,9 +48449,9 @@ wUJ
 uze
 pdu
 ucD
-xRj
-xRj
-xRj
+sQl
+sQl
+sQl
 xRj
 xRj
 xRj
@@ -57921,8 +57924,8 @@ cvT
 lUh
 lUh
 qyL
-kWJ
-kWJ
+vgA
+vgA
 qyL
 bdP
 lJv
@@ -58115,8 +58118,8 @@ aEk
 lUh
 lUh
 qyL
-kWJ
-kWJ
+vgA
+vgA
 kWJ
 jlM
 tOJ
@@ -58309,8 +58312,8 @@ cvT
 lUh
 lUh
 qyL
-kWJ
-kWJ
+vgA
+vgA
 kWJ
 twL
 gWh
@@ -58503,8 +58506,8 @@ oTA
 lUh
 lUh
 qyL
-kWJ
-kWJ
+vgA
+vgA
 qyL
 rwP
 mHc
