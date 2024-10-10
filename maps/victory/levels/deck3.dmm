@@ -5584,6 +5584,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled/techfloor,
 /area/assembly/robotics)
+"fik" = (
+/turf/simulated/floor/airless/ceiling,
+/area/space)
 "fiD" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 1
@@ -30444,12 +30447,12 @@ yde
 yde
 yde
 syi
-pRW
-pRW
-pRW
-pRW
-pRW
-pRW
+fik
+fik
+fik
+fik
+fik
+fik
 pRW
 pRW
 pRW
@@ -30638,12 +30641,12 @@ fHi
 nWB
 awE
 syi
-pRW
-pRW
-pRW
-pRW
+fik
 qBd
-pRW
+fik
+fik
+qBd
+fik
 pRW
 pRW
 pRW
@@ -30832,9 +30835,9 @@ vcY
 hgb
 hgb
 syi
-pRW
-pRW
-gYU
+qBd
+lmG
+qBd
 qBd
 lmG
 qBd
