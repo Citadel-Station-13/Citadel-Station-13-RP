@@ -5447,7 +5447,7 @@
 	name = "Exploration Public Lobby"
 	},
 /obj/map_helper/access_helper/airlock/station/exploration/department,
-/turf/space/basic,
+/turf/simulated/floor/plating,
 /area/exploration)
 "eyP" = (
 /obj/structure/cable/green{
@@ -10329,7 +10329,7 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
-/turf/space/basic,
+/turf/simulated/floor/plating,
 /area/exploration/explorer_prep)
 "ilw" = (
 /obj/structure/cable/green{
@@ -11356,7 +11356,7 @@
 	},
 /obj/map_helper/access_helper/airlock/station/maintenance,
 /obj/machinery/door/firedoor,
-/turf/space/basic,
+/turf/simulated/floor/plating,
 /area/victory/hallway/d4starboardhall)
 "jcv" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -14358,7 +14358,7 @@
 	},
 /obj/map_helper/access_helper/airlock/station/maintenance,
 /obj/machinery/door/firedoor,
-/turf/space/basic,
+/turf/simulated/floor/plating,
 /area/maintenance/substation/civilian)
 "lyH" = (
 /obj/effect/floor_decal/borderfloorblack{
@@ -18527,7 +18527,7 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
-/turf/space/basic,
+/turf/simulated/floor/plating,
 /area/exploration)
 "pfG" = (
 /obj/structure/sign/directions/medical{
@@ -24459,7 +24459,7 @@
 	dir = 1;
 	name = "Exploration Public Lobby"
 	},
-/turf/space/basic,
+/turf/simulated/floor/plating,
 /area/exploration/explorer_prep)
 "ulX" = (
 /obj/structure/bed/chair/sofa/blue/right,
@@ -28192,10 +28192,6 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/victory/hallway/d4porthall)
-"xsC" = (
-/obj/machinery/door/blast/regular,
-/turf/simulated/floor/plating,
-/area/hallway/secondary/docking_hallway)
 "xtc" = (
 /obj/structure/closet,
 /obj/item/clothing/under/suit_jacket/red,
@@ -31826,7 +31822,7 @@ xRj
 xRj
 xRj
 xRj
-dkf
+xRj
 cgo
 dkX
 dkX
@@ -32214,7 +32210,7 @@ xRj
 xRj
 xRj
 xRj
-dkf
+xRj
 cgo
 dkX
 dkX
@@ -33180,7 +33176,7 @@ dkX
 dkX
 dkX
 xRj
-xRj
+cgo
 xRj
 xRj
 xRj
@@ -33373,8 +33369,8 @@ dkX
 dkX
 dkX
 dkX
-xRj
 cgo
+usY
 cgo
 xRj
 xRj
@@ -33567,13 +33563,13 @@ dkX
 dkX
 dkX
 dkX
-xRj
-usY
-dkf
-xRj
-xRj
-xRj
-xRj
+dkX
+dkX
+dkX
+dkX
+dkX
+dkX
+dkX
 dkX
 dkX
 joA
@@ -33608,18 +33604,18 @@ uUK
 uUK
 uUK
 cMJ
-xRj
-xRj
-xRj
-xRj
-xRj
-xRj
-xRj
-xRj
-xRj
-xRj
-xRj
-xRj
+dTn
+dTn
+dTn
+dTn
+dTn
+dTn
+dTn
+dTn
+dTn
+dTn
+dTn
+dTn
 sQl
 sQl
 sQl
@@ -33802,18 +33798,18 @@ uUK
 uUK
 uUK
 cMJ
-xsC
-xsC
-xsC
-xsC
-xsC
-xsC
-xsC
-xsC
-xsC
-xsC
-xsC
-xsC
+tAk
+tAk
+tAk
+tAk
+tAk
+tAk
+tAk
+tAk
+tAk
+tAk
+tAk
+tAk
 sQl
 sQl
 sQl

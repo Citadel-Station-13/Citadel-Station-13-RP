@@ -14633,7 +14633,7 @@
 	icon_state = "1-2"
 	},
 /obj/machinery/door/airlock/maintenance,
-/turf/space/basic,
+/turf/simulated/floor/plating,
 /area/victory/hallway/d2aftmaint)
 "mPD" = (
 /obj/machinery/door/firedoor,
