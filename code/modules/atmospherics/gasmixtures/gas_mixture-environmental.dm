@@ -12,7 +12,7 @@
  * based on connecting tiles. Is just a wrapper to use a lookup table.
  */
 /datum/gas_mixture/proc/environmental_share_simulated(datum/gas_mixture/other, tiles)
-#ifdef GASMIXTURE_ASSERTIONS
+#ifdef CF_ATMOS_DEBUG_ASSERTIONS
 	ASSERT(tiles > 0)
 #endif
 	var/static/list/lookup_table = list(

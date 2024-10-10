@@ -166,8 +166,9 @@
 // ## Atmospherics
 
 //? Gasmixtures
+
 /// Enable general assertions.
-#define GASMIXTURE_ASSERTIONS
+#define CF_ATMOS_DEBUG_ASSERTIONS
 
 
 //? ZAS (Environmental)
