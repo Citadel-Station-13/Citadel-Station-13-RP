@@ -909,6 +909,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 6
 	},
+/obj/structure/window/reinforced/full,
 /turf/simulated/floor/tiled,
 /area/station/stairs_two)
 "aRv" = (
@@ -4151,15 +4152,11 @@
 /turf/simulated/floor/tiled,
 /area/quartermaster/storage)
 "dJA" = (
-/obj/machinery/door/firedoor{
-	dir = 8
+/obj/structure/window/reinforced/full{
+	dir = 1
 	},
-/obj/machinery/door/airlock/maintenance,
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/turf/simulated/floor/plating,
-/area/victory/hallway/d2porthall)
+/turf/simulated/floor/tiled,
+/area/victory/hallway/d2starboardhall)
 "dKb" = (
 /obj/structure/bed/chair/bay/comfy,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -4216,6 +4213,12 @@
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/plating,
 /area/bridge)
+"dLv" = (
+/obj/structure/cable{
+	icon_state = "2-4"
+	},
+/turf/simulated/floor/tiled,
+/area/victory/hallway/d2fwdmaint)
 "dLw" = (
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 10
@@ -4398,6 +4401,11 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/maintenance/starboardsolar)
+"dTT" = (
+/obj/effect/floor_decal/techfloor,
+/obj/structure/window/reinforced/full,
+/turf/simulated/floor/tiled,
+/area/station/stairs_two)
 "dTY" = (
 /turf/simulated/floor/tiled,
 /area/security/nuke_storage)
@@ -7421,7 +7429,7 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
-/turf/simulated/floor/airless/ceiling,
+/turf/simulated/floor/tiled,
 /area/victory/hallway/d2fwdmaint)
 "gtF" = (
 /obj/structure/cable/green{
@@ -7830,6 +7838,9 @@
 "gMj" = (
 /turf/simulated/floor/tiled/dark,
 /area/vacant/vacant_shop)
+"gNf" = (
+/turf/simulated/floor/tiled,
+/area/victory/hallway/d2fwdmaint)
 "gNz" = (
 /obj/structure/table/marble,
 /obj/machinery/door/blast/shutters{
@@ -8255,6 +8266,10 @@
 /obj/effect/floor_decal/industrial/hatch/yellow,
 /turf/simulated/floor/tiled,
 /area/quartermaster/foyer)
+"hcN" = (
+/obj/structure/window/reinforced/full,
+/turf/simulated/floor/tiled,
+/area/victory/hallway/d2porthall)
 "hcP" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
@@ -9230,11 +9245,10 @@
 /turf/simulated/floor/tiled,
 /area/hydroponics)
 "hWi" = (
-/obj/machinery/camera/network/civilian,
-/obj/machinery/fire_alarm/north_mount,
 /obj/effect/floor_decal/techfloor{
 	dir = 1
 	},
+/obj/machinery/fire_alarm/north_mount,
 /turf/simulated/floor/tiled,
 /area/victory/hallway/d2afthall)
 "hWA" = (
@@ -9852,8 +9866,6 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
-/obj/machinery/light,
-/obj/effect/floor_decal/techfloor,
 /turf/simulated/floor/tiled,
 /area/victory/hallway/d2afthall)
 "iBd" = (
@@ -10868,14 +10880,6 @@
 /area/prison/cell_block)
 "jwg" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
-/obj/item/radio/intercom{
-	dir = 1;
-	name = "Station Intercom (General)";
-	pixel_y = 21
-	},
-/obj/effect/floor_decal/techfloor{
-	dir = 1
-	},
 /turf/simulated/floor/tiled,
 /area/victory/hallway/d2afthall)
 "jwJ" = (
@@ -11113,6 +11117,17 @@
 	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/crew_quarters/bar)
+"jLo" = (
+/obj/effect/floor_decal/techfloor{
+	dir = 1
+	},
+/obj/item/radio/intercom{
+	dir = 1;
+	name = "Station Intercom (General)";
+	pixel_y = 21
+	},
+/turf/simulated/floor/tiled,
+/area/victory/hallway/d2afthall)
 "jLQ" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/item/clothing/glasses/sunglasses,
@@ -12371,10 +12386,13 @@
 /area/station/stairs_two)
 "kJG" = (
 /obj/effect/floor_decal/techfloor{
-	dir = 6
+	dir = 1
+	},
+/obj/structure/window/reinforced/full{
+	dir = 1
 	},
 /turf/simulated/floor/tiled,
-/area/victory/hallway/d2fwdhall)
+/area/station/stairs_two)
 "kKf" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
@@ -17763,6 +17781,9 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 5
 	},
+/obj/structure/window/reinforced/full{
+	dir = 1
+	},
 /turf/simulated/floor/tiled,
 /area/station/stairs_two)
 "pIp" = (
@@ -20867,6 +20888,11 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/bridge)
+"ssX" = (
+/obj/effect/floor_decal/techfloor,
+/obj/machinery/light,
+/turf/simulated/floor/tiled,
+/area/victory/hallway/d2afthall)
 "stN" = (
 /obj/machinery/camera/network/civilian{
 	dir = 8
@@ -21075,6 +21101,12 @@
 /obj/machinery/fire_alarm/north_mount,
 /turf/simulated/floor/tiled/old_cargo/gray,
 /area/security/evidence_storage)
+"sCr" = (
+/obj/structure/cable{
+	icon_state = "1-8"
+	},
+/turf/simulated/floor/tiled,
+/area/victory/hallway/d2fwdmaint)
 "sCA" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -22951,6 +22983,24 @@
 /obj/effect/floor_decal/corner_oldtile/white/diagonal,
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/kitchen)
+"ucV" = (
+/obj/effect/floor_decal/techfloor{
+	dir = 1
+	},
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 8
+	},
+/obj/structure/window/reinforced/full{
+	dir = 1
+	},
+/turf/simulated/floor/tiled,
+/area/station/stairs_two)
 "udc" = (
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -23051,8 +23101,12 @@
 /turf/simulated/floor/tiled,
 /area/security/range)
 "uga" = (
-/turf/simulated/wall/prepainted,
-/area/victory/hallway/d2porthall)
+/obj/effect/floor_decal/techfloor{
+	dir = 1
+	},
+/obj/machinery/camera/network/civilian,
+/turf/simulated/floor/tiled,
+/area/victory/hallway/d2afthall)
 "ugm" = (
 /turf/simulated/floor/carpet/bcarpet,
 /area/vacant/vacant_shop)
@@ -38058,7 +38112,7 @@ eIu
 lfY
 lqx
 toA
-xiX
+uga
 xUJ
 jas
 toA
@@ -38252,7 +38306,7 @@ eIu
 vyT
 oJt
 oJt
-xiX
+hWi
 xUJ
 jas
 oJt
@@ -38442,17 +38496,17 @@ eXV
 ikk
 jnl
 iiP
-eIu
+dTT
 gcQ
 gcQ
-oJt
-hWi
+lfY
+wLS
 xUJ
-jas
-oJt
+wLS
+lfY
 gcQ
 gcQ
-ebS
+ucV
 eIu
 nKh
 cDW
@@ -38636,17 +38690,17 @@ hsN
 rtT
 dXb
 iiP
-eIu
+dTT
 gcQ
 gcQ
-oJt
+lfY
 jwg
 poB
 iAM
-oJt
+lfY
 gcQ
 gcQ
-ebS
+ucV
 kJj
 jsJ
 jsJ
@@ -38834,9 +38888,9 @@ eIu
 oJt
 oJt
 oJt
-xiX
+jLo
 wLS
-jas
+ssX
 oJt
 oJt
 oJt
@@ -46206,9 +46260,9 @@ dnx
 fWd
 oJt
 oJt
-uga
-dJA
-uga
+dnx
+uDt
+dnx
 oJt
 oJt
 fWd
@@ -46396,17 +46450,17 @@ pRI
 xod
 gdg
 dnx
-dnx
+hcN
 gcQ
 gcQ
-oJt
-cIi
+lfY
+gNf
 gtg
-cIi
-oJt
+gNf
+lfY
 gcQ
 gcQ
-oUt
+dJA
 lnq
 bLz
 dKY
@@ -46590,17 +46644,17 @@ dkB
 wtL
 gdg
 dnx
-dnx
+hcN
 gcQ
 gcQ
-oJt
-xUZ
-ueB
-cIi
-oJt
+lfY
+dLv
+sCr
+gNf
+lfY
 gcQ
 gcQ
-oUt
+dJA
 lnq
 pEA
 dKY
@@ -46789,8 +46843,8 @@ oJt
 oJt
 oJt
 gtg
-cIi
-cIi
+gNf
+gNf
 oJt
 oJt
 oJt
@@ -59006,17 +59060,17 @@ pdu
 qja
 iAe
 fLt
-eIu
+dTT
 gcQ
 gcQ
-toA
-qja
+lfY
 fLt
-nQt
-toA
+fLt
+fLt
+lfY
 gcQ
 gcQ
-iiP
+kJG
 fLt
 fLt
 nQt
@@ -59203,11 +59257,11 @@ fLt
 aRf
 gcQ
 gcQ
-toA
-tOX
-qzs
-kJG
-toA
+lfY
+fLt
+fLt
+fLt
+lfY
 gcQ
 gcQ
 pHw
