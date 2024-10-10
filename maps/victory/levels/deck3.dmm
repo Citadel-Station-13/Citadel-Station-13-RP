@@ -4543,7 +4543,11 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/patient_wing)
 "ehP" = (
-/obj/structure/closet/wardrobe/chemistry_white,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled/white,
 /area/medical/chemistry)
 "eiO" = (
@@ -9170,6 +9174,7 @@
 /obj/effect/floor_decal/corner/lightorange/border{
 	dir = 4
 	},
+/obj/structure/closet/wardrobe/chemistry_white,
 /turf/simulated/floor/tiled/white,
 /area/medical/chemistry)
 "inF" = (
@@ -21037,6 +21042,10 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/wood,
 /area/crew_quarters/medbreak)
+"sVZ" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/turf/simulated/wall/prepainted,
+/area/victory/hallway/d3aftmaint)
 "sWB" = (
 /obj/machinery/computer/robotics,
 /obj/machinery/camera/network/research,
@@ -41697,7 +41706,7 @@ leM
 woF
 nWM
 ehP
-gwT
+ehP
 vjT
 rST
 jZP
@@ -42076,7 +42085,7 @@ cHC
 cHC
 cHC
 cHC
-oDd
+sVZ
 mTD
 qPf
 qbE
@@ -43229,7 +43238,7 @@ xAO
 aDx
 cZQ
 qhg
-bSu
+gPZ
 oDd
 cHC
 cHC
