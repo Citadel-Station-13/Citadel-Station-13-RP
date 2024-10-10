@@ -1804,6 +1804,18 @@
 	},
 /turf/simulated/floor/tiled,
 /area/victory/hallway/d3fwdhall)
+"bIN" = (
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/door/firedoor,
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/tiled,
+/area/space)
 "bIW" = (
 /obj/structure/sign/department/robo,
 /turf/simulated/wall/prepainted/science,
@@ -8729,6 +8741,10 @@
 	},
 /turf/simulated/floor/tiled,
 /area/medical/virology)
+"hLz" = (
+/obj/structure/stairs/spawner/south,
+/turf/simulated/floor/airless/ceiling,
+/area/maintenance/research)
 "hMz" = (
 /obj/machinery/power/breakerbox{
 	RCon_tag = "DECK 3 MAIN"
@@ -14390,6 +14406,12 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden,
 /turf/simulated/floor/plating,
 /area/victory/hallway/d3fwdmaint)
+"nah" = (
+/obj/structure/railing{
+	dir = 8
+	},
+/turf/simulated/floor/airless/ceiling,
+/area/maintenance/research)
 "nbe" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -15972,6 +15994,14 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/virology)
+"ozS" = (
+/obj/machinery/door/firedoor,
+/obj/machinery/door/airlock/multi_tile/glass{
+	name = "Gateway Prep"
+	},
+/obj/map_helper/access_helper/airlock/station/exploration/department,
+/turf/simulated/floor/tiled,
+/area/space)
 "oAm" = (
 /obj/structure/closet/coffin,
 /obj/random/maintenance/research,
@@ -18721,6 +18751,12 @@
 /obj/effect/floor_decal/corner/beige/border,
 /turf/simulated/floor/tiled/white,
 /area/medical/psych_ward)
+"qIm" = (
+/obj/structure/railing{
+	dir = 4
+	},
+/turf/simulated/floor/airless/ceiling,
+/area/maintenance/research)
 "qIy" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
@@ -39806,8 +39842,8 @@ qBd
 lmG
 uPt
 wUs
-wUs
-wUs
+qIm
+qIm
 vgs
 vgs
 wUs
@@ -40001,8 +40037,8 @@ qBd
 uPt
 wUs
 wUs
-wUs
-wUs
+hLz
+vgs
 vgs
 ieR
 uPt
@@ -40194,8 +40230,8 @@ pRW
 pRW
 uPt
 wUs
-wUs
-wUs
+nah
+nah
 wUs
 wUs
 wUs
@@ -40578,7 +40614,7 @@ mDp
 mDp
 pRW
 pRW
-pRW
+ozS
 pRW
 uPt
 vgs
@@ -40772,7 +40808,7 @@ pRW
 pRW
 pRW
 pRW
-pRW
+bIN
 pRW
 uPt
 wUs

@@ -2978,12 +2978,6 @@
 /obj/machinery/atmospherics/pipe/manifold/visible/yellow,
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/atmos)
-"iE" = (
-/obj/effect/floor_decal/techfloor/orange{
-	dir = 8
-	},
-/turf/simulated/floor/tiled,
-/area/victory/hallway/d1starboardhall)
 "iF" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber{
 	dir = 8
@@ -3607,12 +3601,6 @@
 /obj/effect/floor_decal/steeldecal/steel_decals4,
 /turf/simulated/floor/tiled,
 /area/space)
-"kk" = (
-/obj/effect/floor_decal/techfloor/orange{
-	dir = 4
-	},
-/turf/simulated/floor/tiled,
-/area/victory/hallway/d1starboardhall)
 "km" = (
 /obj/machinery/atmospherics/pipe/simple/visible/cyan{
 	dir = 4
@@ -9835,13 +9823,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/space)
-"Dq" = (
-/obj/machinery/vending/wallmed1{
-	pixel_x = 32
-	},
-/obj/structure/table/bench/wooden,
-/turf/simulated/floor/wood,
-/area/victory/hallway/d1starboardhall)
 "Dr" = (
 /obj/machinery/atmospherics/pipe/simple/visible/cyan{
 	dir = 4
@@ -11316,17 +11297,6 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/space)
-"Hr" = (
-/obj/structure/disposalpipe/segment,
-/obj/structure/catwalk,
-/obj/effect/floor_decal/spline/fancy/wood/cee,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/atmospherics/pipe/simple/hidden/fuel{
-	dir = 1
-	},
-/turf/simulated/floor/plating,
-/area/victory/hallway/d1starboardhall)
 "Hv" = (
 /obj/structure/cable/cyan{
 	icon_state = "4-8"
@@ -14405,10 +14375,6 @@
 /obj/item/radio/off,
 /turf/simulated/floor/tiled/dark,
 /area/space)
-"Qt" = (
-/obj/structure/table/bench/wooden,
-/turf/simulated/floor/wood,
-/area/victory/hallway/d1starboardhall)
 "Qu" = (
 /obj/machinery/atmospherics/pipe/simple/visible/purple{
 	dir = 4
@@ -35143,8 +35109,8 @@ KC
 TP
 TP
 np
-np
-np
+vC
+vC
 vC
 vC
 vC
@@ -35336,10 +35302,10 @@ KC
 KC
 TP
 TP
-TP
-TP
 np
-np
+vC
+vC
+vC
 vC
 vC
 vC
@@ -35530,11 +35496,11 @@ TP
 TP
 TP
 TP
-TP
-TP
-TP
 np
-np
+vC
+vC
+vC
+vC
 vC
 vC
 vC
@@ -35724,16 +35690,16 @@ TP
 TP
 TP
 TP
-TP
-TP
-TP
-TP
 np
 np
-vC
-vC
-vC
-vC
+np
+np
+np
+np
+np
+np
+np
+np
 vC
 vC
 vC
@@ -35923,11 +35889,11 @@ TP
 TP
 PM
 HM
+PM
+KC
+KC
+KC
 np
-np
-vC
-vC
-vC
 vC
 vC
 vC
@@ -36118,11 +36084,11 @@ TP
 TP
 PM
 TP
+KC
+KC
+KC
 np
 np
-np
-vC
-vC
 vC
 vC
 vC
@@ -36314,10 +36280,10 @@ TP
 TP
 TP
 TP
+KC
+KC
 np
 np
-vC
-vC
 vC
 vC
 vC
@@ -36509,11 +36475,11 @@ TP
 TP
 TP
 TP
+KC
+KC
 np
 np
-vC
-vC
-vC
+np
 vC
 vC
 vC
@@ -36704,10 +36670,10 @@ TP
 TP
 TP
 TP
+PM
+HM
 np
 np
-np
-vC
 vC
 vC
 vC
@@ -36898,9 +36864,9 @@ TP
 TP
 TP
 TP
+TP
 PM
-HM
-np
+KC
 np
 vC
 vC
@@ -37092,8 +37058,8 @@ TP
 TP
 TP
 TP
-TP
-PM
+KC
+KC
 TP
 np
 np
@@ -37484,7 +37450,7 @@ TP
 TP
 TP
 TP
-TP
+np
 np
 np
 vC
@@ -37678,8 +37644,8 @@ TP
 TP
 TP
 TP
-TP
-TP
+np
+np
 np
 np
 vC
@@ -37873,8 +37839,8 @@ TP
 TP
 TP
 TP
-TP
-TP
+np
+np
 np
 vC
 vC
@@ -38066,9 +38032,9 @@ TP
 TP
 TP
 TP
-TP
-TP
-TP
+KC
+np
+np
 np
 vC
 vC
@@ -38261,8 +38227,8 @@ TP
 TP
 TP
 TP
-TP
-TP
+PM
+np
 np
 np
 vC
@@ -38454,10 +38420,10 @@ TP
 TP
 TP
 TP
-TP
-TP
-TP
-TP
+PM
+HM
+np
+np
 np
 vC
 vC
@@ -38649,9 +38615,9 @@ TP
 TP
 TP
 TP
-TP
-TP
 PM
+np
+np
 np
 vC
 vC
@@ -38680,7 +38646,7 @@ cR
 RN
 tO
 KH
-KH
+np
 jf
 kZ
 kZ
@@ -38842,10 +38808,10 @@ TP
 TP
 TP
 TP
-TP
-TP
-PM
-HM
+KC
+KC
+KC
+KC
 np
 vC
 vC
@@ -38873,8 +38839,8 @@ uv
 ep
 RN
 Oj
-Qt
-KH
+tt
+lm
 vC
 vC
 lm
@@ -39036,10 +39002,10 @@ TP
 TP
 TP
 TP
-TP
-TP
-TP
-PM
+KC
+KC
+KC
+KC
 np
 vC
 vC
@@ -39067,8 +39033,8 @@ uv
 cR
 RN
 tO
-Dq
-KH
+tt
+lm
 vC
 vC
 lm
@@ -39230,8 +39196,8 @@ TP
 TP
 TP
 TP
-TP
-TP
+KC
+KC
 TP
 TP
 np
@@ -39262,7 +39228,7 @@ ep
 RN
 Oj
 tt
-KH
+lm
 vC
 vC
 lm
@@ -39424,8 +39390,8 @@ TP
 TP
 TP
 TP
-TP
-TP
+KC
+KC
 TP
 TP
 TP
@@ -39455,8 +39421,8 @@ UU
 cR
 RN
 tO
-iE
-KH
+tt
+lm
 vC
 vC
 lm
@@ -39618,8 +39584,8 @@ TP
 TP
 TP
 TP
-TP
-TP
+KC
+KC
 TP
 TP
 TP
@@ -39649,8 +39615,8 @@ kJ
 cR
 RN
 tO
-Hr
-KH
+tt
+lm
 vC
 vC
 lm
@@ -39812,8 +39778,8 @@ TP
 TP
 TP
 TP
-TP
-TP
+KC
+KC
 TP
 TP
 TP
@@ -39843,8 +39809,8 @@ yh
 ep
 RN
 Oj
-kk
-KH
+tt
+lm
 vC
 vC
 lm
@@ -40038,7 +40004,7 @@ Lg
 VV
 BD
 KH
-KH
+lm
 vC
 vC
 np
