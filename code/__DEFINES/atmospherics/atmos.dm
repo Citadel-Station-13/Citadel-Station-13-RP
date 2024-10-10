@@ -1,26 +1,7 @@
 // Math constants.
-/// kPa.
-#define ONE_ATMOSPHERE             101.325
 /// (mol^3 * s^3) / (kg^3 * L).
 #define IDEAL_GAS_ENTROPY_CONSTANT 1164
 
-#define TN60C 213.15 //!  -60.0 degrees celcius
-#define T0C 273.15   //!    0.0 degrees celcius
-#define T20C 293.15  //!   20.0 degrees celcius
-#define T100C 373.15 //!  100.0 degrees celsius
-#define TCMB 2.7     //! -270.3 degrees celcius
-
-// Radiation constants.
-/// W/m^2. Kind of arbitrary. Really this should depend on the sun position much like solars.
-#define AVERAGE_SOLAR_RADIATION      200
-/// kPa at 20 C. This should be higher as gases aren't great conductors until they are dense. Used the critical pressure for air.
-#define RADIATOR_OPTIMUM_PRESSURE    3771
-/// K. The critical point temperature for air.
-#define GAS_CRITICAL_TEMPERATURE     132.65
-/// (3 cm + 100 cm * sin(3deg))/(2*(3+100 cm)). Unitless ratio.
-#define RADIATOR_EXPOSED_SURFACE_AREA_RATIO 0.04
-///m^2, surface area of 1.7m (H) x 0.46m (D) cylinder
-#define HUMAN_EXPOSED_SURFACE_AREA          5.2
 /// Percentage.
 #define O2STANDARD 0.21
 #define N2STANDARD 0.79
@@ -94,15 +75,6 @@
  * stupid shit end
  */
 
-// Must be between 0 and 1. Values closer to 1 equalize temperature faster. Should not exceed 0.4, else strange heat flow occurs.
-#define  FLOOR_HEAT_TRANSFER_COEFFICIENT 0.4
-#define   WALL_HEAT_TRANSFER_COEFFICIENT 0.0
-#define   DOOR_HEAT_TRANSFER_COEFFICIENT 0.0
-/// A hack to partly simulate radiative heat.
-#define  SPACE_HEAT_TRANSFER_COEFFICIENT 0.2
-#define   OPEN_HEAT_TRANSFER_COEFFICIENT 0.4
-/// A hack for now.
-#define WINDOW_HEAT_TRANSFER_COEFFICIENT 0.1
 // Fire damage.
 #define CARBON_LIFEFORM_FIRE_RESISTANCE (T0C + 200)
 #define CARBON_LIFEFORM_FIRE_DAMAGE     4
@@ -129,23 +101,3 @@
 //How many moles of fuel are contained within one solid/liquid fuel volume unit
 ///mol/volume unit
 #define LIQUIDFUEL_AMOUNT_TO_MOL		0.45
-/// Pipe-insulation rate divisor.
-#define NORMPIPERATE             30
-/// Heat-exchange pipe insulation.
-#define HEATPIPERATE             8
-/// Fraction of gas transfered per process.
-#define FLOWFRAC                 0.99
-//Flags for zone sleeping
-#define ZONE_ACTIVE   1
-#define ZONE_SLEEPING 0
-
-// Defines how much of certain gas do the Atmospherics tanks start with. Values are in kpa per tile (assuming 20C)
-/// A lot of N2 is needed to produce air mix, that's why we keep 90MPa of it
-#define ATMOSTANK_NITROGEN      90000
-/// O2 is also important for airmix, but not as much as N2 as it's only 21% of it.
-#define ATMOSTANK_OXYGEN        40000
-/// CO2 and PH are not critically important for station, only for toxins and alternative coolants, no need to store a lot of those.
-#define ATMOSTANK_CO2           25000
-#define ATMOSTANK_PHORON        25000
-/// N2O doesn't have a real useful use, i guess it's on station just to allow refilling of sec's riot control canisters?
-#define ATMOSTANK_NITROUSOXIDE  10000

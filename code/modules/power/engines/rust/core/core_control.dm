@@ -16,7 +16,6 @@
 		if(new_ident && user.Adjacent(src))
 			id_tag = new_ident
 			cur_viewed_device = null
-		return
 
 /obj/machinery/computer/fusion_core_control/attack_ai(mob/user)
 	attack_hand(user)

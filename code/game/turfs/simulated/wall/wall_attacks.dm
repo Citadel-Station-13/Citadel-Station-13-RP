@@ -41,7 +41,6 @@
 
 
 /turf/simulated/wall/proc/update_air()
-	update_thermal(src)
 	queue_zone_update()
 	// old code left below because it's by time we had a hall of shame
 	// "turf in loc" on a turf
@@ -54,13 +53,6 @@
 		update_thermal(turf)
 		SSair.mark_for_update(turf)
 */
-
-/turf/simulated/wall/proc/update_thermal(var/turf/simulated/source)
-	if(istype(source))
-		if(density && opacity)
-			source.thermal_conductivity = WALL_HEAT_TRANSFER_COEFFICIENT
-		else
-			source.thermal_conductivity = initial(source.thermal_conductivity)
 
 /turf/simulated/wall/proc/try_touch(var/mob/user, var/rotting)
 

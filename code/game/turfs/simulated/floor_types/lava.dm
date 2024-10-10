@@ -10,7 +10,7 @@
 	// flags = TURF_HAS_EDGES
 	// todo: THE ABOVE FLAGS DOESNT WORK BECAUSE ITS ON FLOORING!
 	slowdown = 2
-	special_temperature = T0C + 2200
+	temperature_for_heat_exchangers = T0C + 2200
 	turf_flags = TURF_FLAG_ERODING
 
 	ambient_light = LIGHT_COLOR_LAVA

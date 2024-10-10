@@ -132,7 +132,7 @@
 	. = ..()
 	var/turf/simulated/T = src.loc
 	if(istype(T))
-		local_special_temp = T.special_temperature
+		local_special_temp = T.temperature_for_heat_exchangers
 		power_provided = local_special_temp
 		if(local_special_temp > 500)
 			var/icon_temperature = local_special_temp

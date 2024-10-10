@@ -1,5 +1,6 @@
 ///used to transfer power to containment field generators
 #define EMITTER_DAMAGE_POWER_TRANSFER 500
+// todo: emitters shouldn't be part of the singularity / power module
 /obj/machinery/power/emitter
 	name = "emitter"
 	desc = "It is a heavy duty industrial laser."

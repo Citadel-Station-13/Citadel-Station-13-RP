@@ -121,6 +121,7 @@
 	return
 
 /obj/machinery/atmospherics/component/binary/heat_pump/process(delta_time)
+	..()
 	update_icon()
 	if((machine_stat & (NOPOWER|BROKEN)) || !use_power)
 		return
