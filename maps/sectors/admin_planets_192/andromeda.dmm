@@ -1,4 +1,11 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"ab" = (
+/obj/structure/closet/secure_closet/security{
+	starts_with = null;
+	name = "Checkpoint Locker"
+	},
+/turf/simulated/floor/tiled/kafel_full/red,
+/area/space)
 "ad" = (
 /obj/structure/cable{
 	icon_state = "2-4"
@@ -29,6 +36,18 @@
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/steel_dirty/dark,
 /area/space)
+"ao" = (
+/obj/structure/bed/chair/bay/chair/padded/red{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/kafel_full/red,
+/area/space)
+"aw" = (
+/obj/machinery/air_alarm/talon/south_mount,
+/turf/simulated/floor/tiled/techmaint{
+	color = "#A9A9A9"
+	},
+/area/space)
 "aU" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/structure/closet/crate/freezer/rations,
@@ -38,6 +57,20 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/kafel_full/yellow,
+/area/space)
+"bd" = (
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/structure/table/steel_reinforced,
+/obj/item/folder/red{
+	pixel_x = 3
+	},
+/obj/item/folder/red{
+	pixel_y = 3
+	},
+/obj/item/folder/red,
+/turf/simulated/floor/tiled/red,
 /area/space)
 "bv" = (
 /obj/structure/cable{
@@ -122,13 +155,10 @@
 	},
 /turf/simulated/floor/wood,
 /area/space)
-"dm" = (
-/obj/structure/table/reinforced,
-/obj/machinery/door/window/southright{
-	dir = 8;
-	name = "Supply Desk"
-	},
-/turf/simulated/floor/tiled/yellow,
+"dH" = (
+/obj/structure/transit_tube/high_velocity,
+/obj/structure/plasticflaps,
+/turf/simulated/floor/tiled/kafel_full/yellow,
 /area/space)
 "dL" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
@@ -149,14 +179,6 @@
 /obj/structure/cable,
 /turf/simulated/floor/tiled/yellow,
 /area/space)
-"dX" = (
-/obj/machinery/camera/network/talon{
-	name = "andromeda";
-	network = list("AndromedaHaven");
-	dir = 1
-	},
-/turf/simulated/floor/tiled/kafel_full/yellow,
-/area/space)
 "el" = (
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -172,6 +194,37 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/yellow,
+/area/space)
+"es" = (
+/obj/structure/table/steel,
+/obj/machinery/button/remote/blast_door{
+	name = "Outer Checkpoint Blastdoors";
+	id = "checkpoint2";
+	pixel_x = -5
+	},
+/obj/machinery/button/remote/blast_door{
+	name = "Inner Checkpoint Blastdoors";
+	id = "checkpoint1";
+	pixel_x = 5
+	},
+/obj/machinery/power/apc/high/west_mount,
+/turf/simulated/floor/tiled/kafel_full/red,
+/area/space)
+"eu" = (
+/obj/machinery/door/airlock/security{
+	req_one_access = null;
+	name = "Checkpoint Access"
+	},
+/obj/map_helper/access_helper/airlock/station/security/department,
+/turf/simulated/floor/reinforced,
+/area/space)
+"ew" = (
+/obj/machinery/light/spot{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techmaint{
+	color = "#A9A9A9"
+	},
 /area/space)
 "ex" = (
 /obj/machinery/computer/arcade{
@@ -226,13 +279,6 @@
 	color = "#A9A9A9"
 	},
 /area/space)
-"fG" = (
-/obj/structure/extinguisher_cabinet{
-	dir = 4;
-	pixel_x = -30
-	},
-/turf/simulated/floor/tiled/yellow,
-/area/space)
 "fH" = (
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -249,15 +295,6 @@
 "fT" = (
 /obj/effect/floor_decal/carpet/blue{
 	dir = 1
-	},
-/turf/simulated/floor/carpet/bcarpet,
-/area/space)
-"ga" = (
-/obj/structure/table/marble,
-/obj/machinery/camera/network/talon{
-	name = "andromeda";
-	network = list("AndromedaHaven");
-	dir = 4
 	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/space)
@@ -291,6 +328,12 @@
 	icon_state = "1-8"
 	},
 /turf/simulated/floor/tiled/yellow,
+/area/space)
+"gI" = (
+/obj/structure/table/rack/shelf/steel,
+/turf/simulated/floor/tiled/dark{
+	color = "#A9A9A9"
+	},
 /area/space)
 "gK" = (
 /obj/machinery/light/flamp{
@@ -336,6 +379,12 @@
 	},
 /turf/simulated/floor/tiled/kafel_full/yellow,
 /area/space)
+"hq" = (
+/obj/effect/floor_decal/carpet{
+	dir = 1
+	},
+/turf/simulated/floor/carpet/patterened,
+/area/space)
 "hy" = (
 /obj/structure/transit_tube/station{
 	automatic_launch_time = 40
@@ -349,6 +398,12 @@
 /turf/simulated/floor/tiled/dark{
 	color = "#A9A9A9"
 	},
+/area/space)
+"hR" = (
+/obj/machinery/door/airlock/security{
+	name = "Security South Hallway"
+	},
+/turf/simulated/floor/tiled/red,
 /area/space)
 "hY" = (
 /obj/structure/cable{
@@ -396,6 +451,10 @@
 	},
 /turf/simulated/floor/tiled/kafel_full/yellow,
 /area/space)
+"iE" = (
+/obj/structure/closet/secure_closet/security,
+/turf/simulated/floor/tiled/kafel_full/red,
+/area/space)
 "iH" = (
 /obj/machinery/light/flamp{
 	layer = 4;
@@ -441,12 +500,49 @@
 	},
 /turf/simulated/floor/carpet/lythios43c,
 /area/space)
+"jS" = (
+/obj/machinery/door/airlock/security{
+	req_one_access = null;
+	name = "Checkpoint Access"
+	},
+/obj/machinery/door/blast/regular{
+	id = "checkpoint1";
+	name = "Inner Checkpoint Blastdoor"
+	},
+/obj/machinery/door/firedoor/glass,
+/turf/simulated/floor/reinforced,
+/area/space)
+"kh" = (
+/obj/machinery/door/airlock/multi_tile{
+	color = "#A9A9A9";
+	name = "Central Access Airlock"
+	},
+/obj/machinery/door/firedoor/glass,
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/tiled/techmaint{
+	color = "#A9A9A9"
+	},
+/area/space)
 "ku" = (
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/old_tile/purple,
+/area/space)
+"kH" = (
+/obj/structure/table/steel,
+/obj/machinery/recharger{
+	pixel_x = 5;
+	pixel_y = 3
+	},
+/obj/machinery/recharger{
+	pixel_x = -5;
+	pixel_y = 3
+	},
+/turf/simulated/floor/tiled/kafel_full/red,
 /area/space)
 "kN" = (
 /obj/structure/cable{
@@ -472,6 +568,14 @@
 	dir = 8
 	},
 /turf/simulated/floor/carpet/bcarpet,
+/area/space)
+"mh" = (
+/obj/structure/extinguisher_cabinet{
+	dir = 4;
+	pixel_x = -30
+	},
+/obj/effect/floor_decal/industrial/outline/yellow,
+/turf/simulated/floor/tiled/yellow,
 /area/space)
 "mi" = (
 /turf/simulated/wall/r_wall/prepainted/cargo{
@@ -504,15 +608,6 @@
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/techfloor,
 /area/space)
-"ms" = (
-/obj/machinery/door/firedoor/glass{
-	dir = 4;
-	req_one_access = list(18,47)
-	},
-/obj/machinery/power/apc/high/south_mount,
-/obj/structure/cable,
-/turf/simulated/floor/tiled/kafel_full/yellow,
-/area/space)
 "mO" = (
 /obj/machinery/door/firedoor/glass{
 	dir = 4
@@ -521,6 +616,23 @@
 /area/space)
 "mQ" = (
 /turf/simulated/wall/r_wall/prepainted/cargo,
+/area/space)
+"mV" = (
+/obj/machinery/door/window/brigdoor/northright{
+	name = "security reception";
+	req_one_access = list(1);
+	dir = 2
+	},
+/turf/simulated/floor/tiled/red,
+/area/space)
+"nk" = (
+/obj/machinery/camera/network/talon{
+	name = "andromeda";
+	network = list("AndromedaHaven");
+	dir = 1
+	},
+/obj/machinery/air_alarm/talon/south_mount,
+/turf/simulated/floor/reinforced,
 /area/space)
 "nt" = (
 /obj/structure/cable{
@@ -572,6 +684,12 @@
 /obj/random/meat/no_sapient,
 /turf/simulated/floor/tiled/kafel_full/yellow,
 /area/space)
+"od" = (
+/obj/effect/floor_decal/carpet{
+	dir = 8
+	},
+/turf/simulated/floor/carpet/patterened,
+/area/space)
 "oe" = (
 /obj/structure/transit_tube/high_velocity,
 /turf/simulated/wall/r_wall/prepainted/cargo{
@@ -582,6 +700,12 @@
 "op" = (
 /obj/machinery/vending/coffee,
 /turf/simulated/floor/tiled/yellow,
+/area/space)
+"ot" = (
+/obj/effect/floor_decal/carpet{
+	dir = 4
+	},
+/turf/simulated/floor/carpet/patterened,
 /area/space)
 "pl" = (
 /turf/simulated/floor/wood,
@@ -597,6 +721,12 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/yellow,
+/area/space)
+"qe" = (
+/obj/structure/bed/chair/bay/chair/padded/red{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/red,
 /area/space)
 "qq" = (
 /obj/machinery/camera/network/talon{
@@ -626,6 +756,33 @@
 	},
 /turf/simulated/floor/tiled/yellow,
 /area/space)
+"rd" = (
+/obj/machinery/camera/network/talon{
+	name = "andromeda";
+	network = list("AndromedaHaven");
+	dir = 4
+	},
+/turf/simulated/floor/tiled/yellow,
+/area/space)
+"re" = (
+/obj/effect/floor_decal/industrial/outline/yellow,
+/turf/simulated/floor/tiled/yellow,
+/area/space)
+"rm" = (
+/obj/machinery/door/airlock/security{
+	name = "Security Locker Room"
+	},
+/turf/simulated/wall/r_wall/prepainted/security{
+	integrity_flags = 1;
+	integrity_enabled = 0
+	},
+/area/space)
+"rp" = (
+/obj/structure/table/rack/shelf/steel,
+/turf/simulated/floor/tiled/monodark{
+	color = "#A9A9A9"
+	},
+/area/space)
 "rJ" = (
 /obj/structure/table/marble,
 /turf/simulated/floor/carpet/bcarpet,
@@ -635,12 +792,21 @@
 /obj/structure/closet/crate/plastic,
 /turf/simulated/floor/tiled/kafel_full/yellow,
 /area/space)
+"sc" = (
+/obj/machinery/air_alarm/talon/east_mount,
+/turf/simulated/floor/tiled/techmaint{
+	color = "#A9A9A9"
+	},
+/area/space)
 "sd" = (
 /obj/machinery/power/apc/high/north_mount,
 /obj/structure/cable{
 	icon_state = "0-4"
 	},
 /turf/simulated/floor/tiled/yellow,
+/area/space)
+"si" = (
+/turf/simulated/floor/tiled/red,
 /area/space)
 "sy" = (
 /obj/effect/floor_decal/carpet/blue{
@@ -650,7 +816,17 @@
 /obj/effect/floor_decal/carpet/blue{
 	dir = 6
 	},
+/obj/machinery/camera/network/talon{
+	name = "andromeda";
+	network = list("AndromedaHaven");
+	dir = 4
+	},
 /turf/simulated/floor/carpet/bcarpet,
+/area/space)
+"sZ" = (
+/obj/structure/table/steel_reinforced,
+/obj/machinery/computer/secure_data,
+/turf/simulated/floor/tiled/red,
 /area/space)
 "tq" = (
 /obj/structure/cable{
@@ -706,17 +882,6 @@
 	},
 /turf/simulated/floor/tiled/kafel_full/gray,
 /area/space)
-"up" = (
-/obj/machinery/door/airlock/mining{
-	name = "Supply Hallway";
-	req_one_access = null
-	},
-/obj/machinery/door/firedoor/glass{
-	dir = 4;
-	req_one_access = list(18,47)
-	},
-/turf/simulated/floor/tiled/kafel_full/yellow,
-/area/space)
 "uv" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
 /turf/simulated/floor/tiled/kafel_full/yellow,
@@ -770,6 +935,15 @@
 	color = "#A9A9A9"
 	},
 /area/space)
+"wJ" = (
+/obj/machinery/camera/network/talon{
+	name = "andromeda";
+	network = list("AndromedaHaven");
+	dir = 2
+	},
+/obj/machinery/air_alarm/talon/north_mount,
+/turf/simulated/floor/reinforced,
+/area/space)
 "wK" = (
 /obj/structure/cable{
 	icon_state = "2-8"
@@ -778,6 +952,114 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/yellow,
+/area/space)
+"xh" = (
+/obj/machinery/light/spot{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techmaint{
+	color = "#A9A9A9"
+	},
+/area/space)
+"xq" = (
+/obj/machinery/door/airlock/security{
+	name = "Security North Hallway"
+	},
+/turf/simulated/floor/tiled/red,
+/area/space)
+"xB" = (
+/obj/structure/table/rack/shelf/steel,
+/obj/item/clothing/accessory/armor/armorplate/stab{
+	pixel_x = -4;
+	pixel_y = -3
+	},
+/obj/item/clothing/accessory/armor/armorplate/stab{
+	pixel_x = -4;
+	pixel_y = -3
+	},
+/obj/item/clothing/accessory/armor/armorplate/stab{
+	pixel_x = -4;
+	pixel_y = -3
+	},
+/obj/item/clothing/accessory/armor/armorplate/stab{
+	pixel_x = -4;
+	pixel_y = -3
+	},
+/obj/item/clothing/accessory/armor/armorplate/stab{
+	pixel_x = -4;
+	pixel_y = -3
+	},
+/obj/item/clothing/accessory/armor/armorplate{
+	pixel_x = -4;
+	pixel_y = 8
+	},
+/obj/item/clothing/accessory/armor/armorplate{
+	pixel_x = -4;
+	pixel_y = 8
+	},
+/obj/item/clothing/accessory/armor/armorplate{
+	pixel_x = -4;
+	pixel_y = 8
+	},
+/obj/item/clothing/accessory/armor/armorplate{
+	pixel_x = -4;
+	pixel_y = 8
+	},
+/obj/item/clothing/accessory/armor/armorplate{
+	pixel_x = -4;
+	pixel_y = 8
+	},
+/obj/item/clothing/accessory/armor/armorplate/stab{
+	pixel_x = 5;
+	pixel_y = -3
+	},
+/obj/item/clothing/accessory/armor/armorplate/stab{
+	pixel_x = 5;
+	pixel_y = -3
+	},
+/obj/item/clothing/accessory/armor/armorplate/stab{
+	pixel_x = 5;
+	pixel_y = -3
+	},
+/obj/item/clothing/accessory/armor/armorplate/stab{
+	pixel_x = 5;
+	pixel_y = -3
+	},
+/obj/item/clothing/accessory/armor/armorplate/stab{
+	pixel_x = 5;
+	pixel_y = -3
+	},
+/obj/item/clothing/accessory/armor/armorplate{
+	pixel_x = 5;
+	pixel_y = 8
+	},
+/obj/item/clothing/accessory/armor/armorplate{
+	pixel_x = 5;
+	pixel_y = 8
+	},
+/obj/item/clothing/accessory/armor/armorplate{
+	pixel_x = 5;
+	pixel_y = 8
+	},
+/obj/item/clothing/accessory/armor/armorplate{
+	pixel_x = 5;
+	pixel_y = 8
+	},
+/obj/item/clothing/accessory/armor/armorplate{
+	pixel_x = 5;
+	pixel_y = 8
+	},
+/turf/simulated/floor/tiled/monodark{
+	color = "#A9A9A9"
+	},
+/area/space)
+"xK" = (
+/obj/machinery/light/spot{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techmaint{
+	color = "#A9A9A9"
+	},
 /area/space)
 "xN" = (
 /obj/structure/cable{
@@ -788,6 +1070,14 @@
 	pixel_x = 32
 	},
 /turf/simulated/floor/tiled/yellow,
+/area/space)
+"xT" = (
+/obj/structure/table/steel,
+/obj/item/storage/firstaid/regular,
+/obj/item/storage/firstaid/adv{
+	pixel_y = 4
+	},
+/turf/simulated/floor/tiled/kafel_full/red,
 /area/space)
 "ym" = (
 /obj/machinery/door/airlock/multi_tile{
@@ -811,12 +1101,31 @@
 	color = "#A9A9A9"
 	},
 /area/space)
+"yD" = (
+/obj/machinery/light/spot,
+/turf/simulated/floor/reinforced,
+/area/space)
 "yM" = (
 /obj/machinery/door/firedoor/glass{
 	dir = 4;
 	req_one_access = list(18,47)
 	},
 /turf/simulated/floor/tiled/kafel_full/gray,
+/area/space)
+"yN" = (
+/obj/machinery/door/airlock/mining{
+	name = "Supply Transit System";
+	req_one_access = null
+	},
+/obj/map_helper/access_helper/airlock/station/supply/cargo_bay,
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/machinery/door/firedoor/glass{
+	dir = 4;
+	req_one_access = list(18,47)
+	},
+/turf/simulated/floor/tiled/kafel_full/yellow,
 /area/space)
 "za" = (
 /obj/structure/bed/chair,
@@ -827,6 +1136,24 @@
 	dir = 4
 	},
 /turf/simulated/floor/carpet/bcarpet,
+/area/space)
+"zv" = (
+/obj/machinery/camera/network/talon{
+	name = "andromeda";
+	network = list("AndromedaHaven");
+	dir = 2
+	},
+/turf/simulated/floor/reinforced,
+/area/space)
+"zz" = (
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/machinery/door/firedoor/glass{
+	dir = 4;
+	req_one_access = list(18,47)
+	},
+/turf/simulated/floor/tiled/kafel_full/yellow,
 /area/space)
 "zC" = (
 /obj/structure/cable{
@@ -840,6 +1167,9 @@
 	pixel_x = 30
 	},
 /turf/simulated/floor/wood,
+/area/space)
+"zZ" = (
+/turf/simulated/floor/carpet/patterened,
 /area/space)
 "Ac" = (
 /obj/machinery/air_alarm/talon/south_mount,
@@ -855,6 +1185,18 @@
 /obj/machinery/door/window/southright{
 	dir = 8;
 	name = "Transit System Access"
+	},
+/turf/simulated/floor/tiled/kafel_full/yellow,
+/area/space)
+"Ao" = (
+/obj/structure/table/reinforced,
+/obj/item/paper{
+	name = "Supply Transit System guide!";
+	info = "The transit system is hazardous! Do not enter the tube or you'll probably die. If you want to request something, input your order on the terminal to the south and then automated systems will fulfill your order. WITHIN REASON."
+	},
+/obj/machinery/door/firedoor/glass{
+	dir = 4;
+	req_one_access = list(18,47)
 	},
 /turf/simulated/floor/tiled/kafel_full/yellow,
 /area/space)
@@ -884,11 +1226,29 @@
 	},
 /turf/simulated/floor/tiled/kafel_full/yellow,
 /area/space)
+"Bd" = (
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/obj/structure/cable{
+	icon_state = "1-4"
+	},
+/turf/simulated/floor/tiled/techmaint{
+	color = "#A9A9A9"
+	},
+/area/space)
 "Bm" = (
 /obj/structure/cable{
 	icon_state = "1-4"
 	},
 /turf/simulated/floor/tiled/kafel_full/gray,
+/area/space)
+"Bs" = (
+/obj/machinery/door/window/brigdoor/northright{
+	name = "security reception";
+	req_one_access = list(1)
+	},
+/turf/simulated/floor/tiled/red,
 /area/space)
 "BB" = (
 /obj/machinery/camera/network/talon{
@@ -941,22 +1301,14 @@
 	color = "#A9A9A9"
 	},
 /area/space)
+"Co" = (
+/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/turf/simulated/floor/tiled/techmaint{
+	color = "#A9A9A9"
+	},
+/area/space)
 "Cr" = (
 /turf/space/basic,
-/area/space)
-"Cv" = (
-/obj/machinery/door/firedoor/glass{
-	dir = 4;
-	req_one_access = list(18,47)
-	},
-/obj/machinery/air_alarm/talon/north_mount,
-/obj/structure/cable{
-	icon_state = "2-8"
-	},
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/turf/simulated/floor/tiled/kafel_full/yellow,
 /area/space)
 "CR" = (
 /obj/structure/transit_tube/high_velocity,
@@ -966,12 +1318,11 @@
 /obj/structure/table/hardwoodtable,
 /turf/simulated/floor/wood,
 /area/space)
-"Dl" = (
-/obj/item/modular_computer/console/preset/civilian{
-	dir = 8;
-	pixel_x = 7
+"Df" = (
+/obj/structure/bed/chair/bay/chair/padded/red{
+	dir = 4
 	},
-/turf/simulated/floor/tiled/kafel_full/yellow,
+/turf/simulated/floor/tiled/kafel_full/red,
 /area/space)
 "Dn" = (
 /obj/structure/extinguisher_cabinet{
@@ -1008,9 +1359,35 @@
 	},
 /turf/simulated/floor/tiled/yellow,
 /area/space)
+"DY" = (
+/obj/structure/table/steel,
+/obj/machinery/button/remote/blast_door{
+	name = "Outer Checkpoint Blastdoors";
+	id = "checkpoint2";
+	pixel_x = 4
+	},
+/obj/machinery/button/remote/blast_door{
+	name = "Inner Checkpoint Blastdoors";
+	id = "checkpoint1";
+	pixel_x = -6
+	},
+/obj/machinery/power/apc/high/east_mount,
+/turf/simulated/floor/tiled/kafel_full/red,
+/area/space)
 "En" = (
 /obj/structure/window/reinforced{
 	dir = 8
+	},
+/turf/simulated/floor/tiled/kafel_full/yellow,
+/area/space)
+"Ep" = (
+/obj/item/modular_computer/console/preset/civilian{
+	dir = 8;
+	pixel_x = 7
+	},
+/obj/machinery/door/firedoor/glass{
+	dir = 4;
+	req_one_access = list(18,47)
 	},
 /turf/simulated/floor/tiled/kafel_full/yellow,
 /area/space)
@@ -1046,6 +1423,13 @@
 	},
 /turf/simulated/floor/tiled/kafel_full/yellow,
 /area/space)
+"Fb" = (
+/obj/structure/closet/secure_closet/security,
+/obj/structure/window/reinforced/tinted{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/kafel_full/red,
+/area/space)
 "Fg" = (
 /obj/effect/floor_decal/carpet/blue,
 /turf/simulated/floor/carpet/bcarpet,
@@ -1062,6 +1446,14 @@
 "FH" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/tiled/kafel_full/yellow,
+/area/space)
+"FM" = (
+/obj/structure/cable{
+	icon_state = "1-8"
+	},
+/turf/simulated/floor/tiled/techmaint{
+	color = "#A9A9A9"
+	},
 /area/space)
 "FV" = (
 /obj/machinery/camera/network/talon{
@@ -1100,6 +1492,16 @@
 "GM" = (
 /turf/simulated/floor/tiled/kafel_full/yellow,
 /area/space)
+"GV" = (
+/obj/effect/floor_decal/carpet,
+/turf/simulated/floor/carpet/patterened,
+/area/space)
+"GY" = (
+/obj/machinery/door/airlock/security{
+	name = "Security Lobby"
+	},
+/turf/simulated/floor/tiled/red,
+/area/space)
 "He" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -1126,6 +1528,16 @@
 /turf/simulated/floor/tiled/dark{
 	color = "#A9A9A9"
 	},
+/area/space)
+"Io" = (
+/obj/structure/table/steel_reinforced,
+/obj/machinery/door/window/brigdoor{
+	dir = 4
+	},
+/obj/machinery/door/firedoor/glass{
+	dir = 4
+	},
+/turf/simulated/floor/reinforced,
 /area/space)
 "Iw" = (
 /obj/structure/table/reinforced,
@@ -1186,6 +1598,43 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/kafel_full/yellow,
+/area/space)
+"Jd" = (
+/obj/machinery/door/window/brigdoor/northright{
+	name = "security reception";
+	req_one_access = list(1);
+	dir = 4
+	},
+/obj/structure/table/steel_reinforced,
+/turf/simulated/floor/tiled/red,
+/area/space)
+"Jt" = (
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/structure/table/steel_reinforced,
+/obj/item/paper_bin{
+	pixel_x = 2;
+	pixel_y = 4
+	},
+/obj/item/pen/red{
+	pixel_x = -2;
+	pixel_y = -2
+	},
+/obj/item/pen,
+/turf/simulated/floor/tiled/red,
+/area/space)
+"JQ" = (
+/obj/effect/floor_decal/carpet{
+	dir = 1
+	},
+/obj/effect/floor_decal/carpet{
+	dir = 4
+	},
+/obj/effect/floor_decal/carpet{
+	dir = 5
+	},
+/turf/simulated/floor/carpet/patterened,
 /area/space)
 "Kb" = (
 /obj/effect/floor_decal/carpet/blue{
@@ -1305,6 +1754,18 @@
 /obj/machinery/air_alarm/talon/west_mount,
 /turf/simulated/floor/tiled/techfloor,
 /area/space)
+"LM" = (
+/obj/structure/table/reinforced,
+/obj/machinery/door/window/southright{
+	dir = 8;
+	name = "Supply Desk"
+	},
+/obj/machinery/door/firedoor/glass{
+	dir = 4;
+	req_one_access = list(18,47)
+	},
+/turf/simulated/floor/tiled/yellow,
+/area/space)
 "LW" = (
 /obj/machinery/camera/network/talon{
 	name = "andromeda";
@@ -1336,6 +1797,9 @@
 	},
 /turf/simulated/floor/tiled/kafel_full/yellow,
 /area/space)
+"Mr" = (
+/turf/simulated/floor/tiled/kafel_full/red,
+/area/space)
 "Ms" = (
 /obj/machinery/light/spot,
 /turf/simulated/floor/tiled/yellow,
@@ -1343,13 +1807,22 @@
 "MF" = (
 /turf/simulated/floor/tiled/old_tile/purple,
 /area/space)
-"MG" = (
-/obj/machinery/camera/network/talon{
-	name = "andromeda";
-	network = list("AndromedaHaven");
+"MK" = (
+/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/turf/simulated/floor/tiled/dark{
+	color = "#A9A9A9"
+	},
+/area/space)
+"MZ" = (
+/obj/structure/table/steel_reinforced,
+/obj/machinery/door/window/brigdoor{
 	dir = 8
 	},
-/turf/simulated/floor/tiled/yellow,
+/obj/machinery/door/firedoor/glass{
+	dir = 4;
+	req_one_access = list(18,47)
+	},
+/turf/simulated/floor/reinforced,
 /area/space)
 "Nb" = (
 /obj/structure/cable{
@@ -1369,16 +1842,6 @@
 	color = "#A9A9A9"
 	},
 /area/space)
-"Nh" = (
-/obj/machinery/door/firedoor/glass{
-	dir = 4;
-	req_one_access = list(18,47)
-	},
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
-/turf/simulated/floor/tiled/yellow,
-/area/space)
 "Nl" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -1388,6 +1851,16 @@
 	},
 /area/space)
 "Np" = (
+/obj/machinery/door/firedoor/glass,
+/turf/simulated/floor/tiled/techmaint{
+	color = "#A9A9A9"
+	},
+/area/space)
+"Nr" = (
+/obj/machinery/door/airlock/multi_tile{
+	color = "#A9A9A9";
+	name = "Central Access Airlock"
+	},
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/techmaint{
 	color = "#A9A9A9"
@@ -1403,27 +1876,46 @@
 /obj/item/storage/firstaid,
 /turf/simulated/floor/wood,
 /area/space)
-"OR" = (
-/obj/structure/cable{
-	icon_state = "4-8"
+"NB" = (
+/obj/structure/table/rack/shelf/steel,
+/obj/item/clothing/head/helmet/combat{
+	pixel_x = -6;
+	pixel_y = -6
 	},
-/obj/machinery/camera/network/talon{
-	name = "andromeda";
-	network = list("AndromedaHaven");
-	dir = 2
+/obj/item/clothing/head/helmet/combat{
+	pixel_x = -6;
+	pixel_y = 5
 	},
-/turf/simulated/floor/tiled/kafel_full/yellow,
+/obj/item/clothing/head/helmet/combat{
+	pixel_x = 5;
+	pixel_y = 5
+	},
+/obj/item/clothing/head/helmet/combat{
+	pixel_x = 5;
+	pixel_y = -6
+	},
+/obj/item/clothing/head/helmet/combat,
+/turf/simulated/floor/tiled/monodark{
+	color = "#A9A9A9"
+	},
 /area/space)
-"Pj" = (
-/obj/machinery/door/airlock/mining{
-	name = "Supply Transit System";
-	req_one_access = null
+"NM" = (
+/obj/machinery/door/airlock/security{
+	name = "Security Equipment Room"
 	},
-/obj/map_helper/access_helper/airlock/station/supply/cargo_bay,
-/obj/structure/cable{
-	icon_state = "4-8"
+/turf/simulated/floor/tiled/dark{
+	color = "#A9A9A9"
 	},
-/turf/simulated/floor/tiled/kafel_full/yellow,
+/area/space)
+"Ok" = (
+/obj/machinery/vending/security{
+	density = 0
+	},
+/turf/simulated/floor/tiled/kafel_full/red,
+/area/space)
+"OY" = (
+/obj/structure/window/reinforced,
+/turf/simulated/floor/tiled/red,
 /area/space)
 "PQ" = (
 /obj/structure/table/hardwoodtable,
@@ -1456,6 +1948,14 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/space)
+"Rd" = (
+/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/machinery/door/firedoor/glass{
+	dir = 4;
+	req_one_access = list(18,47)
+	},
+/turf/simulated/floor/tiled/kafel_full/yellow,
+/area/space)
 "Rk" = (
 /obj/structure/bed/chair/sofa/black/right{
 	dir = 1
@@ -1477,9 +1977,35 @@
 	},
 /turf/simulated/floor/tiled/yellow,
 /area/space)
+"Ro" = (
+/obj/structure/table/steel,
+/obj/item/paper{
+	name = "Contraband List";
+	info = "The following items are considered contraband. Confiscate any of these items you find. List: Weaponry, Explosives, non-medical/recreational drugs, Alcohol. Further additions may be made."
+	},
+/obj/item/pen/blade/red,
+/obj/item/paper_bin{
+	pixel_x = -1;
+	pixel_y = 7
+	},
+/obj/machinery/camera/network/talon{
+	name = "andromeda";
+	network = list("AndromedaHaven");
+	dir = 4
+	},
+/obj/machinery/air_alarm/talon/west_mount,
+/turf/simulated/floor/tiled/kafel_full/red,
+/area/space)
 "RE" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/structure/closet/crate/corporate/nanotrasen,
+/turf/simulated/floor/tiled/kafel_full/yellow,
+/area/space)
+"RL" = (
+/obj/machinery/door/firedoor/glass{
+	dir = 4;
+	req_one_access = list(18,47)
+	},
 /turf/simulated/floor/tiled/kafel_full/yellow,
 /area/space)
 "RR" = (
@@ -1528,6 +2054,44 @@
 /obj/machinery/computer/arcade/orion_trail,
 /turf/simulated/floor/carpet/bcarpet,
 /area/space)
+"SA" = (
+/obj/effect/floor_decal/carpet,
+/obj/effect/floor_decal/carpet{
+	dir = 8
+	},
+/obj/effect/floor_decal/carpet{
+	dir = 10
+	},
+/obj/effect/floor_decal/carpet,
+/obj/effect/floor_decal/carpet{
+	dir = 10
+	},
+/turf/simulated/floor/carpet/patterened,
+/area/space)
+"SM" = (
+/obj/machinery/light/spot{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/kafel_full/red,
+/area/space)
+"SR" = (
+/obj/effect/floor_decal/carpet{
+	dir = 1
+	},
+/obj/effect/floor_decal/carpet{
+	dir = 8
+	},
+/obj/effect/floor_decal/carpet{
+	dir = 9
+	},
+/obj/effect/floor_decal/carpet{
+	dir = 1
+	},
+/obj/effect/floor_decal/carpet{
+	dir = 9
+	},
+/turf/simulated/floor/carpet/patterened,
+/area/space)
 "SS" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/machinery/power/apc/high/north_mount,
@@ -1535,6 +2099,22 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/kafel_full/yellow,
+/area/space)
+"SU" = (
+/obj/machinery/light/spot{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/kafel_full/red,
+/area/space)
+"Td" = (
+/obj/machinery/camera/network/talon{
+	name = "andromeda";
+	network = list("AndromedaHaven");
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techmaint{
+	color = "#A9A9A9"
+	},
 /area/space)
 "Tv" = (
 /obj/structure/closet/secure_closet/cargotech,
@@ -1568,6 +2148,42 @@
 	amount = 15
 	},
 /turf/simulated/floor/tiled/kafel_full/yellow,
+/area/space)
+"TC" = (
+/obj/structure/table/rack/shelf/steel,
+/obj/item/clothing/suit/armor/pcarrier/alt{
+	pixel_x = -5;
+	pixel_y = -7
+	},
+/obj/item/clothing/suit/armor/pcarrier/alt{
+	pixel_x = -5;
+	pixel_y = 6
+	},
+/obj/item/clothing/suit/armor/pcarrier/alt{
+	pixel_x = 5;
+	pixel_y = 6
+	},
+/obj/item/clothing/suit/armor/pcarrier/alt{
+	pixel_x = 5;
+	pixel_y = -7
+	},
+/obj/item/clothing/suit/armor/pcarrier/alt{
+	pixel_x = -5;
+	pixel_y = -7
+	},
+/obj/item/clothing/suit/armor/pcarrier/alt,
+/turf/simulated/floor/tiled/monodark{
+	color = "#A9A9A9"
+	},
+/area/space)
+"TF" = (
+/obj/machinery/door/firedoor/glass,
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/tiled/techmaint{
+	color = "#A9A9A9"
+	},
 /area/space)
 "TZ" = (
 /obj/structure/cable{
@@ -1606,6 +2222,25 @@
 "Us" = (
 /turf/simulated/floor/tiled/kafel_full/gray,
 /area/space)
+"Uw" = (
+/obj/structure/table/steel,
+/obj/item/paper{
+	name = "Contraband List";
+	info = "The following items are considered contraband. Confiscate any of these items you find. List: Weaponry, Explosives, non-medical/recreational drugs, Alcohol. Further additions may be made."
+	},
+/obj/item/pen/blade/red,
+/obj/item/paper_bin{
+	pixel_x = -1;
+	pixel_y = 7
+	},
+/obj/machinery/camera/network/talon{
+	name = "andromeda";
+	network = list("AndromedaHaven");
+	dir = 8
+	},
+/obj/machinery/air_alarm/talon/east_mount,
+/turf/simulated/floor/tiled/kafel_full/red,
+/area/space)
 "UJ" = (
 /obj/machinery/camera/network/talon{
 	name = "andromeda";
@@ -1632,6 +2267,9 @@
 	},
 /turf/simulated/floor/tiled/kafel_full/yellow,
 /area/space)
+"VJ" = (
+/turf/simulated/floor/reinforced,
+/area/space)
 "Wd" = (
 /obj/machinery/door/airlock/multi_tile{
 	color = "#A9A9A9";
@@ -1641,6 +2279,12 @@
 /turf/simulated/floor/tiled/monodark{
 	color = "#A9A9A9"
 	},
+/area/space)
+"WK" = (
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/red,
 /area/space)
 "WZ" = (
 /obj/structure/cable{
@@ -1669,25 +2313,48 @@
 	},
 /turf/simulated/floor/tiled/kafel_full/yellow,
 /area/space)
+"Xg" = (
+/obj/machinery/camera/network/talon{
+	name = "andromeda";
+	network = list("AndromedaHaven");
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techmaint{
+	color = "#A9A9A9"
+	},
+/area/space)
 "Xk" = (
 /obj/machinery/vending/coffee{
 	dir = 8
 	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/space)
-"Xl" = (
-/obj/machinery/door/airlock/mining{
-	name = "Supply Hallway";
-	req_one_access = null
+"Xx" = (
+/obj/machinery/vending/security{
+	density = 0;
+	pixel_y = 22
 	},
-/obj/machinery/door/firedoor/glass{
-	dir = 4;
-	req_one_access = list(18,47)
+/turf/simulated/floor/tiled/dark{
+	color = "#A9A9A9"
 	},
-/obj/structure/cable{
-	icon_state = "4-8"
+/area/space)
+"XL" = (
+/turf/simulated/wall/r_wall/prepainted/security{
+	integrity_flags = 1;
+	integrity_enabled = 0
 	},
-/turf/simulated/floor/tiled/kafel_full/yellow,
+/area/space)
+"Yd" = (
+/obj/machinery/door/airlock/security{
+	req_one_access = null;
+	name = "Checkpoint Access"
+	},
+/obj/machinery/door/blast/regular{
+	id = "checkpoint2";
+	name = "Outer Checkpoint Blastdoor"
+	},
+/obj/machinery/door/firedoor/glass,
+/turf/simulated/floor/reinforced,
 /area/space)
 "Yk" = (
 /obj/machinery/light/flamp{
@@ -1777,19 +2444,21 @@
 	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/space)
+"ZN" = (
+/obj/effect/floor_decal/carpet,
+/obj/effect/floor_decal/carpet{
+	dir = 4
+	},
+/obj/effect/floor_decal/carpet{
+	dir = 6
+	},
+/turf/simulated/floor/carpet/patterened,
+/area/space)
 "ZQ" = (
 /obj/machinery/vending/mre{
 	dir = 8
 	},
 /turf/simulated/floor/carpet/bcarpet,
-/area/space)
-"ZU" = (
-/obj/structure/table/reinforced,
-/obj/item/paper{
-	name = "Supply Transit System guide!";
-	info = "The transit system is hazardous! Do not enter the tube or you'll probably die. If you want to request something, input your order on the terminal to the south and then automated systems will fulfill your order. WITHIN REASON."
-	},
-/turf/simulated/floor/tiled/kafel_full/yellow,
 /area/space)
 
 (1,1,1) = {"
@@ -16288,16 +16957,16 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
+XL
+XL
+XL
+XL
+XL
+XL
+XL
+XL
+XL
+XL
 Cr
 Cr
 Cr
@@ -16319,7 +16988,7 @@ Kf
 Kf
 Kf
 Gh
-ga
+rJ
 Ui
 Kf
 Kf
@@ -16482,16 +17151,16 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
+XL
+si
+si
+XL
+iE
+Fb
+Fb
+Fb
+Fb
+XL
 Cr
 Cr
 Cr
@@ -16676,16 +17345,16 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
+XL
+si
+si
+XL
+Mr
+Mr
+Mr
+Mr
+Mr
+XL
 Cr
 Cr
 Cr
@@ -16865,21 +17534,21 @@ Cr
 Cr
 Cr
 Cr
+XL
+si
+si
+XL
 Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
+XL
+si
+si
+rm
+Mr
+SR
+od
+SA
+Mr
+XL
 Cr
 Cr
 Cr
@@ -17059,21 +17728,21 @@ Cr
 Cr
 Cr
 Cr
+XL
+si
+si
+XL
 Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
+XL
+si
+si
+XL
+Mr
+hq
+zZ
+GV
+kH
+XL
 Cr
 Cr
 Cr
@@ -17253,21 +17922,21 @@ Cr
 Cr
 Cr
 Cr
+XL
+si
+si
+XL
 Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
+XL
+si
+si
+rm
+Mr
+JQ
+ot
+ZN
+xT
+XL
 Cr
 Cr
 Cr
@@ -17447,21 +18116,21 @@ Cr
 Cr
 Cr
 Cr
+XL
+si
+si
+XL
 Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
+XL
+si
+si
+XL
+Mr
+Mr
+Mr
+Mr
+Ok
+XL
 Cr
 Cr
 Cr
@@ -17641,21 +18310,21 @@ Cr
 Cr
 Cr
 Cr
+XL
+si
+si
+XL
 Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
+XL
+si
+si
+XL
+MK
+MK
+NM
+MK
+MK
+XL
 Cr
 Cr
 Cr
@@ -17835,21 +18504,21 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
+XL
+xq
+xq
+XL
+XL
+XL
+hR
+hR
+XL
+KC
+KC
+in
+KC
+KC
+XL
 Cr
 Cr
 Cr
@@ -18029,21 +18698,21 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
+XL
+si
+si
+si
+si
+si
+si
+si
+XL
+KC
+NB
+TC
+xB
+KC
+XL
 Cr
 Cr
 Cr
@@ -18223,21 +18892,21 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
+XL
+si
+si
+si
+si
+si
+si
+si
+XL
+Xx
+in
+in
+in
+KC
+XL
 Cr
 Cr
 Cr
@@ -18417,21 +19086,21 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
+XL
+si
+OY
+sZ
+qe
+si
+WK
+si
+XL
+KC
+rp
+rp
+rp
+KC
+XL
 Cr
 Cr
 Cr
@@ -18447,7 +19116,7 @@ Cr
 Cr
 Cr
 Kf
-Ky
+Kf
 Kf
 Kf
 pl
@@ -18459,7 +19128,7 @@ pl
 Nz
 Kf
 Kf
-Ky
+Kf
 Kf
 Cr
 Cr
@@ -18611,21 +19280,21 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
+XL
+si
+OY
+Jt
+Jd
+bd
+WK
+si
+XL
+KC
+in
+in
+in
+KC
+XL
 Cr
 Cr
 Cr
@@ -18641,8 +19310,8 @@ Cr
 Cr
 Cr
 Kf
-Ky
-Ky
+Kf
+Kf
 Kf
 mO
 ym
@@ -18652,8 +19321,8 @@ Kf
 mO
 tB
 Kf
-Ky
-Ky
+Kf
+Kf
 Kf
 Cr
 Cr
@@ -18805,21 +19474,21 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
+XL
+si
+mV
+si
+si
+si
+Bs
+si
+XL
+gI
+gI
+gI
+gI
+gI
+XL
 Cr
 Cr
 Cr
@@ -18835,8 +19504,8 @@ Cr
 Cr
 Cr
 Kf
-Ky
-Ky
+Kf
+Kf
 RS
 RS
 QO
@@ -18846,8 +19515,8 @@ RS
 RS
 RS
 RS
-Ky
-Ky
+Kf
+Kf
 Kf
 Cr
 Cr
@@ -18999,6 +19668,22 @@ Cr
 Cr
 Cr
 Cr
+XL
+XL
+XL
+si
+si
+si
+XL
+XL
+XL
+XL
+XL
+XL
+XL
+XL
+XL
+XL
 Cr
 Cr
 Cr
@@ -19011,25 +19696,9 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Ky
-Ky
-Ky
+Kf
+Kf
+Kf
 RS
 KC
 KC
@@ -19041,9 +19710,9 @@ KC
 KC
 KC
 RS
-Ky
-Ky
-Ky
+Kf
+Kf
+Kf
 Cr
 Cr
 Cr
@@ -19195,20 +19864,20 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
+XL
+si
+si
+si
+XL
+XL
+XL
+XL
+XL
+XL
+XL
+XL
+XL
+XL
 Cr
 Cr
 Cr
@@ -19222,7 +19891,7 @@ Cr
 Cr
 Ky
 Ky
-Ky
+Kf
 RS
 KC
 in
@@ -19236,7 +19905,7 @@ in
 in
 KC
 RS
-Ky
+Kf
 Ky
 Ky
 Cr
@@ -19389,20 +20058,20 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
+XL
+GY
+XL
+GY
+XL
+XL
+XL
+XL
+Ro
+SM
+ab
+es
+XL
+XL
 Cr
 Cr
 Cr
@@ -19582,30 +20251,30 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
+KC
+KC
+si
+si
+si
+XL
+XL
+XL
+XL
+Mr
+Mr
+Mr
+Mr
+XL
+XL
+XL
+XL
+Ky
+Ky
+Ky
+Ky
+Ky
+Ky
+Ky
 Ky
 Ky
 Ky
@@ -19776,30 +20445,30 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
+in
+in
+in
+in
+KC
+XL
+XL
+XL
+XL
+Mr
+Df
+Mr
+Mr
+XL
+XL
+XL
+XL
+Ky
+Ky
+Ky
+Ky
+Ky
+Ky
+Ky
 Ky
 Ky
 pQ
@@ -19970,32 +20639,32 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Ky
-Ky
+in
+in
+in
+in
+KC
+Nr
+Ql
+VJ
+XL
+eu
+Io
+Io
+KG
+XL
+VJ
+Ql
+Nr
+Ql
+Ql
+Ql
+Ql
+Ql
+Xg
+xh
+Ql
+Nr
 Ql
 Ql
 Vf
@@ -20164,33 +20833,33 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Ky
-Ky
+in
+in
+in
+in
+KC
+Np
+Ql
+VJ
+jS
+VJ
+VJ
+VJ
+VJ
+Yd
+VJ
+Ql
+TF
 gy
+gy
+gy
+gy
+gy
+gy
+gy
+gy
+TF
+Bd
 ID
 Gp
 gy
@@ -20358,33 +21027,33 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
+in
+in
+in
+in
+KC
 Ky
+ew
+nk
+XL
+wJ
+VJ
+VJ
+yD
+XL
+zv
+aw
+XL
+Co
+Co
+Co
+Co
+Co
+Co
+Co
+Co
 Ky
-MF
+eO
 MF
 Vf
 MF
@@ -20552,33 +21221,33 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Ky
-Ky
+in
+in
+in
+in
+KC
+Nr
 Ql
+VJ
+jS
+VJ
+VJ
+VJ
+VJ
+Yd
+VJ
+Ql
+kh
+gy
+gy
+gy
+gy
+gy
+gy
+gy
+gy
+kh
+FM
 MF
 Np
 Ql
@@ -20746,32 +21415,32 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Ky
-Ky
+in
+in
+in
+in
+KC
+Np
+Ql
+VJ
+XL
+eu
+MZ
+MZ
+KG
+XL
+VJ
+Ql
+Np
+Ql
+xK
+Td
+sc
+Ql
+Ql
+Ql
+Ql
+Np
 Ql
 Ql
 Vf
@@ -20940,30 +21609,30 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
+in
+in
+in
+in
+KC
+Ky
+XL
+XL
+XL
+Mr
+ao
+Mr
+Mr
+XL
+XL
+XL
+XL
+Ky
+Ky
+Ky
+Ky
+Ky
+Ky
+Ky
 Ky
 Ky
 pQ
@@ -21134,30 +21803,30 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
+KC
+KC
+KC
+KC
+KC
+Ky
+XL
+XL
+XL
+Mr
+Mr
+Mr
+Mr
+XL
+XL
+XL
+XL
+Ky
+Ky
+Ky
+Ky
+Ky
+Ky
+Ky
 Ky
 Ky
 Ky
@@ -21328,21 +21997,21 @@ Cr
 Cr
 Cr
 Cr
+Ky
+Ky
+Ky
+Ky
+Ky
+Ky
 Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
+XL
+XL
+Uw
+SU
+ab
+DY
+XL
+XL
 Cr
 Cr
 Cr
@@ -21529,14 +22198,14 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
+XL
+XL
+XL
+XL
+XL
+XL
+XL
+XL
 Cr
 Cr
 Cr
@@ -21723,14 +22392,14 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
+XL
+XL
+XL
+XL
+XL
+XL
+XL
+XL
 Cr
 Cr
 Cr
@@ -23098,30 +23767,30 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
 mi
 mi
 mi
 mi
-Xl
-mi
-up
 mi
 mi
 mi
 mi
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
+mi
+mi
+VE
+mQ
+ZD
+mi
+mi
+mi
+mi
+mi
+mi
+mi
+mi
+mi
+mi
+mi
 Cr
 Cr
 Cr
@@ -23292,30 +23961,30 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
 mi
 mi
 mi
-He
-eq
-dX
 mi
 mi
 mi
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
+mi
+mi
+re
+mh
+pV
+rd
+Fx
+re
+re
+mi
+oa
+dL
+aU
+Ty
+Lg
+eP
+mi
+mi
 Cr
 Cr
 Cr
@@ -23486,30 +24155,30 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-KG
-KG
-He
+mi
+mi
+dM
+eq
+Dw
+eR
+mi
+mi
+Fj
 Fx
+pV
+Fx
+Fx
+Fx
+Ms
+mi
+il
+nt
 GM
-KG
-KG
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
+GM
+GM
+Qb
+mi
+mi
 Cr
 Cr
 Cr
@@ -23680,30 +24349,30 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-KG
-KG
-He
+mi
+mi
+op
 Fx
+Fx
+FV
+mi
+mi
+zC
+qJ
+gF
+Fx
+Fx
+Fx
+Fx
+mi
+BV
+ir
+EN
+Ay
+TB
 GM
-KG
-KG
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
+mi
+mi
 Cr
 Cr
 Cr
@@ -23874,30 +24543,30 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-KG
-KG
-He
+mi
+mi
+mi
+sd
 Fx
-GM
-KG
-KG
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
+Ac
+mi
+mi
+ce
+mQ
+uv
+LM
+uv
+mQ
+Lb
+mi
+RL
+zz
+RL
+RL
+RL
+RL
+mi
+mi
 Cr
 Cr
 Cr
@@ -24068,30 +24737,30 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
 mi
 mi
-Cv
-Nh
-ms
+Tv
+pV
+Fx
+Fx
+cd
+mk
+wK
+dP
+Zp
+jJ
+BK
+HP
+Fx
+uv
+GM
+Zh
+qA
+RE
+RE
+Ue
 mi
 mi
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
 Cr
 Cr
 Cr
@@ -24262,30 +24931,30 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-KG
-KG
-He
+mi
+mi
+Iw
+pV
 Fx
+Fx
+IK
+mk
+pV
+Nw
+Nw
+Nw
+Nw
+Nw
+Fx
+uv
 GM
-KG
-KG
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
+He
+GM
+GM
+GM
+GM
+mi
+mi
 Cr
 Cr
 Cr
@@ -24456,30 +25125,30 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-KG
-KG
-He
+mi
+mi
+Tv
+pV
 Fx
-GM
-KG
-KG
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
+Fx
+Fx
+mk
+pV
+Nw
+Nw
+Nw
+Nw
+Nw
+Fx
+uv
+rM
+Mm
+Sp
+ub
+gS
+YA
+mi
+mi
 Cr
 Cr
 Cr
@@ -24650,30 +25319,30 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-KG
-KG
-He
-Fx
+mi
+mi
+Rn
+Xa
+qJ
+qJ
+qJ
+DN
+KY
+el
+jp
+kN
+xN
+wq
+Dy
+hn
+fH
+GK
+IY
 GM
-KG
-KG
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
+GM
+wE
+mi
+mi
 Cr
 Cr
 Cr
@@ -24844,30 +25513,30 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
 mi
 mi
-OR
+Tv
 Ax
-GM
+cm
+PS
+za
 mi
 mi
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
+mi
+mi
+yN
+mi
+mi
+mi
+mi
+mi
+mi
+mi
+mi
+mi
+mi
+mi
+mi
 Cr
 Cr
 Cr
@@ -25038,19 +25707,6 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-mi
-mi
-mi
-VE
-mQ
-ZD
 mi
 mi
 mi
@@ -25060,8 +25716,21 @@ mi
 mi
 mi
 mi
+SS
+Xf
+GK
+UJ
+FH
 mi
-Cr
+mi
+mi
+mi
+mi
+mi
+mi
+mi
+mi
+mi
 Cr
 Cr
 Cr
@@ -25232,29 +25901,29 @@ Cr
 Cr
 Cr
 Cr
+mi
+mi
+mi
+mi
+mi
+mi
+mi
+mi
+mi
+FH
+GM
+GM
+GM
+FH
+mi
+mi
 Cr
-mi
-mi
-mi
-mi
-mi
-mi
-mi
-Fx
-fG
-pV
-Fx
-Fx
-Fx
-Fx
-mi
-oa
-dL
-aU
-Ty
-Lg
-eP
-mi
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
 Cr
 Cr
 Cr
@@ -25427,28 +26096,28 @@ Cr
 Cr
 Cr
 Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
 mi
-dM
-eq
-Dw
-eR
 mi
-mi
-Fj
-Fx
-pV
-Fx
-Fx
-Fx
-Ms
-mi
-il
-nt
+FH
 GM
 GM
 GM
-Qb
+FH
 mi
+mi
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
 Cr
 Cr
 Cr
@@ -25621,28 +26290,28 @@ Cr
 Cr
 Cr
 Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
 mi
-op
-Fx
-Fx
-FV
 mi
-mi
-zC
-qJ
-gF
-Fx
-Fx
-MG
-Fx
-mi
-BV
-ir
-EN
-Ay
-TB
+FH
 GM
+GM
+GM
+FH
 mi
+mi
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
 Cr
 Cr
 Cr
@@ -25815,28 +26484,28 @@ Cr
 Cr
 Cr
 Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
 mi
 mi
-sd
-Fx
-Ac
+Rd
+Ao
+RL
+Ep
+Rd
 mi
 mi
-ce
-mQ
-uv
-dm
-uv
-mQ
-Lb
-mi
-GM
-He
-GM
-GM
-GM
-GM
-mi
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
 Cr
 Cr
 Cr
@@ -26009,28 +26678,28 @@ Cr
 Cr
 Cr
 Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
 mi
-Tv
-pV
-Fx
-Fx
-cd
-mk
-wK
-dP
-Zp
-jJ
-BK
-HP
-Fx
-uv
-GM
-Zh
-qA
-RE
-RE
-Ue
 mi
+gB
+En
+Ah
+En
+gB
+mi
+mi
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
 Cr
 Cr
 Cr
@@ -26203,28 +26872,28 @@ Cr
 Cr
 Cr
 Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
 mi
-Iw
-pV
-Fx
-Fx
-IK
-mk
-pV
-Nw
-Nw
-Nw
-Nw
-Nw
-Fx
-uv
-GM
-He
-GM
-GM
-GM
-GM
 mi
+mi
+mi
+dH
+mi
+mi
+mi
+mi
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
 Cr
 Cr
 Cr
@@ -26397,28 +27066,28 @@ Cr
 Cr
 Cr
 Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
 mi
-Tv
-pV
-Fx
-Fx
-Fx
-mk
-pV
-Nw
-Nw
-Nw
-Nw
-Nw
-Fx
-uv
-rM
-Mm
-Sp
-ub
-gS
-YA
 mi
+mi
+mi
+dH
+mi
+mi
+mi
+mi
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
 Cr
 Cr
 Cr
@@ -26591,28 +27260,28 @@ Cr
 Cr
 Cr
 Cr
-mi
-Rn
-Xa
-qJ
-qJ
-qJ
-DN
-KY
-el
-jp
-kN
-xN
-wq
-Dy
-hn
-fH
-GK
-IY
-GM
-GM
-wE
-mi
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+CR
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
 Cr
 Cr
 Cr
@@ -26785,28 +27454,28 @@ Cr
 Cr
 Cr
 Cr
-mi
-Tv
-Ax
-cm
-PS
-za
-mi
-mi
-mi
-mi
-Pj
-mi
-mi
-mi
-mi
-mi
-mi
-mi
-mi
-mi
-mi
-mi
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+CR
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
 Cr
 Cr
 Cr
@@ -26979,20 +27648,20 @@ Cr
 Cr
 Cr
 Cr
-mi
-mi
-mi
-mi
-mi
-mi
-mi
-mi
-SS
-Xf
-GK
-UJ
-FH
-mi
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+CR
+Cr
+Cr
+Cr
 Cr
 Cr
 Cr
@@ -27180,13 +27849,13 @@ Cr
 Cr
 Cr
 Cr
-mi
-FH
-GM
-GM
-GM
-FH
-mi
+Cr
+Cr
+Cr
+CR
+Cr
+Cr
+Cr
 Cr
 Cr
 Cr
@@ -27374,13 +28043,13 @@ Cr
 Cr
 Cr
 Cr
-mi
-FH
-GM
-GM
-GM
-FH
-mi
+Cr
+Cr
+Cr
+CR
+Cr
+Cr
+Cr
 Cr
 Cr
 Cr
@@ -27568,13 +28237,13 @@ Cr
 Cr
 Cr
 Cr
-mi
-FH
-GM
-GM
-GM
-FH
-mi
+Cr
+Cr
+Cr
+CR
+Cr
+Cr
+Cr
 Cr
 Cr
 Cr
@@ -27762,13 +28431,13 @@ Cr
 Cr
 Cr
 Cr
-mi
-FH
-ZU
-GM
-Dl
-FH
-mi
+Cr
+Cr
+Cr
+CR
+Cr
+Cr
+Cr
 Cr
 Cr
 Cr
@@ -27956,13 +28625,13 @@ Cr
 Cr
 Cr
 Cr
-mi
-gB
-En
-Ah
-En
-gB
-mi
+Cr
+Cr
+Cr
+CR
+Cr
+Cr
+Cr
 Cr
 Cr
 Cr
@@ -28150,13 +28819,13 @@ Cr
 Cr
 Cr
 Cr
-mi
-mi
-mi
-oe
-mi
-mi
-mi
+Cr
+Cr
+Cr
+CR
+Cr
+Cr
+Cr
 Cr
 Cr
 Cr
@@ -35328,1946 +35997,6 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
-Cr
-CR
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-"}
-(174,1,1) = {"
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-CR
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-"}
-(175,1,1) = {"
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-CR
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-"}
-(176,1,1) = {"
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-CR
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-"}
-(177,1,1) = {"
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-CR
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-"}
-(178,1,1) = {"
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-CR
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-"}
-(179,1,1) = {"
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-CR
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-"}
-(180,1,1) = {"
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-CR
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-"}
-(181,1,1) = {"
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-CR
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-"}
-(182,1,1) = {"
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-CR
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-"}
-(183,1,1) = {"
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
 mi
 mi
 mi
@@ -37294,7 +36023,7 @@ Cr
 Cr
 Cr
 "}
-(184,1,1) = {"
+(174,1,1) = {"
 Cr
 Cr
 Cr
@@ -37488,6 +36217,1946 @@ Cr
 Cr
 Cr
 "}
+(175,1,1) = {"
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+mi
+GM
+GM
+GM
+GM
+GM
+mi
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+"}
+(176,1,1) = {"
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+mi
+GM
+GM
+GM
+GM
+GM
+mi
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+"}
+(177,1,1) = {"
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+mi
+GM
+GM
+GM
+GM
+GM
+mi
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+"}
+(178,1,1) = {"
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+mi
+GM
+GM
+GM
+GM
+GM
+mi
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+"}
+(179,1,1) = {"
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+mi
+GM
+GM
+GM
+GM
+GM
+mi
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+"}
+(180,1,1) = {"
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+mi
+mi
+mi
+mi
+mi
+mi
+mi
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+"}
+(181,1,1) = {"
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+"}
+(182,1,1) = {"
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+"}
+(183,1,1) = {"
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+"}
+(184,1,1) = {"
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+"}
 (185,1,1) = {"
 Cr
 Cr
@@ -37656,13 +38325,13 @@ Cr
 Cr
 Cr
 Cr
-mi
-GM
-GM
-GM
-GM
-GM
-mi
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
 Cr
 Cr
 Cr
@@ -37850,13 +38519,13 @@ Cr
 Cr
 Cr
 Cr
-mi
-GM
-GM
-GM
-GM
-GM
-mi
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
 Cr
 Cr
 Cr
@@ -38044,13 +38713,13 @@ Cr
 Cr
 Cr
 Cr
-mi
-GM
-GM
-GM
-GM
-GM
-mi
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
 Cr
 Cr
 Cr
@@ -38238,13 +38907,13 @@ Cr
 Cr
 Cr
 Cr
-mi
-GM
-GM
-GM
-GM
-GM
-mi
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
 Cr
 Cr
 Cr
@@ -38432,13 +39101,13 @@ Cr
 Cr
 Cr
 Cr
-mi
-GM
-GM
-GM
-GM
-GM
-mi
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
 Cr
 Cr
 Cr
@@ -38626,13 +39295,13 @@ Cr
 Cr
 Cr
 Cr
-mi
-mi
-mi
-mi
-mi
-mi
-mi
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
 Cr
 Cr
 Cr
