@@ -371,16 +371,12 @@
 /turf/space,
 /area/space)
 "bb" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
+/obj/machinery/conveyor{
+	dir = 4;
+	id = "courser_battery"
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/turf/simulated/floor/tiled/steel,
+/obj/structure/plasticflaps/mining,
+/turf/simulated/floor/airless/ceiling,
 /area/victory/hallway/d1fwdmaint)
 "bc" = (
 /obj/machinery/camera/network/engineering,
@@ -2349,6 +2345,10 @@
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/storage)
+"gG" = (
+/obj/machinery/disperser/back,
+/turf/simulated/floor/airless/ceiling,
+/area/victory/hallway/d1fwdmaint)
 "gH" = (
 /obj/structure/catwalk,
 /obj/structure/cable{
@@ -2447,7 +2447,10 @@
 /turf/simulated/floor/tiled/steel,
 /area/engineering/engine_eva)
 "gV" = (
-/obj/machinery/light/small,
+/obj/machinery/door/airlock/glass/engineering{
+	name = "Engineering Hallway";
+	req_one_access = null
+	},
 /turf/simulated/floor/plating,
 /area/victory/hallway/d1fwdmaint)
 "gY" = (
@@ -2890,11 +2893,9 @@
 /turf/simulated/floor/tiled/steel,
 /area/victory/hallway/d1starboardhall)
 "in" = (
-/obj/structure/bed/chair{
-	dir = 1
-	},
-/turf/simulated/floor/plating,
-/area/victory/hallway/d1fwdmaint)
+/obj/machinery/door/blast/regular,
+/turf/space,
+/area/space)
 "ip" = (
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -7780,6 +7781,10 @@
 /obj/spawner/window/low_wall/borosillicate/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/engineering/atmos)
+"xo" = (
+/obj/structure/sign/warning/caution,
+/turf/simulated/wall/r_wall/prepainted,
+/area/victory/hallway/d1fwdmaint)
 "xp" = (
 /obj/machinery/camera/network/command{
 	dir = 4
@@ -10307,12 +10312,11 @@
 /turf/simulated/floor/plating,
 /area/engineering/atmos)
 "EH" = (
-/obj/structure/catwalk,
-/obj/machinery/door/airlock/maintenance/common,
-/obj/machinery/door/firedoor{
-	dir = 8
+/obj/machinery/conveyor{
+	dir = 4;
+	id = "courser_battery"
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/airless/ceiling,
 /area/victory/hallway/d1fwdmaint)
 "EI" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -14573,6 +14577,19 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/victory/hallway/d1porthall)
+"QU" = (
+/obj/machinery/door/airlock/glass/engineering{
+	name = "Engineering Hallway";
+	req_one_access = null
+	},
+/turf/simulated/floor/airless/ceiling,
+/area/victory/hallway/d1fwdmaint)
+"QV" = (
+/obj/machinery/disperser/middle{
+	dir = 4
+	},
+/turf/simulated/floor/airless/ceiling,
+/area/victory/hallway/d1fwdmaint)
 "QW" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 9
@@ -16191,9 +16208,10 @@
 	},
 /area/tcommsat/chamber)
 "VI" = (
-/obj/effect/floor_decal/borderfloorblack,
-/obj/effect/floor_decal/corner/lightorange/border,
-/turf/simulated/floor/tiled/steel_ridged,
+/obj/machinery/disperser/front{
+	dir = 4
+	},
+/turf/simulated/floor/airless/ceiling,
 /area/victory/hallway/d1fwdmaint)
 "VJ" = (
 /obj/effect/floor_decal/steeldecal/steel_decals_central1{
@@ -42697,7 +42715,7 @@ TP
 TP
 TP
 TP
-TP
+uw
 np
 vC
 vC
@@ -44827,7 +44845,7 @@ TP
 TP
 TP
 TP
-TP
+KC
 TP
 TP
 PM
@@ -45021,7 +45039,7 @@ TP
 TP
 TP
 TP
-TP
+KC
 TP
 TP
 TP
@@ -45215,7 +45233,7 @@ TP
 TP
 TP
 TP
-TP
+KC
 TP
 TP
 TP
@@ -45409,7 +45427,7 @@ TP
 TP
 TP
 TP
-TP
+KC
 TP
 TP
 TP
@@ -45603,7 +45621,7 @@ TP
 TP
 TP
 TP
-TP
+KC
 TP
 TP
 TP
@@ -45797,7 +45815,7 @@ TP
 TP
 TP
 TP
-TP
+KC
 TP
 TP
 TP
@@ -45824,8 +45842,8 @@ qY
 jL
 le
 np
-vC
-vC
+np
+QU
 np
 TP
 TP
@@ -45991,7 +46009,7 @@ TP
 TP
 TP
 TP
-TP
+KC
 TP
 TP
 TP
@@ -46185,7 +46203,7 @@ TP
 TP
 TP
 TP
-TP
+KC
 TP
 TP
 TP
@@ -46379,7 +46397,7 @@ TP
 TP
 TP
 TP
-TP
+KC
 TP
 TP
 TP
@@ -46387,7 +46405,7 @@ TP
 np
 gm
 iS
-np
+xo
 Zi
 jL
 IH
@@ -46405,7 +46423,7 @@ sX
 Zi
 jL
 IH
-np
+xo
 vC
 vC
 np
@@ -46573,7 +46591,7 @@ TP
 TP
 TP
 TP
-TP
+KC
 TP
 TP
 TP
@@ -46581,7 +46599,7 @@ TP
 Yu
 gm
 iS
-np
+gV
 qY
 jL
 le
@@ -46599,8 +46617,8 @@ sX
 qY
 jL
 le
-np
-vC
+gV
+lm
 vC
 Yu
 TP
@@ -46775,7 +46793,7 @@ TP
 Yu
 gm
 iS
-np
+xo
 Zi
 jL
 IH
@@ -46793,7 +46811,7 @@ sX
 Zi
 jL
 IH
-np
+xo
 vC
 vC
 Yu
@@ -46967,7 +46985,7 @@ TP
 TP
 TP
 Yu
-gm
+EH
 iS
 np
 qY
@@ -46989,7 +47007,7 @@ jL
 le
 np
 vC
-vC
+EH
 Yu
 TP
 TP
@@ -47162,7 +47180,7 @@ TP
 TP
 np
 EH
-jI
+lm
 np
 Zi
 jL
@@ -47182,8 +47200,8 @@ Zi
 jL
 IH
 np
-vC
-vC
+np
+EH
 np
 TP
 TP
@@ -47355,7 +47373,7 @@ TP
 TP
 TP
 Yu
-gm
+EH
 iS
 np
 qY
@@ -47377,7 +47395,7 @@ jL
 IH
 np
 vC
-vC
+EH
 Yu
 TP
 TP
@@ -47549,7 +47567,7 @@ TP
 TP
 TP
 Yu
-gm
+EH
 lm
 np
 Zi
@@ -47571,7 +47589,7 @@ jL
 le
 np
 vC
-vC
+EH
 Yu
 TP
 TP
@@ -47743,7 +47761,7 @@ TP
 TP
 TP
 Yu
-gm
+bb
 lm
 np
 qY
@@ -47765,7 +47783,7 @@ jL
 IH
 np
 vC
-vC
+bb
 Yu
 TP
 TP
@@ -47937,7 +47955,7 @@ TP
 TP
 TP
 np
-gm
+gG
 zQ
 np
 qY
@@ -47959,7 +47977,7 @@ jL
 le
 np
 vC
-vC
+gG
 np
 TP
 TP
@@ -48131,7 +48149,7 @@ TP
 TP
 PM
 np
-gm
+QV
 lm
 np
 Zi
@@ -48153,7 +48171,7 @@ jL
 IH
 np
 vC
-vC
+QV
 np
 PM
 TP
@@ -48325,7 +48343,7 @@ TP
 PM
 HM
 np
-wk
+VI
 gm
 Wi
 qY
@@ -48347,7 +48365,7 @@ jL
 le
 Wi
 vC
-vC
+VI
 np
 HM
 PM
@@ -48519,7 +48537,7 @@ TP
 TP
 PM
 np
-np
+VI
 np
 np
 np
@@ -48536,12 +48554,12 @@ yi
 yi
 yi
 OQ
-qY
-bb
+OQ
+jI
+jI
+np
+np
 VI
-np
-np
-np
 np
 PM
 TP
@@ -48712,8 +48730,8 @@ TP
 TP
 TP
 TP
-TP
-np
+dB
+VI
 np
 np
 yz
@@ -48732,11 +48750,11 @@ XK
 XK
 XK
 jI
-gV
+jI
 np
 np
+VI
 np
-Mz
 TP
 TP
 TP
@@ -48906,8 +48924,8 @@ TP
 TP
 TP
 TP
-TP
-TP
+dB
+in
 np
 np
 Fu
@@ -48926,11 +48944,11 @@ XK
 XK
 XK
 jI
+jI
+np
+np
 in
-np
-np
-TP
-TP
+dB
 TP
 TP
 TP
@@ -49100,9 +49118,9 @@ TP
 TP
 TP
 TP
+dB
 TP
-TP
-TP
+dB
 np
 np
 np
@@ -49122,9 +49140,9 @@ XK
 np
 np
 np
-Mz
+np
 TP
-TP
+dB
 TP
 TP
 TP

@@ -945,7 +945,7 @@
 /area/medical/patient_wing)
 "aOH" = (
 /obj/effect/floor_decal/spline/fancy/wood,
-/obj/structure/bed/psych,
+/obj/structure/closet/secure_closet/psych,
 /turf/simulated/floor/wood,
 /area/medical/psych/psych_1)
 "aPb" = (
@@ -2760,9 +2760,6 @@
 /obj/effect/floor_decal/corner/mauve/border{
 	dir = 4
 	},
-/obj/machinery/light_switch{
-	pixel_x = 25
-	},
 /obj/fiftyspawner/cardboard,
 /turf/simulated/floor/tiled/steel_grid,
 /area/rnd/reception_desk)
@@ -2916,6 +2913,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
+/obj/effect/paint/purplegray,
 /turf/simulated/floor/plating,
 /area/rnd/rdoffice)
 "cHb" = (
@@ -5066,7 +5064,7 @@
 	frequency = 1441;
 	pixel_y = 22
 	},
-/obj/structure/table/woodentable,
+/obj/structure/bed/chair/sofa/teal/right,
 /turf/simulated/floor/wood,
 /area/medical/psych/psych_2)
 "eGv" = (
@@ -5143,7 +5141,7 @@
 /turf/simulated/floor/tiled,
 /area/victory/hallway/d3porthall)
 "eKi" = (
-/obj/structure/bed/chair{
+/obj/structure/bed/chair/modern_chair{
 	dir = 4
 	},
 /obj/landmark/spawnpoint/job/scientist,
@@ -7091,8 +7089,7 @@
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology)
 "gpg" = (
-/obj/machinery/door/firedoor/glass,
-/obj/spawner/window/low_wall/reinforced/full,
+/obj/spawner/window/low_wall/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/assembly/robotics)
 "gpS" = (
@@ -7106,7 +7103,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/steel_grid,
-/area/rnd/reception_desk)
+/area/rnd/hallway)
 "gqb" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 6
@@ -7185,7 +7182,7 @@
 	},
 /obj/item/deskbell,
 /turf/simulated/floor/tiled,
-/area/rnd/reception_desk)
+/area/rnd/hallway)
 "gsQ" = (
 /obj/structure/curtain/open/shower/medical,
 /obj/effect/floor_decal/corner/blue/border{
@@ -7679,6 +7676,7 @@
 /obj/machinery/atmospherics/pipe/simple/visible/yellow,
 /obj/machinery/door/firedoor,
 /obj/spawner/window/low_wall/reinforced/full,
+/obj/effect/paint/purplegray,
 /turf/simulated/floor/plating,
 /area/rnd/anomaly_lab/containment_one)
 "gPZ" = (
@@ -7902,6 +7900,7 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
+/obj/effect/paint/purplegray,
 /turf/simulated/floor/plating,
 /area/rnd/rdoffice)
 "gZZ" = (
@@ -8271,10 +8270,7 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 1
 	},
-/obj/structure/filingcabinet/medical{
-	desc = "A large cabinet with hard copy medical records.";
-	name = "Medical Records"
-	},
+/obj/structure/bed/chair/sofa/teal/right,
 /turf/simulated/floor/wood,
 /area/medical/psych/psych_1)
 "hqx" = (
@@ -8393,6 +8389,7 @@
 	dir = 8
 	},
 /obj/spawner/window/low_wall/reinforced/full,
+/obj/effect/paint/purplegray,
 /turf/simulated/floor/plating,
 /area/rnd/workshop)
 "hxs" = (
@@ -9965,7 +9962,7 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 1
 	},
-/obj/structure/closet/secure_closet/psych,
+/obj/structure/bed/chair/sofa/teal/left,
 /turf/simulated/floor/wood,
 /area/medical/psych/psych_1)
 "iKm" = (
@@ -10155,7 +10152,7 @@
 /turf/simulated/floor/tiled,
 /area/victory/hallway/d3fwdhall)
 "iTl" = (
-/obj/structure/bed/chair{
+/obj/structure/bed/chair/modern_chair{
 	dir = 8
 	},
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
@@ -10170,8 +10167,9 @@
 "iUs" = (
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/mauve/border,
+/obj/structure/bed/chair/office/dark,
 /turf/simulated/floor/tiled/steel_grid,
-/area/rnd/reception_desk)
+/area/victory/hallway/d3starboardhall)
 "iUD" = (
 /obj/structure/closet/secure_closet/RD,
 /obj/item/aicard,
@@ -11056,7 +11054,7 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/patient_b)
 "jNv" = (
-/obj/structure/bed/chair{
+/obj/structure/bed/chair/modern_chair{
 	dir = 4
 	},
 /turf/simulated/floor/carpet/purcarpet,
@@ -12007,6 +12005,7 @@
 "kKY" = (
 /obj/machinery/door/firedoor,
 /obj/spawner/window/low_wall/reinforced/full,
+/obj/effect/paint/purplegray,
 /turf/simulated/floor/plating,
 /area/rnd/anomaly_lab/containment_one)
 "kMg" = (
@@ -12876,13 +12875,13 @@
 /obj/effect/floor_decal/corner/mauve/border{
 	dir = 10
 	},
-/turf/simulated/floor/tiled,
-/area/rnd/research_foyer)
-"lCB" = (
 /obj/machinery/computer/guestpass{
 	dir = 4;
 	pixel_x = -28
 	},
+/turf/simulated/floor/tiled,
+/area/rnd/research_foyer)
+"lCB" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 8
 	},
@@ -12970,8 +12969,8 @@
 /turf/simulated/floor/tiled,
 /area/rnd/hallway)
 "lGI" = (
-/obj/machinery/door/firedoor,
-/obj/spawner/window/low_wall/reinforced/full,
+/obj/effect/paint/purplegray,
+/obj/spawner/window/low_wall/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/rnd/reception_desk)
 "lHu" = (
@@ -13020,6 +13019,10 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/psych_ward)
+"lJB" = (
+/obj/effect/paint/babyblue,
+/turf/space/basic,
+/area/space)
 "lKf" = (
 /obj/effect/floor_decal/borderfloorwhite/corner{
 	dir = 1
@@ -13439,10 +13442,6 @@
 /turf/simulated/floor/plating,
 /area/medical/psych_ward)
 "mgX" = (
-/obj/machinery/air_alarm{
-	dir = 8;
-	pixel_x = 24
-	},
 /obj/effect/floor_decal/borderfloor{
 	dir = 4
 	},
@@ -13870,12 +13869,16 @@
 /obj/effect/floor_decal/corner/mauve/border{
 	dir = 6
 	},
+/obj/machinery/air_alarm{
+	dir = 8;
+	pixel_x = 24
+	},
 /turf/simulated/floor/tiled,
 /area/rnd/research_foyer)
 "mAv" = (
-/obj/structure/sign/department/robo,
-/obj/machinery/disposal,
-/turf/simulated/wall/prepainted/science,
+/obj/effect/paint/purplegray,
+/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/turf/simulated/floor/plating,
 /area/assembly/robotics)
 "mBc" = (
 /obj/structure/cable/green{
@@ -15322,7 +15325,7 @@
 /turf/simulated/floor/tiled,
 /area/victory/hallway/d3fwdhall)
 "nQd" = (
-/obj/structure/bed/chair{
+/obj/structure/bed/chair/modern_chair{
 	dir = 8
 	},
 /obj/landmark/spawnpoint/job/scientist,
@@ -15553,6 +15556,10 @@
 	},
 /turf/simulated/floor/tiled,
 /area/holodeck_control)
+"och" = (
+/obj/effect/paint/purplegray,
+/turf/space/basic,
+/area/space)
 "ocG" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -15945,10 +15952,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/rnd/robotics/morgue)
 "owo" = (
-/obj/machinery/door/firedoor{
-	dir = 8
-	},
-/obj/spawner/window/low_wall/reinforced/full,
+/obj/spawner/window/low_wall/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/rnd/reception_desk)
 "owE" = (
@@ -16206,6 +16210,7 @@
 "oJw" = (
 /obj/machinery/door/firedoor/glass,
 /obj/spawner/window/low_wall/reinforced/full,
+/obj/effect/paint/purplegray,
 /turf/simulated/floor/plating,
 /area/rnd/anomaly_lab/containment_two)
 "oJy" = (
@@ -17031,15 +17036,10 @@
 /area/rnd/hallway)
 "ppx" = (
 /obj/structure/table/woodentable,
-/obj/item/paper_bin{
-	pixel_y = 4
-	},
-/obj/item/pen{
-	pixel_y = 4
-	},
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 9
 	},
+/obj/machinery/computer/med_data/laptop,
 /turf/simulated/floor/wood,
 /area/medical/psych/psych_1)
 "ppE" = (
@@ -17241,6 +17241,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
+/obj/structure/closet/secure_closet/psych,
 /turf/simulated/floor/wood,
 /area/medical/psych/psych_2)
 "pAX" = (
@@ -19101,12 +19102,9 @@
 /turf/simulated/floor/tiled,
 /area/medical/reception)
 "qTB" = (
-/obj/machinery/door/firedoor/glass{
-	dir = 4
-	},
-/obj/spawner/window/low_wall/reinforced/full,
-/turf/simulated/floor/plating,
-/area/rnd/xenobiology/xenoflora)
+/obj/effect/paint/darkred,
+/turf/space/basic,
+/area/space)
 "qUK" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/glass,
@@ -20209,6 +20207,14 @@
 	},
 /turf/simulated/floor/tiled,
 /area/victory/hallway/d3starboardhall)
+"rTV" = (
+/obj/machinery/door/firedoor/glass{
+	dir = 4
+	},
+/obj/effect/paint/purplegray,
+/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/turf/simulated/floor/plating,
+/area/assembly/robotics)
 "rUk" = (
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 1
@@ -20919,15 +20925,11 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/rnd/xenobiology/xenoflora_storage)
 "sBl" = (
-/obj/machinery/station_map{
-	pixel_y = 32
-	},
 /obj/effect/floor_decal/techfloor{
 	dir = 1
 	},
-/obj/machinery/light{
-	dir = 1
-	},
+/obj/machinery/door/airlock/glass,
+/obj/machinery/door/firedoor,
 /turf/simulated/floor/tiled,
 /area/victory/hallway/d3starboardhall)
 "sCe" = (
@@ -21296,11 +21298,11 @@
 /area/rnd/xenobiology)
 "sRp" = (
 /obj/machinery/camera/network/medbay,
-/obj/structure/closet/secure_closet/psych,
 /obj/machinery/light{
 	dir = 1;
 	pixel_y = 20
 	},
+/obj/structure/bed/chair/sofa/teal/left,
 /turf/simulated/floor/wood,
 /area/medical/psych/psych_2)
 "sTc" = (
@@ -21496,6 +21498,10 @@
 /obj/map_helper/access_helper/airlock/station/science/robotics,
 /turf/simulated/floor/tiled/techfloor,
 /area/assembly/robotics/surgery)
+"tbv" = (
+/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/turf/space/basic,
+/area/space)
 "tbM" = (
 /obj/machinery/door/firedoor/glass{
 	dir = 4
@@ -21872,9 +21878,14 @@
 	pixel_y = 22
 	},
 /obj/structure/table/woodentable,
-/obj/machinery/computer/med_data/laptop,
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 1
+	},
+/obj/item/paper_bin{
+	pixel_y = 4
+	},
+/obj/item/pen{
+	pixel_y = 4
 	},
 /turf/simulated/floor/wood,
 /area/medical/psych/psych_1)
@@ -22586,7 +22597,7 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/surgeryprep)
 "ucO" = (
-/obj/structure/bed/chair{
+/obj/structure/bed/chair/modern_chair{
 	dir = 8
 	},
 /turf/simulated/floor/carpet/purcarpet,
@@ -23535,10 +23546,6 @@
 /turf/simulated/floor/tiled,
 /area/victory/hallway/d3fwdhall)
 "uWQ" = (
-/obj/machinery/air_alarm{
-	dir = 8;
-	pixel_x = 24
-	},
 /obj/structure/closet/l3closet/scientist/double,
 /obj/effect/floor_decal/borderfloor{
 	dir = 4
@@ -23558,6 +23565,13 @@
 /obj/structure/loot_pile/maint/boxfort,
 /turf/simulated/floor/plating,
 /area/victory/hallway/d3fwdmaint)
+"uXO" = (
+/obj/effect/floor_decal/techfloor,
+/obj/effect/floor_decal/techfloor/hole,
+/obj/machinery/door/airlock/glass,
+/obj/machinery/door/firedoor,
+/turf/simulated/floor/tiled,
+/area/victory/hallway/d3starboardhall)
 "uXP" = (
 /obj/effect/floor_decal/steeldecal/steel_decals4{
 	dir = 5
@@ -24405,9 +24419,13 @@
 /turf/simulated/floor/tiled/dark,
 /area/assembly/robotics/surgery)
 "vRa" = (
-/obj/machinery/disposal,
-/turf/simulated/wall/prepainted/science,
-/area/assembly/robotics)
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/door/airlock/glass,
+/obj/machinery/door/firedoor,
+/turf/simulated/floor/tiled,
+/area/victory/hallway/d3starboardhall)
 "vRD" = (
 /obj/effect/floor_decal/steeldecal/steel_decals_central1,
 /obj/machinery/holopad,
@@ -24554,6 +24572,13 @@
 	dir = 6
 	},
 /obj/item/hand_labeler,
+/obj/machinery/light_switch{
+	pixel_x = 25
+	},
+/obj/machinery/air_alarm{
+	dir = 8;
+	pixel_x = 24
+	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/rnd/reception_desk)
 "vXJ" = (
@@ -25656,6 +25681,7 @@
 /obj/machinery/atmospherics/pipe/simple/visible/yellow,
 /obj/machinery/door/firedoor/glass,
 /obj/spawner/window/low_wall/reinforced/full,
+/obj/effect/paint/purplegray,
 /turf/simulated/floor/plating,
 /area/rnd/anomaly_lab/containment_two)
 "wZf" = (
@@ -25735,7 +25761,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
-/area/rnd/reception_desk)
+/area/victory/hallway/d3starboardhall)
 "xcx" = (
 /obj/structure/closet/secure_closet/medical2,
 /turf/simulated/floor/tiled/white,
@@ -26521,7 +26547,9 @@
 /turf/simulated/floor/grass,
 /area/medical/psych_ward)
 "xNd" = (
-/obj/structure/bed/psych,
+/obj/structure/filingcabinet/chestdrawer{
+	name = "Medical Forms"
+	},
 /turf/simulated/floor/wood,
 /area/medical/psych/psych_2)
 "xNy" = (
@@ -26812,8 +26840,7 @@
 /obj/machinery/door/firedoor/glass{
 	dir = 4
 	},
-/obj/spawner/window/low_wall/reinforced/full,
-/turf/simulated/floor/plating,
+/turf/simulated/wall/prepainted/science,
 /area/assembly/robotics)
 "ybY" = (
 /obj/structure/cable/green{
@@ -34259,7 +34286,7 @@ qpq
 qpq
 qpq
 mmI
-nvb
+xmL
 uRJ
 vzv
 tQN
@@ -34453,7 +34480,7 @@ rup
 rup
 hDs
 uNL
-xmL
+nvb
 qYr
 nLT
 jVI
@@ -39484,8 +39511,8 @@ gub
 irM
 irM
 xAI
-lGI
-sBl
+owo
+qhl
 xFX
 gPZ
 vDp
@@ -39872,7 +39899,7 @@ iaO
 lKg
 eEO
 kMH
-lGI
+owo
 blx
 vKw
 eaK
@@ -40066,7 +40093,7 @@ irM
 irM
 irM
 fTE
-lGI
+owo
 cZQ
 qhg
 bSu
@@ -40451,8 +40478,8 @@ whu
 whu
 iyL
 whu
-whu
-whu
+lGI
+lGI
 whu
 fsC
 bNH
@@ -40609,8 +40636,8 @@ mDp
 mDp
 mDp
 mDp
-mDp
-mDp
+qTB
+tbv
 mDp
 pRW
 pRW
@@ -40803,7 +40830,7 @@ mDp
 mDp
 mDp
 mDp
-pRW
+och
 pRW
 pRW
 pRW
@@ -40997,7 +41024,7 @@ pRW
 pRW
 pRW
 pRW
-pRW
+lJB
 pRW
 pRW
 pRW
@@ -41224,12 +41251,12 @@ iJX
 mIF
 iRy
 aDx
-ybU
+aDx
 mTQ
 ybU
-ybU
+rTV
 mAv
-vRa
+bIW
 aDx
 bNH
 nBm
@@ -41424,7 +41451,7 @@ arY
 anx
 aIH
 eOr
-aDx
+gpg
 cZQ
 qhg
 gPZ
@@ -45883,8 +45910,8 @@ vez
 vez
 vez
 vez
-qTB
-qTB
+vez
+vez
 vez
 vez
 dKQ
@@ -48214,9 +48241,9 @@ wNs
 sFK
 epc
 uLo
-cZQ
-qhg
-sXb
+sBl
+vRa
+uXO
 oDd
 cHC
 cHC

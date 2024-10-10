@@ -2455,6 +2455,9 @@
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 1
 	},
+/obj/structure/cable/orange{
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/tiled/steel,
 /area/victory/hallway/d2starboardhall)
 "cgO" = (
@@ -2623,6 +2626,9 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/cable/orange{
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/tiled,
 /area/victory/hallway/d2starboardhall)
 "cqi" = (
@@ -2755,7 +2761,7 @@
 /turf/simulated/floor/carpet,
 /area/crew_quarters/heads/hos)
 "czZ" = (
-/obj/structure/cable{
+/obj/structure/cable/orange{
 	icon_state = "1-4"
 	},
 /turf/simulated/floor/tiled/dark,
@@ -3544,6 +3550,9 @@
 /obj/machinery/door/firedoor{
 	dir = 8
 	},
+/obj/structure/cable/orange{
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/tiled/steel,
 /area/victory/hallway/d2starboardhall)
 "dms" = (
@@ -3586,13 +3595,11 @@
 /turf/simulated/floor/tiled/dark,
 /area/security/hallway)
 "dnX" = (
-/obj/effect/floor_decal/industrial/outline/yellow,
-/obj/structure/closet/crate/trashcart,
 /obj/item/instrument/banjo,
-/obj/structure/cable{
+/obj/structure/cable/orange{
 	icon_state = "1-8"
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/tiled/dark,
 /area/maintenance/starboardsolar)
 "dod" = (
 /obj/structure/disposalpipe/trunk,
@@ -4181,13 +4188,12 @@
 /turf/simulated/floor/wood,
 /area/security/breakroom)
 "dKY" = (
-/obj/machinery/atmospherics/portables_connector,
-/obj/structure/cable{
+/obj/effect/floor_decal/techfloor,
+/obj/structure/cable/orange{
 	icon_state = "4-8"
 	},
-/obj/machinery/portable_atmospherics/canister/air,
-/turf/simulated/floor/tiled/dark,
-/area/maintenance/starboardsolar)
+/turf/simulated/floor/tiled,
+/area/victory/hallway/d2starboardhall)
 "dLl" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -4617,6 +4623,10 @@
 /obj/item/cartridge/quartermaster,
 /turf/simulated/floor/wood,
 /area/quartermaster/qm)
+"efp" = (
+/obj/structure/closet/firecloset,
+/turf/simulated/floor/plating,
+/area/maintenance/starboardsolar)
 "efI" = (
 /obj/machinery/power/apc/east_mount,
 /obj/structure/cable/green{
@@ -4745,7 +4755,7 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
 	},
-/obj/structure/cable{
+/obj/structure/cable/orange{
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/wood,
@@ -5230,11 +5240,11 @@
 /turf/space/basic,
 /area/space)
 "eEI" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
 /obj/machinery/atmospherics/portables_connector,
 /obj/machinery/portable_atmospherics/canister/air,
+/obj/structure/cable/orange{
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/tiled/dark,
 /area/maintenance/starboardsolar)
 "eFD" = (
@@ -5686,6 +5696,9 @@
 /obj/effect/floor_decal/techfloor,
 /obj/effect/floor_decal/techfloor{
 	dir = 6
+	},
+/obj/structure/cable/orange{
+	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled,
 /area/victory/hallway/d2afthall)
@@ -6323,6 +6336,9 @@
 	pixel_y = -24
 	},
 /obj/effect/floor_decal/techfloor,
+/obj/structure/cable/orange{
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/tiled/steel,
 /area/victory/hallway/d2starboardhall)
 "fyk" = (
@@ -6646,11 +6662,11 @@
 /turf/simulated/floor/tiled/dark,
 /area/security/hallway)
 "fHQ" = (
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
 /obj/machinery/camera/network/civilian{
 	dir = 8
+	},
+/obj/structure/cable/orange{
+	icon_state = "1-2"
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/recreation_area)
@@ -7368,6 +7384,13 @@
 	},
 /turf/simulated/floor/tiled,
 /area/quartermaster/warehouse)
+"gso" = (
+/obj/effect/floor_decal/techfloor,
+/obj/structure/cable/orange{
+	icon_state = "1-4"
+	},
+/turf/simulated/floor/tiled,
+/area/victory/hallway/d2afthall)
 "gsu" = (
 /obj/structure/closet{
 	name = "Evidence Closet"
@@ -7795,11 +7818,8 @@
 /turf/simulated/floor/tiled/dark,
 /area/space)
 "gLH" = (
-/obj/structure/cable{
-	icon_state = "0-4"
-	},
 /obj/machinery/power/apc/north_mount,
-/obj/structure/cable{
+/obj/structure/cable/orange{
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/dark,
@@ -8806,6 +8826,9 @@
 	pixel_y = -28
 	},
 /obj/effect/floor_decal/techfloor,
+/obj/structure/cable/orange{
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/tiled/steel,
 /area/victory/hallway/d2starboardhall)
 "hwP" = (
@@ -9554,6 +9577,9 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 10
 	},
+/obj/structure/cable/orange{
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/tiled,
 /area/victory/hallway/d2starboardhall)
 "iow" = (
@@ -9646,6 +9672,13 @@
 	},
 /turf/simulated/floor/carpet,
 /area/crew_quarters/heads/hos)
+"irq" = (
+/obj/effect/floor_decal/techfloor,
+/obj/structure/cable/orange{
+	icon_state = "2-8"
+	},
+/turf/simulated/floor/tiled,
+/area/victory/hallway/d2starboardhall)
 "irH" = (
 /obj/machinery/media/jukebox,
 /turf/simulated/floor/wood,
@@ -9735,7 +9768,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 5
 	},
-/obj/structure/cable{
+/obj/structure/cable/orange{
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/dark,
@@ -11274,11 +11307,11 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_9)
 "jSj" = (
-/obj/structure/closet/firecloset,
 /obj/machinery/light/small{
 	dir = 1
 	},
-/turf/simulated/floor/plating,
+/obj/effect/floor_decal/industrial/outline/yellow,
+/turf/simulated/floor/tiled,
 /area/maintenance/starboardsolar)
 "jSK" = (
 /turf/simulated/wall/prepainted/security,
@@ -12255,6 +12288,7 @@
 /area/security/hallway)
 "kGR" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
+/obj/structure/closet/crate/trashcart,
 /turf/simulated/floor/tiled,
 /area/maintenance/starboardsolar)
 "kGZ" = (
@@ -13428,6 +13462,9 @@
 	dir = 1
 	},
 /obj/effect/floor_decal/techfloor,
+/obj/structure/cable/orange{
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/tiled/steel,
 /area/victory/hallway/d2starboardhall)
 "lIO" = (
@@ -13837,7 +13874,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/door/airlock/maintenance,
-/obj/structure/cable{
+/obj/structure/cable/orange{
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled,
@@ -13976,6 +14013,9 @@
 	dir = 1
 	},
 /obj/effect/floor_decal/techfloor,
+/obj/structure/cable/orange{
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/tiled/steel,
 /area/victory/hallway/d2starboardhall)
 "mne" = (
@@ -14326,7 +14366,7 @@
 "mEN" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/structure/cable{
+/obj/structure/cable/orange{
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/dark,
@@ -14443,11 +14483,11 @@
 /turf/simulated/floor/carpet,
 /area/security/detectives_office)
 "mJZ" = (
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
 /obj/machinery/light{
 	dir = 4
+	},
+/obj/structure/cable/orange{
+	icon_state = "1-2"
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/recreation_area)
@@ -16363,6 +16403,9 @@
 	pixel_y = -32
 	},
 /obj/effect/floor_decal/techfloor,
+/obj/structure/cable/orange{
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/tiled/steel,
 /area/victory/hallway/d2starboardhall)
 "osD" = (
@@ -18857,7 +18900,7 @@
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
 	},
-/obj/structure/cable{
+/obj/structure/cable/orange{
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/wood,
@@ -19380,12 +19423,12 @@
 /turf/simulated/floor/wood,
 /area/security/breakroom)
 "rhq" = (
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
 /obj/machinery/door/airlock/engineering{
 	name = "Solars";
 	req_one_access = null
+	},
+/obj/structure/cable/orange{
+	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/dark,
 /area/maintenance/starboardsolar)
@@ -19849,6 +19892,9 @@
 "rwt" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 10
+	},
+/obj/structure/cable/orange{
+	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/steel,
 /area/victory/hallway/d2starboardhall)
@@ -20447,7 +20493,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/obj/structure/cable{
+/obj/structure/cable/orange{
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/wood,
@@ -23366,13 +23412,13 @@
 /turf/simulated/floor/tiled/dark,
 /area/security/armoury)
 "uCB" = (
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
 /obj/machinery/newscaster{
 	pixel_x = 30
 	},
 /obj/machinery/door/firedoor,
+/obj/structure/cable/orange{
+	icon_state = "1-2"
+	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/recreation_area)
 "uCF" = (
@@ -23438,11 +23484,11 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 10
 	},
-/obj/structure/cable{
-	icon_state = "2-4"
-	},
 /obj/machinery/light/small{
 	dir = 1
+	},
+/obj/structure/cable/orange{
+	icon_state = "2-4"
 	},
 /turf/simulated/floor/tiled/dark,
 /area/maintenance/starboardsolar)
@@ -23825,7 +23871,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/space)
 "uWd" = (
-/obj/structure/cable{
+/obj/structure/cable/orange{
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/wood,
@@ -24437,7 +24483,7 @@
 /obj/machinery/power/smes/buildable{
 	RCon_tag = "Solar Farm - SMES 1"
 	},
-/obj/structure/cable{
+/obj/structure/cable/orange{
 	icon_state = "0-8"
 	},
 /turf/simulated/floor/tiled/dark,
@@ -24977,6 +25023,15 @@
 "vWU" = (
 /turf/simulated/wall/r_wall/prepainted/command,
 /area/security/nuke_storage)
+"vXh" = (
+/obj/effect/floor_decal/techfloor{
+	dir = 6
+	},
+/obj/structure/cable/orange{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled,
+/area/victory/hallway/d2starboardhall)
 "vYG" = (
 /obj/machinery/door/firedoor{
 	dir = 1
@@ -25171,6 +25226,9 @@
 "wkw" = (
 /obj/machinery/computer/timeclock/premade/south,
 /obj/effect/floor_decal/techfloor,
+/obj/structure/cable/orange{
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/tiled/steel,
 /area/victory/hallway/d2starboardhall)
 "wlm" = (
@@ -25260,6 +25318,9 @@
 	pixel_y = -24
 	},
 /obj/effect/floor_decal/techfloor,
+/obj/structure/cable/orange{
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/tiled/steel,
 /area/victory/hallway/d2starboardhall)
 "wpx" = (
@@ -25796,6 +25857,9 @@
 "wQg" = (
 /obj/machinery/door/firedoor{
 	dir = 8
+	},
+/obj/structure/cable/orange{
+	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/steel,
 /area/victory/hallway/d2starboardhall)
@@ -39167,7 +39231,7 @@ wLS
 rZj
 lHi
 lqH
-jas
+gso
 wCW
 wCW
 wCW
@@ -39943,7 +40007,7 @@ bfv
 qWi
 bgq
 bLz
-pze
+dKY
 ykQ
 faf
 wKv
@@ -40137,7 +40201,7 @@ bfv
 qWi
 yaJ
 bLz
-pze
+dKY
 ptH
 cuA
 jJZ
@@ -40331,7 +40395,7 @@ bfv
 qWi
 yaJ
 bLz
-pze
+dKY
 ptH
 uxC
 uxC
@@ -40525,7 +40589,7 @@ bfv
 qWi
 rRg
 bLz
-pze
+dKY
 sqj
 bVc
 uxC
@@ -40719,7 +40783,7 @@ bfv
 qWi
 yaJ
 bLz
-pze
+dKY
 sqj
 ehm
 wre
@@ -40913,7 +40977,7 @@ bfv
 qWi
 yaJ
 bLz
-pze
+dKY
 sqj
 sUT
 sUT
@@ -41107,7 +41171,7 @@ bfv
 qWi
 yaJ
 bLz
-pze
+dKY
 sqj
 sUT
 sUT
@@ -41301,7 +41365,7 @@ bfv
 qWi
 qGM
 bLz
-pze
+dKY
 sqj
 sUT
 lJl
@@ -41495,7 +41559,7 @@ bfv
 qWi
 dCa
 bLz
-pze
+dKY
 sqj
 sUT
 sUT
@@ -41689,7 +41753,7 @@ bfv
 qWi
 lgz
 bLz
-pze
+dKY
 ehm
 sqj
 aOY
@@ -41883,7 +41947,7 @@ bfv
 qWi
 bjt
 bLz
-pze
+dKY
 uoF
 oMD
 oMD
@@ -42077,7 +42141,7 @@ bfv
 qWi
 bgq
 bLz
-pze
+dKY
 tfX
 mmr
 mmr
@@ -42271,7 +42335,7 @@ lEa
 kOv
 dIN
 bLz
-pze
+dKY
 pRK
 pRK
 pRK
@@ -42465,7 +42529,7 @@ bfv
 qWi
 bgq
 bLz
-pze
+dKY
 pRK
 ryZ
 uRr
@@ -42659,7 +42723,7 @@ bfv
 qWi
 bgq
 bLz
-pze
+dKY
 mxz
 sYq
 mbx
@@ -43823,7 +43887,7 @@ bfv
 qWi
 rRg
 bLz
-pze
+dKY
 grc
 rzj
 esg
@@ -44211,7 +44275,7 @@ bfv
 oWS
 yaJ
 bLz
-pze
+dKY
 grc
 uHZ
 yaR
@@ -44405,7 +44469,7 @@ bfv
 qWi
 yaJ
 bLz
-pze
+dKY
 grc
 uHZ
 tlt
@@ -44599,7 +44663,7 @@ bfv
 qWi
 qGM
 bLz
-pze
+dKY
 grc
 grc
 lSP
@@ -45375,7 +45439,7 @@ lwm
 lwm
 wfI
 bLz
-pze
+dKY
 mps
 vem
 vem
@@ -45383,7 +45447,7 @@ vem
 vem
 vem
 vem
-kyn
+mps
 vem
 vem
 vem
@@ -45569,7 +45633,7 @@ oJt
 oUt
 lnq
 bLz
-pze
+dKY
 mRe
 vem
 vem
@@ -45763,7 +45827,7 @@ lfY
 oUt
 lnq
 bLz
-pze
+dKY
 mRe
 vem
 vem
@@ -46151,7 +46215,7 @@ fWd
 oUt
 lnq
 bLz
-pze
+dKY
 hou
 rxu
 bXx
@@ -46345,7 +46409,7 @@ gcQ
 oUt
 lnq
 bLz
-pze
+dKY
 hou
 gCI
 bDv
@@ -46539,7 +46603,7 @@ gcQ
 oUt
 lnq
 pEA
-pze
+dKY
 drJ
 ebN
 bDv
@@ -46733,7 +46797,7 @@ oJt
 xtX
 lnq
 bLz
-pze
+dKY
 hou
 dpF
 bDv
@@ -46927,7 +46991,7 @@ gWe
 xtX
 lnq
 bLz
-pze
+dKY
 drJ
 yiB
 bDv
@@ -47121,7 +47185,7 @@ gWe
 xtX
 lnq
 bLz
-pze
+dKY
 hou
 xXC
 xTI
@@ -47315,7 +47379,7 @@ gWe
 oxU
 lnq
 bLz
-pze
+dKY
 hou
 iti
 wqn
@@ -47509,7 +47573,7 @@ eWf
 xtX
 lnq
 oUt
-pze
+dKY
 hou
 iti
 wqn
@@ -47703,7 +47767,7 @@ fQb
 xtX
 lnq
 bLz
-pze
+dKY
 hou
 aMt
 fDp
@@ -47897,7 +47961,7 @@ aCh
 ciG
 lnq
 oUt
-pze
+dKY
 eud
 eud
 eud
@@ -48091,7 +48155,7 @@ xtX
 xtX
 lnq
 bLz
-pze
+dKY
 eud
 dEO
 iwj
@@ -48285,7 +48349,7 @@ oUt
 oUt
 lnq
 oUt
-pze
+dKY
 eud
 bGL
 nhD
@@ -48479,7 +48543,7 @@ oUt
 oUt
 lnq
 oUt
-pze
+dKY
 eud
 uIj
 qWf
@@ -48673,7 +48737,7 @@ dtz
 dtz
 cMp
 dtz
-vtk
+vXh
 eud
 teR
 tEg
@@ -50238,7 +50302,7 @@ vem
 vem
 vem
 rIH
-dKY
+eEI
 paJ
 hBz
 xNR
@@ -50613,7 +50677,7 @@ vem
 mps
 dCa
 bLz
-pze
+dKY
 dFk
 lGL
 pFj
@@ -50807,7 +50871,7 @@ vem
 mps
 lgz
 bLz
-pze
+irq
 uCB
 uWd
 mJZ
@@ -51402,7 +51466,7 @@ xcM
 eAg
 jBy
 hTy
-lJy
+efp
 aAZ
 xUj
 lJy
