@@ -3639,8 +3639,20 @@
 /turf/simulated/floor/water/deep/pool,
 /area/space)
 "dct" = (
-/turf/simulated/floor/tiled/dark,
-/area/victory/hallway/d4fwdhall)
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/obj/structure/cable/green{
+	icon_state = "1-4"
+	},
+/turf/simulated/floor/tiled/steel,
+/area/victory/hallway/d4afthall)
 "ddG" = (
 /obj/structure/table/rack,
 /obj/item/tool/wrench,
@@ -8228,6 +8240,10 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/victory/hallway/d4starboardhall)
+"gIT" = (
+/obj/structure/window/reinforced,
+/turf/simulated/open,
+/area/victory/hallway/d4starboardhall)
 "gIY" = (
 /obj/machinery/air_alarm/alarms_hidden{
 	dir = 4;
@@ -11323,6 +11339,9 @@
 	},
 /obj/effect/floor_decal/corner/darkblue/bordercorner{
 	dir = 1
+	},
+/obj/structure/cable/green{
+	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/steel,
 /area/victory/hallway/d4afthall)
@@ -17225,6 +17244,12 @@
 	},
 /turf/simulated/floor/plating,
 /area/space)
+"nYy" = (
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/turf/simulated/open,
+/area/victory/hallway/d4porthall)
 "nZb" = (
 /turf/simulated/wall/r_wall/prepainted/exploration,
 /area/victory/surfacebase/tram)
@@ -20392,7 +20417,6 @@
 /obj/machinery/door/firedoor{
 	dir = 8
 	},
-/obj/structure/window/reinforced/full,
 /turf/simulated/floor/tiled/steel_ridged,
 /area/victory/hallway/d4porthall)
 "qUr" = (
@@ -21762,6 +21786,9 @@
 /obj/machinery/power/apc/west_mount{
 	cell_type = /obj/item/cell/super
 	},
+/obj/structure/cable/green{
+	icon_state = "0-2"
+	},
 /turf/simulated/floor/tiled/steel,
 /area/victory/hallway/d4afthall)
 "sgr" = (
@@ -22930,7 +22957,6 @@
 /obj/machinery/door/firedoor{
 	dir = 8
 	},
-/obj/structure/window/reinforced/full,
 /turf/simulated/floor/tiled/steel,
 /area/victory/hallway/d4porthall)
 "thX" = (
@@ -23239,9 +23265,6 @@
 	},
 /obj/structure/cable/green{
 	icon_state = "4-8"
-	},
-/obj/structure/window/reinforced/full{
-	dir = 1
 	},
 /obj/machinery/door/firedoor{
 	dir = 8
@@ -24898,9 +24921,6 @@
 /obj/effect/floor_decal/steeldecal/steel_decals10,
 /obj/structure/cable/green{
 	icon_state = "4-8"
-	},
-/obj/structure/window/reinforced/full{
-	dir = 1
 	},
 /obj/machinery/door/firedoor{
 	dir = 8
@@ -26771,6 +26791,18 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/victory/hallway/d4starboardhall)
+"wlW" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/darkblue/border{
+	dir = 8
+	},
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/tiled/steel,
+/area/victory/hallway/d4afthall)
 "wmH" = (
 /obj/effect/floor_decal/borderfloorblack/corner{
 	dir = 4
@@ -39651,9 +39683,9 @@ gUh
 hlO
 cxg
 sgf
-vll
+wlW
 jfk
-pmO
+dct
 lOq
 fIO
 tkX
@@ -47021,7 +47053,7 @@ aFa
 hYO
 aUB
 thT
-eUP
+nYy
 eUP
 eNB
 ngd
@@ -47029,7 +47061,7 @@ wPz
 ngd
 oQJ
 vvR
-vvR
+gIT
 uGL
 aaB
 saW
@@ -47215,7 +47247,7 @@ hOL
 byY
 rvA
 qUh
-eUP
+nYy
 eUP
 lDc
 mnk
@@ -47223,7 +47255,7 @@ vYT
 sZv
 gGW
 vvR
-vvR
+gIT
 tsU
 iuy
 saW
@@ -57692,12 +57724,12 @@ aHu
 jHq
 fbD
 jOq
-uTr
+lUh
+lUh
 tuO
 qyL
 qyL
 tuO
-uTr
 uJk
 ikY
 tvd
@@ -57881,17 +57913,17 @@ xPF
 qJU
 byt
 maa
-maa
+uTr
 uTr
 aUL
 jTR
 cvT
 lUh
-qyL
-kWJ
-kWJ
-qyL
 lUh
+qyL
+kWJ
+kWJ
+qyL
 bdP
 lJv
 qJY
@@ -58081,11 +58113,11 @@ nMe
 bwE
 aEk
 lUh
+lUh
 qyL
 kWJ
 kWJ
 kWJ
-dct
 jlM
 tOJ
 vUa
@@ -58275,11 +58307,11 @@ ojQ
 nxf
 cvT
 lUh
+lUh
 qyL
 kWJ
 kWJ
 kWJ
-dct
 twL
 gWh
 giF
@@ -58469,11 +58501,11 @@ tOv
 gWC
 oTA
 lUh
-qyL
-kWJ
-kWJ
-qyL
 lUh
+qyL
+kWJ
+kWJ
+qyL
 rwP
 mHc
 ePf
@@ -58663,11 +58695,11 @@ ojQ
 dgg
 cvT
 lUh
-tuO
-qyL
-qyL
-tuO
 lUh
+tuO
+qyL
+qyL
+tuO
 aRe
 gWh
 wkc

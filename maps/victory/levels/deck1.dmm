@@ -2350,6 +2350,7 @@
 /area/engineering/storage)
 "gG" = (
 /obj/machinery/disperser/back,
+/obj/structure/plasticflaps/mining,
 /turf/simulated/floor/airless/ceiling,
 /area/victory/hallway/d1fwdmaint)
 "gH" = (
@@ -14610,6 +14611,7 @@
 /obj/machinery/disperser/middle{
 	dir = 4
 	},
+/obj/structure/plasticflaps/mining,
 /turf/simulated/floor/airless/ceiling,
 /area/victory/hallway/d1fwdmaint)
 "QW" = (
@@ -16233,6 +16235,7 @@
 /obj/machinery/disperser/front{
 	dir = 4
 	},
+/obj/structure/plasticflaps/mining,
 /turf/simulated/floor/airless/ceiling,
 /area/victory/hallway/d1fwdmaint)
 "VJ" = (
@@ -46239,7 +46242,7 @@ jL
 le
 np
 vC
-vC
+jI
 Ju
 Mw
 EN
@@ -46433,7 +46436,7 @@ jL
 IH
 np
 vC
-vC
+jI
 Ju
 EN
 BZ
@@ -46627,7 +46630,7 @@ jL
 le
 np
 vC
-vC
+jI
 Ju
 EN
 BZ
@@ -46821,7 +46824,7 @@ jL
 IH
 np
 vC
-vC
+jI
 Ju
 WD
 BZ
@@ -47015,7 +47018,7 @@ jL
 le
 np
 vC
-vC
+jI
 Ju
 EN
 BZ
@@ -47209,7 +47212,7 @@ jL
 IH
 np
 vC
-vC
+jI
 Ju
 Mw
 EN

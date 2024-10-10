@@ -905,13 +905,6 @@
 /obj/spawner/window/reinforced/full,
 /turf/simulated/floor/plating,
 /area/maintenance/substation/security)
-"aRf" = (
-/obj/effect/floor_decal/techfloor{
-	dir = 6
-	},
-/obj/structure/window/reinforced/full,
-/turf/simulated/floor/tiled,
-/area/station/stairs_two)
 "aRv" = (
 /obj/machinery/disposal,
 /turf/simulated/floor/tiled,
@@ -2288,12 +2281,6 @@
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/fitness)
-"bYY" = (
-/obj/effect/floor_decal/techfloor{
-	dir = 9
-	},
-/turf/simulated/floor/tiled,
-/area/victory/hallway/d2fwdhall)
 "bZs" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -4151,12 +4138,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/quartermaster/storage)
-"dJA" = (
-/obj/structure/window/reinforced/full{
-	dir = 1
-	},
-/turf/simulated/floor/tiled,
-/area/victory/hallway/d2starboardhall)
 "dKb" = (
 /obj/structure/bed/chair/bay/comfy,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -4402,9 +4383,10 @@
 /turf/simulated/floor/tiled/dark,
 /area/maintenance/starboardsolar)
 "dTT" = (
-/obj/effect/floor_decal/techfloor,
-/obj/structure/window/reinforced/full,
-/turf/simulated/floor/tiled,
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/turf/simulated/open,
 /area/station/stairs_two)
 "dTY" = (
 /turf/simulated/floor/tiled,
@@ -7723,11 +7705,6 @@
 	},
 /turf/simulated/floor/wood,
 /area/victory/hallway/d2fwdhall)
-"gGg" = (
-/obj/effect/floor_decal/techfloor,
-/obj/effect/floor_decal/techfloor,
-/turf/simulated/floor/tiled,
-/area/station/stairs_two)
 "gHm" = (
 /obj/machinery/door/firedoor{
 	dir = 8
@@ -8266,10 +8243,6 @@
 /obj/effect/floor_decal/industrial/hatch/yellow,
 /turf/simulated/floor/tiled,
 /area/quartermaster/foyer)
-"hcN" = (
-/obj/structure/window/reinforced/full,
-/turf/simulated/floor/tiled,
-/area/victory/hallway/d2porthall)
 "hcP" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
@@ -12385,13 +12358,8 @@
 /turf/simulated/floor/tiled,
 /area/station/stairs_two)
 "kJG" = (
-/obj/effect/floor_decal/techfloor{
-	dir = 1
-	},
-/obj/structure/window/reinforced/full{
-	dir = 1
-	},
-/turf/simulated/floor/tiled,
+/obj/structure/window/reinforced,
+/turf/simulated/open,
 /area/station/stairs_two)
 "kKf" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
@@ -17777,15 +17745,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/security/warden)
-"pHw" = (
-/obj/effect/floor_decal/techfloor{
-	dir = 5
-	},
-/obj/structure/window/reinforced/full{
-	dir = 1
-	},
-/turf/simulated/floor/tiled,
-/area/station/stairs_two)
 "pIp" = (
 /obj/structure/table/woodentable,
 /obj/effect/floor_decal/spline/fancy/wood{
@@ -22983,24 +22942,6 @@
 /obj/effect/floor_decal/corner_oldtile/white/diagonal,
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/kitchen)
-"ucV" = (
-/obj/effect/floor_decal/techfloor{
-	dir = 1
-	},
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 8
-	},
-/obj/structure/window/reinforced/full{
-	dir = 1
-	},
-/turf/simulated/floor/tiled,
-/area/station/stairs_two)
 "udc" = (
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -38496,8 +38437,8 @@ eXV
 ikk
 jnl
 iiP
+eIu
 dTT
-gcQ
 gcQ
 lfY
 wLS
@@ -38505,8 +38446,8 @@ xUJ
 wLS
 lfY
 gcQ
-gcQ
-ucV
+kJG
+ebS
 eIu
 nKh
 cDW
@@ -38690,8 +38631,8 @@ hsN
 rtT
 dXb
 iiP
+eIu
 dTT
-gcQ
 gcQ
 lfY
 jwg
@@ -38699,8 +38640,8 @@ poB
 iAM
 lfY
 gcQ
-gcQ
-ucV
+kJG
+ebS
 kJj
 jsJ
 jsJ
@@ -46450,8 +46391,8 @@ pRI
 xod
 gdg
 dnx
-hcN
-gcQ
+dnx
+dTT
 gcQ
 lfY
 gNf
@@ -46459,8 +46400,8 @@ gtg
 gNf
 lfY
 gcQ
-gcQ
-dJA
+kJG
+oUt
 lnq
 bLz
 dKY
@@ -46644,8 +46585,8 @@ dkB
 wtL
 gdg
 dnx
-hcN
-gcQ
+dnx
+dTT
 gcQ
 lfY
 dLv
@@ -46653,8 +46594,8 @@ sCr
 gNf
 lfY
 gcQ
-gcQ
-dJA
+kJG
+oUt
 lnq
 pEA
 dKY
@@ -55959,11 +55900,11 @@ nQt
 xtX
 xtX
 xtX
-lbF
-gEH
-gEH
-lbF
 dZW
+lbF
+gEH
+gEH
+lbF
 tDj
 elM
 elM
@@ -56153,11 +56094,11 @@ nQt
 hpw
 cIi
 cIi
+dZW
 gEH
 wch
 wch
 gEH
-bYY
 fLt
 fLt
 fLt
@@ -56347,11 +56288,11 @@ nQt
 xtX
 cIi
 cIi
+dZW
 gEH
 wch
 wch
 wch
-qja
 fLt
 fLt
 fLt
@@ -56541,11 +56482,11 @@ nQt
 xtX
 cIi
 cIi
+dZW
 gEH
 wch
 wch
 wch
-qja
 fLt
 fLt
 fLt
@@ -56735,11 +56676,11 @@ nQt
 xtX
 cIi
 cIi
+dZW
 gEH
 wch
 wch
 gEH
-tOX
 fLt
 fLt
 fLt
@@ -56929,11 +56870,11 @@ nQt
 xtX
 xtX
 hpw
-lbF
-gEH
-gEH
-lbF
 dZW
+lbF
+gEH
+gEH
+lbF
 tOX
 qzs
 qzs
@@ -58488,7 +58429,7 @@ nQt
 toA
 ixv
 lfY
-vks
+lfY
 fLt
 fLt
 nQt
@@ -58672,7 +58613,7 @@ jrc
 qja
 iAe
 fLt
-eIu
+lfY
 lfY
 lqx
 toA
@@ -58682,7 +58623,7 @@ nQt
 toA
 ixv
 lfY
-iiP
+lfY
 fLt
 fLt
 nQt
@@ -58866,7 +58807,7 @@ pdu
 qja
 iAe
 fLt
-gGg
+oJt
 vyT
 oJt
 toA
@@ -58876,7 +58817,7 @@ nQt
 toA
 oJt
 vyT
-iiP
+oJt
 fLt
 fLt
 nQt
@@ -59060,7 +59001,7 @@ pdu
 qja
 iAe
 fLt
-dTT
+oJt
 gcQ
 gcQ
 lfY
@@ -59070,7 +59011,7 @@ fLt
 lfY
 gcQ
 gcQ
-kJG
+oJt
 fLt
 fLt
 nQt
@@ -59254,7 +59195,7 @@ pdu
 qja
 fLt
 fLt
-aRf
+oJt
 gcQ
 gcQ
 lfY
@@ -59264,7 +59205,7 @@ fLt
 lfY
 gcQ
 gcQ
-pHw
+oJt
 qzs
 qzs
 fsq

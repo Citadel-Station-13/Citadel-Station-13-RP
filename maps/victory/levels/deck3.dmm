@@ -605,9 +605,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
 	},
-/obj/structure/window/reinforced/full{
-	dir = 1
-	},
 /turf/simulated/floor/tiled,
 /area/victory/hallway/d3porthall)
 "aAw" = (
@@ -3401,9 +3398,6 @@
 /obj/machinery/light/small,
 /turf/simulated/floor/tiled/white,
 /area/holodeck_control)
-"dgf" = (
-/turf/simulated/floor/plating,
-/area/victory/hallway/d3fwdhall)
 "dgC" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -6137,10 +6131,11 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/rnd/xenobiology)
 "fEp" = (
-/obj/effect/floor_decal/techfloor,
-/obj/structure/window/reinforced/full,
-/turf/simulated/floor/tiled,
-/area/victory/hallway/d3starboardhall)
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/turf/simulated/open,
+/area/victory/station/stairs_three)
 "fFV" = (
 /obj/item/radio{
 	pixel_x = 3;
@@ -12072,12 +12067,9 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/resleeving)
 "kTB" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/obj/structure/window/reinforced/full,
-/turf/simulated/floor/tiled,
-/area/victory/hallway/d3starboardhall)
+/obj/structure/window/reinforced,
+/turf/simulated/open,
+/area/victory/station/stairs_three)
 "kUk" = (
 /obj/effect/floor_decal/techfloor,
 /obj/effect/floor_decal/techfloor{
@@ -12384,9 +12376,6 @@
 /obj/effect/floor_decal/steeldecal/steel_decals10,
 /turf/simulated/floor/tiled,
 /area/victory/hallway/d3fwdhall)
-"lgN" = (
-/turf/space/basic,
-/area/victory/station/stairs_three)
 "liz" = (
 /obj/structure/cable/green,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -12427,15 +12416,6 @@
 "lja" = (
 /turf/simulated/floor/tiled/dark,
 /area/rnd/research/testingrange)
-"lju" = (
-/obj/machinery/atmospherics/component/unary/vent_pump/on{
-	dir = 1
-	},
-/obj/effect/floor_decal/techfloor,
-/obj/effect/floor_decal/techfloor/hole,
-/obj/structure/window/reinforced/full,
-/turf/simulated/floor/tiled,
-/area/victory/hallway/d3starboardhall)
 "lkq" = (
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /turf/simulated/floor/reinforced,
@@ -14242,15 +14222,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/medical/psych/psych_2)
-"mVT" = (
-/obj/machinery/door/firedoor{
-	dir = 8
-	},
-/obj/structure/window/reinforced/full{
-	dir = 1
-	},
-/turf/simulated/floor/tiled,
-/area/victory/hallway/d3porthall)
 "mWk" = (
 /obj/machinery/holopad,
 /turf/simulated/floor/tiled/techfloor,
@@ -14655,9 +14626,6 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
-	},
-/obj/structure/window/reinforced/full{
-	dir = 1
 	},
 /turf/simulated/floor/tiled,
 /area/victory/hallway/d3porthall)
@@ -37534,8 +37502,8 @@ rtM
 jVn
 mSd
 fLZ
-kTB
-nzx
+qhg
+fEp
 nzx
 jER
 duU
@@ -37543,7 +37511,7 @@ fBJ
 oDC
 jER
 nzx
-nzx
+kTB
 nqU
 qbE
 pDO
@@ -37728,8 +37696,8 @@ iKN
 hCx
 ttn
 fLZ
-kTB
-nzx
+qhg
+fEp
 nzx
 jER
 kbc
@@ -37737,7 +37705,7 @@ bJZ
 qNL
 jER
 nzx
-nzx
+kTB
 aAu
 jPR
 uor
@@ -45488,8 +45456,8 @@ nkb
 lGn
 tJE
 fKw
+gPZ
 fEp
-nzx
 nzx
 jER
 uwL
@@ -45497,8 +45465,8 @@ jPR
 jPR
 jER
 nzx
-nzx
-mVT
+kTB
+nNg
 jPR
 qPf
 hyb
@@ -45682,8 +45650,8 @@ cij
 dKQ
 mYS
 uvF
-lju
-nzx
+tnb
+fEp
 nzx
 jER
 uwL
@@ -45691,8 +45659,8 @@ jPR
 jPR
 jER
 nzx
-nzx
-mVT
+kTB
+nNg
 jPR
 qPf
 qbE
@@ -46072,14 +46040,14 @@ gSJ
 iym
 vzk
 qIz
-lgN
-lgN
+qIz
+qIz
 cHC
 cHC
 cHC
-lgN
-lgN
-lgN
+qIz
+qIz
+qIz
 nNg
 qPf
 jWy
@@ -46266,14 +46234,14 @@ mkF
 aju
 rAQ
 qIz
-lgN
-lgN
+qIz
+qIz
 qgo
 cHC
 cHC
-lgN
-lgN
-lgN
+qIz
+qIz
+qIz
 nNg
 qPf
 qbE
@@ -46460,14 +46428,14 @@ lMR
 kUk
 vDp
 qIz
-lgN
-lgN
+qIz
+qIz
 qgo
 cHC
 cHC
-lgN
-lgN
-lgN
+qIz
+qIz
+qIz
 gyS
 iez
 hyb
@@ -55385,7 +55353,7 @@ lFV
 cGH
 vrc
 tUb
-dgf
+ifg
 ifg
 ifg
 ifg
@@ -55579,11 +55547,11 @@ snO
 nFw
 puV
 tUb
-bge
-mna
-mna
-bge
 ifg
+bge
+mna
+mna
+bge
 ifg
 xQT
 lyu
@@ -55773,11 +55741,11 @@ cGH
 neh
 mUh
 tUb
-mna
-nPa
-nPa
-mna
 ifg
+mna
+nPa
+nPa
+mna
 sTc
 qhO
 weM
@@ -55967,11 +55935,11 @@ tjt
 nQc
 tUb
 tUb
+ifg
 mna
 nPa
 nPa
 nPa
-nNS
 lFV
 qhO
 cGH
@@ -56161,11 +56129,11 @@ wpi
 ifg
 tUb
 pkD
+ifg
 mna
 nPa
 nPa
 nPa
-nNS
 lFV
 qhO
 xpg
@@ -56355,11 +56323,11 @@ puV
 tUb
 pkD
 pkD
-mna
-nPa
-nPa
-mna
 ifg
+mna
+nPa
+nPa
+mna
 tcX
 kDb
 weM
@@ -56549,11 +56517,11 @@ djk
 tUb
 pkD
 pkD
-bge
-mna
-mna
-bge
 ifg
+bge
+mna
+mna
+bge
 ifg
 vUI
 kDb
@@ -56743,11 +56711,11 @@ kXE
 tUb
 pkD
 pkD
-pkD
-pkD
-pkD
-pkD
-pkD
+tUb
+tUb
+tUb
+tUb
+tUb
 tUb
 ifg
 wjO
