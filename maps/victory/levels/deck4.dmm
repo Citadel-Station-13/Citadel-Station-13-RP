@@ -13253,13 +13253,16 @@
 /turf/simulated/floor/plating,
 /area/maintenance/chapel)
 "leE" = (
-/obj/structure/closet/hydrant{
-	pixel_x = -32
+/obj/effect/floor_decal/borderfloorblack,
+/obj/effect/floor_decal/corner/gold/border,
+/obj/structure/cable/orange{
+	icon_state = "4-8"
 	},
-/obj/item/storage/box/flashshells,
-/obj/item/gun/ballistic/shotgun/flare,
-/turf/simulated/floor/tiled,
-/area/shuttle/excursion/general)
+/obj/machinery/light{
+	pixel_y = -24
+	},
+/turf/simulated/floor/tiled/steel_ridged,
+/area/victory/hallway/d4starboardhall)
 "lft" = (
 /obj/effect/floor_decal/steeldecal/steel_decals9,
 /obj/effect/floor_decal/steeldecal/steel_decals9{
@@ -25552,6 +25555,14 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/victory/hallway/d4starboardhall)
+"wlk" = (
+/obj/structure/closet/hydrant{
+	pixel_x = -32
+	},
+/obj/item/gun/ballistic/shotgun/flare,
+/obj/item/storage/box/flashshells,
+/turf/simulated/floor/tiled,
+/area/shuttle/excursion/cockpit)
 "wlW" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 8
@@ -25922,15 +25933,15 @@
 /turf/simulated/floor/tiled,
 /area/maintenance/tool_storage)
 "wAt" = (
-/obj/machinery/power/port_gen/pacman/mrs{
-	anchored = 1
-	},
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
 /obj/machinery/air_alarm/north_mount,
 /obj/machinery/light{
 	dir = 8
+	},
+/obj/machinery/power/port_gen/pacman/mrs{
+	anchored = 1
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/civilian)
@@ -30988,7 +30999,7 @@ qlw
 bZe
 kIy
 fNq
-gZU
+wlk
 qlw
 joA
 joA
@@ -32150,7 +32161,7 @@ nmq
 qWg
 fjB
 cGG
-leE
+cGG
 saB
 cGG
 fjB
@@ -45553,7 +45564,7 @@ iZC
 iZC
 vEK
 lLu
-kkD
+leE
 mHu
 scN
 rdf

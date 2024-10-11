@@ -8135,6 +8135,7 @@
 /area/crew_quarters/recreation_area_hallway)
 "hhm" = (
 /obj/machinery/door/blast/regular,
+/obj/machinery/atmospheric_field_generator/perma,
 /turf/simulated/floor/plating,
 /area/security/hanger)
 "hhD" = (
@@ -18614,6 +18615,10 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/security/armoury)
+"qSG" = (
+/obj/machinery/atmospheric_field_generator/perma,
+/turf/space/basic,
+/area/space)
 "qSI" = (
 /obj/machinery/light_switch{
 	dir = 4;
@@ -36350,7 +36355,7 @@ wjc
 wjc
 wjc
 wjc
-wjc
+qSG
 wjc
 wjc
 wjc
