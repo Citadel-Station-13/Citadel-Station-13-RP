@@ -4384,6 +4384,9 @@
 /obj/machinery/power/apc/north_mount,
 /turf/simulated/floor/tiled/techfloor,
 /area/crew_quarters/sleep/cryo)
+"dYQ" = (
+/turf/simulated/floor/airless/ceiling,
+/area/maintenance/cargo)
 "dZa" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
@@ -6777,7 +6780,7 @@
 	landmark_tag = "supply_dock";
 	name = "NSV Victory Cargo Dock"
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/airless/ceiling,
 /area/space)
 "fVI" = (
 /obj/machinery/fire_alarm/west_mount{
@@ -8794,7 +8797,7 @@
 /area/quartermaster/foyer)
 "hIL" = (
 /obj/structure/lattice,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/airless/ceiling,
 /area/maintenance/cargo)
 "hIT" = (
 /obj/structure/closet/emcloset,
@@ -9256,7 +9259,7 @@
 /turf/simulated/floor/tiled,
 /area/quartermaster/warehouse)
 "ilI" = (
-/turf/simulated/floor/plating,
+/turf/simulated/floor/airless/ceiling,
 /area/space)
 "ilQ" = (
 /obj/effect/floor_decal/techfloor,
@@ -9339,7 +9342,7 @@
 /area/crew_quarters/sleep/Dorm_9)
 "ioP" = (
 /obj/structure/lattice,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/airless/ceiling,
 /area/space)
 "ipx" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -44581,8 +44584,8 @@ wjc
 wjc
 wjc
 vFG
-vFG
-jkE
+ilI
+ioP
 ilI
 ioP
 ilI
@@ -44594,8 +44597,8 @@ mpG
 prK
 qtb
 ilI
-lGK
-lGK
+dYQ
+dYQ
 ilI
 ilI
 mNS
@@ -44775,8 +44778,8 @@ wjc
 wjc
 wjc
 jkE
-jkE
-jkE
+ioP
+ioP
 ioP
 ioP
 ioP
