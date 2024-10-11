@@ -2764,7 +2764,7 @@
 /obj/machinery/light{
 	dir = 4
 	},
-/obj/machinery/power/breakerbox{
+/obj/machinery/power/breakerbox/activated{
 	RCon_tag = "ENGINEERING MAIN"
 	},
 /turf/simulated/floor/plating,

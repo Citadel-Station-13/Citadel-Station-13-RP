@@ -1198,12 +1198,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/victory/hallway/d3fwdhall)
-"bbY" = (
-/obj/machinery/power/breakerbox{
-	RCon_tag = "DECK 3 AFT MAIN"
-	},
-/turf/simulated/floor/plating,
-/area/maintenance/substation/medical_science)
 "bcp" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /obj/machinery/door/firedoor{
@@ -8421,7 +8415,7 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/sleeper)
 "hBp" = (
-/obj/machinery/power/breakerbox{
+/obj/machinery/power/breakerbox/activated{
 	RCon_tag = "DECK 3 AMIDSHIPS MAIN"
 	},
 /turf/simulated/floor/plating,
@@ -8692,7 +8686,7 @@
 /turf/simulated/floor/airless/ceiling,
 /area/maintenance/research)
 "hMz" = (
-/obj/machinery/power/breakerbox{
+/obj/machinery/power/breakerbox/activated{
 	RCon_tag = "DECK 3 FORE MAIN"
 	},
 /turf/simulated/floor/plating,
@@ -43138,7 +43132,7 @@ oDd
 cHC
 eEE
 fPm
-bbY
+kyR
 eEE
 qPc
 djp

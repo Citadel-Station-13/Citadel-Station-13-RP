@@ -7144,7 +7144,7 @@
 /turf/simulated/floor/plating,
 /area/victory/hallway/d2aftmaint)
 "gnb" = (
-/obj/machinery/power/breakerbox{
+/obj/machinery/power/breakerbox/activated{
 	RCon_tag = "DECK 2 FORE MAIN"
 	},
 /turf/simulated/floor/plating,
@@ -14413,12 +14413,6 @@
 "mUI" = (
 /turf/simulated/wall/r_wall/prepainted/security,
 /area/security/hallwayaux)
-"mVn" = (
-/obj/machinery/power/breakerbox{
-	RCon_tag = "DECK 2 AMIDSHIPS MAIN"
-	},
-/turf/simulated/floor/plating,
-/area/maintenance/substation/security)
 "mVq" = (
 /obj/structure/bed/chair/wood{
 	dir = 8
@@ -14584,7 +14578,7 @@
 /turf/simulated/floor/tiled,
 /area/victory/surfacebase/mining_main/refinery)
 "nfE" = (
-/obj/machinery/power/breakerbox{
+/obj/machinery/power/breakerbox/activated{
 	RCon_tag = "DECK 2 AFT MAIN"
 	},
 /turf/simulated/floor/plating,
@@ -46984,7 +46978,7 @@ vlV
 vlV
 fQb
 jVX
-mVn
+dAZ
 fQb
 mbH
 nzM

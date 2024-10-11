@@ -1181,6 +1181,12 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/bridge)
+"aVW" = (
+/obj/machinery/power/breakerbox/activated{
+	RCon_tag = "DECK 4 AFT SUPPORT"
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/substation/civilian)
 "aWO" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
@@ -14315,7 +14321,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/victory/hallway/d4porthall)
 "lBc" = (
-/obj/machinery/power/breakerbox{
+/obj/machinery/power/breakerbox/activated{
 	RCon_tag = "DECK 4 AFT MAIN"
 	},
 /turf/simulated/floor/plating,
@@ -26869,8 +26875,9 @@
 /turf/simulated/floor/tiled/steel,
 /area/victory/hallway/d4starboardhall)
 "wmU" = (
-/obj/machinery/power/breakerbox{
-	RCon_tag = "DECK 4 FORE MAIN"
+/obj/machinery/power/breakerbox/activated{
+	RCon_tag = "DECK 4 FORE MAIN";
+	material_multiplier = s
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/command)
@@ -28981,7 +28988,7 @@
 /turf/simulated/floor/tiled/steel_ridged,
 /area/victory/hallway/d4starboardhall)
 "ybg" = (
-/obj/machinery/power/breakerbox{
+/obj/machinery/power/breakerbox/activated{
 	RCon_tag = "DECK 4 AMIDSHIPS MAIN"
 	},
 /turf/simulated/floor/plating,
@@ -45278,7 +45285,7 @@ vDR
 hWC
 vRj
 hVP
-pPL
+aVW
 pPL
 lxO
 hnl
