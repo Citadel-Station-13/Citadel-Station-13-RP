@@ -2665,7 +2665,7 @@
 /turf/simulated/floor/carpet,
 /area/crew_quarters/heads/hos)
 "czZ" = (
-/obj/structure/cable/orange{
+/obj/structure/cable{
 	icon_state = "1-4"
 	},
 /turf/simulated/floor/tiled/dark,
@@ -3484,7 +3484,7 @@
 /area/security/hallway)
 "dnX" = (
 /obj/item/instrument/banjo,
-/obj/structure/cable/orange{
+/obj/structure/cable{
 	icon_state = "1-8"
 	},
 /turf/simulated/floor/tiled/dark,
@@ -3825,7 +3825,7 @@
 /area/victory/surfacebase/mining_main/storage)
 "dAZ" = (
 /obj/machinery/power/breakerbox/activated{
-	RCon_tag = "DECK 3 SUPPORT"
+	RCon_tag = "DECK 2 AMIDSHIPS SUPPORT"
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/security)
@@ -4611,7 +4611,7 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
 	},
-/obj/structure/cable/orange{
+/obj/structure/cable{
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/wood,
@@ -5076,7 +5076,7 @@
 "eEI" = (
 /obj/machinery/atmospherics/portables_connector,
 /obj/machinery/portable_atmospherics/canister/air,
-/obj/structure/cable/orange{
+/obj/structure/cable{
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/dark,
@@ -6149,6 +6149,21 @@
 "fxl" = (
 /turf/simulated/floor/carpet/purcarpet,
 /area/crew_quarters/sleep/Dorm_7)
+"fyf" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/tiled,
+/area/victory/hallway/d2starboardhall)
 "fyh" = (
 /obj/machinery/camera/network/civilian{
 	dir = 1
@@ -6486,7 +6501,7 @@
 /obj/machinery/camera/network/civilian{
 	dir = 8
 	},
-/obj/structure/cable/orange{
+/obj/structure/cable{
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/wood,
@@ -7130,7 +7145,8 @@
 /area/victory/hallway/d2aftmaint)
 "gnb" = (
 /obj/machinery/power/breakerbox{
-	RCon_tag = "DECK 3 MAIN"
+	RCon_tag = "DECK 2 FORE MAIN";
+	icon_state = "bbox_on"
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/civilian)
@@ -7607,7 +7623,7 @@
 /area/victory/hallway/d2fwdhall)
 "gLH" = (
 /obj/machinery/power/apc/north_mount,
-/obj/structure/cable/orange{
+/obj/structure/cable{
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/dark,
@@ -9410,8 +9426,8 @@
 /area/crew_quarters/heads/hos)
 "irq" = (
 /obj/effect/floor_decal/techfloor,
-/obj/structure/cable/orange{
-	icon_state = "2-8"
+/obj/structure/cable{
+	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled,
 /area/victory/hallway/d2starboardhall)
@@ -9504,7 +9520,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 5
 	},
-/obj/structure/cable/orange{
+/obj/structure/cable{
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/dark,
@@ -12215,7 +12231,7 @@
 /area/hydroponics)
 "kVm" = (
 /obj/machinery/power/breakerbox/activated{
-	RCon_tag = "DECK 3 SUPPORT"
+	RCon_tag = "DECK 2 AFT SUPPORT"
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/cargo)
@@ -13543,6 +13559,9 @@
 /obj/structure/cable/orange{
 	icon_state = "1-2"
 	},
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
 /turf/simulated/floor/tiled,
 /area/crew_quarters/recreation_area)
 "mft" = (
@@ -14026,7 +14045,7 @@
 "mEN" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/structure/cable/orange{
+/obj/structure/cable{
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/dark,
@@ -14146,7 +14165,7 @@
 /obj/machinery/light{
 	dir = 4
 	},
-/obj/structure/cable/orange{
+/obj/structure/cable{
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/wood,
@@ -14397,7 +14416,8 @@
 /area/security/hallwayaux)
 "mVn" = (
 /obj/machinery/power/breakerbox{
-	RCon_tag = "DECK 3 MAIN"
+	RCon_tag = "DECK 2 AMIDSHIPS MAIN";
+	icon_state = "bbox_on"
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/security)
@@ -14567,7 +14587,8 @@
 /area/victory/surfacebase/mining_main/refinery)
 "nfE" = (
 /obj/machinery/power/breakerbox{
-	RCon_tag = "DECK 3 MAIN"
+	RCon_tag = "DECK 2 AFT MAIN";
+	icon_state = "bbox_on"
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/cargo)
@@ -18401,7 +18422,7 @@
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
 	},
-/obj/structure/cable/orange{
+/obj/structure/cable{
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/wood,
@@ -18538,7 +18559,7 @@
 /area/victory/hallway/d2fwdmaint)
 "qNm" = (
 /obj/machinery/power/breakerbox/activated{
-	RCon_tag = "DECK 3 SUPPORT"
+	RCon_tag = "DECK 2 FORE SUPPORT"
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/civilian)
@@ -18619,9 +18640,20 @@
 /turf/simulated/floor/tiled/dark,
 /area/security/armoury)
 "qSG" = (
-/obj/machinery/atmospheric_field_generator/perma,
-/turf/space/basic,
-/area/space)
+/obj/machinery/air_alarm{
+	pixel_y = 22
+	},
+/obj/effect/floor_decal/techfloor{
+	dir = 1
+	},
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/structure/cable{
+	icon_state = "2-8"
+	},
+/turf/simulated/floor/tiled,
+/area/victory/hallway/d2starboardhall)
 "qSI" = (
 /obj/machinery/light_switch{
 	dir = 4;
@@ -18923,7 +18955,10 @@
 /obj/structure/cable/orange{
 	icon_state = "1-2"
 	},
-/turf/simulated/floor/tiled/dark,
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/turf/space/basic,
 /area/maintenance/starboardsolar)
 "rhS" = (
 /obj/structure/table/reinforced,
@@ -19965,7 +20000,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/obj/structure/cable/orange{
+/obj/structure/cable{
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/wood,
@@ -22860,7 +22895,7 @@
 	pixel_x = 30
 	},
 /obj/machinery/door/firedoor,
-/obj/structure/cable/orange{
+/obj/structure/cable{
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/wood,
@@ -22931,7 +22966,7 @@
 /obj/machinery/light/small{
 	dir = 1
 	},
-/obj/structure/cable/orange{
+/obj/structure/cable{
 	icon_state = "2-4"
 	},
 /turf/simulated/floor/tiled/dark,
@@ -23306,7 +23341,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/security/hallway)
 "uWd" = (
-/obj/structure/cable/orange{
+/obj/structure/cable{
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/wood,
@@ -23909,7 +23944,7 @@
 /obj/machinery/power/smes/buildable{
 	RCon_tag = "Solar Farm - SMES 1"
 	},
-/obj/structure/cable/orange{
+/obj/structure/cable{
 	icon_state = "0-8"
 	},
 /turf/simulated/floor/tiled/dark,
@@ -36358,7 +36393,7 @@ wjc
 wjc
 wjc
 wjc
-qSG
+wjc
 wjc
 wjc
 wjc
@@ -50064,7 +50099,7 @@ nHR
 mps
 dCa
 bLz
-dKY
+pze
 dFk
 lGL
 pFj
@@ -50256,8 +50291,8 @@ jCl
 nHR
 nHR
 mps
-lgz
-bLz
+qSG
+fyf
 irq
 uCB
 uWd

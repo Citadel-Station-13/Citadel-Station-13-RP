@@ -1200,7 +1200,8 @@
 /area/victory/hallway/d3fwdhall)
 "bbY" = (
 /obj/machinery/power/breakerbox{
-	RCon_tag = "DECK 3 MAIN"
+	RCon_tag = "DECK 3 AFT MAIN";
+	icon_state = "bbox_on"
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/medical_science)
@@ -5121,7 +5122,7 @@
 /area/assembly/robotics/surgery)
 "eJe" = (
 /obj/machinery/power/breakerbox/activated{
-	RCon_tag = "DECK 3 SUPPORT"
+	RCon_tag = "DECK 3 AMIDSHIPS SUPPORT"
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/medical)
@@ -8422,7 +8423,8 @@
 /area/medical/sleeper)
 "hBp" = (
 /obj/machinery/power/breakerbox{
-	RCon_tag = "DECK 3 MAIN"
+	RCon_tag = "DECK 3 AMIDSHIPS MAIN";
+	icon_state = "bbox_on"
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/medical)
@@ -8693,7 +8695,8 @@
 /area/maintenance/research)
 "hMz" = (
 /obj/machinery/power/breakerbox{
-	RCon_tag = "DECK 3 MAIN"
+	RCon_tag = "DECK 3 FORE MAIN";
+	icon_state = "bbox_on"
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/research)
@@ -11733,7 +11736,7 @@
 /area/victory/hallway/d3porthall)
 "kyR" = (
 /obj/machinery/power/breakerbox/activated{
-	RCon_tag = "DECK 3 SUPPORT"
+	RCon_tag = "DECK 3 AFT SUPPORT"
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/medical_science)
@@ -17457,7 +17460,7 @@
 /area/medical/reception)
 "pIb" = (
 /obj/machinery/power/breakerbox/activated{
-	RCon_tag = "DECK 3 SUPPORT"
+	RCon_tag = "DECK 3 FORE SUPPORT"
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/research)
