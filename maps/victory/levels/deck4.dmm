@@ -14316,8 +14316,7 @@
 /area/victory/hallway/d4porthall)
 "lBc" = (
 /obj/machinery/power/breakerbox{
-	RCon_tag = "DECK 4 AFT MAIN";
-	icon_state = "bbox_on"
+	RCon_tag = "DECK 4 AFT MAIN"
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/civilian)
@@ -14958,7 +14957,8 @@
 /area/library/study)
 "meH" = (
 /obj/machinery/power/breakerbox/activated{
-	RCon_tag = "DECK 4 FORE SUPPORT"
+	RCon_tag = "DECK 4 FORE SUPPORT";
+	material_multiplier = s
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/command)
@@ -19727,12 +19727,8 @@
 /turf/simulated/shuttle/wall/voidcraft/hard_corner,
 /area/hallway/secondary/docking_hallway)
 "qsn" = (
-/obj/machinery/power/breakerbox/activated{
-	RCon_tag = "DECK 4 AFT SUPPORT";
-	icon_state = "bbox_off"
-	},
-/turf/simulated/floor/plating,
-/area/maintenance/substation/civilian)
+/turf/space/basic,
+/area/victory/hallway/d4fwdhall)
 "qsz" = (
 /obj/structure/table/reinforced,
 /turf/simulated/floor/tiled/monowhite,
@@ -26874,8 +26870,7 @@
 /area/victory/hallway/d4starboardhall)
 "wmU" = (
 /obj/machinery/power/breakerbox{
-	RCon_tag = "DECK 4 FORE MAIN";
-	icon_state = "bbox_on"
+	RCon_tag = "DECK 4 FORE MAIN"
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/command)
@@ -28987,8 +28982,7 @@
 /area/victory/hallway/d4starboardhall)
 "ybg" = (
 /obj/machinery/power/breakerbox{
-	RCon_tag = "DECK 4 AMIDSHIPS MAIN";
-	icon_state = "bbox_on"
+	RCon_tag = "DECK 4 AMIDSHIPS MAIN"
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/exploration)
@@ -45284,7 +45278,7 @@ vDR
 hWC
 vRj
 hVP
-qsn
+pPL
 pPL
 lxO
 hnl
@@ -59055,7 +59049,7 @@ ojQ
 kXL
 oTA
 lUh
-lUh
+qsn
 lUh
 lUh
 lUh

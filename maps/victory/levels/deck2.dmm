@@ -7145,8 +7145,7 @@
 /area/victory/hallway/d2aftmaint)
 "gnb" = (
 /obj/machinery/power/breakerbox{
-	RCon_tag = "DECK 2 FORE MAIN";
-	icon_state = "bbox_on"
+	RCon_tag = "DECK 2 FORE MAIN"
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/civilian)
@@ -14416,8 +14415,7 @@
 /area/security/hallwayaux)
 "mVn" = (
 /obj/machinery/power/breakerbox{
-	RCon_tag = "DECK 2 AMIDSHIPS MAIN";
-	icon_state = "bbox_on"
+	RCon_tag = "DECK 2 AMIDSHIPS MAIN"
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/security)
@@ -14587,8 +14585,7 @@
 /area/victory/surfacebase/mining_main/refinery)
 "nfE" = (
 /obj/machinery/power/breakerbox{
-	RCon_tag = "DECK 2 AFT MAIN";
-	icon_state = "bbox_on"
+	RCon_tag = "DECK 2 AFT MAIN"
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/cargo)

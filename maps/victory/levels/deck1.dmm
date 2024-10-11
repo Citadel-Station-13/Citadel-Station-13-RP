@@ -2765,8 +2765,7 @@
 	dir = 4
 	},
 /obj/machinery/power/breakerbox{
-	RCon_tag = "ENGINEERING MAIN";
-	icon_state = "bbox_on"
+	RCon_tag = "ENGINEERING MAIN"
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/engineering)

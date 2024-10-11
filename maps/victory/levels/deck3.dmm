@@ -1200,8 +1200,7 @@
 /area/victory/hallway/d3fwdhall)
 "bbY" = (
 /obj/machinery/power/breakerbox{
-	RCon_tag = "DECK 3 AFT MAIN";
-	icon_state = "bbox_on"
+	RCon_tag = "DECK 3 AFT MAIN"
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/medical_science)
@@ -8423,8 +8422,7 @@
 /area/medical/sleeper)
 "hBp" = (
 /obj/machinery/power/breakerbox{
-	RCon_tag = "DECK 3 AMIDSHIPS MAIN";
-	icon_state = "bbox_on"
+	RCon_tag = "DECK 3 AMIDSHIPS MAIN"
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/medical)
@@ -8695,8 +8693,7 @@
 /area/maintenance/research)
 "hMz" = (
 /obj/machinery/power/breakerbox{
-	RCon_tag = "DECK 3 FORE MAIN";
-	icon_state = "bbox_on"
+	RCon_tag = "DECK 3 FORE MAIN"
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/research)
