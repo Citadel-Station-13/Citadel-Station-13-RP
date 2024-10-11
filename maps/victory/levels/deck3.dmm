@@ -7084,6 +7084,7 @@
 /area/rnd/xenobiology)
 "gpg" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/effect/paint/purplegray,
 /turf/simulated/floor/plating,
 /area/assembly/robotics)
 "gpS" = (
@@ -12571,6 +12572,10 @@
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/rnd/xenobiology)
+"lqw" = (
+/obj/effect/paint/babyblue,
+/turf/simulated/wall/r_wall/prepainted/science,
+/area/maintenance/research)
 "lqJ" = (
 /obj/machinery/camera/network/civilian{
 	dir = 1
@@ -42899,7 +42904,7 @@ pRW
 pRW
 pRW
 pRW
-uPt
+lqw
 uzv
 kiy
 xiT
