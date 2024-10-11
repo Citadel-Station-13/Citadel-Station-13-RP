@@ -6596,6 +6596,9 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/victory/hallway/d1porthall)
+"tT" = (
+/turf/space/basic,
+/area/engineering/atmos)
 "tU" = (
 /obj/machinery/shield_diffuser,
 /turf/simulated/floor/airless/ceiling,
@@ -7743,6 +7746,7 @@
 /obj/structure/cable{
 	icon_state = "0-4"
 	},
+/obj/machinery/power/smes/buildable/main,
 /turf/simulated/floor/plating,
 /area/engineering/engine_smes)
 "xi" = (
@@ -9819,10 +9823,10 @@
 /turf/simulated/floor/tiled/white,
 /area/engineering/shield_gen)
 "Dn" = (
-/obj/machinery/power/smes/buildable/main,
 /obj/structure/cable/orange{
 	icon_state = "0-4"
 	},
+/obj/machinery/power/smes,
 /turf/simulated/floor/plating,
 /area/victory/hallway/d1aftmaint)
 "Do" = (
@@ -15307,6 +15311,9 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/victory/hallway/d1porthall)
+"SW" = (
+/turf/simulated/floor/reinforced/oxygen,
+/area/victory/hallway/d1aftmaint)
 "SX" = (
 /obj/structure/table/reinforced,
 /obj/item/storage/toolbox/electrical{
@@ -28222,7 +28229,7 @@ Xl
 Xl
 Xl
 sN
-qJ
+SW
 gZ
 gZ
 TP
@@ -32878,7 +32885,7 @@ NQ
 tO
 xX
 sy
-sy
+tT
 PY
 xQ
 dG
