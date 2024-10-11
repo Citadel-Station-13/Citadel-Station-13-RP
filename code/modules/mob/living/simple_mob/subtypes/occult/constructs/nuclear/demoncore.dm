@@ -17,11 +17,11 @@
 	health = 200
 	response_harm = "viciously beaten"
 	harm_intent_damage = 5
-	legacy_melee_damage_lower = 8 //It's not the strongest of the bunch, but that doesn't mean it can't hurt you.
-	legacy_melee_damage_upper = 10
-	attack_armor_pen = 50 // Does so little damage already, that this can be justified.
+	legacy_melee_damage_lower = 20
+	legacy_melee_damage_upper = 25 //Come to think of it this is probably real dense to be ramming people
+	attack_armor_pen = 50
 	attacktext = list("rammed")
-	attack_sound = 'sound/weapons/rapidslice.ogg'
+	attack_sound = 'sound/effects/clang1.ogg'
 	movement_cooldown = 4
 	catalogue_data = list(/datum/category_item/catalogue/fauna/nuclear_spirits/demoncore)
 
