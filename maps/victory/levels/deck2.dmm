@@ -192,6 +192,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/tiled,
 /area/victory/hallway/d2afthall)
 "ami" = (
@@ -4109,6 +4112,9 @@
 /obj/effect/floor_decal/steeldecal/steel_decals_central6{
 	dir = 8
 	},
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/tiled,
 /area/victory/hallway/d2afthall)
 "dNa" = (
@@ -4118,6 +4124,9 @@
 	},
 /obj/effect/floor_decal/techfloor{
 	dir = 8
+	},
+/obj/structure/cable/green{
+	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled,
 /area/victory/hallway/d2afthall)
@@ -5315,6 +5324,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/tiled,
 /area/victory/hallway/d2afthall)
 "eUl" = (
@@ -5479,6 +5491,9 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 6
+	},
+/obj/structure/cable/green{
+	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled,
 /area/victory/hallway/d2afthall)
@@ -7184,6 +7199,9 @@
 /obj/structure/cable/green{
 	icon_state = "2-4"
 	},
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/tiled,
 /area/victory/hallway/d2afthall)
 "grc" = (
@@ -7503,10 +7521,17 @@
 /turf/simulated/floor/tiled,
 /area/victory/surfacebase/mining_main/refinery)
 "gEh" = (
-/obj/machinery/door/window/brigdoor/westleft{
-	req_access = list(19)
-	},
 /obj/machinery/door/firedoor,
+/obj/machinery/door/airlock/maintenance/command{
+	name = "Command Substation"
+	},
+/obj/machinery/door/blast/regular{
+	density = 0;
+	icon_state = "pdoor0";
+	id = "bridge_lockdown";
+	name = "Bridge Lockdown";
+	opacity = 0
+	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/bridge)
 "gEC" = (
@@ -12374,6 +12399,12 @@
 /obj/structure/cable/green{
 	icon_state = "1-8"
 	},
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
+/obj/structure/cable/green{
+	icon_state = "1-4"
+	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/bar)
 "lcF" = (
@@ -12672,6 +12703,12 @@
 	},
 /turf/simulated/floor/tiled,
 /area/victory/surfacebase/mining_main/refinery)
+"lsp" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/turf/simulated/wall/prepainted/cargo,
+/area/maintenance/bar/lower)
 "lsK" = (
 /obj/structure/cable/green{
 	icon_state = "1-2"
@@ -12868,6 +12905,9 @@
 	dir = 4
 	},
 /obj/item/radio/beacon,
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/tiled,
 /area/victory/hallway/d2afthall)
 "lzn" = (
@@ -17005,6 +17045,9 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 1
 	},
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/tiled,
 /area/victory/hallway/d2afthall)
 "ppb" = (
@@ -19354,6 +19397,12 @@
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/bar)
+"rvn" = (
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled,
+/area/victory/hallway/d2afthall)
 "rvv" = (
 /obj/machinery/fire_alarm/west_mount{
 	pixel_x = -26
@@ -24167,6 +24216,12 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
 /turf/simulated/floor/tiled/monotile,
 /area/security/brig)
+"vHA" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/bar/lower)
 "vIw" = (
 /obj/effect/floor_decal/corner/paleblue{
 	dir = 5
@@ -24678,6 +24733,15 @@
 	},
 /turf/simulated/floor/wood,
 /area/vacant/vacant_shop)
+"wlz" = (
+/obj/effect/floor_decal/techfloor{
+	dir = 8
+	},
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled,
+/area/victory/hallway/d2afthall)
 "wmc" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
 /turf/simulated/floor/tiled,
@@ -25531,6 +25595,9 @@
 /obj/effect/floor_decal/steeldecal/steel_decals_central6{
 	dir = 4
 	},
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/tiled,
 /area/victory/hallway/d2afthall)
 "xcM" = (
@@ -26347,6 +26414,9 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
+	},
+/obj/structure/cable/green{
+	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled,
 /area/victory/hallway/d2afthall)
@@ -34174,7 +34244,7 @@ eLn
 rqb
 rKF
 lGC
-pvs
+wlz
 opE
 pSE
 rAR
@@ -34368,7 +34438,7 @@ gVO
 jZh
 rKF
 xiX
-wLS
+rvn
 oza
 jlq
 rAR
@@ -36679,11 +36749,11 @@ bbG
 bbG
 pMT
 uYk
-uYk
-uYk
-wST
-wST
-uYk
+vHA
+vHA
+lsp
+lsp
+vHA
 uYk
 rKF
 nAY
@@ -38248,7 +38318,7 @@ oJt
 oJt
 oJt
 jLo
-wLS
+rvn
 ssX
 oJt
 oJt
@@ -38442,7 +38512,7 @@ pvs
 pvs
 pvs
 fNe
-wLS
+rvn
 wLS
 sIN
 sIN
@@ -42318,7 +42388,7 @@ xgK
 gdg
 ggC
 qWi
-qWi
+rAR
 qWi
 rVt
 qWi

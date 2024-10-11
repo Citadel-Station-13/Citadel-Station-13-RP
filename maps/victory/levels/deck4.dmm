@@ -4614,6 +4614,7 @@
 /area/victory/hallway/d4starboardhall)
 "dTn" = (
 /obj/machinery/door/blast/regular,
+/obj/machinery/atmospheric_field_generator/perma,
 /turf/simulated/floor/plating,
 /area/space)
 "dTx" = (
@@ -4814,6 +4815,12 @@
 	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/lawoffice)
+"ebP" = (
+/obj/structure/bed/chair/bay/chair/padded/red/smallnest,
+/obj/random/plushie,
+/obj/machinery/light/small,
+/turf/simulated/floor/carpet/arcadecarpet,
+/area/victory/hallway/d4aftmaint)
 "ect" = (
 /obj/machinery/light/small{
 	dir = 4
@@ -9951,6 +9958,15 @@
 	},
 /turf/simulated/floor/plating,
 /area/victory/hallway/d4aftmaint)
+"ibD" = (
+/obj/effect/floor_decal/spline/plain{
+	dir = 1
+	},
+/obj/machinery/light{
+	pixel_y = -24
+	},
+/turf/simulated/floor/water/deep/pool,
+/area/victory/surfacebase/sauna)
 "ibU" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 6
@@ -13203,6 +13219,10 @@
 	dir = 1
 	},
 /obj/effect/mist,
+/obj/machinery/light{
+	dir = 1;
+	pixel_y = 29
+	},
 /turf/simulated/floor/water/deep/pool,
 /area/victory/surfacebase/sauna)
 "kCA" = (
@@ -14959,8 +14979,13 @@
 /turf/simulated/floor/carpet/bcarpet,
 /area/library/study)
 "meE" = (
-/turf/simulated/wall/prepainted,
-/area/library/study)
+/obj/random/plushie,
+/obj/machinery/light{
+	dir = 8;
+	pixel_x = -10
+	},
+/turf/simulated/floor/carpet/arcadecarpet,
+/area/victory/hallway/d4aftmaint)
 "meH" = (
 /obj/machinery/power/breakerbox/activated{
 	RCon_tag = "DECK 4 FORE SUPPORT";
@@ -15617,8 +15642,8 @@
 /turf/simulated/floor/tiled,
 /area/exploration/explorer_prep)
 "mHu" = (
-/turf/simulated/wall/prepainted,
-/area/library)
+/turf/simulated/wall/prepainted/civilian,
+/area/hallway/primary/aft)
 "mIj" = (
 /obj/structure/flora/pottedplant/minitree,
 /obj/machinery/fire_alarm/north_mount{
@@ -25970,6 +25995,7 @@
 /area/victory/hallway/d4porthall)
 "vxr" = (
 /obj/machinery/door/blast/regular,
+/obj/machinery/atmospheric_field_generator/perma,
 /turf/simulated/floor/plating,
 /area/exploration/excursion_dock)
 "vxs" = (
@@ -29177,6 +29203,7 @@
 /area/rnd/test_area)
 "yhF" = (
 /obj/machinery/door/blast/regular,
+/obj/machinery/atmospheric_field_generator/perma,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/victory/surfacebase/tram)
 "yiz" = (
@@ -42166,7 +42193,7 @@ iZR
 ipC
 eDF
 mwl
-mwl
+mqa
 mwl
 mwl
 gPV
@@ -44321,14 +44348,14 @@ hhY
 sXI
 nfe
 mcm
-aNK
-meE
-meE
-meE
-meE
-meE
-meE
 mHu
+pul
+pul
+pul
+pul
+pul
+pul
+dsD
 dsD
 dsD
 dsD
@@ -44336,7 +44363,7 @@ dsD
 iHc
 dsD
 dsD
-mHu
+dsD
 wUJ
 wUJ
 wUJ
@@ -44516,7 +44543,7 @@ axR
 pmO
 vNY
 hnz
-meE
+pul
 cAt
 eoP
 aKC
@@ -44710,7 +44737,7 @@ vTi
 aFD
 doZ
 saW
-meE
+pul
 clz
 dBL
 sDe
@@ -44904,7 +44931,7 @@ xKW
 rgW
 arM
 baf
-meE
+pul
 xtc
 mew
 wyX
@@ -45098,7 +45125,7 @@ ipW
 cvL
 nAA
 saW
-meE
+pul
 pul
 pul
 jTS
@@ -45292,7 +45319,7 @@ hnl
 hJZ
 skF
 saW
-mHu
+dsD
 ikV
 jZL
 uMM
@@ -45486,7 +45513,7 @@ aFB
 wmH
 sjP
 xnK
-mHu
+dsD
 eOl
 eOl
 eOl
@@ -45680,7 +45707,7 @@ pEr
 xgB
 aaB
 qLH
-mHu
+dsD
 kCA
 lEF
 sfX
@@ -45874,7 +45901,7 @@ tLz
 kdf
 wNy
 lPB
-mHu
+dsD
 uhG
 mJP
 mJP
@@ -46068,7 +46095,7 @@ pEr
 jkq
 cdv
 leE
-mHu
+dsD
 wAB
 jBQ
 mJP
@@ -46228,7 +46255,7 @@ bdl
 bdl
 dkX
 xji
-iPk
+meE
 iPk
 iSA
 kPW
@@ -46262,7 +46289,7 @@ pEr
 eTb
 rqe
 nXJ
-mHu
+dsD
 bSd
 bMt
 kNK
@@ -46456,7 +46483,7 @@ kTG
 iZH
 aaB
 lVS
-mHu
+dsD
 iKm
 rxS
 rXg
@@ -46618,7 +46645,7 @@ dkX
 ulX
 idJ
 iSA
-nqx
+ebP
 ayL
 mwl
 gPV
@@ -46650,7 +46677,7 @@ nVY
 vBM
 lLu
 ptG
-mHu
+dsD
 jAq
 qFN
 rXg
@@ -46844,7 +46871,7 @@ nnH
 ojo
 voU
 kEh
-mHu
+dsD
 jDn
 esl
 tjy
@@ -47038,7 +47065,7 @@ iZC
 vEK
 lLu
 kkD
-mHu
+dsD
 scN
 rdf
 bsZ
@@ -47232,7 +47259,7 @@ gIT
 uGL
 aaB
 kEh
-mHu
+dsD
 chb
 mJP
 mJP
@@ -47426,7 +47453,7 @@ gIT
 tsU
 iuy
 cBe
-mHu
+dsD
 iMY
 plx
 plx
@@ -47620,13 +47647,13 @@ vRx
 iNb
 aaB
 kEh
+wUJ
 oxc
-oxc
 uze
 uze
 uze
 uze
-mHu
+dsD
 vqK
 mJP
 dsD
@@ -47814,7 +47841,7 @@ wWq
 vEK
 iuy
 kkD
-oxc
+wUJ
 uze
 uze
 uze
@@ -48008,13 +48035,13 @@ wWq
 dhZ
 aaB
 ykX
-oxc
-oxc
-oxc
-oxc
-oxc
-oxc
-mHu
+wUJ
+wUJ
+wUJ
+wUJ
+wUJ
+wUJ
+dsD
 erf
 pkW
 dsD
@@ -53611,7 +53638,7 @@ dIE
 afX
 hGB
 aUs
-bVK
+ibD
 cXG
 kBS
 iQS
