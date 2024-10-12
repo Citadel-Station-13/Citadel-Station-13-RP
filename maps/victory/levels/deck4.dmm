@@ -14988,8 +14988,7 @@
 /area/victory/hallway/d4aftmaint)
 "meH" = (
 /obj/machinery/power/breakerbox/activated{
-	RCon_tag = "DECK 4 FORE SUPPORT";
-	material_multiplier = s
+	RCon_tag = "DECK 4 FORE SUPPORT"
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/command)
@@ -26903,8 +26902,7 @@
 /area/victory/hallway/d4starboardhall)
 "wmU" = (
 /obj/machinery/power/breakerbox/activated{
-	RCon_tag = "DECK 4 FORE MAIN";
-	material_multiplier = s
+	RCon_tag = "DECK 4 FORE MAIN"
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/command)
