@@ -5409,6 +5409,7 @@
 	dir = 2;
 	id = "cludge_hanger"
 	},
+/obj/machinery/atmospheric_field_generator/perma,
 /turf/simulated/floor/reinforced,
 /area/maintenance/bar/catwalk)
 "eSr" = (
@@ -10158,6 +10159,7 @@
 /obj/machinery/door/blast/regular{
 	dir = 8
 	},
+/obj/machinery/atmospheric_field_generator/perma,
 /turf/simulated/floor/plating,
 /area/space)
 "iSJ" = (
@@ -17608,10 +17610,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/security/detectives_office)
-"ptY" = (
-/obj/map_helper/network_builder/power_cable/green/auto,
-/turf/simulated/floor/reinforced/overhang,
-/area/maintenance/bar/catwalk)
 "pvs" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 8
@@ -35466,7 +35464,7 @@ cYg
 cYg
 cYg
 cYg
-ptY
+cYg
 tHz
 bbG
 bbG

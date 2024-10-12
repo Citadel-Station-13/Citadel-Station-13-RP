@@ -630,10 +630,6 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/storage)
 "ct" = (
-/obj/machinery/atmospherics/pipe/simple/heat_exchanging{
-	dir = 5
-	},
-/obj/structure/lattice,
 /obj/map_helper/engine_loader,
 /turf/space,
 /area/space)
@@ -20666,8 +20662,8 @@ rc
 Es
 aZ
 aZ
+Cu
 ct
-TP
 TP
 gZ
 qJ

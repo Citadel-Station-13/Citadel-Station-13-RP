@@ -12992,10 +12992,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/medical/virology)
-"kkG" = (
-/obj/machinery/door/airlock/maintenance/common,
-/turf/simulated/floor/plating,
-/area/victory/hallway/d3aftmaint)
 "kkX" = (
 /obj/effect/floor_decal/steeldecal/steel_decals9,
 /obj/machinery/fire_alarm/north_mount,
@@ -15027,11 +15023,6 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/sleeper)
-"lTn" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/turf/simulated/floor/tiled,
-/area/victory/hallway/d3fwdhall)
 "lTq" = (
 /obj/machinery/door/firedoor,
 /obj/effect/floor_decal/steeldecal/steel_decals9,
@@ -16631,13 +16622,13 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/virologyaccess)
 "nmB" = (
-/obj/machinery/door/airlock/maintenance/common,
 /obj/structure/cable/orange{
 	icon_state = "6-9"
 	},
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
+/obj/machinery/door/airlock/maintenance/common,
 /turf/simulated/floor/plating,
 /area/victory/hallway/d3fwdmaint)
 "nmL" = (
@@ -30935,6 +30926,7 @@
 /obj/structure/cable/orange{
 	icon_state = "9-10"
 	},
+/obj/machinery/door/airlock/maintenance/common,
 /turf/simulated/floor/plating,
 /area/victory/hallway/d3aftmaint)
 "yhO" = (
@@ -52632,7 +52624,7 @@ cHC
 cHC
 cHC
 cHC
-kkG
+cHC
 sAZ
 fiT
 oDd
@@ -63489,8 +63481,8 @@ qBd
 iTE
 lFV
 gOT
-lTn
-lTn
+phu
+phu
 phu
 pYw
 phu
