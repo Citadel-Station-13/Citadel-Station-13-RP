@@ -34,8 +34,8 @@
 	armor_legacy_mob = list( 				//Mob Gimmick, highly resistant to E weapons			//Mob Gimmick, absorbs normal burn damage,
 				"melee" = -0,
 				"bullet" = 0,
-				"laser" = 80,
-				"energy" = 80,
+				"laser" = 90,
+				"energy" = 90,
 				"bomb" = 0,
 				"bio" = 100,
 				"rad" = 100)
