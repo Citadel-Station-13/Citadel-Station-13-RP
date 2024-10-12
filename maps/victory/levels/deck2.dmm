@@ -1495,12 +1495,6 @@
 	},
 /turf/simulated/floor/airless,
 /area/space)
-"bpV" = (
-/obj/effect/floor_decal/techfloor{
-	dir = 10
-	},
-/turf/simulated/floor/tiled,
-/area/victory/hallway/d2porthall)
 "bqx" = (
 /obj/structure/closet/l3closet/janitor,
 /turf/simulated/floor/tiled/dark,
@@ -4803,7 +4797,6 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
-/obj/machinery/holopad,
 /turf/simulated/floor/tiled/monotile,
 /area/security/lobby)
 "esv" = (
@@ -4944,6 +4937,7 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
+/obj/machinery/holopad,
 /turf/simulated/floor/tiled/dark,
 /area/security/hallway)
 "eAa" = (
@@ -7457,15 +7451,6 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/victory/hallway/d2porthall)
-"gAn" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 8
-	},
-/turf/simulated/floor/tiled/old_cargo/gray,
-/area/prison/cell_block)
 "gAq" = (
 /obj/machinery/power/apc/west_mount,
 /obj/structure/cable/green,
@@ -8347,6 +8332,7 @@
 "hoA" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/holopad,
 /turf/simulated/floor/tiled/monotile,
 /area/security/lobby)
 "hpw" = (
@@ -11210,15 +11196,6 @@
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/security/range)
-"jYJ" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 5
-	},
-/turf/simulated/floor/tiled/old_cargo/gray,
-/area/prison/cell_block)
 "jYS" = (
 /obj/effect/floor_decal/corner/red{
 	dir = 6
@@ -12703,12 +12680,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/victory/surfacebase/mining_main/refinery)
-"lsp" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/turf/simulated/wall/prepainted/cargo,
-/area/maintenance/bar/lower)
 "lsK" = (
 /obj/structure/cable/green{
 	icon_state = "1-2"
@@ -13200,9 +13171,11 @@
 /turf/simulated/floor/tiled,
 /area/victory/hallway/d2starboardhall)
 "lJl" = (
-/obj/machinery/atmospherics/component/unary/vent_pump/on,
-/turf/simulated/floor/tiled/old_cargo/gray,
-/area/prison/cell_block)
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
+/turf/space/basic,
+/area/space)
 "lJy" = (
 /turf/simulated/floor/plating,
 /area/maintenance/starboardsolar)
@@ -17712,12 +17685,6 @@
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_5)
-"pZo" = (
-/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/old_cargo/gray,
-/area/prison/cell_block)
 "pZp" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -18919,17 +18886,9 @@
 /turf/simulated/floor/tiled/dark,
 /area/prison/cell_block)
 "rfr" = (
-/obj/effect/floor_decal/techfloor{
-	dir = 8
-	},
-/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/monotile,
-/area/security/lobby)
+/obj/machinery/holopad,
+/turf/simulated/floor/tiled/old_cargo/gray,
+/area/prison/cell_block)
 "rfy" = (
 /obj/structure/table/marble,
 /obj/item/storage/pill_bottle/dice_nerd,
@@ -24216,12 +24175,6 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
 /turf/simulated/floor/tiled/monotile,
 /area/security/brig)
-"vHA" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/turf/simulated/floor/plating,
-/area/maintenance/bar/lower)
 "vIw" = (
 /obj/effect/floor_decal/corner/paleblue{
 	dir = 5
@@ -24601,7 +24554,7 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
-/turf/simulated/floor/wood,
+/turf/simulated/floor/tiled,
 /area/quartermaster/foyer)
 "weZ" = (
 /obj/landmark/observer_spawn,
@@ -30793,7 +30746,7 @@ wjc
 wjc
 wjc
 wjc
-wjc
+lJl
 wjc
 wjc
 wjc
@@ -30989,7 +30942,7 @@ wjc
 wjc
 wjc
 wjc
-wjc
+lJl
 wjc
 wjc
 wjc
@@ -36749,11 +36702,11 @@ bbG
 bbG
 pMT
 uYk
-vHA
-vHA
-lsp
-lsp
-vHA
+uYk
+uYk
+wST
+wST
+uYk
 uYk
 rKF
 nAY
@@ -40657,8 +40610,8 @@ bLz
 dKY
 sqj
 sUT
+rfr
 sUT
-pZo
 sUT
 ptq
 msa
@@ -40851,8 +40804,8 @@ bLz
 dKY
 sqj
 sUT
-lJl
-jYJ
+sUT
+sUT
 sUT
 ptq
 nbM
@@ -41046,7 +40999,7 @@ dKY
 sqj
 sUT
 sUT
-gAn
+sUT
 sUT
 ptq
 qae
@@ -41434,7 +41387,7 @@ dKY
 uoF
 oMD
 oMD
-rfr
+oMD
 oMD
 oMD
 mjh
@@ -42183,14 +42136,14 @@ gAq
 mOz
 pZD
 cCU
-mOz
-mOz
-mOz
-mOz
-mOz
-mOz
-mOz
-wWE
+mHd
+mHd
+mHd
+mHd
+mHd
+mHd
+mHd
+dnx
 gdg
 ggC
 oWS
@@ -42571,13 +42524,13 @@ eHf
 gPA
 dRv
 cCU
-mOz
-mOz
-mOz
-mOz
-mOz
-mOz
-mOz
+mHd
+mHd
+mHd
+mHd
+mHd
+mHd
+mHd
 kbS
 gdg
 ggC
@@ -45303,7 +45256,7 @@ lqx
 toA
 blI
 bLd
-bpV
+dnx
 toA
 ixv
 lfY
