@@ -19758,8 +19758,8 @@
 /turf/simulated/shuttle/wall/voidcraft/hard_corner,
 /area/hallway/secondary/docking_hallway)
 "qsn" = (
-/turf/space/basic,
-/area/victory/hallway/d4fwdhall)
+/turf/simulated/floor/tiled/dark,
+/area/space)
 "qsz" = (
 /obj/structure/table/reinforced,
 /turf/simulated/floor/tiled/monowhite,
@@ -30448,8 +30448,8 @@ jNg
 jNg
 jNg
 jNg
-jNg
-jNg
+qsn
+qsn
 jNg
 jNg
 jNg
@@ -30643,7 +30643,7 @@ jNg
 jNg
 jNg
 jNg
-jNg
+qsn
 jNg
 jNg
 jNg
@@ -59083,7 +59083,7 @@ ojQ
 kXL
 oTA
 lUh
-qsn
+lUh
 lUh
 lUh
 lUh

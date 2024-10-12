@@ -12290,7 +12290,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/tiled/dark,
 /area/rnd/hallway)
 "kyN" = (
 /obj/effect/floor_decal/techfloor{
@@ -15289,6 +15289,9 @@
 /obj/machinery/holopad,
 /turf/simulated/floor/tiled/white,
 /area/medical/medbay4)
+"nnv" = (
+/turf/simulated/floor/tiled/dark,
+/area/space)
 "nnE" = (
 /obj/structure/table/glass,
 /obj/effect/floor_decal/borderfloorwhite{
@@ -17171,6 +17174,11 @@
 /obj/machinery/portable_atmospherics/canister/nitrogen,
 /turf/simulated/floor/tiled/monotile,
 /area/rnd/xenobiology/xenoflora/lab_atmos)
+"oSX" = (
+/obj/effect/floor_decal/borderfloor,
+/obj/effect/floor_decal/corner/mauve/border,
+/turf/simulated/floor/tiled/dark,
+/area/rnd/hallway)
 "oTe" = (
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 4
@@ -18674,6 +18682,9 @@
 	},
 /turf/simulated/floor/carpet/sblucarpet,
 /area/medical/psych/psych_1)
+"pWM" = (
+/turf/simulated/floor/tiled/dark,
+/area/rnd/hallway)
 "pWZ" = (
 /obj/machinery/air_alarm{
 	pixel_y = 22
@@ -24676,6 +24687,15 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/psych_ward)
+"uZl" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/mauve/border{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/dark,
+/area/rnd/hallway)
 "uZs" = (
 /obj/effect/floor_decal/corner/blue/diagonal,
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
@@ -31329,7 +31349,7 @@ mDp
 mDp
 mDp
 mDp
-mDp
+nnv
 mDp
 mDp
 mDp
@@ -38410,7 +38430,7 @@ iXx
 bxz
 qYt
 wuz
-wuz
+pWM
 oIp
 nZC
 eyM
@@ -38604,8 +38624,8 @@ lUe
 bxz
 wuz
 wuz
-wuz
-bqS
+pWM
+uZl
 aHR
 iRy
 dKQ
@@ -38801,7 +38821,7 @@ hgr
 wuz
 bqS
 kyn
-iRy
+oSX
 bLe
 xIf
 xIf
@@ -38995,8 +39015,8 @@ hgr
 wuz
 bqS
 fds
-iRy
-dKQ
+oSX
+pWM
 xIf
 xIf
 xIf
@@ -39191,7 +39211,7 @@ lAr
 dlc
 rXr
 dKQ
-dKQ
+pWM
 dKQ
 dKQ
 dKQ

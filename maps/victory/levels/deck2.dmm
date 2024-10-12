@@ -18992,7 +18992,7 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/turf/space/basic,
+/turf/simulated/floor/tiled/dark,
 /area/maintenance/starboardsolar)
 "rhS" = (
 /obj/structure/table/reinforced,
