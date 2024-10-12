@@ -17,7 +17,7 @@
 /area/submap/cave/vault3)
 "e" = (
 /obj/structure/alien/weeds,
-/mob/living/simple_mob/animal/space/alien/drone,
+/mob/living/simple_mob/animal/space/xenomorph/neurotoxin_spitter,
 /turf/simulated/floor/plating,
 /area/submap/cave/vault3)
 "f" = (
@@ -33,10 +33,16 @@
 /obj/structure/alien/weeds,
 /obj/structure/alien/weeds,
 /obj/structure/alien/weeds/node,
+/mob/living/simple_mob/animal/space/xenomorph/special/burrower,
 /turf/simulated/floor/plating,
 /area/submap/cave/vault3)
 "i" = (
 /obj/structure/bed/nest,
+/turf/simulated/floor/plating,
+/area/submap/cave/vault3)
+"W" = (
+/obj/structure/alien/weeds,
+/mob/living/simple_mob/animal/space/xenomorph/sprinter,
 /turf/simulated/floor/plating,
 /area/submap/cave/vault3)
 
@@ -66,7 +72,7 @@ a
 a
 b
 b
-e
+W
 g
 g
 b

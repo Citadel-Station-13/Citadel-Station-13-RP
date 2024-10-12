@@ -288,7 +288,7 @@
 					new /obj/item/clothing/suit/storage/hooded/carp_costume(C)
 			else if(prob(50))
 				if(live_cargo) // Something else very much alive and angry.
-					var/spawn_type = pick(/mob/living/simple_mob/animal/space/alien/warrior, /mob/living/simple_mob/animal/space/alien/drone, /mob/living/simple_mob/animal/space/alien/basic_spitter)
+					var/spawn_type = pick(/mob/living/simple_mob/animal/space/xenomorph/warrior, /mob/living/simple_mob/animal/space/xenomorph/drone, /mob/living/simple_mob/animal/space/xenomorph/neurotoxin_spitter)
 					new spawn_type(C)
 				else // Just a costume.
 					new /obj/item/clothing/head/xenos(C)
