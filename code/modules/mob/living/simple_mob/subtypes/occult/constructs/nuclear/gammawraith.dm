@@ -9,6 +9,8 @@
 	icon_state = "atomic"
 	icon_living = "atomic"
 	icon_dead = "atomic_dead"
+	maxHealth = 100
+	health = 100
 	catalogue_data = list(/datum/category_item/catalogue/fauna/nuclear_spirits/gammawraith)
 
 	response_help  = "glows menacingly at"
