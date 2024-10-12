@@ -39,6 +39,17 @@
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/steel_dirty/dark,
 /area/space)
+"ai" = (
+/obj/structure/table/borosilicate,
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/carpet/bcarpet,
+/area/space)
+"am" = (
+/obj/machinery/air_alarm/talon/west_mount,
+/turf/simulated/floor/tiled/white,
+/area/space)
 "ao" = (
 /obj/structure/bed/chair/bay/chair/padded/red{
 	dir = 8
@@ -57,15 +68,39 @@
 	},
 /turf/simulated/floor/tiled/kafel_full/red,
 /area/space)
+"av" = (
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/obj/structure/cable{
+	icon_state = "1-4"
+	},
+/turf/simulated/floor/tiled/kafel_full/beige,
+/area/space)
 "aw" = (
 /obj/machinery/air_alarm/talon/south_mount,
 /turf/simulated/floor/tiled/techmaint{
 	color = "#A9A9A9"
 	},
 /area/space)
+"aE" = (
+/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
+/obj/map_helper/electrochromatic_linker{
+	id = "senior_physician"
+	},
+/turf/simulated/floor/tiled/dark{
+	color = "#A9A9A9"
+	},
+/area/space)
 "aI" = (
 /obj/structure/table/steel,
 /turf/simulated/floor/tiled/kafel_full/red,
+/area/space)
+"aP" = (
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/tiled/kafel_full/beige,
 /area/space)
 "aU" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
@@ -171,12 +206,22 @@
 /obj/structure/window/phoronreinforced,
 /turf/simulated/floor/reinforced,
 /area/space)
+"bG" = (
+/obj/structure/cable{
+	icon_state = "1-8"
+	},
+/turf/simulated/floor/tiled/kafel_full/beige,
+/area/space)
 "bI" = (
 /obj/structure/table/borosilicate,
 /obj/machinery/computer/secure_data{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/steel_dirty/dark,
+/area/space)
+"bM" = (
+/obj/machinery/recharge_station,
+/turf/simulated/floor/tiled/techfloor,
 /area/space)
 "bO" = (
 /obj/machinery/light/spot{
@@ -186,6 +231,12 @@
 /turf/simulated/floor/tiled/monodark{
 	color = "#A9A9A9"
 	},
+/area/space)
+"cc" = (
+/obj/machinery/light/spot{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/kafel_full/green,
 /area/space)
 "cd" = (
 /obj/structure/table/reinforced,
@@ -226,6 +277,38 @@
 	pixel_x = 30
 	},
 /turf/simulated/floor/tiled/yellow,
+/area/space)
+"cq" = (
+/obj/machinery/door/window/eastright{
+	dir = 1;
+	name = "Medical Ward Reception Desk";
+	req_one_access = list(5)
+	},
+/obj/machinery/camera/network/talon{
+	name = "andromeda";
+	network = list("AndromedaHaven");
+	dir = 8
+	},
+/obj/machinery/door/firedoor/glass,
+/turf/simulated/floor/tiled/kafel_full/green,
+/area/space)
+"cr" = (
+/obj/machinery/door/airlock/glass/medical{
+	name = "Medical Ward Chemistry";
+	req_one_access = null
+	},
+/obj/machinery/door/firedoor/glass,
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/tiled/kafel_full/yellow,
+/area/space)
+"cC" = (
+/obj/machinery/smartfridge/chemistry,
+/turf/simulated/wall/r_wall/prepainted/medical{
+	integrity_flags = 1;
+	integrity_enabled = 0
+	},
 /area/space)
 "cN" = (
 /obj/structure/cable{
@@ -332,6 +415,23 @@
 	},
 /turf/simulated/floor/tiled/kafel_full/red,
 /area/space)
+"dW" = (
+/obj/structure/window/reinforced/tinted/frosted{
+	dir = 1
+	},
+/obj/structure/morgue{
+	dir = 2
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/space)
+"ea" = (
+/obj/machinery/camera/network/talon{
+	name = "andromeda";
+	network = list("AndromedaHaven");
+	dir = 4
+	},
+/turf/simulated/floor/tiled/kafel_full/beige,
+/area/space)
 "ec" = (
 /obj/machinery/air_alarm/talon/south_mount,
 /obj/structure/cable{
@@ -403,6 +503,16 @@
 	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/space)
+"ez" = (
+/obj/structure/table/standard,
+/obj/item/storage/box/masks{
+	pixel_x = -8
+	},
+/obj/item/storage/box/gloves{
+	pixel_x = 8
+	},
+/turf/simulated/floor/tiled/kafel_full/green,
+/area/space)
 "eN" = (
 /obj/item/stool/padded,
 /turf/simulated/floor/wood,
@@ -434,8 +544,27 @@
 	},
 /turf/simulated/floor/tiled/yellow,
 /area/space)
+"eT" = (
+/obj/machinery/iv_drip,
+/obj/machinery/iv_drip{
+	pixel_x = -11
+	},
+/obj/machinery/iv_drip{
+	pixel_x = 10
+	},
+/turf/simulated/floor/tiled/kafel_full/green,
+/area/space)
 "fd" = (
 /turf/simulated/floor/plating,
+/area/space)
+"fe" = (
+/obj/machinery/camera/network/talon{
+	name = "andromeda";
+	network = list("AndromedaHaven");
+	dir = 1
+	},
+/obj/machinery/recharge_station,
+/turf/simulated/floor/tiled/kafel_full/red,
 /area/space)
 "fC" = (
 /obj/machinery/light/spot{
@@ -445,6 +574,13 @@
 /turf/simulated/floor/tiled/dark{
 	color = "#A9A9A9"
 	},
+/area/space)
+"fD" = (
+/obj/machinery/atmospherics/component/unary/freezer,
+/obj/machinery/light/spot{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor,
 /area/space)
 "fH" = (
 /obj/structure/cable{
@@ -465,6 +601,19 @@
 	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/space)
+"ga" = (
+/obj/spawner/window/low_wall/reinforced/electrochromic/full{
+	spawn_grille = 0;
+	id = "surgical suite"
+	},
+/obj/machinery/door/firedoor/glass,
+/obj/map_helper/electrochromatic_linker{
+	id = "surgical suite-1"
+	},
+/turf/simulated/floor/tiled/monodark{
+	color = "#A9A9A9"
+	},
+/area/space)
 "gb" = (
 /obj/machinery/power/apc/high/north_mount,
 /obj/structure/cable{
@@ -473,6 +622,10 @@
 /turf/simulated/floor/tiled/monodark{
 	color = "#A9A9A9"
 	},
+/area/space)
+"gj" = (
+/obj/machinery/chemical_dispenser/full,
+/turf/simulated/floor/tiled/kafel_full/yellow,
 /area/space)
 "gm" = (
 /obj/structure/extinguisher_cabinet{
@@ -556,6 +709,10 @@
 	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/space)
+"gL" = (
+/obj/structure/closet/secure_closet/medical2,
+/turf/simulated/floor/tiled/white,
+/area/space)
 "gP" = (
 /obj/machinery/light/spot,
 /turf/simulated/floor/tiled/kafel_full/gray,
@@ -605,6 +762,19 @@
 /obj/item/tank/emergency,
 /turf/simulated/floor/tiled/kafel_full/yellow,
 /area/space)
+"hf" = (
+/obj/structure/table/rack/shelf,
+/obj/item/storage/firstaid/adv{
+	pixel_y = 15
+	},
+/obj/item/storage/firstaid/adv{
+	pixel_y = 5
+	},
+/obj/item/storage/firstaid/adv{
+	pixel_y = -5
+	},
+/turf/simulated/floor/tiled/kafel_full/green,
+/area/space)
 "hn" = (
 /obj/machinery/door/airlock/mining{
 	name = "Supply Warehouse";
@@ -623,11 +793,35 @@
 	},
 /turf/simulated/floor/carpet/patterened,
 /area/space)
+"hs" = (
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 9
+	},
+/obj/machinery/power/apc/high/east_mount,
+/obj/structure/cable{
+	icon_state = "0-8"
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/space)
 "hy" = (
 /obj/structure/transit_tube/station{
 	automatic_launch_time = 40
 	},
 /turf/simulated/floor/tiled/kafel_full/yellow,
+/area/space)
+"hE" = (
+/obj/structure/closet/medical_wall{
+	name = "defibrillator storage";
+	pixel_y = -32
+	},
+/obj/item/defib_kit/loaded,
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/structure/cable{
+	icon_state = "1-4"
+	},
+/turf/simulated/floor/tiled/kafel_full/green,
 /area/space)
 "hJ" = (
 /obj/structure/table/rack/shelf/steel,
@@ -717,6 +911,26 @@
 	color = "#A9A9A9"
 	},
 /area/space)
+"ia" = (
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/structure/cable{
+	icon_state = "2-8"
+	},
+/turf/simulated/floor/tiled/kafel_full/beige,
+/area/space)
+"ij" = (
+/obj/structure/table/rack/shelf,
+/obj/item/roller,
+/obj/item/roller{
+	pixel_y = 16
+	},
+/obj/item/roller{
+	pixel_y = 8
+	},
+/turf/simulated/floor/tiled/kafel_full/green,
+/area/space)
 "il" = (
 /obj/machinery/power/apc/high/north_mount,
 /obj/structure/cable{
@@ -754,6 +968,12 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/kafel_full/yellow,
+/area/space)
+"iy" = (
+/obj/machinery/air_alarm/talon/east_mount,
+/turf/simulated/floor/tiled/dark{
+	color = "#A9A9A9"
+	},
 /area/space)
 "iA" = (
 /obj/structure/table/rack/shelf/steel,
@@ -873,6 +1093,10 @@
 	color = "#A9A9A9"
 	},
 /area/space)
+"iB" = (
+/obj/machinery/air_alarm/talon/south_mount,
+/turf/simulated/floor/tiled/kafel_full/green,
+/area/space)
 "iE" = (
 /obj/structure/closet/secure_closet/security,
 /turf/simulated/floor/tiled/kafel_full/red,
@@ -905,6 +1129,13 @@
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/kafel_full/red,
+/area/space)
+"iS" = (
+/obj/structure/morgue{
+	dir = 1
+	},
+/obj/machinery/light/small/emergency,
+/turf/simulated/floor/tiled/techfloor/grid,
 /area/space)
 "iY" = (
 /obj/machinery/door/window/brigdoor/eastleft{
@@ -976,6 +1207,20 @@
 	},
 /turf/simulated/floor/tiled/steel_dirty/dark,
 /area/space)
+"jz" = (
+/obj/structure/closet/secure_closet/medical3{
+	name = "surgeon's locker"
+	},
+/obj/item/clothing/under/rank/medical/scrubs,
+/obj/item/clothing/under/rank/medical/scrubs,
+/obj/item/clothing/head/surgery,
+/obj/item/clothing/head/surgery,
+/obj/item/storage/belt/medical,
+/obj/item/storage/firstaid/surgery{
+	starts_with = list(/obj/item/surgical/bonesetter,/obj/item/surgical/cautery,/obj/item/surgical/circular_saw,/obj/item/surgical/hemostat,/obj/item/surgical/retractor,/obj/item/surgical/scalpel,/obj/item/surgical/surgicaldrill,/obj/item/surgical/bonegel,/obj/item/surgical/FixOVein,/obj/item/stack/medical/advanced/bruise_pack,/obj/item/autopsy_scanner,/obj/item/surgical/bioregen)
+	},
+/turf/simulated/floor/tiled/kafel_full/green,
+/area/space)
 "jC" = (
 /obj/structure/bed/chair/sofa/black/left,
 /turf/simulated/floor/carpet/bcarpet,
@@ -990,6 +1235,18 @@
 	dir = 8
 	},
 /turf/simulated/floor/carpet/lythios43c,
+/area/space)
+"jO" = (
+/obj/machinery/power/apc/high/north_mount,
+/obj/structure/cable{
+	dir = 1
+	},
+/obj/structure/bed/chair,
+/turf/simulated/floor/tiled/kafel_full/beige,
+/area/space)
+"jP" = (
+/obj/machinery/oxygen_pump/mobile/stabilizer,
+/turf/simulated/floor/tiled/kafel_full/green,
 /area/space)
 "jS" = (
 /obj/machinery/door/airlock/security{
@@ -1015,6 +1272,13 @@
 	},
 /turf/simulated/floor/carpet/patterened,
 /area/space)
+"kd" = (
+/obj/machinery/optable,
+/obj/machinery/oxygen_pump/anesthetic{
+	pixel_y = -28
+	},
+/turf/simulated/floor/tiled/white,
+/area/space)
 "kg" = (
 /obj/effect/floor_decal/corner/red/border{
 	dir = 8
@@ -1037,6 +1301,18 @@
 	color = "#A9A9A9"
 	},
 /area/space)
+"kl" = (
+/obj/machinery/door/airlock/command{
+	name = "Senior Physicians Office";
+	id_tint = "senior_physician"
+	},
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled/monodark{
+	color = "#A9A9A9"
+	},
+/area/space)
 "ku" = (
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -1049,6 +1325,32 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/kafel_full/red,
+/area/space)
+"kE" = (
+/obj/structure/table/rack/shelf,
+/obj/item/storage/hypokit{
+	pixel_x = -6;
+	pixel_y = 8
+	},
+/obj/item/storage/hypokit{
+	pixel_x = 8;
+	pixel_y = 8
+	},
+/obj/item/storage/hypokit{
+	pixel_x = 8;
+	pixel_y = -8
+	},
+/obj/item/storage/hypokit{
+	pixel_x = 8
+	},
+/obj/item/storage/hypokit{
+	pixel_x = -6
+	},
+/obj/item/storage/hypokit{
+	pixel_x = -6;
+	pixel_y = -8
+	},
+/turf/simulated/floor/tiled/kafel_full/green,
 /area/space)
 "kH" = (
 /obj/structure/table/steel,
@@ -1072,6 +1374,26 @@
 	},
 /turf/simulated/floor/tiled/yellow,
 /area/space)
+"kO" = (
+/obj/machinery/power/apc/high/north_mount,
+/obj/structure/cable{
+	icon_state = "0-2"
+	},
+/turf/simulated/floor/tiled/kafel_full/green,
+/area/space)
+"kS" = (
+/obj/machinery/bodyscanner,
+/turf/simulated/floor/tiled/kafel_full/green,
+/area/space)
+"kU" = (
+/obj/machinery/button/windowtint/multitint{
+	id = "surgical suite-2";
+	pixel_x = 26;
+	pixel_y = 7
+	},
+/obj/structure/closet/crate/biohazard,
+/turf/simulated/floor/tiled/white,
+/area/space)
 "kZ" = (
 /turf/simulated/floor/tiled/steel_dirty/dark,
 /area/space)
@@ -1090,6 +1412,21 @@
 	dir = 8
 	},
 /turf/simulated/floor/carpet/bcarpet,
+/area/space)
+"ll" = (
+/obj/structure/closet/secure_closet/medical3,
+/obj/item/soap/nanotrasen,
+/obj/item/storage/belt/medical,
+/obj/structure/window/reinforced/tinted{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/paleblue{
+	dir = 10
+	},
+/obj/effect/floor_decal/corner/paleblue{
+	dir = 5
+	},
+/turf/simulated/floor/tiled/kafel_full/green,
 /area/space)
 "ln" = (
 /obj/structure/cable{
@@ -1115,6 +1452,26 @@
 	},
 /turf/simulated/floor/carpet/patterened,
 /area/space)
+"lw" = (
+/obj/spawner/window/low_wall/reinforced/electrochromic/full{
+	spawn_grille = 0;
+	id = "surgical suite-2"
+	},
+/obj/machinery/door/firedoor/glass,
+/obj/map_helper/electrochromatic_linker{
+	id = "surgical suite-2"
+	},
+/turf/simulated/floor/tiled/monodark{
+	color = "#A9A9A9"
+	},
+/area/space)
+"ly" = (
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/machinery/light/spot,
+/turf/simulated/floor/tiled/kafel_full/green,
+/area/space)
 "lz" = (
 /obj/machinery/lathe/autolathe,
 /obj/fiftyspawner/glass,
@@ -1128,6 +1485,25 @@
 /turf/simulated/floor/tiled/monodark{
 	color = "#A9A9A9"
 	},
+/area/space)
+"lB" = (
+/obj/structure/bed/chair/office/light{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/kafel_full/yellow,
+/area/space)
+"lG" = (
+/obj/structure/table/reinforced,
+/obj/machinery/door/window/eastright{
+	dir = 8;
+	name = "Medical Ward Reception Desk";
+	req_one_access = list(5)
+	},
+/obj/machinery/door/firedoor/glass{
+	dir = 8;
+	req_one_access = list(18,47)
+	},
+/turf/simulated/floor/tiled/kafel_full/green,
 /area/space)
 "lM" = (
 /obj/structure/table/rack/shelf/steel,
@@ -1163,6 +1539,10 @@
 /area/space)
 "lP" = (
 /obj/structure/table/borosilicate,
+/obj/item/stamp/ward,
+/obj/item/stamp{
+	pixel_y = 7
+	},
 /turf/simulated/floor/tiled/steel_dirty/dark,
 /area/space)
 "mh" = (
@@ -1201,6 +1581,17 @@
 	},
 /turf/simulated/floor/wood,
 /area/space)
+"mq" = (
+/obj/structure/table/standard,
+/obj/item/roller{
+	pixel_y = 16
+	},
+/obj/item/roller{
+	pixel_y = 8
+	},
+/obj/item/roller,
+/turf/simulated/floor/tiled/kafel_full/green,
+/area/space)
 "mr" = (
 /obj/machinery/light/spot{
 	dir = 4
@@ -1230,6 +1621,26 @@
 	},
 /turf/simulated/floor/tiled/red,
 /area/space)
+"mx" = (
+/obj/structure/table/standard,
+/obj/item/bodybag/cryobag{
+	pixel_x = -2;
+	pixel_y = 2
+	},
+/obj/item/bodybag/cryobag{
+	pixel_x = 2;
+	pixel_y = 2
+	},
+/obj/item/bodybag/cryobag{
+	pixel_x = -2;
+	pixel_y = -2
+	},
+/obj/item/bodybag/cryobag,
+/turf/simulated/floor/tiled/kafel_full/green,
+/area/space)
+"mA" = (
+/turf/simulated/floor/tiled/kafel_full/green,
+/area/space)
 "mO" = (
 /obj/machinery/door/firedoor/glass{
 	dir = 4
@@ -1249,6 +1660,30 @@
 	icon_state = "2-8"
 	},
 /turf/simulated/floor/tiled/red,
+/area/space)
+"nd" = (
+/obj/machinery/door/airlock/glass/medical/polarized{
+	id_tint = "surgical suite";
+	name = "Medical Ward Surgical Suite-A";
+	req_one_access = null
+	},
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/obj/machinery/door/firedoor/glass,
+/turf/simulated/floor/tiled/white,
+/area/space)
+"nf" = (
+/obj/machinery/door/airlock/glass/medical/polarized{
+	id_tint = "surgical suite-2";
+	name = "Medical Ward Surgical Suite-B";
+	req_one_access = null
+	},
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/obj/machinery/door/firedoor/glass,
+/turf/simulated/floor/tiled/white,
 /area/space)
 "nk" = (
 /obj/machinery/camera/network/talon{
@@ -1271,6 +1706,12 @@
 	},
 /turf/simulated/floor/tiled/kafel_full/yellow,
 /area/space)
+"nx" = (
+/obj/structure/cable{
+	icon_state = "1-4"
+	},
+/turf/simulated/floor/tiled/white,
+/area/space)
 "nD" = (
 /obj/machinery/air_alarm/talon/north_mount,
 /turf/simulated/floor/tiled/kafel_full/red,
@@ -1289,6 +1730,17 @@
 	color = "#A9A9A9"
 	},
 /area/space)
+"nK" = (
+/obj/structure/table/reinforced,
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/machinery/computer/med_data/laptop{
+	dir = 4;
+	pixel_y = 6
+	},
+/turf/simulated/floor/tiled/kafel_full/green,
+/area/space)
 "nM" = (
 /obj/structure/table/hardwoodtable,
 /obj/machinery/reagentgrinder{
@@ -1299,6 +1751,21 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/wood,
+/area/space)
+"nQ" = (
+/obj/structure/window/reinforced/tinted/frosted{
+	dir = 1
+	},
+/obj/structure/morgue/crematorium{
+	id = "medbay_crematorium1"
+	},
+/obj/machinery/button/crematorium{
+	id = "medbay_crematorium1";
+	pixel_x = -23;
+	pixel_y = -2;
+	req_access = list(5)
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
 /area/space)
 "oa" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
@@ -1369,13 +1836,19 @@
 /obj/machinery/door/firedoor/glass{
 	dir = 4
 	},
-/turf/simulated/floor/tiled/red,
+/turf/simulated/floor/tiled/kafel_full/red,
 /area/space)
 "oQ" = (
 /obj/machinery/air_alarm/talon/north_mount,
 /turf/simulated/floor/tiled/monodark{
 	color = "#A9A9A9"
 	},
+/area/space)
+"oS" = (
+/obj/structure/filingcabinet/chestdrawer{
+	name = "Medical Forms"
+	},
+/turf/simulated/floor/tiled/kafel_full/green,
 /area/space)
 "pa" = (
 /obj/structure/table/rack/shelf/steel,
@@ -1432,6 +1905,25 @@
 "pl" = (
 /turf/simulated/floor/wood,
 /area/space)
+"pw" = (
+/obj/structure/cable{
+	icon_state = "1-4"
+	},
+/turf/simulated/floor/tiled/kafel_full/green,
+/area/space)
+"pJ" = (
+/obj/structure/bed/chair,
+/turf/simulated/floor/tiled/kafel_full/beige,
+/area/space)
+"pL" = (
+/obj/structure/table/borosilicate,
+/obj/effect/floor_decal/carpet/blue,
+/obj/machinery/button/windowtint/multitint{
+	id = "senior_physician";
+	pixel_x = 5
+	},
+/turf/simulated/floor/carpet/bcarpet,
+/area/space)
 "pQ" = (
 /obj/machinery/light/spot{
 	dir = 1
@@ -1449,6 +1941,24 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/red,
+/area/space)
+"ql" = (
+/obj/structure/morgue{
+	dir = 1
+	},
+/obj/structure/window/reinforced/tinted/frosted{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/space)
+"qo" = (
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 5
+	},
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled/techfloor,
 /area/space)
 "qq" = (
 /obj/machinery/camera/network/talon{
@@ -1526,6 +2036,15 @@
 	},
 /turf/simulated/floor/tiled/steel_dirty/dark,
 /area/space)
+"qY" = (
+/obj/machinery/air_alarm/talon/north_mount,
+/obj/machinery/camera/network/talon{
+	name = "andromeda";
+	network = list("AndromedaHaven");
+	dir = 4
+	},
+/turf/simulated/floor/tiled/kafel_full/yellow,
+/area/space)
 "qZ" = (
 /obj/machinery/light/spot{
 	dir = 4
@@ -1546,6 +2065,15 @@
 "re" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/tiled/yellow,
+/area/space)
+"rf" = (
+/obj/structure/bed/chair/backed_grey{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/kafel_full/green,
+/area/space)
+"rg" = (
+/turf/simulated/floor/tiled/techfloor/grid,
 /area/space)
 "rm" = (
 /obj/machinery/door/airlock/security{
@@ -1610,6 +2138,10 @@
 	color = "#A9A9A9"
 	},
 /area/space)
+"rI" = (
+/obj/machinery/air_alarm/talon/east_mount,
+/turf/simulated/floor/tiled/techfloor,
+/area/space)
 "rJ" = (
 /obj/structure/table/marble,
 /turf/simulated/floor/carpet/bcarpet,
@@ -1624,6 +2156,7 @@
 /obj/machinery/door/firedoor/glass{
 	dir = 1
 	},
+/obj/map_helper/access_helper/airlock/station/security/armory,
 /turf/simulated/floor/tiled/steel_dirty/dark,
 /area/space)
 "rM" = (
@@ -1776,6 +2309,20 @@
 	color = "#A9A9A9"
 	},
 /area/space)
+"sK" = (
+/obj/structure/table/borosilicate,
+/obj/machinery/computer/crew{
+	dir = 1
+	},
+/obj/effect/floor_decal/carpet/blue,
+/obj/effect/floor_decal/carpet/blue{
+	dir = 4
+	},
+/obj/effect/floor_decal/carpet/blue{
+	dir = 6
+	},
+/turf/simulated/floor/carpet/bcarpet,
+/area/space)
 "sZ" = (
 /obj/structure/table/steel_reinforced,
 /obj/machinery/computer/secure_data,
@@ -1812,6 +2359,24 @@
 /turf/simulated/floor/tiled/dark{
 	color = "#A9A9A9"
 	},
+/area/space)
+"tQ" = (
+/obj/machinery/light/spot{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/kafel_full/green,
+/area/space)
+"tT" = (
+/obj/structure/cable{
+	icon_state = "1-4"
+	},
+/turf/simulated/floor/tiled/dark{
+	color = "#A9A9A9"
+	},
+/area/space)
+"ua" = (
+/obj/machinery/light/small,
+/turf/simulated/floor/tiled/white,
 /area/space)
 "ub" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
@@ -1874,9 +2439,38 @@
 /obj/structure/window/phoronreinforced,
 /turf/simulated/floor/reinforced,
 /area/space)
+"uK" = (
+/obj/effect/floor_decal/carpet/blue{
+	dir = 8
+	},
+/obj/effect/floor_decal/carpet/blue{
+	dir = 1
+	},
+/obj/effect/floor_decal/carpet/blue{
+	dir = 9
+	},
+/turf/simulated/floor/carpet/bcarpet,
+/area/space)
+"uP" = (
+/turf/simulated/wall/r_wall/prepainted/medical,
+/area/space)
 "uX" = (
 /obj/machinery/air_alarm/talon/east_mount,
 /turf/simulated/floor/wood,
+/area/space)
+"uY" = (
+/obj/structure/table/reinforced,
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/obj/machinery/computer/crew,
+/turf/simulated/floor/tiled/kafel_full/green,
+/area/space)
+"uZ" = (
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/tiled/kafel_full/green,
 /area/space)
 "vc" = (
 /obj/structure/table/steel,
@@ -1933,6 +2527,12 @@
 	},
 /turf/simulated/floor/tiled/kafel_full/red,
 /area/space)
+"vW" = (
+/obj/machinery/sleeper{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/kafel_full/green,
+/area/space)
 "wb" = (
 /obj/machinery/door/airlock/security{
 	name = "Security North Hallway"
@@ -1942,6 +2542,26 @@
 	},
 /obj/map_helper/access_helper/airlock/station/security/department,
 /turf/simulated/floor/tiled/red,
+/area/space)
+"wc" = (
+/obj/machinery/door/airlock/medical{
+	name = "Medical Ward Reception"
+	},
+/obj/machinery/door/firedoor/glass{
+	dir = 4;
+	req_one_access = list(18,47)
+	},
+/turf/simulated/floor/tiled/kafel_full/beige,
+/area/space)
+"wm" = (
+/obj/structure/table/standard,
+/obj/item/storage/box/syringes{
+	pixel_x = -5
+	},
+/obj/item/storage/box/traumainjectors{
+	pixel_x = 5
+	},
+/turf/simulated/floor/tiled/kafel_full/green,
 /area/space)
 "wq" = (
 /obj/structure/cable{
@@ -1953,6 +2573,12 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/yellow,
+/area/space)
+"wt" = (
+/obj/machinery/light/small/emergency{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
 /area/space)
 "wE" = (
 /obj/structure/extinguisher_cabinet{
@@ -2040,6 +2666,17 @@
 	},
 /obj/map_helper/access_helper/airlock/station/security/department,
 /turf/simulated/floor/tiled/red,
+/area/space)
+"xr" = (
+/obj/structure/table/reinforced,
+/obj/machinery/reagentgrinder{
+	pixel_y = 9;
+	layer = 3
+	},
+/obj/item/stack/material/phoron{
+	amount = 6
+	},
+/turf/simulated/floor/tiled/kafel_full/yellow,
 /area/space)
 "xz" = (
 /obj/structure/lattice,
@@ -2131,6 +2768,10 @@
 	color = "#A9A9A9"
 	},
 /area/space)
+"xD" = (
+/obj/machinery/chem_master,
+/turf/simulated/floor/tiled/kafel_full/yellow,
+/area/space)
 "xK" = (
 /obj/machinery/light/spot{
 	dir = 4
@@ -2138,6 +2779,10 @@
 /turf/simulated/floor/tiled/techmaint{
 	color = "#A9A9A9"
 	},
+/area/space)
+"xL" = (
+/obj/machinery/vitals_monitor,
+/turf/simulated/floor/tiled/kafel_full/green,
 /area/space)
 "xN" = (
 /obj/structure/cable{
@@ -2157,6 +2802,15 @@
 	},
 /turf/simulated/floor/tiled/kafel_full/red,
 /area/space)
+"xZ" = (
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 8
+	},
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/space)
 "ye" = (
 /obj/structure/cable{
 	icon_state = "1-4"
@@ -2165,6 +2819,10 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/red,
+/area/space)
+"yf" = (
+/obj/machinery/recharge_station,
+/turf/simulated/floor/tiled/kafel_full/green,
 /area/space)
 "ym" = (
 /obj/machinery/door/airlock/multi_tile{
@@ -2178,6 +2836,12 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor,
+/area/space)
+"yt" = (
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled/kafel_full/beige,
 /area/space)
 "yz" = (
 /obj/structure/closet/medical_wall{
@@ -2200,6 +2864,13 @@
 /turf/simulated/floor/tiled/dark{
 	color = "#A9A9A9"
 	},
+/area/space)
+"yH" = (
+/obj/machinery/light/spot{
+	dir = 8
+	},
+/obj/machinery/vending/blood,
+/turf/simulated/floor/tiled/kafel_full/green,
 /area/space)
 "yM" = (
 /obj/machinery/door/firedoor/glass{
@@ -2227,9 +2898,40 @@
 /obj/machinery/air_alarm/talon/east_mount,
 /turf/simulated/floor/reinforced,
 /area/space)
+"yZ" = (
+/obj/structure/table/reinforced,
+/obj/item/reagent_containers/glass/beaker/large{
+	pixel_x = 7
+	},
+/obj/item/reagent_containers/glass/beaker/large{
+	pixel_x = -5
+	},
+/obj/item/reagent_containers/dropper,
+/obj/machinery/light/spot{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/kafel_full/yellow,
+/area/space)
 "za" = (
 /obj/structure/bed/chair,
 /turf/simulated/floor/tiled/yellow,
+/area/space)
+"zb" = (
+/obj/machinery/light/spot{
+	dir = 1
+	},
+/obj/structure/bed/chair,
+/turf/simulated/floor/tiled/kafel_full/beige,
+/area/space)
+"zk" = (
+/obj/effect/floor_decal/carpet/blue{
+	dir = 8
+	},
+/obj/effect/floor_decal/carpet/blue,
+/obj/effect/floor_decal/carpet/blue{
+	dir = 10
+	},
+/turf/simulated/floor/carpet/bcarpet,
 /area/space)
 "zt" = (
 /obj/effect/floor_decal/carpet/blue{
@@ -2288,6 +2990,7 @@
 /area/space)
 "Ac" = (
 /obj/machinery/air_alarm/talon/south_mount,
+/obj/machinery/recharge_station,
 /turf/simulated/floor/tiled/yellow,
 /area/space)
 "Ah" = (
@@ -2303,6 +3006,15 @@
 	},
 /turf/simulated/floor/tiled/kafel_full/yellow,
 /area/space)
+"An" = (
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/structure/cable{
+	icon_state = "1-8"
+	},
+/turf/simulated/floor/tiled/kafel_full/beige,
+/area/space)
 "Ao" = (
 /obj/structure/table/reinforced,
 /obj/item/paper{
@@ -2314,6 +3026,17 @@
 	req_one_access = list(18,47)
 	},
 /turf/simulated/floor/tiled/kafel_full/yellow,
+/area/space)
+"Aq" = (
+/obj/machinery/door/airlock/multi_tile/glass/medical{
+	dir = 4;
+	name = "Medical Ward Eastern Hallway"
+	},
+/obj/machinery/door/firedoor/glass{
+	dir = 4;
+	req_one_access = list(18,47)
+	},
+/turf/simulated/floor/tiled/kafel_full/green,
 /area/space)
 "Ax" = (
 /obj/machinery/light/spot{
@@ -2341,6 +3064,13 @@
 	},
 /turf/simulated/floor/tiled/kafel_full/yellow,
 /area/space)
+"AE" = (
+/obj/machinery/light/spot{
+	dir = 8
+	},
+/obj/machinery/vending/medical,
+/turf/simulated/floor/tiled/kafel_full/green,
+/area/space)
 "AI" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/item/gun/energy/sniperrifle{
@@ -2352,6 +3082,18 @@
 /obj/structure/window/phoronreinforced,
 /turf/simulated/floor/reinforced,
 /area/space)
+"AN" = (
+/obj/structure/table/standard,
+/obj/machinery/recharger{
+	pixel_x = -5;
+	pixel_y = -2
+	},
+/obj/machinery/recharger{
+	pixel_x = 5;
+	pixel_y = 2
+	},
+/turf/simulated/floor/tiled/kafel_full/green,
+/area/space)
 "Bd" = (
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -2362,6 +3104,28 @@
 /turf/simulated/floor/tiled/techmaint{
 	color = "#A9A9A9"
 	},
+/area/space)
+"Be" = (
+/obj/machinery/door/airlock/multi_tile/glass/medical{
+	dir = 4;
+	name = "Medical Ward Treatment Centre"
+	},
+/obj/machinery/door/firedoor/glass{
+	dir = 4;
+	req_one_access = list(18,47)
+	},
+/turf/simulated/floor/tiled/kafel_full/beige,
+/area/space)
+"Bi" = (
+/obj/structure/table/standard,
+/obj/machinery/lathe/medical/stocked{
+	pixel_x = 4
+	},
+/obj/fiftyspawner/steel,
+/obj/fiftyspawner/steel,
+/obj/fiftyspawner/glass,
+/obj/fiftyspawner/glass,
+/turf/simulated/floor/tiled/kafel_full/gray,
 /area/space)
 "Bm" = (
 /obj/structure/cable{
@@ -2378,6 +3142,14 @@
 	icon_state = "1-8"
 	},
 /turf/simulated/floor/tiled/red,
+/area/space)
+"Bt" = (
+/obj/machinery/computer/card{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/dark{
+	color = "#A9A9A9"
+	},
 /area/space)
 "Bu" = (
 /obj/structure/cable{
@@ -2446,6 +3218,17 @@
 	color = "#A9A9A9"
 	},
 /area/space)
+"BT" = (
+/obj/machinery/door/airlock/medical{
+	name = "Medical Ward Lobby";
+	req_one_access = null
+	},
+/obj/machinery/door/firedoor/glass{
+	dir = 4;
+	req_one_access = list(18,47)
+	},
+/turf/simulated/floor/tiled/kafel_full/beige,
+/area/space)
 "BU" = (
 /obj/structure/cable{
 	icon_state = "2-8"
@@ -2506,6 +3289,33 @@
 "Cr" = (
 /turf/space/basic,
 /area/space)
+"Cu" = (
+/obj/structure/table/borosilicate,
+/obj/machinery/computer/skills{
+	pixel_x = -4;
+	pixel_y = 6
+	},
+/obj/machinery/computer/med_data/laptop{
+	pixel_x = 8
+	},
+/obj/effect/floor_decal/carpet/blue{
+	dir = 4
+	},
+/obj/effect/floor_decal/carpet/blue{
+	dir = 1
+	},
+/obj/effect/floor_decal/carpet/blue{
+	dir = 5
+	},
+/turf/simulated/floor/carpet/bcarpet,
+/area/space)
+"Cx" = (
+/obj/machinery/power/apc/high/east_mount,
+/obj/structure/cable{
+	icon_state = "0-8"
+	},
+/turf/simulated/floor/tiled/white,
+/area/space)
 "CE" = (
 /obj/structure/table/borosilicate,
 /obj/item/paper_bin{
@@ -2520,6 +3330,25 @@
 	pixel_x = 5
 	},
 /turf/simulated/floor/tiled/steel_dirty/dark,
+/area/space)
+"CL" = (
+/obj/structure/table/standard,
+/obj/item/storage/box/bodybags{
+	pixel_x = 2;
+	pixel_y = 2
+	},
+/obj/item/storage/box/bodybags{
+	pixel_x = -2;
+	pixel_y = -2
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/space)
+"CQ" = (
+/obj/structure/transit_tube/high_velocity,
+/turf/simulated/wall/r_wall/prepainted{
+	integrity_flags = 1;
+	integrity_enabled = 0
+	},
 /area/space)
 "CR" = (
 /obj/structure/transit_tube/high_velocity,
@@ -2550,6 +3379,13 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/red,
+/area/space)
+"Ds" = (
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/obj/machinery/air_alarm/talon/east_mount,
+/turf/simulated/floor/tiled/kafel_full/beige,
 /area/space)
 "Dw" = (
 /obj/machinery/vending/snack,
@@ -2606,12 +3442,41 @@
 /obj/structure/cable,
 /turf/simulated/floor/tiled/kafel_full/red,
 /area/space)
+"Ec" = (
+/obj/machinery/door/firedoor/glass{
+	dir = 4;
+	req_one_access = list(18,47)
+	},
+/turf/simulated/floor/tiled/kafel_full/beige,
+/area/space)
+"Ef" = (
+/obj/structure/table/reinforced,
+/obj/machinery/camera/network/talon{
+	name = "andromeda";
+	network = list("AndromedaHaven");
+	dir = 8
+	},
+/turf/simulated/floor/tiled/white,
+/area/space)
+"Ej" = (
+/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/turf/simulated/wall/r_wall/prepainted/medical{
+	integrity_flags = 1;
+	integrity_enabled = 0
+	},
+/area/space)
 "Ek" = (
 /obj/machinery/power/apc/high/north_mount,
 /obj/structure/cable{
 	icon_state = "0-2"
 	},
 /turf/simulated/floor/tiled/kafel_full/red,
+/area/space)
+"Em" = (
+/obj/structure/cable{
+	icon_state = "1-8"
+	},
+/turf/simulated/floor/tiled/white,
 /area/space)
 "En" = (
 /obj/structure/window/reinforced{
@@ -2712,6 +3577,15 @@
 	},
 /turf/simulated/floor/tiled/kafel_full/red,
 /area/space)
+"Fp" = (
+/obj/machinery/button/windowtint/multitint{
+	id = "surgical suite-1";
+	pixel_x = -24;
+	pixel_y = 7
+	},
+/obj/structure/closet/crate/biohazard,
+/turf/simulated/floor/tiled/white,
+/area/space)
 "Ft" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/item/gunbox{
@@ -2742,6 +3616,29 @@
 	color = "#A9A9A9"
 	},
 /area/space)
+"Fu" = (
+/obj/effect/floor_decal/corner/lightorange{
+	dir = 10
+	},
+/obj/effect/floor_decal/corner/lightorange{
+	dir = 5
+	},
+/obj/structure/closet/wardrobe/chemistry_white{
+	name = "chemists locker";
+	req_access = list(33)
+	},
+/obj/item/storage/belt/medical,
+/obj/item/hand_labeler,
+/obj/item/mass_spectrometer/adv,
+/obj/item/clothing/glasses/science{
+	pixel_x = 2;
+	pixel_y = 2
+	},
+/obj/structure/window/reinforced/tinted{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/kafel_full/green,
+/area/space)
 "Fx" = (
 /turf/simulated/floor/tiled/yellow,
 /area/space)
@@ -2756,6 +3653,12 @@
 /turf/simulated/floor/tiled/techmaint{
 	color = "#A9A9A9"
 	},
+/area/space)
+"FO" = (
+/obj/structure/window/reinforced/tinted/frosted{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
 /area/space)
 "FV" = (
 /obj/machinery/camera/network/talon{
@@ -2793,6 +3696,17 @@
 	},
 /turf/simulated/floor/reinforced,
 /area/space)
+"Gg" = (
+/obj/machinery/door/airlock/multi_tile/glass/medical{
+	dir = 1;
+	name = "Medical Ward Storage Bay"
+	},
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/obj/machinery/door/firedoor/glass,
+/turf/simulated/floor/tiled/kafel_full/green,
+/area/space)
 "Gh" = (
 /obj/structure/bed/chair/sofa/black/right,
 /turf/simulated/floor/carpet/bcarpet,
@@ -2812,6 +3726,21 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/kafel_full/gray,
+/area/space)
+"GE" = (
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/structure/cable{
+	icon_state = "2-4"
+	},
+/turf/simulated/floor/tiled/kafel_full/beige,
+/area/space)
+"GF" = (
+/obj/structure/morgue{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
 /area/space)
 "GK" = (
 /obj/structure/cable{
@@ -2839,13 +3768,25 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
-/turf/simulated/floor/tiled/red,
+/turf/simulated/floor/tiled/kafel_full/red,
 /area/space)
 "He" = (
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/kafel_full/yellow,
+/area/space)
+"Hn" = (
+/obj/structure/bed/chair/bay/comfy/teal{
+	dir = 8
+	},
+/obj/effect/floor_decal/carpet/blue{
+	dir = 4
+	},
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/carpet/bcarpet,
 /area/space)
 "Hz" = (
 /obj/structure/table/rack/shelf/steel,
@@ -2884,6 +3825,12 @@
 	},
 /turf/simulated/floor/tiled/old_tile/purple,
 /area/space)
+"HJ" = (
+/obj/machinery/light/spot{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/kafel_full/red,
+/area/space)
 "HP" = (
 /obj/machinery/air_alarm/talon/west_mount,
 /turf/simulated/floor/tiled/yellow,
@@ -2904,6 +3851,10 @@
 /turf/simulated/floor/tiled/dark{
 	color = "#A9A9A9"
 	},
+/area/space)
+"If" = (
+/obj/machinery/air_alarm/talon/east_mount,
+/turf/simulated/floor/tiled/white,
 /area/space)
 "Ig" = (
 /obj/structure/cable{
@@ -3147,6 +4098,27 @@
 	color = "#A9A9A9"
 	},
 /area/space)
+"JC" = (
+/obj/structure/closet/secure_closet/paramedic,
+/obj/item/stack/medical/splint,
+/obj/item/bodybag/cryobag,
+/obj/item/bodybag/cryobag,
+/obj/item/storage/box/flare,
+/obj/structure/window/reinforced/tinted{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/paleblue{
+	dir = 10
+	},
+/obj/effect/floor_decal/corner/paleblue{
+	dir = 5
+	},
+/turf/simulated/floor/tiled/kafel_full/green,
+/area/space)
+"JF" = (
+/obj/machinery/air_alarm/talon/south_mount,
+/turf/simulated/floor/tiled/kafel_full/beige,
+/area/space)
 "JP" = (
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -3167,6 +4139,12 @@
 	dir = 5
 	},
 /turf/simulated/floor/carpet/patterened,
+/area/space)
+"JS" = (
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/tiled/white,
 /area/space)
 "Kb" = (
 /obj/effect/floor_decal/carpet/blue{
@@ -3334,6 +4312,16 @@
 	},
 /turf/simulated/floor/reinforced,
 /area/space)
+"LF" = (
+/obj/machinery/power/apc/high/south_mount,
+/obj/structure/cable{
+	icon_state = "0-4"
+	},
+/turf/simulated/floor/tiled/kafel_full/green,
+/area/space)
+"LG" = (
+/turf/simulated/floor/tiled/kafel_full/beige,
+/area/space)
 "LM" = (
 /obj/structure/table/reinforced,
 /obj/machinery/door/window/southright{
@@ -3365,6 +4353,16 @@
 	},
 /turf/simulated/floor/tiled/kafel_full/gray,
 /area/space)
+"LY" = (
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/machinery/door/firedoor/glass{
+	dir = 4;
+	req_one_access = list(18,47)
+	},
+/turf/simulated/floor/tiled/kafel_full/green,
+/area/space)
 "Mj" = (
 /obj/machinery/light/spot{
 	dir = 1
@@ -3394,12 +4392,27 @@
 	},
 /turf/simulated/floor/tiled/kafel_full/yellow,
 /area/space)
+"Mq" = (
+/obj/machinery/door/airlock/multi_tile/glass/medical{
+	dir = 4;
+	name = "Medical Ward Morgue and Cryo-Therapy"
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/space)
 "Mr" = (
 /turf/simulated/floor/tiled/kafel_full/red,
 /area/space)
 "Ms" = (
 /obj/machinery/light/spot,
 /turf/simulated/floor/tiled/yellow,
+/area/space)
+"ME" = (
+/obj/machinery/door/window/eastright{
+	dir = 1;
+	name = "Morgue";
+	req_one_access = list(6)
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
 /area/space)
 "MF" = (
 /turf/simulated/floor/tiled/old_tile/purple,
@@ -3470,6 +4483,16 @@
 	color = "#A9A9A9"
 	},
 /area/space)
+"Nt" = (
+/obj/machinery/camera/network/talon{
+	name = "andromeda";
+	network = list("AndromedaHaven");
+	dir = 8
+	},
+/turf/simulated/floor/tiled/dark{
+	color = "#A9A9A9"
+	},
+/area/space)
 "Nw" = (
 /turf/simulated/floor/carpet/lythios43c,
 /area/space)
@@ -3530,6 +4553,39 @@
 	density = 0
 	},
 /turf/simulated/floor/tiled/kafel_full/red,
+/area/space)
+"Oq" = (
+/obj/structure/table/borosilicate,
+/obj/item/paper_bin{
+	pixel_y = 8
+	},
+/obj/item/stamp/cmo{
+	pixel_x = -5;
+	pixel_y = 5;
+	name = "senior physician's rubber stamp"
+	},
+/obj/item/stamp/denied{
+	pixel_y = 3
+	},
+/obj/item/pen/fountain{
+	pixel_y = 8;
+	pixel_x = 2
+	},
+/obj/effect/floor_decal/carpet/blue{
+	dir = 1
+	},
+/turf/simulated/floor/carpet/bcarpet,
+/area/space)
+"OI" = (
+/obj/machinery/light/spot{
+	dir = 4
+	},
+/obj/structure/cable{
+	icon_state = "2-8"
+	},
+/turf/simulated/floor/tiled/dark{
+	color = "#A9A9A9"
+	},
 /area/space)
 "OK" = (
 /obj/structure/closet/secure_closet/warden,
@@ -3594,6 +4650,51 @@
 	},
 /turf/simulated/floor/tiled/red,
 /area/space)
+"Pe" = (
+/obj/machinery/camera/network/talon{
+	name = "andromeda";
+	network = list("AndromedaHaven");
+	dir = 2
+	},
+/turf/simulated/floor/tiled/kafel_full/green,
+/area/space)
+"Pf" = (
+/obj/machinery/power/apc/high/east_mount,
+/obj/structure/cable,
+/turf/simulated/floor/tiled/dark{
+	color = "#A9A9A9"
+	},
+/area/space)
+"Pj" = (
+/obj/structure/cable{
+	icon_state = "1-8"
+	},
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled/kafel_full/beige,
+/area/space)
+"Pq" = (
+/obj/machinery/door/airlock/multi_tile/glass/medical{
+	name = "Medical Ward Southern Hallway"
+	},
+/turf/simulated/floor/tiled/kafel_full/beige,
+/area/space)
+"Pr" = (
+/obj/machinery/camera/network/talon{
+	name = "andromeda";
+	network = list("AndromedaHaven");
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/space)
+"PP" = (
+/obj/machinery/atmospherics/pipe/manifold/hidden,
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/space)
 "PQ" = (
 /obj/structure/table/hardwoodtable,
 /obj/structure/cable{
@@ -3614,10 +4715,23 @@
 /obj/machinery/light/spot,
 /turf/simulated/floor/tiled/techfloor,
 /area/space)
+"Qg" = (
+/obj/machinery/vending/blood,
+/turf/simulated/floor/tiled/kafel_full/gray,
+/area/space)
 "Ql" = (
 /turf/simulated/floor/tiled/techmaint{
 	color = "#A9A9A9"
 	},
+/area/space)
+"Qq" = (
+/obj/effect/floor_decal/carpet/blue{
+	dir = 8
+	},
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/carpet/bcarpet,
 /area/space)
 "Qz" = (
 /obj/structure/table/rack/shelf/steel,
@@ -3718,6 +4832,12 @@
 	},
 /turf/simulated/floor/tiled/kafel_full/yellow,
 /area/space)
+"Rf" = (
+/obj/structure/cable{
+	icon_state = "2-8"
+	},
+/turf/simulated/floor/tiled/kafel_full/green,
+/area/space)
 "Rk" = (
 /obj/structure/bed/chair/sofa/black/right{
 	dir = 1
@@ -3768,6 +4888,11 @@
 	icon_state = "2-4"
 	},
 /turf/simulated/floor/tiled/kafel_full/red,
+/area/space)
+"RB" = (
+/obj/machinery/portable_atmospherics/canister/oxygen/prechilled,
+/obj/machinery/atmospherics/portables_connector,
+/turf/simulated/floor/tiled/techfloor,
 /area/space)
 "RE" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
@@ -3829,6 +4954,15 @@
 	},
 /turf/simulated/floor/wood,
 /area/space)
+"RX" = (
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/obj/structure/bed/chair/bay/comfy/teal{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/steel_dirty/dark,
+/area/space)
 "Sm" = (
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/dark{
@@ -3867,6 +5001,23 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/carpet/patterened,
+/area/space)
+"SF" = (
+/obj/structure/table/reinforced,
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/item/paper_bin{
+	pixel_x = -1;
+	pixel_y = 7
+	},
+/obj/item/pen{
+	pixel_y = 7
+	},
+/turf/simulated/floor/tiled/kafel_full/green,
 /area/space)
 "SL" = (
 /obj/structure/table/rack/shelf/steel,
@@ -3942,6 +5093,12 @@
 /turf/simulated/floor/tiled/techmaint{
 	color = "#A9A9A9"
 	},
+/area/space)
+"Tm" = (
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/tiled/kafel_full/gray,
 /area/space)
 "Tv" = (
 /obj/structure/closet/secure_closet/cargotech,
@@ -4019,6 +5176,37 @@
 /turf/simulated/floor/tiled/techmaint{
 	color = "#A9A9A9"
 	},
+/area/space)
+"TK" = (
+/obj/machinery/camera/network/talon{
+	name = "andromeda";
+	network = list("AndromedaHaven");
+	dir = 1
+	},
+/turf/simulated/floor/tiled/kafel_full/green,
+/area/space)
+"TP" = (
+/turf/simulated/wall/r_wall/prepainted/medical{
+	integrity_flags = 1;
+	integrity_enabled = 0
+	},
+/area/space)
+"TR" = (
+/obj/machinery/body_scanconsole,
+/turf/simulated/floor/tiled/kafel_full/green,
+/area/space)
+"TT" = (
+/obj/structure/cable{
+	icon_state = "2-4"
+	},
+/turf/simulated/floor/tiled/kafel_full/yellow,
+/area/space)
+"TY" = (
+/obj/machinery/power/apc/high/west_mount,
+/obj/structure/cable{
+	icon_state = "0-4"
+	},
+/turf/simulated/floor/tiled/white,
 /area/space)
 "TZ" = (
 /obj/structure/cable{
@@ -4154,9 +5342,52 @@
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/old_tile/purple,
 /area/space)
+"Vn" = (
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 9;
+	layer = 2
+	},
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/space)
+"Vs" = (
+/obj/machinery/camera/network/talon{
+	name = "andromeda";
+	network = list("AndromedaHaven");
+	dir = 1
+	},
+/turf/simulated/floor/tiled/kafel_full/beige,
+/area/space)
 "Vu" = (
 /obj/machinery/air_alarm/talon/east_mount,
 /turf/simulated/floor/tiled/steel_dirty/dark,
+/area/space)
+"Vv" = (
+/obj/structure/table/rack/shelf,
+/obj/item/storage/firstaid/fire{
+	pixel_y = 9
+	},
+/obj/item/storage/firstaid/o2{
+	pixel_y = 1
+	},
+/obj/item/storage/firstaid/toxin{
+	pixel_y = -6
+	},
+/obj/item/storage/firstaid/toxin{
+	pixel_y = -6
+	},
+/obj/item/storage/firstaid/o2{
+	pixel_y = 1
+	},
+/obj/item/storage/firstaid/fire{
+	pixel_y = 9
+	},
+/turf/simulated/floor/tiled/kafel_full/green,
 /area/space)
 "Vz" = (
 /obj/structure/cable{
@@ -4187,8 +5418,21 @@
 	},
 /turf/simulated/floor/tiled/kafel_full/red,
 /area/space)
+"VI" = (
+/obj/machinery/recharge_station,
+/obj/machinery/camera/network/talon{
+	name = "andromeda";
+	network = list("AndromedaHaven");
+	dir = 2
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/space)
 "VJ" = (
 /turf/simulated/floor/reinforced,
+/area/space)
+"VK" = (
+/obj/machinery/sleep_console,
+/turf/simulated/floor/tiled/kafel_full/green,
 /area/space)
 "VT" = (
 /obj/machinery/door/airlock/security{
@@ -4226,6 +5470,10 @@
 	color = "#A9A9A9"
 	},
 /area/space)
+"Wb" = (
+/obj/machinery/vending/medical,
+/turf/simulated/floor/tiled/kafel_full/gray,
+/area/space)
 "Wd" = (
 /obj/machinery/door/airlock/multi_tile{
 	color = "#A9A9A9";
@@ -4236,6 +5484,17 @@
 	color = "#A9A9A9"
 	},
 /area/space)
+"Wg" = (
+/obj/machinery/light/spot{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/kafel_full/beige,
+/area/space)
+"Wo" = (
+/obj/structure/lattice,
+/obj/structure/lattice,
+/turf/space/basic,
+/area/space)
 "Wt" = (
 /obj/machinery/camera/network/talon{
 	name = "andromeda";
@@ -4243,6 +5502,10 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/red,
+/area/space)
+"Wx" = (
+/obj/machinery/door/firedoor/glass,
+/turf/simulated/floor/tiled/kafel_full/green,
 /area/space)
 "WD" = (
 /obj/structure/window/reinforced{
@@ -4303,6 +5566,10 @@
 /obj/item/ammo_magazine/a5_7mm/five_seven/highcap,
 /turf/simulated/floor/reinforced,
 /area/space)
+"WV" = (
+/obj/machinery/atmospherics/component/unary/cryo_cell,
+/turf/simulated/floor/tiled/techfloor,
+/area/space)
 "WZ" = (
 /obj/structure/cable{
 	icon_state = "2-4"
@@ -4352,6 +5619,15 @@
 /obj/structure/window/phoronreinforced,
 /turf/simulated/floor/reinforced,
 /area/space)
+"Xi" = (
+/obj/structure/table/reinforced,
+/obj/machinery/camera/network/talon{
+	name = "andromeda";
+	network = list("AndromedaHaven");
+	dir = 4
+	},
+/turf/simulated/floor/tiled/white,
+/area/space)
 "Xk" = (
 /obj/machinery/vending/coffee{
 	dir = 8
@@ -4379,6 +5655,18 @@
 /turf/simulated/floor/tiled/dark{
 	color = "#A9A9A9"
 	},
+/area/space)
+"XE" = (
+/obj/structure/window/reinforced/tinted/frosted{
+	dir = 1
+	},
+/obj/structure/window/reinforced/tinted/frosted{
+	dir = 4
+	},
+/obj/structure/morgue{
+	dir = 2
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
 /area/space)
 "XL" = (
 /turf/simulated/wall/r_wall/prepainted/security{
@@ -4435,9 +5723,48 @@
 	},
 /turf/simulated/floor/wood,
 /area/space)
+"Yo" = (
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/machinery/door/firedoor/glass{
+	dir = 4;
+	req_one_access = list(18,47)
+	},
+/turf/simulated/floor/tiled/kafel_full/beige,
+/area/space)
+"Yr" = (
+/obj/machinery/door/airlock/medical{
+	name = "Medical Ward Lobby";
+	req_one_access = null
+	},
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/machinery/door/firedoor/glass{
+	dir = 4;
+	req_one_access = list(18,47)
+	},
+/turf/simulated/floor/tiled/kafel_full/beige,
+/area/space)
+"Yx" = (
+/mob/living/bot/medibot/medass{
+	name = "Mr Hoxworth";
+	desc = "A little British medical robot designed by robotics."
+	},
+/turf/simulated/floor/tiled/kafel_full/gray,
+/area/space)
 "YA" = (
 /obj/machinery/light/spot,
 /turf/simulated/floor/tiled/kafel_full/yellow,
+/area/space)
+"YF" = (
+/obj/structure/closet/medical_wall{
+	name = "defibrillator storage";
+	pixel_y = -32
+	},
+/obj/item/defib_kit/loaded,
+/turf/simulated/floor/tiled/kafel_full/green,
 /area/space)
 "YM" = (
 /obj/structure/table/hardwoodtable,
@@ -4523,6 +5850,10 @@
 	},
 /turf/simulated/floor/wood,
 /area/space)
+"ZF" = (
+/obj/structure/closet/crate/biohazard,
+/turf/simulated/floor/tiled/kafel_full/green,
+/area/space)
 "ZJ" = (
 /obj/structure/bed/chair/comfy/black{
 	dir = 8
@@ -4539,6 +5870,7 @@
 /obj/machinery/door/firedoor/glass{
 	dir = 1
 	},
+/obj/map_helper/access_helper/airlock/station/security/armory,
 /turf/simulated/floor/reinforced,
 /area/space)
 "ZN" = (
@@ -14804,36 +16136,36 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
+fd
+fd
+fd
+fd
+fd
+fd
+fd
+fd
+fd
+fd
+fd
+fd
+fd
+fd
+fd
+fd
+fd
+fd
+fd
+fd
+fd
+fd
+fd
+fd
+fd
+fd
+fd
+fd
+fd
+fd
 Cr
 Cr
 Cr
@@ -14998,36 +16330,36 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
+fd
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+fd
 Cr
 Cr
 Cr
@@ -15192,8 +16524,8 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
+fd
+xz
 XL
 XL
 XL
@@ -15220,8 +16552,8 @@ XL
 XL
 XL
 XL
-Cr
-Cr
+xz
+fd
 Cr
 Cr
 Cr
@@ -15386,8 +16718,8 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
+fd
+xz
 XL
 XL
 XL
@@ -15414,8 +16746,8 @@ XL
 XL
 XL
 XL
-Cr
-Cr
+xz
+fd
 Cr
 Cr
 Cr
@@ -15580,8 +16912,8 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
+fd
+xz
 XL
 XL
 XL
@@ -15608,8 +16940,8 @@ XL
 XL
 XL
 XL
-Cr
-Cr
+xz
+fd
 Cr
 Cr
 Cr
@@ -15774,8 +17106,8 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
+fd
+xz
 XL
 XL
 XL
@@ -15802,8 +17134,8 @@ OK
 XL
 XL
 XL
-Cr
-Cr
+xz
+fd
 Cr
 Cr
 Cr
@@ -15968,8 +17300,8 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
+fd
+xz
 XL
 XL
 XL
@@ -15996,8 +17328,8 @@ kZ
 XL
 XL
 XL
-Cr
-Cr
+xz
+fd
 Cr
 Cr
 Cr
@@ -16162,8 +17494,8 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
+fd
+xz
 XL
 XL
 XL
@@ -16190,8 +17522,8 @@ kZ
 XL
 XL
 XL
-Cr
-Cr
+xz
+fd
 Cr
 Cr
 Cr
@@ -16356,8 +17688,8 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
+fd
+xz
 XL
 XL
 XL
@@ -16379,13 +17711,13 @@ QE
 LP
 ju
 Kl
-LP
+RX
 UN
 XL
 XL
 XL
-Cr
-Cr
+xz
+fd
 Cr
 Cr
 Cr
@@ -16550,8 +17882,8 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
+fd
+xz
 XL
 XL
 XL
@@ -16578,12 +17910,12 @@ kZ
 XL
 XL
 XL
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
+xz
+fd
+fd
+fd
+fd
+fd
 Cr
 Cr
 Cr
@@ -16744,8 +18076,8 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
+fd
+xz
 XL
 XL
 XL
@@ -16772,15 +18104,15 @@ kZ
 XL
 XL
 XL
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
+xz
+fd
+fd
+xz
+xz
+fd
+fd
+fd
+fd
 Cr
 Cr
 Cr
@@ -16938,8 +18270,8 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
+fd
+xz
 XL
 XL
 XL
@@ -16966,15 +18298,15 @@ UE
 XL
 XL
 XL
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
+xz
+fd
+fd
+fd
+xz
+xz
+xz
+xz
+fd
 Cr
 Cr
 Cr
@@ -17132,8 +18464,8 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
+fd
+xz
 XL
 XL
 XL
@@ -17160,15 +18492,15 @@ XL
 XL
 XL
 XL
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
+xz
+xz
+xz
+fd
+xz
+xz
+xz
+xz
+fd
 Cr
 Cr
 Cr
@@ -17326,8 +18658,8 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
+fd
+xz
 XL
 XL
 XL
@@ -17356,13 +18688,13 @@ XL
 XL
 XL
 XL
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
+xz
+fd
+xz
+xz
+xz
+xz
+fd
 Cr
 Cr
 Cr
@@ -17520,8 +18852,8 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
+fd
+xz
 XL
 XL
 XL
@@ -17550,13 +18882,13 @@ XL
 XL
 XL
 XL
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
+xz
+fd
+xz
+xz
+xz
+xz
+fd
 Cr
 Cr
 Cr
@@ -17714,17 +19046,17 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
+fd
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
 XL
 XL
 cV
@@ -17744,13 +19076,13 @@ Mr
 Js
 XL
 XL
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
+xz
+fd
+xz
+xz
+xz
+xz
+fd
 Cr
 Cr
 Cr
@@ -17908,17 +19240,17 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
+fd
+fd
+fd
+fd
+fd
+fd
+fd
+fd
+fd
+fd
+xz
 XL
 XL
 iK
@@ -17938,13 +19270,13 @@ Mr
 IN
 XL
 XL
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
+xz
+fd
+xz
+xz
+xz
+xz
+fd
 Cr
 Cr
 Cr
@@ -18111,8 +19443,8 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
+fd
+xz
 XL
 XL
 qL
@@ -18132,13 +19464,13 @@ Mr
 UQ
 XL
 XL
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
+xz
+fd
+xz
+xz
+xz
+xz
+fd
 Cr
 Cr
 Cr
@@ -18305,8 +19637,8 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
+fd
+xz
 XL
 XL
 iK
@@ -18326,13 +19658,13 @@ Mr
 Js
 XL
 XL
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
+xz
+fd
+xz
+xz
+xz
+xz
+fd
 Cr
 Cr
 Cr
@@ -18494,13 +19826,13 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
+fd
+fd
+fd
+fd
+fd
+fd
+xz
 XL
 XL
 cV
@@ -18520,13 +19852,13 @@ Mr
 Js
 XL
 XL
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
+xz
+fd
+xz
+xz
+xz
+xz
+fd
 Cr
 Cr
 Cr
@@ -18688,13 +20020,13 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
+fd
+xz
+xz
+xz
+xz
+xz
+xz
 XL
 XL
 BA
@@ -18714,13 +20046,13 @@ XL
 XL
 XL
 XL
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
+xz
+fd
+xz
+xz
+xz
+xz
+fd
 Cr
 Cr
 Cr
@@ -18882,8 +20214,8 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
+fd
+xz
 XL
 XL
 XL
@@ -18908,13 +20240,13 @@ XL
 XL
 XL
 XL
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
+xz
+fd
+xz
+xz
+xz
+xz
+fd
 Cr
 Cr
 Cr
@@ -19076,8 +20408,8 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
+fd
+xz
 XL
 XL
 XL
@@ -19101,14 +20433,14 @@ XL
 XL
 XL
 XL
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
+xz
+xz
+fd
+xz
+xz
+xz
+xz
+fd
 Cr
 Cr
 Cr
@@ -19270,8 +20602,8 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
+fd
+xz
 XL
 XL
 qE
@@ -19295,14 +20627,14 @@ Fb
 Fb
 XL
 XL
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
+xz
+fd
+fd
+xz
+xz
+xz
+xz
+fd
 Cr
 Cr
 Cr
@@ -19464,8 +20796,8 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
+fd
+xz
 XL
 XL
 nD
@@ -19489,14 +20821,14 @@ BG
 LS
 XL
 XL
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
+xz
+fd
+xz
+Wo
+xz
+xz
+xz
+fd
 Cr
 Cr
 Cr
@@ -19658,8 +20990,8 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
+fd
+xz
 XL
 XL
 ar
@@ -19680,17 +21012,17 @@ Mr
 SR
 od
 SA
-dT
+fe
 XL
 XL
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
+xz
+fd
+xz
+Wo
+xz
+xz
+xz
+fd
 Cr
 Cr
 fd
@@ -19852,8 +21184,8 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
+fd
+xz
 XL
 XL
 KC
@@ -19877,14 +21209,14 @@ GV
 kH
 XL
 XL
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
+xz
+fd
+xz
+Wo
+xz
+xz
+xz
+fd
 Cr
 fd
 fd
@@ -20046,8 +21378,8 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
+fd
+xz
 XL
 XL
 kg
@@ -20071,14 +21403,14 @@ ZN
 xT
 XL
 XL
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
+xz
+fd
+xz
+Wo
+xz
+xz
+xz
+fd
 fd
 fd
 xz
@@ -20240,8 +21572,8 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
+fd
+xz
 XL
 XL
 Ek
@@ -20265,13 +21597,13 @@ Mr
 Ok
 XL
 XL
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
+xz
+fd
+xz
+Wo
+xz
+xz
+xz
 fd
 fd
 xz
@@ -20434,8 +21766,8 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
+fd
+xz
 XL
 XL
 TA
@@ -20459,12 +21791,12 @@ MK
 MK
 XL
 XL
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
+xz
+fd
+xz
+xz
+xz
+xz
 fd
 fd
 xz
@@ -20628,8 +21960,8 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
+fd
+xz
 XL
 XL
 XL
@@ -20653,11 +21985,11 @@ KC
 KC
 XL
 XL
-Cr
-Cr
-Cr
-Cr
-Cr
+xz
+fd
+xz
+xz
+xz
 fd
 fd
 xz
@@ -20822,8 +22154,8 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
+fd
+xz
 XL
 XL
 XL
@@ -20847,10 +22179,10 @@ xB
 KC
 XL
 XL
-Cr
-Cr
-Cr
-Cr
+xz
+fd
+xz
+xz
 fd
 fd
 xz
@@ -21016,14 +22348,14 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
+fd
+xz
+xz
+xz
+xz
+xz
+xz
+xz
 XL
 XL
 si
@@ -21041,9 +22373,9 @@ HT
 oj
 XL
 XL
-Cr
-Cr
-Cr
+xz
+fd
+xz
 fd
 fd
 xz
@@ -21210,14 +22542,14 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
+fd
+fd
+fd
+fd
+fd
+fd
+fd
+fd
 XL
 XL
 bs
@@ -21235,8 +22567,8 @@ rp
 tN
 XL
 XL
-Cr
-Cr
+xz
+fd
 fd
 fd
 xz
@@ -21429,7 +22761,7 @@ KC
 KC
 XL
 XL
-Cr
+xz
 fd
 fd
 xz
@@ -21623,7 +22955,7 @@ SL
 gI
 XL
 XL
-fd
+xz
 fd
 xz
 xz
@@ -22037,7 +23369,7 @@ in
 in
 in
 KC
-RS
+bM
 Kf
 KG
 KG
@@ -22178,18 +23510,18 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
+Ky
+Ky
+Ky
+Ky
+Ky
+Ky
+Ky
+Ky
+Ky
+Ky
+XL
+XL
 XL
 XL
 oJ
@@ -22372,23 +23704,23 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
 KC
 KC
-si
-si
-KH
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+Mr
+HJ
+ji
 XL
 XL
 XL
@@ -22566,18 +23898,18 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
+in
+in
+in
+in
+in
+in
+in
+in
+in
+in
+in
+in
 in
 in
 in
@@ -22760,18 +24092,18 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
+in
+in
+in
+in
+in
+in
+in
+in
+in
+in
+in
+in
 in
 in
 in
@@ -22954,18 +24286,18 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
+in
+in
+in
+in
+in
+in
+in
+in
+in
+in
+in
+in
 in
 in
 in
@@ -23148,18 +24480,18 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
+in
+in
+in
+in
+in
+in
+in
+in
+in
+in
+in
+in
 in
 in
 in
@@ -23342,23 +24674,23 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
 in
 in
 in
 in
-KC
+in
+in
+in
+in
+in
+in
+in
+in
+in
+in
+in
+in
+Lo
 kh
 gy
 np
@@ -23536,23 +24868,23 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
 in
 in
 in
 in
-KC
+in
+in
+in
+in
+in
+in
+in
+in
+in
+in
+in
+in
+HY
 Np
 Ql
 VJ
@@ -23730,24 +25062,24 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
 in
 in
 in
 in
-KC
-Ky
+in
+in
+in
+in
+in
+in
+in
+in
+in
+in
+in
+in
+HY
+TP
 XL
 XL
 XL
@@ -23924,24 +25256,24 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
 KC
 KC
 KC
 KC
 KC
-Ky
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+LG
+Wg
+yt
+TP
 XL
 XL
 XL
@@ -24118,25 +25450,25 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
 Ky
 Ky
 Ky
 Ky
 Ky
 Ky
-Cr
+Ky
+Ky
+Ky
+Ky
+TP
+TP
+TP
+TP
+BT
+uP
+Yr
+TP
+TP
 XL
 XL
 Uw
@@ -24320,17 +25652,17 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
+fd
+fd
+TP
+TP
+TP
+LG
+LG
+LG
+yt
+Vs
+TP
 XL
 XL
 XL
@@ -24514,17 +25846,17 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
+fd
+xz
+TP
+TP
+pJ
+LG
+LG
+LG
+yt
+JF
+TP
 XL
 XL
 XL
@@ -24708,24 +26040,24 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
+fd
+xz
+TP
+TP
+jO
+av
+aP
+aP
+bG
+LG
+TP
+TP
+xz
+xz
+xz
+xz
+xz
+fd
 fd
 fd
 xz
@@ -24902,25 +26234,25 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
+fd
+xz
+TP
+TP
+zb
+yt
+LG
+LG
+LG
+LG
+TP
+TP
+xz
+xz
+xz
+xz
+fd
+fd
+xz
 fd
 fd
 xz
@@ -25096,26 +26428,26 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
+fd
+xz
+TP
+TP
+pJ
+yt
+LG
+SF
+lG
+nK
+TP
+TP
+xz
+xz
+xz
+fd
+fd
+xz
+xz
+xz
 fd
 fd
 xz
@@ -25289,28 +26621,28 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
+fd
+fd
+xz
+TP
+TP
+pJ
+yt
+LG
+uY
+rf
+mA
+TP
+TP
+xz
+xz
+fd
+fd
+xz
+xz
+fd
+fd
+fd
 fd
 fd
 xz
@@ -25482,30 +26814,30 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
+fd
+fd
+xz
+xz
+TP
+TP
+pJ
+yt
+LG
+cq
+mA
+oS
+TP
+TP
+xz
+fd
+fd
+xz
+xz
+fd
+fd
+xz
+xz
+xz
 fd
 fd
 xz
@@ -25676,31 +27008,31 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
+fd
+xz
+xz
+TP
+TP
+TP
+TP
+Yo
+Be
+TP
+wc
+TP
+TP
+TP
+fd
+fd
+xz
+xz
+fd
+fd
+xz
+xz
+xz
+xz
+xz
 fd
 fd
 xz
@@ -25870,32 +27202,32 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
+fd
+xz
+TP
+TP
+TP
+TP
+Pe
+yt
+LG
+LG
+LG
+mA
+TP
+TP
+TP
+xz
+xz
+fd
+fd
+xz
+xz
+xz
+xz
+xz
+xz
+xz
 fd
 fd
 xz
@@ -26064,33 +27396,33 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
+fd
+xz
+TP
+TP
+TP
+AE
+mA
+yt
+LG
+LG
+LG
+mA
+yH
+TP
+TP
+TP
+fd
+fd
+fd
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
 fd
 fd
 xz
@@ -26258,34 +27590,34 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
+fd
+xz
+TP
+TP
+mA
+mA
+mA
+yt
+LG
+LG
+LG
+mA
+mA
+iB
+TP
+TP
+fd
+xz
+fd
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
 fd
 xz
 mi
@@ -26452,34 +27784,34 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
+fd
+xz
+TP
+TP
+kS
+LG
+LG
+yt
+jP
+ZF
+LG
+LG
+LG
+kS
+TP
+TP
+xz
+xz
+fd
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
 fd
 xz
 mi
@@ -26646,34 +27978,34 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
+fd
+xz
+TP
+TP
+TR
+LG
+LG
+yt
+AN
+ez
+LG
+LG
+LG
+TR
+TP
+TP
+xz
+fd
+fd
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
 fd
 xz
 mi
@@ -26840,34 +28172,34 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
+fd
+xz
+TP
+TP
+kO
+aP
+aP
+An
+mq
+wm
+LG
+LG
+LG
+yf
+TP
+TP
+xz
+fd
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
 fd
 xz
 mi
@@ -27029,39 +28361,39 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
+fd
+fd
+fd
+fd
+fd
+fd
+xz
+TP
+TP
+vW
+LG
+LG
+yt
+xL
+mx
+LG
+LG
+LG
+vW
+TP
+TP
+xz
+fd
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
 fd
 xz
 mi
@@ -27223,39 +28555,39 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
+fd
+xz
+xz
+xz
+xz
+xz
+xz
+TP
+TP
+VK
+LG
+LG
+yt
+LG
+LG
+LG
+LG
+LG
+VK
+TP
+TP
+xz
+fd
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
 fd
 xz
 mi
@@ -27417,39 +28749,39 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
+fd
+xz
+TP
+TP
+TP
+TP
+TP
+TP
+TP
+mA
+tQ
+mA
+Rf
+pw
+mA
+mA
+mA
+tQ
+TK
+TP
+TP
+xz
+fd
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+fd
+fd
+fd
 fd
 xz
 mi
@@ -27611,39 +28943,39 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
+fd
+xz
+TP
+TP
+TP
+TP
+TP
+TP
+TP
+TP
+TP
+TP
+TP
+LY
+Aq
+TP
+TP
+TP
+TP
+TP
+TP
+xz
+fd
+xz
+xz
+xz
+xz
+xz
+xz
+fd
+fd
+xz
+xz
 fd
 xz
 mi
@@ -27805,39 +29137,39 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
+fd
+xz
+TP
+TP
+TP
+qY
+GM
+uv
+jz
+Fu
+JC
+JC
+TP
+yt
+LG
+ga
+Fp
+TY
+gL
+TP
+TP
+xz
+fd
+xz
+xz
+xz
+xz
+xz
+fd
+fd
+xz
+xz
+xz
 fd
 xz
 mi
@@ -27999,39 +29331,39 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
+fd
+xz
+TP
+TP
+gj
+GM
+GM
+cC
+mA
+Us
+Us
+LF
+TP
+ia
+aP
+nd
+JS
+Em
+ua
+TP
+TP
+xz
+fd
+xz
+xz
+xz
+xz
+fd
+fd
+xz
+xz
+xz
+fd
 fd
 xz
 mi
@@ -28193,39 +29525,39 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
+fd
+xz
+TP
+TP
+yZ
+lB
+TT
+cr
+uZ
+Tm
+Tm
+hE
+TP
+yt
+LG
+ga
+Ef
+If
+kd
+TP
+TP
+xz
+fd
+xz
+xz
+xz
+fd
+fd
+xz
+xz
+xz
+fd
+fd
 fd
 xz
 xz
@@ -28387,39 +29719,39 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
+fd
+xz
+TP
+TP
+xD
+xr
+He
+Ej
+kE
+Us
+Qg
+ly
+TP
+Yo
+Ec
+TP
+TP
+TP
+TP
+TP
+TP
+xz
+fd
+xz
+xz
+xz
+fd
+xz
+xz
+xz
+fd
+fd
+fd
 fd
 fd
 fd
@@ -28581,37 +29913,37 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
+fd
+xz
+TP
+TP
+TP
+il
+GK
+uv
+ij
+Us
+Bi
+Rf
+Gg
+Pj
+LG
+lw
+Xi
+am
+gL
+TP
+TP
+xz
+fd
+fd
+fd
+fd
+fd
+fd
+xz
+fd
+fd
 Cr
 Cr
 Cr
@@ -28775,36 +30107,36 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
+fd
+xz
+TP
+TP
+TP
+TP
+TP
+TP
+hf
+Us
+Wb
+mA
+Wx
+GE
+aP
+nf
+JS
+nx
+ua
+TP
+TP
+xz
+xz
+xz
+xz
+xz
+xz
+fd
+fd
+fd
 Cr
 Cr
 Cr
@@ -28969,34 +30301,34 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
+fd
+xz
+TP
+TP
+TP
+TP
+TP
+TP
+eT
+Us
+Yx
+TK
+TP
+Yo
+Ec
+lw
+kU
+Cx
+kd
+TP
+TP
+TP
+TP
+TP
+TP
+TP
+xz
+fd
 Cr
 Cr
 Cr
@@ -29163,34 +30495,34 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
+fd
+xz
+xz
+xz
+xz
+xz
+TP
+TP
+Vv
+Us
+Us
+YF
+TP
+yt
+LG
+TP
+TP
+TP
+TP
+TP
+TP
+TP
+TP
+TP
+TP
+TP
+xz
+fd
 Cr
 Cr
 Cr
@@ -29357,34 +30689,34 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
+fd
+fd
+fd
+fd
+fd
+xz
+TP
+TP
+cc
+Us
+Us
+iB
+TP
+yt
+LG
+Pq
+LG
+LG
+LG
+LG
+ea
+LG
+LG
+LG
+TP
+TP
+xz
+fd
 Cr
 Cr
 Cr
@@ -29555,30 +30887,30 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
+fd
+xz
+TP
+TP
+jz
+ll
+ll
+ll
+TP
+ia
+aP
+aP
+aP
+Ds
+aP
+aP
+hY
+tT
+KC
+LG
+TP
+TP
+xz
+fd
 Cr
 Cr
 Cr
@@ -29749,30 +31081,30 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
+fd
+xz
+TP
+TP
+TP
+TP
+TP
+TP
+TP
+QO
+Mq
+TP
+TP
+TP
+TP
+aE
+aE
+kl
+aE
+aE
+TP
+TP
+xz
+fd
 Cr
 Cr
 Cr
@@ -29943,30 +31275,30 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
+fd
+xz
+TP
+TP
+TP
+TP
+TP
+TP
+RB
+qo
+RS
+nQ
+wt
+GF
+TP
+KC
+KC
+HY
+KC
+Bt
+TP
+TP
+xz
+fd
 Cr
 Cr
 Cr
@@ -30137,30 +31469,30 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
+fd
+xz
+xz
+xz
+xz
+xz
+TP
+TP
+RB
+PP
+RS
+FO
+rg
+GF
+TP
+KC
+uK
+Qq
+zk
+KC
+TP
+TP
+xz
+fd
 Cr
 Cr
 Cr
@@ -30331,30 +31663,30 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
+fd
+fd
+fd
+fd
+fd
+xz
+TP
+TP
+fD
+Vn
+RS
+dW
+rg
+iS
+TP
+KC
+Oq
+ai
+pL
+KC
+TP
+TP
+xz
+fd
 Cr
 Cr
 Cr
@@ -30529,26 +31861,26 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
+fd
+xz
+TP
+TP
+VI
+xZ
+RS
+dW
+rg
+GF
+TP
+KC
+Cu
+Hn
+sK
+KC
+TP
+TP
+xz
+fd
 Cr
 Cr
 Cr
@@ -30723,26 +32055,26 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
+fd
+xz
+TP
+TP
+CL
+xZ
+RS
+XE
+rg
+ql
+TP
+iy
+Nt
+OI
+hY
+Pf
+TP
+TP
+xz
+fd
 Cr
 Cr
 Cr
@@ -30917,26 +32249,26 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
+fd
+xz
+TP
+TP
+WV
+hs
+rI
+ME
+Pr
+rg
+TP
+TP
+TP
+TP
+TP
+TP
+TP
+TP
+xz
+fd
 Cr
 Cr
 Cr
@@ -31111,26 +32443,26 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
+fd
+xz
+TP
+TP
+TP
+TP
+TP
+TP
+TP
+TP
+TP
+TP
+TP
+TP
+TP
+TP
+TP
+TP
+xz
+fd
 Cr
 Cr
 Cr
@@ -31305,26 +32637,26 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
+fd
+xz
+TP
+TP
+TP
+TP
+TP
+TP
+TP
+TP
+TP
+TP
+TP
+TP
+TP
+TP
+TP
+TP
+xz
+fd
 Cr
 Cr
 Cr
@@ -31499,26 +32831,26 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
+fd
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+xz
+fd
 Cr
 Cr
 Cr
@@ -31693,26 +33025,26 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
+fd
+fd
+fd
+fd
+fd
+fd
+fd
+fd
+fd
+fd
+fd
+fd
+fd
+fd
+fd
+fd
+fd
+fd
+fd
+fd
 Cr
 Cr
 Cr
@@ -37149,42 +38481,42 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-CR
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
+Ky
+Ky
+Ky
+Ky
+Ky
+Ky
+Ky
+Ky
+Ky
+Ky
+Ky
+Ky
+Ky
+Ky
+CQ
+Ky
+Ky
+Ky
+Ky
+Ky
+Ky
+Ky
+Ky
+Ky
+Ky
+Ky
+Ky
+Ky
+Ky
+Ky
+Ky
+Ky
+Ky
+Ky
+Ky
+Ky
 "}
 (169,1,1) = {"
 Cr
@@ -37343,42 +38675,42 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-CR
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
+Ky
+Ky
+Ky
+Ky
+Ky
+Ky
+Ky
+Ky
+Ky
+Ky
+Ky
+Ky
+Ky
+Ky
+CQ
+Ky
+Ky
+Ky
+Ky
+Ky
+Ky
+Ky
+Ky
+Ky
+Ky
+Ky
+Ky
+Ky
+Ky
+Ky
+Ky
+Ky
+Ky
+Ky
+Ky
+Ky
 "}
 (170,1,1) = {"
 Cr
@@ -37537,42 +38869,42 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-CR
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
-Cr
+Ky
+Ky
+Ky
+Ky
+Ky
+Ky
+Ky
+Ky
+Ky
+Ky
+Ky
+Ky
+Ky
+Ky
+CQ
+Ky
+Ky
+Ky
+Ky
+Ky
+Ky
+Ky
+Ky
+Ky
+Ky
+Ky
+Ky
+Ky
+Ky
+Ky
+Ky
+Ky
+Ky
+Ky
+Ky
+Ky
 "}
 (171,1,1) = {"
 Cr
@@ -37731,9 +39063,9 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
-Cr
+Ky
+Ky
+Ky
 Cr
 Cr
 Cr
@@ -37925,9 +39257,9 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
-Cr
+Ky
+Ky
+Ky
 Cr
 Cr
 Cr
@@ -38119,9 +39451,9 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
-Cr
+Ky
+Ky
+Ky
 Cr
 Cr
 Cr
@@ -38313,9 +39645,9 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
-Cr
+Ky
+Ky
+Ky
 Cr
 Cr
 Cr
@@ -38507,9 +39839,9 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
-Cr
+Ky
+Ky
+Ky
 Cr
 Cr
 Cr
@@ -38701,9 +40033,9 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
-Cr
+Ky
+Ky
+Ky
 Cr
 Cr
 Cr
@@ -38895,9 +40227,9 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
-Cr
+Ky
+Ky
+Ky
 Cr
 Cr
 Cr
@@ -39089,9 +40421,9 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
-Cr
+Ky
+Ky
+Ky
 Cr
 Cr
 Cr
@@ -39283,9 +40615,9 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
-Cr
+Ky
+Ky
+Ky
 Cr
 Cr
 Cr
@@ -39477,9 +40809,9 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
-Cr
+Ky
+Ky
+Ky
 Cr
 Cr
 Cr
@@ -39671,9 +41003,9 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
-Cr
+Ky
+Ky
+Ky
 Cr
 Cr
 Cr
@@ -39865,9 +41197,9 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
-Cr
+Ky
+Ky
+Ky
 Cr
 Cr
 Cr
@@ -40059,9 +41391,9 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
-Cr
+Ky
+Ky
+Ky
 Cr
 Cr
 Cr
@@ -40253,9 +41585,9 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
-Cr
+Ky
+Ky
+Ky
 Cr
 Cr
 Cr
@@ -40447,9 +41779,9 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
-Cr
+Ky
+Ky
+Ky
 Cr
 Cr
 Cr
@@ -40641,9 +41973,9 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
-Cr
+Ky
+Ky
+Ky
 Cr
 Cr
 Cr
@@ -40835,9 +42167,9 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
-Cr
+Ky
+Ky
+Ky
 Cr
 Cr
 Cr
@@ -41029,9 +42361,9 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
-Cr
+Ky
+Ky
+Ky
 Cr
 Cr
 Cr
@@ -41223,9 +42555,9 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
-Cr
+Ky
+Ky
+Ky
 Cr
 Cr
 Cr
@@ -41417,9 +42749,9 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
-Cr
+Ky
+Ky
+Ky
 Cr
 Cr
 Cr
@@ -41611,9 +42943,9 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
-Cr
+Ky
+Ky
+Ky
 Cr
 Cr
 Cr
@@ -41805,9 +43137,9 @@ Cr
 Cr
 Cr
 Cr
-Cr
-Cr
-Cr
+Ky
+Ky
+Ky
 Cr
 Cr
 Cr
