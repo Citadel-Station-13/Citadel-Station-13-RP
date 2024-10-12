@@ -667,7 +667,5 @@ GLOBAL_VAR_INIT(organ_combined_size, 25 + 70 + 30 + 25 + 25 + 25 + 25 + 10 + 10 
 			message_admins("[key_name_admin(C)] has taken control of ([key_name_admin(M)])")
 			M.ghostize(FALSE, TRUE)
 			C.transfer_client_to(M, FALSE)
-			return TRUE
 		else
 			message_admins("No ghosts were willing to take control of [ADMIN_LOOKUPFLW(M)])")
-			return FALSE
