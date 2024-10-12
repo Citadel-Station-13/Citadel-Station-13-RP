@@ -120,7 +120,7 @@
 	var/rendering_segment_y_offset = 0
 	/// display special "[base_icon_state]-empty" if count == 0
 	var/rendering_segment_use_empty = FALSE
-	/// add a specific overlay as "[base_icon_state]-[state]", useful for denoting different magazines
+	/// add a specific overlay, useful for denoting different magazines
 	/// that look similar with a stripe
 	var/rendering_static_overlay
 	/// color the static overlay this way

@@ -397,7 +397,7 @@
 /**
  * Returns an overlay for a magazine. This can be a string, or anything else that goes into our 'overlays' list.
  */
-/obj/item/gnu/ballistic/proc/get_magazine_overlay_for(obj/item/ammo_magazine/magazine)
+/obj/item/gun/ballistic/proc/get_magazine_overlay_for(obj/item/ammo_magazine/magazine)
 	if(!(magazine.magazine_class & render_magazine_overlay))
 		return
 	return global.magazine_class_bit_to_state[log(2, magazine.magazine_class)]

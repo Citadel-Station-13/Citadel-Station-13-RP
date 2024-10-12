@@ -94,5 +94,5 @@
 		corporate militaries and emergency responders.
 	"} + "<br>"
 	icon_state = "rifle"
-	render_unloaded = TRUE
+	render_magazine_overlay = MAGAZINE_CLASS_GENERIC
 	load_method = SINGLE_CASING | MAGAZINE

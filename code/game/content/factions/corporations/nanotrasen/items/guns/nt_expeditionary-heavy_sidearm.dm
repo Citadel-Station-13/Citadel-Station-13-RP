@@ -52,7 +52,7 @@
 		var/obj/item/ammo_casing/nt_expeditionary/heavy_sidearm/predicted_path = peek_path_of_position(i)
 		var/append = "basic"
 		if(ispath(predicted_path, /obj/item/ammo_casing/nt_expeditionary/heavy_sidearm))
-			append = initial(casted_path_of_potential.speedloader_state)
+			append = initial(predicted_path.speedloader_state)
 		var/image/overlay = image(icon, "speedloader-[append]")
 		overlay.pixel_x = (i - 1) * 2 - 1
 		overlay.pixel_y = (i - 1) * -2 + 1

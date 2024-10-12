@@ -32,7 +32,7 @@
 //* Magazines *//
 
 /obj/item/ammo_magazine/nt_expeditionary/light_rifle
-	name = "ammo magazine (NT-7.5-LR)"
+	name = "ammo magazine (NT-7.5)"
 	icon = 'icons/content/factions/corporations/nanotrasen/items/guns/expeditionary/rifle-light-ammo.dmi'
 	icon_state = "magazine"
 	base_icon_state = "magazine"
@@ -49,10 +49,31 @@
 	#warn impl; overlay via "[base_icon_state]-[casing.magazine_state]", shift -2, -2
 
 /obj/item/ammo_magazine/nt_expeditionary/light_rifle/magazine
+	name = "ammo magazine (NT-7.5)"
+	icon_state = "rifle-1"
+	base_icon_state = "rifle"
+	rendering_system = GUN_RENDERING_STATES
+	rendering_count = 1
+	rendering_static_overlay = "rifle-stripe"
+	ammo_max = 16
 
 /obj/item/ammo_magazine/nt_expeditionary/light_rifle/magazine/extended
+	name = "extended magazine (NT-7.5)"
+	icon_state = "rifle-ext-1"
+	base_icon_state = "rifle-ext"
+	rendering_system = GUN_RENDERING_STATES
+	rendering_count = 1
+	rendering_static_overlay = "rifle-ext-stripe"
+	ammo_max = 24
 
 /obj/item/ammo_magazine/nt_expeditionary/light_rifle/magazine/drum
+	name = "drum magazine (NT-7.5)"
+	icon_state = "rifle-drum-1"
+	base_icon_state = "rifle-drum"
+	rendering_system = GUN_RENDERING_STATES
+	rendering_count = 1
+	rendering_static_overlay = "rifle-drum-stripe"
+	ammo_max = 40
 
 //* Projectiles *//
 

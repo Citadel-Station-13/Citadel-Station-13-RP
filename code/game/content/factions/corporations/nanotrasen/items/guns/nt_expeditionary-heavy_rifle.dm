@@ -121,6 +121,7 @@
 		to hunters looking to take down game to sustain an expedition.
 	"} + "<br>"
 	icon_state = "semi"
+	base_icon_state = "semi"
 	item_renderer = /datum/gun_item_renderer/empty_state
 	load_method = MAGAZINE | SINGLE_CASING
 
@@ -135,8 +136,9 @@
 		participant described the experience. Limiting the rifle
 		to burst fire keeps the rifle on target through most situations.
 	"} + "<br>"
-	icon_state = "auto"
-	render_unloaded = TRUE
+	icon_state = "auto-map"
+	base_icon_state = "auto"
+	render_magazine_overlay = MAGAZINE_CLASS_GENERIC
 	load_method = MAGAZINE | SINGLE_CASING
 
 /obj/item/gun/ballistic/nt_expeditionary/heavy_rifle/lmg
