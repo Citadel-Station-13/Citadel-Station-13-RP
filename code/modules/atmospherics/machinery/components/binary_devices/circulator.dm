@@ -34,34 +34,28 @@
 
 /obj/machinery/atmospherics/component/binary/circulator/Initialize(mapload)
 	. = ..()
+	desc = initial(desc) + " Its outlet port is to the [dir2text(dir)]."
 	air1.volume = 400
-	air2.volume = 400
 
 /obj/machinery/atmospherics/component/binary/circulator/proc/return_transfer_air()
 	var/datum/gas_mixture/removed
 	if(anchored && !(machine_stat & BROKEN) && network1)
-		var/datum/gas_mixture/input_air
-		var/datum/gas_mixture/output_air
-		if(air1.return_pressure() > air2.return_pressure())
-			input_air = air1
-			output_air = air2
-		else
-			input_air = air2
-			output_air = air1
-		last_pressure_delta = max(input_air.return_pressure() - output_air.return_pressure() - 5, 0)
+		var/input_starting_pressure = air1.return_pressure()
+		var/output_starting_pressure = air2.return_pressure()
+		last_pressure_delta = max(input_starting_pressure - output_starting_pressure - 5, 0)
 
 		//only circulate air if there is a pressure difference (plus 5kPa kinetic, 10kPa static friction)
-		if(input_air.temperature > 0 && last_pressure_delta > 10)
+		if(air1.temperature > 0 && last_pressure_delta > 5)
 
 			//Calculate necessary moles to transfer using PV = nRT
-			recent_moles_transferred = (last_pressure_delta*network1.volume/(input_air.temperature * R_IDEAL_GAS_EQUATION))/3 //uses the volume of the whole network, not just itself
-			volume_capacity_used = min( (last_pressure_delta*network1.volume/3)/(input_air.return_pressure()*input_air.volume) , 1) //how much of the gas in the input air volume is consumed
+			recent_moles_transferred = (last_pressure_delta*network1.volume/(air1.temperature * R_IDEAL_GAS_EQUATION))/3 //uses the volume of the whole network, not just itself
+			volume_capacity_used = min( (last_pressure_delta*network1.volume/3)/(input_starting_pressure*air1.volume) , 1) //how much of the gas in the input air volume is consumed
 
 			//Calculate energy generated from kinetic turbine
-			stored_energy += 1/ADIABATIC_EXPONENT * min(last_pressure_delta * network1.volume , input_air.return_pressure()*input_air.volume) * (1 - volume_ratio**ADIABATIC_EXPONENT) * kinetic_efficiency
+			stored_energy += 1/ADIABATIC_EXPONENT * min(last_pressure_delta * network1.volume , input_starting_pressure*air1.volume) * (1 - volume_ratio**ADIABATIC_EXPONENT) * kinetic_efficiency
 
 			//Actually transfer the gas
-			removed = input_air.remove(recent_moles_transferred)
+			removed = air1.remove(recent_moles_transferred)
 			if(removed)
 				last_heat_capacity = removed.heat_capacity()
 				last_temperature = removed.temperature

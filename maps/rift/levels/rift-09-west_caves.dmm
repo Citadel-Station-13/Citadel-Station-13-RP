@@ -1261,7 +1261,6 @@
 /obj/machinery/light{
 	dir = 4
 	},
-/obj/item/gun/energy/kinetic_accelerator,
 /turf/simulated/floor/tiled/steel_grid,
 /area/outpost/mining_main/outpost/storage)
 "oM" = (
@@ -3319,7 +3318,6 @@
 "MR" = (
 /obj/structure/closet/secure_closet/miner,
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/item/gun/energy/kinetic_accelerator,
 /turf/simulated/floor/tiled/steel_grid,
 /area/outpost/mining_main/outpost/storage)
 "Nc" = (

@@ -299,6 +299,13 @@
 	pressure_setting = 100;
 	sensors = list("engine_sensor"="Engine Core")
 	},
+/obj/structure/sign/securearea{
+	pixel_x = 0;
+	pixel_y = -32;
+	dir = 1;
+	name = "\improper CORE EJECTION INSTRUCTIONS";
+	desc = "A sign that reads: \"WARNING: DO NOT EJECT THE CORE UNLESS IT FACES IMMINENT DESTRUCTION OR PRESENTS AN IMMEDIATE RISK TO THE CREW. EJECTING THE CORE WITHOUT A VALID REASON IS GROUNDS FOR DISMISSAL.\""
+	},
 /turf/template_noop,
 /area/template_noop)
 "nG" = (
@@ -317,6 +324,10 @@
 /turf/simulated/floor/tiled/monotile,
 /area/template_noop)
 "nM" = (
+/obj/machinery/mass_driver{
+	dir = 8;
+	id = "enginecore"
+	},
 /obj/machinery/power/supermatter,
 /turf/simulated/floor/greengrid/nitrogen,
 /area/engineering/engine_room)
@@ -337,6 +348,11 @@
 	dir = 4
 	},
 /turf/simulated/floor,
+/area/engineering/engine_room)
+"rb" = (
+/turf/simulated/open/lythios43c{
+	outdoors = 0
+	},
 /area/engineering/engine_room)
 "ri" = (
 /obj/effect/floor_decal/industrial/warning{
@@ -362,6 +378,13 @@
 "rs" = (
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging{
 	dir = 10
+	},
+/turf/template_noop,
+/area/rift/surfacebase/underground/under2)
+"rS" = (
+/obj/machinery/atmospherics/pipe/simple/heat_exchanging,
+/obj/machinery/camera/network/engine{
+	dir = 8
 	},
 /turf/template_noop,
 /area/rift/surfacebase/underground/under2)
@@ -395,6 +418,15 @@
 	dir = 4
 	},
 /turf/simulated/floor,
+/area/engineering/engine_room)
+"sL" = (
+/obj/effect/floor_decal/rust,
+/obj/effect/floor_decal/industrial/warning{
+	dir = 8
+	},
+/turf/simulated/floor/plating/lythios43c{
+	outdoors = 0
+	},
 /area/engineering/engine_room)
 "tm" = (
 /turf/simulated/wall/r_wall/prepainted/engineering,
@@ -513,6 +545,12 @@
 	},
 /turf/simulated/floor,
 /area/engineering/engine_room)
+"xo" = (
+/obj/machinery/camera/network/engine{
+	dir = 8
+	},
+/turf/template_noop,
+/area/template_noop)
 "yA" = (
 /obj/machinery/atmospherics/pipe/manifold/visible/yellow{
 	dir = 4
@@ -743,6 +781,13 @@
 /obj/machinery/meter,
 /turf/simulated/floor,
 /area/engineering/engine_room)
+"GN" = (
+/obj/spawner/window/low_wall/borosillicate/reinforced/full/firelocks,
+/obj/effect/paint/sun,
+/turf/simulated/floor/plating/lythios43c{
+	outdoors = 0
+	},
+/area/engineering/engine_room)
 "Ho" = (
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_room)
@@ -772,6 +817,14 @@
 	pixel_y = 22
 	},
 /turf/simulated/floor,
+/area/engineering/engine_room)
+"Iz" = (
+/obj/machinery/camera/network/engine{
+	dir = 4
+	},
+/turf/simulated/floor/reinforced/nitrogen{
+	initial_gas_mix = "n2=82.1472;TEMP=293.15"
+	},
 /area/engineering/engine_room)
 "IE" = (
 /obj/machinery/atmospherics/pipe/simple/visible/cyan,
@@ -935,6 +988,10 @@
 	},
 /turf/simulated/floor,
 /area/engineering/engine_room)
+"ND" = (
+/obj/machinery/shield_diffuser,
+/turf/simulated/wall/r_wall/prepainted/engineering,
+/area/engineering/engine_room)
 "Od" = (
 /obj/structure/cable/cyan{
 	icon_state = "1-2"
@@ -947,6 +1004,27 @@
 	},
 /turf/simulated/floor,
 /area/engineering/engine_room)
+"Ow" = (
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/obj/machinery/button/remote/driver{
+	id = "enginecore";
+	name = "Second Stage Engine Ejection - Core Ejection";
+	pixel_y = -21
+	},
+/obj/machinery/button/remote/blast_door{
+	desc = "A remote control-switch for the engine core's emergency ejection vent.";
+	dir = 1;
+	id = "EngineVent";
+	name = "First Stage Engine Ejection - Blast Doors";
+	pixel_y = -32
+	},
+/turf/template_noop,
+/area/template_noop)
 "OU" = (
 /obj/machinery/atmospherics/pipe/simple/visible/yellow,
 /obj/machinery/atmospherics/pipe/simple/visible/cyan{
@@ -1104,6 +1182,15 @@
 	},
 /turf/simulated/floor,
 /area/engineering/engine_room)
+"Xc" = (
+/obj/machinery/shield_diffuser,
+/obj/machinery/door/blast/regular{
+	dir = 4;
+	id = "EngineVent";
+	name = "Reactor Vent"
+	},
+/turf/simulated/floor/greengrid/nitrogen,
+/area/engineering/engine_room)
 "Xt" = (
 /obj/machinery/atmospherics/pipe/simple/visible/cyan{
 	dir = 9
@@ -1112,14 +1199,10 @@
 /turf/simulated/floor,
 /area/engineering/engine_room)
 "Xx" = (
-/obj/machinery/door/airlock/hatch{
-	icon_state = "door_locked";
-	id_tag = "engine_access_hatch";
-	locked = 1;
-	name = "Supermatter Core Access";
-	req_one_access = null
-	},
 /obj/map_helper/access_helper/airlock/station/engineering/engine,
+/obj/machinery/door/airlock/hatch/supermatter_access{
+	id_tag = "engine_access_hatch"
+	},
 /turf/simulated/floor/reinforced/nitrogen{
 	initial_gas_mix = "n2=82.1472;TEMP=293.15"
 	},
@@ -1143,6 +1226,14 @@
 "Zb" = (
 /obj/machinery/atmospherics/pipe/manifold/visible/red,
 /turf/simulated/floor,
+/area/engineering/engine_room)
+"Zq" = (
+/obj/effect/floor_decal/rust,
+/obj/spawner/window/low_wall/borosillicate/reinforced/full/firelocks,
+/obj/effect/paint/sun,
+/turf/simulated/floor/plating/lythios43c{
+	outdoors = 0
+	},
 /area/engineering/engine_room)
 "ZS" = (
 /obj/machinery/atmospherics/pipe/simple/visible/yellow,
@@ -1259,30 +1350,6 @@ rs
 ve
 ve
 ve
-ve
-ve
-ve
-ve
-ve
-ve
-ve
-ve
-ve
-ve
-ve
-ve
-ve
-ve
-xf
-Mw
-fS
-"}
-(6,1,1) = {"
-fS
-fS
-oc
-xf
-oc
 xf
 oc
 ve
@@ -1299,7 +1366,31 @@ ve
 ve
 ve
 jQ
+fS
+"}
+(6,1,1) = {"
+fS
+fS
+oc
+xf
+oc
+xf
 Mw
+rs
+ve
+ve
+ve
+ve
+ve
+ve
+ve
+ve
+ve
+ve
+ve
+ve
+ve
+xf
 fS
 "}
 (7,1,1) = {"
@@ -1309,15 +1400,15 @@ Mw
 Mw
 Mw
 Mw
-Mw
+rs
+ve
+xf
 oc
+rS
 ve
 ve
-ve
-ve
-ve
-ve
-ve
+xf
+oc
 ve
 ve
 ve
@@ -1328,21 +1419,21 @@ jQ
 fS
 "}
 (8,1,1) = {"
+xo
 fS
-fS
 Mw
 Mw
 Mw
 Mw
+oc
+ve
+jQ
+Mw
+tm
+ND
+tm
 Mw
 rs
-ve
-ve
-ve
-ve
-ve
-ve
-ve
 ve
 ve
 ve
@@ -1362,11 +1453,11 @@ Mw
 rs
 ve
 ve
-ve
-ve
-ve
-ve
-ve
+jQ
+GN
+rb
+Zq
+rs
 ve
 ve
 ve
@@ -1389,7 +1480,7 @@ tm
 tm
 tm
 tm
-tm
+sL
 tm
 tm
 tm
@@ -1413,9 +1504,9 @@ tm
 Mr
 Mr
 tm
-AG
-AG
-AG
+tm
+Xc
+tm
 tm
 Mr
 Mr
@@ -1438,7 +1529,7 @@ tm
 Mr
 Mr
 JZ
-SQ
+Iz
 QQ
 SQ
 MN
@@ -1864,6 +1955,31 @@ fS
 fS
 fS
 ni
+fS
+fS
+fS
+fS
+fS
+fS
+fS
+fS
+fS
+fS
+fS
+fS
+"}
+(30,1,1) = {"
+fS
+fS
+fS
+fS
+fS
+fS
+fS
+fS
+fS
+fS
+Ow
 fS
 fS
 fS
