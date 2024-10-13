@@ -42,11 +42,29 @@
 	ammo_preload = /obj/item/ammo_casing/nt_expeditionary/light_rifle
 
 /obj/item/ammo_magazine/nt_expeditionary/light_rifle/speedloader
+	name = "speedloader (NT-7.5)"
+	icon_state = "speedloader"
+	base_icon_state = "speedloader"
 
 /obj/item/ammo_magazine/nt_expeditionary/light_rifle/speedloader/update_icon(updates)
 	cut_overlays()
 	. = ..()
 	#warn impl; overlay via "[base_icon_state]-[casing.magazine_state]", shift -2, -2
+
+/obj/item/ammo_magazine/nt_expeditionary/heavy_sidearm/speedloader/update_icon(updates)
+	cut_overlays()
+	. = ..()
+	var/list/overlays_to_add = list()
+	for(var/i in 1 to min(4, amount_remaining()))
+		var/obj/item/ammo_casing/nt_expeditionary/light_rifle/predicted_path = peek_path_of_position(i)
+		var/append = "basic"
+		if(ispath(predicted_path, /obj/item/ammo_casing/nt_expeditionary/heavy_sidearm))
+			append = initial(predicted_path.speedloader_state)
+		var/image/overlay = image(icon, "speedloader-[append]")
+		overlay.pixel_x = (i - 1) * 2 - 1
+		overlay.pixel_y = (i - 1) * -2 + 1
+		overlays_to_add += overlay
+	add_overlay(overlays_to_add)
 
 /obj/item/ammo_magazine/nt_expeditionary/light_rifle/magazine
 	name = "ammo magazine (NT-7.5)"
