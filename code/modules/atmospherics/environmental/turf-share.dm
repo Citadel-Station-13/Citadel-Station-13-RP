@@ -46,7 +46,7 @@
 	var/their_effective_capacity = (heat_capacity / cell_limit) * limit_ratio
 	// calculate midpoint temperature
 	var/midpoint_t = ((our_singular_heat_capacity * sharing_with_immutable.temperature) + (their_effective_capacity * temperature)) \
-		/ (our_heat_capacity + their_effective_capacity)
+		/ (our_singular_heat_capacity + their_effective_capacity)
 	// since it's an unsimulated turf, we just care to change their temperature.
 	return (midpoint_t - temperature) * equalize_ratio * limit_ratio
 

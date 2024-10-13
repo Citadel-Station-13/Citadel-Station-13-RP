@@ -176,4 +176,3 @@
 	other.temperature = ((their_thermal_energy * inverse_ratio) + (target_share_temperature * their_heat_capacity * ratio)) / their_heat_capacity
 
 	return abs(our_old_temperature - temperature) > 0.001 || abs(their_old_temperature - other.temperature) > 0.001
-	#warn test
