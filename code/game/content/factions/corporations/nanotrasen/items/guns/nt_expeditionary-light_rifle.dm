@@ -49,11 +49,6 @@
 /obj/item/ammo_magazine/nt_expeditionary/light_rifle/speedloader/update_icon(updates)
 	cut_overlays()
 	. = ..()
-	#warn impl; overlay via "[base_icon_state]-[casing.magazine_state]", shift -2, -2
-
-/obj/item/ammo_magazine/nt_expeditionary/light_rifle/speedloader/update_icon(updates)
-	cut_overlays()
-	. = ..()
 	var/list/overlays_to_add = list()
 	var/static/list/pos_x = list(
 		2,
@@ -137,7 +132,7 @@
 	load_method = SINGLE_CASING | SPEEDLOADER
 	icon_state = "revolver"
 	base_icon_state = "revolver"
-	render_break_state = BALLISTIC_RENDER_BREAK_OPEN
+	render_break_overlay = BALLISTIC_RENDER_BREAK_OPEN
 
 /obj/item/gun/ballistic/nt_expeditionary/light_rifle/semirifle
 	name = "semi-automatic rifle"
