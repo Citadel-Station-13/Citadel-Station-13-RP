@@ -8985,8 +8985,10 @@
 /turf/simulated/floor/tiled,
 /area/victory/hallway/d3porthall)
 "gTY" = (
-/turf/space,
-/area/rnd/xenobiology)
+/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/effect/paint/purplegray,
+/turf/simulated/floor/plating,
+/area/rnd/reception_desk)
 "gUD" = (
 /obj/machinery/door/firedoor/glass{
 	dir = 4
@@ -9671,7 +9673,6 @@
 /area/rnd/anomaly_lab)
 "hwR" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint/purplegray,
 /obj/effect/paint/purplegray,
 /turf/simulated/floor/plating,
 /area/rnd/workshop)
@@ -36763,7 +36764,7 @@ pRW
 pRW
 pRW
 mDp
-gTY
+upp
 eZZ
 uxu
 lTx
@@ -36957,7 +36958,7 @@ pRW
 pRW
 pRW
 mDp
-gTY
+upp
 eZZ
 jQD
 xnM
@@ -43761,10 +43762,10 @@ hwR
 bBQ
 ijZ
 whu
-owo
-owo
+gTY
+gTY
 gsB
-owo
+gTY
 owo
 whu
 whu
@@ -44155,7 +44156,7 @@ gub
 irM
 irM
 xAI
-owo
+gTY
 wdf
 lyl
 gPZ
@@ -44543,7 +44544,7 @@ iaO
 lKg
 eEO
 kMH
-owo
+gTY
 rIw
 vKw
 eaK
@@ -44737,7 +44738,7 @@ irM
 irM
 irM
 fTE
-owo
+gTY
 pyT
 dyM
 bSu

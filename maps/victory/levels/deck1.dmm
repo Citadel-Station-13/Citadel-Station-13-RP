@@ -2693,10 +2693,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/misc_lab)
-"cpG" = (
-/obj/machinery/shield_diffuser,
-/turf/simulated/wall/r_wall/prepainted/exploration,
-/area/rnd/research/testingrange)
 "cpU" = (
 /obj/machinery/light{
 	dir = 1;
@@ -12394,6 +12390,7 @@
 /area/exploration/meeting)
 "jRq" = (
 /obj/effect/paint/violet,
+/obj/spawner/window/low_wall/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/exploration/meeting)
 "jRW" = (
@@ -22312,25 +22309,6 @@
 /obj/structure/bed/chair/comfy/red,
 /turf/simulated/floor/carpet/purcarpet,
 /area/exploration/meeting)
-"sFr" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/door/firedoor/glass,
-/obj/machinery/door/airlock/command{
-	name = "Facility Director's Quarters";
-	req_one_access = null
-	},
-/obj/machinery/door/blast/regular{
-	density = 0;
-	dir = 4;
-	icon_state = "pdoor0";
-	id = "cd-blast";
-	name = "Facility Director Lockdown";
-	opacity = 0
-	},
-/obj/map_helper/access_helper/airlock/station/head_office/captain,
-/turf/simulated/floor/wood,
-/area/crew_quarters/captain)
 "sFu" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/flora/ausbushes/ppflowers,
@@ -22625,11 +22603,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/victory/hallway/d4aftmaint)
-"sSY" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/turf/space/basic,
-/area/space)
 "sTF" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -30521,7 +30494,7 @@ xRj
 jNg
 jNg
 geI
-sSY
+gqG
 dMO
 lVC
 xTU
@@ -40230,7 +40203,7 @@ xRj
 dkf
 cgo
 rTu
-cpG
+rTu
 rTu
 rTu
 rTu
@@ -61239,7 +61212,7 @@ qDU
 xtj
 fnK
 hai
-sFr
+cYi
 oHN
 dkf
 xRj
