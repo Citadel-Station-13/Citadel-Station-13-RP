@@ -884,6 +884,9 @@
 /obj/fiftyspawner/deuterium,
 /obj/fiftyspawner/deuterium,
 /obj/fiftyspawner/tritium,
+/obj/machinery/light{
+	dir = 1
+	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_room)
 "Fy" = (
@@ -944,6 +947,12 @@
 "Hw" = (
 /obj/structure/cable/cyan{
 	icon_state = "1-8"
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/engineering/engine_room)
+"HO" = (
+/obj/machinery/light{
+	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_room)
@@ -1659,7 +1668,7 @@ Qv
 Ye
 xe
 jf
-Ye
+HO
 kB
 Ye
 sc
@@ -1712,7 +1721,7 @@ gr
 rl
 Jy
 PY
-aa
+wL
 aa
 aD
 iE
@@ -1734,7 +1743,7 @@ jf
 Ye
 oE
 PY
-aa
+YK
 aa
 OF
 iE
@@ -1833,7 +1842,7 @@ kW
 nf
 Hw
 jf
-Ye
+HO
 Kb
 yw
 VN

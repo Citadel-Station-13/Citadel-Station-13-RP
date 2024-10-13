@@ -996,7 +996,6 @@
 /turf/simulated/wall/r_wall/prepainted/command,
 /area/ai_upload_foyer)
 "bDY" = (
-/obj/map_helper/access_helper/airlock/station/engineering/atmospherics,
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -1007,6 +1006,7 @@
 	icon_state = "1-2"
 	},
 /obj/structure/disposalpipe/segment,
+/obj/map_helper/access_helper/airlock/station/engineering/department,
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/atmos)
 "bEa" = (
@@ -1850,6 +1850,20 @@
 /obj/effect/floor_decal/corner/lightorange/border,
 /turf/simulated/floor/tiled/steel,
 /area/victory/hallway/d4starboardhall)
+"ddh" = (
+/obj/machinery/door/airlock/hatch{
+	req_one_access = null
+	},
+/obj/machinery/door/firedoor,
+/obj/map_helper/access_helper/airlock/station/engineering/department,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/turf/simulated/floor/plating,
+/area/engineering/engine_room)
 "ddx" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 4
@@ -3317,6 +3331,21 @@
 "fJm" = (
 /turf/simulated/wall/r_wall/prepainted/engineering,
 /area/engineering/locker_room)
+"fJD" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/lightorange/border{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/steel,
+/area/victory/hallway/d4starboardhall)
 "fJF" = (
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging,
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging{
@@ -5109,6 +5138,14 @@
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging,
 /turf/space,
 /area/space)
+"iSx" = (
+/obj/machinery/door/firedoor/glass{
+	dir = 8
+	},
+/obj/machinery/door/airlock/glass/atmos,
+/obj/map_helper/access_helper/airlock/station/engineering/department,
+/turf/simulated/floor/tiled/techmaint,
+/area/engineering/atmos)
 "iSG" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 8
@@ -6187,6 +6224,13 @@
 	},
 /turf/simulated/floor/reinforced/airless,
 /area/engineering/starboardnacelle)
+"kJR" = (
+/obj/machinery/door/airlock/hatch{
+	req_one_access = null
+	},
+/obj/machinery/door/firedoor,
+/turf/simulated/floor/plating,
+/area/engineering/engine_room)
 "kKd" = (
 /obj/machinery/light_switch{
 	dir = 8;
@@ -7072,7 +7116,6 @@
 /turf/simulated/floor/plating,
 /area/storage/tech)
 "mrN" = (
-/obj/map_helper/access_helper/airlock/station/engineering/atmospherics,
 /obj/machinery/door/firedoor/glass{
 	dir = 8
 	},
@@ -7086,6 +7129,7 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/door/airlock/glass/atmos,
+/obj/map_helper/access_helper/airlock/station/engineering/department,
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/atmos)
 "mtj" = (
@@ -7964,7 +8008,7 @@
 	name = "Damage Control Storage";
 	req_one_access = null
 	},
-/obj/map_helper/access_helper/airlock/station/engineering/atmospherics,
+/obj/map_helper/access_helper/airlock/station/engineering/department,
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/atmos/workshop)
 "nEg" = (
@@ -8185,7 +8229,7 @@
 	name = "Atmospherics";
 	req_one_access = null
 	},
-/obj/map_helper/access_helper/airlock/station/engineering/atmospherics,
+/obj/map_helper/access_helper/airlock/station/engineering/department,
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/atmos/eva)
 "nTU" = (
@@ -9233,12 +9277,8 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 5
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 5
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 5
-	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply,
 /turf/simulated/floor/tiled/steel,
 /area/victory/hallway/d4starboardhall)
 "qhi" = (
@@ -11067,7 +11107,7 @@
 	name = "Damage Control Storage";
 	req_one_access = null
 	},
-/obj/map_helper/access_helper/airlock/station/engineering/atmospherics,
+/obj/map_helper/access_helper/airlock/station/engineering/department,
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/atmos/workshop)
 "tKR" = (
@@ -11285,7 +11325,7 @@
 	name = "Damage Control Storage";
 	req_one_access = null
 	},
-/obj/map_helper/access_helper/airlock/station/engineering/atmospherics,
+/obj/map_helper/access_helper/airlock/station/engineering/department,
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/atmos/workshop)
 "ufU" = (
@@ -24730,8 +24770,8 @@ dOL
 yex
 yex
 yex
-yex
-yex
+kJR
+ddh
 yex
 yex
 yex
@@ -24925,7 +24965,7 @@ aOz
 ouc
 hOe
 uWc
-uWc
+fJD
 xJy
 gDP
 uOW
@@ -25119,7 +25159,7 @@ aOz
 ouc
 pmd
 pjV
-wLZ
+rGk
 iUu
 gDP
 lAZ
@@ -25313,7 +25353,7 @@ rSr
 rSr
 oIC
 omb
-wLZ
+rGk
 mzf
 gDP
 ttC
@@ -25507,7 +25547,7 @@ rJJ
 rJJ
 rJJ
 uzA
-wLZ
+rGk
 iUu
 gDP
 moY
@@ -25701,7 +25741,7 @@ dkU
 rJJ
 rJJ
 omb
-wLZ
+rGk
 sSq
 aIs
 aIs
@@ -25895,7 +25935,7 @@ rJJ
 rJJ
 rJJ
 uzA
-wLZ
+rGk
 oJV
 aIs
 bdx
@@ -31152,7 +31192,7 @@ vsf
 vsf
 vsf
 mrN
-ycR
+iSx
 vsf
 vsf
 vsf
