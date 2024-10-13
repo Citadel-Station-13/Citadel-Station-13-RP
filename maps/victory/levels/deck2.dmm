@@ -380,7 +380,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/white,
-/area/medical/virologyaccess)
+/area/medical/virologywest)
 "aqd" = (
 /obj/effect/floor_decal/techfloor,
 /obj/machinery/computer/ship/navigation/telescreen{
@@ -544,7 +544,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled/white,
-/area/maintenance/medbay/fore)
+/area/medical/virologyeast)
 "aut" = (
 /obj/effect/floor_decal/steeldecal/steel_decals4{
 	dir = 5
@@ -615,7 +615,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled/white,
-/area/maintenance/medbay/fore)
+/area/medical/virologyeast)
 "axP" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 6
@@ -1047,7 +1047,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
-/area/medical/virologyaccess)
+/area/medical/virologywest)
 "aOx" = (
 /obj/effect/floor_decal/borderfloorwhite/corner,
 /obj/effect/floor_decal/corner/paleblue/bordercorner,
@@ -1792,9 +1792,6 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
-/obj/structure/cable/green{
-	icon_state = "2-4"
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
@@ -1805,7 +1802,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
-/area/medical/virologyaccess)
+/area/medical/virologywest)
 "byn" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 4
@@ -2294,7 +2291,7 @@
 	pixel_y = -24
 	},
 /turf/simulated/floor/tiled,
-/area/maintenance/medbay/fore)
+/area/medical/virologyeast)
 "bJO" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -2355,7 +2352,7 @@
 	dir = 6
 	},
 /turf/simulated/floor/tiled,
-/area/medical/virologyaccess)
+/area/medical/virologywest)
 "bMn" = (
 /obj/effect/floor_decal/corner/paleblue/full{
 	dir = 1
@@ -3244,7 +3241,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled,
-/area/maintenance/medbay/fore)
+/area/medical/virologyeast)
 "cva" = (
 /obj/structure/window/reinforced{
 	dir = 1
@@ -3332,7 +3329,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/white,
-/area/maintenance/medbay/fore)
+/area/medical/virologyeast)
 "cym" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 9
@@ -3531,7 +3528,7 @@
 	pixel_y = 3
 	},
 /turf/simulated/floor/tiled/white,
-/area/maintenance/medbay/fore)
+/area/medical/virologyeast)
 "cFH" = (
 /obj/structure/table/reinforced,
 /obj/structure/window/reinforced{
@@ -3826,7 +3823,7 @@
 	dir = 9
 	},
 /turf/simulated/floor/tiled,
-/area/medical/virologyaccess)
+/area/medical/virologywest)
 "cSU" = (
 /obj/machinery/door/firedoor/glass,
 /obj/structure/cable/green{
@@ -4000,7 +3997,7 @@
 /obj/structure/closet/l3closet/virology,
 /obj/machinery/door/window/southleft,
 /turf/simulated/floor/tiled,
-/area/medical/virologyaccess)
+/area/medical/virologywest)
 "dbh" = (
 /obj/machinery/computer/security/mining{
 	dir = 8;
@@ -4546,7 +4543,7 @@
 /area/medical/patient_wing)
 "dvL" = (
 /turf/simulated/floor/tiled/white,
-/area/medical/virologyaccess)
+/area/medical/virologywest)
 "dwr" = (
 /obj/structure/dogbed,
 /mob/living/simple_mob/animal/passive/dog/tamaskan/Spice{
@@ -4669,7 +4666,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled,
-/area/medical/virologyaccess)
+/area/medical/virologywest)
 "dAG" = (
 /obj/machinery/door/firedoor/glass,
 /obj/map_helper/access_helper/airlock/station/science/department,
@@ -4978,7 +4975,7 @@
 	pixel_y = 16
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/maintenance/medbay/fore)
+/area/medical/virologyeast)
 "dPT" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
@@ -5799,7 +5796,7 @@
 	},
 /obj/effect/floor_decal/industrial/outline/grey,
 /turf/simulated/floor/tiled/white,
-/area/medical/virologyaccess)
+/area/medical/virologywest)
 "epc" = (
 /obj/machinery/atmospherics/portables_connector{
 	dir = 1
@@ -5857,7 +5854,7 @@
 /obj/structure/closet/l3closet/virology,
 /obj/machinery/door/window/southleft,
 /turf/simulated/floor/tiled,
-/area/maintenance/medbay/fore)
+/area/medical/virologyeast)
 "erj" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/black{
 	dir = 4
@@ -5867,7 +5864,7 @@
 	},
 /obj/machinery/door/window/eastleft,
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/maintenance/medbay/fore)
+/area/medical/virologyeast)
 "esN" = (
 /obj/effect/floor_decal/steeldecal/steel_decals_central1,
 /obj/effect/floor_decal/steeldecal/steel_decals4{
@@ -6060,7 +6057,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/white,
-/area/medical/virologyaccess)
+/area/medical/virologywest)
 "eCY" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
@@ -6072,7 +6069,7 @@
 /obj/effect/floor_decal/corner/green/border,
 /obj/machinery/holoplant,
 /turf/simulated/floor/tiled/white,
-/area/maintenance/medbay/fore)
+/area/medical/virologyeast)
 "eEv" = (
 /turf/simulated/wall/prepainted/medical,
 /area/medical/surgery)
@@ -6340,7 +6337,7 @@
 	dir = 6
 	},
 /turf/simulated/floor/tiled,
-/area/medical/virologyaccess)
+/area/medical/virologywest)
 "eQq" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
@@ -6658,7 +6655,7 @@
 /area/maintenance/fpmaint2)
 "eYM" = (
 /turf/simulated/floor/tiled/white,
-/area/maintenance/medbay/fore)
+/area/medical/virologyeast)
 "eYX" = (
 /obj/structure/cable/green{
 	icon_state = "1-2"
@@ -7512,7 +7509,7 @@
 	},
 /obj/machinery/door/window/eastleft,
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/medical/virologyaccess)
+/area/medical/virologywest)
 "fIs" = (
 /obj/machinery/light{
 	dir = 1
@@ -7855,7 +7852,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/medical/virologyaccess)
+/area/medical/virologywest)
 "fRk" = (
 /obj/machinery/camera/network/medbay{
 	dir = 8
@@ -7869,7 +7866,7 @@
 	dir = 10
 	},
 /turf/simulated/floor/tiled,
-/area/medical/virologyaccess)
+/area/medical/virologywest)
 "fRp" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
@@ -7983,7 +7980,7 @@
 /obj/machinery/door/window/southright,
 /obj/structure/closet/l3closet/virology,
 /turf/simulated/floor/tiled,
-/area/medical/virologyaccess)
+/area/medical/virologywest)
 "fUn" = (
 /obj/machinery/camera/network/medbay,
 /obj/effect/floor_decal/borderfloorwhite{
@@ -8097,7 +8094,7 @@
 	dir = 10
 	},
 /turf/simulated/floor/tiled,
-/area/maintenance/medbay/fore)
+/area/medical/virologyeast)
 "fYZ" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 1
@@ -8118,7 +8115,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/white,
-/area/medical/virologyaccess)
+/area/medical/virologywest)
 "fZv" = (
 /obj/machinery/photocopier,
 /obj/machinery/light{
@@ -8138,7 +8135,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/white,
-/area/medical/virologyaccess)
+/area/medical/virologywest)
 "gbY" = (
 /obj/machinery/holopad,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -8223,7 +8220,7 @@
 	name = "Infectious Diseases"
 	},
 /turf/simulated/floor/tiled/white,
-/area/medical/virologyaccess)
+/area/medical/virologywest)
 "geD" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /obj/effect/floor_decal/industrial/warning{
@@ -8547,7 +8544,7 @@
 	color = "#0098c8"
 	},
 /turf/simulated/floor/tiled,
-/area/maintenance/medbay/fore)
+/area/medical/virologyeast)
 "gtM" = (
 /obj/landmark{
 	name = "carpspawn"
@@ -8569,7 +8566,7 @@
 /area/medical/medbay4)
 "guJ" = (
 /turf/simulated/wall/prepainted/medical,
-/area/maintenance/medbay/fore)
+/area/medical/virologyeast)
 "guQ" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -8846,7 +8843,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/white,
-/area/medical/virologyaccess)
+/area/medical/virologywest)
 "gGu" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -8891,7 +8888,7 @@
 /area/medical/medbay4)
 "gHG" = (
 /turf/simulated/wall/prepainted/medical,
-/area/medical/virologyaccess)
+/area/medical/virologywest)
 "gIr" = (
 /obj/structure/cable/green{
 	icon_state = "1-2"
@@ -9276,7 +9273,7 @@
 	},
 /obj/map_helper/access_helper/airlock/station/medical/department,
 /turf/simulated/floor/tiled/white,
-/area/maintenance/medbay/fore)
+/area/medical/virologyeast)
 "gVf" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/blast/regular{
@@ -9486,7 +9483,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled,
-/area/maintenance/medbay/fore)
+/area/medical/virologyeast)
 "hfy" = (
 /obj/effect/floor_decal/techfloor/corner{
 	dir = 8
@@ -9601,7 +9598,7 @@
 /obj/structure/closet/l3closet/virology,
 /obj/effect/floor_decal/industrial/outline/grey,
 /turf/simulated/floor/tiled/white,
-/area/medical/virologyaccess)
+/area/medical/virologywest)
 "hkx" = (
 /obj/structure/cable/green,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -9941,7 +9938,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled/white,
-/area/maintenance/medbay/fore)
+/area/medical/virologyeast)
 "huG" = (
 /obj/effect/floor_decal/corner/green{
 	dir = 8
@@ -10974,8 +10971,11 @@
 /obj/effect/floor_decal/corner/green/border{
 	dir = 8
 	},
+/obj/structure/cable/green{
+	icon_state = "1-4"
+	},
 /turf/simulated/floor/tiled/white,
-/area/medical/virologyaccess)
+/area/medical/virologywest)
 "ijd" = (
 /obj/structure/bed/chair/comfy/black,
 /turf/simulated/floor/wood/sif/indoors,
@@ -11663,7 +11663,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled/white,
-/area/maintenance/medbay/fore)
+/area/medical/virologyeast)
 "iFi" = (
 /obj/effect/floor_decal/steeldecal/steel_decals_central1,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -12036,9 +12036,6 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
-/obj/structure/cable/green{
-	icon_state = "2-4"
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
@@ -12046,7 +12043,7 @@
 	dir = 5
 	},
 /turf/simulated/floor/tiled,
-/area/maintenance/medbay/fore)
+/area/medical/virologyeast)
 "iTE" = (
 /turf/simulated/wall/r_wall/prepainted,
 /area/victory/hallway/d3fwdhall)
@@ -12088,7 +12085,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/black,
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
 /turf/simulated/floor/tiled,
-/area/medical/virologyaccess)
+/area/medical/virologywest)
 "iVW" = (
 /obj/structure/table/reinforced,
 /obj/item/storage/box/donkpockets,
@@ -12831,16 +12828,14 @@
 /turf/simulated/floor/wood,
 /area/rnd/breakroom)
 "jzJ" = (
-/obj/structure/cable/green,
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
 	},
 /obj/machinery/light{
 	color = "#0098c8"
 	},
-/obj/machinery/power/apc/south_mount,
 /turf/simulated/floor/tiled,
-/area/medical/virologyaccess)
+/area/medical/virologywest)
 "jAz" = (
 /obj/structure/table/rack,
 /obj/item/clothing/mask/gas,
@@ -13641,7 +13636,7 @@
 /obj/effect/floor_decal/corner/green/border,
 /obj/structure/reagent_dispensers/water_cooler/full,
 /turf/simulated/floor/tiled/white,
-/area/maintenance/medbay/fore)
+/area/medical/virologyeast)
 "khF" = (
 /turf/simulated/wall/r_wall/prepainted/science,
 /area/victory/hallway/d3afthall)
@@ -13819,7 +13814,7 @@
 /obj/effect/floor_decal/borderfloorwhite,
 /obj/effect/floor_decal/corner/green/border,
 /turf/simulated/floor/tiled/white,
-/area/medical/virologyaccess)
+/area/medical/virologywest)
 "kow" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
@@ -14546,7 +14541,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/white,
-/area/medical/virologyaccess)
+/area/medical/virologywest)
 "kVo" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -15325,7 +15320,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/maintenance/medbay/fore)
+/area/medical/virologyeast)
 "lAr" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
@@ -15369,7 +15364,7 @@
 /obj/machinery/door/window/southright,
 /obj/structure/closet/l3closet/virology,
 /turf/simulated/floor/tiled,
-/area/maintenance/medbay/fore)
+/area/medical/virologyeast)
 "lBS" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 10
@@ -15470,7 +15465,7 @@
 	pixel_x = 32
 	},
 /turf/simulated/floor/tiled/white,
-/area/medical/virologyaccess)
+/area/medical/virologywest)
 "lEm" = (
 /obj/structure/cable/green{
 	icon_state = "1-2"
@@ -15645,7 +15640,7 @@
 	},
 /obj/machinery/disposal,
 /turf/simulated/floor/tiled/white,
-/area/maintenance/medbay/fore)
+/area/medical/virologyeast)
 "lLS" = (
 /obj/machinery/power/smes/buildable{
 	RCon_tag = "Deck 3 Grid"
@@ -15659,7 +15654,7 @@
 /obj/effect/floor_decal/borderfloorwhite,
 /obj/effect/floor_decal/corner/green/border,
 /turf/simulated/floor/tiled/white,
-/area/medical/virologyaccess)
+/area/medical/virologywest)
 "lMR" = (
 /obj/effect/floor_decal/steeldecal/steel_decals4{
 	dir = 5
@@ -15897,7 +15892,7 @@
 /obj/structure/closet/l3closet/virology,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/tiled,
-/area/maintenance/medbay/fore)
+/area/medical/virologyeast)
 "lYU" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -16206,7 +16201,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/white,
-/area/medical/virologyaccess)
+/area/medical/virologywest)
 "mow" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
@@ -17466,7 +17461,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/white,
-/area/medical/virologyaccess)
+/area/medical/virologywest)
 "nmB" = (
 /obj/structure/cable/orange{
 	icon_state = "6-9"
@@ -17679,7 +17674,7 @@
 /obj/effect/floor_decal/corner/green/border,
 /obj/machinery/light,
 /turf/simulated/floor/tiled/white,
-/area/medical/virologyaccess)
+/area/medical/virologywest)
 "nwm" = (
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
@@ -17963,7 +17958,7 @@
 "nHo" = (
 /obj/effect/floor_decal/corner/green/diagonal,
 /turf/simulated/floor/tiled/white,
-/area/maintenance/medbay/fore)
+/area/medical/virologyeast)
 "nHz" = (
 /obj/structure/cable/green{
 	icon_state = "2-8"
@@ -18523,7 +18518,7 @@
 	color = "#0098c8"
 	},
 /turf/simulated/floor/tiled,
-/area/maintenance/medbay/fore)
+/area/medical/virologyeast)
 "oby" = (
 /obj/machinery/light,
 /obj/effect/floor_decal/techfloor,
@@ -18665,7 +18660,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/medical/virologyaccess)
+/area/medical/virologywest)
 "ojq" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 4
@@ -20144,7 +20139,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/white,
-/area/maintenance/medbay/fore)
+/area/medical/virologyeast)
 "pgh" = (
 /obj/machinery/sleeper{
 	dir = 4
@@ -20650,6 +20645,20 @@
 	},
 /turf/simulated/floor/tiled,
 /area/victory/hallway/d3porthall)
+"pxj" = (
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/effect/floor_decal/borderfloorwhite{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/green/border{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/white,
+/area/medical/virologywest)
 "pyk" = (
 /obj/effect/floor_decal/techfloor,
 /obj/effect/floor_decal/techfloor/hole,
@@ -21039,7 +21048,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/white,
-/area/medical/virologyaccess)
+/area/medical/virologywest)
 "pKn" = (
 /obj/machinery/atmospherics/portables_connector,
 /obj/machinery/portable_atmospherics/canister/carbon_dioxide{
@@ -21636,7 +21645,7 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/white,
-/area/medical/virologyaccess)
+/area/medical/virologywest)
 "qaw" = (
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -21712,7 +21721,7 @@
 /obj/structure/closet/l3closet/virology,
 /obj/effect/floor_decal/industrial/outline/grey,
 /turf/simulated/floor/tiled/white,
-/area/medical/virologyaccess)
+/area/medical/virologywest)
 "qhg" = (
 /turf/simulated/wall/r_wall/prepainted/science,
 /area/space)
@@ -21819,7 +21828,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
-/area/maintenance/medbay/fore)
+/area/medical/virologyeast)
 "qjz" = (
 /obj/machinery/holopad,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -22047,7 +22056,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/white,
-/area/maintenance/medbay/fore)
+/area/medical/virologyeast)
 "qsP" = (
 /obj/machinery/fire_alarm/east_mount,
 /obj/machinery/washing_machine,
@@ -22405,7 +22414,7 @@
 	pixel_y = -24
 	},
 /turf/simulated/floor/tiled,
-/area/maintenance/medbay/fore)
+/area/medical/virologyeast)
 "qDK" = (
 /obj/machinery/light{
 	dir = 4
@@ -22665,7 +22674,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/white,
-/area/maintenance/medbay/fore)
+/area/medical/virologyeast)
 "qLm" = (
 /obj/machinery/air_alarm{
 	pixel_y = 22
@@ -23242,7 +23251,7 @@
 /area/assembly/robotics)
 "rdA" = (
 /turf/simulated/wall/r_wall/prepainted/medical,
-/area/maintenance/medbay/fore)
+/area/medical/virologyeast)
 "reb" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/cable/green{
@@ -23447,6 +23456,19 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/assembly/robotics)
+"rnh" = (
+/obj/effect/floor_decal/borderfloorwhite{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/green/border{
+	dir = 4
+	},
+/obj/machinery/power/apc/east_mount,
+/obj/structure/cable/green{
+	icon_state = "0-8"
+	},
+/turf/simulated/floor/tiled/white,
+/area/medical/virologywest)
 "rnt" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/black{
 	dir = 5
@@ -23480,7 +23502,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/white,
-/area/medical/virologyaccess)
+/area/medical/virologywest)
 "rpi" = (
 /turf/simulated/floor/tiled/white,
 /area/medical/medbay_primary_storage)
@@ -23851,7 +23873,7 @@
 	},
 /obj/machinery/fire_alarm/west_mount,
 /turf/simulated/floor/tiled/white,
-/area/medical/virologyaccess)
+/area/medical/virologywest)
 "rFd" = (
 /obj/effect/floor_decal/borderfloorwhite/corner{
 	dir = 4
@@ -24082,19 +24104,17 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/white,
-/area/medical/virologyaccess)
+/area/medical/virologywest)
 "rMO" = (
 /obj/structure/bed/chair/sofa/black/left,
 /turf/simulated/floor/wood,
 /area/medical/medbay4)
 "rMR" = (
-/obj/structure/cable/green,
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
 	},
-/obj/machinery/power/apc/south_mount,
 /turf/simulated/floor/tiled,
-/area/maintenance/medbay/fore)
+/area/medical/virologyeast)
 "rMY" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
@@ -24282,7 +24302,7 @@
 	icon_state = "1-4"
 	},
 /turf/simulated/floor/tiled/white,
-/area/medical/virologyaccess)
+/area/medical/virologywest)
 "rRZ" = (
 /obj/effect/floor_decal/steeldecal/steel_decals4{
 	dir = 5
@@ -24831,7 +24851,7 @@
 	dir = 4
 	},
 /turf/simulated/wall/r_wall/prepainted/medical,
-/area/maintenance/medbay/fore)
+/area/medical/virologyeast)
 "soK" = (
 /obj/machinery/door/blast/regular{
 	id = "xenobiovs5";
@@ -24904,7 +24924,7 @@
 	dir = 10
 	},
 /turf/simulated/floor/tiled/white,
-/area/maintenance/medbay/fore)
+/area/medical/virologyeast)
 "sqk" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -24991,7 +25011,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/white,
-/area/medical/virologyaccess)
+/area/medical/virologywest)
 "svR" = (
 /turf/simulated/wall/prepainted/science,
 /area/rnd/breakroom)
@@ -25145,7 +25165,7 @@
 	pixel_y = -24
 	},
 /turf/simulated/floor/tiled,
-/area/medical/virologyaccess)
+/area/medical/virologywest)
 "sCJ" = (
 /obj/machinery/washing_machine,
 /turf/simulated/floor/tiled/techfloor,
@@ -25763,7 +25783,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/white,
-/area/medical/virologyaccess)
+/area/medical/virologywest)
 "tcX" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 5
@@ -26085,7 +26105,7 @@
 	pixel_y = 26
 	},
 /turf/simulated/floor/tiled,
-/area/maintenance/medbay/fore)
+/area/medical/virologyeast)
 "tpN" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 1
@@ -26288,7 +26308,7 @@
 	pixel_x = 25
 	},
 /turf/simulated/floor/tiled/white,
-/area/medical/virologyaccess)
+/area/medical/virologywest)
 "tvV" = (
 /turf/simulated/floor/plating,
 /area/victory/hallway/d3afthall)
@@ -26337,7 +26357,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/maintenance/medbay/fore)
+/area/medical/virologyeast)
 "tyX" = (
 /obj/machinery/fitness/punching_bag/clown,
 /turf/simulated/wall/r_wall/prepainted/science,
@@ -26435,7 +26455,7 @@
 	dir = 6
 	},
 /turf/simulated/floor/tiled,
-/area/maintenance/medbay/fore)
+/area/medical/virologyeast)
 "tCz" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -26821,7 +26841,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/white,
-/area/medical/virologyaccess)
+/area/medical/virologywest)
 "tQp" = (
 /turf/simulated/wall/prepainted/medical,
 /area/medical/medbay4)
@@ -27181,7 +27201,7 @@
 /area/medical/surgery)
 "uhe" = (
 /turf/simulated/wall/r_wall/prepainted/medical,
-/area/medical/virologyaccess)
+/area/medical/virologywest)
 "uht" = (
 /obj/structure/table/steel_reinforced,
 /obj/effect/floor_decal/corner/paleblue/diagonal,
@@ -27972,7 +27992,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/white,
-/area/maintenance/medbay/fore)
+/area/medical/virologyeast)
 "uNv" = (
 /obj/structure/bed/chair/comfy/brown,
 /obj/effect/floor_decal/corner/green{
@@ -28752,7 +28772,7 @@
 	pixel_y = 16
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/medical/virologyaccess)
+/area/medical/virologywest)
 "vtg" = (
 /obj/structure/cable/green{
 	icon_state = "1-2"
@@ -28848,7 +28868,7 @@
 	},
 /obj/machinery/fire_alarm/east_mount,
 /turf/simulated/floor/tiled/white,
-/area/maintenance/medbay/fore)
+/area/medical/virologyeast)
 "vws" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
@@ -28891,7 +28911,7 @@
 	},
 /obj/structure/bed/chair,
 /turf/simulated/floor/tiled/white,
-/area/maintenance/medbay/fore)
+/area/medical/virologyeast)
 "vya" = (
 /turf/simulated/floor/tiled/white,
 /area/medical/psych_ward)
@@ -29112,7 +29132,7 @@
 /obj/structure/closet/l3closet/virology,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/tiled,
-/area/maintenance/medbay/fore)
+/area/medical/virologyeast)
 "vKe" = (
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 9
@@ -29528,7 +29548,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/white,
-/area/medical/virologyaccess)
+/area/medical/virologywest)
 "vYN" = (
 /turf/simulated/wall/r_wall/prepainted/medical,
 /area/medical/virologymaint)
@@ -30088,7 +30108,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/white,
-/area/maintenance/medbay/fore)
+/area/medical/virologyeast)
 "woC" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
@@ -30199,7 +30219,7 @@
 /obj/structure/table/standard,
 /obj/item/reagent_containers/spray/cleaner,
 /turf/simulated/floor/tiled,
-/area/maintenance/medbay/fore)
+/area/medical/virologyeast)
 "wrp" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 1
@@ -30216,7 +30236,7 @@
 /obj/structure/table/glass,
 /obj/item/storage/box/cups,
 /turf/simulated/floor/tiled/white,
-/area/maintenance/medbay/fore)
+/area/medical/virologyeast)
 "wsg" = (
 /obj/effect/floor_decal/steeldecal/steel_decals_central1,
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
@@ -30240,7 +30260,7 @@
 /obj/machinery/power/apc/west_mount,
 /obj/structure/cable/green,
 /turf/simulated/floor/tiled/white,
-/area/maintenance/medbay/fore)
+/area/medical/virologyeast)
 "wtw" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 1
@@ -30441,7 +30461,7 @@
 	pixel_y = 26
 	},
 /turf/simulated/floor/tiled/white,
-/area/maintenance/medbay/fore)
+/area/medical/virologyeast)
 "wAn" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -30751,7 +30771,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled,
-/area/maintenance/medbay/fore)
+/area/medical/virologyeast)
 "wNh" = (
 /obj/structure/morgue{
 	dir = 8
@@ -31240,7 +31260,7 @@
 	dir = 9
 	},
 /turf/simulated/floor/tiled,
-/area/maintenance/medbay/fore)
+/area/medical/virologyeast)
 "xhf" = (
 /obj/effect/floor_decal/steeldecal/steel_decals4{
 	dir = 5
@@ -31265,7 +31285,7 @@
 	pixel_y = 26
 	},
 /turf/simulated/floor/tiled,
-/area/medical/virologyaccess)
+/area/medical/virologywest)
 "xhw" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
@@ -31542,7 +31562,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/white,
-/area/medical/virology)
+/area/medical/virologywest)
 "xrB" = (
 /obj/structure/closet/hydrant{
 	pixel_y = 32
@@ -31566,7 +31586,7 @@
 	dir = 9
 	},
 /turf/simulated/floor/tiled,
-/area/maintenance/medbay/fore)
+/area/medical/virologyeast)
 "xrW" = (
 /obj/structure/table/standard,
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
@@ -31799,7 +31819,7 @@
 	pixel_x = -28
 	},
 /turf/simulated/floor/tiled/white,
-/area/maintenance/medbay/fore)
+/area/medical/virologyeast)
 "xCJ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled/monowhite,
@@ -31966,7 +31986,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/white,
-/area/maintenance/medbay/fore)
+/area/medical/virologyeast)
 "xHy" = (
 /obj/machinery/light{
 	dir = 1
@@ -32061,7 +32081,7 @@
 	pixel_y = -24
 	},
 /turf/simulated/floor/tiled,
-/area/medical/virologyaccess)
+/area/medical/virologywest)
 "xJB" = (
 /obj/structure/closet/secure_closet/CMO,
 /obj/item/cmo_disk_holder,
@@ -32626,7 +32646,7 @@
 	pixel_y = -32
 	},
 /turf/simulated/floor/tiled/white,
-/area/maintenance/medbay/fore)
+/area/medical/virologyeast)
 "yic" = (
 /obj/machinery/holopad,
 /turf/simulated/floor/tiled/white,
@@ -51421,8 +51441,8 @@ tQh
 mog
 mog
 ijc
-ijc
-ijc
+pxj
+pxj
 geo
 vYM
 koj
@@ -51614,7 +51634,7 @@ rpe
 lEi
 gaA
 gaA
-gaA
+rnh
 gaA
 eCA
 pIM
@@ -53948,10 +53968,10 @@ pvs
 oOF
 qjW
 wlz
-wlz
+uhe
 xqg
-wlz
-wlz
+uhe
+uhe
 pRW
 pRW
 pRW

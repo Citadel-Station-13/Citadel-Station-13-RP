@@ -110,3 +110,11 @@
 /area/rnd/robotics/morgue
 	name = "\improper Robotics Morgue"
 	icon_state = "robotics"
+
+/area/medical/virologyeast
+	name = "\improper Virology Access East"
+	icon_state = "virology"
+
+/area/medical/virologywest
+	name = "\improper Virology Access West"
+	icon_state = "virology"
