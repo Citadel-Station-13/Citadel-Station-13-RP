@@ -891,9 +891,6 @@
 /obj/machinery/air_alarm{
 	pixel_y = 22
 	},
-/obj/machinery/light{
-	dir = 1
-	},
 /obj/machinery/scale,
 /obj/effect/floor_decal/corner/paleblue/full{
 	dir = 1
@@ -1317,7 +1314,8 @@
 /area/victory/hallway/d3fwdhall)
 "aZZ" = (
 /obj/machinery/air_alarm{
-	pixel_y = 22
+	dir = 8;
+	pixel_x = 24
 	},
 /obj/item/clothing/suit/straight_jacket,
 /obj/item/clothing/suit/straight_jacket,
@@ -2336,6 +2334,9 @@
 "bKW" = (
 /obj/structure/closet/emcloset,
 /obj/effect/floor_decal/industrial/outline/red,
+/obj/machinery/light{
+	dir = 4
+	},
 /turf/simulated/floor/tiled,
 /area/medical/medbay4)
 "bLe" = (
@@ -4405,7 +4406,7 @@
 /area/rnd/hallway)
 "dqJ" = (
 /obj/machinery/door/airlock/maintenance/common,
-/turf/space/basic,
+/turf/simulated/floor/plating,
 /area/medical/surgery_storage)
 "drj" = (
 /obj/structure/cable/green{
@@ -4423,13 +4424,14 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/medbreak)
 "drp" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/light{
-	dir = 4
+/obj/effect/floor_decal/borderfloorwhite{
+	dir = 8
 	},
-/turf/simulated/floor/tiled,
-/area/medical/medbay4)
+/obj/effect/floor_decal/corner/paleblue/border{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/white,
+/area/medical/sleeper)
 "drR" = (
 /obj/structure/table/steel_reinforced,
 /obj/item/storage/firstaid/adv,
@@ -12635,12 +12637,12 @@
 	dir = 4
 	},
 /obj/map_helper/access_helper/airlock/station/medical/department,
-/obj/machinery/door/airlock/medical{
-	name = "Virology Access";
-	req_one_access = null
-	},
 /obj/effect/floor_decal/borderfloorwhite,
 /obj/effect/floor_decal/corner/green/border,
+/obj/machinery/door/airlock/glass/medical{
+	name = "Virology";
+	req_one_access = null
+	},
 /turf/simulated/floor/tiled/white,
 /area/medical/medbay3)
 "jsK" = (
@@ -12660,8 +12662,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/door/firedoor/glass,
-/obj/machinery/door/airlock{
-	name = "Restroom"
+/obj/machinery/door/airlock/medical{
+	name = "Restroom";
+	req_one_access = null
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/patient_wing)
@@ -18393,14 +18396,19 @@
 /turf/space,
 /area/space)
 "nXe" = (
-/obj/structure/morgue{
-	dir = 2
+/obj/structure/cable/green{
+	icon_state = "1-2"
 	},
-/obj/machinery/light{
-	dir = 1
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/effect/floor_decal/borderfloorwhite/corner{
+	dir = 4
 	},
-/turf/simulated/floor/tiled/techfloor,
-/area/medical/morgue)
+/obj/effect/floor_decal/corner/paleblue/bordercorner{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/white,
+/area/medical/sleeper)
 "nXk" = (
 /obj/structure/table/standard,
 /obj/item/storage/box/freezer{
@@ -18566,7 +18574,7 @@
 /area/assembly/chargebay)
 "odm" = (
 /obj/machinery/door/airlock/maintenance/common,
-/turf/space/basic,
+/turf/simulated/floor/plating,
 /area/maintenance/medbay/aft)
 "oey" = (
 /obj/structure/cable/green{
@@ -23538,13 +23546,16 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
-/obj/machinery/door/airlock/medical{
-	name = "Virology Access";
-	req_one_access = null
-	},
 /obj/map_helper/access_helper/airlock/station/medical/department,
+/obj/effect/floor_decal/borderfloorwhite{
+	dir = 1
+	},
 /obj/effect/floor_decal/corner/green/border{
 	dir = 1
+	},
+/obj/machinery/door/airlock/glass/medical{
+	name = "Virology";
+	req_one_access = null
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/medbay3)
@@ -24371,6 +24382,10 @@
 	},
 /obj/structure/closet/secure_closet/personal/patient,
 /obj/effect/floor_decal/corner/paleblue/full,
+/obj/machinery/light{
+	dir = 8;
+	light_range = 12
+	},
 /turf/simulated/floor/tiled/white,
 /area/medical/medbay4)
 "rWa" = (
@@ -24752,6 +24767,9 @@
 /obj/machinery/camera/network/medbay{
 	dir = 1;
 	network = list("Psychiatric")
+	},
+/obj/machinery/light{
+	dir = 4
 	},
 /turf/simulated/floor/tiled,
 /area/medical/medbay4)
@@ -26676,6 +26694,15 @@
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor,
 /area/shuttle/emt/general)
+"tNH" = (
+/obj/effect/floor_decal/borderfloorwhite/corner{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/paleblue/bordercorner{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/white,
+/area/medical/sleeper)
 "tNZ" = (
 /obj/effect/floor_decal/borderfloorwhite,
 /obj/effect/floor_decal/corner/paleblue/border,
@@ -28207,6 +28234,15 @@
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/rnd/reception_desk)
+"uVY" = (
+/obj/effect/floor_decal/borderfloorwhite/corner{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/paleblue/bordercorner{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/white,
+/area/medical/sleeper)
 "uWv" = (
 /obj/machinery/fire_alarm/north_mount,
 /obj/effect/floor_decal/techfloor{
@@ -28421,6 +28457,9 @@
 /obj/effect/floor_decal/corner/paleblue{
 	dir = 5
 	},
+/obj/machinery/light{
+	dir = 1
+	},
 /turf/simulated/floor/tiled/white,
 /area/medical/medbay4)
 "vez" = (
@@ -28541,6 +28580,12 @@
 /obj/structure/disposalpipe/segment,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/effect/floor_decal/borderfloorwhite/corner{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/paleblue/bordercorner{
+	dir = 1
+	},
 /turf/simulated/floor/tiled/white,
 /area/medical/sleeper)
 "vmn" = (
@@ -29276,7 +29321,7 @@
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
 /obj/effect/paint/babyblue,
 /obj/machinery/vending/blood,
-/turf/space/basic,
+/turf/simulated/floor/plating,
 /area/medical/medbay_primary_storage)
 "vTK" = (
 /obj/item/radio/intercom{
@@ -40521,7 +40566,7 @@ tQp
 ntf
 rRE
 rRE
-drp
+rRE
 mYX
 fwy
 fsS
@@ -45171,8 +45216,8 @@ tdK
 vXI
 lKq
 lPc
-kgh
-kgh
+drp
+tNH
 kVo
 kKM
 iBd
@@ -45365,7 +45410,7 @@ oYo
 oYo
 eaI
 dxA
-las
+nXe
 las
 uJJ
 kCM
@@ -47305,7 +47350,7 @@ wFe
 ejt
 whZ
 dxA
-kgh
+uVY
 sCe
 ggO
 jAX
@@ -48660,9 +48705,9 @@ oRe
 xbs
 pGL
 gwT
-kUn
+gwT
 gMR
-vXJ
+rJd
 rJd
 tUw
 ukC
@@ -48678,7 +48723,7 @@ nDp
 rJd
 uIx
 iRX
-nXe
+tFQ
 wpd
 vAJ
 wNh
