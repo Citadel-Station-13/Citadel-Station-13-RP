@@ -145,7 +145,7 @@
 		ZTRAIT_FACILITY_SAFETY,
 	)
 	base_turf = /turf/space
-	link_above = /datum/map_level/victory/ship/deck_two
+	link_below = /datum/map_level/victory/ship/deck_two
 	flags = LEGACY_LEVEL_STATION|LEGACY_LEVEL_CONTACT|LEGACY_LEVEL_PLAYER|LEGACY_LEVEL_CONSOLES
 
 /datum/map_level/victory/ship/deck_two
@@ -160,8 +160,8 @@
 		ZTRAIT_LEGACY_BELTER_DOCK,
 	)
 	base_turf = /turf/simulated/open
-	link_above = /datum/map_level/victory/ship/deck_three
-	link_below = /datum/map_level/victory/ship/deck_one
+	link_below = /datum/map_level/victory/ship/deck_three
+	link_above = /datum/map_level/victory/ship/deck_one
 	flags = LEGACY_LEVEL_STATION|LEGACY_LEVEL_CONTACT|LEGACY_LEVEL_PLAYER|LEGACY_LEVEL_CONSOLES
 
 /datum/map_level/victory/ship/deck_three
@@ -175,8 +175,8 @@
 		ZTRAIT_FACILITY_SAFETY,
 	)
 	base_turf = /turf/simulated/open
-	link_above = /datum/map_level/victory/ship/deck_four
-	link_below = /datum/map_level/victory/ship/deck_two
+	link_below = /datum/map_level/victory/ship/deck_four
+	link_above = /datum/map_level/victory/ship/deck_two
 	flags = LEGACY_LEVEL_STATION|LEGACY_LEVEL_CONTACT|LEGACY_LEVEL_PLAYER|LEGACY_LEVEL_CONSOLES
 
 /datum/map_level/victory/ship/deck_four
@@ -190,7 +190,7 @@
 		ZTRAIT_FACILITY_SAFETY,
 	)
 	base_turf = /turf/simulated/open
-	link_below = /datum/map_level/victory/ship/deck_three
+	link_above = /datum/map_level/victory/ship/deck_three
 	flags = LEGACY_LEVEL_STATION|LEGACY_LEVEL_CONTACT|LEGACY_LEVEL_PLAYER|LEGACY_LEVEL_CONSOLES
 
 /datum/map_level/victory/flagship
