@@ -1141,6 +1141,10 @@
 /obj/effect/floor_decal/steeldecal/steel_decals9,
 /turf/simulated/floor/tiled/dark,
 /area/rnd/research/testingrange)
+"aTu" = (
+/obj/machinery/door/airlock/maintenance/common,
+/turf/simulated/wall/r_wall/prepainted/medical,
+/area/medical/medbay4)
 "aTQ" = (
 /obj/structure/table/glass,
 /turf/simulated/floor/carpet/purcarpet,
@@ -10792,6 +10796,10 @@
 	},
 /turf/simulated/floor/tiled,
 /area/victory/hallway/d3starboardhall)
+"ixn" = (
+/obj/machinery/door/airlock/maintenance/common,
+/turf/simulated/wall/prepainted/medical,
+/area/maintenance/medbay/aft)
 "ixo" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -11038,6 +11046,9 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/psych_ward)
+"iEs" = (
+/turf/simulated/floor/plating,
+/area/medical/medbay4)
 "iEL" = (
 /obj/machinery/light_switch{
 	pixel_x = 25
@@ -42172,11 +42183,11 @@ mmI
 oDK
 wHh
 tNZ
-syi
-syi
-syi
-syi
-syi
+aTu
+iEs
+iEs
+iEs
+iEs
 syi
 wKq
 vMN
@@ -42362,15 +42373,15 @@ igd
 qpq
 qpq
 qpq
-mmI
+ixn
 oDK
 wHh
 tNZ
 syi
-syi
-syi
-syi
-syi
+iEs
+iEs
+iEs
+iEs
 syi
 vHw
 vMN
