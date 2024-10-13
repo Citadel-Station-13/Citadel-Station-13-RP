@@ -75,8 +75,8 @@
 		avg_temp = (temperature * our_capacity_singular * size_scaler + other.temperature * their_capacity_singular) / (our_capacity_singular * size_scaler + their_capacity_singular)
 	else
 		avg_temp = (temperature * our_capacity_singular + other.temperature * their_capacity_singular) / (our_capacity_singular + their_capacity_singular)
-	temperature = (our_capacity_singular * intact_ratio * temperature + avg_temp * total_capacity_singular * ratio * (their_size / our_size)) / (our_capacity_singular * intact_ratio + total_capacity_singular * ratio * (their_size / our_size))
-	other.temperature = (their_capacity_singular * intact_ratio * other.temperature + avg_temp * total_capacity_singular * ratio * (our_size / their_size)) / (their_capacity_singular * intact_ratio + total_capacity_singular * ratio * (our_size / their_size))
+	temperature = (our_capacity_singular * intact_ratio * temperature + avg_temp * total_capacity_singular * ratio) / (our_capacity_singular * intact_ratio + total_capacity_singular * ratio)
+	other.temperature = (their_capacity_singular * intact_ratio * other.temperature + avg_temp * total_capacity_singular * ratio) / (their_capacity_singular * intact_ratio + total_capacity_singular * ratio)
 
 	// update
 	update_values()
