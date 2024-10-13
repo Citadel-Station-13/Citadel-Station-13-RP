@@ -340,7 +340,7 @@
 /obj/structure/transit_tube_pod/proc/mix_air()
 	var/datum/gas_mixture/environment = loc.return_air()
 
-	//note that share_with_mixture assumes both gas mixes have the same volume,
+	//note that share_with_congruent_mixture assumes both gas mixes have the same volume,
 	//so if the volume is changed this may need to be changed as well.
 	air_contents.environmental_share_simulated(environment, 1)
 

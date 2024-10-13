@@ -10,19 +10,20 @@
 /**
  * Shares a ratio of the combined gas of two gas mixtures
  *
- * todo: this should return TRUE if something changed, FALSE otherwise.
+ * TODO: this should return TRUE if something changed, FALSE otherwise.
  *
  * * non canonical, e.g. A shares with B --> A shares with C != A shares with C --> A shares with B
  * * this also assumes equal weighting, e.g. 0.5 ratio means take half of us and half of them, mix it, and put it back in.
+ * * this requires two mixtures iwth equal volumes
  *
  * @return TRUE if we are near-equivalent to the other, FALSE if we are still different.
  */
-/datum/gas_mixture/proc/share_with_mixture(datum/gas_mixture/other, ratio)
+/datum/gas_mixture/proc/share_with_congruent_mixture(datum/gas_mixture/other, ratio)
 #ifdef CF_ATMOS_DEBUG_ASSERTIONS
 	ASSERT(ratio > 0 && ratio <= 1)
-	// todo: volume based, not group multiplier based. is it worth it?
 	ASSERT(volume == other.volume)
 #endif
+
 	// collect
 	var/list/their_gas = other.gas
 	var/list/our_gas = gas
@@ -31,8 +32,13 @@
 	var/their_size = other.group_multiplier
 	var/total_size = our_size + their_size
 
-	var/our_capacity = heat_capacity()
-	var/their_capacity = heat_capacity()
+	var/our_capacity_singular = heat_capacity_singular()
+	var/their_capacity_singular = heat_capacity_singular()
+	var/total_capacity_singular = our_capacity_singular + their_capacity_singular
+
+	// if this is empty we're dealing with two null mixtures so just bail
+	if(!total_capacity_singular)
+		return TRUE
 
 	// compute
 	var/list/avg_gas = list()
@@ -45,8 +51,9 @@
 	for(var/id in avg_gas)
 		avg_gas[id] /= total_size
 
-	// equalize
 	var/intact_ratio = 1 - ratio
+
+	// equalize gas
 	var/avg_amt
 	for(var/id in avg_gas)
 		// set moles by ratio
@@ -55,30 +62,38 @@
 		// i don't know what these do but they work (probably)
 		our_gas[id] = (our_gas[id] - avg_amt) * intact_ratio + avg_amt
 		their_gas[id] = (their_gas[id] - avg_amt) * intact_ratio + avg_amt
+	#warn this is potentially wrong
+	// equalize temp
+	// this scales down for floating point precision reasons
+	var/avg_temp
+	var/size_scaler
+	if(our_size > their_size)
+		size_scaler = their_size / our_size
+		avg_temp = (temperature * our_capacity_singular + other.temperature * their_capacity_singular * size_scaler) / (our_capacity_singular + their_capacity_singular * size_scaler)
+	else if(their_size < our_size)
+		size_scaler = our_size / their_size
+		avg_temp = (temperature * our_capacity_singular * size_scaler + other.temperature * their_capacity_singular) / (our_capacity_singular * size_scaler + their_capacity_singular)
+	else
+		avg_temp = (temperature * our_capacity_singular + other.temperature * their_capacity_singular) / (our_capacity_singular + their_capacity_singular)
+	temperature = (our_capacity_singular * intact_ratio * temperature + avg_temp * total_capacity_singular * ratio * (their_size / our_size)) / (our_capacity_singular * intact_ratio + total_capacity_singular * ratio * (their_size / our_size))
+	other.temperature = (their_capacity_singular * intact_ratio * other.temperature + avg_temp * total_capacity_singular * ratio * (our_size / their_size)) / (their_capacity_singular * intact_ratio + total_capacity_singular * ratio * (our_size / their_size))
 
 	// update
 	update_values()
 	other.update_values()
 
-	// if empty
-	if(!total_moles)
-		return compare(other)
-
-	// thermodynamics:
-	// i don't know what these do but they work (probably)
-	var/avg_temperature = (temperature * our_capacity + other.temperature * their_capacity) / (our_capacity + their_capacity)
-	temperature = (temperature - avg_temperature) * intact_ratio + avg_temperature
-	other.temperature = (other.temperature - avg_temperature) * intact_ratio + avg_temperature
-
 	// return if we equalized fully
 	return compare(other)
+
+// TODO: a proc for sharing with non-equal-volume mixtures; unit test it!
 
 /**
  * equalizes x% of our gas with an unsimulated mixture.
  *
  * ! warning: this assumes the virtual mixture is the same volume as us, for optimization
  *
- * todo: this should return TRUE if something changed, FALSE otherwise.
+ * TODO: this should return TRUE if something changed, FALSE otherwise.
+ * TODO: unit test
  *
  * @params
  * - gases - gases of the other mixture

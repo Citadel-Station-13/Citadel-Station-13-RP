@@ -25,7 +25,7 @@
 	)
 	if(tiles <= 0)
 		CRASH("sharing with tiles < 0 is a waste of time")
-	return share_with_mixture(other, lookup_table[min(tiles, 6)])
+	return share_with_congruent_mixture(other, lookup_table[min(tiles, 6)])
 
 /**
  * default implementation to equalize with an unsimulated space
