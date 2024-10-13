@@ -74,6 +74,7 @@
 #include "code\__DEFINES\recipes.dm"
 #include "code\__DEFINES\robots.dm"
 #include "code\__DEFINES\roguemining_vr.dm"
+#include "code\__DEFINES\role_preferences.dm"
 #include "code\__DEFINES\rust_g.dm"
 #include "code\__DEFINES\screen.dm"
 #include "code\__DEFINES\shields.dm"
