@@ -42,7 +42,6 @@
 	/// * uses BALLISTIC_RENDER_BREAK_* enums
 	/// * This is also used for LMGs, and any other gun requiring this stuff.
 	var/render_break_overlay = BALLISTIC_RENDER_BREAK_NEVER
-	#warn impl above
 
 	//! LEGACY BELOW
 
@@ -404,4 +403,15 @@
 		return
 	return global.magazine_class_bit_to_state[log(2, magazine.magazine_class)]
 
-#warn impl
+/obj/item/gun/ballistic/update_icon()
+	// todo: shouldn't need this check, deal with legacy
+	if(!item_renderer && !mob_renderer && render_use_legacy_by_default)
+		return ..()
+	. = ..()
+	// todo: render_break_overlay
+	// todo: render_bolt_overlay
+	if(render_magazine_overlay)
+		if(ammo_magazine)
+			var/overlay = get_magazine_overlay_for(ammo_magazine)
+			if(overlay)
+				add_overlay(overlay)

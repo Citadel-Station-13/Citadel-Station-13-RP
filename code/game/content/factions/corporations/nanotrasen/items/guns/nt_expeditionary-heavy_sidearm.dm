@@ -41,7 +41,7 @@
 
 /obj/item/ammo_magazine/nt_expeditionary/heavy_sidearm/speedloader
 	name = "speedloader (NT-9-LR)"
-	icon_state = "speedloader-1"
+	icon_state = "speedloader"
 	base_icon_state = "speedloader"
 
 /obj/item/ammo_magazine/nt_expeditionary/heavy_sidearm/speedloader/update_icon(updates)
@@ -63,13 +63,13 @@
 	name = "pistol magazine (NT-9-LR)"
 	icon_state = "magazine-5"
 	base_icon_state = "magazine"
-	rendering_static_overlay = "-stripe"
+	rendering_static_overlay = "magazine-stripe"
 
 /obj/item/ammo_magazine/nt_expeditionary/heavy_sidearm/smg
 	name = "smg magazine (NT-9-LR)"
 	icon_state = "smg-1"
 	base_icon_state = "smg"
-	rendering_static_overlay = "-stripe"
+	rendering_static_overlay = "smg-stripe"
 
 //* Projectiles *//
 

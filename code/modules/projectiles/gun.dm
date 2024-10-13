@@ -901,7 +901,8 @@
 //* Rendering *//
 
 /obj/item/gun/update_icon(updates)
-	if(!item_renderer && !mob_renderer)
+	// todo: shouldn't need this check, deal with legacy
+	if(!item_renderer && !mob_renderer && render_use_legacy_by_default)
 		return ..()
 	cut_overlays()
 	var/ratio_left = get_ammo_ratio()
