@@ -16,10 +16,13 @@
 	caliber = /datum/ammo_caliber/nt_expeditionary/light_sidearm
 	projectile_type = /obj/projectile/bullet/nt_expeditionary/light_sidearm
 
+	/// specifically for /obj/item/ammo_magazine/nt_expeditionary/light_sidearm's
+	var/speedloader_state = "basic"
+
 //* Magazines *//
 
 /obj/item/ammo_magazine/nt_expeditionary/light_sidearm
-	name = "ammo magazine (NT-7.5-LR)"
+	name = "ammo magazine (NT-9)"
 	icon = 'icons/content/factions/corporations/nanotrasen/items/guns/expeditionary/rifle-heavy-ammo.dmi'
 	icon_state = "magazine"
 	base_icon_state = "magazine"
@@ -29,17 +32,58 @@
 	ammo_preload = /obj/item/ammo_casing/nt_expeditionary/light_sidearm
 
 /obj/item/ammo_magazine/nt_expeditionary/light_sidearm/speedloader
+	icon_state = "speedloader"
+	base_icon_state = "speedloader"
+	ammo_max = 6
 
 /obj/item/ammo_magazine/nt_expeditionary/light_sidearm/speedloader/update_icon(updates)
 	cut_overlays()
 	. = ..()
-	#warn impl; overlay via "[base_icon_state]-[casing.magazine_state]", shift -2, -2
+	var/list/overlays_to_add = list()
+	// todo: make this look better, this is the lazy locations.
+	var/static/list/pos_x = list(
+		0,
+		1,
+		2,
+		3,
+		4,
+		5,
+	)
+	var/static/list/pos_y = list(
+		-0,
+		-1,
+		-2,
+		-3,
+		-4,
+		-5,
+	)
+	for(var/i in 1 to min(6, amount_remaining()))
+		var/obj/item/ammo_casing/nt_expeditionary/light_sidearm/predicted_path = peek_path_of_position(i)
+		var/append = "basic"
+		if(ispath(predicted_path, /obj/item/ammo_casing/nt_expeditionary/light_sidearm))
+			append = initial(predicted_path.speedloader_state)
+		var/image/overlay = image(icon, "speedloader-[append]")
+		overlay.pixel_x = pos_x[i]
+		overlay.pixel_y = pos_y[i]
+		overlays_to_add += overlay
+	add_overlay(overlays_to_add)
 
 /obj/item/ammo_magazine/nt_expeditionary/light_sidearm/pistol
+	name = "pistol magazine (NT-9)"
+	icon_state = "pistol-5"
+	base_icon_state = "pistol"
+	rendering_system = GUN_RENDERING_STATES
+	rendering_count = 5
+	rendering_static_overlay = "pistol-stripe"
+	ammo_max = 8
 
 /obj/item/ammo_magazine/nt_expeditionary/light_sidearm/smg
-
-#warn impl all
+	icon_state = "smg-1"
+	base_icon_state = "smg"
+	rendering_system = GUN_RENDERING_STATES
+	rendering_count = 1
+	rendering_static_overlay = "smg-stripe"
+	ammo_max = 24
 
 //* Projectiles *//
 
@@ -56,8 +100,6 @@
 	icon = 'icons/content/factions/corporations/nanotrasen/items/guns/expeditionary/sidearm-light.dmi'
 	caliber = /datum/ammo_caliber/nt_expeditionary/light_sidearm
 
-#warn sprites
-
 //* Pistol *//
 
 /obj/item/gun/ballistic/nt_expeditionary/light_sidearm/pistol
@@ -71,6 +113,9 @@
 		while its magazine gives it enough ammunition for those in a pinch to take chance shots.
 	"} + "<br>"
 	load_method = SINGLE_CASING | MAGAZINE
+	icon_state = "pistol-map"
+	base_icon_state = "pistol"
+	render_magazine_overlay = MAGAZINE_CLASS_GENERIC
 
 //* SMG *//
 
@@ -85,5 +130,6 @@
 		the dead of night.
 	"} + "<br>"
 	load_method = SINGLE_CASING | MAGAZINE
-
-#warn impl all
+	icon_state = "smg-map"
+	base_icon_state = "smg"
+	render_magazine_overlay = MAGAZINE_CLASS_GENERIC | MAGAZINE_CLASS_EXTENDED
