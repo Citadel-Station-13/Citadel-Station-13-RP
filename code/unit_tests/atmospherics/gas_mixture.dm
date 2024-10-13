@@ -5,16 +5,23 @@
 	two.adjust_gas_temp(GAS_ID_OXYGEN, 100, 400)
 	two.group_multiplier = 2
 
+	var/total_energy_old = XGM_THERMAL_ENERGY(one) + XGM_THERMAL_ENERGY(two)
+
 	one.share_with_congruent_mixture(two, 1)
 
 	if(one.gas[GAS_ID_OXYGEN] != 200)
-		TEST_FAIL("basic share didn't equalize gas (expected 200, actual [one.gas[GAS_ID_OXYGEN]])")
+		TEST_FAIL("share_with_congruent_mixture() didn't equalize gas (expected 200, actual [one.gas[GAS_ID_OXYGEN]])")
 	if(two.gas[GAS_ID_OXYGEN] != 200)
-		TEST_FAIL("basic share didn't conserve gas (expected 200, actual [two.gas[GAS_ID_OXYGEN]])")
+		TEST_FAIL("share_with_congruent_mixture() didn't conserve gas (expected 200, actual [two.gas[GAS_ID_OXYGEN]])")
 	if(one.temperature != 280)
-		TEST_FAIL("basic share didn't equalize temp (expected 280, actual [one.temperature])")
+		TEST_FAIL("share_with_congruent_mixture() didn't equalize temp (expected 280, actual [one.temperature])")
 	if(two.temperature != 280)
-		TEST_FAIL("basic share didn't conserve temp (expected 280, actual [two.temperature])")
+		TEST_FAIL("share_with_congruent_mixture() didn't conserve temp (expected 280, actual [two.temperature])")
+
+	var/total_energy_new = XGM_THERMAL_ENERGY(one) + XGM_THERMAL_ENERGY(two)
+
+	if(total_energy_old != total_energy_new)
+		TEST_FAIL("share_with_congruent_mixture() didn't conserve energy (expected [total_energy_old], actual [total_energy_new])")
 
 // todo: share_with_immutable
 
