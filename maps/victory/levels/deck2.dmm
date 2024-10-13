@@ -10971,9 +10971,6 @@
 /obj/effect/floor_decal/corner/green/border{
 	dir = 8
 	},
-/obj/structure/cable/green{
-	icon_state = "1-4"
-	},
 /turf/simulated/floor/tiled/white,
 /area/medical/virologywest)
 "ijd" = (
@@ -20645,20 +20642,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/victory/hallway/d3porthall)
-"pxj" = (
-/obj/structure/cable/green{
-	icon_state = "1-2"
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/effect/floor_decal/borderfloorwhite{
-	dir = 8
-	},
-/obj/effect/floor_decal/corner/green/border{
-	dir = 8
-	},
-/turf/simulated/floor/tiled/white,
-/area/medical/virologywest)
 "pyk" = (
 /obj/effect/floor_decal/techfloor,
 /obj/effect/floor_decal/techfloor/hole,
@@ -23456,19 +23439,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/assembly/robotics)
-"rnh" = (
-/obj/effect/floor_decal/borderfloorwhite{
-	dir = 4
-	},
-/obj/effect/floor_decal/corner/green/border{
-	dir = 4
-	},
-/obj/machinery/power/apc/east_mount,
-/obj/structure/cable/green{
-	icon_state = "0-8"
-	},
-/turf/simulated/floor/tiled/white,
-/area/medical/virologywest)
 "rnt" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/black{
 	dir = 5
@@ -26106,6 +26076,19 @@
 	},
 /turf/simulated/floor/tiled,
 /area/medical/virologyeast)
+"tpz" = (
+/obj/effect/floor_decal/borderfloorwhite{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/green/border{
+	dir = 4
+	},
+/obj/machinery/power/apc/east_mount,
+/obj/structure/cable/green{
+	icon_state = "0-8"
+	},
+/turf/simulated/floor/tiled/white,
+/area/medical/virologywest)
 "tpN" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 1
@@ -26601,6 +26584,9 @@
 /area/medical/reception)
 "tIq" = (
 /obj/structure/table/woodentable,
+/obj/item/storage/box/cups{
+	pixel_y = 5
+	},
 /turf/simulated/floor/carpet/blucarpet,
 /area/crew_quarters/medbreak)
 "tIG" = (
@@ -30652,6 +30638,23 @@
 /obj/effect/floor_decal/techfloor/corner,
 /turf/simulated/floor/tiled,
 /area/victory/hallway/d3starboardhall)
+"wJr" = (
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/effect/floor_decal/borderfloorwhite{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/green/border{
+	dir = 8
+	},
+/obj/structure/cable/green{
+	icon_state = "1-4"
+	},
+/turf/simulated/floor/tiled/white,
+/area/medical/virologywest)
 "wJw" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 6
@@ -51440,9 +51443,9 @@ geo
 tQh
 mog
 mog
+wJr
 ijc
-pxj
-pxj
+ijc
 geo
 vYM
 koj
@@ -51634,7 +51637,7 @@ rpe
 lEi
 gaA
 gaA
-rnh
+tpz
 gaA
 eCA
 pIM
