@@ -38,8 +38,14 @@
 	ASSERT(equalize_ratio >= 0 && equalize_ratio <= 1)
 	#endif
 	#warn test
+	// check they're not empty
+	if(!heat_capacity)
+		return 0
 	// unsimulated mixtures
 	var/datum/gas_mixture/sharing_with_immutable = return_air_immutable()
+	// check we're not empty
+	if(!sharing_with_immutable.total_moles)
+		return 0
 	// to avoid precision issues, we only want our singular heat capacity
 	var/our_singular_heat_capacity = sharing_with_immutable.heat_capacity_singular()
 	// then, we divide their capacity by cell limit instead of expand our relative capacity.
@@ -56,11 +62,17 @@
 	ASSERT(equalize_ratio >= 0 && equalize_ratio <= 1)
 	#endif
 	#warn test
+	// check they're not empty
+	if(!heat_capacity)
+		return 0
 	// simulated mixtures
 	//
 	// the trick is the rest of this proc works regardless of if we're in a zone or not,
 	// because we're using group multiplier manually with cell unit
 	var/datum/gas_mixture/sharing_with_mutable = return_air_mutable()
+	// check we're not empty
+	if(!sharing_with_mutable.total_moles)
+		return 0
 	// don't grab full heat capacity, that's a floating point precision issue
 	var/our_singular_heat_capacity = sharing_with_mutable.heat_capacity_singular()
 	// instead, just get how much bigger than a single tile we *should* be
