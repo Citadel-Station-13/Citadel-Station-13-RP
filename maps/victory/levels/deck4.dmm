@@ -1540,10 +1540,6 @@
 /obj/landmark/spawnpoint/job/atmospheric_technician,
 /turf/simulated/floor/tiled/steel_dirty,
 /area/engineering/atmos/workshop)
-"ctb" = (
-/obj/machinery/power/apc,
-/turf/space,
-/area/space)
 "cvQ" = (
 /obj/effect/floor_decal/corner/lightorange/border{
 	dir = 1
@@ -4848,6 +4844,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/catwalk,
 /obj/machinery/atmospherics/pipe/simple/hidden/fuel,
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
 /turf/simulated/floor/plating,
 /area/victory/hallway/d4aftmaint)
 "ikp" = (
@@ -6609,6 +6608,9 @@
 	},
 /obj/map_helper/access_helper/airlock/station/engineering/department,
 /obj/machinery/atmospherics/pipe/simple/hidden/fuel,
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/starboardnacelle)
 "luJ" = (
@@ -12228,9 +12230,6 @@
 	},
 /turf/simulated/wall/r_wall/prepainted/engineering,
 /area/engineering/starboardnacelle)
-"vwF" = (
-/turf/simulated/floor/reinforced/oxygen,
-/area/victory/hallway/d4aftmaint)
 "vxi" = (
 /obj/machinery/atmospherics/pipe/manifold/visible/yellow{
 	dir = 1
@@ -13365,6 +13364,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/fuel,
 /obj/structure/catwalk,
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
 /turf/simulated/floor/plating,
 /area/victory/hallway/d4aftmaint)
 "xwk" = (
@@ -23644,7 +23646,7 @@ jNg
 jNg
 jNg
 jNg
-ctb
+jNg
 jNg
 jNg
 jNg
@@ -24465,7 +24467,7 @@ fEm
 fEm
 fEm
 cBS
-vwF
+jBO
 ikp
 ikp
 jNg
@@ -37070,7 +37072,7 @@ hic
 hic
 qBz
 jNg
-mKs
+jNg
 jNg
 jNg
 jNg
