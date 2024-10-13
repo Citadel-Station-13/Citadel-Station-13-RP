@@ -713,6 +713,7 @@
 /obj/item/tank/jetpack/oxygen,
 /obj/item/storage/backpack/parachute,
 /obj/item/clothing/accessory/permit/gun/planetside,
+/obj/item/binoculars,
 /turf/simulated/floor/tiled/monotile,
 /area/exploration/medical)
 "aHc" = (
@@ -10553,6 +10554,7 @@
 /obj/item/tank/jetpack/oxygen,
 /obj/item/storage/backpack/parachute,
 /obj/item/clothing/accessory/permit/gun/planetside,
+/obj/item/binoculars,
 /turf/simulated/floor/tiled/monotile,
 /area/exploration/medical)
 "ixp" = (
@@ -12434,6 +12436,7 @@
 	dir = 1;
 	pixel_y = 29
 	},
+/obj/item/hand_labeler,
 /turf/simulated/floor/tiled/white,
 /area/exploration/medical)
 "jTR" = (
