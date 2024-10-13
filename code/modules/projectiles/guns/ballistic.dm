@@ -30,12 +30,14 @@
 	/// Render the chamber state.
 	///
 	/// todo: mob renderer integration
+	/// todo: this is not supported yet
 	///
 	/// * uses BALLISTIC_RENDER_BOLT_* enms
 	var/render_bolt_overlay = BALLISTIC_RENDER_BOLT_NEVER
 	/// Render the state of a gun that's 'break action'
 	///
 	/// todo: mob renderer integration
+	/// todo: this is not supported yet
 	///
 	/// * uses BALLISTIC_RENDER_BREAK_* enums
 	/// * This is also used for LMGs, and any other gun requiring this stuff.

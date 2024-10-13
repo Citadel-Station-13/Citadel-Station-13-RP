@@ -16,8 +16,6 @@
 		above-average reliability rating, as well as being easy to restock out on the Frontier.
 	"}
 	caliber = /datum/ammo_caliber/nt_expeditionary
-	#warn stripe
-	#warn sprites
 
 //* Magazines *//
 
@@ -29,9 +27,6 @@
 		above-average reliability rating, as well as being easy to restock out on the Frontier.
 	"}
 	ammo_caliber = /datum/ammo_caliber/nt_expeditionary
-
-#warn impl
-#warn sprites
 
 //* Projectiles *//
 
@@ -53,5 +48,4 @@
 		This weapon is part of the experimental lineage of chemical-primed kinetic weaponry developed as part of a joint effort between Hephaestus Industries and the Nanotrasen Research Division. Created both to enhance compatibility as well as to improve security on installations operated by the Triumvirate, the 'NT Expeditionary' line boasts an above-average reliability rating
 		in addition to being rather simple to restock out on the Frontier.
 	"}
-
-#warn impl
+	render_use_legacy_by_default = FALSE
