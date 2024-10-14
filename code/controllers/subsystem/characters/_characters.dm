@@ -1,5 +1,7 @@
 //* This file is explicitly licensed under the MIT license. *//
-//* Copyright (c) 2023 Citadel Station developers.          *//
+//* Copyright (c) 2024 Citadel Station Developers           *//
+
+// todo: re-review this file; ensure generation / ACID is being enforced.
 
 /**
  * Manages character setup, character saving, loading,

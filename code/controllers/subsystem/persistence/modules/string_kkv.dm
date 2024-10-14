@@ -48,7 +48,7 @@
  * - group - optional group-specific. null counts as its own group.
  * - flush - immediately invoke SQL; otherwise subsystem decides when.
  */
-/datum/controller/subsystem/persistence/proc/string_kkv_set(key, value, group, flush)
+/datum/controller/subsystem/persistence/proc/string_kkv_set(key, group, value, flush)
 	string_kkv_save(group, key, value)
 
 //* Backend Save/Load *//
@@ -92,6 +92,7 @@
 
 //* Benchmarks *//
 
+/*
 /datum/controller/subsystem/persistence/proc/benchmark_string_kkv()
 	var/oldusr = usr
 	usr = null
@@ -133,3 +134,4 @@
 /datum/controller/subsystem/persistence/proc/kkv__string_load_benchmark(list/pointer, key)
 	string_kkv_load("benchmark", key)
 	pointer[1]--
+*/
