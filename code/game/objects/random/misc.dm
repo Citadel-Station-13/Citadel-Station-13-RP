@@ -846,7 +846,7 @@
 		prob(3);/obj/item/gun/energy/lasercannon,
 		prob(3);/obj/item/gun/ballistic/shotgun/pump/rifle/lever,
 		prob(3);/obj/item/gun/ballistic/automatic/bullpup,
-		prob(2);/obj/item/gun/energy/pulse_rifle,
+		prob(2);/obj/item/gun/energy/nt_pulse/rifle,
 		prob(2);/obj/item/gun/energy/gun/nuclear,
 		prob(2);/obj/item/gun/ballistic/automatic/lmg,
 		prob(2);/obj/item/gun/energy/gun/burst,

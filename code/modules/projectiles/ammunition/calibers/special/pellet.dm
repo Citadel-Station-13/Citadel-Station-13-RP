@@ -28,7 +28,7 @@
 	rendering_count = 1
 
 	ammo_caliber = /datum/ammo_caliber/pellet
-	ammo_type = /obj/item/ammo_casing/p_pellet
+	ammo_preload = /obj/item/ammo_casing/p_pellet
 	magazine_type = MAGAZINE_TYPE_BOX
 	materials_base = list(
 		/datum/material/steel::id = 100,

@@ -8,7 +8,7 @@
 	name = "prototype rifle magazine (5mm caseless)"
 	icon_state = "caseless-mag-0"
 	base_icon_state = "caseless-mag"
-	ammo_type = /obj/item/ammo_casing/a5mmcaseless
+	ammo_preload = /obj/item/ammo_casing/a5mmcaseless
 	ammo_caliber = /datum/ammo_caliber/a5mm
 	ammo_max = 30
 	rendering_system = GUN_RENDERING_STATES
@@ -17,7 +17,7 @@
 /obj/item/ammo_magazine/m5mmcaseless/stun
 	icon_state = "caseless-mag-alt-0"
 	base_icon_state = "caseless-mag-alt"
-	ammo_type = /obj/item/ammo_casing/a5mmcaseless/stun
+	ammo_preload = /obj/item/ammo_casing/a5mmcaseless/stun
 
 //* Ammunition *//
 
