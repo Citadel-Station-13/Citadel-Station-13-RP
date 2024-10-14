@@ -2,10 +2,10 @@
 	id = "victory"
 	name = "World - Victory"
 	levels = list(
-		/datum/map_level/victory/ship/deck_one,
-		/datum/map_level/victory/ship/deck_two,
-		/datum/map_level/victory/ship/deck_three,
 		/datum/map_level/victory/ship/deck_four,
+		/datum/map_level/victory/ship/deck_three,
+		/datum/map_level/victory/ship/deck_two,
+		/datum/map_level/victory/ship/deck_one,
 		/datum/map_level/victory/misc,
 		/datum/map_level/victory/transit,
 		/datum/map_level/victory/flagship,
