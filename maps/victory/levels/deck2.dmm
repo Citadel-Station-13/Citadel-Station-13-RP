@@ -29082,7 +29082,7 @@
 /obj/machinery/smartfridge{
 	pixel_x = 32;
 	desc = "A refrigerated storage unit. This should keep your food fresh until lunch.";
-	accepted_types = list(/obj/isstem/reagent_containers/food)
+	accepted_types = list(/obj/item/reagent_containers/food)
 	},
 /obj/effect/floor_decal/spline/fancy/wood,
 /turf/simulated/floor/carpet/blucarpet,
