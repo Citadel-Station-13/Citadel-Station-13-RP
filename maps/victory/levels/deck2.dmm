@@ -15656,7 +15656,7 @@
 	faction = "neutral"
 	},
 /turf/simulated/floor/airless/ceiling,
-/area/bridge)
+/area/space)
 "lnk" = (
 /obj/structure/cable/orange{
 	icon_state = "4-8"
@@ -23317,9 +23317,6 @@
 /obj/structure/flora/ausbushes/fullgrass,
 /turf/simulated/floor/grass,
 /area/medical/psych_ward)
-"qAg" = (
-/turf/space/basic,
-/area/bridge)
 "qAp" = (
 /obj/machinery/door/airlock/medical{
 	id_tag = "MedicalResleeving";
@@ -23335,7 +23332,7 @@
 "qBd" = (
 /obj/machinery/shield_diffuser,
 /turf/simulated/floor/airless/ceiling,
-/area/bridge)
+/area/space)
 "qBi" = (
 /obj/machinery/light{
 	dir = 4;
@@ -37429,9 +37426,8 @@ pRW
 pRW
 pRW
 pRW
-qAg
+pRW
 qBd
-qAg
 pRW
 pRW
 pRW
@@ -37439,9 +37435,9 @@ pRW
 pRW
 pRW
 pRW
-qAg
+pRW
+pRW
 qBd
-qAg
 pRW
 pRW
 pRW
@@ -37449,9 +37445,10 @@ pRW
 pRW
 pRW
 pRW
-qAg
+pRW
+pRW
 qBd
-qAg
+pRW
 pRW
 pRW
 pRW

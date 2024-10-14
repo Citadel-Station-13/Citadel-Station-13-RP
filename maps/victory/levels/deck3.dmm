@@ -1887,7 +1887,7 @@
 	faction = "neutral"
 	},
 /turf/simulated/floor/plating,
-/area/bridge)
+/area/space)
 "bHV" = (
 /obj/machinery/conveyor{
 	dir = 4;
@@ -12190,7 +12190,7 @@
 	faction = "neutral"
 	},
 /turf/simulated/floor/airless/ceiling,
-/area/bridge)
+/area/space)
 "lmK" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
@@ -18389,7 +18389,7 @@
 "qBd" = (
 /obj/machinery/shield_diffuser,
 /turf/simulated/floor/airless/ceiling,
-/area/bridge)
+/area/space)
 "qBI" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 5
@@ -23014,9 +23014,6 @@
 /obj/landmark/spawnpoint/job/security_officer,
 /turf/simulated/floor/tiled/monotile,
 /area/security/security_lockerroom)
-"uyr" = (
-/turf/space/basic,
-/area/bridge)
 "uyN" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -30841,9 +30838,9 @@ pRW
 pRW
 pRW
 pRW
-uyr
+pRW
 qBd
-uyr
+pRW
 pRW
 pRW
 pRW
@@ -31029,9 +31026,9 @@ pRW
 pRW
 pRW
 pRW
-uyr
+pRW
 qBd
-uyr
+pRW
 pRW
 pRW
 pRW
@@ -31047,9 +31044,9 @@ mDp
 mDp
 mDp
 mDp
-uyr
+pRW
 qBd
-uyr
+pRW
 pRW
 pRW
 pRW
@@ -31977,9 +31974,9 @@ pRW
 pRW
 pRW
 pRW
-uyr
+pRW
 qBd
-uyr
+pRW
 mDp
 kcO
 nIf
@@ -34155,7 +34152,7 @@ vUu
 jYQ
 jYQ
 qBd
-uyr
+pRW
 pRW
 pRW
 pRW
@@ -34543,7 +34540,7 @@ rTM
 jYQ
 jYQ
 qBd
-uyr
+pRW
 pRW
 pRW
 pRW
@@ -35518,9 +35515,9 @@ pRW
 pRW
 pRW
 pRW
-uyr
+pRW
 qBd
-uyr
+pRW
 pRW
 pRW
 pRW
@@ -36881,7 +36878,7 @@ fjc
 lPz
 lPz
 qBd
-uyr
+pRW
 pRW
 pRW
 pRW
@@ -37269,7 +37266,7 @@ fjc
 lPz
 lPz
 qBd
-uyr
+pRW
 pRW
 pRW
 pRW
@@ -37380,7 +37377,7 @@ pRW
 pRW
 pRW
 pRW
-uyr
+pRW
 qBd
 wuh
 iXY
@@ -37768,7 +37765,7 @@ pRW
 pRW
 pRW
 pRW
-uyr
+pRW
 qBd
 wuh
 iXY
@@ -39708,7 +39705,7 @@ pRW
 pRW
 pRW
 pRW
-uyr
+pRW
 qBd
 rxD
 oMq
@@ -40096,7 +40093,7 @@ pRW
 pRW
 pRW
 pRW
-uyr
+pRW
 qBd
 rxD
 tGp
@@ -40762,7 +40759,7 @@ vJO
 apI
 apI
 qBd
-uyr
+pRW
 pRW
 pRW
 pRW
@@ -41150,7 +41147,7 @@ oaR
 apI
 apI
 qBd
-uyr
+pRW
 pRW
 pRW
 pRW
@@ -42424,7 +42421,7 @@ pRW
 pRW
 pRW
 pRW
-uyr
+pRW
 qBd
 qKQ
 moz
@@ -42812,7 +42809,7 @@ pRW
 pRW
 pRW
 pRW
-uyr
+pRW
 qBd
 vVA
 fYy
@@ -44254,7 +44251,7 @@ dzr
 dzr
 dzr
 qBd
-uyr
+pRW
 pRW
 pRW
 pRW
@@ -44642,7 +44639,7 @@ fZj
 wym
 dzr
 qBd
-uyr
+pRW
 pRW
 pRW
 pRW
@@ -45792,18 +45789,18 @@ pCQ
 pCQ
 pCQ
 pRW
-uyr
+pRW
 qBd
-uyr
 pRW
 pRW
 pRW
 pRW
 pRW
 pRW
-uyr
+pRW
+pRW
 qBd
-uyr
+pRW
 pRW
 pRW
 pRW
@@ -46371,7 +46368,7 @@ tOV
 pCQ
 pCQ
 qBd
-uyr
+pRW
 pRW
 pRW
 pRW
@@ -46759,7 +46756,7 @@ tOV
 tOV
 pCQ
 qBd
-uyr
+pRW
 pRW
 pRW
 pRW
@@ -48654,7 +48651,7 @@ pRW
 pRW
 pRW
 pRW
-uyr
+pRW
 qBd
 pRW
 cPI
@@ -49815,7 +49812,7 @@ pRW
 pRW
 pRW
 pRW
-uyr
+pRW
 qBd
 vRl
 vRl
@@ -50203,7 +50200,7 @@ pRW
 pRW
 pRW
 pRW
-uyr
+pRW
 qBd
 ncY
 vRl
@@ -51173,7 +51170,7 @@ pRW
 pRW
 pRW
 pRW
-uyr
+pRW
 qBd
 ncY
 vRl
@@ -51561,7 +51558,7 @@ pRW
 pRW
 pRW
 pRW
-uyr
+pRW
 qBd
 vRl
 vRl
@@ -52339,7 +52336,7 @@ pRW
 pRW
 pRW
 pRW
-uyr
+pRW
 qBd
 pRW
 cPI
@@ -53933,9 +53930,9 @@ hlx
 hYA
 lTj
 pRW
-uyr
+pRW
 qBd
-uyr
+pRW
 mDp
 mDp
 aDe
@@ -54476,7 +54473,7 @@ pRW
 pRW
 pRW
 pRW
-uyr
+pRW
 qBd
 imb
 jhI
@@ -54709,7 +54706,7 @@ oez
 hWN
 lTj
 qBd
-uyr
+pRW
 pRW
 pRW
 pRW
@@ -54864,7 +54861,7 @@ pRW
 pRW
 pRW
 pRW
-uyr
+pRW
 qBd
 alQ
 lTw
@@ -55097,7 +55094,7 @@ bvI
 lEK
 lTj
 qBd
-uyr
+pRW
 pRW
 pRW
 pRW
@@ -56226,7 +56223,7 @@ pRW
 pRW
 pRW
 pRW
-uyr
+pRW
 qBd
 alQ
 lTw
@@ -56614,7 +56611,7 @@ pRW
 pRW
 pRW
 pRW
-uyr
+pRW
 qBd
 alQ
 lTw
@@ -57418,7 +57415,7 @@ lTw
 lTw
 alQ
 qBd
-uyr
+pRW
 mDp
 mDp
 mDp
@@ -57586,7 +57583,7 @@ pRW
 pRW
 pRW
 pRW
-uyr
+pRW
 qBd
 alQ
 mMr
@@ -57806,7 +57803,7 @@ lTw
 lTw
 alQ
 qBd
-uyr
+pRW
 mDp
 mDp
 mDp
@@ -57974,7 +57971,7 @@ mDp
 mDp
 pRW
 pRW
-uyr
+pRW
 qBd
 alQ
 mMr
@@ -59915,7 +59912,7 @@ pRW
 pRW
 pRW
 pRW
-uyr
+pRW
 qBd
 alQ
 lUd
@@ -59937,7 +59934,7 @@ xIP
 xIP
 qJM
 qBd
-uyr
+pRW
 pRW
 pRW
 mDp
@@ -60303,7 +60300,7 @@ pRW
 pRW
 pRW
 pRW
-uyr
+pRW
 qBd
 alQ
 jbL
@@ -60325,7 +60322,7 @@ wVC
 xIP
 qJM
 qBd
-uyr
+pRW
 pRW
 pRW
 mDp
@@ -61097,9 +61094,9 @@ lIV
 lIV
 mDp
 mDp
-uyr
+pRW
 qBd
-uyr
+pRW
 mDp
 mDp
 mDp
