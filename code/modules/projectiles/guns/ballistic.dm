@@ -137,7 +137,8 @@
 				qdel(chambered)
 				return
 			else
-				chambered.loc = get_turf(src)
+				chambered.forceMove(get_turf(src))
+				chambered.randomize_offsets_after_eject()
 				playsound(src.loc, "casing", 50, 1)
 		if(CYCLE_CASINGS) //cycle the casing back to the end.
 			if(ammo_magazine)
@@ -405,7 +406,7 @@
 			effective_magazine_class = MAGAZINE_CLASS_GENERIC
 		else
 			return
-	return global.magazine_class_bit_to_state[log(2, magazine.magazine_class)]
+	return global.magazine_class_bit_to_state[log(2, magazine.magazine_class) + 1]
 
 /obj/item/gun/ballistic/update_icon()
 	// todo: shouldn't need this check, deal with legacy
