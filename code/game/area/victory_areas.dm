@@ -79,6 +79,18 @@
 	name = "\improper Deck 2 Starboard Hallway"
 	icon_state = "hallS"
 
+	/area/medical/virologyeast
+	name = "\improper Virology Fore Access"
+	icon_state = "virology"
+
+/area/medical/virologywest
+	name = "\improper Virology Aft Access"
+	icon_state = "virology"
+
+/area/medical/oncall
+	name = "\improper On-Call Room"
+	icon_state = "medbay"
+
 /** Deck 1
  */
 /area/victory/hallway/d1aftmaint
@@ -110,11 +122,3 @@
 /area/rnd/robotics/morgue
 	name = "\improper Robotics Morgue"
 	icon_state = "robotics"
-
-/area/medical/virologyeast
-	name = "\improper Virology Access East"
-	icon_state = "virology"
-
-/area/medical/virologywest
-	name = "\improper Virology Access West"
-	icon_state = "virology"
