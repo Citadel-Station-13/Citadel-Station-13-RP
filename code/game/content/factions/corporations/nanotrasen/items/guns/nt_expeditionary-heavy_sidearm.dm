@@ -43,6 +43,7 @@
 	name = "speedloader (NT-9-LR)"
 	icon_state = "speedloader"
 	base_icon_state = "speedloader"
+	magazine_type = MAGAZINE_TYPE_SPEEDLOADER
 
 /obj/item/ammo_magazine/nt_expeditionary/heavy_sidearm/speedloader/update_icon(updates)
 	cut_overlays()
@@ -64,12 +65,14 @@
 	icon_state = "magazine-5"
 	base_icon_state = "magazine"
 	rendering_static_overlay = "magazine-stripe"
+	magazine_type = MAGAZINE_TYPE_NORMAL
 
 /obj/item/ammo_magazine/nt_expeditionary/heavy_sidearm/smg
 	name = "smg magazine (NT-9-LR)"
 	icon_state = "smg-1"
 	base_icon_state = "smg"
 	rendering_static_overlay = "smg-stripe"
+	magazine_type = MAGAZINE_TYPE_NORMAL
 
 //* Projectiles *//
 
@@ -100,6 +103,7 @@
 	load_method = SINGLE_CASING | MAGAZINE
 	icon_state = "pistol-map"
 	base_icon_state = "pistol"
+	render_magazine_overlay = MAGAZINE_CLASS_GENERIC
 
 /obj/item/gun/ballistic/nt_expeditionary/heavy_sidearm/revolver
 	name = "heavy revolver"

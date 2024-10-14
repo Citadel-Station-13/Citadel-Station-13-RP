@@ -399,8 +399,12 @@
  * Returns an overlay for a magazine. This can be a string, or anything else that goes into our 'overlays' list.
  */
 /obj/item/gun/ballistic/proc/get_magazine_overlay_for(obj/item/ammo_magazine/magazine)
-	if(!(magazine.magazine_class & render_magazine_overlay))
-		return
+	var/effective_magazine_class = magazine.magazine_class
+	if(!(effective_magazine_class & render_magazine_overlay))
+		if(render_magazine_overlay & MAGAZINE_CLASS_GENERIC)
+			effective_magazine_class = MAGAZINE_CLASS_GENERIC
+		else
+			return
 	return global.magazine_class_bit_to_state[log(2, magazine.magazine_class)]
 
 /obj/item/gun/ballistic/update_icon()
