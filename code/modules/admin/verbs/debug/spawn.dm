@@ -32,7 +32,11 @@
 	if(length(matches) == 1)
 		path_to_spawn = matches[1]
 	else
-		path_to_spawn = input("Select an atom type", "Spawn Atom", matches[1]) as null|anything in make_types_fancy(matches)
+		var/list/processed_types = make_types_fancy(matches)
+		var/picked_name = input("Select an atom type", "Spawn Atom", matches[1]) as null|anything in processed_types
+		if(!picked_name)
+			return
+		path_to_spawn = processed_types[picked_name]
 
 	if(!path_to_spawn)
 		return
