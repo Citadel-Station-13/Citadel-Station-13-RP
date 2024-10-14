@@ -31,11 +31,12 @@
 		/mob/living = "//living",
 	)
 	for(var/type in types)
+		var/shortcut
 		for(var/prefix in shortcut_lookup)
 			if(ispath(type, prefix))
-				typename = "[shortcut_lookup[prefix]][copytext("[type]", length("[prefix]") + 1)]"
+				shortcut = "[shortcut_lookup[prefix]][copytext("[type]", length("[prefix]") + 1)]"
 				break
-		.[typename] = type
+		.[shortcut || "[type]"] = type
 
 /proc/get_fancy_list_of_atom_types()
 	return make_types_fancy(typesof(/atom))

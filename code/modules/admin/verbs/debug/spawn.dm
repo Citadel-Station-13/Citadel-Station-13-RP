@@ -39,8 +39,8 @@
 
 	if(ispath(path_to_spawn, /turf))
 		var/turf/T = get_turf(owner.mob)
-		T.ChangeTurf(chosen)
+		T.ChangeTurf(path_to_spawn)
 	else
-		new chosen(owner.mob.loc)
+		new path_to_spawn(owner.mob.loc)
 
-	log_and_message_admins("spawned [chosen] at ([usr.x],[usr.y],[usr.z])")
+	log_and_message_admins("spawned [path_to_spawn] at ([usr.x],[usr.y],[usr.z])")
