@@ -15,6 +15,7 @@
 	desc = "A standardized 7.5x39mm cartridge for NT Expeditionary kinetics. This one seems to be for lightweight automatics."
 	caliber = /datum/ammo_caliber/nt_expedition/light_rifle
 	projectile_type = /obj/projectile/bullet/nt_expedition/light_rifle
+	icon_state = "basic"
 
 	/// specifically for /obj/item/ammo_magazine/nt_expedition/light_rifle's
 	var/speedloader_state = "basic"
