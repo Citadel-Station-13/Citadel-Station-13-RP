@@ -3,50 +3,50 @@
 
 //* Caliber *//
 
-/datum/ammo_caliber/nt_expeditionary/light_rifle
+/datum/ammo_caliber/nt_expedition/light_rifle
 	caliber = "nt-light-rifle"
 	diameter = 7.5
 	length = 39
 
 //* Ammo Casings *//
 
-/obj/item/ammo_casing/nt_expeditionary/light_rifle
+/obj/item/ammo_casing/nt_expedition/light_rifle
 	name = "ammo casing (NT-7.5-SR)"
 	desc = "A standardized 7.5x39mm cartridge for NT Expeditionary kinetics. This one seems to be for lightweight automatics."
-	caliber = /datum/ammo_caliber/nt_expeditionary/light_rifle
-	projectile_type = /obj/projectile/bullet/nt_expeditionary/light_rifle
+	caliber = /datum/ammo_caliber/nt_expedition/light_rifle
+	projectile_type = /obj/projectile/bullet/nt_expedition/light_rifle
 
-	/// specifically for /obj/item/ammo_magazine/nt_expeditionary/light_rifle's
+	/// specifically for /obj/item/ammo_magazine/nt_expedition/light_rifle's
 	var/speedloader_state = "basic"
 
-/obj/item/ammo_casing/nt_expeditionary/light_rifle/piercing
+/obj/item/ammo_casing/nt_expedition/light_rifle/piercing
 	icon_state = "piercing"
 	speedloader_state = "piercing"
 	// todo: implement casing + magazine
 
-/obj/item/ammo_casing/nt_expeditionary/light_rifle/rubber
+/obj/item/ammo_casing/nt_expedition/light_rifle/rubber
 	icon_state = "rubber"
 	speedloader_state = "rubber"
 	// todo: implement casing + magazine
 
 //* Magazines *//
 
-/obj/item/ammo_magazine/nt_expeditionary/light_rifle
+/obj/item/ammo_magazine/nt_expedition/light_rifle
 	name = "ammo magazine (NT-7.5)"
 	icon = 'icons/content/factions/corporations/nanotrasen/items/guns/expeditionary/rifle-light-ammo.dmi'
 	icon_state = "magazine"
 	base_icon_state = "magazine"
 	rendering_system = GUN_RENDERING_DISABLED
-	ammo_caliber = /datum/ammo_caliber/nt_expeditionary/light_rifle
+	ammo_caliber = /datum/ammo_caliber/nt_expedition/light_rifle
 	ammo_max = 5
-	ammo_preload = /obj/item/ammo_casing/nt_expeditionary/light_rifle
+	ammo_preload = /obj/item/ammo_casing/nt_expedition/light_rifle
 
-/obj/item/ammo_magazine/nt_expeditionary/light_rifle/speedloader
+/obj/item/ammo_magazine/nt_expedition/light_rifle/speedloader
 	name = "speedloader (NT-7.5)"
 	icon_state = "speedloader"
 	base_icon_state = "speedloader"
 
-/obj/item/ammo_magazine/nt_expeditionary/light_rifle/speedloader/update_icon(updates)
+/obj/item/ammo_magazine/nt_expedition/light_rifle/speedloader/update_icon(updates)
 	cut_overlays()
 	. = ..()
 	var/list/overlays_to_add = list()
@@ -67,9 +67,9 @@
 		-4
 	)
 	for(var/i in 1 to min(6, amount_remaining()))
-		var/obj/item/ammo_casing/nt_expeditionary/light_rifle/predicted_path = peek_path_of_position(i)
+		var/obj/item/ammo_casing/nt_expedition/light_rifle/predicted_path = peek_path_of_position(i)
 		var/append = "basic"
-		if(ispath(predicted_path, /obj/item/ammo_casing/nt_expeditionary/light_rifle))
+		if(ispath(predicted_path, /obj/item/ammo_casing/nt_expedition/light_rifle))
 			append = initial(predicted_path.speedloader_state)
 		var/image/overlay = image(icon, "speedloader-[append]")
 		overlay.pixel_x = pos_x[i]
@@ -77,7 +77,7 @@
 		overlays_to_add += overlay
 	add_overlay(overlays_to_add)
 
-/obj/item/ammo_magazine/nt_expeditionary/light_rifle/magazine
+/obj/item/ammo_magazine/nt_expedition/light_rifle/magazine
 	name = "ammo magazine (NT-7.5)"
 	icon_state = "rifle-1"
 	base_icon_state = "rifle"
@@ -86,7 +86,7 @@
 	rendering_static_overlay = "rifle-stripe"
 	ammo_max = 16
 
-/obj/item/ammo_magazine/nt_expeditionary/light_rifle/magazine/extended
+/obj/item/ammo_magazine/nt_expedition/light_rifle/magazine/extended
 	name = "extended magazine (NT-7.5)"
 	icon_state = "rifle-ext-1"
 	base_icon_state = "rifle-ext"
@@ -95,7 +95,7 @@
 	rendering_static_overlay = "rifle-ext-stripe"
 	ammo_max = 24
 
-/obj/item/ammo_magazine/nt_expeditionary/light_rifle/magazine/drum
+/obj/item/ammo_magazine/nt_expedition/light_rifle/magazine/drum
 	name = "drum magazine (NT-7.5)"
 	icon_state = "rifle-drum-1"
 	base_icon_state = "rifle-drum"
@@ -106,7 +106,7 @@
 
 //* Projectiles *//
 
-/obj/projectile/bullet/nt_expeditionary/light_rifle
+/obj/projectile/bullet/nt_expedition/light_rifle
 	name = "rifle bullet"
 	damage_force = 35
 	damage_tier = LERP(BULLET_TIER_MEDIUM, BULLET_TIER_HIGH, 0.5)
@@ -114,12 +114,12 @@
 
 //* Light Rifles *//
 
-/obj/item/gun/ballistic/nt_expeditionary/light_rifle
-	abstract_type = /obj/item/gun/ballistic/nt_expeditionary/light_rifle
+/obj/item/gun/ballistic/nt_expedition/light_rifle
+	abstract_type = /obj/item/gun/ballistic/nt_expedition/light_rifle
 	icon = 'icons/content/factions/corporations/nanotrasen/items/guns/expeditionary/rifle-light.dmi'
-	caliber = /datum/ammo_caliber/nt_expeditionary/light_rifle
+	caliber = /datum/ammo_caliber/nt_expedition/light_rifle
 
-/obj/item/gun/ballistic/nt_expeditionary/light_rifle/pistol
+/obj/item/gun/ballistic/nt_expedition/light_rifle/pistol
 	name = "high-caliber pistol"
 	desc = "The XNP Mk.9 \"David\" revolver; a refined design output by the Nanotrasen Research Division in conjunction with Hephaestus Industries."
 	description_fluff = {"
@@ -134,7 +134,7 @@
 	base_icon_state = "revolver"
 	render_break_overlay = BALLISTIC_RENDER_BREAK_OPEN
 
-/obj/item/gun/ballistic/nt_expeditionary/light_rifle/semirifle
+/obj/item/gun/ballistic/nt_expedition/light_rifle/semirifle
 	name = "semi-automatic rifle"
 	desc = "The XNR Mk.4 \"Scout\" light rifle; a refined design output by the Nanotrasen Research Division in conjunction with Hephaestus Industries."
 	description_fluff = {"
@@ -150,7 +150,7 @@
 	base_icon_state = "semi"
 	render_magazine_overlay = MAGAZINE_CLASS_GENERIC
 
-/obj/item/gun/ballistic/nt_expeditionary/light_rifle/autorifle
+/obj/item/gun/ballistic/nt_expedition/light_rifle/autorifle
 	name = "automatic rifle"
 	desc = "The XNR Mk.4 Mod.1 \"Auto Scout\" light rifle; a refined design output by the Nanotrasen Research Division in conjunction with Hephaestus Industries."
 	description_fluff = {"
@@ -166,7 +166,7 @@
 	base_icon_state = "auto"
 	render_magazine_overlay = MAGAZINE_CLASS_GENERIC
 
-/obj/item/gun/ballistic/nt_expeditionary/light_rifle/pdw
+/obj/item/gun/ballistic/nt_expedition/light_rifle/pdw
 	name = "personal defense weapon"
 	desc = "The XNR Mk.4 Mod.2 \"Little Scout\" personal defense weapon; a refined design output by the Nanotrasen Research Division in conjunction with Hephaestus Industries."
 	description_fluff = {"
@@ -182,7 +182,7 @@
 	base_icon_state = "pdw"
 	render_magazine_overlay = MAGAZINE_CLASS_GENERIC
 
-/obj/item/gun/ballistic/nt_expeditionary/light_rifle/lmg
+/obj/item/gun/ballistic/nt_expedition/light_rifle/lmg
 	name = "squad automatic weapon"
 	desc = "The XNR Mk.4 Mod.3 \"Machine Scout\" squad automatic weapon; a refined design output by the Nanotrasen Research Division in conjunction with Hephaestus Industries."
 	description_fluff = {"

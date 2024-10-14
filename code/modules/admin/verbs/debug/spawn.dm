@@ -1,4 +1,4 @@
-/datum/admins/proc/spawn_atom(query as text)
+/client/proc/spawn_atom(query as text)
 	set category = "Debug"
 	set desc = "(atom path) Spawn an atom"
 	set name = "Spawn"
@@ -8,7 +8,7 @@
 
 	if(length(query) < 5)
 		var/confirm = alert(
-			owner,
+			src,
 			"You haven't specified a long enough filter; this will take a while. Are you sure?",
 			"Mass Query Confirmation",
 			"No",
@@ -38,9 +38,9 @@
 		return
 
 	if(ispath(path_to_spawn, /turf))
-		var/turf/T = get_turf(owner.mob)
+		var/turf/T = get_turf(mob)
 		T.ChangeTurf(path_to_spawn)
 	else
-		new path_to_spawn(owner.mob.loc)
+		new path_to_spawn(mob.loc)
 
 	log_and_message_admins("spawned [path_to_spawn] at ([usr.x],[usr.y],[usr.z])")

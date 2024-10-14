@@ -5,22 +5,22 @@
 
 //* Ammo *//
 
-/obj/item/ammo_magazine/a12g/nt_expeditionary
+/obj/item/ammo_magazine/a12g/nt_expedition
 	icon = 'icons/content/factions/corporations/nanotrasen/items/gun/expeditionary/shotgun-ammo.dmi'
 
 	#warn restrict to NT-expeditionary
 
-/obj/item/ammo_magazine/a12g/nt_expeditionary/slide
+/obj/item/ammo_magazine/a12g/nt_expedition/slide
 	name = "XNS slide magazine (a12g)"
 
-/obj/item/ammo_magazine/a12g/nt_expeditionary/box
+/obj/item/ammo_magazine/a12g/nt_expedition/box
 	name = "XNS box magazine (12g)"
 
 	#warn slide-mag 0 to 5, box-mag 0 to 1
 
 //* Shotguns *//
 
-/obj/item/gun/ballistic/nt_expeditionary/shotgun
+/obj/item/gun/ballistic/nt_expedition/shotgun
 	icon = 'icons/content/factions/corporations/nanotrasen/items/gun/expeditionary/shotgun.dmi'
 	caliber = /datum/ammo_caliber/a12g
 
@@ -30,7 +30,7 @@
  * * Requires pumping.
  * * Break action magazine load or single load.
  */
-/obj/item/gun/ballistic/nt_expeditionary/shotgun/pump
+/obj/item/gun/ballistic/nt_expedition/shotgun/pump
 	name = "pump shotgun"
 	desc = "The XNS Mk.6 \"Standby\" pump-action shotgun; a refined design output by the Nanotrasen Research Division in conjunction with Hephaestus Industries."
 	description_fluff = {"
@@ -50,7 +50,7 @@
  * * Magazine loaded.
  * * Semi-automatic.
  */
-/obj/item/gun/ballistic/nt_expeditionary/shotgun/semiauto
+/obj/item/gun/ballistic/nt_expedition/shotgun/semiauto
 	name = "semi-automatic shotgun"
 	desc = "The XNS Mk.7 \"Peacemaker\" semi-automatic shotgun; a refined design output by the Nanotrasen Research Division in conjunction with Hephaestus Industries."
 	description_fluff = {"

@@ -3,63 +3,63 @@
 
 //* Caliber *//
 
-/datum/ammo_caliber/nt_expeditionary/antimaterial
+/datum/ammo_caliber/nt_expedition/antimaterial
 	caliber = "nt-antimaterial"
 	diameter = 12
 	length = 92
 
 //* Ammo Casings *//
 
-/obj/item/ammo_casing/nt_expeditionary/antimaterial
+/obj/item/ammo_casing/nt_expedition/antimaterial
 	name = "ammo casing (NT-12.5-antimaterial)"
 	desc = "A standardized 12.5x92mm cartridge for NT Expeditionary kinetics. This one seems ridiculously large, and is probably for a very powerful weapon."
 	icon = 'icons/content/factions/corporations/nanotrasen/items/guns/expeditionary/antimaterial-ammo.dmi'
 	icon_state = "basic"
 	icon_spent = TRUE
-	caliber = /datum/ammo_caliber/nt_expeditionary/antimaterial
-	projectile_type = /obj/projectile/bullet/nt_expeditionary/antimaterial
+	caliber = /datum/ammo_caliber/nt_expedition/antimaterial
+	projectile_type = /obj/projectile/bullet/nt_expedition/antimaterial
 
-	/// specifically for /obj/item/ammo_magazine/nt_expeditionary/antimaterial's
+	/// specifically for /obj/item/ammo_magazine/nt_expedition/antimaterial's
 	///
 	/// * null to default to "[base_icon_state || initial(icon_state)]"
 	var/magazine_state
 
-/obj/item/ammo_casing/nt_expeditionary/antimaterial/penetrator
+/obj/item/ammo_casing/nt_expedition/antimaterial/penetrator
 	icon_state = "penetrator"
 	// todo: implement casing + magazine
 
-/obj/item/ammo_casing/nt_expeditionary/antimaterial/emp
+/obj/item/ammo_casing/nt_expedition/antimaterial/emp
 	icon_state = "emp"
 	// todo: implement casing + magazine
 
-/obj/item/ammo_casing/nt_expeditionary/antimaterial/explosive
+/obj/item/ammo_casing/nt_expedition/antimaterial/explosive
 	icon_state = "explosive"
 	// todo: implement casing + magazine
 
-/obj/item/ammo_casing/nt_expeditionary/antimaterial/titanium
+/obj/item/ammo_casing/nt_expedition/antimaterial/titanium
 	icon_state = "titanium"
 	// todo: implement casing + magazine
 
 //* Magazines *//
 
-/obj/item/ammo_magazine/nt_expeditionary/antimaterial
+/obj/item/ammo_magazine/nt_expedition/antimaterial
 	name = "ammo magazine (NT-12.5-antimaterial)"
 	icon = 'icons/content/factions/corporations/nanotrasen/items/guns/expeditionary/antimaterial-ammo.dmi'
 	icon_state = "magazine"
 	base_icon_state = "magazine"
-	ammo_caliber = /datum/ammo_caliber/nt_expeditionary/antimaterial
+	ammo_caliber = /datum/ammo_caliber/nt_expedition/antimaterial
 	ammo_max = 5
-	ammo_preload = /obj/item/ammo_casing/nt_expeditionary/antimaterial
+	ammo_preload = /obj/item/ammo_casing/nt_expedition/antimaterial
 	magazine_type = MAGAZINE_TYPE_NORMAL
 
-/obj/item/ammo_magazine/nt_expeditionary/antimaterial/update_icon(updates)
+/obj/item/ammo_magazine/nt_expedition/antimaterial/update_icon(updates)
 	cut_overlays()
 	. = ..()
 	var/list/overlays_to_add = list()
 	for(var/i in 1 to min(5, amount_remaining()))
-		var/obj/item/ammo_casing/nt_expeditionary/antimaterial/casted_path_of_potential = peek_path_of_position(i)
+		var/obj/item/ammo_casing/nt_expedition/antimaterial/casted_path_of_potential = peek_path_of_position(i)
 		var/append = "basic"
-		if(ispath(casted_path_of_potential, /obj/item/ammo_casing/nt_expeditionary/antimaterial))
+		if(ispath(casted_path_of_potential, /obj/item/ammo_casing/nt_expedition/antimaterial))
 			append = initial(casted_path_of_potential.magazine_state)
 		var/image/overlay = image(icon, "magazine-[append]")
 		overlay.pixel_x = (i - 1) * -2
@@ -69,7 +69,7 @@
 
 //* Projectiles *//
 
-/obj/projectile/bullet/nt_expeditionary/antimaterial
+/obj/projectile/bullet/nt_expedition/antimaterial
 	name = "antimaterial sabot"
 	damage_force = 55
 	damage_tier = LERP(BULLET_TIER_HIGH, BULLET_TIER_EXTREME, 1)
@@ -77,13 +77,13 @@
 
 //* Antimaterial Weapons *//
 
-/obj/item/gun/ballistic/nt_expeditionary/antimaterial
-	abstract_type = /obj/item/gun/ballistic/nt_expeditionary/antimaterial
-	caliber = /datum/ammo_caliber/nt_expeditionary/antimaterial
+/obj/item/gun/ballistic/nt_expedition/antimaterial
+	abstract_type = /obj/item/gun/ballistic/nt_expedition/antimaterial
+	caliber = /datum/ammo_caliber/nt_expedition/antimaterial
 	icon = 'icons/content/factions/corporations/nanotrasen/items/guns/expeditionary/antimaterial.dmi'
 
 // todo: placeholder sprite
-/obj/item/gun/ballistic/nt_expeditionary/antimaterial/singleshot
+/obj/item/gun/ballistic/nt_expedition/antimaterial/singleshot
 	name = "anti-material rifle"
 	desc = "The XNR Mk.11 \"Immobilizer\" anti-material rifle; a refined design output by the Nanotrasen Research Division in conjunction with Hephaestus Industries."
 	description_fluff = {"

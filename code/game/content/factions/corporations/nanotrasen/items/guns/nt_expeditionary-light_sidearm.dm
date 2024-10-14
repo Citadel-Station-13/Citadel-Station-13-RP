@@ -3,40 +3,40 @@
 
 //* Caliber *//
 
-/datum/ammo_caliber/nt_expeditionary/light_sidearm
+/datum/ammo_caliber/nt_expedition/light_sidearm
 	caliber = "nt-light-sidearm"
 	diameter = 9
 	length = 29
 
 //* Ammo Casings *//
 
-/obj/item/ammo_casing/nt_expeditionary/light_sidearm
+/obj/item/ammo_casing/nt_expedition/light_sidearm
 	name = "ammo casing (NT-9)"
 	desc = "A standardized 9mm cartridge for NT Expeditionary kinetics. This one seems to be for lightweight pistols and sidearms."
-	caliber = /datum/ammo_caliber/nt_expeditionary/light_sidearm
-	projectile_type = /obj/projectile/bullet/nt_expeditionary/light_sidearm
+	caliber = /datum/ammo_caliber/nt_expedition/light_sidearm
+	projectile_type = /obj/projectile/bullet/nt_expedition/light_sidearm
 
-	/// specifically for /obj/item/ammo_magazine/nt_expeditionary/light_sidearm's
+	/// specifically for /obj/item/ammo_magazine/nt_expedition/light_sidearm's
 	var/speedloader_state = "basic"
 
 //* Magazines *//
 
-/obj/item/ammo_magazine/nt_expeditionary/light_sidearm
+/obj/item/ammo_magazine/nt_expedition/light_sidearm
 	name = "ammo magazine (NT-9)"
 	icon = 'icons/content/factions/corporations/nanotrasen/items/guns/expeditionary/rifle-heavy-ammo.dmi'
 	icon_state = "magazine"
 	base_icon_state = "magazine"
 	rendering_system = GUN_RENDERING_DISABLED
-	ammo_caliber = /datum/ammo_caliber/nt_expeditionary/light_sidearm
+	ammo_caliber = /datum/ammo_caliber/nt_expedition/light_sidearm
 	ammo_max = 5
-	ammo_preload = /obj/item/ammo_casing/nt_expeditionary/light_sidearm
+	ammo_preload = /obj/item/ammo_casing/nt_expedition/light_sidearm
 
-/obj/item/ammo_magazine/nt_expeditionary/light_sidearm/speedloader
+/obj/item/ammo_magazine/nt_expedition/light_sidearm/speedloader
 	icon_state = "speedloader"
 	base_icon_state = "speedloader"
 	ammo_max = 6
 
-/obj/item/ammo_magazine/nt_expeditionary/light_sidearm/speedloader/update_icon(updates)
+/obj/item/ammo_magazine/nt_expedition/light_sidearm/speedloader/update_icon(updates)
 	cut_overlays()
 	. = ..()
 	var/list/overlays_to_add = list()
@@ -58,9 +58,9 @@
 		-5,
 	)
 	for(var/i in 1 to min(6, amount_remaining()))
-		var/obj/item/ammo_casing/nt_expeditionary/light_sidearm/predicted_path = peek_path_of_position(i)
+		var/obj/item/ammo_casing/nt_expedition/light_sidearm/predicted_path = peek_path_of_position(i)
 		var/append = "basic"
-		if(ispath(predicted_path, /obj/item/ammo_casing/nt_expeditionary/light_sidearm))
+		if(ispath(predicted_path, /obj/item/ammo_casing/nt_expedition/light_sidearm))
 			append = initial(predicted_path.speedloader_state)
 		var/image/overlay = image(icon, "speedloader-[append]")
 		overlay.pixel_x = pos_x[i]
@@ -68,7 +68,7 @@
 		overlays_to_add += overlay
 	add_overlay(overlays_to_add)
 
-/obj/item/ammo_magazine/nt_expeditionary/light_sidearm/pistol
+/obj/item/ammo_magazine/nt_expedition/light_sidearm/pistol
 	name = "pistol magazine (NT-9)"
 	icon_state = "pistol-5"
 	base_icon_state = "pistol"
@@ -77,7 +77,7 @@
 	rendering_static_overlay = "pistol-stripe"
 	ammo_max = 8
 
-/obj/item/ammo_magazine/nt_expeditionary/light_sidearm/smg
+/obj/item/ammo_magazine/nt_expedition/light_sidearm/smg
 	icon_state = "smg-1"
 	base_icon_state = "smg"
 	rendering_system = GUN_RENDERING_STATES
@@ -87,7 +87,7 @@
 
 //* Projectiles *//
 
-/obj/projectile/bullet/nt_expeditionary/light_sidearm
+/obj/projectile/bullet/nt_expedition/light_sidearm
 	name = "bullet"
 	damage_force = 35
 	damage_tier = LERP(BULLET_TIER_LOW, BULLET_TIER_MEDIUM, 0.25)
@@ -95,14 +95,14 @@
 
 //* Light Sidearms *//
 
-/obj/item/gun/ballistic/nt_expeditionary/light_sidearm
-	abstract_type = /obj/item/gun/ballistic/nt_expeditionary/light_sidearm
+/obj/item/gun/ballistic/nt_expedition/light_sidearm
+	abstract_type = /obj/item/gun/ballistic/nt_expedition/light_sidearm
 	icon = 'icons/content/factions/corporations/nanotrasen/items/guns/expeditionary/sidearm-light.dmi'
-	caliber = /datum/ammo_caliber/nt_expeditionary/light_sidearm
+	caliber = /datum/ammo_caliber/nt_expedition/light_sidearm
 
 //* Pistol *//
 
-/obj/item/gun/ballistic/nt_expeditionary/light_sidearm/pistol
+/obj/item/gun/ballistic/nt_expedition/light_sidearm/pistol
 	name = "light pistol"
 	desc = "The XNP Mk.1 \"Noisy Moth\" pistol; a refined design output by the Nanotrasen Research Division in conjunction with Hephaestus Industries."
 	description_fluff = {"
@@ -119,7 +119,7 @@
 
 //* SMG *//
 
-/obj/item/gun/ballistic/nt_expeditionary/light_sidearm/smg
+/obj/item/gun/ballistic/nt_expedition/light_sidearm/smg
 	name = "machine pistol"
 	desc = "The XNMP Mk.3 \"Buzzer\" machine pistol; a refined design output by the Nanotrasen Research Division in conjunction with Hephaestus Industries."
 	description_fluff = {"

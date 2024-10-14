@@ -3,58 +3,58 @@
 
 //* Caliber *//
 
-/datum/ammo_caliber/nt_expeditionary/heavy_rifle
+/datum/ammo_caliber/nt_expedition/heavy_rifle
 	caliber = "nt-heavy-rifle"
 	diameter = 7.5
 	length = 54
 
 //* Ammo Casings *//
 
-/obj/item/ammo_casing/nt_expeditionary/heavy_rifle
+/obj/item/ammo_casing/nt_expedition/heavy_rifle
 	name = "ammo casing (NT-7.5-LR)"
 	desc = "A standardized 7.5x54mm cartridge for NT Expeditionary kinetics. This one seems to be for heavy rifles."
 	icon = 'icons/content/factions/corporations/nanotrasen/items/guns/expeditionary/rifle-heavy-ammo.dmi'
 	icon_state = "basic"
 	icon_spent = TRUE
-	caliber = /datum/ammo_caliber/nt_expeditionary/heavy_rifle
-	projectile_type = /obj/projectile/bullet/nt_expeditionary/heavy_rifle
+	caliber = /datum/ammo_caliber/nt_expedition/heavy_rifle
+	projectile_type = /obj/projectile/bullet/nt_expedition/heavy_rifle
 
-	/// specifically for /obj/item/ammo_magazine/nt_expeditionary/heavy_rifle's
+	/// specifically for /obj/item/ammo_magazine/nt_expedition/heavy_rifle's
 	var/stripper_state = "basic"
 
-/obj/item/ammo_casing/nt_expeditionary/heavy_rifle/piercing
+/obj/item/ammo_casing/nt_expedition/heavy_rifle/piercing
 	icon_state = "piercing"
 	stripper_state = "piercing"
 	// todo: implement casing + magazine
 
-/obj/item/ammo_casing/nt_expeditionary/heavy_rifle/rubber
+/obj/item/ammo_casing/nt_expedition/heavy_rifle/rubber
 	icon_state = "rubber"
 	stripper_state = "rubber"
 	// todo: implement casing + magazine
 
 //* Magazines *//
 
-/obj/item/ammo_magazine/nt_expeditionary/heavy_rifle
+/obj/item/ammo_magazine/nt_expedition/heavy_rifle
 	name = "ammo magazine (NT-7.5-LR)"
 	icon = 'icons/content/factions/corporations/nanotrasen/items/guns/expeditionary/rifle-heavy-ammo.dmi'
-	ammo_caliber = /datum/ammo_caliber/nt_expeditionary/heavy_rifle
-	ammo_preload = /obj/item/ammo_casing/nt_expeditionary/heavy_rifle
+	ammo_caliber = /datum/ammo_caliber/nt_expedition/heavy_rifle
+	ammo_preload = /obj/item/ammo_casing/nt_expedition/heavy_rifle
 
-/obj/item/ammo_magazine/nt_expeditionary/heavy_rifle/stripper_clip
+/obj/item/ammo_magazine/nt_expedition/heavy_rifle/stripper_clip
 	name = "stripper clip (NT-7.5-LR)"
 	icon_state = "stripper"
 	base_icon_state = "stripper"
 	ammo_max = 6
 	magazine_type = MAGAZINE_TYPE_CLIP
 
-/obj/item/ammo_magazine/nt_expeditionary/heavy_rifle/stripper_clip/update_icon(updates)
+/obj/item/ammo_magazine/nt_expedition/heavy_rifle/stripper_clip/update_icon(updates)
 	cut_overlays()
 	. = ..()
 	var/list/overlays_to_add = list()
 	for(var/i in 1 to min(5, amount_remaining()))
-		var/obj/item/ammo_casing/nt_expeditionary/heavy_rifle/casted_path_of_potential = peek_path_of_position(i)
+		var/obj/item/ammo_casing/nt_expedition/heavy_rifle/casted_path_of_potential = peek_path_of_position(i)
 		var/append = "basic"
-		if(ispath(casted_path_of_potential, /obj/item/ammo_casing/nt_expeditionary/heavy_rifle))
+		if(ispath(casted_path_of_potential, /obj/item/ammo_casing/nt_expedition/heavy_rifle))
 			append = initial(casted_path_of_potential.stripper_state)
 		var/image/overlay = image(icon, "stripper-[append]")
 		overlay.pixel_x = (i - 1) * -2 - 8
@@ -62,20 +62,20 @@
 		overlays_to_add += overlay
 	add_overlay(overlays_to_add)
 
-/obj/item/ammo_magazine/nt_expeditionary/heavy_rifle/magazine
+/obj/item/ammo_magazine/nt_expedition/heavy_rifle/magazine
 	name = "ammo magazine (NT-7.5-LR)"
 	icon_state = "mag-basic-0"
 	base_icon_state = "mag-basic"
 	magazine_type = MAGAZINE_TYPE_NORMAL
 	ammo_max = 16
 
-/obj/item/ammo_magazine/nt_expeditionary/heavy_rifle/magazine/extended
+/obj/item/ammo_magazine/nt_expedition/heavy_rifle/magazine/extended
 	name = "extended magazine (NT-7.5-LR)"
 	icon_state = "mag-ext-basic-0"
 	base_icon_state = "mag-ext-basic"
 	ammo_max = 24
 
-/obj/item/ammo_magazine/nt_expeditionary/heavy_rifle/magazine/drum
+/obj/item/ammo_magazine/nt_expedition/heavy_rifle/magazine/drum
 	name = "drum magazine (NT-7.5-LR)"
 	icon_state = "mag-drum-basic-0"
 	base_icon_state = "mag-drum-basic"
@@ -83,7 +83,7 @@
 
 //* Projectiles *//
 
-/obj/projectile/bullet/nt_expeditionary/heavy_rifle
+/obj/projectile/bullet/nt_expedition/heavy_rifle
 	name = "heavy rifle bullet"
 	damage_force = 40
 	damage_tier = LERP(BULLET_TIER_MEDIUM, BULLET_TIER_HIGH, 1)
@@ -91,12 +91,12 @@
 
 //* Heavy Rifles *//
 
-/obj/item/gun/ballistic/nt_expeditionary/heavy_rifle
-	abstract_type = /obj/item/gun/ballistic/nt_expeditionary/heavy_rifle
+/obj/item/gun/ballistic/nt_expedition/heavy_rifle
+	abstract_type = /obj/item/gun/ballistic/nt_expedition/heavy_rifle
 	icon = 'icons/content/factions/corporations/nanotrasen/items/guns/expeditionary/rifle-heavy.dmi'
-	caliber = /datum/ammo_caliber/nt_expeditionary/heavy_rifle
+	caliber = /datum/ammo_caliber/nt_expedition/heavy_rifle
 
-/obj/item/gun/ballistic/nt_expeditionary/heavy_rifle/singleshot
+/obj/item/gun/ballistic/nt_expedition/heavy_rifle/singleshot
 	name = "marksman rifle"
 	desc = "The XNR(S) Mk.10 \"Old Man\" marksman rifle; a refined design output by the Nanotrasen Research Division in conjunction with Hephaestus Industries."
 	description_fluff = {"
@@ -110,7 +110,7 @@
 	item_renderer = /datum/gun_item_renderer/empty_state
 	load_method = SINGLE_CASING | SPEEDLOADER
 
-/obj/item/gun/ballistic/nt_expeditionary/heavy_rifle/semirifle
+/obj/item/gun/ballistic/nt_expedition/heavy_rifle/semirifle
 	name = "heavy rifle"
 	desc = "The XNR Mk.9 \"Ranger\" heavy rifle; a refined design output by the Nanotrasen Research Division in conjunction with Hephaestus Industries."
 	description_fluff = {"
@@ -126,7 +126,7 @@
 	item_renderer = /datum/gun_item_renderer/empty_state
 	load_method = MAGAZINE | SINGLE_CASING
 
-/obj/item/gun/ballistic/nt_expeditionary/heavy_rifle/autorifle
+/obj/item/gun/ballistic/nt_expedition/heavy_rifle/autorifle
 	name = "heavy automatic rifle"
 	desc = "The XNR MK.9 Mod.1 \"Auto Ranger\" heavy rifle; a refined design output by the Nanotrasen Research Division in conjunction with Hephaestus Industries."
 	description_fluff = {"
@@ -142,7 +142,7 @@
 	render_magazine_overlay = MAGAZINE_CLASS_GENERIC
 	load_method = MAGAZINE | SINGLE_CASING
 
-/obj/item/gun/ballistic/nt_expeditionary/heavy_rifle/lmg
+/obj/item/gun/ballistic/nt_expedition/heavy_rifle/lmg
 	name = "light machine gun"
 	desc = "The XNR Mk.9 Mod.2 \"Hailmaker\" light machine gun; a refined design output by the Nanotrasen Research Division in conjunction with Hephaestus Industries."
 	description_fluff = {"
