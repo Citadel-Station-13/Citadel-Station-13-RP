@@ -4,6 +4,8 @@
 //* /obj/item/ammo_magazine - magazine_type *//
 
 /// normal magazines
+///
+/// * basically, straight or curved 'stick' magazines
 #define MAGAZINE_TYPE_NORMAL (1<<0)
 /// revolver-like speedloader
 #define MAGAZINE_TYPE_SPEEDLOADER (1<<1)
@@ -12,6 +14,8 @@
 /// loose pouch
 #define MAGAZINE_TYPE_POUCH (1<<3)
 /// structured box
+///
+/// * this refers to LMG-like box magazine, not what we call just generally normal magazines
 #define MAGAZINE_TYPE_BOX (1<<3)
 
 DEFINE_BITFIELD_NEW(ammo_magazine_types, list(

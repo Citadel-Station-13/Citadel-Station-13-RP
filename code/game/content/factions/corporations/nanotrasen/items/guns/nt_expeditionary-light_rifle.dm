@@ -77,7 +77,7 @@
 		overlays_to_add += overlay
 	add_overlay(overlays_to_add)
 
-/obj/item/ammo_magazine/nt_expedition/light_rifle/magazine
+/obj/item/ammo_magazine/nt_expedition/light_rifle/stick
 	name = "ammo magazine (NT-7.5)"
 	icon_state = "rifle-1"
 	base_icon_state = "rifle"
@@ -86,7 +86,7 @@
 	rendering_static_overlay = "rifle-stripe"
 	ammo_max = 16
 
-/obj/item/ammo_magazine/nt_expedition/light_rifle/magazine/extended
+/obj/item/ammo_magazine/nt_expedition/light_rifle/stick/extended
 	name = "extended magazine (NT-7.5)"
 	icon_state = "rifle-ext-1"
 	base_icon_state = "rifle-ext"
@@ -95,7 +95,7 @@
 	rendering_static_overlay = "rifle-ext-stripe"
 	ammo_max = 24
 
-/obj/item/ammo_magazine/nt_expedition/light_rifle/magazine/drum
+/obj/item/ammo_magazine/nt_expedition/light_rifle/stick/drum
 	name = "drum magazine (NT-7.5)"
 	icon_state = "rifle-drum-1"
 	base_icon_state = "rifle-drum"

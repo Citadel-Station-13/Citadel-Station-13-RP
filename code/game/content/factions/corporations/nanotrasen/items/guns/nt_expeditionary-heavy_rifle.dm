@@ -62,20 +62,20 @@
 		overlays_to_add += overlay
 	add_overlay(overlays_to_add)
 
-/obj/item/ammo_magazine/nt_expedition/heavy_rifle/magazine
+/obj/item/ammo_magazine/nt_expedition/heavy_rifle/stick
 	name = "ammo magazine (NT-7.5-LR)"
 	icon_state = "mag-basic-0"
 	base_icon_state = "mag-basic"
 	magazine_type = MAGAZINE_TYPE_NORMAL
 	ammo_max = 16
 
-/obj/item/ammo_magazine/nt_expedition/heavy_rifle/magazine/extended
+/obj/item/ammo_magazine/nt_expedition/heavy_rifle/stick/extended
 	name = "extended magazine (NT-7.5-LR)"
 	icon_state = "mag-ext-basic-0"
 	base_icon_state = "mag-ext-basic"
 	ammo_max = 24
 
-/obj/item/ammo_magazine/nt_expedition/heavy_rifle/magazine/drum
+/obj/item/ammo_magazine/nt_expedition/heavy_rifle/stick/drum
 	name = "drum magazine (NT-7.5-LR)"
 	icon_state = "mag-drum-basic-0"
 	base_icon_state = "mag-drum-basic"

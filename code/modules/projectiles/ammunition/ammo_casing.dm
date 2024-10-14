@@ -154,9 +154,8 @@
  * makes us look messier, basically
  */
 /obj/item/ammo_casing/proc/randomize_offsets_after_eject()
-	pixel_X = rand(-8, 8)
+	pixel_x = rand(-8, 8)
 	pixel_y = rand(-8, 8)
-	transform = turned
 
 //* Generic - Spent Subtype *//
 
