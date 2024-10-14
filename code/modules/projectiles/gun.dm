@@ -884,6 +884,8 @@
 
 // PENDING FIREMODE REWORK
 /obj/item/gun/proc/legacy_get_firemode()
+	if(!length(firemodes) || (sel_mode > length(firemodes)))
+		return
 	return firemodes[sel_mode]
 
 //* Ammo *//

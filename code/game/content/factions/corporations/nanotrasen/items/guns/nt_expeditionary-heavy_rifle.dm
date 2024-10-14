@@ -105,7 +105,8 @@
 		Light, uncomplicated, and rugged, the “Old Man” has nothing fancy about it.
 		But, time and again, it works, day in, and day out.
 	"} + "<br>"
-	icon = "single"
+	icon_state = "single"
+	base_icon_state = "single"
 	item_renderer = /datum/gun_item_renderer/empty_state
 	load_method = SINGLE_CASING | SPEEDLOADER
 
