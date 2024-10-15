@@ -20,20 +20,33 @@
 	 * Volume of this gas mixture in liters.
 	 */
 	var/volume = CELL_VOLUME
-
-	/**
-	 * Sum of all moles in this mixture. Updated by update_values().
-	 */
-	var/total_moles = 0
 	/// Size of the group this gas_mixture is representing. 1 for singletons.
+	///
+	/// * This is a system used to speed up cellular simulation, including the biggest cellular gas sim in the game (the game world).
+	/// * Most procs should take this into account. Many procs include a `_singular()` variant that does not.
 	var/group_multiplier = 1
 
-	/// List of active tile overlays for this gas_mixture.  Updated by check_tile_graphic()
+	//* Cached Values *//
+
+	/// Sum of all moles in this mixture.
+	///
+	/// * Updated by update_values().
+	var/tmp/total_moles = 0
+	/// List of active tile overlays for this gas_mixture.
+	///
+	/// * Updated by check_tile_graphic()
 	var/list/graphic
 
 /datum/gas_mixture/New(vol = CELL_VOLUME)
 	volume = vol
 	gas = list()
+
+/datum/gas_mixture/clone(include_contents)
+	var/datum/gas_mixture/mixture = new(volume)
+	mixture.gas = gas.Copy()
+	mixture.temperature = temperature
+	mixture.group_multiplier = group_multiplier
+	mixture.total_moles = total_moles
 
 //Takes a gas string and the amount of moles to adjust by.  Calls update_values() if update isn't 0.
 /datum/gas_mixture/proc/adjust_gas(gasid, moles, update = 1)
@@ -111,31 +124,6 @@
 
 	update_values()
 
-// Used to equalize the mixture between two zones before sleeping an edge.
-/datum/gas_mixture/proc/equalize(datum/gas_mixture/sharer)
-	var/our_heatcap = heat_capacity()
-	var/share_heatcap = sharer.heat_capacity()
-
-	// Special exception: there isn't enough air around to be worth processing this edge next tick, zap both to zero.
-	if(total_moles + sharer.total_moles <= MINIMUM_MOLES_TO_DISSIPATE)
-		gas.Cut()
-		sharer.gas.Cut()
-
-	for(var/g in gas|sharer.gas)
-		var/comb = gas[g] + sharer.gas[g]
-		comb /= volume + sharer.volume
-		gas[g] = comb * volume
-		sharer.gas[g] = comb * sharer.volume
-
-	if(our_heatcap + share_heatcap)
-		temperature = ((temperature * our_heatcap) + (sharer.temperature * share_heatcap)) / (our_heatcap + share_heatcap)
-	sharer.temperature = temperature
-
-	update_values()
-	sharer.update_values()
-
-	return 1
-
 //Technically vacuum doesn't have a specific entropy. Just use a really big number (infinity would be ideal) here so that it's easy to add gas to vacuum and hard to take gas out.
 #define SPECIFIC_ENTROPY_VACUUM		150000
 
@@ -181,76 +169,6 @@
 	TOTAL_MOLES(gas, total_moles)
 	if(!total_moles)
 		temperature = TCMB
-
-//Removes moles from the gas mixture and returns a gas_mixture containing the removed air.
-/datum/gas_mixture/proc/remove(amount)
-	amount = min(amount, total_moles * group_multiplier) //Can not take more air than the gas mixture has!
-	if(amount <= 0)
-		return null
-
-	var/datum/gas_mixture/removed = new
-
-	for(var/g in gas)
-		removed.gas[g] = QUANTIZE((gas[g] / total_moles) * amount)
-		gas[g] -= removed.gas[g] / group_multiplier
-
-	removed.temperature = temperature
-	update_values()
-	removed.update_values()
-
-	return removed
-
-
-//Removes a ratio of gas from the mixture and returns a gas_mixture containing the removed air.
-/datum/gas_mixture/proc/remove_ratio(ratio, out_group_multiplier = 1)
-	if(ratio <= 0)
-		return null
-	out_group_multiplier = clamp( out_group_multiplier, 1,  group_multiplier)
-
-	ratio = min(ratio, 1)
-
-	var/datum/gas_mixture/removed = new
-	removed.group_multiplier = out_group_multiplier
-
-	for(var/g in gas)
-		removed.gas[g] = (gas[g] * ratio * group_multiplier / out_group_multiplier)
-		gas[g] = gas[g] * (1 - ratio)
-
-	removed.temperature = temperature
-	removed.volume = volume * group_multiplier / out_group_multiplier
-	update_values()
-	removed.update_values()
-
-	return removed
-
-//Removes a volume of gas from the mixture and returns a gas_mixture containing the removed air with the given volume
-/datum/gas_mixture/proc/remove_volume(removed_volume)
-	var/datum/gas_mixture/removed = remove_ratio(removed_volume/(volume*group_multiplier), 1)
-	removed.volume = removed_volume
-	return removed
-
-//Removes moles from the gas mixture, limited by a given flag.  Returns a gax_mixture containing the removed air.
-/datum/gas_mixture/proc/remove_by_flag(flag, amount)
-	if(!flag || amount <= 0)
-		return
-
-	var/sum = 0
-	for(var/g in gas)
-		if(global.gas_data.flags[g] & flag)
-			sum += gas[g]
-
-	var/datum/gas_mixture/removed = new
-
-	for(var/g in gas)
-		if(global.gas_data.flags[g] & flag)
-			removed.gas[g] = QUANTIZE((gas[g] / sum) * amount)
-			gas[g] -= removed.gas[g] / group_multiplier
-
-	removed.temperature = temperature
-	update_values()
-	removed.update_values()
-
-	return removed
 
 //Copies gas and temperature from another gas_mixture.
 /datum/gas_mixture/proc/copy_from(const/datum/gas_mixture/sample)

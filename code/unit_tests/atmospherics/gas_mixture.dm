@@ -1,7 +1,9 @@
 // for /datum/gas_mixture/proc/share_with_congruent_mixture(???, 1)
 /datum/unit_test/gas_mixture_share_with_congruent_mixture_full/Run()
+	// 1000L
 	var/datum/gas_mixture/one = new(1000)
 	one.adjust_gas_temp(GAS_ID_OXYGEN, 300, 200)
+	// 1000L * 2
 	var/datum/gas_mixture/two = new(1000)
 	two.adjust_gas_temp(GAS_ID_OXYGEN, 100, 400)
 	two.group_multiplier = 2
@@ -10,10 +12,10 @@
 
 	one.share_with_congruent_mixture(two, 1)
 
-	if(one.gas[GAS_ID_OXYGEN] != (1000 / 3))
-		TEST_FAIL("share_with_congruent_mixture() didn't equalize gas (expected [(1000 / 3)], actual [one.gas[GAS_ID_OXYGEN]])")
-	if(two.gas[GAS_ID_OXYGEN] != (1000 / 3 * 2))
-		TEST_FAIL("share_with_congruent_mixture() didn't conserve gas (expected [(1000 / 3 * 2)], actual [two.gas[GAS_ID_OXYGEN]])")
+	if(one.gas[GAS_ID_OXYGEN] != (500 / 3))
+		TEST_FAIL("share_with_congruent_mixture() didn't equalize gas (expected [(500 / 3)], actual [one.gas[GAS_ID_OXYGEN]])")
+	if(two.gas[GAS_ID_OXYGEN] != (500 / 3))
+		TEST_FAIL("share_with_congruent_mixture() didn't conserve gas (expected [(500 / 3)], actual [two.gas[GAS_ID_OXYGEN]])")
 	if(one.temperature != 280)
 		TEST_FAIL("share_with_congruent_mixture() didn't equalize temp on side A (expected 280, actual [one.temperature])")
 	if(two.temperature != 280)

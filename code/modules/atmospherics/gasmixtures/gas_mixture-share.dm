@@ -34,7 +34,6 @@
 
 	var/our_capacity_singular = heat_capacity_singular()
 	var/their_capacity_singular = heat_capacity_singular()
-	var/total_capacity_singular = our_capacity_singular + their_capacity_singular
 
 	// if this is empty we're dealing with two null mixtures so just bail
 	if(!total_capacity_singular)
@@ -66,13 +65,13 @@
 	// equalize temp
 	// this scales down for floating point precision reasons
 	var/avg_temp
-	var/size_scaler
+	var/scaled_capacity
 	if(our_size > their_size)
-		size_scaler = their_size / our_size
-		avg_temp = (temperature * our_capacity_singular + other.temperature * their_capacity_singular * size_scaler) / (our_capacity_singular + their_capacity_singular * size_scaler)
+		scaled_capacity = their_size / our_size * their_capacity_singular
+		avg_temp = (temperature * our_capacity_singular + other.temperature * scaled_capacityr) / (our_capacity_singular + scaled_capacity)
 	else if(their_size < our_size)
-		size_scaler = our_size / their_size
-		avg_temp = (temperature * our_capacity_singular * size_scaler + other.temperature * their_capacity_singular) / (our_capacity_singular * size_scaler + their_capacity_singular)
+		scaled_capacity = our_size / their_size * our_capacity_singular
+		avg_temp = (temperature * scaled_capacity + other.temperature * their_capacity_singular) / (scaled_capacity + their_capacity_singular)
 	else
 		avg_temp = (temperature * our_capacity_singular + other.temperature * their_capacity_singular) / (our_capacity_singular + their_capacity_singular)
 	temperature = (our_capacity_singular * intact_ratio * temperature + avg_temp * total_capacity_singular * ratio) / (our_capacity_singular * intact_ratio + total_capacity_singular * ratio)
