@@ -22,6 +22,9 @@
 	air_A.temperature = 300
 	air_B.temperature = 100
 
+	air_A.update_values()
+	air_B.update_values()
+
 	var/total_energy_old = XGM_THERMAL_ENERGY(air_A) + XGM_THERMAL_ENERGY(air_B)
 
 	edge.equalize()
