@@ -1,5 +1,5 @@
-// for /datum/gas_mixture/proc/share_with_congruent_mixture(???, 1)
-/datum/unit_test/gas_mixture_share_with_congruent_mixture_full/Run()
+// for /datum/gas_mixture/proc/share_with_mixture(???, 1)
+/datum/unit_test/gas_mixture_share_with_mixture_full/Run()
 	// 1000L
 	var/datum/gas_mixture/air_A = new(1000)
 	air_A.adjust_gas_temp(GAS_ID_OXYGEN, 300, 200)
@@ -13,23 +13,23 @@
 
 	var/total_energy_old = XGM_THERMAL_ENERGY(air_A) + XGM_THERMAL_ENERGY(air_B)
 
-	air_A.share_with_congruent_mixture(air_B, 1)
+	air_A.share_with_mixture(air_B, 1)
 
 	if(air_A.gas[GAS_ID_OXYGEN] != (500 / 3))
-		TEST_FAIL("share_with_congruent_mixture() didn't equalize gas (expected [(500 / 3)], actual [air_A.gas[GAS_ID_OXYGEN]])")
+		TEST_FAIL("share_with_mixture() didn't equalize gas (expected [(500 / 3)], actual [air_A.gas[GAS_ID_OXYGEN]])")
 	if(air_B.gas[GAS_ID_OXYGEN] != (500 / 3))
-		TEST_FAIL("share_with_congruent_mixture() didn't conserve gas (expected [(500 / 3)], actual [air_B.gas[GAS_ID_OXYGEN]])")
+		TEST_FAIL("share_with_mixture() didn't conserve gas (expected [(500 / 3)], actual [air_B.gas[GAS_ID_OXYGEN]])")
 	if(air_A.temperature != 280)
-		TEST_FAIL("share_with_congruent_mixture() didn't equalize temp on side A (expected 280, actual [air_A.temperature])")
+		TEST_FAIL("share_with_mixture() didn't equalize temp on side A (expected 280, actual [air_A.temperature])")
 	if(air_B.temperature != 280)
-		TEST_FAIL("share_with_congruent_mixture() didn't equalize temp on side B (expected 280, actual [air_B.temperature])")
+		TEST_FAIL("share_with_mixture() didn't equalize temp on side B (expected 280, actual [air_B.temperature])")
 
 	var/total_energy_new = XGM_THERMAL_ENERGY(air_A) + XGM_THERMAL_ENERGY(air_B)
 
 	if(total_energy_old != total_energy_new)
-		TEST_FAIL("share_with_congruent_mixture() didn't conserve energy (expected [total_energy_old], actual [total_energy_new])")
+		TEST_FAIL("share_with_mixture() didn't conserve energy (expected [total_energy_old], actual [total_energy_new])")
 
-// todo: share_with_congruent_mixture_partial for /datum/gas_mixture/proc/share_with_congruent_mixture(???, 0.75)
+// todo: share_with_mixture_partial for /datum/gas_mixture/proc/share_with_mixture(???, 0.75)
 // todo: share_with_immutable_full for /datum/gas_mixture/proc/share_with_immutable(???, ??? ???, 1)
 // todo: share_with_immutable_partial for /datum/gas_mixture/proc/share_with_immutable(???, ??? ???, 1)
 

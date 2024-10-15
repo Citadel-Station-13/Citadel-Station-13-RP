@@ -17,7 +17,7 @@
  *
  * @return TRUE if we are near-equivalent to the other, FALSE if we are still different.
  */
-/datum/gas_mixture/proc/share_with_congruent_mixture(datum/gas_mixture/other, ratio)
+/datum/gas_mixture/proc/share_with_mixture(datum/gas_mixture/other, ratio)
 #ifdef CF_ATMOS_XGM_DEBUG_ASSERTIONS
 	ASSERT(ratio > 0 && ratio <= 1)
 #endif
