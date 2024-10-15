@@ -2224,6 +2224,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
+/obj/effect/floor_decal/borderfloorblack/corner2,
 /turf/simulated/floor/tiled/dark,
 /area/exploration/showers)
 "ahx" = (
@@ -2735,6 +2736,8 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/effect/floor_decal/borderfloor/corner2,
+/obj/effect/floor_decal/corner/beige/bordercorner2,
 /turf/simulated/floor/tiled/steel,
 /area/exploration)
 "aiZ" = (
@@ -5608,8 +5611,6 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/effect/floor_decal/borderfloor,
-/obj/effect/floor_decal/corner/beige/border,
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
@@ -14191,7 +14192,6 @@
 /obj/item/clothing/accessory/permit/gun/planetside,
 /obj/item/roller,
 /obj/item/storage/backpack/parachute,
-/obj/item/binoculars,
 /obj/machinery/camera/network/exploration{
 	dir = 4
 	},
@@ -15684,7 +15684,6 @@
 /obj/item/clothing/accessory/permit/gun/planetside,
 /obj/item/roller,
 /obj/item/storage/backpack/parachute,
-/obj/item/binoculars,
 /turf/simulated/floor/tiled,
 /area/exploration/medic_prep)
 "aWW" = (
@@ -15900,10 +15899,12 @@
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 4
 	},
-/obj/effect/floor_decal/steeldecal/steel_decals10,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/camera/network/exploration{
 	dir = 8
+	},
+/obj/effect/floor_decal/borderfloorblack/corner2{
+	dir = 6
 	},
 /turf/simulated/floor/tiled/dark,
 /area/exploration/showers)
@@ -15957,16 +15958,6 @@
 	},
 /turf/simulated/shuttle/wall/voidcraft/blue,
 /area/shuttle/courser/cockpit)
-"aXQ" = (
-/obj/structure/disposalpipe/segment,
-/obj/effect/floor_decal/borderfloor{
-	dir = 8
-	},
-/obj/effect/floor_decal/corner/beige/border{
-	dir = 8
-	},
-/turf/simulated/floor/tiled/monotile,
-/area/exploration)
 "aXR" = (
 /obj/structure/closet/secure_closet/hop,
 /obj/item/megaphone,
@@ -17307,6 +17298,8 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan{
 	dir = 8
 	},
+/obj/effect/floor_decal/borderfloor/corner,
+/obj/effect/floor_decal/corner/beige/bordercorner,
 /turf/simulated/floor/tiled/steel,
 /area/exploration/courser_dock)
 "ciC" = (
@@ -19043,6 +19036,18 @@
 "flP" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan{
 	dir = 9
+	},
+/obj/effect/floor_decal/borderfloor{
+	dir = 6
+	},
+/obj/effect/floor_decal/corner/beige/border{
+	dir = 6
+	},
+/obj/effect/floor_decal/borderfloor/corner2{
+	dir = 6
+	},
+/obj/effect/floor_decal/corner/beige/bordercorner2{
+	dir = 6
 	},
 /turf/simulated/floor/tiled/steel,
 /area/exploration/courser_dock)
@@ -21540,16 +21545,6 @@
 	},
 /turf/simulated/floor/carpet/purcarpet,
 /area/exploration/meeting)
-"jFJ" = (
-/obj/structure/disposalpipe/segment,
-/obj/effect/floor_decal/borderfloor{
-	dir = 8
-	},
-/obj/effect/floor_decal/corner/beige/border{
-	dir = 8
-	},
-/turf/simulated/floor/tiled/steel,
-/area/exploration)
 "jFP" = (
 /obj/structure/cable/cyan{
 	icon_state = "4-8"
@@ -21722,6 +21717,12 @@
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
+	},
+/obj/effect/floor_decal/borderfloor/corner2{
+	dir = 9
+	},
+/obj/effect/floor_decal/corner/beige/bordercorner2{
+	dir = 9
 	},
 /turf/simulated/floor/tiled/steel,
 /area/exploration)
@@ -22263,12 +22264,6 @@
 	dir = 4
 	},
 /obj/structure/disposalpipe/segment,
-/obj/effect/floor_decal/borderfloor{
-	dir = 8
-	},
-/obj/effect/floor_decal/corner/beige/border{
-	dir = 8
-	},
 /turf/simulated/floor/tiled/monotile,
 /area/exploration)
 "kQm" = (
@@ -23450,12 +23445,6 @@
 /obj/effect/floor_decal/corner/beige/border{
 	dir = 6
 	},
-/obj/effect/floor_decal/borderfloor/corner2{
-	dir = 6
-	},
-/obj/effect/floor_decal/corner/beige/bordercorner2{
-	dir = 6
-	},
 /turf/simulated/floor/tiled/steel,
 /area/exploration/courser_dock)
 "mZG" = (
@@ -23923,6 +23912,12 @@
 	dir = 8
 	},
 /obj/structure/table/bench/steel,
+/obj/effect/floor_decal/borderfloor/corner2{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/beige/bordercorner2{
+	dir = 1
+	},
 /turf/simulated/floor/tiled/steel,
 /area/exploration)
 "nPl" = (
@@ -24651,12 +24646,6 @@
 	dir = 1;
 	name = "Exploration";
 	sortType = "Exploration"
-	},
-/obj/effect/floor_decal/borderfloor/corner{
-	dir = 1
-	},
-/obj/effect/floor_decal/corner/beige/bordercorner{
-	dir = 1
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/exploration)
@@ -46654,9 +46643,9 @@ okY
 okY
 okY
 tSS
-jFJ
+okY
 kOx
-aXQ
+egu
 pis
 egu
 aKd
