@@ -14,68 +14,48 @@
  *
  * * non canonical, e.g. A shares with B --> A shares with C != A shares with C --> A shares with B
  * * this also assumes equal weighting, e.g. 0.5 ratio means take half of us and half of them, mix it, and put it back in.
- * * this requires two mixtures iwth equal volumes
  *
  * @return TRUE if we are near-equivalent to the other, FALSE if we are still different.
  */
 /datum/gas_mixture/proc/share_with_congruent_mixture(datum/gas_mixture/other, ratio)
 #ifdef CF_ATMOS_XGM_DEBUG_ASSERTIONS
 	ASSERT(ratio > 0 && ratio <= 1)
-	ASSERT(volume == other.volume)
 #endif
 
-	// collect
-	var/list/their_gas = other.gas
-	var/list/our_gas = gas
+	#warn prune
 
-	var/our_size = src.group_multiplier
-	var/their_size = other.group_multiplier
-	var/total_size = our_size + their_size
+	var/total_volume = src.volume + other.volume
+	var/total_group_multiplier = src.group_multiplier + other.group_multiplier
+	var/total_effective_volume = total_volume * total_group_multiplier
+	var/inverse_ratio = 1 - ratio
 
-	var/our_capacity_singular = heat_capacity_singular()
-	var/their_capacity_singular = heat_capacity_singular()
+	// get scalers
+	var/our_scaler = (src.volume * src.group_multiplier) / (total_effective_volume)
+	var/their_scaler = (other.volume * other.group_multiplier) / (total_effective_volume)
 
-	// if this is empty we're dealing with two null mixtures so just bail
-	if(!total_capacity_singular)
-		return TRUE
+	// get pre-transfer capacities
+	var/our_capacity_singular = src.heat_capacity_singular()
+	var/their_capacity_singular = other.heat_capacity_singular()
 
-	// compute
-	var/list/avg_gas = list()
-	for(var/id in our_gas)
-		avg_gas[id] += our_gas[id] * our_size
+	// handle gas
+	for(var/gas in gas | other.gas)
+		var/avg_per_singular = src.gas[gas] * our_scaler + other.gas[gas] * their_scaler
+		src.gas[gas] = src.gas[gas] * inverse_ratio + avg_per_singular * ratio
+		other.gas[gas] = other.gas[gas] * inverse_ratio + avg_per_singular * ratio
 
-	for(var/id in their_gas)
-		avg_gas[id] += their_gas[id] * their_size
+	// handle temp
 
-	for(var/id in avg_gas)
-		avg_gas[id] /= total_size
+	var/our_remaining_capacity = our_capacity_singular * inverse_ratio
+	var/their_remaining_capacity = their_capacity_singular * inverse_ratio
 
-	var/intact_ratio = 1 - ratio
+	var/total_effective_capacity = our_capacity_singular * src.group_multiplier + their_capacity_singular * other.group_multiplier
+	var/average_injected_temperature = (our_capacity_singular * temperature * src.group_multiplier + their_capacity_singular * other.temperature * other.group_multiplier) / total_effective_capacity
 
-	// equalize gas
-	var/avg_amt
-	for(var/id in avg_gas)
-		// set moles by ratio
-		// lists are cached, so directly set
-		avg_amt = avg_gas[id]
-		// i don't know what these do but they work (probably)
-		our_gas[id] = (our_gas[id] - avg_amt) * intact_ratio + avg_amt
-		their_gas[id] = (their_gas[id] - avg_amt) * intact_ratio + avg_amt
-	#warn this is potentially wrong
-	// equalize temp
-	// this scales down for floating point precision reasons
-	var/avg_temp
-	var/scaled_capacity
-	if(our_size > their_size)
-		scaled_capacity = their_size / our_size * their_capacity_singular
-		avg_temp = (temperature * our_capacity_singular + other.temperature * scaled_capacityr) / (our_capacity_singular + scaled_capacity)
-	else if(their_size < our_size)
-		scaled_capacity = our_size / their_size * our_capacity_singular
-		avg_temp = (temperature * scaled_capacity + other.temperature * their_capacity_singular) / (scaled_capacity + their_capacity_singular)
-	else
-		avg_temp = (temperature * our_capacity_singular + other.temperature * their_capacity_singular) / (our_capacity_singular + their_capacity_singular)
-	temperature = (our_capacity_singular * intact_ratio * temperature + avg_temp * total_capacity_singular * ratio) / (our_capacity_singular * intact_ratio + total_capacity_singular * ratio)
-	other.temperature = (their_capacity_singular * intact_ratio * other.temperature + avg_temp * total_capacity_singular * ratio) / (their_capacity_singular * intact_ratio + total_capacity_singular * ratio)
+	var/our_injected_capacity = total_effective_capacity * ratio * (src.group_multiplier / total_group_multiplier)
+	var/their_injected_capacity = total_effective_capacity * ratio * (other.group_multiplier / total_group_multiplier)
+
+	src.temperature = ((temperature * our_remaining_capacity) + (our_injected_capacity * average_injected_temperature) / (our_remaining_capacity + our_injected_capacity))
+	other.temperature = ((temperature * their_remaining_capacity) + (their_injected_capacity * average_injected_temperature) / (their_remaining_capacity + their_injected_capacity))
 
 	// update
 	update_values()
