@@ -24,9 +24,8 @@
 
 	#warn prune
 
-	var/total_volume = src.volume + other.volume
 	var/total_group_multiplier = src.group_multiplier + other.group_multiplier
-	var/total_effective_volume = total_volume * total_group_multiplier
+	var/total_effective_volume = src.group_multiplier * src.volume + other.group_multiplier * other.volume
 	var/inverse_ratio = 1 - ratio
 
 	// get scalers
