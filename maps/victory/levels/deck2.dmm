@@ -9092,6 +9092,9 @@
 /obj/effect/floor_decal/industrial/outline/blue,
 /turf/simulated/floor/tiled/white,
 /area/medical/patient_wing)
+"grq" = (
+/turf/simulated/floor/airless/ceiling,
+/area/victory/command/turrets)
 "gry" = (
 /obj/effect/floor_decal/corner/paleblue/diagonal,
 /obj/machinery/holopad,
@@ -14147,6 +14150,9 @@
 /obj/effect/floor_decal/corner/paleblue/border,
 /turf/simulated/floor/tiled/white,
 /area/medical/medbay3)
+"jRE" = (
+/turf/space/basic,
+/area/victory/command/turrets)
 "jRH" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -15984,7 +15990,7 @@
 	faction = "neutral"
 	},
 /turf/simulated/floor/airless/ceiling,
-/area/space)
+/area/victory/command/turrets)
 "lnk" = (
 /obj/structure/cable/orange{
 	icon_state = "4-8"
@@ -23756,7 +23762,7 @@
 "qBd" = (
 /obj/machinery/shield_diffuser,
 /turf/simulated/floor/airless/ceiling,
-/area/space)
+/area/victory/command/turrets)
 "qBi" = (
 /obj/machinery/light{
 	dir = 4;
@@ -38084,8 +38090,9 @@ pRW
 pRW
 pRW
 pRW
-pRW
+jRE
 qBd
+jRE
 pRW
 pRW
 pRW
@@ -38101,9 +38108,9 @@ pRW
 pRW
 pRW
 pRW
-pRW
-pRW
+jRE
 qBd
+jRE
 pRW
 pRW
 pRW
@@ -38111,9 +38118,9 @@ pRW
 pRW
 pRW
 pRW
-pRW
-pRW
+jRE
 qBd
+jRE
 pRW
 pRW
 pRW
@@ -38121,10 +38128,9 @@ pRW
 pRW
 pRW
 pRW
-pRW
-pRW
+jRE
 qBd
-pRW
+jRE
 pRW
 pRW
 pRW
@@ -38664,7 +38670,7 @@ pRW
 pRW
 pRW
 pRW
-pRW
+jRE
 qBd
 upp
 upp
@@ -38674,9 +38680,9 @@ pRW
 pRW
 pRW
 pRW
-pRW
+jRE
 qBd
-pRW
+jRE
 pRW
 pRW
 xVe
@@ -38711,12 +38717,12 @@ vcY
 nWB
 syi
 fik
-fik
+grq
 qBd
-fik
-fik
+grq
+grq
 qBd
-fik
+grq
 pRW
 pRW
 pRW
@@ -39052,7 +39058,7 @@ pRW
 pRW
 pRW
 pRW
-pRW
+jRE
 qBd
 upp
 jHx
@@ -40859,7 +40865,7 @@ vya
 bXJ
 ekU
 qBd
-pRW
+jRE
 pRW
 pRW
 pRW
@@ -41186,7 +41192,7 @@ pRW
 pRW
 pRW
 pRW
-pRW
+jRE
 qBd
 upp
 eZZ
@@ -41247,7 +41253,7 @@ czv
 hFl
 ekU
 qBd
-pRW
+jRE
 pRW
 pRW
 pRW
@@ -41574,7 +41580,7 @@ pRW
 pRW
 pRW
 pRW
-pRW
+jRE
 qBd
 upp
 eZZ
@@ -42997,9 +43003,9 @@ pRW
 pRW
 pRW
 pRW
-pRW
+jRE
 qBd
-pRW
+jRE
 pRW
 mDp
 mDp
@@ -43122,9 +43128,9 @@ mDp
 pRW
 pRW
 pRW
-pRW
+jRE
 qBd
-pRW
+jRE
 pRW
 pRW
 qhg
@@ -43393,7 +43399,7 @@ qTq
 qTq
 qTq
 qBd
-pRW
+jRE
 mDp
 mDp
 mDp
@@ -43781,7 +43787,7 @@ pnD
 ktr
 qTq
 qBd
-pRW
+jRE
 mDp
 mDp
 mDp
@@ -44472,7 +44478,7 @@ pRW
 mDp
 mDp
 mDp
-pRW
+jRE
 qBd
 kxi
 bAd
@@ -44860,7 +44866,7 @@ pRW
 mDp
 mDp
 mDp
-pRW
+jRE
 qBd
 kxi
 tPb
@@ -47382,7 +47388,7 @@ pRW
 pRW
 pRW
 pRW
-pRW
+jRE
 qBd
 uPt
 xIf
@@ -47770,7 +47776,7 @@ pRW
 pRW
 pRW
 pRW
-pRW
+jRE
 qBd
 uPt
 neh
@@ -49904,7 +49910,7 @@ pRW
 pRW
 pRW
 pRW
-pRW
+jRE
 qBd
 uPt
 aBk
@@ -50292,7 +50298,7 @@ pRW
 pRW
 pRW
 pRW
-pRW
+jRE
 qBd
 uPt
 arH
@@ -51153,7 +51159,7 @@ jEh
 wdB
 xSe
 qBd
-pRW
+jRE
 mDp
 mDp
 mDp
@@ -51541,7 +51547,7 @@ cbh
 iEL
 xSe
 qBd
-pRW
+jRE
 mDp
 mDp
 mDp
@@ -52620,7 +52626,7 @@ mDp
 pRW
 pRW
 pRW
-pRW
+jRE
 qBd
 uPt
 xIf
@@ -53281,7 +53287,7 @@ ujt
 ujt
 xFH
 qBd
-pRW
+jRE
 pRW
 pRW
 mDp
@@ -54052,9 +54058,9 @@ pRW
 pRW
 pRW
 pRW
-pRW
+jRE
 qBd
-pRW
+jRE
 pRW
 pRW
 pRW
@@ -54568,7 +54574,7 @@ pRW
 pRW
 pRW
 pRW
-pRW
+jRE
 qBd
 uPt
 xIf
@@ -54956,7 +54962,7 @@ pRW
 pRW
 pRW
 pRW
-pRW
+jRE
 qBd
 uPt
 xIf
@@ -55015,7 +55021,7 @@ cSS
 aOb
 uhe
 qBd
-pRW
+jRE
 pRW
 pRW
 pRW
@@ -55403,7 +55409,7 @@ fUf
 fIp
 uhe
 qBd
-pRW
+jRE
 pRW
 pRW
 pRW
@@ -55738,9 +55744,9 @@ pRW
 pRW
 pRW
 pRW
-pRW
+jRE
 qBd
-pRW
+jRE
 pRW
 pRW
 pRW
@@ -56519,7 +56525,7 @@ pRW
 pRW
 pRW
 pRW
-pRW
+jRE
 qBd
 uPt
 uPt
@@ -56907,7 +56913,7 @@ pRW
 pRW
 pRW
 pRW
-pRW
+jRE
 qBd
 uPt
 xIf
@@ -57925,7 +57931,7 @@ lBC
 erj
 rdA
 qBd
-pRW
+jRE
 pRW
 pRW
 pRW
@@ -58313,7 +58319,7 @@ iTB
 rMR
 rdA
 qBd
-pRW
+jRE
 pRW
 pRW
 pRW
@@ -58459,7 +58465,7 @@ pRW
 pRW
 pRW
 pRW
-pRW
+jRE
 qBd
 uPt
 xIf
@@ -58847,7 +58853,7 @@ pRW
 pRW
 pRW
 pRW
-pRW
+jRE
 qBd
 uPt
 xIf
@@ -60982,7 +60988,7 @@ pRW
 pRW
 pRW
 pRW
-pRW
+jRE
 qBd
 xVe
 xIf
@@ -61370,7 +61376,7 @@ pRW
 pRW
 pRW
 pRW
-pRW
+jRE
 qBd
 xVe
 xIf
@@ -63545,7 +63551,7 @@ lNB
 lNB
 lNB
 qBd
-pRW
+jRE
 pRW
 pRW
 pRW
@@ -63898,7 +63904,7 @@ pRW
 pRW
 pRW
 pRW
-pRW
+jRE
 qBd
 mNh
 gfA
@@ -64286,7 +64292,7 @@ pRW
 pRW
 pRW
 pRW
-pRW
+jRE
 qBd
 mNh
 gfA
@@ -66253,8 +66259,8 @@ nCE
 vmn
 puV
 iTE
-pRW
-pRW
+jRE
+jRE
 pRW
 pRW
 pRW
@@ -66448,7 +66454,7 @@ dcG
 lHG
 iTE
 qBd
-pRW
+jRE
 pRW
 pRW
 mDp
@@ -66814,7 +66820,7 @@ pRW
 pRW
 pRW
 pRW
-pRW
+jRE
 qBd
 iTE
 rgo
@@ -66836,7 +66842,7 @@ jbZ
 vrc
 iTE
 qBd
-pRW
+jRE
 pRW
 pRW
 mDp
@@ -67202,7 +67208,7 @@ pRW
 pRW
 pRW
 pRW
-pRW
+jRE
 qBd
 iTE
 czX
@@ -67612,7 +67618,7 @@ dot
 dot
 iTE
 qBd
-pRW
+jRE
 pRW
 pRW
 mDp
@@ -68000,7 +68006,7 @@ csb
 csb
 mDp
 qBd
-pRW
+jRE
 pRW
 pRW
 mDp
@@ -68564,9 +68570,9 @@ pRW
 pRW
 pRW
 pRW
-pRW
+jRE
 qBd
-pRW
+jRE
 mDp
 csb
 csb
@@ -68576,9 +68582,9 @@ csb
 csb
 csb
 pRW
-pRW
+jRE
 qBd
-pRW
+jRE
 pRW
 pRW
 pRW

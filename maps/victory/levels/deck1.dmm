@@ -25437,9 +25437,6 @@
 /turf/simulated/floor/plating,
 /area/victory/hallway/d1fwdmaint)
 "uLa" = (
-/obj/machinery/turretid/lethal{
-	pixel_x = -35
-	},
 /obj/machinery/light{
 	dir = 8
 	},
