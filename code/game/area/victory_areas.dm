@@ -105,6 +105,13 @@
 	name = "\improper Deck 1 Starboard Hallway"
 	icon_state = "hallS"
 
+/** Command
+ */
+ 	name = "\improper Point Defense Systems"
+	icon_state = "bridge"
+
+/area/victory/command/turrets
+
 /** Science
  */
 /area/rnd/robotics/morgue
