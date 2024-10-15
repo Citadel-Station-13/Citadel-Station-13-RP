@@ -4750,6 +4750,12 @@
 "dVW" = (
 /turf/simulated/wall/r_wall/prepainted/exploration,
 /area/shuttle/courser/general)
+"dXk" = (
+/obj/effect/floor_decal/steeldecal/steel_decals9{
+	dir = 4
+	},
+/turf/simulated/floor/tiled,
+/area/exploration)
 "dXG" = (
 /obj/machinery/computer/security{
 	dir = 4
@@ -6604,6 +6610,11 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 8
 	},
+/obj/machinery/air_alarm{
+	dir = 4;
+	frequency = 1441;
+	pixel_x = -23
+	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/exploration/courser_dock)
 "fmm" = (
@@ -8306,8 +8317,8 @@
 /turf/simulated/floor/tiled/steel,
 /area/victory/hallway/d1fwdhall)
 "gBG" = (
-/obj/effect/paint/violet,
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/effect/paint/violet,
 /turf/simulated/floor/plating,
 /area/exploration/medical)
 "gCd" = (
@@ -12611,8 +12622,8 @@
 /turf/simulated/floor/grass,
 /area/exploration/meeting)
 "jRq" = (
-/obj/effect/paint/violet,
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/effect/paint/violet,
 /turf/simulated/floor/plating,
 /area/exploration/meeting)
 "jRW" = (
@@ -14323,15 +14334,13 @@
 /turf/simulated/floor/plating,
 /area/shuttle/courser/general)
 "lnF" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+/obj/machinery/door/firedoor/glass{
 	dir = 8
 	},
-/obj/machinery/light{
-	dir = 8
-	},
-/turf/simulated/floor/tiled/techfloor/grid,
-/area/exploration/courser_dock)
+/obj/spawner/window/low_wall/borosillicate/full,
+/obj/effect/paint_stripe/violet,
+/turf/simulated/floor/plating,
+/area/space)
 "lnR" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /obj/effect/floor_decal/techfloor/orange{
@@ -15009,11 +15018,6 @@
 	},
 /turf/simulated/floor/grass,
 /area/exploration/meeting)
-"lSc" = (
-/obj/effect/paint/violet,
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/turf/simulated/floor/plating,
-/area/exploration/explorer_prep)
 "lSg" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -15502,16 +15506,6 @@
 /obj/structure/ship_munition/disperser_charge/explosive,
 /obj/effect/floor_decal/industrial/outline/red,
 /turf/simulated/floor/tiled/dark,
-/area/exploration/courser_dock)
-"mmg" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/air_alarm{
-	dir = 4;
-	frequency = 1441;
-	pixel_x = -23
-	},
-/turf/simulated/floor/tiled/techfloor/grid,
 /area/exploration/courser_dock)
 "mmC" = (
 /turf/simulated/floor/tiled/steel,
@@ -16062,9 +16056,6 @@
 /turf/simulated/floor/airless/ceiling,
 /area/rnd/misc_lab)
 "mNu" = (
-/obj/effect/floor_decal/steeldecal/steel_decals9{
-	dir = 4
-	},
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
 /turf/simulated/floor/tiled,
 /area/exploration)
@@ -17093,10 +17084,15 @@
 /turf/simulated/floor/tiled,
 /area/exploration)
 "nBX" = (
-/obj/effect/paint/violet,
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/turf/simulated/floor/plating,
-/area/exploration)
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+	dir = 8
+	},
+/obj/machinery/light{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/exploration/courser_dock)
 "nCl" = (
 /obj/structure/symbol/sa,
 /turf/simulated/wall/prepainted,
@@ -24063,8 +24059,8 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/victory/surfacebase/tram)
 "tJP" = (
-/obj/effect/paint/violet,
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/effect/paint/violet,
 /turf/simulated/floor/plating,
 /area/space)
 "tKM" = (
@@ -26959,8 +26955,8 @@
 "vVS" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/structure/closet/hydrant{
-	pixel_x = 32
+/obj/machinery/light{
+	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/exploration/excursion_dock)
@@ -27326,9 +27322,8 @@
 /turf/simulated/floor/tiled,
 /area/shuttle/excursion/cockpit)
 "wlJ" = (
-/obj/effect/paint/violet,
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/item/radio/beacon,
+/obj/effect/paint/violet,
 /turf/simulated/floor/plating,
 /area/exploration/explorer_prep)
 "wlW" = (
@@ -36329,11 +36324,11 @@ xRj
 xRj
 dkX
 gxB
-nBX
-nBX
+hTA
+hTA
 gxB
-nBX
-nBX
+hTA
+hTA
 gxB
 mFi
 blo
@@ -36528,7 +36523,7 @@ oSH
 lAO
 fMh
 ktu
-bMm
+gxB
 mFi
 dYC
 gxB
@@ -37304,7 +37299,7 @@ dVT
 dVT
 cJE
 jsu
-nBX
+hTA
 pcA
 hbS
 gxB
@@ -37498,7 +37493,7 @@ jRW
 fIR
 cJE
 jsu
-nBX
+hTA
 mFi
 lsW
 gxB
@@ -37886,7 +37881,7 @@ cQR
 eay
 gPQ
 oNQ
-nBX
+hTA
 mFi
 dYC
 gxB
@@ -38080,7 +38075,7 @@ fUM
 dTx
 bqQ
 fUM
-nBX
+hTA
 mFi
 dYC
 gxB
@@ -39053,7 +39048,7 @@ rVf
 joR
 obn
 dYC
-bMm
+gxB
 cXT
 tZN
 emK
@@ -40215,7 +40210,7 @@ nkp
 wlJ
 bQx
 vEn
-lSc
+wlJ
 bMm
 bMm
 pop
@@ -40994,7 +40989,7 @@ uIC
 ogK
 bMm
 dfk
-tZN
+dXk
 tZN
 fsb
 xWL
@@ -43302,14 +43297,14 @@ dkX
 dkX
 dkX
 dkX
+lnF
+lnF
 dkX
+lnF
+lnF
 dkX
-dkX
-dkX
-dkX
-dkX
-dkX
-dkX
+lnF
+lnF
 dkX
 aGI
 clB
@@ -43500,9 +43495,9 @@ xzs
 xzs
 fmh
 swq
-mmg
-fmh
-lnF
+xzs
+nBX
+swq
 dGc
 joP
 aGI

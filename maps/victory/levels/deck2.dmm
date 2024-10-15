@@ -18005,7 +18005,7 @@
 /area/victory/hallway/d2afthall)
 "mMS" = (
 /obj/machinery/door/firedoor/glass,
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/floor_decal/borderfloorwhite{
 	dir = 1
 	},
 /obj/effect/floor_decal/corner/paleblue/border{
@@ -26854,9 +26854,9 @@
 	dir = 4
 	},
 /obj/machinery/door/firedoor/glass,
-/obj/effect/floor_decal/borderfloor,
-/obj/effect/floor_decal/corner/paleblue/border,
 /obj/map_helper/access_helper/airlock/station/medical/department,
+/obj/effect/floor_decal/borderfloorwhite,
+/obj/effect/floor_decal/corner/paleblue/border,
 /obj/machinery/door/airlock/multi_tile/glass/medical{
 	dir = 4;
 	name = "Surgical Wing"
@@ -26931,6 +26931,9 @@
 /obj/map_helper/access_helper/airlock/station/medical/department,
 /obj/effect/floor_decal/corner/paleblue{
 	dir = 4
+	},
+/obj/machinery/door/airlock/multi_tile/glass/medical{
+	name = "Medbay Reception"
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/reception)
@@ -31005,9 +31008,13 @@
 /obj/machinery/door/firedoor/glass{
 	dir = 4
 	},
-/obj/effect/floor_decal/borderfloor,
-/obj/effect/floor_decal/corner/paleblue/border,
 /obj/map_helper/access_helper/airlock/station/medical/department,
+/obj/effect/floor_decal/borderfloorwhite,
+/obj/effect/floor_decal/corner/paleblue/border,
+/obj/machinery/door/airlock/multi_tile/glass/medical{
+	dir = 4;
+	name = "Surgical Wing"
+	},
 /turf/simulated/floor/tiled/white,
 /area/medical/sleeper)
 "vOA" = (
