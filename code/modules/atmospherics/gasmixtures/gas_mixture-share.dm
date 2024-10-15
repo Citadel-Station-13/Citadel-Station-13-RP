@@ -19,7 +19,7 @@
  * @return TRUE if we are near-equivalent to the other, FALSE if we are still different.
  */
 /datum/gas_mixture/proc/share_with_congruent_mixture(datum/gas_mixture/other, ratio)
-#ifdef CF_ATMOS_DEBUG_ASSERTIONS
+#ifdef CF_ATMOS_XGM_DEBUG_ASSERTIONS
 	ASSERT(ratio > 0 && ratio <= 1)
 	ASSERT(volume == other.volume)
 #endif
@@ -103,7 +103,7 @@
  * @return TRUE if we are near-equivalent to the other, FALSE if we are still different.
  */
 /datum/gas_mixture/proc/share_with_immutable(list/gases, group_multiplier, temperature, ratio)
-#ifdef CF_ATMOS_DEBUG_ASSERTIONS
+#ifdef CF_ATMOS_XGM_DEBUG_ASSERTIONS
 	ASSERT(ratio > 0 && ratio <= 1)
 	ASSERT(temperature >= TCMB)
 	ASSERT(group_multiplier >= 1)

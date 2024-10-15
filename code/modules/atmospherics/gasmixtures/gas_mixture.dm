@@ -32,10 +32,6 @@
 	///
 	/// * Updated by update_values().
 	var/tmp/total_moles = 0
-	/// List of active tile overlays for this gas_mixture.
-	///
-	/// * Updated by check_tile_graphic()
-	var/list/graphic
 
 /datum/gas_mixture/New(vol = CELL_VOLUME)
 	volume = vol
@@ -179,8 +175,6 @@
 
 	return 1
 
-
-
 /datum/gas_mixture/proc/react()
 	zburn(null, force_burn=0, no_check=0) //could probably just call zburn() here with no args but I like being explicit.
 
@@ -290,6 +284,14 @@
 
 	update_values()
 	return 1
+
+/**
+ * empty us out
+ */
+/datum/gas_mixture/proc/empty()
+	gas.len = 0
+	total_moles = 0
+	temperature = TCMB
 
 /**
  * get mass in kilograms

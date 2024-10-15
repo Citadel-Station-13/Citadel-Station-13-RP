@@ -167,11 +167,14 @@
 
 //? Gasmixtures
 
-/// Enable general assertions.
-#define CF_ATMOS_DEBUG_ASSERTIONS
-
+/// Enable general gasmixture assertions.
+#define CF_ATMOS_XGM_DEBUG_ASSERTIONS
 
 //? ZAS (Environmental)
+
+/// Enable general environmental assertions.
+#define CF_ATMOS_ZAS_DEBUG_ASSERTIONS
+
 /// Uncomment to turn on Multi-Z ZAS Support!
 #define MULTIZAS
 
