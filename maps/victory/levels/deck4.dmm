@@ -22,6 +22,12 @@
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/atmos/workshop)
+"acg" = (
+/obj/effect/floor_decal/techfloor{
+	dir = 9
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/victory/command/turrets)
 "add" = (
 /obj/machinery/door/airlock/hatch{
 	req_one_access = null
@@ -309,6 +315,15 @@
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/atmos/workshop)
+"avD" = (
+/obj/machinery/computer/ship/helm{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/navgold{
+	dir = 10
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/victory/command/turrets)
 "aws" = (
 /obj/structure/table/reinforced,
 /turf/simulated/floor/tiled/techmaint,
@@ -954,6 +969,12 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ai_upload)
+"btv" = (
+/obj/effect/floor_decal/techfloor{
+	dir = 6
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/victory/command/turrets)
 "bua" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 8
@@ -1252,6 +1273,16 @@
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/atmos)
+"bPr" = (
+/obj/structure/bed/chair/bay/comfy,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/navgold/full{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/victory/command/turrets)
 "bQm" = (
 /obj/machinery/atmospherics/pipe/simple/visible/cyan,
 /obj/machinery/atmospherics/pipe/simple/visible/yellow{
@@ -1430,6 +1461,12 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/engineering)
+"cgn" = (
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/victory/command/turrets)
 "cgT" = (
 /obj/structure/cable/green{
 	icon_state = "1-8"
@@ -1579,6 +1616,16 @@
 /obj/effect/floor_decal/industrial/outline,
 /turf/simulated/floor/tiled/dark,
 /area/engineering/engine_gas)
+"crZ" = (
+/obj/machinery/computer/power_monitor,
+/obj/effect/floor_decal/corner/yellow{
+	dir = 5
+	},
+/obj/machinery/computer/ship/navigation/telescreen{
+	pixel_y = 27
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/victory/command/turrets)
 "csN" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/black{
 	dir = 9
@@ -1679,6 +1726,12 @@
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/atmos/workshop)
+"cxU" = (
+/obj/machinery/turretid/lethal{
+	pixel_y = 33
+	},
+/turf/simulated/wall/r_wall/prepainted/command,
+/area/victory/command/turrets)
 "cyd" = (
 /obj/machinery/door/firedoor,
 /obj/effect/floor_decal/borderfloorblack{
@@ -1706,6 +1759,15 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ai/foyer)
+"cBj" = (
+/obj/effect/floor_decal/corner_techfloor_grid{
+	dir = 6
+	},
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/victory/command/turrets)
 "cBS" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/fuel{
 	dir = 5
@@ -1842,6 +1904,14 @@
 /obj/machinery/vending/engivend,
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/storage)
+"cQn" = (
+/obj/machinery/computer/atmos_alert,
+/obj/effect/floor_decal/corner/yellow{
+	dir = 5
+	},
+/obj/machinery/fire_alarm/north_mount,
+/turf/simulated/floor/tiled/techfloor,
+/area/victory/command/turrets)
 "cQu" = (
 /obj/machinery/blackbox_recorder,
 /turf/simulated/floor/tiled/techfloor,
@@ -2708,6 +2778,20 @@
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/atmos/workshop)
+"eyl" = (
+/obj/machinery/button/windowtint{
+	id = "bridge_interior";
+	pixel_y = -26
+	},
+/obj/machinery/light/no_nightshift,
+/obj/effect/floor_decal/corner/navgold{
+	dir = 9
+	},
+/obj/machinery/computer/security{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/victory/command/turrets)
 "eyD" = (
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -2767,6 +2851,25 @@
 "eCQ" = (
 /turf/simulated/wall/r_wall/prepainted/engineering,
 /area/space)
+"eDQ" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/lightorange/border{
+	dir = 4
+	},
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled/steel,
+/area/victory/hallway/d4porthall)
+"eEz" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 9
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/turf/simulated/floor/tiled/techfloor,
+/area/victory/command/turrets)
 "eEF" = (
 /obj/machinery/conveyor{
 	dir = 4;
@@ -3146,6 +3249,21 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ai/foyer)
+"fih" = (
+/obj/machinery/computer/ship/engines{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/victory/command/turrets)
+"fiC" = (
+/obj/effect/floor_decal/techfloor{
+	dir = 10
+	},
+/obj/structure/cable{
+	icon_state = "5-8"
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/victory/command/turrets)
 "fjk" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 4
@@ -3828,6 +3946,17 @@
 	},
 /turf/simulated/floor/tiled/monowhite,
 /area/engineering/drone_fabrication)
+"gsS" = (
+/obj/machinery/door/airlock/highsecurity{
+	name = "Aux Bridge";
+	req_one_access = list()
+	},
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/map_helper/access_helper/airlock/station/command/bridge,
+/turf/simulated/floor/plating,
+/area/victory/command/turrets)
 "gtA" = (
 /turf/space,
 /area/victory/command/turrets)
@@ -4452,6 +4581,15 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/engineering)
+"hmV" = (
+/obj/item/radio,
+/obj/item/radio{
+	pixel_x = 2;
+	pixel_y = 3
+	},
+/obj/structure/table/reinforced,
+/turf/simulated/floor/tiled/techfloor,
+/area/victory/command/turrets)
 "hnd" = (
 /obj/structure/cable/green{
 	icon_state = "1-8"
@@ -4523,6 +4661,15 @@
 	},
 /turf/simulated/floor/reinforced/airless,
 /area/engineering/starboardnacelle)
+"htc" = (
+/obj/effect/floor_decal/corner/navgold{
+	dir = 6
+	},
+/obj/machinery/computer/communications{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/victory/command/turrets)
 "huc" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/item/radio/off,
@@ -4701,6 +4848,12 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/victory/hallway/d4porthall)
+"hHi" = (
+/obj/effect/floor_decal/corner/paleblue{
+	dir = 5
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/victory/command/turrets)
 "hHC" = (
 /turf/simulated/wall/r_wall/prepainted/engineering,
 /area/storage/tech)
@@ -4771,6 +4924,28 @@
 	},
 /turf/simulated/floor/reinforced/airless,
 /area/engineering/portnacelle)
+"hJX" = (
+/obj/structure/bed/chair/bay/comfy{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/yellow{
+	dir = 10
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/victory/command/turrets)
+"hKh" = (
+/obj/machinery/computer/med_data{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/paleblue{
+	dir = 10
+	},
+/obj/effect/floor_decal/corner/paleblue{
+	dir = 4
+	},
+/obj/machinery/light/no_nightshift,
+/turf/simulated/floor/tiled/techfloor,
+/area/victory/command/turrets)
 "hLB" = (
 /obj/structure/window/reinforced{
 	dir = 8
@@ -5281,6 +5456,12 @@
 	},
 /turf/simulated/floor/plating,
 /area/storage/tech)
+"iDM" = (
+/obj/effect/floor_decal/corner_techfloor_grid{
+	dir = 5
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/victory/command/turrets)
 "iFc" = (
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 6
@@ -5556,6 +5737,12 @@
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/victory/hallway/d4porthall)
+"jgJ" = (
+/obj/machinery/computer/ship/sensors{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/victory/command/turrets)
 "jhg" = (
 /obj/machinery/door/blast/regular{
 	density = 0;
@@ -5588,6 +5775,22 @@
 	},
 /turf/simulated/floor/plating,
 /area/victory/hallway/d4aftmaint)
+"jio" = (
+/obj/machinery/power/apc/west_mount,
+/obj/effect/floor_decal/corner_techfloor_grid{
+	dir = 9
+	},
+/obj/structure/cable{
+	icon_state = "0-4"
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/victory/command/turrets)
+"jiQ" = (
+/obj/structure/cable/green{
+	icon_state = "1-8"
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/victory/command/turrets)
 "jjz" = (
 /obj/machinery/atmospherics/pipe/manifold/visible{
 	dir = 8
@@ -6628,6 +6831,16 @@
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging,
 /turf/simulated/floor/reinforced/airless,
 /area/engineering/portnacelle)
+"kRf" = (
+/obj/machinery/holopad,
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/structure/cable{
+	icon_state = "4-10"
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/victory/command/turrets)
 "kRL" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 10
@@ -7054,6 +7267,13 @@
 /obj/structure/table/standard,
 /turf/simulated/floor/tiled/steel,
 /area/tcommsat/computer)
+"lDz" = (
+/obj/structure/closet/emcloset,
+/obj/machinery/light/no_nightshift{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/victory/command/turrets)
 "lDT" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/green,
 /obj/structure/cable{
@@ -7345,6 +7565,12 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/victory/hallway/d4porthall)
+"maG" = (
+/obj/effect/floor_decal/corner/navgold{
+	dir = 9
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/victory/command/turrets)
 "maS" = (
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -8024,6 +8250,20 @@
 /obj/machinery/power/apc/east_mount,
 /turf/simulated/floor/tiled/white,
 /area/engineering/engine_monitoring)
+"mTR" = (
+/obj/effect/floor_decal/corner/paleblue{
+	dir = 10
+	},
+/obj/effect/floor_decal/corner/paleblue{
+	dir = 1
+	},
+/obj/structure/table/reinforced,
+/obj/item/storage/firstaid/regular,
+/obj/machinery/computer/med_data/laptop{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/victory/command/turrets)
 "mUP" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/machinery/power/emitter{
@@ -8043,6 +8283,25 @@
 /obj/structure/window/reinforced,
 /turf/simulated/floor/plating,
 /area/engineering/atmos)
+"mVD" = (
+/obj/machinery/door/firedoor,
+/obj/machinery/door/blast/regular{
+	density = 0;
+	icon_state = "pdoor0";
+	id = "bridge_lockdown";
+	name = "Bridge Lockdown";
+	opacity = 0
+	},
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/obj/map_helper/access_helper/airlock/station/command/bridge,
+/obj/machinery/door/airlock/highsecurity{
+	name = "Aux Bridge";
+	req_one_access = list()
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/victory/command/turrets)
 "mYw" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
@@ -8070,6 +8329,10 @@
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/space)
+"naO" = (
+/obj/effect/floor_decal/corner/navgold/full,
+/turf/simulated/floor/tiled/techfloor,
+/area/victory/command/turrets)
 "nby" = (
 /obj/machinery/camera/network/tcomms,
 /obj/machinery/light/small{
@@ -8198,6 +8461,15 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation)
+"nmx" = (
+/obj/effect/floor_decal/corner/paleblue{
+	dir = 9
+	},
+/obj/effect/floor_decal/corner/paleblue{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/victory/command/turrets)
 "nmL" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/black{
 	dir = 4
@@ -8691,6 +8963,18 @@
 /obj/machinery/door/airlock/maintenance,
 /turf/simulated/floor/plating,
 /area/engineering/hallway/lower)
+"nNh" = (
+/obj/effect/floor_decal/corner/yellow{
+	dir = 10
+	},
+/obj/effect/floor_decal/corner/yellow{
+	dir = 4
+	},
+/obj/structure/bed/chair/bay/comfy{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/victory/command/turrets)
 "nNv" = (
 /obj/machinery/power/smes/buildable/engine/rust,
 /obj/structure/cable/cyan{
@@ -8698,11 +8982,23 @@
 	},
 /turf/simulated/floor/plating,
 /area/engineering/engine_smes)
+"nQj" = (
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/victory/command/turrets)
 "nQw" = (
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/corner/lightorange/border,
 /turf/simulated/floor/tiled/steel_ridged,
 /area/victory/hallway/d4fwdhall)
+"nRc" = (
+/obj/effect/floor_decal/corner_techfloor_grid{
+	dir = 10
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/victory/command/turrets)
 "nRY" = (
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging{
 	dir = 10
@@ -8887,6 +9183,20 @@
 /mob/living/simple_mob/animal/passive/bird/parrot/polly,
 /turf/simulated/floor/wood,
 /area/crew_quarters/heads/chief)
+"ohC" = (
+/obj/machinery/computer/rcon,
+/obj/effect/floor_decal/corner/yellow{
+	dir = 5
+	},
+/obj/effect/floor_decal/corner/yellow,
+/obj/machinery/newscaster{
+	pixel_y = 32
+	},
+/obj/machinery/light/no_nightshift{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/victory/command/turrets)
 "ohO" = (
 /obj/structure/table/reinforced,
 /obj/item/stack/material/glass/phoronrglass{
@@ -9026,6 +9336,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
 	},
+/obj/structure/cable{
+	icon_state = "2-4"
+	},
 /turf/simulated/floor/tiled/steel,
 /area/victory/hallway/d4porthall)
 "oxm" = (
@@ -9043,6 +9356,18 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/tcommsat/computer)
+"oyc" = (
+/obj/machinery/computer/transhuman/resleeving{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/paleblue{
+	dir = 10
+	},
+/obj/machinery/newscaster{
+	pixel_y = -32
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/victory/command/turrets)
 "ozM" = (
 /obj/machinery/atmospherics/pipe/simple/visible,
 /obj/structure/disposalpipe/segment,
@@ -9347,6 +9672,11 @@
 /obj/machinery/computer/telecomms/monitor,
 /turf/simulated/floor/tiled/steel,
 /area/tcommsat/computer)
+"pdB" = (
+/obj/machinery/holopad,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/turf/simulated/floor/tiled/techfloor,
+/area/victory/command/turrets)
 "pfb" = (
 /obj/effect/floor_decal/corner/blue/diagonal,
 /obj/machinery/door/airlock/command{
@@ -10752,6 +11082,14 @@
 	},
 /turf/simulated/floor/reinforced/airmix,
 /area/engineering/atmos)
+"rAa" = (
+/obj/structure/closet/firecloset,
+/obj/machinery/power/apc/north_mount,
+/obj/structure/cable/green{
+	icon_state = "0-2"
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/victory/command/turrets)
 "rAC" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
@@ -10861,6 +11199,15 @@
 "rNG" = (
 /turf/simulated/floor/tiled/techfloor,
 /area/ai_upload)
+"rOi" = (
+/obj/machinery/computer/ship/engines{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/navgold{
+	dir = 5
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/victory/command/turrets)
 "rQt" = (
 /obj/structure/disposalpipe/segment{
 	dir = 8
@@ -11143,6 +11490,12 @@
 	},
 /turf/simulated/floor/tiled/steel_ridged,
 /area/victory/hallway/d4starboardhall)
+"suN" = (
+/obj/effect/floor_decal/corner/yellow{
+	dir = 10
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/victory/command/turrets)
 "suV" = (
 /obj/machinery/atmospherics/pipe/vent{
 	dir = 1
@@ -11394,6 +11747,14 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_eva)
+"sRr" = (
+/obj/item/radio/intercom{
+	dir = 4;
+	name = "Station Intercom (General)";
+	pixel_x = 23
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/victory/command/turrets)
 "sSp" = (
 /obj/structure/table/rack{
 	dir = 8;
@@ -11604,6 +11965,18 @@
 	initial_gas_mix = "n2=100;TEMP=80"
 	},
 /area/tcommsat/chamber)
+"tqM" = (
+/obj/machinery/computer/med_data{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/paleblue{
+	dir = 10
+	},
+/obj/item/radio/intercom{
+	pixel_y = -24
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/victory/command/turrets)
 "tsN" = (
 /obj/machinery/light{
 	dir = 4
@@ -11613,6 +11986,9 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/engineering)
+"ttr" = (
+/turf/simulated/floor/tiled/techfloor,
+/area/victory/command/turrets)
 "ttC" = (
 /obj/structure/cable{
 	icon_state = "2-4"
@@ -12466,6 +12842,16 @@
 	},
 /turf/simulated/floor/tiled/steel_ridged,
 /area/victory/hallway/d4starboardhall)
+"uXA" = (
+/obj/machinery/computer/station_alert,
+/obj/effect/floor_decal/corner/yellow{
+	dir = 5
+	},
+/obj/effect/floor_decal/corner/yellow{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/victory/command/turrets)
 "uXD" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -12566,6 +12952,12 @@
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/victory/hallway/d4fwdhall)
+"vdK" = (
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/victory/command/turrets)
 "vdL" = (
 /obj/effect/floor_decal/borderfloorblack/corner{
 	dir = 4
@@ -12964,6 +13356,15 @@
 /obj/machinery/atmospherics/pipe/tank,
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/atmos/eva)
+"vDs" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 8
+	},
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/victory/command/turrets)
 "vET" = (
 /obj/machinery/atmospherics/pipe/simple/visible/yellow{
 	dir = 6
@@ -13280,6 +13681,15 @@
 /obj/machinery/door/firedoor,
 /turf/simulated/floor/plating,
 /area/engineering/engine_smes)
+"vWu" = (
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/navgold/full{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/victory/command/turrets)
 "vWy" = (
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -13343,6 +13753,15 @@
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/atmos)
+"waS" = (
+/obj/effect/floor_decal/techfloor{
+	dir = 5
+	},
+/obj/machinery/camera/network/command{
+	dir = 9
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/victory/command/turrets)
 "wbp" = (
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -13483,11 +13902,8 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/portnacelle)
 "wiw" = (
-/obj/machinery/light{
-	dir = 8
-	},
-/turf/simulated/floor/airless/ceiling,
-/area/victory/hallway/d4fwdmaint)
+/turf/simulated/wall/r_wall/prepainted/command,
+/area/victory/command/turrets)
 "wjK" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/structure/reagent_dispensers/fueltank,
@@ -13523,6 +13939,12 @@
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/space)
+"wpK" = (
+/obj/effect/floor_decal/corner/navgold/full{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/victory/command/turrets)
 "wpR" = (
 /obj/effect/floor_decal/corner/lightorange/border{
 	dir = 8
@@ -13835,6 +14257,13 @@
 /obj/effect/floor_decal/corner/lightorange/border,
 /turf/simulated/floor/tiled/steel,
 /area/victory/hallway/d4porthall)
+"wRC" = (
+/obj/effect/floor_decal/corner/yellow{
+	dir = 9
+	},
+/obj/effect/floor_decal/corner/yellow,
+/turf/simulated/floor/tiled/techfloor,
+/area/victory/command/turrets)
 "wTv" = (
 /obj/machinery/atmospherics/pipe/simple/visible/purple{
 	dir = 10
@@ -13852,6 +14281,12 @@
 /obj/structure/lattice,
 /turf/space,
 /area/space)
+"wTX" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 9
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/victory/command/turrets)
 "wUW" = (
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/corner/lightorange/border,
@@ -14439,6 +14874,14 @@
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/victory/hallway/d4starboardhall)
+"xKd" = (
+/obj/effect/floor_decal/corner/paleblue{
+	dir = 5
+	},
+/obj/effect/floor_decal/corner/paleblue,
+/obj/structure/bed/chair/bay/comfy,
+/turf/simulated/floor/tiled/techfloor,
+/area/victory/command/turrets)
 "xKs" = (
 /turf/simulated/floor/plating,
 /area/engineering/atmos)
@@ -14525,6 +14968,15 @@
 /obj/structure/dispenser/phoron,
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/atmos/workshop)
+"ycz" = (
+/obj/structure/closet/fireaxecabinet{
+	pixel_x = 32;
+	pixel_y = 30
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/turf/simulated/floor/tiled/techfloor,
+/area/victory/command/turrets)
 "ycR" = (
 /obj/map_helper/access_helper/airlock/station/engineering/atmospherics,
 /obj/machinery/door/firedoor/glass{
@@ -14533,6 +14985,13 @@
 /obj/machinery/door/airlock/glass/atmos,
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/atmos)
+"ydy" = (
+/obj/effect/floor_decal/corner/paleblue{
+	dir = 5
+	},
+/obj/structure/bed/chair/bay/comfy,
+/turf/simulated/floor/tiled/techfloor,
+/area/victory/command/turrets)
 "yex" = (
 /turf/simulated/wall/r_wall/prepainted/engineering,
 /area/engineering/engine_room)
@@ -31617,7 +32076,7 @@ dvY
 dvY
 qDt
 jfd
-ufU
+eDQ
 ufU
 qxt
 tMG
@@ -31806,17 +32265,17 @@ dvY
 dvY
 dvY
 dvY
+hic
+hic
+hic
 dvY
-dvY
-dvY
-qDt
-xsV
-xsV
-xsV
-xsV
-xsV
-xsV
-xsV
+wiw
+wiw
+wiw
+wiw
+gsS
+wiw
+wiw
 xsV
 xsV
 vVK
@@ -32004,11 +32463,11 @@ hic
 hic
 hic
 hic
-hic
-hic
-hic
-hic
-hic
+wiw
+wiw
+acg
+jio
+fiC
 wiw
 wiw
 hic
@@ -32198,13 +32657,13 @@ hic
 hic
 hic
 hic
-hic
-hic
-hic
-hic
-hic
-hic
-hic
+wiw
+wiw
+iDM
+kRf
+nRc
+wiw
+wiw
 hic
 xsV
 pEq
@@ -32392,13 +32851,13 @@ hic
 hic
 hic
 hic
-hic
-hic
-hic
-hic
-hic
-hic
-hic
+wiw
+wiw
+waS
+cBj
+btv
+wiw
+wiw
 hic
 xsV
 azJ
@@ -32585,14 +33044,14 @@ hic
 hic
 hic
 hic
-hic
-hic
-hic
-hic
-hic
-hic
-hic
-hic
+wiw
+wiw
+wiw
+wiw
+cgn
+wiw
+wiw
+wiw
 hic
 xsV
 vVK
@@ -32779,14 +33238,14 @@ hic
 hic
 hic
 hic
-hic
-hic
-hic
-hic
-hic
-hic
-hic
-hic
+wiw
+wiw
+wiw
+wiw
+mVD
+wiw
+wiw
+wiw
 hic
 xsV
 azJ
@@ -32973,14 +33432,14 @@ hic
 hic
 hic
 hic
-hic
-hic
-hic
-hic
-hic
-hic
-hic
-hic
+wiw
+wiw
+lDz
+vdK
+nQj
+vWu
+eyl
+wiw
 hic
 xsV
 vVK
@@ -33167,14 +33626,14 @@ hic
 hic
 hic
 hic
-hic
-hic
-hic
-hic
-hic
-hic
-hic
-hic
+wiw
+wiw
+rAa
+vDs
+jiQ
+bPr
+htc
+wiw
 hic
 xsV
 azJ
@@ -33361,14 +33820,14 @@ hic
 hic
 hic
 hic
-hic
-hic
-hic
-hic
-hic
-hic
-hic
-hic
+wiw
+wiw
+ycz
+eEz
+pdB
+wTX
+hmV
+wiw
 hic
 xsV
 vVK
@@ -33555,14 +34014,14 @@ hic
 hic
 hic
 hic
-hic
-hic
-hic
-hic
-hic
-hic
-hic
-hic
+wiw
+wiw
+uXA
+wRC
+ttr
+nmx
+mTR
+wiw
 hic
 xsV
 azJ
@@ -33749,14 +34208,14 @@ hic
 hic
 hic
 hic
-hic
-hic
-hic
-hic
-hic
-hic
-hic
-hic
+wiw
+wiw
+cQn
+hJX
+ttr
+ydy
+tqM
+wiw
 hic
 xsV
 vVK
@@ -33943,14 +34402,14 @@ hic
 hic
 hic
 hic
-hic
-hic
-hic
-hic
-hic
-hic
-hic
-hic
+wiw
+wiw
+crZ
+suN
+ttr
+hHi
+oyc
+wiw
 hic
 xsV
 okY
@@ -34137,14 +34596,14 @@ qBz
 hic
 hic
 hic
-hic
-hic
-hic
-hic
-hic
-hic
-hic
-hic
+wiw
+wiw
+ohC
+nNh
+ttr
+xKd
+hKh
+wiw
 hic
 xsV
 vVK
@@ -34328,17 +34787,17 @@ jNg
 jNg
 jNg
 qBz
-qBz
 hic
 hic
 hic
-hic
-hic
-hic
-hic
-hic
-hic
-hic
+wiw
+wpK
+maG
+maG
+maG
+maG
+naO
+wiw
 hic
 xsV
 azJ
@@ -34522,17 +34981,17 @@ jNg
 jNg
 jNg
 qBz
-qBz
-qBz
 hic
 hic
 hic
-hic
-hic
-hic
-hic
-hic
-hic
+wiw
+rOi
+jgJ
+ttr
+sRr
+fih
+avD
+wiw
 hic
 xsV
 vVK
@@ -34717,16 +35176,16 @@ jNg
 jNg
 qBz
 qBz
-qBz
-qBz
 hic
 hic
-hic
-hic
-hic
-hic
-hic
-hic
+wiw
+wiw
+wiw
+wiw
+cxU
+wiw
+wiw
+wiw
 hic
 xsV
 azJ
@@ -34911,15 +35370,15 @@ jNg
 jNg
 jNg
 qBz
-qBz
-qBz
 hic
 hic
 hic
-hic
-hic
-hic
-hic
+wiw
+wiw
+wiw
+wiw
+wiw
+wiw
 hic
 hic
 xsV
@@ -35106,7 +35565,7 @@ jNg
 xRj
 qBz
 qBz
-qBz
+hic
 hic
 hic
 hic
@@ -35300,8 +35759,8 @@ jNg
 gtA
 gPd
 qBz
-qBz
-qBz
+hic
+hic
 hic
 hic
 hic
@@ -35495,7 +35954,7 @@ gPd
 usY
 qBz
 qBz
-qBz
+hic
 hic
 hic
 hic
