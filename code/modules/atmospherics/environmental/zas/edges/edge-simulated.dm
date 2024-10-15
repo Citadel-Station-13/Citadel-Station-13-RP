@@ -93,13 +93,15 @@
 	var/scaler_A = air_A.group_multiplier / combined_group_multiplier
 	var/scaler_B = air_B.group_multiplier / combined_group_multiplier
 
+	// get these before the gas transfer
+	var/heat_capacity_A_scaled = air_A.heat_capacity_singular() * scaler_A
+	var/heat_capacity_B_scaled = air_B.heat_capacity_singular() * scaler_B
+
 	for(var/gas in air_A.gas | air_B.gas)
 		var/per_tile = air_A.gas[gas] * scaler_A + air_B.gas[gas] * scaler_B
 		air_A.gas[gas] = per_tile
 		air_B.gas[gas] = per_tile
 
-	var/heat_capacity_A_scaled = air_A.heat_capacity_singular() * scaler_A
-	var/heat_capacity_B_scaled = air_B.heat_capacity_singular() * scaler_B
 	var/average_temperature = ((heat_capacity_A_scaled * air_A.temperature) + (heat_capacity_B_scaled * air_B.temperature)) \
 		/ (heat_capacity_A_scaled + heat_capacity_B_scaled)
 	air_A.temperature = average_temperature

@@ -39,6 +39,6 @@
 	if(total_energy_old != total_energy_new)
 		TEST_FAIL("equalize() didn't conserve energy (expected [total_energy_old], actual [total_energy_new])")
 
+	edge.erase()
 	zone_A.c_invalidate()
 	zone_B.c_invalidate()
-
