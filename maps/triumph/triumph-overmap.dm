@@ -22,6 +22,7 @@
 		"Civilian Transport" = list("triumph_civvie_home"),
 		"Dart EMT Shuttle" = list("triumph_emt_dock"),
 		"Beruang Trade Ship" = list("triumph_annex_dock"),
+		"Udang Transport Shuttle" = list("triumph_udang_dock"),
 		"Mining Shuttle" = list("triumph_mining_port"),
 		"NDV Quicksilver" = list("triumph_specops_dock")
 		)
