@@ -434,6 +434,9 @@
 /obj/structure/bed/chair/sofa/brown/right{
 	dir = 4
 	},
+/obj/machinery/light/small{
+	dir = 8
+	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/crew_quarters/lounge)
 "atV" = (
@@ -5459,11 +5462,11 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/exploration/courser_dock)
 "eyn" = (
-/obj/machinery/camera/network/civilian{
-	dir = 4
-	},
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 4
+	},
+/obj/machinery/light/small{
+	dir = 8
 	},
 /turf/simulated/floor/carpet/purcarpet,
 /area/crew_quarters/coffee_shop)
@@ -6363,20 +6366,9 @@
 /turf/simulated/floor/airless,
 /area/rnd/misc_lab)
 "fef" = (
-/obj/machinery/light_switch{
-	pixel_x = -25
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/obj/structure/cable/green{
-	icon_state = "4-8"
-	},
-/turf/simulated/floor/carpet/bcarpet,
-/area/chapel/main)
+/obj/machinery/light,
+/turf/simulated/floor/tiled/steel,
+/area/victory/hallway/d1porthall)
 "feg" = (
 /obj/machinery/light,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -7245,6 +7237,15 @@
 	},
 /turf/simulated/floor/reinforced/airless,
 /area/rnd/test_area)
+"fLt" = (
+/obj/structure/bed/chair/sofa/black/corner{
+	dir = 4
+	},
+/obj/machinery/camera/network/civilian{
+	dir = 4
+	},
+/turf/simulated/floor/carpet/purcarpet,
+/area/crew_quarters/coffee_shop)
 "fLD" = (
 /obj/structure/closet/crate,
 /obj/fiftyspawner/steel,
@@ -8053,6 +8054,7 @@
 	dir = 1;
 	icon_state = "pipe-c"
 	},
+/obj/machinery/light,
 /turf/simulated/floor/wood,
 /area/crew_quarters/coffee_shop)
 "gpc" = (
@@ -9873,11 +9875,10 @@
 /turf/simulated/floor/tiled/dark,
 /area/hallway/secondary/docking_hallway)
 "hTA" = (
-/obj/structure/bed/chair/sofa/black/corner{
-	dir = 4
-	},
-/turf/simulated/floor/carpet/purcarpet,
-/area/crew_quarters/coffee_shop)
+/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/effect/paint/violet,
+/turf/simulated/floor/plating,
+/area/exploration)
 "hTM" = (
 /obj/structure/flora/pottedplant/minitree,
 /turf/simulated/floor/wood,
@@ -12324,6 +12325,12 @@
 	},
 /turf/simulated/floor/tiled,
 /area/hallway/secondary/docking_hallway)
+"jGM" = (
+/obj/machinery/light_switch{
+	pixel_x = 25
+	},
+/turf/simulated/floor/carpet/bcarpet,
+/area/chapel/main)
 "jGP" = (
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/corner/navblue/border,
@@ -13669,9 +13676,11 @@
 	dir = 4;
 	icon_state = "pipe-c"
 	},
-/obj/machinery/power/apc/north_mount,
 /obj/structure/cable/green{
-	icon_state = "0-4"
+	icon_state = "4-8"
+	},
+/obj/machinery/light{
+	dir = 1
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/coffee_shop)
@@ -14035,11 +14044,12 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/exploration)
 "kYx" = (
-/obj/machinery/air_alarm{
-	pixel_y = 22
-	},
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 4
+	},
+/obj/machinery/power/apc/north_mount,
+/obj/structure/cable/green{
+	icon_state = "0-4"
 	},
 /turf/simulated/floor/carpet/purcarpet,
 /area/crew_quarters/coffee_shop)
@@ -14821,6 +14831,13 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/victory/hallway/d1starboardhall)
+"lMF" = (
+/obj/structure/bed/chair/sofa/black/left,
+/obj/machinery/light/small{
+	dir = 1
+	},
+/turf/simulated/floor/carpet/purcarpet,
+/area/crew_quarters/coffee_shop)
 "lMT" = (
 /obj/machinery/door/firedoor{
 	dir = 1
@@ -15835,7 +15852,7 @@
 /turf/simulated/floor/tiled,
 /area/shuttle/excursion/general)
 "mER" = (
-/obj/machinery/light{
+/obj/machinery/light/small{
 	dir = 4
 	},
 /turf/simulated/floor/wood,
@@ -17372,6 +17389,7 @@
 /obj/structure/table/woodentable,
 /obj/item/instrument/harmonica,
 /obj/machinery/recharger,
+/obj/machinery/light,
 /turf/simulated/floor/wood,
 /area/crew_quarters/coffee_shop)
 "nPK" = (
@@ -19154,12 +19172,12 @@
 /obj/machinery/door/firedoor/glass{
 	dir = 8
 	},
-/obj/machinery/door/airlock/research{
-	name = "Pathfinder's Office"
-	},
 /obj/map_helper/access_helper/airlock/station/head_office/pathfinder,
 /obj/structure/cable/green{
 	icon_state = "4-8"
+	},
+/obj/machinery/door/airlock/glass/exploration{
+	name = "Pathfinder's Office"
 	},
 /turf/simulated/floor/tiled,
 /area/exploration/pathfinder_office)
@@ -20181,7 +20199,7 @@
 /turf/simulated/floor/tiled/white,
 /area/exploration/medical)
 "quB" = (
-/obj/machinery/disposal,
+/obj/structure/flora/pottedplant/minitree,
 /turf/simulated/floor/carpet/bcarpet,
 /area/chapel/main)
 "quE" = (
@@ -21540,7 +21558,6 @@
 	icon_state = "superjuke-nopower";
 	state_base = "superjuke"
 	},
-/obj/machinery/light,
 /turf/simulated/floor/wood,
 /area/crew_quarters/coffee_shop)
 "rCo" = (
@@ -22839,10 +22856,9 @@
 /turf/simulated/floor/wood,
 /area/victory/hallway/d1fwdmaint)
 "sNr" = (
-/obj/structure/bed/chair/sofa/black/corner{
-	dir = 1
-	},
-/turf/simulated/floor/carpet/purcarpet,
+/obj/structure/table/woodentable,
+/obj/machinery/air_alarm/south_mount,
+/turf/simulated/floor/wood,
 /area/crew_quarters/coffee_shop)
 "sNR" = (
 /obj/structure/cable/orange{
@@ -23290,6 +23306,15 @@
 /obj/map_helper/access_helper/airlock/station/exploration/department,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/exploration/courser_dock)
+"tgV" = (
+/obj/structure/bed/chair/sofa/black/corner{
+	dir = 1
+	},
+/obj/machinery/camera/network/civilian{
+	dir = 4
+	},
+/turf/simulated/floor/carpet/purcarpet,
+/area/crew_quarters/coffee_shop)
 "tgY" = (
 /obj/machinery/body_scanconsole,
 /obj/effect/floor_decal/corner_steel_grid{
@@ -24062,6 +24087,13 @@
 /obj/item/radio/beacon,
 /turf/simulated/floor/tiled/steel,
 /area/victory/hallway/d1porthall)
+"tLv" = (
+/obj/structure/bed/chair/sofa/black/right{
+	dir = 1
+	},
+/obj/machinery/light/small,
+/turf/simulated/floor/carpet/purcarpet,
+/area/crew_quarters/coffee_shop)
 "tLz" = (
 /obj/machinery/door/firedoor,
 /obj/map_helper/access_helper/airlock/station/maintenance,
@@ -25142,6 +25174,7 @@
 /obj/machinery/light{
 	dir = 8
 	},
+/obj/machinery/disposal,
 /turf/simulated/floor/tiled/dark,
 /area/chapel/main)
 "uxM" = (
@@ -27697,9 +27730,17 @@
 /turf/simulated/floor/tiled/steel,
 /area/victory/station/stairs_four)
 "wzh" = (
-/obj/random/trash_pile,
-/turf/simulated/wall/prepainted,
-/area/crew_quarters/lounge)
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/obj/effect/floor_decal/borderfloor{
+	dir = 5
+	},
+/obj/effect/floor_decal/corner/mauve/border{
+	dir = 5
+	},
+/turf/simulated/floor/tiled,
+/area/exploration)
 "wzN" = (
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 10
@@ -28854,6 +28895,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 5
 	},
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/coffee_shop)
 "xwO" = (
@@ -29495,6 +29539,12 @@
 /mob/living/simple_mob/animal/passive/honkpet,
 /turf/simulated/floor/carpet/gaycarpet,
 /area/crew_quarters/clownoffice)
+"yaG" = (
+/obj/machinery/light/small{
+	dir = 4
+	},
+/turf/simulated/floor/wood,
+/area/crew_quarters/lounge)
 "yaO" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
@@ -38044,7 +38094,7 @@ wTD
 dgF
 cuA
 wTD
-wTD
+yaG
 wTD
 wTD
 wTD
@@ -38435,7 +38485,7 @@ toF
 mmO
 mmO
 mmO
-wzh
+mmO
 mmO
 mmO
 aNK
@@ -39785,7 +39835,7 @@ tCz
 tCz
 tCz
 vpR
-nBX
+hTA
 cCy
 jWs
 aNK
@@ -39979,7 +40029,7 @@ tCz
 tCz
 hTQ
 brd
-nBX
+hTA
 cCy
 jWs
 aNK
@@ -40173,7 +40223,7 @@ tCz
 tCz
 tCz
 vpR
-nBX
+hTA
 cCy
 jWs
 aNK
@@ -40561,7 +40611,7 @@ ekF
 ekF
 ekF
 vpR
-nBX
+hTA
 cCy
 jWs
 cqc
@@ -40755,7 +40805,7 @@ tZN
 tZu
 nWj
 cyu
-nBX
+hTA
 cCy
 jWs
 cqc
@@ -40949,7 +40999,7 @@ tZN
 fsb
 xWL
 vWf
-nBX
+hTA
 cCy
 sZB
 dKn
@@ -41532,7 +41582,7 @@ ubd
 ihG
 nwQ
 bMm
-cCy
+wzh
 eZR
 cqc
 rrh
@@ -47154,13 +47204,13 @@ aFa
 aFa
 aFa
 aFa
-kvQ
-nSH
-hTA
-aFa
-sNr
+tgV
 nSH
 gpv
+aFa
+kvQ
+nSH
+fLt
 mYH
 fmb
 nYt
@@ -47348,13 +47398,13 @@ nBm
 aFa
 jEi
 aFa
-cpq
+lMF
 piB
 cnv
 aFa
 cpq
 piB
-cnv
+tLv
 mYH
 hYO
 aUB
@@ -48328,7 +48378,7 @@ rBZ
 dCX
 vhm
 fnJ
-sZv
+fef
 wWq
 wWq
 wWq
@@ -49294,7 +49344,7 @@ mXP
 hJW
 eaK
 iES
-jKd
+sNr
 aFa
 gDF
 reM
@@ -49522,7 +49572,7 @@ gRB
 uVx
 gRB
 nEa
-fef
+uni
 hWW
 sDi
 uze
@@ -51074,7 +51124,7 @@ eJs
 aeg
 iwC
 tDC
-hWW
+jGM
 quB
 sDi
 uze
