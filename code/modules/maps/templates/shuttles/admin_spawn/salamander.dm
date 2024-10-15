@@ -113,18 +113,6 @@
 	requires_power = 1
 	has_gravity = 0
 
-// The shuttle's 'shuttle' computer
-/obj/machinery/computer/shuttle_control/explore/salamander
-	name = "short jump console"
-	shuttle_tag = "Salamander"
-	req_one_access = list()
-
-// The shuttle's 'shuttle' computer
-/obj/machinery/computer/shuttle_control/explore/salamander_wreck
-	name = "short jump console"
-	shuttle_tag = "Salamander Wreckage"
-	req_one_access = list()
-
 // The 'shuttle'
 /datum/shuttle/autodock/overmap/salamander
 	name = "Salamander"
@@ -138,9 +126,6 @@
 // A shuttle lateloader landmark
 /obj/effect/shuttle_landmark/shuttle_initializer/salamander
 	name = "ITV Salamander"
-	base_area = /area/space
-	base_turf = /turf/space
-	landmark_tag = "omship_spawn_salamander"
 	shuttle_type = /datum/shuttle/autodock/overmap/salamander
 
 // The 'ship'
@@ -169,9 +154,6 @@
 // A shuttle lateloader landmark
 /obj/effect/shuttle_landmark/shuttle_initializer/salamander_wreck
 	name = "ITV Unity"
-	base_area = /area/space
-	base_turf = /turf/space
-	landmark_tag = "omship_spawn_salamander_wreck"
 	shuttle_type = /datum/shuttle/autodock/overmap/salamander_wreck
 
 // The 'ship'

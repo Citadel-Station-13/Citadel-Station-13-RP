@@ -1,4 +1,5 @@
-//Key thing that stops lag. Cornerstone of performance in ss13, Just sitting here, in unsorted.dm. Now with dedicated file!
+// Key thing that stops lag. Cornerstone of performance in ss13, Just sitting here, in unsorted.dm.
+// Now with dedicated file!
 
 /**
  * Increases delay as the server gets more overloaded,

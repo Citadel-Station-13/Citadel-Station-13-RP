@@ -1,6 +1,5 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "aA" = (
-/obj/effect/shuttle_landmark/transit/triumph/civvie,
 /turf/space,
 /area/space)
 "aZ" = (
@@ -107,7 +106,6 @@
 /turf/simulated/floor/holofloor/tiled,
 /area/houseboat/holodeck/basketball)
 "lP" = (
-/obj/effect/shuttle_landmark/transit/triumph/excursion,
 /turf/space/transit/east,
 /area/space)
 "mb" = (
@@ -116,7 +114,6 @@
 	},
 /area/space)
 "me" = (
-/obj/effect/shuttle_landmark/transit/triumph/courser,
 /turf/space/transit/east,
 /area/space)
 "mh" = (
@@ -127,7 +124,6 @@
 /turf/space/transit/west,
 /area/space)
 "mT" = (
-/obj/effect/shuttle_landmark/transit/rift/specops,
 /turf/space/transit/west,
 /area/space)
 "ns" = (
@@ -171,7 +167,6 @@
 	},
 /area/houseboat/holodeck/beach)
 "qN" = (
-/obj/effect/shuttle_landmark/transit/triumph/emt,
 /turf/space/transit/east,
 /area/space)
 "qR" = (
@@ -202,12 +197,6 @@
 	},
 /area/space)
 "vq" = (
-/obj/effect/shuttle_landmark/transit{
-	base_area = /area/space;
-	base_turf = /turf/space/transit/east;
-	landmark_tag = "belter_transit";
-	name = "Belter Transit"
-	},
 /turf/space/transit/east,
 /area/space)
 "vr" = (
@@ -267,7 +256,6 @@
 /turf/simulated/floor/holofloor/beach/sand,
 /area/houseboat/holodeck/beach)
 "AW" = (
-/obj/effect/shuttle_landmark/transit/triumph/trade,
 /turf/space/transit/east,
 /area/space)
 "CQ" = (
@@ -327,12 +315,6 @@
 /turf/simulated/floor/holofloor/wood,
 /area/houseboat/holodeck/gaming)
 "Ht" = (
-/obj/effect/shuttle_landmark/transit{
-	base_area = /area/space;
-	base_turf = /turf/space/transit/east;
-	landmark_tag = "escapepod1_transit";
-	name = "Escapepod 1 Transit"
-	},
 /turf/space/transit/west,
 /area/space)
 "HS" = (
@@ -388,13 +370,6 @@
 /turf/simulated/floor/holofloor/wood,
 /area/houseboat/holodeck/bunking)
 "Mc" = (
-/obj/effect/shuttle_landmark/transit{
-	base_area = /area/space;
-	base_turf = /turf/space;
-	docking_controller = null;
-	landmark_tag = "tether_excursion_space";
-	name = "Excursion Space"
-	},
 /turf/space,
 /area/space)
 "Mg" = (
@@ -425,7 +400,6 @@
 /turf/simulated/floor/holofloor/tiled,
 /area/houseboat/holodeck/basketball)
 "Pk" = (
-/obj/effect/shuttle_landmark/transit/triumph/pirate,
 /turf/space,
 /area/space)
 "PT" = (
@@ -436,7 +410,6 @@
 /turf/space/transit/west,
 /area/space)
 "Si" = (
-/obj/effect/shuttle_landmark/transit/triumph/mining,
 /turf/space/transit/east,
 /area/space)
 "US" = (

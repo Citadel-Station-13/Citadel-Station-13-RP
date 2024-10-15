@@ -111,13 +111,13 @@
 	instance.descriptor = instance_descriptor()
 
 	// let shuttle do black magic first
-	// instance.before_bounds_init(reservation, src)
+	instance.before_bounds_init(reservation, src)
 
 	// init the bounds
 	SSatoms.init_map_bounds(loaded_bounds)
 
 	// let shuttle do post-init things
-	// instance.after_bounds_init(reservation, src)
+	instance.after_bounds_init(reservation, src)
 
 	// set vars on shuttle
 	instance.template_id = id

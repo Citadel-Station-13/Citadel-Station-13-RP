@@ -14,18 +14,9 @@
 	area_flags = AREA_RAD_SHIELDED
 	requires_power = 1
 
-// The shuttle's 'shuttle' computer
-/obj/machinery/computer/shuttle_control/explore/tabiranth
-	name = "short jump console"
-	shuttle_tag = "NDV Tabiranth"
-	req_one_access = list(ACCESS_CENTCOM_GENERAL)
-
 // A shuttle lateloader landmark
 /obj/effect/shuttle_landmark/shuttle_initializer/tabiranth
 	name = "Origin - Tabiranth"
-	base_area = /area/space
-	base_turf = /turf/space
-	landmark_tag = "omship_spawn_tabiranth"
 	shuttle_type = /datum/shuttle/autodock/overmap/tabiranth
 
 // The 'shuttle'

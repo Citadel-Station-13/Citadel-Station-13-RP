@@ -154,7 +154,6 @@
 	traits = list(
 		ZTRAIT_STATION,
 		ZTRAIT_FACILITY_SAFETY,
-		ZTRAIT_LEGACY_BELTER_DOCK,
 	)
 	base_turf = /turf/simulated/open
 	link_above = /datum/map_level/triumph/ship/deck_three
@@ -202,9 +201,6 @@
 	id = "TriumphTransit"
 	name = "Triumph - Ships / Static Transit"
 	absolute_path = "maps/triumph/levels/transit.dmm"
-	traits = list(
-		ZTRAIT_LEGACY_BELTER_TRANSIT,
-	)
 	flags = LEGACY_LEVEL_ADMIN
 
 /datum/map_level/triumph/misc
