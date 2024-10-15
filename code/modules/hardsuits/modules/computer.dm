@@ -450,7 +450,7 @@
 
 	// Attempts to drain up to 12.5*cell-capacity kW, determines this value from remaining cell capacity to ensure we don't drain too much.
 	// 1Ws/(12.5*CELLRATE) = 40s to charge
-	var/to_drain = min(12.5 * holder.cell.maxcharge, holder.cell.maxcharge - holder.cell.charge)
+	var/to_drain = min(12.5 * holder.cell.max_charge, holder.cell.max_charge - holder.cell.charge)
 	var/target_drained = interfaced_with.drain_energy(src, DYNAMIC_CELL_UNITS_TO_KJ(to_drain))
 	if(target_drained <= 0)
 		to_chat(H, "<span class = 'danger'>Your power sink flashes a red light; there is no power left in [interfaced_with].</span>")

@@ -33,7 +33,6 @@ Yes, this currently includes all turfs, mobs, objs, and misc things. Sorry. We'l
                   used in the abstraction of limb sprite from limb definition.
     - /sprite_accessories - unconverted sprite accessories
     - /sprite_accessory - modern sprite accessory system
-
   - /modules - used for specific departments / content packs / logical bundles
     - /{modulename} - the examples before are just that, examples. some modules will require different styles of icon organization.
       - /items - items

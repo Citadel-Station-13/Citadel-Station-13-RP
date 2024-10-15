@@ -83,7 +83,7 @@
 		return
 	cell = new(src)
 	cell.charge = 30000
-	cell.maxcharge = 30000
+	cell.max_charge = 30000
 
 /obj/vehicle/sealed/mecha/combat/gygax/serenity
 	desc = "A lightweight exosuit made from a modified Gygax chassis combined with proprietary VeyMed medical tech. It's faster and sturdier than most medical mechs, but much of the armor plating has been stripped out, leaving it more vulnerable than a regular Gygax."

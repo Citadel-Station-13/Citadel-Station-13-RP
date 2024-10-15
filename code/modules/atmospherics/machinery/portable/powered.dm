@@ -33,7 +33,7 @@
 /obj/machinery/portable_atmospherics/powered/ui_static_data(mob/user, datum/tgui/ui)
 	. = ..()
 	.["useCharge"] = TRUE
-	.["maxCharge"] = isnull(cell)? 0 : cell.maxcharge
+	.["maxCharge"] = isnull(cell)? 0 : cell.max_charge
 	.["powerRating"] = power_maximum
 	.["useCell"] = use_cell
 

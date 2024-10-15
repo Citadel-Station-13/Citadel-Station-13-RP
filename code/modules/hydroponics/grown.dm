@@ -180,8 +180,8 @@
 				var/obj/item/cell/potato/pocell = new /obj/item/cell/potato(get_turf(user))
 				if(src.loc == user && istype(user,/mob/living/carbon/human))
 					user.put_in_hands(pocell)
-				pocell.maxcharge = src.potency * 200 //fellas, have you ever actually tried to reach 200 potency? Let them have this if they can manage it.
-				pocell.charge = pocell.maxcharge
+				pocell.max_charge = src.potency * 200 //fellas, have you ever actually tried to reach 200 potency? Let them have this if they can manage it.
+				pocell.charge = pocell.max_charge
 				qdel(src)
 				return
 		else if(W.is_sharp())
