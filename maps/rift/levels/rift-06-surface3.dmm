@@ -6658,6 +6658,7 @@
 	},
 /obj/effect/floor_decal/industrial/outline,
 /obj/machinery/fire_alarm/north_mount,
+/obj/item/hand_labeler,
 /turf/simulated/floor/tiled/steel,
 /area/exploration/explorer_prep)
 "auU" = (
@@ -16364,7 +16365,7 @@
 	},
 /obj/item/robotanalyzer,
 /obj/item/storage/single_use/med_pouch/oxyloss,
-/obj/item/storage/single_use/med_pouch/toxin,
+/obj/item/hand_labeler,
 /turf/simulated/floor/tiled/white,
 /area/shuttle/excursion/general)
 "aYY" = (
