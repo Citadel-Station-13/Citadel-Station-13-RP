@@ -22,6 +22,17 @@
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/atmos/workshop)
+"aca" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/obj/structure/cable{
+	icon_state = "2-4"
+	},
+/turf/simulated/floor/tiled/steel,
+/area/victory/hallway/d4porthall)
 "acg" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 9
@@ -12235,6 +12246,18 @@
 "tRe" = (
 /turf/simulated/floor/tiled/steel,
 /area/tcommsat/computer)
+"tRo" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/lightorange/border{
+	dir = 4
+	},
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/victory/hallway/d4porthall)
 "tRQ" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 8
@@ -31885,7 +31908,7 @@ ogm
 ovL
 pSo
 vbk
-vbk
+aca
 vbk
 vbk
 vbk
@@ -32079,7 +32102,7 @@ jfd
 eDQ
 ufU
 qxt
-tMG
+tRo
 qxt
 tMG
 qxt
