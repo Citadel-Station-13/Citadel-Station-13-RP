@@ -13,3 +13,7 @@ Examples;
 - bodysets is used in here as appearance descriptors
 - shapeshifts can be used in here / elsewhere as appearance descriptors
 - records are used by other game systems
+
+## Disclaimer
+
+This system is **heavily** WIP.

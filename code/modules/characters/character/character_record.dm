@@ -3,24 +3,28 @@
 
 /**
  * Base type of a character record.
+ *
+ * * Requires database backend.
  */
 /datum/character_record
 	/// string date of application
 	///
 	/// * set by serializer / deserializer; do not touch
 	var/timestamp
+	/// database ID
+	///
+	/// * set by serializer / deserializer; do not touch
+	/// * this is global, not per-character.
+	var/id
 
-	/// was this sealed?
+	/// flags
 	///
-	/// * usually from ic sources
-	var/sealed = FALSE
-	/// was this soft-deleted?
-	///
-	/// * only admins can do this
-	var/deleted = FALSE
+	/// * directly serialized to DB
+	var/character_record_flags = NONE
 
 	/// real ckey of writer
 	///
+	/// * directly serialized to DB
 	/// * this can be null if unknown.
 	/// * this is not always accurate; the game tries to guess this from usually-accurate metrics.
 	/// * if you're reading this as an admin, do your own investigation, seriously; don't follow this blindly.
@@ -28,6 +32,7 @@
 	var/audit_player_id
 	/// real character ID of writer
 	///
+	/// * directly serialized to DB
 	/// * this can be null if unknown.
 	/// * this is not always accurate; the game tries to guess this from usually-accurate metrics.
 	/// * if you're reading this as an admin, do your own investigation, seriously; don't follow this blindly.
@@ -37,3 +42,9 @@
 	// TODO: how do we record characters if names are not UIDs?
 
 #warn impl
+
+/datum/character_record/serialize()
+	return list()
+
+/datum/character_record/deserialize(list/data)
+	return
