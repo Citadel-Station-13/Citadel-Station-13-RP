@@ -25,7 +25,7 @@
 		/obj/item/clothing/accessory/holster/machete,
 		/obj/item/reagent_containers/food/snacks/liquid,
 		/obj/item/reagent_containers/food/snacks/liquid/protein,
-		/obj/item/cataloguer
+		/obj/item/cataloguer,
 		/obj/item/binoculars)
 
 /obj/structure/closet/secure_closet/explorer/Initialize(mapload)
@@ -73,9 +73,9 @@
 		/obj/item/gps/medical,
 		/obj/item/geiger_counter,
 		/obj/item/bodybag/cryobag,
-		/obj/item/cataloguer/compact
-		/obj/item/binoculars
-		/obj/item/gun/ballistic/shotgun/flare/paramed
+		/obj/item/cataloguer/compact,
+		/obj/item/binoculars,
+		/obj/item/gun/ballistic/shotgun/flare/paramed,
 		/obj/item/storage/box/flashshells/large)
 
 //Pilot Locker
@@ -107,7 +107,7 @@
 		/obj/item/cell/device,
 		/obj/item/radio,
 		/obj/item/gps/explorer,
-		/obj/item/cataloguer/compact
+		/obj/item/cataloguer/compact,
 		/obj/item/binoculars)
 
 /obj/structure/closet/secure_closet/pilot/Initialize(mapload)
@@ -153,7 +153,7 @@
 		/obj/item/reagent_containers/food/snacks/liquid,
 		/obj/item/reagent_containers/food/snacks/liquid/protein,
 		/obj/item/card/mining_point_card/survey/gimmick,
-		/obj/item/cataloguer/compact/pathfinder
+		/obj/item/cataloguer/compact/pathfinder,
 		/obj/item/binoculars)
 
 /obj/structure/closet/secure_closet/pathfinder/Initialize(mapload)

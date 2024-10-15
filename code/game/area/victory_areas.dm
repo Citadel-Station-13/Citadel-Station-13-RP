@@ -108,7 +108,7 @@
 /** Command
  */
 /area/victory/command/turrets
- 	name = "\improper Point Defense Systems"
+	name = "\improper Point Defense Systems"
 	icon_state = "bridge"
 
 /** Science
