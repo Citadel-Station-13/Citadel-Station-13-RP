@@ -2018,7 +2018,7 @@
 "agQ" = (
 /obj/machinery/computer/card,
 /obj/machinery/button/windowtint{
-	id = "hop_office";
+	id = "hop-office";
 	pixel_x = 8;
 	pixel_y = 26
 	},
@@ -3909,22 +3909,6 @@
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/captain)
-"amx" = (
-/obj/effect/floor_decal/spline/plain{
-	dir = 4
-	},
-/obj/machinery/button/windowtint/multitint{
-	id = "meeting_tint";
-	pixel_x = -24;
-	pixel_y = -6
-	},
-/obj/machinery/light_switch{
-	dir = 8;
-	pixel_x = -26;
-	pixel_y = 4
-	},
-/turf/simulated/floor/tiled/dark,
-/area/bridge/meeting_room)
 "amz" = (
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/lightgrey/border,
@@ -5483,7 +5467,7 @@
 	dir = 4
 	},
 /obj/machinery/button/windowtint/multitint{
-	id = "meeting_tint";
+	id = "meeting-tint";
 	pixel_x = -24;
 	pixel_y = 6
 	},
@@ -8380,6 +8364,11 @@
 "azz" = (
 /obj/structure/bed/chair/office/dark,
 /obj/landmark/spawnpoint/job/pathfinder,
+/obj/machinery/button/windowtint/multitint{
+	id = "pathfinder-office";
+	pixel_x = 38;
+	pixel_y = 28
+	},
 /turf/simulated/floor/tiled/monotile,
 /area/exploration/pathfinder_office)
 "azB" = (
@@ -9636,6 +9625,11 @@
 /obj/item/pen,
 /obj/machinery/light{
 	dir = 8
+	},
+/obj/machinery/button/windowtint/multitint{
+	id = "bunker-tint";
+	pixel_x = -24;
+	pixel_y = 6
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/bridge/bunker)
@@ -15583,7 +15577,7 @@
 	dir = 1
 	},
 /obj/machinery/button/windowtint/multitint{
-	id = "bridge_tint";
+	id = "bridge-tint";
 	pixel_x = 38;
 	pixel_y = 28
 	},
@@ -17826,6 +17820,9 @@
 	opacity = 0
 	},
 /obj/effect/paint/commandblue,
+/obj/map_helper/electrochromatic_linker{
+	id = "hop-office"
+	},
 /turf/simulated/floor/plating,
 /area/crew_quarters/heads/hop)
 "dha" = (
@@ -18143,6 +18140,9 @@
 "dRg" = (
 /obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
 /obj/effect/paint/commandblue,
+/obj/map_helper/electrochromatic_linker{
+	id = "blueshield-office"
+	},
 /turf/simulated/floor/plating,
 /area/crew_quarters/heads/blueshield)
 "dRq" = (
@@ -19200,6 +19200,9 @@
 	opacity = 0
 	},
 /obj/effect/paint/commandblue,
+/obj/map_helper/electrochromatic_linker{
+	id = "bridge-tint"
+	},
 /turf/simulated/floor/plating,
 /area/bridge)
 "fAb" = (
@@ -20035,6 +20038,9 @@
 "gQu" = (
 /obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
 /obj/effect/paint/commandblue,
+/obj/map_helper/electrochromatic_linker{
+	id = "meeting-tint"
+	},
 /turf/simulated/floor/plating,
 /area/bridge/bridge_hallway)
 "gTy" = (
@@ -20745,6 +20751,9 @@
 	opacity = 0
 	},
 /obj/effect/paint/commandblue,
+/obj/map_helper/electrochromatic_linker{
+	id = "bridge-tint"
+	},
 /turf/simulated/floor/plating,
 /area/bridge)
 "iio" = (
@@ -23066,6 +23075,9 @@
 	id = "hop_office"
 	},
 /obj/effect/paint/commandblue,
+/obj/map_helper/electrochromatic_linker{
+	id = "hop-office"
+	},
 /turf/simulated/floor/plating,
 /area/crew_quarters/heads/hop)
 "mpP" = (
@@ -24734,6 +24746,9 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
+/obj/map_helper/electrochromatic_linker{
+	id = "bunker-tint"
+	},
 /turf/simulated/floor/plating,
 /area/bridge/bunker)
 "pxd" = (
@@ -25774,6 +25789,11 @@
 	dir = 8
 	},
 /obj/landmark/spawnpoint/job/blueshield,
+/obj/machinery/button/windowtint/multitint{
+	id = "blueshield-office";
+	pixel_y = 32;
+	pixel_x = -8
+	},
 /turf/simulated/floor/carpet/blue,
 /area/crew_quarters/heads/blueshield)
 "rKd" = (
@@ -26021,6 +26041,9 @@
 "siB" = (
 /obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
 /obj/effect/paint/violet,
+/obj/map_helper/electrochromatic_linker{
+	id = "pathfinder-office"
+	},
 /turf/simulated/floor/plating,
 /area/exploration/pathfinder_office)
 "sja" = (
@@ -27537,6 +27560,9 @@
 	},
 /obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
 /obj/effect/paint/commandblue,
+/obj/map_helper/electrochromatic_linker{
+	id = "bridge-tint"
+	},
 /turf/simulated/floor/plating,
 /area/bridge)
 "vlu" = (
@@ -27693,6 +27719,9 @@
 "vwG" = (
 /obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
 /obj/effect/paint/commandblue,
+/obj/map_helper/electrochromatic_linker{
+	id = "meeting-tint"
+	},
 /turf/simulated/floor/plating,
 /area/bridge/meeting_room)
 "vwM" = (
@@ -28316,6 +28345,9 @@
 	opacity = 0
 	},
 /obj/effect/paint/commandblue,
+/obj/map_helper/electrochromatic_linker{
+	id = "bunker-tint"
+	},
 /turf/simulated/floor/plating,
 /area/bridge/bunker)
 "wmp" = (
@@ -50492,7 +50524,7 @@ adh
 aTY
 sHK
 asz
-amx
+aUt
 aUt
 aUt
 aUt

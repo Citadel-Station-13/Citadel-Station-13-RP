@@ -352,6 +352,145 @@
 	ai_holder_type = /datum/ai_holder/polaris/simple_mob/ranged/kiting
 	projectiletype = /obj/projectile/ion
 	base_attack_cooldown = 25
+
+//P4 units - Anything nanotechnology paired with abductor tech - Elite units
+
+/mob/living/simple_mob/mechanical/hivebot/enigma/P4/Wraith
+	name = "wraith"
+	icon = 'icons/mob/enigma.dmi'
+	desc = "A sleek, black bipedal combat unit with an unsettling, advanced nanotech design. Its chassis being an amalgamation of various prosthetic and synthetic components or at least mimicking such. The unit is constantly shifting and is surrounded by a thin trail of metallic dust as it moves. Spines emitting an antigrav field protrude from its arms, shoulders, and back, while its featureless faceplate displays an alien magenta glow under constant shifting and warping. The unit shudders and vibrates with uncanny precision. It wields a modified particle weapon vaguely resembling a Hephaestus G40. A capital Sigma symbol is etched on its chest, and a circular power pack on its back hums with gravity-defying particles."
+	icon_living = "wraith"
+	icon_state = "wraith"
+	maxHealth = 200 //More armored but less max HP and also has a shield
+	health = 200
+	evasion = 15 //Superior reflexes due to nanotech and being build for combat
+	armor_legacy_mob = list(
+				"melee"		= 5,
+				"bullet"	= 20,
+				"laser"		= 30,
+				"energy"	= 30,
+				"bomb"		= 20,
+				"bio"		= 100,
+				"rad"		= 100
+				)
+
+	legacy_melee_damage_lower = 18
+	legacy_melee_damage_upper = 18 //It hits you with a hardened nanite fist. Thats supposed to hurt  
+	movement_cooldown = 1 //again faster than standard grunts
+	movement_sound = 'sound/enigma/enigma_move.ogg'
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/ranged/kiting //Made to draw fire hence kiting
+	projectiletype = /obj/projectile/beam/antigravbeamwraith
+	base_attack_cooldown = 10 //1 attacks per second
+
+/mob/living/simple_mob/mechanical/hivebot/enigma/P4/Wraith/Initialize(mapload) //Gives the unit a weak overshield since it would be very unfun to fight kiting AI with actual proper health regen as initially intended
+	var/shield_type = /obj/item/shield_projector/rectangle{
+		shield_health = 50;
+		max_shield_health = 50;
+		shield_regen_delay = 10 SECONDS;
+		shield_regen_amount = 10;
+		size_x = 1;
+		size_y = 1;
+		always_on = TRUE;
+	}
+	var/obj/item/shield_projector/shield_projector = new shield_type(src)
+	shield_projector.create_shields()
+	return ..()	
+
+/mob/living/simple_mob/mechanical/hivebot/enigma/P4/Banshee
+	name = "banshee"
+	icon = 'icons/mob/enigma.dmi'
+	desc = "A horrific inorganic nanite abomination. This unit possess a jet black nanite frame with typical abductor technology augmentation. Armed with two strange humming blades it is well capable of both lethal takedowns and less lethal takedowns. The head tendrilled monstrosity is lightning fast and to make matters worse has some sort of short range teleportation pack installed on its back allowing it to effectively 'blink' out if needed to disengage. Additionally the entire body is covered in thin, purple colored phase coils allowing it to effectively leap. A capital greek Sigma is etched onto its nanite chest. Embedded in its right armblade is some sort of injector loaded with strange bits of electronics. The entire thing screams in agony in an ultrasonic frequency only audible to synthetics as it constantly shifts in and out of phase."
+	icon_living = "banshee"
+	icon_state = "banshee"
+	maxHealth = 100 //Glass Cannon
+	health = 100
+	evasion = 50 //Phase coils and bluespace blink device. Hard to hit. Trash hitpoints and armor
+	armor_legacy_mob = list(
+				"melee"		= 5,
+				"bullet"	= 10,
+				"laser"		= 15,
+				"energy"	= 15,
+				"bomb"		= 20,
+				"bio"		= 100,
+				"rad"		= 100
+				)
+
+	legacy_melee_damage_lower = 35 //armed with two arm mounted phase blades 
+	legacy_melee_damage_upper = 35 //I hate damage variance
+	attack_armor_pen = 25
+	base_attack_cooldown = 7 //1.3 attacks per second
+	movement_cooldown = 0 //MUCH faster
+	movement_sound = 'sound/enigma/enigma_move.ogg'
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/hivebot //hit and Run Melee is broken for when more than 1 player is visible
+
+	player_msg = "You are very fast, and <b>can perform a leaping attack</b> by clicking on someone from a short distance away.<br>\
+	If the leap succeeds, the target will be knocked down briefly and you will be on top of them.<br>\
+	Note that there is a short delay before you leap!<br>\
+	In addition, you will do more damage to incapacitated opponents."
+
+	// Leaping is a special attack, so these values determine when leap can happen, also ripped from spiders
+	// Leaping won't occur if its on cooldown.
+	special_attack_min_range = 2
+	special_attack_max_range = 8
+	special_attack_cooldown = 15 SECONDS //Phase coils are not trivial to miniaturize
+
+	var/leap_warmup = 1 SECOND // How long the leap telegraphing is.
+	var/leap_sound = 'sound/weapons/Phasecoilengage.ogg' 
+
+// Multiplies damage if the victim is stunned in some form, including a successful leap.
+/mob/living/simple_mob/mechanical/hivebot/enigma/P4/Banshee/apply_bonus_melee_damage(atom/A, damage_amount)
+	if(isliving(A))
+		var/mob/living/L = A
+		if(L.incapacitated(INCAPACITATION_DISABLED))
+			return damage_amount * 1.2 //lets not make it oneshot
+	return ..()
+
+
+// The actual leaping attack.
+/mob/living/simple_mob/mechanical/hivebot/enigma/P4/Banshee/do_special_attack(atom/A)
+	set waitfor = FALSE
+	set_AI_busy(TRUE)
+
+	// Telegraph, since getting stunned suddenly feels bad.
+	do_windup_animation(A, leap_warmup)
+	sleep(leap_warmup) // Telegraphing
+
+	// Do the actual leap.
+	status_flags |= STATUS_LEAPING // Lets us pass over everything.
+	visible_message(SPAN_DANGER("\The [src] engages its phasecoils and initializes a phaseleap at \the [A]!"))
+	throw_at_old(get_step(get_turf(A), get_turf(src)), special_attack_max_range+1, 1, src)
+	playsound(src, leap_sound, 75, 1)
+
+	sleep(5) // For the throw to complete. It won't hold up the AI SSticker due to waitfor being false.
+
+	if(status_flags & STATUS_LEAPING)
+		status_flags &= ~STATUS_LEAPING // Revert special passage ability.
+
+	var/turf/T = get_turf(src) // Where we landed. This might be different than A's turf.
+
+	. = FALSE
+
+	// Now for the stun.
+	var/mob/living/victim = null
+	for(var/mob/living/L in T) // So player-controlled BANSHEES only need to click the tile to stun them.
+		if(L == src)
+			continue
+
+		var/list/shieldcall_result = L.atom_shieldcall(40, DAMAGE_TYPE_BRUTE, MELEE_TIER_MEDIUM, ARMOR_MELEE, NONE, ATTACK_TYPE_MELEE) //NEEDS LIFE TESTING
+		if(shieldcall_result[SHIELDCALL_ARG_FLAGS] & SHIELDCALL_FLAGS_BLOCK_ATTACK)
+			continue
+
+		victim = L
+		break
+
+	if(victim)
+		victim.afflict_paralyze(20 * 2)
+		victim.visible_message(SPAN_DANGER("\The [src] phases back in and knocks down \the [victim]!"))
+		to_chat(victim, SPAN_CRITICAL("\The [src] disengages its phase coils right ontop you and knocks you to the ground!"))
+		. = TRUE
+
+	set_AI_busy(FALSE)	
+	
 // Boss
 
 

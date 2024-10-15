@@ -91,7 +91,7 @@
 	if(M) M.update_strings()
 	return transfer
 
-/obj/item/stack/material/attack_self(mob/user)
+/obj/item/stack/material/attack_self(mob/user, datum/event_args/actor/actor)
 	if(!allow_window_autobuild || !material.build_windows(user, src))
 		return ..()
 
@@ -393,7 +393,7 @@
 /obj/item/stack/material/log/attackby(obj/item/I, mob/living/user, list/params, clickchain_flags, damage_multiplier)
 	if(!istype(I) || I.damage_force <= 0)
 		return ..()
-	if(CHECK_MULTIPLE_BITFIELDS(I.damage_mode, DAMAGE_MODE_EDGE | DAMAGE_MODE_SHARP) || (I.edge && I.sharp))
+	if(CHECK_MULTIPLE_BITFIELDS(I.damage_mode, DAMAGE_MODE_EDGE | DAMAGE_MODE_SHARP))
 		var/time = (3 SECONDS / max(I.damage_force / 10, 1)) * I.tool_speed
 		user.setClickCooldown(time)
 		if(do_after(user, time, src) && use(1))
@@ -424,7 +424,7 @@
 /obj/item/stack/material/log/ironwood/attackby(obj/item/I, mob/living/user, list/params, clickchain_flags, damage_multiplier)
 	if(!istype(I) || I.damage_force <= 20) //You will need at least PLASTEEL Tools to cut this.
 		return ..()
-	if(CHECK_MULTIPLE_BITFIELDS(I.damage_mode, DAMAGE_MODE_EDGE | DAMAGE_MODE_SHARP) || (I.edge && I.sharp))
+	if(CHECK_MULTIPLE_BITFIELDS(I.damage_mode, DAMAGE_MODE_EDGE | DAMAGE_MODE_SHARP))
 		var/time = (3 SECONDS / max(I.damage_force / 10, 1)) * I.tool_speed
 		user.setClickCooldown(time)
 		if(do_after(user, time, src) && use(1))

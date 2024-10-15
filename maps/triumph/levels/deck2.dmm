@@ -553,9 +553,7 @@
 /area/station/stairs_two)
 "bx" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/structure/curtain/black{
-	anchored = 1
-	},
+/obj/structure/curtain/black,
 /turf/simulated/floor/plating,
 /area/triumph/surfacebase/bar_backroom)
 "by" = (
@@ -1630,6 +1628,7 @@
 /area/vacant/vacant_shop)
 "eN" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/effect/floor_decal/industrial/warning/corner,
 /turf/simulated/floor/crystal,
 /area/station/stairs_two)
 "eO" = (
@@ -2584,6 +2583,10 @@
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/maintenance/dormitory)
+"hN" = (
+/obj/structure/sign/warning/high_voltage,
+/turf/space,
+/area/space)
 "hO" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -2688,6 +2691,10 @@
 	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/crew_quarters/bar)
+"ij" = (
+/obj/structure/sign/warning,
+/turf/simulated/wall/prepainted,
+/area/maintenance/dormitory)
 "ik" = (
 /obj/machinery/power/apc/west_mount{
 	cell_type = /obj/item/cell/super
@@ -3699,7 +3706,6 @@
 "le" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
 /obj/structure/curtain/open/bed{
-	anchored = 1;
 	name = "curtain"
 	},
 /turf/simulated/floor/plating,
@@ -4364,6 +4370,7 @@
 /area/triumph/surfacebase/mining_main/refinery)
 "nD" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/effect/floor_decal/industrial/warning,
 /turf/simulated/floor/crystal,
 /area/station/stairs_two)
 "nE" = (
@@ -5097,6 +5104,10 @@
 	},
 /turf/simulated/floor/wood,
 /area/vacant/vacant_shop)
+"pM" = (
+/obj/structure/sign/warning,
+/turf/simulated/wall/prepainted,
+/area/station/stairs_two)
 "pN" = (
 /obj/machinery/embedded_controller/radio/airlock/airlock_controller{
 	id_tag = "mining_fore_airlock";
@@ -5645,6 +5656,9 @@
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
+/obj/effect/floor_decal/industrial/warning/corner{
+	dir = 8
+	},
 /turf/simulated/floor/crystal,
 /area/station/stairs_two)
 "rl" = (
@@ -5809,6 +5823,12 @@
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_2)
+"rJ" = (
+/obj/effect/floor_decal/industrial/warning/corner{
+	dir = 1
+	},
+/turf/simulated/floor/crystal,
+/area/station/stairs_two)
 "rK" = (
 /obj/structure/closet/crate,
 /obj/fiftyspawner/steel,
@@ -7787,6 +7807,12 @@
 "xo" = (
 /turf/simulated/wall/prepainted,
 /area/crew_quarters/sleep/Dorm_3)
+"xp" = (
+/obj/effect/floor_decal/industrial/warning{
+	dir = 8
+	},
+/turf/simulated/floor/crystal,
+/area/station/stairs_two)
 "xq" = (
 /turf/simulated/floor/wood,
 /area/crew_quarters/recreation_area_hallway)
@@ -10689,6 +10715,13 @@
 	},
 /turf/simulated/floor/tiled,
 /area/crew_quarters/kitchen)
+"Gq" = (
+/obj/effect/floor_decal/spline/fancy/wood,
+/obj/effect/floor_decal/industrial/warning/corner{
+	dir = 8
+	},
+/turf/simulated/floor/wood,
+/area/station/stairs_two)
 "Gr" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
@@ -11931,7 +11964,6 @@
 "Kj" = (
 /obj/spawner/window/reinforced/full/firelocks,
 /obj/structure/curtain/open/bed{
-	anchored = 1;
 	name = "curtain"
 	},
 /turf/simulated/floor/plating,
@@ -12263,9 +12295,6 @@
 /turf/simulated/floor/plating,
 /area/maintenance/dormitory)
 "Ld" = (
-/obj/item/radio/intercom{
-	pixel_y = -24
-	},
 /obj/machinery/light{
 	dir = 8
 	},
@@ -12273,6 +12302,7 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 10
 	},
+/obj/effect/floor_decal/industrial/warning/corner,
 /turf/simulated/floor/wood,
 /area/station/stairs_two)
 "Le" = (
@@ -12672,6 +12702,11 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/dormitory)
+"MB" = (
+/obj/effect/floor_decal/spline/fancy/wood,
+/obj/effect/floor_decal/industrial/warning,
+/turf/simulated/floor/wood,
+/area/station/stairs_two)
 "MD" = (
 /obj/structure/cable/green{
 	icon_state = "1-2"
@@ -12845,7 +12880,6 @@
 "Nb" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
 /obj/structure/curtain/open/bed{
-	anchored = 1;
 	name = "curtain"
 	},
 /obj/effect/paint_stripe/palebottlegreen,
@@ -13368,10 +13402,6 @@
 /obj/structure/window/reinforced{
 	dir = 1
 	},
-/obj/item/gun/energy/kinetic_accelerator,
-/obj/item/gun/energy/kinetic_accelerator,
-/obj/item/gun/energy/kinetic_accelerator,
-/obj/item/gun/energy/kinetic_accelerator,
 /turf/simulated/floor/tiled,
 /area/triumph/surfacebase/mining_main/storage)
 "OC" = (
@@ -14894,6 +14924,10 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/station/stairs_two)
+"Tc" = (
+/obj/structure/sign/warning/high_voltage,
+/turf/simulated/wall/r_wall/prepainted,
+/area/station/stairs_two)
 "Td" = (
 /obj/structure/cable{
 	icon_state = "1-4"
@@ -15615,12 +15649,12 @@
 	pixel_x = 2;
 	pixel_y = -2
 	},
-/obj/item/storage/firstaid{
-	pixel_x = -2;
-	pixel_y = 2
-	},
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
+	},
+/obj/item/storage/firstaid/regular{
+	pixel_x = -2;
+	pixel_y = 2
 	},
 /turf/simulated/floor/tiled,
 /area/quartermaster/office)
@@ -16510,6 +16544,12 @@
 "XY" = (
 /turf/simulated/floor/tiled,
 /area/hydroponics)
+"Ya" = (
+/obj/effect/floor_decal/industrial/warning{
+	dir = 1
+	},
+/turf/simulated/floor/crystal,
+/area/station/stairs_two)
 "Yb" = (
 /obj/structure/cryofeed{
 	dir = 2
@@ -44392,7 +44432,7 @@ Hk
 Hk
 Hk
 Hk
-gW
+ij
 Il
 gW
 pw
@@ -44583,11 +44623,11 @@ RB
 Yd
 Ph
 Ld
-Hk
+pM
 bP
 xQ
 bP
-bW
+Ya
 Gi
 CR
 pP
@@ -44776,12 +44816,12 @@ fG
 Jm
 rB
 lK
-Hy
+MB
 tm
-bW
-bW
-bW
-bW
+xp
+xp
+xp
+rJ
 bW
 CR
 cW
@@ -44970,7 +45010,7 @@ Kq
 Dq
 YC
 Dq
-Hy
+Gq
 qC
 eL
 eN
@@ -45556,7 +45596,7 @@ mH
 PK
 YA
 hC
-CR
+Tc
 CR
 CR
 aG
@@ -46336,7 +46376,7 @@ cW
 cW
 cW
 cW
-cW
+hN
 cW
 cW
 cW

@@ -192,7 +192,7 @@
 
 	standard_weapon_hit_effects(I, user, effective_force, blocked, soaked, hit_zone)
 
-	if(I.damtype == DAMAGE_TYPE_BRUTE && prob(33)) // Added blood for whacking non-humans too
+	if(I.damage_type == DAMAGE_TYPE_BRUTE && prob(33)) // Added blood for whacking non-humans too
 		var/turf/simulated/location = get_turf(src)
 		if(istype(location)) location.add_blood_floor(src)
 
@@ -214,7 +214,7 @@
 		weapon_sharp = 0
 		weapon_edge = 0
 
-	apply_damage(effective_force, I.damtype, hit_zone, blocked, soaked, sharp=weapon_sharp, edge=weapon_edge, used_weapon=I)
+	apply_damage(effective_force, I.damage_type, hit_zone, blocked, soaked, sharp=weapon_sharp, edge=weapon_edge, used_weapon=I)
 
 	return 1
 
@@ -222,7 +222,10 @@
 /mob/living/throw_impacted(atom/movable/AM, datum/thrownthing/TT)
 	if(istype(AM, /obj))
 		var/obj/O = AM
-		var/dtype = O.damtype
+		var/dtype = DAMAGE_TYPE_BRUTE
+		if(isitem(AM))
+			var/obj/item/impacting_item = AM
+			dtype = impacting_item.damage_type
 		var/throw_damage = O.throw_force * TT.get_damage_multiplier(src)
 
 		var/miss_chance = 15
@@ -290,7 +293,7 @@
 			if(!O || !src)
 				return
 
-			if(O.sharp) //Projectile is suitable for pinning.
+			if(is_sharp(O)) //Projectile is suitable for pinning.
 				if(soaked >= round(throw_damage*0.8))
 					return
 

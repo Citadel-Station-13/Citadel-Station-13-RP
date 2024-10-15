@@ -75,6 +75,19 @@
 	release()
 	return ..()
 
+/datum/turf_reservation/proc/get_approximately_center_turf()
+	return locate(
+		bottom_left_coords[1] + floor(top_right_coords[1] - bottom_left_coords[1]),
+		bottom_left_coords[2] + floor(top_right_coords[2] - bottom_left_coords[2]),
+		bottom_left_coords[3],
+	)
+
+/datum/turf_reservation/proc/is_atom_inside(atom/A)
+	A = get_turf(A)
+	return A.z == bottom_left_coords[3] && \
+		A.x >= bottom_left_coords[1] && A.x <= top_right_coords[1] && \
+		A.y >= bottom_left_coords[2] && A.y <= top_right_coords[2]
+
 /datum/turf_reservation/proc/release()
 	if(border)
 		SSmapping.reserve_turfs(block(locate(
@@ -170,7 +183,7 @@
 							1 + (inner_y - 1) * TURF_CHUNK_RESOLUTION,
 							level_index,
 						)
-						if(!(checking.turf_flags & UNUSED_RESERVATION_TURF))
+						if(!(checking.turf_flags & TURF_FLAG_UNUSED_RESERVATION))
 							passing = FALSE
 							break
 					if(!passing)
@@ -245,7 +258,7 @@
 		SSmapping.reservation_blocking_op = FALSE
 		return FALSE
 	for(var/turf/T as anything in final)
-		T.turf_flags &= ~UNUSED_RESERVATION_TURF
+		T.turf_flags &= ~TURF_FLAG_UNUSED_RESERVATION
 		if(T.type != turf_type)
 			T.ChangeTurf(turf_type, turf_type)
 
@@ -262,7 +275,7 @@
 		// todo: take_turfs
 		src.border_area.contents.Add(final_border)
 		for(var/turf/T as anything in final_border)
-			T.turf_flags &= ~UNUSED_RESERVATION_TURF
+			T.turf_flags &= ~TURF_FLAG_UNUSED_RESERVATION
 		// get just the first layer, but also init them at the same time
 		var/list/turf/final_immediate_border
 		// left

@@ -31,7 +31,7 @@
 	x_offset = 4
 	catalogue_data = null//list(/datum/category_item/catalogue/information/organization/nanotrasen)
 	description_info = "This magazine holds Hydra microbatteries to power the Hydra handgun. Up to three can be loaded at once, and each provides four shots of their respective energy type. Loading multiple of the same type will provide additional shots of that type. The batteries can be recharged in a normal recharger."
-	ammo_type = /obj/item/ammo_casing/microbattery/combat
+	ammo_restrict = /obj/item/ammo_casing/microbattery/combat
 
 /obj/item/ammo_magazine/microbattery/combat/prototype
 	name = "prototype microbattery magazine"

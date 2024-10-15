@@ -162,7 +162,7 @@
 	update_icon()
 	visible_message(SPAN_WARNING("[src] clicks, resetting itself from the electromagnetic interference."))
 
-/obj/item/gps/attack_self(mob/user)
+/obj/item/gps/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -600,8 +600,7 @@
 	item_state = "knife"
 	damage_force = 15
 	throw_force = 10
-	sharp = 1
-	edge = 1
+	damage_mode = DAMAGE_MODE_SHARP | DAMAGE_MODE_EDGE
 	w_class = WEIGHT_CLASS_NORMAL
 	origin_tech = list(TECH_COMBAT = 4, TECH_ILLEGAL = 4)
 	attack_verb = list("sliced", "chopped", "stabbed", "pierced")

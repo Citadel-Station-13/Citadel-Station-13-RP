@@ -13,7 +13,7 @@
 	attack_verb = list("HONKED")
 	var/spam_flag = 0
 
-/obj/item/bikehorn/attack_self(mob/user)
+/obj/item/bikehorn/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -38,7 +38,7 @@
 		flip_mobs()
 	return ..()
 
-/obj/item/bikehorn/golden/attack_self(mob/user)
+/obj/item/bikehorn/golden/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
