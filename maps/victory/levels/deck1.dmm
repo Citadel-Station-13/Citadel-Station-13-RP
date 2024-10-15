@@ -27910,7 +27910,8 @@
 "wEG" = (
 /obj/structure/table/marble,
 /obj/structure/dancepole{
-	name = "structural pylon"
+	name = "structural pylon";
+	desc = "You wouldn't want the ceiling to come crashing down on your head, would you?"
 	},
 /turf/simulated/floor/carpet,
 /area/bridge/meeting_room)
