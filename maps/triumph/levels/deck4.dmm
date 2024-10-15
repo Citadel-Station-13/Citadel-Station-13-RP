@@ -26795,7 +26795,6 @@
 /obj/machinery/light,
 /obj/item/duct_tape_roll,
 /obj/item/duct_tape_roll,
-/obj/item/hand_labeler,
 /turf/simulated/floor/tiled,
 /area/exploration/explorer_prep)
 "sLs" = (
@@ -31632,9 +31631,8 @@
 "wfu" = (
 /obj/machinery/camera/network/exploration,
 /obj/structure/table/standard,
-/obj/item/binoculars,
-/obj/item/binoculars,
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
+/obj/item/hand_labeler,
 /turf/simulated/floor/tiled,
 /area/exploration/explorer_prep)
 "wfz" = (
