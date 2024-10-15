@@ -3978,6 +3978,12 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/effect/floor_decal/borderfloorblack/corner{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/navblue/bordercorner{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/steel,
 /area/victory/hallway/d1afthall)
 "doZ" = (
@@ -4116,7 +4122,6 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
-/obj/structure/table/bench/wooden,
 /turf/simulated/floor/tiled/steel,
 /area/victory/hallway/d1afthall)
 "dsD" = (
@@ -7549,8 +7554,17 @@
 /turf/simulated/floor/carpet/bcarpet,
 /area/crew_quarters/captain)
 "fVU" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
 /obj/structure/table/wooden_reinforced,
-/turf/simulated/floor/tiled/steel_ridged,
+/turf/simulated/floor/tiled/steel,
 /area/victory/hallway/d1afthall)
 "fVV" = (
 /obj/machinery/door/firedoor,
@@ -8064,9 +8078,6 @@
 "gpv" = (
 /obj/structure/bed/chair/sofa/black/corner{
 	dir = 4
-	},
-/obj/machinery/light/small{
-	dir = 8
 	},
 /turf/simulated/floor/carpet/purcarpet,
 /area/crew_quarters/coffee_shop)
@@ -11911,9 +11922,6 @@
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/mauve/border,
 /obj/item/defib_kit/jumper_kit,
-/obj/structure/window/reinforced{
-	dir = 8
-	},
 /obj/item/radio/intercom{
 	pixel_y = -24
 	},
@@ -12806,6 +12814,15 @@
 /obj/machinery/recharge_station,
 /turf/simulated/floor/plating,
 /area/shuttle/excursion/cargo)
+"jYp" = (
+/obj/effect/floor_decal/borderfloorblack/corner{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/navblue/bordercorner{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/steel,
+/area/victory/hallway/d1afthall)
 "jYq" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 5
@@ -13285,9 +13302,6 @@
 "kvQ" = (
 /obj/structure/bed/chair/sofa/black/corner{
 	dir = 1
-	},
-/obj/machinery/light/small{
-	dir = 8
 	},
 /turf/simulated/floor/carpet/purcarpet,
 /area/crew_quarters/coffee_shop)
@@ -15735,13 +15749,13 @@
 /turf/simulated/floor/tiled/dark,
 /area/victory/station/stairs_four)
 "mAo" = (
-/obj/effect/floor_decal/borderfloorblack/corner{
-	dir = 4
-	},
-/obj/effect/floor_decal/corner/navblue/bordercorner{
-	dir = 4
-	},
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/navblue/border{
+	dir = 1
+	},
 /turf/simulated/floor/tiled/steel,
 /area/victory/hallway/d1afthall)
 "mAC" = (
@@ -18736,6 +18750,8 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
 	},
+/obj/effect/floor_decal/borderfloor/corner,
+/obj/effect/floor_decal/corner/mauve/bordercorner,
 /turf/simulated/floor/tiled,
 /area/exploration)
 "pbT" = (
@@ -21160,17 +21176,9 @@
 /turf/simulated/floor/tiled,
 /area/gateway/prep_room)
 "rkY" = (
-/obj/structure/table/rack/shelf,
-/obj/item/tank/oxygen,
-/obj/item/suit_cooling_unit,
-/obj/item/storage/backpack/parachute,
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/obj/effect/floor_decal/borderfloor,
-/obj/effect/floor_decal/corner/mauve/border,
-/turf/simulated/floor/tiled,
-/area/exploration/explorer_prep)
+/obj/structure/table/bench/wooden,
+/turf/simulated/floor/tiled/steel,
+/area/victory/hallway/d1afthall)
 "rln" = (
 /obj/effect/floor_decal/spline/plain,
 /obj/effect/mist,
@@ -22352,7 +22360,6 @@
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 6
 	},
-/obj/structure/table/wooden_reinforced,
 /turf/simulated/floor/tiled/steel,
 /area/victory/hallway/d1afthall)
 "ssN" = (
@@ -22849,6 +22856,12 @@
 /obj/item/gun/energy/hardlight_bow,
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/mauve/border,
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/structure/window/reinforced{
+	dir = 4
+	},
 /turf/simulated/floor/tiled,
 /area/exploration/explorer_prep)
 "sQg" = (
@@ -23009,6 +23022,10 @@
 /obj/item/flashlight/lamp/green,
 /turf/simulated/floor/carpet/gaycarpet,
 /area/crew_quarters/clownoffice)
+"sXH" = (
+/obj/structure/table/bench/wooden,
+/turf/simulated/floor/tiled/steel_ridged,
+/area/victory/hallway/d1afthall)
 "sXI" = (
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -23066,6 +23083,12 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
+	},
+/obj/effect/floor_decal/borderfloor/corner{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/mauve/bordercorner{
+	dir = 8
 	},
 /turf/simulated/floor/tiled,
 /area/exploration)
@@ -23662,6 +23685,15 @@
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/shuttle/courser/general)
+"tvO" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
+/obj/structure/table/wooden_reinforced,
+/turf/simulated/floor/tiled/steel,
+/area/victory/hallway/d1afthall)
 "tvS" = (
 /obj/machinery/cryopod/robot/door/shuttle,
 /obj/machinery/door/firedoor,
@@ -26098,13 +26130,13 @@
 /turf/simulated/floor/tiled/steel,
 /area/victory/hallway/d1porthall)
 "vnQ" = (
-/obj/effect/floor_decal/borderfloorblack/corner{
-	dir = 1
-	},
-/obj/effect/floor_decal/corner/navblue/bordercorner{
-	dir = 1
-	},
 /obj/machinery/vending/snack,
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/navblue/border{
+	dir = 1
+	},
 /turf/simulated/floor/tiled/steel_ridged,
 /area/victory/hallway/d1afthall)
 "voy" = (
@@ -27149,7 +27181,7 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
-/obj/structure/table/bench/wooden,
+/obj/structure/table/wooden_reinforced,
 /turf/simulated/floor/tiled/steel,
 /area/victory/hallway/d1afthall)
 "whA" = (
@@ -27857,7 +27889,8 @@
 "wEG" = (
 /obj/structure/table/marble,
 /obj/structure/dancepole{
-	name = "structural pylon"
+	name = "structural pylon";
+	desc = "You wouldn't want the ceiling to come crashing down on your head, would you?"
 	},
 /turf/simulated/floor/carpet,
 /area/bridge/meeting_room)
@@ -40739,13 +40772,13 @@ cqc
 vnQ
 cGC
 dGX
+rkY
+lEq
+rkY
 kHh
-kHh
-kHh
-kHh
-kHh
-pmO
-cGC
+rkY
+fVU
+sXH
 kHh
 kHh
 aBr
@@ -40930,16 +40963,16 @@ hTA
 cCy
 sZB
 dKn
-kHh
+jYp
 kHh
 cGC
+rkY
+lEq
+rkY
 kHh
-kHh
-kHh
-kHh
-kHh
-pmO
-kHh
+rkY
+fVU
+rkY
 kHh
 kHh
 aBr
@@ -41128,7 +41161,7 @@ doM
 mgv
 pFt
 cdy
-tYZ
+tvO
 cdy
 dsy
 tYZ
@@ -41321,12 +41354,12 @@ cqc
 mAo
 owg
 wci
-lEq
-lEq
-lEq
-fVU
-lEq
-fVU
+kHh
+kHh
+kHh
+cGC
+kHh
+cGC
 ssk
 olt
 kHh
@@ -42082,7 +42115,7 @@ nkp
 dUl
 bzE
 jAG
-rkY
+cGq
 qTj
 pGC
 trI

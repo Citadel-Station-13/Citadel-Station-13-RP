@@ -105,11 +105,30 @@
 	name = "\improper Deck 1 Starboard Hallway"
 	icon_state = "hallS"
 
+/** Command
+ */
+/area/victory/command/turrets
+ 	name = "\improper Point Defense Systems"
+	icon_state = "bridge"
+
 /** Science
  */
 /area/rnd/robotics/morgue
 	name = "\improper Robotics Morgue"
 	icon_state = "robotics"
+
+/** Exploration
+ */
+/area/victory/exploration
+	name = "\improper Exploration Department"
+	icon_state = "yellow"
+	holomap_color = HOLOMAP_AREACOLOR_SCIENCE
+
+/area/victory/exploration/hallway_fore
+	name = "\improper Exploration Fore Hallway"
+
+/area/victory/exploration/hallway_aft
+	name = "\improper Exploration Aft Hallway"
 
 /** Medical
  */
