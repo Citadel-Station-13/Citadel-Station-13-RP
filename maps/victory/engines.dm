@@ -8,7 +8,7 @@
 	desc = "R-UST Fusion Tokamak Engine"
 	suffix = "rust.dmm"
 	display_name = list("Budget Star", "Bane of Synthetics", "Glowy Field", "Funny Spinny EM Field", "Protean Rarity Enforcement")
-
+/*
 /datum/map_template/engine/victory/supermatter
 	name = "ProcEngine_Victory_SME"
 	desc = "Old Faithful Supermatter"
@@ -20,7 +20,7 @@
 	desc = "Burn Chamber Engine"
 	suffix = "burn.dmm"
 	display_name = list("Toxins Lab", "We Knew You Liked Tether Fires, so we Brought One in a Box", "100 Solarmoths", "Teshari's Bane")
-
+*/
 /*
 /datum/map_template/engine/victory/fission
 	name = "ProcEngine_Victory_Fission"

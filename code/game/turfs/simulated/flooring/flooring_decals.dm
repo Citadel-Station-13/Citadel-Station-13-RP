@@ -1198,60 +1198,60 @@ var/list/floor_decals = list()
 
 // Victory colour decals
 
-/obj/effect/floor_decal/corner/darkblue
-	name = "darkblue corner"
-	color = COLOR_BLUE
+/obj/effect/floor_decal/corner/navblue
+	name = "navblue corner"
+	color = COLOR_NAV_BLUE
 
-/obj/effect/floor_decal/corner/darkblue/diagonal
+/obj/effect/floor_decal/corner/navblue/diagonal
 	icon_state = "corner_white_diagonal"
 
-/obj/effect/floor_decal/corner/darkblue/full
+/obj/effect/floor_decal/corner/navblue/full
 	icon_state = "corner_white_full"
 
-/obj/effect/floor_decal/corner/darkblue/three_quarters
+/obj/effect/floor_decal/corner/navblue/three_quarters
 	icon_state = "corner_white_three_quarters"
 
-/obj/effect/floor_decal/corner/darkblue/border
+/obj/effect/floor_decal/corner/navblue/border
 	icon_state = "bordercolor"
 
-/obj/effect/floor_decal/corner/darkblue/bordercorner
+/obj/effect/floor_decal/corner/navblue/bordercorner
 	icon_state = "bordercolorcorner"
 
-/obj/effect/floor_decal/corner/darkblue/bordercorner2
+/obj/effect/floor_decal/corner/navblue/bordercorner2
 	icon_state = "bordercolorcorner2"
 
-/obj/effect/floor_decal/corner/darkblue/borderfull
+/obj/effect/floor_decal/corner/navblue/borderfull
 	icon_state = "bordercolorfull"
 
-/obj/effect/floor_decal/corner/darkblue/bordercee
+/obj/effect/floor_decal/corner/navblue/bordercee
 	icon_state = "bordercolorcee"
 
-/obj/effect/floor_decal/corner/gold
-	name = "gold corner"
-	color = COLOR_GOLD
+/obj/effect/floor_decal/corner/navgold
+	name = "navgold corner"
+	color = COLOR_NAV_GOLD
 
-/obj/effect/floor_decal/corner/gold/diagonal
+/obj/effect/floor_decal/corner/navgold/diagonal
 	icon_state = "corner_white_diagonal"
 
-/obj/effect/floor_decal/corner/gold/full
+/obj/effect/floor_decal/corner/navgold/full
 	icon_state = "corner_white_full"
 
-/obj/effect/floor_decal/corner/gold/three_quarters
+/obj/effect/floor_decal/corner/navgold/three_quarters
 	icon_state = "corner_white_three_quarters"
 
-/obj/effect/floor_decal/corner/gold/border
+/obj/effect/floor_decal/corner/navgold/border
 	icon_state = "bordercolor"
 
-/obj/effect/floor_decal/corner/gold/bordercorner
+/obj/effect/floor_decal/corner/navgold/bordercorner
 	icon_state = "bordercolorcorner"
 
-/obj/effect/floor_decal/corner/gold/bordercorner2
+/obj/effect/floor_decal/corner/navgold/bordercorner2
 	icon_state = "bordercolorcorner2"
 
-/obj/effect/floor_decal/corner/gold/borderfull
+/obj/effect/floor_decal/corner/navgold/borderfull
 	icon_state = "bordercolorfull"
 
-/obj/effect/floor_decal/corner/gold/bordercee
+/obj/effect/floor_decal/corner/navgold/bordercee
 	icon_state = "bordercolorcee"
 
 
