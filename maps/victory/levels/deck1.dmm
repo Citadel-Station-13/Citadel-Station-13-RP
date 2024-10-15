@@ -3882,9 +3882,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/civilian)
-"dkf" = (
-/turf/space/basic,
-/area/bridge)
 "dkh" = (
 /obj/effect/floor_decal/steeldecal/steel_decals9,
 /obj/effect/floor_decal/steeldecal/steel_decals9{
@@ -4438,9 +4435,6 @@
 "dIE" = (
 /turf/simulated/wall/wood/hardwood,
 /area/victory/surfacebase/sauna)
-"dIR" = (
-/turf/space/basic,
-/area/teleporter)
 "dJa" = (
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -9091,7 +9085,6 @@
 /obj/item/tank/jetpack/oxygen,
 /obj/item/reagent_containers/hypospray/autoinjector/biginjector/pain,
 /obj/item/reagent_containers/hypospray/autoinjector/biginjector/healing_nanites,
-/obj/item/binoculars,
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
 	},
@@ -11495,9 +11488,6 @@
 "jdq" = (
 /turf/simulated/wall/r_wall/prepainted/medical,
 /area/victory/hallway/d1fwdmaint)
-"jdR" = (
-/turf/space,
-/area/bridge)
 "jec" = (
 /obj/machinery/requests_console{
 	announcementConsole = 1;
@@ -19318,13 +19308,6 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/victory/hallway/d1afthall)
-"pwQ" = (
-/obj/machinery/door/blast/regular{
-	id = "sensor-shroud";
-	name = "Sensor Shroud"
-	},
-/turf/space,
-/area/bridge)
 "pxb" = (
 /turf/simulated/floor/wood/broken,
 /area/vacant/vacant_bar)
@@ -21795,9 +21778,6 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/captain)
-"rQl" = (
-/turf/simulated/wall/r_wall/prepainted/command,
-/area/space)
 "rRJ" = (
 /obj/structure/table/woodentable,
 /obj/item/book/codex/lore/news,
@@ -22450,7 +22430,6 @@
 /obj/item/tank/jetpack/oxygen,
 /obj/item/reagent_containers/hypospray/autoinjector/biginjector/pain,
 /obj/item/reagent_containers/hypospray/autoinjector/biginjector/healing_nanites,
-/obj/item/binoculars,
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
 	},
@@ -54709,8 +54688,8 @@ xRj
 xRj
 xRj
 xRj
-sQl
-sQl
+ris
+ris
 maa
 maa
 byt
@@ -54903,8 +54882,8 @@ xRj
 xRj
 xRj
 xRj
-sQl
-sQl
+ris
+ris
 maa
 maa
 byt
@@ -55097,8 +55076,8 @@ xRj
 xRj
 xRj
 usG
-sQl
-sQl
+ris
+ris
 maa
 maa
 byt
@@ -55291,8 +55270,8 @@ xRj
 xRj
 usG
 usY
-sQl
-sQl
+ris
+ris
 maa
 byt
 byt
@@ -55485,8 +55464,8 @@ xRj
 xRj
 xRj
 usG
-sQl
-sQl
+ris
+ris
 maa
 byt
 maa
@@ -55679,8 +55658,8 @@ xRj
 xRj
 xRj
 xRj
-sQl
-sQl
+ris
+ris
 uTr
 izR
 uTr
@@ -55873,8 +55852,8 @@ xRj
 xRj
 xRj
 xRj
-sQl
-sQl
+ris
+ris
 maa
 byt
 liT
@@ -56067,8 +56046,8 @@ xRj
 xRj
 xRj
 xRj
-sQl
-sQl
+ris
+ris
 ris
 byt
 byt
@@ -56262,9 +56241,9 @@ xRj
 xRj
 usG
 usY
-sQl
-sQl
-sQl
+ris
+ris
+ris
 maa
 byt
 oVo
@@ -56457,8 +56436,8 @@ xRj
 xRj
 usG
 jNg
-sQl
-sQl
+ris
+ris
 maa
 byt
 tVw
@@ -56651,8 +56630,8 @@ xRj
 xRj
 jNg
 jNg
-sQl
-sQl
+ris
+ris
 maa
 byt
 oVo
@@ -56846,7 +56825,7 @@ xRj
 xRj
 xRj
 usG
-sQl
+ris
 maa
 byt
 oVo
@@ -57040,7 +57019,7 @@ xRj
 xRj
 usG
 rnI
-sQl
+ris
 maa
 byt
 oVo
@@ -57234,7 +57213,7 @@ xRj
 xRj
 xRj
 usG
-sQl
+ris
 maa
 byt
 bZN
@@ -57428,7 +57407,7 @@ xRj
 xRj
 xRj
 xRj
-sQl
+ris
 maa
 byt
 byt
@@ -57622,7 +57601,7 @@ xRj
 xRj
 xRj
 xRj
-sQl
+ris
 ris
 ris
 iLP
@@ -61505,7 +61484,7 @@ xRj
 xRj
 xRj
 xRj
-rQl
+iif
 iif
 wCn
 mBp
@@ -61699,7 +61678,7 @@ xRj
 xRj
 xRj
 xRj
-rQl
+iif
 iif
 cKS
 hWg
@@ -61893,7 +61872,7 @@ xRj
 xRj
 xRj
 xRj
-rQl
+iif
 iif
 iif
 iif
@@ -63257,7 +63236,7 @@ xRj
 xRj
 xRj
 usG
-dIR
+xRj
 svq
 svq
 vYC
@@ -63455,7 +63434,7 @@ xRj
 xRj
 svq
 vYC
-jdR
+jNg
 vYC
 vYC
 uJx
@@ -63471,9 +63450,9 @@ cZC
 kyG
 myo
 vYC
-pwQ
+jNg
 vYC
-jdR
+xRj
 xRj
 xRj
 xRj
@@ -63647,9 +63626,9 @@ xRj
 xRj
 xRj
 xRj
-dIR
+xRj
 vYC
-vYC
+xRj
 vYC
 vYC
 pNt
@@ -63665,7 +63644,7 @@ pNt
 pNt
 vYC
 vYC
-dkf
+xRj
 jNg
 jNg
 xRj
@@ -63841,11 +63820,11 @@ xRj
 xRj
 xRj
 jNg
-jdR
-jdR
-usG
-rnI
-rQl
+jNg
+jNg
+xRj
+xRj
+xRj
 oDs
 oDs
 oDs
@@ -63858,8 +63837,8 @@ oDs
 oDs
 oDs
 vYC
-rnI
-usG
+xRj
+xRj
 jNg
 jNg
 jNg
@@ -64038,7 +64017,7 @@ jNg
 jNg
 jNg
 xRj
-usG
+xRj
 xRj
 jNg
 jNg
@@ -64049,10 +64028,10 @@ pNt
 pNt
 pNt
 pNt
-jdR
-jdR
-dkf
-usG
+jNg
+jNg
+xRj
+xRj
 xRj
 jNg
 jNg
