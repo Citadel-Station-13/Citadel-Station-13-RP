@@ -1299,6 +1299,8 @@ GLOBAL_VAR_INIT(holopad_connectivity_rebuild_queued, FALSE)
 	color = HOLO_NORMAL_COLOR
 	alpha = HOLO_NORMAL_ALPHA
 
+	pass() // macro used immediately before being undefined; BYOND bug 2072419
+
 #undef HOLO_NORMAL_COLOR
 #undef HOLO_VORE_COLOR
 #undef HOLO_NORMAL_ALPHA
