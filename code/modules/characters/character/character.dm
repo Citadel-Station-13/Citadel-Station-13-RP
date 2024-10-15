@@ -4,7 +4,9 @@
 /**
  * A character in the game.
  *
- * Can represent anything from a human to a cyborg.
+ * Represents humanoid actors.
+ *
+ * * AI / Cyborg support is rudimentary and involves special datums.
  */
 /datum/character
 	//*                             System                          *//

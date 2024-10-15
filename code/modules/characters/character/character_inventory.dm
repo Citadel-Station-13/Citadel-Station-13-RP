@@ -7,6 +7,7 @@
  * * Persistent inventory can live here for things like event characters / offmap characters.
  * * Persistent loadout lives here.
  */
-/datum/character_appearance
+/datum/character_inventory
+
 
 #warn impl

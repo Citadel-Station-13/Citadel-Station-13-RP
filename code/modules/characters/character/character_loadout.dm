@@ -5,6 +5,10 @@
  * A loadout set.
  */
 /datum/character_loadout
+	/// underwear; slot id to /datum/underwear_descriptor
+	var/list/underwear_slots
+	#warn underwaer by slot
+	
 
 #warn impl
 
