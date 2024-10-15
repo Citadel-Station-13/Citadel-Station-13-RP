@@ -5,8 +5,10 @@
 
 	var/datum/zas_edge/edge = new /datum/zas_edge/zone(zone_A, zone_B)
 
-	var/datum/gas_mixture/air_A = zone_A.air = new /datum/gas_mixture(CELL_VOLUME)
-	var/datum/gas_mixture/air_B = zone_B.air = new /datum/gas_mixture(CELL_VOLUME)
+	var/datum/gas_mixture/air_A = new /datum/gas_mixture(CELL_VOLUME)
+	zone_A.air = air_A
+	var/datum/gas_mixture/air_B = new /datum/gas_mixture(CELL_VOLUME)
+	zone_B.air = air_B
 
 	air_A.group_multiplier = 4
 	air_B.group_multiplier = 1
