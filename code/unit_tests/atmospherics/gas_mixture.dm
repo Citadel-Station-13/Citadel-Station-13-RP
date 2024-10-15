@@ -29,7 +29,6 @@
 	if(total_energy_old != total_energy_new)
 		TEST_FAIL("share_with_mixture() didn't conserve energy (expected [total_energy_old], actual [total_energy_new])")
 
-// todo: share_with_mixture_partial for /datum/gas_mixture/proc/share_with_mixture(???, 0.75)
 // todo: share_with_immutable_full for /datum/gas_mixture/proc/share_with_immutable(???, ??? ???, 1)
 // todo: share_with_immutable_partial for /datum/gas_mixture/proc/share_with_immutable(???, ??? ???, 1)
 
