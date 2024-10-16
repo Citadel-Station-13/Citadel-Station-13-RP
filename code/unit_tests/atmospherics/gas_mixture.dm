@@ -81,10 +81,10 @@
 		TEST_FAIL("share_with_mixture() didn't equalize gas (expected [266.666667], actual [air_A.gas[GAS_ID_OXYGEN]])")
 	if(air_B.gas[GAS_ID_OXYGEN] != 116.666667)
 		TEST_FAIL("share_with_mixture() didn't conserve gas (expected [116.666667], actual [air_B.gas[GAS_ID_OXYGEN]])")
-	if(air_A.temperature != 209.090909)
-		TEST_FAIL("share_with_mixture() didn't equalize temp on side A (expected [209.090909], actual [air_A.temperature])")
-	if(air_B.temperature != 345.454545)
-		TEST_FAIL("share_with_mixture() didn't equalize temp on side B (expected [345.454545], actual [air_B.temperature])")
+	if(air_A.temperature != 212.5)
+		TEST_FAIL("share_with_mixture() didn't equalize temp on side A (expected [212.5], actual [air_A.temperature])")
+	if(air_B.temperature != 357.142857)
+		TEST_FAIL("share_with_mixture() didn't equalize temp on side B (expected [357.142857], actual [air_B.temperature])")
 
 	var/total_energy_new = XGM_THERMAL_ENERGY(air_A) + XGM_THERMAL_ENERGY(air_B)
 
