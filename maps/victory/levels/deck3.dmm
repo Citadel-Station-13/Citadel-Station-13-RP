@@ -11640,7 +11640,7 @@
 	},
 /obj/effect/shuttle_landmark{
 	base_area = /area/space;
-	base_turf = /turf/space;
+	base_turf = /turf/simulated/floor/reinforced;
 	docking_controller = "belter_docking";
 	landmark_tag = "belter_station";
 	name = "NSV Victory - Belter Shuttle"

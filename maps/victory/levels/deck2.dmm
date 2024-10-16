@@ -1929,7 +1929,7 @@
 	dir = 9
 	},
 /turf/simulated/shuttle/wall/voidcraft/hard_corner,
-/area/shuttle/emt/general)
+/area/shuttle/emt/cockpit)
 "bzR" = (
 /obj/machinery/mech_recharger,
 /turf/simulated/floor/tiled/steel_ridged,
@@ -3464,6 +3464,9 @@
 /obj/map_helper/access_helper/airlock/station/science/xenobotany,
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology/xenoflora/lab_atmos)
+"cvO" = (
+/turf/simulated/shuttle/wall/voidcraft/blue,
+/area/shuttle/emt/cockpit)
 "cvP" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 9
@@ -10974,6 +10977,12 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/medbay3)
+"hFE" = (
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 10
+	},
+/turf/simulated/shuttle/wall/voidcraft/blue,
+/area/shuttle/emt/cockpit)
 "hFZ" = (
 /obj/machinery/r_n_d/destructive_analyzer,
 /obj/effect/floor_decal/borderfloor{
@@ -12038,8 +12047,6 @@
 /area/rnd/reception_desk)
 "itb" = (
 /obj/structure/bed/chair/wheelchair,
-/obj/effect/shuttle_landmark/victory/deck3/emt,
-/obj/overmap/entity/visitable/ship/landable/emt/victory,
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 9
 	},
@@ -23500,7 +23507,7 @@
 	},
 /obj/map_helper/access_helper/airlock/station/medical/department,
 /turf/simulated/floor/tiled/white,
-/area/shuttle/emt/general)
+/area/shuttle/emt/cockpit)
 "qvd" = (
 /obj/machinery/status_display{
 	pixel_y = 30
@@ -32154,6 +32161,13 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/virology)
+"wuc" = (
+/obj/machinery/door/firedoor{
+	dir = 8
+	},
+/obj/spawner/window/low_wall/reinforced/full,
+/turf/simulated/floor/plating,
+/area/shuttle/emt/cockpit)
 "wum" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -33900,6 +33914,8 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
+/obj/effect/shuttle_landmark/victory/deck3/emt,
+/obj/overmap/entity/visitable/ship/landable/emt/victory,
 /turf/simulated/floor/tiled/white,
 /area/shuttle/emt/general)
 "xGI" = (
@@ -60059,9 +60075,9 @@ oku
 oku
 pbD
 ecT
-oku
-oku
-uuw
+cvO
+cvO
+hFE
 bzj
 dyS
 pRW
@@ -60253,10 +60269,10 @@ oku
 itb
 iLk
 nXk
-oku
+cvO
 eaq
 dTF
-oku
+cvO
 dyS
 pRW
 pRW
@@ -60450,7 +60466,7 @@ jye
 qtW
 vFG
 xhP
-oku
+cvO
 dyS
 pRW
 pRW
@@ -60641,10 +60657,10 @@ mQm
 ktt
 rnw
 dKK
-oku
+cvO
 qKR
 cEs
-oku
+cvO
 dyS
 pRW
 pRW
@@ -60835,10 +60851,10 @@ oku
 kJt
 rnw
 kwz
-oku
+cvO
 muS
 pZN
-oku
+cvO
 dyS
 pRW
 pRW
@@ -61029,10 +61045,10 @@ oku
 xYz
 rnw
 kDA
-oku
-nBs
-nBs
-oku
+cvO
+wuc
+wuc
+cvO
 dyS
 pRW
 pRW
