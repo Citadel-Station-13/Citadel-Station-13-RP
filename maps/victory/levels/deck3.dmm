@@ -14326,6 +14326,9 @@
 /obj/effect/floor_decal/corner_oldtile/white/diagonal,
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/kitchen)
+"nhl" = (
+/turf/simulated/floor/plating,
+/area/space)
 "nhQ" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
@@ -58212,7 +58215,7 @@ mDp
 pRW
 pRW
 pRW
-pRW
+nhl
 lTw
 alQ
 gwz
@@ -58406,7 +58409,7 @@ mDp
 pRW
 pRW
 pRW
-pRW
+nhl
 lTw
 lIV
 gwz
