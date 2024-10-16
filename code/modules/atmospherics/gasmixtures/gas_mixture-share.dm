@@ -24,7 +24,6 @@
 #endif
 
 	// tally total group multiplier & volume for further processing
-	var/total_group_multiplier = src.group_multiplier + other.group_multiplier
 	var/total_effective_volume = src.group_multiplier * src.volume + other.group_multiplier * other.volume
 
 	// get ratio of how much will remain

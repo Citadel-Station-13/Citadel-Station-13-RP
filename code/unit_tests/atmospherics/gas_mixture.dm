@@ -91,6 +91,31 @@
 	if(total_energy_old != total_energy_new)
 		TEST_FAIL("share_with_mixture() didn't conserve energy (expected [total_energy_old], actual [total_energy_new])")
 
+// for /datum/gas_mixture/proc/share_with_mixture(???, ???)
+/datum/unit_test/gas_mixture_share_with_mixture_non_full_ratio_3/Run()
+	// 1000L
+	var/datum/gas_mixture/air_A = new(1000)
+	air_A.adjust_gas_temp(GAS_ID_OXYGEN, 300, 200)
+	air_A.adjust_gas_temp(GAS_ID_AMMONIA, 300, 800)
+	air_B.group_multiplier = 15
+	// 1000L * 2
+	var/datum/gas_mixture/air_B = new(1000)
+	air_B.adjust_gas_temp(GAS_ID_OXYGEN, 100, 400)
+	air_B.adjust_gas_temp(GAS_ID_CARBON_DIOXIDE, 200, 255)
+	air_B.group_multiplier = 2
+
+	air_A.update_values()
+	air_B.update_values()
+
+	var/total_energy_old = XGM_THERMAL_ENERGY(air_A) + XGM_THERMAL_ENERGY(air_B)
+
+	air_A.share_with_mixture(air_B, 0.45)
+
+	var/total_energy_new = XGM_THERMAL_ENERGY(air_A) + XGM_THERMAL_ENERGY(air_B)
+
+	if(total_energy_old != total_energy_new)
+		TEST_FAIL("share_with_mixture() didn't conserve energy (expected [total_energy_old], actual [total_energy_new])")
+
 // for /datum/gas_mixture/proc/share_with_mixture(???, 1)
 /datum/unit_test/gas_mixture_share_with_mixture_volume_skewed/Run()
 	// 1000L
