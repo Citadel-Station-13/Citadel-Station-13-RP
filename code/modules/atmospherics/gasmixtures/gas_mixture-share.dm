@@ -22,6 +22,9 @@
 #ifdef CF_ATMOS_XGM_DEBUG_ASSERTIONS
 	ASSERT(ratio > 0 && ratio <= 1)
 #endif
+#ifdef CF_ATMOS_XGM_UPDATE_VALUES_ASSERTIONS
+	ASSERT(gas ~= debug_gas_archive)
+#endif
 
 	// tally total group multiplier & volume for further processing
 	var/total_effective_volume = src.group_multiplier * src.volume + other.group_multiplier * other.volume
@@ -33,32 +36,32 @@
 	var/our_proportion = (src.volume * src.group_multiplier) / (total_effective_volume)
 	var/their_proportion = (other.volume * other.group_multiplier) / (total_effective_volume)
 
-	// get pre-transfer heat properties
-	var/our_specific_heat = src.specific_heat()
-	var/our_capacity_singular = our_specific_heat * src.total_moles
-
-	var/their_specific_heat = other.specific_heat()
-	var/their_capacity_singular = their_specific_heat * other.total_moles
-
-	var/total_effective_capacity = our_capacity_singular * src.group_multiplier + their_capacity_singular * other.group_multiplier
-	var/average_injected_temperature = (our_capacity_singular * src.temperature * src.group_multiplier + their_capacity_singular * other.temperature * other.group_multiplier) / total_effective_capacity
-
-	// handle gas
+	// handle gas & tally heat
+	var/our_specific_heat = 0
+	var/their_specific_heat = 0
 	for(var/gas in gas | other.gas)
-		// this splits it by volume
-		var/combined = (src.gas[gas] * src.group_multiplier + other.gas[gas] * other.group_multiplier) * ratio
+		// cache existing
 		var/mol_existing_A = src.gas[gas]
 		var/mol_existing_B = other.gas[gas]
-		var/mol_inject_A = combined * our_proportion / src.group_multiplier
-		var/mol_inject_B = combined * their_proportion / other.group_multiplier
-		src.gas[gas] = mol_existing_A * inverse_ratio + mol_inject_A
-		other.gas[gas] = mol_existing_B * inverse_ratio + mol_inject_B
+		// tally specific heat while we're at it to save a proccall and more iteration
+		var/specific_heat = global.gas_data.specific_heats[gas]
+		our_specific_heat += (specific_heat * src.gas[gas]) / src.total_moles
+		their_specific_heat += (specific_heat * other.gas[gas]) / other.total_moles
+		// combine both, calculate the amount actualyl being shared, then split to to each by volume
+		// need to divide out group multiplier unfortunately
+		var/combined = (mol_existing_A * src.group_multiplier + mol_existing_B * other.group_multiplier) * ratio
+		src.gas[gas] = mol_existing_A * inverse_ratio + (combined * our_proportion) / src.group_multiplier
+		other.gas[gas] = mol_existing_B * inverse_ratio + (combined * their_proportion) / other.group_multiplier
 
 	// handle temp
+	var/our_capacity_singular = our_specific_heat * src.total_moles
+	var/their_capacity_singular = their_specific_heat * other.total_moles
+	var/total_shared_capacity = (our_capacity_singular * src.group_multiplier + their_capacity_singular * other.group_multiplier) * ratio
+
+	var/average_injected_temperature = (our_capacity_singular * src.temperature * src.group_multiplier + their_capacity_singular * other.temperature * other.group_multiplier) / total_effective_capacity
+
 	var/our_remaining_capacity = our_capacity_singular * src.group_multiplier * inverse_ratio
 	var/their_remaining_capacity = their_capacity_singular * other.group_multiplier * inverse_ratio
-
-	var/total_shared_capacity = total_effective_capacity * ratio
 
 	var/our_injected_capacity = total_shared_capacity * our_proportion
 	var/our_new_capacity = our_injected_capacity + our_remaining_capacity

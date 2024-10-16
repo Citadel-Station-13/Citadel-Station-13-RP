@@ -97,7 +97,7 @@
 	var/datum/gas_mixture/air_A = new(1000)
 	air_A.adjust_gas_temp(GAS_ID_OXYGEN, 300, 200)
 	air_A.adjust_gas_temp(GAS_ID_AMMONIA, 300, 800)
-	air_B.group_multiplier = 15
+	air_A.group_multiplier = 15
 	// 1000L * 2
 	var/datum/gas_mixture/air_B = new(1000)
 	air_B.adjust_gas_temp(GAS_ID_OXYGEN, 100, 400)
