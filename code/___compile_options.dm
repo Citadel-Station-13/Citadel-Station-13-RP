@@ -181,6 +181,11 @@
 /// Enable general gasmixture assertions.
 // #define CF_ATMOS_XGM_DEBUG_ASSERTIONS
 
+/// Ensures update_values() is enforced
+///
+/// * VERY. VERY. LAGGY.
+#define CF_ATMOS_XGM_UPDATE_VALUES_ASSERTIONS
+
 //? ZAS (Environmental)
 
 /// Enable general environmental assertions.

@@ -33,6 +33,12 @@
 	/// * Updated by update_values().
 	var/tmp/total_moles = 0
 
+	//* Debug *//
+
+	#ifdef CF_ATMOS_XGM_UPDATE_VALUES_ASSERTIONS
+	var/list/debug_gas_archive
+	#endif
+
 /datum/gas_mixture/New(vol = CELL_VOLUME)
 	volume = vol
 	gas = list()
@@ -165,6 +171,10 @@
 	TOTAL_MOLES(gas, total_moles)
 	if(!total_moles)
 		temperature = TCMB
+
+	#ifdef CF_ATMOS_XGM_UPDATE_VALUES_ASSERTIONS
+	debug_gas_archive = gas?.Copy()
+	#endif
 
 //Copies gas and temperature from another gas_mixture.
 /datum/gas_mixture/proc/copy_from(const/datum/gas_mixture/sample)

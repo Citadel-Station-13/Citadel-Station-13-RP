@@ -30,6 +30,23 @@
 		. += global.gas_data.specific_heats[g] * gas[g]
 
 /**
+ * returns the specific heat per mol of gas mix
+ *
+ * * does not take group multiplier into account.
+ * * this exists to not have overly large numbers in critical areas where precision matters
+ * * you must have already called update_values() beforehand!
+ *
+ * @return J/K*mol; energy in joules input to heat this mixture by one degree for every mol this mixture has.
+ */
+/datum/gas_mixture/proc/specific_heat()
+#ifdef CF_ATMOS_XGM_UPDATE_VALUES_ASSERTIONS
+	ASSERT(gas ~= debug_gas_archive)
+#endif
+	. = 0
+	for(var/id in gas)
+		. += global.gas_data.specific_heats[id] * (gas[id] / total_moles)
+
+/**
  * Adjusts thermal energy in joules.
  *
  * * Takes group_multiplier into account.

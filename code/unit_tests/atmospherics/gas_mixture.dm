@@ -77,10 +77,10 @@
 
 	air_A.share_with_mixture(air_B, 1)
 
-	if(air_A.gas[GAS_ID_OXYGEN] != (500 / 5 * 3))
-		TEST_FAIL("share_with_mixture() didn't equalize gas (expected [(500 / 5 * 3)], actual [air_A.gas[GAS_ID_OXYGEN]])")
-	if(air_B.gas[GAS_ID_OXYGEN] != (500 / 5 * 2))
-		TEST_FAIL("share_with_mixture() didn't conserve gas (expected [(500 / 5 * 2)], actual [air_B.gas[GAS_ID_OXYGEN]])")
+	if(air_A.gas[GAS_ID_OXYGEN] != 300)
+		TEST_FAIL("share_with_mixture() didn't equalize gas (expected [300], actual [air_A.gas[GAS_ID_OXYGEN]])")
+	if(air_B.gas[GAS_ID_OXYGEN] != 100)
+		TEST_FAIL("share_with_mixture() didn't conserve gas (expected [100], actual [air_B.gas[GAS_ID_OXYGEN]])")
 	if(air_A.temperature != 280)
 		TEST_FAIL("share_with_mixture() didn't equalize temp on side A (expected 280, actual [air_A.temperature])")
 	if(air_B.temperature != 280)
