@@ -1,5 +1,12 @@
 /**
  * XGM-based gas mixtures from baystation.
+ *
+ * * gas mixtures are a simulation construct, not a feature system. any snowflake procs should go in their own files.
+ *   as an example, `gas_mixture-environmental` is for our environmental (ZAS, right now) system; it is NOT core code.
+ * * gas mixtures are always thermodynamically consistent (no energy is created or lost) on any interaction between two
+ *   non-immutable mixtures. if it isn't, the gas mixture is always in the wrong.
+ * * gas mixtures are never thermodynamically consistent on interaction between a mutable and an immutable mixture.
+ *   procs that do that tend to return the energy that was created / gained so you can handle it.
  */
 /datum/gas_mixture
 	/**

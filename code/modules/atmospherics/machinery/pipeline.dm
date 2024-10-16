@@ -172,8 +172,6 @@
 
 	// we know that heat capacity will never change through this proc
 	var/our_heat_capacity = air.heat_capacity()
-	// we know that volume will never change through this proc
-	var/our_volume = air.volume
 
 	/**
 	 * First deal with special heat exchanger temperature
@@ -191,9 +189,6 @@
 		)
 		air.adjust_thermal_energy(heat_gain)
 		anything_changed = TRUE
-
-	// calculated after snowflake heat exchanger temperature is checked
-	var/our_energy = our_heat_capacity * air.temperature
 
 	var/temperature_change = target.air_thermal_superconduction(
 		air.temperature,

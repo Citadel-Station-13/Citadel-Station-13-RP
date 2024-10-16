@@ -1,7 +1,7 @@
 //* Helpers, so we're not up a creek if we ever decide to use something like auxmos. *//
 //*    -- These are only necessary for things that aren't already proc-calls! --     *//
 
-//? group multiplier dependent ?//
+//* group multiplier dependent *//
 
 /// Takes group_multiplier into account.
 #define XGM_VOLUME(GM) (GM.volume * GM.group_multiplier)
@@ -20,7 +20,7 @@
 /// * In Joules
 #define XGM_THERMAL_ENERGY_SINGULAR(GM) (GM.heat_capacity_singular() * GM.temperature)
 
-//? group multiplier independent ?//
+//* group multiplier independent *//
 
 #define XGM_TEMPERATURE(GM) (GM.temperature)
 #define XGM_PRESSURE(GM) ((GM.total_moles * R_IDEAL_GAS_EQUATION * GM.temperature) / GM.volume)
