@@ -23,30 +23,10 @@ right now its not a big priority - Bloop 2022
 
 // Exclusive landmark for docking at the station
 
-/obj/effect/shuttle_landmark/victory/deck4/civvie
-	name = "NSV Victory - Civilian Transport Dock"
-	landmark_tag = "victory_civvie_home"
-	docking_controller = "civvie_dock"
-	base_turf = /turf/space
-	base_area = /area/space
-
 /obj/effect/shuttle_landmark/victory/deck4/specops
 	name = "NSV Victory - Special Operations Dock"
 	landmark_tag = "victory_specops_dock"
 	docking_controller = "victory_specops_dock"
-	base_turf = /turf/space
-	base_area = /area/space
-
-/obj/effect/shuttle_landmark/victory/deck3/emt
-	name = "NSV Victory - EMT Shuttle Dock"
-	landmark_tag = "victory_emt_dock"
-	docking_controller = "emt_shuttle_dock"
-	base_turf = /turf/space
-	base_area = /area/space
-
-/obj/effect/shuttle_landmark/victory/deck2/mining
-	name = "NSV Victory Mining Dock"
-	landmark_tag = "victory_mining_port"
 	base_turf = /turf/space
 	base_area = /area/space
 
@@ -62,26 +42,39 @@ right now its not a big priority - Bloop 2022
 
 // Exclusive landmark for docking *inside* the station
 
-/obj/effect/shuttle_landmark/victory/deck4/excursion
+/obj/effect/shuttle_landmark/victory/deck1/excursion
 	name = "NSV Victory - Excursion Hangar"
 	landmark_tag = "victory_excursion_hangar"
 	docking_controller = "expshuttle_dock"
 	base_turf = /turf/simulated/floor/tiled/techfloor/grid
 	base_area = /area/exploration/excursion_dock
 
-/obj/effect/shuttle_landmark/victory/deck4/courser
+/obj/effect/shuttle_landmark/victory/deck1/courser
 	name = "NSV Victory - Courser Hangar"
 	landmark_tag = "victory_courser_hangar"
 	docking_controller = "courser_dock"
 	base_turf = /turf/simulated/floor/tiled/techfloor/grid
 	base_area = /area/exploration/courser_dock
 
-/obj/effect/shuttle_landmark/victory/deck4/hammerhead
-	name = "NSV Victory - Hammerhead Hangar"
-	landmark_tag = "rift_hammerhead_hangar"
-	docking_controller = "hammerhead_docker"
+/obj/effect/shuttle_landmark/victory/deck3/emt
+	name = "NSV Victory - EMT Shuttle Dock"
+	landmark_tag = "victory_emt_dock"
+	docking_controller = "emt_shuttle_dock"
 	base_turf = /turf/simulated/floor/tiled/techfloor/grid
-	base_area = /area/security/hammerhead_bay
+	base_area = /area/hallway/station/docks
+
+/obj/effect/shuttle_landmark/victory/deck2/mining
+	name = "NSV Victory Mining Dock"
+	landmark_tag = "victory_mining_port"
+	base_turf = /turf/simulated/floor/tiled/techfloor/grid
+	base_area = /area/quartermaster/miningdock
+
+/obj/effect/shuttle_landmark/victory/deck4/civvie
+	name = "NSV Victory - Civilian Transport Dock"
+	landmark_tag = "victory_civvie_home"
+	docking_controller = "civvie_dock"
+	base_turf = /turf/simulated/floor/tiled/techfloor/grid
+	base_area = /area/hallway/secondary/docking_hallway
 
 // ON STATION NAV POINTS
 
