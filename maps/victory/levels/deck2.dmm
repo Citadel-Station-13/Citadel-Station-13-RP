@@ -3464,9 +3464,6 @@
 /obj/map_helper/access_helper/airlock/station/science/xenobotany,
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology/xenoflora/lab_atmos)
-"cvO" = (
-/turf/simulated/shuttle/wall/voidcraft/blue,
-/area/shuttle/emt/cockpit)
 "cvP" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 9
@@ -10131,6 +10128,13 @@
 	},
 /turf/simulated/floor/tiled,
 /area/victory/hallway/d2porthall)
+"hdR" = (
+/obj/machinery/door/firedoor{
+	dir = 8
+	},
+/obj/spawner/window/low_wall/reinforced/full,
+/turf/simulated/floor/plating,
+/area/shuttle/emt/cockpit)
 "heR" = (
 /obj/machinery/fire_alarm/north_mount,
 /obj/effect/floor_decal/techfloor{
@@ -10907,6 +10911,12 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
 	},
+/obj/machinery/embedded_controller/radio/simple_docking_controller{
+	frequency = 1380;
+	id_tag = "emt_shuttle_dock";
+	req_one_access = list(5,67);
+	pixel_y = 29
+	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/hallway/station/docks)
 "hDL" = (
@@ -10977,12 +10987,6 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/medbay3)
-"hFE" = (
-/obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 10
-	},
-/turf/simulated/shuttle/wall/voidcraft/blue,
-/area/shuttle/emt/cockpit)
 "hFZ" = (
 /obj/machinery/r_n_d/destructive_analyzer,
 /obj/effect/floor_decal/borderfloor{
@@ -14648,6 +14652,9 @@
 	},
 /turf/simulated/floor/tiled,
 /area/medical/virology)
+"kkL" = (
+/turf/simulated/shuttle/wall/voidcraft/blue,
+/area/shuttle/emt/cockpit)
 "kkX" = (
 /obj/effect/floor_decal/steeldecal/steel_decals9,
 /obj/machinery/fire_alarm/north_mount,
@@ -29754,6 +29761,12 @@
 "uPt" = (
 /turf/simulated/wall/r_wall/prepainted/science,
 /area/maintenance/research)
+"uPy" = (
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 10
+	},
+/turf/simulated/shuttle/wall/voidcraft/blue,
+/area/shuttle/emt/cockpit)
 "uPA" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -32161,13 +32174,6 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/virology)
-"wuc" = (
-/obj/machinery/door/firedoor{
-	dir = 8
-	},
-/obj/spawner/window/low_wall/reinforced/full,
-/turf/simulated/floor/plating,
-/area/shuttle/emt/cockpit)
 "wum" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -60075,9 +60081,9 @@ oku
 oku
 pbD
 ecT
-cvO
-cvO
-hFE
+kkL
+kkL
+uPy
 bzj
 dyS
 pRW
@@ -60269,10 +60275,10 @@ oku
 itb
 iLk
 nXk
-cvO
+kkL
 eaq
 dTF
-cvO
+kkL
 dyS
 pRW
 pRW
@@ -60466,7 +60472,7 @@ jye
 qtW
 vFG
 xhP
-cvO
+kkL
 dyS
 pRW
 pRW
@@ -60657,10 +60663,10 @@ mQm
 ktt
 rnw
 dKK
-cvO
+kkL
 qKR
 cEs
-cvO
+kkL
 dyS
 pRW
 pRW
@@ -60851,10 +60857,10 @@ oku
 kJt
 rnw
 kwz
-cvO
+kkL
 muS
 pZN
-cvO
+kkL
 dyS
 pRW
 pRW
@@ -61045,10 +61051,10 @@ oku
 xYz
 rnw
 kDA
-cvO
-wuc
-wuc
-cvO
+kkL
+hdR
+hdR
+kkL
 dyS
 pRW
 pRW
