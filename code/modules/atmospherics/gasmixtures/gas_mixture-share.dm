@@ -53,8 +53,8 @@
 	var/our_injected_capacity = total_effective_capacity * ratio * (src.group_multiplier / total_group_multiplier)
 	var/their_injected_capacity = total_effective_capacity * ratio * (other.group_multiplier / total_group_multiplier)
 
-	src.temperature = ((temperature * our_remaining_capacity) + (our_injected_capacity * average_injected_temperature) / (our_remaining_capacity + our_injected_capacity))
-	other.temperature = ((temperature * their_remaining_capacity) + (their_injected_capacity * average_injected_temperature) / (their_remaining_capacity + their_injected_capacity))
+	src.temperature = ((temperature * our_remaining_capacity) + (our_injected_capacity * average_injected_temperature)) / (our_remaining_capacity + our_injected_capacity)
+	other.temperature = ((temperature * their_remaining_capacity) + (their_injected_capacity * average_injected_temperature)) / (their_remaining_capacity + their_injected_capacity)
 
 	// update
 	update_values()
