@@ -40,14 +40,14 @@
 	// handle gas & tally heat
 	var/our_specific_heat = 0
 	var/their_specific_heat = 0
-	for(var/gas in gas | other.gas)
+	for(var/gas in (src.gas | other.gas))
 		// cache existing
 		var/mol_existing_A = src.gas[gas]
 		var/mol_existing_B = other.gas[gas]
 		// tally specific heat while we're at it to save a proccall and more iteration
 		var/specific_heat = global.gas_data.specific_heats[gas]
 		our_specific_heat += (specific_heat * mol_existing_A) / src.total_moles
-		their_specific_heat += (specific_heat *mol_existing_B) / other.total_moles
+		their_specific_heat += (specific_heat * mol_existing_B) / other.total_moles
 		// combine both, calculate the amount actualyl being shared, then split to to each by volume
 		// need to divide out group multiplier too, as volume takes that into account
 		var/combined = (mol_existing_A * src.group_multiplier + mol_existing_B * other.group_multiplier) * ratio
