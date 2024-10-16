@@ -23,15 +23,18 @@
 	ASSERT(ratio > 0 && ratio <= 1)
 #endif
 
+	// tally total group multiplier & volume for further processing
 	var/total_group_multiplier = src.group_multiplier + other.group_multiplier
 	var/total_effective_volume = src.group_multiplier * src.volume + other.group_multiplier * other.volume
+
+	// get ratio of how much will remain
 	var/inverse_ratio = 1 - ratio
 
 	// get ratio of mixture to full volume
 	var/our_proportion = (src.volume * src.group_multiplier) / (total_effective_volume)
 	var/their_proportion = (other.volume * other.group_multiplier) / (total_effective_volume)
 
-	// get pre-transfer capacities
+	// get pre-transfer heat properties
 	var/our_specific_heat = src.specific_heat()
 	var/their_specific_heat = other.specific_heat()
 	var/our_capacity_singular = our_specific_heat * src.total_moles
@@ -45,20 +48,22 @@
 		other.gas[gas] = other.gas[gas] * inverse_ratio + combined * their_proportion / other.group_multiplier
 
 	// handle temp
-
 	var/our_remaining_capacity = our_capacity_singular * inverse_ratio
 	var/their_remaining_capacity = their_capacity_singular * inverse_ratio
 
-	var/total_effective_capacity_singular = ((our_capacity_singular * (src.group_multiplier / total_group_multiplier)) + (their_capacity_singular * (other.group_multiplier / total_group_multiplier)))
-	var/average_injected_temperature = ((our_capacity_singular / total_group_multiplier * src.temperature) + (their_capacity_singular / total_group_multiplier * other.temperature)) / total_effective_capacity_singular
+	// var/total_effective_capacity_singular = ((our_capacity_singular * (src.group_multiplier / total_group_multiplier)) + (their_capacity_singular * (other.group_multiplier / total_group_multiplier)))
+	// var/average_injected_temperature = ((our_capacity_singular / total_group_multiplier * src.temperature) + (their_capacity_singular / total_group_multiplier * other.temperature)) / total_effective_capacity_singular
 	var/total_effective_capacity = our_capacity_singular * src.group_multiplier + their_capacity_singular * other.group_multiplier
-	// var/average_injected_temperature = (our_capacity_singular * temperature * src.group_multiplier + their_capacity_singular * other.temperature * other.group_multiplier) / total_effective_capacity
+	var/average_injected_temperature = (our_capacity_singular * src.temperature * src.group_multiplier + their_capacity_singular * other.temperature * other.group_multiplier) / total_effective_capacity
 
 	var/our_injected_capacity = total_effective_capacity * ratio * our_proportion
-	var/their_injected_capacity = total_effective_capacity * ratio * their_proportion
+	var/our_new_capacity = our_injected_capacity + our_remaining_capacity
 
-	src.temperature = ((temperature * our_remaining_capacity) + (our_injected_capacity * average_injected_temperature)) / (our_remaining_capacity + our_injected_capacity)
-	other.temperature = ((other.temperature * their_remaining_capacity) + (their_injected_capacity * average_injected_temperature)) / (their_remaining_capacity + their_injected_capacity)
+	var/their_injected_capacity = total_effective_capacity * ratio * their_proportion
+	var/their_new_capacity = their_injected_capacity + their_remaining_capacity
+
+	src.temperature = src.temperature * (our_remaining_capacity / our_new_capacity) + average_injected_temperature * (our_injected_capacity / our_new_capacity)
+	other.temperature = other.temperature * (their_remaining_capacity / their_new_capacity) + average_injected_temperature * (their_injected_capacity / their_new_capacity)
 
 	// update
 	update_values()

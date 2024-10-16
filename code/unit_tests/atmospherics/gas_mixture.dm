@@ -102,6 +102,9 @@
 	air_B.adjust_gas_temp(GAS_ID_OXYGEN, 100, 400)
 	air_B.group_multiplier = 2
 
+	air_A.update_values()
+	air_B.update_values()
+
 	var/total_energy_old = XGM_THERMAL_ENERGY(air_A) + XGM_THERMAL_ENERGY(air_B)
 
 	// energy is same per mol as both us oxy; that's fine, we're not testing heat_capacity() here
