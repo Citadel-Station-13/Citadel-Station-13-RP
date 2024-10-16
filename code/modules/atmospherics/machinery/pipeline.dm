@@ -1,5 +1,5 @@
 /**
- * A continuous
+ * A continuous line of connected pipes. Air flows instantly between segments and edge airs.
  */
 /datum/pipeline
 	var/datum/gas_mixture/air

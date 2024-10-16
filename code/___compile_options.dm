@@ -64,6 +64,14 @@
  */
 // #define UNIT_TESTS
 
+/**
+ * If this is uncommented, we will compile in the unit test code without actually running them.
+ */
+#define INCLUDE_UNIT_TESTS
+
+#ifdef INCLUDE_UNIT_TESTS
+	#warn Unit tests are compiled in manually. This shouldn't be on in live.
+#endif
 
 /**
  * If this is uncommented, will attempt to load and initialize prof.dll/libprof.so.
