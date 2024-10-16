@@ -42,14 +42,14 @@ right now its not a big priority - Bloop 2022
 
 // Exclusive landmark for docking *inside* the station
 
-/obj/effect/shuttle_landmark/victory/deck1/excursion
+/obj/effect/shuttle_landmark/victory/deck4/excursion
 	name = "NSV Victory - Excursion Hangar"
 	landmark_tag = "victory_excursion_hangar"
 	docking_controller = "expshuttle_dock"
 	base_turf = /turf/simulated/floor/tiled/techfloor/grid
 	base_area = /area/exploration/excursion_dock
 
-/obj/effect/shuttle_landmark/victory/deck1/courser
+/obj/effect/shuttle_landmark/victory/deck4/courser
 	name = "NSV Victory - Courser Hangar"
 	landmark_tag = "victory_courser_hangar"
 	docking_controller = "courser_dock"
