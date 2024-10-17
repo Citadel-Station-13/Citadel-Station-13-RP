@@ -5943,10 +5943,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/victory/hallway/d2porthall)
-"eft" = (
-/obj/effect/floor_decal/techfloor,
-/turf/simulated/floor/tiled,
-/area/maintenance/medbay/aft)
 "efL" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
@@ -6119,7 +6115,7 @@
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled,
-/area/maintenance/medbay/aft)
+/area/victory/hallway/d2porthall)
 "ejy" = (
 /obj/machinery/requests_console{
 	department = "Robotics";
@@ -8576,9 +8572,6 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/medbay3)
-"fUM" = (
-/turf/simulated/floor/tiled,
-/area/maintenance/medbay/aft)
 "fUW" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 10
@@ -22024,7 +22017,7 @@
 	pixel_y = -29
 	},
 /turf/simulated/floor/tiled,
-/area/maintenance/medbay/aft)
+/area/victory/hallway/d2porthall)
 "pxV" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/red{
 	dir = 8
@@ -32674,7 +32667,7 @@
 	icon_state = "2-9"
 	},
 /turf/simulated/floor/tiled,
-/area/maintenance/medbay/aft)
+/area/victory/hallway/d2porthall)
 "wMp" = (
 /turf/simulated/wall/prepainted,
 /area/holodeck_control)
@@ -45733,7 +45726,7 @@ oaU
 cBK
 gSa
 pwV
-mmI
+kdl
 igd
 igd
 igd
@@ -45926,8 +45919,8 @@ tvV
 oaU
 sAS
 nuO
-eft
-mmI
+qbE
+kdl
 oMl
 eqi
 hKr
@@ -46314,8 +46307,8 @@ oaU
 oaU
 pBU
 tVO
-fUM
-eft
+jPR
+qbE
 oMl
 wBt
 pQN
