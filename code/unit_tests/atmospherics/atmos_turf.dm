@@ -8,8 +8,8 @@
 	test_turf.initial_gas_mix = "o2=100&TEMP=1000"
 	test_turf.make_air()
 
-	TEST_ASSERT_NOTNULL(test_turf.air)
-	TEST_ASSERT_NULL(test_turf.zone)
+	TEST_ASSERT_NOTNULL(test_turf.air, null)
+	TEST_ASSERT_NULL(test_turf.zone, null)
 
 	var/hypothetical_container_volume = 1000
 	var/hypothetical_exchange_volume = 200
@@ -38,9 +38,9 @@
 	var/actual_energy = (initial_temperature + actual_temperature_change) * initial_heat_capacity
 
 	if(!XGM_MOSTLY_CLOSE_ENOUGH(actual_temperature, expected_temperature))
-		TEST_FAIL("expected temperature [num2text(expected_temperature, 16)], actual [num2text(actual_temperature), 16]")
+		TEST_FAIL("expected temperature [num2text(expected_temperature, 16)], actual [num2text(actual_temperature, 16)]")
 	if(!XGM_MOSTLY_CLOSE_ENOUGH(actual_energy, expected_energy))
-		TEST_FAIL("expected energy [num2text(expected_energy, 16)], actual [num2text(actual_energy), 16]")
+		TEST_FAIL("expected energy [num2text(expected_energy, 16)], actual [num2text(actual_energy, 16)]")
 
 	test_turf.ChangeTurf(/turf/simulated/floor/plating)
 
@@ -52,8 +52,8 @@
 	test_turf.initial_gas_mix = "o2=100&TEMP=1000"
 	test_turf.make_air()
 
-	TEST_ASSERT_NOTNULL(test_turf.air)
-	TEST_ASSERT_NULL(test_turf.zone)
+	TEST_ASSERT_NOTNULL(test_turf.air, null)
+	TEST_ASSERT_NULL(test_turf.zone, null)
 
 	var/hypothetical_container_volume = 1000
 	var/hypothetical_exchange_volume = 200
