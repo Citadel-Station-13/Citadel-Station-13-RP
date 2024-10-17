@@ -164,6 +164,15 @@
 	color = "#A9A9A9"
 	},
 /area/space)
+"ay" = (
+/obj/machinery/beehive,
+/obj/machinery/camera/network/talon{
+	name = "andromeda";
+	network = list("AndromedaHaven");
+	dir = 2
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/space)
 "az" = (
 /obj/machinery/door/firedoor/glass{
 	dir = 4;
@@ -1678,6 +1687,20 @@
 	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/space)
+"fW" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 8
+	},
+/obj/machinery/camera/network/talon{
+	name = "andromeda";
+	network = list("AndromedaHaven");
+	dir = 2
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/space)
 "fX" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 1
@@ -1847,6 +1870,17 @@
 	dir = 9
 	},
 /turf/simulated/floor/tiled/yellow,
+/area/space)
+"gH" = (
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/machinery/camera/network/talon{
+	name = "andromeda";
+	network = list("AndromedaHaven");
+	dir = 1
+	},
+/turf/simulated/floor/bmarble,
 /area/space)
 "gI" = (
 /obj/structure/table/rack/shelf/steel,
@@ -2802,6 +2836,11 @@
 	pixel_x = 9;
 	pixel_y = -1
 	},
+/obj/machinery/camera/network/talon{
+	name = "andromeda";
+	network = list("AndromedaHaven");
+	dir = 1
+	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/space)
 "jp" = (
@@ -3007,17 +3046,6 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/yellow,
-/area/space)
-"ka" = (
-/obj/machinery/camera/network/talon{
-	name = "andromeda";
-	network = list("AndromedaHaven");
-	dir = 2
-	},
-/obj/machinery/light/spot{
-	dir = 8
-	},
-/turf/simulated/floor/tiled/kafel_full/purple,
 /area/space)
 "kd" = (
 /obj/machinery/optable,
@@ -3613,6 +3641,11 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/camera/network/talon{
+	name = "andromeda";
+	network = list("AndromedaHaven");
+	dir = 8
+	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/space)
 "lV" = (
@@ -4329,6 +4362,20 @@
 /obj/map_helper/access_helper/airlock/station/science/xenobiology,
 /turf/simulated/floor/tiled/techfloor,
 /area/space)
+"oM" = (
+/obj/structure/table/rack/shelf,
+/obj/item/clothing/head/helmet/space/anomaly,
+/obj/item/clothing/suit/space/anomaly,
+/obj/item/storage/belt/archaeology,
+/obj/item/suit_cooling_unit,
+/obj/item/clothing/mask/gas/opaque,
+/obj/machinery/camera/network/talon{
+	name = "andromeda";
+	network = list("AndromedaHaven");
+	dir = 2
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/space)
 "oP" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 8
@@ -4416,6 +4463,11 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 5
+	},
+/obj/machinery/camera/network/talon{
+	name = "andromeda";
+	network = list("AndromedaHaven");
+	dir = 4
 	},
 /turf/simulated/floor/tiled/kafel_full/purple,
 /area/space)
@@ -8569,6 +8621,16 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
 /turf/simulated/floor/tiled/techfloor,
 /area/space)
+"Ei" = (
+/obj/machinery/portable_atmospherics/hydroponics,
+/obj/effect/floor_decal/spline/plain,
+/obj/machinery/camera/network/talon{
+	name = "andromeda";
+	network = list("AndromedaHaven");
+	dir = 1
+	},
+/turf/simulated/floor/grass,
+/area/space)
 "Ej" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
 /turf/simulated/wall/r_wall/prepainted/medical{
@@ -9814,6 +9876,14 @@
 /obj/structure/transit_tube/high_velocity,
 /turf/simulated/floor/plating,
 /area/space)
+"II" = (
+/obj/machinery/air_alarm/talon/east_mount,
+/obj/machinery/camera/network/research/xenobio{
+	dir = 9;
+	network = list("Xenobiology")
+	},
+/turf/simulated/floor/reinforced,
+/area/space)
 "IJ" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -9829,6 +9899,17 @@
 	pixel_y = -4
 	},
 /turf/simulated/floor/tiled/yellow,
+/area/space)
+"IL" = (
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
+	dir = 1
+	},
+/obj/machinery/camera/network/talon{
+	name = "andromeda";
+	network = list("AndromedaHaven");
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor,
 /area/space)
 "IN" = (
 /obj/structure/table/bench/steel,
@@ -10754,6 +10835,13 @@
 /obj/machinery/power/apc/high/south_mount,
 /obj/structure/cable,
 /turf/simulated/floor/tiled/kafel_full/red,
+/area/space)
+"LV" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/machinery/camera/network/research/xenobio,
+/turf/simulated/floor/reinforced,
 /area/space)
 "LW" = (
 /obj/machinery/camera/network/talon{
@@ -11862,6 +11950,10 @@
 /area/space)
 "Qi" = (
 /obj/machinery/air_alarm/talon/west_mount,
+/obj/machinery/camera/network/research/xenobio{
+	dir = 4;
+	network = list("Xenobiology")
+	},
 /turf/simulated/floor/reinforced,
 /area/space)
 "Qj" = (
@@ -12393,6 +12485,17 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor,
+/area/space)
+"Sg" = (
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/machinery/camera/network/talon{
+	name = "andromeda";
+	network = list("AndromedaHaven");
+	dir = 1
+	},
+/turf/simulated/floor/tiled/steel,
 /area/space)
 "Si" = (
 /obj/machinery/door/firedoor/glass{
@@ -13004,6 +13107,11 @@
 	pixel_y = -28
 	},
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
+	dir = 1
+	},
+/obj/machinery/camera/network/talon{
+	name = "andromeda";
+	network = list("AndromedaHaven");
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -14331,6 +14439,11 @@
 	},
 /obj/machinery/recharger/wallcharger{
 	pixel_y = 34
+	},
+/obj/machinery/camera/network/talon{
+	name = "andromeda";
+	network = list("AndromedaHaven");
+	dir = 2
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/space)
@@ -28938,7 +29051,7 @@ Cr
 Cr
 hj
 hj
-EA
+ay
 fy
 rk
 Wr
@@ -28949,7 +29062,7 @@ nC
 KU
 XM
 KU
-tJ
+Ei
 hj
 hj
 Sj
@@ -30493,14 +30606,14 @@ YT
 OB
 RS
 hj
-aS
+fW
 Ll
 lE
 kL
 qj
 Tn
 Mc
-Pg
+gH
 hj
 hj
 hj
@@ -30685,7 +30798,7 @@ VJ
 Ky
 lv
 oU
-fZ
+IL
 hj
 rH
 Ll
@@ -30891,7 +31004,7 @@ eb
 uJ
 Uo
 oY
-ka
+ST
 QW
 EG
 EG
@@ -32440,7 +32553,7 @@ bA
 JH
 GO
 GO
-XX
+Sg
 hj
 hj
 hj
@@ -32607,7 +32720,7 @@ Cr
 Cr
 Ky
 Ky
-OU
+LV
 CV
 VJ
 gM
@@ -32807,15 +32920,15 @@ yX
 gM
 FC
 dK
-yX
+II
 Cq
 FC
 dK
-yX
+II
 oA
 FC
 dK
-yX
+II
 Ky
 Cn
 FS
@@ -34177,7 +34290,7 @@ Cr
 Cr
 hj
 hj
-dN
+oM
 fy
 Ll
 fy
