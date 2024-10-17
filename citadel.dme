@@ -2468,6 +2468,7 @@
 #include "code\modules\characters\character\character_loadout.dm"
 #include "code\modules\characters\character\character_physiology.dm"
 #include "code\modules\characters\character\character_record.dm"
+#include "code\modules\characters\character\character_skills.dm"
 #include "code\modules\characters\character\character_status.dm"
 #include "code\modules\characters\character\character_record\employment.dm"
 #include "code\modules\characters\character\character_record\incident.dm"
