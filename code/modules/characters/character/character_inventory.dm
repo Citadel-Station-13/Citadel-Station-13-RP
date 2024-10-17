@@ -11,3 +11,9 @@
 
 
 #warn impl
+
+/datum/character_inventory/serialize()
+	return list()
+
+/datum/character_inventory/deserialize(list/data)
+	return

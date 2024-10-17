@@ -21,7 +21,7 @@
 	/// * -10 to 10 allowed
 	var/layer = 0
 
-/datum/sprite_accessory_descriptor/serialize()
+/datum/bodyset_marking_descriptor/serialize()
 	return list(
 		"id" = id,
 		"coloration" = packed_coloration,
@@ -29,7 +29,7 @@
 		"layer" = layer,
 	)
 
-/datum/sprite_accessory_descriptor/deserialize(list/data)
+/datum/bodyset_marking_descriptor/deserialize(list/data)
 	id = data["id"]
 	packed_coloration = data["coloration"]
 	emissive = data["emissive"]

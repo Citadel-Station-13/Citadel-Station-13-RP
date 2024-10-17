@@ -9,20 +9,40 @@
  *   override appearance whenever it wants.
  */
 /datum/character_appearance
+	/// short notes field for the player
+	var/label
+
+	/// should this override name?
+	var/name_override = FALSE
+	/// name override to use
+	var/name
+
+	/// should this override flavor text?
+	var/flavor_text_override = FALSE
+	/// The character's general flavor text
+	var/flavor_text_general
+	/// The character's per-zone flavor text
+	/// * Lazy list
+	var/flavor_text_zones
+
 	/// base bodyset to use
 	var/bodyset_id
+
 	/// base skin color to use
 	var/skin_color
 	/// eye color to use
 	var/eye_color
+
 	/// sprite accessories; slot key to /datum/sprite_accessory_descriptor
 	///
 	/// * lazy list
 	var/list/sprite_accessories
+
 	/// bodyparts; bodypart key to /datum/character_bodypart_appearance
 	///
 	/// * lazy list
 	var/list/bodypart_appearances
+
 	/// transform multiplier, x
 	var/size_x = 1
 	/// transform multiplier, y

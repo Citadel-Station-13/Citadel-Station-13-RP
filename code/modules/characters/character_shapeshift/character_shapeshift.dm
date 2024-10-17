@@ -10,5 +10,5 @@
  */
 /datum/character_shapeshift
 	/// character appearance
-	var/datum/character_appearance/body
+	var/datum/character_appearance/appearance
 	#warn how to deal with clothing

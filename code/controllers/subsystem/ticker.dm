@@ -119,7 +119,6 @@ SUBSYSTEM_DEF(ticker)
 					send2chat(broadcastmessage, CONFIG_GET(string/chat_roundend_notice_tag))
 
 				SSdbcore.SetRoundEnd()
-				SSpersistence.SavePersistence()
 				if(!SSpersistence.world_saved_count && CONFIG_GET(flag/persistence) && !SSpersistence.world_non_canon)
 					SSpersistence.save_the_world()
 
