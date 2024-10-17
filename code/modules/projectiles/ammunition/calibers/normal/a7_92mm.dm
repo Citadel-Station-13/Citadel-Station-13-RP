@@ -8,7 +8,7 @@
 	icon_state = "stg"
 
 	ammo_caliber = /datum/ammo_caliber/a7_92mm
-	ammo_type = /obj/item/ammo_casing/a792
+	ammo_preload = /obj/item/ammo_casing/a792
 	ammo_max = 30
 
 /obj/item/ammo_magazine/a7_92mm/empty
