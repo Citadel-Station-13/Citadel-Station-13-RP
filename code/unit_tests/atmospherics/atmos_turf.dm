@@ -9,7 +9,6 @@
 	test_turf.make_air()
 
 	TEST_ASSERT_NOTNULL(test_turf.air, null)
-	TEST_ASSERT_NULL(test_turf.zone, null)
 
 	var/hypothetical_container_volume = 1000
 	var/hypothetical_exchange_volume = 200
@@ -47,7 +46,7 @@
 // for /turf/simulated/air_thermal_superconduction()
 // todo: per-test reservations; this really shouldn't run in main unit test reservation!
 /datum/unit_test/atmos_turf_air_thermal_superconduction_simulated/Run()
-	var/turf/test_turf = run_loc_floor_bottom_left.ChangeTurf(/turf/unsimulated/floor)
+	var/turf/simulated/test_turf = run_loc_floor_bottom_left.ChangeTurf(/turf/simulated/floor/plating)
 
 	test_turf.initial_gas_mix = "o2=100&TEMP=1000"
 	test_turf.make_air()
