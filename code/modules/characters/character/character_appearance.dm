@@ -9,43 +9,69 @@
  *   override appearance whenever it wants.
  */
 /datum/character_appearance
-	/// short notes field for the player
+	/// short notes field for the player, for this appearance slot
 	var/label
 
-	/// should this override name?
-	var/name_override = FALSE
-	/// name override to use
+	/// name to use
+	///
+	/// * overrides default if set on a slot
 	var/name
 
-	/// should this override flavor text?
-	var/flavor_text_override = FALSE
 	/// The character's general flavor text
+	///
+	/// * overrides default if set on a slot
 	var/flavor_text_general
 	/// The character's per-zone flavor text
+	///
+	/// * overrides default if set on a slot
 	/// * Lazy list
 	var/flavor_text_zones
 
+	/// headshot ref
+	///
+	/// * overrides default if set on a slot
+	// todo: implement
+	var/ref_image_headshot
+	/// fullbody ref
+	///
+	/// * overrides default if set on a slot
+	// todo: implement
+	var/ref_image_fullbody
+
 	/// base bodyset to use
+	///
+	/// * overrides default if set on a slot
+	/// * null = use species
 	var/bodyset_id
 
 	/// base skin color to use
+	///
+	/// * overrides default if set on a slot
 	var/skin_color
 	/// eye color to use
+	///
+	/// * overrides default if set on a slot
 	var/eye_color
 
 	/// sprite accessories; slot key to /datum/sprite_accessory_descriptor
 	///
+	/// * overrides default if set on a slot, by key!
 	/// * lazy list
 	var/list/sprite_accessories
 
 	/// bodyparts; bodypart key to /datum/character_bodypart_appearance
 	///
+	/// * overrides default if set on a slot, by key!
 	/// * lazy list
 	var/list/bodypart_appearances
 
 	/// transform multiplier, x
+	///
+	/// * overrides default if set on a slot, by key!
 	var/size_x = 1
 	/// transform multiplier, y
+	///
+	/// * overrides default if set on a slot, by key!
 	var/size_y = 1
 
 /datum/character_appearance/serialize()
