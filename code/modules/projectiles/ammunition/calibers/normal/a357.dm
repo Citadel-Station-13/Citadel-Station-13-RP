@@ -49,7 +49,6 @@
 	base_icon_state = "normal"
 	ammo_caliber = /datum/ammo_caliber/a357
 	ammo_preload = /obj/item/ammo_casing/a357
-	ammo_type = /obj/item/ammo_casing/a357
 	magazine_type = MAGAZINE_TYPE_SPEEDLOADER
 	ammo_max = 6
 	materials_base = list(MAT_STEEL = 500)
@@ -59,7 +58,6 @@
 	icon_state = "holy-6"
 	base_icon_state = "holy"
 	ammo_preload = /obj/item/ammo_casing/a357/silver
-	ammo_type = /obj/item/ammo_casing/a357/silver
 
 /obj/item/ammo_magazine/a357/speedloader/stun
 	name = "speedloader (.357 stun)"
@@ -67,7 +65,6 @@
 	icon_state = "redtip-6"
 	base_icon_state = "redtip"
 	ammo_preload = /obj/item/ammo_casing/a357/stun
-	ammo_type = /obj/item/ammo_casing/a357/stun
 
 /obj/item/ammo_magazine/a357/speedloader/rubber
 	name = "speedloader (.357 rubber)"
@@ -75,7 +72,6 @@
 	icon_state = "bluetip-6"
 	base_icon_state = "bluetip"
 	ammo_preload = /obj/item/ammo_casing/a357/rubber
-	ammo_type = /obj/item/ammo_casing/a357/rubber
 
 /obj/item/ammo_magazine/a357/speedloader/flash
 	name = "speedloader (.357 flash)"
@@ -83,4 +79,3 @@
 	icon_state = "white-6"
 	base_icon_state = "white"
 	ammo_preload = /obj/item/ammo_casing/a357/flash
-	ammo_type = /obj/item/ammo_casing/a357/flash

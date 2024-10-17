@@ -148,6 +148,15 @@
 	RETURN_TYPE(/datum/ammo_caliber)
 	return resolve_caliber(caliber)
 
+//* Render *//
+
+/**
+ * makes us look messier, basically
+ */
+/obj/item/ammo_casing/proc/randomize_offsets_after_eject()
+	pixel_x = rand(-8, 8)
+	pixel_y = rand(-8, 8)
+
 //* Generic - Spent Subtype *//
 
 /obj/item/ammo_casing/spent

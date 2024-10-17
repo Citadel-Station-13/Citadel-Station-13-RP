@@ -150,7 +150,7 @@ var/list/admin_verbs_spawn = list(
 	/datum/admins/proc/spawn_custom_item,
 	/datum/admins/proc/check_custom_items,
 	/datum/admins/proc/spawn_plant,
-	/datum/admins/proc/spawn_atom, // Allows us to spawn instances,
+	/client/proc/spawn_atom, // Allows us to spawn instances,
 	/client/proc/respawn_character,
 	/client/proc/spawn_character_mob,
 	/client/proc/virus2_editor,

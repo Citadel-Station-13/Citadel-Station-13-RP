@@ -62,7 +62,7 @@
 	desc = "A compressed matter container meant for the Gorlex SHRAPNEL-SPITTER SMG. Contains a phoron alloy that self-oxidzes and ignites on contact with air. \n \nThey're in good shape for the shape they're in, \nbut God, I wonder how they think they can win, \nwith phoron rolling down their skin."
 	ammo_max = 40
 	ammo_caliber = /datum/ammo_caliber/phoron_shrap
-	ammo_type = /obj/item/ammo_casing/phoron_shrap
+	ammo_preload = /obj/item/ammo_casing/phoron_shrap
 
 	icon = 'icons/content/factions/corporations/gorlex/items/guns/phoron_spitter.dmi'
 	icon_state = "mag-1"
