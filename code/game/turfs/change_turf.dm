@@ -83,6 +83,7 @@ GLOBAL_LIST_INIT(multiz_hole_baseturfs, typecacheof(list(
 // Creates a new turf
 // new_baseturfs can be either a single type or list of types, formated the same as baseturfs. see turf.dm
 /turf/proc/ChangeTurf(path, list/new_baseturfs, flags)
+	RETURN_TYPE(/turf)
 	// todo: hopefully someday we can get simulated/open to just be turf/open or something once
 	//       we refactor ZAS
 	//       then we can skip all this bullshit and have proper space zmimic

@@ -4,6 +4,7 @@
 /obj/machinery/atmospherics/pipe
 	buckle_allowed = TRUE
 	buckle_flags = BUCKLING_REQUIRES_RESTRAINTS
+	buckle_lying = TRUE
 
 	use_power = USE_POWER_OFF
 	hides_underfloor_update_icon = TRUE

@@ -1,5 +1,6 @@
 var/list/gyrotrons = list()
 
+// todo: gyrotrons shouldn't be part of the rust module
 /obj/machinery/power/emitter/gyrotron
 	name = "gyrotron"
 	icon = 'icons/obj/machines/power/fusion.dmi'
