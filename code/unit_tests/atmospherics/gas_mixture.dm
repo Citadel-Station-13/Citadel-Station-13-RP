@@ -145,7 +145,7 @@
 	var/total_energy_new = XGM_THERMAL_ENERGY(air_A) + XGM_THERMAL_ENERGY(air_B)
 
 	if(!XGM_MOSTLY_CLOSE_ENOUGH(total_energy_old, total_energy_new))
-		TEST_FAIL("share_with_mixture() didn't conserve energy (expected [total_energy_old], actual [total_energy_new])")
+		TEST_FAIL("share_with_mixture() didn't conserve energy (expected [num2text(total_energy_old, 16)], actual [num2text(total_energy_new, 16)])")
 
 // todo: share_with_immutable_full for /datum/gas_mixture/proc/share_with_immutable(???, ??? ???, 1)
 // todo: share_with_immutable_partial for /datum/gas_mixture/proc/share_with_immutable(???, ??? ???, 1)
