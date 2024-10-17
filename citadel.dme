@@ -127,6 +127,7 @@
 #include "code\__DEFINES\atmospherics\gasmixtures.dm"
 #include "code\__DEFINES\atmospherics\helpers.dm"
 #include "code\__DEFINES\atmospherics\machinery.dm"
+#include "code\__DEFINES\atmospherics\math.dm"
 #include "code\__DEFINES\atmospherics\pipes.dm"
 #include "code\__DEFINES\atmospherics\gases\flags.dm"
 #include "code\__DEFINES\atmospherics\gases\generation.dm"

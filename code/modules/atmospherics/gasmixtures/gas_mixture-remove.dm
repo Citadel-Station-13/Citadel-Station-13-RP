@@ -7,7 +7,7 @@
 	var/datum/gas_mixture/removed = new
 
 	for(var/g in gas)
-		removed.gas[g] = QUANTIZE((gas[g] / total_moles) * amount)
+		removed.gas[g] = XGM_QUANTIZE((gas[g] / total_moles) * amount)
 		gas[g] -= removed.gas[g] / group_multiplier
 
 	removed.temperature = temperature
@@ -59,7 +59,7 @@
 
 	for(var/g in gas)
 		if(global.gas_data.flags[g] & flag)
-			removed.gas[g] = QUANTIZE((gas[g] / sum) * amount)
+			removed.gas[g] = XGM_QUANTIZE((gas[g] / sum) * amount)
 			gas[g] -= removed.gas[g] / group_multiplier
 
 	removed.temperature = temperature

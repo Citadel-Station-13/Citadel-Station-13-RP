@@ -37,7 +37,7 @@
 	var/our_proportion = (src.volume * src.group_multiplier) / (total_effective_volume)
 	var/their_proportion = (other.volume * other.group_multiplier) / (total_effective_volume)
 
-	// handle gas & tally heat
+	// handle gas & tally heat@m
 	var/our_specific_heat = 0
 	var/their_specific_heat = 0
 	for(var/gas in (src.gas | other.gas))
