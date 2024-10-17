@@ -79,7 +79,7 @@
 
 	if(air_A.gas[GAS_ID_OXYGEN] != 266.666667)
 		TEST_FAIL("share_with_mixture() didn't equalize gas (expected [266.666667], actual [air_A.gas[GAS_ID_OXYGEN]])")
-	if(!XGM_QUANTIZE_CLOSE_ENOUGH(air_B.gas[GAS_ID_OXYGEN], 116.666667))
+	if(!XGM_MOSTLY_CLOSE_ENOUGH(air_B.gas[GAS_ID_OXYGEN], 116.666667))
 		TEST_FAIL("share_with_mixture() didn't conserve gas (expected [116.666667], actual [air_B.gas[GAS_ID_OXYGEN]])")
 	if(air_A.temperature != 212.5)
 		TEST_FAIL("share_with_mixture() didn't equalize temp on side A (expected [212.5], actual [air_A.temperature])")
@@ -113,7 +113,7 @@
 
 	var/total_energy_new = XGM_THERMAL_ENERGY(air_A) + XGM_THERMAL_ENERGY(air_B)
 
-	if(!XGM_QUANTIZE_CLOSE_ENOUGH(total_energy_old, total_energy_new))
+	if(!XGM_MOSTLY_CLOSE_ENOUGH(total_energy_old, total_energy_new))
 		TEST_FAIL("share_with_mixture() didn't conserve energy (expected [total_energy_old], actual [total_energy_new])")
 
 // for /datum/gas_mixture/proc/share_with_mixture(???, 1)
@@ -144,7 +144,7 @@
 
 	var/total_energy_new = XGM_THERMAL_ENERGY(air_A) + XGM_THERMAL_ENERGY(air_B)
 
-	if(!XGM_QUANTIZE_CLOSE_ENOUGH(total_energy_old, total_energy_new))
+	if(!XGM_MOSTLY_CLOSE_ENOUGH(total_energy_old, total_energy_new))
 		TEST_FAIL("share_with_mixture() didn't conserve energy (expected [total_energy_old], actual [total_energy_new])")
 
 // todo: share_with_immutable_full for /datum/gas_mixture/proc/share_with_immutable(???, ??? ???, 1)
@@ -182,5 +182,5 @@
 
 	var/total_energy_new = XGM_THERMAL_ENERGY(air_A) + XGM_THERMAL_ENERGY(air_B)
 
-	if(!XGM_QUANTIZE_CLOSE_ENOUGH(total_energy_old, total_energy_new))
+	if(!XGM_MOSTLY_CLOSE_ENOUGH(total_energy_old, total_energy_new))
 		TEST_FAIL("share_heat_with_mixture() didn't conserve energy (expected [total_energy_old], actual [total_energy_new])")
