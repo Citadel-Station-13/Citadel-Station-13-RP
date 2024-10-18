@@ -211,3 +211,22 @@
 /obj/item/ammo_magazine/a7_62mm/m60/empty
 	icon_state = "m60-0"
 	ammo_current = 0
+
+/obj/item/ammo_magazine/a7_62mm/extended
+	name = "extended magazine (7.62mm)"
+	icon = 'icons/modules/projectiles/magazines/old_magazine_stick.dmi'
+	icon_state = "m762-ext-1"
+	base_icon_state = "m762-ext"
+	rendering_system = GUN_RENDERING_STATES
+	rendering_count = 1
+
+	materials_base = list(MAT_STEEL = 1200)
+	ammo_preload = /obj/item/ammo_casing/a7_62mm
+	ammo_caliber = /datum/ammo_caliber/a7_62mm
+	ammo_max = 20
+
+/obj/item/ammo_magazine/a7_62mm/extended/silver
+	name = "extended magazine (7.62mm silver)"
+	icon_state = "m762ag-ext-1"
+	base_icon_state = "m762ag-ext"
+	ammo_preload = /obj/item/ammo_casing/a7_62mm/silver
