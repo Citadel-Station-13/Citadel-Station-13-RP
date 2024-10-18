@@ -121,7 +121,7 @@
  */
 /area/victory/exploration
 	name = "\improper Exploration Department"
-	icon_state = "yellow"
+	icon_state = "purple"
 	holomap_color = HOLOMAP_AREACOLOR_SCIENCE
 
 /area/victory/exploration/hallway_fore

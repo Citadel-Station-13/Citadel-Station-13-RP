@@ -439,6 +439,20 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_room)
+"iy" = (
+/obj/machinery/door/airlock/hatch{
+	req_one_access = null
+	},
+/obj/map_helper/access_helper/airlock/station/engineering/department,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 8
+	},
+/obj/machinery/door/firedoor,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/engineering/engine_room)
 "iE" = (
 /obj/spawner/window/low_wall/borosillicate/reinforced/full/firelocks,
 /turf/simulated/floor,
@@ -1082,15 +1096,9 @@
 /obj/machinery/door/airlock/hatch{
 	req_one_access = null
 	},
-/obj/machinery/door/firedoor,
 /obj/map_helper/access_helper/airlock/station/engineering/department,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 8
-	},
-/turf/simulated/floor/tiled/techfloor/grid,
+/obj/machinery/door/firedoor,
+/turf/space/basic,
 /area/engineering/engine_room)
 "Mh" = (
 /obj/structure/window/phoronreinforced/full{
@@ -1743,9 +1751,9 @@ PP
 jf
 jf
 jf
-LT
-cx
 jf
+iy
+LT
 jf
 "}
 (17,1,1) = {"
