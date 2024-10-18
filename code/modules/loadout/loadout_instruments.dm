@@ -18,8 +18,8 @@
 /datum/loadout_entry/instrument/glockenspiel
 	path = /obj/item/instrument/glockenspiel
 
-/datum/loadout_entry/instrument/accordian
-	path = /obj/item/instrument/accordian
+/datum/loadout_entry/instrument/accordion
+	path = /obj/item/instrument/accordion
 
 /datum/loadout_entry/instrument/trumpet
 	path = /obj/item/instrument/trumpet

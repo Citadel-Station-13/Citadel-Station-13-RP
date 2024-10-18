@@ -3186,6 +3186,7 @@
 #include "code\modules\loadout\loadout_general.dm"
 #include "code\modules\loadout\loadout_gloves.dm"
 #include "code\modules\loadout\loadout_head.dm"
+#include "code\modules\loadout\loadout_instruments.dm"
 #include "code\modules\loadout\loadout_mask.dm"
 #include "code\modules\loadout\loadout_role_restricted.dm"
 #include "code\modules\loadout\loadout_seasonal.dm"
