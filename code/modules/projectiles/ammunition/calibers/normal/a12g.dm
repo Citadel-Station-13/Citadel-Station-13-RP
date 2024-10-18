@@ -209,7 +209,6 @@
 	ammo_max = 2
 	rendering_system = GUN_RENDERING_STATES
 	rendering_count = 2
-	ammo_picky = TRUE
 	ammo_restrict = /obj/item/ammo_casing/a12g
 	magazine_type = MAGAZINE_TYPE_CLIP
 
