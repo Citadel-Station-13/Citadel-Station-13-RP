@@ -5,5 +5,4 @@
  * for employment records within a faction
  */
 /datum/character_record/employment
-
-#warn impl
+	character_record_type = CHARACTER_RECORD_TYPE_EMPLOYMENT

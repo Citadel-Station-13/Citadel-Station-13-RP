@@ -7,5 +7,4 @@
  * * usually used by a faction that someone doesn't belong to. usually.
  */
 /datum/character_record/intelligence
-
-#warn impl
+	character_record_type = CHARACTER_RECORD_TYPE_INTELLIGENCE

@@ -7,5 +7,4 @@
  * * usually used by someone's own faction
  */
 /datum/character_record/medical
-
-#warn impl
+	character_record_type = CHARACTER_RECORD_TYPE_MEDICAL
