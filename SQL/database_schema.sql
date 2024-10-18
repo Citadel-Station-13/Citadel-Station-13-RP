@@ -6,7 +6,9 @@
  * PRESERVE ANY vr_'s! We need to replace those tables and features at some point, that's how we konw.
  **/
 
--- core --
+/**************************************************************************************************
+                                       Database Backend
+**************************************************************************************************/
 
 --
 -- Table structure for table `schema_revision`
@@ -18,7 +20,55 @@ CREATE TABLE IF NOT EXISTS `%_PREFIX_%schema_revision` (
   PRIMARY KEY (`major`, `minor`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- persistence --
+/**************************************************************************************************
+                                       Character Tables
+**************************************************************************************************/
+
+CREATE TABLE IF NOT EXISTS `%_PREFIX_%characters` (
+  `id` INT(24) NOT NULL AUTO INCREMENT,
+
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+CREATE TABLE IF NOT EXISTS `%_PREFIX_%character_records` (
+  `id` INT(24) NOT NULL AUTO INCREMENT,
+  `flags` INT(24) NOT NULL DEFAULT 0,
+  `data` MEDIUMTEXT NOT NULL DEFAULT '{}',
+  `r_timestamp` DATETIME NULL,
+  `r_location` VARCHAR(512) NULL,
+  `r_label` VARCHAR(256) NULL,
+  `r_content_type` VARCHAR(64) NULL,
+  `r_content` TEXT NULL,
+  `r_author_character_id` INT(24) NULL,
+  CONSTRAINT `r_author_character_id` FOREIGN KEY (`r_author_character_id`)
+  REFERENCES `%_PREFIX_%characters` (`id`)
+  ON DELETE NULL
+  ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+/**
+ * 'changes' is a JSON array of strings.
+ */
+CREATE TABLE IF NOT EXISTS `%_PREFIX_%character_record_logs` (
+  `id` INT(24) NOT NULL AUTO INCREMENT,
+  `record_id` INT(24) NOT NULL,
+  `timestamp` DATETIME NOT NULL DEFAULT Now(),
+  `player_id` INT(24) NULL,
+  `character_id` INT(24) NULL,
+  `changes` MEDIUMTEXT,
+  PRIMARY KEY(`id`),
+  CONSTRAINT `audit_player_id` FOREIGN KEY (`audit_character_id`)
+  REFERENCES `%_PREFIX_%player` (`id`)
+  ON DELETE NULL
+  ON UPDATE CASCADE,
+  CONSTRAINT `audit_character_id` FOREIGN KEY (`audit_character_id`)
+  REFERENCES `%_PREFIX_%characters` (`id`)
+  ON DELETE NULL
+  ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+/**************************************************************************************************
+                                  World Persistence Tables
+**************************************************************************************************/
 
 -- SSpersistence modules/bulk_entity
 CREATE TABLE IF NOT EXISTS `%_PREFIX_%persistence_bulk_entity` (
@@ -97,7 +147,9 @@ CREATE TABLE IF NOT EXISTS `%_PREFIX_%persistence_string_kv` (
   PRIMARY KEY(`key`, `group`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- photography --
+/**************************************************************************************************
+                                       Photography Tables
+**************************************************************************************************/
 
 --           picture table            --
 -- used to store data about pictures  --
@@ -128,7 +180,9 @@ CREATE TABLE IF NOT EXISTS `%_PREFIX_%photographs` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Players --
+/**************************************************************************************************
+                                       Player Tables
+**************************************************************************************************/
 
 --           Player lookup table                   --
 -- Used to look up player ID from ckey, as well as --
@@ -157,7 +211,9 @@ CREATE TABLE IF NOT EXISTS `%_PREFIX_%player` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Playtime / JEXP --
+/**************************************************************************************************
+                                       Players - Playtime Tracking
+**************************************************************************************************/
 
 --      Role Time Table - Master     --
 -- Stores total role time.           --
@@ -195,8 +251,9 @@ END
 $$
 DELIMITER ;
 
-
--- Preferences --
+/**************************************************************************************************
+                                       Players - Game Preferences
+**************************************************************************************************/
 
 -- Stores game preferences --
 CREATE TABLE IF NOT EXISTS `%_PREFIX_%game_preferences` (

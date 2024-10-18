@@ -1,3 +1,4 @@
+// todo: re-review this file; ensure generation / ACID is being enforced.
 
 /**
  * somewhat expensive
