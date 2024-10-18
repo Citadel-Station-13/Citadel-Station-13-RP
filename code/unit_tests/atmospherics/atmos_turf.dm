@@ -27,7 +27,7 @@
 	var/equalize_ratio = hypothetical_thermal_conductivity
 
 	// 5 tiles of 2500L vs 0.2 * 1000L
-	var/estimated_midpoint = (1000 * 5 * 2500 + 500 * 0.2 * 1000) / (5 * 2500 + 0.2 * 1000)
+	var/estimated_midpoint = (1000 * 5 * 2500 * 100 + 500 * 0.2 * 1000 * 10) / (5 * 2500 * 100 + 0.2 * 1000 * 10)
 
 	var/expected_temperature = (initial_temperature * (1 - limit_ratio)) + ((estimated_midpoint - initial_temperature) * equalize_ratio)
 	var/expected_energy = expected_temperature * initial_heat_capacity
@@ -73,7 +73,7 @@
 	var/equalize_ratio = hypothetical_thermal_conductivity
 
 	// 5 tiles of 2500L vs 0.2 * 1000L
-	var/estimated_midpoint = (1000 * 5 * 2500 + 500 * 0.2 * 1000) / (5 * 2500 + 0.2 * 1000)
+	var/estimated_midpoint = (1000 * 5 * 2500 * 100 + 500 * 0.2 * 1000 * 10) / (5 * 2500 * 100 + 0.2 * 1000 * 10)
 
 	var/expected_temperature = (initial_temperature * (1 - limit_ratio)) + ((estimated_midpoint - initial_temperature) * equalize_ratio)
 	var/expected_energy = expected_temperature * initial_heat_capacity
