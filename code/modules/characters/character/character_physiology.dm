@@ -6,5 +6,9 @@
  * including species, organs, etc.
  */
 /datum/character_physiology
+	/// blood color; rgb color
+	///
+	/// * can be overridden by species
+	var/blood_color
 
 #warn impl

@@ -10,6 +10,8 @@
 
 /// max loadout sets someone is allowed to have
 #define CHARACTER_MAX_LOADOUT_SLOTS 32
+/// max loadout items in a set
+#define CHARACTER_MAX_LOADOUT_ITEMS 32
 
 //* role priorities *//
 

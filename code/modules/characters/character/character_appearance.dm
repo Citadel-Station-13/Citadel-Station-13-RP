@@ -19,11 +19,11 @@
 
 	/// The character's general flavor text
 	///
-	/// * overrides default if set on a slot
+	/// * if set on a slot, the default flavortext will be suppressed
 	var/flavor_text_general
 	/// The character's per-zone flavor text
 	///
-	/// * overrides default if set on a slot
+	/// * if set on a slot, the default flavortext will be suppressed
 	/// * Lazy list
 	var/flavor_text_zones
 
@@ -73,6 +73,11 @@
 	///
 	/// * overrides default if set on a slot, by key!
 	var/size_y = 1
+	/// use fuzzy rendering? default to FALSE
+	///
+	/// * if FALSE, the person uses PIXEL_SCALE
+	/// * if TRUE, the person does not use PIXEL_SCALE
+	var/use_fuzzy_rendering = FALSE
 
 /datum/character_appearance/serialize()
 

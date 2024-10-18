@@ -40,10 +40,10 @@
 	var/character_id
 	/// current character status; used for anything from faction locking to persistence
 	///
-	/// * this is saved / loaded in legacy mode
+	/// * this is saved / loaded even in legacy (savefile) mode
 	var/datum/character_status
 
-	//* Appearance - Directly Serialized *//
+	//* Appearance - Directly serialized *//
 	/// your main appearance
 	var/datum/character_appearance/appearance_primary
 	/// ordered appearance slots
@@ -52,11 +52,11 @@
 	/// * this is basically a quirky lazy-list in that we only populate the later sections as it expands.
 	var/list/datum/character_appearance/appearance_slots
 
-	//* Background - Directly Serialized *//
+	//* Background - Directly serialized *//
 	/// Your character's background
 	var/datum/character_background/background
 
-	//* Identity - Directly Serialized *//
+	//* Identity - Directly serialized *//
 	/// The character's true name.
 	///
 	/// * Can be overridden by appearance slots.
@@ -65,24 +65,37 @@
 	///
 	/// * this is for the entire character, not an appearance
 	var/c_label
+
+	//* Identity - Packed into data list *//
 	/// the character's age
 	var/c_age
 	/// OOC notes
 	var/c_ooc_notes
 
-	//* Inventory - Directly Serialized *//
+	//* Inventory - Directly serialized *//
 	/// our inventory
 	var/datum/character_inventory/inventory
 
-	//* Loadout - Directly Serialized *//
+	//* Loadout - Directly serialized *//
 	/// ordered loadout slots
 	///
 	/// * this list can be at most [CHARACTER_MAX_LOADOUT_SLOTS] long, and at least 0 long.
 	/// * this is basically a quirky lazy-list in that we only populate the later sections as it expands.
 	var/list/datum/character_loadout/loadout_slots
 
+	//* Records - Are not stored in here. *//
+	/// Records are fetched from SScharacters.
+
 	//* Roles - Packed into data list *//
 	///
+
+	//* Skills - Directly serialized *//
+	/// our skills holder
+	var/datum/character_skills/skills
+
+	//* Species - Directly serialized *//
+	/// our species ID
+	var/c_species_id
 
 	// todo:
 	// disabilities?
@@ -91,10 +104,7 @@
 	// event roles
 	// communicator visibility?
 	// ringtone?
-	// records
-	// skills
 	// traits?
-	// blood color
 	// character dictory: (show/hide, tag, erptag, ad)
 	// suit sensor prefs
 
@@ -104,7 +114,6 @@
 	// ignore list
 	// media system prefs
 	// vore prefs
-	// render pixel scale or fuzzy? should we just drop it?
 	// resleeving?
 	// autohiss?
 	// custom sayverbs??
@@ -114,9 +123,6 @@
 	// underwear --> items as loadout
 	// backpack --> backpack as loadout
 	// pda --> pda as loadout
-
-	// todo; things to drop / delete;
-	// economic status
 
 #warn impl
 
