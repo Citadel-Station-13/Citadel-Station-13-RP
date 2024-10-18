@@ -29,10 +29,6 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 /mob/living/carbon/human/update_icons_huds()
 	stack_trace("CANARY: Old human update_icons_huds was called.")
 
-//update whether handcuffs appears on our hud.
-/mob/living/carbon/proc/update_hud_handcuffed()
-	#warn impl - inventory hud
-
 /mob/living/carbon/human/update_transform()
 	var/matrix/old_matrix = transform
 	var/matrix/M = matrix()

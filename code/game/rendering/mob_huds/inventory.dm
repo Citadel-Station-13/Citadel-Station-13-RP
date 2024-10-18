@@ -292,7 +292,7 @@
 	..()
 	icon = style.inventory_icons_slot
 
-/atom/movable/screen/inventory/plate/slot/handle_inventory_click(mob/user, slot_or_index, obj/item/with_item)
+/atom/movable/screen/inventory/plate/slot/handle_inventory_click(mob/user, obj/item/with_item)
 	#warn impl
 
 /**
@@ -320,7 +320,9 @@
 	..()
 	icon = style.inventory_icons
 
-/atom/movable/screen/inventory/plate/hand/handle_inventory_click(mob/user, slot_or_index, obj/item/with_item)
+/atom/movable/screen/inventory/plate/hand/handle_inventory_click(mob/user, obj/item/with_item)
+	if(!with_item)
+		hud.owner.swap_hand(hand_index)
 	#warn impl
 
 /atom/movable/screen/inventory/plate/hand/proc/sync_index(index = hand_index)

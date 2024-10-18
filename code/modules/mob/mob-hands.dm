@@ -53,21 +53,23 @@
  *
  * basically if a red deny symbol is in the hand it is not usable, otherwise it's usable.
  */
-/mob/proc/get_usable_hand_count()
+/mob/proc/get_usable_hand_count() as num
+	return 0
 	#warn impl + subtypes
 
 /**
  * get indices of usable hands
  */
-/mob/proc/get_usable_hand_indices()
+/mob/proc/get_usable_hand_indices() as /list
 	RETURN_TYPE(/list)
+	return list()
 	#warn impl + subtypes
 
 /**
  * sets number of physical hands we should account for potentialy having
  */
-/mob/proc/set_nominal_hand_count()
-	return length(inventory?.held_items)
+/mob/proc/set_nominal_hand_count(count)
+	#warn sigh
 
 /**
  * Are usable hands all holding items?

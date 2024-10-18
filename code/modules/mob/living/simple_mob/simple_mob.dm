@@ -457,3 +457,13 @@
 	. = ..()
 	if(. && (!is_sharp(I) || !has_edge(I)))
 		return FALSE
+
+//* Inventory *//
+
+/mob/living/simple_mob/get_usable_hand_count()
+	return hand_count
+
+/mob/living/simple_mob/get_usable_hand_indices()
+	. = list()
+	for(var/i in 1 to hand_count)
+		. += i

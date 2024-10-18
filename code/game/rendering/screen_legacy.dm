@@ -136,21 +136,6 @@
 	if(!usr)
 		return TRUE
 	switch(name)
-		if("toggle")
-			if(usr.hud_used.inventory_shown)
-				usr.hud_used.inventory_shown = 0
-				usr.client.screen -= usr.hud_used.other
-			else
-				usr.hud_used.inventory_shown = 1
-				usr.client.screen += usr.hud_used.other
-
-			usr.hud_used.hidden_inventory_update()
-
-		if("equip")
-			if(ishuman(usr))
-				var/mob/living/carbon/human/H = usr
-				H.quick_equip()
-
 		if("resist")
 			if(isliving(usr))
 				var/mob/living/L = usr

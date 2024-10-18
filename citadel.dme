@@ -2020,7 +2020,6 @@
 #include "code\game\rendering\legacy\robot.dm"
 #include "code\game\rendering\legacy\spell_screen_objects.dm"
 #include "code\game\rendering\legacy\intents\throwing.dm"
-#include "code\game\rendering\legacy\inventory\inventory.dm"
 #include "code\game\rendering\legacy\objects\waypoint_tracker.dm"
 #include "code\game\rendering\mob_huds\inventory.dm"
 #include "code\game\rendering\mob_huds\mob_hud.dm"
