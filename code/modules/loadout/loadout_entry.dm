@@ -55,6 +55,9 @@ var/list/gear_datums = list()
 	if(!description)
 		var/obj/O = path
 		description = initial(O.desc)
+	if(!name)
+		var/obj/O = path
+		name = initial(O.name)
 	if(isnull(display_name))
 		display_name = name
 
