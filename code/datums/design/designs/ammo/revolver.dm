@@ -25,6 +25,12 @@
 	design_unlock = DESIGN_UNLOCK_INTRINSIC
 	build_path = /obj/item/ammo_magazine/a357/speedloader/rubber
 
+/datum/design/ammo/revolver/a357_silver
+	id = "AmmoSpeedloader357Silver"
+	lathe_type = LATHE_TYPE_AUTOLATHE
+	design_unlock = DESIGN_UNLOCK_INTRINSIC
+	build_path = /obj/item/ammo_magazine/a357/speedloader/silver
+
 /datum/design/ammo/revolver/a38
 	id = "AmmoSpeedloader38"
 	lathe_type = LATHE_TYPE_AUTOLATHE
@@ -36,6 +42,12 @@
 	lathe_type = LATHE_TYPE_AUTOLATHE
 	design_unlock = DESIGN_UNLOCK_INTRINSIC
 	build_path = /obj/item/ammo_magazine/a38/speedloader/rubber
+
+/datum/design/ammo/revolver/a38_silver
+	id = "AmmoSpeedloader38Silver"
+	lathe_type = LATHE_TYPE_AUTOLATHE
+	design_unlock = DESIGN_UNLOCK_INTRINSIC
+	build_path = /obj/item/ammo_magazine/a38/speedloader/silver
 
 /datum/design/ammo/revolver/a44
 	id = "AmmoSpeedloader44"
@@ -49,6 +61,12 @@
 	design_unlock = DESIGN_UNLOCK_INTRINSIC
 	build_path = /obj/item/ammo_magazine/a44/speedloader/rubber
 
+/datum/design/ammo/revolver/a44_silver
+	id = "AmmoSpeedloader44Silver"
+	lathe_type = LATHE_TYPE_AUTOLATHE
+	design_unlock = DESIGN_UNLOCK_INTRINSIC
+	build_path = /obj/item/ammo_magazine/a44/speedloader/silver
+
 /datum/design/ammo/revolver/a45
 	id = "AmmoSpeedloader45"
 	lathe_type = LATHE_TYPE_AUTOLATHE
@@ -60,3 +78,9 @@
 	lathe_type = LATHE_TYPE_AUTOLATHE
 	design_unlock = DESIGN_UNLOCK_INTRINSIC
 	build_path = /obj/item/ammo_magazine/a45/speedloader/rubber
+
+/datum/design/ammo/revolver/a45_silver
+	id = "AmmoSpeedloader45Silver"
+	lathe_type = LATHE_TYPE_AUTOLATHE
+	design_unlock = DESIGN_UNLOCK_INTRINSIC
+	build_path = /obj/item/ammo_magazine/a45/speedloader/silver
