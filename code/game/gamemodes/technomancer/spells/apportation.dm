@@ -73,6 +73,5 @@
 
 				G.state = GRAB_PASSIVE
 				G.icon_state = "grabbed1"
-				G.synch()
 				qdel(src)
 

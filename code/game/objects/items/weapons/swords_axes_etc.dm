@@ -83,10 +83,7 @@
 		set_weight_class(WEIGHT_CLASS_SMALL)
 		damage_force = off_force //not so robust now
 		attack_verb = list("poked", "jabbed")
-	if(istype(user,/mob/living/carbon/human))
-		var/mob/living/carbon/human/H = user
-		H.update_inv_l_hand()
-		H.update_inv_r_hand()
+	update_worn_icon()
 	playsound(src.loc, 'sound/weapons/empty.ogg', 50, 1)
 	add_fingerprint(user)
 	if(blood_overlay && blood_DNA && (blood_DNA.len >= 1)) //updates blood overlay, if any

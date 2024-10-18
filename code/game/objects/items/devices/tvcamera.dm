@@ -91,8 +91,4 @@
 	else
 		icon_state = "camcorder"
 		item_state = "camcorder"
-	var/mob/living/carbon/human/H = loc
-	if(istype(H))
-		H.update_inv_r_hand()
-		H.update_inv_l_hand()
-		H.update_inv_belt()
+	update_worn_icon()

@@ -64,6 +64,22 @@
 		BP_R_FOOT = list("path" = /obj/item/organ/external/foot/right),
 	)
 
+	//* Inventory *//
+
+	inventory_slots = list(
+		/datum/inventory_slot/inventory/back::id,
+		/datum/inventory_slot/inventory/id::id = list(
+			INVENTORY_SLOT_REMAP_MAIN_AXIS = 0,
+			INVENTORY_SLOT_REMAP_CROSS_AXIS = 2,
+			INVENTORY_SLOT_REMAP_CLASS = INVENTORY_HUD_CLASS_ALWAYS,
+		),
+		/datum/inventory_slot/inventory/mask::id = list(
+			INVENTORY_SLOT_REMAP_MAIN_AXIS = 0,
+			INVENTORY_SLOT_REMAP_CROSS_AXIS = 1,
+			INVENTORY_SLOT_REMAP_CLASS = INVENTORY_HUD_CLASS_ALWAYS,
+		),
+	)
+
 /datum/species/monkey/handle_npc(mob/living/carbon/human/H)
 	if(H.stat != CONSCIOUS)
 		return

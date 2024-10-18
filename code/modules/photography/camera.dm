@@ -107,19 +107,15 @@
 	var/mob_detail
 	for(var/mob/living/carbon/A in the_turf)
 		if(A.invisibility) continue
-		var/holding = null
-		if(A.l_hand || A.r_hand)
-			if(A.l_hand) holding = "They are holding \a [A.l_hand]"
-			if(A.r_hand)
-				if(holding)
-					holding += " and \a [A.r_hand]"
-				else
-					holding = "They are holding \a [A.r_hand]"
+		var/holding = list()
+
+		for(var/obj/item/held as anything in A.get_held_items())
+			holding += "\a [held]"
 
 		if(!mob_detail)
-			mob_detail = "You can see [A] on the photo[A:health < 75 ? " - [A] looks hurt":""].[holding ? " [holding]":"."]. "
+			mob_detail = "You can see [A] on the photo[A:health < 75 ? " - [A] looks hurt":""].[length(holding)? " They are holding [english_list(holding)]":"."]. "
 		else
-			mob_detail += "You can also see [A] on the photo[A:health < 75 ? " - [A] looks hurt":""].[holding ? " [holding]":"."]."
+			mob_detail += "You can also see [A] on the photo[A:health < 75 ? " - [A] looks hurt":""].[length(holding)? " They are holding [english_list(holding)]":"."]."
 
 	return mob_detail
 

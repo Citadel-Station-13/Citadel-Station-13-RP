@@ -93,7 +93,7 @@
 				playsound(loc, 'sound/weapons/thudswoosh.ogg', 50, 1, -1)
 				return
 
-			H.drop_all_held_items()
+			H.drop_held_items()
 			visible_message("<span class='danger'>\The [src] has disarmed [H]!</span>")
 			playsound(loc, 'sound/weapons/thudswoosh.ogg', 50, 1, -1)
 			return

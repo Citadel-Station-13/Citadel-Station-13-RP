@@ -43,10 +43,7 @@
 	addblends = icon_state + "_a"
 	item_state = icon_state
 	update_icon()
-	if(ishuman(src.loc))
-		var/mob/living/carbon/human/H = src.loc
-		H.update_inv_l_hand(0)
-		H.update_inv_r_hand()
+	update_worn_icon()
 
 // Randomizes color
 /obj/item/melee/umbrella/random/Initialize(mapload)
@@ -268,10 +265,7 @@
 	else
 		set_light(0)
 
-	var/mob/M = loc
-	if(istype(M))
-		M.update_inv_l_hand()
-		M.update_inv_r_hand()
+	update_worn_icon()
 
 /obj/item/melee/ashlander/elder/proc/activate(mob/living/user)
 	to_chat(user, "<span class='notice'>You ignite the [src]'s sacred flame.</span>")
@@ -506,10 +500,7 @@
 	else
 		set_light(0)
 
-	var/mob/M = loc
-	if(istype(M))
-		M.update_inv_l_hand()
-		M.update_inv_r_hand()
+	update_worn_icon()
 
 /obj/item/melee/thermalcutter/proc/activate(var/mob/M)
 	var/turf/T = get_turf(src)
