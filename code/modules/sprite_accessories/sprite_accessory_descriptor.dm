@@ -31,3 +31,9 @@
 
 #warn set_coloration
 #warn sanitize_and_validate
+
+/**
+ * Binding: tgui/bindings/datum/Game_SpriteAccessoryDescriptor
+ */
+/datum/sprite_accessory_descriptor/proc/tgui_data()
+	#warn impl

@@ -5,9 +5,8 @@
  * Stores a set of selected loadout items
  */
 /datum/character_loadout
-	/// underwear; slot id to /datum/underwear_descriptor
-	var/list/underwear_slots
-	#warn underwaer by slot
+	///
+	var/list/selected_ids = list()
 
 /datum/character_loadout/serialize()
 	return list()

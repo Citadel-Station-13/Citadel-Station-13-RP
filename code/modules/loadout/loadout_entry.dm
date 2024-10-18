@@ -13,6 +13,7 @@ var/list/gear_datums = list()
 	.["categories"] = categories
 	.["maxEntries"] = LOADOUT_MAX_ITEMS
 
+// todo: /loadout_item
 /datum/loadout_entry
 	abstract_type = /datum/loadout_entry
 
@@ -109,6 +110,12 @@ var/list/gear_datums = list()
 	//! end
 
 	return spawned
+
+/**
+ * Binding: tgui/bindings/datum/Game_LoadoutItem
+ */
+/datum/loadout_entry/proc/tgui_data()
+	#warn impl
 
 /hook/startup/proc/populate_gear_list()
 
