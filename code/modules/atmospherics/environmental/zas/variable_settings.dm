@@ -291,6 +291,7 @@ GLOBAL_DATUM_INIT(atmos_vsc, /datum/variable_settings_controller/atmospherics, n
 /datum/variable_setting_entry/atmos/hepipes
 	category = "Heat Exchanger Pipes"
 
+// todo: this is not what this setting actually does
 /datum/variable_setting_entry/atmos/hepipes/thermal_conductivity
 	name = "Thermal Conductivity in cW / (m * K)"
 	desc = "How well do these pipes conduct?"

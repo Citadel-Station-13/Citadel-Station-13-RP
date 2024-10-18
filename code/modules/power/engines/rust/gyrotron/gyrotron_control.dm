@@ -1,3 +1,4 @@
+// todo: gyrotrons shouldn't be part of the rust module
 /obj/machinery/computer/gyrotron_control
 	name = "gyrotron control console"
 	icon = 'icons/obj/machines/power/fusion.dmi'

@@ -124,7 +124,7 @@
 	. = 0
 	CACHE_VSC_PROP(atmos_vsc, /atmos/fire/consumption_rate, fire_consumption_rate)
 	for(var/g in gas)
-		if(global.gas_data.flags[g] & GAS_FLAG_OXIDIZER && QUANTIZE(gas[g] * fire_consumption_rate) >= 0.1)
+		if(global.gas_data.flags[g] & GAS_FLAG_OXIDIZER && XGM_QUANTIZE(gas[g] * fire_consumption_rate) >= 0.1)
 			. = 1
 			break
 
@@ -136,7 +136,7 @@
 
 	. = 0
 	for(var/g in gas)
-		if(global.gas_data.flags[g] & GAS_FLAG_FUEL && (QUANTIZE(gas[g] * fire_consumption_rate) >= max(0.005, MINIMUM_MOLES_TO_SPARK)))
+		if(global.gas_data.flags[g] & GAS_FLAG_FUEL && (XGM_QUANTIZE(gas[g] * fire_consumption_rate) >= max(0.005, MINIMUM_MOLES_TO_SPARK)))
 			. = 1
 			break
 

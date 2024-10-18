@@ -1,6 +1,4 @@
-// empty for now
-
-/datum/unit_test/hardcoded_gas_sanity/Run()
+/datum/unit_test/gas_hardcoded_sanity/Run()
 	for(var/datum/gas/path as anything in subtypesof(/datum/gas))
 		if(initial(path.abstract_type) == path)
 			continue
