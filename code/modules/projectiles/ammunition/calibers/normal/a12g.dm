@@ -210,7 +210,7 @@
 	rendering_system = GUN_RENDERING_STATES
 	rendering_count = 2
 	ammo_picky = TRUE
-	ammo_type = /obj/item/ammo_casing/a12g
+	ammo_restrict = /obj/item/ammo_casing/a12g
 	magazine_type = MAGAZINE_TYPE_CLIP
 
 /obj/item/ammo_magazine/a12g/clip/pellet
@@ -219,7 +219,7 @@
 	base_icon_state = "a12-buck"
 	desc = "A color-coded metal clip for holding and quickly loading shotgun shells. This one is loaded with buckshot."
 	ammo_preload = /obj/item/ammo_casing/a12g/pellet
-	ammo_type = /obj/item/ammo_casing/a12g/pellet
+	ammo_restrict = /obj/item/ammo_casing/a12g/pellet
 
 /obj/item/ammo_magazine/a12g/clip/beanbag
 	name = "ammo clip (12g beanbag)"
@@ -227,7 +227,7 @@
 	base_icon_state = "a12-bean"
 	desc = "A color-coded metal clip for holding and quickly loading shotgun shells. This one is loaded with beanbags."
 	ammo_preload = /obj/item/ammo_casing/a12g/beanbag
-	ammo_type = /obj/item/ammo_casing/a12g/beanbag
+	ammo_restrict = /obj/item/ammo_casing/a12g/beanbag
 
 /obj/item/ammo_magazine/a12g/clip/silver
 	name = "ammo clip (12g silver)"
@@ -235,7 +235,7 @@
 	base_icon_state = "a12-silver"
 	desc = "A color-coded metal clip for holding and quickly loading shotgun shells. This one is loaded with silver slugs."
 	ammo_preload = /obj/item/ammo_casing/a12g/silver
-	ammo_type = /obj/item/ammo_casing/a12g/silver
+	ammo_restrict = /obj/item/ammo_casing/a12g/silver
 
 /obj/item/ammo_magazine/a12g/clip/silvershot
 	name = "ammo clip (12g silvershot)"
@@ -243,7 +243,7 @@
 	base_icon_state = "a12-silver"
 	desc = "A color-coded metal clip for holding and quickly loading shotgun shells. This one is loaded with silver buckshot."
 	ammo_preload = /obj/item/ammo_casing/a12g/silvershot
-	ammo_type = /obj/item/ammo_casing/a12g/silvershot
+	ammo_restrict = /obj/item/ammo_casing/a12g/silvershot
 
 /obj/item/ammo_magazine/a12g/clip/stake
 	name = "ammo clip (12g stakes)"
@@ -251,7 +251,7 @@
 	base_icon_state = "a12-stake"
 	desc = "A color-coded metal clip for holding and quickly loading shotgun shells. This one is loaded with blessed iron nails."
 	ammo_preload = /obj/item/ammo_casing/a12g/stake
-	ammo_type = /obj/item/ammo_casing/a12g/stake
+	ammo_restrict = /obj/item/ammo_casing/a12g/stake
 
 //* Magazines - Pouches
 
@@ -286,34 +286,28 @@
 	name = "shotgun slug holder (slug)"
 	marking_color = PIPE_COLOR_BLACK
 	ammo_preload = /obj/item/ammo_casing/a12g
-	ammo_type = /obj/item/ammo_casing/a12g
 
 /obj/item/ammo_magazine/a12g/pouch/full/flare
 	name = "shotgun slug holder (flare)"
 	marking_color = COLOR_RED_GRAY
 	ammo_preload = /obj/item/ammo_casing/a12g/flare
-	ammo_type = /obj/item/ammo_casing/a12g/flare
 
 /obj/item/ammo_magazine/a12g/pouch/full/buckshot
 	name = "shotgun slug holder (buckshot)"
 	marking_color = COLOR_RED
 	ammo_preload = /obj/item/ammo_casing/a12g/pellet
-	ammo_type = /obj/item/ammo_casing/a12g/pellet
 
 /obj/item/ammo_magazine/a12g/pouch/full/beanbag
 	name = "shotgun slug holder (beanbag)"
 	marking_color = COLOR_GREEN
 	ammo_preload = /obj/item/ammo_casing/a12g/beanbag
-	ammo_type = /obj/item/ammo_casing/a12g/beanbag
 
 /obj/item/ammo_magazine/a12g/pouch/full/stun
 	name = "shotgun slug holder (stun)"
 	marking_color = PIPE_COLOR_YELLOW
 	ammo_preload = /obj/item/ammo_casing/a12g/stunshell
-	ammo_type = /obj/item/ammo_casing/a12g/stunshell
 
 /obj/item/ammo_magazine/a12g/pouch/full/silvershot
 	name = "shotgun slug holder (silvershot)"
 	marking_color = COLOR_WHITE
 	ammo_preload = /obj/item/ammo_casing/a12g/silvershot
-	ammo_type = /obj/item/ammo_casing/a12g/silvershot

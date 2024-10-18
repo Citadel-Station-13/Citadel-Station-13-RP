@@ -47,7 +47,7 @@
 	name = "magazine (.44 rubber)"
 	desc = "A magazine for .44 less-than-lethal ammo."
 	ammo_preload = /obj/item/ammo_casing/a44/rubber
-	ammo_type = /obj/item/ammo_casing/a44/rubber
+	ammo_restrict = /obj/item/ammo_casing/a44/rubber
 
 /obj/item/ammo_magazine/a44/silver
 	name = "magazine (.44 silver)"
