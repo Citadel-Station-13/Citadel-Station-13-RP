@@ -261,6 +261,12 @@
 	SA_bonus_damage = 35 // 50 total on animals.
 	SA_vulnerability = MOB_CLASS_ANIMAL
 
+/obj/projectile/bullet/rifle/a556/silver
+	damage_force = 23 // ~10% less than base
+	SA_bonus_damage = 10 // ~1.3x base to vulnerable.
+	SA_vulnerability = MOB_CLASS_DEMONIC | MOB_CLASS_ABERRATION
+	holy = TRUE
+
 /obj/projectile/bullet/rifle/a12_7mm
 	fire_sound = 'sound/weapons/Gunshot_cannon.ogg' // This is literally an anti-tank rifle caliber. It better sound like a fucking cannon.
 	damage_force = 80

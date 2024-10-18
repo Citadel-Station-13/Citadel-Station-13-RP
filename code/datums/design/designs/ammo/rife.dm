@@ -25,6 +25,12 @@
 	design_unlock = DESIGN_UNLOCK_INTRINSIC
 	build_path = /obj/item/ammo_magazine/a5_56mm/practice
 
+/datum/design/ammo/rifle/m556mm_silver
+	id = "AmmoRifle545mmSilver"
+	lathe_type = LATHE_TYPE_AUTOLATHE
+	design_unlock = DESIGN_UNLOCK_INTRINSIC
+	build_path = /obj/item/ammo_magazine/a5_56mm/silver
+
 /datum/design/ammo/rifle/c545mm
 	id = "AmmoClip545mm"
 	lathe_type = LATHE_TYPE_AUTOLATHE
