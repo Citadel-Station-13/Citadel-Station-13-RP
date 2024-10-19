@@ -4,24 +4,14 @@
 /datum/chemical_reaction
 	abstract_type = /datum/chemical_reaction
 	//* core *//
+
 	/// id - must be unique and in CamelCase.
 	var/id
 	/// reagent reaction flags - see [code/__DEFINES/reagents/flags.dm]
 	var/chemical_reaction_flags = NONE
 
-	//* reaction *//
-	/// required reagents as ratios. path or id is supported, prefer paths for compile time checking.
-	var/list/required_reagents = list()
-	/// result reagent path or id. prefer path for compile time checking.
-	var/result
-	/// how much of the result is made per 1 ratio of required_reagents consumed.
-	var/result_amount = 0
-	/// priority - higher is checked first when reacting.
-	var/priority = 0
-	/// required container typepath of holder my_atom
-	var/required_container
+	//* identity *//
 
-	//* identity
 	/// name; defaults to reagent produced's name.
 	/// if this is defaulted, it also defaults display name to that reagent if unset.
 	var/name
@@ -33,27 +23,113 @@
 	/// display description; overrides desc when player facing if set
 	var/display_description
 
-	//* guidebook
+	//* reaction *//
+
+	/// required reagents as ratios. path or id is supported, prefer paths for compile time checking.
+	/// all of these will then make 1 unit of the reagent.
+	var/list/required_reagents = list()
+	/// require whole numbers of all reagents taken
+	///
+	/// * only checked for instant reactions
+	/// * if an instant reaction is turned into a non-instant, this is ignored!
+	var/reuqire_whole_numbers_while_instant = TRUE
+	#warn impl
+
+	/// result reagent path or id. prefer path for compile time checking.
+	var/result
+	/// how much of the result is made per 1 ratio of required_reagents consumed.
+	var/result_amount = 0
+
+	/// priority - higher is checked first when reacting.
+	var/priority = 0
+
+	/// required container typepath of holder my_atom
+	var/required_container_path
+
+	/// temperature minimum, kelvin
+	var/temperature_low
+	/// temperature maximum, kelvin
+	var/temperature_high
+	/// optimal temperature; if non-null, reaction will slow down linearly when away from
+	/// this temperature
+	///
+	/// * if reaction rate is instant and this is set, the half-life
+	///   will be set to 1.
+	var/temperature_center
+	#warn impl
+	/// degrees +- from center where speed is still optimal
+	var/temperature_center_edge = 0
+	#warn impl
+	/// highest multiplier to half life at edge of allowable temperatures
+	var/temperature_penalty_maximum = 10
+	#warn impl
+	/// amount of flat area at edge of allowable temperatures
+	///
+	/// * e.g. if min/max is 100K, 300K, and this is set to 10,
+	///   and penalty_maximum is 10, the half life will be 10 times slower
+	///   at 100-110K, and 290-300K
+	var/temperature_penalty_edge = 0
+	#warn impl
+
+	/// pH minimum
+	var/ph_low
+	/// pH maximum
+	var/ph_high
+	/// optimal ph for reaction; if non-null, the reaction will slow down linearly when away from this ph
+	///
+	/// * if set on an instant reaction, half-life will be forced to 1
+	var/ph_center
+	/// degrees +- from center where speed is optimal
+	var/ph_center_edge = 0
+	/// highest multiplier to half-life at edge of allowable ph
+	var/ph_penalty_maximum = 10
+	/// amount of flat area at edge of allowable ph
+	///
+	/// * for min/max 3, 7 pH, and this is set to 0.1, this is at penalty-max at 3-3.1 and 6.9-7.0
+	var/ph_penalty_edge = 0
+
+	/// deciseconds to react half of the remaining amount.
+	/// used in some bullshit complex math to determine actual reaction rate
+	/// 0 for instant
+	var/reaction_half_life = 0
+	#warn half_life
+	/// when leftover volume is under this for reaction, don't care about half life and finish the rest
+	var/reaction_completion_threshold = 0.2
+	#warn half_life_instant_volume
+
+	/// moderators: reagent ids or paths to number to determine how much it speeds reaction
+	///
+	/// number is multiplied to half life to get actual speed.
+	///
+	/// * > 1 will slow reaction
+	/// * < 1, but not 0 will speed reaction
+	/// * 0 will make reaction instant
+	/// * INFINITY will completely inhibit the reaction.
+	///
+	/// If a reaction is instant, the half life will instead be set to 1 if a moderator exists.
+	var/list/moderators
+	/// catalysts: reagent ids or paths
+	///
+	/// * these are required reagents to perform the reaction
+	var/list/catalysts
+
+	/// equilibrium point; less than 1, reaction will be inhibited if ratio of product to reactant is above that
+	///
+	/// * 0.5 = we stop when product == reactant volume
+	/// * 0.8 = we stop when product == 4 times reactant volume
+	/// * 0.9 = we stop when product == 9 times reactant volume
+	///
+	/// todo: reactions being able to go in reverse once reaching equilibrium
+	var/equilibrium = 1
+
+	//* guidebook *//
+
 	/// guidebook flags
 	var/reaction_guidebook_flags = NONE
 	/// guidebook category
 	var/reaction_guidebook_category = "Unsorted"
 
 	//? legacy / unsorted
-	var/list/catalysts = list()
-	var/list/inhibitors = list()
-
-	//how far the reaction proceeds each time it is processed. Used with either REACTION_RATE or HALF_LIFE macros.
-	var/reaction_rate = HALF_LIFE(0)
-
-	//if less than 1, the reaction will be inhibited if the ratio of products/reagents is too high.
-	//0.5 = 50% yield -> reaction will only proceed halfway until products are removed.
-	var/yield = 1.0
-
-	//If limits on reaction rate would leave less than this amount of any reagent (adjusted by the reaction ratios),
-	//the reaction goes to completion. This is to prevent reactions from going on forever with tiny reagent amounts.
-	var/min_reaction = 2
-
 	var/mix_message = "The solution begins to bubble."
 	var/reaction_sound = 'sound/effects/bubbles.ogg'
 
@@ -194,12 +270,14 @@
 			M.show_message("<span class='notice'>[icon2html(thing = container, target = M)] [mix_message]</span>", 1)
 		playsound(T, reaction_sound, 80, 1)
 
+#warn above
+
 //obtains any special data that will be provided to the reaction products
 //this is called just before reactants are removed.
 /datum/chemical_reaction/proc/send_data(datum/reagent_holder/holder, reaction_limit)
 	return null
 
-//* Guidebook
+//* Guidebook *//
 
 /**
  * Guidebook Data for TGUIGuidebookReaction
@@ -217,461 +295,50 @@
 		"alcoholStrength" = null,
 	)
 
-
-/* Most medication reactions, and their precursors */
-
-//Standard First Aid Medication
-
-/datum/chemical_reaction/carthatoline
-	//heals toxin
-	name = "Carthatoline"
-	id = "carthatoline"
-	result = "carthatoline"
-	required_reagents = list("anti_toxin" = 1, MAT_CARBON = 2, MAT_PHORON = 0.1)
-	catalysts = list(MAT_PHORON = 1)
-	result_amount = 2
-
-/datum/chemical_reaction/bicaridine
-	//heals brute
-	name = "Bicaridine"
-	id = "bicaridine"
-	result = "bicaridine"
-	required_reagents = list("inaprovaline" = 1, MAT_CARBON = 1)
-	inhibitors = list("sugar" = 1) // Messes up with inaprovaline
-	result_amount = 2
-
-/datum/chemical_reaction/vermicetol
-	//heals brute
-	name = "Vermicetol"
-	id = "vermicetol"
-	result = "vermicetol"
-	required_reagents = list("bicaridine" = 2, "shockchem" = 1, MAT_PHORON = 0.1)
-	catalysts = list(MAT_PHORON = 5)
-	result_amount = 3
-
-/datum/chemical_reaction/kelotane
-	//Heals burns
-	name = "Kelotane"
-	id = "kelotane"
-	result = "kelotane"
-	required_reagents = list("silicon" = 1, MAT_CARBON = 1)
-	result_amount = 2
-
-/datum/chemical_reaction/dermaline
-	//Heals burns
-	name = "Dermaline"
-	id = "dermaline"
-	result = "dermaline"
-	required_reagents = list("oxygen" = 1, "phosphorus" = 1, "kelotane" = 1)
-	result_amount = 3
-
-/datum/chemical_reaction/dexalin
-	//fixes oxyloss
-	name = "Dexalin"
-	id = "dexalin"
-	result = "dexalin"
-	required_reagents = list("oxygen" = 2, MAT_PHORON = 0.1)
-	catalysts = list(MAT_PHORON = 1)
-	inhibitors = list("water" = 1) // Messes with cryox
-	result_amount = 1
-
-
-/datum/chemical_reaction/dexalinp
-	//fixes Oxyloss
-	name = "Dexalin Plus"
-	id = "dexalinp"
-	result = "dexalinp"
-	required_reagents = list("dexalin" = 1, MAT_CARBON = 1, MAT_IRON = 1)
-	result_amount = 3
-
-//Painkiller
-
-/datum/chemical_reaction/paracetamol
-	name = "Paracetamol"
-	id = "paracetamol"
-	result = "paracetamol"
-	required_reagents = list("inaprovaline" = 1, "nitrogen" = 1, "water" = 1)
-	result_amount = 2
-
-/datum/chemical_reaction/tramadol
-	name = "Tramadol"
-	id = "tramadol"
-	result = "tramadol"
-	required_reagents = list("paracetamol" = 1, "ethanol" = 1, "oxygen" = 1)
-	result_amount = 3
-
-/datum/chemical_reaction/oxycodone
-	name = "Oxycodone"
-	id = "oxycodone"
-	result = "oxycodone"
-	required_reagents = list("ethanol" = 1, "tramadol" = 1)
-	catalysts = list(MAT_PHORON = 5)
-	result_amount = 1
-
-//Radiation Treatment
-
-/datum/chemical_reaction/hyronalin
-	//Calm radiation treatment
-	name = "Hyronalin"
-	id = "hyronalin"
-	result = "hyronalin"
-	required_reagents = list("radium" = 1, "anti_toxin" = 1)
-	result_amount = 2
-
-/datum/chemical_reaction/arithrazine
-	//Angry radiation treatment
-	name = "Arithrazine"
-	id = "arithrazine"
-	result = "arithrazine"
-	required_reagents = list("hyronalin" = 1, "hydrogen" = 1)
-	result_amount = 2
-
-//The Daxon Family
-
-/datum/chemical_reaction/nanoperidaxon
-	//Heals ALL organs
-	name = "Nano-Peridaxon"
-	id = "nanoperidaxon"
-	result = "nanoperidaxon"
-	priority = 100
-	required_reagents = list("peridaxon" = 2, "nifrepairnanites" = 2)
-	result_amount = 2
-
-/datum/chemical_reaction/osteodaxon
-	//Heals bone fractures
-	name = "Osteodaxon"
-	id = "osteodaxon"
-	result = "osteodaxon"
-	priority = 100
-	required_reagents = list("bicaridine" = 2, MAT_PHORON = 0.1, "carpotoxin" = 1)
-	catalysts = list(MAT_PHORON = 5)
-	inhibitors = list("clonexadone" = 1) // Messes with cryox
-	result_amount = 2
-
-/datum/chemical_reaction/respirodaxon
-	//heals lungs
-	name = "Respirodaxon"
-	id = "respirodaxon"
-	result = "respirodaxon"
-	priority = 100
-	required_reagents = list("dexalinp" = 2, "biomass" = 2, MAT_PHORON = 1)
-	catalysts = list(MAT_PHORON = 5)
-	inhibitors = list("dexalin" = 1)
-	result_amount = 2
-
-/datum/chemical_reaction/gastirodaxon
-	//Heals stomach
-	name = "Gastirodaxon"
-	id = "gastirodaxon"
-	result = "gastirodaxon"
-	priority = 100
-	required_reagents = list("carthatoline" = 1, "biomass" = 2, "tungsten" = 2)
-	catalysts = list(MAT_PHORON = 5)
-	inhibitors = list("lithium" = 1)
-	result_amount = 3
-
-/datum/chemical_reaction/hepanephrodaxon
-	//heals liver and kidneys(or species equivalent)
-	name = "Hepanephrodaxon"
-	id = "hepanephrodaxon"
-	result = "hepanephrodaxon"
-	priority = 100
-	required_reagents = list("carthatoline" = 2, "biomass" = 2, "lithium" = 1)
-	catalysts = list(MAT_PHORON = 5)
-	inhibitors = list("tungsten" = 1)
-	result_amount = 2
-
-/datum/chemical_reaction/cordradaxon
-	//Heals Heart(or species equilvalent)
-	name = "Cordradaxon"
-	id = "cordradaxon"
-	result = "cordradaxon"
-	priority = 100
-	required_reagents = list("potassium_chlorophoride" = 1, "biomass" = 2, "bicaridine" = 2)
-	catalysts = list(MAT_PHORON = 5)
-	inhibitors = list("clonexadone" = 1)
-	result_amount = 2
-
-//Psych Drugs and hallucination Treatment
-
-/datum/chemical_reaction/nicotine
-	name = "Nicotine"
-	id = "nicotine"
-	result = "nicotine"
-	required_reagents = list("carbon" = 1, "oxygen" = 1, "sulfur" = 1)
-	result_amount = 3
-
-/datum/chemical_reaction/synaptizine
-	name = "Synaptizine"
-	id = "synaptizine"
-	result = "synaptizine"
-	required_reagents = list("sugar" = 1, "lithium" = 1, "water" = 1)
-	result_amount = 3
-
-/datum/chemical_reaction/methylphenidate
-	name = "Methylphenidate"
-	id = "methylphenidate"
-	result = "methylphenidate"
-	required_reagents = list("mindbreaker" = 1, "hydrogen" = 1)
-	result_amount = 3
-
-/datum/chemical_reaction/citalopram
-	name = "Citalopram"
-	id = "citalopram"
-	result = "citalopram"
-	required_reagents = list("mindbreaker" = 1, MAT_CARBON = 1)
-	result_amount = 3
-
-/datum/chemical_reaction/paroxetine
-	//Gives you the strength to fight on
-	name = "Paroxetine"
-	id = "paroxetine"
-	result = "paroxetine"
-	required_reagents = list("mindbreaker" = 1, "oxygen" = 1, "inaprovaline" = 1)
-	result_amount = 3
-
-//Advanced Healing
-
-/datum/chemical_reaction/alkysine
-	//Heals brain damage
-	name = "Alkysine"
-	id = "alkysine"
-	result = "alkysine"
-	required_reagents = list("chlorine" = 1, "nitrogen" = 1, "anti_toxin" = 1)
-	result_amount = 2
-
-
-/datum/chemical_reaction/myelamine
-	//Heals internal bleeding
-	name = "Myelamine"
-	id = "myelamine"
-	result = "myelamine"
-	required_reagents = list("bicaridine" = 1, MAT_IRON = 2, "spidertoxin" = 1)
-	result_amount = 2
-
-/datum/chemical_reaction/imidazoline
-	//Heals the eyes and fixes blindness
-	name = "imidazoline"
-	id = "imidazoline"
-	result = "imidazoline"
-	required_reagents = list(MAT_CARBON = 1, "hydrogen" = 1, "anti_toxin" = 1)
-	result_amount = 2
-
-/datum/chemical_reaction/rezadone
-	//Heals clone(20), oxyloss(2), brute,burn&toxin(20) more than 3 units diefigure the patient
-	name = "Rezadone"
-	id = "rezadone"
-	result = "rezadone"
-	required_reagents = list("carpotoxin" = 1, "cryptobiolin" = 1, MAT_COPPER = 1)
-	result_amount = 3
-
-/datum/chemical_reaction/ryetalyn
-	//Fixes disabilities(those caused by mutations)
-	name = "Ryetalyn"
-	id = "ryetalyn"
-	result = "ryetalyn"
-	required_reagents = list("arithrazine" = 1, MAT_CARBON = 1)
-	result_amount = 2
-
-//Immunsystem (Anti-)Boosters
-/datum/chemical_reaction/spaceacillin
-	//simple antibiotic, no mentionable side effects
-	name = "Spaceacillin"
-	id = "spaceacillin"
-	result = "spaceacillin"
-	required_reagents = list("cryptobiolin" = 1, "inaprovaline" = 1)
-	result_amount = 2
-
-/datum/chemical_reaction/corophizine
-	//sehr potentes antibiotic, has a low chance to break bones
-	name = "Corophizine"
-	id = "corophizine"
-	result = "corophizine"
-	required_reagents = list("spaceacillin" = 1, MAT_CARBON = 1, MAT_PHORON = 0.1)
-	catalysts = list(MAT_PHORON = 5)
-	result_amount = 2
-
-/datum/chemical_reaction/immunosuprizine
-	//Very toxic substance that prevents Organ rejection after transplanation, not sure why we still need this //Adopted for CRS(Cyberpsychosis) meds.
-	name = "Immunosuprizine"
-	id = "immunosuprizine"
-	result = "immunosuprizine"
-	required_reagents = list("corophizine" = 1, "tungsten" = 1, "sacid" = 1)
-	catalysts = list(MAT_PHORON = 5)
-	result_amount = 2
-
-
-//Cryo meds
-
-/datum/chemical_reaction/cryoxadone
-	//The starter Cryo med, heals all four standard Damages
-	name = "Cryoxadone"
-	id = "cryoxadone"
-	result = "cryoxadone"
-	required_reagents = list("dexalin" = 1, "water" = 1, "oxygen" = 1)
-	result_amount = 3
-
-/datum/chemical_reaction/clonexadone
-	//The advanced Cryo med, same as Cryox but 3 times as potent
-	name = "Clonexadone"
-	id = "clonexadone"
-	result = "clonexadone"
-	required_reagents = list("cryoxadone" = 1, "sodium" = 1, MAT_PHORON = 0.1)
-	catalysts = list(MAT_PHORON = 5)
-	result_amount = 2
-
-/datum/chemical_reaction/leporazine
-	//not directly a Cryocell medication but help thawn the patient afterwards
-	name = "Leporazine"
-	id = "leporazine"
-	result = "leporazine"
-	required_reagents = list("silicon" = 1, MAT_COPPER = 1)
-	catalysts = list(MAT_PHORON = 5)
-	result_amount = 2
-
-//Utility chems that are precursors, or have no direct healing properties of their own, but should be found in a medical environment
-/datum/chemical_reaction/sterilizine
-	name = "Sterilizine"
-	id = "sterilizine"
-	result = "sterilizine"
-	required_reagents = list("ethanol" = 1, "anti_toxin" = 1, "chlorine" = 1)
-	result_amount = 3
-
-/datum/chemical_reaction/virus_food
-	name = "Virus Food"
-	id = "virusfood"
-	result = "virusfood"
-	required_reagents = list("water" = 1, "milk" = 1)
-	result_amount = 5
-
-/datum/chemical_reaction/cryptobiolin
-	//Precursor for spaceacillin
-	name = "Cryptobiolin"
-	id = "cryptobiolin"
-	result = "cryptobiolin"
-	required_reagents = list("potassium" = 1, "oxygen" = 1, "sugar" = 1)
-	result_amount = 3
-
-/datum/chemical_reaction/ethylredoxrazine
-	//Helps with alcohol in the blood stream
-	name = "Ethylredoxrazine"
-	id = "ethylredoxrazine"
-	result = "ethylredoxrazine"
-	required_reagents = list("oxygen" = 1, "anti_toxin" = 1, MAT_CARBON = 1)
-	result_amount = 3
-
-/datum/chemical_reaction/calciumcarbonate
-	//prevents people from throwing up
-	name = "Calcium Carbonate"
-	id = "calciumcarbonate"
-	result = "calciumcarbonate"
-	required_reagents = list("oxygen" = 3, "calcium" = 1, MAT_CARBON = 1)
-	result_amount = 2
-
-/datum/chemical_reaction/soporific
-	//Sedative to make people sleepy and keep the sleeping
-	name = "Soporific"
-	id = "stoxin"
-	result = "stoxin"
-	required_reagents = list("chloralhydrate" = 1, "sugar" = 4)
-	inhibitors = list("phosphorus") // Messes with the smoke
-	result_amount = 5
-
-/datum/chemical_reaction/chloralhydrate
-	//OD is very toxic, otherwise sedative like soporific
-	name = "Chloral Hydrate"
-	id = "chloralhydrate"
-	result = "chloralhydrate"
-	required_reagents = list("ethanol" = 1, "chlorine" = 3, "water" = 1)
-	result_amount = 1
-
-/datum/chemical_reaction/lipozine
-	//Reduces Nutrients in the patient
-	name = "Lipozine"
-	id = "Lipozine"
-	result = "lipozine"
-	required_reagents = list("sodiumchloride" = 1, "ethanol" = 1, "radium" = 1)
-	result_amount = 3
-
-/datum/chemical_reaction/adranol
-	//Helps with blurry vision, jitters, and confusion
-	name = "Adranol"
-	id = "adranol"
-	result = "adranol"
-	required_reagents = list("milk" = 2, "hydrogen" = 1, "potassium" = 1)
-	result_amount = 3
-
-/datum/chemical_reaction/biomass
-	// Biomass, for cloning and bioprinters
-	name = "Biomass"
-	id = "biomass"
-	result = "biomass"
-	required_reagents = list("protein" = 1, "sugar" = 1, MAT_PHORON = 1)
-	result_amount = 6	// Roughly 120u per phoron sheet
-
-
-//Boosters
-
-/datum/chemical_reaction/hyperzine
-	//the Proper booster, no direct damage caused by it
-	name = "Hyperzine"
-	id = "hyperzine"
-	result = "hyperzine"
-	required_reagents = list("sugar" = 1, "phosphorus" = 1, "sulfur" = 1)
-	result_amount = 3
-
-/datum/chemical_reaction/stimm
-	//The makeshift booster, inherently toxic
-	name = "Stimm"
-	id = "stimm"
-	result = "stimm"
-	required_reagents = list("left4zed" = 1, "fuel" = 1)
-	catalysts = list("fuel" = 5)
-	result_amount = 2
-
-
-//Skrellian meds, because we have so many skrells running around.
-
-/datum/chemical_reaction/talum_quem
-	name = "Talum-quem"
-	id = "talum_quem"
-	result = "talum_quem"
-	required_reagents = list("space_drugs" = 2, "sugar" = 1, "amatoxin" = 1)
-	result_amount = 4
-
-/datum/chemical_reaction/qerr_quem
-	name = "Qerr-quem"
-	id = "qerr_quem"
-	result = "qerr_quem"
-	required_reagents = list("nicotine" = 1, MAT_CARBON = 1, "sugar" = 2)
-	result_amount = 4
-
-/datum/chemical_reaction/malish_qualem
-	name = "Malish-Qualem"
-	id = "malish-qualem"
-	result = "malish-qualem"
-	required_reagents = list("immunosuprizine" = 1, "qerr_quem" = 1, "inaprovaline" = 1)
-	catalysts = list(MAT_PHORON = 5)
-	result_amount = 2
-
-//Vore - Medication
-/datum/chemical_reaction/ickypak
-	name = "Ickypak"
-	id = "ickypak"
-	result = "ickypak"
-	required_reagents = list("hyperzine" = 4, "fluorosurfactant" = 1)
-	result_amount = 5
-
-/datum/chemical_reaction/unsorbitol
-	name = "Unsorbitol"
-	id = "unsorbitol"
-	result = "unsorbitol"
-	required_reagents = list("mutagen" = 3, "lipozine" = 2)
-	result_amount = 5
-
-/datum/chemical_reaction/neuratrextate
-	name = "Neuratrextate"
-	id = "neuratrextate"
-	result = "neuratrextate"
-	required_reagents = list("immunosuprizine" = 3, "synaptizine" = 2)
-	result_amount = 5
+//* Reactions *//
+
+/**
+ * on reaction start
+ *
+ * * do `var/list/blackboard = holder.active_reactions[src]` to access our blackboard list.
+ * * blackboard is a list preserved through a given start-end cycle of a reaction, for that specific reaction
+ * * accessing other reactions' blackboards, while allowed, is expressly discouraged.
+ */
+/datum/chemical_reaction/proc/on_reaction_start(datum/reagent_holder/holder)
+	return
+
+/**
+ * on reaction tick
+ *
+ * * do `var/list/blackboard = holder.active_reactions[src]` to access our blackboard list.
+ * * blackboard is a list preserved through a given start-end cycle of a reaction, for that specific reaction
+ * * accessing other reactions' blackboards, while allowed, is expressly discouraged.
+ *
+ * @params
+ * * holder - the reacting holder
+ * * multiplier - multiples of result_amount made. 2 on a 1u result is 2u, 2 on a 2u result is 4, etc.
+ */
+/datum/chemical_reaction/proc/on_reaction_tick(datum/reagent_holder/holder, multiplier)
+	return
+
+/**
+ * on reaction finish
+ *
+ * * do `var/list/blackboard = holder.active_reactions[src]` to access our blackboard list.
+ * * blackboard is a list preserved through a given start-end cycle of a reaction, for that specific reaction
+ * * accessing other reactions' blackboards, while allowed, is expressly discouraged.
+ */
+/datum/chemical_reaction/proc/on_reaction_finish(datum/reagent_holder/holder)
+	return
+
+/**
+ * called on completion of instant reaction
+ *
+ * @params
+ * * holder - the reacting holder
+ * * multiplier - multiples of result_amount made. 2 on a 1u result is 2u, 2 on a 2u result is 4, etc.
+ */
+/datum/chemical_reaction/proc/on_reaction_instant(datum/reagent_holder/holder, multiplier)
+	return
+
+#warn impl all

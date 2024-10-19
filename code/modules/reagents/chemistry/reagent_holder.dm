@@ -1,7 +1,20 @@
 /datum/reagent_holder
-	//? core
+	//* Core *//
+
 	/// reagent holder flags - see [code/__DEFINES/reagents/flags.dm]
 	var/reagent_holder_flags = NONE
+
+	//* Reactions *//
+
+	/// active reactions
+	///
+	/// * instant reactions will never be added to this
+	/// * lazy list
+	/// * reaction datums are associated to their blackboard lists
+	var/list/datum/chemical_reaction/active_reactions
+	/// upon addition/removal of any of these reagent **ids** (not typepaths),
+	/// the given reactions in the list will immediately be re-evaluated
+	var/list/reaction_reconsideration_hooks
 
 	///? legacy / unsorted
 	// todo: 3 lists, for volume, data, flags; data should always be a list.
@@ -93,34 +106,6 @@
 		else
 			total_volume += R.volume
 	return
-
-/datum/reagent_holder/proc/handle_reactions()
-	set waitfor = FALSE		// shitcode. reagents shouldn't ever sleep but hey :^)
-	if(QDELETED(my_atom))
-		return FALSE
-	if(my_atom.atom_flags & NOREACT)
-		return FALSE
-	var/reaction_occurred
-	var/list/eligible_reactions = list()
-	var/list/effect_reactions = list()
-	do
-		reaction_occurred = FALSE
-		for(var/i in reagent_list)
-			var/datum/reagent/R = i
-			if(SSchemistry.chemical_reactions_by_reagent[R.id])
-				eligible_reactions |= SSchemistry.chemical_reactions_by_reagent[R.id]
-
-		for(var/i in eligible_reactions)
-			var/datum/chemical_reaction/C = i
-			if(C.can_happen(src) && C.process(src))
-				effect_reactions |= C
-				reaction_occurred = TRUE
-		eligible_reactions.len = 0
-	while(reaction_occurred)
-	for(var/i in effect_reactions)
-		var/datum/chemical_reaction/C = i
-		C.post_reaction(src)
-	update_total()
 
 /datum/reagent_holder/proc/holder_full()
 	if(total_volume >= maximum_volume)
