@@ -57,7 +57,7 @@
 	return (midpoint_t - temperature) * equalize_ratio * limit_ratio
 
 /turf/simulated/air_thermal_superconduction(temperature, heat_capacity, limit_ratio, equalize_ratio, cell_limit)
-	#ifdef CF_ATMOS_ZAS_DEBUG_ASSERTIONS
+	#ifdef CF_ATMOS_XGM_DEBUG_ASSERTIONS
 	ASSERT(limit_ratio >= 0 && limit_ratio <= 1)
 	ASSERT(equalize_ratio >= 0 && equalize_ratio <= 1)
 	#endif
