@@ -2660,9 +2660,8 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/space)
 "emb" = (
-/obj/machinery/light{
-	dir = 1;
-	pixel_y = 29
+/obj/machinery/light/small{
+	dir = 1
 	},
 /turf/simulated/floor/plating,
 /area/victory/hallway/d4aftmaint)
@@ -3157,6 +3156,10 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/tcommsat/computer)
+"eZX" = (
+/obj/machinery/light/small,
+/turf/simulated/floor/plating,
+/area/victory/hallway/d4aftmaint)
 "faT" = (
 /obj/machinery/atmospherics/portables_connector,
 /obj/machinery/portable_atmospherics/canister/air/airlock,
@@ -4329,6 +4332,15 @@
 /obj/map_helper/airlock/atmos/chamber_pump,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_eva)
+"gTe" = (
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/machinery/light/small/emergency{
+	dir = 8
+	},
+/turf/simulated/floor/plating,
+/area/victory/hallway/d4aftmaint)
 "gTl" = (
 /turf/simulated/wall/prepainted/engineering,
 /area/engineering/hallway/lower)
@@ -6534,6 +6546,12 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/engineering/shield_gen)
+"kls" = (
+/obj/machinery/light/small{
+	dir = 4
+	},
+/turf/simulated/floor/plating,
+/area/victory/hallway/d4aftmaint)
 "kng" = (
 /obj/machinery/message_server,
 /turf/simulated/floor/tiled/techfloor,
@@ -7387,6 +7405,12 @@
 	},
 /turf/simulated/floor/wood,
 /area/engineering/hallway/lower)
+"lSH" = (
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/simulated/floor/plating,
+/area/victory/hallway/d4aftmaint)
 "lSQ" = (
 /turf/simulated/floor/tiled/steel,
 /area/victory/hallway/d4fwdhall)
@@ -9592,6 +9616,16 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/bluegrid,
 /area/ai)
+"oYy" = (
+/obj/machinery/porta_turret/crescent{
+	density = 1;
+	faction = "neutral"
+	},
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/simulated/floor/airless/ceiling,
+/area/victory/command/turrets)
 "oYG" = (
 /obj/map_helper/engine_loader,
 /turf/space,
@@ -10102,12 +10136,16 @@
 /turf/simulated/floor/tiled/monowhite,
 /area/engineering/drone_fabrication)
 "pUe" = (
-/obj/structure/catwalk,
-/obj/machinery/light/small/emergency{
-	dir = 1
+/obj/machinery/porta_turret/crescent{
+	density = 1;
+	faction = "neutral"
 	},
-/turf/simulated/floor/plating,
-/area/victory/hallway/d4fwdmaint)
+/obj/machinery/light{
+	dir = 8;
+	pixel_x = -10
+	},
+/turf/simulated/floor/airless/ceiling,
+/area/victory/command/turrets)
 "pUy" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	dir = 8
@@ -10744,6 +10782,12 @@
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/storage)
+"qTZ" = (
+/obj/machinery/light/small{
+	dir = 1
+	},
+/turf/simulated/floor/plating,
+/area/victory/hallway/d4fwdmaint)
 "qUF" = (
 /obj/structure/cable{
 	icon_state = "1-4"
@@ -11155,6 +11199,12 @@
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/victory/hallway/d4starboardhall)
+"rHj" = (
+/obj/machinery/light/small{
+	dir = 1
+	},
+/turf/simulated/floor/tiled,
+/area/victory/hallway/d4fwdhall)
 "rHl" = (
 /obj/machinery/light{
 	dir = 8;
@@ -11584,12 +11634,9 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/atmos)
 "sDN" = (
-/obj/machinery/light{
-	dir = 1;
-	pixel_y = 29
-	},
+/obj/machinery/light,
 /turf/simulated/floor/plating,
-/area/victory/hallway/d4fwdmaint)
+/area/victory/hallway/d4aftmaint)
 "sEB" = (
 /obj/structure/table/standard,
 /obj/item/aiModule/nanotrasen,
@@ -13427,6 +13474,18 @@
 "vGM" = (
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/atmos/workshop)
+"vGS" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/lightorange/border{
+	dir = 1
+	},
+/obj/machinery/light/small{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/steel_ridged,
+/area/victory/hallway/d4fwdhall)
 "vGV" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/black{
 	dir = 4
@@ -14892,6 +14951,13 @@
 /obj/machinery/camera/network/engineering,
 /turf/simulated/floor/wood,
 /area/crew_quarters/heads/chief)
+"xPt" = (
+/obj/structure/catwalk,
+/obj/machinery/light/small{
+	dir = 1
+	},
+/turf/simulated/floor/plating,
+/area/victory/hallway/d4fwdmaint)
 "xPL" = (
 /obj/structure/cable{
 	icon_state = "0-2"
@@ -20855,7 +20921,7 @@ jNg
 ikp
 ikp
 kej
-kej
+gTe
 hEj
 vtv
 pWy
@@ -22209,7 +22275,7 @@ oNF
 psc
 psc
 ikp
-jBO
+emb
 jBO
 iXz
 hHV
@@ -22407,7 +22473,7 @@ jBO
 jBO
 iXz
 hHV
-jBO
+sDN
 hEj
 kqL
 wkm
@@ -23962,7 +24028,7 @@ jBO
 jBO
 jBO
 jBO
-jBO
+eZX
 ikp
 ikp
 ikp
@@ -24309,7 +24375,7 @@ jNg
 jNg
 jNg
 ikp
-jBO
+emb
 jBO
 jBO
 ikp
@@ -24343,7 +24409,7 @@ twj
 twj
 twj
 yex
-jBO
+lSH
 tIM
 jBO
 jBO
@@ -25119,7 +25185,7 @@ twj
 twj
 twj
 yex
-jBO
+emb
 tIM
 jBO
 jBO
@@ -25861,7 +25927,7 @@ jNg
 jNg
 jNg
 ikp
-emb
+jBO
 jBO
 jBO
 ikp
@@ -26055,7 +26121,7 @@ jNg
 jNg
 jNg
 ikp
-jBO
+emb
 jBO
 jBO
 ikp
@@ -26824,7 +26890,7 @@ nrt
 nrt
 nrt
 ukW
-emb
+jBO
 jBO
 jBO
 jBO
@@ -27018,7 +27084,7 @@ jCb
 usH
 usH
 ukW
-jBO
+emb
 jBO
 jBO
 jBO
@@ -27840,7 +27906,7 @@ aIs
 vLj
 aIs
 aIs
-jBO
+emb
 jBO
 jBO
 jBO
@@ -27852,7 +27918,7 @@ cqe
 jBO
 jBO
 jBO
-jBO
+kls
 jBO
 jBO
 jBO
@@ -32514,7 +32580,7 @@ vUP
 ycR
 vsf
 vsf
-usY
+oYy
 gPd
 jNg
 jNg
@@ -33812,7 +33878,7 @@ xRj
 xRj
 qBz
 qBz
-dvY
+qTZ
 dvY
 dvY
 dvY
@@ -34234,7 +34300,7 @@ omb
 kGS
 sSq
 xsV
-dvY
+qTZ
 dvY
 qqz
 vGM
@@ -34829,7 +34895,7 @@ ehV
 ehV
 sUM
 sUM
-usY
+oYy
 gPd
 jNg
 jNg
@@ -35368,7 +35434,7 @@ jNg
 jNg
 jNg
 qBz
-dvY
+qTZ
 dvY
 dvY
 wiw
@@ -35398,7 +35464,7 @@ omb
 kGS
 sSq
 xsV
-sDN
+dvY
 dvY
 qqz
 exs
@@ -35592,7 +35658,7 @@ uzA
 kGS
 iUu
 xsV
-dvY
+qTZ
 dvY
 qqz
 plv
@@ -36571,7 +36637,7 @@ dvY
 dvY
 dvY
 qBz
-usY
+oYy
 gPd
 jNg
 jNg
@@ -36950,7 +37016,7 @@ wrb
 kGS
 sSq
 yhh
-sDN
+dvY
 dvY
 dvY
 dvY
@@ -37120,7 +37186,7 @@ jNg
 jNg
 qBz
 qBz
-dvY
+qTZ
 dvY
 dvY
 dvY
@@ -37537,7 +37603,7 @@ dvY
 dvY
 qBz
 qBz
-usY
+oYy
 gPd
 jNg
 jNg
@@ -37726,7 +37792,7 @@ dhN
 huZ
 agP
 qBz
-dvY
+qTZ
 dvY
 qBz
 qBz
@@ -39475,7 +39541,7 @@ qBz
 dvY
 dvY
 qBz
-usY
+oYy
 gPd
 jNg
 jNg
@@ -40248,7 +40314,7 @@ vdH
 huZ
 nQw
 qBz
-dvY
+qTZ
 dvY
 qBz
 jNg
@@ -40615,7 +40681,7 @@ jNg
 jNg
 jNg
 qBz
-dvY
+qTZ
 dvY
 qBz
 dhN
@@ -41994,7 +42060,7 @@ dhN
 huZ
 agP
 qBz
-dvY
+qTZ
 dvY
 qBz
 jNg
@@ -42385,7 +42451,7 @@ qBz
 dvY
 dvY
 qBz
-usY
+oYy
 gPd
 jNg
 jNg
@@ -43331,7 +43397,7 @@ jNg
 jNg
 jNg
 qBz
-pUe
+xXL
 dvY
 qBz
 akX
@@ -43525,7 +43591,7 @@ jNg
 jNg
 jNg
 qBz
-xXL
+xPt
 mES
 qBz
 dhN
@@ -45091,14 +45157,14 @@ hic
 hic
 hic
 qBz
-ehr
+rHj
 ehr
 ehr
 vdH
 fmu
 nQw
 qBz
-dvY
+qTZ
 cRV
 fwR
 jNg
@@ -45669,7 +45735,7 @@ ehr
 ehr
 ehr
 gRl
-dhN
+vGS
 lSQ
 agP
 gRl
@@ -45877,7 +45943,7 @@ bFi
 dvY
 eEF
 qBz
-usY
+oYy
 gPd
 jNg
 jNg
@@ -46825,7 +46891,7 @@ jNg
 jNg
 jNg
 gPd
-usY
+pUe
 qBz
 qBz
 yhC
@@ -47037,7 +47103,7 @@ yiN
 yhC
 qBz
 qBz
-usY
+pUe
 gPd
 jNg
 jNg
@@ -47605,7 +47671,7 @@ jNg
 jNg
 jNg
 gPd
-usY
+pUe
 gPd
 jNg
 jNg
@@ -47615,7 +47681,7 @@ jNg
 jNg
 jNg
 gPd
-usY
+pUe
 gPd
 jNg
 jNg

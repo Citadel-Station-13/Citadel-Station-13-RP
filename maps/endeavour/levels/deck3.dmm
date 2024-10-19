@@ -2130,6 +2130,12 @@
 /obj/structure/closet/wardrobe,
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_3)
+"bUP" = (
+/obj/machinery/light/small{
+	dir = 1
+	},
+/turf/simulated/floor/plating,
+/area/endeavour/hallway/d3aftmaint)
 "bUU" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -2145,6 +2151,13 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d3fwdhall)
+"bVC" = (
+/obj/structure/table/rack/shelf/steel,
+/obj/item/tank/emergency/oxygen/double,
+/obj/item/tank/emergency/oxygen/engi,
+/obj/item/tank/emergency/oxygen/engi,
+/turf/simulated/floor/plating,
+/area/endeavour/hallway/d3aftmaint)
 "bVV" = (
 /obj/effect/floor_decal/spline/fancy/wood,
 /obj/structure/disposalpipe/segment{
@@ -5203,6 +5216,13 @@
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/security/lobby)
+"eGj" = (
+/obj/machinery/light/small{
+	dir = 1
+	},
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/plating,
+/area/endeavour/hallway/d3aftmaint)
 "eGx" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
@@ -6736,6 +6756,12 @@
 	},
 /turf/simulated/floor/reinforced,
 /area/quartermaster/miningdock)
+"fSt" = (
+/obj/machinery/light/small{
+	dir = 1
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/bar/lower)
 "fSB" = (
 /obj/effect/floor_decal/techfloor,
 /obj/machinery/computer/guestpass{
@@ -7246,6 +7272,10 @@
 	},
 /turf/simulated/floor/tiled,
 /area/quartermaster/warehouse)
+"gqN" = (
+/obj/machinery/space_heater,
+/turf/simulated/floor/plating,
+/area/endeavour/hallway/d3aftmaint)
 "gqQ" = (
 /obj/machinery/door/firedoor,
 /obj/structure/cable/green{
@@ -8779,6 +8809,12 @@
 	},
 /turf/simulated/floor/wood,
 /area/endeavour/hallway/d3fwdhall)
+"hWB" = (
+/obj/machinery/light/small{
+	dir = 1
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/cargo/mining)
 "hWG" = (
 /obj/structure/table/marble,
 /obj/machinery/door/blast/shutters{
@@ -11306,6 +11342,10 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/crew_quarters/sleep/cryo)
+"kuK" = (
+/obj/structure/closet/emcloset,
+/turf/simulated/floor/plating,
+/area/endeavour/hallway/d3aftmaint)
 "kuM" = (
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d3fwdhall)
@@ -12634,6 +12674,11 @@
 	},
 /turf/simulated/floor/wood,
 /area/vacant/vacant_shop)
+"lDc" = (
+/obj/structure/reagent_dispensers/watertank,
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/plating,
+/area/endeavour/hallway/d3aftmaint)
 "lDq" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 8
@@ -14534,6 +14579,13 @@
 	},
 /turf/simulated/floor/carpet/purcarpet,
 /area/crew_quarters/sleep/Dorm_2)
+"nqs" = (
+/obj/structure/table/rack/shelf/steel,
+/obj/item/storage/toolbox/emergency,
+/obj/item/storage/toolbox/emergency,
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/plating,
+/area/endeavour/hallway/d3aftmaint)
 "nqP" = (
 /obj/machinery/computer/security/telescreen{
 	pixel_y = 32
@@ -14892,6 +14944,11 @@
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/endeavour/hallway/d3porthall)
+"nKI" = (
+/obj/structure/table/rack/shelf/steel,
+/obj/item/storage/briefcase/inflatable,
+/turf/simulated/floor/plating,
+/area/endeavour/hallway/d3aftmaint)
 "nKM" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
@@ -17549,6 +17606,10 @@
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/tiled,
 /area/endeavour/surfacebase/mining_main/refinery)
+"pON" = (
+/obj/machinery/floodlight,
+/turf/simulated/floor/plating,
+/area/endeavour/hallway/d3aftmaint)
 "pPi" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -24621,6 +24682,10 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/security/warden)
+"vFB" = (
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/plating,
+/area/endeavour/hallway/d3aftmaint)
 "vFE" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -24735,6 +24800,12 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/security/security_equiptment_storage)
+"vKr" = (
+/obj/machinery/light/small{
+	dir = 1
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/cargo)
 "vKH" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
@@ -25294,6 +25365,12 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/carpet/sblucarpet,
 /area/quartermaster/foyer)
+"wku" = (
+/obj/machinery/light/small{
+	dir = 1
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/bar/catwalk)
 "wkw" = (
 /obj/structure/table/marble,
 /obj/machinery/cash_register/civilian{
@@ -27087,6 +27164,10 @@
 /obj/machinery/camera/network/security,
 /turf/simulated/floor/tiled,
 /area/security/range)
+"xUN" = (
+/obj/machinery/portable_atmospherics/powered/scrubber,
+/turf/simulated/floor/plating,
+/area/endeavour/hallway/d3aftmaint)
 "xVp" = (
 /obj/effect/paint/darkred,
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
@@ -34757,7 +34838,7 @@ iKI
 uGk
 uGk
 uGk
-kSn
+bUP
 kSn
 kSn
 kSn
@@ -35709,7 +35790,7 @@ xZH
 xZH
 xZH
 kgM
-xZH
+fSt
 xZH
 pir
 ksT
@@ -36512,7 +36593,7 @@ qOr
 gHM
 aKD
 glG
-kSn
+bUP
 kSn
 kSn
 evH
@@ -37062,7 +37143,7 @@ qLS
 qLS
 qLS
 mVn
-xZH
+fSt
 xZH
 xZH
 xZH
@@ -37251,7 +37332,7 @@ iXY
 iXY
 rxD
 rPE
-qLS
+wku
 qLS
 qLS
 qLS
@@ -38252,7 +38333,7 @@ ymj
 qCe
 qqX
 syH
-kSn
+bUP
 kSn
 kSn
 kSn
@@ -39385,7 +39466,7 @@ vSl
 iXY
 rxD
 hwP
-mLm
+hWB
 mLm
 mLm
 mLm
@@ -39986,10 +40067,10 @@ wQJ
 xiG
 cEE
 syH
-kSn
-kSn
-kSn
-kSn
+bVC
+nqs
+lDc
+gqN
 kSn
 kSn
 kSn
@@ -40180,8 +40261,8 @@ rnE
 xiG
 phj
 syH
-kSn
-kSn
+eGj
+vFB
 kSn
 kSn
 kSn
@@ -40374,10 +40455,10 @@ sXK
 xiG
 phj
 syH
-kSn
-kSn
-kSn
-kSn
+nKI
+kuK
+xUN
+pON
 kSn
 kSn
 kSn
@@ -40568,10 +40649,10 @@ rnE
 xiG
 phj
 syH
-kSn
-kSn
-kSn
-kSn
+syH
+syH
+syH
+syH
 kSn
 kSn
 kSn
@@ -41133,7 +41214,7 @@ mIP
 hlc
 nNn
 gNj
-mLm
+hWB
 mLm
 mLm
 mLm
@@ -41538,12 +41619,12 @@ txu
 lRP
 hPQ
 syH
-kSn
-kSn
-kSn
-kSn
-kSn
-kSn
+syH
+syH
+syH
+syH
+syH
+syH
 syH
 kSn
 kSn
@@ -43855,7 +43936,7 @@ rwh
 szw
 nkT
 rBG
-fju
+vKr
 fju
 fju
 fju
@@ -44434,7 +44515,7 @@ fmj
 oyU
 nKd
 nyi
-fju
+vKr
 fju
 fju
 fju
@@ -44448,7 +44529,7 @@ rnE
 emK
 ipH
 syH
-kSn
+bUP
 kSn
 kSn
 kSn
@@ -46215,7 +46296,7 @@ phK
 aVb
 wHz
 orP
-tOV
+svs
 tOV
 tOV
 tOV
@@ -47767,7 +47848,7 @@ mhH
 hIR
 bFo
 orP
-tOV
+svs
 tOV
 tOV
 tOV
@@ -48352,7 +48433,7 @@ tOV
 tOV
 tOV
 pCQ
-tOV
+svs
 tOV
 tOV
 wkh
@@ -49900,7 +49981,7 @@ kIm
 vnQ
 vnQ
 vnQ
-tOV
+svs
 tOV
 tOV
 tOV
@@ -55108,7 +55189,7 @@ pRW
 pRW
 alQ
 alQ
-lTw
+lUd
 lTw
 lTw
 lTw
@@ -56663,7 +56744,7 @@ pRW
 jGe
 jYr
 alQ
-lTw
+lUd
 lTw
 mMr
 gwz
