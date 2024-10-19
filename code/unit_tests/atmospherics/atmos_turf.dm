@@ -30,7 +30,7 @@
 	// 100 * 1000 * 5 --> 100 mols of 1000K gas, with 5 ratio exposed (5 group multiplier)
 	var/estimated_midpoint = (10 * 500 * 0.2 + 100 * 1000 * 5) / (100 * 5 + 10 * 0.2)
 
-	var/expected_temperature = (initial_temperature * (1 - limit_ratio)) + ((estimated_midpoint - initial_temperature) * equalize_ratio)
+	var/expected_temperature = initial_temperature + (estimated_midpoint - initial_temperature) * equalize_ratio * limit_ratio
 	var/expected_energy = expected_temperature * initial_heat_capacity
 
 	var/actual_temperature_change = test_turf.air_thermal_superconduction(initial_temperature, initial_heat_capacity, limit_ratio, equalize_ratio, cell_limit)
@@ -77,7 +77,7 @@
 	// 100 * 1000 * 5 --> 100 mols of 1000K gas, with 5 ratio exposed (5 group multiplier)
 	var/estimated_midpoint = (10 * 500 * 0.2 + 100 * 1000 * 5) / (100 * 5 + 10 * 0.2)
 
-	var/expected_temperature = (initial_temperature * (1 - limit_ratio)) + ((estimated_midpoint - initial_temperature) * equalize_ratio)
+	var/expected_temperature = initial_temperature + (estimated_midpoint - initial_temperature) * equalize_ratio * limit_ratio
 	var/expected_energy = expected_temperature * initial_heat_capacity
 
 	var/total_energy_old = XGM_THERMAL_ENERGY(test_turf.air) + initial_energy
