@@ -16793,21 +16793,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/medical/reception)
-"lNt" = (
-/obj/effect/floor_decal/techfloor{
-	dir = 1
-	},
-/obj/machinery/power/apc/west_mount{
-	cell_type = /obj/item/cell/super;
-	dir = 2;
-	pixel_x = 0;
-	pixel_y = 21
-	},
-/obj/structure/cable/orange{
-	icon_state = "4-8"
-	},
-/turf/simulated/floor/tiled,
-/area/victory/hallway/d2fwdhall)
 "lNB" = (
 /turf/simulated/wall/r_wall/prepainted,
 /area/victory/hallway/d2fwdmaint)
@@ -61405,7 +61390,7 @@ lnk
 pUI
 cFB
 tUb
-lNt
+aPD
 vhp
 cwz
 ifg
