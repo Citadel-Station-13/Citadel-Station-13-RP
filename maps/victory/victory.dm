@@ -43,30 +43,30 @@
 		/datum/shuttle/autodock/ferry/belter,
 	)
 
-	full_name = "NSV Victory"
+	full_name = "NSV Endeavour"
 
 	use_overmap = TRUE
 	overmap_size = 60
 	overmap_event_areas = 50
 	usable_email_tlds = list("victory.nt")
 
-	station_name	= "NSV Victory"
-	station_short	= "Victory"
-	dock_name		= "NDV Marksman"
+	station_name	= "NSV Endeavour"
+	station_short	= "Endeavour"
+	dock_name		= "NCV Oracle"
 	dock_type		= "space"
 	boss_name		= "Central Command"
 	boss_short		= "CentCom"
 	company_name	= "Nanotrasen"
 	company_short	= "NT"
-	starsys_name	= "Sigmar Concord"
+	starsys_name	= "Lythios-43"
 
-	shuttle_docked_message = "This is the %dock_name% calling to the NSV Victory. The scheduled crew transfer shuttle has docked with the NSV Victory. Departing crew should board the shuttle within %ETD%."
+	shuttle_docked_message = "This is the %dock_name% calling to the NSV Endeavour. The scheduled NCS Herrera II shuttle flight has docked with the NSV Endeavour. Departing crew should board the shuttle within %ETD%."
 	shuttle_leaving_dock = "The transfer shuttle has left the ship. Estimate %ETA% until the shuttle arrives at the %dock_name%."
-	shuttle_called_message = "This is the %dock_name% calling to the NSV Victory. A scheduled crew transfer to the %dock_name% is commencing. Those departing should proceed to the shuttle bay within %ETA%."
+	shuttle_called_message = "This is the %dock_name% calling to the NSV Endeavour. A scheduled crew transfer to the %dock_name% is commencing. Those departing should proceed to the shuttle bay within %ETA%."
 	shuttle_recall_message = "The scheduled crew transfer has been cancelled."
-	shuttle_name = "Crew Hands Transfer"
+	shuttle_name = "NCS Herrera II"
 	emergency_shuttle_docked_message = "The evacuation shuttle has arrived at the ship. You have approximately %ETD% to board the shuttle."
-	emergency_shuttle_leaving_dock = "The emergency shuttle has left the station. Estimate %ETA% until the shuttle arrives at %dock_name%."
+	emergency_shuttle_leaving_dock = "The emergency shuttle has left the ship. Estimate %ETA% until the shuttle arrives at %dock_name%."
 	emergency_shuttle_called_message = "An emergency evacuation has begun, and an off-schedule shuttle has been called. It will arrive at the hanger bay in approximately %ETA%."
 	emergency_shuttle_recall_message = "The evacuation shuttle has been recalled."
 
