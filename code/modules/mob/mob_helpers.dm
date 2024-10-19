@@ -648,3 +648,24 @@ GLOBAL_VAR_INIT(organ_combined_size, 25 + 70 + 30 + 25 + 25 + 25 + 25 + 10 + 10 
 		return TRUE
 	else
 		return FALSE
+
+// asks ghosts to take control of a mob, ported from cit main
+/proc/offer_control(mob/M,ignore_category=null)
+	if(usr)
+		log_admin("[key_name(usr)] has offered control of ([key_name(M)]) to ghosts.")
+		message_admins("[key_name_admin(usr)] has offered control of ([ADMIN_LOOKUPFLW(M)]) to ghosts")
+
+	var/datum/ghost_query/admin/query = new()
+	query.wait_time = 15 SECONDS
+	var/mob_name = M.real_name ? M.real_name : M.name
+	query.role_name = mob_name
+	query.question = "Do you want to play as [mob_name]?"
+	spawn(0)
+		query.query()
+		if(LAZYLEN(query.candidates))
+			var/mob/C = pick(query.candidates)
+			message_admins("[key_name_admin(C)] has taken control of ([key_name_admin(M)])")
+			M.ghostize(FALSE, TRUE)
+			C.transfer_client_to(M, FALSE)
+		else
+			message_admins("No ghosts were willing to take control of [ADMIN_LOOKUPFLW(M)])")

@@ -484,6 +484,15 @@
 	inv_hide_flags = HIDETIE|HIDEHOLSTER
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 
+/obj/item/clothing/suit/storage/cropped_turtleneck
+	name = "turtleneck cropped"
+	desc = "A tastefully cropped turtleneck with added, entirely cosmetic shoulder straps and puffy sleeves. The contradictory elements bring out the wearer's personality, and navel."
+	icon = 'icons/clothing/suit/misc/turtle_crop.dmi'
+	icon_state = "turtle_crop"
+	body_cover_flags = UPPER_TORSO|ARMS|LOWER_TORSO
+	inv_hide_flags = HIDETIE
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+
 /obj/item/clothing/suit/storage/khaki
 	name = "khaki jacket"
 	desc = "A smooth, clean khaki jacket. It stains instantly. In fact, it looks pre-stained so you don't feel bad when someone inevitably pours a single droplet of schnapps that stays there forever."
