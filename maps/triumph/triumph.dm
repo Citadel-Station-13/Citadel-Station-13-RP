@@ -55,7 +55,7 @@
 	boss_short		= "CentCom"
 	company_name	= "Nanotrasen"
 	company_short	= "NT"
-	starsys_name	= "Lythios-43"
+	starsys_name	= "Sigmar Concord"
 
 	shuttle_docked_message = "This is the %dock_name% calling to the NSV Triumph. The scheduled crew transfer shuttle has docked with the NSV Triumph. Departing crew should board the shuttle within %ETD%."
 	shuttle_leaving_dock = "The transfer shuttle has left the ship. Estimate %ETA% until the shuttle arrives at the %dock_name%."
@@ -63,7 +63,7 @@
 	shuttle_recall_message = "The scheduled crew transfer has been cancelled."
 	shuttle_name = "Crew Hands Transfer"
 	emergency_shuttle_docked_message = "The evacuation shuttle has arrived at the ship. You have approximately %ETD% to board the shuttle."
-	emergency_shuttle_leaving_dock = "The emergency shuttle has left the ship. Estimate %ETA% until the shuttle arrives at %dock_name%."
+	emergency_shuttle_leaving_dock = "The emergency shuttle has left the station. Estimate %ETA% until the shuttle arrives at %dock_name%."
 	emergency_shuttle_called_message = "An emergency evacuation has begun, and an off-schedule shuttle has been called. It will arrive at the hanger bay in approximately %ETA%."
 	emergency_shuttle_recall_message = "The evacuation shuttle has been recalled."
 
