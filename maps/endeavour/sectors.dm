@@ -1,10 +1,10 @@
 //////////////////////////////////////////////////////////////////////////
-// There is literally a dm file for victory shuttles, why are these here//
+// There is literally a dm file for endeavour shuttles, why are these here//
 //////////////////////////////////////////////////////////////////////////
 // EXCURSION SHUTTLE DATA
-/obj/overmap/entity/visitable/ship/landable/excursion/victory
+/obj/overmap/entity/visitable/ship/landable/excursion/endeavour
 	name = "Excursion Shuttle"
-	desc = "A modified Excursion shuttle thats seen in use of the Marksman fleet of Nanotrasen."
+	desc = "A modified Excursion shuttle thats seen in use of the Oracle fleet of Nanotrasen."
 	color = "#72388d" //Purple
 	fore_dir = WEST
 	vessel_mass = 10000
@@ -12,7 +12,7 @@
 	shuttle = "Excursion Shuttle"
 
 //Courser Shuttle Data
-/obj/overmap/entity/visitable/ship/landable/courser/victory
+/obj/overmap/entity/visitable/ship/landable/courser/endeavour
 	name = "Courser Scouting Vessel"
 	desc = "Where there's a cannon, there's a way."
 	color = "#af3e97" //Pinkish Purple
@@ -23,7 +23,7 @@
 
 // Public Civilian Shuttle
 
-/obj/overmap/entity/visitable/ship/landable/civvie/victory
+/obj/overmap/entity/visitable/ship/landable/civvie/endeavour
 	name = "Civilian Transport"
 	desc = "A basic, but slow, transport to ferry civilian to and from the ship."
 	fore_dir = EAST
@@ -35,7 +35,7 @@
 
 // Mining Shuttle
 
-/obj/overmap/entity/visitable/ship/landable/mining/victory
+/obj/overmap/entity/visitable/ship/landable/mining/endeavour
 	name = "Mining Shuttle"
 	desc = "It ain't much, but it's honest work."
 	color = "#ba7d4b" //Tan
@@ -46,7 +46,7 @@
 
 //EMT Shuttle
 
-/obj/overmap/entity/visitable/ship/landable/emt/victory
+/obj/overmap/entity/visitable/ship/landable/emt/endeavour
 	name = "Dart EMT Shuttle"
 	desc = "The budget didn't allow for flashing lights."
 	color = "#00a5f2" //Light Blue
