@@ -56,7 +56,7 @@
 			overlays_to_add += "line_active"
 		else
 			overlays_to_add += "line"
-		var/datum/reagents/reagents = beaker.reagents
+		var/datum/reagent_holder/reagents = beaker.reagents
 		var/percent = round((reagents.total_volume / beaker.volume) * 100)
 		if(reagents.total_volume)
 			var/image/filling = image('icons/obj/medical_stand_vr.dmi', src, "reagent")

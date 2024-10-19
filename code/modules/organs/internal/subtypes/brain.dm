@@ -283,7 +283,7 @@
 	result_amount = 1
 	required_container = /obj/item/organ/internal/brain/slime
 
-/datum/chemical_reaction/promethean_brain_revival/on_reaction(datum/reagents/holder)
+/datum/chemical_reaction/promethean_brain_revival/on_reaction(datum/reagent_holder/holder)
 	var/obj/item/organ/internal/brain/slime/brain = holder.my_atom
 	if(brain.reviveBody())
 		brain.visible_message(SPAN_NOTICE("[brain] bubbles, surrounding itself with a rapidly expanding mass of slime!"))

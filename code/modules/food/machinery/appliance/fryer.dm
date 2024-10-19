@@ -24,7 +24,7 @@
 
 	machine_stat = POWEROFF//Starts turned off
 
-	var/datum/reagents/oil
+	var/datum/reagent_holder/oil
 	var/optimal_oil = 9000//90 litres of cooking oil
 
 
@@ -90,7 +90,7 @@
 //This causes a slow drop in oil levels, encouraging refill after extended use
 /obj/machinery/appliance/cooker/fryer/do_cooking_tick(var/datum/cooking_item/CI)
 	if(..() && (CI.oil < CI.max_oil) && prob(20))
-		var/datum/reagents/buffer = new /datum/reagents(2)
+		var/datum/reagent_holder/buffer = new /datum/reagent_holder(2)
 		oil.trans_to_holder(buffer, min(0.5, CI.max_oil - CI.oil))
 		CI.oil += buffer.total_volume
 		CI.container.soak_reagent(buffer)
@@ -123,7 +123,7 @@
 
 		if (total_our_oil < total_oil)
 			//If we have less than the combined total, then top up from our reservoir
-			var/datum/reagents/buffer = new /datum/reagents(INFINITY)
+			var/datum/reagent_holder/buffer = new /datum/reagent_holder(INFINITY)
 			oil.trans_to_holder(buffer, total_oil - total_our_oil)
 			CI.container.soak_reagent(buffer)
 		else if (total_our_oil > total_oil)

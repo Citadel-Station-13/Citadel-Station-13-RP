@@ -104,7 +104,7 @@
 		if(isnull(display_description) && !isnull(resolved))
 			display_description = resolved.display_description
 
-/datum/chemical_reaction/proc/can_happen(datum/reagents/holder)
+/datum/chemical_reaction/proc/can_happen(datum/reagent_holder/holder)
 	// check container
 	if(!isnull(required_container) && !istype(holder.my_atom, required_container))
 		return FALSE
@@ -123,7 +123,7 @@
 
 	return 1
 
-/datum/chemical_reaction/proc/calc_reaction_progress(datum/reagents/holder, reaction_limit)
+/datum/chemical_reaction/proc/calc_reaction_progress(datum/reagent_holder/holder, reaction_limit)
 	var/progress = reaction_limit * reaction_rate //simple exponential progression
 
 	//calculate yield
@@ -151,7 +151,7 @@
 
 	return progress
 
-/datum/chemical_reaction/process(datum/reagents/holder)
+/datum/chemical_reaction/process(datum/reagent_holder/holder)
 	//determine how far the reaction can proceed
 	var/list/reaction_limits = list()
 	for(var/reactant in required_reagents)
@@ -181,11 +181,11 @@
 	return reaction_progress
 
 //called when a reaction processes
-/datum/chemical_reaction/proc/on_reaction(datum/reagents/holder, created_volume)
+/datum/chemical_reaction/proc/on_reaction(datum/reagent_holder/holder, created_volume)
 	return
 
 //called after processing reactions, if they occurred
-/datum/chemical_reaction/proc/post_reaction(datum/reagents/holder)
+/datum/chemical_reaction/proc/post_reaction(datum/reagent_holder/holder)
 	var/atom/container = holder.my_atom
 	if(mix_message && container && !ismob(container))
 		var/turf/T = get_turf(container)
@@ -196,7 +196,7 @@
 
 //obtains any special data that will be provided to the reaction products
 //this is called just before reactants are removed.
-/datum/chemical_reaction/proc/send_data(datum/reagents/holder, reaction_limit)
+/datum/chemical_reaction/proc/send_data(datum/reagent_holder/holder, reaction_limit)
 	return null
 
 //* Guidebook
