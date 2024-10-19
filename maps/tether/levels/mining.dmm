@@ -32,12 +32,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/outpost/mining_main/secondary_gear_storage)
-"bE" = (
-/obj/machinery/door/firedoor/glass{
-	dir = 4
-	},
-/turf/simulated/floor/plating,
-/area/outpost/mining_main/maintenance)
 "cx" = (
 /obj/structure/cable/green{
 	icon_state = "1-2"
@@ -239,7 +233,6 @@
 /obj/machinery/atmospherics/pipe/simple/visible/red{
 	dir = 9
 	},
-/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/plating,
 /area/outpost/mining_main/maintenance)
 "hf" = (
@@ -14376,7 +14369,7 @@ FZ
 SQ
 XP
 RG
-bE
+Cg
 Tb
 sH
 Mr

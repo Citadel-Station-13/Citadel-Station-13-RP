@@ -113,6 +113,10 @@
 	name = "Chaps - Black"
 	path = /obj/item/clothing/accessory/chaps/black
 
+/datum/loadout_entry/accessory/chaps/unchaps
+	name = "Unchaps - Black"
+	path = /obj/item/clothing/accessory/chaps/unchaps
+
 /datum/loadout_entry/accessory/hawaii
 	name = "Hawaii Shirt"
 	path = /obj/item/clothing/accessory/hawaii

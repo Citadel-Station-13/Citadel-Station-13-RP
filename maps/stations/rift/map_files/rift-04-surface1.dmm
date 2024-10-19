@@ -1743,7 +1743,7 @@
 /obj/machinery/light/small{
 	dir = 4
 	},
-/obj/item/flashlight/lamp,
+/obj/item/flashlight/lamp/on,
 /turf/simulated/floor/carpet/bcarpet,
 /area/library)
 "bmh" = (
@@ -3058,10 +3058,10 @@
 /area/quartermaster/foyer)
 "cdl" = (
 /obj/structure/table/woodentable,
-/obj/item/flashlight/lamp,
 /obj/item/radio/intercom{
 	pixel_y = -24
 	},
+/obj/item/flashlight/lamp/on,
 /turf/simulated/floor/carpet/bcarpet,
 /area/library)
 "cdE" = (
@@ -18852,7 +18852,7 @@
 /area/quartermaster/hallway)
 "lRL" = (
 /obj/structure/table/wooden_reinforced,
-/obj/item/flashlight/lamp,
+/obj/item/flashlight/lamp/on,
 /turf/simulated/floor/carpet,
 /area/library)
 "lSy" = (
@@ -21787,7 +21787,7 @@
 /area/rnd/outpost/xenobiology/outpost_hallway)
 "nDQ" = (
 /obj/structure/table/woodentable,
-/obj/item/flashlight/lamp,
+/obj/item/flashlight/lamp/on,
 /turf/simulated/floor/carpet/bcarpet,
 /area/library)
 "nEd" = (
