@@ -37,7 +37,6 @@
 	ASSERT(limit_ratio >= 0 && limit_ratio <= 1)
 	ASSERT(equalize_ratio >= 0 && equalize_ratio <= 1)
 	#endif
-	#warn test
 	// check they're not empty
 	if(!heat_capacity)
 		return 0
@@ -61,7 +60,6 @@
 	ASSERT(limit_ratio >= 0 && limit_ratio <= 1)
 	ASSERT(equalize_ratio >= 0 && equalize_ratio <= 1)
 	#endif
-	#warn test
 	// check they're not empty
 	if(!heat_capacity)
 		return 0

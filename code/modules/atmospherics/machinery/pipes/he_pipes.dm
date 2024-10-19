@@ -20,7 +20,7 @@
 	/// Our surface area in m^2
 	var/surface = 2
 	/// thermal conductivity for normal heat exchange
-	var/thermal_conductivity = 0.4
+	var/thermal_conductivity = 0.75
 	/// thermal conductivity for space cooling, basically
 	var/blackbody_thermal_conductivity = 1
 	/// minimum temperature difference for heat exchanger pipes to exchange heat
