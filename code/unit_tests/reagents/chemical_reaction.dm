@@ -1,3 +1,5 @@
+/datum/unit_test/chemical_reaction_collisions/Run()
+	var/list/reactions = SSchemistry.chemical_reactions.Copy()
 
 
 /datum/unit_test/reagent_recipe_collisions

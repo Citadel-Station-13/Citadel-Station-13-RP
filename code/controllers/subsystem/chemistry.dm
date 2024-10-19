@@ -1,7 +1,6 @@
-PROCESSING_SUBSYSTEM_DEF(chemistry)
+SUBSYSTEM_DEF(chemistry)
 	name = "Chemistry"
 	wait = 10
-	subsystem_flags = SS_BACKGROUND|SS_POST_FIRE_TIMING
 	init_order = INIT_ORDER_CHEMISTRY
 
 	/// id to instance dict of reagents
@@ -10,13 +9,16 @@ PROCESSING_SUBSYSTEM_DEF(chemistry)
 	var/list/chemical_reactions = list()
 	var/list/chemical_reactions_by_reagent = list()
 
+	/// reacting holders
+	var/static/list/datum/reagent_holder/reacting_holders = list()
+	#warn hook
 
-/datum/controller/subsystem/processing/chemistry/Recover()
+/datum/controller/subsystem/chemistry/Recover()
 	chemical_reactions = SSchemistry.chemical_reactions
 	reagent_lookup = SSchemistry.reagent_lookup
 
 // honestly hate that we have to do this but some things INITIALIZE_IMMEDIATE so uh fuck me I guess!
-/datum/controller/subsystem/processing/chemistry/PreInit(recovering)
+/datum/controller/subsystem/chemistry/PreInit(recovering)
 	initialize_chemical_reagents()
 	initialize_chemical_reactions()
 	return ..()
@@ -29,7 +31,7 @@ PROCESSING_SUBSYSTEM_DEF(chemistry)
  * - Note that entries in the list are NOT duplicated. So if a reaction pertains to
  * - more than one chemical it will still only appear in only one of the sublists.
  */
-/datum/controller/subsystem/processing/chemistry/proc/initialize_chemical_reactions()
+/datum/controller/subsystem/chemistry/proc/initialize_chemical_reactions()
 	var/paths = subtypesof(/datum/chemical_reaction)
 	chemical_reactions = list()
 	chemical_reactions_by_reagent = list()
@@ -46,7 +48,7 @@ PROCESSING_SUBSYSTEM_DEF(chemistry)
 		chemical_reactions_by_reagent[reagent_id] += D
 
 /// Chemical Reagents - Initialises all /datum/reagent into a list indexed by reagent id
-/datum/controller/subsystem/processing/chemistry/proc/initialize_chemical_reagents()
+/datum/controller/subsystem/chemistry/proc/initialize_chemical_reagents()
 	var/paths = subtypesof(/datum/reagent)
 	reagent_lookup = list()
 	for(var/datum/reagent/path as anything in paths)
@@ -62,5 +64,5 @@ PROCESSING_SUBSYSTEM_DEF(chemistry)
  *
  * do not edit the returned instance, it is global!
  */
-/datum/controller/subsystem/processing/chemistry/proc/fetch_reagent(datum/reagent/id_or_path)
+/datum/controller/subsystem/chemistry/proc/fetch_reagent(datum/reagent/id_or_path)
 	return reagent_lookup[ispath(id_or_path)? initial(id_or_path.id) : id_or_path]
