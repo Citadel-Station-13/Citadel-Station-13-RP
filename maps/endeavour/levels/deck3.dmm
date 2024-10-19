@@ -447,6 +447,9 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/light{
+	dir = 8
+	},
 /turf/simulated/floor/tiled,
 /area/station/stairs_two)
 "aya" = (
@@ -4710,6 +4713,17 @@
 /obj/map_helper/access_helper/airlock/station/external_airlock,
 /turf/simulated/floor/tiled,
 /area/quartermaster/warehouse)
+"eqa" = (
+/obj/effect/floor_decal/techfloor{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/light{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/monotile,
+/area/endeavour/hallway/d3afthall)
 "eqm" = (
 /obj/machinery/light_switch{
 	pixel_x = -9;
@@ -7970,6 +7984,18 @@
 	},
 /turf/simulated/floor/tiled,
 /area/quartermaster/office)
+"hdd" = (
+/obj/effect/floor_decal/techfloor{
+	dir = 8
+	},
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
+/obj/machinery/light{
+	dir = 8
+	},
+/turf/simulated/floor/tiled,
+/area/endeavour/hallway/d3starboardhall)
 "heb" = (
 /obj/effect/floor_decal/industrial/warning/full,
 /obj/structure/cable{
@@ -10651,6 +10677,15 @@
 	},
 /turf/simulated/floor/tiled/old_cargo/white,
 /area/security/forensics)
+"jJU" = (
+/obj/effect/floor_decal/techfloor{
+	dir = 8
+	},
+/obj/machinery/light{
+	dir = 8
+	},
+/turf/simulated/floor/tiled,
+/area/endeavour/hallway/d3starboardhall)
 "jKq" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 5
@@ -18379,6 +18414,15 @@
 /obj/item/instrument/saxophone,
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_8)
+"qxb" = (
+/obj/effect/floor_decal/techfloor{
+	dir = 8
+	},
+/obj/machinery/light{
+	dir = 8
+	},
+/turf/simulated/floor/tiled,
+/area/endeavour/hallway/d3porthall)
 "qxA" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -25003,6 +25047,9 @@
 "vRH" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 10
+	},
+/obj/machinery/light{
+	dir = 8
 	},
 /turf/simulated/floor/tiled,
 /area/station/stairs_two)
@@ -39298,7 +39345,7 @@ kRY
 prg
 wTk
 ayc
-ayc
+eqa
 ayc
 qJx
 xMu
@@ -45501,13 +45548,13 @@ sTd
 tax
 tax
 tax
-tax
+qxb
 tax
 tax
 tax
 qca
 qca
-qca
+jJU
 qca
 guu
 rsR
@@ -46447,9 +46494,9 @@ csb
 csb
 csb
 csb
-csb
-csb
 poe
+csb
+csb
 csb
 csb
 csb
@@ -48604,14 +48651,14 @@ xiG
 fPA
 tax
 tax
-tax
+qxb
 tax
 tax
 qca
 qca
 xPF
 yhH
-yhH
+hdd
 yhH
 nUU
 gig
@@ -52679,13 +52726,13 @@ syD
 tax
 tax
 tax
-tax
+qxb
 tax
 tax
 ujS
 qca
 qca
-qca
+jJU
 qca
 hte
 nTY
