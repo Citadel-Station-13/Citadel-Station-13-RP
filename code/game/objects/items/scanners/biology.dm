@@ -42,7 +42,7 @@
 	if(!flag) return
 
 	var/datum/xeno/traits/trait_info
-	var/datum/reagents/prod_reagents
+	var/datum/reagent_holder/prod_reagents
 	var/targetName
 	var/growth_level
 	var/growth_max

@@ -65,8 +65,8 @@
 		var/datum/reagent/from_reagent = SSchemistry.fetch_reagent(reagent_source)
 		color = from_reagent.color
 		reagents.add_reagent(from_reagent.id, reagent_amount)
-	else if(istype(reagent_source, /datum/reagents))
-		var/datum/reagents/from_holder = reagent_source
+	else if(istype(reagent_source, /datum/reagent_holder))
+		var/datum/reagent_holder/from_holder = reagent_source
 		color = from_holder.get_color()
 		from_holder.transfer_to_holder(reagents, amount = reagent_amount)
 

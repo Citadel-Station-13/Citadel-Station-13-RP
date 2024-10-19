@@ -141,7 +141,7 @@
 		return
 	var/turf/T = get_turf(owner)
 	if(T)
-		var/datum/reagents/R = new /datum/reagents(10)
+		var/datum/reagent_holder/R = new /datum/reagent_holder(10)
 		R.add_reagent("water", 10)
 		T.reagents = R
 		T.clean(T, owner, 1)
