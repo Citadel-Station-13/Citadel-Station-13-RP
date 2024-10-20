@@ -157,6 +157,9 @@
 "ahH" = (
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/corner/lightorange/border,
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/tiled/steel,
 /area/engineering/engine_eva)
 "ahI" = (
@@ -1416,6 +1419,12 @@
 /obj/machinery/power/shield_generator,
 /turf/simulated/floor/tiled/monowhite,
 /area/engineering/shield_gen)
+"bXA" = (
+/obj/machinery/camera/network/outside{
+	dir = 8
+	},
+/turf/space,
+/area/space)
 "bXW" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 9
@@ -3331,6 +3340,18 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ai/foyer)
+"fgH" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/lightorange/border{
+	dir = 8
+	},
+/obj/machinery/camera/network/engineering{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/steel_ridged,
+/area/endeavour/hallway/d4porthall)
 "fih" = (
 /obj/machinery/computer/ship/engines{
 	dir = 8
@@ -3784,6 +3805,14 @@
 /obj/machinery/camera/network/engineering,
 /turf/simulated/floor/tiled,
 /area/space)
+"fRo" = (
+/obj/effect/floor_decal/borderfloorblack/corner,
+/obj/effect/floor_decal/corner/lightorange/bordercorner,
+/obj/structure/cable/green{
+	icon_state = "2-4"
+	},
+/turf/simulated/floor/tiled/steel,
+/area/endeavour/hallway/d4porthall)
 "fSI" = (
 /obj/structure/cable/green{
 	icon_state = "2-8"
@@ -4562,6 +4591,12 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
 /turf/simulated/floor/tiled/techmaint,
 /area/space)
+"hhb" = (
+/obj/machinery/camera/network/command{
+	dir = 9
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/endeavour/command/turrets)
 "hhc" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -7912,6 +7947,12 @@
 /obj/machinery/porta_turret/ai_defense,
 /turf/simulated/floor/tiled/techfloor,
 /area/ai_upload)
+"mtv" = (
+/obj/machinery/camera/network/outside{
+	dir = 5
+	},
+/turf/space,
+/area/space)
 "mtZ" = (
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
@@ -8149,10 +8190,7 @@
 /turf/simulated/floor/reinforced/airless,
 /area/engineering/portnacelle)
 "mKs" = (
-/obj/machinery/door/airlock/glass/engineering{
-	name = "Engineering Hallway";
-	req_one_access = null
-	},
+/obj/machinery/camera/network/outside,
 /turf/space,
 /area/space)
 "mKQ" = (
@@ -11371,6 +11409,12 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/engineering/engine_monitoring)
+"rME" = (
+/obj/machinery/camera/network/outside{
+	dir = 1
+	},
+/turf/space,
+/area/space)
 "rNG" = (
 /turf/simulated/floor/tiled/techfloor,
 /area/ai_upload)
@@ -11649,6 +11693,12 @@
 	},
 /turf/simulated/floor/carpet/oracarpet,
 /area/crew_quarters/heads/chief)
+"suy" = (
+/obj/machinery/camera/network/outside{
+	dir = 5
+	},
+/turf/space/basic,
+/area/space)
 "suz" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 8
@@ -12126,6 +12176,14 @@
 	},
 /obj/effect/floor_decal/corner/lightorange/bordercorner2,
 /turf/simulated/floor/tiled/steel_ridged,
+/area/endeavour/hallway/d4porthall)
+"toe" = (
+/obj/effect/floor_decal/borderfloorblack,
+/obj/effect/floor_decal/corner/lightorange/border,
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d4porthall)
 "toK" = (
 /obj/landmark/spawnpoint/job/ai/secondary,
@@ -13616,6 +13674,13 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/sleep/engi_wash)
+"vAC" = (
+/obj/structure/lattice,
+/obj/machinery/camera/network/outside{
+	dir = 8
+	},
+/turf/space,
+/area/space)
 "vBC" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -14326,6 +14391,13 @@
 	},
 /obj/effect/floor_decal/corner/lightorange/border{
 	dir = 6
+	},
+/obj/machinery/light{
+	dir = 4
+	},
+/obj/machinery/power/apc/south_mount,
+/obj/structure/cable/green{
+	icon_state = "0-8"
 	},
 /turf/simulated/floor/tiled/steel,
 /area/engineering/engine_eva)
@@ -15050,6 +15122,9 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
+	},
+/obj/structure/cable/green{
+	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d4porthall)
@@ -18972,7 +19047,7 @@ jNg
 jNg
 jNg
 psc
-jNg
+bXA
 psc
 dyB
 dyB
@@ -19025,7 +19100,7 @@ dyB
 rAR
 psc
 jNg
-psc
+vAC
 jNg
 jNg
 jNg
@@ -20145,7 +20220,7 @@ vET
 uyk
 wEN
 wEN
-jNg
+bXA
 psc
 jNg
 jNg
@@ -20717,7 +20792,7 @@ jNg
 jNg
 jNg
 jNg
-jNg
+rME
 wEN
 wEN
 wEN
@@ -20759,7 +20834,7 @@ psc
 psc
 psc
 psc
-psc
+vAC
 ikp
 ikp
 hEj
@@ -21159,7 +21234,7 @@ aUY
 nHk
 hEj
 hEj
-jNg
+mKs
 jNg
 jNg
 jNg
@@ -21895,7 +21970,7 @@ krH
 pGV
 dFy
 wEN
-jNg
+bXA
 jNg
 jNg
 mhf
@@ -22679,7 +22754,7 @@ psc
 uSQ
 jNg
 uSQ
-jNg
+bXA
 yex
 twj
 twj
@@ -22693,7 +22768,7 @@ jNg
 psc
 jNg
 jNg
-psc
+vAC
 jNg
 ikp
 ikp
@@ -22906,7 +22981,7 @@ xtz
 kqL
 hEj
 hEj
-jNg
+mKs
 jNg
 jNg
 jNg
@@ -23238,7 +23313,7 @@ jNg
 jNg
 jNg
 jNg
-jNg
+rME
 wEN
 wEN
 wEN
@@ -24260,7 +24335,7 @@ jBO
 ikp
 ikp
 ikp
-jNg
+mKs
 jNg
 jNg
 jNg
@@ -24601,7 +24676,7 @@ jNg
 jNg
 jNg
 jNg
-jNg
+rME
 ikp
 jBO
 jBO
@@ -26004,7 +26079,7 @@ cBS
 jBO
 ikp
 ikp
-jNg
+mKs
 jNg
 jNg
 jNg
@@ -26588,7 +26663,7 @@ jBO
 jBO
 ikp
 ikp
-jNg
+mKs
 jNg
 jNg
 jNg
@@ -26731,7 +26806,7 @@ jNg
 jNg
 jNg
 jNg
-jNg
+rME
 ikp
 ikp
 ikp
@@ -27373,7 +27448,7 @@ ikp
 ikp
 ikp
 ikp
-jNg
+mKs
 jNg
 jNg
 jNg
@@ -28734,7 +28809,7 @@ jao
 cxo
 jCF
 vsf
-jNg
+mKs
 jNg
 jNg
 jNg
@@ -28853,7 +28928,7 @@ xRj
 jNg
 jNg
 jNg
-jNg
+rME
 ukW
 xLs
 bRD
@@ -30288,7 +30363,7 @@ lqY
 nsD
 vsf
 vsf
-jNg
+mKs
 jNg
 jNg
 jNg
@@ -30793,7 +30868,7 @@ xRj
 jNg
 jNg
 jNg
-jNg
+rME
 oIU
 dHM
 dHM
@@ -31964,7 +32039,7 @@ ufU
 ufU
 ufU
 hlB
-ayo
+fRo
 xCZ
 gzW
 mdz
@@ -31983,7 +32058,7 @@ gFO
 vip
 iJa
 gcn
-qrS
+fgH
 gcn
 qrS
 gcn
@@ -32158,7 +32233,7 @@ wcA
 wcA
 wcA
 ogm
-wRu
+toe
 wcA
 qDt
 qDt
@@ -33195,7 +33270,7 @@ jxR
 hld
 gZD
 gOZ
-jNg
+mtv
 jNg
 jNg
 jNg
@@ -33317,7 +33392,7 @@ xRj
 jNg
 jNg
 jNg
-jNg
+rME
 qBz
 dvY
 dvY
@@ -33578,7 +33653,7 @@ vZX
 aIP
 jNg
 jNg
-jNg
+mtv
 jNg
 jNg
 usY
@@ -33713,7 +33788,7 @@ gPd
 usY
 gPd
 xRj
-xRj
+suy
 xRj
 qBz
 dvY
@@ -34736,7 +34811,7 @@ ehV
 sUM
 sUM
 sUM
-jNg
+mKs
 jNg
 jNg
 jNg
@@ -35077,7 +35152,7 @@ jNg
 jNg
 jNg
 jNg
-jNg
+mtv
 qBz
 dvY
 dvY
@@ -35279,7 +35354,7 @@ dvY
 wiw
 rOi
 jgJ
-ttr
+hhb
 sRr
 fih
 avD
@@ -36285,7 +36360,7 @@ rRY
 lXz
 ehV
 ehV
-jNg
+mKs
 jNg
 jNg
 jNg
@@ -36633,7 +36708,7 @@ jNg
 xRj
 xRj
 xRj
-xRj
+suy
 qBz
 dvY
 dvY
@@ -37445,7 +37520,7 @@ dvY
 dvY
 qBz
 qBz
-jNg
+mKs
 jNg
 jNg
 jNg
@@ -38191,7 +38266,7 @@ jNg
 jNg
 jNg
 jNg
-jNg
+mtv
 qBz
 dvY
 lUF
@@ -38799,7 +38874,7 @@ qBz
 bkn
 dvY
 qBz
-jNg
+mKs
 jNg
 jNg
 jNg
@@ -40325,7 +40400,7 @@ jNg
 jNg
 jNg
 jNg
-jNg
+rME
 qBz
 wWQ
 hnd
@@ -40519,7 +40594,7 @@ jNg
 jNg
 jNg
 jNg
-mKs
+jNg
 qBz
 dvY
 dvY
@@ -41903,7 +41978,7 @@ qBz
 dvY
 dvY
 qBz
-jNg
+mKs
 jNg
 jNg
 jNg
@@ -43843,7 +43918,7 @@ qBz
 dvY
 dvY
 qBz
-jNg
+mKs
 jNg
 jNg
 jNg
@@ -44205,7 +44280,7 @@ xRj
 jNg
 jNg
 jNg
-jNg
+rME
 qBz
 xXL
 ciZ
@@ -47116,7 +47191,7 @@ jNg
 jNg
 jNg
 jNg
-jNg
+mtv
 jNg
 gPd
 usY
@@ -47140,7 +47215,7 @@ qBz
 qBz
 wtL
 jNg
-jNg
+mtv
 jNg
 jNg
 jNg
@@ -47717,7 +47792,7 @@ vms
 vms
 vms
 vms
-jNg
+mtv
 jNg
 jNg
 jNg
@@ -47902,7 +47977,7 @@ gPd
 usY
 gPd
 jNg
-jNg
+mtv
 jNg
 jNg
 jNg

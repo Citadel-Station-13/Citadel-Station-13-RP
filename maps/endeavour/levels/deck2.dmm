@@ -1443,6 +1443,12 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/rnd/research/testingrange)
+"bfE" = (
+/obj/machinery/camera/network/outside{
+	dir = 5
+	},
+/turf/space/basic,
+/area/space)
 "bfS" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -1790,6 +1796,10 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/rnd/xenobiology/xenoflora_storage)
+"brS" = (
+/obj/machinery/camera/network/outside,
+/turf/simulated/floor/airless/ceiling,
+/area/space)
 "bsC" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 9
@@ -3140,6 +3150,7 @@
 	dir = 8;
 	pixel_x = -10
 	},
+/obj/machinery/computer/timeclock/premade/north,
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d2starboardhall)
 "cmy" = (
@@ -4854,6 +4865,11 @@
 /obj/effect/floor_decal/corner/paleblue/diagonal,
 /turf/simulated/floor/tiled/white,
 /area/medical/patient_b)
+"dzi" = (
+/obj/effect/floor_decal/techfloor,
+/obj/machinery/computer/timeclock/premade/south,
+/turf/simulated/floor/tiled,
+/area/maintenance/medbay/aft)
 "dzs" = (
 /obj/effect/floor_decal/steeldecal/steel_decals_central7,
 /turf/simulated/floor/tiled,
@@ -9214,6 +9230,12 @@
 /obj/structure/curtain/open/shower,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/medical/oncall_room)
+"gCJ" = (
+/obj/machinery/camera/network/outside{
+	dir = 1
+	},
+/turf/space/basic,
+/area/space)
 "gCY" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 1
@@ -13863,7 +13885,7 @@
 "jRu" = (
 /obj/structure/sign/deck/third,
 /obj/structure/sign/deck/second,
-/turf/space/basic,
+/turf/simulated/wall/prepainted,
 /area/endeavour/hallway/d2aftmaint)
 "jRE" = (
 /turf/space/basic,
@@ -16295,8 +16317,8 @@
 /turf/simulated/floor/tiled/dark,
 /area/rnd/anomaly_lab/containment_two)
 "lIp" = (
-/obj/structure/lattice,
-/turf/space,
+/obj/machinery/camera/network/outside,
+/turf/space/basic,
 /area/space)
 "lJc" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
@@ -16785,6 +16807,17 @@
 	},
 /turf/simulated/floor/wood,
 /area/medical/psych/psych_2)
+"mgw" = (
+/obj/machinery/door/firedoor,
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/obj/effect/floor_decal/techfloor{
+	dir = 1
+	},
+/obj/machinery/computer/timeclock/premade/north,
+/turf/simulated/floor/tiled,
+/area/endeavour/hallway/d2starboardhall)
 "mgH" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
 /obj/effect/paint/babyblue,
@@ -21098,6 +21131,7 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
+/obj/machinery/computer/timeclock/premade/south,
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d2porthall)
 "pgD" = (
@@ -21445,6 +21479,12 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/rnd/chemistry_lab)
+"ppR" = (
+/obj/machinery/camera/network/outside{
+	dir = 1
+	},
+/turf/space,
+/area/space)
 "pqy" = (
 /obj/effect/floor_decal/borderfloor/corner{
 	dir = 1
@@ -22725,6 +22765,11 @@
 "qhg" = (
 /turf/simulated/wall/r_wall/prepainted/science,
 /area/space)
+"qhk" = (
+/obj/effect/floor_decal/techfloor,
+/obj/machinery/computer/timeclock/premade/south,
+/turf/simulated/floor/tiled,
+/area/endeavour/hallway/d2afthall)
 "qhl" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 1
@@ -28642,6 +28687,7 @@
 	icon_state = "4-8"
 	},
 /obj/effect/floor_decal/techfloor,
+/obj/machinery/computer/timeclock/premade/south,
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d2porthall)
 "urd" = (
@@ -30363,6 +30409,7 @@
 	dir = 1
 	},
 /obj/machinery/camera/network/civilian,
+/obj/machinery/computer/timeclock/premade/north,
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d2fwdhall)
 "vLj" = (
@@ -32896,6 +32943,10 @@
 /obj/effect/floor_decal/corner/mauve/border,
 /turf/simulated/floor/tiled,
 /area/rnd/hallway)
+"xpX" = (
+/obj/machinery/camera/network/outside,
+/turf/simulated/floor/airless/ceiling,
+/area/medical/medbay_emt_bay)
 "xqb" = (
 /obj/machinery/camera/network/civilian{
 	dir = 1
@@ -37725,6 +37776,16 @@ pRW
 pRW
 pRW
 pRW
+gYU
+pRW
+pRW
+pRW
+pRW
+qBd
+lmG
+qBd
+pRW
+gYU
 pRW
 pRW
 pRW
@@ -37734,21 +37795,11 @@ qBd
 lmG
 qBd
 pRW
+gYU
 pRW
 pRW
 pRW
-pRW
-pRW
-pRW
-qBd
-lmG
-qBd
-pRW
-pRW
-pRW
-pRW
-pRW
-pRW
+gYU
 pRW
 qBd
 lmG
@@ -38104,7 +38155,7 @@ upp
 upp
 upp
 pRW
-pRW
+gYU
 pRW
 pRW
 pRW
@@ -38338,7 +38389,7 @@ kBS
 vcY
 pVw
 syi
-fik
+jhy
 qBd
 lmG
 qBd
@@ -38347,7 +38398,7 @@ lmG
 qBd
 pRW
 pRW
-pRW
+gYU
 ekU
 ekU
 ekU
@@ -38875,7 +38926,7 @@ pRW
 pRW
 pRW
 pRW
-mDp
+ppR
 upp
 eZZ
 opc
@@ -39069,7 +39120,7 @@ pRW
 pRW
 pRW
 pRW
-lIp
+mDp
 upp
 eZZ
 opc
@@ -41591,7 +41642,7 @@ pRW
 pRW
 pRW
 pRW
-pRW
+gCJ
 upp
 eZZ
 xeW
@@ -42599,7 +42650,7 @@ fIE
 eHm
 oeP
 eHm
-qNL
+qhk
 tQp
 cbw
 cPe
@@ -42624,7 +42675,7 @@ syi
 syi
 pRW
 pRW
-pRW
+gYU
 qBd
 lmG
 qBd
@@ -44378,7 +44429,7 @@ eVG
 eVG
 eVG
 eyb
-pRW
+lIp
 mDp
 mDp
 mDp
@@ -45071,7 +45122,7 @@ pRW
 mDp
 mDp
 mDp
-pRW
+gCJ
 koS
 cdE
 wLF
@@ -45314,7 +45365,7 @@ tvV
 oaU
 sAS
 nuO
-ekA
+dzi
 mmI
 oMl
 eqi
@@ -45348,7 +45399,7 @@ jff
 jff
 jff
 sNN
-pRW
+lIp
 pRW
 pRW
 pRW
@@ -46269,7 +46320,7 @@ gTY
 owo
 whu
 whu
-ujP
+mgw
 nBm
 xnw
 vDp
@@ -46900,7 +46951,7 @@ fcX
 cGx
 fcX
 ioV
-pRW
+lIp
 pRW
 pRW
 pRW
@@ -47981,7 +48032,7 @@ pRW
 pRW
 pRW
 pRW
-pRW
+gCJ
 uPt
 xIf
 xIf
@@ -49228,7 +49279,7 @@ vGe
 vGe
 vGe
 dNE
-mDp
+mXs
 pRW
 pRW
 pRW
@@ -50890,7 +50941,7 @@ pRW
 pRW
 pRW
 pRW
-pRW
+gCJ
 uPt
 uPt
 wKj
@@ -51750,7 +51801,7 @@ ijE
 aFN
 urC
 xFH
-mDp
+mXs
 pRW
 pRW
 pRW
@@ -52834,7 +52885,7 @@ pRW
 pRW
 pRW
 pRW
-pRW
+gCJ
 uPt
 uPt
 uPt
@@ -53102,7 +53153,7 @@ xFH
 xFH
 xFH
 xFH
-pRW
+lIp
 pRW
 pRW
 pRW
@@ -53291,7 +53342,7 @@ tfb
 pRW
 pRW
 pRW
-pRW
+bfE
 qBd
 lmG
 qBd
@@ -53479,7 +53530,7 @@ dvL
 hjX
 uhe
 vUs
-tfb
+xpX
 tfb
 pRW
 pRW
@@ -54779,7 +54830,7 @@ pRW
 pRW
 pRW
 pRW
-pRW
+gCJ
 uPt
 uPt
 uPt
@@ -54981,7 +55032,7 @@ pRW
 qBd
 lmG
 qBd
-pRW
+bfE
 pRW
 uPt
 uPt
@@ -55030,7 +55081,7 @@ dAF
 bMe
 xJh
 uhe
-fik
+brS
 fik
 pRW
 pRW
@@ -55175,7 +55226,7 @@ pRW
 jRE
 qBd
 jRE
-pRW
+bfE
 pRW
 pRW
 pRW
@@ -56582,7 +56633,7 @@ fOS
 xHr
 sox
 rdA
-fik
+brS
 fik
 pRW
 pRW
@@ -57312,7 +57363,7 @@ pRW
 pRW
 pRW
 pRW
-pRW
+gCJ
 uPt
 xIf
 xIf
@@ -58328,7 +58379,7 @@ rdA
 rdA
 rdA
 rdA
-fik
+brS
 fik
 pRW
 pRW
@@ -59252,7 +59303,7 @@ pRW
 pRW
 pRW
 pRW
-pRW
+gCJ
 uPt
 xVe
 xIf
@@ -61387,7 +61438,7 @@ pRW
 pRW
 pRW
 pRW
-pRW
+gCJ
 xVe
 xIf
 neh
@@ -62399,7 +62450,7 @@ lNB
 nGk
 mbs
 mbs
-pRW
+lIp
 pRW
 pRW
 pRW
@@ -63139,7 +63190,7 @@ pRW
 pRW
 pRW
 pRW
-pRW
+gCJ
 mNh
 hDu
 gfA
@@ -63948,7 +63999,7 @@ pkD
 pkD
 pkD
 lNB
-pRW
+lIp
 pRW
 pRW
 pRW
@@ -64528,7 +64579,7 @@ qhO
 lNB
 pkD
 lNB
-pRW
+lIp
 pRW
 pRW
 pRW
@@ -64889,7 +64940,7 @@ pRW
 pRW
 pRW
 pRW
-pRW
+gCJ
 mNh
 gfA
 iTE
@@ -65861,7 +65912,7 @@ pRW
 pRW
 pRW
 pRW
-pRW
+gCJ
 iTE
 rgo
 gzw
@@ -66851,7 +66902,7 @@ ktm
 fDK
 acF
 iTE
-pRW
+lIp
 pRW
 pRW
 pRW
@@ -67025,7 +67076,7 @@ pRW
 pRW
 pRW
 pRW
-pRW
+gCJ
 iTE
 dot
 dot
