@@ -1057,8 +1057,8 @@ GLOBAL_DATUM_INIT(sdql2_vv_statobj, /obj/effect/statclick/SDQL2_VV_all, new(null
 				v = SSresearch
 			if("SSprojectiles")
 				v = SSprojectiles
-			if("SSfastprocess")
-				v = SSfastprocess
+			if("SSprocess_5fps")
+				v = SSprocess_5fps
 			if("SSticker")
 				v = SSticker
 			if("SStimer")

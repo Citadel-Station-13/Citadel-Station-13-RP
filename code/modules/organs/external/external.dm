@@ -27,14 +27,14 @@
 	/// Number of wounds we have - some wounds like bruises will collate into one datum representing all of them.
 	var/wound_tally
 
-//! ## STRINGS
+	//* ## STRINGS
 	/// Fracture description if any.
 	var/broken_description
 	/// Modifier used for generating the on-mob damage overlay for this limb.
 	var/damage_state = "00"
 
 
-//! ## DAMAGE VARS
+	//* ## DAMAGE VARS
 	/// Multiplier for incoming brute damage.
 	var/brute_mod = 1
 	/// As above for burn.
@@ -59,7 +59,7 @@
 	var/base_miss_chance = 20
 
 
-//! ## APPEARANCE VARS
+	//* ## APPEARANCE VARS
 	/// Snowflake warning, reee. Used for slime limbs.
 	var/nonsolid
 	/// Also for slimes. Used for transparent limbs.
@@ -92,7 +92,7 @@
 	/// Markings (body_markings) to apply to the icon
 	var/list/markings = list()
 
-//! ## STRUCTURAL VARS
+	//* ## STRUCTURAL VARS
 	/// Master-limb.
 	var/obj/item/organ/external/parent
 	/// Sub-limbs.
@@ -105,7 +105,7 @@
 	var/organ_rel_size = 25
 	var/atom/movable/splinted
 
-//! ## JOINT/STATE VARS
+	//* ## JOINT/STATE VARS
 	/// It would be more appropriate if these two were named "affects_grasp" and "affects_stand" at this point
 	var/can_grasp
 	/// Modifies stance tally/ability to stand.
@@ -128,7 +128,7 @@
 	var/encased
 
 
-//! ## SURGERY VARS
+	//* ## SURGERY VARS
 	var/open   = FALSE
 	var/stage  = FALSE
 	var/cavity = FALSE
@@ -186,9 +186,9 @@
 	var/burn_damage = 0
 	switch(severity)
 		if (1)
-			burn_damage += rand(10, 14)
+			burn_damage += rand(10, 12)
 		if (2)
-			burn_damage += rand(7, 8.5)
+			burn_damage += rand(6.5, 8)
 		if(3)
 			burn_damage += rand(4, 8)
 		if(4)
@@ -200,7 +200,7 @@
 			weapon_descriptor = "electromagnetic overload",
 		)
 
-/obj/item/organ/external/attack_self(mob/user)
+/obj/item/organ/external/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -351,6 +351,10 @@
 	brute = round(brute * brute_mod, 0.1)
 	burn = round(burn * burn_mod, 0.1)
 
+	// todo: better way to godmode
+	if(src.owner?.status_flags & STATUS_GODMODE)
+		return 0
+
 	if(!brute && !burn)
 		return 0
 
@@ -375,14 +379,15 @@
 	if(is_broken() && brute && !(damage_mode & DAMAGE_MODE_GRADUAL))
 		jostle_bone(brute)
 		if(organ_can_feel_pain() && IS_CONSCIOUS(owner) && prob(40))
-			owner.emote("scream")	//getting hit on broken hand hurts
+			spawn(-1)
+				owner.emote("scream")	//getting hit on broken hand hurts
 
 	// todo: optimization
 	// legacy: autopsy data
 	if(weapon_descriptor)
 		add_autopsy_data(weapon_descriptor, brute + burn)
 
-	//! LEGACY BELOW
+		//* LEGACY BELOW
 
 	var/can_cut = (sharp) && (robotic < ORGAN_ROBOT)
 
@@ -394,11 +399,11 @@
 		if(can_inflict_brute >= brute)
 			if(can_cut)
 				if(sharp && !edge)
-					create_wound( PIERCE, brute )
+					create_wound( WOUND_TYPE_PIERCE, brute )
 				else
-					create_wound( CUT, brute )
+					create_wound( WOUND_TYPE_CUT, brute )
 			else
-				create_wound( BRUISE, brute )
+				create_wound( WOUND_TYPE_BRUISE, brute )
 		else if(!(damage_mode & DAMAGE_MODE_NO_OVERFLOW))
 			var/overflow_brute = brute - can_inflict_brute
 			// keep allowing it, but, diminishing returns
@@ -408,24 +413,24 @@
 			overflow_brute -= damage_anyways_brute
 			if(can_cut)
 				if(sharp && !edge)
-					create_wound( PIERCE, damage_anyways_brute )
+					create_wound( WOUND_TYPE_PIERCE, damage_anyways_brute )
 				else
-					create_wound( CUT, damage_anyways_brute )
+					create_wound( WOUND_TYPE_CUT, damage_anyways_brute )
 			else
-				create_wound( BRUISE, damage_anyways_brute )
+				create_wound( WOUND_TYPE_BRUISE, damage_anyways_brute )
 			// rest goes into shock
 			owner.shock_stage += overflow_brute * 0.33
 	if(burn)
 		var/can_inflict_burn = max(0, max_damage - burn_dam)
 		if(can_inflict_burn >= burn)
-			create_wound( BURN, burn )
+			create_wound( WOUND_TYPE_BURN, burn )
 		else
 			var/overflow_burn = burn - can_inflict_burn
 			var/damage_anyways_burn = !(damage_mode & DAMAGE_MODE_NO_OVERFLOW) && ( \
 				overflow_burn  * min(1, 1 / ((max(burn_dam, max_damage) + damage_softcap_intensifier) / (damage_softcap_intensifier + max_damage))) \
 			)
 			overflow_burn -= damage_anyways_burn
-			create_wound(BURN, damage_anyways_burn + can_inflict_burn)
+			create_wound(WOUND_TYPE_BURN, damage_anyways_burn + can_inflict_burn)
 			// rest goes into shock
 			owner.shock_stage += overflow_burn * 0.33
 
@@ -446,8 +451,8 @@
 		//   and the brute damage dealt exceeds the tearoff threshold, the organ is torn off.
 
 		//Check edge eligibility
-		//! edge eligibility disabled; organs should optimally not reqiure the item reference and should instead
-		//! get descriptors (damage, damage mode, etc) of the inbound attack.
+			//* edge eligibility disabled; organs should optimally not reqiure the item reference and should instead
+			//* get descriptors (damage, damage mode, etc) of the inbound attack.
 		var/edge_eligible = edge
 		// var/edge_eligible = 0
 		// if(edge)
@@ -470,7 +475,7 @@
 			droplimb(0, DROPLIMB_BLUNT)
 		else if(brute >= max_damage / DROPLIMB_THRESHOLD_TEAROFF && prob(brute*0.33))
 			droplimb(0, DROPLIMB_EDGE)
-		//! damage spreading disabled; the attacking weapon should handle this if necessary.
+			//* damage spreading disabled; the attacking weapon should handle this if necessary.
 		// else if(spread_dam && owner && parent && (brute_overflow || burn_overflow) && (brute_overflow >= 5 || burn_overflow >= 5) && !permutation) //No infinite damage loops.
 		// 	var/brute_third = brute_overflow * 0.33
 		// 	var/burn_third = burn_overflow * 0.33
@@ -483,7 +488,7 @@
 		// 					C.take_damage(brute_on_children, burn_on_children, 0, 0, null, forbidden_limbs, 1) //Splits the damage to each individual 'child', incase multiple exist.
 		// 	parent.take_damage(brute_third, burn_third, 0, 0, null, forbidden_limbs, 1)
 
-	//! LEGACY ABOVE
+		//* LEGACY ABOVE
 
 	if(!defer_host_updates)
 		owner?.update_health()
@@ -500,7 +505,7 @@
 			break
 
 		// heal brute damage
-		if(W.damage_type == BURN)
+		if(W.wound_type == WOUND_TYPE_BURN)
 			burn = W.heal_damage(burn)
 		else
 			brute = W.heal_damage(brute)
@@ -523,9 +528,9 @@
 
 	var/damage_amount
 	switch(damage_type)
-		if(BRUTE)
+		if(DAMAGE_TYPE_BRUTE)
 			damage_amount = brute_dam
-		if(BURN)
+		if(DAMAGE_TYPE_BURN)
 			damage_amount = burn_dam
 		if("omni")
 			damage_amount = max(brute_dam,burn_dam)
@@ -558,9 +563,9 @@
 		return FALSE
 
 	switch(damage_type)
-		if(BRUTE)
+		if(DAMAGE_TYPE_BRUTE)
 			src.heal_damage(repair_amount, 0, 0, 1)
-		if(BURN)
+		if(DAMAGE_TYPE_BURN)
 			src.heal_damage(0, repair_amount, 0, 1)
 		if("omni")
 			src.heal_damage(repair_amount, repair_amount, 0, 1)
@@ -845,7 +850,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 	//update damage counts
 	for(var/datum/wound/W as anything in wounds)
 		if(!W.internal) //so IB doesn't count towards crit/paincrit
-			if(W.damage_type == BURN)
+			if(W.wound_type == WOUND_TYPE_BURN)
 				burn_dam += W.damage
 			else
 				brute_dam += W.damage
@@ -858,7 +863,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 
 		wound_tally += W.amount
 
-	//things tend to bleed if they are CUT OPEN
+	//things tend to bleed if they are WOUND_TYPE_CUT OPEN
 	if (open && !clamped && (H && H.should_have_organ(O_HEART)))
 		status |= ORGAN_BLEEDING
 
@@ -1166,7 +1171,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 	return 0
 
 /obj/item/organ/external/robotize(var/company, var/skip_prosthetics = 0, var/keep_organs = 0, force)
-	//! SHITCODE ALERT: REFACTOR ORGANS ASAP; FORCE IS JUST SO PREFS WORK.
+		//* SHITCODE ALERT: REFACTOR ORGANS ASAP; FORCE IS JUST SO PREFS WORK.
 	if(robotic >= ORGAN_ROBOT && !force)
 		return
 
@@ -1220,7 +1225,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 		owner.refresh_modular_limb_verbs()
 	return 1
 
-//! ## VIRGO HOOK, TODO: Integrate this.
+	//* ## VIRGO HOOK, TODO: Integrate this.
 //Sideways override for nanoform limbs (ugh)
 /obj/item/organ/external/robotize(var/company, var/skip_prosthetics = FALSE, var/keep_organs = FALSE, force)
 	var/original_robotic = robotic
@@ -1265,8 +1270,8 @@ Note that amputating the affected organ does in fact remove the infection from t
 /obj/item/organ/external/proc/embed(var/obj/item/W, var/silent = 0)
 	if(!owner || loc != owner)
 		return
-	if(owner.species.species_flags & IS_SLIME)
-		create_wound( CUT, 15 )  //fixes proms being bugged into paincrit;instead whatever would embed now just takes a chunk out
+	if(owner.species.reagent_tag == IS_SLIME)
+		create_wound( WOUND_TYPE_CUT, 15 )  //fixes proms being bugged into paincrit;instead whatever would embed now just takes a chunk out
 		src.visible_message("<font color='red'>[owner] has been seriously wounded by [W]!</font>")
 		W.add_blood(owner)
 		return 0
@@ -1425,7 +1430,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 		if(W.internal && !open) continue // can't see internal wounds
 		var/this_wound_desc = W.desc
 
-		if(W.damage_type == BURN && W.salved)
+		if(W.wound_type == WOUND_TYPE_BURN && W.salved)
 			this_wound_desc = "salved [this_wound_desc]"
 
 		if(W.bleeding())

@@ -91,6 +91,7 @@
 		O_BRAIN   = /obj/item/organ/internal/brain/vox,
 		O_EYES    = /obj/item/organ/internal/eyes,
 	)
+	vision_organ = O_EYES
 
 	unarmed_types = list(
 		/datum/unarmed_attack/stomp,

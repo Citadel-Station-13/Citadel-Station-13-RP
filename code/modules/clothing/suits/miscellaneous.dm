@@ -345,6 +345,11 @@
 	body_cover_flags = UPPER_TORSO|ARM_RIGHT|LOWER_TORSO
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 
+/obj/item/clothing/suit/storage/aureate/dark
+	name = "aureate dark kimono"
+	desc = "An embellished spin on an ancient, traditional garb. It comes with various insignias. This one is dark."
+	icon_state = "aureate_kimono_red"
+
 /obj/item/clothing/suit/storage/furcoat
 	name = "furcoat"
 	desc = "The finest hopefully inorganic furs attached to fake leather. The provider has assured it is not of a sapient species origin."
@@ -477,6 +482,15 @@
 	icon_state = "jamrock_blazer"
 	body_cover_flags = UPPER_TORSO|ARMS|LOWER_TORSO
 	inv_hide_flags = HIDETIE|HIDEHOLSTER
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+
+/obj/item/clothing/suit/storage/cropped_turtleneck
+	name = "turtleneck cropped"
+	desc = "A tastefully cropped turtleneck with added, entirely cosmetic shoulder straps and puffy sleeves. The contradictory elements bring out the wearer's personality, and navel."
+	icon = 'icons/clothing/suit/misc/turtle_crop.dmi'
+	icon_state = "turtle_crop"
+	body_cover_flags = UPPER_TORSO|ARMS|LOWER_TORSO
+	inv_hide_flags = HIDETIE
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 
 /obj/item/clothing/suit/storage/khaki

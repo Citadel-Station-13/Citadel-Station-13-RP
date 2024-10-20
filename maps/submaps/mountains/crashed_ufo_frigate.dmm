@@ -15,10 +15,6 @@
 /obj/structure/alien/egg,
 /turf/simulated/shuttle/floor/alienplating,
 /area/submap/cave/crashed_ufo_frigate)
-"af" = (
-/mob/living/simple_mob/animal/space/alien/drone,
-/turf/simulated/shuttle/floor/alienplating,
-/area/submap/cave/crashed_ufo_frigate)
 "ag" = (
 /obj/machinery/porta_turret/alien{
 	faction = "xeno"
@@ -170,11 +166,6 @@
 /obj/structure/prop/alien/power,
 /turf/simulated/shuttle/floor/alienplating,
 /area/submap/cave/crashed_ufo_frigate)
-"aQ" = (
-/obj/structure/alien/weeds/node,
-/mob/living/simple_mob/animal/space/alien/drone,
-/turf/simulated/shuttle/floor/alienplating,
-/area/submap/cave/crashed_ufo_frigate)
 "aR" = (
 /obj/structure/alien/weeds/node,
 /turf/simulated/shuttle/floor/alien,
@@ -270,10 +261,6 @@
 /obj/effect/decal/remains/xeno,
 /turf/simulated/shuttle/floor/alienplating,
 /area/submap/cave/crashed_ufo_frigate)
-"bk" = (
-/mob/living/simple_mob/animal/space/alien,
-/turf/simulated/shuttle/floor/alienplating,
-/area/submap/cave/crashed_ufo_frigate)
 "bl" = (
 /obj/effect/decal/remains/xeno,
 /obj/item/clothing/under/psysuit,
@@ -308,11 +295,6 @@
 	dir = 8
 	},
 /turf/simulated/shuttle/floor/alienplating,
-/area/submap/cave/crashed_ufo_frigate)
-"bs" = (
-/obj/structure/alien/weeds/node,
-/mob/living/simple_mob/animal/space/alien/sentinel/praetorian,
-/turf/simulated/shuttle/floor/alien,
 /area/submap/cave/crashed_ufo_frigate)
 "bt" = (
 /obj/structure/loot_pile/maint/technical,
@@ -352,10 +334,6 @@
 "bA" = (
 /obj/item/brokenbug,
 /turf/simulated/mineral/floor/ignore_mapgen,
-/area/submap/cave/crashed_ufo_frigate)
-"bB" = (
-/mob/living/simple_mob/animal/space/alien/sentinel,
-/turf/simulated/shuttle/floor/alien,
 /area/submap/cave/crashed_ufo_frigate)
 "bC" = (
 /obj/structure/prop/alien/computer/camera/flipped{
@@ -478,10 +456,6 @@
 	dir = 4
 	},
 /obj/structure/window/phoronreinforced,
-/turf/simulated/shuttle/floor/alien,
-/area/submap/cave/crashed_ufo_frigate)
-"bX" = (
-/mob/living/simple_mob/animal/space/alien,
 /turf/simulated/shuttle/floor/alien,
 /area/submap/cave/crashed_ufo_frigate)
 "bY" = (
@@ -801,7 +775,7 @@ bi
 bp
 bn
 ap
-bB
+ap
 ap
 ap
 ap
@@ -963,7 +937,7 @@ bc
 ab
 ap
 ap
-bs
+aR
 aF
 ab
 al
@@ -1200,7 +1174,7 @@ ac
 aJ
 ac
 aO
-aQ
+aA
 ae
 ab
 ac
@@ -1248,7 +1222,7 @@ ac
 aF
 al
 ap
-bk
+ac
 aF
 ab
 bw
@@ -1298,7 +1272,7 @@ aR
 bL
 ap
 ap
-bX
+ap
 ap
 ap
 ag
@@ -1311,7 +1285,7 @@ ab
 "}
 (20,1,1) = {"
 ab
-af
+ac
 ac
 an
 al

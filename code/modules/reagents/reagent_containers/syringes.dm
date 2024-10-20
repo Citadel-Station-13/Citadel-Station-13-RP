@@ -8,16 +8,16 @@
 	icon = 'icons/obj/medical/syringe.dmi'
 	item_state = "syringe_0"
 	icon_state = "0"
-	materials_base = list(MAT_GLASS = 150)
+	materials_base = list(MAT_GLASS = 150, MAT_STEEL = 250)
 	amount_per_transfer_from_this = 5
 	possible_transfer_amounts = null
 	volume = 15
 	w_class = WEIGHT_CLASS_TINY
 	slot_flags = SLOT_EARS
-	sharp = 1
+	damage_mode = DAMAGE_MODE_SHARP
 	integrity_flags = INTEGRITY_ACIDPROOF
 	rad_flags = RAD_NO_CONTAMINATE
-	item_flags = ITEM_NOBLUDGEON | ITEM_ENCUMBERS_WHILE_HELD
+	item_flags = ITEM_NOBLUDGEON | ITEM_ENCUMBERS_WHILE_HELD | ITEM_EASY_LATHE_DECONSTRUCT
 	var/mode = SYRINGE_DRAW
 	var/image/filling //holds a reference to the current filling overlay
 	var/visible_name = "a syringe"
@@ -37,7 +37,7 @@
 	. = ..()
 	update_icon()
 
-/obj/item/reagent_containers/syringe/attack_self(mob/user)
+/obj/item/reagent_containers/syringe/attack_self(mob/user, datum/event_args/actor/actor)
 	switch(mode)
 		if(SYRINGE_DRAW)
 			mode = SYRINGE_INJECT
@@ -47,7 +47,7 @@
 			return
 	update_icon()
 
-/obj/item/reagent_containers/syringe/attack_hand(mob/user, list/params)
+/obj/item/reagent_containers/syringe/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	..()
 	update_icon()
 
@@ -119,7 +119,7 @@
 						B = T.take_blood(src,amount)
 						drawing = 0
 
-					if (B)
+					if (B && !(B in reagents.reagent_list))
 						reagents.reagent_list += B
 						reagents.update_total()
 						on_reagent_change()
@@ -246,8 +246,10 @@
 
 		var/hit_area = affecting.name
 
-		if((user != target) && H.check_shields(7, src, user, "\the [src]"))
-			return
+		if(user != target)
+			var/list/shieldcall_results = target.run_mob_defense(7, attack_type = ATTACK_TYPE_MELEE, weapon = src, hit_zone = hit_area, clickchain = new /datum/event_args/actor/clickchain(user))
+			if(shieldcall_results[SHIELDCALL_ARG_FLAGS] & SHIELDCALL_FLAG_ATTACK_BLOCKED)
+				return
 
 		if (target != user && H.legacy_mob_armor(target_zone, "melee") > 5 && prob(50))
 			for(var/mob/O in viewers(world.view, user))

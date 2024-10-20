@@ -20,7 +20,7 @@
 	maxHealth = 300
 	catalogue_data = list(/datum/category_item/catalogue/technology/drone/technomancer_golem)
 
-	faction = "golem"
+	iff_factions = MOB_IFF_FACTION_NEUTRAL // bad faction to use but whatever
 
 	response_help   = "pets"
 	response_disarm = "pushes away"
@@ -39,7 +39,7 @@
 	special_attack_min_range = 0
 	special_attack_max_range = 7
 
-	ai_holder_type = /datum/ai_holder/simple_mob/melee
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/melee
 
 	var/obj/item/technomancer_core/golem/core = null
 	var/obj/item/spell/active_spell = null // Shield and ranged spells

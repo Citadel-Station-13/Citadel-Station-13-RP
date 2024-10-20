@@ -61,7 +61,7 @@
 	base_desc = desc
 
 
-/obj/item/reagent_containers/glass/attack_self(mob/user)
+/obj/item/reagent_containers/glass/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -122,7 +122,7 @@
 			to_chat(user, "<span class='notice'>You set the label to \"[tmp_label]\".</span>")
 			label_text = tmp_label
 			update_name_label()
-	if(istype(W,/obj/item/storage/bag))
+	if(istype(W,/obj/item/storage/bag) || istype(W,/obj/item/storage/part_replacer))
 		..()
 	if(istype(W,/obj/item/reagent_containers/glass) || istype(W,/obj/item/reagent_containers/food/drinks) || istype(W,/obj/item/reagent_containers/food/condiment))
 		return
@@ -157,6 +157,8 @@
 	pickup_sound = 'sound/items/pickup/glass.ogg'
 	/// rped rating
 	var/rped_rating = 0
+	item_flags = ITEM_CAREFUL_BLUDGEON | ITEM_ENCUMBERS_WHILE_HELD | ITEM_EASY_LATHE_DECONSTRUCT
+
 
 /obj/item/reagent_containers/glass/beaker/Initialize(mapload)
 	. = ..()
@@ -170,7 +172,7 @@
 	. = ..()
 	update_icon()
 
-/obj/item/reagent_containers/glass/beaker/attack_hand(mob/user, list/params)
+/obj/item/reagent_containers/glass/beaker/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	..()
 	update_icon()
 

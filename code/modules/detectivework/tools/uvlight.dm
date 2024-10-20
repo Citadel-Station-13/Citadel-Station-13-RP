@@ -6,7 +6,7 @@
 	slot_flags = SLOT_BELT
 	w_class = WEIGHT_CLASS_SMALL
 	item_state = "electronic"
-	action_button_name = "Toggle UV light"
+	item_action_name = "Toggle UV light"
 	materials_base = list(MAT_STEEL = 150)
 	origin_tech = list(TECH_MAGNET = 1, TECH_ENGINEERING = 1)
 
@@ -18,7 +18,7 @@
 	var/on = 0
 	var/step_alpha = 50
 
-/obj/item/uv_light/attack_self(mob/user)
+/obj/item/uv_light/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return

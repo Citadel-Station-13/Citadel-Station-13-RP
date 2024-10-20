@@ -5,35 +5,18 @@
 
 /// Toggle unfolding/collapsing chassis
 /datum/action/pai/toggle_fold
-	name = "Unfold Chassis"
-	desc = "Unfold Chassis"
+	name = "Fold / Unfold Chassis"
+	desc = "Fold / Unfold Chassis"
 	button_icon_state = "pai"
 	update_on_grant = TRUE
 	update_on_chassis_change = TRUE
 
-/datum/action/pai/toggle_fold/on_trigger(mob/living/silicon/pai/user)
-	if(user.loc == user.shell)
-		user.open_up_safe()
+/datum/action/pai/toggle_fold/invoke_target(mob/living/silicon/pai/target, datum/event_args/actor/actor)
+	. = ..()
+	if(target.loc == target.shell)
+		target.open_up_safe()
 	else
-		user.close_up_safe()
-
-/datum/action/pai/toggle_fold/update_button()
-	var/mob/living/silicon/pai/user = owner
-	if(!istype(user))
-		return
-
-	if(user.loc == user.shell)
-		name = "Unfold Chassis"
-		desc = "Unfold Chassis"
-		button_icon = user.icon
-		button_icon_state = user.icon_state
-	else
-		name = "Collapse Chassis"
-		desc = "Collapse Chassis"
-		button_icon = user.shell.icon
-		button_icon_state = user.shell.icon_state
-
-	..()
+		target.close_up_safe()
 
 /// Change chassis
 /datum/action/pai/change_chassis
@@ -41,8 +24,11 @@
 	desc = "Select a different chassis"
 	button_icon_state = "pai_chassis_change"
 
-/datum/action/pai/change_chassis/on_trigger(mob/living/silicon/pai/user)
-	user.update_chassis()
+/datum/action/pai/change_chassis/invoke_target(mob/living/silicon/pai/target, datum/event_args/actor/actor)
+	. = ..()
+	if(.)
+		return
+	target.update_chassis()
 
 /// Revert to card
 /// This only shows if your shell is not currently the card, otherwise this action is hidden
@@ -52,14 +38,11 @@
 	button_icon_state = "pai_shell_revert"
 	update_on_chassis_change = TRUE
 
-/datum/action/pai/revert_to_card/on_trigger(mob/living/silicon/pai/user)
-	user.revert_to_card()
-
-/datum/action/pai/revert_to_card/update_button()
-	..()
-
-	var/mob/living/silicon/pai/user = owner
-	button_visibility = (user.shell != user.card)
+/datum/action/pai/revert_to_card/invoke_target(mob/living/silicon/pai/target, datum/event_args/actor/actor)
+	. = ..()
+	if(.)
+		return
+	target.revert_to_card()
 
 /// Clothing Transform
 /datum/action/pai/clothing_transform
@@ -68,8 +51,11 @@
 	button_icon_state = "pai_clothing"
 	update_on_chassis_change = TRUE
 
-/datum/action/pai/clothing_transform/on_trigger(mob/living/silicon/pai/user)
-	user.change_to_clothing()
+/datum/action/pai/clothing_transform/invoke_target(mob/living/silicon/pai/target, datum/event_args/actor/actor)
+	. = ..()
+	if(.)
+		return
+	target.change_to_clothing()
 
 /// Hologram Display (show scanned object from card form)
 /// This only shows if you are in card form, otherwise this action is hidden
@@ -79,14 +65,11 @@
 	button_icon_state = "pai_hologram_display"
 	update_on_chassis_change = TRUE
 
-/datum/action/pai/hologram_display/on_trigger(mob/living/silicon/pai/user)
-	user.card_hologram_display()
-
-/datum/action/pai/hologram_display/update_button()
-	..()
-
-	var/mob/living/silicon/pai/user = owner
-	button_visibility = (user.loc == user.card)
+/datum/action/pai/hologram_display/invoke_target(mob/living/silicon/pai/target, datum/event_args/actor/actor)
+	. = ..()
+	if(.)
+		return
+	target.card_hologram_display()
 
 /// Hologram Placement
 /datum/action/pai/place_hologram
@@ -94,8 +77,11 @@
 	desc = "Place a hologram of a scanned object on the floor."
 	button_icon_state = "pai_place_hologram"
 
-/datum/action/pai/place_hologram/on_trigger(mob/living/silicon/pai/user)
-	user.prompt_hologram_placement()
+/datum/action/pai/place_hologram/invoke_target(mob/living/silicon/pai/target, datum/event_args/actor/actor)
+	. = ..()
+	if(.)
+		return
+	target.prompt_hologram_placement()
 
 /// Delete All Holograms
 /datum/action/pai/delete_holograms
@@ -103,5 +89,8 @@
 	desc = "Delete all placed holograms."
 	button_icon_state = "pai_delete_holograms"
 
-/datum/action/pai/delete_holograms/on_trigger(mob/living/silicon/pai/user)
-	user.delete_all_holograms()
+/datum/action/pai/delete_holograms/invoke_target(mob/living/silicon/pai/target, datum/event_args/actor/actor)
+	. = ..()
+	if(.)
+		return
+	target.delete_all_holograms()

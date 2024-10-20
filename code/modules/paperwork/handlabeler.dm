@@ -6,6 +6,7 @@
 	var/labels_left = 30
 	var/mode = 0	//off or on.
 	w_class = WEIGHT_CLASS_SMALL
+	worth_intrinsic = 50
 
 /obj/item/hand_labeler/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if(user.a_intent == INTENT_HARM)
@@ -56,7 +57,7 @@
 						 "<span class='notice'>You label [target] as [label].</span>")
 	target.name = "[target.name] ([label])"
 
-/obj/item/hand_labeler/attack_self(mob/user)
+/obj/item/hand_labeler/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return

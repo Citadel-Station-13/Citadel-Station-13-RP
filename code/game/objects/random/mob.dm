@@ -43,8 +43,8 @@
 	var/mob/living/simple_mob/M = new build_path(src.loc)
 	if(!istype(M))
 		return
-	if(M.has_AI())
-		var/datum/ai_holder/AI = M.ai_holder
+	if(M.has_polaris_AI())
+		var/datum/ai_holder/polaris/AI = M.ai_holder
 		AI.go_sleep() //Don't fight eachother while we're still setting up!
 		AI.returns_home = mob_returns_home
 		AI.wander = mob_wander
@@ -227,7 +227,7 @@
 	. = ..()
 	if(istype(., /mob/living/simple_mob))
 		var/mob/living/simple_mob/this_mob = .
-		this_mob.faction = src.faction
+		this_mob.copy_iff_factions(src)
 		if (this_mob.minbodytemp > 200) // Temporary hotfix. Eventually I'll add code to change all mob vars to fit the environment they are spawned in.
 			this_mob.minbodytemp = 200
 		//wander the mobs around so they aren't always in the same spots

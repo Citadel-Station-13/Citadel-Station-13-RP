@@ -9,14 +9,15 @@
 	var/mob/living/affected_mob
 	var/stage = 0
 
-/obj/item/alien_embryo/New()
+/obj/item/alien_embryo/Initialize(mapload)
+	. = ..()
 	if(istype(loc, /mob/living))
 		affected_mob = loc
 		START_PROCESSING(SSobj, src)
 		spawn(0)
 			AddInfectionImages(affected_mob)
 	else
-		qdel(src)
+		return INITIALIZE_HINT_QDEL
 
 /obj/item/alien_embryo/Destroy()
 	if(affected_mob)
@@ -94,7 +95,7 @@
 		affected_mob.add_overlay(image('icons/mob/alien.dmi', loc = affected_mob, icon_state = "burst_stand"))
 	spawn(6)
 		var/mob/living/carbon/alien/larva/new_xeno = new(affected_mob.loc)
-		new_xeno.key = picked
+		new_xeno.set_ckey(picked)
 		SEND_SOUND(new_xeno, sound('sound/voice/hiss5.ogg',0,0,0,100))	//To get the player's attention
 		if(gib_on_success)
 			affected_mob.gib()

@@ -4,6 +4,8 @@
  * * All signals send the source datum of the signal as the first argument
  */
 
+// todo: rethink this if needed
+
 /// From base of [/atom/proc/update_appearance]: (updates)
 #define COMSIG_ATOM_UPDATE_APPEARANCE "atom_update_appearance"
 	/// If returned from [COMSIG_ATOM_UPDATE_APPEARANCE] it prevents the atom from updating its name.

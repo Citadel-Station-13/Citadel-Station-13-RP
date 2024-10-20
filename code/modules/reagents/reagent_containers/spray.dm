@@ -16,6 +16,7 @@
 	var/spray_size = 3
 	var/list/spray_sizes = list(1,3)
 	volume = 250
+	materials_base = list(MAT_GLASS = 1500, MAT_STEEL = 250)
 
 /obj/item/reagent_containers/spray/Initialize(mapload)
 	. = ..()
@@ -68,7 +69,7 @@
 			D.set_up(my_target, spray_size, 10)
 	return
 
-/obj/item/reagent_containers/spray/attack_self(mob/user)
+/obj/item/reagent_containers/spray/attack_self(mob/user, datum/event_args/actor/actor)
 	if(!possible_transfer_amounts)
 		return
 	amount_per_transfer_from_this = next_list_item(amount_per_transfer_from_this, possible_transfer_amounts)
@@ -122,17 +123,19 @@
 	item_state = "pepperspray"
 	possible_transfer_amounts = null
 	volume = 40
+	worth_intrinsic = 85
 	var/safety = TRUE
+	materials_base = list(MAT_STEEL = 1000)
 
 /obj/item/reagent_containers/spray/pepper/Initialize(mapload)
 	. = ..()
-	reagents.add_reagent("condensedcapsaicin", 40)
+	reagents.add_reagent("condensedcapsaicin", volume)
 
 /obj/item/reagent_containers/spray/pepper/examine(mob/user, dist)
 	. = ..()
 	. += "The safety is [safety ? "on" : "off"]."
 
-/obj/item/reagent_containers/spray/pepper/attack_self(mob/user)
+/obj/item/reagent_containers/spray/pepper/attack_self(mob/user, datum/event_args/actor/actor)
 	safety = !safety
 	to_chat(usr, "<span class = 'notice'>You switch the safety [safety ? "on" : "off"].</span>")
 
@@ -153,10 +156,11 @@
 	volume = 10
 	drop_sound = 'sound/items/drop/herb.ogg'
 	pickup_sound = 'sound/items/pickup/herb.ogg'
+	materials_base = list(MAT_PLASTIC = 500)
 
 /obj/item/reagent_containers/spray/waterflower/Initialize(mapload)
 	. = ..()
-	reagents.add_reagent("water", 10)
+	reagents.add_reagent("water", volume)
 
 /obj/item/reagent_containers/spray/chemsprayer
 	name = "chem sprayer"
@@ -169,6 +173,7 @@
 	possible_transfer_amounts = null
 	volume = 600
 	origin_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 3, TECH_ENGINEERING = 3)
+	materials_base = list(MAT_STEEL = 5000, MAT_GLASS = 1000)
 
 /obj/item/reagent_containers/spray/chemsprayer/Spray_at(atom/A as mob|obj)
 	var/direction = get_dir(src, A)
@@ -198,10 +203,11 @@
 	icon_state = "plantbgone"
 	item_state = "plantbgone"
 	volume = 100
+	materials_base = list(MAT_PLASTIC = 1000)
 
 /obj/item/reagent_containers/spray/plantbgone/Initialize(mapload)
 	. = ..()
-	reagents.add_reagent("plantbgone", 100)
+	reagents.add_reagent("plantbgone", volume)
 
 /obj/item/reagent_containers/spray/pestbgone
 	name = "Pest-B-Gone"
@@ -210,10 +216,11 @@
 	icon_state = "pestbgone"
 	item_state = "pestbgone"
 	volume = 100
+	materials_base = list(MAT_PLASTIC = 1000)
 
 /obj/item/reagent_containers/spray/pestbgone/Initialize(mapload)
 	. = ..()
-	reagents.add_reagent("pestbgone", 100)
+	reagents.add_reagent("pestbgone", volume)
 
 /obj/item/reagent_containers/spray/squirt
 	name = "HydroBlaster 4000"
@@ -224,16 +231,17 @@
 	w_class = WEIGHT_CLASS_NORMAL
 	volume = 100
 	var/pumped = TRUE
+	materials_base = list(MAT_PLASTIC = 1500)
 
 /obj/item/reagent_containers/spray/squirt/Initialize(mapload)
 	. = ..()
-	reagents.add_reagent("water", 100)
+	reagents.add_reagent("water", volume)
 
 /obj/item/reagent_containers/spray/squirt/examine(mob/user, dist)
 	. = ..()
 	. += "The tank is [pumped ? "depressurized" : "pressurized"]."
 
-/obj/item/reagent_containers/spray/squirt/attack_self(mob/user)
+/obj/item/reagent_containers/spray/squirt/attack_self(mob/user, datum/event_args/actor/actor)
 	pumped = !pumped
 	to_chat(usr, "<span class = 'notice'>You pump the handle [pumped ? "to depressurize" : "to pressurize"] the tank.</span>")
 

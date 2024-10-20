@@ -9,6 +9,8 @@ var/list/gyrotrons = list()
 	use_power = USE_POWER_IDLE
 	active_power_usage = 50000
 
+	worth_intrinsic = 700
+
 	circuit = /obj/item/circuitboard/gyrotron
 
 	var/id_tag
@@ -41,7 +43,7 @@ var/list/gyrotrons = list()
 
 /obj/machinery/power/emitter/gyrotron/get_emitter_beam()
 	var/obj/projectile/beam/emitter/E = ..()
-	E.damage = mega_energy * 50
+	E.damage_force = mega_energy * 50
 	return E
 
 /obj/machinery/power/emitter/gyrotron/update_icon()

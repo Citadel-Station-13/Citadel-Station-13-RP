@@ -425,3 +425,28 @@
 	if(connect_types & CONNECT_TYPE_HE)
 		dat += "HE"
 	return dat.Join("|")
+
+//Generalized gas pumping proc.
+//Moves gas from one gas_mixture to another and returns the amount of power needed (assuming 1 second), or -1 if no gas was pumped.
+//transfer_moles - Limits the amount of moles to transfer. The actual amount of gas moved may also be limited by available_power, if given.
+//available_power - the maximum amount of power that may be used when moving gas. If null then the transfer is not limited by power.
+/proc/pump_heat(target_temp, datum/gas_mixture/source, datum/gas_mixture/sink, available_power = null)
+	var/efficiency = get_thermal_efficiency(target_temp, source, sink)
+	CACHE_VSC_PROP(atmos_vsc, /atmos/heatpump/performance_factor, performance_factor)
+
+	var/actual_performance_factor = performance_factor*efficiency
+
+	var/max_energy_transfer = actual_performance_factor*available_power
+
+	if(abs(sink.temperature - target_temp) < 0.001) // don't want wild swings and too much power use
+		return
+	//only adds the energy actually removed from air one to air two(- infront of air1 because energy was removed)
+	var/energy_transfered = -source.adjust_thermal_energy(-clamp(sink.get_thermal_energy_change(target_temp),-max_energy_transfer,max_energy_transfer))
+	energy_transfered=abs(sink.adjust_thermal_energy(energy_transfered))
+	return abs(energy_transfered/actual_performance_factor)
+
+/proc/get_thermal_efficiency(target_temp, datum/gas_mixture/source, datum/gas_mixture/sink)
+	if((target_temp < sink.temperature))
+		return clamp((sink.temperature / source.temperature), 0, 1)
+	else if((target_temp > sink.temperature))
+		return clamp((source.temperature / sink.temperature), 0, 1)

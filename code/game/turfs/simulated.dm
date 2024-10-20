@@ -27,8 +27,6 @@
 
 /turf/simulated/Initialize(mapload)
 	. = ..()
-	if(mapload)
-		levelupdate()
 	if(outdoors)
 		SSplanets.addTurf(src)
 
@@ -103,7 +101,7 @@
 		if(M.dirties_floor())
 			// Dirt overlays.
 			// todo: currently nerfed
-			update_dirt(0.2)
+			update_dirt(0.8)
 
 		if(istype(M, /mob/living/carbon/human))
 			var/mob/living/carbon/human/H = M
@@ -141,19 +139,19 @@
 
 	var/slip_dist = 1
 	var/slip_stun = 6
-	var/floor_type = "wet"
+	var/class = SLIP_CLASS_WATER
 
 	switch(src.wet)
 		if(2) // Lube
-			floor_type = "slippery"
 			slip_dist = 4
 			slip_stun = 10
+			class = SLIP_CLASS_LUBRICANT
 		if(3) // Ice
-			floor_type = "icy"
 			slip_stun = 4
 			slip_dist = 2
+			class = SLIP_CLASS_ICE
 
-	if(M.slip("the [floor_type] floor", slip_stun))
+	if(M.slip_act(class, src, slip_stun, slip_stun) > 0)
 		for(var/i = 1 to slip_dist)
 			step(M, M.dir)
 			sleep(1)
@@ -185,12 +183,31 @@
 	else if(ishuman(M))
 		add_blood(M)
 
-/turf/simulated/floor/plating
-	can_start_dirty = TRUE	// But let maints and decrepit areas have some randomness
-
 //? Radiation
 
 /turf/simulated/update_rad_insulation()
 	. = ..()
 	for(var/atom/movable/AM as anything in contents)
 		rad_insulation_contents *= AM.rad_insulation
+
+//? Shuttle Movement
+
+/turf/simulated/CopyTurf(turf/T, change_flags)
+	if(!(change_flags & CHANGETURF_INHERIT_AIR))
+		return ..()
+	// invalidate zone
+	if(has_valid_zone())
+		if(can_safely_remove_from_zone())
+			zone.remove(src)
+			queue_zone_update()
+		else
+			zone.rebuild()
+	// store air
+	var/datum/gas_mixture/old_air = remove_cell_volume()
+	. = ..()
+	// restore air
+	if(istype(., /turf/simulated))
+		var/turf/simulated/casted = .
+		if(casted.has_valid_zone())
+			stack_trace("zone rebuilt too fast")
+		casted.air = old_air

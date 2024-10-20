@@ -1,4 +1,4 @@
-/datum/asset/spritesheet/simple/pda
+/datum/asset_pack/spritesheet/simple/pda
 	name = "pda"
 	assets = list(
 		"atmos" = 'icons/pda_icons/pda_atmos.png',
@@ -32,3 +32,6 @@
 		"emoji" = 'icons/pda_icons/pda_emoji.png',
 		"droneblacklist" = 'icons/pda_icons/pda_droneblacklist.png',
 	)
+	do_not_separate = TRUE
+	absolute = TRUE
+	do_not_mangle = TRUE

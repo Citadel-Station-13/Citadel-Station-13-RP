@@ -61,3 +61,21 @@
 	lathe_type = LATHE_TYPE_AUTOLATHE
 	design_unlock = DESIGN_UNLOCK_INTRINSIC
 	build_path = /obj/item/reagent_containers/food/drinks/glass2/pitcher
+
+/datum/design/misc/drink_glass/meta
+	id = "GlassMeta"
+	lathe_type = LATHE_TYPE_AUTOLATHE
+	design_unlock = DESIGN_UNLOCK_INTRINSIC
+	build_path = /obj/item/reagent_containers/food/drinks/metaglass
+
+/datum/design/misc/drink_glass/cup
+	id = "GlassCup"
+	lathe_type = LATHE_TYPE_AUTOLATHE
+	design_unlock = DESIGN_UNLOCK_INTRINSIC
+	build_path = /obj/item/reagent_containers/food/drinks/cup
+
+/datum/design/misc/drink_glass/fitness
+	id = "GlassFitness"
+	lathe_type = LATHE_TYPE_AUTOLATHE
+	design_unlock = DESIGN_UNLOCK_INTRINSIC
+	build_path = /obj/item/reagent_containers/food/drinks/glass2/fitnessflask

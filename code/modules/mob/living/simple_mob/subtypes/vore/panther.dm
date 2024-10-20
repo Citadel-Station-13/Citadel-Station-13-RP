@@ -17,7 +17,8 @@
 	icon_dead = "panther-dead"
 	icon = 'icons/mob/vore64x64.dmi'
 
-	faction = "panther"
+	iff_factions = MOB_IFF_FACTION_BIND_TO_MAP
+
 	maxHealth = 200
 	health = 200
 	randomized = TRUE
@@ -32,14 +33,10 @@
 	icon_y_dimension = 64
 
 	say_list_type = /datum/say_list/panther
-	ai_holder_type = /datum/ai_holder/simple_mob/melee/evasive
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/melee/evasive
 
 // Activate Noms!
 /mob/living/simple_mob/vore/aggressive/panther
-	vore_active = 1
-	vore_capacity = 2
-	vore_pounce_chance = 10
-	vore_icons = SA_ICON_LIVING | SA_ICON_REST
 
 /datum/say_list/panther
 	speak = list("RAWR!","Rawr!","GRR!","Growl!")

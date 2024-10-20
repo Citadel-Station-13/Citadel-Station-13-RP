@@ -39,7 +39,7 @@ GLOBAL_LIST_BOILERPLATE(pointdefense_turrets, /obj/machinery/power/pointdefense)
 		ui = new(user, src, "PointDefenseControl") // 400, 600
 		ui.open()
 
-/obj/machinery/pointdefense_control/attack_hand(mob/user, list/params)
+/obj/machinery/pointdefense_control/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(..())
 		return TRUE
 	ui_interact(user)
@@ -96,7 +96,7 @@ GLOBAL_LIST_BOILERPLATE(pointdefense_turrets, /obj/machinery/power/pointdefense)
 			// Check for duplicate controllers with this ID
 			for(var/thing in GLOB.pointdefense_controllers)
 				var/obj/machinery/pointdefense_control/PC = thing
-				if(PC != src && PC.id_tag == id_tag)
+				if(PC != src && PC.id_tag == new_ident)
 					to_chat(user, "<span class='warning'>The [new_ident] network already has a controller.</span>")
 					return
 			to_chat(user, "<span class='notice'>You register [src] with the [new_ident] network.</span>")
@@ -208,11 +208,6 @@ GLOBAL_LIST_BOILERPLATE(pointdefense_turrets, /obj/machinery/power/pointdefense)
 	if(W?.is_multitool())
 		var/new_ident = input(user, "Enter a new ident tag.", "[src]", id_tag) as null|text
 		if(new_ident && new_ident != id_tag && user.Adjacent(src) && CanInteract(user, GLOB.physical_state))
-			// Check for duplicate controllers with this ID
-			for(var/obj/machinery/pointdefense_control/PC as anything in GLOB.pointdefense_controllers)
-				if(PC != src && PC.id_tag == id_tag)
-					to_chat(user, SPAN_WARNING("\The [new_ident] network already has a controller!"))
-					return
 			to_chat(user, SPAN_NOTICE("You register [src] with \the [new_ident] network."))
 			id_tag = new_ident
 		return

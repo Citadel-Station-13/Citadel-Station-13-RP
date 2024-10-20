@@ -118,7 +118,7 @@
 /datum/rogue/asteroid/predef/cargo/angry/New()
 	..()
 	spot_add(2,2,/obj/random/roguemineloot) //EXTRA loot!
-	spot_add(2,2,/mob/living/simple_mob/animal/space/alien) //GRRR
+	spot_add(2,2,/mob/living/simple_mob/animal/space/xenomorph/neurotoxin_spitter) //GRRR
 
 //Longer cargo container for higher difficulties
 /datum/rogue/asteroid/predef/cargo_large
@@ -152,4 +152,4 @@
 	spot_add(4,3,/obj/random/roguemineloot) //Right loot
 
 	if(prob(30))
-		spot_add(3,3,/mob/living/simple_mob/animal/space/alien/sentinel/praetorian) //And maybe a big friend for big loot.
+		spot_add(3,3,/mob/living/simple_mob/animal/space/xenomorph/warrior) //And maybe a big friend for big loot.

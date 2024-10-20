@@ -23,12 +23,9 @@
 	name = "staff of healing"
 	desc = "An artefact that spits bolts of restoring magic which can remove ailments of all kinds and even raise the dead."
 	fire_sound = 'sound/magic/staff_healing.ogg'
-	ammo_type = /obj/item/ammo_casing/magic/heal
+	projectile_type = /obj/projectile/magic/resurrection
 	icon_state = "staffofhealing"
 	item_state = "staffofhealing"
-
-/obj/item/gun/magic/staff/healing/handle_suicide() //Stops people trying to commit suicide to heal themselves
-	return
 
 /*
 /obj/item/gun/magic/staff/chaos
@@ -54,7 +51,7 @@
 	name = "staff of door creation"
 	desc = "An artefact that spits bolts of transformative magic that can create doors in walls."
 	fire_sound = 'sound/magic/staff_door.ogg'
-	ammo_type = /obj/item/ammo_casing/magic/door
+	projectile_type = /obj/projectile/magic/door
 	icon_state = "staffofdoor"
 	item_state = "staffofdoor"
 	max_charges = 10
@@ -65,7 +62,7 @@
 	name = "staff of the honkmother"
 	desc = "Honk."
 	fire_sound = 'sound/items/airhorn.ogg'
-	ammo_type = /obj/item/ammo_casing/magic/honk
+	projectile_type = /obj/projectile/bullet/honker/lethal/heavy
 	icon_state = "honker"
 	item_state = "honker"
 	max_charges = 4
@@ -98,12 +95,12 @@
 	return ..()
 */
 
-/obj/item/gun/magic/staff/locker
-	name = "staff of the locker"
-	desc = "An artefact that expells encapsulating bolts, for incapacitating thy enemy."
-	fire_sound = 'sound/magic/staff_change.ogg'
-	ammo_type = /obj/item/ammo_casing/magic/locker
-	icon_state = "locker"
-	item_state = "locker"
-	max_charges = 6
-	recharge_rate = 4
+// /obj/item/gun/magic/staff/locker
+// 	name = "staff of the locker"
+// 	desc = "An artefact that expells encapsulating bolts, for incapacitating thy enemy."
+// 	fire_sound = 'sound/magic/staff_change.ogg'
+// 	ammo_type = /obj/item/ammo_casing/magic/locker
+// 	icon_state = "locker"
+// 	item_state = "locker"
+// 	max_charges = 6
+// 	recharge_rate = 4

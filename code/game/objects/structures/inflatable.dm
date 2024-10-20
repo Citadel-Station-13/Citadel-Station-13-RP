@@ -92,7 +92,7 @@
 		if(get_dist(user,src) <= 1) //not remotely though
 			return TryToSwitchState(user)
 
-/obj/structure/inflatable/door/attack_hand(mob/user, list/params)
+/obj/structure/inflatable/door/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	return TryToSwitchState(user)
 
 /obj/structure/inflatable/door/CanAllowThrough(atom/movable/mover, turf/target)
@@ -112,7 +112,7 @@
 					SwitchState()
 			else
 				SwitchState()
-	else if(istype(user, /obj/mecha))
+	else if(istype(user, /obj/vehicle/sealed/mecha))
 		SwitchState()
 
 /obj/structure/inflatable/door/proc/SwitchState()

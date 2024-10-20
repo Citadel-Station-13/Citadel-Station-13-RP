@@ -54,7 +54,7 @@
 	else
 		..()
 
-/obj/structure/bookcase/attack_hand(mob/user, list/params)
+/obj/structure/bookcase/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(contents.len)
 		var/obj/item/book/choice = input("Which book would you like to remove from the shelf?") as null|obj in contents
 		if(choice)
@@ -193,6 +193,21 @@
 	else
 		icon_state = "legalbook-5"
 
+/obj/structure/bookcase/lore
+	name = "reviewed Books bookcase"
+
+/obj/structure/bookcase/lore/New()
+	..()
+	var/list/obj/item/book/lore/types = typesof(/obj/item/book/lore)
+	LAZYREMOVE(types, /obj/item/book/lore)
+	for(var/i = 5; i>= 0; i--)
+		var/t_picked = pick(types)
+		new t_picked(src)
+		LAZYREMOVE(types, t_picked)
+		if(length(types) <= 0)
+			break
+	update_icon()
+
 /*
  * Barcode Scanner
  */
@@ -208,7 +223,7 @@
 	var/obj/item/book/book	 //  Currently scanned book
 	var/mode = 0 					// 0 - Scan only, 1 - Scan and Set Buffer, 2 - Scan and Attempt to Check In, 3 - Scan and Attempt to Add to Inventory
 
-/obj/item/barcodescanner/attack_self(mob/user)
+/obj/item/barcodescanner/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return

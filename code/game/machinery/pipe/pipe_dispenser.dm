@@ -4,6 +4,7 @@
 	icon_state = "pipe_d"
 	density = TRUE
 	anchored = TRUE
+	worth_intrinsic = 500
 	var/unwrenched = FALSE
 	var/wait = FALSE
 	///The default layer selected on the machine.
@@ -11,15 +12,14 @@
 	var/disposals = FALSE
 
 
-/obj/machinery/pipedispenser/attack_hand(mob/user, list/params)
+/obj/machinery/pipedispenser/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if((. = ..()))
 		return
 	ui_interact(user)
 
-/obj/machinery/pipedispenser/ui_assets(mob/user)
-	return list(
-		get_asset_datum(/datum/asset/spritesheet/pipes),
-	)
+/obj/machinery/pipedispenser/ui_asset_injection(datum/tgui/ui, list/immediate, list/deferred)
+	immediate += /datum/asset_pack/spritesheet/pipes
+	return ..()
 
 /obj/machinery/pipedispenser/ui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)

@@ -18,7 +18,7 @@
 		pixel_x = (dir & 3)? 0 : (dir == 4 ? -28 : 28)
 		pixel_y = (dir & 3)? (dir == 1 ? -30 : 30) : 0
 
-/obj/structure/mirror/attack_hand(mob/user, list/params)
+/obj/structure/mirror/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(!glass) return
 	if(shattered)	return
 
@@ -39,14 +39,13 @@
 	desc = "Oh no, seven years of bad luck!"
 
 
-/obj/structure/mirror/bullet_act(var/obj/projectile/Proj)
-
-	if(prob(Proj.get_structure_damage() * 2))
+/obj/structure/mirror/on_bullet_act(obj/projectile/proj, impact_flags, list/bullet_act_args)
+	. = ..()
+	if(prob(proj.get_structure_damage() * 2))
 		if(!shattered)
 			shatter()
 		else if(glass)
 			playsound(src, 'sound/effects/hit_on_shattered_glass.ogg', 70, 1)
-	..()
 
 /obj/structure/mirror/attackby(obj/item/I as obj, mob/user as mob)
 	if(I.is_wrench())

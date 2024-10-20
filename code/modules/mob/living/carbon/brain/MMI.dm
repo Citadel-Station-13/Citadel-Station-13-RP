@@ -28,7 +28,7 @@
 	/// The current brain organ.
 	var/obj/item/organ/internal/brain/brainobj = null
 	/// This does not appear to be used outside of reference in mecha.dm.
-	var/obj/mecha = null
+	var/obj/vehicle/sealed/mecha = null
 	/// Let's give it a radio.
 	var/obj/item/radio/headset/mmi_radio/radio = null
 
@@ -109,7 +109,7 @@
 	..()
 
 //TODO: ORGAN REMOVAL UPDATE. Make the brain remain in the MMI so it doesn't lose organ data.
-/obj/item/mmi/attack_self(mob/user)
+/obj/item/mmi/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -249,7 +249,7 @@
 		H.mind.transfer(brainmob)
 	return
 
-/obj/item/mmi/digital/attack_self(mob/user)
+/obj/item/mmi/digital/attack_self(mob/user, datum/event_args/actor/actor)
 	if(brainmob && !brainmob.key && searching == 0)
 		//Start the process of searching for a new user.
 		to_chat(user, "<font color=#4F49AF>You carefully locate the manual activation switch and start the [src]'s boot process.</font>")
@@ -284,7 +284,7 @@
 	if(candidate.mind)
 		brainmob.mind = candidate.mind
 		brainmob.mind.reset()
-	brainmob.ckey = candidate.ckey
+	candidate.transfer_client_to(src.brainmob)
 	src.name = "[name] ([brainmob.name])"
 	to_chat(brainmob, "<b>You are [src.name], brought into existence on [station_name()].</b>")
 	to_chat(brainmob, "<b>As a synthetic intelligence, you are designed with organic values in mind.</b>")

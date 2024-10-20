@@ -17,7 +17,7 @@
 	icon_gib = "bat_dead"
 	catalogue_data = list(/datum/category_item/catalogue/fauna/bats)
 
-	faction = "scarybat"
+	iff_factions = MOB_IFF_FACTION_BIND_TO_MAP
 
 	maxHealth = 20
 	health = 20
@@ -36,7 +36,7 @@
 	legacy_melee_damage_upper = 5
 	attack_sharp = TRUE
 
-	ai_holder_type = /datum/ai_holder/simple_mob/melee/evasive
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/melee/evasive
 
 	has_langs = list("Mouse")
 
@@ -57,7 +57,7 @@
 
 // Spookiest of bats
 /mob/living/simple_mob/animal/space/bats/cult
-	faction = "cult"
+	iff_factions = MOB_IFF_FACTION_SANGUINE_CULT
 	supernatural = TRUE
 
 /mob/living/simple_mob/animal/space/bats/cult/cultify()

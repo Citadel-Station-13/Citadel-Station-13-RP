@@ -41,8 +41,7 @@
 			attack_verb = list("shredded", "ripped", "torn")
 			playsound(src, 'sound/weapons/chainsaw_startup.ogg',40,1)
 			damage_force = active_force
-			edge = 1
-			sharp = 1
+			damage_mode = DAMAGE_MODE_EDGE | DAMAGE_MODE_SHARP
 			on = 1
 			update_icon()
 		else
@@ -53,12 +52,11 @@
 	attack_verb = list("bluntly hit", "beat", "knocked")
 	playsound(user, 'sound/weapons/chainsaw_turnoff.ogg',40,1)
 	damage_force = inactive_force
-	edge = 0
-	sharp = 0
+	damage_mode = initial(damage_mode)
 	on = 0
 	update_icon()
 
-/obj/item/chainsaw/attack_self(mob/user)
+/obj/item/chainsaw/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -125,8 +123,7 @@
 	damage_force = 30
 	throw_force = 10
 	w_class = WEIGHT_CLASS_NORMAL
-	sharp = 1
-	edge = 1
+	damage_mode = DAMAGE_MODE_SHARP | DAMAGE_MODE_EDGE
 	attack_verb = list("sawed", "torn", "cut", "chopped", "diced")
 	attack_sound = 'sound/weapons/chainsaw_attack.ogg'
 	armor_penetration = 30
@@ -147,8 +144,7 @@
 			attack_verb = list("shredded", "ripped", "torn")
 			playsound(src, 'sound/weapons/chainsaw_startup.ogg',40,1)
 			damage_force = active_force
-			edge = 1
-			sharp = 1
+			damage_mode = DAMAGE_MODE_EDGE | DAMAGE_MODE_SHARP
 			on = 1
 			update_icon()
 		else
@@ -159,8 +155,7 @@
 	attack_verb = list("bluntly hit", "beat", "knocked")
 	playsound(user, 'sound/weapons/chainsaw_turnoff.ogg',40,1)
 	damage_force = inactive_force
-	edge = 0
-	sharp = 0
+	damage_mode = initial(damage_mode)
 	on = 0
 	update_icon()
 

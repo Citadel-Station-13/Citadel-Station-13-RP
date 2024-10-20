@@ -320,7 +320,7 @@ GLOBAL_LIST_INIT(nif_id_lookup, init_nif_id_lookup())
 	switch(percent_done) //This is 0.0 to 1.0 kinda percent.
 		//Connecting to optical nerves
 		if(0.0 to 0.1)
-			human.eye_blind = 5
+			human.apply_status_effect(/datum/status_effect/sight/blindness, 5 SECONDS)
 
 		//Mapping brain
 		if(0.2 to 0.9)

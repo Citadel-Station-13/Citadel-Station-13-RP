@@ -7,7 +7,7 @@
 /area/space)
 "c" = (
 /mob/living/simple_mob/mechanical/corrupt_maint_drone{
-	faction = "poi_mining_drones"
+	iff_factions = "poi_mining_drones"
 	},
 /turf/simulated/floor/airless,
 /area/submap/debrisfield_vr/mining_outpost)

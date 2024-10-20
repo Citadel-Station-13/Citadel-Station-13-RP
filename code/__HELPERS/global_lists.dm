@@ -168,10 +168,10 @@ var/global/list/hexNums = list("0", "1", "2", "3", "4", "5", "6", "7", "8", "9",
 var/global/list/negative_traits = list()
 /// Neutral custom species traits, indexed by path.
 var/global/list/neutral_traits = list()
-/// Neutral traits available to all species, indexed by path.
-var/global/list/everyone_traits = list()
 /// Positive custom species traits, indexed by path.
 var/global/list/positive_traits = list()
+/// Trait groups, indexed by path
+var/global/list/all_trait_groups = list()
 /// Just path = cost list, saves time in char setup.
 var/global/list/traits_costs = list()
 /// All of 'em at once. (same instances)
@@ -601,8 +601,6 @@ var/global/list/remainless_species = list(SPECIES_ID_PROMETHEAN,
 		var/cost = instance.cost
 		traits_costs[path] = cost
 		all_traits[path] = instance
-		if(!instance.custom_only && instance.cost <= 0)
-			everyone_traits[path] = instance
 		switch(cost)
 			if(-INFINITY to -0.1)
 				negative_traits[path] = instance
@@ -610,6 +608,14 @@ var/global/list/remainless_species = list(SPECIES_ID_PROMETHEAN,
 				neutral_traits[path] = instance
 			if(0.1 to INFINITY)
 				positive_traits[path] = instance
+
+	// Trait groups
+	paths = typesof(/datum/trait_group) - /datum/trait_group
+	for(var/path in paths)
+		var/datum/trait_group/instance = new path()
+		if(!instance.name)
+			continue  // Should never happen but worth checking for
+		all_trait_groups[path] = instance
 
 	// Weaver recipe stuff
 	paths = subtypesof(/datum/weaver_recipe/structure)
@@ -734,10 +740,11 @@ var/global/list/xenobio_gold_mobs_hostile = list(
 										/mob/living/simple_mob/animal/sif/savik,
 										/mob/living/simple_mob/animal/sif/shantak,
 //										/mob/living/simple_mob/animal/sif/siffet,
-										/mob/living/simple_mob/animal/space/alien,
-										/mob/living/simple_mob/animal/space/alien/drone,
-										/mob/living/simple_mob/animal/space/alien/sentinel,
-										/mob/living/simple_mob/animal/space/alien/sentinel/praetorian,
+										/mob/living/simple_mob/animal/space/xenomorph/warrior,
+										/mob/living/simple_mob/animal/space/xenomorph/drone,
+										/mob/living/simple_mob/animal/space/xenomorph/neurotoxin_spitter,
+										/mob/living/simple_mob/animal/space/xenomorph/acid_spitter,
+										/mob/living/simple_mob/animal/space/xenomorph/vanguard,
 										/mob/living/simple_mob/animal/space/bats,
 										/mob/living/simple_mob/animal/space/bear,
 										/mob/living/simple_mob/animal/space/carp,
@@ -766,9 +773,6 @@ var/global/list/xenobio_gold_mobs_hostile = list(
 
 //TODO: literally none of these boss mobs exist in code, so I just shoved the aliens and dragon in as a placeholder for now
 var/global/list/xenobio_gold_mobs_bosses = list(
-										/mob/living/simple_mob/animal/space/alien/queen,
-										/mob/living/simple_mob/animal/space/alien/queen/empress,
-										/mob/living/simple_mob/animal/space/alien/queen/empress/mother,
 										/mob/living/simple_mob/vore/aggressive/dragon)
 //										/mob/living/simple_mob/vore/leopardmander,
 //										/mob/living/simple_mob/vore/leopardmander/blue,

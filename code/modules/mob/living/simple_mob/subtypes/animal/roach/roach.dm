@@ -62,7 +62,8 @@
 
 	see_in_dark = 6
 	universal_understand = 1
-	faction = "roaches"
+
+	iff_factions = MOB_IFF_FACTION_ROACH
 
 	mob_size = MOB_SMALL
 	pass_flags = ATOM_PASS_TABLE
@@ -89,7 +90,7 @@
 	speak_emote = list("chitters")
 	say_list_type = /datum/say_list/roach
 	holder_type = /obj/item/holder/roach
-	ai_holder_type = /datum/ai_holder/simple_mob/melee
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/melee
 
 /mob/living/simple_mob/animal/roach/Initialize(mapload)
 	. = ..()
@@ -118,7 +119,7 @@
 	name = "Greta"
 	desc = "Legend has it this roach sailed across the Eagle Nebula to protest bug burgers."
 
-	ai_holder_type = /datum/ai_holder/simple_mob/retaliate/cooperative
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/retaliate/cooperative
 
 	taser_kill = 0
 
@@ -165,7 +166,7 @@
 	legacy_melee_damage_lower = 2
 	legacy_melee_damage_upper = 3
 
-	ai_holder_type = /datum/ai_holder/simple_mob/retaliate/cooperative
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/retaliate/cooperative
 
 	var/amount_grown = -1
 	var/spawn_delay = 20
@@ -260,7 +261,7 @@
 	movement_cooldown = 4
 
 	armor_type = /datum/armor/physiology/roach/jaegar
-	ai_holder_type = /datum/ai_holder/simple_mob/melee/evasive
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/melee/evasive
 
 //When I said roaches made me sick, this isn't what I meant.
 /datum/category_item/catalogue/fauna/roach/seuche
@@ -346,11 +347,11 @@
 
 	armor_type = /datum/armor/physiology/roach/atomar
 
-	base_attack_cooldown = 4
+	base_attack_cooldown = 2 SECONDS
 	projectiletype = /obj/projectile/energy/blob/toxic
 	projectilesound = 'sound/effects/slime_squish.ogg'
 
-	ai_holder_type = /datum/ai_holder/simple_mob/ranged/kiting
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/ranged/kiting
 
 //Nanomachines? Huh. That's not very Patriotic.
 /datum/category_item/catalogue/fauna/roach/uberfallen
@@ -377,7 +378,7 @@
 	item_state = "uberfallen"
 	icon_living = "uberfallen"
 	icon_dead = "uberfallen_dead"
-	faction = "synthtide"
+
 	catalogue_data = list(/datum/category_item/catalogue/fauna/roach/uberfallen)
 	maxHealth = 30
 	health = 30
@@ -391,7 +392,7 @@
 	base_attack_cooldown = 8
 	projectiletype = /obj/projectile/energy/declone
 
-	ai_holder_type = /datum/ai_holder/simple_mob/ranged/kiting
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/ranged/kiting
 
 //Remember when Liam Neeson taught you how to kill these?
 /datum/category_item/catalogue/fauna/roach/strahlend
@@ -425,10 +426,10 @@
 	taser_kill = 0
 	armor_type = /datum/armor/physiology/roach/strahland
 
-	base_attack_cooldown = 4
+	base_attack_cooldown = 2 SECONDS
 	projectiletype = /obj/projectile/energy/dart
 
-	ai_holder_type = /datum/ai_holder/simple_mob/ranged/kiting
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/ranged/kiting
 
 //The Color out of Bluespace
 /datum/category_item/catalogue/fauna/roach/zeitraum
@@ -469,7 +470,7 @@
 
 	armor_type = /datum/armor/physiology/roach/zeitraum
 
-	ai_holder_type = /datum/ai_holder/simple_mob/melee/hit_and_run
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/melee/hit_and_run
 
 	var/stealthed = FALSE
 	var/stealthed_alpha = 60			// Lower = Harder to see.
@@ -537,7 +538,7 @@
 	..() // For the poison.
 
 // Force unstealthing if attacked.
-/mob/living/simple_mob/animal/roach/zeitraum/bullet_act(obj/projectile/P)
+/mob/living/simple_mob/animal/roach/zeitraum/on_bullet_act(obj/projectile/proj, impact_flags, list/bullet_act_args)
 	. = ..()
 	break_cloak()
 

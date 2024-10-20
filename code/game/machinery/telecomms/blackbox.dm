@@ -1,3 +1,5 @@
+// todo: we need a new feedback system
+
 /datum/feedback_variable
 	var/variable
 	var/value

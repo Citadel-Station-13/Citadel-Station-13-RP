@@ -8,21 +8,21 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/fire_alarm, 21)
 	icon = 'icons/obj/firealarm.dmi'
 	icon_state = "casing"
 	plane = TURF_PLANE
-	layer = ABOVE_TURF_LAYER
-	var/detecting = TRUE
-	var/working = TRUE
-	var/time = 10
-	var/timing = 0
-	var/lockdownbyai = FALSE
+	layer = ABOVE_WINDOW_LAYER
 	anchored = TRUE
 	use_power = TRUE
 	idle_power_usage = 2
 	active_power_usage = 6
 	power_channel = ENVIRON
-	var/last_process = 0
 	panel_open = FALSE
-	var/seclevel
 	circuit = /obj/item/circuitboard/firealarm
+	var/detecting = TRUE
+	var/working = TRUE
+	var/time = 10
+	var/timing = 0
+	var/lockdownbyai = FALSE
+	var/last_process = 0
+	var/seclevel
 	/// If the alarms from this machine are visible on consoles.
 	var/alarms_hidden = FALSE
 
@@ -30,11 +30,7 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/fire_alarm/alarms_hidden, 21)
 /obj/machinery/fire_alarm/alarms_hidden
 	alarms_hidden = TRUE
 
-/obj/machinery/fire_alarm/preloading_dir(datum/map_preloader/preloader)
-	dir = turn(dir, -preloader.turn_angle)
-	return FALSE
-
-/obj/machinery/fire_alarm/Initialize(mapload)
+/obj/machinery/fire_alarm/Initialize(mapload, dir = src.dir)
 	. = ..()
 	if(z in (LEGACY_MAP_DATUM).contact_levels)
 		set_security_level(GLOB.security_level ? get_security_level() : "green")
@@ -125,8 +121,9 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/fire_alarm/alarms_hidden, 21)
 /obj/machinery/fire_alarm/attack_ai(mob/user)
 	return attack_hand(user)
 
-/obj/machinery/fire_alarm/bullet_act()
-	return alarm()
+/obj/machinery/fire_alarm/on_bullet_act(obj/projectile/proj, impact_flags, list/bullet_act_args)
+	. = ..()
+	alarm(manual = TRUE)
 
 /obj/machinery/fire_alarm/emp_act(severity)
 	if(prob(50 / severity))
@@ -154,8 +151,7 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/fire_alarm/alarms_hidden, 21)
 					SPAN_NOTICE("You have disconnected [src]'s detecting unit."))
 		return
 
-	alarm()
-	return
+	alarm(manual = TRUE)
 
 /obj/machinery/fire_alarm/process()//Note: this processing was mostly phased out due to other code, and only runs when needed
 	if(machine_stat & (NOPOWER|BROKEN))
@@ -165,7 +161,7 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/fire_alarm/alarms_hidden, 21)
 		if(time > 0)
 			time = time - ((world.timeofday - last_process) / 10)
 		else
-			alarm()
+			alarm(manual = TRUE)
 			time = 0
 			timing = 0
 			STOP_PROCESSING(SSobj, src)
@@ -182,7 +178,7 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/fire_alarm/alarms_hidden, 21)
 	spawn(rand(0,15))
 		update_icon()
 
-/obj/machinery/fire_alarm/attack_hand(mob/user, list/params)
+/obj/machinery/fire_alarm/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(user.stat || machine_stat & (NOPOWER | BROKEN))
 		return
 
@@ -233,7 +229,7 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/fire_alarm/alarms_hidden, 21)
 		if(href_list["reset"])
 			reset()
 		else if(href_list["alarm"])
-			alarm()
+			alarm(manual = TRUE)
 		else if(href_list["time"])
 			timing = text2num(href_list["time"])
 			last_process = world.timeofday
@@ -260,125 +256,17 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/fire_alarm/alarms_hidden, 21)
 	update_icon()
 	return
 
-/obj/machinery/fire_alarm/proc/alarm(var/duration = 0)
+/obj/machinery/fire_alarm/proc/alarm(var/duration = 0, var/manual = FALSE)
 	if(!(working))
 		return
 	var/area/area = get_area(src)
 	for(var/obj/machinery/fire_alarm/FA in area)
-		fire_alarm.triggerAlarm(loc, FA, duration, hidden = alarms_hidden)
+		var/msg = manual ? "Manual" : "Fire Detected"
+		fire_alarm.triggerAlarm(loc, FA, duration, hidden = alarms_hidden, reasons = list(msg))
 	update_icon()
 	playsound(src.loc, 'sound/machines/airalarm.ogg', 25, 0, 4)
-	return
 
 /obj/machinery/fire_alarm/proc/set_security_level(var/newlevel)
 	if(seclevel != newlevel)
 		seclevel = newlevel
 		update_icon()
-
-/*
-FIRE ALARM CIRCUIT
-Just a object used in constructing fire alarms
-/obj/item/firealarm_electronics
-	name = "fire alarm electronics"
-	icon = 'icons/obj/doors/door_assembly.dmi'
-	icon_state = "door_electronics"
-	desc = "A circuit. It has a label on it, it says \"Can handle heat levels up to 40 degrees celsius!\""
-	w_class = WEIGHT_CLASS_SMALL
-	materials_base = list(MAT_STEEL = 50, MAT_GLASS = 50)
-*/
-/obj/machinery/partyalarm
-	name = "\improper PARTY BUTTON"
-	desc = "Cuban Pete is in the house!"
-	icon = 'icons/obj/monitors.dmi'
-	icon_state = "fire0"
-	var/detecting = TRUE
-	var/working = TRUE
-	var/time = 10
-	var/timing = 0
-	var/lockdownbyai = FALSE
-	anchored = TRUE
-	use_power = TRUE
-	idle_power_usage = 2
-	active_power_usage = 6
-
-/obj/machinery/partyalarm/attack_hand(mob/user, list/params)
-	if(user.stat || machine_stat & (NOPOWER|BROKEN))
-		return
-
-	user.machine = src
-	var/area/A = get_area(src)
-	ASSERT(isarea(A))
-	var/d1
-	var/d2
-	if(istype(user, /mob/living/carbon/human) || istype(user, /mob/living/silicon/ai))
-
-		if(A.party)
-			d1 = "<A href='?src=\ref[src];reset=1'>No Party :(</A>"
-		else
-			d1 = "<A href='?src=\ref[src];alarm=1'>PARTY!!!</A>"
-		if(timing)
-			d2 = "<A href='?src=\ref[src];time=0'>Stop Time Lock</A>"
-		else
-			d2 = "<A href='?src=\ref[src];time=1'>Initiate Time Lock</A>"
-		var/second = time % 60
-		var/minute = (time - second) / 60
-		var/dat = "<HTML><HEAD></HEAD><BODY><TT><B>Party Button</B> [d1]\n<HR>\nTimer System: [d2]<BR>\nTime Left: [(minute ? "[minute]:" : null)][second] <A href='?src=\ref[src];tp=-30'>-</A> <A href='?src=\ref[src];tp=-1'>-</A> <A href='?src=\ref[src];tp=1'>+</A> <A href='?src=\ref[src];tp=30'>+</A>\n</TT></BODY></HTML>"
-
-		user << browse(dat, "window=partyalarm")
-		onclose(user, "partyalarm")
-	else
-		if(A.fire)
-			d1 = "<A href='?src=\ref[src];reset=1'>[stars("No Party :(")]</A>"
-		else
-			d1 = "<A href='?src=\ref[src];alarm=1'>[stars("PARTY!!!")]</A>"
-		if(timing)
-			d2 = "<A href='?src=\ref[src];time=0'>[stars("Stop Time Lock")]</A>"
-		else
-			d2 = "<A href='?src=\ref[src];time=1'>[stars("Initiate Time Lock")]</A>"
-		var/second = time % 60
-		var/minute = (time - second) / 60
-		var/dat = "<HTML><HEAD></HEAD><BODY><TT><B>[stars("Party Button")]</B> [d1]\n<HR>\nTimer System: [d2]<BR>\nTime Left: [(minute ? "[minute]:" : null)][second] <A href='?src=\ref[src];tp=-30'>-</A> <A href='?src=\ref[src];tp=-1'>-</A> <A href='?src=\ref[src];tp=1'>+</A> <A href='?src=\ref[src];tp=30'>+</A>\n</TT></BODY></HTML>"
-
-		user << browse(dat, "window=partyalarm")
-		onclose(user, "partyalarm")
-	return
-
-/obj/machinery/partyalarm/proc/reset()
-	if(!(working))
-		return
-	var/area/A = get_area(src)
-	ASSERT(isarea(A))
-	A.partyreset()
-	return
-
-/obj/machinery/partyalarm/proc/alarm()
-	if(!(working))
-		return
-	var/area/A = get_area(src)
-	ASSERT(isarea(A))
-	A.partyalert()
-	return
-
-/obj/machinery/partyalarm/Topic(href, href_list)
-	..()
-	if(usr.stat || machine_stat & (BROKEN|NOPOWER))
-		return
-	if((usr.contents.Find(src) || ((get_dist(src, usr) <= 1) && istype(loc, /turf))) || (istype(usr, /mob/living/silicon/ai)))
-		usr.machine = src
-		if(href_list["reset"])
-			reset()
-		else if(href_list["alarm"])
-			alarm()
-		else if(href_list["time"])
-			timing = text2num(href_list["time"])
-		else if(href_list["tp"])
-			var/tp = text2num(href_list["tp"])
-			time += tp
-			time = min(max(round(time), 0), 120)
-		updateUsrDialog()
-
-		add_fingerprint(usr)
-	else
-		usr << browse(null, "window=partyalarm")
-		return
-	return

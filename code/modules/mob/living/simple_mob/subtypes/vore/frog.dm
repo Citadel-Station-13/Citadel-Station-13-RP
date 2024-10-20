@@ -25,7 +25,7 @@
 	legacy_melee_damage_lower = 5
 	legacy_melee_damage_upper = 12
 
-	ai_holder_type = /datum/ai_holder/simple_mob/melee
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/melee
 
 // Pepe is love, not hate.
 /mob/living/simple_mob/vore/aggressive/frog/Initialize(mapload)
@@ -38,9 +38,6 @@
 
 // Activate Noms!
 /mob/living/simple_mob/vore/aggressive/frog
-	vore_active = 1
-	vore_pounce_chance = 50
-	vore_icons = SA_ICON_LIVING
 
 /mob/living/simple_mob/vore/aggressive/frog/space
 	name = "space frog"

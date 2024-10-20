@@ -4,7 +4,7 @@
 	icon = 'icons/obj/xenoarchaeology.dmi'
 	icon_state = "sliver1"
 	w_class = WEIGHT_CLASS_TINY
-	sharp = 1
+	damage_mode = DAMAGE_MODE_SHARP
 	var/datum/geosample/geological_data
 
 /obj/item/rocksliver/Initialize(mapload)
@@ -22,6 +22,7 @@
 	icon_state = "sampler0"
 	item_state = "screwdriver_brown"
 	w_class = WEIGHT_CLASS_TINY
+	worth_intrinsic = 50
 
 	var/sampled_turf = ""
 	var/num_stored_bags = 10
@@ -81,7 +82,7 @@
 	else
 		to_chat(user, "<span class='warning'>You are unable to take a sample of [item_to_sample].</span>")
 
-/obj/item/core_sampler/attack_self(mob/user)
+/obj/item/core_sampler/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return

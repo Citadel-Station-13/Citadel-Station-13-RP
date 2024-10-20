@@ -73,6 +73,8 @@
 
 	slowdown = -0.5
 
+	vision_innate = /datum/vision/baseline/species_tier_2
+
 	hud_type = /datum/hud_data/adherent
 /*
 	available_cultural_info = list(
@@ -115,6 +117,7 @@
 		O_FLOAT        = /obj/item/organ/internal/powered/float,
 		O_JETS         = /obj/item/organ/internal/powered/jets,
 	)
+	vision_organ = O_EYES
 
 	move_trail = /obj/effect/debris/cleanable/blood/tracks/snake
 

@@ -21,7 +21,7 @@ GLOBAL_LIST_EMPTY(unarmed_attack_cache)
 	/// damage tier
 	var/damage_tier = MELEE_TIER_UNARMED_DEFAULT
 	/// damage type
-	var/damage_type = BRUTE
+	var/damage_type = DAMAGE_TYPE_BRUTE
 	/// damage flag
 	var/damage_flag = ARMOR_MELEE
 	/// flat damage buff when attacking structures
@@ -51,6 +51,9 @@ GLOBAL_LIST_EMPTY(unarmed_attack_cache)
 
 	var/eye_attack_text
 	var/eye_attack_text_victim
+
+/datum/unarmed_attack/proc/operator""()
+	return pick(attack_verb_legacy)
 
 //* Feedback
 
@@ -324,4 +327,4 @@ GLOBAL_LIST_EMPTY(unarmed_attack_cache)
 	attack_verb_legacy = list("tapped", "lightly struck")
 	damage = 5
 	damage_mode = NONE
-	damage_type = AGONY
+	damage_type = DAMAGE_TYPE_HALLOSS

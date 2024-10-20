@@ -9,7 +9,7 @@
 	icon_rest = "thrumbo_rest"
 	maxHealth = 500
 	health = 500
-	faction = "horing"
+	iff_factions = MOB_IFF_FACTION_BIND_TO_MAP
 	pixel_x = -16
 	special_attack_min_range = 3
 	special_attack_max_range = 8
@@ -32,7 +32,7 @@
 	var/charge_damage_tier = MELEE_TIER_HEAVY
 	var/charge_damage = 60
 
-	ai_holder_type = /datum/ai_holder/simple_mob/horing
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/horing
 
 /mob/living/simple_mob/animal/horing/update_icon()
 	if(charging)
@@ -105,18 +105,18 @@
 		playsound(src, 'sound/effects/splat.ogg', 50, 1)
 		// todo: this ignores charge_damage
 		var/damage = rand(3,4)
-		M.apply_damage(2 * damage, BRUTE, BP_HEAD)
-		M.apply_damage(2 * damage, BRUTE, BP_TORSO)
-		M.apply_damage(0.5 * damage, BRUTE, BP_L_LEG)
-		M.apply_damage(0.5 * damage, BRUTE, BP_R_LEG)
-		M.apply_damage(0.5 * damage, BRUTE, BP_L_ARM)
-		M.apply_damage(0.5 * damage, BRUTE, BP_R_ARM)
+		M.apply_damage(2 * damage, DAMAGE_TYPE_BRUTE, BP_HEAD)
+		M.apply_damage(2 * damage, DAMAGE_TYPE_BRUTE, BP_TORSO)
+		M.apply_damage(0.5 * damage, DAMAGE_TYPE_BRUTE, BP_L_LEG)
+		M.apply_damage(0.5 * damage, DAMAGE_TYPE_BRUTE, BP_R_LEG)
+		M.apply_damage(0.5 * damage, DAMAGE_TYPE_BRUTE, BP_L_ARM)
+		M.apply_damage(0.5 * damage, DAMAGE_TYPE_BRUTE, BP_R_ARM)
 		blood_splatter(src, M, 1)
 
 /mob/living/simple_mob/animal/horing/handle_special()
 	if(ai_holder)
-		if(istype(ai_holder, /datum/ai_holder/simple_mob/horing))
-			var/datum/ai_holder/simple_mob/horing/changedAI = ai_holder
+		if(istype(ai_holder, /datum/ai_holder/polaris/simple_mob/horing))
+			var/datum/ai_holder/polaris/simple_mob/horing/changedAI = ai_holder
 			var/mobtension = 0
 			mobtension = get_tension() //Check for their tension, based on dangerous mobs and allies nearby
 			if(mobtension > 170)
@@ -139,7 +139,7 @@
 	if(beforehealth != icon_living)
 		update_icon()
 
-/datum/ai_holder/simple_mob/horing
+/datum/ai_holder/polaris/simple_mob/horing
 	hostile = TRUE //Not actually hostile but neede for a check otherwise it won't work
 	retaliate = TRUE
 	cooperative = TRUE
@@ -153,7 +153,7 @@
 	threaten_timeout = 0 SECONDS //we don't want to attack immediately when they get back, only if they don't behave after we warn
 	can_flee = FALSE //No, we don't flee, we attack back.
 
-/datum/ai_holder/simple_mob/horing/find_target(list/possible_targets, has_targets_list)
+/datum/ai_holder/polaris/simple_mob/horing/find_target(list/possible_targets, has_targets_list)
 	ai_log("find_target() : Entered.", AI_LOG_TRACE)
 	. = list()
 	if(!has_targets_list)
@@ -170,7 +170,7 @@
 	give_target(new_target)
 	return new_target
 
-/datum/ai_holder/simple_mob/horing/proc/checkthreatened(var/possible_target, var/target_threatlevel = 0)
+/datum/ai_holder/polaris/simple_mob/horing/proc/checkthreatened(var/possible_target, var/target_threatlevel = 0)
 	if(check_attacker(possible_target))
 		return TRUE
 	if(untrusting == 1 && target_threatlevel > 130 && (possible_target in range(5)))
@@ -180,7 +180,7 @@
 	else
 		return FALSE
 
-/datum/ai_holder/simple_mob/horing/threaten_target()
+/datum/ai_holder/polaris/simple_mob/horing/threaten_target()
 	holder.face_atom(target) // Constantly face the target.
 
 	if(!threatening) // First tick.

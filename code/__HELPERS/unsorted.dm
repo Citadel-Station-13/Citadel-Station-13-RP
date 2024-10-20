@@ -219,9 +219,6 @@
 			return TRUE
 	return FALSE
 
-/proc/sign(x)
-	return x!=0?x/abs(x):0
-
 /// Ultra-Fast Bresenham Line-Drawing Algorithm.
 /proc/getline(atom/M,atom/N)
 	/// Starting x coordinate.
@@ -239,9 +236,9 @@
 	/// Absolute value of y distance.
 	var/dyabs = abs(dy)
 	///Sign of x distance (+ or -).
-	var/sdx = sign(dx)
+	var/sdx = SIGN(dx)
 	///Sign of y distance (+ or -).
-	var/sdy = sign(dy)
+	var/sdy = SIGN(dy)
 	/// Counters for steps taken, setting to distance/2.
 	var/x = (dxabs >> 1)
 	/// Bit-shifting makes me l33t.  It also makes getline() unnessecarrily fast.
@@ -430,7 +427,7 @@
 	var/list/creatures = list()
 	var/list/namecounts = list()
 	for(var/mob/M in mobs)
-		if(isobserver(M) && ghostfollow && M.client?.holder && M.client.holder.fakekey && M.get_preference_toggle(/datum/game_preference_toggle/admin/stealth_hides_ghost))
+		if(isobserver(M) && ghostfollow && M.client.is_under_stealthmin() && M.get_preference_toggle(/datum/game_preference_toggle/admin/stealth_hides_ghost))
 			continue
 		var/name = M.name
 		if (name in names)
@@ -490,13 +487,6 @@
 //	for(var/mob/living/silicon/hive_mainframe/M in sortmob)
 //		GLOB.mob_list.Add(M)
 	return moblist
-
-/// Forces a variable to be positive.
-/proc/modulus(variable)
-	if(variable >= 0)
-		return variable
-	if(variable < 0)
-		return -variable
 
 /// Returns the turf located at the map edge in the specified direction relative to A.
 /proc/get_edge_target_turf(atom/A, direction) //Used for mass driver
@@ -1007,42 +997,42 @@
 				return FALSE
 		if(/obj/item/pickaxe/plasmacutter)
 			return 3800
-		if(/obj/item/melee/energy)
+		if(/obj/item/melee/transforming/energy)
 			return 3500
 		else
 			return FALSE
 
 /// Whether or not the given item counts as sharp in terms of dealing damage.
+// todo: deprecrated
 /proc/is_sharp(obj/O as obj)
 	if(!O)
 		return FALSE
-	if(O.sharp)
-		return TRUE
-	if(O.edge)
-		return TRUE
 	if(isitem(O))
 		var/obj/item/I = O
-		if(I.damage_mode & DAMAGE_MODE_SHARP)
-			return TRUE
+		return I.damage_mode & (DAMAGE_MODE_SHARP | DAMAGE_MODE_EDGE)
+	else if(istype(O, /obj/projectile))
+		var/obj/projectile/proj = O
+		return proj.damage_mode & (DAMAGE_MODE_SHARP | DAMAGE_MODE_EDGE)
 	return FALSE
 
 /// Whether or not the given item counts as cutting with an edge in terms of removing limbs.
+// todo: deprecrated
 /proc/has_edge(obj/O as obj)
 	if(!O)
 		return FALSE
-	if(O.edge)
-		return TRUE
 	if(isitem(O))
 		var/obj/item/I = O
-		if(I.damage_mode & DAMAGE_MODE_EDGE)
-			return TRUE
+		return I.damage_mode & (DAMAGE_MODE_EDGE)
+	else if(istype(O, /obj/projectile))
+		var/obj/projectile/proj = O
+		return proj.damage_mode & (DAMAGE_MODE_EDGE)
 	return FALSE
 
 /// Returns 1 if the given item is capable of popping things like balloons, inflatable barriers, or cutting police tape.
 /proc/can_puncture(obj/item/W as obj) //For the record, WHAT THE HELL IS THIS METHOD OF DOING IT?
 	if(!W)
 		return FALSE
-	if(W.sharp)
+	if(W.damage_mode & DAMAGE_MODE_SHARP)
 		return TRUE
 	return ( \
 		W.is_screwdriver()                                    || \
@@ -1091,7 +1081,7 @@ var/list/WALLITEMS = list(
 	/obj/machinery/power/apc, /obj/machinery/air_alarm, /obj/item/radio/intercom, /obj/structure/frame,
 	/obj/structure/extinguisher_cabinet, /obj/structure/reagent_dispensers/peppertank,
 	/obj/machinery/status_display, /obj/machinery/requests_console, /obj/machinery/light_switch, /obj/structure/sign,
-	/obj/machinery/newscaster, /obj/machinery/firealarm, /obj/structure/noticeboard, /obj/machinery/button/remote,
+	/obj/machinery/newscaster, /obj/machinery/fire_alarm, /obj/structure/noticeboard, /obj/machinery/button/remote,
 	/obj/machinery/computer/security/telescreen, /obj/machinery/embedded_controller/radio,
 	/obj/item/storage/secure/safe, /obj/machinery/door_timer, /obj/machinery/flasher, /obj/machinery/keycard_auth,
 	/obj/structure/mirror, /obj/structure/fireaxecabinet, /obj/machinery/computer/security/telescreen/entertainment,

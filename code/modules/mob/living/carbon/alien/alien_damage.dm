@@ -1,6 +1,6 @@
 /mob/living/carbon/alien/legacy_ex_act(severity)
 
-	if(!blinded)
+	if(has_status_effect(/datum/status_effect/sight/blindness))
 		flash_eyes()
 
 	var/b_loss = null

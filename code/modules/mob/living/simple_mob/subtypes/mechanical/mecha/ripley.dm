@@ -81,7 +81,7 @@
 	desc = "A Ripley modified by pirates. Sports additional riveted armor plating and a jury rigged machine gun in addition to its hull piercing drill."
 	catalogue_data = list(/datum/category_item/catalogue/technology/ripley)
 	icon_state = "pirate"
-	faction = "pirate"
+	iff_factions = MOB_IFF_FACTION_PIRATE
 	wreckage = /obj/structure/loot_pile/mecha/ripley/pirate
 
 	maxHealth = 250
@@ -109,7 +109,7 @@
 	name = "Xeno Ripper"
 	desc = "A Ripley modified by a desperate merc. It sports additional riveted armor plating splattered with dried xeno blood and a jury rigged machine gun in addition to its drill.\
 			A repair drone flits around the intimidating mech."
-	ai_holder_type = /datum/ai_holder/simple_mob/ranged/aggressive	//Its coming right at you!
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/ranged/aggressive	//Its coming right at you!
 	maxHealth = 170				//Less Health
 	has_repair_droid = TRUE		//But has repair drone
 	pilot_type = /mob/living/simple_mob/humanoid/possessed/merc/feral	//Possessed rig suit piloting a mech. Tremble in fear

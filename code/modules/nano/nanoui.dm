@@ -58,8 +58,6 @@
 	var/list/datum/nanoui/children = list()
 	var/datum/topic_state/state = null
 
-	var/static/datum/asset/simple/namespaced/nanoui/nano_asset
-
 /**
  * Create a new nanoui instance.
  *
@@ -75,8 +73,6 @@
  * @return /nanoui new nanoui object
  */
 /datum/nanoui/New(mob/nuser, nsrc_object, nui_key, ntemplate_filename, ntitle, nwidth, nheight, atom/nref, datum/nanoui/master_ui, datum/topic_state/state = default_state)
-	if(!istype(nano_asset))
-		nano_asset = get_asset_datum(/datum/asset/simple/namespaced/nanoui)
 	user = nuser
 	src_object = nsrc_object
 	ui_key = nui_key
@@ -100,8 +96,8 @@
 		ref = nref
 
 	add_common_assets()
-	if (nuser?.client)
-		nano_asset.send(nuser.client) //ship it
+
+	SSassets.send_asset_pack(nuser.client, /datum/asset_pack/simple/nanoui)
 
 /**
  * Use this proc to add assets which are common to (and required by) all nano uis
@@ -347,17 +343,19 @@
 
 	var/head_content = ""
 
+	var/datum/asset_pack/nanoui_pack = SSassets.ready_asset_pack(/datum/asset_pack/simple/nanoui)
+
 	for(var/filename in scripts)
-		head_content += "<script type='text/javascript' src='[SSassets.transport.get_asset_url(filename)]'></script>"
+		head_content += "<script type='text/javascript' src='[nanoui_pack.get_url(filename)]'></script>"
 
 	for(var/filename in stylesheets)
-		head_content += "<link rel='stylesheet' type='text/css' href='[SSassets.transport.get_asset_url(filename)]'>"
+		head_content += "<link rel='stylesheet' type='text/css' href='[nanoui_pack.get_url(filename)]'>"
 
 	var/template_data_json = "{}" // An empty JSON object
 	if (templates.len > 0)
 		// transform urls
 		for(var/key in templates)
-			templates[key] = SSassets.transport.get_asset_url(templates[key])
+			templates[key] = nanoui_pack.get_url(templates[key])
 		template_data_json = json_encode(templates)
 
 	var/list/send_data = get_send_data(initial_data)
@@ -420,6 +418,7 @@
 	if(status == UI_CLOSE)
 		return
 
+	SSassets.send_asset_pack(user.client, /datum/asset_pack/simple/nanoui)
 	user << browse(get_html(), "window=[window_id];[window_size][window_options]")
 	winset(user, "mapwindow.map", "focus=true") // return keyboard focus to map
 	on_close_winset()

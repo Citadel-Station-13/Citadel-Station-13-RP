@@ -7,7 +7,8 @@
 	icon_state = "reddragon"
 	icon = 'icons/mob/vore64x64.dmi'
 
-	faction = "dragon"
+	iff_factions = MOB_IFF_FACTION_BIND_TO_MAP
+
 	maxHealth = 500 // Boss
 	health = 500
 	randomized = TRUE
@@ -30,7 +31,7 @@
 
 	base_pixel_x = -16
 
-	ai_holder_type = /datum/ai_holder/simple_mob/melee
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/melee
 	say_list_type = /datum/say_list/dragonboss
 
 /mob/living/simple_mob/vore/aggressive/dragon/Process_Spacemove(var/check_drift = 0)
@@ -38,16 +39,10 @@
 
 // Activate Noms!
 /mob/living/simple_mob/vore/aggressive/dragon
-	vore_active = 1
-	vore_capacity = 2
-	vore_pounce_chance = 0 // Beat them into crit before eating.
-	vore_icons = SA_ICON_LIVING
 
 /mob/living/simple_mob/vore/aggressive/dragon/virgo3b
 	maxHealth = 200
 	health = 200
-	faction = "virgo3b"
-
 
 /datum/say_list/dragonboss
 	say_got_target = list("roars and snaps it jaws!")

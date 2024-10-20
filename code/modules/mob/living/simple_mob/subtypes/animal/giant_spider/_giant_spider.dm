@@ -69,7 +69,8 @@
 	icon_dead = "guard_dead"
 	has_eye_glow = TRUE
 
-	faction = "spiders"
+	iff_factions = MOB_IFF_FACTION_SPIDER
+
 	maxHealth = 200
 	health = 200
 	randomized = TRUE

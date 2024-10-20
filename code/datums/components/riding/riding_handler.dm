@@ -77,7 +77,7 @@
 
 /datum/component/riding_handler/Initialize()
 	. = ..()
-	if(. & COMPONENT_INCOMPATIBLE)
+	if(. == COMPONENT_INCOMPATIBLE)
 		return
 	if(!istype(parent, expected_typepath))
 		return COMPONENT_INCOMPATIBLE
@@ -127,7 +127,7 @@
 /datum/component/riding_handler/proc/signal_hook_pre_buckle_mob(atom/movable/source, mob/M, flags, mob/user, semantic)
 	SIGNAL_HANDLER_DOES_SLEEP
 	if(!check_rider(M, semantic, TRUE, user = user))
-		return COMPONENT_BLOCK_BUCKLE_OPERATION
+		return SIGNAL_RAISE_BLOCK_BUCKLE_OPERATION
 
 /datum/component/riding_handler/proc/signal_hook_pixel_offset_changed(atom/movable/source)
 	full_update_riders(null, TRUE)
@@ -161,14 +161,18 @@
 	full_update_riders(force = TRUE)
 	if(isliving(parent))
 		var/mob/living/L = parent
-		L.ai_holder?.pause_automated_movement()
+		if(istype(L.ai_holder, /datum/ai_holder/polaris))
+			var/datum/ai_holder/polaris/ai_holder = L.ai_holder
+			ai_holder?.pause_automated_movement()
 
 /datum/component/riding_handler/proc/on_rider_unbuckled(mob/rider, semantic)
 	reset_rider(rider, semantic)
 	full_update_riders(force = TRUE)
 	if(isliving(parent))
 		var/mob/living/L = parent
-		L.ai_holder?.resume_automated_movement()
+		if(istype(L.ai_holder, /datum/ai_holder/polaris))
+			var/datum/ai_holder/polaris/ai_holder = L.ai_holder
+			ai_holder?.resume_automated_movement()
 
 /datum/component/riding_handler/proc/reset_rider(mob/rider, semantic)
 	rider.reset_plane_and_layer()

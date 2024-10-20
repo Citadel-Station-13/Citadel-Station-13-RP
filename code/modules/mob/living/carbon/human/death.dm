@@ -91,11 +91,10 @@
 				B = I
 	if(B)
 		if(!B.ckey && ckey && B.controlling)
-			B.ckey = ckey
+			transfer_client_to(B)
 			B.controlling = 0
 		if(B.host_brain.ckey)
-			ckey = B.host_brain.ckey
-			B.host_brain.ckey = null
+			B.host_brain.transfer_client_to(src)
 			B.host_brain.name = "host brain"
 			B.host_brain.real_name = "host brain"
 

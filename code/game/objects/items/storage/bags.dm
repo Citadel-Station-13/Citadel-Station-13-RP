@@ -26,6 +26,8 @@
 	allow_quick_empty = TRUE
 	allow_quick_empty_via_attack_self = TRUE
 
+	worth_intrinsic = 75
+
 	var/auto_fit_weight_class_to_largest_contained = TRUE
 
 /obj/item/storage/bag/Entered(atom/movable/AM, atom/oldLoc)
@@ -77,6 +79,10 @@
 	max_combined_volume = WEIGHT_CLASS_SMALL * 21
 	insertion_whitelist = list() // any
 	insertion_blacklist = list(/obj/item/disk/nuclear)
+
+/obj/item/storage/bag/trash/initialize_storage()
+	. = ..()
+	obj_storage.update_icon_on_item_change = TRUE
 
 /obj/item/storage/bag/trash/update_icon_state()
 	switch(w_class)

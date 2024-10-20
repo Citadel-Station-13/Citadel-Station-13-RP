@@ -8,6 +8,7 @@
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 100
 	active_power_usage = 1000
+	integrity_flags = INTEGRITY_INDESTRUCTIBLE
 
 	var/list/obj/machinery/am_shielding/linked_shielding
 	var/list/obj/machinery/am_shielding/linked_cores
@@ -116,12 +117,10 @@
 	check_stability()
 	return
 
-
-/obj/machinery/power/am_control_unit/bullet_act(var/obj/projectile/Proj)
-	if(Proj.damage_flag != "bullet")
-		stability -= Proj.damage
-	return 0
-
+/obj/machinery/power/am_control_unit/on_bullet_act(obj/projectile/proj, impact_flags, list/bullet_act_args)
+	if(proj.damage_flag != ARMOR_BULLET)
+		stability -= proj.damage_force
+	return ..()
 
 /obj/machinery/power/am_control_unit/power_change()
 	..()
@@ -177,7 +176,7 @@
 	return
 
 
-/obj/machinery/power/am_control_unit/attack_hand(mob/user, list/params)
+/obj/machinery/power/am_control_unit/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(anchored)
 		interact(user)
 	return

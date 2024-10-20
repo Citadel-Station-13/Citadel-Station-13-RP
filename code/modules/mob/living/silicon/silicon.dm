@@ -112,61 +112,8 @@
 			else
 				src.bodytemp.icon_state = "temp-2"
 
-/mob/living/silicon/emp_act(severity)
-	switch(severity)
-		if(1)
-			src.take_random_targeted_damage(brute = 0, burn = 20, damage_mode = DAMAGE_MODE_INTERNAL, weapon_descriptor = "electromagnetic surge")
-			Confuse(5)
-		if(2)
-			src.take_random_targeted_damage(brute = 0, burn = 15, damage_mode = DAMAGE_MODE_INTERNAL, weapon_descriptor = "electromagnetic surge")
-			Confuse(4)
-		if(3)
-			src.take_random_targeted_damage(brute = 0, burn = 10, damage_mode = DAMAGE_MODE_INTERNAL, weapon_descriptor = "electromagnetic surge")
-			Confuse(3)
-		if(4)
-			src.take_random_targeted_damage(brute = 0, burn = 5, damage_mode = DAMAGE_MODE_INTERNAL, weapon_descriptor = "electromagnetic surge")
-			Confuse(2)
-	flash_eyes(affect_silicon = 1)
-	to_chat(src, "<span class='danger'><B>*BZZZT*</B></span>")
-	to_chat(src, "<span class='danger'>Warning: Electromagnetic pulse detected.</span>")
-	..()
-
-/mob/living/silicon/stun_effect_act(var/stun_amount, var/agony_amount, var/def_zone, var/used_weapon=null)
-	return	//immune
-
-/mob/living/silicon/electrocute_act(var/shock_damage, var/obj/source, var/siemens_coeff = 1.0, var/def_zone = null, var/stun = 1)
-	if(shock_damage > 0)
-		var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
-		s.set_up(5, 1, loc)
-		s.start()
-
-		shock_damage *= siemens_coeff	//take reduced damage
-		take_overall_damage(0, shock_damage)
-		visible_message("<span class='warning'>[src] was shocked by \the [source]!</span>", \
-			"<span class='danger'>Energy pulse detected, system damaged!</span>", \
-			"<span class='warning'>You hear an electrical crack.</span>")
-		if(prob(20))
-			afflict_stun(20 * 2)
-		return
-
-/mob/living/silicon/proc/damage_mob(var/brute = 0, var/fire = 0, var/tox = 0)
-	return
-
 /mob/living/silicon/IsAdvancedToolUser()
 	return 1
-
-/mob/living/silicon/bullet_act(var/obj/projectile/Proj)
-
-	if(!Proj.nodamage)
-		switch(Proj.damage_type)
-			if(BRUTE)
-				adjustBruteLoss(Proj.get_final_damage(src))
-			if(BURN)
-				adjustFireLoss(Proj.get_final_damage(src))
-
-	Proj.on_hit(src,2)
-	update_health()
-	return 2
 
 /mob/living/silicon/apply_effect(var/effect = 0,var/effecttype = STUN, var/blocked = 0, var/check_protection = 1)
 	return 0//The only effect that can hit them atm is flashes and they still directly edit so this works for now
@@ -267,17 +214,14 @@
 	var/sensor_type = input("Please select sensor type.", "Sensor Integration", null) as null|anything in list("Security","Medical","Disable")
 	if(isnull(sensor_type))
 		return
-	switch(hudmode)
-		if("Security")
-			get_atom_hud(DATA_HUD_SECURITY_ADVANCED).remove_hud_from(src)
-		if("Medical")
-			get_atom_hud(DATA_HUD_MEDICAL).remove_hud_from(src)
+
+	self_perspective.remove_atom_hud(source = ATOM_HUD_SOURCE_SILICON_SENSOR_AUGMENT)
 	switch(sensor_type)
 		if ("Security")
-			get_atom_hud(DATA_HUD_SECURITY_ADVANCED).add_hud_to(src)
+			self_perspective.add_atom_hud(/datum/atom_hud/data/human/security/advanced, ATOM_HUD_SOURCE_SILICON_SENSOR_AUGMENT)
 			to_chat(src,"<span class='notice'>Security records overlay enabled.</span>")
 		if ("Medical")
-			get_atom_hud(DATA_HUD_MEDICAL).add_hud_to(src)
+			self_perspective.add_atom_hud(/datum/atom_hud/data/human/medical, ATOM_HUD_SOURCE_SILICON_SENSOR_AUGMENT)
 			to_chat(src,"<span class='notice'>Life signs monitor overlay enabled.</span>")
 		if ("Disable")
 			to_chat(src,"Sensor augmentations disabled.")
@@ -302,27 +246,6 @@
 
 /mob/living/silicon/binarycheck()
 	return 1
-
-/mob/living/silicon/legacy_ex_act(severity)
-	if(!blinded)
-		flash_eyes()
-
-	switch(severity)
-		if(1.0)
-			if (stat != 2)
-				adjustBruteLoss(100)
-				adjustFireLoss(100)
-				if(!anchored)
-					gib()
-		if(2.0)
-			if (stat != 2)
-				adjustBruteLoss(60)
-				adjustFireLoss(60)
-		if(3.0)
-			if (stat != 2)
-				adjustBruteLoss(30)
-
-	update_health()
 
 /mob/living/silicon/proc/receive_alarm(var/datum/alarm_handler/alarm_handler, var/datum/alarm/alarm, was_raised)
 	if(!next_alarm_notice)

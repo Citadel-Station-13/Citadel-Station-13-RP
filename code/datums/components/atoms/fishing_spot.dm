@@ -1,12 +1,12 @@
 // A thing you can fish in
 /datum/component/fishing_spot
 	registered_type = /datum/component/fishing_spot
-	
+
 	/// Defines the probabilities and fish availibilty
 	var/datum/fish_source/fish_source
 
 /datum/component/fishing_spot/Initialize(configuration)
-	if(!isatom(parent) || ((. = ..()) & COMPONENT_INCOMPATIBLE))
+	if(!isatom(parent) || ((. = ..()) == COMPONENT_INCOMPATIBLE))
 		return COMPONENT_INCOMPATIBLE
 	if(ispath(configuration, /datum/fish_source))
 		// Create new one of the given type

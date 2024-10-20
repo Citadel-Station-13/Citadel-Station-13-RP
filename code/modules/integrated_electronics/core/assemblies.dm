@@ -55,7 +55,7 @@
 	/// Cost set to default during init if unset.
 	var/cost = 0
 
-/obj/item/electronic_assembly/GenerateTag()
+/obj/item/electronic_assembly/generate_tag()
 	tag = "assembly_[next_assembly_id++]"
 
 /obj/item/electronic_assembly/examine(mob/user, dist)
@@ -245,7 +245,7 @@
 			if(istype(held_item, /obj/item/integrated_electronics/debugger))
 				var/obj/item/integrated_electronics/debugger/D = held_item
 				if(D.accepting_refs)
-					D.afterattack(C, usr, TRUE)
+					D.afterattack(C, usr, CLICKCHAIN_HAS_PROXIMITY)
 				else
 					to_chat(usr, SPAN_WARNING("The Debugger's 'ref scanner' needs to be on."))
 			else
@@ -256,7 +256,7 @@
 			var/obj/item/integrated_circuit/C = locate(params["ref"]) in assembly_components
 			if(!istype(C))
 				return
-			C.remove(usr, TRUE, index = params["index"])
+			C.remove(usr, FALSE, index = params["index"])
 			return TRUE
 
 		if("bottom_circuit")
@@ -265,12 +265,14 @@
 				return
 			// Puts it at the bottom of our contents
 			// Note, this intentionally does *not* use forceMove, because forceMove will stop if it detects the same loc
-			ui_circuit_props.Cut(params["index"], 1 + params["index"])
+			var/index = assembly_components.Find(C)
+			ui_circuit_props.Cut(index, 1 + index)
 			ui_circuit_props.Add(list(list("name" = C.displayed_name,"ref" = REF(C),"removable" = C.removable,"input" = C.can_be_asked_input)))
-			assembly_components.Cut(params["index"], 1 + params["index"])
+			assembly_components.Cut(index, 1 + index)
 			assembly_components.Add(C)
 			C.loc = null
 			C.loc = src
+			return TRUE
 
 		if("input_selection")
 			var/obj/item/integrated_circuit/input/C = locate(params["ref"]) in assembly_components
@@ -512,7 +514,7 @@
 			return TRUE
 	return ..()
 
-/obj/item/electronic_assembly/attack_self(mob/user)
+/obj/item/electronic_assembly/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -607,7 +609,7 @@
 		return
 	..()
 
-/obj/item/electronic_assembly/attack_hand(mob/user, act_intent = user.a_intent, unarmed_attack_flags)
+/obj/item/electronic_assembly/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(anchored)
 		attack_self(user)
 		return

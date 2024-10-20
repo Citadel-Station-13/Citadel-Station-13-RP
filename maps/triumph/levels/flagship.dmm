@@ -3,6 +3,7 @@
 /obj/machinery/door/airlock/multi_tile/glass{
 	dir = 4
 	},
+/obj/map_helper/access_helper/airlock/station/centcom,
 /turf/unsimulated/floor/steel,
 /area/centcom/command)
 "ae" = (
@@ -13,6 +14,15 @@
 	icon_state = "dark"
 	},
 /area/centcom/security)
+"ag" = (
+/obj/structure/bed/chair/shuttle{
+	dir = 1
+	},
+/obj/structure/closet/walllocker/emergsuit_wall{
+	pixel_y = -26
+	},
+/turf/simulated/shuttle/floor/black,
+/area/shuttle/escape)
 "ah" = (
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/corner/blue/border,
@@ -139,15 +149,6 @@
 	icon_state = "dark"
 	},
 /area/centcom/security)
-"aB" = (
-/obj/machinery/door/airlock/centcom{
-	name = "Teleporter";
-	req_access = list(103)
-	},
-/turf/unsimulated/floor{
-	icon_state = "dark"
-	},
-/area/centcom/specops)
 "aC" = (
 /obj/structure/table/reinforced,
 /turf/unsimulated/floor{
@@ -229,16 +230,16 @@
 "aP" = (
 /obj/structure/table/rack,
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/item/ammo_magazine/m762,
-/obj/item/ammo_magazine/m762,
-/obj/item/ammo_magazine/m762,
-/obj/item/ammo_magazine/m762,
-/obj/item/ammo_magazine/m762,
-/obj/item/ammo_magazine/m762,
-/obj/item/ammo_magazine/m762/ap,
-/obj/item/ammo_magazine/m762/ap,
-/obj/item/ammo_magazine/m762/ap,
-/obj/item/ammo_magazine/m762/ap,
+/obj/item/ammo_magazine/a7_62mm,
+/obj/item/ammo_magazine/a7_62mm,
+/obj/item/ammo_magazine/a7_62mm,
+/obj/item/ammo_magazine/a7_62mm,
+/obj/item/ammo_magazine/a7_62mm,
+/obj/item/ammo_magazine/a7_62mm,
+/obj/item/ammo_magazine/a7_62mm/ap,
+/obj/item/ammo_magazine/a7_62mm/ap,
+/obj/item/ammo_magazine/a7_62mm/ap,
+/obj/item/ammo_magazine/a7_62mm/ap,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -581,12 +582,22 @@
 /obj/effect/floor_decal/corner/blue/border,
 /turf/unsimulated/floor/steel,
 /area/centcom/holding)
+"bQ" = (
+/obj/machinery/door/airlock/glass/security{
+	name = "Security";
+	req_access = list();
+	req_one_access = null
+	},
+/obj/map_helper/access_helper/airlock/station/security/equipment,
+/turf/unsimulated/floor/steel,
+/area/centcom/security)
 "bV" = (
-/obj/machinery/vending/cigarette,
 /obj/machinery/light{
 	dir = 8;
-	use_power = 0
+	use_power = 0;
+	old_wall = 1
 	},
+/obj/structure/closet/emcloset,
 /turf/simulated/shuttle/floor/darkred,
 /area/shuttle/escape)
 "bX" = (
@@ -630,9 +641,9 @@
 "cb" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/multi_tile/metal{
-	name = "Nanotrasen Offices";
-	req_one_access = list(101)
+	name = "Nanotrasen Offices"
 	},
+/obj/map_helper/access_helper/airlock/station/centcom,
 /turf/unsimulated/floor/steel,
 /area/centcom/command)
 "cc" = (
@@ -775,9 +786,11 @@
 	},
 /area/centcom/bar)
 "cA" = (
+/obj/map_helper/access_helper/airlock/station/security/general,
 /obj/machinery/door/airlock/glass/security{
 	name = "Security";
-	req_access = list()
+	req_access = list();
+	req_one_access = null
 	},
 /turf/unsimulated/floor/steel,
 /area/centcom/security)
@@ -1150,8 +1163,8 @@
 	},
 /area/centcom/medical)
 "dx" = (
-/obj/item/bedsheet/medical,
-/obj/structure/bed/padded,
+/obj/structure/medical_stand/anesthetic,
+/obj/structure/bed/roller,
 /turf/simulated/shuttle/floor,
 /area/shuttle/escape)
 "dy" = (
@@ -1219,6 +1232,7 @@
 /area/centcom/specops)
 "dI" = (
 /obj/machinery/door/airlock,
+/obj/map_helper/access_helper/airlock/station/security/department,
 /turf/unsimulated/floor/steel,
 /area/centcom/security)
 "dK" = (
@@ -1385,7 +1399,7 @@
 /obj/structure/table/rack,
 /obj/item/clothing/under/color/red,
 /obj/item/clothing/shoes/brown,
-/obj/item/melee/energy/axe,
+/obj/item/melee/transforming/energy/axe,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -1521,8 +1535,10 @@
 /area/centcom/security)
 "eG" = (
 /obj/machinery/door/airlock/security{
-	name = "Security"
+	name = "Security";
+	req_one_access = null
 	},
+/obj/map_helper/access_helper/airlock/station/security/department,
 /turf/unsimulated/floor{
 	icon_state = "steel"
 	},
@@ -1835,17 +1851,17 @@
 /area/centcom/specops)
 "fK" = (
 /obj/structure/table/rack,
-/obj/item/shield/energy,
-/obj/item/shield/energy,
-/obj/item/shield/energy,
-/obj/item/shield/energy,
-/obj/item/shield/energy,
+/obj/item/shield/transforming/energy,
+/obj/item/shield/transforming/energy,
+/obj/item/shield/transforming/energy,
+/obj/item/shield/transforming/energy,
+/obj/item/shield/transforming/energy,
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/item/melee/energy/sword,
-/obj/item/melee/energy/sword,
-/obj/item/melee/energy/sword,
-/obj/item/melee/energy/sword,
-/obj/item/melee/energy/sword,
+/obj/item/melee/transforming/energy/sword,
+/obj/item/melee/transforming/energy/sword,
+/obj/item/melee/transforming/energy/sword,
+/obj/item/melee/transforming/energy/sword,
+/obj/item/melee/transforming/energy/sword,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/structure/window/reinforced{
 	dir = 1
@@ -1957,6 +1973,13 @@
 "ga" = (
 /turf/unsimulated/wall,
 /area/centcom/living)
+"gb" = (
+/obj/structure/handrail,
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/turf/simulated/shuttle/floor/darkred,
+/area/shuttle/escape)
 "gc" = (
 /obj/structure/table/reinforced,
 /obj/item/paper_bin{
@@ -1994,6 +2017,13 @@
 	},
 /turf/unsimulated/floor/wood,
 /area/centcom/restaurant)
+"gg" = (
+/obj/structure/handrail,
+/obj/structure/closet/walllocker/emergsuit_wall{
+	pixel_y = 32
+	},
+/turf/simulated/shuttle/floor/black,
+/area/shuttle/escape)
 "gh" = (
 /obj/effect/floor_decal/corner/grey/diagonal{
 	dir = 4
@@ -2243,9 +2273,9 @@
 "gN" = (
 /obj/machinery/door/airlock/highsecurity{
 	name = "Secure Armoury Section";
-	req_access = list(58);
-	req_one_access = list(19)
+	req_one_access = null
 	},
+/obj/map_helper/access_helper/airlock/station/head_office/head_of_security,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -2267,6 +2297,15 @@
 	icon_state = "white"
 	},
 /area/centcom/medical)
+"gS" = (
+/obj/structure/handrail{
+	dir = 1
+	},
+/obj/machinery/status_display{
+	pixel_y = -32
+	},
+/turf/simulated/shuttle/floor/black,
+/area/shuttle/escape)
 "gW" = (
 /obj/structure/table/glass,
 /obj/item/storage/firstaid/regular,
@@ -2281,6 +2320,15 @@
 	icon_state = "white"
 	},
 /area/centcom/medical)
+"gX" = (
+/obj/random/firstaid,
+/obj/item/storage/firstaid/adv,
+/obj/item/storage/firstaid/bonemed,
+/obj/item/storage/firstaid/clotting,
+/obj/item/storage/firstaid/clotting,
+/obj/structure/table/reinforced,
+/turf/simulated/shuttle/floor,
+/area/shuttle/escape)
 "gY" = (
 /obj/structure/sign/nanotrasen,
 /turf/unsimulated/wall,
@@ -2295,14 +2343,14 @@
 /obj/item/ammo_casing/rocket,
 /obj/item/gun/ballistic/rocket,
 /obj/item/gun/ballistic/rocket,
-/obj/item/ammo_magazine/m556saw,
-/obj/item/ammo_magazine/m556saw,
-/obj/item/ammo_magazine/m556saw,
-/obj/item/ammo_magazine/m556saw,
-/obj/item/ammo_magazine/m556saw,
-/obj/item/ammo_magazine/m556saw,
-/obj/item/ammo_magazine/m556saw/ap,
-/obj/item/ammo_magazine/m556saw/ap,
+/obj/item/ammo_magazine/a5_56mm/saw,
+/obj/item/ammo_magazine/a5_56mm/saw,
+/obj/item/ammo_magazine/a5_56mm/saw,
+/obj/item/ammo_magazine/a5_56mm/saw,
+/obj/item/ammo_magazine/a5_56mm/saw,
+/obj/item/ammo_magazine/a5_56mm/saw,
+/obj/item/ammo_magazine/a5_56mm/saw/ap,
+/obj/item/ammo_magazine/a5_56mm/saw/ap,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -2638,6 +2686,22 @@
 	icon_state = "white"
 	},
 /area/centcom/control)
+"im" = (
+/obj/machinery/computer/communications{
+	dir = 4
+	},
+/obj/machinery/keycard_auth{
+	pixel_x = -24;
+	pixel_y = -24
+	},
+/turf/simulated/shuttle/floor/white,
+/area/shuttle/escape)
+"in" = (
+/obj/structure/handrail{
+	dir = 8
+	},
+/turf/simulated/shuttle/floor/white,
+/area/shuttle/escape)
 "ip" = (
 /obj/machinery/porta_turret/crescent{
 	density = 1
@@ -2685,6 +2749,19 @@
 	},
 /turf/unsimulated/floor/steel,
 /area/centcom/security)
+"iC" = (
+/obj/structure/fans/tiny,
+/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks{
+	id = "emergency_medical"
+	},
+/obj/machinery/door/blast/regular/open{
+	id = "emergency_shuttle_lockdown";
+	name = "Emergency Shuttle Blast Door"
+	},
+/turf/unsimulated/floor{
+	name = "plating"
+	},
+/area/shuttle/escape)
 "iE" = (
 /turf/unsimulated/floor/steel{
 	icon_state = "white"
@@ -2750,8 +2827,9 @@
 /obj/machinery/door/airlock/command{
 	id_tag = "HoSdoor";
 	name = "Head of Security";
-	req_access = list(58)
+	req_one_access = null
 	},
+/obj/map_helper/access_helper/airlock/station/head_office/head_of_security,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -2847,14 +2925,14 @@
 /obj/structure/window/reinforced{
 	dir = 4
 	},
-/obj/item/ammo_magazine/m556/ap,
-/obj/item/ammo_magazine/m556/ap,
-/obj/item/ammo_magazine/m556,
-/obj/item/ammo_magazine/m556,
-/obj/item/ammo_magazine/m556,
-/obj/item/ammo_magazine/m556,
-/obj/item/ammo_magazine/m556,
-/obj/item/ammo_magazine/m556,
+/obj/item/ammo_magazine/a5_56mm/ap,
+/obj/item/ammo_magazine/a5_56mm/ap,
+/obj/item/ammo_magazine/a5_56mm,
+/obj/item/ammo_magazine/a5_56mm,
+/obj/item/ammo_magazine/a5_56mm,
+/obj/item/ammo_magazine/a5_56mm,
+/obj/item/ammo_magazine/a5_56mm,
+/obj/item/ammo_magazine/a5_56mm,
 /obj/item/gun/ballistic/automatic/sts35,
 /obj/item/gun/ballistic/automatic/sts35,
 /turf/unsimulated/floor{
@@ -2889,8 +2967,10 @@
 /area/centcom/bar)
 "jq" = (
 /obj/machinery/door/airlock/security{
-	name = "Security"
+	name = "Security";
+	req_one_access = null
 	},
+/obj/map_helper/access_helper/airlock/station/security/department,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -3000,12 +3080,12 @@
 /area/centcom/main_hall)
 "jJ" = (
 /obj/structure/table/rack,
-/obj/item/gun/energy/pulse_rifle,
-/obj/item/gun/energy/pulse_rifle,
-/obj/item/gun/energy/pulse_rifle,
-/obj/item/gun/energy/pulse_rifle,
-/obj/item/gun/energy/pulse_rifle,
-/obj/item/gun/energy/pulse_rifle,
+/obj/item/gun/energy/nt_pulse/rifle,
+/obj/item/gun/energy/nt_pulse/rifle,
+/obj/item/gun/energy/nt_pulse/rifle,
+/obj/item/gun/energy/nt_pulse/rifle,
+/obj/item/gun/energy/nt_pulse/rifle,
+/obj/item/gun/energy/nt_pulse/rifle,
 /obj/item/storage/secure/briefcase/nsfw_pack,
 /turf/unsimulated/floor{
 	icon_state = "dark"
@@ -3167,8 +3247,9 @@
 "kk" = (
 /obj/machinery/door/airlock/centcom{
 	name = "Special Operations";
-	req_access = list(103)
+	req_one_access = null
 	},
+/obj/map_helper/access_helper/airlock/station/centcom/ert,
 /turf/unsimulated/floor/steel,
 /area/centcom/specops)
 "kl" = (
@@ -3357,6 +3438,15 @@
 	},
 /turf/unsimulated/floor/steel,
 /area/centcom/security)
+"kV" = (
+/obj/machinery/door/airlock/glass/security{
+	name = "Security";
+	req_access = list();
+	req_one_access = null
+	},
+/obj/map_helper/access_helper/airlock/station/security/department,
+/turf/unsimulated/floor/steel,
+/area/centcom/security)
 "kW" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -3364,6 +3454,19 @@
 /obj/spawner/window/low_wall/borosillicate/full/firelocks,
 /turf/simulated/floor/plating,
 /area/shuttle/specops/engine)
+"kX" = (
+/obj/structure/handrail{
+	dir = 1
+	},
+/obj/machinery/door/window/brigdoor/southright{
+	dir = 8;
+	name = "holding cell"
+	},
+/obj/machinery/status_display{
+	pixel_y = -32
+	},
+/turf/simulated/shuttle/floor/darkred,
+/area/shuttle/escape)
 "kY" = (
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/borderfloor/corner2{
@@ -3427,6 +3530,13 @@
 	},
 /turf/unsimulated/floor/steel,
 /area/centcom/evac)
+"lo" = (
+/obj/structure/handrail,
+/obj/machinery/vending/wallmed1/public{
+	pixel_y = 32
+	},
+/turf/simulated/shuttle/floor/black,
+/area/shuttle/escape)
 "lp" = (
 /obj/machinery/computer/card{
 	dir = 4
@@ -3678,9 +3788,10 @@
 /area/centcom/control)
 "lS" = (
 /obj/machinery/door/airlock/centcom{
-	name = "Commander";
-	req_access = list(103)
+	name = "Teleporter";
+	req_one_access = null
 	},
+/obj/map_helper/access_helper/airlock/station/centcom/ert,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -3711,8 +3822,9 @@
 "lY" = (
 /obj/machinery/door/airlock/glass/security{
 	name = "Warden's Office";
-	req_access = list(3)
+	req_one_access = null
 	},
+/obj/map_helper/access_helper/airlock/station/security/armory,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -3726,6 +3838,12 @@
 	icon_state = "carpet"
 	},
 /area/centcom/command)
+"mb" = (
+/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks{
+	id = "emergency_cockpit"
+	},
+/turf/simulated/floor,
+/area/shuttle/escape)
 "md" = (
 /obj/structure/window/reinforced{
 	dir = 1
@@ -3872,9 +3990,8 @@
 	},
 /area/centcom/security)
 "mA" = (
-/obj/machinery/optable,
-/obj/machinery/oxygen_pump/anesthetic{
-	pixel_y = 29
+/obj/machinery/sleep_console{
+	dir = 4
 	},
 /turf/simulated/shuttle/floor,
 /area/shuttle/escape)
@@ -3956,8 +4073,10 @@
 	},
 /area/centcom/specops)
 "mE" = (
-/obj/spawner/window/low_wall/reinforced/full,
 /obj/structure/fans/tiny,
+/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks{
+	id = "emergency_medical"
+	},
 /turf/unsimulated/floor{
 	name = "plating"
 	},
@@ -3966,14 +4085,24 @@
 /obj/machinery/door/airlock/vault/bolted{
 	id_tag = "the_end";
 	name = "RESTRICTED";
-	req_access = list(109)
+	req_one_access = null
 	},
 /obj/machinery/door/blast/regular{
 	id = "ADMINFUN";
 	name = "RESTRICTED"
 	},
+/obj/map_helper/access_helper/airlock/station/command/vault,
 /turf/simulated/floor/reinforced,
 /area/centcom/command)
+"mG" = (
+/obj/structure/bed/chair/shuttle{
+	dir = 8
+	},
+/obj/machinery/status_display{
+	pixel_y = -32
+	},
+/turf/simulated/shuttle/floor/white,
+/area/shuttle/escape)
 "mH" = (
 /obj/effect/floor_decal/corner/grey/diagonal{
 	dir = 4
@@ -4070,6 +4199,18 @@
 	icon_state = "dark"
 	},
 /area/centcom/specops)
+"mU" = (
+/obj/item/defib_kit,
+/obj/structure/table/reinforced,
+/obj/item/storage/firstaid/surgery,
+/obj/item/reagent_containers/spray/cleaner{
+	desc = "Someone has crossed out the Space from Space Cleaner and written in Surgery. 'Do not remove under punishment of death!!!' is scrawled on the back.";
+	name = "Surgery Cleaner";
+	pixel_x = 2;
+	pixel_y = 2
+	},
+/turf/simulated/shuttle/floor,
+/area/shuttle/escape)
 "mV" = (
 /obj/structure/bed/chair/office/dark{
 	dir = 4
@@ -4097,8 +4238,10 @@
 "na" = (
 /obj/machinery/door/airlock/glass/security{
 	name = "Security";
-	req_access = list()
+	req_access = list();
+	req_one_access = null
 	},
+/obj/map_helper/access_helper/airlock/station/security/general,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -4312,17 +4455,17 @@
 /area/centcom/security)
 "nz" = (
 /obj/structure/table/rack,
-/obj/item/shield/energy,
-/obj/item/shield/energy,
-/obj/item/shield/energy,
-/obj/item/shield/energy,
-/obj/item/shield/energy,
+/obj/item/shield/transforming/energy,
+/obj/item/shield/transforming/energy,
+/obj/item/shield/transforming/energy,
+/obj/item/shield/transforming/energy,
+/obj/item/shield/transforming/energy,
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/item/melee/energy/sword,
-/obj/item/melee/energy/sword,
-/obj/item/melee/energy/sword,
-/obj/item/melee/energy/sword,
-/obj/item/melee/energy/sword,
+/obj/item/melee/transforming/energy/sword,
+/obj/item/melee/transforming/energy/sword,
+/obj/item/melee/transforming/energy/sword,
+/obj/item/melee/transforming/energy/sword,
+/obj/item/melee/transforming/energy/sword,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -4346,11 +4489,22 @@
 	icon_state = "dark"
 	},
 /area/centcom/security)
+"nH" = (
+/obj/machinery/door/airlock/security{
+	name = "Security";
+	req_one_access = null
+	},
+/obj/map_helper/access_helper/airlock/station/security/department,
+/turf/unsimulated/floor{
+	icon_state = "dark"
+	},
+/area/centcom/security)
 "nI" = (
 /obj/machinery/door/airlock/glass/research{
 	name = "Robotics Lab";
-	req_access = list(29,47)
+	req_one_access = null
 	},
+/obj/map_helper/access_helper/airlock/station/science/robotics,
 /turf/unsimulated/floor/steel{
 	icon_state = "white"
 	},
@@ -4367,9 +4521,9 @@
 "nL" = (
 /obj/machinery/door/airlock/research{
 	id_tag = "researchdoor";
-	name = "Research Division Access";
-	req_access = list(47)
+	name = "Research Division Access"
 	},
+/obj/map_helper/access_helper/airlock/station/science/department,
 /turf/unsimulated/floor/steel{
 	icon_state = "white"
 	},
@@ -4431,13 +4585,20 @@
 	icon_state = "white"
 	},
 /area/centcom/control)
+"nU" = (
+/obj/structure/bed/chair/shuttle,
+/obj/structure/closet/walllocker/emergsuit_wall{
+	pixel_y = 32
+	},
+/turf/simulated/shuttle/floor/darkred,
+/area/shuttle/escape)
 "nV" = (
 /obj/structure/table/rack,
 /obj/structure/window/reinforced,
-/obj/item/ammo_magazine/m9mmR/saber,
-/obj/item/ammo_magazine/m9mmR/saber,
-/obj/item/ammo_magazine/m9mmR/saber,
-/obj/item/ammo_magazine/m9mmR/saber,
+/obj/item/ammo_magazine/a9mm/advanced_smg,
+/obj/item/ammo_magazine/a9mm/advanced_smg,
+/obj/item/ammo_magazine/a9mm/advanced_smg,
+/obj/item/ammo_magazine/a9mm/advanced_smg,
 /obj/item/silencer,
 /obj/item/silencer,
 /obj/item/silencer,
@@ -4586,6 +4747,15 @@
 	icon_state = "white"
 	},
 /area/centcom/bathroom)
+"ov" = (
+/obj/structure/table/reinforced,
+/obj/item/radio{
+	pixel_x = 2;
+	pixel_y = 2
+	},
+/obj/item/radio,
+/turf/simulated/shuttle/floor/darkred,
+/area/shuttle/escape)
 "ox" = (
 /obj/structure/flora/ausbushes/ywflowers,
 /turf/simulated/floor/outdoors/grass/heavy/interior,
@@ -4602,6 +4772,13 @@
 	icon_state = "white"
 	},
 /area/centcom/medical)
+"oz" = (
+/obj/structure/bed/chair/shuttle,
+/obj/structure/closet/walllocker/emergsuit_wall{
+	pixel_y = 32
+	},
+/turf/simulated/shuttle/floor/black,
+/area/shuttle/escape)
 "oA" = (
 /obj/structure/table/standard,
 /obj/effect/floor_decal/borderfloor{
@@ -4659,7 +4836,11 @@
 /area/centcom/living)
 "oL" = (
 /obj/structure/fans/tiny,
-/obj/spawner/window/low_wall/reinforced/full,
+/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/machinery/door/blast/regular/open{
+	id = "emergency_shuttle_lockdown";
+	name = "Emergency Shuttle Blast Door"
+	},
 /turf/simulated/floor,
 /area/shuttle/escape)
 "oN" = (
@@ -4701,6 +4882,12 @@
 	},
 /turf/unsimulated/floor/steel,
 /area/centcom/control)
+"pa" = (
+/obj/structure/handrail{
+	dir = 4
+	},
+/turf/simulated/shuttle/floor/white,
+/area/shuttle/escape)
 "pb" = (
 /obj/machinery/status_display{
 	pixel_y = 29
@@ -4710,16 +4897,16 @@
 "pc" = (
 /obj/structure/table/rack,
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/item/ammo_magazine/m9mml,
-/obj/item/ammo_magazine/m9mml,
-/obj/item/ammo_magazine/m9mml,
-/obj/item/ammo_magazine/m9mml,
-/obj/item/ammo_magazine/m9mml,
-/obj/item/ammo_magazine/m9mml,
-/obj/item/ammo_magazine/m9mml/ap,
-/obj/item/ammo_magazine/m9mml/ap,
-/obj/item/ammo_magazine/m9mml/ap,
-/obj/item/ammo_magazine/m9mml/ap,
+/obj/item/ammo_magazine/a9mm/large,
+/obj/item/ammo_magazine/a9mm/large,
+/obj/item/ammo_magazine/a9mm/large,
+/obj/item/ammo_magazine/a9mm/large,
+/obj/item/ammo_magazine/a9mm/large,
+/obj/item/ammo_magazine/a9mm/large,
+/obj/item/ammo_magazine/a9mm/large/ap,
+/obj/item/ammo_magazine/a9mm/large/ap,
+/obj/item/ammo_magazine/a9mm/large/ap,
+/obj/item/ammo_magazine/a9mm/large/ap,
 /obj/machinery/button/remote/blast_door{
 	id = "ArmouryC4";
 	name = "Armoury Access";
@@ -4745,16 +4932,16 @@
 /obj/structure/table/rack,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/machinery/camera/network/crescent,
-/obj/item/ammo_magazine/m57x28mmp90,
-/obj/item/ammo_magazine/m57x28mmp90,
-/obj/item/ammo_magazine/m57x28mmp90,
-/obj/item/ammo_magazine/m57x28mmp90,
-/obj/item/ammo_magazine/m57x28mmp90,
-/obj/item/ammo_magazine/m57x28mmp90,
-/obj/item/ammo_magazine/m57x28mmp90,
-/obj/item/ammo_magazine/m57x28mmp90,
-/obj/item/ammo_magazine/m57x28mmp90,
-/obj/item/ammo_magazine/m57x28mmp90,
+/obj/item/ammo_magazine/a5_7mm/p90,
+/obj/item/ammo_magazine/a5_7mm/p90,
+/obj/item/ammo_magazine/a5_7mm/p90,
+/obj/item/ammo_magazine/a5_7mm/p90,
+/obj/item/ammo_magazine/a5_7mm/p90,
+/obj/item/ammo_magazine/a5_7mm/p90,
+/obj/item/ammo_magazine/a5_7mm/p90,
+/obj/item/ammo_magazine/a5_7mm/p90,
+/obj/item/ammo_magazine/a5_7mm/p90,
+/obj/item/ammo_magazine/a5_7mm/p90,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -4857,6 +5044,14 @@
 /obj/structure/flora/pottedplant,
 /turf/unsimulated/floor/steel,
 /area/centcom/main_hall)
+"pA" = (
+/obj/machinery/door/airlock/security{
+	name = "Security";
+	req_one_access = null
+	},
+/obj/map_helper/access_helper/airlock/station/security/general,
+/turf/unsimulated/floor/steel,
+/area/centcom/security)
 "pB" = (
 /obj/structure/table/standard,
 /obj/effect/floor_decal/borderfloor,
@@ -5089,6 +5284,24 @@
 	icon_state = "dark"
 	},
 /area/centcom/specops)
+"qk" = (
+/obj/structure/closet/walllocker/autolok_wall{
+	pixel_y = 32
+	},
+/obj/machinery/light{
+	dir = 4;
+	use_power = 0
+	},
+/turf/simulated/shuttle/floor/white,
+/area/shuttle/escape)
+"qm" = (
+/obj/machinery/light{
+	dir = 4;
+	use_power = 0
+	},
+/obj/machinery/vending/fitness,
+/turf/simulated/shuttle/floor/darkred,
+/area/shuttle/escape)
 "qn" = (
 /obj/machinery/door/firedoor,
 /turf/unsimulated/floor/steel,
@@ -5205,6 +5418,13 @@
 	icon_state = "white"
 	},
 /area/centcom/medical)
+"qH" = (
+/obj/structure/handrail,
+/obj/machinery/status_display{
+	pixel_y = 32
+	},
+/turf/simulated/shuttle/floor,
+/area/shuttle/escape)
 "qI" = (
 /obj/structure/table/rack,
 /obj/item/hardsuit_module/chem_dispenser/combat,
@@ -5348,6 +5568,15 @@
 	icon_state = "dark"
 	},
 /area/centcom/security)
+"rn" = (
+/obj/machinery/door/airlock/glass/security{
+	name = "Security";
+	req_access = list();
+	req_one_access = null
+	},
+/obj/map_helper/access_helper/airlock/station/security/general,
+/turf/unsimulated/floor/steel,
+/area/centcom/security)
 "ro" = (
 /obj/machinery/vending/hydronutrients,
 /obj/effect/floor_decal/borderfloorblack{
@@ -5446,6 +5675,19 @@
 	dir = 9
 	},
 /obj/machinery/camera/network/crescent,
+/turf/unsimulated/floor/steel,
+/area/centcom/security)
+"rz" = (
+/obj/effect/floor_decal/borderfloor/corner{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/blue/bordercorner{
+	dir = 4
+	},
+/obj/machinery/door/window/brigdoor/northright{
+	req_access = list(63);
+	req_one_access = list(1)
+	},
 /turf/unsimulated/floor/steel,
 /area/centcom/security)
 "rA" = (
@@ -5821,8 +6063,9 @@
 	},
 /obj/machinery/door/airlock/hatch{
 	name = "Engine Bay";
-	req_one_access = list(103)
+	req_one_access = null
 	},
+/obj/map_helper/access_helper/airlock/station/centcom/ert,
 /turf/simulated/floor/plating,
 /area/shuttle/specops/engine)
 "sw" = (
@@ -6149,7 +6392,10 @@
 /turf/unsimulated/floor/steel,
 /area/centcom/main_hall)
 "tp" = (
-/obj/machinery/door/airlock/glass_external,
+/obj/map_helper/access_helper/airlock/station/external_airlock,
+/obj/machinery/door/airlock/glass_external{
+	req_one_access = null
+	},
 /turf/unsimulated/floor/steel,
 /area/centcom/evac)
 "tr" = (
@@ -6166,16 +6412,16 @@
 "ts" = (
 /obj/structure/table/rack,
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/item/ammo_magazine/m9mmt,
-/obj/item/ammo_magazine/m9mmt,
-/obj/item/ammo_magazine/m9mmt,
-/obj/item/ammo_magazine/m9mmt,
-/obj/item/ammo_magazine/m9mmt,
-/obj/item/ammo_magazine/m9mmt,
-/obj/item/ammo_magazine/m9mmt,
-/obj/item/ammo_magazine/m9mmt,
-/obj/item/ammo_magazine/m9mmt,
-/obj/item/ammo_magazine/m9mmt,
+/obj/item/ammo_magazine/a9mm/top_mount,
+/obj/item/ammo_magazine/a9mm/top_mount,
+/obj/item/ammo_magazine/a9mm/top_mount,
+/obj/item/ammo_magazine/a9mm/top_mount,
+/obj/item/ammo_magazine/a9mm/top_mount,
+/obj/item/ammo_magazine/a9mm/top_mount,
+/obj/item/ammo_magazine/a9mm/top_mount,
+/obj/item/ammo_magazine/a9mm/top_mount,
+/obj/item/ammo_magazine/a9mm/top_mount,
+/obj/item/ammo_magazine/a9mm/top_mount,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -6401,8 +6647,10 @@
 "uq" = (
 /obj/machinery/door/airlock/security{
 	id_tag = "front";
-	name = "Security"
+	name = "Security";
+	req_one_access = null
 	},
+/obj/map_helper/access_helper/airlock/station/security/department,
 /turf/simulated/shuttle/floor/darkred,
 /area/shuttle/escape)
 "uu" = (
@@ -6569,6 +6817,13 @@
 /obj/item/clothing/glasses/welding,
 /turf/unsimulated/floor/steel,
 /area/centcom/control)
+"uV" = (
+/obj/structure/closet/hydrant{
+	dir = 4;
+	pixel_x = -32
+	},
+/turf/simulated/shuttle/floor/white,
+/area/shuttle/escape)
 "uW" = (
 /obj/item/storage/belt/security/tactical,
 /obj/item/storage/belt/security/tactical,
@@ -6583,9 +6838,9 @@
 /area/centcom/specops)
 "uY" = (
 /obj/machinery/door/airlock/freezer{
-	name = "Kitchen cold room";
-	req_access = list(28)
+	name = "Kitchen cold room"
 	},
+/obj/map_helper/access_helper/airlock/station/service/kitchen,
 /turf/unsimulated/floor/steel{
 	icon_state = "white"
 	},
@@ -6812,6 +7067,10 @@
 /obj/machinery/light/flamp/noshade,
 /turf/unsimulated/floor/steel,
 /area/centcom/evac)
+"vR" = (
+/obj/machinery/vending/mre,
+/turf/simulated/shuttle/floor/darkred,
+/area/shuttle/escape)
 "vS" = (
 /obj/structure/sign/greencross,
 /turf/unsimulated/wall,
@@ -7316,6 +7575,17 @@
 	},
 /turf/unsimulated/floor/steel,
 /area/centcom/control)
+"xj" = (
+/obj/structure/fans/tiny,
+/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks{
+	id = "emergency_security"
+	},
+/obj/machinery/door/blast/regular/open{
+	id = "emergency_shuttle_lockdown";
+	name = "Emergency Shuttle Blast Door"
+	},
+/turf/simulated/floor,
+/area/shuttle/escape)
 "xk" = (
 /obj/machinery/computer/crew{
 	dir = 4
@@ -7336,6 +7606,21 @@
 	},
 /turf/unsimulated/floor/steel,
 /area/centcom/security)
+"xn" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/blue/border{
+	dir = 4
+	},
+/obj/machinery/door/airlock/glass/security{
+	name = "Security";
+	req_access = list();
+	req_one_access = null
+	},
+/obj/map_helper/access_helper/airlock/station/security/department,
+/turf/unsimulated/floor/steel,
+/area/centcom/security)
 "xp" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 1
@@ -7349,11 +7634,19 @@
 /obj/item/clothing/suit/armor/tdome/red,
 /obj/item/clothing/head/helmet/thunderdome,
 /obj/item/melee/baton/loaded,
-/obj/item/melee/energy/sword,
+/obj/item/melee/transforming/energy/sword,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
 /area/tdome/tdome1)
+"xv" = (
+/obj/machinery/door/airlock/centcom{
+	name = "General Access";
+	req_one_access = null
+	},
+/obj/map_helper/access_helper/airlock/station/centcom,
+/turf/unsimulated/floor/steel,
+/area/centcom/control)
 "xw" = (
 /obj/item/storage/box/flashshells,
 /obj/item/storage/box/flashshells,
@@ -7424,18 +7717,18 @@
 /area/centcom/control)
 "xJ" = (
 /obj/structure/closet/crate/medical,
-/obj/item/reagent_containers/food/snacks/liquidfood,
-/obj/item/reagent_containers/food/snacks/liquidfood,
-/obj/item/reagent_containers/food/snacks/liquidfood,
-/obj/item/reagent_containers/food/snacks/liquidfood,
-/obj/item/reagent_containers/food/snacks/liquidfood,
-/obj/item/reagent_containers/food/snacks/liquidfood,
-/obj/item/reagent_containers/food/snacks/liquidfood,
-/obj/item/reagent_containers/food/snacks/liquidfood,
-/obj/item/reagent_containers/food/snacks/liquidfood,
-/obj/item/reagent_containers/food/snacks/liquidfood,
-/obj/item/reagent_containers/food/snacks/liquidfood,
-/obj/item/reagent_containers/food/snacks/liquidfood,
+/obj/item/reagent_containers/food/snacks/liquid,
+/obj/item/reagent_containers/food/snacks/liquid,
+/obj/item/reagent_containers/food/snacks/liquid,
+/obj/item/reagent_containers/food/snacks/liquid,
+/obj/item/reagent_containers/food/snacks/liquid,
+/obj/item/reagent_containers/food/snacks/liquid,
+/obj/item/reagent_containers/food/snacks/liquid,
+/obj/item/reagent_containers/food/snacks/liquid,
+/obj/item/reagent_containers/food/snacks/liquid,
+/obj/item/reagent_containers/food/snacks/liquid,
+/obj/item/reagent_containers/food/snacks/liquid,
+/obj/item/reagent_containers/food/snacks/liquid,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -7730,6 +8023,19 @@
 	icon_state = "dark"
 	},
 /area/centcom/command)
+"yI" = (
+/obj/effect/floor_decal/borderfloor/corner{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/blue/bordercorner{
+	dir = 1
+	},
+/obj/machinery/door/window/brigdoor/northleft{
+	req_access = list(63);
+	req_one_access = list(1)
+	},
+/turf/unsimulated/floor/steel,
+/area/centcom/security)
 "yJ" = (
 /obj/structure/table/reinforced,
 /obj/machinery/computer/skills,
@@ -7795,8 +8101,9 @@
 "yY" = (
 /obj/machinery/door/airlock/medical{
 	name = "Operating Theatre";
-	req_access = list(45)
+	req_one_access = null
 	},
+/obj/map_helper/access_helper/airlock/station/medical/department,
 /turf/unsimulated/floor/steel{
 	icon_state = "white"
 	},
@@ -7828,8 +8135,10 @@
 /area/centcom/medical)
 "zb" = (
 /obj/machinery/door/airlock/security{
-	name = "Security"
+	name = "Security";
+	req_one_access = null
 	},
+/obj/map_helper/access_helper/airlock/station/security/department,
 /turf/unsimulated/floor/steel,
 /area/centcom/security)
 "zc" = (
@@ -7964,7 +8273,7 @@
 /obj/structure/table/rack,
 /obj/item/clothing/under/color/green,
 /obj/item/clothing/shoes/brown,
-/obj/item/melee/energy/axe,
+/obj/item/melee/transforming/energy/axe,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -8112,6 +8421,7 @@
 /obj/machinery/door/airlock/glass{
 	name = "Brig Dormitories"
 	},
+/obj/map_helper/access_helper/airlock/station/security/general,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -8277,8 +8587,9 @@
 "Au" = (
 /obj/machinery/door/airlock/centcom{
 	name = "General Access";
-	req_access = list(101)
+	req_one_access = null
 	},
+/obj/map_helper/access_helper/airlock/station/centcom,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -8294,9 +8605,11 @@
 /turf/unsimulated/floor/steel,
 /area/centcom/control)
 "AA" = (
-/obj/structure/table/steel,
-/obj/item/defib_kit,
-/turf/simulated/shuttle/floor,
+/obj/structure/fans/tiny,
+/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks{
+	id = "emergency_medical"
+	},
+/turf/simulated/floor,
 /area/shuttle/escape)
 "AB" = (
 /obj/structure/table/standard,
@@ -8759,9 +9072,9 @@
 	dir = 4
 	},
 /obj/machinery/door/airlock/glass{
-	name = "Kitchen";
-	req_access = list(28)
+	name = "Kitchen"
 	},
+/obj/map_helper/access_helper/airlock/station/service/kitchen,
 /turf/unsimulated/floor/steel{
 	icon_state = "white"
 	},
@@ -8769,8 +9082,9 @@
 "Cl" = (
 /obj/machinery/door/airlock/glass/research{
 	name = "Research and Development";
-	req_access = list(7)
+	req_one_access = null
 	},
+/obj/map_helper/access_helper/airlock/station/science/research_lab,
 /turf/unsimulated/floor/steel{
 	icon_state = "white"
 	},
@@ -8821,8 +9135,9 @@
 "Cw" = (
 /obj/machinery/door/airlock/medical{
 	name = "Shuttle Medbay";
-	req_access = list(45)
+	req_one_access = null
 	},
+/obj/map_helper/access_helper/airlock/station/medical/department,
 /turf/simulated/shuttle/floor,
 /area/shuttle/escape)
 "Cx" = (
@@ -8880,8 +9195,9 @@
 	},
 /obj/machinery/door/airlock/hatch{
 	name = "Cockpit";
-	req_one_access = list(103)
+	req_one_access = null
 	},
+/obj/map_helper/access_helper/airlock/station/centcom/ert,
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/specops/cockpit)
 "CD" = (
@@ -9103,6 +9419,14 @@
 	},
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/escape)
+"Dp" = (
+/obj/machinery/button/windowtint{
+	id = "emergency_medical";
+	pixel_x = 24;
+	pixel_y = -24
+	},
+/turf/simulated/shuttle/floor,
+/area/shuttle/escape)
 "Dq" = (
 /obj/machinery/telecomms/processor/preset_cent,
 /turf/unsimulated/floor{
@@ -9300,6 +9624,12 @@
 	},
 /turf/unsimulated/floor/steel,
 /area/centcom/evac)
+"Ef" = (
+/obj/structure/shuttle/engine/propulsion{
+	dir = 1
+	},
+/turf/simulated/shuttle/plating/airless/carry,
+/area/shuttle/escape)
 "Eg" = (
 /obj/structure/sign/securearea{
 	name = "\improper ARMORY";
@@ -9619,6 +9949,17 @@
 /obj/machinery/portable_atmospherics/powered/scrubber/huge/stationary/shuttle,
 /turf/unsimulated/floor/steel,
 /area/centcom/evac)
+"Fl" = (
+/obj/structure/fans/tiny,
+/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks{
+	id = "emergency_cockpit"
+	},
+/obj/machinery/door/blast/regular/open{
+	id = "emergency_shuttle_lockdown";
+	name = "Emergency Shuttle Blast Door"
+	},
+/turf/simulated/floor,
+/area/shuttle/escape)
 "Fm" = (
 /obj/structure/window/reinforced,
 /turf/unsimulated/floor/steel,
@@ -9709,7 +10050,8 @@
 	},
 /obj/machinery/light{
 	dir = 4;
-	use_power = 0
+	use_power = 0;
+	old_wall = 1
 	},
 /turf/simulated/shuttle/floor/darkred,
 /area/shuttle/escape)
@@ -9844,9 +10186,13 @@
 /turf/unsimulated/floor/steel,
 /area/centcom/main_hall)
 "FX" = (
-/obj/structure/bed/chair/shuttle{
-	dir = 1
+/obj/machinery/button/remote/blast_door{
+	id = "emergency_shuttle_lockdown";
+	name = "Emergency Blast Doors";
+	pixel_x = -24;
+	pixel_y = -7
 	},
+/obj/machinery/pointdefense_control,
 /turf/simulated/shuttle/floor/white,
 /area/shuttle/escape)
 "FY" = (
@@ -9909,6 +10255,10 @@
 	icon_state = "white"
 	},
 /area/centcom/medical)
+"Gg" = (
+/obj/structure/handrail,
+/turf/simulated/shuttle/floor/black,
+/area/shuttle/escape)
 "Gh" = (
 /obj/machinery/mecha_part_fabricator,
 /turf/unsimulated/floor/steel,
@@ -9950,8 +10300,9 @@
 "Go" = (
 /obj/machinery/door/airlock/glass/security{
 	name = "Security Processing";
-	req_access = list(1)
+	req_one_access = null
 	},
+/obj/map_helper/access_helper/airlock/station/security/general,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -10039,13 +10390,15 @@
 	dir = 4
 	},
 /obj/map_helper/airlock/door/int_door,
-/obj/machinery/door/airlock/glass_external{
-	frequency = null;
-	name = "Ship Hatch"
-	},
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
+/obj/machinery/door/airlock/glass_external{
+	frequency = null;
+	name = "Ship Hatch";
+	req_one_access = null
+	},
+/obj/map_helper/access_helper/airlock/station/external_airlock,
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/specops/general)
 "GC" = (
@@ -10092,7 +10445,10 @@
 	},
 /area/centcom/medical)
 "GJ" = (
-/obj/machinery/door/airlock/glass_external,
+/obj/machinery/door/airlock/glass_external{
+	req_one_access = null
+	},
+/obj/map_helper/access_helper/airlock/station/external_airlock,
 /turf/unsimulated/floor/steel,
 /area/centcom/terminal)
 "GK" = (
@@ -10158,18 +10514,18 @@
 "Hg" = (
 /obj/structure/table/rack,
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/item/ammo_magazine/m762,
-/obj/item/ammo_magazine/m762,
-/obj/item/ammo_magazine/m762,
-/obj/item/ammo_magazine/m762,
-/obj/item/ammo_magazine/m762,
-/obj/item/ammo_magazine/m762,
-/obj/item/ammo_magazine/m762,
-/obj/item/ammo_magazine/m762,
-/obj/item/ammo_magazine/m762/ap,
-/obj/item/ammo_magazine/m762/ap,
-/obj/item/ammo_magazine/m762/ap,
-/obj/item/ammo_magazine/m762/ap,
+/obj/item/ammo_magazine/a7_62mm,
+/obj/item/ammo_magazine/a7_62mm,
+/obj/item/ammo_magazine/a7_62mm,
+/obj/item/ammo_magazine/a7_62mm,
+/obj/item/ammo_magazine/a7_62mm,
+/obj/item/ammo_magazine/a7_62mm,
+/obj/item/ammo_magazine/a7_62mm,
+/obj/item/ammo_magazine/a7_62mm,
+/obj/item/ammo_magazine/a7_62mm/ap,
+/obj/item/ammo_magazine/a7_62mm/ap,
+/obj/item/ammo_magazine/a7_62mm/ap,
+/obj/item/ammo_magazine/a7_62mm/ap,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -10288,8 +10644,9 @@
 /obj/machinery/door/airlock/command{
 	id_tag = "HoSdoor";
 	name = "Head of Security";
-	req_access = list(58)
+	req_one_access = null
 	},
+/obj/map_helper/access_helper/airlock/station/head_office/head_of_security,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -10354,8 +10711,10 @@
 /area/centcom/medical)
 "HQ" = (
 /obj/machinery/door/airlock/glass/medical{
-	name = "Virology Laboratory"
+	name = "Virology Laboratory";
+	req_one_access = null
 	},
+/obj/map_helper/access_helper/airlock/station/medical/virology,
 /turf/unsimulated/floor/steel{
 	icon_state = "white"
 	},
@@ -10452,8 +10811,9 @@
 "Ia" = (
 /obj/machinery/door/airlock/centcom{
 	name = "Special Operations";
-	req_access = list(103)
+	req_one_access = null
 	},
+/obj/map_helper/access_helper/airlock/station/centcom/ert,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -10519,13 +10879,15 @@
 	pixel_y = 26
 	},
 /obj/map_helper/airlock/door/ext_door,
-/obj/machinery/door/airlock/glass_external{
-	frequency = null;
-	name = "Ship Hatch"
-	},
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
+/obj/machinery/door/airlock/glass_external{
+	frequency = null;
+	name = "Ship Hatch";
+	req_one_access = null
+	},
+/obj/map_helper/access_helper/airlock/station/external_airlock,
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/specops/general)
 "Ih" = (
@@ -10546,7 +10908,7 @@
 /obj/item/clothing/suit/armor/tdome/green,
 /obj/item/clothing/head/helmet/thunderdome,
 /obj/item/melee/baton/loaded,
-/obj/item/melee/energy/sword,
+/obj/item/melee/transforming/energy/sword,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -10631,8 +10993,9 @@
 "Ix" = (
 /obj/machinery/door/airlock/centcom{
 	name = "Living Quarters";
-	req_access = list(105)
+	req_one_access = null
 	},
+/obj/map_helper/access_helper/airlock/station/centcom,
 /turf/unsimulated/floor{
 	icon_state = "carpet"
 	},
@@ -10690,6 +11053,12 @@
 	icon_state = "lino"
 	},
 /area/centcom/command)
+"ID" = (
+/obj/structure/closet/walllocker/emergsuit_wall{
+	pixel_y = 32
+	},
+/turf/simulated/shuttle/floor/black,
+/area/shuttle/escape)
 "IG" = (
 /obj/structure/table/reinforced,
 /obj/item/tool/crowbar,
@@ -10854,13 +11223,21 @@
 /obj/structure/table/woodentable,
 /turf/unsimulated/floor/wood,
 /area/centcom/restaurant)
+"Jg" = (
+/obj/structure/handrail{
+	dir = 1
+	},
+/turf/simulated/shuttle/floor/black,
+/area/shuttle/escape)
 "Ji" = (
 /obj/effect/floor_decal/corner/blue{
 	dir = 6
 	},
 /obj/machinery/door/airlock/security{
-	name = "Security"
+	name = "Security";
+	req_one_access = null
 	},
+/obj/map_helper/access_helper/airlock/station/security/department,
 /turf/unsimulated/floor/steel,
 /area/centcom/security)
 "Jj" = (
@@ -10925,6 +11302,10 @@
 	icon_state = "white"
 	},
 /area/centcom/medical)
+"Jr" = (
+/obj/structure/shuttle/engine/propulsion,
+/turf/simulated/shuttle/plating/airless/carry,
+/area/shuttle/escape)
 "Js" = (
 /obj/machinery/r_n_d/protolathe,
 /turf/unsimulated/floor/steel,
@@ -11171,7 +11552,10 @@
 	},
 /area/centcom/control)
 "Kg" = (
-/obj/machinery/door/airlock/command,
+/obj/machinery/door/airlock/command{
+	req_one_access = null
+	},
+/obj/map_helper/access_helper/airlock/station/command/bridge,
 /turf/simulated/shuttle/floor/white,
 /area/shuttle/escape)
 "Kh" = (
@@ -11245,11 +11629,11 @@
 "Kq" = (
 /obj/structure/table/rack,
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/item/ammo_magazine/m556saw/ap,
-/obj/item/ammo_magazine/m556saw/ap,
-/obj/item/ammo_magazine/m556saw,
-/obj/item/ammo_magazine/m556saw,
-/obj/item/ammo_magazine/m556saw,
+/obj/item/ammo_magazine/a5_56mm/saw/ap,
+/obj/item/ammo_magazine/a5_56mm/saw/ap,
+/obj/item/ammo_magazine/a5_56mm/saw,
+/obj/item/ammo_magazine/a5_56mm/saw,
+/obj/item/ammo_magazine/a5_56mm/saw,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -12124,9 +12508,9 @@
 	dir = 4
 	},
 /obj/machinery/door/airlock/glass{
-	name = "Kitchen";
-	req_access = list(28)
+	name = "Kitchen"
 	},
+/obj/map_helper/access_helper/airlock/station/service/kitchen,
 /turf/unsimulated/floor/steel{
 	icon_state = "white"
 	},
@@ -12169,7 +12553,8 @@
 /obj/machinery/vending/medical,
 /obj/machinery/light{
 	dir = 8;
-	use_power = 0
+	use_power = 0;
+	old_wall = 1
 	},
 /turf/simulated/shuttle/floor,
 /area/shuttle/escape)
@@ -12232,6 +12617,12 @@
 	icon_state = "white"
 	},
 /area/centcom/medical)
+"No" = (
+/obj/structure/closet/walllocker/emergsuit_wall{
+	pixel_y = -26
+	},
+/turf/simulated/shuttle/floor/black,
+/area/shuttle/escape)
 "Nq" = (
 /obj/structure/table/rack,
 /obj/structure/window/reinforced{
@@ -12268,6 +12659,16 @@
 	icon_state = "white"
 	},
 /area/centcom/control)
+"NA" = (
+/obj/machinery/door/airlock/security{
+	name = "Security";
+	req_one_access = null
+	},
+/obj/map_helper/access_helper/airlock/station/security/equipment,
+/turf/unsimulated/floor{
+	icon_state = "dark"
+	},
+/area/centcom/security)
 "NC" = (
 /obj/effect/floor_decal/steeldecal/steel_decals9{
 	dir = 8
@@ -12316,8 +12717,8 @@
 /area/centcom/security)
 "NI" = (
 /obj/item/clothing/accessory/holster/hip,
-/obj/item/ammo_magazine/s44,
-/obj/item/ammo_magazine/s44,
+/obj/item/ammo_magazine/a44/speedloader,
+/obj/item/ammo_magazine/a44/speedloader,
 /obj/item/gun/ballistic/revolver/combat,
 /obj/structure/table/steel_reinforced,
 /turf/unsimulated/floor/wood,
@@ -12364,8 +12765,9 @@
 "NU" = (
 /obj/machinery/door/airlock/glass/security{
 	name = "Confiscated Items";
-	req_access = list(3)
+	req_one_access = null
 	},
+/obj/map_helper/access_helper/airlock/station/security/armory,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -12538,9 +12940,9 @@
 /area/centcom/terminal)
 "Op" = (
 /obj/machinery/door/airlock/freezer{
-	name = "Kitchen cold room";
-	req_access = list(28)
+	name = "Kitchen cold room"
 	},
+/obj/map_helper/access_helper/airlock/station/service/kitchen,
 /turf/unsimulated/floor/steel{
 	icon_state = "white"
 	},
@@ -12607,13 +13009,16 @@
 	},
 /turf/unsimulated/floor/steel,
 /area/centcom/evac)
+"Ox" = (
+/obj/structure/handrail,
+/turf/simulated/shuttle/floor,
+/area/shuttle/escape)
 "Oz" = (
-/obj/machinery/vending/fitness,
-/obj/machinery/light{
-	dir = 8;
-	use_power = 0
+/obj/structure/fans/tiny,
+/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks{
+	id = "emergency_security"
 	},
-/turf/simulated/shuttle/floor/darkred,
+/turf/simulated/floor,
 /area/shuttle/escape)
 "OA" = (
 /obj/machinery/tele_pad,
@@ -12709,13 +13114,10 @@
 	},
 /area/centcom/bathroom)
 "OZ" = (
-/obj/structure/table/steel,
-/obj/random/firstaid,
-/obj/item/storage/firstaid/adv,
-/obj/item/storage/firstaid/bonemed,
-/obj/item/storage/firstaid/clotting,
-/obj/item/storage/firstaid/clotting,
-/turf/simulated/shuttle/floor,
+/obj/structure/handrail{
+	dir = 1
+	},
+/turf/simulated/shuttle/floor/darkred,
 /area/shuttle/escape)
 "Pa" = (
 /obj/effect/floor_decal/industrial/warning/dust/corner,
@@ -12742,6 +13144,17 @@
 	},
 /turf/simulated/shuttle/wall/voidcraft,
 /area/shuttle/specops/engine)
+"Ph" = (
+/obj/structure/handrail{
+	dir = 1
+	},
+/obj/machinery/button/windowtint{
+	id = "emergency_security";
+	pixel_x = 8;
+	pixel_y = -24
+	},
+/turf/simulated/shuttle/floor/darkred,
+/area/shuttle/escape)
 "Pj" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 6
@@ -12770,11 +13183,10 @@
 /turf/simulated/floor/plating,
 /area/shuttle/specops/engine)
 "Pn" = (
-/obj/machinery/light{
-	dir = 4;
-	use_power = 0
+/obj/machinery/sleeper{
+	dir = 4
 	},
-/turf/simulated/shuttle/floor/white,
+/turf/simulated/shuttle/floor,
 /area/shuttle/escape)
 "Po" = (
 /obj/effect/floor_decal/derelict/d13,
@@ -13073,12 +13485,20 @@
 "PW" = (
 /obj/machinery/door/airlock/medical{
 	name = "Virology Access";
-	req_access = list(5)
+	req_one_access = null
 	},
+/obj/map_helper/access_helper/airlock/station/medical/virology,
 /turf/unsimulated/floor/steel{
 	icon_state = "white"
 	},
 /area/centcom/medical)
+"PY" = (
+/obj/structure/table/reinforced,
+/obj/machinery/holoplant{
+	pixel_y = 6
+	},
+/turf/simulated/shuttle/floor/darkred,
+/area/shuttle/escape)
 "Qa" = (
 /obj/structure/table/steel,
 /obj/item/storage/firstaid/regular,
@@ -13126,6 +13546,10 @@
 	icon_state = "dark"
 	},
 /area/centcom/security)
+"Qd" = (
+/obj/machinery/vending/blood,
+/turf/simulated/shuttle/floor,
+/area/shuttle/escape)
 "Qg" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 8
@@ -13374,6 +13798,13 @@
 	icon_state = "white"
 	},
 /area/centcom/medical)
+"QT" = (
+/obj/machinery/door/airlock/glass_external{
+	req_one_access = null
+	},
+/obj/map_helper/access_helper/airlock/station/external_airlock,
+/turf/unsimulated/floor/steel,
+/area/centcom/evac)
 "QU" = (
 /obj/machinery/camera/network/crescent{
 	dir = 4
@@ -13381,13 +13812,16 @@
 /turf/unsimulated/floor/steel,
 /area/centcom/security)
 "QW" = (
-/obj/machinery/door/airlock/multi_tile/metal{
-	name = "Nanotrasen Offices";
-	req_one_access = list(101)
+/obj/structure/closet/walllocker/autolok_wall{
+	pixel_y = -26
 	},
-/obj/machinery/door/firedoor,
-/turf/unsimulated/floor/steel,
-/area/centcom/command)
+/obj/machinery/light{
+	dir = 4;
+	use_power = 0;
+	old_wall = 1
+	},
+/turf/simulated/shuttle/floor/white,
+/area/shuttle/escape)
 "QX" = (
 /obj/machinery/shieldwallgen,
 /turf/unsimulated/floor{
@@ -13441,6 +13875,21 @@
 /obj/structure/bed/chair,
 /turf/unsimulated/floor/steel,
 /area/centcom/main_hall)
+"Ri" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/blue/border{
+	dir = 8
+	},
+/obj/machinery/door/airlock/glass/security{
+	name = "Security";
+	req_access = list();
+	req_one_access = null
+	},
+/obj/map_helper/access_helper/airlock/station/security/department,
+/turf/unsimulated/floor/steel,
+/area/centcom/security)
 "Rj" = (
 /obj/effect/floor_decal/steeldecal/steel_decals9{
 	dir = 8
@@ -13571,7 +14020,13 @@
 	},
 /area/centcom/security)
 "Rx" = (
-/obj/machinery/light,
+/obj/machinery/light{
+	old_wall = 1;
+	use_power = 0
+	},
+/obj/machinery/status_display{
+	pixel_y = -32
+	},
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/escape)
 "Ry" = (
@@ -13626,8 +14081,9 @@
 /obj/machinery/door/airlock/glass/security{
 	id_tag = "innerS";
 	name = "Colonial Security Airlock";
-	req_access = list(63)
+	req_one_access = null
 	},
+/obj/map_helper/access_helper/airlock/station/security/department,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -13710,8 +14166,10 @@
 "RW" = (
 /obj/machinery/door/airlock/security{
 	id_tag = "front";
-	name = "Security"
+	name = "Security";
+	req_one_access = null
 	},
+/obj/map_helper/access_helper/airlock/station/security/department,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -13748,6 +14206,9 @@
 "Sg" = (
 /obj/structure/bed/chair/shuttle{
 	dir = 8
+	},
+/obj/structure/closet/walllocker/emergsuit_wall{
+	pixel_y = 32
 	},
 /turf/simulated/shuttle/floor,
 /area/shuttle/escape)
@@ -14054,19 +14515,28 @@
 	icon_state = "dark"
 	},
 /area/centcom/security)
+"Tf" = (
+/obj/machinery/door/airlock/security{
+	name = "Security";
+	req_one_access = null
+	},
+/turf/unsimulated/floor{
+	icon_state = "dark"
+	},
+/area/centcom/security)
 "Tg" = (
 /obj/structure/table/rack,
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/item/ammo_magazine/m9mmt/rubber,
-/obj/item/ammo_magazine/m9mmt/rubber,
-/obj/item/ammo_magazine/m9mmt/rubber,
-/obj/item/ammo_magazine/m9mmt/rubber,
-/obj/item/ammo_magazine/m9mmt/rubber,
-/obj/item/ammo_magazine/m9mmt/rubber,
-/obj/item/ammo_magazine/m9mmt/rubber,
-/obj/item/ammo_magazine/m9mmt/rubber,
-/obj/item/ammo_magazine/m9mmt/rubber,
-/obj/item/ammo_magazine/m9mmt/rubber,
+/obj/item/ammo_magazine/a9mm/top_mount/rubber,
+/obj/item/ammo_magazine/a9mm/top_mount/rubber,
+/obj/item/ammo_magazine/a9mm/top_mount/rubber,
+/obj/item/ammo_magazine/a9mm/top_mount/rubber,
+/obj/item/ammo_magazine/a9mm/top_mount/rubber,
+/obj/item/ammo_magazine/a9mm/top_mount/rubber,
+/obj/item/ammo_magazine/a9mm/top_mount/rubber,
+/obj/item/ammo_magazine/a9mm/top_mount/rubber,
+/obj/item/ammo_magazine/a9mm/top_mount/rubber,
+/obj/item/ammo_magazine/a9mm/top_mount/rubber,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -14271,6 +14741,12 @@
 	icon_state = "white"
 	},
 /area/centcom/control)
+"TV" = (
+/obj/machinery/computer/crew{
+	dir = 4
+	},
+/turf/simulated/shuttle/floor/white,
+/area/shuttle/escape)
 "TW" = (
 /obj/effect/floor_decal/steeldecal/steel_decals9,
 /obj/effect/floor_decal/steeldecal/steel_decals9{
@@ -14359,7 +14835,8 @@
 "Ui" = (
 /obj/machinery/light{
 	dir = 8;
-	use_power = 0
+	use_power = 0;
+	old_wall = 1
 	},
 /turf/simulated/shuttle/floor/white,
 /area/shuttle/escape)
@@ -14508,14 +14985,14 @@
 /obj/structure/window/reinforced{
 	dir = 4
 	},
-/obj/item/ammo_magazine/s44,
-/obj/item/ammo_magazine/s44,
-/obj/item/ammo_magazine/s44,
-/obj/item/ammo_magazine/s44,
-/obj/item/ammo_magazine/s44,
-/obj/item/ammo_magazine/s44,
-/obj/item/ammo_magazine/s44,
-/obj/item/ammo_magazine/s44,
+/obj/item/ammo_magazine/a44/speedloader,
+/obj/item/ammo_magazine/a44/speedloader,
+/obj/item/ammo_magazine/a44/speedloader,
+/obj/item/ammo_magazine/a44/speedloader,
+/obj/item/ammo_magazine/a44/speedloader,
+/obj/item/ammo_magazine/a44/speedloader,
+/obj/item/ammo_magazine/a44/speedloader,
+/obj/item/ammo_magazine/a44/speedloader,
 /obj/item/gun/ballistic/revolver/combat,
 /obj/item/gun/ballistic/revolver/combat,
 /obj/item/gun/ballistic/revolver/combat,
@@ -14619,6 +15096,15 @@
 	icon_state = "dark"
 	},
 /area/centcom/specops)
+"Vm" = (
+/obj/structure/handrail{
+	dir = 1
+	},
+/obj/structure/closet/walllocker/emergsuit_wall{
+	pixel_y = -26
+	},
+/turf/simulated/shuttle/floor/black,
+/area/shuttle/escape)
 "Vn" = (
 /obj/structure/table/standard,
 /obj/effect/floor_decal/borderfloor{
@@ -14682,8 +15168,9 @@
 "Vy" = (
 /obj/machinery/door/airlock/centcom{
 	name = "SpecOps Hangar";
-	req_access = list(103)
+	req_one_access = null
 	},
+/obj/map_helper/access_helper/airlock/station/centcom/ert,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -14753,10 +15240,10 @@
 "VI" = (
 /obj/structure/table/rack,
 /obj/structure/window/reinforced,
-/obj/item/ammo_magazine/m57x28mm/smg/ap,
-/obj/item/ammo_magazine/m57x28mm/smg/ap,
-/obj/item/ammo_magazine/m57x28mm/smg/ap,
-/obj/item/ammo_magazine/m57x28mm/smg/ap,
+/obj/item/ammo_magazine/a5_7mm/harpy_smg/ap,
+/obj/item/ammo_magazine/a5_7mm/harpy_smg/ap,
+/obj/item/ammo_magazine/a5_7mm/harpy_smg/ap,
+/obj/item/ammo_magazine/a5_7mm/harpy_smg/ap,
 /obj/item/gun/ballistic/automatic/combat,
 /obj/item/gun/ballistic/automatic/combat,
 /obj/item/gun/ballistic/automatic/combat,
@@ -14874,6 +15361,13 @@
 /obj/structure/closet/secure_closet/hop,
 /turf/unsimulated/floor/steel,
 /area/centcom/command)
+"Wj" = (
+/obj/structure/handrail,
+/obj/machinery/status_display{
+	pixel_y = 32
+	},
+/turf/simulated/shuttle/floor/black,
+/area/shuttle/escape)
 "Wk" = (
 /obj/structure/sign/warning/caution,
 /turf/unsimulated/wall,
@@ -14965,11 +15459,10 @@
 /turf/unsimulated/floor/wood,
 /area/centcom/restaurant)
 "Wy" = (
-/obj/machinery/door/airlock/multi_tile/glass{
-	req_access = list(5)
-	},
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/door/firedoor/glass,
+/obj/machinery/door/airlock/multi_tile/glass,
+/obj/map_helper/access_helper/airlock/station/medical/department,
 /turf/unsimulated/floor/steel{
 	icon_state = "white"
 	},
@@ -15196,7 +15689,22 @@
 	},
 /area/centcom/security)
 "Xq" = (
-/obj/structure/bed/chair/shuttle,
+/obj/structure/table/reinforced,
+/obj/machinery/button/windowtint{
+	id = "emergency_cockpit";
+	pixel_x = -24;
+	pixel_y = 6
+	},
+/obj/machinery/keycard_auth{
+	pixel_x = -24;
+	pixel_y = -8
+	},
+/obj/item/folder/blue,
+/obj/item/radio,
+/obj/item/radio{
+	pixel_x = 2;
+	pixel_y = 2
+	},
 /turf/simulated/shuttle/floor/white,
 /area/shuttle/escape)
 "Xr" = (
@@ -15218,7 +15726,8 @@
 	},
 /obj/machinery/light{
 	dir = 4;
-	use_power = 0
+	use_power = 0;
+	old_wall = 1
 	},
 /turf/simulated/shuttle/floor,
 /area/shuttle/escape)
@@ -15332,14 +15841,14 @@
 	},
 /obj/structure/table/rack,
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/item/ammo_magazine/m556/ap,
-/obj/item/ammo_magazine/m556/ap,
-/obj/item/ammo_magazine/m556,
-/obj/item/ammo_magazine/m556,
-/obj/item/ammo_magazine/m556,
-/obj/item/ammo_magazine/m556,
-/obj/item/ammo_magazine/m556,
-/obj/item/ammo_magazine/m556,
+/obj/item/ammo_magazine/a5_56mm/ap,
+/obj/item/ammo_magazine/a5_56mm/ap,
+/obj/item/ammo_magazine/a5_56mm,
+/obj/item/ammo_magazine/a5_56mm,
+/obj/item/ammo_magazine/a5_56mm,
+/obj/item/ammo_magazine/a5_56mm,
+/obj/item/ammo_magazine/a5_56mm,
+/obj/item/ammo_magazine/a5_56mm,
 /obj/item/gun/ballistic/automatic/sts35,
 /obj/item/gun/ballistic/automatic/sts35,
 /turf/unsimulated/floor{
@@ -15423,15 +15932,6 @@
 	},
 /turf/unsimulated/floor/steel,
 /area/centcom/security)
-"Yb" = (
-/obj/machinery/door/airlock/centcom{
-	name = "Silicon's Living Quarters";
-	req_access = list(105)
-	},
-/turf/unsimulated/floor{
-	icon_state = "carpet"
-	},
-/area/centcom/control)
 "Yd" = (
 /obj/machinery/lathe/autolathe{
 	desc = "Your typical Autolathe. It appears to have much more options than your regular one, however...";
@@ -15545,14 +16045,14 @@
 	},
 /area/centcom/control)
 "Yr" = (
-/turf/space/basic,
 /turf/unsimulated/wall,
 /area/space)
 "Yt" = (
 /obj/machinery/door/airlock/centcom{
 	name = "Commander";
-	req_access = list(103)
+	req_one_access = null
 	},
+/obj/map_helper/access_helper/airlock/station/centcom/ert,
 /turf/unsimulated/floor/wood,
 /area/centcom/specops)
 "Yu" = (
@@ -15594,8 +16094,10 @@
 /area/centcom/security)
 "Yy" = (
 /obj/machinery/door/airlock/centcom{
-	name = "Nanotrasen Offices"
+	name = "Nanotrasen Offices";
+	req_one_access = null
 	},
+/obj/map_helper/access_helper/airlock/station/centcom,
 /turf/unsimulated/floor/steel,
 /area/centcom/command)
 "Yz" = (
@@ -16032,6 +16534,14 @@
 	icon_state = "white"
 	},
 /area/centcom/medical)
+"Zy" = (
+/obj/machinery/light{
+	dir = 4;
+	use_power = 0
+	},
+/obj/structure/closet/firecloset/full/double,
+/turf/simulated/shuttle/floor/darkred,
+/area/shuttle/escape)
 "ZA" = (
 /obj/effect/floor_decal/borderfloorwhite,
 /obj/effect/floor_decal/corner/paleblue/border,
@@ -16044,8 +16554,9 @@
 "ZC" = (
 /obj/machinery/door/airlock/medical{
 	name = "Morgue";
-	req_access = list(6)
+	req_one_access = null
 	},
+/obj/map_helper/access_helper/airlock/station/medical/morgue,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -16078,12 +16589,13 @@
 /obj/machinery/door/airlock/vault/bolted{
 	id_tag = "the_end";
 	name = "RESTRICTED";
-	req_access = list(109)
+	req_one_access = null
 	},
 /obj/machinery/door/blast/regular{
 	id = "ADMINFUN";
 	name = "RESTRICTED"
 	},
+/obj/map_helper/access_helper/airlock/station/command/vault,
 /turf/simulated/floor/reinforced,
 /area/centcom/security)
 "ZL" = (
@@ -16092,6 +16604,10 @@
 	icon_state = "steel"
 	},
 /area/centcom/bathroom)
+"ZM" = (
+/obj/machinery/power/pointdefense,
+/turf/simulated/floor/plating/eris/under,
+/area/shuttle/escape)
 "ZN" = (
 /obj/structure/sign/department/armory,
 /turf/unsimulated/wall,
@@ -28857,11 +29373,11 @@ AF
 AF
 AF
 jQ
-oL
-oL
-oL
-oL
-oL
+jQ
+Fl
+Fl
+Fl
+jQ
 jQ
 AF
 AF
@@ -29049,15 +29565,15 @@ AF
 AF
 AF
 AF
-AF
-jQ
+ZM
+Fl
 Xq
-yz
+TV
 PU
-yz
+im
 FX
-jQ
-AF
+Fl
+ZM
 AF
 AF
 AF
@@ -29242,17 +29758,17 @@ AF
 AF
 AF
 AF
-AF
-AF
+Ef
 jQ
-Xq
-yz
+wG
 QG
-yz
-FX
+QG
+QG
+QG
+mG
+wG
 jQ
-AF
-AF
+Jr
 AF
 AF
 AF
@@ -29439,11 +29955,11 @@ AF
 jQ
 jQ
 jQ
-wG
-Pn
+qk
+in
 yz
-Pn
-wG
+in
+QW
 jQ
 jQ
 jQ
@@ -29632,14 +30148,14 @@ AF
 AF
 jQ
 bV
-al
 wG
-jQ
+mb
+mb
 Kg
-jQ
+mb
+mb
 wG
-va
-Oz
+bV
 jQ
 AF
 AF
@@ -29825,15 +30341,15 @@ AF
 AF
 AF
 jQ
-CG
-yz
+Wj
+uV
 Ui
+pa
 yz
-yz
-yz
+pa
 Ui
-yz
-CG
+uV
+gS
 jQ
 AF
 AF
@@ -30019,7 +30535,7 @@ AF
 AF
 AF
 jQ
-NW
+oz
 yz
 Ew
 NW
@@ -30027,7 +30543,7 @@ yz
 Ew
 NW
 yz
-Dm
+ag
 jQ
 AF
 AF
@@ -30795,7 +31311,7 @@ AF
 AF
 AF
 jQ
-NW
+oz
 yz
 Ew
 NW
@@ -30803,7 +31319,7 @@ yz
 Ew
 NW
 yz
-Dm
+ag
 jQ
 AF
 AF
@@ -30989,15 +31505,15 @@ AF
 AF
 AF
 jQ
-CG
-yz
-Pn
+Gg
 yz
 yz
 yz
 yz
-Pn
-CG
+yz
+yz
+yz
+Jg
 jQ
 AF
 AF
@@ -31183,15 +31699,15 @@ AF
 AF
 AF
 jQ
-jQ
-oL
-oL
-wG
-CG
-CG
-wG
-oL
-oL
+al
+vR
+Zy
+ov
+yz
+yz
+PY
+qm
+va
 jQ
 AF
 AF
@@ -31377,15 +31893,15 @@ AF
 AF
 AF
 jQ
-Ne
+jQ
 AA
-OZ
-jQ
-CG
-CG
-jQ
-ze
-lM
+AA
+wG
+gg
+Vm
+wG
+Oz
+Oz
 jQ
 AF
 AF
@@ -31571,15 +32087,15 @@ AF
 AF
 AF
 jQ
-Sp
-Sp
-Sp
+Ne
+mU
+gX
 mE
 CG
 CG
-oL
-nb
-lM
+Oz
+ze
+OZ
 jQ
 AF
 AF
@@ -31765,15 +32281,15 @@ AF
 AF
 AF
 jQ
-Sp
+Ox
 Sp
 dx
 mE
 CG
 CG
-oL
+Oz
 nb
-lM
+Ph
 jQ
 AF
 AF
@@ -31958,17 +32474,17 @@ AF
 AF
 AF
 AF
-jQ
+iC
 mA
 Sp
 dx
 jQ
-CG
-CG
+lo
+Jg
 jQ
-nb
-lM
-jQ
+nU
+OZ
+xj
 AF
 AF
 AF
@@ -32152,8 +32668,8 @@ AF
 AF
 AF
 AF
-jQ
-Sp
+iC
+Pn
 Sp
 Sp
 Cw
@@ -32161,8 +32677,8 @@ CG
 CG
 uq
 lM
-lM
-jQ
+OZ
+xj
 AF
 AF
 AF
@@ -32347,15 +32863,15 @@ AF
 AF
 AF
 jQ
-Sp
-Sp
-Sp
+qH
+Dp
+Qd
 jQ
-CG
-CG
+Gg
+Jg
 jQ
-lM
-lM
+gb
+kX
 jQ
 AF
 AF
@@ -32545,8 +33061,8 @@ Sg
 Xs
 wG
 wG
-CG
-CG
+ID
+No
 jQ
 FB
 ya
@@ -33884,7 +34400,7 @@ vc
 vc
 vc
 vc
-tp
+QT
 wi
 wi
 tp
@@ -34078,10 +34594,10 @@ vc
 vc
 vc
 vc
-tp
+QT
 wi
 wi
-tp
+QT
 wi
 wi
 wi
@@ -37596,7 +38112,7 @@ dj
 DF
 gp
 nc
-mz
+nH
 Bx
 ri
 Bx
@@ -37793,7 +38309,7 @@ WK
 WK
 WK
 WK
-mz
+nH
 WK
 Zs
 Zs
@@ -41847,7 +42363,7 @@ sm
 sm
 sm
 sm
-QW
+cb
 sm
 sm
 sm
@@ -42996,7 +43512,7 @@ Ld
 Ld
 Ld
 Ld
-sB
+xv
 Ld
 Ld
 hE
@@ -43182,7 +43698,7 @@ es
 es
 lR
 lR
-sB
+xv
 lR
 lR
 es
@@ -43966,7 +44482,7 @@ es
 ht
 Ld
 Ld
-sB
+xv
 Ld
 Ld
 Az
@@ -44738,11 +45254,11 @@ Ld
 Ld
 Ld
 Ld
-sB
+xv
 Ld
 Ld
 Ld
-sB
+xv
 Ld
 Ld
 it
@@ -44980,7 +45496,7 @@ Jf
 Jf
 rs
 WK
-mz
+nH
 WK
 WK
 WK
@@ -45131,7 +45647,7 @@ Ld
 Ld
 Ld
 es
-sB
+xv
 lR
 es
 Qu
@@ -45502,7 +46018,7 @@ oF
 UF
 xS
 zd
-Yb
+Ix
 Ld
 Ld
 Ld
@@ -45518,7 +46034,7 @@ Ld
 Ld
 Ld
 Ld
-sB
+xv
 Ld
 PC
 gc
@@ -45950,19 +46466,19 @@ rp
 rp
 rp
 WK
-mz
+nH
 WK
 WK
 WK
 WK
-mz
+nH
 WK
 WK
 WK
 WK
 WK
 WK
-mz
+nH
 WK
 Ic
 Ic
@@ -46698,8 +47214,8 @@ WK
 WK
 WK
 wp
-zb
-zb
+pA
+pA
 wp
 dj
 dj
@@ -47262,7 +47778,7 @@ Bx
 Bx
 Bx
 Bx
-Bx
+gN
 Bx
 Bx
 sP
@@ -47296,10 +47812,10 @@ cT
 AW
 Bx
 Bx
-mz
+NA
 Bx
 Bx
-mz
+Tf
 Xd
 Xd
 Xd
@@ -47456,7 +47972,7 @@ Bx
 Bx
 Bx
 Bx
-Bx
+gN
 Bx
 Bx
 sP
@@ -48075,7 +48591,7 @@ ee
 WK
 VW
 Bx
-mz
+nH
 Bx
 XO
 Cq
@@ -48249,7 +48765,7 @@ cS
 kE
 kT
 YP
-cA
+rn
 Xd
 Xd
 Ji
@@ -48824,7 +49340,7 @@ bm
 HA
 Xd
 Xd
-Xd
+kV
 Xd
 Xd
 Xd
@@ -49218,7 +49734,7 @@ WK
 WK
 WK
 LS
-Xd
+WK
 WV
 WK
 WK
@@ -50179,10 +50695,10 @@ Xd
 Xd
 Xd
 Xd
-cA
+bQ
 Xd
 jR
-LJ
+Ri
 Tr
 Xd
 LU
@@ -50192,7 +50708,7 @@ yR
 BX
 Xd
 jR
-Tr
+yI
 Xd
 iu
 rK
@@ -50373,10 +50889,10 @@ Xd
 Xd
 Xd
 Xd
-cA
+bQ
 Xd
 Zb
-TN
+xn
 TD
 Xd
 LU
@@ -50386,7 +50902,7 @@ Ds
 BX
 Xd
 Zb
-TD
+rz
 Xd
 iu
 rK
@@ -50537,7 +51053,7 @@ Hp
 xa
 xa
 xa
-aB
+lS
 lS
 es
 lE

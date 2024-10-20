@@ -21,7 +21,7 @@
 	say_verbs = list("mumbles", "says")
 
 // Clumsy folks can't take the mask off themselves.
-/obj/item/clothing/mask/muzzle/attack_hand(mob/user, list/params)
+/obj/item/clothing/mask/muzzle/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(user.item_by_slot_id(SLOT_ID_MASK) == src && !user.IsAdvancedToolUser())
 		return 0
 	..()
@@ -36,6 +36,7 @@
 	gas_transfer_coefficient = 0.90
 	permeability_coefficient = 0.01
 	armor_type = /datum/armor/mask/surgical
+	materials_base = list(MAT_PLASTIC = 100, MAT_WOOD = 20)
 	var/hanging = 0
 
 /obj/item/clothing/mask/surgical/proc/adjust_mask(mob_user)
@@ -210,7 +211,7 @@
 	icon_state = "bandblack"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "bandblack", SLOT_ID_LEFT_HAND = "bandblack")
 
-/obj/item/clothing/mask/bandana/attack_self(mob/user)
+/obj/item/clothing/mask/bandana/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(src.icon_state == initial(icon_state))
 		src.icon_state = "[icon_state]_up"
@@ -274,7 +275,7 @@
 	icon_state = "plainmask"
 	inv_hide_flags = HIDEEARS|HIDEEYES|HIDEFACE
 
-/obj/item/clothing/mask/paper/attack_self(mob/user)
+/obj/item/clothing/mask/paper/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return

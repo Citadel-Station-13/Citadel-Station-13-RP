@@ -40,7 +40,7 @@
 		if(SA_vulnerability & tm.mob_class)
 			tm.apply_damage(SA_bonus_damage) // fuck em
 
-/obj/item/nullrod/attack_self(mob/user)
+/obj/item/nullrod/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -57,7 +57,7 @@
 	if(GLOB.holy_weapon_type)
 		return
 	var/obj/item/holy_weapon
-	var/list/holy_weapons_list = subtypesof(/obj/item/nullrod) + list(HOLY_WEAPONS)
+	var/list/holy_weapons_list = typesof(/obj/item/nullrod)
 	var/list/display_names = list()
 	var/list/nullrod_icons = list()
 	for(var/V in holy_weapons_list)
@@ -109,7 +109,7 @@
 	item_state = "disintegrate"
 	name = "god hand"
 	desc = "This hand of yours glows with an awesome power!"
-	damtype = BURN
+	damage_type = DAMAGE_TYPE_BURN
 	attack_verb = list("punched", "cross countered", "pummeled")
 
 /obj/item/nullrod/godhand/Initialize(mapload)
@@ -352,14 +352,14 @@
 	attack_sound = 'sound/weapons/bite.ogg'
 	var/used_blessing = FALSE
 
-/obj/item/nullrod/carp/attack_self(mob/user)
+/obj/item/nullrod/carp/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
 	if(used_blessing)
 	else if(user.mind && (user.mind.isholy))
 		to_chat(user, "You are blessed by Carp-Sie. Wild space carp will no longer attack you.")
-		user.faction |= "carp"
+		user.add_iff_faction(MOB_IFF_FACTION_CARP)
 		used_blessing = TRUE
 
 /obj/item/nullrod/claymore/bostaff //May as well make it a "claymore" and inherit the blocking

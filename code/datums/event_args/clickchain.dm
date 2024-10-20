@@ -1,16 +1,34 @@
 /**
- * used to hold data about a click action
+ * used to hold data about a click (melee/ranged/other) action
+ *
+ * the click may be real or fake.
+ *
+ * * clickchain flags are deliberately not stored in here; you're supposed to modify and return them a ton, so it's inefficient to put it in here.
+ * * This is required for item swings / interaction, usually, not just base /event_args/actor.
  */
 /datum/event_args/actor/clickchain
-	/// a_intent
+	/// optional: attack intent
 	var/intent
-	/// click params
+	/// optional: click params
 	var/list/params
-	/// target atom
+	/// optional: target atom
 	var/atom/target
 
-/datum/event_args/actor/clickchain/New(mob/performer, mob/initiator, atom/target, intent, list/params)
+	//* Attack Data *//
+
+	/// Overall damage multiplier
+	///
+	/// todo: implement; needs slight clickchain/melee overhaul
+	///
+	/// * Allowed to be changed by shieldcalls and other intercepts
+	var/damage_multiplier = 1
+
+/datum/event_args/actor/clickchain/New(mob/performer, mob/initiator, atom/target, list/params, intent)
 	..()
 	src.target = target
-	src.intent = isnull(intent)? performer.a_intent : intent
-	src.params = isnull(params)? list() : params
+	src.params = params || list()
+	src.intent = intent
+
+/datum/event_args/actor/clickchain/clone()
+	var/datum/event_args/actor/clickchain/cloned = new(performer, initiator, target, params, intent)
+	return cloned

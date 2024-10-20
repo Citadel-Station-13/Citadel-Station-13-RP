@@ -19,7 +19,7 @@
 	tt_desc = "S Anatidae vitriae"
 	catalogue_data = list(/datum/category_item/catalogue/fauna/crystalduck)
 
-	faction = "duck"
+	iff_factions = MOB_IFF_FACTION_FARM_NEUTRAL
 
 	icon_state = "duck"
 	icon_living = "duck"
@@ -40,7 +40,7 @@
 	attacktext = list("nipped", "bit", "cut", "clawed")
 
 	say_list_type = /datum/say_list/duck
-	ai_holder_type = /datum/ai_holder/simple_mob/retaliate/cooperative
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/retaliate/cooperative
 
 /datum/say_list/duck
 	speak = list("Wack!", "Wock?", "Wack.")

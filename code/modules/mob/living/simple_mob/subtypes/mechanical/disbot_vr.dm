@@ -35,7 +35,9 @@
 	response_help = "pets the"
 	response_disarm = "gently pushes aside the"
 	response_harm = "hits the"
-	faction = "vagrant"
+
+	iff_factions = MOB_IFF_FACTION_SWARMER
+
 	harm_intent_damage = 3
 	legacy_melee_damage_lower = 6
 	legacy_melee_damage_upper = 9
@@ -43,7 +45,7 @@
 	attacktext = "drugged"
 	attack_sound = 'sound/weapons/bite.ogg'
 
-	ai_holder_type = /datum/ai_holder/simple_mob/melee
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/melee
 	say_list_type = /datum/say_list/disbot
 
 	var/poison_chance = 100

@@ -22,9 +22,9 @@
 	icon_gib = "cyber_horror_dead"
 	catalogue_data = list(/datum/category_item/catalogue/fauna/cyberhorror)
 
-	faction = "synthtide"
+	iff_factions = MOB_IFF_FACTION_MUTANT
 
-	ai_holder_type = /datum/ai_holder/simple_mob/melee/evasive
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/melee/evasive
 
 	maxHealth = 175
 	health = 175
@@ -120,7 +120,7 @@
 	movement_cooldown = 9
 	movement_sound = 'sound/effects/houndstep.ogg'
 
-	ai_holder_type = /datum/ai_holder/simple_mob/melee
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/melee
 
  // You do NOT Want to get in touchy range of this thing.
 	armor_legacy_mob = list(melee = 75, bullet = -10, laser = -25, bio = 100, rad = 100)
@@ -182,11 +182,9 @@
 		if(L == src)
 			continue
 
-		if(ishuman(L))
-			var/mob/living/carbon/human/H = L
-			if(H.check_shields(damage = 0, damage_source = src, attacker = src, def_zone = null, attack_text = "the leap"))
- // We were blocked.
-				continue
+		var/list/shieldcall_result = L.atom_shieldcall(40, DAMAGE_TYPE_BRUTE, MELEE_TIER_MEDIUM, ARMOR_MELEE, NONE, ATTACK_TYPE_MELEE)
+		if(shieldcall_result[SHIELDCALL_ARG_FLAGS] & SHIELDCALL_FLAGS_BLOCK_ATTACK)
+			continue
 
 		victim = L
 		break
@@ -206,7 +204,7 @@
 	icon_dead = "vox_cyber_horror_dead"
 
 	armor_legacy_mob = list(melee = 40, bullet = 30, laser = 30, bio = 100, rad = 100)
-	ai_holder_type = /datum/ai_holder/simple_mob/melee
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/melee
 
 	meat_amount = 2
 	meat_type = /obj/item/reagent_containers/food/snacks/meat/vox
@@ -221,7 +219,7 @@
 	icon_dead = "tajaran_cyber_horror_dead"
 
 
-	ai_holder_type = /datum/ai_holder/simple_mob/melee/hit_and_run
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/melee/hit_and_run
 
 	var/stealthed = FALSE
  // Lower = Harder to see.
@@ -299,7 +297,7 @@
 	..() // For the poison.
 
 // Force unstealthing if attacked.
-/mob/living/simple_mob/mechanical/cyber_horror/tajaran/bullet_act(obj/projectile/P)
+/mob/living/simple_mob/mechanical/cyber_horror/tajaran/on_bullet_act(obj/projectile/proj, impact_flags, list/bullet_act_args)
 	. = ..()
 	break_cloak()
 
@@ -318,15 +316,15 @@
 
 	projectiletype = /obj/projectile/arc/blue_energy
 	projectilesound = 'sound/weapons/Laser.ogg'
-	ai_holder_type = /datum/ai_holder/simple_mob/ranged/kiting
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/ranged/kiting
 
 	armor_legacy_mob = list(melee = -30, bullet = 10, laser = 10, bio = 100, rad = 100)
 
 /obj/projectile/arc/blue_energy
 	name = "energy missle"
 	icon_state = "force_missile"
-	damage = 12
-	damage_type = BURN
+	damage_force = 12
+	damage_type = DAMAGE_TYPE_BURN
 
 //Direct Ranged Mob
 /mob/living/simple_mob/mechanical/cyber_horror/corgi
@@ -342,7 +340,7 @@
 	projectilesound = 'sound/weapons/laser3.ogg'
 	movement_sound = 'sound/effects/servostep.ogg'
 
-	ai_holder_type = /datum/ai_holder/simple_mob/ranged/kiting/threatening
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/ranged/kiting/threatening
 
 //Cats and mayhem
 /mob/living/simple_mob/mechanical/cyber_horror/cat_cyber_horror
@@ -391,12 +389,13 @@
 
 //These are the projectiles mobs use
 /obj/projectile/beam/drone
-	damage = 3
+	damage_force = 3
+
 /obj/projectile/arc/blue_energy
 	name = "energy missle"
 	icon_state = "force_missile"
-	damage = 12
-	damage_type = BURN
+	damage_force = 12
+	damage_type = DAMAGE_TYPE_BURN
 
 //Boss Mob - The High Priest
 /mob/living/simple_mob/mechanical/cyber_horror/priest
@@ -427,20 +426,23 @@
 	base_attack_cooldown = 30
 	projectiletype = /obj/projectile/arc/blue_energy/priest
 	projectilesound = 'sound/weapons/Laser.ogg'
-	ai_holder_type = /datum/ai_holder/simple_mob/ranged/aggressive/priest
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/ranged/aggressive/priest
 
 /obj/projectile/arc/blue_energy/priest
 	name = "nanite cloud"
 	icon_state = "particle-heavy"
-	damage = 15
-	damage_type = BRUTE
+	damage_force = 15
+	damage_type = DAMAGE_TYPE_BRUTE
 
-/obj/projectile/arc/blue_energy/priest/on_hit(var/atom/target, var/blocked = 0)
+/obj/projectile/arc/blue_energy/priest/on_impact(atom/target, impact_flags, def_zone, efficiency)
+	. = ..()
+	if(. & PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT)
+		return
 	if(ishuman(target))
 		var/mob/living/carbon/human/M = target
 		M.Confuse(rand(3,5))
 
-/datum/ai_holder/simple_mob/ranged/aggressive/priest //Adopted from the Blood Hunter.
+/datum/ai_holder/polaris/simple_mob/ranged/aggressive/priest //Adopted from the Blood Hunter.
 	pointblank = FALSE
 	closest_distance = 0
 
@@ -461,7 +463,7 @@
 	var/mob_count = 0				// Are there enough mobs?
 	var/turf/T = get_turf(A)
 	for(var/mob/M in range(T, 2))
-		if(M.faction == faction) 	// Don't grenade our friends
+		if(shares_iff_faction(M))
 			return FALSE
 		if(M in oview(src, special_attack_max_range))
 			if(!M.stat)
@@ -500,8 +502,11 @@
 	icon_state = "plasma3"
 	rad_power = RAD_INTENSITY_PROJ_ARC_HORROR_PRIEST
 
-/obj/projectile/arc/radioactive/priest/on_impact(turf/T)
+/obj/projectile/arc/radioactive/priest/on_impact(atom/target, impact_flags, def_zone, efficiency)
 	. = ..()
+	if(!isturf(target))
+		return
+	var/turf/T = target
 	new /obj/effect/explosion(T)
 	explosion(T, 0, 1, 4)
 

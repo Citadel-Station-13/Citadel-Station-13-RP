@@ -19,7 +19,7 @@
 	tt_desc = "S Choeros hirtus" //diyaab and shantak are technically reletives!
 	catalogue_data = list(/datum/category_item/catalogue/fauna/diyaab)
 
-	faction = "diyaab"
+	iff_factions = MOB_IFF_FACTION_BIND_TO_MAP
 
 	icon_state = "diyaab"
 	icon_living = "diyaab"
@@ -39,7 +39,7 @@
 	attacktext = list("gouged")
 
 	say_list_type = /datum/say_list/diyaab
-	ai_holder_type = /datum/ai_holder/simple_mob/retaliate/cooperative
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/retaliate/cooperative
 
 /datum/say_list/diyaab
 	speak = list("Awrr?", "Aowrl!", "Worrl.")

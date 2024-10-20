@@ -57,7 +57,6 @@
 /turf/simulated/floor/plating,
 /area/awaymission/BMPship3)
 "an" = (
-/turf/simulated/floor/plating,
 /turf/simulated/shuttle/wall,
 /area/awaymission/BMPship3)
 "ao" = (
@@ -591,7 +590,6 @@
 	},
 /area/awaymission/BMPship1)
 "cy" = (
-/turf/simulated/floor,
 /turf/simulated/shuttle/wall,
 /area/awaymission/BMPship3)
 "cA" = (
@@ -1855,7 +1853,7 @@
 /turf/simulated/floor/plating,
 /area/awaymission)
 "hK" = (
-/obj/item/frame/apc,
+/obj/item/frame2/apc,
 /turf/simulated/floor/airless,
 /area/awaymission)
 "hL" = (

@@ -15,7 +15,7 @@
 	icon_living = "rous"
 	icon_dead = "rous-dead"
 	icon_rest = "rous_rest"
-	faction = "mouse"
+	iff_factions = MOB_IFF_FACTION_FARM_PEST
 	icon = 'icons/mob/vore64x32.dmi'
 
 	maxHealth = 150
@@ -36,15 +36,11 @@
 	icon_x_dimension = 64
 	icon_y_dimension = 32
 
-	vore_active = TRUE
-	vore_capacity = 1
-	vore_pounce_chance = 45
-	vore_icons = SA_ICON_LIVING | SA_ICON_REST
 
 	var/life_since_foodscan = 0
 
 	say_list_type = /datum/say_list/rat
-	ai_holder_type = /datum/ai_holder/simple_mob/melee/rat
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/melee/rat
 
 /mob/living/simple_mob/vore/aggressive/rat/tame		//not quite tame but does not attack on sight
 	name = "curious giant rat"
@@ -59,7 +55,7 @@
 
 	randomized = FALSE
 
-	ai_holder_type = /datum/ai_holder/simple_mob/retaliate
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/retaliate
 
 /mob/living/simple_mob/vore/aggressive/rat/death()
 	playsound(src, 'sound/effects/mouse_squeak_loud.ogg', 50, 1)
@@ -98,5 +94,5 @@
 	say_maybe_target = list("Squeek?")
 	say_got_target = list("SQUEEK!")
 
-/datum/ai_holder/simple_mob/melee/rat
+/datum/ai_holder/polaris/simple_mob/melee/rat
 	speak_chance = 3

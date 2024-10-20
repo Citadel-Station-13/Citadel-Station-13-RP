@@ -15,7 +15,7 @@
 
 	mob_class = MOB_CLASS_ABERRATION
 
-	faction = "creature"
+	iff_factions = MOB_IFF_FACTION_MUTANT
 
 	maxHealth = 40
 	health = 40
@@ -37,7 +37,7 @@
 
 	speak_emote = list("gibbers")
 
-	ai_holder_type = /datum/ai_holder/simple_mob/melee
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/melee
 
 	hide_amount = 4
 	hide_type = /obj/item/stack/hairlesshide
@@ -61,7 +61,7 @@
 /mob/living/simple_mob/creature/cult
 	mob_class = MOB_CLASS_DEMONIC
 
-	faction = "cult"
+	iff_factions = MOB_IFF_FACTION_SANGUINE_CULT
 
 	min_oxy = 0
 	max_oxy = 0

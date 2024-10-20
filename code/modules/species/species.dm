@@ -84,6 +84,13 @@
 	/// do we have a species statpanel?
 	var/species_statpanel = FALSE
 
+	//* IFF *//
+
+	/// Inherent IFF factions
+	///
+	/// * This isn't the best way to do this, but it works.
+	var/list/iff_factions_inherent
+
 	//? Icons
 	/// Normal icon set.
 	var/icobase      = 'icons/mob/species/human/body.dmi'
@@ -330,6 +337,11 @@
 	var/snow_movement = 0
 	/// How affected by item slowdown the species is.
 	var/item_slowdown_mod = 1
+	/// How affected by light the species is. Positive values slow down, negative speed up.
+	/// Values are a maximum slowdown / speedup based on amount of light or lack thereof.
+	var/light_slowdown = 0
+	var/dark_slowdown = 0
+
 
 	//? Special condition
 	/// Multiplier for 'Regenerate' power speed, in human_powers.dm
@@ -482,10 +494,6 @@
 			descriptor_datums[descriptor.name] = descriptor
 		descriptors = descriptor_datums
 
-	//If the species has eyes, they are the default vision organ
-	if(!vision_organ && has_organ[O_EYES])
-		vision_organ = O_EYES
-
 	unarmed_attacks = list()
 	for(var/u_type in unarmed_types)
 		unarmed_attacks += new u_type()
@@ -544,6 +552,9 @@
 	for(var/datum/ability/ability as anything in abilities)
 		ability.associate(H)
 
+	for(var/faction in iff_factions_inherent)
+		H.add_iff_faction(faction)
+
 /**
  * called when we are removed from a mob
  */
@@ -570,6 +581,9 @@
 
 	for(var/datum/ability/ability as anything in abilities)
 		ability.disassociate(H)
+
+	for(var/faction in iff_factions_inherent)
+		H.remove_iff_faction(faction)
 
 /datum/species/proc/sanitize_species_name(var/name)
 	return sanitizeName(name, MAX_NAME_LEN)

@@ -1331,7 +1331,7 @@
 /turf/simulated/wall/rpshull,
 /area/shuttle/curabitur/curashuttle/hangar)
 "cL" = (
-/obj/mecha/combat/fighter/pinnace{
+/obj/vehicle/sealed/mecha/combat/fighter/pinnace{
 	desc = "A modified Pinnace made to be able to fit a wide arsenal of equipment for rescue missions in space.";
 	integrity = 200;
 	max_equip = 1;
@@ -1360,14 +1360,12 @@
 /obj/machinery/atmospherics/component/unary/engine{
 	dir = 1
 	},
-/turf/space,
 /turf/simulated/shuttle/plating/airless/carry,
 /area/shuttle/curabitur/curashuttle/eng)
 "cP" = (
 /obj/machinery/ion_engine{
 	dir = 1
 	},
-/turf/space,
 /turf/simulated/shuttle/plating/airless/carry,
 /area/shuttle/curabitur/curashuttle/eng)
 "dF" = (

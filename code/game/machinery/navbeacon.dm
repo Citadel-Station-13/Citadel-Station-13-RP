@@ -9,6 +9,8 @@ var/global/list/navbeacons = list()	// no I don't like putting this in, but it w
 	name = "navigation beacon"
 	desc = "A beacon used for bot navigation."
 	plane = TURF_PLANE
+	hides_underfloor = OBJ_UNDERFLOOR_UNLESS_PLACED_ONTOP
+	hides_underfloor_update_icon = TRUE
 	anchored = TRUE
 	/// TRUE if cover is open.
 	var/open = FALSE
@@ -30,8 +32,6 @@ var/global/list/navbeacons = list()	// no I don't like putting this in, but it w
 	if(freq)
 		warning("[src] at [x],[y],[z] has deprecated var freq=[freq].  Replace it with proper type.")
 
-	var/turf/T = loc
-	hide(!T.is_plating())
 	navbeacons += src
 
 // set the transponder codes assoc list from codes_txt
@@ -54,17 +54,8 @@ var/global/list/navbeacons = list()	// no I don't like putting this in, but it w
 		else
 			codes[e] = "1"
 
-/obj/machinery/navbeacon/hides_under_flooring()
-	return 1
-
-// called when turf state changes
-// hide the object if turf is intact
-/obj/machinery/navbeacon/hide(var/intact)
-	invisibility = intact ? 101 : 0
-	updateicon()
-
 // update the icon_state
-/obj/machinery/navbeacon/proc/updateicon()
+/obj/machinery/navbeacon/update_icon_state()
 	var/state="navbeacon[open]"
 
 	if(invisibility)
@@ -72,6 +63,7 @@ var/global/list/navbeacons = list()	// no I don't like putting this in, but it w
 									// in case revealed by T-scanner
 	else
 		icon_state = "[state]"
+	return ..()
 
 /obj/machinery/navbeacon/attackby(obj/item/I, mob/user)
 	var/turf/T = loc
@@ -83,7 +75,7 @@ var/global/list/navbeacons = list()	// no I don't like putting this in, but it w
 		playsound(src, I.tool_sound, 50, 1)
 		user.visible_message("[user] [open ? "opens" : "closes"] the beacon's cover.", "You [open ? "open" : "close"] the beacon's cover.")
 
-		updateicon()
+		update_icon()
 
 	else if(I.GetID())
 		if(open)
@@ -100,7 +92,7 @@ var/global/list/navbeacons = list()	// no I don't like putting this in, but it w
 /obj/machinery/navbeacon/attack_ai(var/mob/user)
 	interact(user, 1)
 
-/obj/machinery/navbeacon/attack_hand(mob/user, list/params)
+/obj/machinery/navbeacon/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 
 	if(!user.IsAdvancedToolUser())
 		return FALSE

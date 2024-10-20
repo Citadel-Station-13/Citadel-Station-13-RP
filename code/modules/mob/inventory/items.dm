@@ -34,7 +34,7 @@
 /obj/item/proc/equipped(mob/user, slot, flags)
 	SHOULD_CALL_PARENT(TRUE)
 	SEND_SIGNAL(src, COMSIG_ITEM_EQUIPPED, user, slot, flags)
-	SEND_SIGNAL(user, COMSIG_MOB_ITEM_EQUIPPED, user, slot, flags)
+	SEND_SIGNAL(user, COMSIG_MOB_ITEM_EQUIPPED, src, slot, flags)
 	worn_slot = slot
 	if(!(flags & INV_OP_IS_ACCESSORY))
 		// todo: shouldn't be in here
@@ -68,7 +68,7 @@
 /obj/item/proc/unequipped(mob/user, slot, flags)
 	SHOULD_CALL_PARENT(TRUE)
 	SEND_SIGNAL(src, COMSIG_ITEM_UNEQUIPPED, user, slot, flags)
-	SEND_SIGNAL(user, COMSIG_MOB_ITEM_UNEQUIPPED, user, slot, flags)
+	SEND_SIGNAL(user, COMSIG_MOB_ITEM_UNEQUIPPED, src, slot, flags)
 	worn_slot = null
 	if(!(flags & INV_OP_IS_ACCESSORY))
 		// todo: shouldn't be in here
@@ -98,18 +98,9 @@
  */
 /obj/item/proc/dropped(mob/user, flags, atom/newLoc)
 	SHOULD_CALL_PARENT(TRUE)
-/*
-	for(var/X in actions)
-		var/datum/action/A = X
-		A.Remove(user)
-*/
-	if((item_flags & ITEM_DROPDEL) && !(flags & INV_OP_DELETING))
-		qdel(src)
 
 	hud_unlayerise()
 	item_flags &= ~ITEM_IN_INVENTORY
-	// TODO: THIS IS SHITCODE, MOVE TO EVENT DRIVEN.
-	user.handle_actions()
 
 	. = SEND_SIGNAL(src, COMSIG_ITEM_DROPPED, user, flags, newLoc)
 	SEND_SIGNAL(user, COMSIG_MOB_ITEM_DROPPED, src, flags, newLoc)
@@ -119,6 +110,9 @@
 	// user?.update_equipment_speed_mods()
 	if(zoom)
 		zoom() //binoculars, scope, etc
+
+	// unload actions
+	unregister_item_actions(user)
 
 	// clear carry
 	if(isliving(user))
@@ -138,6 +132,10 @@
 			continue
 		user.unregister_shieldcall(shieldcall)
 
+	if((item_flags & ITEM_DROPDEL) && !(flags & INV_OP_DELETING))
+		qdel(src)
+		. |= ITEM_RELOCATED_BY_DROPPED
+
 	return ((. & COMPONENT_ITEM_DROPPED_RELOCATE)? ITEM_RELOCATED_BY_DROPPED : NONE)
 
 /**
@@ -147,13 +145,20 @@
  */
 /obj/item/proc/pickup(mob/user, flags, atom/oldLoc)
 	SHOULD_CALL_PARENT(TRUE)
+
+	// we load the component here as it hooks equipped,
+	// so loading it here means it can still handle the equipped signal.
+	if(passive_parry)
+		LoadComponent(/datum/component/passive_parry, passive_parry)
+
 	SEND_SIGNAL(src, COMSIG_ITEM_PICKUP, user, flags, oldLoc)
 	SEND_SIGNAL(user, COMSIG_MOB_ITEM_PICKUP, src, flags, oldLoc)
+
 	reset_pixel_offsets()
 	hud_layerise()
+
 	item_flags |= ITEM_IN_INVENTORY
-	// TODO: THIS IS SHITCODE, MOVE TO EVENT DRIVEN.
-	user.handle_actions()
+
 	// todo: should this be here
 	transform = null
 	if(isturf(oldLoc) && !(flags & (INV_OP_SILENT | INV_OP_DIRECTLY_EQUIPPING)))
@@ -168,11 +173,14 @@
 	// storage stuff
 	obj_storage?.on_pickup(user)
 
-	// get rid of shieldcalls
+	// register shieldcalls
 	for(var/datum/shieldcall/shieldcall as anything in shieldcalls)
 		if(!shieldcall.shields_in_inventory)
 			continue
 		user.register_shieldcall(shieldcall)
+
+	// load action buttons
+	register_item_actions(user)
 
 /**
  * update our worn icon if we can
@@ -375,6 +383,8 @@
  * checks if we're held in hand
  *
  * if so, returns mob we're in
+ *
+ * @return the mob holding us
  */
 /obj/item/proc/is_held()
 	return (worn_slot == SLOT_ID_HANDS)? worn_mob() : null

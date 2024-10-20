@@ -6,8 +6,9 @@
 	w_class = WEIGHT_CLASS_SMALL
 	slot_flags = SLOT_BELT
 	materials_base = list(MAT_STEEL = 50, MAT_GLASS = 20)
-	action_button_name = "Toggle Flashlight"
+	item_action_name = "Toggle Flashlight"
 	light_wedge = LIGHT_WIDE
+	worth_intrinsic = 25
 
 	var/on = FALSE
 	/// Luminosity when on
@@ -28,6 +29,7 @@
 	var/spawn_dir
 
 /obj/item/flashlight/Initialize(mapload)
+	set_flashlight()
 	. = ..()
 
 	if(power_use && cell_type)
@@ -89,10 +91,6 @@
 	else
 		set_light(0)
 
-/obj/item/flashlight/update_appearance(updates)
-	. = ..()
-	set_flashlight()
-
 /obj/item/flashlight/update_icon_state()
 	. = ..()
 
@@ -119,7 +117,7 @@
 /obj/item/flashlight/AltClick(mob/user)
 	attack_self(user)
 
-/obj/item/flashlight/attack_self(mob/user)
+/obj/item/flashlight/attack_self(mob/user, datum/event_args/actor/actor)
 	if(power_use)
 		if(!isturf(user.loc))
 			to_chat(user, "You cannot turn the light on while in this [user.loc].") //To prevent some lighting anomalities.
@@ -133,8 +131,8 @@
 	else if(power_use)
 		STOP_PROCESSING(SSobj, src)
 	playsound(src.loc, 'sound/weapons/empty.ogg', 15, TRUE, -3)
-	update_appearance()
-	user.update_action_buttons()
+	set_flashlight()
+	update_full_icon()
 	return TRUE
 
 /obj/item/flashlight/emp_act(severity)
@@ -166,7 +164,7 @@
 			user.visible_message(SPAN_NOTICE("\The [user] directs [src] to [L]'s eyes."), \
 							 	 SPAN_NOTICE("You direct [src] to [L]'s eyes."))
 			if(H != user)	//can't look into your own eyes buster
-				if(L.stat == DEAD || L.blinded)	//mob is dead or fully blind
+				if(L.stat == DEAD || L.has_status_effect(/datum/status_effect/sight/blindness))	//mob is dead or fully blind
 					to_chat(user, SPAN_WARNING("\The [L]'s pupils do not react to the light!"))
 					return
 				if(MUTATION_XRAY in L.mutations)
@@ -192,7 +190,7 @@
 		return CLICKCHAIN_DO_NOT_PROPAGATE
 	return ..()
 
-/obj/item/flashlight/attack_hand(mob/user, list/params)
+/obj/item/flashlight/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(user.get_inactive_held_item() == src)
 		if(cell)
 			cell.update_appearance()
@@ -291,11 +289,12 @@
 	brightness_on = 5
 	w_class = WEIGHT_CLASS_BULKY
 	power_use = 0
-	on = 1
 	light_wedge = LIGHT_OMNI
 	light_color = LIGHT_COLOR_FIRE
 	flashlight_range = 4
 
+/obj/item/flashlight/lamp/on
+	on = 1
 
 // green-shaded desk lamp
 /obj/item/flashlight/lamp/green
@@ -303,6 +302,9 @@
 	icon_state = "lampgreen"
 	brightness_on = 5
 	light_color = LIGHT_COLOR_TUNGSTEN
+
+/obj/item/flashlight/lamp/green/on
+	on = 1
 
 /obj/item/flashlight/lamp/verb/toggle_light()
 	set name = "Toggle light"
@@ -327,7 +329,7 @@
 	light_wedge = LIGHT_OMNI
 	light_color = LIGHT_COLOR_FLARE
 
-	action_button_name = null //just pull it manually, neckbeard.
+	item_action_name = null //just pull it manually, neckbeard.
 	power_use = 0
 	drop_sound = 'sound/items/drop/gloves.ogg'
 	pickup_sound = 'sound/items/pickup/gloves.ogg'
@@ -354,10 +356,10 @@
 /obj/item/flashlight/flare/proc/turn_off()
 	on = FALSE
 	src.damage_force = initial(src.damage_force)
-	src.damtype = initial(src.damtype)
+	src.damage_type = initial(src.damage_type)
 	update_appearance()
 
-/obj/item/flashlight/flare/attack_self(mob/user)
+/obj/item/flashlight/flare/attack_self(mob/user, datum/event_args/actor/actor)
 
 	// Usual checks
 	if(!fuel)
@@ -371,14 +373,14 @@
 	if(.)
 		user.visible_message(SPAN_NOTICE("[user] activates the flare."), SPAN_NOTICE("You pull the cord on the flare, activating it!"))
 		src.damage_force = on_damage
-		src.damtype = "fire"
+		src.damage_type = DAMAGE_TYPE_BURN
 		START_PROCESSING(SSobj, src)
 
 /obj/item/flashlight/flare/proc/ignite() //Used for flare launchers.
 	on = !on
 	update_appearance()
 	damage_force = on_damage
-	damtype = "fire"
+	damage_type = DAMAGE_TYPE_BURN
 	START_PROCESSING(SSobj, src)
 	return TRUE
 
@@ -414,7 +416,7 @@
 	on = FALSE
 	update_appearance()
 
-/obj/item/flashlight/glowstick/attack_self(mob/user)
+/obj/item/flashlight/glowstick/attack_self(mob/user, datum/event_args/actor/actor)
 
 	if(!fuel)
 		to_chat(user, SPAN_NOTICE("The glowstick has already been turned on."))

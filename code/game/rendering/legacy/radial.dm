@@ -256,14 +256,12 @@ GLOBAL_LIST_EMPTY(radial_menus)
 				choices_icons[id] = I
 	setup_menu(use_tooltips)
 
-
 /datum/radial_menu/proc/extract_image(E)
 	var/mutable_appearance/MA = new /mutable_appearance(E)
 	if(MA)
 		MA.layer = HUD_LAYER_ABOVE
 		MA.appearance_flags |= RESET_TRANSFORM
 	return MA
-
 
 /datum/radial_menu/proc/next_page()
 	if(pages > 1)

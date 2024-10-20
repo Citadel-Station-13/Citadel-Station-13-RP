@@ -19,7 +19,7 @@
 	icon_gib = "bear_gib"
 	catalogue_data = list(/datum/category_item/catalogue/fauna/space_bear)
 
-	faction = "russian"
+	iff_factions = MOB_IFF_FACTION_BIND_TO_MAP
 
 	maxHealth = 125
 	health = 125
@@ -49,7 +49,7 @@
 
 // Is it time to be mad?
 /mob/living/simple_mob/animal/space/bear/handle_special()
-	if((get_AI_stance() in list(STANCE_APPROACH, STANCE_FIGHT)) && !is_AI_busy() && isturf(loc))
+	if((get_polaris_AI_stance() in list(STANCE_APPROACH, STANCE_FIGHT)) && !is_AI_busy() && isturf(loc))
 		if(health <= (maxHealth * 0.5)) // At half health, and fighting someone currently.
 			berserk()
 

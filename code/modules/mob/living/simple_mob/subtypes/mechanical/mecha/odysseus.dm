@@ -33,7 +33,7 @@
 	projectiletype = /obj/projectile/fake_syringe/poison
 	projectilesound = 'sound/weapons/empty.ogg' // Just like the syringe gun.
 
-	ai_holder_type = /datum/ai_holder/simple_mob/ranged/kiting/no_moonwalk
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/ranged/kiting/no_moonwalk
 
 /mob/living/simple_mob/mechanical/mecha/odysseus/manned
 	pilot_type = /mob/living/simple_mob/humanoid/merc/ranged // Carries a pistol.
@@ -64,17 +64,16 @@
 /obj/projectile/fake_syringe
 	name = "syringe"
 	icon_state = "syringe"
-	damage = 5 // Getting hit with a launched syringe probably hurts, and makes it at least slightly relevant against synthetics.
+	damage_force = 5 // Getting hit with a launched syringe probably hurts, and makes it at least slightly relevant against synthetics.
 	var/piercing = FALSE // If true, ignores thick material.
 
-/obj/projectile/fake_syringe/on_hit(atom/target, blocked = 0, def_zone = null)
+/obj/projectile/fake_syringe/on_impact(atom/target, impact_flags, def_zone, efficiency)
 	if(isliving(target))
 		var/mob/living/L = target
 		if(!L.can_inject(null, null, def_zone, piercing))
-			return FALSE
+			return impact_flags | PROJECTILE_IMPACT_BLOCKED
 		L.custom_pain(SPAN_WARNING("You feel a tiny prick!"), 1, TRUE)
-	return ..() // This will add the modifier and return the correct value.
-
+	return ..()
 
 // Fake syringe, which inflicts a long lasting modifier that slowly kills them.
 /obj/projectile/fake_syringe/poison

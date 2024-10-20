@@ -120,7 +120,7 @@
 			if(!to_remove)
 				return
 
-			if(istype(src.loc,/mob/living/carbon/human) && to_remove != "cell")
+			if(istype(src.loc,/mob/living/carbon/human) && to_remove != "cell" && !maintenance_while_online)
 				var/mob/living/carbon/human/H = src.loc
 				if(H.back == src || H.belt == src)
 					to_chat(user, "You can't remove an installed device while the hardsuit is being worn.")
@@ -172,7 +172,7 @@
 	..()
 
 
-/obj/item/hardsuit/attack_hand(mob/user, list/params)
+/obj/item/hardsuit/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 
 	if(electrified != 0)
 		if(shock(user)) //Handles removing charge from the cell, as well. No need to do that here.

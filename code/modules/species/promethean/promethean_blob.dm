@@ -195,11 +195,10 @@
 		set_light(max(1,min(5,rad_glow/15)), max(1,min(10,rad_glow/25)), color)
 		update_icon()
 
-/mob/living/simple_mob/slime/promethean/bullet_act(obj/projectile/P)
+/mob/living/simple_mob/slime/promethean/on_bullet_act(obj/projectile/proj, impact_flags, list/bullet_act_args)
 	if(humanform)
-		return humanform.bullet_act(P)
-	else
-		return ..()
+		return proj.impact_redirect(humanform, args)
+	return ..()
 
 /mob/living/simple_mob/slime/promethean/death(gibbed, deathmessage = "rapidly loses cohesion, splattering across the ground...")
 	if(humanform)
@@ -361,12 +360,16 @@
 
 	if(l_hand)
 		blob.prev_left_hand = WEAKREF(l_hand) //Won't save them if dropped above, but necessary if handdrop is disabled.
+	else
+		blob.prev_left_hand = null //make it so prommies can't just "recall" items magically if they had nothing in their hand.
 	if(r_hand)
 		blob.prev_right_hand = WEAKREF(r_hand)
+	else
+		blob.prev_right_hand = null //make it so prommies can't just "recall" items magically if they had nothing in their hand.
 
 	//Put our owner in it (don't transfer var/mind)
 	blob.transforming = TRUE
-	blob.ckey = ckey
+	transfer_client_to(blob)
 	blob.ooc_notes = ooc_notes
 	blob.transforming = FALSE
 	blob.name = name
@@ -434,7 +437,7 @@
 	//Put our owner in it (don't transfer var/mind)
 	playsound(src.loc, "sound/effects/slime_squish.ogg", 15)
 	transforming = TRUE
-	ckey = blob.ckey
+	blob.transfer_client_to(src)
 	ooc_notes = blob.ooc_notes // Updating notes incase they change them in blob form.
 	transforming = FALSE
 	blob.name = "Promethean Blob"

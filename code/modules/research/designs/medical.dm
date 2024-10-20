@@ -133,7 +133,7 @@
 	id = "cell_medigun_mag_advanced"
 	req_tech = list(TECH_MATERIAL = 7, TECH_MAGNET = 6, TECH_POWER = 4, TECH_BIO = 7)
 	materials_base = list(MAT_STEEL = 5000, MAT_PLASTIC = 10000, MAT_GLASS = 5000, MAT_SILVER = 1500, MAT_GOLD = 1500, MAT_DIAMOND = 5000)
-	build_path = /obj/item/ammo_magazine/cell_mag/medical/advanced
+	build_path = /obj/item/ammo_magazine/microbattery/medical/advanced
 
 /datum/design/science/medigun_cell
 	abstract_type = /datum/design/science/medigun_cell

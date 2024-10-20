@@ -23,6 +23,8 @@
 	species_spawn_flags = SPECIES_SPAWN_CHARACTER
 	species_appearance_flags = HAS_HAIR_COLOR | HAS_SKIN_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_EYE_COLOR
 
+	vision_organ = O_EYES
+
 	has_limbs = list(
 		BP_TORSO  = list("path" = /obj/item/organ/external/chest, "descriptor" = "torso"),
 		BP_GROIN  = list("path" = /obj/item/organ/external/groin, "descriptor" = "groin"),

@@ -223,7 +223,15 @@ var/global/floorIsLava = 0
 	if (!istype(src,/datum/admins))
 		to_chat(usr, "Error: you are not an admin!")
 		return
-	PlayerNotesPage(1)
+	//PlayerNotesPage(1)
+	tgui_notes()
+
+/datum/admins/proc/tgui_notes()
+	var/savefile/S=new("data/player_notes.sav")
+	var/list/note_keys
+	S >> note_keys
+	var/selected_ckey = tgui_input_list(usr, "Select the ckey you want the notes off:", "Ckey Select",sortList(note_keys))
+	show_player_info(selected_ckey)
 
 /datum/admins/proc/PlayerNotesPage(page)
 	var/dat = "<B>Player notes</B><HR>"
@@ -645,7 +653,7 @@ var/global/floorIsLava = 0
 		if(!check_rights(R_SERVER,0))
 			message = sanitize(message, 500, extra = 0)
 		message = replacetext(message, "\n", "<br>") // required since we're putting it in a <p> tag
-		to_chat(world, "<span class=notice><b>[usr.client.holder.fakekey ? "Administrator" : usr.key] Announces:</b><p style='text-indent: 50px'>[message]</p></span>")
+		to_chat(world, "<span class=notice><b>[usr.client.is_under_stealthmin() ? "Administrator" : usr.key] Announces:</b><p style='text-indent: 50px'>[message]</p></span>")
 		log_admin("Announce: [key_name(usr)] : [message]")
 	feedback_add_details("admin_verb","A") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
@@ -1079,47 +1087,6 @@ var/datum/legacy_announcement/minor/admin_min_announcer = new
 	new /obj/effect/plant(get_turf(usr), SSplants.seeds[seedtype])
 	log_admin("[key_name(usr)] spawned [seedtype] vines at ([usr.x],[usr.y],[usr.z])")
 
-/datum/admins/proc/spawn_atom(var/object as text)
-	set category = "Debug"
-	set desc = "(atom path) Spawn an atom"
-	set name = "Spawn"
-
-	if(!check_rights(R_SPAWN))	return
-
-	if(!object)
-		var/choice = alert(src, "You haven't specified anything to match -- this will lock your game up and take a while! \
-		It will also return the entire spawn list.", "WARNING!", "Cancel", "Continue")
-		if(choice == "Cancel")
-			return
-
-	var/list/types = typesof(/atom)
-	var/list/matches = new()
-
-	for(var/path in types)
-		if(findtext("[path]", object))
-			CHECK_TICK
-			matches += path
-
-	if(matches.len==0)
-		return
-
-	var/chosen
-	if(matches.len==1)
-		chosen = matches[1]
-	else
-		chosen = input("Select an atom type", "Spawn Atom", matches[1]) as null|anything in matches
-		if(!chosen)
-			return
-	if(ispath(chosen,/turf))
-		var/turf/T = get_turf(usr.loc)
-		T.ChangeTurf(chosen)
-	else
-		new chosen(usr.loc)
-
-	log_and_message_admins("spawned [chosen] at ([usr.x],[usr.y],[usr.z])")
-	feedback_add_details("admin_verb","SA") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
-
-
 /datum/admins/proc/show_traitor_panel(var/mob/M in GLOB.mob_list)
 	set category = "Admin"
 	set desc = "Edit mobs's memory and role"
@@ -1364,7 +1331,7 @@ var/datum/legacy_announcement/minor/admin_min_announcer = new
 	message_admins("<span class='adminnotice'>[key_name_admin(usr)] has put [frommob.ckey] in control of [tomob.name].</span>")
 	log_admin("[key_name(usr)] stuffed [frommob.ckey] into [tomob.name].")
 	feedback_add_details("admin_verb","CGD")
-	tomob.ckey = frommob.ckey
+	frommob.transfer_client_to(tomob)
 	qdel(frommob)
 	return 1
 

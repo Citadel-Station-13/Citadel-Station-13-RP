@@ -29,13 +29,13 @@
 		to_chat(owner, SPAN_DANGER("Your [name] [gender == PLURAL ? "are" : "is"] out of power!"))
 		refresh_action_button()
 
-/obj/item/organ/internal/powered/refresh_action_button()
-	. = ..()
-	if(.)
+/obj/item/organ/internal/powered/update_action_buttons()
+	if(istype(organ_actions, /datum/action))
+		var/datum/action/action = organ_actions
 		action.button_icon_state = "[base_action_state]-[active ? "on" : "off"]"
-		if(action.button) action.button.UpdateIcon()
+	return ..()
 
-/obj/item/organ/internal/powered/attack_self(mob/user)
+/obj/item/organ/internal/powered/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -54,7 +54,7 @@
 /obj/item/organ/internal/powered/jets
 	name = "maneuvering jets"
 	desc = "Gas jets from a Adherent chassis."
-	action_button_name = "Toggle Maneuvering Pack"
+	organ_action_name = "Toggle Maneuvering Pack"
 	use_descriptor = "adjust your vector"
 	organ_tag = O_JETS
 	parent_organ = BP_TORSO
@@ -68,7 +68,7 @@
 	. = ..()
 	//add_obj_verb(src, /obj/item/organ/internal/powered/jets/proc/activatej)
 
-/obj/item/organ/internal/powered/jets/ui_action_click()
+/obj/item/organ/internal/powered/jets/ui_action_click(datum/action/action, datum/event_args/actor/actor)
 	activatej()
 
 /obj/item/organ/internal/powered/jets/proc/activatej()
@@ -97,7 +97,7 @@
 /obj/item/organ/internal/powered/float
 	name = "levitation plate"
 	desc = "A broad, flat disc of exotic matter. Slick to the touch."
-	action_button_name = "Toggle Antigravity"
+	organ_action_name = "Toggle Antigravity"
 	organ_tag = O_FLOAT
 	parent_organ = BP_GROIN
 	robotic = ORGAN_CRYSTAL
@@ -110,7 +110,7 @@
 	//add_obj_verb(src, /obj/item/organ/internal/powered/float/proc/flying_toggle)
 	add_obj_verb(src, /obj/item/organ/internal/powered/float/proc/hover)
 
-/obj/item/organ/internal/powered/float/ui_action_click()
+/obj/item/organ/internal/powered/float/ui_action_click(datum/action/action, datum/event_args/actor/actor)
 	hover()
 /obj/item/organ/internal/eyes/adherent
 	name = "receptor prism"
@@ -139,7 +139,7 @@
 	name = "cooling fins"
 	gender = PLURAL
 	desc = "A lacy filligree of heat-radiating fins."
-	action_button_name = "Toggle Cooling"
+	organ_action_name = "Toggle Cooling"
 	organ_tag = O_COOLING_FINS
 	parent_organ = BP_GROIN
 	status = ORGAN_CRYSTAL
@@ -156,7 +156,7 @@
 	. = ..()
 	add_obj_verb(src, /obj/item/organ/internal/powered/cooling_fins/proc/activatecf)
 
-/obj/item/organ/internal/powered/cooling_fins/ui_action_click()
+/obj/item/organ/internal/powered/cooling_fins/ui_action_click(datum/action/action, datum/event_args/actor/actor)
 	activatecf()
 
 /obj/item/organ/internal/powered/cooling_fins/proc/activatecf()

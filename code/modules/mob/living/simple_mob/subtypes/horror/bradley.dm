@@ -12,7 +12,6 @@
 	icon_living = "Bradley"
 	icon_dead = "b_head"
 	icon_rest = "Bradley"
-	faction = "horror"
 	icon = 'icons/mob/horror_show/GHPS.dmi'
 	icon_gib = "generic_gib"
 	catalogue_data = list(/datum/category_item/catalogue/fauna/horror/bradley)
@@ -34,7 +33,7 @@
 
 
 	say_list_type = /datum/say_list/bradley
-	ai_holder_type = /datum/ai_holder/simple_mob/horror
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/horror
 
 	bone_amount = 4
 	hide_amount = 2
@@ -48,11 +47,11 @@
 	playsound(src, 'sound/h_sounds/mumble.ogg', 50, 1)
 	..()
 
-/mob/living/simple_mob/horror/bradley/bullet_act()
+/mob/living/simple_mob/horror/bradley/on_bullet_act(obj/projectile/proj, impact_flags, list/bullet_act_args)
+	. = ..()
 	playsound(src, 'sound/h_sounds/holla.ogg', 50, 1)
-	..()
 
-/mob/living/simple_mob/horror/bradley/attack_hand(mob/user, list/params)
+/mob/living/simple_mob/horror/bradley/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	playsound(src, 'sound/h_sounds/holla.ogg', 50, 1)
 	..()
 

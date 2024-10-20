@@ -68,7 +68,7 @@
 /turf/simulated/floor/maglev/Entered(var/atom/movable/AM, var/atom/old_loc)
 	if(isliving(AM) && prob(50))
 		track_zap(AM)
-/turf/simulated/floor/maglev/attack_hand(mob/user, list/params)
+/turf/simulated/floor/maglev/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(prob(75))
 		track_zap(user)
 /turf/simulated/floor/maglev/proc/track_zap(var/mob/living/user)
@@ -161,8 +161,6 @@
 	layer = ABOVE_WINDOW_LAYER
 /obj/machinery/embedded_controller
 	layer = ABOVE_WINDOW_LAYER
-/obj/machinery/firealarm
-	layer = ABOVE_WINDOW_LAYER
 /obj/machinery/flasher
 	layer = ABOVE_WINDOW_LAYER
 /obj/machinery/keycard_auth
@@ -215,8 +213,6 @@
 /obj/machinery/door_timer
 	layer = ABOVE_WINDOW_LAYER
 /obj/machinery/embedded_controller
-	layer = ABOVE_WINDOW_LAYER
-/obj/machinery/firealarm
 	layer = ABOVE_WINDOW_LAYER
 /obj/machinery/flasher
 	layer = ABOVE_WINDOW_LAYER

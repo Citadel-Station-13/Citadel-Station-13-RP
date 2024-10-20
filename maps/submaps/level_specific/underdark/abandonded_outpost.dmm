@@ -171,7 +171,7 @@
 /turf/simulated/wall,
 /area/mine/explored/underdark)
 "aR" = (
-/obj/item/frame/apc,
+/obj/item/frame2/apc,
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/mine/explored/underdark)
 "aS" = (
@@ -354,7 +354,7 @@
 /area/mine/explored/underdark)
 "bB" = (
 /mob/living/simple_mob/mechanical/infectionbot{
-	faction = "underdark"
+	iff_factions = "underdark"
 	},
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/mine/explored/underdark)
