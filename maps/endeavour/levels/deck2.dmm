@@ -1415,6 +1415,9 @@
 "bfi" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/light{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/dark,
 /area/rnd/research/testingrange)
 "bfS" = (
@@ -4599,7 +4602,6 @@
 /area/rnd/xenobiology/xenoflora)
 "dsT" = (
 /obj/machinery/door/window/brigdoor/westright{
-	dir = 4;
 	name = "Firing Range Door";
 	req_access = list(47)
 	},
@@ -7511,7 +7513,7 @@
 /obj/item/clothing/ears/earmuffs,
 /obj/item/clothing/glasses/goggles,
 /obj/structure/window/reinforced{
-	dir = 4
+	dir = 8
 	},
 /obj/machinery/door/firedoor,
 /turf/simulated/floor/tiled/dark,
@@ -19334,10 +19336,7 @@
 /obj/machinery/door/firedoor/glass{
 	dir = 4
 	},
-/obj/machinery/door/airlock/research{
-	id_tag = "researchdoor";
-	name = "Robotics Lab"
-	},
+/obj/machinery/door/airlock/glass/research,
 /turf/simulated/floor/tiled,
 /area/rnd/hallway)
 "ojY" = (
@@ -21845,7 +21844,7 @@
 /obj/item/clothing/ears/earmuffs,
 /obj/item/clothing/glasses/goggles,
 /obj/structure/window/reinforced{
-	dir = 4
+	dir = 8
 	},
 /obj/machinery/door/firedoor,
 /obj/machinery/light_switch{
@@ -22193,11 +22192,12 @@
 /turf/simulated/floor/wood,
 /area/endeavour/hallway/d2fwdhall)
 "pXL" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint/purplegray,
-/obj/effect/paint/purplegray,
-/turf/simulated/floor/plating,
-/area/rnd/xenobiology/xenoflora_storage)
+/obj/machinery/computer/cryopod{
+	name = "asset retention console";
+	pixel_y = -30
+	},
+/turf/simulated/floor/tiled,
+/area/teleporter/departing)
 "pXQ" = (
 /obj/structure/closet/crate,
 /obj/item/target,
@@ -22206,7 +22206,7 @@
 /obj/item/target,
 /obj/item/target,
 /obj/structure/window/reinforced{
-	dir = 4
+	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -27490,10 +27490,7 @@
 /obj/machinery/door/firedoor/glass{
 	dir = 4
 	},
-/obj/machinery/door/airlock/research{
-	id_tag = "researchdoor";
-	name = "Robotics Lab"
-	},
+/obj/machinery/door/airlock/glass/research,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/cable/green{
@@ -29714,7 +29711,10 @@
 	req_one_access = null
 	},
 /obj/machinery/door/firedoor,
-/obj/map_helper/access_helper/airlock/station/science/xenobiology,
+/obj/machinery/door/airlock/research{
+	name = "Research Entrance"
+	},
+/obj/map_helper/access_helper/airlock/station/science/xenobotany,
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology/xenoflora)
 "vxY" = (
@@ -33710,12 +33710,6 @@
 /obj/effect/floor_decal/corner/paleblue/diagonal,
 /turf/simulated/floor/tiled/white,
 /area/medical/patient_c)
-"ykZ" = (
-/obj/machinery/light{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/dark,
-/area/rnd/research/testingrange)
 "ymb" = (
 /obj/machinery/light,
 /obj/machinery/atmospherics/component/unary/outlet_injector{
@@ -40411,7 +40405,7 @@ xIf
 huY
 lja
 xRM
-ykZ
+lja
 xRM
 xvK
 huY
@@ -41973,7 +41967,7 @@ gii
 gii
 rNf
 gii
-gii
+pXL
 rup
 vda
 eHm
@@ -56697,7 +56691,7 @@ uPt
 xIf
 xIf
 neh
-pXL
+kQU
 rrz
 eLb
 fWy

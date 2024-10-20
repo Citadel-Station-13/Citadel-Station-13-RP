@@ -913,6 +913,10 @@
 	},
 /turf/simulated/floor/plating,
 /area/endeavour/hallway/d3fwdmaint)
+"aPW" = (
+/obj/machinery/vending/mre,
+/turf/simulated/floor/wood,
+/area/crew_quarters/bar)
 "aQa" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /obj/machinery/light/small{
@@ -2333,12 +2337,6 @@
 /area/security/detectives_office)
 "cgt" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
-/obj/item/radio/intercom{
-	dir = 1;
-	name = "Station Intercom (General)";
-	pixel_y = 26
-	},
-/obj/machinery/camera/network/civilian,
 /turf/simulated/floor/wood,
 /area/vacant/vacant_shop)
 "cgP" = (
@@ -16794,7 +16792,8 @@
 	light_range = 12
 	},
 /obj/machinery/recharger/wallcharger{
-	pixel_x = -22
+	pixel_x = 32;
+	pixel_y = 2
 	},
 /turf/simulated/floor/tiled/old_tile/gray,
 /area/security/range)
@@ -18269,11 +18268,12 @@
 /turf/simulated/floor/carpet/turcarpet,
 /area/crew_quarters/recreation_area)
 "qpE" = (
-/obj/machinery/recharger/wallcharger{
-	pixel_x = -22
-	},
 /obj/structure/table/steel_reinforced,
 /obj/machinery/cell_charger,
+/obj/machinery/recharger/wallcharger{
+	pixel_x = 32;
+	pixel_y = 2
+	},
 /turf/simulated/floor/tiled/old_tile/gray,
 /area/security/range)
 "qqC" = (
@@ -23429,6 +23429,13 @@
 /obj/structure/cable/green{
 	icon_state = "2-8"
 	},
+/obj/machinery/button/remote/blast_door{
+	id = "VaultAc";
+	name = "Vault Blast Door";
+	pixel_y = 32;
+	req_access = list(53);
+	req_one_access = list(53)
+	},
 /turf/simulated/floor/tiled,
 /area/security/nuke_storage)
 "uMi" = (
@@ -24784,6 +24791,7 @@
 /area/prison/cell_block)
 "vIC" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
+/obj/machinery/camera/network/civilian,
 /turf/simulated/floor/wood,
 /area/vacant/vacant_shop)
 "vJO" = (
@@ -25990,6 +25998,20 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/maintenance/starboardsolar)
+"wOl" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
+/obj/machinery/button/remote/airlock{
+	id = "vault";
+	name = "Vault Door Lockdown";
+	specialfunctions = 4;
+	pixel_x = -30
+	},
+/turf/simulated/floor/tiled,
+/area/security/nuke_storage)
 "wOA" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 9
@@ -34685,7 +34707,7 @@ usp
 aWJ
 szl
 yeI
-szl
+aPW
 uGk
 fIm
 fIm
@@ -51933,7 +51955,7 @@ jDP
 jDP
 jDP
 uLy
-ukT
+wOl
 ukT
 ukT
 ukT
