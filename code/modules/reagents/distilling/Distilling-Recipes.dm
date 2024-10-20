@@ -9,36 +9,12 @@
 
 	var/temp_shift = 0 // How much the temperature changes when the reaction occurs.
 
-/datum/chemical_reaction/distilling/can_happen(var/datum/reagent_holder/holder)
-	//check that all the required reagents are present
-	if(!holder.has_all_reagents(required_reagents))
-		return 0
-
-	//check that all the required catalysts are present in the required amount
-	if(!holder.has_all_reagents(catalysts))
-		return 0
-
-	//check that none of the inhibitors are present in the required amount
-	if(holder.has_any_reagent(inhibitors))
-		return 0
-
-	if(!istype(holder.my_atom, /obj/item/reagent_containers/glass/distilling))
-		return 0
-
-	else // Super special temperature check.
-		var/obj/item/reagent_containers/glass/distilling/D = holder.my_atom
-		var/obj/machinery/portable_atmospherics/powered/reagent_distillery/RD = D.Master
-		if(RD.current_temp < temp_range[1] || RD.current_temp > temp_range[2])
-			return 0
-
-	return 1
-
-/datum/chemical_reaction/distilling/on_reaction(datum/reagent_holder/holder, created_volume)
+/datum/chemical_reaction/distilling/on_reaction_tick(datum/reagent_holder/holder, delta_time, multiplier)
+	. = ..()
 	if(istype(holder.my_atom, /obj/item/reagent_containers/glass/distilling))
 		var/obj/item/reagent_containers/glass/distilling/D = holder.my_atom
 		var/obj/machinery/portable_atmospherics/powered/reagent_distillery/RD = D.Master
 		RD.current_temp += temp_shift
-	return
 
 // Subtypes //
 
