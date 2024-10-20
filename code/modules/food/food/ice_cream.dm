@@ -187,8 +187,7 @@ ICE_CREAM_PATHS(/datum/reagent/drink/juice/apple, apple)
 	melt_more()
 
 /obj/effect/debris/cleanable/ice_cream/proc/start_reaction()
-	atom_flags &= ~NOREACT
-	reagents?.handle_reactions()
+	reagents.set_no_react(FALSE)
 
 /obj/effect/debris/cleanable/ice_cream/proc/melt_more()
 	cut_overlays()

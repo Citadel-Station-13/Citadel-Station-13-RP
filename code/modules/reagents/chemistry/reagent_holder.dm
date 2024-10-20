@@ -45,7 +45,9 @@
 	reagents_holder_flags = new_flags
 
 /datum/reagent_holder/Destroy()
-	STOP_PROCESSING(SSchemistry, src)
+	if(reagent_holder_flags & REAGENT_HOLDER_FLAG_CURRENTLY_REACTING)
+		stop_reacting()
+
 	for(var/datum/reagent/R in reagent_list)
 		qdel(R)
 	reagent_list = null
@@ -114,7 +116,16 @@
 
 /* Holder-to-chemical */
 
-/datum/reagent_holder/proc/add_reagent(id, amount, data = null, safety = 0)
+/**
+ * Core proc: Add a specific amount of a reagent.
+ *
+ * @parmas
+ * * id - reagent ID. Typepaths are allowed too.
+ * * amount - amount to add.
+ * * data_initializer - data_initializer passed to relevant /datum/reagent procs when initializing data.
+ * * skip_reactions - don't do reaction checks or similar.
+ */
+/datum/reagent_holder/proc/add_reagent(id, amount, data_initializer, skip_reactions)
 	if(ispath(id))
 		var/datum/reagent/accessing = id
 		id = initial(accessing.id)
@@ -164,7 +175,15 @@
 			del_reagent(R.id)
 			update_total()
 
-/datum/reagent_holder/proc/remove_reagent(id, amount, safety = 0)
+/**
+ * Core proc: Remove a specific amount of a reagent.
+ *
+ * @parmas
+ * * id - reagent ID. Typepaths are allowed too.
+ * * amount - amount to add.
+ * * skip_reactions - don't do reaction checks or similar.
+ */
+/datum/reagent_holder/proc/remove_reagent(id, amount, skip_reactions)
 	if(ispath(id))
 		var/datum/reagent/path = id
 		id = initial(path.id)
@@ -515,7 +534,7 @@
 			do_happen = TRUE
 	return do_happen
 
-//? Queries
+//* Queries *//
 
 /**
  * returns volume remaining
@@ -539,7 +558,26 @@
 		if(!.)
 			return
 
-//? Transfers
+//* Setters *//
+
+/**
+ * Sets our host atom
+ */
+/datum/reagent_holder/proc/set_atom(atom/new_atom)
+	#warn impl; recheck reactions
+
+/**
+ * Sets if we're no-react
+ *
+ * @params
+ * * new_value - should we block reactions? TRUE / FALSE.
+ * * no_check_reactions - We usually check reactions immediately. This will halt reactions if we're set to no-react, and start them otherwise.
+ *                     If 'no_check_reactions' is set to TRUE, we skip that.
+ */
+/datum/reagent_holder/proc/set_no_react(new_value, no_check_reactions)
+	#warn impl
+
+//* Transfers *//
 
 /**
  * @params
@@ -600,7 +638,7 @@
 			handle_reactions()
 		target.handle_reactions()
 
-//? UI
+//* UI *//
 
 /**
  * data list for ReagentContents in /tgui/interfaces/common/Reagents.tsx
