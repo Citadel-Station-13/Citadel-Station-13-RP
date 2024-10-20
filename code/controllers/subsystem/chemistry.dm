@@ -5,9 +5,12 @@ SUBSYSTEM_DEF(chemistry)
 
 	/// id to instance dict of reagents
 	var/list/reagent_lookup = list()
-
+	/// flat list of all chemical reactions
 	var/list/chemical_reactions = list()
+	///
+
 	var/list/chemical_reactions_by_reagent = list()
+	#warn kill this
 
 	/// reacting holders
 	var/static/list/datum/reagent_holder/reacting_holders = list()
