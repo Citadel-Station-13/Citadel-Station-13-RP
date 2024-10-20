@@ -5991,18 +5991,6 @@
 	},
 /turf/simulated/floor/wood,
 /area/bridge/office)
-"eXG" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/obj/structure/cable/green{
-	icon_state = "1-2"
-	},
-/turf/simulated/floor/tiled/steel,
-/area/endeavour/hallway/d1porthall)
 "eYd" = (
 /obj/machinery/access_button/airlock_interior{
 	frequency = 1380;
@@ -16492,9 +16480,6 @@
 /obj/effect/floor_decal/corner/navblue/border{
 	dir = 8
 	},
-/obj/structure/cable/green{
-	icon_state = "1-2"
-	},
 /obj/machinery/camera/network/civilian{
 	dir = 4
 	},
@@ -16567,12 +16552,6 @@
 	},
 /obj/effect/floor_decal/corner/navblue/border{
 	dir = 8
-	},
-/obj/machinery/power/apc/west_mount{
-	cell_type = /obj/item/cell/super
-	},
-/obj/structure/cable/green{
-	icon_state = "0-4"
 	},
 /obj/machinery/light{
 	dir = 8;
@@ -17504,18 +17483,6 @@
 "ogT" = (
 /turf/simulated/wall/prepainted/medical,
 /area/endeavour/hallway/d1fwdmaint)
-"ohq" = (
-/obj/effect/floor_decal/borderfloorblack{
-	dir = 8
-	},
-/obj/effect/floor_decal/corner/navblue/border{
-	dir = 8
-	},
-/obj/structure/cable/green{
-	icon_state = "1-2"
-	},
-/turf/simulated/floor/tiled/steel,
-/area/endeavour/hallway/d1porthall)
 "oid" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 9
@@ -17850,9 +17817,6 @@
 	},
 /obj/machinery/door/firedoor{
 	dir = 8
-	},
-/obj/structure/cable/green{
-	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d1porthall)
@@ -18259,15 +18223,6 @@
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/shuttle/courser/general)
-"oQu" = (
-/obj/structure/cable/green{
-	icon_state = "1-2"
-	},
-/obj/structure/cable/green{
-	icon_state = "2-8"
-	},
-/turf/simulated/floor/tiled/dark,
-/area/endeavour/hallway/d1porthall)
 "oQJ" = (
 /obj/machinery/door/firedoor{
 	dir = 8
@@ -21841,21 +21796,6 @@
 /obj/structure/table/woodentable,
 /turf/simulated/floor/wood,
 /area/library)
-"sgf" = (
-/obj/effect/floor_decal/borderfloorblack{
-	dir = 8
-	},
-/obj/effect/floor_decal/corner/navblue/border{
-	dir = 8
-	},
-/obj/machinery/power/apc/west_mount{
-	cell_type = /obj/item/cell/super
-	},
-/obj/structure/cable/green{
-	icon_state = "0-2"
-	},
-/turf/simulated/floor/tiled/steel,
-/area/endeavour/hallway/d1afthall)
 "sgr" = (
 /obj/machinery/door/blast/regular{
 	id = "gateway";
@@ -23122,18 +23062,6 @@
 /obj/machinery/fire_alarm/east_mount,
 /turf/simulated/floor/carpet/blucarpet,
 /area/lawoffice)
-"tnK" = (
-/obj/effect/floor_decal/borderfloorblack/corner{
-	dir = 8
-	},
-/obj/effect/floor_decal/corner/navblue/bordercorner{
-	dir = 8
-	},
-/obj/structure/cable/green{
-	icon_state = "1-2"
-	},
-/turf/simulated/floor/tiled/steel,
-/area/endeavour/hallway/d1porthall)
 "tog" = (
 /obj/machinery/air_alarm{
 	dir = 4;
@@ -24416,9 +24344,6 @@
 /obj/machinery/light{
 	dir = 8
 	},
-/obj/structure/cable/green{
-	icon_state = "1-2"
-	},
 /turf/simulated/floor/tiled/steel_ridged,
 /area/endeavour/hallway/d1porthall)
 "uke" = (
@@ -24534,21 +24459,6 @@
 /obj/structure/closet/emcloset,
 /turf/simulated/floor/tiled/dark,
 /area/bridge)
-"uop" = (
-/obj/effect/floor_decal/borderfloorblack{
-	dir = 8
-	},
-/obj/effect/floor_decal/corner/navblue/border{
-	dir = 8
-	},
-/obj/machinery/power/apc/west_mount{
-	cell_type = /obj/item/cell/super
-	},
-/obj/structure/cable/green{
-	icon_state = "0-2"
-	},
-/turf/simulated/floor/tiled/steel,
-/area/endeavour/hallway/d1porthall)
 "uoD" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -24782,9 +24692,6 @@
 	},
 /obj/effect/floor_decal/corner/navblue/bordercorner{
 	dir = 1
-	},
-/obj/structure/cable/green{
-	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d1porthall)
@@ -29224,9 +29131,6 @@
 	},
 /obj/effect/floor_decal/corner/navblue/border{
 	dir = 10
-	},
-/obj/structure/cable/green{
-	icon_state = "1-4"
 	},
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d1porthall)
@@ -39977,7 +39881,7 @@ kno
 kHh
 nHQ
 cxg
-sgf
+vll
 wlW
 jfk
 dct
@@ -46768,7 +46672,7 @@ nYt
 jBa
 yfL
 kiW
-oQu
+kiW
 kiW
 mKR
 kiW
@@ -54710,15 +54614,15 @@ pQR
 oCc
 sxX
 oCc
-uop
+eRR
 npZ
-ohq
+eRR
 ujU
-ohq
+eRR
 ovE
 uvX
-eXG
-tnK
+cPY
+cQC
 ydG
 uTr
 maa
@@ -54913,7 +54817,7 @@ bDI
 ecv
 cPY
 sZv
-lJy
+mne
 uTr
 maa
 vlU
