@@ -3716,6 +3716,13 @@
 /obj/effect/floor_decal/corner/mauve/border,
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology)
+"cET" = (
+/obj/structure/catwalk,
+/obj/structure/cable/green{
+	icon_state = "2-8"
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/research)
 "cEY" = (
 /obj/structure/closet/emcloset,
 /obj/effect/floor_decal/borderfloorwhite{
@@ -8652,7 +8659,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/obj/structure/sign/deck/third,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
@@ -9413,6 +9419,13 @@
 	},
 /turf/simulated/floor/wood,
 /area/rnd/hallway)
+"gBJ" = (
+/obj/structure/catwalk,
+/obj/structure/cable/green{
+	icon_state = "1-4"
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/research)
 "gBN" = (
 /obj/effect/floor_decal/industrial/outline,
 /turf/simulated/floor/tiled,
@@ -11497,9 +11510,11 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/medbay3)
 "hXV" = (
-/obj/map_helper/network_builder/power_cable/green/auto,
 /obj/machinery/light,
 /obj/structure/catwalk,
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/plating,
 /area/maintenance/research)
 "hXW" = (
@@ -14225,6 +14240,10 @@
 /obj/effect/floor_decal/corner/paleblue/border,
 /turf/simulated/floor/tiled/white,
 /area/medical/medbay3)
+"jRu" = (
+/obj/structure/sign/deck/third,
+/obj/structure/sign/deck/second,
+/area/endeavour/station/stairs_three)
 "jRE" = (
 /turf/space/basic,
 /area/endeavour/command/turrets)
@@ -20038,6 +20057,13 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/rnd/research_restroom)
+"ogd" = (
+/obj/structure/catwalk,
+/obj/structure/cable/green{
+	icon_state = "1-8"
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/research)
 "ogg" = (
 /obj/structure/cable/orange{
 	icon_state = "4-8"
@@ -26840,7 +26866,7 @@
 /turf/simulated/floor/plating,
 /area/endeavour/hallway/d2aftmaint)
 "sBd" = (
-/obj/structure/sign/deck/third,
+/obj/structure/sign/deck/second,
 /turf/simulated/wall/prepainted,
 /area/endeavour/station/stairs_three)
 "sBg" = (
@@ -28398,8 +28424,10 @@
 	dir = 1
 	},
 /obj/machinery/door/airlock/maintenance/common,
-/obj/map_helper/network_builder/power_cable/green/auto,
 /obj/structure/catwalk,
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
 /turf/simulated/floor/plating,
 /area/maintenance/research)
 "tGx" = (
@@ -33434,6 +33462,16 @@
 	},
 /turf/simulated/floor/reinforced,
 /area/rnd/xenobiology)
+"xfb" = (
+/obj/structure/catwalk,
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/obj/structure/cable/green{
+	icon_state = "2-4"
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/research)
 "xfy" = (
 /obj/machinery/light{
 	dir = 8
@@ -33686,8 +33724,10 @@
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d2starboardhall)
 "xnR" = (
-/obj/map_helper/network_builder/power_cable/green/auto,
 /obj/structure/catwalk,
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/plating,
 /area/maintenance/research)
 "xoj" = (
@@ -33838,11 +33878,11 @@
 /turf/simulated/floor/tiled/steel,
 /area/rnd/chemistry_lab)
 "xtv" = (
-/obj/machinery/atmospherics/pipe/manifold4w/visible/scrubbers,
 /obj/machinery/atmospherics/pipe/manifold4w/hidden/supply,
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
+/obj/machinery/atmospherics/pipe/manifold4w/hidden/scrubbers,
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d2fwdhall)
 "xtD" = (
@@ -34851,6 +34891,13 @@
 /obj/machinery/power/apc/east_mount,
 /turf/simulated/floor/tiled/white,
 /area/holodeck_control)
+"yfn" = (
+/obj/structure/catwalk,
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/research)
 "yfA" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
@@ -44623,7 +44670,7 @@ tKR
 qNL
 oaU
 tvV
-tvV
+oaU
 eHm
 eHm
 ffK
@@ -49042,12 +49089,12 @@ pRW
 pRW
 uPt
 mdP
-xnR
-xnR
-xnR
-xnR
-xnR
-xnR
+yfn
+yfn
+yfn
+yfn
+yfn
+gBJ
 ffI
 ffI
 ffI
@@ -50793,7 +50840,7 @@ cmc
 uow
 xIf
 xIf
-xnR
+xfb
 pyQ
 qIo
 apN
@@ -52922,12 +52969,12 @@ jRE
 qBd
 uPt
 xIf
-xnR
-xnR
+cET
+yfn
 tFT
-xnR
-xnR
-xnR
+yfn
+yfn
+ogd
 oLT
 oLT
 oLT
@@ -53935,7 +53982,7 @@ kYR
 oDd
 qIz
 qIz
-sBd
+jRu
 gyS
 icI
 peU
