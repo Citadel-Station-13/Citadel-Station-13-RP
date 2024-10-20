@@ -308,11 +308,15 @@
  * Can we happen in a given container? Checks everything.
  */
 /datum/chemical_reaction/proc/can_start(datum/reagent_holder/holder)
+	if(required_container_path && !istype(holder.my_atom, required_container_path))
+		return FALSE
+	return can_proceed(holder)
 
 /**
  * Can we proceed in a given container? Only checks some specific things
  */
 /datum/chemical_reaction/proc/can_proceed(datum/reagent_holder/holder)
+	#warn impl; change can_start as needed
 
 //* Reaction Hooks *//
 

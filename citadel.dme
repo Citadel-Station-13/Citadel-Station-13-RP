@@ -4593,6 +4593,7 @@
 #include "code\modules\reagents\chemistry\reagent_holder-reactions.dm"
 #include "code\modules\reagents\chemistry\reagent_holder.dm"
 #include "code\modules\reagents\chemistry\wiki_generation.dm"
+#include "code\modules\reagents\chemistry\reactions\legacy_solidification.dm"
 #include "code\modules\reagents\chemistry\reactions\medicine.dm"
 #include "code\modules\reagents\chemistry\reactions\food\food-synthesis.dm"
 #include "code\modules\reagents\chemistry\reagents\Chemistry-Reagents-Core.dm"

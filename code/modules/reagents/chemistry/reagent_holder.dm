@@ -133,18 +133,20 @@
 	if(!isnum(amount) || amount <= 0)
 		return 0
 
+	// todo: rewrite this entire proc; especially data.
+
 	update_total()
 	amount = min(amount, available_volume())
 
 	for(var/datum/reagent/current in reagent_list)
 		if(current.id == id)
 			if(current.id == "blood")
-				if(data && !isnull(data["species"]) && !isnull(current.data["species"]) && data["species"] != current.data["species"])	// Species bloodtypes are already incompatible, this just stops it from mixing into the one already in a container.
+				if(data_initializer && !isnull(data_initializer["species"]) && !isnull(current.data["species"]) && data_initializer["species"] != current.data["species"])	// Species bloodtypes are already incompatible, this just stops it from mixing into the one already in a container.
 					continue
 
 			current.volume += amount
-			if(!isnull(data)) // For all we know, it could be zero or empty string and meaningful
-				current.mix_data(src, current.data, current.volume, data, amount)
+			if(!isnull(data_initializer)) // For all we know, it could be zero or empty string and meaningful
+				current.mix_data(src, current.data, current.volume, data_initializer, amount)
 			update_total()
 			if(!safety)
 				handle_reactions()
@@ -157,7 +159,7 @@
 		reagent_list += R
 		R.holder = src
 		R.volume = amount
-		R.initialize_data(data)
+		R.initialize_data(data_initializer)
 		update_total()
 		if(!safety)
 			handle_reactions()

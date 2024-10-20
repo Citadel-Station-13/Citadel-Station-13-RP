@@ -20,7 +20,7 @@
 	for(var/i in 1 to multiplier)
 		new synthesis_product_path(location)
 
-/datum/chemical_reaction/food/bluecheesewheel
+/datum/chemical_reaction/food/synthesis/bluecheesewheel
 	name = "Blue Cheese wheel"
 	id = "synthesis-bluecheesewheel"
 	result = null
@@ -29,7 +29,7 @@
 
 	synthesis_product_path = /obj/item/reagent_containers/food/snacks/sliceable/bluecheesewheel
 
-/datum/chemical_reaction/food/butter
+/datum/chemical_reaction/food/synthesis/butter
 	name = "Butter"
 	id = "butter"
 	result = null
@@ -37,7 +37,7 @@
 
 	synthesis_product_path = /obj/item/reagent_containers/food/snacks/spreads/butter
 
-/datum/chemical_reaction/food/cheesewheel
+/datum/chemical_reaction/food/synthesis/cheesewheel
 	name = "Cheese wheel"
 	id = "synthesis-cheesewheel"
 	result = null
@@ -46,7 +46,7 @@
 
 	synthesis_product_path = /obj/item/reagent_containers/food/snacks/sliceable/cheesewheel
 
-/datum/chemical_reaction/food/chocolate_bar
+/datum/chemical_reaction/food/synthesis/chocolate_bar
 	name = "Chocolate Bar"
 	id = "synthesis-chocolate_bar-milk"
 	result = null
@@ -54,7 +54,7 @@
 
 	synthesis_product_path = /obj/item/reagent_containers/food/snacks/chocolatebar
 
-/datum/chemical_reaction/food/chocolate_bar2
+/datum/chemical_reaction/food/synthesis/chocolate_bar2
 	name = "Chocolate Bar"
 	id = "synthesis-chocolate_bar-soymilk"
 	result = null
@@ -63,7 +63,7 @@
 
 	synthesis_product_path = /obj/item/reagent_containers/food/snacks/chocolatebar
 
-/datum/chemical_reaction/food/dough
+/datum/chemical_reaction/food/synthesis/dough
 	name = "Dough"
 	id = "synthesis-dough"
 	result = null
@@ -72,7 +72,7 @@
 
 	synthesis_product_path = /obj/item/reagent_containers/food/snacks/dough
 
-/datum/chemical_reaction/food/meatball
+/datum/chemical_reaction/food/synthesis/meatball
 	name = "Meatball"
 	id = "synthesis-meatball"
 	result = null
@@ -81,7 +81,7 @@
 
 	synthesis_product_path = /obj/item/reagent_containers/food/snacks/meatball
 
-/datum/chemical_reaction/food/meatsicle
+/datum/chemical_reaction/food/synthesis/meatsicle
 	name = "Meatsicle"
 	id = "meatsicle"
 	result = "meatsicle"
@@ -89,7 +89,7 @@
 
 	synthesis_product_path = /obj/item/reagent_containers/food/snacks/meatsicle
 
-/datum/chemical_reaction/food/synthflesh
+/datum/chemical_reaction/food/synthesis/synthflesh
 	name = "Synthflesh"
 	id = "synthesis-synthflesh"
 	result = null
@@ -97,7 +97,7 @@
 
 	synthesis_product_path = /obj/item/reagent_containers/food/snacks/meat/synthflesh
 
-/datum/chemical_reaction/food/tofu
+/datum/chemical_reaction/food/synthesis/tofu
 	name = "Tofu"
 	id = "synthesis-tofu"
 	required_reagents = list("soymilk" = 10)
