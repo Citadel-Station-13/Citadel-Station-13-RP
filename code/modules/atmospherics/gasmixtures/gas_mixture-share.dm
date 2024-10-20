@@ -25,6 +25,11 @@
 #ifdef CF_ATMOS_XGM_UPDATE_VALUES_ASSERTIONS
 	ASSERT(gas ~= debug_gas_archive)
 #endif
+	// if both of us are empty, bail or division by zero's happen later
+	// this proc can handle up to one empty mixture after this check, as this check
+	// throws out cases of two empty mixtures
+	if(!total_moles && !other.total_moles)
+		return
 
 	// tally total group multiplier & volume for further processing
 	var/total_effective_volume = src.group_multiplier * src.volume + other.group_multiplier * other.volume
@@ -46,8 +51,12 @@
 		var/mol_existing_B = other.gas[gas]
 		// tally specific heat while we're at it to save a proccall and more iteration
 		var/specific_heat = global.gas_data.specific_heats[gas]
-		our_specific_heat += (specific_heat * mol_existing_A) / src.total_moles
-		their_specific_heat += (specific_heat * mol_existing_B) / other.total_moles
+		// if we're empty, we have no specific heat
+		if(src.total_moles)
+			our_specific_heat += (specific_heat * mol_existing_A) / src.total_moles
+		// if they're empty, they have no specific heat
+		if(other.total_moles)
+			their_specific_heat += (specific_heat * mol_existing_B) / other.total_moles
 		// combine both, calculate the amount actualyl being shared, then split to to each by volume
 		// need to divide out group multiplier too, as volume takes that into account
 		var/combined = (mol_existing_A * src.group_multiplier + mol_existing_B * other.group_multiplier) * ratio
