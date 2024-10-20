@@ -267,7 +267,7 @@ SUBSYSTEM_DEF(materials)
 /datum/controller/subsystem/materials/proc/tgui_materials_context(list/ids, full = FALSE)
 	var/list/data = list()
 	// a hack to make this default to all if not specified.
-	for(var/id in ids || material_lookup)
+	for((var/id in ids) || material_lookup)
 		var/datum/material/mat = material_lookup[id]
 		var/list/built = list(
 			"name" = mat.display_name || mat.name,
