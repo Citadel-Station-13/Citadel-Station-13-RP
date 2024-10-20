@@ -37,6 +37,8 @@
 	/// result reagent path or id. prefer path for compile time checking.
 	var/result
 	/// how much of the result is made per 1 ratio of required_reagents consumed.
+	///
+	/// * If this is 0, multiplier / calculations still work; we just won't make any result reagents. Useful for pyrotechnics.
 	var/result_amount = 0
 
 	/// priority - higher is checked first when reacting.
@@ -101,7 +103,7 @@
 	/// 0 for instant
 	var/reaction_half_life = 0
 	#warn half_life
-	/// when leftover volume is under this for reaction, don't care about half life and finish the rest
+	/// when total reactant volume is under this for reaction, don't care about half life and finish the rest
 	///
 	/// * has no effect on instant reactions
 	var/reaction_completion_threshold = 0.2
@@ -126,11 +128,14 @@
 	/// catalysts: reagent ids or paths
 	///
 	/// * these are required reagents to perform the reaction
+	/// * associate to amounts; default 0
 	var/list/catalysts
 
 	/// equilibrium point; less than 1, reaction will be inhibited if ratio of product to reactant is above that
 	///
 	/// * has no effect on instant reactions
+	/// * makes no sense on reactions without a product
+	/// * overrules reaction_completion_threshold!
 	///
 	/// Examples:
 	///
@@ -226,34 +231,6 @@
 
 	return 1
 
-/datum/chemical_reaction/proc/calc_reaction_progress(datum/reagent_holder/holder, reaction_limit)
-	var/progress = reaction_limit * reaction_rate //simple exponential progression
-
-	//calculate yield
-	if(1-yield > 0.001) //if yield ratio is big enough just assume it goes to completion
-		/*
-			Determine the max amount of product by applying the yield condition:
-			(max_product/result_amount) / reaction_limit == yield/(1-yield)
-
-			We make use of the fact that:
-			reaction_limit = (holder.get_reagent_amount(reactant) / required_reagents[reactant]) of the limiting reagent.
-		*/
-		var/yield_ratio = yield/(1-yield)
-		var/max_product = yield_ratio * reaction_limit * result_amount //rearrange to obtain max_product
-		var/yield_limit = max(0, max_product - holder.get_reagent_amount(result))/result_amount
-
-		progress = min(progress, yield_limit) //apply yield limit
-
-	//apply min reaction progress - wasn't sure if this should go before or after applying yield
-	//I guess people can just have their miniscule reactions go to completion regardless of yield.
-	for(var/reactant in required_reagents)
-		var/remainder = holder.get_reagent_amount(reactant) - progress*required_reagents[reactant]
-		if(remainder <= min_reaction*required_reagents[reactant])
-			progress = reaction_limit
-			break
-
-	return progress
-
 /datum/chemical_reaction/process(datum/reagent_holder/holder)
 	//determine how far the reaction can proceed
 	var/list/reaction_limits = list()
@@ -325,7 +302,19 @@
 		"alcoholStrength" = null,
 	)
 
-//* Reactions *//
+//* Checks *//
+
+/**
+ * Can we happen in a given container? Checks everything.
+ */
+/datum/chemical_reaction/proc/can_start(datum/reagent_holder/holder)
+
+/**
+ * Can we proceed in a given container? Only checks some specific things
+ */
+/datum/chemical_reaction/proc/can_proceed(datum/reagent_holder/holder)
+
+//* Reaction Hooks *//
 
 /**
  * on reaction start
@@ -346,9 +335,10 @@
  *
  * @params
  * * holder - the reacting holder
+ * * delta_time - elapsed time in seconds
  * * multiplier - multiples of result_amount made. 2 on a 1u result is 2u, 2 on a 2u result is 4, etc.
  */
-/datum/chemical_reaction/proc/on_reaction_tick(datum/reagent_holder/holder, multiplier)
+/datum/chemical_reaction/proc/on_reaction_tick(datum/reagent_holder/holder, delta_time, multiplier)
 	return
 
 /**

@@ -14,7 +14,7 @@ SUBSYSTEM_DEF(chemistry)
 
 	/// reacting holders
 	var/static/list/datum/reagent_holder/reacting_holders = list()
-	#warn hook
+	#warn hook; besure to null check as this runs every tick!
 
 /datum/controller/subsystem/chemistry/Recover()
 	chemical_reactions = SSchemistry.chemical_reactions

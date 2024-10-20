@@ -1,0 +1,106 @@
+//? Keep this file sorted. ?//
+
+/**
+ * Recipes that collapse into, per-unit-reaction, an item.
+ */
+/datum/chemical_reaction/food/synthesis
+	require_whole_numbers = TRUE
+	result_amount = 1
+	result = null
+
+	/// item to make
+	var/synthesis_product_path
+
+/datum/chemical_reaction/food/synthesis/on_reaction_instant(datum/reagent_holder/holder, multiplier)
+	. = ..()
+	var/turf/location = get_turf(holder.my_atom)
+	if(!location)
+		return
+	#warn log
+	for(var/i in 1 to multiplier)
+		new synthesis_product_path(location)
+
+/datum/chemical_reaction/food/bluecheesewheel
+	name = "Blue Cheese wheel"
+	id = "synthesis-bluecheesewheel"
+	result = null
+	required_reagents = list("milk" = 40, "virusfood" = 5)
+	result_amount = 1
+
+	synthesis_product_path = /obj/item/reagent_containers/food/snacks/sliceable/bluecheesewheel
+
+/datum/chemical_reaction/food/butter
+	name = "Butter"
+	id = "butter"
+	result = null
+	required_reagents = list("cream" = 20, "sodiumchloride" = 1)
+
+	synthesis_product_path = /obj/item/reagent_containers/food/snacks/spreads/butter
+
+/datum/chemical_reaction/food/cheesewheel
+	name = "Cheese wheel"
+	id = "synthesis-cheesewheel"
+	result = null
+	required_reagents = list("milk" = 40)
+	catalysts = list("enzyme" = 5)
+
+	synthesis_product_path = /obj/item/reagent_containers/food/snacks/sliceable/cheesewheel
+
+/datum/chemical_reaction/food/chocolate_bar
+	name = "Chocolate Bar"
+	id = "synthesis-chocolate_bar-milk"
+	result = null
+	required_reagents = list("soymilk" = 2, "coco" = 2, "sugar" = 2)
+
+	synthesis_product_path = /obj/item/reagent_containers/food/snacks/chocolatebar
+
+/datum/chemical_reaction/food/chocolate_bar2
+	name = "Chocolate Bar"
+	id = "synthesis-chocolate_bar-soymilk"
+	result = null
+	required_reagents = list("milk" = 2, "coco" = 2, "sugar" = 2)
+	result_amount = 1
+
+	synthesis_product_path = /obj/item/reagent_containers/food/snacks/chocolatebar
+
+/datum/chemical_reaction/food/dough
+	name = "Dough"
+	id = "synthesis-dough"
+	result = null
+	required_reagents = list("egg" = 3, "flour" = 10)
+	inhibitors = list("water" = 1, "beer" = 1) //To prevent it messing with batter recipes
+
+	synthesis_product_path = /obj/item/reagent_containers/food/snacks/dough
+
+/datum/chemical_reaction/food/meatball
+	name = "Meatball"
+	id = "synthesis-meatball"
+	result = null
+	required_reagents = list("protein" = 3, "flour" = 5)
+	result_amount = 3
+
+	synthesis_product_path = /obj/item/reagent_containers/food/snacks/meatball
+
+/datum/chemical_reaction/food/meatsicle
+	name = "Meatsicle"
+	id = "meatsicle"
+	result = "meatsicle"
+	required_reagents = list("protein" = 6, "ice" = 6)
+
+	synthesis_product_path = /obj/item/reagent_containers/food/snacks/meatsicle
+
+/datum/chemical_reaction/food/synthflesh
+	name = "Synthflesh"
+	id = "synthesis-synthflesh"
+	result = null
+	required_reagents = list("blood" = 5, "clonexadone" = 1)
+
+	synthesis_product_path = /obj/item/reagent_containers/food/snacks/meat/synthflesh
+
+/datum/chemical_reaction/food/tofu
+	name = "Tofu"
+	id = "synthesis-tofu"
+	required_reagents = list("soymilk" = 10)
+	catalysts = list("enzyme" = 5)
+
+	synthesis_product_path = /obj/item/reagent_containers/food/snacks/tofu
