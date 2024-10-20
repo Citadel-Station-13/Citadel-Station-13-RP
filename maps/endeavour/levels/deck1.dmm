@@ -4788,14 +4788,6 @@
 	},
 /turf/simulated/floor/wood,
 /area/hydroponics/garden)
-"ecY" = (
-/obj/structure/cable/green{
-	icon_state = "1-2"
-	},
-/obj/machinery/power/apc/east_mount,
-/obj/structure/cable/green,
-/turf/simulated/floor/tiled/techfloor/grid,
-/area/hallway/secondary/docking_hallway)
 "edF" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -14411,6 +14403,9 @@
 	},
 /obj/machinery/door/firedoor,
 /obj/map_helper/access_helper/airlock/station/engineering/department,
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/command)
 "lCw" = (
@@ -21063,6 +21058,9 @@
 	},
 /obj/machinery/door/firedoor,
 /obj/map_helper/access_helper/airlock/station/engineering/department,
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/exploration)
 "rqI" = (
@@ -26522,6 +26520,9 @@
 	},
 /obj/machinery/door/firedoor,
 /obj/map_helper/access_helper/airlock/station/engineering/department,
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/civilian)
 "vRx" = (
@@ -38257,7 +38258,7 @@ xUN
 qgw
 xxD
 vYA
-ecY
+xxD
 xxD
 wvb
 sQl
