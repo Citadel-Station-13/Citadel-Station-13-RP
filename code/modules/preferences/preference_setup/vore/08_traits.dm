@@ -99,7 +99,7 @@
 		if(!istype(T) || !T.extra_id_info_optional)
 			pref.id_hidden_traits -= path
 			continue
-		if(!(path in pref.pos_traits + pref.neu_traits + pref.neg_traits))
+		if(!(path in (pref.pos_traits + pref.neu_traits + pref.neg_traits)))
 			pref.id_hidden_traits -= path
 
 	var/datum/species/selected_species = pref.real_species_datum()
