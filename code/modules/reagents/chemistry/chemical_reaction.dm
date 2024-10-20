@@ -30,9 +30,8 @@
 	var/list/required_reagents = list()
 	/// require whole numbers of all reagents taken
 	///
-	/// * only checked for instant reactions
-	/// * if an instant reaction is turned into a non-instant, this is ignored!
-	var/reuqire_whole_numbers_while_instant = TRUE
+	/// * has no effect on ticked (non-instant) reactions
+	var/require_whole_numbers = TRUE
 	#warn impl
 
 	/// result reagent path or id. prefer path for compile time checking.
@@ -53,18 +52,22 @@
 	/// optimal temperature; if non-null, reaction will slow down linearly when away from
 	/// this temperature
 	///
-	/// * if reaction rate is instant and this is set, the half-life
-	///   will be set to 1.
+	/// * has no effect on instant reactions
 	var/temperature_center
 	#warn impl
 	/// degrees +- from center where speed is still optimal
+	///
+	/// * has no effect on instant reactions
 	var/temperature_center_edge = 0
 	#warn impl
 	/// highest multiplier to half life at edge of allowable temperatures
+	///
+	/// * has no effect on instant reactions
 	var/temperature_penalty_maximum = 10
 	#warn impl
 	/// amount of flat area at edge of allowable temperatures
 	///
+	/// * has no effect on instant reactions
 	/// * e.g. if min/max is 100K, 300K, and this is set to 10,
 	///   and penalty_maximum is 10, the half life will be 10 times slower
 	///   at 100-110K, and 290-300K
@@ -77,14 +80,19 @@
 	var/ph_high
 	/// optimal ph for reaction; if non-null, the reaction will slow down linearly when away from this ph
 	///
-	/// * if set on an instant reaction, half-life will be forced to 1
+	/// * has no effect on instant reactions
 	var/ph_center
 	/// degrees +- from center where speed is optimal
+	///
+	/// * has no effect on instant reactions
 	var/ph_center_edge = 0
 	/// highest multiplier to half-life at edge of allowable ph
+	///
+	/// * has no effect on instant reactions
 	var/ph_penalty_maximum = 10
 	/// amount of flat area at edge of allowable ph
 	///
+	/// * has no effect on instant reactions
 	/// * for min/max 3, 7 pH, and this is set to 0.1, this is at penalty-max at 3-3.1 and 6.9-7.0
 	var/ph_penalty_edge = 0
 
@@ -94,10 +102,14 @@
 	var/reaction_half_life = 0
 	#warn half_life
 	/// when leftover volume is under this for reaction, don't care about half life and finish the rest
+	///
+	/// * has no effect on instant reactions
 	var/reaction_completion_threshold = 0.2
 	#warn half_life_instant_volume
 
 	/// moderators: reagent ids or paths to number to determine how much it speeds reaction
+	///
+	/// * has no effect on instant reactions, other than being able to inhibit them if the moderation rate is too high.
 	///
 	/// number is multiplied to half life to get actual speed.
 	///
@@ -105,15 +117,22 @@
 	/// * < 1, but not 0 will speed reaction
 	/// * 0 will make reaction instant
 	/// * INFINITY will completely inhibit the reaction.
-	///
-	/// If a reaction is instant, the half life will instead be set to 1 if a moderator exists.
 	var/list/moderators
+	/// inhibitors: basically, INFINITY multiplier moderators. this is here to make the code cleaner.
+	///
+	/// * id or path allowed; prefer path for compile-time checking.
+	/// * this is null'd after New(); it's automatically merged into moderators.
+	var/list/inhibitors
 	/// catalysts: reagent ids or paths
 	///
 	/// * these are required reagents to perform the reaction
 	var/list/catalysts
 
 	/// equilibrium point; less than 1, reaction will be inhibited if ratio of product to reactant is above that
+	///
+	/// * has no effect on instant reactions
+	///
+	/// Examples:
 	///
 	/// * 0.5 = we stop when product == reactant volume
 	/// * 0.8 = we stop when product == 4 times reactant volume
@@ -140,6 +159,7 @@
 	generate()
 
 /datum/chemical_reaction/proc/resolve_paths()
+	// resolve ingredients
 	for(var/i in 1 to length(required_reagents))
 		var/datum/reagent/path = required_reagents[i]
 		if(!ispath(path))
@@ -148,6 +168,7 @@
 		var/id = initial(path.id)
 		required_reagents[i] = id
 		required_reagents[id] = amt
+	// resolve catalysts
 	for(var/i in 1 to length(catalysts))
 		var/datum/reagent/path = catalysts[i]
 		if(!ispath(path))
@@ -156,14 +177,20 @@
 		var/id = initial(path.id)
 		catalysts[i] = id
 		catalysts[id] = amt
+	// merge inhibitors
 	for(var/i in 1 to length(inhibitors))
-		var/datum/reagent/path = inhibitors[i]
+		moderators[inhibitors[i]] = INFINITY
+	inhibitors = null
+	// resolve moderators
+	for(var/i in 1 to length(moderators))
+		var/datum/reagent/path = moderators[i]
 		if(!ispath(path))
 			continue
-		var/amt = inhibitors[path]
+		var/amt = moderators[path]
 		var/id = initial(path.id)
-		inhibitors[i] = id
-		inhibitors[id] = amt
+		moderators[i] = id
+		moderators[id] = amt
+	// resolve product
 	if(ispath(result, /datum/reagent))
 		var/datum/reagent/result_initial = result
 		result = initial(result_initial.id)
@@ -182,7 +209,7 @@
 
 /datum/chemical_reaction/proc/can_happen(datum/reagent_holder/holder)
 	// check container
-	if(!isnull(required_container) && !istype(holder.my_atom, required_container))
+	if(!isnull(required_container_path) && !istype(holder.my_atom, required_container_path))
 		return FALSE
 
 	//check that all the required reagents are present
@@ -258,10 +285,13 @@
 
 //called when a reaction processes
 /datum/chemical_reaction/proc/on_reaction(datum/reagent_holder/holder, created_volume)
-	return
+	SHOULD_NOT_OVERRIDE(TRUE)
+	#warn kill
 
 //called after processing reactions, if they occurred
 /datum/chemical_reaction/proc/post_reaction(datum/reagent_holder/holder)
+	SHOULD_NOT_OVERRIDE(TRUE)
+	#warn kill
 	var/atom/container = holder.my_atom
 	if(mix_message && container && !ismob(container))
 		var/turf/T = get_turf(container)

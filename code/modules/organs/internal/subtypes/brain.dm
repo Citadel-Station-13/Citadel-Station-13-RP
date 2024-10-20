@@ -281,7 +281,7 @@
 		/datum/reagent/toxin/phoron = 40,
 	)
 	result_amount = 1
-	required_container = /obj/item/organ/internal/brain/slime
+	required_container_path = /obj/item/organ/internal/brain/slime
 
 /datum/chemical_reaction/promethean_brain_revival/on_reaction(datum/reagent_holder/holder)
 	var/obj/item/organ/internal/brain/slime/brain = holder.my_atom
