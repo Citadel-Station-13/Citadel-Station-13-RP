@@ -24606,7 +24606,6 @@
 /turf/simulated/wall/prepainted/civilian,
 /area/chapel/office)
 "uru" = (
-/obj/machinery/power/apc/south_mount,
 /obj/machinery/disposal,
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/heads/hop)
@@ -49800,9 +49799,9 @@ xRj
 xRj
 xRj
 usG
-xRj
-xRj
-xRj
+hfY
+hfY
+hfY
 jNb
 aNV
 mNs
@@ -49993,10 +49992,10 @@ xRj
 xRj
 xRj
 xRj
-xRj
-xRj
-xRj
-xRj
+hfY
+hfY
+hfY
+hfY
 fdP
 pmP
 mNs

@@ -6294,10 +6294,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/hydroponics)
-"fFd" = (
-/obj/structure/ladder/up,
-/turf/simulated/floor/plating,
-/area/maintenance/dormitory)
 "fFD" = (
 /obj/structure/closet/crate/bin{
 	anchored = 1
@@ -49451,7 +49447,7 @@ hLd
 tOV
 pCQ
 tOV
-fFd
+tOV
 tOV
 wkh
 pRW

@@ -13220,6 +13220,12 @@
 	},
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d2porthall)
+"jhy" = (
+/obj/machinery/camera/network/outside{
+	dir = 8
+	},
+/turf/simulated/floor/airless/ceiling,
+/area/space)
 "jhz" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -39157,9 +39163,9 @@ upp
 upp
 upp
 upp
-pRW
-pRW
-gYU
+fik
+fik
+jhy
 qBd
 lmG
 qBd
@@ -55695,7 +55701,7 @@ fUf
 fIp
 uhe
 qBd
-jRE
+grq
 pRW
 pRW
 pRW
@@ -55888,8 +55894,8 @@ dAF
 bMe
 xJh
 uhe
-pRW
-pRW
+fik
+fik
 pRW
 pRW
 pRW
@@ -56082,8 +56088,8 @@ fRk
 bxO
 jzJ
 uhe
-pRW
-pRW
+fik
+fik
 pRW
 pRW
 pRW
@@ -56276,8 +56282,8 @@ pxV
 xqg
 uhe
 uhe
-pRW
-pRW
+fik
+fik
 pRW
 pRW
 pRW
@@ -56470,8 +56476,8 @@ hnK
 sqk
 bWr
 rNS
-pRW
-pRW
+fik
+fik
 pRW
 pRW
 pRW
@@ -56664,8 +56670,8 @@ oGx
 waz
 xke
 rNS
-pRW
-pRW
+fik
+fik
 pRW
 pRW
 pRW
@@ -56858,8 +56864,8 @@ jBK
 waz
 xke
 rNS
-pRW
-pRW
+fik
+fik
 pRW
 pRW
 pRW
@@ -57052,8 +57058,8 @@ xow
 mri
 qrz
 rNS
-pRW
-pRW
+fik
+fik
 pRW
 pRW
 pRW
@@ -57246,8 +57252,8 @@ dSa
 edn
 lyO
 rNS
-pRW
-pRW
+fik
+fik
 pRW
 pRW
 pRW
@@ -57440,8 +57446,8 @@ fOS
 xHr
 sox
 rdA
-pRW
-pRW
+fik
+fik
 pRW
 pRW
 pRW
@@ -57634,8 +57640,8 @@ tpt
 wNb
 gtH
 rdA
-pRW
-pRW
+fik
+fik
 pRW
 pRW
 pRW
@@ -57828,8 +57834,8 @@ tCw
 xrU
 bJH
 rdA
-pRW
-pRW
+fik
+fik
 pRW
 pRW
 pRW
@@ -58022,8 +58028,8 @@ lAn
 eqL
 txt
 rdA
-pRW
-pRW
+fik
+fik
 pRW
 pRW
 pRW
@@ -58217,7 +58223,7 @@ lBC
 erj
 rdA
 qBd
-jRE
+grq
 pRW
 pRW
 pRW
@@ -58605,7 +58611,7 @@ iTB
 rMR
 rdA
 qBd
-jRE
+grq
 pRW
 pRW
 pRW
@@ -58798,8 +58804,8 @@ hff
 xgi
 qDJ
 rdA
-pRW
-pRW
+fik
+fik
 pRW
 pRW
 pRW
@@ -58992,8 +58998,8 @@ vKc
 lYK
 vKc
 rdA
-pRW
-pRW
+fik
+fik
 pRW
 pRW
 pRW
@@ -59186,8 +59192,8 @@ rdA
 rdA
 rdA
 rdA
-pRW
-pRW
+fik
+fik
 pRW
 pRW
 pRW
@@ -59380,8 +59386,8 @@ egt
 pgD
 dYQ
 dyS
-pRW
-pRW
+fik
+fik
 pRW
 pRW
 mDp
@@ -59574,8 +59580,8 @@ nmL
 dpF
 kYG
 dyS
-pRW
-pRW
+fik
+fik
 pRW
 pRW
 pRW
@@ -59768,8 +59774,8 @@ weg
 bYo
 bYo
 dyS
-pRW
-pRW
+fik
+fik
 pRW
 pRW
 pRW
