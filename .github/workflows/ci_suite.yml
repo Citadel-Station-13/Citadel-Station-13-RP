@@ -155,7 +155,7 @@ jobs:
         # mysql -u root -proot tg_ci_prefixed < SQL/tgstation_schema_prefixed.sql
       - name: Install rust-g
         run: |
-          bash tools/ci/install_rust_g.sh
+          bash tools/ci/install/install_rust_g.sh
       - name: Compile Tests
         id: compile_tests
         run: |
