@@ -16,7 +16,6 @@
 	prefix = "maps/sectors/admin_planets_192/"
 	suffix = "andromeda.dmm"
 
-
 /area/admin_planet/andromeda
 	name = "Andromeda Haven"
 	icon_state = "away"
