@@ -4,7 +4,13 @@ var/list/fusion_reactions
 	var/p_react = "" // Primary reactant.
 	var/s_react = "" // Secondary reactant.
 	var/minimum_energy_level = 1
+	/**
+	 * at one unit of reaction, how many joules of energy are consumed?
+	 */
 	var/energy_consumption = 0
+	/**
+	 * at one unit of reaction, how many joules of energy are released?
+	 */
 	var/energy_production = 0
 	var/radiation = 0
 	var/instability = 0
