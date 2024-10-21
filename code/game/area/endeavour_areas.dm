@@ -1,113 +1,113 @@
-/** Victory Hallways
+/** Endeavour Hallways
  */
 
 /** Deck 4
  */
-/area/victory/hallway/d4aftmaint
+/area/endeavour/hallway/d4aftmaint
 	name = "\improper Deck 4 Aft Maintenance"
 	icon_state = "amaint"
 
-/area/victory/hallway/d4fwdmaint
+/area/endeavour/hallway/d4fwdmaint
 	name = "\improper Deck 4 Forward Maintenance"
 	icon_state = "fmaint"
 
-/area/victory/hallway/d4fwdhall
+/area/endeavour/hallway/d4fwdhall
 	name = "\improper Deck 4 Forward Hallway"
 	icon_state = "hallF"
 
-/area/victory/hallway/d4afthall
+/area/endeavour/hallway/d4afthall
 	name = "\improper Deck 4 Aft Hallway"
 	icon_state = "hallA"
 
-/area/victory/hallway/d4porthall
+/area/endeavour/hallway/d4porthall
 	name = "\improper Deck 4 Port Hallway"
 	icon_state = "hallP"
 
-/area/victory/hallway/d4starboardhall
+/area/endeavour/hallway/d4starboardhall
 	name = "\improper Deck 4 Starboard Hallway"
 	icon_state = "hallS"
 
 /** Deck 3
  */
-/area/victory/hallway/d3aftmaint
+/area/endeavour/hallway/d3aftmaint
 	name = "\improper Deck 3 Aft Maintenance"
 	icon_state = "amaint"
 
-/area/victory/hallway/d3fwdmaint
+/area/endeavour/hallway/d3fwdmaint
 	name = "\improper Deck 3 Forward Maintenance"
 	icon_state = "fmaint"
 
-/area/victory/hallway/d3fwdhall
+/area/endeavour/hallway/d3fwdhall
 	name = "\improper Deck 3 Forward Hallway"
 	icon_state = "hallF"
 
-/area/victory/hallway/d3afthall
+/area/endeavour/hallway/d3afthall
 	name = "\improper Deck 3 Aft Hallway"
 	icon_state = "hallA"
 
-/area/victory/hallway/d3porthall
+/area/endeavour/hallway/d3porthall
 	name = "\improper Deck 3 Port Hallway"
 	icon_state = "hallP"
 
-/area/victory/hallway/d3starboardhall
+/area/endeavour/hallway/d3starboardhall
 	name = "\improper Deck 3 Starboard Hallway"
 	icon_state = "hallS"
 
 /** Deck 2
  */
-/area/victory/hallway/d2aftmaint
+/area/endeavour/hallway/d2aftmaint
 	name = "\improper Deck 2 Aft Maintenance"
 	icon_state = "amaint"
 
-/area/victory/hallway/d2fwdmaint
+/area/endeavour/hallway/d2fwdmaint
 	name = "\improper Deck 2 Forward Maintenance"
 	icon_state = "fmaint"
 
-/area/victory/hallway/d2fwdhall
+/area/endeavour/hallway/d2fwdhall
 	name = "\improper Deck 2 Forward Hallway"
 	icon_state = "hallF"
 
-/area/victory/hallway/d2afthall
+/area/endeavour/hallway/d2afthall
 	name = "\improper Deck 2 Aft Hallway"
 	icon_state = "hallA"
 
-/area/victory/hallway/d2porthall
+/area/endeavour/hallway/d2porthall
 	name = "\improper Deck 2 Port Hallway"
 	icon_state = "hallP"
 
-/area/victory/hallway/d2starboardhall
+/area/endeavour/hallway/d2starboardhall
 	name = "\improper Deck 2 Starboard Hallway"
 	icon_state = "hallS"
 
 /** Deck 1
  */
-/area/victory/hallway/d1aftmaint
+/area/endeavour/hallway/d1aftmaint
 	name = "\improper Deck 1 Aft Maintenance"
 	icon_state = "amaint"
 
-/area/victory/hallway/d1fwdmaint
+/area/endeavour/hallway/d1fwdmaint
 	name = "\improper Deck 1 Forward Maintenance"
 	icon_state = "fmaint"
 
-/area/victory/hallway/d1fwdhall
+/area/endeavour/hallway/d1fwdhall
 	name = "\improper Deck 1 Forward Hallway"
 	icon_state = "hallF"
 
-/area/victory/hallway/d1afthall
+/area/endeavour/hallway/d1afthall
 	name = "\improper Deck 1 Aft Hallway"
 	icon_state = "hallA"
 
-/area/victory/hallway/d1porthall
+/area/endeavour/hallway/d1porthall
 	name = "\improper Deck 1 Port Hallway"
 	icon_state = "hallP"
 
-/area/victory/hallway/d1starboardhall
+/area/endeavour/hallway/d1starboardhall
 	name = "\improper Deck 1 Starboard Hallway"
 	icon_state = "hallS"
 
 /** Command
  */
-/area/victory/command/turrets
+/area/endeavour/command/turrets
 	name = "\improper Point Defense Systems"
 	icon_state = "bridge"
 
@@ -119,15 +119,15 @@
 
 /** Exploration
  */
-/area/victory/exploration
+/area/endeavour/exploration
 	name = "\improper Exploration Department"
 	icon_state = "purple"
 	holomap_color = HOLOMAP_AREACOLOR_SCIENCE
 
-/area/victory/exploration/hallway_fore
+/area/endeavour/exploration/hallway_fore
 	name = "\improper Exploration Fore Hallway"
 
-/area/victory/exploration/hallway_aft
+/area/endeavour/exploration/hallway_aft
 	name = "\improper Exploration Aft Hallway"
 
 /** Medical
