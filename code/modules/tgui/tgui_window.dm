@@ -88,7 +88,8 @@
 	// Generate page html
 	var/html = SStgui.basehtml
 	html = replacetextEx(html, "\[tgui:windowId]", id)
-	html = replacetextEx(html, "\[tgui:strictMode]", strict_mode)
+	//! strict mode is mandatory. use typescript and don't fuck up, we don't ignore errors here.
+	// html = replacetextEx(html, "\[tgui:strictMode]", strict_mode)
 	// Inject assets
 	var/inline_assets_str = ""
 	for(var/datum/asset_pack/asset as anything in assets)
