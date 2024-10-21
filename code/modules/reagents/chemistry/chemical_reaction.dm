@@ -37,6 +37,7 @@
 	/// require whole numbers of all reagents taken
 	///
 	/// * has no effect on ticked (non-instant) reactions
+	/// * this actually just ensures reaction multiplier is a whole number.
 	var/require_whole_numbers = TRUE
 
 	/// result reagent path or id. prefer path for compile time checking.
@@ -215,59 +216,6 @@
 		if(isnull(display_description) && !isnull(resolved))
 			display_description = resolved.display_description
 
-/datum/chemical_reaction/proc/can_happen(datum/reagent_holder/holder)
-	// check container
-	if(!isnull(required_container_path) && !istype(holder.my_atom, required_container_path))
-		return FALSE
-
-	//check that all the required reagents are present
-	if(!holder.has_all_reagents(required_reagents))
-		return 0
-
-	//check that all the required catalysts are present in the required amount
-	if(!holder.has_all_reagents(catalysts))
-		return 0
-
-	//check that none of the inhibitors are present in the required amount
-	if(holder.has_any_reagent(inhibitors))
-		return 0
-
-	return 1
-
-/datum/chemical_reaction/process(datum/reagent_holder/holder)
-	//determine how far the reaction can proceed
-	var/list/reaction_limits = list()
-	for(var/reactant in required_reagents)
-		reaction_limits += holder.get_reagent_amount(reactant) / required_reagents[reactant]
-
-	//determine how far the reaction proceeds
-	var/reaction_limit = min(reaction_limits)
-	var/progress_limit = calc_reaction_progress(holder, reaction_limit)
-
-	var/reaction_progress = min(reaction_limit, progress_limit) //no matter what, the reaction progress cannot exceed the stoichiometric limit.
-
-	//need to obtain the new reagent's data before anything is altered
-	var/data = send_data(holder, reaction_progress)
-
-	//remove the reactants
-	for(var/reactant in required_reagents)
-		var/amt_used = required_reagents[reactant] * reaction_progress
-		holder.remove_reagent(reactant, amt_used, safety = 1)
-
-	//add the product
-	var/amt_produced = result_amount * reaction_progress
-	if(result)
-		holder.add_reagent(result, amt_produced, data, safety = 1)
-
-	on_reaction(holder, amt_produced)
-
-	return reaction_progress
-
-//called when a reaction processes
-/datum/chemical_reaction/proc/on_reaction(datum/reagent_holder/holder, created_volume)
-	SHOULD_NOT_OVERRIDE(TRUE)
-	#warn kill
-
 //called after processing reactions, if they occurred
 /datum/chemical_reaction/proc/post_reaction(datum/reagent_holder/holder)
 	SHOULD_NOT_OVERRIDE(TRUE)
@@ -284,6 +232,7 @@
 
 //obtains any special data that will be provided to the reaction products
 //this is called just before reactants are removed.
+// todo: rework data system
 /datum/chemical_reaction/proc/send_data(datum/reagent_holder/holder, reaction_limit)
 	return null
 
@@ -308,7 +257,43 @@
 //* Checks *//
 
 /**
+ * Checks if we can happen in a given container. Checks everything.
+ *
+ * * Unlike 'can_start_reaction' and 'can_proceed_reaction', this is meant to be able to be called
+ *   externally, rather than just by the reaction loop.
+ * * Therefore, this proc will check for reagents.
+ */
+/datum/chemical_reaction/proc/can_happen(datum/reagent_holder/holder)
+	// as an external proc, you should not need to override this
+	// without overriding can_start_reaction or can_proceed_reaction.
+	SHOULD_NOT_OVERRIDE(TRUE)
+
+	// check requirements, if it's whole numbers required we need atleast multiplier = 1
+	if(require_whole_numbers)
+		for(var/reagent in required_reagents)
+			if(holder.legacy_direct_access_reagent_amount(reagent) >= required_reagents[reagent])
+				return FALSE
+	else
+		for(var/reagent in required_reagents)
+			if(holder.legacy_direct_access_reagent_amount(reagent) <= 0)
+				return FALSE
+
+	// ensure catalysts are there
+	for(var/reagent in catalysts)
+		if(!holder.legacy_direct_access_reagent_amount(reagent) < catalysts[reagent])
+			return FALSE
+	// check for stuff that will halt it
+	for(var/reagent in moderators)
+		var/power = moderators[reagent]
+		if(power >= SHORT_REAL_LIMIT && holder.legacy_direct_access_reagent_amount(reagent) >= 0)
+			return FALSE
+
+	return can_start_internal(holder)
+
+/**
  * Can we happen in a given container? Checks everything.
+ *
+ * * Does not check if required reagents are there.
  */
 /datum/chemical_reaction/proc/can_start(datum/reagent_holder/holder)
 	if(required_container_path && !istype(holder.my_atom, required_container_path))
@@ -316,10 +301,12 @@
 	return can_proceed(holder)
 
 /**
- * Can we proceed in a given container? Only checks some specific things
+ * Can we proceed in a given container? Only checks some specific things.
+ *
+ * * Does not check if required reagents are there.
  */
 /datum/chemical_reaction/proc/can_proceed(datum/reagent_holder/holder)
-	#warn impl; change can_start as needed
+	return TRUE
 
 //* Reaction Hooks *//
 
