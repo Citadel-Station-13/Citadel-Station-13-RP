@@ -3,10 +3,7 @@
  */
 /datum/chemical_reaction/detonation
 	abstract_type = /datum/chemical_reaction/detonation
-	result = null
-	result_amount = 1
-
-	#warn log
+	important_for_logging = TRUE
 
 /datum/chemical_reaction/detonation/on_reaction_instant(datum/reagent_holder/holder, multiplier)
 	. = ..()
@@ -75,7 +72,7 @@
 	var/location = get_turf(holder.my_atom)
 	// 100 created volume = 4 heavy range & 7 light range. A few tiles smaller than traitor EMP grandes.
 	// 200 created volume = 8 heavy range & 14 light range. 4 tiles larger than traitor EMP grenades.
-	empulse(location, round(multiplier / 12), round(multiplier / 10), round(multplier / 9), round(multiplier / 7), 1)
+	empulse(location, round(multiplier / 12), round(multiplier / 10), round(multiplier / 9), round(multiplier / 7), 1)
 
 /datum/chemical_reaction/detonation/napalm
 	name = "Napalm"

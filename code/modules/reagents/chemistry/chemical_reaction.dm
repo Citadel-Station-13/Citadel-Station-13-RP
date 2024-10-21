@@ -23,6 +23,12 @@
 	/// display description; overrides desc when player facing if set
 	var/display_description
 
+	//* logging *//
+
+	/// we should care enough about this to log it specifically
+	var/important_for_logging = FALSE
+	#warn impl
+
 	//* reaction *//
 
 	/// required reagents as ratios. path or id is supported, prefer paths for compile time checking.
@@ -32,7 +38,6 @@
 	///
 	/// * has no effect on ticked (non-instant) reactions
 	var/require_whole_numbers = TRUE
-	#warn impl
 
 	/// result reagent path or id. prefer path for compile time checking.
 	var/result
@@ -156,8 +161,6 @@
 	//? legacy / unsorted
 	var/mix_message = "The solution begins to bubble."
 	var/reaction_sound = 'sound/effects/bubbles.ogg'
-
-	var/log_is_important = 0 // If this reaction should be considered important for logging. Important recipes message admins when mixed, non-important ones just log to file.
 
 /datum/chemical_reaction/New()
 	resolve_paths()

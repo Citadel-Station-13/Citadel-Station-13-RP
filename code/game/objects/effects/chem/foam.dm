@@ -70,7 +70,7 @@
 			F.create_reagents(10)
 			if(reagents)
 				for(var/datum/reagent/R in reagents.reagent_list)
-					F.reagents.add_reagent(R.id, 1, safety = 1) //added safety check since reagents in the foam have already had a chance to react
+					F.reagents.add_reagent(R.id, 1, null, TRUE)
 
 /obj/effect/foam/fire_act(datum/gas_mixture/air, exposed_temperature, exposed_volume) // foam disolves when heated, except metal foams
 	if(!metal && prob(max(0, exposed_temperature - 475)))
@@ -128,9 +128,9 @@
 
 			if(carried_reagents)
 				for(var/id in carried_reagents)
-					F.reagents.add_reagent(id, 1, safety = 1) //makes a safety call because all reagents should have already reacted anyway
+					F.reagents.add_reagent(id, 1, null, TRUE)
 			else
-				F.reagents.add_reagent("water", 1, safety = 1)
+				F.reagents.add_reagent("water", 1, null, TRUE)
 
 // wall formed by metal foams, dense and opaque, but easy to break
 

@@ -8,6 +8,7 @@
 	required_reagents = list("frostoil" = 5, MAT_IRON = REAGENTS_PER_SHEET)
 	result_amount = 1
 	require_whole_numbers = TRUE
+	important_for_logging = TRUE
 	var/sheet_to_give = /obj/item/stack/material/iron
 
 /datum/chemical_reaction/solidification/on_reaction_instant(datum/reagent_holder/holder, multiplier)

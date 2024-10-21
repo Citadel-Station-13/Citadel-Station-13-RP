@@ -288,7 +288,8 @@
 		remove_reagent(current.id, amount_to_remove, 1)
 
 	update_total()
-	handle_reactions()
+	// todo: do we really need to update everything?
+	reconsider_reactions()
 	return amount
 
 /datum/reagent_holder/proc/trans_to_holder(datum/reagent_holder/target, amount = 1, multiplier = 1, copy = 0) // Transfers [amount] reagents from [src] to [target], multiplying them by [multiplier]. Returns actual amount removed from [src] (not amount transferred to [target]).
@@ -308,9 +309,11 @@
 		if(!copy)
 			remove_reagent(current.id, amount_to_transfer, 1)
 
+	// todo: do we really need to update everything?
 	if(!copy)
-		handle_reactions()
-	target.handle_reactions()
+		reconsider_reactions()
+	target.reconsider_reactions()
+
 	return amount
 
 /* Holder-to-atom and similar procs */
@@ -594,6 +597,7 @@
  */
 /datum/reagent_holder/proc/transfer_to_holder(datum/reagent_holder/target, list/reagents, amount = INFINITY, copy, multiplier = 1, defer_reactions)
 	. = 0
+	// todo: rework this proc
 	if(!total_volume)
 		return
 	if(!reagents)
@@ -602,12 +606,12 @@
 		if(!copy)
 			for(var/datum/reagent/R as anything in reagent_list)
 				var/transferred = R.volume * ratio
-				target.add_reagent(R.id, transferred * multiplier, R.get_data(), safety = TRUE)
-				remove_reagent(R.id, transferred, safety = TRUE)
+				target.add_reagent(R.id, transferred * multiplier, R.get_data(), TRUE)
+				remove_reagent(R.id, transferred, TRUE)
 		else
 			for(var/datum/reagent/R as anything in reagent_list)
 				var/transferred = R.volume * ratio
-				target.add_reagent(R.id, transferred * multiplier, R.get_data(), safety = TRUE)
+				target.add_reagent(R.id, transferred * multiplier, R.get_data(), TRUE)
 	else
 		var/total_transferable = 0
 		var/list/reagents_transferring = list()
@@ -628,17 +632,17 @@
 		if(!copy)
 			for(var/datum/reagent/R as anything in reagents_transferring)
 				var/transferred = R.volume * ratio
-				target.add_reagent(R.id, transferred * multiplier, R.get_data(), safety = TRUE)
-				remove_reagent(R.id, transferred, safety = TRUE)
+				target.add_reagent(R.id, transferred * multiplier, R.get_data(), TRUE)
+				remove_reagent(R.id, transferred, TRUE)
 		else
 			for(var/datum/reagent/R as anything in reagents_transferring)
 				var/transferred = R.volume * ratio
-				target.add_reagent(R.id, transferred * multiplier, R.get_data(), safety = TRUE)
+				target.add_reagent(R.id, transferred * multiplier, R.get_data(), TRUE)
 
 	if(!defer_reactions)
 		if(!copy)
-			handle_reactions()
-		target.handle_reactions()
+			reconsider_reactions()
+		target.reconsider_reactions()
 
 //* UI *//
 

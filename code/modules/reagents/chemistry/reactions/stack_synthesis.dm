@@ -1,12 +1,12 @@
 /datum/chemical_reaction/stack_synthesis
 	abstract_type = /datum/chemical_reaction/stack_synthesis
 	require_whole_numbers = TRUE
+	important_for_logging = TRUE
 
 	/// stack path
 	var/stack_path
 	/// stack amount per 1 multiplier
 	var/stack_amount = 1
-	#warn log
 
 /datum/chemical_reaction/stack_synthesis/on_reaction_instant(datum/reagent_holder/holder, multiplier)
 	. = ..()
