@@ -62,6 +62,8 @@ SUBSYSTEM_DEF(chemistry)
 			continue
 		reagent_lookup[D.id] = D
 
+//* Reagents *//
+
 /**
  * fetches the instance of a reagent
  *
@@ -69,3 +71,11 @@ SUBSYSTEM_DEF(chemistry)
  */
 /datum/controller/subsystem/chemistry/proc/fetch_reagent(datum/reagent/id_or_path)
 	return reagent_lookup[ispath(id_or_path)? initial(id_or_path.id) : id_or_path]
+
+//* Reactions *//
+
+/datum/controller/subsystem/chemistry/proc/relevant_reactions_for_reagent_id(id) as /list
+	#warn impl
+
+/datum/controller/subsystem/chemistry/proc/relevant_reactions_for_reagent_ids(list/ids) as /list
+	#warn impl

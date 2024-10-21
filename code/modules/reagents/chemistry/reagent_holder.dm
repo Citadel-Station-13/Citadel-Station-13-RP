@@ -149,7 +149,7 @@
 				current.mix_data(src, current.data, current.volume, data_initializer, amount)
 			update_total()
 			if(!skip_reactions)
-				reconsider_reaction_on_reagent(id, amount)
+				reconsider_reactions_for_reagent(id, amount)
 			if(my_atom)
 				my_atom.on_reagent_change()
 			return 1
@@ -162,7 +162,7 @@
 		R.initialize_data(data_initializer)
 		update_total()
 		if(!skip_reactions)
-			reconsider_reaction_on_reagent(id, amount)
+			reconsider_reactions_for_reagent(id, amount)
 		if(my_atom)
 			my_atom.on_reagent_change()
 		return 1
@@ -197,7 +197,7 @@
 			current.volume -= amount
 			update_total()
 			if(!skip_reactions)
-				reconsider_reaction_on_reagent(id, -amount)
+				reconsider_reactions_for_reagent(id, -amount)
 			if(my_atom)
 				my_atom.on_reagent_change()
 			return 1

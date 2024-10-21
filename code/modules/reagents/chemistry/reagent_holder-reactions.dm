@@ -9,6 +9,13 @@
  */
 /datum/reagent_holder/proc/reconsider_reactions()
 	SHOULD_NOT_SLEEP(TRUE)
+
+	var/list/reagent_ids = list()
+	for(var/datum/reagent/reagent in reagent_list)
+		reagent_ids[reagent.id] = TRUE
+
+	var/list/datum/chemical_reaction/reactions = SSchemistry.relevant_reactions_for_reagent_ids(reagent_ids)
+
 	#warn impl
 
 /**
@@ -24,10 +31,26 @@
  * given a specific chemical id, reconsiders relevant reactions
  *
  * * called by add / remove procs
- * * for optimization reasons, not called by primary reaction loop; reaction loop does this itself.
+ * * called by reaction loops
  */
-/datum/reagent_holder/proc/reconsider_reaction_on_reagent(id, amount)
+/datum/reagent_holder/proc/reconsider_reactions_for_reagent(id, amount)
 	SHOULD_NOT_SLEEP(TRUE)
+
+	var/list/datum/chemical_reaction/reactions = SSchemistry.relevant_reactions_for_reagent_id(id)
+
+	#warn impl
+
+/**
+ * given a set of chemical ids, reconsiders relevant reactions
+ *
+ * * called by add / remove procs
+ * * called by reaction loops
+ */
+/datum/reagent_holder/proc/reconsider_reactions_for_reagents(list/ids)
+	SHOULD_NOT_SLEEP(TRUE)
+
+	var/list/datum/chemical_reaction/reactions = SSchemistry.relevant_reactions_for_reagent_ids(reagent_ids)
+
 	#warn impl
 
 /**
@@ -36,6 +59,7 @@
 /datum/reagent_holder/proc/start_ticked_reaction(datum/chemical_reaction/reaction)
 	LAZYADD(active_reactions, reaction)
 	start_reacting()
+
 	#warn log?
 
 /**
@@ -133,6 +157,9 @@
 /datum/reagent_holder/proc/run_instant_reactions(list/datum/chemical_reaction/reactions)
 	SHOULD_NOT_SLEEP(TRUE)
 
+	if(!length(reactions))
+		return
+
 	var/list/ids_to_recheck = list()
 
 	for(var/datum/chemical_reaction/reaction as anything in reactions)
@@ -162,8 +189,7 @@
 		if(maximum_multiplier <= 0)
 			continue
 
-		#warn how to trigger reactions if we skip it for the following procs?
-		#warn log?
+		#warn log here!
 
 		for(var/id in reaction.required_reagents)
 			remove_reagent(id, maximum_multiplier * reaction.required_reagents[id], TRUE)
@@ -171,3 +197,17 @@
 		if(reaction.result_amount > 0)
 			add_reagent(reaction.result, maximum_multiplier * reaction.result_amount, null, TRUE)
 			ids_to_recheck[reaction.result] = TRUE
+
+		reaction.on_reaction_instant(src, maximum_multiplier)
+
+	// now that we're done, re-check relevant reactions that might happen
+	// and process them as needed
+
+	var/list/datum/chemical_reaction/reactions_to_recheck = SSchemistry.relevant_reactions_for_reagent_ids(ids_to_recheck)
+	var/list/datum/chemical_reaction/reactions_for_next_cycle = list()
+
+	for(var/datum/chemical_reaction/reaction in reactions_to_recheck)
+		if(reaction.can_start_reaction(src))
+			reactions_for_next_cycle += reaction
+
+	run_instant_reactions(reactions_for_next_cycle)
