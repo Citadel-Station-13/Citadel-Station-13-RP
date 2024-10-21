@@ -476,7 +476,7 @@
 /area/hallway/secondary/docking_hallway)
 "axd" = (
 /obj/machinery/power/breakerbox/activated{
-	RCon_tag = "DECK 4 AMIDSHIPS SUPPORT"
+	RCon_tag = "DECK 1 AMIDSHIPS SUPPORT"
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/exploration)
@@ -631,7 +631,7 @@
 /area/crew_quarters/coffee_shop)
 "aDX" = (
 /obj/machinery/power/smes/buildable{
-	RCon_tag = "Deck 3 Grid"
+	RCon_tag = "Deck 1 Fore Grid"
 	},
 /obj/structure/cable/green{
 	icon_state = "0-4"
@@ -1189,7 +1189,7 @@
 /area/bridge)
 "aVW" = (
 /obj/machinery/power/breakerbox/activated{
-	RCon_tag = "DECK 4 AFT SUPPORT"
+	RCon_tag = "DECK 1 AFT SUPPORT"
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/civilian)
@@ -5183,7 +5183,7 @@
 /area/endeavour/hallway/d1aftmaint)
 "etW" = (
 /obj/machinery/power/smes/buildable{
-	RCon_tag = "Deck 3 Grid"
+	RCon_tag = "Deck 1 Aft Grid"
 	},
 /obj/structure/cable/green{
 	icon_state = "0-4"
@@ -14340,7 +14340,7 @@
 /area/endeavour/hallway/d1porthall)
 "lBc" = (
 /obj/machinery/power/breakerbox/activated{
-	RCon_tag = "DECK 4 AFT MAIN"
+	RCon_tag = "DECK 1 AFT MAIN"
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/civilian)
@@ -15037,7 +15037,7 @@
 /area/endeavour/hallway/d1aftmaint)
 "meH" = (
 /obj/machinery/power/breakerbox/activated{
-	RCon_tag = "DECK 4 FORE SUPPORT"
+	RCon_tag = "DECK 1 FORE SUPPORT"
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/command)
@@ -25264,7 +25264,7 @@
 /area/maintenance/substation/command)
 "uWM" = (
 /obj/machinery/power/smes/buildable{
-	RCon_tag = "Deck 3 Grid"
+	RCon_tag = "Deck 1 Amidships Grid"
 	},
 /obj/structure/cable/green{
 	icon_state = "0-4"
@@ -26856,7 +26856,7 @@
 /area/endeavour/hallway/d1starboardhall)
 "wmU" = (
 /obj/machinery/power/breakerbox/activated{
-	RCon_tag = "DECK 4 FORE MAIN"
+	RCon_tag = "DECK 1 FORE MAIN"
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/command)
@@ -28972,7 +28972,7 @@
 /area/endeavour/hallway/d1starboardhall)
 "ybg" = (
 /obj/machinery/power/breakerbox/activated{
-	RCon_tag = "DECK 4 AMIDSHIPS MAIN"
+	RCon_tag = "DECK 1 AMIDSHIPS MAIN"
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/exploration)

@@ -2803,7 +2803,7 @@
 /area/crew_quarters/medbreak)
 "bYT" = (
 /obj/machinery/power/smes/buildable{
-	RCon_tag = "Deck 3 Grid"
+	RCon_tag = "Deck 2 Aft Grid"
 	},
 /obj/structure/cable/green{
 	icon_state = "0-4"
@@ -6611,7 +6611,7 @@
 /area/assembly/robotics/surgery)
 "eJe" = (
 /obj/machinery/power/breakerbox/activated{
-	RCon_tag = "DECK 3 AMIDSHIPS SUPPORT"
+	RCon_tag = "DECK 2 AMIDSHIPS SUPPORT"
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/medical)
@@ -10698,7 +10698,7 @@
 /area/medical/morgue)
 "hBp" = (
 /obj/machinery/power/breakerbox/activated{
-	RCon_tag = "DECK 3 AMIDSHIPS MAIN"
+	RCon_tag = "DECK 2 AMIDSHIPS MAIN"
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/medical)
@@ -11025,7 +11025,7 @@
 /area/medical/chemistry)
 "hMz" = (
 /obj/machinery/power/breakerbox/activated{
-	RCon_tag = "DECK 3 FORE MAIN"
+	RCon_tag = "DECK 2 FORE MAIN"
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/research)
@@ -14725,7 +14725,7 @@
 /area/rnd/research/researchdivision)
 "kyR" = (
 /obj/machinery/power/breakerbox/activated{
-	RCon_tag = "DECK 3 AFT SUPPORT"
+	RCon_tag = "DECK 2 AFT SUPPORT"
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/medical_science)
@@ -16460,7 +16460,7 @@
 /area/rnd/breakroom)
 "lLS" = (
 /obj/machinery/power/smes/buildable{
-	RCon_tag = "Deck 3 Grid"
+	RCon_tag = "Deck 2 Fore Grid"
 	},
 /obj/structure/cable/green{
 	icon_state = "0-4"
@@ -22092,7 +22092,7 @@
 /area/medical/reception)
 "pIb" = (
 /obj/machinery/power/breakerbox/activated{
-	RCon_tag = "DECK 3 FORE SUPPORT"
+	RCon_tag = "DECK 2 FORE SUPPORT"
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/research)
@@ -22649,7 +22649,7 @@
 /area/medical/sleeper)
 "pZh" = (
 /obj/machinery/power/smes/buildable{
-	RCon_tag = "Deck 3 Grid"
+	RCon_tag = "Deck 2 Amidships Grid"
 	},
 /obj/structure/cable/green{
 	icon_state = "0-4"

@@ -4010,7 +4010,7 @@
 /area/security/hallway)
 "dIC" = (
 /obj/machinery/power/breakerbox/activated{
-	RCon_tag = "DECK 2 AFT SUPPORT"
+	RCon_tag = "DECK 3 AFT SUPPORT"
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/cargo)
@@ -8526,7 +8526,7 @@
 /area/crew_quarters/sleep/Dorm_4)
 "hup" = (
 /obj/machinery/power/smes/buildable{
-	RCon_tag = "Deck 3 Grid"
+	RCon_tag = "Deck 3 Aft Grid"
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/cargo)
@@ -14236,7 +14236,7 @@
 /area/security/brig)
 "mBj" = (
 /obj/machinery/power/breakerbox/activated{
-	RCon_tag = "DECK 2 FORE MAIN"
+	RCon_tag = "DECK 3 FORE MAIN"
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/civilian)
@@ -18237,7 +18237,7 @@
 /area/security/breakroom)
 "pUh" = (
 /obj/machinery/power/breakerbox/activated{
-	RCon_tag = "DECK 2 FORE SUPPORT"
+	RCon_tag = "DECK 3 FORE SUPPORT"
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/civilian)
@@ -18513,7 +18513,7 @@
 /area/hydroponics)
 "qfY" = (
 /obj/machinery/power/smes/buildable{
-	RCon_tag = "Deck 3 Grid"
+	RCon_tag = "Deck 3 Amidships Grid"
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/security)
@@ -20649,7 +20649,7 @@
 /area/maintenance/substation/cargo)
 "rXl" = (
 /obj/machinery/power/breakerbox/activated{
-	RCon_tag = "DECK 2 AFT MAIN"
+	RCon_tag = "DECK 3 AFT MAIN"
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/cargo)
@@ -24340,7 +24340,7 @@
 /area/security/evidence_storage)
 "uYN" = (
 /obj/machinery/power/smes/buildable{
-	RCon_tag = "Deck 3 Grid"
+	RCon_tag = "Deck 3 Fore Grid"
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/civilian)
@@ -27005,7 +27005,7 @@
 /area/endeavour/surfacebase/bar_backroom)
 "xfl" = (
 /obj/machinery/power/breakerbox/activated{
-	RCon_tag = "DECK 2 AMIDSHIPS SUPPORT"
+	RCon_tag = "DECK 3 AMIDSHIPS SUPPORT"
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/security)
