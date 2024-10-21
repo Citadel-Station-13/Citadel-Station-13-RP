@@ -1,4 +1,6 @@
-
+/**
+ * A continuous line of connected pipes. Air flows instantly between segments and edge airs.
+ */
 /datum/pipeline
 	var/datum/gas_mixture/air
 
@@ -116,6 +118,7 @@
 
 	return network
 
+// todo: this should be re-evaluated in the context of passive vents and what we should do with them.
 /datum/pipeline/proc/mingle_with_turf(turf/simulated/target, mingle_volume)
 	var/datum/gas_mixture/air_sample = air.remove_ratio(mingle_volume/air.volume)
 	air_sample.volume = mingle_volume
@@ -146,88 +149,100 @@
 	if(network)
 		network.update = 1
 
-/datum/pipeline/proc/temperature_interact(turf/target, share_volume, thermal_conductivity)
-	var/total_heat_capacity = air.heat_capacity()
-	var/partial_heat_capacity = total_heat_capacity*(share_volume/air.volume)
+//* Sharing - Temperature *//
 
-	if(istype(target, /turf/simulated))
-		var/turf/simulated/modeled_location = target
-		if(modeled_location.special_temperature)//First do special interactions then the usuall stuff
-			CACHE_VSC_PROP(atmos_vsc, /atmos/hepipes/thermal_conductivity, thermal_conductivity_setting)
-			var/delta_temp = modeled_location.special_temperature - air.temperature//2200C - 20C = 2180K
-			//assuming aluminium with thermal conductivity 235 W * K / m, Copper (400), Silver (430), steel (50), gold (320)
-			var/heat_gain = thermal_conductivity_setting * 100 * delta_temp//assuming 1 cm wall thickness, so delta_temp isnt multiplied
-			heat_gain = clamp(heat_gain, air.get_thermal_energy_change(modeled_location.special_temperature), -air.get_thermal_energy_change(modeled_location.special_temperature))
-			air.adjust_thermal_energy(heat_gain)
-			if(network)
-				network.update = 1
-		if(modeled_location.blocks_air)
+/**
+ * Processes heat exchange with turf.
+ *
+ * * See /turf/proc/air_thermal_superconduction.
+ * * This is named superconduction because this isn't a normal share, this is effectively an equalize proc.
+ * * **Using this on space results in a share with an infinite air of TCMB.** You must use [share_heat_with_space()]
+ *   to use blackbody radiation cooling!
+ *
+ * todo: maybe we should start considering grouping massed heat exchanger pipes for speed?
+ *
+ * @params
+ * * target - the target turf
+ * * share_volume - the amount of volume of this pipeline to share with the turf
+ * * equalize_ratio - amount of energy difference to equalize this tick
+ * * cell_limit - maximum number of turfs to share to (in ZAS this behaves like a second equalize_ratio limit)
+ */
+/datum/pipeline/proc/turf_thermal_superconduction(turf/target, share_volume, equalize_ratio, cell_limit)
+	var/anything_changed = FALSE
 
-			if((modeled_location.heat_capacity>0) && (partial_heat_capacity>0))
-				var/delta_temperature = air.temperature - modeled_location.temperature
+	// we know that heat capacity will never change through this proc
+	var/our_heat_capacity = air.heat_capacity()
 
-				var/heat = thermal_conductivity*delta_temperature* \
-					(partial_heat_capacity*modeled_location.heat_capacity/(partial_heat_capacity+modeled_location.heat_capacity))
+	/**
+	 * First deal with special heat exchanger temperature
+	 */
+	// todo: god damnit deal with this
+	if(target.temperature_for_heat_exchangers)
+		CACHE_VSC_PROP(atmos_vsc, /atmos/hepipes/thermal_conductivity, thermal_conductivity_setting)
+		var/delta_temp = target.temperature_for_heat_exchangers - air.temperature//2200C - 20C = 2180K
+		//assuming aluminium with thermal conductivity 235 W * K / m, Copper (400), Silver (430), steel (50), gold (320)
+		var/heat_gain = thermal_conductivity_setting * 100 * delta_temp//assuming 1 cm wall thickness, so delta_temp isnt multiplied
+		heat_gain = clamp(
+			heat_gain,
+			air.get_thermal_energy_change(target.temperature_for_heat_exchangers),
+			-air.get_thermal_energy_change(target.temperature_for_heat_exchangers)
+		)
+		air.adjust_thermal_energy(heat_gain)
+		anything_changed = TRUE
 
-				air.temperature -= heat/total_heat_capacity
-				modeled_location.temperature += heat/modeled_location.heat_capacity
+	var/temperature_change = target.air_thermal_superconduction(
+		air.temperature,
+		our_heat_capacity,
+		share_volume / air.volume,
+		equalize_ratio,
+		cell_limit,
+	)
 
-		else
-			var/delta_temperature = 0
-			var/sharer_heat_capacity = 0
+	if(temperature_change != 0)
+		air.temperature += temperature_change
+		anything_changed = TRUE
 
-			if(modeled_location.zone)
-				delta_temperature = (air.temperature - modeled_location.zone.air.temperature)
-				sharer_heat_capacity = modeled_location.zone.air.heat_capacity()
-			else
-				delta_temperature = (air.temperature - modeled_location.air.temperature)
-				sharer_heat_capacity = modeled_location.air.heat_capacity()
+	if(anything_changed)
+		network?.update = TRUE
 
-			var/self_temperature_delta = 0
-			var/sharer_temperature_delta = 0
-
-			if((sharer_heat_capacity>0) && (partial_heat_capacity>0))
-				var/heat = thermal_conductivity*delta_temperature* \
-					(partial_heat_capacity*sharer_heat_capacity/(partial_heat_capacity+sharer_heat_capacity))
-
-				self_temperature_delta = -heat/total_heat_capacity
-				sharer_temperature_delta = heat/sharer_heat_capacity
-			else
-				return 1
-
-			air.temperature += self_temperature_delta
-
-			if(modeled_location.zone)
-				modeled_location.zone.air.temperature += sharer_temperature_delta/modeled_location.zone.air.group_multiplier
-			else
-				modeled_location.air.temperature += sharer_temperature_delta
-
-
-	else
-		if((target.heat_capacity>0) && (partial_heat_capacity>0))
-			var/delta_temperature = air.temperature - target.temperature
-
-			var/heat = thermal_conductivity*delta_temperature* \
-				(partial_heat_capacity*target.heat_capacity/(partial_heat_capacity+target.heat_capacity))
-
-			air.temperature -= heat/total_heat_capacity
-	if(network)
-		network.update = 1
-
+/**
+ * Runs thermal radiation simulation on the pipeline.
+ *
+ * todo: emissivity, solar_absorptivity to model emission of low-frequency IR vs absorption of high-frequency solar radiation
+ * todo: this should be radiate_heat(), *gaining* heat from space should be simulated separately if possible.
+ * todo: maybe we should start considering grouping massed heat exchanger pipes for speed?
+ *
+ * @params
+ * * surface - the m^2 surface area of the exposed surface to space
+ * * thermal_conductivity - relative thermal conductivity (so, cheat / penalty multiplier).
+ */
 //surface must be the surface area in m^2
-/datum/pipeline/proc/radiate_heat_to_space(surface, thermal_conductivity)
-	var/gas_density = air.total_moles/air.volume
-	thermal_conductivity *= min(gas_density / ( RADIATOR_OPTIMUM_PRESSURE/(R_IDEAL_GAS_EQUATION*GAS_CRITICAL_TEMPERATURE) ), 1) //mult by density ratio
+/datum/pipeline/proc/share_heat_with_space(surface, thermal_conductivity)
+	// in mol / L
+	var/gas_density = air.total_moles / air.volume
 
-	// We only get heat from the star on the exposed surface area.
-	// If the HE pipes gain more energy from AVERAGE_SOLAR_RADIATION than they can radiate, then they have a net heat increase.
-	var/heat_gain = AVERAGE_SOLAR_RADIATION * (RADIATOR_EXPOSED_SURFACE_AREA_RATIO * surface) * thermal_conductivity
+	/**
+	 * * becomes, with gas density, (n * r * t) / (p * v)
+	 * * ~240 mol for 70L
+	 * * ~8356kPa at 20C, 70 L
+	 */
+	thermal_conductivity *= min(
+		gas_density / (THERMODYNAMICS_OPTIMAL_RADIATOR_PRESSURE / (R_IDEAL_GAS_EQUATION * THERMODYANMICS_CRITICAL_TEMPERATURE_OF_AIR)),
+		1,
+	)
 
-	// Previously, the temperature would enter equilibrium at 26C or 294K.
-	// Only would happen if both sides (all 2 square meters of surface area) were exposed to sunlight.  We now assume it aligned edge on.
-	// It currently should stabilise at 129.6K or -143.6C
+	/**
+	 * Because we're so high-roleplay and realistic!!!! we actually simulate heat *gain* as well.
+	 * You can actually heat things up.
+	 *
+	 * * This currently does not take into account solar absorptivity.
+	 */
+	var/heat_gain = THERMODYNAMICS_THEORETICAL_STAR_EXPOSED_POWER_DENSITY * (THERMODYNAMICS_THEORETICAL_STAR_EXPOSURE_RATIO * surface) * thermal_conductivity
+
+	/**
+	 * Perform radiation.
+	 */
 	heat_gain -= surface * STEFAN_BOLTZMANN_CONSTANT * thermal_conductivity * (air.temperature - COSMIC_RADIATION_TEMPERATURE) ** 4
 
 	air.adjust_thermal_energy(heat_gain)
-	if(network)
-		network.update = 1
+	network?.update = TRUE
