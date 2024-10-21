@@ -1021,6 +1021,10 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 8
 	},
+/obj/machinery/light{
+	dir = 8;
+	pixel_x = -10
+	},
 /turf/simulated/floor/wood,
 /area/rnd/research/researchdivision)
 "aKR" = (
@@ -2061,6 +2065,9 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
+	},
+/obj/structure/cable/green{
+	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology)
@@ -7373,6 +7380,10 @@
 /obj/effect/floor_decal/corner/mauve/border{
 	dir = 9
 	},
+/obj/machinery/light{
+	dir = 8;
+	light_range = 12
+	},
 /turf/simulated/floor/tiled,
 /area/rnd/hallway)
 "fmm" = (
@@ -11277,16 +11288,6 @@
 /obj/effect/floor_decal/corner/paleblue/border,
 /turf/simulated/floor/tiled/white,
 /area/medical/medbay3)
-"hXV" = (
-/obj/machinery/light{
-	pixel_y = -24
-	},
-/obj/structure/catwalk,
-/obj/structure/cable/green{
-	icon_state = "4-8"
-	},
-/turf/simulated/floor/plating,
-/area/maintenance/research)
 "hXW" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -16372,9 +16373,18 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/psych_ward)
 "lJB" = (
-/obj/effect/paint/babyblue,
-/turf/space/basic,
-/area/space)
+/obj/effect/floor_decal/borderfloor{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/mauve/border{
+	dir = 8
+	},
+/obj/machinery/light{
+	dir = 8;
+	light_range = 12
+	},
+/turf/simulated/floor/tiled,
+/area/rnd/hallway)
 "lJV" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -19516,10 +19526,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled,
 /area/holodeck_control)
-"och" = (
-/obj/effect/paint/purplegray,
-/turf/space/basic,
-/area/space)
 "ocG" = (
 /obj/structure/sign/deck/second,
 /turf/simulated/wall/prepainted,
@@ -22481,7 +22487,6 @@
 /turf/simulated/floor/carpet/sblucarpet,
 /area/medical/psych/psych_1)
 "pWE" = (
-/obj/machinery/power/apc/north_mount,
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
@@ -24030,10 +24035,6 @@
 	},
 /turf/simulated/floor/wood/sif/indoors,
 /area/medical/reception)
-"qTB" = (
-/obj/effect/paint/darkred,
-/turf/space/basic,
-/area/space)
 "qUK" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/glass,
@@ -26970,10 +26971,6 @@
 /obj/map_helper/access_helper/airlock/station/science/robotics,
 /turf/simulated/floor/tiled/techfloor,
 /area/assembly/robotics/surgery)
-"tbv" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/turf/space/basic,
-/area/space)
 "tcy" = (
 /turf/simulated/wall/prepainted,
 /area/maintenance/research)
@@ -31874,6 +31871,10 @@
 /obj/machinery/power/apc/north_mount,
 /obj/structure/cable/green{
 	icon_state = "0-2"
+	},
+/obj/machinery/light{
+	dir = 1;
+	pixel_y = 29
 	},
 /turf/simulated/floor/carpet/purcarpet,
 /area/rnd/breakroom)
@@ -47719,10 +47720,10 @@ pRW
 pRW
 pRW
 pRW
-mDp
-mDp
-mDp
-mDp
+pRW
+pRW
+pRW
+pRW
 pRW
 pRW
 pRW
@@ -47913,10 +47914,10 @@ mDp
 mDp
 mDp
 mDp
-mDp
-qTB
-tbv
-mDp
+pRW
+pRW
+pRW
+pRW
 pRW
 pRW
 pRW
@@ -47941,7 +47942,7 @@ vuR
 vPr
 nQX
 sCm
-sCm
+lJB
 sCm
 hla
 sCm
@@ -48107,8 +48108,8 @@ mDp
 mDp
 mDp
 mDp
-mDp
-och
+pRW
+pRW
 pRW
 pRW
 pRW
@@ -48302,7 +48303,7 @@ pRW
 pRW
 pRW
 pRW
-lJB
+pRW
 pRW
 pRW
 pRW
@@ -48704,7 +48705,7 @@ xIf
 xIf
 xIf
 xIf
-hXV
+xnR
 svR
 bzV
 jNv
@@ -50450,7 +50451,7 @@ kHF
 uow
 xIf
 xIf
-hXV
+xnR
 svR
 bfZ
 tQg

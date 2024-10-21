@@ -1287,6 +1287,9 @@
 	req_one_access = null
 	},
 /obj/structure/catwalk,
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/civilian)
 "aZE" = (
@@ -3654,21 +3657,6 @@
 /obj/item/toy/plushie/coffee_fox,
 /turf/simulated/floor/wood/broken,
 /area/endeavour/hallway/d1fwdmaint)
-"dct" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/obj/structure/cable/green{
-	icon_state = "4-8"
-	},
-/obj/structure/cable/green{
-	icon_state = "1-4"
-	},
-/turf/simulated/floor/tiled/steel,
-/area/endeavour/hallway/d1afthall)
 "ddG" = (
 /obj/structure/table/rack,
 /obj/item/tool/wrench,
@@ -11258,18 +11246,6 @@
 /obj/structure/table/rack/shelf/steel,
 /turf/simulated/floor/tiled/old_tile/blue,
 /area/endeavour/hallway/d1aftmaint)
-"jfk" = (
-/obj/effect/floor_decal/borderfloorblack/corner{
-	dir = 1
-	},
-/obj/effect/floor_decal/corner/navblue/bordercorner{
-	dir = 1
-	},
-/obj/structure/cable/green{
-	icon_state = "1-2"
-	},
-/turf/simulated/floor/tiled/steel,
-/area/endeavour/hallway/d1afthall)
 "jfm" = (
 /obj/effect/floor_decal/spline/plain{
 	dir = 5
@@ -26866,18 +26842,6 @@
 /obj/effect/paint/violet,
 /turf/simulated/floor/plating,
 /area/exploration/explorer_prep)
-"wlW" = (
-/obj/effect/floor_decal/borderfloorblack{
-	dir = 8
-	},
-/obj/effect/floor_decal/corner/navblue/border{
-	dir = 8
-	},
-/obj/structure/cable/green{
-	icon_state = "1-2"
-	},
-/turf/simulated/floor/tiled/steel,
-/area/endeavour/hallway/d1afthall)
 "wmH" = (
 /obj/effect/floor_decal/borderfloorblack/corner{
 	dir = 4
@@ -39875,9 +39839,9 @@ kHh
 nHQ
 cxg
 vll
-wlW
-jfk
-dct
+vll
+jYp
+pmO
 lOq
 fIO
 vjB
