@@ -2466,9 +2466,6 @@
 	},
 /turf/simulated/floor/holofloor/tiled,
 /area/holodeck/source_basketball)
-"FV" = (
-/turf/simulated/floor/holofloor/desert,
-/area/holodeck/source_picnicarea)
 "Gb" = (
 /obj/structure/table/reinforced,
 /obj/machinery/computer/shuttle_control/emergency,
@@ -28417,8 +28414,8 @@ kS
 wB
 fD
 Ap
-FV
-FV
+oT
+oT
 qd
 fD
 wB
@@ -28611,8 +28608,8 @@ ch
 fD
 wB
 Bc
-FV
-FV
+oT
+oT
 DW
 wB
 fD
@@ -28805,8 +28802,8 @@ kS
 wB
 BJ
 pr
-FV
-FV
+oT
+oT
 hp
 xa
 wB
@@ -28999,8 +28996,8 @@ ch
 fD
 Ap
 oT
-FV
-FV
+oT
+oT
 oT
 qd
 fD
@@ -29580,10 +29577,10 @@ fN
 ch
 wB
 Bc
-FV
-FV
-FV
-FV
+oT
+oT
+oT
+oT
 DW
 wB
 ch
