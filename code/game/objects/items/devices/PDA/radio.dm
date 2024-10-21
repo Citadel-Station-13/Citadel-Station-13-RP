@@ -58,7 +58,7 @@
 /**
  * Receive radio signals.
  * Can detect bot status signals.
- * Create/populate list as they are recieved.
+ * Create/populate list as they are received.
  */
 /obj/item/integated_radio/beepsky/receive_signal(datum/signal/signal)
 	// var/obj/item/pda/P = src.loc

@@ -36,7 +36,7 @@
 // Damage above this value must be repaired with surgery.
 #define ROBOLIMB_REPAIR_CAP 30
 
-//! The condition defines. /SET/ into organ.robotic [example: if(organ.robotic == ORGAN_NANOFORM) to_chat("Organ is nanites")]
+//! The condition defines. /SET/ into organ.robotic [example: if(organ.robotic == ORGAN_NANOFORM) to_chat(hi linter!, "Organ is nanites")]
 //? This isn't a flag, maybe in the future. @Zandario
 /// Normal organic organs.
 #define ORGAN_FLESH    0

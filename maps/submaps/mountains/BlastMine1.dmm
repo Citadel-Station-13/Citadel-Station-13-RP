@@ -69,10 +69,6 @@
 /obj/effect/decal/remains/human,
 /turf/simulated/mineral/floor/ignore_mapgen,
 /area/submap/cave/BlastMine1)
-"q" = (
-/obj/structure/sign/warning/bomb_range,
-/turf/simulated/wall/sandstone,
-/area/submap/cave/BlastMine1)
 
 (1,1,1) = {"
 a
@@ -189,7 +185,7 @@ m
 b
 b
 b
-q
+c
 b
 a
 "}

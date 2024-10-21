@@ -8090,10 +8090,6 @@
 	},
 /turf/simulated/floor/reinforced,
 /area/admin_planet/croatoan/high_sec_science_containment_cells)
-"Cz" = (
-/obj/structure/reagent_dispensers/virusfood,
-/turf/simulated/wall/durasteel,
-/area/admin_planet/croatoan/high_sec_science_virology_lab)
 "CA" = (
 /obj/machinery/door/airlock/vault{
 	name = "Extreme Security Containment Cell Access";
@@ -14124,9 +14120,6 @@
 /obj/machinery/light,
 /turf/simulated/floor/cult,
 /area/admin_planet/croatoan/extreme_security_containment_facilities)
-"Xt" = (
-/turf/simulated/wall/durasteel,
-/area/admin_planet/croatoan/high_sec_science_virology_lab)
 "Xv" = (
 /obj/machinery/door/airlock/highsecurity{
 	req_access = list(58);
@@ -38336,7 +38329,7 @@ lW
 lW
 La
 La
-Cz
+yj
 La
 La
 La
@@ -39887,7 +39880,7 @@ lW
 lW
 lW
 La
-Xt
+La
 yj
 La
 La

@@ -16044,9 +16044,6 @@
 	icon_state = "white"
 	},
 /area/centcom/control)
-"Yr" = (
-/turf/unsimulated/wall,
-/area/space)
 "Yt" = (
 /obj/machinery/door/airlock/centcom{
 	name = "Commander";
@@ -49487,11 +49484,11 @@ Ic
 Ic
 Ic
 Ic
-Yr
-Yr
-Yr
-Yr
-Yr
+Ic
+Ic
+Ic
+Ic
+Ic
 xa
 kQ
 nP

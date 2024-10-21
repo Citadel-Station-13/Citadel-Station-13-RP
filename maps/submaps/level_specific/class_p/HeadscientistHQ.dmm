@@ -634,10 +634,6 @@
 /obj/machinery/artifact_scanpad,
 /turf/simulated/shuttle/floor/purple/classp,
 /area/submap/HeadscientistHQ)
-"Dm" = (
-/obj/machinery/lathe/autolathe,
-/turf/simulated/shuttle/floor/purple/classp,
-/area/submap/HeadscientistHQ)
 "Dn" = (
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/borderfloorblack{
@@ -2337,7 +2333,7 @@ Yi
 Yi
 Yi
 YH
-Dm
+ix
 UV
 UV
 Gt

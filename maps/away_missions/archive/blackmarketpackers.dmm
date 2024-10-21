@@ -56,9 +56,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/awaymission/BMPship3)
-"an" = (
-/turf/simulated/shuttle/wall,
-/area/awaymission/BMPship3)
 "ao" = (
 /obj/structure/window/reinforced{
 	dir = 4
@@ -589,9 +586,6 @@
 	dir = 6
 	},
 /area/awaymission/BMPship1)
-"cy" = (
-/turf/simulated/shuttle/wall,
-/area/awaymission/BMPship3)
 "cA" = (
 /obj/structure/cable{
 	icon_state = "0-2"
@@ -8264,7 +8258,7 @@ aa
 aa
 aa
 ah
-cy
+ah
 cV
 ez
 dK
@@ -8393,7 +8387,7 @@ aa
 aa
 aa
 ah
-cy
+ah
 bO
 cV
 eA
@@ -8522,7 +8516,7 @@ aa
 aa
 aa
 ah
-cy
+ah
 bO
 bO
 cV
@@ -8651,7 +8645,7 @@ bj
 ao
 as
 cd
-cy
+ah
 cV
 cV
 dJ
@@ -13321,7 +13315,7 @@ aa
 aa
 aa
 ah
-an
+ah
 aq
 aq
 aA
@@ -13354,7 +13348,7 @@ do
 hf
 aq
 aq
-an
+ah
 ah
 aa
 aa
@@ -13452,7 +13446,7 @@ aa
 aa
 aa
 ah
-an
+ah
 aq
 aw
 aU
@@ -13483,7 +13477,7 @@ do
 do
 aw
 iG
-an
+ah
 ah
 aa
 aa

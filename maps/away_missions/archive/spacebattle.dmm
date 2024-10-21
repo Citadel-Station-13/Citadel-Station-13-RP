@@ -62,10 +62,6 @@
 /obj/item/grenade/empgrenade,
 /turf/simulated/floor,
 /area/awaymission/spacebattle/syndicate2)
-"at" = (
-/obj/structure/table/reinforced,
-/turf/simulated/floor,
-/area/awaymission/spacebattle/syndicate2)
 "au" = (
 /obj/structure/table/reinforced,
 /obj/item/gun/ballistic/automatic/c20r,
@@ -1553,9 +1549,6 @@
 /area)
 "iD" = (
 /turf/simulated/shuttle/wall/dark,
-/area)
-"iE" = (
-/turf/space,
 /area)
 "iF" = (
 /obj/machinery/sleeper,
@@ -36676,7 +36669,7 @@ aj
 aj
 ah
 an
-at
+an
 an
 an
 aj
@@ -37961,7 +37954,7 @@ aj
 aj
 ah
 an
-at
+an
 an
 an
 aj
@@ -38217,7 +38210,7 @@ aj
 aj
 aj
 ah
-at
+an
 aj
 aj
 aj
@@ -44514,7 +44507,7 @@ iJ
 iJ
 iD
 iD
-iE
+ab
 ab
 ab
 ab
@@ -44772,7 +44765,7 @@ iG
 iG
 iO
 iD
-iE
+ab
 ab
 ab
 ab
@@ -45030,7 +45023,7 @@ iG
 iG
 iF
 iD
-iE
+ab
 ab
 ab
 ab
@@ -45288,7 +45281,7 @@ iG
 iG
 iF
 iD
-iE
+ab
 ab
 ab
 ab
@@ -46573,7 +46566,7 @@ iG
 iG
 iF
 iD
-iE
+ab
 ab
 ab
 ab
@@ -46829,7 +46822,7 @@ iG
 iG
 iF
 iD
-iE
+ab
 ab
 ab
 ab
@@ -47076,7 +47069,7 @@ ab
 ab
 ab
 ab
-iE
+ab
 iD
 iG
 iG
@@ -47085,7 +47078,7 @@ iG
 iG
 iF
 iD
-iE
+ab
 ab
 ab
 ab
@@ -47334,14 +47327,14 @@ ab
 ab
 ab
 ab
-iE
+ab
 iD
 iD
 iJ
 iJ
 iD
 iD
-iE
+ab
 ab
 ab
 ab
