@@ -127,6 +127,20 @@
 	return (arctan(vel_y, vel_x) + 360) % 360
 
 /**
+ * move to the outside of another entity
+ */
+/obj/overmap/entity/proc/move_outside(obj/overmap/entity/other, copy_velocity)
+	forceMove(other.loc)
+	if(copy_velocity)
+		copy_velocity(other)
+
+/**
+ * copy velocity of another entity
+ */
+/obj/overmap/entity/proc/copy_velocity(obj/overmap/entity/other)
+	#warn impl
+
+/**
  * gets distance in overmap distance to other entity
  */
 /obj/overmap/entity/proc/entity_overmap_distance(obj/overmap/entity/other)

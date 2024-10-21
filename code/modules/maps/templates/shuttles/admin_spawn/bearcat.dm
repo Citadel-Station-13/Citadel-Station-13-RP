@@ -44,9 +44,6 @@
 // A shuttle lateloader landmark
 /obj/effect/shuttle_landmark/shuttle_initializer/bearcat
 	name = "IRV Bearcat"
-	base_area = /area/space
-	base_turf = /turf/space
-	landmark_tag = "omship_spawn_bearcat"
 	shuttle_type = /datum/shuttle/autodock/overmap/bearcat
 
 /obj/overmap/entity/visitable/ship/landable/bearcat
@@ -62,20 +59,12 @@
 	vessel_size = SHIP_SIZE_LARGE
 	shuttle = "Bearcat"
 
-// The shuttle's 'shuttle' computer
-/obj/machinery/computer/shuttle_control/explore/bearcat
-	name = "short jump console"
-	shuttle_tag = "Bearcat"
-	req_one_access = list()
-
 // -- Objs -- //
 /obj/effect/shuttle_landmark/premade/bearcat/dock_w
 	name = "IRV Bearcat - Port Docking Ring"
-	landmark_tag = "bearcat_dock_w"
 
 /obj/effect/shuttle_landmark/premade/bearcat/dock_e
 	name = "IRV Bearcat - Starboard Docking Ring"
-	landmark_tag = "bearcat_dock_e"
 
 /area/ship/scrap
 	name = "\improper Bearcat"

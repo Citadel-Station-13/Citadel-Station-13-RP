@@ -68,7 +68,7 @@
 /**
  * Crate sold hook.
  * Called in supplyshuttle.dm when a crate is sold on the shuttle.
- * Parameters: var/obj/structure/closet/crate/sold, var/area/shuttle
+ * Parameters: var/obj/structure/closet/crate/sold
  */
 /hook/sell_crate
 
@@ -77,6 +77,6 @@
  * Called in supplyshuttle.dm when the shuttle contents are sold.
  * This hook is called _before_ the crates are processed for normal
  * phoron/metal sale (and before the sell_crate hooks)
- * Parameters: var/area/area_shuttle
+ * Parameters: var/turf/selling_turf
  */
-/hook/sell_shuttle
+/hook/sell_turf

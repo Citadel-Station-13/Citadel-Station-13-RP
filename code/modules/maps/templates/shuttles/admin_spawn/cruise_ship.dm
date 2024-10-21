@@ -16,17 +16,9 @@
 	name = "\improper Cruise Shuttle - Private Quarters"
 	icon_state = "blue-red2"
 
-// The shuttle's 'shuttle' computer
-/obj/machinery/computer/shuttle_control/explore/cruise_ship
-	name = "short jump console"
-	shuttle_tag = "UKN Aerondight"
-
 // A shuttle lateloader landmark
 /obj/effect/shuttle_landmark/shuttle_initializer/cruise_ship
 	name = "Origin - Cruise Shuttle"
-	base_area = /area/space
-	base_turf = /turf/space
-	landmark_tag = "omship_spawn_aerondight"
 	shuttle_type = /datum/shuttle/autodock/overmap/cruise_ship
 
 // The 'shuttle'

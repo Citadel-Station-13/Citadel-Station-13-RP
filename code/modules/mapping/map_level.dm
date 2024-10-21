@@ -44,6 +44,9 @@
 	/// base turf typepath for this level
 	var/base_turf = /turf/space
 	/// base area typepath for this level
+	///
+	/// this should be an unique area, like /area/space
+	/// otherwise, stuff like grids will be mad at you and explode
 	var/base_area = /area/space
 	/// id of north zlevel - overrides linkage if set.
 	///
@@ -168,7 +171,8 @@
 	src.parent_map = parent_map
 
 	if(!isnull(parent_map))
-		id = "[parent_map.id]-[id]"
+		if(id)
+			id = "[parent_map.id]-[id]"
 
 /datum/map_level/Destroy()
 	if(loaded)
@@ -340,6 +344,15 @@
 		else
 			pass() // macro used immediately before being undefined; BYOND bug 2072419
 		#undef RESOLVE
+
+/**
+ * make us selflooping
+ *
+ * * do not use this unless you know what you're doing
+ * * does not update transitions!link_
+ */
+/datum/map_level/proc/dangerously_make_selflooping()
+	link_north = link_south = link_east = link_west = src
 
 /**
  * called right after we physically load in, before init
@@ -613,9 +626,3 @@
 
 /datum/map_level/reserved/allow_deallocate()
 	return FALSE
-
-/**
- * transit levels for shuttles
- */
-/datum/map_level/transit
-	transition = Z_TRANSITION_DISABLED

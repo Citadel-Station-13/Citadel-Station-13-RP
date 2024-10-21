@@ -74,32 +74,6 @@
 	requires_power = 1
 	has_gravity = 0
 
-// The shuttle's 'shuttle' computer
-/obj/machinery/computer/shuttle_control/explore/mackerel_sh
-	name = "short jump console"
-	shuttle_tag = "Mackerel Stationhopper"
-	req_one_access = list()
-
-/obj/machinery/computer/shuttle_control/explore/mackerel_lc
-	name = "short jump console"
-	shuttle_tag = "Mackerel Light Cargo"
-	req_one_access = list()
-
-/obj/machinery/computer/shuttle_control/explore/mackerel_lc_wreck
-	name = "short jump console"
-	shuttle_tag = "Mackerel Light Cargo II"
-	req_one_access = list()
-
-/obj/machinery/computer/shuttle_control/explore/mackerel_hc
-	name = "short jump console"
-	shuttle_tag = "Mackerel Heavy Cargo"
-	req_one_access = list()
-
-/obj/machinery/computer/shuttle_control/explore/mackerel_hc_skel
-	name = "short jump console"
-	shuttle_tag = "Mackerel Heavy Cargo Spartan"
-	req_one_access = list()
-
 // The 'shuttle'
 /datum/shuttle/autodock/overmap/mackerel_sh
 	name = "Mackerel Stationhopper"
@@ -149,37 +123,22 @@
 // A shuttle lateloader landmark
 /obj/effect/shuttle_landmark/shuttle_initializer/mackerel_sh
 	name = "ITV Mackerel I"
-	base_area = /area/space
-	base_turf = /turf/space
-	landmark_tag = "omship_spawn_mackerel_sh"
 	shuttle_type = /datum/shuttle/autodock/overmap/mackerel_sh
 
 /obj/effect/shuttle_landmark/shuttle_initializer/mackerel_lc
 	name = "ITV Mackerel II"
-	base_area = /area/space
-	base_turf = /turf/space
-	landmark_tag = "omship_spawn_mackerel_lc"
 	shuttle_type = /datum/shuttle/autodock/overmap/mackerel_lc
 
 /obj/effect/shuttle_landmark/shuttle_initializer/mackerel_hc
 	name = "ITV Mackerel III"
-	base_area = /area/space
-	base_turf = /turf/space
-	landmark_tag = "omship_spawn_mackerel_hc"
 	shuttle_type = /datum/shuttle/autodock/overmap/mackerel_hc
 
 /obj/effect/shuttle_landmark/shuttle_initializer/mackerel_hc_skel
 	name = "ITV Mackerel IV"
-	base_area = /area/space
-	base_turf = /turf/space
-	landmark_tag = "omship_spawn_mackerel_hc_skel"
 	shuttle_type = /datum/shuttle/autodock/overmap/mackerel_hc_skel
 
 /obj/effect/shuttle_landmark/shuttle_initializer/mackerel_lc_wreck
 	name = "ITV Mackerel II KIA"
-	base_area = /area/space
-	base_turf = /turf/space
-	landmark_tag = "omship_spawn_mackerel_lc_wreck"
 	shuttle_type = /datum/shuttle/autodock/overmap/mackerel_lc_wreck
 
 // The 'ship'
