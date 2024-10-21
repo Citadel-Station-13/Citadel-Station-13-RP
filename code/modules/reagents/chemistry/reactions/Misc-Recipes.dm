@@ -66,7 +66,6 @@
 	result = "coolant"
 	required_reagents = list("tungsten" = 1, "oxygen" = 1, "water" = 1)
 	result_amount = 3
-	log_is_important = 1
 
 /datum/chemical_reaction/luminol
 	name = "Luminol"
@@ -341,7 +340,7 @@
 	result_amount = 5
 
 //Xenochimera revival
-// todo: rework this 
+// todo: rework this
 /datum/chemical_reaction/xenolazarus
 	name = "Discount Lazarus"
 	id = "discountlazarus"
