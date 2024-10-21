@@ -366,7 +366,6 @@
 	spawn_flags = IC_SPAWN_RESEARCH
 	origin_tech = list(TECH_ENGINEERING = 3, TECH_DATA = 3, TECH_BIO = 4)
 	power_draw_per_use = 80
-	cooldown_per_use = 50
 
 /obj/item/integrated_circuit/input/examiner/do_work(ord)
 	if(ord == 1)
@@ -378,12 +377,6 @@
 		else
 			set_pin_data(IC_OUTPUT, 1, H.name)
 			set_pin_data(IC_OUTPUT, 2, H.desc)
-
-			if(istype(H, /mob/living))
-				var/msg = H.examine(H)
-				if(msg)
-					set_pin_data(IC_OUTPUT, 2, msg)
-
 			set_pin_data(IC_OUTPUT, 3, H.x-T.x)
 			set_pin_data(IC_OUTPUT, 4, H.y-T.y)
 			set_pin_data(IC_OUTPUT, 5, sqrt((H.x-T.x)*(H.x-T.x)+ (H.y-T.y)*(H.y-T.y)))
