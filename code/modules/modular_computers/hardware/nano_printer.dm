@@ -80,7 +80,7 @@
 		else if(B.pages.len == 1) //if only one item left, extract item and delete the one-item bundle
 			if(!user.attempt_consume_item_for_construction(B))
 				return
-			user.put_in_hands(B[1])
+			user.put_in_hands(B.pages[1])
 		else //if at least two items remain, just update the bundle icon
 			B.update_icon()
 		to_chat(user, "You add [num_of_pages_added] papers from \the [W] into \the [src].")

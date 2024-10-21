@@ -10,10 +10,10 @@
 	var/spawntype = /obj/effect/spider/spiderling
 
 /datum/gm_action/spider_infestation/set_up()
-	severity = pickweight(EVENT_LEVEL_MUNDANE = max(1,(12 - (3 * metric.count_people_in_department(DEPARTMENT_SECURITY)))),
-	EVENT_LEVEL_MODERATE = (7 + (2 * metric.count_people_in_department(DEPARTMENT_SECURITY))),
-	EVENT_LEVEL_MAJOR = (1 + (2 * metric.count_people_in_department(DEPARTMENT_SECURITY)))
-	)
+	severity = pick_weight(mundande_weight = max(1,(12 - (3 * metric.count_people_in_department(DEPARTMENT_SECURITY)))),
+							moderate_weight = (7 + (2 * metric.count_people_in_department(DEPARTMENT_SECURITY))),
+							major_weight = (1 + (2 * metric.count_people_in_department(DEPARTMENT_SECURITY)))
+							)
 
 	switch(severity)
 		if(EVENT_LEVEL_MUNDANE)

@@ -99,7 +99,7 @@
 
 		if("network")
 			var/newnet = input(usr, "Which network do you want to view?", "Comm Monitor", network) as null|text
-			if(newnet && ((usr in range(1, src) || issilicon(usr))))
+			if(newnet && ((usr in range(1, src)) || issilicon(usr)))
 				if(length(newnet) > 15)
 					set_temp("FAILED: NETWORK TAG STRING TOO LENGTHY", "bad")
 					return TRUE

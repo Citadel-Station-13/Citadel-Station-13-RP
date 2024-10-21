@@ -87,7 +87,7 @@ GLOBAL_DATUM_INIT(overmap_event_handler, /singleton/overmap_event_handler, new)
 
 /singleton/overmap_event_handler/proc/is_event_in_turf(var/datum/event/E, var/turf/T)
 	for(var/obj/overmap/tiled/hazard/hazard in hazard_by_turf[T])
-		if(E in hazard.events && E.severity == hazard.difficulty)
+		if((E in hazard.events) && E.severity == hazard.difficulty)
 			return TRUE
 
 /singleton/overmap_event_handler/proc/is_event_included(var/list/hazards, var/obj/overmap/tiled/hazard/E, var/equal_or_better)	// This proc is only used so it can break out of 2 loops cleanly

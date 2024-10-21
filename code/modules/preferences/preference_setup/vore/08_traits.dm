@@ -93,13 +93,13 @@
 	var/constraints = compute_constraints()
 
 	apply_traits(TRUE, pref.pos_traits.Copy() + pref.neu_traits.Copy() + pref.neg_traits.Copy(), available_traits, constraints)
-	
+
 	for(var/path in pref.id_hidden_traits)
 		var/datum/trait/T = all_traits[path]
 		if(!istype(T) || !T.extra_id_info_optional)
 			pref.id_hidden_traits -= path
 			continue
-		if(!(path in pref.pos_traits + pref.neu_traits + pref.neg_traits))
+		if(!(path in (pref.pos_traits + pref.neu_traits + pref.neg_traits)))
 			pref.id_hidden_traits -= path
 
 	var/datum/species/selected_species = pref.real_species_datum()
@@ -192,7 +192,7 @@
 
 	var/list/id_traits = list()
 	for(var/path in pref.pos_traits + pref.neg_traits + pref.neu_traits)
-		var/datum/trait/T = all_traits[path] 
+		var/datum/trait/T = all_traits[path]
 		if(istype(T) && T.extra_id_info)
 			id_traits |= T
 
@@ -393,7 +393,7 @@
 
 		// NOTE: For some reason, this is only actually used for neutral traits??? Weird.
 		if (species_id != SPECIES_ID_CUSTOM)
-			if (trait_path in positive_traits || (trait_path in neutral_traits && trait.custom_only))
+			if ((trait_path in positive_traits) || ((trait_path in neutral_traits) && trait.custom_only))
 				available_trait.forbidden_reason = "This trait is only allowed for custom species."
 
 		available_trait.exclusive_with = exclusions[trait_path]

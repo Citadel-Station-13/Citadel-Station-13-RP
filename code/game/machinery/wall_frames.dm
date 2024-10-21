@@ -69,7 +69,7 @@
 	var/turf/loc = get_turf(user)
 	var/area/A = loc.loc
 	if(!istype(loc, /turf/simulated/floor))
-		to_chat(user, "<span class='danger'>\The frame cannot be placed on this spot.</span>")
+		to_chat(user, "<span class='danger'>The frame cannot be placed on this spot.</span>")
 		return
 
 	if(A.requires_power == 0 || A.name == "Space")
