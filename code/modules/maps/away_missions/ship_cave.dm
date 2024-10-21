@@ -9,6 +9,7 @@
 	name = "Mysterious Caverns"
 	icon_state = "blank"
 	requires_power = 0
+	dynamic_lighting = 1
 
 /area/awaymission/shipcave/temple
 	name = "Gateway Temple"
