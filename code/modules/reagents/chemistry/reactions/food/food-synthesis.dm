@@ -7,6 +7,7 @@
 	require_whole_numbers = TRUE
 	result_amount = 1
 	result = null
+	important_for_logging = TRUE
 
 	/// item to make
 	var/synthesis_product_path
@@ -16,7 +17,6 @@
 	var/turf/location = get_turf(holder.my_atom)
 	if(!location)
 		return
-	#warn log
 	for(var/i in 1 to multiplier)
 		new synthesis_product_path(location)
 

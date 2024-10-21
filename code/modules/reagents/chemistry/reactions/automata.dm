@@ -1,7 +1,6 @@
 /datum/chemical_reaction/automata
 	abstract_type = /datum/chemical_reaction/automata
-
-	#warn log
+	important_for_logging = TRUE
 
 /datum/chemical_reaction/automata/chemsmoke
 	name = "Chemsmoke"
