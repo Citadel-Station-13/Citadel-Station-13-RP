@@ -1,6 +1,6 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "aA" = (
-/obj/effect/shuttle_landmark/transit/victory/civvie,
+/obj/effect/shuttle_landmark/transit/endeavour/civvie,
 /turf/space,
 /area/space)
 "aZ" = (
@@ -107,7 +107,7 @@
 /turf/simulated/floor/holofloor/tiled,
 /area/houseboat/holodeck/basketball)
 "lP" = (
-/obj/effect/shuttle_landmark/transit/victory/excursion,
+/obj/effect/shuttle_landmark/transit/endeavour/excursion,
 /turf/space/transit/east,
 /area/space)
 "mb" = (
@@ -116,7 +116,7 @@
 	},
 /area/space)
 "me" = (
-/obj/effect/shuttle_landmark/transit/victory/courser,
+/obj/effect/shuttle_landmark/transit/endeavour/courser,
 /turf/space/transit/east,
 /area/space)
 "mh" = (
@@ -171,7 +171,7 @@
 	},
 /area/houseboat/holodeck/beach)
 "qN" = (
-/obj/effect/shuttle_landmark/transit/victory/emt,
+/obj/effect/shuttle_landmark/transit/endeavour/emt,
 /turf/space/transit/east,
 /area/space)
 "qR" = (
@@ -267,7 +267,7 @@
 /turf/simulated/floor/holofloor/beach/sand,
 /area/houseboat/holodeck/beach)
 "AW" = (
-/obj/effect/shuttle_landmark/transit/victory/trade,
+/obj/effect/shuttle_landmark/transit/endeavour/trade,
 /turf/space/transit/east,
 /area/space)
 "CQ" = (
@@ -425,7 +425,7 @@
 /turf/simulated/floor/holofloor/tiled,
 /area/houseboat/holodeck/basketball)
 "Pk" = (
-/obj/effect/shuttle_landmark/transit/victory/pirate,
+/obj/effect/shuttle_landmark/transit/endeavour/pirate,
 /turf/space,
 /area/space)
 "PT" = (
@@ -436,7 +436,7 @@
 /turf/space/transit/west,
 /area/space)
 "Si" = (
-/obj/effect/shuttle_landmark/transit/victory/mining,
+/obj/effect/shuttle_landmark/transit/endeavour/mining,
 /turf/space/transit/east,
 /area/space)
 "US" = (
