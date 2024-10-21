@@ -72,7 +72,7 @@ jobs:
             ${{ runner.os }}-rust-
       - name: Install Tools
         run: |
-          tools/bootstrap/node --version
+          bash tools/ci/install_node.sh
           bash tools/ci/install/install_spaceman_dmm.sh dreamchecker
           bash tools/ci/install_ripgrep.sh
           tools/bootstrap/python -c ''
@@ -190,7 +190,7 @@ jobs:
   completion_gate: # Serves as a non-moving target for branch rulesets
     if: always() && !cancelled()
     name: Completion Gate
-    needs: [ test_windows, compile_all_maps, run_linters ]
+    needs: [ test_windows, run_integration_tests, compile_all_maps, run_linters ]
     runs-on: ubuntu-latest
     steps:
       - name: Decide whether the needed jobs succeeded or failed
