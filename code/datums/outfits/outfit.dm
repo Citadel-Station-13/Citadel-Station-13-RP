@@ -261,8 +261,8 @@
 	suit = /obj/item/clothing/suit/armor/combat/imperial
 	back = /obj/item/storage/backpack/satchel
 	belt = /obj/item/storage/belt/security/tactical/bandolier
-	l_pocket = /obj/item/cell/device/weapon
-	r_pocket = /obj/item/cell/device/weapon
+	l_pocket = /obj/item/cell/weapon/basic
+	r_pocket = /obj/item/cell/weapon/basic
 	r_hand = /obj/item/melee/transforming/energy/sword/imperial
 	l_hand = /obj/item/shield/transforming/energy/imperial
 	suit_store = /obj/item/gun/energy/imperial
@@ -277,8 +277,8 @@
 	mask = /obj/item/clothing/mask/gas/imperial
 	suit = /obj/item/clothing/suit/armor/combat/imperial/centurion
 	belt = /obj/item/storage/belt/security/tactical/bandolier
-	l_pocket = /obj/item/cell/device/weapon
-	r_pocket = /obj/item/cell/device/weapon
+	l_pocket = /obj/item/cell/weapon/basic
+	r_pocket = /obj/item/cell/weapon/basic
 	r_hand = /obj/item/melee/transforming/energy/sword/imperial
 	l_hand = /obj/item/shield/transforming/energy/imperial
 	suit_store = /obj/item/gun/energy/imperial

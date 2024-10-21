@@ -45,7 +45,7 @@
 			"name" = D.real_name,
 			"active" = D.stat != 2,
 			"charge" = D.cell.charge,
-			"maxCharge" = D.cell.maxcharge,
+			"maxCharge" = D.cell.max_charge,
 			"loc" = "[get_area(D)]",
 			"ref" = "\ref[D]",
 		)))

@@ -55,11 +55,13 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/power/apc/critical, 22)
 /obj/machinery/power/apc/critical
 	is_critical = 1
 
+#warn redo
 /// High capacity cell APCs
 CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/power/apc/high, 22)
 /obj/machinery/power/apc/high
 	cell_type = /obj/item/cell/high
 
+#warn redo
 /// Super capacity cell APCS
 CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/power/apc/super, 22)
 /obj/machinery/power/apc/super
@@ -70,6 +72,7 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/power/apc/super/critical, 22)
 /obj/machinery/power/apc/super/critical
 	is_critical = 1
 
+#warn redo
 /// APCS with hyper cells. How lewd
 CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/power/apc/hyper, 22)
 /obj/machinery/power/apc/hyper
@@ -301,7 +304,7 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/power/apc, 22)
 	// is starting with a power cell installed, create it and set its charge level
 	if(cell_type)
 		src.cell = new cell_type(src)
-		cell.charge = start_charge * cell.maxcharge / 100.0 		// (convert percentage to actual value)
+		cell.charge = start_charge * cell.max_charge / 100.0 		// (convert percentage to actual value)
 
 	var/area/A = src.loc.loc
 
@@ -1160,7 +1163,7 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/power/apc, 22)
 		if(src.attempt_charging())
 			if(excess > 0)		// check to make sure we have enough to charge
 				// Max charge is capped to % per second constant
-				var/ch = min(DYNAMIC_KW_TO_CELL_UNITS(excess, 1), cell.maxcharge * chargelevel, cell.maxcharge - cell.charge)
+				var/ch = min(DYNAMIC_KW_TO_CELL_UNITS(excess, 1), cell.max_charge * chargelevel, cell.max_charge - cell.charge)
 				var/charged = draw_power(DYNAMIC_CELL_UNITS_TO_KW(ch, 1)) // Removes the power we're taking from the grid
 				cell.give(DYNAMIC_KW_TO_CELL_UNITS(charged, 1)) // actually recharge the cell
 				lastused_charging = charged * 1000
@@ -1177,7 +1180,7 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/power/apc, 22)
 
 		if(chargemode)
 			if(!charging)
-				var/charge_tick = cell.maxcharge * chargelevel
+				var/charge_tick = cell.max_charge * chargelevel
 				charge_tick = DYNAMIC_CELL_UNITS_TO_KW(charge_tick, 1)
 				if(excess > charge_tick)
 					chargecount++
