@@ -232,6 +232,12 @@ GLOBAL_LIST_EMPTY(sprite_accessory_icon_cache)
 				),
 			)
 
+/**
+ * Binding: tgui/bindings/datum/Game_SpriteAccessory
+ */
+/datum/sprite_accessory/proc/tgui_data()
+	#warn impl
+
 //* Resolution *//
 
 /**
