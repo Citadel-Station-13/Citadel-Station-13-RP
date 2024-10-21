@@ -148,8 +148,8 @@
 			if(!isnull(data_initializer)) // For all we know, it could be zero or empty string and meaningful
 				current.mix_data(src, current.data, current.volume, data_initializer, amount)
 			update_total()
-			if(!safety)
-				handle_reactions()
+			if(!skip_reactions)
+				reconsider_reaction_on_reagent(id, amount)
 			if(my_atom)
 				my_atom.on_reagent_change()
 			return 1
@@ -161,8 +161,8 @@
 		R.volume = amount
 		R.initialize_data(data_initializer)
 		update_total()
-		if(!safety)
-			handle_reactions()
+		if(!skip_reactions)
+			reconsider_reaction_on_reagent(id, amount)
 		if(my_atom)
 			my_atom.on_reagent_change()
 		return 1
@@ -193,10 +193,11 @@
 		return 0
 	for(var/datum/reagent/current in reagent_list)
 		if(current.id == id)
-			current.volume -= amount // It can go negative, but it doesn't matter
-			update_total() // Because this proc will delete it then
-			if(!safety)
-				handle_reactions()
+			amount = min(amount, current.volume)
+			current.volume -= amount
+			update_total()
+			if(!skip_reactions)
+				reconsider_reaction_on_reagent(id, -amount)
 			if(my_atom)
 				my_atom.on_reagent_change()
 			return 1
@@ -292,7 +293,9 @@
 	reconsider_reactions()
 	return amount
 
-/datum/reagent_holder/proc/trans_to_holder(datum/reagent_holder/target, amount = 1, multiplier = 1, copy = 0) // Transfers [amount] reagents from [src] to [target], multiplying them by [multiplier]. Returns actual amount removed from [src] (not amount transferred to [target]).
+// Transfers [amount] reagents from [src] to [target], multiplying them by [multiplier].
+// Returns actual amount removed from [src] (not amount transferred to [target]).
+/datum/reagent_holder/proc/trans_to_holder(datum/reagent_holder/target, amount = 1, multiplier = 1, copy = 0)
 	if(!target || !istype(target))
 		return
 
@@ -305,7 +308,7 @@
 
 	for(var/datum/reagent/current in reagent_list)
 		var/amount_to_transfer = current.volume * part
-		target.add_reagent(current.id, amount_to_transfer * multiplier, current.get_data(), safety = 1) // We don't react until everything is in place
+		target.add_reagent(current.id, amount_to_transfer * multiplier, current.get_data(), TRUE)
 		if(!copy)
 			remove_reagent(current.id, amount_to_transfer, 1)
 
