@@ -18,7 +18,7 @@ export NODE_VERSION=20
 export NODE_VERSION_PRECISE=20.15.1
 
 # SpacemanDMM git tag
-export SPACEMAN_DMM_VERSION=suite-1.8
+export SPACEMAN_DMM_VERSION=suite-1.9
 
 # Python version for mapmerge and other tools
 export PYTHON_VERSION=3.9.0
