@@ -4613,10 +4613,6 @@
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/exploration/explorer_prep)
-"dUL" = (
-/obj/machinery/power/apc/north_mount,
-/turf/simulated/floor/plating,
-/area/endeavour/hallway/d1aftmaint)
 "dVP" = (
 /obj/structure/cable/green{
 	icon_state = "1-8"
@@ -22762,9 +22758,6 @@
 /obj/machinery/door/airlock/maintenance,
 /obj/machinery/door/firedoor/glass{
 	dir = 8
-	},
-/obj/structure/cable/green{
-	icon_state = "1-2"
 	},
 /obj/structure/cable/green{
 	icon_state = "1-2"
@@ -43760,7 +43753,7 @@ vEN
 dth
 pQg
 aNK
-dUL
+wim
 wim
 wim
 jLe
@@ -57530,7 +57523,7 @@ tHJ
 uwu
 tHJ
 tlI
-izR
+wrE
 vUa
 tOJ
 bOP
