@@ -51,15 +51,16 @@
 		user.action_feedback(SPAN_WARNING("You can't do that right now."), src)
 		return
 
-	// todo: rewrite this part iin hand rewrite
 	if (hasorgans(user))
 		var/mob/living/carbon/human/H = user
-		var/obj/item/organ/external/temp = H.organs_by_name[H.hand? "l_hand" : "r_hand"]
+		var/obj/item/organ/external/temp = H.organs_by_name["r_hand"]
+		if (H.active_hand % 2)
+			temp = H.organs_by_name["l_hand"]
+		if(temp && !temp.is_usable())
+			to_chat(user, "<span class='notice'>You try to move your [temp.name], but cannot!</span>")
+			return
 		if(!temp)
 			to_chat(user, "<span class='notice'>You try to use your hand, but realize it is no longer attached!</span>")
-			return
-		if(!temp.is_usable())
-			to_chat(user, "<span class='notice'>You try to move your [temp.name], but cannot!</span>")
 			return
 
 	var/old_loc = src.loc
@@ -113,12 +114,12 @@
 			return ..()
 		if(user.Adjacent(src))
 			// check for equip
-			if(istype(over, /atom/movable/screen/inventory/hand))
-				var/atom/movable/screen/inventory/hand/H = over
+			if(istype(over, /atom/movable/screen/inventory/plate/hand))
+				var/atom/movable/screen/inventory/plate/hand/H = over
 				user.put_in_hand(src, H.index)
 				return CLICKCHAIN_DO_NOT_PROPAGATE
-			else if(istype(over, /atom/movable/screen/inventory/slot))
-				var/atom/movable/screen/inventory/slot/S = over
+			else if(istype(over, /atom/movable/screen/inventory/plate/slot))
+				var/atom/movable/screen/inventory/plate/slot/S = over
 				user.equip_to_slot_if_possible(src, S.slot_id)
 				return CLICKCHAIN_DO_NOT_PROPAGATE
 		// check for slide
@@ -137,12 +138,12 @@
 			return CLICKCHAIN_DO_NOT_PROPAGATE
 	else
 		// being held, check for attempt unequip
-		if(istype(over, /atom/movable/screen/inventory/hand))
-			var/atom/movable/screen/inventory/hand/H = over
+		if(istype(over, /atom/movable/screen/inventory/plate/hand))
+			var/atom/movable/screen/inventory/plate/hand/H = over
 			user.put_in_hand(src, H.index)
 			return CLICKCHAIN_DO_NOT_PROPAGATE
-		else if(istype(over, /atom/movable/screen/inventory/slot))
-			var/atom/movable/screen/inventory/slot/S = over
+		else if(istype(over, /atom/movable/screen/inventory/plate/slot))
+			var/atom/movable/screen/inventory/plate/slot/S = over
 			user.equip_to_slot_if_possible(src, S.slot_id)
 			return CLICKCHAIN_DO_NOT_PROPAGATE
 		else if(istype(over, /turf))

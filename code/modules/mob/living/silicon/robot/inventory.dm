@@ -281,7 +281,7 @@
 	if(module_state_3 == I)
 		return 3
 
-/mob/living/silicon/robot/get_held_item_of_index(index)
+/mob/living/silicon/robot/get_held_index(index)
 	switch(index)
 		if(1)
 			return module_state_1

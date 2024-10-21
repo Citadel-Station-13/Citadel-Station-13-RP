@@ -243,7 +243,7 @@
 
 	var/mob/living/carbon/human/M = src
 
-	if(M.hands_full()) //Make sure our hands aren't full.
+	if(M.are_usable_hands_full()) //Make sure our hands aren't full.
 		to_chat(src, SPAN_WARNING("Our hands are full.  Drop something first."))
 		return 0
 

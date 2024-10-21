@@ -103,7 +103,7 @@
 /obj/item/handcuffs/equipped(mob/living/user, slot, accessory)
 	. = ..()
 	if(slot == SLOT_ID_HANDCUFFED)
-		user.drop_all_held_items()
+		user.drop_held_items()
 		user.stop_pulling()
 
 /* grimdark code that's disabled for code quality reasons - readd later if we care

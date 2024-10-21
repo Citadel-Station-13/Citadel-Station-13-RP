@@ -1158,9 +1158,9 @@
 	update_icon()
 	return
 
-/obj/item/melee/baton/fluff/stunstaff/update_held_icon()
+/obj/item/melee/baton/fluff/stunstaff/update_worn_icon()
 	var/mob/living/M = loc
-	if(istype(M) && !issmall(M) && M.is_holding(src) && !M.hands_full())
+	if(istype(M) && !issmall(M) && M.is_holding(src) && !M.are_usable_hands_full())
 		wielded = 1
 		damage_force = 15
 		name = "[base_name] (wielded)"
@@ -1185,7 +1185,7 @@
 	if(wielded)
 		wielded = 0
 		spawn(0)
-			update_held_icon()
+			update_worn_icon()
 
 /obj/item/melee/baton/fluff/stunstaff/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
@@ -1201,7 +1201,7 @@
 	else
 		status = 0
 		to_chat(user, "<span class='warning'>[src] is out of charge.</span>")
-	update_held_icon()
+	update_worn_icon()
 	add_fingerprint(user)
 
 /obj/item/storage/backpack/fluff/stunstaff
@@ -1266,14 +1266,8 @@
 		deactivate(user)
 	else
 		activate(user)
-
-	if(istype(user,/mob/living/carbon/human))
-		var/mob/living/carbon/human/H = user
-		H.update_inv_l_hand()
-		H.update_inv_r_hand()
-
+	update_worn_icon()
 	add_fingerprint(user)
-	return
 
 /obj/item/melee/fluffstuff/suicide_act(mob/user)
 	var/tempgender = "[user.gender == MALE ? "he's" : user.gender == FEMALE ? "she's" : "they are"]"
@@ -1418,8 +1412,4 @@
 	else
 		icon_state = "jazzcamcorder"
 		item_state = "jazzcamcorder"
-	var/mob/living/carbon/human/H = loc
-	if(istype(H))
-		H.update_inv_r_hand()
-		H.update_inv_l_hand()
-		H.update_inv_belt()
+	update_worn_icon()

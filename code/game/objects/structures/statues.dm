@@ -51,6 +51,7 @@
 			deconstruct(ATOM_DECONSTRUCT_DISASSEMBLED)
 		return
 	return ..()
+
 /obj/structure/statue/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	add_fingerprint(user)
 	user.visible_message("[user] rubs some dust off from the [name]'s surface.", \

@@ -2,15 +2,15 @@
 
 /atom/movable/screen/hud/Initialize(mapload, datum/hud/master)
 	. = ..()
-	hud = master
+	hud_legacy = master
 	sync_to_hud()
 
 /atom/movable/screen/hud/proc/sync_to_hud()
-	if(!hud)
+	if(!hud_legacy)
 		return
-	icon = hud.ui_style
-	color = hud.ui_color
-	alpha = hud.ui_alpha
+	icon = hud_legacy.ui_style
+	color = hud_legacy.ui_color
+	alpha = hud_legacy.ui_alpha
 
 /atom/movable/screen/hud/Click(location, control, params)
 	SEND_SIGNAL(src, COMSIG_CLICK, location, control, params)

@@ -7,7 +7,7 @@
 
 //	setClickCooldown(get_attack_speed())
 
-	if(has_hands && istype(A,/obj) && a_intent != INTENT_HARM)
+	if(has_hands() && istype(A,/obj) && a_intent != INTENT_HARM)
 		var/obj/O = A
 		return O.attack_hand(src)
 
@@ -27,13 +27,13 @@
 				attack_target(A)
 
 		if(INTENT_GRAB)
-			if(has_hands)
+			if(has_hands())
 				A.attack_hand(src)
 			else
 				attack_target(A)
 
 		if(INTENT_DISARM)
-			if(has_hands)
+			if(has_hands())
 				A.attack_hand(src)
 			else
 				attack_target(A)

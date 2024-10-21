@@ -30,7 +30,7 @@
 	var/mob/living/carbon/human/H = user
 	if(istype(H))
 		var/obj/item/organ/external/temp = H.organs_by_name["r_hand"]
-		if(H.hand)
+		if(H.active_hand % 2)
 			temp = H.organs_by_name["l_hand"]
 		if(!temp || !temp.is_usable())
 			to_chat(H, "<font color='red'>You can't use your hand.</font>")
@@ -92,7 +92,6 @@
 			if(!G)	//the grab will delete itself in New if affecting is anchored
 				return
 			L.put_in_active_hand(G)
-			G.synch()
 			LAssailant = L
 
 			H.do_attack_animation(src)
@@ -292,7 +291,7 @@
 					return
 
 				//Actually disarm them
-				drop_all_held_items()
+				drop_held_items()
 
 				visible_message("<span class='danger'>[L] has disarmed [src]!</span>")
 				playsound(src, 'sound/weapons/thudswoosh.ogg', 50, 1, -1)
@@ -334,14 +333,8 @@
 
 //Used to attack a joint through grabbing
 /mob/living/carbon/human/proc/grab_joint(var/mob/living/user, var/def_zone)
-	var/has_grab = 0
-	for(var/obj/item/grab/G in list(user.l_hand, user.r_hand))
-		if(G.affecting == src && G.state == GRAB_NECK)
-			has_grab = 1
-			break
-
-	if(!has_grab)
-		return FALSE
+	if(user.check_grab(src) < GRAB_NECK)
+		return
 
 	if(!def_zone) def_zone = user.zone_sel.selecting
 	var/target_zone = check_zone(def_zone)
@@ -366,20 +359,11 @@
 		success = TRUE
 		stop_pulling()
 
-	if(istype(l_hand, /obj/item/grab))
-		var/obj/item/grab/lgrab = l_hand
-		if(lgrab.affecting)
-			visible_message("<span class='danger'>[user] has broken [src]'s grip on [lgrab.affecting]!</span>")
+	for(var/obj/item/grab/grab as anything in get_held_items_of_type(/obj/item/grab))
+		if(grab.affecting)
+			visible_message("<span class='danger'>[user] has broken [src]'s grip on [grab.affecting]!</span>")
 			success = TRUE
-		spawn(1)
-			qdel(lgrab)
-	if(istype(r_hand, /obj/item/grab))
-		var/obj/item/grab/rgrab = r_hand
-		if(rgrab.affecting)
-			visible_message("<span class='danger'>[user] has broken [src]'s grip on [rgrab.affecting]!</span>")
-			success = TRUE
-		spawn(1)
-			qdel(rgrab)
+		INVOKE_ASYNC(GLOBAL_PROC, GLOBAL_PROC_REF(qdel), grab)
 	return success
 
 /*
