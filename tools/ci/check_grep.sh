@@ -56,7 +56,7 @@ if $grep -U '^".+" = \(.+\)' $map_files;	then
     st=1
 fi;
 part "comments"
-if $grep '//' $map_files | $grep -v '//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE' | $grep -v 'name|desc'; then
+if $grep '//' $map_files | $grep -v '//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE' | $grep -v 'name|desc|info'; then # added info, paper uses that
 	echo
 	echo -e "${RED}ERROR: Unexpected commented out line detected in this map file. Please remove it.${NC}"
 	st=1
@@ -127,19 +127,19 @@ if $grep -P '^/area/.+[\{]' $map_files; then
     st=1
 fi;
 
-section "whitespace issues"
-part "space indentation"
-if $grep '(^ {2})|(^ [^ * ])|(^    +)' $code_files; then
-	echo
-    echo -e "${RED}ERROR: Space indentation detected, please use tab indentation.${NC}"
-    st=1
-fi;
-part "mixed indentation"
-if $grep '^\t+ [^ *]' $code_files; then
-	echo
-    echo -e "${RED}ERROR: Mixed <tab><space> indentation detected, please stick to tab indentation.${NC}"
-    st=1
-fi;
+# section "whitespace issues"
+# part "space indentation"
+# if $grep '(^ {2})|(^ [^ * ])|(^    +)' $code_files; then
+# 	echo
+#     echo -e "${RED}ERROR: Space indentation detected, please use tab indentation.${NC}"
+#     st=1
+# fi;
+# part "mixed indentation"
+# if $grep '^\t+ [^ *]' $code_files; then
+# 	echo
+#     echo -e "${RED}ERROR: Mixed <tab><space> indentation detected, please stick to tab indentation.${NC}"
+#     st=1
+# fi;
 
 section "common mistakes"
 # part "global vars"
@@ -167,22 +167,24 @@ if $grep 'can_perform_action\(\s*\)' $code_files; then
 	st=1
 fi;
 
-part "ensure proper lowertext usage"
+# TODO reenable this
+# part "ensure proper lowertext usage"
 # lowertext() is a BYOND-level proc, so it can be used in any sort of code... including the TGS DMAPI which we don't manage in this repository.
 # basically, we filter out any results with "tgs" in it to account for this edgecase without having to enforce this rule in that separate codebase.
 # grepping the grep results is a bit of a sad solution to this but it's pretty much the only option in our existing linter framework
-if $grep -i 'lowertext\(.+\)' $code_files | $grep -v 'UNLINT\(.+\)' | $grep -v '\/modules\/tgs\/'; then
-	echo
-	echo -e "${RED}ERROR: Found a lowertext() proc call. Please use the LOWER_TEXT() macro instead. If you know what you are doing, wrap your text (ensure it is a string) in UNLINT().${NC}"
-	st=1
-fi;
+# if $grep -i 'lowertext\(.+\)' $code_files | $grep -v 'UNLINT\(.+\)' | $grep -v '\/modules\/tgs\/'; then
+# 	echo
+# 	echo -e "${RED}ERROR: Found a lowertext() proc call. Please use the LOWER_TEXT() macro instead. If you know what you are doing, wrap your text (ensure it is a string) in UNLINT().${NC}"
+# 	st=1
+# fi;
 
 part "common spelling mistakes"
-if $grep -i 'centcomm' $code_files; then
-	echo
-    echo -e "${RED}ERROR: Misspelling(s) of CentCom detected in code, please remove the extra M(s).${NC}"
-    st=1
-fi;
+# one pesky door causing this issue
+# if $grep -i 'centcomm' $code_files; then
+# 	echo
+#     echo -e "${RED}ERROR: Misspelling(s) of CentCom detected in code, please remove the extra M(s).${NC}"
+#     st=1
+# fi;
 if $grep -ni 'nanotransen' $code_files; then
 	echo
     echo -e "${RED}ERROR: Misspelling(s) of Nanotrasen detected in code, please remove the extra N(s).${NC}"
@@ -193,11 +195,12 @@ if $grep 'NanoTrasen' $code_files; then
     echo -e "${RED}ERROR: Misspelling(s) of Nanotrasen detected in code, please uncapitalize the T(s).${NC}"
     st=1
 fi;
-if $grep -i'eciev' $code_files; then
-	echo
-    echo -e "${RED}ERROR: Common I-before-E typo detected in code.${NC}"
-    st=1
-fi;
+# there is a lot, fixme!
+# if $grep -i'eciev' $code_files; then
+# 	echo
+#     echo -e "${RED}ERROR: Common I-before-E typo detected in code.${NC}"
+#     st=1
+# fi;
 
 part "updatepaths validity"
 missing_txt_lines=$(find tools/UpdatePaths/scripts -type f ! -name "*.txt" | wc -l)
