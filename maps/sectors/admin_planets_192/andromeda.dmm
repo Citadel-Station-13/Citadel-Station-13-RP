@@ -4021,7 +4021,7 @@
 "mi" = (
 /turf/simulated/wall/r_wall/prepainted/cargo{
 	integrity_flags = 1;
-	integrity_enabled = o
+	integrity_enabled = 0
 	},
 /area/space)
 "mj" = (
@@ -4576,7 +4576,7 @@
 /obj/structure/transit_tube/high_velocity,
 /turf/simulated/wall/r_wall/prepainted/cargo{
 	integrity_flags = 1;
-	integrity_enabled = o
+	integrity_enabled = 0
 	},
 /area/space)
 "og" = (
@@ -5164,7 +5164,7 @@
 "pP" = (
 /turf/simulated/wall/r_wall/prepainted/cargo{
 	integrity_flags = 1;
-	integrity_enabled = o
+	integrity_enabled = 0
 	},
 /area/admin_planet/andromeda/supply_transit)
 "pQ" = (
@@ -10387,7 +10387,7 @@
 "GT" = (
 /turf/simulated/wall/r_wall/prepainted/cargo{
 	integrity_flags = 1;
-	integrity_enabled = o
+	integrity_enabled = 0
 	},
 /area/admin_planet/andromeda/supply_prep)
 "GV" = (
@@ -10525,7 +10525,7 @@
 "Hs" = (
 /turf/simulated/wall/r_wall/prepainted/cargo{
 	integrity_flags = 1;
-	integrity_enabled = o
+	integrity_enabled = 0
 	},
 /area/admin_planet/andromeda/supply_lobby)
 "Ht" = (
@@ -12667,7 +12667,7 @@
 "NU" = (
 /turf/simulated/wall/r_wall/prepainted/cargo{
 	integrity_flags = 1;
-	integrity_enabled = o
+	integrity_enabled = 0
 	},
 /area/admin_planet/andromeda/lobby)
 "NV" = (
@@ -16152,7 +16152,7 @@
 "Ze" = (
 /turf/simulated/wall/r_wall/prepainted/cargo{
 	integrity_flags = 1;
-	integrity_enabled = o
+	integrity_enabled = 0
 	},
 /area/admin_planet/andromeda/supply_warehouse)
 "Zg" = (
