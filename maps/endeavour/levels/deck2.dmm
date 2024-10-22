@@ -5548,12 +5548,9 @@
 	req_one_access = list(5)
 	},
 /obj/machinery/door/blast/shutters{
-	density = 0;
 	dir = 2;
-	icon_state = "shutter0";
-	id = "chemistry";
-	name = "Chemistry Lockdown Shutters";
-	opacity = 0
+	id = "chemistrylockdown";
+	name = "Chemistry Lockdown Shutters"
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/chemistry)
@@ -7113,7 +7110,7 @@
 	},
 /obj/machinery/button/remote/airlock{
 	desc = "A remote control switch for the chemistry lab shutters.";
-	id = "chemistry";
+	id = "chemistrylockdown";
 	name = "Shutter Toggle";
 	pixel_y = -23
 	},
@@ -12913,7 +12910,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/door/blast/shutters{
 	dir = 2;
-	id = "chemistry";
+	id = "chemistrylockdown";
 	name = "Chemistry Lockdown Shutters"
 	},
 /turf/simulated/floor/plating,
@@ -13178,7 +13175,7 @@
 /obj/effect/paint/babyblue,
 /obj/machinery/door/blast/shutters{
 	dir = 2;
-	id = "chemistry";
+	id = "chemistrylockdown";
 	name = "Chemistry Lockdown Shutters"
 	},
 /turf/simulated/floor/plating,
@@ -17236,7 +17233,7 @@
 /obj/structure/disposalpipe/segment,
 /obj/machinery/door/blast/shutters{
 	dir = 2;
-	id = "chemistry";
+	id = "chemistrylockdown";
 	name = "Chemistry Lockdown Shutters"
 	},
 /turf/simulated/floor/plating,
@@ -25437,7 +25434,7 @@
 	},
 /obj/machinery/door/blast/shutters{
 	dir = 2;
-	id = "chemistry";
+	id = "chemistrylockdown";
 	name = "Chemistry Lockdown Shutters"
 	},
 /turf/simulated/floor/plating,
