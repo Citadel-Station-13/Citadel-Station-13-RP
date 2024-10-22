@@ -199,6 +199,7 @@
 "agE" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/glass,
+/obj/item/barrier_tape_segment/engineering,
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d2fwdhall)
 "agO" = (
@@ -4084,6 +4085,7 @@
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/glass,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/item/barrier_tape_segment/engineering,
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d2fwdhall)
 "cTK" = (
@@ -5863,6 +5865,7 @@
 	req_one_access = null
 	},
 /obj/map_helper/access_helper/airlock/station/external_airlock,
+/obj/item/barrier_tape_segment/engineering,
 /turf/simulated/floor/tiled{
 	icon_state = "techmaint"
 	},
@@ -11123,6 +11126,7 @@
 	req_one_access = null
 	},
 /obj/map_helper/access_helper/airlock/station/external_airlock,
+/obj/item/barrier_tape_segment/engineering,
 /turf/simulated/floor/tiled{
 	icon_state = "techmaint"
 	},
@@ -21105,6 +21109,7 @@
 	req_one_access = null
 	},
 /obj/map_helper/access_helper/airlock/station/external_airlock,
+/obj/item/barrier_tape_segment/engineering,
 /turf/simulated/floor/tiled{
 	icon_state = "techmaint"
 	},
@@ -63072,7 +63077,7 @@ ifg
 mna
 tPG
 tPG
-mna
+dFg
 sTc
 qhO
 qhO
@@ -63654,7 +63659,7 @@ ifg
 mna
 tPG
 tPG
-dFg
+mna
 tcX
 kDb
 qhO

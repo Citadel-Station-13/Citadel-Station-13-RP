@@ -3163,6 +3163,9 @@
 	pixel_y = 10
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
 /turf/simulated/floor/carpet/blue,
 /area/crew_quarters/heads/blueshield)
 "cIC" = (
@@ -4552,6 +4555,9 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
+	},
+/obj/structure/cable/green{
+	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled,
 /area/bridge/hallway)
@@ -12083,6 +12089,9 @@
 /obj/effect/floor_decal/corner/beige/border{
 	dir = 8
 	},
+/obj/structure/cable/green{
+	icon_state = "0-4"
+	},
 /turf/simulated/floor/tiled,
 /area/bridge/hallway)
 "jJV" = (
@@ -12665,6 +12674,9 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
+	},
+/obj/structure/cable/green{
+	icon_state = "4-8"
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/heads/blueshield)
@@ -13413,6 +13425,9 @@
 /obj/structure/bed/chair{
 	dir = 1
 	},
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/heads/blueshield)
 "kNi" = (
@@ -13830,6 +13845,9 @@
 "ldn" = (
 /obj/structure/closet/secure_closet/blueshield,
 /obj/machinery/power/apc/north_mount,
+/obj/structure/cable/green{
+	icon_state = "0-2"
+	},
 /turf/simulated/floor/carpet/blue,
 /area/crew_quarters/heads/blueshield)
 "ldy" = (
@@ -14840,6 +14858,9 @@
 /obj/machinery/atmospherics/pipe/manifold4w/hidden/supply,
 /obj/structure/cable/green{
 	icon_state = "1-2"
+	},
+/obj/structure/cable/green{
+	icon_state = "2-8"
 	},
 /turf/simulated/floor/tiled,
 /area/bridge/hallway)
@@ -16835,6 +16856,9 @@
 /obj/machinery/status_display{
 	pixel_y = -32
 	},
+/obj/structure/cable/green{
+	icon_state = "1-4"
+	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/heads/blueshield)
 "nFx" = (
@@ -16874,6 +16898,17 @@
 /obj/structure/musician/piano,
 /turf/simulated/floor/tiled/dark,
 /area/chapel/main)
+"nHx" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
+/obj/structure/cable/green{
+	icon_state = "2-8"
+	},
+/turf/simulated/floor/tiled,
+/area/bridge/hallway)
 "nHB" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -24718,6 +24753,9 @@
 	req_one_access = null
 	},
 /obj/map_helper/access_helper/airlock/station/head_office/blueshield,
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/heads/blueshield)
 "uxn" = (
@@ -26769,6 +26807,9 @@
 /obj/structure/bed/chair/bay/comfy/black,
 /obj/landmark/spawnpoint/job/blueshield,
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
 /turf/simulated/floor/carpet/blue,
 /area/crew_quarters/heads/blueshield)
 "wjN" = (
@@ -58079,7 +58120,7 @@ lUh
 qyL
 vgA
 vgA
-qyL
+upe
 bdP
 lJv
 qJY
@@ -58661,7 +58702,7 @@ lUh
 qyL
 vgA
 vgA
-upe
+qyL
 rwP
 mHc
 ePf
@@ -61177,7 +61218,7 @@ rJn
 wbz
 lWb
 ttX
-ttX
+nHx
 ttX
 ttX
 ttX

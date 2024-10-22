@@ -1870,7 +1870,7 @@
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/showers)
 "bDg" = (
-/obj/structure/sign/deck/second,
+/obj/structure/sign/deck/third,
 /turf/simulated/wall/prepainted,
 /area/endeavour/hallway/d3fwdmaint)
 "bDw" = (
@@ -3092,6 +3092,10 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/prison/cell_block)
+"cPX" = (
+/obj/structure/sign/deck/third,
+/turf/simulated/shuttle/wall/voidcraft/blue,
+/area/endeavour/hallway/d3fwdhall)
 "cQg" = (
 /obj/item/radio/intercom{
 	pixel_y = -24
@@ -5320,7 +5324,7 @@
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d3afthall)
 "eCk" = (
-/obj/structure/sign/deck/second,
+/obj/structure/sign/deck/third,
 /turf/simulated/wall/prepainted,
 /area/station/stairs_two)
 "eCE" = (
@@ -8899,6 +8903,10 @@
 /obj/effect/floor_decal/spline/fancy/wood,
 /turf/simulated/floor/carpet/bcarpet,
 /area/crew_quarters/bar)
+"hMG" = (
+/obj/structure/sign/deck/third,
+/turf/simulated/wall/prepainted/civilian,
+/area/janitor)
 "hMP" = (
 /obj/structure/coatrack,
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
@@ -17775,6 +17783,7 @@
 /turf/simulated/wall/r_wall/prepainted/civilian,
 /area/maintenance/bar/catwalk)
 "pwq" = (
+/obj/structure/sign/deck/third,
 /turf/simulated/wall/prepainted,
 /area/crew_quarters/recreation_area)
 "pwu" = (
@@ -22187,9 +22196,9 @@
 /turf/simulated/floor/tiled/monotile,
 /area/security/lobby)
 "tib" = (
-/obj/structure/sign/deck/second,
-/turf/simulated/shuttle/wall/voidcraft/blue,
-/area/endeavour/hallway/d3fwdhall)
+/obj/structure/sign/deck/third,
+/turf/simulated/wall/prepainted,
+/area/endeavour/hallway/d3aftmaint)
 "tii" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
@@ -23099,6 +23108,10 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/security/armoury)
+"tWr" = (
+/obj/structure/sign/deck/third,
+/turf/simulated/wall/prepainted,
+/area/crew_quarters/fitness)
 "tXt" = (
 /obj/machinery/fire_alarm/north_mount,
 /obj/landmark{
@@ -39270,7 +39283,7 @@ wHF
 vFW
 vFW
 eJd
-pYt
+hMG
 wcg
 qqX
 eCk
@@ -39284,7 +39297,7 @@ bWK
 eCk
 qCe
 usr
-syH
+tib
 lEY
 lEY
 lEY
@@ -48016,7 +48029,7 @@ mMr
 vUR
 rsR
 rsu
-phK
+tWr
 aXy
 gos
 rnS
@@ -57127,7 +57140,7 @@ tfs
 dNB
 ikk
 ikk
-dNB
+cPX
 kuM
 kuM
 kuM
@@ -57709,7 +57722,7 @@ tfs
 dNB
 ikk
 ikk
-tib
+dNB
 kuM
 kuM
 kuM
