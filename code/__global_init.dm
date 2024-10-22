@@ -24,3 +24,16 @@ var/world_log_redirected = FALSE
 
 /datum/world_log_shunter/New()
 	world.ensure_logging_active()
+
+var/datum/world_debug_enabler/world_debug_enabler = new
+
+/datum/world_debug_enabler/proc/debug_loop()
+	set waitfor = FALSE
+	debug_loop_impl()
+
+/**
+ * the sole job of this is keep ticking so the debug server can still do stuff while no clients are conencted
+ */
+/datum/world_debug_enabler/proc/debug_loop_impl()
+	while(TRUE)
+		sleep(world.tick_lag)

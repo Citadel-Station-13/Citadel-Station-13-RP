@@ -182,6 +182,11 @@
  * ## Sections follow
  */
 
+// ## assets
+
+/// If defined, we will NOT defer asset generation till later in the game, and will instead do it all at once, during initiialize
+// #define DO_NOT_DEFER_ASSETS
+
 // ## AI Holders
 
 /**

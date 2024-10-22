@@ -201,10 +201,6 @@ GLOBAL_LIST(topic_status_cache)
 	HandleTestRun()
 	#endif
 
-	#ifdef AUTOWIKI
-	// setup_autowiki()
-	#endif
-
 /world/proc/HandleTestRun()
 	//trigger things to run the whole process
 	Master.sleep_offline_after_initializations = FALSE
@@ -657,3 +653,4 @@ GLOBAL_LIST(topic_status_cache)
 	if (dll)
 		LIBCALL(dll, "auxtools_init")()
 		enable_debugging()
+		world_debug_enabler.debug_loop()
