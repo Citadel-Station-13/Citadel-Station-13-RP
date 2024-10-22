@@ -1,6 +1,3 @@
-/*
-	TODO README
-*/
 
 var/list/fusion_cores = list()
 
