@@ -295,7 +295,7 @@
  *
  * * Does not check if required reagents are there.
  */
-/datum/chemical_reaction/proc/can_start(datum/reagent_holder/holder)
+/datum/chemical_reaction/proc/can_start_internal(datum/reagent_holder/holder)
 	if(required_container_path && !istype(holder.my_atom, required_container_path))
 		return FALSE
 	return can_proceed(holder)
