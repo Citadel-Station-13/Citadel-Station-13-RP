@@ -57,52 +57,11 @@
 	var/temperature_low
 	/// temperature maximum, kelvin
 	var/temperature_high
-	/// optimal temperature; if non-null, reaction will slow down linearly when away from
-	/// this temperature
-	///
-	/// * has no effect on instant reactions
-	var/temperature_center
-	#warn impl
-	/// degrees +- from center where speed is still optimal
-	///
-	/// * has no effect on instant reactions
-	var/temperature_center_edge = 0
-	#warn impl
-	/// highest multiplier to half life at edge of allowable temperatures
-	///
-	/// * has no effect on instant reactions
-	var/temperature_penalty_maximum = 10
-	#warn impl
-	/// amount of flat area at edge of allowable temperatures
-	///
-	/// * has no effect on instant reactions
-	/// * e.g. if min/max is 100K, 300K, and this is set to 10,
-	///   and penalty_maximum is 10, the half life will be 10 times slower
-	///   at 100-110K, and 290-300K
-	var/temperature_penalty_edge = 0
-	#warn impl
 
 	/// pH minimum
 	var/ph_low
 	/// pH maximum
 	var/ph_high
-	/// optimal ph for reaction; if non-null, the reaction will slow down linearly when away from this ph
-	///
-	/// * has no effect on instant reactions
-	var/ph_center
-	/// degrees +- from center where speed is optimal
-	///
-	/// * has no effect on instant reactions
-	var/ph_center_edge = 0
-	/// highest multiplier to half-life at edge of allowable ph
-	///
-	/// * has no effect on instant reactions
-	var/ph_penalty_maximum = 10
-	/// amount of flat area at edge of allowable ph
-	///
-	/// * has no effect on instant reactions
-	/// * for min/max 3, 7 pH, and this is set to 0.1, this is at penalty-max at 3-3.1 and 6.9-7.0
-	var/ph_penalty_edge = 0
 
 	/// deciseconds to react half of the remaining amount.
 	/// used in some bullshit complex math to determine actual reaction rate
@@ -261,7 +220,12 @@
  *
  * * Unlike 'can_start_reaction' and 'can_proceed_reaction', this is meant to be able to be called
  *   externally, rather than just by the reaction loop.
+ * * This proc is more expensive than what would usually be called in the reaction loop.
  * * Therefore, this proc will check for reagents.
+ *
+ * Checks:
+ * * Reagents, catalysts, moderators
+ * * Everything in 'can_start_reaction'
  */
 /datum/chemical_reaction/proc/can_happen(datum/reagent_holder/holder)
 	// as an external proc, you should not need to override this
@@ -288,14 +252,16 @@
 		if(power >= SHORT_REAL_LIMIT && holder.legacy_direct_access_reagent_amount(reagent) >= 0)
 			return FALSE
 
-	return can_start_internal(holder)
+	return can_start_reaction(holder)
 
 /**
- * Can we happen in a given container? Checks everything.
+ * Can we happen in a given container? Checks only some things.
  *
- * * Does not check if required reagents are there.
+ * Checks:
+ * * Container path
+ * * Everything in 'can_proceed_reaction'
  */
-/datum/chemical_reaction/proc/can_start_internal(datum/reagent_holder/holder)
+/datum/chemical_reaction/proc/can_start_reaction(datum/reagent_holder/holder)
 	if(required_container_path && !istype(holder.my_atom, required_container_path))
 		return FALSE
 	return can_proceed(holder)
@@ -303,9 +269,15 @@
 /**
  * Can we proceed in a given container? Only checks some specific things.
  *
- * * Does not check if required reagents are there.
+ * Checks:
+ * * Temperature
+ * * pH
  */
-/datum/chemical_reaction/proc/can_proceed(datum/reagent_holder/holder)
+/datum/chemical_reaction/proc/can_proceed_reaction(datum/reagent_holder/holder)
+	if(holder.temperature < min_temperature || holder.temperature > max_temperature)
+		return FALSE
+	if(holder.ph < min_ph || holder.ph > max_ph)
+		return FALSE
 	return TRUE
 
 //* Reaction Hooks *//
@@ -356,3 +328,21 @@
 	return
 
 #warn impl all
+
+//* Reaction Modulation *//
+
+/**
+ * @return new half life, or null to halt
+ */
+/datum/chemical_reaction/proc/temperature_modulation(current_half_life, temperature)
+	if(temperature < reaction.temperature_low || temperature > reaction.temperature_high)
+		return null
+	return current_half_life
+
+/**
+ * @return new half life, or null to halt
+ */
+/datum/chemical_reaction/proc/ph_modulation(current_half_life, ph)
+	if(ph < reaction.ph_low || ph > reaction.ph_high)
+		return null
+	return current_half_life

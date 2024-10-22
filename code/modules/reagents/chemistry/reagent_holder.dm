@@ -16,6 +16,11 @@
 	/// the given reactions in the list will immediately be re-evaluated
 	var/list/reaction_reconsideration_hooks
 
+	//* Reagents *//
+
+	/// Our temperature
+	var/temperature = T20C
+
 	///? legacy / unsorted
 	// todo: 3 lists, for volume, data, flags; data should always be a list.
 	var/list/datum/reagent/reagent_list = list()
@@ -124,6 +129,8 @@
  * * amount - amount to add.
  * * data_initializer - data_initializer passed to relevant /datum/reagent procs when initializing data.
  * * skip_reactions - don't do reaction checks or similar.
+ *
+ * @return amount added
  */
 /datum/reagent_holder/proc/add_reagent(id, amount, data_initializer, skip_reactions)
 	if(ispath(id))
@@ -149,10 +156,10 @@
 				current.mix_data(src, current.data, current.volume, data_initializer, amount)
 			update_total()
 			if(!skip_reactions)
-				reconsider_reactions_for_reagent(id, amount)
+				try_reactions_on_reagent_change(id)
 			if(my_atom)
 				my_atom.on_reagent_change()
-			return 1
+			return amount
 	var/datum/reagent/D = SSchemistry.reagent_lookup[id]
 	if(D)
 		var/datum/reagent/R = new D.type()
@@ -162,28 +169,33 @@
 		R.initialize_data(data_initializer)
 		update_total()
 		if(!skip_reactions)
-			reconsider_reactions_for_reagent(id, amount)
+			try_reactions_on_reagent_change(id)
 		if(my_atom)
 			my_atom.on_reagent_change()
-		return 1
+		return amount
 	else
 		stack_trace("[my_atom] attempted to add a reagent called '[id]' which doesn't exist. ([usr])")
 	return 0
 
 /datum/reagent_holder/proc/isolate_reagent(reagent)
+	var/list/changed_ids = list()
 	for(var/A in reagent_list)
 		var/datum/reagent/R = A
 		if(R.id != reagent)
+			changed_ids[R.id] = TRUE
 			del_reagent(R.id)
 			update_total()
+	try_reactions_on_reagents_changed(changed_ids)
 
 /**
  * Core proc: Remove a specific amount of a reagent.
  *
- * @parmas
+ * @params
  * * id - reagent ID. Typepaths are allowed too.
  * * amount - amount to add.
  * * skip_reactions - don't do reaction checks or similar.
+ *
+ * @return amount removed
  */
 /datum/reagent_holder/proc/remove_reagent(id, amount, skip_reactions)
 	if(ispath(id))
@@ -197,10 +209,10 @@
 			current.volume -= amount
 			update_total()
 			if(!skip_reactions)
-				reconsider_reactions_for_reagent(id, -amount)
+				try_reactions_on_reagent_change(id)
 			if(my_atom)
 				my_atom.on_reagent_change()
-			return 1
+			return amount
 	return 0
 
 /datum/reagent_holder/proc/del_reagent(id)
