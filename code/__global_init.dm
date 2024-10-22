@@ -1,5 +1,6 @@
 /**
- * DO NOT MOVE THIS FILE. EVER. THIS ABSOLUTELY MUST GO RIGHT AFTER COMPLE OPTIONS, BECAUSE WE **NEED** THESE DATUMS TO INIT BEFORE **ANY** OTHER IMPLICIT INIT PROCS!
+ * * This file is special. You may notice it's not ticked. Do not touch that.
+ * * This file is actually compiled in at the end of the compile order by a specially inserted line.
  */
 
 //! Log shunting - ENSURE shunt_redirected_log() IS CALLED IMMEDIATELY AFTER LOGGING IS SET UP!
@@ -34,6 +35,8 @@ var/datum/world_debug_enabler/world_debug_enabler = new
 		LIBCALL(debug_server, "auxtools_init")()
 		enable_debugging()
 		debug_loop()
+	// just here so we can check if this is working by breakpointing this
+	pass()
 
 /datum/world_debug_enabler/proc/debug_loop()
 	set waitfor = FALSE
