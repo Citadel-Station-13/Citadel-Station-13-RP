@@ -5548,9 +5548,8 @@
 	req_one_access = list(5)
 	},
 /obj/machinery/door/blast/shutters{
-	dir = 2;
-	id = "chemistrylockdown";
-	name = "Chemistry Lockdown Shutters"
+	id = "chemshutters";
+	name = "Chemistry Shutters"
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/chemistry)
@@ -7108,15 +7107,15 @@
 /obj/effect/floor_decal/corner/lightorange/border{
 	dir = 10
 	},
-/obj/machinery/button/remote/airlock{
-	desc = "A remote control switch for the chemistry lab shutters.";
-	id = "chemistrylockdown";
-	name = "Shutter Toggle";
-	pixel_y = -23
-	},
 /obj/structure/table/reinforced,
 /obj/item/paper_bin,
 /obj/item/pen,
+/obj/machinery/button/remote/blast_door{
+	id = "chemshutters";
+	name = "Chemistry Shutter control"d";
+	pixel_x = -8;
+	pixel_y = -28
+	},
 /turf/simulated/floor/tiled/white,
 /area/medical/chemistry)
 "eZV" = (
@@ -12901,17 +12900,16 @@
 /turf/simulated/floor/plating,
 /area/medical/surgery_storage)
 "jgV" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint/babyblue,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/effect/paint/babyblue,
 /obj/machinery/door/blast/shutters{
-	dir = 2;
-	id = "chemistrylockdown";
-	name = "Chemistry Lockdown Shutters"
+	id = "chemshutters";
+	name = "Chemistry Shutters"
 	},
 /turf/simulated/floor/plating,
 /area/medical/chemistry)
@@ -13174,9 +13172,8 @@
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
 /obj/effect/paint/babyblue,
 /obj/machinery/door/blast/shutters{
-	dir = 2;
-	id = "chemistrylockdown";
-	name = "Chemistry Lockdown Shutters"
+	id = "chemshutters";
+	name = "Chemistry Shutters"
 	},
 /turf/simulated/floor/plating,
 /area/medical/chemistry)
@@ -17223,18 +17220,17 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/surgeryprep)
 "mtJ" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint/babyblue,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/disposalpipe/segment,
+/obj/effect/paint/babyblue,
+/obj/spawner/window/low_wall/reinforced/full/firelocks,
 /obj/machinery/door/blast/shutters{
-	dir = 2;
-	id = "chemistrylockdown";
-	name = "Chemistry Lockdown Shutters"
+	id = "chemshutters";
+	name = "Chemistry Shutters"
 	},
 /turf/simulated/floor/plating,
 /area/medical/chemistry)
@@ -17710,6 +17706,10 @@
 /obj/structure/closet/wardrobe/chemistry_white,
 /obj/effect/floor_decal/borderfloorwhite/corner2,
 /obj/effect/floor_decal/corner/lightorange/bordercorner2,
+/obj/machinery/light{
+	dir = 4;
+	pixel_x = 10
+	},
 /turf/simulated/floor/tiled/white,
 /area/medical/chemistry)
 "mKO" = (
@@ -22527,6 +22527,10 @@
 /obj/effect/floor_decal/corner/lightorange/border{
 	dir = 5
 	},
+/obj/machinery/light{
+	dir = 4;
+	pixel_x = 10
+	},
 /turf/simulated/floor/tiled/white,
 /area/medical/chemistry)
 "pXr" = (
@@ -23365,6 +23369,11 @@
 /obj/map_helper/access_helper/airlock/station/science/department,
 /turf/simulated/floor/tiled/steel,
 /area/rnd/testingroom)
+"qzs" = (
+/obj/effect/paint/babyblue,
+/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/turf/simulated/floor/plating,
+/area/medical/chemistry)
 "qzS" = (
 /obj/machinery/button/remote/airlock{
 	desc = "A remote control switch for the CMO's office.";
@@ -25153,6 +25162,14 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 4
 	},
+/obj/machinery/door/blast/shutters{
+	density = 0;
+	dir = 2;
+	icon_state = "shutter0";
+	id = "medbayquar";
+	name = "Medbay Emergency Lockdown Shutters";
+	opacity = 0
+	},
 /turf/simulated/floor/tiled/white,
 /area/medical/reception)
 "rLI" = (
@@ -25425,17 +25442,11 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/virology_aft_access)
 "rST" = (
+/obj/effect/paint/babyblue,
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
 /obj/machinery/door/blast/shutters{
-	dir = 2;
-	icon_state = "shutter0";
-	id = "chemistry";
-	name = "Chemistry Lockdown Shutters"
-	},
-/obj/machinery/door/blast/shutters{
-	dir = 2;
-	id = "chemistrylockdown";
-	name = "Chemistry Lockdown Shutters"
+	id = "chemshutters";
+	name = "Chemistry Shutters"
 	},
 /turf/simulated/floor/plating,
 /area/medical/chemistry)
@@ -49523,7 +49534,7 @@ gkX
 pgo
 chv
 chv
-jqy
+qzs
 xYH
 dYE
 rST
