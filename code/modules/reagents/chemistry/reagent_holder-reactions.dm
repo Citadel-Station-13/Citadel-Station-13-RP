@@ -49,7 +49,7 @@
 /datum/reagent_holder/proc/reconsider_reactions_for_reagents(list/ids)
 	SHOULD_NOT_SLEEP(TRUE)
 
-	var/list/datum/chemical_reaction/reactions = SSchemistry.relevant_reactions_for_reagent_ids(reagent_ids)
+	var/list/datum/chemical_reaction/reactions = SSchemistry.relevant_reactions_for_reagent_ids(ids)
 
 	#warn impl
 
