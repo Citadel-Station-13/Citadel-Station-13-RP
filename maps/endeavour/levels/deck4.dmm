@@ -2207,6 +2207,13 @@
 /obj/item/storage/briefcase/inflatable,
 /turf/simulated/floor/tiled/techmaint,
 /area/space)
+"cVC" = (
+/obj/machinery/atmospherics/pipe/simple/visible/yellow,
+/obj/machinery/atmospherics/pipe/simple/visible/cyan{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techmaint,
+/area/engineering/atmos)
 "cWi" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 4
@@ -2936,9 +2943,7 @@
 /obj/structure/window/reinforced{
 	dir = 1
 	},
-/obj/machinery/atmospherics/pipe/manifold/visible/black{
-	dir = 4
-	},
+/obj/machinery/atmospherics/pipe/simple/visible/black,
 /turf/simulated/floor/plating,
 /area/engineering/atmos)
 "elg" = (
@@ -3379,6 +3384,13 @@
 /obj/machinery/atmospherics/pipe/tank/phoron,
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/portnacelle)
+"eMa" = (
+/obj/machinery/atmospherics/pipe/simple/visible/red,
+/obj/machinery/atmospherics/pipe/simple/visible/cyan{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techmaint,
+/area/engineering/atmos)
 "eMg" = (
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/corner/lightorange/border,
@@ -12775,12 +12787,10 @@
 /obj/structure/window/reinforced{
 	dir = 1
 	},
-/obj/machinery/atmospherics/pipe/simple/visible/black{
-	dir = 6
-	},
 /obj/machinery/door/window/northright{
 	dir = 8
 	},
+/obj/machinery/atmospherics/component/binary/pump,
 /turf/simulated/floor/plating,
 /area/engineering/atmos)
 "sGf" = (
@@ -15148,6 +15158,12 @@
 	},
 /turf/simulated/floor/bluegrid,
 /area/ai)
+"vXi" = (
+/obj/machinery/atmospherics/pipe/manifold/visible/cyan{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techmaint,
+/area/engineering/atmos)
 "vXH" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -32739,7 +32755,7 @@ jrF
 jrF
 cPB
 mBT
-jrF
+vXi
 kkK
 bQm
 lbY
@@ -32933,7 +32949,7 @@ gPo
 xjs
 sgO
 bBE
-jPA
+qRw
 pfc
 sgO
 qRw
@@ -33127,7 +33143,7 @@ kzB
 mxs
 eSf
 ful
-jPA
+qRw
 pfc
 sgO
 liC
@@ -33321,7 +33337,7 @@ nEk
 gPo
 fBC
 mMX
-vdE
+cVC
 jLt
 fBC
 vdE
@@ -33515,7 +33531,7 @@ fxi
 ezp
 ezp
 fxi
-ezp
+eMa
 eUp
 ezp
 ezp
@@ -33709,8 +33725,8 @@ gPo
 xjs
 fHc
 qwn
-jPA
-pfc
+liC
+kkK
 sFd
 hLB
 nat
