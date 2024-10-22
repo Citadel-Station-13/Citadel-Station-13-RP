@@ -5548,9 +5548,9 @@
 	req_one_access = list(5)
 	},
 /obj/machinery/door/blast/shutters{
-	dir = 2;
-	id = "chemistrylockdown";
-	name = "Chemistry Lockdown Shutters"
+	dir = 8;
+	id = "chemshutter";
+	name = "Chemistry Shutters"
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/chemistry)
@@ -7108,15 +7108,15 @@
 /obj/effect/floor_decal/corner/lightorange/border{
 	dir = 10
 	},
-/obj/machinery/button/remote/airlock{
-	desc = "A remote control switch for the chemistry lab shutters.";
-	id = "chemistrylockdown";
-	name = "Shutter Toggle";
-	pixel_y = -23
-	},
 /obj/structure/table/reinforced,
 /obj/item/paper_bin,
 /obj/item/pen,
+/obj/machinery/button/remote/blast_door{
+	id = "chemshutter";
+	name = "Chemistry Shutter control";
+	pixel_y = 32;
+	pixel_x = -8
+	},
 /turf/simulated/floor/tiled/white,
 /area/medical/chemistry)
 "eZV" = (
@@ -12908,11 +12908,6 @@
 	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/door/blast/shutters{
-	dir = 2;
-	id = "chemistrylockdown";
-	name = "Chemistry Lockdown Shutters"
-	},
 /turf/simulated/floor/plating,
 /area/medical/chemistry)
 "jhl" = (
@@ -13173,11 +13168,6 @@
 "jqy" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
 /obj/effect/paint/babyblue,
-/obj/machinery/door/blast/shutters{
-	dir = 2;
-	id = "chemistrylockdown";
-	name = "Chemistry Lockdown Shutters"
-	},
 /turf/simulated/floor/plating,
 /area/medical/chemistry)
 "jrk" = (
@@ -17231,11 +17221,6 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/disposalpipe/segment,
-/obj/machinery/door/blast/shutters{
-	dir = 2;
-	id = "chemistrylockdown";
-	name = "Chemistry Lockdown Shutters"
-	},
 /turf/simulated/floor/plating,
 /area/medical/chemistry)
 "muS" = (
@@ -17710,6 +17695,10 @@
 /obj/structure/closet/wardrobe/chemistry_white,
 /obj/effect/floor_decal/borderfloorwhite/corner2,
 /obj/effect/floor_decal/corner/lightorange/bordercorner2,
+/obj/machinery/light{
+	dir = 4;
+	pixel_x = 10
+	},
 /turf/simulated/floor/tiled/white,
 /area/medical/chemistry)
 "mKO" = (
@@ -22527,6 +22516,10 @@
 /obj/effect/floor_decal/corner/lightorange/border{
 	dir = 5
 	},
+/obj/machinery/light{
+	dir = 4;
+	pixel_x = 10
+	},
 /turf/simulated/floor/tiled/white,
 /area/medical/chemistry)
 "pXr" = (
@@ -25424,21 +25417,6 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/virology_aft_access)
-"rST" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/machinery/door/blast/shutters{
-	dir = 2;
-	icon_state = "shutter0";
-	id = "chemistry";
-	name = "Chemistry Lockdown Shutters"
-	},
-/obj/machinery/door/blast/shutters{
-	dir = 2;
-	id = "chemistrylockdown";
-	name = "Chemistry Lockdown Shutters"
-	},
-/turf/simulated/floor/plating,
-/area/medical/chemistry)
 "rTs" = (
 /obj/effect/floor_decal/techfloor/corner{
 	dir = 8
@@ -49526,7 +49504,7 @@ chv
 jqy
 xYH
 dYE
-rST
+jqy
 chv
 abm
 vXJ
