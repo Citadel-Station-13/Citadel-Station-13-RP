@@ -161,7 +161,7 @@
 
 		#warn check before/after volume
 
-		// 1. ingredients
+		// ingredients
 		if(reaction.result_amount > 0)
 			maximum_multiplier = min(maximum_multiplier, (maximum_volume - total_volume) / reaction.result_amount)
 		for(var/id in reaction.required_reagents)
@@ -169,33 +169,27 @@
 			maximum_multiplier = min(maximum_multiplier, amount / reaction.required_reagents[id])
 			total_reactant_volume += amount
 
-		// 2. equilibrium (this relies on ingredients and must be #2 after ingredients which is #1)
+		// equilibrium (this relies on ingredients and must be #2 after ingredients which is #1)
 		if(reaction.equilibrium < 1)
 			#warn recalc this
 			var/wanted = reaction.equilibrium * legacy_direct_access_reagent_amount(reaction.result)
 			maximum_multiplier = min(maximum_multiplier, wanted / reaction.result_amount)
 
-		// temperature / ph hard checks are here, not above, because they
+		// temperature hard checks are here, not above, because they
 		// should've already been checked when these were added.
 
-		// 2. temperature
+		// temperature
 		effective_half_life = reaction.temperature_modulation(effective_half_life, temperature)
 		if(isnull(effective_half_life))
 			stop_ticked_reaction(reaction)
 			continue
 
-		// 3. ph
-		effective_half_life = reaction.ph_modulation(effective_half_life, ph)
-		if(isnull(effective_half_life))
-			stop_ticked_reaction(reaction)
-			continue
-
-		// 4. moderators
+		// moderators
 		for(var/id in reaction.moderators)
 			if(legacy_direct_access_reagent_amount(id))
 				effective_half_life *= reaction.moderators[id]
 
-		// 5. half life
+		// half life
 		#warn half-life & finish threshold
 
 		// if this is near-infinite it means a moderator is halting the reaction
