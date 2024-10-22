@@ -16,7 +16,6 @@
 	// todo: don't do this because peresistence
 	var/dirty_prob = 0	// Chance of being dirty roundstart
 	var/dirt = 0
-	var/special_temperature //Used for Lava HE-Pipe interaction
 
 	// If greater than 0, this turf will apply edge overlays on top of other turfs cardinally adjacent to it, if those adjacent turfs are of a different icon_state,
 	// and if those adjacent turfs have a lower edge_blending_priority.

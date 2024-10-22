@@ -96,7 +96,7 @@
  * return temperature of air
  */
 /atom/proc/return_temperature()
-	return return_air()?.temperature
+	return return_air_immutable()?.temperature
 
 /**
  * gets moles of gas in a single turf's worth of air
