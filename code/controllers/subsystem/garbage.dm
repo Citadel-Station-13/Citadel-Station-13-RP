@@ -280,8 +280,9 @@ SUBSYSTEM_DEF(garbage)
 	if(!istype(D))
 		del(D)
 		return
+
 	var/datum/qdel_item/I = SSgarbage.items[D.type]
-	if (!I)
+	if (isnull(I))
 		I = SSgarbage.items[D.type] = new /datum/qdel_item(D.type)
 	I.qdels++
 
