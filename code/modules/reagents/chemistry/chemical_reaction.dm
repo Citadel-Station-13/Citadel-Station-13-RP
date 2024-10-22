@@ -274,9 +274,9 @@
  * * pH
  */
 /datum/chemical_reaction/proc/can_proceed_reaction(datum/reagent_holder/holder)
-	if(holder.temperature < min_temperature || holder.temperature > max_temperature)
+	if(holder.temperature < temperature_low || holder.temperature > temperature_high)
 		return FALSE
-	if(holder.ph < min_ph || holder.ph > max_ph)
+	if(holder.ph < ph_low || holder.ph > ph_high)
 		return FALSE
 	return TRUE
 
@@ -336,13 +336,5 @@
  */
 /datum/chemical_reaction/proc/temperature_modulation(current_half_life, temperature)
 	if(temperature < reaction.temperature_low || temperature > reaction.temperature_high)
-		return null
-	return current_half_life
-
-/**
- * @return new half life, or null to halt
- */
-/datum/chemical_reaction/proc/ph_modulation(current_half_life, ph)
-	if(ph < reaction.ph_low || ph > reaction.ph_high)
 		return null
 	return current_half_life
