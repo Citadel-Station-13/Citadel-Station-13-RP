@@ -125,7 +125,7 @@ SUBSYSTEM_DEF(timer)
 		ctime_timer.spent = REALTIMEOFDAY
 		callBack.InvokeAsync()
 
-		if(ctime_timer.flags & TIMER_LOOP) // Re-insert valid looping client timers into the client timer list.
+		if(ctime_timer.timer_flags & TIMER_LOOP) // Re-insert valid looping client timers into the client timer list.
 			if (QDELETED(ctime_timer)) // Don't re-insert timers deleted inside their callbacks.
 				continue
 			ctime_timer.spent = 0
@@ -173,7 +173,7 @@ SUBSYSTEM_DEF(timer)
 				callBack.InvokeAsync()
 				last_invoke_tick = world.time
 
-			if (timer.flags & TIMER_LOOP) // Prepare valid looping timers to re-enter the queue
+			if (timer.timer_flags & TIMER_LOOP) // Prepare valid looping timers to re-enter the queue
 				if(QDELETED(timer)) // If a loop is deleted in its callback, we need to avoid re-inserting it.
 					continue
 				timer.spent = 0
@@ -372,7 +372,7 @@ SUBSYSTEM_DEF(timer)
 	/// The source of the timedevent, whatever called addtimer
 	var/source
 	/// Flags associated with the timer, see _DEFINES/subsystems.dm
-	var/list/flags
+	var/list/timer_flags
 	/// Time at which the timer was invoked or destroyed
 	var/spent = 0
 	/// Holds info about this timer, stored from the moment it was created
@@ -394,20 +394,20 @@ SUBSYSTEM_DEF(timer)
 	id = TIMER_ID_NULL
 	src.callBack = callBack
 	src.wait = wait
-	src.flags = flags
+	src.timer_flags = flags
 	src.hash = hash
 	src.source = source
 	src.timer_subsystem = timer_subsystem || SStimer
 
 	// Determine time at which the timer's callback should be invoked
-	timeToRun = (flags & TIMER_CLIENT_TIME ? REALTIMEOFDAY : world.time) + wait
+	timeToRun = (timer_flags & TIMER_CLIENT_TIME ? REALTIMEOFDAY : world.time) + wait
 
 	// Include the timer in the hash table if the timer is unique
-	if (flags & TIMER_UNIQUE)
+	if (timer_flags & TIMER_UNIQUE)
 		timer_subsystem.hashes[hash] = src
 
 	// Generate ID for the timer if the timer is stoppable, include in the timer id dictionary
-	if (flags & TIMER_STOPPABLE)
+	if (timer_flags & TIMER_STOPPABLE)
 		id = num2text(nextid, 100)
 		if (nextid >= SHORT_REAL_LIMIT)
 			nextid += min(1, 2 ** round(nextid / SHORT_REAL_LIMIT))
@@ -415,7 +415,7 @@ SUBSYSTEM_DEF(timer)
 			nextid++
 		timer_subsystem.timer_id_dict[id] = src
 
-	if ((timeToRun < world.time || timeToRun < timer_subsystem.head_offset) && !(flags & TIMER_CLIENT_TIME))
+	if ((timeToRun < world.time || timeToRun < timer_subsystem.head_offset) && !(timer_flags & TIMER_CLIENT_TIME))
 		CRASH("Invalid timer state: Timer created that would require a backtrack to run (addtimer would never let this happen): [SStimer.get_timer_debug_string(src)]")
 
 	if (callBack.object != GLOBAL_PROC && !QDESTROYING(callBack.object))
@@ -425,7 +425,7 @@ SUBSYSTEM_DEF(timer)
 
 /datum/timedevent/Destroy()
 	..()
-	if (flags & TIMER_UNIQUE && hash)
+	if (timer_flags & TIMER_UNIQUE && hash)
 		timer_subsystem.hashes -= hash
 
 	if (callBack && callBack.object && callBack.object != GLOBAL_PROC && callBack.object.active_timers)
@@ -434,10 +434,10 @@ SUBSYSTEM_DEF(timer)
 
 	callBack = null
 
-	if (flags & TIMER_STOPPABLE)
+	if (timer_flags & TIMER_STOPPABLE)
 		timer_subsystem.timer_id_dict -= id
 
-	if (flags & TIMER_CLIENT_TIME)
+	if (timer_flags & TIMER_CLIENT_TIME)
 		if (!spent)
 			spent = world.time
 			timer_subsystem.clienttime_timers -= src
@@ -523,7 +523,7 @@ SUBSYSTEM_DEF(timer)
 		1 = id,
 		2 = timeToRun,
 		3 = wait,
-		4 = flags,
+		4 = timer_flags,
 		5 = callBack, /* Safe to hold this directly because it's never del'd */
 		6 = "[callBack.object]",
 		7 = REF(callBack.object),
@@ -538,7 +538,7 @@ SUBSYSTEM_DEF(timer)
 		1 = id,
 		2 = timeToRun,
 		3 = wait,
-		4 = flags,
+		4 = timer_flags,
 		5 = callBack, /* Safe to hold this directly because it's never del'd */
 		6 = "[callBack.object]",
 		7 = getcallingtype(),
@@ -552,7 +552,7 @@ SUBSYSTEM_DEF(timer)
 
 	// Check if this timed event should be diverted to the client time bucket, or the secondary queue
 	var/list/L
-	if (flags & TIMER_CLIENT_TIME)
+	if (timer_flags & TIMER_CLIENT_TIME)
 		L = timer_subsystem.clienttime_timers
 	else if (timeToRun >= TIMER_MAX(timer_subsystem))
 		L = timer_subsystem.second_queue
@@ -648,7 +648,7 @@ SUBSYSTEM_DEF(timer)
 					hash_timer.hash = null // no need having it delete its hash if we are going to replace it
 					qdel(hash_timer)
 				else
-					if (hash_timer.flags & TIMER_STOPPABLE)
+					if (hash_timer.timer_flags & TIMER_STOPPABLE)
 						. = hash_timer.id
 					return
 	else if(flags & TIMER_OVERRIDE)
@@ -674,7 +674,7 @@ SUBSYSTEM_DEF(timer)
 	timer_subsystem = timer_subsystem || SStimer
 	//id is string
 	var/datum/timedevent/timer = timer_subsystem.timer_id_dict[id]
-	if (timer && (!timer.spent || timer.flags & TIMER_DELETE_ME))
+	if (timer && (!timer.spent || timer.timer_flags & TIMER_DELETE_ME))
 		qdel(timer)
 		return TRUE
 	return FALSE
@@ -698,7 +698,7 @@ SUBSYSTEM_DEF(timer)
 	var/datum/timedevent/timer = timer_subsystem.timer_id_dict[id]
 	if(!timer || timer.spent)
 		return null
-	return timer.timeToRun - (timer.flags & TIMER_CLIENT_TIME ? REALTIMEOFDAY : world.time)
+	return timer.timeToRun - (timer.timer_flags & TIMER_CLIENT_TIME ? REALTIMEOFDAY : world.time)
 
 /**
  * Update the delay on an existing LOOPING timer
@@ -722,7 +722,7 @@ SUBSYSTEM_DEF(timer)
 	var/datum/timedevent/timer = timer_subsystem.timer_id_dict[id]
 	if(!timer || timer.spent)
 		return
-	if(!(timer.flags & TIMER_LOOP))
+	if(!(timer.timer_flags & TIMER_LOOP))
 		CRASH("Tried to update the wait of a non looping timer. This is not supported")
 	timer.wait = new_wait
 
