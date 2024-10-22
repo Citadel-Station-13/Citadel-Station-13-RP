@@ -15,8 +15,11 @@
 	var/static/list/reserve_levels = list()
 	/// doing some blocking op on reservation system
 	var/static/reservation_blocking_op = FALSE
+
+	//! KEVIN!!!!!!!!
+	//! do not init this static turf until the mc exists
 	/// singleton area holding all free reservation turfs
-	var/static/area/reservation_unused/reservation_unallocated_area = new
+	var/static/area/reservation_unused/reservation_unallocated_area
 	/// spatial grid of turf reservations. the owner of a chunk is the bottom left tile's owner.
 	///
 	/// this is a list with length of world.maxz, with the actual spatial grid list being at the index of the z
@@ -28,6 +31,10 @@
 	/// * to get a chunk, do `spatial_lookup[ceil(where.x / TURF_CHUNK_RESOLUTION) + (ceil(where.y / TURF_CHUNK_RESOLUTION) - 1) * ceil(world.maxx / TURF_CHUNK_RESOLUTION)]`
 	/// * being in border counts as being in the reservation. you won't be soon, though.
 	var/static/list/reservation_spatial_lookups = list()
+
+/datum/controller/subsystem/mapping/Initialize(timeofday)
+	reservation_unallocated_area = new
+	. = ..()
 
 /datum/controller/subsystem/mapping/on_max_z_changed(old_z_count, new_z_count)
 	. = ..()

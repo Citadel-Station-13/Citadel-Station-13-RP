@@ -121,6 +121,9 @@ SUBSYSTEM_DEF(garbage)
 
 	lastlevel = level
 
+// 1 from the hard reference in the queue, and 1 from the variable used before this
+#define REFS_WE_EXPECT 2
+
 	for (var/refID in queue)
 		if (!refID)
 			count++
@@ -133,10 +136,10 @@ SUBSYSTEM_DEF(garbage)
 			break // Everything else is newer, skip them
 		count++
 
-		var/datum/D
-		D = locate(refID)
+		var/datum/D = locate(refID)
 
-		if (!D || D.gc_destroyed != GCd_at_time) // So if something else coincidently gets the same ref, it's not deleted by mistake
+		// If that's all we've got, send er off
+		if (refcount(D) == REFS_WE_EXPECT)
 			++gcedlasttick
 			++totalgcs
 			pass_counts[level]++
@@ -149,28 +152,41 @@ SUBSYSTEM_DEF(garbage)
 
 		// Something's still referring to the qdel'd object.
 		fail_counts[level]++
+
+		// TODO usless var, garbage requires updating.
+		// #ifdef REFERENCE_TRACKING
+		// var/ref_searching = FALSE
+		// #endif
+
 		switch(level)
 			if(GC_QUEUE_CHECK)
 				#ifdef REFERENCE_TRACKING
+				// Decides how many refs to look for (potentially)
+				// Based off the remaining and the ones we can account for
+				var/remaining_refs = refcount(D) - REFS_WE_EXPECT
 				if(reference_find_on_fail[refID])
-					D.find_references()
+					INVOKE_ASYNC(D, TYPE_PROC_REF(/datum,find_references), remaining_refs)
+					// ref_searching = TRUE
 				#ifdef GC_FAILURE_HARD_LOOKUP
 				else
-					D.find_references()
+					INVOKE_ASYNC(D, TYPE_PROC_REF(/datum,find_references), remaining_refs)
+					// ref_searching = TRUE
 				#endif
 				reference_find_on_fail -= refID
 				#endif
 				var/type = D.type
 				var/datum/qdel_item/I = items[type]
 
+				var/message = "## TESTING: GC: -- [REF(D)] | [type] was unable to be GC'd --"
+				message = "[message] (ref count of [REF(D)])"
+				log_world(message)
+
 				#ifdef TESTING
-				log_world("## TESTING: GC: -- \ref[D] | [type] was unable to be GC'd --")
 				for(var/c in GLOB.admins) //Using testing() here would fill the logs with ADMIN_VV garbage
 					var/client/admin = c
 					if(!check_rights_for(admin, R_ADMIN))
 						continue
 					to_chat(admin, "## TESTING: GC: -- [ADMIN_VV(D)] | [type] was unable to be GC'd --")
-				testing("GC: -- \ref[src] | [type] was unable to be GC'd --")
 				#endif
 				I.failures++
 
@@ -187,6 +203,8 @@ SUBSYSTEM_DEF(garbage)
 	if (count)
 		queue.Cut(1,count+1)
 		count = 0
+
+#undef REFS_WE_EXPECT
 
 /datum/controller/subsystem/garbage/proc/Queue(datum/D, level = GC_QUEUE_CHECK)
 	if (isnull(D))
