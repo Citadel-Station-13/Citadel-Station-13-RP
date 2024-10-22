@@ -103,6 +103,7 @@
 				break
 
 		if(!checks_pass)
+			stop_ticked_reaction(reaction)
 			continue
 
 		var/maximum_multiplier = INFINITY
@@ -121,6 +122,9 @@
 		if(reaction.equilibrium < 1)
 			var/wanted = reaction.equilibrium * legacy_direct_access_reagent_amount(reaction.result)
 			maximum_multiplier = min(maximum_multiplier, wanted / reaction.result_amount)
+
+		// temperature / ph hard checks are here, not above, because they
+		// should've already been checked when these were added.
 
 		// 2. temperature
 
