@@ -264,7 +264,7 @@
 /datum/chemical_reaction/proc/can_start_reaction(datum/reagent_holder/holder)
 	if(required_container_path && !istype(holder.my_atom, required_container_path))
 		return FALSE
-	return can_proceed(holder)
+	return can_proceed_reaction(holder)
 
 /**
  * Can we proceed in a given container? Only checks some specific things.
@@ -275,8 +275,6 @@
  */
 /datum/chemical_reaction/proc/can_proceed_reaction(datum/reagent_holder/holder)
 	if(holder.temperature < temperature_low || holder.temperature > temperature_high)
-		return FALSE
-	if(holder.ph < ph_low || holder.ph > ph_high)
 		return FALSE
 	return TRUE
 
@@ -335,6 +333,6 @@
  * @return new half life, or null to halt
  */
 /datum/chemical_reaction/proc/temperature_modulation(current_half_life, temperature)
-	if(temperature < reaction.temperature_low || temperature > reaction.temperature_high)
+	if(temperature < temperature_low || temperature > temperature_high)
 		return null
 	return current_half_life

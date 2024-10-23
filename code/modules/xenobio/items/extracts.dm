@@ -49,7 +49,7 @@
 /datum/chemical_reaction/slime
 	abstract_type = /datum/chemical_reaction/slime
 
-/datum/chemical_reaction/slime/can_start(datum/reagent_holder/holder)
+/datum/chemical_reaction/slime/can_start_reaction(datum/reagent_holder/holder)
 	if(!istype(holder.my_atom, /obj/item/slime_extract))
 		return FALSE
 	var/obj/item/slime_extract/T = holder.my_atom
