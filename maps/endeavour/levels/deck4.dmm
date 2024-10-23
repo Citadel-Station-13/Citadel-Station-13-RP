@@ -403,6 +403,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan{
 	dir = 4
 	},
+/obj/machinery/meter,
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/atmos/workshop)
 "axX" = (
@@ -11166,7 +11167,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d4starboardhall)
 "pXk" = (
-/obj/machinery/atmospherics/component/binary/pump/aux{
+/obj/machinery/atmospherics/pipe/simple/hidden/aux{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techmaint,
@@ -13621,6 +13622,9 @@
 /area/engineering/starboardnacelle)
 "tXF" = (
 /obj/spawner/window/reinforced/full/firelocks,
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
 /turf/simulated/floor/plating,
 /area/engineering/drone_fabrication)
 "uai" = (
@@ -34869,7 +34873,7 @@ qSG
 qSG
 qSG
 dtj
-kAO
+uzA
 kGS
 iUu
 xsV
