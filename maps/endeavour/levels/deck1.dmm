@@ -17156,6 +17156,7 @@
 	name = "Exploration Hangar";
 	req_one_access = null
 	},
+/obj/map_helper/access_helper/airlock/station/exploration/department,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/endeavour/exploration/hallway_aft)
 "nTo" = (
@@ -47995,7 +47996,7 @@ xRj
 xRj
 xRj
 xRj
-xRj
+hfY
 usG
 usG
 mZA
@@ -50138,7 +50139,7 @@ hub
 hub
 hub
 hub
-jNb
+qTb
 bgn
 hub
 hub

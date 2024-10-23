@@ -257,6 +257,16 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/virology)
+"ait" = (
+/obj/effect/floor_decal/borderfloorwhite{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/paleblue/border{
+	dir = 1
+	},
+/obj/machinery/fire_alarm/north_mount,
+/turf/simulated/floor/tiled/white,
+/area/medical/medbay3)
 "aiM" = (
 /obj/effect/floor_decal/corner/paleblue/border{
 	dir = 4
@@ -3972,6 +3982,7 @@
 /obj/effect/floor_decal/corner/beige/border{
 	dir = 6
 	},
+/obj/machinery/fire_alarm/east_mount,
 /turf/simulated/floor/tiled/white,
 /area/medical/medbay4)
 "cPx" = (
@@ -12014,11 +12025,11 @@
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d2porthall)
 "iym" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint/purplegray,
-/obj/effect/paint/purplegray,
-/turf/space/basic,
-/area/rnd/breakroom)
+/obj/effect/floor_decal/borderfloorwhite,
+/obj/effect/floor_decal/corner/beige/border,
+/obj/machinery/fire_alarm/west_mount,
+/turf/simulated/floor/tiled/white,
+/area/medical/medbay4)
 "iyp" = (
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /obj/structure/catwalk,
@@ -19820,6 +19831,9 @@
 /obj/effect/floor_decal/corner/paleblue{
 	dir = 1
 	},
+/obj/machinery/door/firedoor{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/white,
 /area/medical/reception)
 "onD" = (
@@ -24028,6 +24042,7 @@
 /obj/structure/bed/chair/sofa/black{
 	dir = 4
 	},
+/obj/machinery/fire_alarm/west_mount,
 /turf/simulated/floor/wood/sif/indoors,
 /area/medical/reception)
 "qUK" = (
@@ -26512,6 +26527,9 @@
 /obj/machinery/door/airlock/multi_tile/glass/medical{
 	name = "Medbay Reception"
 	},
+/obj/machinery/door/firedoor{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/white,
 /area/medical/reception)
 "sMF" = (
@@ -28476,6 +28494,9 @@
 /obj/structure/disposalpipe/segment{
 	dir = 1
 	},
+/obj/machinery/door/firedoor{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/white,
 /area/medical/patient_wing)
 "ugB" = (
@@ -29100,14 +29121,15 @@
 /turf/simulated/floor/plating,
 /area/rnd/xenobiology/xenoflora/lab_atmos)
 "uHG" = (
-/obj/machinery/smartfridge{
-	pixel_x = 32;
-	desc = "A refrigerated storage unit. This should keep your food fresh until lunch.";
-	accepted_types = list(/obj/item/reagent_containers/food)
+/obj/effect/floor_decal/borderfloorwhite{
+	dir = 1
 	},
-/obj/effect/floor_decal/spline/fancy/wood,
-/turf/simulated/floor/carpet/blucarpet,
-/area/crew_quarters/medbreak)
+/obj/effect/floor_decal/corner/green/border{
+	dir = 1
+	},
+/obj/machinery/fire_alarm/north_mount,
+/turf/simulated/floor/tiled/white,
+/area/medical/virology_aft_access)
 "uHH" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -30676,12 +30698,6 @@
 /obj/machinery/light{
 	dir = 4;
 	pixel_x = 10
-	},
-/obj/machinery/power/apc/west_mount{
-	cell_type = /obj/item/cell/super;
-	dir = 2;
-	pixel_x = 0;
-	pixel_y = 21
 	},
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d2fwdhall)
@@ -33121,7 +33137,6 @@
 /turf/simulated/floor/tiled,
 /area/rnd/hallway)
 "xug" = (
-/obj/machinery/power/apc/south_mount,
 /obj/structure/cable/green{
 	icon_state = "2-4"
 	},
@@ -33724,7 +33739,6 @@
 /obj/effect/floor_decal/corner/beige/border{
 	dir = 8
 	},
-/obj/map_helper/access_helper/airlock/station/medical/department,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/cable/green{
@@ -34096,7 +34110,6 @@
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
-/obj/machinery/power/apc/east_mount,
 /turf/simulated/floor/tiled/white,
 /area/holodeck_control)
 "yfn" = (
@@ -38254,7 +38267,7 @@ coV
 apy
 dci
 mnP
-kBS
+iym
 vcY
 nWB
 syi
@@ -50633,7 +50646,7 @@ eam
 gKn
 bds
 gKn
-iym
+bds
 gKn
 bqS
 qxs
@@ -51643,7 +51656,7 @@ wvW
 bYH
 xLu
 fiX
-uHG
+sWG
 bks
 wRU
 luC
@@ -51851,7 +51864,7 @@ ppj
 ppj
 ppj
 ppj
-vXJ
+ait
 rJd
 wIc
 hbm
@@ -53588,7 +53601,7 @@ ohv
 vYN
 vYN
 fDp
-gGs
+uHG
 dvL
 hjX
 uhe
@@ -53788,7 +53801,7 @@ hjX
 uhe
 vUs
 tfb
-pRW
+fik
 pRW
 pRW
 pRW
@@ -53981,8 +53994,8 @@ rRX
 qgp
 uhe
 vUs
-pRW
-pRW
+fik
+fik
 pRW
 pRW
 pRW
@@ -54174,9 +54187,9 @@ uhe
 rME
 uhe
 uhe
-pRW
-pRW
-pRW
+fik
+fik
+fik
 pRW
 pRW
 pRW
@@ -54368,9 +54381,9 @@ xht
 iVj
 sCy
 uhe
-pRW
-pRW
-pRW
+fik
+fik
+fik
 pRW
 pRW
 pRW
@@ -54563,8 +54576,8 @@ cSS
 aOb
 uhe
 qBd
-jRE
-pRW
+grq
+fik
 pRW
 pRW
 pRW
@@ -54758,7 +54771,7 @@ ohg
 uhe
 lmG
 qBd
-pRW
+fik
 pRW
 pRW
 pRW
@@ -54952,7 +54965,7 @@ fIp
 uhe
 qBd
 grq
-pRW
+fik
 pRW
 pRW
 pRW
@@ -55146,7 +55159,7 @@ xJh
 uhe
 brS
 fik
-pRW
+fik
 pRW
 pRW
 pRW
@@ -55340,7 +55353,7 @@ jzJ
 uhe
 fik
 fik
-pRW
+fik
 pRW
 pRW
 pRW
@@ -55534,7 +55547,7 @@ uhe
 uhe
 fik
 fik
-pRW
+fik
 pRW
 pRW
 pRW
@@ -55728,7 +55741,7 @@ bWr
 rNS
 fik
 fik
-pRW
+fik
 pRW
 pRW
 pRW
@@ -55922,7 +55935,7 @@ xke
 rNS
 fik
 fik
-pRW
+fik
 pRW
 pRW
 pRW
@@ -56116,7 +56129,7 @@ xke
 rNS
 fik
 fik
-pRW
+fik
 pRW
 pRW
 pRW
@@ -56310,7 +56323,7 @@ qrz
 rNS
 fik
 fik
-pRW
+fik
 pRW
 pRW
 pRW
@@ -56504,7 +56517,7 @@ lyO
 rNS
 fik
 fik
-pRW
+fik
 pRW
 pRW
 pRW
@@ -56698,7 +56711,7 @@ sox
 rdA
 brS
 fik
-pRW
+fik
 pRW
 pRW
 pRW
@@ -56892,7 +56905,7 @@ gtH
 rdA
 fik
 fik
-pRW
+fik
 pRW
 pRW
 pRW
@@ -57086,7 +57099,7 @@ bJH
 rdA
 fik
 fik
-pRW
+fik
 pRW
 pRW
 pRW
@@ -57280,7 +57293,7 @@ txt
 rdA
 fik
 fik
-pRW
+fik
 pRW
 pRW
 pRW
@@ -57474,7 +57487,7 @@ erj
 rdA
 qBd
 grq
-pRW
+fik
 pRW
 pRW
 pRW
@@ -57668,7 +57681,7 @@ obu
 rdA
 lmG
 qBd
-pRW
+fik
 pRW
 pRW
 pRW
@@ -57862,7 +57875,7 @@ rMR
 rdA
 qBd
 grq
-pRW
+fik
 pRW
 pRW
 pRW
@@ -58056,7 +58069,7 @@ qDJ
 rdA
 fik
 fik
-pRW
+fik
 pRW
 pRW
 pRW
@@ -58250,7 +58263,7 @@ vKc
 rdA
 fik
 fik
-pRW
+fik
 pRW
 pRW
 pRW
@@ -58444,7 +58457,7 @@ rdA
 rdA
 brS
 fik
-pRW
+fik
 pRW
 pRW
 pRW
@@ -58638,7 +58651,7 @@ dYQ
 dyS
 fik
 fik
-pRW
+fik
 pRW
 mDp
 pRW
@@ -58832,7 +58845,7 @@ kYG
 dyS
 fik
 fik
-pRW
+fik
 pRW
 pRW
 pRW
@@ -59026,7 +59039,7 @@ bYo
 dyS
 fik
 fik
-pRW
+fik
 pRW
 pRW
 pRW
