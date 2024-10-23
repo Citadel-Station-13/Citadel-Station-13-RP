@@ -137,6 +137,9 @@
 
 /**
  * Processes all ticking reactions.
+ *
+ * todo: if necessary reagents for a reaction is removed, it doesn't stop immediately, instead stopping on the next tick.
+ *       this is not amazing.
  */
 /datum/reagent_holder/proc/reaction_tick(delta_time)
 	SHOULD_NOT_SLEEP(TRUE)

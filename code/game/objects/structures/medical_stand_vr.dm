@@ -431,7 +431,7 @@
 				beaker.reagents.reagent_list |= B
 				beaker.reagents.update_total()
 				beaker.on_reagent_change()
-				beaker.reagents.handle_reactions()
+				beaker.reagents.reconsider_reactions()
 				update_icon()
 
 	if ((!valve_opened || tank.distribute_pressure == 0) && !breather && !attached)
