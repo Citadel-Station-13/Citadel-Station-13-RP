@@ -117,6 +117,7 @@ Thus, the two variables affect pump operation are set in New():
 		add_underlay(T, node2, dir, node2?.icon_connect_type)
 
 /obj/machinery/atmospherics/component/binary/pump/process(delta_time)
+	..()
 	last_power_draw_legacy = 0
 	last_flow_rate_legacy = 0
 

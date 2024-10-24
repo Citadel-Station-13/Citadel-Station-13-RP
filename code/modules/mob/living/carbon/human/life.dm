@@ -748,7 +748,7 @@
 	// we simulate in space, or in somewhere with a gasmixture. otherwise, we don't care.
 	if(istype(loc, /turf/space))
 		// in space, we use blackbody radiation
-		var/heat_loss = HUMAN_EXPOSED_SURFACE_AREA * STEFAN_BOLTZMANN_CONSTANT * ((bodytemperature - COSMIC_RADIATION_TEMPERATURE)**4)
+		var/heat_loss = THERMODYNAMICS_HUMAN_EXPOSED_SURFACE_AREA * STEFAN_BOLTZMANN_CONSTANT * ((bodytemperature - COSMIC_RADIATION_TEMPERATURE)**4)
 		var/temperature_loss = heat_loss/HUMAN_HEAT_CAPACITY
 		adjust_bodytemperature(-temperature_loss)
 	else if(!isnull(environment))
