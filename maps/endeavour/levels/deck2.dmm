@@ -11727,13 +11727,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/door/firedoor/glass,
-/obj/machinery/door/airlock/medical{
-	id_tag = "mentaldoor2";
-	name = "Mental Health";
-	req_one_access = null;
-	id = "mentaldoor1"
-	},
-/obj/map_helper/access_helper/airlock/station/medical/psychiatry,
+/obj/item/barrier_tape_segment/engineering,
 /turf/simulated/floor/wood,
 /area/medical/psych/psych_1)
 "ilh" = (
@@ -31297,13 +31291,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/door/firedoor/glass,
-/obj/machinery/door/airlock/medical{
-	id_tag = "mentaldoor2";
-	name = "Mental Health";
-	req_one_access = null;
-	id = "mentaldoor2"
-	},
-/obj/map_helper/access_helper/airlock/station/medical/psychiatry,
+/obj/item/barrier_tape_segment/engineering,
 /turf/simulated/floor/wood,
 /area/medical/psych/psych_2)
 "wfP" = (
