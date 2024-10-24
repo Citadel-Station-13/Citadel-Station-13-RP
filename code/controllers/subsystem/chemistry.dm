@@ -7,23 +7,27 @@ SUBSYSTEM_DEF(chemistry)
 	var/list/reagent_lookup = list()
 	/// flat list of all chemical reactions
 	var/list/chemical_reactions = list()
+	/// cached relevant reactions by reagent
 	///
-
-	var/list/chemical_reactions_by_reagent = list()
-	#warn kill this
+	/// * reagent id = list(reactions)
+	/// * used to prune reactions to check
+	var/list/chemical_reactions_relevant_for_reagent_id = list()
 
 	/// reacting holders
 	var/static/list/datum/reagent_holder/reacting_holders = list()
-	#warn hook; besure to null check as this runs every tick!
+	/// currentrun for reacting holders
+	var/static/list/datum/reagent_holder/reacting_holders_current_cycle
 
 /datum/controller/subsystem/chemistry/Recover()
 	chemical_reactions = SSchemistry.chemical_reactions
 	reagent_lookup = SSchemistry.reagent_lookup
+	rebuild_reaction_caches()
 
 // honestly hate that we have to do this but some things INITIALIZE_IMMEDIATE so uh fuck me I guess!
 /datum/controller/subsystem/chemistry/PreInit(recovering)
 	initialize_chemical_reagents()
 	initialize_chemical_reactions()
+	rebuild_reaction_caches()
 	return ..()
 
 /**
@@ -37,7 +41,6 @@ SUBSYSTEM_DEF(chemistry)
 /datum/controller/subsystem/chemistry/proc/initialize_chemical_reactions()
 	var/paths = subtypesof(/datum/chemical_reaction)
 	chemical_reactions = list()
-	chemical_reactions_by_reagent = list()
 
 	for(var/path in paths)
 		var/datum/chemical_reaction/D = new path
@@ -47,8 +50,6 @@ SUBSYSTEM_DEF(chemistry)
 		if(!length(D.required_reagents))
 			continue
 		var/reagent_id = D.required_reagents[1]
-		LAZYINITLIST(chemical_reactions_by_reagent[reagent_id])
-		chemical_reactions_by_reagent[reagent_id] += D
 
 /// Chemical Reagents - Initialises all /datum/reagent into a list indexed by reagent id
 /datum/controller/subsystem/chemistry/proc/initialize_chemical_reagents()
@@ -62,6 +63,25 @@ SUBSYSTEM_DEF(chemistry)
 			continue
 		reagent_lookup[D.id] = D
 
+/datum/controller/subsystem/chemistry/fire(resumed)
+	if(!resumed)
+		reacting_holders_current_cycle = reacting_holders.Copy()
+	var/reacted_holder_count = 0
+	for(var/reacted_holder_index in length(reacting_holders_current_cycle) to 1 step -1)
+		var/datum/reagent_holder/holder = reacting_holders_current_cycle[reacted_holder_index]
+		holder.reaction_tick(nominal_dt_s)
+		reacted_holder_count++
+		if(MC_TICK_CHECK)
+			break
+	reacting_holders_current_cycle.len -= reacted_holder_count
+
+/datum/controller/subsystem/chemistry/proc/rebuild_reaction_caches()
+	chemical_reactions_relevant_for_reagent_id = list()
+	for(var/datum/chemical_reaction/reaction as anything in chemical_reactions)
+		for(var/id in (reaction.required_reagents | reaction.moderators | reaction.catalysts))
+			LAZYINITLIST(chemical_reactions_relevant_for_reagent_id[id])
+			chemical_reactions_relevant_for_reagent_id[id] |= reaction
+
 //* Reagents *//
 
 /**
@@ -74,8 +94,21 @@ SUBSYSTEM_DEF(chemistry)
 
 //* Reactions *//
 
-/datum/controller/subsystem/chemistry/proc/relevant_reactions_for_reagent_id(id) as /list
-	#warn impl
+/**
+ * Returned list is immutable. You must never edit it.
+ *
+ * todo: this is somewhat slow; maybe start inlining it?
+ */
+/datum/controller/subsystem/chemistry/proc/immutable_relevant_reactions_for_reagent_id(id) as /list
+	return chemical_reactions_relevant_for_reagent_id[id]
 
-/datum/controller/subsystem/chemistry/proc/relevant_reactions_for_reagent_ids(list/ids) as /list
-	#warn impl
+/**
+ * Returned list is immutable. You must never edit it.
+ *
+ * todo: this is somewhat slow; maybe start inlining it?
+ */
+/datum/controller/subsystem/chemistry/proc/immutable_relevant_reactions_for_reagent_ids(list/ids) as /list
+	. = list()
+	for(var/id in ids)
+		for(var/datum/chemical_reaction/reaction as anything in chemical_reactions_relevant_for_reagent_id[id])
+			.[reaction] = TRUE

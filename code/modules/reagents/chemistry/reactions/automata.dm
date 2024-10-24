@@ -28,7 +28,7 @@
 	result = null
 	required_reagents = list("fluorosurfactant" = 1, "water" = 1)
 	result_amount = 2
-	mix_message = "The solution violently bubbles!"
+	reaction_message_instant = "The solution violently bubbles!"
 
 /datum/chemical_reaction/automata/foam/on_reaction_instant(datum/reagent_holder/holder, multiplier)
 	. = ..()

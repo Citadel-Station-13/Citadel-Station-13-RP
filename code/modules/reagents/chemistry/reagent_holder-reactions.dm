@@ -16,7 +16,7 @@
 	for(var/datum/reagent/reagent in reagent_list)
 		reagent_ids[reagent.id] = TRUE
 
-	var/list/datum/chemical_reaction/reactions = SSchemistry.relevant_reactions_for_reagent_ids(reagent_ids)
+	var/list/datum/chemical_reaction/reactions = SSchemistry.immutable_relevant_reactions_for_reagent_ids(reagent_ids)
 	check_reactions(reactions)
 
 //* Internal API *//
@@ -27,7 +27,7 @@
  * * instant reactions will always run first
  *
  * @params
- * * reactions - reactions to recheck
+ * * reactions - reactions to recheck; this will not be mutated
  * * safety - safety parameter to prevent instant reactions from infinite looping
  */
 /datum/reagent_holder/proc/check_reactions(list/datum/chemical_reaction/reactions, safety)
@@ -65,7 +65,7 @@
 	SHOULD_NOT_SLEEP(TRUE)
 	PROTECTED_PROC(TRUE)
 
-	var/list/datum/chemical_reaction/reactions = SSchemistry.relevant_reactions_for_reagent_id(id)
+	var/list/datum/chemical_reaction/reactions = SSchemistry.immutable_relevant_reactions_for_reagent_id(id)
 	check_reactions(reactions)
 
 /**
@@ -79,7 +79,7 @@
 	SHOULD_NOT_SLEEP(TRUE)
 	PROTECTED_PROC(TRUE)
 
-	var/list/datum/chemical_reaction/reactions = SSchemistry.relevant_reactions_for_reagent_ids(ids)
+	var/list/datum/chemical_reaction/reactions = SSchemistry.immutable_relevant_reactions_for_reagent_ids(ids)
 	check_reactions(reactions)
 
 //* Reaction Orchestration *//
@@ -256,8 +256,6 @@
 
 		var/maximum_multiplier = INFINITY
 
-		#warn check before/after volume
-
 		if(reaction.require_whole_numbers)
 			if(reaction.result_amount > 0)
 				maximum_multiplier = min(maximum_multiplier, floor((maximum_volume - total_volume) / reaction.result_amount))
@@ -294,5 +292,5 @@
 	// now that we're done, re-check relevant reactions that might happen
 	// and process them as needed
 
-	var/list/datum/chemical_reaction/reactions_to_recheck = SSchemistry.relevant_reactions_for_reagent_ids(ids_to_recheck)
+	var/list/datum/chemical_reaction/reactions_to_recheck = SSchemistry.immutable_relevant_reactions_for_reagent_ids(ids_to_recheck)
 	check_reactions(reactions_to_recheck, safety - 1)

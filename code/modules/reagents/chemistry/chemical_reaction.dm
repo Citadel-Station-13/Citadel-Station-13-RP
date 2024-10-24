@@ -67,12 +67,10 @@
 	/// used in some bullshit complex math to determine actual reaction rate
 	/// 0 for instant
 	var/reaction_half_life = 0
-	#warn half_life
 	/// when total reactant volume is under this for reaction, don't care about half life and finish the rest
 	///
 	/// * has no effect on instant reactions
 	var/reaction_completion_threshold = 0.2
-	#warn half_life_instant_volume
 
 	/// moderators: reagent ids or paths to number to determine how much it speeds reaction
 	///
@@ -111,6 +109,14 @@
 	/// todo: reactions being able to go in reverse once reaching equilibrium
 	var/equilibrium = 1
 
+	//* Reaction - Feedback *//
+
+	/// if set, everyone around sees this on react
+	var/reaction_message_instant = "The solution begins to bubble."
+	/// if set, everyone around hears this on react
+	var/reaction_sound_instant = 'sound/effects/bubbles.ogg'
+	// todo: soundloop support? maybe ambience subsystem for deduping..
+
 	//* guidebook *//
 
 	/// guidebook flags
@@ -118,15 +124,14 @@
 	/// guidebook category
 	var/reaction_guidebook_category = "Unsorted"
 
-	//? legacy / unsorted
-	var/mix_message = "The solution begins to bubble."
-	var/reaction_sound = 'sound/effects/bubbles.ogg'
-
 /datum/chemical_reaction/New()
-	resolve_paths()
+	resolve()
 	generate()
 
-/datum/chemical_reaction/proc/resolve_paths()
+/**
+ * Expand convenient compile-time stuff to the real IDs.
+ */
+/datum/chemical_reaction/proc/resolve()
 	// resolve ingredients
 	for(var/i in 1 to length(required_reagents))
 		var/datum/reagent/path = required_reagents[i]
@@ -163,6 +168,9 @@
 		var/datum/reagent/result_initial = result
 		result = initial(result_initial.id)
 
+/**
+ * Generate our metadata.
+ */
 /datum/chemical_reaction/proc/generate()
 	var/datum/reagent/resolved = SSchemistry.fetch_reagent(result)
 	if(isnull(name))
@@ -174,20 +182,6 @@
 		desc = resolved?.description || "Unknown Description - contact coders."
 		if(isnull(display_description) && !isnull(resolved))
 			display_description = resolved.display_description
-
-//called after processing reactions, if they occurred
-/datum/chemical_reaction/proc/post_reaction(datum/reagent_holder/holder)
-	SHOULD_NOT_OVERRIDE(TRUE)
-	#warn kill
-	var/atom/container = holder.my_atom
-	if(mix_message && container && !ismob(container))
-		var/turf/T = get_turf(container)
-		var/list/seen = viewers(4, T)
-		for(var/mob/M in seen)
-			M.show_message("<span class='notice'>[icon2html(thing = container, target = M)] [mix_message]</span>", 1)
-		playsound(T, reaction_sound, 80, 1)
-
-#warn above
 
 //obtains any special data that will be provided to the reaction products
 //this is called just before reactants are removed.
@@ -323,6 +317,12 @@
  * * multiplier - multiples of result_amount made. 2 on a 1u result is 2u, 2 on a 2u result is 4, etc.
  */
 /datum/chemical_reaction/proc/on_reaction_instant(datum/reagent_holder/holder, multiplier)
+	var/atom/container = holder.my_atom
+	if(container)
+		if(reaction_message_instant)
+			container.visible_message(SPAN_NOTICE(reaction_message_instant))
+		if(reaction_sound_instant)
+			playsound(container, reaction_sound_instant, 75, TRUE)
 	return
 
 #warn impl all

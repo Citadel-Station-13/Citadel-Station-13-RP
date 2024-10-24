@@ -170,7 +170,7 @@
 			changed_ids[R.id] = TRUE
 			del_reagent(R.id)
 			update_total()
-	try_reactions_on_reagents_changed(changed_ids)
+	try_reactions_for_reagents_changed(changed_ids)
 
 /**
  * Core proc: Remove a specific amount of a reagent.
@@ -524,21 +524,6 @@
 		R.on_update (A)
 	update_total()
 
-// I wrote this while :headempty: and I'm not sure if it's correct. @Zandario
-/datum/reagent_holder/proc/can_reactions_happen()
-	var/do_happen = FALSE
-	var/list/eligible_reactions = list()
-	for(var/i in reagent_list)
-		var/datum/reagent/R = i
-		if(SSchemistry.chemical_reactions_by_reagent[R.id])
-			eligible_reactions |= SSchemistry.chemical_reactions_by_reagent[R.id]
-
-	for(var/i in eligible_reactions)
-		var/datum/chemical_reaction/C = i
-		if(C.can_happen(src))
-			do_happen = TRUE
-	return do_happen
-
 //* Queries *//
 
 /**
@@ -569,7 +554,12 @@
  * Sets our host atom
  */
 /datum/reagent_holder/proc/set_atom(atom/new_atom)
-	#warn impl; recheck reactions
+	// set
+	my_atom = new_atom
+	// recheck reactions
+	for(var/datum/chemical_reaction/reaction as anything in active_reactions)
+		if(reaction.required_container_path && !istype(new_atom, reaction.required_container_path))
+			stop_ticked_reaction(reaction)
 
 /**
  * Sets if we're no-react
@@ -580,7 +570,21 @@
  *                     If 'no_check_reactions' is set to TRUE, we skip that.
  */
 /datum/reagent_holder/proc/set_no_react(new_value, no_check_reactions)
-	#warn impl
+	if(!my_atom)
+		return
+	if(!!new_value == !!(my_atom?.atom_flags & NOREACT))
+		return
+	if(new_value)
+		my_atom?.atom_flags |= NOREACT
+	else
+		my_atom?.atom_flags &= ~NOREACT
+	if(no_check_reactions)
+		return
+	if(new_value)
+		for(var/datum/chemical_reaction/reaction as anything in active_reactions)
+			stop_ticked_reaction(reaction)
+	else
+		reconsider_reactions()
 
 //* Transfers *//
 

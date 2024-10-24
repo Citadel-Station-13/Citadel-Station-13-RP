@@ -52,8 +52,8 @@
 	id = "redcarpet"
 	required_reagents = list("liquidcarpet" = 2, "plasticide" = 1)
 	require_whole_numbers = 1
+	important_for_logging = TRUE
 	var/carpet_type = /obj/item/stack/tile/carpet
-	#warn log
 
 /datum/chemical_reaction/carpetify/on_reaction_instant(datum/reagent_holder/holder, multiplier)
 	. = ..()
