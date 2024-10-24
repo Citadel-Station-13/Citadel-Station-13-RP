@@ -521,6 +521,11 @@
 	},
 /obj/structure/table/carbon/reinforced,
 /obj/item/storage/box/treats,
+/obj/machinery/button/windowtint{
+	id = "robotics1";
+	pixel_x = -25;
+	pixel_y = -2
+	},
 /turf/simulated/floor/tiled/techfloor,
 /area/assembly/robotics)
 "asv" = (
@@ -548,14 +553,6 @@
 "auq" = (
 /obj/machinery/door/firedoor/glass{
 	dir = 4
-	},
-/obj/machinery/access_button{
-	command = "cycle_ext";
-	frequency = 1379;
-	master_tag = "virology_airlock_control";
-	name = "Virology Access Button";
-	req_access = list(39);
-	pixel_x = 25
 	},
 /obj/machinery/door/airlock/medical{
 	autoclose = 0;
@@ -1201,10 +1198,13 @@
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d2fwdhall)
 "aRl" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks{
+/obj/effect/paint/babyblue,
+/obj/structure/window/reinforced/polarized/full{
 	id = "cmo_office"
 	},
-/obj/effect/paint/babyblue,
+/obj/machinery/door/firedoor{
+	dir = 1
+	},
 /turf/simulated/floor/plating,
 /area/crew_quarters/heads/cmo)
 "aSb" = (
@@ -2886,6 +2886,9 @@
 	name = "Operating Theatre 1";
 	id_tint = "or1"
 	},
+/obj/map_helper/electrochromatic_linker{
+	id = "vicDetOffice"
+	},
 /turf/simulated/floor/tiled/white,
 /area/medical/surgery)
 "cbh" = (
@@ -3251,7 +3254,7 @@
 	dir = 8
 	},
 /obj/machinery/button/windowtint{
-	id = "psyche";
+	id = "mh2";
 	pixel_x = -20;
 	pixel_y = -2
 	},
@@ -4168,6 +4171,16 @@
 /obj/machinery/vending/fitness,
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d2afthall)
+"cUN" = (
+/obj/effect/paint/babyblue,
+/obj/structure/window/reinforced/polarized/full{
+	id = "or2"
+	},
+/obj/machinery/door/firedoor{
+	dir = 1
+	},
+/turf/simulated/floor/plating,
+/area/medical/surgery2)
 "cVq" = (
 /obj/structure/window/reinforced{
 	dir = 1
@@ -5484,6 +5497,7 @@
 /area/medical/medbay3)
 "dUn" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
+/mob/living/simple_mob/slime/xenobio/rainbow/kendrick,
 /turf/simulated/floor/tiled,
 /area/rnd/rdoffice)
 "dUT" = (
@@ -8926,11 +8940,6 @@
 /obj/machinery/door/firedoor,
 /turf/simulated/floor/tiled/white,
 /area/medical/medbay4)
-"gpg" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint/purplegray,
-/turf/simulated/floor/plating,
-/area/assembly/robotics)
 "gpS" = (
 /obj/structure/bed/chair/office/dark{
 	dir = 8
@@ -9790,11 +9799,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d2porthall)
-"gTY" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint/purplegray,
-/turf/simulated/floor/plating,
-/area/rnd/reception_desk)
 "gUD" = (
 /obj/machinery/door/firedoor/glass{
 	dir = 4
@@ -11726,7 +11730,8 @@
 /obj/machinery/door/airlock/medical{
 	id_tag = "mentaldoor2";
 	name = "Mental Health";
-	req_one_access = null
+	req_one_access = null;
+	id = "mentaldoor1"
 	},
 /obj/map_helper/access_helper/airlock/station/medical/psychiatry,
 /turf/simulated/floor/wood,
@@ -11786,11 +11791,11 @@
 	name = "Station Intercom (General)";
 	pixel_y = 26
 	},
-/mob/living/simple_mob/slime/xenobio/rainbow/kendrick,
 /obj/machinery/light{
 	dir = 1;
 	pixel_y = 29
 	},
+/obj/machinery/computer/card,
 /turf/simulated/floor/tiled,
 /area/rnd/rdoffice)
 "ion" = (
@@ -13963,7 +13968,7 @@
 /obj/machinery/button/remote/airlock{
 	desc = "A remote control switch for the medbay recovery room door.";
 	dir = 8;
-	id = "mentaldoor2";
+	id = "mentaldoor1";
 	name = "Door Switch";
 	pixel_x = 28;
 	pixel_y = 9
@@ -14034,7 +14039,7 @@
 	dir = 8
 	},
 /obj/machinery/button/windowtint{
-	id = "psyche";
+	id = "mh1";
 	pixel_x = 24;
 	pixel_y = -2
 	},
@@ -14231,7 +14236,6 @@
 /turf/simulated/floor/plating,
 /area/medical/virologymaint)
 "keI" = (
-/obj/machinery/papershredder,
 /obj/machinery/light{
 	dir = 8;
 	pixel_x = -10
@@ -14241,6 +14245,9 @@
 	},
 /obj/effect/floor_decal/corner/paleblue/border{
 	dir = 8
+	},
+/obj/machinery/computer/card{
+	dir = 4
 	},
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/heads/cmo)
@@ -15108,12 +15115,13 @@
 /turf/simulated/floor/wood,
 /area/rnd/research/researchdivision)
 "kQr" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks{
-	id = "or2"
-	},
 /obj/effect/paint/babyblue,
+/obj/structure/window/reinforced/polarized/full,
+/obj/machinery/door/firedoor{
+	dir = 1
+	},
 /turf/simulated/floor/plating,
-/area/medical/surgery)
+/area/crew_quarters/heads/cmo)
 "kQH" = (
 /obj/structure/morgue{
 	dir = 2
@@ -16096,6 +16104,14 @@
 /obj/effect/floor_decal/corner/green/bordercorner2{
 	dir = 6
 	},
+/obj/machinery/access_button{
+	command = "cycle_ext";
+	frequency = 1379;
+	master_tag = "virology_airlock_control";
+	name = "Virology Access Button";
+	req_access = list(39);
+	pixel_x = 25
+	},
 /turf/simulated/floor/tiled/white,
 /area/medical/virology)
 "lza" = (
@@ -16375,7 +16391,9 @@
 /area/endeavour/hallway/d2aftmaint)
 "lGI" = (
 /obj/effect/paint/purplegray,
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/structure/window/reinforced/polarized/full{
+	id = "r&d1"
+	},
 /turf/simulated/floor/plating,
 /area/rnd/reception_desk)
 "lHG" = (
@@ -16841,6 +16859,9 @@
 	req_one_access = null;
 	name = "Operating Theatre 2";
 	id_tint = "or2"
+	},
+/obj/map_helper/electrochromatic_linker{
+	id = "vicDetOffice"
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/surgery2)
@@ -17464,7 +17485,10 @@
 /area/rnd/research_foyer)
 "mAv" = (
 /obj/effect/paint/purplegray,
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/structure/window/reinforced/polarized/full{
+	id = "robotics1"
+	},
+/obj/machinery/door/firedoor,
 /turf/simulated/floor/plating,
 /area/assembly/robotics)
 "mBc" = (
@@ -18014,8 +18038,11 @@
 /turf/simulated/floor/tiled,
 /area/holodeck_control)
 "mVR" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
 /obj/effect/paint/babyblue,
+/obj/structure/window/reinforced/polarized/full{
+	id = "mh1"
+	},
+/obj/machinery/door/firedoor,
 /turf/simulated/floor/plating,
 /area/medical/psych/psych_2)
 "mWa" = (
@@ -18338,6 +18365,14 @@
 /obj/structure/bed/chair/comfy/beige,
 /turf/simulated/floor/wood,
 /area/endeavour/hallway/d2fwdhall)
+"ngP" = (
+/obj/effect/paint/babyblue,
+/obj/structure/window/reinforced/polarized/full{
+	id = "mh2"
+	},
+/obj/machinery/door/firedoor,
+/turf/simulated/floor/plating,
+/area/medical/psych/psych_1)
 "nhg" = (
 /obj/structure/window/reinforced{
 	dir = 4
@@ -20066,9 +20101,11 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/rnd/robotics/morgue)
 "owo" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
 /obj/effect/paint/purplegray,
-/obj/effect/paint/purplegray,
+/obj/structure/window/reinforced/polarized/full{
+	id = "r&d1"
+	},
+/obj/machinery/door/firedoor,
 /turf/simulated/floor/plating,
 /area/rnd/reception_desk)
 "owE" = (
@@ -25267,14 +25304,6 @@
 /obj/machinery/door/firedoor/glass{
 	dir = 4
 	},
-/obj/machinery/access_button{
-	command = "cycle_int";
-	frequency = 1379;
-	master_tag = "virology_airlock_control";
-	name = "Virology Access Button";
-	pixel_y = 24;
-	req_access = list(39)
-	},
 /obj/machinery/door/airlock/medical{
 	autoclose = 0;
 	frequency = 1379;
@@ -25287,6 +25316,14 @@
 /obj/map_helper/access_helper/airlock/station/medical/virology,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
+	},
+/obj/machinery/access_button{
+	command = "cycle_ext";
+	frequency = 1379;
+	master_tag = "virology_airlock_control";
+	name = "Virology Access Button";
+	pixel_y = 23;
+	req_access = list(39)
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/virology_aft_access)
@@ -25485,7 +25522,10 @@
 	dir = 4
 	},
 /obj/effect/paint/purplegray,
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/structure/window/reinforced/polarized/full{
+	id = "robotics1"
+	},
+/obj/machinery/door/firedoor,
 /turf/simulated/floor/plating,
 /area/assembly/robotics)
 "rUa" = (
@@ -25775,6 +25815,11 @@
 	},
 /obj/machinery/light{
 	pixel_y = -24
+	},
+/obj/machinery/button/windowtint{
+	id = "r&d1";
+	pixel_x = -25;
+	pixel_y = -2
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/rnd/reception_desk)
@@ -26413,10 +26458,13 @@
 /turf/simulated/floor/tiled/dark,
 /area/rnd/research/testingrange)
 "sFu" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks{
+/obj/effect/paint/babyblue,
+/obj/structure/window/reinforced/polarized/full{
 	id = "or1obs"
 	},
-/obj/effect/paint/babyblue,
+/obj/machinery/door/firedoor{
+	dir = 1
+	},
 /turf/simulated/floor/plating,
 /area/medical/surgery)
 "sFK" = (
@@ -30223,6 +30271,14 @@
 /obj/machinery/fire_alarm/east_mount,
 /obj/effect/floor_decal/borderfloorwhite/corner2,
 /obj/effect/floor_decal/corner/green/bordercorner2,
+/obj/machinery/access_button{
+	command = "cycle_int";
+	frequency = 1379;
+	master_tag = "virology_airlock_control";
+	name = "Virology Access Button";
+	pixel_y = -23;
+	req_access = list(39)
+	},
 /turf/simulated/floor/tiled/white,
 /area/medical/virology_fore_access)
 "vws" = (
@@ -31252,7 +31308,8 @@
 /obj/machinery/door/airlock/medical{
 	id_tag = "mentaldoor2";
 	name = "Mental Health";
-	req_one_access = null
+	req_one_access = null;
+	id = "mentaldoor2"
 	},
 /obj/map_helper/access_helper/airlock/station/medical/psychiatry,
 /turf/simulated/floor/wood,
@@ -31699,10 +31756,14 @@
 /turf/simulated/floor/tiled,
 /area/rnd/research_foyer_auxiliary)
 "wtH" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks{
-	id = "or2"
-	},
 /obj/effect/paint/babyblue,
+/obj/structure/window/reinforced/polarized/full{
+	id = "or2";
+	name = s
+	},
+/obj/machinery/door/firedoor{
+	dir = 1
+	},
 /turf/simulated/floor/plating,
 /area/medical/surgery2)
 "wtL" = (
@@ -32330,10 +32391,13 @@
 /turf/simulated/floor/tiled,
 /area/rnd/research/researchdivision)
 "wQc" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks{
+/obj/effect/paint/babyblue,
+/obj/structure/window/reinforced/polarized/full{
 	id = "or2obs"
 	},
-/obj/effect/paint/babyblue,
+/obj/machinery/door/firedoor{
+	dir = 1
+	},
 /turf/simulated/floor/plating,
 /area/medical/surgery2)
 "wQh" = (
@@ -32354,10 +32418,13 @@
 /turf/simulated/floor/tiled,
 /area/holodeck_control)
 "wQo" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks{
+/obj/effect/paint/babyblue,
+/obj/structure/window/reinforced/polarized/full{
 	id = "or1"
 	},
-/obj/effect/paint/babyblue,
+/obj/machinery/door/firedoor{
+	dir = 1
+	},
 /turf/simulated/floor/plating,
 /area/medical/surgery)
 "wQp" = (
@@ -33084,14 +33151,6 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
-/obj/machinery/access_button{
-	command = "cycle_ext";
-	frequency = 1379;
-	master_tag = "virology_airlock_control";
-	name = "Virology Access Button";
-	pixel_y = 23;
-	req_access = list(39)
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/black{
 	dir = 4
 	},
@@ -33110,6 +33169,14 @@
 /obj/map_helper/access_helper/airlock/station/medical/virology,
 /obj/machinery/door/firedoor/glass{
 	dir = 4
+	},
+/obj/machinery/access_button{
+	command = "cycle_int";
+	frequency = 1379;
+	master_tag = "virology_airlock_control";
+	name = "Virology Access Button";
+	pixel_y = 24;
+	req_access = list(39)
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/virology_aft_access)
@@ -33537,14 +33604,6 @@
 	},
 /obj/machinery/door/firedoor/glass{
 	dir = 4
-	},
-/obj/machinery/access_button{
-	command = "cycle_int";
-	frequency = 1379;
-	master_tag = "virology_airlock_control";
-	name = "Virology Access Button";
-	pixel_y = 24;
-	req_access = list(39)
 	},
 /obj/machinery/door/airlock/medical{
 	autoclose = 0;
@@ -38312,7 +38371,7 @@ uyr
 wIO
 coV
 apy
-dci
+ngP
 mnP
 iym
 vcY
@@ -39088,7 +39147,7 @@ jTo
 aSs
 tfP
 mpe
-dci
+ngP
 gOV
 kBS
 vcY
@@ -43165,13 +43224,13 @@ gJS
 iuo
 cJg
 sNK
-wtH
+wQc
 gEz
 fjy
 uLE
 fwC
 lar
-wtH
+cUN
 ufB
 xKC
 vOA
@@ -43359,7 +43418,7 @@ gJS
 wBY
 uhO
 sNK
-wtH
+wQc
 vIV
 mGl
 tVG
@@ -44135,7 +44194,7 @@ mmI
 nJM
 uhO
 sNK
-kQr
+sFu
 qMX
 fON
 ugB
@@ -44329,7 +44388,7 @@ mmI
 bAe
 uhO
 sNK
-kQr
+sFu
 eMi
 rcb
 qtU
@@ -44536,7 +44595,7 @@ oEN
 aCR
 ffh
 gBN
-aRl
+kQr
 hKL
 byw
 bPO
@@ -45118,7 +45177,7 @@ hnp
 bHs
 piH
 tNZ
-aRl
+kQr
 qQX
 qzS
 qqe
@@ -46436,10 +46495,10 @@ hwR
 bBQ
 ijZ
 whu
-gTY
-gTY
+owo
+owo
 gsB
-gTY
+owo
 owo
 whu
 whu
@@ -46830,7 +46889,7 @@ gub
 irM
 irM
 xAI
-gTY
+owo
 pyT
 lyl
 gPZ
@@ -47218,7 +47277,7 @@ iaO
 lKg
 eEO
 kMH
-gTY
+owo
 rIw
 vKw
 eaK
@@ -47412,7 +47471,7 @@ irM
 irM
 irM
 fTE
-gTY
+owo
 pyT
 dyM
 gPZ
@@ -48770,7 +48829,7 @@ arY
 anx
 aIH
 eOr
-gpg
+mAv
 cZQ
 dyM
 gPZ
@@ -48964,7 +49023,7 @@ vZg
 vZg
 rmN
 dwr
-gpg
+mAv
 blx
 vKw
 eaK
@@ -49158,7 +49217,7 @@ qtF
 pqF
 vZg
 dSG
-gpg
+mAv
 cZQ
 dyM
 gPZ
@@ -49546,7 +49605,7 @@ bTa
 vZg
 bfX
 xiO
-gpg
+mAv
 cZQ
 gbY
 uKJ

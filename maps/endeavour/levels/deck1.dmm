@@ -4240,6 +4240,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
+/obj/machinery/photocopier,
 /turf/simulated/floor/tiled,
 /area/exploration/pathfinder_office)
 "dDx" = (
@@ -5032,10 +5033,14 @@
 	},
 /obj/machinery/light_switch{
 	dir = 1;
-	pixel_y = -24
+	pixel_y = -29;
+	pixel_x = 13
 	},
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/brown/border,
+/obj/machinery/keycard_auth{
+	pixel_y = -28
+	},
 /turf/simulated/floor/tiled,
 /area/exploration/pathfinder_office)
 "emV" = (
@@ -9396,7 +9401,10 @@
 /obj/machinery/door/firedoor/glass{
 	dir = 8
 	},
-/obj/spawner/window/low_wall/full/nogrille,
+/obj/structure/window/reinforced/polarized/full{
+	id = "hop_office2";
+	name = "HoP Office window"
+	},
 /turf/simulated/floor/plating,
 /area/crew_quarters/heads/hop)
 "hDD" = (
@@ -21407,9 +21415,6 @@
 /turf/simulated/floor/wood/broken,
 /area/vacant/vacant_bar)
 "rEF" = (
-/obj/structure/closet/crate/bin{
-	anchored = 1
-	},
 /obj/effect/floor_decal/borderfloor{
 	dir = 9
 	},
@@ -21418,6 +21423,9 @@
 	},
 /obj/machinery/newscaster{
 	pixel_y = 32
+	},
+/obj/machinery/computer/card{
+	dir = 4
 	},
 /turf/simulated/floor/tiled,
 /area/exploration/pathfinder_office)
@@ -24913,7 +24921,6 @@
 /turf/simulated/floor/tiled/dark,
 /area/chapel/main)
 "uxM" = (
-/obj/machinery/photocopier,
 /obj/machinery/camera/network/exploration,
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
@@ -25622,6 +25629,11 @@
 	},
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 8
+	},
+/obj/machinery/button/windowtint{
+	id = "hop_office2";
+	pixel_x = 24;
+	pixel_y = 25
 	},
 /turf/simulated/floor/carpet,
 /area/crew_quarters/heads/hop)
