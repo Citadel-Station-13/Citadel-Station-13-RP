@@ -2887,7 +2887,7 @@
 	id_tint = "or1"
 	},
 /obj/map_helper/electrochromatic_linker{
-	id = "vicDetOffice"
+	id = "or1"
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/surgery)
@@ -16861,7 +16861,7 @@
 	id_tint = "or2"
 	},
 /obj/map_helper/electrochromatic_linker{
-	id = "vicDetOffice"
+	id = "or2"
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/surgery2)
