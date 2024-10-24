@@ -29,35 +29,16 @@
 /atom/movable/air_update_turf()
 	update_nearby_tiles()
 
-
 /**
  * call on oldloc and newloc when moving a potentially air-blocking obj
  *
- * *warning*: only works for non-multi-tile objects!
+ * * For multi-tile objects, you must call this on all old and new locs. This is tricky with the current Moved() system.
  */
 /atom/proc/air_update_self()
 	return
 
 /turf/air_update_self()
 	queue_zone_update()
-
-/**
- * superconduction - not yet implemented
- */
-
-/*
-
-/**
- * do we block thermal conduction?
- *
- * @params
- * a - temperature of one side
- * b - temperature of other side
- */
-/atom/movable/proc/BlockThermalConductivity(a, b)
-	return FALSE
-
-*/
 
 // todo: refactor return_air to just call return_air_mutable
 

@@ -62,6 +62,7 @@
 	return
 
 /obj/machinery/atmospherics/component/quaternary/process(delta_time)
+	..()
 	last_power_draw_legacy = 0
 	last_flow_rate_legacy = 0
 
