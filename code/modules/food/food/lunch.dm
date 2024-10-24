@@ -70,7 +70,8 @@ var/list/lunchables_drink_reagents_ = list(/datum/reagent/drink/nothing,
                                            /datum/reagent/drink/dry_ramen,
                                            /datum/reagent/drink/hell_ramen,
                                            /datum/reagent/drink/hot_ramen,
-                                           /datum/reagent/drink/soda/nuka_cola)
+                                           /datum/reagent/drink/soda/nuka_cola,
+                                           /datum/reagent/drink/nuclearwaste)
 
 
 // This default list is a bit different, it contains items we don't want
@@ -88,7 +89,8 @@ var/list/lunchables_ethanol_reagents_ = list(/datum/reagent/ethanol/acid_spit,
                                              /datum/reagent/ethanol/toxins_special,
 											 /datum/reagent/ethanol/voxdelight,
 											 /datum/reagent/ethanol/soemmerfire,
-											 /datum/reagent/ethanol/slimeshot)
+											 /datum/reagent/ethanol/slimeshot,
+                                             /datum/reagent/ethanol/desiretodie)
 
 /proc/lunchables_lunches()
 	if(!(lunchables_lunches_[lunchables_lunches_[1]]))
