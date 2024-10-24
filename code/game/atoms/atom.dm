@@ -25,8 +25,6 @@
 	var/pass_flags_self = NONE
 
 	//? Unsorted / Legacy
-	/// Used for changing icon states for different base sprites.
-	var/base_icon_state
 	/// Holder for the last time we have been bumped.
 	var/last_bumped = 0
 	/// The higher the germ level, the more germ on the atom.
@@ -50,31 +48,6 @@
 	/// open context menus by mob
 	/// * this variable is not visible and should not be edited in the map editor.
 	var/tmp/list/context_menus
-
-	//? Economy
-	// todo: move all this to obj level, you aren't going to sell a fucking turf.
-	//       the procs can however stay.
-	/// intrinsic worth without accounting containing reagents / materials - applies in static and dynamic mode.
-	var/worth_intrinsic = 0
-	/// static worth of contents - only read if getting a static worth from typepath.
-	var/worth_containing = 0
-	/// static worth of raw materials - only read if getting a static worth from typepath.
-	var/worth_materials = 0
-	/// intrinsic worth default markup when buying as factor (2 for 2x)
-	var/worth_buy_factor = WORTH_BUY_FACTOR_DEFAULT
-	/// intrinsic elasticity as factor, 2 = 2x easy to inflate market
-	var/worth_elasticity = WORTH_ELASTICITY_DEFAULT
-	/**
-	 * * DANGER * - do not touch this variable unless you know what you are doing.
-	 *
-	 * This signifies that procs have a non-negligible randomization on a *freshly-spawned* instance of this object.
-	 * This is not the case for most closets / lockers / crates / storage that spawn with items.
-	 * In those cases, use the other variables to control its static worth.
-	 *
-	 * This means that things like cargo should avoid "intuiting" the value of this object
-	 * through initial()'s alone.
-	 */
-	var/worth_dynamic = FALSE
 
 	//? Integrity
 	/// max health
@@ -176,7 +149,16 @@
 	/// contamination insulation; null defaults to rad_insulation, this is a multiplier. *never* set higher than 1!!
 	var/rad_stickiness = 1
 
-	//? Shieldcalls
+	//* Rendering *//
+
+	/// Used for changing icon states for different base sprites.
+	///
+	/// * Not used directly, but it's a frequent pattern to need to override this
+	///   and we don't want to always force usage of initial(icon_state)
+	var/base_icon_state
+
+	//* Shieldcalls *//
+
 	/// sorted priority list of datums for handling shieldcalls with
 	/// we use this instead of signals so we can enforce priorities
 	/// this is horrifying.
@@ -907,6 +889,7 @@
 
 	return T.has_gravity()
 
+// todo: annihilate this in favor of ATOM_PASS_INCORPOREAL
 /atom/proc/is_incorporeal()
 	return FALSE
 

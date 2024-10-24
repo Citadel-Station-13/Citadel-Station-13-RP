@@ -81,7 +81,7 @@
 	else if(default_part_replacement(user, W))
 		return
 
-/obj/machinery/cell_charger/attack_hand(mob/user, list/params)
+/obj/machinery/cell_charger/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	add_fingerprint(user)
 
 	if(charging)
@@ -145,7 +145,7 @@
 	w_class = WEIGHT_CLASS_NORMAL
 	materials_base = list(MAT_STEEL = 4000, MAT_GLASS = 1000)
 
-/obj/item/cell_charger_kit/attack_self(mob/user)
+/obj/item/cell_charger_kit/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return

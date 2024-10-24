@@ -19,7 +19,7 @@ var/global/list/grub_machine_overlays = list()
 	meat_amount = 2
 	meat_type = /obj/item/reagent_containers/food/snacks/meat/grubmeat
 
-	faction = "grubs"
+	iff_factions = MOB_IFF_FACTION_GRUB
 
 	response_help = "pats"
 	response_disarm = "nudges"

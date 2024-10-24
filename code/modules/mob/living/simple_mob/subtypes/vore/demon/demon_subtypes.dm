@@ -6,7 +6,6 @@
 	icon_dead = "engorge_dead"
 	icon_rest = "engorge_rest"
 
-	vore_icons = null
 
 /mob/living/simple_mob/vore/demon/zellic
 	name = "Zellic"
@@ -16,4 +15,3 @@
 	icon_dead = "zellic_dead"
 	icon_rest = null
 
-	vore_icons = null

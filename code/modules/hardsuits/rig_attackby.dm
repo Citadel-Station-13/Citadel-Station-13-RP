@@ -172,7 +172,7 @@
 	..()
 
 
-/obj/item/hardsuit/attack_hand(mob/user, list/params)
+/obj/item/hardsuit/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 
 	if(electrified != 0)
 		if(shock(user)) //Handles removing charge from the cell, as well. No need to do that here.

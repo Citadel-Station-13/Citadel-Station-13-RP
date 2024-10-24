@@ -20,14 +20,6 @@
 
 	// Activate Noms!
 /mob/living/simple_mob/vore/cookiegirl
-	vore_active = 1
-	vore_bump_chance = 2
-	vore_pounce_chance = 25
-	vore_standing_too = 1
-	vore_ignores_undigestable = 0 // Do they look like they care?
-	vore_default_mode = DM_HOLD // They're cookiepeople, what do you expect?
-	vore_digest_chance = 10 // Gonna become as sweet as sugar, soon.
-	vore_icons = SA_ICON_LIVING | SA_ICON_REST
 
 /datum/ai_holder/polaris/simple_mob/passive/cookiegirl/on_hear_say(mob/living/speaker, message)
 

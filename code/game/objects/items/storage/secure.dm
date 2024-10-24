@@ -33,7 +33,7 @@
 
 /obj/item/storage/secure/attackby(obj/item/W as obj, mob/user as mob)
 	if(locked)
-		if (istype(W, /obj/item/melee/energy/blade) && emag_act(INFINITY, user, "You slice through the lock of \the [src]"))
+		if (istype(W, /obj/item/melee/ninja_energy_blade) && emag_act(INFINITY, user, "You slice through the lock of \the [src]"))
 			var/datum/effect_system/spark_spread/spark_system = new /datum/effect_system/spark_spread()
 			spark_system.set_up(5, 0, src.loc)
 			spark_system.start()
@@ -70,7 +70,7 @@
 	..()
 
 
-/obj/item/storage/secure/attack_self(mob/user)
+/obj/item/storage/secure/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -198,5 +198,5 @@
 		/obj/item/pen
 	)
 
-/obj/item/storage/secure/safe/attack_hand(mob/user, list/params)
+/obj/item/storage/secure/safe/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	return attack_self(user)

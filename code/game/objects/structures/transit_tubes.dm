@@ -102,7 +102,7 @@
 				return
 
 
-/obj/structure/transit_tube/station/attack_hand(mob/user, list/params)
+/obj/structure/transit_tube/station/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(!pod_moving)
 		for(var/obj/structure/transit_tube_pod/pod in loc)
 			if(!pod.moving && (pod.dir in directions()))
@@ -340,9 +340,9 @@
 /obj/structure/transit_tube_pod/proc/mix_air()
 	var/datum/gas_mixture/environment = loc.return_air()
 
-	//note that share_ratio assumes both gas mixes have the same volume,
+	//note that share_with_mixture assumes both gas mixes have the same volume,
 	//so if the volume is changed this may need to be changed as well.
-	air_contents.default_share_ratio(environment, 1)
+	air_contents.environmental_share_simulated(environment, 1)
 
 // When the player moves, check if the pos is currently stopped at a station.
 //  if it is, check the direction. If the direction matches the direction of

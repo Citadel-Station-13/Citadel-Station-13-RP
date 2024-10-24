@@ -26,10 +26,9 @@
 			return 0
 	return 1
 
-/obj/machinery/door/blast/puzzle/bullet_act(var/obj/projectile/Proj)
-	if(!istype(Proj, /obj/projectile/test))
-		visible_message("<span class='cult'>\The [src] is completely unaffected by \the [Proj].</span>")
-	qdel(Proj) //No piercing. No.
+/obj/machinery/door/blast/puzzle/on_bullet_act(obj/projectile/proj, impact_flags, list/bullet_act_args)
+	impact_flags &= ~PROJECTILE_IMPACT_FLAGS_SHOULD_GO_THROUGH
+	return ..()
 
 /obj/machinery/door/blast/puzzle/legacy_ex_act(severity)
 	visible_message("<span class='cult'>\The [src] is completely unaffected by the blast.</span>")
@@ -53,7 +52,7 @@
 			locks -= L
 	..()
 
-/obj/machinery/door/blast/puzzle/attack_hand(mob/user, list/params)
+/obj/machinery/door/blast/puzzle/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(check_locks())
 		force_toggle(1, user)
 	else
@@ -78,7 +77,7 @@
 		else if(src.density && (user.a_intent == INTENT_HARM))
 			var/obj/item/W = C
 			user.setClickCooldown(user.get_attack_speed(W))
-			if(W.damtype == BRUTE || W.damtype == BURN)
+			if(W.damage_type == DAMAGE_TYPE_BRUTE || W.damage_type == DAMAGE_TYPE_BURN)
 				user.do_attack_animation(src)
 				user.visible_message("<span class='danger'>\The [user] hits \the [src] with \the [W] with no visible effect.</span>")
 

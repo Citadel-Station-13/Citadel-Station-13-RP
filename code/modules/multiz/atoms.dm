@@ -23,4 +23,4 @@
  * new_loc - new turf
  */
 /atom/proc/z_pass_out(atom/movable/AM, dir, turf/new_loc)
-	return !AM || Uncross(AM)
+	return !AM || Uncross(AM, new_loc)

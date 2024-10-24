@@ -427,7 +427,7 @@
 	var/list/creatures = list()
 	var/list/namecounts = list()
 	for(var/mob/M in mobs)
-		if(isobserver(M) && ghostfollow && M.client?.holder && M.client.holder.fakekey && M.get_preference_toggle(/datum/game_preference_toggle/admin/stealth_hides_ghost))
+		if(isobserver(M) && ghostfollow && M.client.is_under_stealthmin() && M.get_preference_toggle(/datum/game_preference_toggle/admin/stealth_hides_ghost))
 			continue
 		var/name = M.name
 		if (name in names)
@@ -997,42 +997,42 @@
 				return FALSE
 		if(/obj/item/pickaxe/plasmacutter)
 			return 3800
-		if(/obj/item/melee/energy)
+		if(/obj/item/melee/transforming/energy)
 			return 3500
 		else
 			return FALSE
 
 /// Whether or not the given item counts as sharp in terms of dealing damage.
+// todo: deprecrated
 /proc/is_sharp(obj/O as obj)
 	if(!O)
 		return FALSE
-	if(O.sharp)
-		return TRUE
-	if(O.edge)
-		return TRUE
 	if(isitem(O))
 		var/obj/item/I = O
-		if(I.damage_mode & DAMAGE_MODE_SHARP)
-			return TRUE
+		return I.damage_mode & (DAMAGE_MODE_SHARP | DAMAGE_MODE_EDGE)
+	else if(istype(O, /obj/projectile))
+		var/obj/projectile/proj = O
+		return proj.damage_mode & (DAMAGE_MODE_SHARP | DAMAGE_MODE_EDGE)
 	return FALSE
 
 /// Whether or not the given item counts as cutting with an edge in terms of removing limbs.
+// todo: deprecrated
 /proc/has_edge(obj/O as obj)
 	if(!O)
 		return FALSE
-	if(O.edge)
-		return TRUE
 	if(isitem(O))
 		var/obj/item/I = O
-		if(I.damage_mode & DAMAGE_MODE_EDGE)
-			return TRUE
+		return I.damage_mode & (DAMAGE_MODE_EDGE)
+	else if(istype(O, /obj/projectile))
+		var/obj/projectile/proj = O
+		return proj.damage_mode & (DAMAGE_MODE_EDGE)
 	return FALSE
 
 /// Returns 1 if the given item is capable of popping things like balloons, inflatable barriers, or cutting police tape.
 /proc/can_puncture(obj/item/W as obj) //For the record, WHAT THE HELL IS THIS METHOD OF DOING IT?
 	if(!W)
 		return FALSE
-	if(W.sharp)
+	if(W.damage_mode & DAMAGE_MODE_SHARP)
 		return TRUE
 	return ( \
 		W.is_screwdriver()                                    || \

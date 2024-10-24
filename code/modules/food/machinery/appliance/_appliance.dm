@@ -29,7 +29,7 @@
 	var/cooking						// Whether or not the machine is currently operating.
 	var/cook_type					// A string value used to track what kind of food this machine makes.
 	var/can_cook_mobs				// Whether or not this machine accepts grabbed mobs.
-	var/mobdamagetype = BRUTE		// Burn damage for cooking appliances, brute for cereal/candy
+	var/mobdamagetype = DAMAGE_TYPE_BRUTE		// Burn damage for cooking appliances, brute for cereal/candy
 	var/food_color					// Colour of resulting food item.
 	var/cooked_sound = 'sound/machines/ding.ogg'				// Sound played when cooking completes.
 	var/can_burn_food				// Can the object burn food that is left inside?
@@ -541,7 +541,7 @@
 	smoke.set_up(10, 0, get_turf(src), 300)
 	smoke.start()
 
-/obj/machinery/appliance/attack_hand(mob/user, list/params)
+/obj/machinery/appliance/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if (cooking_objs.len)
 		if (removal_menu(user))
 			return

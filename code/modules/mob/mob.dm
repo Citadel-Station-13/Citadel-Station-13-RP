@@ -47,6 +47,8 @@
 	initialize_actionspeed()
 	// ssd overlay
 	update_ssd_overlay()
+	// iff factions
+	init_iff()
 	return ..()
 
 /mob/Destroy()
@@ -426,21 +428,6 @@
 		if(us == (isnull(M.base_layer)? M.layer : M.base_layer))
 			. += M
 	. -= src
-
-/mob/proc/ret_grab(obj/effect/list_container/mobl/L as obj, flag)
-	return
-
-/**
- * Verb to activate the object in your held hand
- *
- * Calls attack self on the item and updates the inventory hud for hands
- */
-/mob/verb/mode()
-	set name = "Activate Held Object"
-	set category = VERB_CATEGORY_OBJECT
-	set src = usr
-
-	return
 
 /**
  * Get the notes of this mob

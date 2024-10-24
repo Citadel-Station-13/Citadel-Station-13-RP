@@ -145,7 +145,7 @@
 	emote_hear = list("squeeks","squeaks","squiks")
 	emote_see = list("runs in a circle", "shakes", "scritches at something")
 
-/mob/living/simple_mob/animal/passive/mouse/attack_hand(mob/user, list/params)
+/mob/living/simple_mob/animal/passive/mouse/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	var/mob/living/hander = user
 	if(!istype(hander))
 		return
@@ -154,7 +154,7 @@
 	else
 		..()
 
-/obj/item/holder/mouse/attack_self(mob/user)
+/obj/item/holder/mouse/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return

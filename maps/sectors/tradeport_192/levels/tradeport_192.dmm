@@ -3061,7 +3061,7 @@
 	req_access = list(160)
 	},
 /obj/structure/table/marble,
-/obj/item/melee/energy/hfmachete,
+/obj/item/melee/transforming/hfmachete,
 /turf/simulated/floor/carpet/bcarpet,
 /area/tradeport/cyndishow)
 "kD" = (
@@ -6033,18 +6033,8 @@
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/cockpit)
 "vA" = (
-/obj/machinery/atmospherics/component/unary/vent_pump{
-	dir = 4;
-	external_pressure_bound = 0;
-	external_pressure_bound_default = 0;
-	frequency = null;
-	icon_state = "map_vent_in";
-	initialize_directions = 1;
-	internal_pressure_bound = 4000;
-	internal_pressure_bound_default = 4000;
-	pressure_checks = 2;
-	pressure_checks_default = 2;
-	pump_direction = 0
+/obj/machinery/atmospherics/component/unary/vent_pump/siphon/on{
+	dir = 4
 	},
 /turf/simulated/floor/reinforced/airmix,
 /area/tradeport/atmospherics)
@@ -10429,7 +10419,7 @@
 	id_tag = "tradeport_hangar_docker";
 	pixel_x = -25
 	},
-/obj/effect/shuttle_landmark/triumph/trade/hangar,
+/obj/effect/shuttle_landmark/trade/hangar,
 /obj/overmap/entity/visitable/ship/landable/trade,
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
@@ -14149,9 +14139,10 @@
 /turf/simulated/floor/outdoors/beach/sand/desert/indoors,
 /area/tradeport/safarizoo)
 "YT" = (
-/obj/machinery/atmospherics/component/binary/pump/on{
+/obj/machinery/atmospherics/component/binary/pump/high_power/on{
 	dir = 1;
-	name = "Airmix to Distro"
+	name = "Air Supply";
+	target_pressure = 1000
 	},
 /turf/simulated/floor/plating,
 /area/tradeport/atmospherics)
@@ -14294,14 +14285,14 @@
 /turf/simulated/floor/wmarble,
 /area/tradeport/cafeteria)
 "Zu" = (
-/obj/machinery/atmospherics/component/binary/pump/on{
-	dir = 4
-	},
 /obj/effect/floor_decal/industrial/warning{
 	dir = 8
 	},
 /obj/effect/debris/cleanable/blood/gibs/robot/limb,
 /obj/effect/floor_decal/rust,
+/obj/machinery/atmospherics/pipe/simple/visible/cyan{
+	dir = 4
+	},
 /turf/simulated/floor/plating,
 /area/tradeport/atmospherics)
 "Zv" = (

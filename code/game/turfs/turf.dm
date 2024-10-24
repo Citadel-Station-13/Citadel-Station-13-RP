@@ -15,6 +15,10 @@
 	 * - an atmosphere id (use defines please)
 	 */
 	var/initial_gas_mix = GAS_STRING_TURF_DEFAULT
+	/**
+	 * Act like a specific temperature for heat exchanger pipes.
+	 */
+	var/temperature_for_heat_exchangers
 
 	//* Automata
 	/// acted automata - automata associated to power, act_cross() will be called when something enters us while this is set
@@ -254,7 +258,7 @@
 /turf/proc/is_solid_structure()
 	return TRUE
 
-/turf/attack_hand(mob/user, list/params)
+/turf/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	. = ..()
 	//QOL feature, clicking on turf can toggle doors, unless pulling something
 	if(!user.pulling)

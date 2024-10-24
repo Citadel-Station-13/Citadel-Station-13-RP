@@ -11,6 +11,7 @@
 	permeability_coefficient = 0.01
 	siemens_coefficient = 0.9
 	armor_type = /datum/armor/mask/gas
+	worth_intrinsic = 50
 	var/gas_filter_strength = 1			//For gas mask filters
 	var/list/filtered_gases = list(GAS_ID_PHORON, GAS_ID_NITROUS_OXIDE)
 
@@ -79,7 +80,7 @@
 	set src in usr
 	adjust_mask(usr)
 
-/obj/item/clothing/mask/gas/half/attack_self(mob/user)
+/obj/item/clothing/mask/gas/half/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -122,7 +123,7 @@
 			to_chat(user, "Your mask moves to cover your mouth.")
 	return
 
-/obj/item/clothing/mask/gas/swat/vox/attack_self(mob/user)
+/obj/item/clothing/mask/gas/swat/vox/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return

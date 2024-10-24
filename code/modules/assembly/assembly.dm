@@ -19,6 +19,7 @@
 	pickup_sound =  'sound/items/pickup/component.ogg'
 	origin_tech = list(TECH_MAGNET = 1)
 	worn_render_flags = WORN_RENDER_SLOT_NO_RENDER | WORN_RENDER_INHAND_NO_RENDER
+	worth_intrinsic = 15
 
 	var/secured = 1
 	var/list/attached_overlays = null
@@ -97,7 +98,7 @@
 	return
 
 
-/obj/item/assembly/attack_self(mob/user)
+/obj/item/assembly/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return

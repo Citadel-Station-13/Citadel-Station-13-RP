@@ -58,7 +58,7 @@ GLOBAL_LIST_EMPTY(medichine_cell_datums)
 /obj/item/stream_projector/medichine/valid_target(atom/entity)
 	return isliving(entity)
 
-/obj/item/stream_projector/medichine/attack_hand(mob/user, list/params)
+/obj/item/stream_projector/medichine/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(user.is_holding_inactive(src))
 		if(isnull(inserted_cartridge))
 			user.action_feedback(SPAN_WARNING("[src] has no vial loaded."), src)
@@ -714,7 +714,7 @@ GLOBAL_LIST_EMPTY(medichine_cell_datums)
 				continue
 			if(only_open && (wound.is_treated()))
 				continue
-			if(wound.damage_type == BURN)
+			if(wound.wound_type == WOUND_TYPE_BURN)
 				burn_loss_instances++
 			else
 				brute_loss_instances++
@@ -727,7 +727,7 @@ GLOBAL_LIST_EMPTY(medichine_cell_datums)
 	var/brute_heal_overrun = 0
 	for(var/datum/wound/wound as anything in wounds_healing)
 		var/effective_heal
-		if(wound.damage_type == BURN)
+		if(wound.wound_type == WOUND_TYPE_BURN)
 			if(!burn_healing_left)
 				continue
 			effective_heal = min(burn_heal_per + burn_heal_overrun, burn_healing_left)

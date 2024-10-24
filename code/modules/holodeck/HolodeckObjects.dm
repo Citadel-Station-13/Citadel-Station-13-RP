@@ -157,7 +157,7 @@
 	if(armor_soak >= damage)
 		return TRUE
 
-	target.apply_damage(damage, HALLOSS, affecting, armor_block, armor_soak)
+	target.apply_damage(damage, DAMAGE_TYPE_HALLOSS, affecting, armor_block, armor_soak)
 	if(damage >= 9)
 		target.visible_message("<font color='red'><B>[user] has weakened [target]!</B></font>")
 		target.apply_effect(4, WEAKEN, armor_block)
@@ -213,7 +213,7 @@
 	return
 
 /obj/item/holo
-	damtype = HALLOSS
+	damage_type = DAMAGE_TYPE_HALLOSS
 
 /obj/item/holo/esword
 	desc = "May the force be within you. Sorta."
@@ -239,18 +239,9 @@
 /obj/item/holo/esword/red
 	lcolor = "#FF0000"
 
-/obj/item/holo/esword/handle_shield(mob/user, var/damage, atom/damage_source = null, mob/attacker = null, var/def_zone = null, var/attack_text = "the attack")
-	if(active && default_parry_check(user, attacker, damage_source) && prob(50))
-		user.visible_message("<span class='danger'>\The [user] parries [attack_text] with \the [src]!</span>")
+// todo: the parry system was removed from this because that sucks maybe readd it later lol
 
-		var/datum/effect_system/spark_spread/spark_system = new /datum/effect_system/spark_spread()
-		spark_system.set_up(5, 0, user.loc)
-		spark_system.start()
-		playsound(user.loc, 'sound/weapons/blade1.ogg', 50, 1)
-		return TRUE
-	return FALSE
-
-/obj/item/holo/esword/attack_self(mob/user)
+/obj/item/holo/esword/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -368,7 +359,7 @@
 /obj/machinery/readybutton/attackby(obj/item/W as obj, mob/user as mob)
 	to_chat(user, "The device is a solid button, there's nothing you can do with it!")
 
-/obj/machinery/readybutton/attack_hand(mob/user, list/params)
+/obj/machinery/readybutton/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 
 	if(user.stat || machine_stat & (NOPOWER|BROKEN))
 		to_chat(user, "This device is not powered.")
@@ -437,11 +428,11 @@
 
 /mob/living/simple_mob/animal/space/carp/holodeck/proc/set_safety(var/safe)
 	if (safe)
-		faction = "neutral"
+		set_iff_factions(MOB_IFF_FACTION_NEUTRAL)
 		legacy_melee_damage_lower = 0
 		legacy_melee_damage_upper = 0
 	else
-		faction = "carp"
+		set_iff_factions(MOB_IFF_FACTION_CARP)
 		legacy_melee_damage_lower = initial(legacy_melee_damage_lower)
 		legacy_melee_damage_upper = initial(legacy_melee_damage_upper)
 

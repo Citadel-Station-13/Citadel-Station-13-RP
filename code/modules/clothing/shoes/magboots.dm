@@ -16,13 +16,14 @@
 	step_volume_mod = 1.3
 	drop_sound = 'sound/items/drop/metalboots.ogg'
 	pickup_sound = 'sound/items/pickup/toolbox.ogg'
+	worth_intrinsic = 250
 
 	var/encumbrance_on = ITEM_ENCUMBRANCE_SHOES_MAGBOOTS_PULSE
 
 /obj/item/clothing/shoes/magboots/proc/update_magboot_encumbrance()
 	set_encumbrance(initial(encumbrance) + (magpulse? encumbrance_on : 0))
 
-/obj/item/clothing/shoes/magboots/attack_self(mob/user)
+/obj/item/clothing/shoes/magboots/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -79,7 +80,7 @@
 
 	item_action_name = "Toggle the magclaws"
 
-/obj/item/clothing/shoes/magboots/vox/attack_self(mob/user)
+/obj/item/clothing/shoes/magboots/vox/attack_self(mob/user, datum/event_args/actor/actor)
 	if(src.magpulse)
 		clothing_flags &= ~NOSLIP
 		magpulse = 0

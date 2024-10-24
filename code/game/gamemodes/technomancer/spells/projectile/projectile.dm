@@ -23,7 +23,7 @@
 
 /obj/item/spell/projectile/proc/make_projectile(obj/projectile/projectile_type, mob/living/user)
 	var/obj/projectile/P = new projectile_type(get_turf(user))
-	P.damage = calculate_spell_power(P.damage)
+	P.damage_force = calculate_spell_power(P.damage_force)
 	return P
 
 /obj/item/spell/projectile/proc/set_up(atom/hit_atom, mob/living/user)

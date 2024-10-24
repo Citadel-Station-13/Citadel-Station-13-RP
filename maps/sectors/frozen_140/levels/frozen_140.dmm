@@ -535,7 +535,7 @@
 /area/class_p/facility)
 "wQ" = (
 /mob/living/simple_mob/animal/space/tree{
-	faction = "frozen"
+	iff_factions = "frozen"
 	},
 /turf/simulated/floor/outdoors/snow/classp,
 /area/class_p/unexplored)

@@ -12,6 +12,7 @@
 	randomized = TRUE
 
 	ai_holder_type = /datum/ai_holder/polaris/simple_mob/melee
+	iff_factions = MOB_IFF_FACTION_BIND_TO_MAP
 
 	// By default, this is what most vore mobs are capable of.
 	response_help = "pets"
@@ -42,9 +43,6 @@
 
 // Activate Noms!
 /mob/living/simple_mob/vore/aggressive/dino
-	vore_active = 1
 	swallowTime = 1 SECOND // Hungry little bastards.
-	vore_icons = SA_ICON_LIVING
 
 /mob/living/simple_mob/vore/aggressive/dino/virgo3b
-	faction = "virgo3b"

@@ -68,7 +68,7 @@
 	req_one_access = list(ACCESS_GENERAL_EXPLORER,ACCESS_SECURITY_BRIG)
 
 	starts_with = list(
-		/obj/item/ammo_magazine/clip/c762/hunter = 9,
+		/obj/item/ammo_magazine/a7_62mm/clip/hunter = 9,
 		/obj/item/gun/ballistic/shotgun/pump/rifle = 2)
 
 /obj/structure/closet/secure_closet/guncabinet/rifle/Initialize(mapload)

@@ -9,6 +9,12 @@
 	id = "marking_teshari_heterochromia"
 	icon_state = "teshi_heterochromia"
 	body_parts = list(BP_HEAD)
+	
+/datum/sprite_accessory/marking/tesh/teshi_eyes
+	name = "Teshari Eyes"
+	id = "marking_teshari_eyes"
+	icon_state = "teshi_eyes"
+	body_parts = list(BP_HEAD)	
 
 /datum/sprite_accessory/marking/tesh/tesh_feathers
 	name = "Teshari Feathers"

@@ -469,7 +469,7 @@
 /area/piratebase/halls)
 "vW" = (
 /mob/living/simple_mob/mechanical/mecha/combat/marauder/mauler{
-	faction = "voxpirate"
+	iff_factions = "voxpirate"
 	},
 /turf/simulated/floor/reinforced,
 /area/piratebase/halls)

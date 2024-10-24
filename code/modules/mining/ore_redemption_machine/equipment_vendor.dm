@@ -73,8 +73,8 @@
 		new /datum/data/mining_equipment("KA Super Chassis",			/obj/item/ka_modkit/chassis_mod,							250),
 		new /datum/data/mining_equipment("KA Hyper Chassis",			/obj/item/ka_modkit/chassis_mod/orange,					300),
 		new /datum/data/mining_equipment("KA Range Increase",			/obj/item/ka_modkit/range,								1000),
-		new /datum/data/mining_equipment("KA Damage Increase",			/obj/item/ka_modkit/damage,								1000),
 		new /datum/data/mining_equipment("KA Cooldown Decrease",		/obj/item/ka_modkit/cooldown,							1200),
+		new /datum/data/mining_equipment("KA Capacity Increase",		/obj/item/ka_modkit/capacity,							1500),
 		new /datum/data/mining_equipment("KA Holster",				/obj/item/clothing/accessory/holster/waist/kinetic_accelerator,			350),
 		new /datum/data/mining_equipment("Fine Excavation Kit - Chisels",/obj/item/storage/excavation,								500),
 		new /datum/data/mining_equipment("Fine Excavation Kit - Measuring Tape",/obj/item/measuring_tape,							125),
@@ -119,7 +119,7 @@
 	else
 		icon_state = "[initial(icon_state)]-off"
 
-/obj/machinery/mineral/equipment_vendor/attack_hand(mob/user, list/params)
+/obj/machinery/mineral/equipment_vendor/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(..())
 		return
 	interact(user)

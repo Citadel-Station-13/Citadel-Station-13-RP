@@ -116,7 +116,7 @@
 		add_overlay(image('icons/obj/computer.dmi', "solcon-o", FLY_LAYER, angle2dir(cdir)))
 	return
 
-/obj/machinery/power/solar_control/attack_hand(mob/user, list/params)
+/obj/machinery/power/solar_control/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(!..())
 		interact(user)
 

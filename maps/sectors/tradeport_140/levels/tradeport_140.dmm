@@ -471,7 +471,7 @@
 	req_access = list(160)
 	},
 /obj/structure/table/marble,
-/obj/item/melee/energy/hfmachete,
+/obj/item/melee/transforming/hfmachete,
 /turf/simulated/floor/carpet/bcarpet,
 /area/tradeport/cyndishow)
 "bU" = (
@@ -2070,7 +2070,7 @@
 	id_tag = "tradeport_hangar_docker";
 	pixel_x = -25
 	},
-/obj/effect/shuttle_landmark/triumph/trade/hangar,
+/obj/effect/shuttle_landmark/trade/hangar,
 /obj/overmap/entity/visitable/ship/landable/trade,
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)

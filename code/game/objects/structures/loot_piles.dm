@@ -42,7 +42,7 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 	var/list/rare_loot = list()		// Rare is powerful, or somewhat unique items.
 	var/list/very_rare_loot = list()// Very Rare really powerful, or at least unique items.
 
-/obj/structure/loot_pile/attack_hand(mob/user, list/params)
+/obj/structure/loot_pile/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	//Human mob
 	if(isliving(user))
 		var/mob/living/L = user
@@ -254,7 +254,6 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 		/obj/item/reagent_containers/food/snacks/mysterysoup,
 		/obj/item/reagent_containers/food/snacks/hotdog,
 		/obj/item/pizzabox,
-		/obj/item/ammo_casing/spent,
 		/obj/item/stack/rods{amount = 5},
 		/obj/item/stack/material/steel{amount = 5},
 		/obj/item/stack/material/cardboard{amount = 5},
@@ -810,6 +809,9 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 /obj/structure/loot_pile/mecha/gygax/dark
 	icon_state = "darkgygax-broken"
 
+/obj/structure/loot_pile/mecha/mimir
+	icon_state = "mimir_wreck"
+
 // Todo: Better loot.
 /obj/structure/loot_pile/mecha/gygax/dark/adv
 	icon_state = "darkgygax_adv-broken"
@@ -1082,7 +1084,7 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 		)
 
 	uncommon_loot = list(
-		/obj/item/ammo_magazine/m75,
+		/obj/item/ammo_magazine/a75,
 		/obj/item/mecha_parts/mecha_equipment/weapon/ballistic/mortar
 		)
 

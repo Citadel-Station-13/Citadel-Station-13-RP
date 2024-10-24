@@ -1,5 +1,6 @@
 ///used to transfer power to containment field generators
 #define EMITTER_DAMAGE_POWER_TRANSFER 500
+// todo: emitters shouldn't be part of the singularity / power module
 /obj/machinery/power/emitter
 	name = "emitter"
 	desc = "It is a heavy duty industrial laser."
@@ -9,6 +10,8 @@
 	density = 1
 	req_access = list(ACCESS_ENGINEERING_ENGINE)
 	armor_type = /datum/armor/object/medium
+
+	worth_intrinsic = 350
 	var/id = null
 
 	use_power = USE_POWER_OFF	//uses powernet power, not APC power
@@ -56,7 +59,7 @@
 	else
 		icon_state = "emitter"
 
-/obj/machinery/power/emitter/attack_hand(mob/user, list/params)
+/obj/machinery/power/emitter/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	src.add_fingerprint(user)
 	activate(user)
 
@@ -139,7 +142,7 @@
 			s.start()
 
 		var/obj/projectile/beam/emitter/A = get_emitter_beam()
-		A.damage = round(power_per_shot/EMITTER_DAMAGE_POWER_TRANSFER)
+		A.damage_force = round(power_per_shot/EMITTER_DAMAGE_POWER_TRANSFER)
 		A.firer = src
 		A.fire(dir2angle(dir))
 

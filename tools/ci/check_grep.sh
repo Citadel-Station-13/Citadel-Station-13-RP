@@ -53,6 +53,10 @@ if grep -P '\W\/turf\s*[,\){]' maps/**/*.dmm; then
     echo "ERROR: base /turf path use detected in maps, please replace with proper paths."
     st=1
 fi;
+if grep -P '/turf[a-zA-Z0-9;\s\n_{}/]*,[\n]?/turf' maps/**/*.dmm; then
+    echo "ERROR: overlapping /turf's detected in maps, please fix it (do not have more than one /turf in a tile)."
+    st=1
+fi;
 # if grep -P '^/*var/' code/**/*.dm; then
 #     echo "ERROR: Unmanaged global var use detected in code, please use the helpers."
 #     st=1
