@@ -81,6 +81,7 @@
 
 /obj/machinery/airlock_component/controller/Destroy()
 	STOP_PROCESSING(SSprocess_5fps, src)
+	finish_cycle(AIRLOCK_CYCLE_STATUS_ABORTED)
 	return ..()
 
 /obj/machinery/airlock_component/controller/LateInitialize()
@@ -165,7 +166,7 @@
  */
 /obj/machinery/airlock_component/controller/proc/fail_cycle(why)
 
-/obj/machinery/airlock_component/controller/proc/finish_cycle(success)
+/obj/machinery/airlock_component/controller/proc/finish_cycle(status)
 	last_cycle_pressure = last_cycle_temperature = last_cycle_gases = null
 
 /obj/machinery/airlock_component/controller/proc/probe_indoors_gas()
