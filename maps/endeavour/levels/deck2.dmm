@@ -11729,7 +11729,7 @@
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/door/airlock/medical{
 	id_tag = "mentaldoor2";
-	name = "Mental Health";
+	name = "Mental Health 1";
 	req_one_access = null;
 	id = "mentaldoor1"
 	},
@@ -12801,6 +12801,17 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/research/researchdivision)
+"iZc" = (
+/obj/effect/paint/purplegray,
+/obj/structure/window/reinforced/polarized/full{
+	id = "robotics1"
+	},
+/obj/machinery/door/firedoor,
+/obj/structure/window/reinforced/polarized/full{
+	id = "robotics1"
+	},
+/turf/simulated/floor/plating,
+/area/assembly/robotics)
 "iZN" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -16392,7 +16403,7 @@
 "lGI" = (
 /obj/effect/paint/purplegray,
 /obj/structure/window/reinforced/polarized/full{
-	id = "r&d1"
+	id = "rnd1"
 	},
 /turf/simulated/floor/plating,
 /area/rnd/reception_desk)
@@ -20103,7 +20114,7 @@
 "owo" = (
 /obj/effect/paint/purplegray,
 /obj/structure/window/reinforced/polarized/full{
-	id = "r&d1"
+	id = "rnd1"
 	},
 /obj/machinery/door/firedoor,
 /turf/simulated/floor/plating,
@@ -25817,7 +25828,7 @@
 	pixel_y = -24
 	},
 /obj/machinery/button/windowtint{
-	id = "r&d1";
+	id = "rnd1";
 	pixel_x = -25;
 	pixel_y = -2
 	},
@@ -48633,7 +48644,7 @@ aDx
 mTQ
 aDx
 rTV
-mAv
+iZc
 aDx
 bIW
 bWA
