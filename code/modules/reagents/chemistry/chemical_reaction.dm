@@ -27,7 +27,6 @@
 
 	/// we should care enough about this to log it specifically
 	var/important_for_logging = FALSE
-	#warn impl
 
 	//* reaction *//
 
@@ -323,9 +322,6 @@
 			container.visible_message(SPAN_NOTICE(reaction_message_instant))
 		if(reaction_sound_instant)
 			playsound(container, reaction_sound_instant, 75, TRUE)
-	return
-
-#warn impl all
 
 //* Reaction Modulation *//
 

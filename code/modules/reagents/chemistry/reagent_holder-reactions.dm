@@ -29,14 +29,16 @@
  * @params
  * * reactions - reactions to recheck; this will not be mutated
  * * safety - safety parameter to prevent instant reactions from infinite looping
+ * * instant_only - skip ticked reactions
  */
-/datum/reagent_holder/proc/check_reactions(list/datum/chemical_reaction/reactions, safety)
+/datum/reagent_holder/proc/check_reactions(list/datum/chemical_reaction/reactions, safety, instant_only)
 	var/list/datum/chemical_reaction/potentially_ticked = list()
 	var/list/datum/chemical_reaction/instant_reacting = list()
 	for(var/datum/chemical_reaction/reaction as anything in reactions)
 		if(reaction.reaction_half_life != 0)
 			// ticked
-			potentially_ticked += reaction
+			if(!instant_only)
+				potentially_ticked += reaction
 			continue
 		if(!reaction.can_happen(src))
 			continue
@@ -61,7 +63,7 @@
  * * called by reaction loops
  * * instant reactions will be immediately ran.
  */
-/datum/reagent_holder/proc/try_reactions_on_reagent_change(id)
+/datum/reagent_holder/proc/try_reactions_for_reagent_change(id)
 	SHOULD_NOT_SLEEP(TRUE)
 	PROTECTED_PROC(TRUE)
 
@@ -145,6 +147,8 @@
 	SHOULD_NOT_SLEEP(TRUE)
 	SHOULD_NOT_OVERRIDE(TRUE)
 
+	var/list/ids_to_recheck = list()
+
 	for(var/datum/chemical_reaction/reaction as anything in active_reactions)
 		var/checks_pass = TRUE
 
@@ -161,8 +165,6 @@
 		var/maximum_multiplier = INFINITY
 		var/effective_half_life = reaction.reaction_half_life
 		var/total_reactant_volume = 0
-
-		#warn check before/after volume
 
 		// ingredients
 		if(reaction.result_amount > 0)
@@ -206,14 +208,28 @@
 
 		// finalize
 
-		#warn log?
-
 		#warn how to trigger reactions if we skip it for the following procs?
 
 		for(var/id in reaction.required_reagents)
 			remove_reagent(id, maximum_multiplier * reaction.required_reagents[id], TRUE)
+			ids_to_recheck[id] = TRUE
 		if(reaction.result_amount > 0)
 			add_reagent(reaction.result, maximum_multiplier * reaction.result_amount, null, TRUE)
+			ids_to_recheck[reaction.result] = TRUE
+
+		reaction.on_reaction_tick(src, delta_time, maximum_multiplier)
+
+		if(QDELETED(src))
+			break
+
+	// secondary qdeleted check incase we got destroyed
+	if(QDELETED(src))
+		return
+
+	// now that we're done, re-check relevant reactions that might happen
+	// and process them as needed
+	var/list/datum/chemical_reaction/reactions_to_recheck = SSchemistry.immutable_relevant_reactions_for_reagent_ids(ids_to_recheck)
+	check_reactions(reactions_to_recheck, safety - 1, TRUE)
 
 /**
  * Processes instant reactions
@@ -231,6 +247,7 @@
 	if(!length(reactions))
 		return
 	if(safety <= 0)
+		clear_reagents(TRUE)
 		CRASH("run_instant_reactions aborted due to potential infinite loop. reactions list was [english_list(reactions)]")
 
 	var/list/ids_to_recheck = list()
@@ -270,7 +287,7 @@
 		if(maximum_multiplier <= 0)
 			continue
 
-		#warn log here!
+		log_chemical_reaction_instant(src, reaction, maximum_multiplier)
 
 		for(var/id in reaction.required_reagents)
 			remove_reagent(id, maximum_multiplier * reaction.required_reagents[id], TRUE)
@@ -285,12 +302,10 @@
 			break
 
 	// secondary qdeleted check incase we got destroyed
-
 	if(QDELETED(src))
 		return
 
 	// now that we're done, re-check relevant reactions that might happen
 	// and process them as needed
-
 	var/list/datum/chemical_reaction/reactions_to_recheck = SSchemistry.immutable_relevant_reactions_for_reagent_ids(ids_to_recheck)
 	check_reactions(reactions_to_recheck, safety - 1)
