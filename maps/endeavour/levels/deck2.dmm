@@ -12801,17 +12801,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/research/researchdivision)
-"iZc" = (
-/obj/effect/paint/purplegray,
-/obj/structure/window/reinforced/polarized/full{
-	id = "robotics1"
-	},
-/obj/machinery/door/firedoor,
-/obj/structure/window/reinforced/polarized/full{
-	id = "robotics1"
-	},
-/turf/simulated/floor/plating,
-/area/assembly/robotics)
 "iZN" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -31758,17 +31747,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/research_foyer_auxiliary)
-"wtH" = (
-/obj/effect/paint/babyblue,
-/obj/structure/window/reinforced/polarized/full{
-	id = "or2";
-	name = s
-	},
-/obj/machinery/door/firedoor{
-	dir = 1
-	},
-/turf/simulated/floor/plating,
-/area/medical/surgery2)
 "wtL" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
 /obj/effect/paint/babyblue,
@@ -43621,7 +43599,7 @@ flr
 vOD
 xYq
 rQF
-wtH
+cUN
 yhR
 xKC
 dIJ
@@ -48636,7 +48614,7 @@ aDx
 mTQ
 aDx
 rTV
-iZc
+mAv
 aDx
 bIW
 bWA
