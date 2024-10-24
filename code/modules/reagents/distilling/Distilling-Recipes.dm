@@ -1,8 +1,8 @@
 /datum/chemical_reaction/distilling
 	reaction_half_life = 12 SECONDS
 
-	mix_message = "The solution churns."
-	reaction_sound = 'sound/effects/slosh.ogg'
+	// reaction_message_instant = "The solution churns."
+	// reaction_sound_instant = 'sound/effects/slosh.ogg'
 
 	temperature_low = T0C
 	temperature_high = T20C

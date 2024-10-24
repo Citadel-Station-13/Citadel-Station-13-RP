@@ -1358,7 +1358,7 @@
 	id = "quickdraw"
 	result = "quickdraw"
 	required_reagents = list("sarsaparilla" = 1, "rum" = 1, "bitters" = 1)
-	reaction_sound = "sound/weapons/gunshot/gunshot.ogg"
+	reaction_sound_instant = "sound/weapons/gunshot/gunshot.ogg"
 	result_amount = 3
 
 /datum/chemical_reaction/drinks/dmhand
@@ -1897,7 +1897,7 @@
 	result = "skrianhitea"
 	required_reagents = list("unathijuice" = 2, "water" = 1)
 	result_amount = 3
-	mix_message = "The tea turns a bitter black."
+	reaction_message_instant = "The tea turns a bitter black."
 
 /datum/chemical_reaction/drinks/mumbaksting
 	name = "Mumbak Sting"
@@ -1905,7 +1905,7 @@
 	result = "mumbaksting"
 	required_reagents = list("unathijuice" = 2, "toxin" = 1)
 	result_amount = 3
-	mix_message = "The toxins mix with the juice to create a dark red substance."
+	reaction_message_instant = "The toxins mix with the juice to create a dark red substance."
 
 /datum/chemical_reaction/drinks/wasgaelhi
 	name = "Wasgaelhi"
@@ -1913,7 +1913,7 @@
 	result = "wasgaelhi"
 	required_reagents = list("unathijuice" = 2, "wine" = 1)
 	result_amount = 3
-	mix_message = "The mixture turns a dull purple."
+	reaction_message_instant = "The mixture turns a dull purple."
 
 /datum/chemical_reaction/drinks/kzkzaa
 	name = "Kzkzaa"
@@ -1921,4 +1921,4 @@
 	result = "kzkzaa"
 	required_reagents = list("unathijuice" = 2, "protein" = 1)
 	result_amount = 3
-	mix_message = "The mixture turns a deep orange."
+	reaction_message_instant = "The mixture turns a deep orange."
