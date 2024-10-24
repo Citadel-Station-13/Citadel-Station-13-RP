@@ -11729,7 +11729,7 @@
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/door/airlock/medical{
 	id_tag = "mentaldoor2";
-	name = "Mental Health 1";
+	name = "Mental Health";
 	req_one_access = null;
 	id = "mentaldoor1"
 	},
