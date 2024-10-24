@@ -17,9 +17,6 @@
 	construction_type = /obj/item/pipe/binary/bendable
 	pipe_state = "simple"
 
-	var/minimum_temperature_difference = 300
-	var/thermal_conductivity = 0 //WALL_HEAT_TRANSFER_COEFFICIENT No
-
 	var/maximum_pressure = 70*ONE_ATMOSPHERE
 	var/fatigue_pressure = 55*ONE_ATMOSPHERE
 	alert_pressure = 55*ONE_ATMOSPHERE
@@ -291,8 +288,6 @@
 	construction_type = /obj/item/pipe/binary/bendable
 	pipe_state = "insulated"
 
-	minimum_temperature_difference = 10000
-	thermal_conductivity = 0
 	maximum_pressure = 1000*ONE_ATMOSPHERE
 	fatigue_pressure = 900*ONE_ATMOSPHERE
 	alert_pressure = 900*ONE_ATMOSPHERE
