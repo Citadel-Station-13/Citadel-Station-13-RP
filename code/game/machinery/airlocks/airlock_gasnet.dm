@@ -1,5 +1,5 @@
 //* This file is explicitly licensed under the MIT license. *//
-//* Copyright (c) 2024 silicons                             *//
+//* Copyright (c) 2024 Citadel Station Developers           *//
 
 /**
  * the simplified gasnet / control plane used for airlock handling and control
@@ -19,7 +19,14 @@
 	var/list/obj/machinery/airlock_component/components = list()
 
 	/// controller; there can only be one, otherwise things won't operate properly
+	///
+	/// * nulled out if there's more than one controller
 	var/obj/machinery/airlock_component/controller/controller
+	/// all controllers
+	///
+	/// * only initialized if there's more than one controller
+	/// * while there's more than one controller, the gasnet will not function
+	var/list/obj/machinery/airlock_component/controller/extraneous_controllers
 
 	/// handlers
 	var/list/obj/machinery/airlock_comopnent/handler/handlers = list()

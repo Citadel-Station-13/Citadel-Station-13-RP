@@ -1,5 +1,5 @@
 //* This file is explicitly licensed under the MIT license. *//
-//* Copyright (c) 2024 silicons                             *//
+//* Copyright (c) 2024 Citadel Station Developers           *//
 
 // todo: buildable
 
@@ -71,4 +71,4 @@
  * todo: refactor on atmospherics machinery update
  */
 /obj/machinery/atmospherics/component/unary/airlock_connector
-	volume = 2000
+	// volume = 2000

@@ -1,5 +1,5 @@
 //* This file is explicitly licensed under the MIT license. *//
-//* Copyright (c) 2024 silicons                             *//
+//* Copyright (c) 2024 Citadel Station Developers           *//
 
 // todo: buildable
 
@@ -13,75 +13,62 @@
 	desc = "A self-contained controller for an airlock."
 	#warn sprite
 
-	//* Access
+	//* Access *//
 	/// we can access the airlock from the controller
 	var/control_panel = TRUE
+
+	//* Configuration *//
 	/// security lockdown mode - all buttons and docking requests are ignored
 	/// panels can still be used to control it.
-	var/security_lockdown = FALSE
+	var/config_security_lockdown = FALSE
 
-	//* Configuration
-	/// mode
-	/// see defines for AIRLOCK_CONFIG_MODE_*.
-	var/config_cycle_mode = AIRLOCK_CONFIG_MODE_CLASSIC
-	/// gas is precious while this is on; we will not expel with exterior vents when cycling
-	/// out of interior
-	var/config_gas_is_precious = FALSE
-	/// minimum allowable pressure during cycling
-	/// this overrides requested pressure by the environment!
-	/// if you set it to a high value, people will go flying.
-	/// * only taken into account in dynamic cycle mode
-	var/config_dynamic_minimum_tolerable_pressure
-	/// interior toggles
-	/// * by default we want to regulate temperature/pressure/gas
-	/// * only taken into account in dynamic cycle mode
-	var/config_dynamic_interior_toggles = AIRLOCK_CONFIG_TOGGLE_EXPEL_UNWANTED_GAS | AIRLOCK_CONFIG_TOGGLE_REGULATE_PRESSURE | AIRLOCK_CONFIG_TOGGLE_REGULATE_TEMPERATURE
-	/// exterior toggles
-	/// * by default we just want to not have people go flying
-	/// * only taken into account in dynamic cycle mode
-	var/config_dynamic_exterior_toggles = AIRLOCK_CONFIG_TOGGLE_REGULATE_PRESSURE
-
-	//* Environments
+	//* Environments *//
 	/// interior environment settings
 	///
 	/// * Mappers: Set mode to MANUAL and set this to an atmosphere path to force it to something.
 	/// * You cannot have this be a gas string! That support hasn't been coded yet.
+	/// * This is used by airlock programs that care about it to determine nominal environment.
 	var/datum/airlock_environment/interior_environment
 	/// exterior environment settings
 	///
 	/// * Mappers: Set mode to MANUAL and set this to an atmosphere path to force it to something.
 	/// * You cannot have this be a gas string! That support hasn't been coded yet.
+	/// * This is used by airlock programs that care about it to determine nominal environment.
 	var/datum/airlock_environment/exterior_environment
 	/// interior environment mode
 	var/interior_environment_mode = AIRLOCK_ENVIRONMENT_AUTODETECT
 	/// exterior environment mode
 	var/exterior_environment_mode = AIRLOCK_ENVIRONMENT_ADAPTIVE
 
-	//* Network
+	//* Network *//
 	/// our connected gasnet
 	var/datum/airlock_gasnet/network
 
-	//* State
+	//* State *//
 	/// interior door state
 	var/interior_state = AIRLOCK_STATE_UNLOCKED
 	/// exterior door state
 	var/exterior_state = AIRLOCK_STATE_UNLOCKED
-	/// cycle state
-	var/cycle_state = AIRLOCK_CYCLE_INACTIVE
-	/// last state we were cycling towards; this allows for resumes
-	/// null for none
-	var/cycle_side
-	/// pressure on last cycle process
-	var/last_cycle_pressure
-	/// temperature on last cycle process
-	var/last_cycle_temperature
-	/// gas contents on last cycle pressure
-	var/list/last_cycle_gases
-	/// operation cycle; used for things like asyncs to be able to verify behavior.
+
+	//* Cycling *//
+	/// which side are we cycled to?
+	///
+	/// * NEUTRAL if neither, or a cycle got aborted
+	var/cycled_to_side = AIRLOCK_SIDE_NEUTRAL
+	/// last side we were cycling towards; this allows for resumes
+	var/cycling_last_side = AIRLOCK_SIDE_NEUTRAL
+	/// current airlock cycle struct
+	///
+	/// * if this exists, we are cycling right now
+	var/datum/airlock_cycle/cycle
+
+	//* Cycling - Op *//
+	/// operation cycle; airlock cycling is async, operation cycles allow us to ensure
+	/// that an operation is still the same operation something started.
 	var/op_cycle
 	/// next operation cycle
 	var/static/op_cycle_next = 0
-	/// what to call on finish with (status: AIRLOCK_OP_STATUS_* define, why: short string reason)
+	/// what to call on finish with (status: AIRLOCK_OP_STATUS_* define, why: short string reason or null)
 	var/datum/callback/op_on_finish
 
 /obj/machinery/airlock_component/controller/Initialize(mapload)
@@ -89,11 +76,11 @@
 	#warn stuff
 	// todo: we need proper tick bracket machine support & fastmos
 	STOP_MACHINE_PROCESSING(src)
-	START_PROCESSING(SSfastprocess, src)
+	START_PROCESSING(SSprocess_5fps, src)
 	return INITIALIZE_HINT_LATELOAD
 
 /obj/machinery/airlock_component/controller/Destroy()
-	STOP_PROCESSING(SSfastprocess, src)
+	STOP_PROCESSING(SSprocess_5fps, src)
 	return ..()
 
 /obj/machinery/airlock_component/controller/LateInitialize()
