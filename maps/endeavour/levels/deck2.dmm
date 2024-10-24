@@ -15125,14 +15125,6 @@
 	},
 /turf/simulated/floor/wood,
 /area/rnd/research/researchdivision)
-"kQr" = (
-/obj/effect/paint/babyblue,
-/obj/structure/window/reinforced/polarized/full,
-/obj/machinery/door/firedoor{
-	dir = 1
-	},
-/turf/simulated/floor/plating,
-/area/crew_quarters/heads/cmo)
 "kQH" = (
 /obj/structure/morgue{
 	dir = 2
@@ -43047,7 +43039,7 @@ tWY
 nyz
 aLf
 arw
-wtH
+cUN
 aqP
 xKC
 axP
@@ -44606,7 +44598,7 @@ oEN
 aCR
 ffh
 gBN
-kQr
+aRl
 hKL
 byw
 bPO
@@ -45188,7 +45180,7 @@ hnp
 bHs
 piH
 tNZ
-kQr
+aRl
 qQX
 qzS
 qqe
