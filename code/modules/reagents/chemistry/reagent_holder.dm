@@ -141,7 +141,7 @@
 				current.mix_data(src, current.data, current.volume, data_initializer, amount)
 			update_total()
 			if(!skip_reactions)
-				try_reactions_on_reagent_change(id)
+				try_reactions_for_reagent_change(id)
 			if(my_atom)
 				my_atom.on_reagent_change()
 			return amount
@@ -154,7 +154,7 @@
 		R.initialize_data(data_initializer)
 		update_total()
 		if(!skip_reactions)
-			try_reactions_on_reagent_change(id)
+			try_reactions_for_reagent_change(id)
 		if(my_atom)
 			my_atom.on_reagent_change()
 		return amount
@@ -194,21 +194,27 @@
 			current.volume -= amount
 			update_total()
 			if(!skip_reactions)
-				try_reactions_on_reagent_change(id)
+				try_reactions_for_reagent_change(id)
 			if(my_atom)
 				my_atom.on_reagent_change()
 			return amount
 	return 0
 
-/datum/reagent_holder/proc/del_reagent(id)
+/datum/reagent_holder/proc/del_reagent(id, skip_reactions)
 	for(var/datum/reagent/current in reagent_list)
 		if (current.id == id)
 			reagent_list -= current
 			qdel(current)
 			update_total()
+			if(!skip_Reactions)
+				try_reactions_for_reagent_change(current.id)
 			if(my_atom)
 				my_atom.on_reagent_change()
 			return 0
+
+/datum/reagent_holder/proc/clear_reagents(skip_reactions)
+	for(var/datum/reagent/current in reagent_list)
+		del_reagent(current.id, skip_reactions)
 
 /datum/reagent_holder/proc/has_reagent(id, amount = 0)
 	if(ispath(id))
@@ -239,11 +245,6 @@
 			if(current.volume >= check_reagents[current.id] * multiplier)
 				missing--
 	return !missing
-
-/datum/reagent_holder/proc/clear_reagents()
-	for(var/datum/reagent/current in reagent_list)
-		del_reagent(current.id)
-	return
 
 /datum/reagent_holder/proc/get_reagent(id)
 	for(var/datum/reagent/current in reagent_list)
