@@ -193,7 +193,7 @@
 			log_inventory("pickup-to-hand: keyname [key_name(src)] index [index] item [I]([ref(I)])")
 
 		inventory.held_items[index] = I
-		inventory.on_item_entered(item, index)
+		inventory.on_item_entered(I, index)
 
 	//! LEGACY BEGIN
 	I.update_twohanding()
@@ -216,7 +216,7 @@
 	ASSERT(inventory?.held_items[index] == I)
 
 	inventory.held_items[index] = null
-	inventory.on_item_exited(item, index)
+	inventory.on_item_exited(I, index)
 
 	I.unequipped(src, SLOT_ID_HANDS, flags)
 
@@ -229,5 +229,5 @@
 
 	inventory.held_items[old_index] = null
 	inventory.held_items[index] = I
-	inventory.on_item_swapped(item, old_index, index)
+	inventory.on_item_swapped(I, old_index, index)
 

@@ -54,16 +54,16 @@
  * basically if a red deny symbol is in the hand it is not usable, otherwise it's usable.
  */
 /mob/proc/get_usable_hand_count() as num
-	return 0
-	#warn impl + subtypes
+	return get_nominal_hand_count()
 
 /**
  * get indices of usable hands
  */
 /mob/proc/get_usable_hand_indices() as /list
 	RETURN_TYPE(/list)
-	return list()
-	#warn impl + subtypes
+	. = list()
+	for(var/i in 1 to get_nominal_hand_count())
+		. += i
 
 /**
  * sets number of physical hands we should account for potentialy having

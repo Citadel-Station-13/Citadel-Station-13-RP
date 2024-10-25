@@ -4,10 +4,15 @@
 //* Hands - Abstraction *//
 
 /mob/living/carbon/get_usable_hand_count()
-	#warn impl
+	// todo: slow as shit
+	return length(get_usable_hand_indices())
 
 /mob/living/carbon/get_usable_hand_indices()
-	#warn impl
+	// todo: slow as shit
+	. = list()
+	for(var/i in 1 to get_nominal_hand_count())
+		if(get_hand_manipulation_level(i) > HAND_MANIPULATION_NONE)
+			. += i
 
 //* Hands - Checks *//
 

@@ -1,5 +1,6 @@
 /mob/living/carbon/Initialize(mapload)
 	. = ..()
+	set_nominal_hand_count(2)
 	//setup reagent holders
 	bloodstr = new/datum/reagents/metabolism/bloodstream(500, src)
 	ingested = new/datum/reagents/metabolism/ingested(500, src)

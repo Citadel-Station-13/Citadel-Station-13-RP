@@ -8,3 +8,5 @@
 #define HAND_MANIPULATION_MOVE 2
 /// just hit your hand against something
 #define HAND_MANIPULATION_DULL 1
+/// level at which someone just can't use a hand at all
+#define HAND_MANIPULATION_NONE 0
