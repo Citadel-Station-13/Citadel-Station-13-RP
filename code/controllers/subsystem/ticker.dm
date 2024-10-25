@@ -147,7 +147,7 @@ SUBSYSTEM_DEF(ticker)
 		return
 	timeLeft -= wait
 	if(timeLeft <= 0)
-		if((how_many_players_have_readied_up() > 0) || (citest))
+		if((how_many_players_have_readied_up() > 0) || citest || start_immediately)
 			current_state = GAME_STATE_SETTING_UP
 			Master.SetRunLevel(RUNLEVEL_SETUP)
 			if(start_immediately)
