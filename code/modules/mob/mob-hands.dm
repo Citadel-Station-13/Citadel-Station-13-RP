@@ -69,7 +69,8 @@
  * sets number of physical hands we should account for potentialy having
  */
 /mob/proc/set_nominal_hand_count(count)
-	#warn sigh
+	LAZYINITLIST(inventory.held_items)
+	inventory.held_items.len = count
 
 /**
  * Are usable hands all holding items?
@@ -192,8 +193,5 @@
 	inventory.hud?.swap_active_hand(old_index, to_index)
 
 	//! LEGACY
-	// We just swapped hands, so the thing in our inactive hand will notice it's not the focus
-	if(!isnull(was_active))
-		if(was_active.zoom)
-			was_active.zoom()
+	was_active?.zoom()
 	//! End

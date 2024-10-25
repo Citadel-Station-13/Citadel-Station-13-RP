@@ -1,6 +1,14 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
+//* Hands - Abstraction *//
+
+/mob/living/carbon/get_usable_hand_count()
+	#warn impl
+
+/mob/living/carbon/get_usable_hand_indices()
+	#warn impl
+
 //* Hands - Checks *//
 
 /mob/living/carbon/get_hand_manipulation_level(index)
@@ -19,17 +27,25 @@
  * @return numerical index or null
  */
 /mob/living/carbon/proc/get_hand_of_organ(obj/item/organ/external/organ)
-	#warn impl
-	return null
+	switch(organ.organ_tag)
+		if(BP_L_HAND)
+			return 1
+		if(BP_R_HAND)
+			return 2
+		else
+			return null
 
 /**
  * Get all hand indexes of an organ
  *
  * @return list of numerical indices
  */
-/mob/living/carbon/proc/get_hands_of_organ(obj/item/organ/external/organ)
-	RETURN_TYPE(/list)
-	#warn impl
+/mob/living/carbon/proc/get_hands_of_organ(obj/item/organ/external/organ) as /list
+	switch(organ.organ_tag)
+		if(BP_L_HAND)
+			return list(1)
+		if(BP_R_HAND)
+			return list(2)
 	return list()
 
 /**

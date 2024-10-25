@@ -174,23 +174,26 @@
 			return FALSE
 
 	var/existing_slot = is_in_inventory(I)
-	if(existing_slot)
-		// already in inv
-		if(!_handle_item_reequip(I, SLOT_ID_HANDS, existing_slot, flags))
-			return FALSE
+	if(existing_slot == SLOT_ID_HANDS)
+		handle_item_handswap(I, index, get_held_index(I), flags)
 	else
-		// newly eqiupped
-		var/atom/old_loc = I.loc
-		if(I.loc != src)
-			I.forceMove(src)
-		if(I.loc != src)
-			return FALSE
-		I.pickup(src, flags, old_loc)
-		I.equipped(src, SLOT_ID_HANDS, flags)
-		log_inventory("pickup-to-hand: keyname [key_name(src)] index [index] item [I]([ref(I)])")
+		if(existing_slot)
+			// already in inv
+			if(!_handle_item_reequip(I, SLOT_ID_HANDS, existing_slot, flags))
+				return FALSE
+		else
+			// newly eqiupped
+			var/atom/old_loc = I.loc
+			if(I.loc != src)
+				I.forceMove(src)
+			if(I.loc != src)
+				return FALSE
+			I.pickup(src, flags, old_loc)
+			I.equipped(src, SLOT_ID_HANDS, flags)
+			log_inventory("pickup-to-hand: keyname [key_name(src)] index [index] item [I]([ref(I)])")
 
-	inventory?.held_items[index] = I
-	#warn hud
+		inventory.held_items[index] = I
+		inventory.on_item_entered(item, index)
 
 	//! LEGACY BEGIN
 	I.update_twohanding()
@@ -212,10 +215,10 @@
 /mob/proc/unequip_hand_impl(obj/item/I, index, flags)
 	ASSERT(inventory?.held_items[index] == I)
 
-	inventory?.held_items[index] = null
+	inventory.held_items[index] = null
+	inventory.on_item_exited(item, index)
 
 	I.unequipped(src, SLOT_ID_HANDS, flags)
-	#warn impl; hud
 
 /**
  * handle swapping item from one hand index to another
@@ -224,7 +227,7 @@
 	ASSERT(inventory?.held_items[old_index] == I)
 	ASSERT(isnull(inventory?.held_items[index]))
 
-	inventory?.held_items[old_index] = null
-	inventory?.held_items[index] = I
+	inventory.held_items[old_index] = null
+	inventory.held_items[index] = I
+	inventory.on_item_swapped(item, old_index, index)
 
-	#warn impl; hud

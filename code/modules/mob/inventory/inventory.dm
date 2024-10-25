@@ -82,32 +82,6 @@
 		if(I.body_cover_flags & cover_flags)
 			. += I
 
-//* Update Hooks *//
-
-/datum/inventory/proc/on_mobility_update()
-	for(var/datum/action/action in actions.actions)
-		action.update_button_availability()
-
-/**
- * called when an item is added to inventory
- */
-/datum/inventory/proc/item_entered(obj/item/item, datum/inventory_slot/slot)
-	hud?.add_item(item, slot)
-
-/**
- * called when an item is removed from inventory
- */
-/datum/inventory/proc/item_exited(obj/item/item, datum/inventory_slot/slot)
-	hud?.remove_item(item, slot)
-
-/**
- * called when an item is moved from one slot to another
- */
-/datum/inventory/proc/item_swapped(obj/item/item, datum/inventory_slot/from_slot, datum/inventory_slot/to_slot)
-	hud?.move_item(item, from_slot, to_slot)
-
-#warn hook above 3
-
 //* Slots *//
 
 /**

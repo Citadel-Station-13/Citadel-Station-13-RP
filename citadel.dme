@@ -3070,6 +3070,7 @@
 #include "code\modules\mob\inventory\inventory-hands-legacy.dm"
 #include "code\modules\mob\inventory\inventory-hands-put.dm"
 #include "code\modules\mob\inventory\inventory-hands.dm"
+#include "code\modules\mob\inventory\inventory-hooks.dm"
 #include "code\modules\mob\inventory\inventory-rendering.dm"
 #include "code\modules\mob\inventory\inventory_slot.dm"
 #include "code\modules\mob\inventory\inventory.dm"

@@ -8,8 +8,12 @@
 	/// owning inventory
 	var/datum/inventory/host
 
-	/// hidden classes
-	var/list/hidden_classes
+	/// hidden classes, associated to list of reasons
+	var/list/hidden_classes = list(
+		(INVENTORY_HUD_CLASS_DRAWER) = list(
+			INVENTORY_HUD_HIDE_SOURCE_DRAWER,
+		),
+	)
 
 	/// keyed slot id to screen object
 	var/list/atom/movable/screen/inventory/plate/slot/slot_by_id
@@ -174,15 +178,30 @@
 	if(button_drawer)
 		. += button_drawer
 
-/datum/mob_hud/inventory/proc/toggle_hidden_class(class)
+/datum/mob_hud/inventory/proc/toggle_hidden_class(class, source)
 	var/list/atom/movable/screen/inventory/affected = all_slot_screen_objects(class)
 	if(class in hidden_classes)
-		LAZYREMOVE(hidden_classes, class)
-		add_screen(affected)
+		LAZYREMOVE(hidden_classes[class], source)
+		if(!length(hidden_classes[class]))
+			add_screen(affected)
+			hidden_classes -= class
 	else
-		LAZYADD(hidden_classes, class)
-		remove_screen(affected)
+		if(!hidden_classes[class])
+			remove_screen(affected)
+		LAZYADD(hidden_classes[class], class)
 	button_drawer?.update_icon()
+
+/datum/mob_hud/inventory/proc/add_hidden_class(class, source)
+	if(class in hidden_classes)
+		return
+	toggle_hidden_class(class, source)
+
+/datum/mob_hud/inventory/proc/remove_hidden_class(class, source)
+	if(!(class in hidden_classes))
+		return
+	toggle_hidden_class(class, source)
+
+//* Hooks *//
 
 /datum/mob_hud/inventory/proc/add_item(obj/item/item, datum/inventory_slot/slot_or_index)
 	var/atom/movable/screen/inventory/plate/screen_obj = isnum(slot_or_index) ? hands[slot_or_index] : slot_by_id[slot_or_index.id]
@@ -355,7 +374,7 @@
 
 /atom/movable/screen/inventory/drawer/on_click(mob/user, list/params)
 	// todo: remote control
-	hud.toggle_hidden_class(INVENTORY_HUD_CLASS_DRAWER)
+	hud.toggle_hidden_class(INVENTORY_HUD_CLASS_DRAWER, INVENTORY_HUD_HIDE_SOURCE_DRAWER)
 
 /atom/movable/screen/inventory/drawer/update_icon_state()
 	icon_state = "[INVENTORY_HUD_CLASS_DRAWER in hud.hidden_classes ? "drawer" : "drawer-active"]"

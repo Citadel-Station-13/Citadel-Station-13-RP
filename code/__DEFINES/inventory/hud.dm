@@ -32,6 +32,13 @@
 /// only when drawer is open
 #define INVENTORY_HUD_CLASS_DRAWER "drawer"
 
+//* inventory_hud hide sources *//
+
+/// from f12 / zoom toggle
+#define INVENTORY_HUD_HIDE_SOURCE_F12 "F12"
+/// from drawer toggle
+#define INVENTORY_HUD_HIDE_SOURCE_DRAWER "drawer"
+
 //* inventory slot remappings for species *//
 
 /// inventory_hud_main_axis

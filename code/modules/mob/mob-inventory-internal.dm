@@ -136,6 +136,8 @@
 /mob/proc/_unequip_slot(slot, flags)
 	SHOULD_NOT_OVERRIDE(TRUE)
 	. = _set_inv_slot(slot, null, flags) != INVENTORY_SLOT_DOES_NOT_EXIST
+	if(.)
+		inventory.on_item_exited(., resolve_inventory_slot(slot))
 
 /**
  * handles removing an item from our hud
@@ -216,6 +218,8 @@
 /mob/proc/_equip_slot(obj/item/I, slot, flags)
 	SHOULD_NOT_OVERRIDE(TRUE)
 	. = _set_inv_slot(slot, I, flags) != INVENTORY_SLOT_DOES_NOT_EXIST
+	if(.)
+		inventory.on_item_entered(., resolve_inventory_slot(slot))
 
 //* Slot Change *//
 
@@ -242,7 +246,6 @@
 		// lol we're done (unless it was hands)
 		return TRUE
 	if(slot == SLOT_ID_HANDS)
-		#warn impl
 		// if we're going into hands,
 		// just check can unequip
 		if(!can_unequip(I, old_slot, flags, user))
@@ -250,7 +253,7 @@
 			return FALSE
 		// call procs
 		if(old_slot == SLOT_ID_HANDS)
-			_unequip_held(I, flags)
+			unequip_hand_impl(I, get_held_index(I), flags)
 		else
 			_unequip_slot(old_slot, flags)
 		I.unequipped(src, old_slot, flags)
@@ -271,7 +274,7 @@
 			return FALSE
 		// ?if it's from hands, hands aren't a slot.
 		if(old_slot == SLOT_ID_HANDS)
-			_unequip_held(I, flags)
+			unequip_hand_impl(I, get_held_index(I), flags)
 		else
 			_unequip_slot(old_slot, flags)
 		I.unequipped(src, old_slot, flags)
