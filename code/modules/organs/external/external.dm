@@ -1498,7 +1498,9 @@ Note that amputating the affected organ does in fact remove the infection from t
 
 //* Hand Integration *//
 
-#warn impl
+// todo: some kind of API for querying what hands this organ provides
+//       this will require organs be composition instead of inheritance,
+//       as defining this on every left / right hand would be satanic.
 
 //* Environmentals *//
 

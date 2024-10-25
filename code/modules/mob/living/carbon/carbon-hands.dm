@@ -17,10 +17,12 @@
 //* Hands - Checks *//
 
 /mob/living/carbon/get_hand_manipulation_level(index)
-	#warn impl
+	// todo: implement after organ refactors
+	return HAND_MANIPULATION_PRECISE
 
 /mob/living/carbon/why_hand_manipulation_insufficient(index, manipulation)
-	#warn impl
+	// todo: implement after organ refactors
+	return list()
 
 //* Hands - Organs *//
 
@@ -63,7 +65,10 @@
  */
 /mob/living/carbon/proc/get_hand_organ(index)
 	RETURN_TYPE(/obj/item/organ/external)
-	#warn impl
+	if(index % 2)
+		return get_organ(BP_L_HAND)
+	else
+		return get_organ(BP_R_HAND)
 
 /**
  * Get the external organ of a held item
