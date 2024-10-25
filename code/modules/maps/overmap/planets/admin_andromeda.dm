@@ -165,3 +165,12 @@
 
 /area/admin_planet/andromeda/rnd_rd_office
 	name = "Research Directors Office"
+
+/area/admin_planet/andromeda/northern_maints
+	name = "Northern Maintenance"
+
+/area/admin_planet/andromeda/eastern_maints
+	name = "Eastern Maintenance"
+
+/area/admin_planet/andromeda/western_maints
+	name = "Western Maintenance"
