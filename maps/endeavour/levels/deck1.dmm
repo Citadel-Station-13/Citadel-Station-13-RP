@@ -2707,6 +2707,9 @@
 /obj/machinery/atmospherics/pipe/simple/visible/red{
 	dir = 6
 	},
+/obj/structure/closet/hydrant{
+	pixel_x = -32
+	},
 /turf/simulated/floor/tiled,
 /area/rnd/test_area)
 "cpb" = (
@@ -3855,6 +3858,12 @@
 "dkX" = (
 /turf/simulated/wall/r_wall/prepainted/exploration,
 /area/space)
+"dlC" = (
+/obj/machinery/light/small{
+	dir = 4
+	},
+/turf/simulated/floor/tiled,
+/area/rnd/misc_lab)
 "dmn" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 4
@@ -4971,9 +4980,8 @@
 /obj/machinery/camera/network/command{
 	dir = 4
 	},
-/obj/machinery/keycard_auth{
-	pixel_x = -28;
-	pixel_y = 6
+/obj/machinery/computer/card{
+	dir = 4
 	},
 /turf/simulated/floor/tiled/dark,
 /area/bridge)
@@ -9444,11 +9452,12 @@
 /turf/simulated/floor/tiled/dark,
 /area/bridge)
 "hFN" = (
-/obj/structure/closet/hydrant{
-	pixel_x = 32
+/obj/structure/railing,
+/obj/machinery/light/small{
+	dir = 8
 	},
 /turf/simulated/floor/tiled,
-/area/rnd/test_area)
+/area/rnd/misc_lab)
 "hGB" = (
 /obj/effect/floor_decal/spline/plain{
 	dir = 1
@@ -9882,6 +9891,10 @@
 "hXy" = (
 /obj/effect/floor_decal/corner/purple{
 	dir = 9
+	},
+/obj/machinery/keycard_auth{
+	pixel_x = -28;
+	pixel_y = 6
 	},
 /turf/simulated/floor/tiled/dark,
 /area/bridge)
@@ -12716,6 +12729,15 @@
 /obj/effect/floor_decal/corner/mauve/border,
 /turf/simulated/floor/tiled,
 /area/exploration/showers)
+"kbK" = (
+/obj/machinery/atmospherics/component/binary/pump/on{
+	dir = 8
+	},
+/obj/structure/closet/hydrant{
+	pixel_x = 32
+	},
+/turf/simulated/floor/tiled,
+/area/rnd/test_area)
 "kcJ" = (
 /obj/machinery/light{
 	pixel_y = -24
@@ -19174,6 +19196,12 @@
 	},
 /turf/simulated/floor/tiled,
 /area/shuttle/excursion/general)
+"pxL" = (
+/obj/machinery/light/small{
+	dir = 8
+	},
+/turf/simulated/floor/tiled,
+/area/rnd/misc_lab)
 "pyh" = (
 /obj/structure/closet/secure_closet/personal,
 /obj/machinery/light,
@@ -49152,9 +49180,9 @@ hfY
 hfY
 hfY
 qTb
+pxL
 aIM
-aIM
-rzM
+hFN
 obT
 hub
 wim
@@ -50123,7 +50151,7 @@ aNV
 mNs
 qTb
 pSA
-aIM
+dlC
 hub
 ejN
 wim
@@ -52061,7 +52089,7 @@ oYa
 tep
 tDK
 fAa
-fAa
+kbK
 tlK
 fAa
 oYa
@@ -52642,7 +52670,7 @@ oYa
 tRa
 icb
 drg
-hFN
+gXr
 jnB
 ugI
 lzA
