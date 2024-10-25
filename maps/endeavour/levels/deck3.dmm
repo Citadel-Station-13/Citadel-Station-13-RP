@@ -2366,8 +2366,19 @@
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d3fwdhall)
 "cce" = (
-/obj/machinery/disposal,
-/turf/simulated/floor/carpet,
+/obj/machinery/door/airlock/glass/security/polarized,
+/obj/machinery/door/blast/regular{
+	density = 0;
+	icon_state = "pdoor0";
+	id = "security_lockdown";
+	name = "Security Blast Doors";
+	opacity = 0
+	},
+/obj/map_helper/access_helper/airlock/station/security/forensics,
+/obj/map_helper/electrochromatic_linker{
+	id = "vicDetOffice"
+	},
+/turf/simulated/floor/plating,
 /area/security/detectives_office)
 "ccA" = (
 /obj/structure/ore_box,
@@ -3089,6 +3100,9 @@
 	dir = 4
 	},
 /obj/machinery/holopad,
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
 /turf/simulated/floor/carpet,
 /area/security/detectives_office)
 "cMX" = (
@@ -9867,9 +9881,6 @@
 /obj/effect/paint/darkred,
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
 /obj/structure/cable/green{
-	icon_state = "4-8"
-	},
-/obj/structure/cable/green{
 	icon_state = "2-8"
 	},
 /obj/structure/cable/green{
@@ -10884,6 +10895,7 @@
 /area/crew_quarters/recreation_area)
 "jvj" = (
 /obj/machinery/fire_alarm/east_mount,
+/obj/structure/filingcabinet/chestdrawer,
 /turf/simulated/floor/lino,
 /area/security/detectives_office)
 "jwQ" = (
@@ -13013,6 +13025,9 @@
 	},
 /obj/structure/cable/green{
 	icon_state = "4-8"
+	},
+/obj/structure/cable/green{
+	icon_state = "2-8"
 	},
 /turf/simulated/floor/tiled/dark,
 /area/security/warden)
@@ -16600,6 +16615,7 @@
 /obj/machinery/camera/network/security{
 	dir = 4
 	},
+/obj/structure/closet/secure_closet/detective,
 /turf/simulated/floor/carpet,
 /area/security/detectives_office)
 "ouS" = (
@@ -17148,7 +17164,7 @@
 /turf/simulated/wall/prepainted/cargo,
 /area/endeavour/surfacebase/mining_main/uxstorage)
 "oOX" = (
-/obj/structure/filingcabinet/chestdrawer,
+/obj/machinery/disposal,
 /turf/simulated/floor/lino,
 /area/security/detectives_office)
 "oPq" = (
@@ -17204,15 +17220,8 @@
 /area/security/hallway)
 "oSF" = (
 /obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/glass/security/polarized,
-/obj/machinery/door/blast/regular{
-	density = 0;
-	icon_state = "pdoor0";
-	id = "security_lockdown";
-	name = "Security Blast Doors";
-	opacity = 0
-	},
-/obj/map_helper/access_helper/airlock/station/security/forensics,
+/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
+/obj/effect/paint/darkred,
 /obj/map_helper/electrochromatic_linker{
 	id = "vicDetOffice"
 	},
@@ -21196,6 +21205,9 @@
 /area/endeavour/surfacebase/mining_main/storage)
 "shG" = (
 /obj/machinery/holopad,
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
 /turf/simulated/floor/tiled/dark,
 /area/security/warden)
 "shI" = (
@@ -24767,6 +24779,12 @@
 /obj/item/reagent_containers/food/drinks/cans/waterbottle,
 /turf/simulated/floor/tiled/monotile,
 /area/security/brig)
+"veK" = (
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/tiled/dark,
+/area/security/warden)
 "veW" = (
 /obj/structure/bed/chair{
 	dir = 4
@@ -35161,7 +35179,7 @@ tLt
 qcr
 lsC
 shG
-xbA
+veK
 rWj
 wvC
 iCL
@@ -40779,7 +40797,7 @@ oux
 pdl
 btN
 uBN
-ajk
+uBN
 tfn
 cLH
 cti
@@ -41549,8 +41567,8 @@ syH
 kIU
 uod
 rsu
-keU
 cce
+uBN
 mEG
 jAj
 fii

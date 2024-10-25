@@ -8950,6 +8950,12 @@
 /obj/effect/floor_decal/corner/mauve/border{
 	dir = 8
 	},
+/obj/machinery/button/remote/blast_door{
+	id = "rndshutters";
+	name = "Research Shutter control";
+	pixel_y = -22;
+	pixel_x = -26
+	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/rnd/research/researchdivision)
 "gqb" = (
@@ -9042,6 +9048,11 @@
 	req_one_access = list(8,44)
 	},
 /obj/item/deskbell,
+/obj/machinery/door/blast/shutters{
+	dir = 8;
+	id = "rndshutters";
+	name = "Research Shutters"
+	},
 /turf/simulated/floor/tiled,
 /area/rnd/research/researchdivision)
 "gtB" = (
@@ -12671,6 +12682,12 @@
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/mauve/border,
 /obj/structure/bed/chair/office/dark,
+/obj/machinery/button/remote/blast_door{
+	id = "rndhallshutters";
+	name = "Research Hall Shutters control";
+	pixel_y = -22;
+	pixel_x = -26
+	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/endeavour/hallway/d2starboardhall)
 "iUD" = (
@@ -16375,13 +16392,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/endeavour/hallway/d2aftmaint)
-"lGI" = (
-/obj/effect/paint/purplegray,
-/obj/structure/window/reinforced/polarized/full{
-	id = "rnd1"
-	},
-/turf/simulated/floor/plating,
-/area/rnd/reception_desk)
 "lHG" = (
 /obj/effect/floor_decal/techfloor,
 /obj/effect/floor_decal/techfloor/hole,
@@ -18863,6 +18873,10 @@
 	name = "Research Desk";
 	req_access = list(29,47);
 	req_one_access = list(47)
+	},
+/obj/machinery/door/blast/shutters{
+	id = "roboticshallshutters";
+	name = "Robotics Hall Shutters"
 	},
 /turf/simulated/floor/tiled/monofloor,
 /area/assembly/robotics)
@@ -22097,6 +22111,12 @@
 /obj/landmark/spawnpoint/job/roboticist,
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/mauve/border,
+/obj/machinery/button/remote/blast_door{
+	id = "roboticshallshutters";
+	name = "Robotics Hall Shutters control";
+	pixel_y = -22;
+	pixel_x = -26
+	},
 /turf/simulated/floor/tiled/techfloor,
 /area/assembly/robotics)
 "pHA" = (
@@ -32718,6 +32738,10 @@
 	name = "Research Desk";
 	req_access = list(29,47);
 	req_one_access = list(47)
+	},
+/obj/machinery/door/blast/shutters{
+	id = "rndhallshutters";
+	name = "Research Hall Shutters"
 	},
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d2starboardhall)
@@ -47825,8 +47849,8 @@ whu
 whu
 iyL
 whu
-lGI
-lGI
+owo
+owo
 whu
 fsC
 ujP
