@@ -6,16 +6,13 @@
 /turf/simulated/floor/tiled/steel,
 /area/admin_planet/andromeda/rnd_lab)
 "ab" = (
-/obj/structure/closet/secure_closet/security{
-	starts_with = null;
-	name = "Checkpoint Locker"
-	},
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
+/obj/structure/closet,
 /turf/simulated/floor/tiled/kafel_full/red,
 /area/admin_planet/andromeda/checkpoint_2)
 "ad" = (
@@ -42,16 +39,7 @@
 	},
 /area/admin_planet/andromeda/lounge)
 "ah" = (
-/obj/machinery/door/airlock/highsecurity{
-	name = "NEXUS Access Airlock";
-	integrity_flags = 1;
-	integrity_enabled = 0;
-	tool_deconstruct = null;
-	tool_panel = null;
-	tool_unanchor = null;
-	locked = 1;
-	desc = "An airlock leading to the central nexus of the Andromeda Haven. No way you're getting through this without proper credentials."
-	},
+/obj/machinery/door/airlock/highsecurity,
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
@@ -700,6 +688,10 @@
 /obj/machinery/botany/editor,
 /turf/simulated/floor/tiled/steel_grid,
 /area/admin_planet/andromeda/rnd_xenobotany)
+"cj" = (
+/obj/machinery/suit_storage_unit/engineering,
+/turf/simulated/floor/tiled/techfloor,
+/area/admin_planet/andromeda/engi_equipment)
 "ck" = (
 /obj/machinery/portable_atmospherics/hydroponics,
 /obj/effect/floor_decal/spline/plain,
@@ -716,6 +708,21 @@
 	},
 /turf/simulated/floor/tiled/yellow,
 /area/admin_planet/andromeda/supply_prep)
+"cn" = (
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 8
+	},
+/obj/structure/cable{
+	icon_state = "2-8"
+	},
+/turf/simulated/floor/tiled/kafel_full/purple,
+/area/admin_planet/andromeda/rnd_nexus)
 "co" = (
 /obj/structure/closet/excavation,
 /obj/machinery/light/spot{
@@ -1412,6 +1419,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 8
 	},
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/reinforced,
 /area/admin_planet/andromeda/checkpoint_1)
 "ev" = (
@@ -1716,7 +1726,6 @@
 /obj/structure/cable/orange{
 	icon_state = "1-8"
 	},
-/obj/machinery/power/sensor,
 /turf/simulated/floor/tiled/techfloor,
 /area/admin_planet/andromeda/engi_workroom)
 "fn" = (
@@ -2249,6 +2258,13 @@
 	},
 /turf/simulated/floor/plating,
 /area/admin_planet/andromeda/northern_maints)
+"hh" = (
+/obj/structure/extinguisher_cabinet{
+	dir = 4;
+	pixel_x = -30
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/admin_planet/andromeda/rnd_xenobotany)
 "hi" = (
 /obj/machinery/door/airlock/multi_tile{
 	color = "#A9A9A9";
@@ -2331,7 +2347,7 @@
 	automatic_launch_time = 40
 	},
 /turf/simulated/floor/tiled/kafel_full/yellow,
-/area/space)
+/area/admin_planet/andromeda/eastern_maints)
 "hz" = (
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -3125,7 +3141,6 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 8
 	},
-/obj/machinery/power/sensor,
 /turf/simulated/floor/carpet/patterened,
 /area/admin_planet/andromeda/sec_office)
 "jl" = (
@@ -3243,15 +3258,6 @@
 	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/admin_planet/andromeda/rnd_lobby)
-"jG" = (
-/obj/structure/table/reinforced,
-/obj/random/tool,
-/obj/random/tool,
-/obj/random/tool,
-/obj/item/clothing/gloves/black,
-/obj/item/tool/crowbar,
-/turf/simulated/floor/tiled/techfloor,
-/area/admin_planet/andromeda/engi_equipment)
 "jH" = (
 /obj/machinery/power/apc/high/east_mount,
 /obj/structure/cable,
@@ -3604,7 +3610,6 @@
 	dir = 5
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/power/sensor,
 /turf/simulated/floor/tiled/yellow,
 /area/admin_planet/andromeda/supply_office)
 "kO" = (
@@ -3882,6 +3887,17 @@
 	color = "#A9A9A9"
 	},
 /area/admin_planet/andromeda/sec_armory)
+"lA" = (
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/light/spot{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/admin_planet/andromeda/rnd_xenobio)
 "lB" = (
 /obj/structure/bed/chair/office/light{
 	dir = 1
@@ -3901,7 +3917,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/admin_planet/andromeda/engi_equipment)
 "lE" = (
-/obj/spawner/window/borosillicate/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
 /obj/map_helper/electrochromatic_linker{
 	id = "rd"
 	},
@@ -4097,7 +4113,7 @@
 	integrity_flags = 1;
 	integrity_enabled = 0
 	},
-/area/space)
+/area/admin_planet/andromeda/eastern_maints)
 "mj" = (
 /obj/machinery/atmospherics/component/unary/outlet_injector{
 	frequency = 1438;
@@ -4652,7 +4668,7 @@
 	integrity_flags = 1;
 	integrity_enabled = 0
 	},
-/area/space)
+/area/admin_planet/andromeda/eastern_maints)
 "og" = (
 /obj/structure/cable{
 	icon_state = "2-4"
@@ -4753,6 +4769,9 @@
 /area/admin_planet/andromeda/engi_equipment)
 "ow" = (
 /obj/machinery/air_alarm/monitor/north_mount,
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+	dir = 1
+	},
 /turf/simulated/floor/tiled/red,
 /area/admin_planet/andromeda/sec_lobby)
 "ox" = (
@@ -4815,6 +4834,11 @@
 	},
 /turf/simulated/floor/tiled/kafel_full/red,
 /area/admin_planet/andromeda/sec_lobby)
+"oK" = (
+/obj/item/multitool/tether_buffered,
+/obj/machinery/ntnet_relay,
+/turf/simulated/floor/tiled/kafel_full/yellow,
+/area/admin_planet/andromeda/eastern_maints)
 "oL" = (
 /obj/machinery/door/airlock/multi_tile{
 	color = "#A9A9A9";
@@ -4872,6 +4896,7 @@
 /obj/structure/filingcabinet/chestdrawer{
 	name = "Medical Forms"
 	},
+/obj/machinery/air_alarm/monitor/east_mount,
 /turf/simulated/floor/tiled/kafel_full/green,
 /area/admin_planet/andromeda/medward_lobby)
 "oT" = (
@@ -6143,6 +6168,9 @@
 	network = list("AndromedaHaven");
 	dir = 4
 	},
+/obj/machinery/light/spot{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/monodark{
 	color = "#A9A9A9"
 	},
@@ -6230,6 +6258,14 @@
 	},
 /turf/simulated/floor/wood,
 /area/admin_planet/andromeda/lounge)
+"tb" = (
+/obj/machinery/camera/network/talon{
+	name = "andromeda";
+	network = list("AndromedaHaven");
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/admin_planet/andromeda/engi_monitoring)
 "tc" = (
 /obj/structure/table/reinforced,
 /obj/item/disk/integrated_circuit/upgrade/advanced,
@@ -6384,7 +6420,6 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 4
 	},
-/obj/machinery/power/sensor,
 /turf/simulated/floor/tiled/techfloor,
 /area/admin_planet/andromeda/rnd_xenobio)
 "tG" = (
@@ -6655,7 +6690,7 @@
 /turf/simulated/floor/tiled/kafel_full/beige,
 /area/admin_planet/andromeda/medward_lobby)
 "uD" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
 /obj/map_helper/electrochromatic_linker{
 	id = "senior_engineer"
 	},
@@ -6852,6 +6887,9 @@
 	network = list("AndromedaHaven")
 	},
 /obj/machinery/recharge_station,
+/obj/structure/extinguisher_cabinet{
+	pixel_y = 30
+	},
 /turf/simulated/floor/tiled/techfloor,
 /area/admin_planet/andromeda/engi_equipment)
 "vn" = (
@@ -6895,6 +6933,21 @@
 	color = "#A9A9A9"
 	},
 /area/admin_planet/andromeda/lobby)
+"vr" = (
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/tiled/kafel_full/purple,
+/area/admin_planet/andromeda/rnd_nexus)
+"vs" = (
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/structure/extinguisher_cabinet{
+	pixel_y = 30
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/admin_planet/andromeda/engi_lobby)
 "vt" = (
 /turf/simulated/floor/tiled/dark{
 	color = "#A9A9A9"
@@ -7021,6 +7074,10 @@
 /area/admin_planet/andromeda/lobby)
 "vU" = (
 /obj/structure/table/steel_reinforced,
+/obj/structure/extinguisher_cabinet{
+	dir = 4;
+	pixel_x = -30
+	},
 /turf/simulated/floor/tiled/dark{
 	color = "#A9A9A9"
 	},
@@ -7047,12 +7104,6 @@
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/admin_planet/andromeda/rnd_nexus)
-"vZ" = (
-/obj/machinery/computer/power_monitor{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/techfloor,
-/area/admin_planet/andromeda/engi_monitoring)
 "wb" = (
 /obj/machinery/door/airlock/security{
 	name = "Security North Hallway"
@@ -7266,15 +7317,6 @@
 	},
 /turf/simulated/floor/tiled/yellow,
 /area/admin_planet/andromeda/supply_office)
-"wL" = (
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/power/sensor,
-/turf/simulated/floor/tiled/kafel_full/purple,
-/area/admin_planet/andromeda/rnd_nexus)
 "wN" = (
 /obj/machinery/light/small/emergency{
 	dir = 1
@@ -7645,6 +7687,21 @@
 /obj/machinery/chem_master,
 /turf/simulated/floor/tiled/kafel_full/yellow,
 /area/admin_planet/andromeda/medward_chemistry)
+"xF" = (
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 8
+	},
+/obj/structure/extinguisher_cabinet{
+	pixel_y = 30
+	},
+/turf/simulated/floor/tiled/old_tile/purple,
+/area/admin_planet/andromeda/rnd_lobby)
 "xG" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -7664,6 +7721,9 @@
 /obj/machinery/camera/network/talon{
 	name = "andromeda";
 	network = list("AndromedaHaven")
+	},
+/obj/structure/extinguisher_cabinet{
+	pixel_y = 30
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/admin_planet/andromeda/engi_workroom)
@@ -8058,6 +8118,7 @@
 "yW" = (
 /obj/machinery/air_alarm/monitor/south_mount,
 /obj/machinery/air_alarm/monitor/south_mount,
+/obj/structure/closet/secure_closet/robotics,
 /turf/simulated/floor/tiled/dark{
 	color = "#A9A9A9"
 	},
@@ -8203,6 +8264,9 @@
 	},
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
+	},
+/obj/machinery/light/spot{
+	dir = 1
 	},
 /turf/simulated/floor/reinforced,
 /area/admin_planet/andromeda/lobby)
@@ -8531,6 +8595,9 @@
 	pixel_y = 21;
 	pixel_x = 14
 	},
+/obj/structure/extinguisher_cabinet{
+	pixel_y = 30
+	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/admin_planet/andromeda/rnd_lobby)
 "AI" = (
@@ -8575,10 +8642,23 @@
 	},
 /turf/simulated/floor/tiled/kafel_full/green,
 /area/admin_planet/andromeda/medward_treatment)
+"AO" = (
+/obj/machinery/door/firedoor/glass,
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled/kafel_full/purple,
+/area/admin_planet/andromeda/rnd_nexus)
 "AP" = (
 /obj/structure/closet/secure_closet/scientist,
 /turf/simulated/floor/tiled/steel,
 /area/admin_planet/andromeda/rnd_lockers)
+"AR" = (
+/obj/structure/extinguisher_cabinet{
+	pixel_y = 30
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/admin_planet/andromeda/engi_lobby)
 "AS" = (
 /obj/machinery/atmospherics/pipe/simple/visible/cyan{
 	dir = 10
@@ -8839,6 +8919,12 @@
 	},
 /turf/simulated/floor/tiled/steel_dirty/dark,
 /area/admin_planet/andromeda/sec_warden_office)
+"BE" = (
+/obj/structure/extinguisher_cabinet{
+	pixel_y = 30
+	},
+/turf/simulated/floor/tiled/steel,
+/area/admin_planet/andromeda/rnd_nexus)
 "BF" = (
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
@@ -9004,7 +9090,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/admin_planet/andromeda/rnd_lockers)
 "Ca" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
 /turf/simulated/floor/tiled/steel_dirty/dark,
 /area/admin_planet/andromeda/sec_warden_office)
 "Cb" = (
@@ -9157,6 +9243,16 @@
 	},
 /turf/simulated/floor/tiled/steel_dirty/dark,
 /area/admin_planet/andromeda/sec_warden_office)
+"CH" = (
+/obj/machinery/suspension_gen{
+	dir = 8
+	},
+/obj/structure/extinguisher_cabinet{
+	dir = 8;
+	pixel_x = 30
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/admin_planet/andromeda/rnd_anomaly_lab)
 "CL" = (
 /obj/structure/table/standard,
 /obj/item/storage/box/bodybags{
@@ -9631,6 +9727,10 @@
 	},
 /turf/simulated/floor/tiled/kafel_full/red,
 /area/admin_planet/andromeda/sec_briefing)
+"El" = (
+/obj/machinery/telecomms/relay/preset/centcom/rift,
+/turf/simulated/floor/tiled/kafel_full/yellow,
+/area/admin_planet/andromeda/eastern_maints)
 "Em" = (
 /obj/structure/cable{
 	icon_state = "1-8"
@@ -10391,7 +10491,6 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/admin_planet/andromeda/medward_cryo_morgue)
 "GG" = (
-/obj/structure/bed/chair/office/dark,
 /obj/structure/cable/orange{
 	icon_state = "1-8"
 	},
@@ -10432,7 +10531,7 @@
 /area/admin_planet/andromeda/medward_chemistry)
 "GM" = (
 /turf/simulated/floor/tiled/kafel_full/yellow,
-/area/space)
+/area/admin_planet/andromeda/eastern_maints)
 "GN" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -10447,6 +10546,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 1
 	},
+/obj/machinery/air_alarm/monitor/north_mount,
 /turf/simulated/floor/tiled/kafel_full/beige,
 /area/admin_planet/andromeda/medward_storage)
 "GO" = (
@@ -10704,6 +10804,9 @@
 /obj/machinery/light/spot{
 	dir = 1
 	},
+/obj/structure/extinguisher_cabinet{
+	pixel_y = 30
+	},
 /turf/simulated/floor/tiled/techfloor,
 /area/admin_planet/andromeda/rnd_xenobio)
 "HG" = (
@@ -10722,7 +10825,6 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
-/obj/machinery/power/sensor,
 /turf/simulated/floor/tiled/old_tile/purple,
 /area/admin_planet/andromeda/NEXUS_Hallway)
 "HI" = (
@@ -11460,6 +11562,10 @@
 /obj/effect/floor_decal/corner/paleblue{
 	dir = 5
 	},
+/obj/machinery/suit_cycler/medical{
+	density = 0;
+	pixel_x = -26
+	},
 /turf/simulated/floor/tiled/kafel_full/green,
 /area/admin_planet/andromeda/medward_storage)
 "JE" = (
@@ -11874,13 +11980,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled/steel,
 /area/admin_planet/andromeda/rnd_lockers)
-"KX" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/obj/machinery/power/sensor,
-/turf/simulated/floor/tiled/old_tile/purple,
-/area/admin_planet/andromeda/lobby)
 "KY" = (
 /obj/structure/cable{
 	icon_state = "1-8"
@@ -12059,6 +12158,9 @@
 "LA" = (
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/power/apc/high/north_mount,
+/obj/structure/cable{
+	icon_state = "0-4"
+	},
 /turf/simulated/floor/tiled/kafel_full/purple,
 /area/admin_planet/andromeda/rnd_nexus)
 "LB" = (
@@ -12196,6 +12298,10 @@
 	},
 /turf/simulated/floor/reinforced,
 /area/admin_planet/andromeda/rnd_xenobio)
+"Mb" = (
+/obj/machinery/light/spot,
+/turf/simulated/floor/tiled/kafel_full/beige,
+/area/admin_planet/andromeda/medward_lobby)
 "Mc" = (
 /turf/simulated/floor/wmarble,
 /area/admin_planet/andromeda/rnd_rd_office)
@@ -13174,7 +13280,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 9
 	},
-/obj/machinery/power/sensor,
 /turf/simulated/floor/tiled/kafel_full/beige,
 /area/admin_planet/andromeda/medward_storage)
 "Pl" = (
@@ -13246,6 +13351,13 @@
 	},
 /turf/simulated/floor/plating,
 /area/admin_planet/andromeda/western_maints)
+"Px" = (
+/obj/machinery/door/firedoor/glass,
+/obj/structure/cable{
+	icon_state = "1-8"
+	},
+/turf/simulated/floor/tiled/kafel_full/purple,
+/area/admin_planet/andromeda/rnd_nexus)
 "Py" = (
 /obj/spawner/window/borosillicate/reinforced/full/firelocks,
 /obj/machinery/atmospherics/pipe/simple/visible/yellow{
@@ -13304,6 +13416,12 @@
 	color = "#A9A9A9"
 	},
 /area/admin_planet/andromeda/rnd_robotics_lab)
+"PI" = (
+/obj/machinery/exonet_node{
+	anchored = 1
+	},
+/turf/simulated/floor/tiled/kafel_full/yellow,
+/area/admin_planet/andromeda/eastern_maints)
 "PJ" = (
 /obj/machinery/atmospherics/pipe/manifold/visible/red,
 /obj/machinery/meter,
@@ -13543,6 +13661,12 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 6
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+	dir = 1
+	},
 /turf/simulated/floor/tiled/red,
 /area/admin_planet/andromeda/sec_lobby)
 "QD" = (
@@ -13780,6 +13904,11 @@
 	},
 /turf/simulated/floor/tiled/kafel_full/red,
 /area/admin_planet/andromeda/checkpoint_2)
+"Rp" = (
+/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/machinery/air_alarm/monitor/north_mount,
+/turf/simulated/floor/tiled/yellow,
+/area/admin_planet/andromeda/supply_lobby)
 "Rr" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -13881,6 +14010,9 @@
 	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 1
+	},
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/red,
@@ -14067,16 +14199,13 @@
 /turf/simulated/floor/tiled/kafel_full/purple,
 /area/admin_planet/andromeda/rnd_nexus)
 "Sv" = (
-/obj/structure/closet/secure_closet/security{
-	starts_with = null;
-	name = "Checkpoint Locker"
-	},
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
 	},
+/obj/structure/closet,
 /turf/simulated/floor/tiled/kafel_full/red,
 /area/admin_planet/andromeda/checkpoint_1)
 "Sw" = (
@@ -14514,7 +14643,6 @@
 	icon_state = "4-8"
 	},
 /obj/structure/window/reinforced/survival_pod,
-/obj/machinery/power/sensor,
 /turf/simulated/floor/bmarble,
 /area/admin_planet/andromeda/northern_lobby)
 "TK" = (
@@ -14806,12 +14934,6 @@
 	},
 /turf/simulated/floor/tiled/kafel_full/yellow,
 /area/admin_planet/andromeda/supply_transit)
-"UK" = (
-/obj/structure/closet/secure_closet/robotics,
-/turf/simulated/floor/tiled/dark{
-	color = "#A9A9A9"
-	},
-/area/admin_planet/andromeda/rnd_robotics_lab)
 "UM" = (
 /obj/machinery/atmospherics/pipe/simple/visible/red,
 /obj/effect/floor_decal/industrial/danger{
@@ -15906,12 +16028,6 @@
 	},
 /turf/simulated/floor/tiled/kafel_full/red,
 /area/admin_planet/andromeda/sec_briefing)
-"XS" = (
-/obj/machinery/computer/power_monitor{
-	dir = 1
-	},
-/turf/simulated/floor/tiled/techfloor,
-/area/admin_planet/andromeda/engi_monitoring)
 "XT" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/universal,
 /turf/simulated/floor/tiled/steel,
@@ -16002,10 +16118,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/admin_planet/andromeda/engi_workroom)
-"Yj" = (
-/obj/structure/catwalk,
-/turf/simulated/floor/plating,
-/area/admin_planet/andromeda/medward_lobby)
 "Yk" = (
 /obj/machinery/light/flamp{
 	layer = 4
@@ -16449,14 +16561,6 @@
 	},
 /turf/simulated/floor/tiled/kafel_full/red,
 /area/admin_planet/andromeda/checkpoint_2)
-"ZA" = (
-/obj/machinery/camera/network/talon{
-	name = "andromeda";
-	network = list("AndromedaHaven");
-	dir = 1
-	},
-/turf/simulated/floor/tiled/techfloor,
-/area/admin_planet/andromeda/engi_monitoring)
 "ZC" = (
 /obj/machinery/atmospherics/pipe/tank/air,
 /obj/machinery/air_alarm/north_mount,
@@ -16594,11 +16698,6 @@
 	},
 /turf/simulated/floor/tiled/kafel_full/red,
 /area/admin_planet/andromeda/sec_lockers)
-"ZU" = (
-/obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/maintenance/medical,
-/turf/simulated/floor/plating,
-/area/admin_planet/andromeda/medward_lobby)
 "ZV" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/item/gun/energy/taser,
@@ -30112,7 +30211,7 @@ BF
 XF
 XF
 VL
-Dk
+hh
 jX
 ci
 yT
@@ -30713,7 +30812,7 @@ xn
 tD
 mU
 fQ
-UK
+fi
 lo
 lo
 Nx
@@ -31924,7 +32023,7 @@ Yw
 Yw
 Yw
 ow
-si
+Ak
 Hb
 rn
 hq
@@ -32841,7 +32940,7 @@ uJ
 Uo
 oY
 ST
-Ur
+AO
 Rh
 Rh
 Rh
@@ -32992,7 +33091,7 @@ Nx
 hg
 kv
 kv
-kv
+BF
 Nx
 kv
 kv
@@ -33033,9 +33132,9 @@ DT
 TD
 lE
 lE
-xu
-Rh
-Ur
+cn
+vr
+Px
 Rh
 Rh
 Rh
@@ -33485,8 +33584,8 @@ jy
 jy
 dm
 dm
-Pd
-yl
+Ut
+Ut
 Ut
 Pd
 Ut
@@ -33602,7 +33701,7 @@ cO
 cO
 cO
 jK
-cO
+lA
 WT
 cO
 au
@@ -33619,7 +33718,7 @@ UV
 CC
 Fh
 CC
-wL
+CC
 hz
 CC
 eF
@@ -34425,7 +34524,7 @@ en
 kv
 en
 en
-Ys
+xF
 pH
 pH
 pH
@@ -34588,7 +34687,7 @@ ox
 BI
 mp
 mp
-GO
+BE
 GO
 GO
 GO
@@ -35249,7 +35348,7 @@ HO
 HO
 zr
 MQ
-KX
+eO
 HO
 FA
 HO
@@ -35977,7 +36076,7 @@ ZS
 ZS
 ZS
 ZS
-IM
+vs
 eS
 Ji
 OS
@@ -36161,7 +36260,7 @@ uo
 uo
 uo
 ZS
-oZ
+AR
 td
 zE
 Ap
@@ -36321,7 +36420,7 @@ kv
 Mx
 Mx
 jd
-lL
+CH
 JU
 co
 lL
@@ -36498,7 +36597,7 @@ kv
 kv
 kv
 kv
-kv
+Nx
 kv
 kv
 kv
@@ -36692,7 +36791,7 @@ kv
 kv
 kv
 kv
-kv
+Nx
 kv
 kv
 kv
@@ -36773,7 +36872,7 @@ av
 Gx
 ko
 bG
-Jy
+Mb
 dk
 dk
 gi
@@ -36782,7 +36881,7 @@ gi
 gi
 gi
 gi
-TV
+gi
 gi
 Lp
 gi
@@ -36886,7 +36985,7 @@ BF
 BF
 kv
 kv
-kv
+Nx
 kv
 kv
 kv
@@ -36968,8 +37067,8 @@ uC
 gJ
 Jy
 Jy
-ZU
-Yj
+dk
+dk
 gi
 gi
 gi
@@ -37080,7 +37179,7 @@ kv
 BF
 BF
 BF
-kv
+Nx
 kv
 kv
 kv
@@ -37274,7 +37373,7 @@ hg
 kv
 kv
 kv
-BF
+Nx
 kv
 kv
 kv
@@ -37468,7 +37567,7 @@ kv
 kv
 kv
 kv
-kv
+GZ
 BF
 BF
 BF
@@ -37662,7 +37761,7 @@ Nx
 kv
 kv
 kv
-kv
+Nx
 kv
 kv
 kv
@@ -37756,7 +37855,7 @@ gi
 gi
 Lp
 TV
-gi
+TV
 gi
 gi
 Lp
@@ -37856,7 +37955,7 @@ Nx
 kv
 kv
 kv
-kv
+Nx
 kv
 kv
 kv
@@ -38050,7 +38149,7 @@ Nx
 hg
 kv
 kv
-kv
+Nx
 kv
 kv
 kv
@@ -38106,7 +38205,7 @@ ik
 XN
 oo
 Nm
-vZ
+ik
 ik
 ik
 gi
@@ -38136,12 +38235,12 @@ yH
 OC
 OC
 OC
-gi
-gi
-gi
-gi
-gi
-Lp
+TV
+TV
+TV
+TV
+TV
+TV
 TV
 TV
 gi
@@ -38158,7 +38257,7 @@ GT
 GT
 GT
 Hs
-re
+Rp
 mh
 eH
 rd
@@ -38244,7 +38343,7 @@ Nx
 kv
 kv
 kv
-kv
+Nx
 kv
 kv
 kv
@@ -38291,7 +38390,7 @@ EY
 yq
 em
 em
-jG
+nA
 gC
 em
 rP
@@ -38299,8 +38398,8 @@ ik
 ik
 Zo
 AW
-AW
-ZA
+Zo
+ik
 ik
 ik
 gi
@@ -38438,7 +38537,7 @@ Nx
 kv
 kv
 kv
-kv
+Nx
 IE
 kv
 kv
@@ -38679,7 +38778,7 @@ EY
 QB
 em
 em
-nA
+cj
 ou
 fZ
 bl
@@ -38688,7 +38787,7 @@ Zo
 Zo
 cp
 ve
-XS
+ik
 ik
 ik
 gi
@@ -38873,7 +38972,7 @@ EY
 vz
 em
 em
-nA
+cj
 Zt
 YR
 YR
@@ -39069,7 +39168,7 @@ vm
 em
 tj
 ZH
-em
+cj
 SN
 ik
 Zo
@@ -39267,7 +39366,7 @@ EY
 EY
 ik
 ik
-Zo
+tb
 PX
 Zo
 Ie
@@ -43128,8 +43227,8 @@ Cr
 Cr
 Cr
 Nx
-kv
-kv
+Nx
+Nx
 kv
 kv
 kv
@@ -43323,8 +43422,8 @@ Cr
 Cr
 Nx
 kv
-kv
-kv
+Nx
+Nx
 kv
 kv
 kv
@@ -43518,10 +43617,10 @@ Cr
 Nx
 kv
 kv
-kv
-kv
-kv
-kv
+Nx
+Nx
+GZ
+Nx
 kv
 kv
 BF
@@ -43715,8 +43814,8 @@ kv
 kv
 kv
 kv
-kv
-kv
+Nx
+Nx
 kv
 kv
 BF
@@ -43910,7 +44009,7 @@ kv
 VD
 kv
 kv
-kv
+Nx
 kv
 kv
 kv
@@ -44104,8 +44203,8 @@ kv
 kv
 kv
 kv
-kv
-kv
+Nx
+Nx
 Nx
 GZ
 GZ
@@ -50963,7 +51062,7 @@ Cr
 Cr
 Cr
 mi
-GM
+oK
 GM
 GM
 GM
@@ -51157,7 +51256,7 @@ Cr
 Cr
 Cr
 mi
-GM
+PI
 GM
 GM
 GM
@@ -51351,7 +51450,7 @@ Cr
 Cr
 Cr
 mi
-GM
+El
 GM
 GM
 GM
