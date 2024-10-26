@@ -1590,6 +1590,6 @@
 	required_reagents = list("slimejelly" = 5)
 	required_container_path = /obj/item/slime_extract/rainbow
 
-/datum/chemical_reaction/slime/rainbow_unity/on_extract_reaction(dat	um/reagent_holder/holder, multiplier, obj/item/slime_extract/extract)
+/datum/chemical_reaction/slime/rainbow_unity/on_extract_reaction(datum/reagent_holder/holder, multiplier, obj/item/slime_extract/extract)
 	new /obj/item/slimepotion/unity(get_turf(holder.my_atom))
 	..()
