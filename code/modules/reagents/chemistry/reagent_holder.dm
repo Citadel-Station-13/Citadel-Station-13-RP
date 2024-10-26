@@ -154,6 +154,7 @@
 		R.initialize_data(data_initializer)
 		update_total()
 		if(!skip_reactions)
+			// todo: use the relevant reactions on add, instead of all relevant reactions, for speed
 			try_reactions_for_reagent_change(id)
 		if(my_atom)
 			my_atom.on_reagent_change()
@@ -194,6 +195,7 @@
 			current.volume -= amount
 			update_total()
 			if(!skip_reactions)
+				// todo: use the relevant reactions on remove, instead of all relevant reactions, for speed
 				try_reactions_for_reagent_change(id)
 			if(my_atom)
 				my_atom.on_reagent_change()
@@ -206,7 +208,8 @@
 			reagent_list -= current
 			qdel(current)
 			update_total()
-			if(!skip_Reactions)
+			if(!skip_reactions)
+				// todo: use the relevant reactions on remove, instead of all relevant reactions, for speed
 				try_reactions_for_reagent_change(current.id)
 			if(my_atom)
 				my_atom.on_reagent_change()
@@ -214,7 +217,13 @@
 
 /datum/reagent_holder/proc/clear_reagents(skip_reactions)
 	for(var/datum/reagent/current in reagent_list)
-		del_reagent(current.id, skip_reactions)
+		//*         telling del_reagent skip reactions is very very important                *//
+		//  without it, if you have potassium, water, and something halting the explosion,    //
+		//  you can have an explosion by clearing the beaker if it goes in the wrong order    //
+		//  that and it's faster this way. do not touch this call!                            //
+		del_reagent(current.id, TRUE)
+	if(!skip_reactions)
+		reconsider_reactions()
 
 /datum/reagent_holder/proc/has_reagent(id, amount = 0)
 	if(ispath(id))
