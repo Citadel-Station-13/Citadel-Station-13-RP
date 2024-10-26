@@ -147,17 +147,19 @@
 
 /obj/item/ammo_magazine/get_containing_worth(flags)
 	. = ..()
-	var/obj/item/ammo_casing/ammo_casted = ammo_restrict
+	var/obj/item/ammo_casing/ammo_casted = ammo_preload
 	. += (isnull(ammo_current)? ammo_max : ammo_current) * initial(ammo_casted.worth_intrinsic)
+	for(var/obj/item/ammo_casing/casing in ammo_internal)
+		. += casing.get_worth(flags)
 
 /obj/item/ammo_magazine/detect_material_base_costs()
 	. = ..()
-	if(isnull(ammo_restrict))
+	if(isnull(ammo_preload))
 		return
 	var/shell_amount = isnull(ammo_current)? ammo_max : ammo_current
 	if(!shell_amount)
 		return
-	var/obj/item/ammo_casing/casing = new ammo_restrict
+	var/obj/item/ammo_casing/casing = new ammo_preload
 	if(!istype(casing))
 		qdel(casing)
 		return
