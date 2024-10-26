@@ -47,6 +47,9 @@
 	required_reagents = list("capsaicin" = 1, "hot_ramen" = 6)
 	result_amount = 6
 
+/datum/chemical_reaction/coating
+	abstract_type = /datum/chemical_reaction/coating
+
 /datum/chemical_reaction/coating/batter
 	name = "Batter"
 	id = "batter"
