@@ -173,7 +173,7 @@
 
 		// results; take into account ingredients consumed if we were to run to completion
 		if(reaction.result_amount > 0)
-			maximum_multiplier = min(maximum_multiplier, ((maximum_volume - total_volume) + maximum_multiplier * required_reagents_unit_volume) / reaction.result_amount)
+			maximum_multiplier = min(maximum_multiplier, ((maximum_volume - total_volume) + maximum_multiplier * reaction.required_reagents_unit_volume) / reaction.result_amount)
 
 		// equilibrium (this relies on ingredients and must be #2 after ingredients which is #1)
 		if(reaction.equilibrium != INFINITY)
@@ -280,14 +280,14 @@
 				maximum_multiplier = min(maximum_multiplier, floor(legacy_direct_access_reagent_amount(id) / reaction.required_reagents[id]))
 			// tally up remaining space, taking into account the reagents we would consume if we reacted to completion
 			if(reaction.result && reaction.result_amount > 0)
-				maximum_multiplier = min(maximum_multiplier, floor(((maximum_volume - total_volume) + (maximum_multiplier * required_reagents_unit_volume)) / reaction.result_amount))
+				maximum_multiplier = min(maximum_multiplier, floor(((maximum_volume - total_volume) + (maximum_multiplier * reaction.required_reagents_unit_volume)) / reaction.result_amount))
 		else
 			// tally up required reagents
 			for(var/id in reaction.required_reagents)
 				maximum_multiplier = min(maximum_multiplier, legacy_direct_access_reagent_amount(id) / reaction.required_reagents[id])
 			// tally up remaining space, taking into account the reagents we would consume if we reacted to completion
 			if(reaction.result && reaction.result_amount > 0)
-				maximum_multiplier = min(maximum_multiplier, ((maximum_volume - total_volume) + (maximum_multiplier * required_reagents_unit_volume)) / reaction.result_amount)
+				maximum_multiplier = min(maximum_multiplier, ((maximum_volume - total_volume) + (maximum_multiplier * reaction.required_reagents_unit_volume)) / reaction.result_amount)
 
 		if(maximum_multiplier <= 0)
 			continue
