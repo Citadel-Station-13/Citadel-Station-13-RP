@@ -18,6 +18,10 @@
 		// sane temperatures
 		if(reaction.temperature_high <= reaction.temperature_low)
 			TEST_FAIL("[reaction] ([reaction.type])'s maximum temperature is lower than its minimum. What?")
+		// overlap
+		var/list/self_overlap_check = ((reaction.required_reagents || list()) & (reaction.catalysts || list())) & (reaction.moderators || list())
+		if(length(self_overlap_check))
+			TEST_FAIL("[reaction] ([reaction.type]) overlaps with itself (relevant reagents for reaction) on ids [json_encode(self_overlap_check)]")
 
 // todo: make this actually work
 /datum/unit_test/reagent_recipe_collisions/Run()
