@@ -42,7 +42,7 @@
 	///
 	/// * has no effect on ticked (non-instant) reactions
 	/// * this actually just ensures reaction multiplier is a whole number.
-	var/require_whole_numbers = TRUE
+	var/require_whole_numbers = FALSE
 
 	/// result reagent path or id. prefer path for compile time checking.
 	///
@@ -76,6 +76,8 @@
 
 	/// moderators: reagent ids or paths to number to determine how much it speeds reaction
 	///
+	/// todo: rework this
+	///
 	/// * has no effect on instant reactions, other than being able to inhibit them if the moderation rate is too high.
 	///
 	/// number is multiplied to half life to get actual speed.
@@ -87,10 +89,14 @@
 	var/list/moderators
 	/// inhibitors: basically, INFINITY multiplier moderators. this is here to make the code cleaner.
 	///
+	/// todo: rework this
+	///
 	/// * id or path allowed; prefer path for compile-time checking.
 	/// * this is null'd after New(); it's automatically merged into moderators.
 	var/list/inhibitors
 	/// catalysts: reagent ids or paths
+	///
+	/// todo: rework this
 	///
 	/// * these are required reagents to perform the reaction
 	/// * associate to amounts; default 0
@@ -243,12 +249,17 @@
 
 	// ensure catalysts are there
 	for(var/reagent in catalysts)
-		if(!holder.legacy_direct_access_reagent_amount(reagent) < catalysts[reagent])
+		var/catalyst_amount = holder.legacy_direct_access_reagent_amount(reagent)
+		if(isnull(catalyst_amount) || (catalyst_amount < catalysts[reagent]))
 			return FALSE
 	// check for stuff that will halt it
 	for(var/reagent in moderators)
 		var/power = moderators[reagent]
-		if(power >= SHORT_REAL_LIMIT && holder.legacy_direct_access_reagent_amount(reagent) >= 0)
+		// not a halting moderator
+		if(power < SHORT_REAL_LIMIT)
+			continue
+		var/moderator_amount = holder.legacy_direct_access_reagent_amount(reagent)
+		if(!isnull(moderator_amount))
 			return FALSE
 
 	return can_start_reaction(holder)

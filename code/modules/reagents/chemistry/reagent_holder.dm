@@ -94,10 +94,9 @@
 	total_volume = 0
 	for(var/datum/reagent/R in reagent_list)
 		if(R.volume < MINIMUM_CHEMICAL_VOLUME)
-			del_reagent(R.id)
+			del_reagent_impl(R)
 		else
 			total_volume += R.volume
-	return
 
 /datum/reagent_holder/proc/holder_full()
 	if(total_volume >= maximum_volume)
@@ -205,8 +204,7 @@
 /datum/reagent_holder/proc/del_reagent(id, skip_reactions)
 	for(var/datum/reagent/current in reagent_list)
 		if (current.id == id)
-			reagent_list -= current
-			qdel(current)
+			del_reagent_impl(current)
 			update_total()
 			if(!skip_reactions)
 				// todo: use the relevant reactions on remove, instead of all relevant reactions, for speed
@@ -214,6 +212,13 @@
 			if(my_atom)
 				my_atom.on_reagent_change()
 			return 0
+
+// todo: burn this shit with fire
+/datum/reagent_holder/proc/del_reagent_impl(datum/reagent/reagent)
+	if(!(reagent in reagent_list))
+		return
+	reagent_list -= reagent
+	qdel(reagent)
 
 /datum/reagent_holder/proc/clear_reagents(skip_reactions)
 	for(var/datum/reagent/current in reagent_list)
