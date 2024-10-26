@@ -141,7 +141,7 @@ SUBSYSTEM_DEF(chemistry)
  * todo: this is somewhat slow; maybe start inlining it?
  */
 /datum/controller/subsystem/chemistry/proc/immutable_relevant_reactions_on_add_reagent_ids(list/ids) as /list
-	return immutable_relevant_reactions_for_reagent_ids(id)
+	return immutable_relevant_reactions_for_reagent_ids(ids)
 
 /**
  * Returned list is immutable. You must never edit it.
@@ -167,7 +167,7 @@ SUBSYSTEM_DEF(chemistry)
  * todo: this is somewhat slow; maybe start inlining it?
  */
 /datum/controller/subsystem/chemistry/proc/immutable_relevant_reactions_on_remove_reagent_ids(list/ids) as /list
-	return immutable_relevant_reactions_for_reagent_ids(id)
+	return immutable_relevant_reactions_for_reagent_ids(ids)
 
 /**
  * Returned list is immutable. You must never edit it.
