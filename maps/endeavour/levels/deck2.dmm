@@ -11683,11 +11683,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/door/firedoor/glass,
-/obj/machinery/door/airlock/medical{
-	name = "Mental Health 1";
-	req_one_access = null;
-	id = "mentaldoor1"
-	},
+/obj/item/barrier_tape_segment/engineering,
 /turf/simulated/floor/wood,
 /area/medical/psych/psych_1)
 "ilh" = (
@@ -31161,11 +31157,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/door/firedoor/glass,
-/obj/machinery/door/airlock/medical{
-	name = "Mental Health 2";
-	req_one_access = null;
-	id = "mentaldoor2"
-	},
+/obj/item/barrier_tape_segment/engineering,
 /turf/simulated/floor/wood,
 /area/medical/psych/psych_2)
 "wfP" = (
