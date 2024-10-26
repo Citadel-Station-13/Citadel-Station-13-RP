@@ -235,7 +235,7 @@
 	id = "alchemybase"
 	result = "alchemybase"
 	required_reagents = list("ash" = 1, "sacid" = 1)
-	result_amount = 1
+	result_amount = 2
 
 //This reaction creates tallow, just like /datum/chemical_reaction/food/tallow, but by a different vector.
 /datum/chemical_reaction/tallow
@@ -258,7 +258,7 @@
 /datum/chemical_reaction/charcoal_stick
 	name = "Charcoal Stick"
 	id = "charcoal-stick"
-	required_reagents = list("tallow" = 1, "ash" = 1, "sacid" = 1)
+	required_reagents = list("tallow" = 1, "alchemybase" = 1)
 
 /datum/chemical_reaction/charcoal_stick/on_reaction_instant(datum/reagent_holder/holder, multiplier)
 	. = ..()

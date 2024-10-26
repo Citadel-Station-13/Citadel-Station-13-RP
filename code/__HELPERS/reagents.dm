@@ -7,6 +7,8 @@
 	if(r1.temperature_low >= r2.temperature_high || r1.temperature_high <= r2.temperature_low)
 		return FALSE
 
+	// todo: legacy below
+
 	//find the reactions with the shorter and longer required_reagents list
 	var/datum/chemical_reaction/long_req
 	var/datum/chemical_reaction/short_req
@@ -39,6 +41,11 @@
 	var/list/short_minus_long_catalysts = (short_req.catalysts || list()) - (long_req.catalysts || list())
 	if(short_minus_long_catalysts.len)
 		//there is at least one unique catalyst for the short reaction, so there is no conflict
+		return FALSE
+
+	// if either of them have an inhibitor in overlap,
+	// it probably works
+	if(length(r1.get_inhibitors() & overlap) || length(r2.get_inhibitors() & overlap))
 		return FALSE
 
 	//if we got this far, the longer reaction will be impossible to create if the shorter one is earlier in GLOB.chemical_reactions_list, and will require the reagents to be added in a particular order otherwise

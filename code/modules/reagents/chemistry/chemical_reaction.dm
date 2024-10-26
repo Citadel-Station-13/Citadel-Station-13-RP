@@ -277,6 +277,17 @@
 		return FALSE
 	return TRUE
 
+//* Queries *//
+
+/**
+ * Get inhibitors
+ */
+/datum/chemical_reaction/proc/get_inhibitors() as /list
+	. = list()
+	for(var/id in moderators)
+		if(moderators[id] >= SHORT_REAL_LIMIT)
+			. += id
+
 //* Reaction Hooks *//
 
 /**
