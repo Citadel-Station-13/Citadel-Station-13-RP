@@ -31,17 +31,18 @@
  * * safety - safety parameter to prevent instant reactions from infinite looping
  * * instant_only - skip ticked reactions
  */
-/datum/reagent_holder/proc/check_reactions(list/datum/chemical_reaction/reactions, safety, instant_only)
+/datum/reagent_holder/proc/check_reactions(list/datum/chemical_reaction/reactions, safety)
 	var/list/datum/chemical_reaction/potentially_ticked = list()
 	var/list/datum/chemical_reaction/instant_reacting = list()
 	for(var/datum/chemical_reaction/reaction as anything in reactions)
+		// ticked?
 		if(reaction.reaction_half_life != 0)
-			// ticked
-			if(!instant_only)
-				potentially_ticked += reaction
+			potentially_ticked += reaction
 			continue
+		// can happen?
 		if(!reaction.can_happen(src))
 			continue
+		// stage for react
 		instant_reacting += reaction
 
 	run_instant_reactions(instant_reacting, safety)
@@ -93,13 +94,12 @@
 	SHOULD_NOT_OVERRIDE(TRUE)
 	if(active_reactions[reaction])
 		return
+	log_chemical_reaction_ticked_start(src, reaction)
 	LAZYSET(active_reactions, reaction, list())
 	reaction.on_reaction_start(src)
 	if(QDELETED(src))
 		return
 	start_reacting()
-
-	#warn log?
 
 /**
  * Stops a ticked reaction
@@ -109,11 +109,10 @@
 	if(!active_reactions[reaction])
 		return
 	reaction.on_reaction_finish(src)
+	log_chemical_reaction_ticked_start(src, reaction, active_reactions[reaction])
 	LAZYREMOVE(active_reactions, reaction)
 	if(!length(active_reactions))
 		stop_reacting()
-
-	#warn log?
 
 /**
  * Starts up reaction loop
@@ -167,18 +166,23 @@
 		var/total_reactant_volume = 0
 
 		// ingredients
-		if(reaction.result_amount > 0)
-			maximum_multiplier = min(maximum_multiplier, (maximum_volume - total_volume) / reaction.result_amount)
 		for(var/id in reaction.required_reagents)
 			var/amount = legacy_direct_access_reagent_amount(id)
 			maximum_multiplier = min(maximum_multiplier, amount / reaction.required_reagents[id])
 			total_reactant_volume += amount
 
+		// results
+		if(reaction.result_amount > 0)
+			maximum_multiplier = min(maximum_multiplier, (maximum_volume - total_volume) / reaction.result_amount)
+
 		// equilibrium (this relies on ingredients and must be #2 after ingredients which is #1)
-		if(reaction.equilibrium < 1)
-			#warn recalc this
-			var/wanted = reaction.equilibrium * legacy_direct_access_reagent_amount(reaction.result)
-			maximum_multiplier = min(maximum_multiplier, wanted / reaction.result_amount)
+		if(reaction.equilibrium != INFINITY)
+			// wanted % of product
+			var/wanted_percent = reaction.equilibrium / (reaction.equilibrium + 1)
+			var/wanted = wanted_percent * (legacy_direct_access_reagent_amount(reaction.result) + total_reactant_volume)
+			maximum_multiplier = clamp(maximum_multiplier, 0, wanted / reaction.result_amount)
+			if(maximum_multiplier <= 0)
+				return
 
 		// temperature hard checks are here, not above, because they
 		// should've already been checked when these were added.
@@ -195,7 +199,7 @@
 				effective_half_life *= reaction.moderators[id]
 
 		// half life
-		#warn half-life & finish threshold
+		maximum_multiplier *= 1 - (0.5 ** (delta_time / effective_half_life))
 
 		// if this is near-infinite it means a moderator is halting the reaction
 		if(effective_half_life >= SHORT_REAL_LIMIT)
@@ -207,9 +211,6 @@
 			continue
 
 		// finalize
-
-		#warn how to trigger reactions if we skip it for the following procs?
-
 		for(var/id in reaction.required_reagents)
 			remove_reagent(id, maximum_multiplier * reaction.required_reagents[id], TRUE)
 			ids_to_recheck[id] = TRUE
@@ -228,8 +229,8 @@
 
 	// now that we're done, re-check relevant reactions that might happen
 	// and process them as needed
-	var/list/datum/chemical_reaction/reactions_to_recheck = SSchemistry.immutable_relevant_reactions_for_reagent_ids(ids_to_recheck)
-	check_reactions(reactions_to_recheck, safety - 1, TRUE)
+	var/list/datum/chemical_reaction/reactions_to_recheck = SSchemistry.immutable_relevant_instant_reactions_for_reagent_ids(ids_to_recheck)
+	check_reactions(reactions_to_recheck, null)
 
 /**
  * Processes instant reactions

@@ -65,7 +65,7 @@
 	/// deciseconds to react half of the remaining amount.
 	/// used in some bullshit complex math to determine actual reaction rate
 	/// 0 for instant
-	var/reaction_half_life = 0
+	var/reaction_half_life = 0 SECONDS
 	/// when total reactant volume is under this for reaction, don't care about half life and finish the rest
 	///
 	/// * has no effect on instant reactions
@@ -93,20 +93,21 @@
 	/// * associate to amounts; default 0
 	var/list/catalysts
 
-	/// equilibrium point; less than 1, reaction will be inhibited if ratio of product to reactant is above that
+	/// equilibrium constant
 	///
 	/// * has no effect on instant reactions
 	/// * makes no sense on reactions without a product
 	/// * overrules reaction_completion_threshold!
+	/// * absolute; will not be overridden by anything, including catalysts / positive-moderators
 	///
 	/// Examples:
 	///
-	/// * 0.5 = we stop when product == reactant volume
-	/// * 0.8 = we stop when product == 4 times reactant volume
-	/// * 0.9 = we stop when product == 9 times reactant volume
+	/// * INFINITY = go to completion
+	/// * 0 = don't fucking do this it'll runtime
+	/// * 10 = 10 times the products as reactants
 	///
 	/// todo: reactions being able to go in reverse once reaching equilibrium
-	var/equilibrium = 1
+	var/equilibrium = INFINITY
 
 	//* Reaction - Feedback *//
 
@@ -150,9 +151,11 @@
 		catalysts[i] = id
 		catalysts[id] = amt
 	// merge inhibitors
-	for(var/i in 1 to length(inhibitors))
-		moderators[inhibitors[i]] = INFINITY
-	inhibitors = null
+	if(inhibitors)
+		LAZYINITLIST(moderators)
+		for(var/i in 1 to length(inhibitors))
+			moderators[inhibitors[i]] = INFINITY
+		inhibitors = null
 	// resolve moderators
 	for(var/i in 1 to length(moderators))
 		var/datum/reagent/path = moderators[i]
@@ -228,7 +231,7 @@
 	// check requirements, if it's whole numbers required we need atleast multiplier = 1
 	if(require_whole_numbers)
 		for(var/reagent in required_reagents)
-			if(holder.legacy_direct_access_reagent_amount(reagent) >= required_reagents[reagent])
+			if(holder.legacy_direct_access_reagent_amount(reagent) < required_reagents[reagent])
 				return FALSE
 	else
 		for(var/reagent in required_reagents)
