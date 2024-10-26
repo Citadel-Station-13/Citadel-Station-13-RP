@@ -17,9 +17,6 @@
 	playsound(location, 'sound/effects/smoke.ogg', 50, 1, -3)
 	spawn(0)
 		S.start()
-	if(!isliving(holder.my_atom)) //No more powergaming by creating a tiny amount of this
-		holder.clear_reagents()
-	return
 
 /datum/chemical_reaction/automata/foam
 	name = "Foam"
@@ -38,8 +35,6 @@
 	var/datum/effect_system/foam_spread/s = new()
 	s.set_up(multiplier * 2, location, holder, 0)
 	s.start()
-	if(!isliving(holder.my_atom)) //No more powergaming by creating a tiny amount of this
-		holder.clear_reagents()
 
 /datum/chemical_reaction/automata/metalfoam
 	name = "Metal Foam"
