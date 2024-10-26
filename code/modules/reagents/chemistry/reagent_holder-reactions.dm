@@ -173,7 +173,7 @@
 
 		// results
 		if(reaction.result_amount > 0)
-			maximum_multiplier = min(maximum_multiplier, (maximum_volume - total_volume) / reaction.result_amount)
+			maximum_multiplier = min(maximum_multiplier, ((maximum_volume - total_volume) + total_reactant_volume) / reaction.result_amount)
 
 		// equilibrium (this relies on ingredients and must be #2 after ingredients which is #1)
 		if(reaction.equilibrium != INFINITY)
