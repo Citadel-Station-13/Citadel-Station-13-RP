@@ -1,4 +1,5 @@
 /datum/chemical_reaction/distilling
+	abstract_type = /datum/chemical_reaction/distilling
 	reaction_half_life = 12 SECONDS
 
 	// reaction_message_instant = "The solution churns."

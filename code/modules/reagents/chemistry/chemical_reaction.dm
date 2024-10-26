@@ -40,10 +40,13 @@
 	var/require_whole_numbers = TRUE
 
 	/// result reagent path or id. prefer path for compile time checking.
+	///
+	/// * It is allowed to have this set without a result_amount.
 	var/result
 	/// how much of the result is made per 1 ratio of required_reagents consumed.
 	///
 	/// * If this is 0, multiplier / calculations still work; we just won't make any result reagents. Useful for pyrotechnics.
+	/// * It is undefined behavior to have this be non-zero and still have a result defined.
 	var/result_amount = 0
 
 	/// priority - higher is checked first when reacting.
@@ -53,14 +56,9 @@
 	var/required_container_path
 
 	/// temperature minimum, kelvin
-	var/temperature_low
+	var/temperature_low = TCMB
 	/// temperature maximum, kelvin
-	var/temperature_high
-
-	/// pH minimum
-	var/ph_low
-	/// pH maximum
-	var/ph_high
+	var/temperature_high = INFINITY
 
 	/// deciseconds to react half of the remaining amount.
 	/// used in some bullshit complex math to determine actual reaction rate
