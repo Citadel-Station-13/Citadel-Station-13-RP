@@ -34,10 +34,13 @@
  *
  * Create a new tgui window.
  *
+ * * Does not block.
+ *
  * required client /client
  * required id string A unique window identifier.
  */
 /datum/tgui_window/New(client/client, id, pooled = FALSE)
+	SHOULD_NOT_SLEEP(TRUE)
 	src.id = id
 	src.client = client
 	src.client.tgui_windows[id] = src

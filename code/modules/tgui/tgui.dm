@@ -55,6 +55,8 @@
  *
  * Create a new UI.
  *
+ * * Does not block.
+ *
  * required user mob The mob who opened/is using the UI.
  * required src_object datum The object or datum which owns the UI.
  * required interface string The interface used to render the UI.
@@ -64,6 +66,7 @@
  * return datum/tgui The requested UI.
  */
 /datum/tgui/New(mob/user, datum/src_object, interface, title, datum/tgui/parent_ui)
+	SHOULD_NOT_SLEEP(TRUE)
 	log_tgui(user,
 		// "new [interface] fancy [user?.client?.prefs.tgui_fancy]",
 		"new [interface] fancy 1",
@@ -98,6 +101,7 @@
  * return bool - TRUE if a new pooled window is opened, FALSE in all other situations including if a new pooled window didn't open because one already exists.
  */
 /datum/tgui/proc/open(data, modules)
+	SHOULD_NOT_SLEEP(TRUE)
 	if(!user.client)
 		return FALSE
 	if(window)

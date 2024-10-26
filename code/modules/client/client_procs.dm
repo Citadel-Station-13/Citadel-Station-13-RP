@@ -171,15 +171,17 @@
 	C.New()
 
 /client/New(TopicData)
-	//* pre-connect-ish
-	// set appadmin for profiling or it might not work (?) (this is old code we just assume it's here for a reason)
+	//* pre-connect-ish *//
+
+	// Byond only populates whether or not you can profile at connect. You have to give someone this
+	// before their client loads/whatever. This cannot be behind a spawn(). We will remove it from non-admins later.
 	world.SetConfig("APP/admin", ckey, "role=admin")
-	// block client.Topic() calls from connect
+	// Block client.Topic() calls from connect.
 	TopicData = null
-	// kick out invalid connections
+	// Kick invalid connections.
 	if(connection != "seeker" && connection != "web")
 		return null
-	// kick out guests
+	//! legacy: kick out guests !//
 	if(!config_legacy.guests_allowed && is_guest() && !is_localhost())
 		security_kick(
 			message = "This server doesn't allow guest accounts to play. Please go to http://www.byond.com/ and register for a key.",
@@ -187,9 +189,15 @@
 			immediate = TRUE,
 		)
 		return null
-	// pre-connect greeting
-	to_chat(src, "<font color='red'>If the title screen is black, resources are still downloading. Please be patient until the title screen appears.</font>")
-	// register in globals
+	// Queue pre-connect greeting
+	addtimer(
+		CALLBACK(
+			GLOBAL_PROC(to_chat),
+			"<font color='red'>If the title screen is black, resources are still downloading. Please be patient until the title screen appears.</font>",
+		),
+		0.5 SECONDS,
+	)
+	// Register in globals.
 	GLOB.clients += src
 	GLOB.directory[ckey] = src
 
@@ -215,7 +223,7 @@
 	// We allow a client/New sleep because preferences is currently required for
 	// everything else to work
 	// todo: maybe don't do this?
-	if(!UNLINT(preferences.block_on_initialized(5 SECONDS)))
+	if(!preferences.block_on_initialized(5 SECONDS))
 		security_kick("A fatal error occurred while attempting to load: preferences not initialized. Please notify a coder.")
 		stack_trace("we just kicked a client due to prefs not loading; something is horribly wrong!")
 		return
@@ -352,7 +360,8 @@
 		to_chat(src, "<span class='alert'>[custom_event_msg]</span>")
 		to_chat(src, "<br>")
 
-	send_resources()
+	// Preload resources. Just in case, we're going to timer it.
+	addtimer(CALLBACK(src, PROC_REF(send_resources)), 0.5 SECONDS)
 
 	//? Startup rendering
 	pre_init_viewport()
