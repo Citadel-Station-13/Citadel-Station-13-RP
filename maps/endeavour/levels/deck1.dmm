@@ -731,7 +731,7 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d1starboardhall)
 "aGH" = (
 /obj/machinery/atmospherics/pipe/cap/hidden,
@@ -826,13 +826,12 @@
 /turf/simulated/floor/tiled,
 /area/exploration/showers)
 "aIl" = (
-/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
-/obj/effect/floor_decal/techfloor/orange{
-	dir = 1
+/obj/machinery/light{
+	dir = 4;
+	pixel_x = 10
 	},
-/obj/structure/closet/emcloset,
-/turf/simulated/floor/tiled/dark,
-/area/hallway/secondary/docking_hallway2)
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/hallway/secondary/docking_hallway)
 "aID" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 8
@@ -1252,12 +1251,9 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/endeavour/surfacebase/tram)
 "aXb" = (
-/obj/structure/table/woodentable,
-/obj/machinery/light/small{
-	dir = 4
-	},
-/turf/simulated/floor/carpet/bcarpet,
-/area/library)
+/obj/structure/grille,
+/turf/space/basic,
+/area/space)
 "aXm" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
 /obj/effect/paint/violet,
@@ -2689,6 +2685,9 @@
 /area/endeavour/hallway/d1afthall)
 "cmM" = (
 /obj/machinery/shipsensors,
+/obj/machinery/light{
+	dir = 8
+	},
 /turf/simulated/floor/airless,
 /area/shuttle/civvie/cockpit)
 "cnv" = (
@@ -2777,7 +2776,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 9
 	},
-/turf/simulated/shuttle/wall/voidcraft/green,
+/turf/simulated/wall/r_wall/prepainted/civilian,
 /area/shuttle/civvie/general)
 "ctl" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -5140,7 +5139,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/library)
 "ert" = (
-/turf/simulated/shuttle/wall/voidcraft/green,
+/turf/simulated/wall/r_wall/prepainted/civilian,
 /area/shuttle/civvie/cockpit)
 "erG" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -5649,7 +5648,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 9
 	},
-/turf/simulated/shuttle/wall/voidcraft/green,
+/turf/simulated/wall/r_wall/prepainted/civilian,
 /area/shuttle/civvie/general)
 "eJs" = (
 /obj/machinery/status_display{
@@ -7073,6 +7072,7 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
+/obj/map_helper/access_helper/airlock/station/science/toxins,
 /turf/simulated/floor/plating,
 /area/rnd/misc_lab)
 "fJS" = (
@@ -7651,6 +7651,10 @@
 "geL" = (
 /turf/simulated/floor/wood,
 /area/vacant/vacant_bar)
+"geQ" = (
+/obj/effect/shuttle_landmark/endeavour/deck1,
+/turf/space/basic,
+/area/space)
 "geU" = (
 /obj/machinery/air_alarm/north_mount,
 /turf/simulated/floor/tiled/techfloor/grid,
@@ -8521,8 +8525,20 @@
 /turf/simulated/floor/plating,
 /area/endeavour/hallway/d1aftmaint)
 "gQc" = (
-/turf/simulated/shuttle/wall/voidcraft/green,
-/area/shuttle/civvie/general)
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4
+	},
+/obj/landmark{
+	name = "blobstart"
+	},
+/turf/simulated/floor/tiled/dark,
+/area/hallway/secondary/docking_hallway2)
 "gQU" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 4
@@ -8913,6 +8929,10 @@
 "hfY" = (
 /turf/simulated/floor/airless/ceiling,
 /area/space)
+"hgm" = (
+/obj/structure/event/prop/mining_truck,
+/turf/simulated/floor/plating,
+/area/maintenance/substation/dock)
 "hgn" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /turf/simulated/floor/wood,
@@ -9161,7 +9181,7 @@
 /area/exploration/excursion_dock)
 "hqO" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan,
-/turf/simulated/shuttle/wall/voidcraft/hard_corner,
+/turf/simulated/wall/r_wall/prepainted/civilian,
 /area/shuttle/civvie/general)
 "hrd" = (
 /obj/machinery/light{
@@ -9245,11 +9265,11 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
-/obj/machinery/light/small{
-	dir = 4
-	},
 /obj/machinery/camera/network/civilian{
 	dir = 9
+	},
+/obj/machinery/light/small{
+	dir = 4
 	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/library)
@@ -9888,6 +9908,17 @@
 "hWW" = (
 /turf/simulated/floor/carpet/bcarpet,
 /area/chapel/main)
+"hXa" = (
+/obj/structure/catwalk,
+/obj/structure/cable/green{
+	icon_state = "2-4"
+	},
+/obj/item/bluespace_radio{
+	desc = "A long range transciever set, designed to facilitate communication with a home base while away from a ship-based equipment.";
+	name = "SCR-3000 Surface To Orbit Radio"
+	},
+/turf/simulated/floor/plating,
+/area/endeavour/hallway/d1aftmaint)
 "hXy" = (
 /obj/effect/floor_decal/corner/purple{
 	dir = 9
@@ -10222,6 +10253,7 @@
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 4
 	},
+/obj/structure/closet/emcloset,
 /turf/simulated/floor/tiled/dark,
 /area/hallway/secondary/docking_hallway2)
 "ijU" = (
@@ -10307,15 +10339,9 @@
 /turf/simulated/floor/tiled/dark,
 /area/bridge/hallway)
 "ilO" = (
-/obj/effect/floor_decal/techfloor/orange{
-	dir = 1
-	},
-/obj/machinery/air_alarm{
-	frequency = 1441;
-	pixel_y = 22
-	},
-/turf/simulated/floor/tiled/dark,
-/area/hallway/secondary/docking_hallway2)
+/obj/structure/table/bench,
+/turf/simulated/floor/tiled/steel,
+/area/vacant/vacant_bar)
 "ilP" = (
 /obj/structure/table/reinforced,
 /obj/item/storage/toolbox/emergency,
@@ -11010,7 +11036,7 @@
 /area/crew_quarters/captain)
 "iPS" = (
 /obj/machinery/atmospherics/pipe/simple/hidden,
-/turf/simulated/shuttle/wall/voidcraft/hard_corner,
+/turf/simulated/wall/r_wall/prepainted/civilian,
 /area/shuttle/civvie/general)
 "iQi" = (
 /obj/machinery/camera/network/outside{
@@ -11369,6 +11395,13 @@
 	},
 /turf/simulated/floor/tiled,
 /area/bridge/hallway)
+"jhQ" = (
+/obj/item/bluespace_radio{
+	desc = "A long range transciever set, designed to facilitate communication with a home base while away from a ship-based equipment.";
+	name = "SCR-3000 Surface To Orbit Radio"
+	},
+/turf/simulated/floor/plating,
+/area/endeavour/hallway/d1aftmaint)
 "jie" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
@@ -12271,6 +12304,7 @@
 /obj/structure/cable/green{
 	icon_state = "4-10"
 	},
+/obj/machinery/light/small,
 /turf/simulated/floor/carpet/bcarpet,
 /area/library)
 "jNC" = (
@@ -14511,14 +14545,14 @@
 /turf/simulated/floor/carpet/gaycarpet,
 /area/crew_quarters/clownoffice)
 "lCx" = (
-/obj/machinery/light/small{
-	dir = 4
-	},
 /obj/machinery/computer/ship/navigation/telescreen{
 	pixel_x = 32
 	},
 /obj/structure/cable/green{
 	icon_state = "2-5"
+	},
+/obj/machinery/light/small{
+	dir = 4
 	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/library)
@@ -15075,10 +15109,7 @@
 /turf/simulated/wall/r_wall/prepainted,
 /area/crew_quarters/lounge)
 "mca" = (
-/obj/machinery/door/airlock/maintenance/medical{
-	name = "Medical Maintenance Access";
-	req_access = list(5)
-	},
+/obj/machinery/door/airlock/maintenance_hatch,
 /obj/machinery/door/firedoor,
 /obj/structure/cable/green{
 	icon_state = "1-2"
@@ -16054,6 +16085,7 @@
 	dir = 8
 	},
 /obj/structure/catwalk,
+/obj/map_helper/access_helper/airlock/station/science/toxins,
 /turf/simulated/floor/plating,
 /area/rnd/misc_lab)
 "mTa" = (
@@ -16421,7 +16453,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 5
 	},
-/turf/simulated/shuttle/wall/voidcraft/hard_corner,
+/turf/simulated/wall/r_wall/prepainted/civilian,
 /area/shuttle/civvie/general)
 "nka" = (
 /obj/item/radio/intercom{
@@ -16740,15 +16772,13 @@
 /obj/effect/floor_decal/corner/paleblue/full{
 	dir = 1
 	},
-/obj/machinery/door/airlock/glass{
-	name = "Recovery Wing"
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
 	},
+/obj/machinery/door/airlock/maintenance_hatch,
 /turf/simulated/floor/tiled/white,
 /area/endeavour/hallway/d1fwdmaint)
 "nuU" = (
@@ -16784,7 +16814,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 10
 	},
-/turf/simulated/shuttle/wall/voidcraft/green,
+/turf/simulated/wall/r_wall/prepainted/civilian,
 /area/shuttle/civvie/general)
 "nwQ" = (
 /obj/effect/floor_decal/borderfloor{
@@ -16854,7 +16884,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 10
 	},
-/turf/simulated/shuttle/wall/voidcraft/green,
+/turf/simulated/wall/r_wall/prepainted/civilian,
 /area/shuttle/civvie/general)
 "nzK" = (
 /obj/machinery/door/airlock/maintenance,
@@ -17410,7 +17440,6 @@
 	dir = 1
 	},
 /obj/machinery/camera/network/civilian,
-/obj/structure/closet/emcloset,
 /turf/simulated/floor/tiled/dark,
 /area/hallway/secondary/docking_hallway2)
 "nXJ" = (
@@ -17544,6 +17573,9 @@
 /area/maintenance/station/exploration)
 "oeE" = (
 /obj/machinery/telecomms/relay/preset/telecomms,
+/obj/machinery/light{
+	dir = 8
+	},
 /turf/simulated/floor/airless,
 /area/shuttle/civvie/cockpit)
 "oeU" = (
@@ -17565,6 +17597,13 @@
 /obj/effect/paint_stripe/commandblue,
 /turf/simulated/floor,
 /area/lawoffice)
+"ofe" = (
+/obj/item/bluespace_radio{
+	desc = "A long range transciever set, designed to facilitate communication with a home base while away from a ship-based equipment.";
+	name = "SCR-3000 Surface To Orbit Radio"
+	},
+/turf/simulated/wall/prepainted/exploration,
+/area/exploration/pathfinder_office)
 "ofn" = (
 /obj/structure/flora/ausbushes/ppflowers,
 /turf/simulated/floor/grass,
@@ -19259,13 +19298,11 @@
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d1porthall)
 "pCg" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/structure/cable/green{
-	icon_state = "1-2"
+/obj/machinery/light{
+	dir = 8
 	},
-/turf/simulated/floor/plating,
-/area/endeavour/hallway/d1starboardhall)
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/hallway/secondary/docking_hallway)
 "pDa" = (
 /obj/effect/floor_decal/steeldecal/steel_decals_central7,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -19975,7 +20012,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 6
 	},
-/turf/simulated/shuttle/wall/voidcraft/hard_corner,
+/turf/simulated/wall/r_wall/prepainted/civilian,
 /area/shuttle/civvie/general)
 "qsz" = (
 /obj/structure/table/reinforced,
@@ -20042,14 +20079,10 @@
 /turf/simulated/floor/tiled/white,
 /area/exploration/medical)
 "quF" = (
-/obj/effect/floor_decal/techfloor/orange{
-	dir = 1
-	},
-/obj/landmark{
-	name = "blobstart"
-	},
-/turf/simulated/floor/tiled/dark,
-/area/hallway/secondary/docking_hallway2)
+/obj/structure/grille,
+/obj/structure/grille,
+/turf/space/basic,
+/area/space)
 "quJ" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 5
@@ -22103,7 +22136,7 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
-/turf/simulated/shuttle/wall/voidcraft/hard_corner,
+/turf/simulated/wall/r_wall/prepainted/civilian,
 /area/shuttle/civvie/general)
 "slW" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -23366,6 +23399,7 @@
 /obj/structure/table/woodentable,
 /obj/item/paper_bin,
 /obj/item/paicard,
+/obj/machinery/light/small,
 /turf/simulated/floor/wood,
 /area/library)
 "tsU" = (
@@ -25075,6 +25109,7 @@
 /obj/machinery/fire_alarm/west_mount{
 	pixel_x = -24
 	},
+/obj/structure/closet/emcloset,
 /turf/simulated/floor/tiled/dark,
 /area/hallway/secondary/docking_hallway2)
 "uCU" = (
@@ -25338,7 +25373,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
 	},
-/turf/simulated/shuttle/wall/voidcraft/green,
+/turf/simulated/wall/r_wall/prepainted/civilian,
 /area/shuttle/civvie/general)
 "uRN" = (
 /obj/effect/floor_decal/borderfloorblack,
@@ -25732,7 +25767,7 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d1starboardhall)
 "vgg" = (
 /obj/machinery/recharger/wallcharger{
@@ -26987,9 +27022,7 @@
 /obj/effect/floor_decal/corner/paleblue/full{
 	dir = 4
 	},
-/obj/machinery/door/airlock/glass{
-	name = "Recovery Wing"
-	},
+/obj/machinery/door/airlock/maintenance_hatch,
 /turf/simulated/floor/tiled/white,
 /area/endeavour/hallway/d1fwdmaint)
 "wiN" = (
@@ -27901,6 +27934,10 @@
 /obj/effect/floor_decal/industrial/warning/full,
 /turf/simulated/floor/greengrid/airless,
 /area/rnd/test_area)
+"wSZ" = (
+/obj/structure/grille,
+/turf/space,
+/area/space)
 "wTx" = (
 /obj/structure/cable/cyan{
 	icon_state = "0-2"
@@ -28003,9 +28040,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d1starboardhall)
 "wXh" = (
-/obj/machinery/door/airlock/medical{
-	name = "Restroom"
-	},
+/obj/machinery/door/airlock/maintenance_hatch,
 /obj/machinery/door/firedoor,
 /turf/simulated/floor/tiled/white,
 /area/endeavour/hallway/d1fwdmaint)
@@ -28089,6 +28124,10 @@
 /obj/item/tank/oxygen,
 /obj/item/suit_cooling_unit,
 /obj/item/reagent_containers/hypospray/autoinjector/biginjector/healing_nanites,
+/obj/item/bluespace_radio{
+	desc = "A long range transciever set, designed to facilitate communication with a home base while away from a ship-based equipment.";
+	name = "SCR-3000 Surface To Orbit Radio"
+	},
 /turf/simulated/floor/tiled,
 /area/exploration/pathfinder_office)
 "xaQ" = (
@@ -28333,7 +28372,6 @@
 /turf/simulated/floor/tiled/dark,
 /area/gateway)
 "xoy" = (
-/obj/machinery/light/small,
 /obj/structure/table/woodentable,
 /obj/item/paper_bin,
 /obj/item/radio/intercom{
@@ -29426,7 +29464,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d1afthall)
 "yiH" = (
-/turf/simulated/shuttle/wall/voidcraft/hard_corner,
+/turf/simulated/wall/r_wall/prepainted/civilian,
 /area/shuttle/civvie/general)
 "yiX" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
@@ -34868,10 +34906,10 @@ tAk
 tAk
 tAk
 tAk
-tAk
+aIl
 tAk
 nei
-tAk
+aIl
 tAk
 tAk
 tAk
@@ -35255,12 +35293,12 @@ cMJ
 tAk
 qsh
 csq
-gQc
+yiH
 yiH
 wGN
 hVY
 yiH
-gQc
+yiH
 nwz
 njW
 nei
@@ -36029,16 +36067,16 @@ uUK
 uUK
 cMJ
 tAk
-tAk
-gQc
+pCg
+yiH
 ftL
 vIe
 esp
 lIw
 fEx
 hrv
-gQc
-tAk
+yiH
+pCg
 nei
 tAk
 sQl
@@ -36417,15 +36455,15 @@ uUK
 uUK
 cMJ
 tAk
-tAk
-gQc
+fIt
+yiH
 cPh
 bxI
 fZY
 hkO
 dzM
 cKW
-gQc
+yiH
 tAk
 nei
 eiz
@@ -36806,14 +36844,14 @@ hYh
 cMJ
 tAk
 tAk
-gQc
+yiH
 vRe
 iNW
 arr
 mJt
 lFq
 pEF
-gQc
+yiH
 tAk
 nei
 tAk
@@ -37214,7 +37252,7 @@ jNg
 jNg
 jNg
 jNg
-jNg
+dfU
 jNg
 jNg
 xRj
@@ -37778,10 +37816,10 @@ nTt
 tAk
 tAk
 tAk
+pCg
 tAk
 tAk
-tAk
-tAk
+pCg
 tAk
 tAk
 tAk
@@ -38572,7 +38610,7 @@ ijU
 ijU
 ijU
 ijU
-quF
+gKK
 eoY
 bAB
 mTa
@@ -38596,7 +38634,7 @@ xRj
 xRj
 xRj
 xRj
-xRj
+geQ
 xRj
 xRj
 xRj
@@ -38766,7 +38804,7 @@ bIF
 edR
 fbu
 hhy
-ilO
+xHD
 wVY
 fYz
 ijU
@@ -39710,7 +39748,7 @@ dZr
 xNI
 xNI
 xNI
-xNI
+hgm
 xNI
 dnc
 xNI
@@ -40512,8 +40550,8 @@ wyc
 hSU
 kvI
 etm
-gKK
-wVY
+xHD
+gQc
 sho
 ijU
 usG
@@ -40900,7 +40938,7 @@ qfY
 vYM
 bnJ
 pbY
-aIl
+iWI
 ogq
 emu
 xSt
@@ -41627,7 +41665,7 @@ evV
 lQM
 ugn
 bmL
-qTj
+ofe
 gPV
 efK
 lqh
@@ -41821,7 +41859,7 @@ trI
 trI
 qey
 emL
-qTj
+ofe
 gPV
 wim
 lqh
@@ -42015,7 +42053,7 @@ xaF
 tIH
 xzr
 jAa
-qTj
+ofe
 gPV
 wLB
 npN
@@ -42209,7 +42247,7 @@ qTj
 qTj
 qTj
 qTj
-qTj
+ofe
 gPV
 wim
 lqh
@@ -42403,7 +42441,7 @@ jLe
 wim
 wim
 wim
-wim
+jhQ
 gPV
 wim
 lqh
@@ -42597,7 +42635,7 @@ jLe
 jLe
 jLe
 jLe
-ibx
+hXa
 sjt
 wim
 lqh
@@ -42628,7 +42666,7 @@ uvS
 hyL
 eYV
 ojm
-kQS
+ilO
 dJe
 krO
 nUG
@@ -47280,7 +47318,7 @@ bsZ
 mJP
 wvw
 kjF
-aXb
+jnZ
 uUz
 dsD
 kjF
@@ -48642,8 +48680,8 @@ qke
 aGG
 veS
 jXs
-pCg
-pCg
+kPV
+kPV
 kPV
 kPV
 pql
@@ -63165,7 +63203,7 @@ xRj
 xRj
 svq
 vYC
-jNg
+wSZ
 vYC
 vYC
 uJx
@@ -63181,7 +63219,7 @@ cZC
 kyG
 myo
 vYC
-jNg
+wSZ
 vYC
 xRj
 xRj
@@ -63359,7 +63397,7 @@ xRj
 xRj
 xRj
 vYC
-xRj
+quF
 vYC
 vYC
 pNt
@@ -63375,8 +63413,8 @@ pNt
 pNt
 vYC
 vYC
-xRj
-jNg
+aXb
+vYC
 jNg
 xRj
 xRj

@@ -98,8 +98,8 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 5
 	},
-/obj/machinery/sheet_silo_loader{
-	dir = 8
+/obj/machinery/sheet_silo{
+	obj_persist_static_id = "sheet-silo-mining"
 	},
 /turf/simulated/floor/tiled,
 /area/endeavour/surfacebase/mining_main/refinery)
@@ -767,6 +767,7 @@
 "aKj" = (
 /obj/structure/closet/walllocker/emerglocker/north,
 /obj/effect/floor_decal/industrial/outline/yellow,
+/obj/structure/ore_box,
 /turf/simulated/floor/tiled/steel,
 /area/shuttle/belter)
 "aKn" = (
@@ -1170,6 +1171,9 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/prison/cell_block)
+"bbr" = (
+/turf/simulated/wall/r_wall/prepainted,
+/area/crew_quarters/sleep/Dorm_8)
 "bbW" = (
 /obj/machinery/button/remote/blast_door{
 	id = "armorytactical";
@@ -1577,9 +1581,11 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 1
 	},
-/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
 /obj/effect/floor_decal/industrial/warning{
 	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
 	},
 /turf/simulated/floor/tiled,
 /area/endeavour/surfacebase/mining_main/refinery)
@@ -1671,7 +1677,7 @@
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d3starboardhall)
 "bsV" = (
-/obj/spawner/window/reinforced/full/firelocks,
+/obj/spawner/window/borosillicate/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/endeavour/hallway/d3fwdhall)
 "bta" = (
@@ -3467,6 +3473,15 @@
 	},
 /turf/simulated/floor/tiled,
 /area/hydroponics)
+"dcu" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+	dir = 1
+	},
+/turf/simulated/floor/tiled,
+/area/endeavour/surfacebase/mining_main/refinery)
 "dcx" = (
 /obj/machinery/door/airlock/maintenance,
 /obj/machinery/door/firedoor,
@@ -5201,6 +5216,16 @@
 "ewu" = (
 /turf/simulated/wall/r_wall/prepainted,
 /area/crew_quarters/recreation_area)
+"eww" = (
+/obj/effect/floor_decal/techfloor{
+	dir = 1
+	},
+/obj/machinery/light{
+	dir = 1;
+	pixel_y = 20
+	},
+/turf/simulated/floor/tiled/steel,
+/area/endeavour/hallway/d3porthall)
 "eyh" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -5319,15 +5344,9 @@
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d3fwdhall)
 "eBl" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 1
-	},
-/obj/structure/cable/green{
-	icon_state = "1-2"
-	},
-/turf/simulated/floor/tiled/monotile,
-/area/quartermaster/delivery)
+/obj/structure/ore_box,
+/turf/simulated/floor/tiled/steel,
+/area/shuttle/belter)
 "eBs" = (
 /obj/machinery/mineral/unloading_machine,
 /turf/simulated/floor/tiled/steel_grid,
@@ -7191,6 +7210,10 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/maintenance/starboardsolar)
+"fTI" = (
+/obj/effect/floor_decal/industrial/outline/yellow,
+/turf/simulated/floor/tiled/steel,
+/area/shuttle/belter)
 "fUc" = (
 /obj/structure/bed/chair/sofa,
 /obj/machinery/light{
@@ -7388,6 +7411,18 @@
 /obj/machinery/computer/med_data/laptop,
 /turf/simulated/floor/tiled/monotile,
 /area/security/forensics)
+"gcQ" = (
+/obj/effect/floor_decal/borderfloorblack,
+/obj/effect/floor_decal/corner/red/border,
+/obj/machinery/button/remote/blast_door{
+	id = "armorylight";
+	name = "Light Armory Access";
+	pixel_x = -6;
+	pixel_y = -25;
+	req_access = list(3)
+	},
+/turf/simulated/floor/tiled/dark,
+/area/security/hallway)
 "gcW" = (
 /obj/machinery/cryopod{
 	dir = 2
@@ -8039,9 +8074,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 1
 	},
-/obj/structure/cable/green{
-	icon_state = "1-2"
-	},
 /turf/simulated/floor/tiled/steel,
 /area/quartermaster/delivery)
 "gMc" = (
@@ -8675,6 +8707,10 @@
 /obj/map_helper/access_helper/airlock/station/external_airlock,
 /turf/simulated/floor/plating,
 /area/security/hallway)
+"hpq" = (
+/obj/structure/closet/crate,
+/turf/simulated/floor/tiled/steel,
+/area/shuttle/belter)
 "hqP" = (
 /turf/simulated/wall/prepainted,
 /area/crew_quarters/showers)
@@ -10670,6 +10706,16 @@
 "jiy" = (
 /turf/simulated/wall/prepainted,
 /area/crew_quarters/recreation_area_hallway)
+"jiN" = (
+/obj/effect/floor_decal/techfloor{
+	dir = 1
+	},
+/obj/machinery/light{
+	dir = 1;
+	pixel_y = 20
+	},
+/turf/simulated/floor/tiled,
+/area/endeavour/hallway/d3porthall)
 "jjl" = (
 /obj/effect/floor_decal/corner/red{
 	dir = 10
@@ -12905,13 +12951,6 @@
 /turf/simulated/floor/tiled/monotile,
 /area/endeavour/hallway/d3afthall)
 "lkP" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 1
-	},
-/obj/structure/cable/green{
-	icon_state = "1-2"
-	},
 /obj/structure/cable/green{
 	icon_state = "1-8"
 	},
@@ -15409,14 +15448,11 @@
 /turf/simulated/floor/tiled,
 /area/quartermaster/office)
 "nsH" = (
-/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
-	dir = 4
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 10
 	},
-/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
-	dir = 8
-	},
-/obj/structure/cable/green{
-	icon_state = "1-2"
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 6
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/quartermaster/delivery)
@@ -17537,6 +17573,10 @@
 	},
 /obj/machinery/camera/network/cargo{
 	dir = 4
+	},
+/obj/machinery/light{
+	dir = 8;
+	pixel_x = -10
 	},
 /turf/simulated/floor/tiled/steel,
 /area/quartermaster/delivery)
@@ -21881,10 +21921,9 @@
 /turf/simulated/floor/tiled,
 /area/quartermaster/office)
 "sDq" = (
-/obj/effect/floor_decal/industrial/outline/yellow,
-/obj/structure/closet/crate,
-/turf/simulated/floor/tiled/steel,
-/area/shuttle/belter)
+/obj/structure/stairs/spawner/east,
+/turf/simulated/floor/plating,
+/area/maintenance/bar/lower)
 "sDX" = (
 /obj/effect/floor_decal/industrial/warning,
 /obj/machinery/air_alarm{
@@ -22096,9 +22135,6 @@
 "sMN" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 1
-	},
-/obj/structure/cable/green{
-	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled/monotile,
@@ -22671,6 +22707,12 @@
 	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/crew_quarters/bar)
+"tol" = (
+/obj/structure/railing{
+	dir = 1
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/bar/lower)
 "tos" = (
 /obj/machinery/ai_status_display{
 	pixel_y = -32
@@ -22841,6 +22883,10 @@
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
+/obj/machinery/light{
+	dir = 8;
+	pixel_x = -10
+	},
 /turf/simulated/floor/tiled/steel,
 /area/quartermaster/delivery)
 "twR" = (
@@ -22848,9 +22894,6 @@
 /area/quartermaster/qm)
 "txc" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
 /obj/machinery/door/firedoor{
@@ -22861,6 +22904,9 @@
 	req_one_access = null
 	},
 /obj/map_helper/access_helper/airlock/station/supply/cargo_bay,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
 /turf/simulated/floor/tiled,
 /area/endeavour/surfacebase/mining_main/refinery)
 "txu" = (
@@ -24678,11 +24724,13 @@
 /turf/simulated/floor/tiled/steel,
 /area/shuttle/mining_ship/general)
 "uWL" = (
-/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /obj/machinery/light_switch{
 	pixel_x = 25
 	},
 /obj/effect/floor_decal/industrial/outline/yellow,
+/obj/machinery/sheet_silo_loader{
+	dir = 8
+	},
 /turf/simulated/floor/tiled,
 /area/endeavour/surfacebase/mining_main/refinery)
 "uXi" = (
@@ -24798,17 +24846,9 @@
 /turf/simulated/floor/tiled/old_cargo/gray,
 /area/security/security_processing)
 "uZY" = (
-/obj/machinery/button/remote/blast_door{
-	id = "armorylight";
-	name = "Light Armory Access";
-	pixel_x = -6;
-	pixel_y = -25;
-	req_access = list(3)
-	},
-/obj/effect/floor_decal/borderfloorblack,
-/obj/effect/floor_decal/corner/red/border,
-/turf/simulated/floor/tiled/dark,
-/area/security/hallway)
+/obj/spawner/window/borosillicate/reinforced/full/firelocks,
+/turf/space,
+/area/space)
 "vaf" = (
 /obj/spawner/window/low_wall/full/firelocks/nogrille,
 /turf/simulated/floor/plating,
@@ -26578,9 +26618,6 @@
 /obj/machinery/air_alarm{
 	pixel_y = 27
 	},
-/obj/machinery/sheet_silo{
-	obj_persist_static_id = "sheet-silo-mining"
-	},
 /turf/simulated/floor/tiled,
 /area/endeavour/surfacebase/mining_main/refinery)
 "wns" = (
@@ -26987,6 +27024,9 @@
 	},
 /obj/machinery/computer/ship/navigation/telescreen{
 	pixel_y = -37
+	},
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
+	dir = 1
 	},
 /turf/simulated/floor/tiled,
 /area/endeavour/surfacebase/mining_main/refinery)
@@ -37002,7 +37042,7 @@ iAq
 ayW
 pTu
 rCI
-vBk
+gcQ
 fJN
 aGh
 plt
@@ -38714,10 +38754,10 @@ mVn
 xZH
 xZH
 xZH
-kgM
+xZH
 kgM
 xZH
-xZH
+tol
 pir
 sRJ
 aHs
@@ -38908,10 +38948,10 @@ mVn
 xZH
 xZH
 xZH
+xZH
 kgM
-xZH
-xZH
-xZH
+sDq
+tol
 pir
 pir
 pir
@@ -39102,9 +39142,9 @@ mVn
 kgM
 kgM
 xZH
+xZH
 kgM
-xZH
-xZH
+xbH
 xZH
 kLR
 xZH
@@ -39298,7 +39338,7 @@ kgM
 qoU
 kgM
 kgM
-xZH
+xbH
 xZH
 xbH
 xZH
@@ -39492,7 +39532,7 @@ mLm
 mLm
 mLm
 xbH
-qoU
+xbH
 pYt
 pYt
 pYt
@@ -39670,7 +39710,7 @@ iXY
 iXY
 vSl
 aKj
-qIH
+eBl
 qIH
 vSl
 iXY
@@ -39863,9 +39903,9 @@ mLl
 iXY
 iXY
 vSl
-sDq
+hRx
 qIH
-qIH
+hpq
 vSl
 iXY
 rxD
@@ -40057,7 +40097,7 @@ iXY
 iXY
 iXY
 xXl
-hRx
+fTI
 qIH
 iVL
 vSl
@@ -41437,7 +41477,7 @@ oms
 ukb
 lUi
 lMH
-rnE
+eww
 xiG
 phj
 syH
@@ -42601,7 +42641,7 @@ lMH
 lMH
 lMH
 lMH
-rnE
+eww
 xiG
 phj
 syH
@@ -43565,7 +43605,7 @@ qvo
 wfZ
 mlk
 lkP
-eBl
+gGm
 nsH
 sMN
 sMN
@@ -43737,7 +43777,7 @@ qKQ
 moz
 tqv
 agT
-kur
+dcu
 wHG
 scZ
 tES
@@ -43959,7 +43999,7 @@ uiJ
 uiJ
 kwo
 pwn
-ctz
+jiN
 xiG
 phj
 syH
@@ -44561,7 +44601,7 @@ uKP
 qqF
 uUM
 lmK
-wWx
+chh
 wWx
 qHe
 kUz
@@ -45937,7 +45977,7 @@ oGR
 dyn
 wsz
 wFj
-uZY
+vBk
 uYb
 aqx
 hBU
@@ -46465,8 +46505,8 @@ jon
 mSw
 vZR
 vZR
-nyi
-nyi
+vZR
+vZR
 nyi
 nyi
 nyi
@@ -47055,10 +47095,10 @@ cih
 yab
 yab
 yab
-rBG
-rBG
-dlI
-dlI
+yab
+yab
+bbr
+bbr
 dlI
 gTq
 dlI
@@ -59672,7 +59712,7 @@ pRW
 pRW
 nhl
 lTw
-lIV
+bsV
 gwz
 kuM
 eBi
@@ -59866,7 +59906,7 @@ pRW
 pRW
 pRW
 mDp
-lIV
+bsV
 gwz
 kuM
 kuM
@@ -60060,7 +60100,7 @@ pRW
 pRW
 pRW
 pRW
-lIV
+bsV
 gwz
 kuM
 kuM
@@ -60078,8 +60118,8 @@ ymj
 kuM
 kuM
 nJs
-lIV
-lIV
+bsV
+bsV
 qJM
 qJM
 fkV
@@ -62393,15 +62433,15 @@ jYr
 jGe
 fkV
 mDp
-lIV
-lIV
+bsV
+bsV
 njC
 bCj
 bCj
 bCj
 tDb
-lIV
-lIV
+bsV
+bsV
 mDp
 fkV
 jGe
@@ -62587,15 +62627,15 @@ mDp
 mDp
 mDp
 mDp
-mDp
-lIV
-lIV
+uZY
+bsV
+bsV
 qCo
 rHk
 qRU
-lIV
-lIV
-mDp
+bsV
+bsV
+uZY
 mDp
 mDp
 mDp
@@ -62782,13 +62822,13 @@ mDp
 mDp
 mDp
 mDp
-mDp
-lIV
-lIV
-lIV
-lIV
-lIV
-mDp
+uZY
+bsV
+bsV
+bsV
+bsV
+bsV
+uZY
 mDp
 mDp
 mDp
@@ -62977,11 +63017,11 @@ mDp
 mDp
 mDp
 mDp
-mDp
-mDp
-mDp
-mDp
-mDp
+uZY
+uZY
+uZY
+uZY
+uZY
 mDp
 mDp
 mDp

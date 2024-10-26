@@ -3822,8 +3822,11 @@
 /turf/simulated/floor/tiled/steel_ridged,
 /area/endeavour/hallway/d4porthall)
 "fih" = (
-/obj/machinery/computer/ship/engines{
-	dir = 8
+/obj/effect/floor_decal/corner/navgold{
+	dir = 9
+	},
+/obj/structure/bed/chair/bay/comfy{
+	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/endeavour/command/turrets)
@@ -7799,6 +7802,7 @@
 	req_one_access = null
 	},
 /obj/machinery/door/firedoor,
+/obj/map_helper/access_helper/airlock/station/engineering/department,
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
 "kKd" = (
@@ -12743,9 +12747,6 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ai_upload)
 "rOi" = (
-/obj/machinery/computer/ship/engines{
-	dir = 8
-	},
 /obj/effect/floor_decal/corner/navgold{
 	dir = 5
 	},
@@ -13358,6 +13359,9 @@
 	dir = 4;
 	name = "Station Intercom (General)";
 	pixel_x = 23
+	},
+/obj/machinery/computer/ship/engines{
+	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/endeavour/command/turrets)
@@ -16972,7 +16976,6 @@
 	dir = 5
 	},
 /obj/effect/floor_decal/corner/paleblue,
-/obj/structure/bed/chair/bay/comfy,
 /turf/simulated/floor/tiled/techfloor,
 /area/endeavour/command/turrets)
 "xKs" = (
@@ -36907,7 +36910,7 @@ wpK
 maG
 maG
 maG
-maG
+fih
 naO
 wiw
 dvY
@@ -37098,10 +37101,10 @@ dvY
 dvY
 wiw
 rOi
-jgJ
+ttr
 hhb
 sRr
-fih
+jgJ
 avD
 wiw
 dvY
