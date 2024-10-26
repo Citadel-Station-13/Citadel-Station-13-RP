@@ -68,14 +68,12 @@
 	name = "Meatball"
 	id = "synthesis-meatball"
 	required_reagents = list("protein" = 3, "flour" = 5)
-	result_amount = 3
 
 	synthesis_product_path = /obj/item/reagent_containers/food/snacks/meatball
 
 /datum/chemical_reaction/food/synthesis/meatsicle
 	name = "Meatsicle"
 	id = "meatsicle"
-	result = "meatsicle"
 	required_reagents = list("protein" = 6, "ice" = 6)
 
 	synthesis_product_path = /obj/item/reagent_containers/food/snacks/meatsicle
