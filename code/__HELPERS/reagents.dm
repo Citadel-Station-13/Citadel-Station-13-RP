@@ -1,18 +1,11 @@
-// todo: this doesn't entirely work. see recipe for peridaxon requiring priority.
 /proc/chem_recipes_do_conflict(datum/chemical_reaction/r1, datum/chemical_reaction/r2)
-	// do the non-list tests first, because they are cheaper
+	// we can only conflict with something that requires the same container
 	if(r1.required_container_path != r2.required_container_path)
 		return FALSE
-	// if(r1.is_cold_recipe == r2.is_cold_recipe)
-	// 	if(r1.required_temp != r2.required_temp)
-	// 		//one reaction requires a more extreme temperature than the other, so there is no conflict
-	// 		return FALSE
-	// else
-	// 	var/datum/chemical_reaction/cold_one = r1.is_cold_recipe ? r1 : r2
-	// 	var/datum/chemical_reaction/warm_one = r1.is_cold_recipe ? r2 : r1
-	// 	if(cold_one.required_temp < warm_one.required_temp)
-	// 		//the range of temperatures does not overlap, so there is no conflict
-	// 		return FALSE
+
+	// we cannot conflict with a non-overlapping temperature range
+	if(r1.temperature_low >= r2.temperature_high || r1.temperature_high <= r2.temperature_low)
+		return FALSE
 
 	//find the reactions with the shorter and longer required_reagents list
 	var/datum/chemical_reaction/long_req
