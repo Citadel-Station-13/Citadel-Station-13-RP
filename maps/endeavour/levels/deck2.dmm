@@ -11683,7 +11683,12 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/door/firedoor/glass,
-/obj/item/barrier_tape_segment/engineering,
+/obj/machinery/door/airlock/medical{
+	id_tag = "mentaldoor";
+	name = "Mental Health";
+	req_one_access = null
+	},
+/obj/map_helper/access_helper/airlock/station/medical/psychiatry,
 /turf/simulated/floor/wood,
 /area/medical/psych/psych_1)
 "ilh" = (
@@ -12901,6 +12906,11 @@
 	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/door/blast/shutters{
+	dir = 8;
+	id = "chemshutter";
+	name = "Chemistry Shutters"
+	},
 /turf/simulated/floor/plating,
 /area/medical/chemistry)
 "jhl" = (
@@ -13161,6 +13171,11 @@
 "jqy" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
 /obj/effect/paint/babyblue,
+/obj/machinery/door/blast/shutters{
+	dir = 8;
+	id = "chemshutter";
+	name = "Chemistry Shutters"
+	},
 /turf/simulated/floor/plating,
 /area/medical/chemistry)
 "jrk" = (
@@ -31157,7 +31172,12 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/door/firedoor/glass,
-/obj/item/barrier_tape_segment/engineering,
+/obj/machinery/door/airlock/medical{
+	id_tag = "mentaldoor2";
+	name = "Mental Health";
+	req_one_access = null
+	},
+/obj/map_helper/access_helper/airlock/station/medical/psychiatry,
 /turf/simulated/floor/wood,
 /area/medical/psych/psych_2)
 "wfP" = (
