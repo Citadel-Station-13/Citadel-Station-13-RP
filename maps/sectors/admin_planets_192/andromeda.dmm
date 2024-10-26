@@ -1068,10 +1068,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 1
 	},
-/turf/simulated/wall/r_wall/prepainted/security{
-	integrity_flags = 1;
-	integrity_enabled = 0
-	},
+/turf/simulated/floor/tiled/kafel_full/red,
 /area/admin_planet/andromeda/sec_lockers)
 "du" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
@@ -4410,6 +4407,16 @@
 	},
 /turf/simulated/floor/reinforced,
 /area/admin_planet/andromeda/lobby)
+"nq" = (
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/mob/living/bot/medibot/medass{
+	name = "Mr Hoxworth";
+	desc = "A little British medical robot designed by robotics."
+	},
+/turf/simulated/floor/tiled/kafel_full/beige,
+/area/admin_planet/andromeda/medward_treatment)
 "nt" = (
 /obj/structure/cable{
 	icon_state = "1-4"
@@ -5681,10 +5688,7 @@
 	},
 /obj/machinery/door/firedoor/glass,
 /obj/map_helper/access_helper/airlock/station/security/equipment,
-/turf/simulated/wall/r_wall/prepainted/security{
-	integrity_flags = 1;
-	integrity_enabled = 0
-	},
+/turf/simulated/floor/tiled/kafel_full/red,
 /area/admin_planet/andromeda/sec_lockers)
 "rn" = (
 /obj/machinery/air_alarm/monitor/north_mount,
@@ -9315,11 +9319,6 @@
 	color = "#A9A9A9"
 	},
 /area/admin_planet/andromeda/northern_lobby)
-"CQ" = (
-/obj/structure/transit_tube/high_velocity,
-/obj/structure/plasticflaps,
-/turf/space/basic,
-/area/admin_planet/andromeda/eastern_maints)
 "CS" = (
 /turf/simulated/floor/tiled/dark{
 	color = "#A9A9A9"
@@ -10587,6 +10586,10 @@
 	integrity_enabled = 0
 	},
 /area/admin_planet/andromeda/supply_prep)
+"GU" = (
+/obj/machinery/suit_cycler/engineering,
+/turf/simulated/floor/tiled/techfloor,
+/area/admin_planet/andromeda/engi_equipment)
 "GV" = (
 /obj/effect/floor_decal/carpet,
 /obj/structure/cable{
@@ -11562,9 +11565,9 @@
 /obj/effect/floor_decal/corner/paleblue{
 	dir = 5
 	},
-/obj/machinery/suit_cycler/medical{
+/obj/machinery/suit_storage_unit/medic{
 	density = 0;
-	pixel_x = -26
+	pixel_x = -27
 	},
 /turf/simulated/floor/tiled/kafel_full/green,
 /area/admin_planet/andromeda/medward_storage)
@@ -16194,10 +16197,7 @@
 	},
 /area/admin_planet/andromeda/sec_lobby)
 "Yx" = (
-/mob/living/bot/medibot/medass{
-	name = "Mr Hoxworth";
-	desc = "A little British medical robot designed by robotics."
-	},
+/obj/machinery/suit_cycler/medical,
 /turf/simulated/floor/tiled/kafel_full/gray,
 /area/admin_planet/andromeda/medward_storage)
 "Yy" = (
@@ -39001,7 +39001,7 @@ OC
 OC
 kO
 aP
-aP
+nq
 An
 mq
 wm
@@ -39168,7 +39168,7 @@ vm
 em
 tj
 ZH
-cj
+GU
 SN
 ik
 Zo
@@ -49318,7 +49318,7 @@ Ky
 Ky
 cy
 cy
-CQ
+OM
 cy
 cy
 Ky
@@ -49512,7 +49512,7 @@ Ky
 Ky
 cy
 cy
-CQ
+OM
 cy
 cy
 Ky
@@ -49706,7 +49706,7 @@ Ky
 Ky
 cy
 cy
-CQ
+OM
 cy
 cy
 Ky
