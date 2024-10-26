@@ -28,11 +28,6 @@
 	e.set_up(round(multiplier / 5, 1), holder.my_atom, 0, 0)
 	if(isliving(holder.my_atom))
 		e.amount *= 0.5
-		var/mob/living/L = holder.my_atom
-		if(L.stat != DEAD)
-			e.amount *= 0.5
-	else
-		holder.clear_reagents() //No more powergaming by creating a tiny amount of this
 	e.start()
 
 /datum/chemical_reaction/detonation/flash_powder
