@@ -42,7 +42,9 @@ SUBSYSTEM_DEF(chemistry)
 	var/paths = subtypesof(/datum/chemical_reaction)
 	chemical_reactions = list()
 
-	for(var/path in paths)
+	for(var/datum/chemical_reaction/path as anything in paths)
+		if(initial(path.abstract_type) == path)
+			continue
 		var/datum/chemical_reaction/D = new path
 		chemical_reactions += D
 	tim_sort(chemical_reactions, GLOBAL_PROC_REF(cmp_chemical_reaction_priority))

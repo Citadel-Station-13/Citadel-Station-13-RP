@@ -4,9 +4,7 @@
 /datum/chemical_reaction/solidification
 	name = "Solid Iron"
 	id = "solidiron"
-	result = null
 	required_reagents = list("frostoil" = 5, MAT_IRON = REAGENTS_PER_SHEET)
-	result_amount = 1
 	require_whole_numbers = TRUE
 	important_for_logging = TRUE
 	var/sheet_to_give = /obj/item/stack/material/iron

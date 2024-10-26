@@ -1,6 +1,8 @@
 //This File contains the recipes for drinks
 //Seperation of Drink Recipes and other chemicals
 
+/datum/chemical_reaction/drinks
+	abstract_type = /datum/chemical_reaction/drinks
 
 /datum/chemical_reaction/drinks/coffee
 	name = "Coffee"

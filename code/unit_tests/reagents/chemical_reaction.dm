@@ -9,6 +9,9 @@
 		// no result yet non-zero result amount
 		if(!reaction.result && reaction.result_amount > 0)
 			TEST_FAIL("[reaction] ([reaction.type]) has no result yet has non-zero result amount.")
+		// yes result yet zero result amount
+		if(reaction.result && reaction.result_amount <= 0)
+			TEST_FAIL("[reaction] ([reaction.type]) has a result yet has non-positive result amount.")
 		// no required reagents
 		if(!length(reaction.required_reagents))
 			TEST_FAIL("[reaction] ([reaction.type]) has no required reagents.")
