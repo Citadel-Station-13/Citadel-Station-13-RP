@@ -240,7 +240,7 @@
 //This reaction creates tallow, just like /datum/chemical_reaction/food/tallow, but by a different vector.
 /datum/chemical_reaction/tallow
 	name = "Tallow"
-	id = "tallow"
+	id = "tallow-2"
 	result = "tallow"
 	required_reagents = list("triglyceride" = 1, "protein" = 1, "alchemybase" = 1)
 	result_amount = 3
@@ -248,9 +248,7 @@
 /datum/chemical_reaction/soap
 	name = "Soap"
 	id = "soap"
-	result = null
 	required_reagents = list("tallow" = 1, "water" = 1, "ash" = 1)
-	result_amount = 1
 
 /datum/chemical_reaction/soap/on_reaction_instant(datum/reagent_holder/holder, multiplier)
 	. = ..()
@@ -260,11 +258,9 @@
 /datum/chemical_reaction/charcoal_stick
 	name = "Charcoal Stick"
 	id = "charcoal-stick"
-	result = null
 	required_reagents = list("tallow" = 1, "ash" = 1, "sacid" = 1)
-	result_amount = 1
 
-/datum/chemical_reaction/charcoal/on_reaction_instant(datum/reagent_holder/holder, multiplier)
+/datum/chemical_reaction/charcoal_stick/on_reaction_instant(datum/reagent_holder/holder, multiplier)
 	. = ..()
 	new /obj/item/pen/charcoal(get_turf(holder.my_atom))
 

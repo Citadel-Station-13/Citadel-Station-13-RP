@@ -359,13 +359,6 @@
 	required_reagents = list("vodka" = 1, "gin" = 1, "tequila" = 1, "cubalibre" = 3)
 	result_amount = 6
 
-/datum/chemical_reaction/drinks/icedtea
-	name = "Long Island Iced Tea"
-	id = "longislandicedtea"
-	result = "longislandicedtea"
-	required_reagents = list("vodka" = 1, "gin" = 1, "tequila" = 1, "cubalibre" = 3)
-	result_amount = 6
-
 /datum/chemical_reaction/drinks/threemileisland
 	name = "Three Mile Island Iced Tea"
 	id = "threemileisland"
@@ -565,7 +558,7 @@
 
 /datum/chemical_reaction/drinks/iced_beer2
 	name = "Iced Beer"
-	id = "iced_beer"
+	id = "iced_beer-2"
 	result = "iced_beer"
 	required_reagents = list("beer" = 5, "ice" = 1)
 	result_amount = 6
