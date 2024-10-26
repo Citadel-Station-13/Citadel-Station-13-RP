@@ -3,6 +3,7 @@
 
 /datum/chemical_reaction/drinks
 	abstract_type = /datum/chemical_reaction/drinks
+	___legacy_allow_collision_do_not_use = TRUE
 
 /datum/chemical_reaction/drinks/coffee
 	name = "Coffee"

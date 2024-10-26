@@ -8,6 +8,8 @@
 	temperature_low = T0C
 	temperature_high = T20C
 
+	required_container_path = /obj/item/reagent_containers/glass/distilling
+
 	var/temp_shift = 0 // How much the temperature changes when the reaction occurs.
 
 /datum/chemical_reaction/distilling/on_reaction_tick(datum/reagent_holder/holder, delta_time, multiplier)

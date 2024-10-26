@@ -9,6 +9,11 @@
 	var/id
 	/// reagent reaction flags - see [code/__DEFINES/reagents/flags.dm]
 	var/chemical_reaction_flags = NONE
+	/// ignore all collision checks
+	///
+	/// * THIS IS EXPLICITLY ONLY FOR FOOD UNTIL WE REWORK THEM TO NOT COLLIDE.
+	///   YOU ARE NOT UNDER ANY CIRCUMSTANCES ALLOWED TO USE THIS ANYWHERE ELSE.
+	var/___legacy_allow_collision_do_not_use = FALSE
 
 	//* identity *//
 

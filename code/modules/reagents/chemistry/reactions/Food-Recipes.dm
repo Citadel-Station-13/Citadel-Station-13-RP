@@ -3,6 +3,7 @@
 
 /datum/chemical_reaction/food
 	abstract_type = /datum/chemical_reaction/food
+	___legacy_allow_collision_do_not_use = TRUE
 
 /datum/chemical_reaction/food/soysauce
 	name = "Soy Sauce"
