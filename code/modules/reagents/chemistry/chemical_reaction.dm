@@ -38,6 +38,8 @@
 	/// required reagents as ratios. path or id is supported, prefer paths for compile time checking.
 	/// all of these will then make 1 unit of the reagent.
 	var/list/required_reagents = list()
+	/// cached: total volume of all required reagents for a single unit-multiplier (every 1 multiplier basically) reacted
+	var/tmp/required_reagents_unit_volume
 	/// require whole numbers of all reagents taken
 	///
 	/// * has no effect on ticked (non-instant) reactions
@@ -193,6 +195,10 @@
 		desc = resolved?.description || "Unknown Description - contact coders."
 		if(isnull(display_description) && !isnull(resolved))
 			display_description = resolved.display_description
+
+	required_reagents_unit_volume = 0
+	for(var/id in required_reagents)
+		required_reagents_unit_volume += required_reagents[id]
 
 //obtains any special data that will be provided to the reaction products
 //this is called just before reactants are removed.
