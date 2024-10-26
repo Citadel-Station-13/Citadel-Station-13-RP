@@ -275,12 +275,12 @@
 		var/maximum_multiplier = INFINITY
 
 		if(reaction.require_whole_numbers)
-			if(reaction.result_amount > 0)
+			if(reaction.result && reaction.result_amount > 0)
 				maximum_multiplier = min(maximum_multiplier, floor((maximum_volume - total_volume) / reaction.result_amount))
 			for(var/id in reaction.required_reagents)
 				maximum_multiplier = min(maximum_multiplier, floor(legacy_direct_access_reagent_amount(id) / reaction.required_reagents[id]))
 		else
-			if(reaction.result_amount > 0)
+			if(reaction.result && reaction.result_amount > 0)
 				maximum_multiplier = min(maximum_multiplier, (maximum_volume - total_volume) / reaction.result_amount)
 			for(var/id in reaction.required_reagents)
 				maximum_multiplier = min(maximum_multiplier, legacy_direct_access_reagent_amount(id) / reaction.required_reagents[id])
@@ -293,7 +293,7 @@
 		for(var/id in reaction.required_reagents)
 			remove_reagent(id, maximum_multiplier * reaction.required_reagents[id], TRUE)
 			ids_to_recheck[id] = TRUE
-		if(reaction.result_amount > 0)
+		if(reaction.result && reaction.result_amount > 0)
 			add_reagent(reaction.result, maximum_multiplier * reaction.result_amount, null, TRUE)
 			ids_to_recheck[reaction.result] = TRUE
 
