@@ -323,7 +323,7 @@
 	name = "Virus Food"
 	id = "virusfood"
 	result = "virusfood"
-	required_reagents = list("water" = 1, "milk" = 1)
+	required_reagents = list("water" = 1, "milk" = 1, "sugar" = 1)
 	result_amount = 5
 
 /datum/chemical_reaction/cryptobiolin
