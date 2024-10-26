@@ -86,9 +86,7 @@
 /datum/chemical_reaction/slime/grey_new_slime
 	name = "Slime Spawn"
 	id = "m_grey_spawn"
-	result = null
 	required_reagents = list(MAT_PHORON = 5)
-	result_amount = 1
 	required_container_path = /obj/item/slime_extract/grey
 
 /datum/chemical_reaction/slime/grey_new_slime/on_extract_reaction(datum/reagent_holder/holder, multiplier, obj/item/slime_extract/extract)
@@ -100,9 +98,7 @@
 /datum/chemical_reaction/slime/grey_monkey
 	name = "Slime Monkey"
 	id = "m_grey_monkey"
-	result = null
 	required_reagents = list("blood" = 5)
-	result_amount = 1
 	required_container_path = /obj/item/slime_extract/grey
 
 /datum/chemical_reaction/slime/grey_monkey/on_extract_reaction(datum/reagent_holder/holder, multiplier, obj/item/slime_extract/extract)
@@ -133,9 +129,7 @@
 /datum/chemical_reaction/slime/metal_materials_basic
 	name = "Slime Basic Construction Materials"
 	id = "m_metal_basic"
-	result = null
 	required_reagents = list(MAT_PHORON = 5)
-	result_amount = 1
 	required_container_path = /obj/item/slime_extract/metal
 
 /datum/chemical_reaction/slime/metal_materials_basic/on_extract_reaction(datum/reagent_holder/holder, multiplier, obj/item/slime_extract/extract)
@@ -149,7 +143,6 @@
 	name = "Slime Advanced Construction Materials"
 	id = "m_metal_adv"
 	required_reagents = list("blood" = 5)
-	result_amount = 1
 	required_container_path = /obj/item/slime_extract/metal
 
 /datum/chemical_reaction/slime/metal_materials_adv/on_extract_reaction(datum/reagent_holder/holder, multiplier, obj/item/slime_extract/extract)
@@ -163,7 +156,6 @@
 	name = "Slime Weird Construction Materials"
 	id = "m_metal_weird"
 	required_reagents = list("water" = 5)
-	result_amount = 1
 	required_container_path = /obj/item/slime_extract/metal
 
 /datum/chemical_reaction/slime/metal_materials_weird/on_extract_reaction(datum/reagent_holder/holder, multiplier, obj/item/slime_extract/extract)
@@ -177,7 +169,6 @@
 	name = "Slime Weird Construction Materials"
 	id = "m_metal_steel"
 	required_reagents = list("slimejelly" = 5)
-	result_amount = 1
 	required_container_path = /obj/item/slime_extract/metal
 
 /datum/chemical_reaction/slime/metal_materials_steel/on_extract_reaction(datum/reagent_holder/holder, multiplier, obj/item/slime_extract/extract)
@@ -209,7 +200,6 @@
 	name = "Slime Stability"
 	id = "m_blue_stability"
 	required_reagents = list("blood" = 5)
-	result_amount = 1
 	required_container_path = /obj/item/slime_extract/blue
 
 /datum/chemical_reaction/slime/blue_stability/on_extract_reaction(datum/reagent_holder/holder, multiplier, obj/item/slime_extract/extract)
@@ -221,7 +211,6 @@
 	name = "Slime Calm"
 	id = "m_blue_calm"
 	required_reagents = list("water" = 5)
-	result_amount = 1
 	required_container_path = /obj/item/slime_extract/blue
 
 /datum/chemical_reaction/slime/blue_calm/on_extract_reaction(datum/reagent_holder/holder, multiplier, obj/item/slime_extract/extract)
@@ -275,7 +264,6 @@
 	name = "Slime Steroid"
 	id = "m_purple_steroid"
 	required_reagents = list(MAT_PHORON = 5)
-	result_amount = 1
 	required_container_path = /obj/item/slime_extract/purple
 
 /datum/chemical_reaction/slime/purple_steroid/on_extract_reaction(datum/reagent_holder/holder, multiplier, obj/item/slime_extract/extract)
@@ -287,7 +275,6 @@
 	name = "Slime Infetility"
 	id = "m_purple_infertility"
 	required_reagents = list("blood" = 5)
-	result_amount = 1
 	required_container_path = /obj/item/slime_extract/purple
 
 /datum/chemical_reaction/slime/purple_infertility/on_extract_reaction(datum/reagent_holder/holder, multiplier, obj/item/slime_extract/extract)
@@ -299,7 +286,6 @@
 	name = "Slime Shrink"
 	id = "m_purple_shrink"
 	required_reagents = list("water" = 5)
-	result_amount = 1
 	required_container_path = /obj/item/slime_extract/purple
 
 /datum/chemical_reaction/slime/purple_shrink/on_extract_reaction(datum/reagent_holder/holder, multiplier, obj/item/slime_extract/extract)
@@ -311,7 +297,6 @@
 	name = "Slime Fetility"
 	id = "m_purple_fertility"
 	required_reagents = list("slimejelly" = 5)
-	result_amount = 1
 	required_container_path = /obj/item/slime_extract/purple
 
 /datum/chemical_reaction/slime/purple_fertility/on_extract_reaction(datum/reagent_holder/holder, multiplier, obj/item/slime_extract/extract)
@@ -334,7 +319,6 @@
 	name = "Slime Fire"
 	id = "m_orange_fire"
 	required_reagents = list(MAT_PHORON = 5)
-	result_amount = 1
 	required_container_path = /obj/item/slime_extract/orange
 
 /datum/chemical_reaction/slime/orange_fire/on_extract_reaction(datum/reagent_holder/holder, multiplier, obj/item/slime_extract/extract)
@@ -361,7 +345,6 @@
 	name = "Slime Heat Wave"
 	id = "m_orange_heatwave"
 	required_reagents = list("blood" = 5)
-	result_amount = 1
 	required_container_path = /obj/item/slime_extract/orange
 
 /datum/chemical_reaction/slime/orange_heatwave/on_extract_reaction(datum/reagent_holder/holder, multiplier, obj/item/slime_extract/extract)
@@ -417,7 +400,6 @@
 	name = "Slime Smoke"
 	id = "m_orange_smoke"
 	required_reagents = list("water" = 5)
-	result_amount = 1
 	required_container_path = /obj/item/slime_extract/orange
 
 /datum/chemical_reaction/slime/orange_smoke/on_extract_reaction(datum/reagent_holder/holder, multiplier, obj/item/slime_extract/extract)
@@ -455,7 +437,6 @@
 	name = "Slime Lightning"
 	id = "m_yellow_lightning"
 	required_reagents = list(MAT_PHORON = 5)
-	result_amount = 1
 	required_container_path = /obj/item/slime_extract/yellow
 
 /datum/chemical_reaction/slime/yellow_lightning/on_extract_reaction(datum/reagent_holder/holder, multiplier, obj/item/slime_extract/extract)
@@ -472,7 +453,6 @@
 	name = "Slime Flashlight"
 	id = "m_yellow_flashlight"
 	required_reagents = list("blood" = 5)
-	result_amount = 1
 	required_container_path = /obj/item/slime_extract/yellow
 
 /datum/chemical_reaction/slime/yellow_flashlight/on_extract_reaction(datum/reagent_holder/holder, multiplier, obj/item/slime_extract/extract)
@@ -484,7 +464,6 @@
 	name = "Slime EMP"
 	id = "m_yellow_emp"
 	required_reagents = list("water" = 5)
-	result_amount = 1
 	required_container_path = /obj/item/slime_extract/yellow
 
 /datum/chemical_reaction/slime/yellow_emp/on_extract_reaction(datum/reagent_holder/holder, multiplier, obj/item/slime_extract/extract)
@@ -502,7 +481,6 @@
 	name = "Slime Cell"
 	id = "m_yellow_cell"
 	required_reagents = list("slimejelly" = 5)
-	result_amount = 1
 	required_container_path = /obj/item/slime_extract/yellow
 
 /datum/chemical_reaction/slime/yellow_battery/on_extract_reaction(datum/reagent_holder/holder, multiplier, obj/item/slime_extract/extract)
@@ -525,7 +503,6 @@
 	name = "Slime Random Mobs"
 	id = "m_gold_random_mobs"
 	required_reagents = list(MAT_PHORON = 5)
-	result_amount = 1
 	required_container_path = /obj/item/slime_extract/gold
 
 /datum/chemical_reaction/slime/gold_random_mobs/on_extract_reaction(datum/reagent_holder/holder, multiplier, obj/item/slime_extract/extract)
@@ -551,7 +528,6 @@
 	name = "Slime Hostile Mob"
 	id = "m_gold_hostile_mob"
 	required_reagents = list("blood" = 5)
-	result_amount = 1
 	required_container_path = /obj/item/slime_extract/gold
 
 /datum/chemical_reaction/slime/gold_hostile_mob/on_extract_reaction(datum/reagent_holder/holder, multiplier, obj/item/slime_extract/extract)
@@ -567,7 +543,6 @@
 	name = "Slime Safe Mob"
 	id = "m_gold_safe_mob"
 	required_reagents = list("water" = 5)
-	result_amount = 1
 	required_container_path = /obj/item/slime_extract/gold
 
 /datum/chemical_reaction/slime/gold_safe_mob/on_extract_reaction(datum/reagent_holder/holder, multiplier, obj/item/slime_extract/extract)
@@ -586,7 +561,6 @@
 	name = "Slime Gold"
 	id = "m_gold_gold"
 	required_reagents = list("slimejelly" = 5)
-	result_amount = 1
 	required_container_path = /obj/item/slime_extract/gold
 
 /datum/chemical_reaction/slime/gold_materials_gold/on_extract_reaction(datum/reagent_holder/holder, multiplier, obj/item/slime_extract/extract)
@@ -609,7 +583,6 @@
 	name = "Slime Basic Science Materials"
 	id = "m_silver_basic"
 	required_reagents = list(MAT_PHORON = 5)
-	result_amount = 1
 	required_container_path = /obj/item/slime_extract/silver
 
 /datum/chemical_reaction/slime/silver_materials_basic/on_extract_reaction(datum/reagent_holder/holder, multiplier, obj/item/slime_extract/extract)
@@ -623,7 +596,6 @@
 	name = "Slime Advanced Science Materials"
 	id = "m_silver_adv"
 	required_reagents = list("blood" = 5)
-	result_amount = 1
 	required_container_path = /obj/item/slime_extract/silver
 
 /datum/chemical_reaction/slime/silver_materials_adv/on_extract_reaction(datum/reagent_holder/holder, multiplier, obj/item/slime_extract/extract)
@@ -636,7 +608,6 @@
 	name = "Slime Random Materials"
 	id = "m_silver_random"
 	required_reagents = list("water" = 5)
-	result_amount = 1
 	required_container_path = /obj/item/slime_extract/silver
 
 /datum/chemical_reaction/slime/silver_materials_random/on_extract_reaction(datum/reagent_holder/holder, multiplier, obj/item/slime_extract/extract)
@@ -661,7 +632,6 @@
 	name = "Slime Silver"
 	id = "m_silver_silver"
 	required_reagents = list("slimejelly" = 5)
-	result_amount = 1
 	required_container_path = /obj/item/slime_extract/silver
 
 /datum/chemical_reaction/slime/silver_materials_silver/on_extract_reaction(datum/reagent_holder/holder, multiplier, obj/item/slime_extract/extract)
@@ -712,7 +682,6 @@
 	name = "Slime Cold Snap"
 	id = "m_darkblue_coldsnap"
 	required_reagents = list(MAT_PHORON = 5)
-	result_amount = 1
 	required_container_path = /obj/item/slime_extract/dark_blue
 
 // This iterates over a ZAS zone's contents, so that things seperated in other zones aren't subjected to the temperature drop.
@@ -782,7 +751,6 @@
 	name = "Slime Temperature Resistance"
 	id = "m_darkblue_temperature_resist"
 	required_reagents = list("blood" = 5)
-	result_amount = 1
 	required_container_path = /obj/item/slime_extract/dark_blue
 
 /datum/chemical_reaction/slime/dark_blue_temp_resist/on_extract_reaction(datum/reagent_holder/holder, multiplier, obj/item/slime_extract/extract)
@@ -817,7 +785,6 @@
 	name = "Slime Death"
 	id = "m_darkblue_death"
 	required_reagents = list("slimejelly" = 5)
-	result_amount = 1
 	required_container_path = /obj/item/slime_extract/dark_blue
 
 /datum/chemical_reaction/slime/dark_blue_death/on_extract_reaction(datum/reagent_holder/holder, multiplier, obj/item/slime_extract/extract)
@@ -841,7 +808,6 @@
 	name = "Slime Mutation"
 	id = "m_red_mutation"
 	required_reagents = list(MAT_PHORON = 5)
-	result_amount = 1
 	required_container_path = /obj/item/slime_extract/red
 
 /datum/chemical_reaction/slime/red_mutation/on_extract_reaction(datum/reagent_holder/holder, multiplier, obj/item/slime_extract/extract)
@@ -853,7 +819,6 @@
 	name = "Slime Enrage"
 	id = "m_red_enrage"
 	required_reagents = list("blood" = 5)
-	result_amount = 1
 	required_container_path = /obj/item/slime_extract/red
 
 /datum/chemical_reaction/slime/red_enrage/on_extract_reaction(datum/reagent_holder/holder, multiplier, obj/item/slime_extract/extract)
@@ -897,7 +862,6 @@
 	name = "Slime Ferality"
 	id = "m_red_ferality"
 	required_reagents = list("slimejelly" = 5)
-	result_amount = 1
 	required_container_path = /obj/item/slime_extract/red
 
 /datum/chemical_reaction/slime/red_ferality/on_extract_reaction(datum/reagent_holder/holder, multiplier, obj/item/slime_extract/extract)
@@ -920,7 +884,6 @@
 	name = "Slime Radiation Pulse"
 	id = "m_green_radpulse"
 	required_reagents = list(MAT_PHORON = 5)
-	result_amount = 1
 	required_container_path = /obj/item/slime_extract/green
 
 /datum/chemical_reaction/slime/green_radpulse/on_extract_reaction(datum/reagent_holder/holder, multiplier, obj/item/slime_extract/extract)
@@ -935,7 +898,6 @@
 	name = "Slime Radiation Emitter"
 	id = "m_green_emitter"
 	required_reagents = list("blood" = 5)
-	result_amount = 1
 	required_container_path = /obj/item/slime_extract/green
 
 /datum/chemical_reaction/slime/green_emitter/on_extract_reaction(datum/reagent_holder/holder, multiplier, obj/item/slime_extract/extract)
@@ -957,7 +919,6 @@
 	name = "Slime Uranium"
 	id = "m_green_uranium"
 	required_reagents = list("slimejelly" = 5)
-	result_amount = 1
 	required_container_path = /obj/item/slime_extract/green
 
 /datum/chemical_reaction/slime/green_uranium/on_extract_reaction(datum/reagent_holder/holder, multiplier, obj/item/slime_extract/extract)
@@ -1007,7 +968,6 @@
 	name = "Slime Heal Pulse"
 	id = "m_pink_heal_pulse"
 	required_reagents = list("slimejelly" = 5)
-	result_amount = 1
 	required_container_path = /obj/item/slime_extract/pink
 
 /datum/chemical_reaction/slime/pink_heal_pulse/on_extract_reaction(datum/reagent_holder/holder, multiplier, obj/item/slime_extract/extract)
@@ -1056,7 +1016,6 @@
 	name = "Slime Fake Explosion"
 	id = "m_oil_fakeboom"
 	required_reagents = list("water" = 5)
-	result_amount = 1
 	required_container_path = /obj/item/slime_extract/oil
 
 /datum/chemical_reaction/slime/oil_fakesplosion/on_extract_reaction(datum/reagent_holder/holder, multiplier, obj/item/slime_extract/extract)
@@ -1069,7 +1028,6 @@
 	name = "Slime Explosion"
 	id = "m_oil_boom"
 	required_reagents = list("slimejelly" = 5)
-	result_amount = 1
 	required_container_path = /obj/item/slime_extract/oil
 
 /datum/chemical_reaction/slime/oil_explosion/on_extract_reaction(datum/reagent_holder/holder, multiplier, obj/item/slime_extract/extract)
@@ -1107,7 +1065,6 @@
 	name = "Slime Bluespace Crystals"
 	id = "m_bs_crystals"
 	required_reagents = list(MAT_PHORON = 5)
-	result_amount = 1
 	required_container_path = /obj/item/slime_extract/bluespace
 
 /datum/chemical_reaction/slime/bluespace_crystals/on_extract_reaction(datum/reagent_holder/holder, multiplier, obj/item/slime_extract/extract)
@@ -1120,7 +1077,6 @@
 	name = "Slime Bluespace Pouch"
 	id = "m_bs_pouch"
 	required_reagents = list("blood" = 5)
-	result_amount = 1
 	required_container_path = /obj/item/slime_extract/bluespace
 
 /datum/chemical_reaction/slime/bluespace_pouch/on_extract_reaction(datum/reagent_holder/holder, multiplier, obj/item/slime_extract/extract)
@@ -1132,7 +1088,6 @@
 	name = "Slime Bluespace Chaos"
 	id = "m_bs_chaos"
 	required_reagents = list("water" = 5)
-	result_amount = 1
 	required_container_path = /obj/item/slime_extract/bluespace
 
 /datum/chemical_reaction/slime/bluespace_chaotic_tele/on_extract_reaction(datum/reagent_holder/holder, multiplier, obj/item/slime_extract/extract)
@@ -1157,7 +1112,6 @@
 	name = "Slime Bluespace Teleporter"
 	id = "m_bs_teleporter"
 	required_reagents = list("slimejelly" = 5)
-	result_amount = 1
 	required_container_path = /obj/item/slime_extract/bluespace
 
 /datum/chemical_reaction/slime/bluespace_teleporter/on_extract_reaction(datum/reagent_holder/holder, multiplier, obj/item/slime_extract/extract)
@@ -1181,7 +1135,6 @@
 	name = "Slime Enhancer"
 	id = "m_cerulean_enhancer"
 	required_reagents = list(MAT_PHORON = 5)
-	result_amount = 1
 	required_container_path = /obj/item/slime_extract/cerulean
 
 /datum/chemical_reaction/slime/cerulean_enhancer/on_extract_reaction(datum/reagent_holder/holder, multiplier, obj/item/slime_extract/extract)
@@ -1193,7 +1146,6 @@
 	name = "Slime Reinvigoration"
 	id = "m_cerulean_reinvigoration"
 	required_reagents = list("blood" = 5)
-	result_amount = 1
 	required_container_path = /obj/item/slime_extract/cerulean
 
 /datum/chemical_reaction/slime/cerulean_reinvigoration/on_extract_reaction(datum/reagent_holder/holder, multiplier, obj/item/slime_extract/extract)
@@ -1205,7 +1157,6 @@
 	name = "Slime Potion Mimic"
 	id = "m_cerulean_potion_mimic"
 	required_reagents = list("water" = 5)
-	result_amount = 1
 	required_container_path = /obj/item/slime_extract/cerulean
 
 /datum/chemical_reaction/slime/cerulean_potion_mimic/on_extract_reaction(datum/reagent_holder/holder, multiplier, obj/item/slime_extract/extract)
@@ -1217,7 +1168,6 @@
 	name = "Slime Random Potion"
 	id = "m_cerulean_random_potion"
 	required_reagents = list("slimejelly" = 5)
-	result_amount = 1
 	required_container_path = /obj/item/slime_extract/cerulean
 
 /datum/chemical_reaction/slime/cerulean_random_potion/on_extract_reaction(datum/reagent_holder/holder, multiplier, obj/item/slime_extract/extract)
@@ -1241,7 +1191,6 @@
 	name = "Slime Feeding"
 	id = "m_amber_slime_food"
 	required_reagents = list(MAT_PHORON = 5)
-	result_amount = 1
 	required_container_path = /obj/item/slime_extract/amber
 
 /datum/chemical_reaction/slime/amber_slimefood/on_extract_reaction(datum/reagent_holder/holder, multiplier, obj/item/slime_extract/extract)
@@ -1253,7 +1202,6 @@
 	name = "Slime Random Food"
 	id = "m_amber_random_food"
 	required_reagents = list("blood" = 5)
-	result_amount = 1
 	required_container_path = /obj/item/slime_extract/amber
 
 /datum/chemical_reaction/slime/amber_random_food/on_extract_reaction(datum/reagent_holder/holder, multiplier, obj/item/slime_extract/extract)
@@ -1276,7 +1224,6 @@
 	name = "Slime Snack"
 	id = "m_amber_snack"
 	required_reagents = list("water" = 5)
-	result_amount = 1
 	required_container_path = /obj/item/slime_extract/amber
 
 /datum/chemical_reaction/slime/amber_snack/on_extract_reaction(datum/reagent_holder/holder, multiplier, obj/item/slime_extract/extract)
@@ -1310,7 +1257,6 @@
 	name = "Slime Promethean"
 	id = "m_sapphire_promethean"
 	required_reagents = list(MAT_PHORON = 5)
-	result_amount = 1
 	required_container_path = /obj/item/slime_extract/sapphire
 
 /datum/chemical_reaction/slime/sapphire_promethean/on_extract_reaction(datum/reagent_holder/holder, multiplier, obj/item/slime_extract/extract)
@@ -1331,7 +1277,6 @@
 	name = "Slime Plushies"
 	id = "m_sapphire_plushies"
 	required_reagents = list("water" = 5)
-	result_amount = 1
 	required_container_path = /obj/item/slime_extract/sapphire
 
 /datum/chemical_reaction/slime/sapphire_plushies/on_extract_reaction(datum/reagent_holder/holder, multiplier, obj/item/slime_extract/extract)
@@ -1348,7 +1293,6 @@
 	name = "Slime Sapience"
 	id = "m_sapphire_sapience"
 	required_reagents = list("slimejelly" = 5)
-	result_amount = 1
 	required_container_path = /obj/item/slime_extract/sapphire
 
 /datum/chemical_reaction/slime/sapphire_sapience/on_extract_reaction(datum/reagent_holder/holder, multiplier, obj/item/slime_extract/extract)
@@ -1370,7 +1314,6 @@
 	name = "Slime Strength"
 	id = "m_ruby_strength"
 	required_reagents = list(MAT_PHORON = 5)
-	result_amount = 1
 	required_container_path = /obj/item/slime_extract/ruby
 
 /datum/chemical_reaction/slime/ruby_swole/on_extract_reaction(datum/reagent_holder/holder, multiplier, obj/item/slime_extract/extract)
@@ -1397,7 +1340,6 @@
 	name = "Slime Pull"
 	id = "m_ruby_pull"
 	required_reagents = list("blood" = 5)
-	result_amount = 1
 	required_container_path = /obj/item/slime_extract/ruby
 
 /datum/chemical_reaction/slime/ruby_pull/on_extract_reaction(datum/reagent_holder/holder, multiplier, obj/item/slime_extract/extract)
@@ -1422,7 +1364,6 @@
 	name = "Slime Push"
 	id = "m_ruby_push"
 	required_reagents = list("slimejelly" = 5)
-	result_amount = 1
 	required_container_path = /obj/item/slime_extract/ruby
 
 /datum/chemical_reaction/slime/ruby_push/on_extract_reaction(datum/reagent_holder/holder, multiplier, obj/item/slime_extract/extract)
@@ -1459,7 +1400,6 @@
 	name = "Slime Agility"
 	id = "m_emerald_agility"
 	required_reagents = list(MAT_PHORON = 5)
-	result_amount = 1
 	required_container_path = /obj/item/slime_extract/emerald
 
 /datum/chemical_reaction/slime/emerald_agility/on_extract_reaction(datum/reagent_holder/holder, multiplier, obj/item/slime_extract/extract)
@@ -1485,7 +1425,6 @@
 	name = "Slime Speed"
 	id = "m_emerald_speed"
 	required_reagents = list("blood" = 5)
-	result_amount = 1
 	required_container_path = /obj/item/slime_extract/emerald
 
 /datum/chemical_reaction/slime/emerald_speed/on_extract_reaction(datum/reagent_holder/holder, multiplier, obj/item/slime_extract/extract)
@@ -1518,7 +1457,6 @@
 	name = "Slime Hell"
 	id = "m_emerald_hell"
 	required_reagents = list("slimejelly" = 5)
-	result_amount = 1
 	required_container_path = /obj/item/slime_extract/emerald
 
 /datum/chemical_reaction/slime/emerald_hell/on_extract_reaction(datum/reagent_holder/holder, multiplier, obj/item/slime_extract/extract)
@@ -1547,7 +1485,6 @@
 	name = "Slime Friendship"
 	id = "m_lightpink_friendship"
 	required_reagents = list(MAT_PHORON = 5)
-	result_amount = 1
 	required_container_path = /obj/item/slime_extract/light_pink
 
 /datum/chemical_reaction/slime/light_pink_friendship/on_extract_reaction(datum/reagent_holder/holder, multiplier, obj/item/slime_extract/extract)
@@ -1559,7 +1496,6 @@
 	name = "Slime Loyalty"
 	id = "m_lightpink_loyalty"
 	required_reagents = list("blood" = 5)
-	result_amount = 1
 	required_container_path = /obj/item/slime_extract/light_pink
 
 /datum/chemical_reaction/slime/light_pink_loyalty/on_extract_reaction(datum/reagent_holder/holder, multiplier, obj/item/slime_extract/extract)
@@ -1571,7 +1507,6 @@
 	name = "Slime Docility"
 	id = "m_lightpink_docility"
 	required_reagents = list("water" = 5)
-	result_amount = 1
 	required_container_path = /obj/item/slime_extract/light_pink
 
 /datum/chemical_reaction/slime/light_pink_docility/on_extract_reaction(datum/reagent_holder/holder, multiplier, obj/item/slime_extract/extract)
@@ -1583,7 +1518,6 @@
 	name = "Slime Obedience"
 	id = "m_lightpink_obedience"
 	required_reagents = list("slimejelly" = 5)
-	result_amount = 1
 	required_container_path = /obj/item/slime_extract/light_pink
 
 /datum/chemical_reaction/slime/light_pink_obedience/on_extract_reaction(datum/reagent_holder/holder, multiplier, obj/item/slime_extract/extract)
@@ -1607,7 +1541,6 @@
 	name = "Slime Random Slime"
 	id = "m_rainbow_random_slime"
 	required_reagents = list(MAT_PHORON = 5)
-	result_amount = 1
 	required_container_path = /obj/item/slime_extract/rainbow
 
 /datum/chemical_reaction/slime/rainbow_random_slime/on_extract_reaction(datum/reagent_holder/holder, multiplier, obj/item/slime_extract/extract)
@@ -1631,7 +1564,6 @@
 	name = "Slime Random Extract"
 	id = "m_rainbow_random_extract"
 	required_reagents = list("blood" = 5)
-	result_amount = 1
 	required_container_path = /obj/item/slime_extract/rainbow
 
 /datum/chemical_reaction/slime/rainbow_random_extract/on_extract_reaction(datum/reagent_holder/holder, multiplier, obj/item/slime_extract/extract)
@@ -1644,7 +1576,6 @@
 	name = "Slime Colors"
 	id = "m_rainbow_colors"
 	required_reagents = list("water" = 5)
-	result_amount = 1
 	required_container_path = /obj/item/slime_extract/rainbow
 
 /datum/chemical_reaction/slime/rainbow_colors/on_extract_reaction(datum/reagent_holder/holder, multiplier, obj/item/slime_extract/extract)
@@ -1657,9 +1588,8 @@
 	name = "Slime Unity"
 	id = "m_rainbow_unity"
 	required_reagents = list("slimejelly" = 5)
-	result_amount = 1
 	required_container_path = /obj/item/slime_extract/rainbow
 
-/datum/chemical_reaction/slime/rainbow_unity/on_extract_reaction(datum/reagent_holder/holder, multiplier, obj/item/slime_extract/extract)
+/datum/chemical_reaction/slime/rainbow_unity/on_extract_reaction(dat	um/reagent_holder/holder, multiplier, obj/item/slime_extract/extract)
 	new /obj/item/slimepotion/unity(get_turf(holder.my_atom))
 	..()

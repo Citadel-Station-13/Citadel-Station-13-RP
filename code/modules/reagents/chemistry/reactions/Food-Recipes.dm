@@ -1,6 +1,9 @@
 //This file contains Food recipes for dough and similar
 //Seperation of Food Recipes and other chemicals
 
+/datum/chemical_reaction/food
+	abstract_type = /datum/chemical_reaction/food
+
 /datum/chemical_reaction/food/soysauce
 	name = "Soy Sauce"
 	id = "soysauce"
