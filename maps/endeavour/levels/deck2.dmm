@@ -8479,6 +8479,16 @@
 "gii" = (
 /turf/simulated/floor/tiled,
 /area/teleporter/departing)
+"gir" = (
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
+/obj/structure/catwalk,
+/obj/machinery/light/small{
+	dir = 4
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/research)
 "giU" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/cable/green{
@@ -21327,6 +21337,12 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/virology_aft_access)
+"pJM" = (
+/obj/machinery/light/small{
+	dir = 4
+	},
+/turf/simulated/floor/plating,
+/area/rnd/research/researchdivision)
 "pKn" = (
 /obj/machinery/atmospherics/portables_connector,
 /obj/machinery/portable_atmospherics/canister/carbon_dioxide{
@@ -38634,7 +38650,7 @@ jMj
 eZZ
 xIf
 xIf
-xIf
+mUB
 xIf
 xVe
 feQ
@@ -39222,7 +39238,7 @@ tcy
 xIf
 xIf
 xIf
-xIf
+mUB
 xIf
 qpq
 pTU
@@ -43678,7 +43694,7 @@ jVn
 bOa
 kCt
 hqT
-hqT
+pJM
 hqT
 dKQ
 gIV
@@ -44246,7 +44262,7 @@ neh
 neh
 tCF
 bzY
-bzY
+gir
 bzY
 bzY
 bzY
