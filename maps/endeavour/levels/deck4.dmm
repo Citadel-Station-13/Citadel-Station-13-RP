@@ -231,8 +231,7 @@
 	dir = 1
 	},
 /obj/machinery/light{
-	dir = 1;
-	pixel_y = 29
+	dir = 1
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/endeavour/hallway/d4portforhall)
@@ -244,8 +243,7 @@
 	dir = 1
 	},
 /obj/machinery/light{
-	dir = 1;
-	pixel_y = 29
+	dir = 1
 	},
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /turf/simulated/floor/tiled/steel_grid,
@@ -279,8 +277,7 @@
 	dir = 1
 	},
 /obj/machinery/light{
-	dir = 1;
-	pixel_y = 29
+	dir = 1
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/endeavour/hallway/d4portamidhall)
@@ -1783,9 +1780,7 @@
 "coa" = (
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/corner/lightorange/border,
-/obj/machinery/light{
-	pixel_y = -24
-	},
+/obj/machinery/light,
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d4porthall)
 "coI" = (
@@ -2238,9 +2233,7 @@
 "cMJ" = (
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/corner/lightorange/border,
-/obj/machinery/light{
-	pixel_y = -24
-	},
+/obj/machinery/light,
 /turf/simulated/floor/tiled/steel_ridged,
 /area/endeavour/hallway/d4starboardafthall)
 "cNE" = (
@@ -2731,8 +2724,7 @@
 	dir = 1
 	},
 /obj/machinery/light{
-	dir = 1;
-	pixel_y = 29
+	dir = 1
 	},
 /obj/machinery/camera/network/engineering,
 /turf/simulated/floor/tiled/steel_grid,
@@ -3246,8 +3238,7 @@
 /area/space)
 "emb" = (
 /obj/machinery/light{
-	dir = 1;
-	pixel_y = 29
+	dir = 1
 	},
 /turf/simulated/floor/plating,
 /area/endeavour/hallway/d4aftmaint)
@@ -6318,9 +6309,7 @@
 "iar" = (
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/corner/lightorange/border,
-/obj/machinery/light{
-	pixel_y = -24
-	},
+/obj/machinery/light,
 /turf/simulated/floor/tiled/steel_ridged,
 /area/endeavour/hallway/d4starboardamidhall)
 "ici" = (
@@ -7473,9 +7462,7 @@
 "jGV" = (
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/corner/lightorange/border,
-/obj/machinery/light{
-	pixel_y = -24
-	},
+/obj/machinery/light,
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
@@ -8210,6 +8197,7 @@
 /obj/machinery/door/firedoor{
 	dir = 8
 	},
+/obj/map_helper/access_helper/airlock/station/engineering/department,
 /turf/simulated/floor/wood,
 /area/engineering/hallway/lower)
 "kJR" = (
@@ -8596,13 +8584,17 @@
 /turf/simulated/floor/tiled/white,
 /area/engineering/shield_gen)
 "lmh" = (
-/obj/machinery/atmospherics/pipe/manifold/hidden/cyan,
-/obj/effect/floor_decal/corner_techfloor_grid{
-	dir = 10
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
 	},
-/obj/item/barrier_tape_segment/engineering,
-/turf/simulated/floor/tiled/techfloor,
-/area/engineering/atmos/workshop)
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/steel,
+/area/endeavour/hallway/d4portforhall)
 "lnb" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
@@ -9674,9 +9666,7 @@
 "mFR" = (
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/corner/lightorange/border,
-/obj/machinery/light{
-	pixel_y = -24
-	},
+/obj/machinery/light,
 /turf/simulated/floor/tiled/steel_grid,
 /area/endeavour/hallway/d4starboardforhall)
 "mGf" = (
@@ -10570,7 +10560,6 @@
 	req_one_access = null
 	},
 /obj/map_helper/access_helper/airlock/station/engineering/department,
-/obj/item/barrier_tape_segment/engineering,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
@@ -11119,8 +11108,7 @@
 	dir = 1
 	},
 /obj/machinery/light{
-	dir = 1;
-	pixel_y = 29
+	dir = 1
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/endeavour/hallway/d4portafthall)
@@ -11494,9 +11482,7 @@
 "oSP" = (
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/corner/lightorange/border,
-/obj/machinery/light{
-	pixel_y = -24
-	},
+/obj/machinery/light,
 /turf/simulated/floor/tiled/steel_grid,
 /area/endeavour/hallway/d4portafthall)
 "oSZ" = (
@@ -11653,8 +11639,7 @@
 	dir = 1
 	},
 /obj/machinery/light{
-	dir = 1;
-	pixel_y = 29
+	dir = 1
 	},
 /turf/simulated/floor/tiled/steel_ridged,
 /area/endeavour/hallway/d4portamidhall)
@@ -11774,6 +11759,7 @@
 /obj/machinery/door/firedoor{
 	dir = 8
 	},
+/obj/map_helper/access_helper/airlock/station/engineering/department,
 /turf/simulated/floor/wood,
 /area/engineering/break_room)
 "poh" = (
@@ -11957,8 +11943,7 @@
 	dir = 1
 	},
 /obj/machinery/light{
-	dir = 1;
-	pixel_y = 29
+	dir = 1
 	},
 /turf/simulated/floor/tiled/steel_ridged,
 /area/endeavour/hallway/d4porthall)
@@ -12967,9 +12952,7 @@
 "rbo" = (
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/corner/lightorange/border,
-/obj/machinery/light{
-	pixel_y = -24
-	},
+/obj/machinery/light,
 /turf/simulated/floor/tiled/steel_ridged,
 /area/endeavour/hallway/d4starboardforhall)
 "rep" = (
@@ -13548,7 +13531,6 @@
 /obj/effect/floor_decal/corner_techfloor_grid{
 	dir = 10
 	},
-/obj/item/barrier_tape_segment/engineering,
 /turf/simulated/floor/tiled/techfloor,
 /area/engineering/atmos/workshop)
 "rZB" = (
@@ -13887,8 +13869,7 @@
 /area/engineering/atmos)
 "sDN" = (
 /obj/machinery/light{
-	dir = 1;
-	pixel_y = 29
+	dir = 1
 	},
 /obj/machinery/light/small{
 	dir = 1
@@ -14240,13 +14221,11 @@
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/sleep/engi_wash)
 "tdV" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/cyan,
-/obj/effect/floor_decal/corner_techfloor_grid{
-	dir = 5
+/obj/machinery/light{
+	dir = 1
 	},
-/obj/item/barrier_tape_segment/engineering,
-/turf/simulated/floor/tiled/techfloor,
-/area/engineering/atmos/workshop)
+/turf/simulated/floor/tiled,
+/area/endeavour/hallway/d4starboardforhall)
 "tem" = (
 /obj/machinery/atmospherics/pipe/manifold/visible/green,
 /turf/simulated/floor/tiled/techmaint,
@@ -14871,7 +14850,6 @@
 	req_one_access = null
 	},
 /obj/map_helper/access_helper/airlock/station/engineering/department,
-/obj/item/barrier_tape_segment/engineering,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
@@ -15919,8 +15897,7 @@
 	dir = 1
 	},
 /obj/machinery/light{
-	dir = 1;
-	pixel_y = 29
+	dir = 1
 	},
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d4porthall)
@@ -16824,13 +16801,15 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/starboardnacelle)
 "wsO" = (
-/obj/effect/floor_decal/borderfloorblack,
-/obj/effect/floor_decal/corner/lightorange/border,
-/obj/machinery/light{
-	pixel_y = -24
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
 	},
-/turf/simulated/floor/tiled/steel_grid,
-/area/endeavour/hallway/d4starboardhall)
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/light,
+/turf/simulated/floor/tiled/steel,
+/area/endeavour/hallway/d4starboardforhall)
 "wtL" = (
 /turf/space,
 /area/endeavour/hallway/d4fwdmaint)
@@ -17436,8 +17415,7 @@
 	dir = 1
 	},
 /obj/machinery/light{
-	dir = 1;
-	pixel_y = 29
+	dir = 1
 	},
 /turf/simulated/floor/tiled/steel_ridged,
 /area/endeavour/hallway/d4portforhall)
@@ -17489,9 +17467,7 @@
 /obj/effect/floor_decal/corner/lightorange/bordercorner2{
 	dir = 9
 	},
-/obj/machinery/light{
-	pixel_y = -24
-	},
+/obj/machinery/light,
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
@@ -18210,9 +18186,7 @@
 "ylX" = (
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/corner/lightorange/border,
-/obj/machinery/light{
-	pixel_y = -24
-	},
+/obj/machinery/light,
 /turf/simulated/floor/tiled/steel_grid,
 /area/endeavour/hallway/d4starboardamidhall)
 
@@ -34423,7 +34397,7 @@ lFs
 bAs
 omb
 xAC
-wsO
+mzf
 xsV
 tqm
 dvY
@@ -37729,8 +37703,8 @@ nXi
 buV
 vJJ
 voa
-tdV
-lmh
+lby
+bab
 sdP
 wZV
 ahp
@@ -38505,7 +38479,7 @@ qqz
 exs
 vGM
 voa
-tdV
+lby
 rZv
 sdP
 kOp
@@ -46436,7 +46410,7 @@ wqH
 qDt
 qDt
 mZZ
-wii
+lmh
 nSo
 tmr
 tmr
@@ -46644,7 +46618,7 @@ tmr
 tmr
 tmr
 xNn
-pMX
+wsO
 xos
 dvY
 dvY
@@ -47600,7 +47574,7 @@ cRV
 ciZ
 dvY
 mZZ
-wii
+lmh
 nSo
 qBz
 hic
@@ -47808,7 +47782,7 @@ djL
 djL
 djL
 xNn
-pMX
+wsO
 xos
 dvY
 gRl
@@ -47998,7 +47972,7 @@ hic
 hic
 hic
 qBz
-djL
+tdV
 djL
 djL
 xNn
@@ -48570,7 +48544,7 @@ jUm
 ciZ
 dvY
 mZZ
-wii
+lmh
 nSo
 qBz
 qBz
@@ -48580,11 +48554,11 @@ qBz
 qBz
 qBz
 qBz
-djL
+tdV
 djL
 djL
 fow
-pMX
+wsO
 xos
 dvY
 gRl
