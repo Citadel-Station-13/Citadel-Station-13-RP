@@ -441,25 +441,22 @@
 	// clear HUDs
 	clear_atom_hud_providers()
 
-	//* cleanup UI
-	// cleanup statbrowser
+	//* cleanup client UI *//
 	QDEL_NULL(tgui_stat)
-	// cleanup cutscene system
 	cleanup_cutscene_system()
-	// cleanup tgui panel
 	QDEL_NULL(tgui_panel)
-	// cleanup tooltips
 	QDEL_NULL(tooltips)
-	// cleanup actions
+
+	//* cleanup map UI *//
 	QDEL_NULL(action_holder)
 	QDEL_NULL(action_drawer)
 
-	//* logout
+	//* logout *//
 	mob?.pre_logout(src)
 
-	//* cleanup from SSinput
+	//* cleanup from SSinput *//
 	SSinput.currentrun?.Remove(src)
-	//* cleanup from SSping
+	//* cleanup from SSping *//
 	SSping.currentrun?.Remove(src)
 
 	. = ..() //Even though we're going to be hard deleted there are still some things that want to know the destroy is happening

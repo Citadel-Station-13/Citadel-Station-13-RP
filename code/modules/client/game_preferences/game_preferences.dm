@@ -75,10 +75,9 @@
 		initialized = TRUE
 
 /datum/game_preferences/proc/on_reconnect()
-	if(!initialized)
-		return
 	// do not mess with client init; start a new call chain
 	spawn(0)
+		block_on_initialized()
 		initialize_client()
 
 /datum/game_preferences/proc/block_on_initialized(timeout = 10 SECONDS)
