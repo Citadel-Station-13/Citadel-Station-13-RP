@@ -41,6 +41,7 @@
 	var/list/sprites = list()
 
 /datum/asset_pack/spritesheet/unload()
+	..()
 	to_generate = list()
 	sizes = list()
 	sprites = list()
