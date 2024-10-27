@@ -314,35 +314,22 @@
 	//* Initialize UI *//
 	// initialize statbrowser
 	tgui_stat.initialize()
-	// (we don't, the JS does it for us. by signalling statpanel_ready().)
 	// Initialize tgui panel
 	tgui_panel.initialize()
 	// initialize cutscene browser
-	// (we don't, the JS does it for us.)
-
-	//if(alert_mob_dupe_login)
-	//	spawn()
-	//		alert(mob, "You have logged in already with another key this round, please log out of this one NOW or risk being banned!")
+	// - (we don't, the JS does it for us.) -
+	// Initialize tooltips
+	tooltips.initialize()
 
 	connection_time = world.time
 	connection_realtime = world.realtime
 	connection_timeofday = world.timeofday
-	winset(src, null, "command=\".configure graphics-hwmode on\"")
-	/*
-	if (connection == "web" && !connecting_admin)
-		if (!CONFIG_GET(flag/allow_webclient))
-			to_chat(src, "Web client is disabled")
-			qdel(src)
-			return 0
-		if (CONFIG_GET(flag/webclient_only_byond_members) && !IsByondMember())
-			to_chat(src, "Sorry, but the web client is restricted to byond members only.")
-			qdel(src)
-			return 0
 
-	if( (world.address == address || !address) && !GLOB.host )
-		GLOB.host = key
-		world.update_status()
-	*/
+	//* Misc *//
+	// force hardware graphics on
+	spawn(5)
+		winset(src, null, "command=\".configure graphics-hwmode on\"")
+
 	if(holder)
 		add_admin_verbs()
 		admin_memo_show()
@@ -356,6 +343,7 @@
 		to_chat(src, "<br>")
 
 	// Preload resources.
+	// todo: re-evaluate this
 	spawn(0)
 		send_resources()
 
