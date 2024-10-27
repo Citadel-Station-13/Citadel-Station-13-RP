@@ -154,7 +154,7 @@
 		// make sure catalysts are there
 		for(var/reagent in reaction.catalysts)
 			var/catalyst_amount = legacy_direct_access_reagent_amount(reagent)
-			if(isnull(catalyst_amount) || (catalyst_amount < catalysts[reagent]))
+			if(isnull(catalyst_amount) || (catalyst_amount < reaction.catalysts[reagent]))
 				checks_pass = FALSE
 				break
 
@@ -260,7 +260,7 @@
 		// make sure catalysts are there
 		for(var/reagent in reaction.catalysts)
 			var/catalyst_amount = legacy_direct_access_reagent_amount(reagent)
-			if(isnull(catalyst_amount) || (catalyst_amount < catalysts[reagent]))
+			if(isnull(catalyst_amount) || (catalyst_amount < reaction.catalysts[reagent]))
 				checks_pass = FALSE
 				break
 
