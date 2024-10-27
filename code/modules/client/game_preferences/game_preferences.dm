@@ -69,8 +69,10 @@
 //* Init *//
 
 /datum/game_preferences/proc/initialize()
-	perform_initial_load()
-	initialized = TRUE
+	// do not mess with client init; start a new call chain
+	spawn(0)
+		perform_initial_load()
+		initialized = TRUE
 
 /datum/game_preferences/proc/on_reconnect()
 	if(!initialized)
