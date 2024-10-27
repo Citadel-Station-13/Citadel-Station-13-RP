@@ -1098,7 +1098,7 @@
 	},
 /obj/map_helper/access_helper/airlock/station/engineering/department,
 /obj/machinery/door/firedoor,
-/turf/space/basic,
+/turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_room)
 "Mh" = (
 /obj/structure/window/phoronreinforced/full{
