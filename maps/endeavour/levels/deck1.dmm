@@ -7702,7 +7702,7 @@
 /turf/simulated/floor/wood,
 /area/vacant/vacant_bar)
 "geQ" = (
-/obj/effect/shuttle_landmark/endeavour/deck1,
+/obj/effect/shuttle_landmark/automatic/station_dockpoint2,
 /turf/space/basic,
 /area/space)
 "geU" = (
@@ -38779,7 +38779,7 @@ xRj
 xRj
 xRj
 xRj
-xRj
+geQ
 xRj
 xRj
 xRj
@@ -38973,7 +38973,7 @@ xRj
 xRj
 xRj
 xRj
-geQ
+xRj
 xRj
 xRj
 xRj
