@@ -144,37 +144,37 @@
 	set hidden = TRUE
 	set instant = TRUE
 
-	statpanel.ready_received()
+	tgui_stat.ready_received()
 
 /client/verb/hook_statpanel_add_tab(tab as text)
 	set name = ".statpanel_tab_add"
 	set hidden = TRUE
 	set instant = TRUE
 
-	if(length(statpanel.current_tabs) > 50)
+	if(length(tgui_stat.current_tabs) > 50)
 		return // bail
-	statpanel.current_tabs |= tab
+	tgui_stat.current_tabs |= tab
 
 /client/verb/hook_statpanel_remove_tab(tab as text)
 	set name = ".statpanel_tab_remove"
 	set hidden = TRUE
 	set instant = TRUE
 
-	statpanel.current_tabs -= tab
+	tgui_stat.current_tabs -= tab
 
 /client/verb/hook_statpanel_wipe_tabs()
 	set name = ".statpanel_tab_reset"
 	set hidden = TRUE
 	set instant = TRUE
 
-	statpanel.current_tabs = list()
+	tgui_stat.current_tabs = list()
 
 /client/verb/hook_statpanel_set_tab(tab as text)
 	set name = ".statpanel_tab"
 	set hidden = TRUE
 	set instant = TRUE
 
-	statpanel.current_tab = tab
+	tgui_stat.current_tab = tab
 
 /**
  * This cleanly and gracefully attempts to go to a specific tab via verbs, for the hyperspecific purpose of interacting with the statpanel from other HTML UI
@@ -192,7 +192,7 @@
 	set hidden = TRUE
 	set instant = TRUE
 
-	statpanel.byond_stat_active = (tab == "stat_pane_byond")
+	tgui_stat.byond_stat_active = (tab == "stat_pane_byond")
 
 // todo: legacy stuff below
 
@@ -206,7 +206,7 @@
 /// -_-
 /client/proc/legacy_verb_update()
 	REMOVE_TRAIT(src, "VERB_UPDATE_QUEUED", "FUCK")
-	statpanel?.request_verb_update()
+	tgui_stat?.request_verb_update()
 
 /**
  * returns TRUE if the tab should exist and we are on the tab
@@ -215,10 +215,10 @@
  * - status: use to set if the panel should exist
  */
 /client/proc/statpanel_tab(tab, status)
-	. = (statpanel.current_tab == tab)
+	. = (tgui_stat.current_tab == tab)
 	if(isnull(status))
 		return
-	if(tab in statpanel.current_tabs)
+	if(tab in tgui_stat.current_tabs)
 		if(!status)
 			src << output(url_encode(tab), "statbrowser:byond_remove_tab")
 			return FALSE	// removing
@@ -228,26 +228,26 @@
 			return FALSE	// don't add yet, this is unfortunate but we'll add one tick of update delay to let it add first
 
 /client/proc/list_turf(turf/T)
-	if(statpanel.byond_stat_turf)
+	if(tgui_stat.byond_stat_turf)
 		unlist_turf()
 	if(!T || !list_turf_check(T))
 		return
-	statpanel.byond_stat_turf = T
+	tgui_stat.byond_stat_turf = T
 	// using byond atm
-	if(!statpanel.byond_stat_active)
-		statpanel.byond_stat_ephemeral = TRUE
-		statpanel.byond_stat_active = TRUE
+	if(!tgui_stat.byond_stat_active)
+		tgui_stat.byond_stat_ephemeral = TRUE
+		tgui_stat.byond_stat_active = TRUE
 		winset(src, SKIN_TAB_ID_STAT, "current-tab=[SKIN_PANE_ID_BYONDSTAT]")
 
 
 /client/proc/unlist_turf()
 	// using byond atm
-	if(statpanel.byond_stat_ephemeral)
-		statpanel.byond_stat_ephemeral = FALSE
-		statpanel.byond_stat_active = FALSE
+	if(tgui_stat.byond_stat_ephemeral)
+		tgui_stat.byond_stat_ephemeral = FALSE
+		tgui_stat.byond_stat_active = FALSE
 		winset(src, SKIN_TAB_ID_STAT, "current-tab=[SKIN_PANE_ID_BROWSERSTAT]")
 
-	statpanel.byond_stat_turf = null
+	tgui_stat.byond_stat_turf = null
 
 /client/proc/list_turf_check(turf/T)
 	return mob.TurfAdjacent(T)
@@ -309,10 +309,10 @@
 /client/proc/_statpanel_act(action, list/params)
 	switch(action)
 		if("reload")
-			statpanel.request_reload()
+			tgui_stat.request_reload()
 			return
 		if("ready")
-			statpanel.ready_received()
+			tgui_stat.ready_received()
 			return
 		if("stat_click")
 			var/datum/D = locate(params["ref"])

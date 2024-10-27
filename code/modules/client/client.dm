@@ -131,7 +131,7 @@
 	/// our tooltips system
 	var/datum/tooltip/tooltips
 	/// statpanel
-	var/datum/client_statpanel/statpanel
+	var/datum/client_statpanel/tgui_stat
 
 	//* UI - Map *//
 	/// Our action drawer

@@ -231,7 +231,7 @@
 	//* Create UI *//
 	// todo: move top level menu here, for now it has to be under prefs.
 	// Instantiate statpanel
-	statpanel = new(src, SKIN_BROWSER_ID_STAT)
+	tgui_stat = new(src, SKIN_BROWSER_ID_STAT)
 	// Instantiate tgui panel
 	tgui_panel = new(src, SKIN_BROWSER_ID_CHAT)
 	// Instantiate cutscene system
@@ -313,7 +313,7 @@
 
 	//* Initialize UI *//
 	// initialize statbrowser
-	statpanel.initialize()
+	tgui_stat.initialize()
 	// (we don't, the JS does it for us. by signalling statpanel_ready().)
 	// Initialize tgui panel
 	tgui_panel.initialize()
@@ -460,7 +460,7 @@
 
 	//* cleanup UI
 	// cleanup statbrowser
-	QDEL_NULL(statpanel)
+	QDEL_NULL(tgui_stat)
 	// cleanup cutscene system
 	cleanup_cutscene_system()
 	// cleanup tgui panel
