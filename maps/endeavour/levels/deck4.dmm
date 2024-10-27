@@ -3400,6 +3400,10 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/endeavour/hallway/d4fwdhall)
 "eyl" = (
+/obj/machinery/button/windowtint{
+	id = "bridge_interior";
+	pixel_y = -26
+	},
 /obj/machinery/light/no_nightshift,
 /obj/effect/floor_decal/corner/navgold{
 	dir = 9
@@ -13254,6 +13258,7 @@
 /area/engineering/atmos)
 "rAa" = (
 /obj/structure/closet/firecloset,
+/obj/machinery/power/apc/north_mount,
 /obj/structure/cable{
 	icon_state = "0-2"
 	},
@@ -17976,6 +17981,10 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/atmos/workshop)
 "ycz" = (
+/obj/structure/closet/fireaxecabinet{
+	pixel_x = 32;
+	pixel_y = 30
+	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/air_alarm/north_mount,
