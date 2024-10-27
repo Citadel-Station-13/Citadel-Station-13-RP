@@ -215,13 +215,6 @@
 	//* Resolve preferences
 	preferences = SSpreferences.resolve_game_preferences(key, ckey)
 	//? WARNING: SHITCODE ALERT ?//
-	// We allow a client/New sleep because preferences is currently required for
-	// everything else to work
-	// todo: maybe don't do this?
-	if(!preferences.block_on_initialized(5 SECONDS))
-		security_kick("A fatal error occurred while attempting to load: preferences not initialized. Please notify a coder.")
-		stack_trace("we just kicked a client due to prefs not loading; something is horribly wrong!")
-		return
 	// we wait until it inits to do this
 	// todo: is there a better way this is kind of awful
 	preferences.active = src
@@ -359,7 +352,9 @@
 	// 		changelog_async()
 
 	// run post-init 'lint'-like checks
-	on_new_hook_stability_checks()
+	// this is on a spawn() to force a separate call chain
+	spawn(0)
+		on_new_hook_stability_checks()
 
 	// todo: fuck you voreprefs
 	spawn(0)

@@ -1,6 +1,14 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2024 silicons                             *//
 
+/client/on_new_hook_stability_checks()
+	// preferences are critical; if they can't load, kick them
+	spawn(0)
+		if(!preferences.block_on_initialized(5 SECONDS))
+			disconnection_message("A fatal error occurred while attempting to load: preferences not initialized. Please notify a coder.")
+			stack_trace("we just kicked a client due to prefs not loading; something is horribly wrong!")
+			qdel(src)
+	return ..()
 /**
  * Game preferences
  *
@@ -67,7 +75,9 @@
 /datum/game_preferences/proc/on_reconnect()
 	if(!initialized)
 		return
-	initialize_client()
+	// do not mess with client init; start a new call chain
+	spawn(0)
+		initialize_client()
 
 /datum/game_preferences/proc/block_on_initialized(timeout = 10 SECONDS)
 	var/wait_until = world.time + timeout
