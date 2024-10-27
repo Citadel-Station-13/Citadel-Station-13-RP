@@ -5278,10 +5278,10 @@
 /obj/effect/floor_decal/corner/black/bordercee{
 	dir = 4
 	},
-/obj/machinery/power/apc/west_mount,
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
+/obj/machinery/power/apc/west_mount,
 /turf/simulated/floor/tiled/monowhite,
 /area/engineering/drone_fabrication)
 "hmG" = (
@@ -7157,10 +7157,6 @@
 "jPA" = (
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/atmos)
-"jPR" = (
-/obj/machinery/power/apc/super,
-/turf/simulated/wall/r_wall/prepainted/command,
-/area/endeavour/command/turrets)
 "jQo" = (
 /obj/machinery/recharge_station,
 /obj/machinery/light/small{
@@ -12427,10 +12423,10 @@
 /turf/simulated/floor/reinforced/airmix,
 /area/engineering/atmos)
 "rAa" = (
-/obj/structure/closet/firecloset,
 /obj/structure/cable{
 	icon_state = "0-2"
 	},
+/obj/machinery/power/apc/super/north_mount,
 /turf/simulated/floor/tiled/techfloor,
 /area/endeavour/command/turrets)
 "rAt" = (
@@ -12572,6 +12568,7 @@
 /obj/effect/floor_decal/corner/navgold{
 	dir = 5
 	},
+/obj/structure/closet/firecloset,
 /turf/simulated/floor/tiled/techfloor,
 /area/endeavour/command/turrets)
 "rQW" = (
@@ -35552,7 +35549,7 @@ dvY
 dvY
 dvY
 wiw
-jPR
+wiw
 rAa
 vDs
 jiQ
