@@ -163,6 +163,7 @@
 	return TRUE
 
 /datum/game_preferences/proc/perform_initial_load()
+	sleep(2 SECONDS)
 	if(!is_guest)
 		// only if not guest
 		if(SSdbcore.IsConnected())
@@ -265,9 +266,6 @@
 		CRASH("invalid fetch")
 	if(!initialized)
 		return FALSE
-	// we don't check is visible, as it's checked on 'get'
-	// if(!toggle.is_visible(active))
-	// 	return FALSE
 	toggles_by_key[toggle.key] = value
 	if(active)
 		toggle.toggled(active, value)
@@ -280,9 +278,6 @@
 		CRASH("invalid fetch")
 	if(!initialized)
 		return FALSE
-	// we don't check is visible, as it's checked on 'get'
-	// if(!toggle.is_visible(active))
-	// 	return FALSE
 	toggles_by_key[toggle.key] = !toggles_by_key[toggle.key]
 	if(active)
 		toggle.toggled(active, toggles_by_key[toggle.key])
