@@ -7599,10 +7599,6 @@
 "jPA" = (
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/atmos)
-"jPR" = (
-/obj/machinery/power/apc/super,
-/turf/simulated/wall/r_wall/prepainted/command,
-/area/endeavour/command/turrets)
 "jQo" = (
 /obj/machinery/recharge_station,
 /obj/machinery/light/small{
@@ -11214,6 +11210,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
 	},
+/turf/simulated/wall/r_wall/prepainted/engineering,
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d4portamidhall)
 "oxm" = (
@@ -13261,6 +13258,7 @@
 /area/engineering/atmos)
 "rAa" = (
 /obj/structure/closet/firecloset,
+/obj/machinery/power/apc/north_mount,
 /obj/structure/cable{
 	icon_state = "0-2"
 	},
@@ -36669,7 +36667,7 @@ dvY
 dvY
 dvY
 wiw
-jPR
+wiw
 rAa
 vDs
 jiQ
