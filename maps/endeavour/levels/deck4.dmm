@@ -13800,6 +13800,9 @@
 	RCon_tag = "Point Defense Grid";
 	cur_coils = 4
 	},
+/obj/structure/cable{
+	icon_state = "0-4"
+	},
 /turf/simulated/floor/plating,
 /area/endeavour/command/turrets)
 "szp" = (
