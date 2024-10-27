@@ -144,12 +144,12 @@
 
 	var/list/old_toggles
 	legacy_savefile["preferences"] >> old_toggles
-
-	for(var/key in SSpreferences.toggles_by_key)
-		var/datum/game_preference_toggle/toggle = SSpreferences.toggles_by_key[key]
-		if(!toggle.legacy_key)
-			continue
-		toggles_by_key[key] = (toggle.legacy_key in old_toggles)
+	if(islist(old_toggles))
+		for(var/key in SSpreferences.toggles_by_key)
+			var/datum/game_preference_toggle/toggle = SSpreferences.toggles_by_key[key]
+			if(!toggle.legacy_key)
+				continue
+			toggles_by_key[key] = (toggle.legacy_key in old_toggles)
 
 	var/list/old_keybinds
 	legacy_savefile["key_bindings"] >> old_keybinds
