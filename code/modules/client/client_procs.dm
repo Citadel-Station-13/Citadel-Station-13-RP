@@ -190,13 +190,8 @@
 		)
 		return null
 	// Queue pre-connect greeting
-	addtimer(
-		CALLBACK(
-			GLOBAL_PROC(to_chat),
-			"<font color='red'>If the title screen is black, resources are still downloading. Please be patient until the title screen appears.</font>",
-		),
-		0.5 SECONDS,
-	)
+	spawn(0.5 SECONDS)
+		to_chat(src, "<font color='red'>If the title screen is black, resources are still downloading. Please be patient until the title screen appears.</font>")
 	// Register in globals.
 	GLOB.clients += src
 	GLOB.directory[ckey] = src
@@ -233,13 +228,12 @@
 	preferences.on_reconnect()
 	//? END ?//
 
-	//* Setup user interface
+	//* Create UI *//
 	// todo: move top level menu here, for now it has to be under prefs.
 	// Instantiate statpanel
-	spawn(1)
-		statpanel_boot()
+	statpanel = new(src, SKIN_BROWSER_ID_STAT)
 	// Instantiate tgui panel
-	tgui_panel = new(src, "browseroutput")
+	tgui_panel = new(src, SKIN_BROWSER_ID_CHAT)
 	// Instantiate cutscene system
 	spawn(1)
 		init_cutscene_system()
@@ -306,22 +300,23 @@
 	//* therefore, DO NOT PUT ANYTHING YOU WILL RELY ON LATER IN THIS PROC IN LOGIN!
 	. = ..()	//calls mob.Login()
 
-	//* Connection Security
+	//* Connection Security *//
 	// start caching it immediately
 	INVOKE_ASYNC(SSipintel, TYPE_PROC_REF(/datum/controller/subsystem/ipintel, vpn_connection_check), address, ckey)
 	// run onboarding gauntlet
 	INVOKE_ASYNC(src, PROC_REF(onboarding))
 
-	//* Initialize Input
+	//* Initialize Input *//
 	if(SSinput.initialized)
 		set_macros()
 		update_movement_keys()
 
-	//* Initialize UI
+	//* Initialize UI *//
 	// initialize statbrowser
+	statpanel.initialize()
 	// (we don't, the JS does it for us. by signalling statpanel_ready().)
 	// Initialize tgui panel
-	INVOKE_ASYNC(tgui_panel, TYPE_PROC_REF(/datum/tgui_panel, initialize))
+	tgui_panel.initialize()
 	// initialize cutscene browser
 	// (we don't, the JS does it for us.)
 
@@ -360,8 +355,9 @@
 		to_chat(src, "<span class='alert'>[custom_event_msg]</span>")
 		to_chat(src, "<br>")
 
-	// Preload resources. Just in case, we're going to timer it.
-	addtimer(CALLBACK(src, PROC_REF(send_resources)), 0.5 SECONDS)
+	// Preload resources.
+	spawn(0)
+		send_resources()
 
 	//? Startup rendering
 	pre_init_viewport()
@@ -378,7 +374,8 @@
 	on_new_hook_stability_checks()
 
 	// todo: fuck you voreprefs
-	prefs_vr = new /datum/vore_preferences(src)
+	spawn(0)
+		prefs_vr = new /datum/vore_preferences(src)
 
 	if(config_legacy.paranoia_logging)
 		if(isnum(player.player_age) && player.player_age == -1)
@@ -386,16 +383,18 @@
 		if(isnum(persistent.account_age) && persistent.account_age <= 2)
 			log_and_message_admins("PARANOIA: [key_name(src)] has a very new BYOND account ([persistent.account_age] days).")
 
-	//? We are done
+	//* Finalize *//
 	// set initialized if we're not queued for a security kick
 	if(!queued_security_kick || panic_bunker_pending)
 		initialized = TRUE
 	else
 		addtimer(CALLBACK(src, PROC_REF(deferred_initialization_block)), 0)
 	// show any migration errors
+	// todo: this shouldn't be here
 	prefs.auto_flush_errors()
 	// update our hub label
-	SSserver_maint.UpdateHubStatus()
+	// todo: this should be a global signal that the subsystem hooks
+	SSserver_maint.queue_hub_update()
 
 /**
  * Called in the middle of new, after everything critical
@@ -461,7 +460,7 @@
 
 	//* cleanup UI
 	// cleanup statbrowser
-	statpanel_dispose()
+	QDEL_NULL(statpanel)
 	// cleanup cutscene system
 	cleanup_cutscene_system()
 	// cleanup tgui panel

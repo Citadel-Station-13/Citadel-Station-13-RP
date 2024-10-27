@@ -282,7 +282,7 @@
 		return
 	if(!client)
 		return
-	if(T == client.statpanel_turf)
+	if(T == client.statpanel?.byond_stat_turf)
 		client.unlist_turf()
 		return
 	client.list_turf(T)
