@@ -44,13 +44,13 @@ SUBSYSTEM_DEF(statpanels)
 		var/client/player = currentrun[length(currentrun)]
 		--currentrun.len
 		// check if we're even on the js one
-		if(player.statpanel.byond_stat_active)
+		if(player.tgui_stat.byond_stat_active)
 			continue
 		// check if ready
-		if(!player.statpanel.ready)
+		if(!player.tgui_stat.ready)
 			continue
 		// check listed turf
-		if(player.statpanel.byond_stat_turf && !player.list_turf_check(player.statpanel.byond_stat_turf))
+		if(player.tgui_stat.byond_stat_turf && !player.list_turf_check(player.tgui_stat.byond_stat_turf))
 			player.unlist_turf()
 		// are they an admin?
 		var/is_admin = !!player.holder

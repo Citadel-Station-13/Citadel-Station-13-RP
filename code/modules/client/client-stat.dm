@@ -4,7 +4,7 @@
  * We only run this if the statpanel is on BYOND mode right now.
  */
 /client/Stat()
-	if(!tgui_stat.byond_stat_active)
+	if(!tgui_stat?.byond_stat_active)
 		return
 	..()	// hit mob.Stat()
 	if(!statpanel("Turf"))

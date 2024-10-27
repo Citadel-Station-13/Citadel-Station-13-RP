@@ -126,10 +126,10 @@
 	var/cutscene_lockout = FALSE
 
 	//* UI - Client *//
-	/// chat panel
-	var/datum/tgui_panel/tgui_panel
 	/// our tooltips system
 	var/datum/tooltip/tooltips
+	/// chat panel
+	var/datum/tgui_panel/tgui_panel
 	/// statpanel
 	var/datum/client_statpanel/tgui_stat
 

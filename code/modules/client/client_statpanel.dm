@@ -59,12 +59,10 @@
 
 /datum/client_statpanel/proc/boot()
 	PRIVATE_PROC(TRUE)
-	// nukes statpanel if it is there
-	client << browse("<html><body><h1><center>Loading...</center></ht></body></html>", "window=[window_id]")
-	// wait a moment
-	sleep(1 SECONDS)
-	// loads statbrowser again
+	// loads statbrowser if it isn't there
 	client << browse(file('html/statbrowser.html'), "window=[window_id]")
+	// if it is there and we can't tell because byond is byond, send it a signal to reload
+	client << output(null, "statbrowser:byond_reconnect")
 	// check for it incase it breaks
 	addtimer(CALLBACK(src, PROC_REF(check_initialized)), 5 SECONDS)
 
@@ -100,7 +98,6 @@
 			continue
 		LAZYINITLIST(verblist[verb_to_init.category])
 		verblist[verb_to_init.category] |= verb_to_init.name
-	pass()
 	client << output("[url_encode(json_encode(verblist))];[reset]", "statbrowser:byond_init_verbs")
 
 //* External API *//
@@ -154,6 +151,8 @@
 	if(length(tgui_stat.current_tabs) > 50)
 		return // bail
 	tgui_stat.current_tabs |= tab
+	if(!tgui_stat.current_tab)
+		tgui_stat.current_tab = tgui_stat.current_tabs[1]
 
 /client/verb/hook_statpanel_remove_tab(tab as text)
 	set name = ".statpanel_tab_remove"
