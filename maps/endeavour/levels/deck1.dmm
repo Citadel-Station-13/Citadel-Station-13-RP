@@ -2500,6 +2500,10 @@
 	dir = 8
 	},
 /obj/machinery/door/firedoor,
+/obj/machinery/light{
+	dir = 4;
+	use_power = 0
+	},
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d1afthall)
 "ceP" = (
@@ -5784,7 +5788,6 @@
 "ePf" = (
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/corner/navgold/border,
-/obj/machinery/light,
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d1fwdhall)
 "ePo" = (
@@ -18781,6 +18784,19 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/hallway/secondary/docking_hallway2)
+"pbZ" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/navblue/border{
+	dir = 4
+	},
+/obj/machinery/light{
+	dir = 4;
+	use_power = 0
+	},
+/turf/simulated/floor/tiled/steel_ridged,
+/area/endeavour/hallway/d1portamidhall)
 "pcv" = (
 /obj/machinery/atmospherics/pipe/simple/visible,
 /obj/spawner/window/borosillicate/reinforced/full/firelocks,
@@ -19127,6 +19143,13 @@
 	},
 /turf/simulated/floor/tiled/old_tile/green,
 /area/shuttle/civvie/cockpit)
+"pnA" = (
+/obj/machinery/light{
+	dir = 4;
+	use_power = 0
+	},
+/turf/simulated/floor/tiled/steel,
+/area/endeavour/hallway/d1afthall)
 "pob" = (
 /obj/structure/catwalk,
 /obj/structure/cable/green{
@@ -19839,6 +19862,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 9
+	},
+/obj/machinery/light{
+	dir = 4;
+	use_power = 0
 	},
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d1starboardforhall)
@@ -22283,6 +22310,17 @@
 /obj/machinery/light,
 /turf/simulated/floor/carpet/purcarpet,
 /area/bridge)
+"smu" = (
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/machinery/light{
+	dir = 4;
+	use_power = 0
+	},
+/turf/simulated/floor/tiled,
+/area/endeavour/hallway/d1afthall)
 "smS" = (
 /obj/structure/catwalk,
 /obj/structure/cable/green{
@@ -23861,6 +23899,19 @@
 /obj/item/flashlight/lamp/green,
 /turf/simulated/floor/wood,
 /area/bridge/office)
+"tCb" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/navblue/border{
+	dir = 4
+	},
+/obj/machinery/light{
+	dir = 4;
+	use_power = 0
+	},
+/turf/simulated/floor/tiled/steel,
+/area/endeavour/hallway/d1portamidhall)
 "tCc" = (
 /obj/machinery/atmospherics/pipe/simple/visible/red{
 	dir = 9
@@ -28193,6 +28244,10 @@
 /obj/machinery/camera/network/civilian{
 	dir = 4
 	},
+/obj/machinery/light{
+	dir = 8;
+	light_range = 12
+	},
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d1fwdhall)
 "wUs" = (
@@ -29467,6 +29522,10 @@
 	},
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/corner/navgold/border,
+/obj/machinery/light{
+	dir = 4;
+	use_power = 0
+	},
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d1fwdhall)
 "xZn" = (
@@ -41539,12 +41598,12 @@ cGC
 ceM
 oYx
 oYx
-oYx
+smu
 oYx
 vEv
 vyI
 cGC
-kHh
+pnA
 oNV
 vpL
 ffU
@@ -51423,7 +51482,7 @@ xln
 eDR
 aau
 sSr
-gnm
+tCb
 hbb
 gnm
 jsq
@@ -55496,7 +55555,7 @@ wXu
 gnm
 gnm
 gnm
-wXu
+pbZ
 gnm
 gnm
 gnm
