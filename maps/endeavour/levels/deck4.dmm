@@ -991,6 +991,15 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled/steel_ridged,
 /area/endeavour/hallway/d4starboardamidhall)
+"bhF" = (
+/obj/machinery/door/airlock/maintenance{
+	name = "Starboard Mass Driver Access"
+	},
+/obj/machinery/door/firedoor{
+	dir = 8
+	},
+/turf/simulated/floor/plating,
+/area/endeavour/hallway/d4starboardforhall)
 "bjb" = (
 /obj/machinery/door/blast/regular{
 	density = 0;
@@ -1275,13 +1284,8 @@
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d4starboardhall)
 "bFi" = (
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/door/airlock/maintenance,
-/obj/machinery/door/firedoor,
-/turf/simulated/floor/tiled,
+/obj/structure/table/rack/shelf/steel,
+/turf/simulated/floor/plating,
 /area/endeavour/hallway/d4fwdmaint)
 "bFG" = (
 /obj/item/flashlight{
@@ -2023,9 +2027,12 @@
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d4aftmaint)
 "cyR" = (
-/obj/structure/sign/warning/caution,
-/turf/simulated/wall/r_wall/prepainted,
-/area/endeavour/hallway/d4fwdmaint)
+/obj/machinery/door/airlock/maintenance{
+	name = "Port Mass Driver Access"
+	},
+/obj/machinery/door/firedoor,
+/turf/simulated/floor/tiled,
+/area/endeavour/hallway/d4portforhall)
 "cAc" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled,
@@ -3479,17 +3486,9 @@
 /turf/simulated/floor/tiled/steel_ridged,
 /area/endeavour/hallway/d4portafthall)
 "eDQ" = (
-/obj/effect/floor_decal/borderfloorblack{
-	dir = 4
-	},
-/obj/effect/floor_decal/corner/lightorange/border{
-	dir = 4
-	},
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/turf/simulated/floor/tiled/steel,
-/area/endeavour/hallway/d4portamidhall)
+/obj/structure/sign/warning/caution,
+/turf/simulated/wall/r_wall/prepainted,
+/area/endeavour/hallway/d4portforhall)
 "eEz" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 9
@@ -3499,7 +3498,9 @@
 /area/endeavour/command/turrets)
 "eEF" = (
 /obj/machinery/disperser/front{
-	dir = 4
+	dir = 4;
+	name = "Mass Driver Barrel";
+	desc = "The business end of a mass driver, the magnetic coils in this tube accelerate things shoved into it when power is applied."
 	},
 /turf/simulated/floor/plating,
 /area/endeavour/hallway/d4fwdmaint)
@@ -3805,6 +3806,7 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
+/obj/map_helper/access_helper/airlock/station/maintenance,
 /turf/simulated/floor/plating,
 /area/endeavour/hallway/d4fwdmaint)
 "eXO" = (
@@ -4128,6 +4130,18 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d4portafthall)
+"fow" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/lightorange/border{
+	dir = 1
+	},
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/endeavour/hallway/d4starboardforhall)
 "fpc" = (
 /obj/machinery/computer/power_monitor,
 /turf/simulated/floor/tiled,
@@ -4755,6 +4769,15 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/engineering/engine_airlock)
+"gid" = (
+/obj/machinery/door/airlock/maintenance{
+	name = "Port Mass Driver Access"
+	},
+/obj/machinery/door/firedoor{
+	dir = 8
+	},
+/turf/simulated/floor/plating,
+/area/endeavour/hallway/d4portforhall)
 "gkk" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -5277,8 +5300,9 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/endeavour/hallway/d4starboardhall)
 "gRl" = (
-/turf/simulated/wall/prepainted,
-/area/endeavour/hallway/d4fwdhall)
+/obj/structure/railing,
+/turf/simulated/floor/plating,
+/area/endeavour/hallway/d4fwdmaint)
 "gRy" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -6206,7 +6230,9 @@
 /area/engineering/atmos/eva)
 "hTL" = (
 /obj/machinery/disperser/middle{
-	dir = 4
+	dir = 4;
+	name = "Mass Driver Breech";
+	desc = "Breech end of a mass driver. A sliding breechblock reminiscient of a naval artillery piece rises on rails to allow for loading before slamming back down into place."
 	},
 /turf/simulated/floor/plating,
 /area/endeavour/hallway/d4fwdmaint)
@@ -7002,7 +7028,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/endeavour/command/turrets)
 "jiQ" = (
-/obj/structure/cable/green{
+/obj/structure/cable{
 	icon_state = "1-8"
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -7145,6 +7171,10 @@
 /obj/machinery/door/airlock/glass/engineering{
 	name = "Engineering Hallway";
 	req_one_access = null
+	},
+/obj/map_helper/access_helper/airlock/station/maintenance,
+/obj/machinery/door/firedoor{
+	dir = 8
 	},
 /turf/simulated/floor/airless/ceiling,
 /area/endeavour/hallway/d4fwdmaint)
@@ -7373,6 +7403,12 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/engineering/engine_gas)
+"jFf" = (
+/obj/effect/floor_decal/borderfloorblack,
+/obj/effect/floor_decal/corner/lightorange/border,
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
+/turf/simulated/floor/tiled/steel_grid,
+/area/endeavour/hallway/d4portforhall)
 "jFB" = (
 /obj/machinery/atmospherics/pipe/simple/visible/purple{
 	dir = 4
@@ -7416,7 +7452,6 @@
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d4porthall)
 "jHd" = (
-/obj/structure/catwalk,
 /obj/machinery/air_alarm{
 	frequency = 1441;
 	pixel_y = 22
@@ -7632,7 +7667,9 @@
 /turf/simulated/floor/tiled/dark,
 /area/storage/tech)
 "jUm" = (
-/obj/machinery/disperser/back,
+/obj/machinery/disperser/back{
+	name = "Mass Driver Loading Tray"
+	},
 /turf/simulated/floor/plating,
 /area/endeavour/hallway/d4fwdmaint)
 "jUI" = (
@@ -7985,13 +8022,6 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/endeavour/hallway/d4portforhall)
 "kyk" = (
-/obj/machinery/door/firedoor{
-	dir = 8
-	},
-/obj/machinery/door/airlock/maintenance/engi{
-	req_one_access = null
-	},
-/obj/map_helper/access_helper/airlock/station/maintenance,
 /turf/simulated/floor/tiled/techmaint,
 /area/endeavour/hallway/d4fwdmaint)
 "kzb" = (
@@ -8386,12 +8416,9 @@
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d4starboardhall)
 "lbF" = (
-/obj/random/trash_pile,
-/obj/structure/railing{
-	dir = 1
-	},
-/turf/simulated/floor/plating,
-/area/endeavour/hallway/d4fwdmaint)
+/obj/structure/sign/deck/fourth,
+/turf/simulated/wall/r_wall/prepainted,
+/area/endeavour/hallway/d4starboardforhall)
 "lbY" = (
 /obj/machinery/atmospherics/pipe/manifold/visible/cyan,
 /turf/simulated/floor/tiled/techmaint,
@@ -9347,6 +9374,11 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation)
+"mpg" = (
+/obj/machinery/air_alarm/north_mount,
+/obj/structure/railing,
+/turf/simulated/floor/plating,
+/area/endeavour/hallway/d4fwdmaint)
 "mqz" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -9936,7 +9968,7 @@
 	name = "Bridge Lockdown";
 	opacity = 0
 	},
-/obj/structure/cable/green{
+/obj/structure/cable{
 	icon_state = "4-8"
 	},
 /obj/map_helper/access_helper/airlock/station/command/bridge,
@@ -9951,15 +9983,7 @@
 /turf/simulated/floor/plating,
 /area/engineering/atmos)
 "mZZ" = (
-/obj/effect/floor_decal/borderfloorblack{
-	dir = 1
-	},
-/obj/effect/floor_decal/corner/lightorange/border{
-	dir = 1
-	},
-/obj/machinery/camera/network/engineering,
-/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
-/turf/simulated/floor/tiled/steel_grid,
+/turf/simulated/wall/r_wall/prepainted,
 /area/endeavour/hallway/d4portforhall)
 "nat" = (
 /obj/structure/window/reinforced{
@@ -10449,9 +10473,11 @@
 /turf/simulated/floor/plating,
 /area/maintenance/substation/engineering)
 "nAP" = (
-/obj/structure/sign/deck/fourth,
-/turf/simulated/wall/r_wall/prepainted,
-/area/endeavour/hallway/d4fwdmaint)
+/obj/effect/floor_decal/borderfloorblack,
+/obj/effect/floor_decal/corner/lightorange/border,
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
+/turf/simulated/floor/tiled/steel_ridged,
+/area/endeavour/hallway/d4portforhall)
 "nAS" = (
 /obj/structure/table/reinforced,
 /obj/effect/floor_decal/borderfloorblack,
@@ -10750,11 +10776,8 @@
 /turf/simulated/floor/plating,
 /area/engineering/engine_smes)
 "nQj" = (
-/obj/structure/cable/green{
-	icon_state = "4-8"
-	},
-/turf/simulated/floor/tiled/techfloor,
-/area/endeavour/command/turrets)
+/turf/simulated/wall/r_wall/prepainted,
+/area/space)
 "nQw" = (
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/corner/lightorange/border,
@@ -11187,9 +11210,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
 	},
-/obj/structure/cable{
-	icon_state = "2-4"
-	},
+/turf/simulated/wall/r_wall/prepainted/engineering,
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d4portamidhall)
 "oxm" = (
@@ -13238,7 +13259,7 @@
 "rAa" = (
 /obj/structure/closet/firecloset,
 /obj/machinery/power/apc/north_mount,
-/obj/structure/cable/green{
+/obj/structure/cable{
 	icon_state = "0-2"
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -14216,14 +14237,12 @@
 /turf/simulated/wall/r_wall/prepainted/command,
 /area/ai)
 "tmx" = (
-/obj/structure/railing{
-	dir = 1
+/obj/machinery/door/airlock/maintenance{
+	name = "Starboard Mass Driver Access"
 	},
-/obj/structure/railing{
-	dir = 4
-	},
+/obj/machinery/door/firedoor,
 /turf/simulated/floor/plating,
-/area/endeavour/hallway/d4fwdmaint)
+/area/endeavour/hallway/d4starboardforhall)
 "tmS" = (
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/corner/lightorange/border,
@@ -15946,6 +15965,10 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/sleep/engi_wash)
+"vzY" = (
+/obj/structure/sign/warning/caution,
+/turf/simulated/wall/r_wall/prepainted,
+/area/endeavour/hallway/d4starboardforhall)
 "vAC" = (
 /obj/structure/lattice,
 /obj/machinery/camera/network/outside{
@@ -15984,6 +16007,9 @@
 	dir = 8
 	},
 /obj/structure/cable/green{
+	icon_state = "1-2"
+	},
+/obj/structure/cable{
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -16704,9 +16730,14 @@
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d4starboardforhall)
 "wqH" = (
+/obj/structure/catwalk,
 /obj/machinery/door/airlock/glass/engineering{
 	name = "Engineering Hallway";
 	req_one_access = null
+	},
+/obj/map_helper/access_helper/airlock/station/maintenance,
+/obj/machinery/door/firedoor{
+	dir = 8
 	},
 /turf/simulated/floor/plating,
 /area/endeavour/hallway/d4fwdmaint)
@@ -17104,7 +17135,9 @@
 /area/endeavour/hallway/d4fwdmaint)
 "wYs" = (
 /obj/machinery/disperser/front{
-	dir = 4
+	dir = 4;
+	name = "Mass Driver Barrel";
+	desc = "The business end of a mass driver, the magnetic coils in this tube accelerate things shoved into it when power is applied."
 	},
 /obj/structure/plasticflaps/mining,
 /turf/simulated/floor/plating,
@@ -17386,15 +17419,7 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/endeavour/hallway/d4portafthall)
 "xos" = (
-/obj/effect/floor_decal/borderfloorblack,
-/obj/effect/floor_decal/corner/lightorange/border,
-/obj/machinery/camera/network/engineering{
-	dir = 1
-	},
-/obj/machinery/atmospherics/component/unary/vent_pump/on{
-	dir = 1
-	},
-/turf/simulated/floor/tiled/steel_ridged,
+/turf/simulated/wall/r_wall/prepainted,
 /area/endeavour/hallway/d4starboardforhall)
 "xpb" = (
 /obj/effect/floor_decal/borderfloorblack,
@@ -35091,7 +35116,7 @@ dvY
 dvY
 qDt
 evL
-eDQ
+cIU
 cIU
 bSY
 tRo
@@ -35283,7 +35308,7 @@ dvY
 dvY
 dvY
 dvY
-dvY
+qDt
 wiw
 wiw
 wiw
@@ -36451,7 +36476,7 @@ wiw
 wiw
 lDz
 vdK
-nQj
+cgn
 vWu
 eyl
 wiw
@@ -45379,7 +45404,7 @@ gPd
 usY
 qBz
 kyk
-xsV
+dvY
 qBz
 lnb
 oRc
@@ -45572,8 +45597,8 @@ jNg
 gtA
 gPd
 qBz
-xXL
-lbF
+dvY
+dvY
 qBz
 nwn
 wii
@@ -45766,10 +45791,10 @@ jNg
 jNg
 jNg
 qBz
-xXL
-ciZ
+dvY
+dvY
 qBz
-qgV
+mZZ
 sGE
 kyf
 tmr
@@ -45785,7 +45810,7 @@ tmr
 tmr
 xNn
 pMX
-hKp
+xos
 qBz
 vFm
 dvY
@@ -45960,12 +45985,12 @@ jNg
 jNg
 jNg
 qBz
-xXL
-ciZ
-qBz
-nwn
+dvY
+dvY
+dvY
+mZZ
 wii
-nSo
+nAP
 tmr
 tmr
 lMn
@@ -45979,8 +46004,8 @@ tmr
 tmr
 xNn
 pMX
-hKp
-qBz
+xos
+dvY
 hNp
 dvY
 qBz
@@ -46155,9 +46180,9 @@ jNg
 jNg
 qBz
 jHd
-kcE
-qBz
-eki
+dvY
+dvY
+mZZ
 wii
 fIT
 tmr
@@ -46174,7 +46199,7 @@ tmr
 qXD
 mOl
 xos
-qBz
+dvY
 dvY
 dvY
 qBz
@@ -46348,10 +46373,10 @@ jNg
 jNg
 jNg
 qBz
-pUe
-dvY
-qBz
-akX
+wqH
+qDt
+qDt
+mZZ
 wii
 nSo
 tmr
@@ -46367,9 +46392,9 @@ tmr
 tmr
 obt
 pMX
-wLT
-qBz
-qBz
+xos
+qDt
+qDt
 jsv
 qBz
 jNg
@@ -46542,10 +46567,10 @@ jNg
 jNg
 jNg
 qBz
-xXL
+pUe
 mES
-qBz
-oOK
+kcE
+mZZ
 wii
 fIT
 tmr
@@ -46561,8 +46586,8 @@ tmr
 tmr
 xNn
 pMX
-mFR
-qBz
+xos
+dvY
 dvY
 dvY
 qBz
@@ -46738,8 +46763,8 @@ jNg
 qBz
 xXL
 dvY
-qBz
-nwn
+dvY
+mZZ
 wii
 nSo
 qBz
@@ -46753,10 +46778,10 @@ aLa
 yfO
 mel
 djL
-obt
+fow
 pMX
-wLT
-nAP
+lbF
+dvY
 dvY
 dvY
 qBz
@@ -46932,8 +46957,8 @@ rME
 qBz
 xXL
 ciZ
-cyR
-eki
+dvY
+eDQ
 wii
 fIT
 qBz
@@ -46949,8 +46974,8 @@ djL
 djL
 xNn
 pMX
-hKp
-cyR
+vzY
+dvY
 dvY
 dvY
 qBz
@@ -47126,8 +47151,8 @@ jNg
 fwR
 xXL
 ciZ
-wqH
-nwn
+dvY
+gid
 wii
 nSo
 qBz
@@ -47143,8 +47168,8 @@ djL
 djL
 obt
 pMX
-wLT
-wqH
+bhF
+dvY
 dvY
 dvY
 fwR
@@ -47320,8 +47345,8 @@ jNg
 fwR
 xXL
 ciZ
-cyR
-eki
+dvY
+eDQ
 wii
 fIT
 qBz
@@ -47337,8 +47362,8 @@ djL
 djL
 xNn
 pMX
-hKp
-cyR
+vzY
+dvY
 dvY
 dvY
 fwR
@@ -47514,8 +47539,8 @@ jNg
 fwR
 cRV
 ciZ
-qBz
-vhU
+dvY
+mZZ
 wii
 nSo
 qBz
@@ -47531,9 +47556,9 @@ djL
 djL
 obt
 pMX
-wLT
-nAP
+lbF
 dvY
+gRl
 cRV
 fwR
 jNg
@@ -47707,11 +47732,11 @@ jNg
 jNg
 qBz
 cRV
+ciZ
 dvY
-qBz
-eki
+mZZ
 wii
-fIT
+jFf
 qBz
 hic
 vgl
@@ -47725,9 +47750,9 @@ djL
 djL
 xNn
 pMX
-hKp
-qBz
-qBz
+xos
+dvY
+gRl
 cRV
 qBz
 jNg
@@ -47902,7 +47927,7 @@ jNg
 fwR
 cRV
 ciZ
-qBz
+dvY
 mZZ
 sGE
 pbx
@@ -47919,9 +47944,9 @@ djL
 djL
 xNn
 pMX
-hHD
-qBz
+xos
 dvY
+gRl
 cRV
 fwR
 jNg
@@ -48095,9 +48120,9 @@ jNg
 jNg
 fwR
 cRV
+ciZ
 dvY
-qBz
-eki
+mZZ
 wii
 fIT
 qBz
@@ -48113,9 +48138,9 @@ djL
 djL
 obt
 pMX
-wLT
-qBz
-vFm
+xos
+dvY
+mpg
 cRV
 fwR
 jNg
@@ -48289,9 +48314,9 @@ jNg
 jNg
 fwR
 cRV
+ciZ
 dvY
-qBz
-akX
+mZZ
 wii
 nSo
 qBz
@@ -48307,9 +48332,9 @@ djL
 djL
 xNn
 pMX
-hKp
-qBz
+xos
 dvY
+gRl
 cRV
 fwR
 jNg
@@ -48483,9 +48508,9 @@ jNg
 jNg
 qBz
 jUm
-tmx
-qBz
-nwn
+ciZ
+dvY
+mZZ
 wii
 nSo
 qBz
@@ -48499,11 +48524,11 @@ qBz
 djL
 djL
 djL
-obt
+fow
 pMX
-rbo
-qBz
+xos
 dvY
+gRl
 jUm
 qBz
 jNg
@@ -48677,26 +48702,26 @@ gtA
 gPd
 qBz
 hTL
+ciZ
 dvY
-qBz
-eki
+mZZ
 wii
 fIT
 eTy
 eTy
 eTy
-gRl
+gGG
 dhN
 lSQ
 agP
-gRl
+gGG
 djL
 djL
 djL
 kMd
 hSO
-xFQ
-qBz
+xos
+dvY
 dvY
 hTL
 qBz
@@ -48871,9 +48896,9 @@ gPd
 usY
 qBz
 eEF
-xXL
-bFi
-nwn
+ciZ
+dvY
+cyR
 upV
 fLS
 gXG
@@ -48889,8 +48914,8 @@ fMD
 mqz
 fWg
 swz
-wLT
-bFi
+tmx
+dvY
 dvY
 eEF
 qBz
@@ -49065,26 +49090,26 @@ gtA
 gPd
 qBz
 eEF
-qBz
-qBz
+ciZ
+dvY
 qBz
 qBz
 gGG
 gGG
 gGG
 gGG
-gRl
+gGG
 dhN
 fmu
 agP
 gGG
 gGG
 gGG
-gRl
-gRl
-vgl
-vgl
+gGG
+gGG
 qBz
+qBz
+dvY
 qBz
 eEF
 qBz
@@ -49260,9 +49285,9 @@ jNg
 qBz
 wYs
 qBz
-qBz
 dvY
-vgl
+dvY
+qBz
 ehr
 ehr
 jyT
@@ -49276,9 +49301,9 @@ ehr
 ehr
 ehr
 ehr
-vgl
-vgl
 qBz
+dvY
+dvY
 qBz
 wYs
 qBz
@@ -49454,9 +49479,9 @@ jNg
 qBz
 kfj
 qBz
+bFi
+bFi
 qBz
-dvY
-vgl
 ehr
 ehr
 dbo
@@ -49470,9 +49495,9 @@ ckl
 spe
 ehr
 ehr
-vgl
-vgl
 qBz
+bFi
+bFi
 qBz
 kfj
 qBz
@@ -50624,13 +50649,13 @@ jNg
 gPd
 usY
 gPd
-jNg
-mtv
-jNg
-jNg
-jNg
-jNg
-jNg
+nQj
+nQj
+nQj
+nQj
+nQj
+nQj
+nQj
 gPd
 usY
 gPd
@@ -50819,11 +50844,11 @@ gtA
 gPd
 gtA
 jNg
-jNg
-jNg
-jNg
-jNg
-jNg
+nQj
+nQj
+nQj
+nQj
+nQj
 jNg
 gtA
 gPd
@@ -51013,10 +51038,10 @@ jNg
 jNg
 jNg
 jNg
-jNg
-jNg
-jNg
-jNg
+xRj
+nQj
+nQj
+nQj
 jNg
 jNg
 jNg
@@ -51209,7 +51234,7 @@ jNg
 jNg
 jNg
 jNg
-jNg
+nQj
 jNg
 jNg
 jNg
@@ -51403,7 +51428,7 @@ jNg
 jNg
 jNg
 jNg
-jNg
+mtv
 jNg
 jNg
 jNg
