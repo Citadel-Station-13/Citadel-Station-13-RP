@@ -61,6 +61,16 @@ SUBSYSTEM_DEF(chemistry)
 			continue
 		reagent_lookup[D.id] = D
 
+/**
+ * this is dependent on priorities of chemical reaction list.
+ */
+/datum/controller/subsystem/chemistry/proc/rebuild_reaction_caches()
+	chemical_reactions_relevant_for_reagent_id = list()
+	for(var/datum/chemical_reaction/reaction as anything in chemical_reactions)
+		for(var/id in (reaction.required_reagents | reaction.moderators | reaction.catalysts))
+			LAZYINITLIST(chemical_reactions_relevant_for_reagent_id[id])
+			chemical_reactions_relevant_for_reagent_id[id] |= reaction
+
 /datum/controller/subsystem/chemistry/fire(resumed)
 	if(!resumed)
 		reacting_holders_current_cycle = reacting_holders.Copy()
@@ -72,16 +82,6 @@ SUBSYSTEM_DEF(chemistry)
 		if(MC_TICK_CHECK)
 			break
 	reacting_holders_current_cycle.len -= reacted_holder_count
-
-/**
- * this is dependent on priorities of chemical reaction list.
- */
-/datum/controller/subsystem/chemistry/proc/rebuild_reaction_caches()
-	chemical_reactions_relevant_for_reagent_id = list()
-	for(var/datum/chemical_reaction/reaction as anything in chemical_reactions)
-		for(var/id in (reaction.required_reagents | reaction.moderators | reaction.catalysts))
-			LAZYINITLIST(chemical_reactions_relevant_for_reagent_id[id])
-			chemical_reactions_relevant_for_reagent_id[id] |= reaction
 
 //* Reagents *//
 
