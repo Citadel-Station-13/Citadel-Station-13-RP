@@ -7,7 +7,6 @@
 	icon_state = "cell_mag"
 	origin_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 5, TECH_MAGNETS = 3)
 	ammo_caliber = /datum/ammo_caliber/microbattery
-	ammo_type = /obj/item/ammo_casing/microbattery
 	ammo_max = 3
 	ammo_current = 0
 	ammo_legacy_init_everything = TRUE

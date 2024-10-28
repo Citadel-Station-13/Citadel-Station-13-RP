@@ -999,7 +999,7 @@
 	)
 	result = /obj/item/reagent_containers/food/snacks/burrito_mystery
 
-//Ligger food, and also bacon.
+//Unathi food, and also bacon.
 
 /datum/recipe/bacon
 	items = list(

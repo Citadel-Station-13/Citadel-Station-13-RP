@@ -40,6 +40,11 @@
 	desc = "A pair of loose, black leather chaps."
 	icon_state = "chaps_black"
 
+/obj/item/clothing/accessory/chaps/unchaps
+	name = "black unchaps"
+	desc = "A pair of loose, black contradictions."
+	icon_state = "unchaps"
+
 /*
  * Poncho
  */
