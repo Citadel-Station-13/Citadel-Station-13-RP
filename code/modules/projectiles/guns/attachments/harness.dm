@@ -13,4 +13,4 @@
 /obj/item/gun_attachment/harness/magnetic/on_detach(obj/item/gun/gun)
 	..()
 
-#warn impl
+#warn impl; render if it's active with an action button
