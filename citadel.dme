@@ -3319,6 +3319,7 @@
 #include "code\modules\mapping\templates\engine.dm"
 #include "code\modules\mapping\utility\merge_conflict_marker.dm"
 #include "code\modules\maps\_shim\away_spawner.dm"
+#include "code\modules\maps\away_missions\ship_cave.dm"
 #include "code\modules\maps\away_missions\140x140\carpfarm.dm"
 #include "code\modules\maps\away_missions\140x140\listeningpost.dm"
 #include "code\modules\maps\away_missions\140x140\snow_outpost.dm"
