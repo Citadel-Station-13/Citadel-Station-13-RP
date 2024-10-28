@@ -3,6 +3,9 @@
 
 /**
  * Overmap location that binds to a map level
+ *
+ * Usually not used. There's little need to have overmaps
+ * outside of shuttles (just shuttles) and structs (planets and loaded maps).
  */
 /datum/overmap_location/level
 	/// the map level we're bound to

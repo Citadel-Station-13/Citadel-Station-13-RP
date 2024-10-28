@@ -3,6 +3,15 @@
  *
  * * clusters of zlevels, basically.
  * * when maps are loaded, areas are cached together to preserve byond-like behavior.
+ * * A map can make a /datum/map_struct. This is used to initialize its overmaps,
+ *   if an overmap initializer is provided.
+ * * While multiple map structs can be made per map with some modifications, this
+ *   functionality is not included as there is little reason to support such
+ *   behavior. Maps should use the dependencies system to chain-load other maps,
+ *   not have multiple planets in one map datum.
+ * * Loading more than one instance of a map is not supported at this time,
+ *   and will likely never be supported. An upcoming system will be added to handle
+ *   instanced planets and similar things.
  */
 /datum/map
 	abstract_type = /datum/map
