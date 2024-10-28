@@ -492,6 +492,29 @@
 	if(istype(ammo_magazine,/obj/item/ammo_magazine/a5_7mm/five_seven/highcap))
 		icon_state = "fiveseven-extended"
 
+//AXHS Series
+/obj/item/gun/ballistic/ax59 //Exploration model
+	name = "large pistol"
+	desc = "A bulky semi-automatic handgun with 'NT AX59' engraved on the slide. It's attached to it's holster by a small loop at the bottom of the grip. Uses .45 rounds."
+	description_fluff = "The Advanced Expeditionary Handgun System, more commonly known by it's model name 'AX59', or coloquially as the 'Axe', was one of the first attempts by Nanotrasen to modernize and standardize their Exploration department's gear in the years following the Phoron Wars, although it was swiftly replaced by more compact, field-rechargeable energy weapon designs within a few years. A handgun chambered in the .45 ACP cartridge, it was designed to offer enough stopping power to handle common 'environmental threats' such as hostile fauna within a small form factor, ideally eliminating the need to carry a long gun, although the final design was still considered bulky even by the time of it's introduction. Some of this weight thankfully owes itself to features specifically designed for it's use in Exploration:  All base models come equipped with a weapon-mounted light and are issued alongside a smart retention system consisting of a magnetic holster and lanyard."
+	projectile_type = /obj/projectile/bullet/pistol/medium
+	icon_state = "ax59"
+	caliber = /datum/ammo_caliber/a45
+	load_method = MAGAZINE
+	magazine_type = /obj/item/ammo_magazine/a45
+	allowed_magazines = list(/obj/item/ammo_magazine/a45)
+	pin = /obj/item/firing_pin/explorer
+
+/obj/item/gun/ballistic/ax99 //PMD model
+	name = "long-slide pistol"
+	desc = "A bulky semi-automatic handgun with 'NT AX99' engraved on the slide. Uses .44 rounds."
+	description_fluff = "A later derivative of what started as the Advanced Expeditionary Handgun System (AXHS), the AX99 entered production solely at the behest of the company's Paracausal Monitoring Division shortly after it's establishment due to the new department's need for a standardized handgun design that could operate reliably even under anomalous circumstances and against unknown threats. Compared to it's predecessor, it is chambered for the more powerful .44 Magnum cartridge and equipped with a partially redesigned operating system able to withstand the higher pressure, as well as a longer ported barrel and slide assembly. On the other hand, it has been stripped of all fragile electronic utilities such as the underbarrel light and magnetic holster. It has been occasionally referred to as the 'Silver Axe' due to it's use in conjuction with silver rounds, although it is perfectly capable of operating with standard ammunition."
+	icon_state = "ax99"
+	caliber = /datum/ammo_caliber/a44
+	load_method = MAGAZINE
+	magazine_type = /obj/item/ammo_magazine/a44
+	allowed_magazines = list(/obj/item/ammo_magazine/a44)
+
 //Apidean Weapons
 /obj/item/gun/ballistic/apinae_pistol
 	name = "\improper Apinae Enforcer pistol"
