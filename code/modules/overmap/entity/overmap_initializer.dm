@@ -14,12 +14,19 @@
  */
 /datum/overmap_initializer
 	//! LEGACY
+	/// the entity name while not scanned
 	var/unknown_name = "unknown sector"
+	/// the entity icon state when not scanned
 	var/unknown_state = "unknown"
-	var/real_name = "map object"
-	var/scanner_desc = "!! No Data Available !!"
+	/// the entity name when scanned
+	var/known_name = "map object"
+	/// the entity icon state when scanned
+	var/known_state = "generic"
+	/// can it be scanned?
 	var/scannable = TRUE
-	var/icon_state = "generic"
+	/// description on a scanner printout
+	var/scanner_desc = "<hr><center><h1>No data available.</h1></center><hr>"
 	//! END
+
 
 #warn impl
