@@ -32,6 +32,13 @@
  * * instant_only - skip ticked reactions
  */
 /datum/reagent_holder/proc/check_reactions(list/datum/chemical_reaction/reactions, safety)
+	SHOULD_NOT_SLEEP(TRUE)
+	PROTECTED_PROC(TRUE)
+
+	// todo: should this be a single flag, and should this be here?
+	if(legacy_is_no_react())
+		return
+
 	var/list/datum/chemical_reaction/potentially_ticked = list()
 	var/list/datum/chemical_reaction/instant_reacting = list()
 	for(var/datum/chemical_reaction/reaction as anything in reactions)
