@@ -62,6 +62,21 @@
 	/// * this is a default value; set to null by default to have the projectile's say.
 	var/accuracy_disabled = null
 
+	//* Attachments *//
+
+	/// Installed attachments
+	var/list/obj/item/gun_attachment/attachments
+	/// Attachment alignments.
+	///
+	/// * Format: "attachment slot" = list(x, y)
+	/// * This is the x, y offsets to apply to it to align it to
+	///   its proper place, assuming that 1, 1 is its lower left corner.
+	/// * Typelisted. If you varedit this, be aware of that.
+	/// * If an attachment slot isn't here, it's not allowed on the gun.
+	var/list/attachment_alignment
+
+	#warn impl & typelist
+
 	// legacy below //
 
 	var/burst = 1
@@ -180,7 +195,7 @@
 /obj/item/gun/Initialize(mapload)
 	. = ..()
 
-	// instantiate & dedupe renderers
+	//* instantiate & dedupe renderers *//
 	var/requires_icon_update
 	if(item_renderer)
 		if(ispath(item_renderer) || IS_ANONYMOUS_TYPEPATH(item_renderer))
@@ -204,6 +219,11 @@
 			SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_guns.dmi',
 			)
 
+	//* handle attachment typelists *//
+	if(attachment_alignment)
+		attachment_alignment = typelist(NAMEOF(src, attachment_alignment), attachment_alignment)
+
+	//! LEGACY: firemodes
 	for(var/i in 1 to firemodes.len)
 		var/key = firemodes[i]
 		if(islist(key))
@@ -216,11 +236,18 @@
 		sel_mode = 0
 		switch_firemodes()
 
+	//! LEGACY: accuracy
 	if(isnull(scoped_accuracy))
 		scoped_accuracy = accuracy
 
+	//! LEGACY: pin
 	if(pin)
 		pin = new pin(src)
+
+/obj/item/gun/Destroy()
+	QDEL_NULL(pin)
+	QDEL_LIST(attachments)
+	return ..()
 
 /obj/item/gun/CtrlClick(mob/user)
 	if(can_flashlight && ishuman(user) && src.loc == usr && !user.incapacitated(INCAPACITATION_ALL))
@@ -899,6 +926,26 @@
  */
 /obj/item/gun/proc/get_ammo_ratio()
 	return 0
+
+//* Attachments *//
+
+/**
+ * Check if we can attach an attachment
+ */
+/obj/item/gun/proc/can_install_attachment(obj/item/gun_attachment/attachment, datum/event_args/actor/actor, silent)
+
+/**
+ * Installs an attachment
+ */
+/obj/item/gun/proc/install_attachment(obj/item/gun_attachment/attachment, datum/event_args/actor/actor, silent)
+
+/**
+ * Uninstalls an attachment
+ */
+/obj/item/gun/proc/uninstall_attachment(obj/item/gun_attachment/attachment, datum/event_args/actor/actor, silent)
+
+
+#warn impl
 
 //* Rendering *//
 
