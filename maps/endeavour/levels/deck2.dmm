@@ -25753,6 +25753,9 @@
 /obj/structure/cable/green{
 	icon_state = "2-4"
 	},
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/medical)
 "sTt" = (
@@ -26785,6 +26788,9 @@
 "tEk" = (
 /obj/structure/cable/green{
 	icon_state = "2-4"
+	},
+/obj/structure/cable/green{
+	icon_state = "4-8"
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/research)
@@ -31381,6 +31387,9 @@
 	},
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d2portforhall)
+"xda" = (
+/turf/simulated/floor/plating,
+/area/maintenance/substation/medical)
 "xdd" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
@@ -31812,6 +31821,9 @@
 "xsd" = (
 /obj/structure/cable/green{
 	icon_state = "2-4"
+	},
+/obj/structure/cable/green{
+	icon_state = "4-8"
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/medical_science)
@@ -52828,7 +52840,7 @@ qPa
 pZh
 chD
 mKc
-chD
+xda
 oDd
 heR
 vEl
