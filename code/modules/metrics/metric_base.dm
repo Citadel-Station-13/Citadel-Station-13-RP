@@ -22,3 +22,7 @@
 	///
 	/// * dependent on git; at time of writing this is SHA-1
 	var/commit_hash
+	/// all valid metric ids, as a list
+	///
+	/// * this is generated via typesof()
+	var/list/metric_ids
