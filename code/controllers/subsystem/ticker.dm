@@ -135,6 +135,10 @@ SUBSYSTEM_DEF(ticker)
 	fire()
 
 /datum/controller/subsystem/ticker/proc/process_pregame()
+	var/citest = FALSE
+#ifdef CITESTING
+	citest = TRUE
+#endif
 	if(isnull(timeLeft))
 		timeLeft = max(0,start_at - world.time)
 	if(start_immediately)
@@ -143,10 +147,27 @@ SUBSYSTEM_DEF(ticker)
 		return
 	timeLeft -= wait
 	if(timeLeft <= 0)
-		current_state = GAME_STATE_SETTING_UP
-		Master.SetRunLevel(RUNLEVEL_SETUP)
-		if(start_immediately)
-			fire()
+		if((how_many_players_have_readied_up() > 0) || citest || start_immediately)
+			current_state = GAME_STATE_SETTING_UP
+			Master.SetRunLevel(RUNLEVEL_SETUP)
+			if(start_immediately)
+				fire()
+		else
+			handle_no_players_ready()
+			return
+
+/datum/controller/subsystem/ticker/proc/how_many_players_have_readied_up()
+	var/ready = FALSE
+	for(var/client/C in GLOB.clients)
+		if(istype(C.mob, /mob/new_player))
+			var/mob/new_player/p = C.mob
+			ready += p.ready
+	return ready
+
+/datum/controller/subsystem/ticker/proc/handle_no_players_ready()
+	to_chat(world, SPAN_ANNOUNCE("No Players are ready to play, delaying round start."))
+	start_at = world.time + 1 MINUTE
+	timeLeft = max(0,start_at - world.time)
 
 /datum/controller/subsystem/ticker/proc/Reboot(reason, end_string, delay)
 	set waitfor = FALSE
