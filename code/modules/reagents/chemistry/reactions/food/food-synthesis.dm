@@ -59,6 +59,9 @@
 
 	synthesis_product_path = /obj/item/reagent_containers/food/snacks/chocolatebar
 
+	// sigh
+	priority = 100
+
 /datum/chemical_reaction/food/synthesis/dough
 	name = "Dough"
 	id = "synthesis-dough"
