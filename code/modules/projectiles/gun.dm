@@ -932,17 +932,21 @@
 /**
  * Check if we can attach an attachment
  */
-/obj/item/gun/proc/can_install_attachment(obj/item/gun_attachment/attachment, datum/event_args/actor/actor, silent)
+/obj/item/gun/proc/can_install_attachment(obj/item/gun_attachment/attachment, datum/event_args/actor/actor, silent)/can_
 
 /**
  * Installs an attachment
+ *
+ * @return TRUE / FALSE on success / failure
  */
 /obj/item/gun/proc/install_attachment(obj/item/gun_attachment/attachment, datum/event_args/actor/actor, silent)
 
 /**
  * Uninstalls an attachment
+ *
+ * @return TRUE / FALSE on success / failure
  */
-/obj/item/gun/proc/uninstall_attachment(obj/item/gun_attachment/attachment, datum/event_args/actor/actor, silent)
+/obj/item/gun/proc/uninstall_attachment(obj/item/gun_attachment/attachment, atom/new_loc, datum/event_args/actor/actor, silent)
 
 
 #warn impl

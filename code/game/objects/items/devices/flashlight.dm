@@ -270,6 +270,13 @@
 	light_color = LIGHT_COLOR_FLUORESCENT_FLASHLIGHT
 	light_wedge = LIGHT_NARROW
 
+	/// the gun attachment used for testing if we can attach
+	var/static/obj/item/gun_attachment/flashlight/maglight/test_attachment
+
+#warn used as item or something lmfao
+
+#warn attachment
+
 /obj/item/flashlight/drone
 	name = "low-power flashlight"
 	desc = "A miniature lamp, that might be used by small robots."

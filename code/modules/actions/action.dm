@@ -32,6 +32,9 @@
 	var/datum/callback/check_callback
 
 	//* Target / Delegate *//
+	///
+	#warn this
+
 	/// callback to invoke with (actor) on trigger at base of /invoke().
 	///
 	/// * return a truthy value from the callback to halt propagation
@@ -51,14 +54,17 @@
 	//* Button(s) *//
 	/// all buttons that are on us right now
 	var/list/atom/movable/screen/movable/action_button/buttons
+
 	/// do not update buttons; something else manages them
 	var/rendering_externally_managed = FALSE
+
 	/// where the button's background icon is from
 	var/background_icon = 'icons/screen/actions/backgrounds.dmi'
 	/// what the action's background state should be
 	var/background_icon_state = "default"
 	/// custom background overlay to add; this goes below button sprite / overlays!
 	var/background_additional_overlay
+
 	/// the icon of the button's actual internal sprite, overlaid on the background
 	var/button_icon = 'icons/screen/actions/actions.dmi'
 	/// the icon_state of the button's actual internal sprite, overlaid on the background
@@ -67,6 +73,7 @@
 	var/button_additional_only = FALSE
 	/// custom overlay to add to all buttons; this is arbitrary, and can be a reference to an atom
 	var/button_additional_overlay
+
 	/// set availability to; it must be 0 to 1, inclusive.
 	var/button_availability = 1
 	/// default handling for availability should be invoked
