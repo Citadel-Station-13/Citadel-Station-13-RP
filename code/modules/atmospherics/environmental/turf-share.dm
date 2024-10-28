@@ -1,5 +1,3 @@
-//* This file is explicitly licensed under the MIT license. *//
-//* Copyright (c) 2024 Citadel Station Developers           *//
 
 /**
  * Used to share a certain temperature & heat capacity's thermal energy with us.
