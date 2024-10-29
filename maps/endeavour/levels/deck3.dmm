@@ -1168,13 +1168,6 @@
 /turf/simulated/wall/r_wall/prepainted,
 /area/crew_quarters/sleep/Dorm_8)
 "bbW" = (
-/obj/machinery/button/remote/blast_door{
-	id = "armorytactical";
-	name = "Tactical Armory Access";
-	pixel_x = -25;
-	pixel_y = -6;
-	req_access = list(3)
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
@@ -9751,13 +9744,6 @@
 /obj/effect/floor_decal/corner/red{
 	dir = 4
 	},
-/obj/machinery/button/remote/blast_door{
-	id = "armorytactical";
-	name = "Tactical Armory Access";
-	pixel_x = 25;
-	pixel_y = -6;
-	req_access = list(3)
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 6
 	},
@@ -17725,6 +17711,13 @@
 	dir = 4
 	},
 /obj/machinery/fire_alarm/east_mount,
+/obj/machinery/button/remote/blast_door{
+	id = "armorytactical";
+	name = "Tactical Armory Access";
+	pixel_x = 25;
+	pixel_y = -6;
+	req_access = list(3)
+	},
 /turf/simulated/floor/tiled/dark,
 /area/security/riot_control)
 "prg" = (
@@ -25841,6 +25834,13 @@
 /obj/item/ammo_magazine/a5_56mm/ext,
 /obj/item/ammo_magazine/a5_56mm/ext,
 /obj/item/ammo_magazine/a5_56mm/ext,
+/obj/machinery/button/remote/blast_door{
+	id = "armorytactical";
+	name = "Tactical Armory Access";
+	pixel_x = -25;
+	pixel_y = -6;
+	req_access = list(3)
+	},
 /turf/simulated/floor/tiled/dark,
 /area/security/tactical)
 "vXB" = (
