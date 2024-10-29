@@ -970,6 +970,7 @@
 		return FALSE
 
 	// ... stuff here
+	#warn that
 
 	if(attachment.loc != src)
 		attachment.forceMove(src)
@@ -1025,6 +1026,16 @@
  */
 /obj/item/gun/proc/on_attachment_uninstall(obj/item/gun_attachment/attachment)
 	PROTECTED_PROC(TRUE)
+
+//* Context *//
+
+/obj/item/gun/context_menu(datum/event_args/actor/e_args)
+	. = ..()
+
+/obj/item/gun/context_act(datum/event_args/actor/e_args, key)
+	. = ..()
+
+#warn impl
 
 //* Rendering *//
 
