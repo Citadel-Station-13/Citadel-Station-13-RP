@@ -43,4 +43,33 @@
 	 * entity.
 	 */
 
+/**
+ * Initializes our overmap entity.
+ *
+ * * `from_source_location` should be typecasted on subtypes as the same type as
+ *    `assemble_location`'s `from_source` argument.
+ *
+ * @params
+ * * from_source_location - source location to make the entity for
+ */
+/datum/overmap_initializer/proc/initialize(from_source_location)
+	var/datum/overmap_location/location = assemble_location(from_source_location)
+	if(!location)
+		CRASH("failed to assemble location during overmap entity initialization")
+	return create_overmap_entity(location)
+
+/**
+ * Creates our location
+ *
+ * * from_source should be typecasted on subtypes as the same type as `initialize`'s
+ *   `from_source_location` argument.
+ */
+/datum/overmap_initializer/proc/assemble_location(from_source) as /datum/overmap_location
+	CRASH("unimplemented proc called")
+
+/**
+ * Creates our overmap object
+ */
+/datum/overmap_initializer/proc/create_overmap_entity(datum/overmap_location/from_location) as /obj/overmap/entity
+
 #warn impl

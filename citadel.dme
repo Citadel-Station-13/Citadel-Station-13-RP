@@ -4233,6 +4233,7 @@
 #include "code\modules\overmap\entity\entity-physics.dm"
 #include "code\modules\overmap\entity\entity.dm"
 #include "code\modules\overmap\entity\overmap_initializer.dm"
+#include "code\modules\overmap\entity\overmap_lateload.dm"
 #include "code\modules\overmap\entity\overmap_location.dm"
 #include "code\modules\overmap\entity\overmap_initializer\level.dm"
 #include "code\modules\overmap\entity\overmap_initializer\shuttle.dm"

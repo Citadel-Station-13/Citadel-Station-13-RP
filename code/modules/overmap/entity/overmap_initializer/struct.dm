@@ -3,5 +3,6 @@
 
 /datum/overmap_initializer/struct
 
-#warn impl
+/datum/overmap_initializer/struct/assemble_location(datum/map_struct/from_source)
+	return new /datum/overmap_location/struct(from_source)
 

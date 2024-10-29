@@ -8,8 +8,6 @@
  * outside of shuttles (just shuttles) and structs (planets and loaded maps).
  */
 /datum/overmap_initializer/level
-	/// a map level datum to 
 
-
-#warn impl
-
+/datum/overmap_initializer/level/assemble_location(datum/map_level/from_source)
+	return new /datum/overmap_location/level(from_source)

@@ -632,7 +632,7 @@
 /datum/map_level/proc/level_turfs()
 	return Z_TURFS(z_index)
 
-//* subtypes
+//* ---- Subtypes ---- *//
 
 /**
  * dynamically generated levels should use this

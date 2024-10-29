@@ -129,7 +129,7 @@
 
 	acquired_level_locks = null
 
-#warn impl and hook all
+#warn impl and hook all; also, put the location in a list of locations with locks on SSovermaps
 
 /**
  * Refreshes our owned level locks
