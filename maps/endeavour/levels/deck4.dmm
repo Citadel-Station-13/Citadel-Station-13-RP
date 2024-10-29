@@ -3709,14 +3709,8 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/atmos)
 "eUr" = (
-/obj/machinery/power/smes/buildable/main{
-	RCon_tag = "Power - Secondary";
-	name = "secondary smes";
-	desc = "A high-capacity superconducting magnetic energy storage (SMES) unit. This is the secondary for ship's power.";
-	output_level = 1500
-	},
-/obj/structure/cable/orange{
-	icon_state = "0-2"
+/obj/machinery/power/terminal{
+	dir = 4
 	},
 /obj/structure/cable/orange{
 	icon_state = "0-8"
@@ -11075,7 +11069,8 @@
 /obj/machinery/power/smes/buildable/main{
 	capacity = 8000;
 	charge = 21600;
-	output_level = 1500
+	output_level = 1500;
+	output_level_max = 1500
 	},
 /turf/simulated/floor/plating,
 /area/engineering/engine_smes)
@@ -12868,6 +12863,21 @@
 /obj/machinery/air_alarm/east_mount,
 /turf/simulated/floor/wood,
 /area/crew_quarters/heads/chief)
+"ryU" = (
+/obj/structure/cable/orange{
+	icon_state = "0-2"
+	},
+/obj/machinery/power/smes/buildable/tcomms{
+	RCon_tag = "SECONDARY SUPPLY";
+	name = "Secondary Supply PSU";
+	desc = "A high-capacity superconducting magnetic energy storage (SMES) unit. This is the one dedicated to the secondary power net.";
+	capacity = 8000;
+	charge = 19200;
+	output_level_max = 1500;
+	output_level = 1000
+	},
+/turf/simulated/floor/plating,
+/area/endeavour/hallway/d4aftmaint)
 "ryY" = (
 /obj/structure/table/woodentable,
 /turf/simulated/floor/wood,
@@ -29619,7 +29629,7 @@ usH
 ukW
 wom
 eUr
-pLM
+ren
 bfk
 pLM
 pLM
@@ -29812,8 +29822,8 @@ myq
 kAf
 ukW
 jBO
-jBO
-jBO
+ryU
+coP
 ikp
 jBO
 jBO
