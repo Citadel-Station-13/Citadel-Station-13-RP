@@ -402,7 +402,7 @@
 	// used when venting rooms
 	var/tmp/last_airflow_stun = 0
 
-	var/catalogue_delay = 10 SECONDS
+	catalogue_delay = 10 SECONDS
 
 	var/mob/observer/eye/eyeobj
 
