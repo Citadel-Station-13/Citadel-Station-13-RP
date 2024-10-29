@@ -19,6 +19,11 @@
 /obj/item/gun_attachment/flashlight/rail
 
 // todo: make this directional at some point
+/**
+ * Actually a 'virtual' attachment. When uninstalled, will drop a maglight instead of itself.
+ */
 /obj/item/gun_attachment/flashlight/maglight
 
-#warn impl ; how do we do seclite?
+/obj/item/gun_attachment/flashlight/maglight/uninstalled()
+
+#warn impl 

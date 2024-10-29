@@ -111,6 +111,17 @@
 
 #warn impl
 
+/**
+ * This is a very special proc.
+ *
+ * This proc allows you to 'redirect' the actual item uninstalled to another item,
+ * useful for 'virtual' attachments made for things like maglights.
+ *
+ * The item returned will be what is dropped / put into the user's hands.
+ */
+/obj/item/gun_attachment/proc/uninstalled()
+	return src
+
 //* Actions *//
 
 /**

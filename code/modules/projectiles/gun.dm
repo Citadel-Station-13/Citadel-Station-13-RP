@@ -961,6 +961,8 @@
 /**
  * Installs an attachment
  *
+ * * This moves the attachment into the gun if it isn't already.
+ *
  * @return TRUE / FALSE on success / failure
  */
 /obj/item/gun/proc/install_attachment(obj/item/gun_attachment/attachment, datum/event_args/actor/actor, silent)
@@ -979,13 +981,15 @@
 /**
  * Uninstalls an attachment
  *
- * @return TRUE / FALSE on success / failure
+ * * This does not move the attachment after uinstall; you have to do that.
+ *
+ * @return the /obj/item uninstalled
  */
 /obj/item/gun/proc/uninstall_attachment(obj/item/gun_attachment/attachment, datum/event_args/actor/actor, silent)
 	ASSERT(attachment.attached == src)
 	attachment.on_detach(src)
 	on_attachment_uninstall(attachment)
-	return TRUE
+	return attachment.uninstalled()
 
 #warn impl
 
