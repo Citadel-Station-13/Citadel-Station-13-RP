@@ -77,7 +77,7 @@
 	/// * This is pixel coordinates on the gun's real icon. Out of bounds is allowed as attachments are just overlays.
 	var/list/attachment_alignment
 
-	#warn impl & typelist
+	#warn impl
 
 	// legacy below //
 
@@ -935,6 +935,22 @@
  * Check if we can attach an attachment
  */
 /obj/item/gun/proc/can_install_attachment(obj/item/gun_attachment/attachment, datum/event_args/actor/actor, silent)
+	for(var/obj/item/gun_attachment/existing as anything in attachments)
+		if(existing.attachment_slot == attachment.attachment_slot)
+			if(!silent)
+				actor?.chat_feedback(
+					SPAN_WARNING("[src] already has [existing] installed on its [existing.attachment_slot]!"),
+					target = src,
+				)
+			return FALSE
+		if(existing.attachment_conflict_type & attachment.attachment_conflict_type)
+			if(!silent)
+				actor?.chat_feedback(
+					SPAN_WARNING("[src]'s [existing] conflicts with [attachment]!"),
+					target = src,
+				)
+			return FALSE
+	return TRUE
 
 /**
  * Installs an attachment
@@ -942,16 +958,63 @@
  * @return TRUE / FALSE on success / failure
  */
 /obj/item/gun/proc/install_attachment(obj/item/gun_attachment/attachment, datum/event_args/actor/actor, silent)
+	if(!can_install_attachment(attachment, actor, silent))
+		return FALSE
+
+	// ... stuff here
+
+	if(attachment.loc != src)
+		attachment.forceMove(src)
+
+	on_attachment_install(attachment)
+	attachment.on_attach(src)
+	return TRUE
 
 /**
  * Uninstalls an attachment
  *
  * @return TRUE / FALSE on success / failure
  */
-/obj/item/gun/proc/uninstall_attachment(obj/item/gun_attachment/attachment, atom/new_loc, datum/event_args/actor/actor, silent)
-
+/obj/item/gun/proc/uninstall_attachment(obj/item/gun_attachment/attachment, datum/event_args/actor/actor, silent)
+	ASSERT(attachment.attached == src)
+	attachment.on_detach(src)
+	on_attachment_uninstall(attachment)
+	return TRUE
 
 #warn impl
+
+/**
+ * Align an attachment overlay.
+ *
+ * @return TRUE / FALSE on success / failure
+ */
+/obj/item/gun/proc/align_attachment_overlay(obj/item/gun_attachment/attachment, image/aligning)
+	var/list/alignment = attachment_alignment?[attachment.attachment_slot]
+	if(!alignment)
+		return FALSE
+	var/align_x = alignment[1]
+	var/align_y = alignment[2]
+
+	aligning.pixel_x = (align_x - attachment.align_x)
+	aligning.pixel_y = (align_y - attachment.align_y)
+
+	return TRUE
+
+/**
+ * Called exactly once when an attachment is installed
+ *
+ * * Called before the attachment's on_attach()
+ */
+/obj/item/gun/proc/on_attachment_install(obj/item/gun_attachment/attachment)
+	PROTECTED_PROC(TRUE)
+
+/**
+ * Called exactly once when an attachment is uninstalled
+ *
+ * * Called after the attachment's on_detach()
+ */
+/obj/item/gun/proc/on_attachment_uninstall(obj/item/gun_attachment/attachment)
+	PROTECTED_PROC(TRUE)
 
 //* Rendering *//
 
