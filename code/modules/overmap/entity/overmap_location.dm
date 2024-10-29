@@ -177,6 +177,7 @@
 	for(var/z_index in levels_to_lock)
 		SSovermaps.location_enclosed_levels[z_index] = src
 
+	SSovermaps.active_overmap_locations += src
 	acquired_level_locks = levels_to_lock
 	return TRUE
 
@@ -198,9 +199,8 @@
 		SSovermaps.location_enclosed_levels[z_index] = null
 
 	acquired_level_locks = null
+	SSovermaps.active_overmap_locations -= src
 	return TRUE
-
-#warn impl and hook all; also, put the location in a list of locations with locks on SSovermaps
 
 /**
  * Refreshes our owned level locks

@@ -4235,7 +4235,6 @@
 #include "code\modules\overmap\entity\overmap_initializer.dm"
 #include "code\modules\overmap\entity\overmap_lateload.dm"
 #include "code\modules\overmap\entity\overmap_location.dm"
-#include "code\modules\overmap\entity\overmap_initializer\level.dm"
 #include "code\modules\overmap\entity\overmap_initializer\shuttle.dm"
 #include "code\modules\overmap\entity\overmap_initializer\struct.dm"
 #include "code\modules\overmap\entity\overmap_location\shuttle.dm"

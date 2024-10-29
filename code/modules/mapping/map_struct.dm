@@ -285,7 +285,7 @@
 			for(var/index in index_of_first_nonnegative to length(elevation_tuple_z))
 				var/virtual_z = elevation_tuple_z[index]
 				if(virtual_z != last_virtual_z)
-					total_height += ceiling_height_default * ((virtaul_z - 1) - last_virtual_z)
+					total_height += ceiling_height_default * ((virtual_z - 1) - last_virtual_z)
 				// if it's on the level we're tallying to we ignore it as we don't tally ourselves
 				// because virtual_elevation is meters off the ground.. of the ground.
 				if(virtual_z == level.struct_z)

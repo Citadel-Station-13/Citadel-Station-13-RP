@@ -36,6 +36,8 @@ SUBSYSTEM_DEF(overmaps)
 	/// * A level is not locked if it's enclosed by no overmaps entity.
 	/// * A level is locked / unlocked as a location is assigned / un-assigned from an entity.
 	var/static/list/datum/overmap_location/location_enclosed_levels = list()
+	/// Active overmap locations; ergo the ones with locks on [location_enclosed_levels].
+	var/static/list/datum/overmap_location/active_overmap_locations = list()
 
 /datum/controller/subsystem/overmaps/Initialize()
 	make_default_overmap()
