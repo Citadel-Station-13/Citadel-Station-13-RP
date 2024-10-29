@@ -7,6 +7,16 @@
  * * Used to bunch zlevels up into managed sectors
  * * Internally is used by overmaps to act as level-collections
  * * Internally is used to resolve what levels corrospond to what world-sectors.
+ *
+ * This is basically the glue struct binding abstracted collections of levels
+ * to other systems like overmaps and sectors.
+ *
+ * This is also the source of truth for those systems. If a map struct
+ * is deleted for any reason, everything associated to it including
+ * overmap entities and sectors must immediately cease to exist.
+ *
+ * Nothing is allowed to create or destroy map structs other than SSmapping,
+ * which contains public APIs to request creation / destruction / archiving of levels.
  */
 /datum/map_struct
 	//* Core *//

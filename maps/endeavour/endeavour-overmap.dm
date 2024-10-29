@@ -11,7 +11,6 @@
 	vessel_mass = 18500 // temporarily buffed by 3x due to vorestation fucking up large gas thruster code
 	burn_delay = 2 SECONDS
 	fore_dir = EAST	// Which direction the ship/z-level is facing.  It will move dust particles from that direction when moving.
-	base = TRUE		// Honestly unsure what this does but it seems the main sector or "Map" we're at has this so here it stays
 	// The waypoints that are avaliable once you are at this Navpoint
 	initial_generic_waypoints = list("nav_capitalship_docking2", "endeavour_excursion_hangar", "endeavour_space_SW", "endeavour_mining_port")
 

@@ -28,8 +28,6 @@
 	//* location *//
 	/// our location, if any
 	var/datum/overmap_location/location
-	/// our location initializer,
-	#warn that
 
 	//* overmap *//
 	/// if we're currently in an overmap; if so, which?

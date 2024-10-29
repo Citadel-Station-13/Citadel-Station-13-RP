@@ -4,11 +4,17 @@
 /**
  * Modal supporting arbitrary map uploads.
  *
- * * Does not support shuttles. You must upload shuttles separately!
+ * * Does not support shuttles yet. You must upload shuttles separately!
+ * * This will always create sectors with structs. Uploading singular levels
+ *   is no longer natively supported, as the game's backend orchestration
+ *   expects to work with abstracted sectors, instead of singular z-level's.
+ *
+ * todo: traits / attributes support
  */
 /datum/admin_modal/upload_map_sector
 	#warn write modal
 	tgui_interface = "AdminModalUploadMapSector"
+	tgui_update = FALSE
 
 	//* constraints *//
 
@@ -34,3 +40,17 @@
 
 #warn impl
 
+
+/datum/admin_modal/upload_map_sector/ui_static_data(mob/user, datum/tgui/ui)
+	. = ..()
+
+/datum/admin_modal/upload_map_sector/ui_data(mob/user, datum/tgui/ui)
+	. = ..()
+
+/datum/admin_modal/upload_map_sector/ui_act(action, list/params, datum/tgui/ui)
+	. = ..()
+	if(.)
+		return
+	switch(action)
+		if("upload")
+		if("structXYZ")

@@ -8,6 +8,8 @@
  * outside of shuttles (just shuttles) and structs (planets and loaded maps).
  */
 /datum/overmap_initializer/level
+	/// a map level datum to 
+
 
 #warn impl
 

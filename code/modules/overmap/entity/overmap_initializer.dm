@@ -2,15 +2,10 @@
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
 /**
- * bidirectional bindings between /obj/overmap/entity and its physical location
+ * Descriptor sturct used to create an /obj/overmap/entity for a physical location.
  *
  * * base /datum/overmap_initializer has the data to init an overmap entity and its properties.
- *   this is not fired if we're being called from an already initialized entity
  * * subtypes of /datum/overmap_initializer has the data to init the physical locations of entities.
- *   that is not fired if we're being called from an already initialized map
- * * the bidirectional-ness is that both an entity and a map can use this API to init
- * * this is done so we can avoid having to make two datums, one to init locations, and one to init entities.
- * * this keeps /datum/overmap_location simple as it doesn't have any init logic at all.
  */
 /datum/overmap_initializer
 	//! LEGACY
@@ -28,5 +23,24 @@
 	var/scanner_desc = "<hr><center><h1>No data available.</h1></center><hr>"
 	//! END
 
+	/**
+	 * You might have noticed that no entity typepath variable is included.
+	 *
+	 * This is intentional. You are not allowed to subtype
+	 * /obj/overmap/entity for your map.
+	 *
+	 * The initializer system is meant to encapsulate all possible modifiers and
+	 * entity data to inject into an entity. You are not to make subtypes of
+	 * entity to do that as that would defeat the purpose of going out of our way
+	 * to make initializers.
+	 *
+	 * This way, we can have data-driven overmap entities and avoid any weird
+	 * hardcoded behavior. If you really need hardcoded behavior, make a
+	 * component for your map and inject that into the entity with the initializer system.
+	 *
+	 * If you need to do something with the initializer and cannot, the issue is that
+	 * the initializer system needs to be upgraded, not that you should be subtyping
+	 * entity.
+	 */
 
 #warn impl
