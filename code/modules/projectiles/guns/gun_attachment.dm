@@ -13,6 +13,11 @@
  * * on_detach() will be properly called if we, or the gun, are destroyed
  */
 /obj/item/gun_attachment
+	//* System *//
+
+	/// The gun we're attached to
+	var/obj/item/gun/attached
+
 	//* Actions *//
 
 	/// cached action descriptors
@@ -37,19 +42,26 @@
 
 	//* Alignment *//
 
-	/// alignment x; this is to align the lower-left corner of the attachment
-	/// to the lower-left of the gun's placement
+	/// alignment x
+	///
+	/// * what this is depends on our [attachment_slot]
 	var/align_x = 0
-	/// alignment y; this is to align the lower-left corner of the attachment
-	/// to the lower-left of the gun's placement
+	/// alignment y
+	///
+	/// * what this is depends on our [attachment_slot]
 	var/align_y = 0
 
 	//* Rendering *//
 
 	/// the icon-state in our icon to use for the gun overlay
 	///
-	/// * defaults to icon_state otherwise
-	var/attachment_state
+	/// * defaults to "[icon_state]-gun" otherwise
+	var/gun_state
+	/// the current applied overlay
+	///
+	/// * only the gun can modify this, and you shouldn't be using this for anything in a non-read-only
+	///   context. no, you are not special; there's no exceptions
+	var/appearance/gun_applied_overlay
 
 	//* Slots *//
 
@@ -59,11 +71,9 @@
 	/// is attached.
 	var/attachment_conflict_type = NONE
 
-/obj/item/gun_attachment/Initialize(mapload)
-	. = ..()
-
 /obj/item/gun_attachment/Destroy()
-	if()
+	if(attached)
+
 	return ..()
 
 /**
@@ -90,6 +100,13 @@
  */
 /obj/item/gun_attachment/proc/on_detach(obj/item/gun/gun)
 	return
+
+/**
+ * sets our gun state
+ *
+ * * setting it to null is a good way to force an update if our icon state is being used
+ */
+/obj/item/gun_attachment/proc/set_gun_state(new_state)
 
 
 #warn impl

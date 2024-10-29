@@ -69,10 +69,12 @@
 	/// Attachment alignments.
 	///
 	/// * Format: "attachment slot" = list(x, y)
-	/// * This is the x, y offsets to apply to it to align it to
-	///   its proper place, assuming that 1, 1 is its lower left corner.
 	/// * Typelisted. If you varedit this, be aware of that.
 	/// * If an attachment slot isn't here, it's not allowed on the gun.
+	/// * See `code/__DEFINES/projectiles/gun_attachment.dm` for what this is doing to the attachments.
+	///   We basically match the specified align_x/y pixel on the attachment to the x/y on the gun's sprite
+	///   specified here.
+	/// * This is pixel coordinates on the gun's real icon. Out of bounds is allowed as attachments are just overlays.
 	var/list/attachment_alignment
 
 	#warn impl & typelist
@@ -932,7 +934,7 @@
 /**
  * Check if we can attach an attachment
  */
-/obj/item/gun/proc/can_install_attachment(obj/item/gun_attachment/attachment, datum/event_args/actor/actor, silent)/can_
+/obj/item/gun/proc/can_install_attachment(obj/item/gun_attachment/attachment, datum/event_args/actor/actor, silent)
 
 /**
  * Installs an attachment

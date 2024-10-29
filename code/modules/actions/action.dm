@@ -32,9 +32,6 @@
 	var/datum/callback/check_callback
 
 	//* Target / Delegate *//
-	///
-	#warn this
-
 	/// callback to invoke with (actor) on trigger at base of /invoke().
 	///
 	/// * return a truthy value from the callback to halt propagation
