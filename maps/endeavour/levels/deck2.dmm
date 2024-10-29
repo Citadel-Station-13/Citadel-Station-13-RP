@@ -10418,7 +10418,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/medical/morgue)
 "hBp" = (
-/obj/machinery/power/breakerbox/activated{
+/obj/machinery/power/breakerbox{
 	RCon_tag = "DECK 2 AMIDSHIPS MAIN"
 	},
 /turf/simulated/floor/plating,
@@ -10719,7 +10719,7 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/chemistry)
 "hMz" = (
-/obj/machinery/power/breakerbox/activated{
+/obj/machinery/power/breakerbox{
 	RCon_tag = "DECK 2 FORE MAIN"
 	},
 /turf/simulated/floor/plating,
@@ -12139,6 +12139,12 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/medbay4)
+"iPG" = (
+/obj/machinery/power/breakerbox{
+	RCon_tag = "DECK 2 AFT MAIN"
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/substation/medical_science)
 "iPU" = (
 /obj/structure/table/woodentable,
 /obj/item/toy/plushie/kitten,
@@ -13698,7 +13704,7 @@
 /area/rnd/xenobiology)
 "kdl" = (
 /turf/simulated/wall/prepainted/medical,
-/area/space)
+/area/endeavour/hallway/d1starboardafthall)
 "kdL" = (
 /obj/structure/table/glass,
 /obj/item/paper_bin,
@@ -49150,7 +49156,7 @@ oDd
 cHC
 eEE
 fPm
-kyR
+iPG
 eEE
 qPc
 djp

@@ -13446,6 +13446,12 @@
 	},
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d3portforhall)
+"lSK" = (
+/obj/machinery/power/breakerbox{
+	RCon_tag = "DECK 3 AMIDSHIPS MAIN"
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/substation/security)
 "lTj" = (
 /turf/simulated/wall/r_wall/prepainted,
 /area/crew_quarters/sleep/Dorm_5)
@@ -14275,7 +14281,7 @@
 /turf/simulated/floor/carpet,
 /area/security/brig)
 "mBj" = (
-/obj/machinery/power/breakerbox/activated{
+/obj/machinery/power/breakerbox{
 	RCon_tag = "DECK 3 FORE MAIN"
 	},
 /turf/simulated/floor/plating,
@@ -20736,7 +20742,7 @@
 /turf/simulated/wall/prepainted,
 /area/maintenance/substation/cargo)
 "rXl" = (
-/obj/machinery/power/breakerbox/activated{
+/obj/machinery/power/breakerbox{
 	RCon_tag = "DECK 3 AFT MAIN"
 	},
 /turf/simulated/floor/plating,
@@ -48540,7 +48546,7 @@ lTw
 lTw
 mhY
 nfG
-xfl
+lSK
 mhY
 jkU
 nuP

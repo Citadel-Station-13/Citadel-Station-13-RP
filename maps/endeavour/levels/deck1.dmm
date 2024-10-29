@@ -14543,7 +14543,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d1portamidhall)
 "lBc" = (
-/obj/machinery/power/breakerbox/activated{
+/obj/machinery/power/breakerbox{
 	RCon_tag = "DECK 1 AFT MAIN"
 	},
 /turf/simulated/floor/plating,
@@ -27379,7 +27379,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d1starboardafthall)
 "wmU" = (
-/obj/machinery/power/breakerbox/activated{
+/obj/machinery/power/breakerbox{
 	RCon_tag = "DECK 1 FORE MAIN"
 	},
 /turf/simulated/floor/plating,
@@ -29562,7 +29562,7 @@
 /turf/simulated/floor/tiled/steel_ridged,
 /area/endeavour/hallway/d1starboardamidhall)
 "ybg" = (
-/obj/machinery/power/breakerbox/activated{
+/obj/machinery/power/breakerbox{
 	RCon_tag = "DECK 1 AMIDSHIPS MAIN"
 	},
 /turf/simulated/floor/plating,
