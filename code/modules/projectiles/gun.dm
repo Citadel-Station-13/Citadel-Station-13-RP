@@ -378,6 +378,12 @@
 			return
 	return ..() //Pistolwhippin'
 
+/obj/item/gun/using_item_on(obj/item/using, datum/event_args/actor/clickchain/e_args, clickchain_flags, datum/callback/reachability_check)
+	. = ..()
+	if(. & CLICKCHAIN_DO_NOT_PROPAGATE)
+		return
+	#warn impl
+
 /obj/item/gun/attackby(obj/item/A, mob/user)
 	if(A.is_multitool())
 		if(!scrambled)

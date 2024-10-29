@@ -273,9 +273,12 @@
 	/// the gun attachment used for testing if we can attach
 	var/static/obj/item/gun_attachment/flashlight/maglight/test_attachment
 
-#warn used as item or something lmfao
-
 #warn attachment
+
+/obj/item/flashlight/maglight/using_as_item(atom/target, datum/event_args/actor/clickchain/e_args, clickchain_flags, datum/callback/reachability_check)
+	. = ..()
+	if(. & CLICKCHAIN_DO_NOT_PROPAGATE)
+		return
 
 /obj/item/flashlight/drone
 	name = "low-power flashlight"
