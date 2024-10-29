@@ -2,8 +2,8 @@
 	var/unique_reskin
 	name = ".45 pistol"
 	desc = "A cheap Martian knock-off of a Colt M1911. Uses .45 rounds."
-	magazine_type = /obj/item/ammo_magazine/a45
-	allowed_magazines = list(/obj/item/ammo_magazine/a45)
+	magazine_type = /obj/item/ammo_magazine/a45/singlestack
+	allowed_magazines = list(/obj/item/ammo_magazine/a45/singlestack)
 	projectile_type = /obj/projectile/bullet/pistol/medium
 	icon_state = "colt"
 	caliber = /datum/ammo_caliber/a45
@@ -25,7 +25,7 @@
 
 /obj/item/gun/ballistic/colt/detective
 	desc = "A Martian recreation of an old pistol. Uses .45 rounds."
-	magazine_type = /obj/item/ammo_magazine/a45/rubber
+	magazine_type = /obj/item/ammo_magazine/a45/singlestack/rubber
 
 /obj/item/gun/ballistic/colt/detective/verb/rename_gun()
 	set name = "Name Gun"
@@ -86,7 +86,7 @@
 	desc = "The NT Mk58 is a cheap, ubiquitous sidearm, produced by a Nanotrasen subsidiary. Found pretty much everywhere humans are. This one is a less-lethal variant that only accepts .45 rubber or flash magazines."
 	icon_state = "secguncomp"
 	magazine_type = /obj/item/ammo_magazine/a45/rubber
-//	allowed_magazines = list(/obj/item/ammo_magazine/a45/rubber, /obj/item/ammo_magazine/a45/flash, /obj/item/ammo_magazine/a45/practice)
+	allowed_magazines = list(/obj/item/ammo_magazine/a45/rubber, /obj/item/ammo_magazine/a45/flash, /obj/item/ammo_magazine/a45/practice)
 	projectile_type = /obj/projectile/bullet/pistol/medium
 	caliber = /datum/ammo_caliber/a45
 	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2)

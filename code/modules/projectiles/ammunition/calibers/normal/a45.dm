@@ -63,13 +63,13 @@
 	ammo_caliber = /datum/ammo_caliber/a45
 	name = "pistol magazine (.45)"
 	icon = 'icons/modules/projectiles/magazines/old_magazine_stick.dmi'
-	icon_state = "45-7"
+	icon_state = "45-4"
 	base_icon_state = "45"
 	rendering_system = GUN_RENDERING_STATES
-	rendering_count = 7
+	rendering_count = 4
 	ammo_preload = /obj/item/ammo_casing/a45
 	materials_base = list(MAT_STEEL = 250)
-	ammo_max = 7
+	ammo_max = 12
 
 /obj/item/ammo_magazine/a45/empty
 	icon_state = "45-0"
@@ -97,8 +97,45 @@
 
 /obj/item/ammo_magazine/a45/silver
 	name = "magazine (.45 silver)"
-	icon_state = "45ag-7"
+	icon_state = "45ag-4"
 	base_icon_state = "45ag"
+	ammo_preload = /obj/item/ammo_casing/a45/silver
+
+/obj/item/ammo_magazine/a45/singlestack
+	ammo_caliber = /datum/ammo_caliber/a45
+	name = "single-stack magazine (.45)"
+	icon = 'icons/modules/projectiles/magazines/old_magazine_stick.dmi'
+	icon_state = "colt45-7"
+	base_icon_state = "colt45"
+	rendering_system = GUN_RENDERING_STATES
+	rendering_count = 7
+	ammo_preload = /obj/item/ammo_casing/a45
+	materials_base = list(MAT_STEEL = 250)
+	ammo_max = 7
+
+/obj/item/ammo_magazine/a45/singlestack/empty
+	icon_state = "colt45-0"
+	ammo_current = 0
+/obj/item/ammo_magazine/a45/singlestack/rubber
+	name = "magazine (.45 rubber)"
+	ammo_preload = /obj/item/ammo_casing/a45/rubber
+
+/obj/item/ammo_magazine/a45/singlestack/practice
+	name = "magazine (.45 practice)"
+	ammo_preload = /obj/item/ammo_casing/a45/practice
+
+/obj/item/ammo_magazine/a45/singlestack/flash
+	name = "magazine (.45 flash)"
+	ammo_preload = /obj/item/ammo_casing/a45/flash
+
+/obj/item/ammo_magazine/a45/singlestack/ap
+	name = "magazine (.45 AP)"
+	ammo_preload = /obj/item/ammo_casing/a45/ap
+
+/obj/item/ammo_magazine/a45/singlestack/silver
+	name = "magazine (.45 silver)"
+	icon_state = "colt45ag-7"
+	base_icon_state = "colt45ag"
 	ammo_preload = /obj/item/ammo_casing/a45/silver
 
 /obj/item/ammo_magazine/a45/uzi
