@@ -64,10 +64,18 @@
 	/// Regex used to parse grid lists for `x,y,z` coord's
 	var/static/regex/grid_parser = new(@"([\n]+),([\n)]+,([\n]+)", "g")
 
+	//* Bindings - Overmaps *//
+	/// the overmap location that is binding to us
+	///
+	/// * If this exists, it will be deleted if we are somehow deleted. This can result
+	///   in some very weird things.
+	var/datum/overmap_location/struct/overmap_binding
+
 /datum/map_struct/Destroy(force)
 	if(constructed)
 		. = QDEL_HINT_LETMELIVE
 		CRASH("Attempted to destroy a constructed map_struct.")
+	QDEL_NULL(overmap_binding)
 	return ..()
 
 /datum/map_struct/vv_edit_var(var_name, var_value, mass_edit, raw_edit)
@@ -229,30 +237,86 @@
 		resolved.struct_z = z
 
 		// resolve x_y_stacks and z_planes
-		var/list/x_y_stack = x_y_stacks["[x],[y]"]
+		var/list/datum/map_level/x_y_stack = x_y_stacks["[x],[y]"]
 		if(x_y_stack)
 			x_y_stack += resolved
 		else
 			x_y_stacks["[x],[y]"] = list(resolved)
-		#warn zplanes are wrong, verify ceiling height too
-		var/list/z_plane = z_planes["[x],[y]"]
+		var/list/datum/map_level/z_plane = z_planes["[z]"]
 		if(z_plane)
+			if((z_plane[length(z_plane)].ceiling_height || ceiling_height_default) != (resolved.ceiling_height || ceiling_height_default))
+				stack_trace("mismatched ceiling height on [resolved] against [z_plane[length(z_plane)]] during struct construction, on v-zplane [z]")
 			z_plane += resolved
 		else
-			z_planes["[x],[y]"] = list(resolved)
+			z_planes["[z]"] = list(resolved)
 
 	// sort x_y_stacks by level z index
 	for(var/i in 1 to length(x_y_stacks))
 		var/list/stack = x_y_stacks[i]
 		tim_sort(stack, /proc/cmp_map_level_struct_z)
 
+	// calculate and sort elevations
+	var/list/elevation_tuples = list()
+	for(var/z_str in 1 to length(z_planes))
+		var/list/datum/map_level/z_plane = z_planes[z_str]
+		elevation_tuples["[z_plane[1].ceiling_height || ceiling_height_default]"] = text2num(z_str)
+	tim_sort(elevation_tuples, /proc/cmp_numeric_asc, TRUE)
+	// unpack elevations
+	var/list/elevation_tuple_z = list()
+	var/list/elevation_tuple_height = list()
+	for(var/height_str in elevation_tuples)
+		var/z = elevation_tuples[height_str]
+		elevation_tuple_z += z
+		elevation_tuple_height += text2num(height_str)
+
 	// set level data
-	#warn virtual_alignment_x/y/elevation
 	for(var/datum/map_level/level as anything in levels)
-		#warn take into account LEVEL_BORDER_WIDTH
-		level.virtual_alignment_x = level.struct_x * world.maxx
-		level.virtual_alignment_y = level.struct_y * world.maxy
-		#warn take into account zplanes
+		level.virtual_alignment_x = level.struct_x * (world.maxx - LEVEL_BORDER_WIDTH * 2) - LEVEL_BORDER_WIDTH
+		level.virtual_alignment_y = level.struct_y * (world.maxy - LEVEL_BORDER_WIDTH * 2) - LEVEL_BORDER_WIDTH
+		if(level.struct_z == 0)
+			level.virtual_elevation = 0
+		else if(level.struct_z > 0)
+			var/index_of_first_nonnegative
+			var/total_height = 0
+			for(index_of_first_nonnegative in 1 to length(elevation_tuple_z))
+				if(elevation_tuple_z[index_of_first_nonnegative] >= 0)
+					break
+			var/last_virtual_z  = 0
+			for(var/index in index_of_first_nonnegative to length(elevation_tuple_z))
+				var/virtual_z = elevation_tuple_z[index]
+				if(virtual_z != last_virtual_z)
+					total_height += ceiling_height_default * ((virtaul_z - 1) - last_virtual_z)
+				// if it's on the level we're tallying to we ignore it as we don't tally ourselves
+				// because virtual_elevation is meters off the ground.. of the ground.
+				if(virtual_z == level.struct_z)
+					break
+				else if(virtual_z > level.struct_z)
+					CRASH("overshot level somehow?")
+				// tally current level
+				total_height += elevation_tuple_height[index]
+				// +1 to skip over the current level, which we already tallied
+				last_virtual_z = virtual_z + 1
+			level.virtual_elevation = total_height
+		else if(level.struct_z < 0)
+			var/index_of_first_negative
+			var/total_height = 0
+			for(index_of_first_negative in length(elevation_tuple_z) to 1 step -1)
+				if(elevation_tuple_z[index_of_first_negative] < 0)
+					break
+			var/last_virtual_z = 0
+			for(var/index in index_of_first_negative to 1 step -1)
+				var/virtual_z = elevation_tuple_z[index]
+				if(virtual_z != last_virtual_z)
+					total_height -= ceiling_height_default * (last_virtual_z - (virtual_z + 1))
+				// tally current level
+				total_height -= elevation_tuple_height[index]
+				// if we're on the level we're tallying to, we're done
+				if(virtual_z == level.struct_z)
+					break
+				// sanity check
+				else if(virtual_z < level.struct_z)
+					CRASH("overshot level somehow?")
+			level.virtual_elevation = total_height
 
 	// set our data
 	src.z_grid = z_grid
@@ -283,6 +347,13 @@
 		level.struct = null
 		level.struct_x = level.struct_y = level.struct_z = null
 		level.struct_level_index = null
+
+	levels = null
+	z_indices = null
+	z_grid = null
+	sparse_size_x = null
+	sparse_size_y = null
+	sparse_size_z = null
 
 	constructed = FALSE
 

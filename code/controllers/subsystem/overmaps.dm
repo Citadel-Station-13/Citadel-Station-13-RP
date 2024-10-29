@@ -130,13 +130,12 @@ SUBSYSTEM_DEF(overmaps)
  * @params
  * * target - an /atom, or a z-index. atoms will be resolved to z-level.
  */
-/datum/controller/subsystem/overmaps/proc/get_enclosing_overmap_entity(target)
+/datum/controller/subsystem/overmaps/proc/get_enclosing_overmap_entity(target) as /obj/overmap/entity
 	if(isatom(target))
 		target = get_turf(target)?:z
 	if(!target)
 		return
-
-	#warn impl
+	return location_enclosed_levels[target].entity
 
 /**
  * Gets entity the atom is physically on.
@@ -148,8 +147,20 @@ SUBSYSTEM_DEF(overmaps)
  * @params
  * * target - an /atom
  */
-/datum/controller/subsystem/overmaps/proc/get_overmap_entity(atom/target)
-	#warn impl
+/datum/controller/subsystem/overmaps/proc/get_overmap_entity(atom/target) as /obj/overmap/entity
+	if(!get_turf(target))
+		return
+	var/area/their_area = get_area(target)
+	if(!their_area)
+		CRASH("couldn't get area?")
+	if(istype(their_area, /area/shuttle))
+		var/area/shuttle/their_shuttle_area = their_area
+		if(istype(their_shuttle_area.shuttle, /datum/shuttle/autodock/overmap))
+			var/datum/shuttle/autodock/overmap/i_hate_legacy_systems = their_shuttle_area.shuttle
+			return i_hate_legacy_systems.myship
+	var/their_z = get_z(target)
+	var/datum/overmap_location/level_location = location_enclosed_levels[their_z]
+	return level_location.is_physically_level(their_z) ? level_location.entity : null
 
 // todo: entity round-persistent-compatible GUID
 

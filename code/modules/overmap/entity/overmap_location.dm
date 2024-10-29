@@ -42,24 +42,31 @@
 		entity.location = null
 	entity = null
 	unbind()
+	if(has_level_locks())
+		release_level_locks()
 	return ..()
 
 //* Abstraction - Must Implement! *//
 
 /datum/overmap_location/proc/bind(location)
+	PROTECTED_PROC(TRUE)
 	CRASH("unimplemented proc called")
 
 /datum/overmap_location/proc/unbind()
+	PROTECTED_PROC(TRUE)
 	CRASH("unimplemented proc called")
 
 /**
  * get our z-level indices
  *
  * * entities that are on z's like shuttles instead of owning them use the z level they're on
+ * * this proc has no safety checks for if we have z-level locks! it only makes sense to call this
+ *   once we're already on an entity and considered loaded.
  *
  * @return null if there are none / this is not semantically an entity on a z, and list() if we're not in a level right now.
  */
-/datum/overmap_location/proc/get_z_indices()
+/datum/overmap_location/proc/get_z_indices_impl() as /list
+	PROTECTED_PROC(TRUE)
 	RETURN_TYPE(/list)
 	CRASH("unimplemented proc called")
 
@@ -67,10 +74,13 @@
  * get our owned z-level indices
  *
  * * shuttles and similar entities don't own their indices.
+ * * this proc has no safety checks for if we have z-level locks! it only makes sense to call this
+ *   once we're already on an entity and considered loaded.
  *
  * @return null if this is not semantically an entity on a z, and list() if none are owned, otherwise
  */
-/datum/overmap_location/proc/get_owned_z_indices()
+/datum/overmap_location/proc/get_owned_z_indices_impl() as /list
+	PROTECTED_PROC(TRUE)
 	RETURN_TYPE(/list)
 	CRASH("unimplemented proc called")
 
@@ -78,9 +88,60 @@
  * Gets if we physically are a level.
  *
  * * Shuttles in freeflight are not their level, even if they own them.
+ * * this proc has no safety checks for if we have z-level locks! it only makes sense to call this
+ *   once we're already on an entity and considered loaded.
+ *
+ * @return TRUE / FALSE based on if we are the physical level, or just represent the level.
  */
-/datum/overmap_location/proc/is_physically_level(z)
+/datum/overmap_location/proc/is_physically_level_impl(z) as num
+	PROTECTED_PROC(TRUE)
 	CRASH("unimplemented proc called")
+
+//* API *//
+
+/**
+ * get our z-level indices
+ *
+ * * entities that are on z's like shuttles instead of owning them use the z level they're on
+ * * this proc has no safety checks for if we have z-level locks! it only makes sense to call this
+ *   once we're already on an entity and considered loaded.
+ *
+ * @return null if there are none / this is not semantically an entity on a z, and list() if we're not in a level right now.
+ */
+/datum/overmap_location/proc/get_z_indices() as /list
+	RETURN_TYPE(/list)
+	if(!acquired_level_locks)
+		return list()
+	return get_z_indices_impl()
+
+/**
+ * get our owned z-level indices
+ *
+ * * shuttles and similar entities don't own their indices.
+ * * this proc has no safety checks for if we have z-level locks! it only makes sense to call this
+ *   once we're already on an entity and considered loaded.
+ *
+ * @return null if this is not semantically an entity on a z, and list() if none are owned, otherwise
+ */
+/datum/overmap_location/proc/get_owned_z_indices() as /list
+	RETURN_TYPE(/list)
+	if(!acquired_level_locks)
+		return list()
+	return get_owned_z_indices_impl()
+
+/**
+ * Gets if we physically are a level.
+ *
+ * * Shuttles in freeflight are not their level, even if they own them.
+ * * this proc has no safety checks for if we have z-level locks! it only makes sense to call this
+ *   once we're already on an entity and considered loaded.
+ *
+ * @return TRUE / FALSE based on if we are the physical level, or just represent the level.
+ */
+/datum/overmap_location/proc/is_physically_level(z) as num
+	if(!acquired_level_locks)
+		return FALSE
+	return is_physically_level_impl(z)
 
 //* Instantiation *//
 
@@ -111,8 +172,13 @@
 
 	var/list/levels_to_lock = query_levels_to_lock()
 	for(var/z_index in levels_to_lock)
+		if(SSovermaps.location_enclosed_levels[z_index])
+			CRASH("attempted to lock levels but [z_index] was already locked")
+	for(var/z_index in levels_to_lock)
+		SSovermaps.location_enclosed_levels[z_index] = src
 
 	acquired_level_locks = levels_to_lock
+	return TRUE
 
 /**
  * Releases our ownership of the levels we own.
@@ -126,8 +192,13 @@
 		CRASH("has not locked levels, but attempted to release level locks")
 
 	for(var/z_index in acquired_level_locks)
+		if(SSovermaps.location_enclosed_levels[z_index] != src)
+			stack_trace("attempted to unlock [z_index] but was not owned by self")
+			continue
+		SSovermaps.location_enclosed_levels[z_index] = null
 
 	acquired_level_locks = null
+	return TRUE
 
 #warn impl and hook all; also, put the location in a list of locations with locks on SSovermaps
 

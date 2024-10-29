@@ -116,9 +116,12 @@
 	/// * if null, will inherit from the map_struct we're in (or default to a sane value)
 	/// * if non-null, the struct will force that z-plane to be that height
 	/// * if non-null and two levels have different values, the struct will runtime.
+	/// * if one level on a plane is non-null height, all of them must be, and they must match.
 	var/ceiling_height
 	/// default ceiling height if not inheriting from struct or specified
-	var/ceiling_height_default = 5 // crawl, xenohybrids.
+	///
+	/// * only used if we're not on a map_struct
+	var/ceiling_height_default = 5
 
 	//* Structs / Stitching / Virtual Coordinates *//
 	/// the struct we belong to, if any
@@ -145,7 +148,7 @@
 	//* Virtual Coordinates *//
 	/// the coordinate of the lower-left / southwest corner border of the map
 	///
-	/// * this is not 1,1 on the map, this is 0,0 on the map.
+	/// * this is not 1,1 on the map, this is the offset to reach 0,0 on the map from 1,1.
 	/// * this is the turf right **outside** the on the lower left corner.
 	/// * basically for fluff and simulation, not byond engine
 	/// * 0-indexed for ease of use by implementations of get virtual coord.
@@ -153,7 +156,7 @@
 	var/tmp/virtual_alignment_x = 0
 	/// the coordinate of the lower-left / southwest corner border of the map
 	///
-	/// * this is not 1,1 on the map, this is 0,0 on the map.
+	/// * this is not 1,1 on the map, this is the offset to reach 0,0 on the map from 1,1.
 	/// * this is the turf right **outside** the on the lower left corner.
 	/// * basically for fluff and simulation, not byond engine
 	/// * 0-indexed for ease of use by implementations of get virtual coord.

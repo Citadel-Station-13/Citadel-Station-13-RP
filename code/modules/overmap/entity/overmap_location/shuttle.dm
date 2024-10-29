@@ -23,7 +23,7 @@
 
 /datum/overmap_location/shuttle/get_owned_z_indices()
 
-/datum/overmap_location/level/is_physically_level(z)
+/datum/overmap_location/shuttle/is_physically_level(z)
 	return FALSE
 
 #warn impl all
