@@ -2859,6 +2859,14 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/bridge)
+"cvv" = (
+/obj/machinery/door/firedoor,
+/obj/map_helper/access_helper/airlock/station/maintenance,
+/obj/machinery/door/airlock/maintenance/engi{
+	req_one_access = null
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/substation/command)
 "cvx" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 1
@@ -3207,6 +3215,14 @@
 /obj/item/flashlight/lamp/green,
 /turf/simulated/floor/carpet/bcarpet,
 /area/library)
+"cIt" = (
+/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/effect/paint/palebottlegreen,
+/obj/structure/cable/orange{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/plating,
+/area/hydroponics/garden)
 "cIw" = (
 /obj/structure/table/wooden_reinforced,
 /obj/item/folder/blue{
@@ -7177,8 +7193,8 @@
 	icon_state = "2-4"
 	},
 /obj/machinery/power/sensor{
-	name = "Powernet Sensor - Deck 3 Subgrid";
-	name_tag = "Deck 3 Subgrid"
+	name = "Powernet Sensor - Deck 1 Amidships Subgrid";
+	name_tag = "Deck 1 Amidships Subgrid"
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/exploration)
@@ -7747,8 +7763,8 @@
 	icon_state = "2-4"
 	},
 /obj/machinery/power/sensor{
-	name = "Powernet Sensor - Deck 3 Subgrid";
-	name_tag = "Deck 3 Subgrid"
+	name = "Powernet Sensor - Deck 1 Fore Subgrid";
+	name_tag = "Deck 1 Fore Subgrid"
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/command)
@@ -9885,8 +9901,8 @@
 	icon_state = "2-4"
 	},
 /obj/machinery/power/sensor{
-	name = "Powernet Sensor - Deck 3 Subgrid";
-	name_tag = "Deck 3 Subgrid"
+	name = "Powernet Sensor - Deck 1 Aft Subgrid";
+	name_tag = "Deck 1 Aft Subgrid"
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/civilian)
@@ -50917,7 +50933,7 @@ kPs
 bLa
 sBk
 dmO
-nAf
+cIt
 vwv
 dkh
 ibq
@@ -56347,7 +56363,7 @@ wmU
 aLV
 pIq
 uWI
-stV
+cvv
 uhY
 mRz
 kuZ

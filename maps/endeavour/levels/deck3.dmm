@@ -10015,8 +10015,8 @@
 	icon_state = "2-4"
 	},
 /obj/machinery/power/sensor{
-	name = "Powernet Sensor - Deck 3 Subgrid";
-	name_tag = "Deck 3 Subgrid"
+	name = "Powernet Sensor - Deck 3 Fore Subgrid";
+	name_tag = "Deck 3 Fore Subgrid"
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/civilian)
@@ -23382,8 +23382,8 @@
 	icon_state = "2-4"
 	},
 /obj/machinery/power/sensor{
-	name = "Powernet Sensor - Deck 3 Subgrid";
-	name_tag = "Deck 3 Subgrid"
+	name = "Powernet Sensor - Deck 3 Aft Subgrid";
+	name_tag = "Deck 3 Aft Subgrid"
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/security)
@@ -24181,6 +24181,9 @@
 	},
 /obj/machinery/door/airlock/maintenance,
 /obj/map_helper/access_helper/airlock/station/engineering/department,
+/obj/structure/cable/orange{
+	icon_state = "1-2"
+	},
 /turf/simulated/floor/tiled/dark,
 /area/endeavour/hallway/d3aftmaint)
 "uSv" = (

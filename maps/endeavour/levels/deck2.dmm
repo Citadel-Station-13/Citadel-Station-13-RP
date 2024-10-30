@@ -4006,8 +4006,8 @@
 	icon_state = "2-4"
 	},
 /obj/machinery/power/sensor{
-	name = "Powernet Sensor - Deck 3 Subgrid";
-	name_tag = "Deck 3 Subgrid"
+	name = "Powernet Sensor - Deck 2 Amidships Subgrid";
+	name_tag = "Deck 2 Amidships Subgrid"
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/medical)
@@ -18636,8 +18636,8 @@
 	icon_state = "2-4"
 	},
 /obj/machinery/power/sensor{
-	name = "Powernet Sensor - Deck 3 Subgrid";
-	name_tag = "Deck 3 Subgrid"
+	name = "Powernet Sensor - Deck 2 Fore Subgrid";
+	name_tag = "Deck 2 Fore Subgrid"
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/research)
@@ -24032,8 +24032,8 @@
 	icon_state = "2-4"
 	},
 /obj/machinery/power/sensor{
-	name = "Powernet Sensor - Deck 3 Subgrid";
-	name_tag = "Deck 3 Subgrid"
+	name = "Powernet Sensor - Deck 2 Aft Subgrid";
+	name_tag = "Deck 2 Aft Subgrid"
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/medical_science)
