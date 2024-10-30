@@ -53,7 +53,7 @@
   },
   "devDependencies": {
     "eslint": "8.57.0",
-    "eslint-plugin-inferno": "^7.34.0",
+    "eslint-plugin-react": "^7.37.2",
     "eslint-plugin-sonarjs": "^2.0.4",
     "eslint-plugin-unused-imports": "^4.1.4",
     "jest": "29.7.0",
