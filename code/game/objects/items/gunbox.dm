@@ -7,7 +7,7 @@
 
 /obj/item/gunbox/attack_self(mob/user, datum/event_args/actor/actor)
 	var/list/options = list()
-	options["NT Mk58 (.45)"] = list(/obj/item/gun/ballistic/sec, /obj/item/ammo_magazine/a45/rubber, /obj/item/ammo_magazine/a45/flash)
+	options["NT Mk58 (.45)"] = list(/obj/item/gun/ballistic/sec, /obj/item/ammo_magazine/a45/doublestack/rubber, /obj/item/ammo_magazine/a45/doublestack/flash)
 	options["SW 625 Revolver (.45)"] = list(/obj/item/gun/ballistic/revolver/detective45, /obj/item/ammo_magazine/a45/speedloader/rubber, /obj/item/ammo_magazine/a45/speedloader/rubber)
 	options["P92X (9mm)"] = list(/obj/item/gun/ballistic/p92x/sec, /obj/item/ammo_magazine/a9mm/rubber, /obj/item/ammo_magazine/a9mm/flash)
 	var/choice = input(user,"Would you prefer a pistol or a revolver?") as null|anything in options

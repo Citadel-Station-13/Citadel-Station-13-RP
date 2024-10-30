@@ -85,8 +85,8 @@
 	name = ".45 pistol"
 	desc = "The NT Mk58 is a cheap, ubiquitous sidearm, produced by a Nanotrasen subsidiary. Found pretty much everywhere humans are. This one is a less-lethal variant that only accepts .45 rubber or flash magazines."
 	icon_state = "secguncomp"
-	magazine_type = /obj/item/ammo_magazine/a45/rubber
-	allowed_magazines = list(/obj/item/ammo_magazine/a45/rubber, /obj/item/ammo_magazine/a45/flash, /obj/item/ammo_magazine/a45/practice)
+	magazine_type = /obj/item/ammo_magazine/a45/doublestack/rubber
+	allowed_magazines = list(/obj/item/ammo_magazine/a45/doublestack/rubber, /obj/item/ammo_magazine/a45/doublestack/flash, /obj/item/ammo_magazine/a45/doublestack/practice)
 	projectile_type = /obj/projectile/bullet/pistol/medium
 	caliber = /datum/ammo_caliber/a45
 	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2)
@@ -94,7 +94,7 @@
 
 /obj/item/gun/ballistic/sec/flash
 	name = ".45 signal pistol"
-	magazine_type = /obj/item/ammo_magazine/a45/flash
+	magazine_type = /obj/item/ammo_magazine/a45/doublestack/flash
 
 /obj/item/gun/ballistic/sec/wood
 	desc = "The NT Mk58 is a cheap, ubiquitous sidearm, produced by a Nanotrasen subsidiary. This one has a sweet wooden grip and only accepts .45 rubber or flash magazines."
@@ -112,8 +112,8 @@
 	recoil = 0
 	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2, TECH_ILLEGAL = 8)
 	load_method = MAGAZINE
-	magazine_type = /obj/item/ammo_magazine/a45
-	allowed_magazines = list(/obj/item/ammo_magazine/a45)
+	magazine_type = /obj/item/ammo_magazine/a45/doublestack
+	allowed_magazines = list(/obj/item/ammo_magazine/a45/doublestack)
 	projectile_type = /obj/projectile/bullet/pistol/medium
 
 /obj/item/gun/ballistic/deagle
@@ -501,8 +501,8 @@
 	icon_state = "ax59"
 	caliber = /datum/ammo_caliber/a45
 	load_method = MAGAZINE
-	magazine_type = /obj/item/ammo_magazine/a45
-	allowed_magazines = list(/obj/item/ammo_magazine/a45)
+	magazine_type = /obj/item/ammo_magazine/a45/doublestack
+	allowed_magazines = list(/obj/item/ammo_magazine/a45/doublestack)
 	pin = /obj/item/firing_pin/explorer
 
 /obj/item/gun/ballistic/ax99 //PMD model

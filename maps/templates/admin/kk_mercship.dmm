@@ -1604,11 +1604,11 @@
 /obj/structure/table/rack,
 /obj/item/gun/ballistic/silenced,
 /obj/item/gun/ballistic/silenced,
-/obj/item/ammo_magazine/a45,
-/obj/item/ammo_magazine/a45,
-/obj/item/ammo_magazine/a45/ap,
-/obj/item/ammo_magazine/a45,
-/obj/item/ammo_magazine/a45/rubber,
+/obj/item/ammo_magazine/a45/doublestack,
+/obj/item/ammo_magazine/a45/doublestack,
+/obj/item/ammo_magazine/a45/doublestack/ap,
+/obj/item/ammo_magazine/a45/doublestack,
+/obj/item/ammo_magazine/a45/doublestack/rubber,
 /obj/effect/floor_decal/techfloor{
 	dir = 5
 	},
@@ -3031,11 +3031,11 @@
 /obj/structure/table/rack,
 /obj/item/gun/ballistic/silenced,
 /obj/item/gun/ballistic/silenced,
-/obj/item/ammo_magazine/a45,
-/obj/item/ammo_magazine/a45,
-/obj/item/ammo_magazine/a45/ap,
-/obj/item/ammo_magazine/a45,
-/obj/item/ammo_magazine/a45/rubber,
+/obj/item/ammo_magazine/a45/doublestack,
+/obj/item/ammo_magazine/a45/doublestack,
+/obj/item/ammo_magazine/a45/doublestack/ap,
+/obj/item/ammo_magazine/a45/doublestack,
+/obj/item/ammo_magazine/a45/doublestack/rubber,
 /obj/effect/floor_decal/techfloor{
 	dir = 4
 	},
