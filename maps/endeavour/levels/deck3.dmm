@@ -1589,9 +1589,6 @@
 /turf/simulated/floor/tiled,
 /area/endeavour/surfacebase/mining_main/refinery)
 "boM" = (
-/obj/effect/floor_decal/techfloor/corner{
-	dir = 1
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/cable/green{
@@ -7645,6 +7642,9 @@
 	dir = 8;
 	pixel_x = -10
 	},
+/obj/structure/cable/green{
+	icon_state = "0-4"
+	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/civilian)
 "gqw" = (
@@ -7751,9 +7751,6 @@
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d3portforhall)
 "guu" = (
-/obj/effect/floor_decal/techfloor/corner{
-	dir = 1
-	},
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
@@ -10178,9 +10175,6 @@
 	pixel_y = 32
 	},
 /obj/machinery/vending/loadout,
-/obj/effect/floor_decal/techfloor/corner{
-	dir = 1
-	},
 /turf/simulated/floor/tiled/dark,
 /area/vacant/vacant_shop)
 "iPK" = (
@@ -12296,14 +12290,6 @@
 /obj/map_helper/access_helper/airlock/station/security/brig,
 /turf/simulated/floor/tiled,
 /area/security/hanger)
-"kRY" = (
-/obj/effect/floor_decal/techfloor/corner{
-	dir = 1
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/turf/simulated/floor/tiled,
-/area/endeavour/hallway/d3afthall)
 "kSc" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -17853,9 +17839,6 @@
 /turf/simulated/wall/prepainted,
 /area/crew_quarters/recreation_area)
 "pwu" = (
-/obj/effect/floor_decal/techfloor/corner{
-	dir = 1
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled/monotile,
@@ -18639,6 +18622,9 @@
 	dir = 8;
 	pixel_x = -10
 	},
+/obj/structure/cable/green{
+	icon_state = "0-4"
+	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/security)
 "qeX" = (
@@ -19358,9 +19344,6 @@
 /turf/simulated/floor/tiled,
 /area/crew_quarters/heads/hos)
 "qJx" = (
-/obj/effect/floor_decal/techfloor/corner{
-	dir = 1
-	},
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
@@ -21483,12 +21466,6 @@
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_3)
-"syh" = (
-/obj/effect/floor_decal/techfloor/corner{
-	dir = 1
-	},
-/turf/simulated/floor/tiled,
-/area/crew_quarters/bar)
 "syD" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
@@ -23405,6 +23382,9 @@
 /obj/machinery/light{
 	dir = 8;
 	pixel_x = -10
+	},
+/obj/structure/cable/green{
+	icon_state = "0-4"
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/cargo)
@@ -34167,7 +34147,7 @@ pRW
 pRW
 tUu
 bzE
-syh
+kbt
 rnj
 uGk
 uGk
@@ -40012,7 +39992,7 @@ jdI
 wTk
 jGq
 wTk
-kRY
+wTk
 prg
 wTk
 ayc

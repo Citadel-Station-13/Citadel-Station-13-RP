@@ -9162,6 +9162,13 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/tcommsat/computer)
+"mjh" = (
+/obj/structure/sign/atmosplaque{
+	name = "NSV Endeavour Builder's Plate";
+	desc = "NSV Endeavour - Built by Armstrong-Hawker Shipbuilding LTD, New Glasgow Yards, New Glasgow, Eridani Alliance - Laid Down 16 May 2566 - Launched 18 October 2568"
+	},
+/turf/simulated/wall/r_wall/prepainted/engineering,
+/area/engineering/engine_smes)
 "mkd" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 9
@@ -30237,7 +30244,7 @@ tWf
 tWf
 dOL
 dOL
-dOL
+mjh
 dOL
 dOL
 bPj
