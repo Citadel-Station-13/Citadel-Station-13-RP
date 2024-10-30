@@ -2,7 +2,7 @@
   "compilerOptions": {
     "allowJs": true,
     "allowSyntheticDefaultImports": true,
-    "checkJs": false,
+    "checkJs": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "isolatedModules": false,
@@ -11,11 +11,21 @@
     "module": "ESNext",
     "moduleResolution": "Node",
     "noEmit": true,
+    "noImplicitThis": true,
+    "noPropertyAccessFromIndexSignature": true,
+    "paths": {
+      "common/*": ["./packages/common/*"],
+      "tgui/*": ["./packages/tgui/*"]
+    },
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "strict": false,
+    "strictBindCallApply": true,
+    "strictFunctionTypes": true,
     "strictNullChecks": true,
-    "target": "ES3"
+    "strictPropertyInitialization": true,
+    "target": "ES5",
+    "useUnknownInCatchVariables": true
   },
   "include": [
     "./*.d.ts",
