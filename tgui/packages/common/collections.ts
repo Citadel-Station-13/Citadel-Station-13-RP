@@ -57,6 +57,8 @@ type MapFunction = {
  *
  * If collection is 'null' or 'undefined', it will be returned "as is"
  * without emitting any errors (which can be useful in some cases).
+ *
+ * todo: investigate if this is needed; javascript contains native Collection.map().
  */
 export const map: MapFunction = <T, U>(iterateeFn) =>
   (collection: T[]): U[] => {

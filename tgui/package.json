@@ -48,6 +48,7 @@
     "url-loader": "^4.1.1"
   },
   "devDependencies": {
+    "@types/jest": "^29.5.14",
     "@types/webpack-bundle-analyzer": "^4",
     "eslint": "8.57.0",
     "eslint-plugin-react": "^7.37.2",
