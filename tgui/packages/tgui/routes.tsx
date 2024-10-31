@@ -122,8 +122,10 @@ export const directlyRouteComponent = (name) => {
       esModule = requireInterface(path);
     }
     catch (err) {
-      if (err.code !== 'MODULE_NOT_FOUND') {
-        throw err;
+      if (err instanceof Error) {
+        if (err.code !== 'MODULE_NOT_FOUND') {
+          throw err;
+        }
       }
     }
     if (esModule) {
