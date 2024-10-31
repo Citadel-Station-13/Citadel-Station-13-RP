@@ -103,6 +103,9 @@
 /// used on /mob as well as /obj/item/organ
 #define VV_HK_REMOVE_PHYSIOLOGY_MODIFIER "remove_physiology_mod"
 
+// gateways
+#define VV_HK_SETUP_GATEWAY "setup_gateway"
+
 /*
 // /obj
 #define VV_HK_OSAY "osay"
