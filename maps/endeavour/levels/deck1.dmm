@@ -1393,6 +1393,9 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
+/obj/structure/sign/deck/first{
+	pixel_y = 32
+	},
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d1starboardforhall)
 "ber" = (
@@ -21455,7 +21458,7 @@
 	},
 /obj/item/pen/invisible,
 /obj/machinery/button/windowtint{
-	id = s;
+	id = "library_study";
 	pixel_x = 26;
 	pixel_y = -26
 	},
@@ -25054,10 +25057,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/gateway/prep_room)
-"upe" = (
-/obj/structure/sign/deck/first,
-/turf/simulated/shuttle/wall/voidcraft/blue,
-/area/endeavour/hallway/d1fwdhall)
 "upy" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -58806,7 +58805,7 @@ lUh
 qyL
 vgA
 vgA
-upe
+qyL
 bdP
 lJv
 qJY
