@@ -15,6 +15,14 @@
 
 	//* Reagents *//
 
+	/// Our reagent volumes
+	///
+	/// * Lazy list.
+	var/list/reagent_volumes
+	/// Our reagent datas
+	///
+	/// * Lazy list.
+	var/list/reagent_datas
 	/// Our temperature
 	var/temperature = T20C
 

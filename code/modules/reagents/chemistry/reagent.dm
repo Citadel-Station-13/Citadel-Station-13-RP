@@ -43,8 +43,6 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 	var/taste_mult = 1
 	var/datum/reagent_holder/holder = null
 	var/reagent_state = REAGENT_SOLID
-	var/list/data = null
-	var/volume = 0
 	var/metabolism = REM // This would be 0.2 normally
 	/// Used for vampric-Digestion
 	var/blood_content = 0
@@ -54,8 +52,6 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 	var/mrate_static = FALSE
 	var/ingest_met = 0
 	var/touch_met = 0
-	var/dose = 0
-	var/max_dose = 0
 	///Amount at which overdose starts
 	var/overdose = 0
 	///Modifier to overdose damage
@@ -228,7 +224,6 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 	if(overdose && (volume > overdose) && (active_metab.metabolism_class != CHEM_TOUCH && !can_overdose_touch))
 		overdose(M, alien, removed)
 	remove_self(removed)
-	return
 
 // todo: on_mob_life with method of CHEM_INJECT, or tick_mob_blood
 /datum/reagent/proc/affect_blood(mob/living/carbon/M, alien, removed)
@@ -264,18 +259,6 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 		overdose_mod *= H.species.chemOD_mod
 	M.adjustToxLoss(removed * overdose_mod)
 
-/datum/reagent/proc/initialize_data(newdata) // Called when the reagent is created.
-	if(!isnull(newdata))
-		data = newdata
-	return
-
-/datum/reagent/proc/get_data() // Just in case you have a reagent that handles data differently.
-	if(data && istype(data, /list))
-		return data.Copy()
-	else if(data)
-		return data
-	return null
-
 /datum/reagent/Destroy() // This should only be called by the holder, so it's already handled clearing its references
 	holder = null
 	. = ..()
@@ -291,13 +274,31 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 /datum/reagent/proc/reaction_mob(var/mob/target, amt)
 	touch_mob(target, amt)
 
-/datum/reagent/proc/on_move(mob/M)
-	return
+//* Data *//
 
-/datum/reagent/proc/on_update(atom/A)
-	return
+/**
+ * Preprocess data fed in during add_reagent
+ */
+/datum/reagent/proc/preprocess_data(new_data)
+	return null
 
-//* Guidebook
+/**
+ * Mixes data
+ *
+ * * in add_reagent, this is called with the preprocessed new data
+ * * in transfer procs, this is called with the old data
+ * * this is not called if there's no reagents of ourselves in the new container.
+ *
+ * @params
+ * * old_data - existing data
+ * * old_volume - existing volume
+ * * new_data - adding data
+ * * new_volume - adding volume
+ */
+/datum/reagent/proc/mix_data(old_data, old_volume, new_data, new_volume)
+	return null
+
+//* Guidebook *//
 
 /**
  * Guidebook Data for TGUIGuidebookReagent
