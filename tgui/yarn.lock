@@ -3786,13 +3786,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:^14.17.9":
-  version: 14.17.9
-  resolution: "@types/node@npm:14.17.9"
-  checksum: 10c0/73fd9b56e6f8b0fb10d28e19629c464a9484d3854fbb6f0723898f205d2a193a15b505c137e87594fe8a1a3d8772f5ba670b9d2aee474961354b3e24bd6ea773
-  languageName: node
-  linkType: hard
-
 "@types/prettier@npm:^2.1.5":
   version: 2.7.3
   resolution: "@types/prettier@npm:2.7.3"
@@ -12951,7 +12944,6 @@ __metadata:
     "@babel/preset-typescript": "npm:^7.23.3"
     "@types/jest": "npm:^29.5.14"
     "@types/jsdom": "npm:^21.1.6"
-    "@types/node": "npm:^14.17.9"
     "@types/webpack-bundle-analyzer": "npm:^4"
     "@types/webpack-env": "npm:^1.16.2"
     "@typescript-eslint/parser": "npm:^8.12.2"
