@@ -59,44 +59,26 @@
 		return "no reagents"
 
 	var/list/data = list()
-	for(var/r in reagent_list) //no reagents will be left behind
-		var/datum/reagent/R = r
-		data += "[R.type] [R.volume]u)"
+	for(var/id in reagent_volumes)
+		data += "[id] ([reagent_volumes[id]]u)"
 		//Using IDs because SOME chemicals (I'm looking at you, chlorhydrate-beer) have the same names as other chemicals.
 	return english_list(data)
 
 /* Internal procs */
 
-/datum/reagent_holder/proc/get_master_reagent() // Returns reference to the reagent with the biggest volume.
-	var/the_reagent = null
-	var/the_volume = 0
-
-	for(var/datum/reagent/A in reagent_list)
-		if(A.volume > the_volume)
-			the_volume = A.volume
-			the_reagent = A
-
-	return the_reagent
+/datum/reagent_holder/proc/get_master_reagent() as /datum/reagent // Returns reference to the reagent with the biggest volume.
+	var/highest_so_far = 0
+	var/id_so_far
+	for(var/id in reagent_volumes)
+		if(reagent_volumes[id] > highest_so_far)
+			id_so_far = id
+	return SSchemistry.reagent_lookup[id_so_far]
 
 /datum/reagent_holder/proc/get_master_reagent_name() // Returns the name of the reagent with the biggest volume.
-	var/the_name = null
-	var/the_volume = 0
-	for(var/datum/reagent/A in reagent_list)
-		if(A.volume > the_volume)
-			the_volume = A.volume
-			the_name = A.name
-
-	return the_name
+	return get_master_reagent().name
 
 /datum/reagent_holder/proc/get_master_reagent_id() // Returns the id of the reagent with the biggest volume.
-	var/the_id = null
-	var/the_volume = 0
-	for(var/datum/reagent/A in reagent_list)
-		if(A.volume > the_volume)
-			the_volume = A.volume
-			the_id = A.id
-
-	return the_id
+	return get_master_reagent().id
 
 /datum/reagent_holder/proc/update_total() // Updates volume.
 	total_volume = 0
@@ -145,7 +127,7 @@
 
 			current.volume += amount
 			if(!isnull(data_initializer)) // For all we know, it could be zero or empty string and meaningful
-				current.mix_data(src, current.data, current.volume, data_initializer, amount)
+				current.mix_data(current.data, current.volume, data_initializer, amount, src)
 			update_total()
 			if(!skip_reactions)
 				try_reactions_for_reagent_change(id)
@@ -534,18 +516,6 @@
 	trans_to(T, total_volume, multiplier, copy)
 	if (total_volume <= 0)
 		qdel(src)
-
-/datum/reagent_holder/proc/conditional_update_move(atom/A, Running = 0)
-	var/list/cached_reagents = reagent_list
-	for(var/datum/reagent/R in cached_reagents)
-		R.on_move (A, Running)
-	update_total()
-
-/datum/reagent_holder/proc/conditional_update(atom/A)
-	var/list/cached_reagents = reagent_list
-	for(var/datum/reagent/R in cached_reagents)
-		R.on_update (A)
-	update_total()
 
 //* Queries *//
 

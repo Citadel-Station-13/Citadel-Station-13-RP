@@ -17,6 +17,12 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 	/// reagent flags - see [code/__DEFINES/reagents/flags.dm]
 	var/reagent_flags = NONE
 
+	//* Color *//
+	/// our reagent color
+	var/color = "#000000"
+	/// multiplier to effective volume when calculating color
+	var/color_weight = 1
+
 	//* Identity
 	/// our name - visible from guidebooks and to admins
 	var/name = "Reagent"
@@ -68,9 +74,6 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 	var/cup_name = null
 	var/cup_desc = null
 	var/cup_center_of_mass = null
-
-	var/color = "#000000"
-	var/color_weight = 1
 
 	var/glass_icon = DRINK_ICON_DEFAULT
 	var/glass_name = "something"
@@ -294,8 +297,9 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
  * * old_volume - existing volume
  * * new_data - adding data
  * * new_volume - adding volume
+ * * holder - (optional) the holder we're mixing in, if any
  */
-/datum/reagent/proc/mix_data(old_data, old_volume, new_data, new_volume)
+/datum/reagent/proc/mix_data(old_data, old_volume, new_data, new_volume, datum/reagent_holder/holder)
 	return null
 
 //* Guidebook *//
@@ -358,20 +362,3 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
  */
 // todo: implement this proc, replace touch_turf/reaction_turf and similar with it.
 // /datum/reagent/proc/apply_to_turf(turf/target, amount, list/data)
-
-//* Holder - Mixing
-
-/**
- * called when a new reagent is being mixed with this one to mix our data lists.
- *
- * this may not be called if the data is the exact same!
- *
- * @params
- * * holder - (optional) the holder we're mixing in, if any.
- * * current_data - our current data. not necessarily a list, only typecasted to one.
- * * current_amount - our current amount
- * * new_data - new inbound data. not necessarily a list, only typedcasted to one.
- * * new_amount - the amount that's coming in, not what we will be at after mixing.
- */
-/datum/reagent/proc/mix_data(datum/reagent_holder/holder, list/current_data, current_amount, list/new_data, new_amount)
-	return
