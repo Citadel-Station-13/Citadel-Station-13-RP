@@ -18,7 +18,7 @@
 
 /obj/item/mass_spectrometer/Initialize(mapload)
 	. = ..()
-	var/datum/reagents/R = new/datum/reagents(5)
+	var/datum/reagent_holder/R = new/datum/reagent_holder(5)
 	reagents = R
 	R.my_atom = src
 

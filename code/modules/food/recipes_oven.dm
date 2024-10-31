@@ -111,9 +111,9 @@
 		/obj/item/reagent_containers/food/snacks/dough,
 		/obj/item/reagent_containers/food/snacks/dough,
 		/obj/item/reagent_containers/food/snacks/dough,
-		/obj/item/reagent_containers/food/snacks/meat/syntiflesh,
-		/obj/item/reagent_containers/food/snacks/meat/syntiflesh,
-		/obj/item/reagent_containers/food/snacks/meat/syntiflesh,
+		/obj/item/reagent_containers/food/snacks/meat/synthflesh,
+		/obj/item/reagent_containers/food/snacks/meat/synthflesh,
+		/obj/item/reagent_containers/food/snacks/meat/synthflesh,
 		/obj/item/reagent_containers/food/snacks/cheesewedge,
 		/obj/item/reagent_containers/food/snacks/cheesewedge,
 		/obj/item/reagent_containers/food/snacks/cheesewedge
@@ -420,9 +420,9 @@
 	fruit = list("tomato" = 1)
 	items = list(
 		/obj/item/reagent_containers/food/snacks/sliceable/flatdough,
-		/obj/item/reagent_containers/food/snacks/meat/syntiflesh,
-		/obj/item/reagent_containers/food/snacks/meat/syntiflesh,
-		/obj/item/reagent_containers/food/snacks/meat/syntiflesh,
+		/obj/item/reagent_containers/food/snacks/meat/synthflesh,
+		/obj/item/reagent_containers/food/snacks/meat/synthflesh,
+		/obj/item/reagent_containers/food/snacks/meat/synthflesh,
 		/obj/item/reagent_containers/food/snacks/cheesewedge
 	)
 	result = /obj/item/reagent_containers/food/snacks/sliceable/pizza/meatpizza

@@ -1,6 +1,9 @@
 //This File contains the recipes for drinks
 //Seperation of Drink Recipes and other chemicals
 
+/datum/chemical_reaction/drinks
+	abstract_type = /datum/chemical_reaction/drinks
+	___legacy_allow_collision_do_not_use = TRUE
 
 /datum/chemical_reaction/drinks/coffee
 	name = "Coffee"
@@ -357,13 +360,6 @@
 	required_reagents = list("vodka" = 1, "gin" = 1, "tequila" = 1, "cubalibre" = 3)
 	result_amount = 6
 
-/datum/chemical_reaction/drinks/icedtea
-	name = "Long Island Iced Tea"
-	id = "longislandicedtea"
-	result = "longislandicedtea"
-	required_reagents = list("vodka" = 1, "gin" = 1, "tequila" = 1, "cubalibre" = 3)
-	result_amount = 6
-
 /datum/chemical_reaction/drinks/threemileisland
 	name = "Three Mile Island Iced Tea"
 	id = "threemileisland"
@@ -563,7 +559,7 @@
 
 /datum/chemical_reaction/drinks/iced_beer2
 	name = "Iced Beer"
-	id = "iced_beer"
+	id = "iced_beer-2"
 	result = "iced_beer"
 	required_reagents = list("beer" = 5, "ice" = 1)
 	result_amount = 6
@@ -1358,7 +1354,7 @@
 	id = "quickdraw"
 	result = "quickdraw"
 	required_reagents = list("sarsaparilla" = 1, "rum" = 1, "bitters" = 1)
-	reaction_sound = "sound/weapons/gunshot/gunshot.ogg"
+	reaction_sound_instant = "sound/weapons/gunshot/gunshot.ogg"
 	result_amount = 3
 
 /datum/chemical_reaction/drinks/dmhand
@@ -1897,7 +1893,7 @@
 	result = "skrianhitea"
 	required_reagents = list("unathijuice" = 2, "water" = 1)
 	result_amount = 3
-	mix_message = "The tea turns a bitter black."
+	reaction_message_instant = "The tea turns a bitter black."
 
 /datum/chemical_reaction/drinks/mumbaksting
 	name = "Mumbak Sting"
@@ -1905,7 +1901,7 @@
 	result = "mumbaksting"
 	required_reagents = list("unathijuice" = 2, "toxin" = 1)
 	result_amount = 3
-	mix_message = "The toxins mix with the juice to create a dark red substance."
+	reaction_message_instant = "The toxins mix with the juice to create a dark red substance."
 
 /datum/chemical_reaction/drinks/wasgaelhi
 	name = "Wasgaelhi"
@@ -1913,7 +1909,7 @@
 	result = "wasgaelhi"
 	required_reagents = list("unathijuice" = 2, "wine" = 1)
 	result_amount = 3
-	mix_message = "The mixture turns a dull purple."
+	reaction_message_instant = "The mixture turns a dull purple."
 
 /datum/chemical_reaction/drinks/kzkzaa
 	name = "Kzkzaa"
@@ -1921,4 +1917,4 @@
 	result = "kzkzaa"
 	required_reagents = list("unathijuice" = 2, "protein" = 1)
 	result_amount = 3
-	mix_message = "The mixture turns a deep orange."
+	reaction_message_instant = "The mixture turns a deep orange."
