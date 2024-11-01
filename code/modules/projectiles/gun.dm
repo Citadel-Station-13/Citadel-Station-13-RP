@@ -956,6 +956,8 @@
 					target = src,
 				)
 			return FALSE
+	if(!attachment.fits_on_gun(src, actor, silent))
+		return FALSE
 	return TRUE
 
 /**
@@ -969,8 +971,11 @@
 	if(!can_install_attachment(attachment, actor, silent))
 		return FALSE
 
-	// ... stuff here
-	#warn that
+	if(!silent)
+		actor?.visible_feedback(
+			target = src,
+			visible = SPAN_NOTICE("[actor.performer] attaches [attachment] to [src]'s [attachment.attachment_slot]."),
+		)
 
 	if(attachment.loc != src)
 		attachment.forceMove(src)
@@ -982,7 +987,7 @@
 /**
  * Uninstalls an attachment
  *
- * * This does not move the attachment after uinstall; you have to do that.
+ * * This does not move the attachment after uninstall; you have to do that.
  *
  * @return the /obj/item uninstalled
  */

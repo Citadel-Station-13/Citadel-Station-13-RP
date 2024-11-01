@@ -7,23 +7,68 @@
  * * [light_range] and [light_color] are set directly, as they don't determine
  *   if a light source is enabled.
  * * [light_power] is toggled when on/off.
+ * * We will set our icon_state directly, not gun_state. Do not use gun_state with flashlights.
  */
 /obj/item/gun_attachment/flashlight
 	light_range = 4.75
 	light_color = "#ffffff"
 
+	attachment_action_name = "Toggle Light"
+
+	/// are we on?
+	var/on = FALSE
 	/// power when on
 	var/light_power_on = 0.75
+	/// activation sound
+	var/on_sound = 'sound/weapons/empty.ogg'
+	/// deactivation sound
+	var/off_sound = 'sound/weapons/empty.ogg'
+
+/obj/item/gun_attachment/flashlight/ui_action_click(datum/action/action, datum/event_args/actor/actor)
+	set_on(!on)
+
+/obj/item/gun_attachment/flashlight/on_detach(obj/item/gun/gun)
+	..()
+	set_on(FALSE)
+
+/obj/item/gun_attachment/flashlight/proc/set_on(state)
+	if(on == state)
+		return
+	on = state
+	var/datum/action/potential_action = istype(attachment_actions, /datum/action) ? attachment_actions : null
+	// todo: silent support?
+	if(on)
+		playsound(src, on_sound, 15, TRUE, -4)
+		set_light(l_power = light_power_on)
+		potential_action?.set_active(TRUE)
+	else
+		playsound(src, off_sound, 15, TRUE, -4)
+		set_light(l_power = 0)
+		potential_action?.set_active(FALSE)
 
 // todo: make this directional at some point
 /obj/item/gun_attachment/flashlight/rail
+	name = "rail light"
+	#warn sprite
 
 // todo: make this directional at some point
 /**
  * Actually a 'virtual' attachment. When uninstalled, will drop a maglight instead of itself.
  */
 /obj/item/gun_attachment/flashlight/maglight
+	name = "maglight"
+	#warn sprite
+	/// the maglight that made us
+	var/obj/item/flashlight/maglight/our_maglight
+
+/obj/item/gun_attachment/flashlight/maglight/Destroy()
+	QDEL_NULL(our_maglight)
+	return ..()
 
 /obj/item/gun_attachment/flashlight/maglight/uninstalled()
-
-#warn impl 
+	if(our_maglight)
+		. = our_maglight
+		our_maglight = null
+	else
+		return new /obj/item/flashlight/maglight
+	qdel(src)

@@ -82,7 +82,7 @@
  * * gun already checks for [attachment_slot]
  * * gun already checks for [attachment_conflict_type]
  */
-/obj/item/gun_attachment/proc/fits_on_gun(obj/item/gun/gun)
+/obj/item/gun_attachment/proc/fits_on_gun(obj/item/gun/gun, datum/event_args/actor/actor, silent)
 	return TRUE
 
 /**
@@ -118,6 +118,8 @@
  * useful for 'virtual' attachments made for things like maglights.
  *
  * The item returned will be what is dropped / put into the user's hands.
+ *
+ * If you return something else, you generally want to qdel(src).
  */
 /obj/item/gun_attachment/proc/uninstalled()
 	return src

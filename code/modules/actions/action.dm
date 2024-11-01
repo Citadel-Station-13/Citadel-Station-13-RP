@@ -32,7 +32,7 @@
 	var/datum/callback/check_callback
 
 	//* Target / Delegate *//
-	/// callback to invoke with (actor) on trigger at base of /invoke().
+	/// callback to invoke with (datum/action/action, datum/event_args/actor/actor) on trigger at base of /invoke().
 	///
 	/// * return a truthy value from the callback to halt propagation
 	var/datum/callback/invoke_callback
@@ -76,6 +76,11 @@
 	/// default handling for availability should be invoked
 	var/button_availability_automatic = TRUE
 
+	/// are we active?
+	var/button_active = FALSE
+	/// overlay to add to background if active
+	var/button_active_overlay = "active-1"
+
 /datum/action/New(datum/target)
 	if(!target_compatible(target))
 		qdel(src)
@@ -110,6 +115,14 @@
 /datum/action/proc/push_button_availability(availability, update = TRUE)
 	button_availability = availability
 	if(update)
+		update_buttons(TRUE)
+
+/**
+ * set button active-ness
+ */
+/datum/action/proc/set_button_active(active, defer_update)
+	button_active = active
+	if(!defer_update)
 		update_buttons(TRUE)
 
 /**
@@ -172,6 +185,8 @@
 	generating.plane = HUD_PLANE
 	generating.layer = HUD_LAYER_BASE
 
+	if(button_active && button_active_overlay)
+		generating.overlays += button_active_overlay
 	if(background_additional_overlay)
 		generating.overlays += background_additional_overlay
 
@@ -261,7 +276,7 @@
 /datum/action/proc/invoke(datum/event_args/actor/actor)
 	PROTECTED_PROC(TRUE) // you thought i was joking??? do not directly call this goddamn proc.
 	SHOULD_NOT_OVERRIDE(TRUE)
-	if(invoke_callback?.Invoke())
+	if(invoke_callback?.Invoke(src, actor))
 		return TRUE
 	if(invoke_target(target, actor))
 		return TRUE
