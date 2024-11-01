@@ -176,7 +176,7 @@ SUBSYSTEM_DEF(overlays)
 
 /atom/proc/build_appearance_list(atom/new_overlays)
 	var/static/image/appearance_bro = new
-	if (islist(new_overlays))
+	if (new_overlays && islist(new_overlays))
 		var/list/new_overlays_l = new_overlays:Copy()
 		// A lot of code seems to assume that it's safe to pass long-lived lists to SSoverlays.
 		// That was true with the old overlays SS, but is not true of this one.
@@ -193,7 +193,7 @@ SUBSYSTEM_DEF(overlays)
 // The same as the above, but with ZM_AUTOMANGLE.
 /atom/movable/build_appearance_list(atom/new_overlays)
 	var/static/image/appearance_bro = new
-	if (islist(new_overlays))
+	if (new_overlays && islist(new_overlays))
 		var/list/new_overlays_l = new_overlays:Copy()
 		listclearnulls(new_overlays)
 		for (var/i in 1 to length(new_overlays_l))
