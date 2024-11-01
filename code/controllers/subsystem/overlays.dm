@@ -176,35 +176,30 @@ SUBSYSTEM_DEF(overlays)
 
 /atom/proc/build_appearance_list(atom/new_overlays)
 	var/static/image/appearance_bro = new
-	if (new_overlays && islist(new_overlays))
-		var/list/new_overlays_l = new_overlays:Copy()
+	if (islist(new_overlays))
 		// A lot of code seems to assume that it's safe to pass long-lived lists to SSoverlays.
 		// That was true with the old overlays SS, but is not true of this one.
 		// So we're copying the list. Fix all the callsites if you want to avoid this copy.
-		//new_overlays =
-		listclearnulls(new_overlays_l)
-		for (var/i in 1 to length(new_overlays_l))
-			var/image/cached_overlay = new_overlays_l[i]
-			if(cached_overlay && istype(cached_overlay))
-				continue
-			APPEARANCEIFY(cached_overlay, new_overlays_l[i])
-		return new_overlays_l
+		new_overlays = new_overlays:Copy()
+		listclearnulls(new_overlays)
+		for (var/i in 1 to length(new_overlays))
+			var/image/cached_overlay = new_overlays[i]
+			APPEARANCEIFY(cached_overlay, new_overlays[i])
+		return new_overlays
 	else
 		APPEARANCEIFY(new_overlays, .)
 
 // The same as the above, but with ZM_AUTOMANGLE.
 /atom/movable/build_appearance_list(atom/new_overlays)
 	var/static/image/appearance_bro = new
-	if (new_overlays && islist(new_overlays))
-		var/list/new_overlays_l = new_overlays:Copy()
+	if (islist(new_overlays))
+		new_overlays = new_overlays:Copy()
 		listclearnulls(new_overlays)
-		for (var/i in 1 to length(new_overlays_l))
-			var/image/cached_overlay = new_overlays_l[i]
-			if(cached_overlay && istype(cached_overlay))
-				continue
-			APPEARANCEIFY(cached_overlay, new_overlays_l[i])
-			ZM_AUTOMANGLE(new_overlays_l[i])
-		return new_overlays_l
+		for (var/i in 1 to length(new_overlays))
+			var/image/cached_overlay = new_overlays[i]
+			APPEARANCEIFY(cached_overlay, new_overlays[i])
+			ZM_AUTOMANGLE(new_overlays[i])
+		return new_overlays
 	else
 		APPEARANCEIFY(new_overlays, .)
 		ZM_AUTOMANGLE(.)
