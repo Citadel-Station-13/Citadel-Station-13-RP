@@ -166,7 +166,7 @@ SUBSYSTEM_DEF(overlays)
 	else { \
 		appearance_bro.appearance = origin; \
 		if (!ispath(origin)) { \
-			appearance_bro.dir = origin.dir; \
+			appearance_bro.dir = origin:dir; \
 		} \
 		target = appearance_bro.appearance; \
 	}
@@ -174,7 +174,7 @@ SUBSYSTEM_DEF(overlays)
 // If the overlay has a planeset (e.g., emissive), mark for ZM mangle. This won't catch overlays on overlays, but the flag can just manually be set in that case.
 #define ZM_AUTOMANGLE(target) if ((target):plane != FLOAT_PLANE) { SSoverlays.context_needs_automangle = TRUE; }
 
-/atom/proc/build_appearance_list(atom/new_overlays)
+/atom/proc/build_appearance_list(list/new_overlays)
 	var/static/image/appearance_bro = new
 	if (islist(new_overlays))
 		// A lot of code seems to assume that it's safe to pass long-lived lists to SSoverlays.
@@ -190,7 +190,7 @@ SUBSYSTEM_DEF(overlays)
 		APPEARANCEIFY(new_overlays, .)
 
 // The same as the above, but with ZM_AUTOMANGLE.
-/atom/movable/build_appearance_list(atom/new_overlays)
+/atom/movable/build_appearance_list(list/new_overlays)
 	var/static/image/appearance_bro = new
 	if (islist(new_overlays))
 		new_overlays = new_overlays:Copy()
