@@ -185,6 +185,8 @@ SUBSYSTEM_DEF(overlays)
 		listclearnulls(new_overlays_l)
 		for (var/i in 1 to length(new_overlays_l))
 			var/image/cached_overlay = new_overlays_l[i]
+			if(cached_overlay && istype(cached_overlay))
+				continue
 			APPEARANCEIFY(cached_overlay, new_overlays_l[i])
 		return new_overlays_l
 	else
@@ -198,6 +200,8 @@ SUBSYSTEM_DEF(overlays)
 		listclearnulls(new_overlays)
 		for (var/i in 1 to length(new_overlays_l))
 			var/image/cached_overlay = new_overlays_l[i]
+			if(cached_overlay && istype(cached_overlay))
+				continue
 			APPEARANCEIFY(cached_overlay, new_overlays_l[i])
 			ZM_AUTOMANGLE(new_overlays_l[i])
 		return new_overlays_l
