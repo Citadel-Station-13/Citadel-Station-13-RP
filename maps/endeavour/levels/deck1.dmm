@@ -6425,13 +6425,6 @@
 	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/lawoffice)
-"fkM" = (
-/obj/machinery/porta_turret/crescent{
-	density = 1;
-	faction = "neutral"
-	},
-/turf/simulated/wall/r_wall/prepainted/exploration,
-/area/endeavour/command/turrets)
 "fkS" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
@@ -7635,9 +7628,6 @@
 /obj/machinery/door/airlock/glass,
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d1starboardforhall)
-"gbe" = (
-/turf/simulated/wall/prepainted/engineering/atmos,
-/area/space)
 "gbt" = (
 /obj/machinery/door/firedoor{
 	dir = 1
@@ -8355,10 +8345,6 @@
 /obj/machinery/door/airlock/glass,
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d1portamidhall)
-"gDL" = (
-/obj/structure/lattice,
-/turf/space,
-/area/endeavour/command/turrets)
 "gEb" = (
 /obj/structure/bed/chair,
 /obj/landmark/spawnpoint/job/chaplain,
@@ -22236,12 +22222,12 @@
 /turf/simulated/floor/tiled/freezer,
 /area/crew_quarters/pool)
 "sfL" = (
-/obj/structure/catwalk,
-/obj/structure/cable/green{
-	icon_state = "1-2"
+/obj/machinery/power/sensor{
+	name = "Powernet Sensor - Deck 2 Fore Subgrid";
+	name_tag = "Deck 2 Fore Subgrid"
 	},
-/turf/simulated/floor/plating,
-/area/maintenance/substation/dock)
+/turf/space/basic,
+/area/space)
 "sfX" = (
 /obj/structure/table/woodentable,
 /turf/simulated/floor/wood,
@@ -32546,8 +32532,8 @@ xRj
 xRj
 xRj
 xRj
-fOo
-usG
+xRj
+xRj
 dkX
 dkX
 joA
@@ -32740,8 +32726,8 @@ xRj
 xRj
 xRj
 xRj
-usG
-usY
+xRj
+xRj
 dkX
 dkX
 joA
@@ -32934,8 +32920,8 @@ xRj
 xRj
 xRj
 xRj
-fOo
-usG
+xRj
+xRj
 dkX
 dkX
 joA
@@ -33164,8 +33150,8 @@ uUK
 uUK
 uUK
 cMJ
-gDL
-fOo
+xRj
+xRj
 xRj
 xRj
 xRj
@@ -33358,8 +33344,8 @@ uUK
 uUK
 uUK
 cMJ
-usG
-fOo
+xRj
+xRj
 xRj
 xRj
 xRj
@@ -33552,8 +33538,8 @@ uUK
 uUK
 onr
 cMJ
-usY
-usG
+xRj
+xRj
 xRj
 xRj
 xRj
@@ -33746,7 +33732,7 @@ uUK
 uUK
 uUK
 cMJ
-usG
+xRj
 xRj
 xRj
 xRj
@@ -33893,8 +33879,8 @@ xRj
 xRj
 xRj
 xRj
-fOo
-usG
+xRj
+xRj
 dkX
 dkX
 dkX
@@ -34087,8 +34073,8 @@ xRj
 xRj
 xRj
 xRj
-usG
-usY
+xRj
+xRj
 dkX
 dkX
 dkX
@@ -34281,8 +34267,8 @@ xRj
 xRj
 xRj
 xRj
-fOo
-usG
+xRj
+xRj
 dkX
 dkX
 dkX
@@ -36333,7 +36319,7 @@ xRj
 xRj
 xRj
 xRj
-xRj
+sfL
 xRj
 xRj
 xRj
@@ -37252,8 +37238,8 @@ tAk
 nei
 tAk
 sQl
-usG
-fOo
+xRj
+xRj
 jNg
 jNg
 jNg
@@ -37446,8 +37432,8 @@ tAk
 nei
 tAk
 sQl
-usY
-usG
+xRj
+xRj
 jNg
 jNg
 jNg
@@ -37640,8 +37626,8 @@ tAk
 nei
 wBM
 sQl
-usG
-fOo
+xRj
+xRj
 jNg
 jNg
 jNg
@@ -39592,8 +39578,8 @@ aIY
 gJJ
 fYz
 ijU
-usG
-fOo
+xRj
+xRj
 xRj
 xRj
 xRj
@@ -39786,8 +39772,8 @@ aCx
 jkD
 fYz
 ijU
-usY
-usG
+xRj
+xRj
 xRj
 xRj
 xRj
@@ -39980,8 +39966,8 @@ jmM
 oFd
 fYz
 ijU
-usG
-fOo
+xRj
+xRj
 xRj
 xRj
 xRj
@@ -40477,8 +40463,8 @@ xRj
 xRj
 xRj
 xRj
-fOo
-usG
+xRj
+xRj
 xgT
 ehq
 ehq
@@ -40671,8 +40657,8 @@ xRj
 xRj
 xRj
 xRj
-usG
-fkM
+xRj
+xRj
 xgT
 ehq
 ehq
@@ -40865,8 +40851,8 @@ xRj
 xRj
 xRj
 xRj
-fOo
-usG
+xRj
+xRj
 rTu
 rTu
 rTu
@@ -44357,8 +44343,8 @@ xRj
 xRj
 xRj
 xRj
-fOo
-usG
+xRj
+xRj
 dkX
 bdl
 bdl
@@ -44551,8 +44537,8 @@ xRj
 xRj
 xRj
 xRj
-usG
-usY
+xRj
+xRj
 dkX
 fGf
 bdl
@@ -44745,8 +44731,8 @@ xRj
 xRj
 xRj
 xRj
-fOo
-usG
+xRj
+xRj
 dkX
 bdl
 bdl
@@ -44808,7 +44794,7 @@ piW
 piW
 piW
 piW
-sfL
+piW
 piW
 qUT
 kov
@@ -49476,8 +49462,8 @@ eKd
 uze
 pdu
 ucD
-usG
-fOo
+xRj
+xRj
 xRj
 xRj
 xRj
@@ -49670,8 +49656,8 @@ sDi
 uze
 pdu
 ucD
-usY
-usG
+xRj
+xRj
 xRj
 xRj
 xRj
@@ -49864,8 +49850,8 @@ sDi
 nZR
 pdu
 ucD
-usG
-fOo
+xRj
+xRj
 xRj
 xRj
 xRj
@@ -51159,8 +51145,8 @@ xRj
 xRj
 xRj
 xRj
-fOo
-usG
+xRj
+xRj
 hub
 cpA
 hjz
@@ -51353,8 +51339,8 @@ xRj
 xRj
 xRj
 xRj
-usG
-usY
+xRj
+xRj
 hub
 skW
 aIM
@@ -51547,8 +51533,8 @@ xRj
 xRj
 xRj
 xRj
-fOo
-usG
+xRj
+xRj
 hub
 hUE
 aIM
@@ -54512,8 +54498,8 @@ xAC
 maa
 ris
 sQl
-usY
-usG
+xRj
+xRj
 xRj
 xRj
 xRj
@@ -54706,8 +54692,8 @@ xAC
 kfn
 ris
 sQl
-usG
-fOo
+xRj
+xRj
 xRj
 xRj
 xRj
@@ -57201,14 +57187,14 @@ snQ
 ojQ
 dth
 lJy
-gbe
-gbe
-gbe
-gbe
-gbe
-gbe
-gbe
-gbe
+aEU
+aEU
+aEU
+aEU
+aEU
+aEU
+aEU
+aEU
 liZ
 bAu
 vsG
@@ -58764,7 +58750,7 @@ bdP
 lJv
 qJY
 uTr
-maa
+uTr
 maa
 bFR
 maa
@@ -60521,8 +60507,8 @@ bHe
 nVc
 cYi
 vGJ
-usG
-fOo
+xRj
+xRj
 xRj
 xRj
 xRj
@@ -60715,8 +60701,8 @@ fNh
 ivS
 cYi
 vGJ
-usY
-usG
+xRj
+xRj
 xRj
 xRj
 xRj
@@ -60909,8 +60895,8 @@ fJS
 lRe
 cYi
 vGJ
-usG
-fOo
+xRj
+xRj
 xRj
 xRj
 xRj
@@ -62072,8 +62058,8 @@ iPF
 hai
 vdY
 cYi
-usY
-usG
+xRj
+xRj
 xRj
 xRj
 xRj
@@ -62266,8 +62252,8 @@ hai
 hai
 jAg
 cYi
-usG
-fOo
+xRj
+xRj
 xRj
 xRj
 xRj
@@ -63205,8 +63191,8 @@ xRj
 xRj
 jBC
 xRj
-usG
-rnI
+xRj
+xRj
 svq
 svq
 svq
@@ -63399,8 +63385,8 @@ xRj
 xRj
 xRj
 xRj
-fOo
-usG
+xRj
+xRj
 xRj
 svq
 svq
