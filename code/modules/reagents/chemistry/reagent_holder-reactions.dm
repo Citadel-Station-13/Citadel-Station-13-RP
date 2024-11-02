@@ -12,11 +12,7 @@
 /datum/reagent_holder/proc/reconsider_reactions()
 	SHOULD_NOT_SLEEP(TRUE)
 
-	var/list/reagent_ids = list()
-	for(var/datum/reagent/reagent in reagent_list)
-		reagent_ids[reagent.id] = TRUE
-
-	var/list/datum/chemical_reaction/reactions = SSchemistry.immutable_relevant_reactions_for_reagent_ids(reagent_ids)
+	var/list/datum/chemical_reaction/reactions = SSchemistry.immutable_relevant_reactions_for_reagent_ids(reagent_volumes)
 	check_reactions(reactions)
 
 //* Internal API *//

@@ -4613,6 +4613,7 @@
 #include "code\modules\reagents\chemistry\reagents\Chemistry-Reagents-Other.dm"
 #include "code\modules\reagents\chemistry\reagents\Chemistry-Reagents-Toxins.dm"
 #include "code\modules\reagents\chemistry\reagents\Chemistry-Topical.dm"
+#include "code\modules\reagents\chemistry\reagents\core\blood.dm"
 #include "code\modules\reagents\chemistry\reagents\core\elements.dm"
 #include "code\modules\reagents\chemistry\reagents\other\cleaner.dm"
 #include "code\modules\reagents\chemistry\reagents\pyrotechnics\thermite.dm"

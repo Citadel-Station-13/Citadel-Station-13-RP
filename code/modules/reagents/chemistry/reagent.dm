@@ -23,6 +23,10 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 	/// multiplier to effective volume when calculating color
 	var/color_weight = 1
 
+	//* Data *//
+	/// Supports data system.
+	var/holds_data = FALSE
+
 	//* Identity
 	/// our name - visible from guidebooks and to admins
 	var/name = "Reagent"
@@ -47,7 +51,6 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 	var/taste_description = "bitterness"
 	/// How this taste compares to others. Higher values means it is more noticable
 	var/taste_mult = 1
-	var/datum/reagent_holder/holder = null
 	var/reagent_state = REAGENT_SOLID
 	var/metabolism = REM // This would be 0.2 normally
 	/// Used for vampric-Digestion
@@ -280,9 +283,15 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 //* Data *//
 
 /**
+ * Get data to feed in as the `data_initializer` during a reagents transfer.
+ */
+/datum/reagent/proc/make_copy_data_initializer(data)
+	return null
+
+/**
  * Preprocess data fed in during add_reagent
  */
-/datum/reagent/proc/preprocess_data(new_data)
+/datum/reagent/proc/preprocess_data(data_initializer)
 	return null
 
 /**
@@ -293,9 +302,9 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
  * * this is not called if there's no reagents of ourselves in the new container.
  *
  * @params
- * * old_data - existing data
- * * old_volume - existing volume
- * * new_data - adding data
+ * * old_data - existing data; null if not there
+ * * old_volume - existing volume; 0 if not there
+ * * new_data - adding data; this is from the returns of `preprocess_data()`
  * * new_volume - adding volume
  * * holder - (optional) the holder we're mixing in, if any
  */
