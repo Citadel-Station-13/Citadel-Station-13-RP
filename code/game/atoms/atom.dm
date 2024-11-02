@@ -479,16 +479,20 @@
 	if(reagents)
 		if(reagents.reagents_holder_flags & TRANSPARENT)
 			. += "It contains:"
-			if(length(reagents.reagent_list))
+			if(length(reagents.reagent_volumes))
 				var/has_alcohol = FALSE
 				if(user.can_see_reagents()) //Show each individual reagent
-					for(var/datum/reagent/current_reagent as anything in reagents.reagent_list)
+					for(var/id in reagents.reagent_volumes)
+						var/volume = reagents.reagent_volumes[id]
+						var/datum/reagent/current_reagent = SSchemistry.fetch_reagent(id)
 						if(!has_alcohol && istype(current_reagent,/datum/reagent/ethanol))
 							has_alcohol = TRUE
-						. += "&bull; [round(current_reagent.volume, 0.01)] units of [current_reagent.name]"
+						. += "&bull; [round(volume, 0.01)] units of [current_reagent.name]"
 				else //Otherwise, just show the total volume
 					var/total_volume = 0
-					for(var/datum/reagent/current_reagent as anything in reagents.reagent_list)
+					for(var/id in reagents.reagent_volumes)
+						var/volume = reagents.reagent_volumes[id]
+						var/datum/reagent/current_reagent = SSchemistry.fetch_reagent(id)
 						if(!has_alcohol && istype(current_reagent,/datum/reagent/ethanol))
 							has_alcohol = TRUE
 						total_volume += current_reagent.volume
@@ -895,11 +899,12 @@
 
 /atom/proc/CheckParts(list/parts_list)
 	for(var/A in parts_list)
-		if(istype(A, /datum/reagent))
-			if(!reagents)
-				reagents = new()
-			reagents.reagent_list.Add(A)
-			reagents.conditional_update()
+		// todo: i don't know why we do this in crafting but crafting needs fucking refactored lmao
+		// if(istype(A, /datum/reagent))
+		// 	if(!reagents)
+		// 		reagents = new()
+		// 	reagents.reagent_list.Add(A)
+		// 	reagents.conditional_update()
 		else if(ismovable(A))
 			var/atom/movable/M = A
 			M.forceMove(src)

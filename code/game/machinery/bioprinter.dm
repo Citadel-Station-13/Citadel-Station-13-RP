@@ -22,6 +22,7 @@
 	///Is the bioprinter printing
 	var/printing = FALSE
 	///Blood sample for DNA hashing.
+	#warn fuck; this is currently direct reagent data for blood. this is bad!
 	var/loaded_dna
 	///May cause rejection, or the printing of some alien limb instead!
 	var/malfunctioning = FALSE
@@ -206,13 +207,7 @@
 
 /// Checks for reagents, then reports how much biomass it has in it.
 /obj/machinery/organ_printer/proc/get_biomass_volume()
-	var/biomass_count = 0
-	if(container && container.reagents)
-		for(var/datum/reagent/R in container.reagents.reagent_list)
-			if(R.id == "biomass")
-				biomass_count += R.volume
-
-	return biomass_count
+	return container.reagents?.reagent_volumes?[/datum/reagent/nutriment/biomass::id]
 
 /obj/machinery/organ_printer/proc/can_print(choice, biomass_needed = 0)
 	var/biomass = get_biomass_volume()

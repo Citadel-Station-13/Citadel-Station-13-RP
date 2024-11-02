@@ -302,18 +302,22 @@
 			occupantData["blood"] = bloodData
 
 			var/reagentData[0]
-			if(H.reagents.reagent_list.len >= 1)
-				for(var/datum/reagent/R in H.reagents.reagent_list)
-					reagentData[++reagentData.len] = list("name" = R.name, "amount" = R.volume)
+			if(length(H.reagents.reagent_volumes))
+				for(var/id in H.reagents?.reagent_volumes)
+					var/datum/reagent/R = SSchemistry.fetch_reagent(id)
+					var/volume = H.reagents.reagent_volumes[id]
+					reagentData[++reagentData.len] = list("name" = R.name, "amount" = volume)
 			else
 				reagentData = null
 
 			occupantData["reagents"] = reagentData
 
 			var/ingestedData[0]
-			if(H.ingested.reagent_list.len >= 1)
-				for(var/datum/reagent/R in H.ingested.reagent_list)
-					ingestedData[++ingestedData.len] = list("name" = R.name, "amount" = R.volume)
+			if(length(H.ingested.reagent_volumes))
+				for(var/id in H.ingested?.reagent_volumes)
+					var/datum/reagent/R = SSchemistry.fetch_reagent(id)
+					var/volume = H.ingested.reagent_volumes[id]
+					ingestedData[++ingestedData.len] = list("name" = R.name, "amount" = volume)
 			else
 				ingestedData = null
 
@@ -489,13 +493,15 @@
 				extra_font = "<font color=[blood_volume > 448 ? "blue" : "red"]>"
 				dat += "[extra_font]\tBlood Level %: [blood_percent] ([blood_volume] units)</font><br>"
 
-			if(occupant.reagents)
-				for(var/datum/reagent/R in occupant.reagents.reagent_list)
-					dat += "Reagent: [R.name], Amount: [R.volume]<br>"
+			for(var/id in occupant.reagents?.reagent_volumes)
+				var/datum/reagent/R = SSchemistry.fetch_reagent(id)
+				var/volume = occupant.reagents.reagent_volumes[id]
+				dat += "Reagent: [R.name], Amount: [volume]<br>"
 
-			if(occupant.ingested)
-				for(var/datum/reagent/R in occupant.ingested.reagent_list)
-					dat += "Stomach: [R.name], Amount: [R.volume]<br>"
+			for(var/id in occupant.ingested?.reagent_volumes)
+				var/datum/reagent/R = SSchemistry.fetch_reagent(id)
+				var/volume = occupant.ingested.reagent_volumes[id]
+				dat += "Stomach: [R.name], Amount: [volume]<br>"
 
 			dat += "<hr><table border='1'>"
 			dat += "<tr>"

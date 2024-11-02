@@ -344,12 +344,8 @@
 // Returns the total amount of biomass reagent in all of the pod's stored containers
 /obj/machinery/clonepod/proc/get_biomass()
 	var/biomass_count = 0
-	if(LAZYLEN(containers))
-		for(var/obj/item/reagent_containers/glass/G in containers)
-			for(var/datum/reagent/R in G.reagents.reagent_list)
-				if(R.id == "biomass")
-					biomass_count += R.volume
-
+	for(var/obj/item/reagent_containers/container in containers)
+		biomass_count += container.reagents?.reagent_volumes?[/datum/reagent/nutriment/biomass::id]
 	return biomass_count
 
 // Removes [amount] biomass, spread across all containers. Doesn't have any check that you actually HAVE enough biomass, though.
