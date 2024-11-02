@@ -1799,7 +1799,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 6
 	},
-/turf/simulated/shuttle/wall/voidcraft/green,
+/turf/simulated/wall/r_wall/prepainted/cargo,
 /area/shuttle/mining_ship/general)
 "buX" = (
 /obj/structure/disposalpipe/segment{
@@ -3927,7 +3927,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 5
 	},
-/turf/simulated/shuttle/wall/voidcraft/green,
+/turf/simulated/wall/r_wall/prepainted/cargo,
 /area/shuttle/mining_ship/general)
 "dsm" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -4240,6 +4240,16 @@
 /obj/effect/floor_decal/corner_oldtile/white/diagonal,
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/kitchen)
+"dJV" = (
+/obj/machinery/light{
+	dir = 1;
+	pixel_y = 20
+	},
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/reinforced,
+/area/quartermaster/miningdock)
 "dJX" = (
 /obj/structure/table/marble,
 /obj/machinery/door/blast/shutters{
@@ -6364,6 +6374,12 @@
 "fil" = (
 /turf/simulated/floor/tiled,
 /area/quartermaster/warehouse)
+"fip" = (
+/obj/structure/cable/green{
+	icon_state = "2-8"
+	},
+/turf/simulated/floor/reinforced,
+/area/quartermaster/miningdock)
 "fiy" = (
 /obj/machinery/door/airlock/maintenance/common,
 /obj/machinery/door/firedoor{
@@ -10864,6 +10880,9 @@
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/machinery/power/apc/south_mount,
 /obj/structure/closet/crate,
+/obj/structure/cable/green{
+	icon_state = "0-4"
+	},
 /turf/simulated/floor/tiled/steel,
 /area/shuttle/mining_ship/general)
 "jic" = (
@@ -14905,8 +14924,11 @@
 /turf/simulated/floor/carpet/bcarpet,
 /area/crew_quarters/bar)
 "mLl" = (
-/turf/simulated/shuttle/wall/voidcraft/green,
-/area/shuttle/mining_ship/general)
+/obj/structure/cable/green{
+	icon_state = "2-4"
+	},
+/turf/simulated/floor/reinforced,
+/area/quartermaster/miningdock)
 "mLm" = (
 /turf/simulated/floor/plating,
 /area/maintenance/cargo/mining)
@@ -16649,7 +16671,7 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
-/turf/simulated/shuttle/wall/voidcraft/green,
+/turf/simulated/wall/r_wall/prepainted/cargo,
 /area/shuttle/mining_ship/general)
 "ogC" = (
 /obj/machinery/door/firedoor/glass{
@@ -20253,7 +20275,7 @@
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/manifold4w/hidden,
-/turf/simulated/shuttle/wall/voidcraft/green,
+/turf/simulated/wall/r_wall/prepainted/cargo,
 /area/shuttle/mining_ship/general)
 "qVm" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -21432,6 +21454,15 @@
 	},
 /turf/simulated/wall/prepainted/civilian,
 /area/crew_quarters/kitchen)
+"rYq" = (
+/obj/structure/cable/green{
+	icon_state = "1-4"
+	},
+/obj/structure/cable/green{
+	icon_state = "1-8"
+	},
+/turf/simulated/floor/reinforced,
+/area/quartermaster/miningdock)
 "rYD" = (
 /obj/machinery/door/airlock/glass_external{
 	frequency = 1379;
@@ -22855,7 +22886,7 @@
 /turf/simulated/floor/tiled,
 /area/quartermaster/storage)
 "tdG" = (
-/turf/simulated/shuttle/wall/voidcraft/no_join,
+/turf/simulated/wall/r_wall/prepainted/cargo,
 /area/shuttle/mining_ship/general)
 "teq" = (
 /obj/structure/cable/green{
@@ -23978,6 +24009,12 @@
 /obj/structure/bed/chair/shuttle,
 /turf/simulated/floor/tiled/steel,
 /area/shuttle/belter)
+"ufN" = (
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/reinforced,
+/area/quartermaster/miningdock)
 "ufX" = (
 /turf/simulated/floor/plating,
 /area/maintenance/substation/security)
@@ -26525,7 +26562,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/bar/lower)
 "vSl" = (
-/turf/simulated/shuttle/wall/voidcraft/green,
+/turf/simulated/wall/r_wall/prepainted/cargo,
 /area/shuttle/belter)
 "vSw" = (
 /obj/structure/cable/green{
@@ -28559,6 +28596,9 @@
 "xMb" = (
 /obj/machinery/camera/network/cargo{
 	dir = 8
+	},
+/obj/structure/cable/green{
+	icon_state = "1-2"
 	},
 /turf/simulated/floor/reinforced,
 /area/quartermaster/miningdock)
@@ -38179,11 +38219,11 @@ pRW
 pRW
 wuh
 iXY
-mLl
+tdG
 sKL
 sKL
 sKL
-mLl
+tdG
 iXY
 iXY
 iXY
@@ -38373,11 +38413,11 @@ pRW
 tUu
 wuh
 gmZ
-mLl
+tdG
 jAa
 qAH
 uWE
-mLl
+tdG
 iXY
 iXY
 iXY
@@ -38567,11 +38607,11 @@ pRW
 pRW
 wuh
 iXY
-mLl
+tdG
 ubg
 lwX
 gpG
-mLl
+tdG
 iXY
 iXY
 iXY
@@ -38761,11 +38801,11 @@ pRW
 pRW
 wuh
 iXY
-mLl
+tdG
 ygR
 muW
 jhZ
-mLl
+tdG
 iXY
 iXY
 iXY
@@ -38954,12 +38994,12 @@ pRW
 pRW
 pRW
 wuh
-iXY
+mLl
 mne
 ceU
 tpp
 kxI
-mLl
+tdG
 iXY
 iXY
 iXY
@@ -39148,12 +39188,12 @@ pRW
 jGe
 jYr
 wuh
-iXY
-mLl
+ufN
+tdG
 gOb
 iRB
 jeT
-mLl
+tdG
 iXY
 iXY
 iXY
@@ -39342,12 +39382,12 @@ pRW
 jYr
 aKn
 wuh
-iXY
-mLl
+ufN
+tdG
 sHr
 ifT
 eIe
-mLl
+tdG
 iXY
 iXY
 iXY
@@ -39536,12 +39576,12 @@ pRW
 jGe
 jYr
 wuh
-iXY
-mLl
+ufN
+tdG
 cmR
 ifT
 eIe
-mLl
+tdG
 iXY
 iXY
 vSl
@@ -39730,12 +39770,12 @@ pRW
 pRW
 pRW
 wuh
-iXY
-mLl
-mLl
+ufN
+tdG
+tdG
 eum
 ofW
-mLl
+tdG
 iXY
 iXY
 vSl
@@ -39924,12 +39964,12 @@ pRW
 pRW
 pRW
 wuh
-gmZ
-mLl
+dJV
+tdG
 kRn
 bgM
 tMa
-mLl
+tdG
 iXY
 iXY
 vSl
@@ -40118,12 +40158,12 @@ pRW
 pRW
 tUu
 wuh
-iXY
-mLl
+ufN
+tdG
 tdG
 xJx
 cRB
-mLl
+tdG
 iXY
 iXY
 vSl
@@ -40312,12 +40352,12 @@ pRW
 pRW
 pRW
 wuh
-iXY
+ufN
 gCW
 buL
 qSx
 drT
-mLl
+tdG
 iXY
 iXY
 vSl
@@ -40506,7 +40546,7 @@ pRW
 pRW
 pRW
 wuh
-iXY
+ufN
 iXY
 rAq
 rAq
@@ -40700,14 +40740,14 @@ mDp
 mDp
 mDp
 wuh
-iXY
-iXY
-iXY
-iXY
-iXY
+fip
+nmv
+nmv
+nmv
+nmv
 xMb
-iXY
-iXY
+nmv
+rOn
 vSl
 aKK
 qIH
@@ -40901,7 +40941,7 @@ wuh
 wuh
 wuh
 gmZ
-iXY
+ufN
 vSl
 ufL
 qIH
@@ -41095,7 +41135,7 @@ jrK
 ePB
 oWf
 nmv
-rOn
+rYq
 vSl
 vSl
 vSl

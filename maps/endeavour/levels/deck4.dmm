@@ -1979,12 +1979,6 @@
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/atmos/workshop)
-"cxU" = (
-/obj/machinery/turretid/lethal{
-	pixel_y = 33
-	},
-/turf/simulated/wall/r_wall/prepainted/command,
-/area/endeavour/command/turrets)
 "cyd" = (
 /obj/machinery/door/firedoor,
 /obj/effect/floor_decal/borderfloorblack{
@@ -13061,6 +13055,9 @@
 "rOi" = (
 /obj/effect/floor_decal/corner/navgold{
 	dir = 5
+	},
+/obj/machinery/turretid/lethal{
+	pixel_y = 33
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/endeavour/command/turrets)
@@ -37796,7 +37793,7 @@ wiw
 wiw
 wiw
 wiw
-cxU
+wiw
 wiw
 wiw
 wiw
