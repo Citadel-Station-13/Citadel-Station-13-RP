@@ -22221,13 +22221,6 @@
 /obj/machinery/holopad,
 /turf/simulated/floor/tiled/freezer,
 /area/crew_quarters/pool)
-"sfL" = (
-/obj/machinery/power/sensor{
-	name = "Powernet Sensor - Deck 2 Fore Subgrid";
-	name_tag = "Deck 2 Fore Subgrid"
-	},
-/turf/space/basic,
-/area/space)
 "sfX" = (
 /obj/structure/table/woodentable,
 /turf/simulated/floor/wood,
@@ -36319,7 +36312,7 @@ xRj
 xRj
 xRj
 xRj
-sfL
+xRj
 xRj
 xRj
 xRj
