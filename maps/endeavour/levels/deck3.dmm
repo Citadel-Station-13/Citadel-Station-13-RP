@@ -6187,9 +6187,6 @@
 /turf/simulated/floor/tiled/monotile,
 /area/endeavour/hallway/d3afthall)
 "faa" = (
-/obj/structure/cryofeed{
-	dir = 2
-	},
 /obj/machinery/status_display/supply_display{
 	pixel_y = 32
 	},
@@ -6775,10 +6772,6 @@
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d3portforhall)
-"fDp" = (
-/obj/effect/floor_decal/industrial/outline/yellow,
-/turf/simulated/floor/tiled,
-/area/maintenance/dormitory)
 "fDt" = (
 /obj/structure/cable/green{
 	icon_state = "1-2"
@@ -8749,9 +8742,6 @@
 /turf/simulated/floor/tiled,
 /area/endeavour/surfacebase/mining_main/refinery)
 "hky" = (
-/obj/structure/cryofeed{
-	dir = 2
-	},
 /obj/item/radio/intercom{
 	dir = 1;
 	name = "Station Intercom (General)";
@@ -9865,18 +9855,8 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/recreation_area)
 "ilD" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/obj/machinery/fire_alarm/south_mount{
-	pixel_y = -24
-	},
-/obj/structure/catwalk,
-/turf/simulated/floor/plating,
-/area/maintenance/dormitory)
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/crew_quarters/sleep/cryo)
 "imb" = (
 /obj/machinery/door/blast/regular/open{
 	dir = 2;
@@ -14837,6 +14817,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
+/obj/item/barrier_tape_segment/engineering,
 /turf/simulated/floor/plating,
 /area/maintenance/dormitory)
 "mHD" = (
@@ -17689,6 +17670,7 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
+/obj/item/barrier_tape_segment/engineering,
 /turf/simulated/floor/tiled/techfloor,
 /area/crew_quarters/sleep/cryo)
 "oWL" = (
@@ -18722,11 +18704,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/substation/cargo)
 "pJd" = (
-/obj/landmark/spawnpoint/latejoin/station/cryogenics,
-/obj/machinery/computer/ship/navigation/telescreen{
-	pixel_y = -37
-	},
-/turf/simulated/floor/tiled/techfloor,
+/turf/simulated/floor/water/deep/indoors,
 /area/crew_quarters/sleep/cryo)
 "pJe" = (
 /obj/structure/table/bench/padded,
@@ -20666,6 +20644,7 @@
 /area/janitor)
 "rpK" = (
 /obj/machinery/door/firedoor,
+/obj/item/barrier_tape_segment/engineering,
 /turf/simulated/floor/tiled/techfloor,
 /area/crew_quarters/sleep/cryo)
 "rqI" = (
@@ -22349,8 +22328,7 @@
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/sleep/Dorm_3)
 "sFQ" = (
-/obj/structure/closet/firecloset,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/water/deep/indoors,
 /area/maintenance/dormitory)
 "sFX" = (
 /obj/structure/cable/green{
@@ -29050,7 +29028,11 @@
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d3starboardamidhall)
 "yil" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/machinery/door/firedoor{
+	dir = 8
+	},
+/obj/machinery/door/airlock/maintenance,
+/obj/item/barrier_tape_segment/engineering,
 /turf/simulated/floor/plating,
 /area/maintenance/dormitory)
 "yiF" = (
@@ -50847,7 +50829,7 @@ orP
 orP
 orP
 orP
-ejd
+yil
 orP
 orP
 orP
@@ -53170,14 +53152,14 @@ pAU
 iIc
 cGV
 hky
-gcW
 pJd
-cGV
-fDp
-qnW
-pCQ
-tOV
-tOV
+pJd
+pJd
+sFQ
+sFQ
+sFQ
+sFQ
+sFQ
 orP
 fiG
 uod
@@ -53364,14 +53346,14 @@ pAU
 gDD
 cGV
 faa
-gcW
-wWr
-cGV
+pJd
+pJd
+pJd
 sFQ
-qnW
-pCQ
-tOV
-tOV
+sFQ
+sFQ
+sFQ
+sFQ
 orP
 tVr
 uod
@@ -53557,15 +53539,15 @@ len
 rOC
 gDD
 cGV
-kui
-gcW
-wWr
-cGV
-yil
 ilD
-pCQ
-tOV
-tOV
+pJd
+pJd
+pJd
+sFQ
+sFQ
+sFQ
+sFQ
+sFQ
 orP
 mLw
 uod

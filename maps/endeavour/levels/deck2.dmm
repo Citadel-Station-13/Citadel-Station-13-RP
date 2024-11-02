@@ -16167,6 +16167,9 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/sleeper)
+"lHV" = (
+/turf/simulated/floor/glass/reinforced,
+/area/endeavour/hallway/d1starboardamidhall)
 "lIe" = (
 /obj/machinery/artifact_scanpad,
 /turf/simulated/floor/tiled/dark,
@@ -18569,7 +18572,7 @@
 /area/endeavour/hallway/d2portamidhall)
 "nAQ" = (
 /obj/structure/table/bench/steel,
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/glass/reinforced,
 /area/endeavour/hallway/d2portamidhall)
 "nAR" = (
 /turf/simulated/wall/prepainted/medical,
@@ -18943,7 +18946,7 @@
 /area/endeavour/hallway/d2fwdmaint)
 "nNg" = (
 /obj/structure/table/bench/steel,
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/glass/reinforced,
 /area/endeavour/hallway/d1starboardamidhall)
 "nNM" = (
 /obj/machinery/camera/network/civilian{
@@ -23750,6 +23753,9 @@
 	},
 /turf/simulated/floor/tiled,
 /area/medical/virology)
+"qSD" = (
+/turf/simulated/floor/glass/reinforced,
+/area/endeavour/hallway/d2portamidhall)
 "qTp" = (
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 5
@@ -57543,8 +57549,8 @@ kiA
 nAQ
 nAQ
 nAQ
-fLZ
-wCF
+qSD
+lHV
 nNg
 nNg
 nNg
@@ -57737,8 +57743,8 @@ fBE
 ezh
 wUq
 nBC
-fLZ
-wCF
+qSD
+lHV
 iST
 fMl
 bcp
@@ -57931,8 +57937,8 @@ fLZ
 nAQ
 nAQ
 nAQ
-fLZ
-wCF
+qSD
+lHV
 nNg
 nNg
 nNg
