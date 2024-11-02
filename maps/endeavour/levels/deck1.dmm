@@ -5263,7 +5263,8 @@
 /area/endeavour/hallway/d1aftmaint)
 "etW" = (
 /obj/machinery/power/smes/buildable{
-	RCon_tag = "Deck 1 Aft Grid"
+	RCon_tag = "Deck 1 Aft Grid";
+	cur_coils = 2
 	},
 /obj/structure/cable/green{
 	icon_state = "0-4"
@@ -25801,7 +25802,8 @@
 /area/maintenance/substation/command)
 "uWM" = (
 /obj/machinery/power/smes/buildable{
-	RCon_tag = "Deck 1 Amidships Grid"
+	RCon_tag = "Deck 1 Amidships Grid";
+	cur_coils = 2
 	},
 /obj/structure/cable/green{
 	icon_state = "0-4"
@@ -29616,7 +29618,7 @@
 /area/endeavour/hallway/d1starboardamidhall)
 "ybg" = (
 /obj/machinery/power/breakerbox{
-	RCon_tag = "DECK 1 AMIDSHIPS MAIN"
+	RCon_tag = "MAIN - DECK 1 AMIDSHIPS"
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/exploration)

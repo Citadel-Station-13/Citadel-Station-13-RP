@@ -12875,7 +12875,8 @@
 	capacity = 8000;
 	charge = 19200;
 	output_level_max = 1500;
-	output_level = 1000
+	output_level = 1000;
+	cur_coils = 4
 	},
 /turf/simulated/floor/plating,
 /area/endeavour/hallway/d4aftmaint)
