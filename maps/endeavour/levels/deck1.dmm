@@ -503,7 +503,7 @@
 /area/hallway/secondary/docking_hallway)
 "axd" = (
 /obj/machinery/power/breakerbox/activated{
-	RCon_tag = "DECK 1 AMIDSHIPS SUPPORT"
+	RCon_tag = "AUX - DECK 1 AMIDSHIPS"
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/exploration)
@@ -1207,7 +1207,7 @@
 /area/bridge)
 "aVW" = (
 /obj/machinery/power/breakerbox/activated{
-	RCon_tag = "DECK 1 AFT SUPPORT"
+	RCon_tag = "AUX - DECK 1 AFT"
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/civilian)
@@ -14557,7 +14557,7 @@
 /area/endeavour/hallway/d1portamidhall)
 "lBc" = (
 /obj/machinery/power/breakerbox{
-	RCon_tag = "DECK 1 AFT MAIN"
+	RCon_tag = "MAIN - DECK 1 AFT"
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/civilian)
@@ -15233,7 +15233,7 @@
 /area/endeavour/hallway/d1aftmaint)
 "meH" = (
 /obj/machinery/power/breakerbox/activated{
-	RCon_tag = "DECK 1 FORE SUPPORT"
+	RCon_tag = "AUX - DECK 1 FORE"
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/command)
@@ -27460,7 +27460,7 @@
 /area/endeavour/hallway/d1starboardafthall)
 "wmU" = (
 /obj/machinery/power/breakerbox{
-	RCon_tag = "DECK 1 FORE MAIN"
+	RCon_tag = "MAIN - DECK 1 FORE"
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/command)

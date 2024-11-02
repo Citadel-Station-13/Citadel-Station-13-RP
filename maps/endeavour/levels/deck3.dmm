@@ -4228,7 +4228,7 @@
 /area/security/hallway)
 "dIC" = (
 /obj/machinery/power/breakerbox/activated{
-	RCon_tag = "DECK 3 AFT SUPPORT"
+	RCon_tag = "AUX - DECK 3 AFT"
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/cargo)
@@ -13935,7 +13935,7 @@
 /area/endeavour/hallway/d3portforhall)
 "lSK" = (
 /obj/machinery/power/breakerbox{
-	RCon_tag = "DECK 3 AMIDSHIPS MAIN"
+	RCon_tag = "MAIN - DECK 3 AMIDSHIPS"
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/security)
@@ -14796,7 +14796,7 @@
 /area/security/brig)
 "mBj" = (
 /obj/machinery/power/breakerbox{
-	RCon_tag = "DECK 3 FORE MAIN"
+	RCon_tag = "MAIN - DECK 3 FORE"
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/civilian)
@@ -18967,7 +18967,7 @@
 /area/security/breakroom)
 "pUh" = (
 /obj/machinery/power/breakerbox/activated{
-	RCon_tag = "DECK 3 FORE SUPPORT"
+	RCon_tag = "AUX - DECK 3 FORE"
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/civilian)
@@ -20873,9 +20873,6 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d3starboardamidhall)
-"rva" = (
-/turf/simulated/open,
-/area/space)
 "rvC" = (
 /obj/structure/table/standard,
 /obj/item/coin/silver,
@@ -21447,7 +21444,7 @@
 /area/maintenance/substation/cargo)
 "rXl" = (
 /obj/machinery/power/breakerbox{
-	RCon_tag = "DECK 3 AFT MAIN"
+	RCon_tag = "MAIN - DECK 3 AFT"
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/cargo)
@@ -27948,7 +27945,7 @@
 /area/endeavour/surfacebase/bar_backroom)
 "xfl" = (
 /obj/machinery/power/breakerbox/activated{
-	RCon_tag = "DECK 3 AMIDSHIPS SUPPORT"
+	RCon_tag = "AUX - DECK 3 AMIDSHIPS"
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/security)
@@ -35984,7 +35981,7 @@ pRW
 pRW
 pRW
 pRW
-rva
+pRW
 pRW
 pRW
 pRW

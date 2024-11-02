@@ -6834,7 +6834,7 @@
 /area/assembly/robotics/surgery)
 "eJe" = (
 /obj/machinery/power/breakerbox/activated{
-	RCon_tag = "DECK 2 AMIDSHIPS SUPPORT"
+	RCon_tag = "AUX - DECK 2 AMIDSHIPS"
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/medical)
@@ -11155,7 +11155,7 @@
 /area/medical/morgue)
 "hBp" = (
 /obj/machinery/power/breakerbox{
-	RCon_tag = "DECK 2 AMIDSHIPS MAIN"
+	RCon_tag = "MAIN - DECK 2 AMIDSHIPS"
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/medical)
@@ -11474,7 +11474,7 @@
 /area/medical/chemistry)
 "hMz" = (
 /obj/machinery/power/breakerbox{
-	RCon_tag = "DECK 2 FORE MAIN"
+	RCon_tag = "MAIN - DECK 2 FORE"
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/research)
@@ -15219,7 +15219,7 @@
 /area/rnd/research/researchdivision)
 "kyR" = (
 /obj/machinery/power/breakerbox/activated{
-	RCon_tag = "DECK 2 AFT SUPPORT"
+	RCon_tag = "AUX - DECK 2 AFT"
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/medical_science)
@@ -22857,7 +22857,7 @@
 /area/medical/reception)
 "pIb" = (
 /obj/machinery/power/breakerbox/activated{
-	RCon_tag = "DECK 2 FORE SUPPORT"
+	RCon_tag = "AUX - DECK 2 FORE"
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/research)
