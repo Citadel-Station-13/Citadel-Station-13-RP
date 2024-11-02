@@ -3163,7 +3163,7 @@
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d2portafthall)
 "ckP" = (
-/obj/spawner/window/low_wall/reinforced/full,
+/obj/spawner/window/low_wall/full/firelocks,
 /turf/simulated/floor/plating,
 /area/tether/station/public_meeting_room)
 "ckU" = (
@@ -34469,7 +34469,7 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/sleeper)
 "xGm" = (
-/obj/spawner/window/low_wall/reinforced/full,
+/obj/spawner/window/low_wall/full/firelocks,
 /turf/simulated/floor/plating,
 /area/endeavour/station/stairs_three)
 "xGB" = (

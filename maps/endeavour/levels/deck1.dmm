@@ -28357,7 +28357,7 @@
 /turf/simulated/floor/tiled/white,
 /area/endeavour/hallway/d1fwdmaint)
 "wXu" = (
-/obj/spawner/window/reinforced/full,
+/obj/spawner/window/low_wall/full/firelocks,
 /turf/simulated/floor/plating,
 /area/endeavour/station/stairs_four)
 "wYe" = (
