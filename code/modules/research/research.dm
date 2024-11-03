@@ -50,7 +50,7 @@ research holder datum.
 	var/list/known_tech = list()
 
 	/// do we bother populating designs?
-	var/stores_designs = FALSE
+	var/stores_designs = TRUE
 	/// list of known design IDs
 	var/list/known_design_ids
 

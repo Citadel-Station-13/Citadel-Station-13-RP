@@ -180,7 +180,7 @@
 	if(!instance.register())
 		. = FALSE
 		CRASH("instance refused to unregister. this is undefined behavior.")
-	id_lookup[instance] = instance
+	id_lookup[instance.id] = instance
 	if(instance.hardcoded)
 		// invalidate cache
 		// todo: smarter way to do this
