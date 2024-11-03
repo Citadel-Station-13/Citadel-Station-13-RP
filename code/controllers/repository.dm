@@ -1,3 +1,6 @@
+//* This file is explicitly licensed under the MIT license. *//
+//* Copyright (c) 2024 Citadel Station Developers           *//
+
 /**
  * Repository controllers.
  *
@@ -31,10 +34,13 @@
 	/// fetched subtype lists
 	var/tmp/list/subtype_lists
 
-/datum/controller/repository/Initialize()
+/datum/controller/repository/proc/Create()
 	id_lookup = list()
 	type_lookup = list()
 	subtype_lists = list()
+	return TRUE
+
+/datum/controller/repository/Initialize()
 	generate()
 	return ..()
 
@@ -45,6 +51,7 @@
  * You can, and should, cast it to the type you're defining this on, as it'll always be the same type.
  */
 /datum/controller/repository/Recover(datum/controller/repository/old_instance)
+	// todo: redo recover logic; maybe /datum/controller as a whole should be brushed up
 	. = ..()
 	if(!istype(old_instance))
 		src.type_lookup = list()
@@ -162,7 +169,14 @@
 /datum/controller/repository/proc/load(datum/prototype/instance)
 	PROTECTED_PROC(TRUE)
 	if(id_lookup[instance])
-		return FALSE
+		. = FALSE
+		CRASH("attempted to load an instance that collides with a currently loaded instance on ID.")
+	if(instance.hardcoded && type_lookup[instance.type])
+		. = FALSE
+		CRASH("attempted to load an instance that collides with a currently loaded instance on type.")
+	if(!instance.register())
+		. = FALSE
+		CRASH("instance refused to unregister. this is undefined behavior.")
 	id_lookup[instance] = instance
 	if(instance.hardcoded)
 		// invalidate cache
@@ -179,12 +193,13 @@
  */
 /datum/controller/repository/proc/unload(datum/prototype/instance)
 	PROTECTED_PROC(TRUE)
-	if(type_lookup[instance.type] == instance)
-		CRASH("tried to unregister a hardcoded instance")
 	if(!instance.unregister())
+		. = FALSE
 		CRASH("instance refused to unregister. this is undefined behavior.")
-	// invalidate cache
-	// todo: smarter way to do this
-	subtype_lists = list()
 	id_lookup -= instance.id
+	if(instance.hardcoded)
+		// invalidate cache
+		// todo: smarter way to do this
+		subtype_lists = list()
+		type_lookup -= instance.type
 	return TRUE
