@@ -1148,7 +1148,7 @@
 /obj/item/gun/energy/medigun,
 /obj/item/gun/energy/captain,
 /obj/item/material/knife/machete/deluxe{
-	material_parts = /datum/material/durasteel
+	material_parts = /datum/prototype/material/durasteel
 	},
 /obj/item/clothing/accessory/holster/machete,
 /obj/item/storage/firstaid/combat,

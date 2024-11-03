@@ -5,6 +5,7 @@
  * Brittle materials allow things to shatter.
  */
 /datum/prototype/material_trait/brittle
+	id = "brittle"
 
 // #warn impl
 

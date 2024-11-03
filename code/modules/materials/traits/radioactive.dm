@@ -5,3 +5,4 @@
  * data: strength as num
  */
 /datum/prototype/material_trait/radioactive
+	id = "radioactive"

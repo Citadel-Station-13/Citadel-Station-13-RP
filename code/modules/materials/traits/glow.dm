@@ -12,6 +12,7 @@
  * todo: lohikar said to just let lightning engine do blending; we'll see but i want to avoid too many virtual lighting objects if people get insane with the glow materials.
  */
 /datum/prototype/material_trait/glow
+	id = "glow"
 	primary_only = TRUE
 
 /datum/prototype/material_trait/glow/on_add(atom/host, existing_data, our_data)

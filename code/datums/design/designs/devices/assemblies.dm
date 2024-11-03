@@ -9,6 +9,10 @@
 	design_unlock = DESIGN_UNLOCK_INTRINSIC
 	build_path = /obj/item/assembly/igniter
 
+/datum/prototype/design/assembly/igniter/autodetect()
+	pass()
+	return ..()
+
 /datum/prototype/design/assembly/signaler
 	id = "AseemblySignaler"
 	lathe_type = LATHE_TYPE_AUTOLATHE

@@ -2,7 +2,7 @@
 //* Copyright (c) 2023 Citadel Station developers.          *//
 
 /datum/prototype/material_trait/reflective
-
+	id = "reflective"
 
 // todo: reference code
 
