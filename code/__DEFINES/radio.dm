@@ -2,14 +2,11 @@
 #define MIN_FREE_FREQ 1201 // -------------------------------------------------
 // Frequencies are always odd numbers and range from 1201 to 1599.
 
-#define FREQ_UPLINK 1211	// Dummy loopback frequency, used for radio uplink. Not seen in game.
 #define FREQ_SYNDICATE 1213 // Nuke op comms frequency, dark brown
-#define FREQ_CTF_RED 1215 // CTF red team comms frequency, red
-#define FREQ_CTF_BLUE 1217 // CTF blue team comms frequency, blue
-#define FREQ_CTF_GREEN 1219 // CTF green team comms frequency, green
-#define FREQ_CTF_YELLOW 1221 // CTF yellow team comms frequency, yellow
-#define FREQ_CENTCOM 1337 // CentCom comms frequency, gray
+#define FREQ_DEATH_SQUAD 1341
+#define FREQ_ERT 1345
 
+#define FREQ_AI_PRIVATE 1343 // actual ai private
 #define FREQ_SUPPLY 1347 // Supply comms frequency, light brown
 #define FREQ_SERVICE 1349 // Service comms frequency, green
 #define FREQ_SCIENCE 1351 // Science comms frequency, plum
@@ -19,8 +16,7 @@
 #define FREQ_SECURITY 1359 // Security comms frequency, red
 #define FREQ_EXPLORER 1361
 #define FREQ_TALON 1363
-
-#define FREQ_ENTERTAINMENT 1415 // Used by entertainment monitors, cyan
+#define FREQ_ENTERTAINMENT 1461
 
 #define FREQ_HOLOGRID_SOLUTION 1433
 #define FREQ_STATUS_DISPLAYS 1435
@@ -30,11 +26,6 @@
 // This represents 1/8th of the available spectrum.
 
 #define FREQ_AI_BOT 1447 // NOT AI private comms but for beepsky apparently
-#define FREQ_PRESSURE_PLATE 1447
-#define FREQ_ELECTROPACK 1449
-#define FREQ_MAGNETS 1449
-#define FREQ_LOCATOR_IMPLANT 1451
-#define FREQ_RADIO_NAV_BEACON 1455
 #define FREQ_SIGNALER 1457 // the default for new signalers
 #define FREQ_COMMON 1459 // Common comms frequency, dark green
 

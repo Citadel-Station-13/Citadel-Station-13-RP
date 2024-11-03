@@ -52,11 +52,11 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/item/radio/intercom, 28)
 
 /obj/item/radio/intercom/private
 	name = "station intercom (Private)"
-	frequency = AI_FREQ
+	frequency = FREQ_AI_PRIVATE
 
 /obj/item/radio/intercom/specops
 	name = "\improper Spec Ops intercom"
-	frequency = ERT_FREQ
+	frequency = FREQ_ERT
 	subspace_transmission = 1
 	centcom = 1
 
@@ -77,7 +77,7 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/item/radio/intercom, 28)
 
 /obj/item/radio/intercom/entertainment
 	name = "entertainment intercom"
-	frequency = ENT_FREQ
+	frequency = FREQ_ENTERTAINMENT
 
 /obj/item/radio/intercom/omni
 	name = "global announcer"
@@ -106,7 +106,7 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/item/radio/intercom, 28)
 	. = ..()
 	internal_channels = list(
 		num2text(FREQ_COMMON) = list(),
-		num2text(ENT_FREQ) = list()
+		num2text(FREQ_ENTERTAINMENT) = list()
 	)
 
 /obj/item/radio/intercom/syndicate
@@ -232,7 +232,7 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/item/radio/intercom, 28)
 
 /obj/item/radio/intercom/locked/ai_private
 	name = "\improper AI intercom"
-	frequency = AI_FREQ
+	frequency = FREQ_AI_PRIVATE
 	broadcasting = 1
 	listening = 1
 

@@ -44,7 +44,7 @@
 
 /obj/machinery/telecomms/receiver/preset_right/rift
 //	id = "rift_rx"
-	freq_listening = list(AI_FREQ, FREQ_SCIENCE, FREQ_MEDICAL, FREQ_SUPPLY, FREQ_SERVICE, FREQ_COMMAND, FREQ_ENGINEERING, FREQ_SECURITY, ENT_FREQ, FREQ_EXPLORER)
+	freq_listening = list(FREQ_AI_PRIVATE, FREQ_SCIENCE, FREQ_MEDICAL, FREQ_SUPPLY, FREQ_SERVICE, FREQ_COMMAND, FREQ_ENGINEERING, FREQ_SECURITY, FREQ_ENTERTAINMENT, FREQ_EXPLORER)
 
 /obj/machinery/telecomms/broadcaster/preset_right/rift
 //	id = "rift_tx"

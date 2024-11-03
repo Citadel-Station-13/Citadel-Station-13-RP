@@ -56,7 +56,7 @@
 	id = "Receiver A"
 	network = "tcommsat"
 	autolinkers = list("receiverA") // link to relay
-	freq_listening = list(AI_FREQ, FREQ_SCIENCE, FREQ_MEDICAL, FREQ_SUPPLY, FREQ_SERVICE, FREQ_COMMAND, FREQ_ENGINEERING, FREQ_SECURITY, ENT_FREQ)
+	freq_listening = list(FREQ_AI_PRIVATE, FREQ_SCIENCE, FREQ_MEDICAL, FREQ_SUPPLY, FREQ_SERVICE, FREQ_COMMAND, FREQ_ENGINEERING, FREQ_SECURITY, FREQ_ENTERTAINMENT)
 
 /// Common and other radio frequencies for people to freely use.
 /obj/machinery/telecomms/receiver/preset_right/New()
@@ -69,7 +69,7 @@
 	network = "tcommsat"
 	produces_heat = 0
 	autolinkers = list("receiverCent")
-	freq_listening = list(ERT_FREQ, DTH_FREQ, FREQ_SYNDICATE)
+	freq_listening = list(FREQ_ERT, FREQ_DEATH_SQUAD, FREQ_SYNDICATE)
 
 
 //Buses
@@ -102,13 +102,13 @@
 /obj/machinery/telecomms/bus/preset_four
 	id = "Bus 4"
 	network = "tcommsat"
-	freq_listening = list(FREQ_ENGINEERING, AI_FREQ, FREQ_COMMON, ENT_FREQ)
+	freq_listening = list(FREQ_ENGINEERING, FREQ_AI_PRIVATE, FREQ_COMMON, FREQ_ENTERTAINMENT)
 	autolinkers = list("processor4", "engineering", "common")
 
 /obj/machinery/telecomms/bus/preset_cent
 	id = "CentCom Bus"
 	network = "tcommsat"
-	freq_listening = list(ERT_FREQ, DTH_FREQ, FREQ_SYNDICATE)
+	freq_listening = list(FREQ_ERT, FREQ_DEATH_SQUAD, FREQ_SYNDICATE)
 	produces_heat = 0
 	autolinkers = list("processorCent", "centcom")
 
@@ -168,7 +168,7 @@
 
 /obj/machinery/telecomms/server/presets/common
 	id = "Common Server"
-	freq_listening = list(FREQ_COMMON, AI_FREQ, ENT_FREQ) // AI Private and Common
+	freq_listening = list(FREQ_COMMON, FREQ_AI_PRIVATE, FREQ_ENTERTAINMENT) // AI Private and Common
 	autolinkers = list("common")
 
 // "Unused" channels, AKA all others.
@@ -179,7 +179,7 @@
 
 /obj/machinery/telecomms/server/presets/unused/Initialize(mapload)
 	for(var/i = MIN_FREQ, i < MAX_FREQ, i += 2)
-		if(i == AI_FREQ || i == FREQ_COMMON)
+		if(i == FREQ_AI_PRIVATE || i == FREQ_COMMON)
 			continue
 		freq_listening |= i
 	return ..()
@@ -201,7 +201,7 @@
 
 /obj/machinery/telecomms/server/presets/centcom
 	id = "CentCom Server"
-	freq_listening = list(ERT_FREQ, DTH_FREQ, FREQ_SYNDICATE)
+	freq_listening = list(FREQ_ERT, FREQ_DEATH_SQUAD, FREQ_SYNDICATE)
 	produces_heat = 0
 	autolinkers = list("centcom")
 

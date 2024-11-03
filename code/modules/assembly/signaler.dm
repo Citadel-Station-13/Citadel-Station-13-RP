@@ -10,7 +10,7 @@
 	secured = TRUE
 
 	var/code = 30
-	var/frequency = 1457
+	var/frequency = FREQ_SIGNALER
 	var/delay = 0
 	var/hearing_range = 1
 	var/airlock_wire = null

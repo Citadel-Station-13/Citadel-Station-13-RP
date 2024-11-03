@@ -97,15 +97,8 @@ On the map:
 1455 for AI access
 */
 
-var/const/ERT_FREQ	= 1345
-var/const/AI_FREQ	= 1343
-var/const/DTH_FREQ	= 1341
 var/const/RAID_FREQ	= 1277
 var/const/TRADE_FREQ = 1279
-var/const/ENT_FREQ	= 1461 //entertainment frequency. This is not a diona exclusive frequency.
-
-// department channels
-var/const/TALON_FREQ = 1363	// No need to remove at the moment, Talon equipment can still be used and such - Bloop
 
 // internal department channels
 var/const/MED_I_FREQ = 1485
@@ -118,29 +111,29 @@ var/list/radiochannels = list(
 	"Medical"		= FREQ_MEDICAL,
 	"Engineering"	= FREQ_ENGINEERING,
 	"Security" 		= FREQ_SECURITY,
-	"Response Team" = ERT_FREQ,
-	"Special Ops" 	= DTH_FREQ,
+	"Response Team" = FREQ_ERT,
+	"Special Ops" 	= FREQ_DEATH_SQUAD,
 	"Mercenary" 	= FREQ_SYNDICATE,
 	"Raider"		= RAID_FREQ,
 	"Trader"		= TRADE_FREQ,
 	"Supply" 		= FREQ_SUPPLY,
 	"Service" 		= FREQ_SERVICE,
 	"Explorer"		= FREQ_EXPLORER,
-	"AI Private"	= AI_FREQ,
-	"Entertainment" = ENT_FREQ,
+	"AI Private"	= FREQ_AI_PRIVATE,
+	"Entertainment" = FREQ_ENTERTAINMENT,
 	"Medical(I)"	= MED_I_FREQ,
 	"Security(I)"	= SEC_I_FREQ
 )
 
 // central command channels, i.e deathsquid & response teams
-var/list/CENT_FREQS = list(ERT_FREQ, DTH_FREQ)
+var/list/CENT_FREQS = list(FREQ_ERT, FREQ_DEATH_SQUAD)
 
 // Antag channels, i.e. Syndicate
 // Raider Frequency was previously listed here, RAID_FREQ. I'm removing it to see if I can make it self contained.
 var/list/ANTAG_FREQS = list(FREQ_SYNDICATE)
 
 //Department channels, arranged lexically
-var/list/DEPT_FREQS = list(AI_FREQ, FREQ_COMMAND, FREQ_ENGINEERING, ENT_FREQ, FREQ_MEDICAL, FREQ_SECURITY, FREQ_SCIENCE, FREQ_SERVICE, FREQ_SUPPLY, TRADE_FREQ)
+var/list/DEPT_FREQS = list(FREQ_AI_PRIVATE, FREQ_COMMAND, FREQ_ENGINEERING, FREQ_ENTERTAINMENT, FREQ_MEDICAL, FREQ_SECURITY, FREQ_SCIENCE, FREQ_SERVICE, FREQ_SUPPLY, TRADE_FREQ)
 
 /proc/frequency_span_class(var/frequency)
 	// Antags!
@@ -153,7 +146,7 @@ var/list/DEPT_FREQS = list(AI_FREQ, FREQ_COMMAND, FREQ_ENGINEERING, ENT_FREQ, FR
 	if(frequency == FREQ_COMMAND)
 		return "comradio"
 	// AI private channel
-	if(frequency == AI_FREQ)
+	if(frequency == FREQ_AI_PRIVATE)
 		return "aiprivradio"
 	// department radio formatting (poorly optimized, ugh)
 	if(frequency == FREQ_SECURITY)
@@ -170,7 +163,7 @@ var/list/DEPT_FREQS = list(AI_FREQ, FREQ_COMMAND, FREQ_ENGINEERING, ENT_FREQ, FR
 		return "servradio"
 	if(frequency == FREQ_EXPLORER) // explorer
 		return "expradio"
-	if(frequency == ENT_FREQ) // entertainment
+	if(frequency == FREQ_ENTERTAINMENT) // entertainment
 		return "entradio"
 	if(frequency == TRADE_FREQ)
 		return "syndradio"
