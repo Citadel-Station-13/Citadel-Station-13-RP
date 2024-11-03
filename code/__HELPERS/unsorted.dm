@@ -319,27 +319,6 @@
 			return 0
 	return 1
 
-/// Ensure the frequency is within bounds of what it should be sending/recieving at.
-/proc/sanitize_frequency(frequency, low = PUBLIC_LOW_FREQ, high = PUBLIC_HIGH_FREQ)
-	frequency = round(frequency)
-	frequency = max(low, frequency)
-	frequency = min(high, frequency)
-	// Ensure the last digit is an odd number.
-	if ((frequency % 2) == 0)
-		frequency += 1
-	return frequency
-
-/// Turns 1479 into 147.9.
-/proc/format_frequency(frequency)
-	return "[round(frequency / 10)].[frequency % 10]"
-
-/// Opposite of format, returns as a number.
-/proc/unformat_frequency(frequency)
-	frequency = text2num(frequency)
-	return frequency * 10
-
-
-
 
 /// Picks a string of symbols to display as the law number for hacked or ion laws.
 /proc/ionnum()
