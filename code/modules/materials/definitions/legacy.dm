@@ -2,7 +2,7 @@
 // when that's redone, REMOVE THESE.
 
 // what the fuck?
-/datum/material/darkglass
+/datum/prototype/material/darkglass
 	id = "glass_dark"
 	name = "darkglass"
 	display_name = "darkglass"
@@ -11,7 +11,7 @@
 	table_icon_base = "darkglass"
 
 // what the fuck?
-/datum/material/fancyblack
+/datum/prototype/material/fancyblack
 	id = "black_fancy"
 	name = "fancyblack"
 	display_name = "fancyblack"
@@ -20,7 +20,7 @@
 	table_icon_base = "fancyblack"
 
 // what the fuck?
-/datum/material/alienalloy/alium
+/datum/prototype/material/alienalloy/alium
 	id = "abductor_alloy"
 	name = "alium"
 	display_name = "alien"

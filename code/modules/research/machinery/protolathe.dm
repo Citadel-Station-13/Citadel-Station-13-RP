@@ -206,7 +206,7 @@
 	var/recursive = amount == -1 ? 1 : 0
 	material = lowertext(material)
 	var/obj/item/stack/material/mattype
-	var/datum/material/MAT = get_material_by_name(material)
+	var/datum/prototype/material/MAT = get_material_by_name(material)
 
 	if(!MAT)
 		return

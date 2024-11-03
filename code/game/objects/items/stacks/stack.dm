@@ -1,15 +1,15 @@
 /**
  * automatically splitting stack spawns
  *
- * supports /datum/material as well
+ * supports /datum/prototype/material as well
  *
  * @return **amount of objects created** (not total stack/sheet amount made!)
  */
 /proc/spawn_stacks_at(atom/location, stack_path, amount)
 	. = 0
 	var/safety = 50
-	if(ispath(stack_path, /datum/material))
-		var/datum/material/resolved = SSmaterials.resolve_material(stack_path)
+	if(ispath(stack_path, /datum/prototype/material))
+		var/datum/prototype/material/resolved = RSmaterials.fetch(stack_path)
 		// todo: ugh
 		resolved.place_sheet(location, amount)
 		return 1

@@ -97,7 +97,7 @@
 
 	//Go through all materials, and add them to the possible storage, but hide them unless we contain them.
 	// todo: WHY ARE YOU dOING ThiS JUST DONT STORE THE MATERIAL
-	for(var/datum/material/M as anything in SSmaterials.all_materials())
+	for(var/datum/prototype/material/M as anything in SSmaterials.all_materials())
 		var/Name = M.name
 		if(Name in stored_materials)
 			continue
@@ -707,7 +707,7 @@
 	var/contains = stored_materials[matstring]
 	if(!contains)
 		return
-	var/datum/material/M = get_material_by_name(matstring)
+	var/datum/prototype/material/M = get_material_by_name(matstring)
 
 	var/obj/item/stack/material/S = M.place_sheet(get_turf(src))
 	if(amount <= 0)

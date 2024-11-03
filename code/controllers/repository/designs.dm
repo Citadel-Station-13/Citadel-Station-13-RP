@@ -17,7 +17,7 @@ REPOSITORY_DEF(designs)
 	medical_mini_design_ids = list()
 	return ..()
 
-/datum/controller/repository/designs/load(datum/prototype/design/instance, force)
+/datum/controller/repository/designs/load(datum/prototype/design/instance)
 	. = ..()
 	if(!.)
 		return

@@ -522,6 +522,7 @@
 #include "code\controllers\observer_listener\atom\observer.dm"
 #include "code\controllers\repository\designs.dm"
 #include "code\controllers\repository\guidebook.dm"
+#include "code\controllers\repository\materials.dm"
 #include "code\controllers\repository\structs.dm"
 #include "code\controllers\subsystem\ai_holders.dm"
 #include "code\controllers\subsystem\ai_legacy.dm"

@@ -1,4 +1,4 @@
-/datum/material/silver
+/datum/prototype/material/silver
 	id = MAT_SILVER
 	name = "silver"
 	stack_type = /obj/item/stack/material/silver
@@ -22,7 +22,7 @@
 	absorption = MATERIAL_RESISTANCE_LOW
 	nullification = MATERIAL_RESISTANCE_MODERATE
 
-/datum/material/silver/generate_recipes()
+/datum/prototype/material/silver/generate_recipes()
 	. = ..()
 	. += create_stack_recipe_datum(category = "statues", name = "head of security statue", product = /obj/structure/statue/silver/hos, cost = 10, time = 2 SECONDS)
 	. += create_stack_recipe_datum(category = "statues", name = "medical doctor statue", product = /obj/structure/statue/silver/md, cost = 10, time = 2 SECONDS)

@@ -20,6 +20,7 @@
 	/// is this hardcoded?
 	///
 	/// * hardcoded prototypes can never be unloaded
+	/// * you should not be touching this (whether read or write) ever outside of the base of /datum/controller/repository.
 	var/hardcoded = FALSE
 
 	//* Identity *//

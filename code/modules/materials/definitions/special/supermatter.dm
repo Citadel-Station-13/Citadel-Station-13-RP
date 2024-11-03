@@ -1,4 +1,4 @@
-/datum/material/supermatter
+/datum/prototype/material/supermatter
 	id = MAT_SUPERMATTER
 	name = "supermatter"
 	icon_colour = "#FFFF00"
@@ -34,7 +34,7 @@
 		/datum/material_trait/glow = list("power" = 0.75, "range" = 3, "color" = "#ffff00", "sensitivity" = 0.5),
 	)
 
-/datum/material/supermatter/generate_recipes()
+/datum/prototype/material/supermatter/generate_recipes()
 	. = ..()
 	. += create_stack_recipe_datum(
 		name = "supermatter shard",

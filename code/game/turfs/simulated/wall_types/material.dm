@@ -19,63 +19,63 @@ BASIC_WALL_DEF(TypeName, GirderMaterial, OuterMaterial){\
 /turf/simulated/wall/##TypeName
 
 
-REINF_WALL_DEF(r_wall, /datum/material/steel, /datum/material/plasteel, /datum/material/plasteel)
+REINF_WALL_DEF(r_wall, /datum/prototype/material/steel, /datum/prototype/material/plasteel, /datum/prototype/material/plasteel)
 	rad_insulation = RAD_INSULATION_SUPER
 
 // Steel hull walls
-BASIC_WALL_DEF(shull,  /datum/material/steel/hull, /datum/material/steel/hull)
-REINF_WALL_DEF(rshull, /datum/material/steel/hull, /datum/material/steel/hull, /datum/material/steel/hull)
+BASIC_WALL_DEF(shull,  /datum/prototype/material/steel/hull, /datum/prototype/material/steel/hull)
+REINF_WALL_DEF(rshull, /datum/prototype/material/steel/hull, /datum/prototype/material/steel/hull, /datum/prototype/material/steel/hull)
 
 // Plasteel walls
-BASIC_WALL_DEF(pshull,  /datum/material/plasteel/hull, /datum/material/plasteel/hull)
-REINF_WALL_DEF(rpshull, /datum/material/plasteel/hull, /datum/material/plasteel/hull, /datum/material/durasteel/hull)
+BASIC_WALL_DEF(pshull,  /datum/prototype/material/plasteel/hull, /datum/prototype/material/plasteel/hull)
+REINF_WALL_DEF(rpshull, /datum/prototype/material/plasteel/hull, /datum/prototype/material/plasteel/hull, /datum/prototype/material/durasteel/hull)
 
 // Durasteel walls
-BASIC_WALL_DEF(dshull,  /datum/material/durasteel/hull, /datum/material/durasteel/hull)
-REINF_WALL_DEF(rdshull, /datum/material/durasteel/hull, /datum/material/durasteel/hull, /datum/material/durasteel/hull)
+BASIC_WALL_DEF(dshull,  /datum/prototype/material/durasteel/hull, /datum/prototype/material/durasteel/hull)
+REINF_WALL_DEF(rdshull, /datum/prototype/material/durasteel/hull, /datum/prototype/material/durasteel/hull, /datum/prototype/material/durasteel/hull)
 
 // Titanium walls
-BASIC_WALL_DEF(thull,  /datum/material/plasteel/titanium/hull, /datum/material/plasteel/titanium/hull)
-REINF_WALL_DEF(rthull, /datum/material/plasteel/titanium/hull, /datum/material/plasteel/titanium/hull, /datum/material/plasteel/titanium/hull)
+BASIC_WALL_DEF(thull,  /datum/prototype/material/plasteel/titanium/hull, /datum/prototype/material/plasteel/titanium/hull)
+REINF_WALL_DEF(rthull, /datum/prototype/material/plasteel/titanium/hull, /datum/prototype/material/plasteel/titanium/hull, /datum/prototype/material/plasteel/titanium/hull)
 
-REINF_WALL_DEF(cult, /datum/material/cult, /datum/material/cult, /datum/material/cult/reinf)
+REINF_WALL_DEF(cult, /datum/prototype/material/cult, /datum/prototype/material/cult, /datum/prototype/material/cult/reinf)
 
-BASIC_WALL_DEF(bone,             /datum/material/steel, /datum/material/bone)
-BASIC_WALL_DEF(diamond,          /datum/material/steel, /datum/material/diamond)
-BASIC_WALL_DEF(gold,             /datum/material/steel, /datum/material/gold)
-REINF_WALL_DEF(golddiamond,      /datum/material/steel, /datum/material/gold,      /datum/material/diamond)
-BASIC_WALL_DEF(iron,             /datum/material/steel, /datum/material/iron)
-REINF_WALL_DEF(ironphoron,       /datum/material/steel, /datum/material/iron,      /datum/material/phoron)
-BASIC_WALL_DEF(lead,             /datum/material/steel, /datum/material/lead)
-REINF_WALL_DEF(r_lead,           /datum/material/steel, /datum/material/lead,      /datum/material/lead)
-BASIC_WALL_DEF(phoron,           /datum/material/steel, /datum/material/phoron)
-BASIC_WALL_DEF(resin,            /datum/material/resin, /datum/material/resin)
-BASIC_WALL_DEF(sandstone,        /datum/material/steel, /datum/material/sandstone)
-REINF_WALL_DEF(sandstonediamond, /datum/material/steel, /datum/material/sandstone, /datum/material/diamond)
-BASIC_WALL_DEF(silver,           /datum/material/steel, /datum/material/silver)
-REINF_WALL_DEF(silvergold,       /datum/material/steel, /datum/material/silver,    /datum/material/gold)
-BASIC_WALL_DEF(snowbrick,        /datum/material/steel, /datum/material/snowbrick)
-BASIC_WALL_DEF(uranium,          /datum/material/steel, /datum/material/uranium)
+BASIC_WALL_DEF(bone,             /datum/prototype/material/steel, /datum/prototype/material/bone)
+BASIC_WALL_DEF(diamond,          /datum/prototype/material/steel, /datum/prototype/material/diamond)
+BASIC_WALL_DEF(gold,             /datum/prototype/material/steel, /datum/prototype/material/gold)
+REINF_WALL_DEF(golddiamond,      /datum/prototype/material/steel, /datum/prototype/material/gold,      /datum/prototype/material/diamond)
+BASIC_WALL_DEF(iron,             /datum/prototype/material/steel, /datum/prototype/material/iron)
+REINF_WALL_DEF(ironphoron,       /datum/prototype/material/steel, /datum/prototype/material/iron,      /datum/prototype/material/phoron)
+BASIC_WALL_DEF(lead,             /datum/prototype/material/steel, /datum/prototype/material/lead)
+REINF_WALL_DEF(r_lead,           /datum/prototype/material/steel, /datum/prototype/material/lead,      /datum/prototype/material/lead)
+BASIC_WALL_DEF(phoron,           /datum/prototype/material/steel, /datum/prototype/material/phoron)
+BASIC_WALL_DEF(resin,            /datum/prototype/material/resin, /datum/prototype/material/resin)
+BASIC_WALL_DEF(sandstone,        /datum/prototype/material/steel, /datum/prototype/material/sandstone)
+REINF_WALL_DEF(sandstonediamond, /datum/prototype/material/steel, /datum/prototype/material/sandstone, /datum/prototype/material/diamond)
+BASIC_WALL_DEF(silver,           /datum/prototype/material/steel, /datum/prototype/material/silver)
+REINF_WALL_DEF(silvergold,       /datum/prototype/material/steel, /datum/prototype/material/silver,    /datum/prototype/material/gold)
+BASIC_WALL_DEF(snowbrick,        /datum/prototype/material/steel, /datum/prototype/material/snowbrick)
+BASIC_WALL_DEF(uranium,          /datum/prototype/material/steel, /datum/prototype/material/uranium)
 
-BASIC_WALL_DEF(titanium,         /datum/material/steel, /datum/material/plasteel/titanium)
-REINF_WALL_DEF(durasteel,        /datum/material/steel, /datum/material/durasteel, /datum/material/durasteel)
+BASIC_WALL_DEF(titanium,         /datum/prototype/material/steel, /datum/prototype/material/plasteel/titanium)
+REINF_WALL_DEF(durasteel,        /datum/prototype/material/steel, /datum/prototype/material/durasteel, /datum/prototype/material/durasteel)
 
-BASIC_WALL_DEF(wood,             /datum/material/wood_plank,          /datum/material/wood_plank)
-BASIC_WALL_DEF(wood/sifwood,     /datum/material/wood_plank/sif,      /datum/material/wood_plank/sif)
-BASIC_WALL_DEF(wood/hardwood,    /datum/material/wood_plank/hardwood, /datum/material/wood_plank/hardwood)
-BASIC_WALL_DEF(wood/ironwood,    /datum/material/wood_plank/ironwood, /datum/material/wood_plank/ironwood)
-BASIC_WALL_DEF(wood/log,         /datum/material/wood_log,            /datum/material/wood_log)
-BASIC_WALL_DEF(log_sif,          /datum/material/wood_log/sif,        /datum/material/wood_log/sif)
-BASIC_WALL_DEF(log_ironwood,     /datum/material/wood_log/ironwood,   /datum/material/wood_log/ironwood)
+BASIC_WALL_DEF(wood,             /datum/prototype/material/wood_plank,          /datum/prototype/material/wood_plank)
+BASIC_WALL_DEF(wood/sifwood,     /datum/prototype/material/wood_plank/sif,      /datum/prototype/material/wood_plank/sif)
+BASIC_WALL_DEF(wood/hardwood,    /datum/prototype/material/wood_plank/hardwood, /datum/prototype/material/wood_plank/hardwood)
+BASIC_WALL_DEF(wood/ironwood,    /datum/prototype/material/wood_plank/ironwood, /datum/prototype/material/wood_plank/ironwood)
+BASIC_WALL_DEF(wood/log,         /datum/prototype/material/wood_log,            /datum/prototype/material/wood_log)
+BASIC_WALL_DEF(log_sif,          /datum/prototype/material/wood_log/sif,        /datum/prototype/material/wood_log/sif)
+BASIC_WALL_DEF(log_ironwood,     /datum/prototype/material/wood_log/ironwood,   /datum/prototype/material/wood_log/ironwood)
 
-BASIC_WALL_DEF(skipjack,         /datum/material/steel, /datum/material/alienalloy)
+BASIC_WALL_DEF(skipjack,         /datum/prototype/material/steel, /datum/prototype/material/alienalloy)
 /turf/simulated/wall/skipjack/attackby()
 	return
 
 /turf/unsimulated/wall/cult
 	name = "cult wall"
 	desc = "Hideous images dance beneath the surface."
-	icon = /datum/material/cult::icon_base
+	icon = /datum/prototype/material/cult::icon_base
 	icon_state = "wall-0"
 	base_icon_state = "wall"
-	color = /datum/material/cult::icon_colour
+	color = /datum/prototype/material/cult::icon_colour

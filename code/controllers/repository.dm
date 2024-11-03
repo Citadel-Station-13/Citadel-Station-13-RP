@@ -72,39 +72,57 @@
 		if(initial(instance.lazy))
 			continue
 		instance = new instance
-		load_internal(instance, TRUE, TRUE)
+		instance.hardcoded = TRUE
+		load(instance)
 
 //* Public API *//
 
 /**
+ * Fetches a prototype by type or ID.
+ *
+ * * Allows passing in a prototype instance which will be returned as itself.
+ *   Useful for procs that should accept types, IDs, *and* instances.
+ *
  * prototypes returned should never, ever be modified
  *
  * @return prototype instance or null
  */
 /datum/controller/repository/proc/fetch(datum/prototype/type_or_id)
+	// todo: optimize
 	if(isnull(type_or_id))
 		return
-	if(istext(type_or_id))
+	else if(istype(type_or_id))
+		return type_or_id
+	else if(ispath(type_or_id))
+		. = type_lookup[type_or_id]
+		if(.)
+			return
+		// types are complicated, is it lazy?
+		if(initial(type_or_id.lazy) && (initial(type_or_id.abstract_type) != type_or_id))
+			// if so, init it
+			var/datum/prototype/loading = new type_or_id
+			loading.hardcoded = TRUE
+			load(instance)
+		else
+			CRASH("failed to fetch a hardcoded prototype")
+	else if(istext(type_or_id))
 		return id_lookup[type_or_id]
-	// todo: optimize because clearly this isn't micro-optimized enough
-	. = type_lookup[type_or_id]
-	if(.)
-		return
-	// types are complicated, is it lazy?
-	if(initial(type_or_id.lazy))
-		// if so, init it
-		load_internal((. = new type_or_id), null, TRUE)
 	else
-		CRASH("failed to fetch a hardcoded prototype")
+		CRASH("what?")
 
 /**
+ * Fetches a list of prototypes by type or ID.
+ *
+ * * Allows passing in prototype instances which will be returned as itself.
+ *   Useful for procs that should accept types, IDs, *and* instances.
+ *
  * prototypes returned should never, ever be modified
  *
  * @return list() of instances
  */
 /datum/controller/repository/proc/fetch_multi(list/datum/prototype/types_or_ids)
-	. = list()
 	// todo: optimize
+	. = list()
 	for(var/datum/prototype/casted as anything in types_or_ids)
 		. += fetch(casted)
 
@@ -132,7 +150,7 @@
  *   After this call, the repository now owns the instance, not whichever system created it.
  */
 /datum/controller/repository/proc/register(datum/prototype/instance)
-	return load_internal(instance, null, FALSE)
+	return load(instance)
 
 //* Private API *//
 
@@ -141,17 +159,12 @@
  *
  * * This is for internal use.
  */
-/datum/controller/repository/proc/load(datum/prototype/instance, force)
+/datum/controller/repository/proc/load(datum/prototype/instance)
 	PROTECTED_PROC(TRUE)
-	return load_internal(instance, force, FALSE)
-
-/datum/controller/repository/proc/load_internal(datum/prototype/instance, force, hardcoded)
-	PROTECTED_PROC(TRUE)
-	if(id_lookup[instance] && !force)
+	if(id_lookup[instance])
 		return FALSE
 	id_lookup[instance] = instance
-	if(hardcoded)
-		instance.hardcoded = TRUE
+	if(instance.hardcoded)
 		// invalidate cache
 		// todo: smarter way to do this
 		subtype_lists = list()

@@ -1,4 +1,4 @@
-/datum/material/verdantium
+/datum/prototype/material/verdantium
 	name = MAT_VERDANTIUM
 	id = MAT_VERDANTIUM
 	stack_type = /obj/item/stack/material/verdantium

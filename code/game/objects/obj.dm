@@ -845,7 +845,7 @@
 		. += examine_integrity(user)
 	var/list/parts = get_material_parts()
 	for(var/key in parts)
-		var/datum/material/mat = parts[key]
+		var/datum/prototype/material/mat = parts[key]
 		if(isnull(mat)) // 'none' option
 			continue
 		. += "Its [key] is made out of [mat.display_name]"
