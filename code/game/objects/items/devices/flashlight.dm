@@ -273,7 +273,7 @@
 	/// the gun attachment used for testing if we can attach
 	var/static/obj/item/gun_attachment/flashlight/maglight/test_attachment
 
-/obj/item/flashlight/maglight/proc/get_test_attachment() as /obj/item/gun_Attachment/flashlight/maglight
+/obj/item/flashlight/maglight/proc/get_test_attachment() as /obj/item/gun_attachment/flashlight/maglight
 	if(!test_attachment)
 		test_attachment = new
 	return test_attachment

@@ -221,7 +221,7 @@
  * * a list of /datum/action instances and typepaths
  * * null
  */
-/obj/item/gun_attachment/proc/set_actions_to(descriptor)
+/obj/item/gun_attachment/proc/set_attachment_actions_to(descriptor)
 	var/mob/worn_mob = worn_mob()
 
 	if(worn_mob)

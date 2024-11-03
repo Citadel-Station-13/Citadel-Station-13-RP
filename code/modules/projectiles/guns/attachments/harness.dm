@@ -18,7 +18,7 @@
 	var/activate_sound = 'sound/weapons/empty.ogg'
 	/// deactivation sound
 	//  todo: better sound
-	var/deactvate_sound = 'sound/weapons/empty.ogg'
+	var/deactivate_sound = 'sound/weapons/empty.ogg'
 
 	attachment_action_name = "Engage Harness"
 
@@ -53,7 +53,7 @@
 	SIGNAL_HANDLER
 	if(active)
 		return
-	set_active(TRUE, no_message = tRUE)
+	set_active(TRUE, no_message = TRUE)
 	to_chat(user, SPAN_NOTICE("The [src] engages as you pick up \the [attached]."))
 
 /obj/item/gun_attachment/harness/magnetic/proc/snap_back_to_user(mob/user)
