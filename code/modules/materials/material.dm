@@ -310,6 +310,6 @@
 		var/key = material_traits[i]
 		var/val = material_traits[key]
 		if(ispath(key))
-			var/datum/material_trait/fetched = RSmaterial_traits.fetch(key)
+			var/datum/prototype/material_trait/fetched = RSmaterial_traits.fetch(key)
 			material_traits[i] = fetched
 			material_traits[fetched] = val

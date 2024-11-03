@@ -145,8 +145,10 @@
 		return subtype_lists[path]
 	var/list/generating = list()
 	subtype_lists[path] = generating
-	for(var/fetching as anything in subtypesof(path))
-		var/datum/prototype/instance = fetch(fetching)
+	for(var/datum/prototype/casted as anything in subtypesof(path))
+		if(initial(casted.abstract_type) == casted)
+			continue
+		var/datum/prototype/instance = fetch(casted)
 		generating += instance
 	return generating
 
