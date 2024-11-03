@@ -1,5 +1,5 @@
 //* This file is explicitly licensed under the MIT license. *//
-//* Copyright (c) 2024 silicons                             *//
+//* Copyright (c) 2024 Citadel Station Developers           *//
 
 /datum/bodyset/organic/rapala
 	icon = 'icons/mob/bodysets/organic/rapala/body.dmi'
