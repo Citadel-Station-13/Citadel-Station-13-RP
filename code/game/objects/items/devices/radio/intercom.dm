@@ -98,14 +98,14 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/item/radio/intercom, 28)
 /obj/item/radio/intercom/department/security/Initialize(mapload)
 	. = ..()
 	internal_channels = list(
-		num2text(PUB_FREQ) = list(),
+		num2text(FREQ_COMMON) = list(),
 		num2text(SEC_I_FREQ) = list(ACCESS_SECURITY_EQUIPMENT)
 	)
 
 /obj/item/radio/intercom/entertainment/Initialize(mapload)
 	. = ..()
 	internal_channels = list(
-		num2text(PUB_FREQ) = list(),
+		num2text(FREQ_COMMON) = list(),
 		num2text(ENT_FREQ) = list()
 	)
 

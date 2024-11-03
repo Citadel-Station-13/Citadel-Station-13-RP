@@ -401,7 +401,7 @@
 // This list needs to be purged but people insist on adding more cruft to the radio.
 /datum/map/station/proc/default_internal_channels()
 	return list(
-		num2text(PUB_FREQ) = list(),
+		num2text(FREQ_COMMON) = list(),
 		num2text(AI_FREQ)  = list(ACCESS_SPECIAL_SILICONS),
 		num2text(ENT_FREQ) = list(),
 		num2text(ERT_FREQ) = list(ACCESS_CENTCOM_ERT),

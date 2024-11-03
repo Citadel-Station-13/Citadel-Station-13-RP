@@ -1,6 +1,6 @@
 // Access check is of the type requires one. These have been carefully selected to avoid allowing the janitor to see channels he shouldn't
 GLOBAL_LIST_INIT(default_internal_channels, list(
-	num2text(PUB_FREQ) = list(),
+	num2text(FREQ_COMMON) = list(),
 	num2text(AI_FREQ)  = list(ACCESS_SPECIAL_SILICONS),
 	num2text(ENT_FREQ) = list(),
 	num2text(ERT_FREQ) = list(ACCESS_CENTCOM_ERT),
@@ -17,7 +17,7 @@ GLOBAL_LIST_INIT(default_internal_channels, list(
 ))
 
 GLOBAL_LIST_INIT(default_medbay_channels, list(
-	num2text(PUB_FREQ) = list(),
+	num2text(FREQ_COMMON) = list(),
 	num2text(FREQ_MEDICAL) = list(ACCESS_MEDICAL_EQUIPMENT),
 	num2text(MED_I_FREQ) = list(ACCESS_MEDICAL_EQUIPMENT)
 ))
@@ -32,7 +32,7 @@ GLOBAL_LIST_INIT(default_medbay_channels, list(
 	///FALSE for off
 	var/on = TRUE
 	var/last_transmission
-	var/frequency = PUB_FREQ //common chat
+	var/frequency = FREQ_COMMON //common chat
 	///Tune to frequency to unlock traitor supplies
 	var/traitor_frequency = 0
 	///The range which mobs can hear this radio from

@@ -88,7 +88,7 @@
 
 /obj/machinery/telecomms/bus/preset_two/Initialize(mapload)
 	for(var/i = MIN_FREQ, i < MAX_FREQ, i += 2)
-		if(i == PUB_FREQ)
+		if(i == FREQ_COMMON)
 			continue
 		freq_listening |= i
 	return ..()
@@ -102,7 +102,7 @@
 /obj/machinery/telecomms/bus/preset_four
 	id = "Bus 4"
 	network = "tcommsat"
-	freq_listening = list(FREQ_ENGINEERING, AI_FREQ, PUB_FREQ, ENT_FREQ)
+	freq_listening = list(FREQ_ENGINEERING, AI_FREQ, FREQ_COMMON, ENT_FREQ)
 	autolinkers = list("processor4", "engineering", "common")
 
 /obj/machinery/telecomms/bus/preset_cent
@@ -168,7 +168,7 @@
 
 /obj/machinery/telecomms/server/presets/common
 	id = "Common Server"
-	freq_listening = list(PUB_FREQ, AI_FREQ, ENT_FREQ) // AI Private and Common
+	freq_listening = list(FREQ_COMMON, AI_FREQ, ENT_FREQ) // AI Private and Common
 	autolinkers = list("common")
 
 // "Unused" channels, AKA all others.
@@ -179,7 +179,7 @@
 
 /obj/machinery/telecomms/server/presets/unused/Initialize(mapload)
 	for(var/i = MIN_FREQ, i < MAX_FREQ, i += 2)
-		if(i == AI_FREQ || i == PUB_FREQ)
+		if(i == AI_FREQ || i == FREQ_COMMON)
 			continue
 		freq_listening |= i
 	return ..()

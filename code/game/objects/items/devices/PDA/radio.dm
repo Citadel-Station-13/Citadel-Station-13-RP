@@ -47,7 +47,7 @@
 	/// The status signal sent by the bot.
 	var/list/botstatus
 
-	var/control_freq = BOT_FREQ
+	var/control_freq = FREQ_AI_PRIVATE
 
 /// Create a new QM cartridge, and register to receive bot control & beacon message.
 /obj/item/integated_radio/beepsky/Initialize()

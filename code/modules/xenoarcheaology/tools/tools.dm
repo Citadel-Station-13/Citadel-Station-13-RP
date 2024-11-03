@@ -233,7 +233,7 @@
 	item_state = "electronic"
 	origin_tech = list(TECH_MAGNET = 3, TECH_ENGINEERING = 2, TECH_BLUESPACE = 3)
 	materials_base = list(MAT_STEEL = 1000, MAT_GLASS = 500)
-	var/frequency = PUB_FREQ
+	var/frequency = FREQ_COMMON
 	var/scan_ticks = 0
 	var/obj/item/radio/target_radio
 

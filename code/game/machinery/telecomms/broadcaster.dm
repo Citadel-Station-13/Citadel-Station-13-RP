@@ -315,7 +315,7 @@ var/message_delay = 0 // To make sure restarting the recentmessages list is kept
 		//BR.messages_admin += blackbox_admin_msg
 		if(istype(blackbox))
 			switch(display_freq)
-				if(PUB_FREQ)
+				if(FREQ_COMMON)
 					blackbox.msg_common += blackbox_msg
 				if(FREQ_SCIENCE)
 					blackbox.msg_science += blackbox_msg
@@ -489,7 +489,7 @@ var/message_delay = 0 // To make sure restarting the recentmessages list is kept
 		//BR.messages_admin += blackbox_admin_msg
 		if(istype(blackbox))
 			switch(display_freq)
-				if(PUB_FREQ)
+				if(FREQ_COMMON)
 					blackbox.msg_common += blackbox_msg
 				if(FREQ_SCIENCE)
 					blackbox.msg_science += blackbox_msg
@@ -571,7 +571,7 @@ var/message_delay = 0 // To make sure restarting the recentmessages list is kept
 		"done" = 0,
 		"level" = pos_z // The level it is being broadcasted at.
 	)
-	signal.frequency = PUB_FREQ// Common channel
+	signal.frequency = FREQ_COMMON// Common channel
 
   //#### Sending the signal to all subspace receivers ####//
 	for(var/obj/machinery/telecomms/receiver/R in GLOB.telecomms_list)

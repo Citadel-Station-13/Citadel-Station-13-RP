@@ -97,7 +97,6 @@ On the map:
 1455 for AI access
 */
 
-var/const/BOT_FREQ	= 1447
 var/const/ERT_FREQ	= 1345
 var/const/AI_FREQ	= 1343
 var/const/DTH_FREQ	= 1341
@@ -106,7 +105,6 @@ var/const/TRADE_FREQ = 1279
 var/const/ENT_FREQ	= 1461 //entertainment frequency. This is not a diona exclusive frequency.
 
 // department channels
-var/const/PUB_FREQ = 1459
 var/const/EXP_FREQ = 1361
 var/const/TALON_FREQ = 1363	// No need to remove at the moment, Talon equipment can still be used and such - Bloop
 
@@ -115,7 +113,7 @@ var/const/MED_I_FREQ = 1485
 var/const/SEC_I_FREQ = 1475
 
 var/list/radiochannels = list(
-	"Common"		= PUB_FREQ,
+	"Common"		= FREQ_COMMON,
 	"Science"		= FREQ_SCIENCE,
 	"Command"		= FREQ_COMMAND,
 	"Medical"		= FREQ_MEDICAL,
