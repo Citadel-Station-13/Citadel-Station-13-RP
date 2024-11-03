@@ -11,25 +11,31 @@
 	align_x = 15
 	align_x = 16
 
-	/// registered inventory slot ID
-	var/last_slot_id
 	/// active?
 	var/active = FALSE
+	/// activation sound
+	//  todo: better sound
+	var/activate_sound = 'sound/weapons/empty.ogg'
+	/// deactivation sound
+	//  todo: better sound
+	var/deactvate_sound = 'sound/weapons/empty.ogg'
 
 	attachment_action_name = "Engage Harness"
 
 /obj/item/gun_attachment/harness/magnetic/on_attach(obj/item/gun/gun)
 	..()
-	RegisterSignal(gun, COMSIG_ITEM_UNEQUIPPED, PROC_REF(on_unequip))
 	RegisterSignal(gun, COMSIG_ITEM_DROPPED, PROC_REF(on_drop))
 	RegisterSignal(gun, COMSIG_ITEM_PICKUP, PROC_REF(on_pickup))
 
 /obj/item/gun_attachment/harness/magnetic/on_detach(obj/item/gun/gun)
 	..()
 	UnregisterSignal(gun, list(
-		COMSIG_ITEM_UNEQUIPPED,
+		COMSIG_ITEM_PICKUP,
 		COMSIG_ITEM_DROPPED,
 	))
+
+/obj/item/gun_attachment/harness/magnetic/ui_action_click(datum/action/action, datum/event_args/actor/actor)
+	set_active(!active)
 
 /obj/item/gun_attachment/harness/magnetic/proc/on_drop(mob/user, inv_op_flags, atom/new_loc)
 	SIGNAL_HANDLER
@@ -47,13 +53,8 @@
 	SIGNAL_HANDLER
 	if(active)
 		return
-	set_active(TRUE)
-	user.visible_feedback(SPAN_NOTICE("The [src] engages as you pick up \the [attached]."))
-
-/obj/item/gun_attachment/harness/magnetic/proc/on_unequip(mob/unequipped, slot_id, inv_op_flags)
-	SIGNAL_HANDLER
-	last_slot_id = slot_id
-	set_active(TRUE)
+	set_active(TRUE, no_message = tRUE)
+	to_chat(user, SPAN_NOTICE("The [src] engages as you pick up \the [attached]."))
 
 /obj/item/gun_attachment/harness/magnetic/proc/snap_back_to_user(mob/user)
 	var/target_slot_phrase
@@ -73,11 +74,19 @@
 		range = MESSAGE_RANGE_COMBAT_SILENCED,
 	)
 
-/obj/item/gun_attachment/harness/magnetic/proc/set_active(state)
+/obj/item/gun_attachment/harness/magnetic/proc/set_active(state, datum/event_args/actor/actor, no_sound, no_message)
 	if(state == active)
 		return
 	var/datum/action/potential_action = istype(attachment_actions, /datum/action) ? attachment_actions : null
 	if(active)
 		potential_action?.set_button_active(TRUE)
+		if(!no_sound)
+			playsound(src, activate_sound, 15, TRUE, -4)
+		if(!no_message)
+			actor.chat_feedback(SPAN_NOTICE("You activate \the [src]."), target = attached)
 	else
 		potential_action?.set_button_active(FALSE)
+		if(!no_sound)
+			playsound(src, deactivate_sound, 15, TRUE, -4)
+		if(!no_message)
+			actor.chat_feedback(SPAN_NOTICE("You deactivate \the [src]."), target = attached)
