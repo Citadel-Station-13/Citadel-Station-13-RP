@@ -97,9 +97,6 @@ On the map:
 1455 for AI access
 */
 
-var/const/RAID_FREQ	= 1277
-var/const/TRADE_FREQ = 1279
-
 // internal department channels
 var/const/MED_I_FREQ = 1485
 var/const/SEC_I_FREQ = 1475
@@ -114,8 +111,8 @@ var/list/radiochannels = list(
 	"Response Team" = FREQ_ERT,
 	"Special Ops" 	= FREQ_DEATH_SQUAD,
 	"Mercenary" 	= FREQ_SYNDICATE,
-	"Raider"		= RAID_FREQ,
-	"Trader"		= TRADE_FREQ,
+	"Raider"		= FREQ_RAIDER,
+	"Trader"		= FREQ_TRADER,
 	"Supply" 		= FREQ_SUPPLY,
 	"Service" 		= FREQ_SERVICE,
 	"Explorer"		= FREQ_EXPLORER,
@@ -129,11 +126,11 @@ var/list/radiochannels = list(
 var/list/CENT_FREQS = list(FREQ_ERT, FREQ_DEATH_SQUAD)
 
 // Antag channels, i.e. Syndicate
-// Raider Frequency was previously listed here, RAID_FREQ. I'm removing it to see if I can make it self contained.
+// Raider Frequency was previously listed here, FREQ_RAIDER. I'm removing it to see if I can make it self contained.
 var/list/ANTAG_FREQS = list(FREQ_SYNDICATE)
 
 //Department channels, arranged lexically
-var/list/DEPT_FREQS = list(FREQ_AI_PRIVATE, FREQ_COMMAND, FREQ_ENGINEERING, FREQ_ENTERTAINMENT, FREQ_MEDICAL, FREQ_SECURITY, FREQ_SCIENCE, FREQ_SERVICE, FREQ_SUPPLY, TRADE_FREQ)
+var/list/DEPT_FREQS = list(FREQ_AI_PRIVATE, FREQ_COMMAND, FREQ_ENGINEERING, FREQ_ENTERTAINMENT, FREQ_MEDICAL, FREQ_SECURITY, FREQ_SCIENCE, FREQ_SERVICE, FREQ_SUPPLY, FREQ_TRADER)
 
 /proc/frequency_span_class(var/frequency)
 	// Antags!
@@ -165,7 +162,7 @@ var/list/DEPT_FREQS = list(FREQ_AI_PRIVATE, FREQ_COMMAND, FREQ_ENGINEERING, FREQ
 		return "expradio"
 	if(frequency == FREQ_ENTERTAINMENT) // entertainment
 		return "entradio"
-	if(frequency == TRADE_FREQ)
+	if(frequency == FREQ_TRADER)
 		return "syndradio"
 	if(frequency in DEPT_FREQS)
 		return "deptradio"

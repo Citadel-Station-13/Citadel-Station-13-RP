@@ -331,7 +331,7 @@ var/message_delay = 0 // To make sure restarting the recentmessages list is kept
 					blackbox.msg_deathsquad += blackbox_msg
 				if(FREQ_SYNDICATE)
 					blackbox.msg_syndicate += blackbox_msg
-				if(RAID_FREQ)
+				if(FREQ_RAIDER)
 					blackbox.msg_raider += blackbox_msg
 				if(FREQ_SUPPLY)
 					blackbox.msg_cargo += blackbox_msg
@@ -505,7 +505,7 @@ var/message_delay = 0 // To make sure restarting the recentmessages list is kept
 					blackbox.msg_deathsquad += blackbox_msg
 				if(FREQ_SYNDICATE)
 					blackbox.msg_syndicate += blackbox_msg
-				if(RAID_FREQ)
+				if(FREQ_RAIDER)
 					blackbox.msg_raider += blackbox_msg
 				if(FREQ_SUPPLY)
 					blackbox.msg_cargo += blackbox_msg

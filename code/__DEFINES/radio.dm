@@ -3,6 +3,8 @@
 // Frequencies are always odd numbers and range from 1201 to 1599.
 
 #define FREQ_SYNDICATE 1213 // Nuke op comms frequency, dark brown
+#define FREQ_RAIDER 1277
+#define FREQ_TRADER 1279
 #define FREQ_DEATH_SQUAD 1341
 #define FREQ_ERT 1345
 

@@ -123,24 +123,24 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/item/radio/intercom, 28)
 /obj/item/radio/intercom/raider
 	name = "illicit intercom"
 	desc = "Pirate radio, but not in the usual sense of the word."
-	frequency = RAID_FREQ
+	frequency = FREQ_RAIDER
 	subspace_transmission = 0
 	syndie = 0
 
 /obj/item/radio/intercom/raider/Initialize(mapload)
 	. = ..()
-	internal_channels[num2text(RAID_FREQ)] = list(ACCESS_FACTION_PIRATE)
+	internal_channels[num2text(FREQ_RAIDER)] = list(ACCESS_FACTION_PIRATE)
 
 /obj/item/radio/intercom/trader
 	name = "commercial intercom"
 	desc = "Good luck finding a 'Skip Advertisements' button here."
-	frequency = TRADE_FREQ
+	frequency = FREQ_TRADER
 	subspace_transmission = 0
 	syndie = 0
 
 /obj/item/radio/intercom/trader/Initialize(mapload)
 	. = ..()
-	internal_channels[num2text(TRADE_FREQ)] = list(ACCESS_FACTION_TRADER)
+	internal_channels[num2text(FREQ_TRADER)] = list(ACCESS_FACTION_TRADER)
 
 /obj/item/radio/intercom/Destroy()
 	STOP_PROCESSING(SSobj, src)

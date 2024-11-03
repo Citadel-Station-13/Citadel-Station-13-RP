@@ -46,7 +46,7 @@
 	switch(freq)
 		if(FREQ_SYNDICATE)
 			R = new/obj/item/radio/headset/syndicate(player)
-		if(RAID_FREQ)
+		if(FREQ_RAIDER)
 			R = new/obj/item/radio/headset/raider(player)
 		else
 			R = new/obj/item/radio/headset(player)
