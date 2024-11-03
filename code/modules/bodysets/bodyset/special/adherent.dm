@@ -13,7 +13,6 @@
 	mask_icon = 'icons/mobs/bodysets/special/adherent/mask.dmi'
 	mask_icon_state = ""
 
-	damage_overlay_use_masking = TRUE
 	damage_overlay_brute_stages = 4
 	damage_overlay_burn_stages = 4
 	damage_overlay_icon = 'icons/mobs/bodysets/special/adherent/damage.dmi'
