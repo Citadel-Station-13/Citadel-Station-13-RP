@@ -128,41 +128,29 @@ var/list/ANTAG_FREQS = list(FREQ_SYNDICATE)
 //Department channels, arranged lexically
 var/list/DEPT_FREQS = list(FREQ_AI_PRIVATE, FREQ_COMMAND, FREQ_ENGINEERING, FREQ_ENTERTAINMENT, FREQ_MEDICAL, FREQ_SECURITY, FREQ_SCIENCE, FREQ_SERVICE, FREQ_SUPPLY, FREQ_TRADER)
 
-/proc/frequency_span_class(var/frequency)
-	// Antags!
-	if (frequency in ANTAG_FREQS)
-		return "syndradio"
-	// CentCom channels (deathsquid and ert)
-	if(frequency in CENT_FREQS)
-		return "centradio"
-	// command channel
-	if(frequency == FREQ_COMMAND)
-		return "comradio"
-	// AI private channel
-	if(frequency == FREQ_AI_PRIVATE)
-		return "aiprivradio"
-	// department radio formatting (poorly optimized, ugh)
-	if(frequency == FREQ_SECURITY)
-		return "secradio"
-	if (frequency == FREQ_ENGINEERING)
-		return "engradio"
-	if(frequency == FREQ_SCIENCE)
-		return "sciradio"
-	if(frequency == FREQ_MEDICAL)
-		return "medradio"
-	if(frequency == FREQ_SUPPLY) // cargo
-		return "suppradio"
-	if(frequency == FREQ_SERVICE) // service
-		return "servradio"
-	if(frequency == FREQ_EXPLORER) // explorer
-		return "expradio"
-	if(frequency == FREQ_ENTERTAINMENT) // entertainment
-		return "entradio"
-	if(frequency == FREQ_TRADER)
-		return "syndradio"
-	if(frequency in DEPT_FREQS)
-		return "deptradio"
+// TODO: move me to say or something
+GLOBAL_LIST_INIT(freqtospan, list(
+	"[FREQ_SCIENCE]" = "sciradio",
+	"[FREQ_EXPLORER]" = "expradio",
+	"[FREQ_MEDICAL]" = "medradio",
+	"[FREQ_ENGINEERING]" = "engradio",
+	"[FREQ_SUPPLY]" = "suppradio",
+	"[FREQ_SERVICE]" = "servradio",
+	"[FREQ_SECURITY]" = "secradio",
+	"[FREQ_COMMAND]" = "comradio",
+	"[FREQ_AI_PRIVATE]" = "aiprivradio",
+	"[FREQ_ENTERTAINMENT]" = "entradio",
+	"[FREQ_SYNDICATE]" = "syndradio",
+	"[FREQ_RAIDER]" = "syndradio",
+	"[FREQ_TRADER]" = "syndradio",
+	"[FREQ_ERT]" = "centradio",
+	"[FREQ_DEATH_SQUAD]" = "centradio"
+	))
 
+/proc/get_radio_span(freq)
+	var/returntext = GLOB.freqtospan["[freq]"]
+	if(returntext)
+		return returntext
 	return "radio"
 
 /* filters */
