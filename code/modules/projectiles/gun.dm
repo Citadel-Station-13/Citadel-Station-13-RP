@@ -77,8 +77,6 @@
 	/// * This is pixel coordinates on the gun's real icon. Out of bounds is allowed as attachments are just overlays.
 	var/list/attachment_alignment
 
-	#warn impl
-
 	// legacy below //
 
 	var/burst = 1
@@ -382,7 +380,9 @@
 	. = ..()
 	if(. & CLICKCHAIN_DO_NOT_PROPAGATE)
 		return
-	#warn impl
+	if(istype(using, /obj/item/gun_attachment))
+		user_install_attachment(using, e_args)
+		return CLICKCHAIN_DO_NOT_PROPAGATE
 
 /obj/item/gun/attackby(obj/item/A, mob/user)
 	if(A.is_multitool())
@@ -832,7 +832,9 @@
 		var/datum/firemode/current_mode = firemodes[sel_mode]
 		. += "The fire selector is set to [current_mode.name]."
 	if(safety_state != GUN_NO_SAFETY)
-		to_chat(user, SPAN_NOTICE("The safety is [check_safety() ? "on" : "off"]."))
+		. += SPAN_NOTICE("The safety is [check_safety() ? "on" : "off"].")
+	for(var/obj/item/gun_attachment/attachment as anything in attachments)
+		. += "It has [attachment] installed on its [attachment.attachment_slot].[attachment.can_detach ? "" : " It doesn't look like it can be removed."]"
 
 /obj/item/gun/proc/switch_firemodes(mob/user)
 	if(firemodes.len <= 1)
@@ -961,9 +963,28 @@
 	return TRUE
 
 /**
+ * Called when a mob tries to uninstall an attachment
+ */
+/obj/item/gun/proc/user_install_attachment(obj/item/gun_attachment/attachment, datum/event_args/actor/actor)
+	if(actor)
+		if(actor.performer && actor.performer.is_in_inventory(attachment))
+			if(!actor.performer.can_unequip(attachment, attachment.worn_slot))
+				actor.chat_feedback(
+					SPAN_WARNING("[attachment] is stuck to your hand!"),
+					target = src,
+				)
+				return FALSE
+	if(!install_attachment(attachment, actor))
+		return FALSE
+	// todo: better sound
+	playsound(src, 'sound/weapons/empty.ogg', 25, TRUE, -3)
+	return TRUE
+
+/**
  * Installs an attachment
  *
  * * This moves the attachment into the gun if it isn't already.
+ * * This does have default visible feedback for the installation.
  *
  * @return TRUE / FALSE on success / failure
  */
@@ -976,28 +997,49 @@
 			target = src,
 			visible = SPAN_NOTICE("[actor.performer] attaches [attachment] to [src]'s [attachment.attachment_slot]."),
 		)
-
 	if(attachment.loc != src)
 		attachment.forceMove(src)
 
+	attachment.attached = src
 	on_attachment_install(attachment)
 	attachment.on_attach(src)
+	return TRUE
+
+/**
+ * Called when a mob tries to uninstall an attachment
+ */
+/obj/item/gun/proc/user_uninstall_attachment(obj/item/gun_attachment/attachment, datum/event_args/actor/actor, put_in_hands)
+	if(!attachment.can_detach)
+		actor?.chat_feedback(
+			SPAN_WARNING("[attachment] is not removable."),
+			target = src,
+		)
+		return FALSE
+	var/obj/item/uninstalled = uninstall_attachment(attachment, actor)
+	if(put_in_hands && actor?.performer)
+		actor.performer.put_in_hand_or_drop(uninstalled)
+	else
+		var/atom/where_to_drop = drop_location()
+		ASSERT(where_to_drop)
+		uninstalled.forceMove(where_to_drop)
+	// todo: better sound
+	playsound(src, 'sound/weapons/empty.ogg', 25, TRUE, -3)
 	return TRUE
 
 /**
  * Uninstalls an attachment
  *
  * * This does not move the attachment after uninstall; you have to do that.
+ * * This does not have default visible feedback for the uninstallation / removal.
  *
  * @return the /obj/item uninstalled
  */
-/obj/item/gun/proc/uninstall_attachment(obj/item/gun_attachment/attachment, datum/event_args/actor/actor, silent)
+/obj/item/gun/proc/uninstall_attachment(obj/item/gun_attachment/attachment, datum/event_args/actor/actor, silent, deleting)
 	ASSERT(attachment.attached == src)
 	attachment.on_detach(src)
 	on_attachment_uninstall(attachment)
-	return attachment.uninstalled()
-
-#warn impl
+	attachment.attached = null
+	return deleting ? null : attachment.uninstall_product_transform()
 
 /**
  * Align an attachment overlay.
@@ -1008,12 +1050,8 @@
 	var/list/alignment = attachment_alignment?[attachment.attachment_slot]
 	if(!alignment)
 		return FALSE
-	var/align_x = alignment[1]
-	var/align_y = alignment[2]
-
-	aligning.pixel_x = (align_x - attachment.align_x)
-	aligning.pixel_y = (align_y - attachment.align_y)
-
+	aligning.pixel_x = (alignment[1] - attachment.align_x)
+	aligning.pixel_y = (alignment[2] - attachment.align_y)
 	return TRUE
 
 /**
@@ -1036,11 +1074,21 @@
 
 /obj/item/gun/context_menu(datum/event_args/actor/e_args)
 	. = ..()
+	if(length(attachments))
+		.["remove-attachment"] = atom_context_tuple("Remove Attachment", image('icons/screen/radial/actions.dmi', "red-arrow-up"), 0, MOBILITY_CAN_USE)
 
 /obj/item/gun/context_act(datum/event_args/actor/e_args, key)
 	. = ..()
-
-#warn impl
+	if(.)
+		return
+	switch(key)
+		if("remove-attachment")
+			// todo: e_args support
+			var/obj/item/gun_attachment/attachment = show_radial_menu(e_args.initiator, src, attachments)
+			if(!e_args.performer.Reachability(src) || !(e_args.performer.mobility_flags & MOBILITY_CAN_USE))
+				return TRUE
+			user_uninstall_attachment(attachment, e_args, TRUE)
+			return TRUE
 
 //* Rendering *//
 

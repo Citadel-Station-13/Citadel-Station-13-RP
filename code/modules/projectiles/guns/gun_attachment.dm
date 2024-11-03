@@ -17,6 +17,8 @@
 
 	/// The gun we're attached to
 	var/obj/item/gun/attached
+	/// Can detach
+	var/can_detach = TRUE
 
 	//* Actions *//
 
@@ -73,8 +75,15 @@
 
 /obj/item/gun_attachment/Destroy()
 	if(attached)
-
+		attached.uninstall_attachment(src, deleting = TRUE)
 	return ..()
+
+/obj/item/gun_attachment/update_icon()
+	// update_icon_state can change state
+	var/old_state = icon_state
+	. = ..()
+	if(icon_state != old_state)
+		update_gun_overlay()
 
 /**
  * Checks if we fit on a gun.
@@ -88,18 +97,22 @@
 /**
  * called on attach (including at init)
  *
+ * * `attached` is set by this point
  * * [attachment_actions] is handled gun-side
  */
 /obj/item/gun_attachment/proc/on_attach(obj/item/gun/gun)
-	return
+	SHOULD_CALL_PARENT(TRUE)
+	update_gun_overlay()
 
 /**
  * called on detach (including during destroy)
  *
+ * * `attached` is not cleared yet, at this point
  * * [attachment_actions] is handled gun-side
  */
 /obj/item/gun_attachment/proc/on_detach(obj/item/gun/gun)
-	return
+	SHOULD_CALL_PARENT(TRUE)
+	remove_gun_overlay()
 
 /**
  * sets our gun state
@@ -107,9 +120,42 @@
  * * setting it to null is a good way to force an update if our icon state is being used
  */
 /obj/item/gun_attachment/proc/set_gun_state(new_state)
+	gun_state = new_state
+	update_gun_overlay()
 
+/**
+ * get the overlay to apply to our gun
+ */
+/obj/item/gun_attachment/proc/get_gun_overlay()
+	if(!attached)
+		return null
+	var/image/applying = image(icon, gun_state || "[icon_state]-gun")
+	attached.align_attachment_overlay(src, applying)
+	return applying
 
-#warn impl
+/**
+ * reapplies gun overlay
+ */
+/obj/item/gun_attachment/proc/update_gun_overlay()
+	if(!attached)
+		return
+	remove_gun_overlay()
+	var/appearance/applying = get_gun_overlay()
+	if(!applying)
+		return
+	attached.add_overlay(applying)
+	gun_applied_overlay = applying
+
+/**
+ * removes gun overlay
+ */
+/obj/item/gun_attachment/proc/remove_gun_overlay()
+	if(!attached)
+		return
+	if(!gun_applied_overlay)
+		return
+	attached.cut_overlay(gun_applied_overlay, TRUE)
+	gun_applied_overlay = null
 
 /**
  * This is a very special proc.
@@ -120,8 +166,10 @@
  * The item returned will be what is dropped / put into the user's hands.
  *
  * If you return something else, you generally want to qdel(src).
+ *
+ * * This proc will **not** be called if we're being deleted.
  */
-/obj/item/gun_attachment/proc/uninstalled()
+/obj/item/gun_attachment/proc/uninstall_product_transform()
 	return src
 
 //* Actions *//

@@ -20,8 +20,10 @@
 	/// power when on
 	var/light_power_on = 0.75
 	/// activation sound
+	//  todo: better sound
 	var/on_sound = 'sound/weapons/empty.ogg'
 	/// deactivation sound
+	//  todo: better sound
 	var/off_sound = 'sound/weapons/empty.ogg'
 
 /obj/item/gun_attachment/flashlight/ui_action_click(datum/action/action, datum/event_args/actor/actor)
@@ -30,6 +32,10 @@
 /obj/item/gun_attachment/flashlight/on_detach(obj/item/gun/gun)
 	..()
 	set_on(FALSE)
+
+/obj/item/gun_attachment/flashlight/update_icon_state()
+	icon_state = "[base_icon_state || initial(icon_state)][on ? "-on" : ""]"
+	return ..()
 
 /obj/item/gun_attachment/flashlight/proc/set_on(state)
 	if(on == state)
@@ -40,16 +46,20 @@
 	if(on)
 		playsound(src, on_sound, 15, TRUE, -4)
 		set_light(l_power = light_power_on)
-		potential_action?.set_active(TRUE)
+		potential_action?.set_button_active(TRUE)
 	else
 		playsound(src, off_sound, 15, TRUE, -4)
 		set_light(l_power = 0)
-		potential_action?.set_active(FALSE)
+		potential_action?.set_button_active(FALSE)
+	update_icon()
 
 // todo: make this directional at some point
 /obj/item/gun_attachment/flashlight/rail
 	name = "rail light"
-	#warn sprite
+	icon_state = "raillight"
+	align_x = 19
+	align_y = 16
+	attachment_slot = GUN_ATTACHMENT_SLOT_RAIL
 
 // todo: make this directional at some point
 /**
@@ -57,7 +67,10 @@
  */
 /obj/item/gun_attachment/flashlight/maglight
 	name = "maglight"
-	#warn sprite
+	icon_state = "maglight"
+	align_x = 11
+	align_y = 3
+	attachment_slot = GUN_ATTACHMENT_SLOT_SIDEBARREL
 	/// the maglight that made us
 	var/obj/item/flashlight/maglight/our_maglight
 
@@ -65,7 +78,7 @@
 	QDEL_NULL(our_maglight)
 	return ..()
 
-/obj/item/gun_attachment/flashlight/maglight/uninstalled()
+/obj/item/gun_attachment/flashlight/maglight/uninstall_product_transform()
 	if(our_maglight)
 		. = our_maglight
 		our_maglight = null

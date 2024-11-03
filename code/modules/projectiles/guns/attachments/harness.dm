@@ -11,10 +11,73 @@
 	align_x = 15
 	align_x = 16
 
+	/// registered inventory slot ID
+	var/last_slot_id
+	/// active?
+	var/active = FALSE
+
+	attachment_action_name = "Engage Harness"
+
 /obj/item/gun_attachment/harness/magnetic/on_attach(obj/item/gun/gun)
 	..()
+	RegisterSignal(gun, COMSIG_ITEM_UNEQUIPPED, PROC_REF(on_unequip))
+	RegisterSignal(gun, COMSIG_ITEM_DROPPED, PROC_REF(on_drop))
+	RegisterSignal(gun, COMSIG_ITEM_PICKUP, PROC_REF(on_pickup))
 
 /obj/item/gun_attachment/harness/magnetic/on_detach(obj/item/gun/gun)
 	..()
+	UnregisterSignal(gun, list(
+		COMSIG_ITEM_UNEQUIPPED,
+		COMSIG_ITEM_DROPPED,
+	))
 
-#warn impl; render if it's active with an action button
+/obj/item/gun_attachment/harness/magnetic/proc/on_drop(mob/user, inv_op_flags, atom/new_loc)
+	SIGNAL_HANDLER
+	if(!active)
+		return NONE
+	if(inv_op_flags & (INV_OP_DELETING | INV_OP_SHOULD_NOT_INTERCEPT))
+		return NONE
+	// don't react if it was already yanked
+	if(attached.loc != user)
+		return NONE
+	snap_back_to_user(user)
+	return COMPONENT_ITEM_DROPPED_RELOCATE
+
+/obj/item/gun_attachment/harness/magnetic/proc/on_pickup(mob/user, inv_op_flags, atom/old_loc)
+	SIGNAL_HANDLER
+	if(active)
+		return
+	set_active(TRUE)
+	user.visible_feedback(SPAN_NOTICE("The [src] engages as you pick up \the [attached]."))
+
+/obj/item/gun_attachment/harness/magnetic/proc/on_unequip(mob/unequipped, slot_id, inv_op_flags)
+	SIGNAL_HANDLER
+	last_slot_id = slot_id
+	set_active(TRUE)
+
+/obj/item/gun_attachment/harness/magnetic/proc/snap_back_to_user(mob/user)
+	var/target_slot_phrase
+	for(var/slot_id in list(
+		/datum/inventory_slot/inventory/suit_storage,
+		/datum/inventory_slot/inventory/back,
+	))
+		if(!user.equip_to_slot_if_possible(attached, slot_id))
+			continue
+		var/datum/inventory_slot/slot = resolve_inventory_slot(slot_id)
+		target_slot_phrase = slot.display_name
+		. = TRUE
+	if(!.)
+		return
+	attached.visible_message(
+		SPAN_WARNING("[attached] snaps back to [user]'s [target_slot_phrase]!"),
+		range = MESSAGE_RANGE_COMBAT_SILENCED,
+	)
+
+/obj/item/gun_attachment/harness/magnetic/proc/set_active(state)
+	if(state == active)
+		return
+	var/datum/action/potential_action = istype(attachment_actions, /datum/action) ? attachment_actions : null
+	if(active)
+		potential_action?.set_button_active(TRUE)
+	else
+		potential_action?.set_button_active(FALSE)
