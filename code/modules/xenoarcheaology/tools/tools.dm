@@ -233,7 +233,7 @@
 	item_state = "electronic"
 	origin_tech = list(TECH_MAGNET = 3, TECH_ENGINEERING = 2, TECH_BLUESPACE = 3)
 	materials_base = list(MAT_STEEL = 1000, MAT_GLASS = 500)
-	var/frequency = PUB_FREQ
+	var/frequency = FREQ_COMMON
 	var/scan_ticks = 0
 	var/obj/item/radio/target_radio
 
@@ -307,8 +307,8 @@
 		data["degrees"] = round(get_visual_angle(get_turf(src), get_turf(target_radio)))
 
 	data["rawfreq"] = frequency
-	data["minFrequency"] = RADIO_LOW_FREQ
-	data["maxFrequency"] = RADIO_HIGH_FREQ
+	data["minFrequency"] = MIN_FREE_FREQ
+	data["maxFrequency"] = MAX_FREE_FREQ
 
 	return data
 
@@ -323,7 +323,7 @@
 			return TRUE
 		if("setFrequency")
 			var/new_frequency = (text2num(params["freq"]))
-			new_frequency = sanitize_frequency(new_frequency, RADIO_LOW_FREQ, RADIO_HIGH_FREQ)
+			new_frequency = sanitize_frequency(new_frequency, free = TRUE)
 			frequency = new_frequency
 			return TRUE
 

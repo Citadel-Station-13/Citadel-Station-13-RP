@@ -59,7 +59,6 @@
 	if(port)
 		connect(port)
 		update_icon()
-	return ..()
 
 /obj/machinery/portable_atmospherics/process(delta_time)
 	flow_current = 0
