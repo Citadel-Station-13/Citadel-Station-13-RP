@@ -64,6 +64,14 @@
  */
 // #define UNIT_TESTS
 
+/**
+ * If this is uncommented, we will compile in the unit test code without actually running them.
+ */
+// #define INCLUDE_UNIT_TESTS
+
+#ifdef INCLUDE_UNIT_TESTS
+	#warn Unit tests are compiled in manually. This shouldn't be on in live.
+#endif
 
 /**
  * If this is uncommented, will attempt to load and initialize prof.dll/libprof.so.
@@ -165,12 +173,32 @@
 
 // ## Atmospherics
 
-//? Gasmixtures
-/// Enable general assertions.
-#define GASMIXTURE_ASSERTIONS
+/// Enable this if you're doing weird atmos things.
+///
+/// * This helps bad behaviors get caught in testmerge.
+/// * This only enables basic debug assertions. If you're touching zones, go to the ZAS section and set flags accordingly.
+#define CF_ATMOS_IM_DOING_WACKY_THINGS_TODAY
 
+#ifdef CF_ATMOS_IM_DOING_WACKY_THINGS_TODAY
+	#define CF_ATMOS_XGM_DEBUG_ASSERTIONS
+	#define CF_ATMOS_ZAS_DEBUG_ASSERTIONS
+#endif
+
+//? Gasmixtures
+
+/// Enable general gasmixture assertions.
+// #define CF_ATMOS_XGM_DEBUG_ASSERTIONS
+
+/// Ensures update_values() is enforced
+///
+/// * VERY. VERY. LAGGY.
+#define CF_ATMOS_XGM_UPDATE_VALUES_ASSERTIONS
 
 //? ZAS (Environmental)
+
+/// Enable general environmental assertions.
+// #define CF_ATMOS_ZAS_DEBUG_ASSERTIONS
+
 /// Uncomment to turn on Multi-Z ZAS Support!
 #define MULTIZAS
 
@@ -185,7 +213,6 @@
 
 /// Uncomment to enable some otherwise useless hook points for zas debugging.
 // #define ZAS_BREAKPOINT_HOOKS
-
 
 #ifdef ZAS_DEBUG_GRAPHICS
 	#define ZAS_BREAKPOINT_HOOKS

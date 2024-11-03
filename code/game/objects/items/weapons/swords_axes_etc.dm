@@ -138,7 +138,7 @@
 /obj/item/melee/disruptor
 	name = "disruptor blade"
 	desc = "A long, machete-like blade, designed to mount onto the arm or some rough equivalent. Electricity courses through it."
-	description_info = "This blade deals bonus damage against animals (space bears, carp) and aberrations (xenomorphs)."
+	description_info = "This blade deals bonus damage against animals (space bears, carp) and aberrations."
 	icon = 'icons/obj/kitchen.dmi'
 	icon_state = "armblade"
 	item_icons = list(

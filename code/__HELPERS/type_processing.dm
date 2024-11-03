@@ -28,12 +28,17 @@
 		/obj/item = "//item",
 		/obj/machinery = "//machine",
 		/obj/effect = "//effect",
-		/atom/movable = "//movable",
 		/turf/simulated/floor = "//floor",
 		/turf/simulated = "//simulated",
 		/mob/living/carbon = "//carbon",
 		/mob/living/simple_mob = "//simple",
 		/mob/living = "//living",
+		// we must have normal A-T-O-M handled; otherwise weird stuff happens when it falls to /atom/movable
+		/obj = "/obj",
+		/turf = "/turf",
+		/area = "/area",
+		/mob = "/mob",
+		/atom/movable = "//movable",
 	)
 	for(var/type in types)
 		var/shortcut
