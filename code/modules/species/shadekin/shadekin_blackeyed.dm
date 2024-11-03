@@ -9,6 +9,7 @@
 	deform       = 'icons/mob/species/shadekin/body.dmi'
 	husk_icon    = 'icons/mob/species/shadekin/husk.dmi'
 
+	bodyset = /datum/bodyset/organic/shadekin
 	sprite_accessory_defaults = list(
 		SPRITE_ACCESSORY_SLOT_TAIL = /datum/sprite_accessory/tail/bodyset/shadekin,
 	)

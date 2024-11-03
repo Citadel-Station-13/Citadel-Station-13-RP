@@ -98,8 +98,6 @@
 	blood_color = "#CCCCCC"
 	blood_name = "coolant"
 	speech_bubble_appearance = "normal"
-	robo_brute_mod = 1.1
-	robo_burn_mod = 1.1
 	modular_bodyparts = MODULAR_BODYPART_INVALID
 
 /datum/robolimb/veymed/skrell
@@ -108,8 +106,6 @@
 	bodyset = /datum/bodyset/synthetic/veymed/skrell
 	blood_color = "#4451cf"
 	speech_bubble_appearance = "normal"
-	robo_brute_mod = 1.05
-	robo_burn_mod = 1.05
 
 #warn below
 

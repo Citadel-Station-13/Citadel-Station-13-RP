@@ -7,16 +7,6 @@
 		deadnif.throw_at_old(get_edge_target_turf(src,pick(GLOB.alldirs)), rand(1,3), round(30/deadnif.w_class))
 		deadnif.wear(10) //Presumably it's gone through some shit if they got gibbed?
 
-	if(vr_holder)
-		exit_vr()
-		// Delete the link, because this mob won't be around much longer
-		vr_holder.vr_link = null
-
-	if(vr_link)
-		vr_link.exit_vr()
-		vr_link.vr_holder = null
-		vr_link = null
-
 	for(var/obj/item/organ/I in internal_organs)
 		I.removed()
 		if(istype(loc,/turf))

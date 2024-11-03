@@ -166,15 +166,40 @@ GLOBAL_LIST_EMPTY(bodyset_lookup)
 		src.base_id = src.id
 
 /**
- * please handle the returned lists properly
+ * Renders overlays for a bodypart.
+ *
+ * * Avoid this where possible, this is more expensive and awkward to work with.
+ *   This is most useful in debugging, but some other things like making a person
+ *   into a ghost can make use of this.
+ *
+ * @params
+ * * bodypart_tag - the bodypart tag to render
+ * * marking_descriptors - the markings to render on that bodypart
+ * * for_bodypart - (optional) an "escape hatch" that lets you access the organ being rendered.
+ * * normal_plate - rendered visual image is applied to this
+ * * emissive_plate - rendered emissive image is applied to this
  *
  * @return list(list(normal overlays), list(emissive overlays))
  */
 /datum/bodyset/proc/render(bodypart_tag, list/datum/bodyset_marking_descriptor/marking_descriptors, obj/item/organ/external/for_bodypart)
-	var/list/normal = list()
-	var/list/emissive = list()
+	var/image/normal_holder = new /image
+	var/image/emissive_holder = new /image
 
-	. = list(normal, emissive)
+	render_to_plates(bodypart_tag, marking_descriptors, for_bodypart, normal_holder, emissive_holder)
+
+	return list(normal_holder.overlays.Copy(), emissive_holder.overlays.Copy())
+
+/**
+ * Renders overlays to plates instead of returning lists.
+ *
+ * @params
+ * * bodypart_tag - the bodypart tag to render
+ * * marking_descriptors - the markings to render on that bodypart
+ * * for_bodypart - (optional) an "escape hatch" that lets you access the organ being rendered.
+ * * normal_plate - rendered visual image is applied to this
+ * * emissive_plate - rendered emissive image is applied to this
+ */
+/datum/bodyset/proc/render_to_plates(bodypart_tag, list/datum/bodyset_marking_descriptor/marking_descriptors, obj/item/organ/external/for_bodypart, image/normal_plate, image/emissive_plate)
 
 	if(!(bodypart_tag in body_parts))
 		return

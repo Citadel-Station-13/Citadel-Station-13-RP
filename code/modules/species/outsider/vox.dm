@@ -5,8 +5,7 @@
 	category = SPECIES_CATEGORY_VOX
 	default_bodytype = BODYTYPE_VOX
 
-	icobase = 'icons/mob/species/vox/body.dmi'
-	deform  = 'icons/mob/species/vox/deformed_body.dmi'
+	bodyset = /datum/bodyset/organic/vox
 
 	max_additional_languages = 1
 	intrinsic_languages = LANGUAGE_ID_VOX

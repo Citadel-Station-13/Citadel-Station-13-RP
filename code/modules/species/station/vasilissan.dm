@@ -4,10 +4,7 @@
 	name = SPECIES_VASILISSAN
 	name_plural = "Vasilissans"
 
-	icobase = 'icons/mob/species/vasilissan/body.dmi'
-	deform = 'icons/mob/species/vasilissan/deformed_body.dmi'
-	husk_icon = 'icons/mob/species/vasilissan/husk.dmi'
-
+	bodyset = /datum/bodyset/organic/vasilissan
 	sprite_accessory_defaults = list(
 		SPRITE_ACCESSORY_SLOT_TAIL = /datum/sprite_accessory/tail/bodyset/vasilissan,
 	)

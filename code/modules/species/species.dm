@@ -45,10 +45,10 @@
 	//* Appearance *//
 	/// bodyset to use by default
 	var/datum/bodyset/bodyset = /datum/bodyset/organic/human
-	/// bodysets that can be chosen. automatically includes [bodyset] but you should include it anyways.
+	/// bodysets that can be chosen. automatically includes [bodyset].
 	///
 	/// * If this is null, **we can choose any bodyset.**
-	var/list/datum/bodyset/bodysets
+	var/list/datum/bodyset/bodysets = list()
 	#warn hook in new
 
 	//* Traits / Physiology *//
@@ -908,8 +908,7 @@ GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
 
 	//Initials so it works with a simple path passed, or an instance
 	base_species = to_copy.name
-	icobase = to_copy.icobase
-	deform = to_copy.deform
+	bodyset = to_copy.bodyset
 	sprite_accessory_defaults = to_copy.sprite_accessory_defaults.Copy()
 	color_mult = to_copy.color_mult
 	primitive_form = to_copy.primitive_form
@@ -917,8 +916,6 @@ GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
 	flesh_color = to_copy.flesh_color
 	base_color = to_copy.base_color
 	blood_mask = to_copy.blood_mask
-	damage_mask = to_copy.damage_mask
-	damage_overlays = to_copy.damage_overlays
 	move_trail = move_trail
 	has_floating_eyes = has_floating_eyes
 
