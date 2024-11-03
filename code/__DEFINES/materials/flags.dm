@@ -18,7 +18,7 @@ DEFINE_BITFIELD(material_flags, list(
 ))
 
 //* /datum/prototype/material material_constraints
-//* /datum/design material_constraints list values
+//* /datum/prototype/design material_constraints list values
 
 // None yet
 
