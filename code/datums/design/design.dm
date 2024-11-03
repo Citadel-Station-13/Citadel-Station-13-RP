@@ -11,8 +11,6 @@
 	abstract_type = /datum/prototype/design
 
 	//? Design Data - Core
-	/// Must be unique - id of design in CamelCase.
-	var/id
 	/// design flags - see [code/__DEFINES/datums/design.dm]
 	var/design_flags = NONE
 	/// how are we unlocked - see [code/__DEFINES/datums/design.dm]

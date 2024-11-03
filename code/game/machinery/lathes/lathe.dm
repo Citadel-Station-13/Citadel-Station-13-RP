@@ -372,7 +372,7 @@
 	var/left_this_tick = max_items_per_tick
 	var/printed_any = FALSE
 	while(!isnull(head))
-		D = SSresearch.fetch_design(head.design_id)
+		D = RSdesigns.fetch(head.design_id)
 		var/resource_limited = has_resources_for(D, head.material_parts, head.ingredient_parts)
 		if(!resource_limited)
 			if(queue_active)
@@ -406,7 +406,7 @@
 
 /obj/machinery/lathe/proc/queue_head_design()
 	RETURN_TYPE(/datum/prototype/design)
-	return length(queue)? (SSresearch.fetch_design(queue[1].design_id)) : null
+	return length(queue)? (RSdesigns.fetch(queue[1].design_id)) : null
 
 /obj/machinery/lathe/proc/check_queue_head(silent, check_resources = TRUE)
 	if(!length(queue))
@@ -415,7 +415,7 @@
 		stop_printing()
 		return FALSE
 	var/datum/lathe_queue_entry/head = queue[1]
-	var/datum/prototype/design/D = SSresearch.fetch_design(head.design_id)
+	var/datum/prototype/design/D = RSdesigns.fetch(head.design_id)
 	if(isnull(D))
 		if(!silent && queue_active)
 			atom_say("Print queue interrupted - unknown entry in queue.")

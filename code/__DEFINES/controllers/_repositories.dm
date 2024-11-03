@@ -5,18 +5,18 @@
 /datum/controller/subsystem/repository/proc/__init_repositories()
 
 #define REPOSITORY_DEF(what) \
-GLOBAL_REAL(RC##what, /datum/controller/repository/##what); \
+GLOBAL_REAL(RS##what, /datum/controller/repository/##what); \
 /datum/controller/repository/##what/New(){ \
-	if(global.RC##what != src && istype(global.RC##what)){ \
-		Recover(global.RC##what); \
-		qdel(global.RC##what); \
+	if(global.RS##what != src && istype(global.RS##what)){ \
+		Recover(global.RS##what); \
+		qdel(global.RS##what); \
 	} \
-	global.RC##what = src; \
+	global.RS##what = src; \
 } \
-/datum/controller/subsystem/repository/var/datum/controller/repository/##what/RC##what; \
+/datum/controller/subsystem/repository/var/datum/controller/repository/##what/RS##what; \
 /datum/controller/subsystem/repository/__init_repositories() { \
 	..(); \
-	RC##what = new; \
-	RC##what.Initialize(); \
+	RS##what = new; \
+	RS##what.Initialize(); \
 } \
 /datum/controller/repository/##what

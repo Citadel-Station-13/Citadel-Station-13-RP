@@ -59,14 +59,16 @@
 //* Public API *//
 
 /**
- * prototypes returned should generally not be modified.
- * prototypes returned from a typepath input should never, ever be modified.
+ * prototypes returned should never, ever be modified
+ *
+ * @return prototype instance or null
  */
 /datum/controller/repository/proc/fetch(datum/prototype/type_or_id)
 	if(isnull(type_or_id))
 		return
 	if(istext(type_or_id))
 		return id_lookup[type_or_id]
+	// todo: optimize because clearly this isn't micro-optimized enough
 	. = type_lookup[type_or_id]
 	if(.)
 		return
@@ -76,6 +78,17 @@
 		load_internal((. = new type_or_id), TRUE, TRUE)
 	else
 		CRASH("failed to fetch a hardcoded prototype")
+
+/**
+ * prototypes returned should never, ever be modified
+ *
+ * @return list() of instances
+ */
+/datum/controller/repository/proc/fetch_multi(list/datum/prototype/types_or_ids)
+	. = list()
+	// todo: optimize
+	for(var/datum/prototype/casted as anything in types_or_ids)
+		. += fetch(casted)
 
 /**
  * lists returned should never, ever be modified.
@@ -101,7 +114,7 @@
  *   After this call, the repository now owns the instance, not whichever system created it.
  */
 /datum/controller/repository/proc/register(datum/prototype/instance)
-	return load_internal(instance, force, FALSE)
+	return load_internal(instance, null, FALSE)
 
 //* Private API *//
 
@@ -111,11 +124,11 @@
  * * This is for internal use.
  */
 /datum/controller/repository/proc/load(datum/prototype/instance, force)
-	PRIVATE_PROC(TRUE)
+	PROTECTED_PROC(TRUE)
 	return load_internal(instance, force, FALSE)
 
 /datum/controller/repository/proc/load_internal(datum/prototype/instance, force, hardcoded)
-	PRIVATE_PROC(TRUE)
+	PROTECTED_PROC(TRUE)
 	if(id_lookup[instance] && !force)
 		return FALSE
 	id_lookup[instance] = instance
@@ -133,7 +146,7 @@
  * * This is for internal use.
  */
 /datum/controller/repository/proc/unload(datum/prototype/instance)
-	PRIVATE_PROC(TRUE)
+	PROTECTED_PROC(TRUE)
 	if(type_lookup[instance.type] == instance)
 		CRASH("tried to unregister a hardcoded instance")
 	if(!instance.unregister())
