@@ -70,7 +70,6 @@ var/list/table_icon_cache = list()
 		update_appearance()
 
 /obj/structure/table/LateInitialize()		// CURSE YOU DUMB AS ROCKS MATERIAL SYSTEM
-	. = ..()
 	update_connections(FALSE)
 	update_appearance()
 

@@ -18,7 +18,6 @@
 	return INITIALIZE_HINT_LATELOAD
 
 /obj/structure/bed/chair/LateInitialize()
-	. = ..()
 	update_layer()
 
 /obj/structure/bed/chair/OnMouseDrop(atom/over, mob/user)

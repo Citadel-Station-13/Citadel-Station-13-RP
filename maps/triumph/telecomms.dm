@@ -34,16 +34,16 @@
 
 /obj/machinery/telecomms/receiver/preset_right/triumph
 //	id = "triumph_rx"
-	freq_listening = list(AI_FREQ, SCI_FREQ, MED_FREQ, SUP_FREQ, SRV_FREQ, COMM_FREQ, ENG_FREQ, SEC_FREQ, ENT_FREQ, EXP_FREQ)
+	freq_listening = list(FREQ_AI_PRIVATE, FREQ_SCIENCE, FREQ_MEDICAL, FREQ_SUPPLY, FREQ_SERVICE, FREQ_COMMAND, FREQ_ENGINEERING, FREQ_SECURITY, FREQ_ENTERTAINMENT, FREQ_EXPLORER)
 
 /obj/machinery/telecomms/broadcaster/preset_right/triumph
 //	id = "triumph_tx"
 
 /obj/machinery/telecomms/bus/preset_two/triumph
-	freq_listening = list(SUP_FREQ, SRV_FREQ, EXP_FREQ)
+	freq_listening = list(FREQ_SUPPLY, FREQ_SERVICE, FREQ_EXPLORER)
 
 /obj/machinery/telecomms/server/presets/service/triumph
-	freq_listening = list(SRV_FREQ, EXP_FREQ)
+	freq_listening = list(FREQ_SERVICE, FREQ_EXPLORER)
 	autolinkers = list("service", "explorer")
 
 // Telecommunications Satellite

@@ -153,7 +153,6 @@
 
 	SETUP_SMOOTHING()
 
-	// queue if necessary; QUEUE_SMOOTH implicitly checks IS_SMOOTH so don't check again
 	QUEUE_SMOOTH(src)
 
 	//atom color stuff
@@ -165,8 +164,8 @@
 	// this is to trigger entered effects
 	// bad news is this is not necessarily currently idempotent
 	// we probably have to deal with this at.. some point.
-	for(var/atom/movable/AM in src)
-		Entered(AM)
+	for(var/atom/movable/content as anything in src)
+		Entered(content)
 
 	var/area/A = loc
 
@@ -231,7 +230,7 @@
 
 	// clear vis contents here instead of in Init
 	if(length(vis_contents))
-		vis_contents.len = 0
+		vis_contents.Cut()
 
 	..()
 

@@ -57,7 +57,6 @@
 
 //! WARNING SHITCODE REMOVE LATER
 /mob/living/carbon/human/LateInitialize()
-	. = ..()
 	regenerate_icons()
 	update_transform()
 

@@ -75,13 +75,6 @@ GLOBAL_LIST(topic_status_cache)
 	SSdbcore.SetRoundID()
 	SetupLogs()
 
-// #ifndef USE_CUSTOM_ERROR_HANDLER
-// 	world.log = file("[GLOB.log_directory]/dd.log")
-// #else
-// 	if (TgsAvailable())
-// 		world.log = file("[GLOB.log_directory]/dd.log") //not all runtimes trigger world/Error, so this is the only way to ensure we can see all of them.
-// #endif
-
 	// shunt redirected world log from Master's init back into world log proper, now that logging has been set up.
 	shunt_redirected_log()
 
@@ -525,6 +518,9 @@ GLOBAL_LIST(topic_status_cache)
 	// we already know, we don't care
 	if(global.world_log_redirected)
 		return
+	// we're not running in tgs, do not redirect world.log
+	if(!world.params["server_service_version"])
+		return
 	global.world_log_redirected = TRUE
 	if(fexists("data/logs/world_init_temporary.log"))
 		fdel("data/logs/world_init_temporary.log")
@@ -538,8 +534,13 @@ GLOBAL_LIST(topic_status_cache)
 /world/proc/shunt_redirected_log()
 // if we're unit testing do not ever redirect world.log or the test won't show output.
 #ifndef UNIT_TESTS
+	// we're not running in tgs, do not redirect world.log
+	if(!world.params["server_service_version"])
+		return
+	// if logs are to be redirected, send it to that folder
 	if(!(OVERRIDE_LOG_DIRECTORY_PARAMETER in params))
 		world.log = file("[GLOB.log_directory]/dd.log")
+	// handle pre-init log redirection
 	if(!world_log_redirected)
 		log_world("World log shunt never happened. Something has gone wrong!")
 		return

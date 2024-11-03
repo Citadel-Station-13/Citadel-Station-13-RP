@@ -11,7 +11,9 @@
 	var/is_browser = FALSE
 	var/status = TGUI_WINDOW_CLOSED
 	var/locked = FALSE
+	// todo: combine with subscriber_object
 	var/datum/tgui/locked_by
+	// todo: combine with locked_by
 	var/datum/subscriber_object
 	var/subscriber_delegate
 	var/fatally_errored = FALSE
@@ -30,14 +32,25 @@
 	var/mouse_event_macro_set = FALSE
 
 /**
+ * Linter check, do not call.
+ */
+/proc/lint__check_tgui_window_new_doesnt_sleep()
+	SHOULD_NOT_SLEEP(TRUE)
+	var/datum/tgui_window/window
+	window.New()
+
+/**
  * public
  *
  * Create a new tgui window.
+ *
+ * * Does not block.
  *
  * required client /client
  * required id string A unique window identifier.
  */
 /datum/tgui_window/New(client/client, id, pooled = FALSE)
+	ASSERT(!client.tgui_windows[id])
 	src.id = id
 	src.client = client
 	src.client.tgui_windows[id] = src
