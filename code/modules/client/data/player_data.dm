@@ -63,7 +63,9 @@ GLOBAL_LIST_EMPTY(player_data)
 		if(isnull(available))
 			available = FALSE
 		return FALSE
-	INVOKE_ASYNC(src, PROC_REF(load_blocking))
+	// make separate call chain; do not mess with client init
+	spawn(0)
+		load_blocking()
 	return TRUE
 
 /datum/player_data/proc/load_blocking()
@@ -221,8 +223,9 @@ GLOBAL_LIST_EMPTY(player_data)
  * async
  */
 /datum/player_data/proc/log_connect()
-	set waitfor = FALSE
-	update_last_seen()
+	// make separate call chain; do not mess with client init
+	spawn(0)
+		update_last_seen()
 
 /datum/player_data/proc/update_last_seen()
 	// don't interrupt

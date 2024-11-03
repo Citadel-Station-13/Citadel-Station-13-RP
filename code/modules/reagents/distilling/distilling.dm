@@ -151,7 +151,6 @@
 			to_chat(user, "<span class='notice'>You press \the [src]'s chamber agitator button.</span>")
 			if(on)
 				visible_message("<span class='notice'>\The [src] rattles to life.</span>")
-				Reservoir.reagents.handle_reactions()
 			else
 				spawn(1 SECOND)
 					to_chat(user, "<span class='notice'>Nothing happens..</span>")
