@@ -82,8 +82,8 @@ GLOBAL_LIST_INIT(default_medbay_channels, list(
 	wires = new(src)
 	internal_channels = GLOB.default_internal_channels.Copy()
 	listening_objects += src
-	if(frequency < RADIO_LOW_FREQ || frequency > RADIO_HIGH_FREQ)
-		frequency = sanitize_frequency(frequency, RADIO_LOW_FREQ, RADIO_HIGH_FREQ)
+	if(frequency < MIN_FREE_FREQ || frequency > MAX_FREE_FREQ)
+		frequency = sanitize_frequency(frequency, free = TRUE)
 	set_frequency(frequency)
 
 	for (var/ch_name in channels)
@@ -182,8 +182,8 @@ GLOBAL_LIST_INIT(default_medbay_channels, list(
 	if(syndie)
 		data["useSyndMode"] = TRUE
 
-	data["minFrequency"] = PUBLIC_LOW_FREQ
-	data["maxFrequency"] = PUBLIC_HIGH_FREQ
+	data["minFrequency"] = MIN_FREQ
+	data["maxFrequency"] = MAX_FREQ
 
 	return data
 
@@ -194,7 +194,7 @@ GLOBAL_LIST_INIT(default_medbay_channels, list(
 	switch(action)
 		if("setFrequency")
 			var/new_frequency = (text2num(params["freq"]))
-			if((new_frequency < PUBLIC_LOW_FREQ || new_frequency > PUBLIC_HIGH_FREQ))
+			if((new_frequency < MIN_FREQ || new_frequency > MAX_FREQ))
 				new_frequency = sanitize_frequency(new_frequency)
 			set_frequency(new_frequency)
 			if(hidden_uplink)

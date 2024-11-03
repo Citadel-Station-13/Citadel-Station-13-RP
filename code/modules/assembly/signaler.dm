@@ -46,8 +46,8 @@
 	var/list/data = list()
 	data["frequency"] = frequency
 	data["code"] = code
-	data["minFrequency"] = RADIO_LOW_FREQ
-	data["maxFrequency"] = RADIO_HIGH_FREQ
+	data["minFrequency"] = MIN_FREE_FREQ
+	data["maxFrequency"] = MAX_FREE_FREQ
 	return data
 
 /obj/item/assembly/signaler/ui_act(action, list/params, datum/tgui/ui)
@@ -60,7 +60,7 @@
 			. = TRUE
 		if("freq")
 			frequency = unformat_frequency(params["freq"])
-			frequency = sanitize_frequency(frequency, RADIO_LOW_FREQ, RADIO_HIGH_FREQ)
+			frequency = sanitize_frequency(frequency, free = TRUE)
 			set_frequency(frequency)
 			. = TRUE
 		if("code")

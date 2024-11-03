@@ -127,7 +127,7 @@
 	if(!radio_controller)
 		return
 
-	if (src.frequency < PUBLIC_LOW_FREQ || src.frequency > PUBLIC_HIGH_FREQ)
+	if (src.frequency < MIN_FREQ || src.frequency > MAX_FREQ)
 		src.frequency = sanitize_frequency(src.frequency)
 
 	set_frequency(frequency)
