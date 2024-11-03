@@ -9676,6 +9676,19 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/research/researchdivision)
+"gtd" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/navgold/border{
+	dir = 8
+	},
+/obj/machinery/light{
+	dir = 8;
+	light_range = 12
+	},
+/turf/simulated/floor/tiled,
+/area/endeavour/hallway/d2fwdhall)
 "gtH" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/black,
 /obj/machinery/air_alarm{
@@ -28220,6 +28233,19 @@
 	},
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d2portamidhall)
+"sFY" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/navblue/border{
+	dir = 8
+	},
+/obj/machinery/light{
+	dir = 8;
+	light_range = 12
+	},
+/turf/simulated/floor/tiled,
+/area/endeavour/hallway/d2fwdhall)
 "sGF" = (
 /obj/machinery/power/apc/east_mount,
 /obj/structure/cable/green{
@@ -66477,11 +66503,11 @@ aNn
 rgv
 dSt
 dSt
-dSt
+sFY
 dSt
 oZA
 cmb
-cmb
+gtd
 cmb
 mRH
 tYH
