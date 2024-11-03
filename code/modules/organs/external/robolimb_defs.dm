@@ -54,6 +54,63 @@
 	species_alternates = list(SPECIES_TAJ = "Nanotrasen - Tajaran", SPECIES_UNATHI = "Nanotrasen - Unathi")
 	bodyset = /datum/bodyset/synthetic/nanotrasen
 
+// todo: oss_vulpkanin
+/datum/robolimb/dsi_vulpkanin
+	company = "OSS - Vulpkanin"
+	desc = "This limb feels soft and fluffy, realistic design and squish. Seems a little mischievous. By Onkhera Synthetic Solutions."
+	blood_color = "#ffe2ff"
+	lifelike = 1
+	unavailable_to_build = TRUE
+	skin_tone = 1
+	suggested_species = SPECIES_VULPKANIN
+	speech_bubble_appearance = "normal"
+	modular_bodyparts = MODULAR_BODYPART_INVALID
+	bodyset = /datum/bodyset/synthetic/oss_vulpkanin
+
+/datum/robolimb/insect
+	company = "Psyche - Insect"
+	desc = "This high quality limb is nearly indistinguishable from an organic one."
+	bodyset = /datum/bodyset/organic/insect
+	blood_color = "#808000"
+	lifelike = 1
+	skin_tone = TRUE
+	speech_bubble_appearance = "normal"
+	modular_bodyparts = MODULAR_BODYPART_INVALID
+
+/datum/robolimb/moth
+	company = "Psyche - Moth"
+	desc = "This high quality limb is nearly indistinguishable from an organic one."
+	bodyset = /datum/bodyset/organic/moth
+	blood_color = "#808000"
+	lifelike = 1
+	skin_tone = TRUE
+	speech_bubble_appearance = "normal"
+	modular_bodyparts = MODULAR_BODYPART_INVALID
+
+/datum/robolimb/veymed
+	company = "Vey-Med"
+	desc = "This high quality limb is nearly indistinguishable from an organic one."
+	bodyset = /datum/bodyset/synthetic/veymed
+	unavailable_to_build = TRUE
+	lifelike = 1
+	skin_tone = 1
+	species_alternates = list(SPECIES_SKRELL = "Vey-Med - Skrell")
+	blood_color = "#CCCCCC"
+	blood_name = "coolant"
+	speech_bubble_appearance = "normal"
+	robo_brute_mod = 1.1
+	robo_burn_mod = 1.1
+	modular_bodyparts = MODULAR_BODYPART_INVALID
+
+/datum/robolimb/veymed/skrell
+	company = "Vey-Med - Skrell"
+	species_cannot_use = list(SPECIES_TESHARI, SPECIES_PROMETHEAN, SPECIES_TAJ, SPECIES_HUMAN, SPECIES_VOX, SPECIES_HUMAN_VATBORN, SPECIES_UNATHI, SPECIES_DIONA, SPECIES_ZADDAT)
+	bodyset = /datum/bodyset/synthetic/veymed/skrell
+	blood_color = "#4451cf"
+	speech_bubble_appearance = "normal"
+	robo_brute_mod = 1.05
+	robo_burn_mod = 1.05
+
 #warn below
 
 /datum/robolimb/unbranded_monitor
@@ -251,51 +308,6 @@
 	icon = 'icons/mob/cyberlimbs/morpheus/morpheus_alt2.dmi'
 	unavailable_to_build = TRUE
 	parts = list(BP_HEAD)
-
-/datum/robolimb/veymed
-	company = "Vey-Med"
-	desc = "This high quality limb is nearly indistinguishable from an organic one."
-	icon = 'icons/mob/cyberlimbs/veymed/veymed_main.dmi'
-	unavailable_to_build = TRUE
-	lifelike = 1
-	skin_tone = 1
-	species_alternates = list(SPECIES_SKRELL = "Vey-Med - Skrell")
-	blood_color = "#CCCCCC"
-	blood_name = "coolant"
-	speech_bubble_appearance = "normal"
-	robo_brute_mod = 1.1
-	robo_burn_mod = 1.1
-	modular_bodyparts = MODULAR_BODYPART_INVALID
-
-/datum/robolimb/veymed/skrell
-	company = "Vey-Med - Skrell"
-	species_cannot_use = list(SPECIES_TESHARI, SPECIES_PROMETHEAN, SPECIES_TAJ, SPECIES_HUMAN, SPECIES_VOX, SPECIES_HUMAN_VATBORN, SPECIES_UNATHI, SPECIES_DIONA, SPECIES_ZADDAT)
-	blood_color = "#4451cf"
-	speech_bubble_appearance = "normal"
-	robo_brute_mod = 1.05
-	robo_burn_mod = 1.05
-
-// thanks kraso
-/datum/robolimb/moth
-	company = "Psyche - Moth"
-	desc = "This high quality limb is nearly indistinguishable from an organic one."
-	bodyset = /datum/bodyset/organic/moth
-	blood_color = "#808000"
-	lifelike = 1
-	skin_tone = TRUE
-	speech_bubble_appearance = "normal"
-	modular_bodyparts = MODULAR_BODYPART_INVALID
-
-/datum/robolimb/insect
-	company = "Psyche - Insect"
-	desc = "This high quality limb is nearly indistinguishable from an organic one."
-	bodyset = /datum/bodyset/organic/insect
-	blood_color = "#808000"
-	lifelike = 1
-	skin_tone = TRUE
-	speech_bubble_appearance = "normal"
-	modular_bodyparts = MODULAR_BODYPART_INVALID
-
 
 /datum/robolimb/wardtakahashi
 	company = "Ward-Takahashi"
@@ -508,19 +520,6 @@
 	legacy_includes_tail = /datum/sprite_accessory/tail/bodyset/oss_nevrean
 	skin_tone = 1
 	suggested_species = SPECIES_NEVREAN
-	speech_bubble_appearance = "normal"
-	modular_bodyparts = MODULAR_BODYPART_INVALID
-
-/datum/robolimb/dsi_vulpkanin
-	company = "OSS - Vulpkanin"
-	desc = "This limb feels soft and fluffy, realistic design and squish. Seems a little mischievous. By Onkhera Synthetic Solutions."
-	icon = 'icons/mob/cyberlimbs/DSIVulpkanin/dsi_vulpkanin.dmi'
-	blood_color = "#ffe2ff"
-	lifelike = 1
-	unavailable_to_build = TRUE
-	legacy_includes_tail = /datum/sprite_accessory/tail/bodyset/oss_vulpkanin
-	skin_tone = 1
-	suggested_species = SPECIES_VULPKANIN
 	speech_bubble_appearance = "normal"
 	modular_bodyparts = MODULAR_BODYPART_INVALID
 
