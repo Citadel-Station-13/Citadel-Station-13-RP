@@ -4,15 +4,17 @@
 
 	/// expected type of prototype
 	var/expected_type
+
+	/// by-id lookup
+	var/list/id_lookup
 	/// by-type lookup
 	var/list/type_lookup
-	/// by-id lookup
-	var/list/uid_lookup
+
 	/// fetched subtype lists
-	var/list/subtype_lists
+	var/tmp/list/subtype_lists
 
 /datum/controller/repository/Initialize()
-	uid_lookup = list()
+	id_lookup = list()
 	type_lookup = list()
 	subtype_lists = list()
 	generate()
@@ -28,7 +30,7 @@
 	. = ..()
 	if(!istype(old_instance))
 		src.type_lookup = list()
-		src.uid_lookup = list()
+		src.id_lookup = list()
 		src.subtype_lists = list()
 		generate()
 		return FALSE
@@ -36,11 +38,25 @@
 	if(!islist(src.type_lookup))
 		src.type_lookup = list()
 		. = FALSE
-	src.uid_lookup = old_instance.uid_lookup
-	if(!islist(src.uid_lookup))
-		src.uid_lookup = list()
+	src.id_lookup = old_instance.id_lookup
+	if(!islist(src.id_lookup))
+		src.id_lookup = list()
 		. = FALSE
 	src.subtype_lists = list()
+
+/**
+ * regenerates entries, kicking out anything that's in the way
+ */
+/datum/controller/repository/proc/generate()
+	for(var/datum/prototype/instance as anything in subtypesof(expected_type))
+		if(initial(instance.abstract_type) == instance)
+			continue
+		if(initial(instance.lazy))
+			continue
+		instance = new instance
+		load_internal(instance, TRUE, TRUE)
+
+//* Public API *//
 
 /**
  * prototypes returned should generally not be modified.
@@ -50,14 +66,14 @@
 	if(isnull(type_or_id))
 		return
 	if(istext(type_or_id))
-		return uid_lookup[type_or_id]
+		return id_lookup[type_or_id]
 	. = type_lookup[type_or_id]
 	if(.)
 		return
 	// types are complicated, is it lazy?
 	if(initial(type_or_id.lazy))
 		// if so, init it
-		register_internal((. = new type_or_id), TRUE, TRUE)
+		load_internal((. = new type_or_id), TRUE, TRUE)
 	else
 		CRASH("failed to fetch a hardcoded prototype")
 
@@ -77,14 +93,32 @@
 		generating += instance
 	return generating
 
-/datum/controller/repository/proc/register(datum/prototype/instance, force)
-	return register_internal(instance, force, FALSE)
+/**
+ * Registers a prototype created midround.
+ *
+ * * This can immediately save it to the database.
+ * * After calling this, **you must release any cached references to the instance from the calling proc.**
+ *   After this call, the repository now owns the instance, not whichever system created it.
+ */
+/datum/controller/repository/proc/register(datum/prototype/instance)
+	return load_internal(instance, force, FALSE)
 
-/datum/controller/repository/proc/register_internal(datum/prototype/instance, force, hardcoded)
+//* Private API *//
+
+/**
+ * Registers a prototype with the subsystem.
+ *
+ * * This is for internal use.
+ */
+/datum/controller/repository/proc/load(datum/prototype/instance, force)
 	PRIVATE_PROC(TRUE)
-	if(uid_lookup[instance] && !force)
+	return load_internal(instance, force, FALSE)
+
+/datum/controller/repository/proc/load_internal(datum/prototype/instance, force, hardcoded)
+	PRIVATE_PROC(TRUE)
+	if(id_lookup[instance] && !force)
 		return FALSE
-	uid_lookup[instance] = instance
+	id_lookup[instance] = instance
 	if(hardcoded)
 		// invalidate cache
 		// todo: smarter way to do this
@@ -92,7 +126,14 @@
 		type_lookup[instance.type] = instance
 	return TRUE
 
-/datum/controller/repository/proc/unregister(datum/prototype/instance)
+/**
+ * Unregister a prototype.
+ *
+ * * This does not delete it from existence, this just unloads it from the subsystem.
+ * * This is for internal use.
+ */
+/datum/controller/repository/proc/unload(datum/prototype/instance)
+	PRIVATE_PROC(TRUE)
 	if(type_lookup[instance.type] == instance)
 		CRASH("tried to unregister a hardcoded instance")
 	if(!instance.unregister())
@@ -100,17 +141,5 @@
 	// invalidate cache
 	// todo: smarter way to do this
 	subtype_lists = list()
-	uid_lookup -= instance.id
+	id_lookup -= instance.id
 	return TRUE
-
-/**
- * regenerates entries, kicking out anything that's in the way
- */
-/datum/controller/repository/proc/generate()
-	for(var/datum/prototype/instance as anything in subtypesof(expected_type))
-		if(initial(instance.abstract_type) == instance)
-			continue
-		if(initial(instance.lazy))
-			continue
-		instance = new instance
-		register_internal(instance, TRUE, TRUE)

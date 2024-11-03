@@ -1,5 +1,5 @@
 //* This file is explicitly licensed under the MIT license. *//
-//* Copyright (c) 2023 Citadel Station developers.          *//
+//* Copyright (c) 2024 Citadel Station Developers           *//
 
 //* This is here in [code/__DEFINES/controllers/_repositories.dm] for compile order reasons. *//
 /datum/controller/subsystem/repository/proc/__init_repositories()
