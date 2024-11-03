@@ -2,6 +2,9 @@
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
 //* This is here in [code/__DEFINES/controllers/_repositories.dm] for compile order reasons. *//
+/datum/controller/subsystem/repository/proc/__create_repositories()
+
+//* This is here in [code/__DEFINES/controllers/_repositories.dm] for compile order reasons. *//
 /datum/controller/subsystem/repository/proc/__init_repositories()
 
 #define REPOSITORY_DEF(what) \
@@ -14,9 +17,12 @@ GLOBAL_REAL(RS##what, /datum/controller/repository/##what); \
 	global.RS##what = src; \
 } \
 /datum/controller/subsystem/repository/var/datum/controller/repository/##what/RS##what; \
-/datum/controller/subsystem/repository/__init_repositories() { \
+/datum/controller/subsystem/repository/__create_repositories() { \
 	..(); \
 	RS##what = new; \
+} \
+/datum/controller/subsystem/repository/__init_repositories() { \
+	..(); \
 	RS##what.Initialize(); \
 } \
 /datum/controller/repository/##what

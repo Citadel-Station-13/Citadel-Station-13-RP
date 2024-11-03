@@ -1,3 +1,21 @@
+/**
+ * Repository controllers.
+ *
+ * Storage for prototypes.
+ *
+ * Allows:
+ *
+ * * Looking instances up via ID
+ * * Looking instances up via typepath (if hardcoded)
+ *
+ * Should be:
+ *
+ * * Init order independent. This means that repositories should function
+ *   if the database is up even if it hasn't technically initialized yet.
+ *   This is because repositories init in an undetermined order (on purpose),
+ *   and many repositories may / will depend on others.
+ *   As an example, design datums require resolution of material datums.
+ */
 /datum/controller/repository
 	abstract_type = /datum/controller/repository
 	name = "REPOSITORY OF SOME KIND"
@@ -75,7 +93,7 @@
 	// types are complicated, is it lazy?
 	if(initial(type_or_id.lazy))
 		// if so, init it
-		load_internal((. = new type_or_id), TRUE, TRUE)
+		load_internal((. = new type_or_id), null, TRUE)
 	else
 		CRASH("failed to fetch a hardcoded prototype")
 
@@ -133,6 +151,7 @@
 		return FALSE
 	id_lookup[instance] = instance
 	if(hardcoded)
+		instance.hardcoded = TRUE
 		// invalidate cache
 		// todo: smarter way to do this
 		subtype_lists = list()
