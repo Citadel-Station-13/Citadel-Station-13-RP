@@ -55,6 +55,8 @@ research holder datum.
 	var/list/known_design_ids
 
 /datum/research/New() //Insert techs into possible_tech here. Known_tech automatically updated.
+	if(stores_designs)
+		known_design_ids = list()
 	for(var/T in typesof(/datum/tech) - /datum/tech)
 		known_tech += new T(src)
 	RefreshResearch()
@@ -100,14 +102,17 @@ research holder datum.
 				known.level = T.level
 
 /datum/research/proc/AddDesign2Known(var/datum/prototype/design/D)
+	if(!stores_designs)
+		return
 	known_design_ids |= D.id
 
 ///Refreshes known_tech and known_designs list
 ///Input/Output: n/a
 /datum/research/proc/RefreshResearch()
-	for(var/datum/prototype/design/PD in RSdesigns.fetch_subtypes(/datum/prototype/design))
-		if(DesignHasReqs(PD))
-			AddDesign2Known(PD)
+	if(stores_designs)
+		for(var/datum/prototype/design/PD in RSdesigns.fetch_subtypes(/datum/prototype/design))
+			if(DesignHasReqs(PD))
+				AddDesign2Known(PD)
 	for(var/datum/tech/T in known_tech)
 		T.level = clamp( T.level, 0,  20)
 
