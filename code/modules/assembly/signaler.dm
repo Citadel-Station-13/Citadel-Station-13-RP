@@ -23,7 +23,6 @@
 	return INITIALIZE_HINT_LATELOAD
 
 /obj/item/assembly/signaler/LateInitialize()
-	. = ..()
 	set_frequency(frequency)
 
 /obj/item/assembly/signaler/activate()

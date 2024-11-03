@@ -141,7 +141,6 @@
 		else
 			for(var/obj/machinery/telecomms/T in GLOB.telecomms_list)
 				add_link(T)
-	return ..()
 
 /obj/machinery/telecomms/Destroy()
 	GLOB.telecomms_list -= src
