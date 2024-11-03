@@ -34,14 +34,27 @@
 	/// fetched subtype lists
 	var/tmp/list/subtype_lists
 
+	/// temporary id to path lookup used during init
+	//  todo: figure out a way to not do this, this is bad
+	var/tmp/list/init_reverse_lookup_shim
+
 /datum/controller/repository/proc/Create()
 	id_lookup = list()
 	type_lookup = list()
 	subtype_lists = list()
+	init_reverse_lookup_shim = list()
+	for(var/datum/prototype/casted as anything in subtypesof(expected_type))
+		if(initial(casted.abstract_type) == casted)
+			continue
+		var/casted_id = initial(casted.id)
+		if(!casted_id)
+			continue
+		init_reverse_lookup_shim[casted_id] = casted
 	return TRUE
 
 /datum/controller/repository/Initialize()
 	generate()
+	init_reverse_lookup_shim = null
 	return ..()
 
 /**
@@ -101,8 +114,11 @@
 	// todo: optimize
 	if(isnull(type_or_id))
 		return
-	else if(istype(type_or_id))
-		return type_or_id
+	else if(istext(type_or_id))
+		if(init_reverse_lookup_shim)
+			var/potential_path = init_reverse_lookup_shim[type_or_id]
+			return fetch(potential_path)
+		return id_lookup[type_or_id]
 	else if(ispath(type_or_id))
 		. = type_lookup[type_or_id]
 		if(.)
@@ -113,8 +129,8 @@
 		loading.hardcoded = TRUE
 		load(loading)
 		return loading
-	else if(istext(type_or_id))
-		return id_lookup[type_or_id]
+	else if(istype(type_or_id))
+		return type_or_id
 	else
 		CRASH("what?")
 
