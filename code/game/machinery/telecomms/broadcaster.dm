@@ -333,7 +333,7 @@ var/message_delay = 0 // To make sure restarting the recentmessages list is kept
 					blackbox.msg_syndicate += blackbox_msg
 				if(RAID_FREQ)
 					blackbox.msg_raider += blackbox_msg
-				if(SUP_FREQ)
+				if(FREQ_SUPPLY)
 					blackbox.msg_cargo += blackbox_msg
 				if(SRV_FREQ)
 					blackbox.msg_service += blackbox_msg
@@ -507,7 +507,7 @@ var/message_delay = 0 // To make sure restarting the recentmessages list is kept
 					blackbox.msg_syndicate += blackbox_msg
 				if(RAID_FREQ)
 					blackbox.msg_raider += blackbox_msg
-				if(SUP_FREQ)
+				if(FREQ_SUPPLY)
 					blackbox.msg_cargo += blackbox_msg
 				if(SRV_FREQ)
 					blackbox.msg_service += blackbox_msg
