@@ -1,14 +1,14 @@
 //* This file is explicitly licensed under the MIT license. *//
-//* Copyright (c) 2023 Citadel Station developers.          *//
+//* Copyright (c) 2024 Citadel Station Developers           *//
 
 /**
  * design datums for holding what lathes can print.
  *
  * relevant bitfields are in [code/__DEFINES/machines/lathe.dm]
  */
-/datum/design
+/datum/prototype/design
 	/// Abstract type.
-	abstract_type = /datum/design
+	abstract_type = /datum/prototype/design
 
 	//? Design Data - Core
 	/// Must be unique - id of design in CamelCase.
@@ -63,11 +63,11 @@
 	///IDs of that techs the object originated from and the minimum level requirements.
 	var/list/req_tech = list()
 
-/datum/design/New()
+/datum/prototype/design/New()
 	autodetect()
 	generate()
 
-/datum/design/proc/autodetect()
+/datum/prototype/design/proc/autodetect()
 	if(isnull(build_path))
 		return
 	if(ispath(build_path, /obj/item/stack))
@@ -97,22 +97,22 @@
 		build_desc = instance.desc
 	qdel(instance)
 
-/datum/design/proc/generate()
+/datum/prototype/design/proc/generate()
 	if(!name)
 		name = generate_name(design_name || build_name)
 	if(!desc)
 		desc = generate_desc(design_name || build_name, build_desc)
 
-/datum/design/proc/generate_name(template)
+/datum/prototype/design/proc/generate_name(template)
 	return template
 
-/datum/design/proc/generate_desc(template_name, template_desc)
+/datum/prototype/design/proc/generate_desc(template_name, template_desc)
 	return template_desc
 
 /**
  * Encodes data for [tgui/packages/tgui/interfaces/common/Design.tsx]
  */
-/datum/design/proc/ui_data_list()
+/datum/prototype/design/proc/ui_data_list()
 	return list(
 		"name" = name,
 		"desc" = desc,
@@ -143,7 +143,7 @@
  *
  * @return created atom, or list of created atoms.
  */
-/datum/design/proc/print(atom/where, amount, list/material_parts, list/ingredient_parts, list/reagent_parts, cost_multiplier = 1)
+/datum/prototype/design/proc/print(atom/where, amount, list/material_parts, list/ingredient_parts, list/reagent_parts, cost_multiplier = 1)
 	var/list/resolved_material_parts = SSmaterials.preprocess_kv_values_to_instances(material_parts)
 	if(is_stack)
 		var/stack_size = max_stack
@@ -180,7 +180,7 @@
 /**
  * material parts gets resolved to instances
  */
-/datum/design/proc/on_print(atom/created, list/resolved_material_parts, list/ingredient_parts, list/reagent_parts, cost_multiplier = 1)
+/datum/prototype/design/proc/on_print(atom/created, list/resolved_material_parts, list/ingredient_parts, list/reagent_parts, cost_multiplier = 1)
 	if(isobj(created))
 		var/obj/O = created
 		O.set_materials_base(materials_base)
@@ -195,7 +195,7 @@
  * * fabricator - the lathe printing the product
  * * material_parts - assoc list of materials to use, based on the variable of the same name
  */
-/datum/design/proc/lathe_print(atom/where, amount, list/material_parts, list/ingredient_parts, list/reagent_parts, obj/machinery/lathe/fabricator, cost_multiplier = 1)
+/datum/prototype/design/proc/lathe_print(atom/where, amount, list/material_parts, list/ingredient_parts, list/reagent_parts, obj/machinery/lathe/fabricator, cost_multiplier = 1)
 	return print(where, amount, material_parts, ingredient_parts, reagent_parts, cost_multiplier)
 
 //? legacy below
@@ -203,5 +203,5 @@
 /**
  * for legacy lathes
  */
-/datum/design/proc/legacy_print(atom/where, fabricator)
+/datum/prototype/design/proc/legacy_print(atom/where, fabricator)
 	return print(where, 1)

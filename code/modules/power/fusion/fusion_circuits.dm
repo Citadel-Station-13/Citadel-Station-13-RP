@@ -61,33 +61,33 @@
 							/obj/item/stock_parts/capacitor/adv = 1
 							)
 
-/datum/design/circuit/fusion
+/datum/prototype/design/circuit/fusion
 	name = "fusion core control console"
 	id = "fusion_core_control"
 	build_path = /obj/item/circuitboard/fusion_core_control
 	req_tech = list(TECH_POWER = 3, TECH_ENGINEERING = 3, TECH_MATERIAL = 3)
 
-/datum/design/circuit/fusion/fuel_compressor
+/datum/prototype/design/circuit/fusion/fuel_compressor
 	name = "fusion fuel compressor"
 	id = "fusion_fuel_compressor"
 	build_path = /obj/item/circuitboard/fusion_fuel_compressor
 
-/datum/design/circuit/fusion/fuel_control
+/datum/prototype/design/circuit/fusion/fuel_control
 	name = "fusion fuel control console"
 	id = "fusion_fuel_control"
 	build_path = /obj/item/circuitboard/fusion_fuel_control
 
-/datum/design/circuit/fusion/gyrotron_control
+/datum/prototype/design/circuit/fusion/gyrotron_control
 	name = "gyrotron control console"
 	id = "gyrotron_control"
 	build_path = /obj/item/circuitboard/gyrotron_control
 
-/datum/design/circuit/fusion/core
+/datum/prototype/design/circuit/fusion/core
 	name = "fusion core"
 	id = "fusion_core"
 	build_path = /obj/item/circuitboard/fusion_core
 
-/datum/design/circuit/fusion/injector
+/datum/prototype/design/circuit/fusion/injector
 	name = "fusion fuel injector"
 	id = "fusion_injector"
 	build_path = /obj/item/circuitboard/fusion_injector

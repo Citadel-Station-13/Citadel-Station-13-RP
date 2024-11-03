@@ -1,5 +1,5 @@
 
-/datum/design/weapon/tactical_knife
+/datum/prototype/design/weapon/tactical_knife
 	id = "WeaponTacticalKnife"
 	build_path = /obj/item/material/knife/tacknife
 	lathe_type = LATHE_TYPE_AUTOLATHE

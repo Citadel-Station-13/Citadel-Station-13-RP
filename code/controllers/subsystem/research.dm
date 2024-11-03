@@ -1,6 +1,8 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2023 Citadel Station developers.          *//
 
+#warn nuke
+
 SUBSYSTEM_DEF(research)
 	name = "Research"
 	subsystem_flags = SS_NO_FIRE
@@ -48,7 +50,7 @@ SUBSYSTEM_DEF(research)
  * you should know what you are doing before trying this
  * make sure you drop all references of the design from your end!
  */
-/datum/controller/subsystem/research/proc/register_design(datum/design/registering)
+/datum/controller/subsystem/research/proc/_register_design(datum/design/registering)
 	if(design_lookup[registering.id])
 		return FALSE
 	. = TRUE
@@ -64,7 +66,7 @@ SUBSYSTEM_DEF(research)
  *
  * *do not* modify the datum returned!
  */
-/datum/controller/subsystem/research/proc/fetch_design(datum/design/id_or_typepath)
+/datum/controller/subsystem/research/proc/_fetch_design(datum/design/id_or_typepath)
 	RETURN_TYPE(/datum/design)
 	return design_lookup[ispath(id_or_typepath)? initial(id_or_typepath.id) : id_or_typepath]
 
@@ -73,7 +75,7 @@ SUBSYSTEM_DEF(research)
  *
  * *do not* modify the datums returned!
  */
-/datum/controller/subsystem/research/proc/fetch_designs(list/datum/design/id_or_typepaths)
+/datum/controller/subsystem/research/proc/_fetch_designs(list/datum/design/id_or_typepaths)
 	RETURN_TYPE(/list)
 	. = list()
 	var/datum/design/thing

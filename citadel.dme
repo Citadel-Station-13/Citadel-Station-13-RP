@@ -520,6 +520,7 @@
 #include "code\controllers\configuration_old\configuration.dm"
 #include "code\controllers\configuration_old\configuration_vr.dm"
 #include "code\controllers\observer_listener\atom\observer.dm"
+#include "code\controllers\repository\designs.dm"
 #include "code\controllers\repository\guidebook.dm"
 #include "code\controllers\repository\structs.dm"
 #include "code\controllers\subsystem\ai_holders.dm"
