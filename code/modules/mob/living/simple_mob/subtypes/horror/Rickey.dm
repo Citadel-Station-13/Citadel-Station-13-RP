@@ -12,7 +12,6 @@
 	icon_living = "Rickey"
 	icon_dead = "r_head"
 	icon_rest = "Rickey"
-	faction = "horror"
 	icon = 'icons/mob/horror_show/GHPS.dmi'
 	icon_gib = "generic_gib"
 	catalogue_data = list(/datum/category_item/catalogue/fauna/horror/Rickey)
@@ -50,11 +49,11 @@
 	playsound(src, 'sound/h_sounds/headcrab.ogg', 50, 1)
 	..()
 
-/mob/living/simple_mob/horror/Rickey/bullet_act()
+/mob/living/simple_mob/horror/Rickey/on_bullet_act(obj/projectile/proj, impact_flags, list/bullet_act_args)
+	. = ..()
 	playsound(src, 'sound/h_sounds/holla.ogg', 50, 1)
-	..()
 
-/mob/living/simple_mob/horror/Rickey/attack_hand(mob/user, list/params)
+/mob/living/simple_mob/horror/Rickey/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	playsound(src, 'sound/h_sounds/holla.ogg', 50, 1)
 	..()
 

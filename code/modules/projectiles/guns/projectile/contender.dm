@@ -4,7 +4,7 @@
 	icon_state = "pockrifle"
 	var/icon_retracted = "pockrifle-empty"
 	item_state = "revolver"
-	caliber = ".357"
+	caliber = /datum/ammo_caliber/a357
 	handle_casings = HOLD_CASINGS
 	max_shells = 1
 	ammo_type = /obj/item/ammo_casing/a357
@@ -13,7 +13,7 @@
 	load_method = SINGLE_CASING
 	heavy = TRUE
 
-/obj/item/gun/ballistic/contender/attack_self(mob/user)
+/obj/item/gun/ballistic/contender/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -42,12 +42,12 @@
 	..()
 
 /obj/item/gun/ballistic/contender/a44
-	caliber = ".44"
+	caliber = /datum/ammo_caliber/a44
 	ammo_type = /obj/item/ammo_casing/a44
 
 /obj/item/gun/ballistic/contender/a762
-	caliber = "7.62mm"
-	ammo_type = /obj/item/ammo_casing/a762
+	caliber = /datum/ammo_caliber/a7_62mm
+	ammo_type = /obj/item/ammo_casing/a7_62mm
 
 /obj/item/gun/ballistic/contender/tacticool
 	desc = "A modified replica of an ancient one-shot hand-cannon, reinvented with a tactical look. For when you really want to make a hole. This one has been modified to work almost like a bolt-action."
@@ -55,12 +55,12 @@
 	icon_retracted = "pockrifle_b-empty"
 
 /obj/item/gun/ballistic/contender/tacticool/a44
-	caliber = ".44"
+	caliber = /datum/ammo_caliber/a44
 	ammo_type = /obj/item/ammo_casing/a44
 
 /obj/item/gun/ballistic/contender/tacticool/a762
-	caliber = "7.62mm"
-	ammo_type = /obj/item/ammo_casing/a762
+	caliber = /datum/ammo_caliber/a7_62mm
+	ammo_type = /obj/item/ammo_casing/a7_62mm
 
 /obj/item/gun/ballistic/contender/holy
 	name = "Divine Challenger"
@@ -72,12 +72,12 @@
 	holy = TRUE
 
 /obj/item/gun/ballistic/contender/holy/a44
-	caliber = ".44"
+	caliber = /datum/ammo_caliber/a44
 	ammo_type = /obj/item/ammo_casing/a44/silver
 
 /obj/item/gun/ballistic/contender/holy/a762
-	caliber = "7.62mm"
-	ammo_type = /obj/item/ammo_casing/a762/silver
+	caliber = /datum/ammo_caliber/a7_62mm
+	ammo_type = /obj/item/ammo_casing/a7_62mm/silver
 
 /obj/item/gun/ballistic/contender/taj
 	name = "Adhomai pocket rifle"
@@ -86,12 +86,12 @@
 	icon_retracted = "pockrifle_d-empty"
 
 /obj/item/gun/ballistic/contender/taj/a44
-	caliber = ".44"
+	caliber = /datum/ammo_caliber/a44
 	ammo_type = /obj/item/ammo_casing/a44
 
 /obj/item/gun/ballistic/contender/taj/a762
-	caliber = "7.62mm"
-	ammo_type = /obj/item/ammo_casing/a762
+	caliber = /datum/ammo_caliber/a7_62mm
+	ammo_type = /obj/item/ammo_casing/a7_62mm
 
 /obj/item/gun/ballistic/contender/pipegun
 	name = "improvised pipe rifle"
@@ -99,7 +99,7 @@
 	icon_state = "pipegun"
 	icon_retracted = "pipegun-empty"
 	item_state = "revolver"
-	caliber = "12g"
+	caliber = /datum/ammo_caliber/a12g
 	ammo_type = /obj/item/ammo_casing/a12g/improvised
 	projectile_type = /obj/projectile/bullet/shotgun
 	unstable = 1
@@ -129,7 +129,7 @@
 		to_chat(user, "<span class='notice'>\The [src] is completely inoperable!</span>")
 		handle_click_empty()
 
-/obj/item/gun/ballistic/contender/pipegun/attack_hand(mob/user, list/params)
+/obj/item/gun/ballistic/contender/pipegun/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(user.get_inactive_held_item() == src && destroyed)
 		to_chat(user, "<span class='danger'>\The [src]'s chamber is too warped to extract the casing!</span>")
 		return

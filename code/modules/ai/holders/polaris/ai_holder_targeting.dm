@@ -28,7 +28,7 @@
 /datum/ai_holder/polaris/proc/list_targets()
 	. = hearers(vision_range, holder) - holder // Remove ourselves to prevent suicidal decisions. ~ SRC is the ai_holder.
 
-	var/static/list/hostile_machines = typecacheof(list(/obj/machinery/porta_turret, /obj/mecha))
+	var/static/list/hostile_machines = typecacheof(list(/obj/machinery/porta_turret, /obj/vehicle/sealed/mecha))
 	var/static/list/ignore = typecacheof(list(/mob/observer))
 
 	for(var/HM in typecache_filter_list(range(vision_range, holder), hostile_machines))
@@ -133,17 +133,17 @@
 					return FALSE
 		return TRUE
 
-	if(istype(the_target, /obj/mecha))
-		var/obj/mecha/M = the_target
-		if(M.occupant)
-			return can_attack(M.occupant)
+	if(istype(the_target, /obj/vehicle/sealed/mecha))
+		var/obj/vehicle/sealed/mecha/M = the_target
+		if(M.occupant_legacy)
+			return can_attack(M.occupant_legacy)
 		return destructive // Empty mechs are 'neutral'.
 
 	if(istype(the_target, /obj/machinery/porta_turret))
 		var/obj/machinery/porta_turret/P = the_target
 		if(P.machine_stat & BROKEN)
 			return FALSE // Already dead.
-		if(P.faction == holder.faction)
+		if(holder.has_iff_faction(P.faction))
 			return FALSE // Don't shoot allied turrets.
 		if(!P.raised && !P.raising)
 			return FALSE // Turrets won't get hurt if they're still in their cover.

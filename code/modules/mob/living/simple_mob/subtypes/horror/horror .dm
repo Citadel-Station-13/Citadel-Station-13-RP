@@ -27,7 +27,7 @@
 
 /mob/living/simple_mob/horror
 	tt_desc = "Homo Horrificus"
-	faction = "horror"
+	iff_factions = MOB_IFF_FACTION_MUTANT
 	icon = 'icons/mob/horror_show/GHPS.dmi'
 	icon_gib = "generic_gib"
 	taser_kill = 0

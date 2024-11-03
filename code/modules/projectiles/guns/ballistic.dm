@@ -1,6 +1,9 @@
 /obj/item/gun/ballistic
 	name = "gun"
 	desc = "A gun that fires bullets."
+	description_info = "This is a ballistic weapon.  To fire the weapon, ensure your intent is *not* set to 'help', have your gun mode set to 'fire', \
+	then click where you want to fire.  To reload, click the weapon in your hand to unload (if needed), then add the appropriate ammo.  The description \
+	will tell you what caliber you need."
 	icon = 'icons/obj/gun/ballistic.dmi'
 	icon_state = "revolver"
 	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2)
@@ -9,9 +12,44 @@
 	recoil = 0
 	projectile_type = /obj/projectile/bullet/pistol/strong	//Only used for chameleon guns
 
-	var/caliber = ".357"		//determines which casings will fit
+	//* Configuration *//
+
+	/// If set, accepts ammo and magazines of this caliber.
+	var/caliber = /datum/ammo_caliber/a357
+
+	//* Rendering *//
+
+	/// Render an overlay when magazine is in.
+	///
+	/// todo: mob renderer integration
+	///
+	/// * This uses MAGAZINE_CLASS_* defines
+	/// * We'll look for a matching class that we support to render
+	/// * If we can't find one, we'll use any class that we have on ourselves
+	var/render_magazine_overlay = NONE
+	/// Render the chamber state.
+	///
+	/// todo: mob renderer integration
+	/// todo: this is not supported yet
+	///
+	/// * uses BALLISTIC_RENDER_BOLT_* enms
+	var/render_bolt_overlay = BALLISTIC_RENDER_BOLT_NEVER
+	/// Render the state of a gun that's 'break action'
+	///
+	/// todo: mob renderer integration
+	/// todo: this is not supported yet
+	///
+	/// * uses BALLISTIC_RENDER_BREAK_* enums
+	/// * This is also used for LMGs, and any other gun requiring this stuff.
+	var/render_break_overlay = BALLISTIC_RENDER_BREAK_NEVER
+
+	//! LEGACY BELOW
+
 	var/handle_casings = EJECT_CASINGS	//determines how spent casings should be handled
 	var/load_method = SINGLE_CASING|SPEEDLOADER //1 = Single shells, 2 = box or quick loader, 3 = magazine
+	var/load_method_converted = TRUE
+
+	// todo: rework mag handling, internal magazine?
 
 	//For SINGLE_CASING or SPEEDLOADER guns
 	var/max_shells = 0			//the number of casings that will fit inside
@@ -41,11 +79,17 @@
 				loaded += new ammo_type(src)
 		if(ispath(magazine_type) && (load_method & MAGAZINE))
 			ammo_magazine = new magazine_type(src)
-			allowed_magazines += /obj/item/ammo_magazine/smart
 	update_icon()
+
+	if(load_method & SPEEDLOADER)
+		load_method_converted |= MAGAZINE_TYPE_SPEEDLOADER | MAGAZINE_TYPE_CLIP
+	else if(load_method & MAGAZINE)
+		load_method_converted |= MAGAZINE_TYPE_NORMAL
 
 /obj/item/gun/ballistic/update_icon_state()
 	. = ..()
+	if((item_renderer || mob_renderer) || !render_use_legacy_by_default)
+		return // using new system
 	var/silenced_state = silenced ? silenced_icon : initial(icon_state)
 	var/magazine_state = ammo_magazine ? "" : "-empty"
 	if(magazine_type)
@@ -57,10 +101,8 @@
 		chambered = loaded[1] //load next casing.
 		if(handle_casings != HOLD_CASINGS)
 			loaded -= chambered
-	else if(ammo_magazine && ammo_magazine.stored_ammo.len)
-		chambered = ammo_magazine.stored_ammo[ammo_magazine.stored_ammo.len]
-		if(handle_casings != HOLD_CASINGS)
-			ammo_magazine.stored_ammo -= chambered
+	else if(ammo_magazine && ammo_magazine.amount_remaining())
+		chambered = ammo_magazine.pop(src)
 
 	if (chambered)
 		return chambered.get_projectile()
@@ -84,10 +126,10 @@
 		var/mob/living/carbon/human/H = loc
 		if(istype(H))
 			if(!H.gloves)
-				H.gunshot_residue = chambered.caliber
+				H.gunshot_residue = chambered.get_caliber_string()
 			else
 				var/obj/item/clothing/G = H.gloves
-				G.gunshot_residue = chambered.caliber
+				G.gunshot_residue = chambered.get_caliber_string()
 
 	switch(handle_casings)
 		if(EJECT_CASINGS) //eject casing onto ground.
@@ -95,13 +137,13 @@
 				qdel(chambered)
 				return
 			else
-				chambered.loc = get_turf(src)
+				chambered.forceMove(get_turf(src))
+				chambered.randomize_offsets_after_eject()
 				playsound(src.loc, "casing", 50, 1)
 		if(CYCLE_CASINGS) //cycle the casing back to the end.
 			if(ammo_magazine)
-				ammo_magazine.stored_ammo += chambered
-			else
-				loaded += chambered
+				CRASH("attempted to cycle casing with a mag in; guncode doesn't support this use case, this is for revolver-likes only currently!")
+			loaded += chambered
 
 	if(handle_casings != HOLD_CASINGS)
 		chambered = null
@@ -115,67 +157,67 @@
 /obj/item/gun/ballistic/proc/load_ammo(obj/item/A, mob/user)
 	if(istype(A, /obj/item/ammo_magazine))
 		var/obj/item/ammo_magazine/AM = A
-		if(!(load_method & AM.mag_type) || caliber != AM.caliber || allowed_magazines && !is_type_in_list(A, allowed_magazines))
+		if(!(load_method_converted & AM.magazine_type) || !accepts_caliber(AM.ammo_caliber) || allowed_magazines && !is_type_in_list(A, allowed_magazines))
 			to_chat(user, SPAN_WARNING("[AM] won't load into [src]!"))
 			return
-		switch(AM.mag_type)
-			if(MAGAZINE)
-				if(ammo_magazine)
-					if(user.a_intent == INTENT_HELP || user.a_intent == INTENT_DISARM)
-						to_chat(user, SPAN_WARNING("[src] already has a magazine loaded."))//already a magazine here
-						return
-					else
-						if(user.a_intent == INTENT_GRAB) //Tactical reloading
-							if(!can_special_reload)
-								to_chat(user, SPAN_WARNING("You can't tactically reload this gun!"))
-								return
-							if(do_after(user, TACTICAL_RELOAD_SPEED, src))
-								if(!user.attempt_insert_item_for_installation(AM, src))
-									return
-								ammo_magazine.update_icon()
-								user.put_in_hands_or_drop(ammo_magazine)
-								user.visible_message(SPAN_WARNING("\The [user] reloads \the [src] with \the [AM]!"),
-													 SPAN_WARNING("You tactically reload \the [src] with \the [AM]!"))
-						else //Speed reloading
-							if(!can_special_reload)
-								to_chat(user, SPAN_WARNING("You can't speed reload this gun!"))
-								return
-							if(do_after(user, SPEED_RELOAD_SPEED, src))
-								if(!user.attempt_insert_item_for_installation(AM, src))
-									return
-								ammo_magazine.update_icon()
-								ammo_magazine.dropInto(user.loc)
-								user.visible_message(SPAN_WARNING("\The [user] reloads \the [src] with \the [AM]!"),
-													 SPAN_WARNING("You speed reload \the [src] with \the [AM]!"))
-					ammo_magazine = AM
-					playsound(loc, mag_insert_sound, 75, 1)
-					update_icon()
-					AM.update_icon()
-				if(!user.attempt_insert_item_for_installation(AM, src))
+		if(AM.magazine_type & MAGAZINE_TYPE_NORMAL)
+			if(ammo_magazine)
+				if(user.a_intent == INTENT_HELP || user.a_intent == INTENT_DISARM)
+					to_chat(user, SPAN_WARNING("[src] already has a magazine loaded."))//already a magazine here
 					return
+				else
+					if(user.a_intent == INTENT_GRAB) //Tactical reloading
+						if(!can_special_reload)
+							to_chat(user, SPAN_WARNING("You can't tactically reload this gun!"))
+							return
+						if(do_after(user, TACTICAL_RELOAD_SPEED, src))
+							if(!user.attempt_insert_item_for_installation(AM, src))
+								return
+							ammo_magazine.update_icon()
+							user.put_in_hands_or_drop(ammo_magazine)
+							user.visible_message(SPAN_WARNING("\The [user] reloads \the [src] with \the [AM]!"),
+													SPAN_WARNING("You tactically reload \the [src] with \the [AM]!"))
+					else //Speed reloading
+						if(!can_special_reload)
+							to_chat(user, SPAN_WARNING("You can't speed reload this gun!"))
+							return
+						if(do_after(user, SPEED_RELOAD_SPEED, src))
+							if(!user.attempt_insert_item_for_installation(AM, src))
+								return
+							ammo_magazine.update_icon()
+							ammo_magazine.dropInto(user.loc)
+							user.visible_message(SPAN_WARNING("\The [user] reloads \the [src] with \the [AM]!"),
+													SPAN_WARNING("You speed reload \the [src] with \the [AM]!"))
 				ammo_magazine = AM
-				user.visible_message("[user] inserts [AM] into [src].", "<span class='notice'>You insert [AM] into [src].</span>")
-				playsound(src.loc, mag_insert_sound, 50, 1)
-			if(SPEEDLOADER)
-				if(loaded.len >= max_shells)
-					to_chat(user, "<span class='warning'>[src] is full!</span>")
-					return
-				var/count = 0
-				for(var/obj/item/ammo_casing/C in AM.stored_ammo)
-					if(loaded.len >= max_shells)
-						break
-					if(C.caliber == caliber)
-						C.loc = src
-						loaded += C
-						AM.stored_ammo -= C //should probably go inside an ammo_magazine proc, but I guess less proc calls this way...
-						count++
-				if(count)
-					user.visible_message("[user] reloads [src].", "<span class='notice'>You load [count] round\s into [src].</span>")
-					playsound(src.loc, 'sound/weapons/empty.ogg', 50, 1) //Kind of the opposite of empty but the "click" sound fits a speedloader nicely.
+				playsound(loc, mag_insert_sound, 75, 1)
+				update_icon()
+				AM.update_icon()
+			if(!user.attempt_insert_item_for_installation(AM, src))
+				return
+			ammo_magazine = AM
+			user.visible_message("[user] inserts [AM] into [src].", "<span class='notice'>You insert [AM] into [src].</span>")
+			playsound(src.loc, mag_insert_sound, 50, 1)
+		else if(AM.magazine_type & (MAGAZINE_TYPE_SPEEDLOADER | MAGAZINE_TYPE_CLIP))
+			if(loaded.len >= max_shells)
+				to_chat(user, "<span class='warning'>[src] is full!</span>")
+				return
+			var/count = 0
+			while(length(loaded) < max_shells)
+				var/obj/item/ammo_casing/inserting = AM.peek()
+				if(!accepts_casing(inserting))
+					break
+				inserting = AM.pop(src)
+				if(inserting.loc != src)
+					inserting.forceMove(src)
+				loaded += inserting
+				count++
+			if(count)
+				user.visible_message("[user] reloads [src].", "<span class='notice'>You load [count] round\s into [src].</span>")
+				playsound(src.loc, 'sound/weapons/empty.ogg', 50, 1) //Kind of the opposite of empty but the "click" sound fits a speedloader nicely.
 		AM.update_icon()
 	else if(istype(A, /obj/item/ammo_casing))
 		var/obj/item/ammo_casing/C = A
-		if(!(load_method & SINGLE_CASING) || caliber != C.caliber)
+		if(!(load_method & SINGLE_CASING) || !accepts_caliber(C.caliber))
 			return //incompatible
 		if(loaded.len >= max_shells)
 			to_chat(user, "<span class='warning'>[src] is full.</span>")
@@ -194,7 +236,7 @@
 		to_chat(user, "<span class='notice'>You start loading \the [src].</span>")
 		sleep(1 SECOND)
 		for(var/obj/item/ammo_casing/ammo in storage.contents)
-			if(caliber != ammo.caliber)
+			if(!accepts_caliber(ammo.caliber))
 				continue
 
 			load_ammo(ammo, user)
@@ -264,7 +306,7 @@
 				set_weight_class(WEIGHT_CLASS_SMALL)
 				update_icon()
 
-/obj/item/gun/ballistic/attack_self(mob/user)
+/obj/item/gun/ballistic/attack_self(mob/user, datum/event_args/actor/actor)
 	if(firemodes.len > 1)
 		switch_firemodes(user)
 	else if(ammo_magazine)
@@ -277,7 +319,7 @@
 		unload_ammo(user)
 	update_icon()
 
-/obj/item/gun/ballistic/attack_hand(mob/user, list/params)
+/obj/item/gun/ballistic/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(user.get_inactive_held_item() == src)
 		unload_ammo(user, allow_dump=0)
 	else
@@ -285,7 +327,7 @@
 
 /obj/item/gun/ballistic/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	..()
-	if(auto_eject && ammo_magazine && ammo_magazine.stored_ammo && !ammo_magazine.stored_ammo.len)
+	if(auto_eject && ammo_magazine && !ammo_magazine.amount_remaining())
 		ammo_magazine.loc = get_turf(src.loc)
 		user.visible_message(
 			"[ammo_magazine] falls out and clatters on the floor!",
@@ -308,8 +350,8 @@
 	var/bullets = 0
 	if(loaded)
 		bullets += loaded.len
-	if(ammo_magazine && ammo_magazine.stored_ammo)
-		bullets += ammo_magazine.stored_ammo.len
+	if(ammo_magazine)
+		bullets += ammo_magazine.amount_remaining()
 	if(chambered)
 		bullets += 1
 	return bullets
@@ -325,3 +367,56 @@
 
 	unload_ammo(usr)
 */
+
+//* Ammo *//
+
+/**
+ * Can accept an ammo casing
+ */
+/obj/item/gun/ballistic/proc/accepts_casing(obj/item/ammo_casing/casing)
+	if(!accepts_caliber(casing.caliber))
+		return FALSE
+	return TRUE
+
+//* Caliber *//
+
+/**
+ * Accepts:
+ *
+ * * Text caliber string
+ * * Caliber path
+ * * Caliber instance
+ *
+ * @return TRUE / FALSE
+ */
+/obj/item/gun/ballistic/proc/accepts_caliber(datum/ammo_caliber/caliberlike)
+	var/datum/ammo_caliber/ours = resolve_caliber(caliber)
+	var/datum/ammo_caliber/theirs = resolve_caliber(caliberlike)
+	return ours.equivalent(theirs)
+
+//* Rendering *//
+
+/**
+ * Returns an overlay for a magazine. This can be a string, or anything else that goes into our 'overlays' list.
+ */
+/obj/item/gun/ballistic/proc/get_magazine_overlay_for(obj/item/ammo_magazine/magazine)
+	var/effective_magazine_class = magazine.magazine_class
+	if(!(effective_magazine_class & render_magazine_overlay))
+		if(render_magazine_overlay & MAGAZINE_CLASS_GENERIC)
+			effective_magazine_class = MAGAZINE_CLASS_GENERIC
+		else
+			return
+	return global.magazine_class_bit_to_state[log(2, magazine.magazine_class) + 1]
+
+/obj/item/gun/ballistic/update_icon()
+	// todo: shouldn't need this check, deal with legacy
+	if(!item_renderer && !mob_renderer && render_use_legacy_by_default)
+		return ..()
+	. = ..()
+	// todo: render_break_overlay
+	// todo: render_bolt_overlay
+	if(render_magazine_overlay)
+		if(ammo_magazine)
+			var/overlay = get_magazine_overlay_for(ammo_magazine)
+			if(overlay)
+				add_overlay(overlay)

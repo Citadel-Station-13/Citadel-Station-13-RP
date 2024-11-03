@@ -10,6 +10,8 @@
 
 	icon = 'icons/obj/machines/reagent.dmi'
 	icon_state = "distiller"
+
+	worth_intrinsic = 500
 	var/base_state	// The string var used in update icon for overlays, either set manually or initialized.
 
 	var/power_rating = 3000
@@ -105,7 +107,7 @@
 
 	..()
 
-/obj/machinery/portable_atmospherics/powered/reagent_distillery/attack_hand(mob/user, list/params)
+/obj/machinery/portable_atmospherics/powered/reagent_distillery/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	var/list/options = list()
 	options["examine"] = radial_examine
 	options["use"] = radial_use
@@ -149,7 +151,6 @@
 			to_chat(user, "<span class='notice'>You press \the [src]'s chamber agitator button.</span>")
 			if(on)
 				visible_message("<span class='notice'>\The [src] rattles to life.</span>")
-				Reservoir.reagents.handle_reactions()
 			else
 				spawn(1 SECOND)
 					to_chat(user, "<span class='notice'>Nothing happens..</span>")
@@ -246,7 +247,7 @@
 	if(!powered())
 		on = FALSE
 
-	if(!on || (use_atmos && (!connected_port || avg_pressure < 1000)))
+	if(!on || (use_atmos && (!connected_port || avg_pressure < 15)))
 		current_temp = round((current_temp + T20C) / 2)
 
 	else if(on)
@@ -259,7 +260,7 @@
 					shift_mod = -1
 				current_temp = clamp(round((current_temp + 1 * shift_mod) + (rand(-5, 5) / 10)), min_temp, max_temp)
 				use_power(power_rating)
-		else if(connected_port && avg_pressure > 1000)
+		else if(connected_port && avg_pressure > 15)
 			current_temp = round((current_temp + avg_temp) / 2)
 		else if(!run_pump)
 			visible_message("<span class='notice'>\The [src]'s motors wind down.</span>")
@@ -309,3 +310,4 @@
 	desc = "A gas-operated variant of a chemical distillery. Able to reach much higher, and lower, temperatures through the use of treated gas."
 
 	use_atmos = TRUE
+	worth_intrinsic = 1000

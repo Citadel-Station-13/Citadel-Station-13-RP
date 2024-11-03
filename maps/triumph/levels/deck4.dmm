@@ -1292,7 +1292,7 @@
 	dir = 8
 	},
 /obj/machinery/mech_recharger,
-/obj/mecha/combat/fighter/baron/sec/loaded,
+/obj/vehicle/sealed/mecha/combat/fighter/baron/sec/loaded,
 /turf/simulated/floor/tiled/old_cargo/gray,
 /area/security/hanger)
 "aNK" = (
@@ -3763,7 +3763,7 @@
 /area/hallway/primary/aft)
 "cHX" = (
 /obj/structure/table/woodentable,
-/obj/item/flashlight/lamp/green,
+/obj/item/flashlight/lamp/green/on,
 /turf/simulated/floor/carpet/bcarpet,
 /area/library)
 "cIw" = (
@@ -6431,6 +6431,7 @@
 	},
 /obj/structure/table/standard,
 /obj/item/duct_tape_roll,
+/obj/item/hand_labeler,
 /turf/simulated/floor/tiled/white,
 /area/exploration/medical)
 "ert" = (
@@ -8289,7 +8290,7 @@
 	dir = 10
 	},
 /obj/machinery/mech_recharger,
-/obj/mecha/combat/fighter/baron/sec/loaded,
+/obj/vehicle/sealed/mecha/combat/fighter/baron/sec/loaded,
 /turf/simulated/floor/tiled/old_cargo/gray,
 /area/security/hanger)
 "fJm" = (
@@ -14688,8 +14689,8 @@
 	dir = 6
 	},
 /obj/structure/table/rack/shelf/steel,
-/obj/item/ammo_magazine/m762,
-/obj/item/ammo_magazine/m762,
+/obj/item/ammo_magazine/a7_62mm,
+/obj/item/ammo_magazine/a7_62mm,
 /obj/item/gun/ballistic/automatic/z8,
 /obj/effect/floor_decal/industrial/outline/grey,
 /obj/machinery/light{
@@ -15216,10 +15217,7 @@
 /obj/machinery/light_switch{
 	pixel_y = -26
 	},
-/obj/item/flashlight/lamp/green{
-	pixel_x = 1;
-	pixel_y = 5
-	},
+/obj/item/flashlight/lamp/green/on,
 /turf/simulated/floor/carpet/bcarpet,
 /area/library/study)
 "ksv" = (
@@ -16000,6 +15998,7 @@
 	name = "Powernet Sensor - Security Subgrid";
 	name_tag = "Surfsec Subgrid"
 	},
+/obj/structure/cable/green,
 /turf/simulated/floor/plating,
 /area/maintenance/substation/security)
 "kPt" = (
@@ -16931,7 +16930,7 @@
 /area/ai)
 "lEF" = (
 /obj/structure/table/woodentable,
-/obj/item/flashlight/lamp/green,
+/obj/item/flashlight/lamp/green/on,
 /turf/simulated/floor/wood,
 /area/library)
 "lFl" = (
@@ -18745,15 +18744,15 @@
 /obj/item/gun/ballistic/fiveseven,
 /obj/item/gun/ballistic/fiveseven,
 /obj/item/gun/ballistic/fiveseven,
-/obj/item/ammo_magazine/m57x28mm/fiveseven/ap,
-/obj/item/ammo_magazine/m57x28mm/fiveseven/ap,
-/obj/item/ammo_magazine/m57x28mm/fiveseven/ap,
-/obj/item/ammo_magazine/m57x28mm/fiveseven/ap,
-/obj/item/ammo_magazine/m57x28mm/fiveseven/ap,
-/obj/item/ammo_magazine/m57x28mm/fiveseven/ap,
-/obj/item/ammo_magazine/m57x28mm/fiveseven/ap,
-/obj/item/ammo_magazine/m57x28mm/fiveseven/ap,
-/obj/item/ammo_magazine/m57x28mm/fiveseven/ap,
+/obj/item/ammo_magazine/a5_7mm/five_seven/ap,
+/obj/item/ammo_magazine/a5_7mm/five_seven/ap,
+/obj/item/ammo_magazine/a5_7mm/five_seven/ap,
+/obj/item/ammo_magazine/a5_7mm/five_seven/ap,
+/obj/item/ammo_magazine/a5_7mm/five_seven/ap,
+/obj/item/ammo_magazine/a5_7mm/five_seven/ap,
+/obj/item/ammo_magazine/a5_7mm/five_seven/ap,
+/obj/item/ammo_magazine/a5_7mm/five_seven/ap,
+/obj/item/ammo_magazine/a5_7mm/five_seven/ap,
 /turf/simulated/floor/tiled/dark,
 /area/security/tactical)
 "mVP" = (
@@ -21095,7 +21094,7 @@
 /area/triumph/surfacebase/sauna)
 "oGx" = (
 /obj/structure/table/woodentable,
-/obj/item/flashlight/lamp/green,
+/obj/item/flashlight/lamp/green/on,
 /obj/machinery/light/small{
 	dir = 4
 	},
@@ -23550,18 +23549,18 @@
 	pixel_y = -7
 	},
 /obj/item/gun/ballistic/automatic/wt550,
-/obj/item/ammo_magazine/m9mmt,
-/obj/item/ammo_magazine/m9mmt,
-/obj/item/ammo_magazine/m9mmt,
-/obj/item/ammo_magazine/m9mmt,
-/obj/item/ammo_magazine/m9mmt,
-/obj/item/ammo_magazine/m9mmt,
-/obj/item/ammo_magazine/m9mmt,
-/obj/item/ammo_magazine/m9mmt,
-/obj/item/ammo_magazine/m9mmt,
-/obj/item/ammo_magazine/m9mmt,
-/obj/item/ammo_magazine/m9mmt,
-/obj/item/ammo_magazine/m9mmt,
+/obj/item/ammo_magazine/a9mm/top_mount,
+/obj/item/ammo_magazine/a9mm/top_mount,
+/obj/item/ammo_magazine/a9mm/top_mount,
+/obj/item/ammo_magazine/a9mm/top_mount,
+/obj/item/ammo_magazine/a9mm/top_mount,
+/obj/item/ammo_magazine/a9mm/top_mount,
+/obj/item/ammo_magazine/a9mm/top_mount,
+/obj/item/ammo_magazine/a9mm/top_mount,
+/obj/item/ammo_magazine/a9mm/top_mount,
+/obj/item/ammo_magazine/a9mm/top_mount,
+/obj/item/ammo_magazine/a9mm/top_mount,
+/obj/item/ammo_magazine/a9mm/top_mount,
 /turf/simulated/floor/tiled/dark,
 /area/security/tactical)
 "qoS" = (
@@ -25474,7 +25473,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/table/woodentable,
-/obj/item/flashlight/lamp/green,
+/obj/item/flashlight/lamp/green/on,
 /turf/simulated/floor/wood,
 /area/library)
 "rMx" = (
@@ -26532,6 +26531,9 @@
 /obj/machinery/power/sensor{
 	name = "Powernet Sensor - Command Subgrid";
 	name_tag = "Command Subgrid"
+	},
+/obj/structure/cable/green{
+	icon_state = "0-2"
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/command)
@@ -31629,9 +31631,8 @@
 "wfu" = (
 /obj/machinery/camera/network/exploration,
 /obj/structure/table/standard,
-/obj/item/binoculars,
-/obj/item/binoculars,
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
+/obj/item/hand_labeler,
 /turf/simulated/floor/tiled,
 /area/exploration/explorer_prep)
 "wfz" = (

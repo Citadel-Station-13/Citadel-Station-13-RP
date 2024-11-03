@@ -30,7 +30,7 @@
 	icon_gib = "clown_gib"
 	catalogue_data = list(/datum/category_item/catalogue/fauna/clown)
 
-	faction = "clown"
+	iff_factions = MOB_IFF_FACTION_MERCENARY_GROUP("clown")
 
 	loot_list = list(/obj/item/bikehorn = 100)
 
@@ -145,7 +145,7 @@
 	var/mob_count = 0				// Are there enough mobs to consider grenading?
 	var/turf/T = get_turf(A)
 	for(var/mob/M in range(T, 2))
-		if(M.faction == faction) 	// Don't grenade our friends
+		if(shares_iff_faction(M))
 			return FALSE
 		if(M in oview(src, special_attack_max_range))	// And lets check if we can actually see at least two people before we throw a grenade
 			if(!M.stat)			// Dead things don't warrant a grenade
@@ -190,8 +190,8 @@
 	reload_max = 12
 	ai_holder_type = /datum/ai_holder/polaris/simple_mob/merc/ranged
 	loot_list = list(/obj/item/gun/ballistic/clown_pistol = 100,
-					/obj/item/ammo_magazine/mcompressedbio = 30,
-					/obj/item/ammo_magazine/mcompressedbio = 30
+					/obj/item/ammo_magazine/biomatter = 30,
+					/obj/item/ammo_magazine/biomatter = 30
 					)
 
 //Voidsuit Variants
@@ -267,8 +267,8 @@
 
 	corpse = /obj/spawner/corpse/clown/clownop/space
 	loot_list = list(/obj/item/gun/ballistic/automatic/clown_rifle = 100,
-					/obj/item/ammo_magazine/mcompressedbio/large/banana = 30,
-					/obj/item/ammo_magazine/mcompressedbio/large/banana = 30
+					/obj/item/ammo_magazine/biomatter/large/banana = 30,
+					/obj/item/ammo_magazine/biomatter/large/banana = 30
 					)
 
 	base_attack_cooldown = 5 // Two attacks a second or so.

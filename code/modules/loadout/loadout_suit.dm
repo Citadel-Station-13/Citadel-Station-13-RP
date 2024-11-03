@@ -544,6 +544,11 @@
 	name = "Bomj Coat"
 	path = /obj/item/clothing/suit/storage/bomj
 
+/datum/loadout_entry/suit/cropped_turtle
+	name = "Turtleneck Cropped"
+	path = /obj/item/clothing/suit/storage/cropped_turtleneck
+
+
 /datum/loadout_entry/suit/violetjacket
 	name = "Violet Jacket"
 	path = /obj/item/clothing/suit/storage/violet
@@ -607,6 +612,10 @@
 /datum/loadout_entry/suit/sweater_cropped_f
 	name = "Cropped Sweater (Female)"
 	path = /obj/item/clothing/suit/cropped_sweater/female
+
+/datum/loadout_entry/suit/cybersun_jacket
+	name = "Cybersun Jacket"
+	path = /obj/item/clothing/suit/storage/toggle/cybersun_paramedic
 
 /datum/loadout_entry/suit/aureate_kimono
 	name = "Aureate Kimono"

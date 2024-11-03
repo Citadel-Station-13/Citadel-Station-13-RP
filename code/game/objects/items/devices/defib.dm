@@ -16,6 +16,7 @@
 	w_class = WEIGHT_CLASS_BULKY
 	origin_tech = list(TECH_BIO = 4, TECH_POWER = 2)
 	item_action_name = "Remove/Replace Paddles"
+	worth_intrinsic = 300
 
 	var/obj/item/shockpaddles/linked/paddles
 	var/obj/item/cell/bcell = null
@@ -66,7 +67,7 @@
 /obj/item/defib_kit/ui_action_click(datum/action/action, datum/event_args/actor/actor)
 	toggle_paddles()
 
-/obj/item/defib_kit/attack_hand(mob/user, list/params)
+/obj/item/defib_kit/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(loc == user)
 		toggle_paddles()
 	else
@@ -165,6 +166,7 @@
 	w_class = WEIGHT_CLASS_NORMAL
 	slot_flags = SLOT_BELT
 	origin_tech = list(TECH_BIO = 5, TECH_POWER = 3)
+	worth_intrinsic = 500
 
 /obj/item/defib_kit/compact/loaded
 	bcell = /obj/item/cell/high
@@ -407,7 +409,7 @@
 		playsound(get_turf(src), 'sound/machines/defib_failed.ogg', 50, 0)
 		return
 
-	H.apply_damage(burn_damage_amt, BURN, BP_TORSO)
+	H.apply_damage(burn_damage_amt, DAMAGE_TYPE_BURN, BP_TORSO)
 
 	//set oxyloss so that the patient is just barely in crit, if possible
 	var/barely_in_crit = config_legacy.health_threshold_crit - 1
@@ -627,6 +629,7 @@
 	item_state = "defibunit"
 //	item_state = "jumperunit"
 	paddles = /obj/item/shockpaddles/linked/jumper
+	worth_intrinsic = 150
 
 /obj/item/defib_kit/jumper_kit/loaded
 	bcell = /obj/item/cell/high

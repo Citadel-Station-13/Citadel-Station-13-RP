@@ -28,6 +28,8 @@
 
 /**
  * Items that can stack, tracking the number of which is in it
+ *
+ * * [worth_intrinsic] is the only thing used on this path for detecting economic value. Normal get_worth() is not considered.
  */
 /obj/item/stack
 	gender = PLURAL
@@ -302,7 +304,7 @@
 		if(!amount)
 			break
 
-/obj/item/stack/attack_hand(mob/user, list/params)
+/obj/item/stack/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(user.get_inactive_held_item() == src)
 		change_stack(user, 1)
 	else

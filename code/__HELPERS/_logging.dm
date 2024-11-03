@@ -56,7 +56,7 @@ GLOBAL_LIST_INIT(testing_global_profiler, list("_PROFILE_NAME" = "Global"))
 #define testing_profile_local_output(NAME) testing_profile_output(NAME, _timer_system)
 #define testing_profile_local_output_all testing_profile_output_all(_timer_system)
 
-#if defined(UNIT_TESTS) || defined(SPACEMAN_DMM)
+#if defined(UNIT_TESTS) || defined(SPACEMAN_DMM) || defined(INCLUDE_UNIT_TESTS)
 /proc/log_test(text)
 	WRITE_LOG(GLOB.test_log, text)
 	SEND_TEXT(world.log, text)
@@ -361,7 +361,7 @@ GLOBAL_LIST_INIT(testing_global_profiler, list("_PROFILE_NAME" = "Global"))
 		include_link = FALSE
 
 	if(key)
-		if(C && C.holder && C.holder.fakekey && !include_name)
+		if(C?.is_under_stealthmin() && !include_name)
 			if(include_link)
 				. += "<a href='?priv_msg=[REF(C)]'>"
 			. += "Administrator"

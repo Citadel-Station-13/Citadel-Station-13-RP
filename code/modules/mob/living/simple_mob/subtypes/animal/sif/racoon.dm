@@ -17,7 +17,7 @@
 	tt_desc = "S Procyon cogitae"
 	catalogue_data = list(/datum/category_item/catalogue/fauna/sakimm)
 
-	faction = "sakimm"
+	iff_factions = MOB_IFF_FACTION_BIND_TO_MAP
 
 	icon_state = "raccoon"
 	icon_living = "raccoon"
@@ -212,7 +212,7 @@
 /datum/ai_holder/polaris/simple_mob/intentional/sakimm/list_targets()
 	. = hearers(vision_range, holder) - holder
 
-	var/static/hostile_machines = typecacheof(list(/obj/machinery/porta_turret, /obj/mecha))
+	var/static/hostile_machines = typecacheof(list(/obj/machinery/porta_turret, /obj/vehicle/sealed/mecha))
 
 	for(var/HM in typecache_filter_list(range(vision_range, holder), hostile_machines))
 		if(can_see(holder, HM, vision_range))
@@ -349,4 +349,4 @@
 /mob/living/simple_mob/animal/sif/sakimm/dexter
 	name = "Dexter"
 	desc = "A tame, oversized rodent with hands. It seems really friendly."
-	faction = "neutral"
+	iff_factions = MOB_IFF_FACTION_NEUTRAL

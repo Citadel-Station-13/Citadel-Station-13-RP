@@ -127,7 +127,7 @@
 
 
 /obj/effect/step_trigger/teleporter/proc/move_object(atom/movable/AM, turf/T)
-	if(AM.anchored && !istype(AM, /obj/mecha))
+	if(AM.anchored && !istype(AM, /obj/vehicle/sealed/mecha))
 		return
 
 	if(isliving(AM))

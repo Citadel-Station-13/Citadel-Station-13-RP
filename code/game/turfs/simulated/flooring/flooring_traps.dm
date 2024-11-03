@@ -22,7 +22,7 @@
 	visible_message("<span class='danger'>You hear a click nearby!</span>")
 	update_icon()
 	playsound(src, 'sound/machines/click.ogg', 50, 1)
-	SimpleNetworkSend(id, "trip")
+	simple_network_send(id, "trip")
 	return
 
 /turf/simulated/floor/trap/update_icon()
@@ -31,7 +31,7 @@
 	else if (tripped)
 		icon_state = "[initial(icon_state)]_tripped"
 
-/turf/simulated/floor/trap/attack_hand(mob/user, list/params)
+/turf/simulated/floor/trap/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(tripped)
 		to_chat(usr, "<span class='notice'>You reset the triggered mechanism.</span>")
 		tripped = 0
@@ -50,7 +50,7 @@
 		visible_message("<span class='danger'>You hear a click nearby!</span>")
 		update_icon()
 		playsound(src, 'sound/machines/click.ogg', 50, 1)
-		SimpleNetworkSend(id, "trip")
+		simple_network_send(id, "trip")
 		return
 
 //Types

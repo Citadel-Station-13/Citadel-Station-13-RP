@@ -17,7 +17,8 @@
 	icon_rest = "fennec_rest"
 	icon = 'icons/mob/vore.dmi'
 
-	faction = "fennec"
+	iff_factions = MOB_IFF_FACTION_FARM_NEUTRAL
+
 	maxHealth = 30
 	health = 30
 	randomized = TRUE
@@ -36,12 +37,6 @@
 
 // Activate Noms!
 /mob/living/simple_mob/vore/fennec
-	vore_active = 1
-	vore_bump_chance = 10
-	vore_bump_emote	= "playfully lunges at"
-	vore_pounce_chance = 40
-	vore_default_mode = DM_HOLD
-	vore_icons = SA_ICON_LIVING
 
 /datum/say_list/fennec
 	speak = list("SKREEEE!","Chrp?","Ararrrararr.")

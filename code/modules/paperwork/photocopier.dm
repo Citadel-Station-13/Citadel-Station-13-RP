@@ -27,7 +27,7 @@
 /obj/machinery/photocopier/attack_ai(mob/user as mob)
 	return attack_hand(user)
 
-/obj/machinery/photocopier/attack_hand(mob/user, list/params)
+/obj/machinery/photocopier/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	user.set_machine(src)
 
 	nano_ui_interact(user)
@@ -165,7 +165,7 @@
 				return
 			to_chat(user, "<span class='notice'>You insert the toner cartridge into \the [src].</span>")
 			var/obj/item/toner/T = O
-			toner += T.toner_amount
+			toner += T.amount
 			qdel(T)
 		else
 			to_chat(user, "<span class='notice'>This cartridge is not yet ready for replacement! Use up the rest of the toner.</span>")
@@ -373,4 +373,11 @@
 	name = "toner cartridge"
 	icon = 'icons/obj/device.dmi'
 	icon_state = "tonercartridge"
-	var/toner_amount = 30
+	worth_intrinsic = 5
+
+	var/max_amount = 30
+	var/amount = 30
+
+/obj/item/toner/get_containing_worth(flags)
+	. = ..()
+	. += clamp(amount, 0, max_amount) * 1 // printer companies are still scams in 2656

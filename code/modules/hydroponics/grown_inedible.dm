@@ -10,7 +10,7 @@
 
 /obj/item/grown/Initialize(mapload, planttype)
 	. = ..()
-	var/datum/reagents/R = new/datum/reagents(50)
+	var/datum/reagent_holder/R = new/datum/reagent_holder(50)
 	reagents = R
 	R.my_atom = src
 
@@ -49,6 +49,11 @@
 		qdel(src)
 		return
 
+//* Banana Peels *//
+
+/datum/component/slippery/banana_peel
+
+// todo: /banana_peel
 /obj/item/bananapeel
 	name = "banana peel"
 	desc = "A peel from a banana."
@@ -59,3 +64,7 @@
 	throw_force = 0
 	throw_speed = 4
 	throw_range = 20
+
+/obj/item/bananapeel/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/slippery/banana_peel)

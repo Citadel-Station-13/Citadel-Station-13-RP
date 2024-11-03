@@ -1,7 +1,7 @@
 GLOBAL_LIST_EMPTY(holopad_lookup)
 
-#define HOLO_NORMAL_COLOR color_matrix_from_rgb("#ccccff")
-#define HOLO_VORE_COLOR color_matrix_from_rgb("#d97de0")
+#define HOLO_NORMAL_COLOR color_to_full_rgba_matrix("#ccccff")
+#define HOLO_VORE_COLOR color_to_full_rgba_matrix("#d97de0")
 #define HOLO_NORMAL_ALPHA 140
 #define HOLO_VORE_ALPHA 210
 
@@ -1298,6 +1298,8 @@ GLOBAL_VAR_INIT(holopad_connectivity_rebuild_queued, FALSE)
 	pass_flags_self = initial(pass_flags_self)
 	color = HOLO_NORMAL_COLOR
 	alpha = HOLO_NORMAL_ALPHA
+
+	pass() // macro used immediately before being undefined; BYOND bug 2072419
 
 #undef HOLO_NORMAL_COLOR
 #undef HOLO_VORE_COLOR

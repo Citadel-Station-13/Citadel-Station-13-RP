@@ -48,7 +48,7 @@ BLIND     // can't see anything
 	if(!isnull(vision_modifier))
 		user.remove_vision_modifier(vision_modifier)
 
-/obj/item/clothing/glasses/attack_self(mob/user)
+/obj/item/clothing/glasses/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -152,6 +152,7 @@ BLIND     // can't see anything
 	vision_flags_remove = SEE_BLACKNESS
 	body_cover_flags = EYES //cit change
 	vision_modifier = /datum/vision/augmenting/legacy_ghetto_nvgs
+	worth_intrinsic = 125
 
 /obj/item/clothing/glasses/meson/prescription
 	name = "prescription mesons"
@@ -428,7 +429,7 @@ BLIND     // can't see anything
 	flash_protection = FLASH_PROTECTION_MAJOR
 	tint = TINT_HEAVY
 
-/obj/item/clothing/glasses/welding/attack_self(mob/user)
+/obj/item/clothing/glasses/welding/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -562,7 +563,7 @@ BLIND     // can't see anything
 	toggleable = 1
 	activation_sound = 'sound/effects/pop.ogg'
 
-/obj/item/clothing/glasses/sunglasses/sechud/aviator/attack_self(mob/user)
+/obj/item/clothing/glasses/sunglasses/sechud/aviator/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -681,7 +682,7 @@ BLIND     // can't see anything
 	body_cover_flags = EYES
 	species_restricted = list(SPECIES_TESHARI)
 
-/obj/item/clothing/glasses/aerogelgoggles/attack_self(mob/user)
+/obj/item/clothing/glasses/aerogelgoggles/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return

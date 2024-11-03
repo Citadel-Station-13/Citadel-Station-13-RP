@@ -11,6 +11,11 @@ SUBSYSTEM_DEF(overmaps)
 	/// (eventually we'll have proper bindings but for now, uh, this is how it is!)
 	var/const/default_overmap_id = "main"
 
+	//* Global Tuning *//
+
+	/// applied to all ship thrust
+	var/global_thrust_multiplier = 2
+
 /datum/controller/subsystem/overmaps/Initialize()
 	make_default_overmap()
 	rebuild_helm_computers()

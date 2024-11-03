@@ -65,8 +65,8 @@
 		var/datum/reagent/from_reagent = SSchemistry.fetch_reagent(reagent_source)
 		color = from_reagent.color
 		reagents.add_reagent(from_reagent.id, reagent_amount)
-	else if(istype(reagent_source, /datum/reagents))
-		var/datum/reagents/from_holder = reagent_source
+	else if(istype(reagent_source, /datum/reagent_holder))
+		var/datum/reagent_holder/from_holder = reagent_source
 		color = from_holder.get_color()
 		from_holder.transfer_to_holder(reagents, amount = reagent_amount)
 
@@ -187,8 +187,7 @@ ICE_CREAM_PATHS(/datum/reagent/drink/juice/apple, apple)
 	melt_more()
 
 /obj/effect/debris/cleanable/ice_cream/proc/start_reaction()
-	atom_flags &= ~NOREACT
-	reagents?.handle_reactions()
+	reagents.set_no_react(FALSE)
 
 /obj/effect/debris/cleanable/ice_cream/proc/melt_more()
 	cut_overlays()

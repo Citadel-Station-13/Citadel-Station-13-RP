@@ -256,7 +256,6 @@
 	return INITIALIZE_HINT_LATELOAD
 
 /obj/machinery/computer/scan_consolenew/LateInitialize()
-	. = ..()
 	scan_for_scanner()
 	addtimer(CALLBACK(src, PROC_REF(recharge_injector)), 25 SECONDS)
 
@@ -300,7 +299,7 @@
 	src.add_hiddenprint(user)
 	nano_ui_interact(user)
 
-/obj/machinery/computer/scan_consolenew/attack_hand(mob/user, list/params)
+/obj/machinery/computer/scan_consolenew/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(!..())
 		nano_ui_interact(user)
 

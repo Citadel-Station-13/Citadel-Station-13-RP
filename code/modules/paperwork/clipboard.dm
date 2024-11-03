@@ -45,7 +45,7 @@
 
 	return ..()
 
-/obj/item/clipboard/attack_self(mob/user)
+/obj/item/clipboard/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return

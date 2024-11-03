@@ -102,10 +102,10 @@
 	if(!canClick()) // in the year 2000...
 		return
 
-	if(istype(loc, /obj/mecha))
+	if(istype(loc, /obj/vehicle/sealed/mecha))
 		if(!locate(/turf) in list(A, A.loc)) // Prevents inventory from being drilled
 			return
-		var/obj/mecha/M = loc
+		var/obj/vehicle/sealed/mecha/M = loc
 		return M.click_action(A, src, params)
 
 	if(restrained())
@@ -282,7 +282,7 @@
 		return
 	if(!client)
 		return
-	if(T == client.statpanel_turf)
+	if(T == client.tgui_stat?.byond_stat_turf)
 		client.unlist_turf()
 		return
 	client.list_turf(T)

@@ -38,7 +38,7 @@
 	tt_desc = "NULL"
 	icon = 'icons/mob/cult.dmi'
 	icon_state = "initiate"
-	faction = "cult"
+	iff_factions = MOB_IFF_FACTION_SANGUINE_CULT
 	mob_class = MOB_CLASS_DEMONIC
 
 /datum/category_item/catalogue/fauna/cultist/human
@@ -222,8 +222,6 @@
 	health = 75
 	catalogue_data = list(/datum/category_item/catalogue/fauna/cultist/tesh)
 
-	faction = "cult"
-
 	status_flags = 0
 
 	response_help = "pokes"
@@ -272,8 +270,6 @@
 	maxHealth = 200
 	health = 200
 	catalogue_data = list(/datum/category_item/catalogue/fauna/cultist/lizard)
-
-	faction = "cult"
 
 	status_flags = 0
 
@@ -324,8 +320,6 @@
 	health = 150
 	catalogue_data = list(/datum/category_item/catalogue/fauna/cultist/caster)
 
-	faction = "cult"
-
 	status_flags = 0
 
 	response_help = "pokes"
@@ -375,8 +369,6 @@
 	health = 150
 	catalogue_data = list(/datum/category_item/catalogue/fauna/cultist/initiate)
 
-	faction = "cult"
-
 	status_flags = 0
 
 	response_help = "pokes"
@@ -422,8 +414,6 @@
 	maxHealth = 75
 	health = 75
 	catalogue_data = list(/datum/category_item/catalogue/fauna/cultist/castertesh)
-
-	faction = "cult"
 
 	status_flags = 0
 
@@ -472,7 +462,6 @@
 	desc = "A heavily armed cultist with a mirror shield that hurts to look at."
 	icon_state = "cult_elite"
 	icon_living = "cult_elite"
-	faction = "cult"
 	catalogue_data = list(/datum/category_item/catalogue/fauna/cultist/elite)
 
 	status_flags = 0
@@ -508,17 +497,15 @@
 		to_chat(user, "<span class='warning'>This weapon is ineffective, it does no damage.</span>")
 		visible_message("<span class='warning'>\The [user] gently taps [src] with \the [O].</span>")
 
-/mob/living/simple_mob/humanoid/cultist/elite/bullet_act(var/obj/projectile/Proj)
-	if(!Proj)	return
+/mob/living/simple_mob/humanoid/cultist/elite/on_bullet_act(obj/projectile/proj, impact_flags, list/bullet_act_args)
 	if(prob(50))
-		visible_message("<font color='red'><B>[Proj] disappears into the mirror world as it hits the shield.</B></font>")
-		if(Proj.firer)
+		visible_message("<font color='red'><B>[proj] disappears into the mirror world as it hits the shield.</B></font>")
+		if(proj.firer)
 			if(istype(src.ai_holder, /datum/ai_holder/polaris))
 				var/datum/ai_holder/polaris/ai_holder = src.ai_holder
-				ai_holder.react_to_attack_polaris(Proj.firer)
-		return
-	else
-		..()
+				ai_holder.react_to_attack_polaris(proj.firer)
+		return PROJECTILE_IMPACT_DELETE
+	return ..()
 
 /mob/living/simple_mob/humanoid/cultist/elite/death()
 	new /obj/effect/decal/remains/human (src.loc)
@@ -551,8 +538,6 @@
 	maxHealth = 300 //Boss Mobs should be tanky.
 	health = 300
 	catalogue_data = list(/datum/category_item/catalogue/fauna/cultist/magus)
-
-	faction = "cult"
 
 	status_flags = 0
 
@@ -624,8 +609,6 @@
 	maxHealth = 300 //Boss Mobs should be tanky.
 	health = 300
 	catalogue_data = list(/datum/category_item/catalogue/fauna/cultist/hunter)
-
-	faction = "cult"
 
 	status_flags = 0
 

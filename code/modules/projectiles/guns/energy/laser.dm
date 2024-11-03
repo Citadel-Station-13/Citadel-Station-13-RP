@@ -15,6 +15,8 @@
 	heavy = TRUE
 	one_handed_penalty = 30
 
+	worth_intrinsic = 350
+
 	firemodes = list(
 		list(mode_name="normal", fire_delay=8, projectile_type=/obj/projectile/beam/midlaser, charge_cost = 240),
 		list(mode_name="suppressive", fire_delay=5, projectile_type=/obj/projectile/beam/weaklaser, charge_cost = 60),
@@ -85,9 +87,9 @@
 	unlikely.\
 	<br><br>\
 	An interesting note about this weapon, when compared to contemporary energy weapons, is \
-	that this gun appears to be inferior to modern laser weapons. The beam fired has less \
-	of an ability to harm, and the power consumption appears to be higher than average for \
-	a human-made energy side-arm. One possible explaination is that the creators of this \
+	that this gun appears to utilize some sort of exotic particle beam instead of being a laser \
+	or plasma. The beam fired is decently capable of causing damage, and the power consumption is close \
+	to that of a human-made energy side-arm. One possible explaination is that the creators of this \
 	weapon, in their later years, had less of a need to optimize their capability for war, \
 	and instead focused on other endeavors. Another explaination is that vast age of the weapon \
 	may have caused it to degrade, yet still remain functional at a reduced capability."
@@ -100,7 +102,7 @@
 	icon_state = "alienpistol"
 	item_state = "alienpistol"
 	fire_delay = 10 // Handguns should be inferior to two-handed weapons. Even alien ones I suppose.
-	charge_cost = 480 // Five shots.
+	charge_cost = 240 // Ten shots.
 
 	projectile_type = /obj/projectile/beam/cyan
 	cell_type = /obj/item/cell/device/weapon/recharge/alien // Self charges.
@@ -159,15 +161,22 @@
 	origin_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 3, TECH_MAGNET = 2)
 	projectile_type = /obj/projectile/beam/xray
 	charge_cost = 200
+	worth_intrinsic = 500 // op as balls
 
 /obj/item/gun/energy/sniperrifle
 	name = "marksman energy rifle"
 	desc = "The HI DMR 9E is an older design of Hephaestus Industries. A designated marksman rifle capable of shooting powerful \
 	ionized beams, this is a weapon to kill from a distance."
+	description_info = "This is an energy weapon.  To fire the weapon, ensure your intent is *not* set to 'help', have your gun mode set to 'fire', \
+	then click where you want to fire.  Most energy weapons can fire through windows harmlessly.  To recharge this weapon, use a weapon recharger. \
+	To use the scope, use the appropriate verb in the object tab."
 	icon_state = "sniper"
 	item_state = "sniper"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "z8carbine", SLOT_ID_LEFT_HAND = "z8carbine") //placeholder
 	origin_tech = list(TECH_COMBAT = 6, TECH_MATERIAL = 5, TECH_POWER = 4)
+
+	worth_intrinsic = 750
+
 	projectile_type = /obj/projectile/beam/sniper
 	slot_flags = SLOT_BACK
 	charge_cost = 600

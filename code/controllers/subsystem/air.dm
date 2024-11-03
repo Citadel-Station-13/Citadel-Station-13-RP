@@ -137,7 +137,7 @@ SUBSYSTEM_DEF(air)
 	var/timer
 	if(!resumed)
 		if(LAZYLEN(currentrun) != 0)
-			stack_trace("Currentrun not empty before processing cycle when it should be. [english_list(currentrun)]")
+			stack_trace("Currentrun not empty before processing cycle when it should be. [english_list(currentrun, limit = 5)]")
 		currentrun = list()
 		if(current_step != null)
 			stack_trace("current_step before processing cycle was [current_step] instead of null")
@@ -152,7 +152,7 @@ SUBSYSTEM_DEF(air)
 
 	// Okay, we're done! Woo! Got thru a whole SSair cycle!
 	if(LAZYLEN(currentrun) != 0)
-		stack_trace("Currentrun not empty after processing cycle when it should be. [english_list(currentrun.Copy(1, min(currentrun.len, 5)))]")
+		stack_trace("Currentrun not empty after processing cycle when it should be. [english_list(currentrun, limit = 5)]")
 	currentrun = null
 	if(current_step != SSAIR_DONE)
 		stack_trace("current_step after processing cycle was [current_step] instead of [SSAIR_DONE]")
@@ -249,7 +249,7 @@ SUBSYSTEM_DEF(air)
 		src.currentrun = active_hotspots.Copy()
 	//cache for sanic speed (lists are references anyways)
 	var/list/currentrun = src.currentrun
-	var/dt = (subsystem_flags & SS_TICKER)? (wait * world.tick_lag * 0.1) : (wait * 0.1)
+	var/dt = nominal_dt_s
 	while(currentrun.len)
 		var/atom/movable/fire/fire = currentrun[currentrun.len]
 		currentrun.len--

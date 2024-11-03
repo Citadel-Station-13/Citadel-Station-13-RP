@@ -16,8 +16,8 @@
 	if(eyeobj)
 		return eyeobj.zMove(direction)
 
-	if(istype(loc,/obj/mecha))
-		var/obj/mecha/mech = loc
+	if(istype(loc,/obj/vehicle/sealed/mecha))
+		var/obj/vehicle/sealed/mecha/mech = loc
 		return mech.relaymove(src,direction)
 
 	if(!can_ztravel())
@@ -276,7 +276,7 @@
 	return FALSE
 
 // Mechas are anchored, so we need to override.
-/obj/mecha/can_fall()
+/obj/vehicle/sealed/mecha/can_fall()
 	return TRUE
 
 /mob/can_fall()
@@ -314,7 +314,7 @@
 			return 1
 
 		var/atom/A = find_fall_target(oldloc, landing)
-		if(special_fall_handle(A) || !A || !A.check_impact(src))
+		if(special_fall_handle(A) || !A || !A.check_z_impact(src))
 			return
 		var/mob/drop_mob = locate(/mob, landing)
 		if(drop_mob && !(drop_mob == src) && ismob(drop_mob) && isliving(drop_mob)) //Shitload of checks. This is because the game finds various ways to screw me over.
@@ -371,15 +371,13 @@
 		return TRUE
 	return prevent_z_fall(falling_atom, 0, NONE) & (FALL_TERMINATED | FALL_BLOCKED)
 
-
 /**
  * If you are hit: how is it handled.
  * Return TRUE if the generic fall_impact should be called.
  * Return FALSE if you handled it yourself or if there's no effect from hitting you.
  */
-/atom/proc/check_impact(atom/movable/falling_atom)
+/atom/proc/check_z_impact(atom/movable/falling_atom)
 	return TRUE
-
 
 /**
  * Called by CheckFall when we actually hit something. Various Vars will be described below.
@@ -498,7 +496,7 @@
 		return parachuting
 
 // Mech Code
-/obj/mecha/handle_fall(turf/landing)
+/obj/vehicle/sealed/mecha/handle_fall(turf/landing)
 	// First things first, break any lattice
 	var/obj/structure/lattice/lattice = locate(/obj/structure/lattice, loc)
 	if(lattice)
@@ -509,7 +507,7 @@
 	// Then call parent to have us actually fall
 	return ..()
 
-/obj/mecha/fall_impact(var/atom/hit_atom, var/damage_min = 15, var/damage_max = 30, var/silent = FALSE, var/planetary = FALSE)
+/obj/vehicle/sealed/mecha/fall_impact(var/atom/hit_atom, var/damage_min = 15, var/damage_max = 30, var/silent = FALSE, var/planetary = FALSE)
 	// Anything on the same tile as the landing tile is gonna have a bad day.
 	for(var/mob/living/L in hit_atom.contents)
 		L.visible_message(SPAN_DANGER("\The [src] crushes \the [L] as it lands on them!"))

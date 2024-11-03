@@ -14,6 +14,11 @@
 
 	max_additional_languages = 2
 	name_language = LANGUAGE_ID_DIONA
+	base_skin_colours = list(
+		"Standard"  = null,
+		"Alternate" = "alt",
+	)
+
 	intrinsic_languages = list(
 		LANGUAGE_ID_DIONA,
 		LANGUAGE_ID_DIONA_HIVEMIND
@@ -21,6 +26,8 @@
 	assisted_langs   = list(LANGUAGE_VOX)	// Diona are weird, let's just assume they can use basically any language.
 
 	slowdown = 2.5
+	light_slowdown = -0.5
+	dark_slowdown = 3
 	snow_movement  = -2 // Ignore light snow
 	water_movement = -4 // Ignore shallow water
 	hud_type = /datum/hud_data/diona
@@ -100,9 +107,11 @@
 
 	species_flags = NO_MINOR_CUT | IS_PLANT | NO_SCAN | NO_PAIN | NO_SLIP | NO_HALLUCINATION | NO_BLOOD | CONTAMINATION_IMMUNE
 	species_spawn_flags = SPECIES_SPAWN_CHARACTER | SPECIES_SPAWN_WHITELISTED
+	species_appearance_flags = HAS_BASE_SKIN_COLOR
 
 	blood_color = "#004400"
 	flesh_color = "#907E4A"
+	base_color = "#ffffff"
 
 	reagent_tag = IS_DIONA
 

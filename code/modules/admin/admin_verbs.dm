@@ -53,7 +53,8 @@ var/list/admin_verbs_admin = list(
 	/client/proc/admin_cancel_shuttle,	//allows us to cancel the emergency shuttle, sending it back to CentCom,
 	/client/proc/cmd_admin_direct_narrate,	//send text directly to a player with no padding. Useful for narratives and fluff-text,
 	/client/proc/cmd_admin_local_narrate,
-	/client/proc/cmd_admin_world_narrate,	//sends text to all players with no padding,
+	/client/proc/cmd_admin_world_narrate,
+	/client/proc/cmd_admin_z_narrate,	//sends text to all players on a z-level.When Global is too much
 	/client/proc/cmd_admin_create_centcom_report,
 	/client/proc/check_words,			//displays cult-words,
 	/client/proc/check_ai_laws,			//shows AI and borg laws,
@@ -96,7 +97,6 @@ var/list/admin_verbs_admin = list(
 	/client/proc/change_human_appearance_admin,	// Allows an admin to change the basic appearance of human-based mobs ,
 	/client/proc/change_human_appearance_self,	// Allows the human-based mob itself change its basic appearance ,
 	/client/proc/change_security_level,
-	/client/proc/view_chemical_reaction_logs,
 	/client/proc/makePAI,
 	/datum/admins/proc/paralyze_mob,
 	/client/proc/fixatmos,
@@ -149,7 +149,7 @@ var/list/admin_verbs_spawn = list(
 	/datum/admins/proc/spawn_custom_item,
 	/datum/admins/proc/check_custom_items,
 	/datum/admins/proc/spawn_plant,
-	/datum/admins/proc/spawn_atom, // Allows us to spawn instances,
+	/client/proc/spawn_atom, // Allows us to spawn instances,
 	/client/proc/respawn_character,
 	/client/proc/spawn_character_mob,
 	/client/proc/virus2_editor,
@@ -277,6 +277,7 @@ var/list/admin_verbs_hideable = list(
 	/client/proc/cmd_admin_direct_narrate,
 	/client/proc/cmd_admin_local_narrate,
 	/client/proc/cmd_admin_world_narrate,
+	/client/proc/cmd_admin_z_narrate,
 	/client/proc/check_words,
 	/client/proc/play_local_sound,
 	/client/proc/play_sound,
@@ -778,6 +779,8 @@ var/list/admin_verbs_event_manager = list(
 		message_admins("[src] deadmined themself.", 1)
 		deadmin()
 		to_chat(src, "<span class='interface'>You are now a normal player.</span>")
+		if(deadmin_holder?.fakekey)
+			to_chat(src, SPAN_RED(SPAN_BIG(SPAN_ANNOUNCE("Your ckey is still obfuscated as '[deadmin_holder.fakekey]' due to de-adminning while stealthed."))))
 		add_verb(src, /client/proc/readmin_self)
 	feedback_add_details("admin_verb","DAS") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 

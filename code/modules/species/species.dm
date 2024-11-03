@@ -91,6 +91,13 @@
 	/// do we have a species statpanel?
 	var/species_statpanel = FALSE
 
+	//* IFF *//
+
+	/// Inherent IFF factions
+	///
+	/// * This isn't the best way to do this, but it works.
+	var/list/iff_factions_inherent
+
 	//? Icons
 	/// Used for mob icon generation for non-32x32 species.
 	var/icon_template = 'icons/mob/species/template.dmi'
@@ -327,6 +334,11 @@
 	var/snow_movement = 0
 	/// How affected by item slowdown the species is.
 	var/item_slowdown_mod = 1
+	/// How affected by light the species is. Positive values slow down, negative speed up.
+	/// Values are a maximum slowdown / speedup based on amount of light or lack thereof.
+	var/light_slowdown = 0
+	var/dark_slowdown = 0
+
 
 	//? Special condition
 	/// Multiplier for 'Regenerate' power speed, in human_powers.dm
@@ -537,6 +549,9 @@
 	for(var/datum/ability/ability as anything in abilities)
 		ability.associate(H)
 
+	for(var/faction in iff_factions_inherent)
+		H.add_iff_faction(faction)
+
 /**
  * called when we are removed from a mob
  */
@@ -563,6 +578,9 @@
 
 	for(var/datum/ability/ability as anything in abilities)
 		ability.disassociate(H)
+
+	for(var/faction in iff_factions_inherent)
+		H.remove_iff_faction(faction)
 
 /datum/species/proc/sanitize_species_name(var/name)
 	return sanitizeName(name, MAX_NAME_LEN)

@@ -573,8 +573,8 @@
 /obj/item/hardsuit/proc/get_environment_temperature()
 	if (ishuman(loc))
 		var/mob/living/carbon/human/H = loc
-		if(istype(H.loc, /obj/mecha))
-			var/obj/mecha/M = H.loc
+		if(istype(H.loc, /obj/vehicle/sealed/mecha))
+			var/obj/vehicle/sealed/mecha/M = H.loc
 			return M.return_temperature()
 		else if(istype(H.loc, /obj/machinery/atmospherics/component/unary/cryo_cell))
 			var/obj/machinery/atmospherics/component/unary/cryo_cell/cryo = H.loc
@@ -1135,11 +1135,6 @@
 	//This is sota the goto stop mobs from moving var
 	if(!CHECK_MOBILITY(user, MOBILITY_CAN_MOVE))
 		return
-
-	if(locate(/obj/effect/stop/, wearer.loc))
-		for(var/obj/effect/stop/S in wearer.loc)
-			if(S.victim == wearer)
-				return
 
 	if(!wearer.lastarea)
 		wearer.lastarea = get_area(wearer.loc)
