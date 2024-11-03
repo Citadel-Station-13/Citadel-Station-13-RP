@@ -5,6 +5,8 @@ REPOSITORY_DEF(materials)
 	name = "Repository - Materials"
 	expected_type = /datum/prototype/material
 
+	var/list/legacy_material_lookup = list()
+
 /datum/controller/repository/materials/Create()
 	legacy_material_lookup = list()
 	return ..()
