@@ -6,10 +6,7 @@
 	primitive_form = SPECIES_MONKEY_VULPKANIN
 	default_bodytype = BODYTYPE_VULPKANIN
 
-	icobase      = 'icons/mob/species/vulpkanin/body.dmi'
-	deform       = 'icons/mob/species/vulpkanin/body.dmi' // They don't have a proper one for some reason...
-	husk_icon    = 'icons/mob/species/vulpkanin/husk.dmi'
-
+	bodyset = /datum/bodyset/organic/vulpkanin
 	sprite_accessory_defaults = list(
 		SPRITE_ACCESSORY_SLOT_TAIL = /datum/sprite_accessory/tail/bodyset/vulpkanin,
 	)

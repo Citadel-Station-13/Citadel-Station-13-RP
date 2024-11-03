@@ -29,7 +29,6 @@
 	icon_state = "zorren_face"
 	color_uses_blend_add = FALSE
 	body_parts = list(BP_HEAD)
-	random_generation_gender = MALE
 
 /datum/bodyset_marking/legacy/zorren/zorren_face_female
 	name = "Zorren Female Face"
@@ -37,7 +36,6 @@
 	icon_state = "zorren_face_female"
 	color_uses_blend_add = FALSE
 	body_parts = list(BP_HEAD)
-	random_generation_gender = FEMALE
 
 /datum/bodyset_marking/legacy/zorren/zorren_muzzle_male
 	name = "Zorren Male Muzzle"
@@ -45,7 +43,6 @@
 	icon_state = "zorren_muzzle"
 	color_uses_blend_add = FALSE
 	body_parts = list(BP_HEAD)
-	random_generation_gender = MALE
 
 /datum/bodyset_marking/legacy/zorren/zorren_muzzle_female
 	name = "Zorren Female Muzzle"
@@ -53,7 +50,6 @@
 	icon_state = "zorren_muzzle_female"
 	color_uses_blend_add = FALSE
 	body_parts = list(BP_HEAD)
-	random_generation_gender = FEMALE
 
 /datum/bodyset_marking/legacy/zorren/zorren_socks
 	name = "Zorren Socks"

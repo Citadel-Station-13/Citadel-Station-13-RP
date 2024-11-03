@@ -18,11 +18,9 @@
 	hunting skills that emphasized taking out their prey without themselves getting hit.
 	"}
 
-	icobase           = 'icons/mob/species/teshari/body.dmi'
-	deform            = 'icons/mob/species/teshari/deformed_body.dmi'
-	damage_mask       = 'icons/mob/species/teshari/damage_mask.dmi'
+	bodyset = /datum/bodyset/organic/teshari
+
 	blood_mask        = 'icons/mob/species/teshari/blood_mask.dmi'
-	damage_overlays   = 'icons/mob/species/teshari/damage_overlay.dmi'
 	suit_storage_icon = 'icons/mob/clothing/species/teshari/belt_mirror.dmi'
 
 	fire_icon_state = "generic" // Humanoid is too big for them and spriting a new one is really annoying.

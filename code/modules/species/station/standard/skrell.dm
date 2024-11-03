@@ -6,8 +6,6 @@
 	name_plural = SPECIES_SKRELL
 	primitive_form = SPECIES_MONKEY_SKRELL
 	category = "Skrell"
-	icobase = 'icons/mob/species/skrell/body_greyscale.dmi'
-	deform = 'icons/mob/species/skrell/deformed_body_greyscale.dmi'
 
 	blurb = {"
 	An amphibious species, Skrell come from the star system known as Qerr'Vallis, which translates
@@ -18,6 +16,8 @@
 	herbivores on the whole and tend to be co-operative with the other species of the galaxy, although
 	they rarely reveal the secrets of their empire to their allies.
 	"}
+
+	bodyset = /datum/bodyset/organic/skrell
 
 	wikilink = "https://citadel-station.net/wikiRP/index.php?title=Skrell"
 	catalogue_data = list(/datum/category_item/catalogue/fauna/skrell)

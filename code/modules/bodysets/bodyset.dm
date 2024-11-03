@@ -60,11 +60,14 @@ GLOBAL_LIST_EMPTY(bodyset_lookup)
 		BP_R_FOOT,
 	)
 	/// which bodyparts are gendered
+	///
+	/// * bodyparts that are gendered will have -m or -f applied after it depending on the gender of the mob
+	/// * unknown genders are treated as male; this is an implementation detail.
 	var/list/gendered_parts = list()
 	/// specific layers for bodyparts having multiple states / overlays.
 	/// used for stuff like legs having front-behind
 	/// the state (e.g. "front") will be appended after everything else
-	/// as an example: "unathi-l_leg-digi-m-front" (append, part, variation, gender, front)
+	/// as an example: "unathi-l_leg-digi-m-front" (prepend, part, variation, gender, front)
 	///
 	/// format:
 	/// list(
@@ -96,11 +99,10 @@ GLOBAL_LIST_EMPTY(bodyset_lookup)
 		BP_L_FOOT = list(TEXT_EAST = HUMAN_BODYLAYER_BEHIND, "ALL" = HUMAN_BODYLAYER_FRONT),
 		BP_R_FOOT = list(TEXT_WEST = HUMAN_BODYLAYER_BEHIND, "ALL" = HUMAN_BODYLAYER_FRONT),
 	)
-
 	/// autosliced icons by "[zone][-variation][-gender]"
 	/// autosliced icons will not have [state_prepend], or state_append on variations, or even the variation whatsoever
 	/// they'll just be "[zone][-gender]"
-	var/list/autoslice_cache = list()
+	var/tmp/list/autoslice_cache = list()
 
 	/// are we meant to be a greyscale set? if set to TRUE, we'll be colored as such
 	///
@@ -115,11 +117,9 @@ GLOBAL_LIST_EMPTY(bodyset_lookup)
 	/// valid overlays; list("string_id" = /datum/bodyset_overlay{use anonymous types!})
 	var/list/overlays
 
-	/// our preview icon; defaults to [icon]
-	var/preview_icon
-	/// our preview icon state; defaults to null, for automatic generation of preview.
-	var/preview_icon_state
+	/// Cached preview icon.
 	// todo: preview generation
+	var/tmp/icon/preview_icon
 
 	/// mask icon; defaults to [icon]
 	///
@@ -131,14 +131,24 @@ GLOBAL_LIST_EMPTY(bodyset_lookup)
 	/// mask icon state prepend; defaults to "mask"
 	///
 	/// * used for [damage_overlay_use_masking]
+	/// * so, on default, this becomes something like "mask-chest-digi-m" (if gendered and with a variation)
 	var/mask_icon_state
+	/// mask should not use gender
+	var/mask_no_gender = TRUE
+	/// mask should not use variation
+	var/mask_no_variation = TRUE
 
-	/// damage overlay - masking system? in this system, we'll use the "[brutestage][burnstage]" with a mask applied to it to determine limb graphics
-	var/damage_overlay_use_masking
+	#warn sighwtt
 	/// damage overlay icon; defaults to [icon]
 	var/damage_overlay_icon
-	/// damage overlay icon state prepend; defaults to "damage"
+	/// damage overlay icon state prepend; defaults to nothing.
 	var/damage_overlay_icon_state
+	/// damage overlay uses separate overlays instead of combined
+	///
+	/// * with this off, we use "prepend-[brute_stage]-[burn_stage]"
+	/// * with this on, we use an overlay for "brute" and "burn"
+	///   like this: "prepend-brute-[brute_stage]"
+	var/damage_overlay_use_separate = FALSE
 	/// max brute stages
 	var/damage_overlay_brute_stages
 	/// max burn stages

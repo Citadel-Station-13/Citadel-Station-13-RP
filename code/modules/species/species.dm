@@ -46,6 +46,8 @@
 	/// bodyset to use by default
 	var/datum/bodyset/bodyset = /datum/bodyset/organic/human
 	/// bodysets that can be chosen. automatically includes [bodyset] but you should include it anyways.
+	///
+	/// * If this is null, **we can choose any bodyset.**
 	var/list/datum/bodyset/bodysets
 	#warn hook in new
 

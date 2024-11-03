@@ -7,7 +7,7 @@
 	id = "marking_panda_eyes"
 	icon_state = "eyes_panda"
 	body_parts = list(BP_HEAD)
-	species_allowed = list(SPECIES_HUMAN)
+	bodyset_group_restricted = "human"
 
 /datum/bodyset_marking/legacy/panda/panda_full
 	name = "Panda Limbs"

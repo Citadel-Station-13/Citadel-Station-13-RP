@@ -49,7 +49,6 @@
 	icon_state = "nevrean_f"
 	body_parts = list(BP_HEAD)
 	color_uses_blend_add = FALSE
-	random_generation_gender = FEMALE
 
 /datum/bodyset_marking/legacy/nevrean_male
 	name = "Male Nevrean beak"
@@ -57,7 +56,6 @@
 	icon_state = "nevrean_m"
 	body_parts = list(BP_HEAD)
 	color_uses_blend_add = FALSE
-	random_generation_gender = MALE
 
 /datum/bodyset_marking/legacy/spots
 	name = "Spots"
@@ -391,8 +389,9 @@
 	icon_state = "shadekin-snoot"
 	color_uses_blend_add = FALSE
 	body_parts = list(BP_HEAD)
-	species_allowed = list(SPECIES_SHADEKIN, SPECIES_SHADEKIN_CREW)
-	apply_restrictions = TRUE
+	bodyset_restricted = list(
+		/datum/bodyset/organic/shadekin,
+	)
 
 /datum/bodyset_marking/legacy/talons
 	name = "Talons"

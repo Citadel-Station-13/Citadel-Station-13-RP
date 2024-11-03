@@ -82,7 +82,6 @@ var/const/cyberbeast_monitor_styles= "blank=cyber_blank;\
 	var/desc = "A generic unbranded robotic prosthesis."
 	/// bodyset to use
 	var/datum/bodyset/bodyset
-	#warn hook in init
 
 	/// Where it draws the monitor icon from.
 	var/monitor_icon = "icons/mob/monitor_icons.dmi"
@@ -132,6 +131,12 @@ var/const/cyberbeast_monitor_styles= "blank=cyber_blank;\
 		legacy_includes_tail = initial(casted.id)
 	if(istext(legacy_includes_tail))
 		legacy_includes_tail = GLOB.sprite_accessory_tails[legacy_includes_tail]
+	if(!istype(bodyset) && bodyset)
+		var/datum/bodyset/casted = bodyset
+		if(ispath(casted, /datum/bodyset))
+			bodyset = new casted
+		else
+			bodyset = GLOB.bodyset_lookup[casted]
 
 /datum/robolimb/unbranded_monitor
 	company = "Unbranded Monitor"

@@ -4,10 +4,7 @@
 	name_plural = SPECIES_SHADEKIN
 	category = SPECIES_CATEGORY_RESTRICTED
 
-	icobase      = 'icons/mob/species/shadekin/body.dmi'
-	deform       = 'icons/mob/species/shadekin/body.dmi'
-	husk_icon    = 'icons/mob/species/shadekin/husk.dmi'
-
+	bodyset = /datum/bodyset/organic/shadekin
 	sprite_accessory_defaults = list(
 		SPRITE_ACCESSORY_SLOT_TAIL = /datum/sprite_accessory/tail/bodyset/shadekin,
 	)
@@ -40,7 +37,7 @@
 	siemens_coefficient = 1
 	vision_innate = /datum/vision/baseline/species_tier_3/for_snowflake_ocs
 	vision_organ = O_EYES
-	
+
 	slowdown = -0.5
 	item_slowdown_mod = 0.5
 
