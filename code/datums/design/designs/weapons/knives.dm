@@ -5,7 +5,7 @@
 	lathe_type = LATHE_TYPE_AUTOLATHE
 	design_unlock = DESIGN_UNLOCK_INTRINSIC
 	materials_base = list(
-		/datum/material/steel = 500,
+		/datum/prototype/material/steel = 500,
 	)
 	material_costs = list(
 		"blade" = 3000,

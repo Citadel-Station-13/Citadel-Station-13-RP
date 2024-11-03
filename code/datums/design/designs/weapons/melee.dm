@@ -3,7 +3,7 @@
 	build_path = /obj/item/clothing/gloves/knuckledusters
 	lathe_type = LATHE_TYPE_AUTOLATHE
 	design_unlock = DESIGN_UNLOCK_INTRINSIC
-	materials_base = list(/datum/material/steel = 2000)
+	materials_base = list(/datum/prototype/material/steel = 2000)
 
 /datum/prototype/design/weapon/flamethrower
 	id = "WeaponFlamethrower"

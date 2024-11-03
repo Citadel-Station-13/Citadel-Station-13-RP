@@ -11,6 +11,9 @@
  * * Any non-hardcoded prototypes are automatically serialized to the database on registration.
  * * Prototypes should never requrie hard references to datums.
  * * Prototypes may only refer to other prototypes with string IDs.
+ * * Hardcoded prototypes should only refer to other prototypes with typepaths. This allows the subsystem to early-load
+ *   the other prototypes before its own initialization, which is required to not have to enforce load order
+ *   on repositories.
  */
 /datum/prototype
 	abstract_type = /datum/prototype

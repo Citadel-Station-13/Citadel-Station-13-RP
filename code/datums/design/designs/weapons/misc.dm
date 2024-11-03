@@ -4,6 +4,6 @@
 	design_unlock = DESIGN_UNLOCK_INTRINSIC
 	build_path = /obj/item/weaponcrafting/receiver
 	materials_base = list(
-		/datum/material/steel = 8000,
-		/datum/material/glass = 2500,
+		/datum/prototype/material/steel = 8000,
+		/datum/prototype/material/glass = 2500,
 	)
