@@ -7,9 +7,9 @@ GLOBAL_LIST_INIT(default_internal_channels, list(
 	num2text(FREQ_COMMAND)= list(ACCESS_COMMAND_BRIDGE),
 	num2text(FREQ_ENGINEERING) = list(ACCESS_ENGINEERING_ENGINE, ACCESS_ENGINEERING_ATMOS),
 	num2text(FREQ_MEDICAL) = list(ACCESS_MEDICAL_EQUIPMENT),
-	num2text(MED_I_FREQ)=list(ACCESS_MEDICAL_EQUIPMENT),
+	num2text(FREQ_MEDICAL_INTERNAL)=list(ACCESS_MEDICAL_EQUIPMENT),
 	num2text(FREQ_SECURITY) = list(ACCESS_SECURITY_EQUIPMENT),
-	num2text(SEC_I_FREQ)=list(ACCESS_SECURITY_EQUIPMENT),
+	num2text(FREQ_SECURITY_INTERNAL)=list(ACCESS_SECURITY_EQUIPMENT),
 	num2text(FREQ_SCIENCE) = list(ACCESS_SCIENCE_FABRICATION, ACCESS_SCIENCE_ROBOTICS, ACCESS_SCIENCE_XENOBIO, ACCESS_GENERAL_EXPLORER),
 	num2text(FREQ_SUPPLY) = list(ACCESS_SUPPLY_BAY, ACCESS_SUPPLY_MINE_OUTPOST),
 	num2text(FREQ_SERVICE) = list(ACCESS_GENERAL_JANITOR, ACCESS_GENERAL_LIBRARY, ACCESS_GENERAL_BOTANY, ACCESS_GENERAL_BAR, ACCESS_GENERAL_KITCHEN),
@@ -19,7 +19,7 @@ GLOBAL_LIST_INIT(default_internal_channels, list(
 GLOBAL_LIST_INIT(default_medbay_channels, list(
 	num2text(FREQ_COMMON) = list(),
 	num2text(FREQ_MEDICAL) = list(ACCESS_MEDICAL_EQUIPMENT),
-	num2text(MED_I_FREQ) = list(ACCESS_MEDICAL_EQUIPMENT)
+	num2text(FREQ_MEDICAL_INTERNAL) = list(ACCESS_MEDICAL_EQUIPMENT)
 ))
 
 /obj/item/radio
@@ -761,7 +761,7 @@ GLOBAL_DATUM_INIT(virtual_announcer_ai, /mob/living/silicon/ai/announcer, new(nu
 	name = "phone"
 
 /obj/item/radio/phone/medbay
-	frequency = MED_I_FREQ
+	frequency = FREQ_MEDICAL_INTERNAL
 
 /obj/item/radio/phone/medbay/Initialize(mapload)
 	. = ..()
@@ -776,7 +776,7 @@ GLOBAL_DATUM_INIT(virtual_announcer_ai, /mob/living/silicon/ai/announcer, new(nu
 /obj/item/radio/emergency
 	name = "Medbay Emergency Radio Link"
 	icon_state = "med_walkietalkie"
-	frequency = MED_I_FREQ
+	frequency = FREQ_MEDICAL_INTERNAL
 	subspace_transmission = 1
 	adhoc_fallback = TRUE
 

@@ -18,9 +18,11 @@
 #define FREQ_SECURITY 1359 // Security comms frequency, red
 #define FREQ_EXPLORER 1361
 #define FREQ_TALON 1363
-#define FREQ_ENTERTAINMENT 1461
 
-#define FREQ_HOLOGRID_SOLUTION 1433
+#define FREQ_ENTERTAINMENT 1461
+#define FREQ_SECURITY_INTERNAL 1475
+#define FREQ_MEDICAL_INTERNAL 1485
+
 #define FREQ_STATUS_DISPLAYS 1435
 
 #define MIN_FREQ 1441 // ------------------------------------------------------
@@ -30,8 +32,6 @@
 #define FREQ_AI_BOT 1447 // NOT AI private comms but for beepsky apparently
 #define FREQ_SIGNALER 1457 // the default for new signalers
 #define FREQ_COMMON 1459 // Common comms frequency, dark green
-
-#define MIN_UNUSED_FREQ 1461 // Prevents rolling AI Private or Common
 
 #define MAX_FREQ 1489 // ------------------------------------------------------
 

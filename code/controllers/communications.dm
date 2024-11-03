@@ -97,10 +97,6 @@ On the map:
 1455 for AI access
 */
 
-// internal department channels
-var/const/MED_I_FREQ = 1485
-var/const/SEC_I_FREQ = 1475
-
 var/list/radiochannels = list(
 	"Common"		= FREQ_COMMON,
 	"Science"		= FREQ_SCIENCE,
@@ -118,8 +114,8 @@ var/list/radiochannels = list(
 	"Explorer"		= FREQ_EXPLORER,
 	"AI Private"	= FREQ_AI_PRIVATE,
 	"Entertainment" = FREQ_ENTERTAINMENT,
-	"Medical(I)"	= MED_I_FREQ,
-	"Security(I)"	= SEC_I_FREQ
+	"Medical(I)"	= FREQ_MEDICAL_INTERNAL,
+	"Security(I)"	= FREQ_SECURITY_INTERNAL
 )
 
 // central command channels, i.e deathsquid & response teams

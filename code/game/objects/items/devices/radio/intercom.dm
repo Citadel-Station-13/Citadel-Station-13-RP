@@ -67,12 +67,12 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/item/radio/intercom, 28)
 
 /obj/item/radio/intercom/department/medbay
 	name = "station intercom (Medbay)"
-	frequency = MED_I_FREQ
+	frequency = FREQ_MEDICAL_INTERNAL
 	overlay_color = COLOR_TEAL
 
 /obj/item/radio/intercom/department/security
 	name = "station intercom (Security)"
-	frequency = SEC_I_FREQ
+	frequency = FREQ_SECURITY_INTERNAL
 	overlay_color = COLOR_MAROON
 
 /obj/item/radio/intercom/entertainment
@@ -99,7 +99,7 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/item/radio/intercom, 28)
 	. = ..()
 	internal_channels = list(
 		num2text(FREQ_COMMON) = list(),
-		num2text(SEC_I_FREQ) = list(ACCESS_SECURITY_EQUIPMENT)
+		num2text(FREQ_SECURITY_INTERNAL) = list(ACCESS_SECURITY_EQUIPMENT)
 	)
 
 /obj/item/radio/intercom/entertainment/Initialize(mapload)
