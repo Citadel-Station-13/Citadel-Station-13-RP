@@ -104,14 +104,11 @@
 		. = type_lookup[type_or_id]
 		if(.)
 			return
-		// types are complicated, is it lazy?
-		if(initial(type_or_id.lazy) && (initial(type_or_id.abstract_type) != type_or_id))
-			// if so, init it
-			var/datum/prototype/loading = new type_or_id
-			loading.hardcoded = TRUE
-			load(loading)
-		else
-			CRASH("failed to fetch a hardcoded prototype")
+		if(initial(type_or_id.abstract_type) == type_or_id)
+			CRASH("tried to fetch an abstract prototype")
+		var/datum/prototype/loading = new type_or_id
+		loading.hardcoded = TRUE
+		load(loading)
 	else if(istext(type_or_id))
 		return id_lookup[type_or_id]
 	else
