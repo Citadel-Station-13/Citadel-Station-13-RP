@@ -3,3 +3,4 @@
 
 /datum/bodyset/synthetic
 	abstract_type = /datum/bodyset/synthetic
+	category = "Synthetic"

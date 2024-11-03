@@ -27,6 +27,8 @@ GLOBAL_LIST_EMPTY(bodyset_lookup)
 	var/id
 	/// name - should be unique
 	var/name
+	/// category name for UIs
+	var/category = "Unsorted"
 	/// base id; if set, we use that for checking for markings and whatnot.
 	/// used so you can choose between a set of similar-enough bodysets that it's still considered the same
 	var/base_id
@@ -153,6 +155,11 @@ GLOBAL_LIST_EMPTY(bodyset_lookup)
 	var/damage_overlay_brute_stages
 	/// max burn stages
 	var/damage_overlay_burn_stages
+
+	/// default sprite accessories
+	///
+	/// * list of slot key to accessory typepath or ID
+	var/list/sprite_accessory_defaults
 
 /datum/bodyset/New()
 	if(isnull(src.base_id))
