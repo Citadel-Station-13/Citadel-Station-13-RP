@@ -45,7 +45,7 @@
 /matrix/proc/Shear(x, y)
 	return Multiply(matrix(1, x, 0, y, 1, 0))
 
-/atom/proc/SpinAnimation(speed = 10, loops = -1, clockwise = 1, segments = 3, parallel = TRUE)
+/atom/proc/SpinAnimation(speed = 1 SECONDS, loops = -1, clockwise = 1, segments = 3, parallel = TRUE)
 	if(!segments)
 		return
 	var/segment = 360/segments

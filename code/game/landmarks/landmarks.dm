@@ -36,29 +36,10 @@ INITIALIZE_IMMEDIATE(/obj/landmark)
 		else
 			GLOB.landmarks_keyed[landmark_key] += src
 
-/obj/landmark/Destroy()
-	GLOB.landmarks_list -= src
-	if(landmark_key && GLOB.landmarks_keyed[landmark_key])
-		GLOB.landmarks_keyed[landmark_key] -= src
-		if(!length(GLOB.landmarks_keyed[landmark_key]))
-			GLOB.landmarks_keyed -= landmark_key
-	return ..()
-
-/**
- * Called when the round is finished setting up directly from SSticker
- */
-/obj/landmark/proc/OnRoundstart()
-	if(QDELETED(src))
-		CRASH("already deleted")
-	if(delete_on_roundstart)
-		qdel(src)
-
-// everything below here are subtypes
-// no no no, ftfy: everything below here needs to be nuked from orbit ~silicons
-/obj/landmark/Initialize(mapload)
-	. = ..()
+	// everything below here are subtypes
+	// no no no, ftfy: everything below here needs to be nuked from orbit ~silicons
 	tag = "landmark*[name]"
-	invisibility = 101
+	invisibility = INVISIBILITY_ABSTRACT
 
 	switch(name)			//some of these are probably obsolete
 		if("monkey")
@@ -111,7 +92,23 @@ INITIALIZE_IMMEDIATE(/obj/landmark)
 			lavaland_exit += loc
 			delete_on_roundstart = 1
 			return
-	return 1
+
+/obj/landmark/Destroy()
+	GLOB.landmarks_list -= src
+	if(landmark_key && GLOB.landmarks_keyed[landmark_key])
+		GLOB.landmarks_keyed[landmark_key] -= src
+		if(!length(GLOB.landmarks_keyed[landmark_key]))
+			GLOB.landmarks_keyed -= landmark_key
+	return ..()
+
+/**
+ * Called when the round is finished setting up directly from SSticker
+ */
+/obj/landmark/proc/OnRoundstart()
+	if(QDELETED(src))
+		CRASH("already deleted")
+	if(delete_on_roundstart)
+		qdel(src)
 
 /obj/landmark/observer_spawn
 	name = "observer start"
