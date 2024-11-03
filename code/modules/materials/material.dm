@@ -5,13 +5,7 @@
 /datum/prototype/material
 	abstract_type = /datum/prototype/material
 
-	//* Core
-	/**
-	 * ID.
-	 * Must be unique.
-	 * Hardcoded materials can be looked up by typepath too and must never have their ids changed under the current implementation.
-	 */
-	var/id
+	//* Core *//
 	/// Name for debugging purposes; not player-facing.
 	var/name
 

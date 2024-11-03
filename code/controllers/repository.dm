@@ -102,7 +102,7 @@
 			// if so, init it
 			var/datum/prototype/loading = new type_or_id
 			loading.hardcoded = TRUE
-			load(instance)
+			load(loading)
 		else
 			CRASH("failed to fetch a hardcoded prototype")
 	else if(istext(type_or_id))

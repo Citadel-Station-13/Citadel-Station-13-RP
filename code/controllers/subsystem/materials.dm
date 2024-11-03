@@ -27,13 +27,11 @@ SUBSYSTEM_DEF(materials)
 
 /datum/controller/subsystem/materials/Initialize()
 	initialize_material_traits()
-	initialize_materials()
 	initialize_material_recipes()
 	return ..()
 
 /datum/controller/subsystem/materials/Recover()
 	initialize_material_traits()
-	initialize_materials()
 	initialize_material_recipes()
 	if(islist(SSmaterials.ticking))
 		// todo: better sanitization
@@ -102,7 +100,7 @@ SUBSYSTEM_DEF(materials)
 	// todo: optimize
 	. = list()
 	for(var/i in 1 to length(L))
-		var/datum/prototype/material/resolved = resolve_material(L[i])
+		var/datum/prototype/material/resolved = RSmaterials.fetch(L[i])
 		. += resolved?.id
 
 /**
@@ -114,7 +112,7 @@ SUBSYSTEM_DEF(materials)
 	// todo: optimize
 	. = list()
 	for(var/i in 1 to length(L))
-		var/datum/prototype/material/resolved = resolve_material(L[i])
+		var/datum/prototype/material/resolved = RSmaterials.fetch(L[i])
 		. += resolved
 
 /**
@@ -128,7 +126,7 @@ SUBSYSTEM_DEF(materials)
 	. = list()
 	for(var/i in 1 to length(L))
 		var/key = L[i]
-		var/datum/prototype/material/resolved = resolve_material(key)
+		var/datum/prototype/material/resolved = RSmaterials.fetch(key)
 		if(isnull(resolved))
 			continue
 		var/value = L[key]
@@ -145,7 +143,7 @@ SUBSYSTEM_DEF(materials)
 	. = list()
 	for(var/i in 1 to length(L))
 		var/key = L[i]
-		var/datum/prototype/material/resolved = resolve_material(key)
+		var/datum/prototype/material/resolved = RSmaterials.fetch(key)
 		if(isnull(resolved))
 			continue
 		var/value = L[key]
@@ -162,7 +160,7 @@ SUBSYSTEM_DEF(materials)
 	for(var/i in 1 to length(L))
 		var/key = L[i]
 		var/value = L[key]
-		var/datum/prototype/material/resolved = resolve_material(value)
+		var/datum/prototype/material/resolved = RSmaterials.fetch(value)
 		.[key] = resolved?.id
 
 /**
@@ -176,7 +174,7 @@ SUBSYSTEM_DEF(materials)
 	for(var/i in 1 to length(L))
 		var/key = L[i]
 		var/value = L[key]
-		var/datum/prototype/material/resolved = resolve_material(value)
+		var/datum/prototype/material/resolved = RSmaterials.fetch(value)
 		.[key] = resolved
 
 /**
@@ -192,7 +190,7 @@ SUBSYSTEM_DEF(materials)
  * drop a material sheet
  */
 /datum/controller/subsystem/materials/proc/drop_sheets(datum/prototype/material/id_or_path, amount, atom/where)
-	var/datum/prototype/material/mat = resolve_material(id_or_path)
+	var/datum/prototype/material/mat = RSmaterials.fetch(id_or_path)
 	mat.place_sheet(where, amount)
 
 /**
