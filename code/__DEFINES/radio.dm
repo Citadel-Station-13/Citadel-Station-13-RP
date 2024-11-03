@@ -17,6 +17,8 @@
 #define FREQ_MEDICAL 1355 // Medical comms frequency, soft blue
 #define FREQ_ENGINEERING 1357 // Engineering comms frequency, orange
 #define FREQ_SECURITY 1359 // Security comms frequency, red
+#define FREQ_EXPLORER 1361
+#define FREQ_TALON 1363
 
 #define FREQ_ENTERTAINMENT 1415 // Used by entertainment monitors, cyan
 
@@ -27,7 +29,7 @@
 // Only the 1441 to 1489 range is freely available for general conversation.
 // This represents 1/8th of the available spectrum.
 
-#define FREQ_AI_PRIVATE 1447 // AI private comms frequency, magenta
+#define FREQ_AI_BOT 1447 // NOT AI private comms but for beepsky apparently
 #define FREQ_PRESSURE_PLATE 1447
 #define FREQ_ELECTROPACK 1449
 #define FREQ_MAGNETS 1449

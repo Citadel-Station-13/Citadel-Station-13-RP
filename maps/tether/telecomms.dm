@@ -12,15 +12,15 @@
 	)
 
 /obj/machinery/telecomms/receiver/preset_right/tether
-	freq_listening = list(AI_FREQ, FREQ_SCIENCE, FREQ_MEDICAL, FREQ_SUPPLY, FREQ_SERVICE, FREQ_COMMAND, FREQ_ENGINEERING, FREQ_SECURITY, ENT_FREQ, EXP_FREQ)
+	freq_listening = list(AI_FREQ, FREQ_SCIENCE, FREQ_MEDICAL, FREQ_SUPPLY, FREQ_SERVICE, FREQ_COMMAND, FREQ_ENGINEERING, FREQ_SECURITY, ENT_FREQ, FREQ_EXPLORER)
 
 /obj/machinery/telecomms/broadcaster/preset_right/tether
 
 /obj/machinery/telecomms/bus/preset_two/tether
-	freq_listening = list(FREQ_SUPPLY, FREQ_SERVICE, EXP_FREQ)
+	freq_listening = list(FREQ_SUPPLY, FREQ_SERVICE, FREQ_EXPLORER)
 
 /obj/machinery/telecomms/server/presets/service/tether
-	freq_listening = list(FREQ_SERVICE, EXP_FREQ)
+	freq_listening = list(FREQ_SERVICE, FREQ_EXPLORER)
 	autolinkers = list("service", "explorer")
 
 /obj/item/multitool/tether_buffered

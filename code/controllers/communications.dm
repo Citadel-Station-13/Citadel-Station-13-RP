@@ -105,7 +105,6 @@ var/const/TRADE_FREQ = 1279
 var/const/ENT_FREQ	= 1461 //entertainment frequency. This is not a diona exclusive frequency.
 
 // department channels
-var/const/EXP_FREQ = 1361
 var/const/TALON_FREQ = 1363	// No need to remove at the moment, Talon equipment can still be used and such - Bloop
 
 // internal department channels
@@ -126,7 +125,7 @@ var/list/radiochannels = list(
 	"Trader"		= TRADE_FREQ,
 	"Supply" 		= FREQ_SUPPLY,
 	"Service" 		= FREQ_SERVICE,
-	"Explorer"		= EXP_FREQ,
+	"Explorer"		= FREQ_EXPLORER,
 	"AI Private"	= AI_FREQ,
 	"Entertainment" = ENT_FREQ,
 	"Medical(I)"	= MED_I_FREQ,
@@ -169,7 +168,7 @@ var/list/DEPT_FREQS = list(AI_FREQ, FREQ_COMMAND, FREQ_ENGINEERING, ENT_FREQ, FR
 		return "suppradio"
 	if(frequency == FREQ_SERVICE) // service
 		return "servradio"
-	if(frequency == EXP_FREQ) // explorer
+	if(frequency == FREQ_EXPLORER) // explorer
 		return "expradio"
 	if(frequency == ENT_FREQ) // entertainment
 		return "entradio"

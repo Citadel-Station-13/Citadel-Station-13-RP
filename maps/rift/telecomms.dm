@@ -44,16 +44,16 @@
 
 /obj/machinery/telecomms/receiver/preset_right/rift
 //	id = "rift_rx"
-	freq_listening = list(AI_FREQ, FREQ_SCIENCE, FREQ_MEDICAL, FREQ_SUPPLY, FREQ_SERVICE, FREQ_COMMAND, FREQ_ENGINEERING, FREQ_SECURITY, ENT_FREQ, EXP_FREQ)
+	freq_listening = list(AI_FREQ, FREQ_SCIENCE, FREQ_MEDICAL, FREQ_SUPPLY, FREQ_SERVICE, FREQ_COMMAND, FREQ_ENGINEERING, FREQ_SECURITY, ENT_FREQ, FREQ_EXPLORER)
 
 /obj/machinery/telecomms/broadcaster/preset_right/rift
 //	id = "rift_tx"
 
 /obj/machinery/telecomms/bus/preset_two/rift
-	freq_listening = list(FREQ_SUPPLY, FREQ_SERVICE, EXP_FREQ)
+	freq_listening = list(FREQ_SUPPLY, FREQ_SERVICE, FREQ_EXPLORER)
 
 /obj/machinery/telecomms/server/presets/service/rift
-	freq_listening = list(FREQ_SERVICE, EXP_FREQ)
+	freq_listening = list(FREQ_SERVICE, FREQ_EXPLORER)
 	autolinkers = list("service", "explorer")
 
 // Telecommunications Satellite
