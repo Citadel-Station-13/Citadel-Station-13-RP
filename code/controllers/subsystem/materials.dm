@@ -4,8 +4,6 @@ SUBSYSTEM_DEF(materials)
 	init_order = INIT_ORDER_MATERIALS
 	wait = 2 SECONDS
 
-	/// material trait by path
-	var/list/material_traits
 	/// material recipes
 	var/list/datum/stack_recipe/material/material_stack_recipes
 
@@ -26,12 +24,10 @@ SUBSYSTEM_DEF(materials)
 	var/list/wall_armor_cache = list()
 
 /datum/controller/subsystem/materials/Initialize()
-	initialize_material_traits()
 	initialize_material_recipes()
 	return ..()
 
 /datum/controller/subsystem/materials/Recover()
-	initialize_material_traits()
 	initialize_material_recipes()
 	if(islist(SSmaterials.ticking))
 		// todo: better sanitization
@@ -59,7 +55,7 @@ SUBSYSTEM_DEF(materials)
 	var/atom/A
 	var/dt = nominal_dt_s
 	var/i
-	var/datum/material_trait/trait
+	var/datum/prototype/material_trait/trait
 	for(i in length(currentrun) to 1 step -1)
 		A = currentrun[A]
 		if(length(A.material_traits))
@@ -73,15 +69,6 @@ SUBSYSTEM_DEF(materials)
 		if(MC_TICK_CHECK)
 			break
 	currentrun.len -= (length(currentrun) - i + 1)
-
-/datum/controller/subsystem/materials/proc/initialize_material_traits()
-	material_traits = list()
-	for(var/path in subtypesof(/datum/material_trait))
-		var/datum/prototype/material/mat_trait = path
-		if(initial(mat_trait.abstract_type) == path)
-			continue
-		mat_trait = new path
-		material_traits[path] = mat_trait
 
 /datum/controller/subsystem/materials/proc/initialize_material_recipes()
 	material_stack_recipes = list()

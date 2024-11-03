@@ -78,6 +78,9 @@
 			continue
 		if(initial(instance.lazy))
 			continue
+		// are we already loaded?
+		if(type_lookup[instance])
+			continue
 		instance = new instance
 		instance.hardcoded = TRUE
 		load(instance)
@@ -109,6 +112,7 @@
 		var/datum/prototype/loading = new type_or_id
 		loading.hardcoded = TRUE
 		load(loading)
+		return loading
 	else if(istext(type_or_id))
 		return id_lookup[type_or_id]
 	else

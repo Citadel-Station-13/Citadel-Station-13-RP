@@ -250,7 +250,7 @@
 	. = ..()
 	var/list/serialized_traits = list()
 	// use type directly - we don't care about update stability.
-	for(var/datum/material_trait/trait in material_traits)
+	for(var/datum/prototype/material_trait/trait in material_traits)
 		serialized_traits[trait.type] = list(
 			"trait" = trait.serialize(),
 			"data" = material_traits[trait],
@@ -262,10 +262,10 @@
 	var/list/deserializing_traits = .["traits"]
 	for(var/path in deserializing_traits)
 		var/resolved = text2path(path)
-		if(!ispath(resolved, /datum/material_trait))
+		if(!ispath(resolved, /datum/prototype/material_trait))
 			continue
 		var/list/data_list = deserializing_traits[path]
-		var/datum/material_trait/trait = new resolved
+		var/datum/prototype/material_trait/trait = new resolved
 		trait.deserialize(data_list["trait"])
 		material_traits[trait] = data_list["data"]
 
@@ -310,6 +310,6 @@
 		var/key = material_traits[i]
 		var/val = material_traits[key]
 		if(ispath(key))
-			ASSERT(SSmaterials.material_traits[key])
-			material_traits[i] = SSmaterials.material_traits[key]
-			material_traits[material_traits[i]] = val
+			var/datum/material_trait/fetched = RSmaterial_traits.fetch(key)
+			material_traits[i] = fetched
+			material_traits[fetched] = val

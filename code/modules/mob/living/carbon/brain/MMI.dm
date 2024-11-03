@@ -203,7 +203,6 @@
 //	brainmob.add_language("Robot Talk")//No binary without a binary communication device
 	brainmob.add_language(LANGUAGE_GALCOM)
 	brainmob.add_language(LANGUAGE_EAL)
-	brainmob.loc = src
 	brainmob.container = src
 	brainmob.set_stat(CONSCIOUS)
 	brainmob.silent = FALSE

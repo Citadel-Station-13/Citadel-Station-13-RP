@@ -4,4 +4,4 @@
 /**
  * data: strength as num
  */
-/datum/material_trait/radioactive
+/datum/prototype/material_trait/radioactive

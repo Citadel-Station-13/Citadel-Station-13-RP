@@ -26,7 +26,7 @@ DEFINE_BITFIELD(material_constraints, list(
 	// none yet
 ))
 
-//* /datum/material_trait material_trait_flags
+//* /datum/prototype/material_trait material_trait_flags
 
 /// used to attack
 #define MATERIAL_TRAIT_ATTACK (1<<0)
