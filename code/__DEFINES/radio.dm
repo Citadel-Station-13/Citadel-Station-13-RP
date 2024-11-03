@@ -30,6 +30,8 @@
 // This represents 1/8th of the available spectrum.
 
 #define FREQ_AI_BOT 1447 // NOT AI private comms but for beepsky apparently
+
+#define FREQ_LOCATOR_IMPLANT 1451
 #define FREQ_SIGNALER 1457 // the default for new signalers
 #define FREQ_COMMON 1459 // Common comms frequency, dark green
 
