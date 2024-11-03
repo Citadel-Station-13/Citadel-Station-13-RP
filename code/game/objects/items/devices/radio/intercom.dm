@@ -112,13 +112,13 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/item/radio/intercom, 28)
 /obj/item/radio/intercom/syndicate
 	name = "illicit intercom"
 	desc = "Talk through this. Evilly"
-	frequency = SYND_FREQ
+	frequency = FREQ_SYNDICATE
 	subspace_transmission = 1
 	syndie = 1
 
 /obj/item/radio/intercom/syndicate/Initialize(mapload)
 	. = ..()
-	internal_channels[num2text(SYND_FREQ)] = list(ACCESS_FACTION_SYNDICATE)
+	internal_channels[num2text(FREQ_SYNDICATE)] = list(ACCESS_FACTION_SYNDICATE)
 
 /obj/item/radio/intercom/raider
 	name = "illicit intercom"

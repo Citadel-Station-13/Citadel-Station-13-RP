@@ -317,25 +317,25 @@ var/message_delay = 0 // To make sure restarting the recentmessages list is kept
 			switch(display_freq)
 				if(PUB_FREQ)
 					blackbox.msg_common += blackbox_msg
-				if(SCI_FREQ)
+				if(FREQ_SCIENCE)
 					blackbox.msg_science += blackbox_msg
-				if(COMM_FREQ)
+				if(FREQ_COMMAND)
 					blackbox.msg_command += blackbox_msg
-				if(MED_FREQ)
+				if(FREQ_MEDICAL)
 					blackbox.msg_medical += blackbox_msg
-				if(ENG_FREQ)
+				if(FREQ_ENGINEERING)
 					blackbox.msg_engineering += blackbox_msg
-				if(SEC_FREQ)
+				if(FREQ_SECURITY)
 					blackbox.msg_security += blackbox_msg
 				if(DTH_FREQ)
 					blackbox.msg_deathsquad += blackbox_msg
-				if(SYND_FREQ)
+				if(FREQ_SYNDICATE)
 					blackbox.msg_syndicate += blackbox_msg
 				if(RAID_FREQ)
 					blackbox.msg_raider += blackbox_msg
 				if(FREQ_SUPPLY)
 					blackbox.msg_cargo += blackbox_msg
-				if(SRV_FREQ)
+				if(FREQ_SERVICE)
 					blackbox.msg_service += blackbox_msg
 				if(EXP_FREQ)
 					blackbox.msg_explorer += blackbox_msg
@@ -491,25 +491,25 @@ var/message_delay = 0 // To make sure restarting the recentmessages list is kept
 			switch(display_freq)
 				if(PUB_FREQ)
 					blackbox.msg_common += blackbox_msg
-				if(SCI_FREQ)
+				if(FREQ_SCIENCE)
 					blackbox.msg_science += blackbox_msg
-				if(COMM_FREQ)
+				if(FREQ_COMMAND)
 					blackbox.msg_command += blackbox_msg
-				if(MED_FREQ)
+				if(FREQ_MEDICAL)
 					blackbox.msg_medical += blackbox_msg
-				if(ENG_FREQ)
+				if(FREQ_ENGINEERING)
 					blackbox.msg_engineering += blackbox_msg
-				if(SEC_FREQ)
+				if(FREQ_SECURITY)
 					blackbox.msg_security += blackbox_msg
 				if(DTH_FREQ)
 					blackbox.msg_deathsquad += blackbox_msg
-				if(SYND_FREQ)
+				if(FREQ_SYNDICATE)
 					blackbox.msg_syndicate += blackbox_msg
 				if(RAID_FREQ)
 					blackbox.msg_raider += blackbox_msg
 				if(FREQ_SUPPLY)
 					blackbox.msg_cargo += blackbox_msg
-				if(SRV_FREQ)
+				if(FREQ_SERVICE)
 					blackbox.msg_service += blackbox_msg
 				else
 					blackbox.messages += blackbox_msg

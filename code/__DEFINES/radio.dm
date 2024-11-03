@@ -17,6 +17,7 @@
 #define FREQ_MEDICAL 1355 // Medical comms frequency, soft blue
 #define FREQ_ENGINEERING 1357 // Engineering comms frequency, orange
 #define FREQ_SECURITY 1359 // Security comms frequency, red
+
 #define FREQ_ENTERTAINMENT 1415 // Used by entertainment monitors, cyan
 
 #define FREQ_HOLOGRID_SOLUTION 1433
