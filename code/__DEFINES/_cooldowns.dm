@@ -89,4 +89,4 @@
 #define CD_INDEX_SCULPTING_COOLDOWN			"sculpting_block"
 
 // admin verb cooldowns
-#define COOLDOWN_INTERNET_SOUND "internet_sound"
+#define CD_INTERNET_SOUND "internet_sound"

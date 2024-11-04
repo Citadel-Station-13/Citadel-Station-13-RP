@@ -57,8 +57,8 @@
 	if(!check_rights(R_SOUNDS))
 		return
 
-	if(S_TIMER_COOLDOWN_TIMELEFT(SStimer, COOLDOWN_INTERNET_SOUND))
-		if(tgui_alert(src, "Someone else is already playing an Internet sound! It has [DisplayTimeText(S_TIMER_COOLDOWN_TIMELEFT(SStimer, COOLDOWN_INTERNET_SOUND), 1)] remaining. \
+	if(S_TIMER_COOLDOWN_TIMELEFT(SStimer, CD_INTERNET_SOUND))
+		if(tgui_alert(src, "Someone else is already playing an Internet sound! It has [DisplayTimeText(S_TIMER_COOLDOWN_TIMELEFT(SStimer, CD_INTERNET_SOUND), 1)] remaining. \
 		Would you like to override?", "Musicalis Interruptus", list("No","Yes")) != "Yes")
 			return
 
@@ -171,7 +171,7 @@
 				else
 					C.tgui_panel?.stop_music()
 
-	S_TIMER_COOLDOWN_START(SStimer, COOLDOWN_INTERNET_SOUND, duration)
+	S_TIMER_COOLDOWN_START(SStimer, CD_INTERNET_SOUND, duration)
 
 	feedback_add_details("admin_verb","PIS") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
