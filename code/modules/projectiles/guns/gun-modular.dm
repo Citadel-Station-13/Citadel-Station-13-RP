@@ -32,3 +32,26 @@
 	#warn impl
 
 #warn hook everything in attackby's
+
+//* Modular Components - API *//
+
+/**
+ * Try to use a certain amount of power.
+ *
+ * @return amount used
+ */
+/obj/item/gun/proc/modular_use_power(obj/item/gun_component/component, joules)
+	return 0
+
+/**
+ * Try to use a certain amount of power. Fails if insufficient.
+ *
+ * @params
+ * * component - the component drawing power
+ * * joules - how much power to use, in joules
+ * * reserve - how many joules must be remaining after use, in joules
+ *
+ * @return amount used
+ */
+/obj/item/gun/proc/modular_use_checked_power(obj/item/gun_component/component, joules, reserve)
+	return 0

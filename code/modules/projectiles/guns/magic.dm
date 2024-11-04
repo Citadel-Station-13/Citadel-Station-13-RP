@@ -56,7 +56,7 @@
 	charge_tick = 0
 	charges++
 
-/obj/item/gun/magic/consume_next_projectile(iteration, firing_flags, datum/firemode/firemode, datum/event_args/actor/actor, atom/firer)
+/obj/item/gun/magic/consume_next_projectile(datum/gun_firing_cycle/cycle)
 	if(charges <= 0)
 		return null
 	return chambered?.get_projectile()

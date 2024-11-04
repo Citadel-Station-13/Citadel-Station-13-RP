@@ -9,6 +9,13 @@
 	var/name = "default"
 	var/list/settings = list()
 
+	//* firing *//
+	/// number of shots in burst
+	var/burst_amount = 1
+	/// delay between burst shots
+	var/burst_delay = 0.2 SECONDS
+
+	//* rendering *//
 	/// state key for rendering, if any
 	var/render_key
 
@@ -25,6 +32,8 @@
 			settings[propname] = gun.vars[propname] //better than initial() as it handles list vars like burst_accuracy
 		else
 			settings[propname] = propvalue
+
+	#warn automatically pull burst amount/delay from list and set
 
 /datum/firemode/proc/apply_to(obj/item/gun/gun)
 	for(var/propname in settings)
@@ -74,7 +83,7 @@
 	/// the current firing cycle
 	///
 	/// * to interrupt a firing cycle, just change it.
-	var/tmp/firing_cycle
+	var/tmp/datum/gun_firing_cycle/firing_cycle
 	/// the next firing cycle
 	///
 	/// * static var; technically can collide. realistically, won't.
@@ -492,12 +501,6 @@
 
 /obj/item/gun/proc/Fire(atom/target, mob/living/user, clickparams, pointblank=0, reflex=0)
 	SHOULD_NOT_OVERRIDE(TRUE)
-	if(!user || !target) return
-	if(target.z != user.z) return
-
-	add_fingerprint(user)
-
-	user.break_cloak()
 
 	if(!special_check(user))
 		return
@@ -576,89 +579,6 @@
 			set_light(light_brightness)
 		else
 			set_light(0)
-
-// Similar to the above proc, but does not require a user, which is ideal for things like turrets.
-/obj/item/gun/proc/Fire_userless(atom/target)
-	SHOULD_NOT_OVERRIDE(TRUE)
-	if(!target)
-		return
-
-	if(world.time < next_fire_time)
-		return
-
-	var/shoot_time = (burst - 1)* burst_delay
-	next_fire_time = world.time + shoot_time
-
-	var/turf/targloc = get_turf(target) //cache this in case target gets deleted during shooting, e.g. if it was a securitron that got destroyed.
-	for(var/i in 1 to burst)
-		var/obj/projectile = consume_next_projectile()
-		if(!projectile)
-			handle_click_empty()
-			break
-
-		if(istype(projectile, /obj/projectile))
-			var/obj/projectile/P = projectile
-
-			var/acc = burst_accuracy[min(i, burst_accuracy.len)]
-			var/disp = dispersion[min(i, dispersion.len)]
-
-			P.accuracy_overall_modify *= 1 + acc / 100
-			P.dispersion = disp
-
-			P.shot_from = src.name
-			P.silenced = silenced
-
-			P.old_style_target(target)
-			play_fire_sound(P = projectile)
-			P.fire()
-
-			last_shot = world.time
-
-			if(muzzle_flash)
-				set_light(muzzle_flash)
-			update_icon()
-
-		//process_accuracy(projectile, user, target, acc, disp)
-
-	//	if(pointblank)
-	//		process_point_blank(projectile, user, target)
-
-	//	if(process_projectile(projectile, null, target, user.zone_sel.selecting, clickparams))
-	//		handle_post_fire(null, target, pointblank, reflex)
-
-	//	update_icon()
-
-		if(i < burst)
-			sleep(burst_delay)
-
-		if(!(target && target.loc))
-			target = targloc
-			//pointblank = 0
-
-	var/target_for_log
-	if(ismob(target))
-		target_for_log = target
-	else
-		target_for_log = "[target.name]"
-
-	add_attack_logs("Unmanned",target_for_log,"Fired [src.name]")
-
-	//update timing
-	next_fire_time = world.time + fire_delay
-
-	accuracy = initial(accuracy)	//Reset the gun's accuracy
-
-	if(muzzle_flash)
-		set_light(0)
-
-//used by aiming code
-/obj/item/gun/proc/can_hit(atom/target as mob, var/mob/living/user as mob)
-	if(!special_check(user))
-		return 2
-	//just assume we can shoot through glass and stuff. No big deal, the player can just choose to not target someone
-	//on the other side of a window if it makes a difference. Or if they run behind a window, too bad.
-	if(check_trajectory(target, user))
-		return 1 // Magic numbers are fun.
 
 /obj/item/gun/proc/handle_click_safety(mob/user)
 	user.visible_message(SPAN_WARNING("[user] squeezes the trigger of \the [src] but it doesn't move!"), SPAN_WARNING("You squeeze the trigger but it doesn't move!"), range = MESSAGE_RANGE_COMBAT_SILENCED)

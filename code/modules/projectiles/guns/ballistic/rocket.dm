@@ -51,7 +51,7 @@
 	else
 		..()
 
-/obj/item/gun/launcher/rocket/consume_next_projectile()
+/obj/item/gun/launcher/rocket/consume_next_projectile(datum/gun_firing_cycle/cycle)
 	if(rockets.len)
 		var/obj/item/ammo_casing/rocket/I = rockets[1]
 		rockets -= I
@@ -108,7 +108,7 @@
 		item_state = "[initial(item_state)]"
 		collapsed = 1
 
-/obj/item/gun/ballistic/rocket/collapsible/consume_next_projectile(iteration, firing_flags, datum/firemode/firemode, datum/event_args/actor/actor, atom/firer)
+/obj/item/gun/ballistic/rocket/collapsible/consume_next_projectile(datum/gun_firing_cycle/cycle)
 	. = ..()
 	if(empty)
 		return
@@ -127,7 +127,7 @@
 	unstable = 1
 
 // todo: dumb
-/obj/item/gun/ballistic/rocket/tyrmalin/consume_next_projectile(iteration, firing_flags, datum/firemode/firemode, datum/event_args/actor/actor, atom/firer)
+/obj/item/gun/ballistic/rocket/tyrmalin/consume_next_projectile(datum/gun_firing_cycle/cycle)
 	. = ..()
 	if(.)
 		if(unstable)

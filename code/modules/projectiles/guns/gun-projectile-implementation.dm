@@ -10,9 +10,33 @@
  * this way we have separation between behaviors only needed on guns that shoot
  * /obj/projectile's. that said, this is a little annoying to do (path length bloat)
  * so for now we put the projectile procs in their own file.
- *
- * maybe we won't do it after all due to path length bloat but the current method definitely just sucks.
  */
+
+/**
+ * called to perform a single firing operation
+ */
+/obj/item/gun/proc/fire(datum/gun_firing_cycle/cycle)
+	SHOULD_NOT_SLEEP(TRUE)
+	#warn impl; check unmount
+
+	// handle legacy systems
+	var/held_twohanded = TRUE
+	if(ismob(cycle.firing_atom))
+		var/mob/mob_firer = cycle.firing_atom
+		// todo: proper twohanding system
+		held_twohanded = mob_firer.can_wield_item(src) && is_held_twohanded(mob_firer)
+		mob_firer.break_cloak()
+
+	// point of no return
+	var/obj/projectile/firing_projectile = consume_next_projectile(iteration, firing_flags, firemode, actor, firer)
+	if(!istype(firing_projectile))
+		// it's an error code if it's not real
+		return firing_projectile
+
+	// todo: do we really need to newtonian move always?
+	if(ismovable(firer))
+		var/atom/movable/movable_firer = firer
+		movable_firer.newtonian_move(angle2dir(angle))
 
 /**
  * Obtains the next projectile to fire.
@@ -24,15 +48,8 @@
  * * Things like 'the next bullet is empty so we fail' go in here
  * * This should be called *as* the point of no return. This has side effects.
  * * Everything is optional here. Things like portable turrets reserve the right to 'pull' from the gun without caring about params.
- *
- * @params
- * * iteration - (optional) the iteration of the fire
- * * firing_flags - (optional) GUN_FIRING_* flags
- * * firemode - (optional) the firemode
- * * actor - (optional) the initiator
- * * firer - (optional) the actual firer
  */
-/obj/item/gun/proc/consume_next_projectile(iteration, firing_flags, datum/firemode/firemode, datum/event_args/actor/actor, atom/firer)
+/obj/item/gun/proc/consume_next_projectile(datum/gun_firing_cycle/cycle)
 	. = GUN_FIRED_FAIL_UNKNOWN
 	// todo: on base /gun/projectile?
 	CRASH("attempted to process next projectile on base /gun")

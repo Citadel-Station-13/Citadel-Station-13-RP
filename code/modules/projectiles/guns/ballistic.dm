@@ -104,7 +104,7 @@
 		icon_state = "[silenced_state][magazine_state]"
 
 // todo: rework
-/obj/item/gun/ballistic/consume_next_projectile(iteration, firing_flags, datum/firemode/firemode, datum/event_args/actor/actor, atom/firer)
+/obj/item/gun/ballistic/consume_next_projectile(datum/gun_firing_cycle/cycle)
 	//get the next casing
 	if(loaded.len)
 		chambered = loaded[1] //load next casing.
