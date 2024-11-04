@@ -47,6 +47,8 @@
 	///
 	/// * This should always be using typepath instead of ID for hardcoded designs, as typepaths can be eagerly loaded before
 	///   the materials repository can initialize normally.
+	/// * This will always be transformed into IDs at runtime.
+	/// * If you're making one at runtime, always put in IDs, as automatic detection/generation may not run.
 	var/list/materials_base
 	/// for variable-material designs: assoc list of key to amounts
 	/// the key will be fed into print() during creation with the material id the user picked
@@ -109,6 +111,8 @@
 		name = generate_name(design_name || build_name)
 	if(!desc)
 		desc = generate_desc(design_name || build_name, build_desc)
+	// materials base must be IDs at runtime.
+	materials_base = SSmaterials.preprocess_kv_keys_to_ids(materials_base)
 
 /datum/prototype/design/proc/generate_name(template)
 	return template
