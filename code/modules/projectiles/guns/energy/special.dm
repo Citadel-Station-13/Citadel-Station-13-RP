@@ -333,7 +333,7 @@
 	one_handed_penalty = 0
 	safety_state = GUN_SAFETY_OFF
 
-/obj/item/gun/energy/service/attack_self(mob/user)
+/obj/item/gun/energy/service/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -377,7 +377,7 @@
 /obj/item/gun/energy/service/shatter
 	name = "service weapon (shatter)"
 	icon_state = "service_shatter"
-	projectile_type = /obj/projectile/bullet/pellet/shotgun/silver
+	projectile_type = /obj/projectile/bullet/pellet/shotgun/silvershot
 	fire_delay = 15		//Increased by 50% for strength.
 	charge_cost = 600	//Charge increased due to shotgun round.
 

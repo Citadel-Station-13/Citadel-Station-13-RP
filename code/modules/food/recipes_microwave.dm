@@ -33,7 +33,7 @@
 /datum/recipe/syntiburger
 	items = list(
 		/obj/item/reagent_containers/food/snacks/bun,
-		/obj/item/reagent_containers/food/snacks/meat/syntiflesh
+		/obj/item/reagent_containers/food/snacks/meat/synthflesh
 	)
 	result = /obj/item/reagent_containers/food/snacks/monkeyburger
 
@@ -228,8 +228,8 @@
 /datum/recipe/syntikabob
 	items = list(
 		/obj/item/stack/rods,
-		/obj/item/reagent_containers/food/snacks/meat/syntiflesh,
-		/obj/item/reagent_containers/food/snacks/meat/syntiflesh
+		/obj/item/reagent_containers/food/snacks/meat/synthflesh,
+		/obj/item/reagent_containers/food/snacks/meat/synthflesh
 	)
 	result = /obj/item/reagent_containers/food/snacks/monkeykabob
 
@@ -277,7 +277,7 @@
 
 /datum/recipe/syntisteak
 	reagents = list("sodiumchloride" = 1, "blackpepper" = 1)
-	items = list(/obj/item/reagent_containers/food/snacks/meat/syntiflesh)
+	items = list(/obj/item/reagent_containers/food/snacks/meat/synthflesh)
 	result = /obj/item/reagent_containers/food/snacks/meatsteak
 
 
@@ -999,7 +999,7 @@
 	)
 	result = /obj/item/reagent_containers/food/snacks/burrito_mystery
 
-//Ligger food, and also bacon.
+//Unathi food, and also bacon.
 
 /datum/recipe/bacon
 	items = list(

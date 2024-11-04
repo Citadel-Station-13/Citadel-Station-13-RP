@@ -24,7 +24,7 @@
 /obj/item/gun/ballistic/shotgun/pump/consume_next_projectile(iteration, firing_flags, datum/firemode/firemode, datum/event_args/actor/actor, atom/firer)
 	return chambered?.get_projectile()
 
-/obj/item/gun/ballistic/shotgun/pump/attack_self(mob/user)
+/obj/item/gun/ballistic/shotgun/pump/attack_self(mob/user, datum/event_args/actor/actor)
 	// todo: this breaks other attack self interactions :(
 	if(world.time >= recentpump + 10)
 		pump(user)
@@ -316,8 +316,7 @@
 	damage_force = 25
 	slot_flags = SLOT_BACK
 	origin_tech = list(TECH_COMBAT = 4, TECH_MATERIAL = 2, TECH_OCCULT = 1)
-	sharp = 1
-	edge = 1
+	damage_mode = DAMAGE_MODE_SHARP | DAMAGE_MODE_EDGE
 	holy = TRUE
 
 /obj/item/gun/ballistic/shotgun/underslung

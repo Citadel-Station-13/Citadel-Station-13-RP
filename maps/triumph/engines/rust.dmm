@@ -275,7 +275,7 @@
 /area/engineering/engine_room)
 "aP" = (
 /obj/structure/sign/warning/radioactive,
-/turf/simulated/wall/r_wall,
+/turf/simulated/wall/r_wall/prepainted/engineering,
 /area/engineering/engine_room)
 "aY" = (
 /obj/machinery/atmospherics/pipe/manifold/visible/green{
@@ -299,7 +299,7 @@
 /obj/structure/cable/cyan{
 	icon_state = "0-8"
 	},
-/turf/simulated/floor/reinforced,
+/turf/simulated/floor/reinforced/airless,
 /area/engineering/engine_room)
 "ck" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
@@ -308,7 +308,7 @@
 	pump_direction = 0;
 	on = 1
 	},
-/turf/simulated/floor/reinforced,
+/turf/simulated/floor/reinforced/airless,
 /area/engineering/engine_room)
 "cx" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -348,7 +348,7 @@
 /obj/machinery/camera/network/engine{
 	dir = 4
 	},
-/turf/simulated/floor/reinforced,
+/turf/simulated/floor/reinforced/airless,
 /area/engineering/engine_room)
 "eD" = (
 /obj/machinery/air_alarm{
@@ -425,7 +425,7 @@
 	id_tag = "engine_sensor";
 	output = 63
 	},
-/turf/simulated/floor/reinforced,
+/turf/simulated/floor/reinforced/airless,
 /area/engineering/engine_room)
 "iw" = (
 /obj/structure/closet/radiation,
@@ -487,7 +487,7 @@
 	id = "EngineVent";
 	name = "Reactor Vent"
 	},
-/turf/simulated/floor/reinforced,
+/turf/simulated/floor/reinforced/airless,
 /area/engineering/engine_room)
 "kJ" = (
 /obj/machinery/computer/fusion_fuel_control{
@@ -603,10 +603,10 @@
 	icon_state = "phoronwindow0"
 	},
 /obj/structure/grille,
-/turf/simulated/floor,
+/turf/simulated/floor/reinforced/airless,
 /area/engineering/engine_room)
 "os" = (
-/turf/simulated/wall/r_wall,
+/turf/simulated/wall/r_wall/prepainted/engineering,
 /area/engineering/engine_room)
 "oE" = (
 /obj/structure/cable/cyan{
@@ -683,13 +683,13 @@
 /obj/structure/cable/cyan{
 	icon_state = "4-8"
 	},
-/turf/simulated/floor,
+/turf/simulated/floor/reinforced/airless,
 /area/engineering/engine_room)
 "ss" = (
 /obj/machinery/atmospherics/pipe/simple/visible/red{
 	dir = 4
 	},
-/turf/simulated/floor/reinforced,
+/turf/simulated/floor/reinforced/airless,
 /area/engineering/engine_room)
 "sH" = (
 /obj/structure/cable/cyan{
@@ -756,7 +756,7 @@
 /obj/structure/cable/cyan{
 	icon_state = "1-2"
 	},
-/turf/simulated/floor,
+/turf/simulated/floor/reinforced/airless,
 /area/engineering/engine_room)
 "wb" = (
 /obj/machinery/atmospherics/pipe/simple/visible/cyan{
@@ -819,7 +819,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_room)
 "Ab" = (
-/turf/simulated/floor/reinforced,
+/turf/simulated/floor/reinforced/airless,
 /area/engineering/engine_room)
 "At" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -856,7 +856,7 @@
 	id = "cooling_in";
 	use_power = 1
 	},
-/turf/simulated/floor/reinforced,
+/turf/simulated/floor/reinforced/airless,
 /area/engineering/engine_room)
 "EG" = (
 /obj/machinery/atmospherics/pipe/manifold/visible/cyan{
@@ -997,7 +997,7 @@
 /obj/structure/cable/cyan{
 	icon_state = "1-2"
 	},
-/turf/simulated/floor/reinforced,
+/turf/simulated/floor/reinforced/airless,
 /area/engineering/engine_room)
 "Kt" = (
 /obj/machinery/door/firedoor,
@@ -1024,7 +1024,7 @@
 /obj/machinery/atmospherics/pipe/manifold/visible/yellow{
 	dir = 8
 	},
-/turf/simulated/floor/reinforced,
+/turf/simulated/floor/reinforced/airless,
 /area/engineering/engine_room)
 "Lz" = (
 /obj/machinery/atmospherics/pipe/manifold/visible/cyan{
@@ -1051,7 +1051,7 @@
 /obj/machinery/atmospherics/pipe/simple/visible/red{
 	dir = 4
 	},
-/turf/simulated/floor,
+/turf/simulated/floor/reinforced/airless,
 /area/engineering/engine_room)
 "MW" = (
 /obj/machinery/atmospherics/component/binary/pump,
@@ -1209,7 +1209,7 @@
 	pump_direction = 0;
 	on = 1
 	},
-/turf/simulated/floor/reinforced,
+/turf/simulated/floor/reinforced/airless,
 /area/engineering/engine_room)
 "RC" = (
 /obj/structure/cable/cyan{
@@ -1249,7 +1249,7 @@
 	id = "cooling_in";
 	use_power = 1
 	},
-/turf/simulated/floor/reinforced,
+/turf/simulated/floor/reinforced/airless,
 /area/engineering/engine_room)
 "Th" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -1277,7 +1277,7 @@
 /obj/structure/cable/cyan{
 	icon_state = "4-8"
 	},
-/turf/simulated/floor/reinforced,
+/turf/simulated/floor/reinforced/airless,
 /area/engineering/engine_room)
 "UA" = (
 /obj/machinery/atmospherics/component/binary/pump{
@@ -1337,7 +1337,7 @@
 /obj/machinery/atmospherics/pipe/simple/visible/yellow{
 	dir = 4
 	},
-/turf/simulated/floor,
+/turf/simulated/floor/reinforced/airless,
 /area/engineering/engine_room)
 "YK" = (
 /obj/machinery/atmospherics/component/binary/pump,

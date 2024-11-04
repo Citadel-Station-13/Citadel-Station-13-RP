@@ -2018,7 +2018,7 @@
 "agQ" = (
 /obj/machinery/computer/card,
 /obj/machinery/button/windowtint{
-	id = "hop_office";
+	id = "hop-office";
 	pixel_x = 8;
 	pixel_y = 26
 	},
@@ -2224,6 +2224,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
+/obj/effect/floor_decal/borderfloorblack/corner2,
 /turf/simulated/floor/tiled/dark,
 /area/exploration/showers)
 "ahx" = (
@@ -2735,6 +2736,8 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/effect/floor_decal/borderfloor/corner2,
+/obj/effect/floor_decal/corner/beige/bordercorner2,
 /turf/simulated/floor/tiled/steel,
 /area/exploration)
 "aiZ" = (
@@ -3909,22 +3912,6 @@
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/captain)
-"amx" = (
-/obj/effect/floor_decal/spline/plain{
-	dir = 4
-	},
-/obj/machinery/button/windowtint/multitint{
-	id = "meeting_tint";
-	pixel_x = -24;
-	pixel_y = -6
-	},
-/obj/machinery/light_switch{
-	dir = 8;
-	pixel_x = -26;
-	pixel_y = 4
-	},
-/turf/simulated/floor/tiled/dark,
-/area/bridge/meeting_room)
 "amz" = (
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/lightgrey/border,
@@ -5483,7 +5470,7 @@
 	dir = 4
 	},
 /obj/machinery/button/windowtint/multitint{
-	id = "meeting_tint";
+	id = "meeting-tint";
 	pixel_x = -24;
 	pixel_y = 6
 	},
@@ -5624,8 +5611,6 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/effect/floor_decal/borderfloor,
-/obj/effect/floor_decal/corner/beige/border,
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
@@ -6653,14 +6638,6 @@
 	pixel_x = 4;
 	pixel_y = -6
 	},
-/obj/item/binoculars{
-	pixel_x = -2;
-	pixel_y = -2
-	},
-/obj/item/binoculars{
-	pixel_x = 2;
-	pixel_y = 2
-	},
 /obj/effect/floor_decal/steeldecal/steel_decals9{
 	dir = 4
 	},
@@ -6673,6 +6650,7 @@
 	},
 /obj/effect/floor_decal/industrial/outline,
 /obj/machinery/fire_alarm/north_mount,
+/obj/item/hand_labeler,
 /turf/simulated/floor/tiled/steel,
 /area/exploration/explorer_prep)
 "auU" = (
@@ -8380,6 +8358,11 @@
 "azz" = (
 /obj/structure/bed/chair/office/dark,
 /obj/landmark/spawnpoint/job/pathfinder,
+/obj/machinery/button/windowtint/multitint{
+	id = "pathfinder-office";
+	pixel_x = 38;
+	pixel_y = 28
+	},
 /turf/simulated/floor/tiled/monotile,
 /area/exploration/pathfinder_office)
 "azB" = (
@@ -9636,6 +9619,11 @@
 /obj/item/pen,
 /obj/machinery/light{
 	dir = 8
+	},
+/obj/machinery/button/windowtint/multitint{
+	id = "bunker-tint";
+	pixel_x = -24;
+	pixel_y = 6
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/bridge/bunker)
@@ -14197,7 +14185,6 @@
 /obj/item/clothing/accessory/permit/gun/planetside,
 /obj/item/roller,
 /obj/item/storage/backpack/parachute,
-/obj/item/binoculars,
 /obj/machinery/camera/network/exploration{
 	dir = 4
 	},
@@ -15583,7 +15570,7 @@
 	dir = 1
 	},
 /obj/machinery/button/windowtint/multitint{
-	id = "bridge_tint";
+	id = "bridge-tint";
 	pixel_x = 38;
 	pixel_y = 28
 	},
@@ -15690,7 +15677,6 @@
 /obj/item/clothing/accessory/permit/gun/planetside,
 /obj/item/roller,
 /obj/item/storage/backpack/parachute,
-/obj/item/binoculars,
 /turf/simulated/floor/tiled,
 /area/exploration/medic_prep)
 "aWW" = (
@@ -15906,10 +15892,12 @@
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 4
 	},
-/obj/effect/floor_decal/steeldecal/steel_decals10,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/camera/network/exploration{
 	dir = 8
+	},
+/obj/effect/floor_decal/borderfloorblack/corner2{
+	dir = 6
 	},
 /turf/simulated/floor/tiled/dark,
 /area/exploration/showers)
@@ -15963,16 +15951,6 @@
 	},
 /turf/simulated/shuttle/wall/voidcraft/blue,
 /area/shuttle/courser/cockpit)
-"aXQ" = (
-/obj/structure/disposalpipe/segment,
-/obj/effect/floor_decal/borderfloor{
-	dir = 8
-	},
-/obj/effect/floor_decal/corner/beige/border{
-	dir = 8
-	},
-/turf/simulated/floor/tiled/monotile,
-/area/exploration)
 "aXR" = (
 /obj/structure/closet/secure_closet/hop,
 /obj/item/megaphone,
@@ -16379,7 +16357,7 @@
 	},
 /obj/item/robotanalyzer,
 /obj/item/storage/single_use/med_pouch/oxyloss,
-/obj/item/storage/single_use/med_pouch/toxin,
+/obj/item/hand_labeler,
 /turf/simulated/floor/tiled/white,
 /area/shuttle/excursion/general)
 "aYY" = (
@@ -17313,6 +17291,8 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan{
 	dir = 8
 	},
+/obj/effect/floor_decal/borderfloor/corner,
+/obj/effect/floor_decal/corner/beige/bordercorner,
 /turf/simulated/floor/tiled/steel,
 /area/exploration/courser_dock)
 "ciC" = (
@@ -17826,6 +17806,9 @@
 	opacity = 0
 	},
 /obj/effect/paint/commandblue,
+/obj/map_helper/electrochromatic_linker{
+	id = "hop-office"
+	},
 /turf/simulated/floor/plating,
 /area/crew_quarters/heads/hop)
 "dha" = (
@@ -18143,6 +18126,9 @@
 "dRg" = (
 /obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
 /obj/effect/paint/commandblue,
+/obj/map_helper/electrochromatic_linker{
+	id = "blueshield-office"
+	},
 /turf/simulated/floor/plating,
 /area/crew_quarters/heads/blueshield)
 "dRq" = (
@@ -18169,9 +18155,7 @@
 /turf/simulated/floor/plating/lythios43c,
 /area/rift/surfacebase/outside/outside3)
 "dTs" = (
-/obj/machinery/sleep_console{
-	dir = 8
-	},
+/obj/machinery/sleep_console,
 /obj/effect/floor_decal/industrial/outline/blue,
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 1
@@ -19044,6 +19028,18 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan{
 	dir = 9
 	},
+/obj/effect/floor_decal/borderfloor{
+	dir = 6
+	},
+/obj/effect/floor_decal/corner/beige/border{
+	dir = 6
+	},
+/obj/effect/floor_decal/borderfloor/corner2{
+	dir = 6
+	},
+/obj/effect/floor_decal/corner/beige/bordercorner2{
+	dir = 6
+	},
 /turf/simulated/floor/tiled/steel,
 /area/exploration/courser_dock)
 "fmA" = (
@@ -19200,6 +19196,9 @@
 	opacity = 0
 	},
 /obj/effect/paint/commandblue,
+/obj/map_helper/electrochromatic_linker{
+	id = "bridge-tint"
+	},
 /turf/simulated/floor/plating,
 /area/bridge)
 "fAb" = (
@@ -20035,6 +20034,9 @@
 "gQu" = (
 /obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
 /obj/effect/paint/commandblue,
+/obj/map_helper/electrochromatic_linker{
+	id = "meeting-tint"
+	},
 /turf/simulated/floor/plating,
 /area/bridge/bridge_hallway)
 "gTy" = (
@@ -20745,6 +20747,9 @@
 	opacity = 0
 	},
 /obj/effect/paint/commandblue,
+/obj/map_helper/electrochromatic_linker{
+	id = "bridge-tint"
+	},
 /turf/simulated/floor/plating,
 /area/bridge)
 "iio" = (
@@ -21531,16 +21536,6 @@
 	},
 /turf/simulated/floor/carpet/purcarpet,
 /area/exploration/meeting)
-"jFJ" = (
-/obj/structure/disposalpipe/segment,
-/obj/effect/floor_decal/borderfloor{
-	dir = 8
-	},
-/obj/effect/floor_decal/corner/beige/border{
-	dir = 8
-	},
-/turf/simulated/floor/tiled/steel,
-/area/exploration)
 "jFP" = (
 /obj/structure/cable/cyan{
 	icon_state = "4-8"
@@ -21713,6 +21708,12 @@
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
+	},
+/obj/effect/floor_decal/borderfloor/corner2{
+	dir = 9
+	},
+/obj/effect/floor_decal/corner/beige/bordercorner2{
+	dir = 9
 	},
 /turf/simulated/floor/tiled/steel,
 /area/exploration)
@@ -21979,9 +21980,7 @@
 /obj/structure/handrail{
 	dir = 1
 	},
-/obj/effect/floor_decal/borderfloorwhite{
-	dir = 2
-	},
+/obj/effect/floor_decal/borderfloorwhite,
 /obj/effect/floor_decal/corner/paleblue/border,
 /turf/simulated/floor/tiled/white,
 /area/shuttle/emt/general)
@@ -22254,12 +22253,6 @@
 	dir = 4
 	},
 /obj/structure/disposalpipe/segment,
-/obj/effect/floor_decal/borderfloor{
-	dir = 8
-	},
-/obj/effect/floor_decal/corner/beige/border{
-	dir = 8
-	},
 /turf/simulated/floor/tiled/monotile,
 /area/exploration)
 "kQm" = (
@@ -23066,6 +23059,9 @@
 	id = "hop_office"
 	},
 /obj/effect/paint/commandblue,
+/obj/map_helper/electrochromatic_linker{
+	id = "hop-office"
+	},
 /turf/simulated/floor/plating,
 /area/crew_quarters/heads/hop)
 "mpP" = (
@@ -23436,12 +23432,6 @@
 	dir = 6
 	},
 /obj/effect/floor_decal/corner/beige/border{
-	dir = 6
-	},
-/obj/effect/floor_decal/borderfloor/corner2{
-	dir = 6
-	},
-/obj/effect/floor_decal/corner/beige/bordercorner2{
 	dir = 6
 	},
 /turf/simulated/floor/tiled/steel,
@@ -23911,6 +23901,12 @@
 	dir = 8
 	},
 /obj/structure/table/bench/steel,
+/obj/effect/floor_decal/borderfloor/corner2{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/beige/bordercorner2{
+	dir = 1
+	},
 /turf/simulated/floor/tiled/steel,
 /area/exploration)
 "nPl" = (
@@ -24640,12 +24636,6 @@
 	name = "Exploration";
 	sortType = "Exploration"
 	},
-/obj/effect/floor_decal/borderfloor/corner{
-	dir = 1
-	},
-/obj/effect/floor_decal/corner/beige/bordercorner{
-	dir = 1
-	},
 /turf/simulated/floor/tiled/monotile,
 /area/exploration)
 "pjG" = (
@@ -24733,6 +24723,9 @@
 /obj/effect/paint/commandblue,
 /obj/structure/cable/green{
 	icon_state = "1-2"
+	},
+/obj/map_helper/electrochromatic_linker{
+	id = "bunker-tint"
 	},
 /turf/simulated/floor/plating,
 /area/bridge/bunker)
@@ -24915,9 +24908,7 @@
 	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan,
-/obj/effect/floor_decal/borderfloorwhite{
-	dir = 2
-	},
+/obj/effect/floor_decal/borderfloorwhite,
 /obj/effect/floor_decal/corner/paleblue/border,
 /turf/simulated/floor/tiled/white,
 /area/shuttle/emt/general)
@@ -25774,6 +25765,11 @@
 	dir = 8
 	},
 /obj/landmark/spawnpoint/job/blueshield,
+/obj/machinery/button/windowtint/multitint{
+	id = "blueshield-office";
+	pixel_y = 32;
+	pixel_x = -8
+	},
 /turf/simulated/floor/carpet/blue,
 /area/crew_quarters/heads/blueshield)
 "rKd" = (
@@ -26021,6 +26017,9 @@
 "siB" = (
 /obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
 /obj/effect/paint/violet,
+/obj/map_helper/electrochromatic_linker{
+	id = "pathfinder-office"
+	},
 /turf/simulated/floor/plating,
 /area/exploration/pathfinder_office)
 "sja" = (
@@ -27537,6 +27536,9 @@
 	},
 /obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
 /obj/effect/paint/commandblue,
+/obj/map_helper/electrochromatic_linker{
+	id = "bridge-tint"
+	},
 /turf/simulated/floor/plating,
 /area/bridge)
 "vlu" = (
@@ -27693,6 +27695,9 @@
 "vwG" = (
 /obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
 /obj/effect/paint/commandblue,
+/obj/map_helper/electrochromatic_linker{
+	id = "meeting-tint"
+	},
 /turf/simulated/floor/plating,
 /area/bridge/meeting_room)
 "vwM" = (
@@ -28316,6 +28321,9 @@
 	opacity = 0
 	},
 /obj/effect/paint/commandblue,
+/obj/map_helper/electrochromatic_linker{
+	id = "bunker-tint"
+	},
 /turf/simulated/floor/plating,
 /area/bridge/bunker)
 "wmp" = (
@@ -46622,9 +46630,9 @@ okY
 okY
 okY
 tSS
-jFJ
+okY
 kOx
-aXQ
+egu
 pis
 egu
 aKd
@@ -50492,7 +50500,7 @@ adh
 aTY
 sHK
 asz
-amx
+aUt
 aUt
 aUt
 aUt

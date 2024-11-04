@@ -46,7 +46,7 @@
 /obj/item/weldingtool/Initialize(mapload)
 	. = ..()
 //	var/random_fuel = min(rand(10,20),max_fuel)
-	var/datum/reagents/R = new/datum/reagents(max_fuel)
+	var/datum/reagent_holder/R = new/datum/reagent_holder(max_fuel)
 	reagents = R
 	R.my_atom = src
 	R.add_reagent("fuel", max_fuel)
@@ -151,7 +151,7 @@
 		if (istype(location, /turf))
 			location.hotspot_expose(700, 50, 1)
 
-/obj/item/weldingtool/attack_self(mob/user)
+/obj/item/weldingtool/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -253,7 +253,7 @@
 				T.visible_message("<span class='danger'>\The [src] turns on.</span>")
 			playsound(loc, acti_sound, 50, 1)
 			src.damage_force = 15
-			src.damtype = "fire"
+			src.damage_type = DAMAGE_TYPE_BURN
 			src.set_weight_class(WEIGHT_CLASS_BULKY)
 			src.attack_sound = 'sound/items/welder.ogg'
 			welding = 1
@@ -275,7 +275,7 @@
 			T.visible_message("<span class='warning'>\The [src] turns off.</span>")
 		playsound(loc, deac_sound, 50, 1)
 		src.damage_force = 3
-		src.damtype = "brute"
+		src.damage_type = DAMAGE_TYPE_BRUTE
 		src.set_weight_class(initial(src.w_class))
 		src.welding = 0
 		src.attack_sound = initial(src.attack_sound)
@@ -754,7 +754,7 @@
 		M.update_inv_l_hand()
 		M.update_inv_r_hand()
 
-/obj/item/weldingtool/electric/crystal/attack_self(mob/user)
+/obj/item/weldingtool/electric/crystal/attack_self(mob/user, datum/event_args/actor/actor)
 	var/mob/living/carbon/human/H = user
 	if(!istype(H))
 		return

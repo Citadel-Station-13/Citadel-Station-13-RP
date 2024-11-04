@@ -5,8 +5,7 @@
 	item_state = "ninja_energy_blade"
 	damage_force = 40 //Normal attacks deal very high damage - about the same as wielded fire axe
 	armor_penetration = 100
-	sharp = 1
-	edge = 1
+	damage_mode = DAMAGE_MODE_SHARP | DAMAGE_MODE_EDGE
 	anchored = 1    // Never spawned outside of inventory, should be fine.
 	throw_force = 1  //Throwing or dropping the item deletes it.
 	throw_speed = 1
@@ -40,7 +39,7 @@
 	STOP_PROCESSING(SSobj, src)
 	return ..()
 
-/obj/item/melee/ninja_energy_blade/attack_self(mob/user)
+/obj/item/melee/ninja_energy_blade/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return

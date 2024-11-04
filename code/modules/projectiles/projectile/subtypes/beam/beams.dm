@@ -1,24 +1,3 @@
-/obj/projectile/beam
-	name = "laser"
-	icon_state = "laser"
-	fire_sound = 'sound/weapons/weaponsounds_laserstrong.ogg'
-	pass_flags = ATOM_PASS_TABLE | ATOM_PASS_GLASS | ATOM_PASS_GRILLE
-	damage_force = 40
-	damage_type = DAMAGE_TYPE_BURN
-	damage_flag = ARMOR_LASER
-	projectile_type = PROJECTILE_TYPE_BEAM | PROJECTILE_TYPE_PHOTONIC
-	eyeblur = 4
-	var/frequency = 1
-	hitscan = TRUE
-	embed_chance = 0
-	light_range = 2
-	light_power = 0.5
-	light_color = "#FF0D00"
-	impact_sounds = list(BULLET_IMPACT_MEAT = SOUNDS_LASER_MEAT, BULLET_IMPACT_METAL = SOUNDS_LASER_METAL)
-
-	muzzle_type = /obj/effect/projectile/muzzle/laser
-	tracer_type = /obj/effect/projectile/tracer/laser
-	impact_type = /obj/effect/projectile/impact/laser
 
 /obj/projectile/beam/practice
 	name = "laser"
@@ -119,7 +98,7 @@
 /obj/projectile/beam/weak
 	name = "weak cyan beam"
 	icon_state = "cyan"
-	fire_sound = 'sound/weapons/Taser.ogg'
+	fire_sound = 'sound/weapons/Dissolverray.ogg'
 	damage_force = 20
 	light_color = "#74b1c2"
 
@@ -127,6 +106,19 @@
 	tracer_type = /obj/effect/projectile/tracer/laser_omni
 	impact_type = /obj/effect/projectile/impact/laser_omni
 
+/obj/projectile/beam/antigravbeamwraith
+	name = "dark energy beam"
+	icon_state = "darkb"
+	fire_sound = 'sound/weapons/SuperHeavyLaser.ogg' //Knowers will recognize it
+	damage_force = 30 //Targets energy armor which is kinda rare
+	damage_type = DAMAGE_TYPE_BRUTE //Dark energy displaces instead of burning
+	damage_flag = ARMOR_ENERGY
+	irradiate= 5 //Scifi Antigrav bullshit side effect
+	light_color = "#8902f0" //Purple
+
+	muzzle_type = /obj/effect/projectile/muzzle/darkmatter
+	tracer_type = /obj/effect/projectile/tracer/darkmatter
+	impact_type = /obj/effect/projectile/impact/darkmatter
 
 /obj/projectile/beam/emitter
 	name = "emitter beam"
@@ -317,7 +309,6 @@
 	icon_state = "laser"
 	damage_force = 15
 	damage_type = DAMAGE_TYPE_ELECTROCUTE //You should be safe inside a voidsuit
-	sharp = FALSE //"Wide" spectrum beam
 	light_color = "#A9980A"
 
 	excavation_amount = 200 // Good at shooting rocks

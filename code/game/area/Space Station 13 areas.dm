@@ -997,9 +997,6 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	name = "Tool Storage Maintenance"
 	icon_state = "maint_tool_storage"
 
-/area/maintenance/triumph_midpoint
-	name = "\improper Triumph Midpoint Maint"
-
 /area/maintenance/locker_room
 	name = "\improper Locker Room Maintenance"
 

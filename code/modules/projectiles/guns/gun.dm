@@ -99,6 +99,7 @@
 	var/list/burst_accuracy = list(0) //allows for different accuracies for each shot in a burst. Applied on top of accuracy
 	var/list/dispersion = list(0)
 	var/mode_name = null
+	// todo: purge with fire
 	var/projectile_type = /obj/projectile	//On ballistics, only used to check for the cham gun
 	var/holy = FALSE //For Divinely blessed guns
 	// todo: this should be on /ballistic, and be `internal_chambered`.
@@ -184,7 +185,10 @@
 	/// -_-
 	var/cell_system_legacy_use_device = TRUE
 
-	//* Rendering
+	//* Rendering *//
+	/// Used instead of base_icon_state for the mob renderer, if this exists.
+	var/base_mob_state
+
 	/// renderer datum we use for world rendering of the gun item itself
 	/// set this in prototype to a path
 	/// if null, we will not perform default rendering/updating of item states.
@@ -203,25 +207,26 @@
 	var/datum/gun_mob_renderer/mob_renderer
 	/// for de-duping
 	var/static/list/mob_renderer_store = list()
-	/// base onmob state override so we don't use [base_icon_state] if overridden
-	//  todo: impl
-	var/render_mob_base
-	/// render as -wield if we're wielded? applied at the end of our worn state no matter what
+
+	/// render as -wield if we're wielded? applied at the end of our base worn state no matter what
+	///
+	///  todo: impl
 	///
 	/// * ignores [mob_renderer]
 	/// * ignores [render_additional_exclusive] / [render_additional_worn]
-	//  todo: impl
+	/// * ordering: [base]-wield-[additional]-[...rest]
 	var/render_mob_wielded = FALSE
 	/// state to add as an append
 	///
 	/// * segment and overlay renders add [base_icon_state]-[append]
-	/// * state renders set state to [base_icon_state]-[append]-[...rest]
+	/// * state renders set state to [base_icon_state]-[wield?]-[append]-[...rest]
 	var/render_additional_state
 	/// only render [render_additional_state]
 	var/render_additional_exclusive = FALSE
 	/// [render_additional_state] and [render_additional_exclusive] apply to worn sprites
 	//  todo: impl
 	var/render_additional_worn = FALSE
+
 	/// use the old render system, if item_renderer and mob_renderer are not set
 	//  todo: remove
 	var/render_use_legacy_by_default = TRUE
@@ -838,7 +843,7 @@
 		playsound(loc, selector_sound, 50, 1)
 	return new_mode
 
-/obj/item/gun/attack_self(mob/user)
+/obj/item/gun/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -909,6 +914,8 @@
 
 // PENDING FIREMODE REWORK
 /obj/item/gun/proc/legacy_get_firemode()
+	if(!length(firemodes) || (sel_mode > length(firemodes)))
+		return
 	return firemodes[sel_mode]
 
 //* Ammo *//
@@ -926,7 +933,8 @@
 //* Rendering *//
 
 /obj/item/gun/update_icon(updates)
-	if(!item_renderer && !mob_renderer)
+	// todo: shouldn't need this check, deal with legacy
+	if(!item_renderer && !mob_renderer && render_use_legacy_by_default)
 		return ..()
 	cut_overlays()
 	var/ratio_left = get_ammo_ratio()

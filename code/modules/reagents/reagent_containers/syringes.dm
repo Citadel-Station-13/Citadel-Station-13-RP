@@ -14,7 +14,7 @@
 	volume = 15
 	w_class = WEIGHT_CLASS_TINY
 	slot_flags = SLOT_EARS
-	sharp = 1
+	damage_mode = DAMAGE_MODE_SHARP
 	integrity_flags = INTEGRITY_ACIDPROOF
 	rad_flags = RAD_NO_CONTAMINATE
 	item_flags = ITEM_NOBLUDGEON | ITEM_ENCUMBERS_WHILE_HELD | ITEM_EASY_LATHE_DECONSTRUCT
@@ -37,7 +37,7 @@
 	. = ..()
 	update_icon()
 
-/obj/item/reagent_containers/syringe/attack_self(mob/user)
+/obj/item/reagent_containers/syringe/attack_self(mob/user, datum/event_args/actor/actor)
 	switch(mode)
 		if(SYRINGE_DRAW)
 			mode = SYRINGE_INJECT
@@ -123,7 +123,7 @@
 						reagents.reagent_list += B
 						reagents.update_total()
 						on_reagent_change()
-						reagents.handle_reactions()
+						reagents.reconsider_reactions()
 					to_chat(user, "<span class='notice'>You take a blood sample from [target].</span>")
 					for(var/mob/O in viewers(4, user))
 						O.show_message("<span class='notice'>[user] takes a blood sample from [target].</span>", 1)

@@ -335,7 +335,7 @@
 				prob(20);/obj/item/reagent_containers/food/snacks/xenomeat/spidermeat,
 				prob(10);/obj/item/reagent_containers/food/snacks/carpmeat,
 				prob(5);/obj/item/reagent_containers/food/snacks/bearmeat,
-				prob(1);/obj/item/reagent_containers/food/snacks/meat/syntiflesh,
+				prob(1);/obj/item/reagent_containers/food/snacks/meat/synthflesh,
 				prob(1);/obj/item/reagent_containers/food/snacks/meat/human,
 				prob(1);/obj/item/reagent_containers/food/snacks/meat/monkey,
 				prob(1);/obj/item/reagent_containers/food/snacks/meat/corgi,
@@ -352,7 +352,7 @@
 				prob(20);/obj/item/reagent_containers/food/snacks/xenomeat/spidermeat,
 				prob(10);/obj/item/reagent_containers/food/snacks/carpmeat,
 				prob(5);/obj/item/reagent_containers/food/snacks/bearmeat,
-				prob(1);/obj/item/reagent_containers/food/snacks/meat/syntiflesh,
+				prob(1);/obj/item/reagent_containers/food/snacks/meat/synthflesh,
 				prob(1);/obj/item/reagent_containers/food/snacks/meat/monkey,
 				prob(1);/obj/item/reagent_containers/food/snacks/meat/corgi)
 
@@ -846,7 +846,7 @@
 		prob(3);/obj/item/gun/energy/lasercannon,
 		prob(3);/obj/item/gun/ballistic/shotgun/pump/rifle/lever,
 		prob(3);/obj/item/gun/ballistic/automatic/bullpup,
-		prob(2);/obj/item/gun/energy/pulse_rifle,
+		prob(2);/obj/item/gun/energy/nt_pulse/rifle,
 		prob(2);/obj/item/gun/energy/gun/nuclear,
 		prob(2);/obj/item/gun/ballistic/automatic/lmg,
 		prob(2);/obj/item/gun/energy/gun/burst,

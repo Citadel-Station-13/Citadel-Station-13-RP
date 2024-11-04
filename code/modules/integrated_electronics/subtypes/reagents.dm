@@ -202,7 +202,7 @@
 					reagents.reagent_list += B
 					reagents.update_total()
 					AM.on_reagent_change()
-					reagents.handle_reactions()
+					reagents.reconsider_reactions()
 					L.visible_message("<span class='danger'>[acting_object] takes a blood sample from [L]!</span>", \
 					"<span class='userdanger'>[acting_object] takes a blood sample from you!</span>")
 				else
@@ -345,7 +345,7 @@
 	activate_pin(1)
 	activate_pin(3)
 
-/obj/item/integrated_circuit/input/beaker_connector/attack_self(mob/user)
+/obj/item/integrated_circuit/input/beaker_connector/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return

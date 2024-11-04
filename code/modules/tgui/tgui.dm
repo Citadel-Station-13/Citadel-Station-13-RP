@@ -51,9 +51,19 @@
 	var/list/datum/modules_processed
 
 /**
+ * Linter check, do not call.
+ */
+/proc/lint__check_tgui_new_doesnt_sleep()
+	SHOULD_NOT_SLEEP(TRUE)
+	var/datum/tgui/tgui
+	tgui.New()
+
+/**
  * public
  *
  * Create a new UI.
+ *
+ * * Does not block.
  *
  * required user mob The mob who opened/is using the UI.
  * required src_object datum The object or datum which owns the UI.
@@ -91,6 +101,8 @@
  *
  * Open this UI (and initialize it with data).
  *
+ * This proc does not block.
+ *
  * @params
  * * data - force certain data sends
  * * modules - force certain module sends
@@ -98,6 +110,7 @@
  * return bool - TRUE if a new pooled window is opened, FALSE in all other situations including if a new pooled window didn't open because one already exists.
  */
 /datum/tgui/proc/open(data, modules)
+	SHOULD_NOT_SLEEP(TRUE)
 	if(!user.client)
 		return FALSE
 	if(window)
@@ -108,8 +121,20 @@
 	window = SStgui.request_pooled_window(user)
 	if(!window)
 		return FALSE
+	// point of no return; call initialize() asynchronously.
 	opened_at = world.time
 	window.acquire_lock(src)
+	// defer initialize() to after current call chain.
+	spawn(0)
+		initialize(data, modules)
+	return TRUE
+
+/**
+ * Initializes the window.
+ *
+ * * Separate from open() so that open() can be non-blocking.
+ */
+/datum/tgui/proc/initialize(data, modules)
 	if(!window.is_ready())
 		window.initialize(
 			strict_mode = TRUE,
@@ -440,13 +465,16 @@
  *
  * required data The data to send
  * optional force bool Send an update even if UI is not interactive.
+ *
+ * @return TRUE if data was sent, FALSE otherwise.
  */
 /datum/tgui/proc/push_data(data, force)
 	if(!user.client || !initialized || closing)
-		return
+		return FALSE
 	if(!force && status < UI_UPDATE)
-		return
+		return FALSE
 	window.send_message("data", data)
+	return TRUE
 
 /**
  * public
@@ -461,13 +489,16 @@
  * @params
  * * updates - list(id = list(data...), ...) of modules to update.
  * * force - (optional) send update even if UI is not interactive
+ *
+ * @return TRUE if data was sent, FALSE otherwise.
  */
 /datum/tgui/proc/push_modules(list/updates, force)
 	if(isnull(user.client) || !initialized || closing)
-		return
+		return FALSE
 	if(!force && status < UI_UPDATE)
-		return
+		return FALSE
 	window.send_message("modules", updates)
+	return TRUE
 
 //* Module System *//
 

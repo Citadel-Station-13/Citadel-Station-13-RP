@@ -249,7 +249,7 @@
 	update_icon()
 	update_held_icon()
 
-/obj/item/gun/ballistic/automatic/lmg/attack_self(mob/user)
+/obj/item/gun/ballistic/automatic/lmg/attack_self(mob/user, datum/event_args/actor/actor)
 	if(cover_open)
 		toggle_cover(user) //close the cover
 	else
@@ -502,7 +502,7 @@
 
 /obj/item/gun/ballistic/automatic/fal
 	name = "FN-FAL"
-	desc = "A 20th century Assault Rifle originally designed by Fabrique National. Famous for its use by mercs in grinding proxy wars in backwater nations. This reproduction was probably made for similar purposes."
+	desc = "A 20th century Assault Rifle originally designed by Fabrique Nationale. Famous for its use by mercs in grinding proxy wars in backwater nations. This reproduction was probably made for similar purposes."
 	icon_state = "fal"
 	item_state = "fal"
 	w_class = WEIGHT_CLASS_BULKY

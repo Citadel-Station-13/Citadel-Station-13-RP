@@ -34,7 +34,7 @@
 	camera.status = FALSE
 	radio = new(src)
 	radio.listening = FALSE
-	radio.set_frequency(ENT_FREQ)
+	radio.set_frequency(FREQ_ENTERTAINMENT)
 	radio.icon = src.icon
 	radio.icon_state = src.icon_state
 	update_icon()
@@ -43,7 +43,7 @@
 	radio.hear_talk(M,msg,verb,speaking)
 	..()
 
-/obj/item/tvcamera/attack_self(mob/user)
+/obj/item/tvcamera/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return

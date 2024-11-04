@@ -112,7 +112,7 @@
 ///////////////////////////
 //// The Various Machines
 /obj/machinery/telecomms/allinone/talon
-	freq_listening = list(PUB_FREQ, TALON_FREQ)
+	freq_listening = list(FREQ_COMMON, FREQ_TALON)
 
 /obj/item/paper/talon_shields
 	name = "To whatever asshole"

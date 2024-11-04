@@ -189,7 +189,6 @@ var/list/obj/machinery/newscaster/allCasters = list() //Global list that will co
 	return INITIALIZE_HINT_LATELOAD
 
 /obj/machinery/newscaster/LateInitialize()
-	. = ..()
 	node = get_exonet_node()
 
 /obj/machinery/newscaster/Destroy()
@@ -811,7 +810,7 @@ var/list/obj/machinery/newscaster/allCasters = list() //Global list that will co
 	drop_sound = 'sound/items/drop/wrapper.ogg'
 	pickup_sound = 'sound/items/pickup/wrapper.ogg'
 
-/obj/item/newspaper/attack_self(mob/user)
+/obj/item/newspaper/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return

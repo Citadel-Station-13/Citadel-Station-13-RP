@@ -20,8 +20,7 @@
 	tool_sound = 'sound/items/wirecutter.ogg'
 	drop_sound = 'sound/items/drop/wirecutter.ogg'
 	pickup_sound = 'sound/items/pickup/wirecutter.ogg'
-	sharp = 1
-	edge = 1
+	damage_mode = DAMAGE_MODE_SHARP | DAMAGE_MODE_EDGE
 	tool_speed = 1
 	var/random_color = TRUE
 
@@ -161,7 +160,7 @@
 		QDEL_NULL(counterpart)
 	return ..()
 
-/obj/item/tool/wirecutters/power/attack_self(mob/user)
+/obj/item/tool/wirecutters/power/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return

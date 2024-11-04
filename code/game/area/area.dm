@@ -34,7 +34,7 @@
 	plane = ABOVE_LIGHTING_PLANE //In case we color them
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 
-	//? intrinsics
+	//* System *//
 	/// area flags
 	var/area_flags = NONE
 	/// stores the next uid to use
@@ -47,11 +47,15 @@
 	 */
 	var/unique = TRUE
 
-	//? defaults
+	//* Defaults - Turfs *//
 	/// outdoors by default?
 	var/initial_outdoors = FALSE
 	/// default initial gas mix
 	var/initial_gas_mix = GAS_STRING_STP
+
+	//* Identity *//
+	/// player-facing name, overrides name when / if necessary.
+	var/display_name
 
 	//? nightshift
 	/// nightshift level
@@ -293,15 +297,15 @@
 		cameras += C
 	return cameras
 
-/area/proc/atmosalert(danger_level, var/alarm_source)
+/area/proc/atmosalert(danger_level, var/alarm_source, var/list/why)
 	if (danger_level == 0)
 		atmosphere_alarm.clearAlarm(src, alarm_source)
 	else
 		var/obj/machinery/air_alarm/atmosalarm = alarm_source //maybe other things can trigger these, who knows
 		if(istype(atmosalarm))
-			atmosphere_alarm.triggerAlarm(src, alarm_source, severity = danger_level, hidden = atmosalarm.alarms_hidden)
+			atmosphere_alarm.triggerAlarm(src, alarm_source, severity = danger_level, hidden = atmosalarm.alarms_hidden, reasons = why)
 		else
-			atmosphere_alarm.triggerAlarm(src, alarm_source, severity = danger_level)
+			atmosphere_alarm.triggerAlarm(src, alarm_source, severity = danger_level, reasons = why)
 
 	//Check all the alarms before lowering atmosalm. Raising is perfectly fine.
 	for (var/obj/machinery/air_alarm/AA as anything in GLOB.air_alarms)
