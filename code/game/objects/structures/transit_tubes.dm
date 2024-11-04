@@ -71,7 +71,6 @@
 	return INITIALIZE_HINT_LATELOAD
 
 /obj/structure/transit_tube_pod/LateInitialize()
-	. = ..()
 	follow_tube()
 
 /obj/structure/transit_tube/Initialize(mapload)
