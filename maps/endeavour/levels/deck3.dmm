@@ -2721,8 +2721,7 @@
 /area/crew_quarters/sleep/Dorm_8)
 "crM" = (
 /obj/machinery/light_switch{
-	pixel_x = -9;
-	pixel_y = 30
+	pixel_x = -30
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_4)
@@ -2911,6 +2910,23 @@
 /obj/item/pen,
 /turf/simulated/floor/wood,
 /area/endeavour/surfacebase/bar_backroom)
+"cCr" = (
+/obj/structure/bed/chair/comfy/brown{
+	dir = 8
+	},
+/obj/machinery/light_switch{
+	pixel_x = 26;
+	pixel_y = -4
+	},
+/obj/machinery/button/remote/airlock{
+	id = "dorm4";
+	name = "Room 4 Lock";
+	pixel_x = 26;
+	pixel_y = 7;
+	specialfunctions = 4
+	},
+/turf/simulated/floor/wood,
+/area/maintenance/dormitory)
 "cCJ" = (
 /obj/machinery/fire_alarm/south_mount{
 	pixel_y = -24
@@ -3309,6 +3325,10 @@
 	},
 /turf/simulated/floor/tiled,
 /area/security/brig)
+"cSR" = (
+/obj/machinery/light/small,
+/turf/simulated/floor/water/deep/indoors,
+/area/maintenance/dormitory)
 "cTe" = (
 /obj/machinery/power/apc/west_mount{
 	cell_type = /obj/item/cell/super
@@ -4716,6 +4736,17 @@
 "dYL" = (
 /obj/structure/bed/chair/comfy/brown{
 	dir = 4
+	},
+/obj/machinery/light_switch{
+	pixel_x = -26;
+	pixel_y = -4
+	},
+/obj/machinery/button/remote/airlock{
+	id = "dorm2";
+	name = "Room 2 Lock";
+	pixel_x = -26;
+	pixel_y = 7;
+	specialfunctions = 4
 	},
 /turf/simulated/floor/wood,
 /area/endeavour/hallway/d3starboardforhall)
@@ -6372,6 +6403,9 @@
 /area/endeavour/hallway/d3aftmaint)
 "fiz" = (
 /obj/structure/flora/ausbushes/fernybush,
+/obj/machinery/light/small{
+	dir = 1
+	},
 /turf/simulated/floor/water/deep/indoors,
 /area/maintenance/dormitory)
 "fiG" = (
@@ -7986,6 +8020,12 @@
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/quartermaster/office)
+"gug" = (
+/obj/machinery/light/small{
+	dir = 8
+	},
+/turf/simulated/floor/wood,
+/area/maintenance/dormitory)
 "gum" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -11517,6 +11557,17 @@
 /obj/structure/bed/chair/comfy/brown{
 	dir = 4
 	},
+/obj/machinery/light_switch{
+	pixel_x = -26;
+	pixel_y = 4
+	},
+/obj/machinery/button/remote/airlock{
+	id = "dorm1";
+	name = "Room 1 Lock";
+	pixel_x = -26;
+	pixel_y = -7;
+	specialfunctions = 4
+	},
 /turf/simulated/floor/wood,
 /area/endeavour/hallway/d3portforhall)
 "jJA" = (
@@ -11971,6 +12022,12 @@
 	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/crew_quarters/bar)
+"kfA" = (
+/obj/machinery/light/small{
+	dir = 4
+	},
+/turf/simulated/floor/wood,
+/area/maintenance/dormitory)
 "kfD" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -12160,6 +12217,12 @@
 	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/crew_quarters/bar)
+"krn" = (
+/obj/machinery/light/small{
+	dir = 4
+	},
+/turf/simulated/floor/carpet/bcarpet,
+/area/endeavour/hallway/d3portforhall)
 "ksT" = (
 /obj/machinery/disposal,
 /obj/effect/floor_decal/industrial/warning/full,
@@ -21353,6 +21416,17 @@
 /obj/structure/bed/chair/comfy/brown{
 	dir = 8
 	},
+/obj/machinery/light_switch{
+	pixel_x = 26;
+	pixel_y = 4
+	},
+/obj/machinery/button/remote/airlock{
+	id = "dorm3";
+	name = "Room 3 Lock";
+	pixel_x = 26;
+	pixel_y = -7;
+	specialfunctions = 4
+	},
 /turf/simulated/floor/wood,
 /area/maintenance/dormitory)
 "rTm" = (
@@ -22349,6 +22423,9 @@
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/sleep/Dorm_3)
 "sFQ" = (
+/obj/machinery/light/small{
+	dir = 1
+	},
 /turf/simulated/floor/water/deep/indoors,
 /area/maintenance/dormitory)
 "sFX" = (
@@ -23791,6 +23868,12 @@
 	},
 /turf/space/basic,
 /area/space)
+"tUR" = (
+/obj/machinery/light/small{
+	dir = 8
+	},
+/turf/simulated/floor/carpet/gaycarpet,
+/area/maintenance/dormitory)
 "tVi" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 8
@@ -28238,6 +28321,12 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d3portforhall)
+"xus" = (
+/obj/machinery/light/small{
+	dir = 8
+	},
+/turf/simulated/floor/carpet/blue,
+/area/maintenance/dormitory)
 "xut" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -28584,6 +28673,12 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/crew_quarters/sleep/cryo)
+"xIo" = (
+/obj/machinery/light/small{
+	dir = 4
+	},
+/turf/simulated/floor/carpet/purcarpet,
+/area/endeavour/hallway/d3starboardforhall)
 "xIP" = (
 /turf/simulated/floor/crystal,
 /area/endeavour/hallway/d3fwdhall)
@@ -52067,13 +52162,13 @@ pAU
 gDD
 orP
 wIA
-kdZ
+xus
 rpK
 aqY
 orP
 aqY
 rpK
-qHz
+tUR
 duv
 orP
 wqJ
@@ -52459,7 +52554,7 @@ kiY
 rpK
 rSu
 orP
-rSu
+cCr
 rpK
 kiY
 oTx
@@ -52842,15 +52937,15 @@ cYu
 pAU
 gDD
 oWG
+gug
 rpK
 rpK
 rpK
+gug
 rpK
 rpK
 rpK
-rpK
-rpK
-rpK
+gug
 oWG
 bZv
 oXu
@@ -53425,11 +53520,11 @@ pAU
 gDD
 orP
 faa
-sFQ
+cSR
 orP
 sFQ
 ghO
-sFQ
+cSR
 orP
 fiz
 uVe
@@ -54006,15 +54101,15 @@ ctz
 pAU
 gDD
 rpK
+kfA
 rpK
 rpK
 rpK
+kfA
 rpK
 rpK
 rpK
-rpK
-rpK
-rpK
+kfA
 rpK
 mLw
 uod
@@ -54783,13 +54878,13 @@ rqN
 fPA
 eZW
 evi
-aPN
+krn
 qxb
 lou
 eZW
 gfx
 xTl
-gOa
+xIo
 uhW
 wtC
 adH
