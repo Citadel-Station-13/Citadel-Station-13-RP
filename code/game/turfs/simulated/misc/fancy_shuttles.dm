@@ -54,8 +54,8 @@ GLOBAL_LIST_EMPTY(fancy_shuttles)
 	var/mutable_appearance/under_EM
 	var/fancy_shuttle_tag
 
-	material_outer = /datum/material/steel/hull
-	material_reinf = /datum/material/steel/hull
+	material_outer = /datum/prototype/material/steel/hull
+	material_reinf = /datum/prototype/material/steel/hull
 	baseturfs = /turf/simulated/floor/plating/eris/under
 
 /turf/simulated/wall/fancy_shuttle/window

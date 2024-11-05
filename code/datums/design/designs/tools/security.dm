@@ -1,4 +1,4 @@
-/datum/design/tool/handcuffs
+/datum/prototype/design/tool/handcuffs
 	id = "ToolHandcuffs"
 	lathe_type = LATHE_TYPE_AUTOLATHE
 	design_unlock = DESIGN_UNLOCK_INTRINSIC

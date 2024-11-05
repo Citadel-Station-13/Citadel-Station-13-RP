@@ -2,13 +2,13 @@
 /**
  * legacy science designs
  */
-/datum/design/science
-	abstract_type = /datum/design/science
+/datum/prototype/design/science
+	abstract_type = /datum/prototype/design/science
 	lathe_type = LATHE_TYPE_PROTOLATHE
 	var/legacy_stack_amount = 1
 
 //Make sure items don't get free power
-/datum/design/science/print(atom/where, amount, list/material_parts, list/ingredient_parts, list/reagent_parts, cost_multiplier = 1)
+/datum/prototype/design/science/print(atom/where, amount, list/material_parts, list/ingredient_parts, list/reagent_parts, cost_multiplier = 1)
 	if(isnull(amount) || amount == 1)
 		if(is_stack)
 			amount = legacy_stack_amount

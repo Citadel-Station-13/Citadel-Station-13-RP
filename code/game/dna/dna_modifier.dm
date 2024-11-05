@@ -256,7 +256,6 @@
 	return INITIALIZE_HINT_LATELOAD
 
 /obj/machinery/computer/scan_consolenew/LateInitialize()
-	. = ..()
 	scan_for_scanner()
 	addtimer(CALLBACK(src, PROC_REF(recharge_injector)), 25 SECONDS)
 
