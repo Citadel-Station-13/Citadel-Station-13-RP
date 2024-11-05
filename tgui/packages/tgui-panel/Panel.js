@@ -24,7 +24,7 @@ export const Panel = (props, context) => {
   const audio = useAudio(context);
   const settings = useSettings(context);
   const game = useGame(context);
-  if (process.env.NODE_ENV !== 'production') {
+  if (process.env['NODE_ENV'] !== 'production') {
     const { useDebug, KitchenSink } = require('tgui/debug');
     const debug = useDebug(context);
     if (debug.kitchenSink) {
