@@ -1084,7 +1084,7 @@
 
 //* Context *//
 
-/obj/item/gun/context_menu(datum/event_args/actor/e_args)
+/obj/item/gun/context_query(datum/event_args/actor/e_args)
 	. = ..()
 	if(length(attachments))
 		.["remove-attachment"] = atom_context_tuple("Remove Attachment", image('icons/screen/radial/actions.dmi', "red-arrow-up"), 0, MOBILITY_CAN_USE)

@@ -202,14 +202,14 @@
 					requires_init = TRUE
 					break
 			if(requires_init)
-				set_actions_to(attachment_actions)
+				set_attachment_actions_to(attachment_actions)
 		else if(ispath(attachment_actions))
-			set_actions_to(attachment_actions)
+			set_attachment_actions_to(attachment_actions)
 	else if(attachment_action_name)
 		var/datum/action/attachment_action/created = new(src)
 		created.name = attachment_action_name
 		created.check_mobility_flags = attachment_action_mobility_flags
-		set_actions_to(created)
+		set_attachment_actions_to(created)
 
 /**
  * setter for [attachment_actions]

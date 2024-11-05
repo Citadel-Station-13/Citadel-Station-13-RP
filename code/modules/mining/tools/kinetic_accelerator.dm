@@ -32,7 +32,7 @@
 	attachment_alignment = list(
 		GUN_ATTACHMENT_SLOT_RAIL = list(
 			17,
-			23,
+			22,
 		),
 		GUN_ATTACHMENT_SLOT_SIDEBARREL = list(
 			30,
