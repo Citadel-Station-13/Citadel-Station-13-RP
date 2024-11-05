@@ -40,7 +40,7 @@
 /obj/item/gun_attachment/harness/magnetic/ui_action_click(datum/action/action, datum/event_args/actor/actor)
 	set_active(!active)
 
-/obj/item/gun_attachment/harness/magnetic/proc/on_drop(mob/user, inv_op_flags, atom/new_loc)
+/obj/item/gun_attachment/harness/magnetic/proc/on_drop(datum/source, mob/user, inv_op_flags, atom/new_loc)
 	SIGNAL_HANDLER
 	if(!active)
 		return NONE
@@ -52,7 +52,7 @@
 	snap_back_to_user(user)
 	return COMPONENT_ITEM_DROPPED_RELOCATE
 
-/obj/item/gun_attachment/harness/magnetic/proc/on_pickup(mob/user, inv_op_flags, atom/old_loc)
+/obj/item/gun_attachment/harness/magnetic/proc/on_pickup(datum/source, mob/user, inv_op_flags, atom/old_loc)
 	SIGNAL_HANDLER
 	if(active)
 		return

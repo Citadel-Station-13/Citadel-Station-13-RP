@@ -1052,7 +1052,7 @@
 	on_attachment_uninstall(attachment)
 	attachment.attached = null
 	LAZYREMOVE(attachments, attachment)
-	return deleting ? null : attachment.uninstall_product_transform()
+	return deleting ? null : attachment.uninstall_product_transform(src)
 
 /**
  * Align an attachment overlay.
@@ -1100,6 +1100,8 @@
 		if("remove-attachment")
 			// todo: e_args support
 			var/obj/item/gun_attachment/attachment = show_radial_menu(e_args.initiator, src, attachments)
+			if(!attachment)
+				return TRUE
 			if(!e_args.performer.Reachability(src) || !(e_args.performer.mobility_flags & MOBILITY_CAN_USE))
 				return TRUE
 			user_uninstall_attachment(attachment, e_args, TRUE)

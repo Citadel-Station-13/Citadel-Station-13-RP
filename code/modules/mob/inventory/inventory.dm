@@ -134,6 +134,9 @@
 
 //* Update Hooks *//
 
+/**
+ * Only called if mobility changed.
+ */
 /datum/inventory/proc/on_mobility_update()
 	for(var/datum/action/action in actions.actions)
 		action.update_button_availability()

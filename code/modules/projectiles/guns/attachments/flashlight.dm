@@ -83,9 +83,10 @@
 	QDEL_NULL(our_maglight)
 	return ..()
 
-/obj/item/gun_attachment/flashlight/maglight/uninstall_product_transform()
+/obj/item/gun_attachment/flashlight/maglight/uninstall_product_transform(atom/move_to_temporarily)
 	if(our_maglight)
 		. = our_maglight
+		our_maglight.forceMove(move_to_temporarily)
 		our_maglight = null
 	else
 		return new /obj/item/flashlight/maglight

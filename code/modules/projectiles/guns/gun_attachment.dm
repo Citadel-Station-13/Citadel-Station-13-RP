@@ -168,8 +168,12 @@
  * If you return something else, you generally want to qdel(src).
  *
  * * This proc will **not** be called if we're being deleted.
+ *
+ * @params
+ * * move_to_temporarily - move something to here if it's being dropped, or it'll be deleted by root of /movable/Destroy()
+ *                         due to being in contents.
  */
-/obj/item/gun_attachment/proc/uninstall_product_transform()
+/obj/item/gun_attachment/proc/uninstall_product_transform(atom/move_to_temporarily)
 	return src
 
 //* Actions *//
