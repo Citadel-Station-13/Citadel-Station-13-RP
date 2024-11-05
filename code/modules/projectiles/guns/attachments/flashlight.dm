@@ -16,6 +16,7 @@
 	light_color = "#ffffff"
 
 	attachment_action_name = "Toggle Light"
+	attachment_conflict_type = GUN_ATTACHMENT_TYPE_FLASHLIGHT
 
 	/// are we on?
 	var/on = FALSE
@@ -47,11 +48,11 @@
 	// todo: silent support?
 	if(on)
 		playsound(src, on_sound, 15, TRUE, -4)
-		set_light(l_power = light_power_on)
+		attached.set_light(l_power = light_power_on)
 		potential_action?.set_button_active(TRUE)
 	else
 		playsound(src, off_sound, 15, TRUE, -4)
-		set_light(l_power = 0)
+		attached.set_light(l_power = 0)
 		potential_action?.set_button_active(FALSE)
 	update_icon()
 
