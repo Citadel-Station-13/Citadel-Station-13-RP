@@ -1,7 +1,7 @@
 GLOBAL_LIST_EMPTY(holopad_lookup)
 
-#define HOLO_NORMAL_COLOR color_matrix_from_rgb("#ccccff")
-#define HOLO_VORE_COLOR color_matrix_from_rgb("#d97de0")
+#define HOLO_NORMAL_COLOR color_to_full_rgba_matrix("#ccccff")
+#define HOLO_VORE_COLOR color_to_full_rgba_matrix("#d97de0")
 #define HOLO_NORMAL_ALPHA 140
 #define HOLO_VORE_ALPHA 210
 

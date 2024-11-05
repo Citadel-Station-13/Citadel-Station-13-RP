@@ -1,5 +1,3 @@
-//* This file is explicitly licensed under the MIT license. *//
-//* Copyright (c) 2023 Citadel Station developers.          *//
 
 /**
  * Gas datum definitions, inspired by /tg/station LINDA & Baystation XGM.

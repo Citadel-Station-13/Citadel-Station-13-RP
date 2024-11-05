@@ -19,18 +19,14 @@
 
 /obj/machinery/light_switch/Initialize(mapload, newdir)
 	. = ..()
+	area = get_area(src)
+	if(otherarea)
+		area = locate(text2path("/area/[otherarea]"))
+	if(!name)
+		name = "light switch ([area.name])"
 	return INITIALIZE_HINT_LATELOAD
 
 /obj/machinery/light_switch/LateInitialize()
-	. = ..()
-	area = get_area(src)
-
-	if(otherarea)
-		area = locate(text2path("/area/[otherarea]"))
-
-	if(!name)
-		name = "light switch ([area.name])"
-
 	on = area.lightswitch
 	updateicon()
 

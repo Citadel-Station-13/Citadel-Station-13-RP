@@ -292,7 +292,7 @@
 		user.put_in_hands_or_drop(new /obj/item/clothing/head/helmet/bucket)
 		qdel(src)
 		return
-	else if(D.is_material_stack_of(/datum/material/steel))
+	else if(D.is_material_stack_of(/datum/prototype/material/steel))
 		var/obj/item/stack/material/M = D
 		if (M.use(1))
 			var/obj/item/secbot_assembly/edCLN_assembly/B = new /obj/item/secbot_assembly/edCLN_assembly(get_turf(src))

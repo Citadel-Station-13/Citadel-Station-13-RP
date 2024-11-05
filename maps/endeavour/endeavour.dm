@@ -30,6 +30,8 @@
 	// todo: remove after dev is done
 	allow_random_draw = FALSE
 
+	//* Mapping credits go to GySgtMurphy, Niezan, Washikarasu, APMK and LordME *//
+
 	//* LEGACY BELOW *//
 
 	legacy_assert_shuttle_datums = list(

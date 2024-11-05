@@ -692,9 +692,6 @@
 	icon_state = "swall_c"
 	},
 /area/jungle/crash_ship_source)
-"dG" = (
-/turf/simulated/shuttle/wall,
-/area/jungle/crash_ship_source)
 "dH" = (
 /obj/landmark/loot_spawn/low,
 /turf/simulated/floor/tiled/white,
@@ -40761,8 +40758,8 @@ dw
 dw
 dP
 dI
-dG
-dG
+dA
+dA
 dA
 dw
 dw
@@ -41011,9 +41008,9 @@ dv
 dw
 dw
 dA
-dG
-dG
-dG
+dA
+dA
+dA
 dL
 dO
 dw
@@ -42298,15 +42295,15 @@ dw
 dF
 dI
 dL
-dG
-dG
-dG
+dA
+dA
+dA
 dS
 dI
 dw
 dH
 dH
-dG
+dA
 dy
 dw
 dv
@@ -42561,8 +42558,8 @@ dw
 dw
 dI
 dw
-dG
-dG
+dA
+dA
 dA
 dw
 dw

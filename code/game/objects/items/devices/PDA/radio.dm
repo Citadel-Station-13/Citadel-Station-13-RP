@@ -47,7 +47,7 @@
 	/// The status signal sent by the bot.
 	var/list/botstatus
 
-	var/control_freq = BOT_FREQ
+	var/control_freq = FREQ_AI_BOT
 
 /// Create a new QM cartridge, and register to receive bot control & beacon message.
 /obj/item/integated_radio/beepsky/Initialize()
@@ -58,7 +58,7 @@
 /**
  * Receive radio signals.
  * Can detect bot status signals.
- * Create/populate list as they are recieved.
+ * Create/populate list as they are received.
  */
 /obj/item/integated_radio/beepsky/receive_signal(datum/signal/signal)
 	// var/obj/item/pda/P = src.loc
@@ -127,7 +127,7 @@
 	if(!radio_controller)
 		return
 
-	if (src.frequency < PUBLIC_LOW_FREQ || src.frequency > PUBLIC_HIGH_FREQ)
+	if (src.frequency < MIN_FREQ || src.frequency > MAX_FREQ)
 		src.frequency = sanitize_frequency(src.frequency)
 
 	set_frequency(frequency)

@@ -176,7 +176,7 @@
 
 /obj/item/gun/ballistic/rocket/tyrmalin/attackby(var/obj/item/A as obj, mob/user as mob)
 	. = ..()
-	if(A.is_material_stack_of(/datum/material/plasteel))
+	if(A.is_material_stack_of(/datum/prototype/material/plasteel))
 		var/obj/item/stack/material/M = A
 		if(M.use(1))
 			var/obj/item/tyrmalin_rocket_assembly/R = new /obj/item/tyrmalin_rocket_assembly(get_turf(src))

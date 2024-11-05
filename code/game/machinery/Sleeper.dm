@@ -16,7 +16,6 @@
 	return INITIALIZE_HINT_LATELOAD
 
 /obj/machinery/sleep_console/LateInitialize()
-	. = ..()
 	findsleeper()
 
 /obj/machinery/sleep_console/Destroy()

@@ -31,7 +31,7 @@
 	else
 		..()
 
-/obj/item/reagent_containers/food/snacks/meat/syntiflesh
+/obj/item/reagent_containers/food/snacks/meat/synthflesh
 	name = "synthetic meat"
 	desc = "A synthetic slab of flesh."
 

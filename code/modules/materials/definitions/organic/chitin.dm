@@ -1,4 +1,4 @@
-/datum/material/chitin
+/datum/prototype/material/chitin
 	id = MAT_CHITIN
 	name = "chitin"
 	stack_type = /obj/item/stack/material/chitin

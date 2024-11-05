@@ -222,7 +222,7 @@
 			return
 
 		if(repairing && I.is_crowbar())
-			var/datum/material/M = SSmaterials.resolve_material(mineral)
+			var/datum/prototype/material/M = RSmaterials.fetch(mineral)
 			var/obj/item/stack/material/repairing_sheet = M.place_sheet(loc)
 			repairing_sheet.amount += repairing-1
 			repairing = 0
