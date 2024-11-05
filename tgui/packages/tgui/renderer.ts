@@ -39,7 +39,7 @@ export const createRenderer: CreateRenderer = (getVNode) => (...args) => {
     return;
   }
   // Report rendering time
-  if (process.env.NODE_ENV !== 'production') {
+  if (process.env['NODE_ENV'] !== 'production') {
     if (initialRender === 'resumed') {
       logger.log('rendered in',
         perf.measure('render/start', 'render/finish'));
