@@ -875,7 +875,7 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 //* Materials *//
 
 /obj/item/material_trait_brittle_shatter()
-	var/datum/material/material = get_primary_material()
+	var/datum/prototype/material/material = get_primary_material()
 	var/turf/T = get_turf(src)
 	T.visible_message("<span class='danger'>\The [src] [material.destruction_desc]!</span>")
 	if(istype(loc, /mob/living))

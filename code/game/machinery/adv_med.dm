@@ -177,7 +177,6 @@
 	return INITIALIZE_HINT_LATELOAD
 
 /obj/machinery/body_scanconsole/LateInitialize()
-	. = ..()
 	findscanner()
 
 /obj/machinery/body_scanconsole/Destroy()

@@ -125,7 +125,7 @@
 	/// this list is at /atom level but are only used/implemented on /obj generically; anything else, e.g. walls, should implement manually for efficiency.
 	/// * this variable is a cache variable and is generated from the materials on an entity.
 	/// * this variable is not visible and should not be edited in the map editor.
-	var/tmp/list/datum/material_trait/material_traits
+	var/tmp/list/datum/prototype/material_trait/material_traits
 	/// material trait metadata when [material_traits] is a single trait. null otherwise.
 	/// * this variable is a cache variable and is generated from the materials on an entity.
 	/// * this variable is not visible and should not be edited in the map editor.
@@ -189,10 +189,6 @@
 	/// expected icon height; centering offsets will be calculated from this and our base pixel y.
 	var/icon_y_dimension = 32
 
-	//? Filters
-	/// For handling persistent filters
-	var/list/filter_data
-
 	//? Misc
 	/// What mobs are interacting with us right now, associated directly to concurrent interactions. (use defines)
 	var/list/interacting_mobs
@@ -204,128 +200,6 @@
 	var/hit_sound_brute
 	/// Default sound played on a burn type impact. This is usually null for default.
 	var/hit_sound_burn
-
-/proc/lint__check_atom_new_doesnt_sleep()
-	SHOULD_NOT_SLEEP(TRUE)
-	var/atom/target
-	target.New()
-
-/**
- * Called when an atom is created in byond (built in engine proc)
- *
- * Not a lot happens here in SS13 code, as we offload most of the work to the
- * [Intialization][/atom/proc/Initialize] proc, mostly we run the preloader
- * if the preloader is being used and then call [InitAtom][/datum/controller/subsystem/atoms/proc/InitAtom] of which the ultimate
- * result is that the Intialize proc is called.
- *
- * We also generate a tag here if the DF_USE_TAG flag is set on the atom
- */
-/atom/New(loc, ...)
-	// atom creation method that preloads variables at creation
-	// todo: we shouldn't need a type check here.
-	if(global.dmm_preloader_active && global.dmm_preloader_target == type)
-		world.preloader_load(src)
-
-	if(datum_flags & DF_USE_TAG)
-		generate_tag()
-
-	var/do_initialize = SSatoms.initialized
-	if(do_initialize != INITIALIZATION_INSSATOMS)
-		args[1] = do_initialize == INITIALIZATION_INNEW_MAPLOAD
-		if(SSatoms.InitAtom(src, args))
-			//we were deleted
-			return
-
-/**
- * Called by the maploader if a dmm_context is set
- */
-/atom/proc/preloading_instance(datum/dmm_context/context)
-	return
-
-/**
- * hook for abstract direction sets from the maploader
- *
- * return FALSE to override maploader automatic rotation
- */
-/atom/proc/preloading_dir(datum/dmm_context/context)
-	return TRUE
-
-/**
- * The primary method that objects are setup in SS13 with
- *
- * we don't use New as we have better control over when this is called and we can choose
- * to delay calls or hook other logic in and so forth
- *
- * During roundstart map parsing, atoms are queued for intialization in the base atom/New(),
- * After the map has loaded, then Initalize is called on all atoms one by one. NB: this
- * is also true for loading map templates as well, so they don't Initalize until all objects
- * in the map file are parsed and present in the world
- *
- * If you're creating an object at any point after SSInit has run then this proc will be
- * immediately be called from New.
- *
- * mapload: This parameter is true if the atom being loaded is either being intialized during
- * the Atom subsystem intialization, or if the atom is being loaded from the map template.
- * If the item is being created at runtime any time after the Atom subsystem is intialized then
- * it's false.
- *
- * The mapload argument occupies the same position as loc when Initialize() is called by New().
- * loc will no longer be needed after it passed New(), and thus it is being overwritten
- * with mapload at the end of atom/New() before this proc (atom/Initialize()) is called.
- *
- * You must always call the parent of this proc, otherwise failures will occur as the item
- * will not be seen as initalized (this can lead to all sorts of strange behaviour, like
- * the item being completely unclickable)
- *
- * !Note: Ignore the note below until the first two lines of the proc are uncommented. -Zandario
- * You must not sleep in this proc, or any subprocs
- *
- * Any parameters from new are passed through (excluding loc), naturally if you're loading from a map
- * there are no other arguments
- *
- * Must return an [initialization hint][INITIALIZE_HINT_NORMAL] or a runtime will occur.
- *
- * !Note: the following functions don't call the base for optimization and must copypasta handling:
- * * [/turf/proc/Initialize]
- */
-/atom/proc/Initialize(mapload, ...)
-	SHOULD_NOT_SLEEP(TRUE)
-	SHOULD_CALL_PARENT(TRUE)
-	if(atom_flags & ATOM_INITIALIZED)
-		stack_trace("Warning: [src]([type]) initialized multiple times!")
-	atom_flags |= ATOM_INITIALIZED
-
-	if (is_datum_abstract())
-		log_debug("Abstract atom [type] created!")
-		return INITIALIZE_HINT_QDEL
-
-	if(loc)
-		SEND_SIGNAL(loc, COMSIG_ATOM_INITIALIZED_ON, src) /// Sends a signal that the new atom `src`, has been created at `loc`
-
-	if(light_power && light_range)
-		update_light()
-
-	SETUP_SMOOTHING()
-
-	if(opacity && isturf(loc))
-		var/turf/T = loc
-		T.has_opaque_atom = TRUE // No need to recalculate it in this case, it's guranteed to be on afterwards anyways.
-
-	return INITIALIZE_HINT_NORMAL
-
-/**
- * Late Intialization, for code that should run after all atoms have run Intialization
- *
- * To have your LateIntialize proc be called, your atoms [Initalization][/atom/proc/Initialize]
- *  proc must return the hint
- * [INITIALIZE_HINT_LATELOAD] otherwise you will never be called.
- *
- * useful for doing things like finding other machines on GLOB.machines because you can guarantee
- * that all atoms will actually exist in the "WORLD" at this time and that all their Intialization
- * code has been run
- */
-/atom/proc/LateInitialize()
-	set waitfor = FALSE
 
 /**
  * Top level of the destroy chain for most atoms
@@ -356,6 +230,20 @@
 		SSicon_smooth.remove_from_queues(src)
 
 	return ..()
+
+/**
+ * Called by the maploader if a dmm_context is set
+ */
+/atom/proc/preloading_instance(datum/dmm_context/context)
+	return
+
+/**
+ * hook for abstract direction sets from the maploader
+ *
+ * return FALSE to override maploader automatic rotation
+ */
+/atom/proc/preloading_dir(datum/dmm_context/context)
+	return TRUE
 
 /atom/proc/reveal_blood()
 	return
@@ -472,7 +360,7 @@
 /*
 	if(custom_materials)
 		var/list/materials_list = list()
-		for(var/datum/material/current_material as anything in custom_materials)
+		for(var/datum/prototype/material/current_material as anything in custom_materials)
 			materials_list += "[current_material.name]"
 		. += "<u>It is made out of [english_list(materials_list)]</u>."
 */
@@ -535,12 +423,13 @@
 /atom/proc/relaymove_from_contents(mob/user, direction)
 	return relaymove(user, direction)
 
-// Called to set the atom's density and used to add behavior to density changes.
-/atom/proc/set_density(var/new_density)
-	if(density == new_density)
-		return FALSE
-	density = !!new_density // Sanitize to be strictly 0 or 1
-	return TRUE
+///Setter for the `density` variable to append behavior related to its changing.
+/atom/proc/set_density(new_value)
+	SHOULD_CALL_PARENT(TRUE)
+	if(density == new_value)
+		return
+	. = density
+	density = new_value
 
 // Called to set the atom's invisibility and usd to add behavior to invisibility changes.
 /atom/proc/set_invisibility(var/new_invisibility)
@@ -988,71 +877,6 @@
 //  */
 // /atom/proc/handle_contents_del(atom/movable/deleting)
 // 	return
-
-//? Filters
-
-/atom/proc/add_filter(name, priority, list/params, update = TRUE)
-	LAZYINITLIST(filter_data)
-	var/list/copied_parameters = params.Copy()
-	copied_parameters["priority"] = priority
-	filter_data[name] = copied_parameters
-	if(update)
-		update_filters()
-
-/atom/proc/update_filters()
-	filters = null
-	filter_data = tim_sort(filter_data, GLOBAL_PROC_REF(cmp_filter_data_priority), TRUE)
-	for(var/f in filter_data)
-		var/list/data = filter_data[f]
-		var/list/arguments = data.Copy()
-		arguments -= "priority"
-		filters += filter(arglist(arguments))
-	UNSETEMPTY(filter_data)
-
-/atom/proc/transition_filter(name, time, list/new_params, easing, loop)
-	var/filter = get_filter(name)
-	if(!filter)
-		return
-
-	var/list/old_filter_data = filter_data[name]
-
-	var/list/params = old_filter_data.Copy()
-	for(var/thing in new_params)
-		params[thing] = new_params[thing]
-
-	animate(filter, new_params, time = time, easing = easing, loop = loop)
-	for(var/param in params)
-		filter_data[name][param] = params[param]
-
-/atom/proc/change_filter_priority(name, new_priority)
-	if(!filter_data || !filter_data[name])
-		return
-
-	filter_data[name]["priority"] = new_priority
-	update_filters()
-
-/atom/proc/get_filter(name)
-	if(filter_data && filter_data[name])
-		return filters[filter_data.Find(name)]
-
-/atom/proc/remove_filter(name_or_names, update = TRUE)
-	if(!filter_data)
-		return
-
-	var/list/names = islist(name_or_names) ? name_or_names : list(name_or_names)
-
-	for(var/name in names)
-		if(filter_data[name])
-			filter_data -= name
-	if(update)
-		update_filters()
-
-/atom/proc/has_filter(name)
-	return !isnull(filter_data?[name])
-
-/atom/proc/clear_filters()
-	filter_data = null
-	filters = null
 
 //* Inventory *//
 

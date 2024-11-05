@@ -18,9 +18,9 @@
 /// ensure this is called once and only once when a material is added to an atom
 /// alternatively, don't call this at all if you don't want to register traits.
 /// this should null-check, as null is a valid material.
-/atom/proc/register_material(datum/material/mat, primary)
+/atom/proc/register_material(datum/prototype/material/mat, primary)
 	if(!isnull(mat?.material_traits))
-		for(var/datum/material_trait/trait as anything in mat.material_traits)
+		for(var/datum/prototype/material_trait/trait as anything in mat.material_traits)
 			if(islist(material_traits))
 				var/old_data = material_traits[trait]
 				material_traits[trait] = trait.on_add(src, old_data, mat.material_traits[trait])
@@ -30,7 +30,7 @@
 				material_traits_data = trait.on_add(src, null, mat.material_traits[trait])
 				material_trait_flags = trait.material_trait_flags
 			else
-				var/datum/material_trait/other = material_traits
+				var/datum/prototype/material_trait/other = material_traits
 				var/old_data = material_traits_data
 				if(other == trait)
 					material_traits_data = trait.on_add(src, old_data, mat.material_traits[trait])
@@ -43,22 +43,22 @@
 /// ensure this is called once and only once when a material is deleted from an atom
 /// this is only to be used if the material was registered. if it was never registered, DO NOT call this.
 /// this should null-check, as null is a valid material.
-/atom/proc/unregister_material(datum/material/mat, primary)
+/atom/proc/unregister_material(datum/prototype/material/mat, primary)
 	if(!isnull(mat?.material_traits))
-		for(var/datum/material_trait/trait as anything in mat.material_traits)
+		for(var/datum/prototype/material_trait/trait as anything in mat.material_traits)
 			if(islist(material_traits))
 				var/old_data = material_traits[trait]
 				var/new_data = trait.on_remove(src, old_data, mat.material_traits[trait])
 				if(isnull(new_data))
 					material_traits -= trait
 					if(length(material_traits) == 1)
-						var/datum/material_trait/other = material_traits[1]
+						var/datum/prototype/material_trait/other = material_traits[1]
 						material_traits_data = material_traits[other]
 						material_traits = other
 						material_trait_flags = other.material_trait_flags
 					else
 						material_trait_flags = NONE
-						for(var/datum/material_trait/other as anything in material_traits)
+						for(var/datum/prototype/material_trait/other as anything in material_traits)
 							material_trait_flags |= other.material_trait_flags
 				else
 					material_traits[trait] = new_data

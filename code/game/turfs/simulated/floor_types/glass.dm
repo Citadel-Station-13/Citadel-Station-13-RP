@@ -23,7 +23,6 @@ CREATE_STANDARD_TURFS(/turf/simulated/floor/glass)
 	return INITIALIZE_HINT_LATELOAD
 
 /turf/simulated/floor/glass/LateInitialize()
-	. = ..()
 	layer = base_layer
 
 
