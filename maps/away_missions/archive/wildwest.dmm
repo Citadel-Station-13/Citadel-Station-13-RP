@@ -327,11 +327,11 @@
 /area/awaymission/wwmines)
 "bN" = (
 /obj/structure/closet/secure_closet/freezer/meat,
-/obj/item/reagent_containers/food/snacks/meat/syntiflesh,
-/obj/item/reagent_containers/food/snacks/meat/syntiflesh,
-/obj/item/reagent_containers/food/snacks/meat/syntiflesh,
-/obj/item/reagent_containers/food/snacks/meat/syntiflesh,
-/obj/item/reagent_containers/food/snacks/meat/syntiflesh,
+/obj/item/reagent_containers/food/snacks/meat/synthflesh,
+/obj/item/reagent_containers/food/snacks/meat/synthflesh,
+/obj/item/reagent_containers/food/snacks/meat/synthflesh,
+/obj/item/reagent_containers/food/snacks/meat/synthflesh,
+/obj/item/reagent_containers/food/snacks/meat/synthflesh,
 /turf/simulated/floor{
 	dir = 5
 	},
@@ -1079,7 +1079,7 @@
 /turf/simulated/mineral{
 	icon_state = "sandstone0";
 	mineral = "sandstone";
-
+	
 	},
 /area/awaymission/wwmines)
 "fo" = (

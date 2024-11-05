@@ -103,7 +103,7 @@ export const getRoutedComponent = store => {
   if (config.refreshing === UI_HARD_REFRESHING) {
     return RefreshingWindow;
   }
-  if (process.env.NODE_ENV !== 'production') {
+  if (process.env['NODE_ENV'] !== 'production') {
     const debug = selectDebug(state);
     // Show a kitchen sink
     if (debug.kitchenSink) {
@@ -122,8 +122,11 @@ export const directlyRouteComponent = (name) => {
       esModule = requireInterface(path);
     }
     catch (err) {
-      if (err.code !== 'MODULE_NOT_FOUND') {
-        throw err;
+      if (err instanceof Error) {
+        // this is a node error, not a normal JS error; code should be there.
+        if (err['code'] !== 'MODULE_NOT_FOUND') {
+          throw err;
+        }
       }
     }
     if (esModule) {

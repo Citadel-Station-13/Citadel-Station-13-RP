@@ -182,7 +182,7 @@
 			buildstate++
 			update_icon()
 			return
-	else if(W.is_material_stack_of(/datum/material/steel))
+	else if(W.is_material_stack_of(/datum/prototype/material/steel))
 		if(buildstate == 2)
 			var/obj/item/stack/material/M = W
 			if(M.use(5))

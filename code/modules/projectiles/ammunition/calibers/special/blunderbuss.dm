@@ -12,7 +12,7 @@
 
 /obj/item/ammo_casing/blunderbuss/silver
 	name = "sliver shot"
-	desc = "A bundle of silver lead allow balls and other assorted bits of silver."
+	desc = "A bundle of silver-lead alloy balls and other assorted bits of silver."
 	icon_state = "silverbuss"
 	projectile_type = /obj/projectile/bullet/pellet/blunderbuss/silver
-	materials_base = list("lead" = 500, "silver" = 500)
+	materials_base = list("lead" = 250, "silver" = 250)

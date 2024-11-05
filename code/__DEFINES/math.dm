@@ -49,9 +49,8 @@
 ///
 /// * This is not replaced by native ceil(), as that is always CEILING(x, 1)!
 #define CEILING(x, y) ( -round(-(x) / (y)) * (y) )
-/// x to the nearest lower multiple of y
-///
-/// * This is not replaced by native floor(), as that is always FLOOR(x, 1)!
+
+/// round() acts like floor(x, 1) by default but can't handle other values
 #define FLOOR(x, y) ( round((x) / (y)) * (y) )
 
 // Similar to clamp but the bottom rolls around to the top and vice versa. min is inclusive, max is exclusive

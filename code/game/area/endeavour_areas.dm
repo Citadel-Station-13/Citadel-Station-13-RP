@@ -23,8 +23,32 @@
 	name = "\improper Deck 4 Port Hallway"
 	icon_state = "hallP"
 
+/area/endeavour/hallway/d4portforhall
+	name = "\improper Deck 4 Port Forward Hallway"
+	icon_state = "hallP"
+
+/area/endeavour/hallway/d4portamidhall
+	name = "\improper Deck 4 Port Amidships Hallway"
+	icon_state = "hallP"
+
+/area/endeavour/hallway/d4portafthall
+	name = "\improper Deck 4 Port Aft Hallway"
+	icon_state = "hallP"
+
 /area/endeavour/hallway/d4starboardhall
 	name = "\improper Deck 4 Starboard Hallway"
+	icon_state = "hallS"
+
+/area/endeavour/hallway/d4starboardforhall
+	name = "\improper Deck 4 Starboard Forward Hallway"
+	icon_state = "hallS"
+
+/area/endeavour/hallway/d4starboardamidhall
+	name = "\improper Deck 4 Starboard Amidships Hallway"
+	icon_state = "hallS"
+
+/area/endeavour/hallway/d4starboardafthall
+	name = "\improper Deck 4 Starboard Aft Hallway"
 	icon_state = "hallS"
 
 /** Deck 3
@@ -49,8 +73,32 @@
 	name = "\improper Deck 3 Port Hallway"
 	icon_state = "hallP"
 
+/area/endeavour/hallway/d3portforhall
+	name = "\improper Deck 3 Port Forward Hallway"
+	icon_state = "hallP"
+
+/area/endeavour/hallway/d3portamidhall
+	name = "\improper Deck 3 Port Amidships Hallway"
+	icon_state = "hallP"
+
+/area/endeavour/hallway/d3portafthall
+	name = "\improper Deck 3 Port Aft Hallway"
+	icon_state = "hallP"
+
 /area/endeavour/hallway/d3starboardhall
 	name = "\improper Deck 3 Starboard Hallway"
+	icon_state = "hallS"
+
+/area/endeavour/hallway/d3starboardforhall
+	name = "\improper Deck 3 Starboard Forward Hallway"
+	icon_state = "hallS"
+
+/area/endeavour/hallway/d3starboardamidhall
+	name = "\improper Deck 3 Starboard Amidships Hallway"
+	icon_state = "hallS"
+
+/area/endeavour/hallway/d3starboardafthall
+	name = "\improper Deck 3 Starboard Aft Hallway"
 	icon_state = "hallS"
 
 /** Deck 2
@@ -75,8 +123,32 @@
 	name = "\improper Deck 2 Port Hallway"
 	icon_state = "hallP"
 
+/area/endeavour/hallway/d2portforhall
+	name = "\improper Deck 2 Port Forward Hallway"
+	icon_state = "hallP"
+
+/area/endeavour/hallway/d2portamidhall
+	name = "\improper Deck 2 Port Amidships Hallway"
+	icon_state = "hallP"
+
+/area/endeavour/hallway/d2portafthall
+	name = "\improper Deck 2 Port Aft Hallway"
+	icon_state = "hallP"
+
 /area/endeavour/hallway/d2starboardhall
 	name = "\improper Deck 2 Starboard Hallway"
+	icon_state = "hallS"
+
+/area/endeavour/hallway/d2starboardforhall
+	name = "\improper Deck 2 Starboard Forward Hallway"
+	icon_state = "hallS"
+
+/area/endeavour/hallway/d1starboardamidhall
+	name = "\improper Deck 2 Starboard Amidships Hallway"
+	icon_state = "hallS"
+
+/area/endeavour/hallway/d2starboardafthall
+	name = "\improper Deck 2 Starboard Aft Hallway"
 	icon_state = "hallS"
 
 /** Deck 1
@@ -101,8 +173,32 @@
 	name = "\improper Deck 1 Port Hallway"
 	icon_state = "hallP"
 
+/area/endeavour/hallway/d1portforhall
+	name = "\improper Deck 1 Port Forward Hallway"
+	icon_state = "hallP"
+
+/area/endeavour/hallway/d1portamidhall
+	name = "\improper Deck 1 Port Amidships Hallway"
+	icon_state = "hallP"
+
+/area/endeavour/hallway/d1portafthall
+	name = "\improper Deck 1 Port Aft Hallway"
+	icon_state = "hallP"
+
 /area/endeavour/hallway/d1starboardhall
 	name = "\improper Deck 1 Starboard Hallway"
+	icon_state = "hallS"
+
+/area/endeavour/hallway/d1starboardforhall
+	name = "\improper Deck 1 Starboard Forward Hallway"
+	icon_state = "hallS"
+
+/area/endeavour/hallway/d1starboardamidhall
+	name = "\improper Deck 1 Starboard Amidships Hallway"
+	icon_state = "hallS"
+
+/area/endeavour/hallway/d1starboardafthall
+	name = "\improper Deck 1 Starboard Aft Hallway"
 	icon_state = "hallS"
 
 /** Command

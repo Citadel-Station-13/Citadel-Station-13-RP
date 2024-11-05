@@ -269,7 +269,7 @@
 			else
 				to_chat(user, "<span class='notice'>You need at least five segments of cable coil to complete this task.</span>")
 			return
-	else if(W.is_material_stack_of(/datum/material/plastic))
+	else if(W.is_material_stack_of(/datum/prototype/material/plastic))
 		if(buildstate == 3)
 			var/obj/item/stack/material/P = W
 			if(P.use(3))

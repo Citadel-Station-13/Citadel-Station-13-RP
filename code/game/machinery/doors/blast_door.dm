@@ -28,7 +28,7 @@
 
 	smoothing_groups = (SMOOTH_GROUP_SHUTTERS_BLASTDOORS)
 
-	var/datum/material/implicit_material
+	var/datum/prototype/material/implicit_material
 	// Icon states for different shutter types. Simply change this instead of rewriting the update_icon proc.
 	var/icon_state_open = null
 	var/icon_state_opening = null
@@ -148,7 +148,7 @@
 			else
 				to_chat(user, "<span class='notice'>[src]'s motors resist your effort.</span>")
 			return
-	else if(I.is_material_stack_of(/datum/material/plasteel)) // Repairing.
+	else if(I.is_material_stack_of(/datum/prototype/material/plasteel)) // Repairing.
 		var/amt = CEILING((integrity_max - integrity)/150, 1)
 		if(!amt)
 			to_chat(user, "<span class='notice'>\The [src] is already fully repaired.</span>")

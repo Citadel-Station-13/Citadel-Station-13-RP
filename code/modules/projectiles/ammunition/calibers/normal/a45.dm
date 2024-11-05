@@ -40,7 +40,6 @@
 	materials_base = list(MAT_STEEL = 60)
 
 /obj/item/ammo_casing/a45/emp
-	name = ".45 haywire round"
 	desc = "A .45 bullet casing fitted with a single-use ion pulse generator."
 	icon_state = "large-blue"
 	projectile_type = /obj/projectile/ion/small
@@ -52,11 +51,10 @@
 	projectile_type = /obj/projectile/bullet/pistol/medium/hp
 
 /obj/item/ammo_casing/a45/silver
-	name = ".45 silver round"
-	desc = "A .45 silver bullet casing. Bless and Sancitfied to banish otherworlds entities."
-	icon_state = "large-white"
+	desc = "A .45 silver bullet casing."
+	icon_state = "large-silver"
 	projectile_type = /obj/projectile/bullet/pistol/silver
-	materials_base = list(MAT_STEEL = 130, MAT_SILVER = 100)
+	materials_base = list(MAT_STEEL = 60, MAT_SILVER = 50)
 
 
 //* Magazines
@@ -96,6 +94,12 @@
 /obj/item/ammo_magazine/a45/ap
 	name = "magazine (.45 AP)"
 	ammo_preload = /obj/item/ammo_casing/a45/ap
+
+/obj/item/ammo_magazine/a45/silver
+	name = "magazine (.45 silver)"
+	icon_state = "45ag-7"
+	base_icon_state = "45ag"
+	ammo_preload = /obj/item/ammo_casing/a45/silver
 
 /obj/item/ammo_magazine/a45/uzi
 	name = "stick magazine (.45)"
@@ -202,18 +206,20 @@
 
 /obj/item/ammo_magazine/a45/speedloader/rubber
 	name = "speedloader (.45 rubber)"
-	icon_state = "bluetip-7"
-	base_icon_state = "bluetip"
+	icon_state = "redtip-7"
+	base_icon_state = "redtip"
 	ammo_preload = /obj/item/ammo_casing/a45/rubber
 
 /obj/item/ammo_magazine/a45/speedloader/practice
 	name = "speedloader (.45 practice)"
+	icon_state = "whitetip-7"
+	base_icon_state = "whitetip"
 	ammo_preload = /obj/item/ammo_casing/a45/practice
 
 /obj/item/ammo_magazine/a45/speedloader/flash
 	name = "speedloader (.45 flash)"
-	icon_state = "bluetip-7"
-	base_icon_state = "bluetip"
+	icon_state = "whitetip-7"
+	base_icon_state = "whitetip"
 	ammo_preload = /obj/item/ammo_casing/a45/flash
 
 /obj/item/ammo_magazine/a45/speedloader/ap
