@@ -104,7 +104,7 @@
 	return ..()
 
 /obj/item/material/twohanded/fireaxe/foam
-	material_parts = /datum/material/toy_foam
+	material_parts = /datum/prototype/material/toy_foam
 	attack_verb = list("bonked","whacked")
 	icon_state = "fireaxe_mask0"
 	base_icon = "fireaxe_mask"
@@ -113,7 +113,7 @@
 
 /obj/item/material/twohanded/fireaxe/bone
 	desc = "A primitive version of a hefty fire axe, made from bone. Whoever made this didn't make it to save lives."
-	material_parts = /datum/material/bone
+	material_parts = /datum/prototype/material/bone
 	icon_state = "bone_axe0"
 	base_icon = "bone_axe"
 	material_color = FALSE
@@ -121,23 +121,23 @@
 /obj/item/material/twohanded/fireaxe/bronze
 	name = "Bronze Battleaxe"
 	desc = "A large twohanded battleaxe made of bronze. Its double head marks it a tool for combat alone."
-	material_parts = /datum/material/bronze
+	material_parts = /datum/prototype/material/bronze
 	icon = 'icons/obj/lavaland.dmi'
 	icon_state = "bronze_axe0"
 	base_icon = "bronze_axe"
 	material_color = FALSE
 
 /obj/item/material/twohanded/fireaxe/plasteel
-	material_parts = /datum/material/plasteel
+	material_parts = /datum/prototype/material/plasteel
 
 /obj/item/material/twohanded/fireaxe/durasteel
-	material_parts = /datum/material/durasteel
+	material_parts = /datum/prototype/material/durasteel
 
 /obj/item/material/twohanded/fireaxe/scythe/plasteel
-	material_parts = /datum/material/plasteel
+	material_parts = /datum/prototype/material/plasteel
 
 /obj/item/material/twohanded/fireaxe/scythe/durasteel
-	material_parts = /datum/material/durasteel
+	material_parts = /datum/prototype/material/durasteel
 
 /obj/item/material/twohanded/fireaxe/scythe
 	icon_state = "scythe0"
@@ -167,7 +167,7 @@
 	attack_sound = 'sound/weapons/bladeslice.ogg'
 	mob_throw_hit_sound =  'sound/weapons/pierce.ogg'
 	attack_verb = list("attacked", "poked", "jabbed", "torn", "gored")
-	material_parts = /datum/material/glass
+	material_parts = /datum/prototype/material/glass
 	material_color = 0
 	reach = 2 // Spears are long.
 	attackspeed = 20
@@ -228,7 +228,7 @@
 /obj/item/material/twohanded/spear/bone
 	name = "spear"
 	desc = "A simple, yet effective, weapon, built from bone."
-	material_parts = /datum/material/bone
+	material_parts = /datum/prototype/material/bone
 	icon_state = "bone_spear0"
 	base_icon = "bone_spear"
 	material_color = 0
@@ -237,15 +237,15 @@
 	..(mapload,"bone")
 
 /obj/item/material/twohanded/spear/plasteel
-	material_parts = /datum/material/plasteel
+	material_parts = /datum/prototype/material/plasteel
 
 /obj/item/material/twohanded/spear/durasteel
-	material_parts = /datum/material/durasteel
+	material_parts = /datum/prototype/material/durasteel
 
 /obj/item/material/twohanded/spear/bronze
 	name = "spear"
 	desc = "A spear of bone shaft and bronze head. Simplicity never goes out of style."
-	material_parts = /datum/material/bronze
+	material_parts = /datum/prototype/material/bronze
 	icon = 'icons/obj/lavaland.dmi'
 	icon_state = "bronze_spear0"
 	base_icon = "bronze_spear"

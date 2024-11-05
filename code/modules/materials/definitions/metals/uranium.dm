@@ -1,4 +1,4 @@
-/datum/material/uranium
+/datum/prototype/material/uranium
 	id = MAT_URANIUM
 	name = "uranium"
 	stack_type = /obj/item/stack/material/uranium
@@ -25,10 +25,10 @@
 	nullification = MATERIAL_RESISTANCE_NONE
 
 	material_traits = list(
-		/datum/material_trait/radioactive = 10,
+		/datum/prototype/material_trait/radioactive = 10,
 	)
 
-/datum/material/uranium/generate_recipes()
+/datum/prototype/material/uranium/generate_recipes()
 	. = ..()
 	. += create_stack_recipe_datum(category = "statues", name = "engineer statue", product = /obj/structure/statue/uranium/eng, cost = 10, time = 2 SECONDS)
 	. += create_stack_recipe_datum(category = "statues", name = "nuke statue", product = /obj/structure/statue/uranium/nuke, cost = 10, time = 2 SECONDS)

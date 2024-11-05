@@ -57,8 +57,14 @@ type MapFunction = {
  *
  * If collection is 'null' or 'undefined', it will be returned "as is"
  * without emitting any errors (which can be useful in some cases).
+ *
+ * This is actually a function generator. Call this via map(() => ...)(object | array).
+ *
+ * todo: investigate if this is needed; javascript contains native Object.entries().map().
  */
 export const map: MapFunction = <T, U>(iterateeFn) =>
+  // ts-ignored; i am not awake enough to deal with this right now
+  // @ts-ignore
   (collection: T[]): U[] => {
     if (collection === null || collection === undefined) {
       return collection;

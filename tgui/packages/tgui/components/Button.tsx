@@ -16,6 +16,8 @@ import { Tooltip } from './Tooltip';
 const logger = createLogger('Button');
 
 export type ButtonProps = BoxProps & {
+  // when button is selected, any keypress should press the button.
+  readonly captureKeys?: BooleanLike;
   readonly fluid?: BooleanLike;
   readonly icon?: string | BooleanLike;
   readonly iconRotation?: number;
@@ -68,14 +70,14 @@ export const Button = (props: ButtonProps) => {
       + `'onClick' instead and read: `
       + `https://infernojs.org/docs/guides/event-handling`);
   }
-  rest.onClick = e => {
+  rest['onClick'] = e => {
     if (!disabled && onClick) {
       onClick(e);
     }
   };
   // IE8: Use "unselectable" because "user-select" doesn't work.
   if (Byond.IS_LTE_IE8) {
-    rest.unselectable = true;
+    rest['unselectable'] = true;
   }
   let buttonContent = (
     <div

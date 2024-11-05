@@ -1,7 +1,7 @@
 
 // Returns true only if one of the actions unique to reinforcing is done, otherwise false and continuing normal attackby
 /obj/machinery/door/proc/attackby_vr(obj/item/I, mob/living/user, list/params, clickchain_flags, damage_multiplier)
-	if(I.is_material_stack_of(/datum/material/plasteel))
+	if(I.is_material_stack_of(/datum/prototype/material/plasteel))
 		if(heat_resistance > initial(heat_resistance))
 			to_chat(user, "<span class='warning'>\The [src] is already reinforced.</span>")
 			return TRUE

@@ -49,8 +49,8 @@ class FishingMinigame extends Component<
   FishingMinigameProps,
   FishingMinigameState
 > {
-  animation_id: number;
-  last_frame: number;
+  animation_id?: number | undefined;
+  last_frame?: number | undefined;
   reeling: ReelingState = ReelingState.Idle;
   perfect: boolean = true;
   area_height: number = 1000;
@@ -135,7 +135,9 @@ class FishingMinigame extends Component<
   componentWillUnmount() {
     document.removeEventListener('mousedown', this.handle_mousedown);
     document.removeEventListener('mouseup', this.handle_mouseup);
-    window.cancelAnimationFrame(this.animation_id);
+    if (this.animation_id) {
+      window.cancelAnimationFrame(this.animation_id);
+    }
     globalEvents.off('byond/mousedown', this.handle_mousedown);
     globalEvents.off('byond/mouseup', this.handle_mouseup);
   }
