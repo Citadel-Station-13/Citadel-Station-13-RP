@@ -925,6 +925,16 @@
 		return
 	return firemodes[sel_mode]
 
+/obj/item/gun/register_item_actions(mob/user)
+	. = ..()
+	for(var/obj/item/gun_attachment/attachment as anything in attachments)
+		attachment.register_attachment_actions(user)
+
+/obj/item/gun/unregister_item_actions(mob/user)
+	. = ..()
+	for(var/obj/item/gun_attachment/attachment as anything in attachments)
+		attachment.unregister_attachment_actions(user)
+
 //* Ammo *//
 
 /**
@@ -1000,6 +1010,7 @@
 	if(attachment.loc != src)
 		attachment.forceMove(src)
 
+	LAZYADD(attachments, attachment)
 	attachment.attached = src
 	on_attachment_install(attachment)
 	attachment.on_attach(src)
@@ -1039,6 +1050,7 @@
 	attachment.on_detach(src)
 	on_attachment_uninstall(attachment)
 	attachment.attached = null
+	LAZYREMOVE(attachments, attachment)
 	return deleting ? null : attachment.uninstall_product_transform()
 
 /**
@@ -1076,6 +1088,8 @@
 	. = ..()
 	if(length(attachments))
 		.["remove-attachment"] = atom_context_tuple("Remove Attachment", image('icons/screen/radial/actions.dmi', "red-arrow-up"), 0, MOBILITY_CAN_USE)
+	if(safety_state != GUN_NO_SAFETY)
+		.["toggle-safety"] = atom_context_tuple("Toggle Safety", image(src), 0, MOBILITY_CAN_USE, TRUE)
 
 /obj/item/gun/context_act(datum/event_args/actor/e_args, key)
 	. = ..()
@@ -1088,6 +1102,9 @@
 			if(!e_args.performer.Reachability(src) || !(e_args.performer.mobility_flags & MOBILITY_CAN_USE))
 				return TRUE
 			user_uninstall_attachment(attachment, e_args, TRUE)
+			return TRUE
+		if("toggle-safety")
+			toggle_safety(e_args.performer)
 			return TRUE
 
 //* Rendering *//

@@ -143,7 +143,7 @@
 	var/appearance/applying = get_gun_overlay()
 	if(!applying)
 		return
-	attached.add_overlay(applying)
+	attached.add_overlay(applying, TRUE)
 	gun_applied_overlay = applying
 
 /**
@@ -222,7 +222,7 @@
  * * null
  */
 /obj/item/gun_attachment/proc/set_attachment_actions_to(descriptor)
-	var/mob/worn_mob = worn_mob()
+	var/mob/worn_mob = attached.worn_mob()
 
 	if(worn_mob)
 		unregister_attachment_actions(worn_mob)

@@ -2,11 +2,13 @@
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
 /obj/item/gun_attachment/harness
+	abstract_type = /obj/item/gun_attachment/harness
+	icon = 'icons/modules/projectiles/attachments/harness.dmi'
 
 /obj/item/gun_attachment/harness/magnetic
 	name = "magnetic harness"
 	desc = "A fancy harness that will snap a gun back to an attachment point when it's dropped by its wearer."
-	icon = 'icons/modules/projectiles/attachments/harness.dmi'
+	prototype_id = "attachment-magnetic-harness"
 	icon_state = "magnetic"
 	align_x = 15
 	align_x = 16

@@ -10,6 +10,8 @@
  * * We will set our icon_state directly, not gun_state. Do not use gun_state with flashlights.
  */
 /obj/item/gun_attachment/flashlight
+	abstract_type = /obj/item/gun_attachment/flashlight
+	icon = 'icons/modules/projectiles/attachments/flashlight.dmi'
 	light_range = 4.75
 	light_color = "#ffffff"
 
@@ -57,6 +59,7 @@
 /obj/item/gun_attachment/flashlight/rail
 	name = "rail light"
 	icon_state = "raillight"
+	prototype_id = "attachment-rail-light"
 	align_x = 19
 	align_y = 16
 	attachment_slot = GUN_ATTACHMENT_SLOT_RAIL
@@ -68,6 +71,7 @@
 /obj/item/gun_attachment/flashlight/maglight
 	name = "maglight"
 	icon_state = "maglight"
+	prototype_id = "attachment-mag-light"
 	align_x = 11
 	align_y = 3
 	attachment_slot = GUN_ATTACHMENT_SLOT_SIDEBARREL
