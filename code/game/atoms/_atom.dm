@@ -125,7 +125,7 @@
 	/// this list is at /atom level but are only used/implemented on /obj generically; anything else, e.g. walls, should implement manually for efficiency.
 	/// * this variable is a cache variable and is generated from the materials on an entity.
 	/// * this variable is not visible and should not be edited in the map editor.
-	var/tmp/list/datum/material_trait/material_traits
+	var/tmp/list/datum/prototype/material_trait/material_traits
 	/// material trait metadata when [material_traits] is a single trait. null otherwise.
 	/// * this variable is a cache variable and is generated from the materials on an entity.
 	/// * this variable is not visible and should not be edited in the map editor.
@@ -360,7 +360,7 @@
 /*
 	if(custom_materials)
 		var/list/materials_list = list()
-		for(var/datum/material/current_material as anything in custom_materials)
+		for(var/datum/prototype/material/current_material as anything in custom_materials)
 			materials_list += "[current_material.name]"
 		. += "<u>It is made out of [english_list(materials_list)]</u>."
 */

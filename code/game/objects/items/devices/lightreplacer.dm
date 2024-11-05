@@ -71,7 +71,7 @@
 /obj/item/lightreplacer/attackby(obj/item/W, mob/user)
 	if(istype(W, /obj/item/stack/material))
 		var/obj/item/stack/material/G = W
-		if(G.material.type == /datum/material/glass)
+		if(G.material.type == /datum/prototype/material/glass)
 			if(uses >= max_uses)
 				to_chat(user, "<span class='warning'>[src.name] is full.</span>")
 				return
