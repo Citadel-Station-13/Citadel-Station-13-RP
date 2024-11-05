@@ -19,6 +19,10 @@
 	set desc = "Allows user to manually enable drunkenness, stutter, jitter, etc."
 	set src = usr
 
+	if(!IS_CONSCIOUS(src))
+		to_chat(src, "You need to be conscious to do that")
+		return
+
 	var/list/choices = list("Drunkenness", "Stuttering", "Jittering")
 	if(src.slurring >= 10 || src.stuttering >= 10 || src.jitteriness >= 100)
 		var/disable = alert(src, "Stop performing impairment? (Do NOT abuse this)", "Impairments", "Yes", "No")
