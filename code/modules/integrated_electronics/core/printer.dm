@@ -49,7 +49,7 @@
 /* TBI: Requires material containers
 /obj/item/integrated_circuit_printer/Initialize(mapload)
 	. = ..()
-	var/datum/component/material_container/materials = AddComponent(/datum/component/material_container, list(/datum/material/iron), MINERAL_MATERIAL_AMOUNT * 25, TRUE, list(/obj/item/stack, /obj/item/integrated_circuit, /obj/item/electronic_assembly))
+	var/datum/component/material_container/materials = AddComponent(/datum/component/material_container, list(/datum/prototype/material/iron), MINERAL_MATERIAL_AMOUNT * 25, TRUE, list(/obj/item/stack, /obj/item/integrated_circuit, /obj/item/electronic_assembly))
 	materials.precise_insertion = TRUE
 */
 /obj/item/integrated_circuit_printer/proc/print_program(mob/user)
@@ -296,7 +296,8 @@
 				program = null
 				return
 			if(istext(new_input))
-				to_chat(usr, SPAN_NOTICE("[new_input] load blueprint pressed"))
+				to_chat(usr, SPAN_NOTICE("[new_input]"))
+				to_chat(usr, SPAN_NOTICE("Load blueprint pressed"))
 			log_game("[usr] cloned circuit [new_input]")
 			var/validation = SScircuit.validate_electronic_assembly(new_input)
 			// Validation error codes are returned as text.

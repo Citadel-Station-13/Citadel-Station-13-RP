@@ -19,7 +19,6 @@
 	return INITIALIZE_HINT_LATELOAD
 
 /obj/item/bot_assembly/medibot/LateInitialize()
-	. = ..()
 	update_appearance()
 
 /obj/item/bot_assembly/medibot/update_overlays()

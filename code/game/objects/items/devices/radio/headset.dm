@@ -92,7 +92,7 @@
 
 /obj/item/radio/headset/raider/Initialize(mapload)
 	. = ..()
-	set_frequency(RAID_FREQ)
+	set_frequency(FREQ_RAIDER)
 
 /obj/item/radio/headset/trader
 	name = "trade headset"
@@ -103,7 +103,7 @@
 
 /obj/item/radio/headset/trader/Initialize(mapload)
 	. = ..()
-	set_frequency(TRADE_FREQ)
+	set_frequency(FREQ_TRADER)
 
 /obj/item/radio/headset/binary
 	origin_tech = list(TECH_ILLEGAL = 3)

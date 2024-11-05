@@ -1,4 +1,4 @@
-/datum/material/steel
+/datum/prototype/material/steel
 	id = MAT_STEEL
 	name = MAT_STEEL
 	stack_type = /obj/item/stack/material/steel
@@ -23,7 +23,7 @@
 	absorption = MATERIAL_RESISTANCE_MODERATE
 	nullification = MATERIAL_RESISTANCE_NONE
 
-/datum/material/steel/generate_recipes()
+/datum/prototype/material/steel/generate_recipes()
 	. = ..()
 	. += create_stack_recipe_datum(
 		name = "dark office chair",
@@ -265,7 +265,7 @@
 		cost = 4,
 	)
 
-/datum/material/steel/hull
+/datum/prototype/material/steel/hull
 	id = "steel_hull"
 	name = MAT_STEELHULL
 	stack_type = /obj/item/stack/material/steel/hull
@@ -273,10 +273,10 @@
 	explosion_resistance = 10
 	icon_colour = "#666677"
 
-/datum/material/steel/hull/place_sheet(var/turf/target) //Deconstructed into normal steel sheets.
+/datum/prototype/material/steel/hull/place_sheet(var/turf/target) //Deconstructed into normal steel sheets.
 	new /obj/item/stack/material/steel(target)
 
-/datum/material/steel/holographic
+/datum/prototype/material/steel/holographic
 	id = "steel_holo"
 	name = "holo" + MAT_STEEL
 	display_name = "steel"

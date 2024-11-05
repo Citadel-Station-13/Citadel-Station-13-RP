@@ -30,7 +30,7 @@
 
 /obj/machinery/microwave/Initialize(mapload)
 	. = ..()
-	reagents = new/datum/reagents(100)
+	reagents = new/datum/reagent_holder(100)
 	reagents.my_atom = src
 	if (!available_recipes)
 		available_recipes = new

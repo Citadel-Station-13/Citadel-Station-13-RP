@@ -37498,9 +37498,6 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/tether/surfacebase/topairlock)
-"wix" = (
-/turf/simulated/wall/shull,
-/area/shuttle/tourbus/general)
 "wiD" = (
 /obj/machinery/power/apc/south_mount,
 /obj/structure/cable/green,
@@ -66144,7 +66141,7 @@ yhZ
 ndm
 oos
 kFx
-wix
+kFx
 dUy
 sDa
 fGZ
@@ -67308,7 +67305,7 @@ tnx
 fax
 kFx
 kFx
-wix
+kFx
 dUy
 sDa
 oVB

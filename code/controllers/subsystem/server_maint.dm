@@ -96,3 +96,7 @@ SUBSYSTEM_DEF(server_maint)
 		world.update_hub_visibility(TRUE)
 
 #undef PING_BUFFER_TIME
+
+// todo: SShub_manager
+/datum/controller/subsystem/server_maint/proc/queue_hub_update()
+	addtimer(CALLBACK(src, PROC_REF(UpdateHubStatus)), 0)

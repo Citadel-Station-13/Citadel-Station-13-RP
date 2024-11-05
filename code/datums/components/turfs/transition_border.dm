@@ -37,7 +37,7 @@
 
 /datum/component/transition_border/RegisterWithParent()
 	. = ..()
-	RegisterSignal(parent, COMSIG_ATOM_ENTERED, .proc/transit)
+	RegisterSignal(parent, COMSIG_ATOM_ENTERED, PROC_REF(transit))
 	rebuild()
 
 /datum/component/transition_border/UnregisterFromParent()
