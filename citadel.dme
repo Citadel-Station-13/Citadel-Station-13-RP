@@ -399,6 +399,7 @@
 #include "code\__HELPERS\unsorted.dm"
 #include "code\__HELPERS\vector.dm"
 #include "code\__HELPERS\verbs.dm"
+#include "code\__HELPERS\visual_effects.dm"
 #include "code\__HELPERS\animations\attack.dm"
 #include "code\__HELPERS\datastructs\bodytypes.dm"
 #include "code\__HELPERS\datastructs\filters.dm"
