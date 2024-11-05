@@ -11,7 +11,7 @@
 	integrity_failure = 100
 	w_class = WEIGHT_CLASS_HUGE
 	materials_base = list(
-		/datum/material/steel::id = 5 * /datum/material/steel::sheet_amount,
+		/datum/prototype/material/steel::id = 5 * /datum/prototype/material/steel::sheet_amount,
 	)
 	worth_intrinsic = 50
 

@@ -88,7 +88,7 @@
 					var/obj/item/stack/cable_coil/A = new /obj/item/stack/cable_coil( loc )
 					A.amount = 5
 
-			if(P.is_material_stack_of(/datum/material/glass/reinforced))
+			if(P.is_material_stack_of(/datum/prototype/material/glass/reinforced))
 				var/obj/item/stack/material/RG = P
 				if (RG.get_amount() < 2)
 					to_chat(user, "<span class='warning'>You need two sheets of glass to put in the glass panel.</span>")

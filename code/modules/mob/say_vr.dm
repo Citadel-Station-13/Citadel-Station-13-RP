@@ -203,7 +203,7 @@
 /proc/sanitize_or_reflect(message,user)
 	//Way too long to send
 	if(length_char(message) > MAX_HUGE_MESSAGE_LEN)
-		fail_to_chat(user)
+		fail_to_chat(user, null)
 		return
 
 	message = sanitize(message, max_length = MAX_HUGE_MESSAGE_LEN)

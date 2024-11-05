@@ -27,7 +27,7 @@
 	/// finished base state
 	var/sculpture_base_state = "base"
 	/// material ref
-	var/datum/material/material = /datum/material/steel
+	var/datum/prototype/material/material = /datum/prototype/material/steel
 
 	icon_x_dimension = 32
 	icon_y_dimension = 32
@@ -80,7 +80,7 @@
 
 /obj/structure/sculpting_block/Initialize(mapload, material)
 	// todo: materials system
-	src.material = SSmaterials.resolve_material(material || src.material)
+	src.material = RSmaterials.fetch(material || src.material)
 	// todo: if it autoinit'd, don't do this
 	reset_sculpting()
 	return ..()
