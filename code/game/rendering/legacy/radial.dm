@@ -255,7 +255,7 @@ GLOBAL_LIST_EMPTY(radial_menus)
 				//! end
 				choices_icons[id] = I
 		else
-			choice_icons[id] = extract_image(E)
+			choices_icons[id] = extract_image(E)
 	setup_menu(use_tooltips)
 
 /datum/radial_menu/proc/extract_image(E)
