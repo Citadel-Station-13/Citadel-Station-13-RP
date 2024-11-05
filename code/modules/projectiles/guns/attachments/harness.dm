@@ -12,6 +12,7 @@
 	icon_state = "magnetic"
 	align_x = 15
 	align_x = 16
+	attachment_slot = GUN_ATTACHMENT_SLOT_RAIL
 
 	/// active?
 	var/active = FALSE
@@ -79,16 +80,17 @@
 /obj/item/gun_attachment/harness/magnetic/proc/set_active(state, datum/event_args/actor/actor, no_sound, no_message)
 	if(state == active)
 		return
+	active = state
 	var/datum/action/potential_action = istype(attachment_actions, /datum/action) ? attachment_actions : null
 	if(active)
 		potential_action?.set_button_active(TRUE)
 		if(!no_sound)
 			playsound(src, activate_sound, 15, TRUE, -4)
 		if(!no_message)
-			actor.chat_feedback(SPAN_NOTICE("You activate \the [src]."), target = attached)
+			actor?.chat_feedback(SPAN_NOTICE("You activate \the [src]."), target = attached)
 	else
 		potential_action?.set_button_active(FALSE)
 		if(!no_sound)
 			playsound(src, deactivate_sound, 15, TRUE, -4)
 		if(!no_message)
-			actor.chat_feedback(SPAN_NOTICE("You deactivate \the [src]."), target = attached)
+			actor?.chat_feedback(SPAN_NOTICE("You deactivate \the [src]."), target = attached)

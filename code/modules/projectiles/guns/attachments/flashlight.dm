@@ -61,7 +61,7 @@
 	icon_state = "raillight"
 	prototype_id = "attachment-rail-light"
 	align_x = 19
-	align_y = 16
+	align_y = 17
 	attachment_slot = GUN_ATTACHMENT_SLOT_RAIL
 
 // todo: make this directional at some point

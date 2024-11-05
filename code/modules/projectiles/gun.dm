@@ -907,12 +907,6 @@
 	if(usr == loc)
 		toggle_safety(usr)
 
-/obj/item/gun/AltClick(mob/user)
-	if(loc == user)
-		toggle_safety(user)
-		return TRUE
-	return ..()
-
 /**
  * returns TRUE/FALSE based on if we have safeties on
  */
@@ -953,6 +947,13 @@
  * Check if we can attach an attachment
  */
 /obj/item/gun/proc/can_install_attachment(obj/item/gun_attachment/attachment, datum/event_args/actor/actor, silent)
+	if(!attachment.attachment_slot || !attachment_alignment[attachment.attachment_slot])
+		if(!silent)
+			actor?.chat_feedback(
+				SPAN_WARNING("[attachment] won't fit anywhere on [src]!"),
+				target = src,
+			)
+		return FALSE
 	for(var/obj/item/gun_attachment/existing as anything in attachments)
 		if(existing.attachment_slot == attachment.attachment_slot)
 			if(!silent)
