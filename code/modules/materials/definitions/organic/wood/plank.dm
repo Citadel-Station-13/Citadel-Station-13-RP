@@ -1,4 +1,4 @@
-/datum/material/wood_plank
+/datum/prototype/material/wood_plank
 	id = "wood"
 	name = MAT_WOOD
 	stack_type = /obj/item/stack/material/wood
@@ -35,7 +35,7 @@
 
 	worth = 2.5
 
-/datum/material/wood_plank/generate_recipes()
+/datum/prototype/material/wood_plank/generate_recipes()
 	. = ..()
 	. += create_stack_recipe_datum(
 		name = "coffin",
@@ -54,7 +54,7 @@
 	. += new /datum/stack_recipe/pew/left
 	. += new /datum/stack_recipe/pew/right
 
-/datum/material/wood_plank/special_recipes()
+/datum/prototype/material/wood_plank/special_recipes()
 	var/list/recipes = list()
 	recipes += create_stack_recipe_datum(
 		name = "beehive assembly",
@@ -167,24 +167,24 @@
 	recipes += create_stack_recipe_datum(category = "fences", name = "gate", product = /obj/structure/fence/door/wooden, cost = 3)
 	return recipes
 
-/datum/material/wood_plank/holographic
+/datum/prototype/material/wood_plank/holographic
 	id = "wood_holo"
 	name = "holowood"
 	display_name = "wood"
 	stack_type = null
 	shard_type = SHARD_NONE
 
-/datum/material/wood_plank/holographic/special_recipes()
+/datum/prototype/material/wood_plank/holographic/special_recipes()
 	return list()
 
-/datum/material/wood_plank/sif
+/datum/prototype/material/wood_plank/sif
 	id = "wood_sif"
 	name = MAT_SIFWOOD
 	stack_type = /obj/item/stack/material/wood/sif
 	icon_colour = "#0099cc" // Cyan-ish
 	stack_origin_tech = list(TECH_MATERIAL = 2, TECH_BIO = 2) // Alien wood would presumably be more interesting to the analyzer.
 
-/datum/material/wood_plank/sif/special_recipes()
+/datum/prototype/material/wood_plank/sif/special_recipes()
 	. = ..()
 	. += create_stack_recipe_datum(
 		name = "alien wood floor tile",
@@ -197,7 +197,7 @@
 		if(recipe.name == "wood floor tile")
 			. -= recipe
 
-/datum/material/wood_plank/hardwood
+/datum/prototype/material/wood_plank/hardwood
 	id = "wood_hardwood"
 	name = MAT_HARDWOOD
 	stack_type = /obj/item/stack/material/wood/hard
@@ -207,7 +207,7 @@
 	icon_reinf_directionals = TRUE
 	table_icon_base = "stone"
 
-/datum/material/wood_plank/hardwood/special_recipes()
+/datum/prototype/material/wood_plank/hardwood/special_recipes()
 	var/list/recipes = list()
 	recipes += create_stack_recipe_datum(
 		name = "crossbow frame",
@@ -241,7 +241,7 @@
 	)
 	return recipes
 
-/datum/material/wood_plank/ironwood
+/datum/prototype/material/wood_plank/ironwood
 	id = "ironwood"
 	name = MAT_IRONWOOD
 	icon_colour = "#666666"

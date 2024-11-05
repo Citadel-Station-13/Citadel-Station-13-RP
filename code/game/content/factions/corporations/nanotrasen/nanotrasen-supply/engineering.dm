@@ -129,7 +129,7 @@
 	container_name = "Tritium crate"
 	container_type = /obj/structure/closet/crate/engineering
 	contains = list(
-		/datum/material/hydrogen/tritium = 50,
+		/datum/prototype/material/hydrogen/tritium = 50,
 	)
 
 /datum/supply_pack/nanotrasen/engineering/thermoregulator
@@ -143,7 +143,7 @@
 /datum/supply_pack/nanotrasen/engineering/algae
 	name = "Algae Sheets (10)"
 	contains = list(
-		/datum/material/algae = 10,
+		/datum/prototype/material/algae = 10,
 	)
 	container_type = /obj/structure/closet/crate
 	container_name = "algae sheets crate"

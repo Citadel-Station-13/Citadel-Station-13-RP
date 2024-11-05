@@ -95,7 +95,7 @@
 
 /obj/hitsound_melee(obj/item/I)
 	if(!isnull(material_primary))
-		var/datum/material/primary = get_primary_material()
+		var/datum/prototype/material/primary = get_primary_material()
 		. = I.damage_type == DAMAGE_TYPE_BURN? primary.sound_melee_burn : primary.sound_melee_brute
 		if(!isnull(.))
 			return
@@ -103,7 +103,7 @@
 
 /obj/hitsound_throwhit(obj/item/I)
 	if(!isnull(material_primary))
-		var/datum/material/primary = get_primary_material()
+		var/datum/prototype/material/primary = get_primary_material()
 		. = I.damage_type == DAMAGE_TYPE_BURN? primary.sound_melee_burn : primary.sound_melee_brute
 		if(!isnull(.))
 			return
@@ -111,7 +111,7 @@
 
 /obj/hitsound_unarmed(mob/M, datum/unarmed_attack/style)
 	if(!isnull(material_primary))
-		var/datum/material/primary = get_primary_material()
+		var/datum/prototype/material/primary = get_primary_material()
 		. = style.damage_type == DAMAGE_TYPE_BURN? primary.sound_melee_burn : primary.sound_melee_brute
 		if(!isnull(.))
 			return
