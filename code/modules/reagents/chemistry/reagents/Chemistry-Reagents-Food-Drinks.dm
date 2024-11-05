@@ -1,64 +1,5 @@
 /* Food */
 
-/datum/reagent/nutriment
-	name = "Nutriment"
-	id = "nutriment"
-	description = "All the vitamins, minerals, and carbohydrates the body needs in pure form."
-	taste_mult = 4
-	reagent_state = REAGENT_SOLID
-	metabolism = REM * 4
-	ingest_met = REM * 4
-	var/nutriment_factor = 30 // Per unit
-	var/hydration_factor = 0 //Per unit
-	var/injectable = 0
-	color = "#664330"
-
-// todo: review data procs
-
-/datum/reagent/nutriment/mix_data(datum/reagent_holder/holder, list/current_data, current_amount, list/new_data, new_amount)
-
-	if(!islist(new_data) || !length(new_data))
-		return
-
-	LAZYINITLIST(data)
-
-	//add the new taste data
-	for(var/taste in new_data)
-		if(taste in data)
-			data[taste] += new_data[taste]
-		else
-			data[taste] = new_data[taste]
-
-	//cull all tastes below 10% of total
-	var/totalFlavor = 0
-	for(var/taste in data)
-		totalFlavor += data[taste]
-	if(totalFlavor) //Let's not divide by zero for things w/o taste
-		for(var/taste in data)
-			if(data[taste]/totalFlavor < 0.1)
-				data -= taste
-
-/datum/reagent/nutriment/affect_blood(mob/living/carbon/M, alien, removed)
-	if(!injectable && alien != IS_SLIME && alien != IS_CHIMERA)
-		M.adjustToxLoss(0.1 * removed)
-		return
-	affect_ingest(M, alien, removed)
-
-/datum/reagent/nutriment/affect_ingest(mob/living/carbon/M, alien, removed)
-	switch(alien)
-		if(IS_DIONA)
-			return
-		if(IS_UNATHI)
-			removed *= 0.5
-		if(IS_CHIMERA)
-			removed *= 0.25
-			if(issmall(M))
-				removed *= 2 // Small bodymass, more effect from lower volume.
-	M.heal_organ_damage(0.5 * removed, 0)
-	if(!M.species.is_vampire) // If this is set to 0, they don't get nutrition from food.
-		M.nutrition += nutriment_factor * removed // For hunger and fatness
-	M.adjust_hydration(hydration_factor * removed)
-	M.add_chemical_effect(CE_BLOODRESTORE, 4 * removed)
 
 /datum/reagent/nutriment/glucose
 	name = "Glucose"
@@ -274,20 +215,12 @@
 	nutriment_factor = 15
 	color = "#4F3500"
 
-/datum/reagent/nutriment/peanutoil/touch_turf(turf/simulated/T)
-	if(!istype(T))
-		return
-
-	var/hotspot = (locate(/atom/movable/fire) in T)
-	if(hotspot && !istype(T, /turf/space))
-		var/datum/gas_mixture/lowertemp = T.remove_cell_volume()
-		lowertemp.temperature = max(min(lowertemp.temperature-2000, lowertemp.temperature / 2), 0)
-		lowertemp.react()
-		T.assume_air(lowertemp)
-		qdel(hotspot)
-
-	if(volume >= 5)
-		T.wet_floor()
+// todo: reagent effects
+/datum/reagent/nutriment/peanutoil/apply_to_turf(turf/target, remaining, allocated, data)
+	if(allocate >= 5)
+		target.wet_floor()
+		return 5
+	return 0
 
 /datum/reagent/nutriment/peanutbutter
 	name = "Peanut Butter"

@@ -281,7 +281,7 @@
 	for(var/M in R.parts)
 		partlist[M] = R.parts[M]
 	for(var/A in R.parts)
-		else if(istype(A, /obj/item/stack))
+		if(istype(A, /obj/item/stack))
 			var/obj/item/stack/ST = locate(A) in Deletion
 			if(ST.amount > partlist[A])
 				ST.amount = partlist[A]

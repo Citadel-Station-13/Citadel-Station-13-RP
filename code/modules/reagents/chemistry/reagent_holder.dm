@@ -155,24 +155,6 @@
 
 	return amount
 
-
-	#warn this snowflake blood shit needs to be moved to blood file
-	// for(var/datum/reagent/current in reagent_list)
-	// 	if(current.id == id)
-	// 		if(current.id == "blood")
-	// 			if(data_initializer && !isnull(data_initializer["species"]) && !isnull(current.data["species"]) && data_initializer["species"] != current.data["species"])	// Species bloodtypes are already incompatible, this just stops it from mixing into the one already in a container.
-	// 				continue
-
-	// 		current.volume += amount
-	// 		if(!isnull(data_initializer)) // For all we know, it could be zero or empty string and meaningful
-	// 			current.mix_data(current.data, current.volume, data_initializer, amount, src)
-	// 		update_total()
-	// 		if(!skip_reactions)
-	// 			try_reactions_for_reagent_change(id)
-	// 		if(my_atom)
-	// 			my_atom.on_reagent_change()
-	// 		return amount
-
 /datum/reagent_holder/proc/isolate_reagent(reagent)
 	if(ispath(reagent))
 		var/datum/reagent/path = reagent
@@ -354,48 +336,6 @@
 
 	return F.trans_to(target, amount) // Let this proc check the atom's type
 
-// When applying reagents to an atom externally, touch() is called to trigger any on-touch effects of the reagent.
-// This does not handle transferring reagents to things.
-// For example, splashing someone with water will get them wet and extinguish them if they are on fire,
-// even if they are wearing an impermeable suit that prevents the reagents from contacting the skin.
-// /datum/reagent_holder/proc/touch(atom/target, amount)
-// 	if(ismob(target))
-// 		touch_mob(target, amount)
-// 	if(isturf(target))
-// 		touch_turf(target, amount)
-// 	if(isobj(target))
-// 		touch_obj(target, amount)
-// 	return
-
-// /datum/reagent_holder/proc/touch_mob(mob/target)
-// 	if(!target || !istype(target))
-// 		return
-
-// 	for(var/id in reagent_volumes)
-// 		var/volume = reagent_volumes
-// 	for(var/datum/reagent/current in reagent_list)
-// 		current.touch_mob(target, current.volume)
-
-// 	update_total()
-
-// /datum/reagent_holder/proc/touch_turf(turf/target, amount)
-// 	if(!target || !istype(target))
-// 		return
-
-// 	for(var/datum/reagent/current in reagent_list)
-// 		current.touch_turf(target, amount)
-
-// 	update_total()
-
-// /datum/reagent_holder/proc/touch_obj(obj/target, amount)
-// 	if(!target || !istype(target))
-// 		return
-
-// 	for(var/datum/reagent/current in reagent_list)
-// 		current.touch_obj(target, amount)
-
-// 	update_total()
-
 // Attempts to place a reagent on the mob's skin.
 // Reagents are not guaranteed to transfer to the target.
 // Do not call this directly, call trans_to() instead.
@@ -473,7 +413,8 @@
 	for (var/turf/T in turfs)
 		var/datum/reagent_holder/TR = new /datum/reagent_holder(turfportion)
 		R.trans_to_holder(TR, turfportion, 1, 0)
-		TR.splash_turf(T)
+		#warn uh
+		// TR.splash_turf(T)
 	qdel(R)
 
 //Spreads the contents of this reagent holder all over the target turf, dividing among things in it.
@@ -505,6 +446,28 @@
 	trans_to(T, total_volume, multiplier, copy)
 	if (total_volume <= 0)
 		qdel(src)
+
+//* Application *//
+
+/**
+ * @params
+ * * target - what to apply to
+ * * ratio - how much should be applied
+ * * splash_through - allow splashing through to stuff near / behind / below the target
+ * * destroy_unused - destroy unused reagents
+ */
+/datum/reagent_holder/proc/splash_object(obj/target, ratio, allow_splash, destroy_unused)
+	#warn impl
+
+/**
+ * @params
+ * * target - what to apply to
+ * * ratio - how much should be applied
+ * * hit_contents - splash everything on the turf
+ * * destroy_unused - destroy unused reagents
+ */
+/datum/reagent_holder/proc/splash_turf(turf/target, ratio, hit_contents, destroy_unused)
+	#warn impl
 
 //* Queries *//
 

@@ -21,9 +21,8 @@
 	var/base_print_delay = 100
 	///Is the bioprinter printing
 	var/printing = FALSE
-	///Blood sample for DNA hashing.
-	#warn fuck; this is currently direct reagent data for blood. this is bad!
-	var/loaded_dna
+	/// Blood sample for DNA hashing.
+	var/list/datum/blood_data/loaded_blood_dna
 	///May cause rejection, or the printing of some alien limb instead!
 	var/malfunctioning = FALSE
 	///Can it print more 'complex' organs?
@@ -215,7 +214,7 @@
 		visible_message(SPAN_INFO("\The [src] displays a warning: 'Not enough biomass. [biomass] stored and [biomass_needed] needed.'"))
 		return FALSE
 
-	if(!loaded_dna || !loaded_dna["donor"])
+	if(!length(loaded_blood_dna) || !loaded_blood_dna[1]?.legacy_donor)
 		visible_message(SPAN_INFO("\The [src] displays a warning: 'No DNA saved. Insert a blood sample.'"))
 		return FALSE
 	return TRUE
@@ -224,7 +223,7 @@
 	var/new_organ = choice
 	var/obj/item/organ/O = new new_organ(get_turf(src))
 	O.status |= ORGAN_CUT_AWAY
-	var/mob/living/carbon/human/C = loaded_dna["donor"]
+	var/mob/living/carbon/human/C = loaded_blood_dna[1].legacy_donor
 	O.set_dna(C.dna)
 	O.species = C.species
 
@@ -294,10 +293,8 @@
 	// DNA sample from syringe.
 	if(istype(W,/obj/item/reagent_containers/syringe))	//TODO: Make this actually empty the syringe
 		var/obj/item/reagent_containers/syringe/S = W
-		var/datum/reagent/blood/injected = locate() in S.reagents.reagent_list //Grab some blood
-		if(injected && injected.data)
-			loaded_dna = injected.data
-			S.reagents.remove_reagent("blood", injected.volume)
+		if((loaded_blood_dna = S.reagents?.reagent_datas[/datum/reagent/blood::id]?.Copy()))
+			S.reagents.del_reagent(/datum/reagent/blood)
 			to_chat(user, SPAN_INFO("You scan the blood sample into the bioprinter."))
 		return
 	else if(istype(W,/obj/item/reagent_containers/glass))

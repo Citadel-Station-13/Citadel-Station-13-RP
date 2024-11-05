@@ -794,7 +794,7 @@
 		// 		reagents = new()
 		// 	reagents.reagent_list.Add(A)
 		// 	reagents.conditional_update()
-		else if(ismovable(A))
+		if(ismovable(A))
 			var/atom/movable/M = A
 			M.forceMove(src)
 

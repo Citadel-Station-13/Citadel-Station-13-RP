@@ -1,0 +1,72 @@
+/**
+ * datastruct for nutriment data.
+ */
+/datum/nutriment_data
+	/// taste list as "description" = amount
+	///
+	/// * always sorted from largest to least
+	var/list/taste
+	/// total taste amount used for blending
+	var/taste_total = 0
+
+/datum/nutriment_data/proc/set_taste(description, amount)
+	#warn impl
+
+/datum/nutriment_data/proc/add_taste(description, amount, skip_culling)
+	#warn impl ; cull if needed
+
+	if(!skip_culling)
+		cull_taste()
+
+/datum/nutriment_data/proc/remove_taste(description, amount)
+	#warn impl
+
+/datum/nutriment_data/proc/cull_taste()
+	// this should be a define (10 being max) but idrc lol
+	taste?.len = min(length(taste), 10)
+
+/datum/nutriment_data/proc/merge_from(datum/nutriment_data/source)
+	for(var/description in source.taste)
+		var/power = source.taste[description]
+		add_taste(description, power, TRUE)
+	cull_taste()
+
+/datum/reagent/nutriment
+	name = "Nutriment"
+	id = "nutriment"
+	holds_data = TRUE
+	description = "All the vitamins, minerals, and carbohydrates the body needs in pure form."
+	taste_mult = 4
+	reagent_state = REAGENT_SOLID
+	metabolism = REM * 4
+	ingest_met = REM * 4
+	var/nutriment_factor = 30 // Per unit
+	var/hydration_factor = 0 //Per unit
+	var/injectable = 0
+	color = "#664330"
+
+/datum/reagent/nutriment/mix_data(datum/nutriment_data/old_data, old_volume, datum/nutriment_data/new_data, new_volume, datum/reagent_holder/holder)
+	old_data.merge_from(new_data)
+	return old_data
+
+/datum/reagent/nutriment/affect_blood(mob/living/carbon/M, alien, removed)
+	if(!injectable && alien != IS_SLIME && alien != IS_CHIMERA)
+		M.adjustToxLoss(0.1 * removed)
+		return
+	affect_ingest(M, alien, removed)
+
+/datum/reagent/nutriment/affect_ingest(mob/living/carbon/M, alien, removed)
+	switch(alien)
+		if(IS_DIONA)
+			return
+		if(IS_UNATHI)
+			removed *= 0.5
+		if(IS_CHIMERA)
+			removed *= 0.25
+			if(issmall(M))
+				removed *= 2 // Small bodymass, more effect from lower volume.
+	M.heal_organ_damage(0.5 * removed, 0)
+	if(!M.species.is_vampire) // If this is set to 0, they don't get nutrition from food.
+		M.nutrition += nutriment_factor * removed // For hunger and fatness
+	M.adjust_hydration(hydration_factor * removed)
+	M.add_chemical_effect(CE_BLOODRESTORE, 4 * removed)

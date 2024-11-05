@@ -19,6 +19,24 @@
 	var/legacy_donor
 	//! END
 
+/datum/blood_data/clone(include_contents)
+	var/datum/blood_data/copy = new /datum/blood_data
+	copy.species_id = species_id
+	copy.color = color
+	if(legacy_viruses)
+		copy.legacy_viruses = legacy_viruses
+	if(legacy_virus2)
+		copy.legacy_virus2 = legacy_virus2
+	if(legacy_blood_dna)
+		copy.legacy_blood_dna = legacy_blood_dna
+	if(legacy_blood_type)
+		copy.legacy_blood_type = legacy_blood_type
+	if(legacy_trace_chem)
+		copy.legacy_trace_chem = legacy_trace_chem
+	if(legacy_resistances)
+		copy.legacy_resistances = legacy_resistances
+	if(legacy_donor)
+		copy.legacy_donor = legacy_donor
 
 /datum/blood_data/reagent
 	/// % of the reagent this is
@@ -39,17 +57,6 @@
  * )
  */
 /datum/reagent/blood
-	holds_data = TRUE
-	#warn nuke this
-	data = new/list("donor" = null,
-		"viruses" = null,
-		"species" = SPECIES_HUMAN,
-		"blood_DNA" = null,
-		"blood_type" = null,
-		"blood_colour" = "#A10808",
-		"resistances" = null,
-		"trace_chem" = null,
-		"antibodies" = list())
 	name = "Blood"
 	id = "blood"
 	taste_description = "iron"
@@ -58,25 +65,22 @@
 	metabolism = REM * 5
 	mrate_static = TRUE
 	affects_dead = 1 //so you can pump blood into someone before defibbing them
-	color = "#C80000"
+	color = "#A80000"
+	holds_data = TRUE
 	var/volume_mod = 1	// So if you add different subtypes of blood, you can affect how much vessel blood each unit of reagent adds
 	blood_content = 4 //How effective this is for vampires.
 
 	glass_name = "tomato juice"
 	glass_desc = "Are you sure this is tomato juice?"
 
-/datum/reagent/blood/initialize_data(newdata)
-	..()
-	if(data && data["blood_colour"])
-		color = data["blood_colour"]
-	return
+/datum/reagent/blood/make_copy_data_initializer(list/datum/blood_data/data)
+	. = list()
+	for(var/datum/blood_data/blood_data as anything in data)
+		. += blood_data.clone()
 
-/datum/reagent/blood/get_data() // Just in case you have a reagent that handles data differently.
-	var/t = data.Copy()
-	if(t["virus2"])
-		var/list/v = t["virus2"]
-		t["virus2"] = v.Copy()
-	return t
+/datum/reagent/blood/mix_data(list/datum/blood_data/old_data, old_volume, list/datum/blood_data/new_data, new_volume, datum/reagent_holder/holder)
+	. = ..()
+	#warn impl ; hard limit of 10 blood instances
 
 /datum/reagent/blood/touch_turf(turf/simulated/T)
 	if(!istype(T) || volume < 3)

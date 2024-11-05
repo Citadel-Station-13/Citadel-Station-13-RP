@@ -99,20 +99,19 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 	/// forced sort ordering in its category - falls back to name otherwise.
 	var/wiki_sort = 0
 
-/datum/reagent/proc/remove_self(var/amount) // Shortcut
-	if(holder)
-		holder.remove_reagent(id, amount)
-
 /// This doesn't apply to skin contact - this is for, e.g. extinguishers and sprays. The difference is that reagent is not directly on the mob's skin - it might just be on their clothing.
 /datum/reagent/proc/touch_mob(mob/M, amount)
+	SHOULD_NOT_OVERRIDE(TRUE)
 	return
 
 /// Acid melting, cleaner cleaning, etc
 /datum/reagent/proc/touch_obj(obj/O, amount)
+	SHOULD_NOT_OVERRIDE(TRUE)
 	return
 
 /// Cleaner cleaning, lube lubbing, etc, all go here
 /datum/reagent/proc/touch_turf(turf/T, amount)
+	SHOULD_NOT_OVERRIDE(TRUE)
 	return
 
 /// Currently, on_mob_life is called on carbons. Any interaction with non-carbon mobs (lube) will need to be done in touch_mob.
@@ -269,17 +268,6 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 	holder = null
 	. = ..()
 
-/* DEPRECATED - TODO: REMOVE EVERYWHERE */
-
-/datum/reagent/proc/reaction_turf(var/turf/target, amt)
-	touch_turf(target, amt)
-
-/datum/reagent/proc/reaction_obj(var/obj/target, amt)
-	touch_obj(target, amt)
-
-/datum/reagent/proc/reaction_mob(var/mob/target, amt)
-	touch_mob(target, amt)
-
 //* Data *//
 
 /**
@@ -328,46 +316,116 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 		"alcoholStrength" = null,
 	)
 
-//* Holder - Application
+//* Holder - Application *//
 
 /**
- * called when we first get applied to a mob
+ * Called when we're sprayed / splashed onto an obj
  *
  * @params
- * * target - target mob
- * * holder - the holder on the target mob
- * * method - an enum of how we're applied from [code/__DEFINES/chemistry.dm]
- * * amount - how much is being applied
- * * data - data. not necessarily a list, but casted as one. this is before mix_data is called.
+ * * target - turf
+ * * remaining - how much is being applied / is remaining / is in the container right now
+ * * allocated - how much is supposed to be hitting the turf (useful for sprays)
+ *               this will never be over remaining.
+ * * spread_between - unlike turfs, there's potentially a lot of objects.
+ *                    if we're splashed onto a turf, this is the length
+ *                    of all the things we're being splashed into.
+ * * data - our reagent data, if any
  *
- * @return amount to inject into the mob side holder. defaults to amount. this can be overriden by the mob / transfer procs.
+ * @return amount used, if any
  */
-// todo: implement this proc, replace reaction mob and similar with it.
-// /datum/reagent/proc/apply_to_mob(mob/target, datum/reagent_holder/holder, amount, list/data)
-// 	return amount
+/datum/reagent/proc/splashed_onto_obj(obj/target, remaining, allocated, data)
+	#warn how to deal with this
+	return 0
 
 /**
- * called when we first get sprayed/splashed on a non-mob
- *
- * not called if we're transferred into a holder on the obj
+ * Called when we're sprayed / splashed onto a turf
  *
  * @params
- * * target - the target.
- * * amount - how much is being applied
- * * data - data. not necessarily a list, but casted as one. this is before mix_data is caled.
+ * * target - turf
+ * * remaining - how much is being applied / is remaining / is in the container right now
+ * * allocated - how much is supposed to be hitting the turf (useful for sprays)
+ *               this will never be over remaining.
+ * * data - our reagent data, if any
+ *
+ * @return amount used, if any
  */
-// todo: implement this proc, replace touch_obj/reaction_obj and similar with it.
-// /datum/reagent/proc/apply_to_obj(obj/target, amount, list/data)
+/datum/reagent/proc/splashed_onto_turf(turf/target, remaining, allocated, data)
+	#warn how to deal with this
+	return 0
 
 /**
- * called when we first get sprayed/splashed on a turf
- *
- * not called if we're transferred into a holder on the turf, somehow
+ * Called when we're splashed onto a carbon mob.
  *
  * @params
- * * target - the target.
- * * amount - how much is being applied
- * * data - data. not necessarily a list, but casted as one. this is before mix_data is caled.
+ * * target - the mob
+ * * zone - the body zone, if it exists.
+ *          this is used if we don't have a bodypart specified.
+ * * limb - the external organ splashed onto.
+ * * remaining - how much is left in the thing being splashed.
+ * * allocated - how much is supposed to be hitting the target limb (useful for sprays).
+ *               this will never be over remaining.
+ * * data - our reagent data, if any
+ *
+ * @return amount used, if any
  */
-// todo: implement this proc, replace touch_turf/reaction_turf and similar with it.
-// /datum/reagent/proc/apply_to_turf(turf/target, amount, list/data)
+/datum/reagent/proc/splashed_onto_carbon(mob/living/carbon/target, zone, obj/item/organ/external/limb, remaining, allocated, data)
+	return splashed_onto_living(target, zone, limb, remaining, allocated, data)
+
+/**
+ * Called when we're splashed onto a silicon mob.
+ *
+ * @params
+ * * target - the mob
+ * * zone - the body zone, if it exists.
+ *          this is used if we don't have a bodypart specified.
+ * * limb - the external organ splashed onto.
+ * * remaining - how much is left in the thing being splashed.
+ * * allocated - how much is supposed to be hitting the target limb (useful for sprays).
+ *               this will never be over remaining.
+ * * data - our reagent data, if any
+ *
+ * @return amount used, if any
+ */
+/datum/reagent/proc/splashed_onto_silicon(mob/living/silicon/target, zone, obj/item/organ/external/limb, remaining, allocated, data)
+	return splashed_onto_living(target, zone, limb, remaining, allocated, data)
+
+/**
+ * Called when we're splashed onto a simple mob.
+ *
+ * @params
+ * * target - the mob
+ * * zone - the body zone, if it exists.
+ *          this is used if we don't have a bodypart specified.
+ * * limb - the external organ splashed onto.
+ * * remaining - how much is left in the thing being splashed.
+ * * allocated - how much is supposed to be hitting the target limb (useful for sprays).
+ *               this will never be over remaining.
+ * * data - our reagent data, if any
+ *
+ * @return amount used, if any
+ */
+/datum/reagent/proc/splashed_onto_simple(mob/living/simple_mob/target, zone, obj/item/organ/external/limb, remaining, allocated, data)
+	return splashed_onto_living(target, zone, limb, remaining, allocated, data)
+
+/**
+ * Called when we're splashed onto a mob that is not handled by the other procs.
+ *
+ * So, any mob that is not any of these:
+ * * /mob/living/carbon
+ * * /mob/living/silicon
+ * * /mob/living/simple_mob
+ *
+ * @params
+ * * target - the mob
+ * * zone - the body zone, if it exists.
+ *          this is used if we don't have a bodypart specified.
+ * * limb - the external organ splashed onto.
+ * * remaining - how much is left in the thing being splashed.
+ * * allocated - how much is supposed to be hitting the target limb (useful for sprays).
+ *               this will never be over remaining.
+ * * data - our reagent data, if any
+ *
+ * @return amount used, if any
+ */
+/datum/reagent/proc/splashed_onto_living(mob/living/target, zone, obj/item/organ/external/limb, remaining, allocated, data)
+	return 0
