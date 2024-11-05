@@ -22,7 +22,7 @@
 
 //* Chat System
 #define SKIN_OUTPUT_ID_LEGACY_CHAT "output"
-#define SKIN_BROWSER_ID_CHAT "outputbrowser"
+#define SKIN_BROWSER_ID_CHAT "browseroutput"
 
 //* Cutscene System
 #define SKIN_BROWSER_ID_CUTSCENE "cutscenebrowser"

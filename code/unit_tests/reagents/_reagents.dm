@@ -1,1 +1,2 @@
-#include "reagents.dm"
+#include "chemical_reaction.dm"
+#include "reagent.dm"
