@@ -17,10 +17,10 @@
 	}
 
 /obj/item/material/sword/plasteel
-	material_parts = /datum/material/plasteel
+	material_parts = /datum/prototype/material/plasteel
 
 /obj/item/material/sword/durasteel
-	material_parts = /datum/material/durasteel
+	material_parts = /datum/prototype/material/durasteel
 
 /obj/item/material/sword/suicide_act(mob/user)
 	var/datum/gender/TU = GLOB.gender_datums[user.get_visible_gender()]
@@ -39,10 +39,10 @@
 	return(BRUTELOSS)
 
 /obj/item/material/sword/katana/plasteel
-	material_parts = /datum/material/plasteel
+	material_parts = /datum/prototype/material/plasteel
 
 /obj/item/material/sword/katana/durasteel
-	material_parts = /datum/material/durasteel
+	material_parts = /datum/prototype/material/durasteel
 
 /obj/item/material/sword/sabre
 	name = "officer's sabre"
@@ -53,7 +53,7 @@
 	pickup_sound = 'sound/items/pickup/knife.ogg'
 	drop_sound = 'sound/items/drop/knife.ogg'
 	//initially damage was at 30. Damage now starts at around 25 until someone messes with material code again (hi Sili)
-	material_parts = /datum/material/plasteel
+	material_parts = /datum/prototype/material/plasteel
 	material_color = FALSE
 	origin_tech = list(TECH_COMBAT = 4)
 	item_icons = list(

@@ -85,7 +85,6 @@ GLOBAL_LIST_INIT(firelock_align_types, typecacheof(list(
 	return INITIALIZE_HINT_LATELOAD
 
 /obj/machinery/door/firedoor/LateInitialize()
-	. = ..()
 	if(autoset_dir)
 		for (var/cardinal in GLOB.cardinal)
 			var/turf/step_turf = get_step(src, cardinal)

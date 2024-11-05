@@ -1,4 +1,4 @@
-/datum/material/durasteel
+/datum/prototype/material/durasteel
 	id = MAT_DURASTEEL
 	name = "durasteel"
 	stack_type = /obj/item/stack/material/durasteel
@@ -25,16 +25,16 @@
 	absorption = MATERIAL_RESISTANCE_HIGH
 	nullification = MATERIAL_RESISTANCE_LOW
 
-/datum/material/durasteel/generate_recipes()
+/datum/prototype/material/durasteel/generate_recipes()
 	. = ..()
 	. += create_stack_recipe_datum(name = "durasteel floor tiles", product = /obj/item/stack/tile/durasteel, amount = 4)
 
-/datum/material/durasteel/hull //The 'Hardball' of starship hulls.
+/datum/prototype/material/durasteel/hull //The 'Hardball' of starship hulls.
 	id = "durasteel_hull"
 	name = MAT_DURASTEELHULL
 	icon_colour = "#45829a"
 	explosion_resistance = 90
 	relative_integrity = 2.5
 
-/datum/material/durasteel/hull/place_sheet(var/turf/target) //Deconstructed into normal durasteel sheets.
+/datum/prototype/material/durasteel/hull/place_sheet(var/turf/target) //Deconstructed into normal durasteel sheets.
 	new /obj/item/stack/material/durasteel(target)

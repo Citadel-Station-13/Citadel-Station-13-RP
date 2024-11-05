@@ -1,80 +1,80 @@
-/datum/design/misc/cooler_bottle
+/datum/prototype/design/misc/cooler_bottle
 	id = "GlassWaterCooler"
 	lathe_type = LATHE_TYPE_AUTOLATHE
 	design_unlock = DESIGN_UNLOCK_INTRINSIC
 	build_path = /obj/item/reagent_containers/glass/cooler_bottle
 
-/datum/design/misc/drink_glass
-	abstract_type = /datum/design/misc/drink_glass
+/datum/prototype/design/misc/drink_glass
+	abstract_type = /datum/prototype/design/misc/drink_glass
 	work = 1 SECONDS
 
-/datum/design/misc/drink_glass/square
+/datum/prototype/design/misc/drink_glass/square
 	id = "GlassHalfPint"
 	lathe_type = LATHE_TYPE_AUTOLATHE
 	design_unlock = DESIGN_UNLOCK_INTRINSIC
 	build_path = /obj/item/reagent_containers/food/drinks/glass2/square
 
-/datum/design/misc/drink_glass/rocks
+/datum/prototype/design/misc/drink_glass/rocks
 	id = "GlassRocks"
 	lathe_type = LATHE_TYPE_AUTOLATHE
 	design_unlock = DESIGN_UNLOCK_INTRINSIC
 	build_path = /obj/item/reagent_containers/food/drinks/glass2/rocks
 
-/datum/design/misc/drink_glass/shake
+/datum/prototype/design/misc/drink_glass/shake
 	id = "GlassMilkshake"
 	lathe_type = LATHE_TYPE_AUTOLATHE
 	design_unlock = DESIGN_UNLOCK_INTRINSIC
 	build_path = /obj/item/reagent_containers/food/drinks/glass2/shake
 
-/datum/design/misc/drink_glass/cocktail
+/datum/prototype/design/misc/drink_glass/cocktail
 	id = "GlassCocktail"
 	lathe_type = LATHE_TYPE_AUTOLATHE
 	design_unlock = DESIGN_UNLOCK_INTRINSIC
 	build_path = /obj/item/reagent_containers/food/drinks/glass2/cocktail
 
-/datum/design/misc/drink_glass/shot
+/datum/prototype/design/misc/drink_glass/shot
 	id = "GlassShot"
 	lathe_type = LATHE_TYPE_AUTOLATHE
 	design_unlock = DESIGN_UNLOCK_INTRINSIC
 	build_path = /obj/item/reagent_containers/food/drinks/glass2/shot
 
-/datum/design/misc/drink_glass/pint
+/datum/prototype/design/misc/drink_glass/pint
 	id = "GlassPint"
 	lathe_type = LATHE_TYPE_AUTOLATHE
 	design_unlock = DESIGN_UNLOCK_INTRINSIC
 	build_path = /obj/item/reagent_containers/food/drinks/glass2/pint
 
-/datum/design/misc/drink_glass/mug
+/datum/prototype/design/misc/drink_glass/mug
 	id = "GlassMug"
 	lathe_type = LATHE_TYPE_AUTOLATHE
 	design_unlock = DESIGN_UNLOCK_INTRINSIC
 	build_path = /obj/item/reagent_containers/food/drinks/glass2/mug
 
-/datum/design/misc/drink_glass/wine
+/datum/prototype/design/misc/drink_glass/wine
 	id = "GlassWine"
 	lathe_type = LATHE_TYPE_AUTOLATHE
 	design_unlock = DESIGN_UNLOCK_INTRINSIC
 	build_path = /obj/item/reagent_containers/food/drinks/glass2/wine
 
-/datum/design/misc/drink_glass/pitcher
+/datum/prototype/design/misc/drink_glass/pitcher
 	id = "GlassPitcher"
 	lathe_type = LATHE_TYPE_AUTOLATHE
 	design_unlock = DESIGN_UNLOCK_INTRINSIC
 	build_path = /obj/item/reagent_containers/food/drinks/glass2/pitcher
 
-/datum/design/misc/drink_glass/meta
+/datum/prototype/design/misc/drink_glass/meta
 	id = "GlassMeta"
 	lathe_type = LATHE_TYPE_AUTOLATHE
 	design_unlock = DESIGN_UNLOCK_INTRINSIC
 	build_path = /obj/item/reagent_containers/food/drinks/metaglass
 
-/datum/design/misc/drink_glass/cup
+/datum/prototype/design/misc/drink_glass/cup
 	id = "GlassCup"
 	lathe_type = LATHE_TYPE_AUTOLATHE
 	design_unlock = DESIGN_UNLOCK_INTRINSIC
 	build_path = /obj/item/reagent_containers/food/drinks/cup
 
-/datum/design/misc/drink_glass/fitness
+/datum/prototype/design/misc/drink_glass/fitness
 	id = "GlassFitness"
 	lathe_type = LATHE_TYPE_AUTOLATHE
 	design_unlock = DESIGN_UNLOCK_INTRINSIC

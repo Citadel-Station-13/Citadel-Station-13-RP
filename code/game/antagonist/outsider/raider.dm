@@ -233,7 +233,7 @@ var/datum/antagonist/raider/raiders
 	W.obj_storage.insert(id)
 	player.equip_to_slot_or_del(W, SLOT_ID_WORN_ID)
 	spawn_money(rand(50,150)*10,W)
-	create_radio(RAID_FREQ, player)
+	create_radio(FREQ_RAIDER, player)
 
 	return 1
 

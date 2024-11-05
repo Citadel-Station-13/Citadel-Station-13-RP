@@ -1,5 +1,5 @@
 // Adminspawn only, do not let anyone get this.
-/datum/material/alienalloy
+/datum/prototype/material/alienalloy
 	name = "alienalloy"
 	id = "alien_alloy"
 	display_name = "durable alloy"
@@ -21,7 +21,7 @@
 
 // Likewise.
 // todo: kill with fire
-/datum/material/alienalloy/elevatorium
+/datum/prototype/material/alienalloy/elevatorium
 	id = "elevatorium"
 	name = "elevatorium"
 	display_name = "elevator panelling"
@@ -29,21 +29,21 @@
 
 // Ditto.
 // todo: KILL WITH FIRE
-/datum/material/alienalloy/dungeonium
+/datum/prototype/material/alienalloy/dungeonium
 	id = "dungeonium"
 	name = "dungeonium"
 	display_name = "ultra-durable metal"
 	icon_base = 'icons/turf/walls/dungeon.dmi'
 	icon_colour = "#FFFFFF"
 
-/datum/material/alienalloy/bedrock
+/datum/prototype/material/alienalloy/bedrock
 	id = "bedrock"
 	name = "bedrock"
 	display_name = "impassable rock"
 	icon_base = 'icons/turf/walls/natural.dmi'
 	icon_colour = COLOR_ASTEROID_ROCK
 
-/datum/material/alienalloy/alium
+/datum/prototype/material/alienalloy/alium
 	id = "abductor_alloy"
 	name = "alium"
 	display_name = "alien"
