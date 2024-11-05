@@ -123,7 +123,7 @@
 						reagents.reagent_list += B
 						reagents.update_total()
 						on_reagent_change()
-						reagents.handle_reactions()
+						reagents.reconsider_reactions()
 					to_chat(user, "<span class='notice'>You take a blood sample from [target].</span>")
 					for(var/mob/O in viewers(4, user))
 						O.show_message("<span class='notice'>[user] takes a blood sample from [target].</span>", 1)

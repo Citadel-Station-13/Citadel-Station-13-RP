@@ -173,8 +173,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 			e.start()
 			qdel(src)
 			return
-		atom_flags &= ~NOREACT // allowing reagents to react after being lit
-		reagents.handle_reactions()
+		reagents.set_no_react(FALSE)
 		var/turf/T = get_turf(src)
 		T.visible_message(flavor_text)
 		update_icon()

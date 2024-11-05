@@ -73,7 +73,6 @@ GLOBAL_LIST_EMPTY(smeses)
 	return INITIALIZE_HINT_LATELOAD
 
 /obj/machinery/power/smes/LateInitialize()
-	. = ..()
 	if(!powernet)
 		connect_to_network()
 

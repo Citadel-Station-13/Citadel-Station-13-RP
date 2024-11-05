@@ -20,7 +20,7 @@
 
 	return mixcolor
 
-/datum/reagents/proc/get_color()
+/datum/reagent_holder/proc/get_color()
 	// todo: cache this shit
 	if(!reagent_list || !reagent_list.len)
 		return "#ffffffff"

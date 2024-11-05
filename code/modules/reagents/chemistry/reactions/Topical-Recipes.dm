@@ -1,5 +1,8 @@
 //Recipes for the topical gels, mostly they are simple mixtures, distiller recipes may follow
 /datum/chemical_reaction/topical
+	abstract_type = /datum/chemical_reaction/topical
+
+/datum/chemical_reaction/topical/gel
     name = "Topical Gel"
     id = "topical"
     result = "topical"
@@ -14,10 +17,11 @@
 	required_reagents = list("sterilizine" = 1, "foaming_agent" = 1)
 	result_amount = 1
 
-	reaction_rate = HALF_LIFE(10)
+	required_container_path = /obj/item/reagent_containers/glass/distilling
 
-	temp_range = list(T0C + 100, T0C + 120)
-
+	reaction_half_life = 20 SECONDS
+	temperature_low = T0C + 100
+	temperature_high = T0C + 120
 
 /datum/chemical_reaction/topical/bicarilaze
     name = "Bicarilaze"
