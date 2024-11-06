@@ -53,7 +53,6 @@
 	return INITIALIZE_HINT_LATELOAD
 
 /mob/living/silicon/ai/LateInitialize()
-	. = ..()
 	if(eyeobj && loc)
 		eyeobj.forceMove(loc)
 

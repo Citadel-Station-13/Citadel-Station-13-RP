@@ -544,7 +544,7 @@
 	else
 		return FALSE
 
-// /obj/machinery/chem_master/proc/chemical_safety_check(datum/reagents/R)
+// /obj/machinery/chem_master/proc/chemical_safety_check(datum/reagent_holder/R)
 // 	var/all_safe = TRUE
 // 	for(var/datum/reagent/A in R.reagent_list)
 // 		if(!GLOB.safe_chem_list.Find(A.id))
@@ -771,7 +771,7 @@
  * If not available returns fallback style, or null if no such thing.
  * Returns list that is one of condibottle styles from [/obj/machinery/chem_master/proc/get_condi_styles]
  */
-/obj/machinery/chem_master/proc/guess_condi_style(datum/reagents/reagents)
+/obj/machinery/chem_master/proc/guess_condi_style(datum/reagent_holder/reagents)
 	var/list/styles = get_condi_styles()
 	if (reagents.reagent_list.len > 0)
 		var/main_reagent = reagents.get_master_reagent_id()

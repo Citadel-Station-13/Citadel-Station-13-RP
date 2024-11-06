@@ -189,7 +189,6 @@ var/list/obj/machinery/newscaster/allCasters = list() //Global list that will co
 	return INITIALIZE_HINT_LATELOAD
 
 /obj/machinery/newscaster/LateInitialize()
-	. = ..()
 	node = get_exonet_node()
 
 /obj/machinery/newscaster/Destroy()
