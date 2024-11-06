@@ -69,9 +69,9 @@ GLOBAL_LIST(topic_status_cache)
 	config.Load(params[OVERRIDE_CONFIG_DIRECTORY_PARAMETER])
 	config.update_world_viewsize()	//! Since world.view is immutable, we load it here.
 
-	//SetupLogs depends on the RoundID, so lets check
-	//DB schema and set RoundID if we can
+	// Try to set round ID
 	SSdbcore.InitializeRound()
+
 	SetupLogs()
 
 	// shunt redirected world log from Master's init back into world log proper, now that logging has been set up.
@@ -90,6 +90,7 @@ GLOBAL_LIST(topic_status_cache)
 	GLOB.timezoneOffset = get_timezone_offset()
 
 	callHook("startup")
+	load_admins()
 	//Emergency Fix
 	load_mods()
 	//end-emergency fix
