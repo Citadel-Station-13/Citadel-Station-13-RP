@@ -22,6 +22,8 @@
 	///
 	/// * this is shit, but it is what it is, for now. we're migrating things out of
 	///   it, slowly.
+	/// * passed in variables from direct varedits in New() will be append-overwrite
+	///   for this list.
 	var/list/legacy_direct_varedits
 
 // todo: this shouldn't even exist.
@@ -45,4 +47,4 @@
 // todo: annihilate this
 /datum/firemode/proc/apply_legacy_variables(obj/item/gun/gun)
 	for(var/varname in legacy_direct_varedits)
-		gun.vars[propname] = legacy_direct_varedits[propname]
+		gun.vars[varname] = legacy_direct_varedits[varname]

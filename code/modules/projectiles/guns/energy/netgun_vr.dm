@@ -1,20 +1,31 @@
+/datum/firemode/energy/netgun
+	cycle_cooldown = 0.5 SECONDS
+
+/datum/firemode/energy/netgun/stun
+	name = "stun"
+	legacy_direct_varedits = list(projectile_type=/obj/projectile/beam/stun/blue, fire_sound='sound/weapons/Taser.ogg', charge_cost=240)
+
+/datum/firemode/energy/netgun/capture
+	name = "capture"
+	cycle_cooldown = 5 SECONDS
+	legacy_direct_varedits = list(projectile_type=/obj/projectile/beam/energy_net, fire_sound = 'sound/weapons/eluger.ogg', charge_cost=1200)
+
+
 /obj/item/gun/energy/netgun
 	name = "Hephaestus \'Retiarius\'"
 	desc = "The Hephaestus Industries 'Retiarius' stuns targets, immobilizing them in an energized net field."
 	catalogue_data = list()///datum/category_item/catalogue/information/organization/hephaestus)
 	icon_state = "hunter"
 	item_state = "gun" // Placeholder
-	mode_name = "stun"
 
 	fire_sound = 'sound/weapons/eluger.ogg'
 	origin_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 5, TECH_MAGNET = 3)
 	projectile_type = /obj/projectile/beam/stun/blue
 	charge_cost = 240
-	fire_delay = 5
 
 	firemodes = list(
-		list(mode_name="stun", projectile_type=/obj/projectile/beam/stun/blue, fire_sound='sound/weapons/Taser.ogg', charge_cost=240, fire_delay=5),
-		list(mode_name="capture", projectile_type=/obj/projectile/beam/energy_net, fire_sound = 'sound/weapons/eluger.ogg', charge_cost=1200, fire_delay=50)
+		/datum/firemode/energy/netgun/stun,
+		/datum/firemode/energy/netgun/capture,
 	)
 
 /obj/item/gun/energy/netgun/update_icon()

@@ -329,30 +329,7 @@
 			return 0
 	if(!handle_pins(user))
 		return 0
-
-	var/mob/living/M = user
-	if(MUTATION_HULK in M.mutations)
-		to_chat(M, "<span class='danger'>Your fingers are much too large for the trigger guard!</span>")
-		return 0
-	if((MUTATION_CLUMSY in M.mutations) && prob(40)) //Clumsy handling
-		var/obj/P = consume_next_projectile()
-		if(P)
-			if(process_projectile(P, user, user, pick("l_foot", "r_foot")))
-				handle_post_fire(user, user)
-				var/datum/gender/TU = GLOB.gender_datums[user.get_visible_gender()]
-				user.visible_message(
-					"<span class='danger'>\The [user] shoots [TU.himself] in the foot with \the [src]!</span>",
-					"<span class='danger'>You shoot yourself in the foot with \the [src]!</span>"
-					)
-				M.drop_item_to_ground(src)
-		else
-			handle_click_empty(user)
-		return 0
 	return 1
-
-/obj/item/gun/emp_act(severity)
-	for(var/obj/O in contents)
-		O.emp_act(severity)
 
 /obj/item/gun/dropped(mob/user, flags, atom/newLoc)
 	. = ..()

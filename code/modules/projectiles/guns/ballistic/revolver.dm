@@ -305,7 +305,7 @@
 	icon_state = "mosley"
 	desc = "A shiny Mosley Autococker automatic revolver, with black accents. Marketed as the 'Revolver for the Modern Era'. Uses .44 magnum rounds."
 	firemodes = /datum/firemode{
-		cycle_cooldown = 0.5 SECONDS,
+		cycle_cooldown = 0.5 SECONDS;
 	}
 	fire_anim = "mosley_fire"
 	origin_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 2)
@@ -333,7 +333,7 @@
 	icon_state = "combatrevolver"
 	caliber = /datum/ammo_caliber/a44
 	firemodes = /datum/firemode{
-		cycle_cooldown = 0.5 SECONDS,
+		cycle_cooldown = 0.5 SECONDS;
 	}
 	origin_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 3)
 	ammo_type = /obj/item/ammo_casing/a44

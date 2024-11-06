@@ -5,7 +5,6 @@
 		then click where you want to fire.  Most energy weapons can fire through windows harmlessly.  To recharge this weapon, use a weapon recharger."
 	icon_state = "energystun100"
 	item_state = null	//so the human update icon uses the icon_state instead.
-	fire_delay = 10 // Handguns should be inferior to two-handed weapons.
 
 	worth_intrinsic = 250
 
@@ -14,14 +13,36 @@
 	modifystate = "energystun"
 
 	firemodes = list(
-		list(mode_name="stun", projectile_type=/obj/projectile/beam/stun/med, modifystate="energystun", charge_cost = 240),
-		list(mode_name="lethal", projectile_type=/obj/projectile/beam, modifystate="energykill", charge_cost = 480),
-		)
+		list(mode_name="stun", projectile_type=/obj/projectile/beam/stun/med, modifystate="energystun", charge_cost = 240, fire_delay = 1 SECONDS),
+		list(mode_name="lethal", projectile_type=/obj/projectile/beam, modifystate="energykill", charge_cost = 480, fire_delay = 1 SECONDS),
+	)
 
 /obj/item/gun/energy/gun/mounted
 	name = "mounted energy gun"
 	self_recharge = 1
 	use_external_power = 1
+
+/datum/firemode/energy/burst_laser
+	burst_delay = 0.2 SECONDS
+	cycle_cooldown = 0.6 SECONDS
+
+/datum/firemode/energy/burst_laser/stun
+	name = "stun"
+	legacy_direct_varedits = list(projectile_type=/obj/projectile/beam/stun/weak, modifystate="fm-2tstun", charge_cost = 100)
+
+/datum/firemode/energy/burst_laser/stun_burst
+	name = "stun burst"
+	burst_amount = 3
+	legacy_direct_varedits = list(burst_accuracy=list(65,65,65), dispersion=list(0.0, 0.2, 0.5), projectile_type=/obj/projectile/beam/stun/weak, modifystate="fm-2tstun")
+
+/datum/firemode/energy/burst_laser/lethal
+	name = "lethal"
+	legacy_direct_varedits = list(projectile_type=/obj/projectile/beam/burstlaser, modifystate="fm-2tkill", charge_cost = 200)
+
+/datum/firemode/energy/burst_laser/lethal_burst
+	name = "lethal burst"
+	burst_amount = 3
+	legacy_direct_varedits = list(burst_accuracy=list(65,65,65), dispersion=list(0.0, 0.2, 0.5), projectile_type=/obj/projectile/beam/burstlaser, modifystate="fm-2tkill")
 
 /obj/item/gun/energy/gun/burst
 	name = "burst laser"
@@ -31,22 +52,42 @@
 	charge_cost = 100
 	damage_force = 8
 	w_class = WEIGHT_CLASS_BULKY	//Probably gonna make it a rifle sooner or later
-	fire_delay = 6
 	heavy = TRUE
 	projectile_type = /obj/projectile/beam/stun/weak
 	origin_tech = list(TECH_COMBAT = 4, TECH_MAGNET = 2, TECH_ILLEGAL = 3)
 	modifystate = "fm-2tstun"
 
-//	requires_two_hands = 1
 	one_handed_penalty = 30
 	worth_intrinsic = 450
 
 	firemodes = list(
-		list(mode_name="stun", burst=1, projectile_type=/obj/projectile/beam/stun/weak, modifystate="fm-2tstun", charge_cost = 100),
-		list(mode_name="stun burst", burst=3, fire_delay=null, move_delay=4, burst_accuracy=list(65,65,65), dispersion=list(0.0, 0.2, 0.5), projectile_type=/obj/projectile/beam/stun/weak, modifystate="fm-2tstun"),
-		list(mode_name="lethal", burst=1, projectile_type=/obj/projectile/beam/burstlaser, modifystate="fm-2tkill", charge_cost = 200),
-		list(mode_name="lethal burst", burst=3, fire_delay=null, move_delay=4, burst_accuracy=list(65,65,65), dispersion=list(0.0, 0.2, 0.5), projectile_type=/obj/projectile/beam/burstlaser, modifystate="fm-2tkill"),
-		)
+		/datum/firemode/energy/burst_laser/stun,
+		/datum/firemode/energy/burst_laser/stun_burst,
+		/datum/firemode/energy/burst_laser/lethal,
+		/datum/firemode/energy/burst_laser/lethal_burst,
+	)
+
+/datum/firemode/energy/mining_carbine
+	burst_delay = 0.1 SECONDS
+	cycle_cooldown = 0.3 SECONDS
+
+/datum/firemode/energy/mining_carbine/mine
+	name = "mine"
+	legacy_direct_varedits = list(projectile_type=/obj/projectile/beam/excavation, modifystate="fm-2tstun", charge_cost = 20)
+
+/datum/firemode/energy/mining_carbine/mine_burst
+	name = "mine burst"
+	burst_amount = 5
+	legacy_direct_varedits = list(burst_accuracy=list(65,65,65), dispersion=list(0.0, 0.2, 0.5), projectile_type=/obj/projectile/beam/excavation, modifystate="fm-2tstun")
+
+/datum/firemode/energy/mining_carbine/scatetr
+	name = "scatter"
+	legacy_direct_varedits = list(projectile_type=/obj/projectile/scatter/excavation, modifystate="fm-2tkill", charge_cost = 40)
+
+/datum/firemode/energy/mining_carbine/scatter_burst
+	name = "scatter burst"
+	burst_amount = 5
+	legacy_direct_varedits = list(burst_accuracy=list(65,65,65), dispersion=list(0.0, 0.2, 0.5), projectile_type=/obj/projectile/scatter/excavation, modifystate="fm-2tkill")
 
 /obj/item/gun/energy/gun/miningcarbine
 	name = "mining carbine"
@@ -62,11 +103,11 @@
 	modifystate = "fm-2tstun"
 
 	firemodes = list(
-		list(mode_name="mine", burst=1, projectile_type=/obj/projectile/beam/excavation, modifystate="fm-2tstun", charge_cost = 20),
-		list(mode_name="mine burst", burst=5, fire_delay=null, move_delay=4, burst_accuracy=list(65,65,65), dispersion=list(0.0, 0.2, 0.5), projectile_type=/obj/projectile/beam/excavation, modifystate="fm-2tstun"),
-		list(mode_name="scatter", burst=1, projectile_type=/obj/projectile/scatter/excavation, modifystate="fm-2tkill", charge_cost = 40),
-		list(mode_name="scatter burst", burst=5, fire_delay=null, move_delay=4, burst_accuracy=list(65,65,65), dispersion=list(0.0, 0.2, 0.5), projectile_type=/obj/projectile/scatter/excavation, modifystate="fm-2tkill"),
-		)
+		/datum/firemode/energy/mining_carbine/mine,
+		/datum/firemode/energy/mining_carbine/mine_burst,
+		/datum/firemode/energy/mining_carbine/scatter,
+		/datum/firemode/energy/mining_carbine/scatter_burst,
+			)
 
 /obj/item/gun/energy/gun/nuclear
 	name = "advanced energy gun"
