@@ -30,7 +30,14 @@
 	for(var/propname in settings)
 		gun.vars[propname] = settings[propname]
 
-//Parent gun type. Guns are weapons that can be aimed at mobs and act over a distance
+/**
+ * Weapons that can be aimed at an angle or a mob or whatever.
+ *
+ * Current caveats:
+ *
+ * * Flashlight attachments directly edit the light variable of the gun. This means that they'll trample the gun's
+ *   inherent light if there is one.
+ */
 /obj/item/gun
 	name = "gun"
 	desc = "Its a gun. It's pretty terrible, though."
@@ -76,6 +83,8 @@
 	///   specified here.
 	/// * This is pixel coordinates on the gun's real icon. Out of bounds is allowed as attachments are just overlays.
 	var/list/attachment_alignment
+	/// Blacklisted attachment types.
+	var/attachment_type_blacklist = NONE
 
 	// legacy below //
 
@@ -954,6 +963,13 @@
 				target = src,
 			)
 		return FALSE
+	if(!attachment.attachment_type & attachment_type_blacklist)
+		if(!silent)
+			actor?.chat_feedback(
+				SPAN_WARNING("[attachment] doesn't work with [src]!"),
+				target = src,
+			)
+		return FALSE
 	for(var/obj/item/gun_attachment/existing as anything in attachments)
 		if(existing.attachment_slot == attachment.attachment_slot)
 			if(!silent)
@@ -962,7 +978,7 @@
 					target = src,
 				)
 			return FALSE
-		if(existing.attachment_conflict_type & attachment.attachment_conflict_type)
+		if(existing.attachment_type & attachment.attachment_type)
 			if(!silent)
 				actor?.chat_feedback(
 					SPAN_WARNING("[src]'s [existing] conflicts with [attachment]!"),
@@ -1029,7 +1045,7 @@
 		return FALSE
 	var/obj/item/uninstalled = uninstall_attachment(attachment, actor)
 	if(put_in_hands && actor?.performer)
-		actor.performer.put_in_hand_or_drop(uninstalled)
+		actor.performer.put_in_hands_or_drop(uninstalled)
 	else
 		var/atom/where_to_drop = drop_location()
 		ASSERT(where_to_drop)

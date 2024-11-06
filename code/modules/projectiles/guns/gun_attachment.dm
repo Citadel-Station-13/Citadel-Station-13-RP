@@ -71,7 +71,7 @@
 	var/attachment_slot
 	/// attachment type conflict; if set, we cannot be attached if another of this type
 	/// is attached.
-	var/attachment_conflict_type = NONE
+	var/attachment_type = NONE
 
 /obj/item/gun_attachment/Destroy()
 	if(attached)
@@ -89,7 +89,7 @@
  * Checks if we fit on a gun.
  *
  * * gun already checks for [attachment_slot]
- * * gun already checks for [attachment_conflict_type]
+ * * gun already checks for [attachment_type]
  */
 /obj/item/gun_attachment/proc/fits_on_gun(obj/item/gun/gun, datum/event_args/actor/actor, silent)
 	return TRUE
@@ -143,6 +143,8 @@
 	var/appearance/applying = get_gun_overlay()
 	if(!applying)
 		return
+	// no stuck overlays now
+	ASSERT(!gun_applied_overlay)
 	attached.add_overlay(applying, TRUE)
 	gun_applied_overlay = applying
 

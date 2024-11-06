@@ -11,7 +11,7 @@
 	prototype_id = "attachment-magnetic-harness"
 	icon_state = "magnetic"
 	align_x = 15
-	align_x = 16
+	align_y = 16
 	attachment_slot = GUN_ATTACHMENT_SLOT_RAIL
 
 	/// active?

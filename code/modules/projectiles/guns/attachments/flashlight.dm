@@ -14,9 +14,10 @@
 	icon = 'icons/modules/projectiles/attachments/flashlight.dmi'
 	light_range = 4.75
 	light_color = "#ffffff"
+	light_power = 0
 
 	attachment_action_name = "Toggle Light"
-	attachment_conflict_type = GUN_ATTACHMENT_TYPE_FLASHLIGHT
+	attachment_type = GUN_ATTACHMENT_TYPE_FLASHLIGHT
 
 	/// are we on?
 	var/on = FALSE
@@ -44,17 +45,17 @@
 	if(on == state)
 		return
 	on = state
+	update_icon()
 	var/datum/action/potential_action = istype(attachment_actions, /datum/action) ? attachment_actions : null
 	// todo: silent support?
 	if(on)
 		playsound(src, on_sound, 15, TRUE, -4)
-		attached.set_light(l_power = light_power_on)
+		attached.set_light(light_range, light_power_on, light_color)
 		potential_action?.set_button_active(TRUE)
 	else
 		playsound(src, off_sound, 15, TRUE, -4)
-		attached.set_light(l_power = 0)
+		attached.set_light(light_range, 0, light_color)
 		potential_action?.set_button_active(FALSE)
-	update_icon()
 
 // todo: make this directional at some point
 /obj/item/gun_attachment/flashlight/rail
