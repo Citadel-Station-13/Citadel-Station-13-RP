@@ -170,6 +170,7 @@ DEFINE_BITFIELD(runlevels, list(
 
 #define FIRE_PRIORITY_RADIATION        10  //! laggy as hell, bottom barrel until optimizations are done.
 #define FIRE_PRIORITY_GARBAGE          15
+#define FIRE_PRIORITY_DATABASE		   16 // just above garbage
 #define FIRE_PRIORITY_CHARACTERS       20
 #define FIRE_PRIORITY_PARALLAX         20
 #define FIRE_PRIORITY_AIR              25

@@ -2,7 +2,7 @@
 	set category = "Special Verbs"
 	set name = "Reestablish DB Connection"
 	if (!CONFIG_GET(flag/sql_enabled))
-		to_chat(usr, "<span class='adminnotice'>The Database is not enabled!</span>")
+		to_chat(usr, SPAN_ADMINNOTICE("The Database is not enabled!"), confidential = TRUE)
 		return
 
 	if (SSdbcore.IsConnected())
@@ -19,8 +19,8 @@
 		message_admins("[key_name_admin(usr)] has <b>forced</b> the database to disconnect!")
 		// SSblackbox.record_feedback("tally", "admin_verb", 1, "Force Reestablished Database Connection") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
-	log_admin("[key_name(usr)] is attempting to re-established the DB Connection")
-	message_admins("[key_name_admin(usr)] is attempting to re-established the DB Connection")
+	log_admin("[key_name(usr)] is attempting to re-establish the DB Connection")
+	message_admins("[key_name_admin(usr)] is attempting to re-establish the DB Connection")
 	// SSblackbox.record_feedback("tally", "admin_verb", 1, "Reestablished Database Connection") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 	SSdbcore.failed_connections = 0
@@ -31,7 +31,4 @@
 		message_admins("Reloading client database data...")
 		for(var/client/C in GLOB.clients)
 			C.player?.load()
-		message_admins("Asserting round ID set...")
-		if(!isnum(text2num(GLOB.round_id)))
-			SSdbcore.SetRoundID()
-			message_admins("Round ID was not set and has now been re-set. Things might be weird this round.")
+		// do not set roundid after game initialize, will break logging & others
