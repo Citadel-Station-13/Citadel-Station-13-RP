@@ -5,8 +5,22 @@
  * A holder for actor HUDs on a client.
  */
 /datum/actor_hud_holder
+	/// owning client
+	var/client/owner
+
 	/// inventory hud
 	var/datum/actor_hud/inventory
+
+/datum/actor_hud_holder/New(client/C)
+	owner = C
+
+	inventory = new(src)
+
+/datum/actor_hud_holder/Destroy()
+	QDEL_NULL(inventory)
+
+	owner = null
+	return ..()
 
 /**
  * reset every hud to a mob

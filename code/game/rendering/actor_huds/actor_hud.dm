@@ -16,7 +16,7 @@
 /datum/actor_hud/proc/bind_to_mob(mob/target)
 	if(bound == target)
 		return FALSE
-	bound_actor = target
+	bound = target
 	return TRUE
 
 #warn impl

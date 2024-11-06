@@ -12,7 +12,7 @@
  * * It is not required for on_item_swapped to be called instead of this proc if it's a swap.
  */
 /datum/inventory/proc/on_item_entered(obj/item/item, datum/inventory_slot/slot_or_index)
-	SEND_SIGNAL(COMSIG_INVENTORY_ITEM_ENTERED_SLOT, slot_or_index)
+	SEND_SIGNAL(src, COMSIG_INVENTORY_ITEM_ENTERED_SLOT, slot_or_index)
 
 /**
  * Should be called when an item is removed from inventory.
@@ -23,7 +23,7 @@
  * * It is not required for on_item_swapped to be called instead of this proc if it's a swap.
  */
 /datum/inventory/proc/on_item_exited(obj/item/item, datum/inventory_slot/slot_or_index)
-	SEND_SIGNAL(COMSIG_INVENTORY_ITEM_EXITED_SLOT, slot_or_index)
+	SEND_SIGNAL(src, COMSIG_INVENTORY_ITEM_EXITED_SLOT, slot_or_index)
 
 /**
  * Should be called when an item is moved from one slot to another.
@@ -39,8 +39,8 @@
  * As of right now, the functionality is equivalent; on_item_swapped() is just more efficient.
  */
 /datum/inventory/proc/on_item_swapped(obj/item/item, datum/inventory_slot/from_slot_or_index, datum/inventory_slot/to_slot_or_index)
-	SEND_SIGNAL(COMSIG_INVENTORY_ITEM_EXITED_SLOT, slot_or_index)
-	SEND_SIGNAL(COMSIG_INVENTORY_ITEM_ENTERED_SLOT, slot_or_index)
+	SEND_SIGNAL(src, COMSIG_INVENTORY_ITEM_EXITED_SLOT, from_slot_or_index)
+	SEND_SIGNAL(src, COMSIG_INVENTORY_ITEM_ENTERED_SLOT, to_slot_or_index)
 
 /**
  * Should be called when the mob's mobility flags change.
