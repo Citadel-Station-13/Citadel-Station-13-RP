@@ -24,6 +24,8 @@
 
 /**
  * Returns the next /atom/movable to throw, or a GUN_FIRED_* for fail satus.
+ *
+ * * This should clear the throwable from our references.
  */
 /obj/item/gun/launcher/proc/consume_next_throwable(iteration, firing_flags, datum/firemode/firemode, datum/event_args/actor/actor, atom/firer)
 	. = GUN_FIRED_FAIL_UNKNOWN

@@ -76,17 +76,20 @@
 			SPAN_WARNING("The bolt on [src] isn't drawn back!"),
 			target = src,
 		)
-		return
+		return FALSE
 	return ..()
 
 /obj/item/gun/launcher/crossbow/consume_next_throwable(iteration, firing_flags, datum/firemode/firemode, datum/event_args/actor/actor, atom/firer)
-	return bolt
-
-/obj/item/gun/launcher/crossbow/handle_post_fire(mob/user, atom/target)
+	. = bolt
 	bolt = null
+
+/obj/item/gun/launcher/crossbow/post_fire(datum/gun_firing_cycle/cycle)
+	. = ..()
 	tension = 0
+
+/obj/item/gun/launcher/crossbow/on_firing_cycle_end(datum/gun_firing_cycle/cycle)
+	. = ..()
 	update_icon()
-	..()
 
 /obj/item/gun/launcher/crossbow/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()

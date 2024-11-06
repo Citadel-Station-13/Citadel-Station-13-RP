@@ -149,19 +149,9 @@
 					destroyed = 1
 					name = "broken rokkit launcher"
 					desc = "The tube has burst outwards like a sausage."
-					return
+					return null
 				if(21 to 100)
-					return 1
-
-		if(destroyed)
-			handle_click_empty()
-			return
-
-/obj/item/gun/ballistic/rocket/tyrmalin/Fire(atom/target, mob/living/user, clickparams, pointblank, reflex)
-	. = ..()
-	if(destroyed)
-		to_chat(user, "<span class='notice'>\The [src] is completely inoperable!</span>")
-		handle_click_empty()
+					return ..()
 
 /obj/item/gun/ballistic/rocket/tyrmalin/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(user.get_inactive_held_item() == src && destroyed)

@@ -122,14 +122,14 @@
 	else
 		release_force = 0
 
-/obj/item/gun/launcher/pneumatic/handle_post_fire()
+/obj/item/gun/launcher/pneumatic/post_fire(datum/gun_firing_cycle/cycle)
+	. = ..()
 	if(tank)
 		var/lost_gas_amount = tank.air_contents.total_moles*(pressure_setting/100)
 		var/datum/gas_mixture/removed = tank.air_contents.remove(lost_gas_amount)
 
 		var/turf/T = get_turf(src.loc)
-		if(T) T.assume_air(removed)
-	..()
+		T?.assume_air(removed)
 
 /obj/item/gun/launcher/pneumatic/update_icon()
 	. = ..()

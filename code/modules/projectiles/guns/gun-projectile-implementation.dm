@@ -28,15 +28,15 @@
 		mob_firer.break_cloak()
 
 	// point of no return
-	var/obj/projectile/firing_projectile = consume_next_projectile(iteration, firing_flags, firemode, actor, firer)
+	var/obj/projectile/firing_projectile = consume_next_projectile(cycle)
 	if(!istype(firing_projectile))
 		// it's an error code if it's not real
 		return firing_projectile
 
 	// todo: do we really need to newtonian move always?
-	if(ismovable(firer))
-		var/atom/movable/movable_firer = firer
-		movable_firer.newtonian_move(angle2dir(angle))
+	if(ismovable(cycle.firing_atom))
+		var/atom/movable/movable_firer = cycle.firing_atom
+		movable_firer.newtonian_move(angle2dir(cycle.original_angle))
 
 /**
  * Obtains the next projectile to fire.

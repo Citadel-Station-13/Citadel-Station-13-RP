@@ -190,8 +190,9 @@
 		if(loaded.len)
 			var/burstsetting = burst
 			burst = 2
+			// todo: what happens if it's inside a container?
 			user.visible_message("<span class='danger'>The shotgun goes off!</span>", "<span class='danger'>The shotgun goes off in your face!</span>")
-			Fire_userless(user)
+			start_firing_cycle_async(src, rand(0, 360))
 			burst = burstsetting
 			return
 		if(do_after(user, 30))	//SHIT IS STEALTHY EYYYYY

@@ -172,13 +172,13 @@
 	else
 		..()
 
-/obj/item/gun/ballistic/automatic/z8/Fire(atom/target, mob/living/user, params, pointblank=0, reflex=0)
+/obj/item/gun/ballistic/automatic/z8/fire(datum/gun_firing_cycle/cycle)
 	if(use_launcher)
-		launcher.Fire(target, user, params, pointblank, reflex)
+		launcher.fire(cycle)
 		if(!launcher.chambered)
 			switch_firemodes(user) //switch back automatically
-	else
-		..()
+		return GUN_FIRED_SUCCESS
+	return ..()
 
 /obj/item/gun/ballistic/automatic/z8/update_icon_state()
 	. = ..()

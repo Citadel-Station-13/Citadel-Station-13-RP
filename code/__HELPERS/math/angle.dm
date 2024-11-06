@@ -52,3 +52,12 @@
 		. += 180
 	else if(x < 0)
 		. += 360
+
+/**
+ * get angle from center of bounding box of entity A to entity B
+ */
+/proc/get_centered_entity_angle(atom/A, atom/B)
+	var/dy
+	var/dx
+	return arctan()
+#warn this

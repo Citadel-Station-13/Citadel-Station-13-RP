@@ -48,7 +48,7 @@
 		var/obj/projectile/P = .
 		modify_projectile(P)
 
-/obj/item/gun/energy/kinetic_accelerator/handle_post_fire(mob/user, atom/target, pointblank, reflex)
+/obj/item/gun/energy/kinetic_accelerator/on_firing_cycle_end(datum/gun_firing_cycle/cycle)
 	. = ..()
 	attempt_reload()
 

@@ -6,9 +6,14 @@
 /**
  * async proc to start a firing cycle
  *
+ * * firer is where the will actually come out of.
+ * * if firer is a turf, projectile is centered on turf
+ * * if firer is a mob, we use its calculations for that depending on how we're held
+ * * if firer is ourselves, projectile comes out of us. this is implementation defined.
+ *
  * @return firing cycle datum
  */
-/obj/item/gun/proc/async_firing_cycle(atom/firer, angle, firing_flags, datum/firemode/firemode, atom/target, datum/event_args/actor/actor) as /datum/gun_firing_cycle
+/obj/item/gun/proc/start_firing_cycle_async(atom/firer, angle, firing_flags, datum/firemode/firemode, atom/target, datum/event_args/actor/actor) as /datum/gun_firing_cycle
 	SHOULD_CALL_PARENT(TRUE)
 	SHOULD_NOT_SLEEP(TRUE)
 
@@ -21,10 +26,14 @@
 
 /**
  * starts, and blocks on a firing cycle
+ *
+ * * firer is where the will actually come out of.
+ * * if firer is a turf, projectile is centered on turf
+ * * if firer is a mob, we use its calculations for that depending on how we're held
+ * * if firer is ourselves, projectile comes out of us. this is implementation defined.
  */
-/obj/item/gun/proc/blocking_firing_cycle(atom/firer, angle, firing_flags, datum/firemode/firemode, atom/target, datum/event_args/actor/actor) as /datum/gun_firing_cycle
+/obj/item/gun/proc/start_firing_cycle(atom/firer, angle, firing_flags, datum/firemode/firemode, atom/target, datum/event_args/actor/actor) as /datum/gun_firing_cycle
 	SHOULD_CALL_PARENT(TRUE)
-	SHOULD_NOT_SLEEP(TRUE)
 
 	return firing_cycle(firer, angle, firing_flags, firemode, target, actor)
 
@@ -35,7 +44,7 @@
 	SHOULD_NOT_SLEEP(TRUE)
 	SHOULD_NOT_OVERRIDE(TRUE)
 
-	if(cycle_id && firing_cycle?.notch != cycle_id)
+	if(cycle_id && firing_cycle?.cycle_notch != cycle_id)
 		return
 	firing_cycle = null
 
@@ -56,7 +65,7 @@
  *
  * @params
  * * firer - the thing physically firing us; whether a turret or a person.
- *   this is where the projectile will originate, not the physical location of the gun.
+ *   this is where the projectile will originate regardles of where the gun actually is!
  * * angle - the angle to fire in.
  * * firing_flags - GUN_FIRING_* flags
  * * firemode - (optional) the /datum/firemode we are firing on
@@ -73,6 +82,8 @@
 	 * As a word of warning, any proc called in this proc must be SHOULD_NOT_SLEEP.
 	 * If this is ever violated bad things may happen and things may explode.
 	 */
+	#warn logging
+	#warn default firemode
 
 	// create cycle
 	var/datum/gun_firing_cycle/our_cycle = new
@@ -101,11 +112,11 @@
 		--safety
 		if(safety <= 0)
 			CRASH("safety ran out during firing cycle")
-		our_cycle.last_firing_result = fire(cycle)
-		if(!post_fire(cycle))
+		our_cycle.last_firing_result = fire(our_cycle)
+		if(!post_fire(our_cycle))
 			break
-		if(iteration != iterations)
-			sleep(iteration_delay)
+		if(iteration != our_cycle.firing_iterations)
+			sleep(our_cycle.firing_delay)
 			if(firing_cycle != our_cycle)
 				our_cycle.last_interrupted = TRUE
 				break
@@ -139,7 +150,7 @@
  * @return FALSE to abort firing cycle.
  */
 /obj/item/gun/proc/post_empty_fire(datum/gun_firing_cycle/cycle)
-	if(!(firing_flags & GUN_FIRING_NO_CLICK_EMPTY))
+	if(!(cycle.firing_flags & GUN_FIRING_NO_CLICK_EMPTY))
 		// default click empty
 		default_click_empty(cycle)
 	return FALSE

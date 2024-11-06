@@ -87,13 +87,9 @@
 /obj/item/gun/launcher/syringe/consume_next_throwable(iteration, firing_flags, datum/firemode/firemode, datum/event_args/actor/actor, atom/firer)
 	if(next)
 		next.prime()
-		return next
-	return null
-
-/obj/item/gun/launcher/syringe/handle_post_fire()
-	..()
-	darts -= next
-	next = null
+		. = next
+		darts -= next
+		next = null
 
 /obj/item/gun/launcher/syringe/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()

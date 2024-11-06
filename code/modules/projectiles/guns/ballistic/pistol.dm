@@ -266,12 +266,6 @@
 		if(destroyed)
 			return
 
-/obj/item/gun/ballistic/pirate/Fire(atom/target, mob/living/user, clickparams, pointblank, reflex)
-	. = ..()
-	if(destroyed)
-		to_chat(user, "<span class='notice'>\The [src] is completely inoperable!</span>")
-		handle_click_empty()
-
 /obj/item/gun/ballistic/pirate/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(user.get_inactive_held_item() == src && destroyed)
 		to_chat(user, "<span class='danger'>\The [src]'s chamber is too warped to extract the casing!</span>")
@@ -408,13 +402,10 @@
 	else
 		..()
 
-/obj/item/gun/ballistic/konigin/Fire(atom/target, mob/living/user, params, pointblank=0, reflex=0)
+/obj/item/gun/ballistic/konigin/fire(datum/gun_firing_cycle/cycle)
 	if(use_shotgun)
-		shotgun.Fire(target, user, params, pointblank, reflex)
-		//if(!shotgun.chambered)
-			//switch_firemodes(user) //switch back automatically
-	else
-		..()
+		return shotgun.fire(cycle)
+	return ..()
 
 /* Having issues with getting this to work atm.
 /obj/item/gun/ballistic/konigin/examine(mob/user, dist)

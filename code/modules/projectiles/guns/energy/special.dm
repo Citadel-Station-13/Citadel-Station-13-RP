@@ -293,7 +293,9 @@
 		else
 			if(beameffect)
 				qdel(beameffect)
-			post_empty_fire(actor = new /datum/event_args/actor(user))
+			var/datum/gun_firing_cycle/cycle = new
+			cycle.firing_actor = new /datum/event_args/actor(user)
+			post_empty_fire(cycle)
 		power_cycle = FALSE
 	else
 		to_chat(user, "<span class='notice'>\The [src] is already powering up!</span>")
