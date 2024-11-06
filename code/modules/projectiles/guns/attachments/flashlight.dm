@@ -34,8 +34,8 @@
 	set_on(!on)
 
 /obj/item/gun_attachment/flashlight/on_detach(obj/item/gun/gun)
-	..()
 	set_on(FALSE)
+	..()
 
 /obj/item/gun_attachment/flashlight/update_icon_state()
 	icon_state = "[base_icon_state || initial(icon_state)][on ? "-on" : ""]"

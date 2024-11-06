@@ -49,8 +49,9 @@
 	// don't react if it was already yanked
 	if(attached.loc != user)
 		return NONE
-	snap_back_to_user(user)
-	return COMPONENT_ITEM_DROPPED_RELOCATE
+	if(!snap_back_to_user(user))
+		return NONE
+	return COMPONENT_ITEM_DROPPED_RELOCATE | COMPONENT_ITEM_DROPPED_SUPPRESS_SOUND
 
 /obj/item/gun_attachment/harness/magnetic/proc/on_pickup(datum/source, mob/user, inv_op_flags, atom/old_loc)
 	SIGNAL_HANDLER
@@ -65,7 +66,7 @@
 		/datum/inventory_slot/inventory/suit_storage,
 		/datum/inventory_slot/inventory/back,
 	))
-		if(!user.equip_to_slot_if_possible(attached, slot_id))
+		if(!user.equip_to_slot_if_possible(attached, slot_id, INV_OP_SILENT))
 			continue
 		var/datum/inventory_slot/slot = resolve_inventory_slot(slot_id)
 		target_slot_phrase = slot.display_name

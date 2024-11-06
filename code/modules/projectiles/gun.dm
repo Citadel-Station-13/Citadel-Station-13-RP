@@ -531,11 +531,12 @@
 
 	accuracy = initial(accuracy)	//Reset the gun's accuracyw
 
-	if(muzzle_flash)
-		if(gun_light)
-			set_light(light_brightness)
-		else
-			set_light(0)
+	// todo: better muzzle flash
+	// if(muzzle_flash)
+	// 	if(gun_light)
+	// 		set_light(light_brightness)
+	// 	else
+	// 		set_light(0)
 
 // Similar to the above proc, but does not require a user, which is ideal for things like turrets.
 /obj/item/gun/proc/Fire_userless(atom/target)
@@ -1031,6 +1032,9 @@
 	attachment.attached = src
 	on_attachment_install(attachment)
 	attachment.on_attach(src)
+	var/mob/holding_mob = worn_mob()
+	if(holding_mob)
+		attachment.register_attachment_actions(holding_mob)
 	return TRUE
 
 /**
@@ -1064,6 +1068,9 @@
  */
 /obj/item/gun/proc/uninstall_attachment(obj/item/gun_attachment/attachment, datum/event_args/actor/actor, silent, deleting)
 	ASSERT(attachment.attached == src)
+	var/mob/holding_mob = worn_mob()
+	if(holding_mob)
+		attachment.unregister_attachment_actions(holding_mob)
 	attachment.on_detach(src)
 	on_attachment_uninstall(attachment)
 	attachment.attached = null
