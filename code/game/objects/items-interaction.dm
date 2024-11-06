@@ -108,6 +108,7 @@
 	if(user.restrained())
 		return	// don't.
 		// todo: restraint levels, e.g. handcuffs vs straightjacket
+	// todo: this needs to check for user / actor indirection bullshit (e.g. someone does the clickdragging while controlling another mob)
 	if(!user.is_in_inventory(src))
 		// not being held
 		if(!isturf(loc))	// yea nah
@@ -140,11 +141,11 @@
 		// being held, check for attempt unequip
 		if(istype(over, /atom/movable/screen/inventory/plate/hand))
 			var/atom/movable/screen/inventory/plate/hand/H = over
-			user.put_in_hand(src, H.index)
+			user.put_in_hand(src, H.hand_index)
 			return CLICKCHAIN_DO_NOT_PROPAGATE
 		else if(istype(over, /atom/movable/screen/inventory/plate/slot))
 			var/atom/movable/screen/inventory/plate/slot/S = over
-			user.equip_to_slot_if_possible(src, S.slot_id)
+			user.equip_to_slot_if_possible(src, S.inventory_slot_id)
 			return CLICKCHAIN_DO_NOT_PROPAGATE
 		else if(istype(over, /turf))
 			user.drop_item_to_ground(src)

@@ -11,12 +11,69 @@
  */
 /datum/actor_hud
 	/// the mob we're bound to right now
-	var/mob/bound
+	///
+	/// * this is our actor
+	var/mob/actor
+	/// the client we're made for
+	///
+	/// * this is our controller
+	var/client/owner
+	/// our holder
+	///
+	/// * just a collection of actor huds
+	var/datum/actor_hud_holder/holder
+
+/datum/actor_hud/New(datum/actor_hud_holder/holder)
+	src.holder = holder
+	src.owner = holder.owner
 
 /datum/actor_hud/proc/bind_to_mob(mob/target)
-	if(bound == target)
-		return FALSE
-	bound = target
+	#warn component signals
+	actor = target
 	return TRUE
+
+/**
+ * returns all screens we should apply to a client
+ */
+/datum/actor_hud/proc/screens()
+	return list()
+
+/**
+ * returns all images we should apply to a client
+ */
+/datum/actor_hud/proc/images()
+	return list()
+
+/**
+ * wrapper; use this instead of directly editing client variables.
+ *
+ * * arg can be a list or a single object
+ */
+/datum/actor_hud/proc/add_screen(atom/movable/what)
+	owner.screens += what
+
+/**
+ * wrapper; use this instead of directly editing client variables.
+ *
+ * * arg can be a list or a single object
+ */
+/datum/actor_hud/proc/remove_screen(atom/movable/what)
+	owner.screens -= what
+
+/**
+ * wrapper; use this instead of directly editing client variables.
+ *
+ * * arg can be a list or a single object
+ */
+/datum/actor_hud/proc/add_image(image/what)
+	owner.images += what
+
+/**
+ * wrapper; use this instead of directly editing client variables.
+ *
+ * * arg can be a list or a single object
+ */
+/datum/actor_hud/proc/remove_image(image/what)
+	owner.images -= what
 
 #warn impl
