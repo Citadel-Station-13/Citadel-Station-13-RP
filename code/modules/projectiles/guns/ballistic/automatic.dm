@@ -560,9 +560,9 @@
 	ammo_type = /obj/item/ammo_casing/a7_62mm
 	max_shells =  15
 	firemodes = /datum/firemode{
-		burst_amount = 3,
-		burst_delay = 0.25 SECONDS,
-		cycle_cooldown = 0.72 SECONDS,
+		burst_amount = 3;
+		burst_delay = 0.25 SECONDS;
+		cycle_cooldown = 0.72 SECONDS;
 	}
 	burst_accuracy = list(60,30,15)
 	dispersion = list(0.0, 0.6,1.0)
