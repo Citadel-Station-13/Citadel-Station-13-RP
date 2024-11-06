@@ -62,7 +62,6 @@
 	var/initial_temperature = 500
 	var/initial_moles = 10
 	var/initial_heat_capacity = /datum/gas/oxygen::specific_heat * initial_moles
-	var/initial_energy = initial_temperature * initial_heat_capacity
 
 	// 5 pieces of the exchanger @ 40L each is touching a sim turf with a 5-large zone on it
 	var/cell_limit = 5
@@ -80,7 +79,7 @@
 	var/expected_temperature = initial_temperature + (estimated_midpoint - initial_temperature) * equalize_ratio * limit_ratio
 	var/expected_energy = expected_temperature * initial_heat_capacity
 
-	var/total_energy_old = XGM_THERMAL_ENERGY(test_turf.air) + initial_energy
+	var/total_energy_old = XGM_THERMAL_ENERGY(test_turf.air) + (initial_temperature * initial_heat_capacity)
 
 	var/actual_temperature_change = test_turf.air_thermal_superconduction(initial_temperature, initial_heat_capacity, limit_ratio, equalize_ratio, cell_limit)
 	var/actual_temperature = initial_temperature + actual_temperature_change
