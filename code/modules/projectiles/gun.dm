@@ -964,7 +964,7 @@
 				target = src,
 			)
 		return FALSE
-	if(!attachment.attachment_type & attachment_type_blacklist)
+	if(attachment.attachment_type & attachment_type_blacklist)
 		if(!silent)
 			actor?.chat_feedback(
 				SPAN_WARNING("[attachment] doesn't work with [src]!"),

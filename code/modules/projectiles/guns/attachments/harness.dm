@@ -38,7 +38,7 @@
 	))
 
 /obj/item/gun_attachment/harness/magnetic/ui_action_click(datum/action/action, datum/event_args/actor/actor)
-	set_active(!active)
+	set_active(!active, actor)
 
 /obj/item/gun_attachment/harness/magnetic/proc/on_drop(datum/source, mob/user, inv_op_flags, atom/new_loc)
 	SIGNAL_HANDLER
