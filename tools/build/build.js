@@ -7,13 +7,9 @@
  */
 
 import fs from 'fs';
-import https from 'https';
-import { env } from 'process';
 import Juke from './juke/index.js';
-import { DreamDaemon, DreamMaker, NamedVersionFile } from './lib/byond.js';
+import { DreamDaemon, DreamMaker } from './lib/byond.js';
 import { yarn } from './lib/yarn.js';
-
-const TGS_MODE = process.env.CBT_BUILD_MODE === 'TGS';
 
 Juke.chdir('../..', import.meta.url);
 Juke.setup({ file: import.meta.url }).then((code) => {
@@ -23,15 +19,7 @@ Juke.setup({ file: import.meta.url }).then((code) => {
     Juke.logger.error('Please inspect the error and close the window.');
     return;
   }
-
-  if (TGS_MODE) {
-    // workaround for ESBuild process lingering
-    // Once https://github.com/privatenumber/esbuild-loader/pull/354 is merged and updated to, this can be removed
-    setTimeout(() => process.exit(code), 10000);
-  }
-  else {
-    process.exit(code);
-  }
+  process.exit(code);
 });
 
 const DME_NAME = 'citadel';
@@ -46,20 +34,11 @@ export const PortParameter = new Juke.Parameter({
   alias: 'p',
 });
 
-export const DmVersionParameter = new Juke.Parameter({
-  type: 'string',
-});
-
 export const CiParameter = new Juke.Parameter({ type: 'boolean' });
 
 export const WarningParameter = new Juke.Parameter({
   type: 'string[]',
   alias: 'W',
-});
-
-export const NoWarningParameter = new Juke.Parameter({
-  type: 'string[]',
-  alias: 'I',
 });
 
 export const DmMapsIncludeTarget = new Juke.Target({
@@ -78,7 +57,7 @@ export const DmMapsIncludeTarget = new Juke.Target({
 });
 
 export const DmTarget = new Juke.Target({
-  parameters: [DefineParameter, DmVersionParameter, WarningParameter, NoWarningParameter],
+  parameters: [DefineParameter],
   dependsOn: ({ get }) => [
     get(DefineParameter).includes('ALL_MAPS') && DmMapsIncludeTarget,
   ],
@@ -88,31 +67,22 @@ export const DmTarget = new Juke.Target({
     'html/**',
     'icons/**',
     'interface/**',
-    'sound/**',
     `${DME_NAME}.dme`,
-    NamedVersionFile,
   ],
-  outputs: ({ get }) => {
-    if (get(DmVersionParameter)) {
-      return []; // Always rebuild when dm version is provided
-    }
-    return [
-      `${DME_NAME}.dmb`,
-      `${DME_NAME}.rsc`,
-    ]
-  },
+  outputs: [
+    `${DME_NAME}.dmb`,
+    `${DME_NAME}.rsc`,
+  ],
   executes: async ({ get }) => {
     await DreamMaker(`${DME_NAME}.dme`, {
       defines: ['CBT', ...get(DefineParameter)],
       warningsAsErrors: get(WarningParameter).includes('error'),
-      ignoreWarningCodes: get(NoWarningParameter),
-      namedDmVersion: get(DmVersionParameter),
     });
   },
 });
 
 export const DmTestTarget = new Juke.Target({
-  parameters: [DefineParameter, DmVersionParameter, WarningParameter, NoWarningParameter],
+  parameters: [DefineParameter],
   dependsOn: ({ get }) => [
     get(DefineParameter).includes('ALL_MAPS') && DmMapsIncludeTarget,
   ],
@@ -121,16 +91,10 @@ export const DmTestTarget = new Juke.Target({
     await DreamMaker(`${DME_NAME}.test.dme`, {
       defines: ['CBT', 'CIBUILDING', ...get(DefineParameter)],
       warningsAsErrors: get(WarningParameter).includes('error'),
-      ignoreWarningCodes: get(NoWarningParameter),
-      namedDmVersion: get(DmVersionParameter),
     });
     Juke.rm('data/logs/ci', { recursive: true });
-    const options = {
-      dmbFile : `${DME_NAME}.test.dmb`,
-      namedDmVersion: get(DmVersionParameter),
-    }
     await DreamDaemon(
-      options,
+      `${DME_NAME}.test.dmb`,
       '-close', '-trusted', '-verbose',
       '-params', 'log-directory=ci'
     );
@@ -180,7 +144,7 @@ export const TguiTarget = new Juke.Target({
     'tgui/.yarn/install-target',
     'tgui/webpack.config.js',
     'tgui/**/package.json',
-    'tgui/packages/**/*.+(js|cjs|ts|tsx|jsx|scss)',
+    'tgui/packages/**/*.+(js|cjs|ts|tsx|scss)',
   ],
   outputs: [
     'tgui/public/tgui.bundle.css',
@@ -245,15 +209,10 @@ export const BuildTarget = new Juke.Target({
 });
 
 export const ServerTarget = new Juke.Target({
-  parameters: [DmVersionParameter, PortParameter],
   dependsOn: [BuildTarget],
   executes: async ({ get }) => {
     const port = get(PortParameter) || '1337';
-    const options = {
-      dmbFile: `${DME_NAME}.dmb`,
-      namedDmVersion: get(DmVersionParameter),
-    }
-    await DreamDaemon(options, port, '-trusted');
+    await DreamDaemon(`${DME_NAME}.dmb`, port, '-trusted');
   },
 });
 
@@ -316,5 +275,7 @@ export const TgsTarget = new Juke.Target({
     prependDefines('TGS');
   },
 });
+
+const TGS_MODE = process.env.CBT_BUILD_MODE === 'TGS';
 
 export default TGS_MODE ? TgsTarget : BuildTarget;
