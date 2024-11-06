@@ -229,3 +229,7 @@ libprof.so
 
 # Screenshot tests
 /artifacts
+
+# ezdb
+/db/
+/config/ezdb.txt

@@ -1,8 +1,6 @@
 /**
  * make sure to bump schema version and mark changes in database_changelog.md!
  *
- * default prefix is rp_
- * find replace case sensitive %_PREFIX_%
  * PRESERVE ANY vr_'s! We need to replace those tables and features at some point, that's how we konw.
  **/
 
@@ -11,17 +9,17 @@
 --
 -- Table structure for table `schema_revision`
 --
-CREATE TABLE IF NOT EXISTS `%_PREFIX_%schema_revision` (
+CREATE TABLE IF NOT EXISTS `schema_revision` (
   `major` TINYINT(3) unsigned NOT NULL,
   `minor` TINYINT(3) unsigned NOT NULL,
-  `date` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `date` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`major`, `minor`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- persistence --
 
 -- SSpersistence modules/bulk_entity
-CREATE TABLE IF NOT EXISTS `%_PREFIX_%persistence_bulk_entity` (
+CREATE TABLE IF NOT EXISTS `persistence_bulk_entity` (
   `id` INT(24) NOT NULL AUTO_INCREMENT,
   `generation` INT(11) NOT NULL,
   `persistence_key` VARCHAR(64) NOT NULL,
@@ -34,7 +32,7 @@ CREATE TABLE IF NOT EXISTS `%_PREFIX_%persistence_bulk_entity` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- SSpersistence modules/level_objects
-CREATE TABLE IF NOT EXISTS `%_PREFIX_%persistence_static_level_objects` (
+CREATE TABLE IF NOT EXISTS `persistence_static_level_objects` (
   `generation` INT(11) NOT NULL,
   `object_id` VARCHAR(64) NOT NULL,
   `level_id` VARCHAR(64) NOT NULL,
@@ -43,7 +41,7 @@ CREATE TABLE IF NOT EXISTS `%_PREFIX_%persistence_static_level_objects` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- SSpersistence modules/level_objects
-CREATE TABLE IF NOT EXISTS `%_PREFIX_%persistence_static_map_objects` (
+CREATE TABLE IF NOT EXISTS `persistence_static_map_objects` (
   `generation` INT(11) NOT NULL,
   `object_id` VARCHAR(64) NOT NULL,
   `map_id` VARCHAR(64) NOT NULL,
@@ -52,7 +50,7 @@ CREATE TABLE IF NOT EXISTS `%_PREFIX_%persistence_static_map_objects` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- SSpersistence modules/level_objects
-CREATE TABLE IF NOT EXISTS `%_PREFIX_%persistence_static_global_objects` (
+CREATE TABLE IF NOT EXISTS `persistence_static_global_objects` (
   `generation` INT(11) NOT NULL,
   `object_id` VARCHAR(64) NOT NULL,
   `data` MEDIUMTEXT NOT NULL,
@@ -60,7 +58,7 @@ CREATE TABLE IF NOT EXISTS `%_PREFIX_%persistence_static_global_objects` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- SSpersistence modules/level_objects
-CREATE TABLE IF NOT EXISTS `%_PREFIX_%persistence_dynamic_objects` (
+CREATE TABLE IF NOT EXISTS `persistence_dynamic_objects` (
   `generation` INT(11) NOT NULL,
   `object_id` INT(24) NOT NULL AUTO_INCREMENT,
   `level_id` VARCHAR(64) NOT NULL,
@@ -76,7 +74,7 @@ CREATE TABLE IF NOT EXISTS `%_PREFIX_%persistence_dynamic_objects` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- SSpersistence modules/spatial_metadata
-CREATE TABLE IF NOT EXISTS `%_PREFIX_%persistence_level_metadata` (
+CREATE TABLE IF NOT EXISTS `persistence_level_metadata` (
   `created` DATETIME NOT NULL DEFAULT Now(),
   `saved` DATETIME NOT NULL,
   `saved_round_id` INT(11) NOT NULL,
@@ -87,7 +85,7 @@ CREATE TABLE IF NOT EXISTS `%_PREFIX_%persistence_level_metadata` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- SSpersistence modules/string_kv
-CREATE TABLE IF NOT EXISTS `%_PREFIX_%persistence_string_kv` (
+CREATE TABLE IF NOT EXISTS `persistence_string_kv` (
   `created` DATETIME NOT NULL DEFAULT Now(),
   `modified` DATETIME NOT NULL,
   `key` VARCHAR(64) NOT NULL,
@@ -102,7 +100,7 @@ CREATE TABLE IF NOT EXISTS `%_PREFIX_%persistence_string_kv` (
 --           picture table            --
 -- used to store data about pictures  --
 -- hash is in sha1 format.            --
-CREATE TABLE IF NOT EXISTS `%_PREFIX_%pictures` (
+CREATE TABLE IF NOT EXISTS `pictures` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `hash` char(40) NOT NULL,
   `created` datetime NOT NULL DEFAULT Now(),
@@ -115,14 +113,14 @@ CREATE TABLE IF NOT EXISTS `%_PREFIX_%pictures` (
 --             photograph table              --
 -- used to store data about photographs      --
 -- picture is picture hash in picture table  --
-CREATE TABLE IF NOT EXISTS `%_PREFIX_%photographs` (
+CREATE TABLE IF NOT EXISTS `photographs` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `picture` char(40) NOT NULL,
   `created` datetime NOT NULL DEFAULT Now(),
   `scene` MEDIUMTEXT null,
   `desc` MEDIUMTEXT null,
   CONSTRAINT `linked_picture` FOREIGN KEY (`picture`)
-  REFERENCES `%_PREFIX_%pictures` (`hash`)
+  REFERENCES `pictures` (`hash`)
   ON DELETE CASCADE
   ON UPDATE CASCADE,
   PRIMARY KEY (`id`)
@@ -133,7 +131,7 @@ CREATE TABLE IF NOT EXISTS `%_PREFIX_%photographs` (
 --           Player lookup table                   --
 -- Used to look up player ID from ckey, as well as --
 -- store last computerid/ip for a ckey.            --
-CREATE TABLE IF NOT EXISTS `%_PREFIX_%player_lookup` (
+CREATE TABLE IF NOT EXISTS `player_lookup` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `ckey` varchar(32) NOT NULL,
   `firstseen` datetime NOT NULL,
@@ -148,7 +146,7 @@ CREATE TABLE IF NOT EXISTS `%_PREFIX_%player_lookup` (
 
 --              Primary player table               --
 -- Allows for one-to-many player-ckey association. --
-CREATE TABLE IF NOT EXISTS `%_PREFIX_%player` (
+CREATE TABLE IF NOT EXISTS `player` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `flags` int(24) NOT NULL DEFAULT 0,
   `firstseen` datetime NOT NULL DEFAULT Now(),
@@ -162,7 +160,7 @@ CREATE TABLE IF NOT EXISTS `%_PREFIX_%player` (
 --      Role Time Table - Master     --
 -- Stores total role time.           --
 
-CREATE TABLE IF NOT EXISTS `%_PREFIX_%playtime` (
+CREATE TABLE IF NOT EXISTS `playtime` (
   `player` INT(11) NOT NULL,
   `roleid` VARCHAR(64) NOT NULL,
   `minutes` INT UNSIGNED NOT NULL,
@@ -171,7 +169,7 @@ CREATE TABLE IF NOT EXISTS `%_PREFIX_%playtime` (
 
 --      Role Time - Logging       --
 -- Stores changes in role time    --
-CREATE TABLE IF NOT EXISTS `%_PREFIX_%playtime_log` (
+CREATE TABLE IF NOT EXISTS `playtime_log` (
   `player` INT(11),
   `id` BIGINT(20) NOT NULL AUTO_INCREMENT,
   `roleid` VARCHAR(64) NOT NULL,
@@ -184,13 +182,13 @@ CREATE TABLE IF NOT EXISTS `%_PREFIX_%playtime_log` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 DELIMITER $$
-CREATE TRIGGER `playtimeTlogupdate` AFTER UPDATE ON `%_PREFIX_%playtime` FOR EACH ROW BEGIN INSERT into `%_PREFIX_%playtime_log` (player, roleid, delta) VALUES (NEW.player, NEW.roleid, NEW.minutes-OLD.minutes);
+CREATE TRIGGER `playtimeTlogupdate` AFTER UPDATE ON `playtime` FOR EACH ROW BEGIN INSERT into `playtime_log` (player, roleid, delta) VALUES (NEW.player, NEW.roleid, NEW.minutes-OLD.minutes);
 END
 $$
-CREATE TRIGGER `playtimeTloginsert` AFTER INSERT ON `%_PREFIX_%playtime` FOR EACH ROW BEGIN INSERT into `%_PREFIX_%playtime_log` (player, roleid, delta) VALUES (NEW.player, NEW.roleid, NEW.minutes);
+CREATE TRIGGER `playtimeTloginsert` AFTER INSERT ON `playtime` FOR EACH ROW BEGIN INSERT into `playtime_log` (player, roleid, delta) VALUES (NEW.player, NEW.roleid, NEW.minutes);
 END
 $$
-CREATE TRIGGER `playtimeTlogdelete` AFTER DELETE ON `%_PREFIX_%playtime` FOR EACH ROW BEGIN INSERT into `%_PREFIX_%playtime_log` (player, roleid, delta) VALUES (OLD.player, OLD.roleid, 0-OLD.minutes);
+CREATE TRIGGER `playtimeTlogdelete` AFTER DELETE ON `playtime` FOR EACH ROW BEGIN INSERT into `playtime_log` (player, roleid, delta) VALUES (OLD.player, OLD.roleid, 0-OLD.minutes);
 END
 $$
 DELIMITER ;
@@ -199,7 +197,7 @@ DELIMITER ;
 -- Preferences --
 
 -- Stores game preferences --
-CREATE TABLE IF NOT EXISTS `%_PREFIX_%game_preferences` (
+CREATE TABLE IF NOT EXISTS `game_preferences` (
   `player` INT(11) NOT NULL,
   `entries` MEDIUMTEXT NOT NULL,
   `misc` MEDIUMTEXT NOT NULL,
@@ -209,7 +207,7 @@ CREATE TABLE IF NOT EXISTS `%_PREFIX_%game_preferences` (
   `version` INT(11) NOT NULL,
   PRIMARY KEY (`player`),
   CONSTRAINT `linked_player` FOREIGN KEY (`player`)
-  REFERENCES `%_PREFIX_%player` (`id`)
+  REFERENCES `player` (`id`)
   ON DELETE CASCADE
   ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -219,7 +217,7 @@ CREATE TABLE IF NOT EXISTS `%_PREFIX_%game_preferences` (
 --        Ipintel Cache Table       --
 -- Stores cache entries for IPIntel --
 -- IP is in INET_ATON.              --
-CREATE TABLE IF NOT EXISTS `%_PREFIX_%ipintel` (
+CREATE TABLE IF NOT EXISTS `ipintel` (
   `ip` INT(10) unsigned NOT NULL,
   `date` TIMESTAMP NOT NULL DEFAULT NOW() ON UPDATE NOW(),
   `intel` double NOT NULL DEFAULT '0',
@@ -230,7 +228,7 @@ CREATE TABLE IF NOT EXISTS `%_PREFIX_%ipintel` (
 --
 -- Table structure for table `round`
 --
-CREATE TABLE IF NOT EXISTS `%_PREFIX_%round` (
+CREATE TABLE IF NOT EXISTS `round` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
   `initialize_datetime` DATETIME NOT NULL,
   `start_datetime` DATETIME NULL,
@@ -244,7 +242,7 @@ CREATE TABLE IF NOT EXISTS `%_PREFIX_%round` (
 
 --            Connection log           --
 -- Logs all connections to the server. --
-CREATE TABLE IF NOT EXISTS `%_PREFIX_%connection_log` (
+CREATE TABLE IF NOT EXISTS `connection_log` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
   `datetime` datetime NOT NULL,
   `serverip` varchar(45) NOT NULL,
@@ -255,7 +253,7 @@ CREATE TABLE IF NOT EXISTS `%_PREFIX_%connection_log` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- /datum/character - Character Table --
-CREATE TABLE IF NOT EXISTS `%_PREFIX_%character` (
+CREATE TABLE IF NOT EXISTS `character` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
   `created` DATETIME NOT NULL DEFAULT Now(),
   `last_played` DATETIME NULL,
@@ -266,13 +264,13 @@ CREATE TABLE IF NOT EXISTS `%_PREFIX_%character` (
   `character_type` VARCHAR(64) NOT NULL,
   PRIMARY KEY(`id`),
   CONSTRAINT `character_has_player` FOREIGN KEY (`playerid`)
-  REFERENCES `%_PREFIX_%player` (`id`)
+  REFERENCES `player` (`id`)
   ON DELETE CASCADE
   ON UPDATE CASCADE,
   UNIQUE (`playerid`, `canonical_name`, `character_type`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-CREATE TABLE IF NOT EXISTS `%_PREFIX_%admin` (
+CREATE TABLE IF NOT EXISTS `admin` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `ckey` varchar(32) NOT NULL,
   `rank` varchar(32) NOT NULL DEFAULT 'Administrator',
@@ -281,7 +279,7 @@ CREATE TABLE IF NOT EXISTS `%_PREFIX_%admin` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-CREATE TABLE IF NOT EXISTS `%_PREFIX_%admin_log` (
+CREATE TABLE IF NOT EXISTS `admin_log` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `datetime` datetime NOT NULL,
   `adminckey` varchar(32) NOT NULL,
@@ -290,7 +288,7 @@ CREATE TABLE IF NOT EXISTS `%_PREFIX_%admin_log` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-CREATE TABLE IF NOT EXISTS `%_PREFIX_%ban` (
+CREATE TABLE IF NOT EXISTS `ban` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `bantime` datetime NOT NULL,
   `serverip` varchar(32) NOT NULL,
@@ -317,7 +315,7 @@ CREATE TABLE IF NOT EXISTS `%_PREFIX_%ban` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-CREATE TABLE IF NOT EXISTS `%_PREFIX_%feedback` (
+CREATE TABLE IF NOT EXISTS `feedback` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `time` datetime NOT NULL,
   `round_id` int(8) NOT NULL,
@@ -325,9 +323,9 @@ CREATE TABLE IF NOT EXISTS `%_PREFIX_%feedback` (
   `var_value` int(16) DEFAULT NULL,
   `details` text,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-CREATE TABLE IF NOT EXISTS `%_PREFIX_%poll_option` (
+CREATE TABLE IF NOT EXISTS `poll_option` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `pollid` int(11) NOT NULL,
   `text` varchar(255) NOT NULL,
@@ -340,7 +338,7 @@ CREATE TABLE IF NOT EXISTS `%_PREFIX_%poll_option` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-CREATE TABLE IF NOT EXISTS `%_PREFIX_%poll_question` (
+CREATE TABLE IF NOT EXISTS `poll_question` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `polltype` varchar(16) NOT NULL DEFAULT 'OPTION',
   `starttime` datetime NOT NULL,
@@ -350,7 +348,7 @@ CREATE TABLE IF NOT EXISTS `%_PREFIX_%poll_question` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-CREATE TABLE IF NOT EXISTS `%_PREFIX_%poll_textreply` (
+CREATE TABLE IF NOT EXISTS `poll_textreply` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `datetime` datetime NOT NULL,
   `pollid` int(11) NOT NULL,
@@ -361,7 +359,7 @@ CREATE TABLE IF NOT EXISTS `%_PREFIX_%poll_textreply` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-CREATE TABLE IF NOT EXISTS `%_PREFIX_%poll_vote` (
+CREATE TABLE IF NOT EXISTS `poll_vote` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `datetime` datetime NOT NULL,
   `pollid` int(11) NOT NULL,
@@ -373,7 +371,7 @@ CREATE TABLE IF NOT EXISTS `%_PREFIX_%poll_vote` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-CREATE TABLE IF NOT EXISTS `%_PREFIX_%privacy` (
+CREATE TABLE IF NOT EXISTS `privacy` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `datetime` datetime NOT NULL,
   `ckey` varchar(32) NOT NULL,
@@ -381,7 +379,7 @@ CREATE TABLE IF NOT EXISTS `%_PREFIX_%privacy` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-CREATE TABLE IF NOT EXISTS `%_PREFIX_%death` (
+CREATE TABLE IF NOT EXISTS `death` (
   `id` INT(11) NOT NULL AUTO_INCREMENT ,
   `pod` TEXT NOT NULL COMMENT 'Place of death' ,
   `coord` TEXT NOT NULL COMMENT 'X, Y, Z POD' ,
@@ -400,7 +398,7 @@ CREATE TABLE IF NOT EXISTS `%_PREFIX_%death` (
   PRIMARY KEY (`id`)
   ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-CREATE TABLE IF NOT EXISTS `%_PREFIX_%karma` (
+CREATE TABLE IF NOT EXISTS `karma` (
   `id` INT(11) NOT NULL AUTO_INCREMENT ,
   `spendername` TEXT NOT NULL ,
   `spenderkey` TEXT NOT NULL ,
@@ -414,14 +412,14 @@ CREATE TABLE IF NOT EXISTS `%_PREFIX_%karma` (
   PRIMARY KEY (`id`)
   ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-CREATE TABLE IF NOT EXISTS `%_PREFIX_%karmatotals` (
+CREATE TABLE IF NOT EXISTS `karmatotals` (
   `id` INT(11) NOT NULL AUTO_INCREMENT ,
   `byondkey` TEXT NOT NULL ,
   `karma` INT(11) NOT NULL ,
   PRIMARY KEY (`id`)
   ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-CREATE TABLE IF NOT EXISTS `%_PREFIX_%library` (
+CREATE TABLE IF NOT EXISTS `library` (
   `id` INT(11) NOT NULL AUTO_INCREMENT ,
   `author` TEXT NOT NULL ,
   `title` TEXT NOT NULL ,
@@ -430,7 +428,7 @@ CREATE TABLE IF NOT EXISTS `%_PREFIX_%library` (
   PRIMARY KEY (`id`)
   ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-CREATE TABLE IF NOT EXISTS `%_PREFIX_%population` (
+CREATE TABLE IF NOT EXISTS `population` (
   `id` INT(11) NOT NULL AUTO_INCREMENT ,
   `playercount` INT(11) NULL DEFAULT NULL ,
   `admincount` INT(11) NULL DEFAULT NULL ,

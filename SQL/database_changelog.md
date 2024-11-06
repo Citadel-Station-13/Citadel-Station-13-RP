@@ -27,3 +27,9 @@ Database migrated to DBCore. Schema will start at MAJOR 1, MINOR 1.
 ### 2/4/23 - 1.3 - silicons
 
 `character` table added.
+
+### 11/6/24 - 1.3 - lettern (no version bump)
+
+removed schema `%_PREFIX_%` prefix as this will break ezdb
+convert all encoding to use `utf8mb4`
+made updating `schema_revision` entry update its time to `CURRENT_TIMESTAMP`

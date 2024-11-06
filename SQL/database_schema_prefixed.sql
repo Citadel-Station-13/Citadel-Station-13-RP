@@ -14,7 +14,7 @@
 CREATE TABLE IF NOT EXISTS `rp_schema_revision` (
   `major` TINYINT(3) unsigned NOT NULL,
   `minor` TINYINT(3) unsigned NOT NULL,
-  `date` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `date` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`major`, `minor`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -325,7 +325,7 @@ CREATE TABLE IF NOT EXISTS `rp_feedback` (
   `var_value` int(16) DEFAULT NULL,
   `details` text,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 CREATE TABLE IF NOT EXISTS `rp_poll_option` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
