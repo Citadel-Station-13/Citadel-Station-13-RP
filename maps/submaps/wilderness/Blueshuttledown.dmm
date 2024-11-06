@@ -207,12 +207,6 @@
 	name = "Unknown Shuttle"
 	},
 /area/submap/Blackshuttledown)
-"aH" = (
-/turf/simulated/shuttle/wall/dark{
-	icon_state = "dark6";
-	name = "Unknown Shuttle"
-	},
-/area/submap/Blackshuttledown)
 "aI" = (
 /mob/living/simple_mob/mechanical/viscerator/mercenary,
 /mob/living/simple_mob/mechanical/viscerator/mercenary,
@@ -363,12 +357,6 @@
 "be" = (
 /obj/machinery/door/airlock/glass,
 /turf/simulated/floor/tiled/white,
-/area/submap/Blackshuttledown)
-"bf" = (
-/turf/simulated/shuttle/wall/dark{
-	icon_state = "dark10";
-	name = "Unknown Shuttle"
-	},
 /area/submap/Blackshuttledown)
 "bg" = (
 /obj/machinery/computer/communications,
@@ -765,18 +753,6 @@
 /obj/machinery/light,
 /turf/simulated/floor/tiled/steel,
 /area/submap/Blackshuttledown)
-"cp" = (
-/turf/simulated/shuttle/wall/dark{
-	icon_state = "dark5";
-	name = "Unknown Shuttle"
-	},
-/area/submap/Blackshuttledown)
-"cq" = (
-/turf/simulated/shuttle/wall/dark{
-	icon_state = "dark9";
-	name = "Unknown Shuttle"
-	},
-/area/submap/Blackshuttledown)
 "cr" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 4
@@ -1032,7 +1008,7 @@ ab
 ab
 ab
 ab
-aH
+ai
 aj
 bq
 bx
@@ -1068,7 +1044,7 @@ ab
 ab
 ab
 ab
-aH
+ai
 aj
 bg
 br
@@ -1104,7 +1080,7 @@ ai
 aj
 aj
 av
-aH
+ai
 aj
 bb
 bh
@@ -1116,10 +1092,10 @@ bF
 bT
 aj
 av
-aH
+ai
 aj
 aj
-cp
+av
 ab
 ab
 ab
@@ -1267,7 +1243,7 @@ cc
 ch
 aj
 aj
-cq
+aG
 ab
 ab
 ae
@@ -1711,7 +1687,7 @@ bw
 cf
 cg
 aj
-cp
+av
 ab
 ab
 ad
@@ -1846,7 +1822,7 @@ aj
 aj
 aG
 ab
-bf
+ak
 aj
 aD
 aN
@@ -1855,7 +1831,7 @@ bI
 aj
 aG
 ab
-bf
+ak
 aj
 aj
 aj
@@ -1884,7 +1860,7 @@ aG
 ab
 ab
 ab
-bf
+ak
 al
 al
 al
@@ -1893,10 +1869,10 @@ aG
 ab
 ab
 ab
-bf
+ak
 al
 al
-cq
+aG
 ad
 ad
 ad

@@ -1,4 +1,4 @@
-/datum/material/resin
+/datum/prototype/material/resin
 	id = "xenoresin"
 	name = "resin"
 	icon_colour = "#261438"
@@ -26,7 +26,7 @@
 	absorption = MATERIAL_RESISTANCE_VULNERABLE
 	nullification = MATERIAL_RESISTANCE_VERY_VULNERABLE
 
-/datum/material/resin/generate_recipes()
+/datum/prototype/material/resin/generate_recipes()
 	. = ..()
 	. += create_stack_recipe_datum(
 		name = "resin nest",
@@ -54,13 +54,13 @@
 		time = 2 SECONDS,
 	)
 
-/datum/material/resin/can_open_material_door(var/mob/living/user)
+/datum/prototype/material/resin/can_open_material_door(var/mob/living/user)
 	var/mob/living/carbon/M = user
 	if(istype(M) && locate(/obj/item/organ/internal/xenos/hivenode) in M.internal_organs)
 		return 1
 	return 0
 
-/datum/material/resin/wall_touch_special(var/turf/simulated/wall/W, var/mob/living/L)
+/datum/prototype/material/resin/wall_touch_special(var/turf/simulated/wall/W, var/mob/living/L)
 	var/mob/living/carbon/M = L
 	if(istype(M) && locate(/obj/item/organ/internal/xenos/hivenode) in M.internal_organs)
 		to_chat(M, "<span class='alien'>\The [W] shudders under your touch, starting to become porous.</span>")

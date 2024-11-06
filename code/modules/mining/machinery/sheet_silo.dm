@@ -67,7 +67,7 @@
 	. = ..()
 	var/list/transformed_sheets = list()
 	for(var/id in sheets_by_material)
-		var/datum/material/mat = SSmaterials.resolve_material(id)
+		var/datum/prototype/material/mat = RSmaterials.fetch(id)
 		if(isnull(mat))
 			continue
 		if(!persistence_allow_overpowered && (mat.material_flags & MATERIAL_FLAG_CONSIDERED_OVERPOWERED))
@@ -111,7 +111,7 @@
 			amount = clamp(amount, 0, sheets_by_material[id])
 			if(!amount)
 				return TRUE
-			var/datum/material/dropping = SSmaterials.resolve_material(id)
+			var/datum/prototype/material/dropping = RSmaterials.fetch(id)
 			if(isnull(dropping))
 				return TRUE
 			// todo: ughh

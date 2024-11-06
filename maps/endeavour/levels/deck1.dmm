@@ -28401,7 +28401,7 @@
 /obj/item/suit_cooling_unit,
 /obj/item/reagent_containers/hypospray/autoinjector/biginjector/healing_nanites,
 /obj/item/bluespace_radio{
-	desc = "A long range transciever set, designed to facilitate communication with a home base while away from a ship-based equipment.";
+	desc = "A long range transceiver set, designed to facilitate communication with a home base while away from a ship-based equipment.";
 	name = "SCR-3000 Surface To Orbit Radio"
 	},
 /turf/simulated/floor/tiled,

@@ -262,7 +262,7 @@
 				obj_flags |= string_to_objflag[flag]
 
 /obj/Destroy()
-	for(var/datum/material_trait/trait as anything in material_traits)
+	for(var/datum/prototype/material_trait/trait as anything in material_traits)
 		trait.on_remove(src, material_traits[trait])
 	if(IS_TICKING_MATERIALS(src))
 		STOP_TICKING_MATERIALS(src)
@@ -845,7 +845,7 @@
 		. += examine_integrity(user)
 	var/list/parts = get_material_parts()
 	for(var/key in parts)
-		var/datum/material/mat = parts[key]
+		var/datum/prototype/material/mat = parts[key]
 		if(isnull(mat)) // 'none' option
 			continue
 		. += "Its [key] is made out of [mat.display_name]"

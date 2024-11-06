@@ -73,7 +73,7 @@
 /obj/structure/barricade/cutout/examine(mob/user, dist)
 	. = ..()
 	if(dist <= 1)
-		var/datum/material/primary = get_primary_material()
+		var/datum/prototype/material/primary = get_primary_material()
 		. += SPAN_NOTICE("... from this distance, they seem to be made of [isnull(primary)? "cardboard" : primary.name] ...")
 
 /obj/structure/barricade/cutout/attackby(obj/I, mob/user)

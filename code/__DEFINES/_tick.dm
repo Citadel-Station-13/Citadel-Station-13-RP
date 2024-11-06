@@ -33,6 +33,10 @@
 #define CHECK_TICK ( TICK_CHECK ? stoplag() : 0 )
 
 /// Returns true if tick usage is above 95, for high priority usage
-#define TICK_CHECK_HIGH_PRIORITY ( TICK_USAGE > 95 )
+///
+/// * Use for admin functions so they stay responsive and functional during lag.
+#define TICK_CHECK_HIGH_PRIORITY ( TICK_USAGE > 99 )
 /// runs stoplag if tick_usage is above 95, for high priority usage
+///
+/// * Use for admin functions so they stay responsive and functional during lag.
 #define CHECK_TICK_HIGH_PRIORITY ( TICK_CHECK_HIGH_PRIORITY? stoplag() : 0 )

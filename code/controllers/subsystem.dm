@@ -51,6 +51,7 @@
 	//var/init_stage = INITSTAGE_MAIN
 
 	/// This var is set to TRUE after the subsystem has been initialized.
+	// todo: see __DEFINES/controllers/_subsystems.dm; this shouldn't just be TRUE / FALSE
 	var/initialized = FALSE
 
 	/**

@@ -35,7 +35,7 @@
 				return
 
 		if(1)
-			if(I.is_material_stack_of(/datum/material/steel))
+			if(I.is_material_stack_of(/datum/prototype/material/steel))
 				var/obj/item/stack/M = I
 				if(M.use(2))
 					to_chat(user, "<span class='notice'>You add some metal armor to the interior frame.</span>")
@@ -115,7 +115,7 @@
 			//attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 
 		if(6)
-			if(I.is_material_stack_of(/datum/material/steel))
+			if(I.is_material_stack_of(/datum/prototype/material/steel))
 				var/obj/item/stack/M = I
 				if(M.use(2))
 					to_chat(user, "<span class='notice'>You add some metal armor to the exterior frame.</span>")
