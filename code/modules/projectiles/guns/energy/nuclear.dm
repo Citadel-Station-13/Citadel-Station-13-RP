@@ -97,7 +97,6 @@
 	charge_cost = 20
 	damage_force = 8
 	w_class = WEIGHT_CLASS_BULKY
-	fire_delay = 3
 	projectile_type = /obj/projectile/beam/excavation
 	origin_tech = list(TECH_COMBAT = 4, TECH_MAGNET = 2, TECH_ILLEGAL = 2)
 	modifystate = "fm-2tstun"
@@ -107,7 +106,7 @@
 		/datum/firemode/energy/mining_carbine/mine_burst,
 		/datum/firemode/energy/mining_carbine/scatter,
 		/datum/firemode/energy/mining_carbine/scatter_burst,
-			)
+	)
 
 /obj/item/gun/energy/gun/nuclear
 	name = "advanced energy gun"

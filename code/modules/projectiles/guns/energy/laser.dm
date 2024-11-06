@@ -109,7 +109,6 @@
 	origin_tech = list(TECH_COMBAT = 8, TECH_MAGNET = 7)
 	modifystate = "alienpistol"
 
-
 /obj/item/gun/energy/captain
 	name = "antique laser gun"
 	icon_state = "caplaser"
@@ -120,7 +119,6 @@
 	w_class = WEIGHT_CLASS_NORMAL
 	projectile_type = /obj/projectile/beam
 	origin_tech = null
-	fire_delay = 10		//Old pistol
 	charge_cost = 480	//to compensate a bit for self-recharging
 	cell_type = /obj/item/cell/device/weapon/recharge/captain
 	legacy_battery_lock = 1
@@ -133,8 +131,10 @@
 	origin_tech = list(TECH_COMBAT = 4, TECH_MATERIAL = 3, TECH_POWER = 3)
 	slot_flags = SLOT_BELT|SLOT_BACK
 	projectile_type = /obj/projectile/beam/heavylaser/cannon
+	firemodes = /datum/firemode/energy{
+		cycle_cooldown = 2 SECONDS;
+	}
 	legacy_battery_lock = 1
-	fire_delay = 20
 	w_class = WEIGHT_CLASS_BULKY
 	heavy = TRUE
 	one_handed_penalty = 90 // The thing's heavy and huge.
@@ -150,7 +150,6 @@
 	one_handed_penalty = 0 // Not sure if two-handing gets checked for mounted weapons, but better safe than sorry.
 	projectile_type = /obj/projectile/beam/heavylaser
 	charge_cost = 400
-	fire_delay = 20
 
 /obj/item/gun/energy/xray
 	name = "xray laser gun"
@@ -178,9 +177,11 @@
 	worth_intrinsic = 750
 
 	projectile_type = /obj/projectile/beam/sniper
+	firemodes = /datum/firemode/energy{
+		cycle_cooldown = 3.5 SECONDS;
+	}
 	slot_flags = SLOT_BACK
 	charge_cost = 600
-	fire_delay = 35
 	damage_force = 10
 	heavy = TRUE
 	w_class = WEIGHT_CLASS_HUGE // So it can't fit in a backpack.
@@ -217,7 +218,6 @@
 	projectile_type = /obj/projectile/beam/sniper
 	slot_flags = SLOT_BACK
 	charge_cost = 1300
-	fire_delay = 20
 	damage_force = 8
 	heavy = TRUE
 	w_class = WEIGHT_CLASS_BULKY
@@ -336,7 +336,9 @@
 	desc = "A sturdy laser rifle fine tuned for Nanotrasen special operations. More reliable than mass production models, this weapon was designed to kill, and nothing else."
 	icon_state = "clrifle"
 	item_state = "clrifle"
-	fire_delay = 6
+	firemodes = /datum/firemode/energy{
+		cycle_cooldown = 0.6 SECONDS;
+	}
 	slot_flags = SLOT_BELT|SLOT_BACK
 	w_class = WEIGHT_CLASS_BULKY
 	damage_force = 10

@@ -49,7 +49,7 @@
 	if(!length(firemodes))
 		return
 	var/datum/firemode/new_mode = firemodes[1]
-	new_mode.apply_to(src)
+	new_mode.apply_legacy_variables(src)
 
 /obj/item/gun/energy/modular/proc/do_generatefiremodes() //Accepts no args. Checks the gun's current components and generates projectile types, firemode costs and max burst. Should be called after changing parts or part values.
 	if(!circuit)
@@ -188,7 +188,7 @@
 	if(projectile_type == /obj/projectile)
 		to_chat(user, "<span class='warning'>The gun is experiencing a checking error! Open and close the weapon, or try removing all the parts and placing them back in.</span>")
 		var/datum/firemode/new_mode = firemodes[1]
-		new_mode.apply_to(src)
+		new_mode.apply_legacy_variables(src)
 		return FALSE
 
 /obj/item/gun/energy/modular/attackby(obj/item/I, mob/living/user, list/params, clickchain_flags, damage_multiplier)
