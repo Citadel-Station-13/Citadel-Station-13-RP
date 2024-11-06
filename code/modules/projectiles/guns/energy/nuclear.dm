@@ -23,7 +23,6 @@
 	self_recharge = 1
 	use_external_power = 1
 
-
 /obj/item/gun/energy/gun/burst
 	name = "burst laser"
 	desc = "The FM-2t is a versatile energy based weapon, capable of switching between stun or kill with a three round burst option for both settings."

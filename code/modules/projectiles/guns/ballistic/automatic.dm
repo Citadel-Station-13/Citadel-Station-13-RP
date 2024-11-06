@@ -123,6 +123,23 @@
 /obj/item/gun/ballistic/automatic/wt550/lethal
 	magazine_type = /obj/item/ammo_magazine/a9mm/top_mount
 
+/datum/firemode/z8_bulldog
+	burst_delay = 2
+
+/datum/firemode/z8_bulldog/one
+	name = "semiauto"
+	burst_amount = 1
+	legacy_direct_varedits = list(use_launcher=null, burst_accuracy=null, dispersion=null)
+
+/datum/firemode/z8_bulldog/two
+	name = "2-round bursts"
+	burst_amount = 2
+	legacy_direct_varedits = list(use_launcher=null, burst_accuracy=list(60,45), dispersion=list(0.0, 0.6))
+
+/datum/firemode/z8_bulldog/grenade
+	name = "fire grenades"
+	legacy_direct_varedits = list(use_launcher=1,    burst_accuracy=null, dispersion=null)
+
 /obj/item/gun/ballistic/automatic/z8
 	name = "designated marksman rifle"
 	desc = "The Z8 Bulldog is an older model designated marksman rifle, made by the now defunct Zendai Foundries. Makes you feel like a space marine when you hold it, even though it can only hold 10 round magazines. Uses 7.62mm rounds and has an under barrel grenade launcher."
@@ -146,12 +163,11 @@
 	one_handed_penalty = 60
 	worth_intrinsic = 650 // milrp time
 
-	burst_delay = 4
 	firemodes = list(
-		list(mode_name="semiauto",       burst=1,    fire_delay=0,    move_delay=null, use_launcher=null, burst_accuracy=null, dispersion=null),
-		list(mode_name="2-round bursts", burst=2,    fire_delay=null, move_delay=6,    use_launcher=null, burst_accuracy=list(60,45), dispersion=list(0.0, 0.6)),
-		list(mode_name="fire grenades",  burst=null, fire_delay=null, move_delay=null, use_launcher=1,    burst_accuracy=null, dispersion=null)
-		)
+		/datum/firemode/z8_bulldog/one,
+		/datum/firemode/z8_bulldog/two,
+		/datum/firemode/z8_bulldog/grenade,
+	)
 
 	var/use_launcher = 0
 	var/obj/item/gun/launcher/grenade/underslung/launcher
@@ -543,8 +559,11 @@
 	load_method = SPEEDLOADER
 	ammo_type = /obj/item/ammo_casing/a7_62mm
 	max_shells =  15
-	burst = 3
-	fire_delay = 7.2
+	firemodes = /datum/firemode{
+		burst_amount = 3,
+		burst_delay = 0.25 SECONDS,
+		cycle_cooldown = 0.72 SECONDS,
+	}
 	burst_accuracy = list(60,30,15)
 	dispersion = list(0.0, 0.6,1.0)
 

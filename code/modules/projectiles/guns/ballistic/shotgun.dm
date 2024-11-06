@@ -160,8 +160,6 @@
 	origin_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 1)
 	ammo_type = /obj/item/ammo_casing/a12g/beanbag
 
-
-	burst_delay = 0
 	firemodes = list(
 		list(mode_name="fire one barrel at a time", one_handed_penalty = 15, burst=1),
 		list(mode_name="fire both barrels at once", one_handed_penalty = 35, burst=2),
@@ -187,12 +185,9 @@
 	if(istype(A, /obj/item/surgical/circular_saw) || istype(A, /obj/item/melee/transforming/energy) || istype(A, /obj/item/pickaxe/plasmacutter))
 		to_chat(user, "<span class='notice'>You begin to shorten the barrel of \the [src].</span>")
 		if(loaded.len)
-			var/burstsetting = burst
-			burst = 2
 			// todo: what happens if it's inside a container?
 			user.visible_message("<span class='danger'>The shotgun goes off!</span>", "<span class='danger'>The shotgun goes off in your face!</span>")
-			start_firing_cycle_async(src, rand(0, 360))
-			burst = burstsetting
+			start_firing_cycle_async(src, rand(0, 360), firemode = firemodes[2])
 			return
 		if(do_after(user, 30))	//SHIT IS STEALTHY EYYYYY
 			icon_state = "sawnshotgun"
@@ -245,11 +240,9 @@
 	origin_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 1)
 	ammo_type = /obj/item/ammo_casing/a12g/pellet
 
-	burst_delay = 0
-
 	firemodes = list(
 		list(mode_name="fire one barrel at a time", burst=1),
-		)
+	)
 
 /obj/item/gun/ballistic/shotgun/doublebarrel/sawn/super
 	name = "super shotgun"

@@ -10,7 +10,7 @@
 	SHOULD_NOT_OVERRIDE(TRUE)
 	var/is_full = FALSE
 	#warn slot enforcement
-	return force || component.fits_on_gun(src, fits_modular_component(component), is_full, datum/event_args/actor/actor, silent)
+	return force || component.fits_on_gun(src, fits_modular_component(component), is_full, actor, silent)
 
 /**
  * checks if we can attach a component; component gets final say

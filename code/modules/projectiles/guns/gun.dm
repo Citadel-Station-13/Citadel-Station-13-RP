@@ -285,25 +285,8 @@
 		to_chat(user, SPAN_NOTICE("The safety is [check_safety() ? "on" : "off"]."))
 	#warn component examine
 
-/obj/item/gun/CtrlClick(mob/user)
-	if(can_flashlight && ishuman(user) && src.loc == usr && !user.incapacitated(INCAPACITATION_ALL))
-		toggle_flashlight()
-	else
-		return ..()
-
 /obj/item/gun/CanItemAutoclick(object, location, params)
 	. = automatic
-
-/obj/item/gun/proc/toggle_flashlight()
-	if(gun_light)
-		set_light(0)
-		gun_light = FALSE
-	else
-		set_light(light_brightness)
-		gun_light = TRUE
-
-	playsound(src, 'sound/machines/button.ogg', 25)
-	update_icon()
 
 /obj/item/gun/update_twohanding()
 	if(one_handed_penalty)

@@ -304,7 +304,9 @@
 	name = "autorevolver"
 	icon_state = "mosley"
 	desc = "A shiny Mosley Autococker automatic revolver, with black accents. Marketed as the 'Revolver for the Modern Era'. Uses .44 magnum rounds."
-	fire_delay = 5.7 //Autorevolver. Also synced with the animation
+	firemodes = /datum/firemode{
+		cycle_cooldown = 0.5 SECONDS,
+	}
 	fire_anim = "mosley_fire"
 	origin_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 2)
 
@@ -330,7 +332,9 @@
 	desc = "The NT-R-7 'Ogre' combat revolver is tooled for Nanotrasen special operations. Chambered in .44 Magnum with an advanced high-speed firing mechanism, it serves as the perfect sidearm for any off the books endeavor."
 	icon_state = "combatrevolver"
 	caliber = /datum/ammo_caliber/a44
-	fire_delay = 5.7
+	firemodes = /datum/firemode{
+		cycle_cooldown = 0.5 SECONDS,
+	}
 	origin_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 3)
 	ammo_type = /obj/item/ammo_casing/a44
 
