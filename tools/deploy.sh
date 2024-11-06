@@ -37,7 +37,7 @@ cp -r strings/* $1/strings/
 # tgui artifacts: sent to clients, should be present at runtime
 cp -r tgui/public/* $1/tgui/public/
 # tgfont artifacts: sent to clients, should be present at runtime
-# cp -r tgui/packages/tgfont/dist/* $1/tgui/packages/tgfont/dist/
+cp -r tgui/packages/tgfont/dist/* $1/tgui/packages/tgfont/dist/
 
 #dlls on windows
 if [ "$(uname -o)" = "Msys" ]; then
