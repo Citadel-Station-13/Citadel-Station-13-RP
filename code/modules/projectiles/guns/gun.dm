@@ -15,6 +15,9 @@
 	/// delay between burst shots
 	var/burst_delay = 0.2 SECONDS
 
+	/// delay **after** the firing cycle which we cannot fire
+	var/cooldown = 0.4 SECONDS
+
 	//* rendering *//
 	/// state key for rendering, if any
 	var/render_key
@@ -33,7 +36,7 @@
 		else
 			settings[propname] = propvalue
 
-	#warn automatically pull burst amount/delay from list and set
+	#warn automatically pull `burst`, `fire_delay`, `burst_delay` from list and set
 
 /datum/firemode/proc/apply_to(obj/item/gun/gun)
 	for(var/propname in settings)
@@ -88,12 +91,13 @@
 	///
 	/// * static var; technically can collide. realistically, won't.
 	var/static/firing_cycle_next = 0
+	/// last world.time we fired a shot
+	var/last_fire = 0
+	/// next world.time we can start a firing cycle
+	var/next_fire = 0
 
 	// legacy below //
 
-	var/burst = 1
-	var/fire_delay = 6 	//delay after shooting before the gun can be used again
-	var/burst_delay = 2	//delay between shots, if firing in bursts
 	var/move_delay = 1
 	var/fire_sound = null // This is handled by projectile.dm's fire_sound var now, but you can override the projectile's fire_sound with this one if you want to.
 	var/fire_sound_text = "gunshot"
@@ -117,8 +121,6 @@
 	var/wielded_item_state
 	var/one_handed_penalty = 0 // Penalty applied if someone fires a two-handed gun with one hand.
 	var/atom/movable/screen/auto_target/auto_target
-	var/shooting = 0
-	var/next_fire_time = 0
 
 	var/sel_mode = 1 //index of the currently selected mode
 	var/list/firemodes = list()
@@ -135,8 +137,6 @@
 
 	/// whether or not we have safeties and if safeties are on
 	var/safety_state = GUN_SAFETY_ON
-
-	var/last_shot = 0			//records the last shot fired
 
 	var/charge_sections = 4
 	var/shaded_charge = FALSE
@@ -424,6 +424,19 @@
 	if(!user.aiming)
 		user.aiming = new(user)
 
+	if(check_safety())
+		//If we are on harm intent (intending to injure someone) but forgot to flick the safety off, there is a 50% chance we
+		//will reflexively do it anyway
+		if(user.a_intent == INTENT_HARM && prob(50))
+			toggle_safety(user)
+		else
+			handle_click_safety(user)
+			return
+
+	if(!user?.client?.get_preference_toggle(/datum/game_preference_toggle/game/help_intent_firing) && user.a_intent == INTENT_HELP)
+		to_chat(user, SPAN_WARNING("You refrain from firing [src] because your intent is set to help!"))
+		return
+
 	if(user && user.client && user.aiming && user.aiming.active && user.aiming.aiming_at != target)
 		PreFire(target,user,shitty_legacy_params) //They're using the new gun system, locate what they're aiming at.
 		return
@@ -502,62 +515,9 @@
 /obj/item/gun/proc/Fire(atom/target, mob/living/user, clickparams, pointblank=0, reflex=0)
 	SHOULD_NOT_OVERRIDE(TRUE)
 
-	if(!special_check(user))
-		return
-
-	if(world.time < next_fire_time)
-		if (world.time % 3) //to prevent spam
-			to_chat(user, "<span class='warning'>[src] is not ready to fire again!</span>")
-		return
-
-	if(check_safety())
-		//If we are on harm intent (intending to injure someone) but forgot to flick the safety off, there is a 50% chance we
-		//will reflexively do it anyway
-		if(user.a_intent == INTENT_HARM && prob(50))
-			toggle_safety(user)
-		else
-			handle_click_safety(user)
-			return
-
-	if(!user?.client?.get_preference_toggle(/datum/game_preference_toggle/game/help_intent_firing) && user.a_intent == INTENT_HELP)
-		to_chat(user, SPAN_WARNING("You refrain from firing [src] because your intent is set to help!"))
-		return
-
-	var/shoot_time = (burst - 1)* burst_delay
-
-	//These should apparently be disabled to allow for the automatic system to function without causing near-permanant paralysis. Re-enabling them while we sort that out.
-	user.setClickCooldown(shoot_time) //no clicking on things while shooting
-
-	next_fire_time = world.time + shoot_time
-
-	//actually attempt to shoot
-	var/turf/targloc = get_turf(target) //cache this in case target gets deleted during shooting, e.g. if it was a securitron that got destroyed.
-
 	for(var/i in 1 to burst)
-
-		process_accuracy(projectile, user, target, i, held_twohanded)
-
-		if(pointblank)
-			process_point_blank(projectile, user, target)
-
+		#warn this
 		if(process_projectile(projectile, user, target, user.zone_sel.selecting, clickparams))
-			handle_post_fire(user, target, pointblank, reflex)
-			update_icon()
-
-		if(i < burst)
-			sleep(burst_delay)
-
-		if(!(target && target.loc))
-			target = targloc
-			pointblank = 0
-
-		last_shot = world.time
-
-
-	// We do this down here, so we don't get the message if we fire an empty gun.
-	if(user.is_holding(src) && user.hands_full())
-		if(one_handed_penalty >= 20)
-			to_chat(user, "<span class='warning'>You struggle to keep \the [src] pointed at the correct position with just one hand!</span>")
 
 	var/target_for_log
 	if(ismob(target))
@@ -566,19 +526,6 @@
 		target_for_log = "[target.name]"
 
 	add_attack_logs(user,target_for_log,"Fired gun [src.name] ([reflex ? "REFLEX" : "MANUAL"])")
-
-	//update timing
-	user.setClickCooldown(DEFAULT_QUICK_COOLDOWN)
-
-	next_fire_time = world.time + fire_delay
-
-	accuracy = initial(accuracy)	//Reset the gun's accuracyw
-
-	if(muzzle_flash)
-		if(gun_light)
-			set_light(light_brightness)
-		else
-			set_light(0)
 
 /obj/item/gun/proc/handle_click_safety(mob/user)
 	user.visible_message(SPAN_WARNING("[user] squeezes the trigger of \the [src] but it doesn't move!"), SPAN_WARNING("You squeeze the trigger but it doesn't move!"), range = MESSAGE_RANGE_COMBAT_SILENCED)

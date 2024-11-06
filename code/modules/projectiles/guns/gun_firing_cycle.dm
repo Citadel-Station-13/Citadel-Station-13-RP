@@ -8,6 +8,9 @@
 	/// start world.time
 	var/cycle_start_time
 	/// iterations so far fired
+	///
+	/// * this is set before the fire() call, which means fire() and post_fire()
+	///   can access this for current iteration.
 	var/cycle_iterations_fired = 0
 
 	//* targeting *//

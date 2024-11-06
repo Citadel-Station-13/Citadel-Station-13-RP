@@ -87,10 +87,6 @@
 	. = ..()
 	tension = 0
 
-/obj/item/gun/launcher/crossbow/on_firing_cycle_end(datum/gun_firing_cycle/cycle)
-	. = ..()
-	update_icon()
-
 /obj/item/gun/launcher/crossbow/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)

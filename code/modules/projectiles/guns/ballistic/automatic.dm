@@ -176,7 +176,7 @@
 	if(use_launcher)
 		launcher.fire(cycle)
 		if(!launcher.chambered)
-			switch_firemodes(user) //switch back automatically
+			switch_firemodes(cycle.firing_actor?.performer) //switch back automatically
 		return GUN_FIRED_SUCCESS
 	return ..()
 

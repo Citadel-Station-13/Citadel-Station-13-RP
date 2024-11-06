@@ -48,7 +48,7 @@
 
 /obj/item/gun/energy/process(delta_time)
 	if(self_recharge) //Every [recharge_time] ticks, recharge a shot for the battery
-		if(world.time > last_shot + charge_delay)	//Doesn't work if you've fired recently
+		if(world.time > last_fire + charge_delay)	//Doesn't work if you've fired recently
 			if(!obj_cell_slot.cell || obj_cell_slot.cell.charge >= obj_cell_slot.cell.maxcharge)
 				return 0 // check if we actually need to recharge
 

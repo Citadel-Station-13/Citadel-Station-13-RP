@@ -33,10 +33,23 @@
 		// it's an error code if it's not real
 		return firing_projectile
 
+	//! LEGACY
+	process_accuracy(firing_projectile, cycle.firing_actor?.performer, cycle.original_target, cycle.cycle_iterations_fired, held_twohanded)
+	// todo: this is ass because if the projectile misses we still get additional damage
+	// todo: Reachability(), not Adjacent().
+	if((cycle.firing_flags & GUN_FIRING_POINT_BLANK) && cycle.original_target && cycle.firing_atom.Adjacent(cycle.original_target))
+		process_point_blank(firing_projectile, cycle.firing_actor?.performer, cycle.original_target)
+	//! END
+
+	// record stuff
+	last_fire = world.time
+
 	// todo: do we really need to newtonian move always?
 	if(ismovable(cycle.firing_atom))
 		var/atom/movable/movable_firer = cycle.firing_atom
 		movable_firer.newtonian_move(angle2dir(cycle.original_angle))
+
+	// todo: muzzle flash
 
 /**
  * Obtains the next projectile to fire.

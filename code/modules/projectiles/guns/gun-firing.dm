@@ -34,6 +34,15 @@
  */
 /obj/item/gun/proc/start_firing_cycle(atom/firer, angle, firing_flags, datum/firemode/firemode, atom/target, datum/event_args/actor/actor) as /datum/gun_firing_cycle
 	SHOULD_CALL_PARENT(TRUE)
+	#warn check next fire time / delays; silently fail if there's a cycle ongoing or right after, and give a message if there isn't
+	// if(world.time < next_fire_time)
+	// 	if (world.time % 3) //to prevent spam
+	// 		to_chat(user, "<span class='warning'>[src] is not ready to fire again!</span>")
+
+	//! LEGACY
+	if(!special_check(actor?.performer))
+		return
+	//! END
 
 	return firing_cycle(firer, angle, firing_flags, firemode, target, actor)
 
@@ -59,6 +68,7 @@
  */
 /obj/item/gun/proc/on_firing_cycle_end(datum/gun_firing_cycle/cycle)
 	SHOULD_NOT_SLEEP(TRUE)
+	update_icon()
 
 /**
  * called exactly once at the start of a firing cycle to start it
@@ -109,6 +119,7 @@
 	var/iteration = 0
 	while(iteration < our_cycle.firing_iterations)
 		++iteration
+		our_cycle.cycle_iterations_fired = iteration
 		--safety
 		if(safety <= 0)
 			CRASH("safety ran out during firing cycle")
