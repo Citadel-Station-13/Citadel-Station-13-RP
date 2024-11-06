@@ -61,7 +61,7 @@
 	var/gun_state
 	/// the current applied overlay
 	///
-	/// * only the gun can modify this, and you shouldn't be using this for anything in a non-read-only
+	/// * only update_gun_overlay() can modify this, and you shouldn't be using this for anything in a non-read-only
 	///   context. no, you are not special; there's no exceptions
 	var/appearance/gun_applied_overlay
 

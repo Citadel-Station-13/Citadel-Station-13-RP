@@ -123,9 +123,6 @@
 		if(!shieldcall.shields_in_inventory)
 			continue
 		user.unregister_shieldcall(shieldcall)
-	// fire signals
-	. = SEND_SIGNAL(src, COMSIG_ITEM_DROPPED, user, flags, newLoc)
-	SEND_SIGNAL(user, COMSIG_MOB_ITEM_DROPPED, src, flags, newLoc)
 
 	//! LEGACY
 	hud_unlayerise()
@@ -135,6 +132,10 @@
 	if(zoom)
 		zoom() //binoculars, scope, etc
 	//! END
+
+	// fire signals
+	. = SEND_SIGNAL(src, COMSIG_ITEM_DROPPED, user, flags, newLoc)
+	SEND_SIGNAL(user, COMSIG_MOB_ITEM_DROPPED, src, flags, newLoc)
 
 	if((item_flags & ITEM_DROPDEL) && !(flags & INV_OP_DELETING))
 		qdel(src)
@@ -170,9 +171,6 @@
 		user.register_shieldcall(shieldcall)
 	// storage stuff
 	obj_storage?.on_pickup(user)
-	// fire signals
-	SEND_SIGNAL(src, COMSIG_ITEM_PICKUP, user, flags, oldLoc)
-	SEND_SIGNAL(user, COMSIG_MOB_ITEM_PICKUP, src, flags, oldLoc)
 
 	//! LEGACY
 	reset_pixel_offsets()
@@ -182,6 +180,10 @@
 	if(isturf(oldLoc) && !(flags & (INV_OP_SILENT | INV_OP_DIRECTLY_EQUIPPING)))
 		playsound(src, pickup_sound, 20, ignore_walls = FALSE)
 	//! END
+
+	// fire signals
+	SEND_SIGNAL(src, COMSIG_ITEM_PICKUP, user, flags, oldLoc)
+	SEND_SIGNAL(user, COMSIG_MOB_ITEM_PICKUP, src, flags, oldLoc)
 
 /**
  * update our worn icon if we can

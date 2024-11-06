@@ -1072,6 +1072,10 @@
 	if(holding_mob)
 		attachment.unregister_attachment_actions(holding_mob)
 	attachment.on_detach(src)
+	// be extra extra extra EXTRA sure it doesn't still have an overlay
+	// todo: once we figure out why this is happening we should ASSERT() it to catch shitcode
+	if(attachment.gun_applied_overlay)
+		cut_overlay(attachment.gun_applied_overlay, TRUE)
 	on_attachment_uninstall(attachment)
 	attachment.attached = null
 	LAZYREMOVE(attachments, attachment)
