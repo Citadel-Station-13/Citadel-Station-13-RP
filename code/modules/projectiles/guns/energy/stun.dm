@@ -1,20 +1,27 @@
+/datum/firemode/energy/taser
+	cycle_cooldown = 0.4 SECONDS
+
+/datum/firemode/energy/taser/stun
+	name = "stun"
+	legacy_direct_varedits = list(projectile_type=/obj/projectile/energy/electrode, modifystate="taser", charge_cost = 240)
+
+/datum/firemode/energy/taser/disable
+	name = "disable"
+	legacy_direct_varedits = list(projectile_type=/obj/projectile/beam/disabler/weak, modifystate="taserblue", charge_cost = 160)
+
 /obj/item/gun/energy/taser
 	name = "taser gun"
 	desc = "The NT Mk31 NL is a small gun used for non-lethal takedowns. An NT exclusive iteration of the Mk30 WT design, the Mk31 features a variable output mechanism which draws from a singular power source, allowing for versatile firing solutions without increased weight."
 	icon_state = "taser"
 	item_state = null	//so the human update icon uses the icon_state instead.
 
-	fire_delay = 4
-
 	worth_intrinsic = 350
-
-	projectile_type = /obj/projectile/energy/electrode
 	modifystate = "taser"
 
 	firemodes = list(
-		list(mode_name="stun", projectile_type=/obj/projectile/energy/electrode, modifystate="taser", charge_cost = 240),
-		list(mode_name="disable", projectile_type=/obj/projectile/beam/disabler/weak, modifystate="taserblue", charge_cost = 160),
-		)
+		/datum/firemode/energy/taser/stun,
+		/datum/firemode/energy/taser/disable,
+	)
 
 /obj/item/gun/energy/taser/mounted
 	name = "mounted taser gun"

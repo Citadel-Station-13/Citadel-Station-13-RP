@@ -31,6 +31,6 @@
 
 		overlays_to_add += "[initial(icon_state)]_cell"
 		overlays_to_add += "[initial(icon_state)]_[ratio]"
-		overlays_to_add += "[initial(icon_state)]_[mode_name]"
+		overlays_to_add += "[initial(icon_state)]_[legacy_get_firemode()?.name]"
 
 	add_overlay(overlays_to_add)

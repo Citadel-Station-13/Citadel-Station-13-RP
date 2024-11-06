@@ -185,6 +185,24 @@
 			projectile_type = "/obj/projectile/forcebolt"
 	*/
 
+/datum/firemode/energy/dakkalaser
+	burst_delay = 0.1 SECONDS
+
+/datum/firemode/energy/dakkalaser/single
+	name = "1-shot"
+	burst_amount = 1
+	legacy_direct_varedits = list(dispersion = list(0), charge_cost = 24)
+
+/datum/firemode/energy/dakkalaser/five
+	name = "5-burst"
+	burst_amount = 5
+	legacy_direct_varedits = list(burst_accuracy = list(75,75,75,75,75), dispersion = list(1,1,1,1,1))
+
+/datum/firemode/energy/dakkalaser/ten
+	name = "10-burst"
+	burst_amount = 10
+	legacy_direct_varedits = list(burst_accuracy = list(75,75,75,75,75,75,75,75,75,75), dispersion = list(2,2,2,2,2,2,2,2,2,2))
+
 /obj/item/gun/energy/dakkalaser
 	name = "suppression gun"
 	desc = "Coined 'Sparkers' by Tyrmalin dissidents on Larona upon it's inception, the HI-LLG is an energy-based suppression system, used to overwhelm the opposition in a hail of laser blasts."
@@ -203,10 +221,10 @@
 	one_handed_penalty = 60
 
 	firemodes = list(
-		list(mode_name="single shot", burst = 1, burst_accuracy = list(75), dispersion = list(0), charge_cost = 24),
-		list(mode_name="five shot burst", burst = 5, burst_accuracy = list(75,75,75,75,75), dispersion = list(1,1,1,1,1)),
-		list(mode_name="ten shot burst", burst = 10, burst_accuracy = list(75,75,75,75,75,75,75,75,75,75), dispersion = list(2,2,2,2,2,2,2,2,2,2)),
-		)
+		/datum/firemode/energy/dakkalaser/one,
+		/datum/firemode/energy/dakkalaser/five,
+		/datum/firemode/energy/dakkalaser/ten,
+	)
 
 /obj/item/gun/energy/maghowitzer
 	name = "portable MHD howitzer"
@@ -309,7 +327,9 @@
 	icon = 'icons/obj/gun/energy.dmi'
 	slot_flags = SLOT_BELT
 	accuracy = 100
-	fire_delay = 12
+	firemodes = /datum/firemode/energy{
+		cycle_cooldown = 1.2 SECONDS;
+	}
 	fire_sound = 'sound/weapons/eluger.ogg'
 
 	projectile_type = /obj/projectile/beam/medigun
@@ -318,6 +338,7 @@
 	cell_type = /obj/item/cell/high
 	charge_cost = 2500
 
+#warn rework this and have a radial preview mode for firemodes
 /obj/item/gun/energy/service
 	name = "service weapon"
 	icon_state = "service_grip"
@@ -334,45 +355,6 @@
 	legacy_battery_lock = 1
 	one_handed_penalty = 0
 	safety_state = GUN_SAFETY_OFF
-
-/obj/item/gun/energy/service/attack_self(mob/user, datum/event_args/actor/actor)
-	. = ..()
-	if(.)
-		return
-	cycle_weapon(user)
-
-/obj/item/gun/energy/service/proc/cycle_weapon(mob/living/L)
-	var/obj/item/service_weapon
-	var/list/service_weapon_list = subtypesof(/obj/item/gun/energy/service)
-	var/list/display_names = list()
-	var/list/service_icons = list()
-	for(var/V in service_weapon_list)
-		var/obj/item/gun/energy/service/weapontype = V
-		if (V)
-			display_names[initial(weapontype.name)] = weapontype
-			service_icons += list(initial(weapontype.name) = image(icon = initial(weapontype.icon), icon_state = initial(weapontype.icon_state)))
-
-	service_icons = sortList(service_icons)
-
-	var/choice = show_radial_menu(L, src, service_icons)
-	if(!choice || !check_menu(L))
-		return
-
-	var/A = display_names[choice] // This needs to be on a separate var as list member access is not allowed for new
-	service_weapon = new A
-
-	if(service_weapon)
-		qdel(src)
-		L.put_in_active_hand(service_weapon)
-
-/obj/item/gun/energy/service/proc/check_menu(mob/user)
-	if(!istype(user))
-		return FALSE
-	if(QDELETED(src))
-		return FALSE
-	if(user.incapacitated())
-		return FALSE
-	return TRUE
 
 /obj/item/gun/energy/service/grip
 
@@ -426,7 +408,9 @@
 	icon_state = "ermitter_gun"
 	item_state = "pulse"
 	projectile_type = /obj/projectile/beam/emitter
-	fire_delay = 2 SECONDS
+	firemodes = /datum/firemode/energy{
+		cycle_cooldown = 2 SECONDS;
+	}
 	charge_cost = 900
 	cell_type = /obj/item/cell
 	cell_system_legacy_use_device = FALSE
@@ -461,6 +445,18 @@
 	damage_force = 10
 	one_handed_penalty = 60
 
+// todo: nuke plasma weapons from orbit and rework
+/datum/firemode/energy/plasma
+	cycle_cooldown = 2 SECONDS
+
+/datum/firemode/energy/plasma/normal
+	name = "standard"
+	legacy_direct_varedits = list(projectile_type=/obj/projectile/plasma, charge_cost = 350)
+
+/datum/firemode/energy/plasma/high
+	name = "high power"
+	legacy_direct_varedits = list(projectile_type=/obj/projectile/plasma/hot, charge_cost = 370)
+
 //Plasma Guns Plasma Guns!
 /obj/item/gun/energy/plasma
 	name = "\improper Balrog plasma rifle"
@@ -468,7 +464,6 @@
 	icon_state = "prifle"
 	item_state = null
 	projectile_type = /obj/projectile/plasma
-	fire_delay = 20
 	charge_cost = 400
 	cell_type = /obj/item/cell/device/weapon
 	slot_flags = SLOT_BELT|SLOT_BACK
@@ -481,17 +476,13 @@
 	var/overheating = 0
 
 	firemodes = list(
-		list(mode_name="standard", projectile_type=/obj/projectile/plasma, charge_cost = 350),
-		list(mode_name="high power", projectile_type=/obj/projectile/plasma/hot, charge_cost = 370),
-		)
+		/datum/firemode/energy/plasma/normal,
+		/datum/firemode/energy/plasma/high,
+	)
 
-/obj/item/gun/energy/plasma/update_icon()
-	. = ..()
-	if(overheating)
-		icon_state = "prifle_overheat"
-		update_held_icon()
-	else
-		return
+/obj/item/gun/energy/plasma/update_icon_state()
+	icon_state = "[initial(icon_state)][overheating ? "_overheat" : ""]"
+	return ..()
 
 /obj/item/gun/energy/plasma/pistol
 	name = "\improper Wyrm plasma pistol"
@@ -504,11 +495,3 @@
 	origin_tech = list(TECH_COMBAT = 6, TECH_ENGINEERING = 5, TECH_MAGNET = 5)
 	materials_base = list(MAT_STEEL = 8000, MAT_GLASS = 2000)
 	one_handed_penalty = 10
-
-/obj/item/gun/energy/plasma/pistol/update_icon()
-	. = ..()
-	if(overheating)
-		icon_state = "ppistol_overheat"
-		update_held_icon()
-	else
-		return

@@ -30,7 +30,6 @@
 	name = "blessed bolt-action rifle"
 	desc = "A bolt-action rifle with a heavy, high-quality wood stock that has a beautiful finish. Clearly not intended to be used in combat. Uses 7.62mm rounds."
 	ammo_type = /obj/item/ammo_casing/a7_62mm/silver
-	holy = TRUE
 
 /obj/item/gun/ballistic/shotgun/pump/rifle/taj
 	name = "Adhomai bolt action rifle"
@@ -87,7 +86,6 @@
 /obj/item/gun/ballistic/shotgun/pump/rifle/lever/holy
 	name = "blessed lever-action"
 	ammo_type = /obj/item/ammo_casing/a357/silver
-	holy = TRUE
 
 /obj/item/gun/ballistic/shotgun/pump/rifle/lever/attackby(var/obj/item/A as obj, mob/user as mob)
 	if(istype(A, /obj/item/surgical/circular_saw) || istype(A, /obj/item/melee/transforming/energy) || istype(A, /obj/item/pickaxe/plasmacutter) && w_class != WEIGHT_CLASS_NORMAL)
@@ -131,7 +129,6 @@
 /obj/item/gun/ballistic/shotgun/pump/rifle/lever/vintage/holy
 	name = "blessed lever-action"
 	ammo_type = /obj/item/ammo_casing/a44/silver
-	holy = TRUE
 
 /obj/item/gun/ballistic/shotgun/pump/rifle/lever/vintage/attackby(var/obj/item/A as obj, mob/user as mob)
 	if(istype(A, /obj/item/surgical/circular_saw) || istype(A, /obj/item/melee/transforming/energy) || istype(A, /obj/item/pickaxe/plasmacutter) && w_class != WEIGHT_CLASS_NORMAL)
@@ -175,7 +172,6 @@
 /obj/item/gun/ballistic/shotgun/pump/rifle/lever/arnold/holy
 	name = "blessed lever-action shotgun"
 	ammo_type = /obj/item/ammo_casing/a12g/silver
-	holy = TRUE
 
 /obj/item/gun/ballistic/shotgun/pump/rifle/lever/win1895
 	name = "Winchester 1895"
@@ -193,7 +189,6 @@
 /obj/item/gun/ballistic/shotgun/pump/rifle/lever/win1895/holy
 	name = "blessed lever-action"
 	ammo_type = /obj/item/ammo_casing/a7_62mm/silver
-	holy = TRUE
 
 /obj/item/gun/ballistic/shotgun/pump/scopedrifle
 	name = "scoped bolt action"

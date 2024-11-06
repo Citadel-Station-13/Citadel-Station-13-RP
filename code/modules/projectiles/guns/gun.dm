@@ -1,46 +1,3 @@
-/*
-	Defines a firing mode for a gun.
-
-	A firemode is created from a list of fire mode settings. Each setting modifies the value of the gun var with the same name.
-	If the fire mode value for a setting is null, it will be replaced with the initial value of that gun's variable when the firemode is created.
-	Obviously not compatible with variables that take a null value. If a setting is not present, then the corresponding var will not be modified.
-*/
-/datum/firemode
-	var/name = "default"
-	var/list/settings = list()
-
-	//* firing *//
-	/// number of shots in burst
-	var/burst_amount = 1
-	/// delay between burst shots
-	var/burst_delay = 0.2 SECONDS
-
-	/// delay **after** the firing cycle which we cannot fire
-	var/cooldown = 0.4 SECONDS
-
-	//* rendering *//
-	/// state key for rendering, if any
-	var/render_key
-
-/datum/firemode/New(obj/item/gun/gun, list/properties = null)
-	..()
-	if(!properties) return
-
-	for(var/propname in properties)
-		var/propvalue = properties[propname]
-
-		if(propname == "mode_name")
-			name = propvalue
-		if(isnull(propvalue))
-			settings[propname] = gun.vars[propname] //better than initial() as it handles list vars like burst_accuracy
-		else
-			settings[propname] = propvalue
-
-	#warn automatically pull `burst`, `fire_delay`, `burst_delay` from list and set
-
-/datum/firemode/proc/apply_to(obj/item/gun/gun)
-	for(var/propname in settings)
-		gun.vars[propname] = settings[propname]
 
 /**
  * Guns
@@ -81,6 +38,21 @@
 	/// * this is a default value; set to null by default to have the projectile's say.
 	var/accuracy_disabled = null
 
+	//* Firemode *//
+	/**
+	 * The list of our possible firemodes.
+	 *
+	 * Firemodes may be;
+	 *
+	 * * an instance: this will be kept around per gun
+	 * * an anonymous type (byond 'pop' object with /typepath{varedit = "abc";} syntax):
+	 *   this will be kept around per gun
+	 * * a typepath: this will be globally cached
+	 *
+	 * This variable may either be a list, of the above, or a singular of the above.
+	 */
+	var/list/firemodes = /datum/firemode
+
 	//* Firing *//
 
 	/// the current firing cycle
@@ -94,11 +66,9 @@
 	/// last world.time we fired a shot
 	var/last_fire = 0
 	/// next world.time we can start a firing cycle
-	var/next_fire = 0
+	var/next_fire_cycle = 0
 
 	// legacy below //
-
-	var/move_delay = 1
 	var/fire_sound = null // This is handled by projectile.dm's fire_sound var now, but you can override the projectile's fire_sound with this one if you want to.
 	var/fire_sound_text = "gunshot"
 	var/fire_anim = null
@@ -111,10 +81,8 @@
 	var/scoped_accuracy = null
 	var/list/burst_accuracy = list(0) //allows for different accuracies for each shot in a burst. Applied on top of accuracy
 	var/list/dispersion = list(0)
-	var/mode_name = null
 	// todo: purge with fire
 	var/projectile_type = /obj/projectile	//On ballistics, only used to check for the cham gun
-	var/holy = FALSE //For Divinely blessed guns
 	// todo: this should be on /ballistic, and be `internal_chambered`.
 	var/obj/item/ammo_casing/chambered = null
 
@@ -123,7 +91,6 @@
 	var/atom/movable/screen/auto_target/auto_target
 
 	var/sel_mode = 1 //index of the currently selected mode
-	var/list/firemodes = list()
 	var/selector_sound = 'sound/weapons/guns/selector.ogg'
 
 	//aiming system stuff
@@ -131,8 +98,6 @@
 						//0 for one bullet after tarrget moves and aim is lowered
 	var/multi_aim = 0 //Used to determine if you can target multiple people.
 	var/tmp/list/mob/living/aim_targets //List of who yer targeting.
-	var/tmp/mob/living/last_moved_mob //Used to fire faster at more than one person.
-	var/tmp/told_cant_shoot = 0 //So that it doesn't spam them with the fact they cannot hit them.
 	var/tmp/lock_time = -100
 
 	/// whether or not we have safeties and if safeties are on
@@ -142,12 +107,6 @@
 	var/shaded_charge = FALSE
 	var/ammo_x_offset = 2
 	var/ammo_y_offset = 0
-	var/can_flashlight = FALSE
-	var/gun_light = FALSE
-	var/light_state = "flight"
-	var/light_brightness = 4
-	var/flight_x_offset = 0
-	var/flight_y_offset = 0
 
 	var/obj/item/firing_pin/pin = /obj/item/firing_pin
 	var/no_pin_required = 0
@@ -156,6 +115,7 @@
 	//Gun Malfunction variables
 	var/unstable = 0
 	var/destroyed = 0
+	var/automatic = 0 //can gun use it, 0 is no, anything above 0 is the delay between clicks in ds
 
 	                    //* THIS IS A WIP SYSTEM!! *//
 	                    // todo: well, finish this.
@@ -269,6 +229,8 @@
 			SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_guns.dmi',
 			)
 
+	if(!islist(firemodes))
+		firemodes = list(firemodes)
 	for(var/i in 1 to firemodes.len)
 		var/key = firemodes[i]
 		if(islist(key))
@@ -328,6 +290,9 @@
 		toggle_flashlight()
 	else
 		return ..()
+
+/obj/item/gun/CanItemAutoclick(object, location, params)
+	. = automatic
 
 /obj/item/gun/proc/toggle_flashlight()
 	if(gun_light)
@@ -704,7 +669,7 @@
 	if(sel_mode > firemodes.len)
 		sel_mode = 1
 	var/datum/firemode/new_mode = firemodes[sel_mode]
-	new_mode.apply_to(src)
+	new_mode.apply_legacy_variables(src)
 	if(user)
 		to_chat(user, "<span class='notice'>\The [src] is now set to [new_mode.name].</span>")
 		playsound(loc, selector_sound, 50, 1)
@@ -780,7 +745,7 @@
 	return (safety_state == GUN_SAFETY_ON)
 
 // PENDING FIREMODE REWORK
-/obj/item/gun/proc/legacy_get_firemode()
+/obj/item/gun/proc/legacy_get_firemode() as /datum/firemode
 	if(!length(firemodes) || (sel_mode > length(firemodes)))
 		return
 	return firemodes[sel_mode]

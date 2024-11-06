@@ -6,3 +6,5 @@
 	component_slot = GUN_COMPONENT_POWER_UNIT
 
 #warn impl all
+
+// TODO: This file is mostly stubs and WIPs.

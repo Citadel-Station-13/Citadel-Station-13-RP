@@ -128,8 +128,8 @@
 
 // Checks if the specified amount can be provided. If it can, it removes the amount
 // from the cell and returns 1. Otherwise does nothing and returns 0.
-/obj/item/cell/proc/checked_use(var/amount)
-	if(!check_charge(amount))
+/obj/item/cell/proc/checked_use(amount, reserve)
+	if(!check_charge(amount + reserve))
 		return 0
 	use(amount)
 	return 1

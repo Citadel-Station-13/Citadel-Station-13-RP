@@ -43,3 +43,5 @@
 	. += "Suffers decreased efficiency on burst shots."
 
 #warn impl all
+
+// TODO: This file is mostly stubs and WIPs.

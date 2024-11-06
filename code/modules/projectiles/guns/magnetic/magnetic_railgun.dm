@@ -14,7 +14,6 @@
 	loaded = /obj/item/rcd_ammo/large
 	weight = ITEM_WEIGHT_GUN_BULKY
 	encumbrance = ITEM_ENCUMBRANCE_GUN_BULKY
-	fire_delay = 1
 	cell_type = /obj/item/cell/hyper
 
 	var/initial_capacitor_type = /obj/item/stock_parts/capacitor/adv
@@ -60,7 +59,6 @@
 
 	cell_type = /obj/item/cell/infinite
 	initial_capacitor_type = /obj/item/stock_parts/capacitor/super
-	fire_delay = 0
 
 	weight = ITEM_WEIGHT_GUN_RIDICULOUS
 	encumbrance = ITEM_ENCUMBRANCE_GUN_RIDICULOUS
@@ -87,8 +85,6 @@
 
 	cell_type = /obj/item/cell/hyper
 	initial_capacitor_type = /obj/item/stock_parts/capacitor/adv
-
-	fire_delay = 0
 
 	slot_flags = SLOT_BACK
 
@@ -118,9 +114,6 @@
 
 	cell_type = /obj/item/cell/high
 	initial_capacitor_type = /obj/item/stock_parts/capacitor
-
-	fire_delay = 8
-
 	slot_flags = SLOT_BACK
 
 	weight = ITEM_WEIGHT_GUN_LIGHT

@@ -1,3 +1,18 @@
+/datum/firemode/energy/secutor
+	cycle_cooldown = 0.8 SECONDS
+
+/datum/firemode/energy/secutor/stun
+	name = "stun"
+	legacy_direct_varedits = list(projectile_type=/obj/projectile/energy/electrode/secutor, modifystate="secutorstun", charge_cost = 240)
+
+/datum/firemode/energy/secutor/phase
+	name = "phase"
+	legacy_direct_varedits = list(projectile_type=/obj/projectile/energy/phase/secutor, modifystate="secutorphaser", charge_cost = 200)
+
+/datum/firemode/energy/secutor/lethal
+	name = "lethal"
+	legacy_direct_varedits = list(projectile_type=/obj/projectile/beam/secutor, modifystate="secutorkill", charge_cost = 300)
+
 // -------------- Secutor -------------
 /obj/item/gun/energy/secutor
 	name = "\improper Secutor sidearm"
@@ -11,15 +26,12 @@
 	worn_render_flags = WORN_RENDER_SLOT_NO_RENDER
 
 	projectile_type = /obj/projectile/energy/electrode/secutor
-	fire_delay = 8
-
-	modifystate = "secutorstun"
-
 	firemodes = list(
-	list(mode_name="stun", fire_delay=8, projectile_type=/obj/projectile/energy/electrode/secutor, modifystate="secutorstun", charge_cost = 240),
-	list(mode_name="phaser", fire_delay=8, projectile_type=/obj/projectile/energy/phase/secutor, modifystate="secutorphaser", charge_cost = 200),
-	list(mode_name="low-power-lethal", fire_delay=10, projectile_type=/obj/projectile/beam/secutor, modifystate="secutorkill", charge_cost = 300),
+		/datum/firemode/energy/secutor/stun,
+		/datum/firemode/energy/secutor/phase,
+		/datum/firemode/energy/secutor/lethal,
 	)
+	modifystate = "secutorstun"
 
 	var/emagged = FALSE
 
@@ -30,7 +42,7 @@
 	cut_overlays()
 
 /obj/item/gun/energy/secutor/special_check(mob/user)
-	if(!emagged && mode_name == "low-power-lethal" && get_security_level() == "green")
+	if(!emagged && legacy_get_firemode()?.name == "lethal" && get_security_level() == "green")
 		to_chat(user,"<span class='warning'>The trigger refuses to depress while on the lethal setting and while under security level blue!</span>")
 		return FALSE
 

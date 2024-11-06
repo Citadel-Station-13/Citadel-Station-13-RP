@@ -109,6 +109,17 @@
 	icon_state = (ammo_magazine)? "stg60" : "stg60-e"
 	item_state = (ammo_magazine)? "arifle" : "arifle-e"
 
+/datum/firemode/energy/eluger
+	cycle_cooldown = 0.4 SECONDS
+
+/datum/firemode/energy/eluger/stun
+	name = "stun"
+	legacy_direct_varedits = list(charge_cost=120,projectile_type=/obj/projectile/beam/stun, modifystate="elugerstun", fire_sound='sound/weapons/Taser.ogg')
+
+/datum/firemode/energy/eluger/lethal
+	name = "lethal"
+	legacy_direct_varedits = list(charge_cost=240,projectile_type=/obj/projectile/beam/eluger, modifystate="elugerkill", fire_sound='sound/weapons/eluger.ogg')
+
 // ------------ Energy Luger ------------
 /obj/item/gun/energy/gun/eluger
 	name = "energy Luger"
@@ -121,8 +132,8 @@
 	modifystate = "elugerstun"
 	fire_sound = 'sound/weapons/Taser.ogg'
 	firemodes = list(
-	list(mode_name="stun", charge_cost=120,projectile_type=/obj/projectile/beam/stun, modifystate="elugerstun", fire_sound='sound/weapons/Taser.ogg'),
-	list(mode_name="lethal", charge_cost=240,projectile_type=/obj/projectile/beam/eluger, modifystate="elugerkill", fire_sound='sound/weapons/eluger.ogg'),
+		/datum/firemode/energy/eluger/stun,
+		/datum/firemode/energy/eluger/lethal,
 	)
 
 //Civilian gun
@@ -180,6 +191,18 @@
 	else
 		. += "inspector_on"
 
+/datum/firemode/sol_smg
+	burst_delay = 0.2 SECONDS
+
+/datum/firemode/sol_smg/one
+	name = "semi-automatic"
+	burst_amount = 1
+	legacy_direct_varedits = list()
+
+/datum/firemode/sol_smg/three
+	name = "3-round bursts"
+	burst_amount = 3
+
 // No idea what this is for.
 /obj/item/gun/ballistic/automatic/sol
 	name = "\improper \"Sol\" SMG"
@@ -193,12 +216,13 @@
 	allowed_magazines = list(/obj/item/ammo_magazine/a9mm)
 	load_method = MAGAZINE
 	multi_aim = 1
-	burst_delay = 2
 	origin_tech = list(TECH_COMBAT = 4, TECH_MATERIAL = 2)
 	firemodes = list(
-		list(mode_name="semiauto",       burst=1, fire_delay=0,    move_delay=null, burst_accuracy=null, dispersion=null),
-		list(mode_name="3-round bursts", burst=3, fire_delay=null, move_delay=4,    burst_accuracy=list(0,-15,-15),       dispersion=list(0.0, 0.6, 1.0)),
-		)
+		/datum/firemode/sol_smg/one,
+		/datum/firemode/sol_smg/three,
+	)
+	burst_accuracy=list(0,-15,-15)
+	dispersion=list(0.0, 0.6, 1.0)
 
 /obj/item/gun/ballistic/automatic/sol/proc/update_charge()
 	if(!ammo_magazine)

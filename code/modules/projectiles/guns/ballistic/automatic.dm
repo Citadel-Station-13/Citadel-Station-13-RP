@@ -545,13 +545,11 @@
 	max_shells =  15
 	burst = 3
 	fire_delay = 7.2
-	move_delay = 6
 	burst_accuracy = list(60,30,15)
 	dispersion = list(0.0, 0.6,1.0)
 
 /obj/item/gun/ballistic/automatic/automat/holy
 	ammo_type = /obj/item/ammo_casing/a7_62mm/silver
-	holy = TRUE
 
 /obj/item/gun/ballistic/automatic/automat/taj
 	name = "Adhomai automat"

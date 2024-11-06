@@ -20,6 +20,9 @@
 	/// should we be hidden from examine?
 	var/show_on_examine = TRUE
 
+	/// currently attached gun
+	var/obj/item/gun/attached
+
 //* Attach / Detach *//
 
 /**
@@ -32,20 +35,22 @@
  * * gun - the gun we tried to attach to
  * * gun_opinion - what the gun had to say about it
  * * gun_is_full - is the gun out of slots for us? we can still override but this is to separate it from gun_opinion.
+ * * actor - person initiating it; this is mostly for message feedback
+ * * silent - do not emit message to user on fail
  */
-/obj/item/gun_component/proc/fits_on_gun(obj/item/gun/gun, gun_opinion, gun_is_full)
+/obj/item/gun_component/proc/fits_on_gun(obj/item/gun/gun, gun_opinion, gun_is_full, datum/event_args/actor/actor, silent)
 	return TRUE
 
 /**
  * called on attach
  */
-/obj/item/gun_component/proc/on_attach(obj/item/gun/gun)
+/obj/item/gun_component/proc/on_attach(obj/item/gun/gun, datum/event_args/actor/actor, silent)
 	SHOULD_CALL_PARENT(TRUE)
 
 /**
  * called on detach
  */
-/obj/item/gun_component/proc/on_detach(obj/item/gun/gun)
+/obj/item/gun_component/proc/on_detach(obj/item/gun/gun, datum/event_args/actor/actor, silent)
 	SHOULD_CALL_PARENT(TRUE)
 
 //* Information *//
@@ -57,3 +62,4 @@
  */
 /obj/item/gun_component/proc/summarize_bullet_points(datum/event_args/actor/actor)
 	return list()
+

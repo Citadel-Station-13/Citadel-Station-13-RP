@@ -1,7 +1,12 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
+/datum/firemode/energy/nt_pulse
+	abstract_type = /datum/firemode/energy/nt_pulse
+	cycle_cooldown = 0.4 SECONDS
+
 /datum/firemode/energy/nt_pulse/rifle
+	abstract_type = /datum/firemode/energy/nt_pulse/rifle
 
 /datum/firemode/energy/nt_pulse/rifle/laser
 	name = "laser"
@@ -14,6 +19,7 @@
 	settings = list(mode_name = "destroy", projectile_type = /obj/projectile/beam/pulse, charge_cost = 180)
 
 /datum/firemode/energy/nt_pulse/carbine
+	abstract_type = /datum/firemode/energy/nt_pulse/carbine
 
 /datum/firemode/energy/nt_pulse/carbine/laser
 	name = "laser"

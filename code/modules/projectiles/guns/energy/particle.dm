@@ -18,7 +18,9 @@
 	w_class = WEIGHT_CLASS_NORMAL
 	projectile_type = /obj/projectile/bullet/particle
 	origin_tech = list(TECH_COMBAT = 3, TECH_MAGNET = 2, TECH_MATERIAL = 2)
-	fire_delay = 10
+	firemodes = /datum/firemode/energy{
+		cycle_cooldown = 1 SECONDS;
+	}
 	charge_cost = 200	//slightly more shots than lasers
 	var/safetycatch = 0 //if 1, won't let you fire in pressurised environment, rather than malfunctioning
 	var/obj/item/pressurelock/attached_safety
@@ -34,7 +36,9 @@
 	w_class = WEIGHT_CLASS_BULKY	//bigger than a pistol, too.
 	heavy = TRUE
 	origin_tech = list(TECH_COMBAT = 4, TECH_MATERIAL = 5, TECH_POWER = 3, TECH_MAGNET = 3)
-	fire_delay = 6	//This one's not a handgun, it should have the same fire delay as everything else
+	firemodes = /datum/firemode/energy{
+		cycle_cooldown = 0.6 SECONDS;
+	}
 	self_recharge = 1
 	modifystate = null
 	legacy_battery_lock = 1
@@ -52,7 +56,9 @@
 	origin_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 5, TECH_POWER = 4, TECH_MAGNET = 4)
 	projectile_type = /obj/projectile/bullet/particle/heavy
 	legacy_battery_lock = 1
-	fire_delay = 15 // fires faster than a laser cannon. c'mon, it's an awesome-but-impractical endgame gun.
+	firemodes = /datum/firemode/energy{
+		cycle_cooldown = 1.5 SECONDS;
+	}
 	w_class = WEIGHT_CLASS_HUGE // So it can't fit in a backpack.
 	damage_force = 10
 	one_handed_penalty = 60 // The thing's heavy and huge.
@@ -115,7 +121,8 @@
 		obj_cell_slot.cell.maxcharge = 1 //just to avoid div/0 runtimes
 		obj_cell_slot.cell.desc += " It seems to be burnt out!"
 		desc += " The casing is covered in scorch-marks."
-		fire_delay += fire_delay // even if you swap out the cell for a good one, the gun's cluckety-clucked.
+		// todo: transform_cycle_cooldown(datum/firing_cycle/cycle) as num
+		// fire_delay += fire_delay // even if you swap out the cell for a good one, the gun's cluckety-clucked.
 		charge_cost += charge_cost
 		update_icon()
 	else if (severity <= 150) // 10% chance of exploding
