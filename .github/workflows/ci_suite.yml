@@ -149,10 +149,9 @@ jobs:
         run: |
           sudo systemctl start mysql
           mysql -u root -proot -e 'CREATE DATABASE ss13_ci;'
-          mysql -u root -proot ss13_ci < SQL/database_schema_prefixed.sql
-          mysql -u root -proot ss13_ci < SQL/unified_schema.sql
-        # mysql -u root -proot -e 'CREATE DATABASE tg_ci_prefixed;'
-        # mysql -u root -proot tg_ci_prefixed < SQL/tgstation_schema_prefixed.sql
+          mysql -u root -proot ss13_ci < SQL/database_schema.sql
+          mysql -u root -proot -e 'CREATE DATABASE ss13_ci_prefixed;'
+          mysql -u root -proot ss13_ci_prefixed < SQL/database_schema_prefixed.sql
       - name: Install rust-g
         run: |
           bash tools/ci/install/install_rust_g.sh
@@ -166,6 +165,12 @@ jobs:
         run: |
           source $HOME/BYOND/byond/bin/byondsetup
           bash tools/ci/run_server.sh
+      - name: Check client Compatibility
+        if: always() && steps.compile_tests.outcome == 'success'
+        uses: tgstation/byond-client-compatibility-check@v3
+        with:
+          dmb-location: citadel.dmb
+          max-required-client-version: 515
 
   test_windows:
     name: Windows Build
