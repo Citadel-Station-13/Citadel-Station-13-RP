@@ -388,3 +388,63 @@
 	//? Movement
 	/// Is self-moving.
 	var/in_selfmove
+
+	var/is_jittery = 0
+	var/jitteriness = 0
+
+	//handles up-down floaty effect in space and zero-gravity
+	var/is_floating = 0
+	var/floatiness = 0
+
+	var/dizziness = 0
+	var/is_dizzy = 0
+
+	// used when venting rooms
+	var/tmp/last_airflow_stun = 0
+
+	catalogue_delay = 10 SECONDS
+
+	var/mob/observer/eye/eyeobj
+
+	//thou shall always be able to see the Geometer of Blood
+	var/image/narsimage = null
+	var/image/narglow = null
+
+	//Moved from code\modules\detectivework\tools\rag.dm
+	var/bloody_hands = 0
+	var/mob/living/carbon/human/bloody_hands_mob
+	var/track_blood = 0
+	var/list/feet_blood_DNA
+	var/track_blood_type
+	var/feet_blood_color
+
+	//Moved from code\modules\keybindings\focus.dm
+	/// What receives our keyboard inputs, defaulting to src.
+	var/datum/key_focus
+	/// a singular thing that can intercept keyboard inputs
+	var/datum/key_intercept
+
+	//Moved from code\game\click\click.dm
+	// 1 decisecond click delay (above and beyond mob/next_move)
+	var/next_click = 0
+
+	//Moved from code\game\rendering\legacy\alert.dm
+	var/list/alerts = list() // contains /atom/movable/screen/alert only // On /mob so clientless mobs will throw alerts properly
+
+	//Moved from code\game\verbs\suicide.dm
+	var/suiciding = 0
+
+	//Moved from code\modules\admin\admin_attack_log.dm
+	var/lastattacker = null
+	var/lastattacked = null
+	var/attack_log = list( )
+	var/dialogue_log = list( )
+
+	//Moved from code\modules\mob\living\carbon\human\pain.dm
+	var/list/pain_stored = list()
+	var/last_pain_message = ""
+	var/next_pain_time = 0
+
+	//Moved from code\modules\nano\nanoexternal.dm
+	// Used by the Nano UI Manager (/datum/nanomanager) to track UIs opened by this mob
+	var/list/open_uis = list()

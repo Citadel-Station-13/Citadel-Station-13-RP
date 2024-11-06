@@ -58,7 +58,6 @@
 
 
 /obj/machinery/tele_projector/LateInitialize()
-	. = ..()
 	for(var/target_dir in GLOB.cardinal)
 		var/obj/machinery/tele_pad/found_pad = locate() in get_step(src, target_dir)
 		if(found_pad)

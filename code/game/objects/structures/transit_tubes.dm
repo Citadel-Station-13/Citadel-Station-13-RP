@@ -71,7 +71,6 @@
 	return INITIALIZE_HINT_LATELOAD
 
 /obj/structure/transit_tube_pod/LateInitialize()
-	. = ..()
 	follow_tube()
 
 /obj/structure/transit_tube/Initialize(mapload)
@@ -340,9 +339,9 @@
 /obj/structure/transit_tube_pod/proc/mix_air()
 	var/datum/gas_mixture/environment = loc.return_air()
 
-	//note that share_ratio assumes both gas mixes have the same volume,
+	//note that share_with_mixture assumes both gas mixes have the same volume,
 	//so if the volume is changed this may need to be changed as well.
-	air_contents.default_share_ratio(environment, 1)
+	air_contents.environmental_share_simulated(environment, 1)
 
 // When the player moves, check if the pos is currently stopped at a station.
 //  if it is, check the direction. If the direction matches the direction of

@@ -1,4 +1,4 @@
-/datum/material/plasteel/titanium
+/datum/prototype/material/plasteel/titanium
 	id = MAT_TITANIUM
 	name = MAT_TITANIUM
 	stack_type = /obj/item/stack/material/titanium
@@ -20,7 +20,7 @@
 	absorption = MATERIAL_RESISTANCE_LOW
 	nullification = MATERIAL_RESISTANCE_NONE
 
-/datum/material/plasteel/titanium/hull
+/datum/prototype/material/plasteel/titanium/hull
 	id = "titanium_hull"
 	name = MAT_TITANIUMHULL
 	stack_type = null

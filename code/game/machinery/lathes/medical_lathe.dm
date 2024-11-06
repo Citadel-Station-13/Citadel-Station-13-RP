@@ -20,7 +20,7 @@
 	design_holder = /datum/design_holder/lathe/medi_mini_lathe
 
 /datum/design_holder/lathe/medi_mini_lathe/available_ids()
-	return SSresearch.medical_mini_design_ids | ..()
+	return RSdesigns.medical_mini_design_ids | ..()
 
 /obj/machinery/lathe/medical/stocked/Initialize(mapload)
 	. = ..()

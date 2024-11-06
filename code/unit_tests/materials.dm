@@ -1,8 +1,8 @@
 // checks hardcoded only (duh!!)
 /datum/unit_test/materials_shall_have_ids/Run()
 	var/list/ids = list()
-	for(var/path in subtypesof(/datum/material))
-		var/datum/material/M = path
+	for(var/path in subtypesof(/datum/prototype/material))
+		var/datum/prototype/material/M = path
 		// for now we only check initial().
 		var/id = initial(M.id)
 		if(isnull(id))

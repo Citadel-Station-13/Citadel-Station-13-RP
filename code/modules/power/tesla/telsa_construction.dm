@@ -5,7 +5,7 @@
 	origin_tech = list(TECH_MAGNET = 2, TECH_POWER = 4)
 	req_components = list(/obj/item/stock_parts/capacitor = 1)
 
-/datum/design/circuit/tesla_coil
+/datum/prototype/design/circuit/tesla_coil
 	name = "Machine Design (Tesla Coil Board)"
 	desc = "The circuit board for a tesla coil."
 	id = "CircuitTeslaCoil"
@@ -19,7 +19,7 @@
 	materials_base = list(MAT_STEEL = 50, MAT_GLASS = 50)
 	req_components = list()
 
-/datum/design/circuit/grounding_rod
+/datum/prototype/design/circuit/grounding_rod
 	name = "Machine Design (Grounding Rod)"
 	desc = "The circuit board for a grounding rod."
 	id = "CircuitGroundingRod"

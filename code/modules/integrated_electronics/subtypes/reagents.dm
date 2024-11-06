@@ -202,7 +202,7 @@
 					reagents.reagent_list += B
 					reagents.update_total()
 					AM.on_reagent_change()
-					reagents.handle_reactions()
+					reagents.reconsider_reactions()
 					L.visible_message("<span class='danger'>[acting_object] takes a blood sample from [L]!</span>", \
 					"<span class='userdanger'>[acting_object] takes a blood sample from you!</span>")
 				else

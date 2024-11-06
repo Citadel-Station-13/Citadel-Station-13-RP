@@ -38,7 +38,6 @@ var/global/list/cached_icons = list()
 		reagents.add_reagent("carbon", volume/5)
 	else
 		reagents.add_reagent("marker_ink_[paint_type]", volume/5)
-	reagents.handle_reactions()
 
 /obj/item/reagent_containers/glass/paint/red
 	icon_state = "paint_red"

@@ -2177,7 +2177,7 @@
 	if(href_list["rfreq"])
 		if(usr != src.occupant_legacy)	return
 		var/new_frequency = (radio.frequency + top_filter.getNum("rfreq"))
-		if ((radio.frequency < PUBLIC_LOW_FREQ || radio.frequency > PUBLIC_HIGH_FREQ))
+		if ((radio.frequency < MIN_FREQ || radio.frequency > MAX_FREQ))
 			new_frequency = sanitize_frequency(new_frequency)
 		radio.set_frequency(new_frequency)
 		send_byjax(src.occupant_legacy,"exosuit.browser","rfreq","[format_frequency(radio.frequency)]")
