@@ -22,6 +22,10 @@
 	///
 	/// * If set to FALSE, the power cell will not grab a datum instance of us, rather than just setting variables via us.
 	var/functional = FALSE
+	/// do we require processing?
+	///
+	/// * requires [functional]
+	var/requires_processing = FALSE
 	#warn impl
 
 	//* Capacity - Type Generation *//
@@ -80,6 +84,7 @@
  * @return amount that could used
  */
 /datum/power_cell/proc/use(obj/item/cell/cell, amount)
+	return 0
 
 /**
  * Intercepts 'check' behavior
@@ -87,6 +92,7 @@
  * @return if we have that amount
  */
 /datum/power_cell/proc/check(obj/item/cell/cell, amount)
+	return FALSE
 
 /**
  * Intercepts 'give' behavior
@@ -94,5 +100,12 @@
  * @return amount consumed
  */
 /datum/power_cell/proc/give(obj/item/cell/cell, amount)
+	return 0
+
+/**
+ * Intercepts / requests processing. Only when `requires_processing` is enabled.
+ */
+/datum/power_cell/proc/on_process(obj/item/cell/cell, dt)
+	return
 
 #warn impl all

@@ -5,19 +5,19 @@
 	abstract_type = /datum/power_cell/basic
 	functional = FALSE
 
-POWER_CELL_GENERATE_TYPES(/datum/power_cell/basic/tier_1, /basic/tier_1)
+POWER_CELL_GENERATE_TYPES(/datum/power_cell/basic/tier_1, /basic/tier_1, "basic-t1")
 /datum/power_cell/basic/tier_1
 	cell_name = "basic"
 	cell_desc = "Tier 1: This one is a standard design, and performs about what you expect for a power cell."
 	typegen_capacity_multiplier = /datum/power_cell/basic::typegen_capacity_multiplier * 1.0
 
-POWER_CELL_GENERATE_TYPES(/datum/power_cell/basic/tier_2, /basic/tier_2)
+POWER_CELL_GENERATE_TYPES(/datum/power_cell/basic/tier_2, /basic/tier_2, "basic-t2")
 /datum/power_cell/basic/tier_2
 	cell_name = "upgraded"
 	cell_desc = "Tier 2: This one utilizes more advanced materials in its electrolytes, allowing it to store a sizeable chunk more power than a basic cell."
 	typegen_capacity_multiplier = /datum/power_cell/basic::typegen_capacity_multiplier * 1.2
 
-POWER_CELL_GENERATE_TYPES(/datum/power_cell/basic/tier_3, /basic/tier_3)
+POWER_CELL_GENERATE_TYPES(/datum/power_cell/basic/tier_3, /basic/tier_3, "basic-t3")
 /datum/power_cell/basic/tier_3
 	cell_name = "advanced"
 	cell_desc = "Tier 3: This one is even more overtuned than an upgraded cell, utilizing novel crystalline lattices to improve energy densities."

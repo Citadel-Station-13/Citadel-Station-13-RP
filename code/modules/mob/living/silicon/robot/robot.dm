@@ -173,6 +173,10 @@
 	var/sitting = FALSE
 	var/bellyup = FALSE
 
+	//* Power *//
+	/// starting cell type
+	var/starting_cell_type = /obj/item/cell/large
+
 /mob/living/silicon/robot/Initialize(mapload, unfinished = FALSE)
 	spark_system = new /datum/effect_system/spark_spread()
 	spark_system.set_up(5, 0, src)
@@ -219,9 +223,7 @@
 		C.wrapped = new C.external_type
 
 	if(!cell)
-		cell = new /obj/item/cell/high(src)
-		cell.max_charge = 15000
-		cell.charge = 15000
+		cell = new starting_cell_type(src)
 
 	. = ..()
 

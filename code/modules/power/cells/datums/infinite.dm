@@ -11,13 +11,11 @@ POWER_CELL_GENERATE_TYPES(/datum/power_cell/infinite, /infinite)
 
 	functional = TRUE
 
-#warn new way below
-
-/obj/item/cell/infinite/use(amount)
+/datum/power_cell/infinite/use(obj/item/cell/cell, amount)
 	return amount
 
-/obj/item/cell/infinite/check_charge(amount)
+/datum/power_cell/infinite/check(obj/item/cell/cell, amount)
 	return TRUE
 
-/obj/item/cell/infinite/give(amount)
+/datum/power_cell/infinite/give(obj/item/cell/cell, amount)
 	return 0

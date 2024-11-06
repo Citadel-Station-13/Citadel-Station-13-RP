@@ -17,6 +17,8 @@
 	C.update_icon()
 	return C
 
+#warn all the designs
+
 /datum/prototype/design/science/powercell/basic
 	design_name = "basic"
 	lathe_type = LATHE_TYPE_PROTOLATHE | LATHE_TYPE_MECHA

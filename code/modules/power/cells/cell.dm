@@ -135,6 +135,7 @@
 
 // checks if the power cell is able to provide the specified amount of charge
 /obj/item/cell/proc/check_charge(var/amount)
+	#warn cell datum
 	return (charge >= amount)
 
 // Returns how much charge is missing from the cell, useful to make sure not overdraw from the grid when recharging.
@@ -143,6 +144,7 @@
 
 // use power from a cell, returns the amount actually used
 /obj/item/cell/proc/use(var/amount)
+	#warn cell datum
 	if(rigged && amount > 0)
 		explode()
 		return 0
@@ -162,6 +164,7 @@
 
 // recharge the cell
 /obj/item/cell/proc/give(var/amount)
+	#warn cell datum
 	if(rigged && amount > 0)
 		explode()
 		return FALSE
