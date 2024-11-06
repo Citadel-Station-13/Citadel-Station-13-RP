@@ -1030,8 +1030,9 @@
 
 	LAZYADD(attachments, attachment)
 	attachment.attached = src
-	on_attachment_install(attachment)
 	attachment.on_attach(src)
+	attachment.update_gun_overlay()
+	on_attachment_install(attachment)
 	var/mob/holding_mob = worn_mob()
 	if(holding_mob)
 		attachment.register_attachment_actions(holding_mob)
@@ -1072,12 +1073,9 @@
 	if(holding_mob)
 		attachment.unregister_attachment_actions(holding_mob)
 	attachment.on_detach(src)
-	// be extra extra extra EXTRA sure it doesn't still have an overlay
-	// todo: once we figure out why this is happening we should ASSERT() it to catch shitcode
-	if(attachment.gun_applied_overlay)
-		cut_overlay(attachment.gun_applied_overlay, TRUE)
-	on_attachment_uninstall(attachment)
+	attachment.remove_gun_overlay()
 	attachment.attached = null
+	on_attachment_uninstall(attachment)
 	LAZYREMOVE(attachments, attachment)
 	return deleting ? null : attachment.uninstall_product_transform(src)
 
@@ -1086,12 +1084,12 @@
  *
  * @return TRUE / FALSE on success / failure
  */
-/obj/item/gun/proc/align_attachment_overlay(obj/item/gun_attachment/attachment, image/aligning)
+/obj/item/gun/proc/align_attachment_overlay(obj/item/gun_attachment/attachment, image/appearancelike)
 	var/list/alignment = attachment_alignment?[attachment.attachment_slot]
 	if(!alignment)
 		return FALSE
-	aligning.pixel_x = (alignment[1] - attachment.align_x)
-	aligning.pixel_y = (alignment[2] - attachment.align_y)
+	appearancelike.pixel_x = (alignment[1] - attachment.align_x)
+	appearancelike.pixel_y = (alignment[2] - attachment.align_y)
 	return TRUE
 
 /**

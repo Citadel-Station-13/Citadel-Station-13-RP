@@ -63,7 +63,7 @@
 	///
 	/// * only update_gun_overlay() can modify this, and you shouldn't be using this for anything in a non-read-only
 	///   context. no, you are not special; there's no exceptions
-	var/appearance/gun_applied_overlay
+	var/list/appearance/gun_applied_overlay
 
 	//* Slots *//
 
@@ -99,20 +99,20 @@
  *
  * * `attached` is set by this point
  * * [attachment_actions] is handled gun-side
+ * * overlay addition is handled on the gun side, but can be handled on our side too
  */
 /obj/item/gun_attachment/proc/on_attach(obj/item/gun/gun)
 	SHOULD_CALL_PARENT(TRUE)
-	update_gun_overlay()
 
 /**
  * called on detach (including during destroy)
  *
  * * `attached` is not cleared yet, at this point
  * * [attachment_actions] is handled gun-side
+ * * overlay removal is handled on the gun side
  */
 /obj/item/gun_attachment/proc/on_detach(obj/item/gun/gun)
 	SHOULD_CALL_PARENT(TRUE)
-	remove_gun_overlay()
 
 /**
  * sets our gun state
@@ -129,7 +129,11 @@
 /obj/item/gun_attachment/proc/get_gun_overlay()
 	if(!attached)
 		return null
-	var/image/applying = image(icon, gun_state || "[icon_state]-gun")
+	var/mutable_appearance/applying = new /mutable_appearance
+	applying.icon = icon
+	applying.icon_state = gun_state || "[icon_state]-gun"
+	applying.layer = FLOAT_LAYER
+	applying.plane = FLOAT_PLANE
 	attached.align_attachment_overlay(src, applying)
 	return applying
 
