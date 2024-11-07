@@ -119,6 +119,9 @@
 /obj/projectile/nt_isd/electrode
 	name = "stun bolt"
 
+/obj/projectile/nt_isd/disable
+	name = "disabler beam"
+
 // todo: this shouldn't be an emp, this should be like synthetik's
 /obj/projectile/nt_isd/ion
 	name = "ion bolt"

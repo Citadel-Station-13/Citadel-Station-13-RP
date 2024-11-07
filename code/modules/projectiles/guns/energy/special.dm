@@ -216,7 +216,6 @@
 	cell_type = /obj/item/cell/device/weapon/recharge
 	legacy_battery_lock = 1
 	accuracy = 75 // Suppressive weapons don't work too well if there's no risk of being hit.
-	burst_delay = 1 // Burst faster than average.
 	origin_tech = list(TECH_COMBAT = 6, TECH_MAGNET = 6, TECH_ILLEGAL = 6)
 	one_handed_penalty = 60
 
