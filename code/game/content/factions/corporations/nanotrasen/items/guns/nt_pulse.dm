@@ -10,13 +10,12 @@
  */
 /obj/item/gun/energy/nt_pulse
 	abstract_type = /obj/item/gun/energy/nt_pulse
-	// intentionally the same as all pulse weapons to save memory
+	icon = 'icons/content/factions/corporations/nanotrasen/items/guns/pulse.dmi'
 	description_fluff = {"
 		A breakthrough weapon from Nanotrasen's Research Division, pulse weapons utilize rare crystals in its generation array,
 		allowing for a more laminar and cohesive beam than prior thought possible. Closely guarded designs to this day,
 		pulse weapons are some of the only energy-based armaments able to consistently outperform any kinetic alternative.
 	"}
-	icon = 'icons/content/factions/corporations/nanotrasen/items/guns/pulse.dmi'
 
 //* Rifle *//
 
