@@ -12,6 +12,8 @@
 /obj/item/gun/energy/taser
 	name = "taser gun"
 	desc = "The NT Mk31 NL is a small gun used for non-lethal takedowns. An NT exclusive iteration of the Mk30 WT design, the Mk31 features a variable output mechanism which draws from a singular power source, allowing for versatile firing solutions without increased weight."
+	description_info = "This is an energy weapon.  To fire the weapon, ensure your intent is *not* set to 'help', have your gun mode set to 'fire', \
+	then click where you want to fire.  Most energy weapons can fire through windows harmlessly. To recharge this weapon, use a weapon recharger."
 	icon_state = "taser"
 	item_state = null	//so the human update icon uses the icon_state instead.
 

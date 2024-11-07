@@ -2,7 +2,8 @@
 	name = "energy gun"
 	desc = "Another bestseller of Lawson Arms and "+TSC_HEPH+", the LAEP90 Perun is a versatile energy based sidearm, capable of switching between low and high capacity projectile settings. In other words: Stun or Kill."
 	description_info = "This is an energy weapon.  To fire the weapon, ensure your intent is *not* set to 'help', have your gun mode set to 'fire', \
-		then click where you want to fire.  Most energy weapons can fire through windows harmlessly.  To recharge this weapon, use a weapon recharger."
+	then click where you want to fire.  Most energy weapons can fire through windows harmlessly.  To switch between stun and lethal, click the weapon \
+	in your hand.  To recharge this weapon, use a weapon recharger."
 	icon_state = "energystun100"
 	item_state = null	//so the human update icon uses the icon_state instead.
 
@@ -14,7 +15,7 @@
 
 	firemodes = list(
 		list(mode_name="stun", projectile_type=/obj/projectile/beam/stun/med, modifystate="energystun", charge_cost = 240, fire_delay = 1 SECONDS),
-		list(mode_name="lethal", projectile_type=/obj/projectile/beam, modifystate="energykill", charge_cost = 480, fire_delay = 1 SECONDS),
+		list(mode_name="lethal", projectile_type=/obj/projectile/beam, modifystate="energykill", charge_cost = 300, fire_delay = 1 SECONDS),
 	)
 
 /obj/item/gun/energy/gun/mounted
@@ -129,30 +130,6 @@
 	firemodes = list(
 		list(mode_name="stun", projectile_type=/obj/projectile/beam/stun, modifystate="nucgunstun", charge_cost = 240), //10 shots
 		list(mode_name="lethal", projectile_type=/obj/projectile/beam, modifystate="nucgunkill", charge_cost = 240),    //10 shots
-		)
-
-/obj/item/gun/energy/gun/multiphase
-	name = "\improper X-01 MultiPhase Energy Gun"
-	desc = "This is an expensive, modern recreation of an antique laser gun. This gun has several unique firemodes, but lacks the ability to recharge over time."
-	icon = 'icons/obj/multiphase.dmi'
-	item_icons = list(
-		SLOT_ID_LEFT_HAND = 'icons/mob/inhands/guns_left.dmi',
-		SLOT_ID_RIGHT_HAND = 'icons/mob/inhands/guns_right.dmi',
-		)
-	icon_state = "multiphasedis100"
-	projectile_type = /obj/projectile/beam/stun/disabler
-	origin_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 3, TECH_POWER = 3)
-	slot_flags = SLOT_BELT|SLOT_HOLSTER
-	damage_force = 10 //for the HOS to lay down a good beating in desperate situations. Holdover from TG.
-	w_class = WEIGHT_CLASS_NORMAL
-	fire_delay = 6	//standard rate
-	legacy_battery_lock = 0
-	modifystate = null
-
-	firemodes = list(
-		list(mode_name="disable", burst=3, fire_delay=null, move_delay=4, burst_accuracy=list(0,0,0), dispersion=list(0.0, 0.2, 0.5), projectile_type=/obj/projectile/beam/stun/disabler, modifystate="multiphasedis", charge_cost = 100),
-		list(mode_name="stun", burst=1, projectile_type=/obj/projectile/energy/electrode/goldenbolt, modifystate="multiphasestun", charge_cost = 480),
-		list(mode_name="lethal", burst=1, projectile_type=/obj/projectile/beam, modifystate="multiphasekill", charge_cost = 240),
 		)
 
 //NT SpecOps Laser Pistol

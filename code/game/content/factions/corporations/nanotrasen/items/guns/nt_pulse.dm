@@ -5,44 +5,38 @@
 	abstract_type = /datum/firemode/energy/nt_pulse
 	cycle_cooldown = 0.4 SECONDS
 
-/datum/firemode/energy/nt_pulse/rifle
-	abstract_type = /datum/firemode/energy/nt_pulse/rifle
-
-/datum/firemode/energy/nt_pulse/rifle/laser
-	name = "laser"
-	render_key = "kill"
-	legacy_direct_varedits = list(projectile_type = /obj/projectile/beam, charge_cost = 80)
-
-/datum/firemode/energy/nt_pulse/rifle/pulse
-	name = "pulse"
-	render_key = "destroy"
-	legacy_direct_varedits = list(projectile_type = /obj/projectile/beam/pulse, charge_cost = 180)
-
-/datum/firemode/energy/nt_pulse/carbine
-	abstract_type = /datum/firemode/energy/nt_pulse/carbine
-
-/datum/firemode/energy/nt_pulse/carbine/laser
-	name = "laser"
-	render_key = "kill"
-	legacy_direct_varedits = list(projectile_type = /obj/projectile/beam, charge_cost = 120)
-
-/datum/firemode/energy/nt_pulse/carbine/pulse
-	name = "pulse"
-	render_key = "destroy"
-	legacy_direct_varedits = list(projectile_type = /obj/projectile/beam/pulse, charge_cost = 240)
-
+/**
+ * NT's military (Asset Protection & Emergency Responder) energy rifles
+ */
 /obj/item/gun/energy/nt_pulse
-	icon = 'icons/content/factions/corporations/nanotrasen/items/guns/nt_pulse.dmi'
-
-/obj/item/gun/energy/nt_pulse/rifle
-	name = "pulse rifle"
-	desc = "A powerful energy rifle with multiple intensity selectors."
+	abstract_type = /obj/item/gun/energy/nt_pulse
 	// intentionally the same as all pulse weapons to save memory
 	description_fluff = {"
 		A breakthrough weapon from Nanotrasen's Research Division, pulse weapons utilize rare crystals in its generation array,
 		allowing for a more laminar and cohesive beam than prior thought possible. Closely guarded designs to this day,
 		pulse weapons are some of the only energy-based armaments able to consistently outperform any kinetic alternative.
 	"}
+	icon = 'icons/content/factions/corporations/nanotrasen/items/guns/pulse.dmi'
+
+//* Rifle *//
+
+/datum/firemode/energy/nt_pulse/rifle
+	abstract_type = /datum/firemode/energy/nt_pulse/rifle
+
+/datum/firemode/energy/nt_pulse/rifle/laser
+	name = "laser"
+	render_key = "kill"
+	settings = list(mode_name = "lethal", projectile_type = /obj/projectile/beam, charge_cost = 80)
+
+/datum/firemode/energy/nt_pulse/rifle/pulse
+	name = "pulse"
+	render_key = "destroy"
+	settings = list(mode_name = "destroy", projectile_type = /obj/projectile/beam/pulse, charge_cost = 180)
+
+/obj/item/gun/energy/nt_pulse/rifle
+	prototype_id = "nt-pulse-rifle"
+	name = "pulse rifle"
+	desc = "A powerful energy rifle with multiple intensity selectors."
 	icon_state = "rifle"
 	base_icon_state = "rifle"
 	base_mob_state = "pulse"
@@ -71,15 +65,25 @@
 		empty_state = TRUE;
 	}
 
+//* Carbine *//
+
+/datum/firemode/energy/nt_pulse/carbine
+	abstract_type = /datum/firemode/energy/nt_pulse/carbine
+
+/datum/firemode/energy/nt_pulse/carbine/laser
+	name = "laser"
+	render_key = "kill"
+	settings = list(mode_name = "lethal", projectile_type = /obj/projectile/beam, charge_cost = 120)
+
+/datum/firemode/energy/nt_pulse/carbine/pulse
+	name = "pulse"
+	render_key = "destroy"
+	settings = list(mode_name = "destroy", projectile_type = /obj/projectile/beam/pulse, charge_cost = 240)
+
 /obj/item/gun/energy/nt_pulse/carbine
+	prototype_id = "nt-pulse-carbine"
 	name = "pulse carbine"
 	desc = "A powerful energy carbine with multiple intensity selectors."
-	// intentionally the same as all pulse weapons to save memory
-	description_fluff = {"
-		A breakthrough weapon from Nanotrasen's Research Division, pulse weapons utilize rare crystals in its generation array,
-		allowing for a more laminar and cohesive beam than prior thought possible. Closely guarded designs to this day,
-		pulse weapons are some of the only energy-based armaments able to consistently outperform any kinetic alternative.
-	"}
 	icon_state = "carbine"
 	base_icon_state = "carbine"
 	base_mob_state = "pulse"
@@ -104,6 +108,8 @@
 		empty_state = TRUE;
 	}
 
+//* Projectiles *//
+
 /obj/projectile/beam/pulse
 	name = "pulse"
 	icon_state = "u_laser"
@@ -117,6 +123,7 @@
 	tracer_type = /obj/effect/projectile/tracer/laser_pulse
 	impact_type = /obj/effect/projectile/impact/laser_pulse
 
+// todo: this shouldn't be here i think
 /obj/projectile/beam/pulse/shotgun
 	damage_force = 50
 	armor_penetration = 25
