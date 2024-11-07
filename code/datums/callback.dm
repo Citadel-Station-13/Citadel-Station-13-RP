@@ -70,6 +70,9 @@
 	if(usr)
 		user = WEAKREF(usr)
 
+/datum/callback/proc/operator""()
+	return "callback [object] ([ref(object)])[isdatum(object) ? " ([object.type])" : ""] args: \[[english_list(arguments)]\]"
+
 /**
  * Invoke this callback
  *
@@ -102,6 +105,19 @@
 	if(object == GLOBAL_PROC)
 		return call(delegate)(arglist(calling_arguments))
 	return call(object, delegate)(arglist(calling_arguments))
+
+/**
+ * Invoke this callback and crash if it sleeps.
+ *
+ * * Use when a callback should never sleep, as call() cannot be verified by static analysis.
+ */
+/datum/callback/proc/invoke_no_sleep(...)
+	. = CALLBACK_SLEEP_SENTINEL
+	ASYNC
+		. = Invoke(arglist(args))
+	if(. == CALLBACK_SLEEP_SENTINEL)
+		. = null
+		CRASH("Callback [src] slept on a no-sleeping invoke.")
 
 /**
  * Invoke this callback async (waitfor=false)

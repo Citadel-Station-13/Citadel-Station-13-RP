@@ -73,7 +73,6 @@ GLOBAL_LIST_EMPTY(smeses)
 	return INITIALIZE_HINT_LATELOAD
 
 /obj/machinery/power/smes/LateInitialize()
-	. = ..()
 	if(!powernet)
 		connect_to_network()
 
@@ -241,7 +240,7 @@ GLOBAL_LIST_EMPTY(smeses)
 	add_hiddenprint(user)
 	ui_interact(user)
 
-/obj/machinery/power/smes/attack_hand(mob/user, list/params)
+/obj/machinery/power/smes/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	add_fingerprint(user)
 	ui_interact(user)
 

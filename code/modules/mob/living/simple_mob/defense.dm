@@ -1,5 +1,5 @@
 // When someone clicks us with an empty hand
-/mob/living/simple_mob/attack_hand(mob/user, list/params)
+/mob/living/simple_mob/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	. = ..()
 	if(.)
 		return
@@ -39,7 +39,7 @@
 
 		if(INTENT_HARM)
 			var/armor = run_armor_check(def_zone = null, attack_flag = "melee")
-			apply_damage(damage = harm_intent_damage, damagetype = BURN, def_zone = null, blocked = armor, blocked = resistance, used_weapon = null, sharp = FALSE, edge = FALSE)
+			apply_damage(damage = harm_intent_damage, damagetype = DAMAGE_TYPE_BURN, def_zone = null, blocked = armor, blocked = resistance, used_weapon = null, sharp = FALSE, edge = FALSE)
 			L.visible_message("<span class='warning'>\The [L] [response_harm] \the [src]!</span>")
 			L.do_attack_animation(src)
 
@@ -75,7 +75,7 @@
 	effective_force = O.damage_force
 
 	//Animals can't be stunned(?)
-	if(O.damtype == HALLOSS)
+	if(O.damage_type == DAMAGE_TYPE_HALLOSS)
 		effective_force = 0
 	if(supernatural && istype(O,/obj/item/nullrod))
 		effective_force *= 2
@@ -101,7 +101,7 @@
 		if (3.0)
 			bombdam = 30
 
-	apply_damage(damage = bombdam, damagetype = BRUTE, def_zone = null, blocked = armor, blocked = resistance, used_weapon = null, sharp = FALSE, edge = FALSE)
+	apply_damage(damage = bombdam, damagetype = DAMAGE_TYPE_BRUTE, def_zone = null, blocked = armor, blocked = resistance, used_weapon = null, sharp = FALSE, edge = FALSE)
 
 	if(bombdam > maxHealth)
 		gib()
@@ -152,7 +152,7 @@
 	if(shock_damage < 1)
 		return 0
 
-	apply_damage(damage = shock_damage, damagetype = BURN, def_zone = null, blocked = null, blocked = resistance, used_weapon = null, sharp = FALSE, edge = FALSE)
+	apply_damage(damage = shock_damage, damagetype = DAMAGE_TYPE_BURN, def_zone = null, blocked = null, blocked = resistance, used_weapon = null, sharp = FALSE, edge = FALSE)
 	playsound(loc, /datum/soundbyte/grouped/sparks, 50, 1, -1)
 
 	var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
@@ -182,11 +182,11 @@
 
 		if(stun_amount)
 			stunDam += stun_amount * 0.5
-			apply_damage(damage = stunDam, damagetype = BURN, def_zone = null, blocked = armor, blocked = resistance, used_weapon = used_weapon, sharp = FALSE, edge = FALSE)
+			apply_damage(damage = stunDam, damagetype = DAMAGE_TYPE_BURN, def_zone = null, blocked = armor, blocked = resistance, used_weapon = used_weapon, sharp = FALSE, edge = FALSE)
 
 		if(agony_amount)
 			agonyDam += agony_amount * 0.5
-			apply_damage(damage = agonyDam, damagetype = BURN, def_zone = null, blocked = armor, blocked = resistance, used_weapon = used_weapon, sharp = FALSE, edge = FALSE)
+			apply_damage(damage = agonyDam, damagetype = DAMAGE_TYPE_BURN, def_zone = null, blocked = armor, blocked = resistance, used_weapon = used_weapon, sharp = FALSE, edge = FALSE)
 
 
 // Electromagnetism

@@ -18,7 +18,7 @@
 	var/process_queue = FALSE
 
 	///The current design datum that the machine is building.
-	var/datum/design/being_built
+	var/datum/prototype/design/being_built
 	///Is the fabricator currently printing something?
 	var/printing = FALSE
 	///World time when the build will finish.
@@ -97,7 +97,7 @@
 
 	//Go through all materials, and add them to the possible storage, but hide them unless we contain them.
 	// todo: WHY ARE YOU dOING ThiS JUST DONT STORE THE MATERIAL
-	for(var/datum/material/M as anything in SSmaterials.all_materials())
+	for(var/datum/prototype/material/M as anything in SSmaterials.all_materials())
 		var/Name = M.name
 		if(Name in stored_materials)
 			continue
@@ -148,7 +148,7 @@
   * * D - Design datum to get information on.
   * * categories - Boolean, whether or not to parse snowflake categories into the part information list.
   */
-/obj/machinery/mecha_part_fabricator/proc/output_part_info(datum/design/D, var/categories = FALSE)
+/obj/machinery/mecha_part_fabricator/proc/output_part_info(datum/prototype/design/D, var/categories = FALSE)
 	var/cost = list()
 	for(var/c in D.materials_base)
 		cost[c] = get_resource_cost_w_coeff(D, D.materials_base[c])
@@ -266,7 +266,7 @@
   * Returns a list of k,v resources with their amounts.
   * * D - Design datum to calculate the modified resource cost of.
   */
-/obj/machinery/mecha_part_fabricator/proc/get_resources_w_coeff(datum/design/D)
+/obj/machinery/mecha_part_fabricator/proc/get_resources_w_coeff(datum/prototype/design/D)
 	var/list/resources = list()
 	for(var/mat_id in D.materials_base)
 		resources[mat_id] = get_resource_cost_w_coeff(D, D.materials_base[mat_id])
@@ -279,7 +279,7 @@
   * Returns TRUE if there are sufficient resources to print the item.
   * * D - Design datum to calculate the modified resource cost of.
   */
-/obj/machinery/mecha_part_fabricator/proc/check_resources(datum/design/D)
+/obj/machinery/mecha_part_fabricator/proc/check_resources(datum/prototype/design/D)
 	if(length(D.reagents)) // No reagents storage - no reagent designs.
 		return FALSE
 	. = TRUE
@@ -299,7 +299,7 @@
 	if(!length(queue))
 		return FALSE
 
-	var/datum/design/D = queue[1]
+	var/datum/prototype/design/D = queue[1]
 	if(build_part(D, verbose))
 		remove_from_queue(1)
 		return TRUE
@@ -314,7 +314,7 @@
   * * D - Design datum to attempt to print.
   * * verbose - Whether the machine should use say() procs. Set to FALSE to disable the machine saying reasons for failure to build.
   */
-/obj/machinery/mecha_part_fabricator/proc/build_part(datum/design/D, verbose = TRUE)
+/obj/machinery/mecha_part_fabricator/proc/build_part(datum/prototype/design/D, verbose = TRUE)
 	if(!D)
 		return FALSE
 
@@ -370,7 +370,7 @@
   * Return TRUE if the part was successfully dispensed.
   * * D - Design datum to attempt to dispense.
   */
-/obj/machinery/mecha_part_fabricator/proc/dispense_built_part(datum/design/D)
+/obj/machinery/mecha_part_fabricator/proc/dispense_built_part(datum/prototype/design/D)
 	var/obj/item/I = D.legacy_print(src, src)
 	// I.material_flags |= MATERIAL_NO_EFFECTS //Find a better way to do this.
 	// I.set_custom_materials(build_materials)
@@ -396,7 +396,7 @@
   * * part_list - List of datum design ids for designs to add to the queue.
   */
 /obj/machinery/mecha_part_fabricator/proc/add_part_set_to_queue(list/part_list)
-	for(var/datum/design/D in files.known_designs)
+	for(var/datum/prototype/design/D in RSdesigns.fetch_multi(files.known_design_ids))
 		if((D.lathe_type & valid_buildtype) && (D.id in part_list))
 			add_to_queue(D)
 
@@ -406,7 +406,7 @@
   * Returns TRUE if successful and FALSE if the design was not added to the queue.
   * * D - Datum design to add to the queue.
   */
-/obj/machinery/mecha_part_fabricator/proc/add_to_queue(datum/design/D)
+/obj/machinery/mecha_part_fabricator/proc/add_to_queue(datum/prototype/design/D)
 	if(!istype(queue))
 		queue = list()
 	if(D)
@@ -436,7 +436,7 @@
 		return null
 
 	var/list/queued_parts = list()
-	for(var/datum/design/D in queue)
+	for(var/datum/prototype/design/D in queue)
 		var/list/part = output_part_info(D)
 		queued_parts += list(part)
 	return queued_parts
@@ -447,8 +447,7 @@
 			continue
 		for(var/datum/tech/T in RDC.files.known_tech)
 			files.AddTech2Known(T)
-		for(var/datum/design/D in RDC.files.known_designs)
-			files.AddDesign2Known(D)
+		files.known_design_ids |= RDC.files.known_design_ids
 		files.RefreshResearch()
 		update_static_data(usr)
 		atom_say("Successfully synchronized with R&D server.")
@@ -465,7 +464,7 @@
   * * resource - Material datum reference to the resource to calculate the cost of.
   * * roundto - Rounding value for round() proc
   */
-/obj/machinery/mecha_part_fabricator/proc/get_resource_cost_w_coeff(datum/design/D, var/amt, roundto = 1)
+/obj/machinery/mecha_part_fabricator/proc/get_resource_cost_w_coeff(datum/prototype/design/D, var/amt, roundto = 1)
 	return round(amt * component_coeff, roundto)
 
 /**
@@ -482,7 +481,7 @@
 	immediate += /datum/asset_pack/spritesheet/materials
 	return ..()
 
-/obj/machinery/mecha_part_fabricator/attack_hand(mob/user, list/params)
+/obj/machinery/mecha_part_fabricator/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(..())
 		return
 	if(!allowed(user))
@@ -504,7 +503,7 @@
 	for(var/part_set in part_sets)
 		final_sets += part_set
 
-	for(var/datum/design/D in files.known_designs)
+	for(var/datum/prototype/design/D in RSdesigns.fetch_multi(files.known_design_ids))
 		if((D.lathe_type & valid_buildtype) && D.id != "id") // bugfix for weird null entries
 			// This is for us.
 			var/list/part = output_part_info(D, TRUE)
@@ -580,7 +579,7 @@
 		if("add_queue_part")
 			// Add a specific part to queue
 			var/T = params["id"]
-			for(var/datum/design/D in files.known_designs)
+			for(var/datum/prototype/design/D in RSdesigns.fetch_multi(files.known_design_ids))
 				if((D.lathe_type & valid_buildtype) && (D.id == T))
 					add_to_queue(D)
 					break
@@ -613,8 +612,8 @@
 				return
 
 			var/id = params["id"]
-			var/datum/design/D = null
-			for(var/datum/design/D_new in files.known_designs)
+			var/datum/prototype/design/D = null
+			for(var/datum/prototype/design/D_new in RSdesigns.fetch_multi(files.known_design_ids))
 				if((D_new.lathe_type == valid_buildtype) && (D_new.id == id))
 					D = D_new
 					break
@@ -708,7 +707,7 @@
 	var/contains = stored_materials[matstring]
 	if(!contains)
 		return
-	var/datum/material/M = get_material_by_name(matstring)
+	var/datum/prototype/material/M = get_material_by_name(matstring)
 
 	var/obj/item/stack/material/S = M.place_sheet(get_turf(src))
 	if(amount <= 0)

@@ -67,7 +67,7 @@
 	integrity = clamp(integrity + amt, 0, integrity_max)
 	return
 
-/obj/item/mecha_parts/component/proc/damage_part(var/dam_amt = 0, var/type = BRUTE)
+/obj/item/mecha_parts/component/proc/damage_part(var/dam_amt = 0, var/type = DAMAGE_TYPE_BRUTE)
 	if(dam_amt <= 0)
 		return FALSE
 

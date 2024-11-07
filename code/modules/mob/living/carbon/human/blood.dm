@@ -11,7 +11,7 @@ var/const/BLOOD_VOLUME_SURVIVE = 40
 var/const/CE_STABLE_THRESHOLD = 0.5
 */
 
-/mob/living/carbon/human/var/datum/reagents/vessel // Container for blood and BLOOD ONLY. Do not transfer other chems here.
+/mob/living/carbon/human/var/datum/reagent_holder/vessel // Container for blood and BLOOD ONLY. Do not transfer other chems here.
 /mob/living/carbon/human/var/var/pale = 0          // Should affect how mob sprite is drawn, but currently doesn't.
 
 //Initializes blood vessels
@@ -23,7 +23,7 @@ var/const/CE_STABLE_THRESHOLD = 0.5
 	if(species.species_flags & NO_BLOOD)
 		return
 
-	vessel = new/datum/reagents(species.blood_volume)
+	vessel = new/datum/reagent_holder(species.blood_volume)
 	vessel.my_atom = src
 
 	if(!should_have_organ(O_HEART)) //We want the var for safety but we can do without the actual blood.
@@ -181,9 +181,9 @@ var/const/CE_STABLE_THRESHOLD = 0.5
 				continue
 			for(var/datum/wound/W as anything in temp.wounds)
 				if(W.bleeding())
-					if(W.damage_type == PIERCE) //gunshots and spear stabs bleed more
+					if(W.wound_type == WOUND_TYPE_PIERCE) //gunshots and spear stabs bleed more
 						blood_loss_divisor = max(blood_loss_divisor - 5, 1)
-					else if(W.damage_type == BRUISE) //bruises bleed less
+					else if(W.wound_type == WOUND_TYPE_BRUISE) //bruises bleed less
 						blood_loss_divisor = max(blood_loss_divisor + 5, 1)
 					//the farther you get from those vital regions, the less you bleed
 					//depending on how dangerous bleeding turns out to be, it might be better to only apply the reduction to hands and feet
@@ -318,7 +318,7 @@ var/const/CE_STABLE_THRESHOLD = 0.5
 	..()
 
 //Gets human's own blood.
-/mob/living/carbon/proc/get_blood(datum/reagents/container)
+/mob/living/carbon/proc/get_blood(datum/reagent_holder/container)
 	var/datum/reagent/blood/res = locate() in container.reagent_list //Grab some blood
 	if(res) // Make sure there's some blood at all
 		if(res.data["donor"] != src) //If it's not theirs, then we look for theirs

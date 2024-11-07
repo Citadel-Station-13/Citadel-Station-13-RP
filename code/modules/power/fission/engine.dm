@@ -108,7 +108,7 @@
 	var/power = (decay_heat / REACTOR_RADS_TO_MJ) * max(healthmul, 0.1)
 	radiation_pulse(src, max(power * REACTOR_RADIATION_MULTIPLIER, 0), RAD_FALLOFF_ENGINE_FISSION)
 
-/obj/machinery/power/fission/attack_hand(mob/user, list/params)
+/obj/machinery/power/fission/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	nano_ui_interact(user)
 
 /obj/machinery/power/fission/attack_robot(mob/user)
@@ -479,7 +479,7 @@ I'm commenting this out until I have time to make this less stupid.
 // fuck this
 /obj/nuclear_mistake_spawner
 	name = "the Underdark's revenge"
-	desc = "hardcoded piece of that that should never be seen PLEASE report this if you do"
+	desc = "hardcoded piece of trash that should never be seen PLEASE report this if you do"
 	icon = 'icons/mob/screen1.dmi'
 	icon_state = "x"
 	invisibility = 101
@@ -536,7 +536,8 @@ I'm commenting this out until I have time to make this less stupid.
 		my_mob.low_priority = TRUE
 
 		if(faction)
-			my_mob.faction = faction
+			my_mob.clear_iff_factions()
+			my_mob.add_iff_faction(faction)
 
 		if(atmos_comp)
 			var/turf/T = get_turf(src)

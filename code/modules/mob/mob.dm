@@ -47,6 +47,8 @@
 	initialize_actionspeed()
 	// ssd overlay
 	update_ssd_overlay()
+	// iff factions
+	init_iff()
 	return ..()
 
 /mob/Destroy()
@@ -426,9 +428,6 @@
 		if(us == (isnull(M.base_layer)? M.layer : M.base_layer))
 			. += M
 	. -= src
-
-/mob/proc/ret_grab(obj/effect/list_container/mobl/L as obj, flag)
-	return
 
 /**
  * Get the notes of this mob

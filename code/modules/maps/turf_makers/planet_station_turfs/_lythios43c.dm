@@ -3,10 +3,11 @@
 #define LYTHIOS43C_TURF_CREATE(x)	x/lythios43c/initial_gas_mix=ATMOSPHERE_ID_LYTHIOS43C;x/lythios43c/outdoors=TRUE
 #define LYTHIOS43C_TURF_CREATE_UN(x)	x/lythios43c/initial_gas_mix=ATMOSPHERE_ID_LYTHIOS43C;x/lythios43c/outdoors=FALSE
 
-/turf/simulated/open/lythios43c/Initialize(mapload)
-	. = ..()
-	if(outdoors)
-		SSplanets.addTurf(src)
+// usless init, check [/turf/simulated/Initialize()]
+// /turf/simulated/open/lythios43c/Initialize(mapload)
+// 	. = ..()
+// 	if(outdoors)
+// 		SSplanets.addTurf(src)
 
 
 LYTHIOS43C_TURF_CREATE(/turf/simulated/open)

@@ -214,15 +214,6 @@ var/list/channel_to_radio_key = new
 		speaking.broadcast(src,trim(message))
 		return 1
 
-	if(HAS_TRAIT(src, TRAIT_MUTE))
-		to_chat(src, "<span class='danger'>You are not capable of speech!</span>")
-		return
-
-	//Self explanatory.
-	if(is_muzzled() && !(speaking && (speaking.language_flags & LANGUAGE_SIGNLANG)))
-		to_chat(src, "<span class='danger'>You're muzzled and cannot speak!</span>")
-		return
-
 	//Clean up any remaining junk on the left like spaces.
 	message = trim_left(message)
 
@@ -245,9 +236,18 @@ var/list/channel_to_radio_key = new
 		verb = speaking.speech_verb
 		w_not_heard = "[speaking.speech_verb] something [w_adverb]"
 
-	var/list/message_args = list("message" = message, "whispering" = whispering, "cancelled" = FALSE)
+	var/list/message_args = list("message" = message, "whispering" = whispering, "cancelled" = FALSE, "message_mode" = message_mode)
 
 	SEND_SIGNAL(src, COMSIG_MOB_SAY, message_args)
+
+	if(HAS_TRAIT(src, TRAIT_MUTE))
+		to_chat(src, "<span class='danger'>You are not capable of speech!</span>")
+		return
+
+	//Self explanatory.
+	if(is_muzzled() && !(speaking && (speaking.language_flags & LANGUAGE_SIGNLANG)))
+		to_chat(src, "<span class='danger'>You're muzzled and cannot speak!</span>")
+		return
 
 	if(message_args["cancelled"])
 		return

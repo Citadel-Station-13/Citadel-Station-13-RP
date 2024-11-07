@@ -117,7 +117,7 @@
 
 /datum/reagent/topical/neurolaze/affect_blood(mob/living/carbon/M, alien, removed)
 	if(alien != IS_DIONA)
-		M.apply_damage(5 * removed, HALLOSS)//holodeck boxing glove damage
+		M.apply_damage(5 * removed, DAMAGE_TYPE_HALLOSS)//holodeck boxing glove damage
 		M.make_jittery(200)
 
 /datum/reagent/topical/neurolaze/affect_ingest(mob/living/carbon/M, alien, removed)

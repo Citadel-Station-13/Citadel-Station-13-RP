@@ -104,7 +104,7 @@
 			module_string += "\a [module.name], "
 	return module_string
 
-/obj/item/switchtool/attack_self(mob/user)
+/obj/item/switchtool/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -168,11 +168,6 @@
 
 /obj/item/switchtool/proc/get_switchtool_enum(obj/item/I)
 	return tools[I]
-
-/obj/item/switchtool/handle_shield(mob/user)
-	if(get_switchtool_enum(deployed) == SWITCHTOOL_SHIELD)
-		return TRUE
-	return FALSE
 
 /obj/item/switchtool/update_overlays()
 	. = ..()
@@ -344,8 +339,8 @@
 		/obj/item/multitool/holoswitch = SWITCHTOOL_MULTITOOL,
 		/obj/item/flashlight/holoswitch = SWITCHTOOL_LIGHT,
 		/obj/item/soap/holoswitch = SWITCHTOOL_SOAP,
-		/obj/item/melee/energy/sword/holoswitch = SWITCHTOOL_SWORD,
-		/obj/item/shield/holoswitch = SWITCHTOOL_SHIELD
+		/obj/item/melee/transforming/energy/sword/holoswitch = SWITCHTOOL_SWORD,
+		// /obj/item/shield/holoswitch = SWITCHTOOL_SHIELD
 	)
 	tool_functions = list(
 		TOOL_SCALPEL,
@@ -484,7 +479,7 @@
 	desc = "This should not exist."
 	tool_speed = 0.9
 
-/obj/item/melee/energy/sword/holoswitch
+/obj/item/melee/transforming/energy/sword/holoswitch
 	name = "hardlight blade"
 	desc = "This should not exist."
 

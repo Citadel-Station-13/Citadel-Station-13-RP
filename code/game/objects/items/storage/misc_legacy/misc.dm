@@ -84,8 +84,7 @@
 	icon_state = "survivalknife"
 	item_state = "knife"
 	max_combined_volume = WEIGHT_VOLUME_TINY * 3
-	sharp = 1
-	edge = 1
+	damage_mode = DAMAGE_MODE_SHARP | DAMAGE_MODE_EDGE
 	damage_force = 15
 	throw_force = 15
 	attack_verb = list("stabbed", "chopped", "cut")
@@ -99,7 +98,7 @@
 		)
 	starts_with = list(/obj/item/pen/crayon/chalk, /obj/item/reagent_containers/pill/nutriment, /obj/item/gps/survival)
 
-/obj/item/storage/box/survival_knife/attack_self(mob/user)
+/obj/item/storage/box/survival_knife/attack_self(mob/user, datum/event_args/actor/actor)
 	return
 
 /obj/item/storage/box/papersack
@@ -159,12 +158,12 @@
 	else if(is_sharp())
 		if(!contents.len)
 			if(item_state == "paperbag_None")
-				to_chat("<span class='notice'>You cut eyeholes into [src].</span>")
+				to_chat(user, "<span class='notice'>You cut eyeholes into [src].</span>")
 				new /obj/item/clothing/head/papersack(user.loc)
 				qdel(src)
 				return FALSE
 			else if(item_state == "paperbag_SmileyFace")
-				to_chat("<span class='notice'>You cut eyeholes into [src] and modify the design.</span>")
+				to_chat(user, "<span class='notice'>You cut eyeholes into [src] and modify the design.</span>")
 				new /obj/item/clothing/head/papersack/smiley(user.loc)
 				qdel(src)
 				return FALSE

@@ -16,4 +16,4 @@
 	desc = "A solid ball made of a lead-silver alloy."
 	icon_state = "silverball"
 	projectile_type = /obj/projectile/bullet/musket/silver
-	materials_base = list("lead" = 100, "silver" = 100)
+	materials_base = list("lead" = 50, "silver" = 50)

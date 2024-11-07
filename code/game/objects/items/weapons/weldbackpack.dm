@@ -14,7 +14,7 @@
 
 /obj/item/weldpack/Initialize(mapload)
 	. = ..()
-	var/datum/reagents/R = new/datum/reagents(max_fuel) //Lotsa refills
+	var/datum/reagent_holder/R = new/datum/reagent_holder(max_fuel) //Lotsa refills
 	reagents = R
 	R.my_atom = src
 	R.add_reagent("fuel", max_fuel)
@@ -84,7 +84,7 @@
 		to_chat(user,"<span class='warning'>The tank scoffs at your insolence. It only provides services to welders.</span>")
 	return
 
-/obj/item/weldpack/attack_hand(mob/user, list/params)
+/obj/item/weldpack/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(istype(user, /mob/living/carbon/human))
 		var/mob/living/carbon/human/wearer = user
 		if(wearer.back == src)

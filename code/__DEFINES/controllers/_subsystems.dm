@@ -4,6 +4,13 @@
  *? Lots of important stuff in here, make sure you have your brain switched on when editing this file!
  */
 
+//* Subsystem `initialized` variable *//
+
+// todo: implement these, separate out SSatoms initialization state to its own variable
+// #define SUBSYSTEM_INITIALIZED_NOT_STARTED 0
+// #define SUBSYSTEM_INITIALIZED_INITIALIZING 1
+// #define SUBSYSTEM_INITIALIZED_DONE 2
+
 //! ## Initialization subsystem
 
 /// New should not call Initialize.
@@ -34,8 +41,11 @@
 #define INITIALIZE_IMMEDIATE(X) ##X/New(loc, ...){\
 	..();\
 	if(!(atom_flags & ATOM_INITIALIZED)) {\
+		var/previous_initialized_value = SSatoms.initialized;\
+		SSatoms.initialized = INITIALIZATION_INNEW_MAPLOAD;\
 		args[1] = TRUE;\
-		SSatoms.InitAtom(src, args);\
+		SSatoms.InitAtom(src, FALSE, args);\
+		SSatoms.initialized = previous_initialized_value;\
 	}\
 }
 
@@ -113,6 +123,9 @@ DEFINE_BITFIELD(runlevels, list(
 #define INIT_ORDER_CHEMISTRY       60
 #define INIT_ORDER_MATERIALS       55
 #define INIT_ORDER_PHOTOGRAPHY     50
+#define INIT_ORDER_AI_SCHEDULING   48
+#define INIT_ORDER_AI_MOVEMENT     48
+#define INIT_ORDER_AI_HOLDERS      48
 #define INIT_ORDER_MAPPING         45
 #define INIT_ORDER_SPATIAL_GRIDS   43 // must be after SSmapping so we know world.maxx and world.maxy
 #define INIT_ORDER_GAME_WORLD      40

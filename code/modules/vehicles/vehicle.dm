@@ -1,3 +1,4 @@
+TYPE_REGISTER_SPATIAL_GRID(/obj/vehicle, SSspatial_grids.vehicles)
 /**
  * generic, multiseat-capable vehicles system
  *

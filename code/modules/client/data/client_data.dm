@@ -50,7 +50,8 @@ GLOBAL_LIST_EMPTY(client_data)
 
 	is_guest = IsGuestKey(key)
 
-	INVOKE_ASYNC(src, PROC_REF(load_account_age))
+	spawn(0)
+		load_account_age()
 
 	var/list/the_cheese_touch = CONFIG_GET(keyed_list/shadowban)
 	var/client/C = GLOB.directory[src.ckey]

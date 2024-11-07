@@ -22,7 +22,7 @@
 	var/next_fuel_consumption = 0
 	/// If the bonfire has a grill attached.
 	var/grill = FALSE
-	var/datum/material/material
+	var/datum/prototype/material/material
 	var/set_temperature = T0C + 30	//K
 	var/heating_power = 80000
 
@@ -81,7 +81,7 @@
 	else
 		return ..()
 
-/obj/structure/bonfire/attack_hand(mob/user, list/params)
+/obj/structure/bonfire/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(has_buckled_mobs())
 		return ..()
 
@@ -288,7 +288,7 @@
 	else
 		return ..()
 
-/obj/structure/fireplace/attack_hand(mob/user, list/params)
+/obj/structure/fireplace/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(get_fuel_amount())
 		remove_fuel(user)
 

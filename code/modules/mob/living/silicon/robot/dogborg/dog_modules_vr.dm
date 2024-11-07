@@ -21,7 +21,7 @@
 	w_class = WEIGHT_CLASS_NORMAL
 	var/emagged = 0
 
-/obj/item/dogborg/jaws/small/attack_self(mob/user)
+/obj/item/dogborg/jaws/small/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -60,7 +60,7 @@
 	attack_verb = list("nuzzled", "nosed", "booped")
 	w_class = WEIGHT_CLASS_TINY
 
-/obj/item/dogborg/boop_module/attack_self(mob/user)
+/obj/item/dogborg/boop_module/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -190,7 +190,7 @@
 	if(water.energy < 5)
 		. += "<span class='notice'>[src] is dry.</span>"
 
-/obj/item/dogborg/tongue/attack_self(mob/user)
+/obj/item/dogborg/tongue/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -304,7 +304,7 @@
 	item_flags = ITEM_NOBLUDGEON | ITEM_ENCUMBERS_WHILE_HELD
 	var/enabled = FALSE
 
-/obj/item/pupscrubber/attack_self(mob/user)
+/obj/item/pupscrubber/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -335,8 +335,7 @@
 	icon_state = "swordtail"
 	desc = "A glowing pink dagger normally attached to the end of a cyborg's tail. It appears to be extremely sharp."
 	damage_force = 20 //Takes 5 hits to 100-0
-	sharp = 1
-	edge = 1
+	damage_mode = DAMAGE_MODE_SHARP | DAMAGE_MODE_EDGE
 	throw_force = 0 //This shouldn't be thrown in the first place.
 	attack_sound = 'sound/weapons/blade1.ogg'
 	attack_verb = list("slashed", "stabbed", "jabbed", "mauled", "sliced")
@@ -350,7 +349,7 @@
 	var/cooldown = 0
 	var/datum/matter_synth/glass = null
 
-/obj/item/lightreplacer/dogborg/attack_self(mob/user)
+/obj/item/lightreplacer/dogborg/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return//Recharger refill is so last season. Now we recycle without magic!
@@ -383,7 +382,7 @@
 	item_flags = ITEM_NOBLUDGEON | ITEM_ENCUMBERS_WHILE_HELD
 	throw_force = 0
 
-/obj/item/dogborg/pounce/attack_self(mob/user)
+/obj/item/dogborg/pounce/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -447,7 +446,7 @@
 			return
 	var/armor_block = run_armor_check(T, "melee")
 	var/armor_soak = get_armor_soak(T, "melee")
-	T.apply_damage(20, HALLOSS,, armor_block, armor_soak)
+	T.apply_damage(20, DAMAGE_TYPE_HALLOSS,, armor_block, armor_soak)
 	if(prob(33))
 		T.apply_effect(3, WEAKEN, armor_block)
 

@@ -8,11 +8,11 @@
 	throw_speed = 3
 	throw_range = 7
 	throw_force = 10
-	damtype = BURN
+	damage_type = DAMAGE_TYPE_BURN
 	damage_force = 10
 	attack_sound = 'sound/items/welder2.ogg'
 
-/obj/item/scrying/attack_self(mob/user)
+/obj/item/scrying/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -48,7 +48,7 @@
 	var/rend_desc = "You should run now."
 	var/spawn_fast = 0 //if 1, ignores checking for mobs on loc before spawning
 
-/obj/item/veilrender/attack_self(mob/user)
+/obj/item/veilrender/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -230,8 +230,7 @@
 	for(var/obj/item/I in H)
 		//H.dropItemtoGround(I) //Just gonna disable this until I figure out what it does.
 
-	var/hat = pick(/obj/item/clothing/head/helmet/roman, /obj/item/clothing/head/helmet/romancent)
-	H.equip_to_slot_or_del(new hat(H), SLOT_HEAD)
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/roman(H), SLOT_HEAD)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/roman(H), SLOT_ID_UNIFORM)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/roman(H), SLOT_FEET)
 	H.put_in_hands(new /obj/item/shield/riot/roman(H), INV_OP_FORCE)
@@ -282,7 +281,7 @@
 		user.reset_perspective(null)
 		user.unset_machine()
 
-/obj/item/voodoo/attack_self(mob/user)
+/obj/item/voodoo/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -385,7 +384,7 @@
 	REMOVE_TRAIT(user, TRAIT_MOBILITY_NOPICKUP, src)
 	user.update_mobility_blocked()
 
-/obj/item/warpwhistle/attack_self(mob/user)
+/obj/item/warpwhistle/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return

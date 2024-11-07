@@ -143,7 +143,7 @@
 		var/obj/machinery/porta_turret/P = the_target
 		if(P.machine_stat & BROKEN)
 			return FALSE // Already dead.
-		if(P.faction == holder.faction)
+		if(holder.has_iff_faction(P.faction))
 			return FALSE // Don't shoot allied turrets.
 		if(!P.raised && !P.raising)
 			return FALSE // Turrets won't get hurt if they're still in their cover.
@@ -243,7 +243,7 @@
 			ai_log("react_to_attack_polaris() : Was attacked by [attacker], but we already have a target.", AI_LOG_TRACE)
 			on_attacked(attacker) // So we attack immediately and not threaten.
 			return FALSE
-		else if(attacker in attackers && world.time > last_target_time + 3 SECONDS)	// Otherwise, let 'er rip
+		else if((attacker in attackers) && world.time > last_target_time + 3 SECONDS)	// Otherwise, let 'er rip
 			ai_log("react_to_attack_polaris() : Was attacked by [attacker]. Can retaliate, waited 3 seconds.", AI_LOG_INFO)
 			on_attacked(attacker) // So we attack immediately and not threaten.
 			return give_target(attacker) // Also handles setting the appropiate stance.

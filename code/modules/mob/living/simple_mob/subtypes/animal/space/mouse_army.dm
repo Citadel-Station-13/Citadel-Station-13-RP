@@ -35,7 +35,8 @@
 	icon_living = "mouse_gray"
 	icon_dead = "mouse_gray_dead"
 	icon_rest = "mouse_gray_sleep"
-	faction = "mouse_army"
+
+	iff_factions = MOB_IFF_FACTION_FARM_PEST
 
 	maxHealth = 50
 	health = 50
@@ -417,8 +418,10 @@
 	..() // For the poison.
 
 // Force unstealthing if attacked.
-/mob/living/simple_mob/animal/space/mouse_army/stealth/bullet_act(obj/projectile/P)
+/mob/living/simple_mob/animal/space/mouse_army/stealth/on_bullet_act(obj/projectile/proj, impact_flags, list/bullet_act_args)
 	. = ..()
+	if(. & PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT)
+		return
 	break_cloak()
 
 /mob/living/simple_mob/animal/space/mouse_army/stealth/hit_with_weapon(obj/item/O, mob/living/user, effective_force, hit_zone)

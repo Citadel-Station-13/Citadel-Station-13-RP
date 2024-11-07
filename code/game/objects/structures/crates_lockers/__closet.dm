@@ -70,7 +70,6 @@
 	return INITIALIZE_HINT_LATELOAD
 
 /obj/structure/closet/LateInitialize()
-	. = ..()
 	if(starts_with)
 		create_objects_in_loc(src, starts_with)
 		starts_with = null
@@ -314,7 +313,7 @@
 			return
 		if(!user.attempt_insert_item_for_installation(I, opened? loc : src))
 			return
-	else if(istype(I, /obj/item/melee/energy/blade))
+	else if(istype(I, /obj/item/melee/ninja_energy_blade))
 		if(emag_act(INFINITY, user, "<span class='danger'>The locker has been sliced open by [user] with \an [I]</span>!", "<span class='danger'>You hear metal being sliced and sparks flying.</span>"))
 			var/datum/effect_system/spark_spread/spark_system = new /datum/effect_system/spark_spread()
 			spark_system.set_up(5, 0, loc)
@@ -412,7 +411,7 @@
 	if(!open())
 		to_chat(user, "<span class='notice'>It won't budge!</span>")
 
-/obj/structure/closet/attack_hand(mob/user, list/params)
+/obj/structure/closet/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	add_fingerprint(user)
 	if(locked && secure)
 		togglelock(user)

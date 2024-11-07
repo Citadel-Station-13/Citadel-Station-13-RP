@@ -24,7 +24,7 @@
 	gender = NEUTER
 	catalogue_data = list(/datum/category_item/catalogue/fauna/slime)
 
-	faction = "slime" // Note that slimes are hostile to other slimes of different color regardless of faction (unless Unified).
+	iff_factions = MOB_IFF_FACTION_SLIME // Note that slimes are hostile to other slimes of different color regardless of faction (unless Unified).
 	maxHealth = 150
 	movement_cooldown = 0
 	pass_flags = ATOM_PASS_TABLE
@@ -159,7 +159,7 @@
 	adjustBruteLoss(-1)
 
 // Clicked on by empty hand.
-/mob/living/simple_mob/slime/attack_hand(mob/user, list/params)
+/mob/living/simple_mob/slime/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	var/mob/living/L = user
 	if(!istype(L))
 		return

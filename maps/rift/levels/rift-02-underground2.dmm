@@ -475,12 +475,6 @@
 "bO" = (
 /turf/simulated/wall/prepainted,
 /area/maintenance/chapel)
-"bT" = (
-/obj/machinery/requests_console/preset/engineering{
-	pixel_y = -30
-	},
-/turf/simulated/floor/tiled/monotile,
-/area/engineering/engine_monitoring)
 "bW" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 4
@@ -802,6 +796,9 @@
 	req_access = list(10)
 	},
 /obj/structure/table/marble,
+/obj/machinery/requests_console/preset/engineering{
+	pixel_y = 29
+	},
 /turf/simulated/floor/tiled/monotile,
 /area/engineering/engine_monitoring)
 "dE" = (
@@ -6805,6 +6802,10 @@
 /obj/machinery/camera/network/engineering{
 	dir = 1
 	},
+/obj/machinery/air_alarm{
+	dir = 1;
+	pixel_y = -25
+	},
 /turf/simulated/floor/tiled/monotile,
 /area/engineering/engine_monitoring)
 "xV" = (
@@ -7051,11 +7052,8 @@
 	name = "First Stage Engine Ejection - Blast Doors";
 	pixel_y = -32
 	},
-/obj/structure/window/basic{
+/obj/machinery/computer/rcon{
 	dir = 1
-	},
-/obj/structure/window/reinforced{
-	dir = 8
 	},
 /turf/simulated/floor/tiled,
 /area/crew_quarters/heads/chief)
@@ -7327,14 +7325,12 @@
 /area/crew_quarters/heads/chief)
 "Ap" = (
 /obj/item/clothing/mask/breath,
-/obj/item/mining_scanner,
 /obj/item/tank/oxygen,
 /obj/machinery/air_alarm{
 	pixel_y = 22
 	},
 /obj/structure/table/rack/shelf,
 /obj/item/clothing/mask/gas,
-/obj/item/storage/bag/ore,
 /turf/simulated/floor/tiled/techmaint,
 /area/quartermaster/belterdock/gear)
 "Aq" = (
@@ -7891,6 +7887,9 @@
 "CH" = (
 /obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
 /obj/effect/paint/sun,
+/obj/map_helper/electrochromatic_linker{
+	id = "ce_office"
+	},
 /turf/simulated/floor,
 /area/crew_quarters/heads/chief)
 "CI" = (
@@ -8485,6 +8484,9 @@
 "ET" = (
 /obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
 /obj/effect/paint/palebottlegreen,
+/obj/map_helper/electrochromatic_linker{
+	id = "chapel_office"
+	},
 /turf/simulated/floor/plating,
 /area/chapel/office)
 "EU" = (
@@ -8807,7 +8809,6 @@
 /area/crew_quarters/heads/chief)
 "Gw" = (
 /obj/structure/closet/secure_closet/miner,
-/obj/item/gun/energy/kinetic_accelerator,
 /turf/simulated/floor/tiled/techmaint,
 /area/quartermaster/belterdock/gear)
 "Gx" = (
@@ -8963,6 +8964,9 @@
 "Ha" = (
 /obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
 /obj/effect/paint/palebottlegreen,
+/obj/map_helper/electrochromatic_linker{
+	id = "chapel_hall"
+	},
 /turf/simulated/floor/plating,
 /area/chapel/main)
 "Hb" = (
@@ -9090,13 +9094,6 @@
 /turf/simulated/floor/plating,
 /area/maintenance/lower/mining)
 "HA" = (
-/obj/machinery/air_alarm{
-	dir = 1;
-	pixel_y = -25
-	},
-/obj/structure/closet/radiation,
-/obj/item/clothing/glasses/meson,
-/obj/item/clothing/glasses/meson,
 /obj/structure/window/reinforced{
 	dir = 8
 	},
@@ -9228,9 +9225,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 1
 	},
-/obj/machinery/camera/network/engineering{
-	dir = 2
-	},
+/obj/machinery/camera/network/engineering,
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
 	},
@@ -9849,11 +9844,9 @@
 /area/engineering/atmos/hallway)
 "KI" = (
 /obj/item/clothing/mask/breath,
-/obj/item/mining_scanner,
 /obj/item/tank/oxygen,
 /obj/structure/table/rack/shelf,
 /obj/item/clothing/mask/gas,
-/obj/item/storage/bag/ore,
 /turf/simulated/floor/tiled/techmaint,
 /area/quartermaster/belterdock/gear)
 "KJ" = (
@@ -11987,12 +11980,12 @@
 	pixel_x = -2;
 	pixel_y = -2
 	},
-/obj/item/storage/firstaid{
-	pixel_x = 2;
-	pixel_y = 2
-	},
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
+	},
+/obj/item/storage/firstaid/regular{
+	pixel_x = 2;
+	pixel_y = 2
 	},
 /turf/simulated/floor/tiled,
 /area/quartermaster/miningdock)
@@ -12155,7 +12148,6 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/door/firedoor/glass{
-	dir = 2;
 	req_one_access = list(18,47)
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -12194,9 +12186,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/machinery/camera/network/engineering{
-	dir = 2
-	},
+/obj/machinery/camera/network/engineering,
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
@@ -24404,12 +24394,12 @@ sq
 sq
 sq
 sq
+sq
+sq
+sq
+sq
+sq
 cG
-sq
-sq
-sq
-sq
-sq
 sq
 sq
 sq
@@ -28283,7 +28273,7 @@ dD
 df
 gy
 df
-bT
+zG
 zJ
 RA
 ci

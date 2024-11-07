@@ -1,12 +1,13 @@
 /// How long will the alarm/trigger remain active once origin/source has been found to be gone?
 #define ALARM_RESET_DELAY 100
 /datum/alarm_source
-	var/source		= null	// The source trigger
-	var/source_name = ""	// The name of the source should it be lost (for example a destroyed camera)
-	var/duration	= 0		// How long this source will be alarming, 0 for indefinetely.
-	var/severity 	= 1		// How severe the alarm from this source is.
-	var/start_time	= 0		// When this source began alarming.
-	var/end_time	= 0		// Use to set when this trigger should clear, in case the source is lost.
+	var/source		 = null		// The source trigger
+	var/source_name  = ""		// The name of the source should it be lost (for example a destroyed camera)
+	var/duration	 = 0		// How long this source will be alarming, 0 for indefinetely.
+	var/severity 	 = 1		// How severe the alarm from this source is.
+	var/start_time	 = 0		// When this source began alarming.
+	var/end_time	 = 0		// Use to set when this trigger should clear, in case the source is lost.
+	var/list/reasons = new()	// The reason(s) for the alarm (for fire and atmosphere alarms).
 
 /datum/alarm_source/New(var/atom/source)
 	src.source = source
@@ -24,11 +25,11 @@
 	var/end_time					//Used to set when this alarm should clear, in case the origin is lost.
 	var/hidden = FALSE				//If this alarm can be seen from consoles or other things.
 
-/datum/alarm/New(var/atom/origin, var/atom/source, var/duration, var/severity, var/hidden)
+/datum/alarm/New(var/atom/origin, var/atom/source, var/duration, var/severity, var/hidden, var/list/reasons)
 	src.origin = origin
 
 	cameras()	// Sets up both cameras and last alarm area.
-	set_source_data(source, duration, severity, hidden)
+	set_source_data(source, duration, severity, hidden, reasons)
 
 /datum/alarm/process(delta_time)
 	// Has origin gone missing?
@@ -43,7 +44,7 @@
 			AS.duration = 0
 			AS.end_time = world.time + ALARM_RESET_DELAY
 
-/datum/alarm/proc/set_source_data(var/atom/source, var/duration, var/severity, var/hidden)
+/datum/alarm/proc/set_source_data(var/atom/source, var/duration, var/severity, var/hidden, var/list/reasons)
 	var/datum/alarm_source/AS = sources_assoc[source]
 	if(!AS)
 		AS = new/datum/alarm_source(source)
@@ -56,6 +57,7 @@
 		AS.duration = duration
 	AS.severity = severity
 	src.hidden = min(src.hidden, hidden)
+	AS.reasons = reasons
 
 /datum/alarm/proc/clear(var/source)
 	var/datum/alarm_source/AS = sources_assoc[source]

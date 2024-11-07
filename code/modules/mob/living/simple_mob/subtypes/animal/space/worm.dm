@@ -15,7 +15,7 @@
 	movement_cooldown = 0
 	movement_sound = 'sound/effects/sand_step.ogg'
 
-	faction = "worm"
+	iff_factions = MOB_IFF_FACTION_WORM
 
 	status_flags = 0
 	universal_speak = 0
@@ -143,7 +143,7 @@
 			var/mob/living/simple_mob/animal/space/space_worm/newSegment = new segment_type(loc)
 			current.Attach(newSegment)
 			current = newSegment
-			current.faction = faction
+			current.copy_iff_factions(src)
 
 /mob/living/simple_mob/animal/space/space_worm/head/verb/toggle_devour()
 	set name = "Toggle Feeding"
@@ -378,9 +378,9 @@
 						var/mob/living/carbon/C = L
 						var/damage_cycles = rand(3, 5)
 						for(var/I = 0, I < damage_cycles, I++)
-							C.apply_damage(damage = rand(10,20), damagetype = BIOACID, def_zone = pick(BP_ALL))
+							C.apply_damage(damage = rand(10,20), damagetype = DAMAGE_TYPE_BIOACID, def_zone = pick(BP_ALL))
 					else
-						L.apply_damage(damage = rand(10,60), damagetype = BIOACID)
+						L.apply_damage(damage = rand(10,60), damagetype = DAMAGE_TYPE_BIOACID)
 				continue
 
 	DumpStomach()
@@ -404,7 +404,7 @@
 
 /mob/living/simple_mob/animal/space/space_worm/proc/update_body_faction()
 	if(next)	// Keep us on the same page, here.
-		faction = next.faction
+		copy_iff_factions(next)
 	if(previous)
 		previous.update_body_faction()
 		return 1

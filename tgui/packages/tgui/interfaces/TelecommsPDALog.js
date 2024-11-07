@@ -367,7 +367,7 @@ export const TeleLogs = (props, context) => {
 
 export const CustomMsg = (props, context) => {
   const { act, data } = useBackend(context);
-  const fake_message = data.fake_message !== {} ? data.fake_message : {
+  const fake_message = data.fake_message ? data.fake_message : {
     'sender': 'System Administrator',
     'job': 'Admin',
     'recepient': null,

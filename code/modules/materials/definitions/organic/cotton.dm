@@ -1,4 +1,4 @@
-/datum/material/cotton
+/datum/prototype/material/cotton
 	id = "cotton"
 	name = "cotton"
 	display_name ="cotton"

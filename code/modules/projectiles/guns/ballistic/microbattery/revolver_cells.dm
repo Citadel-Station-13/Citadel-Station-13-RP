@@ -37,14 +37,11 @@
 
 /obj/projectile/bullet/pellet/e_shot_stun
 	icon_state = "spell"
-	damage = 2
+	damage_force = 2
 	agony = 20
 	pellets = 6			//number of pellets
-	range_step = 2		//projectile will lose a fragment each time it travels this distance. Can be a non-integer.
-	base_spread = 90	//lower means the pellets spread more across body parts. If zero then this is considered a shrapnel explosion instead of a shrapnel cone
-	spread_step = 10
 	embed_chance = 0
-	sharp = 0
+	damage_mode = NONE
 	damage_flag = ARMOR_MELEE
 
 /obj/item/ammo_casing/microbattery/combat/ion
@@ -64,17 +61,20 @@
 	nodamage = 1
 	agony = 5
 	embed_chance = 0
-	sharp = 0
+	damage_mode = NONE
 	damage_flag = ARMOR_MELEE
 
-/obj/projectile/bullet/stripper/on_hit(var/atom/stripped)
-	if(ishuman(stripped))
-		var/mob/living/carbon/human/H = stripped
+/obj/projectile/bullet/stripper/on_impact(atom/target, impact_flags, def_zone, efficiency)
+	. = ..()
+	if(. & PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT)
+		return
+
+	if(ishuman(target))
+		var/mob/living/carbon/human/H = target
 		if(!H.permit_stripped)
 			return
 		H.drop_slots_to_ground(list(SLOT_ID_SUIT, SLOT_ID_UNIFORM, SLOT_ID_BACK, SLOT_ID_SHOES, SLOT_ID_GLOVES))
 		//Hats can stay! Most other things fall off with removing these.
-	..()
 
 /obj/item/ammo_casing/microbattery/combat/final
 	name = "\'Hydra\' microbattery - FINAL OPTION"
@@ -87,14 +87,18 @@
 	icon_state = "omnilaser"
 	nodamage = 1
 	agony = 5
-	damage_type = HALLOSS
+	damage_type = DAMAGE_TYPE_HALLOSS
 	light_color = "#00CC33"
 
 	muzzle_type = /obj/effect/projectile/muzzle/laser_omni
 	tracer_type = /obj/effect/projectile/tracer/laser_omni
 	impact_type = /obj/effect/projectile/impact/laser_omni
 
-/obj/projectile/beam/final_option/on_hit(var/atom/impacted)
+/obj/projectile/beam/final_option/on_impact(atom/target, impact_flags, def_zone, efficiency)
+	. = ..()
+	if(. & PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT)
+		return
+
 	if(isliving(impacted))
 		var/mob/living/L = impacted
 		if(L.mind)
@@ -104,5 +108,3 @@
 				nif = H.nif
 			SStranscore.m_backup(L.mind,nif,one_time = TRUE)
 		L.gib()
-
-	..()

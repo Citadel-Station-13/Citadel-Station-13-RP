@@ -3,9 +3,6 @@
 	~Sayu
 */
 
-// 1 decisecond click delay (above and beyond mob/next_move)
-/mob/var/next_click = 0
-
 /*
 	Before anything else, defer these calls to a per-mobtype handler.  This allows us to
 	remove istype() spaghetti code, but requires the addition of other handler procs to simplify it.
@@ -282,7 +279,7 @@
 		return
 	if(!client)
 		return
-	if(T == client.statpanel_turf)
+	if(T == client.tgui_stat?.byond_stat_turf)
 		client.unlist_turf()
 		return
 	client.list_turf(T)

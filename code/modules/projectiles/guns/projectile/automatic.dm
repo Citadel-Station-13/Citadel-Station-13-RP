@@ -166,7 +166,7 @@
 	else
 		..()
 
-/obj/item/gun/ballistic/automatic/z8/attack_hand(mob/user, list/params)
+/obj/item/gun/ballistic/automatic/z8/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(user.get_inactive_held_item() == src && use_launcher)
 		launcher.unload(user)
 	else
@@ -249,13 +249,13 @@
 	update_icon()
 	update_held_icon()
 
-/obj/item/gun/ballistic/automatic/lmg/attack_self(mob/user)
+/obj/item/gun/ballistic/automatic/lmg/attack_self(mob/user, datum/event_args/actor/actor)
 	if(cover_open)
 		toggle_cover(user) //close the cover
 	else
 		return ..() //once closed, behave like normal
 
-/obj/item/gun/ballistic/automatic/lmg/attack_hand(mob/user, list/params)
+/obj/item/gun/ballistic/automatic/lmg/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(!cover_open && user.get_inactive_held_item() == src)
 		toggle_cover(user) //open the cover
 	else
@@ -502,7 +502,7 @@
 
 /obj/item/gun/ballistic/automatic/fal
 	name = "FN-FAL"
-	desc = "A 20th century Assault Rifle originally designed by Fabrique National. Famous for its use by mercs in grinding proxy wars in backwater nations. This reproduction was probably made for similar purposes."
+	desc = "A 20th century Assault Rifle originally designed by Fabrique Nationale. Famous for its use by mercs in grinding proxy wars in backwater nations. This reproduction was probably made for similar purposes."
 	icon_state = "fal"
 	item_state = "fal"
 	w_class = WEIGHT_CLASS_BULKY
@@ -735,10 +735,6 @@
 	. = ..()
 	icon_state = (ammo_magazine)? "toy_smg" : "toy_smg-empty"
 
-/obj/item/gun/ballistic/automatic/advanced_smg/foam/handle_suicide(mob/living/user)
-	user.show_message("<span class = 'warning'>You feel rather silly, trying to commit suicide with a toy.</span>")
-	mouthshoot = 0
-
 /obj/item/gun/ballistic/automatic/advanced_smg/foam/blue
 	icon_state = "toy_smg_blue"
 
@@ -767,10 +763,6 @@
 	else
 		icon_state = "toy_c20r"
 
-/obj/item/gun/ballistic/automatic/c20r/foam/handle_suicide(mob/living/user)
-	user.show_message("<span class = 'warning'>You feel rather silly, trying to commit suicide with a toy.</span>")
-	mouthshoot = 0
-
 //Foam LMG
 /obj/item/gun/ballistic/automatic/lmg/foam
 	name = "toy light machine gun"
@@ -795,8 +787,3 @@
 /obj/item/gun/ballistic/automatic/lmg/foam/update_icon()
 	. = ..()
 	update_held_icon()
-
-/obj/item/gun/ballistic/automatic/lmg/foam/handle_suicide(mob/living/user)
-	user.show_message("<span class = 'warning'>You feel rather silly, trying to commit suicide with a toy.</span>")
-	mouthshoot = 0
-	return

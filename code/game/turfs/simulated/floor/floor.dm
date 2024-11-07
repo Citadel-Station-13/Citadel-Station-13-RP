@@ -40,6 +40,8 @@
 	var/singleton/flooring/flooring
 	var/mineral = MAT_STEEL
 
+CREATE_STANDARD_TURFS(/turf/simulated/floor)
+
 /turf/simulated/floor/is_plating()
 	return !flooring
 
@@ -201,7 +203,7 @@
 			var/turf/simulated/wall/T = get_turf(src) // Ref to the wall we just built.
 			// Apparently set_material(...) for walls requires refs to the material singletons and not strings.
 			// This is different from how other material objects with their own set_material(...) do it, but whatever.
-			var/datum/material/M = get_material_by_name(the_rcd.material_to_use)
+			var/datum/prototype/material/M = get_material_by_name(the_rcd.material_to_use)
 			T.set_materials(M, the_rcd.make_rwalls ? M : null, M)
 			T.add_hiddenprint(user)
 			return TRUE
@@ -235,3 +237,5 @@
 		add_overlay(GLOB.no_ceiling_image, TRUE)
 	else
 		cut_overlay(GLOB.no_ceiling_image, TRUE)
+
+

@@ -9,7 +9,7 @@
 
 /obj/item/coilgun_assembly/attackby(var/obj/item/thing, var/mob/user)
 
-	if(thing.is_material_stack_of(/datum/material/steel) && construction_stage == 1)
+	if(thing.is_material_stack_of(/datum/prototype/material/steel) && construction_stage == 1)
 		var/obj/item/stack/material/reinforcing = thing
 		if(reinforcing.get_amount() < 5)
 			to_chat(user, "<span class='warning'>You need at least 5 [reinforcing.singular_name]\s for this task.</span>")

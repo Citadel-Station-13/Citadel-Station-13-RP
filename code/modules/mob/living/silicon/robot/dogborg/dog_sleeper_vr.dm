@@ -178,7 +178,7 @@
 		hound = hound.loc
 	hound.cell.charge = hound.cell.charge - amt
 
-/obj/item/dogborg/sleeper/attack_self(mob/user)
+/obj/item/dogborg/sleeper/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -391,7 +391,7 @@
 
 /obj/item/dogborg/sleeper/proc/inject_chem(mob/user, chem)
 	if(patient && patient.reagents)
-		if(chem in injection_chems + "inaprovaline")
+		if(chem in (injection_chems + "inaprovaline"))
 			if(hound.cell.charge < 800) //This is so borgs don't kill themselves with it.
 				to_chat(hound, "<span class='notice'>You don't have enough power to synthesize fluids.</span>")
 				return

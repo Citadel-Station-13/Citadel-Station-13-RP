@@ -10,6 +10,9 @@
 /**
  * Called when trying to click something that the user can Reachability() to.
  *
+ * todo: this should allow passing in a clickchain datum instead.
+ * todo: lazy_melee_attack() for when you don't want to.
+ *
  * @params
  * - target - thing hitting
  * - user - user using us
@@ -24,6 +27,11 @@
 
 	// todo: inject something here for 'used as item' much like /tg/, to get rid of attackby pattern
 
+	var/datum/event_args/actor/clickchain/e_args = new(user)
+
+	if((. |= item_attack_chain(target, e_args, ., params)) & CLICKCHAIN_DO_NOT_PROPAGATE)
+		return
+
 	if((. |= tool_attack_chain(target, user, ., params)) & CLICKCHAIN_DO_NOT_PROPAGATE)
 		return
 
@@ -35,6 +43,7 @@
 	// - item use & receive item use (item_interaction() on /atom, definiteily)
 	// - tool use & receive tool use (we already have tool_interaction() on /atom)
 	// - melee attack & receive melee attack (melee_interaction() on /atom? not melee_act directly?)
+	// - melee attack shouldn't require attackby() to allow it to, it should be automatic on harm intent (?)
 	// - the item should have final say but we need a way to allow click redirections so..
 	if(resolve_attackby(target, user, params, null, .))
 		return CLICKCHAIN_DO_NOT_PROPAGATE
@@ -44,6 +53,9 @@
 
 /**
  * Called when trying to click something that the user can't Reachability() to.
+ *
+ * todo: this should allow passing in a clickchain datum instead.
+ * todo: lazy_ranged_attack() for when you don't want to.
  *
  * @params
  * - target - thing hitting
@@ -204,10 +216,10 @@
 	if(!hit_zone)
 		// missed
 		// log
-		add_attack_logs(user, L, "missed with [src] DT [damtype] F [damage_force] I [user.a_intent]")
+		add_attack_logs(user, L, "missed with [src] DT [damage_type] F [damage_force] I [user.a_intent]")
 		return melee_mob_miss(L, user, clickchain_flags, params, mult, target_zone, intent)
 	// log
-	add_attack_logs(user, L, "attacked with [src] DT [damtype] F [damage_force] I [user.a_intent]")
+	add_attack_logs(user, L, "attacked with [src] DT [damage_type] F [damage_force] I [user.a_intent]")
 	// hit
 	return melee_mob_hit(L, user, clickchain_flags, params, mult, target_zone, intent)
 
@@ -286,7 +298,7 @@
 	if(isliving(target))
 		var/mob/living/casted = target
 		newhp = casted.health
-	log_attack(key_name(src), key_name(target), "attacked with [src] [src.damtype]-[src.damage_force]=[src.damage_tier] newhp ~[newhp || "unknown"]")
+	log_attack(key_name(src), key_name(target), "attacked with [src] [src.damage_type]-[src.damage_force]=[src.damage_tier] newhp ~[newhp || "unknown"]")
 
 	return NONE
 
@@ -311,6 +323,8 @@
 /**
  * called when we're used to attack a non-mob
  * this doesn't actually need to be an obj.
+ *
+ * todo: purge mult
  *
  * @params
  * * target - atom being attacked
@@ -337,16 +351,20 @@
 		return CLICKCHAIN_DO_NOT_PROPAGATE
 	//? legacy: decloak
 	clickchain.performer.break_cloak()
+	// set mult
+	clickchain.damage_multiplier *= mult
 	// click cooldown
 	// todo: clickcd rework
 	clickchain.performer.setClickCooldown(clickchain.performer.get_attack_speed(src))
 	// animation
 	clickchain.performer.animate_swing_at_target(target)
 	// perform the hit
-	. = melee_object_hit(target, clickchain, clickchain_flags, mult)
+	. = melee_object_hit(target, clickchain, clickchain_flags)
 
 /**
  * called at base of attack_object after standard melee attack misses
+ *
+ * todo: purge mult
  *
  * @return clickchain flags to append
  *
@@ -377,7 +395,7 @@
  * * clickchain_flags - __DEFINES/procs/clickcode.dm flags
  * * mult - damage multiplier
  */
-/obj/item/proc/melee_object_hit(atom/target, datum/event_args/actor/clickchain/clickchain, clickchain_flags, mult = 1)
+/obj/item/proc/melee_object_hit(atom/target, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
 	SHOULD_CALL_PARENT(TRUE)
 
 	// harmless, just tap them and leave
@@ -405,14 +423,14 @@
 		visible = SPAN_DANGER("[target] has been [islist(attack_verb)? pick(attack_verb) : attack_verb] with [src] by [clickchain.performer]!")
 	)
 	// damage
-	target.melee_act(clickchain.performer, src, mult = mult)
+	target.melee_act(clickchain.performer, src, null, clickchain)
 	// animate
 	target.animate_hit_by_weapon(clickchain.performer, src)
 
 	// todo: better logging
 	// todo: entity ids?
 	var/newhp = target.integrity
-	log_attack(key_name(src), "[target] ([ref(target)])", "attacked with [src] [src.damtype]-[src.damage_force]=[src.damage_tier] newhp ~[newhp || "unknown"]")
+	log_attack(key_name(src), "[target] ([ref(target)])", "attacked with [src] [src.damage_type]-[src.damage_force]=[src.damage_tier] newhp ~[newhp || "unknown"]")
 
 	return NONE
 

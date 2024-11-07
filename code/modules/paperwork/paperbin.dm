@@ -38,7 +38,7 @@
 
 	return
 
-/obj/item/paper_bin/attack_hand(mob/user, list/params)
+/obj/item/paper_bin/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user
 		var/obj/item/organ/external/temp = H.organs_by_name["r_hand"]
@@ -116,7 +116,7 @@
 	icon_state = "paper_bundle"
 	papers = /obj/item/paper/natural
 
-/obj/item/paper_bin/bundlenatural/attack_hand(mob/user, list/params)
+/obj/item/paper_bin/bundlenatural/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(amount < 1)
 		qdel(src)
 	return ..()

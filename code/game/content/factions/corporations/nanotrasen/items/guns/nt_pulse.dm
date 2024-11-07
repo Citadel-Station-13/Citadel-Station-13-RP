@@ -1,21 +1,5 @@
 //* This file is explicitly licensed under the MIT license. *//
-//* Copyright (c) 2024 silicons                             *//
-
-/datum/firemode/energy/nt_pulse
-
-/**
- * NT's military (Asset Protection & Emergency Responder) energy rifles
- */
-/obj/item/gun/energy/nt_pulse
-	// intentionally the same as all pulse weapons to save memory
-	description_fluff = {"
-		A breakthrough weapon from Nanotrasen's Research Division, pulse weapons utilize rare crystals in its generation array,
-		allowing for a more laminar and cohesive beam than prior thought possible. Closely guarded designs to this day,
-		pulse weapons are some of the only energy-based armaments able to consistently outperform any kinetic alternative.
-	"}
-	icon = 'icons/content/factions/corporations/nanotrasen/items/guns/pulse.dmi'
-
-//* Rifle *//
+//* Copyright (c) 2024 Citadel Station Developers           *//
 
 /datum/firemode/energy/nt_pulse/rifle
 
@@ -29,13 +13,36 @@
 	render_key = "destroy"
 	settings = list(mode_name = "destroy", projectile_type = /obj/projectile/beam/pulse, charge_cost = 180)
 
+/datum/firemode/energy/nt_pulse/carbine
+
+/datum/firemode/energy/nt_pulse/carbine/laser
+	name = "laser"
+	render_key = "kill"
+	settings = list(mode_name = "lethal", projectile_type = /obj/projectile/beam, charge_cost = 120)
+
+/datum/firemode/energy/nt_pulse/carbine/pulse
+	name = "pulse"
+	render_key = "destroy"
+	settings = list(mode_name = "destroy", projectile_type = /obj/projectile/beam/pulse, charge_cost = 240)
+
+/**
+ * NT's military (Asset Protection & Emergency Responder) energy rifles
+ */
+/obj/item/gun/energy/nt_pulse
+	icon = 'icons/content/factions/corporations/nanotrasen/items/guns/nt_pulse.dmi'
+
 /obj/item/gun/energy/nt_pulse/rifle
-	prototype_id = "nt-pulse-rifle"
 	name = "pulse rifle"
 	desc = "A powerful energy rifle with multiple intensity selectors."
+	// intentionally the same as all pulse weapons to save memory
+	description_fluff = {"
+		A breakthrough weapon from Nanotrasen's Research Division, pulse weapons utilize rare crystals in its generation array,
+		allowing for a more laminar and cohesive beam than prior thought possible. Closely guarded designs to this day,
+		pulse weapons are some of the only energy-based armaments able to consistently outperform any kinetic alternative.
+	"}
 	icon_state = "rifle"
 	base_icon_state = "rifle"
-	render_mob_base = "pulse"
+	base_mob_state = "pulse"
 	slot_flags = SLOT_BACK
 	// todo: firemode this
 	one_handed_penalty = 10
@@ -62,27 +69,18 @@
 		empty_state = TRUE;
 	}
 
-//* Carbine *//
-
-/datum/firemode/energy/nt_pulse/carbine
-
-/datum/firemode/energy/nt_pulse/carbine/laser
-	name = "laser"
-	render_key = "kill"
-	settings = list(mode_name = "lethal", projectile_type = /obj/projectile/beam, charge_cost = 120)
-
-/datum/firemode/energy/nt_pulse/carbine/pulse
-	name = "pulse"
-	render_key = "destroy"
-	settings = list(mode_name = "destroy", projectile_type = /obj/projectile/beam/pulse, charge_cost = 240)
-
 /obj/item/gun/energy/nt_pulse/carbine
-	prototype_id = "nt-pulse-carbine"
 	name = "pulse carbine"
 	desc = "A powerful energy carbine with multiple intensity selectors."
+	// intentionally the same as all pulse weapons to save memory
+	description_fluff = {"
+		A breakthrough weapon from Nanotrasen's Research Division, pulse weapons utilize rare crystals in its generation array,
+		allowing for a more laminar and cohesive beam than prior thought possible. Closely guarded designs to this day,
+		pulse weapons are some of the only energy-based armaments able to consistently outperform any kinetic alternative.
+	"}
 	icon_state = "carbine"
 	base_icon_state = "carbine"
-	render_mob_base = "pulse"
+	base_mob_state = "pulse"
 	slot_flags = SLOT_BELT
 	// todo: firemode this
 	fire_delay = 5 // might need to nerf this to 8 later, this is a very powerful weapon.
@@ -111,7 +109,7 @@
 	name = "pulse"
 	icon_state = "u_laser"
 	fire_sound = 'sound/weapons/gauss_shoot.ogg'
-	damage = 60
+	damage_force = 60
 	damage_tier = LASER_TIER_EXTREME
 	armor_penetration = 75
 	light_color = "#0066FF"
@@ -122,5 +120,5 @@
 
 // todo: this shouldn't be here i think
 /obj/projectile/beam/pulse/shotgun
-	damage = 50
+	damage_force = 50
 	armor_penetration = 25

@@ -49,7 +49,7 @@
 				M.put_in_hands(trash)
 		qdel(src)
 
-/obj/item/reagent_containers/food/snacks/attack_self(mob/user)
+/obj/item/reagent_containers/food/snacks/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -1004,7 +1004,7 @@
 	heated_reagents = list("doctorsdelight" = 5, "hyperzine" = 0.75, "synaptizine" = 0.25)
 	var/has_been_heated = 0
 
-/obj/item/reagent_containers/food/snacks/donkpocket/sinpocket/attack_self(mob/user)
+/obj/item/reagent_containers/food/snacks/donkpocket/sinpocket/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -1858,7 +1858,7 @@
 	. = ..()
 	reagents.add_reagent("protein", 10)
 
-/obj/item/reagent_containers/food/snacks/monkeycube/attack_self(mob/user)
+/obj/item/reagent_containers/food/snacks/monkeycube/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -3273,7 +3273,7 @@
 
 	add_overlay(overlays_to_add)
 
-/obj/item/pizzabox/attack_hand(mob/user, list/params)
+/obj/item/pizzabox/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 
 	if( open && pizza )
 		user.put_in_hands( pizza )
@@ -3298,7 +3298,7 @@
 		return
 	. = ..()
 
-/obj/item/pizzabox/attack_self(mob/user)
+/obj/item/pizzabox/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -4286,6 +4286,8 @@ END CITADEL CHANGE */
 	nutriment_desc = list("margarine" = 1)
 	nutriment_amt = 20
 
+/datum/component/slippery/butter
+
 /obj/item/reagent_containers/food/snacks/spreads/butter
 	name = "butter"
 	desc = "A stick of pure butterfat made from milk products."
@@ -4294,13 +4296,9 @@ END CITADEL CHANGE */
 	nutriment_desc = list("butter" = 1)
 	nutriment_amt = 0
 
-/obj/item/reagent_containers/food/snacks/spreads/butter/Crossed(atom/movable/AM as mob|obj)
+/obj/item/reagent_containers/food/snacks/spreads/butter/Initialize(mapload)
 	. = ..()
-	if(AM.is_incorporeal())
-		return
-	if (istype(AM, /mob/living))
-		var/mob/living/M = AM
-		M.slip("the [src.name]",4)
+	AddComponent(/datum/component/slippery/butter)
 
 /obj/item/reagent_containers/food/snacks/spreads/Initialize(mapload)
 	. = ..()
@@ -4809,7 +4807,7 @@ END CITADEL CHANGE */
 	bitesize = 1
 	nutriment_amt = 10
 
-/obj/item/reagent_containers/food/snacks/chipplate/attack_hand(mob/user, list/params)
+/obj/item/reagent_containers/food/snacks/chipplate/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	// todo: sigh, no ..(); shift over to on_attack_hand
 	var/obj/item/reagent_containers/food/snacks/returningitem = new vendingobject(loc)
 	returningitem.reagents.clear_reagents()

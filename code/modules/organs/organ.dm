@@ -96,6 +96,10 @@
 	. = ..(mapload)
 	create_reagents(5)
 
+	// HACK: if we're in repository subsystem load, skip brainmob
+	if(!SSrepository.initialized)
+		return
+
 	if(isliving(loc))
 		owner = loc
 		set_weight_class(max(src.w_class + mob_size_difference(owner.mob_size, MOB_MEDIUM), 1)) //smaller mobs have smaller organs.
@@ -668,7 +672,7 @@
 	user.put_in_active_hand(O)
 	qdel(src)
 
-/obj/item/organ/attack_self(mob/user)
+/obj/item/organ/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return

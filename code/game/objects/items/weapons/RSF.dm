@@ -62,7 +62,7 @@ RSF
 	else
 		glasstype = /obj/item/reagent_containers/food/drinks/metaglass
 
-/obj/item/rsf/attack_self(mob/user)
+/obj/item/rsf/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return

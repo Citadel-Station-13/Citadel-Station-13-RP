@@ -14,8 +14,8 @@
 
 //Turfmakers
 #define GEOTHERMAL_SET_ATMOS	initial_gas_mix = ATMOSPHERE_ID_GEOTHERMAL
-#define GEOTHERMAL_TURF_CREATE(x)	x/geothermal/initial_gas_mix=ATMOSPHERE_ID_GEOTHERMAL;x/geothermal/outdoors=TRUE;x/geothermal/special_temperature=GEOTHERMAL_TEMP;
-#define GEOTHERMAL_TURF_CREATE_UN(x)	x/geothermal/initial_gas_mix=ATMOSPHERE_ID_GEOTHERMAL;x/geothermal/outdoors=FALSE;x/geothermal/special_temperature=GEOTHERMAL_TEMP
+#define GEOTHERMAL_TURF_CREATE(x)	x/geothermal/initial_gas_mix=ATMOSPHERE_ID_GEOTHERMAL;x/geothermal/outdoors=TRUE;x/geothermal/temperature_for_heat_exchangers=GEOTHERMAL_TEMP;
+#define GEOTHERMAL_TURF_CREATE_UN(x)	x/geothermal/initial_gas_mix=ATMOSPHERE_ID_GEOTHERMAL;x/geothermal/outdoors=FALSE;x/geothermal/temperature_for_heat_exchangers=GEOTHERMAL_TEMP
 
 GEOTHERMAL_TURF_CREATE_UN(/turf/simulated/open)
 GEOTHERMAL_TURF_CREATE_UN(/turf/simulated/floor/outdoors/lava/indoors)
@@ -26,4 +26,3 @@ GEOTHERMAL_TURF_CREATE_UN(/turf/simulated/mineral/ignore_cavegen)
 /turf/unsimulated/floor/lava
 	icon = 'icons/turf/outdoors.dmi'
 	icon_state = "lava"
-	var/special_temperature

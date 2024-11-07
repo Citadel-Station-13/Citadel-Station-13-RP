@@ -31,7 +31,7 @@
 	user.visible_message("\The [src] spits out a piece of paper.")
 	return
 
-/obj/item/biology_analyzer/attack_self(mob/user)
+/obj/item/biology_analyzer/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -42,7 +42,7 @@
 	if(!flag) return
 
 	var/datum/xeno/traits/trait_info
-	var/datum/reagents/prod_reagents
+	var/datum/reagent_holder/prod_reagents
 	var/targetName
 	var/growth_level
 	var/growth_max
