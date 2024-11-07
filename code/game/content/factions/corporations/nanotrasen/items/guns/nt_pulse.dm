@@ -25,12 +25,16 @@
 /datum/firemode/energy/nt_pulse/rifle/laser
 	name = "laser"
 	render_key = "kill"
-	legacy_direct_varedits = list(projectile_type = /obj/projectile/beam, charge_cost = 80)
+	// todo: function of defines for weapon cell standard capacities
+	charge_cost = 80
+	projectile_type = /obj/projectile/beam
 
 /datum/firemode/energy/nt_pulse/rifle/pulse
 	name = "pulse"
 	render_key = "destroy"
-	legacy_direct_varedits = list(projectile_type = /obj/projectile/beam/pulse, charge_cost = 180)
+	// todo: function of defines for weapon cell standard capacities
+	charge_cost = 160
+	projectile_type = /obj/projectile/beam/pulse
 
 /obj/item/gun/energy/nt_pulse/rifle
 	prototype_id = "nt-pulse-rifle"
@@ -72,12 +76,16 @@
 /datum/firemode/energy/nt_pulse/carbine/laser
 	name = "laser"
 	render_key = "kill"
-	legacy_direct_varedits = list(projectile_type = /obj/projectile/beam, charge_cost = 120)
+	// todo: function of defines for weapon cell standard capacities
+	charge_cost = 120
+	projectile_type = /obj/projectile/beam
 
 /datum/firemode/energy/nt_pulse/carbine/pulse
 	name = "pulse"
 	render_key = "destroy"
-	legacy_direct_varedits = list(projectile_type = /obj/projectile/beam/pulse, charge_cost = 240)
+	// todo: function of defines for weapon cell standard capacities
+	charge_cost = 240
+	projectile_type = /obj/projectile/beam/pulse
 
 /obj/item/gun/energy/nt_pulse/carbine
 	prototype_id = "nt-pulse-carbine"
@@ -126,3 +134,4 @@
 /obj/projectile/beam/pulse/shotgun
 	damage_force = 50
 	armor_penetration = 25
+XTREME

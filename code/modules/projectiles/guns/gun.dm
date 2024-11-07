@@ -1,11 +1,38 @@
 
 /**
- * Guns
+ * # Guns
  *
  * A gun is a weapon that can be aimed and fired at someone or something over a distance.
  *
+ * todo: /obj/item/gun/projectile vs /obj/item/gun/launcher,
+ *       instead of have projectile be on /obj/item/gun
  *
- * todo: /obj/item/gun/projectile vs /obj/item/gun/launcher
+ * ## Hotkey Priority
+ *
+ * The usable semantic hotkeys for guns are: Z, Spacebar, F, G.
+ * F, G are avoided as 'unique defensives' and something components
+ * need to be able to register to.
+ *
+ * todo: At some point, we'll need proper hotkey priority handling for items
+ *       for the 'primary semantic keys' like active key/spacebar,
+ *       F and G. For now, it's kind of a wild west where items define
+ *       Z and Spacebar and F/G are usually component-hooked.
+ *
+ *       The problem comes in that guns have **three** self-actions instead of two:
+ *       - Wielding
+ *       - Racking / chamber charging
+ *       - Firemode switch
+ *
+ *       This is annoying because semantically, the Z key should always have wielding,
+ *       Spacebar should have racking behaviors if they exist, which means we don't
+ *       have a spot for firemode switching.
+ *
+ *       As of right now, wielding is not on all guns but that will change very soon.
+ * todo: Change that very soon.
+ *       This means that Z key will never be available to guns for firemode switches.
+ *
+ * For now, we're winging it. This is just design notes for when we cross
+ * this hellish bridge.
  */
 /obj/item/gun
 	name = "gun"
@@ -270,6 +297,8 @@
 			if(isnull(internal_modules_patch))
 				modular_component_slots[GUN_COMPONENT_INTERNAL_MODULE] = modular_component_slots_internal
 			modular_component_slots = typelist(NAMEOF(src, modular_component_slots), modular_component_slots)
+
+	#warn firemode action if needed
 
 /obj/item/gun/examine(mob/user, dist)
 	. = ..()
@@ -721,6 +750,19 @@
  */
 /obj/item/gun/proc/get_ammo_ratio()
 	return 0
+
+//* Firemodes *//
+
+/**
+ * Ensures our firemodes list is not a cached copy.
+ *
+ * * This absolutely must be called before **any** mutating writes to
+ *   `firemodes` or its contents.
+ */
+/obj/item/gun/proc/ensure_firemodes_owned()
+	if(!is_typelist(NAMEOF(src, firemodes), firemodes))
+		return
+	firemodes = deep_clone_list(firemodes)
 
 //* Rendering *//
 

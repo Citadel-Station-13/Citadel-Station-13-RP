@@ -91,9 +91,11 @@
 	icon_state = "plasma_stun"
 	item_state = "plasma_stun"
 	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2, TECH_POWER = 3)
-	fire_delay = 20
-	charge_cost = 600
-	projectile_type = /obj/projectile/energy/plasmastun
+	firemodes = /datum/firemode/energy{
+		projectile_type = /obj/projectile/energy/plasmastun;
+		cycle_cooldown = 2 SECONDS;
+		charge_cost = 2400 / 4;
+	}
 	one_handed_penalty = 5
 
 /obj/item/gun/energy/civtas
@@ -102,7 +104,8 @@
 	icon_state = "civtas"
 	item_state = "concealed"
 	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 3, TECH_POWER = 3)
-	projectile_type = /obj/projectile/energy/electrode/stunshot
-	fire_delay = 4
-	charge_cost = 1500
-	cell_type = /obj/item/cell/device/weapon
+	firemodes = /datum/firemode/energy{
+		projectile_type = /obj/projectile/energy/electrode/stunshot;
+		cycle_cooldown = 0.4 SECONDS;
+		charge_cost = 2400 / 2;
+	}

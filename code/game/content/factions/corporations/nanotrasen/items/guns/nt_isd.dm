@@ -11,6 +11,15 @@
  * * Expensive
  * * Joint with Hephaestus / Vey-Med, canonically
  * * There's probably a neat amount of these just floating around the Frontier now from losses.
+ *
+ * Things to keep in mind:
+ *
+ * * Stun does not mean something is cheap as, or cheaper than, lethal.
+ * * Stun in this codebase is not treated as any special or even preferable damage type.
+ * * Nanotrasen uses stun weaponry for arrests, but in-canon security is rarely having to
+ *   use physical and ranged force against other employees.
+ * * Stun weapons should generally be worse at stunning than lethal modes of that weapon
+ *   are at downing someone who is armored.
  */
 /obj/item/gun/energy/nt_isd
 	abstract_type = /obj/item/gun/energy/nt_isd
@@ -23,14 +32,20 @@
 /datum/firemode/energy/nt_isd/sidearm/stun
 	name = "disrupt"
 	render_color = "#ffff00"
+	charge_cost = 2400 / 8
+	projectile_type = /obj/projectile/nt_isd/electrode
 
 /datum/firemode/energy/nt_isd/sidearm/disable
 	name = "disable"
 	render_color = "#77ffff"
+	charge_cost = 2400 / 20
+	projectile_type = /obj/projectile/nt_isd/disable
 
 /datum/firemode/energy/nt_isd/sidearm/lethal
 	name = "kill"
 	render_color = "#ff0000"
+	charge_cost = 2400 / 15
+	projectile_type = /obj/projectile/nt_isd/laser/sidearm
 
 /obj/item/gun/energy/nt_isd/sidearm
 	name = "hybrid taser"
@@ -52,14 +67,20 @@
 /datum/firemode/energy/nt_isd/carbine/disable
 	name = "disable"
 	render_color = "#77ffff"
+	charge_cost = 2400 / 20
+	projectile_type = /obj/projectile/nt_isd/disable
 
 /datum/firemode/energy/nt_isd/carbine/shock
 	name = "shock"
 	render_color = "#ffff00"
+	charge_cost = 2400 / 10
+	projectile_type = /obj/projectile/nt_isd/shock
 
 /datum/firemode/energy/nt_isd/carbine/kill
 	name = "kill"
 	render_color = "#ff0000"
+	charge_cost = 2400 / 10
+	projectile_type = /obj/projectile/nt_isd/laser/rifle
 
 /obj/item/gun/energy/nt_isd/carbine
 	name = "energy carbine"
@@ -81,6 +102,8 @@
 /datum/firemode/energy/nt_isd/lance/kill
 	name = "kill"
 	render_color = "#00ff00"
+	charge_cost = 2400 / 12
+	projectile_type = /obj/projectile/nt_isd/laser/lance
 
 /obj/item/gun/energy/nt_isd/lance
 	name = "energy lance"
@@ -99,15 +122,21 @@
 /datum/firemode/energy/nt_isd/multiphase/disable
 	name = "disable"
 	render_color = "#77ffff"
+	projectile_type = /obj/projectile/nt_isd/disable
+	charge_cost = 2400 / 20
 
 /datum/firemode/energy/nt_isd/multiphase/kill
 	name = "kill"
 	render_color = "#ff0000"
+	projectile_type = /obj/projectile/nt_isd/laser/multiphase
+	charge_cost = 2400 / 12
 
 // todo: this is an ion beam, not an EMP pulse
 /datum/firemode/energy/nt_isd/multiphase/ion
 	name = "ion"
 	render_color = "#456aaa"
+	projectile_type = /obj/projectile/nt_isd/ion
+	charge_cost = 2400 / 5
 
 /obj/item/gun/energy/nt_isd/multiphase
 	name = "multiphase sidearm"
@@ -138,7 +167,7 @@
 /obj/projectile/nt_isd/laser/sidearm
 	name = "phaser blast"
 	damage_force = 20
-	damage_tier = LASER_TIER_HIGH
+	damage_tier = LASER_TIER_HIGH // ;)
 
 /obj/projectile/nt_isd/laser/multiphase
 	name = "focused laser"

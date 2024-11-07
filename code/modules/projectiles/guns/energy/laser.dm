@@ -1,3 +1,18 @@
+/datum/firemode/energy/laser_rifle
+	abstract_type = /datum/firemode/energy/laser_rifle
+
+/datum/firemode/energy/laser_rifle/normal
+	name = "normal"
+	cycle_cooldown = 0.8 SECONDS
+	projectile_type = /obj/projectile/beam/midlaser
+	charge_cost = 2400 / 10
+
+/datum/firemode/energy/laser_rifle/suppression
+	name = "suppressive"
+	cycle_cooldown = 0.4 SECONDS
+	projectile_type = /obj/projectile/beam/weaklaser
+	charge_cost = 2400 / 40
+
 /obj/item/gun/energy/laser
 	name = "laser rifle"
 	desc = "A Hephaestus Industries G40E rifle, designed to kill with concentrated energy blasts.  This variant has the ability to \
@@ -5,22 +20,14 @@
 	icon_state = "laser"
 	item_state = "laser"
 	wielded_item_state = "laser-wielded"
-	fire_delay = 8
 	slot_flags = SLOT_BELT|SLOT_BACK
 	w_class = WEIGHT_CLASS_BULKY
 	damage_force = 10
 	origin_tech = list(TECH_COMBAT = 3, TECH_MAGNET = 2)
 	materials_base = list(MAT_STEEL = 2000)
-	projectile_type = /obj/projectile/beam/midlaser
 	heavy = TRUE
 	one_handed_penalty = 30
-
 	worth_intrinsic = 350
-
-	firemodes = list(
-		list(mode_name="normal", fire_delay=8, projectile_type=/obj/projectile/beam/midlaser, charge_cost = 240),
-		list(mode_name="suppressive", fire_delay=5, projectile_type=/obj/projectile/beam/weaklaser, charge_cost = 60),
-		)
 
 /obj/item/gun/energy/laser/mounted
 	self_recharge = 1
@@ -34,15 +41,13 @@
 /obj/item/gun/energy/laser/practice
 	name = "practice laser carbine"
 	desc = "A modified version of the HI G40E, this one fires less concentrated energy bolts designed for target practice."
-	projectile_type = /obj/projectile/beam/practice
-	charge_cost = 48
 
-	cell_type = /obj/item/cell/device
-
-	firemodes = list(
-		list(mode_name="normal", projectile_type=/obj/projectile/beam/practice, charge_cost = 48),
-		list(mode_name="suppressive", projectile_type=/obj/projectile/beam/practice, charge_cost = 12),
-		)
+	firemodes = /datum/firemode/energy{
+		name = "normal";
+		projectile_type = /obj/projectile/beam/practice;
+		charge_cost = 2400 / 80;
+		cycle_cooldown = 0.4 SECONDS;
+	}
 
 /obj/item/gun/energy/retro
 	name = "retro laser"
@@ -51,8 +56,13 @@
 	desc = "An older model of the basic lasergun. Nevertheless, it is still quite deadly and easy to maintain, making it a favorite amongst pirates and other outlaws."
 	slot_flags = SLOT_BELT
 	w_class = WEIGHT_CLASS_NORMAL
-	projectile_type = /obj/projectile/beam
-	fire_delay = 10 //old technology
+
+	firemodes = /datum/firemode/energy{
+		name = "normal";
+		charge_cost = 2400 / 10;
+		projectile_type = /obj/projectile/beam;
+		cycle_cooldown = 1 SECONDS;
+	}
 
 /obj/item/gun/energy/retro/mounted
 	self_recharge = 1
@@ -101,10 +111,13 @@
 	catalogue_data = list(/datum/category_item/catalogue/anomalous/precursor_a/alien_pistol)
 	icon_state = "alienpistol"
 	item_state = "alienpistol"
-	fire_delay = 10 // Handguns should be inferior to two-handed weapons. Even alien ones I suppose.
-	charge_cost = 240 // Ten shots.
 
-	projectile_type = /obj/projectile/beam/cyan
+	firemodes = /datum/firemode/energy {
+		projectile_type = /obj/projectile/beam/cyan;
+		charge_cost = 2400 / 10;
+		cycle_cooldown = 1 SECONDS;
+	}
+
 	cell_type = /obj/item/cell/device/weapon/recharge/alien // Self charges.
 	origin_tech = list(TECH_COMBAT = 8, TECH_MAGNET = 7)
 	modifystate = "alienpistol"

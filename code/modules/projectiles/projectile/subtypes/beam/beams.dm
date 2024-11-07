@@ -89,6 +89,7 @@
 	icon_state = "cyan"
 	fire_sound = 'sound/weapons/weaponsounds_alienlaser.ogg'
 	damage_force = 40
+	damage_tier = LASER_TIER_HIGH
 	light_color = "#00C6FF"
 
 	muzzle_type = /obj/effect/projectile/muzzle/laser_omni

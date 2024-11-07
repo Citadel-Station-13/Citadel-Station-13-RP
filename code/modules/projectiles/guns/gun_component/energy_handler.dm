@@ -11,7 +11,7 @@
 		An uncommon energy handler. Requires the user to rack the weapon to recharge
 		a linked supercapacitor array between shots for fast operation. In return,
 		the power provided to a given shot is improved by a decent margin.
-	"}
+	"} 
 
 /obj/item/gun_component/energy_handler/active_reload/summarize_bullet_points(datum/event_args/actor/actor, range)
 	. = list()

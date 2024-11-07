@@ -47,6 +47,18 @@
 				src.burst_delay = value
 		LAZYSET(legacy_direct_varedits, varname, value || inherit_from_gun.vars[varname])
 
+/datum/firemode/clone(include_contents)
+	var/datum/firemode/creating = new type
+	creating.name = name
+	creating.burst_amount = burst_amount
+	creating.burst_delay = burst_delay
+	creating.cycle_cooldown = cycle_cooldown
+	creating.render_color = render_color
+	creating.render_key = render_key
+	// todo: kill
+	creating.legacy_direct_varedits = deep_copy_list(legacy_direct_varedits)
+	return creating
+
 // todo: annihilate this
 /datum/firemode/proc/apply_legacy_variables(obj/item/gun/gun)
 	for(var/varname in legacy_direct_varedits)

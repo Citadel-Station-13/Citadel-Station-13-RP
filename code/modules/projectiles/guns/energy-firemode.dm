@@ -3,21 +3,14 @@
 
 /datum/firemode/energy
 	//* Energy Usage *//
-
 	/// charge cost of using this in cell units.
 	var/charge_cost
-	
+	#warn impl
+
 	//* Projectile Formation *//
-
-	//? Modular weapons make this complicated. The gun reserves the right to   ?//
-	//? overrule the firemode as necessary. It would be optimal to separate    ?//
-	//? firemodes from 'projectile modes', but it might be overkill given      ?//
-	//? the majority of energy guns do not require this functionality.         ?//
-
 	/// projectile type
 	var/projectile_type
-
-#warn deal with this
+	#warn impl
 
 // todo: this shouldn't even exist.
 /datum/firemode/energy/New(obj/item/gun/inherit_from_gun, list/direct_varedits)
@@ -32,3 +25,9 @@
 				src.charge_cost = value
 			if("projectile_type")
 				src.projectile_type = value
+
+/datum/firemode/energy/clone(include_contents)
+	var/datum/firemode/energy/cloning = ..()
+	cloning.charge_cost = charge_cost
+	cloning.projectile_type = projectile_trajectory
+	return cloning
