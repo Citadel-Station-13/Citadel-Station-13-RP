@@ -51,7 +51,6 @@
 /proc/get_fancy_list_of_atom_types()
 	return make_types_fancy(typesof(/atom))
 
-
 /proc/get_fancy_list_of_datum_types()
 	return make_types_fancy(typesof(/datum) - typesof(/atom))
 

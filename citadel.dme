@@ -466,6 +466,8 @@
 #include "code\__HELPERS\text\scramble.dm"
 #include "code\__HELPERS\type2type\color.dm"
 #include "code\__HELPERS\type2type\type2type.dm"
+#include "code\__HELPERS\typepaths\subtypesof_non_abstract.dm"
+#include "code\__HELPERS\typepaths\typesof_non_abstract.dm"
 #include "code\__HELPERS\unsorted\contents.dm"
 #include "code\__HELPERS\unsorted\locate.dm"
 #include "code\__HELPERS\unsorted\radiation.dm"
