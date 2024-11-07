@@ -25,12 +25,12 @@
 /datum/firemode/energy/nt_pulse/rifle/laser
 	name = "laser"
 	render_key = "kill"
-	settings = list(mode_name = "lethal", projectile_type = /obj/projectile/beam, charge_cost = 80)
+	legacy_direct_varedits = list(projectile_type = /obj/projectile/beam, charge_cost = 80)
 
 /datum/firemode/energy/nt_pulse/rifle/pulse
 	name = "pulse"
 	render_key = "destroy"
-	settings = list(mode_name = "destroy", projectile_type = /obj/projectile/beam/pulse, charge_cost = 180)
+	legacy_direct_varedits = list(projectile_type = /obj/projectile/beam/pulse, charge_cost = 180)
 
 /obj/item/gun/energy/nt_pulse/rifle
 	prototype_id = "nt-pulse-rifle"
@@ -72,12 +72,12 @@
 /datum/firemode/energy/nt_pulse/carbine/laser
 	name = "laser"
 	render_key = "kill"
-	settings = list(mode_name = "lethal", projectile_type = /obj/projectile/beam, charge_cost = 120)
+	legacy_direct_varedits = list(projectile_type = /obj/projectile/beam, charge_cost = 120)
 
 /datum/firemode/energy/nt_pulse/carbine/pulse
 	name = "pulse"
 	render_key = "destroy"
-	settings = list(mode_name = "destroy", projectile_type = /obj/projectile/beam/pulse, charge_cost = 240)
+	legacy_direct_varedits = list(projectile_type = /obj/projectile/beam/pulse, charge_cost = 240)
 
 /obj/item/gun/energy/nt_pulse/carbine
 	prototype_id = "nt-pulse-carbine"

@@ -288,9 +288,9 @@
 
 	//? Damage - default handling
 	/// damage amount
-	var/damage_force = 10
-	/// damage tier - goes hand in hand with [damage_armor]
-	var/damage_tier = BULLET_TIER_DEFAULT
+	var/damage_force = 0
+	/// damage tier - goes hand in hand with [damage_mode]
+	var/damage_tier = ARMOR_TIER_DEFAULT
 	/// damage type - DAMAGE_TYPE_* define
 	var/damage_type = DAMAGE_TYPE_BRUTE
 	/// armor flag for damage - goes hand in hand with [damage_tier]

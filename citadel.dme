@@ -4470,6 +4470,7 @@
 #include "code\modules\projectiles\ammunition\calibers\special\pellet.dm"
 #include "code\modules\projectiles\ammunition\calibers\special\rocket.dm"
 #include "code\modules\projectiles\guns\ballistic.dm"
+#include "code\modules\projectiles\guns\energy-firemode.dm"
 #include "code\modules\projectiles\guns\energy.dm"
 #include "code\modules\projectiles\guns\firemode.dm"
 #include "code\modules\projectiles\guns\firing_pin.dm"

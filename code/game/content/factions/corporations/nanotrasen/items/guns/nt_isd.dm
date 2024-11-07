@@ -2,6 +2,7 @@
 //* Copyright (c) 2024 silicons                             *//
 
 /datum/firemode/energy/nt_isd
+	abstract_type = /datum/firemode/energy/nt_isd
 
 /**
  * Weapons for NT's Internal Security.
@@ -12,10 +13,12 @@
  * * There's probably a neat amount of these just floating around the Frontier now from losses.
  */
 /obj/item/gun/energy/nt_isd
+	abstract_type = /obj/item/gun/energy/nt_isd
 
 //* Energy Sidearm *//
 
 /datum/firemode/energy/nt_isd/sidearm
+	abstract_type = /datum/firemode/energy/nt_isd/sidearm
 
 /datum/firemode/energy/nt_isd/sidearm/stun
 	name = "disrupt"
@@ -33,12 +36,18 @@
 	name = "hybrid taser"
 	desc = "A versatile energy sidearm used by corporate security."
 	description_fluff = {""}
+	firemodes = list(
+		/datum/firemode/energy/nt_isd/sidearm/stun,
+		/datum/firemode/energy/nt_isd/sidearm/disable,
+		/datum/firemode/energy/nt_isd/sidearm/lethal,
+	)
 
 #warn impl
 
 //* Energy Carbine *//
 
 /datum/firemode/energy/nt_isd/carbine
+	abstract_type = /datum/firemode/energy/nt_isd/carbine
 
 /datum/firemode/energy/nt_isd/carbine/disable
 	name = "disable"
@@ -56,12 +65,18 @@
 	name = "energy carbine"
 	desc = "A versatile energy carbine used by corporate security."
 	description_fluff = {""}
+	firemodes = list(
+		/datum/firemode/energy/nt_isd/carbine/disable,
+		/datum/firemode/energy/nt_isd/carbine/shock,
+		/datum/firemode/energy/nt_isd/carbine/kill,
+	)
 
 #warn impl
 
 //* Energy Lance *//
 
 /datum/firemode/energy/nt_isd/lance
+	abstract_type = /datum/firemode/energy/nt_isd/lance
 
 /datum/firemode/energy/nt_isd/lance/kill
 	name = "kill"
@@ -71,6 +86,9 @@
 	name = "energy lance"
 	desc = "A particle rifle used by corporate security. Shoots focused particle beams."
 	description_fluff = {""}
+	firemodes = list(
+		/datum/firemode/energy/nt_isd/lance/kill,
+	)
 
 #warn impl
 
@@ -93,38 +111,65 @@
 
 /obj/item/gun/energy/nt_isd/multiphase
 	name = "multiphase sidearm"
-	desc = "A sidearm as versatile as it is expensive."
+	desc = "A prototype sidearm for high-ranking corporate security."
 	description_fluff = {""}
+	firemodes = list(
+		/datum/firemode/energy/nt_isd/multiphase/disable,
+		/datum/firemode/energy/nt_isd/multiphase/kill,
+		/datum/firemode/energy/nt_isd/multiphase/ion,
+	)
 
 #warn impl
 
 //* Projectiles *//
 
 /obj/projectile/nt_isd
+	abstract_type = /obj/projectile/nt_isd
+
+/obj/projectile/nt_isd/laser
+	abstract_type = /obj/projectile/nt_isd/laser
+	damage_type = DAMAGE_TYPE_BURN
+
+/obj/projectile/nt_isd/laser/rifle
+	name = "laser"
+	damage_force = 40
+	damage_tier = LASER_TIER_MEDIUM
 
 /obj/projectile/nt_isd/laser/sidearm
 	name = "phaser blast"
-
-/obj/projectile/nt_isd/laser
-	name = "laser"
+	damage_force = 20
+	damage_tier = LASER_TIER_HIGH
 
 /obj/projectile/nt_isd/laser/multiphase
+	name = "focused laser"
+	damage_force = 40
+	damage_tier = LASER_TIER_HIGH
 
 /obj/projectile/nt_isd/laser/lance
 	name = "particle beam"
+	damage_force = 30
+	damage_tier = LASER_TIER_HIGH
+
+#warn sprites for above
 
 /obj/projectile/nt_isd/shock
 	name = "energy beam"
+	#warn impl
 
 /obj/projectile/nt_isd/electrode
 	name = "stun bolt"
+	#warn impl
 
 /obj/projectile/nt_isd/disable
 	name = "disabler beam"
+	#warn impl
 
 // todo: this shouldn't be an emp, this should be like synthetik's
 /obj/projectile/nt_isd/ion
 	name = "ion bolt"
-
-
-#warn impl all + sprites
+	base_projectile_effects = list(
+		/datum/projectile_effect/detonation/legacy_emp{
+			sev_2 = 1;
+			sev_3 = 2;
+		},
+	)
