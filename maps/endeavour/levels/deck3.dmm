@@ -2006,6 +2006,12 @@
 	},
 /turf/simulated/floor/tiled,
 /area/security/range)
+"bwN" = (
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled,
+/area/crew_quarters/bar)
 "bxI" = (
 /obj/machinery/computer/timeclock/premade/south,
 /obj/structure/cable/orange{
@@ -3726,6 +3732,21 @@
 /obj/item/storage/belt/utility,
 /turf/simulated/floor/tiled,
 /area/hydroponics)
+"cXR" = (
+/obj/machinery/door/firedoor,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/door/airlock/maintenance,
+/obj/structure/catwalk,
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/plating,
+/area/crew_quarters/bar)
 "cYs" = (
 /obj/structure/closet/gmcloset{
 	name = "formal wardrobe"
@@ -4235,6 +4256,12 @@
 	},
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d3starboardafthall)
+"dmA" = (
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/bar/catwalk)
 "dmR" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -4641,6 +4668,12 @@
 	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/crew_quarters/sleep/Dorm_11)
+"dGV" = (
+/obj/structure/cable/green{
+	icon_state = "1-8"
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/bar/catwalk)
 "dHD" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -6787,6 +6820,14 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled,
 /area/endeavour/surfacebase/mining_main/uxstorage)
+"eWz" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/tiled,
+/area/crew_quarters/bar)
 "eWW" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -9772,6 +9813,14 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled/dark,
 /area/vacant/vacant_shop)
+"hkN" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/cable/green{
+	icon_state = "2-4"
+	},
+/turf/simulated/floor/tiled,
+/area/crew_quarters/bar)
 "hkY" = (
 /obj/structure/sign/directions/evac{
 	dir = 4
@@ -12441,6 +12490,9 @@
 	cell_type = /obj/item/cell/super
 	},
 /obj/fiftyspawner/steel,
+/obj/structure/cable/green{
+	icon_state = "0-4"
+	},
 /turf/simulated/floor/wood,
 /area/endeavour/surfacebase/bar_backroom)
 "juL" = (
@@ -16739,6 +16791,9 @@
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 4
+	},
+/obj/structure/cable/green{
+	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled,
 /area/crew_quarters/bar)
@@ -24708,6 +24763,13 @@
 	},
 /turf/simulated/floor/wood,
 /area/quartermaster/foyer)
+"sAp" = (
+/obj/machinery/power/apc/north_mount,
+/obj/structure/cable/green{
+	icon_state = "0-2"
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/bar/catwalk)
 "sAz" = (
 /obj/structure/window/basic{
 	dir = 1
@@ -26504,6 +26566,12 @@
 /obj/structure/sign/deck/third,
 /turf/simulated/wall/prepainted,
 /area/crew_quarters/fitness)
+"tXh" = (
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/bar/catwalk)
 "tXo" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /turf/simulated/floor/tiled/dark,
@@ -38645,14 +38713,14 @@ xEe
 xEe
 xEe
 xEe
-xEe
-xEe
-xEe
-xEe
-xEe
-xEe
-xEe
-xEe
+hkN
+eWz
+eWz
+eWz
+eWz
+eWz
+eWz
+eWz
 mSQ
 mTI
 cop
@@ -38839,7 +38907,7 @@ kbt
 uzm
 kbt
 kbt
-kbt
+bwN
 kbt
 kbt
 uzm
@@ -39033,7 +39101,7 @@ uGk
 uGk
 uGk
 uGk
-cHy
+cXR
 uGk
 aMQ
 aMQ
@@ -39227,7 +39295,7 @@ iaP
 qLS
 qLS
 qLS
-qLS
+tXh
 qLS
 aMQ
 aMQ
@@ -39418,10 +39486,10 @@ rxD
 kbt
 kbt
 iaP
-qLS
-qLS
-qLS
-qLS
+sAp
+dmA
+dmA
+dGV
 qLS
 aMQ
 nUf
