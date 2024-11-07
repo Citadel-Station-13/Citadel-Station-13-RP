@@ -2,6 +2,9 @@
 "a" = (
 /turf/space/basic,
 /area/space)
+"I" = (
+/turf/simulated/wall/fey/forest_wall,
+/area/space)
 
 (1,1,1) = {"
 a
@@ -1329,9 +1332,9 @@ a
 a
 a
 a
-a
-a
-a
+I
+I
+I
 a
 a
 a
