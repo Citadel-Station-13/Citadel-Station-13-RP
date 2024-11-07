@@ -9994,8 +9994,7 @@
 /area/crew_quarters/sleep/Dorm_4)
 "hup" = (
 /obj/machinery/power/smes/buildable{
-	RCon_tag = "Deck 3 Aft Grid";
-	cur_coils = 3
+	RCon_tag = "Deck 3 Aft Grid"
 	},
 /obj/structure/cable/green{
 	icon_state = "0-4"
@@ -21447,8 +21446,7 @@
 /area/hydroponics)
 "qfY" = (
 /obj/machinery/power/smes/buildable{
-	RCon_tag = "Deck 3 Amidships Grid";
-	cur_coils = 3
+	RCon_tag = "Deck 3 Amidships Grid"
 	},
 /obj/structure/cable/green{
 	icon_state = "0-4"
@@ -28055,8 +28053,7 @@
 /area/security/evidence_storage)
 "uYN" = (
 /obj/machinery/power/smes/buildable{
-	RCon_tag = "Deck 3 Fore Grid";
-	cur_coils = 3
+	RCon_tag = "Deck 3 Fore Grid"
 	},
 /obj/structure/cable/green{
 	icon_state = "0-4"

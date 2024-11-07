@@ -2986,7 +2986,7 @@
 "bYT" = (
 /obj/machinery/power/smes/buildable{
 	RCon_tag = "Deck 2 Aft Grid";
-	cur_coils = 3
+	cur_coils = 2
 	},
 /obj/structure/cable/green{
 	icon_state = "0-4"

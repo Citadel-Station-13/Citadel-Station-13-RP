@@ -6586,6 +6586,13 @@
 "ikp" = (
 /turf/simulated/wall/r_wall/prepainted/engineering,
 /area/endeavour/hallway/d4aftmaint)
+"ikC" = (
+/obj/machinery/light{
+	dir = 1;
+	pixel_y = 20
+	},
+/turf/simulated/floor/plating,
+/area/endeavour/hallway/d4aftmaint)
 "imx" = (
 /obj/structure/cable/cyan{
 	icon_state = "0-8"
@@ -7109,6 +7116,18 @@
 /obj/item/tool/wrench,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/portnacelle)
+"iXv" = (
+/obj/structure/cable{
+	icon_state = "0-4"
+	},
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/simulated/floor/plating,
+/area/engineering/engine_smes)
 "iXz" = (
 /obj/structure/railing,
 /turf/simulated/floor/plating,
@@ -12631,6 +12650,7 @@
 	dir = 8
 	},
 /obj/structure/cable/yellow,
+/obj/machinery/light,
 /turf/simulated/floor/plating,
 /area/engineering/engine_smes)
 "qjI" = (
@@ -14129,7 +14149,7 @@
 "szc" = (
 /obj/machinery/power/smes/buildable{
 	RCon_tag = "Point Defense Grid";
-	cur_coils = 4;
+	cur_coils = 2;
 	charge = 21600;
 	capacity = 8000
 	},
@@ -16784,6 +16804,10 @@
 	dir = 10
 	},
 /obj/structure/catwalk,
+/obj/machinery/light{
+	dir = 4;
+	use_power = 0
+	},
 /turf/simulated/floor/plating,
 /area/engineering/engine_smes)
 "vWK" = (
@@ -27651,7 +27675,7 @@ twj
 twj
 twj
 yex
-jBO
+ikC
 tIM
 jBO
 jBO
@@ -30353,7 +30377,7 @@ tWf
 tWf
 tWf
 dOL
-ieH
+iXv
 mtZ
 qiC
 dOL
