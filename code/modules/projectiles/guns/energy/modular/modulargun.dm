@@ -69,8 +69,13 @@
 	var/chargecost = primarycore.beamcost * lasercap.costmod //Cost for primary fire.
 	chargecost += lasercooler.costadd //Cooler adds a flat amount post capacitor based on firedelay mod. Can be negative.
 	var/scatter = laserlens.scatter //Does it scatter the beams?
-	fire_delay = lasercap.firedelay * lasercooler.delaymod //Firedelay caculated by the capacitor and the laser cooler.
-	burst_delay = circuit.burst_delay * lasercooler.delaymod //Ditto but with burst delay.
+	var/fire_delay = lasercap.firedelay * lasercooler.delaymod //Firedelay caculated by the capacitor and the laser cooler.
+	var/burst_delay = circuit.burst_delay * lasercooler.delaymod //Ditto but with burst delay.
+	// shitcode to make old code work; basically wait until the generate.
+	spawn(0)
+		for(var/datum/firemode/firemode in src.firemodes)
+			firemode.cycle_cooldown = fire_delay
+			firemode.burst_delay = burst_delay
 	accuracy = laserlens.accuracy
 	var/chargecost_lethal = 120
 	var/chargecost_special = 120

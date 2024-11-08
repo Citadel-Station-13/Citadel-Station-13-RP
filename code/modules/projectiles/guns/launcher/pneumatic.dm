@@ -7,7 +7,9 @@
 	w_class = WEIGHT_CLASS_HUGE
 	heavy = TRUE
 	fire_sound_text = "a loud whoosh of moving air"
-	fire_delay = 50
+	firemodes = /datum/firemode{
+		cycle_cooldown = 5 SECONDS;
+	}
 	fire_sound = 'sound/weapons/grenade_launcher.ogg' // Formerly tablehit1.ogg but I like this better -Ace
 	one_handed_penalty = 10
 

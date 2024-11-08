@@ -19,7 +19,9 @@
 
 	origin_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 2)
 
-	fire_delay = 35
+	firemodes = /datum/firemode{
+		cycle_cooldown = 3.5 SECONDS;
+	}
 	fire_sound = 'sound/weapons/gunshot/musket.ogg'
 	recoil = 4
 	no_pin_required = 1

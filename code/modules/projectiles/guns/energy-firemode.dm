@@ -29,5 +29,5 @@
 /datum/firemode/energy/clone(include_contents)
 	var/datum/firemode/energy/cloning = ..()
 	cloning.charge_cost = charge_cost
-	cloning.projectile_type = projectile_trajectory
+	cloning.projectile_type = projectile_type
 	return cloning

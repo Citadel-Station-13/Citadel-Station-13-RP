@@ -8,7 +8,7 @@
 	abstract_type = /obj/item/gun/ballistic/magnetic/modular/nt_protomag
 	desc = "A modular ferromagnetic-boosted weapon. Uses experimental ferromagnetic ammunition."
 	description_fluff = {"
-		An experimental magnetic weapon from the Nanotrasen Research Division. The 'protomag' series uses specially
+		An experimental magnetic weapon from the Nanotrasen Research Division. The 'Protomag' series uses specially
 		made ammunition capable of a hybrid launch, combining conventional propellant with an accelerating burst
 		from a set of acceleration coils to throw a slug down-range. While still lacking in ammo capacity,
 		this 'prototype' is already made in many Nanotrasen fleets for day-to-day usage. As of recent, designs
