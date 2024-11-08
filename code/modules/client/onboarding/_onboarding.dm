@@ -4,6 +4,6 @@
  * client should already be logged to DB at this point.
  */
 /client/proc/onboarding()
-	security_checks()
+	// security_checks()
 	panic_bunker()
 	age_verification()

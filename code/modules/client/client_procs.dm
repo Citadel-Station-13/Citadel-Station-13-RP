@@ -47,8 +47,9 @@
 	If you have any  questions about this stuff feel free to ask. ~Carn
 	*/
 
-/client/Topic(href, href_list, hsrc)
-	if(!usr || usr != mob)	//stops us calling Topic for somebody else's client. Also helps prevent usr=null
+//the undocumented 4th argument is for ?[0x\ref] style topic links. hsrc is set to the reference and anything after the ] gets put into hsrc_command
+/client/Topic(href, href_list, hsrc, hsrc_command)
+	if(!usr || usr != mob) // stops us calling Topic for somebody else's client. Also helps prevent usr=null
 		return
 
 	// Rate limiting
@@ -68,11 +69,11 @@
 				msg += " Administrators have been informed."
 				log_game("[key_name(src)] Has hit the per-minute topic limit of [mtl] topic calls in a given game minute")
 				message_admins("[ADMIN_LOOKUPFLW(usr)] [ADMIN_KICK(usr)] Has hit the per-minute topic limit of [mtl] topic calls in a given game minute")
-			to_chat(src, "<span class='danger'>[msg]</span>")
+			to_chat(src, SPAN_DANGER("[msg]"))
 			return
 
 	var/stl = config_legacy.second_topic_limit		//CONFIG_GET(number/second_topic_limit)
-	if (!holder && stl)
+	if (!holder && stl && href_list["window_id"] != "statbrowser")
 		var/second = round(world.time, 10)
 		if (!topiclimiter)
 			topiclimiter = new(LIMITER_SIZE)
@@ -81,7 +82,7 @@
 			topiclimiter[SECOND_COUNT] = 0
 		topiclimiter[SECOND_COUNT] += 1
 		if (topiclimiter[SECOND_COUNT] > stl)
-			to_chat(src, "<span class='danger'>Your previous action was ignored because you've done too many in a second</span>")
+			to_chat(src, SPAN_DANGER("Your previous action was ignored because you've done too many in a second"))
 			return
 
 	// Tgui Topic middleware
@@ -89,6 +90,8 @@
 		if(CONFIG_GET(flag/emergency_tgui_logging))
 			log_href("[src] (usr:[usr]\[[COORD(usr)]\]) : [hsrc ? "[hsrc] " : ""][href]")
 		return
+	if(href_list["reload_tguipanel"])
+		nuke_chat()
 
 	//? Normal HREF handling go below
 
@@ -173,14 +176,16 @@
 /client/New(TopicData)
 	//* pre-connect-ish *//
 
-	// Byond only populates whether or not you can profile at connect. You have to give someone this
-	// before their client loads/whatever. This cannot be behind a spawn(). We will remove it from non-admins later.
-	world.SetConfig("APP/admin", ckey, "role=admin")
 	// Block client.Topic() calls from connect.
 	TopicData = null
+
 	// Kick invalid connections.
 	if(connection != "seeker" && connection != "web")
 		return null
+
+	// Byond only populates whether or not you can profile at connect. You have to give someone this
+	// before their client loads/whatever. This cannot be behind a spawn(). We will remove it from non-admins later.
+	world.SetConfig("APP/admin", ckey, "role=admin")
 	//! legacy: kick out guests !//
 	if(!config_legacy.guests_allowed && is_guest() && !is_localhost())
 		security_kick(
@@ -298,6 +303,8 @@
 	INVOKE_ASYNC(SSipintel, TYPE_PROC_REF(/datum/controller/subsystem/ipintel, vpn_connection_check), address, ckey)
 	// run onboarding gauntlet
 	INVOKE_ASYNC(src, PROC_REF(onboarding))
+	if (!security_checks())
+		return // GET OUT (assume client is dead)
 
 	//* Initialize Input *//
 	if(SSinput.initialized)
