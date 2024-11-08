@@ -20,7 +20,5 @@
 	var/name
 	/// category; string value.
 	///
-	/// * this corrosponds to database-level enums, be carful with this
+	/// * this corrosponds to database-level enums, be careful with this
 	var/category
-
-
