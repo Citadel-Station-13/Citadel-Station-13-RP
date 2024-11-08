@@ -1104,6 +1104,8 @@
 #include "code\game\content\factions\corporations\nanotrasen\items\guns\nt_pmd.dm"
 #include "code\game\content\factions\corporations\nanotrasen\items\guns\nt_protomag-ammo.dm"
 #include "code\game\content\factions\corporations\nanotrasen\items\guns\nt_protomag-caliber.dm"
+#include "code\game\content\factions\corporations\nanotrasen\items\guns\nt_protomag-magazine.dm"
+#include "code\game\content\factions\corporations\nanotrasen\items\guns\nt_protomag-projectile.dm"
 #include "code\game\content\factions\corporations\nanotrasen\items\guns\nt_protomag.dm"
 #include "code\game\content\factions\corporations\nanotrasen\items\guns\nt_pulse.dm"
 #include "code\game\content\factions\corporations\nanotrasen\nanotrasen-supply\animals.dm"

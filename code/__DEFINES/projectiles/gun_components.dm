@@ -61,4 +61,6 @@ GLOBAL_REAL_LIST(gun_component_enum_to_name) = list(
  */
 #define GUN_COMPONENT_CONFLICT_BURST_MODIFICATION (1<<0)
 
+// todo: DEFINE_ENUM
+
 #warn flesh this out
