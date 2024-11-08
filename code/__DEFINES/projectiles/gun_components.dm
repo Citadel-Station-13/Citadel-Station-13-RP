@@ -1,7 +1,7 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
-//* Slots - /obj/item/gun_component *//
+//**** Slots - /obj/item/gun_component ****//
 
 //* Note: These are all suggestions.                                     *//
 //* Components hook the gun via component signals and registration APIs  *//
@@ -53,3 +53,12 @@ GLOBAL_REAL_LIST(gun_component_enum_to_name) = list(
 	GUN_COMPONENT_FOCUSING_LENS = "focusing lens",
 	GUN_COMPONENT_PARTICLE_ARRAY = "particle array",
 )
+
+//**** Conflict Flags - /obj/item/gun_component ****//
+
+/**
+ * Burst modifiers.
+ */
+#define GUN_COMPONENT_CONFLICT_BURST_MODIFICATION (1<<0)
+
+#warn flesh this out

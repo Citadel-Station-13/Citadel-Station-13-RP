@@ -3,8 +3,44 @@
 
 /obj/item/gun_component/internal_module
 	name = "weapon module"
+	desc = "An internal module for a modular gun."
 	component_slot = GUN_COMPONENT_INTERNAL_MODULE
 
 #warn impl all
 
 // TODO: This file is mostly stubs and WIPs.
+
+/**
+ * mostly a test module;
+ *
+ * * makes the gun fire a second round on every fire
+ * * conflicts with any other burst modifiers
+ */
+/obj/item/gun_component/internal_module/double_shot
+	name = "AN-94 Fire Controller"
+	desc = /obj/item/gun_component/internal_module::desc + " This will cause the gun to fire one additional round per burst, at the cost of reduced accuracy."
+	component_conflict = GUN_COMPONENT_CONFLICT_BURST_MODIFICATION
+
+	/// angular dispersion to impose on the last round in the burst, and the round we add
+	var/dispersion_amount = 5
+
+/obj/item/gun_component/internal_module/double_shot/on_firing_cycle_iteration(datum/gun_firing_cycle/cycle)
+	// only invoke on last iteration
+	if(cycle.cycle_iterations_fired != cycle.firing_iterations)
+		return
+	// do not invoke multiple times
+	switch(LAZYACCESS(cycle.blackboard, "an-94-refire-triggered"))
+		if(1)
+			// add dispersion
+			LAZYSET(cycle.blackboard, "an-94-refire-triggered", 2)
+			cycle.next_dispersion += dispersion_amount
+			return
+		if(2)
+			// we're done here
+			return
+	// set re-invoke flag
+	LAZYSET(cycle.blackboard, "an-94-refire-triggered", 1)
+	// add one iteration
+	cycle.firing_iterations++
+	// force current shot dispersion
+	cycle.next_dispersion += dispersion_amount

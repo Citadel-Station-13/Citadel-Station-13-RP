@@ -17,8 +17,15 @@
 	/// * This is just a suggestion.
 	/// * The actual APIs used are agnostic of this value.
 	var/component_slot
+	/// Conflict flags
+	var/component_conflict = NONE
+	#warn impl
+
 	/// should we be hidden from examine?
 	var/show_on_examine = TRUE
+	/// automatically hook firing iteration pre-fire? will call on_firing_cycle_iteration(cycle) if hooked.
+	var/hook_iteration_pre_fire = FALSE
+	#warn impl
 
 	/// currently attached gun
 	var/obj/item/gun/attached
@@ -53,6 +60,14 @@
 /obj/item/gun_component/proc/on_detach(obj/item/gun/gun, datum/event_args/actor/actor, silent)
 	SHOULD_CALL_PARENT(TRUE)
 
+//* Gun API *//
+
+/**
+ * Called right before fire() is invoked, if [hook_iteration_pre_fire] is set.
+ */
+/obj/item/gun_component/proc/on_firing_cycle_iteration(datum/gun_firing_cycle/cycle)
+	return
+
 //* Information *//
 
 /**
@@ -62,4 +77,3 @@
  */
 /obj/item/gun_component/proc/summarize_bullet_points(datum/event_args/actor/actor)
 	return list()
-

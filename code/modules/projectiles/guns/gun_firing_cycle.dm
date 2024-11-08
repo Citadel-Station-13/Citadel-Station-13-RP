@@ -51,3 +51,5 @@
 
 	//*                        firing modifier args                        *//
 	//* this is where things like modular gun components will inject into. *//
+	/// blackboard for modular gun components to use
+	var/list/blackboard
