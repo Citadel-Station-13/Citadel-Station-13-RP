@@ -26,6 +26,8 @@
 	/// supported values:
 	/// * /image
 	/// * /mutable_appearance
+	///
+	/// this must be created in [make_radial_appearance()] as this cannot be set to image() or similar at compile time
 	var/radial_appearance
 
 	//* LEGACY *//
@@ -71,3 +73,9 @@
 /datum/firemode/proc/apply_legacy_variables(obj/item/gun/gun)
 	for(var/varname in legacy_direct_varedits)
 		gun.vars[varname] = legacy_direct_varedits[varname]
+
+/datum/firemode/proc/fetch_radial_appearance()
+	return radial_appearance || (radial_appearance = make_radial_appearance())
+
+/datum/firemode/proc/make_radial_appearance()
+	return

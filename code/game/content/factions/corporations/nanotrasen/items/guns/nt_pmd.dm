@@ -12,35 +12,45 @@
 	name = "normal"
 	projectile_type = /obj/projectile/bullet/pistol/medium/silver
 	charge_cost = 2400 / 8
-	radial_appearance = image(/obj/item/gun/energy/nt_pmd/service_revolver::icon, "service-normal")
+
+/datum/firemode/energy/nt_pmd/service_revolver/normal/make_radial_appearance()
+	return image(/obj/item/gun/energy/nt_pmd/service_revolver::icon, "service-normal")
 
 /datum/firemode/energy/nt_pmd/service_revolver/shatter
 	name = "shatter"
 	projectile_type = /obj/projectile/bullet/pellet/shotgun/silvershot
 	cycle_cooldown = 1.5 SECONDS
 	charge_cost = 2400 / 5
-	radial_appearance = image(/obj/item/gun/energy/nt_pmd/service_revolver::icon, "service-shatter")
+
+/datum/firemode/energy/nt_pmd/service_revolver/shatter/make_radial_appearance()
+	return image(/obj/item/gun/energy/nt_pmd/service_revolver::icon, "service-shatter")
 
 /datum/firemode/energy/nt_pmd/service_revolver/spin
 	name = "spin"
 	projectile_type = /obj/projectile/bullet/pistol/spin
 	cycle_cooldown = 0.1 SECONDS
 	charge_cost = 2400 / 80
-	radial_appearance = image(/obj/item/gun/energy/nt_pmd/service_revolver::icon, "service-spin")
+
+/datum/firemode/energy/nt_pmd/service_revolver/spin/make_radial_appearance()
+	return image(/obj/item/gun/energy/nt_pmd/service_revolver::icon, "service-spin")
 
 /datum/firemode/energy/nt_pmd/service_revolver/pierce
 	name = "pierce"
 	projectile_type = /obj/projectile/bullet/rifle/a762/ap/silver
 	cycle_cooldown = 1.5 SECONDS
 	charge_cost = 2400 / 5
-	radial_appearance = image(/obj/item/gun/energy/nt_pmd/service_revolver::icon, "service-pierce")
+
+/datum/firemode/energy/nt_pmd/service_revolver/pierce/make_radial_appearance()
+	return image(/obj/item/gun/energy/nt_pmd/service_revolver::icon, "service-pierce")
 
 /datum/firemode/energy/nt_pmd/service_revolver/charge
 	name = "charge"
 	projectile_type = /obj/projectile/bullet/burstbullet/service
 	cycle_cooldown = 2 SECONDS
 	charge_cost = 2400 / 4
-	radial_appearance = image(/obj/item/gun/energy/nt_pmd/service_revolver::icon, "service-charge")
+
+/datum/firemode/energy/nt_pmd/service_revolver/charge/make_radial_appearance()
+	return image(/obj/item/gun/energy/nt_pmd/service_revolver::icon, "service-charge")
 
 /obj/item/gun/energy/nt_pmd/service_revolver
 	name = "service weapon"
