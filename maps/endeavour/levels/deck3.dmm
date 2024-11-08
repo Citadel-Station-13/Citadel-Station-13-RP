@@ -28163,10 +28163,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/endeavour/hallway/d3aftmaint)
-"uZY" = (
-/obj/spawner/window/borosillicate/reinforced/full/firelocks,
-/turf/space,
-/area/space)
 "vaf" = (
 /obj/spawner/window/low_wall/full/firelocks/nogrille,
 /turf/simulated/floor/plating,
@@ -66488,7 +66484,7 @@ mDp
 mDp
 mDp
 mDp
-uZY
+bsV
 bsV
 bsV
 qCo
@@ -66496,7 +66492,7 @@ rHk
 qRU
 bsV
 bsV
-uZY
+bsV
 mDp
 mDp
 mDp
@@ -66683,13 +66679,13 @@ mDp
 mDp
 mDp
 mDp
-uZY
 bsV
 bsV
 bsV
 bsV
 bsV
-uZY
+bsV
+bsV
 mDp
 mDp
 mDp
@@ -66878,11 +66874,11 @@ mDp
 mDp
 mDp
 mDp
-uZY
-uZY
-uZY
-uZY
-uZY
+bsV
+bsV
+bsV
+bsV
+bsV
 mDp
 mDp
 mDp

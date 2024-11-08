@@ -5016,6 +5016,15 @@
 	},
 /turf/simulated/floor/bluegrid,
 /area/ai)
+"gvx" = (
+/obj/structure/catwalk,
+/obj/machinery/door/blast/regular{
+	dir = 2;
+	id = "hangar_pad";
+	name = "Hangar Bay Blast Door"
+	},
+/turf/simulated/floor/plating,
+/area/rnd/robotics/smallcraft)
 "gvX" = (
 /obj/effect/floor_decal/borderfloorblack/corner,
 /obj/effect/floor_decal/corner/lightorange/bordercorner,
@@ -8190,6 +8199,12 @@
 /obj/structure/window/reinforced,
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/atmos)
+"klQ" = (
+/obj/machinery/shield_diffuser{
+	icon_state = "fdiffuser_off"
+	},
+/turf/space/basic,
+/area/space)
 "kmv" = (
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/corner/lightorange/border,
@@ -8465,6 +8480,18 @@
 /obj/item/barrier_tape_segment/engineering,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_eva)
+"kDR" = (
+/obj/effect/floor_decal/industrial/warning{
+	dir = 1
+	},
+/obj/effect/floor_decal/industrial/warning,
+/obj/machinery/door/blast/regular{
+	dir = 2;
+	id = "hangar_pad";
+	name = "Hangar Bay Blast Door"
+	},
+/turf/simulated/floor/tiled/techmaint,
+/area/rnd/robotics/smallcraft)
 "kEJ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/yellow{
 	dir = 8
@@ -50151,7 +50178,7 @@ jNg
 jNg
 jNg
 qBz
-jNg
+usG
 qBz
 qBz
 qBz
@@ -50173,7 +50200,7 @@ qBz
 qBz
 qBz
 qBz
-jNg
+usG
 qBz
 jNg
 jNg
@@ -50937,9 +50964,9 @@ gGG
 gGG
 gGG
 gGG
-nlL
-kup
-nlL
+kDR
+gvx
+kDR
 gGG
 gGG
 gGG
@@ -51325,9 +51352,9 @@ gPd
 gtA
 jNg
 nQj
-jNg
-jNg
-jNg
+usG
+usG
+usG
 nQj
 jNg
 gtA
@@ -52495,7 +52522,7 @@ xRj
 xRj
 xRj
 xRj
-xRj
+klQ
 xRj
 xRj
 xRj
