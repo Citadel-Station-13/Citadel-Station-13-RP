@@ -346,9 +346,11 @@
 	item_state = "staffofchaos"
 	damage_force = 5
 	charge_meter = 0
-	projectile_type = /obj/projectile/beam/emitter
-	fire_delay = 10
-	charge_cost = 800
+	firemodes = /datum/firemode/energy{
+		projectile_type = /obj/projectile/beam/emitter;
+		cycle_cooldown = 1 SECONDS;
+		charge_cost = 2400 / 3;
+	}
 	cell_type = /obj/item/cell/device/weapon/recharge/captain
 	legacy_battery_lock = 1
 	one_handed_penalty = 0

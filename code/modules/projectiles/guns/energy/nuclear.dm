@@ -1,3 +1,17 @@
+/datum/firemode/energy/energy_gun
+	abstract_type = /datum/firemode/energy/energy_gun
+	cycle_cooldown = 1 SECONDS
+
+/datum/firemode/energy/energy_gun/stun
+	name = "stun"
+	projectile_type = /obj/projectile/beam/stun/med
+	charge_cost = 2400 / 10
+
+/datum/firemode/energy/energy_gun/kill
+	name = "lethal"
+	projectile_type = /obj/projectile/beam
+	charge_cost = 2400 / 5
+
 /obj/item/gun/energy/gun
 	name = "energy gun"
 	desc = "Another bestseller of Lawson Arms and "+TSC_HEPH+", the LAEP90 Perun is a versatile energy based sidearm, capable of switching between low and high capacity projectile settings. In other words: Stun or Kill."
@@ -8,14 +22,12 @@
 	item_state = null	//so the human update icon uses the icon_state instead.
 
 	worth_intrinsic = 250
-
-	projectile_type = /obj/projectile/beam/stun/med
 	origin_tech = list(TECH_COMBAT = 3, TECH_MAGNET = 2)
 	modifystate = "energystun"
 
 	firemodes = list(
-		list(mode_name="stun", projectile_type=/obj/projectile/beam/stun/med, modifystate="energystun", charge_cost = 240, fire_delay = 1 SECONDS),
-		list(mode_name="lethal", projectile_type=/obj/projectile/beam, modifystate="energykill", charge_cost = 300, fire_delay = 1 SECONDS),
+		/datum/firemode/energy/energy_gun/stun,
+		/datum/firemode/energy/energy_gun/kill,
 	)
 
 /obj/item/gun/energy/gun/mounted
@@ -24,6 +36,7 @@
 	use_external_power = 1
 
 /datum/firemode/energy/burst_laser
+	abstract_type = /datum/firemode/energy/burst_laser
 	burst_delay = 0.2 SECONDS
 	cycle_cooldown = 0.6 SECONDS
 
@@ -109,6 +122,20 @@
 		/datum/firemode/energy/mining_carbine/scatter_burst,
 	)
 
+/datum/firemode/energy/advanced_energy_gun
+	abstract_type = /datum/firemode/energy/advanced_energy_gun
+	cycle_cooldown = 0.6 SECONDS
+
+/datum/firemode/energy/advanced_energy_gun/stun
+	name = "stun"
+	projectile_type = /obj/projectile/beam/stun/med
+	charge_cost = 2400 / 10
+
+/datum/firemode/energy/advanced_energy_gun/kill
+	name = "lethal"
+	projectile_type = /obj/projectile/beam
+	charge_cost = 2400 / 5
+
 /obj/item/gun/energy/gun/nuclear
 	name = "advanced energy gun"
 	desc = "An energy gun with an experimental miniaturized reactor."
@@ -119,7 +146,6 @@
 	damage_force = 8 //looks heavier than a pistol
 	w_class = WEIGHT_CLASS_BULKY	//Looks bigger than a pistol, too.
 	heavy = TRUE
-	fire_delay = 6	//This one's not a handgun, it should have the same fire delay as everything else
 	cell_type = /obj/item/cell/device/weapon/recharge
 	legacy_battery_lock = 1
 	modifystate = null
@@ -128,21 +154,32 @@
 	one_handed_penalty = 30 // It's rather bulky at the fore, so holding it in one hand is harder than with two.
 
 	firemodes = list(
-		list(mode_name="stun", projectile_type=/obj/projectile/beam/stun, modifystate="nucgunstun", charge_cost = 240), //10 shots
-		list(mode_name="lethal", projectile_type=/obj/projectile/beam, modifystate="nucgunkill", charge_cost = 240),    //10 shots
-		)
+		/datum/firemode/energy/advanced_energy_gun/stun,
+		/datum/firemode/energy/advanced_energy_gun/kill,
+	)
+
+/datum/firemode/energy/legacy_nt_combat_pistol
+	abstract_type = /datum/firemode/energy/advanced_energy_gun
+	cycle_cooldown = 0.6 SECONDS
+
+/datum/firemode/energy/legacy_nt_combat_pistol/stun
+	name = "stun"
+	projectile_type = /obj/projectile/beam/stun/med
+	charge_cost = 2400 / 12
+
+/datum/firemode/energy/legacy_nt_combat_pistol/kill
+	name = "lethal"
+	projectile_type = /obj/projectile/beam
+	charge_cost = 2400 / 6
 
 //NT SpecOps Laser Pistol
 /obj/item/gun/energy/gun/combat
 	name = "NT-ES-2 energy pistol"
 	desc = "A purpose-built energy weapon designed to function as a sidearm for Nanotrasen special operations. This weapon is ideal for hazardous environments where both lethal and non-lethal responses may be required."
 	icon_state = "clpistolstun100"
-	fire_delay = 8
-
-	origin_tech = list(TECH_COMBAT = 5, TECH_MAGNET = 2)
 	modifystate = "clpistolstun"
 
 	firemodes = list(
-		list(mode_name="stun", projectile_type=/obj/projectile/beam/stun/med, modifystate="clpistolstun", charge_cost = 200),
-		list(mode_name="lethal", projectile_type=/obj/projectile/beam, modifystate="clpistolkill", charge_cost = 400),
-		)
+		/datum/firemode/energy/legacy_nt_combat_pistol/stun,
+		/datum/firemode/energy/legacy_nt_combat_pistol/kill,
+	)
