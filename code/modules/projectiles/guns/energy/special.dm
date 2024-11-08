@@ -337,54 +337,6 @@
 	cell_type = /obj/item/cell/high
 	charge_cost = 2500
 
-#warn rework this and have a radial preview mode for firemodes
-/obj/item/gun/energy/service
-	name = "service weapon"
-	icon_state = "service_grip"
-	item_state = "service_grip"
-	desc = "An anomalous weapon, long kept secure. It has recently been acquired by Nanotrasen's Paracausal Monitoring Division. How did it get here?"
-	damage_force = 5
-	slot_flags = SLOT_BELT
-	w_class = WEIGHT_CLASS_NORMAL
-	projectile_type = /obj/projectile/bullet/pistol/medium/silver
-	origin_tech = null
-	fire_delay = 10		//Old pistol
-	charge_cost = 480	//to compensate a bit for self-recharging
-	cell_type = /obj/item/cell/device/weapon/recharge/captain
-	legacy_battery_lock = 1
-	one_handed_penalty = 0
-	safety_state = GUN_SAFETY_OFF
-
-/obj/item/gun/energy/service/grip
-
-/obj/item/gun/energy/service/shatter
-	name = "service weapon (shatter)"
-	icon_state = "service_shatter"
-	projectile_type = /obj/projectile/bullet/pellet/shotgun/silvershot
-	fire_delay = 15		//Increased by 50% for strength.
-	charge_cost = 600	//Charge increased due to shotgun round.
-
-/obj/item/gun/energy/service/spin
-	name = "service weapon (spin)"
-	icon_state = "service_spin"
-	projectile_type = /obj/projectile/bullet/pistol/spin
-	fire_delay = 0	//High fire rate.
-	charge_cost = 80	//Lower cost per shot to encourage rapid fire.
-
-/obj/item/gun/energy/service/pierce
-	name = "service weapon (pierce)"
-	icon_state = "service_pierce"
-	projectile_type = /obj/projectile/bullet/rifle/a762/ap/silver
-	fire_delay = 15		//Increased by 50% for strength.
-	charge_cost = 600	//Charge increased due to sniper round.
-
-/obj/item/gun/energy/service/charge
-	name = "service weapon (charge)"
-	icon_state = "service_charge"
-	projectile_type = /obj/projectile/bullet/burstbullet/service    //Formerly: obj/projectile/bullet/gyro. A little too robust.
-	fire_delay = 20
-	charge_cost = 800	//Three shots.
-
 /obj/item/gun/energy/puzzle_key
 	name = "Key of Anak-Hun-Tamuun"
 	desc = "An arcane stave that fires a powerful energy blast. Why was this just left laying around here?"

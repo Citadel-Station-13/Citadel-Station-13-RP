@@ -113,26 +113,38 @@
 	our_cycle.cycle_start_time = world.time
 	// begin
 	firing_cycle = our_cycle
+	// send start hooks
 	on_firing_cycle_start(our_cycle)
+	SEND_SIGNAL(src, COMSIG_GUN_FIRING_CYCLE_START, our_cycle)
 
 	var/safety = 50
 	var/iteration = 0
 	while(iteration < our_cycle.firing_iterations)
-		++iteration
-		our_cycle.cycle_iterations_fired = iteration
+		// loop guard
 		--safety
 		if(safety <= 0)
 			CRASH("safety ran out during firing cycle")
+		// increment iteration; track it locally too, just in case
+		++iteration
+		our_cycle.cycle_iterations_fired = iteration
+		// fire signal
+		SEND_SIGNAL(src, COMSIG_GUN_FIRING_CYCLE_ITERATION_PREFIRE, our_cycle)
+		// fire
 		our_cycle.last_firing_result = fire(our_cycle)
+		// post-fire
 		if(!post_fire(our_cycle))
 			break
+		// continue if needed
 		if(iteration != our_cycle.firing_iterations)
 			sleep(our_cycle.firing_delay)
 			if(firing_cycle != our_cycle)
 				our_cycle.last_interrupted = TRUE
 				break
 
+	// send end hooks
 	on_firing_cycle_end(our_cycle)
+	SEND_SIGNAL(src, COMSIG_GUN_FIRING_CYCLE_END, our_cycle)
+
 	return our_cycle
 
 //* Firing *//

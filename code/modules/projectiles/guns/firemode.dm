@@ -20,6 +20,14 @@
 	var/render_color
 	#warn impl
 
+	//* UI *//
+	/// appearance used for radial
+	///
+	/// supported values:
+	/// * /image
+	/// * /mutable_appearance
+	var/radial_appearance
+
 	//* LEGACY *//
 	/// direct vv edits to the gun applied when we're selected.
 	///

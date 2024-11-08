@@ -79,6 +79,9 @@
 	 * This variable may either be a list, of the above, or a singular of the above.
 	 */
 	var/list/firemodes = /datum/firemode
+	/// use radial for firemode
+	var/firemodes_use_radial = FALSE
+	#warn impl
 
 	//* Firing *//
 
