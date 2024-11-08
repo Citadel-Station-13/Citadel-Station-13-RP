@@ -3527,10 +3527,6 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/rnd/robotics/smallcraft)
 "eyl" = (
-/obj/machinery/button/windowtint{
-	id = "bridge_interior";
-	pixel_y = -26
-	},
 /obj/machinery/light/no_nightshift,
 /obj/effect/floor_decal/corner/navgold{
 	dir = 9

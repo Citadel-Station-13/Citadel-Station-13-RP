@@ -2555,11 +2555,22 @@
 /turf/simulated/floor/tiled,
 /area/medical/medbay4)
 "bLe" = (
-/obj/effect/floor_decal/spline/fancy{
-	dir = 10
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 1
 	},
-/turf/simulated/floor/carpet/bcarpet,
-/area/endeavour/hallway/d2afthall)
+/obj/effect/floor_decal/corner/navblue/border{
+	dir = 1
+	},
+/obj/machinery/button/remote/blast_door{
+	id = "mechbay";
+	name = "Mech Bay Access";
+	pixel_x = -32;
+	pixel_y = 27;
+	req_access = list(29,47);
+	req_one_access = list(47)
+	},
+/turf/simulated/floor/tiled,
+/area/endeavour/hallway/d2portafthall)
 "bMe" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -4994,6 +5005,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 10
 	},
+/obj/machinery/air_alarm{
+	pixel_y = 22
+	},
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d2portafthall)
 "dqm" = (
@@ -6162,9 +6176,6 @@
 "ebF" = (
 /obj/structure/table/bench/padded,
 /obj/machinery/light/small{
-	dir = 4
-	},
-/obj/effect/floor_decal/spline/fancy{
 	dir = 4
 	},
 /turf/simulated/floor/carpet/bcarpet,
@@ -7542,9 +7553,6 @@
 "eXh" = (
 /obj/machinery/light{
 	dir = 1
-	},
-/obj/machinery/air_alarm{
-	pixel_y = 22
 	},
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
@@ -13396,13 +13404,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/rnd/workshop)
-"iKn" = (
-/obj/machinery/camera/network/civilian{
-	dir = 8
-	},
-/obj/structure/closet/lasertag/blue,
-/turf/simulated/floor/tiled,
-/area/holodeck_control)
 "iKN" = (
 /obj/structure/window/reinforced{
 	dir = 1
@@ -13647,7 +13648,7 @@
 	pixel_x = -26
 	},
 /turf/simulated/floor/tiled/steel_grid,
-/area/space)
+/area/endeavour/hallway/d2portafthall)
 "iUD" = (
 /obj/structure/closet/secure_closet/RD,
 /obj/item/aicard,
@@ -13797,9 +13798,6 @@
 "jak" = (
 /obj/machinery/computer/arcade/clawmachine,
 /obj/machinery/light/small{
-	dir = 1
-	},
-/obj/effect/floor_decal/spline/fancy{
 	dir = 1
 	},
 /turf/simulated/floor/carpet/bcarpet,
@@ -15075,9 +15073,6 @@
 /area/endeavour/hallway/d2afthall)
 "jVj" = (
 /obj/machinery/computer/arcade,
-/obj/effect/floor_decal/spline/fancy{
-	dir = 1
-	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/endeavour/hallway/d2afthall)
 "jVn" = (
@@ -16028,9 +16023,6 @@
 /area/medical/medbay3)
 "kDq" = (
 /obj/machinery/computer/arcade/orion_trail,
-/obj/effect/floor_decal/spline/fancy{
-	dir = 9
-	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/endeavour/hallway/d2afthall)
 "kDA" = (
@@ -18184,9 +18176,6 @@
 /obj/machinery/light/small{
 	dir = 1
 	},
-/obj/effect/floor_decal/spline/fancy{
-	dir = 1
-	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/endeavour/hallway/d2afthall)
 "mcW" = (
@@ -18404,9 +18393,6 @@
 /area/medical/medbay_primary_storage)
 "mnH" = (
 /obj/machinery/computer/arcade/clawmachine,
-/obj/effect/floor_decal/spline/fancy{
-	dir = 5
-	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/endeavour/hallway/d2afthall)
 "mnP" = (
@@ -19144,6 +19130,7 @@
 /obj/machinery/light{
 	dir = 4
 	},
+/obj/structure/closet/lasertag/blue,
 /turf/simulated/floor/tiled,
 /area/holodeck_control)
 "mKL" = (
@@ -22588,9 +22575,6 @@
 "oXr" = (
 /obj/structure/table/bench/padded,
 /obj/machinery/light/small{
-	dir = 8
-	},
-/obj/effect/floor_decal/spline/fancy{
 	dir = 8
 	},
 /turf/simulated/floor/carpet/bcarpet,
@@ -28745,9 +28729,6 @@
 /area/medical/psych_ward)
 "sNK" = (
 /obj/machinery/computer/arcade/battle,
-/obj/effect/floor_decal/spline/fancy{
-	dir = 1
-	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/endeavour/hallway/d2afthall)
 "sNN" = (
@@ -28998,12 +28979,6 @@
 /obj/effect/floor_decal/industrial/outline/blue,
 /turf/simulated/floor/tiled/white,
 /area/medical/medbay3)
-"sVb" = (
-/obj/structure/cable/green{
-	icon_state = "4-8"
-	},
-/turf/simulated/floor/plating,
-/area/maintenance/research)
 "sVt" = (
 /obj/machinery/smartfridge/drying_rack,
 /obj/machinery/camera/network/research{
@@ -35223,7 +35198,7 @@
 	name = "Research Hall Shutters"
 	},
 /turf/simulated/floor/tiled,
-/area/space)
+/area/endeavour/hallway/d2portafthall)
 "xcx" = (
 /obj/structure/closet/secure_closet/medical2,
 /obj/effect/floor_decal/corner/paleblue{
@@ -36165,6 +36140,9 @@
 /area/rnd/anomaly_lab/containment_one)
 "xID" = (
 /obj/structure/closet/lasertag/red,
+/obj/machinery/camera/network/civilian{
+	dir = 8
+	},
 /turf/simulated/floor/tiled,
 /area/holodeck_control)
 "xIG" = (
@@ -41298,7 +41276,7 @@ bzY
 bzY
 bzY
 bzY
-lBS
+tFT
 piJ
 qpq
 qpq
@@ -44216,7 +44194,7 @@ tvV
 oaU
 kDq
 oXr
-bLe
+orL
 dYX
 gAf
 buM
@@ -48065,7 +48043,7 @@ xIf
 ppB
 xIf
 dgT
-sVb
+jdA
 xIf
 xIf
 ppB
@@ -52935,7 +52913,7 @@ sWT
 hfZ
 gBW
 gVf
-qjz
+bLe
 ltx
 xQA
 oDd
@@ -64957,7 +64935,7 @@ xIf
 xIf
 tcy
 wMp
-iKn
+wMp
 xID
 mKr
 nnJ

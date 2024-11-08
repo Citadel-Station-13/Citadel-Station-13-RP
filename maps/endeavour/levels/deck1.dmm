@@ -1337,6 +1337,12 @@
 /obj/machinery/door/firedoor{
 	dir = 8
 	},
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/navgold/border{
+	dir = 4
+	},
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d1starboardforhall)
 "baf" = (
@@ -2990,15 +2996,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/exploration)
-"czd" = (
-/obj/machinery/media/jukebox{
-	icon_state = "superjuke-nopower";
-	state_base = "superjuke";
-	pixel_x = -30;
-	pixel_y = 33
-	},
-/turf/simulated/floor/plating,
-/area/endeavour/hallway/d1aftmaint)
 "czv" = (
 /obj/machinery/camera/network/exploration{
 	dir = 1
@@ -9085,9 +9082,7 @@
 /turf/simulated/floor/plating,
 /area/endeavour/exploration/hallway_aft)
 "hgJ" = (
-/obj/machinery/door/airlock{
-	name = "Unisex Showers"
-	},
+/obj/machinery/door/airlock/maintenance/common,
 /obj/machinery/door/firedoor{
 	dir = 1
 	},
@@ -9122,6 +9117,9 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/cable/green{
+	icon_state = "2-8"
+	},
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d1portforhall)
 "hhy" = (
@@ -13085,6 +13083,12 @@
 /obj/structure/cable/orange{
 	icon_state = "1-2"
 	},
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/navblue/border{
+	dir = 4
+	},
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d1portforhall)
 "khT" = (
@@ -13926,15 +13930,6 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d1starboardamidhall)
-"kPW" = (
-/obj/machinery/door/airlock{
-	name = "Restroom"
-	},
-/obj/machinery/door/firedoor,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/turf/simulated/floor/tiled/white,
-/area/endeavour/hallway/d1aftmaint)
 "kQS" = (
 /obj/structure/table/bench,
 /turf/simulated/floor/plating,
@@ -15606,6 +15601,12 @@
 /obj/structure/cable/orange{
 	icon_state = "1-2"
 	},
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/navblue/border{
+	dir = 4
+	},
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d1portforhall)
 "moK" = (
@@ -16480,6 +16481,9 @@
 /obj/machinery/holopad,
 /obj/structure/cable/orange{
 	icon_state = "1-2"
+	},
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 4
 	},
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d1portforhall)
@@ -18288,6 +18292,12 @@
 "orE" = (
 /obj/structure/cable/orange{
 	icon_state = "1-2"
+	},
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/navgold/border{
+	dir = 4
 	},
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d1starboardforhall)
@@ -20258,11 +20268,12 @@
 /turf/simulated/floor/tiled/old_tile/green,
 /area/shuttle/civvie/cockpit)
 "qii" = (
-/obj/structure/loot_pile/surface/medicine_cabinet{
-	pixel_y = 24
+/obj/machinery/media/jukebox{
+	icon_state = "superjuke-nopower";
+	state_base = "superjuke"
 	},
-/turf/simulated/floor/tiled/monowhite,
-/area/endeavour/hallway/d1fwdmaint)
+/turf/simulated/floor/plating,
+/area/endeavour/hallway/d1aftmaint)
 "qik" = (
 /obj/machinery/atmospherics/portables_connector{
 	dir = 4
@@ -22262,12 +22273,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/wood,
 /area/endeavour/surfacebase/sauna)
-"rZH" = (
-/obj/structure/loot_pile/surface/medicine_cabinet{
-	pixel_y = 24
-	},
-/turf/simulated/floor/plating,
-/area/endeavour/hallway/d1fwdmaint)
 "sae" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 4
@@ -25246,6 +25251,12 @@
 "ush" = (
 /obj/structure/cable/orange{
 	icon_state = "1-8"
+	},
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/navgold/border{
+	dir = 4
 	},
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d1starboardforhall)
@@ -45695,8 +45706,8 @@ uba
 fNJ
 aGI
 wim
-kPR
 wim
+kPR
 kPR
 wim
 wqg
@@ -45889,7 +45900,7 @@ gvN
 lNE
 aGI
 vmX
-czd
+wim
 wim
 wim
 wim
@@ -46276,7 +46287,7 @@ dkX
 bnR
 wDq
 etS
-wim
+qii
 wim
 wim
 ibx
@@ -47053,7 +47064,7 @@ xji
 meE
 iPk
 iSA
-kPW
+ayL
 wim
 gPV
 wim
@@ -57147,7 +57158,7 @@ ris
 maa
 byt
 oVo
-rZH
+maa
 maa
 qsz
 bpw
@@ -57341,7 +57352,7 @@ ris
 kfn
 byt
 oVo
-qii
+kBk
 kBk
 buo
 bpw
