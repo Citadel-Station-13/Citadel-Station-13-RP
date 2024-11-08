@@ -15,6 +15,13 @@
 			"name": "Launch DreamSeeker",
 			"preLaunchTask": "Build All",
 			"dmb": "${workspaceFolder}/${command:CurrentDMB}"
+		},
+		{
+			"type": "opendream",
+			"request": "launch",
+			"name": "OpenDream",
+			"preLaunchTask": "OpenDream: compile ${command:CurrentDME}",
+			"json_path": "${workspaceFolder}/${command:CurrentJson}"
 		}
 	]
 }

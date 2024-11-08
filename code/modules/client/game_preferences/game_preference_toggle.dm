@@ -38,7 +38,7 @@
 	abstract_type = /datum/game_preference_toggle/admin
 	category = "Admin"
 
-/datum/game_preference_toggle/admin/is_visible(client/user, silent)
+/datum/game_preference_toggle/admin/is_visible(client/user)
 	return check_rights(C = user, show_msg = FALSE)
 
 /datum/game_preference_toggle/admin/global_looc

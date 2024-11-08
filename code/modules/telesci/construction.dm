@@ -34,19 +34,19 @@
 
 // The Designs
 
-/datum/design/circuit/telesci_console
+/datum/prototype/design/circuit/telesci_console
 	name = "Telepad Control Console"
 	id = "telesci_console"
 	req_tech = list(TECH_DATA = 3, TECH_BLUESPACE = 3, TECH_PHORON = 4)
 	build_path = /obj/item/circuitboard/telesci_console
 
-/datum/design/circuit/telesci_pad
+/datum/prototype/design/circuit/telesci_pad
 	name = "Telepad"
 	id = "telesci_pad"
 	req_tech = list(TECH_DATA = 4, TECH_ENGINEERING = 4, TECH_PHORON = 4, TECH_BLUESPACE = 5)
 	build_path = /obj/item/circuitboard/telesci_pad
 
-/datum/design/science/bluespace_crystal
+/datum/prototype/design/science/bluespace_crystal
 	name = "Artificial Bluespace Crystal"
 	id = "bluespace_crystal"
 	req_tech = list(TECH_BLUESPACE = 3, TECH_PHORON = 4)

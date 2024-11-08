@@ -9,6 +9,7 @@
 	attack_edge = TRUE
 	attacktext = list("slashed")
 	attack_sound = 'sound/weapons/bladeslice.ogg'
+	meat_type = /obj/item/reagent_containers/food/snacks/xenomeat
 
 /mob/living/simple_mob/animal/space/xenomorph/breaker/death()
 	..()

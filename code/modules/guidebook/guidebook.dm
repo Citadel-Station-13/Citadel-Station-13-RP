@@ -38,7 +38,7 @@ GLOBAL_DATUM_INIT(guidebook, /datum/guidebook, new)
 	// preprocess sections & inject
 	for(var/datum/prototype/guidebook_section/section as anything in sections)
 		if(!istype(section))
-			section = RCguidebook.fetch(section)
+			section = RSguidebook.fetch(section)
 			if(!istype(section))
 				CRASH("invalid section, aborting")
 		fetched += section

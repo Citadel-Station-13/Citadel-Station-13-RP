@@ -18,10 +18,7 @@
 	var/spawn_blob_type = /obj/structure/blob/core/random_medium
 
 /datum/gm_action/blob/set_up()
-	severity = pickweight(EVENT_LEVEL_MUNDANE = 4,
-		EVENT_LEVEL_MODERATE = 2,
-		EVENT_LEVEL_MAJOR = 1
-		)
+	severity = pick_weight(mundande_weight = 4, moderate_weight = 2, major_weight = 1)
 
 	var/list/area/grand_list_of_areas = get_station_areas(excluded)
 

@@ -43,7 +43,6 @@
 
 /obj/machinery/power/breakerbox/activated/LateInitialize()
 	set_state(1)
-	return ..()
 
 /obj/machinery/power/breakerbox/examine(mob/user, dist)
 	. = ..()

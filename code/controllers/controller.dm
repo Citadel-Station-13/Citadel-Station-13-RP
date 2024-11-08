@@ -12,9 +12,14 @@
 	var/obj/effect/statclick/statclick
 
 	/// debug/verbose logging?
+	//  todo: kil
 	var/verbose_logging = FALSE
 
-
+/**
+ * Called to initialize a controller.
+ *
+ * This should not be called by the controller's New(), rather it is generally called by whatever made the controller.
+ */
 /datum/controller/proc/Initialize()
 	return
 

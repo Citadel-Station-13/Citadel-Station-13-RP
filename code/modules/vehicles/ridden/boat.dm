@@ -10,7 +10,7 @@
 	icon_y_dimension = 32
 	buckle_max_mobs = 2
 	riding_handler_type = /datum/component/riding_handler/vehicle/boat/small
-	var/datum/material/material = null
+	var/datum/prototype/material/material = null
 
 /obj/vehicle/ridden/boat/Initialize(mapload, material_name)
 	. = ..()
@@ -70,7 +70,7 @@
 	icon_state = "oar"
 	item_state = "oar"
 	damage_force = 12
-	var/datum/material/material = null
+	var/datum/prototype/material/material = null
 
 /obj/item/oar/sifwood/Initialize(mapload, material_name)
 	return ..(mapload, MAT_SIFWOOD)

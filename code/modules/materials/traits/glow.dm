@@ -11,10 +11,11 @@
  * todo: this currently ignores sensitivity & significance. this is probably a good thing due to how badly light stacking can get.
  * todo: lohikar said to just let lightning engine do blending; we'll see but i want to avoid too many virtual lighting objects if people get insane with the glow materials.
  */
-/datum/material_trait/glow
+/datum/prototype/material_trait/glow
+	id = "glow"
 	primary_only = TRUE
 
-/datum/material_trait/glow/on_add(atom/host, existing_data, our_data)
+/datum/prototype/material_trait/glow/on_add(atom/host, existing_data, our_data)
 	. = ..()
 	var/atom/movable/render/material_glow/renderer
 	if(isnull(existing_data))
@@ -24,7 +25,7 @@
 		renderer = locate() in host.contents
 	renderer.set_light(our_data["power"], our_data["range"], our_data["color"])
 
-/datum/material_trait/glow/on_remove(atom/host, existing_data, our_data, destroying)
+/datum/prototype/material_trait/glow/on_remove(atom/host, existing_data, our_data, destroying)
 	. = ..()
 	qdel(locate(/atom/movable/render/material_glow) in host.contents)
 
