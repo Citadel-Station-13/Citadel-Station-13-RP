@@ -1382,9 +1382,6 @@
 /turf/simulated/floor/carpet,
 /area/bridge/office)
 "bbP" = (
-/obj/structure/railing{
-	dir = 8
-	},
 /obj/effect/floor_decal/borderfloor{
 	dir = 5
 	},
@@ -1846,6 +1843,15 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/hallway/secondary/docking_hallway2)
+"bxh" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/mauve/border{
+	dir = 8
+	},
+/turf/simulated/open,
+/area/endeavour/exploration/hallway_fore)
 "bxv" = (
 /obj/structure/table/woodentable,
 /turf/simulated/floor/wood,
@@ -6746,6 +6752,7 @@
 /obj/effect/floor_decal/corner/black/full{
 	dir = 1
 	},
+/obj/structure/table/marble,
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/lounge/kitchen_freezer)
 "fta" = (
@@ -7046,14 +7053,14 @@
 /turf/simulated/floor/wood,
 /area/library)
 "fDY" = (
-/obj/structure/railing{
-	dir = 8
-	},
 /obj/effect/floor_decal/borderfloor{
 	dir = 4
 	},
 /obj/effect/floor_decal/corner/mauve/border{
 	dir = 4
+	},
+/obj/structure/railing{
+	dir = 8
 	},
 /turf/simulated/floor/tiled,
 /area/endeavour/exploration/hallway_fore)
@@ -7744,6 +7751,7 @@
 /obj/effect/floor_decal/corner/black/full{
 	dir = 1
 	},
+/obj/structure/table/marble,
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/lounge/kitchen_freezer)
 "geF" = (
@@ -8161,17 +8169,15 @@
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d1afthall)
 "gtI" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
+/obj/effect/floor_decal/borderfloor{
+	dir = 8
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
+/obj/effect/floor_decal/corner/mauve/border{
+	dir = 8
 	},
-/obj/effect/floor_decal/steeldecal/steel_decals8{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/steel,
-/area/endeavour/hallway/d1portforhall)
+/obj/structure/railing,
+/turf/simulated/floor/tiled,
+/area/endeavour/exploration/hallway_fore)
 "gud" = (
 /obj/machinery/door/firedoor,
 /turf/simulated/wall/r_wall/prepainted/exploration,
@@ -9288,6 +9294,7 @@
 /obj/effect/floor_decal/corner/black/full{
 	dir = 1
 	},
+/obj/structure/table/marble,
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/lounge/kitchen_freezer)
 "hpL" = (
@@ -12027,6 +12034,13 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/hallway/secondary/docking_hallway)
+"jvO" = (
+/obj/effect/floor_decal/corner/black/full{
+	dir = 1
+	},
+/obj/structure/table/marble,
+/turf/simulated/floor/tiled/white,
+/area/crew_quarters/lounge/kitchen_freezer)
 "jvT" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 8
@@ -23828,7 +23842,13 @@
 /turf/simulated/floor/tiled/steel,
 /area/hallway/secondary/docking_hallway)
 "tsv" = (
-/turf/simulated/open,
+/obj/effect/floor_decal/borderfloor{
+	dir = 9
+	},
+/obj/effect/floor_decal/corner/mauve/border{
+	dir = 9
+	},
+/turf/simulated/floor/tiled,
 /area/endeavour/exploration/hallway_fore)
 "tsT" = (
 /obj/structure/extinguisher_cabinet{
@@ -43168,13 +43188,13 @@ usG
 sjU
 sjU
 tsv
-tsv
+opm
 opm
 iJn
 opm
-opm
-opm
-opm
+gtI
+bxh
+bxh
 iJn
 khD
 qfI
@@ -43200,7 +43220,7 @@ sjt
 wim
 aNK
 uqH
-gtI
+dth
 wNy
 piy
 puC
@@ -43362,13 +43382,13 @@ usY
 sjU
 sjU
 bbP
-fDY
+tfh
 oBL
 tfh
 tfh
 tfh
-tfh
-tfh
+fDY
+fDY
 oBL
 mZn
 nPK
@@ -50952,7 +50972,7 @@ wim
 gPV
 eca
 fZy
-muT
+jvO
 muT
 muT
 muT
