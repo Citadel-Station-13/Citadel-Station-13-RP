@@ -2,8 +2,184 @@
 "a" = (
 /turf/simulated/floor/fey/forest_grass,
 /area/space)
+"b" = (
+/obj/machinery/gateway{
+	dir = 4
+	},
+/obj/effect/floor_decal/industrial/warning{
+	dir = 4
+	},
+/turf/simulated/floor/reinforced,
+/area/space)
+"f" = (
+/turf/simulated/wall/r_wall/prepainted,
+/area/space)
+"g" = (
+/turf/simulated/floor/reinforced,
+/area/space)
+"o" = (
+/obj/effect/floor_decal/industrial/warning,
+/turf/simulated/floor/reinforced,
+/area/space)
+"r" = (
+/obj/machinery/porta_turret/crescent{
+	density = 1
+	},
+/obj/machinery/light/spot{
+	dir = 1
+	},
+/obj/structure/window/reinforced/survival_pod{
+	dir = 4
+	},
+/obj/structure/window/reinforced/survival_pod,
+/obj/structure/window/reinforced/survival_pod{
+	dir = 9
+	},
+/turf/simulated/floor/reinforced,
+/area/space)
+"s" = (
+/obj/machinery/gateway{
+	dir = 9
+	},
+/obj/effect/floor_decal/industrial/warning{
+	dir = 9
+	},
+/turf/simulated/floor/reinforced,
+/area/space)
+"t" = (
+/obj/machinery/gateway,
+/turf/simulated/floor/reinforced,
+/area/space)
+"u" = (
+/obj/effect/floor_decal/industrial/warning{
+	dir = 5
+	},
+/turf/simulated/floor/reinforced,
+/area/space)
+"v" = (
+/obj/machinery/gateway{
+	dir = 10
+	},
+/obj/effect/floor_decal/industrial/warning{
+	dir = 8
+	},
+/turf/simulated/floor/reinforced,
+/area/space)
+"A" = (
+/obj/effect/floor_decal/industrial/warning{
+	dir = 8
+	},
+/turf/simulated/floor/reinforced,
+/area/space)
+"D" = (
+/obj/machinery/porta_turret/crescent{
+	density = 1
+	},
+/obj/machinery/light/spot,
+/obj/structure/window/reinforced/survival_pod{
+	dir = 4
+	},
+/obj/structure/window/reinforced/survival_pod{
+	dir = 1
+	},
+/obj/structure/window/reinforced/survival_pod{
+	dir = 10
+	},
+/turf/simulated/floor/reinforced,
+/area/space)
+"F" = (
+/obj/machinery/door/airlock/highsecurity{
+	req_one_access = null;
+	name = "Gateway Access"
+	},
+/turf/simulated/floor/reinforced,
+/area/space)
+"H" = (
+/obj/machinery/gateway{
+	dir = 8
+	},
+/obj/effect/floor_decal/industrial/warning{
+	dir = 8
+	},
+/turf/simulated/floor/reinforced,
+/area/space)
 "I" = (
 /turf/simulated/wall/fey/forest_wall,
+/area/space)
+"M" = (
+/obj/machinery/gateway/centeraway,
+/turf/simulated/floor/reinforced,
+/area/space)
+"N" = (
+/obj/machinery/porta_turret/crescent{
+	density = 1
+	},
+/obj/machinery/light/spot,
+/obj/structure/window/reinforced/survival_pod{
+	dir = 8
+	},
+/obj/structure/window/reinforced/survival_pod{
+	dir = 1
+	},
+/obj/structure/window/reinforced/survival_pod{
+	dir = 6
+	},
+/turf/simulated/floor/reinforced,
+/area/space)
+"O" = (
+/obj/machinery/gateway{
+	dir = 5
+	},
+/obj/effect/floor_decal/industrial/warning{
+	dir = 5
+	},
+/turf/simulated/floor/reinforced,
+/area/space)
+"S" = (
+/obj/machinery/gateway{
+	dir = 6
+	},
+/obj/effect/floor_decal/industrial/warning{
+	dir = 4
+	},
+/turf/simulated/floor/reinforced,
+/area/space)
+"T" = (
+/obj/machinery/porta_turret/crescent{
+	density = 1
+	},
+/obj/machinery/light/spot{
+	dir = 1
+	},
+/obj/structure/window/reinforced/survival_pod{
+	dir = 8
+	},
+/obj/structure/window/reinforced/survival_pod,
+/obj/structure/window/reinforced/survival_pod{
+	dir = 5
+	},
+/turf/simulated/floor/reinforced,
+/area/space)
+"U" = (
+/obj/machinery/gateway{
+	dir = 1
+	},
+/obj/effect/floor_decal/industrial/warning{
+	dir = 1
+	},
+/turf/simulated/floor/reinforced,
+/area/space)
+"V" = (
+/obj/effect/floor_decal/industrial/warning{
+	dir = 4
+	},
+/turf/simulated/floor/reinforced,
+/area/space)
+"Y" = (
+/obj/effect/floor_decal/industrial/warning{
+	dir = 9
+	},
+/turf/simulated/floor/reinforced,
 /area/space)
 
 (1,1,1) = {"
@@ -17467,14 +17643,14 @@ a
 I
 "}
 (91,1,1) = {"
-I
-a
-a
-a
-a
-a
-a
-a
+f
+f
+f
+f
+f
+f
+f
+f
 a
 a
 a
@@ -17661,14 +17837,14 @@ a
 I
 "}
 (92,1,1) = {"
-I
-a
-a
-a
-a
-a
-a
-a
+f
+r
+g
+g
+g
+g
+D
+f
 a
 a
 a
@@ -17855,15 +18031,15 @@ a
 I
 "}
 (93,1,1) = {"
-I
-a
-a
-a
-a
-a
-a
-a
-a
+f
+g
+g
+o
+Y
+A
+A
+f
+f
 a
 a
 a
@@ -18049,16 +18225,16 @@ a
 I
 "}
 (94,1,1) = {"
-I
-a
-a
-a
-a
-a
-a
-a
-a
-a
+f
+g
+g
+o
+g
+g
+g
+g
+f
+f
 a
 a
 a
@@ -18243,16 +18419,16 @@ a
 I
 "}
 (95,1,1) = {"
-I
-a
-a
-a
-a
-a
-a
-a
-a
-a
+f
+s
+H
+v
+g
+g
+g
+g
+g
+F
 a
 a
 a
@@ -18437,16 +18613,16 @@ a
 I
 "}
 (96,1,1) = {"
-I
-a
-a
-a
-a
-a
-a
-a
-a
-a
+f
+U
+M
+t
+g
+g
+g
+g
+g
+f
 a
 a
 a
@@ -18631,16 +18807,16 @@ a
 I
 "}
 (97,1,1) = {"
-I
-a
-a
-a
-a
-a
-a
-a
-a
-a
+f
+O
+b
+S
+g
+g
+g
+g
+g
+F
 a
 a
 a
@@ -18825,16 +19001,16 @@ a
 I
 "}
 (98,1,1) = {"
-I
-a
-a
-a
-a
-a
-a
-a
-a
-a
+f
+g
+g
+o
+g
+g
+g
+g
+f
+f
 a
 a
 a
@@ -19019,15 +19195,15 @@ a
 I
 "}
 (99,1,1) = {"
-I
-a
-a
-a
-a
-a
-a
-a
-a
+f
+g
+g
+o
+u
+V
+V
+f
+f
 a
 a
 a
@@ -19213,14 +19389,14 @@ a
 I
 "}
 (100,1,1) = {"
-I
-a
-a
-a
-a
-a
-a
-a
+f
+T
+g
+g
+g
+g
+N
+f
 a
 a
 a
@@ -19407,14 +19583,14 @@ a
 I
 "}
 (101,1,1) = {"
-I
-a
-a
-a
-a
-a
-a
-a
+f
+f
+f
+f
+f
+f
+f
+f
 a
 a
 a
@@ -19601,7 +19777,7 @@ a
 I
 "}
 (102,1,1) = {"
-I
+f
 a
 a
 a
