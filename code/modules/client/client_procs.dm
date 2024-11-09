@@ -232,8 +232,10 @@
 		init_cutscene_system()
 	// instantiate tooltips
 	tooltips = new(src)
-	// start action drawer
+	// make action drawer
 	action_drawer = new(src)
+	// make actor HUDs
+	actor_huds = new(src)
 	// make action holder
 	action_holder = new /datum/action_holder/client_actor(src)
 	action_drawer.register_holder(action_holder)

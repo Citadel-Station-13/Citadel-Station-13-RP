@@ -238,8 +238,8 @@ GLOBAL_DATUM_INIT(global_hud, /datum/global_hud, new)
 		//These ones are not a part of 'adding', 'other' or 'hotkeybuttons' but we want them gone.
 		src.client.screen -= src.zone_sel	//zone_sel is a mob variable for some reason.
 
-		inventory.hud.remove_hidden_class(INVENTORY_HUD_CLASS_ALWAYS, INVENTORY_HUD_HIDE_SOURCE_F12)
-		inventory.hud.remove_hidden_class(INVENTORY_HUD_CLASS_DRAWER, INVENTORY_HUD_HIDE_SOURCE_F12)
+		actor_huds.inventory?.remove_hidden_class(INVENTORY_HUD_CLASS_ALWAYS, INVENTORY_HUD_HIDE_SOURCE_F12)
+		actor_huds.inventory?.remove_hidden_class(INVENTORY_HUD_CLASS_DRAWER, INVENTORY_HUD_HIDE_SOURCE_F12)
 
 	else
 		hud_used.hud_shown = 1
@@ -259,8 +259,8 @@ GLOBAL_DATUM_INIT(global_hud, /datum/global_hud, new)
 		src.hud_used.action_intent.screen_loc = ui_acti //Restore intent selection to the original position
 		src.client.screen += src.zone_sel				//This one is a special snowflake
 
-		inventory.hud.add_hidden_class(INVENTORY_HUD_CLASS_ALWAYS, INVENTORY_HUD_HIDE_SOURCE_F12)
-		inventory.hud.add_hidden_class(INVENTORY_HUD_CLASS_DRAWER, INVENTORY_HUD_HIDE_SOURCE_F12)
+		actor_huds.inventory?.add_hidden_class(INVENTORY_HUD_CLASS_ALWAYS, INVENTORY_HUD_HIDE_SOURCE_F12)
+		actor_huds.inventory?.add_hidden_class(INVENTORY_HUD_CLASS_DRAWER, INVENTORY_HUD_HIDE_SOURCE_F12)
 
 //Similar to button_pressed_F12() but keeps zone_sel, gun_setting_icon, and healths.
 /mob/proc/toggle_zoom_hud()
@@ -286,8 +286,8 @@ GLOBAL_DATUM_INIT(global_hud, /datum/global_hud, new)
 		src.client.screen -= src.internals
 		src.client.screen += src.hud_used.action_intent		//we want the intent swticher visible
 
-		inventory.hud.remove_hidden_class(INVENTORY_HUD_CLASS_ALWAYS, INVENTORY_HUD_HIDE_SOURCE_F12)
-		inventory.hud.remove_hidden_class(INVENTORY_HUD_CLASS_DRAWER, INVENTORY_HUD_HIDE_SOURCE_F12)
+		actor_huds.inventory?.remove_hidden_class(INVENTORY_HUD_CLASS_ALWAYS, INVENTORY_HUD_HIDE_SOURCE_F12)
+		actor_huds.inventory?.remove_hidden_class(INVENTORY_HUD_CLASS_DRAWER, INVENTORY_HUD_HIDE_SOURCE_F12)
 	else
 		hud_used.hud_shown = 1
 		if(src.hud_used.adding)
@@ -302,5 +302,5 @@ GLOBAL_DATUM_INIT(global_hud, /datum/global_hud, new)
 			src.client.screen |= src.internals
 		src.hud_used.action_intent.screen_loc = ui_acti //Restore intent selection to the original position
 
-		inventory.hud.add_hidden_class(INVENTORY_HUD_CLASS_ALWAYS, INVENTORY_HUD_HIDE_SOURCE_F12)
-		inventory.hud.add_hidden_class(INVENTORY_HUD_CLASS_DRAWER, INVENTORY_HUD_HIDE_SOURCE_F12)
+		actor_huds.inventory?.add_hidden_class(INVENTORY_HUD_CLASS_ALWAYS, INVENTORY_HUD_HIDE_SOURCE_F12)
+		actor_huds.inventory?.add_hidden_class(INVENTORY_HUD_CLASS_DRAWER, INVENTORY_HUD_HIDE_SOURCE_F12)

@@ -91,10 +91,7 @@
 	login_cutscene()
 	// Make sure blindness fullscreen is applied if needed
 	blindness_handle_reconnect()
-	// load inventory HUD
-	var/datum/mob_hud/inventory/inventory_hud = inventory?.get_hud()
-	inventory_hud?.add_user(client)
-	
+
 	//* legacy
 	// this is below reset_perspective so self perspective generates.
 	recalculate_vis()

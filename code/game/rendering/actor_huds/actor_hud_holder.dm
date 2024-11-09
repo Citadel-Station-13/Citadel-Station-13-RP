@@ -33,4 +33,35 @@
 /datum/actor_hud_holder/proc/bind_all_to_mob(mob/target)
 	inventory.bind_to_mob(target)
 
+/**
+ * get all screens
+ */
+/datum/actor_hud_holder/proc/screens()
+	. = list()
+	for(var/datum/actor_hud/hud as anything in all_huds())
+		. += hud.screens()
+
+/**
+ * get all screens
+ */
+/datum/actor_hud_holder/proc/images()
+	. = list()
+	for(var/datum/actor_hud/hud as anything in all_huds())
+		. += hud.images()
+
+/**
+ * get all huds
+ */
+/datum/actor_hud_holder/proc/all_huds()
+	return list(
+		inventory,
+	)
+
+/**
+ * apply everything to our client
+ */
+/datum/actor_hud_holder/proc/reassert_onto_owner()
+	owner.images |= images()
+	owner.screens |= screens()
+
 #warn impl

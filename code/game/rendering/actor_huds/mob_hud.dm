@@ -30,20 +30,6 @@
 /datum/mob_hud/New(mob/owner)
 	src.owner = owner
 
-/datum/mob_hud/proc/screens()
-	return list()
-
-/datum/mob_hud/proc/images()
-	return list()
-
-/datum/mob_hud/proc/add_user(client/C)
-	LAZYADD(using, C)
-	apply_client(C)
-
-/datum/mob_hud/proc/remove_user(client/C)
-	LAZYREMOVE(using, C)
-	unapply_client(C)
-
 /datum/mob_hud/proc/sync_client(client/C)
 	if(!C)
 		hud_style = GLOB.hud_styles[/datum/hud_style/midnight::id]
@@ -65,31 +51,3 @@
 /datum/mob_hud/proc/unapply_client(client/C)
 	C.screen -= screens()
 	C.images -= images()
-
-/**
- * * arg can be a list or a single object
- */
-/datum/mob_hud/proc/add_screen(atom/movable/what)
-	for(var/client/C as anything in using)
-		C.screen += what
-
-/**
- * * arg can be a list or a single object
- */
-/datum/mob_hud/proc/remove_screen(atom/movable/what)
-	for(var/client/C as anything in using)
-		C.screen -= what
-
-/**
- * * arg can be a list or a single object
- */
-/datum/mob_hud/proc/add_image(image/what)
-	for(var/client/C as anything in using)
-		C.images += what
-
-/**
- * * arg can be a list or a single object
- */
-/datum/mob_hud/proc/remove_image(image/what)
-	for(var/client/C as anything in using)
-		C.images -= what
