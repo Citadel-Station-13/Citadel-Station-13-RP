@@ -1675,7 +1675,7 @@
 /obj/effect/floor_decal/industrial/outline/grey,
 /obj/structure/ship_munition/disperser_charge/mining,
 /turf/simulated/floor/tiled/dark,
-/area/endeavour/hallway/d1aftmaint)
+/area/exploration/courser_dock)
 "bog" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -5368,7 +5368,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/dark,
-/area/endeavour/hallway/d1aftmaint)
+/area/exploration/courser_dock)
 "evE" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
@@ -7597,7 +7597,7 @@
 /obj/effect/floor_decal/industrial/outline/grey,
 /obj/structure/ship_munition/disperser_charge/mining,
 /turf/simulated/floor/tiled/dark,
-/area/endeavour/hallway/d1aftmaint)
+/area/exploration/courser_dock)
 "fYf" = (
 /obj/structure/table/reinforced,
 /obj/item/clothing/ears/earmuffs,
@@ -28210,7 +28210,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/dark,
-/area/endeavour/hallway/d1aftmaint)
+/area/exploration/courser_dock)
 "wDH" = (
 /obj/machinery/camera/network/command{
 	dir = 4
@@ -46112,7 +46112,7 @@ maq
 aGI
 sPS
 ntW
-etS
+aGI
 kPR
 wim
 wim
@@ -46303,10 +46303,10 @@ bdl
 bdl
 bdl
 qjN
-dkX
+aGI
 bnR
 wDq
-etS
+aGI
 qii
 wim
 wim
@@ -46497,10 +46497,10 @@ bdl
 bdl
 bdl
 bdl
-dkX
+aGI
 fXR
 evs
-etS
+aGI
 wim
 wim
 jLe
@@ -46691,10 +46691,10 @@ bdl
 bdl
 bdl
 bdl
-dkX
-etS
-etS
-etS
+aGI
+aGI
+aGI
+aGI
 wim
 wim
 wim
@@ -46885,7 +46885,7 @@ bdl
 bdl
 bdl
 czv
-dkX
+aGI
 ayL
 ayL
 ayL
@@ -47079,7 +47079,7 @@ bdl
 bdl
 bdl
 bdl
-dkX
+aGI
 xji
 meE
 iPk
@@ -47273,7 +47273,7 @@ bdl
 bdl
 bdl
 bdl
-dkX
+aGI
 iPk
 iPk
 iPk
@@ -47467,7 +47467,7 @@ bdl
 bdl
 bdl
 qjN
-dkX
+aGI
 ulX
 idJ
 iSA
@@ -47661,7 +47661,7 @@ bdl
 bdl
 bdl
 bdl
-dkX
+aGI
 bVV
 hUY
 nqx
@@ -47855,7 +47855,7 @@ bdl
 bdl
 bdl
 bdl
-dkX
+aGI
 ayL
 ayL
 ayL

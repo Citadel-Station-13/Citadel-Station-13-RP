@@ -3724,10 +3724,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d2portforhall)
-"cvA" = (
-/obj/item/barrier_tape_segment/engineering,
-/turf/simulated/floor/tiled/dark,
-/area/station/stairs_two)
 "cvB" = (
 /obj/effect/floor_decal/corner_techfloor_grid{
 	dir = 5
@@ -67938,7 +67934,7 @@ dot
 pic
 vhp
 pic
-cvA
+wKp
 nzx
 nzx
 xGm
@@ -67948,7 +67944,7 @@ xry
 xGm
 nzx
 nzx
-cvA
+wKp
 pic
 oCg
 pic
@@ -68132,7 +68128,7 @@ dot
 jMN
 nAh
 bIw
-cvA
+wKp
 nzx
 nzx
 xGm
@@ -68142,7 +68138,7 @@ dXk
 xGm
 nzx
 nzx
-cvA
+wKp
 jMN
 ryl
 bIw
