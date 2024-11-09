@@ -29,14 +29,21 @@
 	/// equip object
 	var/atom/movable/screen/inventory/equip_hand/button_equip_hand
 
-/datum/actor_hud/inventory/bind_to_mob(mob/target)
-	. = ..()
-
-
 /datum/actor_hud/inventory/Destroy()
 	host = null
 	cleanup()
 	return ..()
+
+/datum/actor_hud/inventory/bind_to_mob(mob/target)
+	. = ..()
+
+/datum/actor_hud/inventory/proc/bind_to_inventory(datum/inventory/inventory)
+	host = inventory
+	rebuild(inventory.build_inventory_slots_with_remappings(), length(inventory.held_items))
+
+/datum/actor_hud/inventory/proc/unbind_to_inventory(datum/inventory/inventory)
+	cleanup()
+	host = null
 
 /datum/actor_hud/inventory/screens()
 	. = ..()
@@ -235,7 +242,11 @@
 /atom/movable/screen/inventory/Initialize(mapload, datum/actor_hud/inventory/hud)
 	. = ..()
 	src.hud = hud
-	sync_style(hud.hud_style)
+	sync_style(hud.holder.owner?.legacy_get_hud_preferences())
+
+/atom/movable/screen/inventory/Destroy()
+	hud = null
+	return ..()
 
 /atom/movable/screen/inventory/check_allowed(mob/user)
 	return ..() && hud.owner == user
@@ -243,6 +254,9 @@
 /atom/movable/screen/inventory/on_click(mob/user, list/params)
 	var/obj/item/held = user.get_active_held_item()
 	handle_inventory_click(user, held)
+
+/atom/movable/screen/inventory/sync_to_preferences(datum/hud_preferences/preference_set)
+	sync_style(preference_set.hud_style, preference_set.hud_color, preference_set.hud_alpha)
 
 /atom/movable/screen/inventory/sync_style(datum/hud_style/style, style_alpha, style_color)
 	alpha = style_alpha

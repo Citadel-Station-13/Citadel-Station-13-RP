@@ -13,6 +13,8 @@
  */
 /datum/inventory/proc/on_item_entered(obj/item/item, datum/inventory_slot/slot_or_index)
 	SEND_SIGNAL(src, COMSIG_INVENTORY_ITEM_ENTERED_SLOT, slot_or_index)
+	for(var/datum/actor_hud/inventory/hud in huds_using)
+		hud.add_item(item, slot_or_index)
 
 /**
  * Should be called when an item is removed from inventory.
@@ -24,6 +26,8 @@
  */
 /datum/inventory/proc/on_item_exited(obj/item/item, datum/inventory_slot/slot_or_index)
 	SEND_SIGNAL(src, COMSIG_INVENTORY_ITEM_EXITED_SLOT, slot_or_index)
+	for(var/datum/actor_hud/inventory/hud in huds_using)
+		hud.remove_item(item, slot_or_index)
 
 /**
  * Should be called when an item is moved from one slot to another.
@@ -41,6 +45,8 @@
 /datum/inventory/proc/on_item_swapped(obj/item/item, datum/inventory_slot/from_slot_or_index, datum/inventory_slot/to_slot_or_index)
 	SEND_SIGNAL(src, COMSIG_INVENTORY_ITEM_EXITED_SLOT, from_slot_or_index)
 	SEND_SIGNAL(src, COMSIG_INVENTORY_ITEM_ENTERED_SLOT, to_slot_or_index)
+	for(var/datum/actor_hud/inventory/hud in huds_using)
+		move_item(item, from_slot_or_index, to_slot_or_index)
 
 /**
  * Should be called when the mob's mobility flags change.

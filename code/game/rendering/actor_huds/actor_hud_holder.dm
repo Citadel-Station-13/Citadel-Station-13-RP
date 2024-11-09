@@ -11,7 +11,7 @@
 	var/client/owner
 
 	/// inventory hud
-	var/datum/actor_hud/inventory
+	var/datum/actor_hud/inventory/inventory
 
 /datum/actor_hud_holder/New(client/C)
 	// set owner
@@ -32,6 +32,12 @@
  */
 /datum/actor_hud_holder/proc/bind_all_to_mob(mob/target)
 	inventory.bind_to_mob(target)
+
+/**
+ * syncs hud preferences
+ */
+/datum/actor_hud_holder/proc/sync_all_to_preferences(datum/hud_preferences/preference_set)
+	inventory?.sync_to_preferences(preference_set)
 
 /**
  * get all screens
@@ -62,6 +68,6 @@
  */
 /datum/actor_hud_holder/proc/reassert_onto_owner()
 	owner.images |= images()
-	owner.screens |= screens()
+	owner.screen |= screens()
 
 #warn impl

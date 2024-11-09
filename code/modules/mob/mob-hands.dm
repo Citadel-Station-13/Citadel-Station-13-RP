@@ -69,8 +69,7 @@
  * sets number of physical hands we should account for potentialy having
  */
 /mob/proc/set_nominal_hand_count(count)
-	LAZYINITLIST(inventory.held_items)
-	inventory.held_items.len = count
+	inventory.set_hand_count(count)
 
 /**
  * Are usable hands all holding items?
@@ -190,7 +189,7 @@
 
 	. = TRUE
 
-	inventory.hud?.swap_active_hand(old_index, to_index)
+	client?.actor_huds?.inventory?.swap_active_hand(old_index, to_index)
 
 	//! LEGACY
 	was_active?.zoom()

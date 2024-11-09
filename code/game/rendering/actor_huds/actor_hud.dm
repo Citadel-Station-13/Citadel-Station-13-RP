@@ -8,6 +8,11 @@
  * * bound to one (1) mob
  * * renders the state of that mob if needed
  * * renders the state of the client's intent / will otherwise
+ *
+ * Add/remove screen/image procs are **stateless**.
+ * `screens()` and `images()` gather everything up.
+ * This is to save some CPU / memory as it's rare to need everything rather
+ * than just 'patch' the client's render.
  */
 /datum/actor_hud
 	/// the mob we're bound to right now
@@ -33,6 +38,13 @@
 	return TRUE
 
 /**
+ * syncs hud
+ */
+/datum/actor_hud/proc/sync_to_preferences(datum/hud_preferences/preference_set)
+	for(var/atom/movable/screen/screen_object in screens())
+		screen_object.sync_to_preferences(preference_set)
+
+/**
  * returns all screens we should apply to a client
  */
 /datum/actor_hud/proc/screens()
@@ -50,7 +62,7 @@
  * * arg can be a list or a single object
  */
 /datum/actor_hud/proc/add_screen(atom/movable/what)
-	owner.screens += what
+	owner.screen += what
 
 /**
  * wrapper; use this instead of directly editing client variables.
@@ -58,7 +70,7 @@
  * * arg can be a list or a single object
  */
 /datum/actor_hud/proc/remove_screen(atom/movable/what)
-	owner.screens -= what
+	owner.screen -= what
 
 /**
  * wrapper; use this instead of directly editing client variables.

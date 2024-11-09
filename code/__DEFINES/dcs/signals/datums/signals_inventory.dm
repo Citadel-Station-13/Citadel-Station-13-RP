@@ -11,3 +11,7 @@
 ///
 /// * raised before COMSIG_INVENTORY_ITEM_ENTERED_SLOT during swaps
 #define COMSIG_INVENTORY_ITEM_EXITED_SLOT "inventory-item-exited-slot"
+/// raised with ()
+///
+/// * raised on any inventory slot mutation
+#define COMSIG_INVENTORY_SLOT_REBUILD "inventory-slot-rebuild"

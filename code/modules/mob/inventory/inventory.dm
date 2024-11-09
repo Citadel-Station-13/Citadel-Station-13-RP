@@ -23,11 +23,9 @@
 	// todo: emissives
 	// var/list/rendered_emissive_overlays = list()
 
-	//* HUD *//
-	/// our hud
-	///
-	/// todo: can we render this per user mob? /datum/remote_control?
-	var/datum/mob_hud/inventory/hud
+	//* HUDs *//
+	/// Actor HUDs using us
+	var/list/datum/actor_hud/inventory/huds_using
 
 	//* Inventory *//
 	/// held items
@@ -56,18 +54,9 @@
 /datum/inventory/Destroy()
 	QDEL_NULL(actions)
 	owner = null
+	for(var/datum/actor_hud/hud/inventory/hud in huds_using)
+		hud.unbind_from_inventory(src)
 	return ..()
-
-//* HUD *//
-
-/**
- * returns our mob inventory
- */
-/datum/inventory/proc/get_hud()
-	RETURN_TYPE(/datum/mob_hud/inventory)
-	if(!hud)
-		hud = new(owner, src)
-	return hud
 
 //* Queries *//
 
@@ -92,7 +81,9 @@
 
 /datum/inventory/proc/set_base_inventory_slots(list/mapped_slots)
 	base_inventory_slots = mapped_slots
-	hud?.rebuild_slots(build_inventory_slots_with_remappings())
+	for(var/datum/actor_hud/inventory/hud in huds_using)
+		hud.rebuild()
+	SEND_SIGNAL(src, COMSIG_INVENTORY_SLOT_REBUILD)
 
 //! unsorted / legacy below
 

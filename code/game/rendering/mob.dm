@@ -49,4 +49,4 @@
 /mob/proc/resync_rendering()
 	if(!client)
 		return
-	inventory?.hud?.sync_client(client)
+	client.actor_huds.sync_all_to_preferences(client.legacy_get_hud_preferences())

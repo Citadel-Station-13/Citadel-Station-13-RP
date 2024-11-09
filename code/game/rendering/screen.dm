@@ -10,7 +10,7 @@
 /**
  * called to resync to a hud_style datum
  */
-/atom/movable/screen/proc/sync_style(datum/hud_style/style, alpha, color)
+/atom/movable/screen/proc/sync_to_preferences(datum/hud_preferences/preference_set)
 	return
 
 /atom/movable/screen/Destroy()
