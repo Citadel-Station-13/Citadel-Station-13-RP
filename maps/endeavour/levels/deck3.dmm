@@ -4643,7 +4643,7 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/dark,
-/area/endeavour/hallway/d3starboardafthall)
+/area/endeavour/station/stairs_three)
 "dGe" = (
 /obj/structure/window/reinforced/tinted{
 	dir = 1
@@ -5046,7 +5046,7 @@
 	icon_state = "2-4"
 	},
 /turf/simulated/floor/tiled/dark,
-/area/endeavour/hallway/d3starboardafthall)
+/area/endeavour/station/stairs_three)
 "dSJ" = (
 /obj/structure/table/marble,
 /obj/item/storage/box/donkpockets,
@@ -7639,7 +7639,8 @@
 	},
 /obj/machinery/light_switch{
 	dir = 4;
-	pixel_x = -24
+	pixel_x = -24;
+	pixel_y = 6
 	},
 /turf/simulated/floor/tiled/dark,
 /area/security/riot_control)
@@ -8262,6 +8263,9 @@
 	},
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 4
+	},
+/obj/structure/cable/green{
+	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d3starboardafthall)
@@ -11281,7 +11285,7 @@
 "iuv" = (
 /obj/machinery/air_alarm/east_mount,
 /turf/simulated/floor/tiled/dark,
-/area/endeavour/hallway/d3starboardafthall)
+/area/endeavour/station/stairs_three)
 "iva" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -14588,7 +14592,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/dark,
-/area/endeavour/hallway/d3starboardafthall)
+/area/endeavour/station/stairs_three)
 "lgj" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -15225,10 +15229,6 @@
 "lDT" = (
 /obj/effect/floor_decal/corner/red{
 	dir = 9
-	},
-/obj/machinery/light_switch{
-	dir = 4;
-	pixel_x = -24
 	},
 /obj/effect/floor_decal/industrial/outline/red,
 /obj/structure/table/rack/shelf/steel,
@@ -17900,8 +17900,11 @@
 /obj/machinery/door/firedoor{
 	dir = 8
 	},
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/tiled/dark,
-/area/endeavour/hallway/d3starboardafthall)
+/area/endeavour/station/stairs_three)
 "nKI" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/item/storage/briefcase/inflatable,
@@ -18030,6 +18033,9 @@
 	},
 /obj/structure/cable/green{
 	icon_state = "2-8"
+	},
+/obj/structure/cable/green{
+	icon_state = "2-4"
 	},
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d3starboardafthall)
@@ -19038,7 +19044,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/dark,
-/area/endeavour/hallway/d3starboardafthall)
+/area/endeavour/station/stairs_three)
 "owH" = (
 /obj/machinery/shower{
 	dir = 4
@@ -21590,7 +21596,7 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/dark,
-/area/endeavour/hallway/d3starboardafthall)
+/area/endeavour/station/stairs_three)
 "qlg" = (
 /turf/simulated/wall/prepainted/cargo,
 /area/quartermaster/foyer)
@@ -23742,8 +23748,11 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/heads/hos)
 "rQK" = (
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/tiled/dark,
-/area/endeavour/hallway/d3starboardafthall)
+/area/endeavour/station/stairs_three)
 "rQZ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -24369,6 +24378,11 @@
 "soV" = (
 /obj/structure/cable/green{
 	icon_state = "1-2"
+	},
+/obj/machinery/light_switch{
+	dir = 4;
+	pixel_x = -24;
+	pixel_y = 6
 	},
 /turf/simulated/floor/tiled/dark,
 /area/security/tactical)
@@ -26225,8 +26239,12 @@
 	dir = 4;
 	use_power = 0
 	},
+/obj/machinery/power/apc/south_mount,
+/obj/structure/cable/green{
+	icon_state = "0-8"
+	},
 /turf/simulated/floor/tiled/dark,
-/area/endeavour/hallway/d3starboardafthall)
+/area/endeavour/station/stairs_three)
 "tJl" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -26616,7 +26634,7 @@
 	icon_state = "1-8"
 	},
 /turf/simulated/floor/tiled/dark,
-/area/endeavour/hallway/d3starboardafthall)
+/area/endeavour/station/stairs_three)
 "tZq" = (
 /obj/structure/bed/chair/office/dark{
 	dir = 1
@@ -37026,7 +37044,7 @@ evH
 evH
 vCx
 qYF
-bQZ
+rcG
 evH
 evH
 evH
@@ -51161,7 +51179,7 @@ eqa
 bDG
 qHq
 pkQ
-rQK
+qHq
 qkV
 rQK
 pkQ
@@ -51355,7 +51373,7 @@ eqa
 bDG
 qHq
 qHq
-rQK
+qHq
 qkV
 rQK
 qHq
@@ -51743,7 +51761,7 @@ eqa
 mmq
 mmq
 qHq
-rQK
+qHq
 qkV
 rQK
 qHq

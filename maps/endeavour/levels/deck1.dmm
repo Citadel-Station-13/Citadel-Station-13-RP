@@ -22837,7 +22837,6 @@
 /area/exploration/explorer_prep)
 "sAo" = (
 /obj/structure/flora/ausbushes/brflowers,
-/obj/structure/flora/tree/sif,
 /obj/structure/cable/orange{
 	icon_state = "4-8"
 	},
@@ -23444,6 +23443,14 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/bridge)
+"tby" = (
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/turf/simulated/floor/lino,
+/area/chapel/office)
 "tbI" = (
 /obj/machinery/computer/ship/engines,
 /obj/machinery/turretid{
@@ -24221,7 +24228,7 @@
 /area/endeavour/surfacebase/tram)
 "tCW" = (
 /obj/structure/flora/ausbushes/brflowers,
-/obj/structure/flora/tree/sif,
+/obj/structure/flora/tree/jungle_small,
 /turf/simulated/floor/grass,
 /area/hydroponics/garden)
 "tCX" = (
@@ -50225,7 +50232,7 @@ mVP
 iFq
 chb
 nkk
-qJO
+tby
 fLT
 xON
 rXx
@@ -50987,11 +50994,11 @@ jVj
 rEd
 vzu
 ofn
-tCW
+hEs
 sAo
 tCW
 tCW
-tCW
+hEs
 nAf
 jLq
 kCB
