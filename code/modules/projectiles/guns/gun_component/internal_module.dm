@@ -44,3 +44,5 @@
 	cycle.firing_iterations++
 	// force current shot dispersion
 	cycle.next_dispersion += dispersion_amount
+
+// todo: integrated electronics framework
