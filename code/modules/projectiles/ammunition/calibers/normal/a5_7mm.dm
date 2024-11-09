@@ -164,6 +164,7 @@
 	icon_state = "p90-1"
 	base_icon_state = "p90"
 	rendering_system = GUN_RENDERING_STATES
+	rendering_count = 1
 	ammo_preload = /obj/item/ammo_casing/a5_7mm/ap
 	ammo_max = 50
 
