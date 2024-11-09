@@ -22262,20 +22262,6 @@
 /obj/effect/floor_decal/spline/fancy/wood,
 /turf/simulated/floor/wood,
 /area/rnd/breakroom)
-"oOU" = (
-/obj/effect/floor_decal/borderfloorwhite,
-/obj/effect/floor_decal/corner/green/border,
-/obj/structure/closet/l3closet/virology,
-/obj/effect/floor_decal/industrial/outline/grey,
-/obj/machinery/embedded_controller/radio/airlock/access_controller{
-	id_tag = "virology_airlock_west";
-	name = "Virology Access Console";
-	tag_exterior_door = "virology_airlock_west_exterior";
-	tag_interior_door = "virology_airlock_west_interior";
-	pixel_y = -24
-	},
-/turf/simulated/floor/tiled/white,
-/area/medical/virology_aft_access)
 "oQx" = (
 /obj/structure/closet/hydrant{
 	pixel_x = -32
@@ -27254,8 +27240,7 @@
 	id_tag = "virology_airlock_west_exterior";
 	locked = 1;
 	name = "Virology Exterior Airlock";
-	req_one_access = null;
-	id = "Vi"
+	req_one_access = null
 	},
 /obj/map_helper/access_helper/airlock/station/medical/virology,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -56344,7 +56329,7 @@ aia
 fDp
 gGs
 dvL
-oOU
+hjX
 uhe
 vUs
 tfb
