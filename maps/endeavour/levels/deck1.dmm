@@ -13322,6 +13322,9 @@
 	},
 /turf/simulated/floor/grass,
 /area/hydroponics/garden)
+"ksV" = (
+/turf/simulated/floor/plating,
+/area/teleporter)
 "ktu" = (
 /obj/machinery/disposal,
 /obj/machinery/light,
@@ -62631,7 +62634,7 @@ vbb
 qRD
 nNn
 svq
-svq
+ksV
 vYC
 dJV
 fgr
@@ -62825,7 +62828,7 @@ qoS
 oCY
 nnq
 svq
-svq
+ksV
 vYC
 qkB
 tmb
@@ -63019,7 +63022,7 @@ sAS
 jty
 nnq
 svq
-svq
+ksV
 vYC
 noe
 scH
@@ -63213,7 +63216,7 @@ svq
 svq
 svq
 svq
-svq
+ksV
 vYC
 vYC
 vYC

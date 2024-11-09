@@ -1598,6 +1598,10 @@
 /obj/effect/floor_decal/industrial/hatch/yellow,
 /turf/simulated/floor/tiled/steel,
 /area/tcommsat/computer)
+"bQQ" = (
+/obj/machinery/camera/network/outside,
+/turf/simulated/floor/tiled,
+/area/endeavour/hallway/d4fwdhall)
 "bQX" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/effect/floor_decal/industrial/warning,
@@ -8248,11 +8252,10 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/atmos)
 "klQ" = (
-/obj/machinery/shield_diffuser{
-	icon_state = "fdiffuser_off"
-	},
-/turf/space/basic,
-/area/space)
+/obj/machinery/air_alarm/north_mount,
+/obj/machinery/camera/network/outside,
+/turf/simulated/floor/plating,
+/area/endeavour/hallway/d4fwdmaint)
 "kmv" = (
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/corner/lightorange/border,
@@ -9368,6 +9371,14 @@
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/endeavour/hallway/d4starboardamidhall)
+"lQR" = (
+/obj/effect/floor_decal/industrial/warning,
+/obj/effect/floor_decal/industrial/warning{
+	dir = 1
+	},
+/obj/machinery/light,
+/turf/simulated/floor/tiled/techmaint,
+/area/rnd/robotics/smallcraft)
 "lRa" = (
 /obj/structure/table/reinforced,
 /obj/effect/floor_decal/borderfloorblack{
@@ -11209,8 +11220,11 @@
 /turf/simulated/floor/plating,
 /area/engineering/engine_smes)
 "nQj" = (
-/turf/simulated/wall/r_wall/prepainted,
-/area/space)
+/obj/machinery/camera/network/outside{
+	dir = 1
+	},
+/turf/simulated/floor/tiled,
+/area/endeavour/hallway/d4fwdhall)
 "nQw" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
 /turf/simulated/floor/tiled,
@@ -13775,6 +13789,10 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/engineering)
+"rHz" = (
+/obj/machinery/shield_diffuser,
+/turf/simulated/floor/airless/ceiling,
+/area/rnd/robotics/smallcraft)
 "rHY" = (
 /obj/machinery/computer/security/engineering,
 /obj/effect/floor_decal/borderfloorblack{
@@ -17339,6 +17357,16 @@
 "wtL" = (
 /turf/space,
 /area/endeavour/hallway/d4fwdmaint)
+"wtP" = (
+/obj/effect/floor_decal/industrial/warning,
+/obj/effect/floor_decal/industrial/warning{
+	dir = 1
+	},
+/obj/machinery/camera/network/outside{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techmaint,
+/area/rnd/robotics/smallcraft)
 "wum" = (
 /obj/structure/cable/green{
 	icon_state = "1-8"
@@ -17905,6 +17933,12 @@
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/atmos)
+"xjP" = (
+/obj/machinery/camera/network/outside{
+	dir = 1
+	},
+/turf/simulated/floor/plating,
+/area/endeavour/hallway/d4fwdmaint)
 "xjV" = (
 /obj/machinery/door/firedoor{
 	dir = 8
@@ -18354,6 +18388,9 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d4starboardafthall)
+"xFC" = (
+/turf/simulated/floor/airless/ceiling,
+/area/endeavour/hallway/d4fwdmaint)
 "xFQ" = (
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/corner/lightorange/border,
@@ -48532,7 +48569,7 @@ jNg
 fwR
 cRV
 ciZ
-dvY
+xjP
 gGG
 lSQ
 axg
@@ -48744,7 +48781,7 @@ ehr
 fWg
 pXA
 gGG
-vFm
+klQ
 gRl
 cRV
 fwR
@@ -50087,7 +50124,7 @@ qBz
 bFi
 bFi
 qBz
-ehr
+bQQ
 ehr
 dbo
 fwT
@@ -50293,7 +50330,7 @@ bwK
 fDL
 fDL
 jKS
-ehr
+nQj
 qBz
 qBz
 qBz
@@ -51062,9 +51099,9 @@ gGG
 gGG
 gGG
 gGG
-kDR
-gvx
-kDR
+nlL
+kup
+vJG
 gGG
 gGG
 gGG
@@ -51251,19 +51288,19 @@ jNg
 jNg
 jNg
 jNg
-gPd
-usY
-gPd
-nQj
-nQj
-jgS
-jgS
-jgS
-nQj
-nQj
-gPd
-usY
-gPd
+qBz
+xFC
+xFC
+qBz
+knf
+nlL
+kup
+wtP
+knf
+qBz
+xFC
+xFC
+qBz
 jNg
 jNg
 jNg
@@ -51445,19 +51482,19 @@ jNg
 jNg
 jNg
 jNg
-gtA
-gPd
-gtA
-jNg
-nQj
-usG
-usG
-usG
-nQj
-jNg
-gtA
-gPd
-gtA
+qBz
+qBz
+xFC
+dvY
+knf
+nlL
+kup
+vJG
+knf
+dvY
+xFC
+xFC
+qBz
 jNg
 jNg
 jNg
@@ -51639,19 +51676,19 @@ jNg
 jNg
 jNg
 jNg
-jNg
-jNg
-jNg
-jNg
-xRj
-xRj
-jNg
-jNg
-mtv
-jNg
-jNg
-jNg
-jNg
+xFC
+qBz
+xFC
+xFC
+knf
+nlL
+kup
+vJG
+knf
+xFC
+xFC
+qBz
+qBz
 jNg
 jNg
 jNg
@@ -51833,19 +51870,19 @@ jNg
 jNg
 jNg
 jNg
-jNg
-jNg
-jNg
-jNg
-jNg
-jNg
-jNg
-jNg
-jNg
-jNg
-jNg
-jNg
-jNg
+xFC
+qBz
+qBz
+xFC
+knf
+pBX
+kup
+lQR
+knf
+xFC
+qBz
+qBz
+hfY
 jNg
 jNg
 jNg
@@ -52027,19 +52064,19 @@ jNg
 jNg
 jNg
 jNg
-jNg
-jNg
-jNg
-jNg
-jNg
-jNg
-jNg
-jNg
-jNg
-jNg
-jNg
-jNg
-jNg
+gPd
+usY
+qBz
+qBz
+knf
+nlL
+kup
+vJG
+knf
+qBz
+qBz
+usY
+gPd
 jNg
 jNg
 jNg
@@ -52221,19 +52258,19 @@ jNg
 jNg
 jNg
 jNg
-jNg
-jNg
-jNg
-jNg
-jNg
-jNg
-jNg
-jNg
-jNg
-jNg
-jNg
-jNg
-jNg
+jMU
+gPd
+hfY
+qBz
+knf
+kDR
+gvx
+kDR
+knf
+qBz
+hfY
+gPd
+jMU
 jNg
 jNg
 jNg
@@ -52415,17 +52452,17 @@ jNg
 jNg
 jNg
 jNg
-jNg
-jNg
-jNg
 xRj
 xRj
-xRj
-xRj
-xRj
-xRj
-xRj
-xRj
+usG
+hfY
+knf
+jgS
+jgS
+jgS
+knf
+hfY
+hfY
 xRj
 xRj
 xRj
@@ -52609,18 +52646,18 @@ jNg
 jNg
 jNg
 jNg
-jNg
-jNg
-jNg
 xRj
 xRj
+jMU
+hfY
+knf
+rHz
+rHz
+rHz
+knf
+hfY
+jMU
 xRj
-xRj
-xRj
-xRj
-xRj
-xRj
-klQ
 xRj
 xRj
 xRj
@@ -52811,7 +52848,7 @@ xRj
 xRj
 xRj
 xRj
-xRj
+suy
 xRj
 xRj
 xRj
