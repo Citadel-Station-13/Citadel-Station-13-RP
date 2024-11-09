@@ -1158,7 +1158,7 @@
 /obj/effect/floor_decal/grass_edge{
 	dir = 5
 	},
-/turf/simulated/floor/outdoors/dirt,
+/turf/simulated/floor/outdoors/dirt/indoors,
 /area/rift/station/public_garden)
 "aRh" = (
 /obj/structure/toilet{
@@ -4598,7 +4598,7 @@
 /turf/simulated/wall/prepainted/cargo,
 /area/maintenance/substation/cargo)
 "dit" = (
-/turf/simulated/floor/outdoors/dirt,
+/turf/simulated/floor/outdoors/dirt/indoors,
 /area/rift/station/public_garden)
 "dix" = (
 /obj/structure/table/rack/shelf,
@@ -9761,7 +9761,7 @@
 /obj/machinery/light/fairy{
 	dir = 8
 	},
-/turf/simulated/floor/outdoors/dirtlight,
+/turf/simulated/floor/outdoors/dirtlight/indoors,
 /area/rift/station/public_garden)
 "gzo" = (
 /obj/structure/window/reinforced/tinted/frosted{
@@ -12740,7 +12740,7 @@
 /area/rnd/hallway)
 "iiZ" = (
 /obj/structure/flora/tree/jungle_small,
-/turf/simulated/floor/outdoors/dirtlight,
+/turf/simulated/floor/outdoors/dirtlight/indoors,
 /area/rift/station/public_garden)
 "ijn" = (
 /obj/machinery/door/airlock/glass_external/public{
@@ -14999,7 +14999,7 @@
 /obj/effect/floor_decal/grass_edge{
 	dir = 10
 	},
-/turf/simulated/floor/outdoors/dirt,
+/turf/simulated/floor/outdoors/dirt/indoors,
 /area/rift/station/public_garden)
 "jFr" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
@@ -17193,7 +17193,7 @@
 /obj/effect/floor_decal/grass_edge{
 	dir = 1
 	},
-/turf/simulated/floor/outdoors/dirt,
+/turf/simulated/floor/outdoors/dirt/indoors,
 /area/rift/station/public_garden)
 "kRE" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
@@ -18013,7 +18013,7 @@
 /obj/effect/floor_decal/grass_edge/corner{
 	dir = 1
 	},
-/turf/simulated/floor/outdoors/dirt,
+/turf/simulated/floor/outdoors/dirt/indoors,
 /area/rift/station/public_garden)
 "lpX" = (
 /obj/machinery/door/airlock/maintenance/engi{
@@ -19026,7 +19026,7 @@
 /obj/effect/floor_decal/grass_edge{
 	dir = 1
 	},
-/turf/simulated/floor/outdoors/dirt,
+/turf/simulated/floor/outdoors/dirt/indoors,
 /area/rift/station/public_garden)
 "mau" = (
 /obj/structure/disposalpipe/segment{
@@ -19811,7 +19811,7 @@
 /obj/effect/floor_decal/grass_edge{
 	dir = 10
 	},
-/turf/simulated/floor/outdoors/dirt,
+/turf/simulated/floor/outdoors/dirt/indoors,
 /area/rift/station/public_garden)
 "muE" = (
 /obj/machinery/vending/fitness{
@@ -22409,7 +22409,7 @@
 /area/medical/exam_room)
 "nWK" = (
 /obj/effect/floor_decal/grass_edge/corner,
-/turf/simulated/floor/outdoors/dirt,
+/turf/simulated/floor/outdoors/dirt/indoors,
 /area/rift/station/public_garden)
 "nXc" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -22483,7 +22483,7 @@
 	dir = 8
 	},
 /obj/structure/table/bench/wooden,
-/turf/simulated/floor/outdoors/dirtlight,
+/turf/simulated/floor/outdoors/dirtlight/indoors,
 /area/rift/station/public_garden)
 "nZo" = (
 /obj/machinery/floodlight,
@@ -22699,7 +22699,7 @@
 /obj/effect/floor_decal/grass_edge{
 	dir = 4
 	},
-/turf/simulated/floor/outdoors/dirt,
+/turf/simulated/floor/outdoors/dirt/indoors,
 /area/rift/station/public_garden)
 "oev" = (
 /obj/effect/floor_decal/steeldecal/steel_decals10{
@@ -24183,7 +24183,7 @@
 	pixel_x = -47;
 	pixel_y = -11
 	},
-/turf/simulated/floor/outdoors/dirtlight,
+/turf/simulated/floor/outdoors/dirtlight/indoors,
 /area/rift/station/public_garden)
 "oUV" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -24938,7 +24938,7 @@
 /area/maintenance/lowmedbaymaint)
 "ppC" = (
 /obj/structure/table/bench/wooden,
-/turf/simulated/floor/outdoors/dirtlight,
+/turf/simulated/floor/outdoors/dirtlight/indoors,
 /area/rift/station/public_garden)
 "ppX" = (
 /obj/structure/table/woodentable,
@@ -26054,7 +26054,7 @@
 /obj/effect/floor_decal/grass_edge/corner{
 	dir = 4
 	},
-/turf/simulated/floor/outdoors/dirt,
+/turf/simulated/floor/outdoors/dirt/indoors,
 /area/rift/station/public_garden)
 "pWm" = (
 /obj/machinery/light/small{
@@ -27964,7 +27964,7 @@
 /obj/effect/floor_decal/grass_edge{
 	dir = 6
 	},
-/turf/simulated/floor/outdoors/dirt,
+/turf/simulated/floor/outdoors/dirt/indoors,
 /area/rift/station/public_garden)
 "rcK" = (
 /obj/effect/floor_decal/borderfloorwhite{
@@ -28124,7 +28124,7 @@
 "rkb" = (
 /obj/structure/flora/rock/alternative_1,
 /obj/effect/floor_decal/grass_edge/corner,
-/turf/simulated/floor/outdoors/dirt,
+/turf/simulated/floor/outdoors/dirt/indoors,
 /area/rift/station/public_garden)
 "rkh" = (
 /obj/item/stool/padded,
@@ -29140,7 +29140,7 @@
 	pixel_x = -32;
 	pixel_y = -33
 	},
-/turf/simulated/floor/outdoors/dirt,
+/turf/simulated/floor/outdoors/dirt/indoors,
 /area/rift/station/public_garden)
 "rKQ" = (
 /obj/effect/floor_decal/industrial/warning/corner{
@@ -30026,7 +30026,7 @@
 /turf/simulated/floor/outdoors/grass/heavy/interior,
 /area/rift/station/public_garden)
 "skO" = (
-/turf/simulated/floor/outdoors/dirtlight,
+/turf/simulated/floor/outdoors/dirtlight/indoors,
 /area/rift/station/public_garden)
 "skZ" = (
 /obj/effect/floor_decal/steeldecal/steel_decals4{
@@ -31208,7 +31208,7 @@
 /obj/effect/floor_decal/grass_edge{
 	dir = 9
 	},
-/turf/simulated/floor/outdoors/dirt,
+/turf/simulated/floor/outdoors/dirt/indoors,
 /area/rift/station/public_garden)
 "sQN" = (
 /obj/machinery/door/window/brigdoor/northright,
@@ -33035,7 +33035,7 @@
 /area/rift/surfacebase/outside/outside1)
 "tSX" = (
 /obj/effect/floor_decal/grass_edge,
-/turf/simulated/floor/outdoors/dirt,
+/turf/simulated/floor/outdoors/dirt/indoors,
 /area/rift/station/public_garden)
 "tSZ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -34438,7 +34438,7 @@
 /obj/structure/window/wooden{
 	dir = 8
 	},
-/turf/simulated/floor/outdoors/dirtlight,
+/turf/simulated/floor/outdoors/dirtlight/indoors,
 /area/rift/station/public_garden)
 "uBa" = (
 /obj/machinery/button/remote/blast_door{
@@ -36563,7 +36563,7 @@
 /area/rift/surfacebase/outside/outside1)
 "vVm" = (
 /obj/effect/overlay/coconut,
-/turf/simulated/floor/outdoors/dirtlight,
+/turf/simulated/floor/outdoors/dirtlight/indoors,
 /area/rift/station/public_garden)
 "vVs" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -39902,7 +39902,7 @@
 	dir = 4
 	},
 /obj/effect/overlay/coconut,
-/turf/simulated/floor/outdoors/dirtlight,
+/turf/simulated/floor/outdoors/dirtlight/indoors,
 /area/rift/station/public_garden)
 "xRb" = (
 /turf/simulated/floor/tiled/steel,
