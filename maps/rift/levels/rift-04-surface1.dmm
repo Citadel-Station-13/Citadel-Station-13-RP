@@ -36708,7 +36708,7 @@
 	name = "Cargo Airlock";
 	req_one_access = null
 	},
-/obj/map_helper/access_helper/airlock/station/supply/cargo_bay,
+/obj/map_helper/access_helper/airlock/station/supply/department,
 /turf/simulated/floor/tiled/steel,
 /area/quartermaster/office)
 "vYQ" = (
