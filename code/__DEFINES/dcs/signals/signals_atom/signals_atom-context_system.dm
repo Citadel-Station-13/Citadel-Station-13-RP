@@ -1,5 +1,5 @@
 //* This file is explicitly licensed under the MIT license. *//
-//* Copyright (c) 2024 silicons                             *//
+//* Copyright (c) 2024 Citadel Station Developers           *//
 
 /// from base of /atom/proc/context_query: (list/options, datum/event_args/actor/e_args)
 /// options list is the same format as /atom/proc/context_query, insert directly to it.
@@ -7,6 +7,13 @@
 /// from base of /atom/proc/context_act: (key, datum/event_args/actor/e_args)
 #define COMSIG_ATOM_CONTEXT_ACT "atom_context_act"
 	#define RAISE_ATOM_CONTEXT_ACT_HANDLED (1<<0)
+
+/// Creates context key
+///
+/// * Used to ensure things like components piggybacking on an atom and
+///   hooking the menu with signals don't collide with the atom or other
+///   components using the same keys.
+#define atom_context_key(atom, key) "[ref(atom)]-[key]"
 
 /// create context
 /// todo: this is deprecated, i think.

@@ -1,10 +1,10 @@
-/datum/design/science/anomaly
-	abstract_type = /datum/design/science/anomaly
+/datum/prototype/design/science/anomaly
+	abstract_type = /datum/prototype/design/science/anomaly
 
-/datum/design/science/anomaly/generate_name(template)
+/datum/prototype/design/science/anomaly/generate_name(template)
 	return "Anomalous prototype ([..()])"
 
-/datum/design/science/anomaly/camotrap
+/datum/prototype/design/science/anomaly/camotrap
 	design_name = "Chameleon Trap"
 	desc = "A self-miraging mechanical trap, capable of producing short bursts of electric current when triggered."
 	id = "hunt_trap"
@@ -12,13 +12,13 @@
 	req_tech = list(TECH_MATERIAL = 4, TECH_BLUESPACE = 3, TECH_MAGNET = 4, TECH_PHORON = 2, TECH_ARCANE = 2)
 	build_path = /obj/item/beartrap/hunting
 
-/datum/design/science/precursor
-	abstract_type = /datum/design/science/precursor
+/datum/prototype/design/science/precursor
+	abstract_type = /datum/prototype/design/science/precursor
 
-/datum/design/science/precursor/generate_name(template)
+/datum/prototype/design/science/precursor/generate_name(template)
 	return "Alien prototype ([..()])"
 
-/datum/design/science/precursor/crowbar
+/datum/prototype/design/science/precursor/crowbar
 	design_name = "Hybrid Crowbar"
 	desc = "A tool utilizing cutting edge modern technology, and ancient component designs."
 	id = "hybridcrowbar"
@@ -26,7 +26,7 @@
 	materials_base = list(MAT_PLASTEEL = 2000, MAT_VERDANTIUM = 3000, MAT_GOLD = 250, MAT_URANIUM = 2500)
 	build_path = /obj/item/tool/crowbar/hybrid
 
-/datum/design/science/precursor/wrench
+/datum/prototype/design/science/precursor/wrench
 	design_name = "Hybrid Wrench"
 	desc = "A tool utilizing cutting edge modern technology, and ancient component designs."
 	id = "hybridwrench"
@@ -34,7 +34,7 @@
 	materials_base = list(MAT_PLASTEEL = 2000, MAT_VERDANTIUM = 3000, MAT_SILVER = 300, MAT_URANIUM = 2000)
 	build_path = /obj/item/tool/wrench/hybrid
 
-/datum/design/science/precursor/screwdriver
+/datum/prototype/design/science/precursor/screwdriver
 	design_name = "Hybrid Screwdriver"
 	desc = "A tool utilizing cutting edge modern technology, and ancient component designs."
 	id = "hybridscrewdriver"
@@ -42,7 +42,7 @@
 	materials_base = list(MAT_PLASTEEL = 2000, MAT_VERDANTIUM = 3000, MAT_PLASTIC = 8000, MAT_DIAMOND = 2000)
 	build_path = /obj/item/tool/screwdriver/hybrid
 
-/datum/design/science/precursor/wirecutters
+/datum/prototype/design/science/precursor/wirecutters
 	design_name = "Hybrid Wirecutters"
 	desc = "A tool utilizing cutting edge modern technology, and ancient component designs."
 	id = "hybridwirecutters"
@@ -50,7 +50,7 @@
 	materials_base = list(MAT_PLASTEEL = 2000, MAT_VERDANTIUM = 3000, MAT_PLASTIC = 8000, MAT_PHORON = 2750, MAT_DIAMOND = 2000)
 	build_path = /obj/item/tool/wirecutters/hybrid
 
-/datum/design/science/precursor/welder
+/datum/prototype/design/science/precursor/welder
 	design_name = "Hybrid Welding Tool"
 	desc = "A tool utilizing cutting edge modern technology, and ancient component designs."
 	id = "hybridwelder"
@@ -59,7 +59,7 @@
 	build_path = /obj/item/weldingtool/experimental/hybrid
 
 
-/datum/design/science/precursor/janusmodule
+/datum/prototype/design/science/precursor/janusmodule
 	design_name = "Blackbox Circuit Datamass"
 	desc = "A design that seems to be in a constantly shifting superposition."
 	id = "janus_module"

@@ -128,7 +128,6 @@
 		update_icon()
 
 /obj/structure/sandbag/LateInitialize()
-	. = ..()
 	//update_connections(FALSE)
 	update_icon()
 

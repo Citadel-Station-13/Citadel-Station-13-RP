@@ -54,8 +54,8 @@ GLOBAL_LIST_EMPTY(fancy_shuttles)
 	var/mutable_appearance/under_EM
 	var/fancy_shuttle_tag
 
-	material_outer = /datum/material/steel/hull
-	material_reinf = /datum/material/steel/hull
+	material_outer = /datum/prototype/material/steel/hull
+	material_reinf = /datum/prototype/material/steel/hull
 	baseturfs = /turf/simulated/floor/plating/eris/under
 
 /turf/simulated/wall/fancy_shuttle/window
@@ -96,7 +96,7 @@ GLOBAL_LIST_EMPTY(fancy_shuttles)
 		do_plane = SPACE_PLANE
 		do_state = "white"
 
-		under_EM = mutable_appearance('icons/turf/space.dmi', "white", src.plane = LIGHTING_PLANE)
+		under_EM = mutable_appearance('icons/turf/space.dmi', "white", plane = LIGHTING_PLANE)
 		under_EM.filters = filter(type = "alpha", icon = icon(src.icon, src.icon_state), flags = MASK_INVERSE)
 
 	under_MA = mutable_appearance(do_icon, do_state, layer = src.layer-0.02, plane = do_plane)

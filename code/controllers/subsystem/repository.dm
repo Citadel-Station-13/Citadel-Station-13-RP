@@ -7,5 +7,6 @@ SUBSYSTEM_DEF(repository)
 	subsystem_flags = SS_NO_FIRE
 
 /datum/controller/subsystem/repository/Initialize()
+	__create_repositories()
 	__init_repositories()
 	return ..()

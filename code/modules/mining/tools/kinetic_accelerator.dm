@@ -29,6 +29,16 @@
 	battery_lock = TRUE
 	fire_sound = 'sound/weapons/kenetic_accel.ogg'
 	render_use_legacy_by_default = FALSE
+	attachment_alignment = list(
+		GUN_ATTACHMENT_SLOT_RAIL = list(
+			17,
+			23,
+		),
+		GUN_ATTACHMENT_SLOT_SIDEBARREL = list(
+			30,
+			17,
+		),
+	)
 	var/overheat_time = 16
 	var/holds_charge = FALSE
 	var/unique_frequency = FALSE // modified by KA modkits
