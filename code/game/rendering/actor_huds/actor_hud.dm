@@ -32,10 +32,30 @@
 	src.holder = holder
 	src.owner = holder.owner
 
+/datum/actor_hud/Destroy()
+	unbind_from_mob()
+	return ..()
+
 /datum/actor_hud/proc/bind_to_mob(mob/target)
-	#warn component signals
+	SHOULD_NOT_OVERRIDE(TRUE)
 	actor = target
+	RegisterSignal(target, PROC_REF(bound_actor_deleted))
+	on_mob_bound(target)
 	return TRUE
+
+/datum/actor_hud/proc/unbind_from_mob()
+	SHOULD_NOT_OVERRIDE(TRUE)
+	if(!actor)
+		return
+	var/mob/old = actor
+	actor = null
+	on_mob_unbound(old)
+
+/datum/actor_hud/proc/on_mob_bound(mob/target)
+	return
+
+/datum/actor_hud/proc/on_mob_unbound(mob/target)
+	return
 
 /**
  * syncs hud

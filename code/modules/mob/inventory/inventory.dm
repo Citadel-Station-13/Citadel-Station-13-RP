@@ -54,7 +54,7 @@
 /datum/inventory/Destroy()
 	QDEL_NULL(actions)
 	owner = null
-	for(var/datum/actor_hud/hud/inventory/hud in huds_using)
+	for(var/datum/actor_hud/inventory/hud in huds_using)
 		hud.unbind_from_inventory(src)
 	return ..()
 

@@ -34,8 +34,17 @@
 	cleanup()
 	return ..()
 
-/datum/actor_hud/inventory/bind_to_mob(mob/target)
-	. = ..()
+/datum/actor_hud/inventory/on_mob_bound(mob/target)
+	// we don't have a hook for 'on inventory init',
+	// so we can't init it lazily; we init it immediately.
+	target.init_inventory()
+	bind_to_inventory(target.inventory)
+	return ..()
+
+/datum/actor_hud/inventory/on_mob_unbound(mob/target)
+	if(target.inventory)
+		unbind_to_inventory(target.inventory)
+	return ..()
 
 /datum/actor_hud/inventory/proc/bind_to_inventory(datum/inventory/inventory)
 	host = inventory
@@ -113,15 +122,24 @@
 	var/max_hands_cross = 0
 
 	var/list/atom/movable/screen/inventory/plate/slot/place_anywhere = list()
-	var/list/atom/movable/screen/inventory/plate/slot/
+
+	var/list/cross_axis_for_drawer = list()
+	var/list/cross_axis_left_of_hands = list()
+	var/list/crosS_axis_right_of_hands = list()
 
 	for(var/id in slot_by_id)
 		var/atom/movable/screen/inventory/plate/slot/slot_object = slot_by_id[id]
 
 		switch(slot_object.inventory_hud_anchor)
 			if(INVENTORY_HUD_ANCHOR_AUTOMATIC)
+				plcae_anywhere += slot_object
 			if(INVENTORY_HUD_ANCHOR_TO_DRAWER)
+				var/requested_cross_axis = clamp(slot_object.inventory_hud_cross_axis, 0, 4) + 1 // 1 to 5
+
 			if(INVENTORY_HUD_ANCHOR_TO_HANDS)
+				var/requested_cross_axis = clamp(slot_object.inventory_hud_cross_axis, 0, 2) + 1 // 1 to 5
+
+	for(var/atom/movable/screen/inventory/plate/slot/slot_object as anything in place_anywhere)
 	#warn impl
 
 /**

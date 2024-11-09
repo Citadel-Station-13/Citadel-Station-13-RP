@@ -46,7 +46,7 @@
 	SEND_SIGNAL(src, COMSIG_INVENTORY_ITEM_EXITED_SLOT, from_slot_or_index)
 	SEND_SIGNAL(src, COMSIG_INVENTORY_ITEM_ENTERED_SLOT, to_slot_or_index)
 	for(var/datum/actor_hud/inventory/hud in huds_using)
-		move_item(item, from_slot_or_index, to_slot_or_index)
+		hud.move_item(item, from_slot_or_index, to_slot_or_index)
 
 /**
  * Should be called when the mob's mobility flags change.
