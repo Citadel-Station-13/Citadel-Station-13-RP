@@ -11833,7 +11833,7 @@
 	name = "Mining Operations";
 	req_one_access = list()
 	},
-/obj/map_helper/access_helper/airlock/station/supply/cargo_bay,
+/obj/map_helper/access_helper/airlock/station/supply/department,
 /turf/simulated/floor/tiled/steel,
 /area/quartermaster/office)
 "hIo" = (
@@ -13856,7 +13856,7 @@
 /obj/machinery/door/airlock/maintenance/cargo{
 	req_one_access = null
 	},
-/obj/map_helper/access_helper/airlock/station/supply/cargo_bay,
+/obj/map_helper/access_helper/airlock/station/supply/department,
 /turf/simulated/floor/plating,
 /area/quartermaster/office)
 "iQn" = (
