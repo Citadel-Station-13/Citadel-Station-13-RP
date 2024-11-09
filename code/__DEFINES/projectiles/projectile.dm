@@ -1,5 +1,5 @@
 //* This file is explicitly licensed under the MIT license. *//
-//* Copyright (c) 2024 silicons                             *//
+//* Copyright (c) 2024 Citadel Station Developers           *//
 
 //* pre_impact(), impact(), bullet_act(), on_impact() impact_flags           *//
 /// pre_impact, bullet_act, on_impact are called in that order               ///
