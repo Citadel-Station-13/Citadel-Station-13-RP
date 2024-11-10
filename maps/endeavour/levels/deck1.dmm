@@ -1911,12 +1911,11 @@
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d1starboardforhall)
 "bAB" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/effect/floor_decal/techfloor/orange,
-/obj/machinery/atmospherics/pipe/simple/hidden,
-/turf/simulated/floor/tiled/dark,
-/area/hallway/secondary/docking_hallway2)
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 9
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/exploration/excursion_dock)
 "bBw" = (
 /obj/structure/cable/orange{
 	icon_state = "4-8"
@@ -5193,12 +5192,6 @@
 /turf/simulated/floor/carpet/bcarpet,
 /area/library/study)
 "eoY" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 6
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 6
-	},
 /obj/item/radio/beacon,
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 1
@@ -6893,14 +6886,14 @@
 /turf/simulated/floor/tiled,
 /area/endeavour/exploration/hallway_aft)
 "fvo" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
 /obj/structure/cable/green{
 	icon_state = "2-8"
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+	dir = 1
 	},
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d1starboardamidhall)
@@ -8571,12 +8564,16 @@
 /turf/simulated/wall/prepainted/command,
 /area/endeavour/hallway/d1fwdhall)
 "gJJ" = (
-/obj/machinery/atmospherics/pipe/manifold/hidden/supply,
-/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
 /obj/structure/cable/green{
 	icon_state = "1-4"
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 5
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 5
+	},
 /turf/simulated/floor/tiled/dark,
 /area/hallway/secondary/docking_hallway2)
 "gKk" = (
@@ -9951,6 +9948,10 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/excursion/general)
+"hSl" = (
+/obj/machinery/atmospherics/component/unary/vent_pump/on,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/exploration/excursion_dock)
 "hSU" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 6
@@ -10859,6 +10860,16 @@
 	},
 /turf/simulated/floor/wood,
 /area/library)
+"ixU" = (
+/obj/machinery/camera/network/exploration,
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 6
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/exploration/excursion_dock)
 "iyv" = (
 /obj/structure/window/reinforced{
 	dir = 8
@@ -12648,6 +12659,10 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d1portforhall)
+"jQM" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/exploration/excursion_dock)
 "jQW" = (
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/corner/navgold/border,
@@ -12838,14 +12853,11 @@
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d1portamidhall)
 "jWV" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 6
-	},
-/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
-	dir = 1
-	},
-/turf/simulated/floor/tiled/techfloor/grid,
-/area/exploration/excursion_dock)
+/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/effect/paint/palebottlegreen,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/turf/simulated/floor/plating,
+/area/hydroponics/garden)
 "jXa" = (
 /obj/structure/closet/hydrant{
 	pixel_y = 32
@@ -17056,6 +17068,12 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d1starboardamidhall)
+"nsi" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 6
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/exploration/excursion_dock)
 "ntm" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 8
@@ -20537,6 +20555,8 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d1starboardamidhall)
 "qrE" = (
@@ -29836,13 +29856,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d1starboardamidhall)
 "xVw" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/dark,
@@ -34194,7 +34208,7 @@ xRj
 dkX
 dkX
 joA
-joA
+hSl
 wwz
 joA
 bKZ
@@ -37685,9 +37699,9 @@ jRq
 pcA
 hbS
 hgE
-joA
-joA
-suA
+nsi
+jQM
+bAB
 joA
 sHS
 joA
@@ -37879,9 +37893,9 @@ jRq
 mFi
 lsW
 hCj
-izQ
-joA
-jWV
+ixU
+eTR
+eTR
 vLc
 qxW
 eTR
@@ -39293,7 +39307,7 @@ ijU
 ijU
 gKK
 eoY
-bAB
+eTc
 mTa
 bew
 hoc
@@ -39486,7 +39500,7 @@ edR
 fbu
 hhy
 xHD
-wVY
+xVw
 fYz
 ijU
 ijU
@@ -54187,7 +54201,7 @@ dIE
 eVQ
 cdK
 pBW
-nAf
+jWV
 ecK
 ecK
 nFT

@@ -7353,7 +7353,7 @@
 /obj/map_helper/airlock/door/int_door,
 /obj/effect/floor_decal/industrial/warning,
 /obj/machinery/access_button/airlock_interior{
-	frequency = 1380;
+	frequency = 1381;
 	master_tag = "deck1_airlock";
 	pixel_x = 24
 	},
@@ -7361,7 +7361,6 @@
 	req_one_access = null
 	},
 /obj/map_helper/access_helper/airlock/station/external_airlock,
-/obj/item/barrier_tape_segment/engineering,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_eva)
 "jkF" = (
@@ -8544,7 +8543,6 @@
 	req_one_access = null
 	},
 /obj/map_helper/access_helper/airlock/station/external_airlock,
-/obj/item/barrier_tape_segment/engineering,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_eva)
 "kDR" = (
@@ -11112,7 +11110,7 @@
 /obj/machinery/shield_diffuser,
 /obj/map_helper/airlock/door/ext_door,
 /obj/machinery/access_button/airlock_exterior{
-	frequency = 1380;
+	frequency = 1381;
 	master_tag = "deck1_airlock";
 	pixel_x = 24
 	},
@@ -13211,7 +13209,8 @@
 /obj/machinery/airlock_sensor{
 	dir = 8;
 	id_tag = "deck1_airlock";
-	pixel_x = 22
+	pixel_x = 22;
+	frequency = 1381
 	},
 /obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	dir = 8;
@@ -14142,6 +14141,12 @@
 "sni" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 6
+	},
+/obj/machinery/embedded_controller/radio/airlock/airlock_controller{
+	dir = 4;
+	id_tag = "deck1_airlock1";
+	pixel_x = -26;
+	frequency = 1381
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_eva)

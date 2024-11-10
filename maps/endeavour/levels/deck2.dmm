@@ -654,6 +654,22 @@
 /obj/landmark/spawnpoint/job/cyborg,
 /turf/simulated/floor/tiled/techfloor,
 /area/assembly/chargebay)
+"aws" = (
+/obj/machinery/door/firedoor/glass{
+	dir = 4
+	},
+/obj/machinery/door/airlock/research{
+	id_tag = "researchdoor";
+	name = "R&D Distribution Area"
+	},
+/obj/map_helper/access_helper/airlock/station/science/robotics,
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/turf/simulated/floor/tiled,
+/area/rnd/research/researchdivision)
 "aww" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled,
@@ -911,6 +927,17 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply,
 /turf/simulated/floor/tiled/dark,
 /area/rnd/research/testingrange)
+"aFv" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 5
+	},
+/obj/effect/floor_decal/corner/mauve/border{
+	dir = 5
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/turf/simulated/floor/tiled,
+/area/rnd/hallway)
 "aFA" = (
 /obj/machinery/computer/diseasesplicer,
 /obj/effect/floor_decal/borderfloor{
@@ -1314,6 +1341,8 @@
 /turf/simulated/floor/reinforced,
 /area/rnd/testingroom)
 "aVd" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d2portforhall)
 "aVr" = (
@@ -2199,6 +2228,16 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/medbay3)
+"bDt" = (
+/obj/spawner/window/low_wall/full/firelocks,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/turf/simulated/floor/plating,
+/area/tether/station/public_meeting_room)
 "bDG" = (
 /obj/machinery/light{
 	dir = 8;
@@ -2231,7 +2270,7 @@
 	},
 /obj/machinery/door/airlock/research{
 	id_tag = "researchdoor";
-	name = "Robotics Lab"
+	name = "R&D Distribution Area"
 	},
 /obj/map_helper/access_helper/airlock/station/science/robotics,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -5224,6 +5263,19 @@
 /obj/effect/floor_decal/corner/mauve/border,
 /turf/simulated/floor/tiled/techfloor,
 /area/assembly/robotics)
+"dwZ" = (
+/obj/structure/catwalk,
+/obj/structure/cable/green{
+	icon_state = "2-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 10
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 10
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/research)
 "dxn" = (
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 1
@@ -5765,6 +5817,17 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/surgeryprep)
+"dOv" = (
+/obj/machinery/door/firedoor/glass{
+	dir = 4
+	},
+/obj/machinery/door/airlock/research{
+	id_tag = "researchdoor";
+	name = "R&D Distribution Area"
+	},
+/obj/map_helper/access_helper/airlock/station/science/robotics,
+/turf/simulated/floor/tiled,
+/area/rnd/research/researchdivision)
 "dPs" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/universal{
 	dir = 4
@@ -6947,10 +7010,10 @@
 /turf/simulated/floor/tiled,
 /area/rnd/anomaly_lab/containment_one)
 "ezI" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
-	dir = 8
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 6
 	},
+/obj/machinery/atmospherics/component/unary/vent_pump/on,
 /turf/simulated/floor/tiled,
 /area/holodeck_control)
 "ezO" = (
@@ -8439,6 +8502,8 @@
 /obj/machinery/door/airlock/glass,
 /obj/machinery/door/firedoor,
 /obj/map_helper/access_helper/airlock/station/science/department,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled,
 /area/rnd/hallway)
 "fCr" = (
@@ -9015,11 +9080,11 @@
 /turf/simulated/floor/tiled,
 /area/medical/virology_aft_access)
 "fRp" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 10
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 6
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+	dir = 8
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/hallway)
@@ -10384,7 +10449,7 @@
 	},
 /obj/machinery/door/airlock/research{
 	id_tag = "researchdoor";
-	name = "Robotics Lab"
+	name = "R&D Distribution Area"
 	},
 /obj/map_helper/access_helper/airlock/station/science/robotics,
 /turf/simulated/floor/tiled/dark,
@@ -10933,6 +10998,19 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled,
 /area/medical/virology_fore_access)
+"hfm" = (
+/obj/structure/catwalk,
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/research)
 "hfW" = (
 /obj/structure/cable{
 	icon_state = "2-4"
@@ -15238,7 +15316,7 @@
 	},
 /obj/machinery/door/airlock/research{
 	id_tag = "researchdoor";
-	name = "Robotics Lab"
+	name = "R&D Distribution Area"
 	},
 /obj/map_helper/access_helper/airlock/station/science/robotics,
 /turf/simulated/floor/tiled/dark,
@@ -20813,6 +20891,21 @@
 	},
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d2portforhall)
+"nKq" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/mauve/border{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 9
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 9
+	},
+/turf/simulated/floor/tiled,
+/area/rnd/hallway)
 "nKH" = (
 /obj/machinery/bodyscanner{
 	dir = 4
@@ -21331,9 +21424,15 @@
 /turf/simulated/floor/tiled,
 /area/rnd/rdoffice)
 "ocd" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/door/airlock{
+	name = "Restroom"
+	},
+/obj/machinery/door/firedoor/glass{
+	dir = 4
+	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/turf/simulated/floor/tiled,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/turf/simulated/floor/tiled/white,
 /area/holodeck_control)
 "ode" = (
 /obj/structure/cable/green{
@@ -21506,8 +21605,6 @@
 /area/rnd/xenobiology/xenoflora)
 "okq" = (
 /obj/machinery/holopad,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled,
 /area/holodeck_control)
 "oks" = (
@@ -22148,7 +22245,7 @@
 	},
 /obj/machinery/door/airlock/research{
 	id_tag = "researchdoor";
-	name = "Robotics Lab"
+	name = "R&D Distribution Area"
 	},
 /obj/map_helper/access_helper/airlock/station/science/robotics,
 /turf/simulated/floor/tiled,
@@ -23074,6 +23171,19 @@
 	},
 /turf/simulated/floor/wood,
 /area/endeavour/hallway/d2afthall)
+"pfz" = (
+/obj/structure/catwalk,
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/research)
 "pfB" = (
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 8
@@ -24142,6 +24252,13 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/medbay/aft)
+"pKa" = (
+/obj/machinery/door/firedoor,
+/obj/machinery/door/airlock/glass,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/turf/simulated/floor/tiled,
+/area/holodeck_control)
 "pKn" = (
 /obj/machinery/atmospherics/portables_connector,
 /obj/machinery/portable_atmospherics/canister/carbon_dioxide{
@@ -24376,6 +24493,20 @@
 /obj/effect/floor_decal/corner/paleblue/border,
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/heads/cmo)
+"pRM" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/mauve/border{
+	dir = 4
+	},
+/obj/machinery/light{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/turf/simulated/floor/tiled,
+/area/rnd/hallway)
 "pRS" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/black,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -25509,6 +25640,11 @@
 /obj/map_helper/access_helper/airlock/station/science/department,
 /turf/simulated/floor/tiled/steel,
 /area/rnd/testingroom)
+"qzR" = (
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply,
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
+/turf/simulated/floor/tiled,
+/area/endeavour/hallway/d2portforhall)
 "qzS" = (
 /obj/machinery/button/remote/airlock{
 	desc = "A remote control switch for the CMO's office.";
@@ -30299,6 +30435,19 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled,
 /area/holodeck_control)
+"tHT" = (
+/obj/structure/catwalk,
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 6
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 6
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/research)
 "tHW" = (
 /obj/effect/floor_decal/spline/plain{
 	dir = 5
@@ -30381,6 +30530,19 @@
 	},
 /turf/simulated/floor/reinforced,
 /area/rnd/testingroom)
+"tLi" = (
+/obj/structure/catwalk,
+/obj/structure/cable/green{
+	icon_state = "1-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 9
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 9
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/research)
 "tLz" = (
 /obj/machinery/door/firedoor/glass{
 	dir = 4
@@ -30392,7 +30554,7 @@
 	},
 /obj/machinery/door/airlock/research{
 	id_tag = "researchdoor";
-	name = "Robotics Lab"
+	name = "R&D Distribution Area"
 	},
 /obj/map_helper/access_helper/airlock/station/science/robotics,
 /turf/simulated/floor/tiled,
@@ -33022,6 +33184,17 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/shuttle/emt/cockpit)
+"vFO" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/mauve/border{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/turf/simulated/floor/tiled,
+/area/rnd/hallway)
 "vGe" = (
 /turf/simulated/wall/prepainted/medical,
 /area/medical/resleeving)
@@ -33131,6 +33304,11 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/assembly/chargebay)
+"vLb" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/turf/simulated/floor/tiled,
+/area/endeavour/hallway/d2portamidhall)
 "vLg" = (
 /obj/machinery/camera/network/civilian,
 /obj/machinery/computer/timeclock/premade/north,
@@ -35071,12 +35249,14 @@
 	},
 /area/rnd/rdoffice)
 "wQj" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
-	dir = 8
+/obj/structure/catwalk,
+/obj/structure/cable/green{
+	icon_state = "1-2"
 	},
-/turf/simulated/floor/tiled,
-/area/holodeck_control)
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/turf/simulated/floor/plating,
+/area/maintenance/research)
 "wQo" = (
 /obj/effect/floor_decal/techfloor/orange,
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
@@ -35398,6 +35578,11 @@
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/tiled,
 /area/medical/resleeving)
+"xbQ" = (
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply,
+/turf/simulated/floor/tiled,
+/area/endeavour/hallway/d2portamidhall)
 "xbW" = (
 /obj/structure/disposalpipe/segment,
 /obj/effect/floor_decal/corner/paleblue/border{
@@ -36876,6 +37061,19 @@
 /obj/effect/floor_decal/corner/navgold/border,
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d1starboardforhall)
+"ybL" = (
+/obj/machinery/door/firedoor{
+	dir = 1
+	},
+/obj/machinery/door/airlock/maintenance/common,
+/obj/structure/catwalk,
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/turf/simulated/floor/plating,
+/area/maintenance/research)
 "ybY" = (
 /obj/structure/cable/green{
 	icon_state = "1-8"
@@ -36936,9 +37134,6 @@
 "yeN" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/structure/cable/green{
-	icon_state = "0-2"
-	},
 /turf/simulated/floor/tiled/white,
 /area/holodeck_control)
 "yfn" = (
@@ -48859,7 +49054,7 @@ tzb
 wae
 tzb
 xPg
-bRN
+aws
 iYO
 qiK
 xhf
@@ -49053,7 +49248,7 @@ cqO
 cqO
 cqO
 heh
-sJr
+dOv
 jxJ
 cqO
 cqO
@@ -49066,7 +49261,7 @@ cqO
 cqO
 cqO
 tkE
-sJr
+dOv
 cIi
 dyM
 keB
@@ -53896,7 +54091,7 @@ dKQ
 bqS
 mIF
 mIF
-mIF
+nQX
 fRp
 pXr
 pXr
@@ -54085,12 +54280,12 @@ dNv
 uow
 xIf
 xIf
-xnR
+tHT
 fBT
-rGZ
-gzA
-eiO
-gzA
+aFv
+vFO
+pRM
+nKq
 iPf
 gzA
 eiO
@@ -54279,7 +54474,7 @@ fqJ
 uow
 xIf
 xIf
-xnR
+pfz
 oLT
 oLT
 oLT
@@ -54473,7 +54668,7 @@ rfs
 uow
 xIf
 xIf
-xnR
+pfz
 oLT
 fPa
 wQp
@@ -54667,7 +54862,7 @@ dEU
 uow
 xIf
 xIf
-xnR
+pfz
 oLT
 dNU
 wvb
@@ -54856,12 +55051,12 @@ qBd
 lmG
 uPt
 xIf
-xnR
+hfm
 xIf
 uPt
 xIf
 xIf
-xnR
+pfz
 oLT
 pBG
 ppE
@@ -55050,12 +55245,12 @@ jRE
 qBd
 uPt
 xIf
-cET
-yfn
-tFT
-yfn
-yfn
-ogd
+dwZ
+wQj
+ybL
+wQj
+wQj
+tLi
 oLT
 oLT
 oLT
@@ -61484,9 +61679,9 @@ bNt
 lgi
 slJ
 yeN
-fwV
-fLZ
-xnN
+ocd
+vLb
+xbQ
 eJz
 nAQ
 nAQ
@@ -62056,7 +62251,7 @@ xVe
 xIf
 neh
 ieR
-ocd
+nnJ
 nnJ
 bpa
 kjj
@@ -64968,17 +65163,17 @@ xIf
 xIf
 tcy
 wMp
-tHz
-tHz
-wQj
-tHz
+nnJ
+nnJ
+nnJ
+nnJ
 okq
 ezI
 tHz
 bYu
-vdg
+pKa
 aVd
-gJm
+qzR
 nDt
 tUb
 iDd
@@ -68669,7 +68864,7 @@ ckP
 ckP
 ngD
 ckP
-ckP
+bDt
 ckP
 ngD
 ckP
