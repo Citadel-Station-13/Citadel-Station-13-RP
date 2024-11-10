@@ -4,7 +4,19 @@
 /obj/item/ammo_casing/nt_protomag
 	name = "protomag casing"
 	desc = "An obnoxiously long casing for some kind of rifle."
+	icon = 'icons/content/factions/corporations/nanotrasen/items/guns/protomag/ammo.dmi'
+	icon_state = "slug"
 	caliber = /datum/ammo_caliber/nt_protomag
+
+	/// override strip color
+	var/stripe_color
+
+/obj/item/ammo_casing/nt_protomag/Initialize(mapload)
+	. = ..()
+	var/image/stripe_image = image(icon, "[icon_state]-stripe")
+	var/obj/projectile/nt_protomag/casted_projectile = projectile_type
+	stripe_image.color = stripe_color || initial(casted_projectile.color)
+	add_overlay(stripe_image, TRUE)
 
 /obj/item/ammo_casing/nt_protomag/magboosted
 	name = "protomag round"

@@ -94,6 +94,7 @@
 /atom/movable/screen/plane_master/emissive/Initialize(mapload)
 	. = ..()
 	add_filter("em_block_masking", 1, color_matrix_filter(GLOB.em_mask_matrix))
+	#warn bloom filter
 
 /atom/movable/screen/plane_master/lightmask
 	plane = LIGHTMASK_PLANE

@@ -1,7 +1,6 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
-// todo: type-gen all of these.
 /obj/item/ammo_magazine/nt_protomag
 	abstract_type = /obj/item/ammo_magazine/nt_protomag
 	desc = "A magazine for a magnetic weapon of some kind."
@@ -30,6 +29,7 @@
 	slot_flags = SLOT_POCKET
 
 //* Boxes *//
+#warn these are rifle mags; make pistol mags the appropriate size. also, add stripes
 
 /obj/item/ammo_magazine/nt_protomag/box
 	abstract_type = /obj/item/ammo_magazine/nt_protomag/box
