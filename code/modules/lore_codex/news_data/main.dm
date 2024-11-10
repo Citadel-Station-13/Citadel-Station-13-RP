@@ -45,12 +45,19 @@
 		/datum/lore/codex/page/fallmansstar,
 		/datum/lore/codex/page/hivebots,
 		/datum/lore/codex/page/three_fingers,
-		/datum/lore/codex/page/changeling
+		/datum/lore/codex/page/changeling,
+		/datum/lore/codex/page/contractors,
+		/datum/lore/codex/page/ad5,
+		/datum/lore/codex/page/cm_xenos,
+		/datum/lore/codex/page/enigma,
+		/datum/lore/codex/page/enigma2,
+		/datum/lore/codex/page/nuclear_spirits,
+		/datum/lore/codex/page/andromeda_haven
 		)
 
 /datum/lore/codex/page/about_news
 	name = "About the Publisher"
-	data = "The <i>Daedalus Pocket Newscaster</i> is produced and maintained by Occulum Broadcast, the foremost authority on media distribution \
+	data = "The <i>Daedalus Pocket Newscaster</i> is produced and maintained by Occulum Broadcast Corporation, the foremost authority on media distribution \
 	and owner-operator of the award-winning Daedalus Dispatch newsletter. We use our unparalleled network of freelance reporters, political scientists, \
 	and other experts to deliver hour-by-hour analysis of a complex interstellar political climate, an analysis which you now hold in your hands. For more \
 	information, feel free to visit our homepage at oc.about.tsc, or the sites of any of our constituents."
@@ -533,17 +540,17 @@
 	of the cannibal killer. In the chase that followed allegedly a dozen more people were killed between cases of mistaken identity, and strikes from the own killer with some victims apparently \
 	having been partially cannibalized raw. Eventually the killer was cornered by the mob and security forces, his last action was to charge the mob with an large machete resulting in him being \
 	shot over 40 times before finally dropping dead. Analysis of the bodies from the back room, not only confirmed that all dozen missing persons were killed at the suspect's shop, but that there \
-	was at  least six more unidentified persons among the remains found in the shop bringing the this killer's gruesome total to 18. The identity of the killer has not been released by the police and \
+	was at  least six more unidentified persons among the remains, bringing the this killer's gruesome total to 18. The identity of the killer has not been released by the police and \
 	the Viento Seco government has vowed that the killer's name will never be released less it encourage further acts of killing. \
 	<br><br>\
-	The 'Butcher of Parana' is just the latest in a rash of cannibalism incidents over the past two year. Some statistics say that incidents of cannibalism is up over 200% since 2564. \
+	The 'Butcher of Parana' is just the latest in a rash of cannibalism incidents over the past two years. Some statistics say that incidents of cannibalism is up over 200% since 2564. \
 	What was once merely the subject of horror movies and the habits of certain Vox pirate bands has become an increasingly common phenoma among the Galaxy's derranged. Sociologists are \
 	baffled at the sudden rise with many blaming the attention cannibals get in the media for the rise of cannibal activity. Others blame social contagion from societies where cannibalism \
 	isn't taboo such as among Vox raider groups who are infamous for preying on Teshari. Still some point to a darker connection. Many of these cannibal murderers share common ritual \
-	practices in their murders despite them happening tens of lightyears apart. This has lead some to suggest that these killers had a way of communicating with eachother and such a \
-	connection has even been explored by police on several frontier worlds however, no compelling evidence of a 'Cannibal Cult' has been found. This hasn't assauged the trauma the people of \
+	practices in their murders despite them happening tens if not hundred or thousands of lightyears apart. This has lead some to suggest that these killers had a way of communicating with eachother. \
+	Such potentialconnections have even been explored by police on several frontier worlds however, no compelling evidence of a 'Cannibal Cult' has been found. This news brings no relief to people of \
 	Parana, many of whom shopped at the 'Gourmet Cuts'. An anonymous citizen quoted to an Occulum Jounalist the following: 'You wouldn't know anything was wrong with it all. \
-	I never got a bad cut for Gourmet's ate a lot there. Now I gotta live with the idea that I may have been fed a person! God I am going to be sick, he fed me a person and I liked it!'."
+	I never got a bad cut at Gourmet's I ate a lot there. Now I gotta live with the idea that I may have been fed a person! God I am going to be sick, he fed me a person and I liked it!'."
 
 /datum/lore/codex/page/catskinner
 	name = "Prospective Prince DESTROYS Infamous Pirate Hoard! Thousands of Lifes Saved! Dreaded Pirate Lord on the Run!- 6/6/2567"
@@ -765,9 +772,9 @@
 	<br><br>\
 	Since that time Fallman's Rock has been on the up. The population has risen as countless shady factions are drawn to the planet. Whether it is the Dremachir run 'All You Desire' \
 	a place where one can experience near any pleasure, the mysterious Ogden Cartel allegedly capable of obtaining anything money could buy, or even a well equipped Vey-Med expedition \
-	it seems you truly can find everything in Fallman's Rock. The prices aren't bad either, the illgotten loot of the pirates and theives that bring their goods to Fallman's Star \
-	to sell them for pennies on the dollar. The spaceships resting in orbit comprise a small armada, if ever thoroughly examined they could probably answer the questions of hundred \
-	missing vessels. However there the reddish stains that mark the halls of the vessels are just another discount on the price tag, and if one can brave the trip to Fallman's Star \
+	it seems you truly can find everything in Fallman's Rock. The prices aren't bad either. Pirates and Theives that bring their ill gotten goods to Fallman's Star \
+	to sell them for pennies on the thaler. The spaceships resting in orbit comprise a small armada. If the ships were ever thoroughly examined one could probably discover the fates of hundred \
+	missing vessels. However in Fallman's Star the reddish stains that mark the halls of these 'used spaceships' are just another discount on the price tag, and if one can brave the trip to Fallman's Star \
 	spaceships can be obtained at record low prices. \
 	<br><br>\
 	Whether this commercial prosperity can be maintained remains to be seen. The excesses of Fallman's Star are a hard pill to swallow for the Orion Confederation and many megacorps \
@@ -776,7 +783,7 @@
 	finds itself working side by side with legitmate enterprise. Perhaps one day this wretched hive of scum and villainy could one day be a hive of legitmate commerce."
 
 /datum/lore/codex/page/hivebots
-	name = "Orion Legion Deploys to in Wake of Increased Hivebot Activity - 3/19/2568"
+	name = "Orion Legion Deploys to Frontier in Wake of Increased Hivebot Activity - 3/19/2568"
 	data = "Today the Orion Confederation approved the deployment of Orion Legion Naval forces to frontier space beyond the Interplanetary Worker's League. The decision has come in light \
 	of increased hivebot activity in the region. Both the Hazzori Clan hivebots and the Enigmatic Scavneger type hivebots have been encountered in the region by League Naval patrols \
 	corporate vessels and civilian traders, heightening fears that a hivebot incursion could be brewing in the area. Reports of hivebot activity have been recieved from as far as \
@@ -838,3 +845,128 @@
 	attack have been shared with its officials. In apparent response to the news Nanotrasen stock went into the red for the day droping 1% in value. This has prompted Nanotrasen \
 	to issue a statement ensuring investors that the events of the past weeks will have no noticable effects on revenue. We will bring you more details on this story as it develops \
 	and can only hope that the combined efforts of the intelligence and security forces of the galaxy can bring this new Roanoke threat to heel before it costs more lives."
+
+/datum/lore/codex/page/contractors
+	name = "Nanotrasen Cuts Contractor Ties With Many Megacorps, Vows to Tighten Hiring Belt - 6/24/2568"
+	data = "Today Nanotrasen annouced it is not going to renew its contractor agreements with many megacorporations. Of the many corporations NT was hiring contractors from only its old allies \
+	Vey-Med and Hephaestus Industries along with the Free Trade Union and Occulum News have survived Nanotrasen's aggressive cost cutting strategy. The cuts come after repeated revenue misses \
+	by Nanotrasen in recent financial quarters which has led NT to beginning cutting unnecessary expenses. Many experts believe that this will not result \
+	in a great loss in manpower for the company as many contractors have been offered positions within Nanotrasen, however it yet another sign of the persistent financial troubles \
+	Nanotrasen has faced following the loss of its Phoron monopoly. \
+	<br><br>\
+	Nanotrasen has ensured its investors that the cuts to the contractors do not represent a decline in revenue expectations and that intends to double down on its relationships \
+	with its remaining partners, strengthening ties to Vey-Med and Hephaestus while pursuing deeper relations with The Free Trade Union and Occulum News. Investors remained unconvinced \
+	and Nanotrasen's stock drop 2% the next day at the Orion Stock Exchange following the annoucement of the cuts. Inside sources state that the financial situation with Nanotrasen remains \
+	worse then the company claims and that Nanotrasen may begin aggressively cutting expenses in order to raise profits. Nanotrasen for its matter remains commited to its \
+	research and discovery focused strategy and continues its ambitions to search the galaxy for the next phoron or bluespace crystal hoping that once more, a radical scientific \
+	breakthrough can propel the company to new heights. Whether lightning will strike thrice for Nanotrasen remains to be seen, but for now the company's financial fate remains \
+	up the air."
+
+/datum/lore/codex/page/ad5
+	name = "AD: Let Go at a Happy Trails Resort Station: A Paradise for Any Species!"
+	data = " All are welcome at our Happy Trails Resorts. Now unvieling a line of luxury resort stations, we can ensure you find paradise anywhere in the galaxy. \
+	Enjoy our brand new luxury biodomes: <br><br>\
+	Try out the Winter Wonderland, perfect for Tajara and Teshari no matter where they roam. <br><br>\
+	The Desert resort will eb comfortable for Unathi and Skrell along with those who simply like a lot of Sun. <br><br>\
+	Our selection of cute and friendly animals will allow to experience comfortable nature anywhere in the galaxy. <br><br>\
+	Buy premium pass to enjoy a luxury buffet and exocitic liquors with top tier dormotory accomodations. <br><br>\
+	All of this an more can be yours at Happy Trails Resort Stations, just dock, buy a pass and enjoy your stay at a Happy Trails Resort Station. Coming to you anywhere \
+	there is space to have yes, bringing paradise."
+
+/datum/lore/codex/page/cm_xenos
+	name = "Xenomorphs Hordes Undergo Mass Evolution! SDF on High Alert! - 8/21/2568"
+	data = "Today the Orion Legion confirmed reports from across the frontier that xenomorph colonies were undergoing a mass metamorphosis. The newly evolved xenos seem to \
+	be trading longevity for strenght and power with the new forms resembling the warforms that Orion Forces faced during the last great Xenomorph incursion into Orion space. \
+	The Orion Legion fears that the mass evolutionary event possibly set off by a galaxy spanning morphogenic signal, could signal that the xenos are once more ready to  \
+	go on the offensive in their war against all life in the galaxy. These 'warform xenomorphs' have already begun assaulting SDF positions across the frontier using their \
+	superior forms and specializations to overwhelm SDF formation used to dealing with less dangerous 'colony xenomorphs'. Thankfully the Orion Legion's xenofighting expertise has \
+	not waned in years since the last big incursion and the Legion has updated their publically avaiable tactical guide to fighting xenomorphs. \
+	<br><br>\
+	The remainder of the Orion Legion press release detailed the particular warforms that SDF and others are now expected to deal with. Of note, the Line Breaker Xenomorphs have \
+	made a comeback with the warforms presenting a trouble to SDF forces who lack the ammunition to crack the shells of these rhino like xenomorphs. In addition the return of \
+	War Monarchs has been confirmed. These warform xenomorph royals are far from the overgrown egg layers of their colony cousions. Capable of fighting even armored vehicles \
+	only the most prepared SDF teams have any chance of taking one down even without her hive backing her up. Marksman Acid spitters have also been confirmed and existing acid \
+	spitters have begun to release a more potent blend of acid. More specialized warforms are for now absent though the Orion Legion expects them to begin appearing in the coming \
+	weeks. The Legion advises you report any xenomorph activity to the local SDF immediately, when it comes to fighting xenos hours can mean the difference between a minor incident \
+	and a major outbreak that kills thousands. Keep alert out there everyone just because they have been beaten before does not mean they don't pose a threat now. \
+	<br><br>\
+	Occulum News Network will provide updates on major xenomorph activity on its local stations be sure to tune in so you can be alerted to the latest developments."
+
+/datum/lore/codex/page/enigma
+	name = "Hivebots Salvage Precursor Technology, ENIGMA AI Begins Reign of Terror on the Frontier - 8/30/2568"
+	data = "Terrible news from the frontier. A hivebot cluster has managed to salvage tech from the precursor 'Abductor' species and its central intelligence has managed \
+	to integrate itself with an Abductor AI. This new intelligence reportedly goes by the designation ENIGMA and has rapidly assembled an army of new synthetic warriors \
+	based on Abductor technology. These dangerous combat units are said to be humanoids and armed with advanced energy weapons. Capable of easily matching the combat \
+	potential of even military personnel these ENIGMA drones are now on a quest to secure Abductor technology by any means neccessary exterminating anyone who dare \
+	oppose their quest to recover Abductor artifacts. \
+	<br><br>\
+	Details regarding the exact strength of the ENIGMA forces is unknown however the AI has already stuck at multiple abductor archaelogical sites across the frontier. \
+	Survivors describe ENIGMA as ultilizing a large about of humanoid drones armed with energy weapons supported by larger humanoids resembling light mechs. The heavier \
+	units are said to make use or personal sheild generators to protect them from attacks. Some units resemble floating spheres where leader units resemble floating squids \
+	using a form of antigravity technology to sustain flight. The squid like drones have been confirmed to be commanders of the drones. Nanotrasen and Necropolis security \
+	teams have been among the first to engage with the forces having been barely able to hold them back but managing to deny Enigma the capture of some Abductor Artifacts. \
+	<br><br>\
+	Local governments and SDFs are preparing contigencies to deal to the new ENIGMA threat. Please contact your local governments for more information about the threat \
+	ENIGMA may pose to you."
+
+/datum/lore/codex/page/enigma2
+	name = "ENIGMA AI Deploys Nanite Soldiers in Bloody Search for Abductor Technology! What Other Horrors Could Await? - 9/10/2568"
+	data = "Today Frontier the Orion Legion published its latest intelligence on the ENIGMA AI and its reign of terror across the frontier. Shocking the audience \
+	it showed live footage of what was identified as a Nanite soldier attacking SDF patrols. The footage taken from shuttle craft shows the blade armed nanite monstrosity \
+	cut through the SDF forces, apparently teleporting through SDF fire to close the distant between it and the soldiers. The footage closes when SDF command orders an air-strike \
+	upon the nanite drone who had just finished off the last of the patrol. The Orion Legion, Nanotrasen, and the Blackstar Legion have together dubbed the new drone as a \
+	'Banshee' and confirmed that this was not a unique drone and that addition versions of this nanite assassin droid can be expected to be fought wherever ENIGMA forces \
+	can be found. \
+	<br><br>\
+	The Banshee is a stark wakeup call for the Orion Confederation and militaries of the galaxy at large. Nanite weapons have been a matter of theory before, with development \
+	being largely banned due to the dangers posed by grey goo swarms or nanite plagues. Though nanite synthetics already exist in the form of proteans, such a clear weaponization of \
+	nanite technology is a stark reminder of how dangerous such technology. For the Orion Legion and corporate intelligence offices this only underlies the importance of developing \
+	countermeasures to nanite weaponry and countering the ENIGMA threat. The Orion Legion at the end of their presentation stated that they would be designating additional ships \
+	into tracking and surpressing ENIGMA presence, however with the Orion Legion already stretched so thin across the Frontier it is unlikely this allocation will have a signifcant \
+	effect. Frontier powers and corporation will likely have to bear the brunt of the fight against ENIGMA which is bitter pill both in terms of financial burdern and in lives lost. \
+	<br><br> \
+	Contact your local government for more information about what threat ENIGMA may poss to you."
+
+/datum/lore/codex/page/nuclear_spirits
+	name = "Six Dead After Breaking into World War 3 Nuclear Disposal Site on Earth! Could Other Atomic Graves Be Unearthed? - 10/3/2568"
+	data = "Tragedy struck in Old Russian territories of Earth when a group of young adults somehow managed to breach a storage site for the nuclear debris left behind by the \
+	Third World War. Somehow the breach managed to remain undetected until monitoring equipment picked up a sharp spike in radiation levels from the site. When a team was \
+	dispatched to investigate it they discover the bodies of 6 young men and women ages 31 to 22, whose identities are to remain confidential out of respect to their families. \
+	The youths somehow managed to disturb the carefully stored nuclear waste releasing a lethal dose of radiation. The bodies of the youth's were found with burns and bruises \
+	across their bodies suggesting extreme exposure to radiation. It is believed that after being exposed to radiation the youths began to hallucinate as the radiation ravaged \
+	their minds attacking eachother before their deaths. Due to the extreme radioactive contaming of their bodies the victims will not be cremated and instead they will be \
+	sealed in lead caskets and buried in another secure site for atomic waste. Hopefully this grim reminder of the dangers of nuclear waste can prevent a tragedy like this \
+	from ever happening again. \
+	<br><br> \
+	Yet still the fact that this tragedy was even allowed to happen has outraged many. Both Earth citizens and government officials are demanding answers on what sort of negligence \
+	allowed the waste site to be breached, how the teens were not detected and how such active waste was left so easily accessible. The answers for now are few but a trusted \
+	anonymous source for Occulum News claims that the site had been dealing with electronic issues for years now. Problems can be traced all the way back to early 2565. It appears \
+	that despite having advanced security and detection equipment the site was plagued with malfunctions. Site workers blame these malfunctions on a as of yet unexplained increase \
+	in radioactivity over the past few years. Some experts believe that the containers used to store the radioactive material have begun failing thousands of years earlier then expected. \
+	What is clear though is that on the night of the breach the site's seucrity system underwent some sort of critical error which left the gate wide open for the six victims \
+	that would die later that night. \
+	<br><br> \
+	Much remains unanswered, such as why there was such a critical spike in radiation following the breach by the six victims. No incidence of criticality is even thought possible \
+	with waste so thoroughly decayed. Experts currently debate whether the radiation spike was caused by some incredibly improbably criticality incident or whether it is possible \
+	that the half-lives of the material stored at the site need to be recalculated under the special circumstances of the waste's storage. Additional questions remain as to what \
+	to do with the waste still stored at the site and other sites across Earth. Do existing containment sites need to be reinforced? Do new containment sites need to be \
+	constructed to account for the new challenges in waste disposal? Is it possible to dispose of the waste off planet without risking lives and health during transit? \
+	These are the questions Earth's governments are asking themselves right now. What remains certain though is no one wants anything like this to happen again."
+
+/datum/lore/codex/page/andromeda_haven
+	name = "Xenomorphs Hegemony Border Space! Hegemony Forces Fight Off Xenowarforms! - 11/3/2568"
+	data = "Two months ago the Orion Legion warned of a mass evolution of xenomorphs across the galaxy, with colony xenomorphs evolving into more dangerous warforms and \
+	becoming far more aggressive. Today reports came in from the border with the Three Hands Hegemony of just how widespread the xeno problem has gotten. The Three Hands \
+	gave official reports today of ongoing military operations against xenomorphs in Hegemony Border regions. According to the Moghesian representative the Hegemony became \
+	aware of the scale of the problem when the independently owned Andromeda Haven space station was destroyed during a Xenomorph attack. Since then the Hegemony has launched \
+	a counter attack destroyed xenoinfested ships and asteroids across their border in order to keep the region secure. Casaulties are allegedly minimal save for Andromeda \
+	Haven which was reportedly lost with all hands. \
+	<br><br> \
+	The full scale of the xenomorph assault is yet to be determined as the scale of the Hegemony's military operations is restricted information. What is known is that it appears \
+	the destruction of Adromeda Haven greatly slowed the incursion of Xenomorphs into the region. The Hegemony's military did confirm that specialized combat xenomorphs \
+	were among the ones slain by Hegemony's QRF. Kamekaze Burster Xenomorphs, Fiery Inferno Xenomorphs and even Beserks were confirmed slain by the Hegemony. This only confirms \
+	the Orion Legion;s earlier prediction of the spread of the specialist xenomorphs across the galaxy. With xenomorph attacks becomes more and more sophisticated many wonder \
+	if some sort of major Xenomorph invasion is on the horizon and where it could be. Others fear that this evolution is the beginning of a new normal with the xenomorphs \
+	and that sporadic attacks like this one could become commonplace across the cosmos. \
+	<br><br> \
+	Please make sure to report any xenomorph activity to your local SDF. Follow local Occulum News Network channels for reports on Xenomorph activity in your area."
