@@ -48,6 +48,12 @@
 	var/last_firing_result
 	/// were we interrupted?
 	var/last_interrupted = FALSE
+	/// on this iteration, have this much dispersion added
+	var/next_dispersion_adjust
+	#warn hook
+	/// on this iteration, force adjust the angle by this much (pos = cw, neg = ccw)
+	var/next_angle_adjust
+	#warn hook
 
 	//*                        firing modifier args                        *//
 	//* this is where things like modular gun components will inject into. *//

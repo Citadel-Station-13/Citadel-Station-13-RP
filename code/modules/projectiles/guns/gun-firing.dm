@@ -134,6 +134,8 @@
 		// post-fire
 		if(!post_fire(our_cycle))
 			break
+		// reset variables
+		our_cycle.next_dispersion_adjust = our_cycle.next_angle_adjust = null
 		// continue if needed
 		if(iteration != our_cycle.firing_iterations)
 			sleep(our_cycle.firing_delay)

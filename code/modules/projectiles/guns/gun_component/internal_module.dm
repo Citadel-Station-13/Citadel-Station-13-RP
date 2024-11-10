@@ -30,19 +30,16 @@
 		return
 	// do not invoke multiple times
 	switch(LAZYACCESS(cycle.blackboard, "an-94-refire-triggered"))
+		if(0, null)
+			// set re-invoke flag
+			LAZYSET(cycle.blackboard, "an-94-refire-triggered", 1)
+			// add one iteration
+			cycle.firing_iterations++
+			// force current shot dispersion
+			cycle.next_dispersion += dispersion_amount
 		if(1)
 			// add dispersion
 			LAZYSET(cycle.blackboard, "an-94-refire-triggered", 2)
-			cycle.next_dispersion += dispersion_amount
-			return
-		if(2)
-			// we're done here
-			return
-	// set re-invoke flag
-	LAZYSET(cycle.blackboard, "an-94-refire-triggered", 1)
-	// add one iteration
-	cycle.firing_iterations++
-	// force current shot dispersion
-	cycle.next_dispersion += dispersion_amount
+			cycle.next_dispersion_adjust += dispersion_amount
 
 // todo: integrated electronics framework
