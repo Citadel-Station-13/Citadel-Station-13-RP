@@ -69,5 +69,3 @@
 /datum/actor_hud_holder/proc/reassert_onto_owner()
 	owner.images |= images()
 	owner.screen |= screens()
-
-#warn impl

@@ -39,7 +39,7 @@
 /datum/actor_hud/proc/bind_to_mob(mob/target)
 	SHOULD_NOT_OVERRIDE(TRUE)
 	actor = target
-	RegisterSignal(target, PROC_REF(bound_actor_deleted))
+	RegisterSignal(target, COMSIG_PARENT_QDELETING, PROC_REF(bound_actor_deleted))
 	on_mob_bound(target)
 	return TRUE
 
@@ -47,9 +47,14 @@
 	SHOULD_NOT_OVERRIDE(TRUE)
 	if(!actor)
 		return
+	UnregisterSignal(actor, COMSIG_PARENT_QDELETING)
 	var/mob/old = actor
 	actor = null
 	on_mob_unbound(old)
+
+/datum/actor_hud/proc/bound_actor_deleted(datum/source)
+	ASSERT(source == actor)
+	unbind_from_mob()
 
 /datum/actor_hud/proc/on_mob_bound(mob/target)
 	return

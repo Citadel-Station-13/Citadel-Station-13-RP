@@ -117,11 +117,11 @@
 			// check for equip
 			if(istype(over, /atom/movable/screen/inventory/plate/hand))
 				var/atom/movable/screen/inventory/plate/hand/H = over
-				user.put_in_hand(src, H.index)
+				user.put_in_hand(src, H.hand_index)
 				return CLICKCHAIN_DO_NOT_PROPAGATE
 			else if(istype(over, /atom/movable/screen/inventory/plate/slot))
 				var/atom/movable/screen/inventory/plate/slot/S = over
-				user.equip_to_slot_if_possible(src, S.slot_id)
+				user.equip_to_slot_if_possible(src, S.inventory_slot_id)
 				return CLICKCHAIN_DO_NOT_PROPAGATE
 		// check for slide
 		if(Adjacent(over) && user.CanSlideItem(src, over) && (istype(over, /obj/structure/table/rack) || istype(over, /obj/structure/table) || istype(over, /turf)))

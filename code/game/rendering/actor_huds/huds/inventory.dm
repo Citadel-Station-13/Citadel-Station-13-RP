@@ -1,8 +1,6 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
-/datum/actor_hud/inventory
-
 /**
  * Inventory slots specifically, not hands.
  */
@@ -50,7 +48,7 @@
 	host = inventory
 	rebuild(inventory.build_inventory_slots_with_remappings(), length(inventory.held_items))
 
-/datum/actor_hud/inventory/proc/unbind_to_inventory(datum/inventory/inventory)
+/datum/actor_hud/inventory/proc/unbind_from_inventory(datum/inventory/inventory)
 	cleanup()
 	host = null
 
@@ -124,20 +122,29 @@
 	var/list/atom/movable/screen/inventory/plate/slot/place_anywhere = list()
 
 	var/list/cross_axis_for_drawer = list()
-	var/list/cross_axis_left_of_hands = list()
-	var/list/crosS_axis_right_of_hands = list()
+	var/list/cross_axis_for_hands = list()
 
 	for(var/id in slot_by_id)
 		var/atom/movable/screen/inventory/plate/slot/slot_object = slot_by_id[id]
+		var/list/inject_into
 
 		switch(slot_object.inventory_hud_anchor)
 			if(INVENTORY_HUD_ANCHOR_AUTOMATIC)
-				plcae_anywhere += slot_object
+				place_anywhere += slot_object
 			if(INVENTORY_HUD_ANCHOR_TO_DRAWER)
 				var/requested_cross_axis = clamp(slot_object.inventory_hud_cross_axis, 0, 4) + 1 // 1 to 5
-
+				if(length(cross_axis_for_drawer) < requested_cross_axis)
+					for(var/i in length(cross_axis_for_drawer) + 1 to requested_cross_axis)
+						cross_axis_for_drawer[++cross_axis_for_drawer.len] = list()
+				insert_into = cross_axis_for_drawer[requested_cross_axis]
 			if(INVENTORY_HUD_ANCHOR_TO_HANDS)
 				var/requested_cross_axis = clamp(slot_object.inventory_hud_cross_axis, 0, 2) + 1 // 1 to 5
+				if(length(cross_axis_for_hands) < requested_cross_axis)
+					for(var/i in length(cross_axis_for_hands) + 1 to requested_cross_axis)
+						cross_axis_for_hands[++cross_axis_for_drawer.len] = list()
+				insert_into = cross_axis_for_hands[requested_cross_axis]
+
+		BINARY_INSERT(slot_object, inject_into, /atom/movable/screen/inventory/plate, slot_object, inventory_hud_main_axis, COMPARE_KEY)
 
 	for(var/atom/movable/screen/inventory/plate/slot/slot_object as anything in place_anywhere)
 	#warn impl
@@ -290,8 +297,6 @@
 /atom/movable/screen/inventory/proc/handle_inventory_click(mob/user, obj/item/with_item)
 	return
 
-#warn impl all
-
 /**
  * Base type of item-holding screen objects
  */
@@ -341,13 +346,6 @@
 
 /atom/movable/screen/inventory/plate/slot/handle_inventory_click(mob/user, obj/item/with_item)
 	#warn impl
-
-/**
- * comparator that sorts slots that are semantically closer to their anchors to be first,
- * allowing a no-collision-or-cascading method of resolving slot alignment.
- */
-/proc/cmp_inventory_slot_screen_object_for_anti_cascade(atom/movable/screen/inventory/plate/slot/A, atom/movable/screen/inventory/plate/slot/B)
-
 
 /**
  * Hand screen objects
