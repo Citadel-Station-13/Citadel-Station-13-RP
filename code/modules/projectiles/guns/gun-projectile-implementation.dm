@@ -39,6 +39,7 @@
 	// todo: Reachability(), not Adjacent().
 	if((cycle.firing_flags & GUN_FIRING_POINT_BLANK) && cycle.original_target && cycle.firing_atom.Adjacent(cycle.original_target))
 		process_point_blank(firing_projectile, cycle.firing_actor?.performer, cycle.original_target)
+	play_fire_sound(cycle.firing_actor?.performer, firing_projectile)
 	//! END
 
 	// record stuff
@@ -50,6 +51,17 @@
 		movable_firer.newtonian_move(angle2dir(cycle.original_angle))
 
 	// todo: muzzle flash
+
+/**
+ * Called to actually fire a projectile.
+ */
+/obj/item/gun/proc/launch_projectile(datum/gun_firing_cycle/cycle, obj/projectile/launching)
+	//! LEGACY
+	// this is just stupid lol why are we transcluding name directly into autopsy reports??
+	launching.shot_from = src.name
+	// this shouldn't be a hard-set thing and should be attachment set
+	launching.silenced = src.silenced
+	//! END
 
 /**
  * Obtains the next projectile to fire.

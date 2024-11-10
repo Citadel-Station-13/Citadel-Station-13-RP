@@ -599,14 +599,6 @@
 	launch_projectile_common(target, target_zone, user, params, angle_override, forced_spread)
 	return fire(angle_override, direct_target)
 
-//called to launch a projectile from a gun
-/obj/projectile/proc/launch_from_gun(atom/target, target_zone, mob/user, params, angle_override, forced_spread, obj/item/gun/launcher)
-
-	shot_from = launcher.name
-	silenced = launcher.silenced
-
-	return launch_projectile(target, target_zone, user, params, angle_override, forced_spread)
-
 /obj/projectile/proc/launch_projectile_from_turf(atom/target, target_zone, mob/user, params, angle_override, forced_spread = 0)
 	var/direct_target
 	if(get_turf(target) == get_turf(src))

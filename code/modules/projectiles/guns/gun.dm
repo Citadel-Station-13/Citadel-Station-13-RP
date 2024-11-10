@@ -597,29 +597,6 @@
 		if(!isnull(M.accuracy_dispersion))
 			P.dispersion = max(P.dispersion + M.accuracy_dispersion, 0)
 
-//does the actual launching of the projectile
-/obj/item/gun/proc/process_projectile(obj/projectile, mob/user, atom/target, var/target_zone, var/params=null)
-	var/obj/projectile/P = projectile
-	if(!istype(P))
-		return FALSE //default behaviour only applies to true projectiles
-
-	//shooting while in shock
-	var/forcespread
-	if(istype(user, /mob/living/carbon))
-		var/mob/living/carbon/mob = user
-		if(mob.shock_stage > 120)
-			forcespread = rand(50, 50)
-		else if(mob.shock_stage > 70)
-			forcespread = rand(-25, 25)
-		else if(IS_PRONE(mob))
-			forcespread = rand(-15, 15)
-	var/launched = !P.launch_from_gun(target, target_zone, user, params, null, forcespread, src)
-
-	if(launched)
-		play_fire_sound(user, P)
-
-	return launched
-
 /obj/item/gun/proc/play_fire_sound(var/mob/user, var/obj/projectile/P)
 	var/shot_sound = fire_sound
 
