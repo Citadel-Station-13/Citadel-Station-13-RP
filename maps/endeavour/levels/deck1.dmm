@@ -11792,7 +11792,7 @@
 /obj/item/duct_tape_roll,
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/mauve/border,
-/obj/item/defib_kit/jumper_kit,
+/obj/item/defib_kit,
 /obj/item/radio/intercom{
 	pixel_y = -24
 	},

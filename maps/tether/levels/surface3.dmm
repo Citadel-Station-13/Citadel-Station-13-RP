@@ -27253,7 +27253,7 @@
 /area/crew_quarters/bar)
 "qjY" = (
 /obj/structure/table/standard,
-/obj/item/defib_kit/jumper_kit,
+/obj/item/defib_kit,
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},

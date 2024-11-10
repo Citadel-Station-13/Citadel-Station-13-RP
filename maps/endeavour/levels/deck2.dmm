@@ -21419,7 +21419,7 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/rnd/xenobiology)
 "pMA" = (
-/obj/item/defib_kit/jumper_kit,
+/obj/item/defib_kit,
 /obj/machinery/newscaster{
 	pixel_y = 32
 	},

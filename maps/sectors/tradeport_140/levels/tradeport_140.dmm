@@ -9040,7 +9040,7 @@
 "IA" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/item/defib_kit/loaded,
-/obj/item/defib_kit/jumper_kit/loaded,
+/obj/item/defib_kit/loaded,
 /obj/effect/floor_decal/corner/blue/border{
 	dir = 10
 	},

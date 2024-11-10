@@ -13506,7 +13506,7 @@
 /area/hydroponics/garden)
 "mPm" = (
 /obj/structure/table/standard,
-/obj/item/defib_kit/jumper_kit,
+/obj/item/defib_kit,
 /turf/simulated/floor/tiled/steel_grid,
 /area/rnd/robotics/surgeryroom1)
 "mQj" = (
