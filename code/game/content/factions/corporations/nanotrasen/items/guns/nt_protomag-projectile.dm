@@ -5,6 +5,13 @@
 	abstract_type = /obj/projectile/nt_protomag
 	icon = 'icons/content/factions/corporations/nanotrasen/items/guns/protomag/projectile.dmi'
 	icon_state = "kinetic"
+	overlays = list(
+		/image{
+			icon_state = "kinetic-emissive";
+			plane = EMISSIVE_PLANE;
+			layer = MANGLE_PLANE_AND_LAYER(/obj/projectile/nt_protomag::plane, /obj/projectile/nt_protomag::layer);
+		}
+	)
 
 /obj/projectile/nt_protomag/standard
 	name = "magnetic slug"
