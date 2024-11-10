@@ -977,6 +977,13 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/engineering)
+"bdO" = (
+/obj/machinery/atmospherics/pipe/simple/visible/fuel{
+	dir = 10
+	},
+/obj/machinery/shield_diffuser,
+/turf/simulated/wall/r_wall/prepainted/engineering,
+/area/engineering/starboardnacelle)
 "bec" = (
 /obj/effect/floor_decal/corner/lightorange/diagonal,
 /obj/structure/cable/green{
@@ -1889,6 +1896,13 @@
 	},
 /turf/simulated/floor/plating,
 /area/endeavour/hallway/d4fwdmaint)
+"ckU" = (
+/obj/machinery/shield_diffuser,
+/obj/machinery/atmospherics/pipe/simple/visible/fuel{
+	dir = 9
+	},
+/turf/simulated/wall/r_wall/prepainted/engineering,
+/area/engineering/starboardnacelle)
 "cnf" = (
 /obj/structure/closet/secure_closet/engineering_personal,
 /obj/effect/floor_decal/spline/fancy{
@@ -2795,7 +2809,7 @@
 	dir = 4
 	},
 /turf/space,
-/area/engineering/portnacelle)
+/area/engineering/starboardnacelle)
 "dvY" = (
 /turf/simulated/floor/plating,
 /area/endeavour/hallway/d4fwdmaint)
@@ -3429,6 +3443,11 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/storage/tech)
+"epH" = (
+/obj/machinery/shield_diffuser,
+/obj/machinery/atmospherics/pipe/manifold4w/visible/fuel,
+/turf/simulated/wall/r_wall/prepainted/engineering,
+/area/engineering/starboardnacelle)
 "eqo" = (
 /obj/machinery/atmospherics/pipe/simple/visible/black{
 	dir = 10
@@ -4261,7 +4280,6 @@
 	},
 /area/tcommsat/chamber)
 "fns" = (
-/obj/machinery/door/airlock/multi_tile/glass,
 /obj/map_helper/access_helper/airlock/station/engineering/department,
 /obj/structure/catwalk,
 /obj/structure/cable/orange{
@@ -4269,6 +4287,7 @@
 	},
 /obj/structure/disposalpipe/segment,
 /obj/machinery/door/firedoor,
+/obj/machinery/door/airlock/multi_tile/glass,
 /turf/simulated/floor/plating,
 /area/maintenance/substation)
 "fod" = (
@@ -10134,9 +10153,6 @@
 	id = "portnacelle_blastdoor";
 	opacity = 0
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 8
-	},
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging/junction{
 	dir = 4
 	},
@@ -14795,10 +14811,10 @@
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply,
-/obj/structure/catwalk,
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/endeavour/hallway/d4aftmaint)
 "tpr" = (
@@ -14816,6 +14832,9 @@
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/atmos)
+"tqe" = (
+/turf/space,
+/area/engineering/starboardnacelle)
 "tqm" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/machinery/power/port_gen/pacman{
@@ -15236,6 +15255,9 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
 /turf/simulated/floor/bluegrid,
 /area/ai_upload)
 "tTb" = (
@@ -15478,6 +15500,13 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ai_upload_foyer)
+"umi" = (
+/obj/machinery/shield_diffuser,
+/obj/machinery/atmospherics/pipe/manifold/visible/fuel{
+	dir = 4
+	},
+/turf/simulated/wall/r_wall/prepainted/engineering,
+/area/engineering/starboardnacelle)
 "unZ" = (
 /obj/machinery/computer/borgupload,
 /obj/machinery/light{
@@ -15654,14 +15683,14 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/atmos/workshop)
 "uAo" = (
-/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
-	dir = 1
-	},
-/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
-	dir = 1
-	},
 /obj/structure/cable{
 	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
 	},
 /turf/simulated/floor/bluegrid,
 /area/ai_upload)
@@ -18070,6 +18099,12 @@
 /obj/item/stool/padded,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/portnacelle)
+"xsM" = (
+/obj/machinery/atmospherics/component/unary/engine/biggest{
+	dir = 4
+	},
+/turf/space,
+/area/engineering/starboardnacelle)
 "xsP" = (
 /obj/turbolift_map_holder/endeavour,
 /turf/simulated/floor/holofloor/tiled/dark,
@@ -22370,12 +22405,12 @@ jNg
 psc
 jNg
 psc
-dyB
-dyB
-rAR
-dyB
-dyB
-rAR
+tqe
+tqe
+xsM
+tqe
+tqe
+xsM
 psc
 jNg
 vAC
@@ -22521,10 +22556,10 @@ wEN
 wEN
 wEN
 wEN
-dvP
 dyB
 dyB
-dvP
+dyB
+dyB
 dyB
 dyB
 psc
@@ -22565,15 +22600,15 @@ psc
 jNg
 psc
 dvP
-dyB
-dyB
+tqe
+tqe
 dvP
-dyB
-dyB
-wEN
-wEN
-wEN
-wEN
+tqe
+tqe
+hEj
+hEj
+hEj
+hEj
 gPd
 gtA
 jNg
@@ -22715,59 +22750,59 @@ wEN
 wEN
 wEN
 wEN
+dyB
+dyB
+dyB
+dyB
+dyB
+dyB
+psc
+jNg
+psc
+jNg
+jNg
+jNg
+jNg
+jNg
+jNg
+psc
+jNg
+jNg
+psc
+jNg
+jNg
+jNg
+psc
+jNg
+jNg
+jNg
+psc
+jNg
+jNg
+jNg
+psc
+jNg
+jNg
+psc
+jNg
+jNg
+psc
+jNg
+jNg
+jNg
+psc
+jNg
+psc
 dvP
-dyB
-dyB
+tqe
+tqe
 dvP
-dyB
-dyB
-psc
-jNg
-psc
-jNg
-jNg
-jNg
-jNg
-jNg
-jNg
-psc
-jNg
-jNg
-psc
-jNg
-jNg
-jNg
-psc
-jNg
-jNg
-jNg
-psc
-jNg
-jNg
-jNg
-psc
-jNg
-jNg
-psc
-jNg
-jNg
-psc
-jNg
-jNg
-jNg
-psc
-jNg
-psc
-dvP
-dyB
-dyB
-dvP
-dyB
-dyB
-wEN
-wEN
-wEN
-wEN
+tqe
+tqe
+hEj
+hEj
+hEj
+hEj
 usY
 gPd
 jNg
@@ -22952,16 +22987,16 @@ jNg
 psc
 jNg
 psc
-lXi
-oEU
-oEU
-ubz
-oEU
-tGH
-wEN
-wEN
-wEN
-wEN
+bdO
+umi
+umi
+epH
+umi
+ckU
+hEj
+hEj
+hEj
+hEj
 gPd
 gtA
 jNg
@@ -23154,7 +23189,7 @@ jwG
 hEj
 vws
 hEj
-wEN
+hEj
 jNg
 jNg
 jNg
