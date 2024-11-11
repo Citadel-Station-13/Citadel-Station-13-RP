@@ -112,5 +112,3 @@
  */
 /datum/actor_hud/proc/remove_image(image/what)
 	owner.images -= what
-
-#warn impl
