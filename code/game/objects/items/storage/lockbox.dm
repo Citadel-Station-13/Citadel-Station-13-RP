@@ -208,6 +208,7 @@
 		/obj/item/gun/ballistic/ax59 = 1,
 		/obj/item/clothing/accessory/holster/leg = 1,
 		/obj/item/ammo_magazine/a45/doublestack = 2,
+		/obj/item/gun_attachment/harness/magnetic/lanyard = 1
 	)
 	icon_locked = "gunlockbox+l"
 	icon_closed = "gunlockbox"

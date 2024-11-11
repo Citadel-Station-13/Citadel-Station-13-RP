@@ -66,6 +66,12 @@
 	align_y = 17
 	attachment_slot = GUN_ATTACHMENT_SLOT_RAIL
 
+/obj/item/gun_attachment/flashlight/internal
+	name = "internal flashlight"
+	desc = "The gun's internal flashlight"
+	can_detach = FALSE
+	attachment_slot = GUN_ATTACHMENT_SLOT_UNDERBARREL
+
 // todo: make this directional at some point
 /**
  * Actually a 'virtual' attachment. When uninstalled, will drop a maglight instead of itself.

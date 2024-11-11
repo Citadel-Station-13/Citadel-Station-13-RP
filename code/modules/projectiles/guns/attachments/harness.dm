@@ -95,3 +95,11 @@
 			playsound(src, deactivate_sound, 15, TRUE, -4)
 		if(!no_message)
 			actor?.chat_feedback(SPAN_NOTICE("You deactivate \the [src]."), target = attached)
+
+/obj/item/gun_attachment/harness/magnetic/lanyard
+	name = "magnetic lanyard"
+	desc = "A handgun lanyard that will snap a gun back to an attachment point when it's dropped by its wearer."
+	icon_state = "lanyard"
+	align_x = 0
+	align_y = 0
+	attachment_slot = GUN_ATTACHMENT_SLOT_GRIP

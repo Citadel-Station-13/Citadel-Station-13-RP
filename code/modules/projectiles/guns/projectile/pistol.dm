@@ -496,7 +496,7 @@
 /obj/item/gun/ballistic/ax59 //Exploration model
 	name = "large pistol"
 	desc = "A bulky semi-automatic handgun with 'NT AX59' engraved on the slide. Comes with an integrated light module and a small lanyard loop at the bottom of the grip. Uses .45 rounds."
-	description_fluff = "The Advanced Expeditionary Handgun System, more commonly known by it's model name 'AX59', or coloquially as the 'Axe', was one of the first attempts by Nanotrasen to modernize and standardize their Exploration department's gear in the years following the Phoron Wars, although it was swiftly replaced by more compact, field-rechargeable energy weapon designs within only a few years. A handgun chambered in the .45 ACP cartridge, it was designed to offer enough stopping power to handle common 'environmental threats' such as hostile fauna within a small form factor, ideally eliminating the need to carry a long gun, although the final design was still considered bulky even by the time of it's introduction. Some of this weight, thankfully, owes itself to features specifically designed for it's use in Exploration:  All base models come equipped with a non-detachable weapon-mounted light and are issued alongside a durable wire lanyard."
+	description_fluff = "The Advanced Expeditionary Handgun System, more commonly known by it's model name 'AX59', or coloquially as the 'Axe', was one of the first attempts by Nanotrasen to modernize and standardize their Exploration department's gear in the years following the Phoron Wars, although it was swiftly replaced by more compact, field-rechargeable energy weapon designs within only a few years. A handgun chambered in the .45 ACP cartridge, it was designed to offer enough stopping power to handle common 'environmental threats' such as hostile fauna within a small form factor, ideally eliminating the need to carry a long gun, although the final design was still considered bulky even by the time of it's introduction. Some of this weight, thankfully, owes itself to features specifically designed for it's use in Exploration:  All base models come equipped with a non-detachable weapon-mounted light and are issued alongside a durable magnetic lanyard."
 	projectile_type = /obj/projectile/bullet/pistol/medium
 	icon_state = "ax59"
 	caliber = /datum/ammo_caliber/a45
@@ -504,6 +504,13 @@
 	magazine_type = /obj/item/ammo_magazine/a45/doublestack
 	allowed_magazines = list(/obj/item/ammo_magazine/a45/doublestack)
 	pin = /obj/item/firing_pin/explorer
+	attachments = list(
+		/obj/item/gun_attachment/flashlight/internal,
+	)
+	attachment_alignment = list(
+		GUN_ATTACHMENT_SLOT_UNDERBARREL = list(0,0),
+		GUN_ATTACHMENT_SLOT_GRIP = list(0,0)
+	)
 
 /obj/item/gun/ballistic/ax99 //PMD model
 	name = "long-slide pistol"
