@@ -1,5 +1,5 @@
 //* This file is explicitly licensed under the MIT license. *//
-//* Copyright (c) 2024 silicons                             *//
+//* Copyright (c) 2024 Citadel Station Developers           *//
 
 //* inventory_hud_anchor *//
 
@@ -14,7 +14,7 @@
 #define INVENTORY_HUD_ANCHOR_TO_DRAWER "drawer"
 /// anchor to next to hands panel
 ///
-/// * main axis runs left/right of hands
+/// * main axis runs left/right of hands if negative/positive
 /// * cross axis runs away from edge of screen of hands
 ///
 /// * valid main-axis indices: != 0

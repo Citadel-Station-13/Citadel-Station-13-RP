@@ -41,7 +41,7 @@
 
 /datum/actor_hud/inventory/on_mob_unbound(mob/target)
 	if(target.inventory)
-		unbind_to_inventory(target.inventory)
+		unbind_from_inventory(target.inventory)
 	return ..()
 
 /datum/actor_hud/inventory/proc/bind_to_inventory(datum/inventory/inventory)
@@ -102,13 +102,14 @@
  * Rebuilds our slots. Doesn't rebuild anything else. Doesn't wipe old objects.
  */
 /datum/actor_hud/inventory/proc/rebuild_slots(list/inventory_slots_with_mappings)
+	QDEL_LIST_ASSOC_VAL(slot_by_id)
 	LAZYINITLIST(slot_by_id)
 	for(var/slot_id in inventory_slots_with_mappings)
 		var/datum/inventory_slot/slot = resolve_inventory_slot(slot_id)
 		if(!slot)
 			stack_trace("failed to fetch slot during hud rebuild: [slot_id]")
 			continue
-		slot_by_id += new /atom/movable/screen/inventory/plate/slot(null, slot, inventory_slots_with_mappings[slot_id] || list())
+		slot_by_id[slot_id] = new /atom/movable/screen/inventory/plate/slot(null, src, slot, inventory_slots_with_mappings[slot_id] || list())
 
 	// here is where we basically pull a CSS flexbox.
 
@@ -122,7 +123,8 @@
 	var/list/atom/movable/screen/inventory/plate/slot/place_anywhere = list()
 
 	var/list/cross_axis_for_drawer = list()
-	var/list/cross_axis_for_hands = list()
+	var/list/cross_axis_for_hands_left = list()
+	var/list/cross_axis_for_hands_right = list()
 
 	for(var/id in slot_by_id)
 		var/atom/movable/screen/inventory/plate/slot/slot_object = slot_by_id[id]
@@ -136,17 +138,27 @@
 				if(length(cross_axis_for_drawer) < requested_cross_axis)
 					for(var/i in length(cross_axis_for_drawer) + 1 to requested_cross_axis)
 						cross_axis_for_drawer[++cross_axis_for_drawer.len] = list()
-				insert_into = cross_axis_for_drawer[requested_cross_axis]
+				inject_into = cross_axis_for_drawer[requested_cross_axis]
 			if(INVENTORY_HUD_ANCHOR_TO_HANDS)
+				var/list/relevant_cross_axis = slot_object.inventory_hud_main_axis > 0 ? cross_axis_for_hands_right : cross_axis_for_hands_left
 				var/requested_cross_axis = clamp(slot_object.inventory_hud_cross_axis, 0, 2) + 1 // 1 to 5
-				if(length(cross_axis_for_hands) < requested_cross_axis)
-					for(var/i in length(cross_axis_for_hands) + 1 to requested_cross_axis)
-						cross_axis_for_hands[++cross_axis_for_drawer.len] = list()
-				insert_into = cross_axis_for_hands[requested_cross_axis]
+				if(length(relevant_cross_axis) < requested_cross_axis)
+					for(var/i in length(relevant_cross_axis) + 1 to requested_cross_axis)
+						relevant_cross_axis[++cross_axis_for_drawer.len] = list()
+				inject_into = relevant_cross_axis[requested_cross_axis]
 
-		BINARY_INSERT(slot_object, inject_into, /atom/movable/screen/inventory/plate, slot_object, inventory_hud_main_axis, COMPARE_KEY)
+		BINARY_INSERT(slot_object, inject_into, /atom/movable/screen/inventory/plate/slot, slot_object, inventory_hud_main_axis, COMPARE_KEY)
 
-	for(var/atom/movable/screen/inventory/plate/slot/slot_object as anything in place_anywhere)
+	if(length(place_anywhere))
+		var/list/cram_into_bottom_of_drawer = list()
+		for(var/atom/movable/screen/inventory/plate/slot/slot_object as anything in place_anywhere)
+			// intelligent detection; cluster based on class
+			switch(slot_object.inventory_hud_class)
+				if(INVENTORY_HUD_CLASS_ALWAYS)
+					cram_into_bottom_of_drawer += slot_object
+				if(INVENTORY_HUD_CLASS_DRAWER)
+					cram_into_bottom_of_drawer += slot_object
+		pack_2d_flat_list(cross_axis_for_drawer, cram_into_bottom_of_drawer, FALSE)
 	#warn impl
 
 /**
