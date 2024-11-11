@@ -303,7 +303,7 @@
 	INVOKE_ASYNC(SSipintel, TYPE_PROC_REF(/datum/controller/subsystem/ipintel, vpn_connection_check), address, ckey)
 	// run onboarding gauntlet
 	INVOKE_ASYNC(src, PROC_REF(onboarding))
-	if (!security_checks_impl())
+	if (!security_checks())
 		return // GET OUT (assume client is dead)
 
 	//* Initialize Input *//

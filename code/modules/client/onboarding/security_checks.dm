@@ -8,7 +8,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 /client/proc/security_checks()
 	// set waitfor = FALSE
 	// lock up login
-	security_checks_impl()
+	return security_checks_impl()
 
 /client/proc/security_checks_impl()
 	// supplimentary checks for 512 n up. version check is down there
