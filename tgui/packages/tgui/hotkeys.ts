@@ -147,7 +147,9 @@ type ByondSkinMacro = {
 
 export const setupHotKeys = () => {
   // Read macros
-  Byond.winget('default.*').then((data: Record<string, string>) => {
+  Byond.winget('default.*').then((_data: Object) => {
+    // todo: revisit winget casting
+    let data: Record<string, string> = _data as Record<string, string>;
     // Group each macro by ref
     const groupedByRef: Record<string, ByondSkinMacro> = {};
     for (let key of Object.keys(data)) {

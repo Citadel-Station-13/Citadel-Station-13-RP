@@ -13,13 +13,9 @@
  */
 /obj/item/proc/equipped(mob/user, slot, flags)
 	SHOULD_CALL_PARENT(TRUE)
-	SEND_SIGNAL(src, COMSIG_ITEM_EQUIPPED, user, slot, flags)
-	SEND_SIGNAL(user, COMSIG_MOB_ITEM_EQUIPPED, src, slot, flags)
+
+	// set slot
 	worn_slot = slot
-
-	if((slot != SLOT_ID_HANDS) && equip_sound)
-		playsound(src, equip_sound, 30, ignore_walls = FALSE)
-
 	// register carry
 	if(isliving(user))
 		var/mob/living/L = user
@@ -29,6 +25,13 @@
 			else
 				encumbrance_registered = get_encumbrance()
 				L.adjust_current_carry_encumbrance(encumbrance_registered)
+	// fire signals
+	SEND_SIGNAL(src, COMSIG_ITEM_EQUIPPED, user, slot, flags)
+	SEND_SIGNAL(user, COMSIG_MOB_ITEM_EQUIPPED, src, slot, flags)
+
+	if((slot != SLOT_ID_HANDS) && equip_sound)
+		playsound(src, equip_sound, 30, ignore_walls = FALSE)
+
 
 /**
  * called when an item is unequipped from inventory or moved around in inventory
@@ -40,13 +43,8 @@
  */
 /obj/item/proc/unequipped(mob/user, slot, flags)
 	SHOULD_CALL_PARENT(TRUE)
-	SEND_SIGNAL(src, COMSIG_ITEM_UNEQUIPPED, user, slot, flags)
-	SEND_SIGNAL(user, COMSIG_MOB_ITEM_UNEQUIPPED, src, slot, flags)
+	// clear slot
 	worn_slot = null
-	
-	if(!(flags & INV_OP_DIRECTLY_DROPPING) && (slot != SLOT_ID_HANDS) && unequip_sound)
-		playsound(src, unequip_sound, 30, ignore_walls = FALSE)
-
 	// clear carry
 	if(isliving(user))
 		var/mob/living/L = user
@@ -55,6 +53,12 @@
 		else if(!isnull(encumbrance_registered))
 			L.adjust_current_carry_encumbrance(-encumbrance_registered)
 			encumbrance_registered = null
+	// fire signals
+	SEND_SIGNAL(src, COMSIG_ITEM_UNEQUIPPED, user, slot, flags)
+	SEND_SIGNAL(user, COMSIG_MOB_ITEM_UNEQUIPPED, src, slot, flags)
+
+	if(!(flags & INV_OP_DIRECTLY_DROPPING) && (slot != SLOT_ID_HANDS) && unequip_sound)
+		playsound(src, unequip_sound, 30, ignore_walls = FALSE)
 
 /**
  * called when a mob drops an item
@@ -67,38 +71,37 @@
 /obj/item/proc/dropped(mob/user, flags, atom/newLoc)
 	SHOULD_CALL_PARENT(TRUE)
 
-	vis_flags &= ~(VIS_INHERIT_LAYER | VIS_INHERIT_PLANE)
+	// unset things
 	item_flags &= ~ITEM_IN_INVENTORY
-
-	. = SEND_SIGNAL(src, COMSIG_ITEM_DROPPED, user, flags, newLoc)
-	SEND_SIGNAL(user, COMSIG_MOB_ITEM_DROPPED, src, flags, newLoc)
-
-	if(!(flags & INV_OP_SUPPRESS_SOUND) && isturf(newLoc) && !(. & COMPONENT_ITEM_DROPPED_SUPPRESS_SOUND))
-		playsound(src, drop_sound, 30, ignore_walls = FALSE)
-	// user?.update_equipment_speed_mods()
-	if(zoom)
-		zoom() //binoculars, scope, etc
-
-	// unload actions
-	unregister_item_actions(user)
-
+	vis_flags &= ~(VIS_INHERIT_LAYER | VIS_INHERIT_PLANE)
 	// clear carry
 	if(isliving(user))
 		var/mob/living/L = user
 		L.adjust_current_carry_weight(-weight_registered)
 	weight_registered = null
-
+	// unload actions
+	unregister_item_actions(user)
 	// close context menus
 	context_close()
-
 	// storage stuff
 	obj_storage?.on_dropped(user)
-
 	// get rid of shieldcalls
 	for(var/datum/shieldcall/shieldcall as anything in shieldcalls)
 		if(!shieldcall.shields_in_inventory)
 			continue
 		user.unregister_shieldcall(shieldcall)
+
+	//! LEGACY
+	if(!(flags & INV_OP_SUPPRESS_SOUND) && isturf(newLoc) && !(. & COMPONENT_ITEM_DROPPED_SUPPRESS_SOUND))
+		playsound(src, drop_sound, 30, ignore_walls = FALSE)
+	// user?.update_equipment_speed_mods()
+	if(zoom)
+		zoom() //binoculars, scope, etc
+	//! END
+
+	// fire signals
+	. = SEND_SIGNAL(src, COMSIG_ITEM_DROPPED, user, flags, newLoc)
+	SEND_SIGNAL(user, COMSIG_MOB_ITEM_DROPPED, src, flags, newLoc)
 
 	if((item_flags & ITEM_DROPDEL) && !(flags & INV_OP_DELETING))
 		qdel(src)
@@ -114,42 +117,41 @@
 /obj/item/proc/pickup(mob/user, flags, atom/oldLoc)
 	SHOULD_CALL_PARENT(TRUE)
 
+	// set things
+	item_flags |= ITEM_IN_INVENTORY
+	vis_flags |= (VIS_INHERIT_LAYER | VIS_INHERIT_PLANE)
 	// we load the component here as it hooks equipped,
 	// so loading it here means it can still handle the equipped signal.
 	if(passive_parry)
 		LoadComponent(/datum/component/passive_parry, passive_parry)
 
-	SEND_SIGNAL(src, COMSIG_ITEM_PICKUP, user, flags, oldLoc)
-	SEND_SIGNAL(user, COMSIG_MOB_ITEM_PICKUP, src, flags, oldLoc)
-
-	reset_pixel_offsets()
-	hud_layerise()
-
-	item_flags |= ITEM_IN_INVENTORY
-	vis_flags |= (VIS_INHERIT_LAYER | VIS_INHERIT_PLANE)
-
-	// todo: should this be here
-	transform = null
-	if(isturf(oldLoc) && !(flags & (INV_OP_SILENT | INV_OP_DIRECTLY_EQUIPPING)))
-		playsound(src, pickup_sound, 20, ignore_walls = FALSE)
-
+	// load action buttons
+	register_item_actions(user)
 	// register carry
 	weight_registered = get_weight()
 	if(isliving(user))
 		var/mob/living/L = user
 		L.adjust_current_carry_weight(weight_registered)
-
-	// storage stuff
-	obj_storage?.on_pickup(user)
-
 	// register shieldcalls
 	for(var/datum/shieldcall/shieldcall as anything in shieldcalls)
 		if(!shieldcall.shields_in_inventory)
 			continue
 		user.register_shieldcall(shieldcall)
+	// storage stuff
+	obj_storage?.on_pickup(user)
 
-	// load action buttons
-	register_item_actions(user)
+	//! LEGACY
+	reset_pixel_offsets()
+	hud_layerise()
+	// todo: should this be here
+	transform = null
+	if(isturf(oldLoc) && !(flags & (INV_OP_SILENT | INV_OP_DIRECTLY_EQUIPPING)))
+		playsound(src, pickup_sound, 20, ignore_walls = FALSE)
+	//! END
+
+	// fire signals
+	SEND_SIGNAL(src, COMSIG_ITEM_PICKUP, user, flags, oldLoc)
+	SEND_SIGNAL(user, COMSIG_MOB_ITEM_PICKUP, src, flags, oldLoc)
 
 //* Access *//
 

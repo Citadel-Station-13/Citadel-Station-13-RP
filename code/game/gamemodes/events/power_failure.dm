@@ -7,7 +7,7 @@
 
 	for(var/obj/machinery/power/smes/S in GLOB.machines)
 		var/area/current_area = get_area(S)
-		if(current_area.type in skipped_areas || !(S.z in (LEGACY_MAP_DATUM).station_levels))
+		if((current_area.type in skipped_areas) || !(S.z in (LEGACY_MAP_DATUM).station_levels))
 			continue
 		S.last_charge			= S.charge
 		S.last_output_attempt	= S.output_attempt
@@ -34,7 +34,7 @@
 			C.cell.charge = C.cell.maxcharge
 	for(var/obj/machinery/power/smes/S in GLOB.machines)
 		var/area/current_area = get_area(S)
-		if(current_area.type in skipped_areas || isNotStationLevel(S.z))
+		if((current_area.type in skipped_areas) || isNotStationLevel(S.z))
 			continue
 		if(S.powerout_holders_used)
 			S.charge = S.last_charge

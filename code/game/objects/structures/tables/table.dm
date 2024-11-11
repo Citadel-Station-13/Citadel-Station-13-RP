@@ -25,8 +25,8 @@ var/list/table_icon_cache = list()
 	material_parts = MATERIAL_DEFAULT_ABSTRACTED
 	material_primary = "base"
 
-	var/datum/material/material_base
-	var/datum/material/material_reinforcing
+	var/datum/prototype/material/material_base
+	var/datum/prototype/material/material_reinforcing
 
 	var/flipped = 0
 

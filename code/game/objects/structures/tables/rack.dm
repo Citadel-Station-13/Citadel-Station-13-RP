@@ -9,7 +9,7 @@
 	can_reinforce = 0
 	can_deconstruct = TRUE
 	is_not_a_table = TRUE
-	material_base = /datum/material/steel
+	material_base = /datum/prototype/material/steel
 	flipped = -1
 	item_pixel_place = FALSE
 	base_name = "rack"

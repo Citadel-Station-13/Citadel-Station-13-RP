@@ -160,9 +160,11 @@
 
 /obj/item/ammo_magazine/a5_7mm/p90
 	name = "high capacity top mounted magazine (5.7x28mm armor-piercing)"
+	icon = 'icons/modules/projectiles/magazines/old_magazine_stick.dmi'
 	icon_state = "p90-1"
 	base_icon_state = "p90"
 	rendering_system = GUN_RENDERING_STATES
+	rendering_count = 1
 	ammo_preload = /obj/item/ammo_casing/a5_7mm/ap
 	ammo_max = 50
 

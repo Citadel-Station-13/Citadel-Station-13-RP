@@ -59,7 +59,7 @@
 
 /obj/item/integrated_circuit/manipulation/anchoring/remove(mob/user, silent, index)
 	if(assembly.anchored_by == src)
-		silent ? null : to_chat(SPAN_WARNING("With the bolts deployed you can't remove the circuit."))
+		silent ? null : to_chat(user, SPAN_WARNING("With the bolts deployed you can't remove the circuit."))
 		return
 	. = ..()
 
@@ -495,17 +495,17 @@
 	ext_cooldown = 1
 	cooldown_per_use = 10
 	var/static/list/mtypes = list(
-		/datum/material/iron,
-		/datum/material/glass,
-		/datum/material/silver,
-		/datum/material/gold,
-		/datum/material/diamond,
-		/datum/material/uranium,
-		/datum/material/plasma,
-		/datum/material/bluespace,
-		/datum/material/bananium,
-		/datum/material/titanium,
-		/datum/material/plastic
+		/datum/prototype/material/iron,
+		/datum/prototype/material/glass,
+		/datum/prototype/material/silver,
+		/datum/prototype/material/gold,
+		/datum/prototype/material/diamond,
+		/datum/prototype/material/uranium,
+		/datum/prototype/material/plasma,
+		/datum/prototype/material/bluespace,
+		/datum/prototype/material/bananium,
+		/datum/prototype/material/titanium,
+		/datum/prototype/material/plastic
 		)
 
 /obj/item/integrated_circuit/manipulation/matman/ComponentInitialize()
@@ -517,7 +517,7 @@
 	var/datum/component/material_container/materials = GetComponent(/datum/component/material_container)
 	set_pin_data(IC_OUTPUT, 2, materials.total_amount)
 	for(var/I in 1 to mtypes.len)
-		var/datum/material/M = materials.materials[SSmaterials.GetMaterialRef(I)]
+		var/datum/prototype/material/M = materials.materials[SSmaterials.GetMaterialRef(I)]
 		var/amount = materials[M]
 		if(M)
 			set_pin_data(IC_OUTPUT, I+2, amount)
@@ -548,7 +548,7 @@
 			var/datum/component/material_container/mt = H.GetComponent(/datum/component/material_container)
 			var/suc
 			for(var/I in 1 to mtypes.len)
-				var/datum/material/M = materials.materials[mtypes[I]]
+				var/datum/prototype/material/M = materials.materials[mtypes[I]]
 				if(M)
 					var/U = clamp(get_pin_data(IC_INPUT, I+2),-100000,100000)
 					if(!U)

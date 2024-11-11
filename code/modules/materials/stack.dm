@@ -8,10 +8,10 @@
  * @params
  * * material_like - material instance, type, or id. If left out, this proc returns TRUE if we are a material stack of any kind.
  */
-/obj/item/proc/is_material_stack_of(datum/material/material_like)
+/obj/item/proc/is_material_stack_of(datum/prototype/material/material_like)
 	return FALSE
 
-/obj/item/stack/material/is_material_stack_of(datum/material/material_like)
+/obj/item/stack/material/is_material_stack_of(datum/prototype/material/material_like)
 	if(istype(material_like))
 		return material == material_like
 	else if(ispath(material_like))
@@ -28,10 +28,10 @@
  * @params
  * * material_like - material instance, type, or id. If left out, this proc returns TRUE if we are a material stack of any kind.
  */
-/obj/item/proc/is_material_stack_of_fuzzy(datum/material/material_like)
+/obj/item/proc/is_material_stack_of_fuzzy(datum/prototype/material/material_like)
 	return FALSE
 
-/obj/item/stack/material/is_material_stack_of_fuzzy(datum/material/material_like)
+/obj/item/stack/material/is_material_stack_of_fuzzy(datum/prototype/material/material_like)
 	if(istype(material_like))
 		return material == material_like
 	else if(ispath(material_like))

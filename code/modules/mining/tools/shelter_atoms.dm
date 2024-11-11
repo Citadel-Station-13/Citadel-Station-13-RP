@@ -158,7 +158,7 @@
 	icon_state = "table"
 	can_reinforce = FALSE
 	can_plate = FALSE
-	material_base = /datum/material/steel
+	material_base = /datum/prototype/material/steel
 
 /obj/structure/table/survival_pod/update_icon()
 	. = ..()

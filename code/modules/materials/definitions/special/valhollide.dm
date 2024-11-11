@@ -1,4 +1,4 @@
-/datum/material/valhollide
+/datum/prototype/material/valhollide
 	name = MAT_VALHOLLIDE
 	id = MAT_VALHOLLIDE
 	stack_type = /obj/item/stack/material/valhollide
