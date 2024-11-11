@@ -1,22 +1,16 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
-"aT" = (
-/obj/structure/bed/chair{
-	dir = 8
-	},
-/obj/structure/bed/chair{
-	dir = 8
+"aX" = (
+/obj/structure/window/reinforced/survival_pod{
+	dir = 6
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/space)
-"bD" = (
-/obj/structure/table/rack/shelf/steel,
-/obj/item/gun/ballistic/automatic/p90/custom,
-/obj/item/gun/ballistic/automatic/p90/custom,
-/obj/item/gun/ballistic/automatic/p90/custom,
-/obj/item/gun/ballistic/automatic/p90/custom,
-/obj/item/gun/ballistic/automatic/p90/custom,
-/turf/simulated/floor/tiled/techfloor,
-/area/space)
+/area/admin_planet/fey_forest/gateway_facility)
+"bH" = (
+/obj/machinery/light/spot{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/monodark,
+/area/admin_planet/fey_forest/gateway_facility)
 "bO" = (
 /obj/machinery/porta_turret/crescent{
 	density = 1
@@ -32,27 +26,148 @@
 	dir = 9
 	},
 /turf/simulated/floor/reinforced,
-/area/space)
-"eK" = (
+/area/admin_planet/fey_forest/gateway_facility)
+"bS" = (
 /obj/structure/table/rack/shelf/steel,
-/obj/item/ammo_magazine/a5_7mm/p90/hunter,
-/obj/item/ammo_magazine/a5_7mm/p90/hunter,
-/obj/item/ammo_magazine/a5_7mm/p90/hunter,
-/obj/item/ammo_magazine/a5_7mm/p90/hunter,
-/obj/item/ammo_magazine/a5_7mm/p90/hunter,
-/obj/item/ammo_magazine/a5_7mm/p90/hunter,
-/obj/item/ammo_magazine/a5_7mm/p90/hunter,
-/obj/item/ammo_magazine/a5_7mm/p90/hunter,
-/obj/item/ammo_magazine/a5_7mm/p90/hunter,
-/obj/item/ammo_magazine/a5_7mm/p90/hunter,
-/obj/item/ammo_magazine/a5_7mm/p90/hunter,
-/obj/item/ammo_magazine/a5_7mm/p90/hunter,
+/obj/item/storage/hypokit/advanced/loaded{
+	pixel_y = -7
+	},
+/obj/item/storage/hypokit/advanced/loaded,
 /turf/simulated/floor/tiled/techfloor,
-/area/space)
-"fO" = (
-/obj/structure/table/wooden_reinforced,
+/area/admin_planet/fey_forest/gateway_facility)
+"di" = (
+/obj/structure/table/rack/shelf/steel,
+/obj/item/gun/energy/phasegun{
+	pixel_y = -6
+	},
+/obj/item/gun/energy/phasegun,
+/obj/item/gun/energy/phasegun{
+	pixel_y = 6
+	},
+/obj/item/gun/energy/phasegun{
+	pixel_y = 6
+	},
+/obj/item/gun/energy/phasegun{
+	pixel_y = 6
+	},
+/obj/item/gun/energy/phasegun{
+	pixel_y = 6
+	},
+/obj/item/gun/energy/phasegun{
+	pixel_y = -6
+	},
+/obj/item/gun/energy/phasegun{
+	pixel_y = -6
+	},
+/obj/item/gun/energy/phasegun{
+	pixel_y = -6
+	},
+/obj/item/gun/energy/phasegun{
+	pixel_y = -6
+	},
+/obj/item/gun/energy/phasegun,
+/obj/item/gun/energy/phasegun,
+/obj/item/gun/energy/phasegun,
+/obj/item/gun/energy/phasegun,
+/obj/machinery/recharger/wallcharger{
+	pixel_y = 26
+	},
+/obj/machinery/recharger/wallcharger{
+	pixel_y = 34
+	},
 /turf/simulated/floor/tiled/techfloor,
+/area/admin_planet/fey_forest/gateway_facility)
+"dI" = (
+/obj/structure/flora/tree/fey/small_tree/tree1,
+/turf/simulated/floor/fey/forest_grass,
 /area/space)
+"eC" = (
+/turf/simulated/floor/fey/dry_grass,
+/area/admin_planet/fey_forest/gateway_facility)
+"fz" = (
+/obj/structure/flora/tree/fey/small_tree/tree5,
+/turf/simulated/floor/fey/forest_grass,
+/area/space)
+"fD" = (
+/obj/structure/table/rack/shelf/steel,
+/obj/item/clothing/under/laconic{
+	name = "expeditionary field suit"
+	},
+/obj/item/clothing/under/laconic{
+	name = "expeditionary field suit"
+	},
+/obj/item/clothing/under/laconic{
+	name = "expeditionary field suit"
+	},
+/obj/item/clothing/under/laconic{
+	name = "expeditionary field suit"
+	},
+/obj/item/clothing/under/laconic{
+	name = "expeditionary field suit"
+	},
+/obj/item/clothing/under/laconic{
+	name = "expeditionary field suit"
+	},
+/obj/item/clothing/under/laconic{
+	name = "expeditionary field suit"
+	},
+/obj/item/clothing/under/laconic{
+	name = "expeditionary field suit"
+	},
+/obj/item/clothing/under/laconic{
+	name = "expeditionary field suit"
+	},
+/obj/item/clothing/under/laconic{
+	name = "expeditionary field suit"
+	},
+/obj/item/clothing/under/laconic{
+	name = "expeditionary field suit"
+	},
+/obj/item/clothing/under/laconic{
+	name = "expeditionary field suit"
+	},
+/obj/item/clothing/under/laconic{
+	name = "expeditionary field suit"
+	},
+/obj/item/clothing/under/laconic{
+	name = "expeditionary field suit"
+	},
+/obj/item/clothing/under/laconic{
+	name = "expeditionary field suit"
+	},
+/obj/item/clothing/under/laconic{
+	name = "expeditionary field suit"
+	},
+/obj/item/clothing/under/laconic{
+	name = "expeditionary field suit"
+	},
+/obj/item/clothing/under/laconic{
+	name = "expeditionary field suit"
+	},
+/obj/item/clothing/under/laconic{
+	name = "expeditionary field suit"
+	},
+/obj/item/clothing/under/laconic{
+	name = "expeditionary field suit"
+	},
+/turf/simulated/floor/tiled/kafel_full/green,
+/area/admin_planet/fey_forest/gateway_facility)
+"go" = (
+/obj/structure/dispenser/oxygen{
+	density = 0;
+	pixel_x = 24
+	},
+/turf/simulated/floor/tiled/kafel_full/gray,
+/area/admin_planet/fey_forest/gateway_facility)
+"gA" = (
+/obj/machinery/light/spot{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/admin_planet/fey_forest/gateway_facility)
+"hj" = (
+/turf/simulated/floor/tiled/monodark,
+/area/admin_planet/fey_forest/gateway_facility)
 "hD" = (
 /obj/machinery/gateway{
 	dir = 8
@@ -61,72 +176,367 @@
 	dir = 8
 	},
 /turf/simulated/floor/reinforced,
-/area/space)
+/area/admin_planet/fey_forest/gateway_facility)
+"il" = (
+/obj/machinery/light/spot{
+	dir = 4
+	},
+/turf/simulated/floor/fey/forest_grass,
+/area/admin_planet/fey_forest/gateway_facility)
 "io" = (
-/obj/item/bedsheet/medical,
-/obj/structure/bed/padded,
+/obj/structure/table/rack/shelf/steel,
+/obj/item/storage/belt/utility/full,
+/obj/item/storage/belt/utility/full{
+	pixel_y = 6
+	},
+/obj/item/storage/belt/utility/full{
+	pixel_y = -5
+	},
+/obj/item/storage/belt/utility/full{
+	pixel_y = 6
+	},
+/obj/item/storage/belt/utility/full{
+	pixel_y = -5
+	},
+/obj/item/storage/belt/utility/full,
+/obj/item/storage/belt/utility/full{
+	pixel_y = 6
+	},
 /turf/simulated/floor/tiled/techfloor,
-/area/space)
-"iz" = (
-/obj/structure/bed/chair/office/dark,
+/area/admin_planet/fey_forest/gateway_facility)
+"iO" = (
+/obj/machinery/light/spot{
+	dir = 8
+	},
 /turf/simulated/floor/reinforced,
-/area/space)
+/area/admin_planet/fey_forest/gateway_facility)
+"iY" = (
+/obj/machinery/light/spot{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/kafel_full/blue,
+/area/admin_planet/fey_forest/gateway_facility)
 "jm" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/rack/shelf/steel,
+/obj/item/inducer{
+	pixel_y = -3
+	},
+/obj/item/stack/material/steel{
+	amount = 50
+	},
+/obj/item/duct_tape_roll{
+	amount = 50
+	},
+/obj/item/weldingtool/largetank,
 /turf/simulated/floor/tiled/techfloor,
-/area/space)
+/area/admin_planet/fey_forest/gateway_facility)
 "jq" = (
-/obj/structure/catwalk,
-/turf/simulated/floor/plating,
-/area/space)
+/obj/machinery/door/airlock/highsecurity{
+	req_one_access = null;
+	name = "Airlock"
+	},
+/obj/structure/atmospheric_retention_field{
+	color = "#8B0000";
+	name = "military grade atmospheric retention field"
+	},
+/turf/simulated/floor/reinforced,
+/area/admin_planet/fey_forest/gateway_facility)
 "jx" = (
 /turf/simulated/floor/fey/forest_grass,
 /area/space)
-"lr" = (
+"jL" = (
+/obj/structure/table/rack/steel,
+/obj/item/hand_labeler,
+/obj/item/hand_labeler{
+	pixel_y = -4
+	},
+/obj/item/hand_labeler{
+	pixel_y = -8
+	},
+/obj/item/hand_labeler,
+/obj/item/hand_labeler,
+/obj/item/hand_labeler,
+/obj/item/hand_labeler,
+/obj/item/hand_labeler{
+	pixel_y = -4
+	},
+/obj/item/hand_labeler{
+	pixel_y = -4
+	},
+/obj/item/hand_labeler{
+	pixel_y = -4
+	},
+/obj/item/hand_labeler{
+	pixel_y = -4
+	},
+/obj/item/hand_labeler{
+	pixel_y = -8
+	},
+/obj/item/hand_labeler{
+	pixel_y = -8
+	},
+/obj/item/hand_labeler{
+	pixel_y = -8
+	},
+/obj/item/hand_labeler{
+	pixel_y = -8
+	},
+/turf/simulated/floor/tiled/kafel_full/blue,
+/area/admin_planet/fey_forest/gateway_facility)
+"kv" = (
+/obj/machinery/light/spot,
+/turf/simulated/floor/tiled/kafel_full/gray,
+/area/admin_planet/fey_forest/gateway_facility)
+"lk" = (
 /obj/structure/table/rack/shelf/steel,
-/obj/item/gun/ballistic/automatic/sts35,
+/obj/item/gun/energy/phasegun/pistol{
+	pixel_y = -2
+	},
+/obj/item/gun/energy/phasegun/pistol{
+	pixel_y = 7
+	},
+/obj/item/gun/energy/phasegun/pistol{
+	pixel_y = 7
+	},
+/obj/item/gun/energy/phasegun/pistol{
+	pixel_y = 7
+	},
+/obj/item/gun/energy/phasegun/pistol{
+	pixel_y = 7
+	},
+/obj/item/gun/energy/phasegun/pistol{
+	pixel_y = 7
+	},
+/obj/item/gun/energy/phasegun/pistol{
+	pixel_y = -2
+	},
+/obj/item/gun/energy/phasegun/pistol{
+	pixel_y = -2
+	},
+/obj/item/gun/energy/phasegun/pistol{
+	pixel_y = -2
+	},
+/obj/item/gun/energy/phasegun/pistol{
+	pixel_y = -2
+	},
+/obj/item/gun/energy/phasegun/pistol{
+	pixel_y = -2
+	},
+/obj/item/gun/energy/phasegun/pistol{
+	pixel_y = -2
+	},
+/obj/item/gun/energy/phasegun/pistol{
+	pixel_y = 7
+	},
+/obj/item/gun/energy/phasegun/pistol{
+	pixel_y = 7
+	},
+/obj/machinery/recharger/wallcharger{
+	pixel_y = 26
+	},
+/obj/machinery/recharger/wallcharger{
+	pixel_y = 34
+	},
 /turf/simulated/floor/tiled/techfloor,
-/area/space)
+/area/admin_planet/fey_forest/gateway_facility)
+"lW" = (
+/obj/machinery/shower{
+	dir = 4
+	},
+/turf/simulated/floor/reinforced,
+/area/admin_planet/fey_forest/gateway_facility)
+"mN" = (
+/obj/structure/closet/secure_closet/personal,
+/turf/simulated/floor/tiled/kafel_full/blue,
+/area/admin_planet/fey_forest/gateway_facility)
+"nB" = (
+/obj/machinery/shower{
+	dir = 8
+	},
+/turf/simulated/floor/reinforced,
+/area/admin_planet/fey_forest/gateway_facility)
 "nR" = (
-/obj/structure/table/rack/shelf/steel,
-/obj/item/ammo_magazine/a5_56mm/ap/ext,
-/obj/item/ammo_magazine/a5_56mm/ap/ext,
-/obj/item/ammo_magazine/a5_56mm/ap/ext,
-/obj/item/ammo_magazine/a5_56mm/ap/ext,
-/obj/item/ammo_magazine/a5_56mm/ap/ext,
-/obj/item/ammo_magazine/a5_56mm/ap/ext,
-/obj/item/ammo_magazine/a5_56mm/ap/ext,
-/obj/item/ammo_magazine/a5_56mm/ap/ext,
-/obj/item/ammo_magazine/a5_56mm/ap/ext,
-/turf/simulated/floor/tiled/techfloor,
-/area/space)
-"pd" = (
-/obj/structure/table/steel_reinforced,
-/obj/item/storage/firstaid/adv,
-/obj/item/storage/firstaid/adv,
-/turf/simulated/floor/tiled/techfloor,
-/area/space)
+/obj/machinery/power/rtg/fake_gen,
+/obj/structure/cable/orange,
+/obj/structure/cable/orange{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/event/concrete,
+/area/admin_planet/fey_forest/gateway_facility)
+"nY" = (
+/turf/simulated/floor/tiled/kafel_full/green,
+/area/admin_planet/fey_forest/gateway_facility)
+"om" = (
+/obj/machinery/light/spot{
+	dir = 1
+	},
+/turf/simulated/floor/event/concrete,
+/area/admin_planet/fey_forest/gateway_facility)
+"oM" = (
+/obj/structure/bed/chair/office{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/dark,
+/area/admin_planet/fey_forest/gateway_facility)
 "pn" = (
-/turf/simulated/wall/fey/forest_wall,
+/turf/simulated/wall/fey/forest_wall{
+	color = "#D3D3D3"
+	},
 /area/space)
+"qc" = (
+/obj/structure/table/rack/shelf/steel,
+/obj/item/clothing/shoes/boots/laconic{
+	name = "expeditionary field boots"
+	},
+/obj/item/clothing/shoes/boots/laconic{
+	name = "expeditionary field boots"
+	},
+/obj/item/clothing/shoes/boots/laconic{
+	name = "expeditionary field boots"
+	},
+/obj/item/clothing/shoes/boots/laconic{
+	name = "expeditionary field boots"
+	},
+/obj/item/clothing/shoes/boots/laconic{
+	name = "expeditionary field boots"
+	},
+/obj/item/clothing/shoes/boots/laconic{
+	name = "expeditionary field boots"
+	},
+/obj/item/clothing/shoes/boots/laconic{
+	name = "expeditionary field boots"
+	},
+/obj/item/clothing/shoes/boots/laconic{
+	name = "expeditionary field boots"
+	},
+/obj/item/clothing/shoes/boots/laconic{
+	name = "expeditionary field boots"
+	},
+/obj/item/clothing/shoes/boots/laconic{
+	name = "expeditionary field boots"
+	},
+/obj/item/clothing/shoes/boots/laconic{
+	name = "expeditionary field boots"
+	},
+/obj/item/clothing/shoes/boots/laconic{
+	name = "expeditionary field boots"
+	},
+/obj/item/clothing/shoes/boots/laconic{
+	name = "expeditionary field boots"
+	},
+/obj/item/clothing/shoes/boots/laconic{
+	name = "expeditionary field boots"
+	},
+/obj/item/clothing/shoes/boots/laconic{
+	name = "expeditionary field boots"
+	},
+/obj/item/clothing/shoes/boots/laconic{
+	name = "expeditionary field boots"
+	},
+/obj/item/clothing/shoes/boots/laconic{
+	name = "expeditionary field boots"
+	},
+/obj/item/clothing/shoes/boots/laconic{
+	name = "expeditionary field boots"
+	},
+/obj/item/clothing/shoes/boots/laconic{
+	name = "expeditionary field boots"
+	},
+/obj/item/clothing/shoes/boots/laconic{
+	name = "expeditionary field boots"
+	},
+/turf/simulated/floor/tiled/kafel_full/green,
+/area/admin_planet/fey_forest/gateway_facility)
+"qm" = (
+/obj/machinery/light/spot{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/admin_planet/fey_forest/gateway_facility)
 "qF" = (
-/obj/structure/table/rack/shelf/steel,
-/obj/item/clothing/suit/armor/vest/alt,
-/obj/item/clothing/suit/armor/vest/alt,
+/obj/machinery/suit_cycler/medical{
+	name = "Biohazard Suit Cycler";
+	density = 0;
+	pixel_x = 18
+	},
+/turf/simulated/floor/tiled/kafel_full/green,
+/area/admin_planet/fey_forest/gateway_facility)
+"qG" = (
 /turf/simulated/floor/tiled/techfloor,
-/area/space)
-"sg" = (
-/obj/structure/table/rack/shelf/steel,
-/obj/item/gun/energy/frontier,
-/obj/item/gun/energy/frontier,
-/obj/item/gun/energy/frontier,
+/area/admin_planet/fey_forest/gateway_facility)
+"sy" = (
+/obj/structure/window/reinforced/survival_pod{
+	dir = 10
+	},
 /turf/simulated/floor/tiled/techfloor,
-/area/space)
+/area/admin_planet/fey_forest/gateway_facility)
 "tn" = (
-/obj/structure/table/steel_reinforced,
-/obj/item/storage/firstaid/combat,
+/obj/structure/table/rack/shelf/steel,
+/obj/machinery/recharger/wallcharger{
+	pixel_y = 26
+	},
+/obj/machinery/recharger/wallcharger{
+	pixel_y = 34
+	},
+/obj/item/gun/energy/frontier/locked/holdout,
+/obj/item/gun/energy/frontier/locked/holdout{
+	pixel_y = -6
+	},
+/obj/item/gun/energy/frontier/locked/holdout{
+	pixel_y = 7
+	},
+/obj/item/gun/energy/frontier/locked/holdout{
+	pixel_y = 7
+	},
+/obj/item/gun/energy/frontier/locked/holdout{
+	pixel_y = -6
+	},
+/obj/item/gun/energy/frontier/locked/holdout,
+/obj/item/gun/energy/frontier/locked/holdout,
+/obj/item/gun/energy/frontier/locked/holdout{
+	pixel_y = -6
+	},
+/obj/item/gun/energy/frontier/locked/holdout{
+	pixel_y = 7
+	},
+/obj/item/gun/energy/frontier/locked/holdout{
+	pixel_y = 7
+	},
+/obj/item/gun/energy/frontier/locked/holdout{
+	pixel_y = -6
+	},
+/obj/item/gun/energy/frontier/locked/holdout,
+/obj/item/gun/energy/frontier/locked/holdout{
+	pixel_y = 7
+	},
 /turf/simulated/floor/tiled/techfloor,
+/area/admin_planet/fey_forest/gateway_facility)
+"tv" = (
+/obj/structure/closet/crate/freezer/rations,
+/turf/simulated/floor/tiled/techfloor,
+/area/admin_planet/fey_forest/gateway_facility)
+"tL" = (
+/obj/structure/window/reinforced/survival_pod{
+	dir = 8
+	},
+/obj/structure/window/reinforced/survival_pod,
+/turf/simulated/floor/tiled/techfloor,
+/area/admin_planet/fey_forest/gateway_facility)
+"tU" = (
+/obj/structure/flora/tree/fey/small_tree/tree7,
+/turf/simulated/floor/fey/forest_grass,
 /area/space)
+"tY" = (
+/obj/machinery/power/rtg/fake_gen,
+/obj/structure/cable/orange,
+/obj/structure/cable/orange{
+	icon_state = "1-2"
+	},
+/obj/machinery/light/spot{
+	dir = 8
+	},
+/turf/simulated/floor/event/concrete,
+/area/admin_planet/fey_forest/gateway_facility)
 "uv" = (
 /obj/machinery/porta_turret/crescent{
 	density = 1
@@ -142,19 +552,46 @@
 	dir = 5
 	},
 /turf/simulated/floor/reinforced,
-/area/space)
-"uK" = (
-/obj/structure/table/rack/shelf/steel,
-/turf/simulated/floor/tiled/techfloor,
-/area/space)
-"wI" = (
-/obj/structure/sandbag,
+/area/admin_planet/fey_forest/gateway_facility)
+"uP" = (
+/turf/simulated/floor/reinforced,
+/area/admin_planet/fey_forest/gateway_facility)
+"uR" = (
+/obj/structure/flora/tree/fey/large_tree/tree1,
 /turf/simulated/floor/fey/forest_grass,
 /area/space)
+"wd" = (
+/obj/machinery/power/apc/talon/hyper/west_mount,
+/obj/structure/cable/orange{
+	icon_state = "2-8"
+	},
+/obj/structure/cable/orange{
+	icon_state = "1-8"
+	},
+/obj/structure/cable/orange{
+	icon_state = "4-8"
+	},
+/obj/structure/cable/orange{
+	dir = 4
+	},
+/turf/simulated/floor/event/concrete,
+/area/admin_planet/fey_forest/gateway_facility)
+"wI" = (
+/turf/simulated/wall/r_wall/prepainted,
+/area/admin_planet/fey_forest/gateway_facility)
 "wR" = (
 /obj/effect/floor_decal/industrial/warning,
 /turf/simulated/floor/reinforced,
-/area/space)
+/area/admin_planet/fey_forest/gateway_facility)
+"xu" = (
+/obj/machinery/porta_turret/crescent{
+	density = 1
+	},
+/turf/simulated/floor/event/concrete,
+/area/admin_planet/fey_forest/gateway_facility)
+"xD" = (
+/turf/simulated/floor/tiled/dark,
+/area/admin_planet/fey_forest/gateway_facility)
 "yq" = (
 /obj/machinery/porta_turret/crescent{
 	density = 1
@@ -170,21 +607,89 @@
 	dir = 6
 	},
 /turf/simulated/floor/reinforced,
-/area/space)
+/area/admin_planet/fey_forest/gateway_facility)
+"yG" = (
+/obj/machinery/power/smes/buildable/point_of_interest,
+/turf/simulated/floor/event/concrete,
+/area/admin_planet/fey_forest/gateway_facility)
 "zd" = (
-/obj/structure/medical_stand,
+/obj/machinery/vending/medical,
 /turf/simulated/floor/tiled/techfloor,
-/area/space)
+/area/admin_planet/fey_forest/gateway_facility)
+"zg" = (
+/obj/structure/table/rack/shelf/steel,
+/obj/item/clothing/head/helmet/space/void/medical/bio,
+/obj/item/clothing/head/helmet/space/void/medical/bio,
+/obj/item/clothing/head/helmet/space/void/medical/bio,
+/obj/item/clothing/head/helmet/space/void/medical/bio,
+/obj/item/clothing/head/helmet/space/void/medical/bio,
+/obj/item/clothing/head/helmet/space/void/medical/bio,
+/obj/item/clothing/head/helmet/space/void/medical/bio,
+/obj/item/clothing/head/helmet/space/void/medical/bio,
+/obj/item/clothing/head/helmet/space/void/medical/bio,
+/obj/item/clothing/head/helmet/space/void/medical/bio,
+/obj/item/clothing/head/helmet/space/void/medical/bio,
+/obj/item/clothing/head/helmet/space/void/medical/bio,
+/obj/item/clothing/head/helmet/space/void/medical/bio,
+/obj/item/clothing/head/helmet/space/void/medical/bio,
+/obj/item/clothing/head/helmet/space/void/medical/bio,
+/obj/item/clothing/head/helmet/space/void/medical/bio,
+/obj/item/clothing/head/helmet/space/void/medical/bio,
+/obj/item/clothing/head/helmet/space/void/medical/bio,
+/obj/item/clothing/head/helmet/space/void/medical/bio,
+/obj/item/clothing/head/helmet/space/void/medical/bio,
+/turf/simulated/floor/tiled/kafel_full/green,
+/area/admin_planet/fey_forest/gateway_facility)
 "zs" = (
-/obj/structure/bed/chair{
-	dir = 8
+/obj/machinery/door/airlock/centcom{
+	req_one_access = null;
+	name = "Equipment Prep"
 	},
-/turf/simulated/floor/tiled/techfloor,
+/turf/simulated/floor/tiled/monodark,
+/area/admin_planet/fey_forest/gateway_facility)
+"zA" = (
+/obj/structure/flora/tree/fey/large_tree/tree7,
+/turf/simulated/floor/fey/forest_grass,
 /area/space)
 "zJ" = (
-/obj/machinery/door/airlock/hatch,
+/obj/machinery/door/airlock/centcom{
+	req_one_access = null;
+	name = "Orientation"
+	},
 /turf/simulated/floor/tiled/techfloor,
+/area/admin_planet/fey_forest/gateway_facility)
+"zZ" = (
+/turf/simulated/floor/fey/forest_grass,
+/area/admin_planet/fey_forest/gateway_facility)
+"Ae" = (
+/obj/machinery/door/airlock/highsecurity{
+	req_one_access = null;
+	name = "Airlock"
+	},
+/obj/structure/atmospheric_retention_field{
+	color = "#8B0000";
+	name = "military grade atmospheric retention field"
+	},
+/obj/structure/catwalk,
+/turf/simulated/floor/reinforced,
+/area/admin_planet/fey_forest/gateway_facility)
+"Ap" = (
+/obj/structure/table/rack/shelf/steel,
+/obj/item/defib_kit/compact/combat/loaded{
+	pixel_y = -5
+	},
+/obj/item/defib_kit/compact/combat/loaded{
+	pixel_y = 7
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/admin_planet/fey_forest/gateway_facility)
+"Aq" = (
+/obj/structure/flora/tree/fey/small_tree/tree2,
+/turf/simulated/floor/fey/forest_grass,
 /area/space)
+"AB" = (
+/turf/simulated/floor/event/concrete,
+/area/admin_planet/fey_forest/gateway_facility)
 "AP" = (
 /obj/machinery/gateway{
 	dir = 9
@@ -193,29 +698,53 @@
 	dir = 9
 	},
 /turf/simulated/floor/reinforced,
-/area/space)
-"Bq" = (
-/obj/structure/sandbag,
-/obj/structure/sandbag,
-/turf/simulated/floor/fey/forest_grass,
-/area/space)
+/area/admin_planet/fey_forest/gateway_facility)
+"By" = (
+/obj/machinery/vending/blood,
+/turf/simulated/floor/tiled/techfloor,
+/area/admin_planet/fey_forest/gateway_facility)
 "BA" = (
 /obj/machinery/gateway,
 /turf/simulated/floor/reinforced,
+/area/admin_planet/fey_forest/gateway_facility)
+"BS" = (
+/obj/machinery/light/spot,
+/turf/simulated/floor/tiled/monodark,
+/area/admin_planet/fey_forest/gateway_facility)
+"CK" = (
+/obj/machinery/door/window/survival_pod{
+	req_access = list(30);
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/admin_planet/fey_forest/gateway_facility)
+"CL" = (
+/obj/structure/flora/tree/fey/large_tree/tree2,
+/turf/simulated/floor/fey/forest_grass,
+/area/space)
+"CX" = (
+/obj/structure/flora/tree/fey/large_tree/tree3,
+/turf/simulated/floor/fey/forest_grass,
 /area/space)
 "DF" = (
-/obj/structure/table/steel_reinforced,
-/obj/item/storage/firstaid/clotting,
+/obj/structure/table/rack/shelf/steel,
+/obj/item/defib_kit/jumper_kit/loaded,
+/obj/item/robotanalyzer,
 /turf/simulated/floor/tiled/techfloor,
-/area/space)
-"EH" = (
-/turf/simulated/floor/reinforced,
-/area/space)
-"EN" = (
-/obj/structure/table/steel_reinforced,
-/obj/machinery/door/window/northright,
+/area/admin_planet/fey_forest/gateway_facility)
+"Eb" = (
+/obj/machinery/light/spot{
+	dir = 1
+	},
 /turf/simulated/floor/tiled/techfloor,
-/area/space)
+/area/admin_planet/fey_forest/gateway_facility)
+"EM" = (
+/obj/structure/window/reinforced/survival_pod{
+	dir = 4
+	},
+/obj/structure/window/reinforced/survival_pod,
+/turf/simulated/floor/tiled/techfloor,
+/area/admin_planet/fey_forest/gateway_facility)
 "Fj" = (
 /obj/machinery/gateway{
 	dir = 4
@@ -224,23 +753,33 @@
 	dir = 4
 	},
 /turf/simulated/floor/reinforced,
-/area/space)
+/area/admin_planet/fey_forest/gateway_facility)
+"FK" = (
+/obj/machinery/light/spot{
+	dir = 4
+	},
+/turf/simulated/floor/event/concrete,
+/area/admin_planet/fey_forest/gateway_facility)
+"FL" = (
+/obj/structure/closet/secure_closet/personal,
+/obj/machinery/light/spot{
+	dir = 1
+	},
+/obj/structure/window/reinforced/tinted/frosted{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/kafel_full/blue,
+/area/admin_planet/fey_forest/gateway_facility)
 "GP" = (
-/obj/structure/table/rack/shelf/steel,
-/obj/item/cell/device/weapon,
-/obj/item/cell/device/weapon,
-/obj/item/cell/device/weapon,
-/obj/item/cell/device/weapon,
-/obj/item/cell/device/weapon,
-/obj/item/cell/device/weapon,
-/obj/item/cell/device/weapon,
-/obj/item/cell/device/weapon,
-/obj/item/cell/device/weapon,
-/obj/item/cell/device/weapon,
-/obj/item/cell/device/weapon,
-/obj/item/cell/device/weapon,
-/turf/simulated/floor/tiled/techfloor,
-/area/space)
+/obj/machinery/power/rtg/fake_gen,
+/obj/structure/cable/orange{
+	dir = 1
+	},
+/obj/structure/cable/orange{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/event/concrete,
+/area/admin_planet/fey_forest/gateway_facility)
 "He" = (
 /obj/machinery/gateway{
 	dir = 5
@@ -249,26 +788,223 @@
 	dir = 5
 	},
 /turf/simulated/floor/reinforced,
-/area/space)
-"Jo" = (
-/turf/simulated/wall/r_wall/prepainted,
-/area/space)
-"Jw" = (
+/area/admin_planet/fey_forest/gateway_facility)
+"Hj" = (
+/obj/structure/catwalk,
+/turf/simulated/floor/plating,
+/area/admin_planet/fey_forest/gateway_facility)
+"Ic" = (
 /obj/structure/table/rack/shelf/steel,
-/obj/item/clothing/mask/gas/clear,
-/obj/item/clothing/mask/gas/clear,
+/obj/item/flashlight/maglight,
+/obj/item/flashlight/maglight{
+	pixel_y = 8
+	},
+/obj/item/flashlight/maglight{
+	pixel_y = -7
+	},
+/obj/item/flashlight/maglight{
+	pixel_y = 8
+	},
+/obj/item/flashlight/maglight{
+	pixel_y = -7
+	},
+/obj/item/flashlight/maglight,
+/obj/item/flashlight/maglight,
+/obj/item/flashlight/maglight{
+	pixel_y = -7
+	},
+/obj/item/flashlight/maglight{
+	pixel_y = 8
+	},
+/obj/item/flashlight/maglight{
+	pixel_y = 8
+	},
+/obj/item/flashlight/maglight{
+	pixel_y = -7
+	},
+/obj/item/flashlight/maglight,
+/obj/item/flashlight/maglight,
+/obj/item/flashlight/maglight{
+	pixel_y = -7
+	},
+/obj/item/flashlight/maglight{
+	pixel_y = 8
+	},
+/obj/item/flashlight/maglight{
+	pixel_y = 8
+	},
+/obj/item/flashlight/maglight{
+	pixel_y = -7
+	},
+/obj/item/flashlight/maglight,
+/obj/item/flashlight/maglight,
+/obj/item/flashlight/maglight,
 /turf/simulated/floor/tiled/techfloor,
-/area/space)
+/area/admin_planet/fey_forest/gateway_facility)
+"Jo" = (
+/obj/structure/closet/secure_closet/personal,
+/obj/machinery/light/spot,
+/obj/structure/window/reinforced/tinted/frosted{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/kafel_full/blue,
+/area/admin_planet/fey_forest/gateway_facility)
+"Jw" = (
+/obj/machinery/suit_cycler/medical{
+	name = "Biohazard Suit Cycler";
+	density = 0;
+	pixel_x = -21
+	},
+/turf/simulated/floor/tiled/kafel_full/green,
+/area/admin_planet/fey_forest/gateway_facility)
+"JE" = (
+/obj/structure/table/rack/shelf/steel,
+/obj/item/clothing/gloves/combat{
+	name = "expeditionary combat gloves"
+	},
+/obj/item/clothing/gloves/combat{
+	name = "expeditionary combat gloves"
+	},
+/obj/item/clothing/gloves/combat{
+	name = "expeditionary combat gloves"
+	},
+/obj/item/clothing/gloves/combat{
+	name = "expeditionary combat gloves"
+	},
+/obj/item/clothing/gloves/combat{
+	name = "expeditionary combat gloves"
+	},
+/obj/item/clothing/gloves/combat{
+	name = "expeditionary combat gloves"
+	},
+/obj/item/clothing/gloves/combat{
+	name = "expeditionary combat gloves"
+	},
+/obj/item/clothing/gloves/combat{
+	name = "expeditionary combat gloves"
+	},
+/obj/item/clothing/gloves/combat{
+	name = "expeditionary combat gloves"
+	},
+/obj/item/clothing/gloves/combat{
+	name = "expeditionary combat gloves"
+	},
+/obj/item/clothing/gloves/combat{
+	name = "expeditionary combat gloves"
+	},
+/obj/item/clothing/gloves/combat{
+	name = "expeditionary combat gloves"
+	},
+/obj/item/clothing/gloves/combat{
+	name = "expeditionary combat gloves"
+	},
+/obj/item/clothing/gloves/combat{
+	name = "expeditionary combat gloves"
+	},
+/obj/item/clothing/gloves/combat{
+	name = "expeditionary combat gloves"
+	},
+/obj/item/clothing/gloves/combat{
+	name = "expeditionary combat gloves"
+	},
+/obj/item/clothing/gloves/combat{
+	name = "expeditionary combat gloves"
+	},
+/obj/item/clothing/gloves/combat{
+	name = "expeditionary combat gloves"
+	},
+/obj/item/clothing/gloves/combat{
+	name = "expeditionary combat gloves"
+	},
+/obj/item/clothing/gloves/combat{
+	name = "expeditionary combat gloves"
+	},
+/turf/simulated/floor/tiled/kafel_full/green,
+/area/admin_planet/fey_forest/gateway_facility)
+"JF" = (
+/obj/structure/closet/secure_closet/personal,
+/obj/structure/window/reinforced/tinted/frosted{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/kafel_full/blue,
+/area/admin_planet/fey_forest/gateway_facility)
 "Ka" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 9
 	},
 /turf/simulated/floor/reinforced,
-/area/space)
+/area/admin_planet/fey_forest/gateway_facility)
+"Ke" = (
+/obj/machinery/light/spot{
+	dir = 8
+	},
+/turf/simulated/floor/event/concrete,
+/area/admin_planet/fey_forest/gateway_facility)
 "Ku" = (
-/obj/structure/table/steel_reinforced,
-/obj/item/storage/firstaid/toxin,
+/obj/structure/table/rack/shelf/steel,
+/obj/item/cell/device/weapon,
+/obj/item/cell/device/weapon{
+	pixel_x = -8;
+	pixel_y = -5
+	},
+/obj/item/cell/device/weapon{
+	pixel_x = -4;
+	pixel_y = -5
+	},
+/obj/item/cell/device/weapon{
+	pixel_y = -5
+	},
+/obj/item/cell/device/weapon{
+	pixel_x = 4;
+	pixel_y = -5
+	},
+/obj/item/cell/device/weapon{
+	pixel_x = 8;
+	pixel_y = -5
+	},
+/obj/item/cell/device/weapon{
+	pixel_x = -8;
+	pixel_y = 3
+	},
+/obj/item/cell/device/weapon{
+	pixel_x = -4;
+	pixel_y = 3
+	},
+/obj/item/cell/device/weapon{
+	pixel_y = 3
+	},
+/obj/item/cell/device/weapon{
+	pixel_x = 4;
+	pixel_y = 3
+	},
+/obj/item/cell/device/weapon{
+	pixel_x = 8;
+	pixel_y = 3
+	},
+/obj/item/cell/device/weapon{
+	pixel_x = -8
+	},
+/obj/item/cell/device/weapon{
+	pixel_x = -4
+	},
+/obj/item/cell/device/weapon{
+	pixel_x = 4
+	},
+/obj/item/cell/device/weapon{
+	pixel_x = 8
+	},
+/obj/item/cell/device/weapon,
 /turf/simulated/floor/tiled/techfloor,
+/area/admin_planet/fey_forest/gateway_facility)
+"Lr" = (
+/obj/machinery/light/spot{
+	dir = 1
+	},
+/turf/simulated/floor/fey/dry_grass,
+/area/admin_planet/fey_forest/gateway_facility)
+"Mb" = (
+/obj/structure/flora/tree/fey/small_tree/tree6,
+/turf/simulated/floor/fey/forest_grass,
 /area/space)
 "Ms" = (
 /obj/machinery/door/airlock/highsecurity{
@@ -276,25 +1012,43 @@
 	name = "Gateway Access"
 	},
 /turf/simulated/floor/reinforced,
-/area/space)
-"Nu" = (
-/obj/structure/sandbag,
-/turf/simulated/floor/tiled/techfloor,
-/area/space)
-"Oe" = (
-/obj/structure/table/steel_reinforced,
-/obj/structure/window/phoronreinforced{
+/area/admin_planet/fey_forest/gateway_facility)
+"MJ" = (
+/obj/machinery/power/rtg/fake_gen,
+/obj/structure/cable/orange{
 	dir = 1
 	},
-/turf/simulated/floor/tiled/techfloor,
-/area/space)
-"Oq" = (
-/obj/structure/table/steel_reinforced,
-/obj/machinery/door/window{
+/obj/structure/cable/orange{
+	icon_state = "1-2"
+	},
+/obj/machinery/light/spot{
+	dir = 8
+	},
+/turf/simulated/floor/event/concrete,
+/area/admin_planet/fey_forest/gateway_facility)
+"ML" = (
+/obj/machinery/light/spot{
+	dir = 8
+	},
+/turf/simulated/floor/fey/forest_grass,
+/area/admin_planet/fey_forest/gateway_facility)
+"Nj" = (
+/obj/machinery/light/spot{
 	dir = 1
 	},
+/turf/simulated/floor/fey/forest_grass,
+/area/admin_planet/fey_forest/gateway_facility)
+"NO" = (
+/obj/structure/table/steel_reinforced,
+/turf/simulated/floor/tiled/dark,
+/area/admin_planet/fey_forest/gateway_facility)
+"Oi" = (
+/obj/machinery/door/window/survival_pod{
+	req_one_access = list(5);
+	dir = 4
+	},
 /turf/simulated/floor/tiled/techfloor,
-/area/space)
+/area/admin_planet/fey_forest/gateway_facility)
 "Pi" = (
 /obj/machinery/gateway{
 	dir = 6
@@ -303,17 +1057,195 @@
 	dir = 4
 	},
 /turf/simulated/floor/reinforced,
-/area/space)
-"PY" = (
-/obj/structure/bed/chair/office/dark,
+/area/admin_planet/fey_forest/gateway_facility)
+"Pm" = (
+/obj/structure/table/rack/shelf/steel,
+/obj/item/cell/device,
+/obj/item/cell/device,
+/obj/item/cell/device,
+/obj/item/cell/device,
+/obj/item/cell/device,
+/obj/item/cell/device,
+/obj/item/cell/device,
+/obj/item/cell/device,
+/obj/item/cell/device,
+/obj/item/cell/device,
+/obj/item/cell/device,
+/obj/item/cell/device,
+/obj/item/cell/device,
+/obj/item/cell/device,
+/obj/item/cell/device,
+/obj/item/cell/device,
+/obj/item/cell/device,
+/obj/item/cell/device,
+/obj/item/cell/device,
+/obj/item/cell/device,
+/obj/item/cell/device,
+/obj/item/cell/device,
+/obj/item/cell/device,
+/obj/item/cell/device,
+/obj/item/cell/device,
+/obj/item/cell/device,
+/obj/item/cell/device,
+/obj/item/cell/device,
+/obj/item/cell/device,
+/obj/item/cell/device,
+/obj/machinery/recharger/wallcharger{
+	pixel_x = 4;
+	pixel_y = -28
+	},
+/obj/machinery/recharger/wallcharger{
+	pixel_x = 32;
+	pixel_y = -8
+	},
 /turf/simulated/floor/tiled/techfloor,
-/area/space)
+/area/admin_planet/fey_forest/gateway_facility)
+"PL" = (
+/obj/structure/table/rack/shelf/steel,
+/obj/item/clothing/glasses/welding,
+/obj/item/clothing/glasses/welding,
+/obj/item/clothing/glasses/welding{
+	pixel_y = 5
+	},
+/obj/item/clothing/glasses/welding{
+	pixel_y = -7
+	},
+/obj/item/clothing/glasses/welding{
+	pixel_y = -7
+	},
+/obj/item/clothing/glasses/welding{
+	pixel_y = 5
+	},
+/obj/item/clothing/glasses/welding,
+/obj/item/clothing/glasses/welding,
+/obj/item/clothing/glasses/welding{
+	pixel_y = 5
+	},
+/obj/item/clothing/glasses/welding{
+	pixel_y = -7
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/admin_planet/fey_forest/gateway_facility)
+"Qo" = (
+/obj/machinery/light/spot,
+/turf/simulated/floor/reinforced,
+/area/admin_planet/fey_forest/gateway_facility)
+"Qx" = (
+/obj/structure/table/rack/shelf/steel,
+/obj/item/clothing/mask/gas/old,
+/obj/item/clothing/mask/gas/old,
+/obj/item/clothing/mask/gas/old,
+/obj/item/clothing/mask/gas/old,
+/obj/item/clothing/mask/gas/old,
+/obj/item/clothing/mask/gas/old,
+/obj/item/clothing/mask/gas/old,
+/obj/item/clothing/mask/gas/old,
+/obj/item/clothing/mask/gas/old,
+/obj/item/clothing/mask/gas/old,
+/obj/item/clothing/mask/gas/old,
+/obj/item/clothing/mask/gas/old,
+/obj/item/clothing/mask/gas/old,
+/obj/item/clothing/mask/gas/old,
+/obj/item/clothing/mask/gas/old,
+/obj/item/clothing/mask/gas/old,
+/obj/item/clothing/mask/gas/old,
+/obj/item/clothing/mask/gas/old,
+/obj/item/clothing/mask/gas/old,
+/obj/item/clothing/mask/gas/old,
+/turf/simulated/floor/tiled/kafel_full/green,
+/area/admin_planet/fey_forest/gateway_facility)
+"Ra" = (
+/obj/machinery/light/spot{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/kafel_full/blue,
+/area/admin_planet/fey_forest/gateway_facility)
+"Rc" = (
+/obj/structure/catwalk,
+/turf/simulated/floor/reinforced,
+/area/admin_planet/fey_forest/gateway_facility)
 "RB" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 5
 	},
 /turf/simulated/floor/reinforced,
+/area/admin_planet/fey_forest/gateway_facility)
+"RJ" = (
+/obj/structure/table/rack/shelf/steel,
+/obj/item/clothing/suit/space/void/medical/bio{
+	slowdown = 0.7
+	},
+/obj/item/clothing/suit/space/void/medical/bio{
+	slowdown = 0.7
+	},
+/obj/item/clothing/suit/space/void/medical/bio{
+	slowdown = 0.7
+	},
+/obj/item/clothing/suit/space/void/medical/bio{
+	slowdown = 0.7
+	},
+/obj/item/clothing/suit/space/void/medical/bio{
+	slowdown = 0.7
+	},
+/obj/item/clothing/suit/space/void/medical/bio{
+	slowdown = 0.7
+	},
+/obj/item/clothing/suit/space/void/medical/bio{
+	slowdown = 0.7
+	},
+/obj/item/clothing/suit/space/void/medical/bio{
+	slowdown = 0.7
+	},
+/obj/item/clothing/suit/space/void/medical/bio{
+	slowdown = 0.7
+	},
+/obj/item/clothing/suit/space/void/medical/bio{
+	slowdown = 0.7
+	},
+/obj/item/clothing/suit/space/void/medical/bio{
+	slowdown = 0.7
+	},
+/obj/item/clothing/suit/space/void/medical/bio{
+	slowdown = 0.7
+	},
+/obj/item/clothing/suit/space/void/medical/bio{
+	slowdown = 0.7
+	},
+/obj/item/clothing/suit/space/void/medical/bio{
+	slowdown = 0.7
+	},
+/obj/item/clothing/suit/space/void/medical/bio{
+	slowdown = 0.7
+	},
+/obj/item/clothing/suit/space/void/medical/bio{
+	slowdown = 0.7
+	},
+/obj/item/clothing/suit/space/void/medical/bio{
+	slowdown = 0.7
+	},
+/obj/item/clothing/suit/space/void/medical/bio{
+	slowdown = 0.7
+	},
+/obj/item/clothing/suit/space/void/medical/bio{
+	slowdown = 0.7
+	},
+/obj/item/clothing/suit/space/void/medical/bio{
+	slowdown = 0.7
+	},
+/turf/simulated/floor/tiled/kafel_full/green,
+/area/admin_planet/fey_forest/gateway_facility)
+"RL" = (
+/turf/simulated/floor/fey/dry_grass,
 /area/space)
+"Sb" = (
+/obj/structure/bed/chair/bay/chair/padded/black{
+	dir = 4
+	},
+/obj/machinery/light/spot{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/monodark,
+/area/admin_planet/fey_forest/gateway_facility)
 "SZ" = (
 /obj/machinery/gateway{
 	dir = 10
@@ -322,30 +1254,156 @@
 	dir = 8
 	},
 /turf/simulated/floor/reinforced,
+/area/admin_planet/fey_forest/gateway_facility)
+"Te" = (
+/obj/structure/flora/tree/fey/small_tree/tree3,
+/turf/simulated/floor/fey/forest_grass,
 /area/space)
-"Ue" = (
-/obj/structure/sandbag,
-/obj/structure/sandbag,
-/turf/simulated/floor/tiled/techfloor,
-/area/space)
-"Ul" = (
+"Tp" = (
 /obj/structure/table/rack/shelf/steel,
-/obj/item/gun/energy/gun/burst,
-/obj/item/gun/energy/gun/burst,
-/obj/item/gun/energy/gun/burst,
-/obj/item/gun/energy/gun/burst,
+/obj/item/storage/backpack/voyager{
+	name = "expeditionary backpack"
+	},
+/obj/item/storage/backpack/voyager{
+	name = "expeditionary backpack"
+	},
+/obj/item/storage/backpack/voyager{
+	name = "expeditionary backpack"
+	},
+/obj/item/storage/backpack/voyager{
+	name = "expeditionary backpack"
+	},
+/obj/item/storage/backpack/voyager{
+	name = "expeditionary backpack"
+	},
+/obj/item/storage/backpack/voyager{
+	name = "expeditionary backpack"
+	},
+/obj/item/storage/backpack/voyager{
+	name = "expeditionary backpack"
+	},
+/obj/item/storage/backpack/voyager{
+	name = "expeditionary backpack"
+	},
+/obj/item/storage/backpack/voyager{
+	name = "expeditionary backpack"
+	},
+/obj/item/storage/backpack/voyager{
+	name = "expeditionary backpack"
+	},
+/obj/item/storage/backpack/voyager{
+	name = "expeditionary backpack"
+	},
+/obj/item/storage/backpack/voyager{
+	name = "expeditionary backpack"
+	},
+/obj/item/storage/backpack/voyager{
+	name = "expeditionary backpack"
+	},
+/obj/item/storage/backpack/voyager{
+	name = "expeditionary backpack"
+	},
+/obj/item/storage/backpack/voyager{
+	name = "expeditionary backpack"
+	},
+/obj/item/storage/backpack/voyager{
+	name = "expeditionary backpack"
+	},
+/obj/item/storage/backpack/voyager{
+	name = "expeditionary backpack"
+	},
+/obj/item/storage/backpack/voyager{
+	name = "expeditionary backpack"
+	},
+/obj/item/storage/backpack/voyager{
+	name = "expeditionary backpack"
+	},
+/obj/item/storage/backpack/voyager{
+	name = "expeditionary backpack"
+	},
+/turf/simulated/floor/tiled/kafel_full/green,
+/area/admin_planet/fey_forest/gateway_facility)
+"TI" = (
+/obj/structure/table/rack/shelf/steel,
+/obj/item/clothing/accessory/holster/machete/occupied{
+	pixel_x = -4
+	},
+/obj/item/clothing/accessory/holster/machete/occupied,
+/obj/item/clothing/accessory/holster/machete/occupied{
+	pixel_x = 4
+	},
+/obj/item/clothing/accessory/holster/machete/occupied{
+	pixel_x = 8
+	},
+/obj/item/clothing/accessory/holster/machete/occupied{
+	pixel_x = 12
+	},
+/obj/item/clothing/accessory/holster/machete/occupied{
+	pixel_x = 12
+	},
+/obj/item/clothing/accessory/holster/machete/occupied{
+	pixel_x = 8
+	},
+/obj/item/clothing/accessory/holster/machete/occupied{
+	pixel_x = 4
+	},
+/obj/item/clothing/accessory/holster/machete/occupied{
+	pixel_x = -4
+	},
+/obj/item/clothing/accessory/holster/machete/occupied,
+/obj/item/clothing/accessory/holster/machete/occupied,
+/obj/item/clothing/accessory/holster/machete/occupied{
+	pixel_x = -4
+	},
+/obj/item/clothing/accessory/holster/machete/occupied{
+	pixel_x = 4
+	},
+/obj/item/clothing/accessory/holster/machete/occupied{
+	pixel_x = 8
+	},
+/obj/item/clothing/accessory/holster/machete/occupied{
+	pixel_x = 12
+	},
+/obj/item/clothing/accessory/holster/machete/occupied{
+	pixel_x = 12
+	},
+/obj/item/clothing/accessory/holster/machete/occupied{
+	pixel_x = 8
+	},
+/obj/item/clothing/accessory/holster/machete/occupied{
+	pixel_x = 4
+	},
+/obj/item/clothing/accessory/holster/machete/occupied{
+	pixel_x = -4
+	},
+/obj/item/clothing/accessory/holster/machete/occupied,
 /turf/simulated/floor/tiled/techfloor,
-/area/space)
+/area/admin_planet/fey_forest/gateway_facility)
+"TJ" = (
+/obj/machinery/light/spot,
+/turf/simulated/floor/event/concrete,
+/area/admin_planet/fey_forest/gateway_facility)
+"Uo" = (
+/obj/machinery/light/spot{
+	dir = 4
+	},
+/turf/simulated/floor/reinforced,
+/area/admin_planet/fey_forest/gateway_facility)
 "UP" = (
-/obj/structure/table/rack/shelf/steel,
-/obj/item/tank/emergency/oxygen/double,
-/obj/item/tank/emergency/oxygen/double,
-/turf/simulated/floor/tiled/techfloor,
-/area/space)
+/turf/simulated/floor/tiled/kafel_full/blue,
+/area/admin_planet/fey_forest/gateway_facility)
+"US" = (
+/obj/spawner/window/low_wall/borosillicate/reinforced/full/firelocks,
+/turf/simulated/wall/r_wall/prepainted,
+/area/admin_planet/fey_forest/gateway_facility)
 "Ve" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/borosillicate/reinforced/full/firelocks,
+/obj/structure/atmospheric_retention_field{
+	color = "#8B0000";
+	name = "military grade atmospheric retention field"
+	},
 /turf/simulated/floor/tiled/techfloor,
-/area/space)
+/area/admin_planet/fey_forest/gateway_facility)
 "Vh" = (
 /obj/machinery/gateway{
 	dir = 1
@@ -354,26 +1412,80 @@
 	dir = 1
 	},
 /turf/simulated/floor/reinforced,
-/area/space)
+/area/admin_planet/fey_forest/gateway_facility)
 "VZ" = (
 /obj/machinery/gateway/centeraway,
 /turf/simulated/floor/reinforced,
-/area/space)
+/area/admin_planet/fey_forest/gateway_facility)
 "Wk" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 8
 	},
 /turf/simulated/floor/reinforced,
-/area/space)
-"WI" = (
-/obj/structure/sandbag,
-/obj/structure/sandbag,
-/obj/structure/sandbag,
+/area/admin_planet/fey_forest/gateway_facility)
+"WS" = (
+/obj/spawner/window/low_wall/borosillicate/reinforced/full/firelocks,
+/turf/simulated/floor/reinforced,
+/area/admin_planet/fey_forest/gateway_facility)
+"WV" = (
+/turf/simulated/floor/tiled/kafel_full/gray,
+/area/admin_planet/fey_forest/gateway_facility)
+"WW" = (
+/obj/machinery/light/spot{
+	dir = 1
+	},
+/turf/simulated/floor/reinforced,
+/area/admin_planet/fey_forest/gateway_facility)
+"XD" = (
+/obj/structure/atmospheric_retention_field{
+	color = "#8B0000";
+	name = "military grade atmospheric retention field"
+	},
+/obj/machinery/door/airlock/highsecurity{
+	req_one_access = null;
+	name = "Airlock"
+	},
+/obj/structure/catwalk,
+/turf/simulated/floor/reinforced,
+/area/admin_planet/fey_forest/gateway_facility)
+"XU" = (
+/obj/structure/flora/tree/fey/small_tree/tree4,
 /turf/simulated/floor/fey/forest_grass,
 /area/space)
-"Yq" = (
+"XX" = (
+/obj/structure/table/rack/shelf/steel,
+/obj/item/storage/firstaid/combat{
+	pixel_y = -8
+	},
+/obj/item/storage/firstaid/insiderepair{
+	pixel_y = 9
+	},
+/obj/item/storage/firstaid/adv,
+/obj/item/storage/firstaid/adv,
 /turf/simulated/floor/tiled/techfloor,
-/area/space)
+/area/admin_planet/fey_forest/gateway_facility)
+"Yq" = (
+/obj/machinery/light/spot{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/monodark,
+/area/admin_planet/fey_forest/gateway_facility)
+"Zq" = (
+/obj/machinery/gear_painter{
+	density = 0;
+	pixel_x = 18
+	},
+/turf/simulated/floor/tiled/kafel_full/green,
+/area/admin_planet/fey_forest/gateway_facility)
+"Zw" = (
+/obj/structure/cable/orange{
+	icon_state = "2-8"
+	},
+/obj/structure/cable/orange{
+	icon_state = "1-8"
+	},
+/turf/simulated/floor/event/concrete,
+/area/admin_planet/fey_forest/gateway_facility)
 "Zy" = (
 /obj/machinery/porta_turret/crescent{
 	density = 1
@@ -389,13 +1501,24 @@
 	dir = 10
 	},
 /turf/simulated/floor/reinforced,
+/area/admin_planet/fey_forest/gateway_facility)
+"ZG" = (
+/obj/structure/flora/tree/fey/large_tree/tree6,
+/turf/simulated/floor/fey/forest_grass,
 /area/space)
+"ZR" = (
+/obj/machinery/door/airlock/centcom{
+	req_one_access = null;
+	name = "Locker Room"
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/admin_planet/fey_forest/gateway_facility)
 "ZY" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 4
 	},
 /turf/simulated/floor/reinforced,
-/area/space)
+/area/admin_planet/fey_forest/gateway_facility)
 
 (1,1,1) = {"
 pn
@@ -14367,27 +15490,27 @@ pn
 "}
 (73,1,1) = {"
 pn
+zZ
+zZ
+zZ
+zZ
+zZ
+il
+zZ
 jx
 jx
 jx
 jx
 jx
-jx
-jx
-jx
-jx
-jx
-jx
-jx
-jx
-jx
-jx
-jx
-jx
-jx
-jx
-jx
-jx
+zZ
+il
+zZ
+zZ
+zZ
+zZ
+zZ
+il
+zZ
 jx
 jx
 jx
@@ -14560,28 +15683,28 @@ jx
 pn
 "}
 (74,1,1) = {"
-pn
+wI
+WS
+WS
+WS
+WS
 wI
 wI
-wI
-wI
-wI
-wI
+zZ
 jx
 jx
 jx
 jx
 jx
-jx
-jx
+zZ
 wI
 wI
+WS
+WS
+WS
 wI
 wI
-wI
-wI
-wI
-jx
+zZ
 jx
 jx
 jx
@@ -14754,28 +15877,28 @@ jx
 pn
 "}
 (75,1,1) = {"
-Jo
+wI
+WS
+WS
+WS
+WS
 wI
 wI
-wI
-wI
-wI
-wI
+zZ
 jx
 jx
 jx
 jx
 jx
-jx
-jx
+zZ
 wI
 wI
+WS
+WS
+WS
 wI
 wI
-wI
-wI
-wI
-jx
+zZ
 jx
 jx
 jx
@@ -14948,28 +16071,28 @@ jx
 pn
 "}
 (76,1,1) = {"
-Jo
-jx
-jx
-jx
-jx
-Bq
-Bq
-jx
-jx
-jx
-jx
-jx
-jx
-jx
 wI
-Bq
-jx
-jx
-jx
-Bq
+AB
+AB
+AB
+AB
 wI
+wI
+zZ
 jx
+jx
+jx
+jx
+jx
+zZ
+wI
+wI
+AB
+AB
+AB
+wI
+wI
+zZ
 jx
 jx
 jx
@@ -15142,32 +16265,32 @@ jx
 pn
 "}
 (77,1,1) = {"
-Jo
-jx
-jx
-jx
-jx
+wI
+xu
+AB
+AB
+xu
 wI
 wI
-jx
-jx
-jx
-jx
-jx
-jx
-jx
+zZ
+il
+zZ
+zZ
+zZ
+il
+zZ
 wI
 wI
-jx
-jx
-jx
+om
+xu
+AB
 wI
 wI
-jx
-jx
-jx
-jx
-jx
+il
+zZ
+zZ
+zZ
+zZ
 jx
 jx
 jx
@@ -15336,32 +16459,32 @@ jx
 pn
 "}
 (78,1,1) = {"
-Jo
-jx
-jx
-jx
-jx
 wI
-Bq
+om
+AB
+AB
+AB
 wI
 wI
 wI
 wI
+WS
+WS
+WS
+wI
+wI
+wI
+wI
+AB
+AB
+AB
 wI
 wI
 wI
 wI
 wI
-jx
-jx
-jx
-Bq
 wI
-wI
-wI
-wI
-wI
-jx
+Nj
 jx
 jx
 jx
@@ -15530,32 +16653,32 @@ jx
 pn
 "}
 (79,1,1) = {"
-Jo
-jx
-jx
-jx
-jx
 wI
-Bq
+AB
+AB
+AB
+AB
 wI
 wI
 wI
 wI
+WS
+WS
+WS
+wI
+wI
+wI
+wI
+AB
+AB
+AB
 wI
 wI
 wI
 wI
 wI
-jx
-jx
-jx
 wI
-wI
-wI
-wI
-wI
-wI
-jx
+zZ
 jx
 jx
 jx
@@ -15724,32 +16847,32 @@ jx
 pn
 "}
 (80,1,1) = {"
-Jo
-jx
-jx
-jx
-jx
-jx
-jx
-jx
-jx
-jx
-jx
-jx
-jx
-jx
-jx
-jx
-jx
-jx
-jx
-jx
-jx
-jx
-jx
+wI
+AB
+AB
+AB
+AB
+AB
+AB
+Ke
+AB
+AB
+AB
+AB
+AB
+Ke
+AB
+AB
+AB
+AB
+AB
+AB
+AB
+Ke
+AB
 wI
 wI
-jx
+zZ
 jx
 jx
 jx
@@ -15918,32 +17041,32 @@ jx
 pn
 "}
 (81,1,1) = {"
-Jo
-jx
-jx
-jx
-jx
-jx
-jx
-jx
-jx
-jx
-jx
-jx
-jx
-jx
-jx
-jx
-jx
-jx
-jx
-jx
-jx
-jx
-jx
 wI
-wI
-jx
+AB
+AB
+AB
+AB
+AB
+AB
+AB
+AB
+AB
+AB
+AB
+AB
+AB
+AB
+AB
+AB
+AB
+AB
+AB
+AB
+xu
+AB
+WS
+WS
+zZ
 jx
 jx
 jx
@@ -16112,32 +17235,32 @@ jx
 pn
 "}
 (82,1,1) = {"
-Jo
-jx
-jx
-jx
-jx
-jx
-jx
-jx
-jx
-jx
-jx
-jx
-jx
-jx
-jx
-jx
-jx
-jx
-jx
-jx
-jx
-jx
-jx
 wI
-wI
-jx
+AB
+AB
+AB
+AB
+AB
+AB
+AB
+AB
+AB
+AB
+AB
+AB
+AB
+AB
+AB
+AB
+AB
+AB
+AB
+AB
+AB
+AB
+WS
+WS
+zZ
 jx
 jx
 jx
@@ -16306,32 +17429,32 @@ jx
 pn
 "}
 (83,1,1) = {"
-Jo
-Jo
-Jo
-Jo
-Jo
-Jo
-Jo
-Jo
-Jo
-Jo
-Jo
-Jo
-Jo
-Ve
-Ve
-Jo
-Ve
-Ve
-Jo
-Jo
-jx
-jx
-jx
 wI
 wI
-jx
+wI
+wI
+wI
+wI
+wI
+wI
+wI
+wI
+wI
+wI
+wI
+Ve
+Ve
+wI
+Ve
+Ve
+wI
+wI
+AB
+AB
+AB
+WS
+WS
+zZ
 jx
 jx
 jx
@@ -16500,31 +17623,32 @@ jx
 pn
 "}
 (84,1,1) = {"
-Jo
-zd
-io
-zd
-io
-zd
-io
-Yq
-Jo
-Yq
-Yq
-Yq
-Yq
-Nu
-Nu
-Yq
-Nu
-Nu
-Yq
-Jo
-jx
-jx
-jx
 wI
+bS
+qm
+zd
+By
 wI
+io
+PL
+wI
+tv
+tv
+wI
+Yq
+hj
+hj
+Sb
+hj
+hj
+Yq
+wI
+AB
+xu
+AB
+WS
+WS
+zZ
 jx
 jx
 jx
@@ -16532,8 +17656,7 @@ jx
 jx
 jx
 jx
-jx
-jx
+RL
 jx
 jx
 jx
@@ -16694,40 +17817,40 @@ jx
 pn
 "}
 (85,1,1) = {"
-Jo
-Yq
-Yq
-Yq
-Yq
-Yq
-Yq
-Yq
-Jo
-Yq
-Yq
-Yq
-Yq
-Yq
-fO
-Yq
-Yq
-Yq
-Yq
-Jo
-jx
-jx
-jx
+wI
+XX
+qG
+qG
+aX
+wI
+qG
+qG
+wI
+qG
+qG
+wI
+hj
+xD
+NO
+NO
+NO
+xD
+hj
+wI
+AB
+AB
+TJ
 wI
 wI
+Nj
+zZ
+zZ
+zZ
+zZ
 jx
 jx
-jx
-jx
-jx
-jx
-jx
-jx
-jx
+RL
+RL
 jx
 jx
 jx
@@ -16888,41 +18011,41 @@ jx
 pn
 "}
 (86,1,1) = {"
-Jo
-zd
-io
-zd
-io
-zd
-io
-Yq
-Jo
-Yq
-Yq
-Yq
-Yq
-Yq
-Yq
-Yq
-Yq
-Yq
-Nu
+wI
+Ap
+aX
+Oi
+EM
+qm
+qG
+qG
+qm
+qG
+qG
+wI
+hj
+xD
+xD
+xD
+xD
+xD
+hj
 Ve
-jx
-jx
-jx
+AB
+AB
+AB
 wI
 wI
 wI
-Bq
 wI
 wI
+wI
+Nj
 jx
 jx
-jx
-jx
-jx
-jx
+RL
+RL
+RL
 jx
 jx
 jx
@@ -17082,36 +18205,36 @@ jx
 pn
 "}
 (87,1,1) = {"
-Jo
-Yq
-Yq
-Yq
-Yq
-Yq
-Yq
-Yq
-zJ
-Yq
+wI
+wI
+wI
+Eb
+qG
+qG
+qG
+qG
+qG
+qG
+qG
 zs
-zs
-zs
-aT
-zs
-zs
-zs
-Yq
-Nu
+hj
+oM
+oM
+oM
+oM
+oM
+hj
 Ve
-jx
-jx
-jx
+AB
+AB
+AB
 wI
 wI
 wI
 wI
 wI
 wI
-jx
+zZ
 jx
 jx
 jx
@@ -17276,36 +18399,36 @@ jx
 pn
 "}
 (88,1,1) = {"
-Jo
-zd
-io
-zd
-io
-zd
-io
-Yq
-zJ
-Yq
-zs
-zs
-zs
-zs
-zs
-zs
-zs
-Yq
-Yq
-Jo
-jx
-jx
-jx
-jx
-jx
-jx
-jx
 wI
+di
+sy
+CK
+tL
+gA
+qG
+qG
+gA
+qG
+qG
 wI
-jx
+hj
+oM
+oM
+oM
+oM
+oM
+BS
+wI
+AB
+AB
+AB
+AB
+AB
+Ke
+AB
+WS
+WS
+zZ
 jx
 jx
 jx
@@ -17470,36 +18593,36 @@ jx
 pn
 "}
 (89,1,1) = {"
-Jo
-Yq
-Yq
-Yq
-Yq
-Yq
-Yq
-Yq
-Jo
-Yq
-zs
-zs
-zs
-zs
-zs
-zs
-zs
-Yq
-Nu
+wI
+lk
+qG
+qG
+sy
+wI
+qG
+qG
+wI
+qG
+qG
+wI
+hj
+oM
+oM
+oM
+oM
+oM
+hj
 Ve
-jx
-jx
-jx
-jx
-jx
-jx
-jx
-wI
-wI
-jx
+AB
+AB
+AB
+AB
+AB
+xu
+AB
+WS
+WS
+zZ
 jx
 jx
 jx
@@ -17664,36 +18787,36 @@ jx
 pn
 "}
 (90,1,1) = {"
-Jo
+wI
 tn
-pd
+gA
+TI
 Ku
-Ku
-Ku
+wI
 DF
 jm
-Jo
-Yq
-Yq
-Yq
-Yq
-Yq
-Yq
-Yq
-Yq
-Yq
-Ue
+wI
+Ic
+Pm
+wI
+hj
+oM
+oM
+oM
+oM
+oM
+hj
 Ve
-jx
-jx
-jx
-jx
-jx
-jx
-jx
-wI
-wI
-jx
+AB
+AB
+AB
+AB
+AB
+AB
+AB
+WS
+WS
+eC
 jx
 jx
 jx
@@ -17858,38 +18981,38 @@ jx
 pn
 "}
 (91,1,1) = {"
-Jo
-Jo
-Jo
-Jo
-Jo
-Jo
-Jo
-Jo
-Jo
-Jo
-zJ
-Jo
-jm
-Yq
-Yq
-Yq
-Yq
-Yq
-Yq
-Jo
-jx
-jx
-jx
-Bq
 wI
 wI
 wI
 wI
 wI
-jx
-jx
-jx
+wI
+wI
+wI
+wI
+wI
+wI
+wI
+hj
+xD
+xD
+xD
+xD
+xD
+hj
+wI
+AB
+AB
+TJ
+wI
+wI
+wI
+wI
+wI
+wI
+eC
+RL
+RL
 jx
 jx
 jx
@@ -18052,38 +19175,38 @@ jx
 pn
 "}
 (92,1,1) = {"
-Jo
+wI
 bO
-EH
-iz
-EH
-EH
+uP
+uP
+uP
+uP
 Zy
-Jo
-Yq
-Yq
-Yq
-Jo
-jm
-jm
-jm
-Yq
-Yq
-Yq
-Yq
-Jo
-jx
-jx
-jx
+wI
+wI
+wI
+wI
+wI
+bH
+hj
+hj
+hj
+hj
+hj
+bH
+wI
+AB
+AB
+AB
 wI
 wI
 wI
 wI
 wI
 wI
-jx
-jx
-jx
+Lr
+RL
+RL
 jx
 jx
 jx
@@ -18246,43 +19369,43 @@ jx
 pn
 "}
 (93,1,1) = {"
-Jo
-EH
-EH
+wI
+uP
+uP
 wR
 Ka
 Wk
 Wk
-Jo
-Jo
-Yq
-Yq
-Jo
-Jo
-Jo
-Jo
-zJ
-zJ
-Jo
-Jo
-Jo
-jx
-jx
-jx
 wI
 wI
+wI
+wI
+wI
+wI
+wI
+wI
+zJ
+wI
+wI
+wI
+wI
+wI
+Ae
+wI
+wI
+wI
+Lr
+eC
+eC
+eC
+eC
+RL
+RL
 jx
 jx
 jx
-jx
-jx
-jx
-jx
-jx
-jx
-jx
-jx
-jx
+RL
+RL
 jx
 jx
 jx
@@ -18440,42 +19563,42 @@ jx
 pn
 "}
 (94,1,1) = {"
-Jo
-EH
-EH
+wI
+uP
+uP
 wR
-EH
-EH
-EH
-EH
-Jo
-Jo
-Jo
-Jo
-Yq
-Yq
-Yq
-Yq
-Yq
-Yq
-Yq
-Jo
-jx
-jx
-jx
+uP
+uP
+uP
+uP
 wI
 wI
+wI
+wI
+qm
+qG
+qG
+qG
+wI
+uP
+iO
+wI
+lW
+Rc
+lW
+wI
+wI
+eC
+RL
+RL
+RL
+RL
+RL
+RL
 jx
 jx
-jx
-jx
-jx
-jx
-jx
-jx
-jx
-jx
-jx
+RL
+RL
 jx
 jx
 jx
@@ -18634,42 +19757,42 @@ jx
 pn
 "}
 (95,1,1) = {"
-Jo
+wI
 AP
 hD
 SZ
-EH
-EH
-EH
-EH
-EH
+uP
+uP
+uP
+uP
+uP
 Ms
-Yq
-Yq
-Yq
-Yq
-Yq
-Yq
-Yq
-Yq
-Yq
-zJ
+qG
+qG
+qG
+qG
+qG
+qG
+wI
+uP
+Rc
+XD
+Rc
+Rc
+Rc
+Rc
+XD
+eC
+RL
+RL
+RL
+RL
+RL
 jx
 jx
 jx
-jx
-jx
-jx
-jx
-jx
-jx
-jx
-jx
-jx
-jx
-jx
-jx
-jx
+RL
+RL
 jx
 jx
 jx
@@ -18828,42 +19951,42 @@ jx
 pn
 "}
 (96,1,1) = {"
-Jo
+wI
 Vh
 VZ
 BA
-EH
-EH
-EH
-EH
-EH
-Jo
+uP
+uP
+uP
+uP
+uP
+wI
+Hj
+Hj
+Hj
+Hj
+Hj
+Hj
 jq
-jq
-jq
-jq
-jq
-jq
-jq
-jq
-jq
-Jo
+Rc
+Rc
+wI
+WW
+uP
+uP
+Qo
+wI
+eC
+RL
+RL
+RL
+RL
+RL
 jx
 jx
 jx
 jx
-jx
-jx
-jx
-jx
-jx
-jx
-jx
-jx
-jx
-jx
-jx
-jx
+RL
 jx
 jx
 jx
@@ -19022,37 +20145,37 @@ jx
 pn
 "}
 (97,1,1) = {"
-Jo
+wI
 He
 Fj
 Pi
-EH
-EH
-EH
-EH
-EH
+uP
+uP
+uP
+uP
+uP
 Ms
-Yq
-Yq
-Yq
-Yq
-Yq
-Yq
-Yq
-Yq
-Yq
-zJ
-jx
-jx
-jx
-jx
-jx
-jx
-jx
-jx
-jx
-jx
-jx
+qG
+qG
+qG
+qG
+qG
+qG
+wI
+uP
+Rc
+XD
+Rc
+Rc
+Rc
+Rc
+XD
+eC
+RL
+RL
+RL
+RL
+RL
 jx
 jx
 jx
@@ -19216,37 +20339,37 @@ jx
 pn
 "}
 (98,1,1) = {"
-Jo
-EH
-EH
+wI
+uP
+uP
 wR
-EH
-EH
-EH
-EH
-Jo
-Jo
-Jo
-Jo
-Yq
-Yq
-Yq
-Yq
-Yq
-Yq
-Yq
-Jo
-jx
-jx
-jx
+uP
+uP
+uP
+uP
 wI
 wI
-jx
-jx
-jx
-jx
-jx
-jx
+wI
+wI
+gA
+qG
+qG
+qG
+wI
+uP
+Uo
+wI
+nB
+Rc
+nB
+wI
+wI
+eC
+RL
+RL
+RL
+RL
+RL
 jx
 jx
 jx
@@ -19410,37 +20533,37 @@ jx
 pn
 "}
 (99,1,1) = {"
-Jo
-EH
-EH
+wI
+uP
+uP
 wR
 RB
 ZY
 ZY
-Jo
-Jo
-Jo
-Jo
-Jo
-Jo
-Jo
-Jo
-zJ
-zJ
-Jo
-Jo
-Jo
-jx
-jx
-jx
 wI
 wI
-jx
-jx
-jx
-jx
-jx
-jx
+wI
+wI
+wI
+wI
+wI
+wI
+ZR
+wI
+wI
+wI
+wI
+wI
+Ae
+wI
+wI
+wI
+Lr
+eC
+eC
+eC
+eC
+RL
 jx
 jx
 jx
@@ -19604,39 +20727,39 @@ jx
 pn
 "}
 (100,1,1) = {"
-Jo
+wI
 uv
-EH
-EH
-EH
-EH
+uP
+uP
+uP
+uP
 yq
-Jo
-Yq
-Yq
-Jo
-Yq
-Yq
-Yq
-Yq
-Yq
-Yq
-Yq
-Yq
-Jo
-jx
-jx
-jx
+wI
+Ra
+UP
+JF
+wI
+JF
+Ra
+jL
+WV
+WV
+nY
+JE
+wI
+AB
+AB
+AB
 wI
 wI
 wI
 wI
 wI
 wI
-jx
-jx
-jx
-jx
+Lr
+RL
+RL
+RL
 jx
 jx
 jx
@@ -19798,39 +20921,39 @@ jx
 pn
 "}
 (101,1,1) = {"
-Jo
-Jo
-Jo
-Jo
-Jo
-Jo
-Jo
-Jo
-Yq
-Yq
-zJ
-Yq
-Yq
+wI
+wI
+wI
+wI
+wI
+wI
+wI
+wI
 UP
 UP
+JF
+wI
+JF
 UP
 UP
-UP
-Yq
-Jo
-jx
-jx
-jx
+WV
+WV
+nY
+Tp
+wI
+AB
+AB
+TJ
 wI
 wI
 wI
 wI
 wI
 wI
-jx
-jx
-jx
-jx
+zZ
+RL
+RL
+RL
 jx
 jx
 jx
@@ -19992,36 +21115,36 @@ jx
 pn
 "}
 (102,1,1) = {"
-Jo
-Yq
-Yq
-Yq
-Yq
-Yq
-Yq
-Yq
-Yq
-Yq
-Jo
-Yq
-Yq
-Yq
-Yq
-Yq
-Yq
-Yq
-Yq
-Jo
-jx
-jx
-jx
-jx
-jx
-jx
-jx
 wI
 wI
-jx
+wI
+wI
+wI
+wI
+wI
+JF
+UP
+UP
+JF
+wI
+JF
+UP
+UP
+WV
+kv
+wI
+wI
+wI
+AB
+AB
+AB
+AB
+AB
+Ke
+AB
+WS
+WS
+zZ
 jx
 jx
 jx
@@ -20186,36 +21309,36 @@ jx
 pn
 "}
 (103,1,1) = {"
-Jo
-Yq
-Yq
-Yq
-Yq
-Yq
-Yq
-Yq
-Yq
-Yq
-Jo
-Yq
-Yq
-Jw
-Jw
-Jw
-Jw
-Jw
-Yq
-Jo
-jx
-jx
-jx
-jx
-jx
-jx
-jx
 wI
+yG
+tY
+wd
+MJ
+yG
 wI
-jx
+JF
+UP
+UP
+Jo
+wI
+JF
+UP
+UP
+WV
+WV
+Jw
+RJ
+wI
+AB
+AB
+AB
+AB
+AB
+xu
+AB
+WS
+WS
+zZ
 jx
 jx
 jx
@@ -20380,36 +21503,36 @@ jx
 pn
 "}
 (104,1,1) = {"
-Jo
-Yq
+wI
+yG
 nR
-Yq
+Zw
 GP
-Yq
-uK
-Yq
-Yq
-Yq
-Oe
-Yq
-Yq
-Yq
-Yq
-Yq
-Yq
-Yq
-Yq
-Jo
-jx
-jx
-jx
-jx
-jx
-jx
-jx
+yG
 wI
+JF
+UP
+UP
+JF
 wI
-jx
+JF
+UP
+UP
+WV
+WV
+nY
+Qx
+wI
+AB
+AB
+AB
+AB
+AB
+AB
+AB
+WS
+WS
+zZ
 jx
 jx
 jx
@@ -20574,41 +21697,41 @@ jx
 pn
 "}
 (105,1,1) = {"
-Jo
-Yq
-Yq
-Yq
-Yq
-Yq
-Yq
-Yq
-Yq
-PY
-Oq
-Yq
-Yq
-qF
-qF
-qF
-qF
-qF
-Yq
-Jo
-jx
-jx
-jx
 wI
-Bq
-Bq
-Bq
-WI
-WI
+wI
+AB
+AB
+AB
+wI
+wI
+FL
+UP
+UP
+JF
+wI
+JF
+UP
+UP
+WV
+WV
+qF
+zg
+wI
+AB
+AB
+AB
+wI
+wI
+wI
+wI
+wI
+wI
+zZ
 jx
 jx
 jx
 jx
-jx
-jx
+RL
 jx
 jx
 jx
@@ -20768,43 +21891,43 @@ jx
 pn
 "}
 (106,1,1) = {"
-Jo
-Yq
-lr
-Yq
-Ul
-Yq
-uK
-Yq
-Yq
-PY
-EN
-Yq
-Yq
-Yq
-Yq
-Yq
-Yq
-Yq
-Yq
-Jo
-jx
-jx
-jx
+wI
+wI
+AB
+AB
+AB
+wI
+wI
+JF
+UP
+UP
+JF
+wI
+JF
+UP
+UP
+WV
+kv
+wI
+wI
+wI
+AB
+AB
+AB
 wI
 wI
 wI
 wI
 wI
 wI
+Nj
 jx
 jx
 jx
 jx
-jx
-jx
-jx
-jx
+RL
+RL
+RL
 jx
 jx
 jx
@@ -20962,43 +22085,43 @@ jx
 pn
 "}
 (107,1,1) = {"
-Jo
-Yq
-Yq
-Yq
-Yq
-Yq
-Yq
-Yq
-Yq
-Yq
-Oe
-Yq
-Yq
-bD
-eK
-sg
-sg
-sg
-Yq
-Jo
-jx
-jx
-jx
 wI
 wI
+om
+AB
+TJ
+wI
+wI
+JF
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+WV
+WV
+nY
+fD
+wI
+AB
+AB
+TJ
+wI
+wI
+Nj
+zZ
+zZ
+zZ
+zZ
 jx
 jx
 jx
 jx
 jx
 jx
-jx
-jx
-jx
-jx
-jx
-jx
+RL
 jx
 jx
 jx
@@ -21156,32 +22279,32 @@ jx
 pn
 "}
 (108,1,1) = {"
-Jo
-Yq
-Yq
-Yq
-Yq
-Yq
-Yq
-Yq
-Yq
-Yq
-Jo
-Yq
-Yq
-Yq
-Yq
-Yq
-Yq
-Yq
-Yq
-Jo
-jx
-jx
-jx
 wI
 wI
-jx
+AB
+AB
+AB
+wI
+wI
+mN
+iY
+UP
+UP
+UP
+UP
+iY
+UP
+go
+go
+Zq
+qc
+wI
+AB
+xu
+AB
+WS
+WS
+zZ
 jx
 jx
 jx
@@ -21350,32 +22473,32 @@ jx
 pn
 "}
 (109,1,1) = {"
-Jo
-Jo
-Jo
-Jo
-Jo
-Jo
-Jo
-Jo
-Jo
-Jo
-Jo
-Jo
-Jo
-Jo
-Jo
-Jo
-Jo
-Jo
-Jo
-Jo
-jx
-jx
-jx
 wI
 wI
-jx
+AB
+AB
+AB
+wI
+wI
+wI
+wI
+wI
+wI
+wI
+wI
+wI
+wI
+wI
+wI
+wI
+wI
+wI
+AB
+AB
+AB
+WS
+WS
+zZ
 jx
 jx
 jx
@@ -21544,32 +22667,32 @@ jx
 pn
 "}
 (110,1,1) = {"
-pn
-jx
-jx
-jx
-jx
-jx
-jx
-jx
-jx
-jx
-jx
-jx
-jx
-jx
-jx
-jx
-jx
-jx
-jx
-jx
-jx
-jx
-jx
 wI
-wI
-jx
+AB
+AB
+AB
+AB
+AB
+AB
+AB
+AB
+AB
+AB
+AB
+AB
+AB
+AB
+AB
+AB
+AB
+AB
+AB
+AB
+AB
+AB
+WS
+WS
+zZ
 jx
 jx
 jx
@@ -21738,32 +22861,32 @@ jx
 pn
 "}
 (111,1,1) = {"
-pn
-jx
-jx
-jx
-jx
-jx
-jx
-jx
-jx
-jx
-jx
-jx
-jx
-jx
-jx
-jx
-jx
-jx
-jx
-jx
-jx
-jx
-jx
 wI
-wI
-jx
+AB
+AB
+AB
+AB
+AB
+AB
+AB
+AB
+AB
+AB
+AB
+AB
+AB
+AB
+AB
+AB
+AB
+AB
+AB
+AB
+xu
+AB
+US
+US
+zZ
 jx
 jx
 jx
@@ -21932,31 +23055,32 @@ jx
 pn
 "}
 (112,1,1) = {"
-pn
-jx
-jx
-jx
-jx
-jx
-jx
-jx
-jx
-jx
-jx
-jx
-jx
-jx
-jx
-jx
-jx
-jx
-jx
-jx
-jx
-jx
-jx
 wI
-wI
+AB
+AB
+AB
+AB
+AB
+AB
+FK
+AB
+AB
+AB
+AB
+AB
+FK
+AB
+AB
+AB
+AB
+AB
+AB
+AB
+FK
+AB
+WS
+WS
+zZ
 jx
 jx
 jx
@@ -21982,8 +23106,7 @@ jx
 jx
 jx
 jx
-jx
-jx
+Aq
 jx
 jx
 jx
@@ -22126,31 +23249,32 @@ jx
 pn
 "}
 (113,1,1) = {"
-pn
-jx
-jx
-jx
-jx
 wI
-Bq
-Bq
+om
+AB
+AB
+AB
 wI
 wI
 wI
 wI
-wI
-wI
-Bq
-wI
-jx
-jx
-jx
+WS
+WS
+WS
 wI
 wI
 wI
 wI
-Bq
-Bq
+AB
+AB
+AB
+wI
+wI
+wI
+wI
+wI
+wI
+zZ
 jx
 jx
 jx
@@ -22174,8 +23298,7 @@ jx
 jx
 jx
 jx
-jx
-jx
+CL
 jx
 jx
 jx
@@ -22320,31 +23443,32 @@ jx
 pn
 "}
 (114,1,1) = {"
-pn
-jx
-jx
-jx
-jx
 wI
-Bq
-Bq
+AB
+AB
+AB
+AB
 wI
 wI
 wI
 wI
+WS
+WS
+WS
 wI
 wI
-Bq
 wI
-jx
-jx
-jx
 wI
-Bq
-Bq
-Bq
-Bq
-Bq
+AB
+AB
+AB
+wI
+wI
+wI
+wI
+wI
+wI
+Nj
 jx
 jx
 jx
@@ -22374,8 +23498,7 @@ jx
 jx
 jx
 jx
-jx
-jx
+CX
 jx
 jx
 jx
@@ -22514,32 +23637,32 @@ jx
 pn
 "}
 (115,1,1) = {"
-pn
-jx
-jx
-jx
-jx
+wI
+xu
+AB
+AB
+xu
 wI
 wI
-jx
-jx
-jx
-jx
-jx
-jx
-jx
+zZ
+ML
+zZ
+zZ
+zZ
+ML
+zZ
 wI
 wI
-jx
-jx
-jx
+om
+xu
+AB
 wI
 wI
-jx
-jx
-jx
-jx
-jx
+ML
+zZ
+zZ
+zZ
+zZ
 jx
 jx
 jx
@@ -22708,27 +23831,28 @@ jx
 pn
 "}
 (116,1,1) = {"
-pn
-jx
-jx
-jx
-jx
-Bq
-Bq
-jx
-jx
-jx
-jx
-jx
-jx
-jx
 wI
-Bq
-jx
-jx
-jx
+AB
+AB
+AB
+AB
 wI
 wI
+zZ
+jx
+jx
+jx
+jx
+jx
+zZ
+wI
+wI
+AB
+AB
+AB
+wI
+wI
+zZ
 jx
 jx
 jx
@@ -22751,6 +23875,7 @@ jx
 jx
 jx
 jx
+XU
 jx
 jx
 jx
@@ -22758,14 +23883,12 @@ jx
 jx
 jx
 jx
+uR
 jx
 jx
 jx
 jx
-jx
-jx
-jx
-jx
+tU
 jx
 jx
 jx
@@ -22902,28 +24025,28 @@ jx
 pn
 "}
 (117,1,1) = {"
-pn
+wI
+WS
+WS
+WS
+WS
 wI
 wI
-wI
-wI
-wI
-wI
+zZ
 jx
 jx
 jx
 jx
 jx
-jx
-jx
-wI
-Bq
+zZ
 wI
 wI
+WS
+WS
+WS
 wI
 wI
-wI
-jx
+zZ
 jx
 jx
 jx
@@ -23096,27 +24219,28 @@ jx
 pn
 "}
 (118,1,1) = {"
-pn
+wI
+WS
+WS
+WS
+WS
 wI
 wI
+zZ
+jx
+jx
+jx
+jx
+jx
+zZ
 wI
 wI
+WS
+WS
+WS
 wI
 wI
-jx
-jx
-jx
-jx
-jx
-jx
-jx
-wI
-wI
-wI
-wI
-wI
-wI
-wI
+zZ
 jx
 jx
 jx
@@ -23143,15 +24267,14 @@ jx
 jx
 jx
 jx
+ZG
 jx
 jx
 jx
 jx
 jx
 jx
-jx
-jx
-jx
+Te
 jx
 jx
 jx
@@ -23291,6 +24414,27 @@ pn
 "}
 (119,1,1) = {"
 pn
+zZ
+zZ
+zZ
+zZ
+zZ
+ML
+zZ
+jx
+jx
+jx
+jx
+jx
+zZ
+ML
+zZ
+zZ
+zZ
+zZ
+zZ
+ML
+zZ
 jx
 jx
 jx
@@ -23319,28 +24463,7 @@ jx
 jx
 jx
 jx
-jx
-jx
-jx
-jx
-jx
-jx
-jx
-jx
-jx
-jx
-jx
-jx
-jx
-jx
-jx
-jx
-jx
-jx
-jx
-jx
-jx
-jx
+dI
 jx
 jx
 jx
@@ -23539,7 +24662,7 @@ jx
 jx
 jx
 jx
-jx
+ZG
 jx
 jx
 jx
@@ -23727,7 +24850,7 @@ jx
 jx
 jx
 jx
-jx
+zA
 jx
 jx
 jx
@@ -24505,11 +25628,11 @@ jx
 jx
 jx
 jx
+fz
 jx
 jx
 jx
-jx
-jx
+Mb
 jx
 jx
 jx

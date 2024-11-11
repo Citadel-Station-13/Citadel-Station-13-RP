@@ -51,7 +51,6 @@
 
 /obj/structure/flora/tree/fey/small_tree
 	icon = 'code/game/content/factions/fey_forest/fey_forest.dmi/fey_trees_small.dmi'
-	pixel_x = -16
 	bounds = "16,16"
 	name = "Small Tree"
 	desc = "A small tree, compared to the others atleast. Despite its height, its trunk is far too thick to cut down."
@@ -191,7 +190,6 @@
 
 /obj/structure/flora/fey/large
 	icon = 'code/game/content/factions/fey_forest/fey_forest.dmi/fey_flora_64x64.dmi'
-	pixel_x = -16
 	name = "Large Flora"
 	desc = "Giganticism at its finest. This part of the endless forest has been alive for centuries, if not thousands of years."
 	density = 0
