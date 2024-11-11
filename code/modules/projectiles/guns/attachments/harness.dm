@@ -97,8 +97,8 @@
 			actor?.chat_feedback(SPAN_NOTICE("You deactivate \the [src]."), target = attached)
 
 /obj/item/gun_attachment/harness/magnetic/lanyard
-	name = "magnetic lanyard"
-	desc = "A handgun lanyard that will snap a gun back to an attachment point when it's dropped by its wearer."
+	name = "handgun lanyard"
+	desc = "A handgun lanyard that will return a gun to it's attachment point when it's dropped by its wearer."
 	icon_state = "lanyard"
 	align_x = 0
 	align_y = 0
