@@ -80,14 +80,14 @@
 "dI" = (
 /obj/structure/flora/tree/fey/small_tree/tree1,
 /turf/simulated/floor/fey/forest_grass,
-/area/space)
+/area/admin_planet/fey_forest/wilds)
 "eC" = (
 /turf/simulated/floor/fey/dry_grass,
 /area/admin_planet/fey_forest/gateway_facility)
 "fz" = (
 /obj/structure/flora/tree/fey/small_tree/tree5,
 /turf/simulated/floor/fey/forest_grass,
-/area/space)
+/area/admin_planet/fey_forest/wilds)
 "fD" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/item/clothing/under/laconic{
@@ -243,7 +243,7 @@
 /area/admin_planet/fey_forest/gateway_facility)
 "jx" = (
 /turf/simulated/floor/fey/forest_grass,
-/area/space)
+/area/admin_planet/fey_forest/wilds)
 "jL" = (
 /obj/structure/table/rack/steel,
 /obj/item/hand_labeler,
@@ -382,7 +382,7 @@
 /turf/simulated/wall/fey/forest_wall{
 	color = "#D3D3D3"
 	},
-/area/space)
+/area/admin_planet/fey_forest/wilds)
 "qc" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/item/clothing/shoes/boots/laconic{
@@ -525,7 +525,7 @@
 "tU" = (
 /obj/structure/flora/tree/fey/small_tree/tree7,
 /turf/simulated/floor/fey/forest_grass,
-/area/space)
+/area/admin_planet/fey_forest/wilds)
 "tY" = (
 /obj/machinery/power/rtg/fake_gen,
 /obj/structure/cable/orange,
@@ -559,7 +559,7 @@
 "uR" = (
 /obj/structure/flora/tree/fey/large_tree/tree1,
 /turf/simulated/floor/fey/forest_grass,
-/area/space)
+/area/admin_planet/fey_forest/wilds)
 "wd" = (
 /obj/machinery/power/apc/talon/hyper/west_mount,
 /obj/structure/cable/orange{
@@ -650,7 +650,7 @@
 "zA" = (
 /obj/structure/flora/tree/fey/large_tree/tree7,
 /turf/simulated/floor/fey/forest_grass,
-/area/space)
+/area/admin_planet/fey_forest/wilds)
 "zJ" = (
 /obj/machinery/door/airlock/centcom{
 	req_one_access = null;
@@ -686,7 +686,7 @@
 "Aq" = (
 /obj/structure/flora/tree/fey/small_tree/tree2,
 /turf/simulated/floor/fey/forest_grass,
-/area/space)
+/area/admin_planet/fey_forest/wilds)
 "AB" = (
 /turf/simulated/floor/event/concrete,
 /area/admin_planet/fey_forest/gateway_facility)
@@ -721,11 +721,11 @@
 "CL" = (
 /obj/structure/flora/tree/fey/large_tree/tree2,
 /turf/simulated/floor/fey/forest_grass,
-/area/space)
+/area/admin_planet/fey_forest/wilds)
 "CX" = (
 /obj/structure/flora/tree/fey/large_tree/tree3,
 /turf/simulated/floor/fey/forest_grass,
-/area/space)
+/area/admin_planet/fey_forest/wilds)
 "DF" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/item/defib_kit/jumper_kit/loaded,
@@ -1005,7 +1005,7 @@
 "Mb" = (
 /obj/structure/flora/tree/fey/small_tree/tree6,
 /turf/simulated/floor/fey/forest_grass,
-/area/space)
+/area/admin_planet/fey_forest/wilds)
 "Ms" = (
 /obj/machinery/door/airlock/highsecurity{
 	req_one_access = null;
@@ -1236,7 +1236,7 @@
 /area/admin_planet/fey_forest/gateway_facility)
 "RL" = (
 /turf/simulated/floor/fey/dry_grass,
-/area/space)
+/area/admin_planet/fey_forest/wilds)
 "Sb" = (
 /obj/structure/bed/chair/bay/chair/padded/black{
 	dir = 4
@@ -1258,7 +1258,7 @@
 "Te" = (
 /obj/structure/flora/tree/fey/small_tree/tree3,
 /turf/simulated/floor/fey/forest_grass,
-/area/space)
+/area/admin_planet/fey_forest/wilds)
 "Tp" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/item/storage/backpack/voyager{
@@ -1451,7 +1451,7 @@
 "XU" = (
 /obj/structure/flora/tree/fey/small_tree/tree4,
 /turf/simulated/floor/fey/forest_grass,
-/area/space)
+/area/admin_planet/fey_forest/wilds)
 "XX" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/item/storage/firstaid/combat{
@@ -1505,7 +1505,7 @@
 "ZG" = (
 /obj/structure/flora/tree/fey/large_tree/tree6,
 /turf/simulated/floor/fey/forest_grass,
-/area/space)
+/area/admin_planet/fey_forest/wilds)
 "ZR" = (
 /obj/machinery/door/airlock/centcom{
 	req_one_access = null;
