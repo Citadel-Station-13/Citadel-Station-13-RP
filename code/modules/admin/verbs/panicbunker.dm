@@ -3,12 +3,12 @@ GLOBAL_LIST_EMPTY(bunker_passthrough)
 /client/proc/panicbunker()
 	set category = "Server"
 	set name = "Toggle Panic Bunker"
-
-	if(!check_rights(R_ADMIN))
+	set desc =  "Toggles the panic bunker for the server."
+	if(!check_rights(R_SERVER))
 		return
 
 	if(!CONFIG_GET(flag/sql_enabled))
-		to_chat(usr, "<span class='adminnotice'>The Database is not enabled!</span>")
+		to_chat(usr, SPAN_ADMINNOTICE("The Database is not enabled!"), confidential = TRUE)
 		return
 
 	var/now = CONFIG_GET(flag/panic_bunker)
@@ -17,7 +17,7 @@ GLOBAL_LIST_EMPTY(bunker_passthrough)
 	CONFIG_SET(flag/panic_bunker, now)
 
 	log_and_message_admins("[key_name(usr)] has toggled the Panic Bunker, it is now [now? "on" : "off"]")
-	if(now && (!SSdbcore.Connect()))
+	if(now && !SSdbcore.Connect())
 		message_admins("The Database is not connected! Panic bunker will not work until the connection is reestablished.")
 	feedback_add_details("admin_verb","PANIC") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
@@ -25,8 +25,11 @@ GLOBAL_LIST_EMPTY(bunker_passthrough)
 	set category = "Server"
 	set name = "Add PB Bypass"
 	set desc = "Allows a given ckey to connect despite the panic bunker for a given round."
+	if(!check_rights(R_ADMIN))
+		return
+
 	if(!CONFIG_GET(flag/sql_enabled))
-		to_chat(usr, "<span class='adminnotice'>The Database is not enabled!</span>")
+		to_chat(usr, SPAN_ADMINNOTICE("The Database is not enabled!"), confidential = TRUE)
 		return
 
 	GLOB.bunker_passthrough |= ckey(ckeytobypass)
@@ -40,8 +43,11 @@ GLOBAL_LIST_EMPTY(bunker_passthrough)
 	set category = "Server"
 	set name = "Revoke PB Bypass"
 	set desc = "Revoke's a ckey's permission to bypass the panic bunker for a given round."
+	if(!check_rights(R_ADMIN))
+		return
+
 	if(!CONFIG_GET(flag/sql_enabled))
-		to_chat(usr, "<span class='adminnotice'>The Database is not enabled!</span>")
+		to_chat(usr, SPAN_ADMINNOTICE("The Database is not enabled!"), confidential = TRUE)
 		return
 
 	GLOB.bunker_passthrough -= ckey(ckeytobypass)
@@ -53,7 +59,6 @@ GLOBAL_LIST_EMPTY(bunker_passthrough)
 /client/proc/paranoia_logging()
 	set category = "Server"
 	set name = "New Player Warnings"
-
 	if(!check_rights(R_ADMIN))
 		return
 

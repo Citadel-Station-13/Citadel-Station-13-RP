@@ -26,13 +26,13 @@ export const MESSAGE_TYPE_LOCALCHAT = 'localchat';
 export const MESSAGE_TYPE_RADIO = 'radio';
 export const MESSAGE_TYPE_INFO = 'info';
 export const MESSAGE_TYPE_WARNING = 'warning';
-export const MESSAGE_TYPE_HELPFUL = 'helpful';
 export const MESSAGE_TYPE_DEADCHAT = 'deadchat';
 export const MESSAGE_TYPE_OOC = 'ooc';
 export const MESSAGE_TYPE_ADMINPM = 'adminpm';
 export const MESSAGE_TYPE_COMBAT = 'combat';
 export const MESSAGE_TYPE_ADMINCHAT = 'adminchat';
 export const MESSAGE_TYPE_MODCHAT = 'modchat';
+export const MESSAGE_TYPE_PRAYER = 'prayer';
 export const MESSAGE_TYPE_EVENTCHAT = 'eventchat';
 export const MESSAGE_TYPE_ADMINLOG = 'adminlog';
 export const MESSAGE_TYPE_ATTACKLOG = 'attacklog';
@@ -110,12 +110,6 @@ export const MESSAGE_TYPES = [
     selector: '.danger',
   },
   {
-    type: MESSAGE_TYPE_HELPFUL,
-    name: 'Helpful',
-    description: 'PFC Unga Dunga starts feeding you a pill.',
-    selector: '.helpful',
-  },
-  {
     type: MESSAGE_TYPE_UNKNOWN,
     name: 'Unsorted',
     description: 'Everything we could not sort, always enabled',
@@ -133,6 +127,12 @@ export const MESSAGE_TYPES = [
     name: 'Mod Chat',
     description: 'MSAY messages',
     selector: '.mod_channel',
+    admin: true,
+  },
+  {
+    type: MESSAGE_TYPE_PRAYER,
+    name: 'Prayers',
+    description: 'Prayers from players',
     admin: true,
   },
   {

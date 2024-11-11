@@ -250,7 +250,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/statclick/ticket_list)
 	var/afk_admins = jointext(admin_counts["afk"], ", ")
 	var/other_admins = jointext(admin_counts["noflags"], ", ")
 	var/admin_text = ""
-	var/player_count = "**Total**: [length(GLOB.clients)]" /* , **Living**: [length(GLOB.alive_player_list)], **Dead**: [length(GLOB.dead_player_list)], **Observers**: [length(GLOB.current_observers_list)] */
+	var/player_count = "**Total**: [length(GLOB.clients)], **Living**: [length(living_mob_list)], **Dead**: [length(dead_mob_list)]" //, **Observers**: [length(GLOB.current_observers_list)]
 	if(stealth_admins)
 		admin_text += "**Stealthed**: [stealth_admins]\n"
 	if(afk_admins)
@@ -273,8 +273,6 @@ INITIALIZE_IMMEDIATE(/obj/effect/statclick/ticket_list)
 	return embed
 
 /datum/admin_help/proc/send_message_to_tgs(message, urgent = FALSE)
-	var/message_to_send = message
-
 	if(urgent)
 		// var/extra_message = CONFIG_GET(string/urgent_ahelp_message)
 		to_chat(initiator, SPAN_BOLDWARNING("Notified admins to prioritize your ticket"))

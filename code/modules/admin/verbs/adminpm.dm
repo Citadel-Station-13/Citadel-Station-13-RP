@@ -101,7 +101,7 @@
 		if(length(recipient_interactions) == 1)
 			if(length(opening_interactions)) // Inform the admin that they aren't the first
 				var/printable_interators = english_list(opening_interactions)
-				SEND_SOUND(src, sound('sound/machines/buzz/buzz-sigh.ogg', volume=30))
+				SEND_SOUND(src, sound('sound/machines/buzz-sigh.ogg', volume=30))
 				message_prompt += "\n\n**This ticket is already being responded to by: [printable_interators]**"
 			// add the admin who is currently responding to the list of people responding
 			LAZYADD(recipient_ticket.opening_responders, src)
@@ -340,19 +340,10 @@
 	var/link_to_us = key_name(src, TRUE, FALSE)
 	// Stores a bit of html with outhe ckey of the recipientr highlighted as a reply link
 	var/link_to_their = key_name(recipient, TRUE, FALSE)
-	// Our ckey
-	var/our_ckey = ckey
-	// Recipient ckey
-	var/recip_ckey = recipient?.ckey
 	// Our current ticket, can (supposedly) be null here
 	var/datum/admin_help/ticket = current_ticket
 	// The recipient's current ticket, could in theory? maybe? be null here
 	var/datum/admin_help/recipient_ticket = recipient?.current_ticket
-	// I use -1 as a default for both of these
-	// Our ticket ID
-	var/ticket_id = ticket?.id
-	// The recipient's ticket id
-	var/recipient_ticket_id = recipient_ticket?.id
 
 	// If we should do a full on boink, so with the text and extra flair and everything
 	// We want to always do this so long as WE are an admin, and we're messaging the "loser" of the converstation
@@ -369,17 +360,12 @@
 	// It is worth noting this will always generate the target a ticket if they don't already have one (tickets will generate if a player ahelps automatically, outside this logic)
 	// So past this point, because of our block above here, we can be reasonably guarenteed that the user will have a ticket
 	if(full_boink)
-		// Do BIG RED TEXT
-		var/already_logged = FALSE
 		// Full boinks will always be done to players, so we are not guarenteed that they won't have a ticket
 		if(!recipient_ticket)
 			new /datum/admin_help(send_message, recipient, TRUE)
-			already_logged = TRUE
 			// This action mutates our existing cached ticket information, so we recache
 			ticket = current_ticket
 			recipient_ticket = recipient?.current_ticket
-			ticket_id = ticket?.id
-			recipient_ticket_id = recipient_ticket?.id
 
 		to_chat(recipient,
 			type = MESSAGE_TYPE_ADMINPM,
@@ -442,8 +428,7 @@
 		// GLOB.admin_help_ui_handler.perform_adminhelp(src, raw_message, FALSE)
 		return FALSE
 
-	// Let's play some music for the admin, only if they want it tho
-	// if(sound_prefs & SOUND_ADMINHELP)
+	// Let's play some music for the admin
 	SEND_SOUND(recipient, sound('sound/effects/adminhelp.ogg'))
 
 	// Admin on admin violence first
@@ -471,6 +456,7 @@
 				interaction_message,
 				log_in_blackbox = FALSE,
 				player_message = player_interaction_message)
+
 		return TRUE
 
 	// This is us (a player) trying to talk to the recipient (an admin)

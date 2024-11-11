@@ -1,5 +1,6 @@
 /proc/possess(obj/O as obj in world)
 	set name = "Possess Obj"
+	set desc = "Possess an object."
 	set category = VERB_CATEGORY_OBJECT
 
 	if(!O.loc)
@@ -31,6 +32,7 @@
 
 /proc/release(obj/O as obj in world)
 	set name = "Release Obj"
+	set desc = "Stop possessing an object."
 	set category = VERB_CATEGORY_OBJECT
 	//usr.loc = get_turf(usr)
 
