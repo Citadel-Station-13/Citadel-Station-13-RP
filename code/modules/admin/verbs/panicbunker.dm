@@ -34,7 +34,7 @@ GLOBAL_LIST_EMPTY(bunker_passthrough)
 	SSpersistence.SavePanicBunker() //we can do this every time, it's okay
 	log_admin("[key_name(usr)] has added [ckeytobypass] to the current round's bunker bypass list.")
 	message_admins("[key_name_admin(usr)] has added [ckeytobypass] to the current round's bunker bypass list.")
-	send2irc("Panic Bunker", "[key_name(usr)] has added [ckeytobypass] to the current round's bunker bypass list.")
+	send2adminchat("Panic Bunker", "[key_name(usr)] has added [ckeytobypass] to the current round's bunker bypass list.")
 
 /client/proc/revokebunkerbypass(ckeytobypass as text)
 	set category = "Server"
@@ -48,7 +48,7 @@ GLOBAL_LIST_EMPTY(bunker_passthrough)
 	SSpersistence.SavePanicBunker()
 	log_admin("[key_name(usr)] has removed [ckeytobypass] from the current round's bunker bypass list.")
 	message_admins("[key_name_admin(usr)] has removed [ckeytobypass] from the current round's bunker bypass list.")
-	send2irc("Panic Bunker", "[key_name(usr)] has removed [ckeytobypass] from the current round's bunker bypass list.")
+	send2adminchat("Panic Bunker", "[key_name(usr)] has removed [ckeytobypass] from the current round's bunker bypass list.")
 
 /client/proc/paranoia_logging()
 	set category = "Server"

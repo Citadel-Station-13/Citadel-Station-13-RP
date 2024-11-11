@@ -89,6 +89,10 @@
 		if(CONFIG_GET(flag/emergency_tgui_logging))
 			log_href("[src] (usr:[usr]\[[COORD(usr)]\]) : [hsrc ? "[hsrc] " : ""][href]")
 		return
+	// Route statpanel
+	if(href_list["statpanel"])
+		_statpanel_act(href_list["statpanel"], href_list)
+		return
 
 	//? Normal HREF handling go below
 
@@ -99,29 +103,9 @@
 	if(on_topic_hook(href, href_list, hsrc))
 		return
 
-	// Route statpanel
-	if(href_list["statpanel"])
-		_statpanel_act(href_list["statpanel"], href_list)
-		return
-
 	//Admin PM
 	if(href_list["priv_msg"])
-		var/client/C = locate(href_list["priv_msg"])
-		if(ismob(C)) 		//Old stuff can feed-in mobs instead of clients
-			var/mob/M = C
-			C = M.client
-		cmd_admin_pm(C,null)
-		return
-
-	// Depricated. go use TGS
-	if(href_list["irc_msg"])
-		if(!holder && received_irc_pm < world.time - 6000) //Worse they can do is spam IRC for 10 minutes
-			to_chat(usr, "<span class='warning'>You are no longer able to use this, it's been more then 10 minutes since an admin on IRC has responded to you</span>")
-			return
-		if(mute_irc)
-			to_chat(usr, "<span class='warning'You cannot use this as your client has been muted from sending messages to the admins on IRC</span>")
-			return
-		send2irc("AHELP", href_list["irc_msg"])
+		cmd_admin_pm(href_list["priv_msg"],null)
 		return
 
 	switch(href_list["_src_"])
@@ -326,8 +310,7 @@
 	if(holder)
 		add_admin_verbs()
 		admin_memo_show()
-		// to_chat(src, get_message_output("memo"))
-		// adminGreet()
+		adminGreet()
 
 	if(custom_event_msg && custom_event_msg != "")
 		to_chat(src, "<h1 class='alert'>Custom Event</h1>")
@@ -431,6 +414,7 @@
 	if(holder)
 		holder.owner = null
 		GLOB.admins -= src //delete them on the managed one too
+		handle_admin_logout()
 
 	active_mousedown_item = null
 
@@ -606,3 +590,32 @@ GLOBAL_VAR_INIT(log_clicks, FALSE)
 /client/proc/AnnouncePR(announcement)
 	to_chat(src, announcement)
 
+/// Handles any "fluff" or supplementary procedures related to an admin logout event. Should not have anything critically related cleaning up an admin's logout.
+/client/proc/handle_admin_logout()
+	adminGreet(logout = TRUE)
+	if(length(GLOB.admins) > 0 || !SSticker.IsRoundInProgress()) // We only want to report this stuff if we are currently playing.
+		return
+
+	var/list/message_to_send = list()
+	var/static/list/cheesy_messages = null
+
+	if (isnull(cheesy_messages))
+		cheesy_messages = list(
+			"Forever alone :(",
+			"I have no admins online!",
+			"I need a hug :(",
+			"I need someone on me :(",
+			"I want a man :(",
+			"I'm all alone :(",
+			"I'm feeling lonely :(",
+			"I'm so lonely :(",
+			"Someone come hold me :(",
+			"What happened? Where has everyone gone?",
+			"Where has everyone gone?",
+			"Why does nobody love me? :(",
+		)
+
+	message_to_send += pick(cheesy_messages)
+	message_to_send += "(No admins online)"
+
+	send2adminchat("Server", jointext(message_to_send, " "))

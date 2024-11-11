@@ -81,15 +81,23 @@ SUBSYSTEM_DEF(ticker)
 /datum/controller/subsystem/ticker/fire()
 	switch(current_state)
 		if(GAME_STATE_INIT)
-			// We fire after init finishes
-			on_mc_init_finish()
+			if(Master.initializations_finished_with_no_players_logged_in)
+				start_at = world.time + (CONFIG_GET(number/lobby_countdown) * 10)
+			for(var/client/C in GLOB.clients)
+				window_flash(C) //let them know lobby has opened up.
+			SEND_SOUND(world, sound('sound/misc/server-ready.ogg', volume = 100))
+			send2chat(new /datum/tgs_message_content("New round starting on [LEGACY_MAP_DATUM.station_name]!"), CONFIG_GET(string/channel_announce_new_game))
+			to_chat(world, SPAN_NOTICE("<b>Welcome to [LEGACY_MAP_DATUM.station_name]!</b>"))
+			to_chat(world, SPAN_NOTICE("Please set up your character and select ready. The round will start in [CONFIG_GET(number/lobby_countdown)] seconds."))
+			current_state = GAME_STATE_PREGAME
+
+			fire()
 
 		if(GAME_STATE_PREGAME)
 			process_pregame()
 
 		if(GAME_STATE_SETTING_UP)
 			setup()
-			setup_done = TRUE
 
 		if(GAME_STATE_PLAYING)
 			round_process()
@@ -111,28 +119,18 @@ SUBSYSTEM_DEF(ticker)
 				if(blackbox)
 					blackbox.save_all_data_to_sql()
 
-				send2irc("Server", "A round of [mode.name] just ended.")
+				send2chat(new /datum/tgs_message_content("[GLOB.round_id ? "Round [GLOB.round_id]" : "The round has"] just ended."), CONFIG_GET(string/channel_announce_end_game))
+				send2adminchat("Server", "Round just ended.")
 				if(CONFIG_GET(string/chat_roundend_notice_tag))
-					var/broadcastmessage = "The round has ended."
+					var/broadcastmessage = "[GLOB.round_id ? "Round [GLOB.round_id]" : "The round has"] just ended."
 					if(CONFIG_GET(string/chat_reboot_role))
 						broadcastmessage += "\n\n<@&[CONFIG_GET(string/chat_reboot_role)]>, the server will reboot shortly!"
-					send2chat(broadcastmessage, CONFIG_GET(string/chat_roundend_notice_tag))
+					send2chat(new /datum/tgs_message_content(broadcastmessage), CONFIG_GET(string/chat_roundend_notice_tag))
 
 				SSdbcore.SetRoundEnd()
 				SSpersistence.SavePersistence()
 				if(!SSpersistence.world_saved_count && CONFIG_GET(flag/persistence) && !SSpersistence.world_non_canon)
 					SSpersistence.save_the_world()
-
-
-/datum/controller/subsystem/ticker/proc/on_mc_init_finish()
-	send2irc("Server lobby is loaded and open at byond://[config_legacy.serverurl ? config_legacy.serverurl : (config_legacy.server ? config_legacy.server : "[world.address]:[world.port]")]")
-	to_chat(world, "<span class='boldnotice'>Welcome to the pregame lobby!</span>")
-	to_chat(world, "Please set up your character and select ready. The round will start in [CONFIG_GET(number/lobby_countdown)] seconds.")
-	SEND_SOUND(world, sound('sound/misc/server-ready.ogg', volume = 100))
-	current_state = GAME_STATE_PREGAME
-	if(Master.initializations_finished_with_no_players_logged_in)
-		start_at = world.time + (CONFIG_GET(number/lobby_countdown) * 10)
-	fire()
 
 /datum/controller/subsystem/ticker/proc/process_pregame()
 	var/citest = FALSE
@@ -232,8 +230,10 @@ SUBSYSTEM_DEF(ticker)
 		timeLeft = newtime
 
 /datum/controller/subsystem/ticker/proc/setup()
-	to_chat(world, "<span class='boldannounce'>Starting game...</span>")
+	to_chat(world, SPAN_BOLDANNOUNCE("Starting game..."))
 	var/init_start = world.timeofday
+
+	CHECK_TICK
 
 	//Create and announce mode
 	if(master_mode=="secret")
@@ -262,10 +262,14 @@ SUBSYSTEM_DEF(ticker)
 		to_chat(world, "<span class='danger'>Serious error in mode setup!</span> Reverting to pregame lobby.") //Uses setup instead of set up due to computational context.
 		return 0
 
+	CHECK_TICK
+
 	SSjob.reset_occupations()
 	src.mode.create_antagonists()
 	src.mode.pre_setup()
 	SSjob.DivideOccupations() // Apparently important for new antagonist system to register specific job antags properly.
+
+	CHECK_TICK
 
 	if(!src.mode.can_start())
 		to_chat(world, "<B>Unable to start [mode.name].</B> Not enough players readied, [config_legacy.player_requirements[mode.config_tag]] players needed. Reverting to pregame lobby.")
@@ -289,7 +293,6 @@ SUBSYSTEM_DEF(ticker)
 		src.mode.announce()
 
 	setup_economy()
-	current_state = GAME_STATE_PLAYING
 	create_characters() //Create player characters and transfer them.
 	collect_minds()
 	equip_characters()
@@ -301,53 +304,54 @@ SUBSYSTEM_DEF(ticker)
 		cb.InvokeAsync()
 	LAZYCLEARLIST(round_start_events)
 
-	for(var/obj/landmark/L in GLOB.landmarks_list)
-		// type filtered, we cannot risk runtimes
-		L.OnRoundstart()
+	for(var/i in GLOB.landmarks_list)
+		var/obj/landmark/L = i
+		if(istype(L)) //we can not runtime here. not in this important of a proc.
+			L.OnRoundstart()
+		else
+			stack_trace("[L] [L.type] found in landmarks list, which isn't a landmark!")
+
+	round_start_time = world.time
 
 	log_world("Game start took [(world.timeofday - init_start)/10]s")
-	round_start_time = world.time
 	INVOKE_ASYNC(SSdbcore, TYPE_PROC_REF(/datum/controller/subsystem/dbcore, SetRoundStart))
 
-	// TODO Dear God Fix This.  Fix all of this. Not just this line, this entire proc. This entire file!
-	spawn(0)//Forking here so we dont have to wait for this to finish
-		mode.post_setup()
-		//Cleanup some stuff
-		to_chat(world, "<font color=#4F49AF><B>Enjoy the game!</B></FONT>")
-		var/startupsound = rand(1,4)
-		switch(startupsound)
-			if(1)
-				SEND_SOUND(world, sound('sound/roundStart/start_up_1.ogg'))
-			if(2)
-				SEND_SOUND(world, sound('sound/roundStart/start_up_2.ogg'))
-			if(3)
-				SEND_SOUND(world, sound('sound/roundStart/start_up_3.ogg'))
-			if(4)
-				SEND_SOUND(world, sound('sound/roundStart/start_up_4.ogg'))//the original sound
-		//Holiday Round-start stuff	~Carn
-		Holiday_Game_Start()
+	to_chat(world, SPAN_NOTICE(SPAN_BOLD("Welcome to [LEGACY_MAP_DATUM.station_name], enjoy your stay!")))
+	// fine to leave this not spawn()
+	switch(rand(1,4))
+		if(1)
+			SEND_SOUND(world, sound('sound/roundStart/start_up_[rand(1,4)].ogg'))
+		if(2)
+			SEND_SOUND(world, sound('sound/roundStart/start_up_2.ogg'))
+		if(3)
+			SEND_SOUND(world, sound('sound/roundStart/start_up_3.ogg'))
+		if(4)
+			SEND_SOUND(world, sound('sound/roundStart/start_up_4.ogg'))//the original sound
 
-	//start_events() //handles random events and space dust.
-	//new random event system is handled from the MC.
-
-	var/admins_number = 0
-	for(var/client/C)
-		if(C.holder)
-			admins_number++
-	if(admins_number == 0)
-		send2irc("A round has started with no admins online.")
-
-/*	SSsupply.process() 		//Start the supply shuttle regenerating points -- TLE // handled in scheduler
-	master_controller.process()		//Start master_controller.process()
-	lighting_controller.process()	//Start processing DynamicAreaLighting updates
-	*/
-
+	current_state = GAME_STATE_PLAYING
 	Master.SetRunLevel(RUNLEVEL_GAME)
 
+	// this is horrible and should be moved to ssblackbox
 	if(CONFIG_GET(flag/sql_enabled))
 		ASYNC // THIS REQUIRES THE ASYNC!
 			statistic_cycle() // Polls population totals regularly and stores them in an SQL DB -- TLE
+
+	Holiday_Game_Start() // before post setup
+
+	PostSetup()
+
 	return TRUE
+
+/datum/controller/subsystem/ticker/proc/PostSetup()
+	set waitfor = FALSE
+
+	// old stuff
+	mode.post_setup()
+
+	var/list/adm = get_admin_counts()
+	var/list/allmins = adm["present"]
+	send2adminchat("Server", "Round [GLOB.round_id ? "#[GLOB.round_id]" : ""] has started[allmins.len ? ".":" with no active admins online!"]")
+	setup_done = TRUE
 
 //These callbacks will fire after roundstart key transfer
 /datum/controller/subsystem/ticker/proc/OnRoundstart(datum/callback/cb)

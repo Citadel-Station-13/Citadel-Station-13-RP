@@ -82,9 +82,6 @@
 	return SUIT_SENSOR_OFF
 
 
-/proc/is_admin(var/mob/user)
-	return check_rights(R_ADMIN, 0, user) != 0
-
 /**
  * Returns true if the user should have admin AI level access
  *! TO-BE-DEPRICATED

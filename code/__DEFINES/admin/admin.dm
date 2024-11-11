@@ -84,19 +84,19 @@
 #define ADMIN_FULLMONTY(user)        ("[key_name_admin(user)] [ADMIN_FULLMONTY_NONAME(user)]")
 
 /atom/proc/Admin_Coordinates_Readable(area_name, admin_jump_ref)
-	var/turf/T = Safe_COORD_Location()
-	return T ? "[area_name ? "[get_area_name(T, TRUE)] " : " "]([T.x],[T.y],[T.z])[admin_jump_ref ? " [ADMIN_JMP(T)]" : ""]" : "nonexistent location"
+	var/turf/turf_at_coords = Safe_COORD_Location()
+	return turf_at_coords ? "[area_name ? "[get_area_name(turf_at_coords, TRUE)] " : " "]([turf_at_coords.x],[turf_at_coords.y],[turf_at_coords.z])[admin_jump_ref ? " [ADMIN_JMP(turf_at_coords)]" : ""]" : "nonexistent location"
 
 /atom/proc/Safe_COORD_Location()
-	var/atom/A = drop_location()
-	if(!A)
-		return // Not a valid atom.
-	var/turf/T = get_step(A, 0) // Resolve where the thing is.
-	if(!T) // Incase it's inside a valid drop container, inside another container. ie if a mech picked up a closet and has it inside it's internal storage.
-		var/atom/last_try = A.loc?.drop_location() // One last try, otherwise fuck it.
+	var/atom/drop_atom = drop_location()
+	if(!drop_atom)
+		return //not a valid atom.
+	var/turf/drop_turf = get_step(drop_atom, 0) //resolve where the thing is.
+	if(!drop_turf) //incase it's inside a valid drop container, inside another container. ie if a mech picked up a closet and has it inside its internal storage.
+		var/atom/last_try = drop_atom.loc?.drop_location() //one last try, otherwise fuck it.
 		if(last_try)
-			T = get_step(last_try, 0)
-	return T
+			drop_turf = get_step(last_try, 0)
+	return drop_turf
 
 /turf/Safe_COORD_Location()
 	return src
@@ -104,11 +104,11 @@
 /**
  *! AHELP Commands.
  */
-#define ADMIN_AHELP_REJECT(user)    ("(<a href='?_src_=holder;ahelp=[user];ahelp_action=reject'>[SPAN_TOOLTIP("Reject and close this ticket.","REJT")]</a>)")
-#define ADMIN_AHELP_IC(user)        ("(<a href='?_src_=holder;ahelp=[user];ahelp_action=icissue'>[SPAN_TOOLTIP("Close this ticket and mark it IC.","IC")]</a>)")
-#define ADMIN_AHELP_CLOSE(user)     ("(<a href='?_src_=holder;ahelp=[user];ahelp_action=close'>[SPAN_TOOLTIP("Close this ticket.","CLOSE")]</a>)")
-#define ADMIN_AHELP_RESOLVE(user)   ("(<a href='?_src_=holder;ahelp=[user];ahelp_action=resolve'>[SPAN_TOOLTIP("Close this ticket and mark it as Resolved.","RSLVE")]</a>)")
-#define ADMIN_AHELP_HANDLE(user)    ("(<a href='?_src_=holder;ahelp=[user];ahelp_action=handleissue'>[SPAN_TOOLTIP("Alert other Administrators that you're handling this ticket.","HANDLE")]</a>)")
+#define ADMIN_AHELP_REJECT(user)    ("(<a href='?_src_=holder;[HrefToken(forceGlobal = TRUE)];ahelp=[user];ahelp_action=reject'>[SPAN_TOOLTIP("Reject and close this ticket.","REJT")]</a>)")
+#define ADMIN_AHELP_IC(user)        ("(<a href='?_src_=holder;[HrefToken(forceGlobal = TRUE)];ahelp=[user];ahelp_action=icissue'>[SPAN_TOOLTIP("Close this ticket and mark it IC.","IC")]</a>)")
+#define ADMIN_AHELP_CLOSE(user)     ("(<a href='?_src_=holder;[HrefToken(forceGlobal = TRUE)];ahelp=[user];ahelp_action=close'>[SPAN_TOOLTIP("Close this ticket.","CLOSE")]</a>)")
+#define ADMIN_AHELP_RESOLVE(user)   ("(<a href='?_src_=holder;[HrefToken(forceGlobal = TRUE)];ahelp=[user];ahelp_action=resolve'>[SPAN_TOOLTIP("Close this ticket and mark it as Resolved.","RSLVE")]</a>)")
+#define ADMIN_AHELP_HANDLE(user)    ("(<a href='?_src_=holder;[HrefToken(forceGlobal = TRUE)];ahelp=[user];ahelp_action=handleissue'>[SPAN_TOOLTIP("Alert other Administrators that you're handling this ticket.","HANDLE")]</a>)")
 #define ADMIN_AHELP_FULLMONTY(user) ("[ADMIN_AHELP_REJECT(user)] [ADMIN_AHELP_IC(user)] [ADMIN_AHELP_CLOSE(user)] [ADMIN_AHELP_RESOLVE(user)] [ADMIN_AHELP_HANDLE(user)]")
 
 #define AHELP_ACTIVE   1
@@ -118,3 +118,8 @@
 // LOG BROWSE TYPES
 #define BROWSE_ROOT_ALL_LOGS     1
 #define BROWSE_ROOT_CURRENT_LOGS 2
+
+/// for [/proc/check_asay_links], if there are any actionable refs in the asay message, this index in the return list contains the new message text to be printed
+#define ASAY_LINK_NEW_MESSAGE_INDEX "!asay_new_message"
+/// for [/proc/check_asay_links], if there are any admin pings in the asay message, this index in the return list contains a list of admins to ping
+#define ASAY_LINK_PINGED_ADMINS_INDEX "!pinged_admins"

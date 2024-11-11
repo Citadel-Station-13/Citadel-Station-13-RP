@@ -1,17 +1,29 @@
+/datum/admins/proc/CheckAdminHref(href, href_list)
+	var/auth = href_list["admin_token"]
+	. = auth && (auth == href_token || auth == GLOB.href_token)
+	if(.)
+		return
+	var/msg = !auth ? "no" : "a bad"
+	message_admins("[key_name_admin(usr)] clicked an href with [msg] authorization key!")
+	if(CONFIG_GET(flag/debug_admin_hrefs))
+		message_admins("Debug mode enabled, call not blocked. Please ask your coders to review this round's logs.")
+		log_world("UAH: [href]")
+		return TRUE
+	log_admin_private("[key_name(usr)] clicked an href with [msg] authorization key! [href]")
+
 /datum/admins/Topic(href, href_list)
 	..()
 
-	if((usr.client != src.owner) || !check_rights(0))
-		log_admin("[key_name(usr)] tried to use the admin panel without authorization.")
+	if(usr.client != src.owner || !check_rights(0))
 		message_admins("[usr.key] has attempted to override the admin panel!")
+		log_admin("[key_name(usr)] tried to use the admin panel without authorization.")
 		return
 
-	if(SSticker.mode && SSticker.mode.check_antagonists_topic(href, href_list))
-		check_antagonists()
+	if(!CheckAdminHref(href, href_list))
 		return
 
 	if(href_list["ahelp"])
-		if(!check_rights(R_ADMIN|R_MOD|R_DEBUG))
+		if(!check_rights(R_ADMIN|R_MOD, TRUE))
 			return
 
 		var/ahelp_ref = href_list["ahelp"]
@@ -19,10 +31,14 @@
 		if(AH)
 			AH.Action(href_list["ahelp_action"])
 		else
-			to_chat(usr, "Ticket [ahelp_ref] has been deleted!")
+			to_chat(usr, "Ticket [ahelp_ref] has been deleted!", confidential = TRUE)
 
 	else if(href_list["ahelp_tickets"])
 		GLOB.ahelp_tickets.BrowseTickets(text2num(href_list["ahelp_tickets"]))
+
+	if(SSticker.mode && SSticker.mode.check_antagonists_topic(href, href_list))
+		check_antagonists()
+		return
 
 	if(href_list["dbsearchckey"] || href_list["dbsearchadmin"])
 
@@ -363,7 +379,7 @@
 	/////////////////////////////////////new ban stuff
 
 	else if(href_list["jobban2"])
-//		if(!check_rights(R_BAN))	return
+		// if(!check_rights(R_BAN))	return
 
 		var/mob/M = locate(href_list["jobban2"])
 		if(!ismob(M))
@@ -388,7 +404,7 @@
 						                -Nodrak
 	************************************WARNING!***********************************/
 		var/counter = 0
-//Regular jobs
+	//Regular jobs
 	//Command (Blue)
 		jobs += "<table cellpadding='1' cellspacing='0' width='100%'>"
 		jobs += "<tr align='center' bgcolor='ccccff'><th colspan='[length(SSjob.get_job_titles_in_department(DEPARTMENT_COMMAND))]'><a href='?src=\ref[src];jobban3=commanddept;jobban4=\ref[M]'>Command Positions</a></th></tr><tr align='center'>"
@@ -972,17 +988,9 @@
 				return
 
 	else if(href_list["mute"])
-		if(!check_rights(R_MOD,0) && !check_rights(R_ADMIN))  return
-
-		var/mob/M = locate(href_list["mute"])
-		if(!ismob(M))	return
-		if(!M.client)	return
-
-		var/mute_type = href_list["mute_type"]
-		if(istext(mute_type))	mute_type = text2num(mute_type)
-		if(!isnum(mute_type))	return
-
-		cmd_admin_mute(M, mute_type)
+		if(!check_rights(R_MOD,0) && !check_rights(R_ADMIN))
+			return
+		cmd_admin_mute(href_list["mute"], text2num(href_list["mute_type"]))
 
 	else if(href_list["c_mode"])
 		if(!check_rights(R_ADMIN))	return

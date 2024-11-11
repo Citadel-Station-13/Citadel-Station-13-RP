@@ -622,3 +622,9 @@ GLOBAL_LIST_INIT(binary, list("0","1"))
 /proc/sanitize_css_class_name(name)
 	var/static/regex/regex = new(@"[^a-zA-Z0-9]","g")
 	return replacetext(name, regex, "")
+
+// return input text if it is a text, else returns default
+/proc/sanitize_text(text, default="")
+	if(istext(text))
+		return text
+	return default

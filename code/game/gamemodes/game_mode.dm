@@ -371,7 +371,7 @@ var/global/list/additional_antag_types = list()
 		feedback_set("escaped_on_shuttle",escaped_on_shuttle)
 
 
-	send2irc("ROUND END", "A round of [src.name] has ended - [surviving_total] survivors, [ghosts] ghosts.")
+	send2adminchat("ROUND END", "A round of [src.name] has ended - [surviving_total] survivors, [ghosts] ghosts.")
 
 	return 0
 

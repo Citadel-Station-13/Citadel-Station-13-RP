@@ -4,6 +4,8 @@
 /datum/config_entry/string/invoke_youtubedl
 	protection = CONFIG_ENTRY_LOCKED | CONFIG_ENTRY_HIDDEN
 
+/datum/config_entry/flag/show_irc_name
+
 /datum/config_entry/number/client_warn_version
 	default = null
 	min_val = 500
@@ -41,3 +43,14 @@
 
 /// Enable or disable the toast notification when the the instance finishes initializing.
 /datum/config_entry/flag/toast_notification_on_init
+
+/datum/config_entry/string/channel_announce_new_game
+	default = null
+
+/datum/config_entry/string/channel_announce_end_game
+	default = null
+
+/datum/config_entry/string/chat_new_game_notifications
+	default = null
+
+/datum/config_entry/flag/debug_admin_hrefs
