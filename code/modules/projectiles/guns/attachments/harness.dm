@@ -22,6 +22,8 @@
 	/// deactivation sound
 	//  todo: better sound
 	var/deactivate_sound = 'sound/weapons/empty.ogg'
+	/// snap proc message
+	var/harness_message = "snaps back to"
 
 	attachment_action_name = "Engage Harness"
 
@@ -65,6 +67,7 @@
 	for(var/slot_id in list(
 		/datum/inventory_slot/inventory/suit_storage,
 		/datum/inventory_slot/inventory/back,
+		/datum/inventory_slot/inventory/belt
 	))
 		if(!user.equip_to_slot_if_possible(attached, slot_id, INV_OP_SILENT))
 			continue
@@ -74,7 +77,7 @@
 	if(!.)
 		return
 	attached.visible_message(
-		SPAN_WARNING("[attached] snaps back to [user]'s [target_slot_phrase]!"),
+		SPAN_WARNING("[attached] [harness_message] [user]'s [target_slot_phrase]!"),
 		range = MESSAGE_RANGE_COMBAT_SILENCED,
 	)
 
@@ -98,8 +101,9 @@
 
 /obj/item/gun_attachment/harness/magnetic/lanyard
 	name = "handgun lanyard"
-	desc = "A handgun lanyard that will return a gun to it's attachment point when it's dropped by its wearer."
+	desc = "A coiled lanyard that will hold a gun close to it's attachment point when it's dropped by it's wearer."
 	icon_state = "lanyard"
 	align_x = 0
 	align_y = 0
+	harness_message = "falls back against"
 	attachment_slot = GUN_ATTACHMENT_SLOT_GRIP
