@@ -3,14 +3,10 @@
 	set name = "Debug-Game"
 	if(!check_rights(R_DEBUG))	return
 
-	if(GLOB.Debug2)
-		GLOB.Debug2 = 0
-		message_admins("[key_name(src)] toggled debugging off.")
-		log_admin("[key_name(src)] toggled debugging off.")
-	else
-		GLOB.Debug2 = 1
-		message_admins("[key_name(src)] toggled debugging on.")
-		log_admin("[key_name(src)] toggled debugging on.")
+	GLOB.Debug2 = !GLOB.Debug2
+	var/message = "toggled debugging [(GLOB.Debug2 ? "ON" : "OFF")]"
+	message_admins("[key_name_admin(usr)] [message].")
+	log_admin("[key_name(usr)] [message].")
 
 	feedback_add_details("admin_verb","DG2") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
@@ -93,21 +89,29 @@
 	usr.show_message(t, 1)
 	feedback_add_details("admin_verb","ASL") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
-/client/proc/cmd_admin_robotize(var/mob/M in GLOB.mob_list)
+/client/proc/cmd_admin_robotize(mob/target in GLOB.mob_list)
 	set category = "Fun"
 	set name = "Make Robot"
 
-	if(istype(M, /mob/living/carbon/human))
-		log_admin("[key_name(src)] has robotized [M.key].")
-		spawn(10)
-			M:Robotize()
+	if(!check_rights(R_FUN))	return
 
-	else
-		alert("Invalid mob")
+	if(!SSticker.HasRoundStarted())
+		alert(usr, "Wait until the game starts")
+		return
+	if(issilicon(target))
+		alert(usr, "They are already a cyborg.")
+		return
+	if(!ishuman(target))
+		alert(usr, "Mob type must be a human.")
+		return
+	log_admin("[key_name(usr)] has robotized [target.key].")
+	INVOKE_ASYNC(target, TYPE_PROC_REF(/mob/living/carbon/human, Robotize))
 
-/client/proc/cmd_admin_animalize(var/mob/M in GLOB.mob_list)
+/client/proc/cmd_admin_animalize(mob/M in GLOB.mob_list)
 	set category = "Fun"
 	set name = "Make Simple Animal"
+
+	if(!check_rights(R_FUN))	return
 
 	if(!M)
 		alert("That mob doesn't seem to exist, close the panel and try again.")
@@ -118,14 +122,15 @@
 		return
 
 	log_admin("[key_name(src)] has animalized [M.key].")
-	spawn(10)
-		M.Animalize()
+	INVOKE_ASYNC(M, TYPE_PROC_REF(/mob, Animalize))
 
 
-/client/proc/makepAI(var/turf/T in GLOB.mob_list)
+/client/proc/makepAI(turf/T in GLOB.mob_list)
 	set category = "Fun"
 	set name = "Make pAI"
 	set desc = "Specify a location to spawn a pAI device, then specify a key to play that pAI"
+
+	if(!check_rights(R_FUN))	return
 
 	var/list/available = list()
 	for(var/mob/C in GLOB.mob_list)
@@ -149,9 +154,11 @@
 			paiController.pai_candidates.Remove(candidate)
 	feedback_add_details("admin_verb","MPAI") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
-/client/proc/cmd_admin_alienize(var/mob/M in GLOB.mob_list)
+/client/proc/cmd_admin_alienize(mob/M in GLOB.mob_list)
 	set category = "Fun"
 	set name = "Make Alien"
+
+	if(!check_rights(R_FUN))	return
 
 	if(ishuman(M))
 		log_admin("[key_name(src)] has alienized [M.key].")
@@ -163,34 +170,111 @@
 	else
 		alert("Invalid mob")
 
-//TODO: merge the vievars version into this or something maybe mayhaps
+/client/proc/poll_type_to_del(search_string)
+	var/list/types = get_fancy_list_of_atom_types()
+	if (!isnull(search_string) && search_string != "")
+		types = filter_fancy_list(types, search_string)
+
+	if(!length(types))
+		return
+
+	var/key = input(usr, "Choose an object to delete.", "Delete:") as null|anything in sortList(types)
+
+	if(!key)
+		return
+	return types[key]
+
 /client/proc/cmd_debug_del_all(object as text)
 	set category = "Debug"
 	set name = "Del-All"
+	set desc = "Delete all datums with the specified type."
 
-	var/list/matches = get_fancy_list_of_atom_types()
-	if (!isnull(object) && object!="")
-		matches = filter_fancy_list(matches, object)
+	if(!check_rights(R_DEBUG|R_SPAWN))	return
 
-	if(matches.len==0)
+	var/type_to_del = poll_type_to_del(object)
+	if(!type_to_del)
 		return
-	var/hsbitem = input(usr, "Choose an object to delete. Use clear-mobs instead on LIVE.", "Delete:") as null|anything in matches
-	if(hsbitem)
-		hsbitem = matches[hsbitem]
-		var/counter = 0
+
+	var/counter = 0
+	for(var/atom/O in world)
+		if(istype(O, type_to_del))
+			counter++
+			qdel(O)
+		CHECK_TICK
+	log_admin("[key_name(usr)] has force deleted all ([counter]) instances of [type_to_del].")
+	message_admins("[key_name_admin(usr)] has force deleted all ([counter]) instances of [type_to_del].")
+
+/client/proc/cmd_debug_del_all_force(object as text)
+	set category = "Debug"
+	set name = "Force-Del-All"
+	set desc = "Forcibly delete all datums with the specified type."
+
+	if(!check_rights(R_DEBUG|R_SPAWN))	return
+
+	var/type_to_del = poll_type_to_del(object)
+	if(!type_to_del)
+		return
+
+	var/counter = 0
+	for(var/atom/O in world)
+		if(istype(O, type_to_del))
+			counter++
+			qdel(O, force = TRUE)
+		CHECK_TICK
+	log_admin("[key_name(usr)] has deleted all ([counter]) instances of [type_to_del].")
+	message_admins("[key_name_admin(usr)] has deleted all ([counter]) instances of [type_to_del].")
+
+/client/proc/cmd_debug_del_all_hard(object as text)
+	set category = "Debug"
+	set name = "Hard-Del-All"
+	set desc = "Hard delete all datums with the specified type."
+
+	if(!check_rights(R_DEBUG|R_SPAWN))	return
+
+	var/type_to_del = poll_type_to_del(object)
+	if(!type_to_del)
+		return
+
+	var/choice = alert(usr, "ARE YOU SURE that you want to hard delete this type? It will cause MASSIVE lag.", "Hoooo lad what happen?", "Yes", "No")
+	if(choice != "Yes")
+		return
+
+	choice = alert(usr, "Do you want to pre qdelete the atom? This will speed things up significantly, but may break depending on your level of fuckup.", "How do you even get it that bad", "Yes", "No")
+	var/should_pre_qdel = TRUE
+	if(choice == "No")
+		should_pre_qdel = FALSE
+
+	choice = alert(usr, "Ok one last thing, do you want to yield to the game? or do it all at once. These are hard deletes remember.", "Jesus christ man", "Yield", "Ignore the server")
+	var/should_check_tick = TRUE
+	if(choice == "Ignore the server")
+		should_check_tick = FALSE
+
+	var/counter = 0
+	if(should_check_tick)
 		for(var/atom/O in world)
-			if(istype(O, hsbitem))
+			if(istype(O, type_to_del))
 				counter++
-				qdel(O)
+				if(should_pre_qdel)
+					qdel(O)
+				del(O)
 			CHECK_TICK
-		log_admin("[key_name(src)] has deleted all ([counter]) instances of [hsbitem].")
-		message_admins("[key_name_admin(src)] has deleted all ([counter]) instances of [hsbitem].")
-		// SSblackbox.record_feedback("tally", "admin_verb", 1, "Delete All") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+	else
+		for(var/atom/O in world)
+			if(istype(O, type_to_del))
+				counter++
+				if(should_pre_qdel)
+					qdel(O)
+				del(O)
+			// CHECK_TICK funny how on tg this check tick is here on the "should not check tick" part
+
+	log_admin("[key_name(usr)] has hard deleted all ([counter]) instances of [type_to_del].")
+	message_admins("[key_name_admin(usr)] has hard deleted all ([counter]) instances of [type_to_del].")
 
 /client/proc/cmd_admin_clear_mobs()
 	set category = "Admin"
 	set name = "Clear Mobs"
 
+	if(!check_rights(R_DEBUG|R_SPAWN))	return
 	var/range = input(usr, "Choose a range in tiles FROM your location", "If uncertain, enter 25 or below.") as num
 	if(range >= 50) // ridiculously high
 		alert("Please enter a valid range below 50.")
@@ -214,15 +298,19 @@
 /client/proc/cmd_debug_make_powernets()
 	set category = "Debug"
 	set name = "Make Powernets"
+	set desc = "Regenerates all powernets for all cables."
+
+	if(!check_rights(R_DEBUG|R_SERVER))	return
 	SSmachines.makepowernets()
-	log_admin("[key_name(src)] has remade the powernet. SSmachines.makepowernets() called.")
-	message_admins("[key_name_admin(src)] has remade the powernets. SSmachines.makepowernets() called.", 0)
+	log_admin("[key_name(usr)] has remade the powernet. makepowernets() called.")
+	message_admins("[key_name_admin(usr)] has remade the powernets. makepowernets() called.")
 	feedback_add_details("admin_verb","MPWN") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /client/proc/cmd_debug_tog_aliens()
 	set category = "Server"
 	set name = "Toggle Aliens"
 
+	if(!check_rights(R_DEBUG|R_SERVER))	return
 	config_legacy.aliens_allowed = !config_legacy.aliens_allowed
 	log_admin("[key_name(src)] has turned aliens [config_legacy.aliens_allowed ? "on" : "off"].")
 	message_admins("[key_name_admin(src)] has turned aliens [config_legacy.aliens_allowed ? "on" : "off"].", 0)
@@ -294,54 +382,74 @@
 	else
 		. = lines.Join("\n")
 
-/client/proc/cmd_admin_grantfullaccess(var/mob/M in GLOB.mob_list)
+/client/proc/cmd_admin_grantfullaccess(mob/M in GLOB.mob_list)
 	set category = "Admin"
 	set name = "Grant Full Access"
+	set desc = "Grant full access to a mob."
 
-	if (!SSticker)
-		alert("Wait until the game starts")
+	if(!check_rights(R_DEBUG))
 		return
-	if (istype(M, /mob/living/carbon/human))
+
+	if(!SSticker.HasRoundStarted())
+		alert(usr, "Wait until the game starts")
+		return
+
+	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
-		if (H.wear_id)
-			var/obj/item/card/id/id = H.wear_id
-			if(istype(H.wear_id, /obj/item/pda))
-				var/obj/item/pda/pda = H.wear_id
-				id = pda.id
-			id.icon_state = "gold"
-			id.access = get_all_accesses().Copy()
+		var/obj/item/worn = H.wear_id
+		var/obj/item/card/id/id = null
+
+		if(worn)
+			id = worn.GetID()
+		if(id)
+			if(id == worn)
+				worn = null
+			qdel(id)
+
+		id = new /obj/item/card/id/gold()
+
+		id.access = get_all_accesses().Copy()
+		id.registered_name = H.real_name
+		id.assignment = "Facility Director"
+		id.name = "[id.registered_name]'s ID Card ([id.assignment])"
+		id.update_icon()
+
+		if(worn)
+			if(istype(worn, /obj/item/storage/wallet))
+				var/obj/item/storage/wallet/W = worn
+				W.front_id = id
+				id.forceMove(W)
+				W.update_icon()
 		else
-			var/obj/item/card/id/id = new/obj/item/card/id(M);
-			id.icon_state = "gold"
-			id.access = get_all_accesses().Copy()
-			id.registered_name = H.real_name
-			id.assignment = "Facility Director"
-			id.name = "[id.registered_name]'s ID Card ([id.assignment])"
 			H.equip_to_slot_or_del(id, SLOT_ID_WORN_ID)
 			H.update_inv_wear_id()
 	else
 		alert("Invalid mob")
 	feedback_add_details("admin_verb","GFA") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
-	log_admin("[key_name(src)] has granted [M.key] full access.")
-	message_admins("<font color=#4F49AF>[key_name_admin(usr)] has granted [M.key] full access.</font>", 1)
+	log_admin("[key_name(usr)] has granted [M.key] full access.")
+	message_admins(SPAN_ADMINNOTICE("[key_name_admin(usr)] has granted [M.key] full access."))
 
-/client/proc/cmd_assume_direct_control(var/mob/M in GLOB.mob_list)
+/client/proc/cmd_assume_direct_control(mob/M in GLOB.mob_list)
 	set category = "Admin"
 	set name = "Assume direct control"
-	set desc = "Direct intervention"
+	set desc = "Assume direct control of a mob."
 
-	if(!check_rights(R_DEBUG|R_ADMIN))	return
+	if(!check_rights(R_ADMIN))	return
 	if(M.ckey)
 		if(alert("This mob is being controlled by [M.ckey]. Are you sure you wish to assume control of it? [M.ckey] will be made a ghost.",,"Yes","No") != "Yes")
 			return
-		else
-			var/mob/observer/dead/ghost = new/mob/observer/dead(M,1)
-			M.transfer_client_to(ghost)
-	message_admins("<font color=#4F49AF>[key_name_admin(usr)] assumed direct control of [M].</font>", 1)
+
+	if(!M || QDELETED(M))
+		to_chat(usr, SPAN_WARNING("The target mob no longer exists."))
+		return
+
+	message_admins(SPAN_ADMINNOTICE("[key_name_admin(usr)] assumed direct control of [M]."))
 	log_admin("[key_name(usr)] assumed direct control of [M].")
-	var/mob/adminmob = src.mob
+	var/mob/adminmob = mob
+	if(M.ckey)
+		M.ghostize(FALSE)
 	transfer_to(M)
-	if( isobserver(adminmob) )
+	if(isobserver(adminmob))
 		qdel(adminmob)
 	feedback_add_details("admin_verb","ADC") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
@@ -603,21 +711,25 @@
 /client/proc/cmd_debug_mob_lists()
 	set category = "Debug"
 	set name = "Debug Mob Lists"
-	set desc = "For when you just gotta know"
+	set desc = "For when you just gotta know."
 
-	switch(input("Which list?") in list("Players","Admins","Mobs","Living Mobs","Dead Mobs", "Clients"))
+	var/chosen_list = input("Which list?", "Select List") in list("Players","Admins","Mobs","Living Mobs","Dead Mobs","Clients")
+	if(isnull(chosen_list))
+		return
+
+	switch(chosen_list)
 		if("Players")
-			to_chat(usr, jointext(GLOB.player_list,","))
+			to_chat(usr, jointext(GLOB.player_list,","), confidential = TRUE)
 		if("Admins")
-			to_chat(usr, jointext(GLOB.admins,","))
+			to_chat(usr, jointext(GLOB.admins,","), confidential = TRUE)
 		if("Mobs")
-			to_chat(usr, jointext(GLOB.mob_list,","))
+			to_chat(usr, jointext(GLOB.mob_list,","), confidential = TRUE)
 		if("Living Mobs")
-			to_chat(usr, jointext(living_mob_list,","))
+			to_chat(usr, jointext(living_mob_list,","), confidential = TRUE)
 		if("Dead Mobs")
-			to_chat(usr, jointext(dead_mob_list,","))
+			to_chat(usr, jointext(dead_mob_list,","), confidential = TRUE)
 		if("Clients")
-			to_chat(usr, jointext(GLOB.clients,","))
+			to_chat(usr, jointext(GLOB.clients,","), confidential = TRUE)
 
 // DNA2 - Admin Hax
 /client/proc/cmd_admin_toggle_block(var/mob/M,var/block)

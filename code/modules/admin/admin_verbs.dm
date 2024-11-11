@@ -173,6 +173,8 @@ var/list/admin_verbs_server = list(
 	/datum/admins/proc/toggleAI,
 	/client/proc/cmd_admin_delete, // Delete an instance/object/mob/etc,
 	/client/proc/cmd_debug_del_all,
+	/client/proc/cmd_debug_del_all_force,
+	/client/proc/cmd_debug_del_all_hard,
 	/client/proc/cmd_admin_clear_mobs,
 	/datum/admins/proc/adspawn,
 	/datum/admins/proc/adjump,
