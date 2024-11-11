@@ -72,6 +72,9 @@
 	//* Attachments *//
 
 	/// Installed attachments
+	///
+	/// * Set to list of typepaths to immediately install them on init.
+	/// * Do not set this.
 	var/list/obj/item/gun_attachment/attachments
 	/// Attachment alignments.
 	///
@@ -231,6 +234,23 @@
 	//* handle attachment typelists *//
 	if(attachment_alignment)
 		attachment_alignment = typelist(NAMEOF(src, attachment_alignment), attachment_alignment)
+
+	//* handle attachments *//
+	if(length(attachments))
+		var/list/translating_attachments = attachments
+		attachments = list()
+		for(var/obj/item/gun_attachment/casted as anything in translating_attachments)
+			var/obj/item/gun_attachment/actual
+			if(IS_ANONYMOUS_TYPEPATH(casted))
+				actual = new casted
+			else if(ispath(casted, /obj/item/gun_attachment))
+				actual = new casted
+			else if(istype(casted))
+				actual = casted
+			if(actual.attached != src)
+				if(!install_attachment(actual))
+					stack_trace("[actual] ([actual.type]) couldn't be auto-installed on initialize despite being in list.")
+					qdel(actual)
 
 	//! LEGACY: firemodes
 	for(var/i in 1 to firemodes.len)
