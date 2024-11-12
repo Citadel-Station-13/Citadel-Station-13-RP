@@ -39,7 +39,6 @@
 	return INITIALIZE_HINT_LATELOAD
 
 /obj/machinery/disposal/LateInitialize()
-	. = ..()
 	trunk = locate() in src.loc
 	if(!trunk)
 		mode = 0

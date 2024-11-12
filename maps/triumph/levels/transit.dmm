@@ -12,6 +12,10 @@
 "by" = (
 /turf/space/transit/west,
 /area/space)
+"cF" = (
+/obj/effect/shuttle_landmark/transit/triumph/trade/udang,
+/turf/space/transit/west,
+/area/space)
 "di" = (
 /obj/structure/bed/holobed,
 /turf/simulated/floor/holofloor/wood,
@@ -77,10 +81,6 @@
 	},
 /turf/simulated/floor/holofloor/tiled,
 /area/houseboat/holodeck/basketball)
-"iV" = (
-/obj/effect/shuttle_landmark/transit/triumph/trade/scoophead,
-/turf/space/transit/west,
-/area/space)
 "je" = (
 /obj/structure/window/reinforced{
 	dir = 1
@@ -220,10 +220,6 @@
 /obj/effect/step_trigger/lost_in_space,
 /turf/space,
 /area/space)
-"wt" = (
-/obj/effect/shuttle_landmark/transit/triumph/trade/udang,
-/turf/space/transit/west,
-/area/space)
 "wQ" = (
 /turf/simulated/floor/holofloor/space,
 /area/houseboat/holodeck/space)
@@ -255,6 +251,10 @@
 /obj/effect/floor_decal/corner/green/full,
 /turf/simulated/floor/holofloor/tiled,
 /area/houseboat/holodeck/basketball)
+"zi" = (
+/obj/effect/shuttle_landmark/transit/triumph/trade/scoophead,
+/turf/space/transit/west,
+/area/space)
 "zt" = (
 /obj/structure/window/reinforced{
 	dir = 8
@@ -11277,7 +11277,7 @@ by
 by
 by
 by
-iV
+zi
 by
 PX
 Wy
@@ -14561,7 +14561,7 @@ by
 by
 by
 by
-wt
+cF
 by
 PX
 by

@@ -1,4 +1,4 @@
-/datum/material/marble
+/datum/prototype/material/marble
 	id = "marble"
 	name = "marble"
 	icon_colour = "#AAAAAA"
@@ -27,7 +27,7 @@
 
 	worth = 2
 
-/datum/material/marble/generate_recipes()
+/datum/prototype/material/marble/generate_recipes()
 	. = ..()
 	. += create_stack_recipe_datum(
 		name = "light marble floor tile",

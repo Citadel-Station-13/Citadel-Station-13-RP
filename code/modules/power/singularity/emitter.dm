@@ -208,7 +208,7 @@
 					to_chat(user, "<span class='warning'>You need more welding fuel to complete this task.</span>")
 		return
 
-	if(W.is_material_stack_of(/datum/material/steel))
+	if(W.is_material_stack_of(/datum/prototype/material/steel))
 		var/amt = CEILING(( initial(integrity) - integrity)/10, 1)
 		if(!amt)
 			to_chat(user, "<span class='notice'>\The [src] is already fully repaired.</span>")

@@ -1,10 +1,10 @@
 //* This file is explicitly licensed under the MIT license. *//
-//* Copyright (c) 2024 silicons                             *//
+//* Copyright (c) 2024 Citadel Station Developers           *//
 
 /datum/action/item_action
 	target_type = /obj/item
-
 	button_icon_state = null
+
 	/// automatically set button_additional_overlay to the item, if button_icon_state is null
 	var/render_item_as_button = TRUE
 

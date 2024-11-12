@@ -12,8 +12,7 @@
 
 /obj/item/circuitboard/security/Initialize(mapload)
 	. = ..()
-	network = (LEGACY_MAP_DATUM).station_networks
-
+	network = (LEGACY_MAP_DATUM)?.station_networks
 /obj/item/circuitboard/security/tv
 	name = T_BOARD("security camera monitor - television")
 	build_path = /obj/machinery/computer/security/wooden_tv

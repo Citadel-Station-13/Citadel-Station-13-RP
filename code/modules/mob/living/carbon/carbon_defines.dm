@@ -43,9 +43,9 @@
 	//Active emote/pose
 	var/pose = null
 	var/list/chem_effects = list()
-	var/datum/reagents/metabolism/bloodstream/bloodstr = null
-	var/datum/reagents/metabolism/ingested/ingested = null
-	var/datum/reagents/metabolism/touch/touching = null
+	var/datum/reagent_holder/metabolism/bloodstream/bloodstr = null
+	var/datum/reagent_holder/metabolism/ingested/ingested = null
+	var/datum/reagent_holder/metabolism/touch/touching = null
 
 	var/pulse = PULSE_NORM	//current pulse level
 

@@ -546,6 +546,7 @@
 
 		// appearance clone immediately
 		appearance = dummy.appearance
+		set_overlays(overlays)
 		plane = AUGMENTED_PLANE
 		qdel(dummy)
 

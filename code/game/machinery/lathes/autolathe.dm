@@ -27,4 +27,4 @@
 /datum/design_holder/lathe/autolathe
 
 /datum/design_holder/lathe/autolathe/available_ids()
-	return SSresearch.autolathe_design_ids | ..()
+	return RSdesigns.autolathe_design_ids | ..()

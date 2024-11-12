@@ -1,4 +1,4 @@
-/datum/design/circuit/computer/bioscan_console
+/datum/prototype/design/circuit/computer/bioscan_console
 	design_name = "Bioscan Console"
 	build_path = /obj/item/circuitboard/computer/bioscan
 	id = "console_bioscan"

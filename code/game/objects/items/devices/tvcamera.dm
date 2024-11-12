@@ -34,7 +34,7 @@
 	camera.status = FALSE
 	radio = new(src)
 	radio.listening = FALSE
-	radio.set_frequency(ENT_FREQ)
+	radio.set_frequency(FREQ_ENTERTAINMENT)
 	radio.icon = src.icon
 	radio.icon_state = src.icon_state
 	update_icon()

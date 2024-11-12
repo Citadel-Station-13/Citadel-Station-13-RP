@@ -17,3 +17,7 @@
 
 /// byond bug https://secure.byond.com/forum/?post=2072419
 #define BLOCK_BYOND_BUG_2072419
+
+/// A null statement to guard against EmptyBlock lint without necessitating the use of pass()
+/// Used to avoid proc-call overhead. But use sparingly. Probably pointless in most places.
+#define EMPTY_BLOCK_GUARD ;
