@@ -312,6 +312,31 @@
 	},
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/holodeck/source_emptycourt)
+"bg" = (
+/obj/structure/bed/chair/shuttle,
+/obj/effect/floor_decal/borderfloor{
+	dir = 9
+	},
+/obj/effect/floor_decal/corner/lightgrey/border{
+	dir = 9
+	},
+/obj/effect/floor_decal/borderfloor/corner2{
+	dir = 10
+	},
+/obj/effect/floor_decal/corner/lightgrey/bordercorner2{
+	dir = 10
+	},
+/obj/structure/closet/hydrant{
+	pixel_y = 32
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/shuttle/escape)
+"bh" = (
+/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks{
+	id = "emergency_medical"
+	},
+/turf/simulated/floor,
+/area/shuttle/escape)
 "bi" = (
 /obj/structure/window/reinforced{
 	dir = 8
@@ -2222,28 +2247,6 @@
 	},
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/holodeck/source_boxingcourt)
-"gZ" = (
-/obj/structure/bed/chair/shuttle{
-	dir = 8
-	},
-/obj/effect/floor_decal/borderfloor{
-	dir = 4
-	},
-/obj/effect/floor_decal/corner/lightgrey/border{
-	dir = 4
-	},
-/obj/effect/floor_decal/borderfloor/corner2{
-	dir = 6
-	},
-/obj/effect/floor_decal/corner/lightgrey/bordercorner2{
-	dir = 6
-	},
-/obj/structure/closet/hydrant{
-	dir = 4;
-	pixel_x = 32
-	},
-/turf/simulated/floor/tiled/steel_grid,
-/area/shuttle/escape)
 "ha" = (
 /obj/structure/table/reinforced,
 /obj/machinery/computer/communications,
@@ -2286,6 +2289,19 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/centcom/simulated/terminal)
+"hi" = (
+/obj/structure/table/reinforced,
+/obj/machinery/keycard_auth{
+	pixel_x = -24;
+	pixel_y = 10
+	},
+/obj/item/storage/secure/briefcase,
+/obj/item/multitool,
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/shuttle/escape)
 "hj" = (
 /obj/structure/bed/chair/bay/comfy/black{
 	dir = 1
@@ -2312,6 +2328,23 @@
 	name = "Emergency Blast Doors";
 	pixel_x = 24;
 	pixel_y = 26
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/shuttle/escape)
+"hm" = (
+/obj/structure/table/reinforced,
+/obj/machinery/keycard_auth{
+	pixel_x = 24;
+	pixel_y = 11
+	},
+/obj/item/folder/blue,
+/obj/item/radio{
+	pixel_x = 2;
+	pixel_y = 2
+	},
+/obj/item/radio,
+/obj/machinery/light{
+	dir = 1
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/shuttle/escape)
@@ -2501,8 +2534,34 @@
 /obj/machinery/pointdefense_control,
 /turf/simulated/floor/tiled/steel_grid,
 /area/shuttle/escape)
+"hX" = (
+/obj/structure/bed/chair/bay/comfy/black{
+	dir = 8
+	},
+/obj/structure/closet/walllocker/autolok_wall{
+	pixel_y = 30;
+	pixel_x = -24
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/shuttle/escape)
+"hY" = (
+/obj/structure/handrail{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/monotile,
+/area/shuttle/escape)
 "ia" = (
 /turf/simulated/floor/tiled/monotile,
+/area/shuttle/escape)
+"ib" = (
+/obj/structure/bed/chair/bay/comfy/black{
+	dir = 4
+	},
+/obj/structure/closet/walllocker/autolok_wall{
+	pixel_y = 30;
+	pixel_x = 24
+	},
+/turf/simulated/floor/tiled/steel_grid,
 /area/shuttle/escape)
 "ic" = (
 /obj/structure/table/reinforced,
@@ -3276,6 +3335,12 @@
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/shuttle/escape)
+"kw" = (
+/obj/structure/table/standard,
+/obj/item/material/ashtray/glass,
+/obj/random/action_figure,
+/turf/simulated/floor/tiled/monotile,
+/area/shuttle/escape)
 "kx" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 4
@@ -3554,6 +3619,28 @@
 	},
 /turf/simulated/floor/holofloor/space,
 /area/space)
+"ll" = (
+/obj/structure/bed/chair/shuttle{
+	dir = 4
+	},
+/obj/effect/floor_decal/borderfloor{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/lightgrey/border{
+	dir = 8
+	},
+/obj/effect/floor_decal/borderfloor/corner2{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/lightgrey/bordercorner2{
+	dir = 8
+	},
+/obj/structure/closet/hydrant{
+	dir = 4;
+	pixel_x = -32
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/shuttle/escape)
 "lm" = (
 /obj/structure/window/reinforced{
 	dir = 4
@@ -3623,6 +3710,28 @@
 	},
 /obj/effect/floor_decal/corner/lightgrey/bordercorner2{
 	dir = 8
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/shuttle/escape)
+"lq" = (
+/obj/structure/bed/chair/shuttle{
+	dir = 8
+	},
+/obj/effect/floor_decal/borderfloor{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/lightgrey/border{
+	dir = 4
+	},
+/obj/effect/floor_decal/borderfloor/corner2{
+	dir = 6
+	},
+/obj/effect/floor_decal/corner/lightgrey/bordercorner2{
+	dir = 6
+	},
+/obj/structure/closet/hydrant{
+	dir = 4;
+	pixel_x = 32
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/shuttle/escape)
@@ -3912,6 +4021,21 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/fuel,
 /turf/simulated/shuttle/wall/voidcraft/blue,
 /area/shuttle/escape)
+"mp" = (
+/obj/structure/table/glass,
+/obj/effect/floor_decal/borderfloor{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/lightgrey/border{
+	dir = 8
+	},
+/obj/item/radio{
+	pixel_x = 2;
+	pixel_y = 2
+	},
+/obj/item/radio,
+/turf/simulated/floor/tiled/steel_grid,
+/area/shuttle/escape)
 "mq" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 4
@@ -4072,6 +4196,27 @@
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/shuttle/escape)
+"mL" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 4
+	},
+/obj/structure/bed/chair/shuttle{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/lightgrey/border{
+	dir = 4
+	},
+/obj/effect/floor_decal/borderfloor/corner2{
+	dir = 5
+	},
+/obj/effect/floor_decal/corner/lightgrey/bordercorner2{
+	dir = 5
+	},
+/obj/machinery/vending/wallmed1/public{
+	pixel_x = 26
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/shuttle/escape)
 "mM" = (
 /obj/machinery/sleep_console{
 	dir = 4
@@ -4170,6 +4315,22 @@
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/shuttle/escape)
+"mY" = (
+/obj/machinery/door/airlock/security{
+	name = "Shuttle Security";
+	req_one_access = null
+	},
+/obj/map_helper/access_helper/airlock/station/security/department,
+/turf/simulated/floor/tiled/monotile,
+/area/shuttle/escape)
+"mZ" = (
+/obj/machinery/door/airlock/medical{
+	name = "Shuttle Medical";
+	req_one_access = null
+	},
+/obj/map_helper/access_helper/airlock/station/medical/department,
+/turf/simulated/floor/tiled/monotile,
+/area/shuttle/escape)
 "na" = (
 /obj/structure/table/standard,
 /obj/item/reagent_containers/spray/cleaner{
@@ -4186,6 +4347,17 @@
 	dir = 1
 	},
 /turf/simulated/shuttle/wall/voidcraft/blue,
+/area/shuttle/escape)
+"nc" = (
+/obj/machinery/atmospherics/pipe/simple/visible/fuel,
+/obj/machinery/door/blast/regular/open{
+	id = "emergency_shuttle_lockdown";
+	name = "Emergency Shuttle Blast Door"
+	},
+/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks{
+	id = "emergency_security"
+	},
+/turf/simulated/floor/reinforced,
 /area/shuttle/escape)
 "nd" = (
 /obj/machinery/door/window/brigdoor/southright{
@@ -4274,6 +4446,14 @@
 	},
 /obj/structure/bed/chair/shuttle{
 	dir = 1
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/shuttle/escape)
+"nr" = (
+/obj/item/handcuffs,
+/obj/structure/table/standard,
+/obj/structure/closet/hydrant{
+	pixel_y = -26
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/shuttle/escape)
@@ -4403,6 +4583,16 @@
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/shuttle/escape)
+"nM" = (
+/obj/machinery/door/blast/regular/open{
+	id = "emergency_shuttle_lockdown";
+	name = "Emergency Shuttle Blast Door"
+	},
+/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks{
+	id = "emergency_cockpit"
+	},
+/turf/simulated/floor,
+/area/shuttle/escape)
 "nN" = (
 /obj/machinery/door/airlock/glass_external/public{
 	name = "Shuttle Hatch"
@@ -4514,6 +4704,19 @@
 /obj/structure/handrail,
 /obj/machinery/light{
 	dir = 8
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/shuttle/escape)
+"of" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/fuel{
+	dir = 4
+	},
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 1
+	},
+/obj/structure/handrail,
+/obj/structure/closet/hydrant{
+	pixel_y = 32
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/shuttle/escape)
@@ -5301,16 +5504,6 @@
 	},
 /turf/unsimulated/floor/dark,
 /area/tdome)
-"qx" = (
-/obj/structure/bed/chair/bay/comfy/black{
-	dir = 4
-	},
-/obj/structure/closet/walllocker/autolok_wall{
-	pixel_y = 30;
-	pixel_x = 24
-	},
-/turf/simulated/floor/tiled/steel_grid,
-/area/shuttle/escape)
 "qy" = (
 /obj/structure/sign/warning{
 	name = "\improper STAND AWAY FROM TRACK EDGE"
@@ -6021,16 +6214,6 @@
 /obj/item/storage/backpack/ert/engineer,
 /turf/unsimulated/floor/dark,
 /area/centcom/specops)
-"sG" = (
-/obj/structure/table/rack,
-/obj/item/clothing/under/color/red,
-/obj/item/clothing/shoes/brown,
-/obj/item/clothing/suit/armor/tdome/red,
-/obj/item/clothing/head/helmet/thunderdome,
-/obj/item/melee/baton/loaded,
-/obj/item/melee/transforming/energy/sword,
-/turf/unsimulated/floor/dark,
-/area/tdome/tdome1)
 "sH" = (
 /obj/effect/floor_decal/borderfloorwhite,
 /obj/effect/floor_decal/corner/paleblue/border,
@@ -6094,11 +6277,11 @@
 	},
 /turf/simulated/floor/plating,
 /area/shuttle/specops/engine)
-"tb" = (
+"te" = (
 /obj/structure/table/rack,
-/obj/item/clothing/under/color/green,
+/obj/item/clothing/under/color/red,
 /obj/item/clothing/shoes/brown,
-/obj/item/clothing/suit/armor/tdome/green,
+/obj/item/clothing/suit/armor/tdome/red,
 /obj/item/clothing/head/helmet/thunderdome,
 /obj/item/melee/baton/loaded,
 /obj/item/melee/transforming/energy/sword,
@@ -6156,19 +6339,6 @@
 "tG" = (
 /turf/unsimulated/wall,
 /area/centcom/test)
-"tH" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/fuel{
-	dir = 4
-	},
-/obj/effect/floor_decal/borderfloorblack{
-	dir = 1
-	},
-/obj/structure/handrail,
-/obj/structure/closet/hydrant{
-	pixel_y = 32
-	},
-/turf/simulated/floor/tiled/steel_grid,
-/area/shuttle/escape)
 "ud" = (
 /obj/item/clothing/glasses/welding/superior,
 /obj/item/clothing/glasses/welding/superior,
@@ -6185,6 +6355,10 @@
 /obj/item/grenade/chem_grenade/metalfoam,
 /turf/unsimulated/floor/dark,
 /area/centcom/specops)
+"un" = (
+/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/turf/simulated/floor,
+/area/shuttle/escape)
 "ur" = (
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -6200,17 +6374,6 @@
 	},
 /turf/unsimulated/floor/dark,
 /area/centcom/specops)
-"uD" = (
-/obj/machinery/atmospherics/pipe/simple/visible/fuel,
-/obj/machinery/door/blast/regular/open{
-	id = "emergency_shuttle_lockdown";
-	name = "Emergency Shuttle Blast Door"
-	},
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks{
-	id = "emergency_security"
-	},
-/turf/simulated/floor/reinforced,
-/area/shuttle/escape)
 "uR" = (
 /obj/structure/sign/nanotrasen,
 /turf/unsimulated/wall,
@@ -6280,15 +6443,24 @@
 /obj/effect/blocker,
 /turf/unsimulated/floor/dark,
 /area/tdome/tdomeobserve)
-"vP" = (
-/obj/machinery/atmospherics/pipe/simple/visible/fuel,
-/obj/machinery/door/blast/regular/open{
-	id = "emergency_shuttle_lockdown";
-	name = "Emergency Shuttle Blast Door"
-	},
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/turf/simulated/floor/reinforced,
-/area/shuttle/escape)
+"vM" = (
+/obj/structure/table/rack,
+/obj/item/gun/energy/nt_pulse/rifle,
+/obj/item/gun/energy/nt_pulse/rifle,
+/obj/item/gun/energy/nt_pulse/rifle,
+/obj/item/gun/energy/nt_pulse/rifle,
+/obj/item/gun/energy/nt_pulse/rifle,
+/obj/item/gun/energy/nt_pulse/rifle,
+/obj/item/storage/secure/briefcase/nsfw_pack,
+/turf/unsimulated/floor/dark,
+/area/centcom/specops)
+"vR" = (
+/obj/structure/table/rack,
+/obj/item/clothing/under/color/green,
+/obj/item/clothing/shoes/brown,
+/obj/item/melee/transforming/energy/axe,
+/turf/unsimulated/floor/dark,
+/area/tdome/tdome1)
 "vT" = (
 /turf/unsimulated/floor/dark,
 /area/tdome/tdomeadmin)
@@ -6402,6 +6574,16 @@
 /obj/structure/table/steel_reinforced,
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/specops/cockpit)
+"xu" = (
+/obj/structure/table/rack,
+/obj/item/clothing/under/color/green,
+/obj/item/clothing/shoes/brown,
+/obj/item/clothing/suit/armor/tdome/green,
+/obj/item/clothing/head/helmet/thunderdome,
+/obj/item/melee/baton/loaded,
+/obj/item/melee/transforming/energy/sword,
+/turf/unsimulated/floor/dark,
+/area/tdome/tdome1)
 "xw" = (
 /obj/effect/floor_decal/borderfloor,
 /turf/unsimulated/floor/steel,
@@ -6714,6 +6896,15 @@
 	icon_state = "lino"
 	},
 /area/tdome/tdomeobserve)
+"yJ" = (
+/obj/structure/bed/chair/shuttle{
+	dir = 4
+	},
+/obj/structure/closet/hydrant{
+	pixel_y = -26
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/shuttle/escape)
 "yO" = (
 /obj/structure/table/standard,
 /obj/machinery/computer/skills{
@@ -7427,14 +7618,6 @@
 	},
 /turf/unsimulated/floor/steel,
 /area/centcom/command)
-"AZ" = (
-/obj/machinery/door/airlock/security{
-	name = "Shuttle Security";
-	req_one_access = null
-	},
-/obj/map_helper/access_helper/airlock/station/security/department,
-/turf/simulated/floor/tiled/monotile,
-/area/shuttle/escape)
 "Bb" = (
 /obj/spawner/window/full/firelocks,
 /turf/unsimulated/floor{
@@ -7567,28 +7750,6 @@
 /obj/item/storage/backpack/ert/security,
 /turf/unsimulated/floor/dark,
 /area/centcom/specops)
-"BH" = (
-/obj/structure/bed/chair/shuttle{
-	dir = 4
-	},
-/obj/effect/floor_decal/borderfloor{
-	dir = 8
-	},
-/obj/effect/floor_decal/corner/lightgrey/border{
-	dir = 8
-	},
-/obj/effect/floor_decal/borderfloor/corner2{
-	dir = 8
-	},
-/obj/effect/floor_decal/corner/lightgrey/bordercorner2{
-	dir = 8
-	},
-/obj/structure/closet/hydrant{
-	dir = 4;
-	pixel_x = -32
-	},
-/turf/simulated/floor/tiled/steel_grid,
-/area/shuttle/escape)
 "BS" = (
 /obj/effect/shuttle_landmark/transit/rift/emt,
 /turf/space/transit/south,
@@ -7601,6 +7762,12 @@
 /obj/item/clothing/glasses/sunglasses/sechud/tactical,
 /turf/unsimulated/floor/dark,
 /area/centcom/specops)
+"BW" = (
+/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks{
+	id = "emergency_cockpit"
+	},
+/turf/simulated/floor,
+/area/shuttle/escape)
 "Cb" = (
 /obj/machinery/lathe/autolathe{
 	desc = "Your typical Autolathe. It appears to have much more options than your regular one, however...";
@@ -7618,10 +7785,6 @@
 	},
 /turf/unsimulated/floor/dark,
 /area/tdome/tdome1)
-"Cg" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/turf/simulated/floor,
-/area/shuttle/escape)
 "Ck" = (
 /obj/structure/table/reinforced,
 /obj/item/cell/hyper,
@@ -7725,15 +7888,6 @@
 /obj/structure/undies_wardrobe,
 /turf/unsimulated/floor/wood,
 /area/centcom/specops)
-"CW" = (
-/obj/structure/bed/chair/shuttle{
-	dir = 4
-	},
-/obj/structure/closet/hydrant{
-	pixel_y = -26
-	},
-/turf/simulated/floor/tiled/steel_grid,
-/area/shuttle/escape)
 "CZ" = (
 /obj/structure/cable{
 	icon_state = "2-4"
@@ -7764,10 +7918,6 @@
 /obj/item/reagent_containers/food/snacks/liquid,
 /turf/unsimulated/floor/dark,
 /area/centcom/specops)
-"Dj" = (
-/obj/effect/shuttle_landmark/transit/rift/trade/udang,
-/turf/space/transit/west,
-/area/space)
 "Dk" = (
 /obj/machinery/airlock_sensor{
 	dir = 1;
@@ -7881,17 +8031,6 @@
 	},
 /turf/unsimulated/floor/dark,
 /area/tdome/tdome1)
-"En" = (
-/obj/structure/table/rack,
-/obj/item/gun/energy/pulse_rifle,
-/obj/item/gun/energy/pulse_rifle,
-/obj/item/gun/energy/pulse_rifle,
-/obj/item/gun/energy/pulse_rifle,
-/obj/item/gun/energy/pulse_rifle,
-/obj/item/gun/energy/pulse_rifle,
-/obj/item/storage/secure/briefcase/nsfw_pack,
-/turf/unsimulated/floor/dark,
-/area/centcom/specops)
 "Er" = (
 /obj/structure/table/rack,
 /obj/item/storage/box/flashbangs,
@@ -7920,6 +8059,12 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/centcom/specops/dock)
+"Ey" = (
+/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks{
+	id = "emergency_security"
+	},
+/turf/simulated/floor,
+/area/shuttle/escape)
 "EC" = (
 /obj/machinery/vending/tool,
 /turf/unsimulated/floor/dark,
@@ -7933,14 +8078,6 @@
 	},
 /turf/simulated/floor/reinforced,
 /area/centcom/command)
-"EO" = (
-/obj/item/handcuffs,
-/obj/structure/table/standard,
-/obj/structure/closet/hydrant{
-	pixel_y = -26
-	},
-/turf/simulated/floor/tiled/steel_grid,
-/area/shuttle/escape)
 "EP" = (
 /obj/structure/window/reinforced{
 	dir = 1
@@ -8079,12 +8216,6 @@
 /obj/item/megaphone,
 /turf/unsimulated/floor/dark,
 /area/centcom/specops)
-"GT" = (
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks{
-	id = "emergency_cockpit"
-	},
-/turf/simulated/floor,
-/area/shuttle/escape)
 "GY" = (
 /turf/simulated/shuttle/wall/voidcraft,
 /area/shuttle/specops/engine)
@@ -8170,13 +8301,10 @@
 /obj/machinery/shieldwallgen,
 /turf/unsimulated/floor/dark,
 /area/centcom/specops)
-"Ic" = (
-/obj/structure/table/rack,
-/obj/item/clothing/under/color/red,
-/obj/item/clothing/shoes/brown,
-/obj/item/melee/transforming/energy/axe,
-/turf/unsimulated/floor/dark,
-/area/tdome/tdome1)
+"If" = (
+/obj/effect/shuttle_landmark/transit/rift/trade/scoophead,
+/turf/space/transit/west,
+/area/space)
 "Ii" = (
 /obj/effect/step_trigger/lost_in_space,
 /turf/space/transit/west,
@@ -8203,24 +8331,12 @@
 /obj/item/tank/emergency/oxygen/double,
 /turf/unsimulated/floor/dark,
 /area/centcom/specops)
-"Iw" = (
-/obj/structure/handrail{
-	dir = 1
-	},
-/turf/simulated/floor/tiled/monotile,
-/area/shuttle/escape)
 "Ix" = (
 /obj/machinery/flasher{
 	id = "breach_flash"
 	},
 /turf/simulated/shuttle/wall/voidcraft,
 /area/shuttle/specops/general)
-"IF" = (
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks{
-	id = "emergency_security"
-	},
-/turf/simulated/floor,
-/area/shuttle/escape)
 "IG" = (
 /turf/unsimulated/floor/dark,
 /area/centcom/command)
@@ -8260,16 +8376,6 @@
 /obj/item/barrier_tape_roll/engineering,
 /turf/unsimulated/floor/dark,
 /area/centcom/specops)
-"IS" = (
-/obj/structure/bed/chair/bay/comfy/black{
-	dir = 8
-	},
-/obj/structure/closet/walllocker/autolok_wall{
-	pixel_y = 30;
-	pixel_x = -24
-	},
-/turf/simulated/floor/tiled/steel_grid,
-/area/shuttle/escape)
 "IV" = (
 /obj/structure/table/reinforced,
 /obj/item/storage/belt/security/tactical,
@@ -8280,6 +8386,15 @@
 /obj/item/storage/belt/security/tactical,
 /turf/unsimulated/floor/dark,
 /area/centcom/specops)
+"Jr" = (
+/obj/machinery/atmospherics/pipe/simple/visible/fuel,
+/obj/machinery/door/blast/regular/open{
+	id = "emergency_shuttle_lockdown";
+	name = "Emergency Shuttle Blast Door"
+	},
+/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/turf/simulated/floor/reinforced,
+/area/shuttle/escape)
 "Jx" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/item/storage/firstaid/combat,
@@ -8316,10 +8431,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/shuttle/specops/engine)
-"JK" = (
-/obj/effect/shuttle_landmark/transit/rift/trade/scoophead,
-/turf/space/transit/west,
-/area/space)
 "JO" = (
 /obj/structure/table/reinforced,
 /obj/item/storage/firstaid/o2{
@@ -8414,6 +8525,25 @@
 /obj/effect/shuttle_landmark/shuttle_initializer/specops,
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/specops/general)
+"Kv" = (
+/obj/structure/bed/chair/shuttle,
+/obj/effect/floor_decal/borderfloor{
+	dir = 5
+	},
+/obj/effect/floor_decal/corner/lightgrey/border{
+	dir = 5
+	},
+/obj/effect/floor_decal/borderfloor/corner2{
+	dir = 5
+	},
+/obj/effect/floor_decal/corner/lightgrey/bordercorner2{
+	dir = 5
+	},
+/obj/structure/closet/hydrant{
+	pixel_y = 32
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/shuttle/escape)
 "Ky" = (
 /obj/item/radio/intercom{
 	dir = 1;
@@ -8587,16 +8717,6 @@
 /obj/item/hand_tele,
 /turf/unsimulated/floor/wood,
 /area/centcom/specops)
-"LG" = (
-/obj/machinery/door/blast/regular/open{
-	id = "emergency_shuttle_lockdown";
-	name = "Emergency Shuttle Blast Door"
-	},
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks{
-	id = "emergency_cockpit"
-	},
-/turf/simulated/floor,
-/area/shuttle/escape)
 "LP" = (
 /obj/structure/cable{
 	icon_state = "0-4"
@@ -8681,14 +8801,6 @@
 /obj/map_helper/access_helper/airlock/station/security/department,
 /turf/simulated/floor/tiled/dark,
 /area/centcom/simulated/security)
-"Mt" = (
-/obj/machinery/door/airlock/medical{
-	name = "Shuttle Medical";
-	req_one_access = null
-	},
-/obj/map_helper/access_helper/airlock/station/medical/department,
-/turf/simulated/floor/tiled/monotile,
-/area/shuttle/escape)
 "Mu" = (
 /obj/structure/window/reinforced{
 	dir = 1
@@ -8712,13 +8824,6 @@
 /obj/item/clothing/mask/breath,
 /turf/unsimulated/floor/dark,
 /area/centcom/specops)
-"MD" = (
-/obj/structure/table/rack,
-/obj/item/clothing/under/color/green,
-/obj/item/clothing/shoes/brown,
-/obj/item/melee/transforming/energy/axe,
-/turf/unsimulated/floor/dark,
-/area/tdome/tdome1)
 "MF" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -8866,12 +8971,6 @@
 /obj/item/reagent_containers/hypospray,
 /turf/unsimulated/floor/dark,
 /area/centcom/specops)
-"Ox" = (
-/obj/structure/table/standard,
-/obj/item/material/ashtray/glass,
-/obj/random/action_figure,
-/turf/simulated/floor/tiled/monotile,
-/area/shuttle/escape)
 "OC" = (
 /obj/structure/table/rack,
 /obj/item/clothing/under/color/red,
@@ -8964,19 +9063,6 @@
 /obj/item/storage/box/syringes,
 /turf/unsimulated/floor/dark,
 /area/centcom/specops)
-"PE" = (
-/obj/structure/table/reinforced,
-/obj/machinery/keycard_auth{
-	pixel_x = -24;
-	pixel_y = 10
-	},
-/obj/item/storage/secure/briefcase,
-/obj/item/multitool,
-/obj/machinery/light{
-	dir = 1
-	},
-/turf/simulated/floor/tiled/steel_grid,
-/area/shuttle/escape)
 "PI" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -9108,6 +9194,17 @@
 "Rn" = (
 /turf/unsimulated/wall,
 /area/centcom/specops/dock)
+"Ro" = (
+/obj/machinery/atmospherics/pipe/simple/visible/fuel,
+/obj/machinery/door/blast/regular/open{
+	id = "emergency_shuttle_lockdown";
+	name = "Emergency Shuttle Blast Door"
+	},
+/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks{
+	id = "emergency_medical"
+	},
+/turf/simulated/floor/reinforced,
+/area/shuttle/escape)
 "Rs" = (
 /obj/structure/cable{
 	icon_state = "1-4"
@@ -9152,23 +9249,10 @@
 /obj/effect/floor_decal/industrial/warning/full,
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/specops/general)
-"RT" = (
-/obj/structure/table/reinforced,
-/obj/machinery/keycard_auth{
-	pixel_x = 24;
-	pixel_y = 11
-	},
-/obj/item/folder/blue,
-/obj/item/radio{
-	pixel_x = 2;
-	pixel_y = 2
-	},
-/obj/item/radio,
-/obj/machinery/light{
-	dir = 1
-	},
-/turf/simulated/floor/tiled/steel_grid,
-/area/shuttle/escape)
+"RU" = (
+/obj/effect/shuttle_landmark/transit/rift/trade/udang,
+/turf/space/transit/west,
+/area/space)
 "RX" = (
 /obj/structure/table/rack,
 /obj/item/clothing/suit/armor/vest/ert/command,
@@ -9191,17 +9275,6 @@
 /obj/item/storage/firstaid/surgery,
 /turf/unsimulated/floor/dark,
 /area/centcom/specops)
-"Sj" = (
-/obj/machinery/atmospherics/pipe/simple/visible/fuel,
-/obj/machinery/door/blast/regular/open{
-	id = "emergency_shuttle_lockdown";
-	name = "Emergency Shuttle Blast Door"
-	},
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks{
-	id = "emergency_medical"
-	},
-/turf/simulated/floor/reinforced,
-/area/shuttle/escape)
 "Sn" = (
 /obj/structure/sign/securearea{
 	name = "ENGINEERING ACCESS";
@@ -9415,6 +9488,13 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/specops/general)
+"Uj" = (
+/obj/structure/table/rack,
+/obj/item/clothing/under/color/red,
+/obj/item/clothing/shoes/brown,
+/obj/item/melee/transforming/energy/axe,
+/turf/unsimulated/floor/dark,
+/area/tdome/tdome1)
 "Uk" = (
 /obj/machinery/cell_charger,
 /obj/structure/table/reinforced,
@@ -9469,25 +9549,6 @@
 /obj/item/cell/device/weapon,
 /turf/unsimulated/floor/dark,
 /area/centcom/specops)
-"UH" = (
-/obj/structure/bed/chair/shuttle,
-/obj/effect/floor_decal/borderfloor{
-	dir = 5
-	},
-/obj/effect/floor_decal/corner/lightgrey/border{
-	dir = 5
-	},
-/obj/effect/floor_decal/borderfloor/corner2{
-	dir = 5
-	},
-/obj/effect/floor_decal/corner/lightgrey/bordercorner2{
-	dir = 5
-	},
-/obj/structure/closet/hydrant{
-	pixel_y = 32
-	},
-/turf/simulated/floor/tiled/steel_grid,
-/area/shuttle/escape)
 "UK" = (
 /obj/machinery/atmospherics/portables_connector{
 	dir = 1
@@ -9599,21 +9660,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/centcom/simulated/terminal)
-"VA" = (
-/obj/structure/table/glass,
-/obj/effect/floor_decal/borderfloor{
-	dir = 8
-	},
-/obj/effect/floor_decal/corner/lightgrey/border{
-	dir = 8
-	},
-/obj/item/radio{
-	pixel_x = 2;
-	pixel_y = 2
-	},
-/obj/item/radio,
-/turf/simulated/floor/tiled/steel_grid,
-/area/shuttle/escape)
 "VB" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 1
@@ -9632,27 +9678,6 @@
 /obj/structure/bed/chair/bay/shuttle,
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/specops/general)
-"VJ" = (
-/obj/effect/floor_decal/borderfloor{
-	dir = 4
-	},
-/obj/structure/bed/chair/shuttle{
-	dir = 8
-	},
-/obj/effect/floor_decal/corner/lightgrey/border{
-	dir = 4
-	},
-/obj/effect/floor_decal/borderfloor/corner2{
-	dir = 5
-	},
-/obj/effect/floor_decal/corner/lightgrey/bordercorner2{
-	dir = 5
-	},
-/obj/machinery/vending/wallmed1/public{
-	pixel_x = 26
-	},
-/turf/simulated/floor/tiled/steel_grid,
-/area/shuttle/escape)
 "Wj" = (
 /obj/structure/bed/chair/bay/shuttle{
 	dir = 4
@@ -9689,25 +9714,6 @@
 /obj/effect/floor_decal/industrial/outline/blue,
 /turf/unsimulated/floor/dark,
 /area/centcom/specops)
-"WI" = (
-/obj/structure/bed/chair/shuttle,
-/obj/effect/floor_decal/borderfloor{
-	dir = 9
-	},
-/obj/effect/floor_decal/corner/lightgrey/border{
-	dir = 9
-	},
-/obj/effect/floor_decal/borderfloor/corner2{
-	dir = 10
-	},
-/obj/effect/floor_decal/corner/lightgrey/bordercorner2{
-	dir = 10
-	},
-/obj/structure/closet/hydrant{
-	pixel_y = 32
-	},
-/turf/simulated/floor/tiled/steel_grid,
-/area/shuttle/escape)
 "WL" = (
 /obj/structure/table/rack/steel,
 /obj/item/tank/phoron/pressurized,
@@ -10125,12 +10131,6 @@
 /obj/machinery/power/rtg/fake_gen,
 /turf/simulated/floor/plating,
 /area/centcom/specops)
-"ZV" = (
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks{
-	id = "emergency_medical"
-	},
-/turf/simulated/floor,
-/area/shuttle/escape)
 
 (1,1,1) = {"
 hP
@@ -11526,8 +11526,8 @@ lJ
 mo
 mG
 kt
-uD
-uD
+nc
+nc
 kt
 ob
 gx
@@ -11714,7 +11714,7 @@ gx
 ji
 jP
 kt
-vP
+Jr
 kt
 kt
 kt
@@ -11909,7 +11909,7 @@ jj
 jQ
 jk
 kM
-BH
+ll
 tF
 gy
 mH
@@ -12097,9 +12097,9 @@ ge
 gx
 gy
 gz
-LG
+nM
 gy
-WI
+bg
 jR
 rY
 ia
@@ -12303,7 +12303,7 @@ gy
 mJ
 ia
 ia
-EO
+nr
 gy
 oe
 oG
@@ -12328,11 +12328,11 @@ yd
 yd
 yd
 yd
-sG
-sG
-sG
-sG
-sG
+te
+te
+te
+te
+te
 Kl
 yd
 hP
@@ -12484,9 +12484,9 @@ fC
 ge
 gz
 gz
-PE
-IS
-GT
+hi
+hX
+BW
 jm
 ia
 ku
@@ -12495,11 +12495,11 @@ ln
 lL
 gz
 gy
-AZ
-IF
+mY
+Ey
 iE
 gz
-tH
+of
 oH
 pw
 pJ
@@ -12676,23 +12676,23 @@ dl
 eC
 fC
 ge
-LG
+nM
 ha
 hj
-Iw
-GT
+hY
+BW
 jn
 jT
 jT
 jT
 jT
 lM
-VA
+mp
 mK
 ia
 nf
 ns
-Cg
+un
 og
 oI
 px
@@ -12714,7 +12714,7 @@ yn
 yn
 zl
 yd
-Ic
+Uj
 TW
 Vh
 Vh
@@ -12870,14 +12870,14 @@ de
 eV
 fC
 ge
-LG
+nM
 hb
 hk
 ia
 iH
 ia
 jU
-Ox
+kw
 kN
 jU
 ia
@@ -12908,7 +12908,7 @@ yn
 yn
 zm
 yd
-Ic
+Uj
 TW
 Vh
 Lb
@@ -13064,11 +13064,11 @@ de
 fq
 fC
 ge
-LG
+nM
 hc
 hl
-Iw
-GT
+hY
+BW
 jo
 jV
 jV
@@ -13076,11 +13076,11 @@ jV
 jV
 lN
 mq
-VJ
+mL
 ia
 ng
 nu
-Cg
+un
 oi
 oK
 gz
@@ -13102,7 +13102,7 @@ yn
 yn
 zm
 yd
-Ic
+Uj
 TW
 Vh
 Vh
@@ -13260,9 +13260,9 @@ fC
 ge
 gz
 gz
-RT
-qx
-GT
+hm
+ib
+BW
 jp
 ia
 kx
@@ -13271,11 +13271,11 @@ lo
 lO
 gz
 gy
-Mt
-ZV
+mZ
+bh
 iE
 gz
-tH
+of
 oL
 pv
 pI
@@ -13296,7 +13296,7 @@ yn
 yn
 yn
 yd
-Ic
+Uj
 TW
 Vh
 Lb
@@ -13467,7 +13467,7 @@ gy
 mM
 ia
 Cx
-CW
+yJ
 gy
 oj
 oM
@@ -13490,7 +13490,7 @@ yo
 za
 yn
 yd
-Ic
+Uj
 TW
 Vh
 Vh
@@ -13649,9 +13649,9 @@ ge
 gx
 gy
 gz
-LG
+nM
 gy
-UH
+Kv
 jW
 rY
 ia
@@ -13849,7 +13849,7 @@ jr
 jX
 jF
 kO
-gZ
+lq
 rr
 gy
 mO
@@ -14042,7 +14042,7 @@ gx
 js
 jY
 kt
-vP
+Jr
 kt
 kt
 kt
@@ -14242,8 +14242,8 @@ lJ
 mr
 mP
 nb
-Sj
-Sj
+Ro
+Ro
 nb
 ok
 gx
@@ -16982,7 +16982,7 @@ MJ
 vT
 vT
 yd
-MD
+vR
 TW
 xD
 xD
@@ -17176,7 +17176,7 @@ uW
 vT
 vT
 yd
-MD
+vR
 TW
 xD
 Cf
@@ -17370,7 +17370,7 @@ Ul
 vT
 vT
 yd
-MD
+vR
 TW
 xD
 xD
@@ -17564,7 +17564,7 @@ vT
 vT
 vT
 yd
-MD
+vR
 TW
 xD
 Cf
@@ -17758,7 +17758,7 @@ vh
 vT
 vT
 yd
-MD
+vR
 TW
 xD
 xD
@@ -18148,11 +18148,11 @@ vT
 vT
 vT
 yd
-tb
-tb
-tb
-tb
-tb
+xu
+xu
+xu
+xu
+xu
 Kl
 yd
 yw
@@ -27877,7 +27877,7 @@ HC
 HC
 HC
 HC
-Dj
+RU
 HC
 Ii
 HC
@@ -28416,7 +28416,7 @@ Bv
 Bv
 ss
 NP
-En
+vM
 XQ
 TK
 uR
@@ -33697,7 +33697,7 @@ HC
 HC
 HC
 HC
-JK
+If
 HC
 Ii
 AP
