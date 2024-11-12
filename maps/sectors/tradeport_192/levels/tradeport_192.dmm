@@ -926,17 +926,6 @@
 	dir = 8
 	},
 /obj/machinery/atmospherics/portables_connector,
-/obj/machinery/door/window/brigdoor{
-	req_access = null;
-	dir = 2
-	},
-/obj/machinery/door/window/brigdoor{
-	req_access = null;
-	dir = 1
-	},
-/obj/structure/window/phoronreinforced{
-	dir = 4
-	},
 /turf/simulated/floor/reinforced,
 /area/tradeport/pads)
 "acP" = (
@@ -2731,7 +2720,6 @@
 /area/tradeport/dock2)
 "ahw" = (
 /obj/effect/floor_decal/spline/plain,
-/obj/machinery/vending/winter,
 /turf/simulated/floor/carpet/purcarpet,
 /area/tradeport/spine)
 "ahx" = (
@@ -2761,17 +2749,6 @@
 	dir = 4
 	},
 /obj/machinery/atmospherics/portables_connector,
-/obj/machinery/door/window/brigdoor{
-	req_access = null;
-	dir = 2
-	},
-/obj/machinery/door/window/brigdoor{
-	req_access = null;
-	dir = 1
-	},
-/obj/structure/window/phoronreinforced{
-	dir = 8
-	},
 /turf/simulated/floor/reinforced,
 /area/tradeport/pads)
 "ahB" = (
@@ -7173,10 +7150,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/shuttle/udang/main)
-"atj" = (
-/obj/machinery/vending/fuelvendor,
-/turf/simulated/floor/tiled/techfloor/grid,
-/area/tradeport/commons)
 "atk" = (
 /obj/structure/table/glass,
 /obj/item/deck/cards{
@@ -8192,17 +8165,6 @@
 	},
 /obj/machinery/atmospherics/portables_connector{
 	dir = 1
-	},
-/obj/machinery/door/window/brigdoor{
-	req_access = null;
-	dir = 1
-	},
-/obj/machinery/door/window/brigdoor{
-	req_access = null;
-	dir = 2
-	},
-/obj/structure/window/phoronreinforced{
-	dir = 8
 	},
 /turf/simulated/floor/reinforced,
 /area/tradeport/pads)
@@ -9225,17 +9187,6 @@
 	dir = 8
 	},
 /obj/machinery/atmospherics/portables_connector,
-/obj/machinery/door/window/brigdoor{
-	req_access = null;
-	dir = 2
-	},
-/obj/machinery/door/window/brigdoor{
-	req_access = null;
-	dir = 1
-	},
-/obj/structure/window/phoronreinforced{
-	dir = 4
-	},
 /turf/simulated/floor/reinforced,
 /area/tradeport/pads)
 "ayv" = (
@@ -9929,17 +9880,6 @@
 	dir = 4
 	},
 /obj/machinery/atmospherics/portables_connector,
-/obj/machinery/door/window/brigdoor{
-	req_access = null;
-	dir = 2
-	},
-/obj/machinery/door/window/brigdoor{
-	req_access = null;
-	dir = 1
-	},
-/obj/structure/window/phoronreinforced{
-	dir = 8
-	},
 /turf/simulated/floor/reinforced,
 /area/tradeport/pads)
 "aAg" = (
@@ -10832,7 +10772,6 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 1
 	},
-/obj/machinery/vending/rentshuttle,
 /turf/simulated/floor/tiled/monodark,
 /area/tradeport/commhall)
 "aCt" = (
@@ -11366,10 +11305,6 @@
 /mob/living/simple_mob/vore/redpanda,
 /turf/simulated/floor/outdoors/grass/heavy/interior,
 /area/tradeport/safarizoo)
-"aDO" = (
-/obj/machinery/vending/survivalist,
-/turf/simulated/floor/tiled/monotechmaint,
-/area/tradeport/spine)
 "aDP" = (
 /obj/structure/window/reinforced/tinted{
 	dir = 1
@@ -14939,7 +14874,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/obj/machinery/vending/fuelvendor,
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 4
 	},
@@ -15254,7 +15188,6 @@
 /obj/effect/floor_decal/grass_edge{
 	dir = 8
 	},
-/obj/machinery/vending/farmer,
 /turf/simulated/floor/tiled/monotechmaint,
 /area/tradeport/spine)
 "aOt" = (
@@ -17025,17 +16958,6 @@
 /obj/machinery/atmospherics/portables_connector{
 	dir = 1
 	},
-/obj/machinery/door/window/brigdoor{
-	req_access = null;
-	dir = 1
-	},
-/obj/machinery/door/window/brigdoor{
-	req_access = null;
-	dir = 2
-	},
-/obj/structure/window/phoronreinforced{
-	dir = 4
-	},
 /turf/simulated/floor/reinforced,
 /area/tradeport/pads)
 "aTo" = (
@@ -17150,7 +17072,6 @@
 /obj/machinery/light/small{
 	dir = 4
 	},
-/obj/machinery/vending/fuelvendor,
 /turf/simulated/floor,
 /area/tradeport/pads)
 "aTC" = (
@@ -17303,10 +17224,6 @@
 	},
 /obj/machinery/atmospherics/portables_connector/fuel{
 	dir = 4
-	},
-/obj/machinery/door/window/brigdoor{
-	req_access = null;
-	dir = 8
 	},
 /obj/structure/window/phoronreinforced{
 	dir = 1
@@ -17810,17 +17727,6 @@
 	dir = 8
 	},
 /obj/machinery/atmospherics/portables_connector,
-/obj/machinery/door/window/brigdoor{
-	req_access = null;
-	dir = 2
-	},
-/obj/machinery/door/window/brigdoor{
-	req_access = null;
-	dir = 1
-	},
-/obj/structure/window/phoronreinforced{
-	dir = 4
-	},
 /turf/simulated/floor/reinforced,
 /area/tradeport/pads)
 "aVj" = (
@@ -18559,10 +18465,6 @@
 /obj/machinery/atmospherics/portables_connector/fuel{
 	dir = 4
 	},
-/obj/machinery/door/window/brigdoor{
-	req_access = null;
-	dir = 8
-	},
 /obj/structure/window/phoronreinforced{
 	dir = 1
 	},
@@ -18888,7 +18790,6 @@
 /area/shuttle/trade_ship/general)
 "aYd" = (
 /obj/effect/floor_decal/spline/plain,
-/obj/machinery/vending/voidsuit,
 /turf/simulated/floor/tiled/techfloor/lythios43c,
 /area/tradeport/spine)
 "aYe" = (
@@ -19365,17 +19266,6 @@
 	dir = 4
 	},
 /obj/machinery/atmospherics/portables_connector,
-/obj/machinery/door/window/brigdoor{
-	req_access = null;
-	dir = 2
-	},
-/obj/machinery/door/window/brigdoor{
-	req_access = null;
-	dir = 1
-	},
-/obj/structure/window/phoronreinforced{
-	dir = 8
-	},
 /turf/simulated/floor/reinforced,
 /area/tradeport/pads)
 "aZr" = (
@@ -19662,13 +19552,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/scoophead/main)
-"blq" = (
-/obj/effect/floor_decal/spline/fancy/wood{
-	dir = 1
-	},
-/obj/machinery/vending/motel,
-/turf/simulated/floor/carpet/turcarpet,
-/area/tradeport/motel)
 "blD" = (
 /obj/machinery/vending/loadout/gadget,
 /turf/simulated/floor/tiled/steel,
@@ -20191,6 +20074,16 @@
 	},
 /turf/simulated/floor/wood,
 /area/tradeport/motel/room1)
+"cUy" = (
+/obj/structure/cable/yellow{
+	icon_state = "4-8"
+	},
+/obj/machinery/button/remote/blast_door{
+	pixel_y = -23;
+	id = "motel3"
+	},
+/turf/simulated/floor/wood,
+/area/tradeport/motel/room3)
 "cVp" = (
 /obj/structure/table/hardwoodtable,
 /obj/structure/flora/pottedplant/fern,
@@ -20210,6 +20103,10 @@
 "cYF" = (
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
+	},
+/obj/machinery/button/remote/blast_door{
+	pixel_y = -23;
+	id = "motel7"
 	},
 /turf/simulated/floor/wood,
 /area/tradeport/motel/room7)
@@ -20694,6 +20591,10 @@
 "elR" = (
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
+	},
+/obj/machinery/button/remote/blast_door{
+	pixel_y = -23;
+	id = "motel6"
 	},
 /turf/simulated/floor/wood,
 /area/tradeport/motel/room6)
@@ -22314,7 +22215,9 @@
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
 	},
-/obj/machinery/door/airlock/silver,
+/obj/machinery/door/airlock/silver{
+	id_tag = "motel7"
+	},
 /turf/simulated/floor/airless,
 /area/tradeport/motel/room7)
 "itC" = (
@@ -22692,7 +22595,9 @@
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
 	},
-/obj/machinery/door/airlock/silver,
+/obj/machinery/door/airlock/silver{
+	id_tag = "motel4"
+	},
 /turf/simulated/floor/wood,
 /area/tradeport/motel/room4)
 "jtE" = (
@@ -23131,6 +23036,16 @@
 	},
 /turf/simulated/floor/plating,
 /area/shuttle/scoophead/office)
+"kHe" = (
+/obj/structure/cable/yellow{
+	icon_state = "4-8"
+	},
+/obj/machinery/button/remote/blast_door{
+	pixel_y = -23;
+	id = "motel4"
+	},
+/turf/simulated/floor/wood,
+/area/tradeport/motel/room4)
 "kHv" = (
 /obj/structure/bed/chair/sofa/brown/right{
 	dir = 1
@@ -23688,7 +23603,9 @@
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
 	},
-/obj/machinery/door/airlock/silver,
+/obj/machinery/door/airlock/silver{
+	id_tag = "motel8"
+	},
 /turf/simulated/floor/wood,
 /area/tradeport/motel/room8)
 "mxs" = (
@@ -24706,6 +24623,19 @@
 /obj/machinery/telecomms/relay/preset/telecomms,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/space)
+"pIE" = (
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 4
+	},
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 8
+	},
+/obj/machinery/button/remote/blast_door{
+	id = "motel9";
+	pixel_x = 28
+	},
+/turf/simulated/floor/tiled/dark,
+/area/tradeport/motel/vip)
 "pLe" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan{
 	dir = 4
@@ -24842,7 +24772,9 @@
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
 	},
-/obj/machinery/door/airlock/silver,
+/obj/machinery/door/airlock/silver{
+	id_tag = "motel2"
+	},
 /turf/simulated/floor/wood,
 /area/tradeport/motel/room2)
 "qfI" = (
@@ -25099,7 +25031,9 @@
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
 	},
-/obj/machinery/door/airlock/silver,
+/obj/machinery/door/airlock/silver{
+	id_tag = "motel1"
+	},
 /turf/simulated/floor/wood,
 /area/tradeport/motel/room1)
 "qSF" = (
@@ -25302,6 +25236,16 @@
 	},
 /turf/simulated/floor/carpet/patterened/blue,
 /area/tradeport/motel/room1)
+"rlB" = (
+/obj/structure/cable/yellow{
+	icon_state = "4-8"
+	},
+/obj/machinery/button/remote/blast_door{
+	pixel_y = -23;
+	id = "motel1"
+	},
+/turf/simulated/floor/wood,
+/area/tradeport/motel/room1)
 "rmC" = (
 /obj/structure/table/hardwoodtable,
 /obj/structure/flora/pottedplant/flower,
@@ -25402,6 +25346,16 @@
 	},
 /turf/simulated/floor/wood,
 /area/tradeport/motel/room5)
+"ryT" = (
+/obj/structure/cable/yellow{
+	icon_state = "4-8"
+	},
+/obj/machinery/button/remote/blast_door{
+	pixel_y = -23;
+	id = "motel2"
+	},
+/turf/simulated/floor/wood,
+/area/tradeport/motel/room2)
 "ryW" = (
 /turf/simulated/wall/wood/hardwood,
 /area/tradeport/motel/room6)
@@ -26011,6 +25965,10 @@
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
 	},
+/obj/machinery/button/remote/blast_door{
+	pixel_y = -23;
+	id = "motel5"
+	},
 /turf/simulated/floor/wood,
 /area/tradeport/motel/room5)
 "tKD" = (
@@ -26099,7 +26057,9 @@
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
 	},
-/obj/machinery/door/airlock/silver,
+/obj/machinery/door/airlock/silver{
+	id_tag = "motel4"
+	},
 /turf/simulated/floor/wood,
 /area/tradeport/motel/room3)
 "tVi" = (
@@ -26432,7 +26392,9 @@
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
 	},
-/obj/machinery/door/airlock/silver,
+/obj/machinery/door/airlock/silver{
+	id_tag = "motel5"
+	},
 /turf/simulated/floor/wood,
 /area/tradeport/motel/room5)
 "uWp" = (
@@ -26510,7 +26472,8 @@
 /area/tradeport/medical/public)
 "vkS" = (
 /obj/machinery/door/airlock/multi_tile/metal{
-	dir = 8
+	dir = 8;
+	id_tag = "motel9"
 	},
 /obj/machinery/door/firedoor{
 	req_one_access = list(160)
@@ -26946,7 +26909,9 @@
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
 	},
-/obj/machinery/door/airlock/silver,
+/obj/machinery/door/airlock/silver{
+	id_tag = "motel6"
+	},
 /turf/simulated/floor/wood,
 /area/tradeport/motel/room6)
 "wAq" = (
@@ -27320,6 +27285,10 @@
 "xAp" = (
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
+	},
+/obj/machinery/button/remote/blast_door{
+	pixel_y = -23;
+	id = "motel8"
 	},
 /turf/simulated/floor/wood,
 /area/tradeport/motel/room8)
@@ -34786,7 +34755,7 @@ xpF
 ene
 oCC
 auo
-auo
+pIE
 auo
 auo
 aoq
@@ -36527,7 +36496,7 @@ ikw
 fgT
 aGE
 fXE
-blq
+nIs
 bbk
 fNP
 rdc
@@ -37091,22 +37060,22 @@ lxd
 gsi
 hdP
 bQT
-wzG
+kHe
 pDP
 tSy
 uck
 mOC
-cGv
+cUy
 hTe
 kLA
 hMt
 hwZ
-eHf
+ryT
 oqL
 chy
 bYy
 dXu
-gTu
+rlB
 aGE
 rSY
 boQ
@@ -49922,7 +49891,7 @@ aMr
 bSN
 aky
 lQn
-aDO
+aRd
 anJ
 aRd
 aRd
@@ -56530,7 +56499,7 @@ aQo
 axb
 anq
 ayF
-atj
+apV
 auK
 aGX
 aot
