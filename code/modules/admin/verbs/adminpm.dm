@@ -47,6 +47,7 @@
 	cmd_admin_pm(targets[target], null)
 	feedback_add_details("admin_verb","Admin PM") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
+/// Replys to some existing ahelp, reply to whom, which can be a client or ckey
 /client/proc/cmd_ahelp_reply(whom)
 	if(IsAdminAdvancedProcCall())
 		return FALSE
@@ -185,7 +186,7 @@
 		return null
 
 	if(ambiguious_recipient == EXTERNAL_PM_USER)
-		if(!ircreplyamount) //to prevent people from spamming irc/discord
+		if(!externalreplyamount) //to prevent people from spamming irc/discord
 			to_chat(src,
 				type = MESSAGE_TYPE_ADMINPM,
 				html = SPAN_DANGER("Error: Admin-PM-Message: External reply cap hit."),
@@ -255,7 +256,7 @@
 		return null
 
 	if(recipient)
-		return
+		return msg
 	// Client has disappeared due to logout
 	if(GLOB.directory[recipient_ckey]) // Client has reconnected, lets try to recover
 		recipient = GLOB.directory[recipient_ckey]
@@ -314,7 +315,7 @@
 
 		var/new_help_id = new_admin_help?.id
 
-		ircreplyamount--
+		externalreplyamount--
 
 		var/category = "Reply: [ckey]"
 		if(new_admin_help)
@@ -424,8 +425,7 @@
 			type = MESSAGE_TYPE_ADMINPM,
 			html = SPAN_NOTICE("Relaying message to a new admin help."),
 			confidential = TRUE)
-		adminhelp(raw_message)
-		// GLOB.admin_help_ui_handler.perform_adminhelp(src, raw_message, FALSE)
+		GLOB.admin_help_ui_handler.perform_adminhelp(src, raw_message, FALSE)
 		return FALSE
 
 	// Let's play some music for the admin
@@ -507,7 +507,7 @@
 	if(ambiguious_recipient == EXTERNAL_PM_USER)
 		// Guard against the possibility of a null, since it'll runtime and spit out the contents of what should be a private ticket.
 		if(ticket)
-			log_admin_private("PM: Ticket #[ticket_id]: [our_name]->External: [sanitize(trim(raw_message))]")
+			log_admin_private("PM: Ticket #[ticket_id]: [our_name]->External: [sanitize_text(trim(raw_message))]")
 		else
 			log_admin_private("PM: [our_name]->External: [sanitize_text(trim(raw_message))]")
 		for(var/client/lad in GLOB.admins)
@@ -703,7 +703,7 @@
 		//always play non-admin recipients the adminhelp sound
 		SEND_SOUND(recipient, 'sound/effects/adminhelp.ogg')
 
-		recipient.ircreplyamount = EXTERNALREPLYCOUNT
+		recipient.externalreplyamount = EXTERNALREPLYCOUNT
 	return "Message Successful"
 
 /// Gets TGS's stealth key, generates one if none is found

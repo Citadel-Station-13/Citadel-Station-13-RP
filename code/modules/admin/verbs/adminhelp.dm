@@ -96,11 +96,11 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 	. = list()
 	var/num_disconnected = 0
 	STATPANEL_DATA_CLICK("Active Tickets:", "[active_tickets.len]", REF(astatclick))
+	astatclick.update("[active_tickets.len]")
 	for(var/I in active_tickets)
 		var/datum/admin_help/AH = I
 		if(AH.initiator)
 			STATPANEL_DATA_CLICK("#[AH.id]. [AH.initiator_key_name]:", "[AH.statclick.update()]", REF(AH))
-		else
 			++num_disconnected
 	if(num_disconnected)
 		STATPANEL_DATA_CLICK("Disconnected:", "[num_disconnected]", REF(astatclick))
@@ -132,10 +132,10 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 //TICKET LIST STATCLICK
 //
 
+INITIALIZE_IMMEDIATE(/obj/effect/statclick/ticket_list)
 /obj/effect/statclick/ticket_list
 	var/current_state
 
-INITIALIZE_IMMEDIATE(/obj/effect/statclick/ticket_list)
 /obj/effect/statclick/ticket_list/Initialize(mapload, name, state)
 	. = ..()
 	current_state = state
@@ -250,7 +250,9 @@ INITIALIZE_IMMEDIATE(/obj/effect/statclick/ticket_list)
 	var/afk_admins = jointext(admin_counts["afk"], ", ")
 	var/other_admins = jointext(admin_counts["noflags"], ", ")
 	var/admin_text = ""
-	var/player_count = "**Total**: [length(GLOB.clients)], **Living**: [length(living_mob_list)], **Dead**: [length(dead_mob_list)]" //, **Observers**: [length(GLOB.current_observers_list)]
+	// we cant get an accurate list of living players, living_mob_list contains living mobs, not alive mobs with client
+	var/player_count = "**Total**: [length(GLOB.clients)]"
+	// , **Living**: [length(GLOB.alive_player_list)], **Dead**: [length(GLOB.dead_player_list)], **Observers**: [length(GLOB.current_observers_list)]
 	if(stealth_admins)
 		admin_text += "**Stealthed**: [stealth_admins]\n"
 	if(afk_admins)
@@ -262,45 +264,36 @@ INITIALIZE_IMMEDIATE(/obj/effect/statclick/ticket_list)
 		"PLAYERS" = player_count,
 		"ROUND STATE" = round_state,
 		"ROUND ID" = GLOB.round_id,
-		"ROUND TIME" = time2text(round_duration_in_ds, "hh:mm:ss"),
+		"ROUND TIME" = ROUND_TIME(),
 		"MESSAGE" = message,
 		"ADMINS" = admin_text,
 	)
-	// if(CONFIG_GET(string/adminhelp_ahelp_link))
-	// 	var/ahelp_link = replacetext(CONFIG_GET(string/adminhelp_ahelp_link), "$RID", GLOB.round_id)
-	// 	ahelp_link = replacetext(ahelp_link, "$TID", id)
-	// 	embed.url = ahelp_link
 	return embed
 
 /datum/admin_help/proc/send_message_to_tgs(message, urgent = FALSE)
+	var/message_to_send = message
+
 	if(urgent)
-		// var/extra_message = CONFIG_GET(string/urgent_ahelp_message)
 		to_chat(initiator, SPAN_BOLDWARNING("Notified admins to prioritize your ticket"))
 		var/datum/discord_embed/embed = format_embed_discord(message)
-		// embed.content = extra_message
 		embed.footer = "This player requested an admin"
 		send2adminchat_webhook(embed, urgent = TRUE)
 		webhook_sent = WEBHOOK_URGENT
-
 	//send it to TGS if nobody is on and tell us how many were on
-	var/admin_number_present = send2tgs_adminless_only(initiator_ckey, "Ticket #[id]: [message]")
+	var/admin_number_present = send2tgs_adminless_only(initiator_ckey, "Ticket #[id]: [message_to_send]")
 	log_admin_private("Ticket #[id]: [key_name(initiator)]: [name] - heard by [admin_number_present] non-AFK admins who have +BAN.")
 	if(admin_number_present <= 0)
 		to_chat(initiator, SPAN_NOTICE("No active admins are online, your adminhelp was sent to admins who are available through IRC or Discord."), confidential = TRUE)
 		heard_by_no_admins = TRUE
 		var/regular_webhook_url = config_legacy.chat_webhook_url /* CONFIG_GET(string/regular_adminhelp_webhook_url) */
 		if(regular_webhook_url && (!urgent /* || regular_webhook_url != CONFIG_GET(string/urgent_adminhelp_webhook_url) */ ))
-			// var/extra_message = CONFIG_GET(string/ahelp_message)
 			var/datum/discord_embed/embed = format_embed_discord(message)
-			// embed.content = extra_message
 			embed.footer = "This player sent an ahelp when no admins are available [urgent? "and also requested an admin": ""]"
 			send2adminchat_webhook(embed, urgent = FALSE)
 			webhook_sent = WEBHOOK_NON_URGENT
 
 /proc/send2adminchat_webhook(message_or_embed, urgent)
-	var/webhook = config_legacy.chat_webhook_url //CONFIG_GET(string/urgent_adminhelp_webhook_url)
-	// if(!urgent)
-	// 	webhook = CONFIG_GET(string/regular_adminhelp_webhook_url)
+	var/webhook = config_legacy.chat_webhook_url
 
 	if(!webhook)
 		return
@@ -314,10 +307,6 @@ INITIALIZE_IMMEDIATE(/obj/effect/statclick/ticket_list)
 		webhook_info["embeds"] = list(embed.convert_to_list())
 		if(embed.content)
 			webhook_info["content"] = embed.content
-	// if(CONFIG_GET(string/adminhelp_webhook_name))
-	// 	webhook_info["username"] = CONFIG_GET(string/adminhelp_webhook_name)
-	// if(CONFIG_GET(string/adminhelp_webhook_pfp))
-	// 	webhook_info["avatar_url"] = CONFIG_GET(string/adminhelp_webhook_pfp)
 	var/list/headers = list()
 	headers["Content-Type"] = "application/json"
 	var/datum/http_request/request = new()
@@ -605,11 +594,6 @@ INITIALIZE_IMMEDIATE(/obj/effect/statclick/ticket_list)
 	testing("Ahelp action: [action]")
 	if(webhook_sent != WEBHOOK_NONE)
 		var/datum/discord_embed/embed = new()
-		embed.title = "Ticket #[id]"
-		// if(CONFIG_GET(string/adminhelp_ahelp_link))
-		// 	var/ahelp_link = replacetext(CONFIG_GET(string/adminhelp_ahelp_link), "$RID", GLOB.round_id)
-		// 	ahelp_link = replacetext(ahelp_link, "$TID", id)
-		// 	embed.url = ahelp_link
 		embed.description = "[key_name(usr)] has sent an action to this ticket. Action ID: [action]"
 		if(webhook_sent == WEBHOOK_URGENT)
 			send2adminchat_webhook(embed, urgent = TRUE)
@@ -635,6 +619,32 @@ INITIALIZE_IMMEDIATE(/obj/effect/statclick/ticket_list)
 			HandleIssue()
 		if("reopen")
 			Reopen()
+
+/datum/admin_help/proc/player_ticket_panel()
+	var/list/dat = list("<html><head><meta http-equiv='Content-Type' content='text/html; charset=UTF-8'><title>Player Ticket</title></head>")
+	dat += "<b>State: "
+	switch(state)
+		if(AHELP_ACTIVE)
+			dat += "<font color='red'>OPEN</font></b>"
+		if(AHELP_RESOLVED)
+			dat += "<font color='green'>RESOLVED</font></b>"
+		if(AHELP_CLOSED)
+			dat += "CLOSED</b>"
+		else
+			dat += "UNKNOWN</b>"
+	dat += "\n[FOURSPACES]<A href='?_src_=holder;[HrefToken(forceGlobal = TRUE)];player_ticket_panel=1'>Refresh</A>"
+	dat += "<br><br>Opened at: [gameTimestamp("hh:mm:ss", opened_at)] (Approx [DisplayTimeText(world.time - opened_at)] ago)"
+	if(closed_at)
+		dat += "<br>Closed at: [gameTimestamp("hh:mm:ss", closed_at)] (Approx [DisplayTimeText(world.time - closed_at)] ago)"
+	dat += "<br><br>"
+	dat += "<br><b>Log:</b><br><br>"
+	for (var/interaction in player_interactions)
+		dat += "[interaction]<br>"
+
+	var/datum/browser/player_panel = new(usr, "ahelp[id]", 0, 620, 480)
+	player_panel.set_content(dat.Join())
+	player_panel.open()
+
 
 //
 // TICKET STATCLICK
@@ -671,74 +681,118 @@ INITIALIZE_IMMEDIATE(/obj/effect/statclick/ahelp)
 	deltimer(adminhelptimerid)
 	adminhelptimerid = 0
 
-// Used for methods where input via arg doesn't work
-/client/proc/get_adminhelp()
-	var/msg = input(src, "Please describe your problem concisely and an admin will help as soon as they're able.", "Adminhelp contents") as message|null
-	adminhelp(msg)
+GLOBAL_DATUM_INIT(admin_help_ui_handler, /datum/admin_help_ui_handler, new)
 
-/client/verb/adminhelp(message as text)
-	set category = "Admin"
-	set name = "Adminhelp"
+/datum/admin_help_ui_handler
 
+/datum/admin_help_ui_handler/ui_state(mob/user)
+	return GLOB.always_state
+
+/datum/admin_help_ui_handler/ui_data(mob/user)
+	. = list()
+	var/list/admins = get_admin_counts(R_BAN)
+	.["adminCount"] = length(admins["present"])
+
+/datum/admin_help_ui_handler/ui_static_data(mob/user)
+	. = list()
+	.["bannedFromUrgentAhelp"] = FALSE //is_banned_from(user.ckey, "Urgent Adminhelp")
+	.["urgentAhelpPromptMessage"] = "" //CONFIG_GET(string/urgent_ahelp_user_prompt)
+	// var/webhook_url = CONFIG_GET(string/urgent_adminhelp_webhook_url)
+	// if(webhook_url)
+	// 	.["urgentAhelpEnabled"] = TRUE
+
+/datum/admin_help_ui_handler/ui_interact(mob/user, datum/tgui/ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "Adminhelp")
+		ui.open()
+		ui.set_autoupdate(FALSE)
+
+/datum/admin_help_ui_handler/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+	. = ..()
+	if(.)
+		return
+	var/client/user_client = usr.client
+	var/message = sanitize_text(trim(params["message"]))
+
+	if(user_client.adminhelptimerid)
+		return
+
+	// urgent hardcoded to FALSE
+	perform_adminhelp(user_client, message, FALSE)
+	ui.close()
+
+/datum/admin_help_ui_handler/proc/perform_adminhelp(client/user_client, message, urgent)
 	if(!message)
 		return
 
 	//handle muting and automuting
-	if(prefs.muted & MUTE_ADMINHELP)
-		to_chat(src, "<span class='danger'>Error: Admin-PM: You cannot send adminhelps (Muted).</span>")
+	if(user_client.prefs.muted & MUTE_ADMINHELP)
+		to_chat(user_client, SPAN_DANGER("Error: Admin-PM: You cannot send adminhelps (Muted)."), confidential = TRUE)
 		return
-	if(handle_spam_prevention(message, MUTE_ADMINHELP))
-		return
-
-	message = sanitize(message)
-
-	if(persistent.ligma)
-		to_chat(usr, "<span class='adminnotice'>PM to-<b>Admins</b>: [message]</span>")
-		log_shadowban("[key_name(src)] AHELP: [message]")
+	if(user_client.handle_spam_prevention(message, MUTE_ADMINHELP))
 		return
 
 	feedback_add_details("admin_verb","Adminhelp") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
-	if(current_ticket)
-		current_ticket.TimeoutVerb()
-		if(alert(usr, "You already have a ticket open. Is this for the same issue?",,"Yes","No") != "No")
-			if(current_ticket)
-				current_ticket.MessageNoRecipient(message)
-				return
-			else
-				to_chat(usr, "<span class='warning'>Ticket not found, creating new one...</span>")
-		else
-			current_ticket.AddInteraction("[key_name_admin(usr)] opened a new ticket.")
-			current_ticket.Close()
-
-	new /datum/admin_help(message, src, FALSE)
-
-//admin proc
-/client/proc/cmd_admin_ticket_panel()
-	set name = "Show Ticket List"
-	set category = "Admin"
-
-	if(!check_rights(R_ADMIN|R_MOD|R_DEBUG, TRUE))
+	if(user_client.current_ticket)
+		user_client.current_ticket.TimeoutVerb()
+		if(urgent)
+			var/sanitized_message = sanitize(copytext_char(message, 1, MAX_MESSAGE_LEN))
+			user_client.current_ticket.send_message_to_tgs(sanitized_message, urgent = TRUE)
+		user_client.current_ticket.MessageNoRecipient(message, urgent)
 		return
 
-	var/browse_to
+	new /datum/admin_help(message, user_client, FALSE, urgent)
 
-	switch(input("Display which ticket list?") as null|anything in list("Active Tickets", "Closed Tickets", "Resolved Tickets"))
-		if("Active Tickets")
-			browse_to = AHELP_ACTIVE
-		if("Closed Tickets")
-			browse_to = AHELP_CLOSED
-		if("Resolved Tickets")
-			browse_to = AHELP_RESOLVED
-		else
+/client/verb/no_tgui_adminhelp(message as message)
+	set name = "NoTguiAdminhelp"
+	set hidden = TRUE
+
+	if(adminhelptimerid)
+		return
+
+	message = trim(message)
+
+	GLOB.admin_help_ui_handler.perform_adminhelp(src, message, FALSE)
+
+/client/verb/adminhelp()
+	set category = "Admin"
+	set name = "Adminhelp"
+	GLOB.admin_help_ui_handler.ui_interact(mob)
+	to_chat(src, SPAN_BOLDNOTICE("Adminhelp failing to open or work? <a href='?src=[REF(src)];tguiless_adminhelp=1'>Click here</a>"))
+
+/client/verb/view_latest_ticket()
+	set category = "Admin"
+	set name = "View Latest Ticket"
+
+	if(!current_ticket)
+		// Check if the client had previous tickets, and show the latest one
+		var/list/prev_tickets = list()
+		var/datum/admin_help/last_ticket
+		// Check all resolved tickets for this player
+		for(var/datum/admin_help/resolved_ticket in GLOB.ahelp_tickets.resolved_tickets)
+			if(resolved_ticket.initiator_ckey == ckey) // Initiator is a misnomer, it's always the non-admin player even if an admin bwoinks first
+				prev_tickets += resolved_ticket
+		// Check all closed tickets for this player
+		for(var/datum/admin_help/closed_ticket in GLOB.ahelp_tickets.closed_tickets)
+			if(closed_ticket.initiator_ckey == ckey)
+				prev_tickets += closed_ticket
+		// Take the most recent entry of prev_tickets and open the panel on it
+		if(LAZYLEN(prev_tickets))
+			last_ticket = pop(prev_tickets)
+			last_ticket.player_ticket_panel()
 			return
 
-	GLOB.ahelp_tickets.BrowseTickets(browse_to)
+		// client had no tickets this round
+		to_chat(src, SPAN_WARNING("You have not had an ahelp ticket this round."))
+		return
+
+	current_ticket.player_ticket_panel()
 
 //
 // LOGGING
 //
-
 
 /// Use this proc when an admin takes action that may be related to an open ticket on what
 /// what can be a client, ckey, or mob
