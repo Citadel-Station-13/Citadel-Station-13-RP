@@ -34,7 +34,14 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 	var/list/subsystems
 
 	//# Vars for keeping track of tick drift.
+
+	/**
+	 * The world.timeofday that the current Loop() started at.
+	 */
 	var/loop_start_timeofday
+	/**
+	 * The world.time that the current Loop() started at.
+	 */
 	var/loop_start_time
 	var/tickdrift = 0
 
@@ -75,8 +82,6 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 
 	/// The current initialization stage we're at.
 	var/static/init_stage_completed = 0
-	/// An init stage change was queued.
-	var/init_stage_change_pending = FALSE
 	/// The init stage currently being ran by the main ticker loop
 	var/init_stage_ticking
 
@@ -499,6 +504,8 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 	init_stage_ticking = init_stage
 
 	iteration = 1
+
+	var/init_stage_change_pending = FALSE
 	var/error_level = 0
 	var/sleep_delta = 1
 
@@ -508,15 +515,10 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 		var/starting_tick_usage = TICK_USAGE
 
 		// check if we need to queue an init stage change
-		if (init_stage != init_stage_completed)
-			// set stage change pending; this'll stop new (but not paused / sleeping) subsystems from being queued to run,
-			// including ticker subsystems!
+		if(init_stage != init_stage_completed)
+			// set stage change pending; this'll stop new (but not paused / sleeping) subsystems from being queued to run.
 			init_stage_change_pending = TRUE
-			// warning: here be dragons!
-			// no subsystem must be running for init stage change to happen
-			// checking for running and paused subsystems is easy; we just check that there's nothing in the queue to run.
-			// checking for sleeping subsystems is harder as they're not re-queued until they stop sleeping
-			// thus, we have to loop through everything.
+			// ensure that 1. queue is empty and 2. no sleeping subsystems (as those don't stay in queue) exist
 			if(!queue_head && !laggy_sleeping_subsystem_check())
 				return MC_LOOP_RTN_NEWSTAGES
 
@@ -744,24 +746,20 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 
 			queue_node.state = SS_RUNNING
 
-			// ignite / fire the head node
 			// ignite() will return immediately even if fire() sleeps.
-			// the return value will be SS_SLEEPING if fire() is sleeping.
-			// the return value will be SS_RUNNING if it did not sleep and ran to completion.
-			// the return value will be SS_PAUSING if it did not sleep and yielded.
 			queue_node_tick_usage = TICK_USAGE
 			var/state = queue_node.ignite(queue_node.state == SS_PAUSED)
 			queue_node_tick_usage = TICK_USAGE - queue_node_tick_usage
 
 			switch(state)
 				if(SS_RUNNING)
-					// successful, full run
+					// fire() ran to completion
 					state = SS_IDLE
 				if(SS_PAUSING)
-					// partial run
+					// fire() ran and then pause()'d
 					something_is_mid_cycle = TRUE
 				if(SS_SLEEPING)
-					// it slept. this is very bad.
+					// fire() slept; the subsystem may or may not pause later
 					something_is_mid_cycle = TRUE
 				else
 					stack_trace("subsystem had unexpected state: [state]")
