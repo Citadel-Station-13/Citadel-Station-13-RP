@@ -193,20 +193,22 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 
 /datum/controller/master/Recover()
 	var/msg = "## DEBUG: [time2text(world.timeofday)] MC restarted. Reports:\n"
-	for (var/varname in Master.vars)
-		switch (varname)
-			if("name", "tag", "bestF", "type", "parent_type", "vars", "statclick") // Built-in junk.
-				continue
-
-			else
-				var/varval = Master.vars[varname]
-				if (istype(varval, /datum)) // Check if it has a type var.
-					var/datum/D = varval
-					msg += "\t [varname] = [D]([D.type])\n"
-
-				else
-					msg += "\t [varname] = [varval]\n"
-
+	var/list/master_attributes = Master.vars
+	var/list/filtered_variables = list(
+		NAMEOF(src, name),
+		NAMEOF(src, parent_type),
+		NAMEOF(src, statclick),
+		NAMEOF(src, tag),
+		NAMEOF(src, type),
+		NAMEOF(src, vars),
+	)
+	for (var/varname in master_attributes - filtered_variables)
+		var/varval = master_attributes[varname]
+		if (isdatum(varval)) // Check if it has a type var.
+			var/datum/D = varval
+			msg += "\t [varname] = [D]([D.type])\n"
+		else
+			msg += "\t [varname] = [varval]\n"
 	log_world(msg)
 
 	var/datum/controller/subsystem/BadBoy = Master.last_type_processed
@@ -218,27 +220,22 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 			if(2)
 				msg = "The [BadBoy.name] subsystem was the last to fire for 2 controller restarts. It will be recovered now and disabled if it happens again."
 				FireHim = TRUE
-
 			if(3)
-				msg = "The [BadBoy.name] subsystem seems to be destabilizing the MC and will be offlined."
+				msg = "The [BadBoy.name] subsystem seems to be destabilizing the MC and will be put offline."
 				BadBoy.subsystem_flags |= SS_NO_FIRE
-
 		if(msg)
-			to_chat(GLOB.admins, SPAN_BOLDANNOUNCE("[msg]"))
+			to_chat(GLOB.admins, span_boldannounce("[msg]"))
 			log_world(msg)
 
 	if (istype(Master.subsystems))
 		if(FireHim)
-			Master.subsystems += new BadBoy.type // NEW_SS_GLOBAL will remove the old one.
-
+			Master.subsystems += new BadBoy.type //NEW_SS_GLOBAL will remove the old one
 		subsystems = Master.subsystems
 		current_runlevel = Master.current_runlevel
-		initialized = TRUE
 		StartProcessing(10)
-
 	else
-		to_chat(world, SPAN_BOLDANNOUNCE("The Master Controller is having some issues, we will need to re-initialize EVERYTHING"))
-		Initialize(20, TRUE)
+		to_chat(world, span_boldannounce("The Master Controller is having some issues, we will need to re-initialize EVERYTHING"))
+		Initialize(20, TRUE, FALSE)
 
 /**
  * Please don't stuff random bullshit here,
@@ -307,9 +304,6 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 	to_chat(world, SPAN_BOLDANNOUNCE("[msg]"))
 	log_world(msg)
 
-	// Record initialization finish.
-	var/initialized_tod = REALTIMEOFDAY
-
 	// Set world options.
 	world.set_fps(config_legacy.fps)
 
@@ -322,12 +316,13 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 		world.TgsInitializationComplete()
 
 	// Handle sleeping offline after initializations.
+	var/rtod_sleep_offline_check = REALTIMEOFDAY
 	if(sleep_offline_after_initializations)
 		world.sleep_offline = TRUE
 	sleep(1 TICK)
 	if(sleep_offline_after_initializations) // && CONFIG_GET(flag/resume_after_initializations))
 		world.sleep_offline = FALSE
-	initializations_finished_with_no_players_logged_in = initialized_tod < REALTIMEOFDAY - 10
+	initializations_finished_with_no_players_logged_in = rtod_sleep_offline_check < REALTIMEOFDAY - 10
 
 /**
  * Initialize a given subsystem and handle the results.
