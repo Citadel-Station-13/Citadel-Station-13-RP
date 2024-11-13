@@ -374,9 +374,19 @@
 		. = "OFFLINE&emsp;"
 
 /datum/controller/subsystem/stat_key()
-	return can_fire? "\[[state_letter()]\][name]" : name
+	return can_fire? "\[[state_letter()]\] [name]" : name
 
+/**
+ * Returns our status symbol.
+ */
 /datum/controller/subsystem/proc/state_letter()
+	// R: running
+	// Q: queued
+	// P: pausing / paused
+	// S: sleeping
+	// I: initializing
+	// D: done initializing, waiting for init stage to finish
+	// blank: idle
 	if(Master.init_stage_completed >= init_stage)
 		switch (state)
 			if (SS_RUNNING)
@@ -391,13 +401,13 @@
 				. = "&nbsp;&nbsp;"
 	else
 		if(subsystem_flags & SS_NO_INIT)
-			. = "-"
+			. = "D"
 		if(src == Master.current_initializing_subsystem)
 			. = "I"
 		else if(initialized)
 			. = "D"
 		else
-			. = "-"
+			. = "W"
 
 /**
  * Could be used to postpone a costly subsystem for (default one) var/cycles, cycles.

@@ -285,7 +285,9 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 
 	for(var/current_init_stage in 1 to INIT_STAGE_MAX)
 		for(var/datum/controller/subsystem/subsystem in stage_sorted_subsystems[current_init_stage])
+			current_initializing_subsystem = subsystem
 			initialize_subsystem(subsystem)
+			current_initializing_subsystem = null
 			CHECK_TICK
 		init_stage_completed = current_init_stage
 		if(!mc_started)
