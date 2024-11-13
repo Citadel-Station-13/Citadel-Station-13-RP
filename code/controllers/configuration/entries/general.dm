@@ -41,3 +41,38 @@
 
 /// Enable or disable the toast notification when the the instance finishes initializing.
 /datum/config_entry/flag/toast_notification_on_init
+
+/datum/config_entry/number/mc_tick_rate/base_mc_tick_rate
+	integer = FALSE
+	default = 1
+
+/datum/config_entry/number/mc_tick_rate/high_pop_mc_tick_rate
+	integer = FALSE
+	default = 1.1
+
+/datum/config_entry/number/mc_tick_rate/high_pop_mc_mode_amount
+	default = 65
+
+/datum/config_entry/number/mc_tick_rate/disable_high_pop_mc_mode_amount
+	default = 60
+
+/datum/config_entry/number/mc_tick_rate
+	abstract_type = /datum/config_entry/number/mc_tick_rate
+
+/datum/config_entry/number/mc_tick_rate/ValidateAndSet(str_val)
+	. = ..()
+	if (.)
+		Master.UpdateTickRate()
+
+/datum/config_entry/flag/resume_after_initializations
+
+/datum/config_entry/flag/resume_after_initializations/ValidateAndSet(str_val)
+	. = ..()
+	if(. && MC_RUNNING())
+		world.sleep_offline = !config_entry_value
+
+/datum/config_entry/number/drift_dump_threshold
+	default = 4 SECONDS
+
+/datum/config_entry/number/drift_profile_delay
+	default = 15 SECONDS
