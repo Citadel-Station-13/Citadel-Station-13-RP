@@ -31,6 +31,8 @@
 
 //*                           Master Controller Loop() return values                                 *//
 
+/// Unknown or error
+#define MC_LOOP_RTN_UNKNOWN 0
 /// New initialize stage happened
 #define MC_LOOP_RTN_NEWSTAGES 1
 /// We want the MC to exit.
@@ -38,9 +40,7 @@
 
 //*                                  Initialization Stages                                           *//
 //* After each stage, the MC starts ticking that stage while later stages are still waiting to init. *//
-
-/// Nothing has been completed. This is not a real stage.
-#define MC_INIT_STAGE_MIN 0
+//*      MC init stages must be a positive number, and init stages must all be consequetive!         *//
 
 /// Early initializations required for server function; database, timers, tgui, etc
 #define MC_INIT_STAGE_BACKEND 1
@@ -52,6 +52,8 @@
 #define MC_INIT_STAGE_LATE 4
 
 /// Last init stage we need to do.
+///
+/// * This must be set to the maximum INIT_STAGE.
 #define MC_INIT_STAGE_MAX 4
 
 //! SubSystem flags (Please design any new flags so that the default is off, to make adding flags to subsystems easier)

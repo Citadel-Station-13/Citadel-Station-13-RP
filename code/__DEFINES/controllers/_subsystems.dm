@@ -69,6 +69,11 @@
 
 //! ### SS runlevels
 
+//*                                            Runlevels                                          *//
+//*             Must be powers of 2. Runlevels should be in order of progression.                 *//
+//*             Only subsystem with a runlevel matching the MC's will be ticked.                  *//
+//* The first runlevel (value '1') will be the default runlevel when the MC is first initialized. *//
+
 /// "Initialize Only" - Used for subsystems that should never be fired (Should also have SS_NO_FIRE set).
 #define RUNLEVEL_INIT     0
 /// Initial runlevel before setup.  Returns to here if setup fails.

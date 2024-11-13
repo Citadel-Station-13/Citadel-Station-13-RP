@@ -15,16 +15,24 @@
 	 */
 	name = "fire coderbus"
 
+	//* Initialization & Shutdown *//
+
 	/**
 	 * Order of initialization.
 	 * Higher numbers are initialized first, lower numbers later.
 	 * Use or create defines such as [INIT_ORDER_DEFAULT] so we can see the order in one file.
+	 *
+	 * * This is secondary to [init_stage].
 	 */
 	var/init_order = INIT_ORDER_DEFAULT
 	/**
 	 * Which stage does this subsystem init at. Earlier stages can fire while later stages init.
+	 *
+	 * * This is higher in precedence than [init_order].
 	 */
 	var/init_stage = MC_INIT_STAGE_WORLD
+	/// This var is set to TRUE after the subsystem has been initialized.
+	var/initialized = FALSE
 
 	/**
 	 * Time to wait (in deciseconds) between each call to fire().
@@ -47,10 +55,6 @@
 	 * (You can also restart the mc to force them to process again)
 	 */
 	var/subsystem_flags = NONE
-
-	/// This var is set to TRUE after the subsystem has been initialized.
-	// todo: see __DEFINES/controllers/_subsystems.dm; this shouldn't just be TRUE / FALSE
-	var/initialized = FALSE
 
 	/**
 	 * Set to FALSE to prevent fire() calls, mostly for admin use or subsystems that may be resumed later.

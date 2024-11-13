@@ -3,6 +3,8 @@ SUBSYSTEM_DEF(atoms)
 	init_order = INIT_ORDER_ATOMS
 	subsystem_flags = SS_NO_FIRE
 
+	#warn time to stop using `initialized` variable!
+
 	/// A stack of list(source, desired initialized state)
 	/// We read the source of init changes from the last entry, and assert that all changes will come with a reset
 	var/list/initialized_state = list()
