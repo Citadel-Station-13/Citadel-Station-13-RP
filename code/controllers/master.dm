@@ -354,9 +354,9 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 
 	// "[message_prefix] [seconds] seconds."
 	var/message_prefix
-	// tell everyone?
+	// run to_chat(world)
 	var/tell_everyone
-	// is this a warning?
+	// use a warning spans
 	var/chat_warning
 
 	switch(initialize_result)
