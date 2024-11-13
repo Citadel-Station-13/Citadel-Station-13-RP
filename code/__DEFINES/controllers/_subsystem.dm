@@ -1,56 +1,43 @@
 /**
- * This file (and its -dash files) is called MC, but actually holds quite a lot of logic including init orders
- * and subsystems as the MC and subsystems make up the global orchestration system of the codebase.
+ *! Defines for subsystems
+ *
+ *? Lots of important stuff in here, make sure you have your brain switched on when editing this file!
  */
 
-#define MC_TICK_CHECK ( ( TICK_USAGE > Master.current_ticklimit || src.state != SS_RUNNING ) ? pause() : 0 )
-#define MC_TICK_CHECK_USAGE ( ( TICK_USAGE > Master.current_ticklimit ) ? pause() : 0 )
+//*                             Subsystem Definition Macros                  *//
 
-#define MC_SPLIT_TICK_INIT(phase_count) var/original_tick_limit = Master.current_ticklimit; var/split_tick_phases = ##phase_count
-#define MC_SPLIT_TICK \
-    if(split_tick_phases > 1){\
-        Master.current_ticklimit = ((original_tick_limit - TICK_USAGE) / split_tick_phases) + TICK_USAGE;\
-        --split_tick_phases;\
-    } else {\
-        Master.current_ticklimit = original_tick_limit;\
-    }
-
-// Used to smooth out costs to try and avoid oscillation.
-#define MC_AVERAGE_FAST(average, current) (0.7 * (average) + 0.3 * (current))
-#define MC_AVERAGE(average, current) (0.8 * (average) + 0.2 * (current))
-#define MC_AVERAGE_SLOW(average, current) (0.9 * (average) + 0.1 * (current))
-
-#define MC_AVG_FAST_UP_SLOW_DOWN(average, current) (average > current ? MC_AVERAGE_SLOW(average, current) : MC_AVERAGE_FAST(average, current))
-#define MC_AVG_SLOW_UP_FAST_DOWN(average, current) (average < current ? MC_AVERAGE_SLOW(average, current) : MC_AVERAGE_FAST(average, current))
-
+/**
+ * Macro to fire off all logic when a subsystem is created - this is done immediately on New().
+ */
 #define NEW_SS_GLOBAL(varname) if(varname != src){if(istype(varname)){PreInit(TRUE);Preload(TRUE);Recover();qdel(varname);}varname = src;}
 
-#define START_PROCESSING(Processor, Datum) if (!(Datum.datum_flags & DF_ISPROCESSING)) {Datum.datum_flags |= DF_ISPROCESSING;Processor.processing += Datum}
-#define STOP_PROCESSING(Processor, Datum) Datum.datum_flags &= ~DF_ISPROCESSING;Processor.processing -= Datum
+/**
+ * Defines a normal subsystem.
+ */
+#define SUBSYSTEM_DEF(X) GLOBAL_REAL(SS##X, /datum/controller/subsystem/##X);\
+/datum/controller/subsystem/##X/New(){\
+    NEW_SS_GLOBAL(SS##X);\
+}\
+/datum/controller/subsystem/##X
 
-//*                               Recreate_MC() return values                                        *//
+/**
+ * Defines a processing subsystem.
+ */
+#define PROCESSING_SUBSYSTEM_DEF(X) GLOBAL_REAL(SS##X, /datum/controller/subsystem/processing/##X);\
+/datum/controller/subsystem/processing/##X/New(){\
+    NEW_SS_GLOBAL(SS##X);\
+}\
+/datum/controller/subsystem/processing/##X
 
-#define MC_RESTART_RTN_FAILED -1
-#define MC_RESTART_RTN_COOLDOWN 0
-#define MC_RESTART_RTN_SUCCESS 1
-
-//*                           Master Controller Loop() return values                                 *//
-
-/// Unknown or error
-#define MC_LOOP_RTN_UNKNOWN 0
-/// New initialize stage happened
-#define MC_LOOP_RTN_NEWSTAGES 1
-/// We want the MC to exit.
-#define MC_LOOP_RTN_GRACEFUL_EXIT 2
-
-//! SubSystem flags (Please design any new flags so that the default is off, to make adding flags to subsystems easier)
+//*                                        Subsystem flags                                             *//
+//* Please design any new flags so that the default is off, to make adding flags to subsystems easier. *//
 
 /**
  * Subsystem does not need Initialize() called.
  *
  * * The subsystem will still fire when its init stage is completed, unless it is
  *   marked with [SS_NO_FIRE] or its `can_fire` is set to FALSE.
- * * The subsystem will not have its `initialized` variable set to TRUE.
+ * * The subsystem will still have its `initialized` variable set to TRUE.
  */
 #define SS_NO_INIT (1<<0)
 
@@ -62,11 +49,15 @@
  */
 #define SS_NO_FIRE (1<<1)
 
-/** subsystem only runs on spare cpu (after all non-background subsystems have ran that tick) */
-/// SS_BACKGROUND has its own priority bracket
+/**
+ * Subsystem will try its best to only run on spare CPU, after all non-background subsystems have ran.
+ *
+ * * This pushes a subsystem into the background fire_priority bracket.
+ */
 #define SS_BACKGROUND (1<<2)
 
 /// subsystem does not tick check, and should not run unless there is enough time (or its running behind (unless background))
+//  todo: this should be deprecated; please do not use this on new subsystems without good reason.
 #define SS_NO_TICK_CHECK (1<<3)
 
 /** Treat wait as a tick count, not DS, run every wait ticks. */
@@ -107,8 +98,25 @@ DEFINE_BITFIELD(subsystem_flags, list(
 	BITFIELD(SS_OK_TO_FAIL_INIT),
 ))
 
+//*                     Subsystem `Initialize()` returns                          *//
+/**
+ * Negative values incidate a failure or warning of some kind, positive are good.
+ * 0 and 1 are unused so that TRUE and FALSE are guarenteed to be invalid values.
+ */
 
-//! SUBSYSTEM STATES
+/// Subsystem failed to initialize entirely. Print a warning, log, and disable firing.
+#define SS_INIT_FAILURE -2
+/// The default return value which must be overriden. Will succeed with a warning.
+#define SS_INIT_NONE -1
+/// Subsystem initialized sucessfully.
+#define SS_INIT_SUCCESS 2
+/// If your system doesn't need to be initialized (by being disabled or something)
+#define SS_INIT_NO_NEED 3
+/// Succesfully initialized, BUT do not announce it to players (generally to hide game mechanics it would otherwise spoil)
+#define SS_INIT_NO_MESSAGE 4
+
+//*                          Subsystem 'state' variable                     *//
+
 /// aint doing shit.
 #define SS_IDLE 0
 /// queued to run
@@ -121,20 +129,11 @@ DEFINE_BITFIELD(subsystem_flags, list(
 #define SS_SLEEPING 4
 /// in the middle of pausing
 #define SS_PAUSING 5
-#define SUBSYSTEM_DEF(X) GLOBAL_REAL(SS##X, /datum/controller/subsystem/##X);\
-/datum/controller/subsystem/##X/New(){\
-    NEW_SS_GLOBAL(SS##X);\
-}\
-/datum/controller/subsystem/##X
 
-#define PROCESSING_SUBSYSTEM_DEF(X) GLOBAL_REAL(SS##X, /datum/controller/subsystem/processing/##X);\
-/datum/controller/subsystem/processing/##X/New(){\
-    NEW_SS_GLOBAL(SS##X);\
-}\
-/datum/controller/subsystem/processing/##X
+//* Misc *//
 
-// Boilerplate code for multi-step processors. See machines.dm for example use.
-#define INTERNAL_PROCESS_STEP(this_step, initial_step, proc_to_call, cost_var, next_step)\
+/// Boilerplate code for multi-step processors. See machines.dm for example use.
+#define INTERNAL_SUBSYSTEM_PROCESS_STEP(this_step, initial_step, proc_to_call, cost_var, next_step)\
 if(current_step == this_step || (initial_step && !resumed)) /* So we start at step 1 if not resumed.*/ {\
 	timer = TICK_USAGE;\
 	proc_to_call(resumed);\

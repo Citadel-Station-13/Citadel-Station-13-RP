@@ -20,7 +20,7 @@ SUBSYSTEM_DEF(spatial_grids)
 
 /datum/controller/subsystem/spatial_grids/Initialize()
 	make_grids()
-	return ..()
+	return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/spatial_grids/proc/make_grids()
 	living = new /datum/spatial_grid(/mob/living)

@@ -334,7 +334,10 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
  */
 /datum/controller/master/proc/initialize_subsystem(datum/controller/subsystem/subsystem)
 	// Do not re-init already initialized subsystems if it's somehow called again.
-	if (subsystem.subsystem_flags & SS_NO_INIT || subsystem.initialized)
+	if(subsystem.subsystem_flags & SS_NO_INIT)
+		subsystem.initialized = TRUE
+		return
+	if(subsystem.initialized)
 		return
 
 	// todo: dylib high-precision timers

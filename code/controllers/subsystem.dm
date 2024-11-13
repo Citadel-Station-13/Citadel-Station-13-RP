@@ -50,9 +50,14 @@
 	 * Which stage does this subsystem init at. Earlier stages can fire while later stages init.
 	 *
 	 * * This is higher in precedence than [init_order].
+	 * * This determines when the subsystem starts firing; besure to set this if you need ticking even if you are using SS_NO_INIT!
 	 */
 	var/init_stage = INIT_STAGE_WORLD
-	/// This var is set to TRUE after the subsystem has been initialized.
+	/**
+	 * This variable is set to TRUE after the subsystem has been initialized.
+	 *
+	 * * If this subsystem is marked as SS_NO_FIRE, this still will be set to TRUE. We just won't call Initialize().
+	 */
 	var/initialized = FALSE
 
 	/**
@@ -372,7 +377,7 @@
 	return can_fire? "\[[state_letter()]\][name]" : name
 
 /datum/controller/subsystem/proc/state_letter()
-	if(Master.initialized)
+	if(Master.init_stage_completed >= init_stage)
 		switch (state)
 			if (SS_RUNNING)
 				. = "R"
@@ -383,7 +388,7 @@
 			if (SS_SLEEPING)
 				. = "S"
 			if (SS_IDLE)
-				. = "  "
+				. = "&nbsp;&nbsp;"
 	else
 		if(subsystem_flags & SS_NO_INIT)
 			. = "-"
@@ -392,7 +397,7 @@
 		else if(initialized)
 			. = "D"
 		else
-			. = "W"
+			. = "-"
 
 /**
  * Could be used to postpone a costly subsystem for (default one) var/cycles, cycles.
