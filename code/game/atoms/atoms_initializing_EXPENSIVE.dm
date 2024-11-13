@@ -71,8 +71,8 @@
 		generate_tag()
 
 	var/do_initialize = SSatoms.initialized
-	if(do_initialize != INITIALIZATION_INSSATOMS)
-		args[1] = do_initialize == INITIALIZATION_INNEW_MAPLOAD
+	if(do_initialize != ATOM_INIT_IN_SUBSYSTEM)
+		args[1] = do_initialize == ATOM_INIT_IN_NEW_MAPLOAD
 		if(SSatoms.InitAtom(src, FALSE, args))
 			//we were deleted
 			return

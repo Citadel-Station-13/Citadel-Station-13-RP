@@ -160,6 +160,7 @@
 #include "code\__DEFINES\controllers\_repositories.dm"
 #include "code\__DEFINES\controllers\_subsystems.dm"
 #include "code\__DEFINES\controllers\assets.dm"
+#include "code\__DEFINES\controllers\atoms.dm"
 #include "code\__DEFINES\controllers\dbcore.dm"
 #include "code\__DEFINES\controllers\grids.dm"
 #include "code\__DEFINES\controllers\persistence.dm"
