@@ -8,29 +8,14 @@
 
 	var/datum/db_query/lookup = SSdbcore.NewQuery(
 		"SELECT id FROM [format_table_name("player_lookup")] WHERE ckey = :ckey",
-		list(
-			"ckey" = ckey,
-		)
+		list("ckey" = ckey)
 	)
-	lookup.Execute()
-	var/sql_id
-	if(lookup.NextRow())
-		sql_id = text2num(lookup.item[1])
-	qdel(lookup)
+	if(!lookup.Execute())
+		qdel(lookup)
+		return
 
-	if(sql_id)
-		var/datum/db_query/update = SSdbcore.NewQuery(
-			"UPDATE [format_table_name("player_lookup")] SET lastseen = Now(), ip = :ip, computerid = :computerid, lastadminrank = :lastadminrank WHERE id = :id",
-			list(
-				"ip" = address,
-				"computerid" = computer_id,
-				"lastadminrank" = holder?.rank || "Player",
-				"id" = sql_id,
-			)
-		)
-		update.Execute()
-		qdel(update)
-	else
+	var/client_is_in_db = lookup.NextRow()
+	if (!client_is_in_db)
 		//New player!! Need to insert all the stuff
 		var/datum/db_query/insert = SSdbcore.NewQuery(
 			"INSERT INTO [format_table_name("player_lookup")] (id, ckey, firstseen, lastseen, ip, computerid, lastadminrank) VALUES (null, :ckey, Now(), Now(), :ip, :cid, :rank)",
@@ -43,6 +28,22 @@
 		)
 		insert.Execute()
 		qdel(insert)
+		qdel(lookup)
+		return
+
+	var/sql_id = text2num(lookup.item[1])
+	qdel(lookup)
+	var/datum/db_query/update = SSdbcore.NewQuery(
+		"UPDATE [format_table_name("player_lookup")] SET lastseen = Now(), ip = :ip, computerid = :computerid, lastadminrank = :lastadminrank WHERE id = :id",
+		list(
+			"ip" = address,
+			"computerid" = computer_id,
+			"lastadminrank" = holder?.rank || "Player",
+			"id" = sql_id,
+		)
+	)
+	update.Execute()
+	qdel(update)
 
 /client/proc/log_connection_to_db()
 	set waitfor = FALSE
@@ -54,15 +55,16 @@
 	if(!SSdbcore.Connect())
 		return
 
-	SSdbcore.RunQuery(
-		"INSERT INTO [format_table_name("connection_log")] (id, datetime, serverip, ckey, ip, computerid) VALUES (null, Now(), :server, :ckey, :ip, :cid)",
-		list(
-			"server" = "[world.internet_address]:[world.port]",
-			"ckey" = ckey,
-			"ip" = address || "0.0.0.0",
-			"cid" = computer_id,
-		)
-	)
+	var/datum/db_query/query_log_connection = SSdbcore.NewQuery({"
+		INSERT INTO `[format_table_name("connection_log")]` (`id`,`datetime`,`serverip`,`ckey`,`ip`,`computerid`)
+		VALUES(null, Now(), :server, :ckey, INET_ATON(:ip), :computerid)
+	"}, list(
+		"serverip" = "[world.internet_address]:[world.port]" || "0",
+		"ckey" = ckey,
+		"ip" = address,
+		"computerid" = computer_id))
+	query_log_connection.Execute(FALSE)
+	qdel(query_log_connection)
 
 /client/proc/reject_on_initialization_block()
 	if(!initialized)
