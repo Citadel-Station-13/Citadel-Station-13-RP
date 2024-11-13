@@ -63,7 +63,14 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 
 	var/static/random_seed
 
-	//* Processing Variables *//
+	//*               Global State             *//
+	//* These are tracked through MC restarts. *//
+
+	/// The current initialization stage we're at.
+	var/static/init_stage_completed = MC_INIT_STAGE_MIN
+
+	//*      Processing Variables      *//
+	//* These are set during a Loop(). *//
 
 	/// total fire_priority of all non-background subsystems in the queue
 	var/queue_priority_count = 0
@@ -74,6 +81,9 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 	var/datum/controller/subsystem/queue_head
 	/// End of queue linked list (used for appending to the list).
 	var/datum/controller/subsystem/queue_tail
+
+	//*                                                Control Variables                                                 *//
+	//* These are accessed globally and are used to allow the MC to control the server's tick when outside of a MC proc. *//
 
 	/**
 	 * current tick limit, assigned before running a subsystem.
@@ -129,12 +139,10 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 	for(var/datum/controller/subsystem/S in _subsystems)
 		S.Preload(FALSE)
 
-
 /datum/controller/master/Destroy()
 	..()
 	// Tell qdel() to Del() this object.
 	return QDEL_HINT_HARDDEL_NOW
-
 
 /datum/controller/master/Shutdown()
 	processing = FALSE
@@ -146,18 +154,21 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 
 	log_world("Shutdown complete")
 
-
 /**
+ * MC reboot proc.
+ *
  * Returns:
  * -  1 If we created a new mc.
  * -  0 If we couldn't due to a recent restart.
  * - -1 If we encountered a runtime trying to recreate it.
  */
 /proc/Recreate_MC()
-	usr = null // yeah let's not contaminate the MC call stack with our usr.
-	. = -1 // So if we runtime, things know we failed.
+	// Do not contaminate `usr`; if this is set, the MC main loop will have the usr of whoever called it,
+	// which results in all procs called by the MC inheriting that usr.
+	usr = null
+	. = MC_RESTART_RTN_FAILED // So if we runtime, things know we failed.
 	if (world.time < Master.restart_timeout)
-		return 0
+		return MC_RESTART_RTN_COOLDOWN
 	if (world.time < Master.restart_clear)
 		Master.restart_count *= 0.5
 
@@ -168,10 +179,9 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 	try
 		new/datum/controller/master()
 	catch
-		return -1
+		return MC_RESTART_RTN_FAILED
 
-	return 1
-
+	return MC_RESTART_RTN_SUCCESS
 
 /datum/controller/master/Recover()
 	var/msg = "## DEBUG: [time2text(world.timeofday)] MC restarted. Reports:\n"
@@ -222,7 +232,6 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 		to_chat(world, SPAN_BOLDANNOUNCE("The Master Controller is having some issues, we will need to re-initialize EVERYTHING"))
 		Initialize(20, TRUE)
 
-
 /**
  * Please don't stuff random bullshit here,
  * Make a subsystem, give it the SS_NO_FIRE flag, and do your work in it's Initialize()
@@ -233,11 +242,11 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 	if(delay)
 		sleep(delay)
 
-	if(tgs_prime)
-		world.TgsInitializationComplete()
-
 	if(init_sss)
 		init_subtypes(/datum/controller/subsystem, subsystems)
+
+	init_stage_completed = MC_INIT_STAGE_MIN
+	var/mc_started = FALSE
 
 	to_chat(world, SPAN_BOLDANNOUNCE("Initializing subsystems..."))
 
@@ -270,11 +279,14 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 	if(world.system_type == MS_WINDOWS && CONFIG_GET(flag/toast_notification_on_init) && !length(GLOB.clients))
 		world.shelleo("start /min powershell -ExecutionPolicy Bypass -File tools/initToast/initToast.ps1 -name \"[world.name]\" -icon %CD%\\icons\\CS13_16.png -port [world.port]")
 
-	// Set world options.
+	var/initialized_tod = REALTIMEOFDAY
 
+	// Set world options.
 	world.set_fps(config_legacy.fps)
 
-	var/initialized_tod = REALTIMEOFDAY
+	if(tgs_prime)
+		world.TgsInitializationComplete()
+
 	if(sleep_offline_after_initializations)
 		world.sleep_offline = TRUE
 
@@ -282,14 +294,91 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 
 	if(sleep_offline_after_initializations) // && CONFIG_GET(flag/resume_after_initializations))
 		world.sleep_offline = FALSE
-
 	initializations_finished_with_no_players_logged_in = initialized_tod < REALTIMEOFDAY - 10
-
-	initialized = TRUE
 
 	// Loop.
 	Master.StartProcessing(0)
 
+/**
+ * Initialize a given subsystem and handle the results.
+ *
+ * Arguments:
+ * * subsystem - the subsystem to initialize.
+ */
+/datum/controller/master/proc/initialize_subsystem(datum/controller/subsystem/subsystem)
+	// Do not re-init already initialized subsystems if it's somehow called again.
+	if (subsystem.flags & SS_NO_INIT || subsystem.initialized)
+		return
+
+	// todo: dylib high-precision timers
+	var/rtod_start = REALTIMEOFDAY
+
+	var/initialize_result = subsystem.Initialize()
+
+	var/rtod_end = REALTIMEOFDAY
+	var/took_seconds = round((rtod_end - rtod_start) / 10, 0.01)
+
+	metric_set_nested_numerical(/datum/metric/nested_numerical/subsystem_init_time, "[subsystem.type]", took_seconds)
+
+	switch(initialize_result)
+		if(SS_INIT_FAILURE)
+		if(SS_INIT_NONE)
+			warning("[subsystem.name] subsystem does not implement Initialize() or it returns ..(). If the former is true, the SS_NO_INIT flag should be set for this subsystem.")
+		if(SS_INIT_SUCCESS)
+		if(SS_INIT_NO_MESSAGE)
+		if(SS_INIT_NO_NEED)
+		else
+			warning("[subsystem.name] subsystem initialized, returning invalid result [result]. This is a bug.")
+
+	// just returned ..() or didn't implement Initialize() at all
+	if(result == SS_INIT_NONE)
+
+	if(result != SS_INIT_FAILURE)
+		// Some form of success, implicit failure, or the SS in unused.
+		subsystem.initialized = TRUE
+
+		SEND_SIGNAL(subsystem, COMSIG_SUBSYSTEM_POST_INITIALIZE)
+	else
+		// The subsystem officially reports that it failed to init and wishes to be treated as such.
+		subsystem.initialized = FALSE
+		subsystem.can_fire = FALSE
+
+	#warn below
+	// The rest of this proc is printing the world log and chat message.
+	var/message_prefix
+
+	// If true, print the chat message with boldwarning text.
+	var/chat_warning = FALSE
+
+	switch(result)
+		if(SS_INIT_FAILURE)
+			message_prefix = "Failed to initialize [subsystem.name] subsystem after"
+			chat_warning = TRUE
+		if(SS_INIT_SUCCESS, SS_INIT_NO_MESSAGE)
+			message_prefix = "Initialized [subsystem.name] subsystem within"
+		if(SS_INIT_NO_NEED)
+			// This SS is disabled or is otherwise shy.
+			return
+		else
+			// SS_INIT_NONE or an invalid value.
+			message_prefix = "Initialized [subsystem.name] subsystem with errors within"
+			chat_warning = TRUE
+
+	var/message = "[message_prefix] [seconds] second[seconds == 1 ? "" : "s"]!"
+	var/chat_message = chat_warning ? span_boldwarning(message) : span_boldannounce(message)
+
+	if(result != SS_INIT_NO_MESSAGE)
+		to_chat(world, chat_message)
+	log_world(message)
+
+	// initialized = TRUE
+	// var/time = (REALTIMEOFDAY - start_timeofday) / 10
+	// var/msg = "Initialized [name] subsystem within [time] second[time == 1 ? "" : "s"]!"
+	// to_chat(world, SPAN_BOLDANNOUNCE("[msg]"))
+	// log_world(msg)
+	// log_subsystem("INIT", msg)
+	// return time
+	#warn above
 
 /datum/controller/master/proc/SetRunLevel(new_runlevel)
 	var/old_runlevel = current_runlevel
@@ -323,7 +412,6 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 		log_game("Failed to recreate MC (Error code: [rtn2]), it's up to the failsafe now")
 		message_admins("Failed to recreate MC (Error code: [rtn2]), it's up to the failsafe now")
 		Failsafe.defcon = 2
-
 
 /**
  * Main loop!
@@ -492,7 +580,6 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 
 		sleep(world.tick_lag * (processing * sleep_delta))
 
-
 /**
  * This is what decides if something should run.
  *
@@ -531,7 +618,6 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 		SS.enqueue()
 
 	. = TRUE
-
 
 /// Run thru the queue of subsystems to run, running them while balancing out their allocated tick precentage.
 /datum/controller/master/proc/RunQueue()
@@ -617,7 +703,6 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 				state = SS_IDLE
 
 			current_tick_budget -= queue_node_priority
-
 
 			if (queue_node_tick_usage < 0)
 				queue_node_tick_usage = 0
@@ -729,10 +814,8 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 	log_world("MC: SoftReset: Finished.")
 	. = TRUE
 
-
 /datum/controller/master/stat_entry()
 	return "(TickRate:[Master.processing]) (Iteration:[Master.iteration])"
-
 
 /datum/controller/master/StartLoadingMap()
 	// todo: this is kind of awful because this procs every subsystem unnecessarily
@@ -758,7 +841,6 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 	else if (client_count > CONFIG_GET(number/mc_tick_rate/high_pop_mc_mode_amount))
 		processing = CONFIG_GET(number/mc_tick_rate/high_pop_mc_tick_rate)
 */
-
 
 /datum/controller/master/proc/OnConfigLoad()
 	for (var/thing in subsystems)

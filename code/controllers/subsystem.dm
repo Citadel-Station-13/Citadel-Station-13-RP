@@ -21,6 +21,10 @@
 	 * Use or create defines such as [INIT_ORDER_DEFAULT] so we can see the order in one file.
 	 */
 	var/init_order = INIT_ORDER_DEFAULT
+	/**
+	 * Which stage does this subsystem init at. Earlier stages can fire while later stages init.
+	 */
+	var/init_stage = MC_INIT_STAGE_WORLD
 
 	/**
 	 * Time to wait (in deciseconds) between each call to fire().
@@ -43,12 +47,6 @@
 	 * (You can also restart the mc to force them to process again)
 	 */
 	var/subsystem_flags = NONE
-
-	/**
-	 * Which stage does this subsystem init at.
-	 * Earlier stages can fire while later stages init.
-	 */
-	//var/init_stage = INITSTAGE_MAIN
 
 	/// This var is set to TRUE after the subsystem has been initialized.
 	// todo: see __DEFINES/controllers/_subsystems.dm; this shouldn't just be TRUE / FALSE
@@ -334,13 +332,7 @@
  * This is expected to be overriden by subtypes.
  */
 /datum/controller/subsystem/Initialize(start_timeofday)
-	initialized = TRUE
-	var/time = (REALTIMEOFDAY - start_timeofday) / 10
-	var/msg = "Initialized [name] subsystem within [time] second[time == 1 ? "" : "s"]!"
-	to_chat(world, SPAN_BOLDANNOUNCE("[msg]"))
-	log_world(msg)
-	log_subsystem("INIT", msg)
-	return time
+	return SS_INIT_NONE
 
 /**
  * Hook for printing stats to the "MC" statuspanel for admins to see performance and related stats etc.

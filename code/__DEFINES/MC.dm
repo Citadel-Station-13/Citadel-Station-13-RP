@@ -23,6 +23,37 @@
 #define START_PROCESSING(Processor, Datum) if (!(Datum.datum_flags & DF_ISPROCESSING)) {Datum.datum_flags |= DF_ISPROCESSING;Processor.processing += Datum}
 #define STOP_PROCESSING(Processor, Datum) Datum.datum_flags &= ~DF_ISPROCESSING;Processor.processing -= Datum
 
+//*                               Recreate_MC() return values                                        *//
+
+#define MC_RESTART_RTN_FAILED -1
+#define MC_RESTART_RTN_COOLDOWN 0
+#define MC_RESTART_RTN_SUCCESS 1
+
+//*                           Master Controller Loop() return values                                 *//
+
+/// New initialize stage happened
+#define MC_LOOP_RTN_NEWSTAGES 1
+/// We want the MC to exit.
+#define MC_LOOP_RTN_GRACEFUL_EXIT 2
+
+//*                                  Initialization Stages                                           *//
+//* After each stage, the MC starts ticking that stage while later stages are still waiting to init. *//
+
+/// Nothing has been completed. This is not a real stage.
+#define MC_INIT_STAGE_MIN 0
+
+/// Early initializations required for server function; database, timers, tgui, etc
+#define MC_INIT_STAGE_BACKEND 1
+/// Pre-mapload initializations
+#define MC_INIT_STAGE_EARLY 2
+/// Mapload
+#define MC_INIT_STAGE_WORLD 3
+/// Late
+#define MC_INIT_STAGE_LATE 4
+
+/// Last init stage we need to do.
+#define MC_INIT_STAGE_MAX 4
+
 //! SubSystem flags (Please design any new flags so that the default is off, to make adding flags to subsystems easier)
 
 /// subsystem does not initialize.
