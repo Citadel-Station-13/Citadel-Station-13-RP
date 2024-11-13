@@ -389,7 +389,7 @@
 	destination_names = list(
 		"our headquarters on Toledo, New Ohio",
 		"a research facility in Samsara",
-		"a sapientarian mission in the Almach Rim"
+		"a research station in Berehynia"
 		)
 
 /datum/lore/organization/tsc/zeng_hu
