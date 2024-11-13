@@ -130,9 +130,9 @@ DEFINE_BITFIELD(subsystem_flags, list(
  */
 #define SS_RUNNING 2
 /**
- * Paused by MC_TICK_CHECK
+ * We are requesting a pause.
  *
- * * Should not be set by anything other than ignite().
+ * * Set by the pause() proc if we did not sleep yet during our fire().
  */
 #define SS_PAUSED 3
 /**
@@ -140,9 +140,11 @@ DEFINE_BITFIELD(subsystem_flags, list(
  */
 #define SS_SLEEPING 4
 /**
- * In the middle of pausing by MC_TICK_CHECK.
+ * We slept, and now we are requesting a pause.
  *
- * * Set by the macro, and changed to `SS_PAUSED` by ignite()
+ * * Set by the pause() proc if we have slept since fire() was invoked.
+ * * Converted to SS_PAUSED by ignite() once we finally return from fire(), as we cannot immediately pause if
+ *   we are sleeping.
  */
 #define SS_PAUSING 5
 

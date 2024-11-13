@@ -755,7 +755,7 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 				if(SS_RUNNING)
 					// fire() ran to completion
 					state = SS_IDLE
-				if(SS_PAUSING)
+				if(SS_PAUSED)
 					// fire() ran and then pause()'d
 					something_is_mid_cycle = TRUE
 				if(SS_SLEEPING)
@@ -773,14 +773,15 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 			queue_node.tick_overrun = max(0, MC_AVG_FAST_UP_SLOW_DOWN(queue_node.tick_overrun, queue_node_tick_usage-tick_precentage))
 			queue_node.state = state
 
-			// if it paused mid-run, track that
-			if (state == SS_PAUSING)
+			// if it paused mid-run, track that ; do not eject it from the queue
+			if (state == SS_PAUSED)
 				queue_node.paused_ticks++
 				queue_node.paused_tick_usage += queue_node_tick_usage
 				queue_node = queue_node.queue_next
 				continue
 
-			// it did not pause; this is a complete run
+			// it did not pause. either this is a complete run, or the subsystem is sleeping.
+			// in either case, we will track what we can and eject it; if it's sleeping, we can no longer manage the fire() call.
 			queue_node.ticks = MC_AVERAGE(queue_node.ticks, queue_node.paused_ticks)
 
 			queue_node_tick_usage += queue_node.paused_tick_usage
