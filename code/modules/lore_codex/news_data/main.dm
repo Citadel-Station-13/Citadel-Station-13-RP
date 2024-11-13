@@ -294,7 +294,7 @@
 	data = "Martian By-Elections this week have resulted in an unexpected windfall for the Tyrmalin population on the planet.\
 	A dozen Tyrmalin political hopefuls have been elected to the lower Martian house doubling the amount of Tyrmalin representatives \
 	serving in the Martian lower house. Political analysts have contributed this surprise win to the high political participation rate \
-	among Mar's Tyrmalin minority along with the increasing populations of the 'little green aliens' of Mars. The last Martian census \
+	among Mars' Tyrmalin minority along with the increasing populations of the 'little green aliens' of Mars. The last Martian census \
 	showed the Tyrmalin as being 9% of the Martian population with the Tyrmalins being the fastest growing population on the planet.\
 	<br><br>\
 	Celebrations of the sudden political victory have sontaneously errupted across the entire planet with some Tyrmalin districts \
@@ -542,7 +542,7 @@
 	was at  least six more unidentified persons among the remains, bringing the this killer's gruesome total to 18. The identity of the killer has not been released by the police and \
 	the Viento Seco government has vowed that the killer's name will never be released less it encourage further acts of killing. \
 	<br><br>\
-	The 'Butcher of Parana' is just the latest in a rash of cannibalism incidents over the past two years. Some statistics say that incidents of cannibalism is up over 200% since 2564. \
+	The 'Butcher of Parana' is just the latest in a rash of cannibalism incidents over the past two years. Some statistics say that incidents of cannibalism are up over 200% since 2564. \
 	What was once merely the subject of horror movies and the habits of certain Vox pirate bands has become an increasingly common phenoma among the Galaxy's derranged. Sociologists are \
 	baffled at the sudden rise with many blaming the attention cannibals get in the media for the rise of cannibal activity. Others blame social contagion from societies where cannibalism \
 	isn't taboo such as among Vox raider groups who are infamous for preying on Teshari. Still some point to a darker connection. Many of these cannibal murderers share common ritual \
@@ -771,7 +771,7 @@
 	<br><br>\
 	Since that time Fallman's Rock has been on the up. The population has risen as countless shady factions are drawn to the planet. Whether it is the Dremachir run 'All You Desire' \
 	a place where one can experience near any pleasure, the mysterious Ogden Cartel allegedly capable of obtaining anything money could buy, or even a well equipped Vey-Med expedition \
-	it seems you truly can find everything in Fallman's Rock. The prices aren't bad either. Pirates and Theives that bring their ill gotten goods to Fallman's Star \
+	it seems you truly can find everything in Fallman's Rock. The prices aren't bad either. Pirates and uheives that bring their ill gotten goods to Fallman's Star \
 	to sell them for pennies on the thaler. The spaceships resting in orbit comprise a small armada. If the ships were ever thoroughly examined one could probably discover the fates of hundred \
 	missing vessels. However in Fallman's Star the reddish stains that mark the halls of these 'used spaceships' are just another discount on the price tag, and if one can brave the trip to Fallman's Star \
 	spaceships can be obtained at record low prices. \
@@ -817,7 +817,7 @@
 	that aided their raids into Tajara space. \
 	<br><br>\
 	Whatever information that convinced the Eridani navy to move Morgan to protective custody has likely died with him. There is no shortage of suspects for the attack \
-	Three Fingers Morgan is wanted Dead or Alive by the Confederate Commonwealth of Adhomai in addition to all the major Tajara nations. Though none yet have claimed that the bounty on \
+	Three Fingers Morgan is wanted Dead or Alive by the Confederate Commonwealth of Adhomai in addition to all the major Tajara nations. Though none yet have claimed the bounty on \
 	Morgan's head, any Tajara nation or even independent Tajara groups could have been capable of financing such an attack. Morgan's pirate allies are also suspect \
 	as it was believed Morgan was to turn on them. Still the professional nature of the mercs suggest that those who arranged the attack payed top dollar and had access only to the \
 	highest quality mercenaries. The Eridani Alliance vowed to apprehend the mercenaries however it seems already the trail is going cold. It seems the identity of Three Fingers' \
@@ -866,7 +866,7 @@
 	data = " All are welcome at our Happy Trails Resorts. Now unvieling a line of luxury resort stations, we can ensure you find paradise anywhere in the galaxy. \
 	Enjoy our brand new luxury biodomes: <br><br>\
 	Try out the Winter Wonderland, perfect for Tajara and Teshari no matter where they roam. <br><br>\
-	The Desert resort will eb comfortable for Unathi and Skrell along with those who simply like a lot of Sun. <br><br>\
+	The Desert resort will be comfortable for Unathi and Skrell along with those who simply like a lot of Sun. <br><br>\
 	Our selection of cute and friendly animals will allow to experience comfortable nature anywhere in the galaxy. <br><br>\
 	Buy premium pass to enjoy a luxury buffet and exocitic liquors with top tier dormotory accomodations. <br><br>\
 	All of this an more can be yours at Happy Trails Resort Stations, just dock, buy a pass and enjoy your stay at a Happy Trails Resort Station. Coming to you anywhere \
@@ -958,7 +958,7 @@
 	becoming far more aggressive. Today reports came in from the border with the Three Hands Hegemony of just how widespread the xeno problem has gotten. The Three Hands \
 	gave official reports today of ongoing military operations against xenomorphs in Hegemony Border regions. According to the Moghesian representative the Hegemony became \
 	aware of the scale of the problem when the independently owned Andromeda Haven space station was destroyed during a Xenomorph attack. Since then the Hegemony has launched \
-	a counter attack destroyed xenoinfested ships and asteroids across their border in order to keep the region secure. Casaulties are allegedly minimal save for Andromeda \
+	a counter attack destroyed xeno infested ships and asteroids across their border in order to keep the region secure. Casaulties are allegedly minimal save for Andromeda \
 	Haven which was reportedly lost with all hands. \
 	<br><br> \
 	The full scale of the xenomorph assault is yet to be determined as the scale of the Hegemony's military operations is restricted information. What is known is that it appears \
