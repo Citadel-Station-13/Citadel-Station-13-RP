@@ -141,16 +141,3 @@ SUBSYSTEM_DEF(statpanels)
 		. += Q.generate_stat()
 	. = url_encode(json_encode(.))
 	cache_sdql_data = .
-
-/**
- * is this shitcode?
- * yes it is
- * if you wanna do better, do better; i'm not at the point of janking up our MC with my own
- * fuckery.
- *
- * tl;dr this ensures we push data while MC is initializing.
- */
-/datum/controller/subsystem/statpanels/proc/manual_ticking()
-	while(!Master.initialized)
-		fire(null, TRUE)
-		sleep(10)

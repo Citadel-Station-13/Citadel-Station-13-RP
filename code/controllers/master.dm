@@ -748,7 +748,7 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 
 			// ignite() will return immediately even if fire() sleeps.
 			queue_node_tick_usage = TICK_USAGE
-			var/state = queue_node.ignite(queue_node.state == SS_PAUSED)
+			var/state = queue_node.ignite(queue_node_paused)
 			queue_node_tick_usage = TICK_USAGE - queue_node_tick_usage
 
 			switch(state)
@@ -800,10 +800,10 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 			queue_node.last_fire = world.time
 			queue_node.times_fired++
 
+			// update the next time it should be available to queue
+			queue_node.update_next_fire()
 			// remove from queue
 			queue_node.dequeue()
-			// update the next time it should be available to queue
-			queue_node.update_nextfire()
 			// move to next
 			queue_node = queue_node.queue_next
 

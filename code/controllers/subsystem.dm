@@ -273,6 +273,8 @@
 			var/new_tick_dilation = (full_run_took / nominal_dt_ds) * 100 - 100
 			tracked_average_dilation = max(0, MC_AVERAGE_SLOW(tracked_average_dilation, new_tick_dilation))
 			state = SS_IDLE
+		if(SS_PAUSED)
+			// we paused; nothing special, move on. the MC will handle it.
 		else
 			CRASH("unexpected state in [src] ([type]): [state]")
 
@@ -299,7 +301,7 @@
  * @params
  * * reset_time - Entirely reset the subsystem's stateful time tracking including tick-overrun, post fire timing, etc.
  */
-/datum/controller/subsystem/proc/update_nextfire(reset_time)
+/datum/controller/subsystem/proc/update_next_fire(reset_time)
 	if(reset_time)
 		next_fire = (subsystem_flags & SS_TICKER) ? (world.time + (world.tick_lag * wait)) : (world.time + wait)
 		return
@@ -429,7 +431,7 @@
 		. = "OFFLINE&emsp;"
 
 /datum/controller/subsystem/stat_key()
-	return can_fire? "\[[state_letter()]\] [name]" : name
+	return "\[[state_letter()]\] [name]"
 
 /**
  * Returns our status symbol.
@@ -445,24 +447,24 @@
 	if(Master.init_stage_completed >= init_stage)
 		switch (state)
 			if (SS_RUNNING)
-				. = "R"
+				. = "Ｒ"
 			if (SS_QUEUED)
-				. = "Q"
+				. = "Ｑ"
 			if (SS_PAUSED, SS_PAUSING)
-				. = "P"
+				. = "Ｐ"
 			if (SS_SLEEPING)
-				. = "S"
+				. = "Ｓ"
 			if (SS_IDLE)
-				. = "&nbsp;&nbsp;"
+				. = "&nbsp;&nbsp;&nbsp;"
 	else
 		if(subsystem_flags & SS_NO_INIT)
-			. = "D"
+			. = "Ｄ"
 		if(src == Master.current_initializing_subsystem)
-			. = "I"
+			. = "Ｉ"
 		else if(initialized)
-			. = "D"
+			. = "Ｄ"
 		else
-			. = "W"
+			. = "Ｗ"
 
 /**
  * Could be used to postpone a costly subsystem for (default one) var/cycles, cycles.
