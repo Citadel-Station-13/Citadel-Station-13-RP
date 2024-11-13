@@ -574,16 +574,18 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 
 		//* **Experimental**: Check every queue, every tick.
 		if (CheckQueue(current_runlevel_subsystems) <= 0 || CheckQueue(ticker_subsystems) <= 0)
-			if (!SoftReset(ticker_subsystems, runlevel_sorted_subsystems))
-				log_world("MC: SoftReset() failed, crashing")
-				return
+			stack_trace("MC: CheckQueue failed. Current error_level is [round(error_level, 0.25)]")
+			if (!SoftReset(tickersubsystems, runlevel_sorted_subsystems))
+				error_level++
+				CRASH("MC: SoftReset() failed, exiting loop()")
 
-			if (!error_level)
+			if (error_level < 2) //except for the first strike, stop incrmenting our iteration so failsafe enters defcon
 				iteration++
-
-			error_level++
+			else
+				cached_runlevel = null //3 strikes, Lets reset the runlevel lists
 			current_ticklimit = TICK_LIMIT_RUNNING
-			sleep(10)
+			sleep((1 SECONDS) * error_level)
+			error_level++
 			continue
 
 		if (queue_head)
