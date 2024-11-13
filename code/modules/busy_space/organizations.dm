@@ -333,7 +333,7 @@
 
 	org_type = "corporate"
 
-	ship_prefixes = list("HIV" = "a general operations", "HTV" = "a freight", "HLV" = "a munitions resupply", "HDV" = "an asset protection", "HDV" = "a preemptive deployment")
+	ship_prefixes = list("HMV" = "a general operations", "HTV" = "a freight", "HLV" = "a munitions resupply", "HDV" = "an asset protection", "HDV" = "a preemptive deployment")
 	//War God Theme, updated
 	ship_names = list(
 		"Anhur", "Bast", "Horus", "Maahes", "Neith", "Pakhet",
@@ -350,10 +350,10 @@
 		"Pele", "Maru", "Tumatauenga", "Bellona", "Juno", "Mars",
 		"Minerva", "Victoria", "Anat", "Astarte", "Perun", "Cao Lo")
 	destination_names = list(
-		"our headquarters on Luna",
-		"an Orion Confederation dockyard on Luna",
-		"a Fleet outpost in the Almach Rim",
-		"a Fleet outpost on the Moghes border"
+		"our headquarters on Orlov IV",
+		"an Orion Confederation dockyard around Jupiter",
+		"a Fleet outpost in frontier space",
+		"a Fleet outpost on the Hegemony border"
 		)
 
 /datum/lore/organization/tsc/vey_med
