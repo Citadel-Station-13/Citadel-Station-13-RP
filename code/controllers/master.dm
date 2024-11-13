@@ -75,13 +75,6 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 	///used by CHECK_TICK as well so that the procs subsystems call can obey that SS's tick limits
 	var/static/current_ticklimit = TICK_LIMIT_RUNNING
 
-	/// Whether the Overview UI will update as fast as possible for viewers.
-	var/overview_fast_update = FALSE
-	/// Enables rolling usage averaging
-	var/use_rolling_usage = FALSE
-	/// How long to run our rolling usage averaging
-	var/rolling_usage_length = 5 SECONDS
-
 /datum/controller/master/New()
 	// Ensure usr is null, to prevent any potential weirdness resulting from the MC having a usr if it's manually restarted.
 	usr = null
@@ -705,12 +698,6 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 			tick_usage = TICK_USAGE
 			var/state = queue_node.ignite(queue_node_paused)
 			tick_usage = TICK_USAGE - tick_usage
-
-			if(use_rolling_usage)
-				queue_node.prune_rolling_usage()
-				// Rolling usage is an unrolled list that we know the order off
-				// OPTIMIZATION POSTING
-				queue_node.rolling_usage += list(DS2TICKS(world.time), tick_usage)
 
 			if(queue_node.profiler_focused)
 				world.Profile(PROFILE_STOP)
