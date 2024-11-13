@@ -75,6 +75,8 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 
 	/// The current initialization stage we're at.
 	var/static/init_stage_completed = 0
+	/// An init stage change was queued.
+	var/init_stage_change_pending = FALSE
 
 	//*      Processing Variables      *//
 	//* These are set during a Loop(). *//
@@ -224,7 +226,7 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 				msg = "The [BadBoy.name] subsystem seems to be destabilizing the MC and will be put offline."
 				BadBoy.subsystem_flags |= SS_NO_FIRE
 		if(msg)
-			to_chat(GLOB.admins, span_boldannounce("[msg]"))
+			to_chat(GLOB.admins, SPAN_BOLDANNOUNCE("[msg]"))
 			log_world(msg)
 
 	if (istype(Master.subsystems))
@@ -234,7 +236,7 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 		current_runlevel = Master.current_runlevel
 		StartProcessing(10)
 	else
-		to_chat(world, span_boldannounce("The Master Controller is having some issues, we will need to re-initialize EVERYTHING"))
+		to_chat(world, SPAN_BOLDANNOUNCE("The Master Controller is having some issues, we will need to re-initialize EVERYTHING"))
 		Initialize(20, TRUE, FALSE)
 
 /**
@@ -502,9 +504,19 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 		tickdrift = max(0, MC_AVERAGE_FAST(tickdrift, (((REALTIMEOFDAY - init_timeofday) - (world.time - init_time)) / world.tick_lag)))
 		var/starting_tick_usage = TICK_USAGE
 
-		// If another stage of init was completed, restart.
+		// check if we need to queue an init stage change
 		if (init_stage != init_stage_completed)
-			return MC_LOOP_RTN_NEWSTAGES
+			// set stage change pending; this'll stop new (but not paused / sleeping) subsystems from being queued to run,
+			// including ticker subsystems!
+			init_stage_change_pending = TRUE
+			// warning: here be dragons!
+			// no subsystem must be running for init stage change to happen
+			// checking for running and paused subsystems is easy; we just check that there's nothing in the queue to run.
+			// checking for sleeping subsystems is harder as they're not re-queued until they stop sleeping
+			// thus, we have to loop through everything.
+			if(!queue_head && !laggy_sleeping_subsystem_check())
+				return MC_LOOP_RTN_NEWSTAGES
+
 		// If we're paused for some reason, well, pause.
 		if (processing <= 0)
 			current_ticklimit = TICK_LIMIT_RUNNING
@@ -568,37 +580,43 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 				SS.next_fire = world.time + world.tick_lag * rand(0, DS2TICKS(min(SS.wait, 2 SECONDS)))
 
 		//* **Experimental**: Check every queue, every tick.
-		if (CheckQueue(current_runlevel_subsystems) <= 0 || CheckQueue(ticker_subsystems) <= 0)
-			stack_trace("MC: CheckQueue failed. Current error_level is [round(error_level, 0.25)]")
-			if (!SoftReset(tickersubsystems, runlevel_sorted_subsystems))
-				error_level++
-				CRASH("MC: SoftReset() failed, exiting loop()")
+		//* If init stage change is pending, we will not re-queue subsystems that are not currently queued to fire
+		if(!init_stage_change_pending)
+			if (CheckQueue(current_runlevel_subsystems) <= 0 || CheckQueue(ticker_subsystems) <= 0)
+				stack_trace("MC: CheckQueue failed. Current error_level is [round(error_level, 0.25)]")
+				if (!SoftReset(ticker_subsystems, runlevel_sorted_subsystems))
+					error_level++
+					CRASH("MC: SoftReset() failed, exiting loop()")
 
-			if (error_level < 2) //except for the first strike, stop incrmenting our iteration so failsafe enters defcon
-				iteration++
-			else
-				cached_runlevel = null //3 strikes, Lets reset the runlevel lists
-			current_ticklimit = TICK_LIMIT_RUNNING
-			sleep((1 SECONDS) * error_level)
-			error_level++
-			continue
+				if (error_level < 2) //except for the first strike, stop incrmenting our iteration so failsafe enters defcon
+					iteration++
+				else
+					cached_runlevel = null //3 strikes, Lets reset the runlevel lists
+				current_ticklimit = TICK_LIMIT_RUNNING
+				sleep((1 SECONDS) * error_level)
+				error_level++
+				continue
 
 		if (queue_head)
-			if (RunQueue() <= 0) //error running queue
-				stack_trace("MC: RunQueue failed. Current error_level is [round(error_level, 0.25)]")
-				if (error_level > 1) //skip the first error,
-					if (!SoftReset(ticker_subsystems, runlevel_sorted_subsystems))
-						CRASH("MC: SoftReset() failed, exiting loop()")
+			var/run_result = RunQueue()
+			switch(run_result)
+				if(MC_RUN_RTN_UNKNOWN)
+					// Error running queue
+					stack_trace("MC: RunQueue failed. Current error_level is [round(error_level, 0.25)]")
+					if (error_level > 1) //skip the first error,
+						if (!SoftReset(ticker_subsystems, runlevel_sorted_subsystems))
+							CRASH("MC: SoftReset() failed, exiting loop()")
 
-					if (error_level <= 2) //after 3 strikes stop incrmenting our iteration so failsafe enters defcon
-						iteration++
-					else
-						cached_runlevel = null //3 strikes, Lets also reset the runlevel lists
-					current_ticklimit = TICK_LIMIT_RUNNING
-					sleep((1 SECONDS) * error_level)
+						if (error_level <= 2) //after 3 strikes stop incrmenting our iteration so failsafe enters defcon
+							iteration++
+						else
+							cached_runlevel = null //3 strikes, Lets also reset the runlevel lists
+						current_ticklimit = TICK_LIMIT_RUNNING
+						sleep((1 SECONDS) * error_level)
+						error_level++
+						continue
 					error_level++
-					continue
-				error_level++
+
 		if (error_level > 0)
 			error_level = max(MC_AVERAGE_SLOW(error_level-1, error_level), 0)
 		if (!queue_head) //reset the counts if the queue is empty, in the off chance they get out of sync
@@ -662,7 +680,7 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 
 /// Run thru the queue of subsystems to run, running them while balancing out their allocated tick precentage.
 /datum/controller/master/proc/RunQueue()
-	. = FALSE
+	. = MC_RUN_RTN_UNKNOWN
 	var/datum/controller/subsystem/queue_node
 	var/queue_node_flags
 	var/queue_node_priority
@@ -677,6 +695,8 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 
 	// the % of tick used by the current running subsystem
 	var/queue_node_tick_usage
+	// is a subsystem stopping mid-cycle? this means either pausing or sleeping
+	var/something_is_mid_cycle
 
 	/**
 	 * Keep running while we have stuff to run and we haven't gone over a tick
@@ -736,12 +756,22 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 			queue_node.state = SS_RUNNING
 
 			// ignite / fire the head node
+			// ignite() will return immediately even if fire() sleeps.
+			// the return value will be SS_SLEEPING if fire() is sleeping.
 			queue_node_tick_usage = TICK_USAGE
 			var/state = queue_node.ignite(queue_node_paused)
 			queue_node_tick_usage = TICK_USAGE - queue_node_tick_usage
 
-			if (state == SS_RUNNING)
-				state = SS_IDLE
+			switch(state)
+				if(SS_RUNNING)
+					// successful, full run
+					state = SS_IDLE
+				if(SS_PAUSING, SS_SLEEPING)
+					// partial run or is not done.
+					something_is_mid_cycle = TRUE
+				else
+					stack_trace("subsystem had unexpected state: [state]")
+					state = SS_IDLE
 
 			current_tick_budget -= queue_node_priority
 
@@ -799,7 +829,7 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 			// move to next
 			queue_node = queue_node.queue_next
 
-	. = TRUE
+	. = something_is_mid_cycle ? MC_RUN_RTN_PARTIAL_COMPLETION : MC_RUN_RTN_FULL_COMPLETION
 
 /**
  * Resets the queue, and all subsystems, while filtering out the subsystem lists called if any mc's queue procs runtime or exit improperly.
@@ -872,18 +902,16 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 		var/datum/controller/subsystem/SS = S
 		SS.StopLoadingMap()
 
-/*
-/datum/controller/master/proc/UpdateTickRate()
-	if (!processing)
-		return
-	var/client_count = length(GLOB.clients)
-	if (client_count < CONFIG_GET(number/mc_tick_rate/disable_high_pop_mc_mode_amount))
-		processing = CONFIG_GET(number/mc_tick_rate/base_mc_tick_rate)
-	else if (client_count > CONFIG_GET(number/mc_tick_rate/high_pop_mc_mode_amount))
-		processing = CONFIG_GET(number/mc_tick_rate/high_pop_mc_tick_rate)
-*/
-
 /datum/controller/master/proc/OnConfigLoad()
 	for (var/thing in subsystems)
 		var/datum/controller/subsystem/SS = thing
 		SS.OnConfigLoad()
+
+/**
+ * CitRP snowflake special: Check if any subsystems are sleeping.
+ */
+/datum/controller/master/proc/laggy_sleeping_subsystem_check()
+	for(var/datum/controller/subsystem/ss in subsystems)
+		if(ss.state == SS_SLEEPING)
+			return TRUE
+	return FALSE

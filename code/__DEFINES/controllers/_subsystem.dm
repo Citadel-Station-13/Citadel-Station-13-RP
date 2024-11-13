@@ -117,17 +117,33 @@ DEFINE_BITFIELD(subsystem_flags, list(
 
 //*                          Subsystem 'state' variable                     *//
 
-/// aint doing shit.
+/**
+ * Not doing anything right now.
+ */
 #define SS_IDLE 0
-/// queued to run
+/**
+ * In the MC's run-queue
+ */
 #define SS_QUEUED 1
-/// actively running
+/**
+ * Set before the MC ignites a subsystem. This is the state while it's currently running.
+ */
 #define SS_RUNNING 2
-/// paused by mc_tick_check
+/**
+ * Paused by MC_TICK_CHECK
+ *
+ * * Should not be set by anything other than ignite().
+ */
 #define SS_PAUSED 3
-/// fire() slept.
+/**
+ * fire() is currently sleeping.
+ */
 #define SS_SLEEPING 4
-/// in the middle of pausing
+/**
+ * In the middle of pausing by MC_TICK_CHECK.
+ *
+ * * Set by the macro, and changed to `SS_PAUSED` by ignite()
+ */
 #define SS_PAUSING 5
 
 //* Misc *//

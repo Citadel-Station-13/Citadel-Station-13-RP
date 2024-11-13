@@ -48,3 +48,12 @@
 #define MC_LOOP_RTN_NEWSTAGES 1
 /// We want the MC to exit.
 #define MC_LOOP_RTN_GRACEFUL_EXIT 2
+
+//*                            Master Controller RunQueue() return values                             *//
+
+/// Unknown or error
+#define MC_RUN_RTN_UNKNOWN 0
+/// Success; full completion
+#define MC_RUN_RTN_FULL_COMPLETION 1
+/// Atleast one subsystem was sleeping or pausing
+#define MC_RUN_RTN_PARTIAL_COMPLETION 2

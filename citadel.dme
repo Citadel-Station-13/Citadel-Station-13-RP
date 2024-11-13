@@ -542,6 +542,7 @@
 #include "code\controllers\repository\material_traits.dm"
 #include "code\controllers\repository\materials.dm"
 #include "code\controllers\repository\structs.dm"
+#include "code\controllers\subsystem\__test_bad_subsystem_sleeps.dm"
 #include "code\controllers\subsystem\ai_holders.dm"
 #include "code\controllers\subsystem\ai_legacy.dm"
 #include "code\controllers\subsystem\ai_movement.dm"

@@ -213,21 +213,33 @@
 /**
  * This is used so the mc knows when the subsystem sleeps.
  * DO NOT OVERRIDE THIS.
+ *
+ * * If fire() sleeps, the return value will be SS_SLEEPING.
+ * * If fire() does not sleep, the return value will be SS_PAUSING or SS_RUNNING.
+ *
+ * @return the state we're now in. This return value is only used if fire() does not sleep.
  */
 /datum/controller/subsystem/proc/ignite(resumed = FALSE)
 	SHOULD_NOT_OVERRIDE(TRUE)
+	// This makes us return the last return value when we sleep
 	set waitfor = FALSE
+	// Paranoid set.
 	. = SS_IDLE
 
+	// Record tick allocation
 	tick_allocation_last = Master.current_ticklimit-(TICK_USAGE)
 	tick_allocation_avg = MC_AVERAGE(tick_allocation_avg, tick_allocation_last)
 
+	// Fire; the default return value will return the fact we're sleeping if fire() sleeps.
 	. = SS_SLEEPING
 	fire(resumed)
+	// Set the default return value to either RUNNING or PAUSING.
 	. = state
+	// If the MC detected we are sleeping, set back to idle now that we're done sleeping.
 	if (state == SS_SLEEPING)
 		state = SS_IDLE
-
+	// If we're pausing, re-queue us for the next cycle.
+	// This can interact weirdly with sleeps.
 	if (state == SS_PAUSING)
 		var/QT = queued_time
 		enqueue()
@@ -246,7 +258,6 @@
  * Sleeping in here prevents future fires until returned.
  */
 /datum/controller/subsystem/proc/fire(resumed = FALSE)
-	SHOULD_NOT_SLEEP(TRUE)
 	subsystem_flags |= SS_NO_FIRE
 	CRASH("Subsystem [src]([type]) does not fire() but did not set the SS_NO_FIRE flag. Please add the SS_NO_FIRE flag to any subsystem that doesn't fire so it doesn't get added to the processing list and waste cpu.")
 
@@ -256,7 +267,6 @@
 	subsystem_flags |= SS_NO_FIRE
 	if (Master)
 		Master.subsystems -= src
-
 	return ..()
 
 /**
