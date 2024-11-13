@@ -271,12 +271,12 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 		stage_sorted_subsystems[subsystem_init_stage] += subsystem
 
 	// Sort subsystems by display setting for easy access.
-	sortTim(subsystems, GLOBAL_PROC_REF(cmp_subsystem_display))
+	tim_sort(subsystems, GLOBAL_PROC_REF(cmp_subsystem_display))
 
 	// Initialize subsystems. The ticker loop will be started immediately upon the first stage being done.
 	var/rtod_start = REALTIMEOFDAY
 
-	for(var/current_init_stage in 1 to INITSTAGE_MAX)
+	for(var/current_init_stage in 1 to INIT_STAGE_MAX)
 		for(var/datum/controller/subsystem/subsystem in stage_sorted_subsystems[current_init_stage])
 			initialize_subsystem(subsystem)
 			CHECK_TICK
@@ -289,8 +289,8 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 				SetRunLevel(1)
 			Master.StartProcessing(0)
 
-	var/end_rtod = REALTIMEOFDAY
-	var/took_seconds = round((end_rtod - start_rtod) / 10, 0.01)
+	var/rtod_end = REALTIMEOFDAY
+	var/took_seconds = round((rtod_end - rtod_start) / 10, 0.01)
 
 	// Announce, log, and record end
 	var/msg = "Initializations complete within [took_seconds] second[took_seconds == 1 ? "" : "s"]!"
@@ -327,7 +327,7 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
  */
 /datum/controller/master/proc/initialize_subsystem(datum/controller/subsystem/subsystem)
 	// Do not re-init already initialized subsystems if it's somehow called again.
-	if (subsystem.flags & SS_NO_INIT || subsystem.initialized)
+	if (subsystem.subsystem_flags & SS_NO_INIT || subsystem.initialized)
 		return
 
 	// todo: dylib high-precision timers
@@ -369,10 +369,10 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 			subsystem.initialized = TRUE
 		if(SS_INIT_NO_NEED)
 		else
-			warning("[subsystem.name] subsystem initialized, returning invalid result [result]. This is a bug.")
+			warning("[subsystem.name] subsystem initialized, returning invalid result [initialize_result]. This is a bug.")
 
 	var/message = "[message_prefix] [took_seconds] second[took_seconds == 1 ? "" : "s"]."
-	var/chat_message = chat_warning ? SPAN_BOLDWARNING(message) : SPAN_BOLDANNOUNCE(MESSAGE)
+	var/chat_message = chat_warning ? SPAN_BOLDWARNING(message) : SPAN_BOLDANNOUNCE(message)
 
 	if(tell_everyone && message_prefix)
 		to_chat(world, chat_message)
@@ -427,7 +427,7 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 	// Prep the loop (most of this is because we want MC restarts to reset as much state as we can, and because local vars rock
 
 	// All this shit is here so that flag edits can be refreshed by restarting the MC. (and for speed)
-	var/list/SStickersubsystems = list()
+	var/list/ticker_subsystems = list()
 	var/list/runlevel_sorted_subsystems = list(list()) // Ensure we always have at least one runlevel.
 	var/timer = world.time
 	for (var/thing in subsystems)
@@ -448,7 +448,7 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 		SS.recompute_wait_dt()
 
 		if (SS.subsystem_flags & SS_TICKER)
-			SStickersubsystems += SS
+			ticker_subsystems += SS
 			// Timer subsystems aren't allowed to bunch up, so we offset them a bit.
 			timer += world.tick_lag * rand(0, 1)
 			SS.next_fire = timer
@@ -474,10 +474,10 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 	 * These sort by lower priorities first to reduce the number of loops needed to add subsequent SS's to the queue.
 	 * (higher subsystems will be sooner in the queue, adding them later in the loop means we don't have to loop thru them next queue add)
 	 */
-	tim_sort(SStickersubsystems, GLOBAL_PROC_REF(cmp_subsystem_priority))
+	tim_sort(ticker_subsystems, GLOBAL_PROC_REF(cmp_subsystem_priority))
 	for(var/I in runlevel_sorted_subsystems)
 		tim_sort(I, GLOBAL_PROC_REF(cmp_subsystem_priority))
-		I += SStickersubsystems
+		I += ticker_subsystems
 
 	var/cached_runlevel = current_runlevel
 	var/list/current_runlevel_subsystems = runlevel_sorted_subsystems[cached_runlevel]
@@ -504,7 +504,7 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 			continue
 
 		// If we're fully initialized, run normal tick heuristics. Otherwise, always run every tick.
-		if (init_stage == INITSTAGE_MAX)
+		if (init_stage == INIT_STAGE_MAX)
 			/**
 			 * Anti-tick-contention heuristics:
 			 * If there are mutiple sleeping procs running before us hogging the cpu, we have to run later.
@@ -560,8 +560,8 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 				SS.next_fire = world.time + world.tick_lag * rand(0, DS2TICKS(min(SS.wait, 2 SECONDS)))
 
 		//* **Experimental**: Check every queue, every tick.
-		if (CheckQueue(current_runlevel_subsystems) <= 0 || CheckQueue(SStickersubsystems) <= 0)
-			if (!SoftReset(SStickersubsystems, runlevel_sorted_subsystems))
+		if (CheckQueue(current_runlevel_subsystems) <= 0 || CheckQueue(ticker_subsystems) <= 0)
+			if (!SoftReset(ticker_subsystems, runlevel_sorted_subsystems))
 				log_world("MC: SoftReset() failed, crashing")
 				return
 
@@ -577,7 +577,7 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 			if (RunQueue() <= 0) //error running queue
 				stack_trace("MC: RunQueue failed. Current error_level is [round(error_level, 0.25)]")
 				if (error_level > 1) //skip the first error,
-					if (!SoftReset(tickersubsystems, runlevel_sorted_subsystems))
+					if (!SoftReset(ticker_subsystems, runlevel_sorted_subsystems))
 						CRASH("MC: SoftReset() failed, exiting loop()")
 
 					if (error_level <= 2) //after 3 strikes stop incrmenting our iteration so failsafe enters defcon
@@ -600,7 +600,7 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 		src.sleep_delta = MC_AVERAGE_FAST(src.sleep_delta, sleep_delta)
 
 		// We're about to go to sleep. Set the tick budget for other sleeping procs.
-		if (init_stage != INITSTAGE_MAX)
+		if (init_stage != INIT_STAGE_MAX)
 			// Still initializing, allow up to 100% dilation (50% of normal FPS).
 			current_ticklimit = TICK_LIMIT_RUNNING * 2
 		else
