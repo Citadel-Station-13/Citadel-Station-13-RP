@@ -87,8 +87,10 @@ SUBSYSTEM_DEF(ai_movement)
 				if(reschedule_delay)
 					// eject; we don't change being_processed.ticking_(next|previous)
 					if(being_processed.movement_bucket_next == being_processed)
+						// this was the only holder in the bucket
 						buckets[bucket_offset] = null
 					else
+						// this was not the only holder in the bucket, stitch it back together after the ejection.
 						buckets[bucket_offset] = being_processed.movement_bucket_next
 						being_processed.movement_bucket_next.movement_bucket_prev = being_processed.movement_bucket_prev
 						being_processed.movement_bucket_prev.movement_bucket_next = being_processed.movement_bucket_next
@@ -106,7 +108,7 @@ SUBSYSTEM_DEF(ai_movement)
 						being_processed.movement_bucket_next = being_processed.movement_bucket_prev = being_processed
 					being_processed.movement_bucket_position = inject_offset
 				else
-					// get out
+					// get out if not rescheduling
 					unregister_moving(being_processed)
 			if(MC_TICK_CHECK)
 				break

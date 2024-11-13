@@ -11,8 +11,12 @@
 	/// bucket position
 	var/movement_bucket_position
 	/// last datum in bucket
+	///
+	/// * We are a circularly double-linked list. If we are the only one in the bucket, this is ourselves.
 	var/datum/ai_holder/movement_bucket_prev
 	/// next datum in bucket
+	///
+	/// * We are a circularly double-linked list. If we are the only one in the bucket, this is ourselves.
 	var/datum/ai_holder/movement_bucket_next
 	/// movement cycle
 	var/movement_cycle
