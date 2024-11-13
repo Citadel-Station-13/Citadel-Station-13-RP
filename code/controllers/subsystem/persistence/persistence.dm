@@ -31,7 +31,7 @@ SUBSYSTEM_DEF(persistence)
 	if(CONFIG_GET(flag/persistence))
 		load_the_world()
 
-	return ..()
+	return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/persistence/Shutdown()
 	SavePersistence()

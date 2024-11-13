@@ -21,19 +21,14 @@ SUBSYSTEM_DEF(gamemaster)
 	for(var/datum/gm_action/action in available_actions)
 		action.gm = src
 
-	var/config_setup_delay = TRUE
-	spawn(0)
-		while(config_setup_delay)
-			if(config)
-				config_setup_delay = FALSE
-				if(config_legacy.enable_game_master)
-					suspended = FALSE
-			else
-				sleep(30 SECONDS)
-	return ..()
+	if(!config_legacy.enable_game_master)
+		return SS_INIT_NO_NEED
+
+	suspended = FALSE
+	return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/gamemaster/fire(resumed)
-	if(SSticker && SSticker.current_state == GAME_STATE_PLAYING && !suspended)
+	if(SSticker?.current_state == GAME_STATE_PLAYING && !suspended)
 		adjust_staleness(1)
 		adjust_danger(-1)
 		ticks_completed++

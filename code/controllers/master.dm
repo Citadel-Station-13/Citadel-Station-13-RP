@@ -38,7 +38,8 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 	/// How long is the MC sleeping between runs, read only (set by Loop() based off of anti-tick-contention heuristics)
 	var/sleep_delta = 1
 
-	// skip_ticks would be here but we dont use it for bombs
+	/// Only run ticker subsystems for the next n ticks.
+	var/skip_ticks = 0
 
 	/// makes the mc main loop runtime
 	var/make_runtime = FALSE
@@ -52,7 +53,6 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 	var/datum/controller/subsystem/queue_tail //!End of queue linked list (used for appending to the list)
 	var/queue_priority_count = 0 //Running total so that we don't have to loop thru the queue each run to split up the tick
 	var/queue_priority_count_bg = 0 //Same, but for background subsystems
-	// var/map_loading = FALSE //!Are we loading in a new map?
 
 	var/current_runlevel //!for scheduling different subsystems for different stages of the round
 	var/sleep_offline_after_initializations = TRUE
@@ -513,23 +513,26 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 			new/datum/controller/failsafe() // (re)Start the failsafe.
 
 		//now do the actual stuff
-		var/checking_runlevel = current_runlevel
-		if(cached_runlevel != checking_runlevel)
-			//resechedule subsystems
-			var/list/old_subsystems = current_runlevel_subsystems
-			cached_runlevel = checking_runlevel
-			current_runlevel_subsystems = runlevel_sorted_subsystems[cached_runlevel]
+		if (!skip_ticks)
+			var/checking_runlevel = current_runlevel
+			if(cached_runlevel != checking_runlevel)
+				//resechedule subsystems
+				var/list/old_subsystems = current_runlevel_subsystems
+				cached_runlevel = checking_runlevel
+				current_runlevel_subsystems = runlevel_sorted_subsystems[cached_runlevel]
 
-			//now we'll go through all the subsystems we want to offset and give them a next_fire
-			for(var/datum/controller/subsystem/SS as anything in current_runlevel_subsystems)
-				//we only want to offset it if it's new and also behind
-				if(SS.next_fire > world.time || (SS in old_subsystems))
-					continue
-				SS.next_fire = world.time + world.tick_lag * rand(0, DS2TICKS(min(SS.wait, 2 SECONDS)))
+				//now we'll go through all the subsystems we want to offset and give them a next_fire
+				for(var/datum/controller/subsystem/SS as anything in current_runlevel_subsystems)
+					//we only want to offset it if it's new and also behind
+					if(SS.next_fire > world.time || (SS in old_subsystems))
+						continue
+					SS.next_fire = world.time + world.tick_lag * rand(0, DS2TICKS(min(SS.wait, 2 SECONDS)))
 
-		subsystems_to_check = current_runlevel_subsystems
+			subsystems_to_check = current_runlevel_subsystems
+		else
+			subsystems_to_check = tickersubsystems
 
-		if (CheckQueue(subsystems_to_check) <= 0 || CheckQueue(tickersubsystems) <= 0) //error processing queue
+		if (CheckQueue(subsystems_to_check) <= 0) //error processing queue
 			stack_trace("MC: CheckQueue failed. Current error_level is [round(error_level, 0.25)]")
 			if (!SoftReset(tickersubsystems, runlevel_sorted_subsystems))
 				error_level++
@@ -569,6 +572,8 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 
 		iteration++
 		last_run = world.time
+		if (skip_ticks)
+			skip_ticks--
 		src.sleep_delta = MC_AVERAGE_FAST(src.sleep_delta, sleep_delta)
 
 // Force any verbs into overtime, to test how they perfrom under load
@@ -654,7 +659,7 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 			queue_node_flags = queue_node.subsystem_flags
 			queue_node_priority = queue_node.queued_priority
 
-			if (!(queue_node_flags & SS_TICKER))
+			if (!(queue_node_flags & SS_TICKER) && skip_ticks)
 				queue_node = queue_node.queue_next
 				continue
 
@@ -798,6 +803,10 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 	log_world("MC: SoftReset: Finished.")
 	. = 1
 
+/// Warns us that the end of tick byond map_update will be laggier then normal, so that we can just skip running subsystems this tick.
+/datum/controller/master/proc/laggy_byond_map_update_incoming()
+	if (!skip_ticks)
+		skip_ticks = 1
 
 /datum/controller/master/stat_entry()
 	return "(TickRate:[Master.processing]) (Iteration:[Master.iteration]) (TickLimit: [round(Master.current_ticklimit, 0.1)])"
@@ -805,15 +814,11 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 
 /datum/controller/master/StartLoadingMap()
 	//disallow more than one map to load at once, multithreading it will just cause race conditions
-	// while(map_loading)
-	// 	stoplag()
 	for(var/S in subsystems)
 		var/datum/controller/subsystem/SS = S
 		SS.StartLoadingMap()
-	// map_loading = TRUE
 
 /datum/controller/master/StopLoadingMap(bounds = null)
-	// map_loading = FALSE
 	for(var/S in subsystems)
 		var/datum/controller/subsystem/SS = S
 		SS.StopLoadingMap()

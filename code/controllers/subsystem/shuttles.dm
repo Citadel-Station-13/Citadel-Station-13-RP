@@ -9,8 +9,8 @@ SUBSYSTEM_DEF(shuttle)
 	wait = 2 SECONDS
 	priority = FIRE_PRIORITY_SHUTTLES
 	init_order = INIT_ORDER_SHUTTLES
-	subsystem_flags = SS_KEEP_TIMING|SS_NO_TICK_CHECK
-	runlevels = RUNLEVEL_GAME|RUNLEVEL_POSTGAME
+	subsystem_flags = SS_KEEP_TIMING
+	runlevels = RUNLEVEL_GAME | RUNLEVEL_POSTGAME
 
 	/// Whether ships can move on the overmap; used for adminbus.
 	var/static/overmap_halted = FALSE
@@ -63,9 +63,10 @@ SUBSYSTEM_DEF(shuttle)
 	last_landmark_registration_time = world.time
 	block_init_queue = FALSE
 	process_init_queues()
-	return ..()
 
-/datum/controller/subsystem/shuttle/fire(resumed = 0)
+	return SS_INIT_SUCCESS
+
+/datum/controller/subsystem/shuttle/fire(resumed = FALSE)
 	if (!resumed)
 		src.current_run = process_shuttles.Copy()
 

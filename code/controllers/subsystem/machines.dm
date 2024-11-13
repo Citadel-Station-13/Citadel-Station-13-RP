@@ -45,7 +45,7 @@ SUBSYSTEM_DEF(machines)
 	report_progress("Initializing atmos machinery...")
 	setup_atmos_machinery(GLOB.machines)
 	fire()
-	return ..()
+	return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/machines/fire(resumed = 0)
 	var/timer = TICK_USAGE

@@ -45,7 +45,7 @@ SUBSYSTEM_DEF(ai_movement)
 	moving_ais = list()
 	rebuild()
 	init_ai_pathfinders()
-	return ..()
+	return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/ai_movement/on_ticklag_changed(old_ticklag, new_ticklag)
 	rebuild()

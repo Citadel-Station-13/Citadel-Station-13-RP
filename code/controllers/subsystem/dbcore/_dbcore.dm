@@ -1,7 +1,8 @@
 SUBSYSTEM_DEF(dbcore)
 	name = "Database"
-	subsystem_flags = SS_BACKGROUND
-	wait = 1 MINUTES
+	subsystem_flags = SS_TICKER
+	wait = 10 // Not seconds because we're running on SS_TICKER
+	runlevels = RUNLEVEL_LOBBY|RUNLEVELS_DEFAULT
 	init_order = INIT_ORDER_DBCORE
 	var/failed_connection_timeout = 0
 
@@ -26,7 +27,7 @@ SUBSYSTEM_DEF(dbcore)
 		if(2)
 			message_admins("Could not get schema version from database")
 
-	return ..()
+	return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/dbcore/fire()
 	for(var/I in active_queries)

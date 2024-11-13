@@ -13,7 +13,7 @@ SUBSYSTEM_DEF(preferences)
 	for(var/key in preferences_by_key)
 		var/datum/game_preferences/prefs = preferences_by_key[key]
 		prefs.initialize()
-	return ..()
+	return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/preferences/proc/resolve_preference_entry(datum/game_preference_entry/entrylike)
 	if(ispath(entrylike))

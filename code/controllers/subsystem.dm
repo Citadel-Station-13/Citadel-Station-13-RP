@@ -126,10 +126,6 @@
 	/// * this is pretty much time dilation for this subsystem
 	/// * this is based on wait time; e.g. 100% means we're running twice as slow, etc
 	var/tick_dilation_avg = 0
-	/// How much of a tick (in percents of a tick) were we allocated last fire.
-	var/tick_allocation_last = 0
-	/// How much of a tick (in percents of a tick) do we get allocated by the mc on avg.
-	var/tick_allocation_avg = 0
 
 	//Do not blindly add vars here to the bottom, put it where it goes above
 	//If your var only has two values, put it in as a flag.
@@ -172,7 +168,7 @@
 		var/full_run_took = world.time - last_fire
 		var/new_tick_dilation = (full_run_took / nominal_dt_ds) * 100 - 100
 		tick_dilation_avg = max(0, MC_AVERAGE_SLOW(tick_dilation_avg, new_tick_dilation))
-		last_fire = world.time
+		// last_fire = world.time
 
 ///previously, this would have been named 'process()' but that name is used everywhere for different things!
 ///fire() seems more suitable. This is the procedure that gets called every 'wait' deciseconds.
@@ -308,9 +304,9 @@
 
 /datum/controller/subsystem/stat_entry()
 	if(can_fire && !(SS_NO_FIRE & subsystem_flags) && init_stage <= Master.init_stage_completed)
-		. = "[round(cost,1)]ms|D:[round(tick_dilation_avg,1)]%|[round(tick_usage,1)]%([round(tick_overrun,1)]%)|[round(ticks,0.1)]\t"
+		. = "[round(cost,1)]ms|D:[round(tick_dilation_avg,1)]%|[round(tick_usage,1)]%([round(tick_overrun,1)]%)|[round(ticks,0.1)]&emsp;"
 	else
-		. = "OFFLINE\t"
+		. = "OFFLINE&emsp;"
 
 /datum/controller/subsystem/stat_key()
 	return can_fire? "\[[state_letter()]\][name]" : name

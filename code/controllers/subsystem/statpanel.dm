@@ -2,8 +2,10 @@ SUBSYSTEM_DEF(statpanels)
 	name = "Stat Panels"
 	wait = 4
 	init_order = INIT_ORDER_STATPANELS
+	init_stage = INITSTAGE_EARLY
 	priority = FIRE_PRIORITY_STATPANELS
 	runlevels = RUNLEVELS_DEFAULT | RUNLEVEL_LOBBY
+	subsystem_flags = SS_NO_INIT
 
 	//! ticking
 	/// current clients we're pushing to
@@ -34,15 +36,12 @@ SUBSYSTEM_DEF(statpanels)
 		cache_sdql_data = null
 		// reset currentrun
 		src.currentrun = GLOB.clients.Copy()
-	// go through clients
-	// cache for sanic speed
+
 	var/list/currentrun = src.currentrun
 	while(length(currentrun))
-		if(!no_tick_check && MC_TICK_CHECK)
-			return
 		// grab victim
 		var/client/player = currentrun[length(currentrun)]
-		--currentrun.len
+		currentrun.len--
 		// check if we're even on the js one
 		if(player.tgui_stat.byond_stat_active)
 			continue
@@ -66,10 +65,14 @@ SUBSYSTEM_DEF(statpanels)
 			server_data = fetch_mc_data()
 		if(player.statpanel_tab("Tickets", is_admin))
 			server_data = fetch_ticket_data()
-		if(player.statpanel_tab("SDQL2", is_admin && length(GLOB.sdql2_queries)))
+		// chk sdql query list since its slightly faster
+		if(length(GLOB.sdql2_queries) && player.statpanel_tab("SDQL2", is_admin))
 			server_data = fetch_sdql2_data()
 		// send additional
 		player << output("[server_data];[url_encode(json_encode(additional))]", "statbrowser:byond_update")
+
+		if(MC_TICK_CHECK)
+			return
 
 //? Cache generator procs
 //? Errors will cause JS panel error spam.
@@ -144,7 +147,6 @@ SUBSYSTEM_DEF(statpanels)
 		. += Q.generate_stat()
 	. = url_encode(json_encode(.))
 	cache_sdql_data = .
-
 /**
  * is this shitcode?
  * yes it is
@@ -154,6 +156,6 @@ SUBSYSTEM_DEF(statpanels)
  * tl;dr this ensures we push data while MC is initializing.
  */
 /datum/controller/subsystem/statpanels/proc/manual_ticking()
-	while(!Master.initialized)
+	while(!MC_RUNNING(INITSTAGE_MAIN)) // main gurantees ticking
 		fire(null, TRUE)
 		sleep(10)

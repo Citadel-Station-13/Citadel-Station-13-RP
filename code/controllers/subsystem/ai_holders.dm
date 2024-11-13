@@ -37,7 +37,7 @@ SUBSYSTEM_DEF(ai_holders)
 /datum/controller/subsystem/ai_holders/Initialize()
 	active_holders = list()
 	rebuild()
-	return ..()
+	return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/ai_holders/on_ticklag_changed(old_ticklag, new_ticklag)
 	rebuild()

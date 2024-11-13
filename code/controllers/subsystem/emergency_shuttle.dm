@@ -1,10 +1,10 @@
 SUBSYSTEM_DEF(emergencyshuttle)
 	name = "Emergency Shuttle"
 	wait = 20
+	subsystem_flags = SS_NO_INIT
 
-/datum/controller/subsystem/emergencyshuttle
 	var/datum/shuttle/autodock/ferry/emergency/shuttle	// Set in shuttle_emergency.dm TODO - is it really?
-	var/list/escape_pods
+	var/list/escape_pods = list()
 
 	var/launch_time			//the time at which the shuttle will be launched
 	var/auto_recall = 0		//if set, the shuttle will be auto-recalled
@@ -19,9 +19,6 @@ SUBSYSTEM_DEF(emergencyshuttle)
 	var/datum/legacy_announcement/priority/emergency_shuttle_docked = new(0, new_sound = sound('sound/AI/shuttledock.ogg'))
 	var/datum/legacy_announcement/priority/emergency_shuttle_called = new(0, new_sound = sound('sound/AI/shuttlecalled.ogg'))
 	var/datum/legacy_announcement/priority/emergency_shuttle_recalled = new(0, new_sound = sound('sound/AI/shuttlerecalled.ogg'))
-
-/datum/controller/subsystem/emergencyshuttle/PreInit(recovering)
-	escape_pods = list()
 
 /datum/controller/subsystem/emergencyshuttle/fire()
 	if (wait_for_launch)

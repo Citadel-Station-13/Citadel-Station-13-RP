@@ -2,6 +2,7 @@ SUBSYSTEM_DEF(input)
 	name = "Input"
 	wait = 0.25 // scale to 40 fps
 	init_order = INIT_ORDER_INPUT
+	init_stage = INITSTAGE_EARLY
 	subsystem_flags = NONE
 	priority = FIRE_PRIORITY_INPUT
 	runlevels = RUNLEVELS_DEFAULT | RUNLEVEL_LOBBY
@@ -27,7 +28,7 @@ SUBSYSTEM_DEF(input)
 	initialized = TRUE
 	refresh_client_macro_sets()
 
-	return ..()
+	return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/input/Recover()
 	initialized = SSinput.initialized

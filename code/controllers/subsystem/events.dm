@@ -20,7 +20,7 @@ SUBSYSTEM_DEF(events)
 	// unfortunately, character setup server startup hooks fire before /Initialize so :/
 	// SScharactersetup but not shit when :)
 	InitializeHolidays(force = TRUE)
-	return ..()
+	return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/events/Initialize()
 	SSticker.OnRoundstart(CALLBACK(src, PROC_REF(HolidayRoundstart)))

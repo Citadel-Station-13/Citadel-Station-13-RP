@@ -76,7 +76,7 @@ SUBSYSTEM_DEF(ticker)
 
 	start_at = world.time + (CONFIG_GET(number/lobby_countdown) * 10)
 
-	return ..()
+	return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/ticker/fire()
 	switch(current_state)

@@ -9,4 +9,4 @@ SUBSYSTEM_DEF(repository)
 /datum/controller/subsystem/repository/Initialize()
 	__create_repositories()
 	__init_repositories()
-	return ..()
+	return SS_INIT_SUCCESS

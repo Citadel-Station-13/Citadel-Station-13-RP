@@ -23,7 +23,7 @@ SUBSYSTEM_DEF(overlays)
 /datum/controller/subsystem/overlays/Initialize()
 	overlays_initialized = TRUE
 	Flush()
-	..()
+	return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/overlays/Shutdown()
 	text2file(render_stats(stats), "[GLOB.log_directory]/overlay.log")

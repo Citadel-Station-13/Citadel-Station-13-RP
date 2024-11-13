@@ -9,19 +9,27 @@
 SUBSYSTEM_DEF(playtime)
 	name = "Playtime"
 	wait = 10 MINUTES
-	subsystem_flags = SS_NO_TICK_CHECK
+	subsystem_flags = SS_NO_INIT
+	var/list/currentrun
 
 /datum/controller/subsystem/playtime/Shutdown()
 	flush_playtimes()
 	return ..()
 
-/datum/controller/subsystem/playtime/fire(resumed)
-	for(var/client/C in GLOB.clients)
+/datum/controller/subsystem/playtime/fire(resumed = FALSE)
+	if (!resumed)
+		src.currentrun = GLOB.clients.Copy()
+		flush_playtimes() // this is delayed by one loop cycle
+
+	var/list/currentrun = src.currentrun
+	for(var/I in currentrun)
+		var/client/C = I
 		if(!C.initialized)
 			continue
 		queue_playtimes(C)
-		CHECK_TICK
-	flush_playtimes()
+
+		if (MC_TICK_CHECK)
+			return
 
 /datum/controller/subsystem/playtime/proc/flush_playtimes()
 	if(!SSdbcore.Connect())

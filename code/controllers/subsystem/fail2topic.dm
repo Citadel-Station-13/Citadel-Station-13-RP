@@ -27,8 +27,9 @@ SUBSYSTEM_DEF(fail2topic)
 	if(!enabled)
 		subsystem_flags |= SS_NO_FIRE
 		can_fire = FALSE
+		return SS_INIT_NO_NEED
 
-	return ..()
+	return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/fail2topic/fire()
 	if(length(rate_limiting))

@@ -1,5 +1,6 @@
 SUBSYSTEM_DEF(nanoui)
 	name = "NanoUI"
+	subsystem_flags = SS_NO_INIT
 	priority = FIRE_PRIORITY_NANO
 	wait = 7
 

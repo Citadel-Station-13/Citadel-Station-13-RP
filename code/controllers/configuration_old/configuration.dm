@@ -49,7 +49,6 @@
 	var/continous_rounds = 0			// Gamemodes which end instantly will instead keep on going until the round ends by escape shuttle or nuke.
 	var/popup_admin_pm = 0				//adminPMs to non-admins show in a pop-up 'reply' window when set to 1.
 	var/fps = 20
-	var/tick_limit_mc_init = TICK_LIMIT_MC_INIT_DEFAULT	//SSinitialization throttling
 	var/Tickcomp = 0
 	var/socket_talk	= 0					// use socket_talk to communicate with other processes
 	var/list/resource_urls = null
@@ -584,9 +583,6 @@
 					var/ticklag = text2num(value)
 					if(ticklag > 0)
 						fps = 10 / ticklag
-
-				if("tick_limit_mc_init")
-					tick_limit_mc_init = text2num(value)
 
 				if("allow_antag_hud")
 					config_legacy.antag_hud_allowed = 1

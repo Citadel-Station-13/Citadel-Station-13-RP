@@ -49,7 +49,7 @@ SUBSYSTEM_DEF(assets)
 		instance.load()
 #endif
 
-	return ..()
+	return SS_INIT_SUCCESS
 
 /**
  * register an asset pack to make it able to be resolved or loaded

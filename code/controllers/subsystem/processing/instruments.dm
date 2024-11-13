@@ -14,7 +14,7 @@ PROCESSING_SUBSYSTEM_DEF(instruments)
 
 /datum/controller/subsystem/processing/instruments/Initialize()
 	initialize_instrument_data()
-	return ..()
+	return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/processing/instruments/proc/on_song_new(datum/song/S)
 	songs += S
