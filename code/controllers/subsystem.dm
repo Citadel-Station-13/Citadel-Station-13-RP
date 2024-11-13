@@ -1,11 +1,11 @@
 /**
- * Sorts subsystems alphabetically.
+ * Sorts subsystems for display (alphabetically).
  */
 /proc/cmp_subsystem_display(datum/controller/subsystem/a, datum/controller/subsystem/b)
 	return sorttext(b.name, a.name)
 
 /**
- * Sorts subsystems by init_order.
+ * Sorts subsystems by init_order and init_stage.
  */
 /proc/cmp_subsystem_init(datum/controller/subsystem/a, datum/controller/subsystem/b)
 	// Uses initial() so it can be used on types.
@@ -14,7 +14,9 @@
 	return initial(b.init_order) - initial(a.init_order)
 
 /**
- * Sorts subsystems by priority.
+ * Sorts subsystems by priority, from lowest to highest.
+ *
+ * * This does not take into account SS_BACKGROUND and SS_TICKER flags!
  */
 /proc/cmp_subsystem_priority(datum/controller/subsystem/a, datum/controller/subsystem/b)
 	return a.priority - b.priority
@@ -26,6 +28,15 @@
  *
  * Simply define a child of this subsystem, using the [SUBSYSTEM_DEF] macro, and the MC will handle registration.
  * Changing the name is required.
+ *
+ * ## Sleeping
+ *
+ * If a subsystem sleeps during a tick, it is very, very bad.
+ *
+ * * Sleeping orphans the subsystem's call stack from the MC's. The MC  is no longer able to control the subsystem's tick usage.
+ * * Sleeping is handled, but not supported. This means the MC won't crash / do anything nasty, but normal timing will nonetheless
+ *   be problematic.
+ * * Sleeping causes things like paused tick tracking to go out of wack.
  */
 /datum/controller/subsystem
 	//# Metadata; you should define these.
@@ -133,6 +144,9 @@
 	var/times_fired = 0
 
 	/// Time the subsystem entered the queue, (for timing and priority reasons).
+	///
+	/// * This doesn't take into account pauses and sleeps. queued_time is the time it was initially put into queue
+	///   for a full firing cycle.
 	var/queued_time = 0
 
 	/**
@@ -238,13 +252,14 @@
 	// If the MC detected we are sleeping, set back to idle now that we're done sleeping.
 	if (state == SS_SLEEPING)
 		state = SS_IDLE
-	// If we're pausing, re-queue us for the next cycle.
-	// This can interact weirdly with sleeps.
 	if (state == SS_PAUSING)
-		var/QT = queued_time
-		enqueue()
 		state = SS_PAUSED
-		queued_time = QT
+		//! HACK: if we are not queued, queue us
+		//        this is to handle pausing during sleep.
+		//        normally, the MC does not eject us if we are pausing.
+		//        a sleep, however, is not considered a pause.
+		if(!queued_time)
+			enqueue()
 	else
 		// track time between runs
 		var/full_run_took = world.time - last_fire
@@ -268,6 +283,33 @@
 	if (Master)
 		Master.subsystems -= src
 	return ..()
+
+/**
+ * Updates `next_fire` for the next run.
+ *
+ * @params
+ * * reset_time - Entirely reset the subsystem's stateful time tracking including tick-overrun, post fire timing, etc.
+ */
+/datum/controller/subsystem/proc/update_nextfire(reset_time)
+	if(reset_time)
+		next_fire = (subsystem_flags & SS_TICKER) ? (world.time + (world.tick_lag * wait)) : (world.time + wait)
+		return
+
+	var/queue_node_flags = subsystem_flags
+
+	if (queue_node_flags & SS_TICKER)
+		// ticker: run this many ticks after always
+		next_fire = world.time + (world.tick_lag * wait)
+	else if (queue_node_flags & SS_POST_FIRE_TIMING)
+		// post fire timing: fire this much wait after current time, with tick overrun punishment
+		next_fire = world.time + wait + (world.tick_lag * (tick_overrun / 100))
+	else if (queue_node_flags & SS_KEEP_TIMING)
+		// keep timing: fire this much wait after *the last time we should have fired*, without tick overrun punishment
+		// **experimental**: do not keep timing past last 10 seconds, if something is running behind that much don't permanently accelerate it.
+		next_fire = max(world.time - 10 SECONDS, next_fire + wait)
+	else
+		// normal: fire this much wait after when we were queued, with tick overrun punishment
+		next_fire = queued_time + wait + (world.tick_lag * (tick_overrun / 100))
 
 /**
  * Queue it to run.
@@ -361,7 +403,6 @@
 	switch(state)
 		if(SS_RUNNING)
 			state = SS_PAUSED
-
 		if(SS_SLEEPING)
 			state = SS_PAUSING
 

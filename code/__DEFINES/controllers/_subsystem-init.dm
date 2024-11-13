@@ -36,6 +36,7 @@
 //* Early *//
 
 #define INIT_ORDER_EARLY_INIT      200
+#define INIT_ORDER_INPUT           170
 #define INIT_ORDER_PREFERENCES     150
 #define INIT_ORDER_JOBS            125
 #define INIT_ORDER_ASSETS          100
@@ -46,9 +47,6 @@
 
 //* World *//
 
-#define INIT_ORDER_IPINTEL         197
-
-#define INIT_ORDER_INPUT           160
 #define INIT_ORDER_CHARACTERS      140
 #define INIT_ORDER_SOUNDS          130
 #define INIT_ORDER_GARBAGE         120
