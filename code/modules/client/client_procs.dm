@@ -196,6 +196,12 @@
 	GLOB.clients += src
 	GLOB.directory[ckey] = src
 
+	//* Create critical UI *//
+	// Instantiate statpanel
+	tgui_stat = new(src, SKIN_BROWSER_ID_STAT)
+	// Instantiate tgui panel
+	tgui_panel = new(src, SKIN_BROWSER_ID_CHAT)
+
 	//* record their existence (tm)
 	// log & lookup updates
 	var/full_version = "[byond_version].[byond_build ? byond_build : "xxx"]"
@@ -223,10 +229,6 @@
 
 	//* Create UI *//
 	// todo: move top level menu here, for now it has to be under prefs.
-	// Instantiate statpanel
-	tgui_stat = new(src, SKIN_BROWSER_ID_STAT)
-	// Instantiate tgui panel
-	tgui_panel = new(src, SKIN_BROWSER_ID_CHAT)
 	// Instantiate cutscene system
 	spawn(1)
 		init_cutscene_system()
