@@ -272,42 +272,44 @@
 	short_name = "Nanotrasen "
 	acronym = "NT"
 	desc = "Nanotrasen is one of the foremost research and development companies in the galaxy. \
-	Originally focused on consumer products, their swift move into the field of Phoron has lead to \
+	Originally focused on logistics, their swift move into the field of Phoron has lead to \
 	them being the foremost experts on the substance and its uses. In the modern day, Nanotrasen prides \
-	itself on being an early adopter to as many new technologies as possible, often offering the newest \
+	itself on being an early adopter to many new technologies, often offering the newest \
 	products to their employees. In an effort to combat complaints about being 'guinea pigs', Nanotrasen \
-	also offers one of the most comprehensive medical plans in Frontier space, up to and including cloning, \
-	dedicated resleeving, mirror maintenance, and therapy.\
+	also offers one of the most comprehensive medical plans in Frontier space, up to and including, \
+	resleeving, mirror maintenance and therapy.\
 	<br><br>\
 	NT's most well known products are its phoron based creations, especially those used in Cryotherapy. \
 	It also boasts an prosthetic line, which is provided to its employees as needed, and is used as an incentive \
 	for newly tested posibrains to remain with the company."
 	work = "research giant"
-	headquarters = "Creon, Thebes"
+	headquarters = "NCS Creon, Thebes"
 	fleet = TRUE
 
 	org_type = "corporate"
 
-	ship_prefixes = list("NTV" = "a general operations", "NEV" = "an exploration", "NSV" = "a research", "NGV" = "a hauling", "NDV" = "a patrol", "NRV" = "an emergency response", "NDV" = "an asset protection")
+	ship_prefixes = list("NEV" = "an exploration", "NSV" = "a research", "NLV" = "a logistics", "NTV" = "a transport", "NDV" = "a patrol", "NRV" = "an emergency response", "NDV" = "an asset protection")
 	/// Scientist naming scheme
 	ship_names = list(
 		"Bardeen", "Einstein", "Feynman", "Sagan", "Tyson",	"Galilei",
 		"Jans",	"Fhriede", "Franklin", "Tesla", "Curie", "Darwin",
 		"Newton", "Pasteur", "Bell", "Mendel", "Kepler", "Edison",
-		"Cavendish", "Nye", "Hawking", "Aristotle", "Von Braun", "Kaku",
+		"Cavendish", "Planck", "Hawking", "Aristotle", "Von Braun", "Kaku",
 		"Oppenheimer", "Renwick", "Hubble", "Alcubierre", "Robineau", "Glass",
 		"Curiosity", "Voyager", "Perseverance", "Once More With Feeling",
 		"Pretty Boy", "Whiskey Ring", "Uranus", "Chappaquiddick", "Dead Ringer",
 		"Watershed", "Zeus", "Defiant","Firefly", "Screaming Gale", "Gee Golly",
-		"Star Drifter", "Albatross", "Hawk", "Falcon", "Mule", "Caravel", "Galleon",
-		"Atlas", "Conestoga", "Endurance", "Donkey", "Grand Duke", "Prince", "Princess")
+		"Star Drifter", "Albatross", "Hawk", "Falcon", "Starship", "Caravel", "Galleon",
+		"Euler", "Conestoga", "Endurance", "Turing", "Grand Duke", "Prince", "Princess")
 	/// Note that the current station being used will be pruned from this list upon being instantiated
 	destination_names = list(
 		"NT HQ", "NSS Exodus in Nyx", "NCS Northern Star in Vir",
-		"NLS Southern Cross in Vir", "NAS Vir Central Command",
+		"NLS Southern Cross in Vir", "NLB Cheyenne in Tau Ceti",
+		"NCS Trifid in Upsilon Aurigae", "NSS Ohm in Hallen's Crossing",
+		"NCS Sapphire in Menkar", "NCV Wraith in frontier space",
 		"a dockyard orbiting Sif", "an asteroid orbiting Kara",
 		"an asteroid orbiting Rota", "Vir Interstellar Spaceport",
-		"NSB Adephagia","Ishtar Sector")
+		"NSB Adephagia in Virgo-Erigone")
 
 /datum/lore/organization/tsc/nanotrasen/New()
 	..()
