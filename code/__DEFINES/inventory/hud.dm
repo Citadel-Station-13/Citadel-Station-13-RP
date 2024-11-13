@@ -1,6 +1,8 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
+//? HUD screen_loc's are in code/__DEFINES/screen.dm ?//
+
 //* inventory_hud_anchor *//
 
 /// anchor to the main inventory drawer

@@ -32,7 +32,6 @@
 	dark_slowdown = 3
 	snow_movement  = -2 // Ignore light snow
 	water_movement = -4 // Ignore shallow water
-	hud_type = /datum/hud_data/diona
 	siemens_coefficient = 0.3
 	show_ssd = "completely quiescent"
 	health_hud_intensity = 2.5

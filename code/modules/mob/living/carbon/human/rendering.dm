@@ -838,6 +838,7 @@
 	inventory.update_slot_render(SLOT_ID_BACK)
 
 /mob/living/carbon/human/update_inv_handcuffed()
+	inventory.on_handcuffed_update()
 	inventory.update_slot_render(SLOT_ID_HANDCUFFED)
 
 /mob/living/carbon/human/update_inv_legcuffed()
