@@ -27,9 +27,6 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 	/// How many times have we ran?
 	var/iteration = 0
 
-	/// Are we initialized?
-	var/initialized = FALSE
-
 	/// world.time of last fire, for tracking lag outside of the mc.
 	var/last_run
 
@@ -47,21 +44,31 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 	/// Makes the mc main loop runtime.
 	var/make_runtime = FALSE
 
-	var/initializations_finished_with_no_players_logged_in // I wonder what this could be?
-
 	/// The type of the last subsystem to be process()'d.
 	var/last_type_processed
 
 	/// For scheduling different subsystems for different stages of the round.
 	var/current_runlevel
 
-	var/sleep_offline_after_initializations = TRUE
 
 	var/static/restart_clear = 0
 	var/static/restart_timeout = 0
 	var/static/restart_count = 0
 
 	var/static/random_seed
+
+	//*            Iniitialization             *//
+
+	/// The subsystem currently being initialized.
+	var/datum/controller/subsystem/current_initializing_subsystem
+	/// Are we initialized? This means all subsystems have been initialized.
+	var/initialized = FALSE
+	/// Set if it is specified to pause the world while no one is logged in after initializations, and we did pause.
+	var/initializations_finished_with_no_players_logged_in
+	/// Set to determine if we should sleep offline after initializations if no one is connected.
+	///
+	/// * This is turned off by unit tests automatically.
+	var/sleep_offline_after_initializations = TRUE
 
 	//*               Global State             *//
 	//* These are tracked through MC restarts. *//

@@ -1,4 +1,25 @@
 /**
+ * Sorts subsystems alphabetically.
+ */
+/proc/cmp_subsystem_display(datum/controller/subsystem/a, datum/controller/subsystem/b)
+	return sorttext(b.name, a.name)
+
+/**
+ * Sorts subsystems by init_order.
+ */
+/proc/cmp_subsystem_init(datum/controller/subsystem/a, datum/controller/subsystem/b)
+	// Uses initial() so it can be used on types.
+	if(a.init_stage != b.init_stage)
+		return initial(a.init_stage) - initial(b.init_stage)
+	return initial(b.init_order) - initial(a.init_order)
+
+/**
+ * Sorts subsystems by priority.
+ */
+/proc/cmp_subsystem_priority(datum/controller/subsystem/a, datum/controller/subsystem/b)
+	return a.priority - b.priority
+
+/**
  * # Subsystem base class
  *
  * Defines a subsystem to be managed by the [Master Controller][/datum/controller/master]
@@ -351,17 +372,27 @@
 	return can_fire? "\[[state_letter()]\][name]" : name
 
 /datum/controller/subsystem/proc/state_letter()
-	switch (state)
-		if (SS_RUNNING)
-			. = "R"
-		if (SS_QUEUED)
-			. = "Q"
-		if (SS_PAUSED, SS_PAUSING)
-			. = "P"
-		if (SS_SLEEPING)
-			. = "S"
-		if (SS_IDLE)
-			. = "  "
+	if(Master.initialized)
+		switch (state)
+			if (SS_RUNNING)
+				. = "R"
+			if (SS_QUEUED)
+				. = "Q"
+			if (SS_PAUSED, SS_PAUSING)
+				. = "P"
+			if (SS_SLEEPING)
+				. = "S"
+			if (SS_IDLE)
+				. = "  "
+	else
+		if(subsystem_flags & SS_NO_INIT)
+			. = "-"
+		if(src == Master.current_initializing_subsystem)
+			. = "I"
+		else if(initialized)
+			. = "D"
+		else
+			. = "W"
 
 /**
  * Could be used to postpone a costly subsystem for (default one) var/cycles, cycles.

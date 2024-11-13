@@ -8,7 +8,7 @@
 SUBSYSTEM_DEF(spatial_grids)
 	name = "Spatial Grids"
 	init_order = INIT_ORDER_SPATIAL_GRIDS
-	init_stage = INIT_STAGE_EARLY
+	init_stage = INIT_STAGE_WORLD
 	subsystem_flags = SS_NO_FIRE
 
 	/// /living mobs. they don't have to be alive, just a subtype of /living.

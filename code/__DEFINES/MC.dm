@@ -1,3 +1,8 @@
+/**
+ * This file (and its -dash files) is called MC, but actually holds quite a lot of logic including init orders
+ * and subsystems as the MC and subsystems make up the global orchestration system of the codebase.
+ */
+
 #define MC_TICK_CHECK ( ( TICK_USAGE > Master.current_ticklimit || src.state != SS_RUNNING ) ? pause() : 0 )
 #define MC_TICK_CHECK_USAGE ( ( TICK_USAGE > Master.current_ticklimit ) ? pause() : 0 )
 
@@ -38,24 +43,6 @@
 /// We want the MC to exit.
 #define MC_LOOP_RTN_GRACEFUL_EXIT 2
 
-//*                                  Initialization Stages                                           *//
-//* After each stage, the MC starts ticking that stage while later stages are still waiting to init. *//
-//*      MC init stages must be a positive number, and init stages must all be consequetive!         *//
-
-/// Early initializations required for server function; database, timers, tgui, etc
-#define INIT_STAGE_BACKEND 1
-/// Pre-mapload initializations
-#define INIT_STAGE_EARLY 2
-/// Mapload
-#define INIT_STAGE_WORLD 3
-/// Late
-#define INIT_STAGE_LATE 4
-
-/// Last init stage we need to do.
-///
-/// * This must be set to the maximum INIT_STAGE.
-#define INIT_STAGE_MAX 4
-
 //! SubSystem flags (Please design any new flags so that the default is off, to make adding flags to subsystems easier)
 
 /**
@@ -63,6 +50,7 @@
  *
  * * The subsystem will still fire when its init stage is completed, unless it is
  *   marked with [SS_NO_FIRE] or its `can_fire` is set to FALSE.
+ * * The subsystem will not have its `initialized` variable set to TRUE.
  */
 #define SS_NO_INIT (1<<0)
 
