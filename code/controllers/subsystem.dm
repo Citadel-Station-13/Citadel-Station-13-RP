@@ -1,11 +1,11 @@
 /**
-	* # Subsystem base class
-	*
-	* Defines a subsystem to be managed by the [Master Controller][/datum/controller/master]
-	*
-	* Simply define a child of this subsystem, using the [SUBSYSTEM_DEF] macro, and the MC will handle registration.
-	* Changing the name is required
-**/
+ * # Subsystem base class
+ *
+ * Defines a subsystem to be managed by the [Master Controller][/datum/controller/master]
+ *
+ * Simply define a child of this subsystem, using the [SUBSYSTEM_DEF] macro, and the MC will handle registration.
+ * Changing the name is required
+ */
 
 /datum/controller/subsystem
 	// Metadata; you should define these.
@@ -250,15 +250,15 @@
 		Master.queue_priority_count += SS_priority
 
 	queue_next = queue_node
-	if (!queue_node)//we stopped at the end, add to tail
+	if (!queue_node) // We stopped at the end, add to tail.
 		queue_prev = Master.queue_tail
 		if (Master.queue_tail)
 			Master.queue_tail.queue_next = src
-		else //empty queue, we also need to set the head
+		else // Empty queue, we also need to set the head.
 			Master.queue_head = src
 		Master.queue_tail = src
 
-	else if (queue_node == Master.queue_head)//insert at start of list
+	else if (queue_node == Master.queue_head) // Insert at start of list.
 		Master.queue_head.queue_prev = src
 		Master.queue_head = src
 		queue_prev = null
@@ -266,7 +266,6 @@
 		queue_node.queue_prev.queue_next = src
 		queue_prev = queue_node.queue_prev
 		queue_node.queue_prev = src
-
 
 /datum/controller/subsystem/proc/dequeue()
 	if (queue_next)

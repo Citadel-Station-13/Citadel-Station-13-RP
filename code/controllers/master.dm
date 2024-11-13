@@ -274,7 +274,7 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 
 
 	if(world.system_type == MS_WINDOWS && CONFIG_GET(flag/toast_notification_on_init) && !length(GLOB.clients))
-		world.shelleo("start /min powershell -ExecutionPolicy Bypass -File tools/initToast/initToast.ps1 -name \"[world.name]\" -icon %CD%\\icons\\ui_icons\\common\\tg_16.png -port [world.port]")
+		world.shelleo("start /min powershell -ExecutionPolicy Bypass -File tools/initToast/initToast.ps1 -name \"[world.name]\" -icon %CD%\\icons\\CS13_16.png -port [world.port]")
 
 	// Set world options.
 	world.set_fps(config_legacy.fps)
@@ -397,10 +397,10 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 // Main loop.
 /datum/controller/master/proc/Loop(init_stage)
 	. = -1
-	//Prep the loop (most of this is because we want MC restarts to reset as much state as we can, and because
+	// Prep the loop (most of this is because we want MC restarts to reset as much state as we can, and because
 	// local vars rock
 
-	//all this shit is here so that flag edits can be refreshed by restarting the MC. (and for speed)
+	// All this shit is here so that flag edits can be refreshed by restarting the MC. (and for speed)
 	var/list/tickersubsystems = list()
 	var/list/runlevel_sorted_subsystems = list(list()) //ensure we always have at least one runlevel
 	var/timer = world.time
@@ -739,7 +739,7 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 
 			queue_node.queued_time = 0
 
-			//remove from queue
+			// Remove from queue.
 			queue_node.dequeue()
 
 			queue_node = queue_node.queue_next
