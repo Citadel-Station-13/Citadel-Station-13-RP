@@ -99,6 +99,10 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 	var/static/current_ticklimit = TICK_LIMIT_RUNNING
 
 /datum/controller/master/New()
+	// Do not contaminate `usr`; if this is set, the MC main loop will have the usr of whoever called it,
+	// which results in all procs called by the MC inheriting that usr.
+	usr = null
+
 	//# 1. load configs
 	if(!config_legacy)
 		load_configuration()
@@ -170,9 +174,6 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
  * - -1 If we encountered a runtime trying to recreate it.
  */
 /proc/Recreate_MC()
-	// Do not contaminate `usr`; if this is set, the MC main loop will have the usr of whoever called it,
-	// which results in all procs called by the MC inheriting that usr.
-	usr = null
 	. = MC_RESTART_RTN_FAILED // So if we runtime, things know we failed.
 	if (world.time < Master.restart_timeout)
 		return MC_RESTART_RTN_COOLDOWN
@@ -364,7 +365,7 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 			message_prefix = "Failed to initialize [subsystem.name] subsystem after"
 			tell_everyone = TRUE
 			chat_warning = TRUE
-			// Since this is an explicit failure, shut its ticking off.
+			// Since this is an explicit failure, shut its ticking off. We also will not set its initialized variable.
 			subsystem.subsystem_flags |= SS_NO_FIRE
 		if(SS_INIT_NONE)
 			message_prefix = "Initialized [subsystem.name] subsystem with errors within"

@@ -30,6 +30,8 @@
 /// Optional argument init_stage controls what stage the mc must have initializted to count as initialized. Defaults to INITSTAGE_MAX if not specified.
 #define MC_RUNNING(INIT_STAGE...) (Master && Master.processing > 0 && Master.current_runlevel && Master.init_stage_completed == (max(min(INIT_STAGE_MAX, ##INIT_STAGE), 1)))
 /// Returns true if the MC is at atleast a given init stage. Defaults to fully initialized.
+///
+/// * This does not check anything else about the MC, including if it's actually running.
 #define MC_INITIALIZED(INIT_STAGE...) (Master?.init_stage_completed >= max(INIT_STAGE_MAX, ##INIT_STAGE))
 
 //*                               Recreate_MC() return values                                        *//

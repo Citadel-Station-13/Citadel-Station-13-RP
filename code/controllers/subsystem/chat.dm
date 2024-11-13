@@ -10,6 +10,7 @@ SUBSYSTEM_DEF(chat)
 	runlevels = RUNLEVELS_ALL
 	priority = FIRE_PRIORITY_CHAT
 	init_order = INIT_ORDER_CHAT
+	init_stage = INIT_STAGE_LATE
 
 	var/list/payload_by_client = list()
 

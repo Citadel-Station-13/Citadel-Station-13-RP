@@ -85,10 +85,10 @@
 #define INIT_ORDER_XENOARCH       -50
 #define INIT_ORDER_CIRCUIT        -60
 #define INIT_ORDER_AI             -70
-#define INIT_ORDER_CHAT           -100  //! Should be last to ensure chat remains smooth during init.
 
 //* Late *//
 
 #define INIT_ORDER_OVERLAY               200
 #define INIT_ORDER_TITLESCREEN           150
 #define INIT_ORDER_NIGHTSHIFT            75
+#define INIT_ORDER_CHAT                 -100  //! Should be last to ensure chat remains smooth during init.

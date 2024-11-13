@@ -57,6 +57,7 @@
 	 * This variable is set to TRUE after the subsystem has been initialized.
 	 *
 	 * * If this subsystem is marked as SS_NO_FIRE, this still will be set to TRUE. We just won't call Initialize().
+	 * * This will remain FALSE if initialization is an explicit failure.
 	 */
 	var/initialized = FALSE
 
