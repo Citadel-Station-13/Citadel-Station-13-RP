@@ -21,7 +21,8 @@
 
 /obj/structure/flora/tree/fey/large_tree
 	icon = 'code/game/content/factions/fey_forest/fey_forest.dmi/fey_trees.dmi'
-	pixel_x = -16
+	pixel_x = -49
+	pixel_y = -19
 	bounds = "16,16"
 	name = "Large Tree"
 	desc = "A large tree that extends into the sky, joining with the gargantuan canopy. Looks too thick to reasonably cut down."
@@ -51,6 +52,7 @@
 
 /obj/structure/flora/tree/fey/small_tree
 	icon = 'code/game/content/factions/fey_forest/fey_forest.dmi/fey_trees_small.dmi'
+	pixel_x = -25
 	bounds = "16,16"
 	name = "Small Tree"
 	desc = "A small tree, compared to the others atleast. Despite its height, its trunk is far too thick to cut down."
