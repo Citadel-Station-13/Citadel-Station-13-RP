@@ -255,8 +255,8 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 
 	// We want to initialize subsystems by stage, in the init_order provided for subsystems within the same stage.
 	init_stage_completed = 0
-	var/list/stage_sorted_subsystems = new(MC_INIT_STAGE_MAX)
-	for(var/i in 1 to MC_INIT_STAGE_MAX)
+	var/list/stage_sorted_subsystems = new(INIT_STAGE_MAX)
+	for(var/i in 1 to INIT_STAGE_MAX)
 		stage_sorted_subsystems[i] = list()
 
 	// Sort subsystems by init_order, so they initialize in the correct order.
@@ -265,9 +265,9 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 	// Collect subsystems by init_stage. This has precedence over init_order.
 	for(var/datum/controller/subsystem/subsystem as anything in subsystems)
 		var/subsystem_init_stage = subsystem.init_stage
-		if (!isnum(subsystem_init_stage) || subsystem_init_stage < 1 || subsystem_init_stage > MC_INIT_STAGE_MAX || round(subsystem_init_stage) != subsystem_init_stage)
-			stack_trace("ERROR: MC: subsystem `[subsystem.type]` has invalid init_stage: `[subsystem_init_stage]`. Setting to `[MC_INIT_STAGE_MAX]`")
-			subsystem_init_stage = subsystem.init_stage = MC_INIT_STAGE_MAX
+		if (!isnum(subsystem_init_stage) || subsystem_init_stage < 1 || subsystem_init_stage > INIT_STAGE_MAX || round(subsystem_init_stage) != subsystem_init_stage)
+			stack_trace("ERROR: MC: subsystem `[subsystem.type]` has invalid init_stage: `[subsystem_init_stage]`. Setting to `[INIT_STAGE_MAX]`")
+			subsystem_init_stage = subsystem.init_stage = INIT_STAGE_MAX
 		stage_sorted_subsystems[subsystem_init_stage] += subsystem
 
 	// Sort subsystems by display setting for easy access.
@@ -352,7 +352,8 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 			message_prefix = "Failed to initialize [subsystem.name] subsystem after"
 			tell_everyone = TRUE
 			chat_warning = TRUE
-			subsystem.initialized = FALSE
+			// Since this is an explicit failure, shut its ticking off.
+			subsystem.subsystem_flags |= SS_NO_FIRE
 		if(SS_INIT_NONE)
 			message_prefix = "Initialized [subsystem.name] subsystem with errors within"
 			tell_everyone = TRUE
@@ -435,7 +436,7 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 		if(SS.subsystem_flags & SS_NO_FIRE)
 			continue
 		// Skip those that are after our init stage, or are not initialized.
-		if(SS.init_stage > init_stage || !SS.initialized)
+		if(SS.init_stage > init_stage)
 			continue
 
 		SS.queued_time = 0

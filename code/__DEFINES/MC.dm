@@ -43,27 +43,35 @@
 //*      MC init stages must be a positive number, and init stages must all be consequetive!         *//
 
 /// Early initializations required for server function; database, timers, tgui, etc
-#define MC_INIT_STAGE_BACKEND 1
+#define INIT_STAGE_BACKEND 1
 /// Pre-mapload initializations
-#define MC_INIT_STAGE_EARLY 2
+#define INIT_STAGE_EARLY 2
 /// Mapload
-#define MC_INIT_STAGE_WORLD 3
+#define INIT_STAGE_WORLD 3
 /// Late
-#define MC_INIT_STAGE_LATE 4
+#define INIT_STAGE_LATE 4
 
 /// Last init stage we need to do.
 ///
 /// * This must be set to the maximum INIT_STAGE.
-#define MC_INIT_STAGE_MAX 4
+#define INIT_STAGE_MAX 4
 
 //! SubSystem flags (Please design any new flags so that the default is off, to make adding flags to subsystems easier)
 
-/// subsystem does not initialize.
+/**
+ * Subsystem does not need Initialize() called.
+ *
+ * * The subsystem will still fire when its init stage is completed, unless it is
+ *   marked with [SS_NO_FIRE] or its `can_fire` is set to FALSE.
+ */
 #define SS_NO_INIT (1<<0)
 
-/** subsystem does not fire. */
-/// (like can_fire = 0, but keeps it from getting added to the processing subsystems list)
-/// (Requires a MC restart to change)
+/**
+ * Subsystem does not need fire() called / does not require scheduling and ticking.
+ *
+ * * This is exactly like setting `can_fire` to FALSE, but is permanent without a MC restart.
+ * * Use for subsystems that will never require processing, rather than one that needs it turned off and on now and then.
+ */
 #define SS_NO_FIRE (1<<1)
 
 /** subsystem only runs on spare cpu (after all non-background subsystems have ran that tick) */

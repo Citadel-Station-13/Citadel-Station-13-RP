@@ -5,13 +5,14 @@ SUBSYSTEM_DEF(lobby)
 	name = "Lobby Manager"
 	subsystem_flags = SS_NO_FIRE
 	init_order = INIT_ORDER_LOBBY
+	init_stage = INIT_STAGE_EARLY
 
 	/// our titlescreen
 	var/datum/cutscene/titlescreen
 
 /datum/controller/subsystem/lobby/Initialize()
 	initialize_title_scene()
-	return ..()
+	return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/lobby/proc/initialize_title_scene()
 	refresh_title_scene()

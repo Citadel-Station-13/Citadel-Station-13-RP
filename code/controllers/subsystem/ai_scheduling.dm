@@ -34,7 +34,7 @@ SUBSYSTEM_DEF(ai_scheduling)
 
 /datum/controller/subsystem/ai_scheduling/Initialize()
 	rebuild()
-	return ..()
+	return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/ai_scheduling/on_ticklag_changed(old_ticklag, new_ticklag)
 	rebuild()

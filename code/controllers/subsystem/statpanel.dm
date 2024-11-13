@@ -2,7 +2,9 @@ SUBSYSTEM_DEF(statpanels)
 	name = "Stat Panels"
 	wait = 4
 	init_order = INIT_ORDER_STATPANELS
+	init_stage = INIT_STAGE_BACKEND
 	priority = FIRE_PRIORITY_STATPANELS
+	subsystem_flags = SS_NO_INIT
 	runlevels = RUNLEVELS_DEFAULT | RUNLEVEL_LOBBY
 
 	//! ticking
@@ -18,11 +20,6 @@ SUBSYSTEM_DEF(statpanels)
 	var/cache_ticket_data
 	/// cached sdql2 data
 	var/cache_sdql_data
-
-/datum/controller/subsystem/statpanels/Initialize()
-	spawn()
-		manual_ticking()
-	return ..()
 
 /datum/controller/subsystem/statpanels/fire(resumed = FALSE, no_tick_check)
 	if(!resumed)

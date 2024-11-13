@@ -131,7 +131,8 @@ SUBSYSTEM_DEF(air)
 	)
 
 #endif
-	return ..()
+
+	return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/air/fire(resumed = FALSE)
 	var/timer

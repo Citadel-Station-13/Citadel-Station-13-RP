@@ -30,7 +30,7 @@
 	 *
 	 * * This is higher in precedence than [init_order].
 	 */
-	var/init_stage = MC_INIT_STAGE_WORLD
+	var/init_stage = INIT_STAGE_WORLD
 	/// This var is set to TRUE after the subsystem has been initialized.
 	var/initialized = FALSE
 
@@ -335,7 +335,7 @@
  * Used to initialize the subsystem AFTER the map has loaded.
  * This is expected to be overriden by subtypes.
  */
-/datum/controller/subsystem/Initialize(start_timeofday)
+/datum/controller/subsystem/Initialize()
 	return SS_INIT_NONE
 
 /**

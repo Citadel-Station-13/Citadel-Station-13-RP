@@ -41,7 +41,7 @@ SUBSYSTEM_DEF(legacy_atc)
 		next_message = world.time + initial_delay
 		START_PROCESSING(SSobj, src)
 
-	return ..()
+	return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/legacy_atc/process(delta_time)
 	if(world.time >= next_message)

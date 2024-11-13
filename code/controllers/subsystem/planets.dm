@@ -21,7 +21,7 @@ SUBSYSTEM_DEF(planets)
 	report_progress("Initializing planetary weather.")
 	allocateTurfs(TRUE)
 	fire() // Fire once to preemptively set up weather and planetary ambient lighting.
-	return ..()
+	return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/planets/on_max_z_changed(old_z_count, new_z_count)
 	. = ..()
