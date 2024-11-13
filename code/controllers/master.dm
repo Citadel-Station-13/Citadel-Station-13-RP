@@ -38,9 +38,6 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 	/// How long is the MC sleeping between runs, read only (set by Loop() based off of anti-tick-contention heuristics)
 	var/sleep_delta = 1
 
-	/// Only run ticker subsystems for the next n ticks.
-	var/skip_ticks = 0
-
 	/// makes the mc main loop runtime
 	var/make_runtime = FALSE
 
@@ -506,24 +503,21 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 			new/datum/controller/failsafe() // (re)Start the failsafe.
 
 		//now do the actual stuff
-		if (!skip_ticks)
-			var/checking_runlevel = current_runlevel
-			if(cached_runlevel != checking_runlevel)
-				//resechedule subsystems
-				var/list/old_subsystems = current_runlevel_subsystems
-				cached_runlevel = checking_runlevel
-				current_runlevel_subsystems = runlevel_sorted_subsystems[cached_runlevel]
+		var/checking_runlevel = current_runlevel
+		if(cached_runlevel != checking_runlevel)
+			//resechedule subsystems
+			var/list/old_subsystems = current_runlevel_subsystems
+			cached_runlevel = checking_runlevel
+			current_runlevel_subsystems = runlevel_sorted_subsystems[cached_runlevel]
 
-				//now we'll go through all the subsystems we want to offset and give them a next_fire
-				for(var/datum/controller/subsystem/SS as anything in current_runlevel_subsystems)
-					//we only want to offset it if it's new and also behind
-					if(SS.next_fire > world.time || (SS in old_subsystems))
-						continue
-					SS.next_fire = world.time + world.tick_lag * rand(0, DS2TICKS(min(SS.wait, 2 SECONDS)))
+			//now we'll go through all the subsystems we want to offset and give them a next_fire
+			for(var/datum/controller/subsystem/SS as anything in current_runlevel_subsystems)
+				//we only want to offset it if it's new and also behind
+				if(SS.next_fire > world.time || (SS in old_subsystems))
+					continue
+				SS.next_fire = world.time + world.tick_lag * rand(0, DS2TICKS(min(SS.wait, 2 SECONDS)))
 
-			subsystems_to_check = current_runlevel_subsystems
-		else
-			subsystems_to_check = tickersubsystems
+		subsystems_to_check = current_runlevel_subsystems
 
 		if (CheckQueue(subsystems_to_check) <= 0) //error processing queue
 			stack_trace("MC: CheckQueue failed. Current error_level is [round(error_level, 0.25)]")
@@ -565,8 +559,6 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 
 		iteration++
 		last_run = world.time
-		if (skip_ticks)
-			skip_ticks--
 		src.sleep_delta = MC_AVERAGE_FAST(src.sleep_delta, sleep_delta)
 
 // Force any verbs into overtime, to test how they perfrom under load
@@ -602,19 +594,25 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 	for (var/thing in subsystemstocheck)
 		if (!thing)
 			subsystemstocheck -= thing
+
 		SS = thing
 		if (SS.state != SS_IDLE)
 			continue
+
 		if (SS.can_fire <= 0)
 			continue
+
 		if (SS.next_fire > world.time)
 			continue
+
 		SS_flags = SS.subsystem_flags
 		if (SS_flags & SS_NO_FIRE)
 			subsystemstocheck -= SS
 			continue
+
 		if ((SS_flags & (SS_TICKER|SS_KEEP_TIMING)) == SS_KEEP_TIMING && SS.last_fire + (SS.wait * 0.75) > world.time)
 			continue
+
 		if (SS.postponed_fires >= 1)
 			SS.postponed_fires--
 			SS.update_nextfire()
@@ -651,10 +649,6 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 				break
 			queue_node_flags = queue_node.subsystem_flags
 			queue_node_priority = queue_node.queued_priority
-
-			if (!(queue_node_flags & SS_TICKER) && skip_ticks)
-				queue_node = queue_node.queue_next
-				continue
 
 			if ((queue_node_flags & SS_BACKGROUND))
 				if (!bg_calc)
@@ -789,11 +783,6 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 	queue_priority_count_bg = 0
 	log_world("MC: SoftReset: Finished.")
 	. = 1
-
-/// Warns us that the end of tick byond map_update will be laggier then normal, so that we can just skip running subsystems this tick.
-/datum/controller/master/proc/laggy_byond_map_update_incoming()
-	if (!skip_ticks)
-		skip_ticks = 1
 
 /datum/controller/master/stat_entry()
 	return "(TickRate:[Master.processing]) (Iteration:[Master.iteration]) (TickLimit: [round(Master.current_ticklimit, 0.1)])"

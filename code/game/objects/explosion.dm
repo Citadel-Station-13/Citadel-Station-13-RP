@@ -74,11 +74,8 @@
 		var/approximate_intensity = (devastation_range * 3) + (heavy_impact_range * 2) + light_impact_range
 		var/powernet_rebuild_was_deferred_already = defer_powernet_rebuild
 		// Large enough explosion. For performance reasons, powernets will be rebuilt manually
-		if (approximate_intensity > 25)
-			// signal to mc we are going to eat up a lot of ticks
-			Master.laggy_byond_map_update_incoming()
-			if(!defer_powernet_rebuild)
-				defer_powernet_rebuild = TRUE
+		if (!defer_powernet_rebuild && approximate_intensity > 25)
+			defer_powernet_rebuild = TRUE
 
 		if(heavy_impact_range > 1)
 			var/datum/effect/system/explosion/E = new/datum/effect/system/explosion()
