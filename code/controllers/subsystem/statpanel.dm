@@ -21,11 +21,6 @@ SUBSYSTEM_DEF(statpanels)
 	/// cached sdql2 data
 	var/cache_sdql_data
 
-/datum/controller/subsystem/statpanels/Initialize()
-	spawn()
-		manual_ticking()
-	return ..()
-
 /datum/controller/subsystem/statpanels/fire(resumed = FALSE, no_tick_check)
 	if(!resumed)
 		// dispose / rebuild caches
@@ -147,15 +142,3 @@ SUBSYSTEM_DEF(statpanels)
 		. += Q.generate_stat()
 	. = url_encode(json_encode(.))
 	cache_sdql_data = .
-/**
- * is this shitcode?
- * yes it is
- * if you wanna do better, do better; i'm not at the point of janking up our MC with my own
- * fuckery.
- *
- * tl;dr this ensures we push data while MC is initializing.
- */
-/datum/controller/subsystem/statpanels/proc/manual_ticking()
-	while(!MC_RUNNING(INITSTAGE_MAIN)) // main gurantees ticking
-		fire(null, TRUE)
-		sleep(10)
