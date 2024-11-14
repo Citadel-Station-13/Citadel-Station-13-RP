@@ -23,3 +23,14 @@
 	name = "The Forest"
 	icon_state = "away"
 	dynamic_lighting = 1
+
+/area/admin_planet/fey_forest/underbrush
+	name = "The Underbrush"
+	icon_state = "away"
+	dynamic_lighting = 1
+
+/area/admin_planet/fey_forest/sanctuary
+	name = "The Underbrush"
+	icon_state = "away"
+	dynamic_lighting = 1
+
