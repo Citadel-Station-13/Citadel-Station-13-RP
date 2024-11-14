@@ -92,7 +92,7 @@ SUBSYSTEM_DEF(ai_movement)
 					else
 						// this was not the only holder in the bucket, stitch it back together after the ejection.
 						buckets[bucket_offset] = being_processed.movement_bucket_next
-							being_processed.movement_bucket_next.movement_bucket_prev = being_processed.movement_bucket_prev
+						being_processed.movement_bucket_next.movement_bucket_prev = being_processed.movement_bucket_prev
 						being_processed.movement_bucket_prev.movement_bucket_next = being_processed.movement_bucket_next
 					// insert; we now set its ticking_(next|previous)
 					// note that we don't do catchup
@@ -139,7 +139,7 @@ SUBSYSTEM_DEF(ai_movement)
 				moving_ais -= holder
 				stack_trace("bad holder found")
 				continue
-			// doubly linked list inject
+			// circular double-linked list inject
 			if(!isnull(buckets[position]))
 				var/datum/ai_holder/existing = buckets[position]
 				holder.movement_bucket_next = existing.movement_bucket_next
