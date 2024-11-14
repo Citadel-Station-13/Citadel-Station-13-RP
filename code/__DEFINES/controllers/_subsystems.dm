@@ -144,7 +144,6 @@ DEFINE_BITFIELD(runlevels, list(
 #define INIT_ORDER_PERSISTENCE        -3
 #define INIT_ORDER_AMBIENT_OCCLUSION  -5
 #define INIT_ORDER_HOLOMAPS           -5
-#define INIT_ORDER_NIGHTSHIFT     -5
 #define INIT_ORDER_ICON_SMOOTHING -6
 #define INIT_ORDER_OVERLAY        -7
 #define INIT_ORDER_EVENTS         -10
@@ -184,7 +183,6 @@ DEFINE_BITFIELD(runlevels, list(
 #define FIRE_PRIORITY_PING         5
 #define FIRE_PRIORITY_SHUTTLES     5
 #define FIRE_PRIORITY_PLANTS       5
-#define FIRE_PRIORITY_NIGHTSHIFT   6
 #define FIRE_PRIORITY_VOTE         9
 #define FIRE_PRIORITY_VIS          10
 #define FIRE_PRIORITY_SERVER_MAINT 10
