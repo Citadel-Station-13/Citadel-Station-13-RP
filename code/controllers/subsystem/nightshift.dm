@@ -77,7 +77,7 @@ SUBSYSTEM_DEF(nightshift)
 	for(var/obj/machinery/power/apc/APC as anything in currentrun)
 		currentrun -= APC
 		if (APC.area && (APC.z in (LEGACY_MAP_DATUM).station_levels))
-			APC.set_nightshift(nightshift_active && (apc.area.nightshift_level & nightshift_level), TRUE)
+			APC.set_nightshift(nightshift_active && (APC.area.nightshift_level & nightshift_level), TRUE)
 		if(MC_TICK_CHECK && !forced) // subsystem will be in state SS_IDLE if forced by an admin
 			return
 
