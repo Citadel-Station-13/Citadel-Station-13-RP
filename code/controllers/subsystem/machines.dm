@@ -44,6 +44,7 @@ SUBSYSTEM_DEF(machines)
 	makepowernets()
 	report_progress("Initializing atmos machinery...")
 	setup_atmos_machinery(GLOB.machines)
+	update_all_apcs()
 	fire()
 	return SS_INIT_SUCCESS
 
@@ -88,6 +89,10 @@ SUBSYSTEM_DEF(machines)
 			var/obj/machinery/atmospherics/component/unary/vent_scrubber/T = U
 			T.broadcast_status()
 		CHECK_TICK
+
+/datum/controller/subsystem/machines/proc/update_all_apcs()
+	for(var/obj/machinery/power/apc/apc in GLOB.apcs)
+		apc.update()
 
 /datum/controller/subsystem/machines/proc/process_pipenets(resumed = 0)
 	if (!resumed)
