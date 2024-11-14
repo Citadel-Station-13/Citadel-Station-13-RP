@@ -1,4 +1,3 @@
-
 /**
  * # Guns
  *
@@ -33,6 +32,11 @@
  *
  * For now, we're winging it. This is just design notes for when we cross
  * this hellish bridge.
+ *
+ * ## Current Caveats
+ *
+ * * Flashlight attachments directly edit the light variable of the gun. This means that they'll trample the gun's
+ *   inherent light if there is one.
  */
 /obj/item/gun
 	name = "gun"
@@ -64,6 +68,26 @@
 	///
 	/// * this is a default value; set to null by default to have the projectile's say.
 	var/accuracy_disabled = null
+
+	//* Attachments *//
+
+	/// Installed attachments
+	///
+	/// * Set to list of typepaths to immediately install them on init.
+	/// * Do not set this.
+	var/list/obj/item/gun_attachment/attachments
+	/// Attachment alignments.
+	///
+	/// * Format: "attachment slot" = list(x, y)
+	/// * Typelisted. If you varedit this, be aware of that.
+	/// * If an attachment slot isn't here, it's not allowed on the gun.
+	/// * See `code/__DEFINES/projectiles/gun_attachment.dm` for what this is doing to the attachments.
+	///   We basically match the specified align_x/y pixel on the attachment to the x/y on the gun's sprite
+	///   specified here.
+	/// * This is pixel coordinates on the gun's real icon. Out of bounds is allowed as attachments are just overlays.
+	var/list/attachment_alignment
+	/// Blacklisted attachment types.
+	var/attachment_type_blacklist = NONE
 
 	//* Firemode *//
 	/**
@@ -98,7 +122,8 @@
 	/// next world.time we can start a firing cycle
 	var/next_fire_cycle = 0
 
-	// legacy below //
+	//! legacy below !//
+
 	var/fire_sound = null // This is handled by projectile.dm's fire_sound var now, but you can override the projectile's fire_sound with this one if you want to.
 	var/fire_sound_text = "gunshot"
 	var/fire_anim = null
@@ -147,6 +172,8 @@
 	var/destroyed = 0
 	var/automatic = 0 //can gun use it, 0 is no, anything above 0 is the delay between clicks in ds
 
+	//! legacy above !//
+
 	                    //* THIS IS A WIP SYSTEM!! *//
 	                    // todo: well, finish this.
 	//*                      Modular Components                           *//
@@ -173,7 +200,7 @@
 	/// * this is typelist()'d; if you want to change it later, make a copy!
 	var/list/modular_component_slots
 
-	//*                            Power                                  *//
+	//*                               Power                               *//
 	//* Because the use of power is such a common case on /gun, it's been *//
 	//* hoisted to the base /obj/item/gun level for handling.             *//
 
@@ -184,7 +211,8 @@
 	/// -_-
 	var/cell_system_legacy_use_device = TRUE
 
-	//* Rendering *//
+	//*                            Rendering                               *//
+
 	/// Used instead of base_icon_state for the mob renderer, if this exists.
 	var/base_mob_state
 
@@ -233,7 +261,7 @@
 /obj/item/gun/Initialize(mapload)
 	. = ..()
 
-	// instantiate & dedupe renderers //
+	//* instantiate & dedupe renderers *//
 	var/requires_icon_update
 	if(item_renderer)
 		if(ispath(item_renderer) || IS_ANONYMOUS_TYPEPATH(item_renderer))
@@ -259,6 +287,28 @@
 			SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_guns.dmi',
 			)
 
+	//* handle attachment typelists *//
+	if(attachment_alignment)
+		attachment_alignment = typelist(NAMEOF(src, attachment_alignment), attachment_alignment)
+
+	//* handle attachments *//
+	if(length(attachments))
+		var/list/translating_attachments = attachments
+		attachments = list()
+		for(var/obj/item/gun_attachment/casted as anything in translating_attachments)
+			var/obj/item/gun_attachment/actual
+			if(IS_ANONYMOUS_TYPEPATH(casted))
+				actual = new casted
+			else if(ispath(casted, /obj/item/gun_attachment))
+				actual = new casted
+			else if(istype(casted))
+				actual = casted
+			if(actual.attached != src)
+				if(!install_attachment(actual))
+					stack_trace("[actual] ([actual.type]) couldn't be auto-installed on initialize despite being in list.")
+					qdel(actual)
+
+	//! LEGACY: firemodes
 	if(!islist(firemodes))
 		firemodes = list(firemodes)
 	for(var/i in 1 to firemodes.len)
@@ -273,9 +323,11 @@
 		sel_mode = 0
 		switch_firemodes()
 
+	//! LEGACY: accuracy
 	if(isnull(scoped_accuracy))
 		scoped_accuracy = accuracy
 
+	//! LEGACY: pin
 	if(pin)
 		pin = new pin(src)
 
@@ -303,6 +355,11 @@
 
 	#warn firemode action if needed
 
+/obj/item/gun/Destroy()
+	QDEL_NULL(pin)
+	QDEL_LIST(attachments)
+	return ..()
+
 /obj/item/gun/examine(mob/user, dist)
 	. = ..()
 	if(!no_pin_required)
@@ -314,8 +371,10 @@
 		var/datum/firemode/current_mode = firemodes[sel_mode]
 		. += "The fire selector is set to [current_mode.name]."
 	if(safety_state != GUN_NO_SAFETY)
-		to_chat(user, SPAN_NOTICE("The safety is [check_safety() ? "on" : "off"]."))
-	#warn component examine
+		. += SPAN_NOTICE("The safety is [check_safety() ? "on" : "off"].")
+	for(var/obj/item/gun_attachment/attachment as anything in attachments)
+		. += "It has [attachment] installed on its [attachment.attachment_slot].[attachment.can_detach ? "" : " It doesn't look like it can be removed."]"
+#warn component examine
 
 /obj/item/gun/CanItemAutoclick(object, location, params)
 	. = automatic
@@ -418,6 +477,14 @@
 			Fire(A, user, pointblank=1)
 			return
 	return ..() //Pistolwhippin'
+
+/obj/item/gun/using_item_on(obj/item/using, datum/event_args/actor/clickchain/e_args, clickchain_flags, datum/callback/reachability_check)
+	. = ..()
+	if(. & CLICKCHAIN_DO_NOT_PROPAGATE)
+		return
+	if(istype(using, /obj/item/gun_attachment))
+		user_install_attachment(using, e_args)
+		return CLICKCHAIN_DO_NOT_PROPAGATE
 
 /obj/item/gun/attackby(obj/item/A, mob/user)
 	if(A.is_multitool())
@@ -701,12 +768,6 @@
 	if(usr == loc)
 		toggle_safety(usr)
 
-/obj/item/gun/AltClick(mob/user)
-	if(loc == user)
-		toggle_safety(user)
-		return TRUE
-	return ..()
-
 /**
  * returns TRUE/FALSE based on if we have safeties on
  */
@@ -719,6 +780,16 @@
 		return
 	return firemodes[sel_mode]
 
+/obj/item/gun/register_item_actions(mob/user)
+	. = ..()
+	for(var/obj/item/gun_attachment/attachment as anything in attachments)
+		attachment.register_attachment_actions(user)
+
+/obj/item/gun/unregister_item_actions(mob/user)
+	. = ..()
+	for(var/obj/item/gun_attachment/attachment as anything in attachments)
+		attachment.unregister_attachment_actions(user)
+
 //* Ammo *//
 
 /**
@@ -730,6 +801,190 @@
  */
 /obj/item/gun/proc/get_ammo_ratio()
 	return 0
+
+//* Attachments *//
+
+/**
+ * Check if we can attach an attachment
+ */
+/obj/item/gun/proc/can_install_attachment(obj/item/gun_attachment/attachment, datum/event_args/actor/actor, silent)
+	if(!attachment.attachment_slot || !attachment_alignment[attachment.attachment_slot])
+		if(!silent)
+			actor?.chat_feedback(
+				SPAN_WARNING("[attachment] won't fit anywhere on [src]!"),
+				target = src,
+			)
+		return FALSE
+	if(attachment.attachment_type & attachment_type_blacklist)
+		if(!silent)
+			actor?.chat_feedback(
+				SPAN_WARNING("[attachment] doesn't work with [src]!"),
+				target = src,
+			)
+		return FALSE
+	for(var/obj/item/gun_attachment/existing as anything in attachments)
+		if(existing.attachment_slot == attachment.attachment_slot)
+			if(!silent)
+				actor?.chat_feedback(
+					SPAN_WARNING("[src] already has [existing] installed on its [existing.attachment_slot]!"),
+					target = src,
+				)
+			return FALSE
+		if(existing.attachment_type & attachment.attachment_type)
+			if(!silent)
+				actor?.chat_feedback(
+					SPAN_WARNING("[src]'s [existing] conflicts with [attachment]!"),
+					target = src,
+				)
+			return FALSE
+	if(!attachment.fits_on_gun(src, actor, silent))
+		return FALSE
+	return TRUE
+
+/**
+ * Called when a mob tries to uninstall an attachment
+ */
+/obj/item/gun/proc/user_install_attachment(obj/item/gun_attachment/attachment, datum/event_args/actor/actor)
+	if(actor)
+		if(actor.performer && actor.performer.is_in_inventory(attachment))
+			if(!actor.performer.can_unequip(attachment, attachment.worn_slot))
+				actor.chat_feedback(
+					SPAN_WARNING("[attachment] is stuck to your hand!"),
+					target = src,
+				)
+				return FALSE
+	if(!install_attachment(attachment, actor))
+		return FALSE
+	// todo: better sound
+	playsound(src, 'sound/weapons/empty.ogg', 25, TRUE, -3)
+	return TRUE
+
+/**
+ * Installs an attachment
+ *
+ * * This moves the attachment into the gun if it isn't already.
+ * * This does have default visible feedback for the installation.
+ *
+ * @return TRUE / FALSE on success / failure
+ */
+/obj/item/gun/proc/install_attachment(obj/item/gun_attachment/attachment, datum/event_args/actor/actor, silent)
+	if(!can_install_attachment(attachment, actor, silent))
+		return FALSE
+
+	if(!silent)
+		actor?.visible_feedback(
+			target = src,
+			visible = SPAN_NOTICE("[actor.performer] attaches [attachment] to [src]'s [attachment.attachment_slot]."),
+		)
+	if(attachment.loc != src)
+		attachment.forceMove(src)
+
+	LAZYADD(attachments, attachment)
+	attachment.attached = src
+	attachment.on_attach(src)
+	attachment.update_gun_overlay()
+	on_attachment_install(attachment)
+	var/mob/holding_mob = worn_mob()
+	if(holding_mob)
+		attachment.register_attachment_actions(holding_mob)
+	return TRUE
+
+/**
+ * Called when a mob tries to uninstall an attachment
+ */
+/obj/item/gun/proc/user_uninstall_attachment(obj/item/gun_attachment/attachment, datum/event_args/actor/actor, put_in_hands)
+	if(!attachment.can_detach)
+		actor?.chat_feedback(
+			SPAN_WARNING("[attachment] is not removable."),
+			target = src,
+		)
+		return FALSE
+	var/obj/item/uninstalled = uninstall_attachment(attachment, actor)
+	if(put_in_hands && actor?.performer)
+		actor.performer.put_in_hands_or_drop(uninstalled)
+	else
+		var/atom/where_to_drop = drop_location()
+		ASSERT(where_to_drop)
+		uninstalled.forceMove(where_to_drop)
+	// todo: better sound
+	playsound(src, 'sound/weapons/empty.ogg', 25, TRUE, -3)
+	return TRUE
+
+/**
+ * Uninstalls an attachment
+ *
+ * * This does not move the attachment after uninstall; you have to do that.
+ * * This does not have default visible feedback for the uninstallation / removal.
+ *
+ * @return the /obj/item uninstalled
+ */
+/obj/item/gun/proc/uninstall_attachment(obj/item/gun_attachment/attachment, datum/event_args/actor/actor, silent, deleting)
+	ASSERT(attachment.attached == src)
+	var/mob/holding_mob = worn_mob()
+	if(holding_mob)
+		attachment.unregister_attachment_actions(holding_mob)
+	attachment.on_detach(src)
+	attachment.remove_gun_overlay()
+	attachment.attached = null
+	on_attachment_uninstall(attachment)
+	LAZYREMOVE(attachments, attachment)
+	return deleting ? null : attachment.uninstall_product_transform(src)
+
+/**
+ * Align an attachment overlay.
+ *
+ * @return TRUE / FALSE on success / failure
+ */
+/obj/item/gun/proc/align_attachment_overlay(obj/item/gun_attachment/attachment, image/appearancelike)
+	var/list/alignment = attachment_alignment?[attachment.attachment_slot]
+	if(!alignment)
+		return FALSE
+	appearancelike.pixel_x = (alignment[1] - attachment.align_x)
+	appearancelike.pixel_y = (alignment[2] - attachment.align_y)
+	return TRUE
+
+/**
+ * Called exactly once when an attachment is installed
+ *
+ * * Called before the attachment's on_attach()
+ */
+/obj/item/gun/proc/on_attachment_install(obj/item/gun_attachment/attachment)
+	PROTECTED_PROC(TRUE)
+
+/**
+ * Called exactly once when an attachment is uninstalled
+ *
+ * * Called after the attachment's on_detach()
+ */
+/obj/item/gun/proc/on_attachment_uninstall(obj/item/gun_attachment/attachment)
+	PROTECTED_PROC(TRUE)
+
+//* Context *//
+
+/obj/item/gun/context_query(datum/event_args/actor/e_args)
+	. = ..()
+	if(length(attachments))
+		.["remove-attachment"] = atom_context_tuple("Remove Attachment", image('icons/screen/radial/actions.dmi', "red-arrow-up"), 0, MOBILITY_CAN_USE)
+	if(safety_state != GUN_NO_SAFETY)
+		.["toggle-safety"] = atom_context_tuple("Toggle Safety", image(src), 0, MOBILITY_CAN_USE, TRUE)
+
+/obj/item/gun/context_act(datum/event_args/actor/e_args, key)
+	. = ..()
+	if(.)
+		return
+	switch(key)
+		if("remove-attachment")
+			// todo: e_args support
+			var/obj/item/gun_attachment/attachment = show_radial_menu(e_args.initiator, src, attachments)
+			if(!attachment)
+				return TRUE
+			if(!e_args.performer.Reachability(src) || !(e_args.performer.mobility_flags & MOBILITY_CAN_USE))
+				return TRUE
+			user_uninstall_attachment(attachment, e_args, TRUE)
+			return TRUE
+		if("toggle-safety")
+			toggle_safety(e_args.performer)
+			return TRUE
 
 //* Firemodes *//
 

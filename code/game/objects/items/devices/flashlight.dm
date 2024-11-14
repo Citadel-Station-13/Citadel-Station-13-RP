@@ -270,6 +270,33 @@
 	light_color = LIGHT_COLOR_FLUORESCENT_FLASHLIGHT
 	light_wedge = LIGHT_NARROW
 
+	/// the gun attachment used for testing if we can attach
+	var/static/obj/item/gun_attachment/flashlight/maglight/test_attachment
+
+/obj/item/flashlight/maglight/proc/get_test_attachment() as /obj/item/gun_attachment/flashlight/maglight
+	if(!test_attachment)
+		test_attachment = new
+	return test_attachment
+
+/obj/item/flashlight/maglight/using_as_item(atom/target, datum/event_args/actor/clickchain/e_args, clickchain_flags, datum/callback/reachability_check)
+	. = ..()
+	if(. & CLICKCHAIN_DO_NOT_PROPAGATE)
+		return
+	if(istype(target, /obj/item/gun))
+		var/obj/item/gun/gun_target = target
+		var/obj/item/gun_attachment/flashlight/maglight/test_attach = get_test_attachment()
+		if(gun_target.can_install_attachment(test_attach, e_args))
+			if(!e_args.performer.temporarily_remove_from_inventory(src))
+				e_args.chat_feedback(SPAN_WARNING("[src] is stuck to your hands!"), src)
+				return CLICKCHAIN_DO_NOT_PROPAGATE
+			var/obj/item/gun_attachment/flashlight/maglight/attaching = new
+			if(!gun_target.install_attachment(attaching, e_args))
+				CRASH("install failed after check")
+			else
+				attaching.our_maglight = src
+				forceMove(attaching)
+		return CLICKCHAIN_DO_NOT_PROPAGATE
+
 /obj/item/flashlight/drone
 	name = "low-power flashlight"
 	desc = "A miniature lamp, that might be used by small robots."
