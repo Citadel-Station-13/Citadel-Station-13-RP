@@ -117,6 +117,10 @@ SUBSYSTEM_DEF(ai_scheduling)
  * List of things allowed to use this:
  * * /datum/ai_holder
  * * /datum/ai_network
+ *
+ * Quirks:
+ * * This will never sleep on invocation. If the called proc sleeps, we blow right past.
+ * * Try to not have the called proc be ridiculously expensive as we are on a very fast-firing subsystem.
  */
 /datum/ai_callback
 	var/proc_ref
@@ -144,4 +148,5 @@ SUBSYSTEM_DEF(ai_scheduling)
 
 /datum/ai_callback/proc/invoke()
 	SHOULD_NOT_SLEEP(TRUE)
+	set waitfor = FALSE
 	call(parent, proc_ref)(arglist(arguments))
