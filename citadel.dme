@@ -312,6 +312,7 @@
 #include "code\__DEFINES\projectiles\gun_components.dm"
 #include "code\__DEFINES\projectiles\guns.dm"
 #include "code\__DEFINES\projectiles\guns-legacy.dm"
+#include "code\__DEFINES\projectiles\guns_legacy.dm"
 #include "code\__DEFINES\projectiles\projectile.dm"
 #include "code\__DEFINES\projectiles\system.dm"
 #include "code\__DEFINES\radiation\flags.dm"
