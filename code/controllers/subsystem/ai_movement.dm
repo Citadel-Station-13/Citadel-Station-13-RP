@@ -92,7 +92,7 @@ SUBSYSTEM_DEF(ai_movement)
 					else
 						// this was not the only holder in the bucket, stitch it back together after the ejection.
 						buckets[bucket_offset] = being_processed.movement_bucket_next
-						being_processed.movement_bucket_next.movement_bucket_prev = being_processed.movement_bucket_prev
+							being_processed.movement_bucket_next.movement_bucket_prev = being_processed.movement_bucket_prev
 						being_processed.movement_bucket_prev.movement_bucket_next = being_processed.movement_bucket_next
 					// insert; we now set its ticking_(next|previous)
 					// note that we don't do catchup
@@ -159,7 +159,7 @@ SUBSYSTEM_DEF(ai_movement)
 		buckets.len = BUCKET_AMOUNT
 		for(var/i in 1 to length(moving_ais))
 			var/datum/ai_holder/holder = buckets[i]
-			holder.movement_bucket_next = holder.movement_bucket_prev = null
+			holder.movement_bucket_next = holder.movement_bucket_prev = holder
 			holder.movement_bucket_position = i
 
 /**

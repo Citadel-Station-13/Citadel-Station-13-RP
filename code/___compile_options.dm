@@ -82,8 +82,7 @@
 /**
  * If this is uncommented, will profile mapload atom initializations.
  */
-#define PROFILE_MAPLOAD_INIT_ATOM
-
+// #define PROFILE_MAPLOAD_INIT_ATOM
 
 /**
  * If this is uncommented, force our verb processing into just the 2% of a tick.
