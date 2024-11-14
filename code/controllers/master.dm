@@ -660,8 +660,12 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 
 		var/SS_flags = SS.subsystem_flags
 
+		// if it's flagged as NO_FIRE for some reason (probably because something faulted and shut it off), completely boot it
 		if (SS_flags & SS_NO_FIRE)
 			subsystemstocheck -= SS
+			continue
+		// keep timing: do not run faster than 1.33x of base speed, to prevent catch-up from going too fast
+		if ((SS_flags & (SS_TICKER|SS_KEEP_TIMING)) == SS_KEEP_TIMING && SS.last_fire + (SS.wait * 0.75) > world.time)
 			continue
 
 		SS.enqueue()
