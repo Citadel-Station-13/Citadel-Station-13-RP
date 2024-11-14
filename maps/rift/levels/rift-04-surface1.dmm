@@ -4438,7 +4438,7 @@
 /obj/machinery/door/airlock/maintenance/rnd{
 	req_one_access = null
 	},
-/obj/map_helper/access_helper/airlock/station/science/department,
+/obj/map_helper/access_helper/airlock/station/science/xenoarcheology,
 /turf/simulated/floor/plating,
 /area/rnd/xenoarch_storage)
 "dcG" = (
@@ -5422,8 +5422,7 @@
 	name = "Science First Aid";
 	req_one_access = null
 	},
-/obj/map_helper/access_helper/airlock/station/medical/department,
-/obj/map_helper/access_helper/airlock/station/science/department,
+/obj/map_helper/access_helper/airlock/station/science/infirmary,
 /turf/simulated/floor/tiled/steel,
 /area/rnd/hallway)
 "dHp" = (
@@ -11834,7 +11833,7 @@
 	name = "Mining Operations";
 	req_one_access = list()
 	},
-/obj/map_helper/access_helper/airlock/station/supply/cargo_bay,
+/obj/map_helper/access_helper/airlock/station/supply/department,
 /turf/simulated/floor/tiled/steel,
 /area/quartermaster/office)
 "hIo" = (
@@ -13857,7 +13856,7 @@
 /obj/machinery/door/airlock/maintenance/cargo{
 	req_one_access = null
 	},
-/obj/map_helper/access_helper/airlock/station/supply/cargo_bay,
+/obj/map_helper/access_helper/airlock/station/supply/department,
 /turf/simulated/floor/plating,
 /area/quartermaster/office)
 "iQn" = (
@@ -16981,8 +16980,7 @@
 /obj/machinery/door/airlock/maintenance/rnd{
 	req_one_access = null
 	},
-/obj/map_helper/access_helper/airlock/station/service/botany,
-/obj/map_helper/access_helper/airlock/station/science/department,
+/obj/map_helper/access_helper/airlock/station/science/xenobotany,
 /turf/simulated/floor/plating,
 /area/rnd/xenobiology/xenoflora)
 "kJN" = (
@@ -30100,8 +30098,7 @@
 	name = "Xenoflora Research";
 	req_one_access = null
 	},
-/obj/map_helper/access_helper/airlock/station/service/botany,
-/obj/map_helper/access_helper/airlock/station/science/department,
+/obj/map_helper/access_helper/airlock/station/science/xenobotany,
 /turf/simulated/floor/tiled/steel,
 /area/rnd/xenobiology/xenoflora/lab_atmos)
 "smJ" = (
@@ -35368,7 +35365,7 @@
 	name = "Chemical Research";
 	req_one_access = null
 	},
-/obj/map_helper/access_helper/airlock/station/science/department,
+/obj/map_helper/access_helper/airlock/station/science/genetics,
 /turf/simulated/floor/tiled/white,
 /area/rnd/chemistry_lab)
 "vdS" = (
@@ -36160,7 +36157,7 @@
 	id_tag = "researchdoor";
 	name = "Testing Room"
 	},
-/obj/map_helper/access_helper/airlock/station/science/department,
+/obj/map_helper/access_helper/airlock/station/science/genetics,
 /turf/simulated/floor/tiled/monowhite,
 /area/rnd/testingroom)
 "vIa" = (
@@ -36711,7 +36708,7 @@
 	name = "Cargo Airlock";
 	req_one_access = null
 	},
-/obj/map_helper/access_helper/airlock/station/supply/cargo_bay,
+/obj/map_helper/access_helper/airlock/station/supply/department,
 /turf/simulated/floor/tiled/steel,
 /area/quartermaster/office)
 "vYQ" = (
@@ -36856,12 +36853,11 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
-/obj/map_helper/access_helper/airlock/station/service/botany,
-/obj/map_helper/access_helper/airlock/station/science/department,
 /obj/machinery/door/airlock/glass/research{
 	name = "Xenoflora Research";
 	req_one_access = null
 	},
+/obj/map_helper/access_helper/airlock/station/science/xenobotany,
 /turf/simulated/floor/tiled/steel,
 /area/rnd/xenobiology/xenoflora)
 "wdf" = (
@@ -38188,7 +38184,7 @@
 /obj/machinery/door/airlock/maintenance/rnd{
 	req_one_access = null
 	},
-/obj/map_helper/access_helper/airlock/station/science/department,
+/obj/map_helper/access_helper/airlock/station/science/xenoarcheology,
 /turf/simulated/floor/plating,
 /area/maintenance/research/lower)
 "wQk" = (
