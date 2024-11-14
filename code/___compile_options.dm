@@ -80,16 +80,9 @@
 // #define USE_BYOND_TRACY
 
 /**
- * If this is uncommented, Autowiki will generate edits and shut down the server.
- * Prefer the autowiki build target instead.
- */
-// #define AUTOWIKI
-
-
-/**
  * If this is uncommented, will profile mapload atom initializations.
  */
-// #define PROFILE_MAPLOAD_INIT_ATOM
+#define PROFILE_MAPLOAD_INIT_ATOM
 
 
 /**

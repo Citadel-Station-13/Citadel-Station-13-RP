@@ -349,9 +349,7 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 
 	// todo: dylib high-precision timers
 	var/rtod_start = REALTIMEOFDAY
-
 	var/initialize_result = subsystem.Initialize()
-
 	var/rtod_end = REALTIMEOFDAY
 	var/took_seconds = round((rtod_end - rtod_start) / 10, 0.01)
 
@@ -359,7 +357,7 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 
 	// "[message_prefix] [seconds] seconds."
 	var/message_prefix
-	// run to_chat(world)
+	// should to_chat the message to world rather than just log
 	var/tell_everyone
 	// use a warning spans
 	var/chat_warning
