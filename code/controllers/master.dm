@@ -509,7 +509,8 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 
 	//# The actual loop.
 	while (1)
-		tickdrift = max(0, MC_AVERAGE_FAST(tickdrift, (((REALTIMEOFDAY - loop_start_timeofday) - (world.time - loop_start_time)) / world.tick_lag)))
+		var/new_tickdrift = (((REALTIMEOFDAY - loop_start_timeofday) - (world.time - loop_start_time)) / world.tick_lag)
+		tickdrift = max(0, MC_AVERAGE_FAST(tickdrift, new_tickdrift))
 		var/starting_tick_usage = TICK_USAGE
 
 		// check if we need to queue an init stage change

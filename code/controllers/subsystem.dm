@@ -184,6 +184,7 @@
 	///
 	/// * this is pretty much time dilation for this subsystem
 	/// * this is based on wait time; e.g. 100% means we're running twice as slow, etc
+	/// * this is also reset by update_next_fire() if 'reset timing' arg is specified
 	var/tracked_average_dilation = 0
 	/// Last world.time we did a full ignite()/fire() without pausing
 	///
@@ -272,6 +273,7 @@
 			var/full_run_took = world.time - tracked_last_completion
 			var/new_tick_dilation = (full_run_took / nominal_dt_ds) * 100 - 100
 			tracked_average_dilation = max(0, MC_AVERAGE_SLOW(tracked_average_dilation, new_tick_dilation))
+			tracked_last_completion = world.time
 			state = SS_IDLE
 		if(SS_PAUSED)
 			// we paused; nothing special, move on. the MC will handle it.
@@ -304,6 +306,7 @@
 /datum/controller/subsystem/proc/update_next_fire(reset_time)
 	if(reset_time)
 		next_fire = (subsystem_flags & SS_TICKER) ? (world.time + (world.tick_lag * wait)) : (world.time + wait)
+		tracked_last_completion = world.time
 		return
 
 	var/queue_node_flags = subsystem_flags
