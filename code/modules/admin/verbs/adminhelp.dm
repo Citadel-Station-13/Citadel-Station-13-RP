@@ -268,14 +268,20 @@ INITIALIZE_IMMEDIATE(/obj/effect/statclick/ticket_list)
 		"MESSAGE" = message,
 		"ADMINS" = admin_text,
 	)
+	if(CONFIG_GET(string/adminhelp_ahelp_link))
+		var/ahelp_link = replacetext(CONFIG_GET(string/adminhelp_ahelp_link), "$RID", GLOB.round_id)
+		ahelp_link = replacetext(ahelp_link, "$TID", id)
+		embed.url = ahelp_link
 	return embed
 
 /datum/admin_help/proc/send_message_to_tgs(message, urgent = FALSE)
 	var/message_to_send = message
 
 	if(urgent)
+		var/extra_message = CONFIG_GET(string/urgent_ahelp_message)
 		to_chat(initiator, SPAN_BOLDWARNING("Notified admins to prioritize your ticket"))
 		var/datum/discord_embed/embed = format_embed_discord(message)
+		embed.content = extra_message
 		embed.footer = "This player requested an admin"
 		send2adminchat_webhook(embed, urgent = TRUE)
 		webhook_sent = WEBHOOK_URGENT
@@ -285,15 +291,19 @@ INITIALIZE_IMMEDIATE(/obj/effect/statclick/ticket_list)
 	if(admin_number_present <= 0)
 		to_chat(initiator, SPAN_NOTICE("No active admins are online, your adminhelp was sent to admins who are available through IRC or Discord."), confidential = TRUE)
 		heard_by_no_admins = TRUE
-		var/regular_webhook_url = config_legacy.chat_webhook_url /* CONFIG_GET(string/regular_adminhelp_webhook_url) */
-		if(regular_webhook_url && (!urgent /* || regular_webhook_url != CONFIG_GET(string/urgent_adminhelp_webhook_url) */ ))
+		var/regular_webhook_url = CONFIG_GET(string/regular_adminhelp_webhook_url)
+		if(regular_webhook_url && (!urgent || regular_webhook_url != CONFIG_GET(string/urgent_adminhelp_webhook_url)))
+			var/extra_message = CONFIG_GET(string/ahelp_message)
 			var/datum/discord_embed/embed = format_embed_discord(message)
+			embed.content = extra_message
 			embed.footer = "This player sent an ahelp when no admins are available [urgent? "and also requested an admin": ""]"
 			send2adminchat_webhook(embed, urgent = FALSE)
 			webhook_sent = WEBHOOK_NON_URGENT
 
 /proc/send2adminchat_webhook(message_or_embed, urgent)
-	var/webhook = config_legacy.chat_webhook_url
+	var/webhook = CONFIG_GET(string/urgent_adminhelp_webhook_url)
+	if(!urgent)
+		webhook = CONFIG_GET(string/regular_adminhelp_webhook_url)
 
 	if(!webhook)
 		return
@@ -307,6 +317,10 @@ INITIALIZE_IMMEDIATE(/obj/effect/statclick/ticket_list)
 		webhook_info["embeds"] = list(embed.convert_to_list())
 		if(embed.content)
 			webhook_info["content"] = embed.content
+	if(CONFIG_GET(string/adminhelp_webhook_name))
+		webhook_info["username"] = CONFIG_GET(string/adminhelp_webhook_name)
+	if(CONFIG_GET(string/adminhelp_webhook_pfp))
+		webhook_info["avatar_url"] = CONFIG_GET(string/adminhelp_webhook_pfp)
 	var/list/headers = list()
 	headers["Content-Type"] = "application/json"
 	var/datum/http_request/request = new()
@@ -594,10 +608,15 @@ INITIALIZE_IMMEDIATE(/obj/effect/statclick/ticket_list)
 	testing("Ahelp action: [action]")
 	if(webhook_sent != WEBHOOK_NONE)
 		var/datum/discord_embed/embed = new()
+		embed.title = "Ticket #[id]"
+		if(CONFIG_GET(string/adminhelp_ahelp_link))
+			var/ahelp_link = replacetext(CONFIG_GET(string/adminhelp_ahelp_link), "$RID", GLOB.round_id)
+			ahelp_link = replacetext(ahelp_link, "$TID", id)
+			embed.url = ahelp_link
 		embed.description = "[key_name(usr)] has sent an action to this ticket. Action ID: [action]"
 		if(webhook_sent == WEBHOOK_URGENT)
 			send2adminchat_webhook(embed, urgent = TRUE)
-		if(webhook_sent == WEBHOOK_NON_URGENT /*  || CONFIG_GET(string/regular_adminhelp_webhook_url) != CONFIG_GET(string/urgent_adminhelp_webhook_url) */)
+		if(webhook_sent == WEBHOOK_NON_URGENT || CONFIG_GET(string/regular_adminhelp_webhook_url) != CONFIG_GET(string/urgent_adminhelp_webhook_url))
 			send2adminchat_webhook(embed, urgent = FALSE)
 		webhook_sent = WEBHOOK_NONE
 	switch(action)
@@ -684,6 +703,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/statclick/ahelp)
 GLOBAL_DATUM_INIT(admin_help_ui_handler, /datum/admin_help_ui_handler, new)
 
 /datum/admin_help_ui_handler
+	var/list/ahelp_cooldowns = list()
 
 /datum/admin_help_ui_handler/ui_state(mob/user)
 	return GLOB.always_state
@@ -695,11 +715,11 @@ GLOBAL_DATUM_INIT(admin_help_ui_handler, /datum/admin_help_ui_handler, new)
 
 /datum/admin_help_ui_handler/ui_static_data(mob/user)
 	. = list()
-	.["bannedFromUrgentAhelp"] = FALSE //is_banned_from(user.ckey, "Urgent Adminhelp")
-	.["urgentAhelpPromptMessage"] = "" //CONFIG_GET(string/urgent_ahelp_user_prompt)
-	// var/webhook_url = CONFIG_GET(string/urgent_adminhelp_webhook_url)
-	// if(webhook_url)
-	// 	.["urgentAhelpEnabled"] = TRUE
+	.["bannedFromUrgentAhelp"] = FALSE
+	.["urgentAhelpPromptMessage"] = CONFIG_GET(string/urgent_ahelp_user_prompt)
+	var/webhook_url = CONFIG_GET(string/urgent_adminhelp_webhook_url)
+	if(webhook_url)
+		.["urgentAhelpEnabled"] = TRUE
 
 /datum/admin_help_ui_handler/ui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
@@ -714,12 +734,15 @@ GLOBAL_DATUM_INIT(admin_help_ui_handler, /datum/admin_help_ui_handler, new)
 		return
 	var/client/user_client = usr.client
 	var/message = sanitize_text(trim(params["message"]))
+	var/urgent = !!params["urgent"]
+	var/list/admins = get_admin_counts(R_BAN)
+	if(length(admins["present"]) != 0)
+		urgent = FALSE
 
 	if(user_client.adminhelptimerid)
 		return
 
-	// urgent hardcoded to FALSE
-	perform_adminhelp(user_client, message, FALSE)
+	perform_adminhelp(user_client, message, urgent)
 	ui.close()
 
 /datum/admin_help_ui_handler/proc/perform_adminhelp(client/user_client, message, urgent)
@@ -733,7 +756,16 @@ GLOBAL_DATUM_INIT(admin_help_ui_handler, /datum/admin_help_ui_handler, new)
 	if(user_client.handle_spam_prevention(message, MUTE_ADMINHELP))
 		return
 
+	if (user_client.persistent.ligma)
+		return
+
 	feedback_add_details("admin_verb","Adminhelp") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+
+	if(urgent)
+		if(!COOLDOWN_FINISHED_A(src, ahelp_cooldowns?[user_client.ckey]))
+			urgent = FALSE // Prevent abuse
+		else
+			COOLDOWN_START_A(src, ahelp_cooldowns[user_client.ckey], CONFIG_GET(number/urgent_ahelp_cooldown) * (1 SECONDS))
 
 	if(user_client.current_ticket)
 		user_client.current_ticket.TimeoutVerb()
