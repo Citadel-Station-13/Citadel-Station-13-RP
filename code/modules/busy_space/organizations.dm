@@ -520,7 +520,7 @@
 	factory equipment, rugged positronic chassis, and other pieces of equipment vital to the function of the economy. Xion \
 	keeps its control of the market by leasing, not selling, their equipment, and through infamous and bloody patent protection \
 	lawsuits. Xion are noted to be a favorite contractor for Orion Confederation engineers, owing to their low cost and rugged design. \
-	Two years ago, Xion was subjected to a hostile merger by Aether Atmospherics and Recycling, and is now considered an AAR subsidiary."
+	In recent years, Xion was subjected to a hostile merger by Aether Atmospherics and Recycling, and is now considered an AAR subsidiary."
 	history = ""
 	work = "industrial equipment manufacturer"
 	headquarters = ""
