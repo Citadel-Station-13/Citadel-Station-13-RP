@@ -36,7 +36,8 @@
 	// we don't have a hook for 'on inventory init',
 	// so we can't init it lazily; we init it immediately.
 	target.init_inventory()
-	bind_to_inventory(target.inventory)
+	if(target.inventory)
+		bind_to_inventory(target.inventory)
 	return ..()
 
 /datum/actor_hud/inventory/on_mob_unbound(mob/target)
@@ -88,9 +89,9 @@
 	cleanup()
 
 	// buttons
-	add_screen((button_swap_hand = new))
-	add_screen((button_equip_hand = new))
-	add_screen((button_drawer = new))
+	add_screen((button_swap_hand = new(null, src)))
+	add_screen((button_equip_hand = new(null, src)))
+	add_screen((button_drawer = new(null, src)))
 
 	// slots
 	rebuild_slots(inventory_slots_with_mappings)

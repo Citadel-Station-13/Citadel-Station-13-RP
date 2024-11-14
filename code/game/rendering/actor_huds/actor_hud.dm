@@ -38,6 +38,10 @@
 
 /datum/actor_hud/proc/bind_to_mob(mob/target)
 	SHOULD_NOT_OVERRIDE(TRUE)
+	if(actor == target)
+		return TRUE
+	else if(actor)
+		unbind_from_mob()
 	actor = target
 	RegisterSignal(target, COMSIG_PARENT_QDELETING, PROC_REF(bound_actor_deleted))
 	on_mob_bound(target)
