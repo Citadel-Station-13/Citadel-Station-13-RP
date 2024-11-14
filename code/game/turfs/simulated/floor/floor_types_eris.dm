@@ -888,6 +888,7 @@ CREATE_STANDARD_TURFS(/turf/simulated/floor/outdoors/grass/heavy)
 /turf/simulated/floor/outdoors/grass/heavy/interior
     name = "heavy grass"
     desc = "A dense sheet of harvested turf used in interior decoration."
+    initial_gas_mix = ATMOSPHERE_USE_INDOORS
     outdoors = FALSE
 
 //=========Eris Plating==========\\

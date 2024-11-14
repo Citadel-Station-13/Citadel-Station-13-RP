@@ -1,6 +1,6 @@
 // This checks an individual player's activity level.  People who have been afk for a few minutes aren't punished as much as those
 // who were afk for hours, as they're most likely gone for good.
-/datum/metric/proc/assess_player_activity(var/mob/M)
+/datum/legacy_metric/proc/assess_player_activity(var/mob/M)
 	. = 100
 	if(!M)
 		. = 0
@@ -22,7 +22,7 @@
 	. = max(. , 0) // No negative numbers, or else people could drag other, non-afk players down.
 
 // This checks a whole department's collective activity.
-/datum/metric/proc/assess_department(var/department)
+/datum/legacy_metric/proc/assess_department(var/department)
 	if(!department)
 		return
 	var/departmental_activity = 0
@@ -36,7 +36,7 @@
 		departmental_activity = departmental_activity / departmental_size // Average it out.
 	return departmental_activity
 
-/datum/metric/proc/assess_all_departments(var/cutoff_number = 3, var/list/department_blacklist = list())
+/datum/legacy_metric/proc/assess_all_departments(var/cutoff_number = 3, var/list/department_blacklist = list())
 	var/list/activity = list()
 	for(var/department in departments)
 		activity[department] = assess_department(department)
@@ -63,7 +63,7 @@
 		//todo: finish
 	return most_active_departments
 
-/datum/metric/proc/assess_all_living_mobs() // Living refers to the type, not the stat variable.
+/datum/legacy_metric/proc/assess_all_living_mobs() // Living refers to the type, not the stat variable.
 	. = 0
 	var/num = 0
 	for(var/mob/living/L in GLOB.player_list)
@@ -72,7 +72,7 @@
 	if(num)
 		. = round(. / num, 0.1)
 
-/datum/metric/proc/assess_all_dead_mobs() // Ditto.
+/datum/legacy_metric/proc/assess_all_dead_mobs() // Ditto.
 	. = 0
 	var/num = 0
 	for(var/mob/observer/dead/O in GLOB.player_list)
@@ -81,7 +81,7 @@
 	if(num)
 		. = round(. / num, 0.1)
 
-/datum/metric/proc/assess_all_outdoor_mobs()
+/datum/legacy_metric/proc/assess_all_outdoor_mobs()
 	. = 0
 	var/num = 0
 	for(var/mob/living/L in GLOB.player_list)
