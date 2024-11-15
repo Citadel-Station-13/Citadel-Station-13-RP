@@ -260,6 +260,8 @@
 
 /obj/item/gun/Initialize(mapload)
 	. = ..()
+	//* datum component - wielding *//
+	AddComponent(/datum/component/wielding)
 
 	//* instantiate & dedupe renderers *//
 	var/requires_icon_update
@@ -379,19 +381,14 @@
 /obj/item/gun/CanItemAutoclick(object, location, params)
 	. = automatic
 
-/obj/item/gun/update_twohanding()
-	if(one_handed_penalty)
-		var/mob/living/M = loc
-		if(istype(M))
-			if(M.can_wield_item(src) && src.is_held_twohanded(M))
-				name = "[initial(name)] (wielded)"
-			else
-				name = initial(name)
-		else
-			name = initial(name)
-		update_icon() // In case item_state is set somewhere else.
-	..()
+/obj/item/gun/on_wield(mob/user, hands)
+	. = ..()
 
+/obj/item/gun/on_unwield(mob/user, hands)
+	. = ..()
+
+
+#warn redo multihanding
 /obj/item/gun/update_held_icon()
 	if(wielded_item_state)
 		var/mob/living/M = loc
@@ -486,12 +483,12 @@
 		user_install_attachment(using, e_args)
 		return CLICKCHAIN_DO_NOT_PROPAGATE
 
-/obj/item/gun/attackby(obj/item/A, mob/user)
-	if(A.is_multitool())
+/obj/item/gun/attackby(obj/item/I, mob/living/user, list/params, clickchain_flags, damage_multiplier)
+	if(I.is_multitool())
 		if(!scrambled)
 			to_chat(user, "<span class='notice'>You begin scrambling \the [src]'s electronic pins.</span>")
-			playsound(src, A.tool_sound, 50, 1)
-			if(do_after(user, 60 * A.tool_speed))
+			playsound(src, I.tool_sound, 50, 1)
+			if(do_after(user, 60 * I.tool_speed))
 				switch(rand(1,100))
 					if(1 to 10)
 						to_chat(user, "<span class='danger'>The electronic pin suite detects the intrusion and explodes!</span>")
@@ -507,11 +504,11 @@
 		else
 			to_chat(user, "<span class='warning'>\The [src] does not have an active electronic warfare suite!</span>")
 
-	if(A.is_wirecutter())
+	if(I.is_wirecutter())
 		if(pin && scrambled)
 			to_chat(user, "<span class='notice'>You attempt to remove \the firing pin from \the [src].</span>")
-			playsound(src, A.tool_sound, 50, 1)
-			if(do_after(user, 60* A.tool_speed))
+			playsound(src, I.tool_sound, 50, 1)
+			if(do_after(user, 60 * I.tool_speed))
 				switch(rand(1,100))
 					if(1 to 10)
 						to_chat(user, "<span class='danger'>You twist the firing pin as you tug, destroying the firing pin.</span>")
@@ -530,7 +527,7 @@
 		else
 			to_chat(user, "<span class='warning'>\The [src] does not have a firing pin installed!</span>")
 
-	..()
+	return ..()
 
 /obj/item/gun/emag_act(var/remaining_charges, var/mob/user)
 	if(pin)
@@ -557,6 +554,7 @@
 //called after successfully firing
 /obj/item/gun/proc/handle_post_fire(mob/user, atom/target, var/pointblank=0, var/reflex=0)
 	SHOULD_NOT_OVERRIDE(TRUE)
+	#warn obliterate this
 	if(fire_anim)
 		flick(fire_anim, src)
 
@@ -575,9 +573,6 @@
 			"<span class='warning'>You fire \the [src][pointblank ? " point blank at \the [target]":""][reflex ? " by reflex":""]!</span>",
 			"You hear a [fire_sound_text]!"
 			)
-
-	if(muzzle_flash)
-		set_light(muzzle_flash)
 
 	if(one_handed_penalty)
 		if(!src.is_held_twohanded(user))
@@ -608,61 +603,6 @@
 			shake_camera(user, recoil+1, recoil)
 	update_icon()
 
-/obj/item/gun/proc/process_point_blank(obj/projectile, mob/user, atom/target)
-	var/obj/projectile/P = projectile
-	if(!istype(P))
-		return //default behaviour only applies to true projectiles
-
-	//default point blank multiplier
-	var/damage_mult = 1.3
-
-	//determine multiplier due to the target being grabbed
-	if(ismob(target))
-		var/mob/M = target
-		if(M.grabbed_by.len)
-			var/grabstate = 0
-			for(var/obj/item/grab/G in M.grabbed_by)
-				grabstate = max(grabstate, G.state)
-			if(grabstate >= GRAB_NECK)
-				damage_mult = 2.5
-			else if(grabstate >= GRAB_AGGRESSIVE)
-				damage_mult = 1.5
-	P.damage_force *= damage_mult
-
-/obj/item/gun/proc/process_accuracy(obj/projectile, mob/living/user, atom/target, var/burst, var/held_twohanded)
-	var/obj/projectile/P = projectile
-	if(!istype(P))
-		return //default behaviour only applies to true projectiles
-
-	var/acc_mod = burst_accuracy[min(burst, burst_accuracy.len)]
-	var/disp_mod = dispersion[min(burst, dispersion.len)]
-
-	if(one_handed_penalty)
-		if(!held_twohanded)
-			acc_mod += -CEILING(one_handed_penalty/2, 1)
-			disp_mod += one_handed_penalty*0.5 //dispersion per point of two-handedness
-
-	//Accuracy modifiers
-	if(!isnull(accuracy_disabled))
-		P.accuracy_disabled = accuracy_disabled
-
-	P.accuracy_overall_modify *= 1 + (acc_mod / 100)
-	P.accuracy_overall_modify *= 1 - (user.get_accuracy_penalty() / 100)
-	P.dispersion = disp_mod
-
-	//accuracy bonus from aiming
-	if (aim_targets && (target in aim_targets))
-		//If you aim at someone beforehead, it'll hit more often.
-		//Kinda balanced by fact you need like 2 seconds to aim
-		//As opposed to no-delay pew pew
-		P.accuracy_overall_modify *= 1.3
-
-	// Some modifiers make it harder or easier to hit things.
-	for(var/datum/modifier/M in user.modifiers)
-		if(!isnull(M.accuracy))
-			P.accuracy_overall_modify += 1 + (M.accuracy / 100)
-		if(!isnull(M.accuracy_dispersion))
-			P.dispersion = max(P.dispersion + M.accuracy_dispersion, 0)
 
 /obj/item/gun/proc/play_fire_sound(var/mob/user, var/obj/projectile/P)
 	var/shot_sound = fire_sound

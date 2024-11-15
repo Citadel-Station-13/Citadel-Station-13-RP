@@ -40,6 +40,7 @@
 	if((cycle.firing_flags & GUN_FIRING_POINT_BLANK) && cycle.original_target && cycle.firing_atom.Adjacent(cycle.original_target))
 		process_point_blank(firing_projectile, cycle.firing_actor?.performer, cycle.original_target)
 	play_fire_sound(cycle.firing_actor?.performer, firing_projectile)
+	launch_projectile(cycle, firing_projectile)
 	//! END
 
 	// record stuff

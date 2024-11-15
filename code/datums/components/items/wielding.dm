@@ -3,7 +3,7 @@
 	registered_type = /datum/component/wielding
 
 	/// hands needed
-	var/hands
+	var/hands = 2
 	/// lazylist
 	var/list/obj/item/offhand/wielding/offhands
 	/// wielded user
@@ -18,9 +18,12 @@
 		return COMPONENT_INCOMPATIBLE
 	if((. = ..()) == COMPONENT_INCOMPATIBLE)
 		return
-	src.hands = hands
-	src.on_wield = on_wield
-	src.on_unwield = on_unwield
+	if(hands)
+		src.hands = hands
+	if(on_wield)
+		src.on_wield = on_wield
+	if(on_unwield)
+		src.on_unwield = on_unwield
 
 /datum/component/wielding/RegisterWithParent()
 	. = ..()
@@ -37,6 +40,7 @@
 
 /datum/component/wielding/proc/signal_examine(datum/source, mob/user, list/examine_list)
 	SIGNAL_HANDLER
+	#warn tell them which bind dumbass
 	examine_list += SPAN_NOTICE("[parent] seems to be able to be used with [hands] hands. Press your \"Wield Item\" keybind to toggle wielding.")
 
 /datum/component/wielding/proc/signal_dropped(datum/source, mob/user, flags, atom/newloc)

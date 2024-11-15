@@ -65,7 +65,6 @@
 		return FALSE
 	l_hand = I
 	log_inventory("[key_name(src)] put [I] in hand 1")
-	l_hand.update_twohanding()
 	l_hand.update_held_icon()
 	// ! WARNING: snowflake - at time of equipped, vars aren't set yet.
 	position_hud_item(l_hand, SLOT_ID_HANDS)
@@ -86,7 +85,6 @@
 		return FALSE
 	r_hand = I
 	log_inventory("[key_name(src)] put [I] in hand 1")
-	r_hand.update_twohanding()
 	r_hand.update_held_icon()
 	// ! WARNING: snowflake - at time of equipped, vars aren't set yet.
 	position_hud_item(r_hand, SLOT_ID_HANDS)
