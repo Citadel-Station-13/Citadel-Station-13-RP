@@ -9,7 +9,7 @@
 	return language_pick_finalize(id, user)
 
 /datum/preferences/proc/language_pick_finalize(id, mob/user)
-	var/datum/language/L = SScharacters.resolve_language_id(id)
+	var/datum/prototype/language/L = RSlanguages.fetch(id)
 	if(!L)
 		to_chat(user, SPAN_WARNING("BUG: Invalid language ID: [id]"))
 		return TRUE
@@ -67,7 +67,7 @@ GLOBAL_LIST_EMPTY(language_picker_active)
 	var/list/data = ..()
 	var/list/built = list()
 	var/list/categories = list("General")
-	for(var/datum/language/L as anything in SScharacters.all_languages())
+	for(var/datum/prototype/language/L as anything in SScharacters.all_languages())
 		if(L.language_flags & LANGUAGE_RESTRICTED)
 			continue
 		built[++built.len] = list(

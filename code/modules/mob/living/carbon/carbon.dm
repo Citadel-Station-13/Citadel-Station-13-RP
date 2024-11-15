@@ -6,7 +6,7 @@
 	touching = new/datum/reagent_holder/metabolism/touch(500, src)
 	reagents = bloodstr
 	if (!default_language && species_language)
-		default_language = SScharacters.resolve_language_name(species_language)
+		default_language = RSlanguages.legacy_resolve_language_name(species_language)
 
 /mob/living/carbon/BiologicalLife(seconds, times_fired)
 	if((. = ..()))
@@ -269,12 +269,12 @@
 		if(can_speak(default_language))
 			return default_language
 		else
-			return SScharacters.resolve_language_name(LANGUAGE_GIBBERISH)
+			return RSlanguages.legacy_resolve_language_name(LANGUAGE_GIBBERISH)
 
 	if(!species)
 		return null
 
-	return species.default_language ? SScharacters.resolve_language(species.default_language) : null
+	return species.default_language ? RSlanguages.fetch(species.default_language) : null
 
 /mob/living/carbon/proc/should_have_organ(var/organ_check)
 	return 0

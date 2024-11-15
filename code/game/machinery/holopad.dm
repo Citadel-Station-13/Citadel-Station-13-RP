@@ -735,18 +735,18 @@ GLOBAL_VAR_INIT(holopad_connectivity_rebuild_queued, FALSE)
 	. = ..()
 	relay_intercepted_emote(null, "-- INTERCEPTED -- ", say_emphasis(msg))
 
-/obj/machinery/holopad/hear_talk(mob/living/M, text, verb, datum/language/speaking)
+/obj/machinery/holopad/hear_talk(mob/living/M, text, verb, datum/prototype/language/speaking)
 	. = ..()
 	relay_intercepted_say(M, M.name, say_emphasis(text), speaking, FALSE)
 
-/obj/machinery/holopad/hear_signlang(mob/M, text, verb, datum/language/speaking)
+/obj/machinery/holopad/hear_signlang(mob/M, text, verb, datum/prototype/language/speaking)
 	. = ..()
 	relay_intercepted_say(M, M.name, say_emphasis(text), speaking, TRUE)
 
 /**
  * relays a heard say
  */
-/obj/machinery/holopad/proc/relay_intercepted_say(atom/movable/speaking, voice_name, msg, datum/language/using_language, sign_lang, list/heard = list())
+/obj/machinery/holopad/proc/relay_intercepted_say(atom/movable/speaking, voice_name, msg, datum/prototype/language/using_language, sign_lang, list/heard = list())
 	// no loops please - shame we can't have a room of 8 holopads acting as a council chamber though!
 	if(istype(speaking, /obj/machinery/holopad))
 		return
@@ -786,7 +786,7 @@ GLOBAL_VAR_INIT(holopad_connectivity_rebuild_queued, FALSE)
 /**
  * relays a say sent to us
  */
-/obj/machinery/holopad/proc/relay_inbound_say(atom/movable/speaker, speaker_name, msg, datum/language/using_language, sign_lang = FALSE, using_verb = "says", obj/machinery/holopad/source, list/heard = list())
+/obj/machinery/holopad/proc/relay_inbound_say(atom/movable/speaker, speaker_name, msg, datum/prototype/language/using_language, sign_lang = FALSE, using_verb = "says", obj/machinery/holopad/source, list/heard = list())
 	. = TRUE
 	var/scrambled = stars(msg)
 	var/for_knowers = "[source && "[SPAN_NOTICE(source.holocall_name(src))]: "][SPAN_NAME(speaker_name)] [using_language? using_language.format_message(msg, using_verb) : "[using_verb], [msg]"]"
@@ -1201,7 +1201,7 @@ GLOBAL_VAR_INIT(holopad_connectivity_rebuild_queued, FALSE)
 	// emissive-fy
 	cheap_become_emissive()
 
-/obj/effect/overlay/hologram/proc/relay_speech(speaker_name, message, datum/language/lang)
+/obj/effect/overlay/hologram/proc/relay_speech(speaker_name, message, datum/prototype/language/lang)
 	// TODO: ATOM SAY(), not janky ass atom_say().
 	atom_say("[SPAN_NAME(speaker_name)] says, [message]", lang)
 

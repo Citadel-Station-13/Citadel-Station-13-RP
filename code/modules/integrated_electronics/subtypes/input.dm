@@ -1005,7 +1005,7 @@ GLOBAL_DATUM_INIT(circuit_translation_context, /datum/translation_context/simple
 	listening_objects -= src
 	return ..()
 
-/obj/item/integrated_circuit/input/microphone/hear_talk(mob/living/M, msg, var/verb="says", datum/language/speaking=null)
+/obj/item/integrated_circuit/input/microphone/hear_talk(mob/living/M, msg, var/verb="says", datum/prototype/language/speaking=null)
 	var/translated = FALSE
 	if(M && msg)
 		if(speaking)
@@ -1013,7 +1013,7 @@ GLOBAL_DATUM_INIT(circuit_translation_context, /datum/translation_context/simple
 				msg = speaking.scramble(msg)
 			else
 				msg = translation_context.attempt_translation(speaking, M, msg)
-			if(!istype(speaking, /datum/language/common) && !istype(speaking, /datum/language/noise))
+			if(!istype(speaking, /datum/prototype/language/common) && !istype(speaking, /datum/prototype/language/noise))
 				translated = TRUE
 		set_pin_data(IC_OUTPUT, 1, M.GetVoice())
 		set_pin_data(IC_OUTPUT, 2, msg)
@@ -1053,10 +1053,10 @@ GLOBAL_DATUM_INIT(circuit_translation_context, /datum/translation_context/simple
 /obj/item/integrated_circuit/input/microphone/sign/Initialize(mapload)
 	. = ..()
 	for(var/lang in readable_langs)
-		var/datum/language/newlang = SScharacters.resolve_language_name(lang)
+		var/datum/prototype/language/newlang = RSlanguages.legacy_resolve_language_name(lang)
 		my_langs |= newlang
 
-/obj/item/integrated_circuit/input/microphone/sign/hear_talk(mob/living/M, msg, var/verb="says", datum/language/speaking=null)
+/obj/item/integrated_circuit/input/microphone/sign/hear_talk(mob/living/M, msg, var/verb="says", datum/prototype/language/speaking=null)
 	var/signlang = FALSE
 	if(M && msg)
 		if(speaking)
@@ -1073,7 +1073,7 @@ GLOBAL_DATUM_INIT(circuit_translation_context, /datum/translation_context/simple
 	if(signlang)
 		activate_pin(2)
 
-/obj/item/integrated_circuit/input/microphone/sign/hear_signlang(mob/M as mob, text, verb, datum/language/speaking)
+/obj/item/integrated_circuit/input/microphone/sign/hear_signlang(mob/M as mob, text, verb, datum/prototype/language/speaking)
 	hear_talk(M, text, verb, speaking)
 	return
 
