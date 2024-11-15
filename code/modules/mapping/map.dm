@@ -309,6 +309,15 @@
 
 /datum/map/station/New()
 	..()
+	if(ispath(world_faction_id))
+		var/datum/world_faction/casted = world_faction_id
+		world_faction_id = initial(casted.id)
+	for(var/i in 1 to length(world_location_ids))
+		var/datum/world_location/casted = world_location_ids[i]
+		if(!ispath(casted))
+			continue
+		world_location_ids[i] = initial(casted.id)
+
 	if(!map_levels)
 		map_levels = station_levels.Copy()
 	if(!allowed_jobs || !allowed_jobs.len)
