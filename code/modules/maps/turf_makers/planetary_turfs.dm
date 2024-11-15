@@ -17,6 +17,8 @@
 #define CLASSD_SET_ATMOS	initial_gas_mix=ATMOSPHERE_ID_CLASSD
 #define CLASSD_TURF_CREATE(x)	x/classd/initial_gas_mix=ATMOSPHERE_ID_CLASSD;x/classd/color="#eaa17c"
 
+#warn impl
+
 CLASSD_TURF_CREATE(/turf/simulated/wall/planetary)
 CLASSD_TURF_CREATE(/turf/simulated/wall)
 CLASSD_TURF_CREATE(/turf/simulated/floor)
@@ -89,6 +91,9 @@ VIRGO2_TURF_CREATE(/turf/simulated/mineral/floor/ignore_mapgen)
 VIRGO2_TURF_CREATE(/turf/simulated/mineral/ignore_mapgen)
 VIRGO2_TURF_CREATE(/turf/simulated/mineral/floor)
 VIRGO2_TURF_CREATE(/turf/simulated/mineral/floor/ignore_mapgen)
+
+#warn impl
+
 /turf/simulated/floor/sky/virgo2_sky
 	name = "virgo 2 atmosphere"
 	desc = "Be careful where you step!"
