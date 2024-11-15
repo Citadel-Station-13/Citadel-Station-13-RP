@@ -1,5 +1,7 @@
 //* This file is explicitly licensed under the MIT license. *//
-//* Copyright (c) 2023 Citadel Station developers.          *//
+//* Copyright (c) 2024 Citadel Station Developers           *//
+
+// todo: re-review this file; ensure generation / ACID is being enforced.
 
 /**
  * Manages character setup, character saving, loading,
@@ -20,6 +22,15 @@ SUBSYSTEM_DEF(characters)
 	var/list/newplayers_requiring_init = list()
 
 	var/list/save_queue = list()
+
+	//* Records *//
+
+	/// record datums by associative string id
+	///
+	/// * used as a cache
+	var/list/character_record_cache
+	/// max cached record datums
+	var/character_record_cache_limit = 200
 
 /datum/controller/subsystem/characters/Initialize()
 	rebuild_caches()

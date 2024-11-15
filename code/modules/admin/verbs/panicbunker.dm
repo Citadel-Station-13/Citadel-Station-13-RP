@@ -31,7 +31,7 @@ GLOBAL_LIST_EMPTY(bunker_passthrough)
 
 	GLOB.bunker_passthrough |= ckey(ckeytobypass)
 	GLOB.bunker_passthrough[ckey(ckeytobypass)] = world.realtime
-	SSpersistence.SavePanicBunker() //we can do this every time, it's okay
+	SSpersistence.save_panic_bunker() //we can do this every time, it's okay
 	log_admin("[key_name(usr)] has added [ckeytobypass] to the current round's bunker bypass list.")
 	message_admins("[key_name_admin(usr)] has added [ckeytobypass] to the current round's bunker bypass list.")
 	send2irc("Panic Bunker", "[key_name(usr)] has added [ckeytobypass] to the current round's bunker bypass list.")
@@ -45,7 +45,7 @@ GLOBAL_LIST_EMPTY(bunker_passthrough)
 		return
 
 	GLOB.bunker_passthrough -= ckey(ckeytobypass)
-	SSpersistence.SavePanicBunker()
+	SSpersistence.save_panic_bunker()
 	log_admin("[key_name(usr)] has removed [ckeytobypass] from the current round's bunker bypass list.")
 	message_admins("[key_name_admin(usr)] has removed [ckeytobypass] from the current round's bunker bypass list.")
 	send2irc("Panic Bunker", "[key_name(usr)] has removed [ckeytobypass] from the current round's bunker bypass list.")

@@ -13,6 +13,16 @@
 	var/body_parts = list() //A list of bodyparts this covers, in organ_tag defines
 	//Reminder: BP_L_FOOT,BP_R_FOOT,BP_L_LEG,BP_R_LEG,BP_L_ARM,BP_R_ARM,BP_L_HAND,BP_R_HAND,BP_TORSO,BP_GROIN,BP_HEAD
 
+/**
+ * Binding: `Game_BodysetMarking`
+ */
+/datum/sprite_accessory/marking/ui_serialize()
+	return list(
+		"id" = id,
+		"name" = name,
+		"colorChannels" = (coloration_mode != COLORATION_MODE_NONE) ? coloration_amount : 0,
+	)
+
 /datum/sprite_accessory/marking/bands
 	name = "Color Bands"
 	id = "marking_bands"
