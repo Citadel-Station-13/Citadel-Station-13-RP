@@ -5412,7 +5412,7 @@
 /turf/simulated/floor/tiled/monowhite,
 /area/medical/exam_room)
 "dGy" = (
-/turf/unsimulated/wall/planetary/lythios43c,
+/turf/unsimulated/wall/planetary/permafrost,
 /area/rift/surfacebase/outside/outside1)
 "dGA" = (
 /obj/machinery/door/firedoor/glass,
@@ -37278,7 +37278,7 @@
 /turf/simulated/floor/plating,
 /area/security/checkpoint)
 "wpT" = (
-/turf/unsimulated/wall/planetary/lythios43c{
+/turf/unsimulated/wall/planetary/permafrost{
 	desc = "Glacial permafrost, compacted harder than stone.";
 	icon_state = "icerock-dark"
 	},

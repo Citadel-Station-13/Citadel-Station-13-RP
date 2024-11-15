@@ -497,7 +497,7 @@
 	if(T.outdoors)
 		radiation_pulse(T, rand(fallout_rad_low, fallout_rad_high))
 
-/turf/unsimulated/wall/planetary/normal/miaphus
+/turf/unsimulated/wall/planetary/miaphus
 	name = "deep ocean"
 	alpha = 0
 

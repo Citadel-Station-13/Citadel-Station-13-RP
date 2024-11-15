@@ -257,7 +257,7 @@
 /turf/simulated/floor/outdoors/beach/sand/desert,
 /area/tether_away/beach/jungle)
 "bi" = (
-/turf/unsimulated/wall/planetary/normal,
+/turf/unsimulated/wall/planetary,
 /area/tether_away/beach/water)
 "bj" = (
 /turf/simulated/floor/water,

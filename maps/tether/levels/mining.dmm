@@ -1813,7 +1813,7 @@
 /turf/simulated/floor/tiled,
 /area/outpost/mining_main/break_room)
 "VY" = (
-/turf/unsimulated/wall/planetary/virgo3b,
+/turf/unsimulated/wall/planetary/facility_wall,
 /area/mine/explored)
 "Wb" = (
 /obj/machinery/atmospherics/pipe/manifold/visible/cyan{

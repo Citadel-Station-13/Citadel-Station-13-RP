@@ -4832,7 +4832,7 @@
 	},
 /area/centcom/command)
 "oK" = (
-/turf/unsimulated/wall/planetary/virgo3b,
+/turf/unsimulated/wall/planetary/facility_wall,
 /area/centcom/living)
 "oL" = (
 /obj/structure/fans/tiny,
@@ -6530,7 +6530,7 @@
 /turf/unsimulated/floor/steel,
 /area/centcom/evac)
 "tT" = (
-/turf/unsimulated/wall/planetary/virgo3b,
+/turf/unsimulated/wall/planetary/facility_wall,
 /area/space)
 "tU" = (
 /obj/machinery/status_display{
@@ -7019,7 +7019,7 @@
 /turf/unsimulated/floor/steel,
 /area/centcom/control)
 "vI" = (
-/turf/unsimulated/wall/planetary/virgo3b,
+/turf/unsimulated/wall/planetary/facility_wall,
 /area/centcom/bathroom)
 "vK" = (
 /obj/structure/table/standard,
@@ -7054,7 +7054,7 @@
 	},
 /area/centcom/medical)
 "vP" = (
-/turf/unsimulated/wall/planetary/virgo3b,
+/turf/unsimulated/wall/planetary/facility_wall,
 /area/centcom/security)
 "vQ" = (
 /obj/effect/floor_decal/corner_steel_grid/diagonal,
@@ -10452,7 +10452,7 @@
 /turf/unsimulated/floor/steel,
 /area/centcom/terminal)
 "GK" = (
-/turf/unsimulated/wall/planetary/virgo3b,
+/turf/unsimulated/wall/planetary/facility_wall,
 /area/centcom/specops)
 "GN" = (
 /obj/machinery/camera/network/crescent,
@@ -13173,7 +13173,7 @@
 	},
 /area/centcom/command)
 "Pk" = (
-/turf/unsimulated/wall/planetary/virgo3b,
+/turf/unsimulated/wall/planetary/facility_wall,
 /area/centcom/control)
 "Pm" = (
 /obj/machinery/atmospherics/pipe/tank/phoron{

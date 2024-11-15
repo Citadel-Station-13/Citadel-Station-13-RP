@@ -97,7 +97,7 @@
 /turf/simulated/floor/outdoors/beach/sand/lowdesert,
 /area/tether_away/beach/desert/explored)
 "wg" = (
-/turf/unsimulated/wall/planetary/desert/standard_temp,
+/turf/unsimulated/wall/planetary/endless_sands,
 /area/tether_away/beach/desert/explored)
 "wH" = (
 /obj/machinery/light/small/flicker{

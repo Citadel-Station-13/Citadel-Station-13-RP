@@ -9431,7 +9431,7 @@
 /turf/simulated/floor/reinforced,
 /area/admin_planet/croatoan/high_sec_science_lower_checkpoint)
 "HF" = (
-/turf/unsimulated/wall/planetary/lythios43c{
+/turf/unsimulated/wall/planetary/permafrost{
 	desc = "Glacial permafrost, compacted harder than stone.";
 	icon_state = "icerock-dark";
 	icon = 'icons/turf/walls.dmi'
@@ -10204,7 +10204,7 @@
 /turf/simulated/floor/reinforced,
 /area/admin_planet/croatoan/high_sec_science_control_center)
 "Kf" = (
-/turf/unsimulated/wall/planetary/lythios43c{
+/turf/unsimulated/wall/planetary/permafrost{
 	desc = "Glacial permafrost, compacted harder than stone.";
 	icon_state = "icerock-dark";
 	icon = 'icons/turf/walls.dmi'
@@ -10383,7 +10383,7 @@
 	id_tag = "dorm1";
 	name = "Dormitory Lobby"
 	},
-/turf/unsimulated/wall/planetary/lythios43c{
+/turf/unsimulated/wall/planetary/permafrost{
 	desc = "Glacial permafrost, compacted harder than stone.";
 	icon_state = "icerock-dark";
 	icon = 'icons/turf/walls.dmi'
@@ -14839,7 +14839,7 @@
 	id_tag = "dorm1";
 	name = "Dormitory"
 	},
-/turf/unsimulated/wall/planetary/lythios43c{
+/turf/unsimulated/wall/planetary/permafrost{
 	desc = "Glacial permafrost, compacted harder than stone.";
 	icon_state = "icerock-dark";
 	icon = 'icons/turf/walls.dmi'
