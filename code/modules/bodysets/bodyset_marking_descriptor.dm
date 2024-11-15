@@ -9,17 +9,18 @@
 	var/id
 	/// color channels, packed
 	var/packed_coloration
-	/// color channels, unpacked
-	///
-	/// * this follows the coloration format; this is not necessarily a list of colors
-	/// * this is done on render
-	var/list/unpacked_coloration
 	/// emissive power; 0 to 255, with 0 being off
 	var/emissive = 0
 	/// layer adjust
 	///
 	/// * -10 to 10 allowed
 	var/layer = 0
+
+	/// color channels, unpacked
+	///
+	/// * this follows the coloration format; this is not necessarily a list of colors
+	/// * this is done on render
+	var/list/unpacked_coloration
 
 /datum/bodyset_marking_descriptor/serialize()
 	return list(
@@ -37,3 +38,11 @@
 
 #warn set_coloration
 #warn sanitize_and_validate
+
+/datum/bodyset_marking_descriptor/ui_serialize()
+	return list(
+		"id" = id,
+		"colors" = get_unpacked_coloration(),
+		"emissive" = emissive,
+		"layer" = layer,
+	)

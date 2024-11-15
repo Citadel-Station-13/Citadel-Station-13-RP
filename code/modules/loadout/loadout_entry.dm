@@ -115,10 +115,17 @@ var/list/gear_datums = list()
 	return spawned
 
 /**
- * Binding: tgui/bindings/datum/Game_LoadoutItem
+ * Binding: `Game_LoadoutItem`
  */
-/datum/loadout_entry/proc/tgui_data()
-	#warn impl
+/datum/loadout_entry/ui_serialize()
+	return list(
+		"id" = legacy_get_id(),
+		"name" = display_name || name,
+		"desc" = description,
+		"cost" = cost,
+		"category" = category,
+		"subcategory" = subcategory,
+	)
 
 /hook/startup/proc/populate_gear_list()
 

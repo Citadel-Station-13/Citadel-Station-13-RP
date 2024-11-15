@@ -237,11 +237,10 @@ GLOBAL_LIST_EMPTY(sprite_accessory_icon_cache)
  */
 /datum/sprite_accessory/ui_serialize()
 	return list(
-		"name" = name,
 		"id" = id,
+		"name" = name,
 		"colorChannels" = (coloration_mode != COLORATION_MODE_NONE) ? coloration_amount : 0,
 	)
-	#warn impl
 
 //* Resolution *//
 

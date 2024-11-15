@@ -10,15 +10,37 @@
 	/// packed coloration string
 	var/coloration
 
-#warn impl
-
 /datum/loadout_item_descriptor/serialize()
-	return list()
+	return list(
+		"id" = id,
+		"coloration" = coloration,
+	)
 
 /datum/loadout_item_descriptor/deserialize(list/data)
+	id = data["id"]
+	coloration = data["coloration"]
 
 /**
- * Binding: tgui/bindings/datum/Game_LoadoutItemDescriptor
+ * Binding: `Game_LoadoutItemDescriptor`
  */
-/datum/loadout_item_descriptor/proc/tgui_data()
+/datum/loadout_item_descriptor/ui_serialize()
+	return list(
+		"id" = id,
+		"colors" = unpack_coloration_string(coloration),
+	)
+
+/**
+ * Set coloration to a packed string.
+ *
+ * * Does not sanitize. Be careful.
+ */
+/datum/loadout_item_descriptor/proc/set_packed_coloration(packed)
+	#warn impl
+
+/**
+ * Set coloration to a set of channels.
+ *
+ * * Does not sanitize. Be careful.
+ */
+/datum/loadout_item_descriptor/proc/set_unpacked_coloration(list/colors)
 	#warn impl

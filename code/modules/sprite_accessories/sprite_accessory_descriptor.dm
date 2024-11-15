@@ -34,11 +34,34 @@
 	packed_coloration = data["coloration"]
 	emissive = data["emissive"]
 
-#warn set_coloration
-#warn sanitize_and_validate
+/**
+ * Binding: `Game_SpriteAccessoryDescriptor`
+ */
+/datum/sprite_accessory_descriptor/ui_serialize()
+	return list(
+		"id" = id,
+		"emissive" = emissive,
+		"colors" = get_unpacked_coloration(),
+	)
 
 /**
- * Binding: tgui/bindings/datum/Game_SpriteAccessoryDescriptor
+ * Set coloration to a packed string.
+ *
+ * * Does not sanitize. Be careful.
  */
-/datum/sprite_accessory_descriptor/proc/tgui_data()
+/datum/sprite_accessory_descriptor/proc/set_packed_coloration(packed)
 	#warn impl
+
+/**
+ * Set coloration to a set of colors.
+ *
+ * * Does not sanitize. Be careful.
+ */
+/datum/sprite_accessory_descriptor/proc/set_unpacked_coloration(list/colors)
+	#warn impl
+
+/datum/sprite_accessory_descriptor/proc/get_unpacked_coloration()
+	if(!unpacked_coloration)
+		unpacked_coloration = unpack_coloration_string(packed_coloration)
+	return unpacked_coloration
+]
