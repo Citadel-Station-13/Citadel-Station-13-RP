@@ -2,7 +2,7 @@
 "a" = (
 /obj/structure/table/woodentable,
 /obj/item/flame/candle/candelabra/everburn,
-/turf/simulated/floor/wood/lavaland,
+/turf/simulated/floor/wood,
 /area/lavaland/horrors)
 "c" = (
 /obj/structure/table/woodentable,
@@ -10,68 +10,68 @@
 	dat = "The majority of the text has faded or been defaced. Several snippets of prayers are legible, but not enough to determine their intent. The phrases 'Great Designer', 'change', and 'flesh' appear repeatedly.";
 	name = "Tenets of The Great Designer"
 	},
-/turf/simulated/floor/wood/lavaland,
+/turf/simulated/floor/wood,
 /area/lavaland/horrors)
 "d" = (
-/turf/simulated/floor/outdoors/lavaland,
+/turf/simulated/floor/outdoors/ash_sand,
 /area/lavaland/horrors)
 "i" = (
 /obj/structure/girder,
-/turf/simulated/floor/lavaland,
+/turf/simulated/floor,
 /area/lavaland/horrors)
 "j" = (
 /obj/effect/debris/cleanable/blood/gibs,
 /obj/structure/bed/chair/pew/left{
 	dir = 1
 	},
-/turf/simulated/floor/carpet/bcarpet/lavaland,
+/turf/simulated/floor/carpet/bcarpet,
 /area/lavaland/horrors)
 "k" = (
 /turf/simulated/wall/r_wall,
 /area/lavaland/horrors)
 "n" = (
 /obj/effect/debris/cleanable/blood,
-/turf/simulated/floor/outdoors/lavaland,
+/turf/simulated/floor/outdoors/ash_sand,
 /area/lavaland/horrors)
 "o" = (
 /obj/effect/debris/cleanable/blood/gibs,
 /obj/structure/bed/chair/pew/right{
 	dir = 1
 	},
-/turf/simulated/floor/carpet/bcarpet/lavaland,
+/turf/simulated/floor/carpet/bcarpet,
 /area/lavaland/horrors)
 "q" = (
 /mob/living/simple_mob/mechanical/cyber_horror/tajaran/surt,
-/turf/simulated/floor/wood/lavaland,
+/turf/simulated/floor/wood,
 /area/lavaland/horrors)
 "u" = (
 /turf/template_noop,
 /area/template_noop)
 "v" = (
 /obj/structure/girder/displaced,
-/turf/simulated/floor/lavaland,
+/turf/simulated/floor,
 /area/lavaland/horrors)
 "x" = (
 /obj/structure/statue/gold/rd,
-/turf/simulated/floor/carpet/bcarpet/lavaland,
+/turf/simulated/floor/carpet/bcarpet,
 /area/lavaland/horrors)
 "y" = (
 /obj/effect/floor_decal/asteroid,
-/turf/simulated/floor/outdoors/lavaland,
+/turf/simulated/floor/outdoors/ash_sand,
 /area/lavaland/horrors)
 "A" = (
 /obj/effect/debris/cleanable/blood,
-/turf/simulated/floor/lavaland,
+/turf/simulated/floor,
 /area/lavaland/horrors)
 "E" = (
 /obj/structure/table/woodentable,
-/turf/simulated/floor/wood/lavaland,
+/turf/simulated/floor/wood,
 /area/lavaland/horrors)
 "I" = (
-/turf/simulated/floor/wood/lavaland,
+/turf/simulated/floor/wood,
 /area/lavaland/horrors)
 "K" = (
-/turf/simulated/floor/outdoors/lavaland,
+/turf/simulated/floor/outdoors/ash_sand,
 /area/template_noop)
 "N" = (
 /turf/template_noop,
@@ -79,24 +79,24 @@
 "O" = (
 /obj/item/flame/candle/candelabra/everburn,
 /obj/structure/table/woodentable,
-/turf/simulated/floor/carpet/bcarpet/lavaland,
+/turf/simulated/floor/carpet/bcarpet,
 /area/lavaland/horrors)
 "P" = (
 /obj/effect/debris/cleanable/blood,
 /obj/effect/debris/cleanable/blood,
-/turf/simulated/floor/wood/lavaland,
+/turf/simulated/floor/wood,
 /area/lavaland/horrors)
 "Q" = (
 /obj/effect/debris/cleanable/generic,
-/turf/simulated/floor/outdoors/lavaland,
+/turf/simulated/floor/outdoors/ash_sand,
 /area/lavaland/horrors)
 "U" = (
 /obj/structure/table,
 /obj/item/flame/candle/candelabra,
-/turf/simulated/floor/lavaland,
+/turf/simulated/floor,
 /area/lavaland/horrors)
 "X" = (
-/turf/simulated/floor/lavaland,
+/turf/simulated/floor,
 /area/lavaland/horrors)
 "Y" = (
 /obj/effect/debris/cleanable/blood/gibs,
@@ -104,7 +104,7 @@
 /obj/structure/bed/chair/pew/left{
 	dir = 1
 	},
-/turf/simulated/floor/carpet/bcarpet/lavaland,
+/turf/simulated/floor/carpet/bcarpet,
 /area/lavaland/horrors)
 
 (1,1,1) = {"

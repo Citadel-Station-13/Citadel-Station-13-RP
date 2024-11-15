@@ -9,7 +9,7 @@
 	)
 
 /datum/map_level/sector/lavaland_140
-	base_turf = /turf/simulated/mineral/floor/lavaland
+	base_turf = /turf/simulated/mineral/floor
 	base_area = /area/lavaland/central/unexplored
 	traits = list(
 		ZTRAIT_GRAVITY,

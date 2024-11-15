@@ -217,92 +217,8 @@ VIRGO2_TURF_CREATE(/turf/simulated/mineral/floor/ignore_mapgen)
 ////////////////////////////////////////////////
 /////////// LAVALAND 	   /////////////////////
 ////////////////////////////////////////////////
-#define LAVALAND_SET_ATMOS	initial_gas_mix=ATMOSPHERE_ID_LAVALAND
-#define LAVALAND_TURF_CREATE(x)	x/lavaland/initial_gas_mix=ATMOSPHERE_ID_LAVALAND
 
-LAVALAND_TURF_CREATE(/turf/simulated/shuttle/floor)
-LAVALAND_TURF_CREATE(/turf/simulated/shuttle/wall)
-LAVALAND_TURF_CREATE(/turf/simulated/wall)
-LAVALAND_TURF_CREATE(/turf/simulated/wall/wood)
-LAVALAND_TURF_CREATE(/turf/simulated/wall/sandstone)
-LAVALAND_TURF_CREATE(/turf/simulated/wall/sandstonediamond)
-LAVALAND_TURF_CREATE(/turf/simulated/wall/bone)
-LAVALAND_TURF_CREATE(/turf/simulated/floor/outdoors)
-LAVALAND_TURF_CREATE(/turf/simulated/floor/outdoors/beach/sand)
-LAVALAND_TURF_CREATE(/turf/simulated/floor/outdoors/beach/sand/desert)
-LAVALAND_TURF_CREATE(/turf/simulated/floor/outdoors/grass)
-LAVALAND_TURF_CREATE(/turf/simulated/floor/water)
-LAVALAND_TURF_CREATE(/turf/simulated/floor/outdoors/lava)
-LAVALAND_TURF_CREATE(/turf/simulated/floor/outdoors/lava/noblend)
-LAVALAND_TURF_CREATE(/turf/simulated/floor/outdoors/lava/indoors)
-LAVALAND_TURF_CREATE(/turf/simulated/floor/outdoors/lava/indoors/noblend)
-LAVALAND_TURF_CREATE(/turf/simulated/floor/outdoors)
-LAVALAND_TURF_CREATE(/turf/simulated/floor/water/deep)
-LAVALAND_TURF_CREATE(/turf/simulated/floor/water/shoreline)
-LAVALAND_TURF_CREATE(/turf/simulated/floor/water/shoreline/corner)
-LAVALAND_TURF_CREATE(/turf/simulated/floor/outdoors/beach/sand)
-LAVALAND_TURF_CREATE(/turf/simulated/floor/outdoors/beach/sand/dirt)
-LAVALAND_TURF_CREATE(/turf/simulated/floor/outdoors/dirt)
-LAVALAND_TURF_CREATE(/turf/simulated/floor/outdoors/rocks)
-LAVALAND_TURF_CREATE(/turf/simulated/floor/plating)
-LAVALAND_TURF_CREATE(/turf/simulated/floor/wood)
-LAVALAND_TURF_CREATE(/turf/simulated/floor/wood/broken)
-LAVALAND_TURF_CREATE(/turf/simulated/floor/sandstone)
-LAVALAND_TURF_CREATE(/turf/simulated/floor/bone)
-LAVALAND_TURF_CREATE(/turf/simulated/floor/bone/engraved)
-LAVALAND_TURF_CREATE(/turf/simulated/floor/tiled)
-LAVALAND_TURF_CREATE(/turf/simulated/floor/tiled/old_tile)
-LAVALAND_TURF_CREATE(/turf/simulated/floor/tiled/monotile)
-LAVALAND_TURF_CREATE(/turf/simulated/floor/tiled/dark)
-LAVALAND_TURF_CREATE(/turf/simulated/floor/tiled/steel_dirty)
-LAVALAND_TURF_CREATE(/turf/simulated/floor/tiled/steel_grid)
-LAVALAND_TURF_CREATE(/turf/simulated/floor)
-LAVALAND_TURF_CREATE(/turf/simulated/floor/carpet)
-LAVALAND_TURF_CREATE(/turf/simulated/floor/carpet/bcarpet)
-LAVALAND_TURF_CREATE(/turf/simulated/floor/carpet/blucarpet)
-LAVALAND_TURF_CREATE(/turf/simulated/floor/carpet/purcarpet)
-LAVALAND_TURF_CREATE(/turf/simulated/mineral/ignore_mapgen)
-LAVALAND_TURF_CREATE(/turf/simulated/mineral/floor)
-LAVALAND_TURF_CREATE(/turf/simulated/mineral/floor/cave)
-LAVALAND_TURF_CREATE(/turf/simulated/mineral/floor/ignore_mapgen)
-LAVALAND_TURF_CREATE(/turf/simulated/mineral/ignore_cavegen)
-LAVALAND_TURF_CREATE(/turf/simulated/mineral/triumph)
-LAVALAND_TURF_CREATE(/turf/simulated/mineral/rich/triumph)
-LAVALAND_TURF_CREATE(/turf/simulated/floor/bluegrid)
-LAVALAND_TURF_CREATE(/turf/simulated/floor/greengrid)
-LAVALAND_TURF_CREATE(/turf/unsimulated/mineral/triumph)
-LAVALAND_TURF_CREATE(/turf/simulated/mineral)
-
-
-/turf/simulated/mineral/floor/lavaland
-	outdoors = TRUE
-
-//Cave doesnt make things indoor, its actually a variant that
-//has an initial gas string of regular air mix. The turf creator overrides
-//that gas mix though so this is effectively useless. Lava land was made though with this
-//being default outdoors so I will leave it as is for now
-/turf/simulated/mineral/floor/cave/lavaland
-	outdoors = TRUE
-
-/turf/simulated/mineral/floor/ignore_mapgen/lavaland
-	outdoors = TRUE
-
-///... why are is a TRIUMPH_TURF_CREATE turf being chewed through LAVALAND_TURF_CREATE I dont
-/// know. This will need to be looked into at some point soon
-/turf/simulated/mineral/triumph/lavaland
-	outdoors = TRUE
-	edge_blending_priority = 2
-
-/turf/simulated/mineral/triumph/rich/lavaland
-	outdoors = TRUE
-
-/turf/simulated/mineral/rich/triumph/lavaland
-	outdoors = TRUE
-	edge_blending_priority = 2
-
-// Lava Land turfs
-
-/turf/simulated/floor/outdoors/lavaland
+/turf/simulated/floor/outdoors/ash_sand
 	name = "ash sand"
 	desc = "Soft and ominous."
 	icon = 'icons/turf/flooring/asteroid.dmi'
@@ -310,23 +226,8 @@ LAVALAND_TURF_CREATE(/turf/simulated/mineral)
 	outdoors = 1
 	edge_blending_priority = 2
 	base_icon_state = "asteroid"
-	baseturfs = /turf/simulated/mineral/floor/lavaland
+	baseturfs = /turf/simulated/mineral/floor
 	initial_flooring = /singleton/flooring/outdoors/lavaland
-
-/turf/simulated/floor/outdoors/lavaland/indoors //I know this path is confusing. Basically this is a way to simulate interior caverns that don't use mapgen for specific POIs.
-	outdoors = 0
-
-/turf/simulated/floor/tiled/steel_dirty/lavaland/exterior
-	outdoors = 1
-
-/turf/simulated/floor/water/lavaland/interior
-	outdoors = 0
-
-/turf/simulated/floor/outdoors/grass/lavaland/interior
-	outdoors = 0
-
-/turf/simulated/floor/outdoors/dirt/lavaland/interior
-	outdoors = 0
 
 // This is a special subtype of the thing that generates ores on a map
 // It will generate more rich ores because of the lower numbers than the normal one

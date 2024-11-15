@@ -3,60 +3,60 @@
 /turf/template_noop,
 /area/template_noop)
 "j" = (
-/turf/simulated/floor/outdoors/lavaland,
+/turf/simulated/floor/outdoors/ash_sand,
 /area/lavaland/bosses)
 "k" = (
 /obj/structure/catwalk,
 /obj/structure/closet/crate,
 /obj/random/multiple/treasure,
 /obj/item/bone/skull,
-/turf/simulated/floor/outdoors/lava/lavaland,
+/turf/simulated/floor/outdoors/lava,
 /area/lavaland/bosses)
 "m" = (
 /obj/structure/catwalk,
-/turf/simulated/floor/outdoors/lava/lavaland,
+/turf/simulated/floor/outdoors/lava,
 /area/lavaland/bosses)
 "p" = (
 /obj/structure/catwalk,
-/turf/simulated/mineral/floor/ignore_mapgen/lavaland,
+/turf/simulated/mineral/floor/ignore_mapgen,
 /area/lavaland/bosses)
 "B" = (
 /mob/living/simple_mob/vore/aggressive/corrupthound/surt,
-/turf/simulated/mineral/floor/ignore_mapgen/lavaland,
+/turf/simulated/mineral/floor/ignore_mapgen,
 /area/lavaland/bosses)
 "D" = (
 /obj/structure/loot_pile/surface/bones,
-/turf/simulated/floor/outdoors/lavaland,
+/turf/simulated/floor/outdoors/ash_sand,
 /area/lavaland/bosses)
 "I" = (
 /obj/effect/decal/remains/posi,
-/turf/simulated/floor/outdoors/lavaland,
+/turf/simulated/floor/outdoors/ash_sand,
 /area/lavaland/bosses)
 "O" = (
 /obj/effect/decal/remains/unathi,
-/turf/simulated/mineral/floor/ignore_mapgen/lavaland,
+/turf/simulated/mineral/floor/ignore_mapgen,
 /area/lavaland/bosses)
 "R" = (
 /mob/living/simple_mob/vore/aggressive/corrupthound/surt,
-/turf/simulated/floor/outdoors/lavaland,
+/turf/simulated/floor/outdoors/ash_sand,
 /area/lavaland/bosses)
 "T" = (
 /obj/effect/decal/remains/human,
-/turf/simulated/floor/outdoors/lavaland,
+/turf/simulated/floor/outdoors/ash_sand,
 /area/lavaland/bosses)
 "U" = (
-/turf/simulated/floor/outdoors/lava/lavaland,
+/turf/simulated/floor/outdoors/lava,
 /area/lavaland/bosses)
 "W" = (
 /obj/structure/catwalk,
-/turf/simulated/floor/outdoors/lavaland,
+/turf/simulated/floor/outdoors/ash_sand,
 /area/lavaland/bosses)
 "X" = (
 /obj/effect/debris/cleanable/blood/gibs,
-/turf/simulated/floor/outdoors/lavaland,
+/turf/simulated/floor/outdoors/ash_sand,
 /area/lavaland/bosses)
 "Z" = (
-/turf/simulated/mineral/floor/ignore_mapgen/lavaland,
+/turf/simulated/mineral/floor/ignore_mapgen,
 /area/lavaland/bosses)
 
 (1,1,1) = {"
