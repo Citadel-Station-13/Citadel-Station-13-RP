@@ -36,9 +36,6 @@
 	emissive = data["emissive"]
 	layer = data["layer"]
 
-#warn set_coloration
-#warn sanitize_and_validate
-
 /datum/bodyset_marking_descriptor/ui_serialize()
 	return list(
 		"id" = id,
@@ -46,3 +43,16 @@
 		"emissive" = emissive,
 		"layer" = layer,
 	)
+
+/datum/bodyset_marking_descriptor/proc/set_packed_coloration(packed)
+	packed_coloration = packed
+	unpacked_coloration = null
+
+/datum/bodyset_marking_descriptor/proc/set_unpacked_coloration(list/colors)
+	packed_coloration = pack_coloration_string(colors)
+	unpacked_coloration = null
+
+/datum/bodyset_marking_descriptor/proc/get_unpacked_coloration()
+	if(!unpacked_coloration)
+		unpack_coloration_string(packed_coloration)
+	return unpacked_coloration

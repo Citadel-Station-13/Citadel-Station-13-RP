@@ -31,36 +31,16 @@ CREATE TABLE IF NOT EXISTS `%_PREFIX_%characters` (
 
 CREATE TABLE IF NOT EXISTS `%_PREFIX_%character_records` (
   `id` INT(24) NOT NULL AUTO INCREMENT,
+  `character_id` INT(24) NOT NULL,
   `flags` INT(24) NOT NULL DEFAULT 0,
+  `type` VARCHAR(64) NOT NULL,
   `data` MEDIUMTEXT NOT NULL DEFAULT '{}',
   `r_timestamp` DATETIME NULL,
   `r_location` VARCHAR(512) NULL,
   `r_label` VARCHAR(256) NULL,
   `r_content_type` VARCHAR(64) NULL,
   `r_content` TEXT NULL,
-  `r_author_character_id` INT(24) NULL,
-  CONSTRAINT `r_author_character_id` FOREIGN KEY (`r_author_character_id`)
-  REFERENCES `%_PREFIX_%characters` (`id`)
-  ON DELETE NULL
-  ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
-/**
- * 'changes' is a JSON array of strings.
- */
-CREATE TABLE IF NOT EXISTS `%_PREFIX_%character_record_logs` (
-  `id` INT(24) NOT NULL AUTO INCREMENT,
-  `record_id` INT(24) NOT NULL,
-  `timestamp` DATETIME NOT NULL DEFAULT Now(),
-  `player_id` INT(24) NULL,
-  `character_id` INT(24) NULL,
-  `changes` MEDIUMTEXT,
-  PRIMARY KEY(`id`),
-  CONSTRAINT `audit_player_id` FOREIGN KEY (`audit_character_id`)
-  REFERENCES `%_PREFIX_%player` (`id`)
-  ON DELETE NULL
-  ON UPDATE CASCADE,
-  CONSTRAINT `audit_character_id` FOREIGN KEY (`audit_character_id`)
+  CONSTRAINT `character_id` FOREIGN KEY (`character_id`)
   REFERENCES `%_PREFIX_%characters` (`id`)
   ON DELETE NULL
   ON UPDATE CASCADE

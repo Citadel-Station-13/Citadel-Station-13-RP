@@ -50,7 +50,8 @@
  * * Does not sanitize. Be careful.
  */
 /datum/sprite_accessory_descriptor/proc/set_packed_coloration(packed)
-	#warn impl
+	packed_coloration = pack_coloration_string(packed)
+	unpacked_coloration = null
 
 /**
  * Set coloration to a set of colors.
@@ -58,10 +59,10 @@
  * * Does not sanitize. Be careful.
  */
 /datum/sprite_accessory_descriptor/proc/set_unpacked_coloration(list/colors)
-	#warn impl
+	packed_coloration = pack_coloration_string(colors)
+	unpacked_coloration = null
 
 /datum/sprite_accessory_descriptor/proc/get_unpacked_coloration()
 	if(!unpacked_coloration)
 		unpacked_coloration = unpack_coloration_string(packed_coloration)
 	return unpacked_coloration
-]

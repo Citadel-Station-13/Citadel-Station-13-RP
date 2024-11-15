@@ -35,7 +35,7 @@
  * * Does not sanitize. Be careful.
  */
 /datum/loadout_item_descriptor/proc/set_packed_coloration(packed)
-	#warn impl
+	coloration = packed
 
 /**
  * Set coloration to a set of channels.
@@ -43,4 +43,4 @@
  * * Does not sanitize. Be careful.
  */
 /datum/loadout_item_descriptor/proc/set_unpacked_coloration(list/colors)
-	#warn impl
+	coloration = pack_coloration_string(colors)
