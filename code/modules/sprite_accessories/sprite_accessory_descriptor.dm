@@ -5,17 +5,22 @@
  * Instance descriptors of sprite accessories.
  */
 /datum/sprite_accessory_descriptor
+	//* Descriptions *//
+
 	/// sprite accessory ID
 	var/id
 	/// color channels, packed
 	var/packed_coloration
+	/// emissive power; 0 to 255, with 0 being off
+	var/emissive = 0
+
+	//* Buffers *//
+
 	/// color channels, unpacked
 	///
 	/// * this follows the coloration format; this is not necessarily a list of colors
 	/// * this is done on render
-	var/list/unpacked_coloration
-	/// emissive power; 0 to 255, with 0 being off
-	var/emissive = 0
+	var/tmp/list/unpacked_coloration
 
 /datum/sprite_accessory_descriptor/serialize()
 	return list(

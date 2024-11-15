@@ -233,9 +233,14 @@ GLOBAL_LIST_EMPTY(sprite_accessory_icon_cache)
 			)
 
 /**
- * Binding: tgui/bindings/datum/Game_SpriteAccessory
+ * Binding: `Game_SpriteAccessory`
  */
-/datum/sprite_accessory/proc/tgui_data()
+/datum/sprite_accessory/ui_serialize()
+	return list(
+		"name" = name,
+		"id" = id,
+		"colorChannels" = (coloration_mode != COLORATION_MODE_NONE) ? coloration_amount : 0,
+	)
 	#warn impl
 
 //* Resolution *//
