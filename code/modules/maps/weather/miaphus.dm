@@ -4,7 +4,6 @@
 /datum/planet/miaphus
 	name = "Miaphus'irra"
 	desc = "Former Tajaran Penal Colony. Scorching hot with little rain and planet covering deserts,"
-	planetary_wall_type = /turf/unsimulated/wall/planetary/normal
 	weather_holder = /datum/weather_holder/miaphus
 
 /datum/planet/miaphus/update_sun()
