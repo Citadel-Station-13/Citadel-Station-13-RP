@@ -1,6 +1,7 @@
 SUBSYSTEM_DEF(nightshift)
 	name = "Night Shift"
 	init_order = INIT_ORDER_NIGHTSHIFT
+	init_stage = INIT_STAGE_LATE
 	priority = FIRE_PRIORITY_NIGHTSHIFT
 	wait = 60 SECONDS
 	subsystem_flags = SS_NO_TICK_CHECK
@@ -22,9 +23,7 @@ SUBSYSTEM_DEF(nightshift)
 /datum/controller/subsystem/nightshift/Initialize()
 	if (!CONFIG_GET(flag/nightshifts_enabled))
 		can_fire = FALSE
-	//if(CONFIG_GET(flag/randomized_start_time_enabled))
-		//GLOB.gametime_offset = rand(0, 23) HOURS
-	return ..()
+	return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/nightshift/fire(resumed = FALSE)
 	if(world.time - round_duration_in_ds < nightshift_first_check)
