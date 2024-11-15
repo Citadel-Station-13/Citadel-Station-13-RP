@@ -20,6 +20,3 @@ CREATE_STANDARD_TURFS(/turf/simulated/floor/outdoors/dirt)
 	baseturfs = /turf/baseturf_bottom
 
 CREATE_STANDARD_TURFS(/turf/simulated/floor/outdoors/dirtlight)
-
-/turf/simulated/floor/outdoors/dirtlight
-	outdoors = FALSE
