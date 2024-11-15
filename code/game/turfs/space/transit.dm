@@ -33,33 +33,3 @@
 	dir = WEST
 	icon_state = "arrow-west"
 	pushdirection = WEST
-
-//-----------------------
-
-
-/proc/get_trasnit_state(turf/T)
-	var/p = 9
-	. = 1
-	switch(T.dir)
-		if(NORTH)
-			. = ((-p*T.x+T.y) % 15) + 1
-			if(. < 1)
-				. += 15
-		if(EAST)
-			. = ((T.x+p*T.y) % 15) + 1
-		if(WEST)
-			. = ((T.x-p*T.y) % 15) + 1
-			if(. < 1)
-				. += 15
-		else
-			. = ((p*T.x+T.y) % 15) + 1
-
-/proc/get_transit_angle(turf/T)
-	. = 0
-	switch(T.dir)
-		if(NORTH)
-			. = 180
-		if(EAST)
-			. = 90
-		if(WEST)
-			. = -90

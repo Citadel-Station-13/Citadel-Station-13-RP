@@ -2089,7 +2089,6 @@
 #include "code\game\turfs\simulated\wall_types\material.dm"
 #include "code\game\turfs\simulated\wall_types\prepainted.dm"
 #include "code\game\turfs\simulated\wall_types\shuttle.dm"
-#include "code\game\turfs\space\cracked_asteroid.dm"
 #include "code\game\turfs\space\space.dm"
 #include "code\game\turfs\space\transit.dm"
 #include "code\game\turfs\unsimulated\beach.dm"
