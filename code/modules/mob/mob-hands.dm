@@ -66,12 +66,6 @@
 		. += i
 
 /**
- * sets number of physical hands we should account for potentialy having
- */
-/mob/proc/set_nominal_hand_count(count)
-	inventory.set_hand_count(count)
-
-/**
  * Are usable hands all holding items?
  *
  * * if a hand slot is unusable but still has an item, it's ignored.

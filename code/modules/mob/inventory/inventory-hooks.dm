@@ -61,5 +61,5 @@
 /datum/inventory/proc/on_handcuffed_update()
 	var/restrained = !!owner.item_by_slot_id(/datum/inventory_slot/restraints/handcuffs::id)
 	for(var/datum/actor_hud/inventory/hud in huds_using)
-		for(var/atom/movable/screen/inventory/plate/hand/hand_plate in hud.hands)
+		for(var/atom/movable/screen/actor_hud/inventory/plate/hand/hand_plate in hud.hands)
 			hand_plate.set_handcuffed(restrained)
