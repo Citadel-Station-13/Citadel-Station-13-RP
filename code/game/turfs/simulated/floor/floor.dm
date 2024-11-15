@@ -1,3 +1,4 @@
+CREATE_STANDARD_TURFS(/turf/simulated/floor)
 /turf/simulated/floor
 	name = "plating"
 	desc = "Unfinished flooring."
@@ -40,7 +41,6 @@
 	var/singleton/flooring/flooring
 	var/mineral = MAT_STEEL
 
-CREATE_STANDARD_TURFS(/turf/simulated/floor)
 
 /turf/simulated/floor/is_plating()
 	return !flooring

@@ -72,7 +72,7 @@
 	 * FALSE - as it implies
 	 * null - use area default
 	 */
-	var/outdoors = FALSE
+	var/outdoors = null
 
 	//* Radiation
 	/// cached rad insulation of contents

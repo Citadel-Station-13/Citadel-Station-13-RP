@@ -164,7 +164,7 @@
 "aU" = (
 /obj/structure/bed/double/padded,
 /obj/item/bedsheet/hosdouble,
-/turf/simulated/floor/wood/classp,
+/turf/simulated/floor/wood,
 /area/class_m/inside/igloos)
 "aV" = (
 /obj/structure/bonfire,
@@ -201,7 +201,7 @@
 /area/class_m/outside/beachmiddle)
 "bb" = (
 /obj/machinery/vending/fishing,
-/turf/simulated/floor/wood/classp,
+/turf/simulated/floor/wood,
 /area/class_m/outside/winter)
 "bc" = (
 /obj/effect/floor_decal/corner_steel_grid/full,
@@ -238,7 +238,7 @@
 /area/class_m/inside/main)
 "bh" = (
 /obj/structure/undies_wardrobe,
-/turf/simulated/floor/wood/classp,
+/turf/simulated/floor/wood,
 /area/class_m/inside/igloos)
 "bj" = (
 /obj/structure/flora/ausbushes/grassybush,
@@ -3315,7 +3315,7 @@
 /area/class_m/outside)
 "nw" = (
 /obj/structure/bed/chair/bay/chair/padded/red/bignest,
-/turf/simulated/floor/wood/classp,
+/turf/simulated/floor/wood,
 /area/class_m/inside/igloos)
 "nz" = (
 /obj/machinery/light/flamp/noshade{
@@ -3374,7 +3374,7 @@
 /area/class_m/outside/winter)
 "nU" = (
 /obj/structure/lightpost,
-/turf/simulated/floor/wood/classp,
+/turf/simulated/floor/wood,
 /area/class_m/outside/winter)
 "nV" = (
 /obj/machinery/light/flamp/noshade{
@@ -4899,7 +4899,7 @@
 /turf/simulated/floor/wood/classh,
 /area/class_m/outside/desert)
 "ug" = (
-/turf/simulated/floor/wood/classp,
+/turf/simulated/floor/wood,
 /area/class_m/outside/winter)
 "uh" = (
 /obj/machinery/portable_atmospherics/canister/phoron/engine_setup,
@@ -5481,7 +5481,7 @@
 "xi" = (
 /obj/structure/bed/double/padded,
 /obj/item/bedsheet/greendouble,
-/turf/simulated/floor/wood/classp,
+/turf/simulated/floor/wood,
 /area/class_m/inside/igloos)
 "xj" = (
 /turf/simulated/wall/planetary/classh,
@@ -5663,7 +5663,7 @@
 /area/class_m/inside/main)
 "yh" = (
 /obj/machinery/light/flamp,
-/turf/simulated/floor/wood/classp,
+/turf/simulated/floor/wood,
 /area/class_m/inside/igloos)
 "yl" = (
 /obj/structure/closet/wardrobe/pjs,
@@ -5794,7 +5794,7 @@
 /area/class_m/outside)
 "yH" = (
 /obj/structure/simple_door/wood,
-/turf/simulated/floor/wood/classp,
+/turf/simulated/floor/wood,
 /area/class_m/inside/igloos)
 "yM" = (
 /obj/structure/railing/grey,
@@ -8999,7 +8999,7 @@
 /turf/simulated/floor/wood/classm,
 /area/class_m/inside/sauna3)
 "Mz" = (
-/turf/simulated/floor/wood/classp,
+/turf/simulated/floor/wood,
 /area/class_m/inside/igloos)
 "MB" = (
 /obj/effect/floor_decal/techfloor{
@@ -11416,7 +11416,7 @@
 /area/class_m/outside)
 "XH" = (
 /obj/structure/closet/wardrobe,
-/turf/simulated/floor/wood/classp,
+/turf/simulated/floor/wood,
 /area/class_m/inside/igloos)
 "XI" = (
 /obj/machinery/light/spot{

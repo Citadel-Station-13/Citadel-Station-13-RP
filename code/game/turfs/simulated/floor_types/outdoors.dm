@@ -26,13 +26,8 @@ CREATE_STANDARD_TURFS(/turf/simulated/floor/outdoors/rocks)
 
 // Called by weather processes, and maybe technomancers in the future.
 /turf/simulated/floor/proc/chill()
-	return
-
-/turf/simulated/floor/outdoors/chill()
-	PlaceOnTop(/turf/simulated/floor/outdoors/snow, flags = CHANGETURF_PRESERVE_OUTDOORS|CHANGETURF_INHERIT_AIR)
-
-/turf/simulated/floor/outdoors/snow/chill()
-	return // Todo: Add heavy snow.
+	if(outdoors)
+		PlaceOnTop(/turf/simulated/floor/outdoors/snow, flags = CHANGETURF_PRESERVE_OUTDOORS|CHANGETURF_INHERIT_AIR)
 
 /turf/simulated/floor/outdoors/legacy_ex_act(severity)
 	switch(severity)

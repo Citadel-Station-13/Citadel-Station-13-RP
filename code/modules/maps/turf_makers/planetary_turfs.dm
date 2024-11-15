@@ -129,14 +129,13 @@ FROZEN_TURF_CREATE(/turf/simulated/floor/gold)
 FROZEN_TURF_CREATE(/turf/simulated/floor/phoron)
 FROZEN_TURF_CREATE(/turf/simulated/floor/silver)
 FROZEN_TURF_CREATE(/turf/simulated/floor/wmarble)
-FROZEN_TURF_CREATE(/turf/simulated/floor/wood)
 FROZEN_TURF_CREATE(/turf/simulated/floor/water/indoors)
 FROZEN_TURF_CREATE(/turf/simulated/floor/old_tile/red)
 FROZEN_TURF_CREATE(/turf/simulated/floor/old_tile/blue)
 FROZEN_TURF_CREATE(/turf/simulated/floor/old_tile/green)
 FROZEN_TURF_CREATE(/turf/simulated/floor/outdoors/ice)
 FROZEN_TURF_CREATE(/turf/simulated/floor/outdoors/dirt)
-FROZEN_TURF_CREATE(/turf/simulated/floor/outdoors/grass/heavy/interior)
+FROZEN_TURF_CREATE(/turf/simulated/floor/outdoors/grass/heavy/indoors)
 FROZEN_TURF_CREATE(/turf/simulated/floor/outdoors/mud)
 FROZEN_TURF_CREATE(/turf/simulated/floor/outdoors/shelfice)
 FROZEN_TURF_CREATE(/turf/simulated/floor/carpet/purcarpet)
@@ -168,10 +167,10 @@ FROZEN_TURF_CREATE(/turf/simulated/mineral/floor)
 FROZEN_TURF_CREATE(/turf/simulated/mineral/floor/ignore_mapgen)
 
 //Exterior Turfs for weather effects.
-/turf/simulated/floor/classp/outdoors
+/turf/simulated/floor/outdoors
 	outdoors = TRUE
 
-/turf/simulated/floor/wood/classp/outdoors
+/turf/simulated/floor/wood/outdoors
 	outdoors = TRUE
 
 /turf/simulated/floor/outdoors/snow/classp/no_tree

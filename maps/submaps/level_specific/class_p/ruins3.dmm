@@ -3,7 +3,7 @@
 /turf/simulated/floor/outdoors/snow/classp,
 /area/class_p/ruins)
 "j" = (
-/turf/simulated/floor/classp/outdoors,
+/turf/simulated/floor/outdoors,
 /area/class_p/ruins)
 "m" = (
 /turf/simulated/wall/classp,
@@ -12,7 +12,7 @@
 /obj/random/mob/robotic/hivebot{
 	mob_faction = "frozen"
 	},
-/turf/simulated/floor/classp/outdoors,
+/turf/simulated/floor/outdoors,
 /area/class_p/ruins)
 "L" = (
 /obj/structure/table/gamblingtable,
@@ -24,7 +24,7 @@
 /area/class_p/ruins)
 "N" = (
 /obj/structure/closet/crate/secure/loot,
-/turf/simulated/floor/wood/classp,
+/turf/simulated/floor/wood,
 /area/class_p/ruins)
 "O" = (
 /obj/structure/bed,
@@ -40,7 +40,7 @@
 /turf/simulated/floor/carpet/purcarpet/classp,
 /area/class_p/ruins)
 "W" = (
-/turf/simulated/floor/wood/classp,
+/turf/simulated/floor/wood,
 /area/class_p/ruins)
 
 (1,1,1) = {"

@@ -3,7 +3,7 @@
 /turf/simulated/floor/outdoors/snow/classp,
 /area/class_p/ruins)
 "k" = (
-/turf/simulated/floor/classp/outdoors,
+/turf/simulated/floor/outdoors,
 /area/class_p/ruins)
 "C" = (
 /turf/simulated/floor/old_tile/green/classp{
@@ -18,7 +18,7 @@
 /obj/random/mob/robotic/hivebot{
 	mob_faction = "frozen"
 	},
-/turf/simulated/floor/classp,
+/turf/simulated/floor,
 /area/class_p/ruins)
 "N" = (
 /obj/structure/closet/crate/secure/loot,
@@ -30,12 +30,12 @@
 "Q" = (
 /obj/structure/table/survival_pod,
 /obj/random/triumph/uncertain,
-/turf/simulated/floor/classp/outdoors,
+/turf/simulated/floor/outdoors,
 /area/class_p/ruins)
 "R" = (
 /obj/structure/table,
 /obj/random/triumph/uncertain,
-/turf/simulated/floor/classp/outdoors,
+/turf/simulated/floor/outdoors,
 /area/class_p/ruins)
 "S" = (
 /obj/structure/table,

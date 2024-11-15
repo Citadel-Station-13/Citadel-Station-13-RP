@@ -152,7 +152,7 @@
 /obj/structure/bed/chair/sofa/black/left{
 	dir = 1
 	},
-/turf/simulated/floor/wood/classp,
+/turf/simulated/floor/wood,
 /area/admin_planet/croatoan/civilian/dorms)
 "at" = (
 /turf/simulated/wall/durasteel,
@@ -574,7 +574,7 @@
 /area/admin_planet/croatoan/high_sec_science_containment_cells)
 "bR" = (
 /obj/structure/closet/secure_closet/personal,
-/turf/simulated/floor/wood/classp,
+/turf/simulated/floor/wood,
 /area/admin_planet/croatoan/civilian/dorms)
 "bT" = (
 /obj/structure/cable{
@@ -1445,7 +1445,7 @@
 /area/admin_planet/croatoan/sci_primary_hallway)
 "ey" = (
 /obj/structure/closet/firecloset/full,
-/turf/simulated/floor/wood/classp,
+/turf/simulated/floor/wood,
 /area/admin_planet/croatoan/civilian/dorms)
 "ez" = (
 /turf/simulated/mineral/icerock,
@@ -1477,7 +1477,7 @@
 /area/admin_planet/croatoan/high_sec_science_lower_checkpoint)
 "eF" = (
 /obj/structure/bed/chair/wood,
-/turf/simulated/floor/wood/classp,
+/turf/simulated/floor/wood,
 /area/admin_planet/croatoan/civilian/dorms)
 "eG" = (
 /obj/effect/floor_decal/borderfloorwhite{
@@ -2152,7 +2152,7 @@
 /obj/structure/bed/chair/wood{
 	dir = 1
 	},
-/turf/simulated/floor/wood/classp,
+/turf/simulated/floor/wood,
 /area/admin_planet/croatoan/civilian/dorms)
 "he" = (
 /turf/simulated/floor/outdoors/snow/classp/no_tree,
@@ -2182,7 +2182,7 @@
 "hj" = (
 /obj/structure/bed/padded,
 /obj/item/bedsheet/green,
-/turf/simulated/floor/wood/classp,
+/turf/simulated/floor/wood,
 /area/admin_planet/croatoan/civilian/dorms)
 "hk" = (
 /obj/item/card/id/centcom/ERT{
@@ -2469,7 +2469,7 @@
 "ii" = (
 /obj/structure/bed/padded,
 /obj/item/bedsheet/mime,
-/turf/simulated/floor/wood/classp,
+/turf/simulated/floor/wood,
 /area/admin_planet/croatoan/civilian/dorms)
 "ij" = (
 /obj/machinery/power/apc/alarms_hidden/east_mount,
@@ -2966,7 +2966,7 @@
 "jW" = (
 /obj/structure/bed/padded,
 /obj/item/bedsheet/blue,
-/turf/simulated/floor/wood/classp,
+/turf/simulated/floor/wood,
 /area/admin_planet/croatoan/civilian/dorms)
 "jX" = (
 /obj/structure/cable{
@@ -3453,7 +3453,7 @@
 "lO" = (
 /obj/structure/bed/padded,
 /obj/item/bedsheet/clown,
-/turf/simulated/floor/wood/classp,
+/turf/simulated/floor/wood,
 /area/admin_planet/croatoan/civilian/dorms)
 "lQ" = (
 /obj/structure/table/reinforced,
@@ -4451,7 +4451,7 @@
 "po" = (
 /obj/machinery/power/apc/alarms_hidden/south_mount,
 /obj/structure/cable,
-/turf/simulated/floor/wood/classp,
+/turf/simulated/floor/wood,
 /area/admin_planet/croatoan/civilian/dorms)
 "pp" = (
 /mob/living/simple_mob/mechanical/combat_drone,
@@ -4795,7 +4795,7 @@
 "qu" = (
 /obj/structure/bed/padded,
 /obj/item/bedsheet/donator_teak,
-/turf/simulated/floor/wood/classp,
+/turf/simulated/floor/wood,
 /area/admin_planet/croatoan/civilian/dorms)
 "qw" = (
 /obj/random/obstruction,
@@ -5303,7 +5303,7 @@
 	id_tag = "dorm1";
 	name = "Dormitory Lobby"
 	},
-/turf/simulated/floor/wood/classp,
+/turf/simulated/floor/wood,
 /area/admin_planet/croatoan/civilian/dorms)
 "su" = (
 /obj/structure/sign/signnew/canisters,
@@ -5357,7 +5357,7 @@
 "sG" = (
 /obj/structure/bed/padded,
 /obj/item/bedsheet/purple,
-/turf/simulated/floor/wood/classp,
+/turf/simulated/floor/wood,
 /area/admin_planet/croatoan/civilian/dorms)
 "sJ" = (
 /obj/effect/floor_decal/corner/red/border,
@@ -6520,7 +6520,7 @@
 "wE" = (
 /obj/structure/bed/padded,
 /obj/item/bedsheet/brown,
-/turf/simulated/floor/wood/classp,
+/turf/simulated/floor/wood,
 /area/admin_planet/croatoan/civilian/dorms)
 "wG" = (
 /obj/machinery/power/apc/alarms_hidden/east_mount,
@@ -8043,7 +8043,7 @@
 /area/admin_planet/croatoan/high_sec_science_observation)
 "Cl" = (
 /obj/structure/table/wooden_reinforced,
-/turf/simulated/floor/wood/classp,
+/turf/simulated/floor/wood,
 /area/admin_planet/croatoan/civilian/dorms)
 "Cp" = (
 /obj/machinery/portable_atmospherics/canister/chlorine,
@@ -8405,7 +8405,7 @@
 "DQ" = (
 /obj/structure/bed/padded,
 /obj/item/bedsheet/orange,
-/turf/simulated/floor/wood/classp,
+/turf/simulated/floor/wood,
 /area/admin_planet/croatoan/civilian/dorms)
 "DT" = (
 /obj/effect/floor_decal/borderfloorblack,
@@ -8572,7 +8572,7 @@
 /obj/machinery/light{
 	dir = 8
 	},
-/turf/simulated/floor/wood/classp,
+/turf/simulated/floor/wood,
 /area/admin_planet/croatoan/civilian/dorms)
 "EC" = (
 /obj/structure/fake_stairs/north/top{
@@ -8755,7 +8755,7 @@
 	id_tag = "dorm1";
 	name = "Dormitory"
 	},
-/turf/simulated/floor/wood/classp,
+/turf/simulated/floor/wood,
 /area/admin_planet/croatoan/civilian/dorms)
 "Ff" = (
 /obj/effect/floor_decal/corner_oldtile/red/diagonal,
@@ -9030,7 +9030,7 @@
 /turf/simulated/floor/tiled/freezer/cold,
 /area/admin_planet/croatoan/civ_kitchen)
 "FU" = (
-/turf/simulated/floor/wood/classp,
+/turf/simulated/floor/wood,
 /area/admin_planet/croatoan/civilian/dorms)
 "FW" = (
 /obj/effect/floor_decal/borderfloor{
@@ -10115,7 +10115,7 @@
 /obj/item/card/id/civilian/janitor{
 	registered_name = "Chayse Nowton"
 	},
-/turf/simulated/floor/wood/classp,
+/turf/simulated/floor/wood,
 /area/admin_planet/croatoan/civilian/dorms)
 "JR" = (
 /obj/machinery/light/flicker,
@@ -10957,7 +10957,7 @@
 /obj/structure/bed/chair/wood{
 	dir = 1
 	},
-/turf/simulated/floor/wood/classp,
+/turf/simulated/floor/wood,
 /area/admin_planet/croatoan/civilian/dorms)
 "MS" = (
 /obj/machinery/portable_atmospherics/canister/nitrous_oxide,
@@ -11191,7 +11191,7 @@
 "NB" = (
 /obj/structure/bed/padded,
 /obj/item/bedsheet/yellow,
-/turf/simulated/floor/wood/classp,
+/turf/simulated/floor/wood,
 /area/admin_planet/croatoan/civilian/dorms)
 "NC" = (
 /obj/spawner/window/borosillicate/reinforced/full,
@@ -11446,7 +11446,7 @@
 /obj/structure/cable{
 	icon_state = "2-4"
 	},
-/turf/simulated/floor/wood/classp,
+/turf/simulated/floor/wood,
 /area/admin_planet/croatoan/civilian/dorms)
 "Or" = (
 /obj/structure/cable{
@@ -11785,7 +11785,7 @@
 /area/admin_planet/croatoan/sec_operations_center)
 "Ph" = (
 /obj/machinery/light,
-/turf/simulated/floor/wood/classp,
+/turf/simulated/floor/wood,
 /area/admin_planet/croatoan/civilian/dorms)
 "Pl" = (
 /obj/structure/cable{
@@ -12349,7 +12349,7 @@
 /obj/machinery/light{
 	dir = 4
 	},
-/turf/simulated/floor/wood/classp,
+/turf/simulated/floor/wood,
 /area/admin_planet/croatoan/civilian/dorms)
 "Rf" = (
 /obj/effect/floor_decal/borderfloorwhite{
@@ -12447,7 +12447,7 @@
 /obj/structure/bed/chair/sofa/black/right{
 	dir = 1
 	},
-/turf/simulated/floor/wood/classp,
+/turf/simulated/floor/wood,
 /area/admin_planet/croatoan/civilian/dorms)
 "Rz" = (
 /obj/effect/floor_decal/corner/red/border{
@@ -12473,7 +12473,7 @@
 /area/admin_planet/croatoan/med_checkpoint_lower)
 "RB" = (
 /obj/structure/table/bench/wooden,
-/turf/simulated/floor/wood/classp,
+/turf/simulated/floor/wood,
 /area/admin_planet/croatoan/civilian/dorms)
 "RD" = (
 /obj/machinery/suit_cycler/headofsecurity,
@@ -13433,12 +13433,12 @@
 "UU" = (
 /obj/structure/bed/padded,
 /obj/item/bedsheet/red,
-/turf/simulated/floor/wood/classp,
+/turf/simulated/floor/wood,
 /area/admin_planet/croatoan/civilian/dorms)
 "UV" = (
 /obj/structure/bed/padded,
 /obj/item/bedsheet/ian,
-/turf/simulated/floor/wood/classp,
+/turf/simulated/floor/wood,
 /area/admin_planet/croatoan/civilian/dorms)
 "UX" = (
 /obj/effect/floor_decal/corner/red/border{
@@ -13883,7 +13883,7 @@
 	name = "Backup Civilian Lockdown Passcode";
 	info = "Backup code for the civilian lockdown incase it triggers on accident again. System's faulty and we need to get it looked at, RD's pissed. Don't tell her about this paper though, I'll likely get chewed out. Code is.. '19982'"
 	},
-/turf/simulated/floor/wood/classp,
+/turf/simulated/floor/wood,
 /area/admin_planet/croatoan/civilian/dorms)
 "WF" = (
 /obj/structure/bed/chair/bay/comfy/red{
@@ -14082,7 +14082,7 @@
 /obj/machinery/light{
 	dir = 4
 	},
-/turf/simulated/floor/wood/classp,
+/turf/simulated/floor/wood,
 /area/admin_planet/croatoan/civilian/dorms)
 "Xl" = (
 /obj/effect/floor_decal/borderfloor,
@@ -14717,7 +14717,7 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/turf/simulated/floor/wood/classp,
+/turf/simulated/floor/wood,
 /area/admin_planet/croatoan/civilian/dorms)
 "Zn" = (
 /obj/machinery/biogenerator,
@@ -14879,7 +14879,7 @@
 "ZT" = (
 /obj/structure/bed/padded,
 /obj/item/bedsheet/cosmos,
-/turf/simulated/floor/wood/classp,
+/turf/simulated/floor/wood,
 /area/admin_planet/croatoan/civilian/dorms)
 "ZV" = (
 /obj/random/obstruction,

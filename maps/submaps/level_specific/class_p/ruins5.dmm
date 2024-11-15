@@ -26,13 +26,13 @@
 /turf/simulated/floor/outdoors/snow/classp/no_tree,
 /area/class_p/ruins)
 "G" = (
-/turf/simulated/floor/classp/outdoors,
+/turf/simulated/floor/outdoors,
 /area/class_p/ruins)
 "R" = (
 /obj/random/mob/sif/hostile{
 	mob_faction = "frozen"
 	},
-/turf/simulated/floor/classp/outdoors,
+/turf/simulated/floor/outdoors,
 /area/class_p/ruins)
 
 (1,1,1) = {"

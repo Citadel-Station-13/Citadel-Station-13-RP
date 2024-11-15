@@ -8,18 +8,18 @@
 /area/class_p/ruins)
 "m" = (
 /obj/effect/spider/stickyweb,
-/turf/simulated/floor/classp/outdoors,
+/turf/simulated/floor/outdoors,
 /area/class_p/ruins)
 "n" = (
 /obj/random/mob/sif/hostile{
 	mob_faction = "frozen"
 	},
-/turf/simulated/floor/classp/outdoors,
+/turf/simulated/floor/outdoors,
 /area/class_p/ruins)
 "s" = (
 /obj/effect/spider/cocoon,
 /obj/random/triumph/uncertain,
-/turf/simulated/floor/classp/outdoors,
+/turf/simulated/floor/outdoors,
 /area/class_p/ruins)
 "t" = (
 /obj/effect/spider/stickyweb,
@@ -33,7 +33,7 @@
 /turf/simulated/wall/classp,
 /area/class_p/ruins)
 "F" = (
-/turf/simulated/floor/classp/outdoors,
+/turf/simulated/floor/outdoors,
 /area/class_p/ruins)
 "I" = (
 /obj/random/mob/sif/hostile{
