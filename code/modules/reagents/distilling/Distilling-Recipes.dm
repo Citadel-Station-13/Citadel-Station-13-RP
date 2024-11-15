@@ -12,12 +12,19 @@
 
 	var/temp_shift = 0 // How much the temperature changes when the reaction occurs.
 
+/datum/chemical_reaction/on_reaction_start(datum/reagent_holder/holder)
+	. = ..()
+	holder.my_atom.visible_message("<span class='notice'>\The [holder.my_atom] rumbles to life!</span>")
+
 /datum/chemical_reaction/distilling/on_reaction_tick(datum/reagent_holder/holder, delta_time, multiplier)
 	. = ..()
-	if(istype(holder.my_atom, /obj/item/reagent_containers/glass/distilling))
-		var/obj/item/reagent_containers/glass/distilling/D = holder.my_atom
-		var/obj/machinery/portable_atmospherics/powered/reagent_distillery/RD = D.Master
-		RD.current_temp += temp_shift
+	if(prob(10))
+		holder.my_atom.visible_message("<span class='notice'>\The [holder.my_atom] rumbles faintly...</span>")
+	holder.temperature += temp_shift
+
+/datum/chemical_reaction/distilling/on_reaction_finish(datum/reagent_holder/holder)
+	. = ..()
+	holder.my_atom.visible_message("<span class='notice'>\The [holder.my_atom]'s rumbling dies down...</span>")
 
 // Subtypes //
 
