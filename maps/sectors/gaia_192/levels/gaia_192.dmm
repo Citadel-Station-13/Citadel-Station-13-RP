@@ -133,7 +133,7 @@
 /area/class_m/inside/hotspringcaves)
 "aP" = (
 /mob/living/simple_mob/animal/sif/duck,
-/turf/simulated/floor/outdoors/ice/classp/indoors,
+/turf/simulated/floor/outdoors/ice/indoors,
 /area/class_m/outside/winter)
 "aQ" = (
 /obj/structure/window/reinforced/full,
@@ -145,7 +145,7 @@
 /area/class_m/inside/dorms)
 "aR" = (
 /mob/living/simple_mob/animal/sif/diyaab,
-/turf/simulated/floor/outdoors/snow/classp,
+/turf/simulated/floor/outdoors/snow,
 /area/class_m/outside/winter)
 "aS" = (
 /obj/structure/table/marble,
@@ -306,7 +306,7 @@
 /obj/machinery/light/spot/no_nightshift{
 	dir = 1
 	},
-/turf/simulated/floor/outdoors/snow/classp,
+/turf/simulated/floor/outdoors/snow,
 /area/class_m/outside/winter)
 "bz" = (
 /obj/structure/bed/chair/comfy/black{
@@ -528,7 +528,7 @@
 /area/class_m/inside/vip_dorms)
 "co" = (
 /obj/structure/railing/grey,
-/turf/simulated/floor/outdoors/ice/classp/indoors,
+/turf/simulated/floor/outdoors/ice/indoors,
 /area/class_m/outside/winter)
 "cp" = (
 /obj/structure/sign/double/barsign{
@@ -542,7 +542,7 @@
 /area/class_m/outside/desert)
 "cs" = (
 /mob/living/simple_mob/animal/passive/penguin,
-/turf/simulated/floor/water/indoors/classp,
+/turf/simulated/floor/water/indoors,
 /area/class_m/outside/winter)
 "ct" = (
 /obj/machinery/atmospherics/pipe/tank/phoron,
@@ -830,7 +830,7 @@
 /obj/structure/railing/grey{
 	dir = 8
 	},
-/turf/simulated/floor/outdoors/ice/classp/indoors,
+/turf/simulated/floor/outdoors/ice/indoors,
 /area/class_m/outside/winter)
 "dK" = (
 /obj/effect/floor_decal/spline/plain{
@@ -954,7 +954,7 @@
 "ep" = (
 /obj/structure/railing/grey,
 /obj/effect/catwalk_plated/dark,
-/turf/simulated/floor/outdoors/ice/classp/indoors,
+/turf/simulated/floor/outdoors/ice/indoors,
 /area/class_m/outside/winter)
 "eq" = (
 /obj/structure/railing,
@@ -1034,7 +1034,7 @@
 /turf/simulated/floor/concrete/indoors,
 /area/class_m/inside/hotspringcaves)
 "eJ" = (
-/turf/simulated/wall/snowbrick/classp,
+/turf/simulated/wall/snowbrick,
 /area/class_m/outside/winter)
 "eK" = (
 /obj/effect/mist,
@@ -1229,7 +1229,7 @@
 /obj/structure/railing/grey{
 	dir = 8
 	},
-/turf/simulated/floor/outdoors/ice/classp/indoors,
+/turf/simulated/floor/outdoors/ice/indoors,
 /area/class_m/outside/winter)
 "fA" = (
 /obj/machinery/recharge_station,
@@ -1279,7 +1279,7 @@
 "fK" = (
 /obj/structure/lightpost,
 /obj/structure/flora/rock/ice/alternative_2,
-/turf/simulated/floor/water/indoors/classp,
+/turf/simulated/floor/water/indoors,
 /area/class_m/outside/winter)
 "fL" = (
 /obj/machinery/light/flamp/noshade{
@@ -1442,14 +1442,14 @@
 /obj/machinery/light/spot/no_nightshift{
 	dir = 4
 	},
-/turf/simulated/floor/outdoors/ice/classp/indoors,
+/turf/simulated/floor/outdoors/ice/indoors,
 /area/class_m/outside/winter)
 "gA" = (
 /obj/structure/flora/rock/ice/alternative_1,
 /obj/structure/railing/grey{
 	dir = 4
 	},
-/turf/simulated/floor/outdoors/ice/classp/indoors,
+/turf/simulated/floor/outdoors/ice/indoors,
 /area/class_m/outside/winter)
 "gB" = (
 /obj/structure/railing/grey{
@@ -2397,7 +2397,7 @@
 /turf/simulated/floor/tiled/white,
 /area/class_m/inside/cabin)
 "kp" = (
-/turf/simulated/wall/classp,
+/turf/simulated/wall,
 /area/class_m/inside/maintenance/winter)
 "kr" = (
 /obj/machinery/button/remote/airlock{
@@ -2712,7 +2712,7 @@
 /turf/simulated/floor/concrete/rng/classm/outdoors,
 /area/class_m/inside/hotspringcaves)
 "lb" = (
-/turf/simulated/wall/classp,
+/turf/simulated/wall,
 /area/class_m/inside/coats)
 "lc" = (
 /obj/structure/catwalk,
@@ -3370,7 +3370,7 @@
 "nT" = (
 /obj/structure/table/rack/steel,
 /obj/fiftyspawner/log,
-/turf/simulated/floor/outdoors/snow/classp,
+/turf/simulated/floor/outdoors/snow,
 /area/class_m/outside/winter)
 "nU" = (
 /obj/structure/lightpost,
@@ -3909,7 +3909,7 @@
 /turf/simulated/wall/classm,
 /area/class_m/inside/bathroom)
 "ql" = (
-/turf/simulated/floor/outdoors/ice/classp/indoors,
+/turf/simulated/floor/outdoors/ice/indoors,
 /area/class_m/outside/winter)
 "qm" = (
 /obj/structure/fence{
@@ -4364,7 +4364,7 @@
 /area/class_m/inside/dorms)
 "rU" = (
 /obj/structure/flora/rock/ice/alternative_1,
-/turf/simulated/floor/water/indoors/classp,
+/turf/simulated/floor/water/indoors,
 /area/class_m/outside/winter)
 "rV" = (
 /obj/effect/overlay/palmtree_r,
@@ -4469,7 +4469,7 @@
 /area/class_m/outside/desert)
 "ss" = (
 /mob/living/simple_mob/animal/passive/penguin/baby,
-/turf/simulated/floor/water/indoors/classp,
+/turf/simulated/floor/water/indoors,
 /area/class_m/outside/winter)
 "st" = (
 /obj/structure/flora/tree/jungle{
@@ -4501,7 +4501,7 @@
 /area/class_m/inside/dorms)
 "sE" = (
 /mob/living/simple_mob/animal/passive/penguin/baby,
-/turf/simulated/floor/outdoors/snow/classp,
+/turf/simulated/floor/outdoors/snow,
 /area/class_m/outside/winter)
 "sF" = (
 /obj/structure/bed/chair/sofa/black/corner,
@@ -4865,7 +4865,7 @@
 /turf/simulated/floor/water/classh,
 /area/class_m/outside/desert)
 "ua" = (
-/turf/simulated/wall/planetary/frozen/classp,
+/turf/simulated/wall/planetary/frozen,
 /area/class_m/outside/winter)
 "ub" = (
 /obj/machinery/vending/coffee,
@@ -4877,7 +4877,7 @@
 	dir = 4
 	},
 /obj/effect/catwalk_plated/dark,
-/turf/simulated/floor/outdoors/ice/classp/indoors,
+/turf/simulated/floor/outdoors/ice/indoors,
 /area/class_m/outside/winter)
 "ud" = (
 /obj/structure/table/marble,
@@ -4937,7 +4937,7 @@
 /obj/structure/railing/grey{
 	dir = 4
 	},
-/turf/simulated/floor/outdoors/ice/classp/indoors,
+/turf/simulated/floor/outdoors/ice/indoors,
 /area/class_m/outside/winter)
 "uv" = (
 /obj/effect/mist,
@@ -5028,7 +5028,7 @@
 /turf/simulated/floor/outdoors/grass/classm,
 /area/class_m/outside)
 "uT" = (
-/turf/simulated/floor/outdoors/snow/classp,
+/turf/simulated/floor/outdoors/snow,
 /area/class_m/outside/winter)
 "uU" = (
 /obj/structure/window/basic{
@@ -5304,7 +5304,7 @@
 /area/class_m/outside)
 "wA" = (
 /obj/structure/flora/rock/ice/alternative_1,
-/turf/simulated/floor/outdoors/ice/classp/indoors,
+/turf/simulated/floor/outdoors/ice/indoors,
 /area/class_m/outside/winter)
 "wB" = (
 /obj/structure/railing/grey{
@@ -5470,7 +5470,7 @@
 "xg" = (
 /obj/structure/lightpost,
 /obj/structure/flora/rock/ice/alternative_1,
-/turf/simulated/floor/outdoors/ice/classp/indoors,
+/turf/simulated/floor/outdoors/ice/indoors,
 /area/class_m/outside/winter)
 "xh" = (
 /obj/structure/bed/chair/sofa/black/right{
@@ -5614,7 +5614,7 @@
 /turf/simulated/mineral/ignore_mapgen,
 /area/class_m/outside)
 "xR" = (
-/turf/simulated/wall/planetary/frozen/classp,
+/turf/simulated/wall/planetary/frozen,
 /area/class_m/inside/maintenance/winter)
 "xT" = (
 /turf/simulated/floor/water/beach{
@@ -5831,7 +5831,7 @@
 /turf/simulated/floor/tiled/classm/outdoors,
 /area/class_m/outside)
 "yU" = (
-/turf/simulated/floor/water/indoors/classp,
+/turf/simulated/floor/water/indoors,
 /area/class_m/outside/winter)
 "yW" = (
 /obj/structure/bed/chair/sofa/black,
@@ -6274,7 +6274,7 @@
 /area/class_m/outside)
 "AG" = (
 /obj/structure/lightpost,
-/turf/simulated/floor/outdoors/snow/classp,
+/turf/simulated/floor/outdoors/snow,
 /area/class_m/outside/winter)
 "AH" = (
 /obj/structure/table/standard,
@@ -6487,7 +6487,7 @@
 /obj/structure/railing/grey{
 	dir = 1
 	},
-/turf/simulated/floor/outdoors/ice/classp/indoors,
+/turf/simulated/floor/outdoors/ice/indoors,
 /area/class_m/outside/winter)
 "BC" = (
 /obj/effect/floor_decal/spline/plain{
@@ -6834,7 +6834,7 @@
 /obj/machinery/light/spot/no_nightshift{
 	dir = 8
 	},
-/turf/simulated/floor/outdoors/ice/classp/indoors,
+/turf/simulated/floor/outdoors/ice/indoors,
 /area/class_m/outside/winter)
 "Dm" = (
 /turf/simulated/floor/carpet/turcarpet,
@@ -7119,7 +7119,7 @@
 "Ex" = (
 /obj/structure/lightpost,
 /obj/structure/flora/rock/ice/alternative_2,
-/turf/simulated/floor/outdoors/ice/classp/indoors,
+/turf/simulated/floor/outdoors/ice/indoors,
 /area/class_m/outside/winter)
 "Ey" = (
 /turf/simulated/floor/tiled/classm,
@@ -7171,7 +7171,7 @@
 	dir = 4;
 	nightshift_allowed = 0
 	},
-/turf/simulated/floor/outdoors/snow/classp,
+/turf/simulated/floor/outdoors/snow,
 /area/class_m/outside/winter)
 "EM" = (
 /obj/machinery/light/flamp/noshade,
@@ -7243,7 +7243,7 @@
 /turf/simulated/floor/tiled/classm,
 /area/class_m/inside/hangars)
 "EZ" = (
-/turf/simulated/wall/snowbrick/classp,
+/turf/simulated/wall/snowbrick,
 /area/class_m/inside/igloos)
 "Fa" = (
 /obj/effect/floor_decal/spline/plain{
@@ -7260,7 +7260,7 @@
 	dir = 8
 	},
 /mob/living/simple_mob/animal/sif/diyaab,
-/turf/simulated/floor/outdoors/snow/classp,
+/turf/simulated/floor/outdoors/snow,
 /area/class_m/outside/winter)
 "Fd" = (
 /mob/living/simple_mob/animal/passive/fish/koi,
@@ -7467,7 +7467,7 @@
 /area/class_m/inside/cabin)
 "Gd" = (
 /mob/living/simple_mob/animal/sif/glitterfly,
-/turf/simulated/floor/outdoors/ice/classp/indoors,
+/turf/simulated/floor/outdoors/ice/indoors,
 /area/class_m/outside/winter)
 "Gf" = (
 /obj/machinery/button/remote/airlock{
@@ -7621,7 +7621,7 @@
 /obj/structure/railing/grey{
 	dir = 4
 	},
-/turf/simulated/floor/outdoors/ice/classp/indoors,
+/turf/simulated/floor/outdoors/ice/indoors,
 /area/class_m/outside/winter)
 "GP" = (
 /obj/structure/toilet{
@@ -8009,7 +8009,7 @@
 	dir = 1
 	},
 /obj/effect/catwalk_plated/dark,
-/turf/simulated/floor/outdoors/ice/classp/indoors,
+/turf/simulated/floor/outdoors/ice/indoors,
 /area/class_m/outside/winter)
 "IE" = (
 /mob/living/simple_mob/animal/passive/lizard,
@@ -8107,7 +8107,7 @@
 /area/class_m/outside/desert)
 "IY" = (
 /mob/living/simple_mob/animal/passive/penguin,
-/turf/simulated/floor/outdoors/snow/classp,
+/turf/simulated/floor/outdoors/snow,
 /area/class_m/outside/winter)
 "IZ" = (
 /turf/simulated/floor/carpet,
@@ -8249,7 +8249,7 @@
 /area/class_m/outside/desert)
 "Jz" = (
 /obj/effect/catwalk_plated/dark,
-/turf/simulated/floor/outdoors/ice/classp/indoors,
+/turf/simulated/floor/outdoors/ice/indoors,
 /area/class_m/inside/maintenance/winter)
 "JD" = (
 /obj/effect/floor_decal/corner_steel_grid{
@@ -9087,7 +9087,7 @@
 	dir = 8
 	},
 /obj/effect/catwalk_plated/dark,
-/turf/simulated/floor/outdoors/ice/classp/indoors,
+/turf/simulated/floor/outdoors/ice/indoors,
 /area/class_m/outside/winter)
 "MQ" = (
 /mob/living/simple_mob/animal/passive/fish/solarfish,
@@ -9348,7 +9348,7 @@
 /obj/structure/railing/grey{
 	dir = 1
 	},
-/turf/simulated/floor/outdoors/ice/classp/indoors,
+/turf/simulated/floor/outdoors/ice/indoors,
 /area/class_m/outside/winter)
 "Ot" = (
 /obj/structure/railing,
@@ -9833,7 +9833,7 @@
 /area/class_m/inside/maintenance/desert)
 "Pw" = (
 /obj/effect/catwalk_plated/dark,
-/turf/simulated/floor/outdoors/ice/classp/indoors,
+/turf/simulated/floor/outdoors/ice/indoors,
 /area/class_m/outside/winter)
 "Py" = (
 /obj/structure/flora/ausbushes/fullgrass,
@@ -9900,7 +9900,7 @@
 /obj/machinery/light/spot/no_nightshift{
 	dir = 4
 	},
-/turf/simulated/floor/outdoors/snow/classp,
+/turf/simulated/floor/outdoors/snow,
 /area/class_m/outside/winter)
 "PL" = (
 /obj/effect/floor_decal/industrial/warning/dust/corner{
@@ -10053,7 +10053,7 @@
 /obj/structure/railing/grey{
 	dir = 8
 	},
-/turf/simulated/floor/outdoors/ice/classp/indoors,
+/turf/simulated/floor/outdoors/ice/indoors,
 /area/class_m/outside/winter)
 "Qw" = (
 /obj/structure/bed/chair{
@@ -10237,7 +10237,7 @@
 /obj/machinery/light/spot{
 	nightshift_allowed = 0
 	},
-/turf/simulated/floor/outdoors/snow/classp,
+/turf/simulated/floor/outdoors/snow,
 /area/class_m/outside/winter)
 "RH" = (
 /obj/structure/table/marble,
@@ -10335,7 +10335,7 @@
 /area/class_m/inside/islandbeachhouse)
 "Sd" = (
 /mob/living/simple_mob/animal/passive/penguin/emperor,
-/turf/simulated/floor/outdoors/snow/classp,
+/turf/simulated/floor/outdoors/snow,
 /area/class_m/outside/winter)
 "Se" = (
 /obj/effect/floor_decal/river_beach_edge{
@@ -11267,7 +11267,7 @@
 /obj/machinery/light/spot/no_nightshift{
 	dir = 8
 	},
-/turf/simulated/floor/outdoors/snow/classp,
+/turf/simulated/floor/outdoors/snow,
 /area/class_m/outside/winter)
 "WT" = (
 /obj/machinery/light/spot{
@@ -11408,7 +11408,7 @@
 /area/class_m/inside/coats)
 "XE" = (
 /mob/living/simple_mob/animal/sif/glitterfly,
-/turf/simulated/floor/outdoors/snow/classp,
+/turf/simulated/floor/outdoors/snow,
 /area/class_m/outside/winter)
 "XG" = (
 /obj/structure/catwalk,
@@ -11760,7 +11760,7 @@
 /area/class_m/outside)
 "Zn" = (
 /mob/living/simple_mob/animal/sif/duck,
-/turf/simulated/floor/water/indoors/classp,
+/turf/simulated/floor/water/indoors,
 /area/class_m/outside/winter)
 "Zo" = (
 /obj/structure/window/reinforced{
@@ -11879,7 +11879,7 @@
 /obj/structure/railing/grey{
 	dir = 4
 	},
-/turf/simulated/floor/outdoors/ice/classp/indoors,
+/turf/simulated/floor/outdoors/ice/indoors,
 /area/class_m/outside/winter)
 "ZX" = (
 /obj/effect/floor_decal/river_beach_edge{

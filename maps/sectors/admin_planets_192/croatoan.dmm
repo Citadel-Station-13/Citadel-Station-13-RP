@@ -986,7 +986,7 @@
 	info = "The further we go in, the heavier gear we need. Mountain's tough as Hell to dig into, had to start using those bulky excavation drills."
 	},
 /obj/structure/table/reinforced,
-/turf/simulated/floor/outdoors/snow/classp/no_tree,
+/turf/simulated/floor/outdoors/snow/no_tree,
 /area/admin_planet/croatoan/mountain)
 "cX" = (
 /obj/effect/floor_decal/industrial/warning{
@@ -1039,7 +1039,7 @@
 /obj/structure/railing/grey{
 	dir = 3
 	},
-/turf/simulated/floor/outdoors/snow/classp/no_tree,
+/turf/simulated/floor/outdoors/snow/no_tree,
 /area/admin_planet/croatoan/civ_bar_public)
 "dk" = (
 /obj/effect/floor_decal/borderfloorblack{
@@ -1398,7 +1398,7 @@
 /area/admin_planet/croatoan/mountain)
 "eo" = (
 /obj/machinery/light/flamp/noshade,
-/turf/simulated/floor/outdoors/dirt/classp,
+/turf/simulated/floor/outdoors/dirt,
 /area/admin_planet/croatoan/mountain_plains)
 "ep" = (
 /obj/machinery/light,
@@ -1994,7 +1994,7 @@
 /area/admin_planet/croatoan/high_sec_science_checkpoint)
 "gt" = (
 /obj/machinery/mining/brace,
-/turf/simulated/floor/outdoors/snow/classp/no_tree,
+/turf/simulated/floor/outdoors/snow/no_tree,
 /area/admin_planet/croatoan/mountain_plains)
 "gu" = (
 /obj/spawner/window/low_wall/reinforced/full,
@@ -2126,7 +2126,7 @@
 /turf/simulated/floor/tiled/monotile,
 /area/admin_planet/croatoan/sci_xenoflora_lab)
 "gY" = (
-/turf/simulated/floor/outdoors/snow/classp/no_tree,
+/turf/simulated/floor/outdoors/snow/no_tree,
 /area/admin_planet/croatoan/mountain_plains)
 "gZ" = (
 /obj/structure/railing{
@@ -2155,7 +2155,7 @@
 /turf/simulated/floor/wood,
 /area/admin_planet/croatoan/civilian/dorms)
 "he" = (
-/turf/simulated/floor/outdoors/snow/classp/no_tree,
+/turf/simulated/floor/outdoors/snow/no_tree,
 /area/admin_planet/croatoan/mountain)
 "hf" = (
 /obj/structure/salvageable/server,
@@ -3144,7 +3144,7 @@
 /area/admin_planet/croatoan/sci_robotics_lab)
 "kI" = (
 /obj/machinery/light/flamp/noshade,
-/turf/simulated/floor/outdoors/dirt/classp,
+/turf/simulated/floor/outdoors/dirt,
 /area/admin_planet/croatoan/med_checkpoint_lower)
 "kK" = (
 /obj/effect/floor_decal/borderfloor{
@@ -3424,7 +3424,7 @@
 /area/admin_planet/croatoan/high_sec_science_containment_cells)
 "lK" = (
 /obj/machinery/light/flamp/noshade,
-/turf/simulated/floor/outdoors/snow/classp/no_tree,
+/turf/simulated/floor/outdoors/snow/no_tree,
 /area/admin_planet/croatoan/sci_cargo_shuttle_pad)
 "lL" = (
 /obj/effect/floor_decal/borderfloorblack{
@@ -3441,7 +3441,7 @@
 /area/admin_planet/croatoan/high_sec_science_observation)
 "lM" = (
 /obj/spawner/corpse/syndicatecommando,
-/turf/simulated/floor/outdoors/snow/classp/no_tree,
+/turf/simulated/floor/outdoors/snow/no_tree,
 /area/admin_planet/croatoan/landing_pad)
 "lN" = (
 /obj/spawner/window/borosillicate/reinforced/full,
@@ -3786,7 +3786,7 @@
 /obj/effect/shuttle_landmark/automatic{
 	name = "Hammer-Head Landing Pad"
 	},
-/turf/simulated/floor/outdoors/snow/classp/no_tree,
+/turf/simulated/floor/outdoors/snow/no_tree,
 /area/admin_planet/croatoan/landing_pad)
 "ne" = (
 /mob/living/simple_mob/mechanical/combat_drone,
@@ -4212,7 +4212,7 @@
 /area/admin_planet/croatoan/med_treatment)
 "oy" = (
 /obj/machinery/light/flamp,
-/turf/simulated/floor/outdoors/snow/classp/no_tree,
+/turf/simulated/floor/outdoors/snow/no_tree,
 /area/admin_planet/croatoan/landing_pad)
 "oB" = (
 /obj/effect/floor_decal/corner/grey/diagonal,
@@ -5739,7 +5739,7 @@
 	dir = 4
 	},
 /obj/machinery/camera/east_mount,
-/turf/simulated/floor/outdoors/dirt/classp,
+/turf/simulated/floor/outdoors/dirt,
 /area/admin_planet/croatoan/med_checkpoint_lower)
 "tN" = (
 /obj/machinery/light{
@@ -5852,7 +5852,7 @@
 	docking_controller = "frozen";
 	name = "Civilian Shuttle Landing Pad"
 	},
-/turf/simulated/floor/outdoors/snow/classp/no_tree,
+/turf/simulated/floor/outdoors/snow/no_tree,
 /area/admin_planet/croatoan/landing_pad)
 "um" = (
 /turf/simulated/wall/r_wall/prepainted/security,
@@ -5887,7 +5887,7 @@
 /area/admin_planet/croatoan/med_chemistry)
 "ut" = (
 /obj/machinery/camera/west_mount,
-/turf/simulated/floor/outdoors/dirt/classp,
+/turf/simulated/floor/outdoors/dirt,
 /area/admin_planet/croatoan/mountain_plains)
 "uu" = (
 /obj/structure/table/reinforced,
@@ -6837,7 +6837,7 @@
 /turf/simulated/floor/reinforced,
 /area/admin_planet/croatoan/sci_cargo_shuttle_pad)
 "xO" = (
-/turf/simulated/floor/outdoors/snow/classp/no_tree,
+/turf/simulated/floor/outdoors/snow/no_tree,
 /area/admin_planet/croatoan/sci_cargo_shuttle_pad)
 "xR" = (
 /obj/structure/table/rack/shelf/steel,
@@ -7923,7 +7923,7 @@
 /area/admin_planet/croatoan/med_cmo_office)
 "BL" = (
 /obj/machinery/light/flamp/noshade,
-/turf/simulated/floor/outdoors/snow/classp/no_tree,
+/turf/simulated/floor/outdoors/snow/no_tree,
 /area/admin_planet/croatoan/mountain_plains)
 "BM" = (
 /obj/structure/railing{
@@ -8288,7 +8288,7 @@
 /area/admin_planet/croatoan/civ_bar_public)
 "Dn" = (
 /obj/machinery/light/flamp/noshade,
-/turf/simulated/floor/outdoors/snow/classp/no_tree,
+/turf/simulated/floor/outdoors/snow/no_tree,
 /area/admin_planet/croatoan/landing_pad)
 "Dp" = (
 /turf/simulated/wall/r_wall/prepainted/security,
@@ -9210,7 +9210,7 @@
 	id_tag = "dorm1";
 	name = "Dormitory"
 	},
-/turf/simulated/floor/trap/delayed/wood/classp,
+/turf/simulated/floor/trap/delayed/wood,
 /area/admin_planet/croatoan/civilian/dorms)
 "GJ" = (
 /obj/structure/closet/l3closet/scientist,
@@ -9388,7 +9388,7 @@
 /area/admin_planet/croatoan/med_treatment)
 "Hn" = (
 /obj/structure/barricade,
-/turf/simulated/floor/outdoors/snow/classp/no_tree,
+/turf/simulated/floor/outdoors/snow/no_tree,
 /area/admin_planet/croatoan/mountain)
 "Hu" = (
 /obj/effect/floor_decal/industrial/warning{
@@ -9408,7 +9408,7 @@
 /area/admin_planet/croatoan/civ_kitchen)
 "Hz" = (
 /obj/machinery/camera/west_mount,
-/turf/simulated/floor/outdoors/snow/classp/no_tree,
+/turf/simulated/floor/outdoors/snow/no_tree,
 /area/admin_planet/croatoan/mountain_plains)
 "HA" = (
 /obj/effect/floor_decal/industrial/loading{
@@ -9928,7 +9928,7 @@
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 4
 	},
-/turf/simulated/floor/outdoors/snow/classp/no_tree,
+/turf/simulated/floor/outdoors/snow/no_tree,
 /area/admin_planet/croatoan/landing_pad)
 "Jk" = (
 /obj/structure/bed/chair{
@@ -10042,7 +10042,7 @@
 	docking_controller = "frozen";
 	name = "Exploration Shuttle Landing Pad"
 	},
-/turf/simulated/floor/outdoors/snow/classp/no_tree,
+/turf/simulated/floor/outdoors/snow/no_tree,
 /area/admin_planet/croatoan/landing_pad)
 "JE" = (
 /obj/structure/cable{
@@ -10663,7 +10663,7 @@
 /obj/machinery/mining/drill{
 	name = "Excavation Drill"
 	},
-/turf/simulated/floor/outdoors/snow/classp/no_tree,
+/turf/simulated/floor/outdoors/snow/no_tree,
 /area/admin_planet/croatoan/mountain_plains)
 "LK" = (
 /obj/spawner/window/borosillicate/reinforced/full,
@@ -11426,7 +11426,7 @@
 /area/admin_planet/croatoan/sci_entry_hallway)
 "Ok" = (
 /obj/spawner/corpse/scientist,
-/turf/simulated/floor/outdoors/snow/classp/no_tree,
+/turf/simulated/floor/outdoors/snow/no_tree,
 /area/admin_planet/croatoan/mountain_plains)
 "On" = (
 /obj/structure/closet/l3closet/scientist,
@@ -12422,7 +12422,7 @@
 /turf/simulated/floor/durasteel,
 /area/admin_planet/croatoan/high_sec_science_lower_checkpoint)
 "Rr" = (
-/turf/simulated/floor/outdoors/dirt/classp,
+/turf/simulated/floor/outdoors/dirt,
 /area/admin_planet/croatoan/mountain_plains)
 "Rt" = (
 /turf/simulated/wall/r_wall/prepainted/security,
@@ -14707,7 +14707,7 @@
 /turf/simulated/floor/reinforced,
 /area/admin_planet/croatoan/high_sec_science_containment_cells)
 "Zl" = (
-/turf/simulated/floor/outdoors/snow/classp/no_tree,
+/turf/simulated/floor/outdoors/snow/no_tree,
 /area/admin_planet/croatoan/landing_pad)
 "Zm" = (
 /obj/machinery/door/airlock{
