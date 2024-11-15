@@ -45,16 +45,6 @@
 	integrity = 120
 	integrity_max = 120
 
-/obj/structure/alien/resin/Initialize(mapload)
-	. = ..()
-	var/turf/T = get_turf(src)
-	T.thermal_conductivity = WALL_HEAT_TRANSFER_COEFFICIENT
-
-/obj/structure/alien/resin/Destroy()
-	var/turf/T = get_turf(src)
-	T.thermal_conductivity = initial(T.thermal_conductivity)
-	..()
-
 /obj/structure/alien/resin/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(iscarbon(user))
 		var/mob/living/carbon/C = user

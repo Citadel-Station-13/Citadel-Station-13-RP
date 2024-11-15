@@ -8,14 +8,14 @@
 	damage_mode = DAMAGE_MODE_SHARP | DAMAGE_MODE_EDGE
 	item_state = "shard-glass"
 	attack_verb = list("stabbed", "slashed", "sliced", "cut")
-	material_parts = /datum/material/glass
+	material_parts = /datum/prototype/material/glass
 
 /obj/item/material/shard/Initialize(mapload, material)
 	pixel_x = rand(-8, 8)
 	pixel_y = rand(-8, 8)
 	. = ..()
 
-/obj/item/material/shard/update_material_single(datum/material/material)
+/obj/item/material/shard/update_material_single(datum/prototype/material/material)
 	. = ..()
 	icon_state = "[material.shard_icon][pick("large", "medium", "small")]"
 	if(material_color)
@@ -45,7 +45,7 @@
 	return (BRUTELOSS)
 
 /obj/item/material/shard/attackby(obj/item/W as obj, mob/user as mob)
-	var/datum/material/material = get_material_part(MATERIAL_PART_DEFAULT)
+	var/datum/prototype/material/material = get_material_part(MATERIAL_PART_DEFAULT)
 	if(istype(W, /obj/item/weldingtool) && material.shard_can_repair)
 		var/obj/item/weldingtool/WT = W
 		if(WT.remove_fuel(0, user))
@@ -144,10 +144,10 @@
 
 // Preset types - left here for the code that uses them
 /obj/item/material/shard/shrapnel
-	material_parts = /datum/material/steel
+	material_parts = /datum/prototype/material/steel
 
 /obj/item/material/shard/phoron
-	material_parts = /datum/material/glass/phoron
+	material_parts = /datum/prototype/material/glass/phoron
 
 /obj/item/material/shard/wood
-	material_parts = /datum/material/wood_plank
+	material_parts = /datum/prototype/material/wood_plank

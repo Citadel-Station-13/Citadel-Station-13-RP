@@ -1,6 +1,5 @@
 /mob/living/simple_mob/animal/space/xenomorph
 	iff_factions = MOB_IFF_FACTION_XENOMORPH
-	mob_class = MOB_CLASS_ABERRATION
 	randomized = FALSE
 	response_help = "pokes"
 	response_disarm = "shoves"
@@ -10,6 +9,7 @@
 	attack_edge = TRUE
 	attacktext = list("slashed")
 	attack_sound = 'sound/weapons/bladeslice.ogg'
+	meat_type = /obj/item/reagent_containers/food/snacks/xenomeat
 
 /mob/living/simple_mob/animal/space/xenomorph/breaker/death()
 	..()

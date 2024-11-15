@@ -1,4 +1,4 @@
-/datum/material/copper
+/datum/prototype/material/copper
 	id = MAT_COPPER
 	name = "copper"
 	icon_colour = "#b45c13"

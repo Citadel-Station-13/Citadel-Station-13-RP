@@ -4,6 +4,13 @@
  *? Lots of important stuff in here, make sure you have your brain switched on when editing this file!
  */
 
+//* Subsystem `initialized` variable *//
+
+// todo: implement these, separate out SSatoms initialization state to its own variable
+// #define SUBSYSTEM_INITIALIZED_NOT_STARTED 0
+// #define SUBSYSTEM_INITIALIZED_INITIALIZING 1
+// #define SUBSYSTEM_INITIALIZED_DONE 2
+
 //! ## Initialization subsystem
 
 /// New should not call Initialize.
@@ -34,8 +41,11 @@
 #define INITIALIZE_IMMEDIATE(X) ##X/New(loc, ...){\
 	..();\
 	if(!(atom_flags & ATOM_INITIALIZED)) {\
+		var/previous_initialized_value = SSatoms.initialized;\
+		SSatoms.initialized = INITIALIZATION_INNEW_MAPLOAD;\
 		args[1] = TRUE;\
-		SSatoms.InitAtom(src, args);\
+		SSatoms.InitAtom(src, FALSE, args);\
+		SSatoms.initialized = previous_initialized_value;\
 	}\
 }
 

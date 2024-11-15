@@ -56,7 +56,7 @@
 			overlays_to_add += "line_active"
 		else
 			overlays_to_add += "line"
-		var/datum/reagents/reagents = beaker.reagents
+		var/datum/reagent_holder/reagents = beaker.reagents
 		var/percent = round((reagents.total_volume / beaker.volume) * 100)
 		if(reagents.total_volume)
 			var/image/filling = image('icons/obj/medical_stand_vr.dmi', src, "reagent")
@@ -274,7 +274,7 @@
 		to_chat(user, "<span class='warning'>There is no tank in \the [src].</span>")
 		return
 	if(is_loosen)
-		to_chat(user, "<span class='warning'>Tighten \the nut with a wrench first.</span>")
+		to_chat(user, "<span class='warning'>Tighten the nut with a wrench first.</span>")
 		return
 	if(!Adjacent(target))
 		return
@@ -431,7 +431,7 @@
 				beaker.reagents.reagent_list |= B
 				beaker.reagents.update_total()
 				beaker.on_reagent_change()
-				beaker.reagents.handle_reactions()
+				beaker.reagents.reconsider_reactions()
 				update_icon()
 
 	if ((!valve_opened || tank.distribute_pressure == 0) && !breather && !attached)

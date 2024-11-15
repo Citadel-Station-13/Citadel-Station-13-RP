@@ -122,23 +122,3 @@ var/list/cheartstopper = list("potassium_chloride")                       // Thi
 //! Used by chem master
 #define CONDIMASTER_STYLE_AUTO "auto"
 #define CONDIMASTER_STYLE_FALLBACK "_"
-
-/// When processing a reaction, iterate this many times.
-#define PROCESS_REACTION_ITER 5
-
-/**
- * Helper that ensures the reaction rate holds after iterating
- * Ex. REACTION_RATE(0.3) means that 30% of the reagents will react each chemistry tick (~2 seconds by default).
- */
-#define REACTION_RATE(rate) (1.0 - (1.0-rate)**(1.0/PROCESS_REACTION_ITER))
-
-/**
- * Helper to define reaction rate in terms of half-life
- *
- * Ex.
- * HALF_LIFE(0) -> Reaction completes immediately (default chems)
- * HALF_LIFE(1) -> Half of the reagents react immediately, the rest over the following ticks.
- * HALF_LIFE(2) -> Half of the reagents are consumed after 2 chemistry ticks.
- * HALF_LIFE(3) -> Half of the reagents are consumed after 3 chemistry ticks.
- */
-#define HALF_LIFE(ticks) (ticks? 1.0 - (0.5)**(1.0/(ticks*PROCESS_REACTION_ITER)) : 1.0)

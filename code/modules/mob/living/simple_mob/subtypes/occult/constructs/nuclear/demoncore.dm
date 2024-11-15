@@ -27,10 +27,19 @@
 
 	ai_holder_type = /datum/ai_holder/polaris/simple_mob/melee/evasive
 
+	armor_legacy_mob = list(
+				"melee" = 70,
+				"bullet" = 30,
+				"laser" = 30,
+				"energy" = 30,
+				"bomb" = 10,
+				"bio" = 100,
+				"rad" = 100)
+
 /mob/living/simple_mob/construct/nuclear/demoncore/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/horror_aura)
-	AddComponent(/datum/component/radioactive, 1000 , 0, TRUE, RAD_FALLOFF_CONTAMINATION_NORMAL)
+	AddComponent(/datum/component/radioactive, 1250 , 0, TRUE, RAD_FALLOFF_CONTAMINATION_NORMAL)
 
 /mob/living/simple_mob/construct/nuclear/demoncore/handle_light()
 	. = ..()

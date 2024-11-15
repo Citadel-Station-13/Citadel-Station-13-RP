@@ -256,7 +256,6 @@
 	return INITIALIZE_HINT_LATELOAD
 
 /obj/machinery/computer/scan_consolenew/LateInitialize()
-	. = ..()
 	scan_for_scanner()
 	addtimer(CALLBACK(src, PROC_REF(recharge_injector)), 25 SECONDS)
 
@@ -374,7 +373,7 @@
 		occupantData["name"] = connected.occupant.real_name
 		occupantData["stat"] = connected.occupant.stat
 		occupantData["isViableSubject"] = 1
-		if (MUTATION_NOCLONE in connected.occupant.mutations || !src.connected.occupant.dna)
+		if ((MUTATION_NOCLONE in connected.occupant.mutations) || !src.connected.occupant.dna)
 			occupantData["isViableSubject"] = 0
 		occupantData["health"] = connected.occupant.health
 		occupantData["maxHealth"] = connected.occupant.maxHealth

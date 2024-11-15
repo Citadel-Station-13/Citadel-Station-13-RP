@@ -1,6 +1,6 @@
 // Walls
 
-/datum/material/alienalloy/hardenedstone
+/datum/prototype/material/alienalloy/hardenedstone
 	id = "hardenedstone"
 	name = "hardenedstone"
 
@@ -13,7 +13,7 @@
 
 /turf/simulated/wall/event/cave_wall
 	icon = 'code/game/content/factions/derelict/derelict.dmi/cave_walls.dmi'
-	material_outer = /datum/material/alienalloy/hardenedstone
+	material_outer = /datum/prototype/material/alienalloy/hardenedstone
 	name = "cave wall"
 	desc = "A wall consisting of impenetrable rock. No way you're getting past this without heavy excavation equipment."
 	description_info = "No way you can get past this..."

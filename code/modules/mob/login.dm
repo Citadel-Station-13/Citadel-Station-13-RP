@@ -84,7 +84,7 @@
 	// we really hate that this is needed but it is until the screens/images reset isn't there
 	client.action_drawer.reassert_screen()
 	// reset statpanel of any verbs/whatnot
-	client.statpanel_reload()
+	client.tgui_stat?.request_reload()
 	// update ssd overlay
 	addtimer(CALLBACK(src, TYPE_PROC_REF(/mob, update_ssd_overlay)), 0)
 	// reset cutscene to default; this is a proc for new players.
