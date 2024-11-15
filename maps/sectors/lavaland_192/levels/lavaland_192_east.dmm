@@ -51,7 +51,7 @@
 /turf/simulated/floor/outdoors/ash_sand,
 /area/lavaland/east/unexplored)
 "ji" = (
-/turf/simulated/floor/outdoors/dirt/interior,
+/turf/simulated/floor/outdoors/dirt/indoors,
 /area/lavaland/east/ashlander_village)
 "jW" = (
 /obj/structure/fence/bone/corner{
@@ -106,7 +106,7 @@
 /area/lavaland/east/ashlander_village)
 "sk" = (
 /obj/machinery/portable_atmospherics/hydroponics/soil/ashlander,
-/turf/simulated/floor/outdoors/dirt/interior,
+/turf/simulated/floor/outdoors/dirt/indoors,
 /area/lavaland/east/ashlander_village)
 "sw" = (
 /obj/structure/statue/bone/skull/half{

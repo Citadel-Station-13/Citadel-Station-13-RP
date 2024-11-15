@@ -19,7 +19,7 @@
 /obj/structure/table/woodentable,
 /obj/item/clothing/accessory/badge/sheriff,
 /obj/item/handcuffs,
-/turf/simulated/floor/wood/classh,
+/turf/simulated/floor/wood,
 /area/tether_away/beach/desert/explored)
 "cU" = (
 /obj/item/reagent_containers/glass/bucket/wood,
@@ -29,7 +29,7 @@
 /obj/structure/table/woodentable,
 /obj/item/paper_bin,
 /obj/item/pen,
-/turf/simulated/floor/wood/classh,
+/turf/simulated/floor/wood,
 /area/tether_away/beach/desert/explored)
 "eI" = (
 /turf/simulated/floor/water/shoreline{
@@ -58,7 +58,7 @@
 /turf/simulated/floor/outdoors/beach/sand/desert,
 /area/tether_away/beach/desert/explored)
 "jD" = (
-/turf/simulated/floor/water/shoreline/classh{
+/turf/simulated/floor/water/shoreline{
 	dir = 6
 	},
 /area/tether_away/beach/desert/explored)
@@ -66,12 +66,12 @@
 /obj/structure/toilet{
 	dir = 4
 	},
-/turf/simulated/floor/wood/classh,
+/turf/simulated/floor/wood,
 /area/tether_away/beach/desert/explored)
 "kF" = (
 /obj/machinery/light/small,
 /obj/random/trash,
-/turf/simulated/floor/wood/classh,
+/turf/simulated/floor/wood,
 /area/tether_away/beach/desert/explored)
 "lf" = (
 /turf/simulated/mineral/ignore_mapgen,
@@ -85,7 +85,7 @@
 /area/tether_away/beach/desert/explored)
 "nk" = (
 /obj/structure/bed/padded,
-/turf/simulated/floor/wood/classh,
+/turf/simulated/floor/wood,
 /area/tether_away/beach/desert/explored)
 "no" = (
 /turf/simulated/floor/water/shoreline{
@@ -118,7 +118,7 @@
 /turf/simulated/floor/wood,
 /area/tether_away/beach/desert/explored)
 "qu" = (
-/turf/simulated/floor/water/shoreline/classh{
+/turf/simulated/floor/water/shoreline{
 	dir = 5
 	},
 /area/tether_away/beach/desert/explored)
@@ -127,7 +127,7 @@
 /turf/simulated/floor/outdoors/beach/sand/lowdesert,
 /area/tether_away/beach/desert/explored)
 "se" = (
-/turf/simulated/floor/water/shoreline/classh{
+/turf/simulated/floor/water/shoreline{
 	dir = 9
 	},
 /area/tether_away/beach/desert/explored)
@@ -178,7 +178,7 @@
 /area/tether_away/beach/desert/explored)
 "xw" = (
 /obj/structure/closet/crate/miningcar,
-/turf/simulated/mineral/floor/classh,
+/turf/simulated/mineral/floor,
 /area/tether_away/beach/desert/explored)
 "yc" = (
 /obj/structure/barricade,
@@ -228,32 +228,32 @@
 /obj/machinery/door/window/brigdoor/southleft{
 	dir = 4
 	},
-/turf/simulated/floor/wood/classh,
+/turf/simulated/floor/wood,
 /area/tether_away/beach/desert/explored)
 "Ar" = (
 /obj/spawner/window/low_wall/reinforced/full,
-/turf/simulated/floor/wood/classh,
+/turf/simulated/floor/wood,
 /area/tether_away/beach/desert/explored)
 "BS" = (
 /obj/effect/debris/cleanable/blood,
-/turf/simulated/mineral/floor/classh,
+/turf/simulated/mineral/floor,
 /area/tether_away/beach/desert/explored)
 "CM" = (
 /turf/simulated/floor/outdoors/beach/sand/desert,
 /area/tether_away/beach/desert/explored)
 "Dc" = (
-/turf/simulated/wall/sandstone/classh,
+/turf/simulated/wall/sandstone,
 /area/tether_away/beach/desert/explored)
 "Df" = (
 /obj/structure/simple_door/wood,
-/turf/simulated/floor/wood/classh,
+/turf/simulated/floor/wood,
 /area/tether_away/beach/desert/explored)
 "Eh" = (
 /obj/random/junk,
-/turf/simulated/floor/wood/classh,
+/turf/simulated/floor/wood,
 /area/tether_away/beach/desert/explored)
 "Ev" = (
-/turf/simulated/floor/wood/classh,
+/turf/simulated/floor/wood,
 /area/tether_away/beach/desert/explored)
 "EA" = (
 /obj/machinery/light/small/flicker{
@@ -263,11 +263,11 @@
 /area/tether_away/beach/desert/explored)
 "EJ" = (
 /obj/random/trash,
-/turf/simulated/floor/wood/classh,
+/turf/simulated/floor/wood,
 /area/tether_away/beach/desert/explored)
 "FM" = (
 /obj/random/fishing_junk,
-/turf/simulated/floor/wood/classh,
+/turf/simulated/floor/wood,
 /area/tether_away/beach/desert/explored)
 "Hi" = (
 /obj/structure/simple_door/wood,
@@ -284,19 +284,19 @@
 /obj/random/maintenance/security,
 /obj/random/maintenance/security,
 /obj/item/storage/firstaid/regular,
-/turf/simulated/floor/wood/classh,
+/turf/simulated/floor/wood,
 /area/tether_away/beach/desert/explored)
 "Iw" = (
 /obj/random/junk,
 /obj/machinery/light/small/flicker{
 	dir = 4
 	},
-/turf/simulated/floor/wood/classh,
+/turf/simulated/floor/wood,
 /area/tether_away/beach/desert/explored)
 "II" = (
 /obj/structure/table,
 /obj/random/trash,
-/turf/simulated/floor/wood/classh,
+/turf/simulated/floor/wood,
 /area/tether_away/beach/desert/explored)
 "JW" = (
 /turf/simulated/floor/outdoors/beach/sand/lowdesert,
@@ -347,19 +347,19 @@
 /area/tether_away/beach/desert/explored)
 "Rm" = (
 /obj/structure/sign/graffiti/pisoff,
-/turf/simulated/wall/sandstone/classh,
+/turf/simulated/wall/sandstone,
 /area/tether_away/beach/desert/explored)
 "SP" = (
 /obj/structure/bed/chair{
 	dir = 8
 	},
-/turf/simulated/floor/wood/classh,
+/turf/simulated/floor/wood,
 /area/tether_away/beach/desert/explored)
 "Ul" = (
 /obj/machinery/light/small{
 	dir = 8
 	},
-/turf/simulated/floor/wood/classh,
+/turf/simulated/floor/wood,
 /area/tether_away/beach/desert/explored)
 "UP" = (
 /turf/simulated/floor/outdoors/beach/sand/lowdesert,
@@ -384,11 +384,11 @@
 /turf/level_border,
 /area/tether_away/beach/desert/explored)
 "XZ" = (
-/turf/simulated/mineral/ignore_mapgen/classh,
+/turf/simulated/mineral/ignore_mapgen,
 /area/tether_away/beach/desert/explored)
 "YZ" = (
 /obj/structure/barricade,
-/turf/simulated/floor/wood/classh,
+/turf/simulated/floor/wood,
 /area/tether_away/beach/desert/explored)
 
 (1,1,1) = {"

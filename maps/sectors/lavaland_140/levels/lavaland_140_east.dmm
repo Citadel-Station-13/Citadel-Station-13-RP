@@ -129,7 +129,7 @@
 /area/lavaland/east/ashlander_village)
 "bs" = (
 /obj/structure/flora/tree/jungle,
-/turf/simulated/floor/outdoors/grass/interior,
+/turf/simulated/floor/outdoors/grass/indoors,
 /area/lavaland/east/ashlander_village)
 "bv" = (
 /obj/structure/closet/crate/medical/blood,
@@ -258,7 +258,7 @@
 /area/lavaland/east/ashlander_village)
 "fv" = (
 /obj/structure/flora/ausbushes,
-/turf/simulated/floor/outdoors/grass/interior,
+/turf/simulated/floor/outdoors/grass/indoors,
 /area/lavaland/east/ashlander_village)
 "fC" = (
 /obj/machinery/vending/cola,
@@ -699,7 +699,7 @@
 /area/lavaland/east/ashlander_village)
 "nL" = (
 /obj/structure/flora/ausbushes/leafybush,
-/turf/simulated/floor/outdoors/grass/interior,
+/turf/simulated/floor/outdoors/grass/indoors,
 /area/lavaland/east/ashlander_village)
 "nR" = (
 /obj/effect/floor_decal/steeldecal/steel_decals10,
@@ -928,7 +928,7 @@
 /area/lavaland/east/ashlander_village)
 "sJ" = (
 /obj/structure/flora/ausbushes/stalkybush,
-/turf/simulated/floor/water/interior,
+/turf/simulated/floor/water/indoors,
 /area/lavaland/east/ashlander_village)
 "sR" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
@@ -1466,7 +1466,7 @@
 /turf/simulated/floor/tiled,
 /area/lavaland/east/ashlander_village)
 "Cz" = (
-/turf/simulated/floor/water/interior,
+/turf/simulated/floor/water/indoors,
 /area/lavaland/east/ashlander_village)
 "CA" = (
 /obj/structure/dispenser/oxygen,
@@ -1824,7 +1824,7 @@
 /turf/simulated/floor/tiled/steel_dirty/exterior,
 /area/lavaland/east/ashlander_village)
 "LQ" = (
-/turf/simulated/floor/outdoors/grass/interior,
+/turf/simulated/floor/outdoors/grass/indoors,
 /area/lavaland/east/ashlander_village)
 "LU" = (
 /obj/structure/bed,
@@ -1923,7 +1923,7 @@
 /area/lavaland/east/ashlander_village)
 "Oj" = (
 /obj/structure/flora/tree/jungle_small,
-/turf/simulated/floor/outdoors/dirt/interior,
+/turf/simulated/floor/outdoors/dirt/indoors,
 /area/lavaland/east/ashlander_village)
 "Ot" = (
 /obj/effect/floor_decal/spline/fancy/wood,
@@ -2023,7 +2023,7 @@
 /turf/simulated/floor,
 /area/lavaland/east/ashlander_village)
 "Qx" = (
-/turf/simulated/floor/outdoors/dirt/interior,
+/turf/simulated/floor/outdoors/dirt/indoors,
 /area/lavaland/east/ashlander_village)
 "Qy" = (
 /obj/effect/floor_decal/steeldecal/steel_decals4{
@@ -2201,7 +2201,7 @@
 /area/lavaland/east/ashlander_village)
 "Tm" = (
 /obj/structure/flora/ausbushes/grassybush,
-/turf/simulated/floor/outdoors/grass/interior,
+/turf/simulated/floor/outdoors/grass/indoors,
 /area/lavaland/east/ashlander_village)
 "To" = (
 /obj/structure/catwalk,
@@ -2367,7 +2367,7 @@
 /area/lavaland/east/ashlander_village)
 "WM" = (
 /obj/structure/flora/ausbushes/fullgrass,
-/turf/simulated/floor/outdoors/grass/interior,
+/turf/simulated/floor/outdoors/grass/indoors,
 /area/lavaland/east/ashlander_village)
 "WO" = (
 /obj/structure/bed/chair/backed_red{
@@ -2404,7 +2404,7 @@
 /area/lavaland/east/ashlander_village)
 "Xn" = (
 /obj/structure/flora/tree/jungle_small,
-/turf/simulated/floor/outdoors/grass/interior,
+/turf/simulated/floor/outdoors/grass/indoors,
 /area/lavaland/east/ashlander_village)
 "Xo" = (
 /obj/effect/floor_decal/steeldecal/steel_decals4{
@@ -2424,7 +2424,7 @@
 /area/lavaland/east/ashlander_village)
 "XE" = (
 /obj/structure/flora/ausbushes/palebush,
-/turf/simulated/floor/outdoors/grass/interior,
+/turf/simulated/floor/outdoors/grass/indoors,
 /area/lavaland/east/ashlander_village)
 "XF" = (
 /obj/structure/table/glass,

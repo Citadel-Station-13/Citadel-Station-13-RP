@@ -31,7 +31,7 @@
 /turf/simulated/wall/dungeon,
 /area/tether_away/beach/desert/poi/turretnest)
 "A" = (
-/turf/simulated/mineral/ignore_mapgen/classh,
+/turf/simulated/mineral/ignore_mapgen,
 /area/tether_away/beach/desert/poi/turretnest)
 "I" = (
 /obj/structure/table/rack/shelf/steel,
@@ -44,7 +44,7 @@
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/tether_away/beach/desert/poi/turretnest)
 "O" = (
-/turf/simulated/mineral/ignore_mapgen/classh,
+/turf/simulated/mineral/ignore_mapgen,
 /area/template_noop)
 "V" = (
 /turf/template_noop,

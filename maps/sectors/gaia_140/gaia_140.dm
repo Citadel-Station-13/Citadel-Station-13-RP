@@ -12,7 +12,7 @@
 	name = "Sector - Gaia World"
 	display_name = "Class-M Gaia World"
 	absolute_path = "maps/sectors/gaia_140/levels/gaia_140.dmm"
-	base_turf = /turf/simulated/floor/outdoors/dirt/classm
+	base_turf = /turf/simulated/floor/outdoors/dirt
 	base_area = /area/class_m/outside
 	traits = list(
 		ZTRAIT_GRAVITY,

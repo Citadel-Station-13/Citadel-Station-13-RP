@@ -188,7 +188,7 @@
 /obj/effect/floor_decal/corner/blue/border{
 	dir = 8
 	},
-/turf/simulated/floor/concrete/tile/classm,
+/turf/simulated/floor/concrete/tile,
 /area/admin_planet/croatoan/civ_bar_public)
 "ay" = (
 /obj/effect/floor_decal/corner/lightorange/border{
@@ -449,7 +449,7 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
-/turf/simulated/floor/concrete/tile/classm/outdoors,
+/turf/simulated/floor/concrete/tile/outdoors,
 /area/admin_planet/croatoan/med_checkpoint_lower)
 "bv" = (
 /obj/effect/floor_decal/borderfloorblack{
@@ -1323,7 +1323,7 @@
 	info = "Had a lot of shipments come in out of the blue recently. Not the usual either, like materials and new hires. Saw a bunch of Blackstar guys come in recently too, all carrying rifles strapped to their backs and wearing red voidsuits. I can tell it's getting some of the other guys on edge, too.";
 	name = "Shipments"
 	},
-/turf/simulated/floor/concrete/tile/classm,
+/turf/simulated/floor/concrete/tile,
 /area/admin_planet/croatoan/civ_bar_public)
 "dX" = (
 /obj/effect/floor_decal/steeldecal/steel_decals10{
@@ -1385,7 +1385,7 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
-/turf/simulated/floor/concrete/tile/classm/outdoors,
+/turf/simulated/floor/concrete/tile/outdoors,
 /area/admin_planet/croatoan/mountain_plains)
 "el" = (
 /obj/machinery/atmospherics/pipe/simple/visible/black{
@@ -2608,7 +2608,7 @@
 /obj/machinery/light{
 	dir = 4
 	},
-/turf/simulated/floor/concrete/tile/classm,
+/turf/simulated/floor/concrete/tile,
 /area/admin_planet/croatoan/civ_bar_public)
 "iG" = (
 /obj/machinery/door/airlock/engineering{
@@ -3315,7 +3315,7 @@
 /obj/effect/floor_decal/corner/blue/border{
 	dir = 8
 	},
-/turf/simulated/floor/concrete/tile/classm,
+/turf/simulated/floor/concrete/tile,
 /area/admin_planet/croatoan/civ_bar_public)
 "lt" = (
 /obj/machinery/computer/security{
@@ -3406,7 +3406,7 @@
 	dir = 4
 	},
 /obj/effect/floor_decal/sign/m,
-/turf/simulated/floor/concrete/tile/classm/outdoors,
+/turf/simulated/floor/concrete/tile/outdoors,
 /area/admin_planet/croatoan/med_checkpoint_lower)
 "lH" = (
 /obj/machinery/computer/secure_data{
@@ -3570,7 +3570,7 @@
 /obj/structure/bed/chair/backed_grey{
 	dir = 1
 	},
-/turf/simulated/floor/concrete/tile/classm,
+/turf/simulated/floor/concrete/tile,
 /area/admin_planet/croatoan/civ_bar_public)
 "mz" = (
 /obj/structure/railing{
@@ -4024,7 +4024,7 @@
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 4
 	},
-/turf/simulated/floor/concrete/tile/classm/outdoors,
+/turf/simulated/floor/concrete/tile/outdoors,
 /area/admin_planet/croatoan/med_checkpoint_lower)
 "nW" = (
 /obj/effect/floor_decal/corner/lightorange/border,
@@ -4067,7 +4067,7 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
-/turf/simulated/floor/concrete/tile/classm/outdoors,
+/turf/simulated/floor/concrete/tile/outdoors,
 /area/admin_planet/croatoan/mountain_plains)
 "oe" = (
 /obj/structure/cable{
@@ -5545,7 +5545,7 @@
 	dir = 8
 	},
 /obj/effect/floor_decal/corner/blue/border,
-/turf/simulated/floor/concrete/tile/classm,
+/turf/simulated/floor/concrete/tile,
 /area/admin_planet/croatoan/civ_bar_public)
 "tp" = (
 /turf/simulated/floor/tiled/dark,
@@ -5585,7 +5585,7 @@
 /obj/structure/cable{
 	icon_state = "1-8"
 	},
-/turf/simulated/floor/concrete/tile/classm/outdoors,
+/turf/simulated/floor/concrete/tile/outdoors,
 /area/admin_planet/croatoan/mountain_plains)
 "tz" = (
 /obj/structure/reagent_dispensers/watertank/high,
@@ -6102,7 +6102,7 @@
 /obj/effect/floor_decal/corner/beige{
 	dir = 4
 	},
-/turf/simulated/floor/concrete/tile/classm,
+/turf/simulated/floor/concrete/tile,
 /area/admin_planet/croatoan/civ_bar_public)
 "vd" = (
 /obj/machinery/portable_atmospherics/hydroponics,
@@ -6378,7 +6378,7 @@
 /obj/structure/cable{
 	icon_state = "2-8"
 	},
-/turf/simulated/floor/concrete/tile/classm/outdoors,
+/turf/simulated/floor/concrete/tile/outdoors,
 /area/admin_planet/croatoan/mountain_plains)
 "we" = (
 /obj/machinery/door/airlock/glass/research{
@@ -6579,7 +6579,7 @@
 /obj/effect/floor_decal/borderfloor/corner{
 	dir = 4
 	},
-/turf/simulated/floor/concrete/tile/classm,
+/turf/simulated/floor/concrete/tile,
 /area/admin_planet/croatoan/civ_bar_public)
 "wS" = (
 /obj/effect/floor_decal/industrial/warning,
@@ -6600,7 +6600,7 @@
 /obj/effect/floor_decal/borderfloor/corner{
 	dir = 8
 	},
-/turf/simulated/floor/concrete/tile/classm,
+/turf/simulated/floor/concrete/tile,
 /area/admin_planet/croatoan/civ_bar_public)
 "wW" = (
 /obj/machinery/light/flicker,
@@ -6849,7 +6849,7 @@
 /obj/effect/floor_decal/corner/blue/border{
 	dir = 4
 	},
-/turf/simulated/floor/concrete/tile/classm,
+/turf/simulated/floor/concrete/tile,
 /area/admin_planet/croatoan/civ_bar_public)
 "xV" = (
 /turf/simulated/floor/tiled/steel,
@@ -6899,7 +6899,7 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/turf/simulated/floor/concrete/tile/classm/outdoors,
+/turf/simulated/floor/concrete/tile/outdoors,
 /area/admin_planet/croatoan/mountain_plains)
 "yh" = (
 /obj/machinery/door/airlock/highsecurity{
@@ -7059,14 +7059,14 @@
 	dir = 4
 	},
 /obj/machinery/camera/east_mount,
-/turf/simulated/floor/concrete/tile/classm/outdoors,
+/turf/simulated/floor/concrete/tile/outdoors,
 /area/admin_planet/croatoan/med_checkpoint_lower)
 "yx" = (
 /obj/effect/floor_decal/corner/grey/diagonal,
 /obj/effect/floor_decal/corner/beige{
 	dir = 6
 	},
-/turf/simulated/floor/concrete/tile/classm,
+/turf/simulated/floor/concrete/tile,
 /area/admin_planet/croatoan/civ_kitchen)
 "yy" = (
 /obj/effect/floor_decal/corner/grey/diagonal,
@@ -7076,7 +7076,7 @@
 /obj/structure/cable{
 	icon_state = "2-4"
 	},
-/turf/simulated/floor/concrete/tile/classm,
+/turf/simulated/floor/concrete/tile,
 /area/admin_planet/croatoan/civ_bar_public)
 "yA" = (
 /obj/effect/floor_decal/industrial/warning{
@@ -7810,7 +7810,7 @@
 /area/admin_planet/croatoan/sec_entrance_hallway)
 "Bp" = (
 /obj/effect/floor_decal/corner/blue/border,
-/turf/simulated/floor/concrete/tile/classm,
+/turf/simulated/floor/concrete/tile,
 /area/admin_planet/croatoan/civ_bar_public)
 "Bq" = (
 /obj/effect/floor_decal/borderfloor/corner{
@@ -8029,7 +8029,7 @@
 /obj/effect/floor_decal/corner/blue/border{
 	dir = 8
 	},
-/turf/simulated/floor/concrete/tile/classm,
+/turf/simulated/floor/concrete/tile,
 /area/admin_planet/croatoan/civ_bar_public)
 "Ck" = (
 /obj/effect/floor_decal/borderfloorblack{
@@ -8197,7 +8197,7 @@
 /obj/structure/cable{
 	icon_state = "1-4"
 	},
-/turf/simulated/floor/concrete/tile/classm/outdoors,
+/turf/simulated/floor/concrete/tile/outdoors,
 /area/admin_planet/croatoan/mountain_plains)
 "CX" = (
 /obj/structure/fake_stairs/north/top{
@@ -8320,7 +8320,7 @@
 /area/admin_planet/croatoan/sec_equipment_storage)
 "Dt" = (
 /obj/effect/floor_decal/borderfloor/corner,
-/turf/simulated/floor/concrete/tile/classm,
+/turf/simulated/floor/concrete/tile,
 /area/admin_planet/croatoan/civ_bar_public)
 "Dv" = (
 /obj/machinery/light,
@@ -9001,7 +9001,7 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/turf/simulated/floor/concrete/tile/classm,
+/turf/simulated/floor/concrete/tile,
 /area/admin_planet/croatoan/civ_bar_public)
 "FP" = (
 /obj/machinery/portable_atmospherics/canister/air,
@@ -9106,7 +9106,7 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/turf/simulated/floor/concrete/tile/classm,
+/turf/simulated/floor/concrete/tile,
 /area/admin_planet/croatoan/civ_bar_public)
 "Gt" = (
 /obj/machinery/light{
@@ -9296,7 +9296,7 @@
 /obj/effect/floor_decal/borderfloor/corner{
 	dir = 1
 	},
-/turf/simulated/floor/concrete/tile/classm,
+/turf/simulated/floor/concrete/tile,
 /area/admin_planet/croatoan/civ_bar_public)
 "GV" = (
 /obj/effect/floor_decal/borderfloorblack,
@@ -9322,7 +9322,7 @@
 /turf/simulated/wall/r_wall/prepainted/security,
 /area/admin_planet/croatoan/sci_primary_hallway)
 "Hb" = (
-/turf/simulated/floor/concrete/tile/classm,
+/turf/simulated/floor/concrete/tile,
 /area/admin_planet/croatoan/civ_bar_public)
 "Hc" = (
 /obj/structure/railing{
@@ -9486,7 +9486,7 @@
 /turf/simulated/wall/r_wall/prepainted/science,
 /area/admin_planet/croatoan/sci_robotics_lab)
 "HK" = (
-/turf/simulated/floor/concrete/tile/classm/outdoors,
+/turf/simulated/floor/concrete/tile/outdoors,
 /area/admin_planet/croatoan/mountain_plains)
 "HO" = (
 /obj/structure/cable{
@@ -9895,7 +9895,7 @@
 /obj/effect/floor_decal/corner/blue/border{
 	dir = 4
 	},
-/turf/simulated/floor/concrete/tile/classm,
+/turf/simulated/floor/concrete/tile,
 /area/admin_planet/croatoan/civ_bar_public)
 "Jf" = (
 /obj/effect/floor_decal/corner/red/border{
@@ -10596,7 +10596,7 @@
 /obj/structure/cable{
 	icon_state = "2-4"
 	},
-/turf/simulated/floor/concrete/tile/classm/outdoors,
+/turf/simulated/floor/concrete/tile/outdoors,
 /area/admin_planet/croatoan/mountain_plains)
 "LA" = (
 /obj/structure/sign/poster,
@@ -10866,7 +10866,7 @@
 	dir = 8
 	},
 /obj/structure/closet/firecloset/full,
-/turf/simulated/floor/concrete/tile/classm,
+/turf/simulated/floor/concrete/tile,
 /area/admin_planet/croatoan/civ_bar_public)
 "MD" = (
 /obj/structure/table/rack/shelf/steel,
@@ -11174,7 +11174,7 @@
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 8
 	},
-/turf/simulated/floor/concrete/tile/classm/outdoors,
+/turf/simulated/floor/concrete/tile/outdoors,
 /area/admin_planet/croatoan/mountain_plains)
 "NA" = (
 /obj/effect/floor_decal/borderfloorblack{
@@ -11768,7 +11768,7 @@
 /area/admin_planet/croatoan/sec_operations_center)
 "Pf" = (
 /obj/structure/table/reinforced,
-/turf/simulated/floor/concrete/tile/classm,
+/turf/simulated/floor/concrete/tile,
 /area/admin_planet/croatoan/civ_bar_public)
 "Pg" = (
 /obj/structure/closet/secure_closet/security,
@@ -11902,7 +11902,7 @@
 	dir = 4
 	},
 /obj/effect/floor_decal/corner/blue/border,
-/turf/simulated/floor/concrete/tile/classm,
+/turf/simulated/floor/concrete/tile,
 /area/admin_planet/croatoan/civ_bar_public)
 "PH" = (
 /obj/machinery/door/airlock/external{
@@ -11984,7 +11984,7 @@
 /obj/effect/floor_decal/corner/beige{
 	dir = 5
 	},
-/turf/simulated/floor/concrete/tile/classm,
+/turf/simulated/floor/concrete/tile,
 /area/admin_planet/croatoan/civ_bar_public)
 "PX" = (
 /obj/structure/cable{
@@ -12873,7 +12873,7 @@
 	info = "Note to engineering staff: Get us a new APC, this one keeps frying its cells left and right. Last thing we want is to get locked out of Medical."
 	},
 /obj/structure/table/reinforced,
-/turf/simulated/floor/concrete/tile/classm/outdoors,
+/turf/simulated/floor/concrete/tile/outdoors,
 /area/admin_planet/croatoan/med_checkpoint_lower)
 "SY" = (
 /obj/effect/floor_decal/corner_oldtile/red/diagonal,
@@ -12949,7 +12949,7 @@
 /obj/effect/floor_decal/corner/beige{
 	dir = 9
 	},
-/turf/simulated/floor/concrete/tile/classm,
+/turf/simulated/floor/concrete/tile,
 /area/admin_planet/croatoan/civ_kitchen)
 "Tm" = (
 /obj/structure/table/reinforced,
@@ -13034,7 +13034,7 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/turf/simulated/floor/concrete/tile/classm,
+/turf/simulated/floor/concrete/tile,
 /area/admin_planet/croatoan/civ_bar_public)
 "Tz" = (
 /obj/machinery/button/remote/blast_door{
@@ -13170,7 +13170,7 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/turf/simulated/floor/concrete/tile/classm,
+/turf/simulated/floor/concrete/tile,
 /area/admin_planet/croatoan/civ_bar_public)
 "TX" = (
 /obj/item/reagent_containers/syringe,
@@ -13519,7 +13519,7 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
-/turf/simulated/floor/concrete/tile/classm/outdoors,
+/turf/simulated/floor/concrete/tile/outdoors,
 /area/admin_planet/croatoan/mountain_plains)
 "Vn" = (
 /obj/structure/cable{
@@ -13601,7 +13601,7 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
-/turf/simulated/floor/concrete/tile/classm,
+/turf/simulated/floor/concrete/tile,
 /area/admin_planet/croatoan/civ_bar_public)
 "Vu" = (
 /obj/machinery/power/smes/buildable/point_of_interest,
@@ -13714,7 +13714,7 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/turf/simulated/floor/concrete/tile/classm,
+/turf/simulated/floor/concrete/tile,
 /area/admin_planet/croatoan/civ_bar_public)
 "VW" = (
 /obj/structure/table/rack/shelf/steel,

@@ -55,7 +55,7 @@
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/tether_away/beach/desert/poi/snipernest)
 "W" = (
-/turf/simulated/mineral/ignore_mapgen/classh,
+/turf/simulated/mineral/ignore_mapgen,
 /area/tether_away/beach/desert/poi/snipernest)
 "Y" = (
 /obj/structure/closet/crate/freezer/rations,

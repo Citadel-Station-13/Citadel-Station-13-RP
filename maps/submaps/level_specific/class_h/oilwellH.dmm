@@ -55,7 +55,7 @@
 /area/tether_away/beach/desert/poi/oilwell)
 "o" = (
 /obj/structure/sign/signnew/flammables,
-/turf/simulated/wall/sandstone/classh,
+/turf/simulated/wall/sandstone,
 /area/tether_away/beach/desert/poi/oilwell)
 "p" = (
 /obj/effect/debris/cleanable/liquid_fuel/flamethrower_fuel,

@@ -43,7 +43,7 @@
 "dC" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/item/gun/energy/zip,
-/turf/simulated/floor/wood/classh,
+/turf/simulated/floor/wood,
 /area/tether_away/beach/desert/poi/piratehideout)
 "eA" = (
 /obj/structure/bed,
@@ -55,7 +55,7 @@
 /obj/structure/closet/secure_closet{
 	req_one_access = list(168)
 	},
-/turf/simulated/floor/wood/classh,
+/turf/simulated/floor/wood,
 /area/tether_away/beach/desert/poi/piratehideout)
 "fE" = (
 /turf/simulated/mineral/cave,
@@ -121,13 +121,13 @@
 /obj/structure/bed/chair/office{
 	dir = 8
 	},
-/turf/simulated/floor/wood/classh,
+/turf/simulated/floor/wood,
 /area/tether_away/beach/desert/poi/piratehideout)
 "nZ" = (
 /obj/machinery/light/small,
 /obj/structure/table/woodentable,
 /obj/random/contraband,
-/turf/simulated/floor/wood/classh,
+/turf/simulated/floor/wood,
 /area/tether_away/beach/desert/poi/piratehideout)
 "pE" = (
 /turf/simulated/wall/solidrock,
@@ -137,14 +137,14 @@
 	dir = 8
 	},
 /mob/living/simple_mob/humanoid/pirate/mate/ranged/shotgun,
-/turf/simulated/floor/wood/classh,
+/turf/simulated/floor/wood,
 /area/tether_away/beach/desert/poi/piratehideout)
 "qO" = (
 /obj/machinery/light,
 /turf/simulated/floor/tiled/old_tile,
 /area/tether_away/beach/desert/poi/piratehideout)
 "rz" = (
-/turf/simulated/floor/wood/classh,
+/turf/simulated/floor/wood,
 /area/tether_away/beach/desert/poi/piratehideout)
 "sx" = (
 /obj/machinery/light{
@@ -222,7 +222,7 @@
 "CS" = (
 /obj/structure/table/woodentable,
 /obj/random/contraband,
-/turf/simulated/floor/wood/classh,
+/turf/simulated/floor/wood,
 /area/tether_away/beach/desert/poi/piratehideout)
 "EI" = (
 /turf/simulated/floor/tiled/old_tile,
@@ -283,12 +283,12 @@
 "LN" = (
 /obj/structure/bed,
 /obj/item/bedsheet/cosmos,
-/turf/simulated/floor/wood/classh,
+/turf/simulated/floor/wood,
 /area/tether_away/beach/desert/poi/piratehideout)
 "MA" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/random/multiple/treasure,
-/turf/simulated/floor/wood/classh,
+/turf/simulated/floor/wood,
 /area/tether_away/beach/desert/poi/piratehideout)
 "MB" = (
 /obj/machinery/door/airlock/hatch{
@@ -362,7 +362,7 @@
 /obj/machinery/door/airlock/hatch{
 	req_one_access = list(168)
 	},
-/turf/simulated/floor/wood/classh,
+/turf/simulated/floor/wood,
 /area/tether_away/beach/desert/poi/piratehideout)
 "QL" = (
 /obj/structure/loot_pile/surface/medicine_cabinet/fresh{
@@ -454,7 +454,7 @@
 /obj/machinery/light/small{
 	dir = 1
 	},
-/turf/simulated/floor/wood/classh,
+/turf/simulated/floor/wood,
 /area/tether_away/beach/desert/poi/piratehideout)
 "YM" = (
 /obj/structure/table/steel_reinforced,
@@ -479,7 +479,7 @@
 /obj/random/contraband,
 /obj/random/contraband,
 /obj/random/contraband,
-/turf/simulated/floor/wood/classh,
+/turf/simulated/floor/wood,
 /area/tether_away/beach/desert/poi/piratehideout)
 
 (1,1,1) = {"

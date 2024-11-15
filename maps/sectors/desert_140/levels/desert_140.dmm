@@ -6,69 +6,69 @@
 /turf/simulated/floor/outdoors/beach/sand/lowdesert,
 /area/class_h/explored)
 "j" = (
-/turf/simulated/mineral/classh,
+/turf/simulated/mineral,
 /area/class_h/explored)
 "l" = (
 /obj/overmap/entity/visitable/sector/class_h,
 /turf/simulated/floor/outdoors/beach/sand/lowdesert,
 /area/class_h/explored)
 "o" = (
-/turf/simulated/floor/water/shoreline/corner/classh,
+/turf/simulated/floor/water/shoreline/corner,
 /area/class_h/explored)
 "s" = (
-/turf/simulated/floor/water/shoreline/corner/classh{
+/turf/simulated/floor/water/shoreline/corner{
 	dir = 1
 	},
 /area/class_h/explored)
 "t" = (
-/turf/simulated/floor/water/shoreline/classh{
+/turf/simulated/floor/water/shoreline{
 	dir = 9
 	},
 /area/class_h/explored)
 "u" = (
-/turf/simulated/floor/water/shoreline/corner/classh{
+/turf/simulated/floor/water/shoreline/corner{
 	dir = 8
 	},
 /area/class_h/explored)
 "w" = (
-/turf/simulated/floor/water/shoreline/corner/classh{
+/turf/simulated/floor/water/shoreline/corner{
 	dir = 4
 	},
 /area/class_h/explored)
 "x" = (
-/turf/simulated/floor/water/shoreline/classh,
+/turf/simulated/floor/water/shoreline,
 /area/class_h/explored)
 "z" = (
 /obj/effect/shuttle_landmark/automatic,
 /turf/simulated/floor/outdoors/beach/sand/lowdesert,
 /area/class_h/explored)
 "H" = (
-/turf/simulated/floor/water/shoreline/classh{
+/turf/simulated/floor/water/shoreline{
 	dir = 5
 	},
 /area/class_h/explored)
 "J" = (
-/turf/simulated/floor/water/shoreline/classh{
+/turf/simulated/floor/water/shoreline{
 	dir = 4
 	},
 /area/class_h/explored)
 "M" = (
-/turf/simulated/floor/water/shoreline/classh{
+/turf/simulated/floor/water/shoreline{
 	dir = 6
 	},
 /area/class_h/explored)
 "N" = (
-/turf/simulated/floor/water/shoreline/classh{
+/turf/simulated/floor/water/shoreline{
 	dir = 1
 	},
 /area/class_h/explored)
 "O" = (
-/turf/simulated/floor/water/shoreline/classh{
+/turf/simulated/floor/water/shoreline{
 	dir = 8
 	},
 /area/class_h/explored)
 "P" = (
-/turf/simulated/floor/water/classh,
+/turf/simulated/floor/water,
 /area/class_h/explored)
 
 (1,1,1) = {"

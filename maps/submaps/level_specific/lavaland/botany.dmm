@@ -24,7 +24,7 @@
 /area/lavaland/idleruins)
 "m" = (
 /obj/machinery/portable_atmospherics/hydroponics/soil,
-/turf/simulated/floor/outdoors/dirt/interior,
+/turf/simulated/floor/outdoors/dirt/indoors,
 /area/lavaland/idleruins)
 "n" = (
 /obj/machinery/vending/hydronutrients,
