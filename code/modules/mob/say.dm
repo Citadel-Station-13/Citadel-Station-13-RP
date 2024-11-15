@@ -162,7 +162,7 @@
 
 	if(length_char(message) >= 2 && is_language_prefix(prefix))
 		var/language_prefix = copytext_char(message, 2 ,3)
-		var/datum/prototype/language/L = RSlanguages.fetch_key(language_prefix)
+		var/datum/prototype/language/L = RSlanguages.legacy_resolve_language_key(language_prefix)
 		if (can_speak(L))
 			return L
 		else

@@ -341,7 +341,7 @@
 			to_chat(usr, "This can only be done to instances of type /mob")
 			return
 
-		var/new_language = tgui_input_list(usr, "Please choose a language to add.","Language", SScharacters.all_language_names())
+		var/new_language = tgui_input_list(usr, "Please choose a language to add.","Language", RSlanguages.legacy_sorted_all_language_names())
 
 		if(!new_language)
 			return

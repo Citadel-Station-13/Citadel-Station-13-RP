@@ -29,3 +29,9 @@ REPOSITORY_DEF(languages)
 
 /datum/controller/repository/languages/proc/legacy_resolve_language_name(name)
 	return legacy_language_lookup[name]
+
+/datum/controller/repository/languages/proc/legacy_resolve_language_key(key)
+	return legacy_language_keys[key]
+
+/datum/controller/repository/languages/proc/legacy_sorted_all_language_names()
+	return tim_sort(legacy_language_lookup.Copy(), /proc/cmp_text_asc)
