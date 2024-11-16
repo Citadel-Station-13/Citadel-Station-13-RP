@@ -11,6 +11,9 @@
 
 	turf_flags = TURF_FLAG_ERODING
 
+// todo: sky should generally always use planet-lighting-like's, why tf are they all light sources and why tf are they using hardset colors and dirs?
+//       this should just be part of weather/parallax renderer if possible.
+
 /turf/simulated/sky/Initialize(mapload)
 	. = ..()
 	set_light(2, 2, "#FFFFFF")
@@ -70,8 +73,6 @@
 /turf/simulated/sky/virgo3b/moving/west
 	dir = WEST
 
-
-
 //Rift Variant
 /turf/simulated/sky/lythios43c
 	color = "#DAFFFA"
@@ -99,7 +100,6 @@
 	dir = EAST
 /turf/simulated/sky/lythios43c/moving/west
 	dir = WEST
-
 
 //Triumph Variant. Unused Currently
 /turf/simulated/sky/triumph
