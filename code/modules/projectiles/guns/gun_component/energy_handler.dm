@@ -3,6 +3,8 @@
 
 /obj/item/gun_component/energy_handler
 	name = "weapon energy handler"
+	desc = "A basic power regulator used in powered weaponry."
+	icon = 'icons/modules/projectiles/components/energy_handler.dmi'
 	component_slot = GUN_COMPONENT_ENERGY_HANDLER
 
 /obj/item/gun_component/energy_handler/active_reload
@@ -11,7 +13,7 @@
 		An uncommon energy handler. Requires the user to rack the weapon to recharge
 		a linked supercapacitor array between shots for fast operation. In return,
 		the power provided to a given shot is improved by a decent margin.
-	"} 
+	"}
 
 /obj/item/gun_component/energy_handler/active_reload/summarize_bullet_points(datum/event_args/actor/actor, range)
 	. = list()

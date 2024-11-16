@@ -9,8 +9,7 @@
 /obj/item/gun_component
 	name = "gun component"
 	desc = "A thing, that probably goes in a gun. Why are you seeing this?"
-	icon = 'icons/modules/projectiles/gun_components.dmi'
-	icon_state = "" // empty state
+	icon_state = "stock"
 
 	/// component slot
 	///

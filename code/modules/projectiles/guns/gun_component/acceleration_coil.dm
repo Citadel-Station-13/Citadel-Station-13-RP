@@ -4,6 +4,7 @@
 /obj/item/gun_component/acceleration_coil
 	name = "weapon acceleration coil"
 	desc = "A basic acceleration coil used in magnetic weapons."
+	icon = 'icons/modules/projectiles/components/acceleration_coil.dmi'
 	component_slot = GUN_COMPONENT_ACCELERATION_COIL
 
 /obj/item/gun_component/acceleration_coil/heater

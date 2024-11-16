@@ -4,6 +4,7 @@
 /obj/item/gun_component/internal_module
 	name = "weapon module"
 	desc = "An internal module for a modular gun."
+	icon = 'icons/modules/projectiles/components/internal_module.dmi'
 	component_slot = GUN_COMPONENT_INTERNAL_MODULE
 
 #warn impl all

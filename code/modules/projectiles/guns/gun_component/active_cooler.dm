@@ -3,6 +3,8 @@
 
 /obj/item/gun_component/active_cooler
 	name = "weapon cooler"
+	desc = "A basic cooling unit used in modular weaponry."
+	icon = 'icons/modules/projectiles/components/active_cooler.dmi'
 	component_slot = GUN_COMPONENT_ACTIVE_COOLER
 
 /obj/item/gun_component/active_cooler/recovery
