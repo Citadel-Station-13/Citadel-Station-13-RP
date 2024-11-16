@@ -47,12 +47,12 @@
 
 /datum/actor_hud/inventory/proc/bind_to_inventory(datum/inventory/inventory)
 	host = inventory
-	LAZYADD(inventory.using_huds, src)
+	LAZYADD(inventory.huds_using, src)
 	rebuild(inventory.build_inventory_slots_with_remappings(), length(inventory.held_items))
 
 /datum/actor_hud/inventory/proc/unbind_from_inventory(datum/inventory/inventory)
 	cleanup()
-	LAZYREMOVE(inventory.using_huds, src)
+	LAZYREMOVE(inventory.huds_using, src)
 	host = null
 
 /datum/actor_hud/inventory/screens()
@@ -91,8 +91,8 @@
 	cleanup()
 
 	// buttons
-	add_screen((button_swap_hand = new(null, src)))
-	add_screen((button_equip_hand = new(null, src)))
+	add_screen((button_swap_hand = new(null, src, number_of_hands)))
+	add_screen((button_equip_hand = new(null, src, number_of_hands)))
 	add_screen((button_drawer = new(null, src)))
 
 	// slots
@@ -303,7 +303,7 @@
 	handle_inventory_click(user, held)
 
 /atom/movable/screen/actor_hud/inventory/sync_to_preferences(datum/hud_preferences/preference_set)
-	sync_style(preference_set.hud_style, preference_set.hud_color, preference_set.hud_alpha)
+	sync_style(preference_set.hud_style, preference_set.hud_alpha, preference_set.hud_color)
 
 /atom/movable/screen/actor_hud/inventory/proc/sync_style(datum/hud_style/style, style_alpha, style_color)
 	alpha = style_alpha
@@ -431,8 +431,10 @@
  * Button: 'swap hand'
  */
 /atom/movable/screen/actor_hud/inventory/swap_hand
-	icon_state = "swap"
-	screen_loc = SCREEN_LOC_MOB_HUD_INVENTORY_HAND_SWAP
+	icon_state = "hand-swap"
+/atom/movable/screen/actor_hud/inventory/swap_hand/Initialize(mapload, datum/inventory/host, hand_count)
+	. = ..()
+	screen_loc = SCREEN_LOC_MOB_HUD_INVENTORY_HAND_SWAP(hand_count)
 
 /atom/movable/screen/actor_hud/inventory/swap_hand/sync_style(datum/hud_style/style, style_alpha, style_color)
 	..()
@@ -446,8 +448,11 @@
  * Button: 'auto equip'
  */
 /atom/movable/screen/actor_hud/inventory/equip_hand
-	icon_state = "equip"
-	screen_loc = SCREEN_LOC_MOB_HUD_INVENTORY_EQUIP_HAND
+	icon_state = "button-equip"
+
+/atom/movable/screen/actor_hud/inventory/equip_hand/Initialize(mapload, datum/inventory/host, hand_count)
+	. = ..()
+	screen_loc = SCREEN_LOC_MOB_HUD_INVENTORY_EQUIP_HAND(hand_count)
 
 /atom/movable/screen/actor_hud/inventory/equip_hand/sync_style(datum/hud_style/style, style_alpha, style_color)
 	..()
