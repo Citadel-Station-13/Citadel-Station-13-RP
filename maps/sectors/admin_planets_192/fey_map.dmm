@@ -7,12 +7,6 @@
 	desc = "The dark grassy floor that makes up the underbrush."
 	},
 /area/admin_planet/fey_forest/underbrush)
-"aX" = (
-/obj/structure/window/reinforced/survival_pod{
-	dir = 6
-	},
-/turf/simulated/floor/tiled/techfloor,
-/area/admin_planet/fey_forest/gateway_facility)
 "br" = (
 /turf/simulated/floor/fey/dry_grass,
 /area/admin_planet/fey_forest/underbrush)
@@ -58,9 +52,6 @@
 	dir = 4
 	},
 /obj/structure/window/reinforced/survival_pod,
-/obj/structure/window/reinforced/survival_pod{
-	dir = 9
-	},
 /turf/simulated/floor/reinforced,
 /area/admin_planet/fey_forest/gateway_facility)
 "bS" = (
@@ -878,7 +869,8 @@
 /obj/machinery/suit_cycler/medical{
 	name = "Biohazard Suit Cycler";
 	density = 0;
-	pixel_x = 18
+	pixel_x = 18;
+	req_access = null
 	},
 /turf/simulated/floor/tiled/kafel_full/green,
 /area/admin_planet/fey_forest/gateway_facility)
@@ -913,12 +905,6 @@
 	desc = "The dark grassy floor that makes up the underbrush."
 	},
 /area/admin_planet/fey_forest/underbrush)
-"sy" = (
-/obj/structure/window/reinforced/survival_pod{
-	dir = 10
-	},
-/turf/simulated/floor/tiled/techfloor,
-/area/admin_planet/fey_forest/gateway_facility)
 "sF" = (
 /obj/structure/bed/chair/office{
 	dir = 4
@@ -1051,9 +1037,6 @@
 	dir = 8
 	},
 /obj/structure/window/reinforced/survival_pod,
-/obj/structure/window/reinforced/survival_pod{
-	dir = 5
-	},
 /turf/simulated/floor/reinforced,
 /area/admin_planet/fey_forest/gateway_facility)
 "uP" = (
@@ -1074,6 +1057,11 @@
 	color = "#8B0000";
 	name = "The Watcher";
 	desc = "An impossibly large tree that extends far into the endless 'canopy' above. Its bark twitches and shifts with incessant movement."
+	},
+/obj/effect/map_effect/perma_light{
+	light_color = "#8B0000";
+	light_power = 2;
+	light_range = 7
 	},
 /turf/simulated/floor/flesh{
 	color = "#222222"
@@ -1145,9 +1133,6 @@
 	},
 /obj/structure/window/reinforced/survival_pod{
 	dir = 1
-	},
-/obj/structure/window/reinforced/survival_pod{
-	dir = 6
 	},
 /turf/simulated/floor/reinforced,
 /area/admin_planet/fey_forest/gateway_facility)
@@ -1409,12 +1394,6 @@
 	desc = "The dark grassy floor that makes up the underbrush."
 	},
 /area/admin_planet/fey_forest/underbrush)
-"Eb" = (
-/obj/machinery/light/spot{
-	dir = 1
-	},
-/turf/simulated/floor/tiled/techfloor,
-/area/admin_planet/fey_forest/gateway_facility)
 "En" = (
 /obj/structure/table/hardwoodtable,
 /obj/item/paper{
@@ -1643,7 +1622,8 @@
 /obj/machinery/suit_cycler/medical{
 	name = "Biohazard Suit Cycler";
 	density = 0;
-	pixel_x = -21
+	pixel_x = -21;
+	req_access = null
 	},
 /turf/simulated/floor/tiled/kafel_full/green,
 /area/admin_planet/fey_forest/gateway_facility)
@@ -1812,14 +1792,6 @@
 	},
 /turf/simulated/floor/fey/dry_grass,
 /area/admin_planet/fey_forest/gateway_facility)
-"LG" = (
-/obj/machinery/door/flesh_door{
-	color = "#8B0000"
-	},
-/turf/simulated/floor/flesh{
-	color = "#8B0000"
-	},
-/area/admin_planet/fey_forest/underbrush)
 "Mb" = (
 /obj/structure/flora/tree/fey/small_tree/tree6,
 /turf/simulated/floor/fey/forest_grass,
@@ -2008,26 +1980,26 @@
 /area/admin_planet/fey_forest/gateway_facility)
 "Qx" = (
 /obj/structure/table/rack/shelf/steel,
-/obj/item/clothing/mask/gas/old,
-/obj/item/clothing/mask/gas/old,
-/obj/item/clothing/mask/gas/old,
-/obj/item/clothing/mask/gas/old,
-/obj/item/clothing/mask/gas/old,
-/obj/item/clothing/mask/gas/old,
-/obj/item/clothing/mask/gas/old,
-/obj/item/clothing/mask/gas/old,
-/obj/item/clothing/mask/gas/old,
-/obj/item/clothing/mask/gas/old,
-/obj/item/clothing/mask/gas/old,
-/obj/item/clothing/mask/gas/old,
-/obj/item/clothing/mask/gas/old,
-/obj/item/clothing/mask/gas/old,
-/obj/item/clothing/mask/gas/old,
-/obj/item/clothing/mask/gas/old,
-/obj/item/clothing/mask/gas/old,
-/obj/item/clothing/mask/gas/old,
-/obj/item/clothing/mask/gas/old,
-/obj/item/clothing/mask/gas/old,
+/obj/item/clothing/mask/gas,
+/obj/item/clothing/mask/gas,
+/obj/item/clothing/mask/gas,
+/obj/item/clothing/mask/gas,
+/obj/item/clothing/mask/gas,
+/obj/item/clothing/mask/gas,
+/obj/item/clothing/mask/gas,
+/obj/item/clothing/mask/gas,
+/obj/item/clothing/mask/gas,
+/obj/item/clothing/mask/gas,
+/obj/item/clothing/mask/gas,
+/obj/item/clothing/mask/gas,
+/obj/item/clothing/mask/gas,
+/obj/item/clothing/mask/gas,
+/obj/item/clothing/mask/gas,
+/obj/item/clothing/mask/gas,
+/obj/item/clothing/mask/gas,
+/obj/item/clothing/mask/gas,
+/obj/item/clothing/mask/gas,
+/obj/item/clothing/mask/gas,
 /turf/simulated/floor/tiled/kafel_full/green,
 /area/admin_planet/fey_forest/gateway_facility)
 "QO" = (
@@ -2066,64 +2038,64 @@
 "RJ" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/item/clothing/suit/space/void/medical/bio{
-	slowdown = 0.7
+	weight = 50
 	},
 /obj/item/clothing/suit/space/void/medical/bio{
-	slowdown = 0.7
+	weight = 50
 	},
 /obj/item/clothing/suit/space/void/medical/bio{
-	slowdown = 0.7
+	weight = 50
 	},
 /obj/item/clothing/suit/space/void/medical/bio{
-	slowdown = 0.7
+	weight = 50
 	},
 /obj/item/clothing/suit/space/void/medical/bio{
-	slowdown = 0.7
+	weight = 50
 	},
 /obj/item/clothing/suit/space/void/medical/bio{
-	slowdown = 0.7
+	weight = 50
 	},
 /obj/item/clothing/suit/space/void/medical/bio{
-	slowdown = 0.7
+	weight = 50
 	},
 /obj/item/clothing/suit/space/void/medical/bio{
-	slowdown = 0.7
+	weight = 50
 	},
 /obj/item/clothing/suit/space/void/medical/bio{
-	slowdown = 0.7
+	weight = 50
 	},
 /obj/item/clothing/suit/space/void/medical/bio{
-	slowdown = 0.7
+	weight = 50
 	},
 /obj/item/clothing/suit/space/void/medical/bio{
-	slowdown = 0.7
+	weight = 50
 	},
 /obj/item/clothing/suit/space/void/medical/bio{
-	slowdown = 0.7
+	weight = 50
 	},
 /obj/item/clothing/suit/space/void/medical/bio{
-	slowdown = 0.7
+	weight = 50
 	},
 /obj/item/clothing/suit/space/void/medical/bio{
-	slowdown = 0.7
+	weight = 50
 	},
 /obj/item/clothing/suit/space/void/medical/bio{
-	slowdown = 0.7
+	weight = 50
 	},
 /obj/item/clothing/suit/space/void/medical/bio{
-	slowdown = 0.7
+	weight = 50
 	},
 /obj/item/clothing/suit/space/void/medical/bio{
-	slowdown = 0.7
+	weight = 50
 	},
 /obj/item/clothing/suit/space/void/medical/bio{
-	slowdown = 0.7
+	weight = 50
 	},
 /obj/item/clothing/suit/space/void/medical/bio{
-	slowdown = 0.7
+	weight = 50
 	},
 /obj/item/clothing/suit/space/void/medical/bio{
-	slowdown = 0.7
+	weight = 50
 	},
 /turf/simulated/floor/tiled/kafel_full/green,
 /area/admin_planet/fey_forest/gateway_facility)
@@ -2149,9 +2121,6 @@
 "Sb" = (
 /obj/structure/bed/chair/bay/chair/padded/black{
 	dir = 4
-	},
-/obj/machinery/light/spot{
-	dir = 8
 	},
 /turf/simulated/floor/tiled/monodark,
 /area/admin_planet/fey_forest/gateway_facility)
@@ -2295,6 +2264,16 @@
 	},
 /turf/simulated/floor/tiled/kafel_full/green,
 /area/admin_planet/fey_forest/gateway_facility)
+"TA" = (
+/obj/structure/flora/tree/fey/small_tree/tree3{
+	color = "#8B0000";
+	pixel_x = -21;
+	pixel_y = -32
+	},
+/turf/simulated/floor/flesh{
+	color = "#222222"
+	},
+/area/admin_planet/fey_forest/underbrush)
 "TH" = (
 /obj/effect/floormimic/guaranteed,
 /turf/simulated/floor/wood,
@@ -2359,12 +2338,6 @@
 /obj/machinery/light/spot,
 /turf/simulated/floor/event/concrete,
 /area/admin_planet/fey_forest/gateway_facility)
-"TT" = (
-/obj/machinery/door/flesh_door,
-/turf/simulated/floor/flesh{
-	color = "#A9A9A9"
-	},
-/area/admin_planet/fey_forest/underbrush)
 "TU" = (
 /obj/structure/flora/grass/event/bright_flowers1{
 	name = "bright flowers"
@@ -2391,10 +2364,6 @@
 /area/admin_planet/fey_forest/gateway_facility)
 "UP" = (
 /turf/simulated/floor/tiled/kafel_full/blue,
-/area/admin_planet/fey_forest/gateway_facility)
-"US" = (
-/obj/spawner/window/low_wall/borosillicate/reinforced/full/firelocks,
-/turf/simulated/wall/r_wall/prepainted,
 /area/admin_planet/fey_forest/gateway_facility)
 "Ve" = (
 /obj/spawner/window/low_wall/borosillicate/reinforced/full/firelocks,
@@ -2634,9 +2603,6 @@
 	},
 /obj/structure/window/reinforced/survival_pod{
 	dir = 1
-	},
-/obj/structure/window/reinforced/survival_pod{
-	dir = 10
 	},
 /turf/simulated/floor/reinforced,
 /area/admin_planet/fey_forest/gateway_facility)
@@ -3030,7 +2996,7 @@ Uh
 Uh
 Uh
 Uh
-Uh
+TA
 Uh
 Uh
 Uh
@@ -3568,7 +3534,7 @@ Bw
 Bw
 Bw
 Bw
-TT
+Bw
 pV
 pV
 pV
@@ -3590,7 +3556,7 @@ pV
 pV
 pV
 pV
-LG
+pV
 Uh
 Uh
 Uh
@@ -3762,7 +3728,7 @@ Bw
 Bw
 Bw
 Bw
-TT
+Bw
 pV
 pV
 pV
@@ -3784,7 +3750,7 @@ pV
 pV
 pV
 pV
-LG
+pV
 Uh
 Uh
 Uh
@@ -3798,7 +3764,7 @@ Uh
 Uh
 Uh
 Uh
-Uh
+TA
 Uh
 Uh
 Uh
@@ -3978,7 +3944,7 @@ pV
 pV
 pV
 pV
-LG
+pV
 Uh
 Uh
 Uh
@@ -4203,7 +4169,7 @@ Uh
 Uh
 Uh
 Uh
-Uh
+TA
 Uh
 Uh
 cX
@@ -5148,7 +5114,7 @@ cX
 Uh
 Uh
 Uh
-Uh
+TA
 Uh
 Uh
 Uh
@@ -6316,7 +6282,7 @@ cX
 Uh
 Uh
 Uh
-Uh
+TA
 Uh
 Uh
 Uh
@@ -6519,7 +6485,7 @@ Uh
 Uh
 Uh
 Uh
-Uh
+TA
 Uh
 Uh
 Ev
@@ -6920,7 +6886,7 @@ Uh
 Uh
 Uh
 Uh
-Uh
+TA
 Uh
 cX
 cX
@@ -7095,7 +7061,7 @@ cX
 Uh
 Uh
 Uh
-Uh
+TA
 Uh
 Uh
 Uh
@@ -7885,7 +7851,7 @@ Uh
 Uh
 Uh
 Uh
-Uh
+TA
 Uh
 Uh
 Uh
@@ -8473,7 +8439,7 @@ Uh
 Uh
 Uh
 Uh
-Uh
+TA
 Uh
 cX
 cX
@@ -18959,7 +18925,7 @@ wI
 XX
 qG
 qG
-aX
+qG
 wI
 qG
 qG
@@ -19151,7 +19117,7 @@ qS
 (86,1,1) = {"
 wI
 Ap
-aX
+qG
 Oi
 EM
 qm
@@ -19346,7 +19312,7 @@ qS
 wI
 wI
 wI
-Eb
+qG
 qG
 qG
 qG
@@ -19539,7 +19505,7 @@ qS
 (88,1,1) = {"
 wI
 di
-sy
+qG
 CK
 tL
 gA
@@ -19735,7 +19701,7 @@ wI
 lk
 qG
 qG
-sy
+qG
 wI
 qG
 qG
@@ -24022,8 +23988,8 @@ AB
 AB
 xu
 AB
-US
-US
+WS
+WS
 zZ
 jx
 jx
