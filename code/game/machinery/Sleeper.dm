@@ -253,7 +253,7 @@
 					beaker.reagents,
 					min(
 						remaining_beaker_volume_for_dialysis * (3 / 4),
-						length(occupant.reagents.reagent_list)
+						length(occupant.reagents.reagent_list) * 3,
 					),
 					dialysis_reagent_filter_flags,
 				)
@@ -268,7 +268,7 @@
 					beaker.reagents,
 					min(
 						beaker.reagents.maximum_volume - beaker.reagents.total_volume,
-						length(occupant.ingested.reagent_list)
+						length(occupant.ingested.reagent_list) * 3,
 					),
 					dialysis_reagent_filter_flags,
 				)
