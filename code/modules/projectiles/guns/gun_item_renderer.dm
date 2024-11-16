@@ -10,7 +10,7 @@
  * todo: better documentation
  */
 /datum/gun_item_renderer
-	/// firemode state is taken into account
+	/// firemode render_key is appended, somewhere, to the overall state when generating states
 	var/use_firemode = FALSE
 
 /**
@@ -83,11 +83,16 @@
  * otherwise we render -1 to -n, or -empty if empty (and use empty state is on)
  *
  * * firemode is not taken into account for empty state.
+ * * "[base]-[firemode]-[count]"
  */
 /datum/gun_item_renderer/overlays
+	/// total count of overlays, from 1 to amount
 	var/count
+	/// add "-empty" overlay when we're empty, instead of adding nothing
 	var/use_empty
+	/// only use the n-th overlay, instead of adding 1 to n
 	var/use_single
+	/// additionally, add an "-[firemode]" state for our firemode's render_key
 	var/independent_firemode
 
 /datum/gun_item_renderer/overlays/render(obj/item/gun/gun, ammo_ratio, firemode_key)

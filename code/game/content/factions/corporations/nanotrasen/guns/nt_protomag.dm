@@ -6,6 +6,7 @@
  */
 /obj/item/gun/ballistic/magnetic/modular/nt_protomag
 	abstract_type = /obj/item/gun/ballistic/magnetic/modular/nt_protomag
+	icon = 'icons/content/factions/corporations/nanotrasen/items/guns/protomag/gun.dmi'
 	desc = "A modular ferromagnetic-boosted weapon. Uses experimental ferromagnetic ammunition."
 	description_fluff = {"
 		An experimental magnetic weapon from the Nanotrasen Research Division. The 'Protomag' series uses specially
@@ -24,6 +25,15 @@
 
 /obj/item/gun/ballistic/magnetic/modular/nt_protomag/sidearm
 	name = "protomag sidearm"
+	item_renderer = /datum/gun_item_renderer/overlays{
+		count = 4;
+		use_empty = TRUE;
+		use_single = TRUE;
+	}
+	render_magazine_overlay = MAGAZINE_CLASS_GENERIC
+	render_battery_overlay = MAGNETIC_RENDER_BATTERY_IN
+	fire_sound = 'sound/factions/corporations/nanotrasen/protomag-pistol.ogg'
+	base_shot_power = /obj/item/cell/device/weapon::maxcharge * (1 / 24)
 
 //* Rifle *//
 
@@ -31,3 +41,12 @@
 
 /obj/item/gun/ballistic/magnetic/modular/nt_protomag/rifle
 	name = "protomag rifle"
+	item_renderer = /datum/gun_item_renderer/overlays{
+		count = 4;
+		use_empty = TRUE;
+		use_single = TRUE;
+	}
+	render_magazine_overlay = MAGAZINE_CLASS_GENERIC
+	render_battery_overlay = MAGNETIC_RENDER_BATTERY_IN
+	base_shot_power = /obj/item/cell/device/weapon::maxcharge * (1 / )
+	fire_sound = 'sound/factions/corporations/nanotrasen/protomag-rifle.ogg'

@@ -242,13 +242,16 @@
 	/// * ignores [mob_renderer]
 	/// * ignores [render_additional_exclusive] / [render_additional_worn]
 	/// * ordering: [base]-wield-[additional]-[...rest]
+	#warn impl
 	var/render_mob_wielded = FALSE
 	/// state to add as an append
 	///
 	/// * segment and overlay renders add [base_icon_state]-[append]
 	/// * state renders set state to [base_icon_state]-[wield?]-[append]-[...rest]
+	#warn erase?
 	var/render_additional_state
 	/// only render [render_additional_state]
+	#warn deal with this
 	var/render_additional_exclusive = FALSE
 	/// [render_additional_state] and [render_additional_exclusive] apply to worn sprites
 	//  todo: impl

@@ -9,6 +9,11 @@
 	/// base power draw per shot
 	///
 	/// * in kilojoules
-	var/base_shot_power = (/obj/item/cell/device/weapon::maxcharge * 0.5) / INFINITY
+	var/base_shot_power = /obj/item/cell/device/weapon::maxcharge * (1 / 24)
+	/// Render battery state.
+	///
+	/// * Uses MAGNETIC_RENDER_BATTERY_* enums
+	#warn impl
+	var/render_battery_overlay = MAGNETIC_RENDER_BATTERY_NEVER
 
 #warn impl all

@@ -59,3 +59,17 @@
 /// * render `[base state]-break-open` if open
 /// * render `[base state]-break-close` if closed
 #define BALLISTIC_RENDER_BREAK_BOTH 3
+
+//* rendering enums - /obj/item/gun/ballistic/magnetic, /obj/item/gun/magnetic *//
+
+//? render_battery_overlay
+
+/// do not render battery state
+#define MAGNETIC_RENDER_BATTERY_NEVER 0
+/// render `[base state]-battery` if in
+#define MAGNETIC_RENDER_BATTERY_IN 1
+/// render `[base state]-battery` if out
+#define MAGNETIC_RENDER_BATTERY_OUT 2
+/// * render `[base state]-battery-in` if in
+/// * render `[base state]-battery-out` if out
+#define MAGNETIC_RENDER_BATTERY_BOTH 3

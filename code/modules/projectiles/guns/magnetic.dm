@@ -28,6 +28,13 @@
 	var/power_cost = 950                                       // Cost per fire, should consume almost an entire basic cell.
 	var/power_per_tick                                         // Capacitor charge per process(). Updated based on capacitor rating.
 
+	/// Render battery state.
+	///
+	/// todo: impl
+	///
+	/// * Uses MAGNETIC_RENDER_BATTERY_* enums
+	var/render_battery_overlay = MAGNETIC_RENDER_BATTERY_NEVER
+
 /obj/item/gun/magnetic/Initialize(mapload)
 	START_PROCESSING(SSobj, src)
 	if(capacitor)
