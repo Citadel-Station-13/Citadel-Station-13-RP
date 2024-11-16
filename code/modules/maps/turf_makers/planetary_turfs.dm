@@ -106,6 +106,7 @@ VIRGO2_TURF_CREATE(/turf/simulated/mineral/floor/ignore_mapgen)
 /////////// LAVALAND 	   /////////////////////
 ////////////////////////////////////////////////
 
+CREATE_STANDARD_TURFS(/turf/simulated/floor/outdoors/ash_sand)
 /turf/simulated/floor/outdoors/ash_sand
 	name = "ash sand"
 	desc = "Soft and ominous."
