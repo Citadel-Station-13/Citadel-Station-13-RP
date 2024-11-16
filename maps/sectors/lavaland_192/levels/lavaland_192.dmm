@@ -156,7 +156,7 @@
 /area/lavaland/central/base/common)
 "hp" = (
 /obj/effect/debris/cleanable/dirt,
-/turf/simulated/mineral/triumph,
+/turf/simulated/mineral,
 /area/lavaland/central/explored)
 "hr" = (
 /obj/machinery/light/small{
@@ -1086,7 +1086,7 @@
 /turf/simulated/floor/plating,
 /area/lavaland/central/base/common)
 "xd" = (
-/turf/unsimulated/mineral/rich,
+/turf/simulated/mineral/rich,
 /area/lavaland/central/unexplored)
 "xf" = (
 /obj/machinery/mech_recharger,
@@ -1890,7 +1890,7 @@
 /turf/simulated/floor/tiled/old_tile,
 /area/lavaland/central/base/common)
 "RL" = (
-/turf/unsimulated/mineral/rich,
+/turf/simulated/mineral/rich,
 /area/lavaland/central/explored)
 "RS" = (
 /obj/machinery/door/airlock{
@@ -1902,7 +1902,7 @@
 /turf/simulated/floor/carpet/purcarpet,
 /area/lavaland/central/base/common)
 "RX" = (
-/turf/simulated/mineral/triumph,
+/turf/simulated/mineral,
 /area/lavaland/central/unexplored)
 "Sa" = (
 /obj/machinery/camera/network/mining{
@@ -2380,7 +2380,7 @@
 /turf/simulated/floor/tiled,
 /area/lavaland/central/base/common)
 "ZK" = (
-/turf/simulated/mineral/triumph,
+/turf/simulated/mineral,
 /area/lavaland/central/explored)
 "ZO" = (
 /obj/structure/curtain/open/shower/engineering,

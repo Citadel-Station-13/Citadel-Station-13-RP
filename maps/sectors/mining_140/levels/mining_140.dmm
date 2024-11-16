@@ -25,10 +25,10 @@
 /turf/simulated/mineral/floor/ignore_cavegen,
 /area/class_g/explored)
 "w" = (
-/turf/unsimulated/mineral/rich,
+/turf/simulated/mineral/rich,
 /area/class_g/unexplored)
 "A" = (
-/turf/simulated/mineral/triumph,
+/turf/simulated/mineral,
 /area/class_g/unexplored)
 "F" = (
 /turf/simulated/mineral/floor/ignore_cavegen,

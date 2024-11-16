@@ -408,7 +408,7 @@
 /turf/simulated/floor/carpet/bcarpet,
 /area/lavaland/east/ashlander_village)
 "ji" = (
-/turf/unsimulated/mineral/rich,
+/turf/simulated/mineral/rich,
 /area/lavaland/east/ashlander_village)
 "jz" = (
 /obj/structure/table/hardwoodtable,
@@ -506,7 +506,7 @@
 /turf/simulated/floor/tiled,
 /area/lavaland/east/ashlander_village)
 "kx" = (
-/turf/simulated/mineral/triumph,
+/turf/simulated/mineral,
 /area/lavaland/east/explored)
 "kL" = (
 /obj/structure/fence/corner,
@@ -1355,7 +1355,7 @@
 /turf/simulated/floor/tiled,
 /area/lavaland/east/ashlander_village)
 "Am" = (
-/turf/unsimulated/mineral/rich,
+/turf/simulated/mineral/rich,
 /area/lavaland/east/unexplored)
 "Ax" = (
 /obj/machinery/door/airlock/glass_external{
@@ -1748,7 +1748,7 @@
 /turf/simulated/floor/wood,
 /area/lavaland/east/ashlander_village)
 "JX" = (
-/turf/simulated/mineral/triumph,
+/turf/simulated/mineral,
 /area/lavaland/east/ashlander_village)
 "Kf" = (
 /obj/effect/gibspawner/generic,
@@ -2014,7 +2014,7 @@
 /turf/simulated/floor/tiled,
 /area/lavaland/east/ashlander_village)
 "Qh" = (
-/turf/simulated/mineral/triumph,
+/turf/simulated/mineral,
 /area/lavaland/east/unexplored)
 "Qv" = (
 /obj/structure/grille,
@@ -2306,7 +2306,7 @@
 /turf/simulated/floor/wood,
 /area/lavaland/east/ashlander_village)
 "Ve" = (
-/turf/unsimulated/mineral/rich,
+/turf/simulated/mineral/rich,
 /area/lavaland/east/explored)
 "Vk" = (
 /obj/structure/boulder,

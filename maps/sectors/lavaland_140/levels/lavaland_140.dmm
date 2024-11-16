@@ -318,7 +318,7 @@
 /area/lavaland/central/base/common)
 "hp" = (
 /obj/effect/debris/cleanable/dirt,
-/turf/simulated/mineral/triumph,
+/turf/simulated/mineral,
 /area/lavaland/central/explored)
 "hr" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -1144,7 +1144,7 @@
 /turf/simulated/floor/tiled,
 /area/lavaland/central/base/common)
 "xd" = (
-/turf/unsimulated/mineral/rich,
+/turf/simulated/mineral/rich,
 /area/lavaland/central/unexplored)
 "xF" = (
 /obj/machinery/door/firedoor{
@@ -1958,7 +1958,7 @@
 /turf/simulated/wall,
 /area/lavaland/central/transit)
 "MX" = (
-/turf/simulated/mineral/triumph,
+/turf/simulated/mineral,
 /area/lavaland/central/explored)
 "ND" = (
 /obj/structure/flora/pottedplant/subterranean,
@@ -2180,10 +2180,10 @@
 /turf/simulated/floor/tiled/old_tile,
 /area/lavaland/central/base/common)
 "RL" = (
-/turf/unsimulated/mineral/rich,
+/turf/simulated/mineral/rich,
 /area/lavaland/central/explored)
 "RX" = (
-/turf/simulated/mineral/triumph,
+/turf/simulated/mineral,
 /area/lavaland/central/unexplored)
 "Sa" = (
 /obj/machinery/light/small{

@@ -3,7 +3,7 @@
 /turf/unsimulated/mineral,
 /area/lavaland/east/explored)
 "aC" = (
-/turf/unsimulated/mineral/rich,
+/turf/simulated/mineral/rich,
 /area/lavaland/east/explored)
 "aE" = (
 /turf/simulated/mineral/ignore_mapgen,
@@ -180,7 +180,7 @@
 /turf/simulated/floor/sandstone,
 /area/lavaland/east/ashlander_village)
 "Am" = (
-/turf/unsimulated/mineral/rich,
+/turf/simulated/mineral/rich,
 /area/lavaland/east/unexplored)
 "AL" = (
 /obj/structure/ashlander/production/brickmaker,
@@ -297,7 +297,7 @@
 /turf/simulated/floor/bone,
 /area/lavaland/east/ashlander_village)
 "Qh" = (
-/turf/simulated/mineral/triumph,
+/turf/simulated/mineral,
 /area/lavaland/east/unexplored)
 "RD" = (
 /obj/item/reagent_containers/glass/bucket/sandstone,
@@ -335,7 +335,7 @@
 /turf/simulated/floor/bone/engraved,
 /area/lavaland/east/ashlander_village)
 "WT" = (
-/turf/simulated/mineral/triumph,
+/turf/simulated/mineral,
 /area/lavaland/east/explored)
 "XO" = (
 /obj/structure/mob_spawner/goliath{

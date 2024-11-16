@@ -901,7 +901,7 @@
 /turf/simulated/floor/tiled/steel_dirty,
 /area/lavaland/dungeon/facility)
 "OT" = (
-/turf/simulated/mineral/triumph,
+/turf/simulated/mineral,
 /area/lavaland/dungeon/exterior)
 "Qr" = (
 /obj/structure/table/marble,
@@ -1003,7 +1003,7 @@
 /turf/simulated/floor,
 /area/lavaland/dungeon/facility)
 "Tl" = (
-/turf/unsimulated/mineral/rich,
+/turf/simulated/mineral/rich,
 /area/lavaland/dungeon/exterior)
 "TO" = (
 /obj/effect/floor_decal/borderfloorblack{
