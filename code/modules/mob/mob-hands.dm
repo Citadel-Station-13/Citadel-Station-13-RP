@@ -167,9 +167,11 @@
  * * This is so remote control abstraction works.
  */
 /mob/proc/swap_hand(to_index)
+	if(active_hand == to_index)
+		return
 	var/hand_count = get_nominal_hand_count()
 	var/obj/item/was_active = get_active_held_item()
-	var/old_index = active_hand
+	var/old_index = active_hand || 1
 
 	if(isnull(to_index))
 		if(active_hand >= hand_count)
@@ -180,6 +182,7 @@
 		if(to_index > hand_count)
 			return FALSE
 		active_hand = to_index
+	to_index = active_hand
 
 	. = TRUE
 

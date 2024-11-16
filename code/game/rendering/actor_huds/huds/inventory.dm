@@ -47,10 +47,12 @@
 
 /datum/actor_hud/inventory/proc/bind_to_inventory(datum/inventory/inventory)
 	host = inventory
+	LAZYADD(inventory.using_huds, src)
 	rebuild(inventory.build_inventory_slots_with_remappings(), length(inventory.held_items))
 
 /datum/actor_hud/inventory/proc/unbind_from_inventory(datum/inventory/inventory)
 	cleanup()
+	LAZYREMOVE(inventory.using_huds, src)
 	host = null
 
 /datum/actor_hud/inventory/screens()
@@ -110,7 +112,9 @@
 		if(!slot)
 			stack_trace("failed to fetch slot during hud rebuild: [slot_id]")
 			continue
-		slots[slot_id] = new /atom/movable/screen/actor_hud/inventory/plate/slot(null, src, slot, inventory_slots_with_mappings[slot_id] || list())
+		var/atom/movable/screen/actor_hud/inventory/plate/slot/slot_object = new /atom/movable/screen/actor_hud/inventory/plate/slot(null, src, slot, inventory_slots_with_mappings[slot_id] || list())
+		add_screen(slot_object)
+		slots[slot_id] = slot_object
 
 	// here is where we basically pull a CSS flexbox.
 
@@ -409,10 +413,11 @@
  */
 /atom/movable/screen/actor_hud/inventory/drawer
 	icon_state = "drawer"
+	screen_loc = SCREEN_LOC_MOB_HUD_INVENTORY_DRAWER
 
 /atom/movable/screen/actor_hud/inventory/drawer/sync_style(datum/hud_style/style, style_alpha, style_color)
 	..()
-	icon = style.inventory_icons_wide
+	icon = style.inventory_icons
 
 /atom/movable/screen/actor_hud/inventory/drawer/on_click(mob/user, list/params)
 	// todo: remote control
@@ -427,6 +432,7 @@
  */
 /atom/movable/screen/actor_hud/inventory/swap_hand
 	icon_state = "swap"
+	screen_loc = SCREEN_LOC_MOB_HUD_INVENTORY_HAND_SWAP
 
 /atom/movable/screen/actor_hud/inventory/swap_hand/sync_style(datum/hud_style/style, style_alpha, style_color)
 	..()
@@ -441,6 +447,7 @@
  */
 /atom/movable/screen/actor_hud/inventory/equip_hand
 	icon_state = "equip"
+	screen_loc = SCREEN_LOC_MOB_HUD_INVENTORY_EQUIP_HAND
 
 /atom/movable/screen/actor_hud/inventory/equip_hand/sync_style(datum/hud_style/style, style_alpha, style_color)
 	..()

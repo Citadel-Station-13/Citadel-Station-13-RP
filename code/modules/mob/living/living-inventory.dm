@@ -58,6 +58,8 @@
 //* Init *//
 
 /mob/living/init_inventory()
+	if(inventory)
+		return
 	inventory = new(src)
 
 //* Carry Weight *//

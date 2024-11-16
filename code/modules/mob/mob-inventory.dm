@@ -3,6 +3,7 @@
 
 //* Init *//
 
+// todo: rework this proc. what happens if it's already there? documentation?? this should probably reset the inventory maybe?
 /mob/proc/init_inventory()
 	return
 

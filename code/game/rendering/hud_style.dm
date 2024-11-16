@@ -10,6 +10,12 @@ GLOBAL_LIST_INIT(hud_styles, init_hud_styles())
 			continue
 		.[initial(path.id)] = new path
 
+/proc/legacy_find_hud_style_by_name(name)
+	for(var/id in GLOB.hud_styles)
+		var/datum/hud_style/style = GLOB.hud_styles[id]
+		if(style.name == name)
+			return style
+
 /**
  * # HUD Style
  *

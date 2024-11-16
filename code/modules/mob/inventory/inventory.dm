@@ -77,7 +77,7 @@
  * mapped slots input should be a list of slot IDs, optionally associated to remapping lists
  */
 /datum/inventory/proc/set_inventory_slots(list/mapped_slots)
-	base_inventory_slots = mapped_slots
+	base_inventory_slots = deep_copy_list(mapped_slots)
 	for(var/datum/actor_hud/inventory/hud in huds_using)
 		hud.rebuild()
 	SEND_SIGNAL(src, COMSIG_INVENTORY_SLOT_REBUILD)
@@ -86,7 +86,7 @@
  * @return list(id = list(INVENTORY_SLOT_REMAP_*))
  */
 /datum/inventory/proc/build_inventory_slots_with_remappings()
-	return base_inventory_slots
+	return deep_copy_list(base_inventory_slots)
 
 //! unsorted / legacy below
 

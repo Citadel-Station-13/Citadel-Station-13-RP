@@ -21,6 +21,8 @@
 /mob/living/carbon/init_inventory()
 	. = ..()
 	inventory.set_hand_count(2)
+	if(species) // todo: sigh we need to talk about init order; this shouldn't be needed
+		inventory.set_inventory_slots(species.inventory_slots)
 
 /mob/living/carbon/BiologicalLife(seconds, times_fired)
 	if((. = ..()))
