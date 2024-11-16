@@ -137,6 +137,7 @@
 	var/list/burst_accuracy = list(0) //allows for different accuracies for each shot in a burst. Applied on top of accuracy
 	var/list/dispersion = list(0)
 	// todo: purge with fire
+	// todo: do not use this var, use firemodes on /energy
 	var/projectile_type = /obj/projectile	//On ballistics, only used to check for the cham gun
 	// todo: this should be on /ballistic, and be `internal_chambered`.
 	var/obj/item/ammo_casing/chambered = null
@@ -170,7 +171,6 @@
 	//Gun Malfunction variables
 	var/unstable = 0
 	var/destroyed = 0
-	var/automatic = 0 //can gun use it, 0 is no, anything above 0 is the delay between clicks in ds
 
 	//! legacy above !//
 
@@ -378,15 +378,11 @@
 		. += "It has [attachment] installed on its [attachment.attachment_slot].[attachment.can_detach ? "" : " It doesn't look like it can be removed."]"
 #warn component examine
 
-/obj/item/gun/CanItemAutoclick(object, location, params)
-	. = automatic
-
 /obj/item/gun/on_wield(mob/user, hands)
 	. = ..()
 
 /obj/item/gun/on_unwield(mob/user, hands)
 	. = ..()
-
 
 #warn redo multihanding
 /obj/item/gun/update_held_icon()

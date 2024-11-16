@@ -16,6 +16,7 @@
 	cell_system = TRUE
 	cell_type = /obj/item/cell/device/weapon
 
+	// todo: do not use this var, use firemodes
 	var/charge_cost = 240 //How much energy is needed to fire.
 
 	projectile_type = /obj/projectile/beam/practice
@@ -102,13 +103,15 @@
 	update_icon()
 
 /obj/item/gun/energy/consume_next_projectile(datum/gun_firing_cycle/cycle)
-	if(!obj_cell_slot?.cell)
+	var/datum/firemode/energy/energy_firemode = firemode
+	if(!istype(energy_firemode))
 		return null
-	if(!ispath(projectile_type))
-		return null
-	if(!obj_cell_slot.cell.checked_use(charge_cost))
-		return null
-	return new projectile_type(src)
+	var/effective_power_use = isnull(energy_firemode.charge_cost) ? charge_cost : energy_firemode.charge_cost
+	if(effective_power_use)
+		if(!obj_cell_slot?.checked_use(effective_power_use))
+			return null
+	var/projectile_path = isnull(energy_firemode.projectile_type) ? projectile_type : energy_firemode.projectile_type
+	return new projectile_path
 
 /obj/item/gun/energy/proc/get_external_power_supply()
 	if(isrobot(src.loc))
