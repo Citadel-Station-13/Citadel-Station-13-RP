@@ -75,7 +75,7 @@ GLOBAL_VAR_INIT(security_level, SEC_LEVEL_GREEN)
 		for(var/obj/machinery/status_display/FA in GLOB.machines)
 			if(FA.z in (LEGACY_MAP_DATUM).contact_levels)
 				FA.display_alert(newlevel)
-				FA.current_mode = 3
+				FA.current_mode = SD_PICTURE
 
 		if(level >= SEC_LEVEL_RED)
 			if(SSlegacy_atc.squelched == FALSE) // Do nothing, ATC relay is already off

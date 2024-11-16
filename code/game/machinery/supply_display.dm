@@ -1,10 +1,10 @@
 /obj/machinery/status_display/supply_display
 	name = "supply display"
-	current_mode = STATUS_DISPLAY_MESSAGE
+	current_mode = SD_MESSAGE
 	text_color = "#ff9900"
 	header_text_color = "#fff743"
 
-/obj/machinery/status_display/supply/process()
+/obj/machinery/status_display/supply_display/process()
 	if(machine_stat & NOPOWER)
 		// No power, no processing.
 		update_appearance()
