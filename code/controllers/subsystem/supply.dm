@@ -59,7 +59,7 @@ SUBSYSTEM_DEF(supply)
 	for(var/key in legacy_supply_categories)
 		flattened += key
 	legacy_supply_categories = flattened
-	return ..()
+	return SS_INIT_SUCCESS
 
 // Supply shuttle SSticker - handles supply point regeneration
 // This is called by the process scheduler every thirty seconds
