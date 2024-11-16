@@ -1216,18 +1216,14 @@
 /obj/machinery/door/firedoor/glass{
 	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/black{
-	dir = 4
-	},
 /obj/machinery/door/airlock/medical{
-	name = "Virology Labs";
+	name = "Medical Response Shuttle Dock";
 	req_one_access = null
 	},
 /obj/map_helper/access_helper/airlock/station/medical/department,
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
-/obj/item/barrier_tape_segment/engineering,
 /turf/simulated/floor/tiled/white,
 /area/hallway/station/docks)
 "aPL" = (
@@ -1323,8 +1319,6 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/rnd/workshop)
 "aUs" = (
-/obj/effect/paint/purplegray,
-/obj/machinery/door/firedoor,
 /obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
 /obj/map_helper/electrochromatic_linker{
 	id = "research-outer"
@@ -5647,12 +5641,6 @@
 /turf/simulated/floor/tiled,
 /area/rnd/research/researchdivision)
 "dIV" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 1
 	},
@@ -5678,7 +5666,7 @@
 /turf/simulated/floor/carpet/bcarpet,
 /area/endeavour/hallway/d2afthall)
 "dJW" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 6
 	},
 /turf/simulated/floor/tiled,
@@ -6827,6 +6815,7 @@
 "eqt" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
 /obj/item/paper_bin,
+/obj/effect/paint/babyblue,
 /turf/simulated/floor/tiled/white,
 /area/medical/psych_ward)
 "eqA" = (
@@ -9523,9 +9512,6 @@
 	pixel_x = -5;
 	pixel_y = -1
 	},
-/obj/machinery/atmospherics/component/unary/vent_pump/on{
-	dir = 8
-	},
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology)
 "ggO" = (
@@ -10442,11 +10428,6 @@
 /obj/machinery/door/firedoor/glass{
 	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/structure/cable/green{
-	icon_state = "1-2"
-	},
 /obj/machinery/door/airlock/research{
 	id_tag = "researchdoor";
 	name = "R&D Distribution Area"
@@ -11054,6 +11035,11 @@
 /obj/effect/paint/babyblue,
 /turf/simulated/floor/tiled,
 /area/medical/resleeving)
+"hhK" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/turf/simulated/floor/tiled,
+/area/rnd/xenobiology)
 "hhW" = (
 /obj/machinery/papershredder,
 /obj/machinery/air_alarm{
@@ -14124,6 +14110,17 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology/xenoflora)
+"jhM" = (
+/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/effect/paint/babyblue,
+/obj/machinery/atmospherics/pipe/simple/hidden/red{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/turf/simulated/floor/plating,
+/area/medical/virology)
 "jin" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -15305,22 +15302,17 @@
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d1starboardamidhall)
 "jXi" = (
-/obj/machinery/door/firedoor/glass{
+/obj/machinery/door/firedoor/glass,
+/obj/effect/floor_decal/corner/paleblue/border{
 	dir = 4
 	},
-/obj/machinery/door/airlock/glass,
+/obj/effect/floor_decal/spline/plain{
+	dir = 4
+	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/structure/cable/green{
-	icon_state = "1-2"
-	},
-/obj/machinery/door/airlock/research{
-	id_tag = "researchdoor";
-	name = "R&D Distribution Area"
-	},
-/obj/map_helper/access_helper/airlock/station/science/robotics,
-/turf/simulated/floor/tiled/dark,
-/area/rnd/research/researchdivision)
+/turf/simulated/floor/tiled/white,
+/area/medical/reception)
 "jYo" = (
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 8
@@ -15795,10 +15787,14 @@
 /turf/simulated/floor/tiled,
 /area/rnd/hallway)
 "koa" = (
-/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
-/obj/machinery/atmospherics/pipe/manifold/hidden/supply,
 /obj/structure/cable/green{
 	icon_state = "1-4"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 5
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 5
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/medbay4)
@@ -18577,12 +18573,6 @@
 /turf/simulated/floor/carpet/bcarpet,
 /area/endeavour/hallway/d2afthall)
 "mnP" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 1
 	},
@@ -19007,8 +18997,6 @@
 /turf/simulated/floor/tiled,
 /area/rnd/research_foyer)
 "mAv" = (
-/obj/effect/paint/purplegray,
-/obj/machinery/door/firedoor,
 /obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
 /obj/map_helper/electrochromatic_linker{
 	id = "robotics-outer"
@@ -21194,6 +21182,8 @@
 	name = "Treatment Centre";
 	id_tag = "MedbayFoyerR"
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled/white,
 /area/medical/reception)
 "nSz" = (
@@ -21955,8 +21945,6 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/rnd/robotics/morgue)
 "owo" = (
-/obj/effect/paint/purplegray,
-/obj/machinery/door/firedoor,
 /obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
 /obj/map_helper/electrochromatic_linker{
 	id = "research-inner"
@@ -22733,6 +22721,7 @@
 "oVx" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
 /obj/structure/bed/chair/office/dark,
+/obj/effect/paint/babyblue,
 /turf/simulated/floor/tiled/white,
 /area/medical/psych_ward)
 "oWl" = (
@@ -24534,6 +24523,7 @@
 /area/tether/station/public_meeting_room)
 "pTw" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/effect/paint/babyblue,
 /turf/simulated/floor/tiled/white,
 /area/medical/psych_ward)
 "pTU" = (
@@ -25740,26 +25730,12 @@
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d1starboardafthall)
 "qCZ" = (
-/obj/structure/cable/green{
-	icon_state = "4-8"
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
+	dir = 6
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/obj/effect/floor_decal/borderfloorwhite{
-	dir = 1
-	},
-/obj/effect/floor_decal/corner/beige/border{
-	dir = 1
-	},
-/obj/machinery/air_alarm{
-	pixel_y = 23
-	},
-/turf/simulated/floor/tiled/white,
-/area/medical/medbay4)
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/turf/simulated/floor/tiled,
+/area/rnd/xenobiology)
 "qDJ" = (
 /obj/machinery/embedded_controller/radio/airlock/access_controller{
 	id_tag = "virology_airlock_east";
@@ -26755,13 +26731,12 @@
 	dir = 4
 	},
 /obj/machinery/door/airlock/medical{
-	name = "Virology Labs";
+	name = "Medical Response Shuttle Dock";
 	req_one_access = null
 	},
 /obj/map_helper/access_helper/airlock/station/medical/department,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/item/barrier_tape_segment/engineering,
 /turf/simulated/floor/tiled/white,
 /area/hallway/station/docks)
 "rfd" = (
@@ -27833,8 +27808,6 @@
 /obj/machinery/door/firedoor/glass{
 	dir = 4
 	},
-/obj/effect/paint/purplegray,
-/obj/machinery/door/firedoor,
 /obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
 /obj/map_helper/electrochromatic_linker{
 	id = "robotics-inner"
@@ -28090,8 +28063,6 @@
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d2fwdhall)
 "scT" = (
-/obj/effect/paint/purplegray,
-/obj/machinery/door/firedoor,
 /obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
 /obj/map_helper/electrochromatic_linker{
 	id = "robotics-inner"
@@ -30570,6 +30541,7 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled,
 /area/rnd/research_foyer)
 "tMu" = (
@@ -32494,9 +32466,6 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/hallway/station/docks)
 "vct" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 6
-	},
 /obj/machinery/processor,
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology)
@@ -33141,6 +33110,27 @@
 	},
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d1starboardamidhall)
+"vEU" = (
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/effect/floor_decal/borderfloorwhite{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/beige/border{
+	dir = 1
+	},
+/obj/machinery/air_alarm{
+	pixel_y = 22
+	},
+/turf/simulated/floor/tiled/white,
+/area/medical/medbay4)
 "vFg" = (
 /obj/item/clothing/shoes/magboots,
 /obj/item/clothing/suit/space/void/medical/emt,
@@ -34526,14 +34516,14 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/virology_fore_access)
 "wtw" = (
-/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
-	dir = 1
-	},
-/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
-	dir = 1
-	},
 /obj/structure/cable/green{
 	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/research_foyer_auxiliary)
@@ -35512,6 +35502,9 @@
 	pixel_x = 25
 	},
 /obj/item/clothing/glasses/science,
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
+	dir = 8
+	},
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology)
 "xaD" = (
@@ -44624,7 +44617,7 @@ buM
 ybk
 fiT
 gJS
-gOV
+vEU
 kBS
 qFw
 hgb
@@ -44818,7 +44811,7 @@ buM
 pdM
 kxI
 epJ
-qCZ
+gOV
 kBS
 pff
 iXI
@@ -46724,8 +46717,8 @@ jMj
 avn
 avn
 dJW
-aww
-aww
+qCZ
+hhK
 log
 qyg
 biX
@@ -48289,7 +48282,7 @@ kCt
 kCt
 kCt
 kCt
-jXi
+gMk
 gMk
 kCt
 cja
@@ -50062,7 +50055,7 @@ oYo
 oYo
 oYo
 eaI
-dxA
+jXi
 nXe
 las
 uJJ
@@ -58210,7 +58203,7 @@ uvd
 uvd
 rNS
 ibj
-rNS
+jhM
 rNS
 wlz
 dAF
