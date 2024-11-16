@@ -166,18 +166,21 @@
 			var/atom/movable/screen/actor_hud/inventory/plate/slot/aligning = cross_axis_list[main_axis]
 			aligning.inventory_hud_cross_axis = cross_axis - 1
 			aligning.inventory_hud_main_axis = main_axis - 1
+			aligned += aligning
 	for(var/cross_axis in 1 to length(cross_axis_for_hands_left))
 		var/list/cross_axis_list = cross_axis_for_hands_left[cross_axis]
 		for(var/main_axis in 1 to length(cross_axis_list))
 			var/atom/movable/screen/actor_hud/inventory/plate/slot/aligning = cross_axis_list[main_axis]
 			aligning.inventory_hud_cross_axis = cross_axis - 1
 			aligning.inventory_hud_main_axis = -main_axis
+			aligned += aligning
 	for(var/cross_axis in 1 to length(cross_axis_for_hands_right))
 		var/list/cross_axis_list = cross_axis_for_hands_right[cross_axis]
 		for(var/main_axis in 1 to length(cross_axis_list))
 			var/atom/movable/screen/actor_hud/inventory/plate/slot/aligning = cross_axis_list[main_axis]
 			aligning.inventory_hud_cross_axis = cross_axis - 1
 			aligning.inventory_hud_main_axis = main_axis
+			aligned += aligning
 
 	for(var/atom/movable/screen/actor_hud/inventory/plate/slot/slot_object as anything in aligned)
 		switch(slot_object.inventory_hud_anchor)
@@ -394,7 +397,7 @@
 
 /atom/movable/screen/actor_hud/inventory/plate/hand/proc/sync_index(index = hand_index)
 	screen_loc = SCREEN_LOC_MOB_HUD_INVENTORY_HAND(index)
-	name = "[index % 2? "left" : "right"] hand[index > 1? " #[index]" : ""]"
+	name = "[index % 2? "left" : "right"] hand[index > 2? " #[index]" : ""]"
 	icon_state = "hand-[index % 2? "left" : "right"]"
 
 /atom/movable/screen/actor_hud/inventory/plate/hand/proc/set_handcuffed(state)
@@ -412,6 +415,7 @@
  * Button: 'swap hand'
  */
 /atom/movable/screen/actor_hud/inventory/drawer
+	name = "drawer"
 	icon_state = "drawer"
 	screen_loc = SCREEN_LOC_MOB_HUD_INVENTORY_DRAWER
 
@@ -431,6 +435,7 @@
  * Button: 'swap hand'
  */
 /atom/movable/screen/actor_hud/inventory/swap_hand
+	name = "swap active hand"
 	icon_state = "hand-swap"
 /atom/movable/screen/actor_hud/inventory/swap_hand/Initialize(mapload, datum/inventory/host, hand_count)
 	. = ..()
@@ -448,6 +453,7 @@
  * Button: 'auto equip'
  */
 /atom/movable/screen/actor_hud/inventory/equip_hand
+	name = "equip held item"
 	icon_state = "button-equip"
 
 /atom/movable/screen/actor_hud/inventory/equip_hand/Initialize(mapload, datum/inventory/host, hand_count)
