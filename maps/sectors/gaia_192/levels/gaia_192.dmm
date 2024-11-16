@@ -1608,7 +1608,7 @@
 /obj/machinery/door/blast/regular{
 	name = "Hangar Door"
 	},
-/turf/simulated/wall/planetary/gaia,
+/turf/simulated/wall/planetary,
 /area/class_m/inside/hangars)
 "hr" = (
 /turf/simulated/floor/water/river/south/outdoors,
@@ -1812,7 +1812,7 @@
 /turf/simulated/floor/wood,
 /area/class_m/inside/main)
 "id" = (
-/turf/simulated/wall/planetary/gaia,
+/turf/simulated/wall/planetary,
 /area/class_m/outside/beach)
 "ie" = (
 /obj/structure/table/woodentable,
@@ -4865,7 +4865,7 @@
 /turf/simulated/floor/water,
 /area/class_m/outside/desert)
 "ua" = (
-/turf/simulated/wall/planetary/frozen,
+/turf/simulated/wall/planetary,
 /area/class_m/outside/winter)
 "ub" = (
 /obj/machinery/vending/coffee,
@@ -4995,7 +4995,7 @@
 /turf/simulated/floor/tiled/monotile,
 /area/class_m/inside/main)
 "uL" = (
-/turf/simulated/wall/planetary/gaia,
+/turf/simulated/wall/planetary,
 /area/class_m/inside/vip_dorms)
 "uN" = (
 /obj/effect/overlay/palmtree_r,
@@ -5614,7 +5614,7 @@
 /turf/simulated/mineral/ignore_mapgen,
 /area/class_m/outside)
 "xR" = (
-/turf/simulated/wall/planetary/frozen,
+/turf/simulated/wall/planetary,
 /area/class_m/inside/maintenance/winter)
 "xT" = (
 /turf/simulated/floor/water/beach{
@@ -6603,7 +6603,7 @@
 /turf/simulated/floor/outdoors/grass,
 /area/class_m/outside/beachmiddle)
 "Cf" = (
-/turf/simulated/wall/planetary/gaia,
+/turf/simulated/wall/planetary,
 /area/class_m/inside/maintenance)
 "Cg" = (
 /obj/machinery/shower{
@@ -6936,7 +6936,7 @@
 /turf/simulated/floor/outdoors/gravsnow/lythios43c/indoors,
 /area/class_m/outside/winter)
 "DK" = (
-/turf/simulated/wall/planetary/gaia,
+/turf/simulated/wall/planetary,
 /area/class_m/inside/maintenance/desert)
 "DM" = (
 /obj/structure/table/woodentable,
@@ -9812,7 +9812,7 @@
 /turf/simulated/floor/outdoors/grass,
 /area/class_m/outside)
 "Pq" = (
-/turf/simulated/wall/planetary/gaia,
+/turf/simulated/wall/planetary,
 /area/class_m/inside/hangars)
 "Ps" = (
 /obj/structure/railing/grey{
@@ -10630,7 +10630,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/class_m/inside/main)
 "Tw" = (
-/turf/simulated/wall/planetary/gaia,
+/turf/simulated/wall/planetary,
 /area/class_m/inside/maintenance/winter)
 "Tx" = (
 /obj/structure/closet/wardrobe,
@@ -10758,7 +10758,7 @@
 /turf/simulated/floor/outdoors/grass,
 /area/class_m/outside/beachmiddle)
 "Ud" = (
-/turf/simulated/wall/planetary/gaia,
+/turf/simulated/wall/planetary,
 /area/class_m/outside)
 "Ui" = (
 /obj/machinery/door/airlock{
