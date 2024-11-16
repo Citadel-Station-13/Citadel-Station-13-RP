@@ -249,11 +249,11 @@
 				// filter 3 units per chem-type inside them, or remaining volume, whichever is lesser
 				// we will also pump out 1/3 of that volume as their blood.
 				var/remaining_beaker_volume_for_dialysis = beaker.reagents.maximum_volume - beaker.reagents.total_volume
-				var/filtered_volume = occupant.ingested?.filter_to_holder(
+				var/filtered_volume = occupant.reagents?.filter_to_holder(
 					beaker.reagents,
 					min(
 						remaining_beaker_volume_for_dialysis * (3 / 4),
-						length(occupant.ingested.reagent_list)
+						length(occupant.reagents.reagent_list)
 					),
 					dialysis_reagent_filter_flags,
 				)
