@@ -697,7 +697,7 @@
 			else if(blind_message)
 				M.show_message(blind_message, 2)
 
-			if(!M.is_blind())
+			if(!M.is_blind() && M.client)
 				M.create_chat_message(src, raw_message = message)
 		else
 			AM.show_message(message, 1, blind_message, 2)
@@ -734,7 +734,7 @@
 			msg = lang.scramble(msg)
 		M.show_message(msg, 2, deaf_message, 1)
 		// code above scrambles it
-		if(!M.is_blind())
+		if(!M.is_blind() && M.client)
 			M.create_chat_message(src, raw_message = (message ? msg : deaf_message))
 		heard_to_floating_message += M
 
