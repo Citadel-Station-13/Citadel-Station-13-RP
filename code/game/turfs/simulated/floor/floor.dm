@@ -1,3 +1,16 @@
+/**
+ * # Floors.
+ *
+ * ## A note on what a floor is and isn't.
+ *
+ * We need to talk about floors. **All simulated turfs are capable of being a floor.
+ * The difference is /turf/simulated/floor simulates the floor part of being a floor,
+ * like changing flooring prototypes/singletons.
+ *
+ * * If you don't need / want this (e.g. for lava), don't use it.
+ * * If are unwilling to handle this cleanly by having **all** behaviors abstracted to
+ *   a flooring prototype/singleton (e.g. lava didn't do this), don't use it.
+ */
 CREATE_STANDARD_TURFS(/turf/simulated/floor)
 /turf/simulated/floor
 	name = "plating"

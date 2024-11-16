@@ -23,7 +23,7 @@
 /area/lavaland/east/ashlander_village)
 "ed" = (
 /mob/living/simple_mob/animal/space/bats/surt,
-/turf/simulated/floor/outdoors/lava,
+/turf/simulated/lava,
 /area/lavaland/east/unexplored)
 "fi" = (
 /obj/structure/fence/bone/post,
@@ -116,10 +116,10 @@
 /turf/simulated/floor/outdoors/ash_sand/indoors,
 /area/lavaland/east/ashlander_village)
 "sO" = (
-/turf/simulated/floor/outdoors/lava/noblend,
+/turf/simulated/lava/noblend,
 /area/lavaland/east/unexplored)
 "tb" = (
-/turf/simulated/floor/outdoors/lava/indoors,
+/turf/simulated/lava/indoors,
 /area/lavaland/east/ashlander_village)
 "tk" = (
 /obj/item/material/minihoe/bone,
@@ -155,13 +155,13 @@
 /turf/simulated/floor/outdoors/ash_sand/indoors,
 /area/lavaland/east/ashlander_village)
 "ww" = (
-/turf/simulated/floor/outdoors/lava,
+/turf/simulated/lava,
 /area/lavaland/east/unexplored)
 "wP" = (
 /turf/simulated/floor/outdoors/ash_sand,
 /area/lavaland/east/unexplored)
 "xb" = (
-/turf/simulated/floor/outdoors/lava/indoors,
+/turf/simulated/lava/indoors,
 /area/lavaland/east/unexplored)
 "xw" = (
 /obj/structure/ghost_role_spawner/ashlander,
@@ -275,7 +275,7 @@
 /obj/vehicle/ridden/boat/ashlander{
 	dir = 8
 	},
-/turf/simulated/floor/outdoors/lava/indoors/noblend,
+/turf/simulated/lava/indoors/noblend,
 /area/lavaland/east/ashlander_village)
 "OR" = (
 /obj/structure/fence/bone/post{
@@ -322,10 +322,10 @@
 "To" = (
 /obj/structure/catwalk/ashlander,
 /obj/structure/ashlander/production/forge,
-/turf/simulated/floor/outdoors/lava/indoors/noblend,
+/turf/simulated/lava/indoors/noblend,
 /area/lavaland/east/ashlander_village)
 "TF" = (
-/turf/simulated/floor/outdoors/lava,
+/turf/simulated/lava,
 /area/lavaland/east/explored)
 "Uc" = (
 /obj/machinery/appliance/cooker/grill/spit,

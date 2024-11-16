@@ -1,11 +1,16 @@
 /// Any floor or wall. What makes up the station and the rest of the map.
 /turf
 	abstract_type = /turf
-
 	icon = 'icons/turf/floors.dmi'
+	luminosity = 1
+
+	//* Default turf inbuilts *//
+
 	layer = TURF_LAYER
 	plane = TURF_PLANE
-	luminosity = 1
+	opacity = FALSE
+	density = FALSE
+	alpha = 255
 
 	//* Atmospherics
 	/**

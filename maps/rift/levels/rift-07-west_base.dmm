@@ -620,7 +620,7 @@
 /turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
 /area/rift/facility/interior/underground3)
 "Il" = (
-/turf/simulated/floor/outdoors/lava/indoors,
+/turf/simulated/lava/indoors,
 /area/rift/surfacebase/outside/west_base/submap_seedzone)
 "It" = (
 /obj/random/obstruction,
@@ -809,7 +809,7 @@
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/interior/elevator)
 "RE" = (
-/turf/simulated/floor/outdoors/lava/indoors,
+/turf/simulated/lava/indoors,
 /area/rift/surfacebase/outside/west_base)
 "RJ" = (
 /obj/effect/floor_decal/borderfloor/corner{

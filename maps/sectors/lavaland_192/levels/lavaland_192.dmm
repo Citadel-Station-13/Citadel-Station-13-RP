@@ -116,13 +116,13 @@
 /area/lavaland/central/explored)
 "fj" = (
 /obj/structure/catwalk,
-/turf/simulated/floor/outdoors/lava,
+/turf/simulated/lava,
 /area/lavaland/central/explored)
 "fm" = (
 /obj/machinery/power/geothermal_collector/manifold{
 	dir = 1
 	},
-/turf/simulated/floor/outdoors/lava,
+/turf/simulated/lava,
 /area/lavaland/central/explored)
 "fv" = (
 /obj/machinery/power/geothermal_controller/prepared,
@@ -213,7 +213,7 @@
 /area/lavaland/central/base/common)
 "ix" = (
 /obj/machinery/power/geothermal_collector/fourway,
-/turf/simulated/floor/outdoors/lava,
+/turf/simulated/lava,
 /area/lavaland/central/explored)
 "iA" = (
 /obj/machinery/door/airlock/maintenance{
@@ -259,7 +259,7 @@
 /obj/machinery/power/geothermal_collector{
 	dir = 10
 	},
-/turf/simulated/floor/outdoors/lava,
+/turf/simulated/lava,
 /area/lavaland/central/explored)
 "km" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
@@ -280,7 +280,7 @@
 /obj/machinery/power/geothermal_collector{
 	dir = 6
 	},
-/turf/simulated/floor/outdoors/lava,
+/turf/simulated/lava,
 /area/lavaland/central/explored)
 "lm" = (
 /obj/structure/cable{
@@ -429,7 +429,7 @@
 /obj/machinery/power/geothermal_collector{
 	dir = 5
 	},
-/turf/simulated/floor/outdoors/lava,
+/turf/simulated/lava,
 /area/lavaland/central/explored)
 "ny" = (
 /mob/living/simple_mob/animal/passive/mouse/gray{
@@ -904,7 +904,7 @@
 /turf/simulated/floor/tiled,
 /area/lavaland/central/base/common)
 "tV" = (
-/turf/simulated/floor/outdoors/lava,
+/turf/simulated/lava,
 /area/lavaland/central/explored)
 "ub" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -1074,7 +1074,7 @@
 /area/lavaland/central/base/common)
 "wX" = (
 /obj/structure/catwalk/ashlander,
-/turf/simulated/floor/outdoors/lava,
+/turf/simulated/lava,
 /area/lavaland/central/explored)
 "wY" = (
 /obj/machinery/door/airlock/maintenance{
@@ -1314,13 +1314,13 @@
 /obj/machinery/power/geothermal_collector/manifold{
 	dir = 8
 	},
-/turf/simulated/floor/outdoors/lava,
+/turf/simulated/lava,
 /area/lavaland/central/explored)
 "CX" = (
 /obj/machinery/power/geothermal_collector{
 	dir = 4
 	},
-/turf/simulated/floor/outdoors/lava,
+/turf/simulated/lava,
 /area/lavaland/central/explored)
 "Du" = (
 /obj/structure/table/marble,
@@ -1591,7 +1591,7 @@
 /area/lavaland/central/base/common)
 "Ki" = (
 /obj/machinery/power/geothermal_collector/manifold,
-/turf/simulated/floor/outdoors/lava,
+/turf/simulated/lava,
 /area/lavaland/central/explored)
 "Kj" = (
 /obj/machinery/recharge_station,
@@ -1739,7 +1739,7 @@
 /obj/machinery/power/geothermal_collector{
 	dir = 9
 	},
-/turf/simulated/floor/outdoors/lava,
+/turf/simulated/lava,
 /area/lavaland/central/explored)
 "Ot" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -1771,7 +1771,7 @@
 /obj/machinery/power/geothermal_collector/manifold{
 	dir = 4
 	},
-/turf/simulated/floor/outdoors/lava,
+/turf/simulated/lava,
 /area/lavaland/central/explored)
 "Pu" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{

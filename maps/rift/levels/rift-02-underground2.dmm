@@ -12525,7 +12525,7 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/engineering/hallway)
 "UV" = (
-/turf/simulated/floor/outdoors/lava/indoors/geothermal,
+/turf/simulated/lava/indoors/geothermal,
 /area/rift/surfacebase/underground/under2)
 "UW" = (
 /obj/structure/table/reinforced,

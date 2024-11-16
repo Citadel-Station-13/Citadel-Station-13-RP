@@ -10,11 +10,11 @@
 /obj/structure/closet/crate,
 /obj/random/multiple/treasure,
 /obj/item/bone/skull,
-/turf/simulated/floor/outdoors/lava,
+/turf/simulated/lava,
 /area/lavaland/bosses)
 "m" = (
 /obj/structure/catwalk,
-/turf/simulated/floor/outdoors/lava,
+/turf/simulated/lava,
 /area/lavaland/bosses)
 "p" = (
 /obj/structure/catwalk,
@@ -45,7 +45,7 @@
 /turf/simulated/floor/outdoors/ash_sand,
 /area/lavaland/bosses)
 "U" = (
-/turf/simulated/floor/outdoors/lava,
+/turf/simulated/lava,
 /area/lavaland/bosses)
 "W" = (
 /obj/structure/catwalk,
