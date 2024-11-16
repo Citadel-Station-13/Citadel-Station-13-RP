@@ -1394,7 +1394,7 @@
 /turf/simulated/floor/reinforced,
 /area/admin_planet/croatoan/sci_canister_storage)
 "en" = (
-/turf/simulated/sky/triumph,
+/turf/simulated/fake_sky/triumph,
 /area/admin_planet/croatoan/mountain)
 "eo" = (
 /obj/machinery/light/flamp/noshade,
