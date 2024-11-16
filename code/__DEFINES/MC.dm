@@ -92,16 +92,25 @@ DEFINE_BITFIELD(subsystem_flags, list(
 #define SS_SLEEPING 4
 /// in the middle of pausing
 #define SS_PAUSING 5
+
 #define SUBSYSTEM_DEF(X) GLOBAL_REAL(SS##X, /datum/controller/subsystem/##X);\
 /datum/controller/subsystem/##X/New(){\
     NEW_SS_GLOBAL(SS##X);\
 }\
 /datum/controller/subsystem/##X
 
+#define TIMER_SUBSYSTEM_DEF(X) GLOBAL_REAL(SS##X, /datum/controller/subsystem/timer/##X);\
+/datum/controller/subsystem/timer/##X/New(){\
+	NEW_SS_GLOBAL(SS##X);\
+}\
+/datum/controller/subsystem/timer/##X/fire() {..() /*just so it shows up on the profiler*/} \
+/datum/controller/subsystem/timer/##X
+
 #define PROCESSING_SUBSYSTEM_DEF(X) GLOBAL_REAL(SS##X, /datum/controller/subsystem/processing/##X);\
 /datum/controller/subsystem/processing/##X/New(){\
-    NEW_SS_GLOBAL(SS##X);\
+	NEW_SS_GLOBAL(SS##X);\
 }\
+/datum/controller/subsystem/processing/##X/fire() {..() /*just so it shows up on the profiler*/} \
 /datum/controller/subsystem/processing/##X
 
 // Boilerplate code for multi-step processors. See machines.dm for example use.

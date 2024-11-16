@@ -133,6 +133,9 @@
 	/// statpanel
 	var/datum/client_statpanel/tgui_stat
 
+	/// Messages currently seen by this client
+	var/list/seen_messages
+
 	//* UI - Map *//
 	/// Our action drawer
 	var/datum/action_drawer/action_drawer
