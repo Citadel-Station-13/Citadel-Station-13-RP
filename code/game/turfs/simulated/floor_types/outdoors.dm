@@ -1,3 +1,6 @@
+/**
+ * outdoors floor types
+ */
 /turf/simulated/floor/outdoors
 	name = "generic ground"
 	desc = "Rather boring."

@@ -85,8 +85,6 @@ VIRGO2_TURF_CREATE(/turf/simulated/mineral/ignore_mapgen)
 VIRGO2_TURF_CREATE(/turf/simulated/mineral/floor)
 VIRGO2_TURF_CREATE(/turf/simulated/mineral/floor/ignore_mapgen)
 
-#warn impl
-
 /turf/simulated/sky/virgo2_sky
 	name = "virgo 2 atmosphere"
 	desc = "Be careful where you step!"

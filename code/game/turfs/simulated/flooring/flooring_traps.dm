@@ -1,5 +1,5 @@
 //This is an experimental turf type that functions as a step-trigger for traps. I'm starting this project without any idea what I'm actually doing here.
-
+// todo: this needs to be /obj/structure's, not floors, for fuck's sakes.
 /turf/simulated/floor/trap
 	name = "suspicious flooring"
 	icon = 'icons/turf/flooring/trap.dmi'
