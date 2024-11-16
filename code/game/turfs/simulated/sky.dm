@@ -119,7 +119,6 @@
 		message_admins("\The [AM] fell out of the sky.")
 		L.fall_impact(T, 42, 90, FALSE, TRUE)	//You will not be defibbed from this.
 
-
 /turf/simulated/sky/depths/west
 	skyfall_levels = "Western Canyon"
 

@@ -1,4 +1,13 @@
 // A simple turf to fake the appearance of flying.
+/**
+ * **WARNING**: This is labelled fake_sky because it does not handle falling behavior for you.
+ *
+ * This does **not** mean that you can walk around on it. Most maps using this will have step triggers that will make you fall anyways!
+ *
+ * So don't come complaining when the 'fake' sky actually kills you. Don't walk off a cliff. Not rocket science.
+ *
+ * TODO: Stop using this path. It's expensive and inefficient; use `/turf/simulated/sky` for actual skyfall-handling skies.
+ */
 /turf/simulated/fake_sky
 	name = "sky"
 	desc = "Hope you don't have a fear of heights."
