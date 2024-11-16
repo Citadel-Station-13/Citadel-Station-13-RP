@@ -11,6 +11,9 @@
 	interaction_flags_machine = INTERACT_MACHINE_OFFLINE | INTERACT_MACHINE_ALLOW_SILICON
 	circuit = /obj/item/circuitboard/sleeper_console
 
+	/// filter flags we use for dialysis
+	var/dialysis_reagent_filter_flags = ~REAGENT_FILTER_NO_COMMON_BIOANALYSIS
+
 /obj/machinery/sleep_console/Initialize(mapload, newdir)
 	. = ..()
 	return INITIALIZE_HINT_LATELOAD
@@ -243,21 +246,32 @@
 
 		if(filtering > 0)
 			if(beaker)
-				if(beaker.reagents.total_volume < beaker.reagents.maximum_volume)
-					var/pumped = 0
-					for(var/datum/reagent/x in occupant.reagents.reagent_list)
-						occupant.reagents.trans_to_obj(beaker, 3)
-						pumped++
-					if(ishuman(occupant))
-						occupant.vessel.trans_to_obj(beaker, pumped + 1)
+				// filter 3 units per chem-type inside them, or remaining volume, whichever is lesser
+				// we will also pump out 1/3 of that volume as their blood.
+				var/remaining_beaker_volume_for_dialysis = beaker.reagents.maximum_volume - beaker.reagents.total_volume
+				var/filtered_volume = occupant.ingested?.filter_to_holder(
+					beaker.reagents,
+					min(
+						remaining_beaker_volume_for_dialysis * (3 / 4),
+						length(occupant.ingested.reagent_list)
+					),
+					dialysis_reagent_filter_flags,
+				)
+				occupant.vessel.trans_to_holder(beaker.reagents, filtered_volume * (1 / 3))
 			else
 				toggle_filter()
 
 		if(pumping > 0)
 			if(beaker)
-				if(beaker.reagents.total_volume < beaker.reagents.maximum_volume)
-					for(var/datum/reagent/x in occupant.ingested.reagent_list)
-						occupant.ingested.trans_to_obj(beaker, 3)
+				// filter 3 units per chem-type inside them, or remaining volume, whichever is lesser
+				occupant.ingested?.filter_to_holder(
+					beaker.reagents,
+					min(
+						beaker.reagents.maximum_volume - beaker.reagents.total_volume,
+						length(occupant.ingested.reagent_list)
+					),
+					dialysis_reagent_filter_flags,
+				)
 			else
 				toggle_pump()
 
