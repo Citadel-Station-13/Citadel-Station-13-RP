@@ -33,7 +33,7 @@
 	render_magazine_overlay = MAGAZINE_CLASS_GENERIC
 	render_battery_overlay = MAGNETIC_RENDER_BATTERY_IN
 	fire_sound = 'sound/factions/corporations/nanotrasen/protomag-pistol.ogg'
-	base_shot_power = /obj/item/cell/device/weapon::maxcharge * (1 / 24)
+	base_shot_power = /obj/item/cell/device/weapon::maxcharge * (1 / (/obj/item/ammo_magazine/nt_protomag/pistol::max_ammo * 4))
 
 //* Rifle *//
 
@@ -48,5 +48,5 @@
 	}
 	render_magazine_overlay = MAGAZINE_CLASS_GENERIC
 	render_battery_overlay = MAGNETIC_RENDER_BATTERY_IN
-	base_shot_power = /obj/item/cell/device/weapon::maxcharge * (1 / )
+	base_shot_power = /obj/item/cell/device/weapon::maxcharge * (1 / (/obj/item/ammo_magazine/nt_protomag/rifle::max_ammo * 4))
 	fire_sound = 'sound/factions/corporations/nanotrasen/protomag-rifle.ogg'

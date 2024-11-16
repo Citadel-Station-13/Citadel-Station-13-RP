@@ -18,6 +18,8 @@
 	weight_volume = WEIGHT_VOLUME_TINY
 	slot_flags = SLOT_POCKET
 
+	magazine_restrict = /obj/item/gun/ballistic/magnetic/modular/nt_protomag/sidearm
+
 //* Rifle Magazines *//
 
 /obj/item/ammo_magazine/nt_protomag/rifle
@@ -28,8 +30,10 @@
 	weight_volume = WEIGHT_VOLUME_SMALL
 	slot_flags = SLOT_POCKET
 
+	magazine_restrict = /obj/item/gun/ballistic/magnetic/modular/nt_protomag/rifle
+
 //* Boxes *//
-#warn these are rifle mags; make pistol mags the appropriate size. also, add stripes
+#warn merge these into rifle mags. also, add stripes
 
 /obj/item/ammo_magazine/nt_protomag/box
 	abstract_type = /obj/item/ammo_magazine/nt_protomag/box

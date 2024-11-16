@@ -1613,13 +1613,6 @@
 	adjust_nutrition(got)
 	return (got * SYNTHETIC_NUTRITION_KJ_PER_UNIT) / GLOB.cellrate / SYNTHETIC_NUTRITION_INDUCER_CHEAT_FACTOR
 
-/mob/living/carbon/human/can_wield_item(obj/item/W)
-	//Since teshari are small by default, they have different logic to allow them to use certain guns despite that.
-	//If any other species need to adapt for this, you can modify this proc with a list instead
-	if(istype(species, /datum/species/teshari))
-		return !W.heavy //return true if it is not heavy, false if it is heavy
-	else return ..()
-
 /mob/living/carbon/human/set_nutrition(amount)
 	nutrition = clamp(amount, 0, species.max_nutrition * 1.5)
 

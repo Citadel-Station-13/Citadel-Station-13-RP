@@ -93,7 +93,6 @@
 	return
 
 /client
-	var/obj/item/active_mousedown_item = null
 	var/mouseParams = ""
 	var/mouseLocation = null
 	var/mouseObject = null
@@ -102,33 +101,8 @@
 	var/atom/middragatom
 
 /client/MouseDown(object, location, control, params)
-	active_mousedown_item = mob.canMobMousedown(object, location, params)
-	if(active_mousedown_item)
-		active_mousedown_item.onMouseDown(object, location, params, mob)
 
 /client/MouseUp(object, location, control, params)
-	if(active_mousedown_item)
-		active_mousedown_item.onMouseUp(object, location, params, mob)
-		active_mousedown_item = null
-
-/mob/proc/canMobMousedown(atom/object, location, params)
-
-/mob/living/carbon/canMobMousedown(atom/object, location, params)
-	var/obj/item/H = get_active_held_item()
-	if(H)
-		. = H.canItemMouseDown(object, location, params)
-
-/obj/item/proc/CanItemAutoclick(object, location, params)
-
-/obj/item/proc/canItemMouseDown(object, location, params)
-	if(canMouseDown)
-		return src
-
-/obj/item/proc/onMouseDown(object, location, params, mob)
-	return
-
-/obj/item/proc/onMouseUp(object, location, params, mob)
-	return
 
 //Please don't roast me too hard
 /client/MouseMove(object,location,control,params)
@@ -136,17 +110,7 @@
 	mouseLocation = location
 	mouseObject = object
 	mouseControlObject = control
-	/*
-	if(mob && LAZYLEN(mob.mousemove_intercept_objects))
-		for(var/datum/D in mob.mousemove_intercept_objects)
-			D.onMouseMove(object, location, control, params)
-	*/
-	if(!show_popup_menus && mob)	//CIT CHANGE - passes onmousemove() to mobs
-		mob.onMouseMove(object, location, control, params)	//CIT CHANGE - ditto
 	..()
-
-/datum/proc/onMouseMove(object, location, control, params)
-	return
 
 /client/MouseDrag(src_object,atom/over_object,src_location,over_location,src_control,over_control,params)
 	var/list/L = params2list(params)
@@ -161,12 +125,6 @@
 	mouseLocation = over_location
 	mouseObject = over_object
 	mouseControlObject = over_control
-	if(active_mousedown_item)
-		active_mousedown_item.onMouseDrag(src_object, over_object, src_location, over_location, params, mob)
-
-
-/obj/item/proc/onMouseDrag(src_object, over_object, src_location, over_location, params, mob)
-	return
 
 /client/MouseDrop(src_object, over_object, src_location, over_location, src_control, over_control, params)
 	if (middragatom == src_object)

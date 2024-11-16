@@ -103,7 +103,7 @@
 	update_icon()
 
 /obj/item/gun/energy/consume_next_projectile(datum/gun_firing_cycle/cycle)
-	var/datum/firemode/energy/energy_firemode = firemode
+	var/datum/firemode/energy/energy_firemode = legacy_get_firemode()
 	if(!istype(energy_firemode))
 		return null
 	var/effective_power_use = isnull(energy_firemode.charge_cost) ? charge_cost : energy_firemode.charge_cost
