@@ -557,8 +557,7 @@
 		if(!(reagent.reagent_filter_flags & flags))
 			continue
 		filtering_ids += reagent.id
-	transfer_to_holder(transfer_to, filtering_ids, amount)
-	return min(amount, total_filterable)
+	return transfer_to_holder(transfer_to, filtering_ids, amount)
 
 /**
  * Filters chemicals by `reagent_filter_flags`

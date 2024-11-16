@@ -11,9 +11,6 @@
 	interaction_flags_machine = INTERACT_MACHINE_OFFLINE | INTERACT_MACHINE_ALLOW_SILICON
 	circuit = /obj/item/circuitboard/sleeper_console
 
-	/// filter flags we use for dialysis
-	var/dialysis_reagent_filter_flags = ~REAGENT_FILTER_NO_COMMON_BIOANALYSIS
-
 /obj/machinery/sleep_console/Initialize(mapload, newdir)
 	. = ..()
 	return INITIALIZE_HINT_LATELOAD
@@ -180,6 +177,9 @@
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 15
 	active_power_usage = 200 //builtin health analyzer, dialysis machine, injectors.
+
+	/// filter flags we use for dialysis
+	var/dialysis_reagent_filter_flags = ~REAGENT_FILTER_NO_COMMON_BIOANALYSIS
 
 /obj/machinery/sleeper/Initialize(mapload)
 	. = ..()
