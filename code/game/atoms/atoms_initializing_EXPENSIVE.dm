@@ -70,9 +70,9 @@
 	if(datum_flags & DF_USE_TAG)
 		generate_tag()
 
-	var/do_initialize = SSatoms.initialized
-	if(do_initialize != INITIALIZATION_INSSATOMS)
-		args[1] = do_initialize == INITIALIZATION_INNEW_MAPLOAD
+	var/do_initialize = SSatoms.atom_init_status
+	if(do_initialize != ATOM_INIT_IN_SUBSYSTEM)
+		args[1] = do_initialize == ATOM_INIT_IN_NEW_MAPLOAD
 		if(SSatoms.InitAtom(src, FALSE, args))
 			//we were deleted
 			return
