@@ -3,7 +3,7 @@
 /turf/simulated/wall,
 /area/class_p/ruins)
 "f" = (
-/turf/simulated/floor/old_tile/green{
+/turf/simulated/floor/tiled/old_tile/green{
 	color = "#63A83A";
 	icon_state = "tile_full"
 	},

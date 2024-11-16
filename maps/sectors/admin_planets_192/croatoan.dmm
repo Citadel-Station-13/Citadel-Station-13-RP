@@ -140,7 +140,7 @@
 /area/admin_planet/croatoan/extreme_security_containment_facilities)
 "ao" = (
 /obj/item/pickaxe/diamonddrill,
-/turf/simulated/floor/old_tile,
+/turf/simulated/floor/tiled/old_tile,
 /area/admin_planet/croatoan/mountain)
 "ap" = (
 /obj/structure/cable{
@@ -201,7 +201,7 @@
 /area/admin_planet/croatoan/med_chemistry)
 "az" = (
 /obj/effect/debris/cleanable/blood/oil,
-/turf/simulated/floor/old_tile,
+/turf/simulated/floor/tiled/old_tile,
 /area/admin_planet/croatoan/mountain)
 "aA" = (
 /obj/effect/floor_decal/borderfloor,
@@ -809,7 +809,7 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 10
 	},
-/turf/simulated/floor/old_tile,
+/turf/simulated/floor/tiled/old_tile,
 /area/admin_planet/croatoan/high_sec_science_containment_cells)
 "cA" = (
 /obj/machinery/beehive,
@@ -1790,7 +1790,7 @@
 /area/admin_planet/croatoan/high_sec_science_containment_cells)
 "fB" = (
 /obj/effect/floormimic/plating/guaranteed,
-/turf/simulated/floor/old_tile,
+/turf/simulated/floor/tiled/old_tile,
 /area/admin_planet/croatoan/high_sec_science_containment_cells)
 "fC" = (
 /obj/effect/floor_decal/corner/red/border{
@@ -1941,7 +1941,7 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 6
 	},
-/turf/simulated/floor/old_tile,
+/turf/simulated/floor/tiled/old_tile,
 /area/admin_planet/croatoan/high_sec_science_containment_cells)
 "gk" = (
 /obj/structure/sign/signnew/canisters,
@@ -2917,7 +2917,7 @@
 /area/admin_planet/croatoan/high_sec_science_lower_checkpoint)
 "jL" = (
 /obj/structure/flora/rock/ice,
-/turf/simulated/floor/old_tile,
+/turf/simulated/floor/tiled/old_tile,
 /area/admin_planet/croatoan/mountain)
 "jM" = (
 /obj/effect/floor_decal/corner/red/border{
@@ -4276,7 +4276,7 @@
 /area/admin_planet/croatoan/med_treatment)
 "oL" = (
 /obj/effect/debris/cleanable/blood/oil/streak,
-/turf/simulated/floor/old_tile,
+/turf/simulated/floor/tiled/old_tile,
 /area/admin_planet/croatoan/mountain)
 "oM" = (
 /obj/effect/floor_decal/borderfloorblack{
@@ -4320,7 +4320,7 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 1
 	},
-/turf/simulated/floor/old_tile,
+/turf/simulated/floor/tiled/old_tile,
 /area/admin_planet/croatoan/high_sec_science_containment_cells)
 "oR" = (
 /obj/structure/closet/crate/corporate/nanomed,
@@ -4551,7 +4551,7 @@
 /area/admin_planet/croatoan/high_sec_science_containment_cells)
 "pH" = (
 /obj/effect/floor_decal/industrial/warning,
-/turf/simulated/floor/old_tile,
+/turf/simulated/floor/tiled/old_tile,
 /area/admin_planet/croatoan/high_sec_science_containment_cells)
 "pJ" = (
 /obj/effect/floor_decal/corner/red/border{
@@ -4790,7 +4790,7 @@
 /area/admin_planet/croatoan/sci_anomaly_lab)
 "qt" = (
 /obj/effect/debris/cleanable/blood/splatter,
-/turf/simulated/floor/old_tile,
+/turf/simulated/floor/tiled/old_tile,
 /area/admin_planet/croatoan/mountain)
 "qu" = (
 /obj/structure/bed/padded,
@@ -4960,7 +4960,7 @@
 /area/admin_planet/croatoan/sec_entrance_hallway)
 "rj" = (
 /obj/item/pickaxe,
-/turf/simulated/floor/old_tile,
+/turf/simulated/floor/tiled/old_tile,
 /area/admin_planet/croatoan/mountain)
 "rm" = (
 /obj/structure/cable{
@@ -6343,7 +6343,7 @@
 /turf/simulated/floor/tiled/monotile,
 /area/admin_planet/croatoan/sci_xenoflora_lab)
 "vW" = (
-/turf/simulated/floor/old_tile,
+/turf/simulated/floor/tiled/old_tile,
 /area/admin_planet/croatoan/mountain)
 "vX" = (
 /obj/effect/floor_decal/corner/paleblue/border,
@@ -6753,7 +6753,7 @@
 	dir = 5;
 	icon_state = "warning"
 	},
-/turf/simulated/floor/old_tile,
+/turf/simulated/floor/tiled/old_tile,
 /area/admin_planet/croatoan/high_sec_science_containment_cells)
 "xs" = (
 /obj/effect/floor_decal/borderfloor{
@@ -7082,7 +7082,7 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 9
 	},
-/turf/simulated/floor/old_tile,
+/turf/simulated/floor/tiled/old_tile,
 /area/admin_planet/croatoan/high_sec_science_containment_cells)
 "yB" = (
 /obj/effect/floor_decal/corner/paleblue{
@@ -7234,7 +7234,7 @@
 /obj/machinery/light{
 	dir = 8
 	},
-/turf/simulated/floor/old_tile,
+/turf/simulated/floor/tiled/old_tile,
 /area/admin_planet/croatoan/high_sec_science_containment_cells)
 "yZ" = (
 /obj/effect/forcefield/cult,
@@ -7423,7 +7423,7 @@
 /area/admin_planet/croatoan/high_sec_science_entrance)
 "zM" = (
 /obj/structure/flora/rock,
-/turf/simulated/floor/old_tile,
+/turf/simulated/floor/tiled/old_tile,
 /area/admin_planet/croatoan/mountain)
 "zN" = (
 /obj/effect/floor_decal/borderfloorblack,
@@ -7575,7 +7575,7 @@
 /area/admin_planet/croatoan/sci_upper_checkpoint)
 "Ar" = (
 /obj/structure/flora/rock/ice/alternative_1,
-/turf/simulated/floor/old_tile,
+/turf/simulated/floor/tiled/old_tile,
 /area/admin_planet/croatoan/mountain)
 "At" = (
 /obj/effect/floor_decal/borderfloorblack{
@@ -7628,7 +7628,7 @@
 	dir = 4;
 	light_range = 12
 	},
-/turf/simulated/floor/old_tile,
+/turf/simulated/floor/tiled/old_tile,
 /area/admin_planet/croatoan/high_sec_science_containment_cells)
 "AF" = (
 /obj/machinery/door/airlock/highsecurity{
@@ -9480,7 +9480,7 @@
 	name = "Construction Area"
 	},
 /obj/structure/fans/tiny,
-/turf/simulated/floor/old_tile,
+/turf/simulated/floor/tiled/old_tile,
 /area/admin_planet/croatoan/sci_entry_hallway)
 "HJ" = (
 /turf/simulated/wall/r_wall/prepainted/science,
@@ -9822,7 +9822,7 @@
 /area/admin_planet/croatoan/high_sec_science_observation)
 "IP" = (
 /obj/item/pickaxe/excavationdrill,
-/turf/simulated/floor/old_tile,
+/turf/simulated/floor/tiled/old_tile,
 /area/admin_planet/croatoan/mountain)
 "IR" = (
 /obj/machinery/r_n_d/destructive_analyzer,
@@ -10150,7 +10150,7 @@
 /area/admin_planet/croatoan/high_sec_science_entrance)
 "JY" = (
 /obj/machinery/door/airlock/maintenance,
-/turf/simulated/floor/old_tile,
+/turf/simulated/floor/tiled/old_tile,
 /area/admin_planet/croatoan/med_lobby)
 "Ka" = (
 /obj/effect/floor_decal/industrial/warning,
@@ -12664,7 +12664,7 @@
 /area/admin_planet/croatoan/extreme_security_containment_facilities)
 "Sn" = (
 /obj/random/obstruction,
-/turf/simulated/floor/old_tile,
+/turf/simulated/floor/tiled/old_tile,
 /area/admin_planet/croatoan/mountain)
 "Ss" = (
 /obj/machinery/holoposter,
@@ -12820,7 +12820,7 @@
 /area/admin_planet/croatoan/high_sec_science_entrance)
 "SO" = (
 /obj/structure/flora/rock/ice/alternative_2,
-/turf/simulated/floor/old_tile,
+/turf/simulated/floor/tiled/old_tile,
 /area/admin_planet/croatoan/mountain)
 "SP" = (
 /obj/machinery/door/airlock/highsecurity{
@@ -13490,7 +13490,7 @@
 "Vh" = (
 /obj/item/pickaxe/silver,
 /obj/random/obstruction,
-/turf/simulated/floor/old_tile,
+/turf/simulated/floor/tiled/old_tile,
 /area/admin_planet/croatoan/mountain)
 "Vj" = (
 /obj/machinery/light{

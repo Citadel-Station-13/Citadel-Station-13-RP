@@ -6,7 +6,7 @@
 /turf/simulated/floor/outdoors,
 /area/class_p/ruins)
 "C" = (
-/turf/simulated/floor/old_tile/green{
+/turf/simulated/floor/tiled/old_tile/green{
 	color = "#63A83A";
 	icon_state = "tile_full"
 	},
@@ -22,7 +22,7 @@
 /area/class_p/ruins)
 "N" = (
 /obj/structure/closet/crate/secure/loot,
-/turf/simulated/floor/old_tile/green{
+/turf/simulated/floor/tiled/old_tile/green{
 	color = "#63A83A";
 	icon_state = "tile_full"
 	},
@@ -39,7 +39,7 @@
 /area/class_p/ruins)
 "S" = (
 /obj/structure/table,
-/turf/simulated/floor/old_tile/green{
+/turf/simulated/floor/tiled/old_tile/green{
 	color = "#63A83A";
 	icon_state = "tile_full"
 	},

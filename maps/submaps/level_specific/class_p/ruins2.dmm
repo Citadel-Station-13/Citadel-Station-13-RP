@@ -14,7 +14,7 @@
 /turf/simulated/floor/outdoors/snow/no_tree,
 /area/class_p/ruins)
 "v" = (
-/turf/simulated/floor/old_tile/green{
+/turf/simulated/floor/tiled/old_tile/green{
 	color = "#63A83A";
 	icon_state = "tile_full"
 	},

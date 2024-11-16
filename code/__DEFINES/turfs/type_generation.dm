@@ -13,7 +13,7 @@
  * This macro acts like the type it's generating when writing prototype overrides below.
  */
 #define CREATE_STANDARD_TURFS(type) \
-##type \
+##type {} \
 ##type/indoors { \
 	outdoors = FALSE; \
 	initial_gas_mix = ATMOSPHERE_USE_INDOORS; \

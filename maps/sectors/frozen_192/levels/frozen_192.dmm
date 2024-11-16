@@ -1,6 +1,6 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "at" = (
-/turf/simulated/floor/old_tile/blue{
+/turf/simulated/floor/tiled/old_tile/blue{
 	color = "#8ba7ad";
 	icon_state = "tile_full"
 	},
@@ -18,7 +18,7 @@
 	name = "Airlock";
 	req_one_access = null
 	},
-/turf/simulated/floor/old_tile/blue{
+/turf/simulated/floor/tiled/old_tile/blue{
 	color = "#8ba7ad";
 	icon_state = "tile_full"
 	},
@@ -29,7 +29,7 @@
 /area/class_p/unexplored)
 "by" = (
 /obj/structure/table/standard,
-/turf/simulated/floor/old_tile/blue{
+/turf/simulated/floor/tiled/old_tile/blue{
 	color = "#8ba7ad";
 	icon_state = "tile_full"
 	},
@@ -43,7 +43,7 @@
 /area/class_p/unexplored)
 "bQ" = (
 /obj/vehicle_old/train/rover/engine/dunebuggy,
-/turf/simulated/floor/old_tile/blue{
+/turf/simulated/floor/tiled/old_tile/blue{
 	color = "#8ba7ad";
 	icon_state = "tile_full"
 	},
@@ -55,7 +55,7 @@
 /obj/structure/cable{
 	icon_state = "1-4"
 	},
-/turf/simulated/floor/old_tile/blue{
+/turf/simulated/floor/tiled/old_tile/blue{
 	color = "#8ba7ad";
 	icon_state = "tile_full"
 	},
@@ -69,7 +69,7 @@
 	icon_state = "0-2"
 	},
 /obj/machinery/power/smes/buildable/point_of_interest,
-/turf/simulated/floor/old_tile/blue{
+/turf/simulated/floor/tiled/old_tile/blue{
 	color = "#8ba7ad";
 	icon_state = "tile_full"
 	},
@@ -79,7 +79,7 @@
 	icon_state = "0-8"
 	},
 /obj/machinery/power/terminal,
-/turf/simulated/floor/old_tile/blue{
+/turf/simulated/floor/tiled/old_tile/blue{
 	color = "#8ba7ad";
 	icon_state = "tile_full"
 	},
@@ -92,7 +92,7 @@
 "dM" = (
 /obj/structure/table/wooden_reinforced,
 /obj/structure/blob/normal,
-/turf/simulated/floor/old_tile/blue{
+/turf/simulated/floor/tiled/old_tile/blue{
 	color = "#8ba7ad";
 	icon_state = "tile_full"
 	},
@@ -108,7 +108,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/turf/simulated/floor/old_tile/blue{
+/turf/simulated/floor/tiled/old_tile/blue{
 	color = "#8ba7ad";
 	icon_state = "tile_full"
 	},
@@ -137,7 +137,7 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
-/turf/simulated/floor/old_tile/blue{
+/turf/simulated/floor/tiled/old_tile/blue{
 	color = "#8ba7ad";
 	icon_state = "tile_full"
 	},
@@ -149,11 +149,11 @@
 /turf/simulated/floor,
 /area/class_p/unexplored)
 "ht" = (
-/turf/simulated/floor/old_tile/blue,
+/turf/simulated/floor/tiled/old_tile/blue,
 /area/class_p/unexplored)
 "hR" = (
 /obj/structure/blob/normal,
-/turf/simulated/floor/old_tile/blue{
+/turf/simulated/floor/tiled/old_tile/blue{
 	color = "#8ba7ad";
 	icon_state = "tile_full"
 	},
@@ -164,7 +164,7 @@
 	req_one_access = null
 	},
 /obj/structure/barricade,
-/turf/simulated/floor/old_tile/blue{
+/turf/simulated/floor/tiled/old_tile/blue{
 	color = "#8ba7ad";
 	icon_state = "tile_full"
 	},
@@ -178,7 +178,7 @@
 "ix" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
 /obj/structure/blob/normal,
-/turf/simulated/floor/old_tile/blue{
+/turf/simulated/floor/tiled/old_tile/blue{
 	color = "#8ba7ad";
 	icon_state = "tile_full"
 	},
@@ -187,7 +187,7 @@
 /obj/machinery/atmospherics/component/unary/heater{
 	dir = 4
 	},
-/turf/simulated/floor/old_tile/blue{
+/turf/simulated/floor/tiled/old_tile/blue{
 	color = "#8ba7ad";
 	icon_state = "tile_full"
 	},
@@ -199,14 +199,14 @@
 /obj/machinery/atmospherics/pipe/manifold/visible/green{
 	dir = 4
 	},
-/turf/simulated/floor/old_tile/blue{
+/turf/simulated/floor/tiled/old_tile/blue{
 	color = "#8ba7ad";
 	icon_state = "tile_full"
 	},
 /area/class_p/unexplored)
 "jt" = (
 /obj/structure/bed,
-/turf/simulated/floor/old_tile/green{
+/turf/simulated/floor/tiled/old_tile/green{
 	color = "#63A83A";
 	icon_state = "tile_full"
 	},
@@ -251,7 +251,7 @@
 	dir = 4
 	},
 /obj/structure/blob/normal,
-/turf/simulated/floor/old_tile/blue{
+/turf/simulated/floor/tiled/old_tile/blue{
 	color = "#8ba7ad";
 	icon_state = "tile_full"
 	},
@@ -280,7 +280,7 @@
 	name = "Airlock";
 	req_one_access = null
 	},
-/turf/simulated/floor/old_tile/green{
+/turf/simulated/floor/tiled/old_tile/green{
 	color = "#63A83A";
 	icon_state = "tile_full"
 	},
@@ -326,14 +326,14 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
-/turf/simulated/floor/old_tile/blue{
+/turf/simulated/floor/tiled/old_tile/blue{
 	color = "#8ba7ad";
 	icon_state = "tile_full"
 	},
 /area/class_p/unexplored)
 "rb" = (
 /obj/structure/table/rack/shelf,
-/turf/simulated/floor/old_tile/green{
+/turf/simulated/floor/tiled/old_tile/green{
 	color = "#63A83A";
 	icon_state = "tile_full"
 	},
@@ -344,7 +344,7 @@
 /area/class_p/unexplored)
 "sA" = (
 /obj/machinery/artifact_scanpad,
-/turf/simulated/floor/old_tile/green{
+/turf/simulated/floor/tiled/old_tile/green{
 	color = "#63A83A";
 	icon_state = "tile_full"
 	},
@@ -353,7 +353,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 5
 	},
-/turf/simulated/floor/old_tile/blue{
+/turf/simulated/floor/tiled/old_tile/blue{
 	color = "#8ba7ad";
 	icon_state = "tile_full"
 	},
@@ -365,7 +365,7 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/turf/simulated/floor/old_tile/blue{
+/turf/simulated/floor/tiled/old_tile/blue{
 	color = "#8ba7ad";
 	icon_state = "tile_full"
 	},
@@ -381,14 +381,14 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/blob/normal,
-/turf/simulated/floor/old_tile/blue{
+/turf/simulated/floor/tiled/old_tile/blue{
 	color = "#8ba7ad";
 	icon_state = "tile_full"
 	},
 /area/class_p/unexplored)
 "tw" = (
 /obj/structure/table/marble,
-/turf/simulated/floor/old_tile/blue{
+/turf/simulated/floor/tiled/old_tile/blue{
 	color = "#8ba7ad";
 	icon_state = "tile_full"
 	},
@@ -400,7 +400,7 @@
 "uk" = (
 /obj/structure/barricade,
 /obj/structure/blob/normal,
-/turf/simulated/floor/old_tile/green{
+/turf/simulated/floor/tiled/old_tile/green{
 	color = "#63A83A";
 	icon_state = "tile_full"
 	},
@@ -414,7 +414,7 @@
 	},
 /obj/structure/blob/normal,
 /obj/structure/blob/normal,
-/turf/simulated/floor/old_tile/blue{
+/turf/simulated/floor/tiled/old_tile/blue{
 	color = "#8ba7ad";
 	icon_state = "tile_full"
 	},
@@ -430,7 +430,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 6
 	},
-/turf/simulated/floor/old_tile/blue{
+/turf/simulated/floor/tiled/old_tile/blue{
 	color = "#8ba7ad";
 	icon_state = "tile_full"
 	},
@@ -439,7 +439,7 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/turf/simulated/floor/old_tile/blue{
+/turf/simulated/floor/tiled/old_tile/blue{
 	color = "#8ba7ad";
 	icon_state = "tile_full"
 	},
@@ -448,7 +448,7 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/turf/simulated/floor/old_tile/blue{
+/turf/simulated/floor/tiled/old_tile/blue{
 	color = "#8ba7ad";
 	icon_state = "tile_full"
 	},
@@ -470,7 +470,7 @@
 	req_one_access = null
 	},
 /obj/structure/blob/normal,
-/turf/simulated/floor/old_tile/blue{
+/turf/simulated/floor/tiled/old_tile/blue{
 	color = "#8ba7ad";
 	icon_state = "tile_full"
 	},
@@ -488,7 +488,7 @@
 /obj/machinery/atmospherics/pipe/simple/visible/green{
 	dir = 9
 	},
-/turf/simulated/floor/old_tile/blue{
+/turf/simulated/floor/tiled/old_tile/blue{
 	color = "#8ba7ad";
 	icon_state = "tile_full"
 	},
@@ -496,14 +496,14 @@
 "AS" = (
 /obj/structure/bedsheetbin,
 /obj/structure/blob/normal,
-/turf/simulated/floor/old_tile/green{
+/turf/simulated/floor/tiled/old_tile/green{
 	color = "#63A83A";
 	icon_state = "tile_full"
 	},
 /area/class_p/unexplored)
 "Bp" = (
 /obj/structure/table/wooden_reinforced,
-/turf/simulated/floor/old_tile/blue{
+/turf/simulated/floor/tiled/old_tile/blue{
 	color = "#8ba7ad";
 	icon_state = "tile_full"
 	},
@@ -515,13 +515,13 @@
 	},
 /obj/structure/blob/normal,
 /obj/structure/blob/normal,
-/turf/simulated/floor/old_tile/blue{
+/turf/simulated/floor/tiled/old_tile/blue{
 	color = "#8ba7ad";
 	icon_state = "tile_full"
 	},
 /area/class_p/unexplored)
 "Cj" = (
-/turf/simulated/floor/old_tile/green{
+/turf/simulated/floor/tiled/old_tile/green{
 	color = "#63A83A";
 	icon_state = "tile_full"
 	},
@@ -546,7 +546,7 @@
 "DH" = (
 /obj/structure/table/standard,
 /obj/structure/table/standard,
-/turf/simulated/floor/old_tile/blue{
+/turf/simulated/floor/tiled/old_tile/blue{
 	color = "#8ba7ad";
 	icon_state = "tile_full"
 	},
@@ -554,7 +554,7 @@
 "DK" = (
 /obj/structure/table/rack/shelf,
 /obj/machinery/light,
-/turf/simulated/floor/old_tile/green{
+/turf/simulated/floor/tiled/old_tile/green{
 	color = "#63A83A";
 	icon_state = "tile_full"
 	},
@@ -577,7 +577,7 @@
 "Ec" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/blob/normal,
-/turf/simulated/floor/old_tile/blue{
+/turf/simulated/floor/tiled/old_tile/blue{
 	color = "#8ba7ad";
 	icon_state = "tile_full"
 	},
@@ -639,7 +639,7 @@
 "Gz" = (
 /obj/structure/blob/normal,
 /obj/machinery/light,
-/turf/simulated/floor/old_tile/blue{
+/turf/simulated/floor/tiled/old_tile/blue{
 	color = "#8ba7ad";
 	icon_state = "tile_full"
 	},
@@ -650,14 +650,14 @@
 /area/class_p/unexplored)
 "Hb" = (
 /obj/structure/blob/normal,
-/turf/simulated/floor/old_tile/green{
+/turf/simulated/floor/tiled/old_tile/green{
 	color = "#63A83A";
 	icon_state = "tile_full"
 	},
 /area/class_p/unexplored)
 "Hc" = (
 /obj/structure/barricade,
-/turf/simulated/floor/old_tile/blue{
+/turf/simulated/floor/tiled/old_tile/blue{
 	color = "#8ba7ad";
 	icon_state = "tile_full"
 	},
@@ -694,7 +694,7 @@
 /obj/machinery/light{
 	dir = 8
 	},
-/turf/simulated/floor/old_tile/blue{
+/turf/simulated/floor/tiled/old_tile/blue{
 	color = "#8ba7ad";
 	icon_state = "tile_full"
 	},
@@ -713,7 +713,7 @@
 	pixel_y = 24
 	},
 /obj/structure/blob/normal,
-/turf/simulated/floor/old_tile/blue{
+/turf/simulated/floor/tiled/old_tile/blue{
 	color = "#8ba7ad";
 	icon_state = "tile_full"
 	},
@@ -722,7 +722,7 @@
 /obj/structure/table/wooden_reinforced,
 /obj/item/storage/pill_bottle/dice_nerd,
 /obj/structure/blob/normal,
-/turf/simulated/floor/old_tile/blue{
+/turf/simulated/floor/tiled/old_tile/blue{
 	color = "#8ba7ad";
 	icon_state = "tile_full"
 	},
@@ -731,7 +731,7 @@
 /obj/machinery/power/emitter/gyrotron{
 	dir = 1
 	},
-/turf/simulated/floor/old_tile/green{
+/turf/simulated/floor/tiled/old_tile/green{
 	color = "#63A83A";
 	icon_state = "tile_full"
 	},
@@ -751,7 +751,7 @@
 	name = "Airlock";
 	req_one_access = null
 	},
-/turf/simulated/floor/old_tile/blue{
+/turf/simulated/floor/tiled/old_tile/blue{
 	color = "#8ba7ad";
 	icon_state = "tile_full"
 	},
@@ -760,7 +760,7 @@
 /obj/structure/cable{
 	icon_state = "1-8"
 	},
-/turf/simulated/floor/old_tile/blue{
+/turf/simulated/floor/tiled/old_tile/blue{
 	color = "#8ba7ad";
 	icon_state = "tile_full"
 	},
@@ -770,7 +770,7 @@
 	name = "Airlock";
 	req_one_access = null
 	},
-/turf/simulated/floor/old_tile/blue{
+/turf/simulated/floor/tiled/old_tile/blue{
 	color = "#8ba7ad";
 	icon_state = "tile_full"
 	},
@@ -792,7 +792,7 @@
 /area/class_p/unexplored)
 "PB" = (
 /obj/machinery/atmospherics/pipe/simple/visible/universal,
-/turf/simulated/floor/old_tile/blue{
+/turf/simulated/floor/tiled/old_tile/blue{
 	color = "#8ba7ad";
 	icon_state = "tile_full"
 	},
@@ -803,7 +803,7 @@
 	dir = 4
 	},
 /obj/structure/blob/normal,
-/turf/simulated/floor/old_tile/blue{
+/turf/simulated/floor/tiled/old_tile/blue{
 	color = "#8ba7ad";
 	icon_state = "tile_full"
 	},
@@ -825,7 +825,7 @@
 "Qm" = (
 /obj/structure/blob/normal,
 /obj/structure/blob/normal,
-/turf/simulated/floor/old_tile/green{
+/turf/simulated/floor/tiled/old_tile/green{
 	color = "#63A83A";
 	icon_state = "tile_full"
 	},
@@ -861,7 +861,7 @@
 /obj/structure/cable{
 	icon_state = "0-4"
 	},
-/turf/simulated/floor/old_tile/blue{
+/turf/simulated/floor/tiled/old_tile/blue{
 	color = "#8ba7ad";
 	icon_state = "tile_full"
 	},
@@ -904,7 +904,7 @@
 "Ue" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/blob/normal,
-/turf/simulated/floor/old_tile/blue{
+/turf/simulated/floor/tiled/old_tile/blue{
 	color = "#8ba7ad";
 	icon_state = "tile_full"
 	},
@@ -922,7 +922,7 @@
 /area/class_p/unexplored)
 "UU" = (
 /obj/structure/closet/statue,
-/turf/simulated/floor/old_tile/green{
+/turf/simulated/floor/tiled/old_tile/green{
 	color = "#63A83A";
 	icon_state = "tile_full"
 	},
@@ -934,7 +934,7 @@
 /obj/machinery/atmospherics/pipe/simple/visible/green{
 	dir = 5
 	},
-/turf/simulated/floor/old_tile/blue{
+/turf/simulated/floor/tiled/old_tile/blue{
 	color = "#8ba7ad";
 	icon_state = "tile_full"
 	},
@@ -943,7 +943,7 @@
 /obj/machinery/air_alarm/alarms_hidden{
 	pixel_y = 24
 	},
-/turf/simulated/floor/old_tile/blue{
+/turf/simulated/floor/tiled/old_tile/blue{
 	color = "#8ba7ad";
 	icon_state = "tile_full"
 	},
@@ -959,14 +959,14 @@
 	dir = 1
 	},
 /obj/structure/blob/normal,
-/turf/simulated/floor/old_tile/blue{
+/turf/simulated/floor/tiled/old_tile/blue{
 	color = "#8ba7ad";
 	icon_state = "tile_full"
 	},
 /area/class_p/unexplored)
 "WA" = (
 /obj/machinery/atmospherics/pipe/simple/visible/green,
-/turf/simulated/floor/old_tile/blue{
+/turf/simulated/floor/tiled/old_tile/blue{
 	color = "#8ba7ad";
 	icon_state = "tile_full"
 	},
@@ -978,7 +978,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/turf/simulated/floor/old_tile/blue{
+/turf/simulated/floor/tiled/old_tile/blue{
 	color = "#8ba7ad";
 	icon_state = "tile_full"
 	},
@@ -992,7 +992,7 @@
 /area/class_p/unexplored)
 "Xl" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
-/turf/simulated/floor/old_tile/blue{
+/turf/simulated/floor/tiled/old_tile/blue{
 	color = "#8ba7ad";
 	icon_state = "tile_full"
 	},
@@ -1005,7 +1005,7 @@
 	dir = 4
 	},
 /obj/structure/blob/normal,
-/turf/simulated/floor/old_tile/blue{
+/turf/simulated/floor/tiled/old_tile/blue{
 	color = "#8ba7ad";
 	icon_state = "tile_full"
 	},
@@ -1021,7 +1021,7 @@
 	req_one_access = null
 	},
 /obj/structure/blob/normal,
-/turf/simulated/floor/old_tile/green{
+/turf/simulated/floor/tiled/old_tile/green{
 	color = "#63A83A";
 	icon_state = "tile_full"
 	},
@@ -1050,7 +1050,7 @@
 /area/class_p/unexplored)
 "ZD" = (
 /obj/machinery/artifact_analyser,
-/turf/simulated/floor/old_tile/green{
+/turf/simulated/floor/tiled/old_tile/green{
 	color = "#63A83A";
 	icon_state = "tile_full"
 	},
@@ -1063,7 +1063,7 @@
 	icon_state = "1-8"
 	},
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
-/turf/simulated/floor/old_tile/blue{
+/turf/simulated/floor/tiled/old_tile/blue{
 	color = "#8ba7ad";
 	icon_state = "tile_full"
 	},
