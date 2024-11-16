@@ -125,6 +125,10 @@
 
 // -- Areas -- //
 
+/area/tether_away
+	initial_gas_mix = ATMOSPHERE_USE_OUTDOORS
+	initial_outdoors = TRUE
+
 /area/tether_away/beach
 	name = "\improper Away Mission - Miaphus'irra: Shores"
 	icon_state = "away"
