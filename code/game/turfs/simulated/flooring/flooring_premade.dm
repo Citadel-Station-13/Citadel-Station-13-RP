@@ -385,6 +385,7 @@ CREATE_STANDARD_TURFS(/turf/simulated/floor/tiled/steel_dirty)
 	name = "plating"
 	initial_gas_mix = GAS_STRING_VACUUM
 
+CREATE_STANDARD_TURFS(/turf/simulated/tiled/white)
 /turf/simulated/floor/tiled/white
 	name = "white floor"
 	icon_state = "white"
