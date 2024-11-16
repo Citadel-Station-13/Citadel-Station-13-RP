@@ -1589,7 +1589,6 @@
 	id = "QMLoad2"
 	},
 /obj/machinery/status_display/supply_display{
-	mode = 99;
 	pixel_y = 32
 	},
 /obj/machinery/light{
@@ -2892,7 +2891,6 @@
 /area/crew_quarters/bar)
 "iJ" = (
 /obj/machinery/status_display/supply_display{
-	mode = 99;
 	pixel_y = -32
 	},
 /obj/effect/floor_decal/industrial/outline/red,
@@ -10992,7 +10990,6 @@
 /area/crew_quarters/recreation_area)
 "Hh" = (
 /obj/machinery/status_display/supply_display{
-	mode = 99;
 	pixel_y = 32
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -12117,7 +12114,6 @@
 /obj/structure/ore_box,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/machinery/status_display/supply_display{
-	mode = 99;
 	pixel_y = -32
 	},
 /turf/simulated/floor/tiled,
