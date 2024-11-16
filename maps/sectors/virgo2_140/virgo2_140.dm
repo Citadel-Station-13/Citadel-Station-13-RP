@@ -16,7 +16,7 @@
 	name = "Sector - Virgo 2 Aerostat"
 	display_name = "Remmi Aerostat"
 	absolute_path = "maps/sectors/virgo2_140/levels/virgo2_140_aerostat.dmm"
-	base_turf = /turf/simulated/floor/sky/virgo2_sky
+	base_turf = /turf/simulated/sky/virgo2_sky
 
 /datum/map_level/sector/virgo2_140/ground
 	id = "Virgo2Ground140"

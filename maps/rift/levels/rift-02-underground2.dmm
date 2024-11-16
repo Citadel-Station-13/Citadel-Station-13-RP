@@ -7465,7 +7465,7 @@
 /area/quartermaster/miningdock)
 "AW" = (
 /obj/effect/blocker,
-/turf/simulated/floor/sky/depths/lythios43c,
+/turf/simulated/sky/depths/lythios43c,
 /area/rift/surfacebase/underground/under2)
 "AX" = (
 /turf/simulated/wall/prepainted/cargo,
@@ -13033,7 +13033,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/quartermaster/miningdock)
 "WA" = (
-/turf/simulated/floor/sky/depths/lythios43c,
+/turf/simulated/sky/depths/lythios43c,
 /area/rift/surfacebase/underground/under2)
 "WC" = (
 /obj/effect/floor_decal/borderfloor{

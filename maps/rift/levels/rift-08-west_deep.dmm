@@ -801,7 +801,7 @@
 /turf/simulated/floor/tiled,
 /area/outpost/mining_main/refinery)
 "il" = (
-/turf/simulated/floor/sky/depths/west/lythios43c,
+/turf/simulated/sky/depths/west/lythios43c,
 /area/rift/surfacebase/outside/west_deep)
 "iq" = (
 /obj/effect/floor_decal/corner/white{
@@ -839,7 +839,7 @@
 /area/rift/facility/interior/underground2)
 "iI" = (
 /obj/structure/railing,
-/turf/simulated/floor/sky/depths/west/lythios43c,
+/turf/simulated/sky/depths/west/lythios43c,
 /area/rift/surfacebase/outside/west_deep)
 "iJ" = (
 /obj/structure/stairs/spawner/east,
@@ -1828,7 +1828,7 @@
 /area/outpost/mining_main/outpost/recreation)
 "pT" = (
 /obj/effect/blocker,
-/turf/simulated/floor/sky/depths/west/lythios43c,
+/turf/simulated/sky/depths/west/lythios43c,
 /area/rift/surfacebase/outside/west_deep)
 "pU" = (
 /obj/structure/railing{
