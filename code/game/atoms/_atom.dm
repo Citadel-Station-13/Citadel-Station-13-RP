@@ -727,7 +727,6 @@
 		var/obj/O = obj
 		O.show_message(message, 2, deaf_message, 1)
 
-	var/no_runechat = FALSE
 	for(var/mob in hearing_mobs)
 		var/mob/M = mob
 		var/msg = message
