@@ -19,7 +19,7 @@ SUBSYSTEM_DEF(overmaps)
 /datum/controller/subsystem/overmaps/Initialize()
 	make_default_overmap()
 	rebuild_helm_computers()
-	return ..()
+	return SS_INIT_SUCCESS
 
 //! legacy code below
 

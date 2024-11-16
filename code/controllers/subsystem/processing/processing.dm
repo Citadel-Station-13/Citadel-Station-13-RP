@@ -1,12 +1,12 @@
 //Used to process objects.
 
 SUBSYSTEM_DEF(processing)
-	name = "Processing"
+	name = "Processing - 1 FPS"
 	priority = FIRE_PRIORITY_PROCESS
 	subsystem_flags = SS_BACKGROUND|SS_POST_FIRE_TIMING|SS_NO_INIT
 	wait = 1 SECONDS
 
-	var/stat_tag = "P" //Used for logging
+	var/stat_tag = "P1" //Used for logging
 	var/list/processing = list()
 	var/list/currentrun = list()
 
