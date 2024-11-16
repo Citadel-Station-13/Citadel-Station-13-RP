@@ -2,22 +2,15 @@
 /// Turf Makers consolidated list. TODO, remap everything using turfs that simply take the atmos id set by the planet ///
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-
-////////////////////////////////////////////////
-/////////// CLASS P PLANET /////////////////////
-////////////////////////////////////////////////
-
-/turf/simulated/floor/outdoors/snow/no_tree
-	tree_chance = 0
-	deadtree_chance = 0
+//!                                      FURTHER USAGE OF THIS FILE IS BANNED                                    !//
+//  If you really need a planet subtype, no you fucking don't. I will write you a planetary color-grading system  //
+//  if I need to. STOP SPAMMING SUBTYPES. ~silicons                                                               //
 
 ////////////////////////////////////////////////
 /////////// CLASS D PLANET /////////////////////
 ////////////////////////////////////////////////
 #define CLASSD_SET_ATMOS	initial_gas_mix=ATMOSPHERE_ID_CLASSD
 #define CLASSD_TURF_CREATE(x)	x/classd/initial_gas_mix=ATMOSPHERE_ID_CLASSD;x/classd/color="#eaa17c"
-
-#warn impl
 
 CLASSD_TURF_CREATE(/turf/simulated/wall/planetary)
 CLASSD_TURF_CREATE(/turf/simulated/wall)
