@@ -3,6 +3,7 @@
 	icon = 'code/game/content/factions/fey_forest/fey_forest.dmi/fey_fauna.dmi'
 	desc = "A spider-like creature that moves on an excessive amount of legs. Its flesh constantly crawls and shifts erratically, like its body can't decide on what form it wants."
 	icon_living = "ambusher"
+	icon_state = "ambusher"
 	maxHealth = 150
 	health = 150
 	movement_cooldown = 3
@@ -17,6 +18,7 @@
 	icon = 'code/game/content/factions/fey_forest/fey_forest.dmi/fey_fauna.dmi'
 	desc = "You can't quite tell what this is, considering the fact it looks more like a mouth with legs sloppily strapped onto it... Its flesh constantly shifts and wriggles around erratically. Ew."
 	icon_living = "wriggler"
+	icon_state = "wriggler"
 	maxHealth = 150
 	health = 150
 	movement_cooldown = 3
@@ -31,6 +33,7 @@
 	icon = 'code/game/content/factions/fey_forest/fey_forest.dmi/fey_fauna.dmi'
 	desc = "Its skin looks... Translucent, yet its flesh crawls around like it wants to leave its body."
 	icon_living = "chameleon"
+	icon_state = "chameleon"
 	maxHealth = 100
 	health = 100
 	alpha = 150
