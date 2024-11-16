@@ -1,10 +1,10 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "a" = (
 /obj/overmap/entity/visitable/sector/mining_planet,
-/turf/unsimulated/mineral/triumph,
+/turf/unsimulated/mineral,
 /area/class_g/unexplored)
 "f" = (
-/turf/unsimulated/mineral/triumph,
+/turf/unsimulated/mineral,
 /area/class_g/unexplored)
 "j" = (
 /obj/effect/shuttle_landmark/automatic{
@@ -25,7 +25,7 @@
 /turf/simulated/mineral/floor/ignore_cavegen,
 /area/class_g/explored)
 "w" = (
-/turf/simulated/mineral/rich/triumph,
+/turf/unsimulated/mineral/rich,
 /area/class_g/unexplored)
 "A" = (
 /turf/simulated/mineral/triumph,

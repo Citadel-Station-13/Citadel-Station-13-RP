@@ -1144,7 +1144,7 @@
 /turf/simulated/floor/tiled,
 /area/lavaland/central/base/common)
 "xd" = (
-/turf/simulated/mineral/rich/triumph,
+/turf/unsimulated/mineral/rich,
 /area/lavaland/central/unexplored)
 "xF" = (
 /obj/machinery/door/firedoor{
@@ -2144,7 +2144,7 @@
 /turf/simulated/floor/tiled,
 /area/lavaland/central/base/common)
 "Ru" = (
-/turf/unsimulated/mineral/triumph,
+/turf/unsimulated/mineral,
 /area/lavaland/central/explored)
 "RE" = (
 /obj/machinery/light/small{
@@ -2180,7 +2180,7 @@
 /turf/simulated/floor/tiled/old_tile,
 /area/lavaland/central/base/common)
 "RL" = (
-/turf/simulated/mineral/rich/triumph,
+/turf/unsimulated/mineral/rich,
 /area/lavaland/central/explored)
 "RX" = (
 /turf/simulated/mineral/triumph,

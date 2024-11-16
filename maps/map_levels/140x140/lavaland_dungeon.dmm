@@ -268,7 +268,7 @@
 /turf/simulated/floor/wood,
 /area/lavaland/dungeon/facility)
 "mr" = (
-/turf/unsimulated/mineral/triumph,
+/turf/unsimulated/mineral,
 /area/lavaland/dungeon/exterior)
 "mA" = (
 /turf/simulated/floor/trap/delayed/plating,
@@ -1003,7 +1003,7 @@
 /turf/simulated/floor,
 /area/lavaland/dungeon/facility)
 "Tl" = (
-/turf/simulated/mineral/rich/triumph,
+/turf/unsimulated/mineral/rich,
 /area/lavaland/dungeon/exterior)
 "TO" = (
 /obj/effect/floor_decal/borderfloorblack{

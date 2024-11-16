@@ -1,9 +1,9 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "al" = (
-/turf/unsimulated/mineral/triumph,
+/turf/unsimulated/mineral,
 /area/lavaland/east/explored)
 "aC" = (
-/turf/simulated/mineral/rich/triumph,
+/turf/unsimulated/mineral/rich,
 /area/lavaland/east/explored)
 "aE" = (
 /turf/simulated/mineral/ignore_mapgen,
@@ -180,7 +180,7 @@
 /turf/simulated/floor/sandstone,
 /area/lavaland/east/ashlander_village)
 "Am" = (
-/turf/simulated/mineral/rich/triumph,
+/turf/unsimulated/mineral/rich,
 /area/lavaland/east/unexplored)
 "AL" = (
 /obj/structure/ashlander/production/brickmaker,

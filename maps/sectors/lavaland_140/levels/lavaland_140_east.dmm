@@ -70,7 +70,7 @@
 /obj/structure/cable/yellow{
 	icon_state = "1-8"
 	},
-/turf/simulated/floor/tiled/steel_dirty/exterior,
+/turf/simulated/floor/tiled/steel_dirty/outdoors,
 /area/lavaland/east/ashlander_village)
 "aW" = (
 /mob/living/simple_mob/mechanical/cyber_horror/surt,
@@ -84,13 +84,13 @@
 /obj/structure/cable/yellow{
 	icon_state = "0-8"
 	},
-/turf/simulated/floor/tiled/steel_dirty/exterior,
+/turf/simulated/floor/tiled/steel_dirty/outdoors,
 /area/lavaland/east/ashlander_village)
 "bd" = (
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 6
 	},
-/turf/simulated/floor/tiled/steel_dirty/exterior,
+/turf/simulated/floor/tiled/steel_dirty/outdoors,
 /area/lavaland/east/ashlander_village)
 "be" = (
 /obj/effect/gibspawner/human,
@@ -268,7 +268,7 @@
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 8
 	},
-/turf/simulated/floor/tiled/steel_dirty/exterior,
+/turf/simulated/floor/tiled/steel_dirty/outdoors,
 /area/lavaland/east/ashlander_village)
 "fO" = (
 /obj/machinery/computer/operating,
@@ -288,7 +288,7 @@
 /obj/machinery/power/solar{
 	machine_stat = 1
 	},
-/turf/simulated/floor/tiled/steel_dirty/exterior,
+/turf/simulated/floor/tiled/steel_dirty/outdoors,
 /area/lavaland/east/ashlander_village)
 "fT" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
@@ -305,7 +305,7 @@
 /obj/structure/cable/yellow{
 	icon_state = "2-4"
 	},
-/turf/simulated/floor/tiled/steel_dirty/exterior,
+/turf/simulated/floor/tiled/steel_dirty/outdoors,
 /area/lavaland/east/ashlander_village)
 "gm" = (
 /obj/machinery/door/airlock/glass_external{
@@ -398,7 +398,7 @@
 	dir = 1
 	},
 /obj/effect/floor_decal/rust,
-/turf/simulated/floor/tiled/steel_dirty/exterior,
+/turf/simulated/floor/tiled/steel_dirty/outdoors,
 /area/lavaland/east/ashlander_village)
 "iX" = (
 /obj/effect/floor_decal/spline/fancy/wood{
@@ -408,7 +408,7 @@
 /turf/simulated/floor/carpet/bcarpet,
 /area/lavaland/east/ashlander_village)
 "ji" = (
-/turf/simulated/mineral/rich/triumph,
+/turf/unsimulated/mineral/rich,
 /area/lavaland/east/ashlander_village)
 "jz" = (
 /obj/structure/table/hardwoodtable,
@@ -427,7 +427,7 @@
 /obj/machinery/power/solar{
 	machine_stat = 1
 	},
-/turf/simulated/floor/tiled/steel_dirty/exterior,
+/turf/simulated/floor/tiled/steel_dirty/outdoors,
 /area/lavaland/east/ashlander_village)
 "jG" = (
 /obj/machinery/door/airlock/glass_external{
@@ -471,7 +471,7 @@
 /turf/simulated/floor/carpet/bcarpet,
 /area/lavaland/east/ashlander_village)
 "jX" = (
-/turf/simulated/floor/tiled/steel_dirty/exterior,
+/turf/simulated/floor/tiled/steel_dirty/outdoors,
 /area/lavaland/east/ashlander_village)
 "kh" = (
 /obj/effect/floor_decal/industrial/warning/dust,
@@ -479,7 +479,7 @@
 /obj/structure/cable/yellow{
 	icon_state = "0-8"
 	},
-/turf/simulated/floor/tiled/steel_dirty/exterior,
+/turf/simulated/floor/tiled/steel_dirty/outdoors,
 /area/lavaland/east/ashlander_village)
 "kj" = (
 /obj/structure/table/standard,
@@ -565,7 +565,7 @@
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 1
 	},
-/turf/simulated/floor/tiled/steel_dirty/exterior,
+/turf/simulated/floor/tiled/steel_dirty/outdoors,
 /area/lavaland/east/ashlander_village)
 "lt" = (
 /obj/machinery/door/airlock/glass_external{
@@ -618,7 +618,7 @@
 /obj/structure/cable/yellow{
 	icon_state = "0-4"
 	},
-/turf/simulated/floor/tiled/steel_dirty/exterior,
+/turf/simulated/floor/tiled/steel_dirty/outdoors,
 /area/lavaland/east/ashlander_village)
 "mP" = (
 /turf/simulated/wall/wood,
@@ -647,7 +647,7 @@
 /obj/machinery/power/solar{
 	machine_stat = 1
 	},
-/turf/simulated/floor/tiled/steel_dirty/exterior,
+/turf/simulated/floor/tiled/steel_dirty/outdoors,
 /area/lavaland/east/ashlander_village)
 "nh" = (
 /obj/effect/floor_decal/borderfloorwhite{
@@ -877,7 +877,7 @@
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
 	},
-/turf/simulated/floor/tiled/steel_dirty/exterior,
+/turf/simulated/floor/tiled/steel_dirty/outdoors,
 /area/lavaland/east/ashlander_village)
 "rz" = (
 /obj/machinery/shower{
@@ -945,7 +945,7 @@
 /obj/structure/cable/yellow{
 	icon_state = "1-4"
 	},
-/turf/simulated/floor/tiled/steel_dirty/exterior,
+/turf/simulated/floor/tiled/steel_dirty/outdoors,
 /area/lavaland/east/ashlander_village)
 "tk" = (
 /obj/effect/floor_decal/industrial/warning/dust/corner{
@@ -954,7 +954,7 @@
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
 	},
-/turf/simulated/floor/tiled/steel_dirty/exterior,
+/turf/simulated/floor/tiled/steel_dirty/outdoors,
 /area/lavaland/east/ashlander_village)
 "tp" = (
 /obj/structure/catwalk,
@@ -970,7 +970,7 @@
 /obj/structure/cable/yellow{
 	icon_state = "1-4"
 	},
-/turf/simulated/floor/tiled/steel_dirty/exterior,
+/turf/simulated/floor/tiled/steel_dirty/outdoors,
 /area/lavaland/east/ashlander_village)
 "tu" = (
 /obj/structure/toilet{
@@ -1014,7 +1014,7 @@
 /obj/structure/cable/yellow{
 	icon_state = "2-8"
 	},
-/turf/simulated/floor/tiled/steel_dirty/exterior,
+/turf/simulated/floor/tiled/steel_dirty/outdoors,
 /area/lavaland/east/ashlander_village)
 "uc" = (
 /mob/living/simple_mob/animal/space/bats/surt,
@@ -1053,12 +1053,12 @@
 /obj/machinery/light{
 	dir = 4
 	},
-/turf/simulated/floor/tiled/steel_dirty/exterior,
+/turf/simulated/floor/tiled/steel_dirty/outdoors,
 /area/lavaland/east/ashlander_village)
 "vk" = (
 /obj/effect/floor_decal/industrial/warning/dust,
 /mob/living/simple_mob/mechanical/cyber_horror/surt,
-/turf/simulated/floor/tiled/steel_dirty/exterior,
+/turf/simulated/floor/tiled/steel_dirty/outdoors,
 /area/lavaland/east/ashlander_village)
 "vs" = (
 /obj/structure/bed,
@@ -1089,7 +1089,7 @@
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
 	},
-/turf/simulated/floor/tiled/steel_dirty/exterior,
+/turf/simulated/floor/tiled/steel_dirty/outdoors,
 /area/lavaland/east/ashlander_village)
 "vH" = (
 /obj/effect/floor_decal/industrial/warning/dust{
@@ -1101,7 +1101,7 @@
 /obj/machinery/power/solar{
 	machine_stat = 1
 	},
-/turf/simulated/floor/tiled/steel_dirty/exterior,
+/turf/simulated/floor/tiled/steel_dirty/outdoors,
 /area/lavaland/east/ashlander_village)
 "vP" = (
 /obj/effect/gibspawner/generic,
@@ -1130,7 +1130,7 @@
 /obj/structure/cable/yellow{
 	icon_state = "2-8"
 	},
-/turf/simulated/floor/tiled/steel_dirty/exterior,
+/turf/simulated/floor/tiled/steel_dirty/outdoors,
 /area/lavaland/east/ashlander_village)
 "wy" = (
 /obj/structure/bed/chair,
@@ -1166,7 +1166,7 @@
 /turf/simulated/floor/wood,
 /area/lavaland/east/ashlander_village)
 "wR" = (
-/turf/unsimulated/mineral/triumph,
+/turf/unsimulated/mineral,
 /area/lavaland/east/explored)
 "wX" = (
 /obj/machinery/door/airlock{
@@ -1211,7 +1211,7 @@
 /obj/machinery/power/solar{
 	machine_stat = 1
 	},
-/turf/simulated/floor/tiled/steel_dirty/exterior,
+/turf/simulated/floor/tiled/steel_dirty/outdoors,
 /area/lavaland/east/ashlander_village)
 "xG" = (
 /obj/effect/gibspawner/human,
@@ -1347,7 +1347,7 @@
 /obj/structure/cable/yellow{
 	icon_state = "2-4"
 	},
-/turf/simulated/floor/tiled/steel_dirty/exterior,
+/turf/simulated/floor/tiled/steel_dirty/outdoors,
 /area/lavaland/east/ashlander_village)
 "zT" = (
 /obj/structure/ore_box,
@@ -1355,7 +1355,7 @@
 /turf/simulated/floor/tiled,
 /area/lavaland/east/ashlander_village)
 "Am" = (
-/turf/simulated/mineral/rich/triumph,
+/turf/unsimulated/mineral/rich,
 /area/lavaland/east/unexplored)
 "Ax" = (
 /obj/machinery/door/airlock/glass_external{
@@ -1456,7 +1456,7 @@
 /area/lavaland/east/ashlander_village)
 "Cu" = (
 /obj/effect/floor_decal/industrial/warning/dust,
-/turf/simulated/floor/tiled/steel_dirty/exterior,
+/turf/simulated/floor/tiled/steel_dirty/outdoors,
 /area/lavaland/east/ashlander_village)
 "Cx" = (
 /obj/machinery/appliance/cooker/oven,
@@ -1503,7 +1503,7 @@
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
 	},
-/turf/simulated/floor/tiled/steel_dirty/exterior,
+/turf/simulated/floor/tiled/steel_dirty/outdoors,
 /area/lavaland/east/ashlander_village)
 "DA" = (
 /obj/structure/fence/cut/large{
@@ -1552,7 +1552,7 @@
 /obj/structure/cable/yellow{
 	icon_state = "1-8"
 	},
-/turf/simulated/floor/tiled/steel_dirty/exterior,
+/turf/simulated/floor/tiled/steel_dirty/outdoors,
 /area/lavaland/east/ashlander_village)
 "EI" = (
 /obj/structure/bed/chair/wood{
@@ -1581,7 +1581,7 @@
 /obj/structure/sign/warning/high_voltage{
 	pixel_x = -32
 	},
-/turf/simulated/floor/tiled/steel_dirty/exterior,
+/turf/simulated/floor/tiled/steel_dirty/outdoors,
 /area/lavaland/east/ashlander_village)
 "Fy" = (
 /obj/machinery/door/airlock/glass_external{
@@ -1629,7 +1629,7 @@
 /area/lavaland/east/ashlander_village)
 "Gy" = (
 /obj/effect/floor_decal/rust,
-/turf/simulated/floor/tiled/steel_dirty/exterior,
+/turf/simulated/floor/tiled/steel_dirty/outdoors,
 /area/lavaland/east/ashlander_village)
 "GF" = (
 /obj/machinery/mineral/equipment_vendor,
@@ -1640,7 +1640,7 @@
 /obj/structure/cable/yellow{
 	icon_state = "0-8"
 	},
-/turf/simulated/floor/tiled/steel_dirty/exterior,
+/turf/simulated/floor/tiled/steel_dirty/outdoors,
 /area/lavaland/east/ashlander_village)
 "GZ" = (
 /obj/structure/sign/poster/nanotrasen{
@@ -1722,7 +1722,7 @@
 /obj/structure/cable/yellow{
 	icon_state = "2-4"
 	},
-/turf/simulated/floor/tiled/steel_dirty/exterior,
+/turf/simulated/floor/tiled/steel_dirty/outdoors,
 /area/lavaland/east/ashlander_village)
 "Jh" = (
 /obj/effect/floor_decal/spline/plain,
@@ -1821,7 +1821,7 @@
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
 	},
-/turf/simulated/floor/tiled/steel_dirty/exterior,
+/turf/simulated/floor/tiled/steel_dirty/outdoors,
 /area/lavaland/east/ashlander_village)
 "LQ" = (
 /turf/simulated/floor/outdoors/grass/indoors,
@@ -1939,19 +1939,19 @@
 /obj/structure/cable/yellow{
 	icon_state = "1-8"
 	},
-/turf/simulated/floor/tiled/steel_dirty/exterior,
+/turf/simulated/floor/tiled/steel_dirty/outdoors,
 /area/lavaland/east/ashlander_village)
 "OH" = (
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 5
 	},
-/turf/simulated/floor/tiled/steel_dirty/exterior,
+/turf/simulated/floor/tiled/steel_dirty/outdoors,
 /area/lavaland/east/ashlander_village)
 "OM" = (
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 4
 	},
-/turf/simulated/floor/tiled/steel_dirty/exterior,
+/turf/simulated/floor/tiled/steel_dirty/outdoors,
 /area/lavaland/east/ashlander_village)
 "Pa" = (
 /obj/structure/sink{
@@ -1984,7 +1984,7 @@
 /obj/structure/cable/yellow{
 	icon_state = "2-8"
 	},
-/turf/simulated/floor/tiled/steel_dirty/exterior,
+/turf/simulated/floor/tiled/steel_dirty/outdoors,
 /area/lavaland/east/ashlander_village)
 "PU" = (
 /obj/structure/table/rack,
@@ -2086,7 +2086,7 @@
 	icon_state = "1-4"
 	},
 /obj/effect/floor_decal/rust,
-/turf/simulated/floor/tiled/steel_dirty/exterior,
+/turf/simulated/floor/tiled/steel_dirty/outdoors,
 /area/lavaland/east/ashlander_village)
 "RI" = (
 /obj/structure/bed/chair/bar_stool,
@@ -2107,7 +2107,7 @@
 /obj/structure/cable/yellow{
 	icon_state = "1-4"
 	},
-/turf/simulated/floor/tiled/steel_dirty/exterior,
+/turf/simulated/floor/tiled/steel_dirty/outdoors,
 /area/lavaland/east/ashlander_village)
 "RN" = (
 /obj/machinery/light{
@@ -2234,7 +2234,7 @@
 /obj/structure/cable/yellow{
 	icon_state = "0-4"
 	},
-/turf/simulated/floor/tiled/steel_dirty/exterior,
+/turf/simulated/floor/tiled/steel_dirty/outdoors,
 /area/lavaland/east/ashlander_village)
 "TJ" = (
 /obj/structure/bed/chair/wood,
@@ -2257,7 +2257,7 @@
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
 	},
-/turf/simulated/floor/tiled/steel_dirty/exterior,
+/turf/simulated/floor/tiled/steel_dirty/outdoors,
 /area/lavaland/east/ashlander_village)
 "Ui" = (
 /obj/effect/floor_decal/steeldecal/steel_decals4{
@@ -2292,7 +2292,7 @@
 	icon_state = "2-4"
 	},
 /obj/effect/floor_decal/rust,
-/turf/simulated/floor/tiled/steel_dirty/exterior,
+/turf/simulated/floor/tiled/steel_dirty/outdoors,
 /area/lavaland/east/ashlander_village)
 "Uz" = (
 /obj/effect/floor_decal/spline/fancy/wood{
@@ -2306,7 +2306,7 @@
 /turf/simulated/floor/wood,
 /area/lavaland/east/ashlander_village)
 "Ve" = (
-/turf/simulated/mineral/rich/triumph,
+/turf/unsimulated/mineral/rich,
 /area/lavaland/east/explored)
 "Vk" = (
 /obj/structure/boulder,
@@ -2358,7 +2358,7 @@
 /obj/machinery/power/solar{
 	machine_stat = 1
 	},
-/turf/simulated/floor/tiled/steel_dirty/exterior,
+/turf/simulated/floor/tiled/steel_dirty/outdoors,
 /area/lavaland/east/ashlander_village)
 "WH" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
@@ -2413,7 +2413,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals4{
 	dir = 6
 	},
-/turf/simulated/floor/tiled/steel_dirty/exterior,
+/turf/simulated/floor/tiled/steel_dirty/outdoors,
 /area/lavaland/east/ashlander_village)
 "Xr" = (
 /obj/structure/boulder,
@@ -2476,7 +2476,7 @@
 /obj/structure/cable/yellow{
 	icon_state = "0-8"
 	},
-/turf/simulated/floor/tiled/steel_dirty/exterior,
+/turf/simulated/floor/tiled/steel_dirty/outdoors,
 /area/lavaland/east/ashlander_village)
 "YB" = (
 /obj/effect/debris/cleanable/blood,
@@ -2510,7 +2510,7 @@
 /obj/structure/cable/yellow{
 	icon_state = "2-4"
 	},
-/turf/simulated/floor/tiled/steel_dirty/exterior,
+/turf/simulated/floor/tiled/steel_dirty/outdoors,
 /area/lavaland/east/ashlander_village)
 "YU" = (
 /obj/structure/toilet{
@@ -2522,7 +2522,7 @@
 /obj/structure/cable/yellow{
 	icon_state = "1-4"
 	},
-/turf/simulated/floor/tiled/steel_dirty/exterior,
+/turf/simulated/floor/tiled/steel_dirty/outdoors,
 /area/lavaland/east/ashlander_village)
 "YY" = (
 /obj/machinery/power/apc/west_mount{
@@ -2585,7 +2585,7 @@
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 10
 	},
-/turf/simulated/floor/tiled/steel_dirty/exterior,
+/turf/simulated/floor/tiled/steel_dirty/outdoors,
 /area/lavaland/east/ashlander_village)
 "ZL" = (
 /obj/effect/floor_decal/borderfloorwhite{

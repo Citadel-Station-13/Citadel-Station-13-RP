@@ -350,6 +350,7 @@ CREATE_STANDARD_TURFS(/turf/simulated/floor/reinforced)
 	icon_state = "steel"
 	initial_flooring = /singleton/flooring/tiling/steel
 
+CREATE_STANDARD_TURFS(/turf/simulated/floor/tiled/steel_dirty)
 /turf/simulated/floor/tiled/steel_dirty
 	name = "steel floor"
 	icon_state = "steel_dirty"

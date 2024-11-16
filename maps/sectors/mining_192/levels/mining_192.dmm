@@ -15,7 +15,7 @@
 /turf/simulated/mineral/triumph,
 /area/class_g/unexplored)
 "n" = (
-/turf/simulated/mineral/rich/triumph,
+/turf/unsimulated/mineral/rich,
 /area/class_g/unexplored)
 "q" = (
 /turf/simulated/mineral/floor/ignore_cavegen,
@@ -33,7 +33,7 @@
 	name = "Mining Dock Controller";
 	pixel_y = 30
 	},
-/turf/simulated/mineral/rich/triumph,
+/turf/unsimulated/mineral/rich,
 /area/class_g/explored)
 "B" = (
 /obj/overmap/entity/visitable/sector/mining_planet,
@@ -49,7 +49,7 @@
 /turf/simulated/mineral/floor/ignore_cavegen,
 /area/class_g/explored)
 "K" = (
-/turf/simulated/mineral/rich/triumph,
+/turf/unsimulated/mineral/rich,
 /area/class_g/explored)
 
 (1,1,1) = {"

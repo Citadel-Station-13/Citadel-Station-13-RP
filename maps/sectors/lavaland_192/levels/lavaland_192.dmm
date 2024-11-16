@@ -1086,7 +1086,7 @@
 /turf/simulated/floor/plating,
 /area/lavaland/central/base/common)
 "xd" = (
-/turf/simulated/mineral/rich/triumph,
+/turf/unsimulated/mineral/rich,
 /area/lavaland/central/unexplored)
 "xf" = (
 /obj/machinery/mech_recharger,
@@ -1666,7 +1666,7 @@
 /turf/simulated/floor/plating,
 /area/lavaland/central/base/common)
 "Md" = (
-/turf/unsimulated/mineral/triumph,
+/turf/unsimulated/mineral,
 /area/lavaland/central/explored)
 "Mw" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -1890,7 +1890,7 @@
 /turf/simulated/floor/tiled/old_tile,
 /area/lavaland/central/base/common)
 "RL" = (
-/turf/simulated/mineral/rich/triumph,
+/turf/unsimulated/mineral/rich,
 /area/lavaland/central/explored)
 "RS" = (
 /obj/machinery/door/airlock{
