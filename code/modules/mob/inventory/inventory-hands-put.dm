@@ -14,12 +14,18 @@
 	return inventory?.put_in_hand(I, index, inv_op_flags)
 
 /**
+ * **Warning**: `prioritize_index` is patched to support legacy behavior by defaulting to owner active hand.
+ *              This may be removed at any time. Besure to specify the index if you need this behavior.
+ *
  * @params
  * * I - the item
  * * inv_op_flags - inventory operation flags
  * * prioritize_index - try that index first; defaults to the inventory owner's active hand, if any. set to `0` (not null!) to prioritize none.
  */
-/datum/inventory/proc/put_in_hands(obj/item/I, inv_op_flags, prioritize_index = owner.acitve_hand)
+/datum/inventory/proc/put_in_hands(obj/item/I, inv_op_flags, prioritize_index)
+	if(isnull(prioritize_index))
+		prioritize_index = owner.active_hand
+
 	if(is_holding(I))
 		return INV_RETURN_SUCCESS
 
@@ -31,7 +37,7 @@
 				return INV_RETURN_SUCCESS
 
 	if(prioritize_index)
-		var/priority_result = put_in_hand(I, i, inv_op_flags)
+		var/priority_result = put_in_hand(I, prioritize_index, inv_op_flags)
 		switch(priority_result)
 			if(INV_RETURN_FAILED)
 			else
@@ -49,6 +55,9 @@
 	return INV_RETURN_FAILED
 
 /**
+ * **Warning**: `prioritize_index` is patched to support legacy behavior by defaulting to owner active hand.
+ *              This may be removed at any time. Besure to specify the index if you need this behavior.
+ *
  * @params
  * * I - the item
  * * inv_op_flags - inventory operation flags
