@@ -41,7 +41,7 @@
 /obj/projectile/nt_protomag/smoke
 	name = "disintegrating slug"
 	color = "#888888"
-	speed = /obj/projectile/nt_protomag::speed * 0.8
+	speed = /obj/projectile/nt_protomag::speed * 0.
 
 /obj/projectile/nt_protomag/emp
 	name = "ion slug"

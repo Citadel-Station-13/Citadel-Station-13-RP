@@ -40,7 +40,7 @@
 // 	desc = "A slender bullet. While lacking in penetration, this round is designed to shred soft targets with ease."
 //
 //	projectile_type = /obj/projectile/nt_protomag/shredder
-	stripe_color = /obj/projectile/nt_protomag/shredder::color
+//	stripe_color = /obj/projectile/nt_protomag/shredder::color
 
 /obj/item/ammo_casing/nt_protomag/magboosted/impact
 	name = "protomag round (impact)"
@@ -81,7 +81,7 @@
 // 	desc = "A slender ferromagnetic slug. While lacking in penetration, this round contains a small airburst charge that detonates on impact."
 
 // 	projectile_type = /obj/projectile/nt_protomag/concussive
-	stripe_color = /obj/projectile/nt_protomag/concussive::color
+//	stripe_color = /obj/projectile/nt_protomag/concussive::color
 
 /obj/item/ammo_casing/nt_protomag/magnetic/penetrator
 	name = "protomag slug (penetrator)"

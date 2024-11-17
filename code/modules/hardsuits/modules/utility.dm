@@ -430,8 +430,6 @@
 	active_power_cost = 0
 	passive_power_cost = 0
 
-	gun = /obj/item/reagent_containers/spray/cleaner
-
 /obj/item/hardsuit_module/mop/process(delta_time)
 
 	if(holder && holder.wearer)
