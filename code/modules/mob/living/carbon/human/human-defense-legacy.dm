@@ -1,5 +1,5 @@
 /mob/living/carbon/human/stun_effect_act(var/stun_amount, var/agony_amount, var/def_zone)
-	var/obj/item/organ/external/affected = get_organ(check_zone(def_zone))
+	var/obj/item/organ/external/affected = legacy_organ_by_zone(check_zone(def_zone))
 	var/siemens_coeff = get_siemens_coefficient_organ(affected)
 	if(fire_stacks < 0) // Water makes you more conductive.
 		siemens_coeff *= 1.5
@@ -34,7 +34,7 @@
 	if(def_zone)
 		if(isorgan(def_zone))
 			return getarmor_organ(def_zone, type)
-		var/obj/item/organ/external/affecting = get_organ(def_zone)
+		var/obj/item/organ/external/affecting = legacy_organ_by_zone(def_zone)
 		if(affecting)
 			return getarmor_organ(affecting, type)
 		//If a specific bodypart is targetted, check how that bodypart is protected and return the value.
@@ -57,7 +57,7 @@
 	if(def_zone)
 		if(isorgan(def_zone))
 			return getsoak_organ(def_zone, type)
-		var/obj/item/organ/external/affecting = get_organ(def_zone)
+		var/obj/item/organ/external/affecting = legacy_organ_by_zone(def_zone)
 		if(affecting)
 			return getsoak_organ(affecting, type)
 		//If a specific bodypart is targetted, check how that bodypart is protected and return the value.
@@ -184,7 +184,7 @@
 	if(shieldcall_results & SHIELDCALL_FLAGS_BLOCK_ATTACK)
 		return
 
-	var/obj/item/organ/external/affecting = get_organ(hit_zone)
+	var/obj/item/organ/external/affecting = legacy_organ_by_zone(hit_zone)
 	if (!affecting || affecting.is_stump())
 		to_chat(user, "<span class='danger'>They are missing that limb!</span>")
 		return null
@@ -192,7 +192,7 @@
 	return hit_zone
 
 /mob/living/carbon/human/hit_with_weapon(obj/item/I, mob/living/user, var/effective_force, var/hit_zone)
-	var/obj/item/organ/external/affecting = get_organ(hit_zone)
+	var/obj/item/organ/external/affecting = legacy_organ_by_zone(hit_zone)
 	if(!affecting)
 		return //should be prevented by attacked_with_item() but for sanity.
 
@@ -205,7 +205,7 @@
 	return blocked
 
 /mob/living/carbon/human/standard_weapon_hit_effects(obj/item/I, mob/living/user, var/effective_force, var/blocked, var/soaked, var/hit_zone)
-	var/obj/item/organ/external/affecting = get_organ(hit_zone)
+	var/obj/item/organ/external/affecting = legacy_organ_by_zone(hit_zone)
 	if(!affecting)
 		return 0
 
@@ -289,7 +289,7 @@
 	return 0
 
 /mob/living/carbon/human/emag_act(var/remaining_charges, mob/user, var/emag_source)
-	var/obj/item/organ/external/affecting = get_organ(user.zone_sel.selecting)
+	var/obj/item/organ/external/affecting = legacy_organ_by_zone(user.zone_sel.selecting)
 	if(!affecting || !(affecting.robotic >= ORGAN_ROBOT))
 		to_chat(user, "<span class='warning'>That limb isn't robotic.</span>")
 		return -1
@@ -359,7 +359,7 @@
 		if(no_attack)
 			return force_pierce? COMPONENT_THROW_HIT_PIERCE | COMPONENT_THROW_HIT_NEVERMIND : NONE
 
-		var/obj/item/organ/external/affecting = get_organ(zone)
+		var/obj/item/organ/external/affecting = legacy_organ_by_zone(zone)
 		var/hit_area = affecting.name
 
 		src.visible_message("<font color='red'>[src] has been hit in the [hit_area] by [O].</font>")
@@ -453,7 +453,7 @@
 /mob/living/carbon/human/embed(var/obj/O, var/def_zone=null)
 	if(!def_zone) ..()
 
-	var/obj/item/organ/external/affecting = get_organ(def_zone)
+	var/obj/item/organ/external/affecting = legacy_organ_by_zone(def_zone)
 	if(affecting)
 		affecting.embed(O)
 
@@ -551,7 +551,7 @@
 
 	var/organ_chance = 50
 	var/damage = shank_armor_helper(W, G, user)
-	var/obj/item/organ/external/chest = get_organ(hit_zone)
+	var/obj/item/organ/external/chest = legacy_organ_by_zone(hit_zone)
 
 	if(W.damage_mode & DAMAGE_MODE_EDGE)
 		organ_chance = 75

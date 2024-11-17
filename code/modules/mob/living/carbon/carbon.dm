@@ -1,3 +1,29 @@
+/**
+ * ## Carbon Mobs
+ *
+ * One of the base-types of 'real' (living) mobs.
+ */
+/mob/living/carbon
+	//* Organs *//
+	/// All internal organs.
+	var/list/obj/item/organ/internal/internal_organs = list()
+	/// All external organs.
+	var/list/obj/item/organ/external/external_organs = list()
+	/// Keyed organs.
+	///
+	/// Allowed usages:
+	///
+	/// * Directly accessing an organ by key.
+	///
+	/// Disallowed usages:
+	///
+	/// * Accessing an organ by **targeting zone.** Despite targeting zone being the same BP_* keys as
+	///   the ones we're using here, we do internal transforms and translations to translate from the
+	///   targeting doll to the real organ.
+	///
+	/// If you're using it for some other reason, you should consider using or making a helper instead.
+	var/list/keyed_organs = list()
+
 /mob/living/carbon/Initialize(mapload)
 	. = ..()
 	//setup reagent holders

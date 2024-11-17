@@ -64,7 +64,7 @@
 			continue
 		if(I.damage > 2)
 			if(prob(25) && painmsg)
-				var/obj/item/organ/external/parent = get_organ(I.parent_organ)
+				var/obj/item/organ/external/parent = legacy_organ_by_zone(I.parent_organ)
 				src.custom_pain("You feel a sharp pain in your [parent.name]", 50)
 
 	if(prob(25) && painmsg)

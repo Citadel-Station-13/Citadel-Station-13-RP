@@ -137,7 +137,7 @@ GLOBAL_LIST_INIT(nif_id_lookup, init_nif_id_lookup())
 	if(istype(brain))
 		should_be_in = brain.parent_organ
 
-	if(istype(H) && !H.nif && H.species && (loc == H.get_organ(should_be_in)))
+	if(istype(H) && !H.nif && H.species && (loc == H.legacy_organ_by_zone(should_be_in)))
 		if(!bioadap && (H.species.species_flags & NO_SCAN)) //NO_SCAN is the default 'too complicated' flag
 			return FALSE
 
@@ -163,7 +163,7 @@ GLOBAL_LIST_INIT(nif_id_lookup, init_nif_id_lookup())
 		if(istype(brain))
 			should_be_in = brain.parent_organ
 
-		parent = H.get_organ(should_be_in)
+		parent = H.legacy_organ_by_zone(should_be_in)
 		//Ok, nevermind then!
 		if(!istype(parent))
 			return FALSE
@@ -361,7 +361,7 @@ GLOBAL_LIST_INIT(nif_id_lookup, init_nif_id_lookup())
 
 //Called each life() tick on the mob
 /obj/item/nif/proc/on_life()
-	if(!human || loc != human.get_organ(should_be_in))
+	if(!human || loc != human.legacy_organ_by_zone(should_be_in))
 		unimplant(human)
 		return FALSE
 
@@ -675,7 +675,7 @@ GLOBAL_LIST_INIT(nif_id_lookup, init_nif_id_lookup())
 		if(T.w_uniform || T.wear_suit)
 			to_chat(user,"<span class='warning'>Remove any clothing they have on, as it might interfere!</span>")
 			return
-		var/obj/item/organ/external/eo = T.get_organ(BP_TORSO)
+		var/obj/item/organ/external/eo = T.legacy_organ_by_zone(BP_TORSO)
 		if(!T)
 			to_chat(user,"<span class='warning'>They should probably regrow their torso first.</span>")
 			return

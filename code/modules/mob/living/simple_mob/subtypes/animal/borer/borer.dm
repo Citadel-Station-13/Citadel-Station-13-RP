@@ -115,7 +115,7 @@
 
 	if(istype(host, /mob/living/carbon/human))
 		var/mob/living/carbon/human/H = host
-		var/obj/item/organ/external/head = H.get_organ(BP_HEAD)
+		var/obj/item/organ/external/head = H.legacy_organ_by_zone(BP_HEAD)
 		if(head)
 			head.implants -= src
 
@@ -177,7 +177,7 @@
 
 	if(istype(host, /mob/living/carbon/human))
 		var/mob/living/carbon/human/H = host
-		var/obj/item/organ/external/head = H.get_organ(BP_HEAD)
+		var/obj/item/organ/external/head = H.legacy_organ_by_zone(BP_HEAD)
 		if(head)
 			head.implants -= src
 

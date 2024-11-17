@@ -82,7 +82,7 @@
 				forbid_seeing_deadchat = TRUE
 
 	//Handle brain slugs.
-	var/obj/item/organ/external/Hd = get_organ(BP_HEAD)
+	var/obj/item/organ/external/Hd = legacy_organ_by_zone(BP_HEAD)
 	var/mob/living/simple_mob/animal/borer/B
 
 	if(Hd)

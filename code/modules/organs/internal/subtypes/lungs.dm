@@ -32,7 +32,7 @@
 				owner.AdjustLosebreath(round(3 / max(0.1,Brain.get_control_efficiency())))
 
 /obj/item/organ/internal/lungs/proc/rupture()
-	var/obj/item/organ/external/parent = owner.get_organ(parent_organ)
+	var/obj/item/organ/external/parent = owner.legacy_organ_by_zone(parent_organ)
 	if(istype(parent))
 		owner.custom_pain("You feel a stabbing pain in your [parent.name]!", 50)
 	bruise()

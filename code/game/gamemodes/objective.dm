@@ -415,7 +415,7 @@ var/global/list/all_objectives = list()
 			if(!found)
 				return TRUE
 
-		var/obj/item/organ/external/head/head = H.get_organ(BP_HEAD)
+		var/obj/item/organ/external/head/head = H.legacy_organ_by_zone(BP_HEAD)
 		if(head.disfigured)
 			return TRUE
 	return FALSE

@@ -122,7 +122,7 @@
 			var/block = 0
 			var/accurate = 0
 			var/hit_zone = H.zone_sel.selecting
-			var/obj/item/organ/external/affecting = get_organ(hit_zone)
+			var/obj/item/organ/external/affecting = legacy_organ_by_zone(hit_zone)
 
 			if(!affecting || affecting.is_stump())
 				to_chat(L, "<span class='danger'>They are missing that limb!</span>")
@@ -251,7 +251,7 @@
 
 			if(w_uniform)
 				w_uniform.add_fingerprint(L)
-			var/obj/item/organ/external/affecting = get_organ(ran_zone(L.zone_sel.selecting))
+			var/obj/item/organ/external/affecting = legacy_organ_by_zone(ran_zone(L.zone_sel.selecting))
 
 			var/list/holding = list(get_active_held_item() = 40, get_inactive_held_item = 20)
 
@@ -325,7 +325,7 @@
 	user.do_attack_animation(src)
 
 	var/dam_zone = pick(organs_by_name)
-	var/obj/item/organ/external/affecting = get_organ(ran_zone(dam_zone))
+	var/obj/item/organ/external/affecting = legacy_organ_by_zone(ran_zone(dam_zone))
 	var/armor_block = run_armor_check(affecting, armor_type, armor_pen)
 	var/armor_soak = get_armor_soak(affecting, armor_type, armor_pen)
 	apply_damage(damage, DAMAGE_TYPE_BRUTE, affecting, armor_block, armor_soak, sharp = a_sharp, edge = a_edge)
@@ -347,7 +347,7 @@
 	var/target_zone = check_zone(def_zone)
 	if(!target_zone)
 		return FALSE
-	var/obj/item/organ/external/organ = get_organ(check_zone(target_zone))
+	var/obj/item/organ/external/organ = legacy_organ_by_zone(check_zone(target_zone))
 	if(!organ || organ.dislocated > 0 || organ.dislocated == -1) //don't use is_dislocated() here, that checks parent
 		return FALSE
 
@@ -390,7 +390,7 @@
 	Changing targeted zones should also stop do_mob(), preventing you from applying pressure to more than one body part at once.
 */
 /mob/living/carbon/human/proc/apply_pressure(mob/living/user, var/target_zone)
-	var/obj/item/organ/external/organ = get_organ(target_zone)
+	var/obj/item/organ/external/organ = legacy_organ_by_zone(target_zone)
 	if(!organ || !(organ.status & ORGAN_BLEEDING) || (organ.robotic >= ORGAN_ROBOT))
 		return FALSE
 

@@ -46,7 +46,7 @@
 	// Low levels can cause pain and haemophilia, high levels can cause brain infections.
 	if (. >= 1)
 		if(prob(1))
-			owner.custom_pain("There's a sharp pain in your [owner.get_organ(parent_organ)]!",1)
+			owner.custom_pain("There's a sharp pain in your [owner.legacy_organ_by_zone(parent_organ)]!",1)
 			owner.add_modifier(/datum/modifier/trait/haemophilia, 2 MINUTES * spleen_efficiency)
 	if (. >= 2)
 		if(prob(1))
@@ -59,7 +59,7 @@
 /obj/item/organ/internal/spleen/on_die()
 	. = ..()
 	owner.add_modifier(/datum/modifier/trait/haemophilia, round(15 MINUTES * spleen_efficiency))
-	var/obj/item/organ/external/affecting = owner.get_organ(parent_organ)
+	var/obj/item/organ/external/affecting = owner.legacy_organ_by_zone(parent_organ)
 	affecting.create_specific_wound(/datum/wound/internal_bleeding, round(20 * spleen_efficiency))
 	owner.adjustToxLoss(15 * spleen_efficiency)
 

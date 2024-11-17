@@ -355,7 +355,7 @@ This function restores all organs.
 		organ = def_zone
 	else
 		if(!def_zone)	def_zone = ran_zone(def_zone)
-		organ = get_organ(check_zone(def_zone))
+		organ = legacy_organ_by_zone(check_zone(def_zone))
 
 	//Handle other types of damage
 	if((damagetype != DAMAGE_TYPE_BRUTE) && (damagetype != DAMAGE_TYPE_BURN))

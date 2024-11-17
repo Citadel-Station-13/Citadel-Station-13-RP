@@ -50,7 +50,7 @@
 /datum/genetics/side_effect/genetic_burn/finish(mob/living/carbon/human/H)
 	if(!H.reagents.has_reagent("dexalin"))
 		for(var/organ_name in BP_ALL)
-			var/obj/item/organ/external/E = H.get_organ(organ_name)
+			var/obj/item/organ/external/E = H.legacy_organ_by_zone(organ_name)
 			E.inflict_bodypart_damage(
 				burn = 5,
 			)
@@ -68,7 +68,7 @@
 /datum/genetics/side_effect/bone_snap/finish(mob/living/carbon/human/H)
 	if(!H.reagents.has_reagent("bicaridine"))
 		var/organ_name = pick(BP_ALL)
-		var/obj/item/organ/external/E = H.get_organ(organ_name)
+		var/obj/item/organ/external/E = H.legacy_organ_by_zone(organ_name)
 		E.inflict_bodypart_damage(
 			brute = 20,
 		)

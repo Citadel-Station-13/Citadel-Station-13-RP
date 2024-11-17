@@ -122,7 +122,7 @@
 	if(blocked >= 100)
 		return
 
-	var/obj/item/organ/external/affecting = target.get_organ(target_limb)
+	var/obj/item/organ/external/affecting = target.legacy_organ_by_zone(target_limb)
 	var/damage = 0
 	var/has_edge = 0
 	if(get_trait(TRAIT_CARNIVOROUS) >= 2)

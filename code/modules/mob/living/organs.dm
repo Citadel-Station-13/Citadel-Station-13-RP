@@ -9,11 +9,11 @@
 	var/list/bad_external_organs = list()
 
 /mob/living/proc/get_bodypart_name(zone)
-	var/obj/item/organ/external/E = get_organ(zone)
+	var/obj/item/organ/external/E = legacy_organ_by_zone(zone)
 	if(E)
 		. = E.name
 
-/mob/living/proc/get_organ(zone)
+/mob/living/proc/legacy_organ_by_zone(zone)
 	if(!zone)
 		zone = BP_TORSO
 	else if (zone in list( O_EYES, O_MOUTH ))

@@ -129,7 +129,7 @@ GLOBAL_LIST_EMPTY(unarmed_attack_cache)
 
 	if(user.species.infect_wounds)		//Creates a pre-damaged, pre-infected wound. As nasty as this code.
 		if(prob(infected_wound_probability))
-			var/obj/item/organ/external/affecting = target.get_organ(zone)
+			var/obj/item/organ/external/affecting = target.legacy_organ_by_zone(zone)
 			var/attack_message
 			var/datum/wound/W
 			if(damage_mode & DAMAGE_MODE_EDGE)
@@ -143,7 +143,7 @@ GLOBAL_LIST_EMPTY(unarmed_attack_cache)
 			target.visible_message("<span class='danger'><i>[user] [attack_message]</i></span>")
 
 /datum/unarmed_attack/proc/show_attack(var/mob/living/carbon/human/user, var/mob/living/carbon/human/target, var/zone, var/attack_damage)
-	var/obj/item/organ/external/affecting = target.get_organ(zone)
+	var/obj/item/organ/external/affecting = target.legacy_organ_by_zone(zone)
 	user.visible_message("<span class='warning'>[user] [pick(attack_verb_legacy)] [target] in the [affecting.name]!</span>")
 	playsound(user.loc, attack_sound, 25, 1, -1)
 
@@ -189,7 +189,7 @@ GLOBAL_LIST_EMPTY(unarmed_attack_cache)
 	damage_tier = MELEE_TIER_UNARMED_FISTS
 
 /datum/unarmed_attack/punch/show_attack(var/mob/living/carbon/human/user, var/mob/living/carbon/human/target, var/zone, var/attack_damage)
-	var/obj/item/organ/external/affecting = target.get_organ(zone)
+	var/obj/item/organ/external/affecting = target.legacy_organ_by_zone(zone)
 	var/organ = affecting.name
 
 	var/datum/gender/TU = GLOB.gender_datums[user.get_visible_gender()]
@@ -265,7 +265,7 @@ GLOBAL_LIST_EMPTY(unarmed_attack_cache)
 	return damage + max(0, shoes ? shoes.damage_force - 5 : 0)
 
 /datum/unarmed_attack/kick/show_attack(var/mob/living/carbon/human/user, var/mob/living/carbon/human/target, var/zone, var/attack_damage)
-	var/obj/item/organ/external/affecting = target.get_organ(zone)
+	var/obj/item/organ/external/affecting = target.legacy_organ_by_zone(zone)
 	var/datum/gender/TT = GLOB.gender_datums[target.get_visible_gender()]
 	var/organ = affecting.name
 
@@ -310,7 +310,7 @@ GLOBAL_LIST_EMPTY(unarmed_attack_cache)
 	return damage + max(0, shoes ? shoes.damage_force - 5 : 0)
 
 /datum/unarmed_attack/stomp/show_attack(var/mob/living/carbon/human/user, var/mob/living/carbon/human/target, var/zone, var/attack_damage)
-	var/obj/item/organ/external/affecting = target.get_organ(zone)
+	var/obj/item/organ/external/affecting = target.legacy_organ_by_zone(zone)
 	var/organ = affecting.name
 	var/obj/item/clothing/shoes = user.shoes
 	var/datum/gender/TU = GLOB.gender_datums[user.get_visible_gender()]

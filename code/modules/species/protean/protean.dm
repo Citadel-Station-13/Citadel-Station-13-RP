@@ -208,7 +208,7 @@
 			H.gib()
 
 /datum/species/protean/proc/getActualDamage(mob/living/carbon/human/H)
-	var/obj/item/organ/external/E = H.get_organ(BP_TORSO)
+	var/obj/item/organ/external/E = H.legacy_organ_by_zone(BP_TORSO)
 	return E.brute_dam + E.burn_dam
 
 /datum/species/protean/handle_environment_special(mob/living/carbon/human/H, datum/gas_mixture/environment, dt)
@@ -296,8 +296,8 @@
 	..()
 	var/dt = 2	// put it on param sometime but for now assume 2
 	var/mob/living/carbon/human/H = holder
-	var/obj/item/organ/external/E = H.get_organ(BP_TORSO)
-	var/obj/item/organ/external/HE = H.get_organ(BP_HEAD) // Head for disfigurement
+	var/obj/item/organ/external/E = H.legacy_organ_by_zone(BP_TORSO)
+	var/obj/item/organ/external/HE = H.legacy_organ_by_zone(BP_HEAD) // Head for disfigurement
 	var/heal = 1 * dt
 	var/brute_heal_left = max(0, heal - E.brute_dam)
 	var/burn_heal_left = max(0, heal - E.burn_dam)

@@ -49,7 +49,7 @@
 
 /obj/item/organ/internal/fruitgland/tick_life(dt)
 	. = ..()
-	var/obj/item/organ/external/parent = owner.get_organ(parent_organ)
+	var/obj/item/organ/external/parent = owner.legacy_organ_by_zone(parent_organ)
 	var/before_gen
 	if(parent && generated_reagents && owner) //Is it in the chest/an organ, has reagents, and is 'activated'
 		before_gen = reagents.total_volume

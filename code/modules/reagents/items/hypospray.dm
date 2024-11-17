@@ -154,7 +154,7 @@
 	if(!loaded?.reagents?.total_volume)
 		user.action_feedback(SPAN_WARNING("[src]'s vial is empty."), src)
 		return FALSE
-	var/obj/item/organ/external/limb = L.get_organ(target_zone || BP_HEAD)
+	var/obj/item/organ/external/limb = L.legacy_organ_by_zone(target_zone || BP_HEAD)
 	if(isnull(limb))
 		user.action_feedback(SPAN_WARNING("[target] doesn't have that limb."), src)
 		return FALSE

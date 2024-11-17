@@ -73,7 +73,7 @@
 
 	var/mob/living/carbon/human/H = L
 	if(istype(H))
-		var/obj/item/organ/external/affected = H.get_organ(user.zone_sel.selecting)
+		var/obj/item/organ/external/affected = H.legacy_organ_by_zone(user.zone_sel.selecting)
 		if(!affected)
 			to_chat(user, "<span class='danger'>\The [H] is missing that limb!</span>")
 			return

@@ -117,7 +117,7 @@
 				replace_brain()
 			else
 				// If they're in normally, implant removal can get them out.
-				var/obj/item/organ/external/head = H.get_organ(BP_HEAD)
+				var/obj/item/organ/external/head = H.legacy_organ_by_zone(BP_HEAD)
 				head.implants += src
 
 		return
@@ -184,7 +184,7 @@
 	H.internal_organs_by_name["brain"] = B
 	H.internal_organs |= B
 
-	var/obj/item/organ/external/affecting = H.get_organ(BP_HEAD)
+	var/obj/item/organ/external/affecting = H.legacy_organ_by_zone(BP_HEAD)
 	affecting.implants -= src
 
 	var/s2h_id = src.computer_id

@@ -43,7 +43,7 @@
 			to_chat(owner, "<span class='danger'>Your abdomen is a world of pain!</span>")
 			owner.afflict_paralyze(20 * 10)
 
-			var/obj/item/organ/external/groin = owner.get_organ(BP_GROIN)
+			var/obj/item/organ/external/groin = owner.legacy_organ_by_zone(BP_GROIN)
 			groin.create_specific_wound(/datum/wound/internal_bleeding, 20)
 			owner.adjustToxLoss(25)
 			inflamed = 1

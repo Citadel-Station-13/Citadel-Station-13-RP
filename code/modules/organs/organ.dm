@@ -127,7 +127,7 @@
 		var/mob/living/carbon/human/H = C
 		if(istype(H))
 			if(internal)
-				var/obj/item/organ/external/E = H.get_organ(parent_organ)
+				var/obj/item/organ/external/E = H.legacy_organ_by_zone(parent_organ)
 				if(E)
 					if(E.internal_organs == null)
 						E.internal_organs = list()
@@ -324,7 +324,7 @@
 
 		//only show this if the organ is not robotic
 		if(owner && parent_organ && amount > 0)
-			var/obj/item/organ/external/parent = owner?.get_organ(parent_organ)
+			var/obj/item/organ/external/parent = owner?.legacy_organ_by_zone(parent_organ)
 			if(parent && !silent)
 				owner.custom_pain("Something inside your [parent.name] hurts a lot.", amount)
 
@@ -357,7 +357,7 @@
 		owner.internal_organs_by_name -= null
 		owner.internal_organs -= src
 
-		var/obj/item/organ/external/affected = owner.get_organ(parent_organ)
+		var/obj/item/organ/external/affected = owner.legacy_organ_by_zone(parent_organ)
 		if(affected) affected.internal_organs -= src
 
 		forceMove(owner.drop_location())
@@ -779,7 +779,7 @@
 	if(owner)
 		if(ishuman(owner))
 			var/mob/living/carbon/human/H = owner
-			var/obj/item/organ/O = H.get_organ(parent_organ)
+			var/obj/item/organ/O = H.legacy_organ_by_zone(parent_organ)
 			if(forgiving_class)
 				if(O.robotic <= ORGAN_ASSISTED && robotic <= ORGAN_LIFELIKE)	// Parent is organic or assisted, we are at most synthetic.
 					return TRUE

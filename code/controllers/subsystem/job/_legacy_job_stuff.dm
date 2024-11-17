@@ -329,8 +329,8 @@
 			captain_announcement.Announce("All hands, [alt_title ? alt_title : "Facility Director"] [H.real_name] on deck!", new_sound = announce_sound, zlevel = H.z)
 
 	if(istype(H)) //give humans wheelchairs, if they need them.
-		var/obj/item/organ/external/l_foot = H.get_organ("l_foot")
-		var/obj/item/organ/external/r_foot = H.get_organ("r_foot")
+		var/obj/item/organ/external/l_foot = H.legacy_organ_by_zone("l_foot")
+		var/obj/item/organ/external/r_foot = H.legacy_organ_by_zone("r_foot")
 		var/obj/item/storage/S = locate() in H.contents
 		var/obj/item/wheelchair/R
 		if(S)

@@ -29,7 +29,7 @@
 
 		var/obj/item/organ/NewOrgan = new organ_to_implant()
 
-		var/obj/item/organ/external/E = H.get_organ(NewOrgan.parent_organ)
+		var/obj/item/organ/external/E = H.legacy_organ_by_zone(NewOrgan.parent_organ)
 		to_chat(H, "<span class='notice'>You feel a tingling sensation in your [part].</span>")
 		if(E && !(H.internal_organs_by_name[NewOrgan.organ_tag]))
 			spawn(rand(1 SECONDS, 30 SECONDS))
@@ -142,7 +142,7 @@
 				I.parent_organ = BP_L_ARM
 				I.target_slot = /datum/inventory_slot/abstract/hand/left
 
-		. = H.get_organ(I.parent_organ)
+		. = H.legacy_organ_by_zone(I.parent_organ)
 
 /*
  * Limb implant primary subtypes.

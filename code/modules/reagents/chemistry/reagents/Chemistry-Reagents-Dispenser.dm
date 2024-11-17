@@ -221,7 +221,7 @@
 	if(!M.unacidable && removed > 0)
 		if(istype(M, /mob/living/carbon/human) && volume >= meltdose)
 			var/mob/living/carbon/human/H = M
-			var/obj/item/organ/external/affecting = H.get_organ(BP_HEAD)
+			var/obj/item/organ/external/affecting = H.legacy_organ_by_zone(BP_HEAD)
 			if(affecting)
 				affecting.inflict_bodypart_damage(
 					burn = removed * power * 0.1,

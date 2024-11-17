@@ -1,3 +1,12 @@
+/**
+ * Living mobs.
+ *
+ * This is called 'living' but in reality it's just any real lifeform in the world.
+ *
+ * Contains normalized health system simulation and all that.
+ */
+/mob/living
+
 TYPE_REGISTER_SPATIAL_GRID(/mob/living, SSspatial_grids.living)
 /mob/living/Initialize(mapload)
 	. = ..()

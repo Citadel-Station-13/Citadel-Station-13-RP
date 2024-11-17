@@ -35,7 +35,7 @@
 
 		if(ishuman(L))
 			var/mob/living/carbon/human/H = L
-			var/obj/item/organ/external/affected = H.get_organ(check_zone(BP_TORSO))
+			var/obj/item/organ/external/affected = H.legacy_organ_by_zone(check_zone(BP_TORSO))
 			H.electrocute_act(power, src, H.get_siemens_coefficient_organ(affected), affected)
 		else
 			L.electrocute_act(power, src, 0.75, BP_TORSO)

@@ -523,7 +523,7 @@ var/list/wrapped_species_by_ref = list()
 	var/new_transparency = input("Pick a number between 100 and 255, 255 being no transparency.", "Change Transparency") as num|null
 	if(new_transparency)
 		new_transparency = clamp(new_transparency,100,255)
-		var/obj/item/organ/external/head/H = src.get_organ(BP_HEAD)
+		var/obj/item/organ/external/head/H = src.legacy_organ_by_zone(BP_HEAD)
 		H.hair_opacity = new_transparency
 		visible_message(SPAN_NOTICE("\The [src]'s \"hair\" composition seems to change."))
 		update_hair()

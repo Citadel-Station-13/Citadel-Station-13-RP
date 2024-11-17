@@ -235,7 +235,7 @@
 	M.render_spriteacc_tail()
 
 	if(backup_implants.len)
-		var/obj/item/organ/external/torso = M.get_organ(BP_TORSO)
+		var/obj/item/organ/external/torso = M.legacy_organ_by_zone(BP_TORSO)
 		for(var/obj/item/implant/backup/BI in backup_implants)
 			BI.forceMove(torso)
 			torso.implants += BI

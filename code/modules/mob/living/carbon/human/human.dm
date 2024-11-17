@@ -281,7 +281,7 @@
 
 //Returns "Unknown" if facially disfigured and real_name if not. Useful for setting name when polyacided or when updating a human's name variable
 /mob/living/carbon/human/proc/get_face_name()
-	var/obj/item/organ/external/head = get_organ(BP_HEAD)
+	var/obj/item/organ/external/head = legacy_organ_by_zone(BP_HEAD)
 	if(!head || head.disfigured || head.is_stump() || !real_name || (MUTATION_HUSK in mutations) )	//disfigured. use id-name if possible
 		return "Unknown"
 	return real_name
@@ -320,7 +320,7 @@
 			stored_shock_by_ref["\ref[src]"] = shock_damage
 		return
 
-	var/obj/item/organ/external/affected_organ = get_organ(check_zone(def_zone))
+	var/obj/item/organ/external/affected_organ = legacy_organ_by_zone(check_zone(def_zone))
 	var/siemens_coeff = base_siemens_coeff * get_siemens_coefficient_organ(affected_organ)
 	if(fire_stacks < 0) // Water makes you more conductive.
 		siemens_coeff *= 1.5
@@ -688,7 +688,7 @@
 		return 0
 
 	//if the parent organ is significantly larger than the brain organ, then hitting it is not guaranteed
-	var/obj/item/organ/parent = get_organ(target_zone)
+	var/obj/item/organ/parent = legacy_organ_by_zone(target_zone)
 	if(!parent)
 		return 0
 
@@ -751,7 +751,7 @@
 
 /mob/living/carbon/human/check_has_mouth()
 	// Todo, check stomach organ when implemented.
-	var/obj/item/organ/external/head/H = get_organ(BP_HEAD)
+	var/obj/item/organ/external/head/H = legacy_organ_by_zone(BP_HEAD)
 	if(!H || !H.can_intake_reagents)
 		return 0
 	return 1
@@ -1311,7 +1311,7 @@
 		else
 			target_zone = user.zone_sel.selecting
 
-	var/obj/item/organ/external/affecting = get_organ(target_zone)
+	var/obj/item/organ/external/affecting = legacy_organ_by_zone(target_zone)
 	var/fail_msg
 	if(!affecting)
 		. = 0
@@ -1624,7 +1624,7 @@
 	nutrition = clamp(amount, 0, species.max_nutrition * 1.5)
 
 /mob/living/carbon/human/get_bullet_impact_effect_type(var/def_zone)
-	var/obj/item/organ/external/E = get_organ(def_zone)
+	var/obj/item/organ/external/E = legacy_organ_by_zone(def_zone)
 	if(!E || E.is_stump())
 		return BULLET_IMPACT_NONE
 	if(BP_IS_ROBOTIC(E))

@@ -14,7 +14,7 @@
 
 	if (istype(M, /mob/living/carbon/human))
 		var/mob/living/carbon/human/H = M
-		var/obj/item/organ/external/affecting = H.get_organ(src.zone_sel.selecting)
+		var/obj/item/organ/external/affecting = H.legacy_organ_by_zone(src.zone_sel.selecting)
 
 		if(!affecting)
 			to_chat(src, "<span class='warning'>No body part there to work on!</span>")
