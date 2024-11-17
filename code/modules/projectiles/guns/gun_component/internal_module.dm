@@ -20,7 +20,6 @@
 /obj/item/gun_component/internal_module/double_shot
 	name = "AN-94 Fire Controller"
 	desc = /obj/item/gun_component/internal_module::desc + " This will cause the gun to fire one additional round per burst, at the cost of reduced accuracy."
-	component_conflict = GUN_COMPONENT_CONFLICT_BURST_MODIFICATION
 
 	/// angular dispersion to impose on the last round in the burst, and the round we add
 	var/dispersion_amount = 5
@@ -37,7 +36,7 @@
 			// add one iteration
 			cycle.firing_iterations++
 			// force current shot dispersion
-			cycle.next_dispersion += dispersion_amount
+			cycle.next_dispersion_adjust += dispersion_amount
 		if(1)
 			// add dispersion
 			LAZYSET(cycle.blackboard, "an-94-refire-triggered", 2)

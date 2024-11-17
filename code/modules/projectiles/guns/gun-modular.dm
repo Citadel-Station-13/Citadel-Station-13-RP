@@ -20,6 +20,7 @@
 				)
 			return FALSE
 		if((existing.component_type || existing.type) == (component.component_type || component.type))
+			if(!silent)
 				actor?.chat_feedback(
 					SPAN_WARNING("[existing] conflicts with [component] due to being too similar!"),
 					target = src,

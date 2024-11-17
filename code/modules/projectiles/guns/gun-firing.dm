@@ -77,7 +77,7 @@
  * * firer - the thing physically firing us; whether a turret or a person.
  *   this is where the projectile will originate regardles of where the gun actually is!
  * * angle - the angle to fire in.
- * * firing_flags - GUN_FIRING_* flags
+ * * firing_flags - (optional) GUN_FIRING_* flags
  * * firemode - (optional) the /datum/firemode we are firing on
  * * target - (optional) what we're firing at
  * * actor - (optional) the person who initiated the firing

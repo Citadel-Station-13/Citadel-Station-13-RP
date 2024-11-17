@@ -61,8 +61,7 @@
 /obj/item/gun/energy/floragun/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	//allow shooting into adjacent hydrotrays regardless of intent
 	if((clickchain_flags & CLICKCHAIN_HAS_PROXIMITY) && istype(target,/obj/machinery/portable_atmospherics/hydroponics))
-		user.visible_message("<span class='danger'>\The [user] fires \the [src] into \the [target]!</span>")
-		Fire(target,user)
+		start_firing_cycle_async(user, get_centered_entity_angle(user, target), NONE, null, target, new /datum/event_args/actor(user))
 		return
 	..()
 
