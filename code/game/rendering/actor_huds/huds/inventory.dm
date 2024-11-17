@@ -59,7 +59,7 @@
 		if(!item_in_slot)
 			continue
 		add_item(item_in_slot, resolve_inventory_slot(slot_id))
-	var/atom/movable/screen/actor_hud/inventory/plate/hand/active_hand_plate = inventory.owner.active_hand
+	var/atom/movable/screen/actor_hud/inventory/plate/hand/active_hand_plate = hands[inventory.owner.active_hand]
 	active_hand_plate.add_overlay("[active_hand_plate.icon_state]-active")
 
 /datum/actor_hud/inventory/proc/unbind_from_inventory(datum/inventory/inventory)

@@ -209,6 +209,8 @@
 	else
 		I.add_hiddenprint(src)
 
+	return TRUE
+
 /**
  * get something out of our hand
  *
@@ -222,6 +224,8 @@
 
 	I.held_index = null
 	I.unequipped(src, SLOT_ID_HANDS, flags)
+
+	return TRUE
 
 /**
  * handle swapping item from one hand index to another
