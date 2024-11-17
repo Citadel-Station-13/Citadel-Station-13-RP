@@ -70,13 +70,15 @@ LYTHIOS43C_TURF_CREATE_UN(/turf/simulated/mineral/icerock/floor/ignore_cavegen)
 	blocks_air = FALSE
 	can_build_into_floor = TRUE
 	smoothing_groups = (SMOOTH_GROUP_FLOOR_SNOW)
-	SETUP_SMOOTHING()
 	icon = 'icons/turf/flooring/asteroid.dmi'
 	icon_state = "asteroid"
 	color = LIGHT_COLOR_BLUE
-	queue_zone_update()
-	QUEUE_SMOOTH(src)
-	QUEUE_SMOOTH_NEIGHBORS(src)
+	if(atom_flags & ATOM_INITIALIZED)
+		SETUP_SMOOTHING()
+		QUEUE_SMOOTH(src)
+		QUEUE_SMOOTH_NEIGHBORS(src)
+	if(SSair.initialized)
+		queue_zone_update()
 
 /turf/simulated/open/lythios43c
 	edge_blending_priority = 0.5 //Turfs which also have e_b_p and higher than this will plop decorative edges onto this turf
