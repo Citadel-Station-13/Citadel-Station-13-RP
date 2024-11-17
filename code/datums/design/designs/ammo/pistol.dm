@@ -19,41 +19,77 @@
 	design_unlock = DESIGN_UNLOCK_INTRINSIC
 	build_path = /obj/item/ammo_magazine/a44/silver
 
-/datum/prototype/design/ammo/pistol/a45
-	id = "AmmoPistol45"
+/datum/prototype/design/ammo/pistol/a45_double
+	id = "AmmoPistol45Double"
 	lathe_type = LATHE_TYPE_AUTOLATHE
 	design_unlock = DESIGN_UNLOCK_INTRINSIC
-	build_path = /obj/item/ammo_magazine/a45
+	build_path = /obj/item/ammo_magazine/a45/doublestack
 
-/datum/prototype/design/ammo/pistol/a45_hunter
-	id = "AmmoPistol45Hunter"
+/datum/prototype/design/ammo/pistol/a45_double_hunter
+	id = "AmmoPistol45DoubleHunter"
 	lathe_type = LATHE_TYPE_AUTOLATHE
 	design_unlock = DESIGN_UNLOCK_INTRINSIC
-	build_path = /obj/item/ammo_magazine/a45/hunter
+	build_path = /obj/item/ammo_magazine/a45/doublestack/hunter
 
-/datum/prototype/design/ammo/pistol/a45_practice
-	id = "AmmoPistol45Practice"
+/datum/prototype/design/ammo/pistol/a45_double_practice
+	id = "AmmoPistol45DoublePractice"
 	lathe_type = LATHE_TYPE_AUTOLATHE
 	design_unlock = DESIGN_UNLOCK_INTRINSIC
-	build_path = /obj/item/ammo_magazine/a45/practice
+	build_path = /obj/item/ammo_magazine/a45/doublestack/practice
 
-/datum/prototype/design/ammo/pistol/a45_rubber
-	id = "AmmoPistol45Rubber"
+/datum/prototype/design/ammo/pistol/a45_double_rubber
+	id = "AmmoPistol45DoubleRubber"
 	lathe_type = LATHE_TYPE_AUTOLATHE
 	design_unlock = DESIGN_UNLOCK_INTRINSIC
-	build_path = /obj/item/ammo_magazine/a45/rubber
+	build_path = /obj/item/ammo_magazine/a45/doublestack/rubber
 
-/datum/prototype/design/ammo/pistol/a45_flash
-	id = "AmmoPistol45Flash"
+/datum/prototype/design/ammo/pistol/a45_double_flash
+	id = "AmmoPistol45DoubleFlash"
 	lathe_type = LATHE_TYPE_AUTOLATHE
 	design_unlock = DESIGN_UNLOCK_INTRINSIC
-	build_path = /obj/item/ammo_magazine/a45/flash
+	build_path = /obj/item/ammo_magazine/a45/doublestack/flash
 
-/datum/prototype/design/ammo/pistol/a45_silver
-	id = "AmmoPistol45Silver"
+/datum/prototype/design/ammo/pistol/a45_double_silver
+	id = "AmmoPistol45DoubleSilver"
 	lathe_type = LATHE_TYPE_AUTOLATHE
 	design_unlock = DESIGN_UNLOCK_INTRINSIC
-	build_path = /obj/item/ammo_magazine/a45/silver
+	build_path = /obj/item/ammo_magazine/a45/doublestack/silver
+
+/datum/prototype/design/ammo/pistol/a45_single
+	id = "AmmoPistol45Single"
+	lathe_type = LATHE_TYPE_AUTOLATHE
+	design_unlock = DESIGN_UNLOCK_INTRINSIC
+	build_path = /obj/item/ammo_magazine/a45/singlestack
+
+/datum/prototype/design/ammo/pistol/a45_single_hunter
+	id = "AmmoPistol45SingleHunter"
+	lathe_type = LATHE_TYPE_AUTOLATHE
+	design_unlock = DESIGN_UNLOCK_INTRINSIC
+	build_path = /obj/item/ammo_magazine/a45/singlestack/hunter
+
+/datum/prototype/design/ammo/pistol/a45_single_practice
+	id = "AmmoPistol45SinglePractice"
+	lathe_type = LATHE_TYPE_AUTOLATHE
+	design_unlock = DESIGN_UNLOCK_INTRINSIC
+	build_path = /obj/item/ammo_magazine/a45/singlestack/practice
+
+/datum/prototype/design/ammo/pistol/a45_single_rubber
+	id = "AmmoPistol45SingleRubber"
+	lathe_type = LATHE_TYPE_AUTOLATHE
+	design_unlock = DESIGN_UNLOCK_INTRINSIC
+	build_path = /obj/item/ammo_magazine/a45/singlestack/rubber
+
+/datum/prototype/design/ammo/pistol/a45_single_flash
+	id = "AmmoPistol45SingleFlash"
+	lathe_type = LATHE_TYPE_AUTOLATHE
+	design_unlock = DESIGN_UNLOCK_INTRINSIC
+	build_path = /obj/item/ammo_magazine/a45/singlestack/flash
+
+/datum/prototype/design/ammo/pistol/a45_single_silver
+	id = "AmmoPistol45SingleSilver"
+	lathe_type = LATHE_TYPE_AUTOLATHE
+	design_unlock = DESIGN_UNLOCK_INTRINSIC
+	build_path = /obj/item/ammo_magazine/a45/singlestack/silver
 
 
 /datum/prototype/design/ammo/pistol/a45_uzi
