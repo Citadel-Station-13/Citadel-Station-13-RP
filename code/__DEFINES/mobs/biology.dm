@@ -1,7 +1,7 @@
 //* This file is explicitly licensed under the MIT license. *//
-//* Copyright (c) 2024 silicons                             *//
+//* Copyright (c) 2024 Citadel Station Developers           *//
 
-//* biology flags
+//* biology flags *//
 
 /// humanlike, organic, normal biology
 #define BIOLOGY_TYPE_HUMAN (1<<0)

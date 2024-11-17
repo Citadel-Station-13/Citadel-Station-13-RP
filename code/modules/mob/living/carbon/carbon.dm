@@ -5,21 +5,25 @@
  */
 /mob/living/carbon
 	//* Organs *//
-	/// All internal organs.
+	/// All /obj/item/organ/internal.
 	var/list/obj/item/organ/internal/internal_organs = list()
-	/// All external organs.
+	/// All /obj/item/organ/external.
 	var/list/obj/item/organ/external/external_organs = list()
 	/// Keyed organs.
 	///
-	/// Allowed usages:
+	/// Things to keep in mind:
+	/// * An organ being in this list usually but not always means it's the only organ of that key in us.
+	///   This is why you shouldn't use this instead of helper procs; organ semnatics are complex and is definitely
+	///   handled by the organ itself. Global rules for what can/can't happen are rare.
 	///
+	/// Allowed usages:
 	/// * Directly accessing an organ by key.
 	///
 	/// Disallowed usages:
-	///
 	/// * Accessing an organ by **targeting zone.** Despite targeting zone being the same BP_* keys as
 	///   the ones we're using here, we do internal transforms and translations to translate from the
 	///   targeting doll to the real organ.
+	/// * Pretty much any other use case.
 	///
 	/// If you're using it for some other reason, you should consider using or making a helper instead.
 	var/list/keyed_organs = list()
@@ -34,6 +38,18 @@
 	if (!default_language && species_language)
 		default_language = SScharacters.resolve_language_name(species_language)
 
+/mob/living/carbon/Destroy()
+	QDEL_LIST(internal_organs)
+	QDEL_LIST(external_organs)
+	qdel(ingested)
+	qdel(touching)
+	// We don't qdel(bloodstr) because it's the same as qdel(reagents)
+	for(var/guts in internal_organs)
+		qdel(guts)
+	for(var/food in stomach_contents)
+		qdel(food)
+	return ..()
+
 /mob/living/carbon/BiologicalLife(seconds, times_fired)
 	if((. = ..()))
 		return
@@ -43,16 +59,6 @@
 	// Increase germ_level regularly
 	if(germ_level < GERM_LEVEL_AMBIENT && prob(30))	//if you're just standing there, you shouldn't get more germs beyond an ambient level
 		germ_level++
-
-/mob/living/carbon/Destroy()
-	qdel(ingested)
-	qdel(touching)
-	// We don't qdel(bloodstr) because it's the same as qdel(reagents)
-	for(var/guts in internal_organs)
-		qdel(guts)
-	for(var/food in stomach_contents)
-		qdel(food)
-	return ..()
 
 /mob/living/carbon/gib()
 	for(var/mob/M in src)

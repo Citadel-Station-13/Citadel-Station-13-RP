@@ -27,8 +27,6 @@
 
 	/// Does it gib when butchered?
 	var/gib_on_butchery = FALSE
-	/// Does it drop or spawn in organs to drop when butchered?
-	var/butchery_drops_organs = TRUE
 	/// Associated list, path = number.
 	var/list/butchery_loot
 

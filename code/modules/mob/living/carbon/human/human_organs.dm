@@ -5,27 +5,10 @@
 	var/obj/item/organ/external/O = organs_by_name[name]
 	return (O && !O.is_stump())
 
-/mob/living/carbon/human/proc/recheck_bad_external_organs()
-	var/damage_this_tick = getToxLoss()
-	for(var/obj/item/organ/external/O in organs)
-		damage_this_tick += O.burn_dam + O.brute_dam
-		if(O.germ_level)
-			damage_this_tick += 1 //Just tap it if we have germs so we can process those
 
-	if(damage_this_tick > last_dam)
-		. = TRUE
-	last_dam = damage_this_tick
-
+#warn /carbon-ize() this
 // Takes care of organ related updates, such as broken and missing limbs
 /mob/living/carbon/human/proc/handle_organs(dt)
-
-	var/force_process = recheck_bad_external_organs()
-
-	if(force_process)
-		bad_external_organs.Cut()
-		for(var/obj/item/organ/external/Ex in organs)
-			bad_external_organs += Ex
-
 	//processing internal organs is pretty cheap, do that first.
 	if(STAT_IS_DEAD(stat))
 		//todo: internal organs list when zandario fixes it lmao
@@ -38,10 +21,6 @@
 	handle_stance()
 	handle_grasp()
 
-	if(!force_process && !bad_external_organs.len)
-		return
-
-	wound_tally = 0 // You have to reduce this at some point...
 	for(var/obj/item/organ/external/E in bad_external_organs)
 		if(!E)
 			continue
