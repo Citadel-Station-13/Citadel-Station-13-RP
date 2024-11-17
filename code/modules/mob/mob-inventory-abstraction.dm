@@ -242,3 +242,7 @@
 	I.held_index = index
 	inventory.on_item_swapped(I, old_index, index)
 
+
+	if(!(flags & INV_OP_NO_UPDATE_ICONS))
+		update_inv_hand(old_index)
+		update_inv_hand(index)
