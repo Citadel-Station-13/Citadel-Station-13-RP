@@ -225,6 +225,9 @@
 	I.held_index = null
 	I.unequipped(src, SLOT_ID_HANDS, flags)
 
+	if(!(flags & INV_OP_NO_UPDATE_ICONS))
+		update_inv_hand(index)
+
 	return TRUE
 
 /**
