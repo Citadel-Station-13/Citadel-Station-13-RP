@@ -189,5 +189,6 @@
 	client?.actor_huds?.inventory?.swap_active_hand(old_index, to_index)
 
 	//! LEGACY
-	was_active?.zoom()
+	if(was_active.zoom)
+		was_active?.zoom()
 	//! End
