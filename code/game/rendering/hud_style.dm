@@ -13,7 +13,7 @@ GLOBAL_LIST_INIT(hud_styles, init_hud_styles())
 /proc/legacy_find_hud_style_by_name(name)
 	for(var/id in GLOB.hud_styles)
 		var/datum/hud_style/style = GLOB.hud_styles[id]
-		if(lowertext(style.name) == lowertext(name))
+		if(lowertext(style.name) == lowertext(name) || lowertext(style.id) == lowertext(name))
 			return style
 
 /**
