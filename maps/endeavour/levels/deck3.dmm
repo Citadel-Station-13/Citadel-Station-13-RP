@@ -1828,8 +1828,7 @@
 	},
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/machinery/disposal,
-/obj/item/barrier_tape_segment/engineering,
-/obj/structure/disposalpipe/up{
+/obj/structure/disposalpipe/trunk{
 	dir = 8
 	},
 /turf/simulated/floor/tiled,
@@ -4334,16 +4333,12 @@
 /turf/simulated/floor/tiled/dark,
 /area/security/range)
 "dqu" = (
-/obj/structure/cable{
-	icon_state = "1-2"
+/obj/effect/floor_decal/industrial/hatch/yellow,
+/obj/structure/lattice,
+/obj/structure/disposalpipe/down{
+	dir = 8
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/structure/disposalpipe/segment{
-	dir = 1;
-	icon_state = "pipe-c"
-	},
-/turf/simulated/floor/plating,
+/turf/simulated/open,
 /area/endeavour/hallway/d3aftmaint)
 "dqN" = (
 /obj/machinery/recharger/wallcharger{
@@ -5767,6 +5762,9 @@
 	dir = 4
 	},
 /obj/machinery/camera/network/security,
+/obj/structure/disposalpipe/segment{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/dark,
 /area/security/hallway)
 "esa" = (
@@ -7275,9 +7273,6 @@
 "flh" = (
 /obj/machinery/door/airlock/maintenance,
 /obj/map_helper/access_helper/airlock/station/engineering/department,
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
 /obj/machinery/door/firedoor{
 	dir = 8
 	},
@@ -8566,7 +8561,7 @@
 /area/crew_quarters/sleep/bedrooms)
 "ghV" = (
 /obj/machinery/disposal,
-/obj/structure/disposalpipe/up{
+/obj/structure/disposalpipe/trunk{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/dark,
@@ -8688,6 +8683,9 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 1
 	},
+/obj/structure/disposalpipe/segment{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/dark,
 /area/security/hallway)
 "gmZ" = (
@@ -8700,6 +8698,10 @@
 "gnm" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/effect/floor_decal/industrial/hatch/yellow,
+/obj/structure/disposalpipe/up{
+	dir = 4
+	},
 /turf/simulated/floor/plating,
 /area/endeavour/hallway/d3aftmaint)
 "gnO" = (
@@ -9445,6 +9447,19 @@
 	},
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d3starboardamidhall)
+"gUM" = (
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment,
+/turf/simulated/floor/plating,
+/area/endeavour/hallway/d3aftmaint)
 "gVa" = (
 /obj/machinery/holopad/ship,
 /turf/simulated/floor/wood,
@@ -11035,7 +11050,7 @@
 /area/space)
 "ili" = (
 /obj/machinery/disposal,
-/obj/structure/disposalpipe/up,
+/obj/structure/disposalpipe/trunk,
 /turf/simulated/floor/wood,
 /area/crew_quarters/recreation_area)
 "ilD" = (
@@ -13502,6 +13517,10 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
+/obj/structure/disposalpipe/segment{
+	dir = 8;
+	icon_state = "pipe-c"
+	},
 /turf/simulated/floor/tiled/dark,
 /area/security/hallway)
 "klp" = (
@@ -14155,6 +14174,9 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 8
 	},
+/obj/structure/disposalpipe/segment{
+	dir = 8
+	},
 /turf/simulated/floor/plating,
 /area/endeavour/hallway/d3aftmaint)
 "kPT" = (
@@ -14760,6 +14782,7 @@
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply,
+/obj/structure/disposalpipe/segment,
 /turf/simulated/floor/plating,
 /area/endeavour/hallway/d3aftmaint)
 "lnD" = (
@@ -17313,7 +17336,7 @@
 	dir = 4
 	},
 /obj/machinery/disposal,
-/obj/structure/disposalpipe/up{
+/obj/structure/disposalpipe/trunk{
 	dir = 8
 	},
 /turf/simulated/floor/wood,
@@ -17813,6 +17836,27 @@
 	},
 /turf/simulated/floor/carpet,
 /area/security/detectives_office)
+"nIT" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/red/border{
+	dir = 1
+	},
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/dark,
+/area/security/hallway)
 "nJb" = (
 /obj/structure/table/rack/steel,
 /obj/item/instrument/violin,
@@ -18745,6 +18789,13 @@
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/crew_quarters/kitchen)
+"olW" = (
+/obj/structure/cable/orange{
+	icon_state = "1-8"
+	},
+/obj/structure/disposalpipe/segment,
+/turf/simulated/floor/plating,
+/area/endeavour/hallway/d3aftmaint)
 "oms" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -20110,15 +20161,15 @@
 /turf/simulated/wall/prepainted/civilian,
 /area/crew_quarters/kitchen)
 "piz" = (
-/obj/structure/disposalpipe/segment{
-	dir = 1;
-	icon_state = "pipe-c"
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 8;
+	icon_state = "pipe-c"
 	},
 /turf/simulated/floor/plating,
 /area/endeavour/hallway/d3aftmaint)
@@ -23039,7 +23090,7 @@
 	pixel_y = -31
 	},
 /obj/machinery/disposal,
-/obj/structure/disposalpipe/up{
+/obj/structure/disposalpipe/trunk{
 	dir = 8
 	},
 /turf/simulated/floor/tiled,
@@ -24285,6 +24336,10 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
+/obj/structure/disposalpipe/segment{
+	dir = 1;
+	icon_state = "pipe-c"
+	},
 /turf/simulated/floor/tiled/dark,
 /area/security/hallway)
 "smo" = (
@@ -25432,7 +25487,7 @@
 	icon_state = "1-4"
 	},
 /obj/machinery/disposal,
-/obj/structure/disposalpipe/up{
+/obj/structure/disposalpipe/trunk{
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
@@ -27192,6 +27247,9 @@
 /obj/structure/cable/orange{
 	icon_state = "4-8"
 	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
 /turf/simulated/floor/plating,
 /area/endeavour/hallway/d3aftmaint)
 "urn" = (
@@ -28274,6 +28332,7 @@
 /obj/structure/cable/orange{
 	icon_state = "1-2"
 	},
+/obj/structure/disposalpipe/segment,
 /turf/simulated/floor/plating,
 /area/endeavour/hallway/d3aftmaint)
 "vhK" = (
@@ -28535,6 +28594,13 @@
 	},
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d3starboardforhall)
+"vog" = (
+/obj/structure/cable/orange{
+	icon_state = "1-2"
+	},
+/obj/structure/disposalpipe/segment,
+/turf/simulated/floor/plating,
+/area/endeavour/hallway/d3aftmaint)
 "vom" = (
 /obj/effect/floor_decal/corner/red{
 	dir = 6
@@ -28706,8 +28772,7 @@
 "vqE" = (
 /obj/structure/disposalpipe/up,
 /obj/effect/floor_decal/industrial/warning/full,
-/obj/structure/lattice,
-/turf/simulated/open,
+/turf/simulated/floor/plating,
 /area/endeavour/hallway/d3aftmaint)
 "vrD" = (
 /obj/structure/bed/chair/comfy/teal{
@@ -29694,6 +29759,10 @@
 "vWK" = (
 /obj/structure/cable/orange{
 	icon_state = "2-4"
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4;
+	icon_state = "pipe-c"
 	},
 /turf/simulated/floor/plating,
 /area/endeavour/hallway/d3aftmaint)
@@ -31031,6 +31100,7 @@
 	name = "Security Blast Doors";
 	opacity = 0
 	},
+/obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled/dark,
 /area/security/hallway)
 "xdM" = (
@@ -31660,9 +31730,6 @@
 "xCO" = (
 /obj/machinery/disposal/deliveryChute{
 	dir = 8
-	},
-/obj/structure/disposalpipe/up{
-	dir = 4
 	},
 /obj/structure/plasticflaps,
 /turf/simulated/floor/plating,
@@ -43185,11 +43252,11 @@ dMA
 dMA
 dMA
 dMA
-dqu
-msG
+dMA
+dMA
 lnp
-kSn
-kSn
+aMa
+aMa
 xcs
 sma
 vBk
@@ -43379,13 +43446,13 @@ bUP
 kSn
 kSn
 kSn
-uMp
+kSn
 kSn
 cxF
 kSn
 kSn
 daG
-sma
+nIT
 vBk
 wCM
 wCM
@@ -43958,13 +44025,13 @@ xPB
 hLo
 uQr
 vWK
-mpA
+vog
 vhc
-ars
-kSn
-kSn
-boj
-kSn
+olW
+aMa
+aMa
+gUM
+aQM
 eLo
 oSr
 klc
@@ -44353,7 +44420,7 @@ iil
 pNn
 lWb
 piz
-gLw
+dqu
 qVZ
 mWx
 xXJ
