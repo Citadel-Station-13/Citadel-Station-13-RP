@@ -84,10 +84,14 @@
 	/// These flags are listed in [code/__DEFINES/_flags/interaction_flags.dm]
 	var/interaction_flags_item = INTERACT_ITEM_ATTACK_SELF
 
-	//* Inventory - Main
+	//* Inventory *//
 	/// currently equipped slot id
+	///
+	/// todo: `worn_slot_or_index`
 	var/worn_slot
 	/// current hand index, if held in hand
+	///
+	/// todo: `worn_slot_or_index`
 	var/held_index
 	/**
 	 * current item we fitted over

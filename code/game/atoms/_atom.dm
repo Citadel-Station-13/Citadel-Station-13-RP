@@ -913,6 +913,7 @@
 	// base layer being null isn't
 	layer = base_layer + 0.001 * relative_layer
 
+// todo: deprecate this
 /atom/proc/hud_layerise()
 	plane = INVENTORY_PLANE
 	set_base_layer(HUD_LAYER_ITEM)

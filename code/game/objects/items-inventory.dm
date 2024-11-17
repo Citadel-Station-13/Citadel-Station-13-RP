@@ -142,7 +142,6 @@
 
 	//! LEGACY
 	reset_pixel_offsets()
-	hud_layerise()
 	// todo: should this be here
 	transform = null
 	if(isturf(oldLoc) && !(flags & (INV_OP_SILENT | INV_OP_DIRECTLY_EQUIPPING)))
