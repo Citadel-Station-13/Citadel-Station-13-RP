@@ -52,20 +52,20 @@ CREATE_STANDARD_TURFS(/turf/simulated/mineral)
 
 CREATE_STANDARD_TURFS(/turf/simulated/mineral/rich)
 /turf/simulated/mineral/rich
-	//Placeholder, go to the oregen stuff at the bottom to see the oregen weight
 
-// Alternatives that ignore ore_gen and cavegen
+CREATE_STANDARD_TURFS(/turf/simulated/mineral/ignore_oregen)
 /turf/simulated/mineral/ignore_oregen
 	ignore_oregen = TRUE
 
-CREATE_STANDARD_TURFS(/turf/simulated/mineral/ignore_oregen)
+CREATE_STANDARD_TURFS(/turf/simulated/mineral/floor/ignore_oregen)
 /turf/simulated/mineral/floor/ignore_oregen
 	ignore_oregen = TRUE
 
+CREATE_STANDARD_TURFS(/turf/simulated/mineral/ignore_cavegen)
 /turf/simulated/mineral/ignore_cavegen
 	ignore_cavegen = TRUE
 
-CREATE_STANDARD_TURFS(/turf/simulated/mineral/ignore_cavegen)
+CREATE_STANDARD_TURFS(/turf/simulated/mineral/floor/ignore_cavegen)
 /turf/simulated/mineral/floor/ignore_cavegen
 	ignore_cavegen = TRUE
 
@@ -73,20 +73,13 @@ CREATE_STANDARD_TURFS(/turf/simulated/mineral/floor/ignore_cavegen)
 /turf/simulated/mineral/floor/ignore_cavegen/has_air
 	initial_gas_mix = GAS_STRING_STP
 
-/turf/simulated/mineral/floor/indoors
-	outdoors = FALSE
-	name = "Depreciated, tell a mapper if you see this"
-	icon_state = ""
-
+CREATE_STANDARD_TURFS(/turf/simulated/mineral/icerock/ignore_cavegen)
 /turf/simulated/mineral/icerock/ignore_cavegen
 	ignore_cavegen = TRUE
 
+CREATE_STANDARD_TURFS(/turf/simulated/mineral/icerock/floor/ignore_cavegen)
 /turf/simulated/mineral/icerock/floor/ignore_cavegen
 	ignore_cavegen = TRUE
-
-/turf/simulated/mineral/icerock/floor/ignore_cavegen/indoors
-	outdoors = FALSE
-
 
 // Alternative rock wall sprites.
 /turf/simulated/mineral/light

@@ -4,6 +4,8 @@
 	icon_state = "away"
 	requires_power = 1
 	dynamic_lighting = 1
+	initial_outdoors = TRUE
+	initial_gas_mix = ATMOSPHERE_USE_OUTDOORS
 
 /area/sector/surt/horrors
 	name = "Lava Land - Horrors"
@@ -20,14 +22,6 @@
 /area/sector/surt/bosses
 	name = "Lava Land - Boss"
 	requires_power = 0
-
-/area/sector/surt/central/base
-	name = "Lava Land (Center) - Mining Base"
-	icon_state = "green"
-
-/area/sector/surt/central/base/common
-	name = "Lava Land (Center) - Mining Base"
-	icon_state = "blue"
 
 /area/sector/surt/central/explored
 	name = "Lava Land (Center) - Thoroughfare"
@@ -86,28 +80,6 @@
 	icon_state = "red"
 	ambience = AMBIENCE_LAVA
 
-//These were from the Colony Event. Just holding onto them for now.
-/*
-/area/sector/surt/east/colony
-	name = "Lava Land (East) - Colony"
-	icon_state = "blue"
-
-/area/sector/surt/east/lab
-	name = "Lava Land (East) - S4"
-
-/area/sector/surt/east/lab/core
-	name = "Lava Land (East) - S4"
-	icon_state = "blue"
-
-/area/sector/surt/east/lab/containment
-	name = "Lava Land (East) - S4 Containment"
-	icon_state = "blue"
-
-/area/sector/surt/east/lab/bunker
-	name = "Lava Land (East) - S4 Bunker"
-	icon_state = "blue"
-*/
-
 /area/sector/surt/west/unexplored
 	name = "Lava Land (West) - Unknown"
 	icon_state = "yellow"
@@ -119,4 +91,16 @@
 
 /area/sector/surt/dungeon/facility
 	name = "Lava Land (Dungeon) - Pump Facility"
+	icon_state = "blue"
+
+//* Mining Base *//
+
+/area/sector/surt/mining_base
+	name = "Lava Land (Center) - Mining Base"
+	icon_state = "green"
+	initial_outdoors = FALSE
+	initial_gas_mix = GAS_STRING_STP
+
+/area/sector/surt/mining_base/common
+	name = "Lava Land (Center) - Mining Base"
 	icon_state = "blue"
