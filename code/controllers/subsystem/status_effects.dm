@@ -1,6 +1,6 @@
 SUBSYSTEM_DEF(status_effects)
 	wait = 0.5
-	subsystem_flags = NONE
+	subsystem_flags = SS_NO_INIT
 	name = "Status Effects"
 
 	/// ticking effects

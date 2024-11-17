@@ -1,7 +1,7 @@
 SUBSYSTEM_DEF(inactivity)
-	name = "AFK Kick"
+	name = "Inactivity"
 	wait = 600
-	subsystem_flags = SS_BACKGROUND | SS_NO_TICK_CHECK
+	subsystem_flags = SS_BACKGROUND | SS_NO_TICK_CHECK | SS_NO_INIT
 
 /datum/controller/subsystem/inactivity/fire()
 	if(config_legacy.kick_inactive)
