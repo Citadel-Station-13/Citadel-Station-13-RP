@@ -55,6 +55,8 @@
 
 /**
  * get angle from center of bounding box of entity A to entity B
+ *
+ * * entity A and entity B may be atoms or movables or both
  */
 /proc/get_centered_entity_angle(atom/A, atom/B)
 	var/dy

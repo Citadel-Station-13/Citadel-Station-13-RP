@@ -45,24 +45,12 @@
 	if(!(item_flags & ITEM_MULTIHAND_WIELDED))
 		mult *= unwielded_force_multiplier
 
-/obj/item/material/twohanded/update_held_icon()
-	var/mob/living/M = loc
-	if(istype(M) && M.can_wield_item(src) && is_held_twohanded(M))
-		wielded = 1
-		name = "[base_name] (wielded)"
-	else
-		wielded = 0
-		name = "[base_name]"
-	update_icon()
-	update_material_parts()
-	..()
-
 /obj/item/material/twohanded/Initialize(mapload, material_key)
 	. = ..()
 	update_icon()
 
 /obj/item/material/twohanded/update_icon()
-	icon_state = "[base_icon][wielded]"
+	icon_state = "[base_icon][!!(item_flags & ITEM_MULTIHAND_WIELDED)]"
 	item_state = icon_state
 
 /*

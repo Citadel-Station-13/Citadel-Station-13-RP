@@ -7,6 +7,4 @@
 	icon = 'icons/modules/projectiles/components/focusing_lens.dmi'
 	component_slot = GUN_COMPONENT_FOCUSING_LENS
 
-#warn impl all
-
 // TODO: This file is mostly stubs and WIPs.

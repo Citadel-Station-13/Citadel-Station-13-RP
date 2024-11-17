@@ -23,8 +23,7 @@
 	var/held_twohanded = TRUE
 	if(ismob(cycle.firing_atom))
 		var/mob/mob_firer = cycle.firing_atom
-		// todo: proper twohanding system
-		held_twohanded = mob_firer.can_wield_item(src) && is_held_twohanded(mob_firer)
+		held_twohanded = item_flags & ITEM_MULTIHAND_WIELDED
 		mob_firer.break_cloak()
 
 	// point of no return
