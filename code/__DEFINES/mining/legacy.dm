@@ -11,7 +11,7 @@
 		/datum/ore/gold::name = 8 + rare * 1,
 		/datum/ore/diamond::name = 2 + rare * 3,
 		/datum/ore/platinum::name = 3 + rare * 3,
-		/datum/ore/verdantium::name  1 + rare * 3,
+		/datum/ore/verdantium::name = 1 + rare * 3,
 		/datum/ore/lead::name = 4,
 		/datum/ore/copper::name = 6,
 	)
