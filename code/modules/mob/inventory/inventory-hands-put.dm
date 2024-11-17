@@ -13,7 +13,13 @@
 /mob/proc/put_in_hand(obj/item/I, index, inv_op_flags)
 	return inventory?.put_in_hand(I, index, inv_op_flags)
 
-/datum/inventory/proc/put_in_hands(obj/item/I, inv_op_flags, prioritize_index)
+/**
+ * @params
+ * * I - the item
+ * * inv_op_flags - inventory operation flags
+ * * prioritize_index - try that index first; defaults to the inventory owner's active hand, if any. set to `0` (not null!) to prioritize none.
+ */
+/datum/inventory/proc/put_in_hands(obj/item/I, inv_op_flags, prioritize_index = owner.acitve_hand)
 	if(is_holding(I))
 		return INV_RETURN_SUCCESS
 
@@ -42,6 +48,12 @@
 
 	return INV_RETURN_FAILED
 
+/**
+ * @params
+ * * I - the item
+ * * inv_op_flags - inventory operation flags
+ * * prioritize_index - try that index first; defaults to the inventory owner's active hand, if any. set to `0` (not null!) to prioritize none.
+ */
 /mob/proc/put_in_hands(obj/item/I, inv_op_flags, prioritize_index)
 	return inventory?.put_in_hands(I, inv_op_flags, prioritize_index)
 
