@@ -22,7 +22,7 @@
 /datum/map_level/sector/roguemining_140/one
 	id = "Roguemining1"
 	name = "Roguemining - Allocation 1"
-	absolute_path = "maps/sectors/roguemining_140/levels/roguemining_140_1.dmm"
+	path = "maps/sectors/roguemining_140/levels/roguemining_140_1.dmm"
 	traits = list(
 		ZTRAIT_LEGACY_BELTER_ACTIVE,
 	)
@@ -37,7 +37,7 @@
 /datum/map_level/sector/roguemining_140/two
 	id = "Roguemining2"
 	name = "Roguemining - Allocation 2"
-	absolute_path = "maps/sectors/roguemining_140/levels/roguemining_140_2.dmm"
+	path = "maps/sectors/roguemining_140/levels/roguemining_140_2.dmm"
 	traits = list(
 		ZTRAIT_LEGACY_BELTER_ACTIVE,
 	)
@@ -52,7 +52,7 @@
 /datum/map_level/sector/roguemining_140/three
 	id = "Roguemining3"
 	name = "Roguemining - Allocation 3"
-	absolute_path = "maps/sectors/roguemining_140/levels/roguemining_140_3.dmm"
+	path = "maps/sectors/roguemining_140/levels/roguemining_140_3.dmm"
 	traits = list(
 		ZTRAIT_LEGACY_BELTER_ACTIVE,
 	)
@@ -67,7 +67,7 @@
 /datum/map_level/sector/roguemining_140/four
 	id = "Roguemining4"
 	name = "Roguemining - Allocation 4"
-	absolute_path = "maps/sectors/roguemining_140/levels/roguemining_140_4.dmm"
+	path = "maps/sectors/roguemining_140/levels/roguemining_140_4.dmm"
 	traits = list(
 		ZTRAIT_LEGACY_BELTER_ACTIVE,
 	)

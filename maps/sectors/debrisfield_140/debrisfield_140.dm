@@ -11,7 +11,7 @@
 	id = "Debrisfield140"
 	name = "Sector - Debris Field"
 	display_name = "Debris Field"
-	absolute_path = "maps/sectors/debrisfield_140/levels/debrisfield.dmm"
+	path = "maps/sectors/debrisfield_140/levels/debrisfield.dmm"
 	base_turf = /turf/space
 	base_area = /area/space
 

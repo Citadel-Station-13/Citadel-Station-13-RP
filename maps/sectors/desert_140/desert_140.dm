@@ -11,7 +11,7 @@
 	id = "DesertWorld140"
 	name = "Sector - Desert World"
 	display_name = "Class-H Desert World"
-	absolute_path = "maps/sectors/desert_140/levels/desert_140.dmm"
+	path = "maps/sectors/desert_140/levels/desert_140.dmm"
 	base_turf = /turf/simulated/floor/outdoors/beach/sand/lowdesert
 	base_area = /area/class_h/unexplored
 	traits = list(

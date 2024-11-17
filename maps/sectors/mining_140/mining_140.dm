@@ -11,7 +11,7 @@
 	id = "MiningWorld140"
 	name = "Sector - Mining World"
 	display_name = "Class-G Mineral Rich Planet"
-	absolute_path = "maps/sectors/mining_140/levels/mining_140.dmm"
+	path = "maps/sectors/mining_140/levels/mining_140.dmm"
 	traits = list(
 		ZTRAIT_GRAVITY,
 	)

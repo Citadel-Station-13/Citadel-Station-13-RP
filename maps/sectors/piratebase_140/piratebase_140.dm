@@ -11,4 +11,4 @@
 	id = "Piratebase140"
 	name = "Sector - Pirate Base"
 	display_name = "Unknown Outpost"
-	absolute_path = "maps/sectors/piratebase_140/levels/piratebase_140.dmm"
+	path = "maps/sectors/piratebase_140/levels/piratebase_140.dmm"
