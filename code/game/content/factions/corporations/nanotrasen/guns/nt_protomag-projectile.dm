@@ -1,17 +1,23 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
+/image/projectile/nt_protomag_emissive
+	icon_state = "kinetic-emissive"
+	plane = EMISSIVE_PLANE
+	layer = MANGLE_PLANE_AND_LAYER(/obj/projectile/nt_protomag::plane, /obj/projectile/nt_protomag::layer)
+
 /obj/projectile/nt_protomag
 	abstract_type = /obj/projectile/nt_protomag
 	icon = 'icons/content/factions/corporations/nanotrasen/items/guns/protomag/projectile.dmi'
 	icon_state = "kinetic"
 	overlays = list(
 		/image{
-			icon_state = "kinetic-emissive";
-			plane = EMISSIVE_PLANE;
-			layer = MANGLE_PLANE_AND_LAYER(/obj/projectile/nt_protomag::plane, /obj/projectile/nt_protomag::layer);
 		}
 	)
+
+/obj/projectile/nt_protomag/Initialize(mapload)
+	. = ..()
+	add_overlay(/image/projectile/nt_protomag_emissive)
 
 /obj/projectile/nt_protomag/standard
 	name = "magnetic slug"
