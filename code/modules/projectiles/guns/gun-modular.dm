@@ -8,8 +8,24 @@
  */
 /obj/item/gun/proc/can_install_component(obj/item/gun_component/component, datum/event_args/actor/actor, silent, force)
 	SHOULD_NOT_OVERRIDE(TRUE)
-	var/is_full = FALSE
-	#warn slot enforcement
+	var/count_for_slot = 1 // 1 because we're adding one
+	for(var/obj/item/gun_component/existing in modular_components)
+		if(existing.component_slot == component.component_slot)
+			count_for_slot++
+		if(existing.component_conflict & component.component_conflict)
+			if(!silent)
+				actor?.chat_feedback(
+					SPAN_WARNING("[existing] conflicts with [component] due to being too similar!"),
+					target = src,
+				)
+			return FALSE
+		if((existing.component_type || existing.type) == (component.component_type || component.type))
+				actor?.chat_feedback(
+					SPAN_WARNING("[existing] conflicts with [component] due to being too similar!"),
+					target = src,
+				)
+			return FALSE
+	var/is_full = (count_for_slot >= modular_component_slots?[component.component_slot])
 	return force || component.fits_on_gun(src, fits_modular_component(component), is_full, actor, silent)
 
 /**
@@ -29,7 +45,7 @@
 /**
  * * deletes the component if no location is provided to move it to
  */
-/obj/item/gun/proc/detach_modular_component(obj/item/gun_component/component, datum/event_args/actor/actor, silent, atom/new_loc)
+/obj/item/gun/proc/detach_modular_component(obj/item/gun_component/component, datum/event_args/actor/actor, silent, force, atom/new_loc)
 	#warn impl
 
 #warn hook everything in attackby's

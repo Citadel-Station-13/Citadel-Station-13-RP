@@ -537,7 +537,7 @@
 		return damage_force
 	return 0
 
-#warn translucde into guns
+#warn deal with this
 /**
  * i hate everything
  *
@@ -591,7 +591,6 @@
 					SM.dispersion = rand(temp_min_spread, submunition_spread_max) / 10
 					SM.launch_projectile(target, target_zone, user, params, angle_override)
 
-#warn is this needed
 /obj/projectile/proc/launch_projectile(atom/target, target_zone, mob/user, params, angle_override, forced_spread = 0)
 	var/direct_target
 	if(get_turf(target) == get_turf(src))
@@ -601,7 +600,6 @@
 	launch_projectile_common(target, target_zone, user, params, angle_override, forced_spread)
 	return fire(angle_override, direct_target)
 
-#warn is this needed
 /obj/projectile/proc/launch_projectile_from_turf(atom/target, target_zone, mob/user, params, angle_override, forced_spread = 0)
 	var/direct_target
 	if(get_turf(target) == get_turf(src))

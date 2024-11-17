@@ -481,6 +481,7 @@
 	if(istype(using, /obj/item/gun_attachment))
 		user_install_attachment(using, e_args)
 		return CLICKCHAIN_DO_NOT_PROPAGATE
+	#warn gun component attach
 
 /obj/item/gun/attackby(obj/item/I, mob/living/user, list/params, clickchain_flags, damage_multiplier)
 	if(I.is_multitool())
@@ -531,21 +532,6 @@
 /obj/item/gun/emag_act(var/remaining_charges, var/mob/user)
 	if(pin)
 		pin.emag_act(remaining_charges, user)
-
-/obj/item/gun/proc/Fire(atom/target, mob/living/user, clickparams, pointblank=0, reflex=0)
-	SHOULD_NOT_OVERRIDE(TRUE)
-
-	for(var/i in 1 to burst)
-		#warn this
-		if(process_projectile(projectile, user, target, user.zone_sel.selecting, clickparams))
-
-	var/target_for_log
-	if(ismob(target))
-		target_for_log = target
-	else
-		target_for_log = "[target.name]"
-
-	add_attack_logs(user,target_for_log,"Fired gun [src.name] ([reflex ? "REFLEX" : "MANUAL"])")
 
 /obj/item/gun/proc/handle_click_safety(mob/user)
 	user.visible_message(SPAN_WARNING("[user] squeezes the trigger of \the [src] but it doesn't move!"), SPAN_WARNING("You squeeze the trigger but it doesn't move!"), range = MESSAGE_RANGE_COMBAT_SILENCED)
@@ -906,6 +892,7 @@
 		.["remove-attachment"] = atom_context_tuple("Remove Attachment", image('icons/screen/radial/actions.dmi', "red-arrow-up"), 0, MOBILITY_CAN_USE)
 	if(safety_state != GUN_NO_SAFETY)
 		.["toggle-safety"] = atom_context_tuple("Toggle Safety", image(src), 0, MOBILITY_CAN_USE, TRUE)
+	#warn gun component detach
 
 /obj/item/gun/context_act(datum/event_args/actor/e_args, key)
 	. = ..()
@@ -937,6 +924,10 @@
 	if(!is_typelist(NAMEOF(src, firemodes), firemodes))
 		return
 	firemodes = deep_clone_list(firemodes)
+
+//* Interaction *//
+
+#warn ctrlclick for safety
 
 //* Rendering *//
 

@@ -17,14 +17,19 @@
 	/// * The actual APIs used are agnostic of this value.
 	var/component_slot
 	/// Conflict flags
+	///
+	/// * This is done with hard enforcement.
 	var/component_conflict = NONE
-	#warn impl
+	/// Component type.
+	///
+	/// * Two of the same component will never be allowed to be put on the same gun.
+	/// * This defaults to the gun's typepath if unset.
+	var/component_type
 
 	/// should we be hidden from examine?
 	var/show_on_examine = TRUE
 	/// automatically hook firing iteration pre-fire? will call on_firing_cycle_iteration(cycle) if hooked.
 	var/hook_iteration_pre_fire = FALSE
-	#warn impl
 
 	/// currently attached gun
 	var/obj/item/gun/attached
@@ -52,12 +57,16 @@
  */
 /obj/item/gun_component/proc/on_attach(obj/item/gun/gun, datum/event_args/actor/actor, silent)
 	SHOULD_CALL_PARENT(TRUE)
+	if(hook_iteration_pre_fire)
+		RegisterSignal(gun, COMSIG_GUN_FIRING_CYCLE_ITERATION_PREFIRE, PROC_REF(on_firing_cycle_iteration))
 
 /**
  * called on detach
  */
 /obj/item/gun_component/proc/on_detach(obj/item/gun/gun, datum/event_args/actor/actor, silent)
 	SHOULD_CALL_PARENT(TRUE)
+	if(hook_iteration_pre_fire)
+		UnregisterSignal(gun, COMSIG_GUN_FIRING_CYCLE_ITERATION_PREFIRE)
 
 //* Gun API *//
 

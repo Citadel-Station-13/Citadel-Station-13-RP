@@ -56,7 +56,4 @@ GLOBAL_REAL_LIST(gun_component_enum_to_name) = list(
 
 //**** Conflict Flags - /obj/item/gun_component ****//
 
-/**
- * Burst modifiers.
- */
-#define GUN_COMPONENT_CONFLICT_BURST_MODIFICATION (1<<0)
+// None yet.

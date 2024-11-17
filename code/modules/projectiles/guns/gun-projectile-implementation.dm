@@ -63,8 +63,12 @@
 	launching.silenced = src.silenced
 	//! END
 
-	var/effective_angle = cycle.original_angle
+	var/effective_angle = cycle.original_angle + cycle.base_angle_adjust + cycle.next_angle_adjust
+	var/effective_dispersion = cycle.base_dispersion_adjust + cycle.next_dispersion_adjust
 
+	effective_angle += rand(-effective_dispersion, effective_dispersion)
+
+	#warn shoudl dispersion be handled here or in projectile
 	#warn launching's launch_projectile_common
 
 	launching.fire(effective_angle, get_turf(cycle.original_target) == get_turf(src) ? cycle.original_target : null)
