@@ -57,7 +57,7 @@
 /turf/simulated/mineral/floor/ignore_mapgen/cave,
 /area/tether_away/cave/explored/normal)
 "M" = (
-/turf/unsimualted/wall/mineral,
+/turf/unsimulated/wall/mineral,
 /area/tether_away/cave/explored/normal)
 "N" = (
 /obj/machinery/floodlight,
