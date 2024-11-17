@@ -30,7 +30,7 @@
 	var/list/attributes
 	/// absolute path from server current directory to map; overrides relative_path
 	var/absolute_path
-	/// relative path. useless outside of manual maploads, as we can't parse relative path from DM yet.
+	/// relative path.
 	var/relative_path
 	/// are we modified from our prototype/definition?
 	var/tmp/modified = FALSE
@@ -285,7 +285,11 @@
  * get .dmm path or file
  */
 /datum/map_level/proc/resolve_map_path()
-	return absolute_path // no relative path support yet
+	if(relative_path && !absolute_path)
+		var/our_file = __FILE__
+		var/our_directory = copytext_char(our_file, 1, findlasttext_char(our_file, "/"))
+		absolute_path = "[our_directory]/[relative_path]"
+	return absolute_path
 
 /**
  * get level index in dir
