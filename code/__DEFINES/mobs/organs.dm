@@ -1,4 +1,21 @@
-//! *ALL DEFINES RELATED TO ORGANS GO HERE* !//
+//*                       Organ Keys                                                  *//
+//* Organ keys are strings used to key the 'keyed_organs' list on carbons.            *//
+//*                                                                                   *//
+//* While usually arbitrary for an organ, they do have attached connotations of       *//
+//* what the organ will be casted to when fetched. As an example, ORGAN_KEY_BRAIN     *//
+//* will always be an organ of /obj/item/organ/internal/brain type.                   *//
+//*                                                                                   *//
+//* Organ keys should always be annotated in the below list with their expected type. *//
+
+/// The key for brain organs.
+///
+/// * Type: /obj/item/organ/internal/brain
+/// * Mobs may only have one brain organ.
+#define ORGAN_KEY_BRAIN "brain"
+
+#warn hook / implement
+
+//! legacy below !//
 
 //These control the damage thresholds for the various ways of removing limbs
 #define DROPLIMB_THRESHOLD_EDGE 5

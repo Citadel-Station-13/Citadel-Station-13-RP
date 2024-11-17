@@ -2,6 +2,7 @@
 	name = "brain"
 	desc = "A piece of juicy meat found in a person's head."
 	organ_tag = "brain"
+	organ_key = ORGAN_KEY_BRAIN
 	parent_organ = BP_HEAD
 	vital = 1
 	decay_rate = ORGAN_DECAY_PER_SECOND_BRAIN

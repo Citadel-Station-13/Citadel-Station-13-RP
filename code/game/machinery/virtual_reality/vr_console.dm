@@ -90,15 +90,11 @@
 		return
 	go_in(target, user)
 
-
-
 /obj/machinery/sleeper/relaymove(var/mob/user)
 	..()
 	if(usr.incapacitated())
 		return
 	go_out()
-
-
 
 /obj/machinery/vr_sleeper/emp_act(var/severity)
 	if(machine_stat & (BROKEN|NOPOWER))

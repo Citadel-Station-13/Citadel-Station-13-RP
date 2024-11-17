@@ -29,6 +29,10 @@
 	/// * Implies [always_drop_on_gib]
 	var/always_drop_on_everything = FALSE
 	#warn hook
+	/// Our organ key to register as.
+	///
+	/// * This is **not** arbitrary. Keys have type semantics.
+	var/organ_key
 
 	//! legacy below !//
 

@@ -783,7 +783,6 @@
 #include "code\datums\components\_component.dm"
 #include "code\datums\components\anti_magic.dm"
 #include "code\datums\components\connect_loc_behalf.dm"
-#include "code\datums\components\cyberpsychosis.dm"
 #include "code\datums\components\gps_signal.dm"
 #include "code\datums\components\horror_aura.dm"
 #include "code\datums\components\jousting.dm"
