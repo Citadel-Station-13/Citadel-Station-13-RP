@@ -58,7 +58,7 @@
 /datum/actor_hud/inventory/screens()
 	. = ..()
 	// slots
-	. += all_slot_screen_objects()
+	. += all_slot_screen_objects(hidden_classes, TRUE)
 	// hands
 	. += all_hand_screen_objects()
 	// buttons
@@ -113,7 +113,8 @@
 			stack_trace("failed to fetch slot during hud rebuild: [slot_id]")
 			continue
 		var/atom/movable/screen/actor_hud/inventory/plate/slot/slot_object = new /atom/movable/screen/actor_hud/inventory/plate/slot(null, src, slot, inventory_slots_with_mappings[slot_id] || list())
-		add_screen(slot_object)
+		if(!hidden_classes[slot_object.inventory_hud_class])
+			add_screen(slot_object)
 		slots[slot_id] = slot_object
 
 	// here is where we basically pull a CSS flexbox.
@@ -139,7 +140,7 @@
 				inject_into = cross_axis_for_drawer[requested_cross_axis]
 			if(INVENTORY_HUD_ANCHOR_TO_HANDS)
 				var/list/relevant_cross_axis = slot_object.inventory_hud_main_axis > 0 ? cross_axis_for_hands_right : cross_axis_for_hands_left
-				var/requested_cross_axis = clamp(slot_object.inventory_hud_cross_axis, 0, 2) + 1 // 1 to 5
+				var/requested_cross_axis = clamp(slot_object.inventory_hud_cross_axis, 0, 4) + 1 // 1 to 5
 				if(length(relevant_cross_axis) < requested_cross_axis)
 					for(var/i in length(relevant_cross_axis) + 1 to requested_cross_axis)
 						relevant_cross_axis[++relevant_cross_axis.len] = list()
@@ -162,17 +163,19 @@
 
 	for(var/cross_axis in 1 to length(cross_axis_for_drawer))
 		var/list/cross_axis_list = cross_axis_for_drawer[cross_axis]
+		var/main_axis_bias = cross_axis == 1 ? 1 : 0
 		for(var/main_axis in 1 to length(cross_axis_list))
 			var/atom/movable/screen/actor_hud/inventory/plate/slot/aligning = cross_axis_list[main_axis]
 			aligning.inventory_hud_cross_axis = cross_axis - 1
-			aligning.inventory_hud_main_axis = main_axis - 1
+			aligning.inventory_hud_main_axis = main_axis - 1 + main_axis_bias
 			aligned += aligning
 	for(var/cross_axis in 1 to length(cross_axis_for_hands_left))
 		var/list/cross_axis_list = cross_axis_for_hands_left[cross_axis]
+		var/add_for_inverse = -(length(cross_axis_list) + 1)
 		for(var/main_axis in 1 to length(cross_axis_list))
 			var/atom/movable/screen/actor_hud/inventory/plate/slot/aligning = cross_axis_list[main_axis]
 			aligning.inventory_hud_cross_axis = cross_axis - 1
-			aligning.inventory_hud_main_axis = -main_axis
+			aligning.inventory_hud_main_axis = add_for_inverse + main_axis
 			aligned += aligning
 	for(var/cross_axis in 1 to length(cross_axis_for_hands_right))
 		var/list/cross_axis_list = cross_axis_for_hands_right[cross_axis]
@@ -212,19 +215,25 @@
 	button_equip_hand?.screen_loc = SCREEN_LOC_MOB_HUD_INVENTORY_EQUIP_HAND(number_of_hands)
 	button_swap_hand?.screen_loc = SCREEN_LOC_MOB_HUD_INVENTORY_HAND_SWAP(number_of_hands)
 
-/datum/actor_hud/inventory/proc/all_slot_screen_objects(filter_by_class)
+/**
+ * @params
+ * * filter_by_class - a singular, or a list, of inventory hud classes to filter by
+ * * inverse - get everything that isn't in the filter, instead of everything that is
+ */
+/datum/actor_hud/inventory/proc/all_slot_screen_objects(filter_by_class, inverse = FALSE)
 	RETURN_TYPE(/list)
 	. = list()
 	if(filter_by_class)
+		inverse = !!inverse
 		if(islist(filter_by_class))
 			for(var/id in slots)
 				var/atom/movable/screen/actor_hud/inventory/plate/slot/slot_object = slots[id]
-				if(slot_object.inventory_hud_class in filter_by_class)
+				if((slot_object.inventory_hud_class in filter_by_class) != inverse)
 					. += slot_object
 		else
 			for(var/id in slots)
 				var/atom/movable/screen/actor_hud/inventory/plate/slot/slot_object = slots[id]
-				if(slot_object.inventory_hud_class == filter_by_class)
+				if((slot_object.inventory_hud_class == filter_by_class) != inverse)
 					. += slot_object
 	else
 		for(var/id in slots)
@@ -247,17 +256,25 @@
 		. += button_drawer
 
 /datum/actor_hud/inventory/proc/toggle_hidden_class(class, source)
-	var/list/atom/movable/screen/actor_hud/inventory/affected = all_slot_screen_objects(class)
+	var/list/atom/movable/screen/actor_hud/inventory/affected
+	var/something_changed
 	if(class in hidden_classes)
 		LAZYREMOVE(hidden_classes[class], source)
 		if(!length(hidden_classes[class]))
+			affected = all_slot_screen_objects(class)
 			add_screen(affected)
 			hidden_classes -= class
+			something_changed = TRUE
 	else
 		if(!hidden_classes[class])
+			affected = all_slot_screen_objects(class)
 			remove_screen(affected)
+			something_changed = TRUE
 		LAZYADD(hidden_classes[class], class)
-	button_drawer?.update_icon()
+	if(something_changed)
+		switch(class)
+			if(INVENTORY_HUD_CLASS_DRAWER)
+				button_drawer?.update_icon()
 
 /datum/actor_hud/inventory/proc/add_hidden_class(class, source)
 	if(class in hidden_classes)
@@ -359,6 +376,7 @@
 /atom/movable/screen/actor_hud/inventory/plate/slot/Initialize(mapload, datum/actor_hud/inventory/hud, datum/inventory_slot/slot, list/slot_remappings)
 	. = ..()
 	inventory_slot_id = slot.id
+	icon_state = slot.inventory_hud_icon_state
 	inventory_hud_class = slot_remappings[INVENTORY_SLOT_REMAP_CLASS] || slot.inventory_hud_class
 	inventory_hud_main_axis = slot_remappings[INVENTORY_SLOT_REMAP_MAIN_AXIS] || slot.inventory_hud_main_axis
 	inventory_hud_cross_axis = slot_remappings[INVENTORY_SLOT_REMAP_CROSS_AXIS] || slot.inventory_hud_cross_axis
@@ -370,7 +388,14 @@
 	icon = style.inventory_icons_slot
 
 /atom/movable/screen/actor_hud/inventory/plate/slot/handle_inventory_click(mob/user, obj/item/with_item)
-	#warn impl
+	var/obj/item/in_slot = user.item_by_slot_id(inventory_slot_id)
+	if(with_item)
+		if(in_slot)
+			with_item.melee_interaction_chain(in_slot, user, NONE, list())
+		else
+			user.equip_to_slot_if_possible(with_item, inventory_slot_id, NONE, user)
+	else
+		in_slot?.attack_hand(user, new /datum/event_args/actor/clickchain(user))
 
 /**
  * Hand screen objects
@@ -391,9 +416,7 @@
 	icon = style.inventory_icons
 
 /atom/movable/screen/actor_hud/inventory/plate/hand/handle_inventory_click(mob/user, obj/item/with_item)
-	if(!with_item)
-		hud.owner.swap_hand(hand_index)
-	#warn impl
+	hud.owner.swap_hand(hand_index)
 
 /atom/movable/screen/actor_hud/inventory/plate/hand/proc/sync_index(index = hand_index)
 	screen_loc = SCREEN_LOC_MOB_HUD_INVENTORY_HAND(index)
