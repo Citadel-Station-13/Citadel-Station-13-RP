@@ -41,10 +41,19 @@ CREATE_STANDARD_TURFS(/turf/simulated/mineral)
 	var/ignore_oregen = FALSE
 	var/ignore_cavegen = FALSE
 
+/turf/simulated/mineral/floor
+	name = "sand"
+	icon = 'icons/turf/flooring/asteroid.dmi'
+	icon_state = "asteroid"
+	density = 0
+	opacity = 0
+	blocks_air = 0
+	can_build_into_floor = TRUE
 
+CREATE_STANDARD_TURFS(/turf/simulated/mineral/rich)
 /turf/simulated/mineral/rich
 	//Placeholder, go to the oregen stuff at the bottom to see the oregen weight
-CREATE_STANDARD_TURFS(/turf/simulated/mineral/rich)
+
 // Alternatives that ignore ore_gen and cavegen
 /turf/simulated/mineral/ignore_oregen
 	ignore_oregen = TRUE
@@ -106,15 +115,6 @@ CREATE_STANDARD_TURFS(/turf/simulated/mineral/floor/ignore_cavegen)
 
 /turf/simulated/mineral/ignore_mapgen
 	ignore_mapgen = 1
-
-/turf/simulated/mineral/floor
-	name = "sand"
-	icon = 'icons/turf/flooring/asteroid.dmi'
-	icon_state = "asteroid"
-	density = 0
-	opacity = 0
-	blocks_air = 0
-	can_build_into_floor = TRUE
 
 //Alternative sand floor sprite.
 /turf/simulated/mineral/floor/light
