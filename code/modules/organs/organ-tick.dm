@@ -216,3 +216,7 @@
 					if(501 to INFINITY)
 						adjust_germ_level(rand(3,5))
 						owner.reagents.add_reagent("toxin", rand(1,2))
+
+/// Called when processed.
+/obj/item/organ/proc/handle_organ_proc_special()
+	return

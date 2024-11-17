@@ -31,7 +31,31 @@
 	)
 	return keyed_organs[target_zone_rewrites[target_zone] || target_zone]
 
+//* API - Insert / Remove *//
 
+/**
+ * called on organ insert
+ *
+ * @params
+ * * organ - the organ
+ * * from_init - we are performing initial setup in Initialize() after we've grabbed our organs and templates from species / persistence.
+ *                  this is not set in any other case.
+ */
+/mob/living/carbon/proc/on_organ_insert(obj/item/organ/organ, from_init)
+	SHOULD_CALL_PARENT(TRUE)
+	SHOULD_NOT_SLEEP(TRUE)
+
+/**
+ * called on insert
+ *
+ * @params
+ * * organ - the organ
+ * * from_qdel - we and the organ are being qdeleted in the QDEL_LIST loop.
+ *               this is not set in any other case, including on gib and set_species().
+ */
+/mob/living/carbon/proc/on_organ_remove(obj/item/organ/organ, from_qdel)
+	SHOULD_CALL_PARENT(TRUE)
+	SHOULD_NOT_SLEEP(TRUE)
 
 #warn impl
 

@@ -4203,6 +4203,7 @@
 #include "code\modules\organs\organ-health.dm"
 #include "code\modules\organs\organ-tick.dm"
 #include "code\modules\organs\organ.dm"
+#include "code\modules\organs\external\external-wound.dm"
 #include "code\modules\organs\external\external.dm"
 #include "code\modules\organs\external\external_icons.dm"
 #include "code\modules\organs\external\robolimbs.dm"

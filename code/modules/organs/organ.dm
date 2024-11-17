@@ -249,6 +249,7 @@
 /obj/item/organ/proc/digitize()
 	robotize()
 
+#warn obliterate
 /obj/item/organ/proc/removed(var/mob/living/user)
 	if(owner)
 		owner.internal_organs_by_name[organ_tag] = null
@@ -278,9 +279,10 @@
 	owner = null
 	reconsider_processing()
 
+#warn obliterate
 /obj/item/organ/proc/replaced(var/mob/living/carbon/human/target,var/obj/item/organ/external/affected)
-
-	if(!istype(target)) return
+	if(!istype(target))
+		return
 
 	var/datum/reagent/blood/transplant_blood = locate(/datum/reagent/blood) in reagents.reagent_list
 	transplant_data = list()
@@ -411,10 +413,6 @@
 	else
 		on_insert(owner)
 
-/// Called when processed.
-/obj/item/organ/proc/handle_organ_proc_special()
-	return
-
 /// Used for determining if an organ should give or remove its verbs. I.E., FBP part in a human, no verbs. If true, keep or add.
 /obj/item/organ/proc/check_verb_compatability()
 	if(owner)
@@ -444,22 +442,6 @@
 					return TRUE
 
 	return FALSE
-
-/obj/item/organ/proc/refresh_action_button()
-	update_action_buttons()
-
-// todo: unified organ damage system
-// for now, this is how to heal internal organs
-/obj/item/organ/proc/heal_damage_i(amount, force, can_revive)
-	ASSERT(amount > 0)
-	var/dead = !!(status & ORGAN_DEAD)
-	if(dead && !force && !can_revive)
-		return FALSE
-	//? which is better again..?
-	// damage = clamp(damage - round(amount, DAMAGE_PRECISION), 0, max_damage)
-	damage = clamp(round(damage - amount, DAMAGE_PRECISION), 0, max_damage)
-	if(dead && can_revive)
-		revive()
 
 //* Actions *//
 
@@ -526,25 +508,59 @@
 //* Insert / Remove *//
 
 /**
+ * Inserts into a mob.
+ *
+ * @params
+ * * target - person being inserted into
+ * * from_init - we are performing initial setup in Initialize() after we've grabbed our organs and templates from species / persistence.
+ *                  this is not set in any other case.
+ */
+/obj/item/organ/proc/insert(mob/living/carbon/target, from_init)
+	SHOULD_CALL_PARENT(TRUE)
+	SHOULD_NOT_SLEEP(TRUE)
+
+/**
+ * Removes from a mob.
+ *
+ * @params
+ * * move_to - forceMove to this location. if null, we will not move out of our old container.
+ * * from_qdel - our owner and the organ are being qdeleted in the QDEL_LIST loop.
+ *               this is not set in any other case, including on gib and set_species().
+ */
+/obj/item/organ/proc/remove(atom/move_to, from_qdel)
+	SHOULD_CALL_PARENT(TRUE)
+	SHOULD_NOT_SLEEP(TRUE)
+
+	if(isnull(move_to) && (loc == null))
+		CRASH("no move_to destination and our loc was null. this can result in a memory leak if the organ is unpredictably referenced, and the calling proc fails to delete or move us.")
+
+#warn impl
+
+/**
  * called on being put into a mob
  *
  * @params
- * * owner - person being inserted into
- * * initializing - part of init for owner. set_species() counts as this too!
+ * * target - person being inserted into
+ * * from_init - we are performing initial setup in Initialize() after we've grabbed our organs and templates from species / persistence.
+ *                  this is not set in any other case.
  */
 #warn audit calls
-/obj/item/organ/proc/on_insert(mob/owner, initializing)
+/obj/item/organ/proc/on_insert(mob/living/carbon/target, from_init)
 	SHOULD_CALL_PARENT(TRUE)
+	SHOULD_NOT_SLEEP(TRUE)
 	ensure_organ_actions_loaded()
-	grant_organ_actions(owner)
+	grant_organ_actions(target)
 
 /**
  * called on being removed from a mob
  *
  * @params
- * * owner - person being removed from
+ * * target - person being removed from
+ * * from_qdel - we and the organ are being qdeleted in the QDEL_LIST loop.
+ *               this is not set in any other case, including on gib and set_species().
  */
 #warn audit calls
-/obj/item/organ/proc/on_remove(mob/owner)
+/obj/item/organ/proc/on_remove(mob/living/carbon/target, from_qdel)
 	SHOULD_CALL_PARENT(TRUE)
-	revoke_organ_actions(owner)
+	SHOULD_NOT_SLEEP(TRUE)
+	revoke_organ_actions(target)

@@ -24,3 +24,16 @@
 
 /obj/item/organ/proc/bruise()
 	damage = max(damage, min_bruised_damage)
+
+// todo: unified organ damage system
+// for now, this is how to heal internal organs
+/obj/item/organ/proc/heal_damage_i(amount, force, can_revive)
+	ASSERT(amount > 0)
+	var/dead = !!(status & ORGAN_DEAD)
+	if(dead && !force && !can_revive)
+		return FALSE
+	//? which is better again..?
+	// damage = clamp(damage - round(amount, DAMAGE_PRECISION), 0, max_damage)
+	damage = clamp(round(damage - amount, DAMAGE_PRECISION), 0, max_damage)
+	if(dead && can_revive)
+		revive()
