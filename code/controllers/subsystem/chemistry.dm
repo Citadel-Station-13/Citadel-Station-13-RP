@@ -2,6 +2,7 @@ SUBSYSTEM_DEF(chemistry)
 	name = "Chemistry"
 	wait = 10
 	init_order = INIT_ORDER_CHEMISTRY
+	subsystem_flags = SS_NO_INIT
 
 	/// id to instance dict of reagents
 	var/list/reagent_lookup = list()

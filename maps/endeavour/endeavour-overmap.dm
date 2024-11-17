@@ -8,7 +8,7 @@
 [b]Notice[/b]: Nanotrasen Vessel, authorized personnel only"}
 
 	icon_state = "ship"
-	vessel_mass = 18500 // temporarily buffed by 3x due to vorestation fucking up large gas thruster code
+	vessel_mass = 48500 // temporarily buffed by 5x due to vorestation fucking up large gas thruster code
 	burn_delay = 2 SECONDS
 	fore_dir = EAST	// Which direction the ship/z-level is facing.  It will move dust particles from that direction when moving.
 	base = TRUE		// Honestly unsure what this does but it seems the main sector or "Map" we're at has this so here it stays
