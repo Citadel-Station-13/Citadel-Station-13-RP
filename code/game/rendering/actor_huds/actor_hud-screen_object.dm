@@ -20,4 +20,4 @@
 	return ..()
 
 /atom/movable/screen/actor_hud/check_allowed(mob/user)
-	return ..() && hud.owner == user
+	return ..() && hud.actor == user
