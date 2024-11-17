@@ -42,5 +42,5 @@ VIRGO3B_TURF_CREATE_UN(/turf/simulated/floor/tiled/kafel_full/yellow)
 	outdoors = FALSE
 
 //Unsimulated
-/turf/unsimulated/wall/mineral/virgo3b
+/turf/unsimulated/wall/mineral
 	blocks_air = TRUE

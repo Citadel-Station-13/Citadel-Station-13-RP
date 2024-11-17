@@ -3104,7 +3104,7 @@
 /turf/simulated/mineral,
 /area/storage/surface_eva/external)
 "sv" = (
-/turf/unsimulated/wall/mineral/virgo3b,
+/turf/unsimulated/wall/mineral,
 /area/space)
 "sA" = (
 /obj/structure/shuttle/engine/heater,

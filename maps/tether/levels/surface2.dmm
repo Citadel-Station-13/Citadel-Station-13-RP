@@ -26923,7 +26923,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/tether/surfacebase/security/outfitting)
 "tXE" = (
-/turf/unsimulated/wall/mineral/virgo3b,
+/turf/unsimulated/wall/mineral,
 /area/tether/surfacebase/outside/outside2)
 "tXS" = (
 /obj/machinery/washing_machine,
@@ -29183,7 +29183,7 @@
 /turf/simulated/floor/tiled/white,
 /area/tether/surfacebase/security/brig/bathroom)
 "vFJ" = (
-/turf/simulated/mineral/virgo3b,
+/turf/simulated/mineral,
 /area/tether/surfacebase/outside/outside2)
 "vFZ" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/red,

@@ -4,7 +4,7 @@
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/mine/explored)
 "aS" = (
-/turf/simulated/mineral/virgo3b,
+/turf/simulated/mineral,
 /area/mine/explored)
 "bh" = (
 /obj/structure/cable{
@@ -1288,7 +1288,7 @@
 /turf/simulated/floor/plating,
 /area/outpost/mining_main/maintenance)
 "Hq" = (
-/turf/simulated/mineral/virgo3b,
+/turf/simulated/mineral,
 /area/mine/unexplored)
 "Hs" = (
 /obj/structure/reagent_dispensers/water_cooler/full,
@@ -1594,7 +1594,7 @@
 /turf/simulated/wall/r_wall,
 /area/mine/explored)
 "Se" = (
-/turf/unsimulated/wall/mineral/virgo3b,
+/turf/unsimulated/wall/mineral,
 /area/mine/explored)
 "Sm" = (
 /obj/structure/cable/green{

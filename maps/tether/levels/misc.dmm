@@ -5489,7 +5489,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/centcom/simulated/living)
 "QQ" = (
-/turf/unsimulated/wall/mineral/virgo3b,
+/turf/unsimulated/wall/mineral,
 /area/centcom/simulated/terminal)
 "QS" = (
 /obj/structure/closet/secure_closet/brig{
@@ -6482,7 +6482,7 @@
 /turf/simulated/floor/holofloor/beach/water,
 /area/holodeck/source_beach)
 "Yi" = (
-/turf/unsimulated/wall/mineral/virgo3b,
+/turf/unsimulated/wall/mineral,
 /area/space)
 "Yj" = (
 /obj/structure/holostool,
