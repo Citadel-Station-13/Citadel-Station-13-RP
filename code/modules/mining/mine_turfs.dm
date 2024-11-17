@@ -4,7 +4,6 @@ CREATE_STANDARD_TURFS(/turf/simulated/mineral)
 	icon = 'icons/turf/walls/natural.dmi'
 	icon_state = "preview"
 	base_icon_state = "wall"
-	smoothing_flags = SMOOTH_CUSTOM
 	opacity = 1
 	density = 1
 	blocks_air = 1
@@ -96,14 +95,15 @@ CREATE_STANDARD_TURFS(/turf/simulated/mineral/icerock/floor/ignore_cavegen)
 
 /turf/simulated/mineral/icerock/airmix
 	initial_gas_mix = GAS_STRING_STP
+
 /turf/unsimulated/wall/mineral/icerock
 	name = "impassable icerock"
 	icon = 'icons/turf/walls.dmi'
 	base_icon_state = "wall"
 	density = 1
 	smoothing_flags = SMOOTH_BITMASK
-	smoothing_groups = (SMOOTH_GROUP_WALLS+ SMOOTH_GROUP_CLOSED_TURFS + SMOOTH_GROUP_MINERAL_WALLS )
-	canSmoothWith = (SMOOTH_GROUP_WALLS+ SMOOTH_GROUP_CLOSED_TURFS + SMOOTH_GROUP_MINERAL_WALLS )
+	smoothing_groups = (SMOOTH_GROUP_WALLS + SMOOTH_GROUP_CLOSED_TURFS + SMOOTH_GROUP_MINERAL_WALLS )
+	canSmoothWith = (SMOOTH_GROUP_WALLS + SMOOTH_GROUP_CLOSED_TURFS + SMOOTH_GROUP_MINERAL_WALLS )
 	color = COLOR_OFF_WHITE
 
 /turf/simulated/mineral/ignore_mapgen
@@ -192,10 +192,6 @@ CREATE_STANDARD_TURFS(/turf/simulated/mineral/icerock/floor/ignore_cavegen)
 	if(!T)
 		return NULLTURF_BORDER
 	return T.density? ADJ_FOUND : NO_ADJ_FOUND
-
-/turf/simulated/mineral/custom_smooth(dirs)
-	smoothing_junction = dirs
-	update_appearance()
 
 /turf/simulated/mineral/update_appearance(updates)
 	. = ..()
