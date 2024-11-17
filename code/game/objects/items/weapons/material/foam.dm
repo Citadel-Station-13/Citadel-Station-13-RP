@@ -3,14 +3,14 @@
 	drop_sound = 'sound/items/drop/device.ogg'
 	pickup_sound = 'sound/items/pickup/device.ogg'
 	attack_sound = 'sound/effects/bodyfall3.ogg'
-	material_parts = /datum/material/toy_foam
+	material_parts = /datum/prototype/material/toy_foam
 
 /obj/item/material/twohanded/baseballbat/foam
 	attack_verb = list("bonked","whacked")
 	drop_sound = 'sound/items/drop/device.ogg'
 	pickup_sound = 'sound/items/pickup/device.ogg'
 	attack_sound = 'sound/effects/bodyfall3.ogg'
-	material_parts = /datum/material/toy_foam
+	material_parts = /datum/prototype/material/toy_foam
 
 /obj/item/material/twohanded/spear/foam
 	attack_verb = list("bonked","whacked")
@@ -19,7 +19,7 @@
 	drop_sound = 'sound/items/drop/device.ogg'
 	pickup_sound = 'sound/items/pickup/device.ogg'
 	attack_sound = 'sound/effects/bodyfall3.ogg'
-	material_parts = /datum/material/toy_foam
+	material_parts = /datum/prototype/material/toy_foam
 
 /obj/item/material/twohanded/fireaxe/foam
 	attack_verb = list("bonked","whacked")
@@ -31,4 +31,4 @@
 	drop_sound = 'sound/items/drop/device.ogg'
 	pickup_sound = 'sound/items/pickup/device.ogg'
 	attack_sound = 'sound/effects/bodyfall3.ogg'
-	material_parts = /datum/material/toy_foam
+	material_parts = /datum/prototype/material/toy_foam

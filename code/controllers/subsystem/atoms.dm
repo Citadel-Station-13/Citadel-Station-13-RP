@@ -1,6 +1,7 @@
 SUBSYSTEM_DEF(atoms)
 	name = "Atoms"
 	init_order = INIT_ORDER_ATOMS
+	init_stage = INIT_STAGE_WORLD
 	subsystem_flags = SS_NO_FIRE
 
 	/// A stack of list(source, desired initialized state)
@@ -24,28 +25,29 @@ SUBSYSTEM_DEF(atoms)
 	var/list/mapload_init_times = list()
 	#endif
 
-	initialized = INITIALIZATION_INSSATOMS
+	/// Status to use for atom New() / Initialize().
+	var/atom_init_status = ATOM_INIT_IN_SUBSYSTEM
 
 /datum/controller/subsystem/atoms/Initialize(timeofday)
 	init_start_time = world.time
 
-	initialized = INITIALIZATION_INNEW_MAPLOAD
+	atom_init_status = ATOM_INIT_IN_NEW_MAPLOAD
 	InitializeAtoms()
-	initialized = INITIALIZATION_INNEW_REGULAR
+	atom_init_status = ATOM_INIT_IN_NEW_REGULAR
 
-	return ..()
+	return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/atoms/proc/InitializeAtoms(list/atoms, list/atoms_to_return)
-	if(initialized == INITIALIZATION_INSSATOMS)
+	if(atom_init_status == ATOM_INIT_IN_SUBSYSTEM)
 		return
 
 	// Generate a unique mapload source for this run of InitializeAtoms
 	var/static/uid = 0
 	uid = (uid + 1) % (SHORT_REAL_LIMIT - 1)
 	var/source = "subsystem init [uid]"
-	set_tracked_initalized(INITIALIZATION_INNEW_MAPLOAD, source)
+	set_tracked_initalized(ATOM_INIT_IN_NEW_MAPLOAD, source)
 
-	// This may look a bit odd, but if the actual atom creation runtimes for some reason, we absolutely need to set initialized BACK
+	// This may look a bit odd, but if the actual atom creation runtimes for some reason, we absolutely need to set atom_init_status BACK
 	CreateAtoms(atoms, atoms_to_return, source)
 	clear_tracked_initalize(source)
 
@@ -56,6 +58,7 @@ SUBSYSTEM_DEF(atoms)
 			if(QDELETED(A))
 				continue
 			A.LateInitialize()
+			CHECK_TICK
 		testing("Late initialized [late_loaders.len] atoms")
 		late_loaders.Cut()
 
@@ -97,7 +100,7 @@ SUBSYSTEM_DEF(atoms)
 					clear_tracked_initalize(mapload_source)
 					stoplag()
 					if(mapload_source)
-						set_tracked_initalized(INITIALIZATION_INNEW_MAPLOAD, mapload_source)
+						set_tracked_initalized(ATOM_INIT_IN_NEW_MAPLOAD, mapload_source)
 				PROFILE_INIT_ATOM_BEGIN()
 				InitAtom(A, TRUE, mapload_arg)
 				PROFILE_INIT_ATOM_END(A)
@@ -118,7 +121,7 @@ SUBSYSTEM_DEF(atoms)
 					clear_tracked_initalize(mapload_source)
 					stoplag()
 					if(mapload_source)
-						set_tracked_initalized(INITIALIZATION_INNEW_MAPLOAD, mapload_source)
+						set_tracked_initalized(ATOM_INIT_IN_NEW_MAPLOAD, mapload_source)
 
 	testing("Initialized [count] atoms")
 
@@ -132,14 +135,14 @@ SUBSYSTEM_DEF(atoms)
  * * ... - rest of args are passed to new() / Initialize().
  */
 /datum/controller/subsystem/atoms/proc/instance_atom_immediate(path, mapload, atom/where, ...)
-	var/old_initialized = initialized
-	initialized = mapload? INITIALIZATION_INNEW_MAPLOAD : INITIALIZATION_INNEW_REGULAR
+	var/old_init_status = atom_init_status
+	atom_init_status = mapload? ATOM_INIT_IN_NEW_MAPLOAD : ATOM_INIT_IN_NEW_REGULAR
 	var/atom/created = new path(arglist(args.Copy()))
-	initialized = old_initialized
+	atom_init_status = old_init_status
 	return created
 
 /datum/controller/subsystem/atoms/proc/map_loader_begin(source)
-	set_tracked_initalized(INITIALIZATION_INSSATOMS, source)
+	set_tracked_initalized(ATOM_INIT_IN_SUBSYSTEM, source)
 
 /datum/controller/subsystem/atoms/proc/map_loader_stop(source)
 	clear_tracked_initalize(source)
@@ -155,9 +158,9 @@ SUBSYSTEM_DEF(atoms)
 /// Accepts a state and a source, the most recent state is used, sources exist to prevent overriding old values accidentally
 /datum/controller/subsystem/atoms/proc/set_tracked_initalized(state, source)
 	if(!length(initialized_state))
-		base_initialized = initialized
+		base_initialized = atom_init_status
 	initialized_state += list(list(source, state))
-	initialized = state
+	atom_init_status = state
 
 /datum/controller/subsystem/atoms/proc/clear_tracked_initalize(source)
 	if(!length(initialized_state))
@@ -168,17 +171,17 @@ SUBSYSTEM_DEF(atoms)
 			break
 
 	if(!length(initialized_state))
-		initialized = base_initialized
-		base_initialized = INITIALIZATION_INNEW_REGULAR
+		atom_init_status = base_initialized
+		base_initialized = ATOM_INIT_IN_NEW_REGULAR
 		return
-	initialized = initialized_state[length(initialized_state)][2]
+	atom_init_status = initialized_state[length(initialized_state)][2]
 
 /// Returns TRUE if anything is currently being initialized
 /datum/controller/subsystem/atoms/proc/initializing_something()
 	return length(initialized_state) > 1
 
 /datum/controller/subsystem/atoms/proc/init_map_bounds(list/bounds)
-	if (initialized == INITIALIZATION_INSSATOMS)
+	if (atom_init_status == ATOM_INIT_IN_SUBSYSTEM)
 		return	// Let proper initialisation handle it later
 
 	var/prev_shuttle_queue_state = SSshuttle.block_init_queue
@@ -228,8 +231,8 @@ SUBSYSTEM_DEF(atoms)
 
 
 /datum/controller/subsystem/atoms/Recover()
-	initialized = SSatoms.initialized
-	if(initialized == INITIALIZATION_INNEW_MAPLOAD)
+	atom_init_status = SSatoms.atom_init_status
+	if(atom_init_status == ATOM_INIT_IN_NEW_MAPLOAD)
 		InitializeAtoms()
 	initialized_state = SSatoms.initialized_state
 	BadInitializeCalls = SSatoms.BadInitializeCalls
@@ -250,7 +253,7 @@ SUBSYSTEM_DEF(atoms)
 
 /// Prepares an atom to be deleted once the atoms SS is initialized.
 /datum/controller/subsystem/atoms/proc/prepare_deletion(atom/target)
-	if (initialized == INITIALIZATION_INNEW_REGULAR)
+	if (atom_init_status == ATOM_INIT_IN_NEW_REGULAR)
 		// Atoms SS has already completed, just kill it now.
 		qdel(target)
 	else

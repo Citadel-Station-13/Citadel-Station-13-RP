@@ -14,6 +14,9 @@
 
 /obj/item/organ/internal/voicebox/Initialize(mapload)
 	. = ..()
+	// HACK: if we're in repository subsystem load, skip brainmob
+	if(!SSrepository.initialized)
+		return
 	amend_assist_langs()
 
 /obj/item/organ/internal/voicebox/proc/amend_assist_langs()	// Adds the list of language datums assisted by the voicebox to the list used in speaking

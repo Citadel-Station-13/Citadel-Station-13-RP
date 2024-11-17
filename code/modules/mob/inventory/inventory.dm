@@ -134,6 +134,9 @@
 
 //* Update Hooks *//
 
+/**
+ * Only called if mobility changed.
+ */
 /datum/inventory/proc/on_mobility_update()
 	for(var/datum/action/action in actions.actions)
 		action.update_button_availability()
@@ -242,6 +245,8 @@
 	// this qdeleted catches unequipped() deleting the item.
 	. = QDELETED(I)? FALSE : TRUE
 
+	log_inventory("[key_name(src)] unequipped [I] from [old].")
+
 	if(I)
 		// todo: better rendering that takes observers into account
 		if(client)
@@ -261,8 +266,6 @@
 					I.moveToNullspace()
 				else if(newloc != FALSE)
 					I.forceMove(newloc)
-
-	log_inventory("[key_name(src)] unequipped [I] from [old].")
 
 /mob/proc/handle_item_denesting(obj/item/I, old_slot, flags, mob/user)
 	// if the item was inside something,
@@ -605,11 +608,11 @@
 
 		_equip_slot(I, slot, flags)
 
+		log_inventory("[key_name(src)] equipped [I] to [slot].")
+
 		// TODO: HANDLE DELETIONS IN PICKUP AND EQUIPPED PROPERLY
 		I.pickup(src, flags, oldLoc)
 		I.equipped(src, slot, flags)
-
-		log_inventory("[key_name(src)] equipped [I] to [slot].")
 
 	if(I.zoom)
 		I.zoom()

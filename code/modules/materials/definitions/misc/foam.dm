@@ -1,4 +1,4 @@
-/datum/material/toy_foam
+/datum/prototype/material/toy_foam
 	id = "foam"
 	name = "foam"
 	display_name = "foam"

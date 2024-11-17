@@ -36,6 +36,10 @@ var/datum/controller/failsafe/Failsafe
 
 
 /datum/controller/failsafe/New()
+	// Do not contaminate `usr`; if this is set, the MC main loop will have the usr of whoever called it,
+	// which results in all procs called by the MC inheriting that usr.
+	usr = null
+
 	// Highlander-style: there can only be one! Kill off the old and replace it with the new.
 	if(Failsafe != src)
 		if(istype(Failsafe))

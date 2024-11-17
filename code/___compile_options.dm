@@ -80,17 +80,9 @@
 // #define USE_BYOND_TRACY
 
 /**
- * If this is uncommented, Autowiki will generate edits and shut down the server.
- * Prefer the autowiki build target instead.
- */
-// #define AUTOWIKI
-
-
-/**
  * If this is uncommented, will profile mapload atom initializations.
  */
 // #define PROFILE_MAPLOAD_INIT_ATOM
-
 
 /**
  * If this is uncommented, force our verb processing into just the 2% of a tick.
@@ -137,7 +129,7 @@
 #endif
 
 // ## LEGACY WARNING
-#if !defined(CBT) && !defined(SPACEMAN_DMM)
+#if !(defined(CBT) || defined(SPACEMAN_DMM) || defined(OPENDREAM))
 	#warn Building with Dream Maker is no longer supported and will result in errors.
 	#warn In order to build, run BUILD.bat in the root directory.
 	#warn Consider switching to VSCode editor instead, where you can press Ctrl+Shift+B to build.
