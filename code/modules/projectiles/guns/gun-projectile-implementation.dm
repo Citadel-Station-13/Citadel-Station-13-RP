@@ -63,6 +63,12 @@
 	launching.silenced = src.silenced
 	//! END
 
+	var/effective_angle = cycle.original_angle
+
+	#warn launching's launch_projectile_common
+
+	launching.fire(effective_angle, get_turf(cycle.original_target) == get_turf(src) ? cycle.original_target : null)
+
 /**
  * Obtains the next projectile to fire.
  *
