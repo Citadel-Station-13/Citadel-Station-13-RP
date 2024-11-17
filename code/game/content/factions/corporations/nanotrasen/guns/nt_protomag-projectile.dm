@@ -10,10 +10,7 @@
 	abstract_type = /obj/projectile/nt_protomag
 	icon = 'icons/content/factions/corporations/nanotrasen/items/guns/protomag/projectile.dmi'
 	icon_state = "kinetic"
-	overlays = list(
-		/image{
-		}
-	)
+	speed = /obj/projectile::speed * 1
 
 /obj/projectile/nt_protomag/Initialize(mapload)
 	. = ..()
@@ -38,10 +35,13 @@
 /obj/projectile/nt_protomag/practice
 	name = "lightweight slug"
 	color = "#ffffff"
+	damage_force = 5
+	damage_tier = BULLET_TIER_LOW
 
 /obj/projectile/nt_protomag/smoke
 	name = "disintegrating slug"
 	color = "#888888"
+	speed = /obj/projectile/nt_protomag::speed * 0.8
 
 /obj/projectile/nt_protomag/emp
 	name = "ion slug"
@@ -51,6 +51,7 @@
 			sev_3 = 2;
 		}
 	)
+	speed = /obj/projectile/nt_protomag::speed * 0.8
 
 // todo: this is currently disabled as simplemobs are not complex-AI enough for us to do this, and we don't need a PVP-only tool
 // /obj/projectile/nt_protomag/concussive
@@ -59,14 +60,17 @@
 /obj/projectile/nt_protomag/penetrator
 	name = "high-velocity slug"
 	color = "#aaffaa"
+	speed = /obj/projectile/nt_protomag::speed * 1.25
 
 /obj/projectile/nt_protomag/shock
 	name = "piezo slug"
 	color = "#cccc55"
+	speed = /obj/projectile/nt_protomag::speed * 0.8
 
 /obj/projectile/nt_protomag/flare
 	name = "tracer shot"
 	color = "#aa3333"
+	speed = /obj/projectile/nt_protomag::speed * 0.6
 
 // todo: fuck no, rework fire stacks / fire first, holy crap; even then this should take multiple hits to ignite.
 // /obj/projectile/nt_protomag/incendiary
