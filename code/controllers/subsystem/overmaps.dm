@@ -42,7 +42,7 @@ SUBSYSTEM_DEF(overmaps)
 /datum/controller/subsystem/overmaps/Initialize()
 	make_default_overmap()
 	rebuild_helm_computers()
-	return ..()
+	return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/overmaps/on_max_z_changed(old_z_count, new_z_count)
 	. = ..()

@@ -30,7 +30,7 @@ SUBSYSTEM_DEF(gamemaster)
 					suspended = FALSE
 			else
 				sleep(30 SECONDS)
-	return ..()
+	return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/gamemaster/fire(resumed)
 	if(SSticker && SSticker.current_state == GAME_STATE_PLAYING && !suspended)

@@ -138,7 +138,7 @@ SUBSYSTEM_DEF(mapping)
 	// todo: refactor
 	repopulate_sorted_areas()
 
-	return ..()
+	return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/mapping/Recover()
 	. = ..()

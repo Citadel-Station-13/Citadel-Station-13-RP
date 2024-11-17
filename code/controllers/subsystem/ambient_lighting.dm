@@ -13,7 +13,7 @@ SUBSYSTEM_DEF(ambient_lighting)
 
 /datum/controller/subsystem/ambient_lighting/Initialize(start_timeofday)
 	fire(FALSE, TRUE)
-	return ..()
+	return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/ambient_lighting/fire(resumed = FALSE, no_mc_tick = FALSE)
 	var/list/curr = queued
