@@ -135,9 +135,10 @@
 
 /mob/proc/_unequip_slot(slot, flags)
 	SHOULD_NOT_OVERRIDE(TRUE)
+	var/obj/item/old = _item_by_slot(slot)
 	. = _set_inv_slot(slot, null, flags) != INVENTORY_SLOT_DOES_NOT_EXIST
 	if(.)
-		inventory.on_item_exited(., resolve_inventory_slot(slot))
+		inventory.on_item_exited(old, resolve_inventory_slot(slot))
 
 /**
  * handles removing an item from our hud
@@ -219,7 +220,7 @@
 	SHOULD_NOT_OVERRIDE(TRUE)
 	. = _set_inv_slot(slot, I, flags) != INVENTORY_SLOT_DOES_NOT_EXIST
 	if(.)
-		inventory.on_item_entered(., resolve_inventory_slot(slot))
+		inventory.on_item_entered(I, resolve_inventory_slot(slot))
 
 //* Slot Change *//
 

@@ -181,6 +181,7 @@
 			// already in inv
 			if(!_handle_item_reequip(I, SLOT_ID_HANDS, existing_slot, flags))
 				return FALSE
+			log_inventory("equip-to-hand: keyname [key_name(src)] index [index] item [I]([ref(I)]) from slot [existing_slot]")
 		else
 			// newly eqiupped
 			var/atom/old_loc = I.loc
@@ -189,9 +190,10 @@
 			if(I.loc != src)
 				return FALSE
 			I.pickup(src, flags, old_loc)
-			I.equipped(src, SLOT_ID_HANDS, flags)
 			log_inventory("pickup-to-hand: keyname [key_name(src)] index [index] item [I]([ref(I)])")
 
+		I.held_index = index
+		I.equipped(src, SLOT_ID_HANDS, flags)
 		inventory.held_items[index] = I
 		inventory.on_item_entered(I, index)
 
@@ -218,6 +220,7 @@
 	inventory.held_items[index] = null
 	inventory.on_item_exited(I, index)
 
+	I.held_index = null
 	I.unequipped(src, SLOT_ID_HANDS, flags)
 
 /**
@@ -229,5 +232,6 @@
 
 	inventory.held_items[old_index] = null
 	inventory.held_items[index] = I
+	I.held_index = index
 	inventory.on_item_swapped(I, old_index, index)
 

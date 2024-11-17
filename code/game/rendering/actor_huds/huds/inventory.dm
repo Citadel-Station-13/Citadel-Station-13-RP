@@ -46,11 +46,32 @@
 	return ..()
 
 /datum/actor_hud/inventory/proc/bind_to_inventory(datum/inventory/inventory)
+	ASSERT(!host)
 	host = inventory
 	LAZYADD(inventory.huds_using, src)
 	rebuild(inventory.build_inventory_slots_with_remappings(), length(inventory.held_items))
+	for(var/i in 1 to length(inventory.held_items))
+		if(!inventory.held_items[i])
+			continue
+		add_item(inventory.held_items[i], i)
+	for(var/slot_id in inventory.owner.get_inventory_slot_ids())
+		var/obj/item/item_in_slot = inventory.owner.item_by_slot_id(slot_id)
+		if(!item_in_slot)
+			continue
+		add_item(item_in_slot, resolve_inventory_slot(slot_id))
+	var/atom/movable/screen/actor_hud/inventory/plate/hand/active_hand_plate = inventory.owner.active_hand
+	active_hand_plate.add_overlay("[active_hand_plate.icon_state]-active")
 
 /datum/actor_hud/inventory/proc/unbind_from_inventory(datum/inventory/inventory)
+	for(var/i in 1 to length(inventory.held_items))
+		if(!inventory.held_items[i])
+			continue
+		remove_item(inventory.held_items[i], i)
+	for(var/slot_id in inventory.owner.get_inventory_slot_ids())
+		var/obj/item/item_in_slot = inventory.owner.item_by_slot_id(slot_id)
+		if(!item_in_slot)
+			continue
+		remove_item(item_in_slot, resolve_inventory_slot(slot_id))
 	cleanup()
 	LAZYREMOVE(inventory.huds_using, src)
 	host = null
@@ -72,11 +93,13 @@
 	var/list/atom/movable/screen/actor_hud/inventory/plate/slot/slot_objects = all_slot_screen_objects()
 	remove_screen(slot_objects)
 	QDEL_LIST(slot_objects)
+	slots = null
 
 	// hands
 	var/list/atom/movable/screen/actor_hud/inventory/plate/hand/hand_objects = all_hand_screen_objects()
 	remove_screen(hand_objects)
 	QDEL_LIST(hand_objects)
+	hands = null
 
 	// buttons
 	var/list/atom/movable/screen/actor_hud/inventory/button_objects = all_button_screen_objects()
@@ -451,7 +474,7 @@
 	hud.toggle_hidden_class(INVENTORY_HUD_CLASS_DRAWER, INVENTORY_HUD_HIDE_SOURCE_DRAWER)
 
 /atom/movable/screen/actor_hud/inventory/drawer/update_icon_state()
-	icon_state = "[INVENTORY_HUD_CLASS_DRAWER in hud.hidden_classes ? "drawer" : "drawer-active"]"
+	icon_state = "[(INVENTORY_HUD_CLASS_DRAWER in hud.hidden_classes) ? "drawer" : "drawer-active"]"
 	return ..()
 
 /**

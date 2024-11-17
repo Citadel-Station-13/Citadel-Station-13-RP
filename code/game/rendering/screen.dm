@@ -17,7 +17,10 @@
 	master = null
 	return ..()
 
-//* Default Click Handling *//
+//*                                 Default Click Handling                                      *//
+//* At this point in time, all new screen objects should be able to self-sanitize their inputs. *//
+//*    This is to prevent security holes from happening when we eventually add the ability to   *//
+//*                 observe another player's POV, including their full UI.                      *//
 
 /atom/movable/screen/Click(location, control, params)
 	if(!check_allowed(usr))
