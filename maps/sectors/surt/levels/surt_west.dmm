@@ -1,20 +1,20 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "ax" = (
 /turf/simulated/floor/outdoors/ash_sand,
-/area/lavaland/central/unexplored)
+/area/sector/surt/central/unexplored)
 "aN" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/plating,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "aX" = (
 /obj/structure/anomaly_container,
 /turf/simulated/floor/tiled,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "bG" = (
 /mob/living/simple_mob/animal/space/bats/surt,
 /turf/simulated/floor/outdoors/ash_sand,
-/area/lavaland/central/unexplored)
+/area/sector/surt/central/unexplored)
 "bH" = (
 /obj/machinery/hyperpad/centre{
 	map_pad_id = "lavaland_away";
@@ -22,13 +22,13 @@
 	newcolor = "#fcba03"
 	},
 /turf/simulated/floor/tiled/techmaint,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "ce" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 5
 	},
 /turf/simulated/floor/tiled/techmaint,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "ci" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -36,12 +36,12 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "cR" = (
 /obj/structure/bed/double/padded,
 /obj/item/bedsheet/purpledouble,
 /turf/simulated/floor/carpet/oracarpet,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "da" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 10
@@ -52,16 +52,16 @@
 	dir = 6
 	},
 /turf/simulated/floor/plating,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "db" = (
 /turf/simulated/wall,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "dl" = (
 /obj/machinery/atmospherics/pipe/tank/air{
 	dir = 1
 	},
 /turf/simulated/floor/plating,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "do" = (
 /obj/machinery/door/airlock/multi_tile/glass{
 	dir = 4;
@@ -77,7 +77,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "dP" = (
 /obj/machinery/recharge_station,
 /obj/machinery/light/small{
@@ -87,7 +87,7 @@
 	pixel_y = 32
 	},
 /turf/simulated/floor/tiled,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "dX" = (
 /obj/machinery/shower{
 	dir = 8
@@ -99,31 +99,31 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/old_tile,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "ew" = (
 /turf/simulated/floor/tiled,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "eM" = (
 /obj/machinery/vending/snack,
 /obj/machinery/light/small{
 	dir = 8
 	},
 /turf/simulated/floor/tiled,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "eY" = (
 /obj/structure/catwalk,
 /turf/simulated/floor/outdoors/ash_sand,
-/area/lavaland/central/explored)
+/area/sector/surt/central/explored)
 "fj" = (
 /obj/structure/catwalk,
 /turf/simulated/lava,
-/area/lavaland/central/explored)
+/area/sector/surt/central/explored)
 "fm" = (
 /obj/machinery/power/geothermal_collector/manifold{
 	dir = 1
 	},
 /turf/simulated/lava,
-/area/lavaland/central/explored)
+/area/sector/surt/central/explored)
 "fv" = (
 /obj/machinery/power/geothermal_controller/prepared,
 /obj/structure/catwalk,
@@ -140,30 +140,30 @@
 	icon_state = "0-2"
 	},
 /turf/simulated/floor/plating,
-/area/lavaland/central/explored)
+/area/sector/surt/central/explored)
 "gd" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "gy" = (
 /turf/simulated/floor/outdoors/ash_sand,
-/area/lavaland/central/explored)
+/area/sector/surt/central/explored)
 "hh" = (
 /obj/machinery/door/firedoor/glass{
 	dir = 8
 	},
 /turf/simulated/floor/tiled,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "hp" = (
 /obj/effect/debris/cleanable/dirt,
 /turf/simulated/mineral,
-/area/lavaland/central/explored)
+/area/sector/surt/central/explored)
 "hr" = (
 /obj/machinery/light/small{
 	dir = 4
 	},
 /turf/simulated/floor/plating,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "hw" = (
 /obj/machinery/power/smes/buildable/main{
 	charge = 4e+007;
@@ -174,27 +174,27 @@
 	icon_state = "0-4"
 	},
 /turf/simulated/floor/plating,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "hx" = (
 /obj/structure/statue/bone{
 	anchored = 1;
 	dir = 1
 	},
 /turf/simulated/floor/outdoors/ash_sand,
-/area/lavaland/central/explored)
+/area/sector/surt/central/explored)
 "hA" = (
 /obj/machinery/light/small{
 	dir = 8
 	},
 /turf/simulated/floor/plating,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "ig" = (
 /obj/machinery/atmospherics/component/binary/circulator,
 /turf/simulated/floor/plating,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "is" = (
 /turf/simulated/floor/sandstone,
-/area/lavaland/central/explored)
+/area/sector/surt/central/explored)
 "iu" = (
 /obj/machinery/button/remote/airlock{
 	id = "mine_purp";
@@ -210,11 +210,11 @@
 	dir = 9
 	},
 /turf/simulated/floor/carpet/purcarpet,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "ix" = (
 /obj/machinery/power/geothermal_collector/fourway,
 /turf/simulated/lava,
-/area/lavaland/central/explored)
+/area/sector/surt/central/explored)
 "iA" = (
 /obj/machinery/door/airlock/maintenance{
 	name = "SMES Access";
@@ -224,7 +224,7 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/plating,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "jk" = (
 /obj/machinery/power/terminal{
 	dir = 1
@@ -233,11 +233,11 @@
 	icon_state = "0-4"
 	},
 /turf/simulated/floor/plating,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "jO" = (
 /obj/structure/curtain/ashlander,
 /turf/simulated/floor/bone,
-/area/lavaland/central/explored)
+/area/sector/surt/central/explored)
 "jP" = (
 /obj/machinery/light/small{
 	dir = 4
@@ -248,40 +248,40 @@
 	req_one_access = list(48)
 	},
 /turf/simulated/floor/carpet/oracarpet,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "jR" = (
 /obj/machinery/camera/network/mining{
 	dir = 4
 	},
 /turf/simulated/floor/plating,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "ki" = (
 /obj/machinery/power/geothermal_collector{
 	dir = 10
 	},
 /turf/simulated/lava,
-/area/lavaland/central/explored)
+/area/sector/surt/central/explored)
 "km" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
 /turf/simulated/floor/plating,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "kp" = (
 /obj/machinery/light/small{
 	dir = 4
 	},
 /obj/machinery/washing_machine,
 /turf/simulated/floor/tiled,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "kq" = (
 /obj/machinery/power/generator,
 /turf/simulated/floor/plating,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "kr" = (
 /obj/machinery/power/geothermal_collector{
 	dir = 6
 	},
 /turf/simulated/lava,
-/area/lavaland/central/explored)
+/area/sector/surt/central/explored)
 "lm" = (
 /obj/structure/cable{
 	icon_state = "2-4"
@@ -293,7 +293,7 @@
 	dir = 6
 	},
 /turf/simulated/floor/plating,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "ls" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -305,7 +305,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/plating,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "lx" = (
 /obj/machinery/button/remote/blast_door{
 	dir = 4;
@@ -316,7 +316,7 @@
 	req_one_access = list(1,5,31,38,47,48)
 	},
 /turf/simulated/floor/outdoors/ash_sand,
-/area/lavaland/central/explored)
+/area/sector/surt/central/explored)
 "lA" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -332,7 +332,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/plating,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "lD" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -344,7 +344,7 @@
 	dir = 10
 	},
 /turf/simulated/floor/plating,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "lF" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
@@ -363,13 +363,13 @@
 	},
 /obj/structure/fans/tiny,
 /turf/simulated/floor/plating,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "lT" = (
 /obj/structure/table/steel,
 /obj/item/storage/toolbox/mechanical,
 /obj/item/multitool,
 /turf/simulated/floor/tiled,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "lX" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden,
 /obj/machinery/airlock_sensor{
@@ -379,11 +379,11 @@
 	},
 /obj/map_helper/airlock/sensor/chamber_sensor,
 /turf/simulated/floor/plating,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "mb" = (
 /obj/structure/table/bench/sandstone,
 /turf/simulated/floor/sandstone,
-/area/lavaland/central/explored)
+/area/sector/surt/central/explored)
 "mh" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	dir = 8;
@@ -396,7 +396,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/plating,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "mm" = (
 /obj/machinery/air_alarm/alarms_hidden{
 	dir = 4;
@@ -404,12 +404,12 @@
 	req_one_access = list(48)
 	},
 /turf/simulated/floor/plating,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "mq" = (
 /obj/structure/table/steel,
 /obj/machinery/recharger,
 /turf/simulated/floor/tiled,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "mt" = (
 /obj/structure/table/standard,
 /obj/item/storage/toolbox/electrical,
@@ -420,41 +420,41 @@
 	pixel_y = -24
 	},
 /turf/simulated/floor/plating,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "mz" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/plating,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "nq" = (
 /obj/machinery/power/geothermal_collector{
 	dir = 5
 	},
 /turf/simulated/lava,
-/area/lavaland/central/explored)
+/area/sector/surt/central/explored)
 "ny" = (
 /mob/living/simple_mob/animal/passive/mouse/gray{
 	name = "Jerry"
 	},
 /turf/simulated/floor/plating,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "nz" = (
 /obj/machinery/atmospherics/component/unary/outlet_injector{
 	dir = 4
 	},
 /turf/simulated/floor/outdoors/ash_sand,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "nC" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "nE" = (
 /obj/machinery/atmospherics/pipe/simple/visible/red{
 	dir = 4
 	},
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "nZ" = (
 /obj/machinery/atmospherics/pipe/simple/visible/red{
 	dir = 4
@@ -464,37 +464,37 @@
 	name = "Waste"
 	},
 /turf/simulated/floor/plating,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "ob" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "oj" = (
 /obj/machinery/atmospherics/pipe/simple/visible/universal{
 	dir = 4
 	},
 /turf/simulated/floor/plating,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "or" = (
 /obj/machinery/light/small,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
 /turf/simulated/floor/plating,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "oy" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 10
 	},
 /turf/simulated/floor/plating,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "oX" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techmaint,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "pf" = (
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -502,7 +502,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/plating,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "pi" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 5
@@ -511,7 +511,7 @@
 	dir = 5
 	},
 /turf/simulated/floor/plating,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "pk" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -520,7 +520,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/plating,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "pn" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -529,7 +529,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/plating,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "pq" = (
 /obj/structure/bed/chair{
 	dir = 8
@@ -538,7 +538,7 @@
 	dir = 9
 	},
 /turf/simulated/floor/carpet/oracarpet,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "pv" = (
 /obj/structure/table/rack,
 /obj/structure/window/reinforced{
@@ -563,7 +563,7 @@
 /obj/item/clothing/head/helmet/space/anomaly,
 /obj/item/clothing/glasses/meson,
 /turf/simulated/floor/tiled,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "pz" = (
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -576,20 +576,20 @@
 	dir = 4
 	},
 /turf/simulated/floor/plating,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "pE" = (
 /obj/machinery/light/small{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/old_tile,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "pJ" = (
 /obj/machinery/light/small{
 	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/tank/oxygen,
 /turf/simulated/floor/plating,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "pK" = (
 /obj/machinery/embedded_controller/radio/airlock/airlock_controller{
 	dir = 8;
@@ -609,13 +609,13 @@
 	icon_state = "1-8"
 	},
 /turf/simulated/floor/plating,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "pW" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
 /turf/simulated/floor/plating,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "qb" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/cable{
@@ -626,19 +626,19 @@
 	pixel_x = 27
 	},
 /turf/simulated/floor/plating,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "qc" = (
 /obj/machinery/portable_atmospherics/canister/air,
 /turf/simulated/floor/reinforced/airmix,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "qd" = (
 /turf/simulated/floor/reinforced/airmix,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "ql" = (
 /obj/structure/bed/double/padded,
 /obj/item/bedsheet/greendouble,
 /turf/simulated/floor/carpet/purcarpet,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "qp" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 8
@@ -648,23 +648,23 @@
 	},
 /obj/machinery/portable_atmospherics/canister/oxygen,
 /turf/simulated/floor/plating,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "qw" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 8
 	},
 /turf/simulated/floor/plating,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "qz" = (
 /turf/simulated/floor/plating,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "qA" = (
 /turf/simulated/floor/tiled/old_tile,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "qE" = (
 /obj/structure/curtain/ashlander,
 /turf/simulated/floor/sandstone,
-/area/lavaland/central/explored)
+/area/sector/surt/central/explored)
 "qF" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/cable{
@@ -675,7 +675,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/plating,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "qU" = (
 /obj/machinery/air_sensor{
 	frequency = 1443;
@@ -683,7 +683,7 @@
 	output = 7
 	},
 /turf/simulated/floor/reinforced/airmix,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "ra" = (
 /obj/machinery/atmospherics/component/unary/vent_pump{
 	dir = 4;
@@ -700,14 +700,14 @@
 	pump_direction = 0
 	},
 /turf/simulated/floor/reinforced/airmix,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "re" = (
 /obj/machinery/atmospherics/pipe/simple/visible/cyan{
 	dir = 4
 	},
 /obj/spawner/window/low_wall/borosillicate/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "rK" = (
 /obj/machinery/atmospherics/component/binary/pump/on{
 	dir = 4
@@ -716,14 +716,14 @@
 	dir = 8
 	},
 /turf/simulated/floor/plating,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "rM" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 10
 	},
 /obj/machinery/fire_alarm/east_mount,
 /turf/simulated/floor/tiled/old_tile,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "so" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -733,14 +733,14 @@
 	},
 /obj/machinery/power/apc/high/south_mount,
 /turf/simulated/floor/plating,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "sA" = (
 /turf/simulated/floor/bone,
-/area/lavaland/central/explored)
+/area/sector/surt/central/explored)
 "sH" = (
 /obj/machinery/washing_machine,
 /turf/simulated/floor/tiled,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "sJ" = (
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 10
@@ -756,7 +756,7 @@
 	},
 /obj/structure/curtain/open/shower/engineering,
 /turf/simulated/floor/tiled/white,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "sN" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
@@ -766,7 +766,7 @@
 	icon_state = "1-8"
 	},
 /turf/simulated/floor/plating,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "sP" = (
 /obj/structure/table/standard,
 /obj/item/towel/random,
@@ -781,7 +781,7 @@
 	req_one_access = list(48)
 	},
 /turf/simulated/floor/tiled/old_tile,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "sQ" = (
 /obj/machinery/light{
 	dir = 1
@@ -805,7 +805,7 @@
 	dir = 5
 	},
 /turf/simulated/floor/tiled,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "sV" = (
 /obj/machinery/door/firedoor{
 	req_one_access = list(48)
@@ -820,7 +820,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "sW" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -832,15 +832,15 @@
 	dir = 8
 	},
 /turf/simulated/floor/wood,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "sX" = (
 /obj/machinery/sleep_console,
 /turf/simulated/floor/tiled,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "te" = (
 /obj/structure/sign/warning/lava,
 /turf/simulated/wall/r_wall,
-/area/lavaland/central/explored)
+/area/sector/surt/central/explored)
 "tn" = (
 /obj/structure/sink{
 	dir = 8;
@@ -851,7 +851,7 @@
 	pixel_x = -28
 	},
 /turf/simulated/floor/tiled/old_tile,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "tv" = (
 /obj/structure/urinal{
 	pixel_y = 31
@@ -860,7 +860,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/old_tile,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "tz" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 6
@@ -874,7 +874,7 @@
 	req_one_access = list(48)
 	},
 /turf/simulated/floor/tiled,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "tN" = (
 /obj/machinery/light/small{
 	dir = 8
@@ -893,7 +893,7 @@
 	req_access = list(65)
 	},
 /turf/simulated/floor/tiled,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "tU" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 10
@@ -902,31 +902,31 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "tV" = (
 /turf/simulated/lava,
-/area/lavaland/central/explored)
+/area/sector/surt/central/explored)
 "ub" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
 	},
 /turf/simulated/floor/tiled,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "uh" = (
 /obj/effect/floor_decal/industrial/warning,
 /turf/simulated/floor/tiled/techmaint,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "ui" = (
 /obj/structure/table/marble,
 /obj/machinery/chemical_dispenser/catering/bar_alc,
 /obj/effect/debris/cleanable/cobweb,
 /turf/simulated/floor/wood,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "uk" = (
 /obj/structure/table/marble,
 /obj/machinery/chemical_dispenser/catering/bar_soft,
 /turf/simulated/floor/wood,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "ut" = (
 /obj/machinery/vending/coffee,
 /obj/machinery/light/small{
@@ -937,7 +937,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "uA" = (
 /obj/machinery/vending/boozeomat{
 	req_access = null;
@@ -947,7 +947,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/wood,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "uE" = (
 /obj/structure/closet/crate/bin,
 /obj/machinery/air_alarm/alarms_hidden{
@@ -955,34 +955,34 @@
 	req_one_access = list(48)
 	},
 /turf/simulated/floor/wood,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "vl" = (
 /obj/structure/table/woodentable,
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
 /turf/simulated/floor/carpet/purcarpet,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "vm" = (
 /obj/structure/table/marble,
 /obj/machinery/microwave,
 /turf/simulated/floor/wood,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "vr" = (
 /obj/structure/table/bench/bone,
 /turf/simulated/floor/bone,
-/area/lavaland/central/explored)
+/area/sector/surt/central/explored)
 "vt" = (
 /obj/structure/statue/bone{
 	anchored = 1;
 	dir = 4
 	},
 /turf/simulated/floor/outdoors/ash_sand,
-/area/lavaland/central/explored)
+/area/sector/surt/central/explored)
 "vu" = (
 /obj/structure/mob_spawner/gutshank,
 /turf/simulated/floor/outdoors/ash_sand,
-/area/lavaland/central/explored)
+/area/sector/surt/central/explored)
 "vz" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -990,7 +990,7 @@
 	pixel_x = -26
 	},
 /turf/simulated/floor/tiled,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "vA" = (
 /obj/structure/table/standard,
 /obj/item/roller,
@@ -998,7 +998,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "vE" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 6
@@ -1007,7 +1007,7 @@
 	pixel_x = -26
 	},
 /turf/simulated/floor/wood,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "vK" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 6
@@ -1016,7 +1016,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/wood,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "vW" = (
 /obj/structure/table/standard,
 /obj/machinery/light/small,
@@ -1032,13 +1032,13 @@
 	pixel_y = 2
 	},
 /turf/simulated/floor/tiled,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "vX" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techmaint,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "ws" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -1047,14 +1047,14 @@
 	dir = 4
 	},
 /turf/simulated/floor/wood,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "wE" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/fire_alarm/west_mount{
 	pixel_x = -26
 	},
 /turf/simulated/floor/tiled,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "wN" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 10
@@ -1063,7 +1063,7 @@
 	dir = 10
 	},
 /turf/simulated/floor/wood,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "wW" = (
 /obj/structure/table/marble,
 /obj/item/storage/box/donkpockets,
@@ -1071,11 +1071,11 @@
 	pixel_x = 27
 	},
 /turf/simulated/floor/wood,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "wX" = (
 /obj/structure/catwalk/ashlander,
 /turf/simulated/lava,
-/area/lavaland/central/explored)
+/area/sector/surt/central/explored)
 "wY" = (
 /obj/machinery/door/airlock/maintenance{
 	name = "Mining Engine Room";
@@ -1084,14 +1084,14 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/plating,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "xd" = (
 /turf/simulated/mineral/rich,
-/area/lavaland/central/unexplored)
+/area/sector/surt/central/unexplored)
 "xf" = (
 /obj/machinery/mech_recharger,
 /turf/simulated/floor/tiled,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "xh" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 8
@@ -1100,11 +1100,11 @@
 	dir = 5
 	},
 /turf/simulated/floor/tiled,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "xH" = (
 /obj/structure/ore_box,
 /turf/simulated/floor/tiled,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "xJ" = (
 /obj/machinery/door/airlock{
 	name = "Showers"
@@ -1112,7 +1112,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled/old_tile,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "xQ" = (
 /obj/machinery/light/small{
 	dir = 8
@@ -1124,13 +1124,13 @@
 	dir = 1
 	},
 /turf/simulated/floor/wood,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "xV" = (
 /obj/machinery/fire_alarm/west_mount{
 	pixel_x = -26
 	},
 /turf/simulated/floor/tiled,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "yp" = (
 /obj/structure/table/marble,
 /obj/machinery/reagentgrinder,
@@ -1139,13 +1139,13 @@
 	dir = 1
 	},
 /turf/simulated/floor/wood,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "yw" = (
 /turf/simulated/floor/wood,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "yP" = (
 /turf/simulated/floor/carpet/purcarpet,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "yX" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 5
@@ -1154,7 +1154,7 @@
 	dir = 5
 	},
 /turf/simulated/floor/wood,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "za" = (
 /obj/machinery/light/small{
 	dir = 4
@@ -1166,12 +1166,12 @@
 	dir = 4
 	},
 /turf/simulated/floor/wood,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "zd" = (
 /obj/machinery/atmospherics/pipe/manifold4w/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/manifold4w/hidden/supply,
 /turf/simulated/floor/tiled,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "zf" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -1181,7 +1181,7 @@
 	},
 /obj/machinery/fire_alarm/north_mount,
 /turf/simulated/floor/tiled,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "zl" = (
 /obj/machinery/light/small{
 	dir = 1
@@ -1193,7 +1193,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "zm" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 9
@@ -1202,14 +1202,14 @@
 	dir = 9
 	},
 /turf/simulated/floor/tiled,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "zt" = (
 /obj/machinery/vending/fitness,
 /obj/machinery/camera/network/mining{
 	dir = 8
 	},
 /turf/simulated/floor/tiled,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "zv" = (
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -1219,7 +1219,7 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/plating,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "zD" = (
 /obj/structure/bed/chair/sofa/right,
 /obj/effect/floor_decal/spline/fancy/wood{
@@ -1229,13 +1229,13 @@
 	dir = 4
 	},
 /turf/simulated/floor/wood,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "zE" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 9
 	},
 /turf/simulated/floor/tiled/techmaint,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "zO" = (
 /obj/machinery/door/airlock/glass_external{
 	req_one_access = list(48)
@@ -1253,21 +1253,21 @@
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/plating,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "Ab" = (
 /obj/machinery/light/small{
 	dir = 4
 	},
 /obj/structure/ore_box,
 /turf/simulated/floor/tiled,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "Ak" = (
 /obj/structure/bed/chair/sofa/left,
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 5
 	},
 /turf/simulated/floor/wood,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "As" = (
 /obj/machinery/door/airlock/multi_tile/glass{
 	dir = 4;
@@ -1277,31 +1277,31 @@
 	dir = 8
 	},
 /turf/simulated/floor/wood,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "Ay" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "AG" = (
 /obj/machinery/vending/cola,
 /turf/simulated/floor/tiled,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "AO" = (
 /turf/simulated/wall/r_wall,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "Bh" = (
 /mob/living/simple_mob/animal/passive/mouse/brown/Tom,
 /turf/simulated/floor/plating,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "Cg" = (
 /obj/structure/table/woodentable,
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "Ci" = (
 /obj/structure/table/marble,
 /obj/effect/floor_decal/spline/fancy/wood{
@@ -1309,33 +1309,33 @@
 	},
 /obj/structure/flora/pottedplant/small,
 /turf/simulated/floor/wood,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "Cq" = (
 /obj/machinery/power/geothermal_collector/manifold{
 	dir = 8
 	},
 /turf/simulated/lava,
-/area/lavaland/central/explored)
+/area/sector/surt/central/explored)
 "CX" = (
 /obj/machinery/power/geothermal_collector{
 	dir = 4
 	},
 /turf/simulated/lava,
-/area/lavaland/central/explored)
+/area/sector/surt/central/explored)
 "Du" = (
 /obj/structure/table/marble,
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 4
 	},
 /turf/simulated/floor/wood,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "Dv" = (
 /obj/machinery/media/jukebox{
 	icon_state = "superjuke-nopower";
 	state_base = "superjuke"
 	},
 /turf/simulated/floor/wood,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "Dx" = (
 /obj/machinery/door/airlock{
 	name = "Custodial Supplies";
@@ -1344,11 +1344,11 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/plating,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "DW" = (
 /obj/structure/sign/warning/lava,
 /turf/simulated/wall/r_wall,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "Em" = (
 /obj/machinery/door/firedoor{
 	req_one_access = list(48)
@@ -1358,7 +1358,7 @@
 	req_one_access = list(1,5,31,38,47,48)
 	},
 /turf/simulated/floor/tiled,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "EE" = (
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 8
@@ -1367,13 +1367,13 @@
 	dir = 1
 	},
 /turf/simulated/floor/wood,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "EX" = (
 /obj/structure/toilet{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/old_tile,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "Fe" = (
 /obj/map_helper/airlock/sensor/ext_sensor,
 /obj/machinery/airlock_sensor/airlock_exterior{
@@ -1387,7 +1387,7 @@
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/plating,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "Fq" = (
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 4
@@ -1396,11 +1396,11 @@
 	dir = 1
 	},
 /turf/simulated/floor/wood,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "Ft" = (
 /obj/machinery/vending/cigarette,
 /turf/simulated/floor/wood,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "FF" = (
 /obj/structure/sink/kitchen{
 	dir = 4;
@@ -1413,7 +1413,7 @@
 	dir = 5
 	},
 /turf/simulated/floor/plating,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "FI" = (
 /obj/structure/table/standard,
 /obj/item/storage/box/mousetraps,
@@ -1430,25 +1430,25 @@
 	req_one_access = list(48)
 	},
 /turf/simulated/floor/plating,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "Ga" = (
 /obj/machinery/atmospherics/pipe/manifold4w/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply,
 /turf/simulated/floor/tiled,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "Go" = (
 /obj/structure/table/bone,
 /turf/simulated/floor/bone,
-/area/lavaland/central/explored)
+/area/sector/surt/central/explored)
 "GE" = (
 /obj/machinery/mineral/equipment_vendor,
 /turf/simulated/floor/tiled,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "GT" = (
 /obj/effect/debris/cleanable/dirt,
 /obj/machinery/fire_alarm/north_mount,
 /turf/simulated/floor/tiled,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "Hk" = (
 /obj/structure/table/rack,
 /obj/item/storage/bag/ore,
@@ -1467,19 +1467,19 @@
 	},
 /obj/item/clothing/glasses/material,
 /turf/simulated/floor/tiled,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "Hr" = (
 /obj/machinery/portable_atmospherics/canister/oxygen,
 /turf/simulated/floor/tiled,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "Hz" = (
 /obj/structure/dispenser/oxygen,
 /turf/simulated/floor/tiled,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "HA" = (
 /obj/structure/closet/emcloset,
 /turf/simulated/floor/tiled,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "HU" = (
 /obj/structure/closet/emcloset,
 /obj/machinery/light/small{
@@ -1487,7 +1487,7 @@
 	},
 /obj/effect/debris/cleanable/cobweb2,
 /turf/simulated/floor/tiled,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "If" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 6
@@ -1496,7 +1496,7 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/plating,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "Il" = (
 /obj/machinery/camera/network/mining{
 	dir = 4
@@ -1507,7 +1507,7 @@
 /obj/item/radio,
 /obj/item/radio,
 /turf/simulated/floor/tiled,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "Iq" = (
 /obj/machinery/light/small{
 	dir = 8
@@ -1518,7 +1518,7 @@
 	pixel_x = -32
 	},
 /turf/simulated/floor/outdoors/ash_sand,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "Ir" = (
 /obj/machinery/light/small{
 	dir = 8
@@ -1532,7 +1532,7 @@
 	req_one_access = list(48)
 	},
 /turf/simulated/floor/carpet/purcarpet,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "Iy" = (
 /obj/structure/window/reinforced{
 	dir = 8
@@ -1559,14 +1559,14 @@
 /obj/item/clothing/head/helmet/space/anomaly,
 /obj/item/clothing/glasses/meson,
 /turf/simulated/floor/tiled,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "IR" = (
 /obj/machinery/door/airlock/multi_tile/glass{
 	name = "Lounge"
 	},
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/wood,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "IV" = (
 /obj/structure/window/reinforced{
 	dir = 1
@@ -1575,11 +1575,11 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/dark,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "Jw" = (
 /obj/structure/table/steel,
 /turf/simulated/floor/tiled,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "Jz" = (
 /obj/machinery/light/small{
 	dir = 8
@@ -1588,61 +1588,61 @@
 	dir = 1
 	},
 /turf/simulated/floor/plating,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "Ki" = (
 /obj/machinery/power/geothermal_collector/manifold,
 /turf/simulated/lava,
-/area/lavaland/central/explored)
+/area/sector/surt/central/explored)
 "Kj" = (
 /obj/machinery/recharge_station,
 /obj/machinery/recharger/wallcharger{
 	pixel_y = 32
 	},
 /turf/simulated/floor/tiled,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "KC" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 8
 	},
 /turf/simulated/floor/tiled,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "KG" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techmaint,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "KN" = (
 /obj/structure/closet/secure_closet/personal,
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
 	},
 /turf/simulated/floor/carpet/oracarpet,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "KX" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 6
 	},
 /turf/simulated/floor/tiled,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "KZ" = (
 /obj/machinery/mech_recharger,
 /obj/machinery/camera/network/mining{
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "La" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/manifold4w/hidden/supply,
 /turf/simulated/floor/tiled,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "Lc" = (
 /obj/structure/mob_spawner/goliath,
 /turf/simulated/floor/outdoors/ash_sand,
-/area/lavaland/central/explored)
+/area/sector/surt/central/explored)
 "Lg" = (
 /obj/structure/cable{
 	icon_state = "1-8"
@@ -1651,7 +1651,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/plating,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "Lr" = (
 /obj/structure/table/standard,
 /obj/item/storage/toolbox/mechanical,
@@ -1664,10 +1664,10 @@
 	req_one_access = list(48)
 	},
 /turf/simulated/floor/plating,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "Md" = (
 /turf/unsimulated/wall/mineral,
-/area/lavaland/central/explored)
+/area/sector/surt/central/explored)
 "Mw" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -1676,7 +1676,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "MO" = (
 /obj/structure/table/steel,
 /obj/item/geiger_counter,
@@ -1687,7 +1687,7 @@
 /obj/item/suit_cooling_unit,
 /obj/item/suit_cooling_unit,
 /turf/simulated/floor/tiled,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "MV" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -1701,7 +1701,7 @@
 	name = "Staging Area Blast Door"
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "ND" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -1710,23 +1710,23 @@
 	dir = 10
 	},
 /turf/simulated/floor/tiled,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "NN" = (
 /obj/structure/table/steel,
 /obj/machinery/cell_charger,
 /turf/simulated/floor/tiled,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "Ob" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "Og" = (
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/plating,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "Op" = (
 /obj/structure/table/woodentable,
 /obj/machinery/recharger,
@@ -1734,13 +1734,13 @@
 	dir = 4
 	},
 /turf/simulated/floor/carpet/blucarpet,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "Oq" = (
 /obj/machinery/power/geothermal_collector{
 	dir = 9
 	},
 /turf/simulated/lava,
-/area/lavaland/central/explored)
+/area/sector/surt/central/explored)
 "Ot" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -1748,7 +1748,7 @@
 	req_one_access = list(48)
 	},
 /turf/simulated/floor/tiled,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "Ow" = (
 /obj/machinery/button/remote/airlock{
 	id = "mine_orange";
@@ -1762,17 +1762,17 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/carpet/oracarpet,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "OB" = (
 /obj/structure/undies_wardrobe,
 /turf/simulated/floor/tiled/old_tile,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "Pk" = (
 /obj/machinery/power/geothermal_collector/manifold{
 	dir = 4
 	},
 /turf/simulated/lava,
-/area/lavaland/central/explored)
+/area/sector/surt/central/explored)
 "Pu" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 6
@@ -1785,41 +1785,41 @@
 	req_one_access = list(48)
 	},
 /turf/simulated/floor/carpet/blucarpet,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "Pv" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "PM" = (
 /obj/structure/closet/secure_closet/personal,
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
 	},
 /turf/simulated/floor/carpet/blucarpet,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "PP" = (
 /obj/structure/mob_spawner/goliath,
 /turf/simulated/floor/outdoors/ash_sand,
-/area/lavaland/central/unexplored)
+/area/sector/surt/central/unexplored)
 "PZ" = (
 /obj/machinery/light/small{
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "Qo" = (
 /obj/structure/bed/chair,
 /turf/simulated/floor/carpet/bcarpet,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "Qs" = (
 /obj/machinery/air_alarm/alarms_hidden{
 	pixel_y = 22;
 	req_one_access = list(48)
 	},
 /turf/simulated/floor/carpet/bcarpet,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "QA" = (
 /obj/machinery/door/airlock/glass_external{
 	req_one_access = list(48)
@@ -1830,24 +1830,24 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/plating,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "QC" = (
 /obj/structure/bed/double/padded,
 /obj/item/bedsheet/double,
 /turf/simulated/floor/carpet/bcarpet,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "QN" = (
 /obj/machinery/light/small{
 	dir = 8
 	},
 /obj/machinery/mining/drill,
 /turf/simulated/floor/tiled/dark,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "QR" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "QY" = (
 /obj/structure/table/woodentable,
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
@@ -1858,13 +1858,13 @@
 	pixel_y = -25
 	},
 /turf/simulated/floor/carpet/oracarpet,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "Ro" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 6
 	},
 /turf/simulated/floor/tiled/techmaint,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "Ru" = (
 /obj/machinery/door/airlock{
 	id_tag = "mine_orange";
@@ -1873,7 +1873,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/carpet/oracarpet,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "RE" = (
 /obj/machinery/atmospheric_field_generator/perma,
 /obj/machinery/door/blast/regular{
@@ -1881,17 +1881,17 @@
 	name = "Staging Area Blast Door"
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "RK" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled/old_tile,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "RL" = (
 /turf/simulated/mineral/rich,
-/area/lavaland/central/explored)
+/area/sector/surt/central/explored)
 "RS" = (
 /obj/machinery/door/airlock{
 	id_tag = "mine_purp";
@@ -1900,20 +1900,20 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/carpet/purcarpet,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "RX" = (
 /turf/simulated/mineral,
-/area/lavaland/central/unexplored)
+/area/sector/surt/central/unexplored)
 "Sa" = (
 /obj/machinery/camera/network/mining{
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "Su" = (
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/wood,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "SH" = (
 /obj/machinery/light/small{
 	dir = 8
@@ -1926,7 +1926,7 @@
 	pixel_y = -25
 	},
 /turf/simulated/floor/carpet/blucarpet,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "SJ" = (
 /obj/machinery/button/remote/airlock{
 	id = "mine_blue";
@@ -1938,37 +1938,37 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/carpet/blucarpet,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "SL" = (
 /obj/structure/extinguisher_cabinet{
 	pixel_x = 27
 	},
 /obj/machinery/light/small,
 /turf/simulated/floor/tiled,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "SM" = (
 /obj/structure/bed,
 /obj/item/bedsheet/red,
 /turf/simulated/floor/carpet/blucarpet,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "SN" = (
 /obj/structure/extinguisher_cabinet{
 	pixel_x = 27
 	},
 /turf/simulated/floor/tiled,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "SZ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled/old_tile,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "Ty" = (
 /obj/structure/table/woodentable,
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
 /turf/simulated/floor/carpet/bcarpet,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "TA" = (
 /obj/machinery/button/remote/airlock{
 	id = "mine_black";
@@ -1984,7 +1984,7 @@
 	dir = 10
 	},
 /turf/simulated/floor/carpet/bcarpet,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "TJ" = (
 /obj/structure/cable{
 	icon_state = "2-8"
@@ -1996,7 +1996,7 @@
 	dir = 6
 	},
 /turf/simulated/floor/plating,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "TW" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -2009,7 +2009,7 @@
 	req_one_access = list(48)
 	},
 /turf/simulated/floor/tiled,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "Ui" = (
 /obj/structure/closet/secure_closet/personal,
 /obj/machinery/light/small{
@@ -2019,13 +2019,13 @@
 	dir = 8
 	},
 /turf/simulated/floor/carpet/bcarpet,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "UV" = (
 /obj/machinery/mining/brace{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/dark,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "Vv" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 8
@@ -2036,14 +2036,14 @@
 	req_one_access = list(48)
 	},
 /turf/simulated/floor/tiled,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "Vw" = (
 /obj/machinery/camera/network/mining{
 	dir = 1
 	},
 /obj/structure/flora/pottedplant/subterranean,
 /turf/simulated/floor/tiled,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "VA" = (
 /obj/machinery/suspension_gen{
 	dir = 4
@@ -2057,7 +2057,7 @@
 	req_access = list(65)
 	},
 /turf/simulated/floor/tiled,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "VC" = (
 /obj/structure/table/woodentable,
 /obj/item/paper_bin,
@@ -2066,13 +2066,13 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "VD" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "VM" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
@@ -2083,7 +2083,7 @@
 	req_one_access = list(48)
 	},
 /turf/simulated/floor/tiled,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "VT" = (
 /obj/structure/sign/warning{
 	desc = "Warning: The PMD has confirmed multiple Memetic Hazards in this area. Please wear the appropriate protection.";
@@ -2097,7 +2097,7 @@
 /obj/machinery/cell_charger,
 /obj/item/cell/high,
 /turf/simulated/floor/tiled,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "VX" = (
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 10
@@ -2113,13 +2113,13 @@
 	},
 /obj/structure/curtain/open/shower/engineering,
 /turf/simulated/floor/tiled/white,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "VY" = (
 /obj/machinery/light/small{
 	dir = 8
 	},
 /turf/simulated/floor/outdoors/ash_sand,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "Wd" = (
 /obj/machinery/door/airlock{
 	id_tag = "mine_blue";
@@ -2128,11 +2128,11 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/carpet/blucarpet,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "We" = (
 /obj/machinery/light/small,
 /turf/simulated/floor/tiled,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "Wf" = (
 /obj/machinery/door/airlock{
 	id_tag = "mine_black";
@@ -2141,7 +2141,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/carpet/bcarpet,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "Wh" = (
 /obj/machinery/door/firedoor{
 	req_one_access = list(48)
@@ -2149,7 +2149,7 @@
 /obj/structure/grille,
 /obj/structure/window/reinforced/full,
 /turf/simulated/floor/plating,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "Wj" = (
 /obj/machinery/door/firedoor{
 	req_one_access = list(48)
@@ -2161,10 +2161,10 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "Wq" = (
 /turf/simulated/wall/sandstone,
-/area/lavaland/central/explored)
+/area/sector/surt/central/explored)
 "Wv" = (
 /obj/structure/table/rack,
 /obj/item/storage/bag/ore,
@@ -2181,20 +2181,20 @@
 	},
 /obj/item/clothing/glasses/material,
 /turf/simulated/floor/tiled,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "Wy" = (
 /obj/structure/flora/pottedplant/smalltree{
 	pixel_x = -5;
 	pixel_y = 15
 	},
 /turf/simulated/floor/tiled,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "WG" = (
 /obj/machinery/light/small{
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "WK" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 6
@@ -2206,10 +2206,10 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "WM" = (
 /turf/simulated/wall/bone,
-/area/lavaland/central/explored)
+/area/sector/surt/central/explored)
 "WR" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -2218,12 +2218,12 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "WV" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply,
 /turf/simulated/floor/tiled,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "WX" = (
 /obj/structure/catwalk,
 /obj/structure/railing/grey{
@@ -2236,7 +2236,7 @@
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/plating,
-/area/lavaland/central/explored)
+/area/sector/surt/central/explored)
 "WZ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 10
@@ -2248,11 +2248,11 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "Xi" = (
 /obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/tiled,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "Xz" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 9
@@ -2261,11 +2261,11 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "XG" = (
 /obj/structure/closet/crate/medical,
 /turf/simulated/floor/tiled,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "XQ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 6
@@ -2274,18 +2274,18 @@
 	dir = 6
 	},
 /turf/simulated/floor/tiled,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "XR" = (
 /obj/structure/closet/secure_closet/personal,
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
 	},
 /turf/simulated/floor/carpet/purcarpet,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "XT" = (
 /obj/structure/closet/crate/ashlander,
 /turf/simulated/floor/sandstone,
-/area/lavaland/central/explored)
+/area/sector/surt/central/explored)
 "Yb" = (
 /obj/machinery/door/airlock/glass/medical{
 	name = "Triage";
@@ -2294,7 +2294,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "Yn" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 8
@@ -2306,7 +2306,7 @@
 	pixel_y = -24
 	},
 /turf/simulated/floor/tiled,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "YJ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 8
@@ -2315,17 +2315,17 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "YS" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 10
 	},
 /turf/simulated/floor/tiled/techmaint,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "Ze" = (
 /obj/structure/table/sandstone,
 /turf/simulated/floor/sandstone,
-/area/lavaland/central/explored)
+/area/sector/surt/central/explored)
 "Zg" = (
 /obj/machinery/shower{
 	dir = 4
@@ -2335,7 +2335,7 @@
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals10,
 /turf/simulated/floor/tiled/old_tile,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "Zh" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 8
@@ -2344,7 +2344,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "Zw" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 1
@@ -2353,7 +2353,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "ZG" = (
 /obj/structure/table/standard,
 /obj/structure/bedsheetbin,
@@ -2364,7 +2364,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/old_tile,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "ZI" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 8
@@ -2378,14 +2378,14 @@
 	req_one_access = list(48)
 	},
 /turf/simulated/floor/tiled,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "ZK" = (
 /turf/simulated/mineral,
-/area/lavaland/central/explored)
+/area/sector/surt/central/explored)
 "ZO" = (
 /obj/structure/curtain/open/shower/engineering,
 /turf/simulated/floor/tiled/old_tile,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "ZY" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -2402,7 +2402,7 @@
 	req_one_access = list(1,5,31,38,47,48)
 	},
 /turf/simulated/floor/tiled,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 "ZZ" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 1
@@ -2411,7 +2411,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
-/area/lavaland/central/base/common)
+/area/sector/surt/central/base/common)
 
 (1,1,1) = {"
 Md

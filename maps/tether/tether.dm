@@ -23,7 +23,7 @@
 		/datum/map/sector/frozen_192,
 		/datum/map/sector/wasteland_192,
 		/datum/map/sector/tradeport_192,
-		/datum/map/sector/lavaland_192,
+		/datum/map/sector/surt,
 		/datum/map/sector/miaphus_192,
 		/datum/map/sector/roguemining_192/one,
 	)
