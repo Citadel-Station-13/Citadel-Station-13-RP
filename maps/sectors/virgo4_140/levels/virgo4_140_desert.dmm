@@ -14,7 +14,7 @@
 /turf/simulated/floor/outdoors/beach/sand/lowdesert,
 /area/tether_away/beach/desert/explored)
 "gz" = (
-/turf/unsimulated/mineral,
+/turf/unsimulated/wall/mineral,
 /area/tether_away/beach/desert/explored)
 "hw" = (
 /obj/random/outcrop,

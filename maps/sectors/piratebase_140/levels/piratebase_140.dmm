@@ -641,7 +641,7 @@
 /turf/simulated/floor/reinforced,
 /area/piratebase/halls)
 "Fl" = (
-/turf/unsimulated/mineral,
+/turf/unsimulated/wall/mineral,
 /area/space)
 "Ft" = (
 /obj/structure/table/rack/shelf/steel,

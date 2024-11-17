@@ -3,7 +3,7 @@
 /turf/unsimulated/wall/planetary/facility_wall,
 /area/space)
 "ac" = (
-/turf/unsimulated/mineral/virgo3b,
+/turf/unsimulated/wall/mineral/virgo3b,
 /area/space)
 "ad" = (
 /turf/unsimulated/wall/planetary/facility_wall,

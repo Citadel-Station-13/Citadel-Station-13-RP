@@ -116,7 +116,7 @@
 /turf/unsimulated/wall,
 /area/space)
 "aC" = (
-/turf/unsimulated/mineral,
+/turf/unsimulated/wall/mineral,
 /area/space)
 "aD" = (
 /turf/unsimulated/wall,

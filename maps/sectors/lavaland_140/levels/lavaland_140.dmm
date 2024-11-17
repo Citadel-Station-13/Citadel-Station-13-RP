@@ -2144,7 +2144,7 @@
 /turf/simulated/floor/tiled,
 /area/lavaland/central/base/common)
 "Ru" = (
-/turf/unsimulated/mineral,
+/turf/unsimulated/wall/mineral,
 /area/lavaland/central/explored)
 "RE" = (
 /obj/machinery/light/small{

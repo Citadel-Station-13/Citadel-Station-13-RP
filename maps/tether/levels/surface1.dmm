@@ -29911,7 +29911,7 @@
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/lowernorthhall)
 "qbg" = (
-/turf/unsimulated/mineral/virgo3b,
+/turf/unsimulated/wall/mineral/virgo3b,
 /area/tether/surfacebase/outside/outside1)
 "qbk" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,

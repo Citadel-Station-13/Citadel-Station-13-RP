@@ -1569,7 +1569,7 @@
 /turf/simulated/floor/carpet,
 /area/awaymission/shipcave/ship)
 "oy" = (
-/turf/unsimulated/mineral/indoors,
+/turf/unsimulated/wall/mineral/indoors,
 /area/awaymission/shipcave)
 "oD" = (
 /turf/simulated/wall/thull,

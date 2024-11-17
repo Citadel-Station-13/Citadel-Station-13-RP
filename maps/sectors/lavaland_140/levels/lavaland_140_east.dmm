@@ -1166,7 +1166,7 @@
 /turf/simulated/floor/wood,
 /area/lavaland/east/ashlander_village)
 "wR" = (
-/turf/unsimulated/mineral,
+/turf/unsimulated/wall/mineral,
 /area/lavaland/east/explored)
 "wX" = (
 /obj/machinery/door/airlock{

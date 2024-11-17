@@ -268,7 +268,7 @@
 /turf/simulated/floor/wood,
 /area/lavaland/dungeon/facility)
 "mr" = (
-/turf/unsimulated/mineral,
+/turf/unsimulated/wall/mineral,
 /area/lavaland/dungeon/exterior)
 "mA" = (
 /turf/simulated/floor/trap/delayed/plating,

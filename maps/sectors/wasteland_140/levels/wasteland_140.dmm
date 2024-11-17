@@ -1580,7 +1580,7 @@
 /turf/simulated/floor/classd,
 /area/class_d/wildcat_mining_base/exterior_workshop)
 "UE" = (
-/turf/unsimulated/mineral,
+/turf/unsimulated/wall/mineral,
 /area/class_d/explored)
 "UF" = (
 /obj/machinery/floodlight,

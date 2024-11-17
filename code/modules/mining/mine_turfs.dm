@@ -1,13 +1,4 @@
-/**********************Mineral deposits**************************/
-CREATE_STANDARD_TURFS(/turf/unsimulated/mineral)
-/turf/unsimulated/mineral
-	name = "impassable rock"
-	icon = 'icons/turf/walls.dmi'
-	icon_state = "rock-dark"
-	density = 1
-
-	smoothing_groups = (SMOOTH_GROUP_CLOSED_TURFS + SMOOTH_GROUP_MINERAL_WALLS)
-
+CREATE_STANDARD_TURFS(/turf/simulated/mineral)
 /turf/simulated/mineral //wall piece
 	name = "rock"
 	icon = 'icons/turf/walls/natural.dmi'
@@ -50,7 +41,6 @@ CREATE_STANDARD_TURFS(/turf/unsimulated/mineral)
 	var/ignore_oregen = FALSE
 	var/ignore_cavegen = FALSE
 
-CREATE_STANDARD_TURFS(/turf/simulated/mineral)
 
 /turf/simulated/mineral/rich
 	//Placeholder, go to the oregen stuff at the bottom to see the oregen weight
@@ -104,7 +94,7 @@ CREATE_STANDARD_TURFS(/turf/simulated/mineral/floor/ignore_cavegen)
 
 /turf/simulated/mineral/icerock/airmix
 	initial_gas_mix = GAS_STRING_STP
-/turf/unsimulated/mineral/icerock
+/turf/unsimulated/wall/mineral/icerock
 	name = "impassable icerock"
 	icon = 'icons/turf/walls.dmi'
 	base_icon_state = "wall"

@@ -4482,7 +4482,7 @@
 /turf/simulated/lava/indoors/geothermal,
 /area/rift/geothermal)
 "ZT" = (
-/turf/unsimulated/mineral/lythios43c,
+/turf/unsimulated/wall/mineral/lythios43c,
 /area/rift/surfacebase/outside/west_caves)
 "ZV" = (
 /obj/effect/floor_decal/industrial/warning/dust/corner{

@@ -1594,7 +1594,7 @@
 /turf/simulated/wall/r_wall,
 /area/mine/explored)
 "Se" = (
-/turf/unsimulated/mineral/virgo3b,
+/turf/unsimulated/wall/mineral/virgo3b,
 /area/mine/explored)
 "Sm" = (
 /obj/structure/cable/green{

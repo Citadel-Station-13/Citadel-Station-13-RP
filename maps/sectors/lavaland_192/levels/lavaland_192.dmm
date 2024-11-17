@@ -1666,7 +1666,7 @@
 /turf/simulated/floor/plating,
 /area/lavaland/central/base/common)
 "Md" = (
-/turf/unsimulated/mineral,
+/turf/unsimulated/wall/mineral,
 /area/lavaland/central/explored)
 "Mw" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{

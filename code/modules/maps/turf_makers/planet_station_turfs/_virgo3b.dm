@@ -44,7 +44,7 @@ VIRGO3B_TURF_CREATE_UN(/turf/simulated/floor/tiled/kafel_full/yellow)
 	outdoors = FALSE
 
 //Unsimulated
-/turf/unsimulated/mineral/virgo3b
+/turf/unsimulated/wall/mineral/virgo3b
 	blocks_air = TRUE
 
 /turf/simulated/mineral/virgo3b/rich/make_ore(var/rare_ore)

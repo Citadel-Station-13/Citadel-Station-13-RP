@@ -216,7 +216,7 @@
 /turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
 /area/rift/facility/interior/underground3)
 "kL" = (
-/turf/unsimulated/mineral,
+/turf/unsimulated/wall/mineral,
 /area/rift/surfacebase/outside/west_base/submap_seedzone)
 "kN" = (
 /obj/structure/girder/reinforced,
@@ -505,7 +505,7 @@
 /turf/simulated/mineral/icerock/lythios43c,
 /area/rift/surfacebase/outside/west_base)
 "Ae" = (
-/turf/unsimulated/mineral,
+/turf/unsimulated/wall/mineral,
 /area/rift/surfacebase/outside/west_base)
 "Az" = (
 /obj/map_helper/access_helper/airlock/station/maintenance,

@@ -513,7 +513,7 @@
 /obj/effect/transit/light{
 	dir = 4
 	},
-/turf/unsimulated/mineral{
+/turf/unsimulated/wall/mineral{
 	icon_state = "rock"
 	},
 /area/space)
@@ -2807,7 +2807,7 @@
 /obj/effect/transit/light{
 	dir = 8
 	},
-/turf/unsimulated/mineral{
+/turf/unsimulated/wall/mineral{
 	icon_state = "rock"
 	},
 /area/space)
@@ -3051,7 +3051,7 @@
 /turf/space/transit/north,
 /area/space)
 "zb" = (
-/turf/unsimulated/mineral{
+/turf/unsimulated/wall/mineral{
 	icon_state = "rock"
 	},
 /area/space)
@@ -5489,7 +5489,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/centcom/simulated/living)
 "QQ" = (
-/turf/unsimulated/mineral/virgo3b,
+/turf/unsimulated/wall/mineral/virgo3b,
 /area/centcom/simulated/terminal)
 "QS" = (
 /obj/structure/closet/secure_closet/brig{
@@ -6482,7 +6482,7 @@
 /turf/simulated/floor/holofloor/beach/water,
 /area/holodeck/source_beach)
 "Yi" = (
-/turf/unsimulated/mineral/virgo3b,
+/turf/unsimulated/wall/mineral/virgo3b,
 /area/space)
 "Yj" = (
 /obj/structure/holostool,

@@ -26923,7 +26923,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/tether/surfacebase/security/outfitting)
 "tXE" = (
-/turf/unsimulated/mineral/virgo3b,
+/turf/unsimulated/wall/mineral/virgo3b,
 /area/tether/surfacebase/outside/outside2)
 "tXS" = (
 /obj/machinery/washing_machine,

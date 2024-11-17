@@ -51,8 +51,8 @@ LYTHIOS43C_TURF_CREATE_UN(/turf/simulated/floor/wood)
 LYTHIOS43C_TURF_CREATE_UN(/turf/simulated/shuttle/floor/voidcraft)
 LYTHIOS43C_TURF_CREATE_UN(/turf/simulated/mineral/icerock)
 LYTHIOS43C_TURF_CREATE_UN(/turf/simulated/mineral/icerock/floor)
-LYTHIOS43C_TURF_CREATE_UN(/turf/unsimulated/mineral/icerock)
-LYTHIOS43C_TURF_CREATE_UN(/turf/unsimulated/mineral)
+LYTHIOS43C_TURF_CREATE_UN(/turf/unsimulated/wall/mineral/icerock)
+LYTHIOS43C_TURF_CREATE_UN(/turf/unsimulated/wall/mineral)
 LYTHIOS43C_TURF_CREATE_UN(/turf/simulated/mineral/ignore_cavegen)
 LYTHIOS43C_TURF_CREATE_UN(/turf/simulated/mineral/floor/ignore_cavegen)
 LYTHIOS43C_TURF_CREATE_UN(/turf/simulated/mineral/floor/icerock)
@@ -160,7 +160,7 @@ LYTHIOS43C_TURF_CREATE_UN(/turf/simulated/mineral/icerock/floor/ignore_cavegen)
 	outdoors = TRUE
 
 
-/// Needs to be remmapped to use /turf/unsimulated/mineral/icerock/lythios43c .
+/// Needs to be remmapped to use /turf/unsimulated/wall/mineral/icerock/lythios43c .
 /turf/unsimulated/icerock/lythios43c
 	icon = 'icons/turf/walls.dmi'
 	icon_state = "icerock-dark"

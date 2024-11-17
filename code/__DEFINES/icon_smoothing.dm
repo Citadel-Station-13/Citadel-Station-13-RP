@@ -110,7 +110,7 @@ DEFINE_BITFIELD(smoothing_junction, list(
 #define SMOOTH_GROUP_CLOSED_TURFS                 S_TURF(23) ///? /turf/simulated/wall
 #define SMOOTH_GROUP_SURVIVAL_TITANIUM_WALLS      S_TURF(24) // /turf/closed/wall/mineral/titanium/survival
 #define SMOOTH_GROUP_HOTEL_WALLS                  S_TURF(25) // /turf/closed/indestructible/hotelwall
-#define SMOOTH_GROUP_MINERAL_WALLS                S_TURF(26) ///? /turf/simulated/mineral, /turf/unsimulated/mineral
+#define SMOOTH_GROUP_MINERAL_WALLS                S_TURF(26) ///? /turf/simulated/mineral, /turf/unsimulated/wall/mineral
 #define SMOOTH_GROUP_BOSS_WALLS                   S_TURF(27) // /turf/closed/indestructible/riveted/boss
 
 #define MAX_S_TURF 27 //!Always match this value with the one above it.

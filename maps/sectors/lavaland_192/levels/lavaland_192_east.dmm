@@ -1,6 +1,6 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "al" = (
-/turf/unsimulated/mineral,
+/turf/unsimulated/wall/mineral,
 /area/lavaland/east/explored)
 "aC" = (
 /turf/simulated/mineral/rich,
