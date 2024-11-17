@@ -262,6 +262,10 @@
 			var/datum/reagent/nutriment/our_nutrient = create_ingredient.reagents.get_reagent("nutriment")
 			our_nutrient.data = list()
 			our_nutrient.data[create_ingredient.cookstage_information[cookstage][COOKINFO_TASTE]] = serving_amount
+			if(istype(loc, /obj/machinery/cooking))
+				var/obj/machinery/cooking/CK = loc
+				CK.insert_item(create_ingredient)
+
 		qdel(src)
 	return
 

@@ -10,12 +10,14 @@
 	desc = "A deep pot for cooking. Warning: may contain soup."
 	icon_state = "pot"
 	cooker_overlay = "pot"
+	volume = 240
 
 /obj/item/reagent_containers/glass/food_holder/pan
 	name = "saucepan"
 	desc = "A pan for sauces."
 	icon_state = "pan"
 	cooker_overlay = "pan"
+	volume = 90
 
 /obj/item/reagent_containers/glass/food_holder/skillet
 	name = "skillet"

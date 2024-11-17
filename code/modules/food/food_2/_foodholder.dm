@@ -11,16 +11,14 @@
 
 	var/cooker_overlay = "pot"
 
-
-	//is this it? yeah, it it is
 /obj/item/reagent_containers/glass/food_holder/Initialize(mapload)
 	. = ..()
-	reagents.reagent_holder_flags |= TRANSPARENT
+	reagents.reagents_holder_flags |= TRANSPARENT
 
-/obj/item/reagent_containers/glass/food_holder/examine(mob/user, dist) //todo: show food inside
+/obj/item/reagent_containers/glass/food_holder/examine(mob/user, dist)
 	. = ..()
 	. += SPAN_NOTICE("<b>Alt-click</b> to remove an ingredient from this.")
-	. += SPAN_NOTICE("<b>Control-click</b> in grab intent to retrieve a serving of food.")
+	. += SPAN_NOTICE("<b>Control-click</b> in grab intent to retrieve a serving.")
 	. += SPAN_NOTICE("It contains:")
 	for(var/obj/item/examine_item in contents)
 		if(!istype(examine_item, /obj/item/reagent_containers/food/snacks/ingredient))
@@ -38,13 +36,15 @@
 				cooked_span = "yellow"
 			if(BURNT)
 				cooked_span = "tajaran_signlang"
-		. += "<span class='notice'>[icon2html(thing = examine_ingredient, target = user)][examine_ingredient.serving_amount] servings of [examine_ingredient.name], which looks </span><span class='[cooked_span]'>[examine_ingredient.cookstage2text()]</span><span class='notice'> and has been cooked for about [examine_ingredient.accumulated_time_cooked / 10] seconds.</span>"
+		. += "<span class='notice'>[icon2html(thing = examine_ingredient, target = user)][examine_ingredient.serving_amount] serving[] of [examine_ingredient.name], which looks </span><span class='[cooked_span]'>[examine_ingredient.cookstage2text()]</span><span class='notice'> and has been cooked for about [examine_ingredient.accumulated_time_cooked / 10] seconds.</span>"
 
 /obj/item/reagent_containers/glass/food_holder/update_icon()
+	cut_overlays()
 	var/mutable_appearance/filling_overlay = mutable_appearance(icon, "[icon_state]_filling_overlay")
 	if(LAZYLEN(contents) || reagents.total_volume)
 		filling_overlay.color = tally_color()
 		add_overlay(filling_overlay)
+
 
 
 /obj/item/reagent_containers/glass/proc/tally_color()
@@ -189,6 +189,7 @@
 
 	generated_serving.name = "a [serving_thing_name] of "
 	generated_serving.name += foodname
+	generated_serving.desc = (generated_serving.name + ". It looks tasty. Potentially."
 	generated_serving.icon = fs_icon
 	generated_serving.icon_state = fs_iconstate
 	generated_serving.add_overlay(fancy_overlay_to_add)

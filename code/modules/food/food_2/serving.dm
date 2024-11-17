@@ -15,7 +15,7 @@
 	name = "wooden bowl"
 	desc = "A rustic wooden bowl, for serving food."
 	icon_state = "woodbowl"
-	serving_type = "woodbowl"
+	serving_type = "wood bowl"
 
 /obj/item/food_serving/plate
 	name = "plate"
