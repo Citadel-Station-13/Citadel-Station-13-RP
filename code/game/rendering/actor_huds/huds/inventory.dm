@@ -27,11 +27,6 @@
 	/// equip object
 	var/atom/movable/screen/actor_hud/inventory/equip_hand/button_equip_hand
 
-/datum/actor_hud/inventory/Destroy()
-	host = null
-	cleanup()
-	return ..()
-
 /datum/actor_hud/inventory/on_mob_bound(mob/target)
 	// we don't have a hook for 'on inventory init',
 	// so we can't init it lazily; we init it immediately.
