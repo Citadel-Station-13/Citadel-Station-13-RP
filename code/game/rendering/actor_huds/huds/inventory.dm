@@ -335,6 +335,8 @@
 /atom/movable/screen/actor_hud/inventory
 	name = "inventory"
 	icon = 'icons/screen/hud/midnight/inventory.dmi'
+	plane = INVENTORY_PLANE
+	layer = INVENTORY_PLATE_LAYER
 
 /atom/movable/screen/actor_hud/inventory/on_click(mob/user, list/params)
 	var/obj/item/held = user.get_active_held_item()

@@ -187,6 +187,8 @@
 /obj/item/proc/attack_self(mob/user, datum/event_args/actor/actor)
 	// todo: this should realistically be SHOULD_NOT_OVERRIDE but there's a massive number of overrides (some unnecessary), so this is for a later date
 	// SHOULD_NOT_OVERRIDE(TRUE) // may be re-evaluated later
+	if(isnull(actor))
+		actor = new /datum/event_args/actor(user)
 	SEND_SIGNAL(src, COMSIG_ITEM_ACTIVATE_INHAND, actor)
 	if(on_attack_self(actor))
 		return TRUE

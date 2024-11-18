@@ -403,6 +403,7 @@
  *? Separate layer with which to apply colorblindness.
  */
 #define INVENTORY_PLANE 96
+	#define INVENTORY_PLATE_LAYER 100
 
 /**
  *! -- Above HUD Plane
