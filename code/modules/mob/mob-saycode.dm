@@ -110,6 +110,10 @@
 
 	var/message_length = length_char(message)
 	var/datum/saycode_context/creating_context = new
+	var/static/regex/emphasis_parser = regex(
+		"(\\+|\\||_|~)(.*?)\\1",
+		"g",
+	)
 
 	switch(saycode_origin)
 		if(SAYCODE_ORIGIN_SAY, SAYCODE_ORIGIN_WHISPER)
