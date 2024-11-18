@@ -378,7 +378,7 @@
 //       so this is just a wrapper to route stuff around while we slowly refactor inventory.
 /datum/inventory/proc/drop_item_to_ground(obj/item/I, inv_op_flags, datum/event_args/actor/actor)
 	if(!actor)
-		actor = E_ARGS_WRAP_USER_TO_ACTOR(owner)
+		actor = new /datum/event_args/actor(owner)
 	return owner.drop_item_to_ground(I, inv_op_flags, actor?.performer)
 
 /**
