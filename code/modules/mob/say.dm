@@ -109,15 +109,6 @@
    for it but just ignore it.
 */
 
-/mob/proc/say_quote(var/message, var/datum/language/speaking = null)
-	var/verb = "says"
-	var/ending = copytext_char(message, length_char(message))
-	if(ending=="!")
-		verb=pick("exclaims","shouts","yells")
-	else if(ending=="?")
-		verb="asks"
-	return verb
-
 /mob/proc/emote(var/act, var/type, var/message)
 	if(act == "me")
 		return custom_emote(type, message)
@@ -137,42 +128,3 @@
 	else if(ending == "!")
 		return "2"
 	return "0"
-
-//parses the message mode code (e.g. :h, :w) from text, such as that supplied to say.
-//returns the message mode string or null for no message mode.
-//standard mode is the mode returned for the special ';' radio code.
-/mob/proc/parse_message_mode(var/message, var/standard_mode="headset")
-	if(length_char(message) >= 1 && copytext_char(message,1,2) == ";")
-		return standard_mode
-
-	if(length_char(message) >= 2)
-		var/channel_prefix = copytext_char(message, 1 ,3)
-		return department_radio_keys[channel_prefix]
-
-	return null
-
-//parses the language code (e.g. :j) from text, such as that supplied to say.
-//returns the language object only if the code corresponds to a language that src can speak, otherwise null.
-/mob/proc/parse_language(var/message)
-	var/prefix = copytext_char(message,1,2)
-	// This is for audible emotes
-	if(length_char(message) >= 1 && prefix == "!")
-		return SScharacters.resolve_language_name("Noise")
-
-	if(length_char(message) >= 2 && is_language_prefix(prefix))
-		var/language_prefix = copytext_char(message, 2 ,3)
-		var/datum/language/L = SScharacters.resolve_language_key(language_prefix)
-		if (can_speak(L))
-			return L
-		else
-			var/alert_result = alert(src, "You don't know that language. Would you rather speak your default language, gibberish, or nothing?", "Unknown Language Alert","Default Language","Gibberish", "Whoops I made a typo!")
-			switch(alert_result)
-				if("Default Language")
-					if(isliving(src))
-						var/mob/living/caller = src
-						return SScharacters.resolve_language_name(caller.default_language)
-				if("Gibberish")
-					return SScharacters.resolve_language_name(LANGUAGE_GIBBERISH)
-				if("Whoops I made a typo!")
-					return -1
-	return null

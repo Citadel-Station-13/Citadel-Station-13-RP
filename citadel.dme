@@ -3571,6 +3571,7 @@
 #include "code\modules\mob\perspective.dm"
 #include "code\modules\mob\physiology.dm"
 #include "code\modules\mob\pulling.dm"
+#include "code\modules\mob\say-parse-handling.dm"
 #include "code\modules\mob\say.dm"
 #include "code\modules\mob\say_vr.dm"
 #include "code\modules\mob\ssd.dm"
