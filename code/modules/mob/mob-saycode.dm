@@ -108,6 +108,27 @@
 	 * there instead of at the start of the message.
 	 */
 
+	var/message_length = length_char(message)
+	var/datum/saycode_context/creating_context = new
+	switch(saycode_origin)
+		if(SAYCODE_ORIGIN_SAY, SAYCODE_ORIGIN_WHISPER)
+			// treated as a say
+
+			// -- handle footer --
+			if(message)
+				switch(copytext_char(message, -1))
+					if("!")
+						var/yelling = copytext_char(message, -2, -1) == "!"
+						if(yelling)
+							creating_context.decorator = SAYCODE_DECORATOR_YELL
+						else
+							creating_context.decorator = SAYCODE_DECORATOR_EXCLAIM
+					if("?")
+						creating_context.decorator = SAYCODE_DECORATOR_QUESTION
+		if(SAYCODE_ORIGIN_EMOTE, SAYCODE_ORIGIN_SUBTLE, SAYCODE_ORIGIN_SUBTLER)
+			// treated as an emote
+
+
 
 #warn impl
 

@@ -32,3 +32,5 @@
 #define SAYCODE_DECORATOR_QUESTION "ask"
 /// is exclaiming
 #define SAYCODE_DECORATOR_EXCLAIM "exclaim"
+/// is yelling
+#define SAYCODE_DECORATOR_YELL "yell"
