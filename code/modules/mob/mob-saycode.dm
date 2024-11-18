@@ -110,9 +110,24 @@
 
 	var/message_length = length_char(message)
 	var/datum/saycode_context/creating_context = new
+
 	switch(saycode_origin)
 		if(SAYCODE_ORIGIN_SAY, SAYCODE_ORIGIN_WHISPER)
 			// treated as a say
+
+			// -- handle override --
+
+			// -- handle mode key --
+
+			// -- handle message key --
+
+			// -- parse message --
+			var/static/regex/say_parser = regex(
+				"",
+				"g",
+			)
+			say_parser.next = 1
+			while(say_parser.Find_char(message))
 
 			// -- handle footer --
 			if(message)
@@ -128,7 +143,13 @@
 		if(SAYCODE_ORIGIN_EMOTE, SAYCODE_ORIGIN_SUBTLE, SAYCODE_ORIGIN_SUBTLER)
 			// treated as an emote
 
-
+			// -- parse message --
+			var/static/regex/emote_parser = regex(
+				"",
+				"g",
+			)
+			emote_parser.next = 1
+			while(emote_parser.Find_char(message))
 
 #warn impl
 
