@@ -135,9 +135,10 @@
 
 /mob/proc/_unequip_slot(slot, flags)
 	SHOULD_NOT_OVERRIDE(TRUE)
+	var/obj/item/old = _item_by_slot(slot)
 	. = _set_inv_slot(slot, null, flags) != INVENTORY_SLOT_DOES_NOT_EXIST
 	if(.)
-		inventory.on_item_exited(., resolve_inventory_slot(slot))
+		inventory.on_item_exited(old, resolve_inventory_slot(slot))
 
 /**
  * handles removing an item from our hud
@@ -219,7 +220,7 @@
 	SHOULD_NOT_OVERRIDE(TRUE)
 	. = _set_inv_slot(slot, I, flags) != INVENTORY_SLOT_DOES_NOT_EXIST
 	if(.)
-		inventory.on_item_entered(., resolve_inventory_slot(slot))
+		inventory.on_item_entered(I, resolve_inventory_slot(slot))
 
 //* Slot Change *//
 
@@ -231,7 +232,7 @@
  *
  * return true/false based on if we succeeded
  */
-/mob/proc/_handle_item_reequip(obj/item/I, slot, old_slot, flags, mob/user = src)
+/mob/proc/_handle_item_reequip(obj/item/I, slot, old_slot, flags, mob/user = src, hand_index)
 	ASSERT(slot)
 	if(!old_slot)
 		// DO NOT USE _slot_by_item - at this point, the item has already been var-set into the new slot!
@@ -262,6 +263,7 @@
 		// TODO: HANDLE DELETIONS ON EQUIPPED PROPERLY, INCLUDING ON HANDS
 		// ? we don't do this on hands, hand procs do it
 		// _equip_slot(I, slot, update_icons)
+		I.held_index = hand_index
 		I.equipped(src, slot, flags)
 		log_inventory("[key_name(src)] moved [I] from [old_slot] to hands.")
 		// hand procs handle rest

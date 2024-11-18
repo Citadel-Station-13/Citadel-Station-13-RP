@@ -75,7 +75,6 @@
 
 	vision_innate = /datum/vision/baseline/species_tier_2
 
-	hud_type = /datum/hud_data/adherent
 /*
 	available_cultural_info = list(
 		TAG_CULTURE = list(

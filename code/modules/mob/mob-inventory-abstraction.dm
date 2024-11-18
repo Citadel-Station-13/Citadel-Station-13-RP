@@ -179,8 +179,9 @@
 	else
 		if(existing_slot)
 			// already in inv
-			if(!_handle_item_reequip(I, SLOT_ID_HANDS, existing_slot, flags))
+			if(!_handle_item_reequip(I, SLOT_ID_HANDS, existing_slot, flags, src, index))
 				return FALSE
+			log_inventory("equip-to-hand: keyname [key_name(src)] index [index] item [I]([ref(I)]) from slot [existing_slot]")
 		else
 			// newly eqiupped
 			var/atom/old_loc = I.loc
@@ -188,9 +189,10 @@
 				I.forceMove(src)
 			if(I.loc != src)
 				return FALSE
+			log_inventory("pickup-to-hand: keyname [key_name(src)] index [index] item [I]([ref(I)])")
+			I.held_index = index
 			I.pickup(src, flags, old_loc)
 			I.equipped(src, SLOT_ID_HANDS, flags)
-			log_inventory("pickup-to-hand: keyname [key_name(src)] index [index] item [I]([ref(I)])")
 
 		inventory.held_items[index] = I
 		inventory.on_item_entered(I, index)
@@ -207,6 +209,8 @@
 	else
 		I.add_hiddenprint(src)
 
+	return TRUE
+
 /**
  * get something out of our hand
  *
@@ -218,7 +222,13 @@
 	inventory.held_items[index] = null
 	inventory.on_item_exited(I, index)
 
+	I.held_index = null
 	I.unequipped(src, SLOT_ID_HANDS, flags)
+
+	if(!(flags & INV_OP_NO_UPDATE_ICONS))
+		update_inv_hand(index)
+
+	return TRUE
 
 /**
  * handle swapping item from one hand index to another
@@ -229,5 +239,10 @@
 
 	inventory.held_items[old_index] = null
 	inventory.held_items[index] = I
+	I.held_index = index
 	inventory.on_item_swapped(I, old_index, index)
 
+
+	if(!(flags & INV_OP_NO_UPDATE_ICONS))
+		update_inv_hand(old_index)
+		update_inv_hand(index)

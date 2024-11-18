@@ -12,8 +12,6 @@
 	var/list/adding = list()
 	var/list/other = list()
 	var/list/hotkeybuttons = list()
-	var/list/slot_info = list()
-	var/list/hand_info = list()
 
 	hud.adding = adding
 	hud.other = other

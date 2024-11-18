@@ -13,7 +13,19 @@
 /mob/proc/put_in_hand(obj/item/I, index, inv_op_flags)
 	return inventory?.put_in_hand(I, index, inv_op_flags)
 
-/datum/inventory/proc/put_in_hands(obj/item/I, inv_op_flags)
+/**
+ * **Warning**: `prioritize_index` is patched to support legacy behavior by defaulting to owner active hand.
+ *              This may be removed at any time. Besure to specify the index if you need this behavior.
+ *
+ * @params
+ * * I - the item
+ * * inv_op_flags - inventory operation flags
+ * * prioritize_index - try that index first; defaults to the inventory owner's active hand, if any. set to `0` (not null!) to prioritize none.
+ */
+/datum/inventory/proc/put_in_hands(obj/item/I, inv_op_flags, prioritize_index)
+	if(isnull(prioritize_index))
+		prioritize_index = owner.active_hand
+
 	if(is_holding(I))
 		return INV_RETURN_SUCCESS
 
@@ -24,9 +36,17 @@
 				to_chat(src, SPAN_NOTICE("Your [held_stack] stack now contains [held_stack.get_amount()] [held_stack.singular_name]\s."))
 				return INV_RETURN_SUCCESS
 
-	for(var/i in 1 to length(held_items))
-		var/result = put_in_hand(I, i, inv_op_flags)
+	if(prioritize_index)
+		var/priority_result = put_in_hand(I, prioritize_index, inv_op_flags)
+		switch(priority_result)
+			if(INV_RETURN_FAILED)
+			else
+				return priority_result
 
+	for(var/i in 1 to length(held_items))
+		if(i == prioritize_index)
+			continue
+		var/result = put_in_hand(I, i, inv_op_flags)
 		switch(result)
 			if(INV_RETURN_FAILED)
 			else
@@ -34,8 +54,17 @@
 
 	return INV_RETURN_FAILED
 
-/mob/proc/put_in_hands(obj/item/I, inv_op_flags)
-	return inventory?.put_in_hands(I, inv_op_flags)
+/**
+ * **Warning**: `prioritize_index` is patched to support legacy behavior by defaulting to owner active hand.
+ *              This may be removed at any time. Besure to specify the index if you need this behavior.
+ *
+ * @params
+ * * I - the item
+ * * inv_op_flags - inventory operation flags
+ * * prioritize_index - try that index first; defaults to the inventory owner's active hand, if any. set to `0` (not null!) to prioritize none.
+ */
+/mob/proc/put_in_hands(obj/item/I, inv_op_flags, prioritize_index)
+	return inventory?.put_in_hands(I, inv_op_flags, prioritize_index)
 
 /**
  * puts an item in hands or forcemoves to drop_loc

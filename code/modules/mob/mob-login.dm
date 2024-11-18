@@ -83,6 +83,10 @@
 		client.action_drawer.register_holder(inventory.actions)
 	// todo: we really hate that this is needed but it is until the screens/images reset isn't in Login()
 	client.action_drawer.reassert_screen()
+	// bind actor HUDs
+	// todo: invalidate any potential remote control going on as we will have a state desync otherwise;
+	//       remote control systems will overrule actor hud binding.
+	client.actor_huds.bind_all_to_mob(src)
 	// reset statpanel of any verbs/whatnot
 	client.tgui_stat?.request_reload()
 	// update ssd overlay

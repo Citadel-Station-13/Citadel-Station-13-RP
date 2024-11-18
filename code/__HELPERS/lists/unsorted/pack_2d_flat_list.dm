@@ -23,10 +23,10 @@
 		var/elem = inserting[i]
 		var/list/smallest
 		var/smallest_length = INFINITY
-		for(var/i in 1 to length(outer_list))
-			var/their_length = length(outer_list[i])
+		for(var/j in 1 to length(outer_list))
+			var/their_length = length(outer_list[j])
 			if(their_length < smallest_length && their_length < length_limit)
-				smallest = outer_list[i]
+				smallest = outer_list[j]
 		if(!smallest)
 			out_leftovers?.Add(inserting.Copy(i))
 			out_packed?.Add(inserting.Copy(1, i))

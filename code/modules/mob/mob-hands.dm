@@ -66,12 +66,6 @@
 		. += i
 
 /**
- * sets number of physical hands we should account for potentialy having
- */
-/mob/proc/set_nominal_hand_count(count)
-	inventory.set_hand_count(count)
-
-/**
  * Are usable hands all holding items?
  *
  * * if a hand slot is unusable but still has an item, it's ignored.
@@ -173,9 +167,11 @@
  * * This is so remote control abstraction works.
  */
 /mob/proc/swap_hand(to_index)
+	if(active_hand == to_index)
+		return
 	var/hand_count = get_nominal_hand_count()
 	var/obj/item/was_active = get_active_held_item()
-	var/old_index = active_hand
+	var/old_index = active_hand || 1
 
 	if(isnull(to_index))
 		if(active_hand >= hand_count)
@@ -186,11 +182,13 @@
 		if(to_index > hand_count)
 			return FALSE
 		active_hand = to_index
+	to_index = active_hand
 
 	. = TRUE
 
 	client?.actor_huds?.inventory?.swap_active_hand(old_index, to_index)
 
 	//! LEGACY
-	was_active?.zoom()
+	if(was_active?.zoom)
+		was_active?.zoom()
 	//! End

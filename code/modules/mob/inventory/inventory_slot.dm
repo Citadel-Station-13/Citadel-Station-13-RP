@@ -280,6 +280,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 
 	inventory_hud_anchor = INVENTORY_HUD_ANCHOR_TO_HANDS
 	inventory_hud_main_axis = -1
+	inventory_hud_cross_axis = 0
 	inventory_hud_icon_state = "back"
 
 	slot_equip_checks = SLOT_EQUIP_CHECK_USE_FLAGS
@@ -306,6 +307,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 
 	inventory_hud_anchor = INVENTORY_HUD_ANCHOR_TO_DRAWER
 	inventory_hud_main_axis = 1
+	inventory_hud_cross_axis = 0
 	inventory_hud_icon_state = "uniform"
 	inventory_hud_class = INVENTORY_HUD_CLASS_DRAWER
 
@@ -547,8 +549,9 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	display_name = "waist"
 	display_preposition = "on"
 
-	inventory_hud_anchor = INVENTORY_HUD_ANCHOR_TO_DRAWER
-	inventory_hud_cross_axis = 4
+	inventory_hud_anchor = INVENTORY_HUD_ANCHOR_TO_HANDS
+	inventory_hud_main_axis = -2
+	inventory_hud_cross_axis = 0
 	inventory_hud_icon_state = "belt"
 
 	slot_equip_checks = SLOT_EQUIP_CHECK_USE_FLAGS
@@ -585,6 +588,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 
 	inventory_hud_anchor = INVENTORY_HUD_ANCHOR_TO_HANDS
 	inventory_hud_main_axis = 1
+	inventory_hud_cross_axis = 0
 	inventory_hud_icon_state = "pocket"
 
 /datum/inventory_slot/inventory/pocket/right
@@ -595,6 +599,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 
 	inventory_hud_anchor = INVENTORY_HUD_ANCHOR_TO_HANDS
 	inventory_hud_main_axis = 2
+	inventory_hud_cross_axis = 0
 	inventory_hud_icon_state = "pocket"
 
 /datum/inventory_slot/inventory/id
@@ -605,8 +610,9 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	display_name = "badge"
 	display_preposition = "as"
 
-	inventory_hud_anchor = INVENTORY_HUD_ANCHOR_TO_DRAWER
-	inventory_hud_cross_axis = 3
+	inventory_hud_anchor = INVENTORY_HUD_ANCHOR_TO_HANDS
+	inventory_hud_main_axis = -3
+	inventory_hud_cross_axis = 0
 	inventory_hud_icon_state = "id"
 
 	slot_equip_checks = SLOT_EQUIP_CHECK_USE_FLAGS
@@ -641,7 +647,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	display_preposition = "on"
 
 	inventory_hud_anchor = INVENTORY_HUD_ANCHOR_TO_DRAWER
-	inventory_hud_cross_axis = 3
+	inventory_hud_cross_axis = 1
 	inventory_hud_icon_state = "shoes"
 	inventory_hud_class = INVENTORY_HUD_CLASS_DRAWER
 
@@ -712,6 +718,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 
 	inventory_hud_anchor = INVENTORY_HUD_ANCHOR_TO_DRAWER
 	inventory_hud_main_axis = 2
+	inventory_hud_cross_axis = 0
 	inventory_hud_icon_state = "glasses"
 	inventory_hud_class = INVENTORY_HUD_CLASS_DRAWER
 
@@ -739,6 +746,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	display_preposition = "on"
 
 	inventory_hud_anchor = INVENTORY_HUD_ANCHOR_TO_DRAWER
+	inventory_hud_main_axis = 0
 	inventory_hud_cross_axis = 2
 	inventory_hud_icon_state = "suit-store"
 

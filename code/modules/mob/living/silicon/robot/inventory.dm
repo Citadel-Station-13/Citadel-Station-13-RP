@@ -270,7 +270,7 @@
 	if(module_state_3)
 		. += module_state_3
 
-/mob/living/silicon/robot/get_number_of_hands()
+/mob/living/silicon/robot/get_nominal_hand_count()
 	return 3
 
 /mob/living/silicon/robot/get_held_index(obj/item/I)
