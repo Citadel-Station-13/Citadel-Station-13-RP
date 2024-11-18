@@ -302,7 +302,7 @@
 		switch(user.zone_selected)
 			if(O_MOUTH)
 				var/wgw =  sanitize(input(user, "What would you like the victim to say", "Voodoo", null)  as text)
-				target.say(wgw, forced = "voodoo doll")
+				target.say_legacy(wgw, forced = "voodoo doll")
 				log_game("[key_name(user)] made [key_name(target)] say [wgw] with a voodoo doll.")
 			if(O_EYES)
 				user.set_machine(src)

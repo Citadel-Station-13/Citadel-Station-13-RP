@@ -1,4 +1,4 @@
-/mob/proc/say(var/message, var/datum/language/speaking = null, var/verb="says", var/alt_name="", var/whispering = 0)
+/mob/proc/say_legacy(var/message, var/datum/language/speaking = null, var/verb="says", var/alt_name="", var/whispering = 0)
 	return
 
 
@@ -21,14 +21,14 @@
 	set name = "Whisper"
 	set category = VERB_CATEGORY_IC
 
-	usr.say(message,whispering=1)
+	usr.say_legacy(message,whispering=1)
 
 /mob/verb/say_verb(message as text)
 	set name = "Say"
 	set category = VERB_CATEGORY_IC
 
 	set_typing_indicator(FALSE)
-	usr.say(message)
+	usr.say_legacy(message)
 
 /mob/verb/me_verb(message as message)
 	set name = "Me"

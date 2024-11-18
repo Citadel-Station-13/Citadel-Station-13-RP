@@ -34,7 +34,7 @@ var/list/sacrificed = list()
 		qdel(src)
 	if(allrunesloc && index != 0)
 		if(istype(src,/obj/effect/rune))
-			user.say("Sas[pick("'","`")]so c'arta forbici!")//Only you can stop auto-muting
+			user.say_legacy("Sas[pick("'","`")]so c'arta forbici!")//Only you can stop auto-muting
 		else
 			user.whisper("Sas[pick("'","`")]so c'arta forbici!")
 		user.visible_message("<span class='danger'>[user] disappears in a flash of red light!</span>", \
@@ -73,7 +73,7 @@ var/list/sacrificed = list()
 		if(iscultist(C) && !C.stat)
 			culcount++
 	if(culcount>=3)
-		user.say("Sas[pick("'","`")]so c'arta forbici tarem!")
+		user.say_legacy("Sas[pick("'","`")]so c'arta forbici tarem!")
 		user.visible_message("<span class='warning'>You feel air moving from the rune - like as it was swapped with somewhere else.</span>", \
 		"<span class='warning'>You feel air moving from the rune - like as it was swapped with somewhere else.</span>", \
 		"<span class='warning'>You smell ozone.</span>")
@@ -90,7 +90,7 @@ var/list/sacrificed = list()
 //! SECOND RUNE
 /obj/effect/rune/proc/tomesummon()
 	if(istype(src,/obj/effect/rune))
-		usr.say("N[pick("'","`")]ath reth sh'yro eth d'raggathnor!")
+		usr.say_legacy("N[pick("'","`")]ath reth sh'yro eth d'raggathnor!")
 	else
 		usr.whisper("N[pick("'","`")]ath reth sh'yro eth d'raggathnor!")
 	usr.visible_message("<span class='warning'>Rune disappears with a flash of red light, and in its place now a book lies.</span>", \
@@ -120,7 +120,7 @@ var/list/sacrificed = list()
 			to_chat(usr, "<span class='danger'>You sense that the power of the dark one is already working away at them.</span>")
 		return
 
-	usr.say("Mah[pick("'","`")]weyh pleggh at e'ntrath!")
+	usr.say_legacy("Mah[pick("'","`")]weyh pleggh at e'ntrath!")
 
 	converting |= target
 	var/list/waiting_for_input = list(target = 0) //need to box this up in order to be able to reset it again from inside spawn, apparently
@@ -195,7 +195,7 @@ var/list/sacrificed = list()
 	var/list/cultists = new()
 	for(var/mob/M in range(1,src))
 		if(iscultist(M) && !M.stat)
-			M.say("Tok-lyr rqa'nap g[pick("'","`")]lt-ulotf!")
+			M.say_legacy("Tok-lyr rqa'nap g[pick("'","`")]lt-ulotf!")
 			if(istype(M, /mob/living/carbon/human/dummy)) //No manifest cheese.
 				continue
 			cultists.Add(M)
@@ -222,7 +222,7 @@ var/list/sacrificed = list()
 /obj/effect/rune/proc/emp(var/U,var/range_red) //range_red - var which determines by which number to reduce the default emp range, U is the source loc, needed because of talisman emps which are held in hand at the moment of using and that apparently messes things up -- Urist
 	log_and_message_admins("activated an EMP rune.")
 	if(istype(src,/obj/effect/rune))
-		usr.say("Ta'gh fara[pick("'","`")]qha fel d'amar det!")
+		usr.say_legacy("Ta'gh fara[pick("'","`")]qha fel d'amar det!")
 	else
 		usr.whisper("Ta'gh fara[pick("'","`")]qha fel d'amar det!")
 	playsound(U, 'sound/items/Welder2.ogg', 25, 1)
@@ -292,7 +292,7 @@ var/list/sacrificed = list()
 /obj/effect/rune/proc/seer()
 	if(usr.loc==src.loc)
 		if(usr.seer==1)
-			usr.say("Rash'tla sektath mal[pick("'","`")]zua. Zasan therium viortia.")
+			usr.say_legacy("Rash'tla sektath mal[pick("'","`")]zua. Zasan therium viortia.")
 			to_chat(usr, "<span class='danger'>The world beyond fades from your vision.</span>")
 			usr.see_invisible = SEE_INVISIBLE_LIVING
 			usr.seer = 0
@@ -301,7 +301,7 @@ var/list/sacrificed = list()
 			usr.see_invisible = SEE_INVISIBLE_CULT
 			usr.seer = 0
 		else
-			usr.say("Rash'tla sektath mal[pick("'","`")]zua. Zasan therium vivira. Itonis al'ra matum!")
+			usr.say_legacy("Rash'tla sektath mal[pick("'","`")]zua. Zasan therium vivira. Itonis al'ra matum!")
 			to_chat(usr, "<span class='warning'>The world beyond opens to your eyes.</span>")
 			usr.see_invisible = SEE_INVISIBLE_CULT
 			usr.seer = 1
@@ -370,7 +370,7 @@ var/list/sacrificed = list()
 		corpse_to_raise.revive(full_heal = TRUE)
 		corpse_to_raise.remove_all_restraints()
 
-		usr.say("Pasnar val'keriam usinar. Savrae ines amutan. Yam'toth remium il'tarat!")
+		usr.say_legacy("Pasnar val'keriam usinar. Savrae ines amutan. Yam'toth remium il'tarat!")
 		corpse_to_raise.visible_message("<span class='warning'>[corpse_to_raise]'s eyes glow with a faint red as [TU.he] stand[TU.s] up, slowly starting to breathe again.</span>", \
 		"<span class='warning'>Life... I'm alive again...</span>", \
 		"<span class='warning'>You hear a faint, slightly familiar whisper.</span>")
@@ -399,7 +399,7 @@ var/list/sacrificed = list()
 		S=1
 	if(S)
 		if(istype(src,/obj/effect/rune))
-			usr.say("Kla[pick("'","`")]atu barada nikt'o!")
+			usr.say_legacy("Kla[pick("'","`")]atu barada nikt'o!")
 			for (var/mob/V in viewers(src))
 				V.show_message("<span class='warning'>The rune turns into gray dust, veiling the surrounding runes.</span>", 3)
 			qdel(src)
@@ -423,7 +423,7 @@ var/list/sacrificed = list()
 	if(usr.loc==src.loc)
 		var/mob/living/carbon/human/L = usr
 		var/datum/gender/TU = GLOB.gender_datums[L.get_visible_gender()]
-		usr.say("Fwe[pick("'","`")]sh mah erl nyag r'ya!")
+		usr.say_legacy("Fwe[pick("'","`")]sh mah erl nyag r'ya!")
 		usr.visible_message("<span class='warning'>[usr]'s eyes glow blue as [TU.he] freeze[TU.s] in place, absolutely motionless.</span>", \
 		"<span class='warning'>The shadow that is your spirit separates itself from your body. You are now in the realm beyond. While this is a great sight, being here strains your mind and body. Hurry...</span>", \
 		"<span class='warning'>You hear only complete silence for a moment.</span>")
@@ -458,7 +458,7 @@ var/list/sacrificed = list()
 	if(jobban_isbanned(ghost, "cultist"))
 		return this_rune.fizzle()
 
-	usr.say("Gal'h'rfikk harfrandid mud[pick("'","`")]gib!")
+	usr.say_legacy("Gal'h'rfikk harfrandid mud[pick("'","`")]gib!")
 	var/mob/living/carbon/human/dummy/D = new(this_rune.loc)
 	usr.visible_message("<span class='warning'>A shape forms in the center of the rune. A shape of... a man.</span>", \
 	"<span class='warning'>A shape forms in the center of the rune. A shape of... a man.</span>", \
@@ -575,7 +575,7 @@ var/list/sacrificed = list()
 	if (imbued_from)
 		for (var/mob/V in viewers(src))
 			V.show_message("<span class='warning'>The runes turn into dust, which then forms into an arcane image on the paper.</span>", 3)
-		usr.say("H'drak v[pick("'","`")]loso, mir'kanas verbot!")
+		usr.say_legacy("H'drak v[pick("'","`")]loso, mir'kanas verbot!")
 		qdel(imbued_from)
 		qdel(newtalisman)
 	else
@@ -586,7 +586,7 @@ var/list/sacrificed = list()
 	var/mob/living/user = usr
 	var/datum/gender/TU = GLOB.gender_datums[usr.get_visible_gender()]
 	src = null
-	user.say("Uhrast ka'hfa heldsagen ver[pick("'","`")]lot!")
+	user.say_legacy("Uhrast ka'hfa heldsagen ver[pick("'","`")]lot!")
 	user.take_overall_damage(200, 0)
 	runedec+=10
 	user.visible_message("<span class='danger'>\The [user] keels over dead, [TU.his] blood glowing blue as it escapes [TU.his] body and dissipates into thin air.</span>", \
@@ -604,7 +604,7 @@ var/list/sacrificed = list()
 /// returns 0 if the rune is not used. returns 1 if the rune is used.
 /obj/effect/rune/proc/communicate()
 	. = 1 // Default output is 1. If the rune is deleted it will return 1
-	var/input = input(usr, "Please choose a message to tell to the other acolytes.", "Voice of Blood", "")//sanitize() below, say() and whisper() have their own
+	var/input = input(usr, "Please choose a message to tell to the other acolytes.", "Voice of Blood", "")//sanitize() below, say_legacy() and whisper() have their own
 	if(!input)
 		if (istype(src))
 			fizzle()
@@ -613,7 +613,7 @@ var/list/sacrificed = list()
 			return 0
 
 	if(istype(src,/obj/effect/rune))
-		usr.say("O bidai nabora se[pick("'","`")]sma!")
+		usr.say_legacy("O bidai nabora se[pick("'","`")]sma!")
 	else
 		usr.whisper("O bidai nabora se[pick("'","`")]sma!")
 
@@ -648,7 +648,7 @@ var/list/sacrificed = list()
 	for(var/mob/living/carbon/C in orange(1,src))
 		if(iscultist(C) && !C.stat)
 			cultsinrange += C
-			C.say("Barhah hra zar[pick("'","`")]garis!")
+			C.say_legacy("Barhah hra zar[pick("'","`")]garis!")
 
 	for(var/mob/H in victims)
 
@@ -769,7 +769,7 @@ var/list/sacrificed = list()
 			to_chat(usr, "<span class='warning'>Arcane markings suddenly glow from underneath a thin layer of dust!</span>")
 			return
 		if(istype(W,/obj/effect/rune))
-			usr.say("Nikt[pick("'","`")]o barada kla'atu!")
+			usr.say_legacy("Nikt[pick("'","`")]o barada kla'atu!")
 			for (var/mob/V in viewers(src))
 				V.show_message("<span class='warning'>The rune turns into red dust, reveaing the surrounding runes.</span>", 3)
 			qdel(src)
@@ -790,7 +790,7 @@ var/list/sacrificed = list()
 
 //! SEVENTEENTH RUNE
 /obj/effect/rune/proc/wall()
-	usr.say("Khari[pick("'","`")]d! Eske'te tannin!")
+	usr.say_legacy("Khari[pick("'","`")]d! Eske'te tannin!")
 	src.density = !src.density
 	var/mob/living/user = usr
 	user.take_random_targeted_damage(brute = 2)
@@ -845,7 +845,7 @@ var/list/sacrificed = list()
 			S.update_appearance()
 		for(var/mob/living/carbon/C in users)
 			user.take_overall_damage(dam, 0)
-			C.say("Khari[pick("'","`")]d! Gual'te nikka!")
+			C.say_legacy("Khari[pick("'","`")]d! Gual'te nikka!")
 		qdel(src)
 	return fizzle()
 
@@ -879,7 +879,7 @@ var/list/sacrificed = list()
 
 		for(var/mob/living/carbon/human/C in users)
 			if(iscultist(C) && !C.stat)
-				C.say("N'ath reth sh'yro eth d[pick("'","`")]rekkathnor!")
+				C.say_legacy("N'ath reth sh'yro eth d[pick("'","`")]rekkathnor!")
 				C.take_overall_damage(dam, 0)
 				if(users.len <= 4)				// You did the minimum, this is going to hurt more and we're going to stun you.
 					C.apply_effect(rand(3,6), STUN)
@@ -906,7 +906,7 @@ var/list/sacrificed = list()
 			if(prob(1))
 				C.sdisabilities |= SDISABILITY_DEAF
 		if(affected.len)
-			usr.say("Sti[pick("'","`")] kaliedir!")
+			usr.say_legacy("Sti[pick("'","`")] kaliedir!")
 			to_chat(usr, "<span class='warning'>The world becomes quiet as the deafening rune dissipates into fine dust.</span>")
 			add_attack_logs(usr,affected,"Deafen rune")
 			qdel(src)
@@ -950,7 +950,7 @@ var/list/sacrificed = list()
 			C.show_message("<span class='warning'>Suddenly you see a red flash that blinds you.</span>", 3)
 			affected += C
 		if(affected.len)
-			usr.say("Sti[pick("'","`")] kaliesin!")
+			usr.say_legacy("Sti[pick("'","`")] kaliesin!")
 			to_chat(usr, "<span class='warning'>The rune flashes, blinding those who not follow the Nar-Sie, and dissipates into fine dust.</span>")
 			add_attack_logs(usr, affected, "Blindness rune")
 			qdel(src)
@@ -1008,7 +1008,7 @@ var/list/sacrificed = list()
 				explosion(R.loc, -1, 0, 1, 5)
 		for(var/mob/living/carbon/human/C in orange(1,src))
 			if(iscultist(C) && !C.stat)
-				C.say("Dedo ol[pick("'","`")]btoh!")
+				C.say_legacy("Dedo ol[pick("'","`")]btoh!")
 				C.take_overall_damage(15, 0)
 		add_attack_logs(usr, victims, "Blood boil rune")
 		qdel(src)
@@ -1047,7 +1047,7 @@ var/list/sacrificed = list()
 //! TWENTY-FOURTH RUNE
 /obj/effect/rune/proc/runestun(var/mob/living/T as mob)
 	if(istype(src,/obj/effect/rune)) // When invoked as rune, flash and stun everyone around.
-		usr.say("Fuu ma[pick("'","`")]jin!")
+		usr.say_legacy("Fuu ma[pick("'","`")]jin!")
 		for(var/mob/living/L in viewers(src))
 			if(iscarbon(L))
 				var/mob/living/carbon/C = L
@@ -1066,7 +1066,7 @@ var/list/sacrificed = list()
 				add_attack_logs(usr,S,"Stun rune")
 		qdel(src)
 	else // When invoked as talisman, stun and mute the target mob.
-		usr.say("Dream sign ''Evil sealing talisman'[pick("'","`")]!")
+		usr.say_legacy("Dream sign ''Evil sealing talisman'[pick("'","`")]!")
 		var/obj/item/nullrod/N = locate() in T
 		if(N)
 			for(var/mob/O in viewers(T, null))
@@ -1092,7 +1092,7 @@ var/list/sacrificed = list()
 /obj/effect/rune/proc/armor()
 	var/mob/living/carbon/human/user = usr
 	if(istype(src,/obj/effect/rune))
-		usr.say("N'ath reth sh'yro eth d[pick("'","`")]raggathnor!")
+		usr.say_legacy("N'ath reth sh'yro eth d[pick("'","`")]raggathnor!")
 	else
 		usr.whisper("N'ath reth sh'yro eth d[pick("'","`")]raggathnor!")
 	usr.visible_message("<span class='warning'>The rune disappears with a flash of red light, and a set of armor appears on [usr]...</span>", \

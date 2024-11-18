@@ -45,7 +45,7 @@
 	var/turf/T = get_turf(src)
 	if(T && !is_type_in_list(T, suitable_turf_types))
 		if(prob(50))
-			say(pick("Blub", "Glub", "Burble"))
+			say_legacy(pick("Blub", "Glub", "Burble"))
 		adjustBruteLoss(unsuitable_atoms_damage)
 
 // Subtypes.

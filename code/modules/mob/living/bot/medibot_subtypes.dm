@@ -67,5 +67,5 @@
 			"Hhhk bzchk." = 'sound/voice/moth/mothsqueak.ogg',
 		)
 		var/message = pick(message_options)
-		say(message)
+		say_legacy(message)
 		playsound(loc, message_options[message], 50, FALSE)

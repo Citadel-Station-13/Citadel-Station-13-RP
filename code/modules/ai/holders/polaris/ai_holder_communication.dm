@@ -118,7 +118,7 @@
 #undef COMM_AUDIBLE_EMOTE
 #undef COMM_VISUAL_EMOTE
 
-// Handles the holder hearing a mob's say()
+// Handles the holder hearing a mob's say_legacy()
 // Does nothing by default, override this proc for special behavior.
 /datum/ai_holder/polaris/proc/on_hear_say(mob/living/speaker, message)
 	return

@@ -348,7 +348,7 @@
 	var/mob/living/M = loc
 	M.SetNextAction(CLICK_CD_RAPID)
 	if(warcry)
-		M.say("[warcry]", ignore_spam = TRUE, forced = TRUE)
+		M.say_legacy("[warcry]", ignore_spam = TRUE, forced = TRUE)
 
 	return NO_AUTO_CLICKDELAY_HANDLING | ATTACK_IGNORE_ACTION
 

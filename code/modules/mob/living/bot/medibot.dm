@@ -129,7 +129,7 @@
 			"Delicious!" = 'sound/voice/medibot/mdelicious.ogg',
 		)
 		var/message = pick(message_options)
-		say(message)
+		say_legacy(message)
 		playsound(loc, message_options[message], 50, FALSE)
 
 
@@ -155,7 +155,7 @@
 						"[H.name], you appear to be injured!" = 'sound/voice/medibot/minjured.ogg',
 					)
 					var/message = pick(message_options)
-					say(message)
+					say_legacy(message)
 					playsound(loc, message_options[message], 50, FALSE)
 				custom_emote(1, "points at [H.name].")
 				last_newpatient_speak = world.time
@@ -200,7 +200,7 @@
 				"I... I've never lost a patient before. Not today, I mean." = 'sound/voice/medibot/mlost.ogg',
 			)
 			var/message = pick(death_messages)
-			say(message)
+			say_legacy(message)
 			playsound(loc, death_messages[message], 50, FALSE)
 
 	// This is down here for the same reason as above.
@@ -215,7 +215,7 @@
 					"Feel better soon!" = 'sound/voice/medibot/mfeelbetter.ogg',
 				)
 				var/message = pick(possible_messages)
-				say(message)
+				say_legacy(message)
 				playsound(loc, possible_messages[message], 50, FALSE)
 
 	busy = FALSE
@@ -245,7 +245,7 @@
 				"Oh fuck-" = 'sound/voice/medibot/oh_fuck.ogg',
 			)
 			var/message = pick(messagevoice)
-			say(message)
+			say_legacy(message)
 			playsound(src, messagevoice[message], 70, FALSE)
 
 		if(do_after(attacker, 3 SECONDS, target=src))
@@ -444,7 +444,7 @@
 	if(world.time > last_tipping_action_voice + 15 SECONDS)
 		last_tipping_action_voice = world.time
 		var/message = pick(messagevoice)
-		say(message)
+		say_legacy(message)
 		playsound(src, messagevoice[message], 70)
 	tipped_status = MEDIBOT_PANIC_NONE
 	is_tipped = FALSE
@@ -486,7 +486,7 @@
 
 	if(messagevoice)
 		var/message = pick(messagevoice)
-		say(message)
+		say_legacy(message)
 		playsound(src, messagevoice[message], 70)
 	else if(prob(tipped_status * 0.2))
 		playsound(src, 'sound/machines/warning-buzzer.ogg', 30, extrarange=-2)

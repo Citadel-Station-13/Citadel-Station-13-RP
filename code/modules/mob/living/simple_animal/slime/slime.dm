@@ -272,15 +272,15 @@
 				LoseTarget()
 			if(!silent)
 				if(justified)
-					say(pick("Fine...", "Okay...", "Sorry...", "I yield...", "Mercy..."))
+					say_legacy(pick("Fine...", "Okay...", "Sorry...", "I yield...", "Mercy..."))
 				else
-					say(pick("Why...?", "I don't understand...?", "Cruel...", "Stop...", "Nooo..."))
+					say_legacy(pick("Why...?", "I don't understand...?", "Cruel...", "Stop...", "Nooo..."))
 			if(justified)
 				obedience++
 			else
 				if(prob(resentment * 20))
 					enrage() // Pushed the slime too far.
-					say(pick("Evil...", "Kill...", "Tyrant..."))
+					say_legacy(pick("Evil...", "Kill...", "Tyrant..."))
 				resentment++ // Done after check so first time will never enrage.
 
 	discipline = clamp( discipline + amount, 0,  10)
@@ -409,7 +409,7 @@
 /mob/living/simple_animal/slime/proc/befriend(var/mob/living/friend)
 	if(!(friend in friends))
 		friends |= friend
-		say("[friend]... friend...")
+		say_legacy("[friend]... friend...")
 
 /mob/living/simple_animal/slime/proc/can_command(var/mob/living/commander)
 	if(rabid)

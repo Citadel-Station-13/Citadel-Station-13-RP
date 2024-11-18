@@ -256,9 +256,9 @@
 	switch(invocation_type)
 		if(SpI_SHOUT)
 			if(prob(50))//Auto-mute? Fuck that noise
-				user.say(invocation)
+				user.say_legacy(invocation)
 			else
-				user.say(replacetext(invocation," ","`"))
+				user.say_legacy(replacetext(invocation," ","`"))
 		if(SpI_WHISPER)
 			if(prob(50))
 				user.whisper(invocation)

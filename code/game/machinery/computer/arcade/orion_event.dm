@@ -158,18 +158,18 @@
 /*
 /datum/orion_event/hull_part/emag_effect(obj/machinery/computer/arcade/orion_trail/game, mob/living/carbon/gamer)
 	if(prob(10+gamer_skill))
-		game.say("Something slams into the floor around [src] - luckily, it didn't get through!")
+		game.say_legacy("Something slams into the floor around [src] - luckily, it didn't get through!")
 		playsound(game, 'sound/effects/bang.ogg', 50, TRUE)
 		return
 	playsound(game, 'sound/effects/bang.ogg', 100, TRUE)
 	for(var/turf/open/floor/smashed in orange(1, src))
 		smashed.ScrapeAway()
-	game.say("Something slams into the floor around [src], exposing it to space!")
+	game.say_legacy("Something slams into the floor around [src], exposing it to space!")
 	if(game.hull)
 		addtimer(CALLBACK(game, PROC_REF(fix_floor), game), 1 SECONDS)
 
 /datum/orion_event/hull_part/proc/fix_floor(obj/machinery/computer/arcade/orion_trail/game)
-	game.say("A new floor suddenly appears around [src]. What the hell?")
+	game.say_legacy("A new floor suddenly appears around [src]. What the hell?")
 	playsound(game, 'sound/weapons/genhit.ogg', 100, TRUE)
 	for(var/turf/open/space/fixed in orange(1, src))
 		fixed.PlaceOnTop(/turf/open/floor/plating)
@@ -321,7 +321,7 @@
 		to_chat(gamer, SPAN_USERDANGER("A violent gale blows past you, and you barely manage to stay standing!"))
 		return
 	gamer.Paralyze(60)
-	game.say("A sudden gust of powerful wind slams [gamer] into the floor!")
+	game.say_legacy("A sudden gust of powerful wind slams [gamer] into the floor!")
 	gamer.take_bodypart_damage(25)
 	playsound(game, 'sound/weapons/genhit.ogg', 100, TRUE)
 */
@@ -437,7 +437,7 @@
 /datum/orion_event/black_hole_death/emag_effect(obj/machinery/computer/arcade/orion_trail/game, mob/living/carbon/gamer)
 	if(game.obj_flags & OBJ_EMAGGED)
 		playsound(game.loc, 'sound/effects/supermatter.ogg', 100, TRUE)
-		game.say("A miniature black hole suddenly appears in front of [game], devouring [gamer] alive!")
+		game.say_legacy("A miniature black hole suddenly appears in front of [game], devouring [gamer] alive!")
 		gamer.afflict_stun(20 * 200, ignore_canstun = TRUE) //you can't run :^)
 		var/black_hole = new /obj/singularity/academy(gamer.loc)
 		addtimer(CALLBACK(game, TYPE_PROC_REF(/atom/movable, say), "[black_hole] winks out, just as suddenly as it appeared."), 50)

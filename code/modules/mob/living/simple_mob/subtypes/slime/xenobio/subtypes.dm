@@ -637,7 +637,7 @@
 			return ..()
 
 		// Otherwise blow ourselves up.
-		say(pick("Sacrifice...!", "Sssss...", "Boom...!"))
+		say_legacy(pick("Sacrifice...!", "Sssss...", "Boom...!"))
 		set_AI_busy(TRUE)
 		sleep(2 SECONDS)
 		log_and_message_admins("[src] has suicide-bombed themselves while trying to kill \the [L].")

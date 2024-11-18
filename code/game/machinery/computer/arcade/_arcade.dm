@@ -52,7 +52,7 @@ GLOBAL_LIST_INIT(arcade_prize_pool, list(
 	if(user.mind?.get_skill_level(/datum/skill/gaming) >= SKILL_LEVEL_LEGENDARY && HAS_TRAIT(user, TRAIT_GAMERGOD))
 		visible_message("<span class='notice'>[user] inputs an intense cheat code!",\
 		"<span class='notice'>You hear a flurry of buttons being pressed.</span>")
-		say("CODE ACTIVATED: EXTRA PRIZES.")
+		say_legacy("CODE ACTIVATED: EXTRA PRIZES.")
 		prizes *= 2
 */
 	for(var/i = 0, i < prizes, i++)

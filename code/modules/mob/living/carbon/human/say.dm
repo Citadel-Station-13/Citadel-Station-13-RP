@@ -1,4 +1,4 @@
-/mob/living/carbon/human/say(var/message,var/whispering=0)
+/mob/living/carbon/human/say_legacy(var/message,var/whispering=0)
 	var/alt_name = ""
 	if(name != GetVoice())
 		alt_name = "(as [get_id_name("Unknown")])"
@@ -35,7 +35,7 @@
 					if(append)
 						temp += pick(append)
 
-					say(temp)
+					say_legacy(temp)
 				winset(client, "input", "text=[null]")
 
 /mob/living/carbon/human/speech_bubble_appearance()
