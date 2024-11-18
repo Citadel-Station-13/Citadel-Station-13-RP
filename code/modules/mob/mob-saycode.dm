@@ -2,6 +2,21 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
+GLOBAL_REAL(saycode_emphasis_parser, /regex) = regex(
+	@{"(\+|\||_|~)(?=\\S)(.+?)(?=\\S)\1"},
+	"g",
+)
+
+/proc/zz__saycode_emphasis_parser(match, group_1, group_2)
+	var/static/list/lookup = list(
+		"+" = "b",
+		"~" = "s",
+		"_" = "u",
+		"|" = "i",
+	)
+	var/use_html_tag = lookup[group_1]
+	return "<[use_html_tag]>[group_2]</[use_html_tag]>"
+
 /**
  * Processes inbound say.
  *
@@ -13,14 +28,23 @@
  *   and is then acted out by the receiver. This way you can have fun situations where you
  *   can talk with another language through someone you are controlling despite them
  *   not knowing that language.
+ *
+ * @params
+ * * message - message to parse
+ * * origin - SAYCODE_ORIGIN_* enum
  */
-/mob/proc/saycode_parse(message, saycode_origin) as /datum/saycode_context
+/mob/proc/saycode_parse(message, origin) as /datum/saycode_context
 	/**
 	 * This is the authoritative documentation on Citadel RP's say syntax.
 	 *
 	 * If anything changes, the help entry **must** be changed as well!
 	 *
 	 * * Say / Emote should have similar syntax so players don't need to memorize two sets.
+	 * * Normal say emphasis will not hold up a message. If it fails to parse, it fails to parse.
+	 *   This is because we expect players to use it in the heat of the moment, and an intrusive
+	 *   popup stealing focus mid-combat is bad.
+	 * * Special say commands like #e{use language on 'e' language key} and ${self}, will make a parse
+	 *   fail and reflect.
 	 *
 	 * * ------ COMMON ------ *
 	 *
@@ -108,14 +132,27 @@
 	 * there instead of at the start of the message.
 	 */
 
+	var/static/char_sanity_limit = 8192
+	var/static/byte_safety_limit = 8192 * 4
+	var/static/newline_sanity_limit = 24
+
+	if(length(message) > byte_safety_limit)
+		log_saycode_parse(src, "unsafe too long ([length(message)] > [byte_safety_limit])")
+		return new /datum/saycode_context/failure("Message was too long to safely process (>= [byte_safety_limit]B) and was entirely dropped.")
+
 	var/message_length = length_char(message)
 	var/datum/saycode_context/creating_context = new
-	var/static/regex/emphasis_parser = regex(
-		"(\\+|\\||_|~)(.*?)\\1",
-		"g",
-	)
 
-	switch(saycode_origin)
+	if(message_length > char_sanity_limit)
+		log_saycode_parse(src, "safe too long ([message_length] > [char_sanity_limit]); reflected: '[message]'")
+		return new /datum/saycode_context/failure("Message too long (>= [char_sanity_limit] characters).")
+
+	var/start_tu = TICK_USAGE
+
+	// common: parse emphasis into embedded HTML tags
+	message = replacetext_char(message, global.saycode_emphasis_parser, /proc/zz__saycode_emphasis_parser)
+
+	switch(origin)
 		if(SAYCODE_ORIGIN_SAY, SAYCODE_ORIGIN_WHISPER)
 			// treated as a say
 
@@ -154,6 +191,10 @@
 			)
 			emote_parser.next = 1
 			while(emote_parser.Find_char(message))
+
+	var/end_tu = TICK_USAGE
+	log_saycode_parse(src, TICK_USAGE_TO_MS(end_tu - start_tu), message)
+	return creating_context
 
 #warn impl
 

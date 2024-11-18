@@ -17,4 +17,24 @@
 	/// * determines speech bubble
 	var/decorator = SAYCODE_DECORATOR_STATEMENT
 
+	/// were we rejected?
+	var/reject = FALSE
+	/// rejection reason
+	var/reject_reason = "Unknown reason. Contact admins / coders for help!"
+	/// estimated rejection position, if any
+	var/reject_position
+	/// raw text to reflect back
+	var/reject_reflect
+
 #warn impl
+
+/datum/saycode_context/failure
+
+/datum/saycode_context/failure/New(reason, position, reflect)
+	..()
+	if(reason)
+		src.reject_reason = reason
+	if(position)
+		src.reject_position = position
+	if(reflect)
+		src.reject_reflect = reflect
