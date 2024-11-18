@@ -135,6 +135,8 @@
  * * Separate from open() so that open() can be non-blocking.
  */
 /datum/tgui/proc/initialize(data, modules)
+	// todo: this is a blocking proc. src_object can be deleted at any time between the blocking procs.
+	//       we need sane handling of deletion order, of runtimes happen.
 	if(!window.is_ready())
 		window.initialize(
 			strict_mode = TRUE,
