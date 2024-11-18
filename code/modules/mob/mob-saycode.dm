@@ -149,14 +149,22 @@ GLOBAL_REAL(saycode_emphasis_parser, /regex) = regex(
 
 	var/start_tu = TICK_USAGE
 
+	// say: handle overrides
+	switch(origin)
+		if(SAYCODE_ORIGIN_SAY, SAYCODE_ORIGIN_WHISPER)
+			var/first_character_override_say_maybe = copytext_char(message, 1, 2)
+			switch(first_character_override_say_maybe)
+				if("^")
+					origin = (origin == SAYCODE_ORIGIN_WHISPER) ? SAYCODE_ORIGIN_SUBTLE : SAYCODE_ORIGIN_SAY
+				if("*")
+					#warn custom emote
+
 	// common: parse emphasis into embedded HTML tags
 	message = replacetext_char(message, global.saycode_emphasis_parser, /proc/zz__saycode_emphasis_parser)
 
 	switch(origin)
 		if(SAYCODE_ORIGIN_SAY, SAYCODE_ORIGIN_WHISPER)
 			// treated as a say
-
-			// -- handle override --
 
 			// -- handle mode key --
 
