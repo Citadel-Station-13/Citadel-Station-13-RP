@@ -48,16 +48,35 @@
 /datum/saycode_packet/proc/get_mutable()
 	return immutable ? clone() : src
 
+
+
 /**
  * Renders a say into a HTML-formatted message for the chat.
  *
  * @params
+ * * context - the saycode context to use, if any
  * * target - client that's going to view us
  * * force - render, even if no client is provided
  *
  * @return rendered string, or null if fail / skipped
  */
-/datum/saycode_packet/proc/render(client/target, force) as text
+/datum/saycode_packet/proc/perform_render(datum/saycode_context/context, client/target, force) as text
+	if(!target && !force)
+		return
+
+	// todo: caching
+	var/list/joining
+
+
+/**
+ * Renders a say into a HTML-formatted message for the chat.
+ *
+ * @params
+ * * context - the saycode context to use, if any
+ *
+ * @return rendered string, or null if fail / skipped
+ */
+/datum/saycode_packet/proc/render(datum/saycode_context/context) as text
 	if(!target && !force)
 		return
 

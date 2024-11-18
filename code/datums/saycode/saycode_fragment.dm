@@ -28,8 +28,20 @@
  * Interpolates us into text.
  *
  * * This should be 100% deterministic based on arguments and parameters.
+ *
+ * @params
+ * * context - the context used to say, if it exists
  */
-/datum/saycode_fragment/proc/interpolate() as text
+/datum/saycode_fragment/proc/render(datum/saycode_context/context) as text
 	return message
+
+#warn impl
+
+//* Fragments *//
+
+/**
+ * The actor name.
+ */
+/datum/saycode_fragment/actor_name
 
 #warn impl

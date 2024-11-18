@@ -23,3 +23,12 @@
 #define SAYCODE_ORIGIN_SUBTLE (1<<3)
 /// from subtler()
 #define SAYCODE_ORIGIN_SUBTLER (1<<4)
+
+//* Saycode Decorators (speech bubbles use this) *//
+
+/// is a statement
+#define SAYCODE_DECORATOR_STATEMENT "say"
+/// is a question
+#define SAYCODE_DECORATOR_QUESTION "ask"
+/// is exclaiming
+#define SAYCODE_DECORATOR_EXCLAIM "exclaim"

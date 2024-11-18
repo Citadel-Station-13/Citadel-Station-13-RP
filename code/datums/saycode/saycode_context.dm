@@ -12,4 +12,9 @@
 	///   a proc needs a context.
 	var/datum/saycode_packet/packet
 
+	/// the decorator used.
+	///
+	/// * determines speech bubble
+	var/decorator = SAYCODE_DECORATOR_STATEMENT
+
 #warn impl
