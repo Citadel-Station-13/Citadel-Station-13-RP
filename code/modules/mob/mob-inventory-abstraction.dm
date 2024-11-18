@@ -189,11 +189,11 @@
 				I.forceMove(src)
 			if(I.loc != src)
 				return FALSE
-			I.pickup(src, flags, old_loc)
 			log_inventory("pickup-to-hand: keyname [key_name(src)] index [index] item [I]([ref(I)])")
+			I.held_index = index
+			I.pickup(src, flags, old_loc)
+			I.equipped(src, SLOT_ID_HANDS, flags)
 
-		I.held_index = index
-		I.equipped(src, SLOT_ID_HANDS, flags)
 		inventory.held_items[index] = I
 		inventory.on_item_entered(I, index)
 

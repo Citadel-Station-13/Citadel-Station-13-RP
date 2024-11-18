@@ -232,7 +232,7 @@
  *
  * return true/false based on if we succeeded
  */
-/mob/proc/_handle_item_reequip(obj/item/I, slot, old_slot, flags, mob/user = src)
+/mob/proc/_handle_item_reequip(obj/item/I, slot, old_slot, flags, mob/user = src, hand_index)
 	ASSERT(slot)
 	if(!old_slot)
 		// DO NOT USE _slot_by_item - at this point, the item has already been var-set into the new slot!
@@ -263,6 +263,7 @@
 		// TODO: HANDLE DELETIONS ON EQUIPPED PROPERLY, INCLUDING ON HANDS
 		// ? we don't do this on hands, hand procs do it
 		// _equip_slot(I, slot, update_icons)
+		I.held_index = hand_index
 		I.equipped(src, slot, flags)
 		log_inventory("[key_name(src)] moved [I] from [old_slot] to hands.")
 		// hand procs handle rest
