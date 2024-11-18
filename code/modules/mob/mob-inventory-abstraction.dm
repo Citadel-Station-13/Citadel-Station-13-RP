@@ -179,7 +179,7 @@
 	else
 		if(existing_slot)
 			// already in inv
-			if(!_handle_item_reequip(I, SLOT_ID_HANDS, existing_slot, flags, index))
+			if(!_handle_item_reequip(I, SLOT_ID_HANDS, existing_slot, flags, src, index))
 				return FALSE
 			log_inventory("equip-to-hand: keyname [key_name(src)] index [index] item [I]([ref(I)]) from slot [existing_slot]")
 		else
