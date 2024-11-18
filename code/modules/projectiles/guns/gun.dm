@@ -429,7 +429,9 @@
 /obj/item/gun/afterattack(atom/target, mob/living/user, clickchain_flags, list/params)
 	if(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY)
 		return
-	if(!istype(user))
+
+	if(!user?.client?.get_preference_toggle(/datum/game_preference_toggle/game/help_intent_firing) && user.a_intent == INTENT_HELP)
+		to_chat(user, SPAN_WARNING("You refrain from firing [src] because your intent is set to help!"))
 		return
 
 	var/shitty_legacy_params = list2params(params)
@@ -444,10 +446,6 @@
 		else
 			handle_click_safety(user)
 			return
-
-	if(!user?.client?.get_preference_toggle(/datum/game_preference_toggle/game/help_intent_firing) && user.a_intent == INTENT_HELP)
-		to_chat(user, SPAN_WARNING("You refrain from firing [src] because your intent is set to help!"))
-		return
 
 	if(user && user.client && user.aiming && user.aiming.active && user.aiming.aiming_at != target)
 		PreFire(target,user,shitty_legacy_params) //They're using the new gun system, locate what they're aiming at.
