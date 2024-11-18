@@ -321,8 +321,6 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/power/apc, 22)
 
 	make_terminal()
 
-	addtimer(CALLBACK(src, PROC_REF(update)), 5)
-
 /obj/machinery/power/apc/examine(mob/user, dist)
 	. = ..()
 	if(Adjacent(user))

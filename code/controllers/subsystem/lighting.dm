@@ -114,7 +114,7 @@ SUBSYSTEM_DEF(lighting)
 	)
 	log_subsystem("lighting", "NOv:[overlaycount] L:[processed_lights] C:[processed_corners] O:[processed_overlays]")
 
-	return ..()
+	return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/lighting/proc/InitializeZlev(zlev)
 	for (var/thing in Z_ALL_TURFS(zlev))

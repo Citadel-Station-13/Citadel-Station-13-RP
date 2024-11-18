@@ -21,7 +21,7 @@ SUBSYSTEM_DEF(nightshift)
 /datum/controller/subsystem/nightshift/Initialize()
 	if (!CONFIG_GET(flag/nightshifts_enabled))
 		can_fire = FALSE
-	return ..()
+	return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/nightshift/fire(resumed = FALSE)
 	if(resumed)

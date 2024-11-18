@@ -389,7 +389,7 @@ var/list/intents = list(INTENT_HELP,INTENT_DISARM,INTENT_GRAB,INTENT_HARM)
  */
 /proc/notify_ghosts(message, ghost_sound, enter_link, atom/source, mutable_appearance/alert_overlay, action = NOTIFY_JUMP, flashwindow = TRUE, ignore_mapload = TRUE, ignore_key, ignore_dnr_observers = FALSE, header) //Easy notification of ghosts.
 	// Don't notify for objects created during a mapload.
-	if(ignore_mapload && SSatoms.initialized != INITIALIZATION_INNEW_REGULAR)
+	if(ignore_mapload && SSatoms.atom_init_status != ATOM_INIT_IN_NEW_REGULAR)
 		return
 	for(var/mob/observer/dead/O in GLOB.player_list)
 		if(!O.client)
