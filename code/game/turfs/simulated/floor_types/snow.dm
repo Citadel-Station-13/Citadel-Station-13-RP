@@ -98,5 +98,5 @@ CREATE_STANDARD_TURFS(/turf/simulated/floor/outdoors/shelfice)
 	baseturfs = /turf/simulated/floor/outdoors/dirt
 
 /turf/simulated/floor/outdoors/snow/no_tree
-	tree_chance = 0
-	deadtree_chance = 0
+	// tree_chance = 0
+	// deadtree_chance = 0
