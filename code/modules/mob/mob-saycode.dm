@@ -8,3 +8,9 @@
 /mob/proc/saycode_parse(message, saycode_origin)
 
 #warn impl
+
+/mob/say(datum/saycode_packet/packet, datum/saycode_context/context)
+	return ..()
+
+/mob/hear(datum/saycode_packet/packet)
+	return ..()

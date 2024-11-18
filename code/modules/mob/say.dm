@@ -1,7 +1,6 @@
 /mob/proc/say_legacy(var/message, var/datum/language/speaking = null, var/verb="says", var/alt_name="", var/whispering = 0)
 	return
 
-
 /mob/proc/whisper_wrapper()
 	var/message = input("","whisper (text)") as text|null
 	if(message)
