@@ -541,7 +541,7 @@
 /turf/simulated/floor,
 /area/class_p/unexplored)
 "Dv" = (
-/turf/simulated/floor/outdoors,
+/turf/simulated/floor,
 /area/class_p/unexplored)
 "DH" = (
 /obj/structure/table/standard,
@@ -700,7 +700,7 @@
 	},
 /area/class_p/unexplored)
 "JD" = (
-/turf/simulated/floor/outdoors,
+/turf/simulated/floor,
 /area/class_p/explored)
 "Ki" = (
 /obj/machinery/atmospherics/pipe/tank{
