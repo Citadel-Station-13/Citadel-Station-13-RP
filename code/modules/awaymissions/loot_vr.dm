@@ -183,8 +183,8 @@
 					prob(5);/obj/item/storage/box/shotgunshells,\
 					prob(5);/obj/item/ammo_magazine/a357/speedloader,\
 					prob(5);/obj/item/ammo_magazine/a7_62mm/clip,\
-					prob(5);/obj/item/ammo_magazine/a45,\
-					prob(5);/obj/item/ammo_magazine/a45/rubber,\
+					prob(5);/obj/item/ammo_magazine/a45/doublestack,\
+					prob(5);/obj/item/ammo_magazine/a45/doublestack/rubber,\
 					prob(5);/obj/item/ammo_magazine/a38/speedloader,\
 					prob(5);/obj/item/ammo_magazine/a38/speedloader/rubber,\
 					prob(5);/obj/item/storage/box/flashbangs,\

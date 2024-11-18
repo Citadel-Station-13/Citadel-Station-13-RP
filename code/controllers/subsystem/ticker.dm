@@ -75,8 +75,7 @@ SUBSYSTEM_DEF(ticker)
 		syndicate_code_response = generate_code_phrase()
 
 	start_at = world.time + (CONFIG_GET(number/lobby_countdown) * 10)
-
-	return ..()
+	return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/ticker/fire()
 	switch(current_state)
