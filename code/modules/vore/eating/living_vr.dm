@@ -530,6 +530,7 @@
     gas = list(
         GAS_ID_OXYGEN = 21,
         GAS_ID_NITROGEN = 79)
+	update_values()
 
 // Procs for micros stuffed into boots and the like to escape from them
 /mob/living/proc/escape_clothes(obj/item/clothing/C)
