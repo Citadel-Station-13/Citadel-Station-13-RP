@@ -167,9 +167,6 @@
 		if("walk")
 			usr.m_intent = "walk"
 			usr.m_int = "14,14"
-		if("face")
-			usr.m_intent = "face"
-			usr.m_int = "15,14"
 		if("run")
 			usr.m_intent = "run"
 			usr.m_int = "13,14"
