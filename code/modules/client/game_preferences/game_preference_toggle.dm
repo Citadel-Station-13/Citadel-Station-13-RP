@@ -119,12 +119,6 @@
 	legacy_key = "HELP_INTENT_SAFETY"
 	default_value = FALSE
 
-/datum/game_preference_toggle/game/legacy_name_highlight
-	name = "Emphasize Name Mentions"
-	description = "Enlargen messages calling you by name."
-	key = "legacy_name_mention"
-	legacy_key = "CHAT_MENTION"
-
 /datum/game_preference_toggle/ambience
 	abstract_type = /datum/game_preference_toggle/ambience
 	category = "Sound - Ambience"

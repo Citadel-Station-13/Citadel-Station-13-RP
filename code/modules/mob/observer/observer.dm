@@ -6,7 +6,8 @@
 	cached_multiplicative_slowdown = 0.5 // 20 tiles per second
 	invisibility = INVISIBILITY_OBSERVER
 	see_invisible = SEE_INVISIBLE_OBSERVER
-	atom_flags = ATOM_NONWORLD | ATOM_HEAR
+	atom_flags = ATOM_NONWORLD
+	saycode_inbound_filter = SAYCODE_TYPE_FILTER_FOR_OBSERVER
 
 	/// Our darksight
 	var/datum/vision/baseline/vision_innate = /datum/vision/baseline/observer

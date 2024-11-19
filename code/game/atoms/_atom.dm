@@ -677,10 +677,6 @@
 		else
 			AM.show_message(message, 1, blind_message, 2)
 
-// todo: refactor
-/atom/movable/proc/show_message(msg, type, alt, alt_type)//Message, type of message (1 or 2), alternative message, alt message type (1 or 2)
-	return
-
 /// Show a message to all mobs and objects in earshot of this atom
 /// Use for objects performing audible actions
 /// message is the message output to anyone who can hear.

@@ -72,21 +72,6 @@ var/obj/machinery/blackbox_recorder/blackbox
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 10
 	active_power_usage = 100
-	var/list/messages = list()		//Stores messages of non-standard frequencies
-	var/list/messages_admin = list()
-
-	var/list/msg_common = list()
-	var/list/msg_science = list()
-	var/list/msg_command = list()
-	var/list/msg_medical = list()
-	var/list/msg_engineering = list()
-	var/list/msg_security = list()
-	var/list/msg_deathsquad = list()
-	var/list/msg_syndicate = list()
-	var/list/msg_raider = list()
-	var/list/msg_cargo = list()
-	var/list/msg_service = list()
-	var/list/msg_explorer = list()
 
 	var/list/datum/feedback_variable/feedback = new()
 
@@ -102,19 +87,7 @@ var/obj/machinery/blackbox_recorder/blackbox
 	if(T)
 		blackbox = null
 		var/obj/machinery/blackbox_recorder/BR = new/obj/machinery/blackbox_recorder(T)
-		BR.msg_common = msg_common
-		BR.msg_science = msg_science
-		BR.msg_command = msg_command
-		BR.msg_medical = msg_medical
-		BR.msg_engineering = msg_engineering
-		BR.msg_security = msg_security
-		BR.msg_deathsquad = msg_deathsquad
-		BR.msg_syndicate = msg_syndicate
-		BR.msg_cargo = msg_cargo
-		BR.msg_service = msg_service
 		BR.feedback = feedback
-		BR.messages = messages
-		BR.messages_admin = messages_admin
 		if(blackbox != BR)
 			blackbox = BR
 	..()
@@ -143,17 +116,6 @@ var/obj/machinery/blackbox_recorder/blackbox
 
 	feedback_set_details("radio_usage","")
 
-	feedback_add_details("radio_usage","COM-[msg_common.len]")
-	feedback_add_details("radio_usage","SCI-[msg_science.len]")
-	feedback_add_details("radio_usage","HEA-[msg_command.len]")
-	feedback_add_details("radio_usage","MED-[msg_medical.len]")
-	feedback_add_details("radio_usage","ENG-[msg_engineering.len]")
-	feedback_add_details("radio_usage","SEC-[msg_security.len]")
-	feedback_add_details("radio_usage","DTH-[msg_deathsquad.len]")
-	feedback_add_details("radio_usage","SYN-[msg_syndicate.len]")
-	feedback_add_details("radio_usage","CAR-[msg_cargo.len]")
-	feedback_add_details("radio_usage","SRV-[msg_service.len]")
-	feedback_add_details("radio_usage","OTH-[messages.len]")
 	feedback_add_details("radio_usage","PDA-[pda_msg_amt]")
 	feedback_add_details("radio_usage","RC-[rc_msg_amt]")
 

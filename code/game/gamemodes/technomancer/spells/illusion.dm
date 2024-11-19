@@ -49,9 +49,9 @@
 				return
 			if("Speak")
 				var/what_to_say = input(user, "What do you want \the [illusion] to say?","Illusion Speak") as null|text
-				//what_to_say = sanitize(what_to_say) //Sanitize occurs inside say() already.
+				//what_to_say = sanitize(what_to_say) //Sanitize occurs inside say_legacy() already.
 				if(what_to_say)
-					illusion.say(what_to_say)
+					illusion.say_legacy(what_to_say)
 			if("Emote")
 				var/what_to_emote = input(user, "What do you want \the [illusion] to do?","Illusion Emote") as null|text
 				if(what_to_emote)

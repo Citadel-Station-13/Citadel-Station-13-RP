@@ -23,7 +23,7 @@
 /obj/item/clothing/mask/gas/poltergeist/process(delta_time)
 	if(heard_talk.len && istype(loc, /mob/living) && prob(10))
 		var/mob/living/M = loc
-		M.say(pick(heard_talk))
+		M.say_legacy(pick(heard_talk))
 
 /obj/item/clothing/mask/gas/poltergeist/hear_talk(mob/M as mob, text)
 	..()

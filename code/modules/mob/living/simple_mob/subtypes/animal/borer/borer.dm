@@ -102,7 +102,7 @@
 				host.adjustBrainLoss(0.1)
 
 			if(prob(host.brainloss/20))
-				host.say("*[pick(list("blink","blink_r","choke","aflap","drool","twitch","twitch_v","gasp"))]")
+				host.say_legacy("*[pick(list("blink","blink_r","choke","aflap","drool","twitch","twitch_v","gasp"))]")
 
 /mob/living/simple_mob/animal/borer/statpanel_data(client/C)
 	. = ..()
@@ -212,7 +212,7 @@
 	return
 
 // This is awful but its literally say code.
-/mob/living/simple_mob/animal/borer/say(var/message, var/datum/language/speaking = null, var/verb="says", var/alt_name="", var/whispering = 0)
+/mob/living/simple_mob/animal/borer/say_legacy(var/message, var/datum/language/speaking = null, var/verb="says", var/alt_name="", var/whispering = 0)
 	message = sanitize(message)
 	message = capitalize(message)
 
@@ -251,7 +251,7 @@
 			if(speaker)
 				log_admin("[src.ckey]/([src]) tried to force [speaker] to say: [message]")
 				message_admins("[src.ckey]/([src]) tried to force [speaker] to say: [message]")
-				speaker.say("[message]")
+				speaker.say_legacy("[message]")
 				return
 			to_chat(src, SPAN_ALIEN("..But nothing heard it.."))
 		else

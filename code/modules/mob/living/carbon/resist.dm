@@ -55,7 +55,7 @@
 			visible_message(
 				SPAN_DANGER("[src] manages to break [I]!"),
 				SPAN_WARNING("You successfully break your [I]."))
-			say(pick(";RAAAAAAAARGH!", ";HNNNNNNNNNGGGGGGH!", ";GWAAAAAAAARRRHHH!", "NNNNNNNNGGGGGGGGHH!", ";AAAAAAARRRGH!" ))
+			say_legacy(pick(";RAAAAAAAARGH!", ";HNNNNNNNNNGGGGGGH!", ";GWAAAAAAAARRRHHH!", "NNNNNNNNGGGGGGGGHH!", ";AAAAAAARRRGH!" ))
 
 			if(I == handcuffed)
 				handcuffed = null

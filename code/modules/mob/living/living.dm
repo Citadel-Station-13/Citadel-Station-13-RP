@@ -1,3 +1,6 @@
+/mob/living
+	saycode_inbound_filter = SAYCODE_TYPE_FILTER_FOR_LIVING
+
 TYPE_REGISTER_SPATIAL_GRID(/mob/living, SSspatial_grids.living)
 /mob/living/Initialize(mapload)
 	. = ..()

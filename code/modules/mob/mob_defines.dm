@@ -7,7 +7,6 @@
 	layer = MOB_LAYER
 	plane = MOB_PLANE
 	animate_movement = 2
-	atom_flags = ATOM_HEAR
 	pass_flags_self = ATOM_PASS_MOB | ATOM_PASS_OVERHEAD_THROW
 	generic_canpass = FALSE
 	sight = SIGHT_FLAGS_DEFAULT
@@ -220,7 +219,6 @@
 	var/stuttering = null	//?Carbon
 	var/slurring = null		//?Carbon
 	var/real_name = null
-	var/nickname = null
 	var/flavor_text = ""
 	var/med_record = ""
 	var/sec_record = ""

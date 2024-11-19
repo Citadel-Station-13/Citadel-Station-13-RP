@@ -169,7 +169,7 @@
 	my_voice.transfer_identity(target_mob)
 	if(!isnull(text) && !isnull(my_voice) && !isnull(my_voice.name))
 		my_voice.forceMove(get_turf(src))
-		my_voice.say("[text]")
+		my_voice.say_legacy("[text]")
 		my_voice.forceMove(src)
 
 /obj/item/integrated_circuit/output/sound

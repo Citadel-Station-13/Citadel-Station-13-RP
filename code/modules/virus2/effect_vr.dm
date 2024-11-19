@@ -6,7 +6,7 @@
 	stage = 1
 	chance_maxm = 25
 	activate(var/mob/living/carbon/mob,var/multiplier)
-		mob.say("[pick("Mlem.","MLEM!","Mlem?")]")
+		mob.say_legacy("[pick("Mlem.","MLEM!","Mlem?")]")
 */
 /datum/disease2/effect/spin
 	name = "Spyndrome"

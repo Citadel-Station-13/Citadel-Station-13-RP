@@ -1,15 +1,15 @@
 //? FLAG BITMASKS - Used in /atom/var/flags
 /// The atom is initialized
-#define ATOM_INITIALIZED    (1<<0)
+#define ATOM_INITIALIZED       (1<<0)
 /// Item has priority to check when entering or leaving.
-#define ATOM_BORDER         (1<<1)
-/// get_hearers_in_view() returns us, meaning we intercept usually for-players messages. Mobs, mechas, etc should all have this!
-#define ATOM_HEAR           (1<<2)
+#define ATOM_BORDER            (1<<1)
+/// Unused.
+#define ATOM_FLAG_UNUSED_1     (1<<2)
 /// Atom queued to SSoverlay for compile_overlays
-#define ATOM_OVERLAY_QUEUED (1<<3)
+#define ATOM_OVERLAY_QUEUED    (1<<3)
 /// Atom is absolute-abstract - should not be interactable or movable in any way shape or form
 /// This is for stuff like lighting.
-#define ATOM_ABSTRACT       (1<<4)
+#define ATOM_ABSTRACT          (1<<4)
 /// Atom is not considered a game world object.
 /// This means semantic "wipe game world state" things like turf.empty(), saving, loading, etc, should ignore it,
 /// but the atom is not abstract.
@@ -37,7 +37,7 @@
 DEFINE_BITFIELD(atom_flags, list(
 	BITFIELD(ATOM_INITIALIZED),
 	BITFIELD(ATOM_BORDER),
-	BITFIELD(ATOM_HEAR),
+	BITFIELD(ATOM_FLAG_UNUSED_1),
 	BITFIELD(ATOM_OVERLAY_QUEUED),
 	BITFIELD(ATOM_ABSTRACT),
 	BITFIELD(ATOM_NONWORLD),

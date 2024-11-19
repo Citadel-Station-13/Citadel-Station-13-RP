@@ -63,7 +63,7 @@
 			if(!pull_allowed)
 				var/mob/living/L = pulledby
 				UnarmedAttack(L)
-				say("Do not interfere with active law enforcement routines!")
+				say_legacy("Do not interfere with active law enforcement routines!")
 				GLOB.global_announcer.autosay("[src] was interfered with in <b>[get_area(src)]</b>, activating defense routines.", "[src]", "Security")
 
 /datum/category_item/catalogue/technology/bot/secbot/beepsky
@@ -254,7 +254,7 @@
 	var/suspect_name = target_name(target)
 	if(declare_arrests)
 		GLOB.global_announcer.autosay("[src] is [arrest_type ? "detaining" : "arresting"] a level [threat] suspect <b>[suspect_name]</b> in <b>[get_area(src)]</b>.", "[src]", "Security")
-	say("Down on the floor, [suspect_name]! You have [SECBOT_WAIT_TIME*2] seconds to comply.")
+	say_legacy("Down on the floor, [suspect_name]! You have [SECBOT_WAIT_TIME*2] seconds to comply.")
 	playsound(src.loc, pick(preparing_arrest_sounds), 50)
 	// Register to be told when the target moves
 	RegisterSignal(target, COMSIG_MOVABLE_MOVED, PROC_REF(target_moved))
@@ -292,7 +292,7 @@
 		if(confirmTarget(M))
 			target = M
 			awaiting_surrender = 0
-			say("Level [threat] infraction alert!")
+			say_legacy("Level [threat] infraction alert!")
 			custom_emote(1, "points at [M.name]!")
 			playsound(src.loc, pick(threat_found_sounds), 50)
 			return

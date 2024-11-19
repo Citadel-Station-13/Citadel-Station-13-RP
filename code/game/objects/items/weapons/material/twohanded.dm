@@ -188,7 +188,7 @@
 /obj/item/material/twohanded/spear/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	. = ..()
 	if(explosive && wielded) //Citadel edit removes qdel and explosive.forcemove(AM)
-		user.say("[war_cry]")
+		user.say_legacy("[war_cry]")
 		explosive.detonate()
 
 /obj/item/material/twohanded/spear/throw_impact(atom/hit_atom)

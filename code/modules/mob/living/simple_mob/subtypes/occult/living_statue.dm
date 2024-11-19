@@ -91,7 +91,7 @@
 
 
 //? Cannot talk
-/mob/living/simple_mob/living_statue/say(whispering = FALSE)
+/mob/living/simple_mob/living_statue/say_legacy(whispering = FALSE)
 	return FALSE
 
 

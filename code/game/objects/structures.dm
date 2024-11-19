@@ -34,7 +34,7 @@
 /obj/structure/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(breakable)
 		if(MUTATION_HULK in user.mutations)
-			user.say(pick(";RAAAAAAAARGH!", ";HNNNNNNNNNGGGGGGH!", ";GWAAAAAAAARRRHHH!", "NNNNNNNNGGGGGGGGHH!", ";AAAAAAARRRGH!" ))
+			user.say_legacy(pick(";RAAAAAAAARGH!", ";HNNNNNNNNNGGGGGGH!", ";GWAAAAAAAARRRHHH!", "NNNNNNNNGGGGGGGGHH!", ";AAAAAAARRRGH!" ))
 			attack_generic(user,1,"smashes")
 		else if(istype(user,/mob/living/carbon/human))
 			var/mob/living/carbon/human/H = user

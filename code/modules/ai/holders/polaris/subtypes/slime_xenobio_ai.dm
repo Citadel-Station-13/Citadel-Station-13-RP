@@ -77,7 +77,7 @@
 		if(rabid)
 			return
 		if(my_slime.untamable)
-			holder.say("Grrr...")
+			holder.say_legacy("Grrr...")
 			holder.add_modifier(/datum/modifier/berserk, 30 SECONDS)
 			enrage()
 		var/justified = my_slime.is_justified_to_discipline() // This will also consider the AI-side of that proc.
@@ -86,14 +86,14 @@
 		if(justified)
 			obedience++
 			if(!silent)
-				holder.say(pick("Fine...", "Okay...", "Sorry...", "I yield...", "Mercy..."))
+				holder.say_legacy(pick("Fine...", "Okay...", "Sorry...", "I yield...", "Mercy..."))
 		else
 			if(prob(resentment * 20))
 				enrage()
-				holder.say(pick("Evil...", "Kill...", "Tyrant..."))
+				holder.say_legacy(pick("Evil...", "Kill...", "Tyrant..."))
 			else
 				if(!silent)
-					holder.say(pick("Why...?", "I don't understand...?", "Cruel...", "Stop...", "Nooo..."))
+					holder.say_legacy(pick("Why...?", "I don't understand...?", "Cruel...", "Stop...", "Nooo..."))
 			resentment++ // Done after check so first time will never enrage.
 
 	discipline = clamp( discipline + amount, 0,  10)

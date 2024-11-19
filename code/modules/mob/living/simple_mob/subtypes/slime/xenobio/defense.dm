@@ -37,7 +37,7 @@
 			if(user in friends) // Friend attacking us for no reason.
 				if(prob(25))
 					friends -= user
-					say("[user]... not friend...")
+					say_legacy("[user]... not friend...")
 
 		else // We're actually being bad.
 			var/prob_to_back_down = round(effective_force)

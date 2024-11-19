@@ -53,8 +53,8 @@
 				keys += key
 		if(keys.len)
 			var/key_used = pick(keys)
-			return say("[key_used] [message]")
-	return say(message)
+			return say_legacy("[key_used] [message]")
+	return say_legacy(message)
 
 // Ugly saycode so parrots can use their headsets.
 /mob/living/simple_mob/animal/passive/bird/parrot/handle_message_mode(message_mode, message, verb, speaking, used_radios, alt_name)
