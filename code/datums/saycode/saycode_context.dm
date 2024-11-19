@@ -6,16 +6,22 @@
  * stores the intent of sending that message, like whether to send it over the radio and whatnot.
  */
 /datum/saycode_context
+	//* Message *//
 	/// our packet to send, if any.
 	///
 	/// * This is often un-referenced during send. Saycode procs should always accept a packet and a context separately if
 	///   a proc needs a context.
 	var/datum/saycode_packet/packet
 
+	//* Header *//
+	/// Detected transmit key.
+	var/header_transmit_key
+
+	//* Footer *//
 	/// the decorator used.
 	///
 	/// * determines speech bubble
-	var/decorator = SAYCODE_DECORATOR_STATEMENT
+	var/footer_decorator = SAYCODE_DECORATOR_STATEMENT
 
 	/// were we rejected?
 	var/reject = FALSE

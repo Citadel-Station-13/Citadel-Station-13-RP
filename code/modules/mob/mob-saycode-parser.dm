@@ -154,68 +154,10 @@ GLOBAL_REAL(saycode_fragment_parser, /regex) = regex(
 	 *   there not being a good way to render it in the message when passed over radio.
 	 * * Non-verbal component languages, however, can be used - they'll be garbled as usual.
 	 *
-	 * > Emote Invocation Hook <
-	 *
-	 * If the first character of the message is `*`, it will always be sent to the emote
-	 * system for processing.
-	 *
-	 * Example: "*smile"
-	 *
-	 * > Custom Emote Hook <
-	 *
-	 * If the first character of the message is '^', it will be sent verbatim
-	 * to the custom emote parser instead.
-	 *
-	 * Example: "^..." ; anything after ther ^ is sent to emote as if they typed it into an emote.
-	 *
-	 * > Transmit Key <
-	 *
-	 * Transmit key will be parsed as follows.
-	 *
-	 * `;` - common.
-	 * `:k` - transmit with `k` key. Not case sensitive.
-	 * `.k` - transmit with 'k' key. Not case sensitive.
-	 *
-	 * > Language Key <
-	 *
-	 * Language key will be parsed as follows.
-	 *
-	 * `,k` for language with key 'k'. Not case sensitive.
-	 * `!` will switch the entire message to an audible sound descriptor.
-	 *
-	 * > -- Rest -- <
-	 *
-	 * After the above, the rest of the message will be sent with the above parameters.
-	 *
-	 * > Language Fragments <
-	 *
-	 * One may include language fragments by doing the following.
-	 *
-	 * "The quick brown fox #e{jumps over} the lazy dog."
-	 * In this example, 'jumps over' is using a language with the given key of 'e'.
-	 *
-	 * > -- Footer -- <
-	 *
-	 * After all of the above, the last parts of the message is handled as following.
-	 *
-	 * * If '?' is encountered at the end, the message is considered a question.
-	 * * If '!' is encountered at the end, the message is considered an exclamation.
-	 * * If '!!' is encountered at the end, the message is considered yelling.
-	 *
 	 * * ------ EMOTE ------ *
 	 *
 	 * * Emotes immediately begin the message segment.
 	 * * Emotes allow a given amount of newlines to be used.
-	 *
-	 * > Language Fragments <
-	 *
-	 * * Same as fragments in the Say section.
-	 * * Languages in emotes fully support all languages, whether verbal or nonverbal.
-	 *
-	 * > Actor Name Position <
-	 *
-	 * If "${self}" is encountered (literal), the implementation may include the actor's name
-	 * there instead of at the start of the message.
 	 */
 
 	var/static/char_sanity_limit = 8192
@@ -235,55 +177,75 @@ GLOBAL_REAL(saycode_fragment_parser, /regex) = regex(
 	// begin parsing
 	var/start_tu = TICK_USAGE
 	var/datum/saycode_context/creating_context = new
+	var/header_consumed_count = 0
+	var/header_parse_character
 
 	// trim
 	message = trim(message)
 
-	// say: handle overrides
-	switch(origin)
-		if(SAYCODE_ORIGIN_SAY, SAYCODE_ORIGIN_WHISPER)
-			var/first_character_override_say_maybe = copytext_char(message, 1, 2)
-			switch(first_character_override_say_maybe)
-				if("^")
-					origin = (origin == SAYCODE_ORIGIN_WHISPER) ? SAYCODE_ORIGIN_SUBTLE : SAYCODE_ORIGIN_SAY
-				if("*")
-					#warn custom emote
+	// parse: <override>
+	header_parse_character = copytext_char(message, 1, 2)
+	switch(header_parse_character)
+		if("^")
+			++header_consumed_count
+			origin = (origin == SAYCODE_ORIGIN_WHISPER) ? SAYCODE_ORIGIN_SUBTLE : SAYCODE_ORIGIN_SAY
+		if("*")
+			++header_consumed_count
+			#warn invoke emote system
+
+	// parse: <header>
+	var/header_transmit_key
+	var/header_language_key
+	while((header_parse_character = copytext_char(message, header_consumed_count + 1, header_consumed_count + 2)))
+		switch(header_parse_character)
+			if("!")
+				if(!(origin & (SAYCODE_ORIGIN_SAY | SAYCODE_ORIGIN_WHISPER)))
+					log_saycode_reject(src, "audible mode on emote", message)
+					return new /datum/saycode_context/failure("Cannot set audible mode on an emote message.", header_consumed_count, message)
+				if(!isnull(header_language_key))
+					log_saycode_reject(src, "duplicate language key (noise)", message)
+					return new /datum/saycode_context/failure("Duplicate language key.", header_consumed_count, message)
+				header_language_key = "!"
+				++header_consumed_count
+			if(",")
+				if(!(origin & (SAYCODE_ORIGIN_SAY | SAYCODE_ORIGIN_WHISPER)))
+					log_saycode_reject(src, "language key on emote", message)
+					return new /datum/saycode_context/failure("Cannot set global language on an emote message.", header_consumed_count, message)
+				if(!isnull(header_language_key))
+					log_saycode_reject(src, "duplicate language key", message)
+					return new /datum/saycode_context/failure("Duplicate language key.", header_consumed_count, message)
+				header_language_key = copytext_char(message, header_consumed_count + 2, header_consumed_count + 3)
+				header_consumed_count += 2
+			if(":", ".")
+				if(!(origin & (SAYCODE_ORIGIN_SAY | SAYCODE_ORIGIN_WHISPER)))
+					log_saycode_reject(src, "transmit mode on emote", message)
+					return new /datum/saycode_context/failure("Cannot set transmit mode on an emote message.", header_consumed_count, message)
+				if(!isnull(header_transmit_key))
+					log_saycode_reject(src, "duplicate transmit key", message)
+					return new /datum/saycode_context/failure("Duplicate transmit key.", header_consumed_count, message)
+				header_transmit_key = copytext_char(message, header_consumed_count + 2, header_consumed_count + 3)
+				header_consumed_count += 2
+
+	creating_context.header_transmit_key = header_transmit_key
+	#warn handle header language key
+
+	// parse: <body>
 
 	// common: parse emphasis into embedded HTML tags
 	message = replacetext_char(message, global.saycode_emphasis_parser, /proc/zz__saycode_emphasis_parser)
-	// common: prepare to track consumed characters from start
-	var/header_consumed_count = 0
-	// common: prepare to tokenize
-	var/list/tokenized
 
-	switch(origin)
-		if(SAYCODE_ORIGIN_SAY, SAYCODE_ORIGIN_WHISPER)
-			// treated as a say
+	// parse: <footer>
+	switch(copytext_char(message, -1))
+		if("!")
+			var/yelling = copytext_char(message, -2, -1) == "!"
+			if(yelling)
+				creating_context.decorator = SAYCODE_DECORATOR_YELL
+			else
+				creating_context.decorator = SAYCODE_DECORATOR_EXCLAIM
+		if("?")
+			creating_context.decorator = SAYCODE_DECORATOR_QUESTION
 
-			// -- handle transmit key --
-
-			// -- handle language key --
-
-			// -- parse message --
-			tokenized = zz_saycode_tokenize(message, header_consumed_count + 1)
-
-			// -- handle footer --
-			if(message)
-				switch(copytext_char(message, -1))
-					if("!")
-						var/yelling = copytext_char(message, -2, -1) == "!"
-						if(yelling)
-							creating_context.decorator = SAYCODE_DECORATOR_YELL
-						else
-							creating_context.decorator = SAYCODE_DECORATOR_EXCLAIM
-					if("?")
-						creating_context.decorator = SAYCODE_DECORATOR_QUESTION
-		if(SAYCODE_ORIGIN_EMOTE, SAYCODE_ORIGIN_SUBTLE, SAYCODE_ORIGIN_SUBTLER)
-			// treated as an emote
-
-			// -- parse message --
-			tokenized = zz_saycode_tokenize(message, header_consumed_count + 1)
-
+	// finish parsing
 	var/end_tu = TICK_USAGE
 	log_saycode_parse(src, TICK_USAGE_TO_MS(end_tu - start_tu), message)
 	return creating_context
