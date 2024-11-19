@@ -355,7 +355,7 @@
 /datum/disease2/effect/mind/activate(var/mob/living/carbon/mob,var/multiplier)
 	if(istype(mob, /mob/living/carbon/human))
 		var/mob/living/carbon/human/H = mob
-		var/obj/item/organ/internal/brain/B = H.internal_organs_by_name["brain"]
+		var/obj/item/organ/internal/brain/B = H.keyed_organs[ORGAN_KEY_BRAIN]
 		if (B && B.damage < B.min_broken_damage)
 			B.take_damage(5)
 	else

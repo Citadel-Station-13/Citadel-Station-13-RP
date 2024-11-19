@@ -7,16 +7,57 @@
 //*                                                                                   *//
 //* Organ keys should always be annotated in the below list with their expected type. *//
 
+//* Bodyparts *//
+
+#warn tag all the ext organs these describe!!!!
+/// External organ key for standard set.
+/// * Type: /obj/item/organ/external
+#define ORGAN_KEY_EXT_HEAD "head"
+/// External organ key for standard set.
+/// * Type: /obj/item/organ/external
+#define ORGAN_KEY_EXT_CHEST "chest"
+/// External organ key for standard set.
+/// * Type: /obj/item/organ/external
+#define ORGAN_KEY_EXT_LEFT_ARM "left_arm"
+/// External organ key for standard set.
+/// * Type: /obj/item/organ/external
+#define ORGAN_KEY_EXT_LEFT_HAND "left_hand"
+/// External organ key for standard set.
+/// * Type: /obj/item/organ/external
+#define ORGAN_KEY_EXT_RIGHT_ARM "right_arm"
+/// External organ key for standard set.
+/// * Type: /obj/item/organ/external
+#define ORGAN_KEY_EXT_RIGHT_HAND "right_hand"
+/// External organ key for standard set.
+/// * Type: /obj/item/organ/external
+#define ORGAN_KEY_EXT_GROIN "groin"
+/// External organ key for standard set.
+/// * Type: /obj/item/organ/external
+#define ORGAN_KEY_EXT_LEFT_LEG "left_leg"
+/// External organ key for standard set.
+/// * Type: /obj/item/organ/external
+#define ORGAN_KEY_EXT_LEFT_FOOT "left_foot"
+/// External organ key for standard set.
+/// * Type: /obj/item/organ/external
+#define ORGAN_KEY_EXT_RIGHT_LEG "right_leg"
+/// External organ key for standard set.
+/// * Type: /obj/item/organ/external
+#define ORGAN_KEY_EXT_RIGHT_FOOT "right_foot"
+
+//* Common *//
+
 /// The key for brain organs.
-///
 /// * Type: /obj/item/organ/internal/brain
-/// * Amount: 0 or 1.
 #define ORGAN_KEY_BRAIN "brain"
 /// The key for eye organs.
-///
 /// * Type: /obj/item/organ/internal/eyes
-/// * Amount: 0 or 1.
 #define ORGAN_KEY_EYES "eyes"
+
+//* Xenomorph *//
+
+/// The key for xenomorph plasma vessels.
+/// * Type: /obj/item/organ/internal/xenos/plasmavessel
+#define ORGAN_KEY_XENOMORPH_PLASMA_VESSEL "xeno-plasma-vessel"
 
 #warn hook / implement
 

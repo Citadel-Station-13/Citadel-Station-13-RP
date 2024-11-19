@@ -127,7 +127,7 @@
 		return
 
 	var/damageable = H.get_damageable_organs()
-	var/covered = H.get_coverage()
+	var/covered = H.inventory.query_body_cover()
 
 	var/light_amount = 0 //how much light there is in the place, affects damage
 	if(isturf(H.loc)) //else, there's considered to be no light
@@ -135,6 +135,7 @@
 		light_amount = T.get_lumcount() * 5
 
 
-	for(var/K in damageable)
-		if(!(K in covered))
-			H.apply_damage(light_amount/4, DAMAGE_TYPE_BURN, K, 0, 0, "Abnormal growths")
+	for(var/obj/item/organ/external/E in damageable)
+		if(E.body_part_flags & covered)
+			continue
+		H.apply_damage(light_amount/4, DAMAGE_TYPE_BURN, K, 0, 0, "Abnormal growths")

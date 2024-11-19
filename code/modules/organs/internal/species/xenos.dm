@@ -27,6 +27,7 @@
 	name = "plasma vessel"
 	parent_organ = BP_TORSO
 	icon_state = "plasma"
+	organ_key = ORGAN_KEY_XENOMORPH_PLASMA_VESSEL
 	organ_tag = O_PLASMA
 	var/stored_plasma = 0
 	var/max_plasma = 500

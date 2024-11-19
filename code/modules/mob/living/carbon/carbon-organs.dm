@@ -24,12 +24,44 @@
 /**
  * Get an external organ by target zone.
  */
-/mob/living/carbon/proc/get_organ_for_zone(target_zone) as /obj/item/organ/external | null
+/mob/living/carbon/proc/get_organ_for_zone(target_zone) as /obj/item/organ/external
 	var/static/list/target_zone_rewrites = list(
-		TARGET_ZONE_EYES = BP_HEAD,
-		TARGET_ZONE_MOUTH = BP_HEAD,
+		TARGET_ZONE_HEAD = ORGAN_KEY_EXT_HEAD,
+		TARGET_ZONE_EYES = ORGAN_KEY_EXT_HEAD,
+		TARGET_ZONE_MOUTH = ORGAN_KEY_EXT_HEAD,
+		TARGET_ZONE_LEFT_ARM = ORGAN_KEY_EXT_LEFT_ARM,
+		TARGET_ZONE_LEFT_HAND = ORGAN_KEY_EXT_LEFT_HAND,
+		TARGET_ZONE_RIGHT_ARM = ORGAN_KEY_EXT_RIGHT_ARM,
+		TARGET_ZONE_RIGHT_HAND = ORGAN_KEY_EXT_RIGHT_HAND,
+		TARGET_ZONE_GROIN = ORGAN_KEY_EXT_GROIN,
+		TARGET_ZONE_LEFT_LEG = ORGAN_KEY_EXT_LEFT_LEG,
+		TARGET_ZONE_LEFT_FOOT = ORGAN_KEY_EXT_LEFT_FOOT,
+		TARGET_ZONE_RIGHT_LEG = ORGAN_KEY_EXT_RIGHT_LEG,
+		TARGET_ZONE_RIGHT_FOOT = ORGAN_KEY_EXT_RIGHT_FOOT,
 	)
-	return keyed_organs[target_zone_rewrites[target_zone] || target_zone]
+	return keyed_organs[target_zone_rewrites[target_zone]]
+
+/**
+ * Get an external organ by target zone, if that organ is not a stump and is otherwise physically
+ * still that organ by shape.
+ */
+/mob/living/carbon/proc/get_non_stump_organ_for_zone(target_zone) as /obj/item/organ/external
+	var/static/list/target_zone_rewrites = list(
+		TARGET_ZONE_HEAD = ORGAN_KEY_EXT_HEAD,
+		TARGET_ZONE_EYES = ORGAN_KEY_EXT_HEAD,
+		TARGET_ZONE_MOUTH = ORGAN_KEY_EXT_HEAD,
+		TARGET_ZONE_LEFT_ARM = ORGAN_KEY_EXT_LEFT_ARM,
+		TARGET_ZONE_LEFT_HAND = ORGAN_KEY_EXT_LEFT_HAND,
+		TARGET_ZONE_RIGHT_ARM = ORGAN_KEY_EXT_RIGHT_ARM,
+		TARGET_ZONE_RIGHT_HAND = ORGAN_KEY_EXT_RIGHT_HAND,
+		TARGET_ZONE_GROIN = ORGAN_KEY_EXT_GROIN,
+		TARGET_ZONE_LEFT_LEG = ORGAN_KEY_EXT_LEFT_LEG,
+		TARGET_ZONE_LEFT_FOOT = ORGAN_KEY_EXT_LEFT_FOOT,
+		TARGET_ZONE_RIGHT_LEG = ORGAN_KEY_EXT_RIGHT_LEG,
+		TARGET_ZONE_RIGHT_FOOT = ORGAN_KEY_EXT_RIGHT_FOOT,
+	)
+	var/obj/item/organ/external/fetched = keyed_organs[target_zone_rewrites[target_zone]]
+	return (fetched && !fetched.is_stump()) ? fetched : null
 
 //* API - Insert / Remove *//
 

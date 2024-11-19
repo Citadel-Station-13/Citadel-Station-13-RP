@@ -184,7 +184,7 @@
 	if(!affected)
 		return FALSE
 	if(affected.organ_tag == BP_HEAD)
-		var/obj/item/organ/internal/brain/sponge = target.internal_organs_by_name["brain"]
+		var/obj/item/organ/internal/brain/sponge = target.keyed_organs[ORGAN_KEY_BRAIN]
 		return ..() && (!sponge || !sponge.damage)
 	else
 		return ..()

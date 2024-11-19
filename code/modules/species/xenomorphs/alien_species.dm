@@ -124,7 +124,7 @@
 
 	if(environment.gas[GAS_ID_PHORON] > 0 || locate(/obj/structure/alien/weeds) in get_turf(H))
 		if(!regenerate(H))
-			var/obj/item/organ/internal/xenos/plasmavessel/P = H.internal_organs_by_name[O_PLASMA]
+			var/obj/item/organ/internal/xenos/plasmavessel/P = H.keyed_organs[ORGAN_KEY_XENOMORPH_PLASMA_VESSEL]
 			P.stored_plasma += weeds_plasma_rate
 			P.stored_plasma = min(max(P.stored_plasma,0),P.max_plasma)
 

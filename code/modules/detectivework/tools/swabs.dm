@@ -28,7 +28,7 @@
 		return
 
 	if(user.zone_sel.selecting == O_MOUTH)
-		if(!H.organs_by_name[BP_HEAD])
+		if(!H.get_organ_for_zone(TARGET_ZONE_HEAD))
 			to_chat(user, "<span class='warning'>They don't have a head.</span>")
 			return
 

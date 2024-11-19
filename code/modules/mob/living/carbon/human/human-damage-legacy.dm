@@ -41,7 +41,7 @@
 	if(status_flags & STATUS_GODMODE)	return 0	//godmode
 
 	if(should_have_organ("brain"))
-		var/obj/item/organ/internal/brain/sponge = internal_organs_by_name["brain"]
+		var/obj/item/organ/internal/brain/sponge = keyed_organs[ORGAN_KEY_BRAIN]
 		if(sponge)
 			if(amount > 0)
 				sponge.take_damage(amount)
@@ -58,7 +58,7 @@
 	if(status_flags & STATUS_GODMODE)	return 0	//godmode
 
 	if(should_have_organ("brain"))
-		var/obj/item/organ/internal/brain/sponge = internal_organs_by_name["brain"]
+		var/obj/item/organ/internal/brain/sponge = keyed_organs[ORGAN_KEY_BRAIN]
 		if(sponge)
 			sponge.damage = clamp(amount, 0, sponge.max_damage)
 			sponge.update_health()
@@ -73,7 +73,7 @@
 	if(status_flags & STATUS_GODMODE)	return 0	//godmode
 
 	if(should_have_organ("brain"))
-		var/obj/item/organ/internal/brain/sponge = internal_organs_by_name["brain"]
+		var/obj/item/organ/internal/brain/sponge = keyed_organs[ORGAN_KEY_BRAIN]
 		if(sponge)
 			brainloss = sponge.damage
 		else
