@@ -29,7 +29,7 @@ SUBSYSTEM_DEF(characters)
 			stack_trace("what?")
 			continue
 		P.Initialize()
-	return ..()
+	return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/characters/Recover()
 	. = ..()
