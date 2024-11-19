@@ -25,29 +25,8 @@ GLOBAL_REAL(saycode_emphasis_parser, /regex) = regex(
 	var/use_html_tag = lookup[group_1]
 	return "<[use_html_tag]>[group_2]</[use_html_tag]>"
 
-GLOBAL_REAL(saycode_fragment_parser, /regex) = regex(
-	@{"(#[a-zA-Z0-9_\-]*{|${|})"},
-)
-
 /**
- * Used to invoke GLOB.saycode_fragment_parser and generate a set of lexical fragments.
- *
- * Valid outputs:
- * '#e{' where 'e' is 0 to n alphanumeric-plus-dash-and-underscore characters
- * '${'
- * '}'
- *
- * @params
- * * message - message to tokenize
- * * start - first character to start at. used to skip the header, if any.
- *
- * @return A list of strings. This is effectively a fancy splittext wrap.
- */
-/proc/zz__saycode_tokenize(message, start)
-	return splittext_char(message, GLOB.saycode_fragment_parser, start)
-
-/**
- * Processes inbound say.
+ * Processes an attempt to say something.
  *
  * * This should be done from the PoV / handling of the current mob, even if it's
  *   going to go somewhere else!
@@ -61,8 +40,9 @@ GLOBAL_REAL(saycode_fragment_parser, /regex) = regex(
  * @params
  * * message - message to parse
  * * origin - SAYCODE_ORIGIN_* enum
+ * * strict mode - reject on error instead of proceeding
  */
-/mob/proc/saycode_parse(message, origin) as /datum/saycode_context
+/mob/proc/saycode_parse(message, origin, strict) as /datum/saycode_context
 	/**
 	 * This is the authoritative documentation on Citadel RP's say syntax.
 	 *
@@ -131,23 +111,6 @@ GLOBAL_REAL(saycode_fragment_parser, /regex) = regex(
 	 *   many body fragments. This makes it very simply to do via copytext_char().
 	 * * Body is parsed with a pushdown automata.
 	 *
-	 * * ------ COMMON ------ *
-	 *
-	 * This is in order of application.
-	 *
-	 * > Emphasis <
-	 *
-	 * * Emphasis is done via regex.
-	 * * Emphasis markers must be adjacent to letters to work;
-	 *   this way, we do not trample things like math equations.
-	 *
-	 * "The ~quick~ +brown+ |fox| jumps over the _lazy_ dog."
-	 *
-	 * 'brown' is bolded.
-	 * 'fox' is italicized.
-	 * 'lazy' is underlined.
-	 * 'quick' is strikethrough'd.
-	 *
 	 * * ------ SAY ------ *
 	 *
 	 * * A say'd message does not allow using entirely non-verbal languages due to
@@ -163,6 +126,8 @@ GLOBAL_REAL(saycode_fragment_parser, /regex) = regex(
 	var/static/char_sanity_limit = 8192
 	var/static/byte_safety_limit = 8192 * 4
 	var/static/newline_sanity_limit = 24
+	var/static/fragment_safety_limit = 32
+	var/static/token_safety_limit = 32 * 4
 
 	// length enforcements
 	if(length(message) > byte_safety_limit)
@@ -177,7 +142,7 @@ GLOBAL_REAL(saycode_fragment_parser, /regex) = regex(
 	// begin parsing
 	var/start_tu = TICK_USAGE
 	var/datum/saycode_context/creating_context = new
-	var/header_consumed_count = 0
+	var/parse_position = 0
 	var/header_parse_character
 
 	// trim
@@ -187,63 +152,102 @@ GLOBAL_REAL(saycode_fragment_parser, /regex) = regex(
 	header_parse_character = copytext_char(message, 1, 2)
 	switch(header_parse_character)
 		if("^")
-			++header_consumed_count
+			++parse_position
 			origin = (origin == SAYCODE_ORIGIN_WHISPER) ? SAYCODE_ORIGIN_SUBTLE : SAYCODE_ORIGIN_SAY
 		if("*")
-			++header_consumed_count
-			#warn invoke emote system
+			++parse_position
+			origin = SAYCODE_ORIGIN_REDIRECT_TO_EMOTE
+
+	// set origin
+	creating_context.origin = origin
+
+	// if redirecting, just pass rest back. caller should handle redirects.
+	if(origin & (SAYCODE_ORIGINS_FOR_REDIRECT))
+		creating_context.origin_redirect_with = copytext_char(message, parse_position + 1)
+		return creating_context
 
 	// parse: <header>
 	var/header_transmit_key
 	var/header_language_key
-	while((header_parse_character = copytext_char(message, header_consumed_count + 1, header_consumed_count + 2)))
+	while((header_parse_character = copytext_char(message, parse_position + 1, parse_position + 2)))
 		switch(header_parse_character)
 			if("!")
 				if(!(origin & (SAYCODE_ORIGIN_SAY | SAYCODE_ORIGIN_WHISPER)))
 					log_saycode_reject(src, "audible mode on emote", message)
-					return new /datum/saycode_context/failure("Cannot set audible mode on an emote message.", header_consumed_count, message)
+					return new /datum/saycode_context/failure("Cannot set audible mode on an emote message.", parse_position, message)
 				if(!isnull(header_language_key))
 					log_saycode_reject(src, "duplicate language key (noise)", message)
-					return new /datum/saycode_context/failure("Duplicate language key.", header_consumed_count, message)
+					return new /datum/saycode_context/failure("Duplicate language key.", parse_position, message)
 				header_language_key = "!"
-				++header_consumed_count
+				++parse_position
 			if(",")
 				if(!(origin & (SAYCODE_ORIGIN_SAY | SAYCODE_ORIGIN_WHISPER)))
 					log_saycode_reject(src, "language key on emote", message)
-					return new /datum/saycode_context/failure("Cannot set global language on an emote message.", header_consumed_count, message)
+					return new /datum/saycode_context/failure("Cannot set global language on an emote message.", parse_position, message)
 				if(!isnull(header_language_key))
 					log_saycode_reject(src, "duplicate language key", message)
-					return new /datum/saycode_context/failure("Duplicate language key.", header_consumed_count, message)
-				header_language_key = copytext_char(message, header_consumed_count + 2, header_consumed_count + 3)
-				header_consumed_count += 2
+					return new /datum/saycode_context/failure("Duplicate language key.", parse_position, message)
+				header_language_key = copytext_char(message, parse_position + 2, parse_position + 3)
+				parse_position += 2
 			if(":", ".")
 				if(!(origin & (SAYCODE_ORIGIN_SAY | SAYCODE_ORIGIN_WHISPER)))
 					log_saycode_reject(src, "transmit mode on emote", message)
-					return new /datum/saycode_context/failure("Cannot set transmit mode on an emote message.", header_consumed_count, message)
+					return new /datum/saycode_context/failure("Cannot set transmit mode on an emote message.", parse_position, message)
 				if(!isnull(header_transmit_key))
 					log_saycode_reject(src, "duplicate transmit key", message)
-					return new /datum/saycode_context/failure("Duplicate transmit key.", header_consumed_count, message)
-				header_transmit_key = copytext_char(message, header_consumed_count + 2, header_consumed_count + 3)
-				header_consumed_count += 2
+					return new /datum/saycode_context/failure("Duplicate transmit key.", parse_position, message)
+				header_transmit_key = copytext_char(message, parse_position + 2, parse_position + 3)
+				parse_position += 2
 
 	creating_context.header_transmit_key = header_transmit_key
 	#warn handle header language key
 
 	// parse: <body>
 
-	// common: parse emphasis into embedded HTML tags
+	/**
+	 * body parsing; the three major parts is parsing:
+	 *
+	 * * emphasis - mostly font style modifications the user can call
+	 * * languages - generates new fragments when done
+	 * * symbols - generates new fragments when done
+	 *
+	 * emphasis is parsed first, to generate embedded HTML tags.
+	 * afterwards, a custom parser parses languages and symbols in one go,
+	 * to avoid needing to manually parse every language fragment.
+	 */
+
+	// parse emphasis into HTML
 	message = replacetext_char(message, global.saycode_emphasis_parser, /proc/zz__saycode_emphasis_parser)
+	// tokenize
+	/**
+	 * Valid outputs of this regex:
+	 * * '#...{' where '...' is 0 to n alphanumeric-plus-dash-and-underscore characters
+	 * * '${...}'
+	 * * '}'
+	 */
+	var/static/regex/tokenizer_regex = regex(
+		@{"(#[\w\-]*{|${[\w\-]}|})"},
+	)
+	while(tokenizer_regex.Find_char())
+
+	var/list/tokenized_body = zz__saycode_tokenizer(message, parse_position + 1)
+	if(length(tokenized_body) > token_safety_limit)
+		log_saycode_reject(src, "safe rejection of token limit [length(tokenized_body) > token_safety_limit]", message)
+		return new /datum/saycode_context/failure("Token limit reached.", null, message)
+	for(var/token in tokenized_body)
+		switch(length(token))
+			if()
 
 	// parse: <footer>
 	switch(copytext_char(message, -1))
 		if("!")
 			var/yelling = copytext_char(message, -2, -1) == "!"
 			if(yelling)
-				creating_context.decorator = SAYCODE_DECORATOR_YELL
+				creating_context.footer_decorator = SAYCODE_DECORATOR_YELL
 			else
-				creating_context.decorator = SAYCODE_DECORATOR_EXCLAIM
+				creating_context.footer_decorator = SAYCODE_DECORATOR_EXCLAIM
 		if("?")
-			creating_context.decorator = SAYCODE_DECORATOR_QUESTION
+			creating_context.footer_decorator = SAYCODE_DECORATOR_QUESTION
 
 	// finish parsing
 	var/end_tu = TICK_USAGE

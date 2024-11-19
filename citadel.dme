@@ -3167,6 +3167,7 @@
 #include "code\modules\language\hivemind.dm"
 #include "code\modules\language\holder.dm"
 #include "code\modules\language\language.dm"
+#include "code\modules\language\language_holder.dm"
 #include "code\modules\language\translation.dm"
 #include "code\modules\language\languages\abstract.dm"
 #include "code\modules\language\languages\animal.dm"

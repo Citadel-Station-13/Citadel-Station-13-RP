@@ -447,3 +447,24 @@ var/list/channel_to_radio_key = new
 	else
 		log_say(message, src)
 	return 1
+
+/obj/proc/hear_talk(mob/M as mob, text, verb, datum/language/speaking)
+	if(talking_atom)
+		talking_atom.catchMessage(text, M)
+/*
+	var/mob/mo = locate(/mob) in src
+	if(mo)
+		var/rendered = "<span class='game say'><span class='name'>[M.name]: </span> <span class='message'>[text]</span></span>"
+		mo.show_message(rendered, 2)
+		*/
+	return
+
+/obj/proc/hear_signlang(mob/M as mob, text, verb, datum/language/speaking) // Saycode gets worse every day.
+	return FALSE
+
+/obj/proc/see_emote(mob/M as mob, text, var/emote_type)
+	return
+
+// todo: refactor
+/atom/movable/proc/show_message(msg, type, alt, alt_type)//Message, type of message (1 or 2), alternative message, alt message type (1 or 2)
+	return

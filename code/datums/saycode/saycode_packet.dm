@@ -35,6 +35,7 @@
 	/// legacy: weakref of real speaker
 	///
 	/// * speaker will be an /atom/movable
+	/// * the speaker is the transmitter, not the origin of the context / whoever parsed a message into the context
 	/// * this is called legacy but unlike usual, this is still maintained & allowed to be used. it's just not preerred.
 	var/datum/weakref/context_speaker_weakref
 
@@ -42,14 +43,20 @@
 
 /datum/saycode_packet/clone(include_contents)
 	var/datum/saycode_packet/packet = new
+
+	packet.saycode_packet_flags = saycode_packet_flags
+	packet.saycode_type = saycode_type
+
 	packet.fragments = list()
 	for(var/datum/saycode_fragment/fragmentlike in fragments)
 		if(istext(fragmentlike))
 			packet.fragments += fragmentlike
 		else if(istype(fragmentlike))
 			packet.fragments += fragmentlike.clone()
-	packet.saycode_type = saycode_type
-	packet.legacy_speaker_weakref = legacy_speaker_weakref
+
+	packet.context_origin_turf = context_origin_turf
+	packet.context_speaker_weakref = context_speaker_weakref
+
 	return packet
 
 /**

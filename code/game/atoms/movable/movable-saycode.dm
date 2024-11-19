@@ -18,9 +18,11 @@
 //* API *//
 
 /**
- * Transmit a saycode packet.
+ * Send a saycode packet.
  *
- * * Make sure you call get_mutable() if you're editing the packet.
+ * * Make sure you call get_mutable(), and set the packet to the new value, if you're editing the packet.
+ * * Context should never be edited.
+ * * Always call `..()` at the end.
  *
  * @params
  * * packet - The transmitting packet.
@@ -28,6 +30,25 @@
  */
 /atom/movable/proc/say(datum/saycode_packet/packet, datum/saycode_context/context)
 	SHOULD_CALL_PARENT(TRUE)
+
+	packet.context_origin_turf = get_turf(src)
+	packet.context_speaker_weakref = WEAKREF(src)
+
+	return transmit_say(packet, context)
+
+/**
+ * Transmit a saycode packet.
+ *
+ * * Make sure you call get_mutable() if you're editing the packet.
+ *
+ * @params
+ * * packet - The transmitting packet.
+ * * context - The context to send it with.
+ *
+ * @return TRUE if handled.
+ */
+/atom/movable/proc/transmit_say(datum/saycode_packet/packet, datum/saycode_context/context)
+	#warn impl
 
 /**
  * Receive a saycode packet.
@@ -38,5 +59,5 @@
  * @params
  * * packet - The received packet.
  */
-/atom/movable/proc/hear(datum/saycode_packet/packet)
+/atom/movable/proc/hear_say_new(datum/saycode_packet/packet)
 	SHOULD_CALL_PARENT(TRUE)

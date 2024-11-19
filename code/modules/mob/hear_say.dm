@@ -1,16 +1,13 @@
-/mob/hear(datum/saycode_packet/packet)
+#warn hear_say
+/mob/hear_say_new(datum/saycode_packet/packet)
 	. = ..()
-	
+
 
 // At minimum every mob has a hear_say proc.
 
+#warn remove
 /mob/proc/hear_say(var/message, var/verb = "says", var/datum/language/language = null, var/alt_name = "",var/italics = 0, var/mob/speaker = null, var/sound/speech_sound, var/sound_vol)
 	if(!client && !teleop)
-		return
-
-	if(speaker && !speaker.client && istype(src,/mob/observer/dead) && get_preference_toggle(/datum/game_preference_toggle/observer/ghost_ears) && !(speaker in view(src)))
-			//Does the speaker have a client?  It's either random stuff that observers won't care about (Experiment 97B says, 'EHEHEHEHEHEHEHE')
-			//Or someone snoring.  So we make it where they won't hear it.
 		return
 
 	//make sure the air can transmit speech - hearer's side
@@ -112,47 +109,6 @@
 	to_chat(src, "[time] [message]")
 	if(teleop)
 		to_chat(teleop, create_text_tag("body", "BODY:", teleop) + "[time] [message]")
-
-// Checks if the mob's own name is included inside message.  Handles both first and last names.
-/mob/proc/check_mentioned(var/message)
-	var/not_included = list("a", "the", "of", "in", "for", "through", "throughout", "therefore", "here", "there", "then", "now", "I", "you", "they", "he", "she", "by")
-	var/list/valid_names = splittext_char(real_name, " ") // Should output list("John", "Doe") as an example.
-	valid_names -= not_included
-	var/list/nicknames = splittext_char(nickname, " ")
-	valid_names += nicknames
-	valid_names += special_mentions()
-	for(var/name in valid_names)
-		if(findtext_char(message, regex("\\b[REGEX_QUOTE(name)]\\b", "i"))) // This is to stop 'ai' from triggering if someone says 'wait'.
-			return TRUE
-	return FALSE
-
-// Override this if you want something besides the mob's name to count for being mentioned in check_mentioned().
-/mob/proc/special_mentions()
-	return list()
-
-/mob/living/silicon/ai/special_mentions()
-	return list("AI") // AI door!
-
-// Converts specific characters, like +, |, and _ to formatted output.
-/proc/say_emphasis(input)
-	var/static/regex/italics = regex("\\|(?=\\S)(.+?)(?=\\S)\\|", "g")
-	input = replacetext_char(input, italics, "<i>$1</i>")
-	var/static/regex/bold = regex("\\+(?=\\S)(.+?)(?=\\S)\\+", "g")
-	input = replacetext_char(input, bold, "<b>$1</b>")
-	var/static/regex/underline = regex("_(?=\\S)(.+?)(?=\\S)_", "g")
-	input = replacetext_char(input, underline, "<u>$1</u>")
-	var/static/regex/strikethrough = regex("~~(?=\\S)(.+?)(?=\\S)~~", "g")
-	input = replacetext_char(input, strikethrough, "<s>$1</s>")
-	return input
-
-/proc/say_emphasis_strip(input)
-	var/static/regex/italics = regex("\\|(?=\\S)(.*?)(?=\\S)\\|", "g")
-	input = replacetext_char(input, italics, "$1")
-	var/static/regex/bold = regex("\\+(?=\\S)(.*?)(?=\\S)\\+", "g")
-	input = replacetext_char(input, bold, "$1")
-	var/static/regex/underline = regex("_(?=\\S)(.*?)(?=\\S)_", "g")
-	input = replacetext_char(input, underline, "$1")
-	return input
 
 /mob/proc/hear_radio(var/message, var/verb="says", var/datum/language/language=null, var/part_a, var/part_b, var/part_c, var/mob/speaker = null, var/hard_to_hear = 0, var/vname ="")
 
@@ -275,32 +231,22 @@
 
 /mob/proc/on_hear_radio(part_a, speaker_name, track, part_b, formatted)
 	var/final_message = "[part_a][speaker_name][part_b][formatted]"
-	if(check_mentioned(formatted) && get_preference_toggle(/datum/game_preference_toggle/game/legacy_name_highlight))
-		final_message = "<font size='3'><b>[final_message]</b></font>"
 	to_chat(src, final_message)
 
 /mob/observer/dead/on_hear_radio(part_a, speaker_name, track, part_b, formatted)
 	var/final_message = "[part_a][track][part_b][formatted]"
-	if(check_mentioned(formatted) && get_preference_toggle(/datum/game_preference_toggle/game/legacy_name_highlight))
-		final_message = "<font size='3'><b>[final_message]</b></font>"
 	to_chat(src, final_message)
 
 /mob/living/silicon/on_hear_radio(part_a, speaker_name, track, part_b, formatted)
 	var/time = say_timestamp()
 	var/final_message = "[part_a][speaker_name][part_b][formatted]"
-	if(check_mentioned(formatted) && get_preference_toggle(/datum/game_preference_toggle/game/legacy_name_highlight))
-		final_message = "[time]<font size='3'><b>[final_message]</b></font>"
-	else
-		final_message = "[time][final_message]"
+	final_message = "[time][final_message]"
 	to_chat(src, final_message)
 
 /mob/living/silicon/ai/on_hear_radio(part_a, speaker_name, track, part_b, formatted)
 	var/time = say_timestamp()
 	var/final_message = "[part_a][track][part_b][formatted]"
-	if(check_mentioned(formatted) && get_preference_toggle(/datum/game_preference_toggle/game/legacy_name_highlight))
-		final_message = "[time]<font size='3'><b>[final_message]</b></font>"
-	else
-		final_message = "[time][final_message]"
+	final_message = "[time][final_message]"
 	to_chat(src, final_message)
 
 /mob/proc/hear_signlang(var/message, var/verb = "gestures", var/datum/language/language, var/mob/speaker = null)

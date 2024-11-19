@@ -23,6 +23,7 @@
 	/// * determines speech bubble
 	var/footer_decorator = SAYCODE_DECORATOR_STATEMENT
 
+	//* Rejection *//
 	/// were we rejected?
 	var/reject = FALSE
 	/// rejection reason
@@ -31,6 +32,12 @@
 	var/reject_position
 	/// raw text to reflect back
 	var/reject_reflect
+
+	//* Transmission *//
+	/// Origin. This alsoo determines transmission.
+	var/origin
+	/// If we're being redirected, this is the raw message.
+	var/origin_redirect_with
 
 #warn impl
 
