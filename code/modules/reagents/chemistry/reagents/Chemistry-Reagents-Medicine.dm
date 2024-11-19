@@ -655,7 +655,7 @@
 	M.eye_blurry = max(M.eye_blurry - 5, 0)
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
-		var/obj/item/organ/internal/eyes/E = H.internal_organs_by_name[O_EYES]
+		var/obj/item/organ/internal/eyes/E = H.keyed_organs[ORGAN_KEY_EYES]
 		if(istype(E))
 			if(E.robotic >= ORGAN_ROBOT)
 				return

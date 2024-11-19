@@ -238,8 +238,10 @@
 	var/incorporeal_move = 0 //0 is off, 1 is normal, 2 is for ninjas.
 	var/unacidable = 0
 	/// List of things pinning this creature to walls. (see living_defense.dm)
+	//  todo: /living
 	var/list/pinned = list()
 	/// Embedded items, since simple mobs don't have organs.
+	//  todo: /living
 	var/list/embedded = list()
 	/// For speaking/listening.
 	var/list/languages = list()

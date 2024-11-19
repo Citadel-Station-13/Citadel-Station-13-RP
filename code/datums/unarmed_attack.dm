@@ -148,7 +148,7 @@ GLOBAL_LIST_EMPTY(unarmed_attack_cache)
 	playsound(user.loc, attack_sound, 25, 1, -1)
 
 /datum/unarmed_attack/proc/handle_eye_attack(var/mob/living/carbon/human/user, var/mob/living/carbon/human/target)
-	var/obj/item/organ/internal/eyes/eyes = target.internal_organs_by_name[O_EYES]
+	var/obj/item/organ/internal/eyes/eyes = target.keyed_organs[ORGAN_KEY_EYES]
 	var/datum/gender/TU = GLOB.gender_datums[user.get_visible_gender()]
 	var/datum/gender/TT = GLOB.gender_datums[target.get_visible_gender()]
 	if(eyes)
@@ -245,15 +245,17 @@ GLOBAL_LIST_EMPTY(unarmed_attack_cache)
 	if (user.legcuffed)
 		return FALSE
 
-	if(!(zone in list("l_leg", "r_leg", "l_foot", "r_foot", BP_GROIN)))
+	var/static/list/valid_zones = list(
+		TARGET_ZONE_LEFT_LEG,
+		TARGET_ZONE_LEFT_FOOT,
+		TARGET_ZONE_RIGHT_LEG,
+		TARGET_ZONE_RIGHT_FOOT,
+		TARGET_ZONE_GROIN,
+	)
+	if(!(zone in valid_zones))
 		return FALSE
 
-	var/obj/item/organ/external/E = user.organs_by_name["l_foot"]
-	if(E && !E.is_stump())
-		return TRUE
-
-	E = user.organs_by_name["r_foot"]
-	if(E && !E.is_stump())
+	if(user.get_organ_for_zone(TARGET_ZONE_LEFT_FOOT) || user.get_organ_for_zone(TARGET_ZONE_RIGHT_FOOT))
 		return TRUE
 
 	return FALSE

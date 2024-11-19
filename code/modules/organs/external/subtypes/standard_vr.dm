@@ -18,7 +18,7 @@
 		icon_cache_key += "[M][markings[M]["color"]]"
 
 	if(owner.should_have_organ(O_EYES))//Moved on top of markings.
-		var/obj/item/organ/internal/eyes/eyes = owner.internal_organs_by_name[O_EYES]
+		var/obj/item/organ/internal/eyes/eyes = owner.keyed_organs[ORGAN_KEY_EYES]
 		if(eye_icon)
 			var/icon/eyes_icon = new/icon(eye_icons_vr, eye_icon_vr)
 			if(eyes)

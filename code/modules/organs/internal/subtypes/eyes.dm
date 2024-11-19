@@ -3,6 +3,7 @@
 	name = "eyeballs"
 	icon_state = "eyes"
 	gender = PLURAL
+	organ_key = ORGAN_KEY_EYES
 	organ_tag = O_EYES
 	parent_organ = BP_HEAD
 	var/list/eye_colour = list(0,0,0)

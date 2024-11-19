@@ -567,7 +567,7 @@
 		var/mob/living/carbon/human/H = M
 		if(!H.can_feel_pain())
 			return
-		if(!H.internal_organs_by_name[O_EYES])
+		if(!H.keyed_organs[ORGAN_KEY_EYES])
 			eyes_covered = TRUE
 			safe_thing = "Lack of eyes"
 		if(H.head)

@@ -488,7 +488,7 @@
 		icon_key += "[lip_style]"
 	else
 		icon_key += "nolips"
-	var/obj/item/organ/internal/eyes/eyes = internal_organs_by_name[O_EYES]
+	var/obj/item/organ/internal/eyes/eyes = keyed_organs[ORGAN_KEY_EYES]
 	if(eyes)
 		icon_key += "[rgb(eyes.eye_colour[1], eyes.eye_colour[2], eyes.eye_colour[3])]"
 	else
@@ -654,7 +654,7 @@
 	set_standing_overlay(HUMAN_OVERLAY_UNDERWEAR, setting)
 
 /mob/living/carbon/human/update_eyes()
-	var/obj/item/organ/internal/eyes/eyes = internal_organs_by_name[O_EYES]
+	var/obj/item/organ/internal/eyes/eyes = keyed_organs[ORGAN_KEY_EYES]
 	if(eyes)
 		eyes.update_colour()
 		update_icons_body()

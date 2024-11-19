@@ -92,7 +92,7 @@
 			return
 		visible_message("<span class='danger'>\The [src] hits [H] in the eye!</span>")
 		H.eye_blurry += 10
-		var/obj/item/organ/internal/eyes/E = H.internal_organs_by_name[O_EYES]
+		var/obj/item/organ/internal/eyes/E = H.keyed_organs[ORGAN_KEY_EYES]
 		if(E)
 			E.take_damage(2.5)
 		H.emote("scream")

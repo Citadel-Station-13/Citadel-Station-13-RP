@@ -540,16 +540,17 @@ Add those other swinging traps you mentioned above!
 	if(!tripped)
 		return
 
-	else if(istype(AM, /mob/living))
-		var/mob/living/M = AM
+	else if(istype(AM, /mob/living/carbon))
+		var/mob/living/carbon/M = AM
 		var/damage = rand(min_damage, max_damage)
 		var/list/target_limbs = list(BP_L_LEG, BP_R_LEG, BP_L_FOOT, BP_R_FOOT)
 		var/selected = pick(target_limbs)
 		var/obj/item/organ/external/target = M.legacy_organ_by_zone(selected)
-		M.apply_damage(damage, DAMAGE_TYPE_BRUTE)
-		target.droplimb()
-		M.visible_message("<span class='danger'>[M] is slashed by the spinning blades!</span>", \
-						"<span class='userdanger'>You are slashed by the spinning blades!</span>")
+		if(target)
+			M.apply_damage(damage, DAMAGE_TYPE_BRUTE)
+			target.droplimb()
+			M.visible_message("<span class='danger'>[M] is slashed by the spinning blades!</span>", \
+							"<span class='userdanger'>You are slashed by the spinning blades!</span>")
 
 /* This is all per-tick processing stuff. It isn't working the way I want, so I'm reverting it.
 
@@ -596,16 +597,17 @@ if (istype(AM, /mob/living))
 	if(!tripped)
 		return
 
-	else if(istype(AM, /mob/living))
-		var/mob/living/M = AM
+	else if(istype(AM, /mob/living/carbon))
+		var/mob/living/carbon/M = AM
 		var/damage = rand(min_damage, max_damage)
 		var/list/target_limbs = list(BP_L_LEG, BP_R_LEG, BP_L_FOOT, BP_R_FOOT)
 		var/selected = pick(target_limbs)
 		var/obj/item/organ/external/target = M.legacy_organ_by_zone(selected)
-		M.apply_damage(damage, DAMAGE_TYPE_BRUTE)
-		target.droplimb()
-		M.visible_message("<span class='danger'>[M] is ripped by the whirling sawblades!</span>", \
-						"<span class='userdanger'>You are ripped open by the whirling sawblades!</span>")
+		if(target)
+			M.apply_damage(damage, DAMAGE_TYPE_BRUTE)
+			target.droplimb()
+			M.visible_message("<span class='danger'>[M] is ripped by the whirling sawblades!</span>", \
+							"<span class='userdanger'>You are ripped open by the whirling sawblades!</span>")
 
 //Flame Trap
 

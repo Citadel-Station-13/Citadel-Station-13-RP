@@ -640,8 +640,8 @@
 
 	var/obj/item/organ/internal/eyes/I
 
-	if(internal_organs_by_name[O_EYES]) // Eyes are fucked, not a 'weak point'.
-		I = internal_organs_by_name[O_EYES]
+	if(keyed_organs[ORGAN_KEY_EYES]) // Eyes are fucked, not a 'weak point'.
+		I = keyed_organs[ORGAN_KEY_EYES]
 		if(I.is_broken())
 			return FLASH_PROTECTION_MAJOR
 	else if(!species.dispersed_eyes) // They can't be flashed if they don't have eyes, or widespread sensing surfaces.
@@ -654,8 +654,8 @@
 	return number
 
 /mob/living/carbon/human/flash_eyes(var/intensity = FLASH_PROTECTION_MODERATE, override_blindness_check = FALSE, affect_silicon = FALSE, visual = FALSE, type = /atom/movable/screen/fullscreen/tiled/flash)
-	if(internal_organs_by_name[O_EYES]) // Eyes are fucked, not a 'weak point'.
-		var/obj/item/organ/internal/eyes/I = internal_organs_by_name[O_EYES]
+	if(keyed_organs[ORGAN_KEY_EYES]) // Eyes are fucked, not a 'weak point'.
+		var/obj/item/organ/internal/eyes/I = keyed_organs[ORGAN_KEY_EYES]
 		I.additional_flash_effects(intensity)
 	return ..()
 
@@ -1400,8 +1400,8 @@
 	return 0
 
 /mob/living/carbon/human/has_eyes()
-	if(internal_organs_by_name[O_EYES])
-		var/obj/item/organ/eyes = internal_organs_by_name[O_EYES]
+	if(keyed_organs[ORGAN_KEY_EYES])
+		var/obj/item/organ/eyes = keyed_organs[ORGAN_KEY_EYES]
 		if(eyes && istype(eyes) && !(eyes.status & ORGAN_CUT_AWAY))
 			return 1
 	return 0

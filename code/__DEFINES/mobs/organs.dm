@@ -10,8 +10,13 @@
 /// The key for brain organs.
 ///
 /// * Type: /obj/item/organ/internal/brain
-/// * Mobs may only have one brain organ.
+/// * Amount: 0 or 1.
 #define ORGAN_KEY_BRAIN "brain"
+/// The key for eye organs.
+///
+/// * Type: /obj/item/organ/internal/eyes
+/// * Amount: 0 or 1.
+#define ORGAN_KEY_EYES "eyes"
 
 #warn hook / implement
 

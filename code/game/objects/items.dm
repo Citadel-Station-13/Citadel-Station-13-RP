@@ -476,7 +476,7 @@
 	src.add_fingerprint(user)
 	if(istype(H))
 
-		var/obj/item/organ/internal/eyes/eyes = H.internal_organs_by_name[O_EYES]
+		var/obj/item/organ/internal/eyes/eyes = H.keyed_organs[ORGAN_KEY_EYES]
 
 		if(H != user)
 			for(var/mob/O in (viewers(M) - user - M))
