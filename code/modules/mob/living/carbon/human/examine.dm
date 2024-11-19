@@ -182,7 +182,7 @@
 		if(isnull(inventory.held_items[i]))
 			continue
 		var/obj/item/held = inventory.held_items[i]
-		if(held.show_examine)
+		if(!held.show_examine)
 			continue
 		var/hand_str = (i % 2)? "left hand[i > 2? " #[round(i / 2)]" : ""]" : "right hand[i > 2? " #[round(i / 2)]" : ""]"
 		if(held.blood_DNA)
