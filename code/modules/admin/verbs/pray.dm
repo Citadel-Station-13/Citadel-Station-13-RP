@@ -3,14 +3,11 @@
 	set category = VERB_CATEGORY_IC
 	set name = "Pray"
 
-	msg = sanitize(msg)
-	if(!msg)
-		return
-
 	msg = copytext_char(sanitize(msg), 1, MAX_MESSAGE_LEN)
 	if(!msg)
 		return
 	// log_prayer("[src.key]/([src.name]): [msg]")
+
 	if(usr.client)
 		if(usr.client.prefs.muted & MUTE_PRAY)
 			to_chat(usr, SPAN_DANGER("You cannot pray (muted)."), confidential = TRUE)
@@ -22,34 +19,31 @@
 	var/font_color = "purple"
 	var/prayer_type = "PRAYER"
 	var/deity
+
 	//TODO: Unshit this when we have some better job and trait systems. @Zandario
-	// if(usr.job == JOB_CHAPLAIN)
 	if(usr.mind.assigned_role == CHAPLAIN)
-		cross.icon_state = "bible"
+		cross.icon_state = "kingyellow"
 		font_color = "blue"
 		prayer_type = "CHAPLAIN PRAYER"
 		if(GLOB.deity)
 			deity = GLOB.deity
-	// else if(IS_CULTIST(usr))
-	// 	cross.icon_state = "tome"
-	// 	font_color = "red"
-	// 	prayer_type = "CULTIST PRAYER"
-	// 	deity = "Nar'Sie"
+	// this fucking sucks
+	else if(usr.mind.special_role == "Cultist")
+		cross.icon_state = "tome"
+		font_color = "red"
+		prayer_type = "CULTIST PRAYER"
+		deity = "Nar'Sie"
 	else if(isliving(usr))
-		// var/mob/living/L = usr
-		// if(HAS_TRAIT(L, TRAIT_SPIRITUAL))
-		if(usr.mind.isholy == TRUE)
+		if(usr.mind.isholy)
 			cross.icon_state = "holylight"
 			font_color = "blue"
 			prayer_type = "SPIRITUAL PRAYER"
 
 	var/msg_tmp = msg
-	// GLOB.requests.pray(usr.client, msg, usr.mind.assigned_role == CHAPLAIN)
-	msg = SPAN_ADMINNOTICE("[icon2html(cross, GLOB.admins)][SPAN_BOLD("<font color=[font_color]>[prayer_type][deity ? " (to [deity])" : ""]: </font>[ADMIN_FULLMONTY(src)] [ADMIN_SC(src)] [ADMIN_ST(src)]:")]</b> [SPAN_LINKIFY(msg)]")
-
+	msg = SPAN_ADMINNOTICE("[icon2html(cross, GLOB.admins)]<b><font color=[font_color]>[prayer_type][deity ? " (to [deity])" : ""]: </font>[ADMIN_FULLMONTY(src)] [ADMIN_SC(src)]:</b> [SPAN_LINKIFY(msg)]")
 	for(var/client/C in GLOB.admins)
 		if((R_ADMIN|R_MOD) & C.holder.rights)
-			to_chat(C, msg)
+			to_chat(C, msg, type = MESSAGE_TYPE_PRAYER, confidential = TRUE)
 			SEND_SOUND(C, sound('sound/effects/ding.ogg'))
 
 	to_chat(usr, SPAN_INFO("You pray to the gods: \"[msg_tmp]\""), confidential = TRUE)

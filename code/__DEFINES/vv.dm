@@ -1,6 +1,8 @@
 #define VV_NUM "Number"
 #define VV_TEXT "Text"
-#define VV_MESSAGE "Mutiline Text"
+#define VV_MESSAGE "Multiline Text"
+#define VV_COLOR "Color"
+#define VV_COLOR_MATRIX "Color Matrix"
 #define VV_ICON "Icon"
 #define VV_ATOM_REFERENCE "Atom Reference"
 #define VV_DATUM_REFERENCE "Datum Reference"
@@ -16,11 +18,13 @@
 #define VV_NEW_TYPE "New Custom Typepath"
 #define VV_NEW_LIST "New List"
 #define VV_NULL "NULL"
+#define VV_INFINITY "Infinity"
 #define VV_RESTORE_DEFAULT "Restore to Default"
 #define VV_MARKED_DATUM "Marked Datum"
 #define VV_BITFIELD "Bitfield"
 #define VV_TEXT_LOCATE "Custom Reference Locate"
 #define VV_PROCCALL_RETVAL "Return Value of Proccall"
+#define VV_WEAKREF "Weak Reference Datum"
 
 #define VV_MSG_MARKED "<br><font size='1' color='red'><b>Marked Object</b></font>"
 #define VV_MSG_EDITED "<br><font size='1' color='red'><b>Var Edited</b></font>"
@@ -62,8 +66,7 @@
 #define VV_HK_TARGET "target"
 ///name or index of var for 1 variable targetting hrefs.
 #define VV_HK_VARNAME "targetvar"
-/// to view an appearance virtual object
-#define VV_HK_VIEW_APPEARANCE "vv_appearance"
+// VV_HK_VIEW_APPEARANCE is handled on vv natively now
 // vv_do_list() keys
 #define VV_HK_LIST_ADD "listadd"
 #define VV_HK_LIST_EDIT "listedit"

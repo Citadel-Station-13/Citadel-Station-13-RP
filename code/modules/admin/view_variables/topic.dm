@@ -5,31 +5,97 @@
 		return
 	var/target = GET_VV_TARGET
 	vv_do_basic(target, href_list, href)
-	if(istype(target, /datum))
+	if(isdatum(target))
 		var/datum/D = target
 		D.vv_do_topic(href_list)
 	else if(islist(target))
 		vv_do_list(target, href_list)
 	if(href_list["Vars"])
-		debug_variables(locate(href_list["Vars"]))
+		var/datum/vars_target = locate(href_list["Vars"])
+		if(href_list["special_varname"]) // Some special vars can't be located even if you have their ref, you have to use this instead
+			vars_target = vars_target.vars[href_list["special_varname"]]
+		debug_variables(vars_target)
 
-	//~CARN: for renaming mobs (updates their name, real_name, mind.name, their ID/PDA and datacore records).
-	else if(href_list["rename"])
-		if(!check_rights(R_VAREDIT))	return
+//Stuff below aren't in dropdowns/etc.
 
-		var/mob/M = locate(href_list["rename"])
-		if(!istype(M))
-			to_chat(usr, "This can only be used on instances of type /mob")
-			return
+	if(check_rights(R_VAREDIT))
 
-		var/new_name = sanitize(input(usr,"What would you like to name this mob?","Input a name",M.real_name) as text|null, MAX_NAME_LEN)
-		if( !new_name || !M )	return
+		//~CARN: for renaming mobs (updates their name, real_name, mind.name, their ID/PDA and datacore records).
 
-		message_admins("Admin [key_name_admin(usr)] renamed [key_name_admin(M)] to [new_name].")
-		M.fully_replace_character_name(M.real_name,new_name)
-		href_list["datumrefresh"] = href_list["rename"]
+		if(href_list["rename"])
+			if(!check_rights(NONE))
+				return
 
-	else if(href_list["varnameedit"] && href_list["datumedit"])
+			var/mob/M = locate(href_list["rename"]) in GLOB.mob_list
+			if(!istype(M))
+				to_chat(usr, "This can only be used on instances of type /mob", confidential = TRUE)
+				return
+
+			var/new_name = stripped_input(usr,"What would you like to name this mob?","Input a name",M.real_name,MAX_NAME_LEN)
+
+			if( !new_name || !M )
+				return
+
+			message_admins("Admin [key_name_admin(usr)] renamed [key_name_admin(M)] to [new_name].")
+			M.fully_replace_character_name(M.real_name,new_name)
+			vv_update_display(M, "name", new_name)
+			vv_update_display(M, "real_name", M.real_name || "No real name")
+
+		else if(href_list["rotatedatum"])
+			if(!check_rights(NONE))
+				return
+
+			var/atom/A = locate(href_list["rotatedatum"])
+			if(!istype(A))
+				to_chat(usr, "This can only be done to instances of type /atom", confidential = TRUE)
+				return
+
+			switch(href_list["rotatedir"])
+				if("right")
+					A.setDir(turn(A.dir, -45))
+				if("left")
+					A.setDir(turn(A.dir, 45))
+			vv_update_display(A, "dir", dir2text(A.dir))
+
+		else if(href_list["adjustDamage"] && href_list["mobToDamage"])
+			if(!check_rights(NONE))
+				return
+
+			var/mob/living/L = locate(href_list["mobToDamage"]) in GLOB.mob_list
+			if(!istype(L))
+				return
+
+			var/Text = href_list["adjustDamage"]
+
+			var/amount = input("Deal how much damage to mob? (Negative values here heal)","Adjust [Text]loss",0) as num|null
+
+			if (isnull(amount))
+				return
+
+			if(!L)
+				to_chat(usr, "Mob doesn't exist anymore", confidential = TRUE)
+				return
+
+			switch(Text)
+				if("brute")	amount > 0? L.take_overall_damage(brute = amount) : L.heal_overall_damage(brute = -amount)
+				if("fire")	amount > 0? L.take_overall_damage(burn = amount) : L.heal_overall_damage(burn = -amount)
+				if("toxin")	L.adjustToxLoss(amount)
+				if("oxygen")L.adjustOxyLoss(amount)
+				if("brain")	L.adjustBrainLoss(amount)
+				if("clone")	L.adjustCloneLoss(amount)
+				else
+					to_chat(usr, "You caused an error. DEBUG: Text:[Text] Mob:[L]", confidential = TRUE)
+					return
+
+			if(amount != 0)
+				var/log_msg = "[key_name(usr)] dealt [amount] amount of [Text] damage to [key_name(L)]"
+				message_admins("[key_name(usr)] dealt [amount] amount of [Text] damage to [ADMIN_LOOKUPFLW(L)]")
+				log_admin(log_msg)
+				admin_ticket_log(L, "<font color='blue'>[log_msg]</font>")
+				href_list["datumrefresh"] = href_list["mobToDamage"]
+
+	// weirdly tg removed this but still use it on atom_vv
+	if(href_list["varnameedit"] && href_list["datumedit"])
 		if(!check_rights(R_VAREDIT))	return
 
 		var/D = locate(href_list["datumedit"])
@@ -38,26 +104,6 @@
 			return
 
 		modify_variables(D, href_list["varnameedit"], 1)
-
-	else if(href_list["varnamechange"] && href_list["datumchange"])
-		if(!check_rights(R_VAREDIT))	return
-
-		var/D = locate(href_list["datumchange"])
-		if(!istype(D,/datum) && !istype(D,/client))
-			to_chat(usr, "This can only be used on instances of types /client or /datum")
-			return
-
-		modify_variables(D, href_list["varnamechange"], 0)
-
-	else if(href_list["varnamemass"] && href_list["datummass"])
-		if(!check_rights(R_VAREDIT))	return
-
-		var/atom/A = locate(href_list["datummass"])
-		if(!istype(A))
-			to_chat(usr, "This can only be used on instances of type /atom")
-			return
-
-		cmd_mass_modify_object_variables(A, href_list["varnamemass"])
 
 	else if(href_list["mob_player_panel"])
 		if(!check_rights(0))	return
@@ -233,30 +279,6 @@
 
 		src.cmd_admin_emp(A)
 		href_list["datumrefresh"] = href_list["emp"]
-
-	else if(href_list["mark_object"])
-		if(!check_rights(0))	return
-
-		var/datum/D = locate(href_list["mark_object"])
-		if(!istype(D))
-			to_chat(usr, "This can only be done to instances of type /datum")
-			return
-
-		src.holder.marked_datum = D
-		href_list["datumrefresh"] = href_list["mark_object"]
-
-	else if(href_list["rotatedatum"])
-		if(!check_rights(0))	return
-
-		var/atom/A = locate(href_list["rotatedatum"])
-		if(!istype(A))
-			to_chat(usr, "This can only be done to instances of type /atom")
-			return
-
-		switch(href_list["rotatedir"])
-			if("right")	A.setDir(turn(A.dir, -45))
-			if("left")	A.setDir(turn(A.dir, 45))
-		href_list["datumrefresh"] = href_list["rotatedatum"]
 
 	else if(href_list["makemonkey"])
 		if(!check_rights(R_SPAWN))	return
@@ -482,60 +504,8 @@
 			return
 		M.regenerate_icons()
 
-	else if(href_list["adjustDamage"] && href_list["mobToDamage"])
-		if(!check_rights(R_DEBUG|R_ADMIN|R_FUN|R_EVENT))	return
-
-		var/mob/living/L = locate(href_list["mobToDamage"])
-		if(!istype(L)) return
-
-		var/Text = href_list["adjustDamage"]
-
-		var/amount =  input(usr, "Deal how much damage to mob? (Negative values here heal)","Adjust [Text]loss",0) as num
-
-		if(!L)
-			to_chat(usr, "Mob doesn't exist anymore")
-			return
-
-		switch(Text)
-			if("brute")	amount > 0? L.take_overall_damage(brute = amount) : L.heal_overall_damage(brute = -amount)
-			if("fire")	amount > 0? L.take_overall_damage(burn = amount) : L.heal_overall_damage(burn = -amount)
-			if("toxin")	L.adjustToxLoss(amount)
-			if("oxygen")L.adjustOxyLoss(amount)
-			if("brain")	L.adjustBrainLoss(amount)
-			if("clone")	L.adjustCloneLoss(amount)
-			else
-				to_chat(usr, "You caused an error. DEBUG: Text:[Text] Mob:[L]")
-				return
-
-		if(amount != 0)
-			log_admin("[key_name(usr)] dealt [amount] amount of [Text] damage to [L]")
-			message_admins("<span class='notice'>[key_name(usr)] dealt [amount] amount of [Text] damage to [L]</span>")
-			href_list["datumrefresh"] = href_list["mobToDamage"]
-
-	else if(href_list["expose"])
-		if(!check_rights(R_ADMIN, FALSE))
-			return
-		var/thing = locate(href_list["expose"])
-		if(!thing)		//Do NOT QDELETED check!
-			return
-		var/value = vv_get_value(VV_CLIENT)
-		if (value["class"] != VV_CLIENT)
-			return
-		var/client/C = value["value"]
-		if (!C)
-			return
-		var/prompt = tgui_alert(usr, "Do you want to grant [C] access to view this VV window? (they will not be able to edit or change anysrc nor open nested vv windows unless they themselves are an admin)", "Confirm", list("Yes", "No"))
-		if (prompt != "Yes")
-			return
-		if(!thing)
-			to_chat(usr, SPAN_WARNING("The object you tried to expose to [C] no longer exists (GC'd)"))
-			return
-		message_admins("[key_name_admin(usr)] Showed [key_name_admin(C)] a <a href='?_src_=vars;datumrefresh=\ref[thing]'>VV window</a>")
-		log_admin("Admin [key_name(usr)] Showed [key_name(C)] a VV window of a [src]")
-		to_chat(C, "[is_under_stealthmin() ? "an Administrator" : "[usr.client.key]"] has granted you access to view a View Variables window")
-		C.debug_variables(thing)
-
+	//Finally, refresh if something modified the list.
 	if(href_list["datumrefresh"])
 		var/datum/DAT = locate(href_list["datumrefresh"])
-		if(istype(DAT, /datum) || istype(DAT, /client) || islist(DAT))
+		if(isdatum(DAT) || istype(DAT, /client) || islist(DAT))
 			debug_variables(DAT)

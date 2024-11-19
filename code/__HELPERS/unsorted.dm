@@ -1426,7 +1426,7 @@ var/list/WALLITEMS = list(
 /proc/admin_chat_message(message = "Debug Message", color = "#FFFFFF", sender)
 	// Adds TGS3 integration to those fancy verbose round event messages.
 	if(message)
-		send2irc("Event", message)
+		send2adminchat("Event", message)
 	if (!config_legacy.chat_webhook_url || !message)
 		return
 	spawn(0)

@@ -62,6 +62,14 @@
 
 #define COOLDOWN_TIMELEFT(cd_source, cd_index) (max(0, cd_source.cd_##cd_index - world.time))
 
+// kevin...
+// the cd indexes arent supposed to start with cd_
+#define COOLDOWN_START_A(cd_source, cd_index, cd_time) (cd_source.cd_index = world.time + (cd_time))
+
+//Returns true if the cooldown has run its course, false otherwise
+#define COOLDOWN_FINISHED_A(cd_source, cd_index) (cd_source.cd_index <= world.time)
+
+
 // INDEXES FOR VAR COOLDOWNS - DO NOT USE UPPERCASE, DO NOT USE cooldown_, APPENDS ADDED AUTOMATICALLY
 
 // INDEXES FOR TIMER COOLDOWNS - Must be unique!

@@ -1,6 +1,7 @@
-/client/proc/play_sound(S as sound)
+/client/proc/play_sound(sound as sound)
 	set category = "Fun"
 	set name = "Play Global Sound"
+	set desc = "Play a sound to all connected players."
 	if(!check_rights(R_SOUNDS))
 		return
 
@@ -12,25 +13,25 @@
 		freq = 1
 	vol = clamp(vol, 1, 100)
 
-	var/sound/admin_sound = new()
-	admin_sound.file = S
+	var/sound/admin_sound = new
+	admin_sound.file = sound
 	admin_sound.priority = 250
 	admin_sound.channel = CHANNEL_ADMIN
 	admin_sound.frequency = freq
 	admin_sound.wait = 1
-	admin_sound.repeat = 0
+	admin_sound.repeat = FALSE
 	admin_sound.status = SOUND_STREAM
 	admin_sound.volume = vol
 
 	var/res = alert(usr, "Show the title of this song to the players?",, "Yes","No", "Cancel")
 	switch(res)
 		if("Yes")
-			to_chat(world, "<span class='boldannounce'>An admin played: [S]</span>")
+			to_chat(world, SPAN_BOLDANNOUNCE("An admin played: [sound]"), confidential = TRUE)
 		if("Cancel")
 			return
 
-	log_admin("[key_name(src)] played sound [S]")
-	message_admins("[key_name_admin(src)] played sound [S]")
+	log_admin("[key_name(src)] played sound [sound]")
+	message_admins("[key_name_admin(src)] played sound [sound]")
 
 	for(var/mob/M in GLOB.player_list)
 		if(M.get_preference_toggle(/datum/game_preference_toggle/music/admin)) //if(M.client.prefs.toggles & SOUND_MIDI)
@@ -40,15 +41,16 @@
 
 	feedback_add_details("admin_verb","PGS") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
-/client/proc/play_local_sound(S as sound)
+/client/proc/play_local_sound(sound as sound)
 	set category = "Fun"
 	set name = "Play Local Sound"
+	set desc = "Plays a sound only you can hear."
 	if(!check_rights(R_SOUNDS))
 		return
 
-	log_admin("[key_name(src)] played a local sound [S]")
-	message_admins("[key_name_admin(src)] played a local sound [S]")
-	playsound(get_turf(src.mob), S, 50, 0, 0)
+	log_admin("[key_name(src)] played a local sound [sound]")
+	message_admins("[key_name_admin(src)] played a local sound [sound]")
+	playsound(get_turf(src.mob), sound, 50, FALSE, FALSE)
 	feedback_add_details("admin_verb","PLS") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /client/proc/play_web_sound()
@@ -237,14 +239,15 @@
 /client/proc/stop_sounds()
 	set category = "Debug"
 	set name = "Stop All Playing Sounds"
+	set desc = "Stops all playing sounds for EVERYONE."
 	if(!src.holder)
 		return
 
 	log_admin("[key_name(src)] stopped all currently playing sounds.")
 	message_admins("[key_name_admin(src)] stopped all currently playing sounds.")
-	for(var/mob/M in GLOB.player_list)
-		SEND_SOUND(M, sound(null))
-		var/client/C = M.client
-		C?.tgui_panel?.stop_music()
-	// SSblackbox.record_feedback("tally", "admin_verb", 1, "Stop All Playing Sounds") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+	for(var/mob/player as anything in GLOB.player_list)
+		SEND_SOUND(player, sound(null))
+		var/client/player_client = player.client
+		player_client?.tgui_panel?.stop_music()
+	S_TIMER_COOLDOWN_RESET(SStimer, CD_INTERNET_SOUND)
 	feedback_add_details("admin_verb","SAPS") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
