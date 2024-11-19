@@ -327,12 +327,12 @@
 		var/atom/movable/screen/actor_hud/inventory/plate/hand/old_hand = hands[applied_active_hand]
 		old_hand.cut_overlay("[old_hand.icon_state]-active")
 		applied_active_hand = null
+	if(!to_index)
+		return
 	// this is because if this gets set out of bounds the inventory is stuck; we want error reporting, but not to brick the player while doing so.
 	if(to_index < 1 || to_index > length(hands))
 		CRASH("attempted to set hand active out of bounds")
 	applied_active_hand = to_index
-	if(!to_index)
-		return
 	var/atom/movable/screen/actor_hud/inventory/plate/hand/new_hand = hands[to_index]
 	new_hand.add_overlay("[new_hand.icon_state]-active")
 
