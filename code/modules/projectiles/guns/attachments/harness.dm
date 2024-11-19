@@ -49,6 +49,9 @@
 	// don't react if it was already yanked
 	if(attached.loc != user)
 		return NONE
+	// don't react if it's not going to the turf
+	if(!isturf(new_loc))
+		return NONE
 	if(!snap_back_to_user(user))
 		return NONE
 	return COMPONENT_ITEM_DROPPED_RELOCATE | COMPONENT_ITEM_DROPPED_SUPPRESS_SOUND
@@ -64,6 +67,7 @@
 	var/target_slot_phrase
 	for(var/slot_id in list(
 		/datum/inventory_slot/inventory/suit_storage,
+		/datum/inventory_slot/inventory/belt,
 		/datum/inventory_slot/inventory/back,
 	))
 		if(!user.equip_to_slot_if_possible(attached, slot_id, INV_OP_SILENT))
