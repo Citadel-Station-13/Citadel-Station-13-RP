@@ -2023,6 +2023,7 @@
 #include "code\game\rendering\actor_huds\actor_hud-screen_object.dm"
 #include "code\game\rendering\actor_huds\actor_hud.dm"
 #include "code\game\rendering\actor_huds\actor_hud_holder.dm"
+#include "code\game\rendering\actor_huds\huds\inventory-screen_object.dm"
 #include "code\game\rendering\actor_huds\huds\inventory.dm"
 #include "code\game\rendering\atom_huds\atom_hud.dm"
 #include "code\game\rendering\atom_huds\atom_hud_provider.dm"

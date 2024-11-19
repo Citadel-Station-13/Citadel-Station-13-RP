@@ -102,6 +102,8 @@
 /mob/proc/get_hand_manipulation_level(index)
 	return HAND_MANIPULATION_PRECISE
 
+// todo: can we combine all these procs?
+
 /**
  * Checks if a hand can be used at a given manipulation level.
  */
@@ -134,9 +136,9 @@
  */
 /mob/proc/standard_hand_usability_check(atom/target, index, manipulation, datum/event_args/actor/actor, silent)
 	if(is_hand_manipulation_sufficient(index, manipulation))
-		return
+		return TRUE
 	if(silent)
-		return
+		return FALSE
 	var/list/reasons_we_cant = why_hand_manipulation_insufficient(index, manipulation)
 	if(actor)
 		actor.chat_feedback(
@@ -148,6 +150,7 @@
 			SPAN_WARNING("You can't do that right now! ([length(reasons_we_cant) ? english_list(reasons_we_cant) : "hand nonfunctional for unknown reason"])"),
 			target = target,
 		)
+	return FALSE
 
 //* Hands - Identity *//
 

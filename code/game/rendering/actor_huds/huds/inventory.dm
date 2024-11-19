@@ -19,6 +19,8 @@
 	var/list/atom/movable/screen/actor_hud/inventory/plate/slot/slots
 	/// ordered hand objects
 	var/list/atom/movable/screen/actor_hud/inventory/plate/hand/hands
+	/// current active hand
+	var/applied_active_hand
 
 	/// drawer object
 	var/atom/movable/screen/actor_hud/inventory/drawer/button_drawer
@@ -26,6 +28,12 @@
 	var/atom/movable/screen/actor_hud/inventory/swap_hand/button_swap_hand
 	/// equip object
 	var/atom/movable/screen/actor_hud/inventory/equip_hand/button_equip_hand
+
+/datum/actor_hud/inventoryc/sync_to_preferences(datum/hud_preferences/preference_set)
+	var/old_active_hand = applied_active_hand
+	set_active_hand(null)
+	. = ..()
+	set_active_hand(old_active_hand)
 
 /datum/actor_hud/inventory/on_mob_bound(mob/target)
 	// we don't have a hook for 'on inventory init',
@@ -55,8 +63,7 @@
 			continue
 		add_item(item_in_slot, resolve_inventory_slot(slot_id))
 	if(inventory.owner.active_hand)
-		var/atom/movable/screen/actor_hud/inventory/plate/hand/active_hand_plate = hands[inventory.owner.active_hand]
-		active_hand_plate.add_overlay("[active_hand_plate.icon_state]-active")
+		set_active_hand(inventory.owner.active_hand)
 
 /datum/actor_hud/inventory/proc/unbind_from_inventory(datum/inventory/inventory)
 	for(var/i in 1 to length(inventory.held_items))
@@ -96,6 +103,7 @@
 	remove_screen(hand_objects)
 	QDEL_LIST(hand_objects)
 	hands = null
+	applied_active_hand = null
 
 	// buttons
 	var/list/atom/movable/screen/actor_hud/inventory/button_objects = all_button_screen_objects()
@@ -107,6 +115,8 @@
  * INVENTORY_SLOT_REMAP_*'s.
  */
 /datum/actor_hud/inventory/proc/rebuild(list/inventory_slots_with_mappings = host.build_inventory_slots_with_remappings(), number_of_hands = host.get_hand_count())
+	var/old_active_hand = applied_active_hand
+
 	cleanup()
 
 	// buttons
@@ -119,6 +129,9 @@
 
 	// hands
 	rebuild_hands(number_of_hands)
+
+	if(length(hands))
+		set_active_hand(old_active_hand > length(hands) ? 1 : old_active_hand)
 
 /**
  * Rebuilds our slots. Doesn't rebuild anything else. Doesn't wipe old objects.
@@ -305,6 +318,22 @@
 		return
 	toggle_hidden_class(class, source)
 
+//* Hands *//
+
+/datum/actor_hud/inventory/proc/set_active_hand(to_index)
+	if(to_index == applied_active_hand)
+		return
+	var/atom/movable/screen/actor_hud/inventory/plate/hand/old_hand = hands[applied_active_hand]
+	old_hand.cut_overlay("[old_hand.icon_state]-active")
+	// this is because if this gets set out of bounds the inventory is stuck; we want error reporting, but not to brick the player while doing so.
+	if(to_index < 1 || to_index > length(hands))
+		CRASH("attempted to set hand active out of bounds")
+	applied_active_hand = to_index
+	if(!to_index)
+		return
+	var/atom/movable/screen/actor_hud/inventory/plate/hand/new_hand = hands[to_index]
+	new_hand.add_overlay("[new_hand.icon_state]-active")
+
 //* Hooks *//
 
 /datum/actor_hud/inventory/proc/add_item(obj/item/item, datum/inventory_slot/slot_or_index)
@@ -322,192 +351,4 @@
 	new_screen_obj.bind_item(item)
 
 /datum/actor_hud/inventory/proc/swap_active_hand(from_index, to_index)
-	var/atom/movable/screen/actor_hud/inventory/plate/hand/old_hand = hands[from_index]
-	var/atom/movable/screen/actor_hud/inventory/plate/hand/new_hand = hands[to_index]
-
-	old_hand.cut_overlay("[old_hand.icon_state]-active")
-	new_hand.add_overlay("[new_hand.icon_state]-active")
-
-//* Inventory Screen Objects *//
-
-/**
- * Base type of inventory screen objects.
- */
-/atom/movable/screen/actor_hud/inventory
-	name = "inventory"
-	icon = 'icons/screen/hud/midnight/inventory.dmi'
-	plane = INVENTORY_PLANE
-	layer = INVENTORY_PLATE_LAYER
-
-/atom/movable/screen/actor_hud/inventory/on_click(mob/user, list/params)
-	var/obj/item/held = user.get_active_held_item()
-	handle_inventory_click(user, held)
-
-/atom/movable/screen/actor_hud/inventory/sync_to_preferences(datum/hud_preferences/preference_set)
-	sync_style(preference_set.hud_style, preference_set.hud_alpha, preference_set.hud_color)
-
-/atom/movable/screen/actor_hud/inventory/proc/sync_style(datum/hud_style/style, style_alpha, style_color)
-	alpha = style_alpha
-	color = style_color
-
-/**
- * handle an inventory operation
- *
- * @params
- * * user - clicking user; not necessarily the inventory's owner
- * * with_item - specifically attempting to swap an inventory object with an item, or interact with it with an item.
- */
-/atom/movable/screen/actor_hud/inventory/proc/handle_inventory_click(mob/user, obj/item/with_item)
-	return
-
-/**
- * Base type of item-holding screen objects
- */
-/atom/movable/screen/actor_hud/inventory/plate
-
-/atom/movable/screen/actor_hud/inventory/plate/Destroy()
-	if(length(vis_contents) != 0)
-		vis_contents.len = 0
-	return ..()
-
-/atom/movable/screen/actor_hud/inventory/plate/proc/bind_item(obj/item/item)
-	vis_contents += item
-
-/atom/movable/screen/actor_hud/inventory/plate/proc/unbind_item(obj/item/item)
-	vis_contents -= item
-
-/**
- * Slot screen objects
- *
- * * Stores remappings so we don't have to do it separately
- * * Stores calculated screen_loc so we don't have to recalculate unless slots are mutated.
- */
-/atom/movable/screen/actor_hud/inventory/plate/slot
-	/// our inventory slot id
-	var/inventory_slot_id
-	/// our (potentially remapped) class
-	var/inventory_hud_class = INVENTORY_HUD_CLASS_ALWAYS
-	/// our (potentially remapped) main axis
-	var/inventory_hud_main_axis = 0
-	/// our (potentially remapped) cross axis
-	var/inventory_hud_cross_axis = 0
-	/// our (potentially remapped) anchor
-	var/inventory_hud_anchor = INVENTORY_HUD_ANCHOR_AUTOMATIC
-
-/atom/movable/screen/actor_hud/inventory/plate/slot/Initialize(mapload, datum/actor_hud/inventory/hud, datum/inventory_slot/slot, list/slot_remappings)
-	. = ..()
-	inventory_slot_id = slot.id
-	icon_state = slot.inventory_hud_icon_state
-	inventory_hud_class = slot_remappings[INVENTORY_SLOT_REMAP_CLASS] || slot.inventory_hud_class
-	inventory_hud_main_axis = slot_remappings[INVENTORY_SLOT_REMAP_MAIN_AXIS] || slot.inventory_hud_main_axis
-	inventory_hud_cross_axis = slot_remappings[INVENTORY_SLOT_REMAP_CROSS_AXIS] || slot.inventory_hud_cross_axis
-	inventory_hud_anchor = slot_remappings[INVENTORY_SLOT_REMAP_ANCHOR] || slot.inventory_hud_anchor
-	name = slot_remappings[INVENTORY_SLOT_REMAP_NAME] || slot.display_name || slot.name
-
-/atom/movable/screen/actor_hud/inventory/plate/slot/sync_style(datum/hud_style/style, style_alpha, style_color)
-	..()
-	icon = style.inventory_icons_slot
-
-/atom/movable/screen/actor_hud/inventory/plate/slot/handle_inventory_click(mob/user, obj/item/with_item)
-	var/obj/item/in_slot = user.item_by_slot_id(inventory_slot_id)
-	if(with_item)
-		if(in_slot)
-			with_item.melee_interaction_chain(in_slot, user, NONE, list())
-		else
-			user.equip_to_slot_if_possible(with_item, inventory_slot_id, NONE, user)
-	else
-		in_slot?.attack_hand(user, new /datum/event_args/actor/clickchain(user))
-
-/**
- * Hand screen objects
- */
-/atom/movable/screen/actor_hud/inventory/plate/hand
-	/// target hand index
-	var/hand_index
-	/// should we have handcuffed overlay?
-	var/handcuffed = FALSE
-
-/atom/movable/screen/actor_hud/inventory/plate/hand/Initialize(mapload, datum/inventory/host, hand_index)
-	. = ..()
-	src.hand_index = hand_index
-	sync_index(hand_index)
-
-/atom/movable/screen/actor_hud/inventory/plate/hand/sync_style(datum/hud_style/style, style_alpha, style_color)
-	..()
-	icon = style.inventory_icons
-
-/atom/movable/screen/actor_hud/inventory/plate/hand/handle_inventory_click(mob/user, obj/item/with_item)
-	hud.owner.swap_hand(hand_index)
-
-/atom/movable/screen/actor_hud/inventory/plate/hand/proc/sync_index(index = hand_index)
-	screen_loc = SCREEN_LOC_MOB_HUD_INVENTORY_HAND(index)
-	name = "[index % 2? "left" : "right"] hand[index > 2? " #[index]" : ""]"
-	icon_state = "hand-[index % 2? "left" : "right"]"
-
-/atom/movable/screen/actor_hud/inventory/plate/hand/proc/set_handcuffed(state)
-	if(state == handcuffed)
-		return
-	handcuffed = state
-	update_icon()
-
-/atom/movable/screen/actor_hud/inventory/plate/hand/update_overlays()
-	. = ..()
-	if(handcuffed)
-		. += image('icons/mob/screen_gen.dmi', "[hand_index % 2 ? "r_hand" : "l_hand"]_hud_handcuffs")
-
-/**
- * Button: 'swap hand'
- */
-/atom/movable/screen/actor_hud/inventory/drawer
-	name = "drawer"
-	icon_state = "drawer"
-	screen_loc = SCREEN_LOC_MOB_HUD_INVENTORY_DRAWER
-
-/atom/movable/screen/actor_hud/inventory/drawer/sync_style(datum/hud_style/style, style_alpha, style_color)
-	..()
-	icon = style.inventory_icons
-
-/atom/movable/screen/actor_hud/inventory/drawer/on_click(mob/user, list/params)
-	// todo: remote control
-	hud.toggle_hidden_class(INVENTORY_HUD_CLASS_DRAWER, INVENTORY_HUD_HIDE_SOURCE_DRAWER)
-
-/atom/movable/screen/actor_hud/inventory/drawer/update_icon_state()
-	icon_state = "[(INVENTORY_HUD_CLASS_DRAWER in hud.hidden_classes) ? "drawer" : "drawer-active"]"
-	return ..()
-
-/**
- * Button: 'swap hand'
- */
-/atom/movable/screen/actor_hud/inventory/swap_hand
-	name = "swap active hand"
-	icon_state = "hand-swap"
-/atom/movable/screen/actor_hud/inventory/swap_hand/Initialize(mapload, datum/inventory/host, hand_count)
-	. = ..()
-	screen_loc = SCREEN_LOC_MOB_HUD_INVENTORY_HAND_SWAP(hand_count)
-
-/atom/movable/screen/actor_hud/inventory/swap_hand/sync_style(datum/hud_style/style, style_alpha, style_color)
-	..()
-	icon = style.inventory_icons_wide
-
-/atom/movable/screen/actor_hud/inventory/swap_hand/on_click(mob/user, list/params)
-	// todo: remote control
-	user.swap_hand()
-
-/**
- * Button: 'auto equip'
- */
-/atom/movable/screen/actor_hud/inventory/equip_hand
-	name = "equip held item"
-	icon_state = "button-equip"
-
-/atom/movable/screen/actor_hud/inventory/equip_hand/Initialize(mapload, datum/inventory/host, hand_count)
-	. = ..()
-	screen_loc = SCREEN_LOC_MOB_HUD_INVENTORY_EQUIP_HAND(hand_count)
-
-/atom/movable/screen/actor_hud/inventory/equip_hand/sync_style(datum/hud_style/style, style_alpha, style_color)
-	..()
-	icon = style.inventory_icons
-
-/atom/movable/screen/actor_hud/inventory/equip_hand/on_click(mob/user, list/params)
-	// todo: remote control
-	user.attempt_smart_equip(user.get_active_held_item())
+	set_active_hand(to_index)

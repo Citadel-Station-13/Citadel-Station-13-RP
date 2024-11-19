@@ -71,13 +71,13 @@
 		/datum/inventory_slot/inventory/suit_storage,
 		/datum/inventory_slot/inventory/belt,
 		/datum/inventory_slot/inventory/back,
-		/datum/inventory_slot/inventory/belt
 	))
 		if(!user.equip_to_slot_if_possible(attached, slot_id, INV_OP_SILENT))
 			continue
 		var/datum/inventory_slot/slot = resolve_inventory_slot(slot_id)
 		target_slot_phrase = slot.display_name
 		. = TRUE
+		break
 	if(!.)
 		return
 	attached.visible_message(
