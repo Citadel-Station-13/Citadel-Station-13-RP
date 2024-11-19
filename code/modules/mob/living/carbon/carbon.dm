@@ -94,7 +94,7 @@
 			src.visible_message("[src] examines [T.himself].", \
 				SPAN_NOTICE("You check yourself for injuries."))
 
-			for(var/obj/item/organ/external/org in H.organs)
+			for(var/obj/item/organ/external/org as anything in H.external_organs)
 				var/list/status = list()
 				var/brutedamage = org.brute_dam
 				var/burndamage = org.burn_dam

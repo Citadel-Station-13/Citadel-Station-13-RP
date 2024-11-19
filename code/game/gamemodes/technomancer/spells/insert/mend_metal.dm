@@ -25,7 +25,7 @@
 			origin.adjust_instability(10)
 			for(var/i = 0, i<5,i++)
 				if(H)
-					for(var/obj/item/organ/external/O in H.organs)
+					for(var/obj/item/organ/external/O as anything in H.external_organs)
 						if(O.robotic < ORGAN_ROBOT) // Robot parts only.
 							continue
 						O.heal_damage(heal_power / 5, 0, internal = 1, robo_repair = 1)

@@ -64,7 +64,7 @@
 	M.r_skin = O.r_skin
 	M.g_skin = O.g_skin
 	M.b_skin = O.b_skin
-	for(var/obj/item/organ/external/Z in M.organs)
+	for(var/obj/item/organ/external/Z as anything in M.external_organs)
 		Z.sync_colour_to_human(M)
 	M.update_icons_body()
 	if(message)

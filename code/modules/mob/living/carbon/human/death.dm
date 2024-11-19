@@ -27,7 +27,7 @@
 		mirror.forceMove(drop_location())
 		mirror.throw_at_old(get_edge_target_turf(src,pick(GLOB.alldirs)), rand(1,3), round(30/mirror.w_class))
 
-	for(var/obj/item/organ/external/E in src.organs)
+	for(var/obj/item/organ/external/E as anything in src.external_organs)
 		E.droplimb(0,DROPLIMB_EDGE,1)
 
 	sleep(1)

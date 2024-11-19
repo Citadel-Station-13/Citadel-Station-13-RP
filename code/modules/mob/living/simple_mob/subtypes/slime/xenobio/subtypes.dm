@@ -564,7 +564,7 @@
 
 	if(ishuman(holder)) // Robolimbs need this code sadly.
 		var/mob/living/carbon/human/H = holder
-		for(var/obj/item/organ/external/E in H.organs)
+		for(var/obj/item/organ/external/E as anything in H.external_organs)
 			var/obj/item/organ/external/O = E
 			O.heal_damage(2, 2, 0, 1)
 	else

@@ -103,7 +103,7 @@ default behaviour is:
 		var/mob/living/carbon/human/H = src	//make this damage method divide the damage to be done among all the body parts, then burn each body part for that much damage. will have better effect then just randomly picking a body part
 		var/divided_damage = (burn_amount)/(H.organs.len)
 		var/extradam = 0	//added to when organ is at max dam
-		for(var/obj/item/organ/external/affecting in H.organs)
+		for(var/obj/item/organ/external/affecting as anything in H.external_organs)
 			affecting.inflict_bodypart_damage(
 				burn = divided_damage + extradam,
 			)

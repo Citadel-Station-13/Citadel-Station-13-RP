@@ -196,7 +196,7 @@
 /mob/living/carbon/human/proc/is_loyalty_implanted()
 	for(var/L in src.contents)
 		if(istype(L, /obj/item/implant/loyalty))
-			for(var/obj/item/organ/external/O in src.organs)
+			for(var/obj/item/organ/external/O as anything in src.external_organs)
 				if(L in O.implants)
 					return 1
 	return 0
@@ -991,7 +991,7 @@
 /mob/living/carbon/human/get_visible_implants(var/class = 0)
 
 	var/list/visible_implants = list()
-	for(var/obj/item/organ/external/organ in src.organs)
+	for(var/obj/item/organ/external/organ as anything in src.external_organs)
 		for(var/obj/item/O in organ.implants)
 			if(!istype(O,/obj/item/implant) && (O.w_class > class) && !istype(O,/obj/item/material/shard/shrapnel) && !istype(O, /obj/item/nif))
 				visible_implants += O
@@ -999,7 +999,7 @@
 	return(visible_implants)
 
 /mob/living/carbon/human/embedded_needs_process()
-	for(var/obj/item/organ/external/organ in src.organs)
+	for(var/obj/item/organ/external/organ as anything in src.external_organs)
 		for(var/obj/item/O in organ.implants)
 			if(!istype(O, /obj/item/implant)) //implant type items do not cause embedding effects, see handle_embedded_objects()
 				return 1
@@ -1007,7 +1007,7 @@
 
 /mob/living/carbon/human/proc/handle_embedded_objects()
 
-	for(var/obj/item/organ/external/organ in src.organs)
+	for(var/obj/item/organ/external/organ as anything in src.external_organs)
 		if(organ.splinted) //Splints prevent movement.
 			continue
 		for(var/obj/item/O in organ.implants)

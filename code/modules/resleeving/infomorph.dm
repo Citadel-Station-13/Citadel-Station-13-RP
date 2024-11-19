@@ -233,7 +233,7 @@ var/list/infomorph_emotions = list(
 		var/mob/holder = card.loc
 		if(ishuman(holder))
 			var/mob/living/carbon/human/H = holder
-			for(var/obj/item/organ/external/affecting in H.organs)
+			for(var/obj/item/organ/external/affecting as anything in H.external_organs)
 				if(card in affecting.implants)
 					affecting.inflict_bodypart_damage(
 						brute = rand(30, 50),

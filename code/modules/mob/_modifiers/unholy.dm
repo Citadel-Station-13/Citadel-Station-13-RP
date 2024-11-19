@@ -127,7 +127,7 @@
 					if(O.damage <= 5 && O.organ_tag == O_EYES) // Fix eyes
 						H.remove_blindness_source(TRAIT_BLINDNESS_EYE_DMG)
 
-				for(var/obj/item/organ/external/O in H.organs) // Fix limbs, no matter if they are Man or Machine.
+				for(var/obj/item/organ/external/O as anything in H.external_organs) // Fix limbs, no matter if they are Man or Machine.
 					O.heal_damage(rand(1,3), rand(1,3), internal = 1, robo_repair = 1)
 
 				// check limbs
