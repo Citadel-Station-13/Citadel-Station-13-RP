@@ -153,23 +153,6 @@
 						return 1
 				var/mob/living/L = usr
 				L.toggle_move_intent()
-		if("m_intent")
-			if(!usr.m_int)
-				switch(usr.m_intent)
-					if("run")
-						usr.m_int = "13,14"
-					if("walk")
-						usr.m_int = "14,14"
-					if("face")
-						usr.m_int = "15,14"
-			else
-				usr.m_int = null
-		if("walk")
-			usr.m_intent = "walk"
-			usr.m_int = "14,14"
-		if("run")
-			usr.m_intent = "run"
-			usr.m_int = "13,14"
 		if("Reset Machine")
 			usr.unset_machine()
 		if("internal")
