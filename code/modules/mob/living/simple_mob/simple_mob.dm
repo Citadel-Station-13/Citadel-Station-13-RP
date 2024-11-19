@@ -245,9 +245,6 @@
 	/// legacy armor, applied on init
 	var/list/armor_legacy_mob
 
-	///Does the simple mob drop organs when butchered?
-	butchery_drops_organs = FALSE
-
 /mob/living/simple_mob/Initialize(mapload)
 	if(armor_legacy_mob)
 		var/list/translated = list()

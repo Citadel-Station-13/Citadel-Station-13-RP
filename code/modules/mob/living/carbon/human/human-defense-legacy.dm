@@ -143,7 +143,7 @@
 
 // Checked in borer code
 /mob/living/carbon/human/proc/check_head_coverage()
-	var/obj/item/organ/external/H = organs_by_name[BP_HEAD]
+	var/obj/item/organ/external/H = legacy_organ_by_zone(TARGET_ZONE_HEAD)
 	var/list/body_parts = H.get_covering_clothing(EYES)
 	if(LAZYLEN(body_parts))
 		return 1
@@ -151,7 +151,7 @@
 
 //Used to check if they can be fed food/drinks/pills
 /mob/living/carbon/human/proc/check_mouth_coverage()
-	var/obj/item/organ/external/H = organs_by_name[BP_HEAD]
+	var/obj/item/organ/external/H = legacy_organ_by_zone(TARGET_ZONE_HEAD)
 	var/list/protective_gear = H.get_covering_clothing(FACE)
 	for(var/obj/item/gear in protective_gear)
 		if(istype(gear) && (gear.body_cover_flags & FACE) && !(gear.clothing_flags & FLEXIBLEMATERIAL))
@@ -159,7 +159,7 @@
 	return null
 
 /mob/living/carbon/human/proc/check_mouth_coverage_survival()
-	var/obj/item/organ/external/H = organs_by_name[BP_HEAD]
+	var/obj/item/organ/external/H = legacy_organ_by_zone(TARGET_ZONE_HEAD)
 	var/list/protective_gear = H.get_covering_clothing(FACE)
 	for(var/obj/item/gear in protective_gear)
 		if(istype(gear) && (gear.body_cover_flags & FACE) && !(gear.clothing_flags & FLEXIBLEMATERIAL) && !(gear.clothing_flags & ALLOW_SURVIVALFOOD))
