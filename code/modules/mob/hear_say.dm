@@ -1,3 +1,7 @@
+/mob/hear(datum/saycode_packet/packet)
+	. = ..()
+	
+
 // At minimum every mob has a hear_say proc.
 
 /mob/proc/hear_say(var/message, var/verb = "says", var/datum/language/language = null, var/alt_name = "",var/italics = 0, var/mob/speaker = null, var/sound/speech_sound, var/sound_vol)

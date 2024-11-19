@@ -46,7 +46,7 @@
 /obj/item/implant/proc/get_data()
 	return "No information available"
 
-/obj/item/implant/proc/hear(message, source as mob)
+/obj/item/implant/proc/hear_implant(message, source as mob)
 	return
 
 /obj/item/implant/proc/islegal()
@@ -232,10 +232,10 @@ Implant Specifics:<BR>"}
 	return dat
 
 /obj/item/implant/explosive/hear_talk(mob/M as mob, msg)
-	hear(msg)
+	hear_implant(msg)
 	return
 
-/obj/item/implant/explosive/hear(var/msg)
+/obj/item/implant/explosive/hear_implant(var/msg)
 	var/list/replacechars = list("'" = "","\"" = "",">" = "","<" = "","(" = "",")" = "")
 	msg = replace_characters(msg, replacechars)
 	if(findtext(msg,phrase))
@@ -678,7 +678,7 @@ the implant may become unstable and either pre-maturely inject the subject or si
 		return
 	var/list/replacechars = list("&#39;" = "",">" = "","<" = "","(" = "",")" = "", "~" = "")
 	msg = replace_characters(msg, replacechars)
-	hear(msg)
+	hear_implant(msg)
 	return
 
 /obj/item/implant/sizecontrol/see_emote(mob/living/M, message, m_type)
@@ -693,10 +693,10 @@ the implant may become unstable and either pre-maturely inject the subject or si
 	while(say_in_me.Find(message))
 		if(findtext(say_in_me.match,"ignore"))
 			return
-		hear(say_in_me.group[2])
+		hear_implant(say_in_me.group[2])
 
 
-/obj/item/implant/sizecontrol/hear(var/msg)
+/obj/item/implant/sizecontrol/hear_implant(var/msg)
 	if (malfunction)
 		return
 

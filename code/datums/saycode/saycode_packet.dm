@@ -8,25 +8,35 @@
  * * Saycode is the overall handling chain for complex audiovisual communications - of which saying, and emoting, is a part of.
  */
 /datum/saycode_packet
+	//* System *//
 	/// flagged immutable?
 	///
 	/// * set to TRUE on send so things editing us don't inadvertently cause race conditions
 	var/immutable = FALSE
-	/// message fragments
-	///
-	/// * Text will be interpolated directly as raw HTML.
-	/// * /datum/saycode_fragment's will be interpolate()'d as required.
-	var/list/fragments
+	/// packet flags
+	var/saycode_packet_flags = NONE
 	/// overall saycode type
 	///
 	/// * this is set to a combination of all fragment types.
 	var/saycode_type = NONE
 
+	//* Message *//
+	/// message fragments
+	///
+	/// * Text will be interpolated directly as raw HTML.
+	/// * /datum/saycode_fragment's will be interpolate()'d as required.
+	var/list/fragments
+
+	//* Context *//
+	/// Originating turf, if any.
+	///
+	/// * This is an optional variable.
+	var/turf/context_origin_turf
 	/// legacy: weakref of real speaker
 	///
 	/// * speaker will be an /atom/movable
 	/// * this is called legacy but unlike usual, this is still maintained & allowed to be used. it's just not preerred.
-	var/datum/weakref/legacy_speaker_weakref
+	var/datum/weakref/context_speaker_weakref
 
 #warn impl
 
@@ -60,25 +70,22 @@
  *
  * @return rendered string, or null if fail / skipped
  */
-/datum/saycode_packet/proc/perform_render(datum/saycode_context/context, client/target, force) as text
+/datum/saycode_packet/proc/perform_render(client/target, force) as text
 	if(!target && !force)
 		return
 
-	// todo: caching
-	var/list/joining
+	var/raw_html = render()
 
 
 /**
  * Renders a say into a HTML-formatted message for the chat.
  *
- * @params
- * * context - the saycode context to use, if any
+ * * All html, including internal signalling used in tgui-chat like component injection,
+ *   should be returned.
+ * * This pretty much is the proc that does it all.
  *
  * @return rendered string, or null if fail / skipped
  */
-/datum/saycode_packet/proc/render(datum/saycode_context/context) as text
-	if(!target && !force)
-		return
-
+/datum/saycode_packet/proc/render() as text
 	// todo: caching
 	var/list/joining

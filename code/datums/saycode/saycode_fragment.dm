@@ -32,7 +32,7 @@
  * @params
  * * context - the context used to say, if it exists
  */
-/datum/saycode_fragment/proc/render(datum/saycode_context/context) as text
+/datum/saycode_fragment/proc/render() as text
 	return message
 
 #warn impl

@@ -1,3 +1,13 @@
+//* This file is explicitly licensed under the MIT license. *//
+//* Copyright (c) 2024 Citadel Station Developers           *//
+
+//* Saycode Packet Flags *//
+
+/// sent from active player
+///
+/// * used by things like ghosts to filter out unwanted messages
+#define SAYCODE_PACKET_CONSIDERED_PLAYER (1<<0)
+
 //* Saycode Types *//
 
 /// works as long as can see
