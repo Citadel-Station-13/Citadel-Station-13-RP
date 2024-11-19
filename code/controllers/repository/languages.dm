@@ -28,7 +28,7 @@ REPOSITORY_DEF(languages)
 		legacy_language_keys -= instance.key
 
 /datum/controller/repository/languages/proc/legacy_resolve_language_name(name)
-	return legacy_language_lookup[name]
+	return legacy_language_lookup[lowertext(name)]
 
 /datum/controller/repository/languages/proc/legacy_resolve_language_key(key)
 	return legacy_language_keys[key]
