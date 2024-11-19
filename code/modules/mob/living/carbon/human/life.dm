@@ -89,7 +89,6 @@
 	//No need to update all of these procs if the guy is dead.
 	if(stat != DEAD && !stasis)
 		stabilize_body_temperature(seconds) //Body temperature adjusts itself (self-regulation)
-		weightgain()
 		process_weaver_silk()
 		handle_shock()
 		handle_pain()
@@ -1868,14 +1867,6 @@
 		return
 	else
 		bodytemperature += (BODYTEMP_HEATING_MAX + (fire_stacks * 15)) * (1-thermal_protection)
-
-/mob/living/carbon/human/proc/weightgain()
-	if (nutrition >= 0 && stat != 2)
-		if (nutrition > MIN_NUTRITION_TO_GAIN && weight < MAX_MOB_WEIGHT && weight_gain)
-			weight += species.metabolism*(0.01*weight_gain)
-
-		else if (nutrition <= MAX_NUTRITION_TO_LOSE && stat != 2 && weight > MIN_MOB_WEIGHT && weight_loss)
-			weight -= species.metabolism*(0.01*weight_loss) // starvation weight loss
 
 //Our call for the NIF to do whatever
 /mob/living/carbon/human/proc/handle_nif()

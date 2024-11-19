@@ -35674,12 +35674,12 @@
 	pixel_x = 4;
 	pixel_y = -28
 	},
-/obj/item/ammo_magazine/a45/practice,
-/obj/item/ammo_magazine/a45/practice,
-/obj/item/ammo_magazine/a45/practice,
-/obj/item/ammo_magazine/a45/practice,
-/obj/item/ammo_magazine/a45/practice,
-/obj/item/ammo_magazine/a45/practice,
+/obj/item/ammo_magazine/a45/doublestack/practice,
+/obj/item/ammo_magazine/a45/doublestack/practice,
+/obj/item/ammo_magazine/a45/doublestack/practice,
+/obj/item/ammo_magazine/a45/doublestack/practice,
+/obj/item/ammo_magazine/a45/doublestack/practice,
+/obj/item/ammo_magazine/a45/doublestack/practice,
 /obj/item/ammo_magazine/a9mm/top_mount/practice,
 /obj/item/ammo_magazine/a9mm/top_mount/practice,
 /turf/simulated/floor/tiled,
