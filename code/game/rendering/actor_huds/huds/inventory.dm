@@ -29,7 +29,7 @@
 	/// equip object
 	var/atom/movable/screen/actor_hud/inventory/equip_hand/button_equip_hand
 
-/datum/actor_hud/inventoryc/sync_to_preferences(datum/hud_preferences/preference_set)
+/datum/actor_hud/inventory/sync_to_preferences(datum/hud_preferences/preference_set)
 	var/old_active_hand = applied_active_hand
 	set_active_hand(null)
 	. = ..()
