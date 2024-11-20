@@ -90,7 +90,7 @@
 
 	menu.radius = 32
 	menu.host = src
-	menu.anchor = src
+	menu.anchor = (loc == e_args.performer) ? e_args.performer : loc
 	menu.check_screen_border(receiving.mob)
 	menu.set_choices(transformed, FALSE)
 	menu.show_to(receiving.mob)
