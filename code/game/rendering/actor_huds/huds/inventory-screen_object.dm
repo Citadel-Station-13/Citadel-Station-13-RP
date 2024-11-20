@@ -143,7 +143,7 @@
 /atom/movable/screen/actor_hud/inventory/plate/hand/proc/sync_index(index = hand_index)
 	screen_loc = SCREEN_LOC_MOB_HUD_INVENTORY_HAND(index)
 	name = "[index % 2? "left" : "right"] hand[index > 2? " #[index]" : ""]"
-	icon_state = "hand-[index % 2? "left" : "right"]"
+	self_icon_state = "hand-[index % 2? "left" : "right"]"
 
 /atom/movable/screen/actor_hud/inventory/plate/hand/proc/set_handcuffed(state)
 	if(state == handcuffed)
@@ -157,7 +157,7 @@
 		add_overlay(image('icons/mob/screen_gen.dmi', "[hand_index % 2 ? "r_hand" : "l_hand"]_hud_handcuffs"))
 	if(active)
 		var/image/active_image = new
-		active_image.icon_state = "[icon_state]-active"
+		active_image.icon_state = "[self_icon_state]-active"
 		active_image.plane = HUD_PLANE
 		active_image.layer = HUD_LAYER_INVENTORY
 		add_overlay(active_image)
