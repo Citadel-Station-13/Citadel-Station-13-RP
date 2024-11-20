@@ -1,18 +1,18 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "aa" = (
 /turf/simulated/floor/outdoors/beach/sand/desert,
-/area/tether_away/beach/jungle)
+/area/sector/miaphus/beach/jungle)
 "ab" = (
 /obj/effect/overlay/palmtree_r,
 /turf/simulated/floor/outdoors/beach/sand/desert,
-/area/tether_away/beach/jungle)
+/area/sector/miaphus/beach/jungle)
 "ac" = (
 /obj/effect/overlay/palmtree_l,
 /turf/simulated/floor/outdoors/beach/sand/desert,
-/area/tether_away/beach/jungle)
+/area/sector/miaphus/beach/jungle)
 "ad" = (
 /turf/simulated/floor/wood,
-/area/tether_away/beach/resort/canteen)
+/area/sector/miaphus/beach/resort/canteen)
 "ae" = (
 /obj/effect/floor_decal/tracks{
 	dir = 1
@@ -20,7 +20,7 @@
 /turf/simulated/mineral/floor/cave{
 	name = "dirt"
 	},
-/area/tether_away/beach/mineshaft)
+/area/sector/miaphus/beach/mineshaft)
 "af" = (
 /obj/machinery/button/remote/airlock{
 	id = "LoveShack3";
@@ -31,11 +31,11 @@
 /obj/structure/bed/padded,
 /obj/random/bedsheet,
 /turf/simulated/floor/wood,
-/area/tether_away/beach/resort/dorm3)
+/area/sector/miaphus/beach/resort/dorm3)
 "ag" = (
 /obj/effect/floor_decal/tracks,
 /turf/simulated/floor/tiled/asteroid_steel,
-/area/tether_away/beach/mineyard)
+/area/sector/miaphus/beach/mineyard)
 "ah" = (
 /obj/machinery/light/small{
 	dir = 8
@@ -43,7 +43,7 @@
 /turf/simulated/floor/tiled/asteroid_steel{
 	outdoors = 1
 	},
-/area/tether_away/beach/resort/fishing)
+/area/sector/miaphus/beach/resort/fishing)
 "ai" = (
 /obj/structure/railing/grey{
 	dir = 1
@@ -52,7 +52,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/wood,
-/area/tether_away/beach/resort/canteen)
+/area/sector/miaphus/beach/resort/canteen)
 "aj" = (
 /obj/structure/railing/grey{
 	dir = 1
@@ -61,38 +61,38 @@
 	dir = 4
 	},
 /turf/simulated/floor/wood,
-/area/tether_away/beach/resort/canteen)
+/area/sector/miaphus/beach/resort/canteen)
 "ak" = (
 /turf/simulated/floor/water,
-/area/tether_away/beach/coast)
+/area/sector/miaphus/beach/coast)
 "al" = (
 /obj/structure/table/glass,
 /turf/simulated/floor/tiled/old_tile/white,
-/area/tether_away/beach/resort/lockermed)
+/area/sector/miaphus/beach/resort/lockermed)
 "am" = (
 /turf/simulated/floor/water/deep,
-/area/tether_away/beach/water)
+/area/sector/miaphus/beach/water)
 "an" = (
 /turf/level_border,
-/area/tether_away/beach/mineshaft)
+/area/sector/miaphus/beach/mineshaft)
 "ao" = (
 /obj/structure/simple_door/wood,
 /turf/simulated/floor/tiled/asteroid_steel,
-/area/tether_away/beach/resort/greenhouse)
+/area/sector/miaphus/beach/resort/greenhouse)
 "ap" = (
 /obj/effect/overlay/palmtree_r,
 /turf/simulated/floor/water/beach/corner{
 	dir = 8
 	},
-/area/tether_away/beach/jungle)
+/area/sector/miaphus/beach/jungle)
 "aq" = (
 /turf/simulated/wall/wood,
-/area/tether_away/beach)
+/area/sector/miaphus/beach)
 "ar" = (
 /turf/simulated/floor/wood{
 	outdoors = 1
 	},
-/area/tether_away/beach/resort)
+/area/sector/miaphus/beach/resort)
 "as" = (
 /obj/machinery/atmospherics/pipe/simple/visible/cyan{
 	desc = "Its bone dry.";
@@ -100,7 +100,7 @@
 	name = "water pipe"
 	},
 /turf/simulated/floor/tiled/asteroid_steel,
-/area/tether_away/beach/resort/greenhouse)
+/area/sector/miaphus/beach/resort/greenhouse)
 "at" = (
 /obj/machinery/light/small{
 	dir = 8
@@ -113,47 +113,47 @@
 	name = "Doctor's Note"
 	},
 /turf/simulated/floor/tiled/old_tile/white,
-/area/tether_away/beach/resort/lockermed)
+/area/sector/miaphus/beach/resort/lockermed)
 "au" = (
 /obj/random/obstruction,
 /turf/simulated/mineral/floor/cave{
 	name = "dirt"
 	},
-/area/tether_away/beach/mineshaft)
+/area/sector/miaphus/beach/mineshaft)
 "av" = (
 /turf/simulated/floor/wood,
-/area/tether_away/beach/mineshaft)
+/area/sector/miaphus/beach/mineshaft)
 "aw" = (
 /turf/simulated/floor/wood,
-/area/tether_away/beach)
+/area/sector/miaphus/beach)
 "ax" = (
 /turf/simulated/mineral/floor/cave{
 	name = "dirt";
 	outdoors = 1
 	},
-/area/tether_away/beach/jungle)
+/area/sector/miaphus/beach/jungle)
 "ay" = (
 /obj/machinery/light/small{
 	dir = 1;
 	pixel_x = -2
 	},
 /turf/simulated/floor/tiled/old_tile/white,
-/area/tether_away/beach/resort/lockermed)
+/area/sector/miaphus/beach/resort/lockermed)
 "aA" = (
 /obj/machinery/iv_drip,
 /turf/simulated/floor/tiled/old_tile/white,
-/area/tether_away/beach/resort/lockermed)
+/area/sector/miaphus/beach/resort/lockermed)
 "aB" = (
 /obj/structure/simple_door/wood,
 /turf/simulated/floor/wood,
-/area/tether_away/beach)
+/area/sector/miaphus/beach)
 "aC" = (
 /obj/structure/closet/secure_closet/personal,
 /turf/simulated/floor/wood,
-/area/tether_away/beach/resort/bunk)
+/area/sector/miaphus/beach/resort/bunk)
 "aD" = (
 /turf/simulated/floor/tiled/old_tile/white,
-/area/tether_away/beach/resort/canteen)
+/area/sector/miaphus/beach/resort/canteen)
 "aE" = (
 /obj/machinery/atmospherics/pipe/simple/visible/cyan{
 	desc = "Its bone dry.";
@@ -162,19 +162,19 @@
 	},
 /obj/machinery/seed_extractor,
 /turf/simulated/floor/tiled/asteroid_steel,
-/area/tether_away/beach/resort/greenhouse)
+/area/sector/miaphus/beach/resort/greenhouse)
 "aF" = (
 /obj/machinery/light/small{
 	dir = 1
 	},
 /turf/simulated/floor/water,
-/area/tether_away/beach/resort/fishing)
+/area/sector/miaphus/beach/resort/fishing)
 "aG" = (
 /obj/effect/floor_decal/tracks{
 	dir = 8
 	},
 /turf/simulated/floor/wood,
-/area/tether_away/beach/mineshaft)
+/area/sector/miaphus/beach/mineshaft)
 "aH" = (
 /obj/structure/toilet{
 	dir = 8
@@ -183,7 +183,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/asteroid_steel,
-/area/tether_away/beach/resort)
+/area/sector/miaphus/beach/resort)
 "aI" = (
 /obj/structure/fence/end{
 	dir = 1
@@ -191,18 +191,18 @@
 /turf/simulated/floor/tiled/asteroid_steel{
 	outdoors = 1
 	},
-/area/tether_away/beach/mineyard)
+/area/sector/miaphus/beach/mineyard)
 "aJ" = (
 /obj/machinery/light/small{
 	dir = 1
 	},
 /turf/simulated/floor/wood,
-/area/tether_away/beach/resort/fishing)
+/area/sector/miaphus/beach/resort/fishing)
 "aK" = (
 /turf/simulated/floor/tiled/asteroid_steel{
 	outdoors = 1
 	},
-/area/tether_away/beach/desalinator)
+/area/sector/miaphus/beach/desalinator)
 "aL" = (
 /obj/effect/floor_decal/tracks/t_north{
 	dir = 9
@@ -210,16 +210,16 @@
 /turf/simulated/mineral/floor/cave{
 	name = "dirt"
 	},
-/area/tether_away/beach/mineshaft)
+/area/sector/miaphus/beach/mineshaft)
 "aM" = (
 /obj/structure/salvageable/server_os,
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/desalinator)
+/area/sector/miaphus/beach/desalinator)
 "aN" = (
 /obj/structure/bed,
 /obj/random/bedsheet,
 /turf/simulated/floor/wood,
-/area/tether_away/beach/resort/bunk)
+/area/sector/miaphus/beach/resort/bunk)
 "aO" = (
 /obj/machinery/mineral/input,
 /obj/effect/floor_decal/tracks{
@@ -228,7 +228,7 @@
 /turf/simulated/floor/tiled/asteroid_steel{
 	outdoors = 1
 	},
-/area/tether_away/beach/mineyard)
+/area/sector/miaphus/beach/mineyard)
 "aP" = (
 /obj/machinery/light/small{
 	dir = 8
@@ -237,7 +237,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/wood,
-/area/tether_away/beach/resort/canteen)
+/area/sector/miaphus/beach/resort/canteen)
 "aQ" = (
 /obj/effect/floor_decal/tracks{
 	dir = 8
@@ -245,13 +245,13 @@
 /turf/simulated/floor/tiled/asteroid_steel{
 	outdoors = 1
 	},
-/area/tether_away/beach/mineyard)
+/area/sector/miaphus/beach/mineyard)
 "aR" = (
 /obj/effect/floor_decal/tracks,
 /turf/simulated/mineral/floor/cave{
 	name = "dirt"
 	},
-/area/tether_away/beach/mineshaft)
+/area/sector/miaphus/beach/mineshaft)
 "aS" = (
 /obj/machinery/button/remote/airlock{
 	id = "LoveShack4";
@@ -262,7 +262,7 @@
 /obj/structure/bed/padded,
 /obj/random/bedsheet,
 /turf/simulated/floor/wood/broken,
-/area/tether_away/beach/resort/dorm5)
+/area/sector/miaphus/beach/resort/dorm5)
 "aT" = (
 /obj/machinery/mineral/output,
 /obj/machinery/conveyor{
@@ -272,7 +272,7 @@
 /turf/simulated/floor/tiled/asteroid_steel{
 	outdoors = 1
 	},
-/area/tether_away/beach/mineyard)
+/area/sector/miaphus/beach/mineyard)
 "aU" = (
 /obj/effect/floor_decal/tracks/t_south{
 	dir = 5
@@ -280,11 +280,11 @@
 /turf/simulated/mineral/floor/cave{
 	name = "dirt"
 	},
-/area/tether_away/beach/mineshaft)
+/area/sector/miaphus/beach/mineshaft)
 "aV" = (
 /obj/machinery/mineral/processing_unit_console,
 /turf/simulated/wall,
-/area/tether_away/beach/mineyard)
+/area/sector/miaphus/beach/mineyard)
 "aW" = (
 /obj/structure/bed,
 /obj/random/bedsheet,
@@ -292,18 +292,18 @@
 	dir = 8
 	},
 /turf/simulated/floor/wood,
-/area/tether_away/beach/resort/bunk)
+/area/sector/miaphus/beach/resort/bunk)
 "aX" = (
 /obj/structure/loot_pile/maint/trash,
 /turf/simulated/floor/water/contaminated{
 	outdoors = 0
 	},
-/area/tether_away/beach/mineshaft)
+/area/sector/miaphus/beach/mineshaft)
 "aY" = (
 /obj/structure/bed/double/padded,
 /obj/item/bedsheet/greendouble,
 /turf/simulated/floor/wood,
-/area/tether_away/beach)
+/area/sector/miaphus/beach)
 "ba" = (
 /obj/machinery/conveyor{
 	dir = 6;
@@ -312,10 +312,10 @@
 /turf/simulated/floor/tiled/asteroid_steel{
 	outdoors = 1
 	},
-/area/tether_away/beach/mineyard)
+/area/sector/miaphus/beach/mineyard)
 "bb" = (
 /turf/simulated/wall/sandstone,
-/area/tether_away/beach/resort)
+/area/sector/miaphus/beach/resort)
 "bc" = (
 /obj/effect/floor_decal/tracks{
 	dir = 4
@@ -323,7 +323,7 @@
 /turf/simulated/mineral/floor/cave{
 	name = "dirt"
 	},
-/area/tether_away/beach/mineshaft)
+/area/sector/miaphus/beach/mineshaft)
 "bd" = (
 /obj/structure/closet/crate/miningcar,
 /obj/random/junk,
@@ -338,7 +338,7 @@
 /turf/simulated/floor/water/contaminated{
 	outdoors = 0
 	},
-/area/tether_away/beach/mineshaft)
+/area/sector/miaphus/beach/mineshaft)
 "be" = (
 /obj/effect/floor_decal/tracks{
 	dir = 9
@@ -346,25 +346,25 @@
 /turf/simulated/mineral/floor/cave{
 	name = "dirt"
 	},
-/area/tether_away/beach/mineshaft)
+/area/sector/miaphus/beach/mineshaft)
 "bf" = (
 /turf/simulated/floor/water,
-/area/tether_away/beach/water)
+/area/sector/miaphus/beach/water)
 "bg" = (
 /turf/simulated/mineral/ignore_mapgen,
-/area/tether_away/beach/coast)
+/area/sector/miaphus/beach/coast)
 "bh" = (
 /obj/effect/overlay/coconut,
 /turf/simulated/floor/outdoors/beach/sand/desert,
-/area/tether_away/beach/jungle)
+/area/sector/miaphus/beach/jungle)
 "bj" = (
 /turf/simulated/floor/water,
-/area/tether_away/beach/jungle)
+/area/sector/miaphus/beach/jungle)
 "bk" = (
 /turf/simulated/floor/tiled/asteroid_steel{
 	outdoors = 1
 	},
-/area/tether_away/beach/mineyard)
+/area/sector/miaphus/beach/mineyard)
 "bl" = (
 /obj/effect/floor_decal/tracks{
 	dir = 10
@@ -372,59 +372,59 @@
 /turf/simulated/mineral/floor/cave{
 	name = "dirt"
 	},
-/area/tether_away/beach/mineshaft)
+/area/sector/miaphus/beach/mineshaft)
 "bm" = (
 /obj/effect/shuttle_landmark{
-	base_area = /area/tether_away/beach/jungle;
+	base_area = /area/sector/miaphus/beach/jungle;
 	base_turf = /turf/simulated/floor/outdoors/beach/sand/desert;
 	landmark_tag = "beach_c";
 	name = "Virgo 4 Beach (Center)"
 	},
 /turf/simulated/floor/outdoors/beach/sand/desert,
-/area/tether_away/beach/jungle)
+/area/sector/miaphus/beach/jungle)
 "bn" = (
 /obj/structure/bed/chair/office/light{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/old_tile/white,
-/area/tether_away/beach/resort/lockermed)
+/area/sector/miaphus/beach/resort/lockermed)
 "bo" = (
 /turf/level_border,
-/area/tether_away/beach/jungle)
+/area/sector/miaphus/beach/jungle)
 "bp" = (
 /turf/simulated/floor/outdoors/beach/sand,
-/area/tether_away/beach/jungle)
+/area/sector/miaphus/beach/jungle)
 "bq" = (
 /turf/simulated/mineral/ignore_mapgen,
-/area/tether_away/beach/jungle)
+/area/sector/miaphus/beach/jungle)
 "br" = (
 /turf/simulated/mineral/floor/cave{
 	name = "dirt"
 	},
-/area/tether_away/beach/jungle)
+/area/sector/miaphus/beach/jungle)
 "bs" = (
 /obj/structure/railing/grey{
 	dir = 8
 	},
 /turf/simulated/floor/wood,
-/area/tether_away/beach/resort/canteen)
+/area/sector/miaphus/beach/resort/canteen)
 "bz" = (
 /obj/structure/mirror{
 	pixel_x = 27
 	},
 /turf/simulated/floor/wood/broken,
-/area/tether_away/beach/resort/dorm5)
+/area/sector/miaphus/beach/resort/dorm5)
 "bC" = (
 /obj/machinery/light/small,
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/bunker/mess)
+/area/sector/miaphus/beach/bunker/mess)
 "bD" = (
 /obj/structure/sink/kitchen{
 	dir = 4;
 	pixel_x = -15
 	},
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/bunker/janitor)
+/area/sector/miaphus/beach/bunker/janitor)
 "bH" = (
 /obj/random/maintenance/engineering,
 /obj/random/maintenance/engineering,
@@ -434,7 +434,7 @@
 /obj/random/maintenance/engineering,
 /obj/random/empty_or_lootable_crate,
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/desalinator)
+/area/sector/miaphus/beach/desalinator)
 "bI" = (
 /obj/effect/floor_decal/tracks/t_north{
 	dir = 9
@@ -443,7 +443,7 @@
 /turf/simulated/mineral/floor/cave{
 	name = "dirt"
 	},
-/area/tether_away/beach/mineshaft)
+/area/sector/miaphus/beach/mineshaft)
 "bJ" = (
 /obj/structure/undies_wardrobe{
 	density = 0;
@@ -453,7 +453,7 @@
 	icon_state = "2-4"
 	},
 /turf/simulated/floor/wood,
-/area/tether_away/beach/resort/dorm5)
+/area/sector/miaphus/beach/resort/dorm5)
 "bK" = (
 /obj/structure/railing/grey{
 	dir = 4
@@ -462,7 +462,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/wood,
-/area/tether_away/beach/resort/canteen)
+/area/sector/miaphus/beach/resort/canteen)
 "bM" = (
 /obj/effect/floor_decal/tracks{
 	dir = 6
@@ -470,17 +470,17 @@
 /turf/simulated/floor/tiled/asteroid_steel{
 	outdoors = 1
 	},
-/area/tether_away/beach/mineyard)
+/area/sector/miaphus/beach/mineyard)
 "bO" = (
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/bunker/engi)
+/area/sector/miaphus/beach/bunker/engi)
 "bP" = (
 /obj/machinery/light/small{
 	dir = 1
 	},
 /obj/structure/bed/chair/comfy,
 /turf/simulated/floor/wood/broken,
-/area/tether_away/beach/desalinator)
+/area/sector/miaphus/beach/desalinator)
 "bS" = (
 /obj/machinery/conveyor{
 	dir = 4;
@@ -489,7 +489,7 @@
 /turf/simulated/floor/tiled/asteroid_steel{
 	outdoors = 1
 	},
-/area/tether_away/beach/mineyard)
+/area/sector/miaphus/beach/mineyard)
 "bT" = (
 /obj/structure/cable/cyan{
 	icon_state = "2-8"
@@ -497,13 +497,13 @@
 /turf/simulated/floor/tiled/asteroid_steel{
 	outdoors = 1
 	},
-/area/tether_away/beach/resort)
+/area/sector/miaphus/beach/resort)
 "bY" = (
 /obj/structure/bed/chair/sofa/black{
 	dir = 1
 	},
 /turf/simulated/floor/wood,
-/area/tether_away/beach/desalinator)
+/area/sector/miaphus/beach/desalinator)
 "cb" = (
 /obj/structure/fence/corner{
 	dir = 4
@@ -511,10 +511,10 @@
 /turf/simulated/floor/tiled/asteroid_steel{
 	outdoors = 1
 	},
-/area/tether_away/beach/resort)
+/area/sector/miaphus/beach/resort)
 "ce" = (
 /turf/simulated/floor/outdoors/beach/sand/lowdesert,
-/area/tether_away/beach/jungle)
+/area/sector/miaphus/beach/jungle)
 "cf" = (
 /obj/structure/closet/crate,
 /obj/random/meat,
@@ -526,7 +526,7 @@
 /obj/random/meat,
 /obj/random/meat,
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/station)
+/area/sector/miaphus/beach/station)
 "cs" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/item/storage/box/wormcan,
@@ -536,11 +536,11 @@
 /turf/simulated/mineral/floor/cave{
 	name = "dirt"
 	},
-/area/tether_away/beach/mineshaft)
+/area/sector/miaphus/beach/mineshaft)
 "cy" = (
 /obj/structure/simple_door/wood,
 /turf/simulated/floor/tiled/asteroid_steel,
-/area/tether_away/beach/mineyard)
+/area/sector/miaphus/beach/mineyard)
 "cA" = (
 /obj/effect/floor_decal/tracks/t_south{
 	dir = 6
@@ -548,7 +548,7 @@
 /turf/simulated/floor/tiled/asteroid_steel{
 	outdoors = 1
 	},
-/area/tether_away/beach/mineyard)
+/area/sector/miaphus/beach/mineyard)
 "cC" = (
 /obj/structure/fence/corner{
 	dir = 9
@@ -556,7 +556,7 @@
 /turf/simulated/floor/tiled/asteroid_steel{
 	outdoors = 1
 	},
-/area/tether_away/beach/mineyard)
+/area/sector/miaphus/beach/mineyard)
 "cN" = (
 /obj/machinery/light/small{
 	dir = 8
@@ -565,7 +565,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/old_tile/white,
-/area/tether_away/beach/resort/lockermed)
+/area/sector/miaphus/beach/resort/lockermed)
 "cS" = (
 /obj/effect/floor_decal/tracks{
 	dir = 8
@@ -574,13 +574,13 @@
 /turf/simulated/floor/tiled/asteroid_steel{
 	outdoors = 1
 	},
-/area/tether_away/beach/mineshaft)
+/area/sector/miaphus/beach/mineshaft)
 "cW" = (
 /obj/random/outcrop,
 /turf/simulated/floor/water/contaminated{
 	outdoors = 0
 	},
-/area/tether_away/beach/mineshaft)
+/area/sector/miaphus/beach/mineshaft)
 "dd" = (
 /obj/structure/fence/end{
 	dir = 4
@@ -588,7 +588,7 @@
 /turf/simulated/floor/tiled/asteroid_steel{
 	outdoors = 1
 	},
-/area/tether_away/beach/mineyard)
+/area/sector/miaphus/beach/mineyard)
 "dg" = (
 /obj/structure/railing/grey{
 	dir = 1
@@ -597,40 +597,40 @@
 	dir = 4
 	},
 /turf/simulated/floor/water/deep,
-/area/tether_away/beach/aa)
+/area/sector/miaphus/beach/aa)
 "dm" = (
 /turf/simulated/floor/tiled/old_tile/white,
-/area/tether_away/beach/resort/lockermed)
+/area/sector/miaphus/beach/resort/lockermed)
 "dt" = (
 /obj/machinery/light/small{
 	dir = 4
 	},
 /turf/simulated/floor/wood,
-/area/tether_away/beach/resort/canteen)
+/area/sector/miaphus/beach/resort/canteen)
 "du" = (
 /obj/structure/bed/chair/bay,
 /turf/simulated/floor/wood,
-/area/tether_away/beach/station/terminal)
+/area/sector/miaphus/beach/station/terminal)
 "dx" = (
 /obj/spawner/window/full,
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/station/tram)
+/area/sector/miaphus/beach/station/tram)
 "dA" = (
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/desalinator)
+/area/sector/miaphus/beach/desalinator)
 "dH" = (
 /obj/machinery/light/small{
 	dir = 8
 	},
 /obj/structure/bed/chair/wood,
 /turf/simulated/floor/wood,
-/area/tether_away/beach/resort/canteen)
+/area/sector/miaphus/beach/resort/canteen)
 "dI" = (
 /obj/machinery/light/small{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/desalinator)
+/area/sector/miaphus/beach/desalinator)
 "dL" = (
 /obj/structure/window/wooden{
 	dir = 4
@@ -645,7 +645,7 @@
 /obj/random/maintenance,
 /obj/random/mre,
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/bunker/bunk)
+/area/sector/miaphus/beach/bunker/bunk)
 "dO" = (
 /obj/machinery/light/small{
 	dir = 8
@@ -654,13 +654,13 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/bunker)
+/area/sector/miaphus/beach/bunker)
 "dP" = (
 /obj/structure/bed/chair{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/old_tile/white,
-/area/tether_away/beach/resort/lockermed)
+/area/sector/miaphus/beach/resort/lockermed)
 "dQ" = (
 /obj/machinery/light/small,
 /obj/structure/table/rack/shelf/steel,
@@ -670,35 +670,35 @@
 /obj/random/mre,
 /obj/random/mre,
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/aa)
+/area/sector/miaphus/beach/aa)
 "dY" = (
 /turf/simulated/floor/water/beach/corner{
 	dir = 8
 	},
-/area/tether_away/beach)
+/area/sector/miaphus/beach)
 "ec" = (
 /obj/structure/salvageable/console_os{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/desalinator)
+/area/sector/miaphus/beach/desalinator)
 "eh" = (
 /obj/spawner/window/full,
 /obj/effect/floor_decal/tracks{
 	dir = 8
 	},
 /turf/simulated/floor/plating,
-/area/tether_away/beach/resort/greenhouse)
+/area/sector/miaphus/beach/resort/greenhouse)
 "ej" = (
 /obj/effect/floor_decal/industrial/halfstair,
 /turf/simulated/mineral/floor/cave{
 	name = "dirt"
 	},
-/area/tether_away/beach/mineshaft)
+/area/sector/miaphus/beach/mineshaft)
 "el" = (
 /obj/structure/filingcabinet/tall,
 /turf/simulated/floor/tiled/old_tile/white,
-/area/tether_away/beach/resort/lockermed)
+/area/sector/miaphus/beach/resort/lockermed)
 "er" = (
 /obj/machinery/light/small{
 	dir = 1;
@@ -717,7 +717,7 @@
 /obj/random/mre,
 /obj/random/mre,
 /turf/simulated/floor/tiled/old_tile/white,
-/area/tether_away/beach/bunker/kitchen)
+/area/sector/miaphus/beach/bunker/kitchen)
 "es" = (
 /obj/machinery/mining/drill{
 	drill_id = 112
@@ -725,7 +725,7 @@
 /turf/simulated/mineral/floor/cave{
 	name = "dirt"
 	},
-/area/tether_away/beach/mineshaft)
+/area/sector/miaphus/beach/mineshaft)
 "et" = (
 /obj/machinery/shower{
 	dir = 8;
@@ -744,7 +744,7 @@
 /turf/simulated/floor/tiled{
 	icon_state = "techmaint"
 	},
-/area/tether_away/beach/resort/greenhouse)
+/area/sector/miaphus/beach/resort/greenhouse)
 "ex" = (
 /obj/effect/floor_decal/tracks{
 	dir = 1
@@ -753,7 +753,7 @@
 /turf/simulated/mineral/floor/cave{
 	name = "dirt"
 	},
-/area/tether_away/beach/mineshaft)
+/area/sector/miaphus/beach/mineshaft)
 "ey" = (
 /obj/effect/floor_decal/tracks,
 /obj/machinery/door/blast/shutters{
@@ -761,18 +761,18 @@
 	name = "Garage Door"
 	},
 /turf/simulated/floor/tiled/asteroid_steel,
-/area/tether_away/beach/mineyard)
+/area/sector/miaphus/beach/mineyard)
 "ez" = (
 /obj/effect/floor_decal/tracks{
 	dir = 1
 	},
 /turf/simulated/floor/wood,
-/area/tether_away/beach/mineshaft)
+/area/sector/miaphus/beach/mineshaft)
 "eF" = (
 /obj/structure/table/reinforced,
 /obj/item/flashlight/color/orange,
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/station/tram)
+/area/sector/miaphus/beach/station/tram)
 "eH" = (
 /obj/machinery/atmospherics/pipe/tank{
 	desc = "A large vessel for containing brine, a by product of water desalination. It hasn't been used in a while.";
@@ -784,13 +784,13 @@
 	name = "water pipe"
 	},
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/desalinator)
+/area/sector/miaphus/beach/desalinator)
 "eK" = (
 /obj/random/underdark,
 /turf/simulated/mineral/floor/cave{
 	name = "dirt"
 	},
-/area/tether_away/beach/mineshaft)
+/area/sector/miaphus/beach/mineshaft)
 "eV" = (
 /obj/structure/cable/cyan{
 	icon_state = "1-2"
@@ -801,7 +801,7 @@
 /turf/simulated/floor/tiled/asteroid_steel{
 	outdoors = 1
 	},
-/area/tether_away/beach/resort)
+/area/sector/miaphus/beach/resort)
 "eW" = (
 /obj/structure/bed,
 /obj/random/bedsheet,
@@ -809,10 +809,10 @@
 	dir = 4
 	},
 /turf/simulated/floor/wood,
-/area/tether_away/beach/resort/bunk)
+/area/sector/miaphus/beach/resort/bunk)
 "fg" = (
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/bunker/bunk)
+/area/sector/miaphus/beach/bunker/bunk)
 "fh" = (
 /obj/effect/floor_decal/tracks{
 	dir = 1
@@ -821,7 +821,7 @@
 	name = "dirt";
 	outdoors = 1
 	},
-/area/tether_away/beach/jungle)
+/area/sector/miaphus/beach/jungle)
 "fk" = (
 /obj/structure/toilet{
 	dir = 4
@@ -831,12 +831,12 @@
 	name = "discarded note"
 	},
 /turf/simulated/floor/tiled/old_tile/white,
-/area/tether_away/beach/desalinator)
+/area/sector/miaphus/beach/desalinator)
 "fl" = (
 /obj/structure/closet/crate,
 /obj/random/multiple/ores,
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/station)
+/area/sector/miaphus/beach/station)
 "fm" = (
 /obj/machinery/atmospherics/pipe/simple/visible/cyan{
 	desc = "Its bone dry.";
@@ -847,11 +847,11 @@
 	req_one_access = list(30,35,47,77)
 	},
 /turf/simulated/floor/tiled/asteroid_steel,
-/area/tether_away/beach/resort/greenhouse)
+/area/sector/miaphus/beach/resort/greenhouse)
 "fo" = (
 /obj/structure/salvageable/data_os,
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/desalinator)
+/area/sector/miaphus/beach/desalinator)
 "fw" = (
 /obj/structure/fence/corner{
 	dir = 9
@@ -859,7 +859,7 @@
 /turf/simulated/floor/tiled/asteroid_steel{
 	outdoors = 1
 	},
-/area/tether_away/beach/resort)
+/area/sector/miaphus/beach/resort)
 "fB" = (
 /obj/structure/railing/grey{
 	dir = 1
@@ -868,7 +868,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/water/deep,
-/area/tether_away/beach/aa)
+/area/sector/miaphus/beach/aa)
 "fJ" = (
 /obj/structure/railing/grey{
 	dir = 8
@@ -878,12 +878,12 @@
 /obj/item/oar,
 /obj/item/oar,
 /turf/simulated/floor/wood,
-/area/tether_away/beach/resort/fishing)
+/area/sector/miaphus/beach/resort/fishing)
 "fL" = (
 /obj/structure/table/woodentable,
 /obj/machinery/chemical_dispenser/catering/bar_alc,
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/bunker/mess)
+/area/sector/miaphus/beach/bunker/mess)
 "fO" = (
 /obj/structure/fence/corner{
 	dir = 4
@@ -891,7 +891,7 @@
 /turf/simulated/floor/tiled/asteroid_steel{
 	outdoors = 1
 	},
-/area/tether_away/beach/station/terminal)
+/area/sector/miaphus/beach/station/terminal)
 "fP" = (
 /obj/structure/railing/grey{
 	dir = 4
@@ -899,7 +899,7 @@
 /turf/simulated/floor/water/beach{
 	dir = 9
 	},
-/area/tether_away/beach/desalinator)
+/area/sector/miaphus/beach/desalinator)
 "fQ" = (
 /obj/effect/floor_decal/tracks{
 	dir = 8
@@ -908,7 +908,7 @@
 /turf/simulated/mineral/floor/cave{
 	name = "dirt"
 	},
-/area/tether_away/beach/mineshaft)
+/area/sector/miaphus/beach/mineshaft)
 "fT" = (
 /obj/structure/fence{
 	dir = 1
@@ -916,49 +916,49 @@
 /turf/simulated/floor/tiled/asteroid_steel{
 	outdoors = 1
 	},
-/area/tether_away/beach/station/terminal)
+/area/sector/miaphus/beach/station/terminal)
 "fW" = (
 /turf/simulated/floor/tiled/techfloor/grid{
 	outdoors = 1
 	},
-/area/tether_away/beach/station/terminal)
+/area/sector/miaphus/beach/station/terminal)
 "ga" = (
 /obj/effect/floor_decal/tracks/intersection{
 	dir = 9
 	},
 /turf/simulated/floor/wood,
-/area/tether_away/beach/mineshaft)
+/area/sector/miaphus/beach/mineshaft)
 "gc" = (
 /obj/machinery/light/small,
 /mob/living/simple_mob/animal/roach/jaeger,
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/bunker)
+/area/sector/miaphus/beach/bunker)
 "gd" = (
 /obj/structure/simple_door/sandstone,
 /turf/simulated/floor/tiled/asteroid_steel,
-/area/tether_away/beach/resort/greenhouse)
+/area/sector/miaphus/beach/resort/greenhouse)
 "gq" = (
 /turf/simulated/floor/wood,
-/area/tether_away/beach/desalinator)
+/area/sector/miaphus/beach/desalinator)
 "gs" = (
 /mob/living/simple_mob/animal/roach/zeitraum,
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/bunker)
+/area/sector/miaphus/beach/bunker)
 "gu" = (
 /obj/structure/bed,
 /obj/random/bedsheet,
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/bunker/bunk)
+/area/sector/miaphus/beach/bunker/bunk)
 "gw" = (
 /obj/structure/bonfire,
 /turf/simulated/mineral/floor/cave{
 	name = "dirt"
 	},
-/area/tether_away/beach/mineshaft)
+/area/sector/miaphus/beach/mineshaft)
 "gA" = (
 /obj/structure/bed/chair/wood,
 /turf/simulated/floor/wood,
-/area/tether_away/beach/resort/canteen)
+/area/sector/miaphus/beach/resort/canteen)
 "gF" = (
 /obj/structure/closet/secure_closet/freezer/meat,
 /obj/random/mre,
@@ -968,16 +968,16 @@
 /obj/random/mre,
 /obj/random/mre,
 /turf/simulated/floor/tiled/old_tile/white,
-/area/tether_away/beach/bunker/kitchen)
+/area/sector/miaphus/beach/bunker/kitchen)
 "gM" = (
 /obj/structure/railing/grey{
 	dir = 4
 	},
 /turf/simulated/floor/water/beach,
-/area/tether_away/beach/desalinator)
+/area/sector/miaphus/beach/desalinator)
 "gN" = (
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/bunker)
+/area/sector/miaphus/beach/bunker)
 "gS" = (
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -986,36 +986,36 @@
 	name = "Janitorial Closet"
 	},
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/bunker/janitor)
+/area/sector/miaphus/beach/bunker/janitor)
 "gU" = (
 /turf/simulated/wall/wood,
-/area/tether_away/beach/mineyard)
+/area/sector/miaphus/beach/mineyard)
 "gV" = (
 /turf/simulated/floor/maglev{
 	dir = 4
 	},
-/area/tether_away/beach/station/tunnel)
+/area/sector/miaphus/beach/station/tunnel)
 "hb" = (
 /obj/structure/cable{
 	icon_state = "1-4"
 	},
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/bunker/mess)
+/area/sector/miaphus/beach/bunker/mess)
 "he" = (
 /mob/living/simple_mob/animal/roach/strahlend,
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/desalinator)
+/area/sector/miaphus/beach/desalinator)
 "hf" = (
 /obj/machinery/light/small{
 	dir = 8
 	},
 /mob/living/simple_mob/animal/roach/jaeger,
 /turf/simulated/floor,
-/area/tether_away/beach/bunker)
+/area/sector/miaphus/beach/bunker)
 "hg" = (
 /obj/effect/overlay/palmtree_r,
 /turf/simulated/floor/outdoors/beach/sand/desert,
-/area/tether_away/beach/resort)
+/area/sector/miaphus/beach/resort)
 "hi" = (
 /obj/structure/table/wooden_reinforced,
 /obj/machinery/light/small{
@@ -1023,29 +1023,29 @@
 	},
 /obj/item/pen,
 /turf/simulated/floor/wood,
-/area/tether_away/beach/desalinator)
+/area/sector/miaphus/beach/desalinator)
 "hj" = (
 /turf/simulated/wall/sandstone,
-/area/tether_away/beach/resort/lockermed)
+/area/sector/miaphus/beach/resort/lockermed)
 "hn" = (
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/bunker)
+/area/sector/miaphus/beach/bunker)
 "ho" = (
 /obj/structure/bed/chair/bay{
 	dir = 1
 	},
 /obj/structure/window/basic,
 /turf/simulated/floor/wood,
-/area/tether_away/beach/station/terminal)
+/area/sector/miaphus/beach/station/terminal)
 "hp" = (
 /turf/simulated/wall/r_wall,
-/area/tether_away/beach/bunker/mess)
+/area/sector/miaphus/beach/bunker/mess)
 "hq" = (
 /turf/simulated/floor/wood,
-/area/tether_away/beach/resort/bunk)
+/area/sector/miaphus/beach/resort/bunk)
 "hr" = (
 /obj/structure/closet/crate,
 /obj/random/maintenance/security,
@@ -1060,27 +1060,27 @@
 /obj/random/maintenance/security,
 /obj/random/maintenance/security,
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/station)
+/area/sector/miaphus/beach/station)
 "hs" = (
 /obj/structure/railing,
 /obj/item/clothing/gloves/boxing/blue,
 /turf/simulated/floor/carpet/sblucarpet,
-/area/tether_away/beach/bunker/mess)
+/area/sector/miaphus/beach/bunker/mess)
 "hu" = (
 /obj/structure/barricade,
 /obj/effect/floor_decal/tracks,
 /turf/simulated/floor/wood,
-/area/tether_away/beach/mineshaft)
+/area/sector/miaphus/beach/mineshaft)
 "hv" = (
 /obj/effect/floor_decal/tracks{
 	dir = 4
 	},
 /turf/simulated/floor/wood,
-/area/tether_away/beach/mineshaft)
+/area/sector/miaphus/beach/mineshaft)
 "hx" = (
 /obj/structure/table/wooden_reinforced,
 /turf/simulated/floor/wood,
-/area/tether_away/beach/desalinator)
+/area/sector/miaphus/beach/desalinator)
 "hz" = (
 /obj/machinery/door/airlock/sandstone{
 	id_tag = "LoveShack4"
@@ -1089,7 +1089,7 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/asteroid_steel,
-/area/tether_away/beach/resort/dorm5)
+/area/sector/miaphus/beach/resort/dorm5)
 "hF" = (
 /obj/structure/cable{
 	icon_state = "2-8"
@@ -1098,11 +1098,11 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/bunker/engi)
+/area/sector/miaphus/beach/bunker/engi)
 "hH" = (
 /obj/structure/reagent_dispensers/water_cooler/full,
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/desalinator)
+/area/sector/miaphus/beach/desalinator)
 "hI" = (
 /obj/random/maintenance/medical,
 /obj/random/maintenance/medical,
@@ -1112,7 +1112,7 @@
 /obj/random/maintenance/medical,
 /obj/random/empty_or_lootable_crate,
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/desalinator)
+/area/sector/miaphus/beach/desalinator)
 "hK" = (
 /obj/effect/decal/remains/tajaran,
 /obj/random/mob/spider/nurse,
@@ -1122,12 +1122,12 @@
 /turf/simulated/mineral/floor/cave{
 	name = "dirt"
 	},
-/area/tether_away/beach/mineshaft)
+/area/sector/miaphus/beach/mineshaft)
 "hL" = (
 /obj/structure/table/steel_reinforced,
 /obj/machinery/reagentgrinder,
 /turf/simulated/floor/tiled/old_tile/white,
-/area/tether_away/beach/resort/canteen)
+/area/sector/miaphus/beach/resort/canteen)
 "hN" = (
 /obj/structure/gravemarker{
 	desc = "An epitaph reads, In loving memory of Jazzmine lee. A friend to all who knew her smile.";
@@ -1142,11 +1142,11 @@
 	name = "old orange fox plushie"
 	},
 /turf/simulated/floor/outdoors/beach/sand,
-/area/tether_away/beach/resort)
+/area/sector/miaphus/beach/resort)
 "hQ" = (
 /obj/effect/overlay/palmtree_r,
 /turf/simulated/floor/outdoors/beach/sand/lowdesert,
-/area/tether_away/beach/jungle)
+/area/sector/miaphus/beach/jungle)
 "hR" = (
 /obj/machinery/power/terminal{
 	dir = 8
@@ -1155,7 +1155,7 @@
 	icon_state = "0-2"
 	},
 /turf/simulated/floor/tiled/asteroid_steel,
-/area/tether_away/beach/powershed)
+/area/sector/miaphus/beach/powershed)
 "hS" = (
 /obj/structure/table/woodentable,
 /obj/random/drinkbottle,
@@ -1163,7 +1163,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/wood,
-/area/tether_away/beach/resort/dorm2)
+/area/sector/miaphus/beach/resort/dorm2)
 "hT" = (
 /obj/structure/closet/crate/freezer,
 /obj/random/mre,
@@ -1179,7 +1179,7 @@
 /obj/random/mre,
 /obj/random/mre,
 /turf/simulated/floor/tiled/old_tile/white,
-/area/tether_away/beach/bunker/kitchen)
+/area/sector/miaphus/beach/bunker/kitchen)
 "hV" = (
 /obj/structure/undies_wardrobe{
 	density = 0;
@@ -1189,7 +1189,7 @@
 	icon_state = "2-4"
 	},
 /turf/simulated/floor/wood,
-/area/tether_away/beach/resort/dorm3)
+/area/sector/miaphus/beach/resort/dorm3)
 "hZ" = (
 /obj/machinery/light/small/emergency{
 	dir = 4
@@ -1198,13 +1198,13 @@
 	dir = 4;
 	outdoors = 1
 	},
-/area/tether_away/beach/station/tram)
+/area/sector/miaphus/beach/station/tram)
 "if" = (
 /obj/random/outcrop,
 /turf/simulated/mineral/floor/cave{
 	name = "dirt"
 	},
-/area/tether_away/beach/bunker)
+/area/sector/miaphus/beach/bunker)
 "ig" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/random/multiple/miningdrills,
@@ -1212,14 +1212,14 @@
 /turf/simulated/floor/tiled/asteroid_steel{
 	outdoors = 1
 	},
-/area/tether_away/beach/mineyard)
+/area/sector/miaphus/beach/mineyard)
 "ii" = (
 /obj/structure/cable{
 	icon_state = "0-8"
 	},
 /obj/machinery/power/apc/alarms_hidden/east_mount,
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/bunker/bunk)
+/area/sector/miaphus/beach/bunker/bunk)
 "ik" = (
 /obj/structure/mirror{
 	pixel_y = 32
@@ -1230,11 +1230,11 @@
 /obj/machinery/light/small,
 /mob/living/simple_mob/animal/roach/fuhrer,
 /turf/simulated/floor/tiled/old_tile/white,
-/area/tether_away/beach/desalinator)
+/area/sector/miaphus/beach/desalinator)
 "il" = (
 /obj/structure/closet/secure_closet/personal/patient,
 /turf/simulated/floor/tiled/old_tile/white,
-/area/tether_away/beach/resort/lockermed)
+/area/sector/miaphus/beach/resort/lockermed)
 "im" = (
 /obj/structure/railing/grey{
 	dir = 1
@@ -1242,7 +1242,7 @@
 /turf/simulated/floor/water/contaminated{
 	outdoors = 0
 	},
-/area/tether_away/beach/mineshaft)
+/area/sector/miaphus/beach/mineshaft)
 "io" = (
 /obj/machinery/button/remote/airlock{
 	id = "LoveShack2";
@@ -1253,24 +1253,24 @@
 /obj/structure/bed/padded,
 /obj/random/bedsheet,
 /turf/simulated/floor/wood/broken,
-/area/tether_away/beach/resort/dorm2)
+/area/sector/miaphus/beach/resort/dorm2)
 "ip" = (
 /mob/living/simple_mob/animal/roach/zeitraum,
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/desalinator)
+/area/sector/miaphus/beach/desalinator)
 "iv" = (
 /obj/structure/cable/cyan{
 	icon_state = "1-4"
 	},
 /turf/simulated/floor/tiled/asteroid_steel,
-/area/tether_away/beach/mineyard)
+/area/sector/miaphus/beach/mineyard)
 "iy" = (
 /turf/simulated/floor/wood,
-/area/tether_away/beach/resort/fishing)
+/area/sector/miaphus/beach/resort/fishing)
 "iB" = (
 /obj/structure/salvageable/data,
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/desalinator)
+/area/sector/miaphus/beach/desalinator)
 "iC" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -1280,7 +1280,7 @@
 	},
 /obj/machinery/power/apc/alarms_hidden/north_mount,
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/bunker/engi)
+/area/sector/miaphus/beach/bunker/engi)
 "iF" = (
 /obj/structure/fence/door/opened{
 	dir = 8
@@ -1288,7 +1288,7 @@
 /turf/simulated/floor/tiled/asteroid_steel{
 	outdoors = 1
 	},
-/area/tether_away/beach/station/terminal)
+/area/sector/miaphus/beach/station/terminal)
 "iH" = (
 /obj/structure/fence{
 	dir = 8
@@ -1296,10 +1296,10 @@
 /turf/simulated/floor/tiled/asteroid_steel{
 	outdoors = 1
 	},
-/area/tether_away/beach/station/terminal)
+/area/sector/miaphus/beach/station/terminal)
 "iL" = (
 /turf/simulated/floor/carpet/purcarpet,
-/area/tether_away/beach/bunker/mess)
+/area/sector/miaphus/beach/bunker/mess)
 "iO" = (
 /obj/machinery/atmospherics/pipe/simple/visible/cyan{
 	desc = "Its bone dry.";
@@ -1309,7 +1309,7 @@
 /obj/structure/reagent_dispensers/watertank/high,
 /obj/item/reagent_containers/glass/bucket,
 /turf/simulated/floor/tiled/asteroid_steel,
-/area/tether_away/beach/resort/greenhouse)
+/area/sector/miaphus/beach/resort/greenhouse)
 "iP" = (
 /obj/machinery/button/remote/airlock{
 	id = "LoveShack1";
@@ -1320,20 +1320,20 @@
 /obj/structure/bed/padded,
 /obj/random/bedsheet,
 /turf/simulated/floor/wood,
-/area/tether_away/beach/resort/dorm1)
+/area/sector/miaphus/beach/resort/dorm1)
 "iT" = (
 /obj/machinery/light/small{
 	dir = 1
 	},
 /turf/simulated/floor/wood,
-/area/tether_away/beach/station/terminal)
+/area/sector/miaphus/beach/station/terminal)
 "iZ" = (
 /obj/machinery/light/small{
 	dir = 8
 	},
 /obj/structure/table/woodentable,
 /turf/simulated/floor/wood,
-/area/tether_away/beach/resort/canteen)
+/area/sector/miaphus/beach/resort/canteen)
 "jc" = (
 /obj/structure/cable{
 	icon_state = "1-4"
@@ -1341,7 +1341,7 @@
 /turf/simulated/floor/tiled/asteroid_steel{
 	outdoors = 1
 	},
-/area/tether_away/beach/resort)
+/area/sector/miaphus/beach/resort)
 "je" = (
 /obj/structure/table/woodentable,
 /obj/machinery/light/small{
@@ -1349,55 +1349,55 @@
 	},
 /obj/item/storage/box/glasses/shot,
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/bunker/mess)
+/area/sector/miaphus/beach/bunker/mess)
 "jh" = (
 /obj/structure/railing/grey{
 	dir = 4
 	},
 /turf/simulated/floor/outdoors/beach/sand/desert,
-/area/tether_away/beach/desalinator)
+/area/sector/miaphus/beach/desalinator)
 "jl" = (
 /obj/machinery/light/small{
 	dir = 4
 	},
 /obj/structure/railing/grey,
 /turf/simulated/floor/wood,
-/area/tether_away/beach/resort/canteen)
+/area/sector/miaphus/beach/resort/canteen)
 "jn" = (
 /obj/machinery/door/airlock/highsecurity{
 	name = "Pirate Deterrent Battery"
 	},
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/aa)
+/area/sector/miaphus/beach/aa)
 "js" = (
 /obj/machinery/light/small{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/desalinator)
+/area/sector/miaphus/beach/desalinator)
 "jt" = (
 /obj/machinery/light/small{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/station/tram)
+/area/sector/miaphus/beach/station/tram)
 "jx" = (
 /obj/structure/cable/cyan{
 	icon_state = "0-2"
 	},
 /obj/machinery/power/apc/alarms_hidden/east_mount,
 /turf/simulated/floor/tiled/asteroid_steel,
-/area/tether_away/beach/mineyard)
+/area/sector/miaphus/beach/mineyard)
 "jD" = (
 /obj/structure/toilet{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/old_tile/white,
-/area/tether_away/beach/desalinator)
+/area/sector/miaphus/beach/desalinator)
 "jG" = (
 /obj/structure/railing,
 /turf/simulated/floor/carpet/sblucarpet,
-/area/tether_away/beach/bunker/mess)
+/area/sector/miaphus/beach/bunker/mess)
 "jH" = (
 /obj/structure/railing/grey{
 	dir = 4
@@ -1405,7 +1405,7 @@
 /turf/simulated/mineral/floor/cave{
 	name = "dirt"
 	},
-/area/tether_away/beach/mineshaft)
+/area/sector/miaphus/beach/mineshaft)
 "jM" = (
 /obj/effect/floor_decal/tracks{
 	dir = 1
@@ -1416,7 +1416,7 @@
 /turf/simulated/mineral/floor/cave{
 	name = "dirt"
 	},
-/area/tether_away/beach/mineshaft)
+/area/sector/miaphus/beach/mineshaft)
 "jN" = (
 /obj/effect/floor_decal/tracks{
 	dir = 4
@@ -1426,7 +1426,7 @@
 /turf/simulated/mineral/floor/cave{
 	name = "dirt"
 	},
-/area/tether_away/beach/mineshaft)
+/area/sector/miaphus/beach/mineshaft)
 "jQ" = (
 /obj/structure/cable/cyan{
 	icon_state = "4-8"
@@ -1434,20 +1434,20 @@
 /turf/simulated/floor/tiled/asteroid_steel{
 	outdoors = 1
 	},
-/area/tether_away/beach/resort)
+/area/sector/miaphus/beach/resort)
 "jT" = (
 /obj/random/mob/spider,
 /turf/simulated/mineral/floor/cave{
 	name = "dirt"
 	},
-/area/tether_away/beach/mineshaft)
+/area/sector/miaphus/beach/mineshaft)
 "jU" = (
 /turf/simulated/wall/r_wall,
-/area/tether_away/beach/bunker/restroom)
+/area/sector/miaphus/beach/bunker/restroom)
 "kb" = (
 /obj/structure/table/bench/wooden,
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/desalinator)
+/area/sector/miaphus/beach/desalinator)
 "kd" = (
 /obj/structure/fence{
 	dir = 4
@@ -1456,14 +1456,14 @@
 /turf/simulated/mineral/floor/cave{
 	name = "dirt"
 	},
-/area/tether_away/beach/mineshaft)
+/area/sector/miaphus/beach/mineshaft)
 "kg" = (
 /obj/structure/closet/crate,
 /obj/random/multiple/underdark/miningdrills,
 /obj/random/multiple/underdark/miningdrills,
 /obj/random/multiple/underdark/miningdrills,
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/station)
+/area/sector/miaphus/beach/station)
 "kk" = (
 /obj/structure/closet/crate,
 /obj/item/melee/umbrella/random,
@@ -1479,11 +1479,11 @@
 /obj/item/melee/umbrella/random,
 /obj/item/melee/umbrella/random,
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/station)
+/area/sector/miaphus/beach/station)
 "ko" = (
 /obj/machinery/appliance/cooker/oven,
 /turf/simulated/floor/tiled/old_tile/white,
-/area/tether_away/beach/bunker/kitchen)
+/area/sector/miaphus/beach/bunker/kitchen)
 "kt" = (
 /obj/structure/window/wooden{
 	dir = 1
@@ -1491,14 +1491,14 @@
 /obj/structure/bed,
 /obj/random/bedsheet,
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/bunker/bunk)
+/area/sector/miaphus/beach/bunker/bunk)
 "ku" = (
 /obj/structure/cable/cyan{
 	icon_state = "0-2"
 	},
 /obj/machinery/power/smes/buildable,
 /turf/simulated/floor/tiled/asteroid_steel,
-/area/tether_away/beach/powershed)
+/area/sector/miaphus/beach/powershed)
 "kv" = (
 /obj/structure/cable{
 	icon_state = "1-4"
@@ -1508,7 +1508,7 @@
 	},
 /mob/living/simple_mob/animal/roach/panzer,
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/bunker/engi)
+/area/sector/miaphus/beach/bunker/engi)
 "kx" = (
 /obj/structure/closet,
 /obj/random/contraband,
@@ -1519,14 +1519,14 @@
 /obj/random/maintenance,
 /obj/random/mre,
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/bunker/bunk)
+/area/sector/miaphus/beach/bunker/bunk)
 "kK" = (
 /obj/machinery/light/small,
 /turf/simulated/floor/wood/broken,
-/area/tether_away/beach/desalinator)
+/area/sector/miaphus/beach/desalinator)
 "kO" = (
 /turf/simulated/floor/wood/broken,
-/area/tether_away/beach/resort/canteen)
+/area/sector/miaphus/beach/resort/canteen)
 "kP" = (
 /obj/structure/table/woodentable,
 /obj/random/drinkbottle,
@@ -1534,13 +1534,13 @@
 	dir = 4
 	},
 /turf/simulated/floor/wood/broken,
-/area/tether_away/beach/resort/dorm3)
+/area/sector/miaphus/beach/resort/dorm3)
 "kQ" = (
 /obj/structure/railing/grey{
 	dir = 1
 	},
 /turf/simulated/floor/water/deep,
-/area/tether_away/beach/desalinator)
+/area/sector/miaphus/beach/desalinator)
 "kR" = (
 /obj/structure/undies_wardrobe{
 	density = 0;
@@ -1550,7 +1550,7 @@
 	icon_state = "2-8"
 	},
 /turf/simulated/floor/wood/broken,
-/area/tether_away/beach/resort/dorm2)
+/area/sector/miaphus/beach/resort/dorm2)
 "kT" = (
 /obj/structure/cable/cyan{
 	icon_state = "1-2"
@@ -1558,7 +1558,7 @@
 /turf/simulated/floor/tiled/asteroid_steel{
 	outdoors = 1
 	},
-/area/tether_away/beach/resort)
+/area/sector/miaphus/beach/resort)
 "kW" = (
 /obj/structure/closet/cabinet{
 	density = 0;
@@ -1572,18 +1572,18 @@
 	pixel_x = -27
 	},
 /turf/simulated/floor/wood/broken,
-/area/tether_away/beach/resort/dorm2)
+/area/sector/miaphus/beach/resort/dorm2)
 "le" = (
 /turf/simulated/floor/water/beach{
 	dir = 5
 	},
-/area/tether_away/beach/jungle)
+/area/sector/miaphus/beach/jungle)
 "lg" = (
 /obj/structure/sink/kitchen{
 	pixel_y = 28
 	},
 /turf/simulated/floor/tiled/old_tile/white,
-/area/tether_away/beach/bunker/kitchen)
+/area/sector/miaphus/beach/bunker/kitchen)
 "lh" = (
 /obj/structure/closet/cabinet{
 	density = 0;
@@ -1597,46 +1597,46 @@
 	icon_state = "0-4"
 	},
 /turf/simulated/floor/wood,
-/area/tether_away/beach/resort/dorm1)
+/area/sector/miaphus/beach/resort/dorm1)
 "li" = (
 /obj/structure/table/rack,
 /obj/item/flashlight/color/red,
 /obj/item/flashlight/color/red,
 /turf/simulated/floor/wood,
-/area/tether_away/beach/resort/fishing)
+/area/sector/miaphus/beach/resort/fishing)
 "lm" = (
 /turf/simulated/wall/sandstone,
-/area/tether_away/beach/resort/dorm5)
+/area/sector/miaphus/beach/resort/dorm5)
 "lt" = (
 /obj/random/mob/spider/mutant,
 /turf/simulated/mineral/floor/cave{
 	name = "dirt"
 	},
-/area/tether_away/beach/mineshaft)
+/area/sector/miaphus/beach/mineshaft)
 "lI" = (
 /turf/simulated/floor/outdoors/beach/sand/desert,
-/area/tether_away/beach/resort)
+/area/sector/miaphus/beach/resort)
 "lQ" = (
 /turf/simulated/floor/water/beach/corner{
 	dir = 4
 	},
-/area/tether_away/beach/coast)
+/area/sector/miaphus/beach/coast)
 "lU" = (
 /obj/effect/overlay/palmtree_r,
 /turf/simulated/floor/outdoors/beach/sand,
-/area/tether_away/beach/jungle)
+/area/sector/miaphus/beach/jungle)
 "lY" = (
 /obj/structure/cable/cyan{
 	icon_state = "1-4"
 	},
 /turf/simulated/floor/tiled/old_tile/white,
-/area/tether_away/beach/resort/canteen)
+/area/sector/miaphus/beach/resort/canteen)
 "mb" = (
 /obj/effect/floor_decal/tracks/intersection,
 /turf/simulated/mineral/floor/cave{
 	name = "dirt"
 	},
-/area/tether_away/beach/mineshaft)
+/area/sector/miaphus/beach/mineshaft)
 "me" = (
 /obj/structure/railing/grey{
 	dir = 4
@@ -1645,7 +1645,7 @@
 /obj/item/material/kitchen/utensil/fork/plastic,
 /obj/item/material/kitchen/utensil/spoon/plastic,
 /turf/simulated/floor/wood,
-/area/tether_away/beach/resort/canteen)
+/area/sector/miaphus/beach/resort/canteen)
 "mi" = (
 /obj/machinery/light/small{
 	dir = 8
@@ -1653,7 +1653,7 @@
 /turf/simulated/floor/tiled/asteroid_steel{
 	outdoors = 1
 	},
-/area/tether_away/beach/powershed)
+/area/sector/miaphus/beach/powershed)
 "mr" = (
 /obj/random/drinkbottle,
 /obj/random/drinkbottle,
@@ -1663,7 +1663,7 @@
 /obj/random/drinkbottle,
 /obj/random/empty_or_lootable_crate,
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/desalinator)
+/area/sector/miaphus/beach/desalinator)
 "mu" = (
 /obj/structure/fence/cut/large{
 	dir = 4
@@ -1671,11 +1671,11 @@
 /turf/simulated/mineral/floor/cave{
 	name = "dirt"
 	},
-/area/tether_away/beach/mineshaft)
+/area/sector/miaphus/beach/mineshaft)
 "mx" = (
 /obj/structure/table/wooden_reinforced,
 /turf/simulated/floor/wood/broken,
-/area/tether_away/beach/desalinator)
+/area/sector/miaphus/beach/desalinator)
 "my" = (
 /obj/structure/window/wooden{
 	dir = 4
@@ -1689,24 +1689,24 @@
 /obj/random/tech_supply,
 /obj/random/mre,
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/bunker/bunk)
+/area/sector/miaphus/beach/bunker/bunk)
 "mC" = (
 /obj/structure/sign/warning/falling,
 /turf/simulated/wall/wood,
-/area/tether_away/beach/mineshaft)
+/area/sector/miaphus/beach/mineshaft)
 "mF" = (
 /obj/structure/sink{
 	dir = 4;
 	pixel_x = 11
 	},
 /turf/simulated/floor/tiled/old_tile/white,
-/area/tether_away/beach/resort/canteen)
+/area/sector/miaphus/beach/resort/canteen)
 "mK" = (
 /obj/machinery/light/small{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/station/tram)
+/area/sector/miaphus/beach/station/tram)
 "mM" = (
 /obj/machinery/power/solar_control,
 /obj/structure/cable{
@@ -1716,11 +1716,11 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/asteroid_steel,
-/area/tether_away/beach/powershed)
+/area/sector/miaphus/beach/powershed)
 "mQ" = (
 /obj/structure/girder,
 /turf/simulated/floor,
-/area/tether_away/beach/bunker)
+/area/sector/miaphus/beach/bunker)
 "mS" = (
 /obj/structure/cable{
 	icon_state = "2-8"
@@ -1734,7 +1734,7 @@
 /turf/simulated/floor/tiled/asteroid_steel{
 	outdoors = 1
 	},
-/area/tether_away/beach/resort)
+/area/sector/miaphus/beach/resort)
 "mV" = (
 /obj/structure/window/wooden,
 /obj/structure/window/wooden{
@@ -1750,16 +1750,16 @@
 /obj/random/maintenance,
 /obj/random/mre,
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/bunker/bunk)
+/area/sector/miaphus/beach/bunker/bunk)
 "mW" = (
 /obj/structure/mirror{
 	pixel_x = 27
 	},
 /turf/simulated/floor/wood,
-/area/tether_away/beach/resort/dorm4)
+/area/sector/miaphus/beach/resort/dorm4)
 "mX" = (
 /turf/simulated/wall/r_wall,
-/area/tether_away/beach/bunker/kitchen)
+/area/sector/miaphus/beach/bunker/kitchen)
 "mZ" = (
 /obj/machinery/button/remote/airlock{
 	id = "LoveShack4";
@@ -1770,14 +1770,14 @@
 /obj/structure/bed/padded,
 /obj/random/bedsheet,
 /turf/simulated/floor/wood,
-/area/tether_away/beach/resort/dorm4)
+/area/sector/miaphus/beach/resort/dorm4)
 "nd" = (
 /obj/machinery/shower{
 	pixel_y = 18
 	},
 /obj/structure/curtain/open/shower,
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/tether_away/beach/bunker/restroom)
+/area/sector/miaphus/beach/bunker/restroom)
 "ne" = (
 /obj/machinery/light/small{
 	dir = 4
@@ -1785,7 +1785,7 @@
 /turf/simulated/floor/tiled/asteroid_steel{
 	outdoors = 1
 	},
-/area/tether_away/beach/desalinator)
+/area/sector/miaphus/beach/desalinator)
 "ng" = (
 /obj/structure/mirror{
 	pixel_x = 27
@@ -1795,11 +1795,11 @@
 	pixel_x = 11
 	},
 /turf/simulated/floor/tiled/old_tile/white,
-/area/tether_away/beach/bunker/restroom)
+/area/sector/miaphus/beach/bunker/restroom)
 "nj" = (
 /obj/structure/railing/grey,
 /turf/simulated/floor/wood,
-/area/tether_away/beach/resort/fishing)
+/area/sector/miaphus/beach/resort/fishing)
 "nm" = (
 /obj/structure/cable{
 	icon_state = "0-2"
@@ -1808,13 +1808,13 @@
 /turf/simulated/floor{
 	outdoors = 1
 	},
-/area/tether_away/beach/resort)
+/area/sector/miaphus/beach/resort)
 "nw" = (
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/aa)
+/area/sector/miaphus/beach/aa)
 "nx" = (
 /turf/simulated/floor/tiled/old_tile/white,
-/area/tether_away/beach/bunker/restroom)
+/area/sector/miaphus/beach/bunker/restroom)
 "nB" = (
 /obj/effect/floor_decal/tracks/intersection{
 	dir = 5
@@ -1823,20 +1823,20 @@
 /turf/simulated/mineral/floor/cave{
 	name = "dirt"
 	},
-/area/tether_away/beach/mineshaft)
+/area/sector/miaphus/beach/mineshaft)
 "nD" = (
 /turf/simulated/mineral/ignore_mapgen,
-/area/tether_away/beach/water)
+/area/sector/miaphus/beach/water)
 "nF" = (
 /obj/structure/bed/chair{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/bunker/mess)
+/area/sector/miaphus/beach/bunker/mess)
 "nI" = (
 /obj/structure/filingcabinet/tall,
 /turf/simulated/floor/wood,
-/area/tether_away/beach/desalinator)
+/area/sector/miaphus/beach/desalinator)
 "nM" = (
 /obj/structure/fence{
 	dir = 1
@@ -1844,12 +1844,12 @@
 /turf/simulated/floor/tiled/asteroid_steel{
 	outdoors = 1
 	},
-/area/tether_away/beach/resort)
+/area/sector/miaphus/beach/resort)
 "nN" = (
 /turf/simulated/floor/water/beach{
 	dir = 8
 	},
-/area/tether_away/beach/coast)
+/area/sector/miaphus/beach/coast)
 "nP" = (
 /obj/structure/fence{
 	dir = 8
@@ -1857,32 +1857,32 @@
 /turf/simulated/floor/tiled/asteroid_steel{
 	outdoors = 1
 	},
-/area/tether_away/beach/resort)
+/area/sector/miaphus/beach/resort)
 "nT" = (
 /obj/structure/bed/chair/sofa/black/left,
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/bunker/mess)
+/area/sector/miaphus/beach/bunker/mess)
 "nU" = (
 /obj/structure/table/standard,
 /obj/machinery/microwave,
 /turf/simulated/floor/tiled/old_tile/white,
-/area/tether_away/beach/bunker/kitchen)
+/area/sector/miaphus/beach/bunker/kitchen)
 "nY" = (
 /obj/structure/table/marble,
 /obj/item/material/kitchen/utensil/fork/plastic,
 /turf/simulated/floor/tiled/old_tile/white,
-/area/tether_away/beach/resort/canteen)
+/area/sector/miaphus/beach/resort/canteen)
 "nZ" = (
 /obj/item/cigbutt/cigarbutt,
 /turf/simulated/mineral/floor/cave{
 	name = "dirt"
 	},
-/area/tether_away/beach/mineshaft)
+/area/sector/miaphus/beach/mineshaft)
 "od" = (
 /turf/simulated/mineral/floor/cave{
 	name = "dirt"
 	},
-/area/tether_away/beach/bunker)
+/area/sector/miaphus/beach/bunker)
 "of" = (
 /obj/structure/table/woodentable,
 /obj/random/drinkbottle,
@@ -1890,20 +1890,20 @@
 	dir = 1
 	},
 /turf/simulated/floor/wood/broken,
-/area/tether_away/beach/resort/dorm1)
+/area/sector/miaphus/beach/resort/dorm1)
 "om" = (
 /obj/random/junk,
 /turf/simulated/floor/water/contaminated{
 	outdoors = 0
 	},
-/area/tether_away/beach/mineshaft)
+/area/sector/miaphus/beach/mineshaft)
 "oo" = (
 /obj/structure/simple_door/wood,
 /obj/structure/cable/cyan{
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/asteroid_steel,
-/area/tether_away/beach/mineyard)
+/area/sector/miaphus/beach/mineyard)
 "oq" = (
 /obj/machinery/light/small{
 	dir = 1
@@ -1915,22 +1915,22 @@
 	name = "water pipe"
 	},
 /turf/simulated/floor/tiled/asteroid_steel,
-/area/tether_away/beach/resort/greenhouse)
+/area/sector/miaphus/beach/resort/greenhouse)
 "ot" = (
 /obj/structure/bed/chair/sofa/black/right{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/bunker/mess)
+/area/sector/miaphus/beach/bunker/mess)
 "oC" = (
 /turf/simulated/floor/water/beach{
 	dir = 4
 	},
-/area/tether_away/beach/jungle)
+/area/sector/miaphus/beach/jungle)
 "oF" = (
 /obj/structure/table/steel_reinforced,
 /turf/simulated/floor/tiled/asteroid_steel,
-/area/tether_away/beach/mineyard)
+/area/sector/miaphus/beach/mineyard)
 "oK" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -1940,28 +1940,28 @@
 	req_one_access = null
 	},
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/bunker/engi)
+/area/sector/miaphus/beach/bunker/engi)
 "oM" = (
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/old_tile/white,
-/area/tether_away/beach/bunker/kitchen)
+/area/sector/miaphus/beach/bunker/kitchen)
 "oP" = (
 /obj/structure/loot_pile/surface/medicine_cabinet{
 	pixel_x = 32
 	},
 /turf/simulated/floor/tiled/old_tile/white,
-/area/tether_away/beach/bunker/restroom)
+/area/sector/miaphus/beach/bunker/restroom)
 "oS" = (
 /turf/simulated/wall/wood,
-/area/tether_away/beach/jungle)
+/area/sector/miaphus/beach/jungle)
 "oW" = (
 /obj/structure/railing/grey{
 	dir = 4
 	},
 /turf/simulated/floor/water,
-/area/tether_away/beach/desalinator)
+/area/sector/miaphus/beach/desalinator)
 "oY" = (
 /obj/structure/fence/corner{
 	dir = 6
@@ -1969,50 +1969,50 @@
 /turf/simulated/floor/tiled/asteroid_steel{
 	outdoors = 1
 	},
-/area/tether_away/beach/resort)
+/area/sector/miaphus/beach/resort)
 "pd" = (
 /obj/machinery/light/small,
 /turf/simulated/floor/tiled/asteroid_steel{
 	outdoors = 1
 	},
-/area/tether_away/beach/desalinator)
+/area/sector/miaphus/beach/desalinator)
 "pf" = (
 /obj/effect/decal/remains/tajaran,
 /obj/random/multiple/miningdrills,
 /turf/simulated/mineral/floor/cave{
 	name = "dirt"
 	},
-/area/tether_away/beach/mineshaft)
+/area/sector/miaphus/beach/mineshaft)
 "ph" = (
 /mob/living/simple_mob/animal/roach/seuche,
 /turf/simulated/floor/tiled/old_tile/white,
-/area/tether_away/beach/bunker/kitchen)
+/area/sector/miaphus/beach/bunker/kitchen)
 "pl" = (
 /obj/structure/cable{
 	icon_state = "1-4"
 	},
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/bunker/engi)
+/area/sector/miaphus/beach/bunker/engi)
 "pq" = (
 /turf/simulated/floor/water/beach/corner,
-/area/tether_away/beach/jungle)
+/area/sector/miaphus/beach/jungle)
 "pt" = (
 /obj/structure/sign/signnew/danger,
 /turf/simulated/wall/wood,
-/area/tether_away/beach/mineshaft)
+/area/sector/miaphus/beach/mineshaft)
 "pu" = (
 /obj/structure/bed/chair/sofa/beige/right{
 	dir = 1
 	},
 /turf/simulated/floor/wood,
-/area/tether_away/beach/desalinator)
+/area/sector/miaphus/beach/desalinator)
 "pw" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/fiftyspawner/glass,
 /turf/simulated/floor/tiled/asteroid_steel{
 	outdoors = 1
 	},
-/area/tether_away/beach/mineyard)
+/area/sector/miaphus/beach/mineyard)
 "py" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -2027,11 +2027,11 @@
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/asteroid_steel,
-/area/tether_away/beach/powershed)
+/area/sector/miaphus/beach/powershed)
 "pA" = (
 /obj/machinery/door/airlock/glass,
 /turf/simulated/floor/wood,
-/area/tether_away/beach/desalinator)
+/area/sector/miaphus/beach/desalinator)
 "pC" = (
 /obj/structure/cable/cyan{
 	icon_state = "1-8"
@@ -2043,7 +2043,7 @@
 	pixel_y = 28
 	},
 /turf/simulated/floor/wood/broken,
-/area/tether_away/beach/resort/dorm4)
+/area/sector/miaphus/beach/resort/dorm4)
 "pF" = (
 /obj/structure/cable{
 	icon_state = "1-4"
@@ -2057,46 +2057,46 @@
 /turf/simulated/floor/tiled/asteroid_steel{
 	outdoors = 1
 	},
-/area/tether_away/beach/resort)
+/area/sector/miaphus/beach/resort)
 "pI" = (
 /obj/structure/closet/secure_closet/personal,
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/bunker)
+/area/sector/miaphus/beach/bunker)
 "pJ" = (
 /obj/structure/bed/chair/sofa/black/right,
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/bunker/mess)
+/area/sector/miaphus/beach/bunker/mess)
 "pL" = (
 /obj/structure/railing/grey{
 	dir = 1
 	},
 /turf/simulated/floor/wood,
-/area/tether_away/beach/resort/canteen)
+/area/sector/miaphus/beach/resort/canteen)
 "pM" = (
 /obj/machinery/light/small/emergency,
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/tether_away/beach/station/tunnel)
+/area/sector/miaphus/beach/station/tunnel)
 "pO" = (
 /turf/simulated/wall,
-/area/tether_away/beach/station)
+/area/sector/miaphus/beach/station)
 "pP" = (
 /obj/effect/overlay/palmtree_l,
 /turf/simulated/floor/outdoors/beach/sand/desert,
-/area/tether_away/beach/resort)
+/area/sector/miaphus/beach/resort)
 "pS" = (
 /turf/simulated/floor/water/beach{
 	dir = 1
 	},
-/area/tether_away/beach/jungle)
+/area/sector/miaphus/beach/jungle)
 "pW" = (
 /obj/structure/railing/grey{
 	dir = 8
 	},
 /turf/simulated/floor/wood,
-/area/tether_away/beach/resort/fishing)
+/area/sector/miaphus/beach/resort/fishing)
 "qd" = (
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/tether_away/beach/station/tunnel)
+/area/sector/miaphus/beach/station/tunnel)
 "qi" = (
 /obj/structure/cable/cyan{
 	icon_state = "4-8"
@@ -2107,22 +2107,22 @@
 /turf/simulated/floor/tiled/asteroid_steel{
 	outdoors = 1
 	},
-/area/tether_away/beach/resort)
+/area/sector/miaphus/beach/resort)
 "qm" = (
 /obj/random/outcrop,
 /turf/simulated/mineral/floor/cave{
 	name = "dirt"
 	},
-/area/tether_away/beach/jungle)
+/area/sector/miaphus/beach/jungle)
 "qq" = (
 /obj/machinery/light/small,
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/bunker/engi)
+/area/sector/miaphus/beach/bunker/engi)
 "qs" = (
 /obj/structure/table/standard,
 /obj/machinery/reagentgrinder,
 /turf/simulated/floor/tiled/old_tile/white,
-/area/tether_away/beach/bunker/kitchen)
+/area/sector/miaphus/beach/bunker/kitchen)
 "qw" = (
 /obj/structure/window/wooden{
 	dir = 4
@@ -2136,14 +2136,14 @@
 /obj/random/tech_supply/component,
 /obj/random/mre,
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/bunker/bunk)
+/area/sector/miaphus/beach/bunker/bunk)
 "qC" = (
 /turf/simulated/floor/wood/broken,
-/area/tether_away/beach/station/terminal)
+/area/sector/miaphus/beach/station/terminal)
 "qI" = (
 /obj/machinery/power/port_gen/pacman/mrs,
 /turf/simulated/floor/tiled/asteroid_steel,
-/area/tether_away/beach/powershed)
+/area/sector/miaphus/beach/powershed)
 "qS" = (
 /obj/structure/railing/grey{
 	dir = 4
@@ -2152,26 +2152,26 @@
 	dir = 1
 	},
 /turf/simulated/floor/water/deep,
-/area/tether_away/beach/desalinator)
+/area/sector/miaphus/beach/desalinator)
 "qT" = (
 /obj/machinery/door/blast/shutters{
 	dir = 8;
 	name = "Garage Door"
 	},
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/desalinator)
+/area/sector/miaphus/beach/desalinator)
 "qU" = (
 /turf/simulated/floor/tiled/techfloor/grid{
 	outdoors = 1
 	},
-/area/tether_away/beach/station)
+/area/sector/miaphus/beach/station)
 "qV" = (
 /obj/structure/bed/chair/bay,
 /obj/structure/window/basic{
 	dir = 1
 	},
 /turf/simulated/floor/wood/broken,
-/area/tether_away/beach/station/terminal)
+/area/sector/miaphus/beach/station/terminal)
 "qZ" = (
 /obj/machinery/atmospherics/pipe/simple/visible/cyan{
 	desc = "Its bone dry.";
@@ -2179,23 +2179,23 @@
 	name = "water pipe"
 	},
 /turf/simulated/floor/water/deep,
-/area/tether_away/beach/desalinator)
+/area/sector/miaphus/beach/desalinator)
 "ra" = (
 /turf/simulated/floor/tiled/asteroid_steel{
 	outdoors = 1
 	},
-/area/tether_away/beach/station/terminal)
+/area/sector/miaphus/beach/station/terminal)
 "rf" = (
 /obj/effect/floor_decal/industrial/loading{
 	dir = 8
 	},
 /turf/simulated/floor/wood,
-/area/tether_away/beach/resort/canteen)
+/area/sector/miaphus/beach/resort/canteen)
 "ri" = (
 /obj/structure/table/woodentable,
 /obj/item/storage/box/glasses/pint,
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/bunker/mess)
+/area/sector/miaphus/beach/bunker/mess)
 "rl" = (
 /obj/structure/closet/crate/miningcar,
 /obj/item/material/knife/tacknife/combatknife,
@@ -2208,21 +2208,21 @@
 /turf/simulated/mineral/floor/cave{
 	name = "dirt"
 	},
-/area/tether_away/beach/mineshaft)
+/area/sector/miaphus/beach/mineshaft)
 "rm" = (
 /obj/structure/sign/securearea{
 	desc = "A warning sign which reads 'DANGER: MONSTERS'.";
 	name = "\improper DANGER: MONSTERS"
 	},
 /turf/simulated/wall,
-/area/tether_away/beach/jungle)
+/area/sector/miaphus/beach/jungle)
 "rp" = (
 /turf/simulated/floor/water/indoors,
-/area/tether_away/beach/mineshaft)
+/area/sector/miaphus/beach/mineshaft)
 "ru" = (
 /obj/structure/salvageable/computer,
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/bunker)
+/area/sector/miaphus/beach/bunker)
 "ry" = (
 /obj/machinery/atmospherics/pipe/tank/oxygen{
 	desc = "A large tank designed to aid in the desalination of water. It hasn't been used in a while.";
@@ -2234,7 +2234,7 @@
 	name = "water pipe"
 	},
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/desalinator)
+/area/sector/miaphus/beach/desalinator)
 "rE" = (
 /obj/machinery/power/terminal,
 /obj/structure/cable{
@@ -2242,7 +2242,7 @@
 	},
 /obj/structure/salvageable/server,
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/bunker/engi)
+/area/sector/miaphus/beach/bunker/engi)
 "rF" = (
 /obj/structure/closet/secure_closet/freezer/fridge,
 /obj/item/reagent_containers/food/condiment/flour,
@@ -2261,10 +2261,10 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/old_tile/white,
-/area/tether_away/beach/bunker/kitchen)
+/area/sector/miaphus/beach/bunker/kitchen)
 "rI" = (
 /turf/simulated/floor/water/deep,
-/area/tether_away/beach/desalinator)
+/area/sector/miaphus/beach/desalinator)
 "rJ" = (
 /obj/structure/undies_wardrobe{
 	density = 0;
@@ -2274,7 +2274,7 @@
 	icon_state = "2-8"
 	},
 /turf/simulated/floor/wood,
-/area/tether_away/beach/resort/dorm1)
+/area/sector/miaphus/beach/resort/dorm1)
 "rP" = (
 /obj/structure/railing/grey{
 	dir = 1
@@ -2283,24 +2283,24 @@
 	dir = 8
 	},
 /turf/simulated/floor/wood/broken,
-/area/tether_away/beach/resort/canteen)
+/area/sector/miaphus/beach/resort/canteen)
 "rQ" = (
 /obj/effect/floor_decal/tracks,
 /obj/structure/closet/crate/miningcar,
 /obj/random/multiple/ores,
 /turf/simulated/floor/tiled/asteroid_steel,
-/area/tether_away/beach/mineyard)
+/area/sector/miaphus/beach/mineyard)
 "rS" = (
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
 /mob/living/simple_mob/animal/roach/atomar,
 /turf/simulated/floor/tiled/old_tile/white,
-/area/tether_away/beach/bunker/restroom)
+/area/sector/miaphus/beach/bunker/restroom)
 "rV" = (
 /obj/structure/railing/grey,
 /turf/simulated/floor/water/deep,
-/area/tether_away/beach/aa)
+/area/sector/miaphus/beach/aa)
 "rX" = (
 /obj/structure/window/wooden{
 	dir = 4
@@ -2314,7 +2314,7 @@
 /obj/random/maintenance,
 /obj/random/mre,
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/bunker/bunk)
+/area/sector/miaphus/beach/bunker/bunk)
 "rY" = (
 /obj/structure/closet/secure_closet/freezer/fridge,
 /obj/random/mre,
@@ -2324,7 +2324,7 @@
 /obj/random/mre,
 /obj/random/mre,
 /turf/simulated/floor/tiled/old_tile/white,
-/area/tether_away/beach/bunker/kitchen)
+/area/sector/miaphus/beach/bunker/kitchen)
 "sf" = (
 /obj/item/reagent_containers/food/condiment/small/saltshaker{
 	pixel_x = -3
@@ -2352,52 +2352,52 @@
 	},
 /obj/structure/table/standard,
 /turf/simulated/floor/tiled/old_tile/white,
-/area/tether_away/beach/bunker/kitchen)
+/area/sector/miaphus/beach/bunker/kitchen)
 "si" = (
 /turf/simulated/wall/r_wall,
-/area/tether_away/beach/aa)
+/area/sector/miaphus/beach/aa)
 "sk" = (
 /turf/simulated/wall/sandstone,
-/area/tether_away/beach/aa)
+/area/sector/miaphus/beach/aa)
 "sq" = (
 /obj/structure/railing{
 	dir = 1
 	},
 /turf/simulated/floor/carpet/oracarpet,
-/area/tether_away/beach/bunker/mess)
+/area/sector/miaphus/beach/bunker/mess)
 "ss" = (
 /obj/machinery/light/small{
 	dir = 1
 	},
 /turf/simulated/floor/outdoors/beach/sand,
-/area/tether_away/beach/resort/dorm1)
+/area/sector/miaphus/beach/resort/dorm1)
 "su" = (
 /obj/random/mob/spider/mutant,
 /obj/effect/floor_decal/tracks/t_east,
 /turf/simulated/mineral/floor/cave{
 	name = "dirt"
 	},
-/area/tether_away/beach/mineshaft)
+/area/sector/miaphus/beach/mineshaft)
 "sv" = (
 /obj/structure/fence,
 /turf/simulated/floor/tiled/asteroid_steel{
 	outdoors = 1
 	},
-/area/tether_away/beach/station/terminal)
+/area/sector/miaphus/beach/station/terminal)
 "sD" = (
 /turf/simulated/floor/water/deep,
-/area/tether_away/beach/coast)
+/area/sector/miaphus/beach/coast)
 "sN" = (
 /obj/structure/railing/grey,
 /obj/structure/railing/grey{
 	dir = 4
 	},
 /turf/simulated/floor/water/deep,
-/area/tether_away/beach/aa)
+/area/sector/miaphus/beach/aa)
 "sT" = (
 /obj/effect/overlay/coconut,
 /turf/simulated/floor/outdoors/beach/sand,
-/area/tether_away/beach/resort)
+/area/sector/miaphus/beach/resort)
 "sU" = (
 /obj/structure/fence{
 	dir = 1
@@ -2406,40 +2406,40 @@
 /turf/simulated/floor/tiled/asteroid_steel{
 	outdoors = 1
 	},
-/area/tether_away/beach/mineyard)
+/area/sector/miaphus/beach/mineyard)
 "sV" = (
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
 /mob/living/simple_mob/animal/roach/panzer,
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/bunker/bunk)
+/area/sector/miaphus/beach/bunker/bunk)
 "sW" = (
 /obj/structure/railing/grey{
 	dir = 4
 	},
 /turf/simulated/floor/wood,
-/area/tether_away/beach/resort/canteen)
+/area/sector/miaphus/beach/resort/canteen)
 "ta" = (
 /obj/vehicle/sealed/mecha/working/ripley/mining/old,
 /turf/simulated/mineral/floor/cave{
 	name = "dirt"
 	},
-/area/tether_away/beach/mineshaft)
+/area/sector/miaphus/beach/mineshaft)
 "tc" = (
 /obj/machinery/power/rtg/fake_gen,
 /obj/structure/cable,
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/aa)
+/area/sector/miaphus/beach/aa)
 "td" = (
 /obj/structure/table/woodentable,
 /obj/machinery/chemical_dispenser/catering/bar_soft,
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/bunker/mess)
+/area/sector/miaphus/beach/bunker/mess)
 "tj" = (
 /obj/effect/overlay/palmtree_l,
 /turf/simulated/floor/outdoors/beach/sand/lowdesert,
-/area/tether_away/beach/jungle)
+/area/sector/miaphus/beach/jungle)
 "tl" = (
 /obj/machinery/shower{
 	dir = 4;
@@ -2453,7 +2453,7 @@
 /turf/simulated/floor/tiled{
 	icon_state = "techmaint"
 	},
-/area/tether_away/beach/resort/greenhouse)
+/area/sector/miaphus/beach/resort/greenhouse)
 "to" = (
 /obj/structure/cable/cyan{
 	icon_state = "1-2"
@@ -2464,13 +2464,13 @@
 	pixel_y = -29
 	},
 /turf/simulated/floor/wood/broken,
-/area/tether_away/beach/resort/dorm1)
+/area/sector/miaphus/beach/resort/dorm1)
 "tq" = (
 /turf/simulated/floor/wood,
-/area/tether_away/beach/station/terminal)
+/area/sector/miaphus/beach/station/terminal)
 "tr" = (
 /turf/simulated/floor/outdoors/beach/sand/desert,
-/area/tether_away/beach)
+/area/sector/miaphus/beach)
 "ts" = (
 /obj/structure/cable{
 	icon_state = "2-8"
@@ -2484,7 +2484,7 @@
 /turf/simulated/floor/tiled/asteroid_steel{
 	outdoors = 1
 	},
-/area/tether_away/beach/resort)
+/area/sector/miaphus/beach/resort)
 "tv" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -2493,19 +2493,19 @@
 	icon_state = "1-4"
 	},
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/bunker)
+/area/sector/miaphus/beach/bunker)
 "tw" = (
 /obj/machinery/power/smes/buildable/offmap_spawn,
 /obj/structure/cable{
 	icon_state = "0-4"
 	},
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/bunker/engi)
+/area/sector/miaphus/beach/bunker/engi)
 "tz" = (
 /turf/simulated/floor{
 	outdoors = 1
 	},
-/area/tether_away/beach/resort)
+/area/sector/miaphus/beach/resort)
 "tB" = (
 /obj/structure/table/rack/steel,
 /obj/item/mop,
@@ -2516,25 +2516,25 @@
 /obj/item/reagent_containers/spray/cleaner,
 /obj/item/storage/bag/trash,
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/bunker/janitor)
+/area/sector/miaphus/beach/bunker/janitor)
 "tC" = (
 /mob/living/simple_mob/animal/roach/jaeger,
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/bunker)
+/area/sector/miaphus/beach/bunker)
 "tF" = (
 /obj/machinery/light/small{
 	dir = 1
 	},
 /mob/living/simple_mob/animal/roach/seuche,
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/desalinator)
+/area/sector/miaphus/beach/desalinator)
 "tG" = (
 /obj/structure/simple_door/wood,
 /obj/structure/cable/cyan{
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/old_tile/white,
-/area/tether_away/beach/resort/canteen)
+/area/sector/miaphus/beach/resort/canteen)
 "tO" = (
 /obj/structure/cable{
 	icon_state = "0-8"
@@ -2542,7 +2542,7 @@
 /obj/machinery/power/apc/alarms_hidden/east_mount,
 /mob/living/simple_mob/animal/roach/jaeger,
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/bunker)
+/area/sector/miaphus/beach/bunker)
 "tQ" = (
 /obj/structure/fence/corner{
 	dir = 10
@@ -2550,11 +2550,11 @@
 /turf/simulated/floor/tiled/asteroid_steel{
 	outdoors = 1
 	},
-/area/tether_away/beach/resort)
+/area/sector/miaphus/beach/resort)
 "tR" = (
 /obj/machinery/light/small,
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/bunker)
+/area/sector/miaphus/beach/bunker)
 "tY" = (
 /obj/structure/cable/cyan{
 	icon_state = "1-2"
@@ -2563,33 +2563,33 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/asteroid_steel,
-/area/tether_away/beach/powershed)
+/area/sector/miaphus/beach/powershed)
 "tZ" = (
 /obj/structure/cable{
 	icon_state = "1-8"
 	},
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/bunker/engi)
+/area/sector/miaphus/beach/bunker/engi)
 "ua" = (
 /obj/structure/salvageable/computer_os,
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/bunker)
+/area/sector/miaphus/beach/bunker)
 "uh" = (
 /obj/structure/bed/chair/wood{
 	dir = 8
 	},
 /turf/simulated/floor/wood/broken,
-/area/tether_away/beach/resort/canteen)
+/area/sector/miaphus/beach/resort/canteen)
 "uk" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/fiftyspawner/steel,
 /turf/simulated/floor/tiled/asteroid_steel{
 	outdoors = 1
 	},
-/area/tether_away/beach/mineyard)
+/area/sector/miaphus/beach/mineyard)
 "ul" = (
 /turf/simulated/wall/wood,
-/area/tether_away/beach/water)
+/area/sector/miaphus/beach/water)
 "un" = (
 /obj/structure/closet,
 /obj/random/contraband,
@@ -2600,22 +2600,22 @@
 /obj/random/maintenance,
 /obj/random/mre,
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/bunker/bunk)
+/area/sector/miaphus/beach/bunker/bunk)
 "uq" = (
 /obj/machinery/mining/brace,
 /turf/simulated/mineral/floor/cave{
 	name = "dirt"
 	},
-/area/tether_away/beach/mineshaft)
+/area/sector/miaphus/beach/mineshaft)
 "us" = (
 /obj/effect/overlay/coconut,
 /turf/simulated/floor/outdoors/beach/sand/desert,
-/area/tether_away/beach/resort)
+/area/sector/miaphus/beach/resort)
 "uv" = (
 /obj/structure/table/steel_reinforced,
 /obj/random/toolbox,
 /turf/simulated/floor/tiled/asteroid_steel,
-/area/tether_away/beach/mineyard)
+/area/sector/miaphus/beach/mineyard)
 "uz" = (
 /obj/structure/window/wooden{
 	dir = 4
@@ -2623,11 +2623,11 @@
 /turf/simulated/mineral/floor/cave{
 	name = "dirt"
 	},
-/area/tether_away/beach/mineshaft)
+/area/sector/miaphus/beach/mineshaft)
 "uE" = (
 /obj/structure/salvageable/server_os,
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/station/tram)
+/area/sector/miaphus/beach/station/tram)
 "uL" = (
 /obj/structure/cable/cyan{
 	icon_state = "1-8"
@@ -2639,10 +2639,10 @@
 	pixel_y = 28
 	},
 /turf/simulated/floor/wood/broken,
-/area/tether_away/beach/resort/dorm3)
+/area/sector/miaphus/beach/resort/dorm3)
 "uO" = (
 /turf/simulated/floor/water/beach,
-/area/tether_away/beach/coast)
+/area/sector/miaphus/beach/coast)
 "uP" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -2651,12 +2651,12 @@
 	name = "Engineering Access"
 	},
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/bunker/engi)
+/area/sector/miaphus/beach/bunker/engi)
 "uQ" = (
 /obj/machinery/appliance/cooker/oven,
 /obj/machinery/light,
 /turf/simulated/floor/tiled/old_tile/white,
-/area/tether_away/beach/resort/canteen)
+/area/sector/miaphus/beach/resort/canteen)
 "uS" = (
 /obj/machinery/door/airlock/maintenance/int{
 	name = "Bathroom"
@@ -2665,13 +2665,13 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/bunker/restroom)
+/area/sector/miaphus/beach/bunker/restroom)
 "uT" = (
 /obj/structure/mirror{
 	pixel_x = -27
 	},
 /turf/simulated/floor/wood/broken,
-/area/tether_away/beach/resort/dorm1)
+/area/sector/miaphus/beach/resort/dorm1)
 "uV" = (
 /obj/machinery/door/blast/regular{
 	name = "Tram Tunnel Doors"
@@ -2679,7 +2679,7 @@
 /turf/simulated/floor/maglev{
 	dir = 4
 	},
-/area/tether_away/beach/station/tunnel)
+/area/sector/miaphus/beach/station/tunnel)
 "vf" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -2688,7 +2688,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/bunker/engi)
+/area/sector/miaphus/beach/bunker/engi)
 "vg" = (
 /obj/machinery/atmospherics/pipe/manifold/visible/cyan{
 	desc = "Its bone dry.";
@@ -2696,7 +2696,7 @@
 	name = "water pipe"
 	},
 /turf/simulated/floor/tiled/asteroid_steel,
-/area/tether_away/beach/resort/greenhouse)
+/area/sector/miaphus/beach/resort/greenhouse)
 "vh" = (
 /obj/structure/mirror{
 	pixel_x = -27
@@ -2706,13 +2706,13 @@
 	pixel_x = -11
 	},
 /turf/simulated/floor/tiled/old_tile/white,
-/area/tether_away/beach/bunker/restroom)
+/area/sector/miaphus/beach/bunker/restroom)
 "vk" = (
 /obj/structure/bed/chair/sofa/black{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/bunker/mess)
+/area/sector/miaphus/beach/bunker/mess)
 "vl" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -2723,20 +2723,20 @@
 /turf/simulated/floor/tiled/asteroid_steel{
 	outdoors = 1
 	},
-/area/tether_away/beach/resort)
+/area/sector/miaphus/beach/resort)
 "vm" = (
 /turf/simulated/wall/rthull,
-/area/tether_away/beach/station)
+/area/sector/miaphus/beach/station)
 "vo" = (
 /obj/structure/bed/chair/bay{
 	dir = 1
 	},
 /turf/simulated/floor/wood,
-/area/tether_away/beach/station/terminal)
+/area/sector/miaphus/beach/station/terminal)
 "vp" = (
 /obj/structure/salvageable/autolathe,
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/bunker/engi)
+/area/sector/miaphus/beach/bunker/engi)
 "vs" = (
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -2745,7 +2745,7 @@
 	icon_state = "2-8"
 	},
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/bunker/mess)
+/area/sector/miaphus/beach/bunker/mess)
 "vy" = (
 /obj/structure/closet/crate/trashcart,
 /obj/random/junk,
@@ -2759,13 +2759,13 @@
 /obj/random/junk,
 /obj/random/junk,
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/bunker/janitor)
+/area/sector/miaphus/beach/bunker/janitor)
 "vz" = (
 /obj/machinery/light/small{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/bunker)
+/area/sector/miaphus/beach/bunker)
 "vD" = (
 /obj/effect/floor_decal/tracks{
 	dir = 8
@@ -2783,22 +2783,22 @@
 /turf/simulated/mineral/floor/cave{
 	name = "dirt"
 	},
-/area/tether_away/beach/mineshaft)
+/area/sector/miaphus/beach/mineshaft)
 "vG" = (
 /obj/machinery/door/airlock/maintenance/int{
 	name = "Kitchen Access"
 	},
 /turf/simulated/floor/tiled/old_tile/white,
-/area/tether_away/beach/bunker/kitchen)
+/area/sector/miaphus/beach/bunker/kitchen)
 "vJ" = (
 /obj/machinery/light/small{
 	dir = 4
 	},
 /turf/simulated/floor/carpet/sblucarpet,
-/area/tether_away/beach/bunker/mess)
+/area/sector/miaphus/beach/bunker/mess)
 "vK" = (
 /turf/simulated/floor,
-/area/tether_away/beach/bunker)
+/area/sector/miaphus/beach/bunker)
 "vN" = (
 /obj/random/maintenance/research,
 /obj/random/maintenance/research,
@@ -2808,14 +2808,14 @@
 /obj/random/maintenance/research,
 /obj/random/empty_or_lootable_crate,
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/desalinator)
+/area/sector/miaphus/beach/desalinator)
 "vR" = (
 /obj/structure/railing/grey,
 /obj/structure/railing/grey{
 	dir = 8
 	},
 /turf/simulated/floor/water/deep,
-/area/tether_away/beach/aa)
+/area/sector/miaphus/beach/aa)
 "vT" = (
 /obj/structure/closet/crate/mimic/cointoss,
 /obj/random/unidentified_medicine,
@@ -2825,48 +2825,48 @@
 /obj/random/unidentified_medicine,
 /obj/random/unidentified_medicine,
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/station)
+/area/sector/miaphus/beach/station)
 "vU" = (
 /obj/structure/table/woodentable,
 /obj/item/flashlight/lamp/green,
 /turf/simulated/floor/wood,
-/area/tether_away/beach)
+/area/sector/miaphus/beach)
 "vX" = (
 /obj/machinery/floodlight,
 /turf/simulated/floor,
-/area/tether_away/beach/bunker)
+/area/sector/miaphus/beach/bunker)
 "vZ" = (
 /obj/structure/kitchenspike,
 /turf/simulated/floor/wood,
-/area/tether_away/beach/resort/fishing)
+/area/sector/miaphus/beach/resort/fishing)
 "wg" = (
 /obj/random/outcrop,
 /turf/simulated/mineral/floor/cave{
 	name = "dirt"
 	},
-/area/tether_away/beach/mineshaft)
+/area/sector/miaphus/beach/mineshaft)
 "wh" = (
 /obj/effect/floor_decal/tracks/t_north{
 	dir = 9
 	},
 /turf/simulated/wall/wood,
-/area/tether_away/beach/mineshaft)
+/area/sector/miaphus/beach/mineshaft)
 "wi" = (
 /obj/machinery/light/small{
 	dir = 4
 	},
 /turf/simulated/floor/water/deep,
-/area/tether_away/beach/aa)
+/area/sector/miaphus/beach/aa)
 "wm" = (
 /obj/effect/floor_decal/tracks{
 	dir = 6
 	},
 /turf/simulated/floor/wood,
-/area/tether_away/beach/mineshaft)
+/area/sector/miaphus/beach/mineshaft)
 "wn" = (
 /mob/living/simple_mob/animal/roach/panzer,
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/bunker/engi)
+/area/sector/miaphus/beach/bunker/engi)
 "wv" = (
 /obj/machinery/atmospherics/pipe/simple/visible/cyan{
 	desc = "Its bone dry.";
@@ -2876,13 +2876,13 @@
 /turf/simulated/floor/tiled/asteroid_steel{
 	outdoors = 1
 	},
-/area/tether_away/beach/resort)
+/area/sector/miaphus/beach/resort)
 "wy" = (
 /obj/structure/salvageable/console_broken_os{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/station/tram)
+/area/sector/miaphus/beach/station/tram)
 "wA" = (
 /obj/random/contraband,
 /obj/random/contraband,
@@ -2892,14 +2892,14 @@
 /obj/random/contraband,
 /obj/random/empty_or_lootable_crate,
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/desalinator)
+/area/sector/miaphus/beach/desalinator)
 "wE" = (
 /obj/structure/railing{
 	dir = 8
 	},
 /obj/structure/railing,
 /turf/simulated/floor/carpet/purcarpet,
-/area/tether_away/beach/bunker/mess)
+/area/sector/miaphus/beach/bunker/mess)
 "wI" = (
 /obj/machinery/atmospherics/pipe/simple/visible/cyan{
 	desc = "Its bone dry.";
@@ -2908,7 +2908,7 @@
 	},
 /obj/machinery/seed_storage/garden,
 /turf/simulated/floor/tiled/asteroid_steel,
-/area/tether_away/beach/resort/greenhouse)
+/area/sector/miaphus/beach/resort/greenhouse)
 "wM" = (
 /obj/structure/cable/cyan{
 	icon_state = "4-8"
@@ -2919,10 +2919,10 @@
 /turf/simulated/floor/tiled/asteroid_steel{
 	outdoors = 1
 	},
-/area/tether_away/beach/resort/lockermed)
+/area/sector/miaphus/beach/resort/lockermed)
 "wO" = (
 /turf/simulated/wall/rthull,
-/area/tether_away/beach/station/tram)
+/area/sector/miaphus/beach/station/tram)
 "wT" = (
 /obj/effect/floor_decal/tracks{
 	dir = 1
@@ -2930,7 +2930,7 @@
 /turf/simulated/floor/tiled/asteroid_steel{
 	outdoors = 1
 	},
-/area/tether_away/beach/mineyard)
+/area/sector/miaphus/beach/mineyard)
 "wX" = (
 /obj/structure/closet/secure_closet/freezer/fridge,
 /obj/random/meat,
@@ -2955,7 +2955,7 @@
 /obj/item/reagent_containers/food/drinks/bottle/victory_gin,
 /obj/item/reagent_containers/food/drinks/bottle/victory_gin,
 /turf/simulated/floor/tiled/old_tile/white,
-/area/tether_away/beach/resort/canteen)
+/area/sector/miaphus/beach/resort/canteen)
 "xb" = (
 /obj/structure/table/marble,
 /obj/item/reagent_containers/food/snacks/carpmeat/fish,
@@ -2963,14 +2963,14 @@
 /obj/item/reagent_containers/food/snacks/carpmeat/fish,
 /obj/item/reagent_containers/food/snacks/carpmeat/fish,
 /turf/simulated/floor/wood,
-/area/tether_away/beach/resort/fishing)
+/area/sector/miaphus/beach/resort/fishing)
 "xe" = (
 /obj/machinery/atmospherics/pipe/manifold/visible/cyan{
 	desc = "Its bone dry.";
 	name = "water pipe"
 	},
 /turf/simulated/floor/water/deep,
-/area/tether_away/beach/desalinator)
+/area/sector/miaphus/beach/desalinator)
 "xh" = (
 /obj/machinery/light/small,
 /obj/structure/cable/cyan{
@@ -2979,11 +2979,11 @@
 /turf/simulated/floor/tiled/asteroid_steel{
 	outdoors = 1
 	},
-/area/tether_away/beach/resort/greenhouse)
+/area/sector/miaphus/beach/resort/greenhouse)
 "xi" = (
 /obj/spawner/window/full,
 /turf/simulated/floor/plating,
-/area/tether_away/beach/resort/greenhouse)
+/area/sector/miaphus/beach/resort/greenhouse)
 "xn" = (
 /obj/effect/floor_decal/tracks{
 	dir = 8
@@ -2991,7 +2991,7 @@
 /obj/structure/closet/crate/miningcar,
 /obj/random/multiple/underdark/ores,
 /turf/simulated/floor/wood,
-/area/tether_away/beach/mineshaft)
+/area/sector/miaphus/beach/mineshaft)
 "xs" = (
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -3000,22 +3000,22 @@
 	name = "Kitchen Access"
 	},
 /turf/simulated/floor/tiled/old_tile/white,
-/area/tether_away/beach/bunker/mess)
+/area/sector/miaphus/beach/bunker/mess)
 "xw" = (
 /turf/simulated/floor/tiled/old_tile/white,
-/area/tether_away/beach/bunker/kitchen)
+/area/sector/miaphus/beach/bunker/kitchen)
 "xx" = (
 /obj/structure/railing/grey{
 	dir = 4
 	},
 /obj/structure/bed/chair/wood,
 /turf/simulated/floor/wood,
-/area/tether_away/beach/resort/canteen)
+/area/sector/miaphus/beach/resort/canteen)
 "xy" = (
 /turf/simulated/mineral/floor/cave{
 	name = "dirt"
 	},
-/area/tether_away/beach/mineshaft)
+/area/sector/miaphus/beach/mineshaft)
 "xF" = (
 /obj/structure/cable/cyan{
 	icon_state = "4-8"
@@ -3024,7 +3024,7 @@
 /turf/simulated/floor/tiled/asteroid_steel{
 	outdoors = 1
 	},
-/area/tether_away/beach/resort/greenhouse)
+/area/sector/miaphus/beach/resort/greenhouse)
 "xL" = (
 /obj/structure/cable/cyan{
 	icon_state = "1-8"
@@ -3036,16 +3036,16 @@
 	pixel_y = 28
 	},
 /turf/simulated/floor/wood,
-/area/tether_away/beach/resort/dorm5)
+/area/sector/miaphus/beach/resort/dorm5)
 "xR" = (
 /obj/effect/floor_decal/industrial/loading,
 /turf/simulated/floor/wood,
-/area/tether_away/beach/resort/canteen)
+/area/sector/miaphus/beach/resort/canteen)
 "xT" = (
 /turf/simulated/floor/water/beach{
 	dir = 1
 	},
-/area/tether_away/beach/coast)
+/area/sector/miaphus/beach/coast)
 "xU" = (
 /obj/structure/closet/crate/mimic/cointoss,
 /obj/random/alcohol,
@@ -3058,14 +3058,14 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/station)
+/area/sector/miaphus/beach/station)
 "xW" = (
 /obj/machinery/light/small,
 /obj/structure/bed/chair/wood{
 	dir = 4
 	},
 /turf/simulated/floor/wood,
-/area/tether_away/beach/resort/canteen)
+/area/sector/miaphus/beach/resort/canteen)
 "xZ" = (
 /obj/structure/railing/grey{
 	dir = 4
@@ -3073,7 +3073,7 @@
 /turf/simulated/floor/water/beach/corner{
 	dir = 4
 	},
-/area/tether_away/beach/desalinator)
+/area/sector/miaphus/beach/desalinator)
 "yb" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/random/ammo_all,
@@ -3083,19 +3083,19 @@
 /obj/random/mre,
 /obj/random/mre,
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/aa)
+/area/sector/miaphus/beach/aa)
 "yd" = (
 /obj/structure/bed/chair/bay/comfy/black{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/station/tram)
+/area/sector/miaphus/beach/station/tram)
 "yf" = (
 /turf/simulated/wall,
-/area/tether_away/beach/desalinator)
+/area/sector/miaphus/beach/desalinator)
 "yg" = (
 /turf/simulated/wall,
-/area/tether_away/beach/station/tunnel)
+/area/sector/miaphus/beach/station/tunnel)
 "ym" = (
 /obj/effect/floor_decal/tracks{
 	dir = 8
@@ -3104,11 +3104,11 @@
 /turf/simulated/mineral/floor/cave{
 	name = "dirt"
 	},
-/area/tether_away/beach/mineshaft)
+/area/sector/miaphus/beach/mineshaft)
 "yu" = (
 /obj/machinery/light/small,
 /turf/simulated/floor/wood/broken,
-/area/tether_away/beach/station/terminal)
+/area/sector/miaphus/beach/station/terminal)
 "yz" = (
 /obj/machinery/light/small{
 	dir = 4
@@ -3121,7 +3121,7 @@
 /turf/simulated/floor/tiled/asteroid_steel{
 	outdoors = 1
 	},
-/area/tether_away/beach/resort/bunk)
+/area/sector/miaphus/beach/resort/bunk)
 "yA" = (
 /obj/machinery/light/small,
 /obj/structure/table/standard,
@@ -3132,10 +3132,10 @@
 	pixel_y = 3
 	},
 /turf/simulated/floor/tiled/old_tile/white,
-/area/tether_away/beach/bunker/kitchen)
+/area/sector/miaphus/beach/bunker/kitchen)
 "yF" = (
 /turf/simulated/floor/water/deep/indoors,
-/area/tether_away/beach/mineshaft)
+/area/sector/miaphus/beach/mineshaft)
 "yI" = (
 /obj/structure/reagent_dispensers/coolanttank,
 /obj/machinery/atmospherics/pipe/simple/visible/cyan{
@@ -3144,7 +3144,7 @@
 	name = "water pipe"
 	},
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/desalinator)
+/area/sector/miaphus/beach/desalinator)
 "yK" = (
 /obj/effect/floor_decal/industrial/halfstair{
 	dir = 1
@@ -3152,15 +3152,15 @@
 /turf/simulated/floor/tiled/asteroid_steel{
 	outdoors = 1
 	},
-/area/tether_away/beach/resort)
+/area/sector/miaphus/beach/resort)
 "yO" = (
 /turf/simulated/wall/r_wall,
-/area/tether_away/beach/bunker/janitor)
+/area/sector/miaphus/beach/bunker/janitor)
 "yS" = (
 /turf/simulated/floor/tiled/asteroid_steel{
 	outdoors = 1
 	},
-/area/tether_away/beach/aa)
+/area/sector/miaphus/beach/aa)
 "yX" = (
 /obj/machinery/conveyor{
 	dir = 10;
@@ -3170,13 +3170,13 @@
 /turf/simulated/floor/tiled/asteroid_steel{
 	outdoors = 1
 	},
-/area/tether_away/beach/mineyard)
+/area/sector/miaphus/beach/mineyard)
 "zb" = (
 /obj/machinery/mineral/processing_unit,
 /turf/simulated/floor/tiled/asteroid_steel{
 	outdoors = 1
 	},
-/area/tether_away/beach/mineyard)
+/area/sector/miaphus/beach/mineyard)
 "zd" = (
 /obj/structure/fence/door/opened{
 	dir = 4
@@ -3184,21 +3184,21 @@
 /turf/simulated/floor/tiled/asteroid_steel{
 	outdoors = 1
 	},
-/area/tether_away/beach/station/terminal)
+/area/sector/miaphus/beach/station/terminal)
 "zn" = (
 /obj/structure/bed/chair/wood{
 	dir = 4
 	},
 /turf/simulated/floor/wood,
-/area/tether_away/beach/resort/canteen)
+/area/sector/miaphus/beach/resort/canteen)
 "zs" = (
 /turf/simulated/wall/sandstone,
-/area/tether_away/beach/resort/dorm2)
+/area/sector/miaphus/beach/resort/dorm2)
 "zw" = (
 /turf/simulated/floor/tiled/asteroid_steel{
 	outdoors = 1
 	},
-/area/tether_away/beach/resort)
+/area/sector/miaphus/beach/resort)
 "zD" = (
 /obj/machinery/light/small{
 	dir = 8
@@ -3208,13 +3208,13 @@
 	name = "water pipe"
 	},
 /turf/simulated/floor/tiled/asteroid_steel,
-/area/tether_away/beach/resort/greenhouse)
+/area/sector/miaphus/beach/resort/greenhouse)
 "zN" = (
 /obj/machinery/door/blast/regular{
 	name = "Tram Tunnel Doors"
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/tether_away/beach/station/tunnel)
+/area/sector/miaphus/beach/station/tunnel)
 "zP" = (
 /obj/structure/cable/cyan{
 	icon_state = "1-2"
@@ -3226,16 +3226,16 @@
 /obj/fiftyspawner/glass,
 /obj/fiftyspawner/glass,
 /turf/simulated/floor/tiled/asteroid_steel,
-/area/tether_away/beach/powershed)
+/area/sector/miaphus/beach/powershed)
 "zV" = (
 /turf/unsimulated/wall/mineral,
-/area/tether_away/beach/mineshaft)
+/area/sector/miaphus/beach/mineshaft)
 "zZ" = (
 /obj/structure/cable/cyan{
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/asteroid_steel,
-/area/tether_away/beach/powershed)
+/area/sector/miaphus/beach/powershed)
 "Ab" = (
 /obj/structure/table/rack,
 /obj/item/stack/cable_coil/pink,
@@ -3245,17 +3245,17 @@
 /obj/item/storage/box/wormcan,
 /obj/item/storage/box/wormcan,
 /turf/simulated/floor/wood,
-/area/tether_away/beach/resort/fishing)
+/area/sector/miaphus/beach/resort/fishing)
 "Ac" = (
 /obj/structure/bed/chair/bay/comfy/black,
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/station/tram)
+/area/sector/miaphus/beach/station/tram)
 "Af" = (
 /obj/machinery/door/airlock/maintenance/int{
 	name = "Warehouse"
 	},
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/desalinator)
+/area/sector/miaphus/beach/desalinator)
 "Am" = (
 /obj/structure/window/wooden{
 	dir = 4
@@ -3269,13 +3269,13 @@
 /obj/random/maintenance,
 /obj/random/mre,
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/bunker/bunk)
+/area/sector/miaphus/beach/bunker/bunk)
 "Ar" = (
 /obj/structure/railing/grey{
 	dir = 4
 	},
 /turf/simulated/floor/water/deep,
-/area/tether_away/beach/desalinator)
+/area/sector/miaphus/beach/desalinator)
 "As" = (
 /obj/random/maintenance/cargo,
 /obj/random/maintenance/cargo,
@@ -3284,7 +3284,7 @@
 /obj/random/maintenance/cargo,
 /obj/random/empty_or_lootable_crate,
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/desalinator)
+/area/sector/miaphus/beach/desalinator)
 "At" = (
 /obj/machinery/light/small{
 	dir = 4
@@ -3294,13 +3294,13 @@
 	name = "water pipe"
 	},
 /turf/simulated/floor/tiled/asteroid_steel,
-/area/tether_away/beach/resort/greenhouse)
+/area/sector/miaphus/beach/resort/greenhouse)
 "Aw" = (
 /obj/item/stool/padded,
 /turf/simulated/mineral/floor/cave{
 	name = "dirt"
 	},
-/area/tether_away/beach/mineshaft)
+/area/sector/miaphus/beach/mineshaft)
 "AB" = (
 /obj/structure/window/wooden{
 	dir = 4
@@ -3314,7 +3314,7 @@
 /obj/random/maintenance,
 /obj/random/mre,
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/bunker/bunk)
+/area/sector/miaphus/beach/bunker/bunk)
 "AE" = (
 /obj/structure/sink{
 	pixel_y = 18
@@ -3326,36 +3326,36 @@
 	pixel_x = 32
 	},
 /turf/simulated/floor/tiled/old_tile/white,
-/area/tether_away/beach/resort/lockermed)
+/area/sector/miaphus/beach/resort/lockermed)
 "AF" = (
 /obj/random/obstruction,
 /turf/simulated/mineral/floor/cave{
 	name = "dirt"
 	},
-/area/tether_away/beach/jungle)
+/area/sector/miaphus/beach/jungle)
 "AI" = (
 /mob/living/simple_mob/animal/roach/panzer,
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/bunker/bunk)
+/area/sector/miaphus/beach/bunker/bunk)
 "AQ" = (
 /obj/vehicle/ridden/boat,
 /turf/simulated/floor/water/indoors,
-/area/tether_away/beach/mineshaft)
+/area/sector/miaphus/beach/mineshaft)
 "AS" = (
 /obj/effect/floor_decal/tracks{
 	dir = 9
 	},
 /turf/simulated/floor/wood,
-/area/tether_away/beach/mineshaft)
+/area/sector/miaphus/beach/mineshaft)
 "AT" = (
 /turf/simulated/floor/tiled/asteroid_steel{
 	outdoors = 1
 	},
-/area/tether_away/beach/resort/dorm5)
+/area/sector/miaphus/beach/resort/dorm5)
 "AX" = (
 /obj/structure/salvageable/machine,
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/desalinator)
+/area/sector/miaphus/beach/desalinator)
 "Bg" = (
 /obj/structure/fence{
 	dir = 8
@@ -3363,40 +3363,40 @@
 /turf/simulated/mineral/floor/cave{
 	name = "dirt"
 	},
-/area/tether_away/beach/mineshaft)
+/area/sector/miaphus/beach/mineshaft)
 "Bk" = (
 /obj/structure/table/woodentable,
 /obj/item/material/kitchen/utensil/fork/plastic,
 /obj/item/material/kitchen/utensil/spoon/plastic,
 /turf/simulated/floor/wood,
-/area/tether_away/beach/resort/canteen)
+/area/sector/miaphus/beach/resort/canteen)
 "Bp" = (
 /obj/structure/reagent_dispensers/watertank/high,
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/desalinator)
+/area/sector/miaphus/beach/desalinator)
 "By" = (
 /turf/simulated/floor/water/beach{
 	dir = 9
 	},
-/area/tether_away/beach/coast)
+/area/sector/miaphus/beach/coast)
 "BC" = (
 /obj/structure/simple_door/wood,
 /turf/simulated/floor/tiled/asteroid_steel,
-/area/tether_away/beach/resort/bunk)
+/area/sector/miaphus/beach/resort/bunk)
 "BF" = (
 /turf/simulated/wall/sandstone,
-/area/tether_away/beach/resort/dorm3)
+/area/sector/miaphus/beach/resort/dorm3)
 "BG" = (
 /turf/simulated/floor/water/beach/corner{
 	dir = 8
 	},
-/area/tether_away/beach/jungle)
+/area/sector/miaphus/beach/jungle)
 "BM" = (
 /obj/structure/bed/chair/office/dark{
 	dir = 8
 	},
 /turf/simulated/floor/wood/broken,
-/area/tether_away/beach/desalinator)
+/area/sector/miaphus/beach/desalinator)
 "BP" = (
 /obj/structure/closet/medical_wall{
 	pixel_x = 32
@@ -3412,28 +3412,28 @@
 /obj/random/medical/pillbottle,
 /obj/item/reagent_containers/blood/prelabeled/OMinus,
 /turf/simulated/floor/tiled/old_tile/white,
-/area/tether_away/beach/resort/lockermed)
+/area/sector/miaphus/beach/resort/lockermed)
 "BR" = (
 /obj/structure/sign/warning/acid,
 /turf/simulated/wall/wood,
-/area/tether_away/beach/mineshaft)
+/area/sector/miaphus/beach/mineshaft)
 "BT" = (
 /turf/simulated/wall/sandstone,
-/area/tether_away/beach/resort/bunk)
+/area/sector/miaphus/beach/resort/bunk)
 "Ce" = (
 /obj/structure/table/steel_reinforced,
 /obj/machinery/chemical_dispenser/catering/bar_alc{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/old_tile/white,
-/area/tether_away/beach/resort/canteen)
+/area/sector/miaphus/beach/resort/canteen)
 "Cg" = (
 /turf/unsimulated/wall/mineral,
-/area/tether_away/beach/water)
+/area/sector/miaphus/beach/water)
 "Ch" = (
 /obj/structure/table/reinforced,
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/station/tram)
+/area/sector/miaphus/beach/station/tram)
 "Cj" = (
 /obj/machinery/atmospherics/pipe/tank/oxygen{
 	desc = "A large tank designed to aid in the desalination of water. It hasn't been used in a while.";
@@ -3446,12 +3446,12 @@
 	name = "water pipe"
 	},
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/desalinator)
+/area/sector/miaphus/beach/desalinator)
 "Cq" = (
 /turf/simulated/floor/water/beach/corner{
 	dir = 1
 	},
-/area/tether_away/beach/coast)
+/area/sector/miaphus/beach/coast)
 "Cr" = (
 /obj/structure/cable/cyan{
 	icon_state = "2-4"
@@ -3459,19 +3459,19 @@
 /turf/simulated/floor/tiled/asteroid_steel{
 	outdoors = 1
 	},
-/area/tether_away/beach/resort)
+/area/sector/miaphus/beach/resort)
 "Cs" = (
 /obj/structure/railing/grey{
 	dir = 4
 	},
 /turf/simulated/floor/wood,
-/area/tether_away/beach/resort/fishing)
+/area/sector/miaphus/beach/resort/fishing)
 "Ct" = (
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/bunker/mess)
+/area/sector/miaphus/beach/bunker/mess)
 "Cv" = (
 /obj/structure/railing/grey{
 	dir = 1
@@ -3480,24 +3480,24 @@
 	dir = 4
 	},
 /turf/simulated/floor/water/deep,
-/area/tether_away/beach/desalinator)
+/area/sector/miaphus/beach/desalinator)
 "Cw" = (
 /obj/structure/salvageable/implant_container_os,
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/desalinator)
+/area/sector/miaphus/beach/desalinator)
 "CB" = (
 /turf/simulated/wall/r_wall,
-/area/tether_away/beach/bunker)
+/area/sector/miaphus/beach/bunker)
 "CC" = (
 /turf/simulated/floor/outdoors/beach/sand/desert,
-/area/tether_away/beach/coast)
+/area/sector/miaphus/beach/coast)
 "CG" = (
 /obj/machinery/atmospherics/pipe/simple/visible/cyan{
 	desc = "Its bone dry.";
 	name = "water pipe"
 	},
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/desalinator)
+/area/sector/miaphus/beach/desalinator)
 "CM" = (
 /obj/machinery/light/small,
 /obj/machinery/portable_atmospherics/hydroponics,
@@ -3507,7 +3507,7 @@
 	name = "water pipe"
 	},
 /turf/simulated/floor/tiled/asteroid_steel,
-/area/tether_away/beach/resort/greenhouse)
+/area/sector/miaphus/beach/resort/greenhouse)
 "CO" = (
 /obj/structure/closet/crate/mimic/cointoss,
 /obj/random/soap,
@@ -3517,12 +3517,12 @@
 /obj/random/bedsheet,
 /obj/random/bedsheet,
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/station)
+/area/sector/miaphus/beach/station)
 "CP" = (
 /turf/simulated/floor/water/beach{
 	dir = 10
 	},
-/area/tether_away/beach/jungle)
+/area/sector/miaphus/beach/jungle)
 "CR" = (
 /obj/structure/closet/crate/mimic/cointoss,
 /obj/random/cigarettes,
@@ -3532,37 +3532,37 @@
 /obj/random/cigarettes,
 /obj/random/cigarettes,
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/station)
+/area/sector/miaphus/beach/station)
 "CS" = (
 /obj/machinery/atmospherics/pipe/manifold/visible/cyan{
 	desc = "Its bone dry.";
 	name = "water pipe"
 	},
 /turf/simulated/floor/tiled/asteroid_steel,
-/area/tether_away/beach/resort/greenhouse)
+/area/sector/miaphus/beach/resort/greenhouse)
 "CU" = (
 /obj/structure/reagent_dispensers/watertank/high,
 /obj/machinery/light/small{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/desalinator)
+/area/sector/miaphus/beach/desalinator)
 "CV" = (
 /obj/random/trash_pile,
 /turf/simulated/mineral/floor/cave{
 	name = "dirt"
 	},
-/area/tether_away/beach/mineshaft)
+/area/sector/miaphus/beach/mineshaft)
 "Dd" = (
 /obj/machinery/door/airlock/maintenance/int{
 	name = "Mess Hall"
 	},
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/bunker/mess)
+/area/sector/miaphus/beach/bunker/mess)
 "Df" = (
 /mob/living/simple_mob/animal/roach/seuche,
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/desalinator)
+/area/sector/miaphus/beach/desalinator)
 "Dq" = (
 /obj/effect/floor_decal/tracks{
 	dir = 6
@@ -3570,16 +3570,16 @@
 /turf/simulated/mineral/floor/cave{
 	name = "dirt"
 	},
-/area/tether_away/beach/mineshaft)
+/area/sector/miaphus/beach/mineshaft)
 "Dr" = (
 /obj/effect/shuttle_landmark{
-	base_area = /area/tether_away/beach/jungle;
+	base_area = /area/sector/miaphus/beach/jungle;
 	base_turf = /turf/simulated/floor/outdoors/beach/sand/desert;
 	landmark_tag = "beach_e";
 	name = "Virgo 4 Beach (E)"
 	},
 /turf/simulated/floor/outdoors/beach/sand/desert,
-/area/tether_away/beach/jungle)
+/area/sector/miaphus/beach/jungle)
 "DA" = (
 /obj/structure/cable{
 	icon_state = "0-2"
@@ -3588,7 +3588,7 @@
 /turf/simulated/floor{
 	outdoors = 1
 	},
-/area/tether_away/beach/resort)
+/area/sector/miaphus/beach/resort)
 "DB" = (
 /obj/structure/railing/grey{
 	dir = 8
@@ -3597,7 +3597,7 @@
 /turf/simulated/mineral/floor/cave{
 	name = "dirt"
 	},
-/area/tether_away/beach/mineshaft)
+/area/sector/miaphus/beach/mineshaft)
 "DC" = (
 /obj/structure/window/wooden{
 	dir = 4
@@ -3611,13 +3611,13 @@
 /obj/random/maintenance,
 /obj/random/mre,
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/bunker/bunk)
+/area/sector/miaphus/beach/bunker/bunk)
 "DE" = (
 /obj/structure/reagent_dispensers/watertank/high,
 /turf/simulated/mineral/floor/cave{
 	name = "dirt"
 	},
-/area/tether_away/beach/mineshaft)
+/area/sector/miaphus/beach/mineshaft)
 "DH" = (
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -3626,7 +3626,7 @@
 	icon_state = "2-8"
 	},
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/bunker)
+/area/sector/miaphus/beach/bunker)
 "DK" = (
 /obj/machinery/door/airlock/sandstone{
 	id_tag = "LoveShack2"
@@ -3635,13 +3635,13 @@
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/asteroid_steel,
-/area/tether_away/beach/resort/dorm2)
+/area/sector/miaphus/beach/resort/dorm2)
 "DL" = (
 /obj/structure/barricade,
 /turf/simulated/floor/tiled/asteroid_steel{
 	outdoors = 1
 	},
-/area/tether_away/beach/mineshaft)
+/area/sector/miaphus/beach/mineshaft)
 "DQ" = (
 /obj/effect/floor_decal/tracks{
 	dir = 4
@@ -3650,27 +3650,27 @@
 /turf/simulated/mineral/floor/cave{
 	name = "dirt"
 	},
-/area/tether_away/beach/mineshaft)
+/area/sector/miaphus/beach/mineshaft)
 "DU" = (
 /obj/machinery/light/small{
 	dir = 1
 	},
 /obj/structure/toilet,
 /turf/simulated/floor/tiled/asteroid_steel,
-/area/tether_away/beach/resort)
+/area/sector/miaphus/beach/resort)
 "Ed" = (
 /turf/simulated/floor/water/contaminated{
 	outdoors = 0
 	},
-/area/tether_away/beach/mineshaft)
+/area/sector/miaphus/beach/mineshaft)
 "Ee" = (
 /turf/simulated/floor/water/beach/corner{
 	dir = 4
 	},
-/area/tether_away/beach/jungle)
+/area/sector/miaphus/beach/jungle)
 "Eh" = (
 /turf/simulated/wall/sandstone,
-/area/tether_away/beach/resort/dorm1)
+/area/sector/miaphus/beach/resort/dorm1)
 "Ei" = (
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -3679,19 +3679,19 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/bunker/engi)
+/area/sector/miaphus/beach/bunker/engi)
 "En" = (
 /obj/structure/bed/chair/wood{
 	dir = 8
 	},
 /turf/simulated/floor/wood,
-/area/tether_away/beach/resort/canteen)
+/area/sector/miaphus/beach/resort/canteen)
 "Ep" = (
 /obj/machinery/pointdefense_control{
 	id_tag = "Miaphus"
 	},
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/aa)
+/area/sector/miaphus/beach/aa)
 "Eq" = (
 /obj/machinery/power/apc/alarms_hidden/east_mount,
 /obj/structure/cable/cyan{
@@ -3700,7 +3700,7 @@
 /turf/simulated/floor/tiled/asteroid_steel{
 	outdoors = 1
 	},
-/area/tether_away/beach/resort/bunk)
+/area/sector/miaphus/beach/resort/bunk)
 "Ew" = (
 /obj/machinery/air_alarm/alarms_hidden/east_mount{
 	pixel_x = 22
@@ -3714,12 +3714,12 @@
 	icon_state = "0-8"
 	},
 /turf/simulated/floor/wood/broken,
-/area/tether_away/beach/resort/dorm4)
+/area/sector/miaphus/beach/resort/dorm4)
 "Ey" = (
 /turf/simulated/floor/water/beach{
 	dir = 6
 	},
-/area/tether_away/beach/jungle)
+/area/sector/miaphus/beach/jungle)
 "ED" = (
 /obj/item/reagent_containers/glass/bucket,
 /obj/item/reagent_containers/glass/bucket,
@@ -3737,12 +3737,12 @@
 	},
 /obj/machinery/reagentgrinder,
 /turf/simulated/floor/tiled/asteroid_steel,
-/area/tether_away/beach/resort/greenhouse)
+/area/sector/miaphus/beach/resort/greenhouse)
 "EE" = (
 /obj/machinery/light/small,
 /obj/structure/janitorialcart,
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/bunker/janitor)
+/area/sector/miaphus/beach/bunker/janitor)
 "EG" = (
 /obj/structure/reagent_dispensers/watertank/high,
 /obj/item/paper{
@@ -3752,7 +3752,7 @@
 /turf/simulated/mineral/floor/cave{
 	name = "dirt"
 	},
-/area/tether_away/beach/mineshaft)
+/area/sector/miaphus/beach/mineshaft)
 "EI" = (
 /obj/structure/railing/grey{
 	dir = 8
@@ -3761,10 +3761,10 @@
 	dir = 1
 	},
 /turf/simulated/floor/wood,
-/area/tether_away/beach/resort/canteen)
+/area/sector/miaphus/beach/resort/canteen)
 "EJ" = (
 /turf/simulated/wall/r_wall,
-/area/tether_away/beach/bunker/bunk)
+/area/sector/miaphus/beach/bunker/bunk)
 "EM" = (
 /obj/machinery/atmospherics/pipe/simple/visible/cyan{
 	desc = "Its bone dry.";
@@ -3772,13 +3772,13 @@
 	name = "water pipe"
 	},
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/desalinator)
+/area/sector/miaphus/beach/desalinator)
 "EQ" = (
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/bunker/engi)
+/area/sector/miaphus/beach/bunker/engi)
 "ES" = (
 /obj/machinery/light/small{
 	dir = 8
@@ -3787,18 +3787,18 @@
 	pixel_x = -32
 	},
 /turf/simulated/floor/tiled/old_tile/white,
-/area/tether_away/beach/bunker/restroom)
+/area/sector/miaphus/beach/bunker/restroom)
 "Fb" = (
 /obj/machinery/light/small{
 	dir = 1
 	},
 /obj/structure/janitorialcart,
 /turf/simulated/floor/tiled/asteroid_steel,
-/area/tether_away/beach/resort/greenhouse)
+/area/sector/miaphus/beach/resort/greenhouse)
 "Fg" = (
 /obj/machinery/vending/fishing,
 /turf/simulated/floor/wood,
-/area/tether_away/beach/resort/fishing)
+/area/sector/miaphus/beach/resort/fishing)
 "Fm" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -3806,7 +3806,7 @@
 /turf/simulated/floor/tiled/asteroid_steel{
 	outdoors = 1
 	},
-/area/tether_away/beach/resort)
+/area/sector/miaphus/beach/resort)
 "Fr" = (
 /obj/structure/cable/cyan{
 	icon_state = "1-2"
@@ -3817,7 +3817,7 @@
 /turf/simulated/floor/tiled/asteroid_steel{
 	outdoors = 1
 	},
-/area/tether_away/beach/resort)
+/area/sector/miaphus/beach/resort)
 "Fv" = (
 /obj/structure/fence{
 	dir = 1
@@ -3828,42 +3828,42 @@
 /turf/simulated/floor/tiled/asteroid_steel{
 	outdoors = 1
 	},
-/area/tether_away/beach/mineyard)
+/area/sector/miaphus/beach/mineyard)
 "Fy" = (
 /obj/structure/table/marble,
 /obj/item/material/kitchen/utensil/spoon/plastic,
 /turf/simulated/floor/tiled/old_tile/white,
-/area/tether_away/beach/resort/canteen)
+/area/sector/miaphus/beach/resort/canteen)
 "FD" = (
 /obj/machinery/light/small{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/bunker/mess)
+/area/sector/miaphus/beach/bunker/mess)
 "FG" = (
 /obj/machinery/light/small/emergency{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/tether_away/beach/station/tunnel)
+/area/sector/miaphus/beach/station/tunnel)
 "FJ" = (
 /obj/structure/railing/grey{
 	dir = 8
 	},
 /turf/simulated/floor/water/deep,
-/area/tether_away/beach/aa)
+/area/sector/miaphus/beach/aa)
 "FR" = (
 /mob/living/simple_mob/animal/giant_spider/nurse/queen,
 /turf/simulated/mineral/floor/cave{
 	name = "dirt"
 	},
-/area/tether_away/beach/mineshaft)
+/area/sector/miaphus/beach/mineshaft)
 "FT" = (
 /obj/structure/bed/chair/sofa/black/left{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/bunker/mess)
+/area/sector/miaphus/beach/bunker/mess)
 "FW" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/machinery/light/small{
@@ -3881,7 +3881,7 @@
 /obj/random/medical,
 /obj/item/flashlight/color,
 /turf/simulated/floor/tiled/old_tile/white,
-/area/tether_away/beach/resort/lockermed)
+/area/sector/miaphus/beach/resort/lockermed)
 "Gg" = (
 /obj/effect/floor_decal/tracks{
 	dir = 8
@@ -3890,7 +3890,7 @@
 /turf/simulated/mineral/floor/cave{
 	name = "dirt"
 	},
-/area/tether_away/beach/mineshaft)
+/area/sector/miaphus/beach/mineshaft)
 "Gi" = (
 /obj/machinery/door/airlock/sandstone{
 	id_tag = "LoveShack3"
@@ -3899,7 +3899,7 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/asteroid_steel,
-/area/tether_away/beach/aa)
+/area/sector/miaphus/beach/aa)
 "Gj" = (
 /obj/structure/railing/grey{
 	dir = 8
@@ -3910,25 +3910,25 @@
 /turf/simulated/floor/tiled/asteroid_steel{
 	outdoors = 1
 	},
-/area/tether_away/beach/resort)
+/area/sector/miaphus/beach/resort)
 "Go" = (
 /obj/structure/window/wooden,
 /obj/structure/bed,
 /obj/random/bedsheet,
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/bunker/bunk)
+/area/sector/miaphus/beach/bunker/bunk)
 "Gr" = (
 /obj/structure/cable/cyan{
 	icon_state = "2-4"
 	},
 /turf/simulated/floor/tiled/old_tile/white,
-/area/tether_away/beach/resort/lockermed)
+/area/sector/miaphus/beach/resort/lockermed)
 "GB" = (
 /obj/machinery/door/airlock/maintenance/int{
 	name = "Bathroom"
 	},
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/bunker/restroom)
+/area/sector/miaphus/beach/bunker/restroom)
 "GE" = (
 /obj/machinery/atmospherics/pipe/tank{
 	desc = "A large vessel for containing brine, a by product of water desalination. It hasn't been used in a while.";
@@ -3941,14 +3941,14 @@
 	name = "water pipe"
 	},
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/desalinator)
+/area/sector/miaphus/beach/desalinator)
 "GI" = (
 /obj/structure/table/bench/wooden,
 /obj/machinery/light/small{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/desalinator)
+/area/sector/miaphus/beach/desalinator)
 "GQ" = (
 /obj/structure/closet/crate/mimic/cointoss,
 /obj/random/medical/pillbottle,
@@ -3961,11 +3961,11 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/station)
+/area/sector/miaphus/beach/station)
 "GS" = (
 /obj/effect/overlay/coconut,
 /turf/simulated/floor/outdoors/beach/sand,
-/area/tether_away/beach/jungle)
+/area/sector/miaphus/beach/jungle)
 "GX" = (
 /obj/structure/railing{
 	dir = 1
@@ -3975,10 +3975,10 @@
 	},
 /obj/item/clothing/gloves/boxing,
 /turf/simulated/floor/carpet/oracarpet,
-/area/tether_away/beach/bunker/mess)
+/area/sector/miaphus/beach/bunker/mess)
 "GY" = (
 /turf/simulated/wall,
-/area/tether_away/beach/station/terminal)
+/area/sector/miaphus/beach/station/terminal)
 "Hh" = (
 /obj/machinery/light/small/emergency{
 	dir = 8
@@ -3986,29 +3986,29 @@
 /turf/simulated/floor/maglev{
 	dir = 4
 	},
-/area/tether_away/beach/station/tram)
+/area/sector/miaphus/beach/station/tram)
 "Hj" = (
 /obj/structure/table/standard,
 /obj/item/material/knife/butch,
 /obj/item/material/kitchen/rollingpin,
 /turf/simulated/floor/tiled/old_tile/white,
-/area/tether_away/beach/bunker/kitchen)
+/area/sector/miaphus/beach/bunker/kitchen)
 "Hm" = (
 /obj/structure/salvageable/console_broken_os{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/desalinator)
+/area/sector/miaphus/beach/desalinator)
 "Ho" = (
 /obj/machinery/power/apc/alarms_hidden/north_mount,
 /obj/structure/cable/cyan{
 	icon_state = "0-2"
 	},
 /turf/simulated/floor/tiled/old_tile/white,
-/area/tether_away/beach/resort/canteen)
+/area/sector/miaphus/beach/resort/canteen)
 "Hq" = (
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/station/tram)
+/area/sector/miaphus/beach/station/tram)
 "Hr" = (
 /obj/machinery/power/pointdefense{
 	id_tag = "Miaphus"
@@ -4016,25 +4016,25 @@
 /turf/simulated/floor/tiled/asteroid_steel{
 	outdoors = 1
 	},
-/area/tether_away/beach/aa)
+/area/sector/miaphus/beach/aa)
 "Hv" = (
 /obj/effect/floor_decal/tracks/t_west,
 /turf/simulated/mineral/floor/cave{
 	name = "dirt"
 	},
-/area/tether_away/beach/mineshaft)
+/area/sector/miaphus/beach/mineshaft)
 "Hx" = (
 /obj/structure/railing/grey,
 /turf/simulated/floor/water/beach{
 	dir = 5
 	},
-/area/tether_away/beach/desalinator)
+/area/sector/miaphus/beach/desalinator)
 "HA" = (
 /obj/item/mining_scanner,
 /turf/simulated/mineral/floor/cave{
 	name = "dirt"
 	},
-/area/tether_away/beach/mineshaft)
+/area/sector/miaphus/beach/mineshaft)
 "HC" = (
 /obj/effect/floor_decal/tracks/t_south{
 	dir = 8
@@ -4042,7 +4042,7 @@
 /turf/simulated/mineral/floor/cave{
 	name = "dirt"
 	},
-/area/tether_away/beach/mineshaft)
+/area/sector/miaphus/beach/mineshaft)
 "HD" = (
 /obj/structure/table/steel_reinforced,
 /obj/machinery/light/small,
@@ -4052,31 +4052,31 @@
 /obj/random/tool,
 /obj/item/flashlight/lantern,
 /turf/simulated/floor/tiled/asteroid_steel,
-/area/tether_away/beach/mineyard)
+/area/sector/miaphus/beach/mineyard)
 "HF" = (
 /obj/effect/floor_decal/industrial/halfstair{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/asteroid_steel,
-/area/tether_away/beach/desalinator)
+/area/sector/miaphus/beach/desalinator)
 "HH" = (
 /obj/structure/cable/cyan,
 /obj/machinery/power/apc/alarms_hidden/west_mount,
 /turf/simulated/floor/tiled/asteroid_steel{
 	outdoors = 1
 	},
-/area/tether_away/beach/resort/greenhouse)
+/area/sector/miaphus/beach/resort/greenhouse)
 "HI" = (
 /obj/structure/table/wooden_reinforced,
 /obj/item/paper_bin,
 /turf/simulated/floor/wood,
-/area/tether_away/beach/desalinator)
+/area/sector/miaphus/beach/desalinator)
 "HK" = (
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/aa)
+/area/sector/miaphus/beach/aa)
 "HN" = (
 /obj/machinery/atmospherics/pipe/simple/visible/cyan{
 	desc = "Its bone dry.";
@@ -4084,22 +4084,22 @@
 	name = "water pipe"
 	},
 /turf/simulated/floor/water/deep,
-/area/tether_away/beach/desalinator)
+/area/sector/miaphus/beach/desalinator)
 "HO" = (
 /obj/structure/mirror{
 	pixel_x = 27
 	},
 /turf/simulated/floor/wood,
-/area/tether_away/beach/resort/dorm3)
+/area/sector/miaphus/beach/resort/dorm3)
 "HP" = (
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/station)
+/area/sector/miaphus/beach/station)
 "HQ" = (
 /turf/simulated/wall/sandstone,
-/area/tether_away/beach/resort/greenhouse)
+/area/sector/miaphus/beach/resort/greenhouse)
 "HS" = (
 /turf/simulated/wall/wood,
-/area/tether_away/beach/resort/fishing)
+/area/sector/miaphus/beach/resort/fishing)
 "HV" = (
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -4108,11 +4108,11 @@
 	icon_state = "2-4"
 	},
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/bunker)
+/area/sector/miaphus/beach/bunker)
 "HW" = (
 /obj/overmap/entity/visitable/sector/miaphus,
 /turf/simulated/floor/water/deep,
-/area/tether_away/beach/water)
+/area/sector/miaphus/beach/water)
 "Ia" = (
 /obj/structure/fence{
 	dir = 4
@@ -4120,7 +4120,7 @@
 /turf/simulated/floor/tiled/asteroid_steel{
 	outdoors = 1
 	},
-/area/tether_away/beach/mineyard)
+/area/sector/miaphus/beach/mineyard)
 "Id" = (
 /obj/structure/closet/cabinet{
 	density = 0;
@@ -4134,17 +4134,17 @@
 	icon_state = "0-8"
 	},
 /turf/simulated/floor/wood/broken,
-/area/tether_away/beach/resort/dorm5)
+/area/sector/miaphus/beach/resort/dorm5)
 "Ij" = (
 /obj/structure/reagent_dispensers/water_cooler/full,
 /turf/simulated/floor/wood,
-/area/tether_away/beach/desalinator)
+/area/sector/miaphus/beach/desalinator)
 "Ir" = (
 /obj/effect/floor_decal/industrial/halfstair{
 	dir = 8
 	},
 /turf/simulated/floor/outdoors/beach/sand/desert,
-/area/tether_away/beach/desalinator)
+/area/sector/miaphus/beach/desalinator)
 "Iu" = (
 /obj/machinery/light/small{
 	dir = 1
@@ -4152,20 +4152,20 @@
 /turf/simulated/floor/tiled/asteroid_steel{
 	outdoors = 1
 	},
-/area/tether_away/beach/resort/greenhouse)
+/area/sector/miaphus/beach/resort/greenhouse)
 "IA" = (
 /obj/effect/floor_decal/tracks{
 	dir = 1
 	},
 /turf/simulated/floor/outdoors/beach/sand,
-/area/tether_away/beach/jungle)
+/area/sector/miaphus/beach/jungle)
 "IK" = (
 /obj/structure/bed/chair/bay/comfy/black{
 	dir = 8
 	},
 /obj/machinery/light/small,
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/station/tram)
+/area/sector/miaphus/beach/station/tram)
 "IR" = (
 /obj/structure/closet/crate/mimic/cointoss,
 /obj/random/maintenance/security,
@@ -4179,7 +4179,7 @@
 /obj/random/maintenance/security,
 /obj/random/maintenance/security,
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/station)
+/area/sector/miaphus/beach/station)
 "IV" = (
 /obj/structure/table/steel_reinforced,
 /obj/item/storage/box/glasses/pint,
@@ -4191,7 +4191,7 @@
 /obj/item/storage/box/glasses,
 /obj/item/storage/box/glasses,
 /turf/simulated/floor/tiled/old_tile/white,
-/area/tether_away/beach/resort/canteen)
+/area/sector/miaphus/beach/resort/canteen)
 "IY" = (
 /obj/machinery/door/airlock/sandstone{
 	id_tag = "LoveShack1"
@@ -4200,15 +4200,15 @@
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/asteroid_steel,
-/area/tether_away/beach/resort/dorm1)
+/area/sector/miaphus/beach/resort/dorm1)
 "IZ" = (
 /obj/effect/overlay/palmtree_r,
 /turf/simulated/floor/outdoors/beach/sand,
-/area/tether_away/beach/resort)
+/area/sector/miaphus/beach/resort)
 "Ja" = (
 /obj/vehicle/ridden/boat/dragon,
 /turf/simulated/floor/water/indoors,
-/area/tether_away/beach/resort/fishing)
+/area/sector/miaphus/beach/resort/fishing)
 "Je" = (
 /obj/structure/cable/cyan{
 	icon_state = "0-8"
@@ -4216,20 +4216,20 @@
 /obj/machinery/power/apc/alarms_hidden/east_mount,
 /obj/structure/flora/pottedplant/dead,
 /turf/simulated/floor/tiled/old_tile/white,
-/area/tether_away/beach/resort/lockermed)
+/area/sector/miaphus/beach/resort/lockermed)
 "Jh" = (
 /obj/structure/bed/chair/bay/comfy/black{
 	dir = 1
 	},
 /obj/machinery/light/small,
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/station/tram)
+/area/sector/miaphus/beach/station/tram)
 "Ji" = (
 /obj/machinery/door/airlock/maintenance{
 	name = "Locker Room"
 	},
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/desalinator)
+/area/sector/miaphus/beach/desalinator)
 "Jm" = (
 /obj/effect/floor_decal/tracks{
 	dir = 8
@@ -4237,11 +4237,11 @@
 /turf/simulated/floor/tiled/asteroid_steel{
 	outdoors = 1
 	},
-/area/tether_away/beach/jungle)
+/area/sector/miaphus/beach/jungle)
 "Jn" = (
 /obj/effect/overlay/coconut,
 /turf/simulated/floor/outdoors/beach/sand/lowdesert,
-/area/tether_away/beach/jungle)
+/area/sector/miaphus/beach/jungle)
 "JC" = (
 /obj/effect/floor_decal/tracks/t_north{
 	dir = 9
@@ -4250,18 +4250,18 @@
 /turf/simulated/mineral/floor/cave{
 	name = "dirt"
 	},
-/area/tether_away/beach/mineshaft)
+/area/sector/miaphus/beach/mineshaft)
 "JD" = (
 /obj/structure/loot_pile/maint/trash,
 /turf/simulated/mineral/floor/cave{
 	name = "dirt"
 	},
-/area/tether_away/beach/mineshaft)
+/area/sector/miaphus/beach/mineshaft)
 "JG" = (
 /obj/structure/table/marble,
 /obj/item/material/knife/butch,
 /turf/simulated/floor/wood,
-/area/tether_away/beach/resort/fishing)
+/area/sector/miaphus/beach/resort/fishing)
 "JI" = (
 /obj/structure/railing/grey{
 	dir = 1
@@ -4269,13 +4269,13 @@
 /turf/simulated/floor/tiled/asteroid_steel{
 	outdoors = 1
 	},
-/area/tether_away/beach/aa)
+/area/sector/miaphus/beach/aa)
 "JM" = (
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/old_tile/white,
-/area/tether_away/beach/bunker/restroom)
+/area/sector/miaphus/beach/bunker/restroom)
 "JQ" = (
 /obj/structure/fence/cut/large{
 	dir = 4
@@ -4283,7 +4283,7 @@
 /turf/simulated/mineral/floor/cave{
 	name = "dirt"
 	},
-/area/tether_away/beach/jungle)
+/area/sector/miaphus/beach/jungle)
 "JS" = (
 /obj/structure/railing/grey{
 	dir = 1
@@ -4292,7 +4292,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/water/deep,
-/area/tether_away/beach/desalinator)
+/area/sector/miaphus/beach/desalinator)
 "JU" = (
 /obj/structure/cable/cyan{
 	icon_state = "1-8"
@@ -4300,33 +4300,33 @@
 /turf/simulated/floor/tiled/asteroid_steel{
 	outdoors = 1
 	},
-/area/tether_away/beach/resort)
+/area/sector/miaphus/beach/resort)
 "JX" = (
 /obj/machinery/floodlight,
 /turf/simulated/floor/wood,
-/area/tether_away/beach/mineshaft)
+/area/sector/miaphus/beach/mineshaft)
 "JZ" = (
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/bunker/mess)
+/area/sector/miaphus/beach/bunker/mess)
 "Kg" = (
 /obj/structure/bed/chair/bay{
 	dir = 1
 	},
 /turf/simulated/floor/wood/broken,
-/area/tether_away/beach/station/terminal)
+/area/sector/miaphus/beach/station/terminal)
 "Ki" = (
 /obj/structure/railing{
 	dir = 1
 	},
 /turf/simulated/floor/carpet/purcarpet,
-/area/tether_away/beach/bunker/mess)
+/area/sector/miaphus/beach/bunker/mess)
 "Kj" = (
 /obj/machinery/vending/boozeomat,
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/bunker/mess)
+/area/sector/miaphus/beach/bunker/mess)
 "Kk" = (
 /obj/structure/table/standard{
 	name = "plastic table frame"
@@ -4343,20 +4343,20 @@
 	name = "water pipe"
 	},
 /turf/simulated/floor/tiled/asteroid_steel,
-/area/tether_away/beach/resort/greenhouse)
+/area/sector/miaphus/beach/resort/greenhouse)
 "Kn" = (
 /obj/random/multiple/ores,
 /turf/simulated/mineral/floor/cave{
 	name = "dirt"
 	},
-/area/tether_away/beach/mineshaft)
+/area/sector/miaphus/beach/mineshaft)
 "Ko" = (
 /obj/structure/railing/grey{
 	dir = 8
 	},
 /obj/structure/railing/grey,
 /turf/simulated/floor/water/deep,
-/area/tether_away/beach/aa)
+/area/sector/miaphus/beach/aa)
 "Kq" = (
 /obj/machinery/portable_atmospherics/hydroponics,
 /obj/machinery/atmospherics/pipe/simple/visible/cyan{
@@ -4365,26 +4365,26 @@
 	name = "water pipe"
 	},
 /turf/simulated/floor/tiled/asteroid_steel,
-/area/tether_away/beach/resort/greenhouse)
+/area/sector/miaphus/beach/resort/greenhouse)
 "Kw" = (
 /turf/simulated/floor/water/beach{
 	dir = 8
 	},
-/area/tether_away/beach/jungle)
+/area/sector/miaphus/beach/jungle)
 "Kz" = (
 /obj/structure/railing/grey{
 	dir = 8
 	},
 /turf/simulated/floor/water,
-/area/tether_away/beach/desalinator)
+/area/sector/miaphus/beach/desalinator)
 "KL" = (
 /obj/structure/closet/crate/miningcar,
 /obj/item/flashlight/lantern,
 /turf/simulated/floor/outdoors/beach/sand,
-/area/tether_away/beach/jungle)
+/area/sector/miaphus/beach/jungle)
 "KN" = (
 /turf/simulated/wall/wood,
-/area/tether_away/beach/coast)
+/area/sector/miaphus/beach/coast)
 "KQ" = (
 /obj/effect/floor_decal/tracks/t_north{
 	dir = 9
@@ -4393,21 +4393,21 @@
 /turf/simulated/mineral/floor/cave{
 	name = "dirt"
 	},
-/area/tether_away/beach/mineshaft)
+/area/sector/miaphus/beach/mineshaft)
 "KR" = (
 /obj/structure/bed/chair/bay,
 /turf/simulated/floor/wood/broken,
-/area/tether_away/beach/station/terminal)
+/area/sector/miaphus/beach/station/terminal)
 "KT" = (
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
 /obj/item/stool/padded,
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/bunker/mess)
+/area/sector/miaphus/beach/bunker/mess)
 "KU" = (
 /turf/simulated/mineral/ignore_mapgen,
-/area/tether_away/beach/resort)
+/area/sector/miaphus/beach/resort)
 "KW" = (
 /obj/random/mob/spider/mutant,
 /obj/effect/floor_decal/tracks{
@@ -4416,31 +4416,31 @@
 /turf/simulated/mineral/floor/cave{
 	name = "dirt"
 	},
-/area/tether_away/beach/mineshaft)
+/area/sector/miaphus/beach/mineshaft)
 "Le" = (
 /obj/structure/fence,
 /turf/simulated/floor/tiled/asteroid_steel{
 	outdoors = 1
 	},
-/area/tether_away/beach/mineyard)
+/area/sector/miaphus/beach/mineyard)
 "Lh" = (
 /obj/machinery/door/blast/shutters{
 	dir = 2;
 	name = "Traincar Door"
 	},
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/station)
+/area/sector/miaphus/beach/station)
 "Lj" = (
 /turf/unsimulated/wall/mineral,
-/area/tether_away/beach/coast)
+/area/sector/miaphus/beach/coast)
 "Lo" = (
 /obj/structure/sign/warning/high_voltage,
 /turf/simulated/wall,
-/area/tether_away/beach/station/tunnel)
+/area/sector/miaphus/beach/station/tunnel)
 "Lp" = (
 /obj/structure/simple_door/wood,
 /turf/simulated/floor/tiled/old_tile/white,
-/area/tether_away/beach/resort/lockermed)
+/area/sector/miaphus/beach/resort/lockermed)
 "Lq" = (
 /obj/structure/window/wooden,
 /obj/structure/closet,
@@ -4452,7 +4452,7 @@
 /obj/random/maintenance,
 /obj/random/mre,
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/bunker/bunk)
+/area/sector/miaphus/beach/bunker/bunk)
 "Lv" = (
 /obj/machinery/light/small/emergency{
 	dir = 4
@@ -4462,7 +4462,7 @@
 	icon_state = "0-8"
 	},
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/bunker/engi)
+/area/sector/miaphus/beach/bunker/engi)
 "Lw" = (
 /obj/machinery/door/airlock/sandstone{
 	id_tag = "LoveShack4"
@@ -4471,21 +4471,21 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/asteroid_steel,
-/area/tether_away/beach/resort/dorm4)
+/area/sector/miaphus/beach/resort/dorm4)
 "LB" = (
 /turf/simulated/wall/sandstone,
-/area/tether_away/beach/resort/canteen)
+/area/sector/miaphus/beach/resort/canteen)
 "LF" = (
 /obj/machinery/light/small{
 	dir = 4
 	},
 /mob/living/simple_mob/animal/roach/jaeger,
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/bunker)
+/area/sector/miaphus/beach/bunker)
 "LG" = (
 /obj/structure/salvageable/data,
 /turf/simulated/floor/tiled/old_tile/white,
-/area/tether_away/beach/resort/lockermed)
+/area/sector/miaphus/beach/resort/lockermed)
 "LH" = (
 /obj/effect/floor_decal/tracks/t_north{
 	dir = 10
@@ -4493,10 +4493,10 @@
 /turf/simulated/mineral/floor/cave{
 	name = "dirt"
 	},
-/area/tether_away/beach/mineshaft)
+/area/sector/miaphus/beach/mineshaft)
 "LJ" = (
 /turf/simulated/floor/wood/broken,
-/area/tether_away/beach/resort/bunk)
+/area/sector/miaphus/beach/resort/bunk)
 "LO" = (
 /obj/machinery/shower{
 	dir = 4;
@@ -4513,41 +4513,41 @@
 /turf/simulated/floor/tiled{
 	icon_state = "techmaint"
 	},
-/area/tether_away/beach/resort/greenhouse)
+/area/sector/miaphus/beach/resort/greenhouse)
 "LQ" = (
 /obj/structure/table/steel_reinforced,
 /obj/machinery/microwave,
 /turf/simulated/floor/tiled/old_tile/white,
-/area/tether_away/beach/resort/canteen)
+/area/sector/miaphus/beach/resort/canteen)
 "LT" = (
 /obj/structure/railing/grey{
 	dir = 8
 	},
 /turf/simulated/floor/water/deep,
-/area/tether_away/beach/desalinator)
+/area/sector/miaphus/beach/desalinator)
 "LZ" = (
 /turf/simulated/floor/wood{
 	outdoors = 1
 	},
-/area/tether_away/beach/water)
+/area/sector/miaphus/beach/water)
 "Mb" = (
 /obj/structure/flora/pottedplant/dead,
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/bunker)
+/area/sector/miaphus/beach/bunker)
 "Mg" = (
 /obj/random/mob/spider,
 /turf/simulated/mineral/floor/cave{
 	name = "dirt"
 	},
-/area/tether_away/beach/jungle)
+/area/sector/miaphus/beach/jungle)
 "Mh" = (
 /obj/structure/salvageable/server,
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/station/tram)
+/area/sector/miaphus/beach/station/tram)
 "Mi" = (
 /obj/structure/salvageable/machine_os,
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/bunker)
+/area/sector/miaphus/beach/bunker)
 "Mj" = (
 /obj/structure/railing/grey{
 	dir = 8
@@ -4556,11 +4556,11 @@
 	dir = 1
 	},
 /turf/simulated/floor/water/deep,
-/area/tether_away/beach/desalinator)
+/area/sector/miaphus/beach/desalinator)
 "Mn" = (
 /obj/structure/salvageable/data,
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/bunker)
+/area/sector/miaphus/beach/bunker)
 "Mp" = (
 /obj/structure/cable{
 	icon_state = "1-8"
@@ -4574,14 +4574,14 @@
 /turf/simulated/floor/tiled/asteroid_steel{
 	outdoors = 1
 	},
-/area/tether_away/beach/resort)
+/area/sector/miaphus/beach/resort)
 "Ms" = (
 /obj/structure/railing/grey{
 	dir = 4
 	},
 /obj/machinery/light/small,
 /turf/simulated/floor/wood,
-/area/tether_away/beach/resort/fishing)
+/area/sector/miaphus/beach/resort/fishing)
 "Mx" = (
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -4589,7 +4589,7 @@
 /obj/structure/table/woodentable,
 /obj/item/storage/box/glasses/rocks,
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/bunker/mess)
+/area/sector/miaphus/beach/bunker/mess)
 "ME" = (
 /obj/structure/cable{
 	icon_state = "1-8"
@@ -4600,12 +4600,12 @@
 /turf/simulated/floor/tiled/asteroid_steel{
 	outdoors = 1
 	},
-/area/tether_away/beach/resort)
+/area/sector/miaphus/beach/resort)
 "MI" = (
 /turf/simulated/floor/water/beach{
 	dir = 10
 	},
-/area/tether_away/beach/coast)
+/area/sector/miaphus/beach/coast)
 "ML" = (
 /obj/structure/fence{
 	dir = 4
@@ -4614,14 +4614,14 @@
 /turf/simulated/floor/tiled/asteroid_steel{
 	outdoors = 1
 	},
-/area/tether_away/beach/station)
+/area/sector/miaphus/beach/station)
 "MN" = (
 /obj/machinery/atmospherics/pipe/simple/visible/cyan{
 	desc = "Its bone dry.";
 	name = "water pipe"
 	},
 /turf/simulated/floor/water/deep,
-/area/tether_away/beach/desalinator)
+/area/sector/miaphus/beach/desalinator)
 "MX" = (
 /obj/structure/reagent_dispensers/coolanttank,
 /obj/machinery/atmospherics/pipe/simple/visible/cyan{
@@ -4630,7 +4630,7 @@
 	name = "water pipe"
 	},
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/desalinator)
+/area/sector/miaphus/beach/desalinator)
 "MY" = (
 /obj/structure/cable{
 	icon_state = "0-4"
@@ -4647,7 +4647,7 @@
 	pixel_y = -2
 	},
 /turf/simulated/floor/tiled/old_tile/white,
-/area/tether_away/beach/bunker/kitchen)
+/area/sector/miaphus/beach/bunker/kitchen)
 "MZ" = (
 /obj/structure/fence{
 	dir = 4
@@ -4655,7 +4655,7 @@
 /turf/simulated/mineral/floor/cave{
 	name = "dirt"
 	},
-/area/tether_away/beach/mineshaft)
+/area/sector/miaphus/beach/mineshaft)
 "Nf" = (
 /obj/machinery/light/small{
 	dir = 1;
@@ -4664,7 +4664,7 @@
 /turf/simulated/floor/tiled/asteroid_steel{
 	outdoors = 1
 	},
-/area/tether_away/beach/aa)
+/area/sector/miaphus/beach/aa)
 "Nn" = (
 /obj/machinery/light/small{
 	dir = 4
@@ -4673,7 +4673,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/wood/broken,
-/area/tether_away/beach/resort/canteen)
+/area/sector/miaphus/beach/resort/canteen)
 "Nt" = (
 /obj/structure/cable{
 	icon_state = "2-4"
@@ -4681,10 +4681,10 @@
 /turf/simulated/floor/tiled/asteroid_steel{
 	outdoors = 1
 	},
-/area/tether_away/beach/resort)
+/area/sector/miaphus/beach/resort)
 "Nv" = (
 /turf/simulated/floor/outdoors/beach/sand,
-/area/tether_away/beach/resort)
+/area/sector/miaphus/beach/resort)
 "Nw" = (
 /obj/structure/closet/crate/mimic/cointoss,
 /obj/random/mre,
@@ -4698,12 +4698,12 @@
 /obj/random/mre,
 /obj/random/mre,
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/station)
+/area/sector/miaphus/beach/station)
 "ND" = (
 /obj/structure/table/glass,
 /obj/structure/salvageable/personal,
 /turf/simulated/floor/tiled/old_tile/white,
-/area/tether_away/beach/resort/lockermed)
+/area/sector/miaphus/beach/resort/lockermed)
 "NL" = (
 /obj/machinery/light/small{
 	dir = 8
@@ -4712,10 +4712,10 @@
 	dir = 4
 	},
 /turf/simulated/floor/wood,
-/area/tether_away/beach/desalinator)
+/area/sector/miaphus/beach/desalinator)
 "NQ" = (
 /turf/simulated/floor/tiled/asteroid_steel,
-/area/tether_away/beach/desalinator)
+/area/sector/miaphus/beach/desalinator)
 "NU" = (
 /obj/structure/bed/chair/bay/comfy/black{
 	dir = 8
@@ -4724,7 +4724,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/station/tram)
+/area/sector/miaphus/beach/station/tram)
 "NW" = (
 /obj/structure/closet/crate/miningcar,
 /obj/item/ammo_magazine/a357/speedloader,
@@ -4738,13 +4738,13 @@
 /turf/simulated/mineral/floor/cave{
 	name = "dirt"
 	},
-/area/tether_away/beach/mineshaft)
+/area/sector/miaphus/beach/mineshaft)
 "NX" = (
 /obj/machinery/door/airlock{
 	name = "Restroom"
 	},
 /turf/simulated/floor/tiled/old_tile/white,
-/area/tether_away/beach/desalinator)
+/area/sector/miaphus/beach/desalinator)
 "Ob" = (
 /obj/structure/closet/crate/miningcar,
 /obj/item/grenade/explosive/ied/tyrmalin,
@@ -4757,39 +4757,39 @@
 /turf/simulated/mineral/floor/cave{
 	name = "dirt"
 	},
-/area/tether_away/beach/mineshaft)
+/area/sector/miaphus/beach/mineshaft)
 "Of" = (
 /obj/structure/fence{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/asteroid_steel,
-/area/tether_away/beach/powershed)
+/area/sector/miaphus/beach/powershed)
 "Oi" = (
 /obj/structure/bed/chair/comfy,
 /turf/simulated/floor/wood,
-/area/tether_away/beach/desalinator)
+/area/sector/miaphus/beach/desalinator)
 "Oj" = (
 /obj/structure/cable{
 	icon_state = "2-8"
 	},
 /mob/living/simple_mob/animal/roach/panzer,
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/bunker/engi)
+/area/sector/miaphus/beach/bunker/engi)
 "Om" = (
 /obj/random/multiple/underdark/miningdrills,
 /turf/simulated/mineral/floor/cave{
 	name = "dirt"
 	},
-/area/tether_away/beach/bunker)
+/area/sector/miaphus/beach/bunker)
 "Oo" = (
 /turf/simulated/floor/tiled/asteroid_steel,
-/area/tether_away/beach/mineyard)
+/area/sector/miaphus/beach/mineyard)
 "Ot" = (
 /obj/structure/bed/chair/bay/comfy/black{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/station/tram)
+/area/sector/miaphus/beach/station/tram)
 "Ov" = (
 /obj/machinery/light/small{
 	dir = 4
@@ -4797,12 +4797,12 @@
 /turf/simulated/floor/tiled/asteroid_steel{
 	outdoors = 1
 	},
-/area/tether_away/beach/resort/bunk)
+/area/sector/miaphus/beach/resort/bunk)
 "Ox" = (
 /turf/simulated/floor/tiled/techfloor/grid{
 	outdoors = 1
 	},
-/area/tether_away/beach/station/tram)
+/area/sector/miaphus/beach/station/tram)
 "Oz" = (
 /obj/structure/reagent_dispensers/coolanttank,
 /obj/machinery/atmospherics/pipe/simple/visible/cyan{
@@ -4814,38 +4814,38 @@
 	name = "water pipe"
 	},
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/desalinator)
+/area/sector/miaphus/beach/desalinator)
 "OE" = (
 /obj/machinery/power/apc/alarms_hidden/north_mount,
 /obj/structure/cable{
 	icon_state = "0-2"
 	},
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/aa)
+/area/sector/miaphus/beach/aa)
 "OJ" = (
 /obj/structure/bed/chair/sofa/black/corner{
 	dir = 4
 	},
 /turf/simulated/floor/wood/broken,
-/area/tether_away/beach/desalinator)
+/area/sector/miaphus/beach/desalinator)
 "OK" = (
 /obj/effect/overlay/palmtree_l,
 /turf/simulated/floor/outdoors/beach/sand,
-/area/tether_away/beach/resort)
+/area/sector/miaphus/beach/resort)
 "OL" = (
 /obj/machinery/atmospherics/pipe/manifold4w/visible/cyan{
 	desc = "Its bone dry.";
 	name = "water pipe"
 	},
 /turf/simulated/floor/tiled/asteroid_steel,
-/area/tether_away/beach/resort/greenhouse)
+/area/sector/miaphus/beach/resort/greenhouse)
 "OS" = (
 /obj/structure/cable{
 	icon_state = "2-8"
 	},
 /mob/living/simple_mob/animal/roach/seuche,
 /turf/simulated/floor/tiled/old_tile/white,
-/area/tether_away/beach/bunker/kitchen)
+/area/sector/miaphus/beach/bunker/kitchen)
 "OZ" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/item/stack/cable_coil/pink,
@@ -4853,14 +4853,14 @@
 /turf/simulated/mineral/floor/cave{
 	name = "dirt"
 	},
-/area/tether_away/beach/mineshaft)
+/area/sector/miaphus/beach/mineshaft)
 "Pj" = (
 /obj/structure/bed/chair/bay,
 /obj/structure/window/basic{
 	dir = 1
 	},
 /turf/simulated/floor/wood,
-/area/tether_away/beach/station/terminal)
+/area/sector/miaphus/beach/station/terminal)
 "Po" = (
 /obj/effect/floor_decal/tracks{
 	dir = 10
@@ -4868,7 +4868,7 @@
 /turf/simulated/floor/tiled/asteroid_steel{
 	outdoors = 1
 	},
-/area/tether_away/beach/mineyard)
+/area/sector/miaphus/beach/mineyard)
 "Pw" = (
 /obj/machinery/light/small{
 	dir = 1
@@ -4877,17 +4877,17 @@
 	dir = 4
 	},
 /turf/simulated/floor/wood,
-/area/tether_away/beach/resort/canteen)
+/area/sector/miaphus/beach/resort/canteen)
 "PA" = (
 /obj/structure/railing{
 	dir = 8
 	},
 /turf/simulated/floor/carpet/oracarpet,
-/area/tether_away/beach/bunker/mess)
+/area/sector/miaphus/beach/bunker/mess)
 "PC" = (
 /obj/structure/salvageable/computer,
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/desalinator)
+/area/sector/miaphus/beach/desalinator)
 "PG" = (
 /obj/machinery/shower{
 	dir = 8;
@@ -4903,7 +4903,7 @@
 /turf/simulated/floor/tiled{
 	icon_state = "techmaint"
 	},
-/area/tether_away/beach/resort/greenhouse)
+/area/sector/miaphus/beach/resort/greenhouse)
 "PJ" = (
 /obj/effect/floor_decal/tracks{
 	dir = 1
@@ -4912,19 +4912,19 @@
 /turf/simulated/mineral/floor/cave{
 	name = "dirt"
 	},
-/area/tether_away/beach/mineshaft)
+/area/sector/miaphus/beach/mineshaft)
 "PK" = (
 /obj/structure/loot_pile/mecha/ripley/random_sprite,
 /turf/simulated/floor/tiled/asteroid_steel{
 	outdoors = 1
 	},
-/area/tether_away/beach/mineyard)
+/area/sector/miaphus/beach/mineyard)
 "PP" = (
 /obj/effect/floor_decal/industrial/halfstair{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/asteroid_steel,
-/area/tether_away/beach/desalinator)
+/area/sector/miaphus/beach/desalinator)
 "PQ" = (
 /obj/structure/toilet{
 	dir = 1
@@ -4932,7 +4932,7 @@
 /obj/machinery/light/small,
 /mob/living/simple_mob/animal/roach/atomar,
 /turf/simulated/floor/tiled/old_tile/white,
-/area/tether_away/beach/bunker/restroom)
+/area/sector/miaphus/beach/bunker/restroom)
 "PV" = (
 /obj/effect/floor_decal/tracks{
 	dir = 8
@@ -4940,10 +4940,10 @@
 /turf/simulated/mineral/floor/cave{
 	name = "dirt"
 	},
-/area/tether_away/beach/mineshaft)
+/area/sector/miaphus/beach/mineshaft)
 "PW" = (
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/bunker/mess)
+/area/sector/miaphus/beach/bunker/mess)
 "PX" = (
 /obj/machinery/door/airlock/maintenance/int{
 	name = "Bathroom"
@@ -4952,27 +4952,27 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/bunker/bunk)
+/area/sector/miaphus/beach/bunker/bunk)
 "Qe" = (
 /turf/simulated/wall/r_wall,
-/area/tether_away/beach/bunker/engi)
+/area/sector/miaphus/beach/bunker/engi)
 "Qm" = (
 /obj/structure/fence/door/locked,
 /turf/simulated/floor/tiled/asteroid_steel{
 	outdoors = 1
 	},
-/area/tether_away/beach/mineyard)
+/area/sector/miaphus/beach/mineyard)
 "Qn" = (
 /obj/structure/table/woodentable,
 /obj/item/storage/box/glasses/square,
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/bunker/mess)
+/area/sector/miaphus/beach/bunker/mess)
 "Qo" = (
 /obj/machinery/door/airlock/maintenance/int{
 	name = "Bathroom"
 	},
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/bunker/bunk)
+/area/sector/miaphus/beach/bunker/bunk)
 "Qr" = (
 /obj/machinery/light/small{
 	dir = 8
@@ -4980,17 +4980,17 @@
 /obj/structure/bed,
 /obj/item/bedsheet/medical,
 /turf/simulated/floor/tiled/old_tile/white,
-/area/tether_away/beach/resort/lockermed)
+/area/sector/miaphus/beach/resort/lockermed)
 "Qs" = (
 /obj/machinery/light/small{
 	dir = 1
 	},
 /obj/structure/salvageable/data_os,
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/bunker)
+/area/sector/miaphus/beach/bunker)
 "Qt" = (
 /turf/simulated/floor/wood/broken,
-/area/tether_away/beach/desalinator)
+/area/sector/miaphus/beach/desalinator)
 "Qx" = (
 /obj/random/firstaid,
 /obj/random/firstaid,
@@ -5002,31 +5002,31 @@
 /turf/simulated/mineral/floor/cave{
 	name = "dirt"
 	},
-/area/tether_away/beach/mineshaft)
+/area/sector/miaphus/beach/mineshaft)
 "Qz" = (
 /obj/machinery/light/small{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/old_tile/white,
-/area/tether_away/beach/bunker/restroom)
+/area/sector/miaphus/beach/bunker/restroom)
 "QB" = (
 /obj/structure/bed/chair/bay{
 	dir = 1
 	},
 /obj/structure/window/basic,
 /turf/simulated/floor/wood/broken,
-/area/tether_away/beach/station/terminal)
+/area/sector/miaphus/beach/station/terminal)
 "QC" = (
 /obj/structure/bed/chair/bay/comfy/black{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/station/tram)
+/area/sector/miaphus/beach/station/tram)
 "QH" = (
 /obj/structure/table/wooden_reinforced,
 /obj/structure/salvageable/personal,
 /turf/simulated/floor/wood,
-/area/tether_away/beach/desalinator)
+/area/sector/miaphus/beach/desalinator)
 "QJ" = (
 /obj/machinery/light/small{
 	dir = 4
@@ -5034,28 +5034,28 @@
 /turf/simulated/floor/tiled/asteroid_steel{
 	outdoors = 1
 	},
-/area/tether_away/beach/aa)
+/area/sector/miaphus/beach/aa)
 "QL" = (
 /obj/structure/simple_door/wood,
 /turf/simulated/floor/tiled/asteroid_steel,
-/area/tether_away/beach/resort)
+/area/sector/miaphus/beach/resort)
 "QR" = (
 /obj/structure/cable,
 /obj/machinery/power/solar,
 /turf/simulated/floor{
 	outdoors = 1
 	},
-/area/tether_away/beach/resort)
+/area/sector/miaphus/beach/resort)
 "QU" = (
 /obj/machinery/door/airlock/hatch,
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/bunker)
+/area/sector/miaphus/beach/bunker)
 "QV" = (
 /obj/random/mob/spider/nurse,
 /turf/simulated/mineral/floor/cave{
 	name = "dirt"
 	},
-/area/tether_away/beach/mineshaft)
+/area/sector/miaphus/beach/mineshaft)
 "QW" = (
 /obj/structure/railing/grey{
 	dir = 8
@@ -5064,20 +5064,20 @@
 /turf/simulated/floor/water/beach{
 	dir = 1
 	},
-/area/tether_away/beach/desalinator)
+/area/sector/miaphus/beach/desalinator)
 "QX" = (
 /obj/structure/table/steel_reinforced,
 /obj/machinery/chemical_dispenser/catering/bar_soft{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/old_tile/white,
-/area/tether_away/beach/resort/canteen)
+/area/sector/miaphus/beach/resort/canteen)
 "QY" = (
 /obj/structure/mirror{
 	pixel_x = -27
 	},
 /turf/simulated/floor/wood,
-/area/tether_away/beach/resort/dorm2)
+/area/sector/miaphus/beach/resort/dorm2)
 "Ra" = (
 /obj/machinery/door/airlock/maintenance/int{
 	name = "Bathroom"
@@ -5086,7 +5086,7 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/bunker/mess)
+/area/sector/miaphus/beach/bunker/mess)
 "Rh" = (
 /obj/structure/cable{
 	icon_state = "1-8"
@@ -5094,20 +5094,20 @@
 /turf/simulated/floor/tiled/asteroid_steel{
 	outdoors = 1
 	},
-/area/tether_away/beach/resort)
+/area/sector/miaphus/beach/resort)
 "Ri" = (
 /obj/machinery/appliance/cooker/grill,
 /turf/simulated/floor/tiled/asteroid_steel{
 	outdoors = 1
 	},
-/area/tether_away/beach/resort)
+/area/sector/miaphus/beach/resort)
 "Rk" = (
 /obj/effect/floor_decal/tracks,
 /obj/structure/fence/door/locked,
 /turf/simulated/mineral/floor/cave{
 	name = "dirt"
 	},
-/area/tether_away/beach/mineshaft)
+/area/sector/miaphus/beach/mineshaft)
 "Rm" = (
 /obj/machinery/conveyor{
 	id = "miningops"
@@ -5116,17 +5116,17 @@
 /turf/simulated/floor/tiled/asteroid_steel{
 	outdoors = 1
 	},
-/area/tether_away/beach/mineyard)
+/area/sector/miaphus/beach/mineyard)
 "Ro" = (
 /obj/machinery/door/airlock/glass,
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/station/tram)
+/area/sector/miaphus/beach/station/tram)
 "Rt" = (
 /obj/structure/cable{
 	icon_state = "2-4"
 	},
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/bunker)
+/area/sector/miaphus/beach/bunker)
 "Rv" = (
 /obj/structure/table/woodentable,
 /obj/random/drinkbottle,
@@ -5134,7 +5134,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/wood/broken,
-/area/tether_away/beach/resort/dorm4)
+/area/sector/miaphus/beach/resort/dorm4)
 "Rx" = (
 /obj/structure/cable/cyan{
 	icon_state = "1-2"
@@ -5145,7 +5145,7 @@
 /turf/simulated/floor/tiled/asteroid_steel{
 	outdoors = 1
 	},
-/area/tether_away/beach/resort)
+/area/sector/miaphus/beach/resort)
 "Ry" = (
 /obj/machinery/light/small{
 	dir = 8
@@ -5153,23 +5153,23 @@
 /turf/simulated/floor/tiled/asteroid_steel{
 	outdoors = 1
 	},
-/area/tether_away/beach/aa)
+/area/sector/miaphus/beach/aa)
 "RA" = (
 /obj/machinery/door/airlock/maintenance/command{
 	name = "Tram Cab";
 	req_one_access = null
 	},
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/station/tram)
+/area/sector/miaphus/beach/station/tram)
 "RD" = (
 /turf/simulated/floor/tiled/asteroid_steel,
-/area/tether_away/beach/resort/greenhouse)
+/area/sector/miaphus/beach/resort/greenhouse)
 "RF" = (
 /obj/machinery/door/blast/shutters{
 	name = "Traincar Door"
 	},
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/station)
+/area/sector/miaphus/beach/station)
 "RH" = (
 /obj/structure/closet/cabinet{
 	density = 0;
@@ -5183,7 +5183,7 @@
 	icon_state = "0-8"
 	},
 /turf/simulated/floor/wood/broken,
-/area/tether_away/beach/resort/dorm3)
+/area/sector/miaphus/beach/resort/dorm3)
 "RN" = (
 /obj/structure/fence{
 	dir = 4
@@ -5191,17 +5191,17 @@
 /turf/simulated/floor/tiled/asteroid_steel{
 	outdoors = 1
 	},
-/area/tether_away/beach/resort)
+/area/sector/miaphus/beach/resort)
 "RQ" = (
 /obj/effect/overlay/palmtree_l,
 /turf/simulated/floor/outdoors/beach/sand,
-/area/tether_away/beach/jungle)
+/area/sector/miaphus/beach/jungle)
 "RS" = (
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/bunker/bunk)
+/area/sector/miaphus/beach/bunker/bunk)
 "RX" = (
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -5209,23 +5209,23 @@
 /turf/simulated/floor/tiled/asteroid_steel{
 	outdoors = 1
 	},
-/area/tether_away/beach/resort)
+/area/sector/miaphus/beach/resort)
 "Sa" = (
 /obj/structure/closet,
 /obj/item/clothing/under/overalls,
 /obj/item/clothing/head/hardhat,
 /obj/item/clothing/shoes/boots/jackboots/toeless,
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/desalinator)
+/area/sector/miaphus/beach/desalinator)
 "Se" = (
 /obj/structure/cable,
 /obj/machinery/power/apc/alarms_hidden/south_mount,
 /turf/simulated/floor/tiled/old_tile/white,
-/area/tether_away/beach/bunker/restroom)
+/area/sector/miaphus/beach/bunker/restroom)
 "Sl" = (
 /obj/structure/railing/grey,
 /turf/simulated/floor/water/deep,
-/area/tether_away/beach/desalinator)
+/area/sector/miaphus/beach/desalinator)
 "Sq" = (
 /obj/structure/table/woodentable,
 /obj/random/drinkbottle,
@@ -5233,38 +5233,38 @@
 	dir = 4
 	},
 /turf/simulated/floor/wood,
-/area/tether_away/beach/resort/dorm5)
+/area/sector/miaphus/beach/resort/dorm5)
 "St" = (
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
 /mob/living/simple_mob/animal/roach/fuhrer,
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/bunker/janitor)
+/area/sector/miaphus/beach/bunker/janitor)
 "Su" = (
 /obj/structure/salvageable/console_os{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/station/tram)
+/area/sector/miaphus/beach/station/tram)
 "Sv" = (
 /turf/simulated/floor/water/beach{
 	dir = 9
 	},
-/area/tether_away/beach/jungle)
+/area/sector/miaphus/beach/jungle)
 "Sz" = (
 /obj/structure/sink{
 	dir = 4;
 	pixel_x = 11
 	},
 /turf/simulated/floor/tiled/asteroid_steel,
-/area/tether_away/beach/resort/greenhouse)
+/area/sector/miaphus/beach/resort/greenhouse)
 "SA" = (
 /obj/machinery/light/small{
 	dir = 8
 	},
 /turf/simulated/floor/water/deep,
-/area/tether_away/beach/aa)
+/area/sector/miaphus/beach/aa)
 "SC" = (
 /obj/structure/fence/corner{
 	dir = 10
@@ -5272,11 +5272,11 @@
 /turf/simulated/floor/tiled/asteroid_steel{
 	outdoors = 1
 	},
-/area/tether_away/beach/station/terminal)
+/area/sector/miaphus/beach/station/terminal)
 "SD" = (
 /obj/structure/salvageable/data,
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/bunker/engi)
+/area/sector/miaphus/beach/bunker/engi)
 "SE" = (
 /obj/structure/table/rack/steel,
 /obj/item/mop,
@@ -5287,16 +5287,16 @@
 /obj/item/reagent_containers/spray/cleaner,
 /obj/item/storage/bag/trash,
 /turf/simulated/floor/tiled/asteroid_steel,
-/area/tether_away/beach/resort/greenhouse)
+/area/sector/miaphus/beach/resort/greenhouse)
 "SG" = (
 /obj/machinery/appliance/cooker/oven,
 /turf/simulated/floor/tiled/old_tile/white,
-/area/tether_away/beach/resort/canteen)
+/area/sector/miaphus/beach/resort/canteen)
 "SK" = (
 /turf/simulated/floor/tiled/asteroid_steel{
 	outdoors = 1
 	},
-/area/tether_away/beach/jungle)
+/area/sector/miaphus/beach/jungle)
 "SL" = (
 /obj/machinery/light/small{
 	dir = 1
@@ -5304,15 +5304,15 @@
 /turf/simulated/floor/tiled/asteroid_steel{
 	outdoors = 1
 	},
-/area/tether_away/beach/desalinator)
+/area/sector/miaphus/beach/desalinator)
 "SM" = (
 /obj/structure/railing/grey,
 /turf/simulated/floor/water,
-/area/tether_away/beach/desalinator)
+/area/sector/miaphus/beach/desalinator)
 "SQ" = (
 /obj/structure/railing/grey,
 /turf/simulated/floor/wood,
-/area/tether_away/beach/mineshaft)
+/area/sector/miaphus/beach/mineshaft)
 "ST" = (
 /obj/machinery/door/airlock/glass/medical{
 	name = "First Aid Staton";
@@ -5322,20 +5322,20 @@
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/asteroid_steel,
-/area/tether_away/beach/resort/lockermed)
+/area/sector/miaphus/beach/resort/lockermed)
 "SY" = (
 /obj/machinery/light/small{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/bunker)
+/area/sector/miaphus/beach/bunker)
 "Tg" = (
 /obj/machinery/door/blast/shutters{
 	dir = 2;
 	name = "Garage Door"
 	},
 /turf/simulated/floor/tiled/asteroid_steel,
-/area/tether_away/beach/mineyard)
+/area/sector/miaphus/beach/mineyard)
 "Tl" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -5344,41 +5344,41 @@
 	icon_state = "2-4"
 	},
 /turf/simulated/floor/tiled/old_tile/white,
-/area/tether_away/beach/bunker/restroom)
+/area/sector/miaphus/beach/bunker/restroom)
 "Tp" = (
 /obj/machinery/air_alarm/alarms_hidden/east_mount{
 	pixel_x = 22
 	},
 /obj/structure/cable,
 /turf/simulated/floor/tiled/asteroid_steel,
-/area/tether_away/beach/powershed)
+/area/sector/miaphus/beach/powershed)
 "Tq" = (
 /obj/machinery/light/small,
 /turf/simulated/floor/tiled/old_tile/white,
-/area/tether_away/beach/bunker/kitchen)
+/area/sector/miaphus/beach/bunker/kitchen)
 "Tr" = (
 /obj/structure/simple_door/wood,
 /turf/simulated/floor/tiled/asteroid_steel{
 	outdoors = 1
 	},
-/area/tether_away/beach/resort/fishing)
+/area/sector/miaphus/beach/resort/fishing)
 "TC" = (
 /obj/structure/salvageable/computer,
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/bunker/engi)
+/area/sector/miaphus/beach/bunker/engi)
 "TE" = (
 /obj/item/barrier_tape_segment/engineering,
 /turf/simulated/floor,
-/area/tether_away/beach/bunker)
+/area/sector/miaphus/beach/bunker)
 "TH" = (
 /obj/structure/table/glass,
 /obj/item/paper_bin,
 /obj/item/pen,
 /turf/simulated/floor/tiled/old_tile/white,
-/area/tether_away/beach/resort/lockermed)
+/area/sector/miaphus/beach/resort/lockermed)
 "TK" = (
 /turf/unsimulated/wall/mineral,
-/area/tether_away/beach/jungle)
+/area/sector/miaphus/beach/jungle)
 "TM" = (
 /obj/item/material/kitchen/rollingpin,
 /obj/structure/table/steel_reinforced,
@@ -5390,7 +5390,7 @@
 /obj/item/material/knife,
 /obj/item/material/knife,
 /turf/simulated/floor/tiled/old_tile/white,
-/area/tether_away/beach/resort/canteen)
+/area/sector/miaphus/beach/resort/canteen)
 "TU" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -5399,12 +5399,12 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/asteroid_steel,
-/area/tether_away/beach/powershed)
+/area/sector/miaphus/beach/powershed)
 "Ub" = (
 /obj/structure/bed,
 /obj/item/bedsheet/medical,
 /turf/simulated/floor/tiled/old_tile/white,
-/area/tether_away/beach/resort/lockermed)
+/area/sector/miaphus/beach/resort/lockermed)
 "Ud" = (
 /obj/structure/cable{
 	icon_state = "1-4"
@@ -5413,39 +5413,39 @@
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/bunker/engi)
+/area/sector/miaphus/beach/bunker/engi)
 "Ue" = (
 /obj/structure/railing/grey,
 /turf/simulated/floor/water/contaminated{
 	outdoors = 0
 	},
-/area/tether_away/beach/mineshaft)
+/area/sector/miaphus/beach/mineshaft)
 "Ug" = (
 /obj/item/stool/padded,
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/bunker/mess)
+/area/sector/miaphus/beach/bunker/mess)
 "Uk" = (
 /obj/structure/cable{
 	icon_state = "1-4"
 	},
 /turf/simulated/floor/tiled/asteroid_steel,
-/area/tether_away/beach/powershed)
+/area/sector/miaphus/beach/powershed)
 "Um" = (
 /turf/simulated/wall/sandstone,
-/area/tether_away/beach/powershed)
+/area/sector/miaphus/beach/powershed)
 "Uq" = (
 /obj/machinery/light/small{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/desalinator)
+/area/sector/miaphus/beach/desalinator)
 "Ur" = (
 /obj/structure/reagent_dispensers/watertank,
 /obj/machinery/light/small{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/desalinator)
+/area/sector/miaphus/beach/desalinator)
 "UC" = (
 /obj/machinery/portable_atmospherics/hydroponics,
 /obj/machinery/atmospherics/pipe/simple/visible/cyan{
@@ -5454,17 +5454,17 @@
 	name = "water pipe"
 	},
 /turf/simulated/floor/tiled/asteroid_steel,
-/area/tether_away/beach/resort/greenhouse)
+/area/sector/miaphus/beach/resort/greenhouse)
 "UD" = (
 /obj/machinery/door/airlock/maintenance{
 	name = "Workroom"
 	},
 /turf/simulated/floor/wood/broken,
-/area/tether_away/beach/desalinator)
+/area/sector/miaphus/beach/desalinator)
 "UG" = (
 /obj/structure/sign/double/barsign,
 /turf/simulated/wall/sandstone,
-/area/tether_away/beach/resort/canteen)
+/area/sector/miaphus/beach/resort/canteen)
 "UN" = (
 /obj/structure/closet/crate,
 /obj/random/toolbox,
@@ -5472,13 +5472,13 @@
 /obj/random/toolbox,
 /obj/random/toolbox,
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/station)
+/area/sector/miaphus/beach/station)
 "UQ" = (
 /obj/structure/bed/chair/wood{
 	dir = 1
 	},
 /turf/simulated/floor/wood,
-/area/tether_away/beach/resort/canteen)
+/area/sector/miaphus/beach/resort/canteen)
 "UR" = (
 /obj/structure/fence{
 	dir = 4
@@ -5486,19 +5486,19 @@
 /turf/simulated/floor/tiled/asteroid_steel{
 	outdoors = 1
 	},
-/area/tether_away/beach/station)
+/area/sector/miaphus/beach/station)
 "US" = (
 /obj/random/junk,
 /turf/simulated/mineral/floor/cave{
 	name = "dirt"
 	},
-/area/tether_away/beach/mineshaft)
+/area/sector/miaphus/beach/mineshaft)
 "UX" = (
 /obj/machinery/door/airlock/maintenance{
 	name = "Workroom"
 	},
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/desalinator)
+/area/sector/miaphus/beach/desalinator)
 "Va" = (
 /obj/structure/railing/grey{
 	dir = 1
@@ -5507,10 +5507,10 @@
 /turf/simulated/floor/water/contaminated{
 	outdoors = 0
 	},
-/area/tether_away/beach/mineshaft)
+/area/sector/miaphus/beach/mineshaft)
 "Vb" = (
 /turf/simulated/wall/r_wall,
-/area/tether_away/beach/jungle)
+/area/sector/miaphus/beach/jungle)
 "Vc" = (
 /obj/structure/fence{
 	dir = 1
@@ -5518,7 +5518,7 @@
 /turf/simulated/floor/tiled/asteroid_steel{
 	outdoors = 1
 	},
-/area/tether_away/beach/mineyard)
+/area/sector/miaphus/beach/mineyard)
 "Vf" = (
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 5
@@ -5527,99 +5527,99 @@
 	dir = 6
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/tether_away/beach/bunker/restroom)
+/area/sector/miaphus/beach/bunker/restroom)
 "Vh" = (
 /obj/structure/railing/grey{
 	dir = 8
 	},
 /turf/simulated/floor/outdoors/beach/sand/desert,
-/area/tether_away/beach/desalinator)
+/area/sector/miaphus/beach/desalinator)
 "Vj" = (
 /turf/simulated/wall/rthull,
-/area/tether_away/beach/station/terminal)
+/area/sector/miaphus/beach/station/terminal)
 "Vo" = (
 /obj/machinery/light{
 	dir = 1
 	},
 /obj/machinery/chem_master/condimaster,
 /turf/simulated/floor/tiled/old_tile/white,
-/area/tether_away/beach/resort/canteen)
+/area/sector/miaphus/beach/resort/canteen)
 "VJ" = (
 /obj/structure/railing/grey{
 	dir = 8
 	},
 /obj/effect/floor_decal/industrial/loading,
 /turf/simulated/floor/wood,
-/area/tether_away/beach/resort/canteen)
+/area/sector/miaphus/beach/resort/canteen)
 "VL" = (
 /obj/effect/floor_decal/tracks,
 /obj/random/obstruction,
 /turf/simulated/mineral/floor/cave{
 	name = "dirt"
 	},
-/area/tether_away/beach/mineshaft)
+/area/sector/miaphus/beach/mineshaft)
 "VO" = (
 /obj/structure/window/wooden{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/asteroid_steel,
-/area/tether_away/beach/mineyard)
+/area/sector/miaphus/beach/mineyard)
 "VS" = (
 /turf/simulated/floor/water/beach/corner{
 	dir = 1
 	},
-/area/tether_away/beach/jungle)
+/area/sector/miaphus/beach/jungle)
 "VU" = (
 /obj/structure/cable,
 /obj/machinery/power/apc/alarms_hidden/south_mount,
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/bunker/janitor)
+/area/sector/miaphus/beach/bunker/janitor)
 "Wc" = (
 /turf/simulated/floor/wood{
 	outdoors = 1
 	},
-/area/tether_away/beach/coast)
+/area/sector/miaphus/beach/coast)
 "Wd" = (
 /turf/simulated/wall/wood,
-/area/tether_away/beach/mineshaft)
+/area/sector/miaphus/beach/mineshaft)
 "Wf" = (
 /turf/simulated/floor/water/indoors,
-/area/tether_away/beach/resort/fishing)
+/area/sector/miaphus/beach/resort/fishing)
 "Wi" = (
 /obj/structure/bed/chair,
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/bunker/mess)
+/area/sector/miaphus/beach/bunker/mess)
 "Wk" = (
 /obj/machinery/light/small{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/asteroid_steel,
-/area/tether_away/beach/mineyard)
+/area/sector/miaphus/beach/mineyard)
 "Wn" = (
 /obj/structure/reagent_dispensers/watertank/high,
 /obj/machinery/light/small,
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/desalinator)
+/area/sector/miaphus/beach/desalinator)
 "Wu" = (
 /turf/simulated/floor/wood{
 	outdoors = 1
 	},
-/area/tether_away/beach)
+/area/sector/miaphus/beach)
 "Wv" = (
 /obj/structure/reagent_dispensers/watertank,
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/desalinator)
+/area/sector/miaphus/beach/desalinator)
 "Ww" = (
 /obj/structure/table/woodentable,
 /obj/machinery/light/small{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/bunker/mess)
+/area/sector/miaphus/beach/bunker/mess)
 "WB" = (
 /obj/structure/bed/chair/sofa/black,
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/bunker/mess)
+/area/sector/miaphus/beach/bunker/mess)
 "WF" = (
 /obj/effect/floor_decal/tracks/t_west{
 	dir = 6
@@ -5627,7 +5627,7 @@
 /turf/simulated/mineral/floor/cave{
 	name = "dirt"
 	},
-/area/tether_away/beach/mineshaft)
+/area/sector/miaphus/beach/mineshaft)
 "WH" = (
 /obj/structure/toilet{
 	dir = 4
@@ -5636,7 +5636,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/old_tile/white,
-/area/tether_away/beach/resort/lockermed)
+/area/sector/miaphus/beach/resort/lockermed)
 "WO" = (
 /obj/structure/mirror{
 	pixel_y = 32
@@ -5647,13 +5647,13 @@
 /obj/machinery/light/small,
 /mob/living/simple_mob/animal/roach/panzer,
 /turf/simulated/floor/tiled/old_tile/white,
-/area/tether_away/beach/desalinator)
+/area/sector/miaphus/beach/desalinator)
 "WP" = (
 /obj/structure/railing/grey{
 	dir = 8
 	},
 /turf/simulated/floor/water/beach,
-/area/tether_away/beach/desalinator)
+/area/sector/miaphus/beach/desalinator)
 "WS" = (
 /obj/structure/undies_wardrobe{
 	density = 0;
@@ -5663,11 +5663,11 @@
 	icon_state = "2-4"
 	},
 /turf/simulated/floor/wood,
-/area/tether_away/beach/resort/dorm4)
+/area/sector/miaphus/beach/resort/dorm4)
 "WU" = (
 /obj/machinery/scale,
 /turf/simulated/floor/tiled/old_tile/white,
-/area/tether_away/beach/resort/lockermed)
+/area/sector/miaphus/beach/resort/lockermed)
 "WX" = (
 /obj/machinery/atmospherics/pipe/manifold/visible/cyan{
 	desc = "Its bone dry.";
@@ -5675,15 +5675,15 @@
 	name = "water pipe"
 	},
 /turf/simulated/floor/tiled/asteroid_steel,
-/area/tether_away/beach/resort/greenhouse)
+/area/sector/miaphus/beach/resort/greenhouse)
 "Xa" = (
 /obj/random/obstruction,
 /obj/effect/floor_decal/tracks,
 /turf/simulated/floor/wood,
-/area/tether_away/beach/mineshaft)
+/area/sector/miaphus/beach/mineshaft)
 "Xd" = (
 /turf/simulated/floor/water/deep/indoors,
-/area/tether_away/beach/water)
+/area/sector/miaphus/beach/water)
 "Xh" = (
 /obj/structure/closet/crate/miningcar,
 /obj/random/junk,
@@ -5695,20 +5695,20 @@
 /turf/simulated/floor/water/contaminated{
 	outdoors = 0
 	},
-/area/tether_away/beach/mineshaft)
+/area/sector/miaphus/beach/mineshaft)
 "Xi" = (
 /turf/simulated/floor/water/deep,
-/area/tether_away/beach/aa)
+/area/sector/miaphus/beach/aa)
 "Xw" = (
 /mob/living/simple_mob/animal/roach/strahlend,
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/bunker/mess)
+/area/sector/miaphus/beach/bunker/mess)
 "Xz" = (
 /obj/machinery/floodlight,
 /turf/simulated/mineral/floor/cave{
 	name = "dirt"
 	},
-/area/tether_away/beach/mineshaft)
+/area/sector/miaphus/beach/mineshaft)
 "XA" = (
 /obj/machinery/light/small{
 	dir = 8
@@ -5716,7 +5716,7 @@
 /turf/simulated/floor/tiled/asteroid_steel{
 	outdoors = 1
 	},
-/area/tether_away/beach/desalinator)
+/area/sector/miaphus/beach/desalinator)
 "XB" = (
 /obj/machinery/portable_atmospherics/hydroponics,
 /obj/machinery/atmospherics/pipe/simple/visible/cyan{
@@ -5725,7 +5725,7 @@
 	name = "water pipe"
 	},
 /turf/simulated/floor/tiled/asteroid_steel,
-/area/tether_away/beach/resort/greenhouse)
+/area/sector/miaphus/beach/resort/greenhouse)
 "XE" = (
 /obj/random/drinkbottle,
 /obj/random/drinkbottle,
@@ -5733,7 +5733,7 @@
 /turf/simulated/mineral/floor/cave{
 	name = "dirt"
 	},
-/area/tether_away/beach/mineshaft)
+/area/sector/miaphus/beach/mineshaft)
 "XU" = (
 /obj/structure/cable{
 	icon_state = "0-4"
@@ -5741,11 +5741,11 @@
 /obj/machinery/power/apc/alarms_hidden/north_mount,
 /obj/structure/table/woodentable,
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/bunker/mess)
+/area/sector/miaphus/beach/bunker/mess)
 "XX" = (
 /obj/structure/table/marble,
 /turf/simulated/floor/tiled/old_tile/white,
-/area/tether_away/beach/resort/canteen)
+/area/sector/miaphus/beach/resort/canteen)
 "XZ" = (
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -5753,7 +5753,7 @@
 /turf/simulated/floor{
 	outdoors = 1
 	},
-/area/tether_away/beach/resort)
+/area/sector/miaphus/beach/resort)
 "Ya" = (
 /obj/machinery/light/small{
 	dir = 4
@@ -5762,20 +5762,20 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/old_tile/white,
-/area/tether_away/beach/resort/lockermed)
+/area/sector/miaphus/beach/resort/lockermed)
 "Yc" = (
 /obj/machinery/door/airlock/hatch,
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/bunker)
+/area/sector/miaphus/beach/bunker)
 "Yi" = (
 /obj/structure/fence{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/asteroid_steel,
-/area/tether_away/beach/powershed)
+/area/sector/miaphus/beach/powershed)
 "Yq" = (
 /obj/structure/cable/cyan{
 	icon_state = "1-4"
@@ -5783,23 +5783,23 @@
 /turf/simulated/floor/tiled/asteroid_steel{
 	outdoors = 1
 	},
-/area/tether_away/beach/resort)
+/area/sector/miaphus/beach/resort)
 "Ys" = (
 /obj/effect/decal/remains/tajaran,
 /obj/item/pickaxe,
 /turf/simulated/mineral/floor/cave{
 	name = "dirt"
 	},
-/area/tether_away/beach/mineshaft)
+/area/sector/miaphus/beach/mineshaft)
 "Yv" = (
 /turf/simulated/floor/water/beach,
-/area/tether_away/beach/jungle)
+/area/sector/miaphus/beach/jungle)
 "YC" = (
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/bunker)
+/area/sector/miaphus/beach/bunker)
 "YD" = (
 /obj/machinery/atmospherics/pipe/simple/visible/cyan{
 	desc = "Its bone dry.";
@@ -5808,10 +5808,10 @@
 	},
 /obj/machinery/portable_atmospherics/hydroponics,
 /turf/simulated/floor/tiled/asteroid_steel,
-/area/tether_away/beach/resort/greenhouse)
+/area/sector/miaphus/beach/resort/greenhouse)
 "YE" = (
 /turf/simulated/wall/sandstone,
-/area/tether_away/beach/resort/dorm4)
+/area/sector/miaphus/beach/resort/dorm4)
 "YF" = (
 /obj/structure/fence/corner{
 	dir = 10
@@ -5819,30 +5819,30 @@
 /turf/simulated/floor/tiled/asteroid_steel{
 	outdoors = 1
 	},
-/area/tether_away/beach/mineyard)
+/area/sector/miaphus/beach/mineyard)
 "YJ" = (
 /obj/machinery/light/small,
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/desalinator)
+/area/sector/miaphus/beach/desalinator)
 "YO" = (
 /obj/effect/shuttle_landmark{
-	base_area = /area/tether_away/beach/jungle;
+	base_area = /area/sector/miaphus/beach/jungle;
 	base_turf = /turf/simulated/floor/outdoors/beach/sand/desert;
 	landmark_tag = "beach_nw";
 	name = "Virgo 4 Beach (NW)"
 	},
 /turf/simulated/floor/outdoors/beach/sand/desert,
-/area/tether_away/beach/jungle)
+/area/sector/miaphus/beach/jungle)
 "YP" = (
 /obj/machinery/light/small,
 /turf/simulated/floor/tiled/asteroid_steel{
 	outdoors = 1
 	},
-/area/tether_away/beach/aa)
+/area/sector/miaphus/beach/aa)
 "YQ" = (
 /obj/effect/floor_decal/tracks,
 /turf/simulated/floor/wood,
-/area/tether_away/beach/mineshaft)
+/area/sector/miaphus/beach/mineshaft)
 "YR" = (
 /obj/structure/cable/cyan{
 	icon_state = "1-2"
@@ -5853,13 +5853,13 @@
 	pixel_y = -29
 	},
 /turf/simulated/floor/wood,
-/area/tether_away/beach/resort/dorm2)
+/area/sector/miaphus/beach/resort/dorm2)
 "YY" = (
 /obj/structure/table/rack,
 /obj/item/stack/cable_coil/pink,
 /obj/item/stack/cable_coil/pink,
 /turf/simulated/floor/wood,
-/area/tether_away/beach/resort/fishing)
+/area/sector/miaphus/beach/resort/fishing)
 "Za" = (
 /obj/machinery/light/small/emergency{
 	dir = 4
@@ -5868,20 +5868,20 @@
 	dir = 4;
 	outdoors = 1
 	},
-/area/tether_away/beach/station)
+/area/sector/miaphus/beach/station)
 "Zc" = (
 /obj/structure/bed/chair/bay/comfy/black,
 /obj/machinery/light/small{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/station/tram)
+/area/sector/miaphus/beach/station/tram)
 "Zf" = (
 /obj/structure/railing/grey{
 	dir = 1
 	},
 /turf/simulated/floor/water/deep,
-/area/tether_away/beach/aa)
+/area/sector/miaphus/beach/aa)
 "Zg" = (
 /obj/structure/closet/crate,
 /obj/random/tank,
@@ -5891,7 +5891,7 @@
 /obj/random/tank,
 /obj/random/tank,
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/station)
+/area/sector/miaphus/beach/station)
 "Zj" = (
 /obj/machinery/light/small/emergency{
 	dir = 8
@@ -5900,7 +5900,7 @@
 	dir = 4;
 	outdoors = 1
 	},
-/area/tether_away/beach/station)
+/area/sector/miaphus/beach/station)
 "Zu" = (
 /obj/structure/fence/corner{
 	dir = 4
@@ -5908,7 +5908,7 @@
 /turf/simulated/floor/tiled/asteroid_steel{
 	outdoors = 1
 	},
-/area/tether_away/beach/mineyard)
+/area/sector/miaphus/beach/mineyard)
 "Zw" = (
 /obj/structure/closet/crate/mimic/cointoss,
 /obj/random/firstaid,
@@ -5916,13 +5916,13 @@
 /obj/random/firstaid,
 /obj/random/firstaid,
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/station)
+/area/sector/miaphus/beach/station)
 "Zx" = (
 /obj/machinery/door/airlock/maintenance/int{
 	name = "Bathroom"
 	},
 /turf/simulated/floor/tiled/old_tile/white,
-/area/tether_away/beach/bunker/restroom)
+/area/sector/miaphus/beach/bunker/restroom)
 "ZA" = (
 /obj/structure/cable{
 	icon_state = "1-8"
@@ -5936,26 +5936,26 @@
 /turf/simulated/floor/tiled/asteroid_steel{
 	outdoors = 1
 	},
-/area/tether_away/beach/resort)
+/area/sector/miaphus/beach/resort)
 "ZC" = (
 /turf/simulated/mineral/ignore_mapgen,
-/area/tether_away/beach/mineshaft)
+/area/sector/miaphus/beach/mineshaft)
 "ZG" = (
 /obj/structure/railing/grey{
 	dir = 4
 	},
 /turf/simulated/floor/water/deep,
-/area/tether_away/beach/aa)
+/area/sector/miaphus/beach/aa)
 "ZH" = (
 /mob/living/simple_mob/animal/roach/jaeger,
 /turf/simulated/floor/tiled/steel_dirty,
-/area/tether_away/beach/desalinator)
+/area/sector/miaphus/beach/desalinator)
 "ZS" = (
 /obj/structure/loot_pile/mecha/ripley/random_sprite,
 /turf/simulated/mineral/floor/cave{
 	name = "dirt"
 	},
-/area/tether_away/beach/mineshaft)
+/area/sector/miaphus/beach/mineshaft)
 "ZX" = (
 /obj/structure/cable/cyan{
 	icon_state = "1-8"
@@ -5966,7 +5966,7 @@
 /turf/simulated/floor/tiled/asteroid_steel{
 	outdoors = 1
 	},
-/area/tether_away/beach/resort)
+/area/sector/miaphus/beach/resort)
 
 (1,1,1) = {"
 zV

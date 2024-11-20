@@ -2,7 +2,7 @@
 "a" = (
 /obj/machinery/light/flamp/noshade,
 /turf/simulated/mineral/floor/ignore_mapgen/cave,
-/area/tether_away/cave/explored/normal)
+/area/sector/miaphus/cave/explored/normal)
 "b" = (
 /obj/effect/floor_decal/tracks{
 	dir = 1
@@ -10,73 +10,73 @@
 /obj/structure/closet/crate/miningcar,
 /obj/random/multiple/underdark/ores,
 /turf/simulated/floor/wood,
-/area/tether_away/cave/explored/normal)
+/area/sector/miaphus/cave/explored/normal)
 "c" = (
 /turf/simulated/mineral/cave,
-/area/tether_away/cave/unexplored/normal)
+/area/sector/miaphus/cave/unexplored/normal)
 "d" = (
 /turf/level_border,
-/area/tether_away/cave/explored/normal)
+/area/sector/miaphus/cave/explored/normal)
 "e" = (
 /turf/simulated/mineral/cave,
-/area/tether_away/cave/explored/normal)
+/area/sector/miaphus/cave/explored/normal)
 "i" = (
 /obj/away_mission_init/beachcave,
 /turf/simulated/mineral/cave,
-/area/tether_away/cave/explored/normal)
+/area/sector/miaphus/cave/explored/normal)
 "o" = (
 /obj/effect/floor_decal/tracks/t_west{
 	dir = 6
 	},
 /turf/simulated/floor/wood,
-/area/tether_away/cave/explored/normal)
+/area/sector/miaphus/cave/explored/normal)
 "r" = (
 /obj/tether_away_spawner/beach_cave,
 /turf/simulated/mineral/floor/ignore_mapgen/cave,
-/area/tether_away/cave/explored/normal)
+/area/sector/miaphus/cave/explored/normal)
 "s" = (
 /obj/effect/floor_decal/tracks{
 	dir = 1
 	},
 /turf/simulated/floor/wood,
-/area/tether_away/cave/explored/normal)
+/area/sector/miaphus/cave/explored/normal)
 "u" = (
 /obj/structure/sign/securearea{
 	desc = "A warning sign which reads 'DANGER: MONSTERS'.";
 	name = "\improper DANGER: MONSTERS"
 	},
 /turf/simulated/wall/wood,
-/area/tether_away/cave/explored/normal)
+/area/sector/miaphus/cave/explored/normal)
 "G" = (
 /obj/effect/floor_decal/tracks{
 	dir = 8
 	},
 /turf/simulated/floor/wood,
-/area/tether_away/cave/explored/normal)
+/area/sector/miaphus/cave/explored/normal)
 "I" = (
 /turf/simulated/mineral/floor/ignore_mapgen/cave,
-/area/tether_away/cave/explored/normal)
+/area/sector/miaphus/cave/explored/normal)
 "M" = (
 /turf/unsimulated/wall/mineral,
-/area/tether_away/cave/explored/normal)
+/area/sector/miaphus/cave/explored/normal)
 "N" = (
 /obj/machinery/floodlight,
 /turf/simulated/mineral/floor/ignore_mapgen/cave,
-/area/tether_away/cave/explored/normal)
+/area/sector/miaphus/cave/explored/normal)
 "P" = (
 /obj/random/outcrop,
 /turf/simulated/mineral/floor/ignore_mapgen/cave,
-/area/tether_away/cave/explored/normal)
+/area/sector/miaphus/cave/explored/normal)
 "U" = (
 /turf/simulated/wall/wood,
-/area/tether_away/cave/explored/normal)
+/area/sector/miaphus/cave/explored/normal)
 "X" = (
 /obj/effect/floor_decal/tracks{
 	dir = 1
 	},
 /obj/structure/fence/door,
 /turf/simulated/floor/wood,
-/area/tether_away/cave/explored/normal)
+/area/sector/miaphus/cave/explored/normal)
 
 (1,1,1) = {"
 M

@@ -2,156 +2,156 @@
 "bm" = (
 /obj/random/outcrop,
 /turf/simulated/floor/outdoors/beach/sand/lowdesert,
-/area/tether_away/beach/desert/explored)
+/area/sector/miaphus/beach/desert/explored)
 "bz" = (
 /obj/structure/bed/chair{
 	dir = 1
 	},
 /turf/simulated/floor/outdoors/beach/sand/desert,
-/area/tether_away/beach/desert/explored)
+/area/sector/miaphus/beach/desert/explored)
 "cL" = (
 /obj/machinery/light/small{
 	dir = 8
 	},
 /turf/simulated/floor/outdoors/beach/sand/lowdesert,
-/area/tether_away/beach/desert/explored)
+/area/sector/miaphus/beach/desert/explored)
 "cQ" = (
 /obj/structure/table/woodentable,
 /obj/item/clothing/accessory/badge/sheriff,
 /obj/item/handcuffs,
 /turf/simulated/floor/wood,
-/area/tether_away/beach/desert/explored)
+/area/sector/miaphus/beach/desert/explored)
 "cU" = (
 /obj/item/reagent_containers/glass/bucket/wood,
 /turf/simulated/floor/outdoors/beach/sand/lowdesert,
-/area/tether_away/beach/desert/explored)
+/area/sector/miaphus/beach/desert/explored)
 "dO" = (
 /obj/structure/table/woodentable,
 /obj/item/paper_bin,
 /obj/item/pen,
 /turf/simulated/floor/wood,
-/area/tether_away/beach/desert/explored)
+/area/sector/miaphus/beach/desert/explored)
 "eI" = (
 /turf/simulated/floor/water/shoreline{
 	dir = 8
 	},
-/area/tether_away/beach/desert/explored)
+/area/sector/miaphus/beach/desert/explored)
 "eN" = (
 /turf/simulated/floor/water,
-/area/tether_away/beach/desert/explored)
+/area/sector/miaphus/beach/desert/explored)
 "gz" = (
 /turf/unsimulated/wall/mineral,
-/area/tether_away/beach/desert/explored)
+/area/sector/miaphus/beach/desert/explored)
 "hw" = (
 /turf/simulated/floor/water/shoreline/corner,
-/area/tether_away/beach/desert/explored)
+/area/sector/miaphus/beach/desert/explored)
 "iq" = (
 /turf/simulated/floor/water/shoreline{
 	dir = 6
 	},
-/area/tether_away/beach/desert/explored)
+/area/sector/miaphus/beach/desert/explored)
 "iL" = (
 /turf/simulated/floor/water/shoreline,
-/area/tether_away/beach/desert/explored)
+/area/sector/miaphus/beach/desert/explored)
 "js" = (
 /obj/structure/sandbag,
 /turf/simulated/floor/outdoors/beach/sand/desert,
-/area/tether_away/beach/desert/explored)
+/area/sector/miaphus/beach/desert/explored)
 "jD" = (
 /turf/simulated/floor/water/shoreline{
 	dir = 6
 	},
-/area/tether_away/beach/desert/explored)
+/area/sector/miaphus/beach/desert/explored)
 "ke" = (
 /obj/structure/toilet{
 	dir = 4
 	},
 /turf/simulated/floor/wood,
-/area/tether_away/beach/desert/explored)
+/area/sector/miaphus/beach/desert/explored)
 "kF" = (
 /obj/machinery/light/small,
 /obj/random/trash,
 /turf/simulated/floor/wood,
-/area/tether_away/beach/desert/explored)
+/area/sector/miaphus/beach/desert/explored)
 "lf" = (
 /turf/simulated/mineral/ignore_mapgen,
-/area/tether_away/beach/desert/explored)
+/area/sector/miaphus/beach/desert/explored)
 "lv" = (
 /obj/machinery/light/flamp/noshade,
 /turf/simulated/mineral/floor/cave{
 	name = "dirt";
 	outdoors = 1
 	},
-/area/tether_away/beach/desert/explored)
+/area/sector/miaphus/beach/desert/explored)
 "nk" = (
 /obj/structure/bed/padded,
 /turf/simulated/floor/wood,
-/area/tether_away/beach/desert/explored)
+/area/sector/miaphus/beach/desert/explored)
 "no" = (
 /turf/simulated/floor/water/shoreline{
 	dir = 4
 	},
-/area/tether_away/beach/desert/explored)
+/area/sector/miaphus/beach/desert/explored)
 "od" = (
 /obj/random/outcrop,
 /turf/simulated/mineral/floor/cave{
 	name = "dirt";
 	outdoors = 1
 	},
-/area/tether_away/beach/desert/explored)
+/area/sector/miaphus/beach/desert/explored)
 "of" = (
 /obj/random/humanoidremains,
 /turf/simulated/mineral/floor/cave{
 	name = "dirt";
 	outdoors = 1
 	},
-/area/tether_away/beach/desert/explored)
+/area/sector/miaphus/beach/desert/explored)
 "pc" = (
 /turf/simulated/floor/water/shoreline/corner{
 	dir = 8
 	},
-/area/tether_away/beach/desert/explored)
+/area/sector/miaphus/beach/desert/explored)
 "pI" = (
 /obj/effect/floor_decal/tracks{
 	dir = 8
 	},
 /turf/simulated/floor/wood,
-/area/tether_away/beach/desert/explored)
+/area/sector/miaphus/beach/desert/explored)
 "qu" = (
 /turf/simulated/floor/water/shoreline{
 	dir = 5
 	},
-/area/tether_away/beach/desert/explored)
+/area/sector/miaphus/beach/desert/explored)
 "rJ" = (
 /obj/structure/sandbag,
 /turf/simulated/floor/outdoors/beach/sand/lowdesert,
-/area/tether_away/beach/desert/explored)
+/area/sector/miaphus/beach/desert/explored)
 "se" = (
 /turf/simulated/floor/water/shoreline{
 	dir = 9
 	},
-/area/tether_away/beach/desert/explored)
+/area/sector/miaphus/beach/desert/explored)
 "tI" = (
 /obj/random/trash,
 /turf/simulated/mineral/ignore_mapgen,
-/area/tether_away/beach/desert/explored)
+/area/sector/miaphus/beach/desert/explored)
 "uY" = (
 /turf/simulated/floor/water/shoreline{
 	dir = 1
 	},
-/area/tether_away/beach/desert/explored)
+/area/sector/miaphus/beach/desert/explored)
 "vd" = (
 /turf/simulated/floor/water/shoreline/corner{
 	dir = 4
 	},
-/area/tether_away/beach/desert/explored)
+/area/sector/miaphus/beach/desert/explored)
 "vn" = (
 /obj/structure/sign/securearea{
 	desc = "A warning sign which reads 'DANGER: MONSTERS'.";
 	name = "\improper DANGER: MONSTERS"
 	},
 /turf/simulated/wall,
-/area/tether_away/beach/desert/explored)
+/area/sector/miaphus/beach/desert/explored)
 "vr" = (
 /obj/item/ammo_casing/spent{
 	pixel_x = -2;
@@ -161,32 +161,32 @@
 	name = "dirt";
 	outdoors = 1
 	},
-/area/tether_away/beach/desert/explored)
+/area/sector/miaphus/beach/desert/explored)
 "wb" = (
 /obj/effect/debris/cleanable/blood,
 /turf/simulated/mineral/floor/cave{
 	name = "dirt";
 	outdoors = 1
 	},
-/area/tether_away/beach/desert/explored)
+/area/sector/miaphus/beach/desert/explored)
 "wH" = (
 /obj/item/pickaxe,
 /turf/simulated/floor/outdoors/beach/sand/lowdesert,
-/area/tether_away/beach/desert/explored)
+/area/sector/miaphus/beach/desert/explored)
 "xd" = (
 /turf/simulated/wall/wood,
-/area/tether_away/beach/desert/explored)
+/area/sector/miaphus/beach/desert/explored)
 "xw" = (
 /obj/structure/closet/crate/miningcar,
 /turf/simulated/mineral/floor,
-/area/tether_away/beach/desert/explored)
+/area/sector/miaphus/beach/desert/explored)
 "yc" = (
 /obj/structure/barricade,
 /turf/simulated/mineral/floor/cave{
 	name = "dirt";
 	outdoors = 1
 	},
-/area/tether_away/beach/desert/explored)
+/area/sector/miaphus/beach/desert/explored)
 "yj" = (
 /obj/item/ammo_casing/spent{
 	pixel_y = -5
@@ -195,7 +195,7 @@
 	name = "dirt";
 	outdoors = 1
 	},
-/area/tether_away/beach/desert/explored)
+/area/sector/miaphus/beach/desert/explored)
 "yo" = (
 /obj/item/ammo_casing/spent,
 /obj/structure/barricade,
@@ -203,7 +203,7 @@
 	name = "dirt";
 	outdoors = 1
 	},
-/area/tether_away/beach/desert/explored)
+/area/sector/miaphus/beach/desert/explored)
 "zN" = (
 /obj/item/ammo_casing/spent{
 	pixel_x = 5;
@@ -213,66 +213,66 @@
 	name = "dirt";
 	outdoors = 1
 	},
-/area/tether_away/beach/desert/explored)
+/area/sector/miaphus/beach/desert/explored)
 "zQ" = (
 /turf/simulated/mineral/floor/cave{
 	name = "dirt";
 	outdoors = 1
 	},
-/area/tether_away/beach/desert/explored)
+/area/sector/miaphus/beach/desert/explored)
 "Ad" = (
 /obj/structure/sink/puddle,
 /turf/simulated/mineral/ignore_mapgen,
-/area/tether_away/beach/desert/explored)
+/area/sector/miaphus/beach/desert/explored)
 "Ap" = (
 /obj/machinery/door/window/brigdoor/southleft{
 	dir = 4
 	},
 /turf/simulated/floor/wood,
-/area/tether_away/beach/desert/explored)
+/area/sector/miaphus/beach/desert/explored)
 "Ar" = (
 /obj/spawner/window/low_wall/reinforced/full,
 /turf/simulated/floor/wood,
-/area/tether_away/beach/desert/explored)
+/area/sector/miaphus/beach/desert/explored)
 "BS" = (
 /obj/effect/debris/cleanable/blood,
 /turf/simulated/mineral/floor,
-/area/tether_away/beach/desert/explored)
+/area/sector/miaphus/beach/desert/explored)
 "CM" = (
 /turf/simulated/floor/outdoors/beach/sand/desert,
-/area/tether_away/beach/desert/explored)
+/area/sector/miaphus/beach/desert/explored)
 "Dc" = (
 /turf/simulated/wall/sandstone,
-/area/tether_away/beach/desert/explored)
+/area/sector/miaphus/beach/desert/explored)
 "Df" = (
 /obj/structure/simple_door/wood,
 /turf/simulated/floor/wood,
-/area/tether_away/beach/desert/explored)
+/area/sector/miaphus/beach/desert/explored)
 "Eh" = (
 /obj/random/junk,
 /turf/simulated/floor/wood,
-/area/tether_away/beach/desert/explored)
+/area/sector/miaphus/beach/desert/explored)
 "Ev" = (
 /turf/simulated/floor/wood,
-/area/tether_away/beach/desert/explored)
+/area/sector/miaphus/beach/desert/explored)
 "EA" = (
 /obj/machinery/light/small/flicker{
 	dir = 4
 	},
 /turf/simulated/mineral/ignore_mapgen,
-/area/tether_away/beach/desert/explored)
+/area/sector/miaphus/beach/desert/explored)
 "EJ" = (
 /obj/random/trash,
 /turf/simulated/floor/wood,
-/area/tether_away/beach/desert/explored)
+/area/sector/miaphus/beach/desert/explored)
 "FM" = (
 /obj/random/fishing_junk,
 /turf/simulated/floor/wood,
-/area/tether_away/beach/desert/explored)
+/area/sector/miaphus/beach/desert/explored)
 "Hi" = (
 /obj/structure/simple_door/wood,
 /turf/simulated/mineral/ignore_mapgen,
-/area/tether_away/beach/desert/explored)
+/area/sector/miaphus/beach/desert/explored)
 "HN" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/random/maintenance/security,
@@ -285,43 +285,43 @@
 /obj/random/maintenance/security,
 /obj/item/storage/firstaid/regular,
 /turf/simulated/floor/wood,
-/area/tether_away/beach/desert/explored)
+/area/sector/miaphus/beach/desert/explored)
 "Iw" = (
 /obj/random/junk,
 /obj/machinery/light/small/flicker{
 	dir = 4
 	},
 /turf/simulated/floor/wood,
-/area/tether_away/beach/desert/explored)
+/area/sector/miaphus/beach/desert/explored)
 "II" = (
 /obj/structure/table,
 /obj/random/trash,
 /turf/simulated/floor/wood,
-/area/tether_away/beach/desert/explored)
+/area/sector/miaphus/beach/desert/explored)
 "JW" = (
 /turf/simulated/floor/outdoors/beach/sand/lowdesert,
-/area/tether_away/beach/desert/unexplored)
+/area/sector/miaphus/beach/desert/unexplored)
 "KA" = (
 /obj/structure/fence{
 	dir = 4
 	},
 /turf/simulated/floor/outdoors/beach/sand/lowdesert,
-/area/tether_away/beach/desert/explored)
+/area/sector/miaphus/beach/desert/explored)
 "LF" = (
 /turf/simulated/floor/plating/outdoors,
-/area/tether_away/beach/desert/explored)
+/area/sector/miaphus/beach/desert/explored)
 "Mc" = (
 /obj/machinery/light/small/flicker{
 	dir = 4
 	},
 /turf/simulated/floor/outdoors/beach/sand/lowdesert,
-/area/tether_away/beach/desert/explored)
+/area/sector/miaphus/beach/desert/explored)
 "Mn" = (
 /obj/structure/fence{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/outdoors,
-/area/tether_away/beach/desert/explored)
+/area/sector/miaphus/beach/desert/explored)
 "NU" = (
 /obj/structure/table/rack/steel,
 /obj/random/maintenance/security,
@@ -333,63 +333,63 @@
 /obj/random/maintenance/security,
 /obj/random/maintenance/security,
 /turf/simulated/mineral/ignore_mapgen,
-/area/tether_away/beach/desert/explored)
+/area/sector/miaphus/beach/desert/explored)
 "NW" = (
 /obj/machinery/light/small,
 /turf/simulated/floor/outdoors/beach/sand/desert,
-/area/tether_away/beach/desert/explored)
+/area/sector/miaphus/beach/desert/explored)
 "OI" = (
 /turf/simulated/floor/tiled/outdoors,
-/area/tether_away/beach/desert/explored)
+/area/sector/miaphus/beach/desert/explored)
 "QY" = (
 /obj/random/trash,
 /turf/simulated/floor/outdoors/beach/sand/lowdesert,
-/area/tether_away/beach/desert/explored)
+/area/sector/miaphus/beach/desert/explored)
 "Rm" = (
 /obj/structure/sign/graffiti/pisoff,
 /turf/simulated/wall/sandstone,
-/area/tether_away/beach/desert/explored)
+/area/sector/miaphus/beach/desert/explored)
 "SP" = (
 /obj/structure/bed/chair{
 	dir = 8
 	},
 /turf/simulated/floor/wood,
-/area/tether_away/beach/desert/explored)
+/area/sector/miaphus/beach/desert/explored)
 "Ul" = (
 /obj/machinery/light/small{
 	dir = 8
 	},
 /turf/simulated/floor/wood,
-/area/tether_away/beach/desert/explored)
+/area/sector/miaphus/beach/desert/explored)
 "UP" = (
 /turf/simulated/floor/outdoors/beach/sand/lowdesert,
-/area/tether_away/beach/desert/explored)
+/area/sector/miaphus/beach/desert/explored)
 "Vd" = (
 /obj/effect/floor_decal/tracks{
 	dir = 8
 	},
 /turf/simulated/floor/outdoors/beach/sand/desert,
-/area/tether_away/beach/desert/explored)
+/area/sector/miaphus/beach/desert/explored)
 "VG" = (
 /obj/structure/fence/cut/medium{
 	dir = 4
 	},
 /turf/simulated/floor/outdoors/beach/sand/lowdesert,
-/area/tether_away/beach/desert/explored)
+/area/sector/miaphus/beach/desert/explored)
 "WA" = (
 /obj/structure/reagent_dispensers,
 /turf/simulated/mineral/ignore_mapgen,
-/area/tether_away/beach/desert/explored)
+/area/sector/miaphus/beach/desert/explored)
 "WT" = (
 /turf/level_border,
-/area/tether_away/beach/desert/explored)
+/area/sector/miaphus/beach/desert/explored)
 "XZ" = (
 /turf/simulated/mineral/ignore_mapgen,
-/area/tether_away/beach/desert/explored)
+/area/sector/miaphus/beach/desert/explored)
 "YZ" = (
 /obj/structure/barricade,
 /turf/simulated/floor/wood,
-/area/tether_away/beach/desert/explored)
+/area/sector/miaphus/beach/desert/explored)
 
 (1,1,1) = {"
 gz
