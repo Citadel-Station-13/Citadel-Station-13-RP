@@ -26,7 +26,7 @@
 		/datum/map/sector/wasteland_192,
 		/datum/map/sector/tradeport_192,
 		/datum/map/sector/surt,
-		/datum/map/sector/miaphus_192,
+		/datum/map/sector/miaphus,
 		/datum/map/sector/roguemining_192/one,
 	)
 	full_name = "NSV Euthenia"

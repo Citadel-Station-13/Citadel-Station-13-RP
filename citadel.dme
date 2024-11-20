@@ -5358,7 +5358,7 @@
 #include "maps\sectors\desert_192\desert_192.dm"
 #include "maps\sectors\frozen_192\frozen_192.dm"
 #include "maps\sectors\gaia_192\gaia_192.dm"
-#include "maps\sectors\miaphus_192\miaphus_192.dm"
+#include "maps\sectors\miaphus_192\miaphus.dm"
 #include "maps\sectors\mining_192\mining_192.dm"
 #include "maps\sectors\piratebase_192\piratebase_192.dm"
 #include "maps\sectors\roguemining_192\roguemining_192.dm"
