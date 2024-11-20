@@ -132,6 +132,7 @@
 	. = ..()
 	src.hand_index = hand_index
 	sync_index(hand_index)
+	update_icon()
 
 /atom/movable/screen/actor_hud/inventory/plate/hand/sync_style(datum/hud_style/style, style_alpha, style_color)
 	self_icon = style.inventory_icons
@@ -161,6 +162,8 @@
 		active_image.icon_state = "[self_icon_state]-active"
 		active_image.plane = HUD_PLANE
 		active_image.layer = HUD_LAYER_INVENTORY
+		active_image.alpha = self_alpha
+		active_image.color = self_color
 		add_overlay(active_image)
 
 /**
