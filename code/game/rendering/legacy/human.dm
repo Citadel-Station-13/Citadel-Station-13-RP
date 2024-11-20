@@ -42,7 +42,7 @@
 	using.icon = ico
 	using.screen_loc = ui_acti
 	using.alpha = ui_alpha
-	using.layer = HUD_LAYER_ITEM //These sit on the intent box
+	using.layer = HUD_LAYER_ABOVE //These sit on the intent box
 	src.adding += using
 	help_intent = using
 
@@ -54,7 +54,7 @@
 	using.icon = ico
 	using.screen_loc = ui_acti
 	using.alpha = ui_alpha
-	using.layer = HUD_LAYER_ITEM
+	using.layer = HUD_LAYER_ABOVE
 	src.adding += using
 	disarm_intent = using
 
@@ -66,7 +66,7 @@
 	using.icon = ico
 	using.screen_loc = ui_acti
 	using.alpha = ui_alpha
-	using.layer = HUD_LAYER_ITEM
+	using.layer = HUD_LAYER_ABOVE
 	src.adding += using
 	grab_intent = using
 
@@ -78,7 +78,7 @@
 	using.icon = ico
 	using.screen_loc = ui_acti
 	using.alpha = ui_alpha
-	using.layer = HUD_LAYER_ITEM
+	using.layer = HUD_LAYER_ABOVE
 	src.adding += using
 	hurt_intent = using
 	//end intent small hud objects

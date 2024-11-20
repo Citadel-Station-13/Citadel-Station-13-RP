@@ -49,7 +49,7 @@ var/list/floating_chat_colors = list()
 	if(isliving(holder))
 		X = holder
 	I.plane = HUD_PLANE
-	I.layer = INVENTORY_PLANE
+	I.layer = HUD_LAYER_UNDER
 	I.alpha = 15
 	I.maptext_width = 160
 	I.maptext_height = 64

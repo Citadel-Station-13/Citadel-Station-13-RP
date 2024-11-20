@@ -234,7 +234,7 @@
 	appearance_flags = PLANE_MASTER | NO_CLIENT_COLOR
 
 /atom/movable/screen/plane_master/inventory
-	plane = INVENTORY_PLANE
+	plane = HUD_ITEM_PLANE
 
 /atom/movable/screen/plane_master/above_hud
 	plane = ABOVE_HUD_PLANE

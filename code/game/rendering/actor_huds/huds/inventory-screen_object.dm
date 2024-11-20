@@ -7,8 +7,8 @@
 /atom/movable/screen/actor_hud/inventory
 	name = "inventory"
 	icon = 'icons/screen/hud/midnight/inventory.dmi'
-	plane = INVENTORY_PLANE
-	layer = INVENTORY_PLATE_LAYER
+	plane = HUD_PLANE
+	layer = HUD_LAYER_INVENTORY
 
 /atom/movable/screen/actor_hud/inventory/on_click(mob/user, list/params)
 	var/obj/item/held = user.get_active_held_item()
@@ -35,11 +35,36 @@
  * Base type of item-holding screen objects
  */
 /atom/movable/screen/actor_hud/inventory/plate
+	icon = null
+	icon_state = null
+	plane = HUD_ITEM_PLANE
+	layer = HUD_ITEM_LAYER_BASE
+
+	var/self_icon = 'icons/screen/hud/midnight/inventory.dmi'
+	var/self_icon_state = ""
+	var/self_alpha = 255
+	var/self_color = "#ffffff"
 
 /atom/movable/screen/actor_hud/inventory/plate/Destroy()
 	if(length(vis_contents) != 0)
 		vis_contents.len = 0
 	return ..()
+
+/atom/movable/screen/actor_hud/inventory/plate/update_icon(updates)
+	. = ..()
+	var/image/self_render = new
+	self_render.icon = self_icon
+	self_render.icon_state = self_icon_state
+	self_render.alpha = self_alpha
+	self_render.color = self_color
+	self_render.plane = HUD_PLANE
+	self_render.layer = HUD_LAYER_INVENTORY
+	underlays = list(self_render)
+
+/atom/movable/screen/actor_hud/inventory/plate/sync_style(datum/hud_style/style, style_alpha, style_color)
+	self_alpha = style_alpha
+	self_color = style_color
+	update_icon()
 
 /atom/movable/screen/actor_hud/inventory/plate/proc/bind_item(obj/item/item)
 	vis_contents += item
@@ -66,18 +91,20 @@
 	var/inventory_hud_anchor = INVENTORY_HUD_ANCHOR_AUTOMATIC
 
 /atom/movable/screen/actor_hud/inventory/plate/slot/Initialize(mapload, datum/actor_hud/inventory/hud, datum/inventory_slot/slot, list/slot_remappings)
-	. = ..()
+	// set statics
 	inventory_slot_id = slot.id
-	icon_state = slot.inventory_hud_icon_state
+	self_icon_state = slot.inventory_hud_icon_state
+	// set mappings
+	name = slot_remappings[INVENTORY_SLOT_REMAP_NAME] || slot.display_name || slot.name
 	inventory_hud_class = slot_remappings[INVENTORY_SLOT_REMAP_CLASS] || slot.inventory_hud_class
 	inventory_hud_main_axis = slot_remappings[INVENTORY_SLOT_REMAP_MAIN_AXIS] || slot.inventory_hud_main_axis
 	inventory_hud_cross_axis = slot_remappings[INVENTORY_SLOT_REMAP_CROSS_AXIS] || slot.inventory_hud_cross_axis
 	inventory_hud_anchor = slot_remappings[INVENTORY_SLOT_REMAP_ANCHOR] || slot.inventory_hud_anchor
-	name = slot_remappings[INVENTORY_SLOT_REMAP_NAME] || slot.display_name || slot.name
+	return ..()
 
 /atom/movable/screen/actor_hud/inventory/plate/slot/sync_style(datum/hud_style/style, style_alpha, style_color)
+	self_icon = style.inventory_icons_slot
 	..()
-	icon = style.inventory_icons_slot
 
 /atom/movable/screen/actor_hud/inventory/plate/slot/handle_inventory_click(mob/user, obj/item/with_item)
 	var/obj/item/in_slot = user.item_by_slot_id(inventory_slot_id)
@@ -104,8 +131,8 @@
 	sync_index(hand_index)
 
 /atom/movable/screen/actor_hud/inventory/plate/hand/sync_style(datum/hud_style/style, style_alpha, style_color)
+	self_icon = style.inventory_icons
 	..()
-	icon = style.inventory_icons
 
 /atom/movable/screen/actor_hud/inventory/plate/hand/handle_inventory_click(mob/user, obj/item/with_item)
 	hud.owner.swap_hand(hand_index)

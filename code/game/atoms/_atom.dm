@@ -915,7 +915,7 @@
 
 // todo: deprecate this
 /atom/proc/hud_layerise()
-	plane = INVENTORY_PLANE
+	plane = HUD_ITEM_PLANE
 	set_base_layer(HUD_LAYER_ITEM)
 	// appearance_flags |= NO_CLIENT_COLOR
 
