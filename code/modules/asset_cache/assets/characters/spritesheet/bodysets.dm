@@ -2,5 +2,6 @@
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
 /datum/asset_pack/spritesheet/bodysets
+	name = "Bodysets"
 
 /datum/asset_pack/spritesheet/bodysets/generate()

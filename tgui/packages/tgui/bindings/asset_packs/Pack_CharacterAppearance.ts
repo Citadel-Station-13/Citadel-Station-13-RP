@@ -1,4 +1,0 @@
-/**
- * @file
- * @license MIT
- */

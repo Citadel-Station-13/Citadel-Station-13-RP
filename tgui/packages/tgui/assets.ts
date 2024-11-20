@@ -4,6 +4,7 @@
  * @license MIT
  */
 
+
 const EXCLUDED_PATTERNS = [/v4shim/i];
 const loadedMappings = {};
 

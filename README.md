@@ -60,7 +60,7 @@ These are also the folders you are likely going to encounter while managing the 
   - /asset-root - default location for generated assets to be served in webroot mode
   - /logs: logs are dumped in here
   - /players: player data, like saves and characters get dumped in here
-- /tmp: server scratch space
+- /tmp: server scratch space. can be deleted at any time by the server or anything else.
   - /assets - for asset generation
   
 You only need to make the top level folders (e.g. config, data) static folders in TGS4.

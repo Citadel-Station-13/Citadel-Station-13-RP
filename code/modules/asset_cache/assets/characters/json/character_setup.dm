@@ -9,6 +9,7 @@
  * * character_loadout
  */
 /datum/asset_pack/json/character_setup
+	name = "CharacterSetup"
 
 /datum/asset_pack/json/character_setup/generate()
 	. = list()

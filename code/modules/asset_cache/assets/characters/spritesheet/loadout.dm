@@ -5,6 +5,7 @@
  * Contains sprites of every loadout item, with the name of the sprite being the id of the item.
  */
 /datum/asset_pack/spritesheet/loadout
+	name = "Loadout"
 
 /datum/asset_pack/spritesheet/loadout/generate()
 	for(var/id in global.gear_datums)

@@ -9,23 +9,3 @@
 	var/client/active_client
 	/// currently loaded character
 	var/datum/character/active_character
-
-#warn impl
-
-/datum/character_setup/ui_data(mob/user, datum/tgui/ui)
-	. = ..()
-
-/datum/character_setup/ui_static_data(mob/user, datum/tgui/ui)
-	. = ..()
-
-/datum/character_setup/ui_asset_injection(datum/tgui/ui, list/immediate, list/deferred)
-	// inject necessary asset packs
-	deferred += /datum/asset_pack/json/character_appearance
-	deferred += /datum/asset_pack/json/character_background
-	deferred += /datum/asset_pack/json/character_loadout
-	deferred += /datum/asset_pack/json/character_setup
-	deferred += /datum/asset_pack/spritesheet/bodyset_markings
-	deferred += /datum/asset_pack/spritesheet/bodysets
-	deferred += /datum/asset_pack/spritesheet/loadout
-	deferred += /datum/asset_pack/spritesheet/species
-	deferred += /datum/asset_pack/spritesheet/sprite_accessories

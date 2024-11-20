@@ -1,6 +1,6 @@
 # Bindings
 
-## Struct Datums
+## `datum`: Struct Datums
 
 Format: It goes under `datum/`, and will be named `Game_CamelCasePath`.
 
@@ -12,8 +12,10 @@ Example:
 
 Do not be fancy, just do it.
 
-## Asset Pack JSON's
+## `json_packs`: Json Assets
 
 Example:
 
-`/datum/asset_pack/json/character_setup`'s contents should be defined in `asset_packs/Pack_CharacterSetup`
+`/datum/asset_pack/json/character_setup`'s contents should be defined in `json/Json_CharacterSetup`
+
+## `spritesheets`: Spritesheet Assets

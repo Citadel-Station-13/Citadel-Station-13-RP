@@ -13,6 +13,7 @@
  * * asset_pack/spritesheet/species
  */
 /datum/asset_pack/json/character_background
+	name = "CharacterBackground"
 
 /datum/asset_pack/json/character_background/generate()
 	. = list()
