@@ -17,7 +17,6 @@
  */
 /obj/item/gun/proc/fire(datum/gun_firing_cycle/cycle)
 	SHOULD_NOT_SLEEP(TRUE)
-	#warn impl; check unmount
 
 	// handle legacy systems
 	var/held_twohanded = TRUE
