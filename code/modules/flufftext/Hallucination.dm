@@ -35,51 +35,51 @@ Gunshots/explosions/opening doors/less rare audio (done)
 			if(16 to 25)
 				//Strange items
 				//to_chat(src, "Traitor Items")
-				if(!halitem)
-					halitem = new
-					var/list/slots_free = list(ui_lhand,ui_rhand)
-					if(l_hand) slots_free -= ui_lhand
-					if(r_hand) slots_free -= ui_rhand
-					if(istype(src,/mob/living/carbon/human))
-						var/mob/living/carbon/human/H = src
-						if(!H.belt) slots_free += ui_belt
-						if(!H.l_store) slots_free += ui_storage1
-						if(!H.r_store) slots_free += ui_storage2
-					if(slots_free.len)
-						halitem.screen_loc = pick(slots_free)
-						halitem.hud_layerise()
-						switch(rand(1,6))
-							if(1) //revolver
-								halitem.icon = 'icons/obj/gun/ballistic.dmi'
-								halitem.icon_state = "revolver"
-								halitem.name = "Revolver"
-							if(2) //c4
-								halitem.icon = 'icons/obj/assemblies.dmi'
-								halitem.icon_state = "plastic-explosive0"
-								halitem.name = "Mysterious Package"
-								if(prob(25))
-									halitem.icon_state = "c4small_1"
-							if(3) //sword
-								halitem.icon = 'icons/obj/weapons.dmi'
-								halitem.icon_state = "sword1"
-								halitem.name = "Sword"
-							if(4) //stun baton
-								halitem.icon = 'icons/obj/weapons.dmi'
-								halitem.icon_state = "stunbaton"
-								halitem.name = "Stun Baton"
-							if(5) //emag
-								halitem.icon = 'icons/obj/card.dmi'
-								halitem.icon_state = "emag"
-								halitem.name = "Cryptographic Sequencer"
-							if(6) //flashbang
-								halitem.icon = 'icons/obj/grenade.dmi'
-								halitem.icon_state = "flashbang1"
-								halitem.name = "Flashbang"
-						if(client) client.screen += halitem
-						spawn(rand(100,250))
-							if(client)
-								client.screen -= halitem
-							halitem = null
+				// if(!halitem)
+				// 	halitem = new
+				// 	var/list/slots_free = list()
+				// 	for(var/i in get_empty_hand_indices())
+				// 		slots_free += SCREEN_LOC_INV_HAND(i)
+				// 	if(istype(src,/mob/living/carbon/human))
+				// 		var/mob/living/carbon/human/H = src
+				// 		if(!H.belt) slots_free += ui_belt
+				// 		if(!H.l_store) slots_free += ui_storage1
+				// 		if(!H.r_store) slots_free += ui_storage2
+				// 	if(slots_free.len)
+				// 		halitem.screen_loc = pick(slots_free)
+				// 		halitem.hud_layerise()
+				// 		switch(rand(1,6))
+				// 			if(1) //revolver
+				// 				halitem.icon = 'icons/obj/gun/ballistic.dmi'
+				// 				halitem.icon_state = "revolver"
+				// 				halitem.name = "Revolver"
+				// 			if(2) //c4
+				// 				halitem.icon = 'icons/obj/assemblies.dmi'
+				// 				halitem.icon_state = "plastic-explosive0"
+				// 				halitem.name = "Mysterious Package"
+				// 				if(prob(25))
+				// 					halitem.icon_state = "c4small_1"
+				// 			if(3) //sword
+				// 				halitem.icon = 'icons/obj/weapons.dmi'
+				// 				halitem.icon_state = "sword1"
+				// 				halitem.name = "Sword"
+				// 			if(4) //stun baton
+				// 				halitem.icon = 'icons/obj/weapons.dmi'
+				// 				halitem.icon_state = "stunbaton"
+				// 				halitem.name = "Stun Baton"
+				// 			if(5) //emag
+				// 				halitem.icon = 'icons/obj/card.dmi'
+				// 				halitem.icon_state = "emag"
+				// 				halitem.name = "Cryptographic Sequencer"
+				// 			if(6) //flashbang
+				// 				halitem.icon = 'icons/obj/grenade.dmi'
+				// 				halitem.icon_state = "flashbang1"
+				// 				halitem.name = "Flashbang"
+				// 		if(client) client.screen += halitem
+				// 		spawn(rand(100,250))
+				// 			if(client)
+				// 				client.screen -= halitem
+				// 			halitem = null
 			if(26 to 40)
 				//Flashes of danger
 				//to_chat(src, "Danger Flash")
@@ -325,23 +325,6 @@ proc/check_panel(mob/M)
 	SEND_IMAGE(target, I)
 	spawn(300)
 		qdel(O)
-	return
-
-GLOBAL_LIST_INIT(non_fakeattack_weapons, list(/obj/item/gun/ballistic, /obj/item/ammo_magazine/a357/speedloader,\
-	/obj/item/gun/energy/crossbow, /obj/item/melee/transforming/energy/sword,\
-	/obj/item/storage/box/syndicate, /obj/item/storage/box/emps,\
-	/obj/item/cartridge/syndicate, /obj/item/clothing/under/chameleon,\
-	/obj/item/clothing/shoes/syndigaloshes, /obj/item/card/id/syndicate,\
-	/obj/item/clothing/mask/gas/voice, /obj/item/clothing/glasses/thermal,\
-	/obj/item/chameleon, /obj/item/card/emag,\
-	/obj/item/storage/toolbox/syndicate, /obj/item/aiModule,\
-	/obj/item/radio/headset/syndicate,	/obj/item/plastique,\
-	/obj/item/powersink, /obj/item/storage/box/syndie_kit,\
-	/obj/item/toy/syndicateballoon, /obj/item/gun/energy/captain,\
-	/obj/item/hand_tele, /obj/item/rcd, /obj/item/tank/jetpack,\
-	/obj/item/clothing/under/rank/captain, /obj/item/aicard,\
-	/obj/item/clothing/shoes/magboots, /obj/item/blueprints, /obj/item/disk/nuclear,\
-	/obj/item/clothing/suit/space/void, /obj/item/tank))
 
 /proc/fake_attack(var/mob/living/target)
 	var/list/possible_clones = new/list()
@@ -363,14 +346,8 @@ GLOBAL_LIST_INIT(non_fakeattack_weapons, list(/obj/item/gun/ballistic, /obj/item
 
 	//var/obj/effect/fake_attacker/F = new/obj/effect/fake_attacker(outside_range(target))
 	var/obj/effect/fake_attacker/F = new/obj/effect/fake_attacker(target.loc)
-	if(clone.l_hand)
-		if(!(locate(clone.l_hand) in GLOB.non_fakeattack_weapons))
-			clone_weapon = clone.l_hand.name
-			F.weap = clone.l_hand
-	else if (clone.r_hand)
-		if(!(locate(clone.r_hand) in GLOB.non_fakeattack_weapons))
-			clone_weapon = clone.r_hand.name
-			F.weap = clone.r_hand
+	// meta-able but whatever we can redo later.
+	F.weap = clone.get_active_held_item() || clone.get_inactive_held_item()
 
 	F.name = clone.name
 	F.my_target = target

@@ -13,8 +13,7 @@
 #define HUMAN_OVERLAY_UNDERWEAR "underwear"
 #define HUMAN_OVERLAY_FIRE "fire"
 #define HUMAN_OVERLAY_LIQUID "liquid"
-#define HUMAN_OVERLAY_RHAND "rhand"
-#define HUMAN_OVERLAY_LHAND "lhand"
+#define HUMAN_OVERLAY_HAND(INDEX) "hand-[INDEX]"
 
 // todo: sprite accessories list system
 

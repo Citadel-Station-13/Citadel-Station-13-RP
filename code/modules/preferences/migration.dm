@@ -114,7 +114,7 @@
 		character[CHARACTER_DATA_LANGUAGES] = translated_languages
 		var/list/innate = CS.get_intrinsic_language_ids()
 		for(var/name in alternate_languages)
-			var/datum/language/L = SScharacters.resolve_language_name(name)
+			var/datum/prototype/language/L = RSlanguages.legacy_resolve_language_name(name)
 			if(L.id in innate)
 				continue
 			translated_languages += L.id

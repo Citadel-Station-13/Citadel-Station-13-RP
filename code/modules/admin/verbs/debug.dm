@@ -551,6 +551,7 @@
 				var/obj/item/tank/phoron/Phoron = new/obj/item/tank/phoron(Rad)
 
 				Phoron.air_contents.gas[GAS_ID_PHORON] = 29.1154	//This is a full tank if you filled it from a canister
+				Phoron.air_contents.update_values()
 				Rad.P = Phoron
 
 				Phoron.loc = Rad

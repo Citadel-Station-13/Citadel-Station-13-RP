@@ -124,6 +124,7 @@
 	// point of no return; call initialize() asynchronously.
 	opened_at = world.time
 	window.acquire_lock(src)
+	SStgui.on_open(src)
 	// defer initialize() to after current call chain.
 	spawn(0)
 		initialize(data, modules)
@@ -135,6 +136,8 @@
  * * Separate from open() so that open() can be non-blocking.
  */
 /datum/tgui/proc/initialize(data, modules)
+	// todo: this is a blocking proc. src_object can be deleted at any time between the blocking procs.
+	//       we need sane handling of deletion order, of runtimes happen.
 	if(!window.is_ready())
 		window.initialize(
 			strict_mode = TRUE,
@@ -169,7 +172,6 @@
 	))
 	if(mouse_hooked)
 		window.set_mouse_macro()
-	SStgui.on_open(src)
 	// todo: should these hooks be here?
 	src_object.on_ui_open(user, src)
 	for(var/datum/module as anything in modules_registered)
@@ -190,6 +192,7 @@
 	if(closing)
 		return
 	closing = TRUE
+	SStgui.on_close(src)
 	// If we don't have window_id, open proc did not have the opportunity
 	// to finish, therefore it's safe to skip this whole block.
 	if(window)
@@ -198,7 +201,6 @@
 		// the error message properly.
 		window.release_lock()
 		window.close(can_be_suspended)
-		SStgui.on_close(src)
 	state = null
 	if(parent_ui)
 		parent_ui.children -= src

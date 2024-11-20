@@ -212,7 +212,7 @@
 	return
 
 // This is awful but its literally say code.
-/mob/living/simple_mob/animal/borer/say(var/message, var/datum/language/speaking = null, var/verb="says", var/alt_name="", var/whispering = 0)
+/mob/living/simple_mob/animal/borer/say(var/message, var/datum/prototype/language/speaking = null, var/verb="says", var/alt_name="", var/whispering = 0)
 	message = sanitize(message)
 	message = capitalize(message)
 
@@ -231,7 +231,7 @@
 	if(copytext(message, 1, 2) == "*")
 		return emote(copytext(message, 2))
 
-	var/datum/language/L = parse_language(message)
+	var/datum/prototype/language/L = parse_language(message)
 	if(L && L.language_flags & LANGUAGE_HIVEMIND)
 		L.broadcast(src,trim(copytext(message,3)), src.true_name)
 		return

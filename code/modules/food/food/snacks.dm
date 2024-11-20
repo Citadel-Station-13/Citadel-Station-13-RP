@@ -571,6 +571,7 @@
 	desc = "Goes great with Robust Coffee."
 	icon_state = "donut1"
 	nutriment_amt = 3
+	worth_intrinsic = 3
 
 /obj/item/reagent_containers/food/snacks/donut/normal/Initialize(mapload)
 	. = ..()
@@ -589,6 +590,7 @@
 	icon_state = "donut1"
 	filling_color = "#ED11E6"
 	nutriment_amt = 2
+	worth_intrinsic = 30
 
 /obj/item/reagent_containers/food/snacks/donut/chaos/Initialize(mapload)
 	. = ..()
@@ -628,6 +630,7 @@
 	icon_state = "jdonut1"
 	filling_color = "#ED1169"
 	nutriment_amt = 3
+	worth_intrinsic = 5
 
 /obj/item/reagent_containers/food/snacks/donut/jelly/Initialize(mapload)
 	. = ..()
@@ -646,6 +649,7 @@
 	icon_state = "jdonut1"
 	filling_color = "#ED1169"
 	nutriment_amt = 3
+	worth_intrinsic = 25
 
 /obj/item/reagent_containers/food/snacks/donut/slimejelly/Initialize(mapload)
 	. = ..()
@@ -664,6 +668,7 @@
 	icon_state = "jdonut1"
 	filling_color = "#ED1169"
 	nutriment_amt = 3
+	worth_intrinsic = 5
 
 /obj/item/reagent_containers/food/snacks/donut/cherryjelly/Initialize(mapload)
 	. = ..()
