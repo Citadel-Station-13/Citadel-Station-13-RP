@@ -125,7 +125,7 @@
  */
 /datum/asset_pack/spritesheet/proc/do_insert(sprite_name, icon/I, icon_state="", dir=SOUTH, frame=1, moving=FALSE)
 	I = icon(I, icon_state=icon_state, dir=dir, frame=frame, moving=moving)
-	if (!I || !length(icon_states(I))) // That direction or state doesn't exist!
+	if (!I || !length(fast_icon_states(I))) // That direction or state doesn't exist!
 		return
 	// Any sprite modifications we want to do (aka, coloring a greyscaled asset)
 	I = modify_inserted(I)

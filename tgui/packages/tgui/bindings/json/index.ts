@@ -7,7 +7,7 @@
  * Spritesheet type enums.
  */
 export enum JsonMappings {
-  Typepaths = "Typepaths",
+  WorldTypepaths = "WorldTypepaths",
 }
 
-export { Json_Typepaths } from './Json_Typepaths';
+export { Json_WorldTypepaths } from './Json_WorldTypepaths';

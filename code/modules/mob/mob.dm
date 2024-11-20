@@ -1,3 +1,6 @@
+/mob
+	/// mob spawn flags
+	var/mob_spawn_flags = NONE
 
 /**
  * Intialize a mob
