@@ -1745,6 +1745,7 @@
 	id_tag = "trade_space_lock";
 	pixel_x = -25
 	},
+/obj/effect/shuttle_landmark/trade/hangar,
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
 "gc" = (
@@ -10419,7 +10420,6 @@
 	id_tag = "tradeport_hangar_docker";
 	pixel_x = -25
 	},
-/obj/effect/shuttle_landmark/trade/hangar,
 /obj/overmap/entity/visitable/ship/landable/trade,
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)

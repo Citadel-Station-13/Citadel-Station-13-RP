@@ -241,10 +241,8 @@
 
 	if(iscarbon(O))
 		var/mob/living/carbon/M = O
-		if(M.r_hand)
-			M.r_hand.clean_blood()
-		if(M.l_hand)
-			M.l_hand.clean_blood()
+		for(var/obj/item/I as anything in M.get_held_items())
+			I.clean_blood()
 		if(M.back)
 			if(M.back.clean_blood())
 				M.update_inv_back(0)
@@ -389,14 +387,8 @@
 	thing.update_icon()
 
 /obj/structure/sink/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
-	if (ishuman(user))
-		var/mob/living/carbon/human/H = user
-		var/obj/item/organ/external/temp = H.organs_by_name["r_hand"]
-		if (H.hand)
-			temp = H.organs_by_name["l_hand"]
-		if(temp && !temp.is_usable())
-			to_chat(user, "<span class='notice'>You try to move your [temp.name], but cannot!</span>")
-			return
+	if(!user.standard_hand_usability_check(src, e_args.hand_index, HAND_MANIPULATION_GENERAL))
+		return
 
 	if(isrobot(user) || isAI(user))
 		return

@@ -1,6 +1,7 @@
 SUBSYSTEM_DEF(job)
 	name = "Job"
 	init_order = INIT_ORDER_JOBS
+	init_stage = INIT_STAGE_EARLY
 	subsystem_flags = SS_NO_FIRE
 
 	/// List of all jobs
@@ -27,7 +28,7 @@ SUBSYSTEM_DEF(job)
 	if(!length(occupations))
 		setup_occupations()
 	reconstruct_job_ui_caches()
-	return ..()
+	return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/job/Recover()
 	init_access()

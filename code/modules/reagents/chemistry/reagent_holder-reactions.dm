@@ -99,7 +99,7 @@
  */
 /datum/reagent_holder/proc/start_ticked_reaction(datum/chemical_reaction/reaction)
 	SHOULD_NOT_OVERRIDE(TRUE)
-	if(active_reactions[reaction])
+	if(active_reactions?[reaction])
 		return
 	log_chemical_reaction_ticked_start(src, reaction)
 	LAZYSET(active_reactions, reaction, list())

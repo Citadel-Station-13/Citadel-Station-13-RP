@@ -10,7 +10,7 @@
 /mob/living/voice/Initialize(mapload)
 	. = ..()
 	add_language(LANGUAGE_GALCOM)
-	set_default_language(SScharacters.resolve_language_name(LANGUAGE_GALCOM))
+	set_default_language(RSlanguages.legacy_resolve_language_name(LANGUAGE_GALCOM))
 
 	if(istype(loc, /obj/item/communicator))
 		comm = loc
@@ -105,7 +105,7 @@
 // Proc: say()
 // Parameters: 4 (generic say() arguments)
 // Description: Adds a speech bubble to the communicator device, then calls ..() to do the real work.
-/mob/living/voice/say(var/message, var/datum/language/speaking = null, var/verb="says", var/alt_name="", var/whispering=0)
+/mob/living/voice/say(var/message, var/datum/prototype/language/speaking = null, var/verb="says", var/alt_name="", var/whispering=0)
 	//Speech bubbles.
 	if(comm)
 		var/speech_bubble_test = say_test(message)
@@ -126,7 +126,7 @@
 /mob/living/voice/speech_bubble_appearance()
 	return "comm"
 
-/mob/living/voice/say_understands(var/other,var/datum/language/speaking = null)
+/mob/living/voice/say_understands(var/other,var/datum/prototype/language/speaking = null)
 	//These only pertain to common. Languages are handled by mob/say_understands()
 	if (!speaking)
 		if (istype(other, /mob/living/carbon))

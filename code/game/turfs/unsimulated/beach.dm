@@ -56,6 +56,7 @@
 		icon_state = "desert[rand(0,4)]"
 
 /turf/simulated/floor/outdoors/beach/sand/desert/indoors
+	initial_gas_mix = ATMOSPHERE_USE_INDOORS
 	outdoors = FALSE
 
 /turf/simulated/floor/outdoors/beach/sand/lowdesert

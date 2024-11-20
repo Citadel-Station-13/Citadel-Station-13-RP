@@ -1,6 +1,7 @@
 SUBSYSTEM_DEF(nanoui)
 	name = "NanoUI"
 	priority = FIRE_PRIORITY_NANO
+	subsystem_flags = SS_NO_INIT
 	wait = 7
 
 	/// A list of current open /nanoui UIs, grouped by src_object and ui_key.
@@ -9,13 +10,10 @@ SUBSYSTEM_DEF(nanoui)
 	/// A list of current open /nanoui UIs, not grouped, for use in processing.
 	var/list/processing_uis = list()
 
-
-
 /datum/controller/subsystem/nanoui/fire(resumed)
 	for(var/thing in processing_uis)
 		var/datum/nanoui/UI = thing
 		UI.process()
-
 
 /datum/controller/subsystem/nanoui/Recover()
 	if(SSnanoui.open_uis)
@@ -23,10 +21,8 @@ SUBSYSTEM_DEF(nanoui)
 	if(SSnanoui.processing_uis)
 		processing_uis |= SSnanoui.processing_uis
 
-
 /datum/controller/subsystem/nanoui/stat_entry()
 	return ..() + " [processing_uis.len] UIs"
-
 
 /**
  * Get an open /nanoui ui for the current user, src_object and ui_key and try to update it with data
@@ -56,7 +52,6 @@ SUBSYSTEM_DEF(nanoui)
 
 	return ui
 
-
 /**
  * Get an open /nanoui ui for the current user, src_object and ui_key
  *
@@ -74,7 +69,6 @@ SUBSYSTEM_DEF(nanoui)
 	for (var/datum/nanoui/ui as anything in open_uis[src_object_key][ui_key])
 		if (ui.user == user)
 			return ui
-
 
 /**
  * Update all /nanoui uis attached to src_object
@@ -98,7 +92,6 @@ SUBSYSTEM_DEF(nanoui)
 			else
 				ui.close()
 
-
 /**
  * Close all /nanoui uis attached to src_object
  *
@@ -116,7 +109,6 @@ SUBSYSTEM_DEF(nanoui)
 		for (var/datum/nanoui/ui as anything in open_uis[src_object_key][ui_key])
 			ui.close() // If it's missing src_object or user, we want to close it even more.
 			.++
-
 
 /**
  * Update /nanoui uis belonging to user
@@ -137,7 +129,6 @@ SUBSYSTEM_DEF(nanoui)
 			ui.try_update(1)
 			.++
 
-
 /**
  * Close /nanoui uis belonging to user
  *
@@ -157,7 +148,6 @@ SUBSYSTEM_DEF(nanoui)
 			ui.close()
 			.++
 
-
 /**
  * Add a /nanoui ui to the list of open uis
  * This is called by the /nanoui open() proc
@@ -172,7 +162,6 @@ SUBSYSTEM_DEF(nanoui)
 	LAZYDISTINCTADD(open_uis[src_object_key][ui.ui_key], ui)
 	LAZYDISTINCTADD(ui.user.open_uis, ui)
 	processing_uis += ui
-
 
 /**
  * Remove a /nanoui ui from the list of open uis
@@ -199,7 +188,6 @@ SUBSYSTEM_DEF(nanoui)
 
 	return TRUE
 
-
 /**
  * This is called on user logout
  * Closes/clears all uis attached to the user's /mob
@@ -210,7 +198,6 @@ SUBSYSTEM_DEF(nanoui)
  */
 /datum/controller/subsystem/nanoui/proc/user_logout(mob/user)
 	return close_user_uis(user)
-
 
 /**
  * This is called when a player transfers from one mob to another

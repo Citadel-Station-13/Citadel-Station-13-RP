@@ -159,7 +159,6 @@
 	traits = list(
 		ZTRAIT_STATION,
 		ZTRAIT_FACILITY_SAFETY,
-		ZTRAIT_LEGACY_BELTER_DOCK,
 	)
 	base_turf = /turf/simulated/open
 	link_below = /datum/map_level/endeavour/ship/deck_three
@@ -175,6 +174,7 @@
 	traits = list(
 		ZTRAIT_STATION,
 		ZTRAIT_FACILITY_SAFETY,
+		ZTRAIT_LEGACY_BELTER_DOCK,
 	)
 	base_turf = /turf/simulated/open
 	link_below = /datum/map_level/endeavour/ship/deck_four

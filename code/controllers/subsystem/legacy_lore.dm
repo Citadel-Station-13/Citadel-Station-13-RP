@@ -13,4 +13,4 @@ SUBSYSTEM_DEF(legacy_lore)
 		if(initial(instance.name))
 			instance = new path()
 			organizations[path] = instance
-	return ..()
+	return SS_INIT_SUCCESS

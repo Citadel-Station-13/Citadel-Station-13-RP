@@ -49,7 +49,6 @@ SUBSYSTEM_DEF(shuttle)
 	/// Shuttles remaining to process this fire() tick
 	var/tmp/list/current_run
 
-
 	/**
 	 *! I made these shitty vars so we don't search for these in GOD DAMN WORLD
 	 *! If I find these are still here in 2023 I'll be very upset.
@@ -63,7 +62,7 @@ SUBSYSTEM_DEF(shuttle)
 	last_landmark_registration_time = world.time
 	block_init_queue = FALSE
 	process_init_queues()
-	return ..()
+	return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/shuttle/fire(resumed = 0)
 	if (!resumed)

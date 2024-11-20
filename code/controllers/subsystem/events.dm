@@ -33,7 +33,7 @@ SUBSYSTEM_DEF(events)
 	// unfortunately, character setup server startup hooks fire before /Initialize so :/
 	// SScharactersetup but not shit when :)
 	InitializeHolidays()
-	return ..()
+	return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/events/fire(resumed)
 	if (!resumed)

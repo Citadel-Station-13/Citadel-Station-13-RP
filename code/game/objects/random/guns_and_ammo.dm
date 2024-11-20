@@ -165,9 +165,12 @@
 				prob(2);/obj/item/storage/box/shotgunammo,
 				prob(4);/obj/item/storage/box/shotgunshells,
 				prob(1);/obj/item/storage/box/stunshells,
-				prob(2);/obj/item/ammo_magazine/a45,
-				prob(4);/obj/item/ammo_magazine/a45/rubber,
-				prob(4);/obj/item/ammo_magazine/a45/flash,
+				prob(2);/obj/item/ammo_magazine/a45/doublestack,
+				prob(4);/obj/item/ammo_magazine/a45/doublestack/rubber,
+				prob(4);/obj/item/ammo_magazine/a45/doublestack/flash,
+				prob(2);/obj/item/ammo_magazine/a45/singlestack,
+				prob(4);/obj/item/ammo_magazine/a45/singlestack/rubber,
+				prob(4);/obj/item/ammo_magazine/a45/singlestack/flash,
 				prob(2);/obj/item/ammo_magazine/a9mm/top_mount,
 				prob(6);/obj/item/ammo_magazine/a9mm/top_mount/rubber)
 
