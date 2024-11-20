@@ -192,7 +192,7 @@
 	worth = 150
 	container_name = "Fish crate"
 
-/datum/supply_pack/hospitality/donuts
+/datum/supply_pack/nanotrasen/hospitality/donuts
 	contains = list(
 		/obj/item/storage/box/donut = 3,
 	)
@@ -201,7 +201,7 @@
 	container_name = "Donut Resupply Crate"
 	container_desc = "For all your emergency donut resupply needs, Centauri Provision's got you."
 
-/datum/supply_pack/hospitality/condiments
+/datum/supply_pack/nanotrasen/hospitality/condiments
 	contains = list(
 		/obj/item/reagent_containers/food/condiment/enzyme,
 		/obj/item/reagent_containers/food/condiment/ketchup = 2,
