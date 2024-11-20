@@ -198,6 +198,22 @@
 		/obj/item/cell/device/weapon = 8,
 	)
 
+/obj/item/storage/lockbox/axhs
+	name = "AXHS gun case"
+	desc = "A locked waterproof case."
+	icon_state = "gunlockbox+l"
+	sfx_open = 'sound/items/storage/briefcase.ogg'
+	req_access = list(ACCESS_GENERAL_EXPLORER)
+	starts_with = list(
+		/obj/item/gun/ballistic/ax59 = 1,
+		/obj/item/clothing/accessory/holster/leg = 1,
+		/obj/item/ammo_magazine/a45/doublestack = 2,
+		/obj/item/gun_attachment/harness/magnetic/lanyard = 1
+	)
+	icon_locked = "gunlockbox+l"
+	icon_closed = "gunlockbox"
+	icon_broken = "gunlockbox+b"
+
 //Plate Harness Kits
 /obj/item/storage/lockbox/limb_plate
 	name = "Lightweight Plating Kit"

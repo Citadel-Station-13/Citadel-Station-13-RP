@@ -170,7 +170,7 @@
 			icon_state = "[initial(icon_state)]"
 
 	if(!ignore_inhands)
-		update_held_icon()
+		update_worn_icon()
 
 //* Ammo *//
 

@@ -1,4 +1,4 @@
-/datum/language/zaddat
+/datum/prototype/language/zaddat
 	id = LANGUAGE_ID_ZADDAT
 	name = LANGUAGE_ZADDAT
 	translation_class = TRANSLATION_CLASS_DEFAULT_STANDARD_RACE

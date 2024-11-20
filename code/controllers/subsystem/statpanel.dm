@@ -40,15 +40,17 @@ SUBSYSTEM_DEF(statpanels)
 		// grab victim
 		var/client/player = currentrun[length(currentrun)]
 		--currentrun.len
+		// check if ready
+		// this is not a client initialized check, it's a "exists and ready" check.
+		// we intentionally don't wait for full init
+		if(!player.tgui_stat?.ready)
+			continue
+		// check listed turf, even if we're on JS stat
+		if(player.tgui_stat.byond_stat_turf && !player.list_turf_check(player.tgui_stat.byond_stat_turf))
+			player.unlist_turf()
 		// check if we're even on the js one
 		if(player.tgui_stat.byond_stat_active)
 			continue
-		// check if ready
-		if(!player.tgui_stat.ready)
-			continue
-		// check listed turf
-		if(player.tgui_stat.byond_stat_turf && !player.list_turf_check(player.tgui_stat.byond_stat_turf))
-			player.unlist_turf()
 		// are they an admin?
 		var/is_admin = !!player.holder
 		// grab their mob data

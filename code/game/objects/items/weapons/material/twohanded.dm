@@ -21,7 +21,6 @@
 	attack_sound = "swing_hit"
 	drop_sound = 'sound/items/drop/sword.ogg'
 	pickup_sound = 'sound/items/pickup/sword.ogg'
-
 	passive_parry = /datum/passive_parry/melee{
 		parry_chance_melee = 15;
 	}

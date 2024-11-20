@@ -1129,8 +1129,8 @@
 	// i seriously hate vorecode
 	species.on_apply(src)
 
-	// set our has hands
-	has_hands = (species && species.hud)? species.hud.has_hands : TRUE
+	inventory.set_inventory_slots(species.inventory_slots)
+	inventory.set_hand_count(species.hud? (species.hud.has_hands ? 2 : 0) : 2)
 
 	// until we unfuck hud datums, this will force reload our entire hud
 	if(hud_used)

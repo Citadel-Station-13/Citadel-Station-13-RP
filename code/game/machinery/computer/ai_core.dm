@@ -175,7 +175,7 @@
 					// If there's no brain, the mob is deleted and a structure/AIcore is created.
 					if(A)
 						A.rename_self("ai")
-						for(var/datum/language/L in brain.brainmob.languages)
+						for(var/datum/prototype/language/L in brain.brainmob.languages)
 							A.add_language(L.name)
 				feedback_inc("cyborg_ais_created",1)
 				qdel(src)

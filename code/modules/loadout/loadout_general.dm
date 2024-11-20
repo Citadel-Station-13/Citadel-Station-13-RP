@@ -53,7 +53,7 @@
 
 /datum/loadout_entry/plushie
 	name = "Plushie Selection"
-	path = /obj/item/toy/plushie/
+	path = /obj/item/toy/plushie
 
 /datum/loadout_entry/plushie/New()
 	..()

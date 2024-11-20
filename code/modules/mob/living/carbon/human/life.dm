@@ -89,7 +89,6 @@
 	//No need to update all of these procs if the guy is dead.
 	if(stat != DEAD && !stasis)
 		stabilize_body_temperature(seconds) //Body temperature adjusts itself (self-regulation)
-		weightgain()
 		process_weaver_silk()
 		handle_shock()
 		handle_pain()
@@ -1048,10 +1047,10 @@
 					if(check_belly(I))
 						continue
 					if(src.species && !(src.species.species_flags & CONTAMINATION_IMMUNE))
-						// This is hacky, I'm so sorry.
-						if(I != l_hand && I != r_hand)	//If the item isn't in your hands, you're probably wearing it. Full damage for you.
+						if(isnull(I.held_index))
+							//If the item isn't in your hands, you're probably wearing it. Full damage for you.
 							total_phoronloss += loss_per_part
-						else if((I == l_hand | I == r_hand) && !((src.wear_suit?.body_cover_flags & HANDS) | src.gloves | (src.w_uniform?.body_cover_flags & HANDS)))	//If the item is in your hands, but you're wearing protection, you might be alright.
+						else if(!((src.wear_suit.body_cover_flags & HANDS) | src.gloves | (src.w_uniform.body_cover_flags & HANDS)))	//If the item is in your hands, but you're wearing protection, you might be alright.
 							//If you hold it in hand, and your hands arent covered by anything
 							total_phoronloss += loss_per_part
 			if(total_phoronloss)
@@ -1868,14 +1867,6 @@
 		return
 	else
 		bodytemperature += (BODYTEMP_HEATING_MAX + (fire_stacks * 15)) * (1-thermal_protection)
-
-/mob/living/carbon/human/proc/weightgain()
-	if (nutrition >= 0 && stat != 2)
-		if (nutrition > MIN_NUTRITION_TO_GAIN && weight < MAX_MOB_WEIGHT && weight_gain)
-			weight += species.metabolism*(0.01*weight_gain)
-
-		else if (nutrition <= MAX_NUTRITION_TO_LOSE && stat != 2 && weight > MIN_MOB_WEIGHT && weight_loss)
-			weight -= species.metabolism*(0.01*weight_loss) // starvation weight loss
 
 //Our call for the NIF to do whatever
 /mob/living/carbon/human/proc/handle_nif()

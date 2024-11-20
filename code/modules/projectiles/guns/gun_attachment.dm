@@ -64,6 +64,8 @@
 	/// * only update_gun_overlay() can modify this, and you shouldn't be using this for anything in a non-read-only
 	///   context. no, you are not special; there's no exceptions
 	var/list/appearance/gun_applied_overlay
+	/// * disable for no overlay
+	var/render_on_gun = TRUE
 
 	//* Slots *//
 
@@ -144,6 +146,8 @@
 	if(!attached)
 		return
 	remove_gun_overlay()
+	if(!render_on_gun)
+		return
 	var/appearance/applying = get_gun_overlay()
 	if(!applying)
 		return
