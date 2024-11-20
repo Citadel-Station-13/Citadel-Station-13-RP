@@ -55,7 +55,7 @@
 /obj/item/gun/energy/nt_pmd/service_revolver
 	name = "service weapon"
 	icon_state = "service_grip"
-	#warn rename icon states, move icon over.
+	#warn rename icon states, move icon over, add icon states to firemodes
 	desc = "An anomalous weapon, long kept secure. It has recently been acquired by Nanotrasen's Paracausal Monitoring Division. How did it get here?"
 	damage_force = 5
 	slot_flags = SLOT_BELT

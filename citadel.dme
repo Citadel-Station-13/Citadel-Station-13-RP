@@ -4522,6 +4522,7 @@
 #include "code\modules\projectiles\guns\energy.dm"
 #include "code\modules\projectiles\guns\firemode.dm"
 #include "code\modules\projectiles\guns\firing_pin.dm"
+#include "code\modules\projectiles\guns\gun-attachment.dm"
 #include "code\modules\projectiles\guns\gun-firing.dm"
 #include "code\modules\projectiles\guns\gun-modular.dm"
 #include "code\modules\projectiles\guns\gun-projectile-implementation.dm"

@@ -131,6 +131,7 @@
 		SEND_SIGNAL(src, COMSIG_GUN_FIRING_CYCLE_ITERATION_PREFIRE, our_cycle)
 		// fire
 		our_cycle.last_firing_result = fire(our_cycle)
+		our_cycle.cycle_iterations_fired++
 		// post-fire
 		if(!post_fire(our_cycle))
 			break
@@ -160,14 +161,21 @@
 	SHOULD_NOT_SLEEP(TRUE)
 	switch(cycle.last_firing_result)
 		if(GUN_FIRED_SUCCESS)
-			cycle.cycle_iterations_fired++
-			return TRUE
+			return post_live_fire(cycle)
 		if(GUN_FIRED_FAIL_EMPTY, GUN_FIRED_FAIL_INERT)
 			return post_empty_fire(cycle)
 		else
 			return FALSE
 
 //* Firing - Default Handlers (Overridable) *//
+
+/**
+ * Called on successful firing
+ *
+ * @return FALSE to abort firing cycle.
+ */
+/obj/item/gun/proc/post_live_fire(datum/gun_firing_cycle/cycle)
+	return TRUE
 
 /**
  * Called if someone tries to fire us without live ammo in the chamber (or chamber-equivalent)
