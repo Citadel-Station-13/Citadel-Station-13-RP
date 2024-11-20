@@ -49,6 +49,9 @@
 /// The key for brain organs.
 /// * Type: /obj/item/organ/internal/brain
 #define ORGAN_KEY_BRAIN "brain"
+/// The key for lung organs.
+/// * Type: /obj/item/organ/internal/lungs
+#define ORGAN_KEY_LUNGS "lungs"
 /// The key for eye organs.
 /// * Type: /obj/item/organ/internal/eyes
 #define ORGAN_KEY_EYES "eyes"

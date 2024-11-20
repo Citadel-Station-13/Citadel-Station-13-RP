@@ -2,6 +2,13 @@
  * ## Carbon Mobs
  *
  * One of the base-types of 'real' (living) mobs.
+ *
+ * ## Composition:
+ * * Organs: Comprises our internals, able to hook onto events, life processing, etc.
+ *           Organs can be internal or external. External organs are bodyparts.
+ *           All organs, minus root organs, have a parent organ.
+ *           We can have one or many root organs.
+ * * Species: Our template. Determines what we start with and should have.
  */
 /mob/living/carbon
 	//* Organs *//

@@ -780,10 +780,10 @@ if (istype(AM, /mob/living))
 	if(tripped)
 		return
 
-	if(istype(AM, /mob/living))
+	if(istype(AM, /mob/living/carbon))
 		fire()
 		update_icon()
-		var/mob/living/M = AM
+		var/mob/living/carbon/M = AM
 		var/list/throw_dirs = list(1, 2, 4, 8, 5, 6, 9, 10)
 		var/turf/T2 = get_step(AM, pick(throw_dirs))
 		var/damage = rand(min_damage, max_damage)

@@ -54,18 +54,18 @@
 
 /mob/living/carbon/carry_weight_to_penalty(amount)
 	// https://www.desmos.com/calculator/5o2cx7grbo
-	var/carry_strength = physiology.carry_strength + physiology.carry_weight_add
+	var/carry_strength = global_physiology.carry_strength + global_physiology.carry_weight_add
 	if(amount < carry_strength)
 		return 1
-	var/carry_factor = physiology.carry_factor * physiology.carry_weight_factor
+	var/carry_factor = global_physiology.carry_factor * global_physiology.carry_weight_factor
 	return (1 / (1 + NUM_E ** (carry_factor * (CARRY_WEIGHT_SCALING / carry_strength) * (amount - carry_strength + CARRY_WEIGHT_BIAS * carry_strength) - 5))) * (1 - CARRY_WEIGHT_ASYMPTOTE) + CARRY_WEIGHT_ASYMPTOTE
 
 /mob/living/carbon/carry_encumbrance_to_penalty(amount)
 	// https://www.desmos.com/calculator/5o2cx7grbo
-	var/carry_strength = physiology.carry_strength
+	var/carry_strength = global_physiology.carry_strength
 	if(amount < carry_strength)
 		return 1
-	var/carry_factor = physiology.carry_factor
+	var/carry_factor = global_physiology.carry_factor
 	return (1 / (1 + NUM_E ** (carry_factor * (CARRY_WEIGHT_SCALING / carry_strength) * (amount - carry_strength + CARRY_WEIGHT_BIAS * carry_strength) - 5))) * (1 - CARRY_WEIGHT_ASYMPTOTE) + CARRY_WEIGHT_ASYMPTOTE
 
 /mob/living/carbon/get_item_slowdown()

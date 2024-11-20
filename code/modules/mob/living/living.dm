@@ -4,19 +4,31 @@
  * This is called 'living' but in reality it's just any real lifeform in the world.
  *
  * Contains normalized health system simulation and all that.
+ *
+ * ## Composition:
+ * * Global Physiology: Mob-wide physiology modification.
+ * * Local Physiology: Limb-wide (or mob-wide for non-carbons) physiology modification.
  */
-/mob/living
-
 TYPE_REGISTER_SPATIAL_GRID(/mob/living, SSspatial_grids.living)
+/mob/living
+	//* Physiology *//
+	/// overall physiology - see physiology.dm
+	var/datum/global_physiology/global_physiology
+	/// physiology modifiers - see physiology.dm; set to list of paths at init to initialize into instances.
+	var/list/datum/physiology_modifier/physiology_modifiers
+
 /mob/living/Initialize(mapload)
 	. = ..()
+	// physiology
+	init_physiology()
 	// make radiation sensitive
 	AddComponent(/datum/component/radiation_listener)
 	AddElement(/datum/element/z_radiation_listener)
-
+	// init AI
 	if(ai_holder_type && !ai_holder)
 		ai_holder = new ai_holder_type(src)
 
+	// todo: what the hell is this? this shouldn't be here!
 	selected_image = image(icon = 'icons/mob/screen1.dmi', loc = src, icon_state = "centermarker")
 
 /mob/living/Destroy()

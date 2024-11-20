@@ -85,12 +85,6 @@
 	/// Tracks if we have gravity from environment right now.
 	var/in_gravity
 
-	//? Physiology
-	/// overall physiology - see physiology.dm
-	var/datum/global_physiology/physiology
-	/// physiology modifiers - see physiology.dm; set to list of paths at init to initialize into instances.
-	var/list/datum/physiology_modifier/physiology_modifiers
-
 	//? Actionspeed
 	/// List of action speed modifiers applying to this mob
 	var/list/actionspeed_modification				//Lazy list, see mob_movespeed.dm
