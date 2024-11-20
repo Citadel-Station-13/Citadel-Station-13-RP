@@ -57,12 +57,12 @@
 	rendering_count = 1
 	materials_base = list(MAT_STEEL = 600)
 	ammo_preload = /obj/item/ammo_casing/a9mm
-	ammo_max = 10
+	ammo_max = 15
 
 /obj/item/ammo_magazine/a9mm/large
 	icon_state = "9x19-ext-1"
 	base_icon_state = "9x19-ext"
-	ammo_max = 17
+	ammo_max = 21
 
 /obj/item/ammo_magazine/a9mm/large/ap
 	name = "magazine (9mm armor-piercing)"
