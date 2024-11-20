@@ -1,3 +1,14 @@
+//* This file is explicitly licensed under the MIT license. *//
+//* Copyright (c) 2024 Citadel Station Developers           *//
+
+// todo: this should be just mob-interaction-panel and be a tgui interaction panel lol
+
+/**
+ * Stripping system
+ * Procs can be called and overridden as needed
+ * Please be careful when doing so and understand what you are overriding.
+ */
+
 // todo: tgui
 // todo: ui state handles prechecks? interesting to deal with.
 /mob/proc/mouse_drop_strip_interaction(mob/user)
@@ -69,7 +80,7 @@
 
 	// now for hands
 	if(has_hands())
-		for(var/i in 1 to get_number_of_hands())
+		for(var/i in 1 to get_nominal_hand_count())
 			switch(i)
 				if(1)
 					. += "Left hand: "
@@ -77,7 +88,7 @@
 					. += "Right hand: "
 				else
 					. += "Hand [i]: "
-			var/obj/item/holding = get_held_item_of_index(i)
+			var/obj/item/holding = get_held_index(i)
 			. += "<a href='?src=[REF(src)];strip=hand;id=[i]'>[holding? holding.name : "nothing"]</a><br>"
 		. += "<hr>"
 
@@ -127,10 +138,10 @@
 	if(!strip_interaction_prechecks(user))
 		return FALSE
 
-	if((index < 1) || (index > get_number_of_hands()))
+	if((index < 1) || (index > get_nominal_hand_count()))
 		return FALSE
 
-	var/obj/item/ours = get_held_item_of_index(index)
+	var/obj/item/ours = get_held_index(index)
 	var/obj/item/theirs = user.get_active_held_item()
 
 	if(!ours && !theirs)
@@ -238,7 +249,7 @@
 			. = attempt_slot_strip(user, slot)
 		if("hand")
 			var/index = text2num(href_list["id"])
-			if(!index || (index < 1) || (index > get_number_of_hands()))
+			if(!index || (index < 1) || (index > get_nominal_hand_count()))
 				return
 			. = attempt_hand_strip(user, index)
 		// option mob

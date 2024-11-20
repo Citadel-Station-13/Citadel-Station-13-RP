@@ -17,7 +17,7 @@
 	. = ..()
 
 	if(!(mobility_flags & MOBILITY_CAN_HOLD))
-		drop_all_held_items()
+		drop_held_items()
 	if(!(mobility_flags & MOBILITY_CAN_PULL))
 		stop_pulling()
 	if(!(mobility_flags & MOBILITY_CAN_STAND))

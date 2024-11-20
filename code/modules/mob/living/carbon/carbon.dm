@@ -8,16 +8,6 @@
 	if (!default_language && species_language)
 		default_language = RSlanguages.legacy_resolve_language_name(species_language)
 
-/mob/living/carbon/BiologicalLife(seconds, times_fired)
-	if((. = ..()))
-		return
-
-	handle_viruses()
-
-	// Increase germ_level regularly
-	if(germ_level < GERM_LEVEL_AMBIENT && prob(30))	//if you're just standing there, you shouldn't get more germs beyond an ambient level
-		germ_level++
-
 /mob/living/carbon/Destroy()
 	qdel(ingested)
 	qdel(touching)
@@ -27,6 +17,22 @@
 	for(var/food in stomach_contents)
 		qdel(food)
 	return ..()
+
+/mob/living/carbon/init_inventory()
+	. = ..()
+	inventory.set_hand_count(2)
+	if(species) // todo: sigh we need to talk about init order; this shouldn't be needed
+		inventory.set_inventory_slots(species.inventory_slots)
+
+/mob/living/carbon/BiologicalLife(seconds, times_fired)
+	if((. = ..()))
+		return
+
+	handle_viruses()
+
+	// Increase germ_level regularly
+	if(germ_level < GERM_LEVEL_AMBIENT && prob(30))	//if you're just standing there, you shouldn't get more germs beyond an ambient level
+		germ_level++
 
 /mob/living/carbon/gib()
 	for(var/mob/M in src)
@@ -45,7 +51,7 @@
 	if (ishuman(M))
 		var/mob/living/carbon/human/H = M
 		var/obj/item/organ/external/temp = H.organs_by_name["r_hand"]
-		if (H.hand)
+		if (H.active_hand % 2)
 			temp = H.organs_by_name["l_hand"]
 		if(temp && !temp.is_usable())
 			to_chat(H, "<font color='red'>You can't use your [temp.name]</font>")
@@ -303,7 +309,7 @@
 
 /mob/living/carbon/proc/update_handcuffed()
 	if(handcuffed)
-		drop_all_held_items()
+		drop_held_items()
 		stop_pulling()
 	update_inv_handcuffed()
 	update_mobility()

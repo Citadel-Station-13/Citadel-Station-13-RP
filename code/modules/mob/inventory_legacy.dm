@@ -1,20 +1,3 @@
-// todo: see all this? needs to be decided what to do with and shoved into the inventory handling system proper once evaluated.
-
-//This proc is called whenever someone clicks an inventory ui slot.
-/mob/proc/attack_ui(var/slot)
-	var/obj/item/W = get_active_held_item()
-
-	var/obj/item/E = item_by_slot_id(slot)
-	if (istype(E))
-		if(istype(W))
-			E.attackby(W,src)
-		else
-			E.attack_hand(src)
-	else
-		equip_to_slot_if_possible(W, slot)
-
-//! helpers below
-
 /**
  * smart equips an item - puts in a slot or tries to put it in storage.
  */
@@ -54,11 +37,3 @@
 	// todo: actual flag like BUCKLING_IS_CONSIDERED_RESTRICTING or something
 	if(buckled?.buckle_flags & (BUCKLING_NO_DEFAULT_RESIST | BUCKLING_NO_DEFAULT_UNBUCKLE))
 		unbuckle(BUCKLE_OP_FORCE)
-
-//* Carry Weight
-
-/mob/proc/update_carry_slowdown()
-	return
-
-/mob/proc/update_item_slowdown()
-	return

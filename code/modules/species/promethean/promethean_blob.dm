@@ -21,10 +21,7 @@
 	//glow_intensity = 0
 
 	var/mob/living/carbon/human/humanform
-	var/datum/modifier/healing
-
-	var/datum/weakref/prev_left_hand
-	var/datum/weakref/prev_right_hand
+	var/list/datum/weakref/previously_held
 
 	var/human_brute = 0
 	var/human_burn = 0
@@ -357,15 +354,7 @@
 	//Size update
 	blob.transform = matrix()*size_multiplier
 	blob.size_multiplier = size_multiplier
-
-	if(l_hand)
-		blob.prev_left_hand = WEAKREF(l_hand) //Won't save them if dropped above, but necessary if handdrop is disabled.
-	else
-		blob.prev_left_hand = null //make it so prommies can't just "recall" items magically if they had nothing in their hand.
-	if(r_hand)
-		blob.prev_right_hand = WEAKREF(r_hand)
-	else
-		blob.prev_right_hand = null //make it so prommies can't just "recall" items magically if they had nothing in their hand.
+	blob.previously_held = inventory?.get_held_items_as_weakrefs()
 
 	//Put our owner in it (don't transfer var/mind)
 	blob.transforming = TRUE
@@ -468,10 +457,12 @@
 
 	//vore_organs.Cut()
 
-	if(blob.prev_left_hand)
-		put_in_left_hand(blob.prev_left_hand.resolve()) //The restore for when reforming.
-	if(blob.prev_right_hand)
-		put_in_right_hand(blob.prev_right_hand.resolve())
+	for(var/i in 1 to length(blob.previously_held))
+		var/datum/weakref/ref = blob.previously_held[i]
+		var/obj/item/resolved = ref?.resolve()
+		if(isnull(resolved))
+			continue
+		put_in_hands_or_drop(resolved, specific_index = i)
 
 	if(!isnull(blob.mob_radio))
 		if(!equip_to_slots_if_possible(blob.mob_radio, list(

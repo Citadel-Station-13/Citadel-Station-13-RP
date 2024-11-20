@@ -913,15 +913,11 @@
 	// base layer being null isn't
 	layer = base_layer + 0.001 * relative_layer
 
+// todo: deprecate this
 /atom/proc/hud_layerise()
-	plane = INVENTORY_PLANE
+	plane = HUD_ITEM_PLANE
 	set_base_layer(HUD_LAYER_ITEM)
 	// appearance_flags |= NO_CLIENT_COLOR
-
-/atom/proc/hud_unlayerise()
-	plane = initial(plane)
-	set_base_layer(initial(layer))
-	// appearance_flags &= ~(NO_CLIENT_COLOR)
 
 /atom/proc/reset_plane_and_layer()
 	plane = initial(plane)
