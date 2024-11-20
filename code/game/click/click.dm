@@ -359,10 +359,11 @@
 			setDir(WEST)
 
 /atom/movable/screen/click_catcher
+	name = ""
 	icon = 'icons/mob/screen_gen.dmi'
 	icon_state = "click_catcher"
 	plane = CLICKCATCHER_PLANE
-	mouse_opacity = 2
+	mouse_opacity = MOUSE_OPACITY_OPAQUE
 	screen_loc = "CENTER-7,CENTER-7"
 
 /atom/movable/screen/click_catcher/proc/MakeGreed()
