@@ -1,4 +1,4 @@
-/datum/language/bug
+/datum/prototype/language/bug
 	id = LANGUAGE_ID_VASILISSAN
 	name = LANGUAGE_VESPINAE
 	translation_class = TRANSLATION_CLASS_DEFAULT_STANDARD_RACE

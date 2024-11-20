@@ -1,7 +1,7 @@
-/mob/living/proc/handle_autohiss(message, datum/language/L)
+/mob/living/proc/handle_autohiss(message, datum/prototype/language/L)
 	return message // no autohiss at this level
 
-/mob/living/carbon/human/handle_autohiss(message, datum/language/L)
+/mob/living/carbon/human/handle_autohiss(message, datum/prototype/language/L)
 	if(!client || autohiss_mode == AUTOHISS_OFF || autohiss_type == AUTOHISS_TYPE_NONE) // no need to process if there's no client or they have autohiss off
 		return message
 

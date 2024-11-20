@@ -1,4 +1,4 @@
-/datum/language/xenocommon
+/datum/prototype/language/xenocommon
 	id = LANGUAGE_ID_XENOMORPH
 	name = SPECIES_XENO
 	translation_class = TRANSLATION_CLASS_MONSTER | TRANSLATION_CLASS_LEVEL_3
@@ -12,7 +12,7 @@
 	syllables = list("sss","sSs","SSS")
 	shorthand = "XENO"
 
-/datum/language/xenos
+/datum/prototype/language/xenos
 	id = LANGUAGE_ID_XENOMORPH_HIVEMIND
 	name = "Hivemind"
 	desc = "Xenomorphs have the strange ability to commune over a psychic hivemind."
@@ -23,7 +23,7 @@
 	key = "x"
 	language_flags = LANGUAGE_RESTRICTED | LANGUAGE_HIVEMIND
 
-/datum/language/xenos/check_special_condition(var/mob/other)
+/datum/prototype/language/xenos/check_special_condition(var/mob/other)
 
 	var/mob/living/carbon/M = other
 	if(!istype(M))

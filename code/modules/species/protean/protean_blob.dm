@@ -327,7 +327,7 @@
 		blob.prev_right_hand = WEAKREF(r_hand)
 
 	//languages!!
-	for(var/datum/language/L in languages)
+	for(var/datum/prototype/language/L in languages)
 		blob.add_language(L.name)
 	//Put our owner in it (don't transfer var/mind)
 	transfer_client_to(blob)

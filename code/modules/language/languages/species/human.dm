@@ -1,4 +1,4 @@
-/datum/language/human
+/datum/prototype/language/human
 	id = LANGUAGE_ID_HUMAN
 	name = LANGUAGE_SOL_COMMON
 	translation_class = TRANSLATION_CLASS_DEFAULT_CORE_RACE
@@ -11,7 +11,7 @@
 	//syllables are at the bottom of the file
 	shorthand = "SC"
 
-/datum/language/human/get_random_name(gender)
+/datum/prototype/language/human/get_random_name(gender)
 	if (prob(80))
 		if(gender==FEMALE)
 			return capitalize(pick(GLOB.first_names_female)) + " " + capitalize(pick(GLOB.last_names))
@@ -20,7 +20,7 @@
 	else
 		return ..()
 
-/datum/language/slavic
+/datum/prototype/language/slavic
 	id = LANGUAGE_ID_HUMAN_SLAVIC
 	name = LANGUAGE_SLAVIC
 	translation_class = TRANSLATION_CLASS_DEFAULT_CORE_RACE
@@ -48,7 +48,7 @@
 	http://www.sttmedia.com/syllablefrequency-french
 	http://www.chinahighlights.com/travelguide/learning-chinese/pinyin-syllables.htm
 */
-/datum/language/human/syllables = list(
+/datum/prototype/language/human/syllables = list(
 "a", "ai", "an", "ang", "ao", "ba", "bai", "ban", "bang", "bao", "bei", "ben", "beng", "bi", "bian", "biao",
 "bie", "bin", "bing", "bo", "bu", "ca", "cai", "can", "cang", "cao", "ce", "cei", "cen", "ceng", "cha", "chai",
 "chan", "chang", "chao", "che", "chen", "cheng", "chi", "chong", "chou", "chu", "chua", "chuai", "chuan", "chuang", "chui", "chun",
