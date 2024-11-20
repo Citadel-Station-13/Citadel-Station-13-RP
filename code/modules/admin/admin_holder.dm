@@ -3,6 +3,7 @@ var/list/admin_datums = list()
 GLOBAL_VAR_INIT(href_token, GenerateToken())
 GLOBAL_PROTECT(href_token)
 
+// todo: /datum/admin_holder
 /datum/admins
 	var/rank			= "Temporary Admin"
 	var/client/owner	= null
@@ -22,6 +23,10 @@ GLOBAL_PROTECT(href_token)
 
 	var/datum/filter_editor/filteriffic
 
+	/// active modals
+	var/list/datum/admin_modal/admin_modals
+	#warn impl
+
 /datum/admins/New(initial_rank = "Temporary Admin", initial_rights = 0, ckey)
 	if(!ckey)
 		log_world("Admin datum created without a ckey argument. Datum has been deleted")
@@ -37,6 +42,10 @@ GLOBAL_PROTECT(href_token)
 		UNTIL(SSmapping.loaded_station)
 		admincaster_signature = "[(LEGACY_MAP_DATUM).company_name] Officer #[rand(0,9)][rand(0,9)][rand(0,9)]"
 
+/datum/admins/Destroy()
+	QDEL_LIST(admin_modals)
+	return ..()
+
 /datum/admins/proc/associate(client/C)
 	if(istype(C))
 		owner = C
@@ -45,6 +54,8 @@ GLOBAL_PROTECT(href_token)
 		GLOB.admins |= C
 
 /datum/admins/proc/disassociate()
+	// for now, destroy all modals
+	QDEL_LIST(admin_modals)
 	if(owner)
 		GLOB.admins -= owner
 		owner.remove_admin_verbs()

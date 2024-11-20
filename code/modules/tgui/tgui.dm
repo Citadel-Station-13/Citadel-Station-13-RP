@@ -5,6 +5,18 @@
 
 /**
  * tgui datum (represents a UI).
+ *
+ * ## Data
+ *
+ * TGUI has two levels of data.
+ *
+ * * 'data': The data and static data pushed into the UI. Data is updated as it's pushed in
+ *   with a 1-deep reducer, meaning that anything you push will overwrite the old value of the key
+ *   but not replace any other keys. This allows for partial updates.
+ * * 'modules': A secondary data-list. This works just like 'data', but the reducer behavior is
+ *   2-deep. This is a key-key-value list instead of a key-value list, basically.
+ *   This is used to inject 'embeds' into TGUI, as well, as their data can be then sent
+ *   without sending data for everything else as well.
  */
 /datum/tgui
 	/// The mob who opened/is using the UI.
@@ -328,7 +340,7 @@
 			"observer" = isobserver(user),
 		),
 	)
-	var/list/modules = list()
+	var/list/modules = src_object.ui_module_data(user, src)
 	// static first
 	if(with_static_data)
 		json_data["static"] = src_object.ui_static_data(user, src)

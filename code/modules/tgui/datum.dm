@@ -93,6 +93,24 @@
 /**
  * public
  *
+ * Hook for initial UI module data.
+ *
+ * * This usually isn't overridden manually. Modules should be registered and will provide
+ *   their own ui_data and ui_static_data as needed. This proc is for special uses of the
+ *   modules system, as the modules system is simply a 2-deep reducer.
+ *
+ * @params
+ * * user - (optional) the mob using the UI
+ * * ui - (optional) the host tgui
+ *
+ * return list Data to be sent to the UI.
+ */
+/datum/proc/ui_module_data(mob/user, datum/tgui/ui)
+	return list()
+
+/**
+ * public
+ *
  * Used to open and update UIs.
  * If this proc is not implemented properly, the UI will not update correctly.
  *

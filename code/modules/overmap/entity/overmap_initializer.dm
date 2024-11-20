@@ -8,6 +8,18 @@
  * * subtypes of /datum/overmap_initializer has the data to init the physical locations of entities.
  */
 /datum/overmap_initializer
+	//* Positioning *//
+
+	/// force preferred position?
+	///
+	/// * this will make it spawn there even if there's a hazard there
+	/// * this will not allow it to overlap another entity.
+	var/manual_position_forced = FALSE
+	/// preferred position x
+	var/manual_position_x
+	/// preferred position y
+	var/manual_position_y
+
 	//! LEGACY
 	/// the entity name while not scanned
 	var/unknown_name = "unknown sector"

@@ -65,4 +65,4 @@ DEFINE_SHARED_BITFIELD(turf_path_danger, list(
 /// Allow in virtual reality
 #define TURF_SPAWN_FLAG_VIRTUAL (1<<2)
 
-#warn DEFINE_BITFIELD
+// todo: DEFINE_BITFIELD

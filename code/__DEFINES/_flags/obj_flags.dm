@@ -75,4 +75,4 @@ DEFINE_BITFIELD(obj_rotation_flags, list(
 /// Allow 'fill' mode; this should almost always not be set.
 #define OBJ_SPAWN_FLAG_ALLOW_FILL (1<<23)
 
-#warn DEFINE_BITFIELD
+// todo: DEFINE_BITFIELD

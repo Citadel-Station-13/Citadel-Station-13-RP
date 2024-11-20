@@ -74,7 +74,6 @@ const RefreshingWindow = () => {
 };
 
 const interfaceSubdirectories = [
-  `.`,
   `./computers`,
   `./items`,
   `./machines`,
@@ -83,7 +82,14 @@ const interfaceSubdirectories = [
 ];
 
 const interfacePath = (name: string) => {
-  let built: [string?] = [];
+  // first, look up name literal
+  let built: string[] = [
+    `./${name}.js`,
+    `./${name}.tsx`,
+    `./${name}/index.js`,
+    `./${name}/index.tsx`,
+  ];
+  // then, look up subdirectories
   for (let i = 0; i < interfaceSubdirectories.length; i++) {
     let dir = interfaceSubdirectories[i];
     built.push(`${dir}/${name}.js`);
