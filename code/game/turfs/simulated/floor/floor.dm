@@ -11,7 +11,6 @@
  * * If are unwilling to handle this cleanly by having **all** behaviors abstracted to
  *   a flooring prototype/singleton (e.g. lava didn't do this), don't use it.
  */
-CREATE_STANDARD_TURFS(/turf/simulated/floor)
 /turf/simulated/floor
 	name = "plating"
 	desc = "Unfinished flooring."

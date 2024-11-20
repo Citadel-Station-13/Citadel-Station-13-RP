@@ -39,7 +39,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
-/turf/simulated/floor/outdoors,
+/turf/simulated/floor/plating/outdoors,
 /area/template_noop)
 "ba" = (
 /obj/machinery/deployable/barrier,
@@ -291,7 +291,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
-/turf/simulated/floor/outdoors,
+/turf/simulated/floor/plating/outdoors,
 /area/template_noop)
 "lL" = (
 /obj/machinery/door/blast/regular,
@@ -309,7 +309,7 @@
 /area/submap/HeadscientistHQ)
 "mb" = (
 /obj/item/inducer/sci,
-/turf/simulated/floor/outdoors,
+/turf/simulated/floor/plating/outdoors,
 /area/template_noop)
 "ml" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
@@ -351,7 +351,7 @@
 /obj/structure/cable/green{
 	icon_state = "2-8"
 	},
-/turf/simulated/floor/outdoors,
+/turf/simulated/floor/plating/outdoors,
 /area/template_noop)
 "oL" = (
 /obj/effect/decal/remains,
@@ -373,7 +373,7 @@
 /turf/simulated/shuttle/floor,
 /area/submap/HeadscientistHQ)
 "pX" = (
-/turf/simulated/floor/outdoors,
+/turf/simulated/floor/plating/outdoors,
 /area/template_noop)
 "qB" = (
 /obj/effect/debris/cleanable/dirt,
@@ -386,7 +386,7 @@
 /obj/structure/cable/green{
 	icon_state = "2-4"
 	},
-/turf/simulated/floor/outdoors,
+/turf/simulated/floor/plating/outdoors,
 /area/template_noop)
 "rY" = (
 /obj/structure/cable/green{
@@ -398,7 +398,7 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
-/turf/simulated/floor/outdoors,
+/turf/simulated/floor/plating/outdoors,
 /area/template_noop)
 "sc" = (
 /obj/machinery/light{
@@ -441,7 +441,7 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
-/turf/simulated/floor/outdoors,
+/turf/simulated/floor/plating/outdoors,
 /area/template_noop)
 "un" = (
 /obj/random/trash_pile,
@@ -561,7 +561,7 @@
 /obj/structure/cable/green{
 	icon_state = "1-4"
 	},
-/turf/simulated/floor/outdoors,
+/turf/simulated/floor/plating/outdoors,
 /area/template_noop)
 "zZ" = (
 /obj/structure/bed/chair/shuttle,
@@ -618,7 +618,7 @@
 /area/submap/HeadscientistHQ)
 "Cg" = (
 /obj/machinery/shipsensors,
-/turf/simulated/floor/outdoors,
+/turf/simulated/floor/plating/outdoors,
 /area/submap/HeadscientistHQ)
 "CM" = (
 /obj/machinery/computer/cryopod/travel,
@@ -628,7 +628,7 @@
 /obj/structure/cable/green{
 	icon_state = "1-8"
 	},
-/turf/simulated/floor/outdoors,
+/turf/simulated/floor/plating/outdoors,
 /area/template_noop)
 "Dj" = (
 /obj/machinery/artifact_scanpad,
@@ -910,7 +910,7 @@
 /obj/machinery/ion_engine{
 	dir = 8
 	},
-/turf/simulated/floor/outdoors,
+/turf/simulated/floor/plating/outdoors,
 /area/template_noop)
 "Nb" = (
 /obj/structure/shuttle/engine/heater{

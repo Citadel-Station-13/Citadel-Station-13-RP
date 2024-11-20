@@ -3,7 +3,7 @@
 /turf/simulated/floor/outdoors/snow,
 /area/class_p/ruins)
 "j" = (
-/turf/simulated/floor/outdoors,
+/turf/simulated/floor/plating/outdoors,
 /area/class_p/ruins)
 "m" = (
 /turf/simulated/wall,
@@ -12,7 +12,7 @@
 /obj/random/mob/robotic/hivebot{
 	mob_faction = "frozen"
 	},
-/turf/simulated/floor/outdoors,
+/turf/simulated/floor/plating/outdoors,
 /area/class_p/ruins)
 "L" = (
 /obj/structure/table/gamblingtable,

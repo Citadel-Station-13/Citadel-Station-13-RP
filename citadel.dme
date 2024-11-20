@@ -2074,6 +2074,7 @@
 #include "code\game\turfs\simulated\floor_types\grass.dm"
 #include "code\game\turfs\simulated\floor_types\outdoors.dm"
 #include "code\game\turfs\simulated\floor_types\outdoors_attackby.dm"
+#include "code\game\turfs\simulated\floor_types\plating.dm"
 #include "code\game\turfs\simulated\floor_types\river.dm"
 #include "code\game\turfs\simulated\floor_types\snow.dm"
 #include "code\game\turfs\simulated\floor_types\water.dm"

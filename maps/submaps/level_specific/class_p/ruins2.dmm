@@ -23,18 +23,18 @@
 /turf/simulated/wall,
 /area/class_p/ruins)
 "E" = (
-/turf/simulated/floor/outdoors,
+/turf/simulated/floor/plating/outdoors,
 /area/class_p/ruins)
 "G" = (
 /obj/item/reagent_containers/food/snacks/sliceable/pizza/margherita,
 /obj/structure/table,
-/turf/simulated/floor/outdoors,
+/turf/simulated/floor/plating/outdoors,
 /area/class_p/ruins)
 "K" = (
 /obj/random/mob/robotic/hivebot{
 	mob_faction = "frozen"
 	},
-/turf/simulated/floor/outdoors,
+/turf/simulated/floor/plating/outdoors,
 /area/class_p/ruins)
 
 (1,1,1) = {"
