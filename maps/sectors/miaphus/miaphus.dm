@@ -42,7 +42,7 @@
 			GLOBAL_PROC_REF(seed_submaps),
 			list(z_index),
 			225,
-			/area/tether_away/cave/unexplored/normal,
+			/area/sector/miaphus/cave/unexplored/normal,
 			/datum/map_template/submap/level_specific/mountains/normal,
 		)
 	)
@@ -65,7 +65,7 @@
 			GLOBAL_PROC_REF(seed_submaps),
 			list(z_index),
 			225,
-			/area/tether_away/beach/desert/unexplored,
+			/area/sector/miaphus/beach/desert/unexplored,
 			/datum/map_template/submap/level_specific/class_h,
 		)
 	)
