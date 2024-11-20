@@ -157,6 +157,7 @@
 		add_overlay(image('icons/mob/screen_gen.dmi', "[hand_index % 2 ? "r_hand" : "l_hand"]_hud_handcuffs"))
 	if(active)
 		var/image/active_image = new
+		active_image.icon = self_icon
 		active_image.icon_state = "[self_icon_state]-active"
 		active_image.plane = HUD_PLANE
 		active_image.layer = HUD_LAYER_INVENTORY
