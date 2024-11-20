@@ -62,3 +62,17 @@ DEFINE_BITFIELD(obj_rotation_flags, list(
 	BITFIELD_NAMED("Counterclockwise", OBJ_ROTATION_CCW),
 	BITFIELD_NAMED("Show Both Directions", OBJ_ROTATION_BIDIRECTIONAL),
 ))
+
+//* /obj 'obj_spawn_flags' variable *//
+
+/// Allow in admin buildmode
+#define OBJ_SPAWN_FLAG_ADMIN (1<<0)
+/// Allow in holodeck
+#define OBJ_SPAWN_FLAG_HOLOGRAM (1<<1)
+/// Allow in virtual reality
+#define OBJ_SPAWN_FLAG_VIRTUAL (1<<2)
+
+/// Allow 'fill' mode; this should almost always not be set.
+#define OBJ_SPAWN_FLAG_ALLOW_FILL (1<<23)
+
+#warn DEFINE_BITFIELD
