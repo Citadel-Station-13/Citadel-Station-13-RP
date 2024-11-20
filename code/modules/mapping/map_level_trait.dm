@@ -4,49 +4,49 @@
 /datum/map_level_trait
 	/// our enum
 	var/id
-	/// description
-	var/description = "Some kind of trait."
+	/// desc
+	var/desc = "Some kind of trait."
 	/// allow admin editing
 	var/allow_edit = FALSE
 
 /datum/map_level_trait/reserved
 	id = "system-reserved"
-	description = "Reserved by the maploader. Do not touch."
+	desc = "Reserved by the maploader. Do not touch."
 
 /datum/map_level_trait/gravity
 	id = "innate-gravity"
-	description = "This level inherently has gravity"
+	desc = "This level inherently has gravity"
 	allow_edit = TRUE
 
 /datum/map_level_trait/minimap
 	id = "generate-minimaps"
-	description = "Generate a minimap for this level."
+	desc = "Generate a minimap for this level."
 	allow_edit = TRUE
 
 //! below are all pending deprecation. !//
 
 /datum/map_level_trait/legacy_station
 	id = "legacy-station"
-	description = "Legacy: Considered station."
+	desc = "Legacy: Considered station."
 	allow_edit = TRUE
 
 /datum/map_level_trait/legacy_admin
 	id = "legacy-admin"
-	description = "Legacy: Considered an admin level."
+	desc = "Legacy: Considered an admin level."
 	allow_edit = TRUE
 
 /datum/map_level_trait/legacy_facility_safety
 	id = "legacy-facility_safety"
-	description = "Legacy: Block exploration pinned weapons."
+	desc = "Legacy: Block exploration pinned weapons."
 	allow_edit = TRUE
 
 /datum/map_level_trait/legacy_xenoarch_exempt
 	id = "legacy-xenoarch_exempt"
-	description = "Legacy: Do not spawn anomalies here."
+	desc = "Legacy: Do not spawn anomalies here."
 	allow_edit = TRUE
 
 /datum/map_level_trait/legacy_station
 	id = "legacy-no-wallhack"
-	description = "Legacy: Block mesons, materials, thermals, and sonar scanners."
+	desc = "Legacy: Block mesons, materials, thermals, and sonar scanners."
 	allow_edit = TRUE
 

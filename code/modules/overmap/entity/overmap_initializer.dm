@@ -19,6 +19,7 @@
 	var/manual_position_x
 	/// preferred position y
 	var/manual_position_y
+	#warn impl/hook above
 
 	//! LEGACY
 	/// the entity name while not scanned

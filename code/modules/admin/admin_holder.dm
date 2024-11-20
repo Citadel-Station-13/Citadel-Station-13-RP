@@ -23,9 +23,10 @@ GLOBAL_PROTECT(href_token)
 
 	var/datum/filter_editor/filteriffic
 
-	/// active modals
+	/// lazy list of active admin modals
+	///
+	/// todo: re-open these on reconnect.
 	var/list/datum/admin_modal/admin_modals
-	#warn impl
 
 /datum/admins/New(initial_rank = "Temporary Admin", initial_rights = 0, ckey)
 	if(!ckey)
@@ -179,3 +180,14 @@ NOTE: It checks usr by default. Supply the "user" argument if you wish to check 
 		return FALSE
 	return ..()
 #endif
+
+//* Admin Modals *//
+
+/datum/admins/proc/open_admin_modal(path)
+	ASSERT(ispath(path, /datum/admin_modal))
+	var/datum/admin_modal/modal = new path(src)
+	if(!modal.Initialize())
+		qdel(modal)
+		return null
+	modal.open()
+	return modal

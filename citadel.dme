@@ -2330,6 +2330,7 @@
 #include "code\modules\asset_cache\assets\vv.dm"
 #include "code\modules\asset_cache\assets\artwork\crayons.dm"
 #include "code\modules\asset_cache\assets\characters\json\maploader.dm"
+#include "code\modules\asset_cache\assets\characters\json\world_typepaths.dm"
 #include "code\modules\asset_cache\assets\characters\spritesheet\world_typepaths.dm"
 #include "code\modules\asset_cache\assets\chemistry\bottles.dm"
 #include "code\modules\asset_cache\assets\chemistry\patches.dm"

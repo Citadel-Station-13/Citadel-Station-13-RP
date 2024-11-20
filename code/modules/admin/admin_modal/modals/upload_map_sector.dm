@@ -1,6 +1,8 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
+#warn admin verb declaration
+
 /**
  * Modal supporting arbitrary map uploads.
  *
@@ -247,7 +249,7 @@
 	var/datum/map_level/appending
 	#warn check & track turf utilization
 
-/datum/admin_modal/upload_map_sector/proc/delete_level_index(target_level_indexindex)
+/datum/admin_modal/upload_map_sector/proc/delete_level_index(target_level_index)
 	var/datum/map_level/obliterating = buffer.levels[target_level_index]
 	buffer.levels.Cut(target_level_index, target_level_index + 1)
 	QDEL_NULL(obliterating)

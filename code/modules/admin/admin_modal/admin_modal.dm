@@ -7,15 +7,6 @@ GLOBAL_DATUM_INIT(ui_admin_modal_state, /datum/ui_state/admin_modal_state, new)
 	. = ..()
 	#warn impl
 
-/datum/admins/proc/open_modal(path)
-	ASSERT(ispath(path, /datum/admin_modal))
-	var/datum/admin_modal/modal = new path(src)
-	if(!modal.Initialize())
-		qdel(modal)
-		return null
-	modal.open()
-	return modal
-
 /**
  * Base type of admin modals, which tend to be standalone panels.
  */
@@ -31,10 +22,10 @@ GLOBAL_DATUM_INIT(ui_admin_modal_state, /datum/ui_state/admin_modal_state, new)
 
 /datum/admin_modal/New(datum/admins/for_owner)
 	owner = for_owner
-	LAZYADD(owner.modals, src)
+	LAZYADD(owner.admin_modals, src)
 
 /datum/admin_modal/Destroy()
-	LAZYREMOVE(owner.modals, src)
+	LAZYREMOVE(owner.admin_modals, src)
 	return ..()
 
 /datum/admin_modal/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)
