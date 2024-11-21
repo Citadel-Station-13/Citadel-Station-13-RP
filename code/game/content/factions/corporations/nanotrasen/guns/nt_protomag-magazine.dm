@@ -1,18 +1,23 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
+// todo: make this fit in webbing
 /obj/item/ammo_magazine/nt_protomag
 	abstract_type = /obj/item/ammo_magazine/nt_protomag
 	desc = "A magazine for a magnetic weapon of some kind."
+	icon = 'icons/content/factions/corporations/nanotrasen/items/guns/protomag/magazines.dmi'
 	ammo_caliber = /datum/caliber/nt_protomag
-
-#warn first two should fit in webbing, but not boxes
 
 //* Sidearm Magazines *//
 
 /obj/item/ammo_magazine/nt_protomag/sidearm
 	name = "protomag sidearm magazine"
 	ammo_max = 8
+	icon_state = "pistol-1"
+	base_icon_state = "pistol"
+	rendering_static_overlay = "pistol-stripe"
+	rendering_system = GUN_RENDERING_STATES
+	rendering_count = 1
 
 	w_class = WEIGHT_CLASS_NORMAL // no boxes
 	weight_volume = WEIGHT_VOLUME_TINY
@@ -25,6 +30,13 @@
 /obj/item/ammo_magazine/nt_protomag/rifle
 	name = "protomag rifle magazine"
 	ammo_max = 16
+	icon_state = "rifle-map"
+	base_icon_state = "rifle"
+	rendering_static_overlay = "rifle-stripe"
+
+	rendering_system = GUN_RENDERING_STATES
+	rendering_count = 6
+	rendering_segment_x_offset = -2
 
 	w_class = WEIGHT_CLASS_NORMAL // no boxes
 	weight_volume = WEIGHT_VOLUME_SMALL
@@ -32,74 +44,35 @@
 
 	magazine_restrict = /obj/item/gun/ballistic/magnetic/modular/nt_protomag/rifle
 
-//* Boxes *//
-#warn merge these into rifle mags. also, add stripes
+//* Typegen *//
 
-/obj/item/ammo_magazine/nt_protomag/box
-	abstract_type = /obj/item/ammo_magazine/nt_protomag/box
-	name = "protomag ammo box"
-	desc = "A box of experimental magnetic ammunition."
-	ammo_max = 32
+#define NT_PROTOMAG_AMMO_TYPEGEN(suffix, name, ammo) \
+/obj/item/ammo_magazine/nt_protomag/pistol##suffix { \
+	name = "protomag sidearm magazine (" + name + ")"; \
+	ammo_preload = /obj/item/ammo_casing/nt_protomag##ammo; \
+	rendering_static_color = /obj/item/ammo_casing/nt_protomag##ammo::stripe_color; \
+} \
+/obj/item/ammo_magazine/nt_protomag/rifle##suffix { \
+	name = "protomag rifle magazine (" + name + ")"; \
+	ammo_preload = /obj/item/ammo_casing/nt_protomag##ammo; \
+	rendering_static_color = /obj/item/ammo_casing/nt_protomag##ammo::stripe_color; \
+}
 
-	w_class = WEIGHT_CLASS_NORMAL // no boxes
-	weight_volume = WEIGHT_VOLUME_NORMAL
-	slot_flags = SLOT_POCKET
+NT_PROTOMAG_AMMO_TYPEGEN(/standard, "standard", /magboosted/standard)
+NT_PROTOMAG_AMMO_TYPEGEN(/sabot, "sabot", /magboosted/sabot)
+// NT_PROTOMAG_AMMO_TYPEGEN(/shredder, "shredder", /magboosted/shredder)
+NT_PROTOMAG_AMMO_TYPEGEN(/impact, "impact", /magboosted/impact)
+NT_PROTOMAG_AMMO_TYPEGEN(/practice, "practice", /magboosted/practice)
 
-/obj/item/ammo_magazine/nt_protomag/box/standard
-	name = "protomag ammo box (standard)"
-	ammo_preload = /obj/item/ammo_casing/nt_protomag/magboosted/standard
+NT_PROTOMAG_AMMO_TYPEGEN(/smoke, "smoke", /magnetic/smoke)
+NT_PROTOMAG_AMMO_TYPEGEN(/emp, "emp", /magnetic/emp)
+// NT_PROTOMAG_AMMO_TYPEGEN(/concussive, "concussive", /magnetic/concussive)
+NT_PROTOMAG_AMMO_TYPEGEN(/penetrator, "penetrator", /magnetic/penetrator)
+NT_PROTOMAG_AMMO_TYPEGEN(/shock, "shock", /magnetic/shock)
+NT_PROTOMAG_AMMO_TYPEGEN(/flare, "flare", /magnetic/flare)
+// NT_PROTOMAG_AMMO_TYPEGEN(/incendiary, "incendiary", /magnetic/incendiary)
+// NT_PROTOMAG_AMMO_TYPEGEN(/reagent, "reagent", /magnetic/reagent)
 
-/obj/item/ammo_magazine/nt_protomag/box/sabot
-	name = "protomag ammo box (sabot)"
-	ammo_preload = /obj/item/ammo_casing/nt_protomag/magboosted/sabot
-
-// todo: this is currently disabled as medcode is not verbose enough for this to work
-// /obj/item/ammo_magazine/nt_protomag/box/shredder
-// 	name = "protomag ammo box (shredder)"
-// 	ammo_preload = /obj/item/ammo_casing/nt_protomag/magboosted/shredder
-
-/obj/item/ammo_magazine/nt_protomag/box/impact
-	name = "protomag ammo box (impact)"
-	ammo_preload = /obj/item/ammo_casing/nt_protomag/magboosted/impact
-
-/obj/item/ammo_magazine/nt_protomag/box/practice
-	name = "protomag ammo box (practice)"
-	ammo_preload = /obj/item/ammo_casing/nt_protomag/magboosted/practice
-
-/obj/item/ammo_magazine/nt_protomag/box/smoke
-	name = "protomag ammo box (smoke)"
-	ammo_preload = /obj/item/ammo_casing/nt_protomag/magnetic/smoke
-
-/obj/item/ammo_magazine/nt_protomag/box/emp
-	name = "protomag ammo box (emp)"
-	ammo_preload = /obj/item/ammo_casing/nt_protomag/magnetic/emp
-
-// todo: this is currently disabled as simplemobs are not complex-AI enough for us to do this, and we don't need a PVP-only tool
-// /obj/item/ammo_magazine/nt_protomag/box/concussive
-// 	name = "protomag ammo box (concussive)"
-// 	ammo_preload = /obj/item/ammo_casing/nt_protomag/magnetic/concussive
-
-/obj/item/ammo_magazine/nt_protomag/box/penetrator
-	name = "protomag ammo box (penetrator)"
-	ammo_preload = /obj/item/ammo_casing/nt_protomag/magnetic/penetrator
-
-/obj/item/ammo_magazine/nt_protomag/box/shock
-	name = "protomag ammo box (shock)"
-	ammo_preload = /obj/item/ammo_casing/nt_protomag/magnetic/shock
-
-/obj/item/ammo_magazine/nt_protomag/box/flare
-	name = "protomag ammo box (flare)"
-	ammo_preload = /obj/item/ammo_casing/nt_protomag/magnetic/flare
-
-// todo: fuck no, rework fire stacks / fire first, holy crap; even then this should take multiple hits to ignite.
-// /obj/item/ammo_magazine/nt_protomag/box/incendiary
-// 	name = "protomag ammo box (incendiary)"
-// 	ammo_preload = /obj/item/ammo_casing/nt_protomag/magnetic/incendiary
-
-// todo: fuck no, not until chloral and chemicals are reworked; this round is meant to take like 2-3 units maximum, on that note.
-// /obj/item/ammo_magazine/nt_protomag/box/reagent
-// 	name = "protomag ammo box (reagent)"
-// 	ammo_preload = /obj/item/ammo_casing/nt_protomag/magnetic/reagent
-
-#warn impl all
 #warn materials & R&D designs for all of the abvoe
+
+#undef NT_PROTOMAG_AMMO_TYPEGEN
