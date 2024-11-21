@@ -105,7 +105,6 @@
 	var/alien_to_human_ratio = 0.5
 	var/allow_extra_antags = 0
 	var/guests_allowed = 1
-	var/debugparanoid = 0
 	var/paranoia_logging = 0
 
 	var/serverurl
@@ -300,9 +299,6 @@
 
 				if ("log_say")
 					config_legacy.log_say = 1
-
-				if ("debug_paranoid")
-					config_legacy.debugparanoid = 1
 
 				if ("log_admin")
 					config_legacy.log_admin = 1

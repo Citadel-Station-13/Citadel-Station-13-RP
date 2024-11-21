@@ -47,28 +47,102 @@ GLOBAL_PROTECT(href_token)
 	QDEL_LIST(admin_modals)
 	return ..()
 
+// todo: assertions on this are too weak
 /datum/admins/proc/associate(client/C)
-	if(istype(C))
-		owner = C
-		owner.holder = src
-		owner.add_admin_verbs()	//TODO
-		GLOB.admins |= C
+	if(owner == C)
+		return
+	if(owner)
+		disassociate()
+	if(!istype(C))
+		return
+	owner = C
+	owner.holder = src
+	GLOB.admins |= C
+	// add verbs
+	add_admin_verbs()
 
+// todo: assertions on this are too weak
 /datum/admins/proc/disassociate()
+	if(!owner)
+		return
+	GLOB.admins -= owner
+	owner.deadmin_holder = owner.holder
+	owner.holder = null
 	// for now, destroy all modals
 	QDEL_LIST(admin_modals)
-	if(owner)
-		GLOB.admins -= owner
-		owner.remove_admin_verbs()
-		owner.deadmin_holder = owner.holder
-		owner.holder = null
+	// obliterate verbs
+	remove_admin_verbs()
 
 /datum/admins/proc/reassociate()
-	if(owner)
-		GLOB.admins |= owner
-		owner.holder = src
-		owner.deadmin_holder = null
-		owner.add_admin_verbs()
+	associate(owner)
+
+/datum/admins/proc/add_admin_verbs()
+	if(!owner)
+		return
+	var/list/verbs_to_add = list()
+	for(var/datum/admin_verb_descriptor/descriptor in global.admin_verb_descriptors)
+		if((rights & descriptor.required_rights) != descriptor.required_rights)
+			continue
+		verbs_to_add += descriptor.verb_path
+	verbs_to_add += admin_verbs_default
+	if(holder.rights & R_BUILDMODE)
+		verbs_to_add += /client/proc/togglebuildmodeself
+	if(holder.rights & R_ADMIN)
+		verbs_to_add += admin_verbs_admin
+	if(holder.rights & R_BAN)
+		verbs_to_add += admin_verbs_ban
+	if(holder.rights & R_FUN)
+		verbs_to_add += admin_verbs_fun
+	if(holder.rights & R_SERVER)
+		verbs_to_add += admin_verbs_server
+	if(holder.rights & R_DEBUG)
+		verbs_to_add += admin_verbs_debug
+	if(holder.rights & R_POSSESS)
+		verbs_to_add += admin_verbs_possess
+	if(holder.rights & R_PERMISSIONS)
+		verbs_to_add += admin_verbs_permissions
+	if(holder.rights & R_STEALTH)
+		verbs_to_add += /client/proc/stealth
+	if(holder.rights & R_REJUVINATE)
+		verbs_to_add += admin_verbs_rejuv
+	if(holder.rights & R_SOUNDS)
+		verbs_to_add += admin_verbs_sound
+	if(holder.rights & R_SPAWN)
+		verbs_to_add += admin_verbs_spawn
+	if(holder.rights & R_MOD)
+		verbs_to_add += admin_verbs_mod
+	if(holder.rights & R_EVENT)
+		verbs_to_add += admin_verbs_event_manager
+	add_verb(
+		owner,
+		verbs_to_add,
+	)
+
+/datum/admins/proc/remove_admin_verbs()
+	if(!owner)
+		return
+	var/list/verbs_to_remove = list()
+	for(var/datum/admin_verb_descriptor/descriptor in global.admin_verb_descriptors)
+		verbs_to_remove += descriptor.verb_path
+	remove_verb(
+		owner,
+		list(
+			admin_verbs_default,
+			/client/proc/togglebuildmodeself,
+			admin_verbs_admin,
+			admin_verbs_ban,
+			admin_verbs_fun,
+			admin_verbs_server,
+			admin_verbs_debug,
+			admin_verbs_possess,
+			admin_verbs_permissions,
+			/client/proc/stealth,
+			admin_verbs_rejuv,
+			admin_verbs_sounds,
+			admin_verbs_spawn,
+			debug_verbs,
+		),
+	)
 
 /*
 checks if usr is an admin with at least ONE of the flags in rights_required. (Note, they don't need all the flags)

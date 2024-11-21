@@ -4,7 +4,7 @@
   * pass the verb type path to this instead of adding it directly to verbs so the statpanel can update
   * Arguments:
   * * target - Who the verb is being added to, client or mob typepath
-  * * verb - typepath to a verb, or a list of verbs, supports lists of lists
+  * * verb_or_list_to_add - typepath to a verb, or a list of verbs, supports lists of lists
   */
 /proc/add_verb(client/target, verb_or_list_to_add)
 	if(!target)
@@ -60,7 +60,7 @@
   * pass the verb type path to this instead of removing it from verbs so the statpanel can update
   * Arguments:
   * * target - Who the verb is being removed from, client or mob typepath
-  * * verb - typepath to a verb, or a list of verbs, supports lists of lists
+  * * verb_or_list_to_remove - typepath to a verb, or a list of verbs, supports lists of lists
   */
 /proc/remove_verb(client/target, verb_or_list_to_remove)
 	if(IsAdminAdvancedProcCall())
