@@ -1,6 +1,7 @@
 /datum/prototype/design/science/mechfab
 	abstract_type = /datum/prototype/design/science/mechfab
 	lathe_type = LATHE_TYPE_MECHA
+	category = DESIGN_CATEGORY_MECHA
 	category = list("Other")
 	req_tech = list(TECH_MATERIAL = 1)
 

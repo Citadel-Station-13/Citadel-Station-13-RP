@@ -1,5 +1,7 @@
 /datum/prototype/design/science/ai_holder
 	abstract_type = /datum/prototype/design/science/ai_holder
+	category = DESIGN_CATEGORY_SYNTH
+	subcategory = DESIGN_SUBCATEGORY_SYNTHETIC_MINDS
 
 // Various AI/mind holding device
 /datum/prototype/design/science/ai_holder/generate_name(template)

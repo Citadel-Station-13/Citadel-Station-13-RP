@@ -1,4 +1,5 @@
 /datum/prototype/design/science/teleport
+	category = DESIGN_CATEGORY_TELEPORTATION
 	abstract_type = /datum/prototype/design/science/teleport
 
 
