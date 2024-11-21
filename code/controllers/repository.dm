@@ -110,7 +110,8 @@
  *
  * @return prototype instance or null
  */
-/datum/controller/repository/proc/fetch(datum/prototype/type_or_id)
+/datum/controller/repository/proc/fetch(datum/prototype/type_or_id) as /datum/prototype
+	RETURN_TYPE(/datum/prototype)
 	// todo: optimize
 	if(isnull(type_or_id))
 		return

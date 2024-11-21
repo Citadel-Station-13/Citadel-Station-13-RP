@@ -1,3 +1,6 @@
+//* This file is explicitly licensed under the MIT license. *//
+//* Copyright (c) 2023 Citadel Station developers.          *//
+
 /atom/movable/screen/plane_master
 	icon = null
 	icon_state = null
@@ -231,7 +234,7 @@
 	appearance_flags = PLANE_MASTER | NO_CLIENT_COLOR
 
 /atom/movable/screen/plane_master/inventory
-	plane = INVENTORY_PLANE
+	plane = HUD_ITEM_PLANE
 
 /atom/movable/screen/plane_master/above_hud
 	plane = ABOVE_HUD_PLANE

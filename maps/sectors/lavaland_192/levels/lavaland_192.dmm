@@ -313,7 +313,7 @@
 	name = "Staging Area Shutters";
 	pixel_x = -28;
 	pixel_y = -28;
-	req_one_access = list(48)
+	req_one_access = list(1,5,31,38,47,48)
 	},
 /turf/simulated/floor/outdoors/lavaland,
 /area/lavaland/central/explored)

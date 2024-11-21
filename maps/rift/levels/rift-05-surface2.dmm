@@ -31983,7 +31983,6 @@
 /turf/simulated/floor/water/pool,
 /area/crew_quarters/pool)
 "uaM" = (
-/obj/item/material/ashtray/glass,
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/lightgrey/border,
 /obj/machinery/light,

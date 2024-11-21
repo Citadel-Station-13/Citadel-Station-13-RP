@@ -686,7 +686,7 @@
 /// message is the message output to anyone who can hear.
 /// deaf_message (optional) is what deaf people will see.
 /// hearing_distance (optional) is the range, how many tiles away the message can be heard.
-/atom/proc/audible_message(var/message, var/deaf_message, var/hearing_distance, datum/language/lang)
+/atom/proc/audible_message(var/message, var/deaf_message, var/hearing_distance, datum/prototype/language/lang)
 
 	var/range = hearing_distance || world.view
 	var/list/hear = get_mobs_and_objs_in_view_fast(get_turf(src),range,remote_ghosts = FALSE)
@@ -913,15 +913,11 @@
 	// base layer being null isn't
 	layer = base_layer + 0.001 * relative_layer
 
+// todo: deprecate this
 /atom/proc/hud_layerise()
-	plane = INVENTORY_PLANE
+	plane = HUD_ITEM_PLANE
 	set_base_layer(HUD_LAYER_ITEM)
 	// appearance_flags |= NO_CLIENT_COLOR
-
-/atom/proc/hud_unlayerise()
-	plane = initial(plane)
-	set_base_layer(initial(layer))
-	// appearance_flags &= ~(NO_CLIENT_COLOR)
 
 /atom/proc/reset_plane_and_layer()
 	plane = initial(plane)

@@ -29,7 +29,7 @@ SUBSYSTEM_DEF(characters)
 			stack_trace("what?")
 			continue
 		P.Initialize()
-	return ..()
+	return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/characters/Recover()
 	. = ..()
@@ -37,7 +37,6 @@ SUBSYSTEM_DEF(characters)
 
 /datum/controller/subsystem/characters/proc/rebuild_caches()
 	rebuild_species()
-	rebuild_languages()
 	rebuild_character_species()
 	rebuild_backgrounds()
 
