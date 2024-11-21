@@ -248,11 +248,12 @@
 	var/mode = 0
 
 /obj/item/multitool/attack_self(mob/user, datum/event_args/actor/actor)
+	. = ..()
+	if(.)
+		return
 	if(selected_io)
 		selected_io = null
 		to_chat(user, "<span class='notice'>You clear the wired connection from the multitool.</span>")
-	else
-		..()
 	update_icon()
 
 /obj/item/multitool/update_icon()

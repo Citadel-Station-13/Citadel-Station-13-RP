@@ -2,7 +2,7 @@
  * shim until saycode rewrite
  */
 // todo: refactor this shit to be unified saycode, christ
-/atom/proc/atom_say(message, datum/language/L)
+/atom/proc/atom_say(message, datum/prototype/language/L)
 	if(!message)
 		return
 	var/list/speech_bubble_hearers = list()
@@ -23,7 +23,7 @@
 			flick_overlay_global(I, speech_bubble_hearers, 3 SECONDS)
 		INVOKE_ASYNC(src, TYPE_PROC_REF(/atom/movable, animate_chat), message, null, FALSE, speech_bubble_hearers, 3 SECONDS)
 
-/atom/proc/say_overhead(var/message, whispering, message_range = 7, var/datum/language/speaking = null, var/list/passed_hearing_list)
+/atom/proc/say_overhead(var/message, whispering, message_range = 7, var/datum/prototype/language/speaking = null, var/list/passed_hearing_list)
 	var/list/speech_bubble_hearers = list()
 	var/italics
 	if(whispering)

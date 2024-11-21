@@ -83,7 +83,7 @@
 
 /datum/loadout_tweak/path/tweak_spawn_path(path, data)
 	if(!(data in valid_paths))
-		return
+		return path
 	return valid_paths[data]
 
 /*

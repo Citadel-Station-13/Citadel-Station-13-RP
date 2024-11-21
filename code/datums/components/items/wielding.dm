@@ -45,7 +45,7 @@
 /datum/component/wielding/proc/wield(mob/wielder)
 	if(src.wielder)
 		return
-	var/possible = wielder.get_number_of_hands()
+	var/possible = wielder.get_nominal_hand_count()
 	var/wanted = hands - 1
 	if(possible < wanted)
 		return

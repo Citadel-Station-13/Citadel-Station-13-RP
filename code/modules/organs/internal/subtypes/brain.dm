@@ -267,7 +267,7 @@
 	for(var/modifier_type in R.genetic_modifiers)
 		H.add_modifier(modifier_type)
 
-	for(var/datum/language/L in R.languages)
+	for(var/datum/prototype/language/L in R.languages)
 		H.add_language(L.name)
 	H.flavor_texts = R.flavor.Copy()
 	qdel(src)
