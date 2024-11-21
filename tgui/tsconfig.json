@@ -9,7 +9,7 @@
     "jsx": "preserve",
     "lib": ["DOM", "DOM.Iterable", "ESNext"],
     "module": "ESNext",
-    "moduleResolution": "Bundler",
+    "moduleResolution": "node",
     "noEmit": true,
     "noImplicitThis": true,
     "noPropertyAccessFromIndexSignature": true,
