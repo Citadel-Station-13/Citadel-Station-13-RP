@@ -1,7 +1,7 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
-GLOBAL_PROTECT(admin_verbs)
+GLOBAL_REAL_PROTECT(admin_verbs)
 GLOBAL_REAL_LIST(admin_verb_descriptors) = zz__prepare_admin_verb_descriptors()
 
 /proc/zz__prepare_admin_verb_descriptors()
@@ -25,6 +25,8 @@ GLOBAL_REAL_LIST(admin_verb_descriptors) = zz__prepare_admin_verb_descriptors()
 	var/id
 	/// our verb path
 	var/verb_path
+	/// the reflection path to read from
+	var/reflection_path
 	/// required rights flags
 	var/required_rights
 
@@ -38,6 +40,6 @@ GLOBAL_REAL_LIST(admin_verb_descriptors) = zz__prepare_admin_verb_descriptors()
 /datum/admin_verb_descriptor/New()
 	if(!verb_path)
 		return
-	var/procpath/cast_verb = verb_path
+	var/procpath/cast_verb = reflection_path
 	name = cast_verb.name
 	desc = cast_verb.desc

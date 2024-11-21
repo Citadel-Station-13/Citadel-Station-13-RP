@@ -1,7 +1,12 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
-#warn admin verb declaration
+ADMIN_VERB_DEF(upload_map_sector, "upload-map-sector", R_ADMIN)
+	set name = "Load Map Sector"
+	set desc = "Create or upload a custom map sector."
+	set category = VERB_CATEGORY_ADMIN
+
+	var/client/caller = ADMIN_VERB_CALLER
 
 /**
  * Modal supporting arbitrary map uploads.

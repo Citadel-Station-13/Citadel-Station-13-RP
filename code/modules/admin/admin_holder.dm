@@ -85,33 +85,33 @@ GLOBAL_PROTECT(href_token)
 			continue
 		verbs_to_add += descriptor.verb_path
 	verbs_to_add += admin_verbs_default
-	if(holder.rights & R_BUILDMODE)
+	if(rights & R_BUILDMODE)
 		verbs_to_add += /client/proc/togglebuildmodeself
-	if(holder.rights & R_ADMIN)
+	if(rights & R_ADMIN)
 		verbs_to_add += admin_verbs_admin
-	if(holder.rights & R_BAN)
+	if(rights & R_BAN)
 		verbs_to_add += admin_verbs_ban
-	if(holder.rights & R_FUN)
+	if(rights & R_FUN)
 		verbs_to_add += admin_verbs_fun
-	if(holder.rights & R_SERVER)
+	if(rights & R_SERVER)
 		verbs_to_add += admin_verbs_server
-	if(holder.rights & R_DEBUG)
+	if(rights & R_DEBUG)
 		verbs_to_add += admin_verbs_debug
-	if(holder.rights & R_POSSESS)
+	if(rights & R_POSSESS)
 		verbs_to_add += admin_verbs_possess
-	if(holder.rights & R_PERMISSIONS)
+	if(rights & R_PERMISSIONS)
 		verbs_to_add += admin_verbs_permissions
-	if(holder.rights & R_STEALTH)
+	if(rights & R_STEALTH)
 		verbs_to_add += /client/proc/stealth
-	if(holder.rights & R_REJUVINATE)
+	if(rights & R_REJUVINATE)
 		verbs_to_add += admin_verbs_rejuv
-	if(holder.rights & R_SOUNDS)
-		verbs_to_add += admin_verbs_sound
-	if(holder.rights & R_SPAWN)
+	if(rights & R_SOUNDS)
+		verbs_to_add += admin_verbs_sounds
+	if(rights & R_SPAWN)
 		verbs_to_add += admin_verbs_spawn
-	if(holder.rights & R_MOD)
+	if(rights & R_MOD)
 		verbs_to_add += admin_verbs_mod
-	if(holder.rights & R_EVENT)
+	if(rights & R_EVENT)
 		verbs_to_add += admin_verbs_event_manager
 	add_verb(
 		owner,
@@ -246,6 +246,9 @@ NOTE: It checks usr by default. Supply the "user" argument if you wish to check 
 	log_admin_private("[key_name(usr)] clicked an href with [msg] authorization key! [href]")
 	*/
 
+//*                      -- SECURITY --                           *//
+//* Do not touch this section unless you know what you are doing. *//
+
 /datum/admins/vv_edit_var(var_name, var_value)
 #ifdef TESTING
 	return ..()
@@ -254,6 +257,14 @@ NOTE: It checks usr by default. Supply the "user" argument if you wish to check 
 		return FALSE
 	return ..()
 #endif
+
+/datum/admins/CanProcCall(procname)
+	switch(procname)
+		if(NAMEOF_PROC(src, open_admin_modal))
+			return FALSE
+	if(findtext(procname, "verb__") == 1)
+		return FALSE
+	return ..()
 
 //* Admin Modals *//
 

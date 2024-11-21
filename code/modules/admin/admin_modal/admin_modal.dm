@@ -1,15 +1,23 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
+//* UI State *//
+
 GLOBAL_DATUM_INIT(ui_admin_modal_state, /datum/ui_state/admin_modal_state, new)
+
+VV_PROTECT_READONLY(/datum/admin_modal_state)
+/datum/ui_state/admin_modal_state
 
 /datum/ui_state/admin_modal_state/can_use_topic(src_object, mob/user)
 	. = ..()
 	#warn impl
 
+//* Modal *//
+
 /**
  * Base type of admin modals, which tend to be standalone panels.
  */
+VV_PROTECT_READONLY(/datum/admin_modal)
 /datum/admin_modal
 	/// The admin datum that opened us
 	var/datum/admins/owner
