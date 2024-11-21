@@ -3,9 +3,10 @@
 
 /datum/overmap_location/shuttle
 	//* Freeflight *//
+	/// our freeflight level, if it has been created
+	var/datum/map_level/freeflight
 
 	//* Shuttle *//
-
 	/// the shuttle we're bound to
 	var/datum/shuttle/shuttle
 
@@ -20,10 +21,21 @@
 	shuttle = null
 
 /datum/overmap_location/shuttle/get_z_indices()
+	. = list()
+	#warn impl
 
 /datum/overmap_location/shuttle/get_owned_z_indices()
+	. = list()
+	if(freeflight?.loaded)
+		. += freeflight.z_index
 
 /datum/overmap_location/shuttle/is_physically_level(z)
 	return FALSE
 
-#warn impl all
+/datum/overmap_location/shuttle/proc/create_freeflight_level()
+	if(freeflight)
+		return freeflight
+	freeflight = SSmapping.allocate_level(/datum/map_level/freeflight)
+	ASSERT(freeflight)
+	refresh_level_locks()
+	return freeflight

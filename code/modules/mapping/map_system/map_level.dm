@@ -659,5 +659,5 @@
 /**
  * transit levels for shuttles
  */
-/datum/map_level/transit
+/datum/map_level/freeflight
 	transition = Z_TRANSITION_DISABLED

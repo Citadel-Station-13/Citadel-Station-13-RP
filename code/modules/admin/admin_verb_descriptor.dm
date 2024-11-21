@@ -21,7 +21,7 @@ GLOBAL_REAL_LIST(admin_verb_descriptors) = zz__prepare_admin_verb_descriptors()
  *   command line worse!
  */
 /datum/admin_verb_descriptor
-	/// our unique ID
+	/// our unique ID; this is based on verb path!
 	var/id
 	/// our verb path
 	var/verb_path
