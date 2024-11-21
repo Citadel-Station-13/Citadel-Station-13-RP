@@ -1,4 +1,4 @@
-/datum/material/snow
+/datum/prototype/material/snow
 	id = "snow"
 	name = MAT_SNOW
 	stack_type = /obj/item/stack/material/snow
@@ -23,7 +23,7 @@
 	absorption = MATERIAL_RESISTANCE_LOW
 	nullification = MATERIAL_RESISTANCE_VERY_VULNERABLE
 
-/datum/material/snow/generate_recipes()
+/datum/prototype/material/snow/generate_recipes()
 	. = ..()
 	. += create_stack_recipe_datum(
 		name = "snowball",
@@ -61,7 +61,7 @@
 		cost = 10,
 	)
 
-/datum/material/snowbrick //only slightly stronger than snow, used to make igloos mostly
+/datum/prototype/material/snowbrick //only slightly stronger than snow, used to make igloos mostly
 	id = "snow_packed"
 	name = "packed snow"
 	stack_type = /obj/item/stack/material/snowbrick

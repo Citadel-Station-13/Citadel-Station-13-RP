@@ -24,8 +24,9 @@
 	log_access("client security: banning [key_name(src)] [time == -1? "" : "for [time_displayed]"] | [message]")
 	message_admins("client security: banning [key_name(src)] [time == -1? "" : "for [time_displayed]"] | [message]")
 	add_system_note("client-security", "banned for [time_displayed]: [message]")
-	qdel(src)
 	AddBan(ckey, computer_id, "client-security: [message]", minutes = time)
+	disconnection_message("Client Security - Autoban: [message]")
+	qdel(src)
 
 /**
  * queues a security kick

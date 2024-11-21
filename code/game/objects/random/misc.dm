@@ -335,7 +335,7 @@
 				prob(20);/obj/item/reagent_containers/food/snacks/xenomeat/spidermeat,
 				prob(10);/obj/item/reagent_containers/food/snacks/carpmeat,
 				prob(5);/obj/item/reagent_containers/food/snacks/bearmeat,
-				prob(1);/obj/item/reagent_containers/food/snacks/meat/syntiflesh,
+				prob(1);/obj/item/reagent_containers/food/snacks/meat/synthflesh,
 				prob(1);/obj/item/reagent_containers/food/snacks/meat/human,
 				prob(1);/obj/item/reagent_containers/food/snacks/meat/monkey,
 				prob(1);/obj/item/reagent_containers/food/snacks/meat/corgi,
@@ -352,7 +352,7 @@
 				prob(20);/obj/item/reagent_containers/food/snacks/xenomeat/spidermeat,
 				prob(10);/obj/item/reagent_containers/food/snacks/carpmeat,
 				prob(5);/obj/item/reagent_containers/food/snacks/bearmeat,
-				prob(1);/obj/item/reagent_containers/food/snacks/meat/syntiflesh,
+				prob(1);/obj/item/reagent_containers/food/snacks/meat/synthflesh,
 				prob(1);/obj/item/reagent_containers/food/snacks/meat/monkey,
 				prob(1);/obj/item/reagent_containers/food/snacks/meat/corgi)
 
@@ -889,7 +889,8 @@
 		prob(5);/obj/item/storage/box/shotgunshells,
 		prob(5);/obj/item/ammo_magazine/a7_62mm/clip,
 		prob(5);/obj/item/ammo_magazine/a38,
-		prob(5);/obj/item/ammo_magazine/a45,
+		prob(5);/obj/item/ammo_magazine/a45/doublestack,
+		prob(5);/obj/item/ammo_magazine/a45/singlestack,
 		prob(5);/obj/item/ammo_magazine/a9mm,
 		prob(5);/obj/item/ammo_magazine/a38/speedloader,
 		prob(4);/obj/item/ammo_magazine/a45/clip,

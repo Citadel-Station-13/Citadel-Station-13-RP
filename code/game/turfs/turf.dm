@@ -15,6 +15,10 @@
 	 * - an atmosphere id (use defines please)
 	 */
 	var/initial_gas_mix = GAS_STRING_TURF_DEFAULT
+	/**
+	 * Act like a specific temperature for heat exchanger pipes.
+	 */
+	var/temperature_for_heat_exchangers
 
 	//* Automata
 	/// acted automata - automata associated to power, act_cross() will be called when something enters us while this is set
@@ -149,7 +153,6 @@
 
 	SETUP_SMOOTHING()
 
-	// queue if necessary; QUEUE_SMOOTH implicitly checks IS_SMOOTH so don't check again
 	QUEUE_SMOOTH(src)
 
 	//atom color stuff
@@ -161,8 +164,8 @@
 	// this is to trigger entered effects
 	// bad news is this is not necessarily currently idempotent
 	// we probably have to deal with this at.. some point.
-	for(var/atom/movable/AM in src)
-		Entered(AM)
+	for(var/atom/movable/content as anything in src)
+		Entered(content)
 
 	var/area/A = loc
 
@@ -227,7 +230,7 @@
 
 	// clear vis contents here instead of in Init
 	if(length(vis_contents))
-		vis_contents.len = 0
+		vis_contents.Cut()
 
 	..()
 

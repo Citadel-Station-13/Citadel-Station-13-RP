@@ -11,7 +11,7 @@
 	integrity_failure = 100
 	w_class = WEIGHT_CLASS_HUGE
 	materials_base = list(
-		/datum/material/steel::id = 5 * /datum/material/steel::sheet_amount,
+		/datum/prototype/material/steel::id = 5 * /datum/prototype/material/steel::sheet_amount,
 	)
 	worth_intrinsic = 50
 
@@ -527,6 +527,7 @@ update_flag
 /obj/machinery/portable_atmospherics/canister/nitrous_oxide/roomfiller/Initialize(mapload)
 	. = ..()
 	air_contents.gas[GAS_ID_NITROUS_OXIDE] = 9*4000
+	air_contents.update_values()
 	return INITIALIZE_HINT_LATELOAD
 
 /obj/machinery/portable_atmospherics/canister/nitrous_oxide/roomfiller/LateInitialize()

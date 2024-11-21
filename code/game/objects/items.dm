@@ -28,6 +28,18 @@
 	var/item_action_mobility_flags = MOBILITY_CAN_HOLD | MOBILITY_CAN_USE
 
 	//* Combat *//
+	/// Amount of damage we do on melee.
+	var/damage_force = 0
+	/// armor flag for melee attacks
+	var/damage_flag = ARMOR_MELEE
+	/// damage tier
+	var/damage_tier = MELEE_TIER_MEDIUM
+	/// damage_mode bitfield - see [code/__DEFINES/combat/damage.dm]
+	var/damage_mode = NONE
+	/// DAMAGE_TYPE_* enum
+	///
+	/// * This is the primary damage type this object does on usage as a melee / thrown weapon.
+	var/damage_type = DAMAGE_TYPE_BRUTE
 	/// passive parry data / frame
 	///
 	/// * anonymous typepath is allowed
@@ -37,6 +49,10 @@
 	/// note that the component will not be modified while held;
 	/// if this is changed, the component needs to be remade.
 	var/passive_parry
+
+	//* Economy
+	/// economic category for items
+	var/economic_category_item = ECONOMIC_CATEGORY_ITEM_DEFAULT
 
 	//* Flags *//
 	/// Item flags.
@@ -68,9 +84,27 @@
 	/// These flags are listed in [code/__DEFINES/_flags/interaction_flags.dm]
 	var/interaction_flags_item = INTERACT_ITEM_ATTACK_SELF
 
-	//? Economy
-	/// economic category for items
-	var/economic_category_item = ECONOMIC_CATEGORY_ITEM_DEFAULT
+	//* Inventory *//
+	/// currently equipped slot id
+	///
+	/// todo: `worn_slot_or_index`
+	var/worn_slot
+	/// current hand index, if held in hand
+	///
+	/// todo: `worn_slot_or_index`
+	var/held_index
+	/**
+	 * current item we fitted over
+	 * ! DANGER: While this is more or less bug-free for "won't lose the item when you unequip/won't get stuck", we
+	 * ! do not promise anything for functionality - this is a SNOWFLAKE SYSTEM.
+	 */
+	var/obj/item/worn_over
+	/**
+	 * current item we're fitted in.
+	 */
+	var/obj/item/worn_inside
+	/// suppress auto inventory hooks in forceMove
+	var/worn_hook_suppressed = FALSE
 
 	//* Environmentals *//
 	/// Set this variable to determine up to which temperature (IN KELVIN) the item protects against heat damage. Keep at null to disable protection. Only protects areas set by heat_protection flags.
@@ -101,20 +135,6 @@
 	/// Hard slowdown. Applied before carry weight.
 	/// This affects multiplicative movespeed.
 	var/slowdown = 0
-
-	//? Combat
-	/// Amount of damage we do on melee.
-	var/damage_force = 0
-	/// armor flag for melee attacks
-	var/damage_flag = ARMOR_MELEE
-	/// damage tier
-	var/damage_tier = MELEE_TIER_MEDIUM
-	/// damage_mode bitfield - see [code/__DEFINES/combat/damage.dm]
-	var/damage_mode = NONE
-	/// DAMAGE_TYPE_* enum
-	///
-	/// * This is the primary damage type this object does on usage as a melee / thrown weapon.
-	var/damage_type = DAMAGE_TYPE_BRUTE
 
 	//* Storage *//
 	/// storage cost for volumetric storage
@@ -199,6 +219,16 @@
 		else
 			embed_chance = max(5, round(damage_force/(w_class*3)))
 
+/obj/item/Destroy()
+	// run inventory hooks
+	if(worn_slot && !worn_hook_suppressed)
+		var/mob/M = worn_mob()
+		if(!ismob(M))
+			stack_trace("invalid current equipped slot [worn_slot] on an item not on a mob.")
+			return ..()
+		M.temporarily_remove_from_inventory(src, INV_OP_FORCE | INV_OP_DELETING)
+	return ..()
+
 /// Check if target is reasonable for us to operate on.
 /obj/item/proc/check_allowed_items(atom/target, not_inside, target_self)
 	if(((src in target) && !target_self) || ((!istype(target.loc, /turf)) && (!istype(target, /turf)) && (not_inside)))
@@ -207,35 +237,14 @@
 		return TRUE
 
 /obj/item/proc/update_twohanding()
-	update_held_icon()
+	update_worn_icon()
 
 /obj/item/proc/is_held_twohanded(mob/living/M)
-	var/check_hand
-	if(M.l_hand == src && !M.r_hand)
-		check_hand = BP_R_HAND //item in left hand, check right hand
-	else if(M.r_hand == src && !M.l_hand)
-		check_hand = BP_L_HAND //item in right hand, check left hand
-	else
-		return FALSE
-
-	//would check is_broken() and is_malfunctioning() here too but is_malfunctioning()
-	//is probabilistic so we can't do that and it would be unfair to just check one.
-	if(ishuman(M))
-		var/mob/living/carbon/human/H = M
-		var/obj/item/organ/external/hand = H.organs_by_name[check_hand]
-		if(istype(hand) && hand.is_usable())
-			return TRUE
+	for(var/i in M.get_usable_hand_indices())
+		if(!isnull(M.inventory?.held_items[i]))
+			continue
+		return TRUE
 	return FALSE
-
-
-///Checks if the item is being held by a mob, and if so, updates the held icons
-/obj/item/proc/update_held_icon()
-	if(isliving(src.loc))
-		var/mob/living/M = src.loc
-		if(M.l_hand == src)
-			M.update_inv_l_hand()
-		else if(M.r_hand == src)
-			M.update_inv_r_hand()
 
 /obj/item/legacy_ex_act(severity)
 	switch(severity)
@@ -875,7 +884,7 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 //* Materials *//
 
 /obj/item/material_trait_brittle_shatter()
-	var/datum/material/material = get_primary_material()
+	var/datum/prototype/material/material = get_primary_material()
 	var/turf/T = get_turf(src)
 	T.visible_message("<span class='danger'>\The [src] [material.destruction_desc]!</span>")
 	if(istype(loc, /mob/living))

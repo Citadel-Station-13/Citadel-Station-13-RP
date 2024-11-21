@@ -10,10 +10,10 @@
 /atom/movable/screen/hud/throwmode/shift_clicked(mob/user)
 	user.toggle_throw_mode(TRUE)
 
-/atom/movable/screen/hud/update_icon_state()
+/atom/movable/screen/hud/throwmode/update_icon_state()
 	. = ..()
 	remove_filter("overhand", FALSE)
-	switch(hud?.mymob?.in_throw_mode)
+	switch(hud_legacy?.mymob?.in_throw_mode)
 		if(THROW_MODE_ON)
 			icon_state = "act_throw_on"
 		if(THROW_MODE_OFF)

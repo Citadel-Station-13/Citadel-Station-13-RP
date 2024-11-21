@@ -32,7 +32,7 @@
 	if(isnull(stored))
 		return
 	for(var/mat_id in stored)
-		var/datum/material/M = SSmaterials.resolve_material(mat_id)
+		var/datum/prototype/material/M = RSmaterials.fetch(mat_id)
 		if(isnull(M))
 			continue
 		var/safety = 50
@@ -63,11 +63,11 @@
  *
  * @return sheets dumped
  */
-/datum/material_container/proc/dump(atom/where, datum/material/material, amount = INFINITY)
+/datum/material_container/proc/dump(atom/where, datum/prototype/material/material, amount = INFINITY)
 	if(amount < 0)
 		CRASH("negative amount?")
 	if(!istype(material))
-		material = SSmaterials.resolve_material(material)
+		material = RSmaterials.fetch(material)
 	var/can_dump = round(stored[material.id] / SHEET_MATERIAL_AMOUNT)
 	var/dumping = min(amount, can_dump)
 	stored[material.id] -= dumping * SHEET_MATERIAL_AMOUNT
@@ -103,7 +103,7 @@
 	if(!istype(inserting))
 		return 0
 	LAZYINITLIST(stored)
-	var/datum/material/mat = inserting.material
+	var/datum/prototype/material/mat = inserting.material
 	var/allowed = capacity_material_sheets(mat)
 	var/inserted = min(allowed, inserting.amount)
 	inserting.use(inserted)
@@ -118,7 +118,7 @@
 /datum/material_container/proc/capacity_sheets(obj/item/stack/material/inserting)
 	if(!istype(inserting))
 		return 0
-	var/datum/material/mat = inserting.material
+	var/datum/prototype/material/mat = inserting.material
 	return capacity_material_sheets(mat)
 
 /**
@@ -137,7 +137,7 @@
  *
  * @return number of sheets allowed
  */
-/datum/material_container/proc/capacity_material_sheets(datum/material/mat)
+/datum/material_container/proc/capacity_material_sheets(datum/prototype/material/mat)
 	if(isnull(capacity))
 		return INFINITY
 	if(isnum(capacity))
@@ -153,7 +153,7 @@
 /**
  * is this material allowed
  */
-/datum/material_container/proc/allowed_material(datum/material/mat)
+/datum/material_container/proc/allowed_material(datum/prototype/material/mat)
 	return isnull(capacity) || isnum(capacity) || !isnull(capacity[mat.id])
 
 /**

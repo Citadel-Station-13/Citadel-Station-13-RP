@@ -132,10 +132,7 @@
 
 /obj/item/gun/launcher/pneumatic/update_icon()
 	. = ..()
-	if (ismob(src.loc))
-		var/mob/M = src.loc
-		M.update_inv_r_hand()
-		M.update_inv_l_hand()
+	update_worn_icon()
 
 /obj/item/gun/launcher/pneumatic/update_icon_state()
 	. = ..()
@@ -182,7 +179,7 @@
 			buildstate++
 			update_icon()
 			return
-	else if(W.is_material_stack_of(/datum/material/steel))
+	else if(W.is_material_stack_of(/datum/prototype/material/steel))
 		if(buildstate == 2)
 			var/obj/item/stack/material/M = W
 			if(M.use(5))

@@ -35,19 +35,7 @@
 /mob/proc/update_inv_back()
 	return
 
-/mob/proc/update_inv_active_hand()
-	return
-
-/mob/living/update_inv_active_hand(var/A)
-	if(hand)
-		update_inv_l_hand(A)
-	else
-		update_inv_r_hand(A)
-
-/mob/proc/update_inv_l_hand()
-	return
-
-/mob/proc/update_inv_r_hand()
+/mob/proc/update_inv_hand(index)
 	return
 
 /mob/proc/update_inv_wear_mask()
@@ -92,10 +80,15 @@
 /mob/proc/update_targeted()
 	return
 
-/mob/proc/update_inv_hands()
-	update_inv_l_hand()
-	update_inv_r_hand()
-
 /mob/proc/update_hair()
 
 /mob/proc/update_eyes()
+
+//* Helpers - These call other update procs. *//
+
+/mob/proc/update_inv_hands()
+	for(var/i in 1 to length(inventory?.held_items))
+		update_inv_hand(i)
+
+/mob/proc/update_inv_active_hand()
+	return update_inv_hand(active_hand)

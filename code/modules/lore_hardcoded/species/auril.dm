@@ -3,7 +3,7 @@
 	id = "culture_auril_main"
 	category = "Species -- Auril"
 	innate_languages = list(
-		/datum/language/angel,
+		/datum/prototype/language/angel,
 	)
 	desc = "Aurils who were born and grew up on the lush, tropical homeworld of Aura. They were taught the virtues and values of Aura -- diligence, responsibility, and to think ahead for the overall good of the species. In spite of this, the pressures of society, or other factors have led them to abandon the homeworld."
 
@@ -11,8 +11,8 @@
 	name = "Prideborn Exile"
 	id = "culture_auril_pride"
 	innate_languages = list(
-		/datum/language/angel,
-		/datum/language/demon,
+		/datum/prototype/language/angel,
+		/datum/prototype/language/demon,
 	)
 	language_amount_mod = -1
 	desc = "Aurils who were originating from the Auril Enclave on the Dremachir homeworld -- City of Pride, as named by humans. Its pearlescent, high altitude platform city shined like a beacon in the dusty plains of Drema, and both of the species intermingled amongst each other, leading to a far less homogenous ideals and beliefs."

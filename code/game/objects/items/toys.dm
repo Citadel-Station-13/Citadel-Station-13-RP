@@ -281,13 +281,8 @@
 	else
 		activate(user)
 
-	if(istype(user,/mob/living/carbon/human))
-		var/mob/living/carbon/human/H = user
-		H.update_inv_l_hand()
-		H.update_inv_r_hand()
-
+	update_worn_icon()
 	add_fingerprint(user)
-	return
 
 /obj/item/toy/sword/proc/activate(mob/living/user)
 	if(active)
@@ -323,7 +318,6 @@
 	return ..()
 
 /obj/item/toy/sword/update_icon()
-	. = ..()
 	var/mutable_appearance/blade_overlay = mutable_appearance(icon, "[icon_state]_blade")
 	blade_overlay.color = color
 	if(rainbow)
@@ -333,10 +327,8 @@
 	cut_overlays()		//So that it doesn't keep stacking overlays non-stop on top of each other
 	if(active)
 		add_overlay(blade_overlay)
-	if(istype(usr,/mob/living/carbon/human))
-		var/mob/living/carbon/human/H = usr
-		H.update_inv_l_hand()
-		H.update_inv_r_hand()
+	. = ..()
+	update_worn_icon()
 
 /obj/item/toy/sword/AltClick(mob/living/user)
 	if(!colorable) //checks if is not colorable
@@ -428,7 +420,7 @@
 
 /obj/item/toy/waterflower/Initialize(mapload)
 	. = ..()
-	var/datum/reagents/R = create_reagents(10)
+	var/datum/reagent_holder/R = create_reagents(10)
 	R.add_reagent("water", 10)
 
 /obj/item/toy/waterflower/afterattack(atom/target, mob/user, clickchain_flags, list/params)

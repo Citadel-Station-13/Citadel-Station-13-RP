@@ -57,10 +57,10 @@ GLOBAL_LIST_INIT(holograms, __init_holograms())
 /datum/hologram/proc/render_greyscale(cheap, alpha = 140 / 255)
 	if(cheap)
 		var/mutable_appearance/rendering = make_hologram_appearance(image(icon = icon, icon_state = icon_state), alpha)
-		rendering.color = color_matrix_greyscale()
+		rendering.color = COLOR_MATRIX_GRAYSCALE
 		return rendering
 
 	else
 		var/icon/rendering = render_hologram_icon(image(icon = icon, icon_state = icon_state), alpha)
-		rendering.MapColors(arglist(color_matrix_greyscale()))
+		rendering.MapColors(arglist(COLOR_MATRIX_GRAYSCALE))
 		return rendering

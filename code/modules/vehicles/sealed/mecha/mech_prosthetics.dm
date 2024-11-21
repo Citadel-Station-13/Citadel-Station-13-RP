@@ -73,7 +73,7 @@
 	. = ..()
 	manufacturer = GLOB.basic_robolimb.company
 
-/obj/machinery/mecha_part_fabricator/pros/dispense_built_part(datum/design/D)
+/obj/machinery/mecha_part_fabricator/pros/dispense_built_part(datum/prototype/design/D)
 	var/obj/item/I = ..()
 	if(isobj(I) && I.materials_base && I.materials_base.len > 0)
 		for(var/i in I.materials_base)

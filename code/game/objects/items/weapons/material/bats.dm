@@ -6,7 +6,7 @@
 	throw_force = 7
 	attack_verb = list("smashed", "beaten", "slammed", "smacked", "struck", "battered", "bonked")
 	attack_sound = 'sound/weapons/genhit3.ogg'
-	material_parts = /datum/material/wood_plank
+	material_parts = /datum/prototype/material/wood_plank
 	material_significance = MATERIAL_SIGNIFICANCE_WEAPON_MEDIUM
 	slot_flags = SLOT_BACK
 
@@ -38,4 +38,4 @@
 	icon_state = "penbat0"
 	base_icon = "penbat"
 	attack_verb = list("smacked", "slapped", "thwapped", "struck", "bapped", "bonked")
-	material_parts = /datum/material/plastic
+	material_parts = /datum/prototype/material/plastic

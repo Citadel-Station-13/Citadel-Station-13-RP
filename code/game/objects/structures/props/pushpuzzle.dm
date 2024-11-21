@@ -19,7 +19,7 @@
 
 
 /obj/structure/girder/puzzle
-	material = /datum/material/alienalloy/dungeonium
+	material = /datum/prototype/material/alienalloy/dungeonium
 
 /obj/structure/girder/attackby(obj/item/W as obj, mob/user as mob)
 	if(W.is_wrench() && state == 0)
