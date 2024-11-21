@@ -61,7 +61,7 @@
 	build_path = /obj/item/plant_analyzer
 
 /datum/prototype/design/science/biotech/nif
-	design_name = "nanite implant framework"
+	design_name = "nanite implant framework (NIF)"
 	id = "nif"
 	subcategory = DESIGN_SUBCATEGORY_NIF
 	req_tech = list(TECH_MAGNET = 5, TECH_BLUESPACE = 5, TECH_MATERIAL = 5, TECH_ENGINEERING = 5, TECH_DATA = 5)
@@ -69,7 +69,7 @@
 	build_path = /obj/item/nif
 
 /datum/prototype/design/science/biotech/nifbio
-	design_name = "bioadaptive NIF"
+	design_name = "bioadaptive nanite implant framework (NIF)"
 	id = "bioadapnif"
 	subcategory = DESIGN_SUBCATEGORY_NIF
 	req_tech = list(TECH_MAGNET = 5, TECH_BLUESPACE = 5, TECH_MATERIAL = 5, TECH_ENGINEERING = 5, TECH_DATA = 5, TECH_BIO = 5)
