@@ -20559,14 +20559,14 @@
 	pixel_x = 6;
 	pixel_y = -1
 	},
-/obj/item/ammo_magazine/a45/flash{
+/obj/item/ammo_magazine/a45/doublestack/flash{
 	pixel_y = 9
 	},
-/obj/item/ammo_magazine/a45/flash{
+/obj/item/ammo_magazine/a45/doublestack/flash{
 	pixel_x = 3;
 	pixel_y = 3
 	},
-/obj/item/ammo_magazine/a45/flash{
+/obj/item/ammo_magazine/a45/doublestack/flash{
 	pixel_y = -3
 	},
 /turf/simulated/floor/tiled/dark,

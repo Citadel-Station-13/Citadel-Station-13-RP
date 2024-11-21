@@ -1,4 +1,4 @@
-/mob/living/silicon/robot/sync_translation_context(datum/language/L)
+/mob/living/silicon/robot/sync_translation_context(datum/prototype/language/L)
 	if(!connected_ai)
 		return
 	if(!istype(connected_ai.translation_context, /datum/translation_context/variable/learning/silicons))

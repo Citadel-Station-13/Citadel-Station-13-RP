@@ -34,15 +34,25 @@
 #define QDELETED(X) (!X || QDELING(X))
 #define QDESTROYING(X) (!X || X.gc_destroyed == GC_CURRENTLY_BEING_QDELETED)
 
-//Qdel helper macros.
+//* Qdel helper macros. *//
+
+/// qdel something in a specific amount of time. returns a timer ID.
 #define QDEL_IN(item, time) addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(qdel), item), time, TIMER_STOPPABLE)
+/// qdel something in a specific amount of real (wall) time. returns a timer ID.
 #define QDEL_IN_CLIENT_TIME(item, time) addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(qdel), item), time, TIMER_STOPPABLE | TIMER_CLIENT_TIME)
+/// qdel's something and nulls it out
 #define QDEL_NULL(item) qdel(item); item = null
+/// qdel's all the elements in a list and then nulls the list out.
 #define QDEL_NULL_LIST QDEL_LIST_NULL
+/// qdel's all the elements in a list and then nulls the list out.
 #define QDEL_LIST_NULL(x) if(x) { for(var/y in x) { qdel(y) } ; x = null }
+/// qdels the elements in a list and proceed to cut the list. in an asosciative list, this will qdelete the keys.
 #define QDEL_LIST(L) if(L) { for(var/I in L) qdel(I); L.Cut(); }
+/// QDEL_LIST in a specific amount of time
 #define QDEL_LIST_IN(L, time) addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(______qdel_list_wrapper), L), time, TIMER_STOPPABLE)
+/// qdel's both the keys and the values of an associative list, and then cut the list.
 #define QDEL_LIST_ASSOC(L) if(L) { for(var/I in L) { qdel(L[I]); qdel(I); } L.Cut(); }
+/// qdel()'s the value associations of an associative list, and then cut the list.
 #define QDEL_LIST_ASSOC_VAL(L) if(L) { for(var/I in L) qdel(L[I]); L.Cut(); }
 
 /proc/______qdel_list_wrapper(list/L) //the underscores are to encourage people not to use this directly.

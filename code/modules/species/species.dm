@@ -111,6 +111,29 @@
 	/// Used for offsetting large icons.
 	var/pixel_offset_y = 0
 
+	//* Inventory *//
+
+	/// Available inventory slots IDs
+	///
+	/// * associate to list for remapping; use INVENTORY_SLOT_REMAP_* keys
+	var/list/inventory_slots = list(
+		/datum/inventory_slot/inventory/back::id,
+		/datum/inventory_slot/inventory/suit::id,
+		/datum/inventory_slot/inventory/suit_storage::id,
+		/datum/inventory_slot/inventory/uniform::id,
+		/datum/inventory_slot/inventory/ears/left::id,
+		/datum/inventory_slot/inventory/ears/right::id,
+		/datum/inventory_slot/inventory/glasses::id,
+		/datum/inventory_slot/inventory/gloves::id,
+		/datum/inventory_slot/inventory/mask::id,
+		/datum/inventory_slot/inventory/shoes::id,
+		/datum/inventory_slot/inventory/pocket/left::id,
+		/datum/inventory_slot/inventory/pocket/right::id,
+		/datum/inventory_slot/inventory/belt::id,
+		/datum/inventory_slot/inventory/id::id,
+		/datum/inventory_slot/inventory/head::id,
+	)
+
 	//? Overlays
 	/// Used by changelings. Should also be used for icon previews.
 	var/base_color

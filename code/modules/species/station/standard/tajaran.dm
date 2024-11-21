@@ -21,12 +21,12 @@
 	)
 
 	max_additional_languages = 3
-	name_language = /datum/language/tajaran
-	intrinsic_languages = /datum/language/tajaran
+	name_language = /datum/prototype/language/tajaran
+	intrinsic_languages = /datum/prototype/language/tajaran
 	whitelist_languages = list(
-		/datum/language/tajaran,
-		/datum/language/tajaranakhani,
-		/datum/language/tajsign
+		/datum/prototype/language/tajaran,
+		/datum/prototype/language/tajaranakhani,
+		/datum/prototype/language/tajsign
 	)
 
 	vision_innate = /datum/vision/baseline/species_tier_2

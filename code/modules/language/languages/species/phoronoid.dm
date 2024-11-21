@@ -1,4 +1,4 @@
-/datum/language/bones
+/datum/prototype/language/bones
 	id = LANGUAGE_ID_PHORONOID
 	name = LANGUAGE_BONES
 	translation_class = TRANSLATION_CLASS_DEFAULT_STANDARD_RACE
