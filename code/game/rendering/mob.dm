@@ -1,3 +1,6 @@
+//* This file is explicitly licensed under the MIT license. *//
+//* Copyright (c) 2024 Citadel Station Developers           *//
+
 // todo: rendering handling/init/destruction should be on mob and client
 //       mob side should handle mob state
 //       client side should handle apply/remove/switch.
@@ -39,3 +42,11 @@
  */
 /mob/proc/dispose_rendering()
 	wipe_fullscreens()
+
+/**
+ * updates rendering on hud style or other appearance change
+ */
+/mob/proc/resync_rendering()
+	if(!client)
+		return
+	client.actor_huds.sync_all_to_preferences(client.legacy_get_hud_preferences())

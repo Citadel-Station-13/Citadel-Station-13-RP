@@ -95,7 +95,7 @@
 /obj/item/gun/ballistic/automatic/sts35/update_icon(ignore_inhands)
 	. = ..()
 
-	update_held_icon()
+	update_worn_icon()
 
 /obj/item/gun/ballistic/automatic/wt550
 	name = "machine pistol"
@@ -189,7 +189,7 @@
 
 /obj/item/gun/ballistic/automatic/z8/update_icon()
 	. = ..()
-	update_held_icon()
+	update_worn_icon()
 
 /obj/item/gun/ballistic/automatic/z8/examine(mob/user, dist)
 	. = ..()
@@ -247,7 +247,7 @@
 	cover_open = !cover_open
 	to_chat(user, "<span class='notice'>You [cover_open ? "open" : "close"] [src]'s cover.</span>")
 	update_icon()
-	update_held_icon()
+	update_worn_icon()
 
 /obj/item/gun/ballistic/automatic/lmg/attack_self(mob/user, datum/event_args/actor/actor)
 	if(cover_open)
@@ -263,7 +263,7 @@
 
 /obj/item/gun/ballistic/automatic/lmg/update_icon()
 	. = ..()
-	update_held_icon()
+	update_worn_icon()
 
 /obj/item/gun/ballistic/automatic/lmg/update_icon_state()
 	. = ..()
@@ -467,7 +467,7 @@
 /obj/item/gun/ballistic/automatic/tommygun/update_icon_state()
 	. = ..()
 	icon_state = (ammo_magazine)? "tommygun" : "tommygun-empty"
-//	update_held_icon()
+//	update_worn_icon()
 
 /obj/item/gun/ballistic/automatic/bullpup // Admin abuse assault rifle. ToDo: Make this less shit. Maybe remove its autofire, and make it spawn with only 10 rounds at start.
 	name = "bullpup rifle"
@@ -498,7 +498,7 @@
 
 /obj/item/gun/ballistic/automatic/bullpup/update_icon()
 	. = ..()
-	update_held_icon()
+	update_worn_icon()
 
 /obj/item/gun/ballistic/automatic/fal
 	name = "FN-FAL"
@@ -786,4 +786,4 @@
 
 /obj/item/gun/ballistic/automatic/lmg/foam/update_icon()
 	. = ..()
-	update_held_icon()
+	update_worn_icon()

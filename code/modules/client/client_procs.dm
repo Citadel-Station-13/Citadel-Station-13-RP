@@ -221,20 +221,18 @@
 	preferences.on_reconnect()
 	//? END ?//
 
-	//* Create UI *//
+	//* Create interface UI *//
 	// todo: move top level menu here, for now it has to be under prefs.
-	// Instantiate statpanel
 	tgui_stat = new(src, SKIN_BROWSER_ID_STAT)
-	// Instantiate tgui panel
 	tgui_panel = new(src, SKIN_BROWSER_ID_CHAT)
 	// Instantiate cutscene system
 	spawn(1)
 		init_cutscene_system()
-	// instantiate tooltips
 	tooltips = new(src)
-	// start action drawer
+
+	//* Setup on-map HUDs *//
 	action_drawer = new(src)
-	// make action holder
+	actor_huds = new(src)
 	action_holder = new /datum/action_holder/client_actor(src)
 	action_drawer.register_holder(action_holder)
 
@@ -434,20 +432,19 @@
 
 	active_mousedown_item = null
 
-	//* cleanup rendering
-	// clear perspective
+	//* Cleanup rendering *//
 	if(using_perspective)
 		set_perspective(null)
-	// clear HUDs
 	clear_atom_hud_providers()
 
-	//* cleanup client UI *//
+	//* Cleanup interface UI *//
 	QDEL_NULL(tgui_stat)
 	cleanup_cutscene_system()
 	QDEL_NULL(tgui_panel)
 	QDEL_NULL(tooltips)
 
-	//* cleanup map UI *//
+	//* Cleanup on-map HUDs *//
+	QDEL_NULL(actor_huds)
 	QDEL_NULL(action_holder)
 	QDEL_NULL(action_drawer)
 

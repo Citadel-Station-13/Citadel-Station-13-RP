@@ -1,15 +1,15 @@
 /mob/living
-	var/datum/language/default_language
+	var/datum/prototype/language/default_language
 
 /mob/living/verb/set_default_language(language as anything in languages)
 	set name = "Set Default Language"
 	set category = VERB_CATEGORY_IC
 
-	if (only_species_language && language != SScharacters.resolve_language_name(species_language))
+	if (only_species_language && language != RSlanguages.legacy_resolve_language_name(species_language))
 		to_chat(src, "<span class='notice'>You can only speak your species language, [src.species_language].</span>")
 		return 0
 
-	if(language == SScharacters.resolve_language_name(species_language))
+	if(language == RSlanguages.legacy_resolve_language_name(species_language))
 		to_chat(src, "<span class='notice'>You will now speak your standard default language, [language], if you do not specify a language when speaking.</span>")
 	else if (language)
 

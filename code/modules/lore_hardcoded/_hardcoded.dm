@@ -66,10 +66,10 @@
 		CRASH("innate languages not a list; fix your shit.")
 	for(var/thing in innate_languages)
 		if(ispath(thing))
-			innate_languages += SScharacters.resolve_language_path(thing).id
+			innate_languages += RSlanguages.fetch(thing).id
 			innate_languages -= thing
 		else if(istext(thing))
-			ASSERT(!!SScharacters.resolve_language_id(thing))
+			ASSERT(!!RSlanguages.fetch(thing))
 		else
 			CRASH("you didn't put a valid path or text; fix your shit.")
 

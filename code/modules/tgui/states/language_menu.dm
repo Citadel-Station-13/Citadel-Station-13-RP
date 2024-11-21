@@ -13,7 +13,7 @@ GLOBAL_DATUM_INIT(language_menu_state, /datum/ui_state/language_menu, new)
 	. = UI_CLOSE
 	if(check_rights_for(user.client, R_ADMIN))
 		. = UI_INTERACTIVE
-	else if(istype(src_object, /datum/language_menu))
-		var/datum/language_menu/LM = src_object
+	else if(istype(src_object, /datum/prototype/language_menu))
+		var/datum/prototype/language_menu/LM = src_object
 		if(LM.language_holder.get_atom() == user)
 			. = UI_INTERACTIVE

@@ -1,4 +1,4 @@
-/datum/language/teshari
+/datum/prototype/language/teshari
 	id = LANGUAGE_ID_TESHARI
 	name = LANGUAGE_SCHECHI
 	translation_class = TRANSLATION_CLASS_DEFAULT_STANDARD_RACE
@@ -16,5 +16,5 @@
 		)
 	shorthand = "SCH"
 
-/datum/language/teshari/get_random_name(gender)
+/datum/prototype/language/teshari/get_random_name(gender)
 	return ..(gender, 2, 4, 1.5)

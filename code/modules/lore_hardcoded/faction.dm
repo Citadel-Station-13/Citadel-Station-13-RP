@@ -117,7 +117,7 @@
 		/datum/role/job/trader::id,
 	)
 	innate_languages = list(
-		/datum/language/trader,
+		/datum/prototype/language/trader,
 	)
 
 /datum/lore/character_background/faction/hephaestus
