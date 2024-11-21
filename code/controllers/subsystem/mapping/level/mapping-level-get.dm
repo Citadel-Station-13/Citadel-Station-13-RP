@@ -1,39 +1,39 @@
 //* This file is explicitly licensed under the MIT license. *//
-//* Copyright (c) 2023 Citadel Station developers.          *//
+//* Copyright (c) 2024 Citadel Station Developers           *//
 
 /**
  * returns the map level id of a zlevel
  */
-/datum/controller/subsystem/mapping/proc/level_id(z)
+/datum/controller/subsystem/mapping/proc/level_get_id(z)
 	return ordered_levels[z]?.id
 
 /**
  * returns the canon/IC-friendly level id of a zlevel
  */
-/datum/controller/subsystem/mapping/proc/fluff_level_id(z)
+/datum/controller/subsystem/mapping/proc/level_get_fluff_id(z)
 	return ordered_levels[z]?.display_id
 
 /**
  * returns the map level name of a zlevel
  */
-/datum/controller/subsystem/mapping/proc/level_name(z)
+/datum/controller/subsystem/mapping/proc/level_get_name(z)
 	return ordered_levels[z]?.name
 
 /**
  * returns the canon/IC-friendly level mame of a zlevel
  */
-/datum/controller/subsystem/mapping/proc/fluff_level_name(z)
+/datum/controller/subsystem/mapping/proc/level_get_fluff_name(z)
 	return ordered_levels[z]?.display_name
 
 /**
- * returns level datum in dir of level
+ * returns level index in dir of level
  *
  * if diagonal, only returns a level if both steps are consistent with each other.
  */
-/datum/controller/subsystem/mapping/proc/level_datum_in_dir(z, dir)
+/datum/controller/subsystem/mapping/proc/level_get_datum_in_dir(z, dir)
 	if(dir & (dir - 1))
 		// if diagonal, pass to level for advanced handling
-		return ordered_levels[z].level_in_dir(dir)?.z_index
+		return ordered_levels[z].level_in_dir(dir)
 	var/index
 	switch(dir)
 		if(NORTH)
@@ -55,10 +55,10 @@
  *
  * if diagonal, only returns a level if both steps are consistent with each other.
  */
-/datum/controller/subsystem/mapping/proc/level_index_in_dir(z, dir)
+/datum/controller/subsystem/mapping/proc/level_get_index_in_dir(z, dir)
 	if(dir & (dir - 1))
 		// if diagonal, pass to level for advanced handling
-		return ordered_levels[z].level_in_dir(dir)
+		return ordered_levels[z].level_in_dir(dir)?.z_index
 	var/index
 	switch(dir)
 		if(NORTH)

@@ -1,11 +1,11 @@
 //* This file is explicitly licensed under the MIT license. *//
-//* Copyright (c) 2023 Citadel Station developers.          *//
+//* Copyright (c) 2024 Citadel Station Developers           *//
 
 /**
  * get all turfs in the zstack up/down from the given turf.
  */
-/datum/controller/subsystem/mapping/proc/get_turfs_within_stack(turf/T)
-	var/list/stack = get_z_stack(T.z)
+/datum/controller/subsystem/mapping/proc/get_turfs_within_stack(turf/T) as /list
+	var/list/stack = level_stack_get_ordered(T.z)
 	if(isnull(stack))
 		return list(T)
 	. = list()

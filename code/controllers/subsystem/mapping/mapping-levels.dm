@@ -359,15 +359,6 @@
 //* Z-stacks *//
 
 /**
- * Gets the sorted Z stack list of a level - the levels accessible from a single level, in multiz
- */
-/datum/controller/subsystem/mapping/proc/get_z_stack(z)
-	if(z_stack_dirty)
-		recalculate_z_stack()
-	var/list/L = z_stack_lookup[z]
-	return L.Copy()
-
-/**
  * Recalculates Z stack
  *
  * **Warning**: rebuild_verticality must be called to recalculate up/down lookups,

@@ -358,21 +358,23 @@
  * get .dmm path or file
  */
 /datum/map_level/proc/resolve_map_path()
-	return absolute_path // no relative path support yet
+	return absolute_path
 
 /**
- * get level index in dir
+ * allow deallocation/unload
  */
-/datum/map_level/proc/z_in_dir(dir)
-	return level_in_dir(dir)?.z_index
+/datum/map_level/proc/allow_deallocate()
+	return TRUE
+
+//* Directions *//
 
 /**
  * get level datum in dir
  *
- * if diagonal, only returns a level if both steps are consistent with each other.
+ * * This is authoritative, and is used to rebuild SSmapping's caches.
+ * * If diagonal, only returns a level if both steps are consistent with each other.
  */
-/datum/map_level/proc/level_in_dir(dir)
-	RETURN_TYPE(/datum/map_level)
+/datum/map_level/proc/level_in_dir(dir) as /datum/map_level
 	if(dir & (dir - 1))
 		if(dir & (UP|DOWN))
 			CRASH("unsupported operation of attempting to grab a vertical + diagonal direction.")
@@ -414,13 +416,7 @@
 			pass() // macro used immediately before being undefined; BYOND bug 2072419
 		#undef RESOLVE
 
-/**
- * allow deallocation/unload
- */
-/datum/map_level/proc/allow_deallocate()
-	return TRUE
-
-//* traits
+//* Traits *//
 
 /datum/map_level/proc/has_trait(trait)
 	return trait in traits
@@ -439,7 +435,7 @@
 	if(loaded)
 		SSmapping.on_trait_del(src, trait)
 
-//* attributes
+//* Attributes *//
 
 /datum/map_level/proc/get_attribute(attribute)
 	return attributes?[attribute]
@@ -456,7 +452,7 @@
 	if(loaded)
 		SSmapping.on_attribute_set(src, attribute, old, null)
 
-//* rebuilds
+//* Rebuilds / Transitions *//
 
 /**
  * Rebuild turfs up/down of us
@@ -588,6 +584,8 @@
 	for(var/turf/T as anything in transition_turfs())
 		T._dispose_transition_border()
 		CHECK_TICK
+
+//* Turf Fetch *//
 
 /**
  * get transition turfs

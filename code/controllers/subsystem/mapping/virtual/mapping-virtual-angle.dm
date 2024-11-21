@@ -1,5 +1,5 @@
 //* This file is explicitly licensed under the MIT license. *//
-//* Copyright (c) 2023 Citadel Station developers.          *//
+//* Copyright (c) 2024 Citadel Station Developers           *//
 
 /**
  * Gets virual angle between two turfs in horizontal terms
@@ -15,12 +15,13 @@
  * OR if hey both are and aren't in the same struct
  */
 /datum/controller/subsystem/mapping/proc/get_virtual_angle(atom/A, atom/B)
+	// todo: impl
 	return get_visual_angle(A, B)
 	// A = get_turf(A)
 	// B = get_turf(B)
 	// if(A.z == B.z)
 	// 	return get_physics_angle(A, B)
-	// if(!is_level_virtualized(A) || !is_level_virtualized(B))
+	// if(!level_virtualization_check(A) || !level_virtualization_check(B))
 	// 	return null
 	// if(struct_by_z[A.z] != struct_by_z[B.z])
 	// 	return null

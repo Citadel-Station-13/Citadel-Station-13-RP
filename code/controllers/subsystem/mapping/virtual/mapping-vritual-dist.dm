@@ -1,5 +1,5 @@
 //* This file is explicitly licensed under the MIT license. *//
-//* Copyright (c) 2023 Citadel Station developers.          *//
+//* Copyright (c) 2024 Citadel Station Developers           *//
 
 /**
  * Get virtual distance between two turfs
@@ -15,12 +15,13 @@
  */
 /datum/controller/subsystem/mapping/proc/get_virtual_dist(turf/A, turf/B, z_dist)
 	// todo: get_dist after 515
+	// todo: impl
 	return get_manhattan_dist(A, B)
 	// A = get_turf(A)
 	// B = get_turf(B)
 	// if(A.z == B.z)
 	// 	return get_dist(A, B)
-	// if(!is_level_virtualized(A) || !is_level_virtualized(B))
+	// if(!level_virtualization_check(A) || !level_virtualization_check(B))
 	// 	return -1
 	// if(struct_by_z[A.z] != struct_by_z[B.z])
 	// 	return -1

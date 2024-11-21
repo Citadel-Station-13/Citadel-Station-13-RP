@@ -1,5 +1,5 @@
 //* This file is explicitly licensed under the MIT license. *//
-//* Copyright (c) 2023 Citadel Station developers.          *//
+//* Copyright (c) 2024 Citadel Station Developers           *//
 
 /**
  * Get a coordinate set of list(x, y, z) of virtual coordinates for an turf.
@@ -8,6 +8,7 @@
  * Also, x, y, and z can all be negative here.
  */
 /datum/controller/subsystem/mapping/proc/get_virtual_coords(turf/A)
+	// todo: impl
 	return list(A.x, A.y, A.z)
 	// A = get_turf(A)
 	// if(!struct_by_z[A.z])

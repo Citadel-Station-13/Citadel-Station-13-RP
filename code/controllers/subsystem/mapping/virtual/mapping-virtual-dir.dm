@@ -1,5 +1,5 @@
 //* This file is explicitly licensed under the MIT license. *//
-//* Copyright (c) 2023 Citadel Station developers.          *//
+//* Copyright (c) 2024 Citadel Station Developers           *//
 
 /**
  * Gets virual direction between two turfs
@@ -12,12 +12,13 @@
  * OR if hey both are and aren't in the same struct
  */
 /datum/controller/subsystem/mapping/proc/get_virtual_dir(turf/A, turf/B)
+	// todo: impl
 	return get_dir(A, B)
 	// A = get_turf(A)
 	// B = get_turf(B)
 	// if(A.z == B.z)
 	// 	return get_dir(A, B)
-	// if(!is_level_virtualized(A) || !is_level_virtualized(B))
+	// if(!level_virtualization_check(A) || !level_virtualization_check(B))
 	// 	// last ditch - check stacks
 	// 	var/list/stack = z_stack_lookup
 	// 	var/pos = stack.Find(B.z)
