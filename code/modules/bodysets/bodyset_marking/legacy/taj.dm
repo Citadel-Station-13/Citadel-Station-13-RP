@@ -1,8 +1,8 @@
-/datum/bodyset_marking/legacy/taj
-	abstract_type = /datum/bodyset_marking/legacy/taj
+/datum/prototype/bodyset_marking/legacy/taj
+	abstract_type = /datum/prototype/bodyset_marking/legacy/taj
 	icon = "icons/mob/sprite_accessories/markings/taj.dmi"
 
-/datum/bodyset_marking/legacy/taj/taj_paw_socks
+/datum/prototype/bodyset_marking/legacy/taj/taj_paw_socks
 	name = "Socks Coloration (Taj)"
 	id = "marking_tajaran_pawsocks"
 	icon_state = "taj_pawsocks"
@@ -17,10 +17,10 @@
 		BP_R_HAND,
 	)
 	bodyset_restricted = list(
-		/datum/bodyset/organic/tajaran,
+		/datum/prototype/bodyset/organic/tajaran,
 	)
 
-/datum/bodyset_marking/legacy/taj/paw_socks
+/datum/prototype/bodyset_marking/legacy/taj/paw_socks
 	name = "Socks Coloration (Generic)"
 	id = "marking_pawsocks"
 	icon_state = "pawsocks"
@@ -35,10 +35,10 @@
 		BP_R_HAND,
 	)
 	bodyset_restricted = list(
-		/datum/bodyset/organic/tajaran, /datum/bodyset/organic/unathi,
+		/datum/prototype/bodyset/organic/tajaran, /datum/prototype/bodyset/organic/unathi,
 	)
 
-/datum/bodyset_marking/legacy/taj/paw_socks_belly
+/datum/prototype/bodyset_marking/legacy/taj/paw_socks_belly
 	name = "Socks,Belly Coloration (Generic)"
 	id = "marking_pawsocks_belly"
 	icon_state = "pawsocksbelly"
@@ -55,11 +55,11 @@
 		BP_TORSO,
 	)
 	bodyset_restricted = list(
-		/datum/bodyset/organic/tajaran,
-		/datum/bodyset/organic/unathi,
+		/datum/prototype/bodyset/organic/tajaran,
+		/datum/prototype/bodyset/organic/unathi,
 	)
 
-/datum/bodyset_marking/legacy/taj/belly_hands_feet
+/datum/prototype/bodyset_marking/legacy/taj/belly_hands_feet
 	name = "Hands,Feet,Belly Color (Minor)"
 	id = "marking_tajaran_bhf_min"
 	icon_state = "bellyhandsfeetsmall"
@@ -76,11 +76,11 @@
 		BP_TORSO,
 	)
 	bodyset_restricted = list(
-		/datum/bodyset/organic/tajaran,
-		/datum/bodyset/organic/unathi,
+		/datum/prototype/bodyset/organic/tajaran,
+		/datum/prototype/bodyset/organic/unathi,
 	)
 
-/datum/bodyset_marking/legacy/taj/hands_feet_belly_full
+/datum/prototype/bodyset_marking/legacy/taj/hands_feet_belly_full
 	name = "Hands,Feet,Belly Color (Major)"
 	id = "marking_tajaran_bhf_maj"
 	icon_state = "bellyhandsfeet"
@@ -97,11 +97,11 @@
 		BP_TORSO,
 	)
 	bodyset_restricted = list(
-		/datum/bodyset/organic/tajaran,
-		/datum/bodyset/organic/unathi,
+		/datum/prototype/bodyset/organic/tajaran,
+		/datum/prototype/bodyset/organic/unathi,
 	)
 
-/datum/bodyset_marking/legacy/taj/hands_feet_belly_full_female
+/datum/prototype/bodyset_marking/legacy/taj/hands_feet_belly_full_female
 	name = "Hands,Feet,Belly Color (Major, Female)"
 	id = "marking_tajaran_bhf_majf"
 	icon_state = "bellyhandsfeet_female"
@@ -118,10 +118,10 @@
 		BP_TORSO,
 	)
 	bodyset_restricted = list(
-		/datum/bodyset/organic/tajaran,
+		/datum/prototype/bodyset/organic/tajaran,
 	)
 
-/datum/bodyset_marking/legacy/taj/patches
+/datum/prototype/bodyset_marking/legacy/taj/patches
 	name = "Color Patches"
 	id = "marking_tajaran_patches"
 	icon_state = "patches"
@@ -138,10 +138,10 @@
 		BP_GROIN,
 	)
 	bodyset_restricted = list(
-		/datum/bodyset/organic/tajaran,
+		/datum/prototype/bodyset/organic/tajaran,
 	)
 
-/datum/bodyset_marking/legacy/taj/patchesface
+/datum/prototype/bodyset_marking/legacy/taj/patchesface
 	name = "Color Patches (Face)"
 	id = "marking_tajaran_patches_face"
 	icon_state = "patchesface"
@@ -149,10 +149,10 @@
 		BP_HEAD,
 	)
 	bodyset_restricted = list(
-		/datum/bodyset/organic/tajaran,
+		/datum/prototype/bodyset/organic/tajaran,
 	)
 
-/datum/bodyset_marking/legacy/taj/tiger_stripes
+/datum/prototype/bodyset_marking/legacy/taj/tiger_stripes
 	name = "Tiger Stripes"
 	id = "marking_tajaran_tiger"
 	icon_state = "tiger"
@@ -167,11 +167,11 @@
 		BP_GROIN,
 	)
 	bodyset_restricted = list(
-		/datum/bodyset/organic/tajaran,
+		/datum/prototype/bodyset/organic/tajaran,
 	)
 
 //Taj specific stuff
-/datum/bodyset_marking/legacy/taj/taj_belly
+/datum/prototype/bodyset_marking/legacy/taj/taj_belly
 	name = "Belly Fur (Taj)"
 	id = "marking_tajaran_belly"
 	icon_state = "taj_belly"
@@ -179,10 +179,10 @@
 		BP_TORSO,
 	)
 	bodyset_restricted = list(
-		/datum/bodyset/organic/tajaran,
+		/datum/prototype/bodyset/organic/tajaran,
 	)
 
-/datum/bodyset_marking/legacy/taj/taj_bellyfull
+/datum/prototype/bodyset_marking/legacy/taj/taj_bellyfull
 	name = "Belly Fur Wide (Taj)"
 	id = "marking_tajaran_belly_wide"
 	icon_state = "taj_bellyfull"
@@ -190,10 +190,10 @@
 		BP_TORSO,
 	)
 	bodyset_restricted = list(
-		/datum/bodyset/organic/tajaran,
+		/datum/prototype/bodyset/organic/tajaran,
 	)
 
-/datum/bodyset_marking/legacy/taj/taj_earsout
+/datum/prototype/bodyset_marking/legacy/taj/taj_earsout
 	name = "Outer Ear (Taj)"
 	id = "marking_tajaran_ears_out"
 	icon_state = "taj_earsout"
@@ -201,10 +201,10 @@
 		BP_HEAD,
 	)
 	bodyset_restricted = list(
-		/datum/bodyset/organic/tajaran,
+		/datum/prototype/bodyset/organic/tajaran,
 	)
 
-/datum/bodyset_marking/legacy/taj/taj_earsin
+/datum/prototype/bodyset_marking/legacy/taj/taj_earsin
 	name = "Inner Ear (Taj)"
 	id = "marking_tajaran_ears_in"
 	icon_state = "taj_earsin"
@@ -212,10 +212,10 @@
 		BP_HEAD,
 	)
 	bodyset_restricted = list(
-		/datum/bodyset/organic/tajaran,
+		/datum/prototype/bodyset/organic/tajaran,
 	)
 
-/datum/bodyset_marking/legacy/taj/taj_nose
+/datum/prototype/bodyset_marking/legacy/taj/taj_nose
 	name = "Nose Color (Taj)"
 	id = "marking_tajaran_nose"
 	icon_state = "taj_nose"
@@ -223,10 +223,10 @@
 		BP_HEAD,
 	)
 	bodyset_restricted = list(
-		/datum/bodyset/organic/tajaran,
+		/datum/prototype/bodyset/organic/tajaran,
 	)
 
-/datum/bodyset_marking/legacy/taj/taj_crest
+/datum/prototype/bodyset_marking/legacy/taj/taj_crest
 	name = "Chest Fur Crest (Taj)"
 	id = "marking_tajaran_crest"
 	icon_state = "taj_crest"
@@ -234,10 +234,10 @@
 		BP_TORSO,
 	)
 	bodyset_restricted = list(
-		/datum/bodyset/organic/tajaran,
+		/datum/prototype/bodyset/organic/tajaran,
 	)
 
-/datum/bodyset_marking/legacy/taj/taj_muzzle
+/datum/prototype/bodyset_marking/legacy/taj/taj_muzzle
 	name = "Muzzle Color (Taj)"
 	id = "marking_tajaran_muzzle"
 	icon_state = "taj_muzzle"
@@ -245,10 +245,10 @@
 		BP_HEAD,
 	)
 	bodyset_restricted = list(
-		/datum/bodyset/organic/tajaran,
+		/datum/prototype/bodyset/organic/tajaran,
 	)
 
-/datum/bodyset_marking/legacy/taj/taj_face
+/datum/prototype/bodyset_marking/legacy/taj/taj_face
 	name = "Cheeks Color (Taj)"
 	id = "marking_tajaran_cheeks"
 	icon_state = "taj_face"
@@ -256,10 +256,10 @@
 		BP_HEAD,
 	)
 	bodyset_restricted = list(
-		/datum/bodyset/organic/tajaran,
+		/datum/prototype/bodyset/organic/tajaran,
 	)
 
-/datum/bodyset_marking/legacy/taj/taj_all
+/datum/prototype/bodyset_marking/legacy/taj/taj_all
 	name = "All Taj Head (Taj)"
 	id = "marking_tajaran_head_all"
 	icon_state = "taj_all"
@@ -267,10 +267,10 @@
 		BP_HEAD,
 	)
 	bodyset_restricted = list(
-		/datum/bodyset/organic/tajaran,
+		/datum/prototype/bodyset/organic/tajaran,
 	)
 
-/datum/bodyset_marking/legacy/taj/taj_nose_alt
+/datum/prototype/bodyset_marking/legacy/taj/taj_nose_alt
 	name = "Nose Color, alt. (Taj)"
 	id = "marking_tajaran_nose_alt"
 	icon_state = "taj_nosealt"
@@ -279,7 +279,7 @@
 		BP_HEAD,
 	)
 
-/datum/bodyset_marking/legacy/taj/tigerface
+/datum/prototype/bodyset_marking/legacy/taj/tigerface
 	name = "Tiger Stripes (Head, Major)"
 	id = "marking_tajaran_head_tiger"
 	icon_state = "tigerface"
@@ -287,5 +287,5 @@
 		BP_HEAD,
 	)
 	bodyset_restricted = list(
-		/datum/bodyset/organic/tajaran,
+		/datum/prototype/bodyset/organic/tajaran,
 	)

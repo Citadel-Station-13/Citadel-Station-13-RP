@@ -2,7 +2,7 @@
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
 /**
- * data on a single instance of a /datum/bodyset_marking
+ * data on a single instance of a /datum/prototype/bodyset_marking
  */
 /datum/bodyset_marking_descriptor
 	/// marking ID
@@ -12,7 +12,7 @@
 	/// emissive strength 0 to 100
 	var/emissive_strength = 0
 
-/datum/bodyset_marking_descriptor/New(datum/bodyset_marking/marking, color = "#ffffff", emissive_strength = 0)
+/datum/bodyset_marking_descriptor/New(datum/prototype/bodyset_marking/marking, color = "#ffffff", emissive_strength = 0)
 	src.id = marking.id
 	src.color = color
 	src.emissive_strength = emissive_strength

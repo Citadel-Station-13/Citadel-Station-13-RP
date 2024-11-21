@@ -1,7 +1,7 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
-/datum/bodyset/organic/unathi
+/datum/prototype/bodyset/organic/unathi
 	name = "Unathi"
 	id = "unathi"
 	base_id = "unathi"
@@ -36,7 +36,7 @@
 		},
 	)
 
-/datum/bodyset/organic/unathi/digitigrade
+/datum/prototype/bodyset/organic/unathi/digitigrade
 	name = "Unathi (Digitigrade)"
 	id = "unathi-digitigrade"
 
@@ -69,7 +69,7 @@
 		},
 	)
 
-/datum/sprite_accessory/tail/bodyset/unathi
+/datum/prototype/sprite_accessory/tail/bodyset/unathi
 	name = "unathi tail"
 	icon = 'icons/mob/bodysets/organic/unathi/sprite_accessories.dmi'
 	icon_state = "tail"

@@ -5,16 +5,16 @@
 	name_plural = "Adherents"
 	default_bodytype = BODYTYPE_ADHERENT
 
-	bodyset = /datum/bodyset/special/adherent/default
+	bodyset = /datum/prototype/bodyset/special/adherent/default
 	bodysets = list(
-		/datum/bodyset/special/adherent/default,
-		/datum/bodyset/special/adherent/red,
-		/datum/bodyset/special/adherent/blue,
-		/datum/bodyset/special/adherent/black,
-		/datum/bodyset/special/adherent/green,
-		/datum/bodyset/special/adherent/purple,
-		/datum/bodyset/special/adherent/yellow,
-		/datum/bodyset/special/adherent/white,
+		/datum/prototype/bodyset/special/adherent/default,
+		/datum/prototype/bodyset/special/adherent/red,
+		/datum/prototype/bodyset/special/adherent/blue,
+		/datum/prototype/bodyset/special/adherent/black,
+		/datum/prototype/bodyset/special/adherent/green,
+		/datum/prototype/bodyset/special/adherent/purple,
+		/datum/prototype/bodyset/special/adherent/yellow,
+		/datum/prototype/bodyset/special/adherent/white,
 	)
 
 	blurb = "The Vigil is a relatively loose association of machine-servitors, Adherents, \

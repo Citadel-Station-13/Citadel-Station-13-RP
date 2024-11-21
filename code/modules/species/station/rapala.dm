@@ -4,11 +4,11 @@
 	name = SPECIES_RAPALA
 	name_plural = "Rapalans"
 
-	bodyset = /datum/bodyset/organic/rapala
+	bodyset = /datum/prototype/bodyset/organic/rapala
 
 
 	sprite_accessory_defaults = list(
-		SPRITE_ACCESSORY_SLOT_TAIL = /datum/sprite_accessory/tail/bodyset/rapala,
+		SPRITE_ACCESSORY_SLOT_TAIL = /datum/prototype/sprite_accessory/tail/bodyset/rapala,
 	)
 
 	max_additional_languages = 3

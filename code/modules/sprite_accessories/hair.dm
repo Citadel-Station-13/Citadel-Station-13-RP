@@ -45,8 +45,8 @@ GLOBAL_LIST_EMPTY(hair_gradient_icon_cache)
 		GLOB.hair_gradient_icon_cache[cache_key] = cutting
 	return GLOB.hair_gradient_icon_cache[cache_key]
 
-/datum/sprite_accessory/hair
-	abstract_type = /datum/sprite_accessory/hair
+/datum/prototype/sprite_accessory/hair
+	abstract_type = /datum/prototype/sprite_accessory/hair
 	icon = 'icons/mob/human_face_m.dmi'	  // default icon for all hairs
 	//Enhanced colours and hair for all
 	legacy_use_additive_color_matrix = FALSE
@@ -59,12 +59,12 @@ GLOBAL_LIST_EMPTY(hair_gradient_icon_cache)
 	/// added to allow legacy hairs to work.
 	var/append_s_at_end = FALSE
 
-/datum/sprite_accessory/hair/New()
+/datum/prototype/sprite_accessory/hair/New()
 	..()
 	if(append_s_at_end)
 		icon_state = "[icon_state]_s"
 
-/datum/sprite_accessory/hair/render(mob/for_whom, list/colors, layer_front, layer_behind, layer_side, with_base_state, with_variation, flattened)
+/datum/prototype/sprite_accessory/hair/render(mob/for_whom, list/colors, layer_front, layer_behind, layer_side, with_base_state, with_variation, flattened)
 	var/list/image/layers = ..()
 
 	if(flattened)
@@ -96,7 +96,7 @@ GLOBAL_LIST_EMPTY(hair_gradient_icon_cache)
 
 	return layers
 
-/datum/sprite_accessory/hair/flat_cache_keys(mob/for_whom, list/colors, layer_front, layer_behind, layer_side, with_base_state = icon_state, with_variation, flattened)
+/datum/prototype/sprite_accessory/hair/flat_cache_keys(mob/for_whom, list/colors, layer_front, layer_behind, layer_side, with_base_state = icon_state, with_variation, flattened)
 	. = ..()
 	if(!ishuman(for_whom))
 		return
@@ -104,6 +104,6 @@ GLOBAL_LIST_EMPTY(hair_gradient_icon_cache)
 	. += casted_human.grad_style
 	. += rgb(casted_human.r_grad, casted_human.g_grad, casted_human.b_grad)
 
-/datum/sprite_accessory/hair/legacy
-	abstract_type = /datum/sprite_accessory/hair/legacy
+/datum/prototype/sprite_accessory/hair/legacy
+	abstract_type = /datum/prototype/sprite_accessory/hair/legacy
 	append_s_at_end = TRUE

@@ -1,7 +1,7 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
-/datum/bodyset/organic/apidean
+/datum/prototype/bodyset/organic/apidean
 	id = "apidean"
 	name = "Apidean"
 	overlays = list(
@@ -22,7 +22,7 @@
 	damage_overlay_burn_stages = 3
 	damage_overlay_icon = 'icons/mob/bodysets/organic/human/damage.dmi'
 
-/datum/sprite_accessory/tail/bodyset/apidean
+/datum/prototype/sprite_accessory/tail/bodyset/apidean
 	name = "apidean tail"
 	id = "tail-bodyset-apidean"
 	icon = 'icons/mob/bodysets/organic/apidean/sprite_accessories.dmi'

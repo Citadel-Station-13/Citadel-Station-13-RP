@@ -1,7 +1,7 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
-/datum/bodyset/organic/tajaran
+/datum/prototype/bodyset/organic/tajaran
 	name = "Tajaran"
 	id = "tajaran"
 	group_id = "human"
@@ -31,7 +31,7 @@
 		BODYSET_OVERLAY_HUSKED = /datum/bodyset_overlay/husk/human,
 	)
 
-/datum/sprite_accessory/tail/bodyset/tajaran
+/datum/prototype/sprite_accessory/tail/bodyset/tajaran
 	name = "tajaran tail"
 	icon = 'icons/mob/bodysets/organic/tajaran/sprite_accessories.dmi'
 	icon_state = "tail"

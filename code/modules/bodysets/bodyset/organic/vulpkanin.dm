@@ -1,7 +1,7 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
-/datum/bodyset/organic/vulpkanin
+/datum/prototype/bodyset/organic/vulpkanin
 	name = "Vulpkanin"
 	id = "vulpkanin"
 	group_id = "human"
@@ -24,7 +24,7 @@
 		BODYSET_OVERLAY_HUSKED = /datum/bodyset_overlay/husk/human,
 	)
 
-/datum/sprite_accessory/tail/bodyset/vulpkanin
+/datum/prototype/sprite_accessory/tail/bodyset/vulpkanin
 	name = "vulpkanin tail"
 	icon = 'icons/mob/bodysets/organic/vulpkanin/sprite_accessories.dmi'
 	icon_state = "tail"

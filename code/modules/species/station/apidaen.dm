@@ -5,11 +5,11 @@
 	name = SPECIES_APIDAEN
 	name_plural = SPECIES_APIDAEN
 
-	bodyset = /datum/bodyset/organic/apidean
+	bodyset = /datum/prototype/bodyset/organic/apidean
 
 
 	sprite_accessory_defaults = list(
-		SPRITE_ACCESSORY_SLOT_TAIL = /datum/sprite_accessory/tail/bodyset/apidean,
+		SPRITE_ACCESSORY_SLOT_TAIL = /datum/prototype/sprite_accessory/tail/bodyset/apidean,
 	)
 
 	vision_innate = /datum/vision/baseline/species_tier_2

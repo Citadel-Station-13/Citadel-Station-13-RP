@@ -1,7 +1,7 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
-/datum/bodyset/synthetic/oss_vulpkanin
+/datum/prototype/bodyset/synthetic/oss_vulpkanin
 	id = "synth-oss-vulpkanin"
 	name = "OSS - Vulpkanin"
 	icon = 'icons/mob/bodysets/synthetic/oss_vulpkanin/body.dmi'
@@ -23,10 +23,10 @@
 		BP_TORSO,
 	)
 	sprite_accessory_defaults = list(
-		SPRITE_ACCESSORY_SLOT_TAIL = /datum/sprite_accessory/tail/bodyset/oss_vulpkanin,
+		SPRITE_ACCESSORY_SLOT_TAIL = /datum/prototype/sprite_accessory/tail/bodyset/oss_vulpkanin,
 	)
 
-/datum/sprite_accessory/tail/bodyset/oss_vulpkanin
+/datum/prototype/sprite_accessory/tail/bodyset/oss_vulpkanin
 	name = "OSS synthetic vulpkanin tail"
 	icon = 'icons/mob/bodysets/synthetic/oss_vulpkanin/sprite_accessories.dmi'
 	icon_state = "tail"

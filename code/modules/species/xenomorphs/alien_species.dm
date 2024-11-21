@@ -180,7 +180,7 @@
 	slowdown = 1
 
 	sprite_accessory_defaults = list(
-		SPRITE_ACCESSORY_SLOT_TAIL = /datum/sprite_accessory/tail/bodyset/xenomorph/drone,
+		SPRITE_ACCESSORY_SLOT_TAIL = /datum/prototype/sprite_accessory/tail/bodyset/xenomorph/drone,
 	)
 
 	icobase = 'icons/mob/species/xenomorph/drone.dmi'
@@ -222,7 +222,7 @@
 	total_health = 150
 
 	sprite_accessory_defaults = list(
-		SPRITE_ACCESSORY_SLOT_TAIL = /datum/sprite_accessory/tail/bodyset/xenomorph/hunter,
+		SPRITE_ACCESSORY_SLOT_TAIL = /datum/prototype/sprite_accessory/tail/bodyset/xenomorph/hunter,
 	)
 
 	icobase = 'icons/mob/species/xenomorph/hunter.dmi'
@@ -256,7 +256,7 @@
 	total_health = 200
 
 	sprite_accessory_defaults = list(
-		SPRITE_ACCESSORY_SLOT_TAIL = /datum/sprite_accessory/tail/bodyset/xenomorph/sentinel,
+		SPRITE_ACCESSORY_SLOT_TAIL = /datum/prototype/sprite_accessory/tail/bodyset/xenomorph/sentinel,
 	)
 
 	icobase = 'icons/mob/species/xenomorph/sentinel.dmi'
@@ -293,7 +293,7 @@
 	slowdown = 4
 
 	sprite_accessory_defaults = list(
-		SPRITE_ACCESSORY_SLOT_TAIL = /datum/sprite_accessory/tail/bodyset/xenomorph/queen,
+		SPRITE_ACCESSORY_SLOT_TAIL = /datum/prototype/sprite_accessory/tail/bodyset/xenomorph/queen,
 	)
 
 	icobase = 'icons/mob/species/xenomorph/queen.dmi'

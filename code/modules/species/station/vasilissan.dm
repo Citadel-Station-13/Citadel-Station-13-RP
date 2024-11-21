@@ -4,9 +4,9 @@
 	name = SPECIES_VASILISSAN
 	name_plural = "Vasilissans"
 
-	bodyset = /datum/bodyset/organic/vasilissan
+	bodyset = /datum/prototype/bodyset/organic/vasilissan
 	sprite_accessory_defaults = list(
-		SPRITE_ACCESSORY_SLOT_TAIL = /datum/sprite_accessory/tail/bodyset/vasilissan,
+		SPRITE_ACCESSORY_SLOT_TAIL = /datum/prototype/sprite_accessory/tail/bodyset/vasilissan,
 	)
 
 	vision_innate = /datum/vision/baseline/species_tier_2

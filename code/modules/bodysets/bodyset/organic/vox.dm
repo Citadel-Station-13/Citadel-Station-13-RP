@@ -1,7 +1,7 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
-/datum/bodyset/organic/vox
+/datum/prototype/bodyset/organic/vox
 	name = "Vox"
 	id = "vox"
 	group_id = "vox"

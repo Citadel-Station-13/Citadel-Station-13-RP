@@ -11,9 +11,9 @@
 	default_bodytype = BODYTYPE_TAJARAN
 	mob_physiology_modifier = /datum/physiology_modifier/intrinsic/species/tajaran
 
-	bodyset = /datum/bodyset/organic/tajaran
+	bodyset = /datum/prototype/bodyset/organic/tajaran
 	sprite_accessory_defaults = list(
-		SPRITE_ACCESSORY_SLOT_TAIL = /datum/sprite_accessory/tail/bodyset/tajaran,
+		SPRITE_ACCESSORY_SLOT_TAIL = /datum/prototype/sprite_accessory/tail/bodyset/tajaran,
 	)
 
 	max_additional_languages = 3

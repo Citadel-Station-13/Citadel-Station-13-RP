@@ -3,26 +3,26 @@
 	desc = "Mustard-yellow industrial limb. Heavyset and thick."
 	unavailable_to_build = TRUE
 	monitor_styles = standard_monitor_styles
-	bodyset = /datum/bodyset/synthetic/antares
+	bodyset = /datum/prototype/bodyset/synthetic/antares
 
 /datum/robolimb/bishop
 	company = "Bishop"
 	desc = "This limb has a white polymer casing with blue holo-displays."
 	unavailable_to_build = TRUE
-	bodyset = /datum/bodyset/synthetic/bishop
+	bodyset = /datum/prototype/bodyset/synthetic/bishop
 
 /datum/robolimb/bishop_alt1
 	company = "Bishop - Glyph"
 	desc = "This limb has a white polymer casing with blue holo-displays."
 	unavailable_to_build = TRUE
 	parts = list(BP_HEAD)
-	bodyset = /datum/bodyset/synthetic/bishop/alt_2
+	bodyset = /datum/prototype/bodyset/synthetic/bishop/alt_2
 
 /datum/robolimb/bishop_alt2
 	company = "Bishop - Rook"
 	desc = "This limb has a solid plastic casing with blue lights along it."
 	unavailable_to_build = TRUE
-	bodyset = /datum/bodyset/synthetic/bishop/alt_1
+	bodyset = /datum/prototype/bodyset/synthetic/bishop/alt_1
 
 /datum/robolimb/bishop_monitor
 	company = "Bishop Monitor"
@@ -30,7 +30,7 @@
 	unavailable_to_build = TRUE
 	parts = list(BP_HEAD)
 	monitor_styles = standard_monitor_styles
-	bodyset = /datum/bodyset/synthetic/bishop/alt_3
+	bodyset = /datum/prototype/bodyset/synthetic/bishop/alt_3
 
 // todo: /cortex/brain_case
 /datum/robolimb/braincase
@@ -38,7 +38,7 @@
 	desc = "A solid, transparent case to hold your important bits in with style."
 	unavailable_to_build = TRUE
 	parts = list(BP_HEAD)
-	bodyset = /datum/bodyset/synthetic/cortex/brain
+	bodyset = /datum/prototype/bodyset/synthetic/cortex/brain
 
 // todo: /cortex/posi_case
 /datum/robolimb/posicase
@@ -46,13 +46,13 @@
 	desc = "A solid, transparent case to hold your important bits in with style."
 	unavailable_to_build = TRUE
 	parts = list(BP_HEAD)
-	bodyset = /datum/bodyset/synthetic/cortex/posi
+	bodyset = /datum/prototype/bodyset/synthetic/cortex/posi
 
 /datum/robolimb/nanotrasen
 	company = "Nanotrasen"
 	desc = "A simple but efficient robotic limb, created by Nanotrasen."
 	species_alternates = list(SPECIES_TAJ = "Nanotrasen - Tajaran", SPECIES_UNATHI = "Nanotrasen - Unathi")
-	bodyset = /datum/bodyset/synthetic/nanotrasen
+	bodyset = /datum/prototype/bodyset/synthetic/nanotrasen
 
 // todo: oss_vulpkanin
 /datum/robolimb/dsi_vulpkanin
@@ -65,12 +65,12 @@
 	suggested_species = SPECIES_VULPKANIN
 	speech_bubble_appearance = "normal"
 	modular_bodyparts = MODULAR_BODYPART_INVALID
-	bodyset = /datum/bodyset/synthetic/oss_vulpkanin
+	bodyset = /datum/prototype/bodyset/synthetic/oss_vulpkanin
 
 /datum/robolimb/insect
 	company = "Psyche - Insect"
 	desc = "This high quality limb is nearly indistinguishable from an organic one."
-	bodyset = /datum/bodyset/organic/insect
+	bodyset = /datum/prototype/bodyset/organic/insect
 	blood_color = "#808000"
 	lifelike = 1
 	skin_tone = TRUE
@@ -80,7 +80,7 @@
 /datum/robolimb/moth
 	company = "Psyche - Moth"
 	desc = "This high quality limb is nearly indistinguishable from an organic one."
-	bodyset = /datum/bodyset/organic/moth
+	bodyset = /datum/prototype/bodyset/organic/moth
 	blood_color = "#808000"
 	lifelike = 1
 	skin_tone = TRUE
@@ -90,7 +90,7 @@
 /datum/robolimb/veymed
 	company = "Vey-Med"
 	desc = "This high quality limb is nearly indistinguishable from an organic one."
-	bodyset = /datum/bodyset/synthetic/veymed
+	bodyset = /datum/prototype/bodyset/synthetic/veymed
 	unavailable_to_build = TRUE
 	lifelike = 1
 	skin_tone = 1
@@ -103,7 +103,7 @@
 /datum/robolimb/veymed/skrell
 	company = "Vey-Med - Skrell"
 	species_cannot_use = list(SPECIES_TESHARI, SPECIES_PROMETHEAN, SPECIES_TAJ, SPECIES_HUMAN, SPECIES_VOX, SPECIES_HUMAN_VATBORN, SPECIES_UNATHI, SPECIES_DIONA, SPECIES_ZADDAT)
-	bodyset = /datum/bodyset/synthetic/veymed/skrell
+	bodyset = /datum/prototype/bodyset/synthetic/veymed/skrell
 	blood_color = "#4451cf"
 	speech_bubble_appearance = "normal"
 
@@ -425,7 +425,7 @@
 	desc = "This limb has a slight salvaged handicraft vibe to it. The CE-marking on it is definitely not the standardized one, it looks more like a hand-written sharpie monogram."
 	icon = 'icons/mob/cyberlimbs/_fluff_vr/rahboop.dmi'
 	blood_color = "#5e280d"
-	legacy_includes_tail = /datum/sprite_accessory/tail/bodyset/eggnerd
+	legacy_includes_tail = /datum/prototype/sprite_accessory/tail/bodyset/eggnerd
 	unavailable_to_build = TRUE
 
 //Brass Variant of Eggnerd
@@ -461,7 +461,7 @@
 	desc = "A slightly more refined limb variant from Eggnerd Prototyping. Its got red plating instead of orange."
 	icon = 'icons/mob/cyberlimbs/rahboopred/rahboopred.dmi'
 	blood_color = "#5e280d"
-	legacy_includes_tail = /datum/sprite_accessory/tail/bodyset/eggnerd_red
+	legacy_includes_tail = /datum/prototype/sprite_accessory/tail/bodyset/eggnerd_red
 	unavailable_to_build = TRUE
 
 
@@ -473,7 +473,7 @@
 	icon = 'icons/mob/cyberlimbs/DSITajaran/dsi_tajaran.dmi'
 	blood_color = "#ffe2ff"
 	lifelike = 1
-	legacy_includes_tail = /datum/sprite_accessory/tail/bodyset/oss_tajaran
+	legacy_includes_tail = /datum/prototype/sprite_accessory/tail/bodyset/oss_tajaran
 	unavailable_to_build = TRUE
 	skin_tone = 1
 	suggested_species = SPECIES_TAJ
@@ -487,7 +487,7 @@
 	blood_color = "#ffe2ff"
 	lifelike = 1
 	unavailable_to_build = TRUE
-	legacy_includes_tail = /datum/sprite_accessory/tail/bodyset/oss_lizard
+	legacy_includes_tail = /datum/prototype/sprite_accessory/tail/bodyset/oss_lizard
 	skin_tone = 1
 	suggested_species = SPECIES_UNATHI
 	speech_bubble_appearance = "normal"
@@ -500,7 +500,7 @@
 	blood_color = "#ffe2ff"
 	lifelike = 1
 	unavailable_to_build = TRUE
-	legacy_includes_tail = /datum/sprite_accessory/tail/bodyset/oss_naramadi
+	legacy_includes_tail = /datum/prototype/sprite_accessory/tail/bodyset/oss_naramadi
 	skin_tone = 1
 	suggested_species = SPECIES_SERGAL
 	speech_bubble_appearance = "normal"
@@ -513,7 +513,7 @@
 	blood_color = "#ffe2ff"
 	lifelike = 1
 	unavailable_to_build = TRUE
-	legacy_includes_tail = /datum/sprite_accessory/tail/bodyset/oss_nevrean
+	legacy_includes_tail = /datum/prototype/sprite_accessory/tail/bodyset/oss_nevrean
 	skin_tone = 1
 	suggested_species = SPECIES_NEVREAN
 	speech_bubble_appearance = "normal"
@@ -525,7 +525,7 @@
 	icon = 'icons/mob/cyberlimbs/DSIAkula/dsi_akula.dmi'
 	blood_color = "#ffe2ff"
 	lifelike = 1
-	legacy_includes_tail = /datum/sprite_accessory/tail/bodyset/oss_akula
+	legacy_includes_tail = /datum/prototype/sprite_accessory/tail/bodyset/oss_akula
 	unavailable_to_build = TRUE
 	skin_tone = 1
 	suggested_species = SPECIES_AKULA
@@ -539,7 +539,7 @@
 	blood_color = "#ffe2ff"
 	lifelike = 1
 	unavailable_to_build = TRUE
-	legacy_includes_tail = /datum/sprite_accessory/tail/bodyset/oss_spider
+	legacy_includes_tail = /datum/prototype/sprite_accessory/tail/bodyset/oss_spider
 	skin_tone = 1
 	suggested_species = SPECIES_VASILISSAN
 	speech_bubble_appearance = "normal"

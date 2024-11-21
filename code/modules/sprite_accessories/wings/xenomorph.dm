@@ -1,23 +1,23 @@
-/datum/sprite_accessory/wing/snag
+/datum/prototype/sprite_accessory/wing/snag
 	name = "xenomorph backplate"
 	id = "wing_xeno_backplate"
 	icon_state = "snag-backplate"
 
-/datum/sprite_accessory/wing/xeno_dorsal
+/datum/prototype/sprite_accessory/wing/xeno_dorsal
 	name = "Dorsal tubes"
 	id = "wing_dorsal_stand"
 	icon_state = "xenodorsal_standard"
 	do_colouration = 1
 	legacy_use_additive_color_matrix = FALSE
 
-/datum/sprite_accessory/wing/xeno_dorsal_royal
+/datum/prototype/sprite_accessory/wing/xeno_dorsal_royal
 	name = "Royal Dorsal tubes"
 	id = "wing_dorsal_royal"
 	icon_state = "xenodorsal_royal"
 	do_colouration = 1
 	legacy_use_additive_color_matrix = FALSE
 
-/datum/sprite_accessory/wing/xeno_dorsal_down
+/datum/prototype/sprite_accessory/wing/xeno_dorsal_down
 	name = "Downward Dorsal tubes"
 	id = "wing_dorsal_down"
 	icon_state = "xenodorsal_down"

@@ -5,9 +5,9 @@
 	name_plural = SPECIES_UNATHI_DIGI
 	default_bodytype = BODYTYPE_UNATHI_DIGI
 
-	bodyset = /datum/bodyset/organic/unathi/digitigrade
+	bodyset = /datum/prototype/bodyset/organic/unathi/digitigrade
 	sprite_accessory_defaults = list(
-		SPRITE_ACCESSORY_SLOT_TAIL = /datum/sprite_accessory/tail/bodyset/unathi,
+		SPRITE_ACCESSORY_SLOT_TAIL = /datum/prototype/sprite_accessory/tail/bodyset/unathi,
 	)
 
 	blurb = {"

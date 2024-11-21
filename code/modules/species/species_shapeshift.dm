@@ -83,7 +83,7 @@ var/list/wrapped_species_by_ref = list()
 	var/list/valid_facialhairstyles = list()
 	var/list/valid_gradstyles = GLOB.hair_gradients
 	for(var/hairstyle in GLOB.legacy_hair_lookup)
-		var/datum/sprite_accessory/S = GLOB.legacy_hair_lookup[hairstyle]
+		var/datum/prototype/sprite_accessory/S = GLOB.legacy_hair_lookup[hairstyle]
 		if(gender == MALE && S.random_generation_gender == FEMALE)
 			continue
 		if(gender == FEMALE && S.random_generation_gender == MALE)
@@ -92,7 +92,7 @@ var/list/wrapped_species_by_ref = list()
 			continue
 		valid_hairstyles += hairstyle
 	for(var/facialhairstyle in GLOB.legacy_facial_hair_lookup)
-		var/datum/sprite_accessory/S = GLOB.legacy_facial_hair_lookup[facialhairstyle]
+		var/datum/prototype/sprite_accessory/S = GLOB.legacy_facial_hair_lookup[facialhairstyle]
 		if(!isnull(S.random_generation_gender) && gender != S.random_generation_gender)
 			continue
 		if(S.apply_restrictions && !(species.get_bodytype_legacy(src) in S.species_allowed))
@@ -276,7 +276,7 @@ var/list/wrapped_species_by_ref = list()
 	// Construct the list of names allowed for this user.
 	var/list/pretty_ear_styles = list("Normal" = null)
 	for(var/path in GLOB.legacy_ears_lookup)
-		var/datum/sprite_accessory/ears/instance = GLOB.legacy_ears_lookup[path]
+		var/datum/prototype/sprite_accessory/ears/instance = GLOB.legacy_ears_lookup[path]
 		pretty_ear_styles[instance.name] = path
 
 	// Present choice to user
@@ -329,7 +329,7 @@ var/list/wrapped_species_by_ref = list()
 	// Construct the list of names allowed for this user.
 	var/list/pretty_horn_styles = list("Normal" = null)
 	for(var/path in GLOB.legacy_ears_lookup)
-		var/datum/sprite_accessory/ears/instance = GLOB.legacy_ears_lookup[path]
+		var/datum/prototype/sprite_accessory/ears/instance = GLOB.legacy_ears_lookup[path]
 		pretty_horn_styles[instance.name] = path
 
 	// Present choice to user
@@ -382,7 +382,7 @@ var/list/wrapped_species_by_ref = list()
 	// Construct the list of names allowed for this user.
 	var/list/pretty_tail_styles = list("Normal" = null)
 	for(var/path in GLOB.legacy_tail_lookup)
-		var/datum/sprite_accessory/tail/instance = GLOB.legacy_tail_lookup[path]
+		var/datum/prototype/sprite_accessory/tail/instance = GLOB.legacy_tail_lookup[path]
 		pretty_tail_styles[instance.name] = path
 
 	// Present choice to user
@@ -435,7 +435,7 @@ var/list/wrapped_species_by_ref = list()
 	// Construct the list of names allowed for this user.
 	var/list/pretty_wing_styles = list("None" = null)
 	for(var/path in GLOB.legacy_wing_lookup)
-		var/datum/sprite_accessory/wing/instance = GLOB.legacy_wing_lookup[path]
+		var/datum/prototype/sprite_accessory/wing/instance = GLOB.legacy_wing_lookup[path]
 		pretty_wing_styles[instance.name] = path
 
 	// Present choice to user

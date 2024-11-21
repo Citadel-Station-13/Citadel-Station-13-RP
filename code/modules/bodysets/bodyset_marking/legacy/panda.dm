@@ -1,15 +1,15 @@
-/datum/bodyset_marking/legacy/panda
-	abstract_type = /datum/bodyset_marking/legacy/panda
+/datum/prototype/bodyset_marking/legacy/panda
+	abstract_type = /datum/prototype/bodyset_marking/legacy/panda
 	icon = "icons/mob/sprite_accessories/markings/panda.dmi"
 
-/datum/bodyset_marking/legacy/panda/panda_eye_marks
+/datum/prototype/bodyset_marking/legacy/panda/panda_eye_marks
 	name = "Panda Eye Markings"
 	id = "marking_panda_eyes"
 	icon_state = "eyes_panda"
 	body_parts = list(BP_HEAD)
 	bodyset_group_restricted = "human"
 
-/datum/bodyset_marking/legacy/panda/panda_full
+/datum/prototype/bodyset_marking/legacy/panda/panda_full
 	name = "Panda Limbs"
 	id = "marking_panda_full"
 	icon_state = "panda"

@@ -1,7 +1,7 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
-/datum/bodyset/organic/naramadi
+/datum/prototype/bodyset/organic/naramadi
 	name = "Naramadi"
 	id = "naramadi"
 	group_id = "human"
@@ -31,7 +31,7 @@
 		BODYSET_OVERLAY_HUSKED = /datum/bodyset_overlay/husk/human,
 	)
 
-/datum/sprite_accessory/tail/bodyset/naramadi
+/datum/prototype/sprite_accessory/tail/bodyset/naramadi
 	name = "naramadi tail"
 	icon = 'icons/mob/bodysets/organic/naramadi/sprite_accessories.dmi'
 	icon_state = "tail"

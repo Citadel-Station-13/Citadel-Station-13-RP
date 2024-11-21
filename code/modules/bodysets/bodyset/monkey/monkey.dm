@@ -1,7 +1,7 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
-/datum/bodyset/monkey
+/datum/prototype/bodyset/monkey
 	group_id = "monkey"
 	base_id = "monkey"
 
@@ -18,59 +18,59 @@
 	body_parts = BP_ALL_STANDARD
 	gendered_parts = list()
 
-/datum/bodyset/monkey/farwa
+/datum/prototype/bodyset/monkey/farwa
 	name = "Monkey (Farwa)"
 	id = "farwa"
 	icon = 'icons/mob/bodysets/monkey/farwa/body.dmi'
 
-/datum/bodyset/monkey/naera
+/datum/prototype/bodyset/monkey/naera
 	name = "Monkey (Naera)"
 	id = "naera"
 	icon = 'icons/mob/bodysets/monkey/naera/body.dmi'
 
-/datum/bodyset/monkey/sergaling
+/datum/prototype/bodyset/monkey/sergaling
 	name = "Monkey (Sergaling)"
 	id = "sergaling"
 	icon = 'icons/mob/bodysets/monkey/sergaling/body.dmi'
 
-/datum/bodyset/monkey/sparra
+/datum/prototype/bodyset/monkey/sparra
 	name = "Monkey (Sparra)"
 	id = "sparra"
 	icon = 'icons/mob/bodysets/monkey/sparra/body.dmi'
 
-/datum/bodyset/monkey/sobaka
+/datum/prototype/bodyset/monkey/sobaka
 	name = "Monkey (Sobaka)"
 	id = "sobaka"
 	icon = 'icons/mob/bodysets/monkey/sobaka/body.dmi'
 
-/datum/bodyset/monkey/stok
+/datum/prototype/bodyset/monkey/stok
 	name = "Monkey (Stok)"
 	id = "stok"
 	icon = 'icons/mob/bodysets/monkey/stok/body.dmi'
 
-/datum/bodyset/monkey/wolpin
+/datum/prototype/bodyset/monkey/wolpin
 	name = "Monkey (Wolpin)"
 	id = "wolpin"
 	icon = 'icons/mob/bodysets/monkey/wolpin/body.dmi'
 
-/datum/sprite_accessory/tail/bodyset/monkey
-	abstract_type = /datum/sprite_accessory/tail/bodyset/monkey
+/datum/prototype/sprite_accessory/tail/bodyset/monkey
+	abstract_type = /datum/prototype/sprite_accessory/tail/bodyset/monkey
 
-/datum/sprite_accessory/tail/bodyset/monkey/chimp
+/datum/prototype/sprite_accessory/tail/bodyset/monkey/chimp
 	name = "chimpanzee tail"
 	id = "tail-bodyset-chimp"
 	icon = 'icons/mob/bodysets/organic/monkey/sprite_accessories.dmi'
 	icon_state = "tail-chimp"
 	do_colouration = FALSE
 
-/datum/sprite_accessory/tail/bodyset/monkey/stok
+/datum/prototype/sprite_accessory/tail/bodyset/monkey/stok
 	name = "stok tail"
 	id = "tail-bodyset-stok"
 	icon = 'icons/mob/bodysets/organic/monkey/sprite_accessories.dmi'
 	icon_state = "tail-stok"
 	do_colouration = FALSE
 
-/datum/sprite_accessory/tail/bodyset/monkey/farwa
+/datum/prototype/sprite_accessory/tail/bodyset/monkey/farwa
 	name = "farwa tail"
 	id = "tail-bodyset-farwa"
 	icon = 'icons/mob/bodysets/organic/monkey/sprite_accessories.dmi'

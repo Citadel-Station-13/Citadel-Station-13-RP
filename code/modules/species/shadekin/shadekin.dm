@@ -4,9 +4,9 @@
 	name_plural = SPECIES_SHADEKIN
 	category = SPECIES_CATEGORY_RESTRICTED
 
-	bodyset = /datum/bodyset/organic/shadekin
+	bodyset = /datum/prototype/bodyset/organic/shadekin
 	sprite_accessory_defaults = list(
-		SPRITE_ACCESSORY_SLOT_TAIL = /datum/sprite_accessory/tail/bodyset/shadekin,
+		SPRITE_ACCESSORY_SLOT_TAIL = /datum/prototype/sprite_accessory/tail/bodyset/shadekin,
 	)
 
 	blurb = {"

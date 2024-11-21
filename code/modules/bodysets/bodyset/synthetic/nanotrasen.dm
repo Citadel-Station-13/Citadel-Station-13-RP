@@ -1,7 +1,7 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
-/datum/bodyset/synthetic/nanotrasen
+/datum/prototype/bodyset/synthetic/nanotrasen
 	id = "synth-nanotrasen"
 	name = "Nanotrasen"
 	icon = 'icons/mob/bodysets/synthetic/nanotrasen/body.dmi'

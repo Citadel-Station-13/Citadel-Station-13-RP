@@ -71,9 +71,9 @@ var/const/cyberbeast_monitor_styles= "blank=cyber_blank;\
 				if(species_company in GLOB.all_robolimbs)
 					R.species_alternates[species] = GLOB.all_robolimbs[species_company]
 
-/datum/sprite_accessory/tail/legacy_robolimb
+/datum/prototype/sprite_accessory/tail/legacy_robolimb
 	do_colouration = FALSE
-	abstract_type = /datum/sprite_accessory/tail/legacy_robolimb
+	abstract_type = /datum/prototype/sprite_accessory/tail/legacy_robolimb
 
 /datum/robolimb
 	/// Shown when selecting the limb.
@@ -81,7 +81,7 @@ var/const/cyberbeast_monitor_styles= "blank=cyber_blank;\
 	/// Seen when examining a limb.
 	var/desc = "A generic unbranded robotic prosthesis."
 	/// bodyset to use
-	var/datum/bodyset/bodyset
+	var/datum/prototype/bodyset/bodyset
 
 	/// Where it draws the monitor icon from.
 	var/monitor_icon = "icons/mob/monitor_icons.dmi"
@@ -123,17 +123,17 @@ var/const/cyberbeast_monitor_styles= "blank=cyber_blank;\
 	var/list/whitelisted_to
 
 	/// typepath or id of sprite accessory to default for, for tail
-	var/datum/sprite_accessory/legacy_includes_tail
+	var/datum/prototype/sprite_accessory/legacy_includes_tail
 
 /datum/robolimb/New()
 	if(ispath(legacy_includes_tail))
-		var/datum/sprite_accessory/casted = legacy_includes_tail
+		var/datum/prototype/sprite_accessory/casted = legacy_includes_tail
 		legacy_includes_tail = initial(casted.id)
 	if(istext(legacy_includes_tail))
 		legacy_includes_tail = GLOB.sprite_accessory_tails[legacy_includes_tail]
 	if(!istype(bodyset) && bodyset)
-		var/datum/bodyset/casted = bodyset
-		if(ispath(casted, /datum/bodyset))
+		var/datum/prototype/bodyset/casted = bodyset
+		if(ispath(casted, /datum/prototype/bodyset))
 			bodyset = new casted
 		else
 			bodyset = GLOB.bodyset_lookup[casted]

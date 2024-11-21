@@ -4,7 +4,7 @@
 	name = SPECIES_HUMAN_GRAV
 	name_plural = "grav-adapted Humans"
 
-	bodyset = /datum/bodyset/organic/human/gravworlder
+	bodyset = /datum/prototype/bodyset/organic/human/gravworlder
 
 	blurb = {"
 	Heavier and stronger than a baseline human, gravity-adapted people have thick radiation-resistant
@@ -55,7 +55,7 @@
 	name = SPECIES_HUMAN_SPACER
 	name_plural = "space-adapted Humans"
 
-	bodyset = /datum/bodyset/organic/human/spacer
+	bodyset = /datum/prototype/bodyset/organic/human/spacer
 
 	blurb = {"
 	Lithe and frail, these sickly folk were engineered for work in environments that lack both light and
@@ -102,7 +102,7 @@
 	name = SPECIES_HUMAN_VATBORN
 	name_plural = SPECIES_HUMAN_VATBORN
 
-	bodyset = /datum/bodyset/organic/human/vatborn
+	bodyset = /datum/prototype/bodyset/organic/human/vatborn
 
 	blurb = {"
 	With cloning on the forefront of human scientific advancement, cheap mass production of bodies is

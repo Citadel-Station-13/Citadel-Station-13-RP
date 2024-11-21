@@ -1,7 +1,7 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
-/datum/bodyset/organic/vasilissan
+/datum/prototype/bodyset/organic/vasilissan
 	name = "Vasilissan"
 	id = "vasilissan"
 	group_id = "human"
@@ -26,7 +26,7 @@
 		BODYSET_OVERLAY_HUSKED = /datum/bodyset_overlay/husk/human,
 	)
 
-/datum/sprite_accessory/tail/bodyset/vasilissan
+/datum/prototype/sprite_accessory/tail/bodyset/vasilissan
 	name = "vasilissan tail"
 	icon = 'icons/mob/bodysets/organic/vasilissan/sprite_accessories.dmi'
 	icon_state = "tail"

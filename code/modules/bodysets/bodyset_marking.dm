@@ -14,8 +14,8 @@
  *
  * Basically
  */
-/datum/bodyset_marking
-	abstract_type = /datum/bodyset_marking
+/datum/prototype/bodyset_marking
+	abstract_type = /datum/prototype/bodyset_marking
 
 	/// name - should be unique
 	var/name = "Unknown Marking"
@@ -47,7 +47,7 @@
 	/// restrict to a specific group id
 	var/bodyset_group_restricted = "human"
 
-/datum/bodyset_marking/New()
+/datum/prototype/bodyset_marking/New()
 	#warn bodyset_restricted
 
 /**
@@ -59,8 +59,8 @@
  *
  * @return list(normal overlay | null, emissive_overlay | null)
  */
-/datum/bodyset_marking/proc/render(bodypart_tag, datum/bodyset_marking_descriptor/using_descriptor, obj/item/organ/external/for_bodypart)
+/datum/prototype/bodyset_marking/proc/render(bodypart_tag, datum/bodyset_marking_descriptor/using_descriptor, obj/item/organ/external/for_bodypart)
 
-/datum/bodyset_marking/legacy
+/datum/prototype/bodyset_marking/legacy
 	// PLEASE STOP USING THIS.
 	color_uses_blend_add = TRUE

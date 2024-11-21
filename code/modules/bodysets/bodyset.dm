@@ -1,15 +1,15 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
-/// id = datum lookup for /datum/bodyset
+/// id = datum lookup for /datum/prototype/bodyset
 /// initialized by SSearly_init
 GLOBAL_LIST_EMPTY(bodyset_lookup)
 /proc/init_bodyset_lookup()
 	GLOB.bodyset_lookup = . = list()
-	for(var/datum/bodyset/path as anything in subtypesof(/datum/bodyset))
+	for(var/datum/prototype/bodyset/path as anything in subtypesof(/datum/prototype/bodyset))
 		if(initial(path.abstract_type) == path)
 			continue
-		var/datum/bodyset/instance = new path
+		var/datum/prototype/bodyset/instance = new path
 		if(.[instance.id])
 			stack_trace("collision between [path] and [.[instance.id]:type]")
 			continue
@@ -20,8 +20,8 @@ GLOBAL_LIST_EMPTY(bodyset_lookup)
  *
  * * This, for the most part, does not mechanically enforce anything. It doesn't determine organs or anything like that.
  */
-/datum/bodyset
-	abstract_type = /datum/bodyset
+/datum/prototype/bodyset
+	abstract_type = /datum/prototype/bodyset
 
 	/// id - **must** be unique
 	var/id
@@ -161,7 +161,7 @@ GLOBAL_LIST_EMPTY(bodyset_lookup)
 	/// * list of slot key to accessory typepath or ID
 	var/list/sprite_accessory_defaults
 
-/datum/bodyset/New()
+/datum/prototype/bodyset/New()
 	if(isnull(src.base_id))
 		src.base_id = src.id
 
@@ -181,7 +181,7 @@ GLOBAL_LIST_EMPTY(bodyset_lookup)
  *
  * @return list(list(normal overlays), list(emissive overlays))
  */
-/datum/bodyset/proc/render(bodypart_tag, list/datum/bodyset_marking_descriptor/marking_descriptors, obj/item/organ/external/for_bodypart)
+/datum/prototype/bodyset/proc/render(bodypart_tag, list/datum/bodyset_marking_descriptor/marking_descriptors, obj/item/organ/external/for_bodypart)
 	var/image/normal_holder = new /image
 	var/image/emissive_holder = new /image
 
@@ -199,7 +199,7 @@ GLOBAL_LIST_EMPTY(bodyset_lookup)
  * * normal_plate - rendered visual image is applied to this
  * * emissive_plate - rendered emissive image is applied to this
  */
-/datum/bodyset/proc/render_to_plates(bodypart_tag, list/datum/bodyset_marking_descriptor/marking_descriptors, obj/item/organ/external/for_bodypart, image/normal_plate, image/emissive_plate)
+/datum/prototype/bodyset/proc/render_to_plates(bodypart_tag, list/datum/bodyset_marking_descriptor/marking_descriptors, obj/item/organ/external/for_bodypart, image/normal_plate, image/emissive_plate)
 
 	if(!(bodypart_tag in body_parts))
 		return
@@ -213,22 +213,22 @@ GLOBAL_LIST_EMPTY(bodyset_lookup)
 //* Subtypes for builtin sprite accessories used in bodysets             *//
 //* These should not be used for anything other than bodyset defaulting. *//
 
-/datum/sprite_accessory/hair/bodyset
-	abstract_type = /datum/sprite_accessory/hair/bodyset
+/datum/prototype/sprite_accessory/hair/bodyset
+	abstract_type = /datum/prototype/sprite_accessory/hair/bodyset
 	selectable = FALSE
 
-/datum/sprite_accessory/facial_hair/bodyset
-	abstract_type = /datum/sprite_accessory/facial_hair/bodyset
+/datum/prototype/sprite_accessory/facial_hair/bodyset
+	abstract_type = /datum/prototype/sprite_accessory/facial_hair/bodyset
 	selectable = FALSE
 
-/datum/sprite_accessory/ears/bodyset
-	abstract_type = /datum/sprite_accessory/ears/bodyset
+/datum/prototype/sprite_accessory/ears/bodyset
+	abstract_type = /datum/prototype/sprite_accessory/ears/bodyset
 	selectable = FALSE
 
-/datum/sprite_accessory/tail/bodyset
-	abstract_type = /datum/sprite_accessory/tail/bodyset
+/datum/prototype/sprite_accessory/tail/bodyset
+	abstract_type = /datum/prototype/sprite_accessory/tail/bodyset
 	selectable = FALSE
 
-/datum/sprite_accessory/wing/bodyset
-	abstract_type = /datum/sprite_accessory/wing/bodyset
+/datum/prototype/sprite_accessory/wing/bodyset
+	abstract_type = /datum/prototype/sprite_accessory/wing/bodyset
 	selectable = FALSE

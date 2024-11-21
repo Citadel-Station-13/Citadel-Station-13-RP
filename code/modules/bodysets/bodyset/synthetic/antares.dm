@@ -1,7 +1,7 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
-/datum/bodyset/synthetic/antares
+/datum/prototype/bodyset/synthetic/antares
 	id = "synth-antares"
 	name = "Antares"
 	icon = 'icons/mob/bodysets/synthetic/antares/body.dmi'

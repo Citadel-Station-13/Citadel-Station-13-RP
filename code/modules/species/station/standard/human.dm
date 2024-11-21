@@ -11,7 +11,7 @@
 	primitive_form = SPECIES_MONKEY
 	override_worn_legacy_bodytype = SPECIES_HUMAN
 
-	bodyset = /datum/bodyset/organic/human
+	bodyset = /datum/prototype/bodyset/organic/human
 
 	blurb = "Humanity originated in the Sol system, and over the last five centuries has spread \
 	colonies across a wide swathe of space. They hold a wide range of forms and creeds.<br/><br/> \

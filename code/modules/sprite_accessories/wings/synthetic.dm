@@ -1,4 +1,4 @@
-/datum/sprite_accessory/wing/robo
+/datum/prototype/sprite_accessory/wing/robo
 	name = "Robotic Wings"
 	id = "wing_robot1"
 	icon_state = "Drago_wing"
@@ -7,7 +7,7 @@
 
 //? synth furries count
 
-/datum/sprite_accessory/wing/cyberdoe
+/datum/prototype/sprite_accessory/wing/cyberdoe
 	name = "Cyber doe wing"
 	id = "wing_cyberdoe"
 	icon_state = "cyberdoe_s"

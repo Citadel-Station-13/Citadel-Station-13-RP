@@ -1,7 +1,7 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
-/datum/bodyset/organic/phoronoid
+/datum/prototype/bodyset/organic/phoronoid
 	name = "Phoronoid"
 	id = "phoronoid"
 	group_id = "human"

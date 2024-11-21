@@ -11,7 +11,7 @@
 	deform  = 'icons/mob/species/zorren_hi/deformed_body.dmi'
 
 	sprite_accessory_defaults = list(
-		SPRITE_ACCESSORY_SLOT_TAIL = /datum/sprite_accessory/tail/bodyset/zorren_highlander,
+		SPRITE_ACCESSORY_SLOT_TAIL = /datum/prototype/sprite_accessory/tail/bodyset/zorren_highlander,
 	)
 
 	max_additional_languages = 3
@@ -80,7 +80,7 @@
 	deform  = 'icons/mob/species/zorren_fl/deformed_body.dmi'
 
 	sprite_accessory_defaults = list(
-		SPRITE_ACCESSORY_SLOT_TAIL = /datum/sprite_accessory/tail/bodyset/zorren_flatlander,
+		SPRITE_ACCESSORY_SLOT_TAIL = /datum/prototype/sprite_accessory/tail/bodyset/zorren_flatlander,
 	)
 
 	max_additional_languages = 3

@@ -1,4 +1,4 @@
-/datum/sprite_accessory/tail/tiger_new
+/datum/prototype/sprite_accessory/tail/tiger_new
 	name = "tiger tail (vwag)"
 	id = "tail_tiger2"
 	icon_state = "tigertail"
@@ -8,7 +8,7 @@
 	extra_overlay = "tigertail_mark"
 	extra_overlay_w = "tigertail_mark_w"
 
-/datum/sprite_accessory/tail/tiger_white
+/datum/prototype/sprite_accessory/tail/tiger_white
 	name = "tiger, colorable"
 	id = "tail_tiger"
 	icon_state = "tiger"
@@ -16,7 +16,7 @@
 	legacy_use_additive_color_matrix = FALSE
 	extra_overlay = "tigerinnerwhite"
 
-/datum/sprite_accessory/tail/cat_big
+/datum/prototype/sprite_accessory/tail/cat_big
 	name = "kitty (big), colorable"
 	id = "tail_cat_big"
 	icon = 'icons/mob/sprite_accessory/tails/feline.dmi'
@@ -28,7 +28,7 @@
 	legacy_use_additive_color_matrix = FALSE
 	icon_sidedness = SPRITE_ACCESSORY_SIDEDNESS_FRONT_BEHIND
 
-/datum/sprite_accessory/tail/kitty
+/datum/prototype/sprite_accessory/tail/kitty
 	name = "kitty, colorable, downwards"
 	id = "tail_cat_down"
 	icon_state = "kittydown"
@@ -36,7 +36,7 @@
 	do_colouration = 1
 	legacy_use_additive_color_matrix = FALSE
 
-/*/datum/sprite_accessory/tail/kitty_tg
+/*/datum/prototype/sprite_accessory/tail/kitty_tg
 	name = "kitty, colorable, main"
 	id = "tail_cat_tg"
 	icon_state = "kittytg"
@@ -45,7 +45,7 @@
 	legacy_use_additive_color_matrix = FALSE
 	Currently fucked - Tail renders ontop of the player even if it should be invisible. TODO: Find time to fix this.*/
 
-/datum/sprite_accessory/tail/kittyup
+/datum/prototype/sprite_accessory/tail/kittyup
 	name = "kitty, colorable, upwards"
 	id = "tail_cat_up"
 	icon_state = "kittyup"
@@ -53,7 +53,7 @@
 	do_colouration = 1
 	legacy_use_additive_color_matrix = FALSE
 
-/datum/sprite_accessory/tail/liontail
+/datum/prototype/sprite_accessory/tail/liontail
 	name = "Lion Tail (vwag)"
 	id = "tail_lion"
 	icon_state = "liontail"
@@ -63,7 +63,7 @@
 	extra_overlay = "liontail_markings"
 	extra_overlay_w = "liontail_markings_w"
 
-/datum/sprite_accessory/tail/sneptail
+/datum/prototype/sprite_accessory/tail/sneptail
 	name = "Snep/Furry Tail (vwag)"
 	id = "tail_snowleopard"
 	icon_state = "sneptail"

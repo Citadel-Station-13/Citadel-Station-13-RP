@@ -1,7 +1,7 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
-/datum/bodyset/organic/skrell
+/datum/prototype/bodyset/organic/skrell
 	name = "Skrell"
 	id = "skrell"
 	group_id = "human"

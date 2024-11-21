@@ -4,13 +4,13 @@
 // todo: ouch at this list
 GLOBAL_LIST_EMPTY(sprite_accessory_icon_cache)
 
-/datum/sprite_accessory
-	abstract_type = /datum/sprite_accessory
+/datum/prototype/sprite_accessory
+	abstract_type = /datum/prototype/sprite_accessory
 
 	//* basics *//
 	/// The preview name of the accessory.
 	var/name
-	/// id; must be unique globally amongst /datum/sprite_accessory's!
+	/// id; must be unique globally amongst /datum/prototype/sprite_accessory's!
 	var/id
 
 	//* character setup *//
@@ -85,7 +85,7 @@ GLOBAL_LIST_EMPTY(sprite_accessory_icon_cache)
  * todo: with_base_state completely tramples extra_overlay, extra_overlay2
  * we need to redo this at some point.
  */
-/datum/sprite_accessory/proc/render(mob/for_whom, list/colors, layer_front, layer_behind, layer_side, with_base_state = icon_state, with_variation, flattened)
+/datum/prototype/sprite_accessory/proc/render(mob/for_whom, list/colors, layer_front, layer_behind, layer_side, with_base_state = icon_state, with_variation, flattened)
 	if(flattened)
 		if(!length(GLOB.clients))
 			// lol, lmao
@@ -155,7 +155,7 @@ GLOBAL_LIST_EMPTY(sprite_accessory_icon_cache)
 
 	return align_layers(layers)
 
-/datum/sprite_accessory/proc/align_layers(list/image/layers)
+/datum/prototype/sprite_accessory/proc/align_layers(list/image/layers)
 	for(var/image/patching as anything in layers)
 		// patching.appearance_flags = KEEP_TOGETHER
 		switch(icon_alignment)
@@ -170,14 +170,14 @@ GLOBAL_LIST_EMPTY(sprite_accessory_icon_cache)
 /**
  * order **must** be deterministic!
  */
-/datum/sprite_accessory/proc/flat_cache_keys(mob/for_whom, list/colors, layer_front, layer_behind, layer_side, with_base_state = icon_state, with_variation, flattened)
+/datum/prototype/sprite_accessory/proc/flat_cache_keys(mob/for_whom, list/colors, layer_front, layer_behind, layer_side, with_base_state = icon_state, with_variation, flattened)
 	. = list(
 		id,
 		with_base_state,
 	)
 	. += jointext(colors, ":")
 
-/datum/sprite_accessory/proc/flattened(mob/for_whom, list/colors, layer_front, layer_behind, layer_side, with_base_state = icon_state, with_variation, flattened)
+/datum/prototype/sprite_accessory/proc/flattened(mob/for_whom, list/colors, layer_front, layer_behind, layer_side, with_base_state = icon_state, with_variation, flattened)
 	var/list/cache_keys = flat_cache_keys(arglist(args))
 	var/cache_key = jointext(cache_keys, "-")
 	// check the main cache key only, icon_sidedness shouldn't check at runtime
@@ -245,7 +245,7 @@ GLOBAL_LIST_EMPTY(sprite_accessory_icon_cache)
 	for(var/key in accessories)
 		var/value = accessories[key]
 		if(ispath(value))
-			var/datum/sprite_accessory/casted = value
+			var/datum/prototype/sprite_accessory/casted = value
 			value = initial(casted.id)
 		if(istext(value))
 			switch(key)
@@ -299,8 +299,8 @@ GLOBAL_LIST(legacy_marking_lookup)
 /proc/all_hair_styles()
 	. = list()
 	var/list/by_name = list()
-	for(var/path in subtypesof(/datum/sprite_accessory/hair))
-		var/datum/sprite_accessory/S = path
+	for(var/path in subtypesof(/datum/prototype/sprite_accessory/hair))
+		var/datum/prototype/sprite_accessory/S = path
 		if(initial(S.abstract_type) == path)
 			continue
 		S = new path
@@ -322,8 +322,8 @@ GLOBAL_LIST(legacy_marking_lookup)
 /proc/all_ear_styles()
 	. = list()
 	var/list/by_type = list()
-	for(var/path in subtypesof(/datum/sprite_accessory/ears))
-		var/datum/sprite_accessory/S = path
+	for(var/path in subtypesof(/datum/prototype/sprite_accessory/ears))
+		var/datum/prototype/sprite_accessory/S = path
 		if(initial(S.abstract_type) == path)
 			continue
 		S = new path
@@ -342,8 +342,8 @@ GLOBAL_LIST(legacy_marking_lookup)
 /proc/all_wing_styles()
 	. = list()
 	var/list/by_type = list()
-	for(var/path in subtypesof(/datum/sprite_accessory/wing))
-		var/datum/sprite_accessory/S = path
+	for(var/path in subtypesof(/datum/prototype/sprite_accessory/wing))
+		var/datum/prototype/sprite_accessory/S = path
 		if(initial(S.abstract_type) == path)
 			continue
 		S = new path
@@ -362,8 +362,8 @@ GLOBAL_LIST(legacy_marking_lookup)
 /proc/all_tail_styles()
 	. = list()
 	var/list/by_type = list()
-	for(var/path in subtypesof(/datum/sprite_accessory/tail))
-		var/datum/sprite_accessory/S = path
+	for(var/path in subtypesof(/datum/prototype/sprite_accessory/tail))
+		var/datum/prototype/sprite_accessory/S = path
 		if(initial(S.abstract_type) == path)
 			continue
 		S = new path
@@ -382,8 +382,8 @@ GLOBAL_LIST(legacy_marking_lookup)
 /proc/all_facial_hair_styles()
 	. = list()
 	var/list/by_name = list()
-	for(var/path in subtypesof(/datum/sprite_accessory/facial_hair))
-		var/datum/sprite_accessory/S = path
+	for(var/path in subtypesof(/datum/prototype/sprite_accessory/facial_hair))
+		var/datum/prototype/sprite_accessory/S = path
 		if(initial(S.abstract_type) == path)
 			continue
 		S = new path
@@ -405,8 +405,8 @@ GLOBAL_LIST(legacy_marking_lookup)
 /proc/all_marking_styles()
 	. = list()
 	var/list/by_name = list()
-	for(var/path in subtypesof(/datum/sprite_accessory/marking))
-		var/datum/sprite_accessory/S = path
+	for(var/path in subtypesof(/datum/prototype/sprite_accessory/marking))
+		var/datum/prototype/sprite_accessory/S = path
 		if(initial(S.abstract_type) == path)
 			continue
 		S = new path

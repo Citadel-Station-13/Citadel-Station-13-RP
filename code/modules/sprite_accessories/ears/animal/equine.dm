@@ -1,5 +1,5 @@
 //? donkey
-/datum/sprite_accessory/ears/donkey
+/datum/prototype/sprite_accessory/ears/donkey
 	name = "donkey, colorable"
 	id = "ears_donkey"
 	icon_state = "donkey"

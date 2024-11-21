@@ -5,11 +5,11 @@
 	name_plural = SPECIES_KRISITIK
 	default_bodytype = BODYTYPE_KRISITIK
 
-	bodyset = /datum/bodyset/organic/krisitik
+	bodyset = /datum/prototype/bodyset/organic/krisitik
 
 
 	sprite_accessory_defaults = list(
-		SPRITE_ACCESSORY_SLOT_TAIL = /datum/sprite_accessory/tail/bodyset/krisitik,
+		SPRITE_ACCESSORY_SLOT_TAIL = /datum/prototype/sprite_accessory/tail/bodyset/krisitik,
 	)
 
 	max_additional_languages = 3

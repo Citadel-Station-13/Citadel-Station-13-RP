@@ -7,7 +7,7 @@
 
 	blurb = "Ook."
 
-	bodyset = /datum/bodyset/monkey
+	bodyset = /datum/prototype/bodyset/monkey
 	blood_mask      = 'icons/mob/species/monkey/blood_mask.dmi'
 
 	default_language = LANGUAGE_ID_CHIMPANZEE
@@ -22,7 +22,7 @@
 	death_message = "lets out a faint chimper as it collapses and stops moving..."
 
 	sprite_accessory_defaults = list(
-		SPRITE_ACCESSORY_SLOT_TAIL = /datum/sprite_accessory/tail/bodyset/monkey/chimp,
+		SPRITE_ACCESSORY_SLOT_TAIL = /datum/prototype/sprite_accessory/tail/bodyset/monkey/chimp,
 	)
 
 	fire_icon_state = "monkey"
@@ -94,7 +94,7 @@
 	name_plural = SPECIES_MONKEY_TAJ
 	uid = SPECIES_ID_FARWA
 
-	bodyset = /datum/bodyset/monkey/farwa
+	bodyset = /datum/prototype/bodyset/monkey/farwa
 
 	greater_form = SPECIES_TAJ
 	default_language = LANGUAGE_ID_FARWA
@@ -103,7 +103,7 @@
 	base_color  = "#333333"
 
 	sprite_accessory_defaults = list(
-		SPRITE_ACCESSORY_SLOT_TAIL = /datum/sprite_accessory/tail/bodyset/monkey/farwa,
+		SPRITE_ACCESSORY_SLOT_TAIL = /datum/prototype/sprite_accessory/tail/bodyset/monkey/farwa,
 	)
 
 /datum/species/monkey/skrell
@@ -111,7 +111,7 @@
 	name_plural = SPECIES_MONKEY_SKRELL
 	uid = SPECIES_ID_NEAERA
 
-	bodyset = /datum/bodyset/monkey/naera
+	bodyset = /datum/prototype/bodyset/monkey/naera
 
 	greater_form = SPECIES_SKRELL
 	default_language = LANGUAGE_ID_NEAERA
@@ -127,10 +127,10 @@
 	name_plural = SPECIES_MONKEY_UNATHI
 	uid = SPECIES_ID_STOK
 
-	bodyset = /datum/bodyset/monkey/stok
+	bodyset = /datum/prototype/bodyset/monkey/stok
 
 	sprite_accessory_defaults = list(
-		SPRITE_ACCESSORY_SLOT_TAIL = /datum/sprite_accessory/tail/bodyset/monkey/stok,
+		SPRITE_ACCESSORY_SLOT_TAIL = /datum/prototype/sprite_accessory/tail/bodyset/monkey/stok,
 	)
 
 	greater_form = SPECIES_UNATHI
@@ -145,7 +145,7 @@
 	name_plural = SPECIES_MONKEY_AKULA
 	uid = SPECIES_ID_SOBAKA
 
-	bodyset = /datum/bodyset/monkey/sobaka
+	bodyset = /datum/prototype/bodyset/monkey/sobaka
 
 	sprite_accessory_defaults = list()
 
@@ -158,7 +158,7 @@
 	greater_form = SPECIES_SERGAL
 	uid = SPECIES_ID_SERGLING
 
-	bodyset = /datum/bodyset/monkey/sergaling
+	bodyset = /datum/prototype/bodyset/monkey/sergaling
 
 	sprite_accessory_defaults = list()
 
@@ -171,7 +171,7 @@
 	uid = SPECIES_ID_SPARRA
 	greater_form = SPECIES_NEVREAN
 
-	bodyset = /datum/bodyset/monkey/sparra
+	bodyset = /datum/prototype/bodyset/monkey/sparra
 
 	sprite_accessory_defaults = list()
 
@@ -199,7 +199,7 @@
 	name_plural = SPECIES_MONKEY_VULPKANIN
 	uid = SPECIES_ID_WOLPIN
 
-	bodyset = /datum/bodyset/monkey/wolpin
+	bodyset = /datum/prototype/bodyset/monkey/wolpin
 
 	greater_form = SPECIES_VULPKANIN
 	default_language = LANGUAGE_ID_VULPKANIN

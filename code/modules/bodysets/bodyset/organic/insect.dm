@@ -1,7 +1,7 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
-/datum/bodyset/organic/insect
+/datum/prototype/bodyset/organic/insect
 	name = "Insect"
 	id = "insect"
 	group_id = "human"

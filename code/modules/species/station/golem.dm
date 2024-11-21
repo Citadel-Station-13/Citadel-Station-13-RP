@@ -4,7 +4,7 @@
 	name = SPECIES_GOLEM
 	name_plural = "golems"
 
-	bodyset = /datum/bodyset/special/golem
+	bodyset = /datum/prototype/bodyset/special/golem
 
 	intrinsic_languages = LANGUAGE_ID_HUMAN // todo?
 

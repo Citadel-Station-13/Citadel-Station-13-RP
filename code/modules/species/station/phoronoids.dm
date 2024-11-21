@@ -5,7 +5,7 @@
 	name_plural = "Phoronoids"
 	default_bodytype = BODYTYPE_PHORONOID
 
-	bodyset = /datum/bodyset/organic/phoronoid
+	bodyset = /datum/prototype/bodyset/organic/phoronoid
 
 	intrinsic_languages = LANGUAGE_ID_PHORONOID
 	max_additional_languages = 3

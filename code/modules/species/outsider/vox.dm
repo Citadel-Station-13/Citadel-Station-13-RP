@@ -5,7 +5,7 @@
 	category = SPECIES_CATEGORY_VOX
 	default_bodytype = BODYTYPE_VOX
 
-	bodyset = /datum/bodyset/organic/vox
+	bodyset = /datum/prototype/bodyset/organic/vox
 
 	max_additional_languages = 1
 	intrinsic_languages = LANGUAGE_ID_VOX

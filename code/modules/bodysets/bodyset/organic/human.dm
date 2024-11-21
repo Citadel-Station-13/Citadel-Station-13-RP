@@ -1,7 +1,7 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
-/datum/bodyset/organic/human
+/datum/prototype/bodyset/organic/human
 	name = "Human"
 	id = "human"
 	base_id = "human"
@@ -40,22 +40,22 @@
 
 #warn impl
 
-/datum/bodyset/organic/human/gravworlder
+/datum/prototype/bodyset/organic/human/gravworlder
 	id = "human-gravworlder"
 	name = "Human (Gravworlder)"
 	icon = 'icons/mob/bodysets/organic/human/body-gravworlder.dmi'
 
-/datum/bodyset/organic/human/tritonian
+/datum/prototype/bodyset/organic/human/tritonian
 	id = "human-tritonian"
 	name = "Human (Tritonian)"
 	icon = 'icons/mob/bodysets/organic/human/body-tritonian.dmi'
 
-/datum/bodyset/organic/human/spacer
+/datum/prototype/bodyset/organic/human/spacer
 	id = "human-spacer"
 	name = "Human (Spacer)"
 	icon = 'icons/mob/bodysets/organic/human/body-spacer.dmi'
 
-/datum/bodyset/organic/human/vatborn
+/datum/prototype/bodyset/organic/human/vatborn
 	id = "human-vatborn"
 	name = "Human (Vatborn)"
 	icon = 'icons/mob/bodysets/organic/human/body-vatborn.dmi'

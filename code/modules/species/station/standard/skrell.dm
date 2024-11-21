@@ -17,7 +17,7 @@
 	they rarely reveal the secrets of their empire to their allies.
 	"}
 
-	bodyset = /datum/bodyset/organic/skrell
+	bodyset = /datum/prototype/bodyset/organic/skrell
 
 	wikilink = "https://citadel-station.net/wikiRP/index.php?title=Skrell"
 	catalogue_data = list(/datum/category_item/catalogue/fauna/skrell)

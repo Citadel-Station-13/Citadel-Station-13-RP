@@ -173,7 +173,7 @@
 						return 1
 		if("ear")
 			if(can_change(APPEARANCE_ALL_HAIR))
-				var/datum/sprite_accessory/ears/instance = locate(params["ref"])
+				var/datum/prototype/sprite_accessory/ears/instance = locate(params["ref"])
 				if(params["clear"])
 					instance = null
 				if(!istype(instance) && !params["clear"])
@@ -207,7 +207,7 @@
 					return 1
 		if("tail")
 			if(can_change(APPEARANCE_ALL_HAIR))
-				var/datum/sprite_accessory/tail/instance = locate(params["ref"])
+				var/datum/prototype/sprite_accessory/tail/instance = locate(params["ref"])
 				if(params["clear"])
 					instance = null
 				if(!istype(instance) && !params["clear"])
@@ -241,7 +241,7 @@
 					return 1
 		if("wing")
 			if(can_change(APPEARANCE_ALL_HAIR))
-				var/datum/sprite_accessory/wing/instance = locate(params["ref"])
+				var/datum/prototype/sprite_accessory/wing/instance = locate(params["ref"])
 				if(params["clear"])
 					instance = null
 				if(!istype(instance) && !params["clear"])
@@ -478,7 +478,7 @@
 
 	if(!LAZYLEN(valid_earstyles))
 		for(var/path in ear_styles_list)
-			var/datum/sprite_accessory/ears/instance = ear_styles_list[path]
+			var/datum/prototype/sprite_accessory/ears/instance = ear_styles_list[path]
 			if(can_use_sprite(instance, target, user))
 				valid_earstyles.Add(list(list(
 					"name" = instance.name,
@@ -489,7 +489,7 @@
 
 	if(!LAZYLEN(valid_tailstyles))
 		for(var/path in tail_styles_list)
-			var/datum/sprite_accessory/tail/instance = tail_styles_list[path]
+			var/datum/prototype/sprite_accessory/tail/instance = tail_styles_list[path]
 			if(can_use_sprite(instance, target, user))
 				valid_tailstyles.Add(list(list(
 					"name" = instance.name,
@@ -500,7 +500,7 @@
 
 	if(!LAZYLEN(valid_wingstyles))
 		for(var/path in wing_styles_list)
-			var/datum/sprite_accessory/wing/instance = wing_styles_list[path]
+			var/datum/prototype/sprite_accessory/wing/instance = wing_styles_list[path]
 			if(can_use_sprite(instance, target, user))
 				valid_wingstyles.Add(list(list(
 					"name" = instance.name,
@@ -527,7 +527,7 @@
 /datum/tgui_module_old/appearance_changer/proc/changed_hook(flag)
 	return
 
-/datum/tgui_module_old/appearance_changer/proc/can_use_sprite(datum/sprite_accessory/X, mob/living/carbon/human/target, mob/user)
+/datum/tgui_module_old/appearance_changer/proc/can_use_sprite(datum/prototype/sprite_accessory/X, mob/living/carbon/human/target, mob/user)
 	if(X.apply_restrictions && !(target.species.name in X.species_allowed))
 		return FALSE
 

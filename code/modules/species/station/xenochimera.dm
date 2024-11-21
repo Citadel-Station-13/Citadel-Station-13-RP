@@ -10,7 +10,7 @@
 	base_species = SPECIES_XENOCHIMERA
 	category = "Special"
 	mob_physiology_modifier = /datum/physiology_modifier/intrinsic/species/xenochimera
-	bodyset = /datum/bodyset/organic/human
+	bodyset = /datum/prototype/bodyset/organic/human
 	bodysets = null
 
 	selects_bodytype = TRUE

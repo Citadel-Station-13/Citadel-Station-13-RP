@@ -1,5 +1,5 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
-/datum/bodyset/organic
-	abstract_type = /datum/bodyset/organic
+/datum/prototype/bodyset/organic
+	abstract_type = /datum/prototype/bodyset/organic

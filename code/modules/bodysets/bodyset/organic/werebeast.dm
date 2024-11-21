@@ -3,7 +3,7 @@
 
 // todo: sprite alignment support
 
-/datum/bodyset/organic/werebeast
+/datum/prototype/bodyset/organic/werebeast
 	name = "Werebeast"
 	id = "werebeast"
 	group_id = "werebeast"

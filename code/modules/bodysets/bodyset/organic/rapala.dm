@@ -1,7 +1,7 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
-/datum/bodyset/organic/rapala
+/datum/prototype/bodyset/organic/rapala
 	icon = 'icons/mob/bodysets/organic/rapala/body.dmi'
 	body_parts = BP_ALL_STANDARD
 	gendered_parts = list(
@@ -15,7 +15,7 @@
 		},
 	)
 
-/datum/sprite_accessory/tail/bodyset/rapala
+/datum/prototype/sprite_accessory/tail/bodyset/rapala
 	name = "rapala tail"
 	icon = 'icons/mob/bodysets/organic/rapala/sprite_accessories.dmi'
 	icon_state = "tail"

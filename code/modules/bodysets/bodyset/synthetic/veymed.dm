@@ -1,7 +1,7 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
-/datum/bodyset/synthetic/veymed
+/datum/prototype/bodyset/synthetic/veymed
 	id = "synth-veymed-human"
 	name = "Vey-Med - Human"
 	icon = 'icons/mob/bodysets/synthetic/veymed/body-human.dmi'
@@ -24,7 +24,7 @@
 		BP_GROIN,
 	)
 
-/datum/bodyset/synthetic/veymed/skrell
+/datum/prototype/bodyset/synthetic/veymed/skrell
 	id = "synth-veymed-skrell"
 	name = "Vey-Med - Skrell"
 	icon = 'icons/mob/bodysets/synthetic/veymed/body-skrell.dmi'

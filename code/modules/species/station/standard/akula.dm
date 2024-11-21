@@ -5,12 +5,12 @@
 	name_plural = SPECIES_AKULA //It's singular and plural. English is weird.
 	primitive_form = SPECIES_MONKEY_AKULA
 
-	bodyset = /datum/bodyset/organic/akula
+	bodyset = /datum/prototype/bodyset/organic/akula
 
 	default_bodytype = BODYTYPE_AKULA
 
 	sprite_accessory_defaults = list(
-		SPRITE_ACCESSORY_SLOT_TAIL = /datum/sprite_accessory/tail/bodyset/akula,
+		SPRITE_ACCESSORY_SLOT_TAIL = /datum/prototype/sprite_accessory/tail/bodyset/akula,
 	)
 
 	blurb = {"

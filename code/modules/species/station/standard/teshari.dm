@@ -18,14 +18,14 @@
 	hunting skills that emphasized taking out their prey without themselves getting hit.
 	"}
 
-	bodyset = /datum/bodyset/organic/teshari
+	bodyset = /datum/prototype/bodyset/organic/teshari
 
 	blood_mask        = 'icons/mob/species/teshari/blood_mask.dmi'
 	suit_storage_icon = 'icons/mob/clothing/species/teshari/belt_mirror.dmi'
 
 	fire_icon_state = "generic" // Humanoid is too big for them and spriting a new one is really annoying.
 	sprite_accessory_defaults = list(
-		SPRITE_ACCESSORY_SLOT_TAIL = /datum/sprite_accessory/tail/bodyset/teshari,
+		SPRITE_ACCESSORY_SLOT_TAIL = /datum/prototype/sprite_accessory/tail/bodyset/teshari,
 	)
 
 	max_additional_languages = 3

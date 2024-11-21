@@ -1,7 +1,7 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
-/datum/bodyset/organic/krisitik
+/datum/prototype/bodyset/organic/krisitik
 	name = "Krisitik"
 	id = "krisitik"
 	group_id = "human"
@@ -23,7 +23,7 @@
 		BODYSET_OVERLAY_HUSKED = /datum/bodyset_overlay/husk/human,
 	)
 
-/datum/sprite_accessory/tail/bodyset/krisitik
+/datum/prototype/sprite_accessory/tail/bodyset/krisitik
 	name = "krisitik tail"
 	id = "tail-bodyset-krisitik"
 	icon = 'icons/mob/bodysets/organic/krisitik/sprite_accessories.dmi'

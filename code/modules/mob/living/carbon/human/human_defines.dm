@@ -84,7 +84,7 @@
 	var/b_skin = 179
 
 	//* ears, horns, tails, wings and custom species.
-	var/datum/sprite_accessory/ears/ear_style = null
+	var/datum/prototype/sprite_accessory/ears/ear_style = null
 	var/r_ears  = 30
 	var/g_ears  = 30
 	var/b_ears  = 30
@@ -95,7 +95,7 @@
 	var/g_ears3 = 30
 	var/b_ears3 = 30
 
-	var/datum/sprite_accessory/ears/horn_style = null
+	var/datum/prototype/sprite_accessory/ears/horn_style = null
 	var/r_horn  = 30
 	var/g_horn  = 30
 	var/b_horn  = 30
@@ -106,7 +106,7 @@
 	var/g_horn3 = 30
 	var/b_horn3 = 30
 
-	var/datum/sprite_accessory/tail/tail_style = null
+	var/datum/prototype/sprite_accessory/tail/tail_style = null
 	var/r_tail  = 30
 	var/g_tail  = 30
 	var/b_tail  = 30
@@ -119,7 +119,7 @@
 	// pain
 	var/legacy_tail_variation
 
-	var/datum/sprite_accessory/wing/wing_style = null
+	var/datum/prototype/sprite_accessory/wing/wing_style = null
 	var/grad_wingstyle = "None"
 	var/r_gradwing = 0
 	var/g_gradwing = 0
@@ -254,11 +254,6 @@
 	var/step_count = 0
 
 	can_be_antagged = TRUE
-
-	/// Used by mobs in virtual reality to point back to the "real" mob the client belongs to.
-	var/mob/living/carbon/human/vr_holder = null
-	/// Used by "real" mobs after they leave a VR session
-	var/mob/living/carbon/human/vr_link = null
 
 	/**
 	 * Machine that is currently applying visual effects to this mob.

@@ -10,7 +10,7 @@
 	//primitive_form = "Nymph"
 	mob_physiology_modifier = /datum/physiology_modifier/intrinsic/species/diona
 
-	bodyset = /datum/bodyset/organic/diona
+	bodyset = /datum/prototype/bodyset/organic/diona
 
 	max_additional_languages = 2
 	name_language = LANGUAGE_ID_DIONA

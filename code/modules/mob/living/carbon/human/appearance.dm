@@ -209,7 +209,7 @@
 
 	var/list/valid_hairstyles = new()
 	for(var/hairstyle in GLOB.legacy_hair_lookup)
-		var/datum/sprite_accessory/S = GLOB.legacy_hair_lookup[hairstyle]
+		var/datum/prototype/sprite_accessory/S = GLOB.legacy_hair_lookup[hairstyle]
 
 		if(check_gender && gender != NEUTER)
 			if(gender == MALE && S.random_generation_gender == FEMALE)
@@ -231,7 +231,7 @@
 
 	var/list/valid_facial_hairstyles = new()
 	for(var/facialhairstyle in GLOB.legacy_facial_hair_lookup)
-		var/datum/sprite_accessory/S = GLOB.legacy_facial_hair_lookup[facialhairstyle]
+		var/datum/prototype/sprite_accessory/S = GLOB.legacy_facial_hair_lookup[facialhairstyle]
 
 		if(!isnull(S.random_generation_gender) && gender != S.random_generation_gender)
 			continue

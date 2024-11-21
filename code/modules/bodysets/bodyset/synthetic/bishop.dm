@@ -1,7 +1,7 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
-/datum/bodyset/synthetic/bishop
+/datum/prototype/bodyset/synthetic/bishop
 	id = "synth-bishop"
 	name = "Bishop"
 	icon = 'icons/mob/bodysets/synthetic/bishop/body.dmi'
@@ -19,7 +19,7 @@
 		BP_R_FOOT,
 	)
 
-/datum/bodyset/synthetic/bishop/alt_1
+/datum/prototype/bodyset/synthetic/bishop/alt_1
 	id = "synth-bishop-2"
 	name = "Bishop (Alt)"
 	icon = 'icons/mob/bodysets/synthetic/bishop/body-2.dmi'
@@ -37,7 +37,7 @@
 		BP_R_FOOT,
 	)
 
-/datum/bodyset/synthetic/bishop/alt_2
+/datum/prototype/bodyset/synthetic/bishop/alt_2
 	id = "synth-bishop-3"
 	name = "Bishop (Alt Head)"
 	icon = 'icons/mob/bodysets/synthetic/bishop/body-3.dmi'
@@ -45,7 +45,7 @@
 		BP_HEAD,
 	)
 
-/datum/bodyset/synthetic/bishop/alt_3
+/datum/prototype/bodyset/synthetic/bishop/alt_3
 	id = "synth-bishop-4"
 	name = "Bishop (Alt Head #2)"
 	icon = 'icons/mob/bodysets/synthetic/bishop/body-4.dmi'

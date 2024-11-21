@@ -44,11 +44,11 @@
 
 	//* Appearance *//
 	/// bodyset to use by default
-	var/datum/bodyset/bodyset = /datum/bodyset/organic/human
+	var/datum/prototype/bodyset/bodyset = /datum/prototype/bodyset/organic/human
 	/// bodysets that can be chosen. automatically includes [bodyset].
 	///
 	/// * If this is null, **we can choose any bodyset.**
-	var/list/datum/bodyset/bodysets = list()
+	var/list/datum/prototype/bodyset/bodysets = list()
 	#warn hook in new
 
 	//* Traits / Physiology *//

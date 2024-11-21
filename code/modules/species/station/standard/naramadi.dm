@@ -6,9 +6,9 @@
 	category = "Naramadi"
 	default_bodytype = BODYTYPE_SERGAL
 
-	bodyset = /datum/bodyset/organic/naramadi
+	bodyset = /datum/prototype/bodyset/organic/naramadi
 	sprite_accessory_defaults = list(
-		SPRITE_ACCESSORY_SLOT_TAIL = /datum/sprite_accessory/tail/bodyset/naramadi,
+		SPRITE_ACCESSORY_SLOT_TAIL = /datum/prototype/sprite_accessory/tail/bodyset/naramadi,
 	)
 
 	slowdown      = -0.25

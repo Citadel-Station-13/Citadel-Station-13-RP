@@ -143,7 +143,7 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 	character.g_skin			= pref.g_skin
 	character.b_skin			= pref.b_skin
 	character.s_tone			= pref.s_tone
-	var/datum/sprite_accessory/S = GLOB.sprite_accessory_hair[pref.h_style_id]
+	var/datum/prototype/sprite_accessory/S = GLOB.sprite_accessory_hair[pref.h_style_id]
 	character.h_style = S.name
 	S = GLOB.sprite_accessory_facial_hair[pref.f_style_id]
 	character.f_style = S.name
@@ -222,7 +222,7 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 		O.markings.Cut()
 
 	for(var/id in pref.body_marking_ids)
-		var/datum/sprite_accessory/marking/mark_datum = GLOB.sprite_accessory_markings[id]
+		var/datum/prototype/sprite_accessory/marking/mark_datum = GLOB.sprite_accessory_markings[id]
 		var/mark_color = "[pref.body_marking_ids[id]]"
 
 		for(var/BP in mark_datum.body_parts)
@@ -382,7 +382,7 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 	. += "<b>Hair</b><br>"
 	if(has_flag(mob_species, HAS_HAIR_COLOR))
 		. += "<a href='?src=\ref[src];hair_color=1'>Change Color</a> [color_square(pref.r_hair, pref.g_hair, pref.b_hair)] "
-	var/datum/sprite_accessory/current_hair = GLOB.sprite_accessory_hair[pref.h_style_id]
+	var/datum/prototype/sprite_accessory/current_hair = GLOB.sprite_accessory_hair[pref.h_style_id]
 	. += " Style: <a href='?src=\ref[src];hair_style_left=1'><</a> <a href='?src=\ref[src];hair_style_right=1'>></a> <a href='?src=\ref[src];hair_style=1'>[current_hair.name]</a><br>" //The <</a> & ></a> in this line is correct-- those extra characters are the arrows you click to switch between styles.
 
 	. += "<b>Gradient</b><br>"
@@ -392,7 +392,7 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 	. += "<br><b>Facial</b><br>"
 	if(has_flag(mob_species, HAS_HAIR_COLOR))
 		. += "<a href='?src=\ref[src];facial_color=1'>Change Color</a> [color_square(pref.r_facial, pref.g_facial, pref.b_facial)] "
-	var/datum/sprite_accessory/current_face_hair = GLOB.sprite_accessory_facial_hair[pref.f_style_id]
+	var/datum/prototype/sprite_accessory/current_face_hair = GLOB.sprite_accessory_facial_hair[pref.f_style_id]
 	. += " Style: <a href='?src=\ref[src];facial_style_left=1'><</a> <a href='?src=\ref[src];facial_style_right=1'>></a> <a href='?src=\ref[src];facial_style=1'>[current_face_hair.name]</a><br>" //Same as above with the extra > & < characters
 
 	if(has_flag(mob_species, HAS_EYE_COLOR))
@@ -406,7 +406,7 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 	. += "<br><a href='?src=\ref[src];marking_style=1'>Body Markings +</a><br>"
 	. += "<table>"
 	for(var/M in pref.body_marking_ids)
-		var/datum/sprite_accessory/S = GLOB.sprite_accessory_markings[M]
+		var/datum/prototype/sprite_accessory/S = GLOB.sprite_accessory_markings[M]
 		. += "<tr><td>[S.name]</td><td>[pref.body_marking_ids.len > 1 ? "<a href='?src=\ref[src];marking_up=[M]'>&#708;</a> <a href='?src=\ref[src];marking_down=[M]'>&#709;</a> <a href='?src=\ref[src];marking_move=[M]'>mv</a> " : ""]<a href='?src=\ref[src];marking_remove=[M]'>-</a> <a href='?src=\ref[src];marking_color=[M]'>Color</a>[color_square(hex = pref.body_marking_ids[M])]</td></tr>"
 
 	. += "</table>"
@@ -470,10 +470,10 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 
 	else if(href_list["hair_style"])
 		var/list/valid_hairstyles = pref.get_valid_hairstyles()
-		var/datum/sprite_accessory/current = GLOB.sprite_accessory_hair[pref.h_style_id]
+		var/datum/prototype/sprite_accessory/current = GLOB.sprite_accessory_hair[pref.h_style_id]
 		var/new_h_style = tgui_input_list(user, "Choose your character's hair style:", "Character Preference", valid_hairstyles, current.name)
 		if(new_h_style && CanUseTopic(user))
-			var/datum/sprite_accessory/S = valid_hairstyles[new_h_style]
+			var/datum/prototype/sprite_accessory/S = valid_hairstyles[new_h_style]
 			pref.h_style_id = S.id
 			return PREFERENCES_REFRESH_UPDATE_PREVIEW
 
@@ -549,10 +549,10 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 
 	else if(href_list["facial_style"])
 		var/list/valid_facialhairstyles = pref.get_valid_facialhairstyles()
-		var/datum/sprite_accessory/current = GLOB.sprite_accessory_facial_hair[pref.f_style_id]
+		var/datum/prototype/sprite_accessory/current = GLOB.sprite_accessory_facial_hair[pref.f_style_id]
 		var/new_f_style = tgui_input_list(user, "Choose your character's facial-hair style:", "Character Preference", valid_facialhairstyles, current.name)
 		if(new_f_style && CanUseTopic(user))
-			var/datum/sprite_accessory/S = valid_facialhairstyles[new_f_style]
+			var/datum/prototype/sprite_accessory/S = valid_facialhairstyles[new_f_style]
 			pref.f_style_id = S.id
 			return PREFERENCES_REFRESH_UPDATE_PREVIEW
 
@@ -568,7 +568,7 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 		var/list/usable_markings = pref.body_marking_ids ^ GLOB.sprite_accessory_markings
 		var/list/translated = list()
 		for(var/id in usable_markings)
-			var/datum/sprite_accessory/S = GLOB.sprite_accessory_markings[id]
+			var/datum/prototype/sprite_accessory/S = GLOB.sprite_accessory_markings[id]
 			translated[S.name] = id
 		var/new_marking = tgui_input_list(user, "Choose a body marking:", "Character Preference", translated)
 		var/marking_count = length(pref.body_marking_ids)
@@ -605,7 +605,7 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 			move_locs -= pref.body_marking_ids[start-1]
 		var/list/translated = list()
 		for(var/id in move_locs)
-			var/datum/sprite_accessory/S = GLOB.sprite_accessory_markings[id]
+			var/datum/prototype/sprite_accessory/S = GLOB.sprite_accessory_markings[id]
 			translated[S.name] = id
 		var/inject_after = tgui_input_list(user, "Move [M] behind of...", "Character Preference", translated)//Move ahead of any marking that isn't the current or previous one.
 		var/newpos = pref.body_marking_ids.Find(translated[inject_after])
@@ -620,7 +620,7 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 
 	else if(href_list["marking_color"])
 		var/M = href_list["marking_color"]
-		var/datum/sprite_accessory/S = GLOB.sprite_accessory_markings[M]
+		var/datum/prototype/sprite_accessory/S = GLOB.sprite_accessory_markings[M]
 		var/mark_color = input(user, "Choose the [S.name]'s color: ", "Character Preference", pref.body_marking_ids[M]) as color|null
 		if(mark_color && CanUseTopic(user))
 			pref.body_marking_ids[M] = "[mark_color]"

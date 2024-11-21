@@ -13,9 +13,9 @@
 
 	mob_physiology_modifier = /datum/physiology_modifier/intrinsic/species/unathi
 
-	bodyset = /datum/bodyset/organic/unathi
+	bodyset = /datum/prototype/bodyset/organic/unathi
 	sprite_accessory_defaults = list(
-		SPRITE_ACCESSORY_SLOT_TAIL = /datum/sprite_accessory/tail/bodyset/unathi,
+		SPRITE_ACCESSORY_SLOT_TAIL = /datum/prototype/sprite_accessory/tail/bodyset/unathi,
 	)
 
 	blurb = {"

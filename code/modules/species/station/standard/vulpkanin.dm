@@ -6,9 +6,9 @@
 	primitive_form = SPECIES_MONKEY_VULPKANIN
 	default_bodytype = BODYTYPE_VULPKANIN
 
-	bodyset = /datum/bodyset/organic/vulpkanin
+	bodyset = /datum/prototype/bodyset/organic/vulpkanin
 	sprite_accessory_defaults = list(
-		SPRITE_ACCESSORY_SLOT_TAIL = /datum/sprite_accessory/tail/bodyset/vulpkanin,
+		SPRITE_ACCESSORY_SLOT_TAIL = /datum/prototype/sprite_accessory/tail/bodyset/vulpkanin,
 	)
 
 	max_additional_languages = 3

@@ -6,10 +6,10 @@
 	primitive_form = SPECIES_MONKEY_NEVREAN
 	default_bodytype = BODYTYPE_NEVREAN
 
-	bodyset = /datum/bodyset/organic/nevrean
+	bodyset = /datum/prototype/bodyset/organic/nevrean
 
 	sprite_accessory_defaults = list(
-		SPRITE_ACCESSORY_SLOT_TAIL = /datum/sprite_accessory/tail/bodyset/nevrean,
+		SPRITE_ACCESSORY_SLOT_TAIL = /datum/prototype/sprite_accessory/tail/bodyset/nevrean,
 	)
 
 	blurb = {"
