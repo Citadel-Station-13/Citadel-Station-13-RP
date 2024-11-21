@@ -80,7 +80,7 @@ SUBSYSTEM_DEF(mapping)
 	/// reserved turfs allowed - we can over-allocate this if we're only going to be slightly over and can always allocate atleast one level.
 	var/static/reserved_turfs_max = 192 * 192 * 3
 	/// allocated space reservations
-	var/static/list/datum/turf_reservation/reservations = list()
+	var/static/list/datum/map_reservation/reservations = list()
 	/// list of reserved z-indices for fast access
 	var/static/list/reserve_levels = list()
 	/// doing some blocking op on reservation system

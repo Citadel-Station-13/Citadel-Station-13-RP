@@ -7,7 +7,7 @@
  *
  * maybe someday we'll have a non-3d-prism game engine and we can have something actually reasonable instead of this pile of shit.
  */
-/datum/turf_reservation
+/datum/map_reservation
 	/// are we allocated?
 	var/tmp/allocated = FALSE
 	/// border turfs - just the first layer / the immediate border
@@ -44,7 +44,7 @@
 	var/border_mirage_anyways = FALSE
 	/// border initializer to call with every turf on the border to init them
 	///
-	/// * called with (turf/border, datum/turf_reservation/reservation)
+	/// * called with (turf/border, datum/map_reservation/reservation)
 	/// * if border is specified but initializer isn't, we just make them transition borders.
 	var/datum/callback/border_initializer
 
@@ -65,30 +65,30 @@
 	var/spatial_tr_y
 	var/spatial_z
 
-/datum/turf_reservation/New()
+/datum/map_reservation/New()
 	if(isnull(turf_type))
 		turf_type = RESERVED_TURF_TYPE
 	if(isnull(area_type))
 		area_type = RESERVED_AREA_TYPE
 
-/datum/turf_reservation/Destroy()
+/datum/map_reservation/Destroy()
 	release()
 	return ..()
 
-/datum/turf_reservation/proc/get_approximately_center_turf()
+/datum/map_reservation/proc/get_approximately_center_turf()
 	return locate(
 		bottom_left_coords[1] + floor(top_right_coords[1] - bottom_left_coords[1]),
 		bottom_left_coords[2] + floor(top_right_coords[2] - bottom_left_coords[2]),
 		bottom_left_coords[3],
 	)
 
-/datum/turf_reservation/proc/is_atom_inside(atom/A)
+/datum/map_reservation/proc/is_atom_inside(atom/A)
 	A = get_turf(A)
 	return A.z == bottom_left_coords[3] && \
 		A.x >= bottom_left_coords[1] && A.x <= top_right_coords[1] && \
 		A.y >= bottom_left_coords[2] && A.y <= top_right_coords[2]
 
-/datum/turf_reservation/proc/release()
+/datum/map_reservation/proc/release()
 	if(border)
 		SSmapping.reserve_turfs(block(locate(
 			bottom_left_border_coords[1], bottom_left_border_coords[2], bottom_left_border_coords[3]
@@ -125,7 +125,7 @@
 
 	return TRUE
 
-/datum/turf_reservation/proc/reserve(width, height, border, z_override)
+/datum/map_reservation/proc/reserve(width, height, border, z_override)
 	if(width > world.maxx || height > world.maxy || width < 1 || height < 1)
 		CRASH("invalid request")
 	if(border && ceil(border) != border)
@@ -382,7 +382,7 @@
 /**
  * gets an unordered list of all inner (non-border) turfs
  */
-/datum/turf_reservation/proc/unordered_inner_turfs()
+/datum/map_reservation/proc/unordered_inner_turfs()
 	return block(
 		locate(bottom_left_coords[1], bottom_left_coords[2], bottom_left_coords[3]),
 		locate(top_right_coords[1], top_right_coords[2], top_right_coords[3]),
@@ -391,7 +391,7 @@
 /**
  * gets an unordered list of all outer (border) turfs
  */
-/datum/turf_reservation/proc/unordered_border_turfs()
+/datum/map_reservation/proc/unordered_border_turfs()
 	if(!border)
 		return list()
 	return border_turfs.Copy()
@@ -399,7 +399,7 @@
 /**
  * gets an unordered list of all immediate (1-outside) turfs
  */
-/datum/turf_reservation/proc/unordered_immediate_border_turfs()
+/datum/map_reservation/proc/unordered_immediate_border_turfs()
 	if(!border)
 		return list()
 	// todo: implement this
@@ -414,7 +414,7 @@
 	has_gravity = FALSE
 
 	/// the reservation that owns us
-	var/datum/turf_reservation/reservation
+	var/datum/map_reservation/reservation
 
 /area/reservation_border/Destroy()
 	reservation = null

@@ -19,7 +19,7 @@
 	/// cached for speed
 	var/upper_right_y
 	/// our turf reservation
-	var/datum/turf_reservation/reservation
+	var/datum/map_reservation/reservation
 	/// our template
 	var/datum/overmap_template/template
 
@@ -89,7 +89,7 @@
 /**
  * makes a border turf
  */
-/datum/overmap/proc/reservation_border_initializer(turf/border, datum/turf_reservation/reservation)
+/datum/overmap/proc/reservation_border_initializer(turf/border, datum/map_reservation/reservation)
 	var/turf/overmap/edge/edge = border.ChangeTurf(/turf/overmap/edge)
 	edge.initialize_border(src, reservation)
 	edge.initialize_overmap(src)

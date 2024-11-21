@@ -33,15 +33,15 @@
  * @params
  * * width - width of reserved block
  * * height - height of reserved block
- * * type - /datum/turf_reservation type to make
+ * * type - /datum/map_reservation type to make
  * * turf_override - init turf contents to type instead of world.area
  * * area_override - init area typepath to type instead of world.area
  * * border - border turfs; these are outside of the allocation.
  * * border_handler - what callback to call with (atom/movable/mover) when something crosses the border. the handler should always evict the atom from the border turfs!
  * * border_initializer - what callback to call with (turf/bordering) on every border turf to init them. defaults to just making loop-back turfs
  */
-/datum/controller/subsystem/mapping/proc/request_block_reservation(width, height, type = /datum/turf_reservation, turf_override, area_override, border, datum/callback/border_handler, datum/callback/border_initializer)
-	var/datum/turf_reservation/reserve = new type
+/datum/controller/subsystem/mapping/proc/request_block_reservation(width, height, type = /datum/map_reservation, turf_override, area_override, border, datum/callback/border_handler, datum/callback/border_initializer)
+	var/datum/map_reservation/reserve = new type
 	if(!isnull(turf_override))
 		reserve.turf_type = turf_override
 	if(!isnull(area_override))

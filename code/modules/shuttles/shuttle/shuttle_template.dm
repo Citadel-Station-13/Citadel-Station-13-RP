@@ -86,10 +86,10 @@
 	var/height = parsed_map.height
 
 	// make reservation
-	var/datum/turf_reservation/reservation = SSmapping.request_block_reservation(
+	var/datum/map_reservation/reservation = SSmapping.request_block_reservation(
 		width + 2,
 		height + 2,
-		/datum/turf_reservation,
+		/datum/map_reservation,
 	)
 
 	// create context
