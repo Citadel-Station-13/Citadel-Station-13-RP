@@ -535,7 +535,7 @@
 			built += new path
 		abilities = built
 
-	sprite_accessory_defaults = resolve_sprite_accessory_key_list_inplace(sprite_accessory_defaults)
+	sprite_accessory_defaults = RSsprite_accessories.resolve_slot_key_value_list_inplace(sprite_accessory_defaults)
 
 /**
  * called when we apply to a mob
