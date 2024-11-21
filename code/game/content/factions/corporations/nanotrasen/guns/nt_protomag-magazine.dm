@@ -46,16 +46,16 @@
 
 //* Typegen *//
 
-#define NT_PROTOMAG_AMMO_TYPEGEN(suffix, name, ammo) \
-/obj/item/ammo_magazine/nt_protomag/pistol##suffix { \
-	name = "protomag sidearm magazine (" + name + ")"; \
-	ammo_preload = /obj/item/ammo_casing/nt_protomag##ammo; \
-	rendering_static_color = /obj/item/ammo_casing/nt_protomag##ammo::stripe_color; \
+#define NT_PROTOMAG_AMMO_TYPEGEN(SUFFIX, NAME, AMMO) \
+/obj/item/ammo_magazine/nt_protomag/pistol##SUFFIX { \
+	name = "protomag sidearm magazine (" + NAME + ")"; \
+	ammo_preload = /obj/item/ammo_casing/nt_protomag##AMMO; \
+	rendering_static_overlay_color = /obj/item/ammo_casing/nt_protomag##AMMO::stripe_color; \
 } \
-/obj/item/ammo_magazine/nt_protomag/rifle##suffix { \
-	name = "protomag rifle magazine (" + name + ")"; \
-	ammo_preload = /obj/item/ammo_casing/nt_protomag##ammo; \
-	rendering_static_color = /obj/item/ammo_casing/nt_protomag##ammo::stripe_color; \
+/obj/item/ammo_magazine/nt_protomag/rifle##SUFFIX { \
+	name = "protomag rifle magazine (" + NAME + ")"; \
+	ammo_preload = /obj/item/ammo_casing/nt_protomag##AMMO; \
+	rendering_static_overlay_color = /obj/item/ammo_casing/nt_protomag##AMMO::stripe_color; \
 }
 
 NT_PROTOMAG_AMMO_TYPEGEN(/standard, "standard", /magboosted/standard)

@@ -103,7 +103,7 @@
 		counteract this weapon's capabilities - with many threat-actors and even certain strains of lifeforms
 		developing augmented resistance to the weapon's stun settings - much to Nanotrasen's displeasure.
 		While Nanotrasen has many times attempted to replace this weapon's place in the staples of its
-		security divisions, all attempts to date have thus far failed.
+		security divisions, all attempts to date have thus far fell short.
 	"}
 	firemodes = list(
 		/datum/firemode/energy/nt_isd/carbine/disable,
