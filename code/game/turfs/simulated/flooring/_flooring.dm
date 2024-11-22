@@ -9,8 +9,14 @@
 // [icon_base]_corners: directional overlays for non-edge corners.
 
 /datum/prototype/flooring
+	//* Appearance *//
+
+	/// Turf name override. directly interpolated into the turf's `name` variable.
 	var/name = "floor"
+	#warn impl
+	/// Examine description. Read on runtime if the turf has a floor.
 	var/desc
+
 	var/icon
 	var/icon_base
 
