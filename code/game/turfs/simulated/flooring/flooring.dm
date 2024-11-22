@@ -21,10 +21,9 @@
 
 	/// Turf name override. directly interpolated into the turf's `name` variable.
 	var/name = "floor"
-	#warn impl
+	#warn audit
 	/// The icon to use
 	var/icon
-	#warn impl
 	/// The base icon state to use.
 	///
 	/// * This is also the preview state, so it must exist.
@@ -32,7 +31,6 @@
 	#warn impl, rename to `icon_state`
 	/// Same z flags used for turfs, i.e ZMIMIC_DEFAULT etc.
 	var/mz_flags = MZ_ATMOS_UP | MZ_OPEN_UP
-	#warn audit
 
 	//*                      Appearance                     *//
 	//* These variables are accessed as needed by the turf. *//
@@ -63,36 +61,44 @@
 
 	/// product type to drop, if any. usually a `/obj/item/stack` path.
 	///
+	/// * Supports /obj/item/stack
+	/// * Supports /datum/material
 	/// * If this is not set, we will use `build_type` and `build_cost` instead.
 	var/dismantle_product
 	/// product amount to drop
 	var/dismantle_product_amount = 1
 	/// Material needed to build.
 	///
-	/// * Currently only supports /obj/item/stack
+	/// * Supports /obj/item/stack
+	/// * Supports /datum/material
 	var/build_type
 	/// Amount of material needed to build.
 	var/build_cost = 1
 	/// Amount of time required to build us.
 	var/build_time = 0 SECONDS
+	/// TOOL_* or list of TOOL_* enums of what will cleanly dismantle us.
+	var/dismantle_tool
+	/// Time to dismantle with a tool.
+	var/dismantle_time = 0 SECONDS
+	#warn hook
+	/// TOOL_* or list of TOOL_* enums of what will destroy us.
+	var/destroy_tool
+	/// Time to destroy with a tool.
+	var/destroy_time = 0 SECONDS
+	#warn hook
+
+	//*                    LEGACY BELOW                    *//
 
 	var/has_base_range
 	var/has_damage_range
 	var/has_burn_range
 	var/damage_temperature
-	var/apply_thermal_conductivity
-	var/apply_heat_capacity
-
 
 	var/descriptor = "tiles"
 	var/flooring_flags
 	var/can_paint = TRUE
 	var/list/footstep_sounds = list() // key=species name, value = list of soundss
-	var/is_plating = FALSE
 	var/list/flooring_cache = list() // Cached overlays for our edges and corners and junk
-
-	//Plating types, can be overridden
-	var/plating_type = null
 
 	//Flooring Icon vars
 	var/smooth_nothing = FALSE //True/false only, optimisation

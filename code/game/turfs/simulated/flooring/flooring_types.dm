@@ -465,8 +465,6 @@
 	build_type = /obj/item/stack/rods
 	build_cost = 2
 	build_time = 30
-	apply_thermal_conductivity = 0.025
-	apply_heat_capacity = 325000
 	can_paint = 1
 
 /datum/prototype/flooring/reinforced/circuit
