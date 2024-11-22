@@ -821,10 +821,6 @@ GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
 /datum/species/proc/handle_login_special(var/mob/living/carbon/human/H)
 	return
 
-// As above.
-/datum/species/proc/handle_logout_special(var/mob/living/carbon/human/H)
-	return
-
 // Builds the HUD using species-specific icons and usable slots.
 /datum/species/proc/build_hud(var/mob/living/carbon/human/H)
 	return

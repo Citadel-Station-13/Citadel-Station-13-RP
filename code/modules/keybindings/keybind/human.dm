@@ -13,7 +13,7 @@
 
 /datum/keybinding/human/quick_equip/down(client/user)
 	var/mob/living/carbon/human/H = user.mob
-	H.quick_equip()
+	H.attempt_smart_equip()
 	return TRUE
 
 /datum/keybinding/human/quick_equipbelt

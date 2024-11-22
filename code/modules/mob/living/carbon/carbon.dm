@@ -8,6 +8,8 @@
  *           Organs can be internal or external. External organs are bodyparts.
  *           All organs, minus root organs, have a parent organ.
  *           We can have one or many root organs.
+ * * Biologies: Our life handling. Organs can have separate biologies.
+ *              See `code/modules/biology` for details.
  * * Species: Our template. Determines what we start with and should have.
  */
 /mob/living/carbon
