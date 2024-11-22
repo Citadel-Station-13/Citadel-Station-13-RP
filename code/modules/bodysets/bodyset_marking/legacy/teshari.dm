@@ -9,7 +9,7 @@
 	icon_state = "teshi_heterochromia"
 	body_parts = list(BP_HEAD)
 
-/datum/prototype/sprite_accessory/marking/tesh/teshi_eyes
+/datum/prototype/bodyset_marking/legacy/tesh/teshi_eyes
 	name = "Teshari Eyes"
 	id = "marking_teshari_eyes"
 	icon_state = "teshi_eyes"

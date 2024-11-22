@@ -6,6 +6,7 @@
 	icobase = 'icons/mob/species/zaddat/body.dmi'
 	deform  = 'icons/mob/species/zaddat/deformed_body.dmi'
 	default_bodytype = BODYTYPE_ZADDAT
+	bodyset = /datum/bodyset/organic/zaddat
 
 	brute_mod = 1.15
 	burn_mod =  1.15

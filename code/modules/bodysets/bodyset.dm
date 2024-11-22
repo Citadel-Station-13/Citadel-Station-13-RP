@@ -1,20 +1,6 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
-/// id = datum lookup for /datum/prototype/bodyset
-/// initialized by SSearly_init
-GLOBAL_LIST_EMPTY(bodyset_lookup)
-/proc/init_bodyset_lookup()
-	GLOB.bodyset_lookup = . = list()
-	for(var/datum/prototype/bodyset/path as anything in subtypesof(/datum/prototype/bodyset))
-		if(initial(path.abstract_type) == path)
-			continue
-		var/datum/prototype/bodyset/instance = new path
-		if(.[instance.id])
-			stack_trace("collision between [path] and [.[instance.id]:type]")
-			continue
-		.[instance.id] = instance
-
 /**
  * Descriptor / metadata about a set of carbon/mob body sprites.
  *
