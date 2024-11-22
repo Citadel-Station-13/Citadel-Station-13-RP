@@ -230,7 +230,7 @@ CLASSD_TURF_CREATE(/turf/simulated/floor/outdoors/rocks)
 	base_icon_state = "asteroid"
 	initial_gas_mix = ATMOSPHERE_ID_CLASSD
 	baseturfs = /turf/simulated/mineral/floor/classd
-	initial_flooring = /singleton/flooring/outdoors/classd
+	initial_flooring = /datum/prototype/flooring/outdoors/classd
 
 ///Indoor usage turfs with Class D's Atmos. Unaffected by weather etc (Important because radioactive fallout will happen on a regular basis!)
 /turf/simulated/floor/classd/indoors
@@ -400,7 +400,7 @@ LAVALAND_TURF_CREATE(/turf/simulated/mineral)
 	edge_blending_priority = 2
 	base_icon_state = "asteroid"
 	baseturfs = /turf/simulated/mineral/floor/lavaland
-	initial_flooring = /singleton/flooring/outdoors/lavaland
+	initial_flooring = /datum/prototype/flooring/outdoors/lavaland
 
 /turf/simulated/floor/outdoors/lavaland/indoors //I know this path is confusing. Basically this is a way to simulate interior caverns that don't use mapgen for specific POIs.
 	outdoors = 0

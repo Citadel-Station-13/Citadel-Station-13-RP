@@ -37,7 +37,7 @@
 	// Flooring data.
 	var/flooring_override
 	var/initial_flooring
-	var/singleton/flooring/flooring
+	var/datum/prototype/flooring/flooring
 	var/mineral = MAT_STEEL
 
 CREATE_STANDARD_TURFS(/turf/simulated/floor)
@@ -53,7 +53,7 @@ CREATE_STANDARD_TURFS(/turf/simulated/floor)
 	if(!floortype && initial_flooring)
 		floortype = initial_flooring
 	if(floortype)
-		set_flooring(get_flooring_data(floortype), TRUE)
+		set_flooring(RSflooring.fetch(floortype), TRUE)
 	else
 		footstep_sounds = base_footstep_sounds
 		update_underfloor_objects()
@@ -86,7 +86,7 @@ CREATE_STANDARD_TURFS(/turf/simulated/floor)
  * TODO: REWORK FLOORING GETTERS/INIT/SETTERS THIS IS BAD
  */
 
-/turf/simulated/floor/proc/set_flooring(singleton/flooring/newflooring, init)
+/turf/simulated/floor/proc/set_flooring(datum/prototype/flooring/newflooring, init)
 	if(flooring == newflooring)
 		if(init)
 			update_underfloor_objects()
@@ -132,7 +132,7 @@ CREATE_STANDARD_TURFS(/turf/simulated/floor)
 			flooring.drop_product(src)
 		var/newtype = flooring.get_plating_type()
 		if(newtype && !strip_bare) // Has a custom plating type to become
-			set_flooring(get_flooring_data(newtype))
+			set_flooring(RSflooring.fetch(newtype))
 		else
 			flooring = null
 			// this branch is only if we don't set flooring because otherwise it'll do it for us
