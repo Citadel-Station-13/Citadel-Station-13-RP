@@ -86,6 +86,8 @@
 	/// Time to destroy with a tool.
 	var/destroy_time = 0 SECONDS
 	#warn hook
+	/// Do we allow tile painters and similar decal appliers to paint us?
+	var/can_paint_on = TRUE
 
 	//*                    LEGACY BELOW                    *//
 
@@ -96,13 +98,10 @@
 
 	var/descriptor = "tiles"
 	var/flooring_flags
-	var/can_paint = TRUE
 	var/list/footstep_sounds = list() // key=species name, value = list of soundss
 	var/list/flooring_cache = list() // Cached overlays for our edges and corners and junk
 
 	//Flooring Icon vars
-	var/smooth_nothing = FALSE //True/false only, optimisation
-	//If true, all smoothing logic is entirely skipped
 
 	//The rest of these x_smooth vars use one of the following options
 	//SMOOTH_NONE: Ignore all of type

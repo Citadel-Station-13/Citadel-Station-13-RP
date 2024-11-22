@@ -12,7 +12,6 @@
 	damage_temperature = T0C+1400
 	flooring_flags = TURF_HAS_EDGES | TURF_HAS_CORNERS | TURF_REMOVE_CROWBAR | TURF_CAN_BREAK
 	build_type = /obj/item/stack/tile/floor/eris
-	can_paint = 1
 
 	plating_type = /datum/prototype/flooring/eris_plating/under
 
@@ -899,7 +898,6 @@ CREATE_STANDARD_TURFS(/turf/simulated/floor/outdoors/grass/heavy)
 	icon = 'icons/turf/flooring/eris/plating.dmi'
 	icon_base = "plating"
 	flooring_flags = TURF_REMOVE_WRENCH | TURF_HAS_CORNERS | TURF_HAS_EDGES | TURF_CAN_BURN | TURF_CAN_BREAK
-	can_paint = 1
 	has_base_range = 18
 	is_plating = TRUE
 

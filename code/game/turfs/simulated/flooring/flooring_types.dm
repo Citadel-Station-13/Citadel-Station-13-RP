@@ -181,7 +181,6 @@
 	damage_temperature = T0C+1400
 	flooring_flags = TURF_REMOVE_CROWBAR | TURF_CAN_BREAK | TURF_CAN_BURN
 	build_type = /obj/item/stack/tile/floor
-	can_paint = 1
 	footstep_sounds = list("human" = list(
 		'sound/effects/footstep/floor1.ogg',
 		'sound/effects/footstep/floor2.ogg',
@@ -194,7 +193,6 @@
 	icon = 'icons/turf/flooring/techfloor.dmi'
 	icon_base = "techfloor_gray"
 	build_type = /obj/item/stack/tile/floor/techgrey
-	can_paint = null
 
 /datum/prototype/flooring/tiling/tech/grid
 	icon_base = "techfloor_grid"
@@ -246,7 +244,6 @@
 	desc = "It's like the 2390's all over again."
 	icon = 'icons/turf/flooring/linoleum.dmi'
 	icon_base = "lino"
-	can_paint = 1
 	build_type = /obj/item/stack/tile/linoleum
 	flooring_flags = TURF_REMOVE_SCREWDRIVER
 
@@ -465,7 +462,6 @@
 	build_type = /obj/item/stack/rods
 	build_cost = 2
 	build_time = 30
-	can_paint = 1
 
 /datum/prototype/flooring/reinforced/circuit
 	name = "processing strata"
@@ -473,7 +469,6 @@
 	icon_base = "bcircuit"
 	build_type = null
 	flooring_flags = TURF_ACID_IMMUNE | TURF_CAN_BREAK | TURF_REMOVE_CROWBAR
-	can_paint = 1
 
 /datum/prototype/flooring/reinforced/circuit/green
 	name = "processing strata"
@@ -487,7 +482,6 @@
 	build_type = null
 	has_damage_range = 6
 	flooring_flags = TURF_ACID_IMMUNE | TURF_CAN_BREAK
-	can_paint = null
 
 /datum/prototype/flooring/outdoors/lavaland
 	name = "ash sand"
@@ -598,7 +592,6 @@
 	icon_base = "plating"
 	build_type = null
 	flooring_flags = TURF_ACID_IMMUNE | TURF_CAN_BREAK
-	can_paint = null
 
 /datum/prototype/flooring/wax
 	name = "wax floor"
