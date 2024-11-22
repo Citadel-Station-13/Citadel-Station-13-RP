@@ -5553,6 +5553,14 @@
 	},
 /turf/simulated/floor/wood/sif/indoors,
 /area/medical/reception)
+"dBE" = (
+/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/effect/paint/babyblue,
+/obj/structure/disposalpipe/segment{
+	dir = 1
+	},
+/turf/simulated/floor/plating,
+/area/medical/reception)
 "dCW" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/red{
 	dir = 8
@@ -21698,6 +21706,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled/white,
 /area/medical/reception)
 "nSz" = (
@@ -53199,7 +53208,7 @@ oDd
 nbC
 bPJ
 hKM
-cOC
+dBE
 qYk
 kcR
 sQI
