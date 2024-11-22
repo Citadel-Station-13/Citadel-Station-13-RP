@@ -13,6 +13,9 @@
  * * Species: Our template. Determines what we start with and should have.
  */
 /mob/living/carbon
+	//* Biologies *//
+	#warn impl
+
 	//* Organs *//
 	/// All /obj/item/organ/internal.
 	var/list/obj/item/organ/internal/internal_organs = list()

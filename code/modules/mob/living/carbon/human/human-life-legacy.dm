@@ -67,10 +67,6 @@
 
 	voice = GetVoice()
 
-/mob/living/carbon/human/PhysicalLife(seconds, times_fired)
-	if((. = ..()))
-		return
-
 	fall() // Prevents people from floating
 
 /mob/living/carbon/human/BiologicalLife(seconds, times_fired)

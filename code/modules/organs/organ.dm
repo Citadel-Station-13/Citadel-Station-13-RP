@@ -17,6 +17,13 @@
 	/// description for organ action; defaults to [desc]
 	var/organ_action_desc
 
+	//* Biology *//
+	/// Our biology. Set to type to init.
+	var/datum/biology/biology
+	/// Our biology's scratch space.
+	var/datum/biology_organ_state/biology_state
+	#warn impl
+
 	//* Insert / Remove *//
 	/// Always drop, except for ashing / dusting a mob.
 	///
