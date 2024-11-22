@@ -34,27 +34,28 @@
 
 	var/list/old_decals = null // Remember what decals we had between being pried up and replaced.
 
-	// Flooring data.
-	var/flooring_override
+	//* Flooring *//
+
+	/// A path or ID to resolve for initial flooring datum.
 	var/initial_flooring
+	/// Resolved flooring datum. This is a singleton, do not modify under any circumstances.
 	var/datum/prototype/flooring/flooring
-	var/mineral = MAT_STEEL
+
+	//* Flooring - Legacy *//
+
+	/// legacy: override icon state
+	var/flooring_legacy_override_state
 
 CREATE_STANDARD_TURFS(/turf/simulated/floor)
 
-/turf/simulated/floor/is_plating()
-	return !flooring
-
-/turf/simulated/floor/hides_underfloor_objects()
-	return flooring
-
 /turf/simulated/floor/Initialize(mapload, floortype)
 	. = ..()
-	if(!floortype && initial_flooring)
-		floortype = initial_flooring
 	if(floortype)
-		set_flooring(RSflooring.fetch(floortype), TRUE)
+		CRASH("additional arg detected in /floor Initialize. turfs do not have init arguments as ChangeTurf does not accept them.")
+	if(initial_flooring)
+		set_flooring(RSflooring.fetch(flooring), TRUE)
 	else
+		// todo: these are only here under else because set flooring will trigger it
 		footstep_sounds = base_footstep_sounds
 		update_underfloor_objects()
 	if(mapload && can_dirty && can_start_dirty)
@@ -62,6 +63,13 @@ CREATE_STANDARD_TURFS(/turf/simulated/floor)
 			dirt += rand(50,100)
 			update_dirt() //5% chance to start with dirt on a floor tile- give the janitor something to do
 	update_layer()
+
+/turf/simulated/floor/is_plating()
+	return !flooring
+
+#warn deal with this
+/turf/simulated/floor/hides_underfloor_objects()
+	return flooring
 
 /turf/simulated/proc/make_outdoors()
 	outdoors = TRUE
@@ -83,16 +91,76 @@ CREATE_STANDARD_TURFS(/turf/simulated/floor)
 			make_indoors()
 
 /**
- * TODO: REWORK FLOORING GETTERS/INIT/SETTERS THIS IS BAD
+ * Tear down a layer of flooring.
+ *
+ * @params
+ * * drop_product - drop dismantled product
+ * * strip_to_base - strip every layer of flooring.
+ *
+ * @return layers strpped
  */
+/turf/simulated/floor/proc/dismantle_flooring(drop_product, strip_to_base)
+	if(strip_to_base)
+		var/safety = 10
+		// incase ChangeTurf is invoked
+		var/turf/simulated/floor/self_reference_maybe = src
+		src = null
+		while(istype(self_reference_maybe) && self_reference_maybe.flooring)
+			--safety
+			if(safety < 0)
+				CRASH("infinite loop guard triggered on dismantling flooring to base.")
+			self_reference_maybe.dismantle_flooring(drop_product, FALSE)
+			++.
+	else
+		if(drop_product)
+			flooring.drop_product(src)
+		set_flooring(flooring.base_flooring)
+		. = 1
 
-/turf/simulated/floor/proc/set_flooring(datum/prototype/flooring/newflooring, init)
-	if(flooring == newflooring)
-		if(init)
-			update_underfloor_objects()
+/**
+ * Sets our flooring to a specific instance.
+ *
+ * * This will trample any variable overrides like appearance data that we have on us
+ *   in favor of the flooring's!
+ * * Passing in 'null' will clear flooring.
+ *
+ * @params
+ * * instance - the instance to use. this can be null.
+ * * init - are we being hit from Initialize()? if so, we will refrain from setting variables
+ *          already set by macros.
+ */
+/turf/simulated/floor/proc/set_flooring(datum/prototype/flooring/instance, init)
+	if(instance == flooring)
 		return
+
+	flooring = instance
+
+	var/new_mz_flags
+	if(instance)
+		if(!init || !instance.__is_not_legacy)
+			name = instance.name
+			icon = instance.icon
+			icon_state = instance.icon_state
+		new_mz_flags = instance.mz_flags
+	else
+		name = /turf/simulated/floor::name
+		icon = /turf/simulated/floor::icon
+		icon_state = /turf/simulated/floor::icon_state
+		new_mz_flags = /turf/simulated/floor::mz_flags
+
+	if(new_mz_flags & MZ_MIMIC_BELOW)
+		enable_zmimic(new_mz_flags)
+		if(mz_flags != new_mz_flags)
+			mz_flags = new_mz_flags
+	else
+		disable_zmimic()
+
+	if(!init)
+		QUEUE_SMOOTH(src)
+		QUEUE_SMOOTH_NEIGHBORS(src)
+
+	#warn below
 	make_plating(null, TRUE, TRUE)
-	flooring = newflooring
 
 	footstep_sounds = newflooring.footstep_sounds
 	// We are plating switching to flooring, swap out old_decals for decals
@@ -100,22 +168,9 @@ CREATE_STANDARD_TURFS(/turf/simulated/floor)
 	old_decals = decals
 	decals = overfloor_decals
 
-	var/check_z_flags
-	if(flooring)
-		check_z_flags = flooring.mz_flags
-	else
-		check_z_flags = initial(mz_flags)
-
-	if(check_z_flags & MZ_MIMIC_BELOW)
-		enable_zmimic(check_z_flags)
-	else
-		disable_zmimic()
-
-	if(!init)
-		QUEUE_SMOOTH(src)
-		QUEUE_SMOOTH_NEIGHBORS(src)
 	update_underfloor_objects()
 	update_layer()
+	#warn above
 
 //This proc will set floor_type to null and the update_icon() proc will then change the icon_state of the turf
 //This proc auto corrects the grass tiles' siding.
@@ -149,7 +204,7 @@ CREATE_STANDARD_TURFS(/turf/simulated/floor)
 
 	broken = null
 	burnt = null
-	flooring_override = null
+	flooring_legacy_override_state = null
 
 /turf/simulated/floor/proc/update_layer()
 	if(flooring)
@@ -225,7 +280,7 @@ CREATE_STANDARD_TURFS(/turf/simulated/floor)
 			ScrapeAway(flags = CHANGETURF_INHERIT_AIR|CHANGETURF_PRESERVE_OUTDOORS)
 			return TRUE
 
-//? Multiz
+//* Multiz *//
 
 /turf/simulated/floor/update_multiz()
 	update_ceilingless_overlay()

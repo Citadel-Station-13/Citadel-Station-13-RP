@@ -32,13 +32,13 @@ var/list/flooring_cache = list()
 		desc = flooring.desc
 		icon = flooring.icon
 
-		if(flooring_override)
-			icon_state = flooring_override
+		if(flooring_legacy_override_state)
+			icon_state = flooring_legacy_override_state
 		else
 			icon_state = flooring.icon_base
 			if(flooring.has_base_range)
 				icon_state = "[icon_state][rand(0,flooring.has_base_range)]"
-				flooring_override = icon_state
+				flooring_legacy_override_state = icon_state
 
 			// Apply edges, corners, and inner corners.
 			if(flooring.flooring_flags & TURF_HAS_EDGES)
