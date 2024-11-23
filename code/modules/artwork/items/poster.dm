@@ -2,6 +2,7 @@
 	prototype_id = "ItemPoster"
 	name = "rolled-up poster"
 	desc = "The poster comes with its own automatic adhesive mechanism, for easy pinning to any vertical surface."
+	icon = 'icons/modules/artwork/posters/poster.dmi'
 	icon_state = "rolled_poster"
 	drop_sound = 'sound/items/drop/wrapper.ogg'
 	pickup_sound = 'sound/items/pickup/wrapper.ogg'
@@ -64,9 +65,9 @@
 
 	to_chat(user, "<span class='notice'>You start placing the poster on the wall...</span>") //Looks like it's uncluttered enough. Place the poster.
 
-	var/obj/structure/poster/P = new poster_type(user.loc, get_dir(user, W), poster_design_id)
+	var/obj/structure/poster/P = new(user.loc, get_dir(user, W), poster_design_id)
 
-	flick("poster_being_set", P)
+	flick(icon('icons/modules/artwork/posters/poster.dmi', "poster_being_set"), P)
 
 	// todo: refactor
 	//playsound(W, 'sound/items/poster_being_created.ogg', 100, 1) //why the hell does placing a poster make printer sounds?
@@ -79,7 +80,7 @@
 		if(iswall(W) && user && P.loc == user.loc) //Let's check if everything is still there
 			to_chat(user, "<span class='notice'>You place the poster!</span>")
 		else
-			P.roll_and_drop(P.loc)
+			P.roll_and_drop(P.drop_location())
 
 	qdel(oldsrc)	//delete it now to cut down on sanity checks afterwards. Agouri's code supports rerolling it anyway
 

@@ -2,7 +2,7 @@
 	prototype_id = "Poster"
 	name = "poster"
 	desc = "A large piece of space-resistant printed paper."
-	icon = 'icons/obj/contraband.dmi'
+	icon = 'icons/modules/artwork/posters/poster.dmi'
 	anchored = TRUE
 
 	/// random poster design tag or tags no [poster_design_id] is filled out
@@ -69,7 +69,8 @@
 
 		visible_message("<span class='warning'>[user] rips [src] in a single, decisive motion!</span>" )
 		playsound(src.loc, 'sound/items/poster_ripped.ogg', 100, 1)
-		ruined = 1
+		ruined = TRUE
+		icon = initial(icon)
 		icon_state = "poster_ripped"
 		name = "ripped poster"
 		desc = "You can't make out anything from the poster's original print. It's ruined."
