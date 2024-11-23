@@ -622,22 +622,11 @@
 /obj/machinery/door/firedoor/glass{
 	dir = 4
 	},
-/obj/machinery/door/airlock/medical{
-	autoclose = 0;
-	frequency = 1378;
-	icon_state = "door_locked";
-	id_tag = "virology_airlock_east_exterior";
-	locked = 1;
-	name = "Virology Exterior Airlock";
-	req_one_access = null
-	},
-/obj/map_helper/access_helper/airlock/station/medical/virology,
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/item/barrier_tape_segment/engineering,
 /turf/simulated/floor/tiled/white,
 /area/medical/virology_fore_access)
 "avn" = (
@@ -18042,14 +18031,6 @@
 /obj/effect/floor_decal/corner/green/bordercorner2{
 	dir = 6
 	},
-/obj/machinery/access_button{
-	command = "cycle_ext";
-	frequency = 1379;
-	master_tag = "virology_airlock_control";
-	name = "Virology Access Button";
-	req_access = list(39);
-	pixel_x = 25
-	},
 /turf/simulated/floor/tiled/white,
 /area/medical/virology)
 "lza" = (
@@ -26448,14 +26429,6 @@
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology)
 "qDJ" = (
-/obj/machinery/embedded_controller/radio/airlock/access_controller{
-	id_tag = "virology_airlock_east";
-	name = "Virology Access Console";
-	tag_exterior_door = "virology_airlock_east_exterior";
-	tag_interior_door = "virology_airlock_east_interior";
-	pixel_y = -24;
-	frequency = 1378
-	},
 /turf/simulated/floor/tiled,
 /area/medical/virology_fore_access)
 "qDK" = (
@@ -28335,9 +28308,9 @@
 	autoclose = 0;
 	frequency = 1379;
 	icon_state = "door_locked";
-	id_tag = "virology_airlock_west_exterior";
+	id_tag = "virology_airlock_aft_exterior";
 	locked = 1;
-	name = "Virology Exterior Airlock";
+	name = "Virology Aft Exterior Airlock";
 	req_one_access = null
 	},
 /obj/map_helper/access_helper/airlock/station/medical/virology,
@@ -28347,12 +28320,11 @@
 /obj/machinery/access_button{
 	command = "cycle_ext";
 	frequency = 1379;
-	master_tag = "virology_airlock_control";
+	master_tag = "virology_airlock_aft";
 	name = "Virology Access Button";
 	pixel_y = 23;
 	req_access = list(39)
 	},
-/obj/item/barrier_tape_segment/engineering,
 /turf/simulated/floor/tiled/white,
 /area/medical/virology_aft_access)
 "rMO" = (
@@ -29486,10 +29458,10 @@
 	dir = 5
 	},
 /obj/machinery/embedded_controller/radio/airlock/access_controller{
-	id_tag = "virology_airlock_west";
-	name = "Virology Access Console";
-	tag_exterior_door = "virology_airlock_west_exterior";
-	tag_interior_door = "virology_airlock_west_interior";
+	id_tag = "virology_airlock_aft";
+	name = "Virology Aft Access Console";
+	tag_exterior_door = "virology_airlock_aft_exterior";
+	tag_interior_door = "virology_airlock_aft_interior";
 	pixel_y = -24
 	},
 /turf/simulated/floor/tiled,
@@ -30362,9 +30334,6 @@
 /obj/item/reagent_containers/glass/bucket,
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology/xenoflora)
-"tfb" = (
-/turf/simulated/floor/airless/ceiling,
-/area/medical/medbay_emt_bay)
 "tfh" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
@@ -33792,14 +33761,6 @@
 /obj/machinery/fire_alarm/east_mount,
 /obj/effect/floor_decal/borderfloorwhite/corner2,
 /obj/effect/floor_decal/corner/green/bordercorner2,
-/obj/machinery/access_button{
-	command = "cycle_int";
-	frequency = 1379;
-	master_tag = "virology_airlock_control";
-	name = "Virology Access Button";
-	pixel_y = -23;
-	req_access = list(39)
-	},
 /turf/simulated/floor/tiled/white,
 /area/medical/virology_fore_access)
 "vws" = (
@@ -36931,10 +36892,6 @@
 /obj/machinery/door/airlock/maintenance/common,
 /turf/simulated/floor/tiled,
 /area/rnd/research/researchdivision)
-"xpX" = (
-/obj/machinery/camera/network/outside,
-/turf/simulated/floor/airless/ceiling,
-/area/medical/medbay_emt_bay)
 "xqb" = (
 /obj/machinery/camera/network/civilian{
 	dir = 1
@@ -36966,9 +36923,9 @@
 	autoclose = 0;
 	frequency = 1379;
 	icon_state = "door_locked";
-	id_tag = "virology_airlock_west_interior";
+	id_tag = "virology_airlock_aft_interior";
 	locked = 1;
-	name = "Virology Interior Airlock";
+	name = "Virology Aft Interior Airlock";
 	req_one_access = null
 	},
 /obj/map_helper/access_helper/airlock/station/medical/virology,
@@ -36978,12 +36935,11 @@
 /obj/machinery/access_button{
 	command = "cycle_int";
 	frequency = 1379;
-	master_tag = "virology_airlock_control";
+	master_tag = "virology_airlock_aft";
 	name = "Virology Access Button";
 	pixel_y = 24;
 	req_access = list(39)
 	},
-/obj/item/barrier_tape_segment/engineering,
 /turf/simulated/floor/tiled/white,
 /area/medical/virology_aft_access)
 "xry" = (
@@ -37499,20 +37455,9 @@
 /obj/machinery/door/firedoor/glass{
 	dir = 4
 	},
-/obj/machinery/door/airlock/medical{
-	autoclose = 0;
-	frequency = 1378;
-	icon_state = "door_locked";
-	id_tag = "virology_airlock_east_interior";
-	locked = 1;
-	name = "Virology Interior Airlock";
-	req_one_access = null
-	},
-/obj/map_helper/access_helper/airlock/station/medical/virology,
 /obj/machinery/atmospherics/pipe/simple/hidden/black{
 	dir = 4
 	},
-/obj/item/barrier_tape_segment/engineering,
 /turf/simulated/floor/tiled/white,
 /area/medical/virology_fore_access)
 "xHy" = (
@@ -57491,9 +57436,9 @@ dvL
 hjX
 uhe
 vUs
-tfb
-tfb
-tfb
+fik
+fik
+fik
 pRW
 pRW
 pRW
@@ -57685,8 +57630,8 @@ dvL
 hjX
 uhe
 vUs
-xpX
-tfb
+brS
+fik
 pRW
 pRW
 pRW
@@ -57879,7 +57824,7 @@ dvL
 hjX
 uhe
 vUs
-tfb
+fik
 fik
 pRW
 pRW
