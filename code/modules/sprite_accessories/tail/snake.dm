@@ -1,4 +1,4 @@
-/datum/sprite_accessory/tail/snaketail
+/datum/prototype/sprite_accessory/tail/snaketail
 	name = "snake tail, colorable"
 	id = "tail_snake"
 	icon_state = "snaketail"

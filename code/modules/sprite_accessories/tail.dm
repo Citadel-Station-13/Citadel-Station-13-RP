@@ -1,5 +1,5 @@
-/datum/sprite_accessory/tail
-	abstract_type = /datum/sprite_accessory/tail
+/datum/prototype/sprite_accessory/tail
+	abstract_type = /datum/prototype/sprite_accessory/tail
 	name = "You should not see this..."
 	icon = 'icons/mob/sprite_accessories/tails.dmi'
 	do_colouration = 0 //Set to 1 to enable coloration using the tail color.
@@ -19,12 +19,12 @@
 	var/clip_mask_state = null //Icon state to generate clip mask. Clip mask is used to 'clip' off the lower part of clothing such as jumpsuits & full suits.
 	var/icon/clip_mask = null //Instantiated clip mask of given icon and state
 
-/datum/sprite_accessory/tail/New()
+/datum/prototype/sprite_accessory/tail/New()
 	. = ..()
 	if(clip_mask_icon && clip_mask_state)
 		clip_mask = icon(icon = clip_mask_icon, icon_state = clip_mask_state)
 
-/datum/sprite_accessory/tail/render(mob/for_whom, list/colors, layer_front, layer_behind, layer_side, with_base_state, with_variation, flattened)
+/datum/prototype/sprite_accessory/tail/render(mob/for_whom, list/colors, layer_front, layer_behind, layer_side, with_base_state, with_variation, flattened)
 	// awful? yes. :skull:
 	// please don't ever copy this pattern anywhere else.
 	if(with_variation == SPRITE_ACCESSORY_VARIATION_WAGGING && ani_state)
@@ -42,8 +42,8 @@
 		return ..()
 
 //For all species tails. Includes haircolored tails.
-/datum/sprite_accessory/tail/special
-	abstract_type = /datum/sprite_accessory/tail/special
+/datum/prototype/sprite_accessory/tail/special
+	abstract_type = /datum/prototype/sprite_accessory/tail/special
 	icon = 'icons/effects/species_tails_vr.dmi'
 
 // todo: sort ears by something that makes sense
@@ -65,7 +65,7 @@
 
 //? PLEASE HELP WITH THIS.
 
-/datum/sprite_accessory/tail/invisible
+/datum/prototype/sprite_accessory/tail/invisible
 	name = "Invisible (hide species-sprite tail)"
 	id = "tail_abstract"
 	icon = null

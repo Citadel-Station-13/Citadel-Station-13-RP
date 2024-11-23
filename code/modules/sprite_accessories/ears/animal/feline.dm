@@ -1,5 +1,5 @@
 // cat
-/datum/sprite_accessory/ears/kittyhc
+/datum/prototype/sprite_accessory/ears/kittyhc
 	name = "kitty, colorable"
 	id = "ears_kitty_color"
 	icon_state = "kitty"
@@ -7,7 +7,7 @@
 	legacy_use_additive_color_matrix = FALSE
 	extra_overlay = "kittyinner"
 
-/datum/sprite_accessory/ears/kittyr
+/datum/prototype/sprite_accessory/ears/kittyr
 	name = "kitty right only, colorable"
 	id = "ears_kitty_right_color"
 	icon = 'icons/mob/sprite_accessories/ears_uneven.dmi'

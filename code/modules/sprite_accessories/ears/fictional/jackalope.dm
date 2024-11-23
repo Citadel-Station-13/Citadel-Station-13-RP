@@ -1,4 +1,4 @@
-/datum/sprite_accessory/ears/jackalope
+/datum/prototype/sprite_accessory/ears/jackalope
 	name = "Jackalope Ears and Antlers"
 	id = "ears_jackalope_antlers"
 	icon = 'icons/mob/sprite_accessories/ears_32x64.dmi'

@@ -4,13 +4,9 @@
 	name = SPECIES_VASILISSAN
 	name_plural = "Vasilissans"
 
-	icobase = 'icons/mob/species/vasilissan/body.dmi'
-	deform = 'icons/mob/species/vasilissan/deformed_body.dmi'
-	preview_icon = 'icons/mob/species/vasilissan/preview.dmi'
-	husk_icon = 'icons/mob/species/vasilissan/husk.dmi'
-
+	bodyset = /datum/prototype/bodyset/organic/vasilissan
 	sprite_accessory_defaults = list(
-		SPRITE_ACCESSORY_SLOT_TAIL = /datum/sprite_accessory/tail/bodyset/vasilissan,
+		SPRITE_ACCESSORY_SLOT_TAIL = /datum/prototype/sprite_accessory/tail/bodyset/vasilissan,
 	)
 
 	vision_innate = /datum/vision/baseline/species_tier_2

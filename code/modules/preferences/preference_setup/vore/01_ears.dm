@@ -191,26 +191,26 @@
 
 	if(pref.ear_style_id)
 		pref.ear_style_id	= sanitize_inlist(pref.ear_style_id, GLOB.sprite_accessory_ears, initial(pref.ear_style_id))
-		var/datum/sprite_accessory/temp_ear_style_id =  GLOB.sprite_accessory_ears[pref.ear_style_id]
+		var/datum/prototype/sprite_accessory/temp_ear_style_id =  GLOB.sprite_accessory_ears[pref.ear_style_id]
 		if(temp_ear_style_id.apply_restrictions && (!(species_name in temp_ear_style_id.species_allowed)))
 			pref.ear_style_id = initial(pref.ear_style_id)
 	if(pref.horn_style_id)
 		pref.horn_style_id	= sanitize_inlist(pref.horn_style_id,  GLOB.sprite_accessory_ears, initial(pref.horn_style_id))
-		var/datum/sprite_accessory/temp_horn_style_id =  GLOB.sprite_accessory_ears[pref.horn_style_id]
+		var/datum/prototype/sprite_accessory/temp_horn_style_id =  GLOB.sprite_accessory_ears[pref.horn_style_id]
 		if(temp_horn_style_id.apply_restrictions && (!(species_name in temp_horn_style_id.species_allowed)))
 			pref.horn_style_id = initial(pref.horn_style_id)
 	if(pref.tail_style_id)
 		pref.tail_style_id	= sanitize_inlist(pref.tail_style_id,  GLOB.sprite_accessory_tails, initial(pref.tail_style_id))
-		var/datum/sprite_accessory/temp_tail_style_id = GLOB.sprite_accessory_tails[pref.tail_style_id]
+		var/datum/prototype/sprite_accessory/temp_tail_style_id = GLOB.sprite_accessory_tails[pref.tail_style_id]
 		if(temp_tail_style_id.apply_restrictions && (!(species_name in temp_tail_style_id.species_allowed)))
 			pref.tail_style_id = initial(pref.tail_style_id)
 	if(pref.wing_style_id)
 		pref.wing_style_id	= sanitize_inlist(pref.wing_style_id, GLOB.sprite_accessory_wings, initial(pref.wing_style_id))
-		var/datum/sprite_accessory/temp_wing_style_id = GLOB.sprite_accessory_wings[pref.wing_style_id]
+		var/datum/prototype/sprite_accessory/temp_wing_style_id = GLOB.sprite_accessory_wings[pref.wing_style_id]
 		if(temp_wing_style_id.apply_restrictions && (!(species_name in temp_wing_style_id.species_allowed)))
 			pref.wing_style_id = initial(pref.wing_style_id)
 
-/datum/category_item/player_setup_item/vore/ears/proc/should_override(datum/sprite_accessory/setting, datum/sprite_accessory/existing, datum/sprite_accessory/species)
+/datum/category_item/player_setup_item/vore/ears/proc/should_override(datum/prototype/sprite_accessory/setting, datum/prototype/sprite_accessory/existing, datum/prototype/sprite_accessory/species)
 	if(species && (existing == species))
 		// if they're set by species, only override if we're set
 		return setting != null
@@ -222,7 +222,7 @@
 	if(!ishuman(M))
 		return TRUE
 	var/mob/living/carbon/human/character = M
-	var/datum/sprite_accessory/S = GLOB.sprite_accessory_ears[pref.ear_style_id]
+	var/datum/prototype/sprite_accessory/S = GLOB.sprite_accessory_ears[pref.ear_style_id]
 	// todo: this is shitcode
 	if(should_override(S, character.ear_style, character.species?.sprite_accessory_defaults?[SPRITE_ACCESSORY_SLOT_EARS]))
 		character.ear_style = S
@@ -283,7 +283,7 @@
 /datum/category_item/player_setup_item/vore/ears/content(datum/preferences/prefs, mob/user, data)
 	. += "<h2>Appearance and Custom Species Settings</h2>"
 
-	var/datum/sprite_accessory/rendering
+	var/datum/prototype/sprite_accessory/rendering
 
 	var/ear_display = "Normal"
 	if(pref.ear_style_id)
@@ -371,9 +371,9 @@
 	else if(href_list["ear_style"])
 		// Construct the list of names allowed for this user.
 		var/list/pretty_ear_styles = list("Normal" = null)
-		var/datum/sprite_accessory/ears/current = pref.ear_style_id && GLOB.sprite_accessory_ears[pref.ear_style_id]
+		var/datum/prototype/sprite_accessory/ears/current = pref.ear_style_id && GLOB.sprite_accessory_ears[pref.ear_style_id]
 		for(var/id in GLOB.sprite_accessory_ears)
-			var/datum/sprite_accessory/ears/instance = GLOB.sprite_accessory_ears[id]
+			var/datum/prototype/sprite_accessory/ears/instance = GLOB.sprite_accessory_ears[id]
 			if(((!instance.apply_restrictions) || (species_name in instance.species_allowed)))
 				pretty_ear_styles[instance.name] = id
 
@@ -414,9 +414,9 @@
 	else if(href_list["horn_style"])
 		// Construct the list of names allowed for this user.
 		var/list/pretty_horn_styles = list("Normal" = null)
-		var/datum/sprite_accessory/ears/current = pref.horn_style_id && GLOB.sprite_accessory_ears[pref.horn_style_id]
+		var/datum/prototype/sprite_accessory/ears/current = pref.horn_style_id && GLOB.sprite_accessory_ears[pref.horn_style_id]
 		for(var/id in GLOB.sprite_accessory_ears)
-			var/datum/sprite_accessory/ears/instance = GLOB.sprite_accessory_ears[id]
+			var/datum/prototype/sprite_accessory/ears/instance = GLOB.sprite_accessory_ears[id]
 			if(((!instance.apply_restrictions) || (species_name in instance.species_allowed)))
 				pretty_horn_styles[instance.name] = id
 
@@ -457,9 +457,9 @@
 	else if(href_list["tail_style"])
 		// Construct the list of names allowed for this user.
 		var/list/pretty_tail_styles = list("Normal" = null)
-		var/datum/sprite_accessory/tail/current = pref.tail_style_id && GLOB.sprite_accessory_tails[pref.tail_style_id]
+		var/datum/prototype/sprite_accessory/tail/current = pref.tail_style_id && GLOB.sprite_accessory_tails[pref.tail_style_id]
 		for(var/id in GLOB.sprite_accessory_tails)
-			var/datum/sprite_accessory/tail/instance = GLOB.sprite_accessory_tails[id]
+			var/datum/prototype/sprite_accessory/tail/instance = GLOB.sprite_accessory_tails[id]
 			if(((!instance.apply_restrictions) || (species_name in instance.species_allowed)))
 				pretty_tail_styles[instance.name] = id
 
@@ -500,9 +500,9 @@
 	else if(href_list["wing_style"])
 		// Construct the list of names allowed for this user.
 		var/list/pretty_wing_styles = list("Normal" = null)
-		var/datum/sprite_accessory/wing/current = pref.wing_style_id && GLOB.sprite_accessory_wings[pref.wing_style_id]
+		var/datum/prototype/sprite_accessory/wing/current = pref.wing_style_id && GLOB.sprite_accessory_wings[pref.wing_style_id]
 		for(var/id in GLOB.sprite_accessory_wings)
-			var/datum/sprite_accessory/wing/instance = GLOB.sprite_accessory_wings[id]
+			var/datum/prototype/sprite_accessory/wing/instance = GLOB.sprite_accessory_wings[id]
 			if(((!instance.apply_restrictions) || (species_name in instance.species_allowed)))
 				pretty_wing_styles[instance.name] = id
 

@@ -13,14 +13,9 @@
 
 	mob_physiology_modifier = /datum/physiology_modifier/intrinsic/species/unathi
 
-	// icon_template = 'icons/mob/species/template_tall.dmi' //TODO: Tall Unathi :D
-	icobase       = 'icons/mob/species/unathi/body_greyscale.dmi'
-	deform        = 'icons/mob/species/unathi/deformed_body_greyscale.dmi'
-	husk_icon     = 'icons/mob/species/unathi/husk.dmi'
-	preview_icon  = 'icons/mob/species/unathi/preview.dmi'
-
+	bodyset = /datum/prototype/bodyset/organic/unathi
 	sprite_accessory_defaults = list(
-		SPRITE_ACCESSORY_SLOT_TAIL = /datum/sprite_accessory/tail/bodyset/unathi,
+		SPRITE_ACCESSORY_SLOT_TAIL = /datum/prototype/sprite_accessory/tail/bodyset/unathi,
 	)
 
 	blurb = {"

@@ -784,12 +784,12 @@
 		update_eyes()
 
 	// hair
-	var/list/all_hairs = typesof(/datum/sprite_accessory/hair) - /datum/sprite_accessory/hair
+	var/list/all_hairs = typesof(/datum/prototype/sprite_accessory/hair) - /datum/prototype/sprite_accessory/hair
 	var/list/hairs = list()
 
 	// loop through potential hairs
 	for(var/x in all_hairs)
-		var/datum/sprite_accessory/hair/H = new x // create new hair datum based on type x
+		var/datum/prototype/sprite_accessory/hair/H = new x // create new hair datum based on type x
 		hairs.Add(H.name) // add hair name to hairs
 		qdel(H) // delete the hair after it's all done
 
@@ -800,11 +800,11 @@
 		h_style = new_style
 
 	// facial hair
-	var/list/all_fhairs = typesof(/datum/sprite_accessory/facial_hair) - /datum/sprite_accessory/facial_hair
+	var/list/all_fhairs = typesof(/datum/prototype/sprite_accessory/facial_hair) - /datum/prototype/sprite_accessory/facial_hair
 	var/list/fhairs = list()
 
 	for(var/x in all_fhairs)
-		var/datum/sprite_accessory/facial_hair/H = new x
+		var/datum/prototype/sprite_accessory/facial_hair/H = new x
 		fhairs.Add(H.name)
 		qdel(H)
 
@@ -1141,8 +1141,8 @@
 
 	//! FUCK FUCK FUCK FUCK FUCK FUCK FUCK
 	for(var/key in species.sprite_accessory_defaults)
-		var/datum/sprite_accessory/accessory = species.sprite_accessory_defaults[key]
-		var/datum/sprite_accessory/existing = get_sprite_accessory(key)
+		var/datum/prototype/sprite_accessory/accessory = species.sprite_accessory_defaults[key]
+		var/datum/prototype/sprite_accessory/existing = get_sprite_accessory(key)
 		if(existing && old_species?.sprite_accessory_defaults?[key] != existing)
 			continue
 		switch(key)

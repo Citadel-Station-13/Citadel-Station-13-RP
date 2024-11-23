@@ -1,4 +1,4 @@
-/datum/sprite_accessory/wing/angel
+/datum/prototype/sprite_accessory/wing/angel
 	name = "angel wings"
 	id = "angelwings"
 	icon = 'icons/mob/sprite_accessory/wings/feathered-angel.dmi'
@@ -8,7 +8,7 @@
 	icon_sidedness = SPRITE_ACCESSORY_SIDEDNESS_FRONT_BEHIND
 
 //64x48 Wings
-/datum/sprite_accessory/wing/seraph
+/datum/prototype/sprite_accessory/wing/seraph
 	name = "seraphim wings (colorable)"
 	id = "wing_seraph"
 	icon = 'icons/mob/sprite_accessory/wings/feathered-angel-64x48.dmi'
@@ -19,7 +19,7 @@
 	do_colouration = 1
 	legacy_use_additive_color_matrix = FALSE
 
-/datum/sprite_accessory/wing/seraph_eyes
+/datum/prototype/sprite_accessory/wing/seraph_eyes
 	name = "seraphim wings (colorable, eyes)"
 	id = "wing_serapheye"
 	icon = 'icons/mob/sprite_accessory/wings/feathered-angel-64x48.dmi'

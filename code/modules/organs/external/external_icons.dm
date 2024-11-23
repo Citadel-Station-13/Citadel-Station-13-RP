@@ -98,7 +98,7 @@ GLOBAL_LIST_EMPTY(limb_icon_cache)
 
 	//Head markings
 	for(var/M in markings)
-		var/datum/sprite_accessory/marking/mark_style = markings[M]["datum"]
+		var/datum/prototype/sprite_accessory/marking/mark_style = markings[M]["datum"]
 		var/icon/mark_s = new/icon("icon" = mark_style.icon, "icon_state" = "[mark_style.icon_state]-[organ_tag]")
 		mark_s.Blend(markings[M]["color"], mark_style.legacy_use_additive_color_matrix? ICON_ADD : ICON_MULTIPLY)
 		add_overlay(mark_s) //So when it's not on your body, it has icons
@@ -152,7 +152,7 @@ GLOBAL_LIST_EMPTY(limb_icon_cache)
 			//Body markings, actually does not include head this time. Done separately above.
 			if(!istype(src,/obj/item/organ/external/head))
 				for(var/M in markings)
-					var/datum/sprite_accessory/marking/mark_style = markings[M]["datum"]
+					var/datum/prototype/sprite_accessory/marking/mark_style = markings[M]["datum"]
 					var/icon/mark_s = new/icon("icon" = mark_style.icon, "icon_state" = "[mark_style.icon_state]-[organ_tag]")
 					mark_s.Blend(markings[M]["color"], mark_style.legacy_use_additive_color_matrix? ICON_ADD : ICON_MULTIPLY)
 					add_overlay(mark_s) //So when it's not on your body, it has icons
@@ -172,7 +172,7 @@ GLOBAL_LIST_EMPTY(limb_icon_cache)
 		apply_colouration(mob_icon)
 		if(owner && owner.synth_markings)
 			for(var/M in markings)
-				var/datum/sprite_accessory/marking/mark_style = markings[M]["datum"]
+				var/datum/prototype/sprite_accessory/marking/mark_style = markings[M]["datum"]
 				var/icon/mark_s = new/icon("icon" = mark_style.icon, "icon_state" = "[mark_style.icon_state]-[organ_tag]")
 				mark_s.Blend(markings[M]["color"], mark_style.legacy_use_additive_color_matrix? ICON_ADD : ICON_MULTIPLY)
 				add_overlay(mark_s) //So when it's not on your body, it has icons

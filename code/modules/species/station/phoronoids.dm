@@ -5,10 +5,7 @@
 	name_plural = "Phoronoids"
 	default_bodytype = BODYTYPE_PHORONOID
 
-	icobase      = 'icons/mob/species/phoronoid/body.dmi'
-	deform       = 'icons/mob/species/phoronoid/body.dmi'
-	preview_icon = 'icons/mob/species/phoronoid/preview.dmi'
-	husk_icon    = 'icons/mob/species/phoronoid/husk.dmi'
+	bodyset = /datum/prototype/bodyset/organic/phoronoid
 
 	intrinsic_languages = LANGUAGE_ID_PHORONOID
 	max_additional_languages = 3

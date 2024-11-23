@@ -196,7 +196,7 @@
 		CRASH("attempted to load an instance that collides with a currently loaded instance on type.")
 	if(!instance.register())
 		. = FALSE
-		CRASH("instance refused to unregister. this is undefined behavior.")
+		CRASH("instance refused to register. this is undefined behavior.")
 	id_lookup[instance.id] = instance
 	if(instance.hardcoded)
 		// invalidate cache

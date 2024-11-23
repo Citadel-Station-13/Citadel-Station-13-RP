@@ -7,11 +7,11 @@
 
 	icobase      = 'icons/mob/species/shadekin/body.dmi'
 	deform       = 'icons/mob/species/shadekin/body.dmi'
-	preview_icon = 'icons/mob/species/shadekin/preview_blackeyed.dmi'
 	husk_icon    = 'icons/mob/species/shadekin/husk.dmi'
 
+	bodyset = /datum/prototype/bodyset/organic/shadekin
 	sprite_accessory_defaults = list(
-		SPRITE_ACCESSORY_SLOT_TAIL = /datum/sprite_accessory/tail/bodyset/shadekin,
+		SPRITE_ACCESSORY_SLOT_TAIL = /datum/prototype/sprite_accessory/tail/bodyset/shadekin,
 	)
 
 	blurb = {"

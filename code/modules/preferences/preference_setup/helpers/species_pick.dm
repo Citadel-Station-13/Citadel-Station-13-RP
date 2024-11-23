@@ -54,13 +54,13 @@
 	// hair/fhair
 	var/list/valid_hair = get_valid_hairstyles()
 	var/list/valid_fhair = get_valid_facialhairstyles()
-	var/datum/sprite_accessory/HS = GLOB.sprite_accessory_hair[h_style_id]
-	var/datum/sprite_accessory/FS = GLOB.sprite_accessory_facial_hair[f_style_id]
+	var/datum/prototype/sprite_accessory/HS = GLOB.sprite_accessory_hair[h_style_id]
+	var/datum/prototype/sprite_accessory/FS = GLOB.sprite_accessory_facial_hair[f_style_id]
 	if(!(HS.name in valid_hair))
-		var/datum/sprite_accessory/hair/H = /datum/sprite_accessory/hair/legacy/bald
+		var/datum/prototype/sprite_accessory/hair/H = /datum/prototype/sprite_accessory/hair/legacy/bald
 		h_style_id = initial(H.id)
 	if(!(FS.name in valid_fhair))
-		var/datum/sprite_accessory/facial_hair/FH = /datum/sprite_accessory/facial_hair/legacy/shaved
+		var/datum/prototype/sprite_accessory/facial_hair/FH = /datum/prototype/sprite_accessory/facial_hair/legacy/shaved
 		f_style_id = initial(FH.id)
 	// limbs/markings
 	reset_limbs()

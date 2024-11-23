@@ -20,11 +20,6 @@ var/list/wrapped_species_by_ref = list()
 /datum/species/shapeshifter/get_valid_shapeshifter_forms(mob/living/carbon/human/H)
 	return valid_transform_species
 
-/datum/species/shapeshifter/get_icobase(mob/living/carbon/human/H, get_deform)
-	if(!H) return ..(null, get_deform)
-	var/datum/species/S = SScharacters.resolve_species_name(wrapped_species_by_ref["\ref[H]"])
-	return S.get_icobase(H, get_deform)
-
 /datum/species/shapeshifter/real_race_key(mob/living/carbon/human/H)
 	return "[..()]-[wrapped_species_by_ref["\ref[H]"]]"
 
@@ -48,28 +43,16 @@ var/list/wrapped_species_by_ref = list()
 	var/datum/species/S = SScharacters.resolve_species_name(wrapped_species_by_ref["\ref[H]"])
 	return S.get_blood_mask(H)
 
-/datum/species/shapeshifter/get_damage_mask(mob/living/carbon/human/H)
+/datum/species/shapeshifter/get_effective_bodyset(mob/living/carbon/human/H)
 	if(!H) return ..()
 	var/datum/species/S = SScharacters.resolve_species_name(wrapped_species_by_ref["\ref[H]"])
-	return S.get_damage_mask(H)
-
-/datum/species/shapeshifter/get_damage_overlays(mob/living/carbon/human/H)
-	if(!H) return ..()
-	var/datum/species/S = SScharacters.resolve_species_name(wrapped_species_by_ref["\ref[H]"])
-	return S.get_damage_overlays(H)
+	return S.get_effective_bodyset(H)
 
 /datum/species/shapeshifter/get_default_sprite_accessory(mob/living/carbon/human/character, slot)
 	if(!character)
 		return ..()
 	var/datum/species/S = SScharacters.resolve_species_name(wrapped_species_by_ref["\ref[character]"])
 	return S.get_default_sprite_accessory(arglist(args))
-
-/datum/species/shapeshifter/get_husk_icon(mob/living/carbon/human/H)
-	if(H)
-		var/datum/species/S = SScharacters.resolve_species_name(wrapped_species_by_ref["\ref[H]"])
-		if(S)
-			return S.get_husk_icon(H)
-	 return ..()
 
 /datum/species/shapeshifter/handle_post_spawn(mob/living/carbon/human/H)
 	..()
@@ -100,7 +83,7 @@ var/list/wrapped_species_by_ref = list()
 	var/list/valid_facialhairstyles = list()
 	var/list/valid_gradstyles = GLOB.hair_gradients
 	for(var/hairstyle in GLOB.legacy_hair_lookup)
-		var/datum/sprite_accessory/S = GLOB.legacy_hair_lookup[hairstyle]
+		var/datum/prototype/sprite_accessory/S = GLOB.legacy_hair_lookup[hairstyle]
 		if(gender == MALE && S.random_generation_gender == FEMALE)
 			continue
 		if(gender == FEMALE && S.random_generation_gender == MALE)
@@ -109,7 +92,7 @@ var/list/wrapped_species_by_ref = list()
 			continue
 		valid_hairstyles += hairstyle
 	for(var/facialhairstyle in GLOB.legacy_facial_hair_lookup)
-		var/datum/sprite_accessory/S = GLOB.legacy_facial_hair_lookup[facialhairstyle]
+		var/datum/prototype/sprite_accessory/S = GLOB.legacy_facial_hair_lookup[facialhairstyle]
 		if(!isnull(S.random_generation_gender) && gender != S.random_generation_gender)
 			continue
 		if(S.apply_restrictions && !(species.get_bodytype_legacy(src) in S.species_allowed))
@@ -293,7 +276,7 @@ var/list/wrapped_species_by_ref = list()
 	// Construct the list of names allowed for this user.
 	var/list/pretty_ear_styles = list("Normal" = null)
 	for(var/path in GLOB.legacy_ears_lookup)
-		var/datum/sprite_accessory/ears/instance = GLOB.legacy_ears_lookup[path]
+		var/datum/prototype/sprite_accessory/ears/instance = GLOB.legacy_ears_lookup[path]
 		pretty_ear_styles[instance.name] = path
 
 	// Present choice to user
@@ -346,7 +329,7 @@ var/list/wrapped_species_by_ref = list()
 	// Construct the list of names allowed for this user.
 	var/list/pretty_horn_styles = list("Normal" = null)
 	for(var/path in GLOB.legacy_ears_lookup)
-		var/datum/sprite_accessory/ears/instance = GLOB.legacy_ears_lookup[path]
+		var/datum/prototype/sprite_accessory/ears/instance = GLOB.legacy_ears_lookup[path]
 		pretty_horn_styles[instance.name] = path
 
 	// Present choice to user
@@ -399,7 +382,7 @@ var/list/wrapped_species_by_ref = list()
 	// Construct the list of names allowed for this user.
 	var/list/pretty_tail_styles = list("Normal" = null)
 	for(var/path in GLOB.legacy_tail_lookup)
-		var/datum/sprite_accessory/tail/instance = GLOB.legacy_tail_lookup[path]
+		var/datum/prototype/sprite_accessory/tail/instance = GLOB.legacy_tail_lookup[path]
 		pretty_tail_styles[instance.name] = path
 
 	// Present choice to user
@@ -452,7 +435,7 @@ var/list/wrapped_species_by_ref = list()
 	// Construct the list of names allowed for this user.
 	var/list/pretty_wing_styles = list("None" = null)
 	for(var/path in GLOB.legacy_wing_lookup)
-		var/datum/sprite_accessory/wing/instance = GLOB.legacy_wing_lookup[path]
+		var/datum/prototype/sprite_accessory/wing/instance = GLOB.legacy_wing_lookup[path]
 		pretty_wing_styles[instance.name] = path
 
 	// Present choice to user
