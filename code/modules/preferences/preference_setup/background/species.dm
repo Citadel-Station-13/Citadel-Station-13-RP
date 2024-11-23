@@ -7,7 +7,7 @@
 
 /datum/category_item/player_setup_item/background/char_species/content(datum/preferences/prefs, mob/user, data)
 	. = list()
-	var/datum/character_species/CS = prefs.character_species_datum()
+	var/datum/species/CS = prefs.character_species_datum()
 	. += "<center>"
 	. += "<b>Species</b><br>[CS.name] - \[[href_simple(prefs, "change", "CHANGE")]\]"
 	if(CS.species_spawn_flags & SPECIES_SPAWN_RESTRICTED)
@@ -25,7 +25,7 @@
 	. += "</div>"
 
 /datum/category_item/player_setup_item/background/char_species/spawn_checks(datum/preferences/prefs, data, flags, list/errors, list/warnings)
-	var/datum/character_species/CS = SScharacters.resolve_character_species(data)
+	var/datum/species/CS = SScharacters.resolve_character_species(data)
 	if((CS.species_spawn_flags & SPECIES_SPAWN_RESTRICTED) && !(flags & PREF_COPY_TO_NO_CHECK_SPECIES))
 		errors?.Add(SPAN_WARNING("[CS.name] is a restricted species. You cannot join as this as most normal roles."))
 		return FALSE
@@ -36,7 +36,7 @@
 
 /datum/category_item/player_setup_item/background/char_species/filter_data(datum/preferences/prefs, data, list/errors)
 	// resolve
-	var/datum/character_species/CS = SScharacters.resolve_character_species(data)
+	var/datum/species/CS = SScharacters.resolve_character_species(data)
 	if(CS)
 		// cool we found it
 		// but also, make sure we don't, for some reason, mismatch real species
@@ -52,7 +52,7 @@
 /datum/category_item/player_setup_item/background/char_species/informed_default_value(datum/preferences/prefs, randomizing)
 	// do they have a valid real species we can use?
 	var/real_id = prefs.get_character_data(CHARACTER_DATA_REAL_SPECIES)
-	var/datum/character_species/CS = SScharacters.resolve_character_species(real_id)
+	var/datum/species/CS = SScharacters.resolve_character_species(real_id)
 	if(CS)
 		return real_id
 	// no :(
@@ -100,7 +100,7 @@
 	return get_character_data(CHARACTER_DATA_CHAR_SPECIES)
 
 /datum/preferences/proc/character_species_datum()
-	RETURN_TYPE(/datum/character_species)
+	RETURN_TYPE(/datum/species)
 	return SScharacters.resolve_character_species(get_character_data(CHARACTER_DATA_CHAR_SPECIES))
 
 /datum/preferences/proc/character_species_name()

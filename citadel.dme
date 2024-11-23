@@ -4817,7 +4817,6 @@
 #include "code\modules\shuttles\shuttle\shuttle_port.dm"
 #include "code\modules\shuttles\shuttle\shuttle_template.dm"
 #include "code\modules\species\abilites.dm"
-#include "code\modules\species\character_species.dm"
 #include "code\modules\species\physiology.dm"
 #include "code\modules\species\species.dm"
 #include "code\modules\species\species_attack.dm"
