@@ -9,7 +9,7 @@
 	pickup_sound = 'sound/items/pickup/wrapper.ogg'
 	var/serial_number = null
 
-	var/poster_type = /obj/structure/sign/poster
+	var/poster_type = /obj/structure/poster
 
 /obj/item/poster/Initialize(mapload, given_serial = 0)
 	. = ..()
@@ -38,13 +38,13 @@
 
 	//just check if there is a poster on or adjacent to the wall
 	var/stuff_on_wall = 0
-	if (locate(/obj/structure/sign/poster) in W)
+	if (locate(/obj/structure/poster) in W)
 		stuff_on_wall = 1
 
 	//crude, but will cover most cases. We could do stuff like check pixel_x/y but it's not really worth it.
 	for (var/dir in GLOB.cardinal)
 		var/turf/T = get_step(W, dir)
-		if (locate(/obj/structure/sign/poster) in T)
+		if (locate(/obj/structure/poster) in T)
 			stuff_on_wall = 1
 			break
 
@@ -54,7 +54,7 @@
 
 	to_chat(user, "<span class='notice'>You start placing the poster on the wall...</span>") //Looks like it's uncluttered enough. Place the poster.
 
-	var/obj/structure/sign/poster/P = new poster_type(user.loc, get_dir(user, W), serial_number, src.type)
+	var/obj/structure/poster/P = new poster_type(user.loc, get_dir(user, W), serial_number, src.type)
 
 	flick("poster_being_set", P)
 	//playsound(W, 'sound/items/poster_being_created.ogg', 100, 1) //why the hell does placing a poster make printer sounds?
@@ -75,7 +75,7 @@
 //NT subtype
 /obj/item/poster/nanotrasen
 	icon_state = "rolled_poster_nt"
-	poster_type = /obj/structure/sign/poster/nanotrasen
+	poster_type = /obj/structure/poster/nanotrasen
 
 /obj/item/poster/nanotrasen/Initialize(mapload, given_serial = 0)
 	if(given_serial == 0)
@@ -86,11 +86,13 @@
 
 //############################## THE ACTUAL DECALS ###########################
 
-/obj/structure/sign/poster
+/obj/structure/poster
 	name = "poster"
 	desc = "A large piece of space-resistant printed paper. "
 	icon = 'icons/obj/contraband.dmi'
-	anchored = 1
+	anchored = TRUE
+
+
 	var/serial_number	//Will hold the value of src.loc if nobody initialises it
 	var/poster_type		//So mappers can specify a desired poster
 	var/ruined = 0
@@ -98,7 +100,7 @@
 	var/roll_type
 	var/poster_set = FALSE
 
-/obj/structure/sign/poster/Initialize(mapload, placement_dir, serial, itemtype = /obj/item/poster)
+/obj/structure/poster/Initialize(mapload, placement_dir, serial, itemtype = /obj/item/poster)
 	. = ..(mapload)
 
 	if(!serial)
@@ -126,21 +128,21 @@
 			pixel_x = -32
 			pixel_y = 0
 
-/obj/structure/sign/poster/Initialize(mapload)
+/obj/structure/poster/Initialize(mapload)
 	. = ..()
 	if (poster_type)
 		var/path = text2path(poster_type)
 		var/datum/poster/design = new path
 		set_poster(design)
 
-/obj/structure/sign/poster/proc/set_poster(var/datum/poster/design)
+/obj/structure/poster/proc/set_poster(var/datum/poster/design)
 	name = "[initial(name)] - [design.name]"
 	desc = "[initial(desc)] [design.desc]"
 	icon_state = design.icon_state // poster[serial_number]
 
 	poster_set = TRUE
 
-/obj/structure/sign/poster/attackby(obj/item/W as obj, mob/user as mob)
+/obj/structure/poster/attackby(obj/item/W as obj, mob/user as mob)
 	if(W.is_wirecutter())
 		playsound(src.loc, W.tool_sound, 100, 1)
 		if(ruined)
@@ -151,7 +153,7 @@
 			roll_and_drop(user.loc)
 		return
 
-/obj/structure/sign/poster/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
+/obj/structure/poster/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 
 	if(ruined)
 		return
@@ -169,7 +171,7 @@
 		desc = "You can't make out anything from the poster's original print. It's ruined."
 		add_fingerprint(user)
 
-/obj/structure/sign/poster/proc/roll_and_drop(turf/newloc)
+/obj/structure/poster/proc/roll_and_drop(turf/newloc)
 	new roll_type(newloc, serial_number)
 	qdel(src)
 
@@ -181,10 +183,10 @@
 	var/icon_state=""
 
 // NT poster subtype.
-/obj/structure/sign/poster/nanotrasen
+/obj/structure/poster/nanotrasen
 	roll_type = /obj/item/poster/nanotrasen
 
-/obj/structure/sign/poster/nanotrasen/Initialize(mapload, placement_dir, serial, itemtype = /obj/item/poster/nanotrasen)
+/obj/structure/poster/nanotrasen/Initialize(mapload, placement_dir, serial, itemtype = /obj/item/poster/nanotrasen)
 	if(!serial)
 		serial = rand(1, NT_poster_designs.len)
 

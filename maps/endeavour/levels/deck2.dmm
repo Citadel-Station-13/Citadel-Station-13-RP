@@ -3225,7 +3225,7 @@
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d1starboardafthall)
 "ces" = (
-/obj/structure/sign/poster/nanotrasen{
+/obj/structure/poster/nanotrasen{
 	pixel_x = 32
 	},
 /obj/machinery/atmospherics/component/unary/vent_pump/on{

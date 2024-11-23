@@ -1870,7 +1870,7 @@
 /area/quartermaster/office)
 "dU" = (
 /obj/structure/undies_wardrobe,
-/obj/structure/sign/poster/nanotrasen{
+/obj/structure/poster/nanotrasen{
 	pixel_y = -32
 	},
 /obj/effect/floor_decal/corner/lime{
@@ -3116,7 +3116,7 @@
 /obj/machinery/door/window/northright{
 	dir = 2
 	},
-/obj/structure/sign/poster/nanotrasen{
+/obj/structure/poster/nanotrasen{
 	pixel_x = 32
 	},
 /turf/simulated/floor/tiled,
@@ -7005,7 +7005,7 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
-/obj/structure/sign/poster/nanotrasen{
+/obj/structure/poster/nanotrasen{
 	pixel_y = 32
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -7388,7 +7388,7 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
-/obj/structure/sign/poster/nanotrasen{
+/obj/structure/poster/nanotrasen{
 	pixel_y = 32
 	},
 /turf/simulated/floor/tiled,
@@ -9476,7 +9476,7 @@
 "ti" = (
 /obj/structure/closet/wardrobe/suit,
 /obj/machinery/light,
-/obj/structure/sign/poster/nanotrasen{
+/obj/structure/poster/nanotrasen{
 	pixel_y = -32
 	},
 /obj/effect/floor_decal/corner/lime{
@@ -12600,7 +12600,7 @@
 /area/chapel/main)
 "zs" = (
 /obj/machinery/door/window/northright,
-/obj/structure/sign/poster/nanotrasen{
+/obj/structure/poster/nanotrasen{
 	pixel_x = 32
 	},
 /turf/simulated/floor/tiled,
@@ -13286,7 +13286,7 @@
 /obj/machinery/camera/network/tether{
 	dir = 4
 	},
-/obj/structure/sign/poster/nanotrasen{
+/obj/structure/poster/nanotrasen{
 	pixel_x = -32
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals5{
@@ -16620,7 +16620,7 @@
 "HI" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /obj/machinery/camera/network/civilian,
-/obj/structure/sign/poster/nanotrasen{
+/obj/structure/poster/nanotrasen{
 	pixel_y = 32
 	},
 /turf/simulated/floor/wood,
@@ -17906,7 +17906,7 @@
 "Kx" = (
 /obj/structure/table/steel,
 /obj/item/material/ashtray/glass,
-/obj/structure/sign/poster/nanotrasen{
+/obj/structure/poster/nanotrasen{
 	pixel_x = -32
 	},
 /obj/random/maintenance/clean,
@@ -18794,7 +18794,7 @@
 /obj/machinery/light{
 	dir = 4
 	},
-/obj/structure/sign/poster/nanotrasen{
+/obj/structure/poster/nanotrasen{
 	pixel_x = 32
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals5{
@@ -20406,7 +20406,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 10
 	},
-/obj/structure/sign/poster/nanotrasen{
+/obj/structure/poster/nanotrasen{
 	pixel_y = -32
 	},
 /turf/simulated/floor/tiled,
@@ -20727,7 +20727,7 @@
 /area/tether/station/visitorhallway/office)
 "Qg" = (
 /obj/machinery/vending/giftvendor,
-/obj/structure/sign/poster/nanotrasen{
+/obj/structure/poster/nanotrasen{
 	pixel_x = -32
 	},
 /turf/simulated/floor/tiled/monotile,
@@ -20757,7 +20757,7 @@
 /obj/structure/bed/chair/wood{
 	dir = 1
 	},
-/obj/structure/sign/poster/nanotrasen{
+/obj/structure/poster/nanotrasen{
 	pixel_y = -32
 	},
 /turf/simulated/floor/wood,
@@ -25409,7 +25409,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals7{
 	dir = 1
 	},
-/obj/structure/sign/poster/nanotrasen{
+/obj/structure/poster/nanotrasen{
 	pixel_y = -32
 	},
 /turf/simulated/floor/tiled,

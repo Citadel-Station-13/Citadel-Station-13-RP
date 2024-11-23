@@ -77,7 +77,7 @@
 /obj/effect/floor_decal/corner/yellow/border{
 	dir = 1
 	},
-/obj/structure/sign/poster/nanotrasen{
+/obj/structure/poster/nanotrasen{
 	pixel_y = 32
 	},
 /turf/simulated/floor/tiled/steel_dirty/lavaland,
@@ -952,7 +952,7 @@
 /obj/effect/floor_decal/spline/fancy{
 	dir = 8
 	},
-/obj/structure/sign/poster{
+/obj/structure/poster{
 	pixel_x = 32
 	},
 /turf/simulated/floor/wood/lavaland,
@@ -1093,7 +1093,7 @@
 /turf/simulated/floor/tiled/steel_dirty/lavaland,
 /area/lavaland/dungeon/facility)
 "VI" = (
-/obj/structure/sign/poster/nanotrasen{
+/obj/structure/poster/nanotrasen{
 	pixel_y = 32
 	},
 /turf/simulated/floor/tiled/steel_dirty/lavaland,

@@ -507,7 +507,7 @@
 "bq" = (
 /obj/structure/bed/padded,
 /obj/item/bedsheet/hos,
-/obj/structure/sign/poster{
+/obj/structure/poster{
 	pixel_y = -32
 	},
 /turf/simulated/shuttle/floor/black,
@@ -1200,7 +1200,7 @@
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/trade)
 "cW" = (
-/obj/structure/sign/poster{
+/obj/structure/poster{
 	pixel_y = -32
 	},
 /turf/simulated/shuttle/floor/black,

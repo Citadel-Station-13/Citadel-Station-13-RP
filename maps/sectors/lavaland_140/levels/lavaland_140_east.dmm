@@ -43,7 +43,7 @@
 /area/lavaland/east/transit)
 "aC" = (
 /obj/structure/table/woodentable,
-/obj/structure/sign/poster/nanotrasen{
+/obj/structure/poster/nanotrasen{
 	pixel_y = 32
 	},
 /turf/simulated/floor/wood/lavaland,
@@ -588,7 +588,7 @@
 /obj/structure/bed/chair/wood{
 	dir = 8
 	},
-/obj/structure/sign/poster{
+/obj/structure/poster{
 	pixel_y = 32
 	},
 /turf/simulated/floor/tiled/lavaland,
@@ -1063,7 +1063,7 @@
 "vs" = (
 /obj/structure/bed,
 /obj/item/bedsheet/cosmos,
-/obj/structure/sign/poster{
+/obj/structure/poster{
 	pixel_x = 32
 	},
 /turf/simulated/floor/tiled/lavaland,
@@ -1199,7 +1199,7 @@
 /turf/simulated/floor/lavaland,
 /area/lavaland/east/ashlander_village)
 "xw" = (
-/obj/structure/sign/poster{
+/obj/structure/poster{
 	pixel_y = 32
 	},
 /turf/simulated/floor/tiled/lavaland,
@@ -1643,7 +1643,7 @@
 /turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
 /area/lavaland/east/ashlander_village)
 "GZ" = (
-/obj/structure/sign/poster/nanotrasen{
+/obj/structure/poster/nanotrasen{
 	pixel_y = 32
 	},
 /turf/simulated/floor/tiled/lavaland,
@@ -1800,7 +1800,7 @@
 /area/lavaland/east/ashlander_village)
 "Ld" = (
 /obj/effect/floor_decal/corner/red/diagonal,
-/obj/structure/sign/poster{
+/obj/structure/poster{
 	pixel_x = -32
 	},
 /turf/simulated/floor/tiled/lavaland,

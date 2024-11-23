@@ -8265,7 +8265,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/exploration/courser_dock)
 "gvS" = (
-/obj/structure/sign/poster,
+/obj/structure/poster,
 /turf/simulated/wall/r_wall/prepainted/command,
 /area/crew_quarters/heads/hop)
 "gwu" = (
@@ -10301,7 +10301,7 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
-/obj/structure/sign/poster{
+/obj/structure/poster{
 	pixel_y = 32
 	},
 /turf/simulated/floor/lino,
@@ -11819,7 +11819,7 @@
 /turf/simulated/floor/wood,
 /area/endeavour/surfacebase/sauna)
 "jod" = (
-/obj/structure/sign/poster,
+/obj/structure/poster,
 /turf/simulated/wall/prepainted,
 /area/maintenance/substation/civilian)
 "joA" = (
@@ -16982,7 +16982,7 @@
 /turf/simulated/floor/wood,
 /area/lawoffice)
 "npN" = (
-/obj/structure/sign/poster,
+/obj/structure/poster,
 /turf/simulated/wall/prepainted,
 /area/endeavour/hallway/d1aftmaint)
 "npZ" = (
@@ -28246,7 +28246,7 @@
 /obj/effect/floor_decal/corner/mauve/border{
 	dir = 1
 	},
-/obj/structure/sign/poster/nanotrasen{
+/obj/structure/poster/nanotrasen{
 	pixel_y = 32
 	},
 /turf/simulated/floor/tiled,
