@@ -154,7 +154,13 @@
 	var/list/base_skin_colours
 
 
-	//? Organs
+	//* Biology & Organs *//
+
+	/// Our primary biology.
+	///
+	/// * Our organs default to this biology.
+	#warn impl
+
 	/// Determines the organs that the species spawns with and which required-organ checks are conducted.
 	var/list/has_organ = list(
 		O_HEART     = /obj/item/organ/internal/heart,
