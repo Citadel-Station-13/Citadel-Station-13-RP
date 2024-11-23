@@ -1912,7 +1912,7 @@
 /obj/structure/closet,
 /obj/item/reagent_containers/food/drinks/bottle/small/beer,
 /obj/item/clothing/under/color/lightpurple,
-/obj/item/contraband/poster,
+/obj/item/poster,
 /turf/simulated/floor,
 /area/awaymission/academy/academyaft)
 "hV" = (

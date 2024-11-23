@@ -1,14 +1,7 @@
 
 //########################## CONTRABAND ;3333333333333333333 -Agouri ###################################################
 
-/obj/item/contraband
-	name = "contraband item"
-	desc = "You probably shouldn't be holding this."
-	icon = 'icons/obj/contraband.dmi'
-	damage_force = 0
-
-
-/obj/item/contraband/poster
+/obj/item/poster
 	name = "rolled-up poster"
 	desc = "The poster comes with its own automatic adhesive mechanism, for easy pinning to any vertical surface."
 	icon_state = "rolled_poster"
@@ -18,7 +11,7 @@
 
 	var/poster_type = /obj/structure/sign/poster
 
-/obj/item/contraband/poster/Initialize(mapload, given_serial = 0)
+/obj/item/poster/Initialize(mapload, given_serial = 0)
 	. = ..()
 	if(!serial_number)
 		if(given_serial == 0)
@@ -28,7 +21,7 @@
 	name += " - No. [serial_number]"
 
 //Places the poster on a wall
-/obj/item/contraband/poster/afterattack(atom/target, mob/user, clickchain_flags, list/params)
+/obj/item/poster/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	if (!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))
 		return
 
@@ -80,11 +73,11 @@
 	qdel(oldsrc)	//delete it now to cut down on sanity checks afterwards. Agouri's code supports rerolling it anyway
 
 //NT subtype
-/obj/item/contraband/poster/nanotrasen
+/obj/item/poster/nanotrasen
 	icon_state = "rolled_poster_nt"
 	poster_type = /obj/structure/sign/poster/nanotrasen
 
-/obj/item/contraband/poster/nanotrasen/Initialize(mapload, given_serial = 0)
+/obj/item/poster/nanotrasen/Initialize(mapload, given_serial = 0)
 	if(given_serial == 0)
 		serial_number = rand(1, NT_poster_designs.len)
 	else
@@ -105,7 +98,7 @@
 	var/roll_type
 	var/poster_set = FALSE
 
-/obj/structure/sign/poster/Initialize(mapload, placement_dir, serial, itemtype = /obj/item/contraband/poster)
+/obj/structure/sign/poster/Initialize(mapload, placement_dir, serial, itemtype = /obj/item/poster)
 	. = ..(mapload)
 
 	if(!serial)
@@ -189,9 +182,9 @@
 
 // NT poster subtype.
 /obj/structure/sign/poster/nanotrasen
-	roll_type = /obj/item/contraband/poster/nanotrasen
+	roll_type = /obj/item/poster/nanotrasen
 
-/obj/structure/sign/poster/nanotrasen/Initialize(mapload, placement_dir, serial, itemtype = /obj/item/contraband/poster/nanotrasen)
+/obj/structure/sign/poster/nanotrasen/Initialize(mapload, placement_dir, serial, itemtype = /obj/item/poster/nanotrasen)
 	if(!serial)
 		serial = rand(1, NT_poster_designs.len)
 

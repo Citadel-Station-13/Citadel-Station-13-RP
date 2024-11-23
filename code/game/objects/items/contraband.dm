@@ -104,7 +104,7 @@
 		/obj/item/card/emag,
 		/obj/item/card/emag_broken,
 		/obj/item/card/id/syndicate,
-		/obj/item/contraband/poster,
+		/obj/item/poster,
 		/obj/item/disposable_teleporter,
 		/obj/item/grenade/flashbang/clusterbang,
 		/obj/item/grenade/flashbang/clusterbang,
