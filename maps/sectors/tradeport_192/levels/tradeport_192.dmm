@@ -23399,7 +23399,7 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/door/airlock/silver{
-	id_tag = motel1
+	id_tag = "motel1"
 	},
 /turf/simulated/floor/wood,
 /area/sector/nebula_tradeport/motel/room1)
