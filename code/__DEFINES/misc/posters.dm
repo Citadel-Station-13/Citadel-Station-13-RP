@@ -9,7 +9,7 @@
 	desc = /obj/item/poster::desc + " " + /datum/prototype/poster_design##TYPEPATH::desc; \
 	poster_design_id = /datum/prototype/poster_design##TYPEPATH; \
 }; \
-/obj/structure/poster##TYPEPATH {; \
+/obj/structure/poster/preset##TYPEPATH {; \
 	name = /datum/prototype/poster_design##TYPEPATH::name; \
 	desc = /obj/structure/poster::desc + " " + /datum/prototype/poster_design##TYPEPATH::desc; \
 	icon = /datum/prototype/poster_design##TYPEPATH::icon; \
