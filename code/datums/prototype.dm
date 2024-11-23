@@ -30,7 +30,7 @@
 
 	/// Globally unique ID for usage with the repository this is stored in.
 	///
-	/// * IDs should be named like "kebab-case-abcd-1234".
+	/// * IDs should be named like "CamelCase" as per prototype standards in many ECS games.
 	/// * IDs should be globally unique across rounds.
 	/// * Hardcoded prototypes should always be referred to via type instead of ID where possible
 	/// * All persistent prototypes bear the burden of not colliding with hardcoded prototypes.
