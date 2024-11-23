@@ -55,7 +55,7 @@
 			"id" = S.uid,
 			"spawn_flags" = S.species_spawn_flags,
 			"name" = S.name,
-			"desc" = S.desc,
+			"desc" = S.blurb,
 			"appearance_flags" = S.species_appearance_flags,
 			"flags" = S.species_flags,
 			"category" = S.category,	// note to self optimize this

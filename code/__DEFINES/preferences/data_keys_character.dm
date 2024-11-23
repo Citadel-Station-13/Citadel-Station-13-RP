@@ -16,6 +16,7 @@
 #define CHARACTER_DATA_LOADOUT_SLOT "loadout_slot"
 
 //? Species
+#define CHARACTER_DATA_REAL_SPECIES "real_species"
 #define CHARACTER_DATA_CHAR_SPECIES "char_species"
 
 //? Occupations

@@ -71,7 +71,7 @@
  * id passed in is for a /datum/species, NOT a /datum/speices!
  */
 /datum/lore/character_background/proc/check_species_id(id)
-	return check_character_species(SScharacters.resolve_character_species(id))
+	return check_species(SScharacters.resolve_character_species(id))
 
 /datum/lore/character_background/proc/check_species(datum/species/S)
 	if(allow_species)

@@ -41,7 +41,7 @@
 
 /datum/preferences/proc/set_character_species(datum/species/CS, mob/user)
 	// first set their vars
-	set_preference(/datum/category_item/player_setup_item/background/real_species, CS.real_species_uid())
+	set_preference(/datum/category_item/player_setup_item/background/real_species, CS.id)
 	set_preference(/datum/category_item/player_setup_item/background/char_species, CS.uid)
 	custom_species = null
 	//! WARNING: SHITCODE AHEAD / LEGACY SHIMS
