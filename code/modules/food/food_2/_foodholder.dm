@@ -187,7 +187,7 @@
 		generated_serving.trash = FS
 		FS.forceMove(generated_serving)
 
-	generated_serving.name = "a [serving_thing_name] of "
+	generated_serving.name = "[serving_thing_name] of "
 	generated_serving.name += foodname
 	generated_serving.desc = (generated_serving.name + ". It looks tasty. Potentially."
 	generated_serving.icon = fs_icon
