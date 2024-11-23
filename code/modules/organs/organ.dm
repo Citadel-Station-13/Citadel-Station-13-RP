@@ -513,23 +513,7 @@
 
 //* Biologies *//
 
-/**
- * checks if we're any of the given biology types
- */
-/obj/item/organ/proc/is_any_biology_type(biology_types)
-	switch(robotic)
-		if(ORGAN_FLESH)
-			return biology_types & BIOLOGY_TYPE_HUMAN
-		if(ORGAN_ASSISTED)
-			return biology_types & BIOLOGY_TYPE_HUMAN
-		if(ORGAN_CRYSTAL)
-			return biology_types & BIOLOGY_TYPE_CRYSTALLINE
-		if(ORGAN_ROBOT)
-			return biology_types & BIOLOGY_TYPE_SYNTH
-		if(ORGAN_NANOFORM)
-			return biology_types & BIOLOGY_TYPE_SYNTH
-		if(ORGAN_LIFELIKE)
-			return biology_types & BIOLOGY_TYPE_SYNTH
+#warn impl
 
 //* Insert / Remove *//
 
