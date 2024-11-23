@@ -22,10 +22,10 @@
 		return
 	poster_design_id = poster_design_id || src.poster_design_id
 	if(!poster_design_id)
-		poster_design_id = fetch_by_tag(poster_random_tag)
+		poster_design_id = RSposter_designs.fetch_by_tag(poster_random_tag)
 	set_poster_design(RSposter_designs.fetch(poster_design_id))
 
-/obj/item/poster/proc/set_poster_design(datum/poster_design/design)
+/obj/item/poster/proc/set_poster_design(datum/prototype/poster_design/design)
 	src.name = "rolled-up-poster - [design.name]"
 	src.desc = "[initial(src.desc)] [design.desc]"
 	src.poster_design_id = design.id

@@ -2,7 +2,7 @@
 	abstract_type = /datum/prototype/poster_design/nanotrasen
 	icon = 'icons/modules/artwork/posters/sets/nanotrasen.dmi'
 
-DECLARE_POSTER_DESIGN(nanotrasen/nt_1)
+DECLARE_POSTER_DESIGN(/nanotrasen/nt_1)
 	icon_state = "ntposter01"
 	name = "Security recruitment"
 	desc = "This poster showcases an NT security guard in an excited pose, with a small blurb about the importance of Security."
@@ -10,7 +10,7 @@ DECLARE_POSTER_DESIGN(nanotrasen/nt_1)
 		POSTER_TAG_NANOTRASEN,
 	)
 
-DECLARE_POSTER_DESIGN(nanotrasen/nt_2)
+DECLARE_POSTER_DESIGN(/nanotrasen/nt_2)
 	icon_state = "ntposter02"
 	name = "Security recruitment"
 	desc = "This poster showcases an NT security guard in an excited pose, with a small blurb about Security Employee benefits."
@@ -18,7 +18,7 @@ DECLARE_POSTER_DESIGN(nanotrasen/nt_2)
 		POSTER_TAG_NANOTRASEN,
 	)
 
-DECLARE_POSTER_DESIGN(nanotrasen/nt_3)
+DECLARE_POSTER_DESIGN(/nanotrasen/nt_3)
 	icon_state = "ntposter03"
 	name = "Mechatronic Safety"
 	desc = "This poster displays three cutting-edge gygaxes standing in line in front of a man in plain clothes.\
@@ -28,7 +28,7 @@ DECLARE_POSTER_DESIGN(nanotrasen/nt_3)
 		POSTER_TAG_NANOTRASEN,
 	)
 
-DECLARE_POSTER_DESIGN(nanotrasen/nt_4)
+DECLARE_POSTER_DESIGN(/nanotrasen/nt_4)
 	icon_state = "ntposter04"
 	name = "Beware Aetotheans"
 	desc = "This poster displays a distinctly hostile-looking red Promethean in a black coat. The fine-print around the edges warns the reader about the dangers posed by Almachi Prometheans."
@@ -36,7 +36,7 @@ DECLARE_POSTER_DESIGN(nanotrasen/nt_4)
 		POSTER_TAG_NANOTRASEN,
 	)
 
-DECLARE_POSTER_DESIGN(nanotrasen/nt_5)
+DECLARE_POSTER_DESIGN(/nanotrasen/nt_5)
 	icon_state = "ntposter05"
 	name = "Promethean"
 	desc = "This poster displays a friendly-looking green Promethean in a labcoat. The fine-print around the edges talks about the benefits Prometheans give in laboratories."
@@ -44,7 +44,7 @@ DECLARE_POSTER_DESIGN(nanotrasen/nt_5)
 		POSTER_TAG_NANOTRASEN,
 	)
 
-DECLARE_POSTER_DESIGN(nanotrasen/nt_6)
+DECLARE_POSTER_DESIGN(/nanotrasen/nt_6)
 	icon_state = "ntposter06"
 	name = "Nanotrasen"
 	desc = "This poster showcases an NT emblem. There is writing in the ring around the inner points, probably some sort of slogan no one bothers to memorize."
@@ -53,7 +53,7 @@ DECLARE_POSTER_DESIGN(nanotrasen/nt_6)
 	)
 
 /* Replace this eventually?
-DECLARE_POSTER_DESIGN(nanotrasen/nt_7)
+DECLARE_POSTER_DESIGN(/nanotrasen/nt_7)
 	icon_state = "ntposter07"
 	name = "SolGov"
 	desc = "This poster showcases an SCG emblem. The outer ring reads,\
@@ -64,7 +64,7 @@ DECLARE_POSTER_DESIGN(nanotrasen/nt_7)
 	)
 */
 
-DECLARE_POSTER_DESIGN(nanotrasen/nt_8)
+DECLARE_POSTER_DESIGN(/nanotrasen/nt_8)
 	icon_state = "ntposter08"
 	name = "wildlife hazard"
 	desc = "This poster warns against attempting to kill a fully grown giant spider or other hostile life-form alone."
@@ -72,7 +72,7 @@ DECLARE_POSTER_DESIGN(nanotrasen/nt_8)
 		POSTER_TAG_NANOTRASEN,
 	)
 
-DECLARE_POSTER_DESIGN(nanotrasen/nt_9)
+DECLARE_POSTER_DESIGN(/nanotrasen/nt_9)
 	icon_state = "ntposter09"
 	name = "Regulations and You"
 	desc = "This poster showcases an NT security guard reading from her PDA. The blurb advocates for the reader to keep corporate regulations in mind at all times, as an emergency can occur at any time."

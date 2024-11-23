@@ -63,7 +63,7 @@
 	init_id()
 	init_subsystems()
 
-	for(var/datum/prototype/language/L as anything in RSlanguages.fetch_subtypes(/datum/prototype/language))
+	for(var/datum/prototype/language/L as anything in RSlanguages.fetch_subtypes_immutable(/datum/prototype/language))
 		if(L.translation_class & TRANSLATION_CLASS_LEVEL_1)
 			add_language(L)
 	add_language(LANGUAGE_EAL)

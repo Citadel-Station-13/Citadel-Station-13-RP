@@ -67,7 +67,7 @@ GLOBAL_LIST_EMPTY(language_picker_active)
 	var/list/data = ..()
 	var/list/built = list()
 	var/list/categories = list("General")
-	for(var/datum/prototype/language/L as anything in RSlanguages.fetch_subtypes(/datum/prototype/language))
+	for(var/datum/prototype/language/L as anything in RSlanguages.fetch_subtypes_immutable(/datum/prototype/language))
 		if(L.language_flags & LANGUAGE_RESTRICTED)
 			continue
 		built[++built.len] = list(
