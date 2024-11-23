@@ -39,6 +39,13 @@
 	///
 	/// If you're using it for some other reason, you should consider using or making a helper instead.
 	var/list/keyed_organs = list()
+	/// Same as `keyed_organs`, but also includes `legacy_organ_tag`.
+	///
+	/// * This is so we don't have to rewrite the whole codebase, instead of gradually converting
+	///   organs over to keys once we verify their behavior and ensure that there's a point
+	///   to continuing to key said organ.
+	var/list/legacy_organ_by_tag = list()
+	#warn impl; make sure organ_key gets put in here anyways
 
 /mob/living/carbon/Initialize(mapload)
 	. = ..()
@@ -53,11 +60,15 @@
 /mob/living/carbon/Destroy()
 	QDEL_LIST(internal_organs)
 	QDEL_LIST(external_organs)
-	qdel(ingested)
-	qdel(touching)
+	//! REMOVE THESE WHEN ORGANS ARE FULLY REFACTORED
+	if(!length(keyed_organs))
+		stack_trace("keyed organs wasn't cleared")
+	if(!length(legacy_organ_by_tag))
+		stack_trace("legacy organ lookup waasn't cleared")
+	//! END
+	QDEL_NULL(ingested)
+	QDEL_NULL(touching)
 	// We don't qdel(bloodstr) because it's the same as qdel(reagents)
-	for(var/guts in internal_organs)
-		qdel(guts)
 	for(var/food in stomach_contents)
 		qdel(food)
 	return ..()

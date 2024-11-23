@@ -1,4 +1,5 @@
 /obj/item/organ
+	abstract_type = /obj/item/organ
 	name = "organ"
 	icon = 'icons/obj/surgery.dmi'
 	germ_level = 0
@@ -23,6 +24,12 @@
 	/// Our biology's scratch space.
 	var/datum/biology_organ_state/biology_state
 	#warn impl
+
+	//* Flags *//
+	/// Our organ flags.
+	var/organ_flags = NONE
+	/// Our organ discovery flags
+	var/organ_discovery_flags = NONE
 
 	//* Insert / Remove *//
 	/// Always drop, except for ashing / dusting a mob.

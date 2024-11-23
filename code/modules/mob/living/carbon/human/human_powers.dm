@@ -89,9 +89,8 @@
 		for(var/mob/M in src)
 			if(M in stomach_contents)
 				stomach_contents.Remove(M)
-				M.loc = loc
+				M.forceMove(loc)
 		src.visible_message(SPAN_BOLDDANGER("[src] hurls out the contents of their stomach!"))
-	return
 
 /mob/living/carbon/human/proc/psychic_whisper(mob/M as mob in oview())
 	set name = "Psychic Whisper"

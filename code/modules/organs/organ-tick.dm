@@ -169,7 +169,7 @@
 
 	//Dead organs accumulate germs indefinitely
 	if(status & ORGAN_DEAD)
-		adjust_germ_level(1)
+		adjust_germ_level(1) 
 
 	//Half of level 1 is growing but harmless
 	if (germ_level >= INFECTION_LEVEL_ONE/2)

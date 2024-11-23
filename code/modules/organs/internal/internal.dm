@@ -2,6 +2,7 @@
 				INTERNAL ORGANS DEFINES
 ****************************************************/
 /obj/item/organ/internal
+	abstract_type = /obj/item/organ/internal
 	/// Icon to use when the organ has died.
 	var/dead_icon
 

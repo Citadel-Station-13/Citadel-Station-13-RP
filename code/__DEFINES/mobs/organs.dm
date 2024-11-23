@@ -1,4 +1,25 @@
-//*                       Organ Keys                                                  *//
+//* Organ Flags *//
+
+/// This organ is abstract.
+///
+/// * Do not allow adding / removing by players.
+/// * Do not allow players to interact with it by any means, including by scanning it.
+#define ORGAN_FLAG_ABSTRACT (1<<0)
+#warn impl
+
+#warn DEFINE_BITFIELD
+
+//* Organ Discovery Flags *//
+
+/// Does not show up on simple scanners like cyborg analyzers.
+#define ORGAN_DISCOVERY_NO_SIMPLE_SCAN (1<<0)
+/// Does not show up on advanced imaging like body scanners.
+#define ORGAN_DISCOVERY_NO_ADVANCED_SCAN (1<<1)
+#warn impl
+
+#warn DEFINE_BITFIELD
+
+//*                                   Organ Keys                                      *//
 //* Organ keys are strings used to key the 'keyed_organs' list on carbons.            *//
 //*                                                                                   *//
 //* While usually arbitrary for an organ, they do have attached connotations of       *//

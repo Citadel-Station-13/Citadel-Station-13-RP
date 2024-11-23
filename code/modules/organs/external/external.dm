@@ -1,4 +1,5 @@
 /obj/item/organ/external
+	abstract_type = /obj/item/organ/external
 	name = "external"
 	max_damage = 0
 	min_broken_damage = 30

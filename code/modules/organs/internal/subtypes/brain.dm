@@ -64,7 +64,9 @@
 			owner.custom_pain("Your feel very dizzy for a moment!",0)
 			owner.Confuse(2)
 
+// todo: this is silly.
 /obj/item/organ/internal/brain/proc/replace_self_with(replace_path)
+	ASSERT(ispath(replace_path, /obj/item/organ/internal/brain))
 	var/mob/living/carbon/human/tmp_owner = owner
 	qdel(src)
 	if(tmp_owner)
