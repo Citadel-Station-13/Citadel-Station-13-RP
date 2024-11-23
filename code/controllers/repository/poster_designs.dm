@@ -22,7 +22,7 @@ REPOSITORY_DEF(poster_designs)
 	for(var/the_tag in instance.poster_tags)
 		tag_lookup[the_tag] -= instance
 		if(!length(tag_lookup[the_tag]))
-			tag_lookup -= the_Tag
+			tag_lookup -= the_tag
 
 /**
  * @params
