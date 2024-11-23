@@ -216,7 +216,7 @@
 		M.remove_a_modifier_of_type(/datum/modifier/poisoned)//better chance to remove the poisoned effect
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
-		var/obj/item/organ/internal/liver/L = H.internal_organs_by_name[O_LIVER]
+		var/obj/item/organ/internal/liver/L = H.legacy_organ_by_type(/obj/item/organ/internal/liver)
 		if(istype(L))
 			if(L.robotic >= ORGAN_ROBOT)
 				return

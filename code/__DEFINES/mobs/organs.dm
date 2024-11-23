@@ -77,7 +77,12 @@
 /// * Type: /obj/item/organ/internal/eyes
 #define ORGAN_KEY_EYES "eyes"
 
-//* Xenomorph *//
+//* Species - Shadekin *//
+
+/// The key for shadekin dimensional nodes
+#define ORGAN_KEY_SHADEKIN_DIMENSIONAL_CLUSTER "shadekin-dimensional-cluster"
+
+//* Species - Xenomorph *//
 
 /// The key for xenomorph plasma vessels.
 /// * Type: /obj/item/organ/internal/xenos/plasmavessel

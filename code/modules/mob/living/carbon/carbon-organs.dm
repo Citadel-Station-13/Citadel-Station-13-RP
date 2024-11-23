@@ -91,7 +91,7 @@
 
 #warn impl
 
-//! Usage of the below procs is not allowed. They're just here to aid in transition. !//
+//! Usage of the below procs is heavily discouraged. They're just here to aid in transition. !//
 
 /**
  * legacy: bodyzone to organ. technically works with internal organ keys too but please don't
@@ -104,3 +104,9 @@
 		O_MOUTH = BP_HEAD,
 	)
 	return keyed_organs[what]
+
+/**
+ * legacy: get organ of type. **DANGEROUS.**
+ */
+/mob/living/carbon/proc/legacy_organ_by_type(type)
+	return (locate(type) in internal_organs) || (locate(type) in external_organs)
