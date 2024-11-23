@@ -121,7 +121,6 @@
 
 	vision_innate = /datum/vision/baseline/species_tier_3/for_snowflake_ocs
 
-	//SHADEKIN-UNIQUE STUFF GOES HERE
 	var/list/shadekin_abilities = list(
 		/datum/power/shadekin/phase_shift,
 		/datum/power/shadekin/regenerate_other,

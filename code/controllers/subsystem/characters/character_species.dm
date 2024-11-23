@@ -67,7 +67,8 @@
 
 /datum/controller/subsystem/characters/proc/construct_character_species(uid)
 	RETURN_TYPE(/datum/species)
-	return new resolve_character_species(uid):type
+	var/type_to_make = resolve_character_species(uid):type
+	return new type_to_make
 
 /datum/controller/subsystem/characters/proc/all_character_species()
 	RETURN_TYPE(/list)

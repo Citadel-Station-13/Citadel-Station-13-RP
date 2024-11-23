@@ -47,7 +47,8 @@
 		BP_R_FOOT = list("path" = /obj/item/organ/external/foot/right/crewkin),
 	)
 
-	shadekin_abilities = list(
+	// todo: nerf these two abilities when someone wants to make it not a fucking copypaste ~silicons
+	var/list/shadekin_abilities = list(
 		/datum/power/shadekin/regenerate_other,
-		/datum/power/shadekin/create_shade/crew,
+		/datum/power/shadekin/create_shade,
 	)
