@@ -390,11 +390,13 @@
 #define HUD_LAYER_INVENTORY 3
 /// storage objects sit here
 #define HUD_LAYER_STORAGE 4
+/// storage object item borders sit here
+#define HUD_LAYER_STORAGE_ITEM_BOUNDING 5
 
 // todo: deprecate
-#define HUD_LAYER_ITEM  3 /// Things sitting on HUD items (largely irrelevant because INVENTORY_PLANE).
+#define HUD_LAYER_ITEM  7 /// Things sitting on HUD items (largely irrelevant because INVENTORY_PLANE).
 // todo: deprecate
-#define HUD_LAYER_ABOVE 4 /// Things that reside above items (highlights).
+#define HUD_LAYER_ABOVE 8 /// Things that reside above items (highlights).
 
 /**
  *! -- Player HUD Plane - Items
