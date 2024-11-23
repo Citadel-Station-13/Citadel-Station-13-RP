@@ -5406,6 +5406,7 @@
 #include "maps\sectors\tradeport\shuttles.dm"
 #include "maps\sectors\tradeport_140\tradeport_140.dm"
 #include "maps\sectors\tradeport_192\tradeport_192.dm"
+#include "maps\sectors\tradeport_192\tradeport_192_areas.dm"
 #include "maps\sectors\virgo2_140\virgo2_140.dm"
 #include "maps\sectors\virgo4_140\virgo4_140.dm"
 #include "maps\sectors\wasteland_140\wasteland_140.dm"
