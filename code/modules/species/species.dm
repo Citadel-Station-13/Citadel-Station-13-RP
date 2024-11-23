@@ -159,6 +159,9 @@
 	/// Our primary biology.
 	///
 	/// * Our organs default to this biology.
+	/// * This is a typepath or instance.
+	/// * This can be overridden in certain cases
+	var/datum/biology/biology
 	#warn impl
 
 	/// Determines the organs that the species spawns with and which required-organ checks are conducted.
