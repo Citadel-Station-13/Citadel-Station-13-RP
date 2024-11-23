@@ -8,6 +8,8 @@
 	var/organ_state_holder_type
 	/// The type for our mob state. Defaults to not making a state holder.
 	var/mob_state_holder_type
+	/// The biology type we're considered. This is for quick lookups.
+	var/biology_type = NONE
 
 	//* Ticking *//
 

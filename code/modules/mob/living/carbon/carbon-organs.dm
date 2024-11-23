@@ -91,7 +91,7 @@
 
 #warn impl
 
-//! Usage of the below procs is not allowed. They're just here to aid in transition. ~//
+//! Usage of the below procs is not allowed. They're just here to aid in transition. !//
 
 /**
  * legacy: bodyzone to organ. technically works with internal organ keys too but please don't

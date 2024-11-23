@@ -6,5 +6,6 @@
 /datum/biology_organ_state/synthetic/nanoswarm
 
 /datum/biology/synthetic/nanoswarm
+	biology_type = BIOLOGY_TYPE_NANITES
 
 #warn impl

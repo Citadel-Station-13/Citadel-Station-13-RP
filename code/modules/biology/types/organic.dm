@@ -6,5 +6,6 @@
 /datum/biology_organ_state/organic
 
 /datum/biology/organic
+	biology_type = BIOLOGY_TYPE_HUMAN
 
 #warn impl

@@ -7,6 +7,7 @@
 	pickup_sound = 'sound/items/pickup/flesh.ogg'
 
 	//* Actions *//
+
 	/// actions to give the owner of this organ
 	///
 	/// valid starting values include:
@@ -19,19 +20,26 @@
 	var/organ_action_desc
 
 	//* Biology *//
+
 	/// Our biology. Set to type to init.
+	///
+	/// * Null biology is allowed but is usually not what you want.
 	var/datum/biology/biology
 	/// Our biology's scratch space.
+	///
+	/// * Only set if our biology requires a state.
 	var/datum/biology_organ_state/biology_state
 	#warn impl
 
 	//* Flags *//
+
 	/// Our organ flags.
 	var/organ_flags = NONE
 	/// Our organ discovery flags
 	var/organ_discovery_flags = NONE
 
 	//* Insert / Remove *//
+
 	/// Always drop, except for ashing / dusting a mob.
 	///
 	/// * Admin deletions will still delete the organ.
@@ -532,10 +540,14 @@
  * * target - person being inserted into
  * * from_init - we are performing initial setup in Initialize() after we've grabbed our organs and templates from species / persistence.
  *                  this is not set in any other case.
+ *
+ * @return TRUE on success, FALSE on failure
  */
 /obj/item/organ/proc/insert(mob/living/carbon/target, from_init)
 	SHOULD_CALL_PARENT(TRUE)
 	SHOULD_NOT_SLEEP(TRUE)
+
+	#warn check for organ key
 
 /**
  * Removes from a mob.
@@ -544,6 +556,8 @@
  * * move_to - forceMove to this location. if null, we will not move out of our old container.
  * * from_qdel - our owner and the organ are being qdeleted in the QDEL_LIST loop.
  *               this is not set in any other case, including on gib and set_species().
+ *
+ * @return TRUE on success, FALSE on failure
  */
 /obj/item/organ/proc/remove(atom/move_to, from_qdel)
 	SHOULD_CALL_PARENT(TRUE)
@@ -566,6 +580,9 @@
 /obj/item/organ/proc/on_insert(mob/living/carbon/target, from_init)
 	SHOULD_CALL_PARENT(TRUE)
 	SHOULD_NOT_SLEEP(TRUE)
+
+	register(target)
+
 	ensure_organ_actions_loaded()
 	grant_organ_actions(target)
 
@@ -581,4 +598,23 @@
 /obj/item/organ/proc/on_remove(mob/living/carbon/target, from_qdel)
 	SHOULD_CALL_PARENT(TRUE)
 	SHOULD_NOT_SLEEP(TRUE)
+
 	revoke_organ_actions(target)
+
+	unregister(target)
+
+/**
+ * Performs base registration.
+ *
+ * * Do not put custom behavior in here. This should only be implemented on base subtypes of /organ.
+ */
+/obj/item/organ/proc/register(mob/living/carbon/target)
+	CRASH("base registration unimplemented on [type]")
+
+/**
+ * Performs base unregistration.
+ *
+ * * Do not put custom behavior in here. This should only be implemented on base subtypes of /organ.
+ */
+/obj/item/organ/proc/unregister(mob/living/carbon/target)
+	CRASH("base registration unimplemented on [type]")

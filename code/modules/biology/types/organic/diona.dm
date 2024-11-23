@@ -6,6 +6,6 @@
 /datum/biology_organ_state/organic/diona
 
 /datum/biology/organic/diona
+	biology_type = BIOLOGY_TYPE_DIONA
 
 #warn impl
- 
