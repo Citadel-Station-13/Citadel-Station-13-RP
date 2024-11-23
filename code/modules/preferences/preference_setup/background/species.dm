@@ -41,7 +41,7 @@
 		// cool we found it
 		// but also, make sure we don't, for some reason, mismatch real species
 		var/real_id = prefs.get_character_data(CHARACTER_DATA_REAL_SPECIES)
-		var/datum/species/check_type = CS.real_species_type
+		var/datum/species/check_type = CS.type
 		if(!check_type || (real_id != initial(check_type.uid)))
 			// oh no :(
 			// default to real species type if possible, don't if not
