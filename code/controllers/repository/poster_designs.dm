@@ -36,4 +36,4 @@ REPOSITORY_DEF(poster_designs)
 	else if(tags)
 		. = tag_lookup[tags]?:Copy() || list()
 	else
-		. = fetch_subtypes_immutable(/datum/prototype/poster_design)
+		. = fetch_subtypes_mutable(/datum/prototype/poster_design)
