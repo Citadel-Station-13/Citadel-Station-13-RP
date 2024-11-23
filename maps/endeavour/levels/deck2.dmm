@@ -629,7 +629,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/door/airlock/medical{
 	autoclose = 0;
-	frequency = 1369;
+	frequency = 1379;
 	icon_state = "door_locked";
 	id_tag = "virology_airlock_fore_exterior";
 	locked = 1;
@@ -638,7 +638,7 @@
 	},
 /obj/machinery/access_button{
 	command = "cycle_ext";
-	frequency = 1369;
+	frequency = 1379;
 	master_tag = "virology_airlock_fore";
 	name = "Virology Access Button";
 	req_access = list(39);
@@ -26451,10 +26451,9 @@
 /obj/machinery/embedded_controller/radio/airlock/access_controller{
 	id_tag = "virology_airlock_fore";
 	name = "Virology Fore Access Console";
-	tag_exterior_door = "virology_airlock_aft_exterior";
-	tag_interior_door = "virology_airlock_aft_interior";
-	pixel_y = -24;
-	frequency = 1369
+	tag_exterior_door = "virology_airlock_fore_exterior";
+	tag_interior_door = "virology_airlock_fore_interior";
+	pixel_y = -24
 	},
 /turf/simulated/floor/tiled,
 /area/medical/virology_fore_access)
@@ -37487,7 +37486,7 @@
 	},
 /obj/machinery/door/airlock/medical{
 	autoclose = 0;
-	frequency = 1369;
+	frequency = 1379;
 	icon_state = "door_locked";
 	id_tag = "virology_airlock_fore_interior";
 	locked = 1;
@@ -37496,7 +37495,7 @@
 	},
 /obj/machinery/access_button{
 	command = "cycle_int";
-	frequency = 1369;
+	frequency = 1379;
 	master_tag = "virology_airlock_fore";
 	name = "Virology Access Button";
 	pixel_y = 24;
