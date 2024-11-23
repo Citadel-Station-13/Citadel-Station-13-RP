@@ -8,7 +8,7 @@
 /obj/item/gun_attachment/harness/magnetic
 	name = "magnetic harness"
 	desc = "A fancy harness that will snap a gun back to an attachment point when it's dropped by its wearer."
-	prototype_id = "attachment-magnetic-harness"
+	prototype_id = "ItemAttachmentMagneticHarness"
 	icon_state = "magnetic"
 	align_x = 15
 	align_y = 16

@@ -1,24 +1,34 @@
-
-//########################## CONTRABAND ;3333333333333333333 -Agouri ###################################################
-
 /obj/item/poster
+	prototype_id = "ItemPoster"
 	name = "rolled-up poster"
 	desc = "The poster comes with its own automatic adhesive mechanism, for easy pinning to any vertical surface."
 	icon_state = "rolled_poster"
 	drop_sound = 'sound/items/drop/wrapper.ogg'
 	pickup_sound = 'sound/items/pickup/wrapper.ogg'
-	var/serial_number = null
 
-	var/poster_type = /obj/structure/poster
+	/// random poster design tag or tags no [poster_design_id] is filled out
+	///
+	/// * null = pick all possible
+	/// * accepts null, POSTER_TAG_* enum, or list of POSTER_TAG_* enum's
+	var/poster_random_tag
+	/// our poster design id or type.
+	var/poster_design_id
+	/// were we macro-defined? lets us skip a few things.
+	var/macro_defined = FALSE
 
-/obj/item/poster/Initialize(mapload, given_serial = 0)
+/obj/item/poster/Initialize(mapload, poster_design_id)
 	. = ..()
-	if(!serial_number)
-		if(given_serial == 0)
-			serial_number = rand(1, poster_designs.len)
-		else
-			serial_number = given_serial
-	name += " - No. [serial_number]"
+	if(macro_defined)
+		return
+	poster_design_id = poster_design_id || src.poster_design_id
+	if(!poster_design_id)
+		poster_design_id = fetch_by_tag(poster_random_tag)
+	set_poster_design(RSposter_designs.fetch(poster_design_id))
+
+/obj/item/poster/proc/set_poster_design(datum/poster_design/design)
+	src.name = "rolled-up-poster - [design.name]"
+	src.desc = "[initial(src.desc)] [design.desc]"
+	src.poster_design_id = design.id
 
 //Places the poster on a wall
 /obj/item/poster/afterattack(atom/target, mob/user, clickchain_flags, list/params)
@@ -54,11 +64,12 @@
 
 	to_chat(user, "<span class='notice'>You start placing the poster on the wall...</span>") //Looks like it's uncluttered enough. Place the poster.
 
-	var/obj/structure/poster/P = new poster_type(user.loc, get_dir(user, W), serial_number, src.type)
+	var/obj/structure/poster/P = new poster_type(user.loc, get_dir(user, W), poster_design_id)
 
 	flick("poster_being_set", P)
-	//playsound(W, 'sound/items/poster_being_created.ogg', 100, 1) //why the hell does placing a poster make printer sounds?
 
+	// todo: refactor
+	//playsound(W, 'sound/items/poster_being_created.ogg', 100, 1) //why the hell does placing a poster make printer sounds?
 	var/oldsrc = src //get a reference to src so we can delete it after detaching ourselves
 	src = null
 	spawn(17)
@@ -72,126 +83,6 @@
 
 	qdel(oldsrc)	//delete it now to cut down on sanity checks afterwards. Agouri's code supports rerolling it anyway
 
-//NT subtype
 /obj/item/poster/nanotrasen
 	icon_state = "rolled_poster_nt"
-	poster_type = /obj/structure/poster/nanotrasen
-
-/obj/item/poster/nanotrasen/Initialize(mapload, given_serial = 0)
-	if(given_serial == 0)
-		serial_number = rand(1, NT_poster_designs.len)
-	else
-		serial_number = given_serial
-	return ..(mapload)
-
-//############################## THE ACTUAL DECALS ###########################
-
-/obj/structure/poster
-	name = "poster"
-	desc = "A large piece of space-resistant printed paper. "
-	icon = 'icons/obj/contraband.dmi'
-	anchored = TRUE
-
-
-	var/serial_number	//Will hold the value of src.loc if nobody initialises it
-	var/poster_type		//So mappers can specify a desired poster
-	var/ruined = 0
-
-	var/roll_type
-	var/poster_set = FALSE
-
-/obj/structure/poster/Initialize(mapload, placement_dir, serial, itemtype = /obj/item/poster)
-	. = ..(mapload)
-
-	if(!serial)
-		serial = rand(1, poster_designs.len) //use a random serial if none is given
-
-	if(!poster_set)
-		serial_number = serial
-		var/datum/poster/design = poster_designs[serial_number]
-		set_poster(design)
-
-	if(itemtype || !roll_type)
-		roll_type = itemtype
-
-	switch (placement_dir)
-		if (NORTH)
-			pixel_x = 0
-			pixel_y = 32
-		if (SOUTH)
-			pixel_x = 0
-			pixel_y = -32
-		if (EAST)
-			pixel_x = 32
-			pixel_y = 0
-		if (WEST)
-			pixel_x = -32
-			pixel_y = 0
-
-/obj/structure/poster/Initialize(mapload)
-	. = ..()
-	if (poster_type)
-		var/path = text2path(poster_type)
-		var/datum/poster/design = new path
-		set_poster(design)
-
-/obj/structure/poster/proc/set_poster(var/datum/poster/design)
-	name = "[initial(name)] - [design.name]"
-	desc = "[initial(desc)] [design.desc]"
-	icon_state = design.icon_state // poster[serial_number]
-
-	poster_set = TRUE
-
-/obj/structure/poster/attackby(obj/item/W as obj, mob/user as mob)
-	if(W.is_wirecutter())
-		playsound(src.loc, W.tool_sound, 100, 1)
-		if(ruined)
-			to_chat(user, "<span class='notice'>You remove the remnants of the poster.</span>")
-			qdel(src)
-		else
-			to_chat(user, "<span class='notice'>You carefully remove the poster from the wall.</span>")
-			roll_and_drop(user.loc)
-		return
-
-/obj/structure/poster/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
-
-	if(ruined)
-		return
-
-	if(alert("Do I want to rip the poster from the wall?","You think...","Yes","No") == "Yes")
-
-		if(ruined || !user.Adjacent(src))
-			return
-
-		visible_message("<span class='warning'>[user] rips [src] in a single, decisive motion!</span>" )
-		playsound(src.loc, 'sound/items/poster_ripped.ogg', 100, 1)
-		ruined = 1
-		icon_state = "poster_ripped"
-		name = "ripped poster"
-		desc = "You can't make out anything from the poster's original print. It's ruined."
-		add_fingerprint(user)
-
-/obj/structure/poster/proc/roll_and_drop(turf/newloc)
-	new roll_type(newloc, serial_number)
-	qdel(src)
-
-/datum/poster
-	// Name suffix. Poster - [name]
-	var/name=""
-	// Description suffix
-	var/desc=""
-	var/icon_state=""
-
-// NT poster subtype.
-/obj/structure/poster/nanotrasen
-	roll_type = /obj/item/poster/nanotrasen
-
-/obj/structure/poster/nanotrasen/Initialize(mapload, placement_dir, serial, itemtype = /obj/item/poster/nanotrasen)
-	if(!serial)
-		serial = rand(1, NT_poster_designs.len)
-
-	serial_number = serial
-	var/datum/poster/design = NT_poster_designs[serial_number]
-	set_poster(design)
-
-	return ..(mapload, placement_dir, serial, itemtype)
+	poster_random_tag = POSTER_TAG_NANOTRASEN
