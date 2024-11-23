@@ -8,14 +8,14 @@ REPOSITORY_DEF(poster_designs)
 	/// by tag
 	var/list/tag_lookup = list()
 
-/datum/controller/repository/poster_designs/load(datum/prototype/instance)
+/datum/controller/repository/poster_designs/load(datum/prototype/poster_design/instance)
 	. = ..()
 	if(!.)
 		return
 	for(var/the_tag in instance.poster_tags)
 		LAZYADD(tag_lookup[the_tag], instance)
 
-/datum/controller/repository/poster_designs/unload(datum/prototype/instance)
+/datum/controller/repository/poster_designs/unload(datum/prototype/poster_design/instance)
 	. = ..()
 	if(!.)
 		return
@@ -34,6 +34,6 @@ REPOSITORY_DEF(poster_designs)
 		for(var/the_tag in tags)
 			. |= tag_lookup[the_tag]
 	else if(tags)
-		. = tag_lookup[the_tag]?:Copy() || list()
+		. = tag_lookup[tags]?:Copy() || list()
 	else
 		. = fetch_subtypes_immutable(/datum/prototype/poster_design)
