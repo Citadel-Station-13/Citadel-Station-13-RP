@@ -1,3 +1,6 @@
+// todo: if characters v2 isn't done by the time we overhaul this, combine this with real species
+//       character species is a deprecated and a broken system.
+
 /datum/category_item/player_setup_item/background/char_species
 	name = "Character Species"
 	sort_order = 1
