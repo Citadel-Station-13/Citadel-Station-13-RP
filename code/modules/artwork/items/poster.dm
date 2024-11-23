@@ -24,6 +24,8 @@
 	poster_design_id = poster_design_id || src.poster_design_id
 	if(!poster_design_id)
 		poster_design_id = pick(RSposter_designs.fetch_by_tag_mutable(poster_random_tag))
+	if(poster_design_id != src.poster_design_id)
+		src.poster_design_id = poster_design_id
 	set_poster_design(RSposter_designs.fetch(poster_design_id))
 
 /obj/item/poster/proc/set_poster_design(datum/prototype/poster_design/design)
