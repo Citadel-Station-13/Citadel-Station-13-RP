@@ -28,7 +28,7 @@ REPOSITORY_DEF(poster_designs)
  * @params
  * * tags - POSTER_TAG_*, list of POSTER_TAG_*, or null for **fetch all**.
  */
-/datum/controller/repository/poster_designs/proc/fetch_by_tag(tags)
+/datum/controller/repository/poster_designs/proc/fetch_by_tag_mutable(tags)
 	if(islist(tags))
 		. = list()
 		for(var/the_tag in tags)
