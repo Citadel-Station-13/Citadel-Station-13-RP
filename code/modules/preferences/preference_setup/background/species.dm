@@ -21,7 +21,7 @@
 		. += " have the whitelist to play as one."
 	. += "</center>"
 	. += "<div class='statusDisplay'>"
-	. += "[CS.desc]"
+	. += "[CS.blurb]"
 	. += "</div>"
 
 /datum/category_item/player_setup_item/background/char_species/spawn_checks(datum/preferences/prefs, data, flags, list/errors, list/warnings)
