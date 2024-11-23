@@ -1,4 +1,6 @@
 /datum/prototype/design/science/stock_part/subspace
+	category = DESIGN_CATEGORY_TELECOMMUNICATIONS
+	subcategory = DESIGN_SUBCATEGORY_PARTS
 	abstract_type = /datum/prototype/design/science/stock_part/subspace
 
 /datum/prototype/design/science/stock_part/subspace/generate_name(template)
