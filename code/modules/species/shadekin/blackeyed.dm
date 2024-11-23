@@ -48,7 +48,7 @@
 	)
 
 	// todo: nerf these two abilities when someone wants to make it not a fucking copypaste ~silicons
-	var/list/shadekin_abilities = list(
+	shadekin_abilities = list(
 		/datum/power/shadekin/regenerate_other,
 		/datum/power/shadekin/create_shade,
 	)
