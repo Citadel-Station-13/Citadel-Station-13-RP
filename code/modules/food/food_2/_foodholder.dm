@@ -36,7 +36,7 @@
 				cooked_span = "yellow"
 			if(BURNT)
 				cooked_span = "tajaran_signlang"
-		. += "<span class='notice'>[icon2html(thing = examine_ingredient, target = user)][examine_ingredient.serving_amount] serving[] of [examine_ingredient.name], which looks </span><span class='[cooked_span]'>[examine_ingredient.cookstage2text()]</span><span class='notice'> and has been cooked for about [examine_ingredient.accumulated_time_cooked / 10] seconds.</span>"
+		. += "<span class='notice'>[icon2html(thing = examine_ingredient, target = user)][examine_ingredient.weight]g of [examine_ingredient.name], which looks </span><span class='[cooked_span]'>[examine_ingredient.cookstage2text()]</span><span class='notice'> and has been cooked for about [examine_ingredient.accumulated_time_cooked / 10] seconds.</span>"
 
 /obj/item/reagent_containers/glass/food_holder/update_icon()
 	cut_overlays()
@@ -145,9 +145,17 @@
 	var/fs_icon = FS ? FS.icon : 'icons/obj/food_ingredients/custom_food.dmi'
 	var/fs_iconstate = FS ? FS.icon_state : "handful"
 
+	var/ingredient_count = 0
+
+	for(var/x in contents)
+		if(istype(x, /obj/item/reagent_containers/food/snacks/ingredient))
+			ingredient_count += 1
+
+
 	for(var/obj/item/reagent_containers/food/snacks/ingredient/tally_ingredient in contents)
-		tally_flavours[tally_ingredient.cookstage_information[tally_ingredient.cookstage][COOKINFO_TASTE]] = tally_ingredient.serving_amount //the more it is the stronger it'll taste
-		var/total_volume_transferred = (1 / tally_ingredient.serving_amount)
+		var/ing_ratio = (1/ingredient_count)
+		tally_flavours[tally_ingredient.cookstage_information[tally_ingredient.cookstage][COOKINFO_TASTE]] = WEIGHT_TASTE_DIVISION(tally_ingredient.weight) //the more it is the stronger it'll taste
+		var/total_volume_transferred = WEIGHT_TASTE_DIVISION(ing_ratio * tally_ingredient.weight)
 		tally_ingredient.reagents.trans_to_holder(generated_serving.reagents, total_volume_transferred, tally_ingredient.cookstage_information[tally_ingredient.cookstage][COOKINFO_NUTRIMULT])
 
 
@@ -164,7 +172,8 @@
 		var/mutable_appearance/mixed_stuff_overlay = mutable_appearance(fs_icon, "[fs_iconstate]_filling")
 		mixed_stuff_overlay.color = food_color
 		fancy_overlay_to_add += mixed_stuff_overlay
-		tally_ingredient.consume_serving()
+
+		tally_ingredient.consume_weight(ing_ratio * tally_ingredient.weight) //TODO: decide
 
 	for(var/obj/item/reagent_containers/food/snacks/tally_snack in contents)
 		if(istype(tally_snack, /obj/item/reagent_containers/food/snacks/ingredient))

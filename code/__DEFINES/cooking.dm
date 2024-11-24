@@ -19,4 +19,7 @@
 #define METHOD_BLOWTORCH "blowtorch" //i know a welder isn't actually one but you actually use blowtorches in cooking
 #define METHOD_ENERGETIC_ANOMALY "energetic anomaly" //supermatter, tesla, etc
 
+#define WEIGHT_TASTE_DIVISOR 500
+#define WEIGHT_TASTE_DIVISION(X) X/500
+
 #define INGREDIENT_COOKTIME_MAX_SEPERATION 5 SECONDS

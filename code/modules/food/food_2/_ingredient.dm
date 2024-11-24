@@ -20,12 +20,16 @@
 	var/cooktime_mult_mid = 1
 	var/cooktime_mult_high = 2
 
-	//how many servings it will give when added to stuff
-	var/serving_amount = 1
+
+	//are we allowed to stack?
+	var/can_stack = TRUE
+
+	//how much food is here, in grams
+	var/weight = 100
 	var/finished_overlay //what overlay we use for the finished item, if null we dont do anything special
 
-	var/extra_serving_overlay_threshold = 2 //for every extra_serving_overlay_threshold we gain a overlay
-	var/max_servings = 10 //max amount of servings we can have
+	var/additional_overlay_weight_threshold = WEIGHT_TASTE_DIVISOR //for every additional_overlay_weight_threshold of weight we gain a overlay
+	var/max_weight = 1000 //max amount of weight we can put in a single item
 
 
 	var/name_on_cook //the name we change into once we're cooked
@@ -35,16 +39,17 @@
 	. = ..()
 	var/datum/reagent/nutriment/our_nutrient = reagents.get_reagent("nutriment")
 	our_nutrient.data = list()
-	our_nutrient.data[cookstage_information[RAW][COOKINFO_TASTE]] = serving_amount
+	our_nutrient.data[cookstage_information[RAW][COOKINFO_TASTE]] = WEIGHT_TASTE_DIVISION(weight)
 
 /obj/item/reagent_containers/food/snacks/ingredient/examine(mob/user, dist)
 	. = ..()
-	. += SPAN_NOTICE("<b>Alt-click</b> to split off servings.")
+	if(can_stack)
+		. += SPAN_NOTICE("<b>Alt-click</b> to split off some of [name].")
 	. += cooking_information(TRUE)
 
 /obj/item/reagent_containers/food/snacks/ingredient/update_icon()
 	cut_overlays()
-	var/overlay_amount = FLOOR(serving_amount/extra_serving_overlay_threshold, 1)
+	var/overlay_amount = FLOOR(weight/additional_overlay_weight_threshold, 1)
 	if(overlay_amount > 1)
 		for(var/i, i<=overlay_amount, i++)
 			var/mutable_appearance/stuff_overlay = mutable_appearance(icon, icon_state)
@@ -62,8 +67,10 @@
 
 
 /obj/item/reagent_containers/food/snacks/ingredient/proc/check_merge(obj/item/reagent_containers/food/snacks/ingredient/add_ingredient, mob/user)
+	if(!can_stack)
+		return FALSE
 	if((((accumulated_time_cooked - INGREDIENT_COOKTIME_MAX_SEPERATION) < add_ingredient.accumulated_time_cooked) && (add_ingredient.accumulated_time_cooked < (accumulated_time_cooked + INGREDIENT_COOKTIME_MAX_SEPERATION))) && (add_ingredient.cookstage = cookstage))
-		if((add_ingredient.serving_amount + serving_amount) < max_servings)
+		if((add_ingredient.weight + weight) < max_weight)
 			return TRUE
 		to_chat(user, SPAN_NOTICE("There's too much to combine!"))
 		return FALSE
@@ -104,26 +111,26 @@
 /obj/item/reagent_containers/food/snacks/ingredient/AltClick(mob/user)
 	if(!isliving(user))
 		return ..()
-	if(serving_amount < 1)
+	if(weight < 1)
 		to_chat(user, SPAN_WARNING("There's not enough of [src] to split off!"))
 		return
 	var/amount = input("How much to split?", "Split ingredient") as null|num
 	amount = round(amount) //0.6 >> 1
-	if(amount && amount < serving_amount)
-		var/final_ratio = amount/serving_amount
-		serving_amount -= amount
+	if(amount && amount < weight)
+		var/final_ratio = amount/weight
+		weight -= amount
 		update_icon()
 		var/obj/item/reagent_containers/food/snacks/ingredient/split_ingredient = new type(src)
 		split_ingredient.cookstage = cookstage
 		split_ingredient.accumulated_time_cooked = accumulated_time_cooked
 		split_ingredient.reagents.clear_reagents() //so we aren't making it taste raw on init
 		split_ingredient.reagents.trans_to_holder(reagents, reagents.total_volume * final_ratio, 1, TRUE)
-		split_ingredient.serving_amount = amount
+		split_ingredient.weight = amount
 		split_ingredient.update_icon()
 		user.put_in_hands_or_drop(split_ingredient)
 		to_chat(user, SPAN_NOTICE("You split off [src]."))
 	else
-		to_chat(user, SPAN_WARNING("There's not enough serves in the [src]!"))
+		to_chat(user, SPAN_WARNING("There's not enough of [src]!"))
 
 /obj/item/reagent_containers/food/snacks/ingredient/initialize_slice(obj/item/reagent_containers/food/snacks/slice, reagents_per_slice)
 	reagents.trans_to_obj(slice, reagents_per_slice)
@@ -165,7 +172,7 @@
 		var/datum/reagent/nutriment/our_nutrient = reagents.get_reagent("nutriment")
 		if(our_nutrient)
 			our_nutrient.data = list()
-			our_nutrient.data[cookstage_information[cookstage][COOKINFO_TASTE]] = serving_amount
+			our_nutrient.data[cookstage_information[cookstage][COOKINFO_TASTE]] = WEIGHT_TASTE_DIVISION(weight)
 		if(istype(loc, /obj/item/reagent_containers/glass/food_holder))
 			var/obj/item/reagent_containers/glass/food_holder/FH = loc
 			FH.check_recipe_completion(cook_method)
@@ -200,7 +207,8 @@
 			cooked_info = "thorougly burnt."
 	info += "<span class='notice'>It looks </span><span class='[cooked_span]'>[cooked_info] \n</span>"
 	info += "<span class='notice'>It's been cooked for about [accumulated_time_cooked / 10] seconds. \n</span>" //do we want this on final? trait that lets you see exact cooking time and people without it see general? cooking goggles that let you analyze it??
-	info += "<span class ='notice'>There are [serving_amount] servings.</span>"
+	if(can_stack)
+		info += "<span class ='notice'>There's about [weight]g of food here.</span>"
 	return info
 
 /obj/item/reagent_containers/food/snacks/ingredient/proc/cookstage2text()
@@ -217,14 +225,14 @@
 /obj/item/reagent_containers/food/snacks/ingredient/proc/merge_ingredient(obj/item/reagent_containers/food/snacks/ingredient/I)
 	I.reagents.trans_to_holder(reagents, I.reagents.total_volume, 1, TRUE)
 	accumulated_time_cooked = (accumulated_time_cooked + I.accumulated_time_cooked) / 2
-	serving_amount += I.serving_amount
+	weight += I.weight
 	update_icon()
 	qdel(I)
 
-/obj/item/reagent_containers/food/snacks/ingredient/proc/consume_serving(var/remove_amount = 1)
-	serving_amount -= remove_amount
+/obj/item/reagent_containers/food/snacks/ingredient/proc/consume_weight(var/remove_amount = 100)
+	weight -= remove_amount
 	update_icon()
-	if(serving_amount <= 0)
+	if(weight <= 0)
 		qdel(src)
 
 /obj/item/reagent_containers/food/snacks/ingredient/plant //for testing, delete before merge
@@ -261,7 +269,7 @@
 			create_ingredient.cookstage = cookstage
 			var/datum/reagent/nutriment/our_nutrient = create_ingredient.reagents.get_reagent("nutriment")
 			our_nutrient.data = list()
-			our_nutrient.data[create_ingredient.cookstage_information[cookstage][COOKINFO_TASTE]] = serving_amount
+			our_nutrient.data[create_ingredient.cookstage_information[cookstage][COOKINFO_TASTE]] = WEIGHT_TASTE_DIVISION(weight)
 			if(istype(loc, /obj/machinery/cooking))
 				var/obj/machinery/cooking/CK = loc
 				CK.insert_item(create_ingredient)
