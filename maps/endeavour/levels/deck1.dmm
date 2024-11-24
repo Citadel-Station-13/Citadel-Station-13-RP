@@ -9632,10 +9632,6 @@
 "hfY" = (
 /turf/simulated/floor/airless/ceiling,
 /area/space)
-"hgm" = (
-/obj/structure/event/prop/mining_truck,
-/turf/simulated/floor/plating,
-/area/maintenance/substation/dock)
 "hgn" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /turf/simulated/floor/wood,
@@ -42589,7 +42585,7 @@ dZr
 xNI
 xNI
 xNI
-hgm
+xNI
 xNI
 dnc
 xNI
