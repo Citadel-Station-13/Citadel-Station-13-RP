@@ -179,6 +179,7 @@
 	name = "\improper Away Mission - Miaphus'irra: Desert"
 	icon_state = "away"
 	requires_power = 1
+	initial_outdoors = FALSE
 
 /area/sector/miaphus/beach/desert/explored
 	name = "\improper Away Mission - Miaphus'irra: Desert (E)"

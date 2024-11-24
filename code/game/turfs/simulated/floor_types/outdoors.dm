@@ -7,8 +7,8 @@
 	icon = 'icons/turf/outdoors.dmi'
 	icon_state = null
 	edge_blending_priority = 1
-	outdoors = TRUE					// This variable is used for weather effects.
-	can_dirty = FALSE				// Looks hideous with dirt on it.
+	outdoors = TRUE
+	can_dirty = FALSE
 	can_build_into_floor = TRUE
 	baseturfs = /turf/simulated/floor/outdoors/rocks
 

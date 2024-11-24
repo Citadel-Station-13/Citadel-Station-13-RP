@@ -28,6 +28,7 @@
 	smoothing_flags = SMOOTH_CUSTOM
 	smoothing_groups = (SMOOTH_GROUP_TURF_OPEN + SMOOTH_GROUP_OPEN_FLOOR)
 	canSmoothWith = (SMOOTH_GROUP_TURF_OPEN + SMOOTH_GROUP_OPEN_FLOOR)
+	outdoors = FALSE
 
 	// Damage to flooring.
 	var/broken
