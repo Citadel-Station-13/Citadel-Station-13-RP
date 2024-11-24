@@ -11,6 +11,11 @@
 	/// The biology type we're considered. This is for quick lookups.
 	var/biology_type = NONE
 
+	//* Mappings *//
+
+	/// The typepaths to map specific organ slots to, by default.
+	var/list/default_organ_mappings = list()
+
 	//* Ticking *//
 
 	/// Requires life ticking on the mob's global biological life tick.

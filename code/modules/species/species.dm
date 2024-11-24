@@ -113,6 +113,8 @@
 
 	//* Inventory *//
 
+	///  todo: make and have this use /datum/inventory_slot_tweak instead of an associated list
+	///
 	/// Available inventory slots IDs
 	///
 	/// * associate to list for remapping; use INVENTORY_SLOT_REMAP_* keys
