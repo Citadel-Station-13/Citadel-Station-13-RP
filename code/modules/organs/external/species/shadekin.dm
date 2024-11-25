@@ -1,5 +1,12 @@
 //! Blackeyed limbs.
 
+/obj/item/organ/external/head/vr/shadekin
+	cannot_gib = 1
+	cannot_amputate = 1
+
+	eye_icons_vr = 'icons/mob/human_face_vr.dmi'
+	eye_icon_vr = "eyes_shadekin"
+
 /obj/item/organ/external/chest/crewkin
 	min_broken_damage = 31 // Original 20, raised to 31 to be at 0.9 of default
 

@@ -12,9 +12,20 @@
 	var/biology_type = NONE
 
 	//* Organs & Mappings *//
-
 	/// The typepaths to map specific organ slots to, by default.
-	var/list/default_organ_mappings = list()
+	var/list/default_organ_mappings = list(
+		ORGAN_KEY_EXT_HEAD = /obj/item/organ/external/head,
+		ORGAN_KEY_EXT_CHEST = /obj/item/organ/external/chest,
+		ORGAN_KEY_EXT_GROIN = /obj/item/organ/external/groin,
+		ORGAN_KEY_EXT_LEFT_ARM = /obj/item/organ/external/arm/left,
+		ORGAN_KEY_EXT_LEFT_HAND = /obj/item/organ/external/hand/left,
+		ORGAN_KEY_EXT_RIGHT_ARM = /obj/item/organ/external/arm/right,
+		ORGAN_KEY_EXT_RIGHT_HAND = /obj/item/organ/external/hand/right,
+		ORGAN_KEY_EXT_LEFT_LEG = /obj/item/organ/external/leg/left,
+		ORGAN_KEY_EXT_LEFT_FOOT = /obj/item/organ/external/foot/left,
+		ORGAN_KEY_EXT_RIGHT_LEG = /obj/item/organ/external/leg/right,
+		ORGAN_KEY_EXT_RIGHT_FOOT = /obj/item/organ/external/foot/right,
+	)
 	/// Default organ keys we should have.
 	///
 	/// * Species may override this by key.

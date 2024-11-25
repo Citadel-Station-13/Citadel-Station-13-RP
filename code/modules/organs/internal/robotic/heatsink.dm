@@ -31,8 +31,6 @@
 			owner.adjustToxLoss(2 * damage / max_damage)
 			take_damage(max(0.5,round(damage / max_damage, 0.1)))
 
-	return
-
 /obj/item/organ/internal/robotic/heatsink/proc/get_environment_temperature()
 	if(istype(owner.loc, /obj/vehicle/sealed/mecha))
 		var/obj/vehicle/sealed/mecha/M = owner.loc

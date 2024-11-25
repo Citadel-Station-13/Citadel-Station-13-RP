@@ -1,4 +1,76 @@
-//! ## Leave everything here as it is for now since this is using unique behavior.
+/obj/item/organ/external/head
+	organ_tag = BP_HEAD
+	icon_name = "head"
+	name = "head"
+	slot_flags = SLOT_BELT
+	max_damage = 75
+	min_broken_damage = 35
+	w_class = WEIGHT_CLASS_NORMAL
+	body_part_flags = HEAD
+	vital = TRUE
+	parent_organ = BP_TORSO
+	joint = "jaw"
+	amputation_point = "neck"
+	gendered_icon = TRUE
+	cannot_gib = TRUE
+	encased = "skull"
+	base_miss_chance = 40
+	damage_force = 3
+	throw_force = 7
+
+	var/hair_opacity = 255
+	var/can_intake_reagents = TRUE
+	var/eyes_over_markings = FALSE
+	var/eye_icon = "eyes_s"
+	var/eye_icon_location = 'icons/mob/human_face.dmi'
+
+/obj/item/organ/external/head/Initialize(mapload)
+	if(config_legacy.allow_headgibs)
+		cannot_gib = FALSE
+	return ..()
+
+/obj/item/organ/external/head/robotize(company, skip_prosthetics, keep_organs, force)
+	return ..(company, skip_prosthetics, 1, force)
+
+/obj/item/organ/external/head/removed()
+	if(owner)
+		if(iscarbon(owner))
+			name = "[owner.real_name]'s head"
+			owner.update_hair()
+	get_icon()
+	..()
+
+/obj/item/organ/external/head/take_damage(brute, burn, sharp, edge, used_weapon = null, list/forbidden_limbs = list(), permutation = 0)
+	. = ..()
+	if (!disfigured)
+		if (brute_dam > 40)
+			if (prob(50))
+				disfigure("brute")
+		if (burn_dam > 40)
+			disfigure("burn")
+
+/obj/item/organ/external/head/handle_germ_effects()
+	. = ..() //Should return an infection level
+	if(!. || (status & ORGAN_DEAD)) return //If it's already above 2, it's become necrotic and we can just not worry about it.
+
+	//Staph infection symptoms for HEAD
+	if (. >= 1)
+		if(prob(.))
+			owner.custom_pain("Your [name] [pick("aches","itches","throbs")]!",0)
+
+	if (. >= 2)
+		if(prob(.))
+			owner.custom_pain("A jolt of pain surges through your [name]!",1)
+			owner.eye_blurry += 20 //Specific level 2 'feature
+
+/obj/item/organ/external/head/attackby(obj/item/I as obj, mob/user as mob)
+	if(istype(I, /obj/item/toy/plushie) || istype(I, /obj/item/organ/external/head))
+		user.visible_message("<span class='notice'>[user] makes \the [I] kiss \the [src]!.</span>", \
+		"<span class='notice'>You make \the [I] kiss \the [src]!.</span>")
+	return ..()
+
+/obj/item/organ/external/head/no_eyes
+	eye_icon = "blank_eyes"
 
 /// For custom heads with custom parts since the base code is restricted to a single icon file.
 /obj/item/organ/external/head/vr/get_icon()
@@ -59,18 +131,3 @@
 	var/eye_icon_vr = "blank_eyes"
 	var/head_offset = 0
 	eye_icon = "blank_eyes"
-
-/obj/item/organ/external/head/vr/sergal
-	eye_icon_vr = "eyes_sergal"
-
-/obj/item/organ/external/head/vr/werebeast
-	eye_icons_vr = 'icons/mob/werebeast_face_vr.dmi'
-	eye_icon_vr = "werebeast_eyes"
-	head_offset = 6
-
-/obj/item/organ/external/head/vr/shadekin
-	cannot_gib = 1
-	cannot_amputate = 1
-
-	eye_icons_vr = 'icons/mob/human_face_vr.dmi'
-	eye_icon_vr = "eyes_shadekin"
