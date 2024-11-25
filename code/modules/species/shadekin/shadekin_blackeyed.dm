@@ -1,3 +1,6 @@
+/datum/physiology_modifier/intrinsic/species/crew_shadekin
+	l_bone_fracture_threshold_mod = 0.9
+
 /datum/species/crew_shadekin
 	uid = SPECIES_ID_SHADEKIN_BLACK
 	name = SPECIES_SHADEKIN_CREW
@@ -93,24 +96,16 @@
 
 	species_appearance_flags = HAS_HAIR_COLOR | HAS_LIPS | HAS_SKIN_COLOR | HAS_UNDERWEAR
 
+	intrinsic_physiology_modifier = /datum/physiology_modifier/intrinsic/species/crew_shadekin
+	has_external_organs = list(
+		ORGAN_KEY_EXT_HEAD = /datum/species_organ_entry{
+			override_type = /obj/item/organ/external/head/vr/crewkin;
+		},
+	)
 	use_internal_organs = list(
-	)
-	has_organ = list(
-		O_BRAIN     = /obj/item/organ/internal/shadekin/dimensional_cluster/crewkin,
-	)
-
-	has_limbs = list(
-		BP_TORSO  = list("path" = /obj/item/organ/external/chest/crewkin),
-		BP_GROIN  = list("path" = /obj/item/organ/external/groin/crewkin),
-		BP_HEAD   = list("path" = /obj/item/organ/external/head/vr/crewkin),
-		BP_L_ARM  = list("path" = /obj/item/organ/external/arm/crewkin),
-		BP_R_ARM  = list("path" = /obj/item/organ/external/arm/right/crewkin),
-		BP_L_LEG  = list("path" = /obj/item/organ/external/leg/crewkin),
-		BP_R_LEG  = list("path" = /obj/item/organ/external/leg/right/crewkin),
-		BP_L_HAND = list("path" = /obj/item/organ/external/hand/crewkin),
-		BP_R_HAND = list("path" = /obj/item/organ/external/hand/right/crewkin),
-		BP_L_FOOT = list("path" = /obj/item/organ/external/foot/crewkin),
-		BP_R_FOOT = list("path" = /obj/item/organ/external/foot/right/crewkin),
+		ORGAN_KEY_SHADEKIN_DIMENSIONAL_CLUSTER = /datum/species_organ_entry{
+			override_type = /obj/item/organ/internal/shadekin/dimensional_cluster/crewkin;
+		},
 	)
 
 	var/list/crew_shadekin_abilities = list(

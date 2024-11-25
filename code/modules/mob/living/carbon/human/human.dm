@@ -84,7 +84,7 @@
 				STATPANEL_DATA_ENTRY("Tank Pressure", internal.air_contents.return_pressure())
 				STATPANEL_DATA_ENTRY("Distribution Pressure", internal.distribute_pressure)
 
-		var/obj/item/organ/internal/xenos/plasmavessel/P = keyed_organs[ORGAN_KEY_XENOMORPH_PLASMA_VESSEL] //Xenomorphs. Mech.
+		var/obj/item/organ/internal/xenomorph/plasmavessel/P = keyed_organs[ORGAN_KEY_XENOMORPH_PLASMA_VESSEL] //Xenomorphs. Mech.
 		if(P)
 			STATPANEL_DATA_LINE("Phoron Stored: [P.stored_plasma]/[P.max_plasma]")
 

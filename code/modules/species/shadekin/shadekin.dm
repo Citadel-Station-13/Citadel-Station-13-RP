@@ -95,24 +95,15 @@
 
 	move_trail = /obj/effect/debris/cleanable/blood/tracks/paw
 
+	has_external_organs = list(
+		ORGAN_KEY_EXT_HEAD = /datum/species_organ_entry{
+			override_type = /obj/item/organ/external/head/vr/shadekin;
+		},
+	)
 	use_internal_organs = list(
-	)
-	has_organ = list(
-		O_BRAIN     = /obj/item/organ/internal/shadekin/dimensional_cluster,
-	)
-
-	has_limbs = list(
-		BP_TORSO  = list("path" = /obj/item/organ/external/chest),
-		BP_GROIN  = list("path" = /obj/item/organ/external/groin),
-		BP_HEAD   = list("path" = /obj/item/organ/external/head/vr/shadekin),
-		BP_L_ARM  = list("path" = /obj/item/organ/external/arm),
-		BP_R_ARM  = list("path" = /obj/item/organ/external/arm/right),
-		BP_L_LEG  = list("path" = /obj/item/organ/external/leg),
-		BP_R_LEG  = list("path" = /obj/item/organ/external/leg/right),
-		BP_L_HAND = list("path" = /obj/item/organ/external/hand),
-		BP_R_HAND = list("path" = /obj/item/organ/external/hand/right),
-		BP_L_FOOT = list("path" = /obj/item/organ/external/foot),
-		BP_R_FOOT = list("path" = /obj/item/organ/external/foot/right),
+		ORGAN_KEY_SHADEKIN_DIMENSIONAL_CLUSTER = /datum/species_organ_entry{
+			override_type = /obj/item/organ/internal/shadekin/dimensional_cluster;
+		},
 	)
 
 	vision_innate = /datum/vision/baseline/species_tier_3/for_snowflake_ocs

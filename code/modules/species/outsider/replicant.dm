@@ -80,8 +80,8 @@
 	use_internal_organs = list(
 	)
 	has_organ = list(
-		O_PLASMA    = /obj/item/organ/internal/xenos/plasmavessel/replicant,
-		O_ACID      = /obj/item/organ/internal/xenos/acidgland/replicant,
+		O_PLASMA    = /obj/item/organ/internal/xenomorph/plasmavessel/replicant,
+		O_ACID      = /obj/item/organ/internal/xenomorph/acidgland/replicant,
 		)
 
 /datum/species/shapeshifter/replicant/beta
@@ -100,6 +100,6 @@
 	use_internal_organs = list(
 	)
 	has_organ = list(
-		O_PLASMA    = /obj/item/organ/internal/xenos/plasmavessel/replicant,
-		O_RESIN     = /obj/item/organ/internal/xenos/resinspinner/replicant,
+		O_PLASMA    = /obj/item/organ/internal/xenomorph/plasmavessel/replicant,
+		O_RESIN     = /obj/item/organ/internal/xenomorph/resinspinner/replicant,
 	)
