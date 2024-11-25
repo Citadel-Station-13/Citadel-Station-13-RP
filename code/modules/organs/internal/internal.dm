@@ -81,3 +81,22 @@
 			take_damage(rand(1, 4))
 		if (4)
 			take_damage(rand(0, 2))
+
+//* Insert / Remove *//
+
+/obj/item/organ/internal/register(mob/living/carbon/target)
+	target.internal_organs += src
+	if(organ_key)
+		target.keyed_organs[organ_key] = src
+		target.keyed_organs[organ_tag] = src
+	if(organ_tag)
+		target.legacy_organ_by_tag[organ_tag] = src
+
+/obj/item/organ/internal/unregister(mob/living/carbon/target)
+	target.internal_organs -= src
+	if(organ_key && target.keyed_organs[organ_key] == src)
+		target.keyed_organs -= organ_key
+	if(organ_key && target.legacy_organ_by_tag[organ_key] == src)
+		target.legacy_organ_by_tag -= organ_key
+	if(organ_tag && target.legacy_organ_by_tag[organ_tag] == src)
+		target.legacy_organ_by_tag -= organ_tag

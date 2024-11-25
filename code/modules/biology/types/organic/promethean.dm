@@ -6,5 +6,6 @@
 /datum/biology_organ_state/organic/promethean
 
 /datum/biology/organic/promethean
+	biology_type = BIOLOGY_TYPE_SLIME
 
 #warn impl

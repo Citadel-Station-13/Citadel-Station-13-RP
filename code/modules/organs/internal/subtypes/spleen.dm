@@ -15,14 +15,8 @@
 
 		//High toxins levels are dangerous
 		if(owner.getToxLoss() >= 30 && !owner.reagents.has_reagent("anti_toxin"))
-			//Healthy liver suffers on its own
 			if (src.damage < min_broken_damage)
 				src.damage += 0.2 * spleen_tick
-			//Damaged one shares the fun
-			else
-				var/obj/item/organ/internal/O = pick(owner.internal_organs)
-				if(O)
-					O.damage += 0.2 * spleen_tick
 
 		else if(!src.is_broken()) // If the spleen isn't severely damaged, it can help fight infections. Key word, can.
 			var/obj/item/organ/external/OEx = pick(owner.organs)

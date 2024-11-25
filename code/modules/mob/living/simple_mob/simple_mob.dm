@@ -245,6 +245,11 @@
 	/// legacy armor, applied on init
 	var/list/armor_legacy_mob
 
+	//* Physiology *//
+	/// Our whole-body local physiology
+	var/datum/local_physiology/local_physiology
+	#warn hook
+
 /mob/living/simple_mob/Initialize(mapload)
 	if(armor_legacy_mob)
 		var/list/translated = list()

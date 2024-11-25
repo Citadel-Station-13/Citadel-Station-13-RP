@@ -214,7 +214,7 @@ var/list/wrapped_species_by_ref = list()
 		g_facial = g_skin
 		b_facial = b_skin
 
-	for(var/obj/item/organ/external/E in organs)
+	for(var/obj/item/organ/external/E in external_organs)
 		E.sync_colour_to_human(src)
 
 	regenerate_icons()
@@ -504,7 +504,7 @@ var/list/wrapped_species_by_ref = list()
 
 	last_special = world.time + 50
 
-	for(var/limb in src.organs)
+	for(var/limb in src.external_organs)
 		var/obj/item/organ/external/L = limb
 		L.transparent = !L.transparent
 	visible_message(SPAN_NOTICE("\The [src]'s internal composition seems to change."))

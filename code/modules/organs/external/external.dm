@@ -1503,6 +1503,25 @@ Note that amputating the affected organ does in fact remove the infection from t
 //       this will require organs be composition instead of inheritance,
 //       as defining this on every left / right hand would be satanic.
 
+//* Insert / Remove *//
+
+/obj/item/organ/external/register(mob/living/carbon/target)
+	target.external_organs += src
+	if(organ_key)
+		target.keyed_organs[organ_key] = src
+		target.keyed_organs[organ_tag] = src
+	if(organ_tag)
+		target.legacy_organ_by_tag[organ_tag] = src
+
+/obj/item/organ/external/unregister(mob/living/carbon/target)
+	target.external_organs -= src
+	if(organ_key && target.keyed_organs[organ_key] == src)
+		target.keyed_organs -= organ_key
+	if(organ_key && target.legacy_organ_by_tag[organ_key] == src)
+		target.legacy_organ_by_tag -= organ_key
+	if(organ_tag && target.legacy_organ_by_tag[organ_tag] == src)
+		target.legacy_organ_by_tag -= organ_tag
+
 //* Environmentals *//
 
 // todo: limb specific

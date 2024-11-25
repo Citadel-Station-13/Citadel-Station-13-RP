@@ -1,6 +1,7 @@
 //////////////////////////////
 //	Nanite Organ Implant
 //////////////////////////////
+// todo: replace with autosurgeons
 /obj/item/implant/organ
 	name = "nanite fabrication implant"
 	desc = "A buzzing implant covered in a writhing layer of metal insects."
@@ -27,27 +28,13 @@
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
 
-		var/obj/item/organ/NewOrgan = new organ_to_implant()
-
-		var/obj/item/organ/external/E = H.legacy_organ_by_zone(NewOrgan.parent_organ)
-		to_chat(H, "<span class='notice'>You feel a tingling sensation in your [part].</span>")
-		if(E && !(H.internal_organs_by_name[NewOrgan.organ_tag]))
+		var/obj/item/organ/NewOrgan = new organ_to_implant
+		if(NewOrgan.insert(H))
 			spawn(rand(1 SECONDS, 30 SECONDS))
 				to_chat(H, "<span class='alien'>You feel a pressure in your [E] as the tingling fades, the lump caused by the implant now gone.</span>")
-
-			NewOrgan.forceMove(H)
-			NewOrgan.owner = H
-			if(E.internal_organs == null)
-				E.internal_organs = list()
-			E.internal_organs |= NewOrgan
-			H.internal_organs_by_name[NewOrgan.organ_tag] = NewOrgan
-			H.internal_organs |= NewOrgan
-			NewOrgan.handle_organ_mod_special()
-
-			spawn(1)
+			spawn(0)
 				if(!QDELETED(src))
 					qdel(src)
-
 		else
 			qdel(NewOrgan)
 			to_chat(H, "<span class='warning'>You feel a pinching sensation in your [part]. The implant remains.</span>")

@@ -81,7 +81,7 @@
 
 
 	var/obj/item/implant/reagent_generator/rimplant
-	for(var/obj/item/organ/external/E in organs)
+	for(var/obj/item/organ/external/E in external_organs)
 		for(var/obj/item/implant/I in E.implants)
 			if(istype(I, /obj/item/implant/reagent_generator))
 				rimplant = I

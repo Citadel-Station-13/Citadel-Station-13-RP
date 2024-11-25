@@ -113,6 +113,8 @@
 
 	//* Inventory *//
 
+	///  todo: make and have this use /datum/inventory_slot_tweak instead of an associated list
+	///
 	/// Available inventory slots IDs
 	///
 	/// * associate to list for remapping; use INVENTORY_SLOT_REMAP_* keys
@@ -154,7 +156,16 @@
 	var/list/base_skin_colours
 
 
-	//? Organs
+	//* Biology & Organs *//
+
+	/// Our primary biology.
+	///
+	/// * Our organs default to this biology.
+	/// * This is a typepath or instance.
+	/// * This can be overridden in certain cases
+	var/datum/biology/biology
+	#warn impl
+
 	/// Determines the organs that the species spawns with and which required-organ checks are conducted.
 	var/list/has_organ = list(
 		O_HEART     = /obj/item/organ/internal/heart,
@@ -686,10 +697,14 @@ GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
 		if((organ in H.organs) || (organ in H.internal_organs))
 			qdel(organ)
 
-	if(H.organs)									H.organs.Cut()
-	if(H.internal_organs)				 H.internal_organs.Cut()
-	if(H.organs_by_name)					H.organs_by_name.Cut()
-	if(H.internal_organs_by_name) H.internal_organs_by_name.Cut()
+	if(H.organs)
+		H.organs.Cut()
+	if(H.internal_organs)
+		H.internal_organs.Cut()
+	if(H.organs_by_name)
+		H.organs_by_name.Cut()
+	if(H.internal_organs_by_name)
+		H.internal_organs_by_name.Cut()
 
 	H.organs = list()
 	H.internal_organs = list()
