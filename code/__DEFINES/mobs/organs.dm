@@ -91,6 +91,12 @@
 
 #warn hook / implement
 
+//*                     Organ Default Lists                         *//
+//* Used in lists to overrule a host biology's default organ lists. *//
+
+/// Omit this organ.
+#define ORGAN_DEFAULT_OMIT "omit"
+
 //! legacy below !//
 
 //These control the damage thresholds for the various ways of removing limbs

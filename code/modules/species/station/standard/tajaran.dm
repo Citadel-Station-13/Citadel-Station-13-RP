@@ -100,16 +100,8 @@
 
 	cold_discomfort_level = 275
 
-	has_organ = list( //No appendix.
-		O_HEART     = /obj/item/organ/internal/heart,
-		O_LUNGS     = /obj/item/organ/internal/lungs,
-		O_VOICE     = /obj/item/organ/internal/voicebox,
-		O_LIVER     = /obj/item/organ/internal/liver,
-		O_KIDNEYS   = /obj/item/organ/internal/kidneys,
-		O_BRAIN     = /obj/item/organ/internal/brain,
-		O_EYES      = /obj/item/organ/internal/eyes,
-		O_STOMACH   = /obj/item/organ/internal/stomach,
-		O_INTESTINE = /obj/item/organ/internal/intestine,
+	#warn todo: no appendix
+	use_internal_organs = list(
 	)
 
 	unarmed_types = list(

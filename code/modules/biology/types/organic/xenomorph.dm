@@ -1,12 +1,7 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
-/datum/biology_mob_state/organic
-
-/datum/biology_organ_state/organic
-
-/datum/biology/organic
-	biology_type = BIOLOGY_TYPE_HUMAN
+/datum/biology/organic/xenomorph
 	default_organ_mappings = list(
 	)
 	default_internal_organ_keys = list(
@@ -20,7 +15,4 @@
 		// O_LIVER     = /obj/item/organ/internal/liver,
 		// O_KIDNEYS   = /obj/item/organ/internal/kidneys,
 		// O_BRAIN     = /obj/item/organ/internal/brain,
-		// O_APPENDIX  = /obj/item/organ/internal/appendix,
 		// O_EYES      = /obj/item/organ/internal/eyes,
-		// O_STOMACH   = /obj/item/organ/internal/stomach,
-		// O_INTESTINE = /obj/item/organ/internal/intestine,

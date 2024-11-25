@@ -121,20 +121,6 @@ GLOBAL_LIST_INIT(moth_lore_data, init_moth_lore())
 	primitive_form = null
 	species_appearance_flags = HAS_HAIR_COLOR | HAS_UNDERWEAR | HAS_SKIN_COLOR | HAS_EYE_COLOR
 
-	has_organ = list(
-		O_HEART     = /obj/item/organ/internal/heart,
-		O_LUNGS     = /obj/item/organ/internal/lungs,
-		O_VOICE     = /obj/item/organ/internal/voicebox,
-		O_LIVER     = /obj/item/organ/internal/liver,
-		O_KIDNEYS   = /obj/item/organ/internal/kidneys,
-		O_BRAIN     = /obj/item/organ/internal/brain,
-		O_APPENDIX  = /obj/item/organ/internal/appendix,
-		O_SPLEEN    = /obj/item/organ/internal/spleen,
-		O_EYES      = /obj/item/organ/internal/eyes,
-		O_STOMACH   = /obj/item/organ/internal/stomach,
-		O_INTESTINE = /obj/item/organ/internal/intestine,
-	)
-
 	inherent_verbs = list(
 		/mob/living/carbon/human/proc/tie_hair,
 		/mob/living/carbon/human/proc/hide_horns,

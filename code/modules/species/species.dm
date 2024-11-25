@@ -183,31 +183,24 @@
 		ORGAN_KEY_EXT_RIGHT_LEG,
 		ORGAN_KEY_EXT_RIGHT_FOOT,
 	)
+	/// Our internal organ overrides.
+	///
+	/// * `ORGAN_KEY_BRAIN` is implicit and can never be omitted.
+	///
+	/// Inherits:
+	/// * Our default biology's `default_internal_organ_keys`.
+	///
+	/// Accepts a list of:
+	/// * Organ key associated to an ORGAN_DEFAULT_* value.
+	/// * Organ key associated to a /datum/species_organ_entry value.
+	var/list/use_internal_organs = list()
 	/// Our resultant limbs.
 	///
 	/// * Automatically generated to be a list of /datum/species_organ_entry's
 	var/tmp/list/computed_external_organs
-	#warn impl
-	/// Our resultant internal organs.
 	///
 	/// * Automatically generated to be a list of /datum/species_organ_entry's
 	var/tmp/list/computed_internal_organs
-	#warn impl
-
-
-	/// Determines the organs that the species spawns with and which required-organ checks are conducted.
-	var/list/has_organ = list(
-		O_HEART     = /obj/item/organ/internal/heart,
-		O_LUNGS     = /obj/item/organ/internal/lungs,
-		O_VOICE     = /obj/item/organ/internal/voicebox,
-		O_LIVER     = /obj/item/organ/internal/liver,
-		O_KIDNEYS   = /obj/item/organ/internal/kidneys,
-		O_BRAIN     = /obj/item/organ/internal/brain,
-		O_APPENDIX  = /obj/item/organ/internal/appendix,
-		O_EYES      = /obj/item/organ/internal/eyes,
-		O_STOMACH   = /obj/item/organ/internal/stomach,
-		O_INTESTINE = /obj/item/organ/internal/intestine,
-	)
 
 	//? Speech
 	/// Part of icon_state to use for speech bubbles when talking.	See talk.dmi for available icons.

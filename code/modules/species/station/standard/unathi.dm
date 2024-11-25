@@ -102,16 +102,10 @@
 		BP_R_FOOT = list("path" = /obj/item/organ/external/foot/right),
 	)
 
-	//No kidneys or appendix
-	has_organ = list(
-		O_HEART     = /obj/item/organ/internal/heart/unathi,
-		O_LUNGS     = /obj/item/organ/internal/lungs/unathi,
-		O_LIVER     = /obj/item/organ/internal/liver/unathi,
-		O_BRAIN     = /obj/item/organ/internal/brain/unathi,
-		O_EYES      = /obj/item/organ/internal/eyes,
-		O_STOMACH   = /obj/item/organ/internal/stomach/unathi,
-		O_INTESTINE = /obj/item/organ/internal/intestine/unathi,
+	#warn no kidneys, no appendix
+	use_internal_organs = list(
 	)
+
 	vision_organ = O_EYES
 
 	unarmed_types = list(
