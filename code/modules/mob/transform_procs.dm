@@ -7,8 +7,6 @@
 	update_mobility()
 	icon = null
 	invisibility = 101
-	for(var/t in organs)
-		qdel(t)
 	var/atom/movable/overlay/animation = new /atom/movable/overlay( loc )
 	animation.icon_state = "blank"
 	animation.icon = 'icons/mob/mob.dmi'
@@ -31,7 +29,6 @@
 
 	to_chat(src, "<B>You are now [species.name]. </B>")
 	qdel(animation)
-
 	return src
 
 /mob/new_player/AIize()
@@ -41,8 +38,6 @@
 /mob/living/carbon/human/AIize(move=1) // 'move' argument needs defining here too because BYOND is dumb
 	if (transforming)
 		return
-	for(var/t in organs)
-		qdel(t)
 
 	return ..(move)
 
@@ -91,8 +86,7 @@
 
 	O.rename_self("ai")
 	// Mobs still instantly del themselves, thus we need to spawn or O will never be returned.
-	spawn(0)
-		qdel(src)
+	qdel(src)
 	return O
 
 /// Human -> Robot
@@ -105,9 +99,6 @@
 	update_mobility()
 	icon = null
 	invisibility = 101
-	for(var/t in organs)
-		qdel(t)
-
 	var/mob/living/silicon/robot/O = new /mob/living/silicon/robot( loc )
 
 	// cyborgs produced by Robotize get an automatic power cell
@@ -162,8 +153,6 @@
 	update_mobility()
 	icon = null
 	invisibility = 101
-	for(var/t in organs)
-		qdel(t)
 
 	var/alien_caste = pick("Hunter","Sentinel","Drone")
 	var/mob/living/carbon/human/new_xeno = create_new_xenomorph(alien_caste,loc)
@@ -185,8 +174,6 @@
 	update_mobility()
 	icon = null
 	invisibility = 101
-	for(var/t in organs)	//this really should not be necessary
-		qdel(t)
 
 	var/mob/living/simple_mob/animal/passive/dog/corgi/new_corgi = new /mob/living/simple_mob/animal/passive/dog/corgi (loc)
 	new_corgi.a_intent = INTENT_HARM
@@ -215,9 +202,6 @@
 	update_mobility()
 	icon = null
 	invisibility = 101
-
-	for(var/t in organs)
-		qdel(t)
 
 	var/mob/new_mob = new mobpath(src.loc)
 

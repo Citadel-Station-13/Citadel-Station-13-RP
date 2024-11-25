@@ -146,8 +146,8 @@
 	return CLICKCHAIN_DO_NOT_PROPAGATE
 
 /obj/item/hypospray/proc/injection_checks(mob/target, mob/user, target_zone, speed_mult = 1, silent = FALSE)
-	// todo: legacy cast, get organ/etc should be on mob level maybe.
-	var/mob/living/L = target
+	// todo: legacy cast, we need simplemob handling.
+	var/mob/living/carbon/L = target
 	if(!istype(L))
 		user.action_feedback(SPAN_WARNING("[target] isn't injectable."), src)
 		return FALSE

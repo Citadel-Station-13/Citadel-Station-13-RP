@@ -16,9 +16,6 @@
 	if(status & ORGAN_DEAD)
 		. += "<span class='notice'>The decay has set in.</span>"
 
-/obj/item/organ/proc/remove_rejuv()
-	qdel(src)
-
 /obj/item/organ/proc/rejuvenate_legacy(var/ignore_prosthetic_prefs)
 	damage = 0
 	status = 0

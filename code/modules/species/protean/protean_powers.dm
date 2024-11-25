@@ -18,9 +18,12 @@
 		to_chat(src,"<span class='warning'>You don't have a working refactory module!</span>")
 		return
 
-
-	var/choice = input(src,"Pick the bodypart to change:", "Refactor - One Bodypart") as null|anything in species.has_limbs
-	if(!choice)
+	var/list/datum/species_organ_entry/pick_entries_by_name = list()
+	for(var/datum/species_organ_entry/entry as anything in species.computed_external_organs)
+		pick_entries_by_name[entry.name] = entry
+	var/picked_choice = input(src,"Pick the bodypart to change:", "Refactor - One Bodypart") as null|anything in pick_entries_by_name
+	var/datum/species_organ_entry/picked_entry = pick_entries_by_name[picked_choice]
+	if(!picked_entry)
 		return
 
 	//Organ is missing, needs restoring

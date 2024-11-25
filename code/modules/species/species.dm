@@ -171,18 +171,29 @@
 	/// * External bodypart organ keys without associations
 	/// * External bodypart organ keys associated to a /datum/species_organ_entry
 	var/list/has_external_organs = list(
+		ORGAN_KEY_EXT_HEAD,
 		ORGAN_KEY_EXT_CHEST,
 		ORGAN_KEY_EXT_GROIN,
-		ORGAN_KEY_EXT_HEAD,
 		ORGAN_KEY_EXT_LEFT_ARM,
-		ORGAN_KEY_EXT_RIGHT_ARM,
 		ORGAN_KEY_EXT_LEFT_HAND,
+		ORGAN_KEY_EXT_RIGHT_ARM,
 		ORGAN_KEY_EXT_RIGHT_HAND,
 		ORGAN_KEY_EXT_LEFT_LEG,
-		ORGAN_KEY_EXT_RIGHT_LEG,
 		ORGAN_KEY_EXT_LEFT_FOOT,
+		ORGAN_KEY_EXT_RIGHT_LEG,
 		ORGAN_KEY_EXT_RIGHT_FOOT,
 	)
+	/// Our resultant limbs.
+	///
+	/// * Automatically generated to be a list of /datum/species_organ_entry's
+	var/tmp/list/computed_external_organs
+	#warn impl
+	/// Our resultant internal organs.
+	///
+	/// * Automatically generated to be a list of /datum/species_organ_entry's
+	var/tmp/list/computed_internal_organs
+	#warn impl
+
 
 	/// Determines the organs that the species spawns with and which required-organ checks are conducted.
 	var/list/has_organ = list(
@@ -683,13 +694,15 @@ GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
 /**
  * Creates default organs in a human.
  *
+ * todo: target should be casted to carbon, not human
+ *
  * @params
  * * target - The carbon target.
  * * patch_incompatible - Replace existing organs that aren't suitable.
  * * reset_everything - Destroy all existing organs if they exist. Implies `patch_incompatible`
  * * legacy_delete_nif - Deletes their NIF.
  */
-/datum/species/proc/create_organs(mob/living/carbon/target, patch_incompatible = TRUE, reset_everything = FALSE, legacy_delete_nif)
+/datum/species/proc/create_organs(mob/living/carbon/human/target, patch_incompatible = TRUE, reset_everything = FALSE, legacy_delete_nif)
 	//! LEGACY !//
 	target.mob_size = mob_size
 	var/obj/item/nif/our_nif = target.nif
@@ -698,6 +711,26 @@ GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
 	//! END !//
 
 	#warn replacement?
+
+	var/list/obj/item/organ/existing_organs = target.get_organs()
+	if(reset_everything)
+	else
+
+	//! LEGACY !//
+	if(our_nif)
+		if(legacy_delete_nif)
+			qdel(our_nif)
+		else
+			our_nif.quick_implant(target)
+	if(base_color)
+		H.r_skin = hex2num(copytext(base_color,2,4))
+		H.g_skin = hex2num(copytext(base_color,4,6))
+		H.b_skin = hex2num(copytext(base_color,6,8))
+	else
+		H.r_skin = 0
+		H.g_skin = 0
+		H.b_skin = 0
+	//! END !//
 
 /**
  * called to ensure organs are consistent with our species's
@@ -712,11 +745,6 @@ GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
 		var/obj/item/organ/external/existing_limb = H.organs_by_name[limb_type]
 		if(existing_limb && istype(existing_limb))
 			temporary_marking_store[limb_type] = existing_limb.markings
-
-	for(var/obj/item/organ/organ in H.contents)
-		if((organ in H.organs) || (organ in H.internal_organs))
-			qdel(organ)
-
 
 	for(var/limb_type in has_limbs)
 		var/list/organ_data = has_limbs[limb_type]
@@ -742,22 +770,6 @@ GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
 			warning("[O.type] has a default organ tag \"[O.organ_tag]\" that differs from the species' organ tag \"[organ_tag]\". Updating organ_tag to match.")
 			O.organ_tag = organ_tag
 		H.internal_organs_by_name[organ_tag] = O
-
-	// if we had a NIF, decide if we want to delete it, or put it back
-	if(our_nif)
-		if(delete_nif)
-			QDEL_NULL(our_nif)
-		else
-			our_nif.quick_implant(H)
-
-	if(base_color)
-		H.r_skin = hex2num(copytext(base_color,2,4))
-		H.g_skin = hex2num(copytext(base_color,4,6))
-		H.b_skin = hex2num(copytext(base_color,6,8))
-	else
-		H.r_skin = 0
-		H.g_skin = 0
-		H.b_skin = 0
 
 /**
  * called to ensure blood is consistent

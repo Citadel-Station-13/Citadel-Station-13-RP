@@ -169,14 +169,6 @@
 	if(splinted && splinted.loc == src)
 		qdel(splinted)
 	splinted = null
-
-	if(istype(owner))
-		owner.organs -= src
-		owner.organs_by_name[organ_tag] = null
-		owner.organs_by_name -= organ_tag
-		while(null in owner.organs)
-			owner.organs -= null
-
 	implants.Cut() // Remove these too!
 
 	return ..()
@@ -611,20 +603,6 @@
 				else
 					robotize()
 		owner.update_health()
-
-/obj/item/organ/external/remove_rejuv()
-	if(owner)
-		owner.organs -= src
-		owner.organs_by_name[organ_tag] = null
-		owner.organs_by_name -= organ_tag
-		while(null in owner.organs) owner.organs -= null
-	if(children && children.len)
-		for(var/obj/item/organ/external/E in children)
-			E.remove_rejuv()
-	children.Cut()
-	for(var/obj/item/organ/internal/I in internal_organs)
-		I.remove_rejuv()
-	..()
 
 /****************************************************
 			   PROCESSING & UPDATING

@@ -19,11 +19,11 @@
 				src.damage += 0.2 * spleen_tick
 
 		else if(!src.is_broken()) // If the spleen isn't severely damaged, it can help fight infections. Key word, can.
-			var/obj/item/organ/external/OEx = pick(owner.organs)
+			var/obj/item/organ/external/OEx = pick(owner.external_organs)
 			OEx.adjust_germ_level(round(rand(0 * spleen_efficiency,-10 * spleen_efficiency)))
 
-			if(!src.is_bruised() && owner.internal_organs_by_name[O_BRAIN]) // If it isn't bruised, it helps with brain infections.
-				var/obj/item/organ/internal/brain/B = owner.internal_organs_by_name[O_BRAIN]
+			if(!src.is_bruised() && owner.keyed_organs[ORGAN_KEY_BRAIN]) // If it isn't bruised, it helps with brain infections.
+				var/obj/item/organ/internal/brain/B = owner.keyed_organs[O_BRAIN]
 				B.adjust_germ_level(round(rand(-3 * spleen_efficiency, -10 * spleen_efficiency)))
 
 		//Detox can heal small amounts of damage
