@@ -316,21 +316,23 @@
 	if(affected.open < 3)
 		return 0
 
-	target.op_stage.current_organ = null
-
 	var/list/attached_organs = list()
-	for(var/organ in target.internal_organs_by_name)
-		var/obj/item/organ/I = target.internal_organs_by_name[organ]
-		if(I && !(I.status & ORGAN_CUT_AWAY) && I.parent_organ == target_zone)
-			attached_organs |= organ
+	for(var/obj/item/organ/internal/potential as anything in target.get_internal_organs_for_zone(target_zone))
+		if(potential.status & ORGAN_CUT_AWAY)
+			continue
+		if(potential.robotic < ORGAN_ROBOT)
+			continue
+		attached_organs += potential
 
-	var/organ_to_remove = input(user, "Which organ do you want to prepare for removal?") as null|anything in attached_organs
+	var/obj/item/organ/organ_to_remove = input(user, "Which organ do you want to prepare for removal?") as null|anything in attached_organs
 	if(!organ_to_remove)
 		return 0
 
-	target.op_stage.current_organ = organ_to_remove
+	target.op_stage.current_organ_new = organ_to_remove
 
-	return ..() && organ_to_remove
+	. = ..() && organ_to_remove
+	if(!.)
+		target.op_stage.current_organ_new = null
 
 /datum/surgery_step/robotics/detatch_organ_robotic/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	user.visible_message("[user] starts to decouple [target]'s [target.op_stage.current_organ] with \the [tool].", \
@@ -341,13 +343,15 @@
 	user.visible_message("<span class='notice'>[user] has decoupled [target]'s [target.op_stage.current_organ] with \the [tool].</span>" , \
 	"<span class='notice'>You have decoupled [target]'s [target.op_stage.current_organ] with \the [tool].</span>")
 
-	var/obj/item/organ/internal/I = target.internal_organs_by_name[target.op_stage.current_organ]
-	if(I && istype(I))
+	var/obj/item/organ/I = target.op_stage.current_organ_new
+	if(I)
 		I.status |= ORGAN_CUT_AWAY
+	target.op_stage.current_organ_new = null
 
 /datum/surgery_step/robotics/detatch_organ_robotic/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	user.visible_message("<span class='warning'>[user]'s hand slips, disconnecting \the [tool].</span>", \
 	"<span class='warning'>Your hand slips, disconnecting \the [tool].</span>")
+	target.op_stage.current_organ_new = null
 
 ///////////////////////////////////////////////////////////////
 // Robot Organ Attaching Surgery

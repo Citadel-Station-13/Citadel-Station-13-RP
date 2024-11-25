@@ -58,6 +58,13 @@
 	return keyed_organs[target_zone_rewrites[target_zone]]
 
 /**
+ * Get internal organs by target zone.
+ */
+/mob/living/carbon/proc/get_internal_organs_for_zone(target_zone) as /list
+	var/obj/item/organ/external/bodypart = get_organ_for_zone(target_zone)
+	return bodypart ? bodypart.get_internal_organs() : list()
+
+/**
  * Get an external organ by target zone, if that organ is not a stump and is otherwise physically
  * still that organ by shape.
  */

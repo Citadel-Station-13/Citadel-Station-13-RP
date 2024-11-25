@@ -178,10 +178,11 @@
 		. += new path
 	tim_sort(., cmp = GLOBAL_PROC_REF(cmp_surgery_priority_asc))
 
-/datum/surgery_status/
+/datum/surgery_status
 	var/eyes	=	0
 	var/face	=	0
 	var/brainstem = 0
 	var/head_reattach = 0
 	var/current_organ = "organ"
+	var/obj/item/organ/current_organ_new
 	var/list/in_progress = list()
