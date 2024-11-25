@@ -1,6 +1,6 @@
 /datum/physiology_modifier/intrinsic/species/diona
-	carry_strength_add = CARRY_STRENGTH_ADD_DIONA
-	carry_strength_factor = CARRY_FACTOR_MOD_DIONA
+	g_carry_strength_add = CARRY_STRENGTH_ADD_DIONA
+	g_carry_strength_factor = CARRY_FACTOR_MOD_DIONA
 
 /datum/species/diona
 	uid = SPECIES_ID_DIONA

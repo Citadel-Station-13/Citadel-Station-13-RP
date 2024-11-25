@@ -64,12 +64,12 @@
 /proc/ask_admin_for_a_physiology_modifier(mob/user)
 	var/datum/tgui_dynamic_query/query = new
 	query.string("name", "Name", "Name your modifier.", 64, FALSE, "Custom Modifier")
-	query.number("carry_strength_add", "Carry Strength - Add", "Modify the person's base carry strength. Higher is better.", default = 0)
-	query.number("carry_strength_factor", "Carry Factor - Multiply", "Multiply the person's carry weight/encumbrance to slowdown effect when carrying over their limit. Lower is better.", default = 1)
-	query.number("carry_strength_bias", "Carry Bias - Multiply", "Multiply the person's carry weight/encumbrance to slowdown bias when carrying over their limit. Lower is better.", default = 1)
-	query.number("carry_weight_add", "Carry Weight - Add", "Modify the person's base carry weight. Higher is better. This only applies to weight, not encumbrance.", default = 0)
-	query.number("carry_weight_factor", "Carry Weight - Multiply", "Multiply the person's weight to slowdown effect when carrying over their limit. Lower is better. This only applies to weight, not encumbrance.", default = 1)
-	query.number("carry_weight_bias", "Carry Weight - Bias", "Multiply the person's weight to slowdown calculation bias; lower is better.", default = 1)
+	query.number("g_carry_strength_add", "Carry Strength - Add", "Modify the person's base carry strength. Higher is better.", default = 0)
+	query.number("g_carry_strength_factor", "Carry Factor - Multiply", "Multiply the person's carry weight/encumbrance to slowdown effect when carrying over their limit. Lower is better.", default = 1)
+	query.number("g_carry_strength_bias", "Carry Bias - Multiply", "Multiply the person's carry weight/encumbrance to slowdown bias when carrying over their limit. Lower is better.", default = 1)
+	query.number("g_carry_weight_add", "Carry Weight - Add", "Modify the person's base carry weight. Higher is better. This only applies to weight, not encumbrance.", default = 0)
+	query.number("g_carry_weight_factor", "Carry Weight - Multiply", "Multiply the person's weight to slowdown effect when carrying over their limit. Lower is better. This only applies to weight, not encumbrance.", default = 1)
+	query.number("g_carry_weight_bias", "Carry Weight - Bias", "Multiply the person's weight to slowdown calculation bias; lower is better.", default = 1)
 
 	var/list/choices = tgui_dynamic_input(user, "Add a physiology modifier", "Add Physiology Modifier", query)
 
@@ -83,11 +83,11 @@
 	// we would serialize it via json.
 
 	modifier.name = choices["name"]
-	modifier.carry_strength_add = choices["carry_strength_add"]
-	modifier.carry_strength_factor = choices["carry_strength_factor"]
-	modifier.carry_strength_bias = choices["carry_strength_bias"]
-	modifier.carry_weight_add = choices["carry_weight_add"]
-	modifier.carry_weight_factor = choices["carry_weight_factor"]
-	modifier.carry_weight_bias = choices["carry_weight_bias"]
+	modifier.g_carry_strength_add = choices["g_carry_strength_add"]
+	modifier.g_carry_strength_factor = choices["g_carry_strength_factor"]
+	modifier.g_carry_strength_bias = choices["g_carry_strength_bias"]
+	modifier.g_carry_weight_add = choices["g_carry_weight_add"]
+	modifier.g_carry_weight_factor = choices["g_carry_weight_factor"]
+	modifier.g_carry_weight_bias = choices["g_carry_weight_bias"]
 
 	return modifier

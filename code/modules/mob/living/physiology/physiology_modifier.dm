@@ -17,38 +17,49 @@
 	//* -- global modifiers -- *//
 
 	//* carry strength / weight *//
-	var/carry_strength_add = 0
-	var/carry_strength_factor = 1
-	var/carry_strength_bias = 1
-	var/carry_weight_add = 0
-	var/carry_weight_factor = 1
-	var/carry_weight_bias = 1
+	var/g_carry_strength_add = 0
+	var/g_carry_strength_factor = 1
+	var/g_carry_strength_bias = 1
+	var/g_carry_weight_add = 0
+	var/g_carry_weight_factor = 1
+	var/g_carry_weight_bias = 1
+
+	//* -- local modifiers -- *//
+
+	//* inbound damage multiply *//
+	var/l_inbound_brute_mod = 1
+	var/l_inbound_burn_mod = 1
+
+	//* wound thresholds *//
+	var/l_bone_fracture_threshold_mod = 1
+
+	#warn add to admin interface & serialize & deserialize
 
 /datum/physiology_modifier/serialize()
 	. = ..()
 	if(name != initial(name))
 		.["name"] = name
-	if(carry_strength_add != initial(carry_strength_add))
-		.["carry_strength_add"] = carry_strength_add
-	if(carry_strength_factor != initial(carry_strength_factor))
-		.["carry_strength_factor"] = carry_strength_factor
+	if(g_carry_strength_add != initial(g_carry_strength_add))
+		.["g_carry_strength_add"] = g_carry_strength_add
+	if(g_carry_strength_factor != initial(g_carry_strength_factor))
+		.["g_carry_strength_factor"] = g_carry_strength_factor
 
 /datum/physiology_modifier/deserialize(list/data)
 	. = ..()
 	if(istext(data["name"]))
 		name = data["name"]
-	if(isnum(data["carry_strength_add"]))
-		carry_strength_add = data["carry_strength_add"]
-	if(isnum(data["carry_strength_factor"]))
-		carry_strength_factor = data["carry_strength_factor"]
-	if(isnum(data["carry_strength_bias"]))
-		carry_strength_bias = data["carry_strength_bias"]
-	if(isnum(data["carry_weight_add"]))
-		carry_weight_add = data["carry_weight_add"]
-	if(isnum(data["carry_weight_factor"]))
-		carry_weight_factor = data["carry_weight_factor"]
-	if(isnum(data["carry_weight_bias"]))
-		carry_weight_bias = data["carry_weight_bias"]
+	if(isnum(data["g_carry_strength_add"]))
+		g_carry_strength_add = data["g_carry_strength_add"]
+	if(isnum(data["g_carry_strength_factor"]))
+		g_carry_strength_factor = data["g_carry_strength_factor"]
+	if(isnum(data["g_carry_strength_bias"]))
+		g_carry_strength_bias = data["g_carry_strength_bias"]
+	if(isnum(data["g_carry_weight_add"]))
+		g_carry_weight_add = data["g_carry_weight_add"]
+	if(isnum(data["g_carry_weight_factor"]))
+		g_carry_weight_factor = data["g_carry_weight_factor"]
+	if(isnum(data["g_carry_weight_bias"]))
+		g_carry_weight_bias = data["g_carry_weight_bias"]
 
 /**
  * subtype for hardcoded physiology modifiers

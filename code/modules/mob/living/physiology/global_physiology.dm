@@ -2,7 +2,7 @@
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
 /**
- * physiology holder
+ * physiology holder for mob-wide physiology
  *
  * todo: on biologies update, we might need to lazy-cache this, and have different physiologies for each biology.
  */
@@ -27,36 +27,39 @@
 	carry_weight_factor = initial(carry_weight_factor)
 	carry_bias = initial(carry_bias)
 	carry_weight_bias = initial(carry_weight_bias)
-	return TRUE
 
 /datum/global_physiology/proc/apply(datum/physiology_modifier/modifier)
-	if(!isnull(modifier.carry_strength_add))
-		carry_strength += modifier.carry_strength_add
-	if(!isnull(modifier.carry_strength_factor))
-		carry_factor *= modifier.carry_strength_factor
-	if(!isnull(modifier.carry_weight_add))
-		carry_weight_add += modifier.carry_weight_add
-	if(!isnull(modifier.carry_weight_factor))
-		carry_weight_factor *= modifier.carry_weight_factor
-	if(!isnull(modifier.carry_strength_bias))
-		carry_bias *= modifier.carry_strength_bias
-	if(!isnull(modifier.carry_weight_bias))
-		carry_weight_bias *= modifier.carry_weight_bias
+	// todo: check for identity relation before actually modifying variables.
+	//       'isnull' is not a good check here.
+	if(!isnull(modifier.g_carry_strength_add))
+		carry_strength += modifier.g_carry_strength_add
+	if(!isnull(modifier.g_carry_strength_factor))
+		carry_factor *= modifier.g_carry_strength_factor
+	if(!isnull(modifier.g_carry_weight_add))
+		carry_weight_add += modifier.g_carry_weight_add
+	if(!isnull(modifier.g_carry_weight_factor))
+		carry_weight_factor *= modifier.g_carry_weight_factor
+	if(!isnull(modifier.g_carry_strength_bias))
+		carry_bias *= modifier.g_carry_strength_bias
+	if(!isnull(modifier.g_carry_weight_bias))
+		carry_weight_bias *= modifier.g_carry_weight_bias
 
 /**
  * return FALSE if we need to reset due to non-canonical operations
  */
 /datum/global_physiology/proc/revert(datum/physiology_modifier/modifier)
 	. = TRUE
-	if(!isnull(modifier.carry_strength_add))
-		carry_strength -= modifier.carry_strength_add
-	if(!isnull(modifier.carry_strength_factor))
-		carry_factor /= modifier.carry_strength_factor
-	if(!isnull(modifier.carry_weight_add))
-		carry_weight_add -= modifier.carry_weight_add
-	if(!isnull(modifier.carry_weight_factor))
-		carry_weight_factor /= modifier.carry_weight_factor
-	if(!isnull(modifier.carry_strength_bias))
-		carry_bias /= modifier.carry_strength_bias
-	if(!isnull(modifier.carry_weight_bias))
-		carry_weight_bias /= modifier.carry_weight_bias
+	// todo: check for identity relation before actually modifying variables.
+	//       'isnull' is not a good check here.
+	if(!isnull(modifier.g_carry_strength_add))
+		carry_strength -= modifier.g_carry_strength_add
+	if(!isnull(modifier.g_carry_strength_factor))
+		carry_factor /= modifier.g_carry_strength_factor
+	if(!isnull(modifier.g_carry_weight_add))
+		carry_weight_add -= modifier.g_carry_weight_add
+	if(!isnull(modifier.g_carry_weight_factor))
+		carry_weight_factor /= modifier.g_carry_weight_factor
+	if(!isnull(modifier.g_carry_strength_bias))
+		carry_bias /= modifier.g_carry_strength_bias
+	if(!isnull(modifier.g_carry_weight_bias))
+		carry_weight_bias /= modifier.g_carry_weight_bias
