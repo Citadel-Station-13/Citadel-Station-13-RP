@@ -1476,6 +1476,12 @@ Note that amputating the affected organ does in fact remove the infection from t
 			if(!istype(I,/obj/item/implant) && !istype(I,/obj/item/nif))
 				return TRUE
 
+//* Contains *//
+
+/obj/item/organ/external/proc/get_internal_organs() as /list
+	. = list()
+#warn impl
+	
 //* Hand Integration *//
 
 // todo: some kind of API for querying what hands this organ provides
