@@ -30,6 +30,8 @@
 	///
 	/// Allowed usages:
 	/// * Directly accessing an organ by key.
+	///   If you do this, you must know what the semantics of that key is. It doesn't necessarily
+	///   even need to be a single organ!
 	///
 	/// Disallowed usages:
 	/// * Accessing an organ by **targeting zone.** Despite targeting zone being the same BP_* keys as

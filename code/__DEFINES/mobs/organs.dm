@@ -80,12 +80,13 @@
 //* Species - Shadekin *//
 
 /// The key for shadekin dimensional nodes
+/// * Type: /obj/item/organ/internal/shadekin/dimensional_cluster
 #define ORGAN_KEY_SHADEKIN_DIMENSIONAL_CLUSTER "shadekin-dimensional-cluster"
 
 //* Species - Xenomorph *//
 
 /// The key for xenomorph plasma vessels.
-/// * Type: /obj/item/organ/internal/xenos/plasmavessel
+/// * Type: /obj/item/organ/internal/xenomorph/plasmavessel
 #define ORGAN_KEY_XENOMORPH_PLASMA_VESSEL "xeno-plasma-vessel"
 
 #warn hook / implement

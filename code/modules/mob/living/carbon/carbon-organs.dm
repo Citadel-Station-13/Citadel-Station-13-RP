@@ -22,6 +22,22 @@
 	return external_organs.Copy()
 
 /**
+ * Get **an** organ of a key.
+ */
+/mob/living/carbon/proc/get_organ_by_key(key) as /obj/item/organ
+	RETURN_TYPE(/obj/item/organ)
+	return keyed_organs[key]
+
+/**
+ * Get **all** organs of a key.
+ */
+/mob/living/carbon/proc/get_organs_by_key(key) as /list
+	RETURN_TYPE(/list)
+	. = list()
+	if(keyed_organs[key])
+		. += keyed_organs[key]
+
+/**
  * Get an external organ by target zone.
  */
 /mob/living/carbon/proc/get_organ_for_zone(target_zone) as /obj/item/organ/external
