@@ -1,3 +1,8 @@
+//*                                         Spans                                      *//
+//* These are standard <span>'s allowed within saycode or other chat output contexts.  *//
+//*        Using them within TGUI interfaces driectly is generally discouraged         *//
+//*        as there's no guarantee that the spans are included in all TGUI CSS.        *//
+
 /**
  * Standard Spans
  * Sorted alphabetically
