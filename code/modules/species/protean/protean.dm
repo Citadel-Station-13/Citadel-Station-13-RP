@@ -17,7 +17,7 @@
 	death_message = "rapidly loses cohesion, dissolving into a cloud of gray dust..."
 	knockout_message = "collapses inwards, forming a disordered puddle of gray goo."
 	remains_type = /obj/effect/debris/cleanable/ash
-	mob_physiology_modifier = /datum/physiology_modifier/intrinsic/species/protean
+	intrinsic_physiology_modifier = /datum/physiology_modifier/intrinsic/species/protean
 
 	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick, /datum/unarmed_attack/punch, /datum/unarmed_attack/bite) // Regular human attack verbs are enough.
 

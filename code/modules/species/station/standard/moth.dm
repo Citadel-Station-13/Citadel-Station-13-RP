@@ -158,7 +158,7 @@ GLOBAL_LIST_INIT(moth_lore_data, init_moth_lore())
 	name = SPECIES_MOTH_DARK
 	uid = SPECIES_ID_MOTH_DARK
 	species_spawn_flags = SPECIES_SPAWN_CHARACTER
-	mob_physiology_modifier = /datum/physiology_modifier/intrinsic/species/nepid/dark
+	intrinsic_physiology_modifier = /datum/physiology_modifier/intrinsic/species/nepid/dark
 
 	// darksight, but weak to light
 	vision_innate = /datum/vision/baseline/species_tier_2
@@ -173,7 +173,7 @@ GLOBAL_LIST_INIT(moth_lore_data, init_moth_lore())
 	name = SPECIES_MOTH_LIGHT
 	uid = SPECIES_ID_MOTH_LIGHT
 	species_spawn_flags = SPECIES_SPAWN_CHARACTER
-	mob_physiology_modifier = /datum/physiology_modifier/intrinsic/species/nepid/light
+	intrinsic_physiology_modifier = /datum/physiology_modifier/intrinsic/species/nepid/light
 
 	// hardy, but no darksight
 	vision_innate = /datum/vision/baseline/species_tier_0

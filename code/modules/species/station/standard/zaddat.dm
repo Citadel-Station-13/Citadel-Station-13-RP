@@ -131,4 +131,4 @@
 	for(var/obj/item/organ/external/E in damageable)
 		if(E.body_part_flags & covered)
 			continue
-		H.apply_damage(light_amount/4, DAMAGE_TYPE_BURN, K, 0, 0, "Abnormal growths")
+		H.apply_damage(light_amount/4, DAMAGE_TYPE_BURN, E, 0, 0, "Abnormal growths")

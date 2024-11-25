@@ -97,6 +97,7 @@
 
 	dispersed_eyes = TRUE
 
+	biology = /datum/biology/organic/promethean
 	has_limbs = list(
 		BP_TORSO  = list("path" = /obj/item/organ/external/chest/unbreakable/slime),
 		BP_GROIN  = list("path" = /obj/item/organ/external/groin/unbreakable/slime),
