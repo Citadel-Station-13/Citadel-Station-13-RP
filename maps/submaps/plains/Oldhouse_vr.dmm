@@ -183,7 +183,7 @@
 	attack_armor_pen = 100;
 	attacktext = list("lightly bonked");
 	desc = "Furry and brown, this spider is so goddamn fat you're surprised it even moves around.";
-	faction = "neutral";
+	iff_factions = "neutral";
 	health = 400;
 	maxHealth = 400;
 	legacy_melee_damage_lower = 1;

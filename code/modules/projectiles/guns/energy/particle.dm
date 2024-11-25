@@ -173,23 +173,23 @@
 	name = "antimatter pellet"
 	icon = 'icons/obj/projectiles_vr.dmi'
 	icon_state = "particle"
-	damage = 40
-	damage_type = BURN
+	damage_force = 40
+	damage_type = DAMAGE_TYPE_BURN
 	damage_flag = ARMOR_ENERGY
 	embed_chance = 0
 
 /obj/projectile/bullet/particle/heavy
 	name = "antimatter slug"
 	icon_state = "particle-heavy"
-	damage = 80 // same as a laser cannon
+	damage_force = 80 // same as a laser cannon
 	armor_penetration = 25 //it explodes on the surface of things, so less armor pen than the laser cannon
 	light_range = 3
 	light_power = 1
 	light_color = "#CCFFFF"
 
-/turf/simulated/mineral/bullet_act(var/obj/projectile/Proj)
-	if(istype(Proj, /obj/projectile/bullet/particle))
-		if(prob(Proj.damage))
+/turf/simulated/mineral/on_bullet_act(obj/projectile/proj, impact_flags, list/bullet_act_args)
+	. = ..()
+	if(istype(proj, /obj/projectile/bullet/particle))
+		if(prob(proj.damage_force))
 			GetDrilled()
-	..()
 

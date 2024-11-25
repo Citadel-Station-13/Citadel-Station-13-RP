@@ -163,6 +163,102 @@
 			message = "roars!"
 			m_type = 2
 
+		if("xhiss2")
+			if(src.species.get_species_id() != SPECIES_ID_XENOHYBRID)
+				to_chat(src, "<span class='warning'>You aren't alien enough!</span>")
+				return
+			playsound(src.loc, 'sound/voice/xenos/xhiss2.ogg', 50, 0)
+			message = "hisses!"
+			m_type = 2
+
+		if("xhiss3")
+			if(src.species.get_species_id() != SPECIES_ID_XENOHYBRID)
+				to_chat(src, "<span class='warning'>You aren't alien enough!</span>")
+				return
+			playsound(src.loc, 'sound/voice/xenos/xhiss3.ogg', 50, 0)
+			message = "hisses!"
+			m_type = 2
+
+		if("xhiss4")
+			if(src.species.get_species_id() != SPECIES_ID_XENOHYBRID)
+				to_chat(src, "<span class='warning'>You aren't alien enough!</span>")
+				return
+			playsound(src.loc, 'sound/voice/xenos/xhiss4.ogg', 50, 0)
+			message = "hisses!"
+			m_type = 2
+
+		if("xhiss5")
+			if(src.species.get_species_id() != SPECIES_ID_XENOHYBRID)
+				to_chat(src, "<span class='warning'>You aren't alien enough!</span>")
+				return
+			playsound(src.loc, 'sound/voice/xenos/xhiss5.ogg', 50, 0)
+			message = "hisses!"
+			m_type = 2
+
+		if("xhiss6")
+			if(src.species.get_species_id() != SPECIES_ID_XENOHYBRID)
+				to_chat(src, "<span class='warning'>You aren't alien enough!</span>")
+				return
+			playsound(src.loc, 'sound/voice/xenos/xhiss6.ogg', 50, 0)
+			message = "hisses!"
+			m_type = 2
+
+		if("xroar1")
+			if(src.species.get_species_id() != SPECIES_ID_XENOHYBRID)
+				to_chat(src, "<span class='warning'>You aren't alien enough!</span>")
+				return
+			playsound(src.loc, 'sound/voice/xenos/xroar1.ogg', 50, 0)
+			message = "hisses!"
+			m_type = 2
+
+		if("xroar2")
+			if(src.species.get_species_id() != SPECIES_ID_XENOHYBRID)
+				to_chat(src, "<span class='warning'>You aren't alien enough!</span>")
+				return
+			playsound(src.loc, 'sound/voice/xenos/xroar2.ogg', 50, 0)
+			message = "hisses!"
+			m_type = 2
+
+		if("xroar3")
+			if(src.species.get_species_id() != SPECIES_ID_XENOHYBRID)
+				to_chat(src, "<span class='warning'>You aren't alien enough!</span>")
+				return
+			playsound(src.loc, 'sound/voice/xenos/xroar3.ogg', 50, 0)
+			message = "hisses!"
+			m_type = 2
+
+		if("xtalk1")
+			if(src.species.get_species_id() != SPECIES_ID_XENOHYBRID)
+				to_chat(src, "<span class='warning'>You aren't alien enough!</span>")
+				return
+			playsound(src.loc, 'sound/voice/xenos/xtalk1.ogg', 50, 0)
+			message = "hisses!"
+			m_type = 2
+
+		if("xtalk2")
+			if(src.species.get_species_id() != SPECIES_ID_XENOHYBRID)
+				to_chat(src, "<span class='warning'>You aren't alien enough!</span>")
+				return
+			playsound(src.loc, 'sound/voice/xenos/xtalk2.ogg', 50, 0)
+			message = "hisses!"
+			m_type = 2
+
+		if("xtalk3")
+			if(src.species.get_species_id() != SPECIES_ID_XENOHYBRID)
+				to_chat(src, "<span class='warning'>You aren't alien enough!</span>")
+				return
+			playsound(src.loc, 'sound/voice/xenos/xtalk3.ogg', 50, 0)
+			message = "hisses!"
+			m_type = 2
+
+		if("xroar")
+			if(src.species.get_species_id() != SPECIES_ID_XENOHYBRID)
+				to_chat(src, "<span class='warning'>You aren't alien enough!</span>")
+				return
+			playsound(src.loc, 'sound/voice/xenos/alien_roar1.ogg', 50, 0)
+			message = "roars!"
+			m_type = 2
+
 		if("xgrowl")
 			if(src.species.get_species_id() != SPECIES_ID_XENOHYBRID)
 				to_chat(src, "<span class='warning'>You aren't alien enough!</span>")
@@ -687,11 +783,8 @@
 		if ("signal")
 			if (!src.restrained())
 				var/t1 = round(text2num(param))
-				if (isnum(t1))
-					if (t1 <= 5 && (!src.r_hand || !src.l_hand))
-						message = "raises [t1] finger\s."
-					else if (t1 <= 10 && (!src.r_hand && !src.l_hand))
-						message = "raises [t1] finger\s."
+				if (isnum(t1) && t1 <= (count_empty_hands() * 5))
+					message = "raises [t1] finger\s."
 			m_type = 1
 
 		if ("smile")
@@ -810,7 +903,7 @@
 
 		if ("handshake")
 			m_type = 1
-			if (!src.restrained() && !src.r_hand)
+			if (!restrained() && !are_usable_hands_full())
 				var/mob/living/M = null
 				if (param)
 					for (var/mob/living/A in view(1, null))
@@ -1089,7 +1182,7 @@
 	if (length(pose)>0 && pose != old_pose)
 		visible_emote("adjusts [T.his] posture.")
 		addtimer(CALLBACK(src,PROC_REF(set_pose),""),time SECONDS)
-	
+
 
 /mob/living/carbon/human/verb/silent_pose()
 	set name = "Set Pose (Stealth)"

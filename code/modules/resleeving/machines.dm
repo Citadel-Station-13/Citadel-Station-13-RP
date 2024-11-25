@@ -341,7 +341,7 @@
 
 	return 1
 
-/obj/machinery/transhuman/synthprinter/attack_hand(mob/user, list/params)
+/obj/machinery/transhuman/synthprinter/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if((busy == 0) || (machine_stat & NOPOWER))
 		return
 	to_chat(user, "Current print cycle is [busy]% complete.")
@@ -430,7 +430,7 @@
 		manip_rating += M.rating
 	blur_amount = (48 - manip_rating * 8)
 
-/obj/machinery/transhuman/resleever/attack_hand(mob/user, list/params)
+/obj/machinery/transhuman/resleever/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	user.set_machine(src)
 	var/health_text = ""
 	var/mind_text = ""
@@ -544,7 +544,7 @@
 		occupant.ghostize()
 
 	//Attach as much stuff as possible to the mob.
-	for(var/datum/language/L in MR.languages)
+	for(var/datum/prototype/language/L in MR.languages)
 		occupant.add_language(L.name)
 	MR.mind_ref.active = 1 //Well, it's about to be.
 	MR.mind_ref.transfer(occupant) //Does mind+ckey+client.

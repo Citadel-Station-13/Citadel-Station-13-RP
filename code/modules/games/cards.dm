@@ -67,7 +67,7 @@
 			return
 	..()
 
-/obj/item/deck/attack_hand(mob/user, list/params)
+/obj/item/deck/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	var/mob/living/carbon/human/H = user
 	if(istype(src.loc, /obj/item/storage) || src == H.r_store || src == H.l_store || src.loc == user) // so objects can be removed from storage containers or pockets. also added a catch-all, so if it's in the mob you'll pick it up.
 		..()
@@ -85,7 +85,7 @@
 
 	if(usr.stat || !Adjacent(usr)) return
 
-	if(user.hands_full()) // Safety check lest the card disappear into oblivion
+	if(user.are_usable_hands_full()) // Safety check lest the card disappear into oblivion
 		to_chat(user,"<span class='notice'>Your hands are full!</span>")
 		return
 
@@ -212,7 +212,7 @@
 
 	..()
 
-/obj/item/deck/attack_self(mob/user)
+/obj/item/deck/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -245,13 +245,7 @@
 	if((user == usr && (!( usr.restrained() ) && (!( usr.stat ) && (usr.contents.Find(src) || in_range(src, usr))))))
 		if(!istype(usr, /mob/living/simple_mob))
 			if( !usr.get_active_held_item() )		//if active hand is empty
-				var/mob/living/carbon/human/H = user
-				var/obj/item/organ/external/temp = H.organs_by_name["r_hand"]
-
-				if (H.hand)
-					temp = H.organs_by_name["l_hand"]
-				if(temp && !temp.is_usable())
-					to_chat(user,"<span class='notice'>You try to move your [temp.name], but cannot!</span>")
+				if(!user.standard_hand_usability_check(src, user.active_hand, HAND_MANIPULATION_GENERAL))
 					return
 
 				to_chat(user,"<span class='notice'>You pick up [src].</span>")
@@ -261,13 +255,7 @@
 	if((user == usr && (!( usr.restrained() ) && (!( usr.stat ) && (usr.contents.Find(src) || in_range(src, usr))))))
 		if(!istype(usr, /mob/living/simple_mob))
 			if( !usr.get_active_held_item() )		//if active hand is empty
-				var/mob/living/carbon/human/H = user
-				var/obj/item/organ/external/temp = H.organs_by_name["r_hand"]
-
-				if (H.hand)
-					temp = H.organs_by_name["l_hand"]
-				if(temp && !temp.is_usable())
-					to_chat(user,"<span class='notice'>You try to move your [temp.name], but cannot!</span>")
+				if(!user.standard_hand_usability_check(src, user.active_hand, HAND_MANIPULATION_GENERAL))
 					return
 
 				to_chat(user,"<span class='notice'>You pick up [src].</span>")
@@ -287,7 +275,7 @@
 	pickup_sound = 'sound/items/pickup/paper.ogg'
 
 
-/obj/item/pack/attack_self(mob/user)
+/obj/item/pack/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -349,7 +337,7 @@
 	if(!cards.len)
 		qdel(src)
 
-/obj/item/hand/attack_self(mob/user)
+/obj/item/hand/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -375,7 +363,7 @@
 
 	if(user.stat || !Adjacent(user)) return
 
-	if(user.hands_full()) // Safety check lest the card disappear into oblivion
+	if(user.are_usable_hands_full()) // Safety check lest the card disappear into oblivion
 		to_chat(usr,"<span class='danger'>Your hands are full!</span>")
 		return
 

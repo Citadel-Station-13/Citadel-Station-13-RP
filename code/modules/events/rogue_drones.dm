@@ -24,17 +24,17 @@
 	var/rng = rand(1,5)
 	switch(rng)
 		if(1)
-			msg = "A combat drone wing operating in close orbit above Sif has failed to return from a anti-piracy sweep.  If any are sighted, \
+			msg = "A combat drone wing operating within the sector has failed to return from a anti-piracy sweep.  If any are sighted, \
 			approach with caution."
 		if(2)
-			msg = "Contact has been lost with a combat drone wing in Sif orbit.  If any are sighted in the area, approach with \
+			msg = "Contact has been lost with a combat drone wing in the sector.  If any are sighted in the area, approach with \
 			caution."
 		if(3)
-			msg = "Unidentified hackers have targeted a combat drone wing deployed around Sif. If any are sighted in the area, approach with caution."
+			msg = "Unidentified hackers have targeted a combat drone wing deployed in this sector. If any are sighted in the area, approach with caution."
 		if(4)
 			msg = "A passing derelict ship's drone defense systems have just activated. If any are sighted in the area, use caution."
 		if(5)
-			msg = "We're detecting a swarm of small objects approaching your station.  Most likely a bunch of drones.  Please exercise caution if you see any."
+			msg = "We're detecting a swarm of small objects approaching your station.  Sensor returns indicate it may be a fleet of drones.  Please exercise caution."
 
 	command_announcement.Announce(msg, "Rogue drone alert")
 

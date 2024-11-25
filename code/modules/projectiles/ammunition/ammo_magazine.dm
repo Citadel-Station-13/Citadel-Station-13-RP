@@ -28,6 +28,11 @@
 	///
 	/// * this is a bitfield
 	var/magazine_type = MAGAZINE_TYPE_NORMAL
+	/// the class we ask the gun to render us as
+	///
+	/// * uses MAGAZINE_CLASS_* flags
+	/// * if our requested class isn't on a gun, the gun reserves the right to render us as the default class ('-mag')
+	var/magazine_class = MAGAZINE_CLASS_GENERIC
 
 	//* for magazines
 	/// magazine type - must match gun's to be fitted into it, if gun's is
@@ -56,7 +61,7 @@
 	/// sound for loading a piece of ammo
 	var/load_sound = 'sound/weapons/flipblade.ogg'
 
-	//* ammo storage *//
+	//* Ammo *//
 	/// max ammo in us
 	var/ammo_max = 7
 	/// currently stored ammo; defaults to ammo_max if unset
@@ -76,25 +81,30 @@
 	/// index 1 is the bottom, index ammo_internal.len is the top of the magazine.
 	/// peek/draw will peek/draw the last index first all the way to the first, and after that,
 	/// ammo_current is considered the 'reserve' pool (as just a number).
-	var/list/ammo_internal
+	var/list/obj/item/ammo_casing/ammo_internal
 	/// caliber - set to typepath to init
 	var/ammo_caliber
 	/// preloaded ammo type
 	var/ammo_preload
-	/// if set, only loads ammo of this type
-	var/ammo_type
+	/// if set, only loads ammo matching this restrict value
+	///
+	/// * ammo by default has their typepath as the restrict value
+	/// * ammo can set strings / enums to this too; make sure to #define them.
+	var/ammo_restrict
 	/// if set, doesn't allow subtypes
-	var/ammo_picky = FALSE
+	var/ammo_restrict_no_subtypes = FALSE
 	/// init all contents on initialize instead of lazy-drawing
 	///
 	/// * used for things like microbatteries / legacy content
 	var/ammo_legacy_init_everything = FALSE
 
-	//* Rendering
+	//* Rendering *//
 	/// use default rendering system
 	/// in state mode, we will be "[base_icon_state]-[count]", from 0 to count (0 for empty)
-	/// in segements mode, we will repeatedly add "[base_icon_state]-ammo" with given offsets.
-	/// overlay mode is not supported
+	/// in segments mode, we will repeatedly add "[base_icon_state]-ammo" with given offsets.
+	///
+	/// * overlays moade is not supported;
+	///   todo: in overlays mode, we should be "[base_icon_state]-[count]" from 0 to count, overlaid, while we have ammo
 	var/rendering_system = GUN_RENDERING_DISABLED
 	/// number of states
 	var/rendering_count = 0
@@ -110,9 +120,11 @@
 	var/rendering_segment_y_offset = 0
 	/// display special "[base_icon_state]-empty" if count == 0
 	var/rendering_segment_use_empty = FALSE
-	/// add a specific overlay as "[base_icon_state]-[state]", useful for denoting different magazines
+	/// add a specific overlay, useful for denoting different magazines
 	/// that look similar with a stripe
 	var/rendering_static_overlay
+	/// color the static overlay this way
+	var/rendering_static_overlay_color
 
 /obj/item/ammo_magazine/Initialize(mapload)
 	. = ..()
@@ -121,7 +133,10 @@
 	pixel_y = rand(-5, 5)
 
 	if(!isnull(rendering_static_overlay))
-		add_overlay(rendering_static_overlay, TRUE)
+		var/image/static_overlay = image(icon, rendering_static_overlay)
+		if(rendering_static_overlay_color)
+			static_overlay.color = rendering_static_overlay_color
+		add_overlay(static_overlay, TRUE)
 
 	if(ammo_legacy_init_everything)
 		instantiate_internal_list()
@@ -132,17 +147,19 @@
 
 /obj/item/ammo_magazine/get_containing_worth(flags)
 	. = ..()
-	var/obj/item/ammo_casing/ammo_casted = ammo_type
+	var/obj/item/ammo_casing/ammo_casted = ammo_preload
 	. += (isnull(ammo_current)? ammo_max : ammo_current) * initial(ammo_casted.worth_intrinsic)
+	for(var/obj/item/ammo_casing/casing in ammo_internal)
+		. += casing.get_worth(flags)
 
 /obj/item/ammo_magazine/detect_material_base_costs()
 	. = ..()
-	if(isnull(ammo_type))
+	if(isnull(ammo_preload))
 		return
 	var/shell_amount = isnull(ammo_current)? ammo_max : ammo_current
 	if(!shell_amount)
 		return
-	var/obj/item/ammo_casing/casing = new ammo_type
+	var/obj/item/ammo_casing/casing = new ammo_preload
 	if(!istype(casing))
 		qdel(casing)
 		return
@@ -214,7 +231,7 @@
 /obj/item/ammo_magazine/proc/why_cant_load_casing(obj/item/ammo_casing/casing)
 	if(!loads_caliber(casing.caliber))
 		return "mismatched caliber"
-	if(ammo_type && (ammo_picky ? casing.type != ammo_type : !istype(casing, ammo_type)))
+	if(ammo_restrict && (ammo_restrict_no_subtypes ? casing.type != ammo_restrict : !istype(casing, ammo_restrict)))
 		return "mismatched ammo"
 
 /obj/item/ammo_magazine/on_attack_self(datum/event_args/actor/e_args)
@@ -429,6 +446,18 @@
 
 /obj/item/ammo_magazine/proc/amount_missing(live_only)
 	return ammo_max - amount_remaining(live_only)
+
+/**
+ * Gets the predicted typepath of a casing a given index from the top, where 1 is the top.
+ *
+ * * Real casings are read.
+ * * Fake casings are predicted from the type that would have been lazy-generated.
+ * * Null if something isn't there / left
+ */
+/obj/item/ammo_magazine/proc/peek_path_of_position(index)
+	if(index > length(ammo_internal))
+		return (index - length(ammo_internal)) >= ammo_current ? ammo_preload : null
+	return ammo_internal[length(ammo_internal) - index]?.type
 
 //* Caliber *//
 

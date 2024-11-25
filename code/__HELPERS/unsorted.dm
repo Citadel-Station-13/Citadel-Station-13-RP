@@ -319,27 +319,6 @@
 			return 0
 	return 1
 
-/// Ensure the frequency is within bounds of what it should be sending/recieving at.
-/proc/sanitize_frequency(frequency, low = PUBLIC_LOW_FREQ, high = PUBLIC_HIGH_FREQ)
-	frequency = round(frequency)
-	frequency = max(low, frequency)
-	frequency = min(high, frequency)
-	// Ensure the last digit is an odd number.
-	if ((frequency % 2) == 0)
-		frequency += 1
-	return frequency
-
-/// Turns 1479 into 147.9.
-/proc/format_frequency(frequency)
-	return "[round(frequency / 10)].[frequency % 10]"
-
-/// Opposite of format, returns as a number.
-/proc/unformat_frequency(frequency)
-	frequency = text2num(frequency)
-	return frequency * 10
-
-
-
 
 /// Picks a string of symbols to display as the law number for hacked or ion laws.
 /proc/ionnum()
@@ -427,7 +406,8 @@
 	var/list/creatures = list()
 	var/list/namecounts = list()
 	for(var/mob/M in mobs)
-		if(isobserver(M) && ghostfollow && M.client.is_under_stealthmin() && M.get_preference_toggle(/datum/game_preference_toggle/admin/stealth_hides_ghost))
+		// todo: stealthmin will **break** when they're logged out. we don't want this! it's a hard tell.
+		if(isobserver(M) && ghostfollow && M.client?.is_under_stealthmin() && M.get_preference_toggle(/datum/game_preference_toggle/admin/stealth_hides_ghost))
 			continue
 		var/name = M.name
 		if (name in names)
@@ -997,42 +977,42 @@
 				return FALSE
 		if(/obj/item/pickaxe/plasmacutter)
 			return 3800
-		if(/obj/item/melee/energy)
+		if(/obj/item/melee/transforming/energy)
 			return 3500
 		else
 			return FALSE
 
 /// Whether or not the given item counts as sharp in terms of dealing damage.
+// todo: deprecrated
 /proc/is_sharp(obj/O as obj)
 	if(!O)
 		return FALSE
-	if(O.sharp)
-		return TRUE
-	if(O.edge)
-		return TRUE
 	if(isitem(O))
 		var/obj/item/I = O
-		if(I.damage_mode & DAMAGE_MODE_SHARP)
-			return TRUE
+		return I.damage_mode & (DAMAGE_MODE_SHARP | DAMAGE_MODE_EDGE)
+	else if(istype(O, /obj/projectile))
+		var/obj/projectile/proj = O
+		return proj.damage_mode & (DAMAGE_MODE_SHARP | DAMAGE_MODE_EDGE)
 	return FALSE
 
 /// Whether or not the given item counts as cutting with an edge in terms of removing limbs.
+// todo: deprecrated
 /proc/has_edge(obj/O as obj)
 	if(!O)
 		return FALSE
-	if(O.edge)
-		return TRUE
 	if(isitem(O))
 		var/obj/item/I = O
-		if(I.damage_mode & DAMAGE_MODE_EDGE)
-			return TRUE
+		return I.damage_mode & (DAMAGE_MODE_EDGE)
+	else if(istype(O, /obj/projectile))
+		var/obj/projectile/proj = O
+		return proj.damage_mode & (DAMAGE_MODE_EDGE)
 	return FALSE
 
 /// Returns 1 if the given item is capable of popping things like balloons, inflatable barriers, or cutting police tape.
 /proc/can_puncture(obj/item/W as obj) //For the record, WHAT THE HELL IS THIS METHOD OF DOING IT?
 	if(!W)
 		return FALSE
-	if(W.sharp)
+	if(W.damage_mode & DAMAGE_MODE_SHARP)
 		return TRUE
 	return ( \
 		W.is_screwdriver()                                    || \

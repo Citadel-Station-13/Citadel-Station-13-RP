@@ -51,7 +51,6 @@
 	var/roundstart = FALSE						// If true, spawning won't try to pull a ghost.
 	var/used_dominate							// world.time when the dominate power was last used.
 
-
 /mob/living/simple_mob/animal/borer/roundstart
 	roundstart = TRUE
 
@@ -213,7 +212,7 @@
 	return
 
 // This is awful but its literally say code.
-/mob/living/simple_mob/animal/borer/say(var/message, var/datum/language/speaking = null, var/verb="says", var/alt_name="", var/whispering = 0)
+/mob/living/simple_mob/animal/borer/say(var/message, var/datum/prototype/language/speaking = null, var/verb="says", var/alt_name="", var/whispering = 0)
 	message = sanitize(message)
 	message = capitalize(message)
 
@@ -232,7 +231,7 @@
 	if(copytext(message, 1, 2) == "*")
 		return emote(copytext(message, 2))
 
-	var/datum/language/L = parse_language(message)
+	var/datum/prototype/language/L = parse_language(message)
 	if(L && L.language_flags & LANGUAGE_HIVEMIND)
 		L.broadcast(src,trim(copytext(message,3)), src.true_name)
 		return
@@ -267,3 +266,9 @@
 			continue
 		else if(M.stat == DEAD && M.get_preference_toggle(/datum/game_preference_toggle/observer/ghost_ears))
 			to_chat(M, "[src.true_name] whispers to [host], \"[message]\"")
+
+/mob/living/simple_mob/animal/borer/proc/surgically_remove(mob/living/carbon/human/target, obj/item/organ/external/chest/removing_from)
+	if(controlling)
+		target.release_control()
+	detatch()
+	leave_host()

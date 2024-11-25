@@ -121,8 +121,8 @@
 /obj/projectile/energy/homing_bolt
 	name = "homing bolt"
 	icon_state = "force_missile"
-	damage = 20
-	damage_type = BURN
+	damage_force = 20
+	damage_type = DAMAGE_TYPE_BURN
 	damage_flag = ARMOR_LASER
 	speed = 5 * WORLD_ICON_SIZE
 	homing_turn_speed = 85
@@ -227,7 +227,11 @@
 	name = "rocket"
 	icon_state = "mortar"
 
-/obj/projectile/arc/explosive_rocket/on_impact(turf/T)
+/obj/projectile/arc/explosive_rocket/on_impact(atom/target, impact_flags, def_zone, efficiency)
+	. = ..()
+	if(!isturf(target))
+		return
+	var/turf/T = target
 	new /obj/effect/explosion(T) // Weak explosions don't produce this on their own, apparently.
 	explosion(T, 0, 0, 2, adminlog = FALSE)
 
@@ -244,9 +248,12 @@
 	name = "micro singularity"
 	icon_state = "bluespace"
 
-/obj/projectile/arc/microsingulo/on_impact(turf/T)
+/obj/projectile/arc/microsingulo/on_impact(atom/target, impact_flags, def_zone, efficiency)
+	. = ..()
+	if(!isturf(target))
+		return
+	var/turf/T = target
 	new /obj/effect/temporary_effect/pulse/microsingulo(T)
-
 
 /obj/effect/temporary_effect/pulse/microsingulo
 	name = "micro singularity"

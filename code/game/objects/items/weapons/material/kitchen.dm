@@ -58,31 +58,31 @@
 	damage_mode = DAMAGE_MODE_SHARP
 
 /obj/item/material/kitchen/utensil/fork/plastic
-	material_parts = /datum/material/plastic
+	material_parts = /datum/prototype/material/plastic
 
 /obj/item/material/kitchen/utensil/fork/plasteel
-	material_parts = /datum/material/plasteel
+	material_parts = /datum/prototype/material/plasteel
 
 /obj/item/material/kitchen/utensil/fork/durasteel
-	material_parts = /datum/material/durasteel
+	material_parts = /datum/prototype/material/durasteel
 
 /obj/item/material/kitchen/utensil/spoon/plasteel
-	material_parts = /datum/material/plasteel
+	material_parts = /datum/prototype/material/plasteel
 
 /obj/item/material/kitchen/utensil/spoon/durasteel
-	material_parts = /datum/material/durasteel
+	material_parts = /datum/prototype/material/durasteel
 
 /obj/item/material/knife/plasteel
-	material_parts = /datum/material/plasteel
+	material_parts = /datum/prototype/material/plasteel
 
 /obj/item/material/knife/durasteel
-	material_parts = /datum/material/durasteel
+	material_parts = /datum/prototype/material/durasteel
 
 /obj/item/material/kitchen/rollingpin/plasteel
-	material_parts = /datum/material/plasteel
+	material_parts = /datum/prototype/material/plasteel
 
 /obj/item/material/kitchen/rollingpin/durasteel
-	material_parts = /datum/material/durasteel
+	material_parts = /datum/prototype/material/durasteel
 
 /obj/item/material/kitchen/utensil/spoon
 	name = "spoon"
@@ -93,7 +93,7 @@
 	damage_mode = NONE
 
 /obj/item/material/kitchen/utensil/spoon/plastic
-	material_parts = /datum/material/plastic
+	material_parts = /datum/prototype/material/plastic
 
 /*
  * Knives
@@ -108,7 +108,7 @@
 	return ..()
 */
 /obj/item/material/knife/plastic
-	material_parts = /datum/material/plastic
+	material_parts = /datum/prototype/material/plastic
 
 /*
  * Rolling Pins
@@ -119,7 +119,7 @@
 	desc = "Used to knock out the Bartender."
 	icon_state = "rolling_pin"
 	attack_verb = list("bashed", "battered", "bludgeoned", "thrashed", "whacked")
-	material_parts = /datum/material/wood_plank
+	material_parts = /datum/prototype/material/wood_plank
 	material_significance = MATERIAL_SIGNIFICANCE_WEAPON_LIGHT
 	drop_sound = 'sound/items/drop/wooden.ogg'
 	pickup_sound = 'sound/items/pickup/wooden.ogg'

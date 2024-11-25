@@ -14,13 +14,19 @@
 	mob_swap_flags = ~HEAVY
 	mob_push_flags = ~HEAVY
 
-	//? Attacks - Basic
+	iff_factions = MOB_IFF_FACTION_BIND_AUTO
+
+	//* Attacks - Basic *//
 	/// melee style
 	var/datum/unarmed_attack/melee_style
 
 	//? Darksight
 	/// our innate darksight
 	var/datum/vision/baseline/vision_innate = /datum/vision/baseline/default
+
+	//* Inventory *//
+	/// how many hands we have
+	var/hand_count = 0
 
 	///Tooltip description
 	var/tt_desc = null
@@ -36,10 +42,6 @@
 	var/list/hud_gears
 	/// Icon file path to use for the HUD, otherwise generic icons are used
 	var/ui_icons
-	/// If they have hands, they could use some icons.
-	var/r_hand_sprite
-	/// If they have hands, they could use some icons.
-	var/l_hand_sprite
 	/// Message to print to players about 'how' to play this mob on login.
 	var/player_msg
 
@@ -259,7 +261,7 @@
 	randomize()
 
 	for(var/L in has_langs)
-		languages |= SScharacters.resolve_language_name(L)
+		languages |= RSlanguages.legacy_resolve_language_name(L)
 	if(languages.len)
 		default_language = languages[1]
 
@@ -385,7 +387,7 @@
 		icon_state = icon_living
 	update_icon()
 
-/mob/living/simple_mob/say(var/message, var/datum/language/speaking = null, var/verb="says", var/alt_name="", var/whispering = 0)
+/mob/living/simple_mob/say(var/message, var/datum/prototype/language/speaking = null, var/verb="says", var/alt_name="", var/whispering = 0)
 	verb = "says"
 	if(speak_emote.len)
 		verb = pick(speak_emote)
@@ -455,3 +457,13 @@
 	. = ..()
 	if(. && (!is_sharp(I) || !has_edge(I)))
 		return FALSE
+
+//* Inventory *//
+
+/mob/living/simple_mob/get_usable_hand_count()
+	return hand_count
+
+/mob/living/simple_mob/get_usable_hand_indices()
+	. = list()
+	for(var/i in 1 to hand_count)
+		. += i

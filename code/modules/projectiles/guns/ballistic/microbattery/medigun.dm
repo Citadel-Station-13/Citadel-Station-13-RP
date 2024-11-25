@@ -26,7 +26,7 @@
 	desc = "A nanite fabrication magazine for the \'AML'"
 	catalogue_data = list(/datum/category_item/catalogue/information/organization/vey_med)
 	description_info = "This magazine holds self-charging nanite fabricators to power the AML 'Medigun'. Up to three can be loaded at once, and each provides four shots of their respective healing type. Loading multiple of the same type will provide additional shots of that type. The batteries can be recharged in a normal recharger."
-	ammo_type = /obj/item/ammo_casing/microbattery/medical
+	ammo_restrict = /obj/item/ammo_casing/microbattery/medical
 	icon_state = "ml3m_mag"
 	origin_tech = list(TECH_MATERIAL = 3, TECH_BIO = 3)
 

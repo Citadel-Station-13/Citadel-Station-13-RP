@@ -36,7 +36,7 @@
 	integrity_enabled = TRUE
 	obj_flags = OBJ_MELEE_TARGETABLE | OBJ_RANGE_TARGETABLE
 
-/obj/effect/dead_plant/attack_hand(mob/user, list/params)
+/obj/effect/dead_plant/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	qdel(src)
 
 /obj/effect/dead_plant/attackby()

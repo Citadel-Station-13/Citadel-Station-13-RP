@@ -63,6 +63,11 @@
 		update_use_power(USE_POWER_OFF)
 	update_icon()
 
+/**
+ * Base component /process() should always be reached for common handling.
+ *
+ * * This is suboptimal but it is the more OOP way to handle things, so we'll keep it for now.
+ */
 /obj/machinery/atmospherics/component/process(delta_time)
 	power_current = 0
 	// todo: don't need this after pipenet rework

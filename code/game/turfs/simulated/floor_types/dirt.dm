@@ -6,6 +6,8 @@
 	initial_flooring = /singleton/flooring/outdoors/dirt
 	baseturfs = /turf/baseturf_bottom
 
+CREATE_STANDARD_TURFS(/turf/simulated/floor/outdoors/dirt)
+
 /turf/simulated/floor/outdoors/dirt
 	outdoors = FALSE
 
@@ -17,5 +19,4 @@
 	initial_flooring = /singleton/flooring/outdoors/dirt
 	baseturfs = /turf/baseturf_bottom
 
-/turf/simulated/floor/outdoors/dirtlight
-	outdoors = FALSE
+CREATE_STANDARD_TURFS(/turf/simulated/floor/outdoors/dirtlight)

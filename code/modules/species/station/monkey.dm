@@ -32,7 +32,6 @@
 
 	unarmed_types = list(/datum/unarmed_attack/bite, /datum/unarmed_attack/claws)
 	inherent_verbs = list(/mob/living/proc/ventcrawl)
-	hud_type = /datum/hud_data/monkey
 	meat_type = /obj/item/reagent_containers/food/snacks/meat/monkey
 
 	//rarity_value = 0.1
@@ -62,6 +61,22 @@
 		BP_R_HAND = list("path" = /obj/item/organ/external/hand/right),
 		BP_L_FOOT = list("path" = /obj/item/organ/external/foot),
 		BP_R_FOOT = list("path" = /obj/item/organ/external/foot/right),
+	)
+
+	//* Inventory *//
+
+	inventory_slots = list(
+		/datum/inventory_slot/inventory/back::id,
+		/datum/inventory_slot/inventory/id::id = list(
+			INVENTORY_SLOT_REMAP_MAIN_AXIS = 0,
+			INVENTORY_SLOT_REMAP_CROSS_AXIS = 2,
+			INVENTORY_SLOT_REMAP_CLASS = INVENTORY_HUD_CLASS_ALWAYS,
+		),
+		/datum/inventory_slot/inventory/mask::id = list(
+			INVENTORY_SLOT_REMAP_MAIN_AXIS = 0,
+			INVENTORY_SLOT_REMAP_CROSS_AXIS = 1,
+			INVENTORY_SLOT_REMAP_CLASS = INVENTORY_HUD_CLASS_ALWAYS,
+		),
 	)
 
 /datum/species/monkey/handle_npc(mob/living/carbon/human/H)

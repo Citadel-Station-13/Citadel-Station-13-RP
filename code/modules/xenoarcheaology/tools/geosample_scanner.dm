@@ -29,7 +29,7 @@
 	var/coolant_usage_rate = 0		//measured in u/microsec
 	var/fresh_coolant = 0
 	var/coolant_purity = 0
-	var/datum/reagents/coolant_reagents
+	var/datum/reagent_holder/coolant_reagents
 	var/used_coolant = 0
 	var/list/coolant_reagents_purity = list()
 	//
@@ -115,7 +115,7 @@
 	if(total_purity && fresh_coolant)
 		coolant_purity = total_purity / fresh_coolant
 
-/obj/machinery/radiocarbon_spectrometer/attack_hand(mob/user, list/params)
+/obj/machinery/radiocarbon_spectrometer/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	ui_interact(user)
 
 /obj/machinery/radiocarbon_spectrometer/ui_interact(mob/user, datum/tgui/ui)

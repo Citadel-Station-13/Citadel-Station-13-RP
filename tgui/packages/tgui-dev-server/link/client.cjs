@@ -9,7 +9,7 @@ const queue = [];
 const subscribers = [];
 
 const ensureConnection = () => {
-  if (process.env.NODE_ENV !== 'production') {
+  if (process.env['NODE_ENV'] !== 'production') {
     if (!window.WebSocket) {
       return;
     }
@@ -33,7 +33,7 @@ const ensureConnection = () => {
   }
 };
 
-if (process.env.NODE_ENV !== 'production') {
+if (process.env['NODE_ENV'] !== 'production') {
   window.onunload = () => socket && socket.close();
 }
 
@@ -92,7 +92,7 @@ const serializeObject = obj => {
 };
 
 const sendMessage = msg => {
-  if (process.env.NODE_ENV !== 'production') {
+  if (process.env['NODE_ENV'] !== 'production') {
     const json = serializeObject(msg);
     // Send message using WebSocket
     if (window.WebSocket) {
@@ -120,7 +120,7 @@ const sendMessage = msg => {
 };
 
 const sendLogEntry = (level, ns, ...args) => {
-  if (process.env.NODE_ENV !== 'production') {
+  if (process.env['NODE_ENV'] !== 'production') {
     try {
       sendMessage({
         type: 'log',
@@ -136,7 +136,7 @@ const sendLogEntry = (level, ns, ...args) => {
 };
 
 const setupHotReloading = () => {
-  if (process.env.NODE_ENV !== 'production'
+  if (process.env['NODE_ENV'] !== 'production'
       && process.env.WEBPACK_HMR_ENABLED
       && window.WebSocket) {
     if (module.hot) {

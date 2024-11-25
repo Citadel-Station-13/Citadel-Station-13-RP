@@ -180,7 +180,7 @@ SUBSYSTEM_DEF(zcopy)
 	calculate_zstack_limits()
 	// Flush the queue.
 	fire(FALSE, TRUE)
-	return ..()
+	return SS_INIT_SUCCESS
 
 // If you add a new Zlevel or change Z-connections, call this.
 /datum/controller/subsystem/zcopy/proc/calculate_zstack_limits()
@@ -373,7 +373,7 @@ SUBSYSTEM_DEF(zcopy)
 			var/atom/movable/openspace/turf_mimic/DC = T.below.mimic_above_copy
 			DC.appearance = T.below
 			DC.mouse_opacity = initial(DC.mouse_opacity)
-			DC.plane = OPENTURF_MAX_PLANE - turf_depth - 1
+			DC.plane = OPENTURF_MAX_PLANE
 
 		else if (T.below.mimic_above_copy)
 			QDEL_NULL(T.below.mimic_above_copy)
@@ -555,7 +555,8 @@ SUBSYSTEM_DEF(zcopy)
 		if (/atom/movable/openspace/turf_proxy, /atom/movable/openspace/turf_mimic)
 			OO.depth += 1
 		if (/atom/movable/openspace/multiplier)
-			OO.depth += 1
+			// Ignore override depth for these.
+			OO.depth = min(zlev_maximums[OO.z] - original_z + 1, OPENTURF_MAX_DEPTH)
 
 	OO.mimiced_type = original_type
 	OO.override_depth = override_depth
@@ -803,7 +804,7 @@ var/list/zmimic_fixed_planes = list(
 	for (var/atom/movable/openspace/O in T)
 		found_oo += O
 
-	if (T.shadower.overlays.len)
+	if (T.shadower?.overlays.len)
 		for (var/overlay in T.shadower.overlays)
 			var/atom/movable/openspace/debug/D = new
 			D.appearance = overlay
@@ -863,7 +864,7 @@ var/list/zmimic_fixed_planes = list(
 /datum/controller/subsystem/zcopy/proc/debug_fmt_thing(atom/A, list/out, turf/original)
 	if (istype(A, /atom/movable/openspace/mimic))
 		var/atom/movable/openspace/mimic/OO = A
-		var/base = "<li>[fmt_label("Mimic", A)] plane [A.plane], layer [A.layer], depth [FMT_DEPTH(OO.depth)]"
+		var/base = "<li>[fmt_label("Mimic", A)] plane [A.plane], layer [A.layer], depth [FMT_DEPTH(OO.depth)], override depth [FMT_DEPTH(OO.override_depth)]"
 		if (QDELETED(OO.associated_atom))	// This shouldn't happen, but can if the deletion hook is not working.
 			return "[base] - [OO.type] copying <unknown> ([OO.mimiced_type]) - <font color='red'>ORPHANED</font></em></li>"
 

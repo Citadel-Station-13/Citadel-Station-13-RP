@@ -165,7 +165,7 @@
 	update_icon()
 	return
 
-/obj/machinery/atmospherics/component/binary/passive_gate/attack_hand(mob/user, list/params)
+/obj/machinery/atmospherics/component/binary/passive_gate/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(..())
 		return
 	add_fingerprint(usr)

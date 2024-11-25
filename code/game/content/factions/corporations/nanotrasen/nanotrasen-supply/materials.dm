@@ -5,7 +5,7 @@
 /datum/supply_pack/nanotrasen/materials/metal50
 	name = "50 metal sheets"
 	contains = list(
-		/datum/material/steel = 50,
+		/datum/prototype/material/steel = 50,
 	)
 	container_type = /obj/structure/closet/crate
 	container_name = "Metal sheets crate"
@@ -13,7 +13,7 @@
 /datum/supply_pack/nanotrasen/materials/glass50
 	name = "50 glass sheets"
 	contains = list(
-		/datum/material/glass = 50,
+		/datum/prototype/material/glass = 50,
 	)
 	container_type = /obj/structure/closet/crate
 	container_name = "Glass sheets crate"
@@ -21,7 +21,7 @@
 /datum/supply_pack/nanotrasen/materials/wood50
 	name = "50 wooden planks"
 	contains = list(
-		/datum/material/wood_plank = 50,
+		/datum/prototype/material/wood_plank = 50,
 	)
 	container_type = /obj/structure/closet/crate
 	container_name = "Wooden planks crate"
@@ -29,7 +29,7 @@
 /datum/supply_pack/nanotrasen/materials/hardwood50
 	name = "50 hardwood planks"
 	contains = list(
-		/datum/material/wood_plank/hardwood = 50,
+		/datum/prototype/material/wood_plank/hardwood = 50,
 	)
 
 	container_type = /obj/structure/closet/crate
@@ -38,7 +38,7 @@
 /datum/supply_pack/nanotrasen/materials/plastic50
 	name = "50 plastic sheets"
 	contains = list(
-		/datum/material/plastic = 50,
+		/datum/prototype/material/plastic = 50,
 	)
 	container_type = /obj/structure/closet/crate
 	container_name = "Plastic sheets crate"
@@ -46,7 +46,7 @@
 /datum/supply_pack/nanotrasen/materials/leather50
 	name = "50 leather sheets"
 	contains = list(
-		/datum/material/leather = 50,
+		/datum/prototype/material/leather = 50,
 	)
 	container_type = /obj/structure/closet/crate
 	container_name = "Leather sheets crate"
@@ -54,7 +54,7 @@
 /datum/supply_pack/nanotrasen/materials/cloth50
 	name = "50 cloth sheets"
 	contains = list(
-		/datum/material/cloth = 50,
+		/datum/prototype/material/cloth = 50,
 	)
 	container_type = /obj/structure/closet/crate
 	container_name = "Cloth sheets crate"
@@ -62,7 +62,7 @@
 /datum/supply_pack/nanotrasen/materials/cardboard_sheets
 	name = "50 cardboard sheets"
 	contains = list(
-		/datum/material/cardboard = 50,
+		/datum/prototype/material/cardboard = 50,
 	)
 	container_type = /obj/structure/closet/crate
 	container_name = "Cardboard sheets crate"

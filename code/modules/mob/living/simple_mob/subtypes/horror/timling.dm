@@ -12,7 +12,6 @@
 	icon_living = "timling"
 	icon_dead = "tt_head"
 	icon_rest = "timling"
-	faction = "horror"
 	icon = 'icons/mob/horror_show/tallhorror.dmi'
 	icon_gib = "generic_gib"
 	catalogue_data = list(/datum/category_item/catalogue/fauna/horror/TinyTim)
@@ -48,11 +47,11 @@
 	playsound(src, 'sound/h_sounds/shitty_tim.ogg', 50, 1)
 	..()
 
-/mob/living/simple_mob/horror/TinyTim/bullet_act()
+/mob/living/simple_mob/horror/TinyTim/on_bullet_act(obj/projectile/proj, impact_flags, list/bullet_act_args)
+	. = ..()
 	playsound(src, 'sound/h_sounds/holla.ogg', 50, 1)
-	..()
 
-/mob/living/simple_mob/horror/TinyTim/attack_hand(mob/user, list/params)
+/mob/living/simple_mob/horror/TinyTim/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	playsound(src, 'sound/h_sounds/holla.ogg', 50, 1)
 	..()
 

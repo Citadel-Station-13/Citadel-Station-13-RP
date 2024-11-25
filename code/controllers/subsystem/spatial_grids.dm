@@ -1,5 +1,5 @@
 //* This file is explicitly licensed under the MIT license. *//
-//* Copyright (c) 2024 silicons                             *//
+//* Copyright (c) 2024 Citadel Station Developers           *//
 
 // todo: Recover() that calls full_rebuild(); forcefully resets spatial grid and rebuilds component on all relevant auto-bound atoms.
 //       why? because admins might fuck up and because things might break. don't argue about 'this isn't necessary if admins don't fuck up',
@@ -8,19 +8,23 @@
 SUBSYSTEM_DEF(spatial_grids)
 	name = "Spatial Grids"
 	init_order = INIT_ORDER_SPATIAL_GRIDS
+	init_stage = INIT_STAGE_WORLD
 	subsystem_flags = SS_NO_FIRE
 
 	/// /living mobs. they don't have to be alive, just a subtype of /living.
 	var/datum/spatial_grid/living
+	/// /obj/vehicle
+	var/datum/spatial_grid/vehicles
 	/// /obj/overmap/entity's
 	var/datum/spatial_grid/overmap_entities
 
 /datum/controller/subsystem/spatial_grids/Initialize()
 	make_grids()
-	return ..()
+	return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/spatial_grids/proc/make_grids()
 	living = new /datum/spatial_grid(/mob/living)
+	vehicles = new /datum/spatial_grid(/obj/vehicle)
 	overmap_entities = new /datum/spatial_grid(/obj/overmap/entity)
 
 /datum/controller/subsystem/spatial_grids/on_max_z_changed(old_z_count, new_z_count)

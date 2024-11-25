@@ -13,7 +13,7 @@
 			SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand_material.dmi',
 			SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_material.dmi',
 			)
-	material_parts = /datum/material/steel
+	material_parts = /datum/prototype/material/steel
 	material_costs = SHEET_MATERIAL_AMOUNT * 2
 	material_primary = MATERIAL_PART_DEFAULT
 
@@ -36,12 +36,13 @@
 	// var/dulled_divisor = 0.1	//Just drops the damage to a tenth
 	// var/drops_debris = 1
 
+
 /obj/item/material/Initialize(mapload, material)
 	if(!isnull(material))
 		material_parts = material
 	return ..()
 
-/obj/item/material/update_material_single(datum/material/material)
+/obj/item/material/update_material_single(datum/prototype/material/material)
 	. = ..()
 	if(isnull(material))
 		return
@@ -111,8 +112,8 @@
 // 		to_chat(user, "<span class='warning'>You can't repair \the [src].</span>")
 // 		return
 
-/obj/item/material/proc/sharpen(datum/material/material_like, var/sharpen_time, var/kit, mob/living/M)
-	material_like = SSmaterials.resolve_material(material_like)
+/obj/item/material/proc/sharpen(datum/prototype/material/material_like, var/sharpen_time, var/kit, mob/living/M)
+	material_like = RSmaterials.fetch(material_like)
 	// if(!fragile && material_primary)
 	if(material_primary)
 		// if(integrity < integrity_max)

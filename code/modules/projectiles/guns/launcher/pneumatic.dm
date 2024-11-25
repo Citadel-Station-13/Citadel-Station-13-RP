@@ -61,7 +61,7 @@
 	else
 		to_chat(user, "There is nothing to remove in \the [src].")
 
-/obj/item/gun/launcher/pneumatic/attack_hand(mob/user, list/params)
+/obj/item/gun/launcher/pneumatic/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(user.get_inactive_held_item() == src)
 		unload_hopper(user)
 	else
@@ -77,7 +77,7 @@
 	else if(istype(W) && item_storage.obj_storage.can_be_inserted(W))
 		item_storage.obj_storage.try_insert(W, new /datum/event_args/actor(user))
 
-/obj/item/gun/launcher/pneumatic/attack_self(mob/user)
+/obj/item/gun/launcher/pneumatic/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -132,10 +132,7 @@
 
 /obj/item/gun/launcher/pneumatic/update_icon()
 	. = ..()
-	if (ismob(src.loc))
-		var/mob/M = src.loc
-		M.update_inv_r_hand()
-		M.update_inv_l_hand()
+	update_worn_icon()
 
 /obj/item/gun/launcher/pneumatic/update_icon_state()
 	. = ..()
@@ -182,7 +179,7 @@
 			buildstate++
 			update_icon()
 			return
-	else if(W.is_material_stack_of(/datum/material/steel))
+	else if(W.is_material_stack_of(/datum/prototype/material/steel))
 		if(buildstate == 2)
 			var/obj/item/stack/material/M = W
 			if(M.use(5))

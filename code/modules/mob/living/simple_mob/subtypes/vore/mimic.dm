@@ -63,7 +63,7 @@
 	icon_living = "mimicopen"
 	icon = 'icons/mob/animal.dmi'
 
-	faction = "mimic"
+	iff_factions = MOB_IFF_FACTION_CHIMERIC
 
 	maxHealth = 125
 	health = 125
@@ -97,11 +97,7 @@
 	showvoreprefs = 0 //Hides mechanical vore prefs for mimics. You can't see their gaping maws when they're just sitting idle.
 
 /mob/living/simple_mob/vore/aggressive/mimic
-	vore_active = 1
-	vore_pounce_chance = 10
 	swallowTime = 3 SECONDS
-	vore_capacity = 1
-	vore_default_mode = DM_DIGEST
 
 /datum/ai_holder/polaris/mimic
 	wander = FALSE
@@ -355,8 +351,6 @@
 	icon_state = "wmimicopen"
 	icon_living = "wmimicopen"
 
-	faction = "mimic"
-
 	maxHealth = 100
 	health = 100
 	movement_cooldown = 5
@@ -399,8 +393,6 @@
 	icon_state = "tmimicopen"
 	icon_living = "tmimicopen"
 
-	faction = "mimic"
-
 	maxHealth = 125
 	health = 125
 	movement_cooldown = 7
@@ -439,8 +431,6 @@
 	icon = 'icons/mob/mimic.dmi'
 	icon_state = "pmimicopen"
 	icon_living = "pmimicopen"
-
-	faction = "mimic"
 
 	maxHealth = 150
 	health = 150

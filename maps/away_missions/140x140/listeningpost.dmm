@@ -61,8 +61,7 @@
 	dir = 4
 	},
 /mob/living/simple_mob/humanoid/merc{
-	desc = "A weary looking syndicate operative.";
-	faction = "syndicate"
+	desc = "A weary looking syndicate operative."
 	},
 /turf/simulated/floor,
 /area/awaymission/listeningpost)

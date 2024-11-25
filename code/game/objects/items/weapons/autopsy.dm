@@ -3,7 +3,7 @@
 //please preference put stuff where it's easy to find - C
 // todo: redo autopsy
 /obj/item/autopsy_scanner
-	name = "biopsy scanner"
+	name = "autopsy scanner"
 	desc = "Extracts information on wounds."
 	icon = 'icons/obj/autopsy_scanner.dmi'
 	icon_state = ""

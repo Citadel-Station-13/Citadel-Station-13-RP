@@ -11,7 +11,7 @@
 	var/max_uses = 5
 	var/op = 1
 
-/obj/item/spellbook/attack_self(mob/user)
+/obj/item/spellbook/attack_self(mob/user, datum/event_args/actor/actor)
 	if(!user)
 		return
 	if((user.mind && !wizards.is_antagonist(user.mind)))
@@ -252,7 +252,7 @@
 	. = ..()
 	name += spellname
 
-/obj/item/spellbook/oneuse/attack_self(mob/user)
+/obj/item/spellbook/oneuse/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return

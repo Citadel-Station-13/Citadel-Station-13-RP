@@ -1,2 +1,2 @@
-/datum/design/circuit
-	abstract_type = /datum/design/circuit
+/datum/prototype/design/circuit
+	abstract_type = /datum/prototype/design/circuit

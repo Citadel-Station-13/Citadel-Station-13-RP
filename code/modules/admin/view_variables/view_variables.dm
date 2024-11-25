@@ -108,7 +108,7 @@
 			names = sortList(names)
 			for(var/V in names)
 				if(D.can_vv_get(V))
-					variable_html += D.vv_get_var(V)
+					variable_html += D.vv_get_var(V, TRUE)
 		if(VVING_A_LIST)
 			var/list/L = D
 			for(var/i in 1 to L.len)

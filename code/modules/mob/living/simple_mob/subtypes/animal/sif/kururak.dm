@@ -23,7 +23,7 @@
 	tt_desc = "S Felidae fluctursora"
 	catalogue_data = list(/datum/category_item/catalogue/fauna/kururak)
 
-	faction = "kururak"
+	iff_factions = MOB_IFF_FACTION_BIND_TO_MAP
 
 	icon_state = "bigcat"
 	icon_living = "bigcat"
@@ -185,7 +185,7 @@
 							H.eye_blurry = max(H.eye_blurry, flash_strength + 5)
 							H.flash_eyes()
 							H.adjustHalLoss(flash_strength / 5)
-							H.apply_damage(flash_strength * H.species.flash_burn/5, BURN, BP_HEAD, 0, 0, "Photon burns")
+							H.apply_damage(flash_strength * H.species.flash_burn/5, DAMAGE_TYPE_BURN, BP_HEAD, 0, 0, "Photon burns")
 
 		else if(issilicon(L))
 			if(isrobot(L))
@@ -263,7 +263,7 @@
 		var/mob/living/L = A
 		if(ishuman(L))
 			var/mob/living/carbon/human/H = L
-			H.apply_damage(damage_to_apply, BRUTE, BP_TORSO, 0, 0, "Animal claws")
+			H.apply_damage(damage_to_apply, DAMAGE_TYPE_BRUTE, BP_TORSO, 0, 0, "Animal claws")
 
 		else
 			L.adjustBruteLoss(damage_to_apply)
@@ -292,7 +292,7 @@
 				continue
 			if(!K.ai_holder)
 				continue
-			if(K.faction != src.faction)
+			if(!K.shares_iff_faction(src))
 				continue
 			var/datum/ai_holder/polaris/AI = K.ai_holder
 			to_chat(K, SPAN_NOTICE("The pack leader wishes for you to follow them."))

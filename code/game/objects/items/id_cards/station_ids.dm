@@ -71,7 +71,6 @@
 	. += "</div>"
 	if(Adjacent(user))
 		. += SPAN_NOTICE("<b>Alt-click</b> to [extra_info_visible ? "close" : "open"] the confidential information flap.")
-	return .
 
 /obj/item/card/id/get_description_info()
 	. = ..()
@@ -183,7 +182,7 @@
 		dat += "The confidential information flap is closed."
 	return dat
 
-/obj/item/card/id/attack_self(mob/user)
+/obj/item/card/id/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return

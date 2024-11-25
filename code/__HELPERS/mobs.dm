@@ -2,10 +2,10 @@
 	return
 
 /obj/vehicle/get_mob()
-	return occupants
+	return SAFEPICK(occupants)
 
 /obj/vehicle_old/train/get_mob()
-	return buckled_mobs
+	return SAFEPICK(buckled_mobs)
 
 /mob/get_mob()
 	return src
@@ -14,24 +14,6 @@
 	if(load && istype(load, /mob/living))
 		return list(src, load)
 	return src
-
-/proc/mobs_in_view(range, source)
-	var/list/mobs = list()
-	for(var/atom/movable/AM in view(range, source))
-		var/M = AM.get_mob()
-		if(M)
-			mobs += M
-
-	return mobs
-
-/proc/mobs_in_xray_view(range, source)
-	var/list/mobs = list()
-	for(var/atom/movable/AM in orange(range, source))
-		var/M = AM.get_mob()
-		if(M)
-			mobs += M
-
-	return mobs
 
 /proc/random_hair_style(gender, species = SPECIES_HUMAN)
 	var/list/valid = list()

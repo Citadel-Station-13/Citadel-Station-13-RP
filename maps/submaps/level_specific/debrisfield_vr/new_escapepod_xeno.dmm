@@ -13,11 +13,6 @@
 /obj/structure/alien/weeds,
 /turf/space,
 /area/submap/debrisfield_vr/misc_debris)
-"k" = (
-/obj/structure/alien/weeds,
-/mob/living/simple_mob/animal/space/alien,
-/turf/simulated/floor/airless,
-/area/submap/debrisfield_vr/misc_debris)
 "r" = (
 /obj/structure/grille/broken,
 /obj/structure/window/reinforced{
@@ -25,11 +20,6 @@
 	},
 /obj/structure/alien/weeds,
 /obj/structure/alien/resin/membrane,
-/turf/simulated/floor/airless,
-/area/submap/debrisfield_vr/misc_debris)
-"t" = (
-/obj/structure/alien/weeds,
-/mob/living/simple_mob/animal/space/alien/sentinel,
 /turf/simulated/floor/airless,
 /area/submap/debrisfield_vr/misc_debris)
 "v" = (
@@ -42,6 +32,11 @@
 /obj/structure/alien/weeds,
 /turf/simulated/floor/airless,
 /area/submap/debrisfield_vr/misc_debris)
+"x" = (
+/obj/structure/alien/weeds,
+/mob/living/simple_mob/animal/space/xenomorph/neurotoxin_spitter,
+/turf/simulated/floor/airless,
+/area/submap/debrisfield_vr/misc_debris)
 "A" = (
 /obj/structure/alien/weeds/node,
 /turf/simulated/floor/airless,
@@ -50,6 +45,11 @@
 /obj/structure/alien/weeds,
 /obj/structure/alien/resin/wall,
 /turf/simulated/wall/rshull,
+/area/submap/debrisfield_vr/misc_debris)
+"F" = (
+/obj/structure/alien/weeds,
+/mob/living/simple_mob/animal/space/xenomorph/drone,
+/turf/simulated/floor/airless,
 /area/submap/debrisfield_vr/misc_debris)
 "T" = (
 /obj/structure/grille/broken,
@@ -69,11 +69,6 @@
 /obj/structure/alien/egg,
 /turf/simulated/floor/airless,
 /area/submap/debrisfield_vr/misc_debris)
-"X" = (
-/obj/structure/alien/weeds,
-/mob/living/simple_mob/animal/space/alien/drone,
-/turf/simulated/floor/airless,
-/area/submap/debrisfield_vr/misc_debris)
 
 (1,1,1) = {"
 a
@@ -84,30 +79,30 @@ a
 "}
 (2,1,1) = {"
 h
-X
-U
+F
+F
 W
 D
 "}
 (3,1,1) = {"
 a
-k
+U
 A
-t
+U
 D
 "}
 (4,1,1) = {"
 a
+x
 U
-U
-U
+x
 a
 "}
 (5,1,1) = {"
 h
 W
 U
-X
+U
 a
 "}
 (6,1,1) = {"

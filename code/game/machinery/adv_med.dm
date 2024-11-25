@@ -177,7 +177,6 @@
 	return INITIALIZE_HINT_LATELOAD
 
 /obj/machinery/body_scanconsole/LateInitialize()
-	. = ..()
 	findscanner()
 
 /obj/machinery/body_scanconsole/Destroy()
@@ -240,7 +239,7 @@
 	. = ..()
 	return attack_hand(user)
 
-/obj/machinery/body_scanconsole/attack_hand(mob/user, list/params)
+/obj/machinery/body_scanconsole/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(machine_stat & (NOPOWER|BROKEN))
 		return
 

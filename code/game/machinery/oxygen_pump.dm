@@ -51,7 +51,7 @@
 		attach_mask(target)
 		src.add_fingerprint(usr)
 
-/obj/machinery/oxygen_pump/attack_hand(mob/user, list/params)
+/obj/machinery/oxygen_pump/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if((machine_stat & MAINT) && tank)
 		user.visible_message( \
 			SPAN_NOTICE("\The [user] removes \the [tank] from \the [src]."), \
@@ -117,7 +117,7 @@
 		return
 	//when there is a breather:
 	if(breather && target != breather)
-		to_chat(user, SPAN_WARNING("\The pump is already in use."))
+		to_chat(user, SPAN_WARNING("The pump is already in use."))
 		return
 	//Checking if breather is still valid
 	if(target == breather && target.wear_mask != contained)

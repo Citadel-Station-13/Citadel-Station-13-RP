@@ -93,7 +93,7 @@ GLOBAL_REAL_VAR(airlock_typecache) = typecacheof(list(
 	var/stripe_color = null
 	var/symbol_color = null
 	var/window_color = GLASS_COLOR
-	var/window_material = /datum/material/glass
+	var/window_material = /datum/prototype/material/glass
 
 	var/fill_file = 'icons/obj/doors/station/fill_steel.dmi'
 	var/color_file = 'icons/obj/doors/station/color.dmi'
@@ -646,7 +646,7 @@ About the new airlock wires panel:
 					last_spark = world.time
 	return ..()
 
-/obj/machinery/door/airlock/attack_hand(mob/user, list/params)
+/obj/machinery/door/airlock/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(!istype(usr, /mob/living/silicon))
 		if(src.isElectrified())
 			if(src.shock(user, 100))
@@ -909,7 +909,7 @@ About the new airlock wires panel:
 	for(var/turf/turf in locs)
 		for(var/atom/movable/AM in turf)
 			if(AM.airlock_crush(DOOR_CRUSH_DAMAGE))
-				inflict_atom_damage(DOOR_CRUSH_DAMAGE, flag = ARMOR_MELEE)
+				inflict_atom_damage(DOOR_CRUSH_DAMAGE, damage_flag = ARMOR_MELEE)
 
 	use_power(360)	//360 W seems much more appropriate for an actuator moving an industrial door capable of crushing people
 	has_beeped = 0
@@ -1220,3 +1220,10 @@ About the new airlock wires panel:
 
 /obj/machinery/door/airlock/glass_external/public
 	req_one_access = list()
+
+/obj/machinery/door/airlock/hatch/supermatter_access
+	name = "Supermatter Access"
+	desc = "A reinforced hatch designed to withstand severe environmental hazards."
+	icon_state = "door_locked"
+	locked = TRUE
+	heat_resistance = 120000

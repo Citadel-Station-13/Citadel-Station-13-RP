@@ -30,8 +30,7 @@
 
 	transfer_languages(src, adult)
 
-	if(src.faction != "neutral")
-		adult.faction = src.faction
+	adult.copy_iff_factions(src)
 
 	if(mind)
 		mind.transfer(adult)
@@ -47,7 +46,7 @@
 
 	drop_inventory(TRUE, TRUE, TRUE)
 
-	for(var/datum/language/L in languages)
+	for(var/datum/prototype/language/L in languages)
 		adult.add_language(L.name)
 
 	qdel(src)
