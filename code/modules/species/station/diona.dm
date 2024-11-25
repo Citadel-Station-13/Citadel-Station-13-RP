@@ -8,7 +8,7 @@
 	name = SPECIES_DIONA
 	name_plural = "Dionaea"
 	//primitive_form = "Nymph"
-	mob_physiology_modifier = /datum/physiology_modifier/intrinsic/species/diona
+	intrinsic_physiology_modifier = /datum/physiology_modifier/intrinsic/species/diona
 
 	icobase      = 'icons/mob/species/diona/body.dmi'
 	deform       = 'icons/mob/species/diona/deformed_body.dmi'

@@ -180,6 +180,7 @@
 
 	H.ChangeToHusk()
 
+				#warn INSERT THIS PROPERLY
 	var/obj/item/organ/internal/borer/B = new(H)
 	H.internal_organs_by_name["brain"] = B
 	H.internal_organs |= B

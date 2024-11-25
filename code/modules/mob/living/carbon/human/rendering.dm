@@ -423,7 +423,7 @@
 	// first check whether something actually changed about damage appearance
 	var/damage_appearance = ""
 
-	for(var/obj/item/organ/external/O in organs)
+	for(var/obj/item/organ/external/O in external_organs)
 		if(isnull(O) || O.is_stump())
 			continue
 		damage_appearance += O.damage_state

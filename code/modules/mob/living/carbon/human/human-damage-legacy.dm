@@ -85,7 +85,7 @@
 //These procs fetch a cumulative total damage from all organs
 /mob/living/carbon/human/getBruteLoss()
 	var/amount = 0
-	for(var/obj/item/organ/external/O in organs)
+	for(var/obj/item/organ/external/O in external_organs)
 		if(O.robotic >= ORGAN_ROBOT && !O.vital)
 			continue //*non-vital*robot limbs don't count towards death, or show up when scanned
 		amount += O.brute_dam
@@ -93,7 +93,7 @@
 
 /mob/living/carbon/human/getShockBruteLoss()
 	var/amount = 0
-	for(var/obj/item/organ/external/O in organs)
+	for(var/obj/item/organ/external/O in external_organs)
 		if(O.robotic >= ORGAN_ROBOT)
 			continue //robot limbs don't count towards shock and crit
 		amount += O.brute_dam
@@ -101,13 +101,13 @@
 
 /mob/living/carbon/human/getActualBruteLoss()
 	var/amount = 0
-	for(var/obj/item/organ/external/O in organs) // Unlike the above, robolimbs DO count.
+	for(var/obj/item/organ/external/O in external_organs) // Unlike the above, robolimbs DO count.
 		amount += O.brute_dam
 	return amount
 
 /mob/living/carbon/human/getFireLoss()
 	var/amount = 0
-	for(var/obj/item/organ/external/O in organs)
+	for(var/obj/item/organ/external/O in external_organs)
 		if(O.robotic >= ORGAN_ROBOT && !O.vital)
 			continue //*non-vital*robot limbs don't count towards death, or show up when scanned
 		amount += O.burn_dam
@@ -115,7 +115,7 @@
 
 /mob/living/carbon/human/getShockFireLoss()
 	var/amount = 0
-	for(var/obj/item/organ/external/O in organs)
+	for(var/obj/item/organ/external/O in external_organs)
 		if(O.robotic >= ORGAN_ROBOT)
 			continue //robot limbs don't count towards shock and crit
 		amount += O.burn_dam
@@ -123,7 +123,7 @@
 
 /mob/living/carbon/human/getActualFireLoss()
 	var/amount = 0
-	for(var/obj/item/organ/external/O in organs) // Unlike the above, robolimbs DO count.
+	for(var/obj/item/organ/external/O in external_organs) // Unlike the above, robolimbs DO count.
 		amount += O.burn_dam
 	return amount
 
@@ -283,7 +283,7 @@
 //Returns a list of damaged organs
 /mob/living/carbon/human/proc/get_damaged_organs(var/brute, var/burn)
 	var/list/obj/item/organ/external/parts = list()
-	for(var/obj/item/organ/external/O in organs)
+	for(var/obj/item/organ/external/O in external_organs)
 		if((brute && O.brute_dam) || (burn && O.burn_dam))
 			parts += O
 	return parts
@@ -291,7 +291,7 @@
 //Returns a list of damageable organs
 /mob/living/carbon/human/proc/get_damageable_organs()
 	var/list/obj/item/organ/external/parts = list()
-	for(var/obj/item/organ/external/O in organs)
+	for(var/obj/item/organ/external/O in external_organs)
 		if(O.is_damageable(TRUE))
 			parts += O
 	return parts

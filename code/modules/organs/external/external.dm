@@ -954,6 +954,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 			LAZYDISTINCTADD(parent_organ.wounds, W)
 			parent_organ.update_damages()
 		else
+			#warn INSERT THIS PROPERLY
 			var/obj/item/organ/external/stump/stump = new (victim, 0, src)
 			if(robotic >= ORGAN_ROBOT)
 				stump.robotize()

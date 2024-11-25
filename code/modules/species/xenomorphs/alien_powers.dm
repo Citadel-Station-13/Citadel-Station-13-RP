@@ -27,7 +27,7 @@
 		return
 
 	if(needs_organ)
-		var/obj/item/organ/internal/I = internal_organs_by_name[needs_organ]
+		var/obj/item/organ/internal/I = legacy_organ_by_tag[needs_organ]
 		if(!I)
 			to_chat(src, "<span class='danger'>Your [needs_organ] has been removed!</span>")
 			return

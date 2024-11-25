@@ -44,6 +44,7 @@
 				return
 			var/list/limblist = species.has_limbs[choice]
 			var/limbpath = limblist["path"]
+			#warn INSERT THIS PROPERLY
 			var/obj/item/organ/external/new_eo = new limbpath(src)
 			organs_by_name[choice] = new_eo
 			new_eo.robotize(synthetic ? synthetic.company : null) //Use the base we started with
@@ -79,9 +80,6 @@
 	visible_message("<B>[src]</B>'s [eo] subtly contorts.")
 	update_icons_body()
 
-////
-//  Full Refactor
-////
 /mob/living/carbon/human/proc/nano_regenerate() //fixed the proc, it used to leave active_regen true.
 	set name = "Ref - Whole Body"
 	set desc = "Allows you to regrow limbs and replace organs, given you have enough materials."
@@ -104,85 +102,83 @@
 		return
 
 	var/swap_not_rebuild = alert(src,"Do you want to rebuild, or reshape?","Rebuild or Reshape","Reshape","Cancel","Rebuild")
-	if(swap_not_rebuild == "Cancel")
-		return
-	if(swap_not_rebuild == "Reshape")
-		var/list/usable_manufacturers = list()
-		for(var/company in GLOB.chargen_robolimbs)
-			var/datum/robolimb/M = GLOB.chargen_robolimbs[company]
-			if(!(BP_TORSO in M.parts))
-				continue
-			if(impersonate_bodytype_legacy in M.species_cannot_use)
-				continue
-			if(M.whitelisted_to && !(ckey in M.whitelisted_to))
-				continue
-			usable_manufacturers[company] = M
-		if(!usable_manufacturers.len)
-			return
-		var/manu_choice = input(src, "Which manufacturer do you wish to mimic?", "Manufacturer") as null|anything in usable_manufacturers
+	switch(swap_not_rebuild)
+		if("Cancel")
+		if("Reshape")
+			var/list/usable_manufacturers = list()
+			for(var/company in GLOB.chargen_robolimbs)
+				var/datum/robolimb/M = GLOB.chargen_robolimbs[company]
+				if(!(BP_TORSO in M.parts))
+					continue
+				if(impersonate_bodytype_legacy in M.species_cannot_use)
+					continue
+				if(M.whitelisted_to && !(ckey in M.whitelisted_to))
+					continue
+				usable_manufacturers[company] = M
+			if(!usable_manufacturers.len)
+				return
+			var/manu_choice = input(src, "Which manufacturer do you wish to mimic?", "Manufacturer") as null|anything in usable_manufacturers
 
-		if(!manu_choice)
-			return //Changed mind
-		if(!organs_by_name[BP_TORSO])
-			return //Ain't got a torso!
+			if(!manu_choice)
+				return //Changed mind
+			if(!organs_by_name[BP_TORSO])
+				return //Ain't got a torso!
 
-		var/obj/item/organ/external/torso = organs_by_name[BP_TORSO]
-		to_chat(src, "<span class='danger'>Remain still while the process takes place! It will take 5 seconds.</span>")
-		visible_message("<B>[src]</B>'s form collapses into an amorphous blob of black ichor...")
+			var/obj/item/organ/external/torso = organs_by_name[BP_TORSO]
+			to_chat(src, "<span class='danger'>Remain still while the process takes place! It will take 5 seconds.</span>")
+			visible_message("<B>[src]</B>'s form collapses into an amorphous blob of black ichor...")
 
-		var/mob/living/simple_mob/protean_blob/blob = nano_intoblob()
-		active_regen = TRUE
-		if(do_self(blob, 5 SECONDS, DO_AFTER_IGNORE_ACTIVE_ITEM | DO_AFTER_IGNORE_MOVEMENT, NONE))
-			synthetic = usable_manufacturers[manu_choice]
-			torso.robotize(manu_choice) //Will cascade to all other organs.
-			regenerate_icons()
-			visible_message("<B>[src]</B>'s form reshapes into a new one...")
-		active_regen = FALSE
-		nano_outofblob(blob)
-		return
-
-	//Not enough resources (AND spends the resources, should be the last check)
-	if(refactory.get_stored_material(MAT_STEEL) < min(10000, refactory.max_storage))
-		to_chat(src, "<span class='warning'>You need to be maxed out on normal metal to do this!</span>")
-		return
-
-	var/delay_length = round(active_regen_delay * species.active_regen_mult)
-	to_chat(src, "<span class='danger'>Remain still while the process takes place! It will take [delay_length/10] seconds.</span>")
-	visible_message("<B>[src]</B>'s form begins to shift and ripple as if made of oil...")
-	active_regen = TRUE
-
-	var/mob/living/simple_mob/protean_blob/blob = nano_intoblob()
-	if(do_self(blob, 5 SECONDS, DO_AFTER_IGNORE_ACTIVE_ITEM | DO_AFTER_IGNORE_MOVEMENT, NONE))
-		if(stat != DEAD && refactory)
+			var/mob/living/simple_mob/protean_blob/blob = nano_intoblob()
+			active_regen = TRUE
+			if(do_self(blob, 5 SECONDS, DO_AFTER_IGNORE_ACTIVE_ITEM | DO_AFTER_IGNORE_MOVEMENT, NONE))
+				synthetic = usable_manufacturers[manu_choice]
+				torso.robotize(manu_choice) //Will cascade to all other organs.
+				regenerate_icons()
+				visible_message("<B>[src]</B>'s form reshapes into a new one...")
+			active_regen = FALSE
+			nano_outofblob(blob)
+		if("Rebuild")
 			//Not enough resources (AND spends the resources, should be the last check)
-			if(!refactory.use_stored_material(MAT_STEEL,refactory.max_storage))
+			if(refactory.get_stored_material(MAT_STEEL) < min(10000, refactory.max_storage))
 				to_chat(src, "<span class='warning'>You need to be maxed out on normal metal to do this!</span>")
 				return
-			var/list/holder = refactory.stored_materials
-			species.create_organs(src)
-			var/obj/item/organ/external/torso = organs_by_name[BP_TORSO]
-			torso.robotize() //synthetic wasn't defined here.
-			LAZYCLEARLIST(blood_DNA)
-			LAZYCLEARLIST(feet_blood_DNA)
-			blood_color = null
-			feet_blood_color = null
-			regenerate_icons() //Probably worth it, yeah.
-			var/obj/item/organ/internal/nano/refactory/new_refactory = locate() in internal_organs
-			if(!new_refactory)
-				log_debug(SPAN_DEBUGWARNING("[src] protean-regen'd but lacked a refactory when done."))
-			else
-				new_refactory.stored_materials = holder
-			to_chat(src, "<span class='notice'>Your refactoring is complete.</span>") //Guarantees the message shows no matter how bad the timing.
-			to_chat(blob, "<span class='notice'>Your refactoring is complete!</span>")
-		else
-			to_chat(src,  "<span class='critical'>Your refactoring has failed.</span>")
-			to_chat(blob, "<span class='critical'>Your refactoring has failed!</span>")
-	else
-		to_chat(src,  "<span class='critical'>Your refactoring is interrupted.</span>")
-		to_chat(blob, "<span class='critical'>Your refactoring is interrupted!</span>")
-	active_regen = FALSE
-	nano_outofblob()
 
+			var/delay_length = round(active_regen_delay * species.active_regen_mult)
+			to_chat(src, "<span class='danger'>Remain still while the process takes place! It will take [delay_length/10] seconds.</span>")
+			visible_message("<B>[src]</B>'s form begins to shift and ripple as if made of oil...")
+			active_regen = TRUE
+
+			var/mob/living/simple_mob/protean_blob/blob = nano_intoblob()
+			if(do_self(blob, 5 SECONDS, DO_AFTER_IGNORE_ACTIVE_ITEM | DO_AFTER_IGNORE_MOVEMENT, NONE))
+				if(stat != DEAD && refactory)
+					//Not enough resources (AND spends the resources, should be the last check)
+					if(!refactory.use_stored_material(MAT_STEEL,refactory.max_storage))
+						to_chat(src, "<span class='warning'>You need to be maxed out on normal metal to do this!</span>")
+						return
+					var/list/holder = refactory.stored_materials
+					species.create_organs(src)
+					var/obj/item/organ/external/torso = organs_by_name[BP_TORSO]
+					torso.robotize() //synthetic wasn't defined here.
+					LAZYCLEARLIST(blood_DNA)
+					LAZYCLEARLIST(feet_blood_DNA)
+					blood_color = null
+					feet_blood_color = null
+					regenerate_icons() //Probably worth it, yeah.
+					var/obj/item/organ/internal/nano/refactory/new_refactory = locate() in internal_organs
+					if(!new_refactory)
+						log_debug(SPAN_DEBUGWARNING("[src] protean-regen'd but lacked a refactory when done."))
+					else
+						new_refactory.stored_materials = holder
+					to_chat(src, "<span class='notice'>Your refactoring is complete.</span>") //Guarantees the message shows no matter how bad the timing.
+					to_chat(blob, "<span class='notice'>Your refactoring is complete!</span>")
+				else
+					to_chat(src,  "<span class='critical'>Your refactoring has failed.</span>")
+					to_chat(blob, "<span class='critical'>Your refactoring has failed!</span>")
+			else
+				to_chat(src,  "<span class='critical'>Your refactoring is interrupted.</span>")
+				to_chat(blob, "<span class='critical'>Your refactoring is interrupted!</span>")
+			active_regen = FALSE
+			nano_outofblob()
 
 ////
 //  Storing metal

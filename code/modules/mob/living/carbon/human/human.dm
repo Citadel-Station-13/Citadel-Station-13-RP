@@ -62,8 +62,6 @@
 
 /mob/living/carbon/human/Destroy()
 	human_mob_list -= src
-	for(var/organ in organs)
-		qdel(organ)
 	QDEL_NULL(nif)
 	QDEL_LIST_NULL(vore_organs)
 	return ..()
@@ -154,7 +152,7 @@
 
 
 	// focus most of the blast on one organ
-	var/obj/item/organ/external/take_blast = pick(organs)
+	var/obj/item/organ/external/take_blast = pick(external_organs)
 	take_blast.inflict_bodypart_damage(
 		brute = b_loss * 0.9,
 		burn = f_loss * 0.9,
@@ -165,7 +163,7 @@
 	b_loss *= 0.1
 	f_loss *= 0.1
 
-	for(var/obj/item/organ/external/temp in organs)
+	for(var/obj/item/organ/external/temp in external_organs)
 		switch(temp.organ_tag)
 			if(BP_HEAD)
 				temp.inflict_bodypart_damage(
@@ -1360,11 +1358,7 @@
 	..()
 
 /mob/living/carbon/human/has_brain()
-	if(internal_organs_by_name[O_BRAIN])
-		var/obj/item/organ/brain = internal_organs_by_name[O_BRAIN]
-		if(brain && istype(brain))
-			return 1
-	return 0
+	return !!keyed_organs[ORGAN_KEY_BRAIN]
 
 /mob/living/carbon/human/has_eyes()
 	if(keyed_organs[ORGAN_KEY_EYES])
@@ -1399,9 +1393,8 @@
 		self = 1 // Removing object from yourself.
 
 	var/list/limbs = list()
-	for(var/limb in organs_by_name)
-		var/obj/item/organ/external/current_limb = organs_by_name[limb]
-		if(current_limb && current_limb.dislocated > 0 && !current_limb.is_parent_dislocated()) //if the parent is also dislocated you will have to relocate that first
+	for(var/obj/item/organ/external/current_limb in external_organs)
+		if(current_limb.dislocated > 0 && !current_limb.is_parent_dislocated()) //if the parent is also dislocated you will have to relocate that first
 			limbs |= current_limb
 	var/obj/item/organ/external/current_limb = input(usr,"Which joint do you wish to relocate?") as null|anything in limbs
 
