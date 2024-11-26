@@ -35,7 +35,7 @@
 			created_struct = new
 			if(!created_struct.construct(list("0,0,0" = levels[1]), FALSE))
 				CRASH("failed to auto-create 1-z default struct")
-		overmap_initializer.initialize(creating)
+		SSovermaps.initialize_entity(overmap_initializer, created_struct)
 
 /**
  * anything to do after loading with any dependencies

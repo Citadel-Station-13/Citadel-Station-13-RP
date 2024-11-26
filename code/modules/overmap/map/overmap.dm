@@ -27,6 +27,8 @@
 	src.id = id
 	src.template = template
 
+//* Init *//
+
 /**
  * initializes an overmap from a template
  */
@@ -46,6 +48,13 @@
 
 	SSovermaps.overmap_by_id[id] = src
 	return TRUE
+
+/**
+ * constructs our parameters from template
+ */
+/datum/overmap/proc/construct(datum/overmap_template/template)
+	src.width = template.width
+	src.height = template.height
 
 /**
  * allocates our reservation block
@@ -70,13 +79,6 @@
 	return reservation
 
 /**
- * constructs our parameters from template
- */
-/datum/overmap/proc/construct(datum/overmap_template/template)
-	src.width = template.width
-	src.height = template.height
-
-/**
  * builds and initializes our map, which is usually blank unless a template put stuff in.
  */
 /datum/overmap/proc/build()
@@ -85,7 +87,6 @@
 		var/turf/overmap/map/map_tile = turf.ChangeTurf(/turf/overmap/map)
 		map_tile.initialize_overmap(src)
 
-
 /**
  * makes a border turf
  */
@@ -93,3 +94,15 @@
 	var/turf/overmap/edge/edge = border.ChangeTurf(/turf/overmap/edge)
 	edge.initialize_border(src, reservation)
 	edge.initialize_overmap(src)
+
+//* Query *//
+
+/**
+ * @params
+ * * where - epicenter
+ * * i_insist - ask very strongly, thus that we ignore things like event cloud checks.
+ */
+/datum/overmap/proc/query_closest_reasonable_open_space(turf/where, i_insist) as /turf
+	if(where.z != reservation.bottom_left_coords[3])
+		return null
+	#warn impl

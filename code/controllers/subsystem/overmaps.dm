@@ -3,13 +3,19 @@ SUBSYSTEM_DEF(overmaps)
 	subsystem_flags = SS_NO_FIRE
 	init_order = INIT_ORDER_OVERMAPS
 
+	//* Overmaps *//
+
 	/// overmap by id
 	//  todo: recover
 	var/static/list/datum/overmap/overmap_by_id = list()
-
 	/// im so sorry bros dont hurt me please--
 	/// (eventually we'll have proper bindings but for now, uh, this is how it is!)
 	var/const/default_overmap_id = "main"
+
+	//* Overmap Entities *//
+
+	/// Initialize queue of callbacks
+	var/list/datum/callback/entity_initialize_queue = list()
 
 	//*                    Global Tuning                       *//
 	//* Balance tuning goes in here; not sim                   *//
@@ -40,7 +46,13 @@ SUBSYSTEM_DEF(overmaps)
 	var/static/list/datum/overmap_location/active_overmap_locations = list()
 
 /datum/controller/subsystem/overmaps/Initialize()
+	// make overmaps //
 	make_default_overmap()
+	// initialize entities //
+	for(var/datum/callback/callback in entity_initialize_queue)
+		callback.Invoke()
+	entity_initialize_queue = null
+	// rebuild stuff //
 	rebuild_helm_computers()
 	return SS_INIT_SUCCESS
 
@@ -121,6 +133,19 @@ SUBSYSTEM_DEF(overmaps)
 //! end
 
 //* Overmap Entity *//
+
+/**
+ * Creates an entity with a given location.
+ */
+/datum/controller/subsystem/overmaps/proc/initialize_entity(datum/overmap_initializer/initializer, location_for_initializer)
+	if(initialized)
+		do_initialize_entity(initializer, location_for_initializer)
+	else
+		entity_initialize_queue += CALLBACK(src, PROC_REF(do_initialize_entity), initializer, location_for_initializer)
+
+/datum/controller/subsystem/overmaps/proc/do_initialize_entity(datum/overmap_initializer/initializer, location_for_initializer)
+	PRIVATE_PROC(TRUE)
+	initializer.initialize(location_for_initializer)
 
 /**
  * Gets entity owning a level.

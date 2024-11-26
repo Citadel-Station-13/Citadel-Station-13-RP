@@ -22,7 +22,6 @@
 	var/manual_position_x
 	/// preferred position y
 	var/manual_position_y
-	#warn impl/hook above
 
 	//! LEGACY
 	/// the entity name while not scanned
@@ -72,7 +71,9 @@
 	var/datum/overmap_location/location = assemble_location(from_source_location)
 	if(!location)
 		CRASH("failed to assemble location during overmap entity initialization")
-	return create_overmap_entity(location)
+	var/datum/overmap/place_on = SSovermaps.get_or_load_default_overmap()
+	var/turf/place_at = place_on.query_closest_reasonable_open_space(locate(manual_position_x, manual_position_y, place_on.reservation.bottom_left_coords[3]), TRUE)
+	return create_overmap_entity(location, place_at)
 
 /**
  * Creates our location
@@ -86,6 +87,9 @@
 /**
  * Creates our overmap object
  */
-/datum/overmap_initializer/proc/create_overmap_entity(datum/overmap_location/from_location) as /obj/overmap/entity
+/datum/overmap_initializer/proc/create_overmap_entity(datum/overmap_location/from_location, turf/initial_placement) as /obj/overmap/entity
+	var/obj/overmap/entity/creating = new(null)
+	creating.location = from_location
+	creating.forceMove(initial_placement)
 
 #warn impl
