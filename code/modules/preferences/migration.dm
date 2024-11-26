@@ -104,7 +104,7 @@
 		else
 			errors?.Add(SPAN_DANGER("Species migration failed - no species datum. Report this to a coder."))
 		// GRAB CHARACTER SPECIES - WE'LL NEED IT
-		var/datum/character_species/CS = SScharacters.resolve_character_species(RS.uid)
+		var/datum/species/CS = SScharacters.resolve_character_species(RS.uid)
 		// MIGRATE LANGUAGES
 		var/list/alternate_languages
 		S["language"] >> alternate_languages

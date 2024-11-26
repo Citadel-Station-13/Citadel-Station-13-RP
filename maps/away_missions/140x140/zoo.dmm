@@ -8235,7 +8235,7 @@
 /obj/structure/grille{
 	name = "mass ventilation"
 	},
-/turf/unsimulated/wall/planetary/normal,
+/turf/unsimulated/wall/planetary,
 /area/awaymission/zoo)
 "wH" = (
 /obj/machinery/door/airlock/maintenance,

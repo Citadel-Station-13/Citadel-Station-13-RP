@@ -5,6 +5,8 @@
 /datum/prototype/design/science/stock_part
 	abstract_type = /datum/prototype/design/science/stock_part
 	lathe_type = LATHE_TYPE_PROTOLATHE
+	category = DESIGN_CATEGORY_SCIENCE
+	subcategory = DESIGN_SUBCATEGORY_PARTS
 	work = (3 * (1 / 3) * 10) // auto regexed to be old time divided by 3 in seconds. //Sets an independent time for stock parts, currently one third normal print time.
 	var/tier = 0
 
