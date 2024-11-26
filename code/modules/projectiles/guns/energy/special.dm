@@ -455,7 +455,7 @@
 	projectile_type = /obj/projectile/bullet/cyanideround/jezzail
 	fire_delay = 20
 	charge_cost = 600
-	cell_type = /obj/item/cell/device/weapon
+	cell_type = /obj/item/cell/weapon/basic/tier_1
 	battery_lock = 1
 	slot_flags = SLOT_BACK
 	w_class = WEIGHT_CLASS_BULKY
