@@ -76,7 +76,7 @@ ADMIN_VERB_DEF(upload_map_sector, R_ADMIN, "Create Map Sector", "Create or uploa
 
 #warn impl
 
-/datum/admin_modal/upload_map_sector/ui_module_data(mob/user, datum/tgui/ui)
+/datum/admin_modal/upload_map_sector/ui_nested_data(mob/user, datum/tgui/ui)
 	. = ..()
 	.["map"] = map_data()
 	.["overmap"] = overmap_data()
@@ -199,8 +199,8 @@ ADMIN_VERB_DEF(upload_map_sector, R_ADMIN, "Create Map Sector", "Create or uploa
 	)
 
 /datum/admin_modal/upload_map_sector/proc/update_map_data()
-	push_ui_modules(
-		updates = list(
+	push_ui_data(
+		nested_data = list(
 			"map" = map_data(),
 		),
 	)
@@ -210,8 +210,8 @@ ADMIN_VERB_DEF(upload_map_sector, R_ADMIN, "Create Map Sector", "Create or uploa
 	)
 
 /datum/admin_modal/upload_map_sector/proc/update_overmap_data()
-	push_ui_modules(
-		updates = list(
+	push_ui_data(
+		nested_data = list(
 			"overmap" = overmap_data(),
 		),
 	)
@@ -219,8 +219,8 @@ ADMIN_VERB_DEF(upload_map_sector, R_ADMIN, "Create Map Sector", "Create or uploa
 /datum/admin_modal/upload_map_sector/proc/level_index_data(index)
 
 /datum/admin_modal/upload_map_sector/proc/update_level_index_data(index)
-	push_ui_modules(
-		updates = list(
+	push_ui_data(
+		nested_data = list(
 			"level-[index]" = level_index_data(index),
 		),
 	)

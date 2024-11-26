@@ -50,10 +50,8 @@
 	/// Are byond mouse events beyond the window passed in to the ui
 	var/mouse_hooked = FALSE
 	/// The Parent UI
-	//? STOP USING THIS. USE MODULES. ~SILICONS
 	var/datum/tgui/parent_ui
 	/// Children of this UI
-	//? STOP USING THIS. USE MODULES. ~SILICONS
 	var/list/children = list()
 
 	//* Modules *//
@@ -117,11 +115,11 @@
  *
  * @params
  * * data - force certain data sends
- * * modules - force certain module sends
+ * * nested_data - force certain module sends
  *
  * return bool - TRUE if a new pooled window is opened, FALSE in all other situations including if a new pooled window didn't open because one already exists.
  */
-/datum/tgui/proc/open(data, modules)
+/datum/tgui/proc/open(data, nested_data)
 	SHOULD_NOT_SLEEP(TRUE)
 	if(!user.client)
 		return FALSE
@@ -139,7 +137,7 @@
 	SStgui.on_open(src)
 	// defer initialize() to after current call chain.
 	spawn(0)
-		initialize(data, modules)
+		initialize(data, nested_data)
 	return TRUE
 
 /**
@@ -147,7 +145,7 @@
  *
  * * Separate from open() so that open() can be non-blocking.
  */
-/datum/tgui/proc/initialize(data, modules)
+/datum/tgui/proc/initialize(data, nested_data)
 	// todo: this is a blocking proc. src_object can be deleted at any time between the blocking procs.
 	//       we need sane handling of deletion order, of runtimes happen.
 	if(!window.is_ready())
@@ -180,7 +178,7 @@
 		with_data = TRUE,
 		with_static_data = TRUE,
 		force_data = data,
-		force_modules = modules,
+		force_nested_data = nested_data,
 	))
 	if(mouse_hooked)
 		window.set_mouse_macro()
@@ -318,7 +316,7 @@
  *
  * return list
  */
-/datum/tgui/proc/get_payload(with_data, with_static_data, list/force_data, list/force_modules)
+/datum/tgui/proc/get_payload(with_data, with_static_data, list/force_data, list/force_nested_data)
 	var/list/json_data = list()
 	json_data["config"] = list(
 		"title" = title,
@@ -342,26 +340,26 @@
 			"observer" = isobserver(user),
 		),
 	)
-	var/list/modules = src_object.ui_module_data(user, src)
+	var/list/nested_data = src_object.ui_nested_data(user, src)
 	// static first
 	if(with_static_data)
 		json_data["static"] = src_object.ui_static_data(user, src)
 		for(var/datum/module as anything in modules_registered)
 			var/id = modules_registered[module]
-			modules[id] = module.ui_static_data(user, src, TRUE)
+			nested_data[id] = module.ui_static_data(user, src, TRUE)
 	if(with_data)
 		json_data["data"] = src_object.ui_data(user, src)
 		for(var/datum/module as anything in (with_static_data? modules_registered : modules_processed))
 			var/id = modules_registered[module]
-			modules[id] = modules[id] | module.ui_data(user, src, TRUE)
-	if(modules)
-		json_data["nested_data"] = modules
+			nested_data[id] = modules[id] | module.ui_data(user, src, TRUE)
+	if(nested_data)
+		json_data["nested_data"] = nested_data
 	if(src_object.tgui_shared_states)
 		json_data["shared"] = src_object.tgui_shared_states
 	if(!isnull(force_data))
 		json_data["data"] = (json_data["data"] || list()) | force_data
 	if(!isnull(force_modules))
-		json_data["nested_data"] = (json_data["nested_data"] || list()) | force_modules
+		json_data["nested_data"] = (json_data["nested_data"] || list()) | nested_data
 	return json_data
 
 /**

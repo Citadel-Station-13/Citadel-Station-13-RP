@@ -5073,6 +5073,7 @@
 #include "code\modules\tgui\status_composers.dm"
 #include "code\modules\tgui\tgui.dm"
 #include "code\modules\tgui\tgui_window.dm"
+#include "code\modules\tgui\ui_context.dm"
 #include "code\modules\tgui\ui_controller.dm"
 #include "code\modules\tgui\legacy\modal_vr_legacy.dm"
 #include "code\modules\tgui\modals\tgui_alert.dm"

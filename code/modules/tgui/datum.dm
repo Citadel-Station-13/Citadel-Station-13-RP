@@ -105,7 +105,7 @@
  *
  * return list Data to be sent to the UI.
  */
-/datum/proc/ui_module_data(mob/user, datum/tgui/ui)
+/datum/proc/ui_nested_data(mob/user, datum/tgui/ui)
 	return list()
 
 /**
