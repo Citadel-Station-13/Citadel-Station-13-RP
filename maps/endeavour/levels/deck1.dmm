@@ -2346,7 +2346,6 @@
 /turf/simulated/floor/tiled,
 /area/endeavour/exploration/hallway_aft)
 "bTg" = (
-/obj/overmap/entity/visitable/ship/endeavour,
 /obj/structure/bed/chair/bay/comfy/black{
 	dir = 4
 	},

@@ -28,6 +28,9 @@
 	)
 
 	create_struct = TRUE
+	overmap_initializer = /datum/overmap_initializer/struct{
+		legacy_entity_type = /obj/overmap/entity/visitable/ship/endeavour;
+	}
 
 	// todo: remove after dev is done
 	allow_random_draw = FALSE

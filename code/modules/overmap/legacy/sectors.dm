@@ -39,13 +39,14 @@
 
 	// todo: This is shitcode but sue me tbh we gotta refactor this shit anyways to be overmap_initializer's
 	spawn(-1)
-		var/datum/overmap/legacy_bind_overmap = SSovermaps.get_or_load_default_overmap()
-		var/turf/where_to_go = free_overmap_space(legacy_bind_overmap)
-		start_x = where_to_go.x
-		start_y = where_to_go.y
+		if(!overmap)
+			var/datum/overmap/legacy_bind_overmap = SSovermaps.get_or_load_default_overmap()
+			var/turf/where_to_go = free_overmap_space(legacy_bind_overmap)
+			start_x = where_to_go.x
+			start_y = where_to_go.y
 
-		forceMove(where_to_go)
-		testing("Located sector \"[name]\" at [start_x],[start_y], containing Z [english_list(map_z)]")
+			forceMove(where_to_go)
+			testing("Located legacy sector \"[name]\" at [start_x],[start_y], containing Z [english_list(map_z)]")
 
 		if(known)
 			plane = ABOVE_LIGHTING_PLANE
