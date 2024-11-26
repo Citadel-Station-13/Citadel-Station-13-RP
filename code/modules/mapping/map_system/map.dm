@@ -31,18 +31,12 @@
 	/// * if specified, our overmap location will be a /datum/overmap_location/struct
 	/// * will not be re-fired if overmaps side is what caused us to be loaded. remember,
 	///   /datum/overmap_initializer is a bi-directional binding to and from /datum/map!
+	/// * a struct is required. if no struct is created, we must be a single-level, which will be auto-structed.
 	var/datum/overmap_initializer/overmap_initializer
-	#warn impl
 
 	//* Structs *//
 	/// automatically make a struct on load
 	var/create_struct = TRUE
-	/// use a given struct id instead of randomly genearting one
-	///
-	/// * this ID will still be mangled
-	/// * anything using direct struct ID references will also need to be run through the mangling in-code.
-	var/create_struct_id
-	#warn impl
 
 	/// override map id for persistence so two maps are considered the same
 	/// two maps should **never** be loaded at the same time with the same persistence ID!
@@ -89,6 +83,9 @@
 		if(ispath(lateload[i]))
 			var/datum/map/resolving = lateload[i]
 			lateload[i] = initial(resolving.id)
+	// resolve overmap initializer
+	if(ispath(overmap_initializer) || IS_ANONYMOUS_TYPEPATH(overmap_initializer))
+		overmap_initializer = new overmap_initializer
 
 /datum/map/Destroy()
 	if(loaded)
@@ -165,22 +162,6 @@
 			levels[i] = level_instance
 			if(levels_match_mangling_id)
 				level_instance.mangling_id = mangling_id || id
-
-/**
- * anything to do immediately on load
- *
- * called after level on_loaded_immediate's
- */
-/datum/map/proc/on_loaded_immediate()
-	return
-
-/**
- * anything to do after loading with any dependencies
- *
- * called after level on_loaded_finalize's
- */
-/datum/map/proc/on_loaded_finalize()
-	return
 
 /**
  * primary station map

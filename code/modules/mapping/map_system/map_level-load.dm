@@ -19,7 +19,7 @@
  * * generation_callbacks - callbacks to add to perform post_loaded generation. this will be done in a batch before on_loaded_finalize and before atom init.
  */
 /datum/map_level/proc/on_loaded_immediate(z_index, list/datum/callback/additional_generation)
-	return
+	SHOULD_CALL_PARENT(TRUE)
 
 /**
  * * called in a group after all maps and dependencies load **and** generation callbacks fire.
@@ -32,7 +32,7 @@
  * * z_index - zlevel we loaded on
  */
 /datum/map_level/proc/on_loaded_finalize(z_index)
-	return
+	SHOULD_CALL_PARENT(TRUE)
 
 //* Unloading *//
 

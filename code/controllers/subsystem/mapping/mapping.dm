@@ -21,6 +21,8 @@ SUBSYSTEM_DEF(mapping)
 	/// we do that because we automatically generate level ids
 	/// so we can't use initial(id)
 	var/static/list/datum/map_level/typed_levels = list()
+	/// all active map_struct's
+	var/static/list/datum/map_struct/active_structs = list()
 
 	//* Levels - Fluff *//
 	/// literally just a random hexadecimal store to prevent collision

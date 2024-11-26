@@ -1,17 +1,6 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
-//* UI State *//
-
-GLOBAL_DATUM_INIT(ui_admin_modal_state, /datum/ui_state/admin_modal_state, new)
-
-VV_PROTECT_READONLY(/datum/admin_modal_state)
-/datum/ui_state/admin_modal_state
-
-/datum/ui_state/admin_modal_state/can_use_topic(src_object, mob/user)
-	. = ..()
-	#warn impl
-
 //* Modal *//
 
 /**
@@ -19,6 +8,8 @@ VV_PROTECT_READONLY(/datum/admin_modal_state)
  */
 VV_PROTECT_READONLY(/datum/admin_modal)
 /datum/admin_modal
+	/// Our name, for UI / output purposes
+	var/name = "Unknown Modal"
 	/// The admin datum that opened us
 	var/datum/admins/owner
 	/// TGUI ID; this will always be loaded from `tgui/interfaces/admin_modal` if possible.
@@ -54,13 +45,19 @@ VV_PROTECT_READONLY(/datum/admin_modal)
 		if(!Initialize())
 			return
 		initialized = TRUE
-	#warn impl
+	if(!owner?.owner?.mob)
+		return
+	ui_interact(owner.owner.mob)
 
 /datum/admin_modal/proc/Initialize()
 	return
 
 /**
  * Call to complain about a failure in doing something.
+ *
+ * * Failures should generally be done UI-side, this is for when something is seriously wrong.
  */
 /datum/admin_modal/proc/loud_rejection(message)
-	#warn impl
+	// todo: make this fancier
+	to_chat(SPAN_BOLDANNOUNCE(owner.owner, "[name]: [message]"))
+

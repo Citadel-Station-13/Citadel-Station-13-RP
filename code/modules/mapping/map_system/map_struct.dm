@@ -169,6 +169,10 @@
  * Builds and generates our data.
  *
  * * Will also verify integrity of zlevels and whatnot.
+ *
+ * @params
+ * * z_grid - list of "x,y,z" = /datum/map_level instance
+ * * link - automatically link levels together after construction?
  */
 /datum/map_struct/proc/construct(list/z_grid = src.z_grid, link = TRUE)
 	// level datums
@@ -330,6 +334,7 @@
 		link_levels()
 
 	constructed = TRUE
+	SSmapping.active_structs += src
 
 	SEND_SIGNAL(src, COMSIG_MAP_STRUCT_CONSTRUCTED)
 
@@ -355,6 +360,7 @@
 	sparse_size_y = null
 	sparse_size_z = null
 
+	SSmapping.active_structs -= src
 	constructed = FALSE
 
 	SEND_SIGNAL(src, COMSIG_MAP_STRUCT_DECONSTRUCTED)

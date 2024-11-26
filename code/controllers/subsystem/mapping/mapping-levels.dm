@@ -105,7 +105,7 @@
 			L.rebuild_turfs()
 		CHECK_TICK
 
-//* Allocations & Deallocations
+//* Allocations & Deallocations * //
 
 /**
  * allocates a new map level using the given datum.
@@ -351,10 +351,6 @@
 		. = "[discriminator][num2hex(rand(1, 16 ** 4 - 1))]"
 	while(. in random_fluff_level_hashes)
 	random_fluff_level_hashes += .
-
-//* Structs *//
-
-#warn impl
 
 //* Z-stacks *//
 

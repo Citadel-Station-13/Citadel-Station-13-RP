@@ -16,6 +16,7 @@ ADMIN_VERB_DEF(upload_map_sector, R_ADMIN, "Create Map Sector", "Create or uploa
  * * This does not currently support invoking map generation during an upload.
  */
 /datum/admin_modal/upload_map_sector
+	name = "Upload Map Sector"
 	tgui_interface = "UploadMapSector"
 	tgui_update = FALSE
 
