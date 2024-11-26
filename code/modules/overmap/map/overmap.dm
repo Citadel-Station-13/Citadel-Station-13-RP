@@ -110,7 +110,7 @@
 	var/max_radius = 5
 	// todo: spiral_range_turfs_invoking or something to break immediately
 	var/list/turf/returned = spiral_range_turfs(max_radius, where, TRUE)
-	return length(returned) ? pick(Returned) : where
+	return length(returned) ? pick(returned) : where
 
 /datum/overmap/proc/query_is_reasonable_open_space(turf/where, i_insist)
 	return i_insist ? !(locate(/obj/overmap/entity) in where) : !(locate(/obj/overmap) in where)

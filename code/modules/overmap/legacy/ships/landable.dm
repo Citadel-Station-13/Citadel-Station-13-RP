@@ -36,11 +36,6 @@
 	if(get_area(object) in areas)
 		return 1
 
-// We autobuild our z levels.
-/obj/overmap/entity/visitable/ship/landable/find_z_levels()
-	src.landmark = new(null, shuttle) // Create in nullspace since we lazy-create overmap z
-	add_landmark(landmark, shuttle)
-
 /obj/overmap/entity/visitable/ship/landable/proc/setup_overmap_location()
 	var/datum/overmap_location/shuttle/our_shuttle_location = location
 	ASSERT(istype(our_shuttle_location))
@@ -64,6 +59,8 @@
 
 /obj/overmap/entity/visitable/ship/landable/populate_sector_objects()
 	..()
+	src.landmark = new(null, shuttle) // Create in nullspace since we lazy-create overmap z
+	add_landmark(landmark, shuttle)
 	var/datum/shuttle/shuttle_datum = SSshuttle.shuttles[shuttle]
 	if(istype(shuttle_datum,/datum/shuttle/autodock/overmap))
 		var/datum/shuttle/autodock/overmap/oms = shuttle_datum

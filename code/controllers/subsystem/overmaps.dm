@@ -159,7 +159,7 @@ SUBSYSTEM_DEF(overmaps)
  */
 /datum/controller/subsystem/overmaps/proc/get_enclosing_overmap_entity(target) as /obj/overmap/entity
 	if(isatom(target))
-		target = get_turf(target)?:z
+		target = (get_turf(target))?:z
 	if(!target)
 		return
 	return location_enclosed_levels[target].entity
