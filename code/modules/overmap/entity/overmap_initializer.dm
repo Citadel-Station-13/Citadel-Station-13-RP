@@ -76,7 +76,11 @@
 	if(!location)
 		CRASH("failed to assemble location during overmap entity initialization")
 	var/datum/overmap/place_on = SSovermaps.get_or_load_default_overmap()
-	var/turf/place_at = place_on.query_closest_reasonable_open_space(locate(manual_position_x, manual_position_y, place_on.reservation.bottom_left_coords[3]), TRUE)
+	var/turf/place_at
+	if(manual_position_x && manual_position_y)
+		place_at = place_on.query_closest_reasonable_open_space(locate(manual_position_x, manual_position_y, place_on.reservation.bottom_left_coords[3]), manual_position_is_strong_suggestion)
+	else
+		place_at = place_on.query_random_placement_location()
 	return create_overmap_entity(location, place_at)
 
 /**

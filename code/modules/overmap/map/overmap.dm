@@ -97,6 +97,15 @@
 
 //* Query *//
 
+/datum/overmap/proc/query_random_placement_location()
+	return query_closest_reasonable_open_space(
+		locate(
+			rand(reservation.bottom_left_coords[1], reservation.top_right_coords[1]),
+			rand(reservation.bottom_left_coords[2], reservation.top_right_coords[2]),
+			reservation.bottom_left_coords[3],
+		),
+	)
+
 /**
  * @params
  * * where - epicenter
