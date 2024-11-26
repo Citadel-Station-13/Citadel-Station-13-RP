@@ -351,14 +351,14 @@
 		json_data["data"] = src_object.ui_data(user, src)
 		for(var/datum/module as anything in (with_static_data? modules_registered : modules_processed))
 			var/id = modules_registered[module]
-			nested_data[id] = modules[id] | module.ui_data(user, src, TRUE)
+			nested_data[id] = nested_data[id] | module.ui_data(user, src, TRUE)
 	if(nested_data)
 		json_data["nested_data"] = nested_data
 	if(src_object.tgui_shared_states)
 		json_data["shared"] = src_object.tgui_shared_states
 	if(!isnull(force_data))
 		json_data["data"] = (json_data["data"] || list()) | force_data
-	if(!isnull(force_modules))
+	if(!isnull(force_nested_data))
 		json_data["nested_data"] = (json_data["nested_data"] || list()) | nested_data
 	return json_data
 
