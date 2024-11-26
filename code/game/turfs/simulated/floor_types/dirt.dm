@@ -1,3 +1,4 @@
+CREATE_STANDARD_TURFS(/turf/simulated/floor/outdoors/dirt)
 /turf/simulated/floor/outdoors/dirt
 	name = "dirt"
 	desc = "Quite dirty!"
@@ -6,11 +7,7 @@
 	initial_flooring = /datum/prototype/flooring/outdoors/dirt
 	baseturfs = /turf/baseturf_bottom
 
-CREATE_STANDARD_TURFS(/turf/simulated/floor/outdoors/dirt)
-
-/turf/simulated/floor/outdoors/dirt
-	outdoors = FALSE
-
+CREATE_STANDARD_TURFS(/turf/simulated/floor/outdoors/dirtlight)
 /turf/simulated/floor/outdoors/dirtlight
 	name = "dirt"
 	desc = "Quite dirty!"
@@ -18,5 +15,3 @@ CREATE_STANDARD_TURFS(/turf/simulated/floor/outdoors/dirt)
 	edge_blending_priority = 0
 	initial_flooring = /datum/prototype/flooring/outdoors/dirt
 	baseturfs = /turf/baseturf_bottom
-
-CREATE_STANDARD_TURFS(/turf/simulated/floor/outdoors/dirtlight)

@@ -1,5 +1,6 @@
 /datum/prototype/design/science/hud
 	abstract_type = /datum/prototype/design/science/hud
+	subcategory = DESIGN_SUBCATEGORY_SCANNING
 	materials_base = list(MAT_STEEL = 50, MAT_GLASS = 50)
 
 /datum/prototype/design/science/hud/generate_name(template)

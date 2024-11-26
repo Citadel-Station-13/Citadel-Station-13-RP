@@ -1,4 +1,5 @@
 /datum/prototype/design/science/mining
+	category = DESIGN_CATEGORY_CARGO_MINING
 	abstract_type = /datum/prototype/design/science/mining
 
 /datum/prototype/design/science/mining/generate_name(template)

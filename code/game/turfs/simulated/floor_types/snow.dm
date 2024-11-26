@@ -1,3 +1,4 @@
+CREATE_STANDARD_TURFS(/turf/simulated/floor/outdoors/snow)
 /turf/simulated/floor/outdoors/snow
 	name = "snow"
 	icon_state = "snow"
@@ -12,7 +13,6 @@
 
 	var/crossed_dirs = NONE
 
-CREATE_STANDARD_TURFS(/turf/simulated/floor/outdoors/snow)
 
 /turf/simulated/floor/outdoors/snow/Entered(atom/movable/AM)
 	if(AM.hovering || AM.is_incorporeal()) // Flying things shouldn't make footprints.
@@ -96,3 +96,7 @@ CREATE_STANDARD_TURFS(/turf/simulated/floor/outdoors/shelfice)
 	edge_blending_priority = 0
 	initial_flooring = /datum/prototype/flooring/snow/gravsnow
 	baseturfs = /turf/simulated/floor/outdoors/dirt
+
+/turf/simulated/floor/outdoors/snow/no_tree
+	// tree_chance = 0
+	// deadtree_chance = 0

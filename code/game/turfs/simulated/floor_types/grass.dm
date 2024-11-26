@@ -1,3 +1,4 @@
+CREATE_STANDARD_TURFS(/turf/simulated/floor/outdoors/grass)
 /turf/simulated/floor/outdoors/grass
 	name = "grass"
 	icon_state = "grass"

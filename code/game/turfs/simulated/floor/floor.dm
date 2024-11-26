@@ -1,3 +1,16 @@
+/**
+ * # Floors.
+ *
+ * ## A note on what a floor is and isn't.
+ *
+ * We need to talk about floors. **All simulated turfs are capable of being a floor.
+ * The difference is /turf/simulated/floor simulates the floor part of being a floor,
+ * like changing flooring prototypes/singletons.
+ *
+ * * If you don't need / want this (e.g. for lava), don't use it.
+ * * If are unwilling to handle this cleanly by having **all** behaviors abstracted to
+ *   a flooring prototype/singleton (e.g. lava didn't do this), don't use it.
+ */
 /turf/simulated/floor
 	name = "plating"
 	desc = "Unfinished flooring."
@@ -15,6 +28,7 @@
 	smoothing_flags = SMOOTH_CUSTOM
 	smoothing_groups = (SMOOTH_GROUP_TURF_OPEN + SMOOTH_GROUP_OPEN_FLOOR)
 	canSmoothWith = (SMOOTH_GROUP_TURF_OPEN + SMOOTH_GROUP_OPEN_FLOOR)
+	outdoors = FALSE
 
 	// Damage to flooring.
 	var/broken
@@ -46,7 +60,6 @@
 	/// legacy: override icon state
 	var/flooring_legacy_override_state
 
-CREATE_STANDARD_TURFS(/turf/simulated/floor)
 
 /turf/simulated/floor/Initialize(mapload, floortype)
 	. = ..()

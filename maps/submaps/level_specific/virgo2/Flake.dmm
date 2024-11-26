@@ -13,7 +13,7 @@
 /turf/simulated/floor/outdoors/rocks,
 /area/submap/virgo2/Lake1)
 "h" = (
-/turf/simulated/floor/outdoors/lava,
+/turf/simulated/lava,
 /area/submap/virgo2/Lake1)
 "i" = (
 /turf/simulated/mineral/floor/ignore_mapgen/virgo2,
