@@ -9,6 +9,7 @@
 	id = "communicator"
 	req_tech = list(TECH_DATA = 2, TECH_MAGNET = 2)
 	materials_base = list(MAT_STEEL = 500, MAT_GLASS = 500)
+	category = DESIGN_CATEGORY_TELECOMMUNICATIONS
 	build_path = /obj/item/communicator
 
 /datum/prototype/design/science/general/laserpointer
@@ -17,6 +18,7 @@
 	id = "laser_pointer"
 	req_tech = list(TECH_MAGNET = 3)
 	materials_base = list(MAT_STEEL = 100, MAT_GLASS = 50)
+	category = DESIGN_CATEGORY_RECREATION
 	build_path = /obj/item/laser_pointer
 
 /datum/prototype/design/science/general/translator
@@ -68,11 +70,13 @@
 	id = "bsjumpsuit"
 	req_tech = list(TECH_BLUESPACE = 2, TECH_MATERIAL = 3, TECH_POWER = 2)
 	materials_base = list(MAT_STEEL = 4000, MAT_GLASS = 4000)
+	category = DESIGN_CATEGORY_RECREATION
 	build_path = /obj/item/clothing/under/bluespace
 
 /datum/prototype/design/science/general/sizegun
 	design_name = "Size gun"
 	id = "sizegun"
+	category = DESIGN_CATEGORY_RECREATION
 	req_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 3, TECH_POWER = 2)
 	materials_base = list(MAT_STEEL = 3000, MAT_GLASS = 2000, MAT_URANIUM = 2000)
 	build_path = /obj/item/gun/energy/sizegun
@@ -80,6 +84,8 @@
 /datum/prototype/design/science/general/inducer_sci
 	design_name = "Inducer (Scientific)"
 	id = "inducersci"
+	category = DESIGN_CATEGORY_POWER
+	subcategory = DESIGN_SUBCATEGORY_CHARGING
 	req_tech = list(TECH_BLUESPACE = 4, TECH_MATERIAL = 5, TECH_POWER = 6)
 	materials_base = list(MAT_STEEL = 8000, MAT_GLASS = 2000, MAT_URANIUM = 4000, MAT_PHORON = 4000)
 	build_path = /obj/item/inducer/sci
@@ -87,6 +93,8 @@
 /datum/prototype/design/science/general/inducer_eng
 	design_name = "Inducer (Industrial)"
 	id = "inducerind"
+	category = DESIGN_CATEGORY_POWER
+	subcategory = DESIGN_SUBCATEGORY_CHARGING
 	req_tech = list(TECH_BLUESPACE = 5, TECH_MATERIAL = 7, TECH_POWER = 7)
 	materials_base = list(MAT_STEEL = 9000, MAT_GLASS = 3000, MAT_URANIUM = 5000, MAT_PHORON = 6000, MAT_DIAMOND = 1000) // Cit change until we have more of a need for titanium, MAT_TITANIUM = 2000)
 	build_path = /obj/item/inducer/unloaded
@@ -125,6 +133,7 @@
 	design_name = "Trashbag of Holding"
 	desc = "An advanced trash bag with bluespace properties; capable of holding a plethora of garbage."
 	id = "blutrash"
+	category = DESIGN_CATEGORY_STORAGE
 	req_tech = list(TECH_BLUESPACE = 5, TECH_MATERIAL = 6)
 	materials_base = list(MAT_PLASTIC = 5000, MAT_GOLD = 1500, MAT_URANIUM = 250, MAT_PHORON = 1500)
 	build_path = /obj/item/storage/bag/trash/bluespace
@@ -133,6 +142,7 @@
 	design_name = "Chemistry Synthesis Module"
 	desc = "A reagent synthesis module required for dispenser functionality"
 	id = "ReagentSynth"
+	subcategory = DESIGN_SUBCATEGORY_STATION
 	req_tech = list(TECH_BLUESPACE = 5, TECH_MATERIAL = 6, TECH_BIO = 5)
 	materials_base = list(MAT_STEEL = 4000, MAT_GLASS = 2000, MAT_URANIUM = 500, MAT_GOLD = 500, MAT_SILVER = 500)
 	build_path = /obj/item/reagent_synth/chemistry
@@ -141,6 +151,7 @@
 	design_name = "Size Standardization Bracelet"
 	desc = "A bracelet that changes the size of the wearer to the galactic standard."
 	id = "sizestandardbracelet"
+	category = DESIGN_CATEGORY_RECREATION
 	req_tech = list(TECH_BLUESPACE = 5, TECH_MATERIAL = 3, TECH_BIO = 4)
 	materials_base = list(MAT_STEEL = 1000)
 	build_path = /obj/item/clothing/gloves/size

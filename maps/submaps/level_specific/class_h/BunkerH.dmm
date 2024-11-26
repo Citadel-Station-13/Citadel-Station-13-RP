@@ -374,7 +374,7 @@
 /turf/simulated/floor/tiled,
 /area/class_h/POIs/vault)
 "EP" = (
-/turf/simulated/mineral/ignore_mapgen/classh,
+/turf/simulated/mineral/ignore_mapgen,
 /area/class_h/explored)
 "FA" = (
 /obj/structure/toilet{

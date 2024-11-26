@@ -232,7 +232,7 @@
 // Language handling.
 /mob/proc/add_language(var/language)
 
-	var/datum/prototype/language/new_language = RSlanguages.fetch(language)
+	var/datum/prototype/language/new_language = RSlanguages.fetch(language) || RSlanguages.legacy_resolve_language_name(language)
 
 	if(!istype(new_language) || (new_language in languages))
 		return 0

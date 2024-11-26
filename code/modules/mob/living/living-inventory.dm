@@ -55,13 +55,6 @@
 		SLOT_ID_MASK
 	)
 
-//* Init *//
-
-/mob/living/init_inventory()
-	if(inventory)
-		return
-	inventory = new(src)
-
 //* Carry Weight *//
 
 // don't call this you shouldn't need to
