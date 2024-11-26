@@ -28,14 +28,14 @@
 				CRASH("duplicate create pos [level.struct_create_pos] between [level] ([level.resolve_map_path()]) and [conflicting] ([conflicting.resolve_map_path()])")
 			creating_grid[level.struct_create_pos] = level
 		created_struct = new
-		if(!created_struct.construct(creating_grid, FALSE))
+		if(!created_struct.construct(creating_grid, rebuild = FALSE))
 			CRASH("failed to create struct!")
 	if(overmap_initializer)
 		if(!created_struct)
 			if(length(levels) > 1)
 				CRASH("multi-z map without struct creation but with overmap initializer!")
 			created_struct = new
-			if(!created_struct.construct(list("0,0,0" = levels[1]), FALSE))
+			if(!created_struct.construct(list("0,0,0" = levels[1]), rebuild = FALSE))
 				CRASH("failed to auto-create 1-z default struct")
 		SSovermaps.initialize_entity(overmap_initializer, created_struct)
 

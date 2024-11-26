@@ -174,12 +174,12 @@
  * * z_grid - list of "x,y,z" = /datum/map_level instance
  * * link - automatically link levels together after construction?
  */
-/datum/map_struct/proc/construct(list/z_grid = src.z_grid, link = TRUE)
-	. = do_construct(z_grid, link)
+/datum/map_struct/proc/construct(list/z_grid = src.z_grid, link = TRUE, rebuild = TRUE)
+	. = do_construct(z_grid, link, rebuild)
 	if(!.)
-		deconstruct(unlink = link)
+		deconstruct(link, rebuild)
 
-/datum/map_struct/proc/do_construct(list/z_grid = src.z_grid, link = TRUE)
+/datum/map_struct/proc/do_construct(list/z_grid = src.z_grid, link, rebuild)
 	PRIVATE_PROC(TRUE)
 	// level datums
 	var/list/datum/map_level/levels = list()
@@ -342,7 +342,7 @@
 	src.sparse_size_z = max_z - min_z + 1
 
 	if(link)
-		link_levels()
+		link_levels(rebuild)
 
 	constructed = TRUE
 	SSmapping.active_structs += src
@@ -354,9 +354,9 @@
 /**
  * Completely destroys our state and unbinds levels.
  */
-/datum/map_struct/proc/deconstruct(unlink = TRUE)
+/datum/map_struct/proc/deconstruct(unlink = TRUE, rebuild = TRUE)
 	if(unlink)
-		unlink_levels()
+		unlink_levels(rebuild)
 
 	for(var/datum/map_level/level as anything in levels)
 		level.virtual_alignment_x = 0
