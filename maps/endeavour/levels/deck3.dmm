@@ -27240,17 +27240,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/bar/lower)
-"tIo" = (
-/obj/effect/floor_decal/borderfloorblack{
-	dir = 9
-	},
-/obj/effect/floor_decal/corner/red/border{
-	dir = 9
-	},
-/obj/machinery/disposal,
-/obj/item/barrier_tape_segment/engineering,
-/turf/simulated/floor/tiled/dark,
-/area/security/hallway)
 "tIr" = (
 /obj/machinery/light{
 	dir = 4
@@ -40081,7 +40070,7 @@ osg
 qQz
 wwk
 rcG
-tIo
+tjK
 uGl
 ovb
 dPF

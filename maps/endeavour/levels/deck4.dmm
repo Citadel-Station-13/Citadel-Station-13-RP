@@ -8582,9 +8582,6 @@
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/endeavour/hallway/d4portforhall)
-"kyk" = (
-/turf/simulated/floor/tiled/techmaint,
-/area/endeavour/hallway/d4fwdmaint)
 "kzb" = (
 /obj/machinery/light/small{
 	dir = 1
@@ -11601,7 +11598,6 @@
 	req_one_access = null
 	},
 /obj/map_helper/access_helper/airlock/station/engineering/department,
-/obj/item/barrier_tape_segment/engineering,
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/atmos/eva)
 "nTU" = (
@@ -12336,7 +12332,6 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 1
 	},
-/obj/item/barrier_tape_segment/engineering,
 /turf/simulated/floor/tiled/steel_dirty,
 /area/engineering/atmos/workshop)
 "oVb" = (
@@ -15604,7 +15599,6 @@
 	req_one_access = null
 	},
 /obj/map_helper/access_helper/airlock/station/engineering/department,
-/obj/item/barrier_tape_segment/engineering,
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/atmos/workshop)
 "tKA" = (
@@ -46698,7 +46692,7 @@ jNg
 gPd
 usY
 qBz
-kyk
+dvY
 dvY
 qBz
 lnb
