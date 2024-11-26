@@ -6248,7 +6248,7 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/mothership/rnd)
 "nO" = (
-/obj/item/defib_kit/jumper_kit,
+/obj/item/defib_kit,
 /obj/structure/table/steel_reinforced,
 /obj/item/robotanalyzer,
 /obj/machinery/light,
