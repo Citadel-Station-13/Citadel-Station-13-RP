@@ -15,14 +15,20 @@ REPOSITORY_DEF(flooring)
 	build_material_lookup = list()
 	return ..()
 
-/datum/controller/repository/flooring/load(datum/prototype/instance)
+/datum/controller/repository/flooring/load(datum/prototype/flooring/instance)
 	. = ..()
 	if(!.)
 		return
-	#warn impl - build lookup
+	if(ispath(instance.build_type, /obj/item/stack))
+		LAZYADD(build_item_lookup[instance.build_type], instance)
+	else if(ispath(instance.build_type, /datum/prototype/material))
+		LAZYADD(build_material_lookup[instance.build_type], instance)
 
-/datum/controller/repository/flooring/unload(datum/prototype/instance)
+/datum/controller/repository/flooring/unload(datum/prototype/flooring/instance)
 	. = ..()
 	if(!.)
 		return
-	#warn impl - build lookup
+	if(ispath(instance.build_type, /obj/item/stack))
+		LAZYREMOVE(build_item_lookup[instance.build_type], instance)
+	else if(ispath(instance.build_type, /datum/prototype/material))
+		LAZYREMOVE(build_material_lookup[instance.build_type], instance)

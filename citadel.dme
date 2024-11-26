@@ -2102,6 +2102,7 @@
 #include "code\game\turfs\simulated\flooring\flooring_premade.dm"
 #include "code\game\turfs\simulated\flooring\flooring_traps.dm"
 #include "code\game\turfs\simulated\flooring\flooring_types.dm"
+#include "code\game\turfs\simulated\flooring\types\grass.dm"
 #include "code\game\turfs\simulated\wall\materials.dm"
 #include "code\game\turfs\simulated\wall\rot.dm"
 #include "code\game\turfs\simulated\wall\wall-construction.dm"

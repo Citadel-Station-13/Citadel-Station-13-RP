@@ -23,4 +23,4 @@ CREATE_STANDARD_TURFS(/turf/simulated/floor/preset##TYPE); \
 /datum/prototype/flooring##TYPE { \
 	__is_not_legacy = TRUE; \
 } \
-/datum/prototype_flooring##TYPE
+/datum/prototype/flooring##TYPE
