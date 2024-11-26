@@ -31,9 +31,9 @@
 /datum/overmap_location/New(location, obj/overmap/entity/entity)
 	if(entity)
 		if(entity.location)
-			stack_trace("entity [entity] already had a location")
+			CRASH("entity [entity] already had a location")
 		else
-			src.entity = entity
+			entity.set_location(src)
 	if(location)
 		bind(location)
 

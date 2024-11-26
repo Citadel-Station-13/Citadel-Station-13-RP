@@ -37,7 +37,18 @@
 
 	docking_codes = "[ascii2text(rand(65,90))][ascii2text(rand(65,90))][ascii2text(rand(65,90))][ascii2text(rand(65,90))]"
 
-	var/datum/map_struct/struct = SSmapping.level_
+	//! legacy: make a 1-z sector if we spawned on a level without an entity, and without a struct. !//
+	var/our_z = get_z(src)
+	if(our_z)
+		var/obj/overmap/entity/existing_entity = SSovermaps.get_enclosing_overmap_entity(our_z)
+		if(!existing_entity)
+			var/datum/map_struct/existing_struct = SSmapping.level_get_struct(our_z)
+			if(!existing_struct)
+				var/datum/map_struct/new_struct = new
+				if(!new_struct.construct(list("0,0,0" = SSmapping.ordered_levels[our_z])))
+					CRASH("failed to construct a legacy level's ephemeral struct.")
+				var/datum/overmap_location/struct/new_location = new(new_struct)
+				set_location(new_location)
 
 	// todo: This is shitcode but sue me tbh we gotta refactor this shit anyways to be overmap_initializer's
 	spawn(-1)

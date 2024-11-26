@@ -12,6 +12,7 @@
 		CRASH("location de-assignment not implemented yet")
 
 	src.location = location
+	location.entity = src
 
 	if(!src.location.has_level_locks())
 		src.location.acquire_level_locks()

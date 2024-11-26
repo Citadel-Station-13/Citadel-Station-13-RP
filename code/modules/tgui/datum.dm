@@ -240,7 +240,7 @@
  *
  * optional user the mob currently interacting with the ui
  * optional ui tgui to be updated
- * optional hard_refreshion use if you need to block the ui from showing if the refresh queues
+ * optional hard_refresh use if you need to block the ui from showing if the refresh queues
  */
 /datum/proc/update_static_data(mob/user, datum/tgui/ui, hard_refresh)
 	if(!user)
@@ -261,9 +261,10 @@
  * @params
  * * user - when specified, only pushes this user. else, pushes to all windows.
  * * ui - when specified, only pushes this ui for a given user.
- * * updates - list(id = list(data...), ...) for modules. the reducer on tgui-side will only overwrite provided data keys.
+ * * data - list(id = val, ...) for data. the reducer on tgui-side will only overwrite provided data keys.
+ * * nested_data - list(id = list(data = value,...), ...) for nested data. the reducer on tgui-side will only overwrite provided data keys, per nested id.
  */
-/datum/proc/push_ui_data(mob/user, datum/tgui/ui, list/data)
+/datum/proc/push_ui_data(mob/user, datum/tgui/ui, list/data, list/nested_data)
 	// todo: the way this works is so jank; this should be COMSIG_DATUM_HOOK_UI_PUSH instead?
 	// todo: this is because user, ui, data needs to go to the signal before being auto-resolved, as modules
 	// todo: won't necessarily match the values!
@@ -272,31 +273,13 @@
 	SEND_SIGNAL(src, COMSIG_DATUM_PUSH_UI_DATA, user, ui, data)
 	if(!user)
 		for (var/datum/tgui/window as anything in SStgui.open_uis_by_src[REF(src)])
-			window.push_data(data)
+			window.push_data(data, nested_data)
 		return
 	if(!ui)
 		ui = SStgui.get_open_ui(user, src)
 	if(ui)
 		// todo: this is force because otherwise static data can be desynced. should static data be on another proc instead?
-		ui.push_data(data, TRUE)
-
-/**
- * immediately pushes module updates to user, an ui, or all users
- *
- * @params
- * * user - when specified, only pushes this user. else, pushes to all windows.
- * * ui - when specified, only pushes this ui for a given user.
- * * updates - list(id = list(data...), ...) for modules. the reducer on tgui-side will only overwrite provided data keys.
- */
-/datum/proc/push_ui_modules(mob/user, datum/tgui/ui, list/updates)
-	if(!user)
-		for (var/datum/tgui/window as anything in SStgui.open_uis_by_src[REF(src)])
-			window.push_modules(updates)
-		return
-	if(!ui)
-		ui = SStgui.get_open_ui(user, src)
-	if(ui)
-		ui.push_modules(updates)
+		ui.push_data(data, nested_data, TRUE)
 
 //* Checks *//
 

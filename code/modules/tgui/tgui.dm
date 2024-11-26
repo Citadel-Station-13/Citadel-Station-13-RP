@@ -355,13 +355,13 @@
 			var/id = modules_registered[module]
 			modules[id] = modules[id] | module.ui_data(user, src, TRUE)
 	if(modules)
-		json_data["modules"] = modules
+		json_data["nested_data"] = modules
 	if(src_object.tgui_shared_states)
 		json_data["shared"] = src_object.tgui_shared_states
 	if(!isnull(force_data))
 		json_data["data"] = (json_data["data"] || list()) | force_data
 	if(!isnull(force_modules))
-		json_data["modules"] = (json_data["modules"] || list()) | force_modules
+		json_data["nested_data"] = (json_data["nested_data"] || list()) | force_modules
 	return json_data
 
 /**
@@ -477,17 +477,21 @@
  *
  * WARNING: Do not use this unless you know what you are doing
  *
- * required data The data to send
- * optional force bool Send an update even if UI is not interactive.
+ * @params
+ * * data - The data to send.
+ * * nested_data - Data to send to nested_data.
+ * * force - (optional) Send an update even if UI is not interactive.
  *
  * @return TRUE if data was sent, FALSE otherwise.
  */
-/datum/tgui/proc/push_data(data, force)
+/datum/tgui/proc/push_data(data, nested_data, force)
 	if(!user.client || !initialized || closing)
 		return FALSE
 	if(!force && status < UI_UPDATE)
 		return FALSE
+	// todo: one message
 	window.send_message("data", data)
+	window.send_message("nested_data", nested_data)
 	return TRUE
 
 /**
@@ -506,12 +510,12 @@
  *
  * @return TRUE if data was sent, FALSE otherwise.
  */
-/datum/tgui/proc/push_modules(list/updates, force)
+/datum/tgui/proc/push_nested_data(list/updates, force)
 	if(isnull(user.client) || !initialized || closing)
 		return FALSE
 	if(!force && status < UI_UPDATE)
 		return FALSE
-	window.send_message("modules", updates)
+	window.send_message("nested_data", updates)
 	return TRUE
 
 //* Module System *//
@@ -557,7 +561,7 @@
 	if(!isnull(ui) && ui != src)
 		return
 	// todo: this is force because otherwise static data can be desynced. should static data be on another proc instead?
-	push_modules(
+	push_nested_data(
 		updates = list(
 			(modules_registered[source]) = data,
 		),
