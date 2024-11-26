@@ -40,7 +40,7 @@ DECLARE_POSTER_DESIGN(/nanotrasen/nt_4)
 		POSTER_TAG_NANOTRASEN,
 	)
 
-DECLARE_POSTER_DESIGN(/nanotrasen/nt_5
+DECLARE_POSTER_DESIGN(/nanotrasen/nt_5)
 	id = "Nanotrasen5"
 	icon_state = "ntposter05"
 	name = "Promethean"
@@ -49,7 +49,7 @@ DECLARE_POSTER_DESIGN(/nanotrasen/nt_5
 		POSTER_TAG_NANOTRASEN,
 	)
 
-DECLARE_POSTER_DESIGN(/nanotrasen/nt_6
+DECLARE_POSTER_DESIGN(/nanotrasen/nt_6)
 	id = "Nanotrasen6"
 	icon_state = "ntposter06"
 	name = "Nanotrasen"
@@ -59,7 +59,7 @@ DECLARE_POSTER_DESIGN(/nanotrasen/nt_6
 	)
 
 /* Replace this eventually?
-DECLARE_POSTER_DESIGN(/nanotrasen/nt_7
+DECLARE_POSTER_DESIGN(/nanotrasen/nt_7)
 	id = "Nanotrasen7"
 	icon_state = "ntposter07"
 	name = "SolGov"
@@ -71,7 +71,7 @@ DECLARE_POSTER_DESIGN(/nanotrasen/nt_7
 	)
 */
 
-DECLARE_POSTER_DESIGN(/nanotrasen/nt_8
+DECLARE_POSTER_DESIGN(/nanotrasen/nt_8)
 	id = "Nanotrasen8"
 	icon_state = "ntposter08"
 	name = "wildlife hazard"
@@ -80,7 +80,7 @@ DECLARE_POSTER_DESIGN(/nanotrasen/nt_8
 		POSTER_TAG_NANOTRASEN,
 	)
 
-DECLARE_POSTER_DESIGN(/nanotrasen/nt_9
+DECLARE_POSTER_DESIGN(/nanotrasen/nt_9)
 	id = "Nanotrasen9"
 	icon_state = "ntposter09"
 	name = "Regulations and You"
