@@ -6138,7 +6138,6 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/exploration)
 "atn" = (
-/obj/overmap/entity/visitable/sector/lythios43c,
 /turf/simulated/open/lythios43c,
 /area/rift/surfacebase/outside/outside3)
 "atp" = (

@@ -25,17 +25,21 @@
 
 	//! LEGACY
 	/// the entity name while not scanned
-	var/unknown_name = "unknown sector"
+	// var/unknown_name = "unknown sector"
 	/// the entity icon state when not scanned
-	var/unknown_state = "unknown"
+	// var/unknown_state = "unknown"
 	/// the entity name when scanned
-	var/known_name = "map object"
+	// var/known_name = "map object"
 	/// the entity icon state when scanned
-	var/known_state = "generic"
+	// var/known_state = "generic"
+	/// start known?
+	// var/start_known = TRUE
 	/// can it be scanned?
-	var/scannable = TRUE
+	// var/scannable = TRUE
 	/// description on a scanner printout
-	var/scanner_desc = "<hr><center><h1>No data available.</h1></center><hr>"
+	// var/scanner_desc = "<hr><center><h1>No data available.</h1></center><hr>"
+	/// type to make
+	var/legacy_entity_type = /obj/overmap/entity
 	//! END
 
 	/**
@@ -88,6 +92,6 @@
  * Creates our overmap object
  */
 /datum/overmap_initializer/proc/create_overmap_entity(datum/overmap_location/from_location, turf/initial_placement) as /obj/overmap/entity
-	var/obj/overmap/entity/creating = new(null)
+	var/obj/overmap/entity/creating = new legacy_entity_type(null)
 	creating.location = from_location
 	creating.forceMove(initial_placement)

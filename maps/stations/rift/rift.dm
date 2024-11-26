@@ -30,6 +30,9 @@
 	)
 
 	create_struct = TRUE
+	overmap_initializer = /datum/overmap_initializer/struct{
+		legacy_entity_type = /obj/overmap/entity/visitable/sector/lythios43c;
+	}
 
 	//* LEGACY BELOW *//
 
