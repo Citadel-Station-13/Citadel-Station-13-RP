@@ -14,7 +14,10 @@
 	///
 	/// * this will make it spawn there even if there's a hazard there
 	/// * this will not allow it to overlap another entity.
-	var/manual_position_forced = FALSE
+	/// * this is called strong suggestion because the overmaps backend reserves the right
+	///   to entirely ignore your request if it doesn't make sense or violates overmaps
+	///   generation invariants.
+	var/manual_position_is_strong_suggestion = FALSE
 	/// preferred position x
 	var/manual_position_x
 	/// preferred position y

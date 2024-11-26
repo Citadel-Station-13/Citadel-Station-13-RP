@@ -22,7 +22,8 @@
 
 /datum/overmap_location/shuttle/get_z_indices()
 	. = list()
-	#warn impl
+	for(var/area/A in shuttle.shuttle_area)
+		. |= A.z
 
 /datum/overmap_location/shuttle/get_owned_z_indices()
 	. = list()
