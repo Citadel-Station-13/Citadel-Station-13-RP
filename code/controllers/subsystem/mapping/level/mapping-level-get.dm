@@ -1,29 +1,15 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
+//* ID *//
+
 /**
  * returns the map level id of a zlevel
  */
 /datum/controller/subsystem/mapping/proc/level_get_id(z)
 	return ordered_levels[z]?.id
 
-/**
- * returns the canon/IC-friendly level id of a zlevel
- */
-/datum/controller/subsystem/mapping/proc/level_get_fluff_id(z)
-	return ordered_levels[z]?.display_id
-
-/**
- * returns the map level name of a zlevel
- */
-/datum/controller/subsystem/mapping/proc/level_get_name(z)
-	return ordered_levels[z]?.name
-
-/**
- * returns the canon/IC-friendly level mame of a zlevel
- */
-/datum/controller/subsystem/mapping/proc/level_get_fluff_name(z)
-	return ordered_levels[z]?.display_name
+//* Adjacency *//
 
 /**
  * returns level index in dir of level
@@ -74,3 +60,72 @@
 		if(DOWN)
 			index = cached_level_down[z]
 	return index
+
+//* Air *//
+
+/datum/controller/subsystem/mapping/proc/level_get_indoors_air(z)
+	if(!z)	// nullspace
+		return
+	return ordered_levels[z].air_indoors
+
+/datum/controller/subsystem/mapping/proc/level_get_outdoors_air(z)
+	if(!z)	// nullspace
+		return
+	return ordered_levels[z].air_outdoors
+
+//* Attributes *//
+
+/**
+ * Returns an attribute of a zlevel
+ */
+/datum/controller/subsystem/mapping/proc/level_get_attribute(z, key)
+	var/datum/map_level/L = ordered_levels[z]
+	return L.get_attribute(key)
+
+//* Base Turf / Area *//
+
+/**
+ * Gets baseturf type of a zlevel
+ */
+/datum/controller/subsystem/mapping/proc/level_get_baseturf(z)
+	var/datum/map_level/L = ordered_levels[z]
+	return L.base_turf || world.tu
+/**
+ * Gets basearea type of a zlevel
+ */
+/datum/controller/subsystem/mapping/proc/level_get_basearea(z)
+	var/datum/map_level/L = ordered_levels[z]
+	return L.base_area || world.area
+
+//* Fluff *//
+
+/**
+ * returns the canon/IC-friendly level id of a zlevel
+ */
+/datum/controller/subsystem/mapping/proc/level_get_fluff_id(z)
+	return ordered_levels[z]?.display_id
+
+/**
+ * returns the canon/IC-friendly level mame of a zlevel
+ */
+/datum/controller/subsystem/mapping/proc/level_get_fluff_name(z)
+	return ordered_levels[z]?.display_name
+
+//* Stack *//
+
+/**
+ * Gets the sorted Z stack list of a level - the levels accessible from a single level, in multiz
+ */
+/datum/controller/subsystem/mapping/proc/level_get_stack(z) as /list
+	if(z_stack_dirty)
+		recalculate_z_stack()
+	var/list/L = z_stack_lookup[z]
+	return L.Copy()
+
+//* Struct *//
+
+/**
+ * Gets the sorted Z stack list of a level - the levels accessible from a single level, in multiz
+ */
+/datum/controller/subsystem/mapping/proc/level_get_struct(z) as /datum/map_struct
+	return ordered_levels[z]?.struct

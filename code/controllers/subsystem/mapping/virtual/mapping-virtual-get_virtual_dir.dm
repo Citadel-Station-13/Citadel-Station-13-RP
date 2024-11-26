@@ -18,7 +18,7 @@
 	// B = get_turf(B)
 	// if(A.z == B.z)
 	// 	return get_dir(A, B)
-	// if(!level_virtualization_check(A) || !level_virtualization_check(B))
+	// if(!level_is_virtualized(A) || !level_is_virtualized(B))
 	// 	// last ditch - check stacks
 	// 	var/list/stack = z_stack_lookup
 	// 	var/pos = stack.Find(B.z)

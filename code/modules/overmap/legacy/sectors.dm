@@ -37,6 +37,8 @@
 
 	docking_codes = "[ascii2text(rand(65,90))][ascii2text(rand(65,90))][ascii2text(rand(65,90))][ascii2text(rand(65,90))]"
 
+	var/datum/map_struct/struct = SSmapping.level_
+
 	// todo: This is shitcode but sue me tbh we gotta refactor this shit anyways to be overmap_initializer's
 	spawn(-1)
 		if(!overmap)

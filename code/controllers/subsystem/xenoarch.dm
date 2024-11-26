@@ -28,7 +28,7 @@ SUBSYSTEM_DEF(xenoarch)
 	var/list/faster = list()
 	var/start
 	for(var/i in 1 to world.maxz)
-		faster += !!SSmapping.level_trait(i, ZTRAIT_XENOARCH_EXEMPT)
+		faster += !!SSmapping.level_has_trait(i, ZTRAIT_XENOARCH_EXEMPT)
 
 	var/list/digsites_to_make = list()
 	start = world.timeofday

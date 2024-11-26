@@ -518,7 +518,7 @@
 			//? length check
 			return TRUE
 */
-	return SSmapping.level_trait(z, ZTRAIT_GRAVITY)
+	return SSmapping.level_has_trait(z, ZTRAIT_GRAVITY)
 
 /* // TODO: Implement this. @Zandario
 /turf/proc/update_weather(obj/abstract/weather_system/new_weather, force_update_below = FALSE)

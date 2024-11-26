@@ -3,9 +3,11 @@
 
 /**
  * get all turfs in the zstack up/down from the given turf.
+ *
+ * * This is ordered from bottom to top.
  */
-/datum/controller/subsystem/mapping/proc/get_turfs_within_stack(turf/T) as /list
-	var/list/stack = level_stack_get_ordered(T.z)
+/datum/controller/subsystem/mapping/proc/spatial_get_turf_stack(turf/T) as /list
+	var/list/stack = level_get_stack(T.z)
 	if(isnull(stack))
 		return list(T)
 	. = list()

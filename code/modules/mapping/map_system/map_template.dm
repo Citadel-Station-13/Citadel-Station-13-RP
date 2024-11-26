@@ -35,7 +35,7 @@
 	/// traits to have if loaded as standalone level
 	var/list/level_traits
 	/// attributes to have if loaded as standalone level
-	var/list/level_attributes
+	var/list/level_get_attributes
 	/// id to have if loaded as standalone level
 	var/level_id
 
@@ -107,7 +107,7 @@
 /datum/map_template/proc/unload_cache()
 	parsed = null
 
-/datum/map_template/proc/load_new_z(centered = FALSE, orientation = SOUTH, list/traits = src.level_traits, list/attributes = src.level_attributes)
+/datum/map_template/proc/load_new_z(centered = FALSE, orientation = SOUTH, list/traits = src.level_traits, list/attributes = src.level_get_attributes)
 	. = FALSE
 
 	SSmapping.subsystem_log("Loading template [src] ([type]) on a new z-level...")

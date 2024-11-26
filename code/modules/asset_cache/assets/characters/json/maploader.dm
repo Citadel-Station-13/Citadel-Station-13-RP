@@ -23,10 +23,10 @@
 	.["keyedLevelTraits"] = assembled_traits
 
 	var/list/assembled_attributes = list()
-	for(var/datum/map_level_attribute/map_level_attribute_path as anything in subtypesof(/datum/map_level_attribute))
-		assembled_attributes[initial(map_level_attribute_path.id)] = list(
-			"id" = initial(map_level_attribute_path.id),
-			"desc" = initial(map_level_attribute_path.desc),
-			"allowEdit" = initial(map_level_attribute_path.allow_edit),
+	for(var/datum/map_level_get_attribute/map_level_get_attribute_path as anything in subtypesof(/datum/map_level_get_attribute))
+		assembled_attributes[initial(map_level_get_attribute_path.id)] = list(
+			"id" = initial(map_level_get_attribute_path.id),
+			"desc" = initial(map_level_get_attribute_path.desc),
+			"allowEdit" = initial(map_level_get_attribute_path.allow_edit),
 		)
 	.["keyedLevelAttributes"] = assembled_attributes

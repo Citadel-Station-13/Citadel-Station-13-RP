@@ -672,7 +672,7 @@
 	if(!check_flag(MODEFLAG_MULTIZ))
 		return list(T)
 
-	return SSmapping.get_turfs_within_stack(T)
+	return SSmapping.spatial_get_turf_stack(T)
 
 // Starts fully charged
 /obj/machinery/power/shield_generator/charged/Initialize(mapload)
