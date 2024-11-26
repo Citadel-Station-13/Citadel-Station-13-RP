@@ -175,6 +175,12 @@
  * * link - automatically link levels together after construction?
  */
 /datum/map_struct/proc/construct(list/z_grid = src.z_grid, link = TRUE)
+	. = do_construct(z_grid, link)
+	if(!.)
+		deconstruct(unlink = link)
+
+/datum/map_struct/proc/do_construct(list/z_grid = src.z_grid, link = TRUE)
+	PRIVATE_PROC(TRUE)
 	// level datums
 	var/list/datum/map_level/levels = list()
 	// real z-indices
@@ -239,6 +245,9 @@
 		resolved.struct_x = x
 		resolved.struct_y = y
 		resolved.struct_z = z
+
+		// reference us
+		resolved.struct = src
 
 		// resolve x_y_stacks and z_planes
 		var/list/datum/map_level/x_y_stack = x_y_stacks["[x],[y]"]
