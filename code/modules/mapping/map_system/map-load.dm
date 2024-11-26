@@ -23,7 +23,7 @@
 				CRASH("no struct create pos on [level] ([level.resolve_map_path()])")
 			if(creating_grid[level.struct_create_pos])
 				var/datum/map_level/conflicting = creating_grid[level.struct_create_pos]
-				CRASH("duplicate create pos [level.struct_create_pos] between [level] ([level.resolve_map_path]) and [conflicting][ ([conflicting.resolve_map_path()])]")
+				CRASH("duplicate create pos [level.struct_create_pos] between [level] ([level.resolve_map_path()]) and [conflicting][ ([conflicting.resolve_map_path()])]")
 			creating_grid[level.struct_create_pos] = level
 		created_struct = new
 		if(!created_struct.construct(creating_grid, FALSE))

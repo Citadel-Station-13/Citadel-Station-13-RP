@@ -59,5 +59,5 @@ VV_PROTECT_READONLY(/datum/admin_modal)
  */
 /datum/admin_modal/proc/loud_rejection(message)
 	// todo: make this fancier
-	to_chat(SPAN_BOLDANNOUNCE(owner.owner, "[name]: [message]"))
+	to_chat(owner.owner, SPAN_BOLDANNOUNCE("[name]: [message]"))
 

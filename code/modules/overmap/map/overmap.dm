@@ -105,4 +105,12 @@
 /datum/overmap/proc/query_closest_reasonable_open_space(turf/where, i_insist) as /turf
 	if(where.z != reservation.bottom_left_coords[3])
 		return null
-	#warn impl
+	if(query_is_reasonable_open_space(where))
+		return where
+	var/max_radius = 5
+	// todo: spiral_range_turfs_invoking or something to break immediately
+	var/list/turf/returned = spiral_range_turfs(max_radius, where, TRUE)
+	return length(returned) ? pick(Returned) : where
+
+/datum/overmap/proc/query_is_reasonable_open_space(turf/where, i_insist)
+	return i_insist ? !(locate(/obj/overmap/entity) in where) : !(locate(/obj/overmap) in where)

@@ -357,7 +357,7 @@
  * get .dmm path or file
  */
 /datum/map_level/proc/resolve_map_path()
-	return absolute_path
+	return path
 
 /**
  * allow deallocation/unload

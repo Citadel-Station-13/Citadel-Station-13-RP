@@ -91,5 +91,3 @@
 	var/obj/overmap/entity/creating = new(null)
 	creating.location = from_location
 	creating.forceMove(initial_placement)
-
-#warn impl
