@@ -12,15 +12,15 @@
  * * `mz_flags` is automatically set on the turf.
  */
 #define DECLARE_FLOORING(TYPE) \
-CREATE_STANDARD_TURFS(/turf/simulated/floor/preset/##TYPE); \
-/turf/simulated/floor/preset/##TYPE { \
-	initial_flooring = /datum/prototype/flooring/##TYPE; \
-	name = /datum/prototype/flooring/##TYPE::name; \
-	icon = /datum/prototype/flooring/##TYPE::icon; \
-	icon_base = /datum/prototype/flooring/##TYPE::icon_base; \
-	mz_flags = /datum/prototype/flooring/##TYPE::mz_flags; \
+CREATE_STANDARD_TURFS(/turf/simulated/floor/preset##TYPE); \
+/turf/simulated/floor/preset##TYPE { \
+	initial_flooring = /datum/prototype/flooring##TYPE; \
+	name = /datum/prototype/flooring##TYPE::name; \
+	icon = /datum/prototype/flooring##TYPE::icon; \
+	icon_base = /datum/prototype/flooring##TYPE::icon_base; \
+	mz_flags = /datum/prototype/flooring##TYPE::mz_flags; \
 }; \
-/datum/prototype/flooring/##TYPE { \
+/datum/prototype/flooring##TYPE { \
 	__is_not_legacy = TRUE; \
 } \
-/datum/prototype_flooring/##TYPE
+/datum/prototype_flooring##TYPE

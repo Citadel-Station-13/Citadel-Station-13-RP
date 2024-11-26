@@ -153,7 +153,7 @@
 		if(!init || !instance.__is_not_legacy)
 			name = instance.name
 			icon = instance.icon
-			icon_state = instance.icon_state
+			icon_state = instance.icon_base
 		new_mz_flags = instance.mz_flags
 	else
 		name = /turf/simulated/floor::name
@@ -175,7 +175,7 @@
 	#warn below
 	make_plating(null, TRUE, TRUE)
 
-	footstep_sounds = newflooring.footstep_sounds
+	footstep_sounds = instance.footstep_sounds
 	// We are plating switching to flooring, swap out old_decals for decals
 	var/list/overfloor_decals = old_decals
 	old_decals = decals

@@ -12,8 +12,7 @@
 	damage_temperature = T0C+1400
 	flooring_flags = TURF_HAS_EDGES | TURF_HAS_CORNERS | TURF_REMOVE_CROWBAR | TURF_CAN_BREAK
 	build_type = /obj/item/stack/tile/floor/eris
-
-	plating_type = /datum/prototype/flooring/eris_plating/under
+	base_flooring = /datum/prototype/flooring/eris_plating/under
 
 	floor_smooth = SMOOTH_WHITELIST
 	flooring_whitelist = list(
@@ -896,10 +895,8 @@ CREATE_STANDARD_TURFS(/turf/simulated/floor/outdoors/grass/heavy)
 	flooring_flags = TURF_REMOVE_WRENCH | TURF_HAS_CORNERS | TURF_HAS_EDGES | TURF_CAN_BURN | TURF_CAN_BREAK
 	has_base_range = 18
 	is_plating = TRUE
-
 	build_type = null
-
-	plating_type = /datum/prototype/flooring/eris_plating/under
+	base_flooring = /datum/prototype/flooring/eris_plating/under
 
 	/*
 	footstep_sound = "plating"
@@ -933,13 +930,12 @@ CREATE_STANDARD_TURFS(/turf/simulated/floor/outdoors/grass/heavy)
 	flooring_flags = TURF_HAS_CORNERS | TURF_HAS_EDGES | TURF_CAN_BURN | TURF_CAN_BREAK | TURF_REMOVE_SCREWDRIVER
 	has_base_range = 0
 	is_plating = TRUE
+	base_flooring = null
 
 	floor_smooth = SMOOTH_WHITELIST
 	flooring_whitelist = list(
 		/datum/prototype/flooring/tiling/eris
 	)
-
-	plating_type = null
 
 	//build_type = /obj/item/stack/material/underplating
 
