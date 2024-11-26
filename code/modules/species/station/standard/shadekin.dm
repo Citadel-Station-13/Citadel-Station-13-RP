@@ -1,4 +1,4 @@
-/datum/species/crew_shadekin
+/datum/species/shadekin/black_eyed
 	uid = SPECIES_ID_SHADEKIN_BLACK
 	id = SPECIES_ID_SHADEKIN_BLACK
 	name = SPECIES_SHADEKIN_CREW

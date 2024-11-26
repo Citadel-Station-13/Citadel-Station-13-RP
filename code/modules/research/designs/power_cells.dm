@@ -1,5 +1,6 @@
 /datum/prototype/design/science/powercell
 	abstract_type = /datum/prototype/design/science/powercell
+	category = DESIGN_CATEGORY_POWER
 	lathe_type = LATHE_TYPE_PROTOLATHE | LATHE_TYPE_MECHA
 
 /datum/prototype/design/science/powercell/generate_name(template)

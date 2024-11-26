@@ -88,14 +88,14 @@
 	overlays.len = 0
 	var/center_thickness = (width - (VOLUMETRIC_STORAGE_BOX_BORDER_SIZE * 2))
 	var/shift_from_center = -((WORLD_ICON_SIZE * 0.5) - VOLUMETRIC_STORAGE_BOX_BORDER_SIZE) + (center_thickness * 0.5)
-	var/image/left = image(icon, "stored_left", HUD_LAYER_STORAGE, null, -shift_from_center)
+	var/image/left = image(icon, "stored_left", HUD_LAYER_STORAGE_ITEM_BOUNDING, null, -shift_from_center)
 	left.plane = HUD_PLANE
-	var/image/right = image(icon, "stored_right", HUD_LAYER_STORAGE, null, shift_from_center)
+	var/image/right = image(icon, "stored_right", HUD_LAYER_STORAGE_ITEM_BOUNDING, null, shift_from_center)
 	right.plane = HUD_PLANE
-	var/image/middle = image(icon, "stored_middle", HUD_LAYER_STORAGE)
+	var/image/middle = image(icon, "stored_middle", HUD_LAYER_STORAGE_ITEM_BOUNDING)
 	middle.plane = HUD_PLANE
 	middle.transform = matrix(center_thickness / VOLUMETRIC_STORAGE_BOX_ICON_SIZE, 0, 0, 0, 1, 0)
-	underlays = list(left, middle, right)
+	overlays = list(left, middle, right)
 
 /atom/movable/screen/storage/panel/volumetric
 

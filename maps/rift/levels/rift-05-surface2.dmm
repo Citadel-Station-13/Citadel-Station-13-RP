@@ -6069,7 +6069,7 @@
 	dir = 4;
 	pixel_x = 22
 	},
-/obj/item/defib_kit/jumper_kit/loaded,
+/obj/item/defib_kit/loaded,
 /obj/item/storage/box/masks,
 /obj/item/storage/box/gloves{
 	pixel_x = 2;
@@ -25645,7 +25645,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/research/rnd)
 "pTn" = (
-/turf/unsimulated/wall/planetary/lythios43c{
+/turf/unsimulated/wall/planetary/permafrost{
 	desc = "Glacial permafrost, compacted harder than stone.";
 	icon_state = "icerock-dark"
 	},

@@ -10616,7 +10616,7 @@
 /obj/machinery/light/no_nightshift{
 	dir = 1
 	},
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/endeavour/hallway/d1fwdmaint)
 "ipW" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
@@ -11778,7 +11778,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 6
 	},
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/endeavour/hallway/d1fwdmaint)
 "jmB" = (
 /obj/machinery/holopad,
@@ -11972,7 +11972,7 @@
 /obj/item/duct_tape_roll,
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/mauve/border,
-/obj/item/defib_kit/jumper_kit,
+/obj/item/defib_kit,
 /obj/item/radio/intercom{
 	pixel_y = -24
 	},
@@ -25931,7 +25931,7 @@
 	dir = 10
 	},
 /obj/structure/flora/ausbushes/ppflowers,
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/endeavour/hallway/d1fwdmaint)
 "uOR" = (
 /obj/effect/floor_decal/steeldecal/steel_decals9,

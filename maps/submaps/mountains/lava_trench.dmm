@@ -69,17 +69,17 @@
 /obj/structure/cliff/automatic{
 	dir = 9
 	},
-/turf/simulated/floor/outdoors/lava,
+/turf/simulated/lava,
 /area/submap/lava_trench)
 "ao" = (
 /obj/structure/cliff/automatic,
-/turf/simulated/floor/outdoors/lava,
+/turf/simulated/lava,
 /area/submap/lava_trench)
 "ap" = (
 /obj/structure/cliff/automatic{
 	dir = 5
 	},
-/turf/simulated/floor/outdoors/lava,
+/turf/simulated/lava,
 /area/submap/lava_trench)
 "aq" = (
 /obj/structure/sign/warning/lava,
@@ -99,14 +99,14 @@
 /obj/structure/cliff/automatic/corner{
 	dir = 9
 	},
-/turf/simulated/floor/outdoors/lava,
+/turf/simulated/lava,
 /area/submap/lava_trench)
 "au" = (
-/turf/simulated/floor/outdoors/lava,
+/turf/simulated/lava,
 /area/submap/lava_trench)
 "av" = (
 /obj/structure/cliff/automatic/corner,
-/turf/simulated/floor/outdoors/lava,
+/turf/simulated/lava,
 /area/submap/lava_trench)
 "aw" = (
 /obj/structure/railing{
@@ -134,7 +134,7 @@
 /obj/structure/cliff/automatic{
 	dir = 8
 	},
-/turf/simulated/floor/outdoors/lava,
+/turf/simulated/lava,
 /area/submap/lava_trench)
 "aB" = (
 /turf/simulated/mineral/floor/ignore_mapgen,
@@ -144,37 +144,37 @@
 /obj/structure/railing{
 	dir = 4
 	},
-/turf/simulated/floor/outdoors/lava,
+/turf/simulated/lava,
 /area/submap/lava_trench)
 "aE" = (
 /obj/structure/cliff/automatic,
 /obj/structure/railing{
 	dir = 8
 	},
-/turf/simulated/floor/outdoors/lava,
+/turf/simulated/lava,
 /area/submap/lava_trench)
 "aF" = (
 /obj/structure/cliff/automatic{
 	dir = 10
 	},
-/turf/simulated/floor/outdoors/lava,
+/turf/simulated/lava,
 /area/submap/lava_trench)
 "aG" = (
 /obj/structure/cliff/automatic/corner{
 	dir = 10
 	},
-/turf/simulated/floor/outdoors/lava,
+/turf/simulated/lava,
 /area/submap/lava_trench)
 "aH" = (
 /obj/structure/railing{
 	dir = 4
 	},
 /obj/effect/step_trigger/teleporter/offset/east,
-/turf/simulated/floor/outdoors/lava,
+/turf/simulated/lava,
 /area/submap/lava_trench)
 "aI" = (
 /obj/structure/catwalk,
-/turf/simulated/floor/outdoors/lava,
+/turf/simulated/lava,
 /area/submap/lava_trench)
 "aJ" = (
 /obj/structure/ore_box,
@@ -185,7 +185,7 @@
 	dir = 8
 	},
 /obj/effect/step_trigger/teleporter/offset/west,
-/turf/simulated/floor/outdoors/lava,
+/turf/simulated/lava,
 /area/submap/lava_trench)
 "aL" = (
 /obj/structure/cliff/automatic{
@@ -237,7 +237,7 @@
 /obj/structure/cliff/automatic{
 	dir = 2
 	},
-/turf/simulated/floor/outdoors/lava,
+/turf/simulated/lava,
 /area/submap/lava_trench)
 "aV" = (
 /obj/structure/cliff/automatic{
@@ -255,7 +255,7 @@
 /obj/structure/cliff/automatic/corner{
 	dir = 6
 	},
-/turf/simulated/floor/outdoors/lava,
+/turf/simulated/lava,
 /area/submap/lava_trench)
 "aY" = (
 /obj/structure/cliff/automatic{
@@ -264,7 +264,7 @@
 /obj/structure/railing{
 	dir = 4
 	},
-/turf/simulated/floor/outdoors/lava,
+/turf/simulated/lava,
 /area/submap/lava_trench)
 "aZ" = (
 /obj/structure/cliff/automatic{
@@ -273,7 +273,7 @@
 /obj/structure/railing{
 	dir = 8
 	},
-/turf/simulated/floor/outdoors/lava,
+/turf/simulated/lava,
 /area/submap/lava_trench)
 "ba" = (
 /obj/machinery/crystal/lava,
@@ -283,13 +283,13 @@
 /obj/structure/cliff/automatic{
 	dir = 4
 	},
-/turf/simulated/floor/outdoors/lava,
+/turf/simulated/lava,
 /area/submap/lava_trench)
 "bc" = (
 /obj/structure/cliff/automatic{
 	dir = 6
 	},
-/turf/simulated/floor/outdoors/lava,
+/turf/simulated/lava,
 /area/submap/lava_trench)
 "bd" = (
 /obj/structure/table/steel,
@@ -312,26 +312,26 @@
 	dir = 10
 	},
 /obj/structure/railing,
-/turf/simulated/floor/outdoors/lava,
+/turf/simulated/lava,
 /area/submap/lava_trench)
 "bh" = (
 /obj/structure/cliff/automatic/corner{
 	dir = 10
 	},
 /obj/structure/railing,
-/turf/simulated/floor/outdoors/lava,
+/turf/simulated/lava,
 /area/submap/lava_trench)
 "bi" = (
 /obj/structure/railing,
 /obj/effect/step_trigger/teleporter/offset/south,
-/turf/simulated/floor/outdoors/lava,
+/turf/simulated/lava,
 /area/submap/lava_trench)
 "bj" = (
 /obj/structure/cliff/automatic{
 	dir = 4
 	},
 /obj/structure/railing,
-/turf/simulated/floor/outdoors/lava,
+/turf/simulated/lava,
 /area/submap/lava_trench)
 "bk" = (
 /obj/structure/catwalk,
@@ -341,7 +341,7 @@
 "bl" = (
 /obj/structure/catwalk,
 /obj/structure/railing,
-/turf/simulated/floor/outdoors/lava,
+/turf/simulated/lava,
 /area/submap/lava_trench)
 "bm" = (
 /obj/structure/fence/door/opened{
@@ -454,7 +454,7 @@
 /area/submap/lava_trench/outpost)
 "bD" = (
 /obj/effect/step_trigger/teleporter/offset/north,
-/turf/simulated/floor/outdoors/lava,
+/turf/simulated/lava,
 /area/submap/lava_trench)
 "bE" = (
 /obj/machinery/crystal/lava,

@@ -5,7 +5,7 @@
 	name = "hull shield generator"
 	var/global/list/blockedturfs =  list(
 		/turf/space,
-		/turf/simulated/sky,
+		/turf/simulated/fake_sky,
 	)		//For Future additions to exterior tiles, add them on this list.
 
 /obj/machinery/shield_gen/external/advanced

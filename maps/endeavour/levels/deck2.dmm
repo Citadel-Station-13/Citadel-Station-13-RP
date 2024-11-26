@@ -24300,7 +24300,7 @@
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d1starboardamidhall)
 "pMA" = (
-/obj/item/defib_kit/jumper_kit,
+/obj/item/defib_kit,
 /obj/machinery/newscaster{
 	pixel_y = 32
 	},

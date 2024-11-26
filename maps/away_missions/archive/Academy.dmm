@@ -235,7 +235,7 @@
 /turf/simulated/floor/carpet,
 /area/awaymission/academy/headmaster)
 "aQ" = (
-/turf/simulated/mineral/triumph,
+/turf/simulated/mineral,
 /area/awaymission/academy)
 "aR" = (
 /obj/structure/noticeboard,

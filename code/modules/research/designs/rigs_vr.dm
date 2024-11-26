@@ -1,5 +1,6 @@
 /datum/prototype/design/science/hardsuit_module
 	abstract_type = /datum/prototype/design/science/hardsuit_module
+	category = DESIGN_CATEGORY_HARDSUIT
 	req_tech = list(TECH_MATERIAL = 5, TECH_POWER = 5, TECH_MAGNET = 5)
 	materials_base = list(MAT_STEEL = 6000, MAT_GLASS = 6000, MAT_SILVER = 4000, MAT_URANIUM = 2000)
 
