@@ -260,19 +260,20 @@
 		tim_sort(stack, /proc/cmp_map_level_struct_z)
 
 	// calculate and sort elevations
+	// elevation_tuples = list[z] = elev
 	var/list/elevation_tuples = list()
 	for(var/i in 1 to length(z_planes))
 		var/z_str = z_planes[i]
 		var/list/datum/map_level/z_plane = z_planes[z_str]
-		elevation_tuples["[z_plane[1].ceiling_height || ceiling_height_default]"] = text2num(z_str)
-	tim_sort(elevation_tuples, /proc/cmp_numeric_asc, TRUE)
+		elevation_tuples["[z_str]"] = z_plane[1].ceiling_height || ceiling_height_default
+	tim_sort(elevation_tuples, /proc/cmp_numeric_text_asc, TRUE)
 	// unpack elevations
 	var/list/elevation_tuple_z = list()
 	var/list/elevation_tuple_height = list()
-	for(var/height_str in elevation_tuples)
-		var/z = elevation_tuples[height_str]
-		elevation_tuple_z += z
-		elevation_tuple_height += text2num(height_str)
+	for(var/z_str in elevation_tuples)
+		var/height = elevation_tuples[z_str]
+		elevation_tuple_z += text2num(z_str)
+		elevation_tuple_height += height
 
 	// set level data
 	for(var/datum/map_level/level as anything in levels)
