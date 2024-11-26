@@ -89,7 +89,7 @@
 	if(isnull(actually_picked_up))
 		to_chat(user, SPAN_WARNING("[src] somehow slips through your grasp. What just happened?"))
 		return
-	if(!user.put_in_hands(actually_picked_up, user.active_hand))
+	if(!user.put_in_hands(actually_picked_up, INV_OP_NO_MERGE_STACKS, user.active_hand))
 		if(has_to_drop_to_ground_on_fail)
 			actually_picked_up.forceMove(user.drop_location())
 		return
