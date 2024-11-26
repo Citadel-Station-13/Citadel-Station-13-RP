@@ -162,7 +162,7 @@ SUBSYSTEM_DEF(overmaps)
 		target = (get_turf(target))?:z
 	if(!target)
 		return
-	return location_enclosed_levels[target].entity
+	return location_enclosed_levels[target]?.entity
 
 /**
  * Gets entity the atom is physically on.
