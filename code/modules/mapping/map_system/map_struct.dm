@@ -62,7 +62,7 @@
 
 	//* Internal *//
 	/// Regex used to parse grid lists for `x,y,z` coord's
-	var/static/regex/grid_parser = new(@"([\d]+),([\d)]+),([\d]+)", "g")
+	var/static/regex/grid_parser = new(@"(-?[\d]+),(-?[\d)]+),(-?[\d]+)", "g")
 
 	//* Bindings - Overmaps *//
 	/// the overmap location that is binding to us

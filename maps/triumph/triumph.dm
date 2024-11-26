@@ -26,6 +26,7 @@
 		/datum/map/sector/miaphus,
 		/datum/map/sector/roguemining_192/one,
 	)
+	create_struct = TRUE
 
 	//* LEGACY BELOW *//
 
@@ -142,7 +143,7 @@
 		ZTRAIT_FACILITY_SAFETY,
 	)
 	base_turf = /turf/space
-	link_above = /datum/map_level/triumph/ship/deck_two
+	struct_create_pos = "0,0,0"
 	flags = LEGACY_LEVEL_STATION|LEGACY_LEVEL_CONTACT|LEGACY_LEVEL_PLAYER|LEGACY_LEVEL_CONSOLES
 
 /datum/map_level/triumph/ship/deck_two
@@ -157,8 +158,7 @@
 		ZTRAIT_LEGACY_BELTER_DOCK,
 	)
 	base_turf = /turf/simulated/open
-	link_above = /datum/map_level/triumph/ship/deck_three
-	link_below = /datum/map_level/triumph/ship/deck_one
+	struct_create_pos = "0,0,1"
 	flags = LEGACY_LEVEL_STATION|LEGACY_LEVEL_CONTACT|LEGACY_LEVEL_PLAYER|LEGACY_LEVEL_CONSOLES
 
 /datum/map_level/triumph/ship/deck_three
@@ -172,8 +172,7 @@
 		ZTRAIT_FACILITY_SAFETY,
 	)
 	base_turf = /turf/simulated/open
-	link_above = /datum/map_level/triumph/ship/deck_four
-	link_below = /datum/map_level/triumph/ship/deck_two
+	struct_create_pos = "0,0,2"
 	flags = LEGACY_LEVEL_STATION|LEGACY_LEVEL_CONTACT|LEGACY_LEVEL_PLAYER|LEGACY_LEVEL_CONSOLES
 
 /datum/map_level/triumph/ship/deck_four
@@ -187,7 +186,7 @@
 		ZTRAIT_FACILITY_SAFETY,
 	)
 	base_turf = /turf/simulated/open
-	link_below = /datum/map_level/triumph/ship/deck_three
+	struct_create_pos = "0,0,5"
 	flags = LEGACY_LEVEL_STATION|LEGACY_LEVEL_CONTACT|LEGACY_LEVEL_PLAYER|LEGACY_LEVEL_CONSOLES
 
 /datum/map_level/triumph/flagship

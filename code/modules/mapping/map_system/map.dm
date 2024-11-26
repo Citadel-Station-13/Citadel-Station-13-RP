@@ -36,7 +36,7 @@
 
 	//* Structs *//
 	/// automatically make a struct on load
-	var/create_struct = TRUE
+	var/create_struct = FALSE
 
 	/// override map id for persistence so two maps are considered the same
 	/// two maps should **never** be loaded at the same time with the same persistence ID!

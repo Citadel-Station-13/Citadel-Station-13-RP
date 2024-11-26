@@ -20,7 +20,9 @@
 		var/list/creating_grid = list()
 		for(var/datum/map_level/level as anything in levels)
 			if(!level.struct_create_pos)
-				CRASH("no struct create pos on [level] ([level.resolve_map_path()])")
+				continue
+				// todo: do not put levels if they shouldn't be in the struct, use dependencies/lateload!
+				// CRASH("no struct create pos on [level] ([level.resolve_map_path()])")
 			if(creating_grid[level.struct_create_pos])
 				var/datum/map_level/conflicting = creating_grid[level.struct_create_pos]
 				CRASH("duplicate create pos [level.struct_create_pos] between [level] ([level.resolve_map_path()]) and [conflicting] ([conflicting.resolve_map_path()])")

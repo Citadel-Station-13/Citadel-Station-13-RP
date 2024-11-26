@@ -29,6 +29,8 @@
 		/datum/map/sector/roguemining_192/one,
 	)
 
+	create_struct = TRUE
+
 	//* LEGACY BELOW *//
 
 	legacy_assert_shuttle_datums = list(
@@ -183,11 +185,10 @@
 		ZTRAIT_FACILITY_SAFETY,
 		ZTRAIT_GRAVITY,
 	)
+	struct_create_pos = "0,0,-3"
 	base_turf = /turf/simulated/floor/outdoors/safeice/lythios43c
 	flags = LEGACY_LEVEL_CONTACT|LEGACY_LEVEL_PLAYER|LEGACY_LEVEL_CONSOLES
 	planet_path = /datum/planet/lythios43c
-	link_above = /datum/map_level/rift/station/underground_deep
-	link_west = /datum/map_level/rift/base
 
 /datum/map_level/rift/station/underground_floor/on_loaded_immediate(z_index, list/datum/callback/additional_generation)
 	. = ..()
@@ -205,12 +206,10 @@
 		ZTRAIT_GRAVITY,
 		ZTRAIT_LEGACY_HOLOMAP_SMOOSH,
 	)
+	struct_create_pos = "0,0,-2"
 	base_turf = /turf/simulated/floor/outdoors/safeice/lythios43c
 	flags = LEGACY_LEVEL_STATION|LEGACY_LEVEL_CONTACT|LEGACY_LEVEL_PLAYER|LEGACY_LEVEL_CONSOLES
 	planet_path = /datum/planet/lythios43c
-	link_below = /datum/map_level/rift/station/underground_floor
-	link_above = /datum/map_level/rift/station/underground_shallow
-	link_west = /datum/map_level/rift/deep
 
 /datum/map_level/rift/station/underground_deep/on_loaded_immediate(z_index, list/datum/callback/additional_generation)
 	. = ..()
@@ -228,12 +227,10 @@
 		ZTRAIT_GRAVITY,
 		ZTRAIT_LEGACY_HOLOMAP_SMOOSH,
 	)
+	struct_create_pos = "0,0,-1"
 	base_turf = /turf/simulated/open
 	flags = LEGACY_LEVEL_STATION|LEGACY_LEVEL_CONTACT|LEGACY_LEVEL_PLAYER|LEGACY_LEVEL_CONSOLES
 	planet_path = /datum/planet/lythios43c
-	link_below = /datum/map_level/rift/station/underground_deep
-	link_above = /datum/map_level/rift/station/surface_low
-	link_west = /datum/map_level/rift/caves
 
 /datum/map_level/rift/station/underground_shallow/on_loaded_immediate(z_index, list/datum/callback/additional_generation)
 	. = ..()
@@ -251,12 +248,10 @@
 		ZTRAIT_GRAVITY,
 		ZTRAIT_LEGACY_HOLOMAP_SMOOSH,
 	)
+	struct_create_pos = "0,0,0"
 	base_turf = /turf/simulated/open
 	flags = LEGACY_LEVEL_STATION|LEGACY_LEVEL_CONTACT|LEGACY_LEVEL_PLAYER|LEGACY_LEVEL_CONSOLES
 	planet_path = /datum/planet/lythios43c
-	link_below = /datum/map_level/rift/station/underground_shallow
-	link_above = /datum/map_level/rift/station/surface_mid
-	link_west = /datum/map_level/rift/plains
 
 /datum/map_level/rift/station/surface_low/on_loaded_immediate(z_index, list/datum/callback/additional_generation)
 	. = ..()
@@ -274,11 +269,10 @@
 		ZTRAIT_GRAVITY,
 		ZTRAIT_LEGACY_HOLOMAP_SMOOSH,
 	)
+	struct_create_pos = "0,0,1"
 	base_turf = /turf/simulated/open
 	flags = LEGACY_LEVEL_STATION|LEGACY_LEVEL_CONTACT|LEGACY_LEVEL_PLAYER|LEGACY_LEVEL_CONSOLES
 	planet_path = /datum/planet/lythios43c
-	link_below = /datum/map_level/rift/station/surface_low
-	link_above = /datum/map_level/rift/station/surface_high
 
 /datum/map_level/rift/station/surface_mid/on_loaded_immediate(z_index, list/datum/callback/additional_generation)
 	. = ..()
@@ -296,10 +290,10 @@
 		ZTRAIT_GRAVITY,
 		ZTRAIT_LEGACY_HOLOMAP_SMOOSH,
 	)
+	struct_create_pos = "0,0,2"
 	base_turf = /turf/simulated/open
 	flags = LEGACY_LEVEL_STATION|LEGACY_LEVEL_CONTACT|LEGACY_LEVEL_PLAYER|LEGACY_LEVEL_CONSOLES
 	planet_path = /datum/planet/lythios43c
-	link_below = /datum/map_level/rift/station/surface_mid
 
 /datum/map_level/rift/station/surface_high/on_loaded_immediate(z_index, list/datum/callback/additional_generation)
 	. = ..()
@@ -315,11 +309,10 @@
 		ZTRAIT_STATION,
 		ZTRAIT_GRAVITY,
 	)
+	struct_create_pos = "-1,0,-3"
 	base_turf = /turf/simulated/floor/outdoors/icesand/lythios43c/indoor
 	flags = LEGACY_LEVEL_STATION|LEGACY_LEVEL_CONTACT|LEGACY_LEVEL_PLAYER
 	planet_path = /datum/planet/lythios43c
-	link_above = /datum/map_level/rift/deep
-	link_east = /datum/map_level/rift/station/underground_floor
 
 /datum/map_level/rift/base/on_loaded_immediate(z_index, list/datum/callback/additional_generation)
 	. = ..()
@@ -346,12 +339,10 @@
 		ZTRAIT_GRAVITY,
 		ZTRAIT_LEGACY_BELTER_DOCK,
 	)
+	struct_create_pos = "-1,0,-2"
 	base_turf = /turf/simulated/floor/outdoors/icesand/lythios43c/indoor
 	flags = LEGACY_LEVEL_STATION|LEGACY_LEVEL_PLAYER
 	planet_path = /datum/planet/lythios43c
-	link_below = /datum/map_level/rift/base
-	link_above = /datum/map_level/rift/caves
-	link_east = /datum/map_level/rift/station/underground_deep
 
 /datum/map_level/rift/deep/on_loaded_immediate(z_index, list/datum/callback/additional_generation)
 	. = ..()
@@ -377,12 +368,10 @@
 		ZTRAIT_STATION,
 		ZTRAIT_GRAVITY,
 	)
+	struct_create_pos = "-1,0,-1"
 	base_turf = /turf/simulated/floor/outdoors/icesand/lythios43c/indoor
 	flags = LEGACY_LEVEL_STATION|LEGACY_LEVEL_PLAYER
 	planet_path = /datum/planet/lythios43c
-	link_below = /datum/map_level/rift/deep
-	link_above = /datum/map_level/rift/plains
-	link_east = /datum/map_level/rift/station/underground_shallow
 
 /datum/map_level/rift/caves/on_loaded_immediate(z_index, list/datum/callback/additional_generation)
 	. = ..()
@@ -404,11 +393,10 @@
 	display_id = "atlas-west-plains"
 	display_name = "NSB Atlas Western Plains"
 	path = "maps/stations/rift/map_files/rift-10-west_plains.dmm"
+	struct_create_pos = "-1,0,0"
 	base_turf = /turf/simulated/floor/outdoors/safeice/lythios43c
 	flags = LEGACY_LEVEL_STATION|LEGACY_LEVEL_CONTACT|LEGACY_LEVEL_PLAYER
 	planet_path = /datum/planet/lythios43c
-	link_below = /datum/map_level/rift/caves
-	link_east = /datum/map_level/rift/station/surface_low
 
 /datum/map_level/rift/colony
 	id = "orbital-relay"
