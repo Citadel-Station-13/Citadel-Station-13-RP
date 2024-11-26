@@ -303,13 +303,12 @@
 /obj/item/reagent_containers/pill/happy
 	name = "Happy pill"
 	desc = "Happy happy joy joy!"
-	icon_state = "pill4"
+	icon_state = "pill_happy"
 
 /obj/item/reagent_containers/pill/happy/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("space_drugs", 15)
 	reagents.add_reagent("sugar", 15)
-	color = reagents.get_color()
 
 /obj/item/reagent_containers/pill/zoom
 	name = "Zoom pill"
@@ -333,3 +332,22 @@
 	. = ..()
 	reagents.add_reagent("lipozine", 15)
 	color = reagents.get_color()
+
+/obj/item/reagent_containers/pill/diet
+	name = "diet pill"
+	desc = "Guaranteed to get you slim!"
+	icon_state = "pill4"
+
+/obj/item/reagent_containers/pill/diet/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("lipozine", 15)
+	color = reagents.get_color()
+
+/obj/item/reagent_containers/pill/polonium
+	name = "pill"
+	desc = "A unlabeled pill, it seems slightly warm to the touch."
+	icon_state = "yellow"
+
+/obj/item/reagent_containers/pill/polonium/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("polonium", 5)

@@ -374,3 +374,25 @@
 	result = "gunpowder"
 	result_amount = 1
 	required_reagents = list("sulfur" = 1, "carbon" = 1, "potassium" = 1)
+
+/datum/chemical_reaction/asbestos
+	name = "Asbestos"
+	id = "asbestos"
+	result = "asbestos"
+	result_amount = 3
+	required_reagents = list("iron" = 1, "silicon" = 1, "oxygen" = 1)
+
+/datum/chemical_reaction/depolo //Or De-Polonium swaps unremovable polonium for removeable nuclear waste
+	name = "Polonium Removal"
+	id = "polremove"
+	result = "nuclearwaste"
+	result_amount = 3
+	required_reagents = list("polonium" = 1, "nicotine" = 1, "arithrazine" = 1)
+
+/datum/chemical_reaction/unsuperhol //Removes Abestos from the lungs and body. Only needs 1 unit
+	name = "Superhol Neutralization"
+	id = "unsuperhol"
+	result = "water"
+	result_amount = 1
+	required_reagents = list("superhol" = 1, "ethylredoxrazine" = 1, "hepanephrodaxon" = 1)
+

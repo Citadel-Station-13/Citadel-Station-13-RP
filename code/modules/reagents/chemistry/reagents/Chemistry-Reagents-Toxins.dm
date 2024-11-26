@@ -1155,3 +1155,78 @@
 
 /datum/reagent/grubshock/affect_blood(mob/living/carbon/M, alien, removed)
 	M.take_random_targeted_damage(brute = 0, brute = removed * power * 0.2)
+
+/datum/reagent/asbestos //asbestos removal handled in under datum/reagent/respirodaxon
+	name = "Asbestos"
+	id = "asbestos"
+	description = "A silicate made of packed fibrils. Renowned for its insulative properties and for getting permanently stuck in the lungs when inhaled as a powder."
+	taste_description = "sharp dust"
+	reagent_state = REAGENT_SOLID
+	color = "#d8d6d6"
+	metabolism = 0.01 // Does not leave your system easily
+	mrate_static = TRUE
+	reagent_filter_flags = REAGENT_FILTER_NO_COMMON_BIOANALYSIS
+	overdose = 10
+
+/datum/reagent/asbestos/affect_blood(mob/living/carbon/M, alien, removed)
+	M.ingested.add_reagent("asbestos", 0.02) //No idea what to do with injected asbestos I will simply say it goes to your lungs faster.
+
+/datum/reagent/asbestos/affect_ingest(mob/living/carbon/M, alien, removed) //Lung/voicebox Damage handled in lungs/voicebox.dm
+	if(prob(2))
+		M.emote("cough")
+		M.adjustOxyLoss(5)
+
+/datum/reagent/asbestos/overdose(mob/living/carbon/M, alien, removed)
+	if(prob(4))
+		M.emote("cough")
+		M.adjustOxyLoss(10)
+
+/datum/reagent/asbestos/touch_turf(turf/T) //Great now the dust is airborne!
+	if(volume >= 20)
+		var/location = get_turf(holder.my_atom)
+		var/datum/effect_system/smoke_spread/chem/S = new /datum/effect_system/smoke_spread/chem
+		S.attach(location)
+		S.set_up(holder, volume * 0.05, 0, location) //A beaker full of asbestos makes 3 clouds. A BS beaker makes 15 clouds
+		playsound(location, 'sound/effects/smoke.ogg', 50, 1, -3)
+		spawn(0)
+			S.start()
+
+/datum/reagent/polonium
+	name = "Polonium-210"
+	id = "polonium"
+	description = "An extremely deadly radioactive isotope. Even a microgram is lethal. A nicotine-arithrazine mixture is known to help remove it from the blood and stomach."
+	taste_mult = 0	//It would be a rather bad if you could taste this poison
+	reagent_state = REAGENT_SOLID
+	color = "#A6FAFF"
+	metabolism = 0.01 //This is around 100 radiation a tick for a total of 5k radiaion a unit. Use stasis!!!
+	mrate_static = TRUE
+	reagent_filter_flags = REAGENT_FILTER_NO_COMMON_BIOANALYSIS
+
+/datum/reagent/polonium/affect_blood(mob/living/carbon/M, alien, removed)
+	M.afflict_radiation(RAD_MOB_AFFLICT_STRENGTH_POL210(removed))
+
+/datum/reagent/polonium/affect_ingest(mob/living/carbon/M, alien, removed)
+	M.afflict_radiation(RAD_MOB_AFFLICT_STRENGTH_POL210(removed))
+
+/datum/reagent/polonium/touch_turf(turf/T)
+	if(volume >= 3)
+		if(!istype(T, /turf/space))
+			var/obj/effect/debris/cleanable/greenglow/glow = locate(/obj/effect/debris/cleanable/greenglow, T)
+			if(!glow)
+				new /obj/effect/debris/cleanable/greenglow(T)
+			return
+
+/datum/reagent/superhol
+	name = "Superhol"
+	id = "superhol"
+	description = "A synthetic alcohol that attaches to filtration organs and rapidly induces lethal alcohol poisoning. Treated with hepanephrodaxon and ethylredoxrazine."
+	taste_description = "burning alcohol"
+	color = "#404030"
+	taste_mult = 0.1
+	metabolism = 0.01
+	mrate_static = TRUE
+	reagent_filter_flags = REAGENT_FILTER_NO_COMMON_BIOANALYSIS
+
+/datum/reagent/superhol/affect_ingest(mob/living/carbon/M, alien, removed)
+	M.bloodstr.add_reagent("ethanol", removed * 300)
+	M.add_chemical_effect(CE_ALCOHOL_TOXIC, 5)

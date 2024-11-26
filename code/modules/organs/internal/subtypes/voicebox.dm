@@ -27,6 +27,14 @@
 	will_assist_languages |= language
 	amend_assist_langs()	// Can't think of a better place to put this, makes the voicebox actually start to assist with the added language
 
+
+/obj/item/organ/internal/voicebox/tick_life(dt)
+	if(owner.reagents.has_reagent("asbestos"))
+		if(robotic >= ORGAN_ROBOT)
+			return
+		else
+			take_damage(1,prob(10))
+
 /////////////////////////////////
 //		Voicebox Subtypes
 /////////////////////////////////

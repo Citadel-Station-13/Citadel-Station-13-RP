@@ -30,6 +30,8 @@
 				spawn()
 					owner?.emote("me", 1, "gasps for air!")
 				owner.AdjustLosebreath(round(3 / max(0.1,Brain.get_control_efficiency())))
+	if(owner.reagents.has_reagent(/datum/reagent/asbestos))
+		take_damage(1)
 
 /obj/item/organ/internal/lungs/proc/rupture()
 	var/obj/item/organ/external/parent = owner.get_organ(parent_organ)

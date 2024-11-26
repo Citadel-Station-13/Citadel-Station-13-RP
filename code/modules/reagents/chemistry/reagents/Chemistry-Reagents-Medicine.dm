@@ -799,6 +799,14 @@
 				H.losebreath = clamp(H.losebreath + 3, 0, 20)
 		else
 			H.losebreath = max(H.losebreath - 4, 0)
+	if(M.ingested)
+		for(var/datum/reagent/asbestos/R in M.ingested.reagent_list)
+			R.remove_self(removed * 4)
+	if(M.bloodstr)
+		for(var/datum/reagent/asbestos/R in M.bloodstr.reagent_list)
+			R.remove_self(removed * 4)
+
+
 
 /datum/reagent/gastirodaxon
 	name = "Gastirodaxon"
