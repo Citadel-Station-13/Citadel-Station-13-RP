@@ -7162,7 +7162,7 @@
 /turf/simulated/floor/tiled,
 /area/outpost/mining_main/outpost/airlock/one)
 "HC" = (
-/turf/unsimulated/wall/planetary/lythios43c{
+/turf/unsimulated/wall/planetary/permafrost{
 	desc = "Glacial permafrost, compacted harder than stone.";
 	icon_state = "icerock-dark";
 	name = "glacier wall"
@@ -7459,7 +7459,7 @@
 /turf/simulated/open/lythios43c,
 /area/turbolift/rwest_mining/surface)
 "IY" = (
-/turf/unsimulated/wall/planetary/lythios43c{
+/turf/unsimulated/wall/planetary/permafrost{
 	desc = "Glacial permafrost, compacted harder than stone.";
 	icon_state = "icerock-dark";
 	name = "glacier wall"

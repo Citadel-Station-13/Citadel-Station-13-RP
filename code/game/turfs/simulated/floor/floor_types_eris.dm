@@ -862,7 +862,6 @@
 	icon_state = "techmaint_cargo"
 	initial_flooring = /singleton/flooring/tiling/eris/techmaint_cargo
 
-//=========ERIS GRASS==========\\
 /singleton/flooring/grass/heavy
 	name = "heavy grass"
 	desc = "A dense ground coating of grass"
@@ -871,6 +870,7 @@
 	icon_base = "grass-heavy"
 	has_base_range = 3
 
+CREATE_STANDARD_TURFS(/turf/simulated/floor/outdoors/grass/heavy)
 /turf/simulated/floor/outdoors/grass/heavy
 	name = "heavy grass"
 	icon_state = "grass-heavy0"
@@ -884,12 +884,8 @@
 		/obj/structure/flora/ausbushes/fullgrass
 		)
 
-CREATE_STANDARD_TURFS(/turf/simulated/floor/outdoors/grass/heavy)
-/turf/simulated/floor/outdoors/grass/heavy/interior
-    name = "heavy grass"
+/turf/simulated/floor/outdoors/grass/heavy/indoors
     desc = "A dense sheet of harvested turf used in interior decoration."
-    initial_gas_mix = ATMOSPHERE_USE_INDOORS
-    outdoors = FALSE
 
 //=========Eris Plating==========\\
 // This is the light grey tiles with random geometric shapes extruded
