@@ -16,7 +16,7 @@
 	if(extraneous_language_ids().len > extraneous_languages_max())
 		to_chat(user, SPAN_WARNING("You cannot select another language!"))
 		return TRUE
-	var/datum/character_species/CS = character_species_datum()
+	var/datum/species/CS = character_species_datum()
 	var/list/whitelisted_ids = CS.get_whitelisted_language_ids() // cache ids from character species for speed
 	if((L.language_flags & LANGUAGE_WHITELISTED) && !((L.id in whitelisted_ids) || config.check_alien_whitelist(ckey(L.name), client_ckey)))
 		to_chat(user, SPAN_WARNING("[L] is a whitelisted language!"))

@@ -499,7 +499,7 @@
 		// 3. there are exactly 2 members
 		// 4. with no attributes
 		// 5. and the members are world.turf and world.area
-		// Basically, if we find an entry like this: "XXX" = (/turf/default, /area/default)
+		// Basically, if we find an entry like this: "XXX" = (/turf/default, /area/inherit_area)
 		// We can skip calling this proc every time we see XXX
 		if(no_changeturf \
 			&& !(.[SPACE_KEY]) \

@@ -116,13 +116,13 @@
 	icon_state = "gcircuit"
 	initial_flooring = /singleton/flooring/reinforced/circuit/green
 
+CREATE_STANDARD_TURFS(/turf/simulated/floor/wood)
 /turf/simulated/floor/wood
 	name = "wooden floor"
 	icon = 'icons/turf/flooring/wood.dmi'
 	icon_state = "wood"
 	initial_flooring = /singleton/flooring/wood
 
-CREATE_STANDARD_TURFS(/turf/simulated/floor/wood)
 
 /turf/simulated/floor/wood/broken
 	icon_state = "broken0" // This gets changed when spawned.
@@ -131,13 +131,13 @@ CREATE_STANDARD_TURFS(/turf/simulated/floor/wood)
 	break_tile()
 	return ..()
 
+CREATE_STANDARD_TURFS(/turf/simulated/floor/wood/sif)
 /turf/simulated/floor/wood/sif
 	name = "alien wooden floor"
 	icon = 'icons/turf/flooring/wood.dmi'
 	icon_state = "sifwood"
 	initial_flooring = /singleton/flooring/wood/sif
 
-CREATE_STANDARD_TURFS(/turf/simulated/floor/wood/sif)
 
 /turf/simulated/floor/wood/sif/broken
 	icon_state = "sifwood_broken0" // This gets changed when spawned.
@@ -146,19 +146,19 @@ CREATE_STANDARD_TURFS(/turf/simulated/floor/wood/sif)
 	break_tile()
 	return ..()
 
+CREATE_STANDARD_TURFS(/turf/simulated/floor/grass)
 /turf/simulated/floor/grass
 	name = "grass patch"
 	icon = 'icons/turf/flooring/grass.dmi'
 	icon_state = "grass0"
 	initial_flooring = /singleton/flooring/grass
-CREATE_STANDARD_TURFS(/turf/simulated/floor/grass)
 
+CREATE_STANDARD_TURFS(/turf/simulated/floor/tiled)
 /turf/simulated/floor/tiled
 	name = "floor"
 	icon = 'icons/turf/flooring/tiles.dmi'
 	icon_state = "tiled"
 	initial_flooring = /singleton/flooring/tiling
-CREATE_STANDARD_TURFS(/turf/simulated/floor/tiled)
 
 /turf/simulated/floor/tiled/techmaint
 	name = "floor"
@@ -350,6 +350,7 @@ CREATE_STANDARD_TURFS(/turf/simulated/floor/reinforced)
 	icon_state = "steel"
 	initial_flooring = /singleton/flooring/tiling/steel
 
+CREATE_STANDARD_TURFS(/turf/simulated/floor/tiled/steel_dirty)
 /turf/simulated/floor/tiled/steel_dirty
 	name = "steel floor"
 	icon_state = "steel_dirty"
@@ -384,6 +385,7 @@ CREATE_STANDARD_TURFS(/turf/simulated/floor/reinforced)
 	name = "plating"
 	initial_gas_mix = GAS_STRING_VACUUM
 
+CREATE_STANDARD_TURFS(/turf/simulated/floor/tiled/white)
 /turf/simulated/floor/tiled/white
 	name = "white floor"
 	icon_state = "white"

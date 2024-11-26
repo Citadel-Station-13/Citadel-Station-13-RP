@@ -8,7 +8,6 @@
 	var/list/resources
 
 	var/thermite = 0
-	initial_gas_mix = GAS_STRING_STP
 	var/to_be_destroyed = 0 //Used for fire, if a melting temperature was reached, it will be destroyed
 	var/max_fire_temperature_sustained = 0 //The max temperature of the fire which it was subjected to
 	var/can_dirty = TRUE	// If false, tile never gets dirty

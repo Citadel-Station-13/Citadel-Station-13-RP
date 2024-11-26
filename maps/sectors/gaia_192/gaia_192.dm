@@ -11,8 +11,8 @@
 	id = "GaiaWorld192"
 	name = "Sector - Gaia Station"
 	display_name = "Gaia Station"
-	absolute_path = "maps/sectors/gaia_192/levels/gaia_192.dmm"
-	base_turf = /turf/simulated/floor/classm
+	path = "maps/sectors/gaia_192/levels/gaia_192.dmm"
+	base_turf = /turf/simulated/floor
 	base_area = /area/class_m/outside
 	traits = list(
 		ZTRAIT_GRAVITY,

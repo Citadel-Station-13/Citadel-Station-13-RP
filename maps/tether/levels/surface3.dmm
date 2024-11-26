@@ -12487,7 +12487,7 @@
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/southhall)
 "hvT" = (
-/turf/unsimulated/wall/planetary/virgo3b,
+/turf/unsimulated/wall/planetary/facility_wall,
 /area/tether/surfacebase/outside/outside3)
 "hvW" = (
 /obj/effect/floor_decal/steeldecal/steel_decals4{

@@ -25645,7 +25645,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/research/rnd)
 "pTn" = (
-/turf/unsimulated/wall/planetary/lythios43c{
+/turf/unsimulated/wall/planetary/permafrost{
 	desc = "Glacial permafrost, compacted harder than stone.";
 	icon_state = "icerock-dark"
 	},

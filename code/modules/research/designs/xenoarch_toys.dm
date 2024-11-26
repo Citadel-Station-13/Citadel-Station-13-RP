@@ -1,4 +1,6 @@
 /datum/prototype/design/science/xenoarch
+	category = DESIGN_CATEGORY_SCIENCE
+	subcategory = DESIGN_SUBCATEGORY_XENOARCHEOLOGY
 	abstract_type = /datum/prototype/design/science/xenoarch
 
 /datum/prototype/design/science/xenoarch/generate_name(template)

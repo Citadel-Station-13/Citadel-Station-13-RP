@@ -3,7 +3,7 @@
 /turf/space,
 /area)
 "ab" = (
-/turf/simulated/mineral/triumph,
+/turf/simulated/mineral,
 /area/awaymission)
 "ac" = (
 /turf/simulated/floor/airless,
