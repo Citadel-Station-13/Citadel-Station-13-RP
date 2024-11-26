@@ -3104,7 +3104,7 @@
 /turf/simulated/mineral,
 /area/storage/surface_eva/external)
 "sv" = (
-/turf/unsimulated/mineral/virgo3b,
+/turf/unsimulated/wall/mineral,
 /area/space)
 "sA" = (
 /obj/structure/shuttle/engine/heater,
@@ -3476,7 +3476,7 @@
 /turf/simulated/floor/tiled,
 /area/medical/medbay)
 "GR" = (
-/turf/unsimulated/wall/planetary/lythios43c{
+/turf/unsimulated/wall/planetary/permafrost{
 	desc = "Glacial permafrost, compacted harder than stone.";
 	icon_state = "icerock-dark"
 	},

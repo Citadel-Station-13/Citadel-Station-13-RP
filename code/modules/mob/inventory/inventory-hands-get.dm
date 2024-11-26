@@ -80,7 +80,7 @@
 	RETURN_TYPE(/list)
 	. = list()
 	for(var/obj/item/I in held_items)
-		return I
+		. += I
 
 /**
  * @return list of held items

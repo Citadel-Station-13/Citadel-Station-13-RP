@@ -1726,7 +1726,7 @@
 /obj/machinery/door/window/westleft{
 	dir = 2
 	},
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/tradeport/safarizoo)
 "fZ" = (
 /obj/structure/closet/emcloset,
@@ -2596,7 +2596,7 @@
 	dir = 1
 	},
 /obj/structure/lightpost,
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/tradeport/safarizoo)
 "iX" = (
 /obj/structure/sink{
@@ -3275,7 +3275,7 @@
 	},
 /obj/structure/railing,
 /obj/structure/lightpost,
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/tradeport/safarizoo)
 "lo" = (
 /obj/structure/cable/green{
@@ -3895,7 +3895,7 @@
 /area/tradeport/commons)
 "nr" = (
 /obj/structure/flora/tree/jungle_small,
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/tradeport/safarizoo)
 "nt" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
@@ -4504,7 +4504,7 @@
 /obj/structure/railing{
 	dir = 8
 	},
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/tradeport/safarizoo)
 "pX" = (
 /obj/structure/bed/chair,
@@ -5523,7 +5523,7 @@
 /area/tradeport/commons)
 "tS" = (
 /obj/structure/flora/tree/jungle,
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/tradeport/safarizoo)
 "tU" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -5737,7 +5737,7 @@
 /area/tradeport/expansion)
 "uN" = (
 /obj/structure/railing,
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/tradeport/safarizoo)
 "uP" = (
 /obj/machinery/light{
@@ -6122,7 +6122,7 @@
 /area/space)
 "vX" = (
 /obj/structure/lightpost,
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/tradeport/safarizoo)
 "vY" = (
 /obj/machinery/door/firedoor{
@@ -7684,7 +7684,7 @@
 	dir = 8
 	},
 /obj/structure/lightpost,
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/tradeport/safarizoo)
 "By" = (
 /obj/machinery/atmospherics/pipe/manifold4w/hidden,
@@ -8280,7 +8280,7 @@
 /area/tradeport/dock)
 "DN" = (
 /mob/living/simple_mob/vore/redpanda,
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/tradeport/safarizoo)
 "DQ" = (
 /obj/machinery/door/firedoor,
@@ -9511,7 +9511,7 @@
 	dir = 8
 	},
 /obj/structure/railing,
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/tradeport/safarizoo)
 "In" = (
 /obj/machinery/light{
@@ -10949,7 +10949,7 @@
 /obj/machinery/door/window/westright{
 	dir = 2
 	},
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/tradeport/safarizoo)
 "NI" = (
 /obj/structure/bed/chair/sofa{
@@ -11172,7 +11172,7 @@
 /turf/simulated/floor/plating,
 /area/tradeport)
 "OA" = (
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/tradeport/safarizoo)
 "OB" = (
 /obj/effect/floor_decal/rust,
@@ -11720,7 +11720,7 @@
 	},
 /obj/structure/railing,
 /obj/structure/lightpost,
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/tradeport/safarizoo)
 "Qv" = (
 /obj/structure/railing,
@@ -12176,7 +12176,7 @@
 /obj/structure/railing{
 	dir = 1
 	},
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/tradeport/safarizoo)
 "RS" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -13672,7 +13672,7 @@
 	dir = 4
 	},
 /obj/structure/lightpost,
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/tradeport/safarizoo)
 "Xt" = (
 /obj/structure/janitorialcart,
@@ -13804,7 +13804,7 @@
 /obj/structure/railing{
 	dir = 1
 	},
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/tradeport/safarizoo)
 "XV" = (
 /obj/structure/bed/chair{
@@ -14075,7 +14075,7 @@
 /obj/structure/railing{
 	dir = 4
 	},
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/tradeport/safarizoo)
 "YK" = (
 /obj/machinery/atmospherics/pipe/simple/hidden,

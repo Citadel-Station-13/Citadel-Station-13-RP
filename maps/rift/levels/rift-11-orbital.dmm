@@ -116,7 +116,7 @@
 /turf/unsimulated/wall,
 /area/space)
 "aC" = (
-/turf/unsimulated/mineral,
+/turf/unsimulated/wall/mineral,
 /area/space)
 "aD" = (
 /turf/unsimulated/wall,
@@ -7850,7 +7850,7 @@
 /area/centcom/specops)
 "CC" = (
 /obj/effect/step_trigger/teleporter/planetary_fall/lythios43c,
-/turf/simulated/sky/lythios43c/moving/west,
+/turf/simulated/fake_sky/lythios43c/moving/west,
 /area/space)
 "CH" = (
 /obj/machinery/light{
@@ -8552,7 +8552,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/specops/cockpit)
 "KE" = (
-/turf/simulated/sky/lythios43c/moving/west,
+/turf/simulated/fake_sky/lythios43c/moving/west,
 /area/space)
 "KU" = (
 /obj/machinery/vending/security,
@@ -8755,7 +8755,7 @@
 /area/centcom/specops)
 "Mb" = (
 /obj/effect/shuttle_landmark/rift/deck4/excursion_sky,
-/turf/simulated/sky/lythios43c/moving/west,
+/turf/simulated/fake_sky/lythios43c/moving/west,
 /area/space)
 "Me" = (
 /obj/item/clothing/accessory/holster/armpit,
@@ -8884,7 +8884,7 @@
 /area/space)
 "NL" = (
 /obj/effect/shuttle_landmark/rift/deck4/northeast,
-/turf/simulated/sky/lythios43c/moving/south,
+/turf/simulated/fake_sky/lythios43c/moving/south,
 /area/space)
 "NP" = (
 /obj/structure/table/rack,
@@ -9089,7 +9089,7 @@
 /turf/space/transit/east,
 /area/space)
 "Qc" = (
-/turf/simulated/sky/lythios43c/moving/south,
+/turf/simulated/fake_sky/lythios43c/moving/south,
 /area/space)
 "Qd" = (
 /obj/structure/cable/green{
@@ -9099,7 +9099,7 @@
 /area/shuttle/specops/cockpit)
 "Qg" = (
 /obj/effect/shuttle_landmark/rift/deck4/north,
-/turf/simulated/sky/lythios43c/moving/south,
+/turf/simulated/fake_sky/lythios43c/moving/south,
 /area/space)
 "Ql" = (
 /obj/effect/shuttle_landmark/transit/rift/pirate,
@@ -9309,7 +9309,7 @@
 "SA" = (
 /obj/effect/blocker,
 /obj/effect/step_trigger/teleporter/planetary_fall/lythios43c,
-/turf/simulated/sky/lythios43c/moving/west,
+/turf/simulated/fake_sky/lythios43c/moving/west,
 /area/space)
 "SB" = (
 /obj/structure/table/reinforced,
@@ -9794,7 +9794,7 @@
 /area/centcom/specops)
 "XP" = (
 /obj/effect/step_trigger/teleporter/planetary_fall/lythios43c,
-/turf/simulated/sky/lythios43c/moving/south,
+/turf/simulated/fake_sky/lythios43c/moving/south,
 /area/space)
 "XQ" = (
 /obj/structure/table/rack,
