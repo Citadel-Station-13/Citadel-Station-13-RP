@@ -157,31 +157,45 @@
 /**
  * get the mob we're equipped on
  */
-/obj/item/proc/worn_mob()
+/obj/item/proc/get_worn_mob() as /mob
 	RETURN_TYPE(/mob)
-	return worn_inside?.worn_mob() || (worn_slot? loc : null)
+	return worn_inside?.get_worn_mob() || (worn_slot? loc : null)
+
+/**
+ * get the slot or index we're worn in. slot if slot, index if held.
+ */
+/obj/item/proc/get_worn_slot_or_index() as /mob
+	RETURN_TYPE(/mob)
+	switch(worn_slot)
+		if(null)
+			return null
+		if(SLOT_ID_HANDS)
+			var/mob/wearing = get_worn_mob()
+			return wearing.get_held_index(src)
+		else
+			return worn_slot
 
 /**
  * checks if we're in inventory. if so, returns mob we're in
  * **hands count**
  */
-/obj/item/proc/is_in_inventory(include_hands)
-	return (worn_slot && ((worn_slot != SLOT_ID_HANDS) || include_hands)) && worn_mob()
+/obj/item/proc/is_in_inventory(include_hands) as /mob
+	return (worn_slot && ((worn_slot != SLOT_ID_HANDS) || include_hands)) && get_worn_mob()
 
 /**
  * checks if we're held in hand
  *
  * if so, returns mob we're in
  */
-/obj/item/proc/is_held()
-	return (worn_slot == SLOT_ID_HANDS)? worn_mob() : null
+/obj/item/proc/is_being_held() as /mob
+	return (worn_slot == SLOT_ID_HANDS)? get_worn_mob() : null
 
 /**
  * checks if we're worn. if so, return mob we're in
  *
  * note: this is not the same as is_in_inventory, we check if it's a clothing/worn slot in this case!
  */
-/obj/item/proc/is_being_worn()
+/obj/item/proc/is_being_worn() as /mob
 	if(!worn_slot)
 		return FALSE
 	var/datum/inventory_slot/slot_meta = resolve_inventory_slot(worn_slot)
@@ -213,14 +227,14 @@
 	var/slot = worn_slot
 	if(!slot)
 		CRASH("no worn slot")
-	var/mob/M = worn_mob()
+	var/mob/M = get_worn_mob()
 	if(!M)
 		CRASH("no worn mob")
 	if(!M.strip_interaction_prechecks(user))
 		return
 	if(!do_after(user, delay, M, DO_AFTER_IGNORE_ACTIVE_ITEM))
 		return
-	if(slot != worn_slot || M != worn_mob())
+	if(slot != worn_slot || M != get_worn_mob())
 		return
 	return TRUE
 
@@ -358,9 +372,9 @@
 /obj/item/register_shieldcall(datum/shieldcall/delegate)
 	. = ..()
 	if(delegate.shields_in_inventory)
-		worn_mob()?.register_shieldcall(delegate)
+		get_worn_mob()?.register_shieldcall(delegate)
 
 /obj/item/unregister_shieldcall(datum/shieldcall/delegate)
 	. = ..()
 	if(delegate.shields_in_inventory)
-		worn_mob()?.unregister_shieldcall(delegate)
+		get_worn_mob()?.unregister_shieldcall(delegate)

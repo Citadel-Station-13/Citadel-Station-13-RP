@@ -549,7 +549,7 @@
 	desc = " A Bolt Action Rifle taken apart and retooled into a primitive machine gun. Bulky and obtuse, it still capable of unleashing devastating firepower with its 15 round internal drum magazine. Loads with 7.62 stripper clips."
 	icon_state = "automat"
 	item_state = "automat"
-	fire_anim = "automat_fire"
+	// fire_anim = "automat_fire"
 	w_class = WEIGHT_CLASS_BULKY
 	damage_force = 10
 	caliber = /datum/ammo_caliber/a7_62mm
@@ -576,7 +576,7 @@
 	icon_state = "automat-taj"
 	item_state = "automat-taj"
 	wielded_item_state = "automat-taj-wielded"
-	fire_anim = ""
+	// fire_anim = ""
 
 /obj/item/gun/ballistic/automatic/holyshot
 	name = "Holy automatic shotgun"

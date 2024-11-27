@@ -197,10 +197,6 @@
 		inventory.held_items[index] = I
 		inventory.on_item_entered(I, index)
 
-	//! LEGACY BEGIN
-	I.update_twohanding()
-	//! END
-
 	if(!(flags & INV_OP_NO_UPDATE_ICONS))
 		update_inv_hand(index)
 

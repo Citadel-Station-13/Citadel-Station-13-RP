@@ -126,7 +126,6 @@
 
 	var/fire_sound = null // This is handled by projectile.dm's fire_sound var now, but you can override the projectile's fire_sound with this one if you want to.
 	var/fire_sound_text = "gunshot"
-	var/fire_anim = null
 	var/recoil = 0		//screen shake
 	var/suppressible = FALSE
 	var/silenced = FALSE
@@ -379,27 +378,25 @@
 		. += SPAN_NOTICE("The safety is [check_safety() ? "on" : "off"].")
 	for(var/obj/item/gun_attachment/attachment as anything in attachments)
 		. += "It has [attachment] installed on its [attachment.attachment_slot].[attachment.can_detach ? "" : " It doesn't look like it can be removed."]"
+	for(var/obj/item/gun_component/component as anything in modular_components)
+
 #warn component examine
 
 /obj/item/gun/on_wield(mob/user, hands)
 	. = ..()
+	// legacy
+	if(wielded_item_state)
+		LAZYINITLIST(item_state_slots)
+		item_state_slots[SLOT_ID_LEFT_HAND] = wielded_item_state
+		item_state_slots[SLOT_ID_RIGHT_HAND] = wielded_item_state
 
 /obj/item/gun/on_unwield(mob/user, hands)
 	. = ..()
-
-#warn redo multihanding
-/obj/item/gun/update_held_icon()
+	// legacy
 	if(wielded_item_state)
-		var/mob/living/M = loc
-		if(istype(M))
-			LAZYINITLIST(item_state_slots)
-			if(M.can_wield_item(src) && src.is_held_twohanded(M))
-				item_state_slots[SLOT_ID_LEFT_HAND] = wielded_item_state
-				item_state_slots[SLOT_ID_RIGHT_HAND] = wielded_item_state
-			else
-				item_state_slots[SLOT_ID_LEFT_HAND] = initial(item_state)
-				item_state_slots[SLOT_ID_RIGHT_HAND] = initial(item_state)
-	..()
+		LAZYINITLIST(item_state_slots)
+		item_state_slots[SLOT_ID_LEFT_HAND] = initial(item_state)
+		item_state_slots[SLOT_ID_RIGHT_HAND] = initial(item_state)
 
 //Checks whether a given mob can use the gun
 //Any checks that shouldn't result in handle_click_empty() being called if they fail should go here.
@@ -538,9 +535,6 @@
 /obj/item/gun/proc/handle_post_fire(mob/user, atom/target, var/pointblank=0, var/reflex=0)
 	SHOULD_NOT_OVERRIDE(TRUE)
 	#warn obliterate this
-	if(fire_anim)
-		flick(fire_anim, src)
-
 	if(silenced)
 		to_chat(user, "<span class='warning'>You fire \the [src][pointblank ? " point blank at \the [target]":""][reflex ? " by reflex":""]</span>")
 		for(var/mob/living/L in oview(2,user))
@@ -585,7 +579,6 @@
 		spawn()
 			shake_camera(user, recoil+1, recoil)
 	update_icon()
-
 
 /obj/item/gun/proc/play_fire_sound(var/mob/user, var/obj/projectile/P)
 	var/shot_sound = fire_sound
@@ -768,7 +761,10 @@
 
 //* Interaction *//
 
-#warn ctrlclick for safety
+/obj/item/gun/CtrlClick(mob/user)
+	. = ..()
+	if(user.is_holding(src))
+		toggle_safety(user)
 
 //* Rendering *//
 

@@ -316,7 +316,7 @@
 		// item processing
 		if(isitem(attack_source_descriptor))
 			var/obj/item/item_source_descriptor = attack_source_descriptor
-			var/mob/mob_holding_item = item_source_descriptor.worn_mob()
+			var/mob/mob_holding_item = item_source_descriptor.get_worn_mob()
 			if(mob_holding_item)
 				attack_descriptor = "[mob_holding_item]'s [item_source_descriptor]"
 

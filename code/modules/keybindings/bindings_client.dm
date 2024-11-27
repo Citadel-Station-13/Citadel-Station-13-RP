@@ -168,3 +168,9 @@
 					movement_keys[key] = WEST
 				if("South")
 					movement_keys[key] = SOUTH
+
+/**
+ * Returns a list of human-readable (usually) keys.
+ */
+/client/proc/get_keys_for_binding(datum/keybinding/binding_or_path)
+	#warn impl

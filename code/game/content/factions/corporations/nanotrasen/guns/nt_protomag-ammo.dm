@@ -26,6 +26,10 @@
 /obj/item/ammo_casing/nt_protomag/magboosted/standard
 	projectile_type = /obj/projectile/nt_protomag/standard
 	stripe_color = /obj/projectile/nt_protomag/standard::color
+	materials_base = list(
+		/datum/prototype/material/steel::id = 75,
+		/datum/prototype/material/glass::id = 25,
+	)
 
 /obj/item/ammo_casing/nt_protomag/magboosted/sabot
 	name = "protomag round (sabot)"
@@ -33,6 +37,10 @@
 
 	projectile_type = /obj/projectile/nt_protomag/sabot
 	stripe_color = /obj/projectile/nt_protomag/sabot::color
+	materials_base = list(
+		/datum/prototype/material/steel::id = 125,
+		/datum/prototype/material/glass::id = 25,
+	)
 
 // todo: this is currently disabled as medcode is not verbose enough for this to work
 // /obj/item/ammo_casing/nt_protomag/magboosted/shredder
@@ -48,6 +56,10 @@
 
 	projectile_type = /obj/projectile/nt_protomag/impact
 	stripe_color = /obj/projectile/nt_protomag/impact::color
+	materials_base = list(
+		/datum/prototype/material/steel::id = 75,
+		/datum/prototype/material/glass::id = 75,
+	)
 
 /obj/item/ammo_casing/nt_protomag/magboosted/practice
 	name = "protomag round (practice)"
@@ -55,7 +67,12 @@
 
 	projectile_type = /obj/projectile/nt_protomag/practice
 	stripe_color = /obj/projectile/nt_protomag/practice::color
+	materials_base = list(
+		/datum/prototype/material/steel::id = 25,
+		/datum/prototype/material/glass::id = 12.5,
+	)
 
+#warn materials for below
 /obj/item/ammo_casing/nt_protomag/magnetic
 	name = "protomag slug"
 	desc = "A slender ferromagnetic slug. A bullet without propellant, for whatever reason."

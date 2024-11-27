@@ -21,5 +21,5 @@
 
 /datum/action/attachment_action/calculate_availability()
 	var/obj/item/item = target
-	var/mob/worn = item.worn_mob()
+	var/mob/worn = item.get_worn_mob()
 	return worn? (worn.mobility_flags & check_mobility_flags? 1 : 0) : 1

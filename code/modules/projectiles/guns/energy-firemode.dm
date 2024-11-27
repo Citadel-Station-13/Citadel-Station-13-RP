@@ -5,12 +5,10 @@
 	//* Energy Usage *//
 	/// charge cost of using this in cell units.
 	var/charge_cost
-	#warn impl
 
 	//* Projectile Formation *//
 	/// projectile type
 	var/projectile_type
-	#warn impl
 
 // todo: this shouldn't even exist.
 /datum/firemode/energy/New(obj/item/gun/inherit_from_gun, list/direct_varedits)

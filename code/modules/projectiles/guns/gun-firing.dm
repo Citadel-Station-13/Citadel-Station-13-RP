@@ -190,7 +190,7 @@
 
 // todo: actor / event_args support
 /obj/item/gun/proc/default_click_empty(datum/gun_firing_cycle/cycle)
-	var/mob/holding_us = worn_mob()
+	var/mob/holding_us = get_worn_mob()
 	if(holding_us)
 		holding_us.visible_message(SPAN_WARNING("*click click*"), SPAN_WARNING("*click*"))
 	else if(isturf(loc))

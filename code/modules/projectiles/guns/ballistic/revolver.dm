@@ -307,7 +307,7 @@
 	firemodes = /datum/firemode{
 		cycle_cooldown = 0.5 SECONDS;
 	}
-	fire_anim = "mosley_fire"
+	// fire_anim = "mosley_fire"
 	origin_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 2)
 
 /obj/item/gun/ballistic/revolver/dirty_harry

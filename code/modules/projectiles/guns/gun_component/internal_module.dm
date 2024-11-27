@@ -7,8 +7,6 @@
 	icon = 'icons/modules/projectiles/components/internal_module.dmi'
 	component_slot = GUN_COMPONENT_INTERNAL_MODULE
 
-#warn impl all
-
 // TODO: This file is mostly stubs and WIPs.
 
 /**
@@ -17,6 +15,7 @@
  * * makes the gun fire a second round on every fire
  * * conflicts with any other burst modifiers
  */
+#warn test this
 /obj/item/gun_component/internal_module/double_shot
 	name = "AN-94 Fire Controller"
 	desc = /obj/item/gun_component/internal_module::desc + " This will cause the gun to fire one additional round per burst, at the cost of reduced accuracy."

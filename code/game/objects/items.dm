@@ -222,7 +222,7 @@
 /obj/item/Destroy()
 	// run inventory hooks
 	if(worn_slot && !worn_hook_suppressed)
-		var/mob/M = worn_mob()
+		var/mob/M = get_worn_mob()
 		if(!ismob(M))
 			stack_trace("invalid current equipped slot [worn_slot] on an item not on a mob.")
 			return ..()
@@ -721,10 +721,10 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
  * * null
  */
 /obj/item/proc/set_actions_to(descriptor)
-	var/mob/worn_mob = worn_mob()
+	var/mob/get_worn_mob = get_worn_mob()
 
-	if(worn_mob)
-		unregister_item_actions(worn_mob)
+	if(get_worn_mob)
+		unregister_item_actions(get_worn_mob)
 
 	if(ispath(descriptor, /datum/action))
 		descriptor = new descriptor(src)
@@ -738,8 +738,8 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 	else
 		item_actions = descriptor
 
-	if(worn_mob)
-		register_item_actions(worn_mob)
+	if(get_worn_mob)
+		register_item_actions(get_worn_mob)
 
 /**
  * handles action granting
@@ -956,8 +956,8 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 			var/requires_update = (item_flags & (ITEM_ENCUMBERS_WHILE_HELD | ITEM_ENCUMBERS_ONLY_HELD)) != (var_value & (ITEM_ENCUMBERS_WHILE_HELD | ITEM_ENCUMBERS_ONLY_HELD))
 			. = ..()
 			if(. && requires_update)
-				var/mob/living/L = worn_mob()
-				// check, as worn_mob() returns /mob, not /living
+				var/mob/living/L = get_worn_mob()
+				// check, as get_worn_mob() returns /mob, not /living
 				if(istype(L))
 					L.recalculate_carry()
 					L.update_carry()
@@ -965,15 +965,15 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 			// todo: introspection system update - this should be 'handled', as opposed to hooked.
 			. = ..()
 			if(. )
-				var/mob/living/L = worn_mob()
-				// check, as worn_mob() returns /mob, not /living
+				var/mob/living/L = get_worn_mob()
+				// check, as get_worn_mob() returns /mob, not /living
 				if(istype(L))
 					L.update_carry_slowdown()
 		if(NAMEOF(src, slowdown))
 			. = ..()
 			if(.)
-				var/mob/living/L = worn_mob()
-				// check, as worn_mob() returns /mob, not /living
+				var/mob/living/L = get_worn_mob()
+				// check, as get_worn_mob() returns /mob, not /living
 				if(istype(L))
 					L.update_item_slowdown()
 		if(NAMEOF(src, w_class))

@@ -81,7 +81,7 @@
 	attachment.on_attach(src)
 	attachment.update_gun_overlay()
 	on_attachment_install(attachment)
-	var/mob/holding_mob = worn_mob()
+	var/mob/holding_mob = get_worn_mob()
 	if(holding_mob)
 		attachment.register_attachment_actions(holding_mob)
 	return TRUE
@@ -117,7 +117,7 @@
  */
 /obj/item/gun/proc/uninstall_attachment(obj/item/gun_attachment/attachment, datum/event_args/actor/actor, silent, deleting)
 	ASSERT(attachment.attached == src)
-	var/mob/holding_mob = worn_mob()
+	var/mob/holding_mob = get_worn_mob()
 	if(holding_mob)
 		attachment.unregister_attachment_actions(holding_mob)
 	attachment.on_detach(src)
