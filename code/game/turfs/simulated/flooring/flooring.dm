@@ -181,9 +181,12 @@
 		effective_type = build_type
 		effective_amount = build_cost
 
-	#warn handle /datum/material path & id too
 	if(ispath(effective_type, /obj/item/stack))
 		new effective_type(A, effective_amount)
+	else if(istext(effective_type) || ispath(effective_type, /datum/prototype/material))
+		var/datum/prototype/material/resolved_material = RSmaterials.fetch(effective_type)
+		if(resolved_material)
+			resolved_material.place_sheet(location, effective_amount)
 	else
 		if(effective_amount > 20)
 			CRASH("attempted to make too many atoms during a floor dismantle product drop.")
