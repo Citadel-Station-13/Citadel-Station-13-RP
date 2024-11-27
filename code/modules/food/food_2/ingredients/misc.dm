@@ -3,9 +3,10 @@
 	desc = "An egg!"
 	cookstage_information = list(list(0, 0.5, "raw egg and shell"), list(20 SECONDS, 1.2, "cooked egg"), list(40 SECONDS, 0.7, "overcooked egg"), list(90 SECONDS, 0.1, "sad, burnt egg"))
 	icon_state = "egg"
-	filling_color = "#FDFFD1"
+	filling_color = "#fdffd1"
 	volume = 10
-	max_servings = 1
+	can_stack = TRUE
+	food_weight = 100
 
 /obj/item/reagent_containers/food/snacks/ingredient/egg/Initialize(mapload)
 	. = ..()
@@ -91,10 +92,11 @@
 	icon_state = "cheesewheel"
 	slice_path = /obj/item/reagent_containers/food/snacks/ingredient/cheesewedge
 	cookstage_information = list(list(0, 1, "cheese"), list(20 SECONDS, 1.2, "cheese"), list(40 SECONDS, 0.7, "cheese"), list(90 SECONDS, 0.1, "burnt cheese"))
-	slices_num = 6
+	slices_num = 10
 	filling_color = "#FFF700"
 	nutriment_amt = 10
-	max_servings = 1
+	can_stack = FALSE
+	food_weight = 1000
 
 /obj/item/reagent_containers/food/snacks/ingredient/cheesewheel/Initialize(mapload)
 	. = ..()
@@ -115,10 +117,11 @@
 	cookstage_information = list(list(0, 1, "tangy, creamy cheese with sharp notes of butyric acid"), list(20 SECONDS, 1.2, "tangy, creamy cheese with sharp notes of butyric acid"), list(40 SECONDS, 0.7, "tangy, creamy cheese with sharp notes of butyric acid"), list(90 SECONDS, 0.1, "burnt cheese"))
 	icon_state = "bluecheesewheel"
 	slice_path = /obj/item/reagent_containers/food/snacks/ingredient/bluecheesewedge
-	slices_num = 6
+	slices_num = 10
 	filling_color = "#f1f0c8"
 	nutriment_amt = 10
-	max_servings = 1
+	can_stack = FALSE
+	food_weight = 1000
 
 /obj/item/reagent_containers/food/snacks/ingredient/bluecheesewheel/Initialize(mapload)
 	. = ..()

@@ -337,21 +337,21 @@
 /obj/item/reagent_containers/food/snacks/ingredient/grown/AltClick(mob/user)
 	if(!isliving(user))
 		return ..()
-	if(serving_amount < 1)
+	if(food_weight < 1)
 		to_chat(user, SPAN_WARNING("There's not enough of [src] to split off!"))
 		return
 	var/amount = input("How much to split?", "Split ingredient") as null|num
 	amount = round(amount) //0.6 >> 1
-	if(amount && amount < serving_amount)
-		var/final_ratio = amount/serving_amount
-		serving_amount -= amount
+	if(amount && amount < food_weight)
+		var/final_ratio = amount/food_weight
+		food_weight -= amount
 		update_icon()
 		var/obj/item/reagent_containers/food/snacks/ingredient/grown/split_ingredient = new /obj/item/reagent_containers/food/snacks/ingredient/grown(src, seed.name, FALSE) //dont make chems, we will fill it with chems
 		split_ingredient.cookstage = cookstage
 		split_ingredient.accumulated_time_cooked = accumulated_time_cooked
 		split_ingredient.reagents.clear_reagents() //so we aren't making it taste raw on init
 		split_ingredient.reagents.trans_to_holder(reagents, reagents.total_volume * final_ratio, 1, TRUE)
-		split_ingredient.serving_amount = amount
+		split_ingredient.food_weight = amount
 		split_ingredient.update_icon()
 		split_ingredient.update_desc()
 		user.put_in_hands_or_drop(split_ingredient)

@@ -173,7 +173,7 @@
 		mixed_stuff_overlay.color = food_color
 		fancy_overlay_to_add += mixed_stuff_overlay
 
-		tally_ingredient.consume_weight(ing_ratio * tally_ingredient.weight) //TODO: decide
+		tally_ingredient.consume_weight(ing_ratio * tally_ingredient.weight)
 
 	for(var/obj/item/reagent_containers/food/snacks/tally_snack in contents)
 		if(istype(tally_snack, /obj/item/reagent_containers/food/snacks/ingredient))
@@ -198,7 +198,7 @@
 
 	generated_serving.name = "[serving_thing_name] of "
 	generated_serving.name += foodname
-	generated_serving.desc = (generated_serving.name + ". It looks tasty. Potentially."
+	generated_serving.desc = (generated_serving.name + ". It looks tasty. Potentially.")
 	generated_serving.icon = fs_icon
 	generated_serving.icon_state = fs_iconstate
 	generated_serving.add_overlay(fancy_overlay_to_add)

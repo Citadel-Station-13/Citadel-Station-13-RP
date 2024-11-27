@@ -3278,7 +3278,7 @@
 
 ///////////////////////////////////////////
 // new old food stuff from bs12
-///////////////////////////////////////////	
+///////////////////////////////////////////
 
 /* BEGIN CITADEL CHANGE - Moved to /code/modules/food/food/snacks.dm for Aurora kitchen port
 /obj/item/reagent_containers/food/snacks/ingredient/bun/attackby(obj/item/W as obj, mob/user as mob)
@@ -3811,19 +3811,6 @@ END CITADEL CHANGE */
 /obj/item/reagent_containers/food/snacks/fries/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("cooking_oil", 1.2)//This is mainly for the benefit of adminspawning
-	bitesize = 2
-
-/obj/item/reagent_containers/food/snacks/microchips
-	name = "micro chips"
-	desc = "Soft and rubbery, should have fried them. Good for smaller crewmembers, maybe?"
-	icon_state = "microchips"
-	trash = /obj/item/trash/plate
-	filling_color = "#EDDD00"
-	nutriment_amt = 4
-	nutriment_desc = list("soggy fries" = 4)
-
-/obj/item/reagent_containers/food/snacks/microchips/Initialize(mapload)
-	. = ..()
 	bitesize = 2
 
 /obj/item/reagent_containers/food/snacks/ovenchips

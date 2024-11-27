@@ -9,14 +9,14 @@
 	required_method = METHOD_OVEN
 	reagents = list("honey" = 5, "spacespice" = 2, "blackpepper" = 1)
 	items = list(/obj/item/reagent_containers/food/snacks/ingredient/meat)
-	
+
 	result = /obj/item/reagent_containers/food/snacks/ribplate
 
 /datum/cooking_recipe/ribplate_bear //Putting this here for not seeing a roast section.
 	required_method = METHOD_OVEN
 	reagents = list("honey" = 5, "spacespice" = 2, "blackpepper" = 1)
 	items = list(/obj/item/reagent_containers/food/snacks/ingredient/bearmeat)
-	
+
 	result = /obj/item/reagent_containers/food/snacks/ribplate_bear
 
 /datum/cooking_recipe/teshariroast
@@ -25,7 +25,7 @@
 	reagents = list("sodiumchloride" = 1, "blackpepper" = 1)
 	items = list(/obj/item/reagent_containers/food/snacks/ingredient/meat/chicken/teshari)
 	result = /obj/item/reagent_containers/food/snacks/teshariroast
-	
+
 
 /datum/cooking_recipe/baguette
 	required_method = METHOD_OVEN
@@ -104,7 +104,7 @@
 	fruit = list("goldapple" = 1)
 	reagents = list("sugar" = 5, "milk" = 5, "flour" = 10, "egg" = 3)
 	result = /obj/item/reagent_containers/food/snacks/appletart
-	
+
 
 /datum/cooking_recipe/keylimepie
 	required_method = METHOD_OVEN
@@ -132,7 +132,7 @@
 	)
 	result = /obj/item/reagent_containers/food/snacks/cookie
 	result_quantity = 4
-	
+
 
 /datum/cooking_recipe/fortunecookie
 	required_method = METHOD_OVEN
@@ -219,7 +219,14 @@
 	result = /obj/item/reagent_containers/food/snacks/sliceable/cosmicbrownies
 
 
-
+/datum/cooking_recipe/muffin
+	required_method = METHOD_OVEN
+	reagents = list("milk" = 5, "sugar" = 5)
+	reagent_mix = RECIPE_REAGENT_REPLACE
+	items = list(
+		/obj/item/reagent_containers/food/snacks/ingredient/transformable/dough = 100
+	)
+	result = /obj/item/reagent_containers/food/snacks/muffin
 
 //Pizzas
 //=========================
@@ -298,7 +305,7 @@
 		/obj/item/reagent_containers/food/snacks/monkeycube
 	)
 	result = /obj/item/reagent_containers/food/snacks/monkeysdelight
-	
+
 
 
 
@@ -310,7 +317,7 @@
 	required_method = METHOD_OVEN
 	reagents = list("milk" = 5, "flour" = 15, "sugar" = 15, "egg" = 9)
 	result = /obj/item/reagent_containers/food/snacks/sliceable/plaincake
-	
+
 
 /datum/cooking_recipe/cake/carrot
 	required_method = METHOD_OVEN
@@ -368,13 +375,12 @@
 	reagents = list("milk" = 5, "flour" = 10, "egg" = 6, "honey" = 5)
 	result = /obj/item/reagent_containers/food/snacks/honeycake
 
-/datum/cooking_recipe/pancakes
-	required_method = METHOD_OVEN
-	fruit = list("berries" = 2)
+/datum/cooking_recipe/berryclafoutis
+	fruit = list("berries" = 1)
 	items = list(
-		/obj/item/reagent_containers/food/snacks/ingredient/transformable/dough/flat = 2
+		/obj/item/reagent_containers/food/snacks/ingredient/transformable/dough/flat = 100
 	)
-	result = /obj/item/reagent_containers/food/snacks/pancakes
+	result = /obj/item/reagent_containers/food/snacks/berryclafoutis
 
 /datum/cooking_recipe/lasagna
 	required_method = METHOD_OVEN
@@ -428,15 +434,22 @@
 	items = list(
 		/obj/item/reagent_containers/food/snacks/chocolatebar
 	)
-	
+
 	result = /obj/item/reagent_containers/food/snacks/truffle
 	result_quantity = 4
 
+/datum/cooking_recipe/eggplantparm
+	required_method = METHOD_OVEN
+	fruit = list("eggplant" = 400)
+	items = list(
+		/obj/item/reagent_containers/food/snacks/ingredient/cheesewedge = 200
+		)
+	result = /obj/item/reagent_containers/food/snacks/eggplantparm
 
 /datum/cooking_recipe/croissant
 	required_method = METHOD_OVEN
 	reagents = list("sodiumchloride" = 1, "water" = 5, "milk" = 5)
-	
+
 	items = list(/obj/item/reagent_containers/food/snacks/ingredient/transformable/dough/slice)
 	result = /obj/item/reagent_containers/food/snacks/croissant
 
@@ -452,7 +465,7 @@
 /datum/cooking_recipe/ham
 	required_method = METHOD_OVEN
 	reagents = list("brine" = 15)
-	
+
 	items = list(
 		/obj/item/reagent_containers/food/snacks/ingredient/meat = 3,
 	)
@@ -462,8 +475,33 @@
 	required_method = METHOD_OVEN
 	reagents = list("rum" = 10)
 	fruit = list("cherries" = 1, "spineapple" = 1)
-	
+
 	items = list(
 		/obj/item/reagent_containers/food/snacks/ingredient/ham
 	)
 	result = /obj/item/reagent_containers/food/snacks/rumham
+
+/datum/cooking_recipe/loadedbakedpotato
+	required_method = METHOD_OVEN
+	fruit = list("potato" = 100)
+	items = list(/obj/item/reagent_containers/food/snacks/ingredient/cheesewedge = 20)
+	result = /obj/item/reagent_containers/food/snacks/loadedbakedpotato
+
+
+/datum/cooking_recipe/fishfingers
+	required_method = METHOD_OVEN
+	reagents = list("flour" = 10,"egg" = 3)
+	items = list(
+		/obj/item/reagent_containers/food/snacks/ingredient/carp = 100
+	)
+	result = /obj/item/reagent_containers/food/snacks/fishfingers
+	reagent_mix = RECIPE_REAGENT_REPLACE
+
+
+/datum/cooking_recipe/tofurkey
+	items = list(
+		/obj/item/reagent_containers/food/snacks/ingredient/tofu,
+		/obj/item/reagent_containers/food/snacks/ingredient/tofu,
+		/obj/item/reagent_containers/food/snacks/stuffing
+	)
+	result = /obj/item/reagent_containers/food/snacks/tofurkey

@@ -1,7 +1,6 @@
-// todo: damn, 2011? sounds like ripe time for refactor / optimizations round 'ere-- [user was banned for this post]
-
 /* * * * * * * * * * * * * * * * * * * * * * * * * *
  * /datum/cooking_recipe by rastaf0            13 apr 2011 *
+ * refactored lolman360 2023/24 (it took me a year)
  * * * * * * * * * * * * * * * * * * * * * * * * * *
  * This is powerful and flexible recipe system.
  * It exists not only for food.
@@ -75,7 +74,7 @@ GLOBAL_LIST_EMPTY(cooking_recipes)
 			#define METHOD_GRILL "grill"
 			#define METHOD_STOVE "stove"
 			#define METHOD_DEEPFRY "deep fryer"
-			#define METHOD_BLOWTORCH "blowtorch" //i know a welder isn't actually one but you actually use blowtorches in cooking
+			#define METHOD_BLOWTORCH "blowtorch" //i know a welder isn't a blowtorch one but you actually use blowtorches in cooking
 			#define METHOD_ENERGETIC_ANOMALY "energetic anomaly" //supermatter, tesla, etc
 	*/
 	//these are string defines, and hence only 1 can be used.
