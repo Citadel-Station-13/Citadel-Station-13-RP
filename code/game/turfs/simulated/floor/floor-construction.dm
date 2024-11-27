@@ -52,14 +52,14 @@
 				trying_to_make = built_choices[choice_name]
 				if(!trying_to_make)
 					return FALSE
-	if(trying_to_make.build_cost < has_amount)
+	if(trying_to_make.build_cost > has_amount)
 		e_args.chat_feedback(SPAN_WARNING("You require at least [trying_to_make.build_cost] [with_item.name] to lay down those [trying_to_make.descriptor]"))
 		return FALSE
 	if(trying_to_make.build_time && !do_after(e_args.performer, trying_to_make.build_time))
 		return FALSE
 	if(flooring)
 		return FALSE
-	if(using_stack ? using_stack.use(trying_to_make.build_cost) : e_args.performer.attempt_void_item_for_installation(with_item))
+	if(using_stack ? !using_stack.use(trying_to_make.build_cost) : !e_args.performer.attempt_void_item_for_installation(with_item))
 		return FALSE
 	if(!using_stack)
 		qdel(with_item)

@@ -71,8 +71,10 @@
 	. = ..()
 	if(floortype)
 		CRASH("additional arg detected in /floor Initialize. turfs do not have init arguments as ChangeTurf does not accept them.")
-	if(initial_flooring)
-		set_flooring(RSflooring.fetch(flooring), TRUE)
+
+	var/datum/prototype/flooring/set_flooring_to
+	if(initial_flooring && (set_flooring_to = RSflooring.fetch(initial_flooring)))
+		set_flooring(set_flooring_to, TRUE)
 	else
 		// todo: these are only here under else because set flooring will trigger it
 		footstep_sounds = base_footstep_sounds
