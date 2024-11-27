@@ -229,14 +229,6 @@
 /datum/prototype/flooring/tiling/new_tile/steel_ridged
 	icon_base = "steel_ridged"
 
-/datum/prototype/flooring/linoleum
-	name = "linoleum"
-	desc = "It's like the 2390's all over again."
-	icon = 'icons/turf/flooring/linoleum.dmi'
-	icon_base = "lino"
-	build_type = /obj/item/stack/tile/linoleum
-	flooring_flags = TURF_REMOVE_SCREWDRIVER
-
 /datum/prototype/flooring/tiling/red
 	name = "floor"
 	icon_base = "white"

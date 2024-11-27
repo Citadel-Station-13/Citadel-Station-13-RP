@@ -182,7 +182,7 @@
 		effective_amount = build_cost
 
 	if(ispath(effective_type, /obj/item/stack))
-		new effective_type(A, effective_amount)
+		new effective_type(location, effective_amount)
 	else if(istext(effective_type) || ispath(effective_type, /datum/prototype/material))
 		var/datum/prototype/material/resolved_material = RSmaterials.fetch(effective_type)
 		if(resolved_material)
