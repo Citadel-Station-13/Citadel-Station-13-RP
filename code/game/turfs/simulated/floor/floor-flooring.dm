@@ -34,7 +34,7 @@
 	else
 		if(drop_product)
 			flooring.drop_product(src)
-		set_flooring(flooring.base_flooring)
+		set_flooring(RSflooring.fetch(flooring.base_flooring))
 		. = 1
 
 /**
