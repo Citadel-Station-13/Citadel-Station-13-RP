@@ -44,7 +44,7 @@
 				var/list/pick_choices = list()
 				for(var/datum/prototype/flooring/potential as anything in possible)
 					built_choices[potential.name] = potential
-					var/image/preview = image(potential.icon, potential.icon_state)
+					var/image/preview = image(potential.icon, potential.icon_base)
 					preview.maptext = MAPTEXT_CENTER(potential.name)
 					preview.maptext_width = 64
 					pick_choices[potential.name] = preview
@@ -53,7 +53,7 @@
 				if(!trying_to_make)
 					return FALSE
 	if(trying_to_make.build_cost < has_amount)
-		e_args.chat_feedback(SPAN_WARNING("You require at least [trying_to_make.build_cost] [with_item.name] to lay down those [trying_to_make.descriptor]]"))
+		e_args.chat_feedback(SPAN_WARNING("You require at least [trying_to_make.build_cost] [with_item.name] to lay down those [trying_to_make.descriptor]"))
 		return FALSE
 	if(trying_to_make.build_time && !do_after(e_args.performer, trying_to_make.build_time))
 		return FALSE

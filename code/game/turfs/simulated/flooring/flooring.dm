@@ -191,5 +191,5 @@
 		if(effective_amount > 20)
 			CRASH("attempted to make too many atoms during a floor dismantle product drop.")
 		for(var/i in 1 to effective_amount)
-			new effective_type(A)
+			new effective_type(location)
 
