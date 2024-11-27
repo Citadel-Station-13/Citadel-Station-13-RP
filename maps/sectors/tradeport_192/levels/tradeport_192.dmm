@@ -20186,18 +20186,8 @@
 /turf/simulated/floor/carpet/patterened/blue,
 /area/sector/nebula_tradeport/motel/arcade)
 "cJm" = (
-/obj/machinery/atmospherics/component/unary/vent_pump{
-	dir = 4;
-	external_pressure_bound = 0;
-	external_pressure_bound_default = 0;
-	frequency = null;
-	icon_state = "map_vent_in";
-	initialize_directions = 1;
-	internal_pressure_bound = 4000;
-	internal_pressure_bound_default = 4000;
-	pressure_checks = 2;
-	pressure_checks_default = 2;
-	pump_direction = 0
+/obj/machinery/atmospherics/component/unary/vent_pump/siphon/on{
+	dir = 4
 	},
 /turf/simulated/floor/reinforced/airmix,
 /area/tradeport/atmospherics)
@@ -21864,20 +21854,6 @@
 /obj/machinery/door/blast/regular,
 /turf/simulated/floor/airless,
 /area/tradeport/facility)
-"hpx" = (
-/obj/effect/paint/purple,
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/machinery/embedded_controller/radio/airlock/airlock_controller{
-	frequency = 8018;
-	id_tag = "trade_space_lock";
-	pixel_x = -25
-	},
-/obj/effect/shuttle_landmark/trade/hangar,
-/turf/simulated/wall/rshull,
-/area/shuttle/trade_ship/general)
 "hqf" = (
 /obj/machinery/light/small,
 /turf/simulated/floor/carpet/patterened/blue,
@@ -24805,18 +24781,6 @@
 	},
 /turf/simulated/floor/wood,
 /area/sector/nebula_tradeport/motel/room8)
-"pTo" = (
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/machinery/atmospherics/component/binary/pump/high_power/on{
-	dir = 1;
-	name = "Air Supply";
-	target_pressure = 1000
-	},
-/turf/simulated/mineral/vacuum,
-/area/tradeport/exterior)
 "pWh" = (
 /obj/structure/cable/yellow{
 	icon_state = "2-4"
@@ -26035,21 +25999,6 @@
 /obj/structure/curtain/open/black,
 /turf/simulated/floor/tiled/techmaint,
 /area/sector/nebula_tradeport/motel/arcade)
-"tEP" = (
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/effect/floor_decal/industrial/warning{
-	dir = 8
-	},
-/obj/effect/debris/cleanable/blood/gibs/robot/limb,
-/obj/effect/floor_decal/rust,
-/obj/machinery/atmospherics/pipe/simple/visible/cyan{
-	dir = 4
-	},
-/turf/simulated/mineral/vacuum,
-/area/tradeport/exterior)
 "tEX" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 8
@@ -26404,16 +26353,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/tradeport/spine)
-"uJq" = (
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/machinery/atmospherics/component/unary/vent_pump/siphon/on{
-	dir = 4
-	},
-/turf/simulated/mineral/vacuum,
-/area/tradeport/exterior)
 "uKz" = (
 /obj/structure/bed/chair/sofa/brown/left{
 	dir = 4
@@ -26653,31 +26592,6 @@
 /obj/machinery/light/small,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/sector/nebula_tradeport/motel/room7)
-"vAW" = (
-/obj/effect/paint/purple,
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/machinery/embedded_controller/radio/airlock/docking_port{
-	frequency = 1380;
-	id_tag = "tradeport_hangar_docker";
-	pixel_x = -25
-	},
-/obj/effect/shuttle_landmark/trade/hangar,
-/obj/overmap/entity/visitable/ship/landable/trade,
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/machinery/embedded_controller/radio/airlock/docking_port{
-	frequency = 1380;
-	id_tag = "tradeport_hangar_docker";
-	pixel_x = -25
-	},
-/obj/overmap/entity/visitable/ship/landable/trade,
-/turf/simulated/wall/rshull,
-/area/shuttle/trade_ship/general)
 "vBJ" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 1
@@ -27059,9 +26973,10 @@
 /turf/simulated/floor/carpet/turcarpet,
 /area/sector/nebula_tradeport/motel)
 "wPd" = (
-/obj/machinery/atmospherics/component/binary/pump/on{
+/obj/machinery/atmospherics/component/binary/pump/high_power/on{
 	dir = 1;
-	name = "Airmix to Distro"
+	name = "Air Supply";
+	target_pressure = 1000
 	},
 /turf/simulated/floor/plating,
 /area/tradeport/atmospherics)
@@ -50867,7 +50782,7 @@ asZ
 avW
 avW
 awV
-uJq
+awV
 abk
 avW
 aDh
@@ -51255,7 +51170,7 @@ awT
 awV
 awV
 awV
-tEP
+awV
 awV
 avt
 awV
@@ -51448,7 +51363,7 @@ aFc
 awT
 awV
 awV
-pTo
+awV
 awV
 awV
 abU
@@ -53548,7 +53463,7 @@ awV
 adA
 aJv
 aJv
-hpx
+anv
 alf
 aCW
 aCW
@@ -53565,7 +53480,7 @@ aoS
 aUZ
 aUZ
 ajh
-vAW
+anv
 aJv
 aNQ
 adA
