@@ -1514,7 +1514,7 @@
 /turf/simulated/floor/reinforced,
 /area/admin_planet/croatoan/extreme_security_containment_facilities)
 "eL" = (
-/obj/structure/sign/poster,
+/obj/structure/poster,
 /turf/simulated/wall/prepainted/civilian,
 /area/admin_planet/croatoan/civ_hydro)
 "eM" = (
@@ -5755,7 +5755,7 @@
 /turf/simulated/floor/tiled/white,
 /area/admin_planet/croatoan/civilian/dorms)
 "tP" = (
-/obj/structure/sign/poster,
+/obj/structure/poster,
 /turf/simulated/wall/prepainted,
 /area/admin_planet/croatoan/civ_kitchen)
 "tQ" = (
@@ -10412,7 +10412,7 @@
 /turf/simulated/floor/reinforced,
 /area/admin_planet/croatoan/high_sec_science_containment_cells)
 "KX" = (
-/obj/structure/sign/poster,
+/obj/structure/poster,
 /turf/simulated/wall/dungeon,
 /area/admin_planet/croatoan/civ_bar_public)
 "KY" = (
@@ -10599,7 +10599,7 @@
 /turf/simulated/floor/concrete/tile/outdoors,
 /area/admin_planet/croatoan/mountain_plains)
 "LA" = (
-/obj/structure/sign/poster,
+/obj/structure/poster,
 /turf/simulated/wall/prepainted,
 /area/admin_planet/croatoan/civ_bar_public)
 "LB" = (
@@ -14589,7 +14589,7 @@
 /turf/simulated/floor/reinforced,
 /area/admin_planet/croatoan/high_sec_science_entrance)
 "YN" = (
-/obj/structure/sign/poster,
+/obj/structure/poster,
 /turf/simulated/wall/prepainted,
 /area/admin_planet/croatoan/civilian/dorms)
 "YO" = (
@@ -14904,7 +14904,7 @@
 /area/admin_planet/croatoan/sec_hos_office)
 "ZY" = (
 /obj/effect/floor_decal/corner/grey/diagonal,
-/obj/structure/sign/poster,
+/obj/structure/poster,
 /turf/simulated/wall/prepainted/civilian,
 /area/admin_planet/croatoan/civ_kitchen)
 "ZZ" = (

@@ -3064,7 +3064,7 @@
 /obj/structure/table/bench/steel{
 	pixel_y = 22
 	},
-/obj/structure/sign/poster{
+/obj/structure/poster{
 	pixel_x = 32
 	},
 /obj/structure/flora/pottedplant/shoot{
@@ -7120,7 +7120,7 @@
 /obj/structure/table/hardwoodtable{
 	density = 0
 	},
-/obj/structure/sign/poster/nanotrasen{
+/obj/structure/poster/nanotrasen{
 	pixel_y = -32
 	},
 /obj/item/deck/tarot,
@@ -13898,7 +13898,7 @@
 /turf/simulated/floor/reinforced,
 /area/rnd/outpost/xenobiology/outpost_slimepens)
 "iMz" = (
-/obj/structure/sign/poster,
+/obj/structure/poster,
 /turf/simulated/wall/prepainted/security,
 /area/security/briefing_room)
 "iMB" = (
@@ -22580,7 +22580,7 @@
 	pixel_x = -2;
 	pixel_y = -2
 	},
-/obj/structure/sign/poster/nanotrasen{
+/obj/structure/poster/nanotrasen{
 	pixel_x = -32
 	},
 /obj/machinery/camera/network/civilian{

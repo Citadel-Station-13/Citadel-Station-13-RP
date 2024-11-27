@@ -15236,7 +15236,7 @@
 /obj/structure/bed/chair/wheelchair{
 	dir = 8
 	},
-/obj/structure/sign/poster{
+/obj/structure/poster{
 	pixel_y = 32
 	},
 /turf/simulated/floor/plating,
@@ -31057,7 +31057,7 @@
 /turf/simulated/floor,
 /area/rnd/outpost/atmos)
 "qJd" = (
-/obj/structure/sign/poster,
+/obj/structure/poster,
 /turf/simulated/wall/prepainted,
 /area/hallway/lower/first_west)
 "qJp" = (
@@ -35298,7 +35298,7 @@
 /obj/machinery/sleeper{
 	dir = 8
 	},
-/obj/structure/sign/poster{
+/obj/structure/poster{
 	pixel_y = 32
 	},
 /turf/simulated/floor/tiled/white,
