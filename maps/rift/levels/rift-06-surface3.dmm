@@ -19149,6 +19149,14 @@
 /obj/effect/paint/violet,
 /turf/simulated/floor/plating,
 /area/exploration/courser_dock)
+"ftd" = (
+/obj/machinery/embedded_controller/radio/simple_docking_controller{
+	frequency = 1380;
+	id_tag = "oldcentury_dock";
+	req_one_access = list(67)
+	},
+/turf/simulated/wall/r_wall/prepainted,
+/area/rift/surfacebase/outside/outside3)
 "ftr" = (
 /obj/machinery/door/firedoor/glass{
 	dir = 4
@@ -33868,7 +33876,7 @@ aus
 aus
 aus
 aus
-wyl
+ftd
 abI
 chB
 xBA
