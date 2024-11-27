@@ -17,7 +17,7 @@ CREATE_STANDARD_TURFS(/turf/simulated/floor/preset##TYPE); \
 	initial_flooring = /datum/prototype/flooring##TYPE; \
 	name = /datum/prototype/flooring##TYPE::name; \
 	icon = /datum/prototype/flooring##TYPE::icon; \
-	icon_base = /datum/prototype/flooring##TYPE::icon_base; \
+	icon_state = /datum/prototype/flooring##TYPE::icon_base; \
 	mz_flags = /datum/prototype/flooring##TYPE::mz_flags; \
 }; \
 /datum/prototype/flooring##TYPE { \

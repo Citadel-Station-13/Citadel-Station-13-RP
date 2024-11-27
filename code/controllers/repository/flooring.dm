@@ -22,7 +22,8 @@ REPOSITORY_DEF(flooring)
 	if(ispath(instance.build_type, /obj/item/stack))
 		LAZYADD(build_item_lookup[instance.build_type], instance)
 	else if(ispath(instance.build_type, /datum/prototype/material))
-		LAZYADD(build_material_lookup[instance.build_type], instance)
+		var/datum/prototype/material/casted_material = instance.build_type
+		LAZYADD(build_material_lookup[initial(casted_material.id)], instance)
 
 /datum/controller/repository/flooring/unload(datum/prototype/flooring/instance)
 	. = ..()
@@ -31,4 +32,5 @@ REPOSITORY_DEF(flooring)
 	if(ispath(instance.build_type, /obj/item/stack))
 		LAZYREMOVE(build_item_lookup[instance.build_type], instance)
 	else if(ispath(instance.build_type, /datum/prototype/material))
-		LAZYREMOVE(build_material_lookup[instance.build_type], instance)
+		var/datum/prototype/material/casted_material = instance.build_type
+		LAZYREMOVE(build_material_lookup[initial(casted_material.id)], instance)

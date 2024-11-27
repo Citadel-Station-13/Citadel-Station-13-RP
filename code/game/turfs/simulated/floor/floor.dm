@@ -54,6 +54,12 @@
 	var/initial_flooring
 	/// Resolved flooring datum. This is a singleton, do not modify under any circumstances.
 	var/datum/prototype/flooring/flooring
+	/// The decals that are **not** in the current layer of flooring vs not floored.
+	///
+	/// * If we have flooring right now, this is the decals under the flooring.
+	/// * If we don't have flooring right now, this is the decals that should be restored when being floored.
+	///   This might seem weird but it's a QoL thing so you don't need to repaint floors when changing flooring.
+	var/list/flooring_inversed_decals
 
 	//* Flooring - Legacy *//
 
@@ -70,19 +76,21 @@
 	else
 		// todo: these are only here under else because set flooring will trigger it
 		footstep_sounds = base_footstep_sounds
-		update_underfloor_objects()
 	if(mapload && can_dirty && can_start_dirty)
 		if(prob(dirty_prob))
 			dirt += rand(50,100)
 			update_dirt() //5% chance to start with dirt on a floor tile- give the janitor something to do
+	update_underfloor_objects()
 	update_layer()
 
 /turf/simulated/floor/is_plating()
-	return !flooring
+	return !flooring || flooring.is_plating
 
-#warn deal with this
+/turf/simulated/floor/get_examine_desc(mob/user, dist)
+	return flooring ? flooring.desc : desc
+
 /turf/simulated/floor/hides_underfloor_objects()
-	return flooring
+	return flooring && !flooring.is_plating
 
 /turf/simulated/proc/make_outdoors()
 	outdoors = TRUE
@@ -103,121 +111,6 @@
 		else
 			make_indoors()
 
-/**
- * Tear down a layer of flooring.
- *
- * @params
- * * drop_product - drop dismantled product
- * * strip_to_base - strip every layer of flooring.
- *
- * @return layers strpped
- */
-/turf/simulated/floor/proc/dismantle_flooring(drop_product, strip_to_base)
-	if(strip_to_base)
-		var/safety = 10
-		// incase ChangeTurf is invoked
-		var/turf/simulated/floor/self_reference_maybe = src
-		src = null
-		while(istype(self_reference_maybe) && self_reference_maybe.flooring)
-			--safety
-			if(safety < 0)
-				CRASH("infinite loop guard triggered on dismantling flooring to base.")
-			self_reference_maybe.dismantle_flooring(drop_product, FALSE)
-			++.
-	else
-		if(drop_product)
-			flooring.drop_product(src)
-		set_flooring(flooring.base_flooring)
-		. = 1
-
-/**
- * Sets our flooring to a specific instance.
- *
- * * This will trample any variable overrides like appearance data that we have on us
- *   in favor of the flooring's!
- * * Passing in 'null' will clear flooring.
- *
- * @params
- * * instance - the instance to use. this can be null.
- * * init - are we being hit from Initialize()? if so, we will refrain from setting variables
- *          already set by macros.
- */
-/turf/simulated/floor/proc/set_flooring(datum/prototype/flooring/instance, init)
-	if(instance == flooring)
-		return
-
-	flooring = instance
-
-	var/new_mz_flags
-	if(instance)
-		if(!init || !instance.__is_not_legacy)
-			name = instance.name
-			icon = instance.icon
-			icon_state = instance.icon_base
-		new_mz_flags = instance.mz_flags
-	else
-		name = /turf/simulated/floor::name
-		icon = /turf/simulated/floor::icon
-		icon_state = /turf/simulated/floor::icon_state
-		new_mz_flags = /turf/simulated/floor::mz_flags
-
-	if(new_mz_flags & MZ_MIMIC_BELOW)
-		enable_zmimic(new_mz_flags)
-		if(mz_flags != new_mz_flags)
-			mz_flags = new_mz_flags
-	else
-		disable_zmimic()
-
-	if(!init)
-		QUEUE_SMOOTH(src)
-		QUEUE_SMOOTH_NEIGHBORS(src)
-
-	#warn below
-	make_plating(null, TRUE, TRUE)
-
-	footstep_sounds = instance.footstep_sounds
-	// We are plating switching to flooring, swap out old_decals for decals
-	var/list/overfloor_decals = old_decals
-	old_decals = decals
-	decals = overfloor_decals
-
-	update_underfloor_objects()
-	update_layer()
-	#warn above
-
-//This proc will set floor_type to null and the update_icon() proc will then change the icon_state of the turf
-//This proc auto corrects the grass tiles' siding.
-/turf/simulated/floor/proc/make_plating(place_product, defer_icon_update, strip_bare)
-
-	if(flooring)
-		// We are flooring switching to plating, swap out old_decals for decals.
-		var/list/underfloor_decals = old_decals
-		old_decals = decals
-		decals = underfloor_decals
-		color = null
-
-		if(place_product)
-			flooring.drop_product(src)
-		var/newtype = flooring.get_plating_type()
-		if(newtype && !strip_bare) // Has a custom plating type to become
-			set_flooring(RSflooring.fetch(newtype))
-		else
-			flooring = null
-			// this branch is only if we don't set flooring because otherwise it'll do it for us
-			if(!defer_icon_update)
-				name = base_name
-				desc = base_desc
-				icon = base_icon
-				icon_state = base_icon_state
-				footstep_sounds = base_footstep_sounds
-				QUEUE_SMOOTH(src)
-				QUEUE_SMOOTH_NEIGHBORS(src)
-				update_underfloor_objects()
-				update_layer()
-
-	broken = null
-	burnt = null
-	flooring_legacy_override_state = null
 
 /turf/simulated/floor/proc/update_layer()
 	if(flooring)

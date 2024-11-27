@@ -279,8 +279,7 @@
 			update_icons()
 			visible_message("<span class='notice'>\The [src] begins to remove the broken floor.</span>")
 			if(do_after(src, 50, F))
-				if(F.broken || F.burnt)
-					F.make_plating()
+				F.auto_dismantle_flooring()
 			target = null
 			busy = 0
 			update_icons()

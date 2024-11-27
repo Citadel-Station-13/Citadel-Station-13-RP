@@ -26,8 +26,6 @@ GLOBAL_LIST_EMPTY(turf_edge_cache)
 /turf/simulated/floor/custom_smooth(junctions)
 	if(flooring)
 		// Set initial icon and strings.
-		desc = flooring.desc
-
 		if(flooring_legacy_override_state)
 			icon_state = flooring_legacy_override_state
 		else

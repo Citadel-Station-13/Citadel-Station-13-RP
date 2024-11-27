@@ -21,14 +21,12 @@
 
 	/// Turf name override. directly interpolated into the turf's `name` variable.
 	var/name = "floor"
-	#warn audit
 	/// The icon to use
 	var/icon
 	/// The base icon state to use.
 	///
 	/// * This is also the preview state, so it must exist.
 	var/icon_base
-	#warn impl, rename to `icon_state`
 	/// Same z flags used for turfs, i.e ZMIMIC_DEFAULT etc.
 	var/mz_flags = MZ_ATMOS_UP | MZ_OPEN_UP
 
@@ -37,7 +35,6 @@
 
 	/// Examine description. Read on runtime if the turf has a floor.
 	var/desc
-	#warn audit
 
 	//*                      Composition                    *//
 	//* These variables are accessed as needed by the turf. *//
@@ -77,15 +74,17 @@
 	/// Amount of time required to build us.
 	var/build_time = 0 SECONDS
 	/// TOOL_* or list of TOOL_* enums of what will cleanly dismantle us.
-	var/dismantle_tool
+	///
+	/// * Initialized to a list if it's not a list.
+	var/list/dismantle_tool
 	/// Time to dismantle with a tool.
+	///
+	/// * Initialized to a list if it's not a list.
 	var/dismantle_time = 0 SECONDS
-	#warn hook
 	/// TOOL_* or list of TOOL_* enums of what will destroy us.
-	var/destroy_tool
+	var/list/destroy_tool
 	/// Time to destroy with a tool.
 	var/destroy_time = 0 SECONDS
-	#warn hook
 	/// Do we allow tile painters and similar decal appliers to paint us?
 	var/can_paint_on = TRUE
 
@@ -153,6 +152,13 @@
 	var/smooth_movable_atom = SMOOTH_NONE
 	var/list/movable_atom_whitelist = list()
 	var/list/movable_atom_blacklist = list()
+
+/datum/prototype/flooring/New()
+	..()
+	if(!islist(dismantle_tool))
+		dismantle_tool = dismantle_tool ? list(dismantle_tool) : list()
+	if(!islist(destroy_tool))
+		destroy_tool = destroy_tool ? list(destroy_tool) : list()
 
 /datum/prototype/flooring/proc/get_flooring_overlay(cache_key, base_state, icon_dir = 0, layer = FLOOR_DECAL_LAYER)
 	if(!flooring_cache[cache_key])

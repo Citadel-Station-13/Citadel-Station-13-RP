@@ -118,13 +118,14 @@
 	if(W.is_crowbar())
 		if(broken || burnt)
 			to_chat(user, "<span class='notice'>You remove the broken [flooring.descriptor].</span>")
-			make_plating()
+			dismantle_flooring(FALSE)
 		else if(flooring.flooring_flags & TURF_IS_FRAGILE)
 			to_chat(user, "<span class='danger'>You forcefully pry off the [flooring.descriptor], destroying them in the process.</span>")
+			dismantle_flooring(FALSE)
 			make_plating()
 		else if(flooring.flooring_flags & TURF_REMOVE_CROWBAR)
 			to_chat(user, "<span class='notice'>You lever off the [flooring.descriptor].</span>")
-			make_plating(1)
+			dismantle_flooring(TRUE)
 		else
 			return 0
 		playsound(src, W.tool_sound, 80, 1)
@@ -133,17 +134,17 @@
 		if(broken || burnt)
 			return 0
 		to_chat(user, "<span class='notice'>You unscrew and remove the [flooring.descriptor].</span>")
-		make_plating(1)
+		dismantle_flooring(TRUE)
 		playsound(src, W.tool_sound, 80, 1)
 		return 1
 	else if(W.is_wrench() && (flooring.flooring_flags & TURF_REMOVE_WRENCH))
 		to_chat(user, "<span class='notice'>You unwrench and remove the [flooring.descriptor].</span>")
-		make_plating(1)
+		dismantle_flooring(TRUE)
 		playsound(src, W.tool_sound, 80, 1)
 		return 1
 	else if(istype(W, /obj/item/shovel) && (flooring.flooring_flags & TURF_REMOVE_SHOVEL))
 		to_chat(user, "<span class='notice'>You shovel off the [flooring.descriptor].</span>")
-		make_plating(1)
+		dismantle_flooring(TRUE)
 		playsound(src, 'sound/items/Deconstruct.ogg', 80, 1)
 		return 1
 	return 0
