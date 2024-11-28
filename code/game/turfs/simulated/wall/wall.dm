@@ -23,6 +23,7 @@
 	integrity_failure = 0
 
 	armor_type = /datum/armor/object/heavy
+	outdoors = FALSE
 
 	opacity = TRUE
 	density = TRUE

@@ -9,6 +9,9 @@
 // [icon_base]_corners: directional overlays for non-edge corners.
 
 /datum/prototype/flooring
+	// todo: don't do this, just set IDs on everything.
+	anonymous = TRUE
+
 	//*                      Internal                       *//
 
 	/// Set to TRUE by DECLARE_FLOORING macro. This is to signal to the system

@@ -1,4 +1,5 @@
 DECLARE_FLOORING(/linoleum)
+	id = "Linoleum"
 	name = "linoleum"
 	desc = "It's like the 2390's all over again."
 	icon = 'icons/turf/flooring/linoleum.dmi'

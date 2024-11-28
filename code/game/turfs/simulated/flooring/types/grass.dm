@@ -1,4 +1,5 @@
 DECLARE_FLOORING(/grass)
+	id = "Grass"
 	name = "grass"
 	desc = "Do they smoke grass out in space, Bowie? Or do they smoke AstroTurf?"
 	icon = 'icons/turf/flooring/grass.dmi'
