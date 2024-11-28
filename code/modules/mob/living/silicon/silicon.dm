@@ -58,12 +58,12 @@
 	silicon_mob_list |= src
 	. = ..()
 	add_language(LANGUAGE_GALCOM)
-	set_default_language(RSlanguages.legacy_resolve_language_name(LANGUAGE_GALCOM))
+	set_default_language(RSlanguages.fetch(/datum/prototype/language/common))
 	create_translation_context()
 	init_id()
 	init_subsystems()
 
-	for(var/datum/prototype/language/L as anything in RSlanguages.fetch_subtypes(/datum/prototype/language))
+	for(var/datum/prototype/language/L as anything in RSlanguages.fetch_subtypes_immutable(/datum/prototype/language))
 		if(L.translation_class & TRANSLATION_CLASS_LEVEL_1)
 			add_language(L)
 	add_language(LANGUAGE_EAL)

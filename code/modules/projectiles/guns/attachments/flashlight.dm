@@ -61,7 +61,7 @@
 /obj/item/gun_attachment/flashlight/rail
 	name = "rail light"
 	icon_state = "raillight"
-	prototype_id = "attachment-rail-light"
+	prototype_id = "ItemAttachmentRailLight"
 	align_x = 19
 	align_y = 17
 	attachment_slot = GUN_ATTACHMENT_SLOT_RAIL
@@ -83,7 +83,7 @@
 /obj/item/gun_attachment/flashlight/maglight
 	name = "maglight"
 	icon_state = "maglight"
-	prototype_id = "attachment-mag-light"
+	prototype_id = "ItemAttachmentMaglight"
 	align_x = 11
 	align_y = 3
 	attachment_slot = GUN_ATTACHMENT_SLOT_SIDEBARREL

@@ -3302,7 +3302,7 @@
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d1starboardafthall)
 "ces" = (
-/obj/structure/sign/poster/nanotrasen{
+/obj/structure/poster/nanotrasen{
 	pixel_x = 32
 	},
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
@@ -24943,7 +24943,7 @@
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d1starboardamidhall)
 "pMA" = (
-/obj/item/defib_kit/jumper_kit,
+/obj/item/defib_kit,
 /obj/machinery/newscaster{
 	pixel_y = 32
 	},

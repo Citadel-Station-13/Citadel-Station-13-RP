@@ -3,7 +3,7 @@
 /turf/space,
 /area)
 "ab" = (
-/turf/simulated/mineral/triumph,
+/turf/simulated/mineral,
 /area/awaymission)
 "ac" = (
 /turf/simulated/floor/airless,
@@ -2064,7 +2064,7 @@
 /turf/simulated/floor/plating,
 /area/awaymission/BMPship3)
 "iG" = (
-/obj/item/contraband/poster,
+/obj/item/poster,
 /turf/simulated/floor/plating,
 /area/awaymission/BMPship3)
 "iK" = (

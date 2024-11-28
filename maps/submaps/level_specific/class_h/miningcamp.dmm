@@ -2,44 +2,44 @@
 "a" = (
 /obj/structure/closet/crate/freezer/rations,
 /turf/simulated/floor/outdoors/beach/sand/lowdesert,
-/area/tether_away/beach/desert/poi/minecamp)
+/area/sector/miaphus/beach/desert/poi/minecamp)
 "b" = (
 /turf/simulated/floor/outdoors/beach/sand/lowdesert,
-/area/tether_away/beach/desert/poi/minecamp)
+/area/sector/miaphus/beach/desert/poi/minecamp)
 "d" = (
 /obj/structure/table/woodentable,
 /obj/item/flashlight/lantern,
 /obj/item/pickaxe,
 /obj/item/pickaxe,
 /turf/simulated/mineral/floor/cave,
-/area/tether_away/beach/desert/poi/minecamp)
+/area/sector/miaphus/beach/desert/poi/minecamp)
 "e" = (
 /obj/item/flame/lighter/zippo/taj,
 /turf/simulated/floor/outdoors/beach/sand/lowdesert,
-/area/tether_away/beach/desert/poi/minecamp)
+/area/sector/miaphus/beach/desert/poi/minecamp)
 "g" = (
 /turf/template_noop,
 /area/template_noop)
 "h" = (
 /turf/simulated/mineral/floor/cave,
-/area/tether_away/beach/desert/poi/minecamp)
+/area/sector/miaphus/beach/desert/poi/minecamp)
 "j" = (
 /obj/structure/bonfire,
 /turf/simulated/floor/outdoors/beach/sand/lowdesert,
-/area/tether_away/beach/desert/poi/minecamp)
+/area/sector/miaphus/beach/desert/poi/minecamp)
 "m" = (
 /turf/simulated/wall/wood,
-/area/tether_away/beach/desert/poi/minecamp)
+/area/sector/miaphus/beach/desert/poi/minecamp)
 "p" = (
 /obj/structure/table/rack,
 /obj/fiftyspawner/log,
 /turf/simulated/floor/outdoors/beach/sand/lowdesert,
-/area/tether_away/beach/desert/poi/minecamp)
+/area/sector/miaphus/beach/desert/poi/minecamp)
 "q" = (
 /obj/random/junk,
 /obj/random/trash,
 /turf/simulated/floor/outdoors/beach/sand/lowdesert,
-/area/tether_away/beach/desert/poi/minecamp)
+/area/sector/miaphus/beach/desert/poi/minecamp)
 "r" = (
 /obj/random/trash,
 /turf/simulated/floor/outdoors/beach/sand/lowdesert,
@@ -47,7 +47,7 @@
 "w" = (
 /obj/random/junk,
 /turf/simulated/floor/outdoors/beach/sand/lowdesert,
-/area/tether_away/beach/desert/poi/minecamp)
+/area/sector/miaphus/beach/desert/poi/minecamp)
 "y" = (
 /obj/structure/table/rack,
 /obj/item/storage/bag/ore,
@@ -55,42 +55,42 @@
 /obj/item/storage/bag/ore,
 /obj/item/storage/bag/ore,
 /turf/simulated/floor/outdoors/beach/sand/lowdesert,
-/area/tether_away/beach/desert/poi/minecamp)
+/area/sector/miaphus/beach/desert/poi/minecamp)
 "A" = (
 /obj/structure/bed/padded,
 /turf/simulated/mineral/floor/cave,
-/area/tether_away/beach/desert/poi/minecamp)
+/area/sector/miaphus/beach/desert/poi/minecamp)
 "B" = (
 /obj/structure/table/bench/wooden,
 /turf/simulated/floor/outdoors/beach/sand/lowdesert,
-/area/tether_away/beach/desert/poi/minecamp)
+/area/sector/miaphus/beach/desert/poi/minecamp)
 "L" = (
 /obj/random/trash,
 /turf/simulated/floor/outdoors/beach/sand/lowdesert,
-/area/tether_away/beach/desert/poi/minecamp)
+/area/sector/miaphus/beach/desert/poi/minecamp)
 "P" = (
 /obj/structure/ore_box,
 /turf/simulated/floor/outdoors/beach/sand/lowdesert,
-/area/tether_away/beach/desert/poi/minecamp)
+/area/sector/miaphus/beach/desert/poi/minecamp)
 "S" = (
 /obj/structure/sandbag,
 /turf/simulated/floor/outdoors/beach/sand/lowdesert,
-/area/tether_away/beach/desert/poi/minecamp)
+/area/sector/miaphus/beach/desert/poi/minecamp)
 "T" = (
 /obj/structure/simple_door/wood,
 /turf/simulated/mineral/floor/cave,
-/area/tether_away/beach/desert/poi/minecamp)
+/area/sector/miaphus/beach/desert/poi/minecamp)
 "U" = (
 /turf/simulated/floor/outdoors/beach/sand/lowdesert,
 /area/template_noop)
 "W" = (
 /obj/random/junk,
 /turf/simulated/mineral/floor/cave,
-/area/tether_away/beach/desert/poi/minecamp)
+/area/sector/miaphus/beach/desert/poi/minecamp)
 "Y" = (
 /obj/random/trash,
 /turf/simulated/mineral/floor/cave,
-/area/tether_away/beach/desert/poi/minecamp)
+/area/sector/miaphus/beach/desert/poi/minecamp)
 
 (1,1,1) = {"
 g

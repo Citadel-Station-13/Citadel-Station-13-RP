@@ -8748,7 +8748,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/exploration/courser_dock)
 "gvS" = (
-/obj/structure/sign/poster,
+/obj/structure/poster,
 /turf/simulated/wall/r_wall/prepainted/command,
 /area/crew_quarters/heads/hop)
 "gwu" = (
@@ -10897,7 +10897,7 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
-/obj/structure/sign/poster{
+/obj/structure/poster{
 	pixel_y = 32
 	},
 /turf/simulated/floor/lino,
@@ -11237,7 +11237,7 @@
 /obj/machinery/light/no_nightshift{
 	dir = 1
 	},
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/endeavour/hallway/d1fwdmaint)
 "ipW" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
@@ -12470,7 +12470,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 6
 	},
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/endeavour/hallway/d1fwdmaint)
 "jmB" = (
 /obj/machinery/holopad,
@@ -12511,8 +12511,8 @@
 /turf/simulated/floor/wood,
 /area/endeavour/surfacebase/sauna)
 "jod" = (
-/obj/structure/sign/poster,
-/turf/simulated/wall/prepainted/civilian,
+/obj/structure/poster,
+/turf/simulated/wall/prepainted,
 /area/maintenance/substation/civilian)
 "joA" = (
 /turf/simulated/floor/tiled/techfloor/grid,
@@ -12669,7 +12669,7 @@
 /obj/item/duct_tape_roll,
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/mauve/border,
-/obj/item/defib_kit/jumper_kit,
+/obj/item/defib_kit,
 /obj/item/radio/intercom{
 	pixel_y = -24
 	},
@@ -18055,8 +18055,8 @@
 /turf/simulated/floor/wood,
 /area/lawoffice)
 "npN" = (
-/obj/structure/sign/poster,
-/turf/simulated/wall/prepainted/civilian,
+/obj/structure/poster,
+/turf/simulated/wall/prepainted,
 /area/endeavour/hallway/d1aftmaint)
 "npZ" = (
 /obj/effect/floor_decal/borderfloorblack{
@@ -27710,7 +27710,7 @@
 	dir = 10
 	},
 /obj/structure/flora/ausbushes/ppflowers,
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/endeavour/hallway/d1fwdmaint)
 "uOR" = (
 /obj/effect/floor_decal/steeldecal/steel_decals9,
@@ -30227,7 +30227,7 @@
 /obj/effect/floor_decal/corner/mauve/border{
 	dir = 1
 	},
-/obj/structure/sign/poster/nanotrasen{
+/obj/structure/poster/nanotrasen{
 	pixel_y = 32
 	},
 /turf/simulated/floor/tiled,

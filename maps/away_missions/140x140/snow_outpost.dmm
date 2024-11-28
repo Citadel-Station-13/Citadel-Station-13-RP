@@ -1925,7 +1925,7 @@
 /area/awaymission/snow_outpost/dark)
 "hm" = (
 /obj/structure/closet/cabinet,
-/obj/item/contraband/poster,
+/obj/item/poster,
 /turf/simulated/floor/carpet,
 /area/awaymission/snow_outpost/dark)
 "hn" = (
@@ -2187,7 +2187,7 @@
 /turf/simulated/shuttle/wall,
 /area/awaymission/snow_outpost/outside)
 "in" = (
-/turf/unsimulated/mineral,
+/turf/unsimulated/wall/mineral,
 /area/awaymission/snow_outpost/outside)
 "io" = (
 /obj/structure/flora/grass/brown,
@@ -2357,7 +2357,7 @@
 /area/awaymission/snow_outpost/dark)
 "jb" = (
 /obj/structure/flora/tree/sif,
-/turf/unsimulated/mineral,
+/turf/unsimulated/wall/mineral,
 /area/awaymission/snow_outpost/outside)
 "jo" = (
 /turf/simulated/mineral/floor/ignore_mapgen,
@@ -2399,7 +2399,7 @@
 /turf/simulated/floor/tiled/white,
 /area/awaymission/snow_outpost/powered)
 "pV" = (
-/turf/unsimulated/mineral,
+/turf/unsimulated/wall/mineral,
 /area/awaymission/snow_outpost/outside/nospawn)
 "qL" = (
 /obj/random/landmine,
@@ -2672,7 +2672,7 @@
 /turf/simulated/floor/snow/snow2,
 /area/awaymission/snow_outpost/dark)
 "Rs" = (
-/turf/unsimulated/mineral,
+/turf/unsimulated/wall/mineral,
 /area/awaymission/snow_outpost/dark)
 "RF" = (
 /turf/simulated/mineral/ignore_mapgen,

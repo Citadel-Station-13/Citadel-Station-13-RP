@@ -5311,7 +5311,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/hallway/primary/aft)
 "dBa" = (
-/obj/structure/sign/poster{
+/obj/structure/poster{
 	pixel_y = -32
 	},
 /turf/simulated/floor/tiled/dark,
@@ -28263,7 +28263,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/bridge)
 "tPy" = (
-/obj/structure/sign/poster{
+/obj/structure/poster{
 	pixel_y = 32
 	},
 /turf/simulated/floor/carpet,

@@ -177,7 +177,7 @@
 "ky" = (
 /obj/effect/zone_divider,
 /obj/effect/zone_divider,
-/turf/unsimulated/wall/planetary/lythios43c{
+/turf/unsimulated/wall/planetary/permafrost{
 	desc = "Glacial permafrost, compacted harder than stone.";
 	icon_state = "icerock-dark";
 	name = "glacier wall"
@@ -196,7 +196,7 @@
 /obj/effect/zone_divider,
 /obj/effect/zone_divider,
 /obj/effect/zone_divider,
-/turf/unsimulated/wall/planetary/lythios43c{
+/turf/unsimulated/wall/planetary/permafrost{
 	desc = "Glacial permafrost, compacted harder than stone.";
 	icon_state = "icerock-dark";
 	name = "glacier wall"
@@ -241,7 +241,7 @@
 /obj/effect/zone_divider,
 /obj/effect/zone_divider,
 /obj/effect/zone_divider,
-/turf/unsimulated/wall/planetary/lythios43c{
+/turf/unsimulated/wall/planetary/permafrost{
 	desc = "Glacial permafrost, compacted harder than stone.";
 	icon_state = "icerock-dark";
 	name = "glacier wall"
@@ -376,7 +376,7 @@
 /area/rift/surfacebase/underground/under1)
 "wV" = (
 /obj/effect/zone_divider,
-/turf/unsimulated/wall/planetary/lythios43c{
+/turf/unsimulated/wall/planetary/permafrost{
 	desc = "Glacial permafrost, compacted harder than stone.";
 	icon_state = "icerock-dark";
 	name = "glacier wall"
@@ -628,7 +628,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/quartermaster/mining_airlock)
 "Nd" = (
-/turf/unsimulated/wall/planetary/lythios43c{
+/turf/unsimulated/wall/planetary/permafrost{
 	desc = "Glacial permafrost, compacted harder than stone.";
 	icon_state = "icerock-dark"
 	},
@@ -687,7 +687,7 @@
 /turf/simulated/wall/prepainted/cargo,
 /area/quartermaster/mining_airlock)
 "Ro" = (
-/turf/unsimulated/wall/planetary/lythios43c{
+/turf/unsimulated/wall/planetary/permafrost{
 	desc = "Glacial permafrost, compacted harder than stone.";
 	icon_state = "icerock-dark";
 	name = "glacier wall"

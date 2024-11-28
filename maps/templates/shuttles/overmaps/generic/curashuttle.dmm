@@ -352,7 +352,7 @@
 /area/shuttle/curabitur/curashuttle/med)
 "aM" = (
 /obj/structure/table/rack,
-/obj/item/defib_kit/jumper_kit/loaded,
+/obj/item/defib_kit/loaded,
 /obj/item/defib_kit/compact/combat/loaded,
 /obj/item/defib_kit/compact/combat/loaded,
 /obj/item/mmi/radio_enabled{

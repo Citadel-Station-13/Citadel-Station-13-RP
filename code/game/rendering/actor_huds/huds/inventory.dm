@@ -325,7 +325,8 @@
 		return
 	if(applied_active_hand)
 		var/atom/movable/screen/actor_hud/inventory/plate/hand/old_hand = hands[applied_active_hand]
-		old_hand.cut_overlay("[old_hand.icon_state]-active")
+		old_hand.active = FALSE
+		old_hand.update_icon()
 		applied_active_hand = null
 	if(!to_index)
 		return
@@ -334,7 +335,8 @@
 		CRASH("attempted to set hand active out of bounds")
 	applied_active_hand = to_index
 	var/atom/movable/screen/actor_hud/inventory/plate/hand/new_hand = hands[to_index]
-	new_hand.add_overlay("[new_hand.icon_state]-active")
+	new_hand.active = TRUE
+	new_hand.update_icon()
 
 //* Hooks *//
 
