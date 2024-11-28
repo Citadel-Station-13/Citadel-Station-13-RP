@@ -3641,6 +3641,7 @@
 #include "code\modules\mob\freelook\mask\cultnet.dm"
 #include "code\modules\mob\freelook\mask\eye.dm"
 #include "code\modules\mob\freelook\mask\update_triggers.dm"
+#include "code\modules\mob\inventory\inventory-get.dm"
 #include "code\modules\mob\inventory\inventory-hands-check.dm"
 #include "code\modules\mob\inventory\inventory-hands-drop.dm"
 #include "code\modules\mob\inventory\inventory-hands-get.dm"

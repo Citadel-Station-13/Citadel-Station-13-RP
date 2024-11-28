@@ -26,7 +26,7 @@
  * @params
  * * slot_id - slot ID
  *
- * @return /obj/item or null
+ * @return list() of items
  */
 /datum/inventory/proc/get_items_in_slot(slot_id) as /list
 	var/obj/item/in_slot = owner._item_by_slot(slot_id)

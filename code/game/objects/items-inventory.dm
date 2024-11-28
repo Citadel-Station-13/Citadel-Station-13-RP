@@ -346,6 +346,9 @@
  * returns either an item or a list
  * get_equipped_items() uses this so accessories are included
  * anything this returns is considered to be in the same slot.
+ *
+ * * You must never return anything that would be returned when this is called on any other item!
+ *   Things can only be in one slot at a time, even with this compound-item system.
  */
 /obj/item/proc/inv_slot_attached()
 	if(worn_over)
