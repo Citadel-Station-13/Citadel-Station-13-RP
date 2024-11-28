@@ -1,6 +1,32 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
+/**
+ * Gets the item held in a given hand index
+ *
+ * * This expects a valid index.
+ *
+ * @return /obj/item or null.
+ */
+/datum/inventory/proc/get_item_in_hand(index) as /obj/item
+	return held_items[index]
+
+/**
+ * Gets the item held in a given hand index
+ *
+ * * This expects a valid index.
+ * * This returns a list, and includes all items in compound items.
+ *
+ * @return /obj/item or null.
+ */
+/datum/inventory/proc/get_items_in_hand(index) as /obj/item
+	var/obj/item/held = held_items[index]
+	if(!held)
+		return
+	return held.inv_slot_attached()
+
+// todo: old below
+
 //* Procs in this file are mirrored to the /mob level for ease of use.        *//
 //*                                                                           *//
 //* In the future, there should likely be a separation of concerns            *//
@@ -16,18 +42,7 @@
  *
  * @return /obj/item or null.
  */
-/datum/inventory/proc/get_held_item(index)
-	RETURN_TYPE(/obj/item)
-	return held_items[index]
-
-/**
- * Gets the item held in a given hand index
- *
- * * This expects a valid index.
- *
- * @return /obj/item or null.
- */
-/mob/proc/get_held_item(index)
+/mob/proc/get_item_in_hand(index)
 	RETURN_TYPE(/obj/item)
 	return inventory?.held_items[index]
 

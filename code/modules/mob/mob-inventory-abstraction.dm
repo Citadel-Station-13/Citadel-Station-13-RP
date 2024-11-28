@@ -56,7 +56,7 @@
  * returns -1 if no slot
  * YES, MAGIC VALUE BUT SOLE USER IS 20 LINES ABOVE, SUE ME.
  */
-/mob/proc/_item_by_slot(slot)
+/mob/proc/_item_by_slot(slot) as /obj/item
 	PROTECTED_PROC(TRUE)
 	return INVENTORY_SLOT_DOES_NOT_EXIST
 
