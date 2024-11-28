@@ -94,7 +94,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	/// flags
 	var/inventory_slot_flags = INV_SLOT_IS_RENDERED
 	/// filter flags
-	var/inventory_slot_filter = INV_SLOT_FILTER_UNKNOWN
+	var/inventory_filter_flags = INV_FILTER_UNKNOWN
 	/// semantic layer
 	///
 	/// * higher = outer, lower = inner
@@ -275,7 +275,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 /datum/inventory_slot/inventory
 	abstract_type = /datum/inventory_slot/inventory
 	inventory_slot_flags = INV_SLOT_IS_RENDERED | INV_SLOT_IS_INVENTORY | INV_SLOT_IS_STRIPPABLE | INV_SLOT_HUD_REQUIRES_EXPAND | INV_SLOT_CONSIDERED_WORN
-	inventory_slot_filter = INV_SLOT_FILTER_EQUIPMENT
+	inventory_filter_flags = INV_FILTER_EQUIPMENT
 	inventory_hud_rendered = TRUE
 
 /datum/inventory_slot/inventory/back
@@ -896,7 +896,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	always_show_on_strip_menu = FALSE
 	abstract_type = /datum/inventory_slot/restraints
 	inventory_slot_flags = INV_SLOT_IS_RENDERED | INV_SLOT_IS_STRIPPABLE | INV_SLOT_STRIP_ONLY_REMOVES | INV_SLOT_STRIP_SIMPLE_LINK
-	inventory_slot_filter = INV_SLOT_FILTER_RESTRAINTS
+	inventory_filter_flags = INV_FILTER_RESTRAINTS
 
 /datum/inventory_slot/restraints/handcuffs
 	name = "handcuffed"

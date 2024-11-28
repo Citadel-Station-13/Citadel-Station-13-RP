@@ -16,8 +16,14 @@
 	/// our action holder
 	var/datum/action_holder/actions
 
+	//* Caches *//
+	/// Cache holder
+	var/list/cache = list()
+
 	//* HUDs *//
 	/// Actor HUDs using us
+	///
+	/// * Lazy list
 	var/list/datum/actor_hud/inventory/huds_using
 
 	//* Inventory *//
@@ -39,8 +45,9 @@
 	//* Slots *//
 	/// our base slot ids associated to remappings
 	///
+	/// * Lazy list
 	/// * key: string id; value: remapping list with keys of INVENTORY_SLOT_REMAP_*
-	/// * never ever modify this list in-place, this is why it's private; this may be shared lists in species!
+	/// * Never ever modify this list in-place, this is why it's private; this may be shared lists in species!
 	VAR_PRIVATE/list/base_inventory_slots
 
 /datum/inventory/New(mob/M)

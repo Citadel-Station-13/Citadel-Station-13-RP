@@ -16,6 +16,7 @@
 
 	// set slot
 	worn_slot = slot
+	inv_slot_or_index = slot == SLOT_ID_HANDS ? user.get_held_index(src) : slot
 	// register carry
 	if(isliving(user))
 		var/mob/living/L = user
@@ -47,6 +48,7 @@
 	SHOULD_CALL_PARENT(TRUE)
 	// clear slot
 	worn_slot = null
+	inv_slot_or_index = null
 	// clear carry
 	if(isliving(user))
 		var/mob/living/L = user

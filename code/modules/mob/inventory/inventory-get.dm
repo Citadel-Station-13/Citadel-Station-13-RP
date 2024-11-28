@@ -23,7 +23,7 @@
 	if(compound)
 		for(var/slot_id in base_inventory_slots)
 			var/datum/inventory_slot/slot_meta = resolve_inventory_slot(slot_id)
-			if(slot_meta.inventory_slot_filter & filter_exclude)
+			if(slot_meta.inventory_filter_flags & filter_exclude)
 				continue
 			var/obj/item/in_slot = owner._item_by_slot(slot_id)
 			if(in_slot)
@@ -31,10 +31,10 @@
 	else
 		for(var/slot_id in base_inventory_slots)
 			var/datum/inventory_slot/slot_meta = resolve_inventory_slot(slot_id)
-			if(slot_meta.inventory_slot_filter & filter_exclude)
+			if(slot_meta.inventory_filter_flags & filter_exclude)
 				continue
 			var/obj/item/in_slot = owner._item_by_slot(slot_id)
 			if(in_slot)
 				. += in_slot
-	if(!(filter_exclude & INV_SLOT_FILTER_HANDS))
+	if(!(filter_exclude & INV_FILTER_HANDS))
 		. += get_held_items()
