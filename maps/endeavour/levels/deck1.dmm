@@ -1142,7 +1142,7 @@
 /area/endeavour/hallway/d1aftmaint)
 "aNV" = (
 /turf/simulated/floor/airless,
-/area/rnd/misc_lab)
+/area/space)
 "aPj" = (
 /obj/structure/closet/coffin/comfy,
 /turf/simulated/floor/tiled,
@@ -9824,12 +9824,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/shuttle/excursion/general)
-"hmO" = (
-/obj/machinery/camera/network/outside{
-	dir = 1
-	},
-/turf/simulated/floor/airless/ceiling,
-/area/endeavour/hallway/d1aftmaint)
 "hnl" = (
 /obj/effect/floor_decal/steeldecal/steel_decals2,
 /turf/simulated/floor/tiled/steel,
@@ -13244,7 +13238,7 @@
 /area/maintenance/substation/civilian)
 "jNb" = (
 /turf/simulated/floor/plating,
-/area/rnd/misc_lab)
+/area/space)
 "jNg" = (
 /turf/space,
 /area/space)
@@ -17338,9 +17332,6 @@
 	},
 /turf/simulated/floor/carpet/purcarpet,
 /area/crew_quarters/coffee_shop)
-"mNs" = (
-/turf/simulated/floor/airless/ceiling,
-/area/rnd/misc_lab)
 "mNu" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
 /turf/simulated/floor/tiled,
@@ -17714,8 +17705,16 @@
 /turf/simulated/floor/tiled,
 /area/endeavour/exploration/hallway_fore)
 "mZA" = (
-/turf/simulated/floor/airless/ceiling,
-/area/endeavour/hallway/d1aftmaint)
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/navgold/border{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/turf/simulated/floor/tiled/steel,
+/area/endeavour/hallway/d1starboardforhall)
 "mZV" = (
 /obj/machinery/air_alarm/north_mount,
 /obj/machinery/light{
@@ -34795,8 +34794,8 @@ xRj
 xRj
 xRj
 xRj
-dkX
-dkX
+qTI
+qTI
 vxr
 vxr
 vxr
@@ -34989,8 +34988,8 @@ xRj
 xRj
 xRj
 xRj
-dkX
-dkX
+qTI
+qTI
 joA
 joA
 joA
@@ -35183,8 +35182,8 @@ xRj
 xRj
 xRj
 xRj
-dkX
-dkX
+qTI
+qTI
 joA
 joA
 joA
@@ -35377,8 +35376,8 @@ xRj
 xRj
 xRj
 xRj
-dkX
-dkX
+qTI
+qTI
 joA
 joA
 joA
@@ -35571,8 +35570,8 @@ xRj
 xRj
 xRj
 xRj
-dkX
-dkX
+qTI
+qTI
 joA
 joA
 joA
@@ -35765,8 +35764,8 @@ xRj
 xRj
 xRj
 ePJ
-dkX
-dkX
+qTI
+qTI
 joA
 joA
 joA
@@ -35959,8 +35958,8 @@ xRj
 xRj
 xRj
 xRj
-dkX
-dkX
+qTI
+qTI
 joA
 joA
 joA
@@ -36153,8 +36152,8 @@ xRj
 xRj
 xRj
 xRj
-dkX
-dkX
+qTI
+qTI
 eav
 joA
 joA
@@ -36347,8 +36346,8 @@ xRj
 xRj
 xRj
 xRj
-dkX
-dkX
+qTI
+qTI
 joA
 hSl
 wwz
@@ -36541,8 +36540,8 @@ xRj
 fZu
 xRj
 xRj
-dkX
-dkX
+qTI
+qTI
 joA
 joA
 suA
@@ -36735,8 +36734,8 @@ dkX
 dkX
 dkX
 dkX
-dkX
-dkX
+qTI
+qTI
 joA
 joA
 suA
@@ -50501,7 +50500,7 @@ bdl
 bdl
 bdl
 sti
-mZA
+hfY
 sti
 wim
 wim
@@ -50695,7 +50694,7 @@ joZ
 joZ
 joZ
 sti
-mZA
+hfY
 sti
 akq
 wim
@@ -50884,12 +50883,12 @@ hfY
 hfY
 usG
 usY
-mZA
-mZA
-mZA
-mZA
-mZA
-hmO
+hfY
+hfY
+hfY
+hfY
+hfY
+iQi
 sti
 wim
 wim
@@ -51078,12 +51077,12 @@ xRj
 hfY
 usG
 usG
-mZA
-mZA
-mZA
-mZA
-mZA
-mZA
+hfY
+hfY
+hfY
+hfY
+hfY
+hfY
 sti
 wim
 wim
@@ -51272,12 +51271,12 @@ xRj
 xRj
 xRj
 hfY
-mZA
-mZA
-mZA
-mZA
-mZA
-mZA
+hfY
+hfY
+hfY
+hfY
+hfY
+hfY
 sti
 wim
 jLe
@@ -51466,12 +51465,12 @@ xRj
 xRj
 xRj
 hfY
-mZA
-mZA
-mZA
-mZA
-mZA
-mZA
+hfY
+hfY
+hfY
+hfY
+hfY
+hfY
 sti
 wim
 jLe
@@ -51660,12 +51659,12 @@ xRj
 xRj
 xRj
 hfY
-mZA
-mZA
-mZA
-mZA
-mZA
-mZA
+hfY
+hfY
+hfY
+hfY
+hfY
+hfY
 sti
 wim
 jLe
@@ -52829,7 +52828,7 @@ hfY
 hfY
 jNb
 aNV
-mNs
+hfY
 qTb
 pSA
 aIM
@@ -53023,7 +53022,7 @@ hfY
 hfY
 aNV
 aNV
-mNs
+hfY
 qTb
 pSA
 dlC
@@ -58301,7 +58300,7 @@ ogT
 uTr
 uTr
 uTr
-maa
+uTr
 maa
 fta
 maa
@@ -62560,7 +62559,7 @@ bLW
 kiK
 tGh
 bwp
-fmw
+mZA
 mpa
 ogT
 byt
