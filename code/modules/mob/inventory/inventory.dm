@@ -117,6 +117,10 @@
 			over.worn_inside = inside
 		I.worn_over = null
 		I.worn_inside = null
+		// make sure it's inside us, and not the other item
+		I.worn_hook_suppressed = TRUE
+		I.forceMove(src)
+		I.worn_hook_suppressed = FALSE
 		// call procs to inform things
 		inside.equip_on_worn_over_remove(src, old_slot, user, I, flags)
 		if(over)

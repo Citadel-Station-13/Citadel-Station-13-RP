@@ -2015,6 +2015,7 @@
 #include "code\game\objects\systems\_system.dm"
 #include "code\game\objects\systems\cell_slot.dm"
 #include "code\game\objects\systems\storage\storage-screen_object.dm"
+#include "code\game\objects\systems\storage\storage-ui.dm"
 #include "code\game\objects\systems\storage\storage.dm"
 #include "code\game\objects\systems\storage\subtypes\stack.dm"
 #include "code\game\objects\systems\storage\subtypes\stock_parts.dm"

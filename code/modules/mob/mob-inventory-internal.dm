@@ -104,7 +104,7 @@
 		if(!can_unequip(I, I.worn_slot, flags, user))
 			return FALSE
 		old = I.worn_slot
-		_unequip_slot(old, flags)
+		_unequip_slot(old, flags, I)
 		I.on_unequipped(src, old, flags)
 		I.unequipped(src, old, flags)
 		handle_item_denesting(I, old, flags, user)
@@ -134,9 +134,11 @@
 
 	log_inventory("[key_name(src)] unequipped [I] from [old].")
 
-/mob/proc/_unequip_slot(slot, flags)
+/mob/proc/_unequip_slot(slot, flags, obj/item/yanking)
 	SHOULD_NOT_OVERRIDE(TRUE)
 	var/obj/item/old = _item_by_slot(slot)
+	if(old != yanking)
+		return FALSE
 	. = _set_inv_slot(slot, null, flags) != INVENTORY_SLOT_DOES_NOT_EXIST
 	if(.)
 		inventory.on_item_exited(old, resolve_inventory_slot(slot))
@@ -255,7 +257,7 @@
 		if(old_slot == SLOT_ID_HANDS)
 			unequip_hand_impl(I, get_held_index(I), flags)
 		else
-			_unequip_slot(old_slot, flags)
+			_unequip_slot(old_slot, flags, I)
 		I.on_unequipped(src, old_slot, flags)
 		I.unequipped(src, old_slot, flags)
 		// sigh
@@ -278,7 +280,7 @@
 		if(old_slot == SLOT_ID_HANDS)
 			unequip_hand_impl(I, get_held_index(I), flags)
 		else
-			_unequip_slot(old_slot, flags)
+			_unequip_slot(old_slot, flags, I)
 		I.unequipped(src, old_slot, flags)
 		I.on_unequipped(src, old_slot, flags)
 		// TODO: HANDLE DELETIONS ON EQUIPPED PROPERLY
