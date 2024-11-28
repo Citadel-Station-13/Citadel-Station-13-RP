@@ -95,6 +95,8 @@
 		var/list/data = loadout[entry]
 		var/obj/item/instanced = entry.instantiate(entry_data = data)
 		var/use_slot = entry.slot
+		if(isnull(use_slot))
+			continue
 		var/succeeded = FALSE
 		// if we have a piece of chameleon gear in that slot currently, update our chameleon gear to that icon, remove from the list
 		if(TRUE)
