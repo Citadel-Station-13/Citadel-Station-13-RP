@@ -102,6 +102,12 @@
 	w_class = WEIGHT_CLASS_SMALL
 	attack_verb = list("mushed", "splatted", "splooshed", "splushed") // Words that totally exist.
 
+/obj/item/material/snow/snowball/throw_impact(atom/hit_atom)
+	if(!..()) // not caught in mid-air
+		if(isliving(hit_atom))
+			visible_message("<span class='notice'>[src] explodes into a shower of snow upon impact!</span>")
+			qdel(src)
+
 /obj/item/material/snow/snowball/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)

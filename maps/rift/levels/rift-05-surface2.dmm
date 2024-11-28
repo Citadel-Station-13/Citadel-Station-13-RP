@@ -12763,9 +12763,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/assembly/robotics)
 "hYt" = (
-/obj/structure/curtain/open/shower{
-	anchored = 1
-	},
+/obj/structure/curtain/open/shower,
 /obj/machinery/door/airlock{
 	name = "Sauna"
 	},
@@ -28913,7 +28911,7 @@
 	},
 /obj/effect/paint/babyblue,
 /obj/map_helper/electrochromatic_linker{
-	id = "operating-theatre-2"
+	id = "operating_theatre_1"
 	},
 /turf/simulated/floor/plating,
 /area/medical/surgery)
@@ -29593,7 +29591,7 @@
 	},
 /obj/effect/paint/babyblue,
 /obj/map_helper/electrochromatic_linker{
-	id = "operating-theatre-2"
+	id = "operating_theatre_2"
 	},
 /turf/simulated/floor/plating,
 /area/medical/surgery2)
