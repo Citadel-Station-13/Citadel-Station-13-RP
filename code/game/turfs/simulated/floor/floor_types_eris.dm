@@ -860,14 +860,17 @@
 	icon_state = "techmaint_cargo"
 	initial_flooring = /datum/prototype/flooring/tiling/eris/techmaint_cargo
 
+// todo: DECLARE_FLOORING, /grass/thick
 /datum/prototype/flooring/grass/heavy
-	name = "heavy grass"
+	id = "ThickGrass"
+	name = "thick grass"
 	desc = "A dense ground coating of grass"
 	flooring_flags = TURF_REMOVE_SHOVEL
 	icon = 'icons/turf/outdoors.dmi'
 	icon_base = "grass-heavy"
 	has_base_range = 3
 
+// todo: get rid of this once DECLARE_FLOORING is done for /grass/heavy
 CREATE_STANDARD_TURFS(/turf/simulated/floor/outdoors/grass/heavy)
 /turf/simulated/floor/outdoors/grass/heavy
 	name = "heavy grass"
