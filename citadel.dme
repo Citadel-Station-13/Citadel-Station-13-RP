@@ -4695,7 +4695,6 @@
 #include "code\modules\reagents\machinery\reagent_dispenser\water.dm"
 #include "code\modules\reagents\machinery\reagent_dispenser\watercooler.dm"
 #include "code\modules\reagents\reagent_containers\blood_pack.dm"
-#include "code\modules\reagents\reagent_containers\blood_pack_vr.dm"
 #include "code\modules\reagents\reagent_containers\borghydro.dm"
 #include "code\modules\reagents\reagent_containers\cartridge.dm"
 #include "code\modules\reagents\reagent_containers\dropper.dm"
