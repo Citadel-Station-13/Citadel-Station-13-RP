@@ -161,7 +161,7 @@
 /**
  * get the mob we're equipped on
  */
-/obj/item/proc/worn_mob()
+/obj/item/proc/worn_mob() as /mob
 	RETURN_TYPE(/mob)
 	return worn_inside?.worn_mob() || (worn_slot? loc : null)
 
