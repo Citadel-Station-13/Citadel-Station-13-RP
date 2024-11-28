@@ -9,8 +9,8 @@
 // [icon_base]_corners: directional overlays for non-edge corners.
 
 /datum/prototype/flooring
-	// todo: don't do this, just set IDs on everything.
 	anonymous = TRUE
+	anonymous_namespace = "flooring"
 
 	//*                      Internal                       *//
 
