@@ -105,7 +105,7 @@
 
 /obj/item/shockpaddles/proc/check_contact(mob/living/carbon/human/H)
 	if(!combat)
-		for(var/obj/item/clothing/cloth in H.get_slots_unsafe(
+		for(var/obj/item/clothing/cloth in H.inventory.get_slots_unsafe(
 			/datum/inventory_slot/inventory/uniform,
 			/datum/inventory_slot/inventory/suit,
 		))

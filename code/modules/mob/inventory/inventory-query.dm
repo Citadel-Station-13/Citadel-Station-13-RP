@@ -11,7 +11,7 @@
 /datum/inventory/proc/query_coverage(body_cover_flags) as /list
 	if((. = cache["coverage-[body_cover_flags]"]))
 		return (.):Copy()
-	trim_cache()
+	trim_coverage_cache()
 	. = cache["coverage-[body_cover_flags]"] = list()
 	for(var/obj/item/worn as anything in get_everything(~INV_FILTER_EQUIPMENT, TRUE))
 		if(worn.body_cover_flags & body_cover_flags)

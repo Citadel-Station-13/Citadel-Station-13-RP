@@ -38,7 +38,7 @@
 			return TRUE
 	return FALSE
 
-/obj/item/clothing/worn_mob()
+/obj/item/clothing/worn_mob() as /mob
 	return isnull(accessory_host)? ..() : accessory_host.worn_mob()
 
 /obj/item/clothing/update_worn_icon()

@@ -65,6 +65,14 @@
 		hud.unbind_from_inventory(src)
 	return ..()
 
+//* Cache *//
+
+/**
+ * Invalidate all caches.
+ */
+/datum/inventory/proc/invalidate_cache()
+	cache = list()
+
 //* Queries *//
 
 /**

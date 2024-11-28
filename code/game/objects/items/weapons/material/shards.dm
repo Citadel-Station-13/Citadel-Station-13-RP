@@ -118,7 +118,7 @@
 			if(H.species.siemens_coefficient<0.5) //Thick skin.
 				return
 
-			if(length(H.query_coverage(FEET)))
+			if(length(H.inventory.query_coverage(FEET)))
 				return
 
 			if(H.species.species_flags & NO_MINOR_CUT)
