@@ -24,18 +24,3 @@
 
 /datum/inventory/proc/invalidate_coverage_cache()
 	cache = list()
-
-/datum/inventory
-
-/datum/inventory
-
-/datum/inventory
-
-/datum/inventory
-
-/datum/inventory
-
-/datum/inventory
-
-
-#warn impl
