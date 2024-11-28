@@ -1,7 +1,7 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
-//* Item enter / exit *//
+//* Internal Calls *//
 
 /**
  * Should be called when an item is added to inventory.
@@ -47,6 +47,8 @@
 	SEND_SIGNAL(src, COMSIG_INVENTORY_ITEM_ENTERED_SLOT, to_slot_or_index)
 	for(var/datum/actor_hud/inventory/hud in huds_using)
 		hud.move_item(item, from_slot_or_index, to_slot_or_index)
+
+//* External Calls *//
 
 /**
  * Should be called when the mob's mobility flags change.

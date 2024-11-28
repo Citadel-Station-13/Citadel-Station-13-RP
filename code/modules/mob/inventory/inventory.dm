@@ -16,13 +16,6 @@
 	/// our action holder
 	var/datum/action_holder/actions
 
-	//* Caches *//
-	/// cached overlays by slot id or hand index
-	var/list/rendered_normal_overlays = list()
-	/// cached overlays by slot id
-	// todo: emissives
-	// var/list/rendered_emissive_overlays = list()
-
 	//* HUDs *//
 	/// Actor HUDs using us
 	var/list/datum/actor_hud/inventory/huds_using
@@ -35,6 +28,13 @@
 	/// * 1, 3, 5, ... are left
 	/// * 2, 4, 6, ... are right
 	var/list/obj/item/held_items = list()
+
+	//* Rendering *//
+	/// cached overlays by slot id or hand index
+	var/list/rendered_normal_overlays = list()
+	/// cached overlays by slot id
+	// todo: emissives
+	// var/list/rendered_emissive_overlays = list()
 
 	//* Slots *//
 	/// our base slot ids associated to remappings

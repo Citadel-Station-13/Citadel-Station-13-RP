@@ -18,7 +18,7 @@
  *
  * @return list() of items
  */
-/datum/inventory/proc/get_equipped_items(filter_exclude, compound) as /list
+/datum/inventory/proc/get_everything(filter_exclude, compound) as /list
 	. = list()
 	if(compound)
 		for(var/slot_id in base_inventory_slots)
@@ -33,6 +33,7 @@
 			var/datum/inventory_slot/slot_meta = resolve_inventory_slot(slot_id)
 			if(slot_meta.inventory_slot_filter & filter_exclude)
 				continue
+			var/obj/item/in_slot = owner._item_by_slot(slot_id)
 			if(in_slot)
 				. += in_slot
 	if(!(filter_exclude & INV_SLOT_FILTER_HANDS))

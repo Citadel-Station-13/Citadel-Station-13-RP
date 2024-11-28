@@ -165,8 +165,6 @@
  * @return TRUE/FALSE on success
  */
 /mob/proc/_equip_item(obj/item/I, flags, slot, mob/user = src)
-	PROTECTED_PROC(TRUE)
-
 	if(!I)		// how tf would we put on "null"?
 		return FALSE
 
