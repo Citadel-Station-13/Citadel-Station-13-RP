@@ -316,7 +316,7 @@
 		return
 	if(seed.get_trait(TRAIT_STINGS))
 		var/mob/living/carbon/human/H = user
-		if(H.inventory.get_slot(/datum/inventory_slot/inventory/gloves::id))
+		if(H.inventory.get_slot_single(/datum/inventory_slot/inventory/gloves::id))
 			return
 		if(!reagents || reagents.total_volume <= 0)
 			return

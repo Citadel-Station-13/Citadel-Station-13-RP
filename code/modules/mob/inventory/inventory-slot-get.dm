@@ -12,10 +12,10 @@
  *
  * @return /obj/item or null
  */
-/datum/inventory/proc/get_slot(datum/inventory_slot/type_or_id) as /obj/item
+/datum/inventory/proc/get_slot_single(datum/inventory_slot/type_or_id) as /obj/item
 	if(ispath(type_or_id))
 		type_or_id = initial(type_or_id.id)
-	. = owner._item_by_slot(slot_id)
+	. = owner._item_by_slot(type_or_id)
 	if(. == INVENTORY_SLOT_DOES_NOT_EXIST)
 		return null
 
@@ -30,10 +30,10 @@
  *
  * @return list() of items
  */
-/datum/inventory/proc/get_slot_multi(datum/inventory_slot/type_or_id) as /list
+/datum/inventory/proc/get_slot(datum/inventory_slot/type_or_id) as /list
 	if(ispath(type_or_id))
 		type_or_id = initial(type_or_id.id)
-	var/obj/item/in_slot = owner._item_by_slot(slot_id)
+	var/obj/item/in_slot = owner._item_by_slot(type_or_id)
 	if(in_slot == INVENTORY_SLOT_DOES_NOT_EXIST)
 		return
 	if(in_slot)
@@ -62,7 +62,7 @@
  */
 /datum/inventory/proc/get_slots_unsafe(list/types_or_ids, compound) as /list
 	. = list()
-	for(var/datum/inventory_slot/slot_id as anything in slot_ids || base_inventory_slots)
+	for(var/datum/inventory_slot/slot_id as anything in types_or_ids || base_inventory_slots)
 		if(ispath(slot_id))
 			slot_id = initial(slot_id.id)
 		var/obj/item/fetched = owner._item_by_slot(slot_id)

@@ -76,7 +76,16 @@ DEFINE_BITFIELD(inventory_slot_flags, list(
 /// specially handled value
 #define INV_SLOT_FILTER_HANDS (1<<23)
 
-#warn DEFINE_BITFIELD_NEW
+DEFINE_BITFIELD_NEW(inv_slot_filter, list(
+	/datum/inventory_slot = list(
+		NAMEOF_STATIC(/datum/inventory_slot, inventory_slot_filter),
+	),
+), list(
+	BITFIELD_NEW("Unknown", INV_SLOT_FILTER_UNKNOWN),
+	BITFIELD_NEW("Equipment", INV_SLOT_FILTER_EQUIPMENT),
+	BITFIELD_NEW("Restraints", INV_SLOT_FILTER_RESTRAINTS),
+	BITFIELD_NEW("Hands", INV_SLOT_FILTER_HANDS),
+))
 
 //! slot flags
 // Item inventory slot bitmasks.

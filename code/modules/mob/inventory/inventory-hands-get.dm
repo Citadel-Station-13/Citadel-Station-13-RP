@@ -8,7 +8,7 @@
  *
  * @return /obj/item or null
  */
-/datum/inventory/proc/get_hand(index) as /obj/item
+/datum/inventory/proc/get_hand_single(index) as /obj/item
 	if(index < 1 || index > length(held_items))
 		return
 	return held_items[index]
@@ -20,7 +20,7 @@
  *
  * @return list() of items
  */
-/datum/inventory/proc/get_hand_multi(index) as /list
+/datum/inventory/proc/get_hand(index) as /list
 	if(index < 1 || index > length(held_items))
 		return
 	var/obj/item/held = held_items[index]
@@ -56,7 +56,7 @@
 				. += compound ? maybe_held.inv_slot_attached() : maybe_held
 	else
 		for(var/obj/item/held in held_items)
-			. += compound ? held.inv_slot_attached() : maybe_held
+			. += compound ? held.inv_slot_attached() : held
 
 // todo: old below
 
