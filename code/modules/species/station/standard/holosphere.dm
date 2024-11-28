@@ -9,6 +9,8 @@
 	category = SPECIES_CATEGORY_RESTRICTED
 	name_plural   = "Holospheres"
 	override_worn_legacy_bodytype = SPECIES_HUMAN
+	icobase = 'icons/mob/species/human/body_greyscale.dmi'
+	deform  = 'icons/mob/species/human/deformed_body_greyscale.dmi'
 
 	selects_bodytype = TRUE
 
@@ -43,15 +45,24 @@
 		BP_R_FOOT = list("path" = /obj/item/organ/external/foot/right/indestructible),
 	)
 
+	inherent_verbs = list(
+		/mob/living/carbon/human/proc/tie_hair,
+		/mob/living/carbon/human/proc/hide_horns,
+		/mob/living/carbon/human/proc/hide_wings,
+		/mob/living/carbon/human/proc/hide_tail,
+	)
+
 	species_appearance_flags = HAS_HAIR_COLOR | HAS_SKIN_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_EYE_COLOR
 
 /datum/species/holosphere/on_apply(mob/living/carbon/human/H)
 	. = ..()
 	RegisterSignal(H, COMSIG_CARBON_UPDATING_OVERLAY, PROC_REF(handle_hologram_overlays))
+	RegisterSignal(H, COMSIG_HUMAN_EQUIPPING_LOADOUT, PROC_REF(handle_hologram_loadout))
 
 /datum/species/holosphere/on_remove(mob/living/carbon/human/H)
 	. = ..()
 	UnregisterSignal(H, COMSIG_CARBON_UPDATING_OVERLAY)
+	UnregisterSignal(H, COMSIG_HUMAN_EQUIPPING_LOADOUT)
 
 /datum/species/holosphere/proc/get_alpha_from_key(var/key)
 	return key == HUMAN_OVERLAY_BODY ? HOLOGRAM_BODY_ALPHA : HOLOGRAM_OTHER_ALPHA
@@ -73,3 +84,18 @@
 	else
 		var/mutable_appearance/new_overlay = make_hologram_appearance(overlay_object, alpha_to_use, TRUE)
 		overlay_args[overlay_index] = list(new_overlay)
+
+/datum/species/proc/handle_hologram_loadout(datum/source, list/loadout)
+	// drop everything
+
+	// give character chameleon gear
+
+
+	for(var/datum/loadout_entry/entry as anything in loadout)
+		var/list/data = loadout[entry]
+		var/obj/item/instanced = entry.instantiate(entry_data = data)
+		var/use_slot = entry.slot
+		var/succeeded = FALSE
+		// if we have a piece of chameleon gear in that slot currently, update our chameleon gear to that icon, remove from the list
+		if(TRUE)
+			loadout -= entry
