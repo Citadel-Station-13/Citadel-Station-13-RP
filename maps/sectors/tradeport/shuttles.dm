@@ -73,7 +73,7 @@
 /datum/shuttle/autodock/overmap/trade/scoophead
 	name = "Scoophead trade Shuttle"
 	warmup_time = 5
-	shuttle_area = list(/area/shuttle/scoophead/cockpit, /area/shuttle/scoophead/main, /area/shuttle/scoophead/office)
+	shuttle_area = list(/area/shuttle/scoophead, /area/shuttle/scoophead/cockpit, /area/shuttle/scoophead/main, /area/shuttle/scoophead/main2, /area/shuttle/scoophead/office, /area/shuttle/scoophead/engineering)
 	current_location = "tradeport_scoophead"
 	docking_controller_tag = "tradeport_scoophead_docker"
 	fuel_consumption = 4
