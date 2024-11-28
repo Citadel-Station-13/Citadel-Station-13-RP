@@ -104,8 +104,9 @@
 		if(!can_unequip(I, I.worn_slot, flags, user))
 			return FALSE
 		old = I.worn_slot
-		_unequip_slot(I.worn_slot, flags)
-		I.unequipped(src, I.worn_slot, flags)
+		_unequip_slot(old, flags)
+		I.on_unequipped(src, old, flags)
+		I.unequipped(src, old, flags)
 		handle_item_denesting(I, old, flags, user)
 
 	// this qdeleted catches unequipped() deleting the item.
@@ -257,6 +258,7 @@
 			unequip_hand_impl(I, get_held_index(I), flags)
 		else
 			_unequip_slot(old_slot, flags)
+		I.on_unequipped(src, old_slot, flags)
 		I.unequipped(src, old_slot, flags)
 		// sigh
 		handle_item_denesting(I, old_slot, flags, user)
@@ -280,6 +282,7 @@
 		else
 			_unequip_slot(old_slot, flags)
 		I.unequipped(src, old_slot, flags)
+		I.on_unequipped(src, old_slot, flags)
 		// TODO: HANDLE DELETIONS ON EQUIPPED PROPERLY
 		// sigh
 		_equip_slot(I, slot, flags)
