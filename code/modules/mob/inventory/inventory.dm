@@ -138,6 +138,10 @@
 		over.worn_hook_suppressed = FALSE
 		// put it back in the slot
 		_equip_slot(over, old_slot, flags)
+		var/datum/inventory_slot/old_slot_meta = resolve_inventory_slot(old_slot)
+		for(var/datum/actor_hud/inventory/hud in inventory?.huds_using)
+			hud.remove_item(I, old_slot_meta)
+			hud.add_item(over, old_slot_meta)
 
 /**
  * drop items if a bodypart is missing

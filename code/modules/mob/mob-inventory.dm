@@ -205,7 +205,7 @@
 		// setting worn inside first disallows equip/unequip from triggering
 		to_wear_over.forceMove(I)
 		for(var/datum/actor_hud/inventory/hud in inventory?.huds_using)
-			hud.remove_item(to_wear_over, slot)
+			hud.remove_item(to_wear_over, slot_meta)
 		// check we don't have something already (wtf)
 		if(I.worn_over)
 			handle_item_denesting(I, denest_to, flags, user)
