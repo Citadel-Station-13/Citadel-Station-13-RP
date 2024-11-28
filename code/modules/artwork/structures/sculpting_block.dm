@@ -19,7 +19,7 @@
 /obj/structure/sculpting_block
 	name = "material block"
 	desc = "A block of material. You can sculpt this with appropriate tools, like a screwdriver."
-	icon = 'icons/modules/sculpting/sculpting.dmi'
+	icon = 'icons/modules/artwork/sculpting.dmi'
 	icon_state = "block"
 	density = TRUE
 	anchored = FALSE

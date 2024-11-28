@@ -178,7 +178,7 @@
 	add_language(LANGUAGE_EAL, TRUE)
 	// todo: translation contexts on language holder?
 	// this is messy
-	for(var/datum/prototype/language/L as anything in RSlanguages.fetch_subtypes(/datum/prototype/language))
+	for(var/datum/prototype/language/L as anything in RSlanguages.fetch_subtypes_immutable(/datum/prototype/language))
 		if(!(L.translation_class & TRANSLATION_CLASSES_CYBORG_SPEAKS))
 			continue
 		add_language(L, TRUE)

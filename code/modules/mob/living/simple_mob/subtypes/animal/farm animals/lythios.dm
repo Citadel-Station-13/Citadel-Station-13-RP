@@ -25,7 +25,7 @@
 	iff_factions = MOB_IFF_FACTION_FARM_ANIMAL
 
 	minbodytemp = 180
-	maxbodytemp = 275
+	maxbodytemp = 280 //Temp Stablization means that Glacicorns overheat when Lythios is warmest.
 
 	health = 40
 	maxHealth = 40

@@ -171,7 +171,7 @@ SUBSYSTEM_DEF(materials)
  */
 /datum/controller/subsystem/materials/proc/all_materials()
 	RETURN_TYPE(/list)
-	return RSmaterials.fetch_subtypes(/datum/prototype/material):Copy()
+	return RSmaterials.fetch_subtypes_immutable(/datum/prototype/material):Copy()
 
 /**
  * drop a material sheet
