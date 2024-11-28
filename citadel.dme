@@ -3650,6 +3650,7 @@
 #include "code\modules\mob\inventory\inventory-hooks.dm"
 #include "code\modules\mob\inventory\inventory-query.dm"
 #include "code\modules\mob\inventory\inventory-rendering.dm"
+#include "code\modules\mob\inventory\inventory-slot-equip.dm"
 #include "code\modules\mob\inventory\inventory-slot-get.dm"
 #include "code\modules\mob\inventory\inventory.dm"
 #include "code\modules\mob\inventory\inventory_slot.dm"

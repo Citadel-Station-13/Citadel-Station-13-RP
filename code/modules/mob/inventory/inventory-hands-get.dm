@@ -1,6 +1,12 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
+//* Procs in this file are mirrored to the /mob level for ease of use.        *//
+//*                                                                           *//
+//* In the future, there should likely be a separation of concerns            *//
+//* and the enforcement of 'mob.inventory' access, but given the overhead of  *//
+//* a proc-call, this is currently not done.                                  *//
+
 /**
  * Gets the item held in a given hand index
  *
@@ -10,6 +16,8 @@
  */
 /datum/inventory/proc/get_item_in_hand(index) as /obj/item
 	return held_items[index]
+
+
 
 /**
  * Gets the item held in a given hand index
@@ -26,12 +34,6 @@
 	return held.inv_slot_attached()
 
 // todo: old below
-
-//* Procs in this file are mirrored to the /mob level for ease of use.        *//
-//*                                                                           *//
-//* In the future, there should likely be a separation of concerns            *//
-//* and the enforcement of 'mob.inventory' access, but given the overhead of  *//
-//* a proc-call, this is currently not done.                                  *//
 
 //* Basic *//
 

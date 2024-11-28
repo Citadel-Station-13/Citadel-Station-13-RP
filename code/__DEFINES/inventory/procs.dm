@@ -51,7 +51,7 @@
 
 // todo: INV_OP_RECURSE for nested / worn-over pieces
 
-//* Inventory Return Flags *//
+//* Inventory Returns *//
 
 /// Failed
 ///
