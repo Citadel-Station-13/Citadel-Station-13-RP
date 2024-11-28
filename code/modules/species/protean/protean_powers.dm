@@ -356,9 +356,7 @@
 		return humanform.nano_get_refactory()
 
 /mob/living/carbon/human/nano_get_refactory()
-	return ..(locate(/obj/item/organ/internal/nano/refactory) in internal_organs)
-
-
+	return ..(legacy_organ_by_type(/obj/item/organ/internal/nano/refactory))
 
 /// /// /// Ability objects for stat panel
 /obj/effect/protean_ability

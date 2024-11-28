@@ -171,7 +171,7 @@
 /obj/structure/alien/hybrid_resin/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(iscarbon(user))
 		var/mob/living/carbon/C = user
-		if(locate(/obj/item/organ/internal/xenos/hivenode) in C.internal_organs)
+		if(C.legacy_organ_by_type(/obj/item/organ/internal/xenos/hivenode))
 			visible_message(SPAN_WARNING("[C] strokes the [name], and it melts away!"))
 			qdel(src)
 			return CLICKCHAIN_DID_SOMETHING | CLICKCHAIN_DO_NOT_PROPAGATE
