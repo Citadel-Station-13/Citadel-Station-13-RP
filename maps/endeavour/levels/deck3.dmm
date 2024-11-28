@@ -1205,9 +1205,6 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/bar)
 "aWK" = (
-/obj/structure/sign/poster{
-	pixel_x = 32
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/cable/green{
 	icon_state = "2-8"
@@ -2241,6 +2238,10 @@
 /obj/structure/sign/deck/third,
 /turf/simulated/wall/prepainted,
 /area/endeavour/hallway/d3fwdmaint)
+"bDh" = (
+/obj/fiftyspawner/steel,
+/turf/simulated/floor/plating,
+/area/maintenance/dormitory)
 "bDw" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
@@ -6082,9 +6083,6 @@
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 8
-	},
-/obj/structure/sign/poster{
-	pixel_x = -32
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/recreation_area)
@@ -26588,11 +26586,9 @@
 /turf/simulated/floor/grass,
 /area/security/brig)
 "tjB" = (
-/obj/structure/sign/poster{
-	pixel_x = -32
-	},
-/turf/simulated/floor/wood,
-/area/crew_quarters/game_room)
+/obj/fiftyspawner/glass,
+/turf/simulated/floor/plating,
+/area/maintenance/dormitory)
 "tjK" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 9
@@ -38877,7 +38873,7 @@ uzm
 uzm
 cHy
 xDS
-tjB
+kZp
 oOG
 kZp
 kZp
@@ -53659,7 +53655,7 @@ mhH
 hIR
 nvw
 orP
-tOV
+bDh
 tOV
 tOV
 hLd
@@ -53853,7 +53849,7 @@ uJv
 hIR
 rzR
 orP
-tOV
+tjB
 tOV
 tOV
 hLd
