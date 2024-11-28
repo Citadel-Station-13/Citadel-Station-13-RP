@@ -592,7 +592,7 @@
 
 	//END CACHED ICON GENERATION.
 	stand_icon.Blend(base_icon,ICON_OVERLAY)
-	icon = stand_icon
+	set_standing_overlay(HUMAN_OVERLAY_BODY, image(stand_icon, layer = HUMAN_LAYER_BODY))
 
 	//tail
 	render_spriteacc_tail()
@@ -623,7 +623,6 @@
 		both.add_overlay(bloodsies)
 
 	set_standing_overlay(HUMAN_OVERLAY_BLOOD, both)
-
 
 //UNDERWEAR OVERLAY
 /mob/living/carbon/human/proc/update_underwear()
