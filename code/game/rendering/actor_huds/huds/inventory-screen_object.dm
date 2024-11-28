@@ -139,7 +139,7 @@
 	..()
 
 /atom/movable/screen/actor_hud/inventory/plate/hand/handle_inventory_click(mob/user, obj/item/with_item)
-	hud.owner.swap_hand(hand_index)
+	hud.owner.mob.swap_hand(hand_index)
 
 /atom/movable/screen/actor_hud/inventory/plate/hand/proc/sync_index(index = hand_index)
 	screen_loc = SCREEN_LOC_MOB_HUD_INVENTORY_HAND(index)
