@@ -53,4 +53,4 @@
 	name = "crystal floor"
 	icon = 'icons/turf/flooring/crystal.dmi'
 	icon_state = ""
-	initial_flooring = /singleton/flooring/crystal
+	initial_flooring = /datum/prototype/flooring/crystal
