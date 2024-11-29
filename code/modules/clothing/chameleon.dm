@@ -11,6 +11,7 @@
 	icon_override = copy.icon_override
 	default_worn_icon = copy.default_worn_icon
 	icon_state = copy.icon_state
+	snowflake_worn_state = copy.snowflake_worn_state
 	color = copy.color
 	item_state = copy.item_state
 	body_cover_flags = copy.body_cover_flags
