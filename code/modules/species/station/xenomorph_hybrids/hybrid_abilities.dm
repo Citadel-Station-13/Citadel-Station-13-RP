@@ -67,9 +67,3 @@
 				E.status &= ~ORGAN_BROKEN
 				to_chat(O, SPAN_NOTICEALIEN("You mend the bone in your [E]"))
 				return//fix one then stop, trigger again to mend more
-
-
-
-
-
-

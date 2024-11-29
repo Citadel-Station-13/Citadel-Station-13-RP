@@ -22,4 +22,4 @@
 /mob/living/carbon/alien/larva/Initialize(mapload)
 	. = ..()
 	add_language(LANGUAGE_XENO) //Bonus language.
-	internal_organs |= new /obj/item/organ/internal/xenos/hivenode(src)
+	internal_organs |= new /obj/item/organ/internal/xenomorph/hivenode(src)

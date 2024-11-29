@@ -47,19 +47,19 @@
 	can_reject = FALSE
 	icon_state = "kidneys_grey"
 
-/obj/item/organ/internal/xenos/plasmavessel/replicant
+/obj/item/organ/internal/xenomorph/plasmavessel/replicant
 	name = "replicant phorogenic sac"
 	desc = "A bulbous rubbery mass that converts nutrients from the host into a biological compound eerily similar to phoron."
 	can_reject = FALSE
 	icon_state = "plasma_grey"
 
-/obj/item/organ/internal/xenos/acidgland/replicant
+/obj/item/organ/internal/xenomorph/acidgland/replicant
 	name = "replicant aerosol tubule"
 	desc = "A long, rubbery tube that ends in a hard plastic-like bulb."
 	can_reject = FALSE
 	icon_state = "acidgland_grey"
 
-/obj/item/organ/internal/xenos/resinspinner/replicant
+/obj/item/organ/internal/xenomorph/resinspinner/replicant
 	name = "replicant biomesh spinner"
 	desc = "A rubbery mass with protrusions for molding organic material."
 	can_reject = FALSE

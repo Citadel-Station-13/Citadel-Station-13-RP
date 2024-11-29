@@ -38,8 +38,8 @@
 	#warn no appendix
 	use_internal_organs = list(
 	)
-	has_organ = list(
-		O_WEAVER 	   = /obj/item/organ/internal/weaver,
+	add_internal_organs = list(
+		/obj/item/organ/internal/weaver,
 	)
 
 	max_age = 80

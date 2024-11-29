@@ -131,9 +131,7 @@
 					O.heal_damage(rand(1,3), rand(1,3), internal = 1, robo_repair = 1)
 
 				// check limbs
-				for(var/obj/item/organ/E in H.bad_external_organs)
-					// Fix bones
-					var/obj/item/organ/external/affected = E
+				for(var/obj/item/organ/external/affected in H.external_organs)
 					if((affected.damage < affected.min_broken_damage) && (affected.status & ORGAN_BROKEN))
 						affected.status &= ~ORGAN_BROKEN
 					// fix IB

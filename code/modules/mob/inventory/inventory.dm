@@ -64,7 +64,7 @@
  * returns list() of items with body_cover_flags
  */
 /datum/inventory/proc/query_body_cover_items(body_cover_flags)
-	if(cover_flags == NONE)
+	if(body_cover_flags == NONE)
 		return list()
 	. = list()
 	for(var/obj/item/I as anything in owner.get_equipped_items())

@@ -198,8 +198,14 @@
 	///
 	/// Accepts a list of:
 	/// * Organ key associated to an ORGAN_DEFAULT_* value.
+	/// * Organ key without association to include something not included by default with the biology
 	/// * Organ key associated to a /datum/species_organ_entry value.
 	var/list/use_internal_organs = list()
+	/// Add certain unkeyed internal organs.
+	///
+	/// Accepts a list of:
+	/// * /datum/species_organ_entry values.
+	var/list/add_internal_organs = list()
 	/// Our resultant limbs.
 	///
 	/// * Automatically generated to be a list of /datum/species_organ_entry's
@@ -728,13 +734,13 @@ GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
 		else
 			our_nif.quick_implant(target)
 	if(base_color)
-		H.r_skin = hex2num(copytext(base_color,2,4))
-		H.g_skin = hex2num(copytext(base_color,4,6))
-		H.b_skin = hex2num(copytext(base_color,6,8))
+		target.r_skin = hex2num(copytext(base_color,2,4))
+		target.g_skin = hex2num(copytext(base_color,4,6))
+		target.b_skin = hex2num(copytext(base_color,6,8))
 	else
-		H.r_skin = 0
-		H.g_skin = 0
-		H.b_skin = 0
+		target.r_skin = 0
+		target.g_skin = 0
+		target.b_skin = 0
 	//! END !//
 
 /**

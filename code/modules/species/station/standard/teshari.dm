@@ -116,18 +116,28 @@
 
 	minimum_breath_pressure = 12 // Smaller, so needs less air
 
-	has_limbs = list(
-		BP_TORSO  = list("path" = /obj/item/organ/external/chest),
-		BP_GROIN  = list("path" = /obj/item/organ/external/groin),
-		BP_HEAD   = list("path" = /obj/item/organ/external/head/teshari),
-		BP_L_ARM  = list("path" = /obj/item/organ/external/arm),
-		BP_R_ARM  = list("path" = /obj/item/organ/external/arm/right),
-		BP_L_LEG  = list("path" = /obj/item/organ/external/leg),
-		BP_R_LEG  = list("path" = /obj/item/organ/external/leg/right),
-		BP_L_HAND = list("path" = /obj/item/organ/external/hand/teshari),
-		BP_R_HAND = list("path" = /obj/item/organ/external/hand/right/teshari),
-		BP_L_FOOT = list("path" = /obj/item/organ/external/foot/teshari),
-		BP_R_FOOT = list("path" = /obj/item/organ/external/foot/right/teshari),
+	has_external_organs = list(
+		ORGAN_KEY_EXT_HEAD = /datum/species_organ_entry{
+			override_type = /obj/item/organ/external/head/teshari;
+		},
+		ORGAN_KEY_EXT_CHEST,
+		ORGAN_KEY_EXT_GROIN,
+		ORGAN_KEY_EXT_LEFT_ARM,
+		ORGAN_KEY_EXT_LEFT_HAND = /datum/species_organ_entry{
+			override_type = /obj/item/organ/external/hand/left/teshari;
+		},
+		ORGAN_KEY_EXT_RIGHT_ARM,
+		ORGAN_KEY_EXT_RIGHT_HAND = /datum/species_organ_entry{
+			override_type = /obj/item/organ/external/hand/right/teshari;
+		},
+		ORGAN_KEY_EXT_LEFT_LEG,
+		ORGAN_KEY_EXT_LEFT_FOOT = /datum/species_organ_entry{
+			override_type = /obj/item/organ/external/foot/left/teshari;
+		},
+		ORGAN_KEY_EXT_RIGHT_LEG,
+		ORGAN_KEY_EXT_RIGHT_FOOT = /datum/species_organ_entry{
+			override_type = /obj/item/organ/external/foot/right/teshari;
+		},
 	)
 
 	#warn no appendix
@@ -161,10 +171,10 @@
 	)
 
 	var/static/list/flight_bodyparts = list(
-		BP_L_ARM,
-		BP_R_ARM,
-		BP_L_HAND,
-		BP_R_HAND,
+		ORGAN_KEY_EXT_LEFT_ARM,
+		ORGAN_KEY_EXT_RIGHT_ARM,
+		ORGAN_KEY_EXT_LEFT_HAND,
+		ORGAN_KEY_EXT_RIGHT_HAND,
 	)
 	var/static/list/flight_suit_blacklisted_types = list(
 		/obj/item/clothing/suit/space,
@@ -211,8 +221,8 @@
 				return ..()
 
 	// Do we have working wings?
-	for(var/bp in flight_bodyparts)
-		var/obj/item/organ/external/E = H.organs_by_name[bp]
+	for(var/key in flight_bodyparts)
+		var/obj/item/organ/external/E = H.keyed_organs[key]
 		if(!istype(E) || !E.is_usable() || E.is_broken() || E.is_stump())
 			if(!silent)
 				to_chat(H, SPAN_WARNING("You try to spread your wings to slow your fall, but they won't hold your weight!"))

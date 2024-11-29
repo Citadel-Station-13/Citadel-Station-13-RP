@@ -121,7 +121,8 @@
 	return
 
 /datum/reagent/ethanol/affect_ingest(mob/living/carbon/M, alien, removed)
-	if(issmall(M)) removed *= 2
+	if(issmall(M))
+		removed *= 2
 	M.adjust_nutrition(nutriment_factor * removed)
 	M.adjust_hydration(hydration_factor * removed)
 	M.bloodstr.add_reagent("ethanol", removed * ABV)
@@ -135,7 +136,6 @@
 
 	if(halluci)
 		M.setHallucination(max(M.hallucination, halluci))
-	return
 
 /datum/reagent/ethanol/touch_obj(obj/O)
 	if(istype(O, /obj/item/paper))
