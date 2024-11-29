@@ -98,10 +98,14 @@
 //* Query *//
 
 /datum/overmap/proc/query_random_placement_location()
+	var/turf/approximate_midpoint = reservation.get_approximately_center_turf()
+	var/const/reasonable_border = 5
+	var/midpoint_x = approximate_midpoint.x
+	var/midpoint_y = approximate_midpoint.y
 	return query_closest_reasonable_open_space(
 		locate(
-			rand(reservation.bottom_left_coords[1], reservation.top_right_coords[1]),
-			rand(reservation.bottom_left_coords[2], reservation.top_right_coords[2]),
+			rand(min(reservation.bottom_left_coords[1] + reasonable_border, midpoint_x), max(reservation.top_right_coords[1] - reasonable_border, midpoint_x)),
+			rand(min(reservation.bottom_left_coords[2] + reasonable_border, midpoint_y), max(reservation.top_right_coords[2] - reasonable_border, midpoint_y)),
 			reservation.bottom_left_coords[3],
 		),
 	)

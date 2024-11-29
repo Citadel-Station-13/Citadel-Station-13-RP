@@ -97,5 +97,6 @@
  */
 /datum/overmap_initializer/proc/create_overmap_entity(datum/overmap_location/from_location, turf/initial_placement) as /obj/overmap/entity
 	var/obj/overmap/entity/creating = new legacy_entity_type(null)
-	creating.location = from_location
+	creating.set_location(from_location)
 	creating.forceMove(initial_placement)
+	return creating

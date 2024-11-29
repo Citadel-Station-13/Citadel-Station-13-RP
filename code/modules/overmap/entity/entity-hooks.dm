@@ -7,10 +7,12 @@
  * called when we join an overmap
  */
 /obj/overmap/entity/proc/on_overmap_join(datum/overmap/map)
+	SHOULD_CALL_PARENT(TRUE)
 	src.overmap = map
 
 /**
  * called when we leave an overmap
  */
 /obj/overmap/entity/proc/on_overmap_leave(datum/overmap/map)
-	src.overmap = map
+	SHOULD_CALL_PARENT(TRUE)
+	src.overmap = null

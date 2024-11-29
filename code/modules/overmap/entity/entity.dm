@@ -61,6 +61,9 @@
 
 /obj/overmap/entity/Initialize(mapload)
 	. = ..()
+	// join overmap
+	if(isturf(loc) && !overmap)
+		loc.loc.Entered(src)
 	// init physics
 	initialize_physics()
 	update_velocity_ticking()

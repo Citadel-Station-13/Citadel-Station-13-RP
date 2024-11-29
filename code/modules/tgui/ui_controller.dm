@@ -20,7 +20,9 @@
  * Pulls initial data.
  */
 /datum/ui_controller/proc/pull_static_data(datum/entity, datum/ui_context/context, datum/tgui/view)
-	return list()
+	return list(
+		"$interface" = interface_path,
+	)
 
 /**
  * Pulls tick-updated data.

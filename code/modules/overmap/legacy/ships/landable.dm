@@ -62,6 +62,7 @@
 	src.landmark = new(null, shuttle) // Create in nullspace since we lazy-create overmap z
 	add_landmark(landmark, shuttle)
 	var/datum/shuttle/shuttle_datum = SSshuttle.shuttles[shuttle]
+	set_location(new /datum/overmap_location/shuttle(shuttle_datum))
 	if(istype(shuttle_datum,/datum/shuttle/autodock/overmap))
 		var/datum/shuttle/autodock/overmap/oms = shuttle_datum
 		oms.myship = src
