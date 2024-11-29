@@ -7,10 +7,6 @@ SUBSYSTEM_DEF(materials)
 	/// material recipes
 	var/list/datum/stack_recipe/material/material_stack_recipes
 
-	// todo: Recover() should keep procedural materials
-	// however, i can't be assed to write Recover() until we do procedural materials
-	// thus, dealing with it later :^)
-
 	/// ticked atoms
 	var/list/ticking = list()
 	/// currentrun

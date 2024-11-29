@@ -44,7 +44,7 @@
 				to_chat(user, "<span class='warning'>You can't apply [src] through [H.head]!</span>")
 				return FALSE
 		else
-			if(H.wear_suit && istype(H.wear_suit,/obj/item/clothing/suit/space))
+			if(istype(H.inventory.get_slot_single(/datum/inventory_slot/inventory/suit), /obj/item/clothing/suit/space))
 				to_chat(user, "<span class='warning'>You can't apply [src] through [H.wear_suit]!</span>")
 				return FALSE
 

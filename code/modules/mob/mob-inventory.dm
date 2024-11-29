@@ -50,7 +50,7 @@
  * SLOT_ID_HANDS if in hands
  */
 /mob/proc/is_in_inventory(obj/item/I)
-	return (I?.worn_mob() == src) && I.worn_slot
+	return (I?.worn_mob() == src) ? I.worn_slot : null
 	// we use entirely cached vars for speed.
 	// if this returns bad data well fuck you, don't break equipped()/unequipped().
 
@@ -164,7 +164,7 @@
 				to_wear_over = conflicting
 				// ! DANGER: snowflake time
 				// take it out of the slot
-				_unequip_slot(slot, flags | INV_OP_NO_LOGIC | INV_OP_NO_UPDATE_ICONS)
+				_unequip_slot(slot, flags | INV_OP_NO_LOGIC | INV_OP_NO_UPDATE_ICONS, conflicting)
 				// recheck
 				conflict_result = inventory_slot_conflict_check(I, slot)
 				// put it back in incase something else breaks
@@ -204,6 +204,8 @@
 		to_wear_over.worn_inside = I
 		// setting worn inside first disallows equip/unequip from triggering
 		to_wear_over.forceMove(I)
+		for(var/datum/actor_hud/inventory/hud in inventory?.huds_using)
+			hud.remove_item(to_wear_over, slot_meta)
 		// check we don't have something already (wtf)
 		if(I.worn_over)
 			handle_item_denesting(I, denest_to, flags, user)
