@@ -91,6 +91,7 @@
 	/// The inventory datum we're in.
 	///
 	/// * This also doubles as an 'is in inventory' check, as this will always be set if we are in inventory.
+	/// * This also doubles as 'get worn mob' by doing `inv_inside?.owner`.
 	var/datum/inventory/inv_inside
 	/// currently equipped slot id
 	///

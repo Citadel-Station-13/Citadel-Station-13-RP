@@ -161,9 +161,9 @@
 /**
  * get the mob we're equipped on
  */
-/obj/item/proc/worn_mob() as /mob
+/obj/item/proc/get_worn_mob() as /mob
 	RETURN_TYPE(/mob)
-	return worn_inside?.worn_mob() || (worn_slot? loc : null)
+	return worn_inside?.get_worn_mob() || (worn_slot? loc : null)
 
 
 //* Stripping *//
@@ -192,14 +192,14 @@
 	var/slot = worn_slot
 	if(!slot)
 		CRASH("no worn slot")
-	var/mob/M = worn_mob()
+	var/mob/M = get_worn_mob()
 	if(!M)
 		CRASH("no worn mob")
 	if(!M.strip_interaction_prechecks(user))
 		return
 	if(!do_after(user, delay, M, DO_AFTER_IGNORE_ACTIVE_ITEM))
 		return
-	if(slot != worn_slot || M != worn_mob())
+	if(slot != worn_slot || M != get_worn_mob())
 		return
 	return TRUE
 
