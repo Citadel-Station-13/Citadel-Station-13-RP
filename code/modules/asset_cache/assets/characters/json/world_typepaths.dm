@@ -20,12 +20,12 @@
 	for(var/turf/turf_path as anything in typesof(/turf))
 		if(initial(turf_path.abstract_type) == turf_path)
 			continue
-		if(!initial(turf_path.turf_spawn_flags))
+		if(!initial(turf_path.atom_spawn_flags))
 			continue
 		assembled_turfs[++assembled_turfs.len] = list(
 			"name" = initial(turf_path.name),
 			"path" = "[turf_path]",
-			"flags" = "[initial(turf_path.turf_spawn_flags)]",
+			"flags" = initial(turf_path.atom_spawn_flags),
 		)
 	.["turfs"] = assembled_turfs
 
@@ -33,12 +33,12 @@
 	for(var/obj/obj_path as anything in typesof(/obj))
 		if(initial(obj_path.abstract_type) == obj_path)
 			continue
-		if(!initial(obj_path.obj_spawn_flags))
+		if(!initial(obj_path.atom_spawn_flags))
 			continue
 		assembled_objs[++assembled_objs.len] = list(
 			"name" = initial(obj_path.name),
 			"path" = "[obj_path]",
-			"flags" = "[initial(obj_path.obj_spawn_flags)]",
+			"flags" = initial(obj_path.atom_spawn_flags),
 		)
 	.["objs"] = assembled_objs
 
@@ -46,13 +46,11 @@
 	for(var/mob/mob_path as anything in typesof(/mob))
 		if(initial(mob_path.abstract_type) == mob_path)
 			continue
-		if(!initial(mob_path.mob_spawn_flags))
+		if(!initial(mob_path.atom_spawn_flags))
 			continue
 		assembled_mobs[++assembled_mobs.len] = list(
 			"name" = initial(mob_path.name),
 			"path" = "[mob_path]",
-			"flags" = "[initial(mob_path.mob_spawn_flags)]",
+			"flags" = initial(mob_path.atom_spawn_flags),
 		)
 	.["mobs"] = assembled_mobs
-
-	#warn impl on tgui side

@@ -16,7 +16,7 @@ interface LoadComputations {
 }
 
 interface ModalMapData {
-  
+
 }
 
 interface ModalLevelData {
@@ -28,16 +28,16 @@ interface ModalOvermapData {
 }
 
 export const UploadMapSector = (props, context) => {
-  const { act, data, modules } = useBackend<ModalData>(context);
+  const { act, data, nested_data } = useBackend<ModalData>(context);
 
-  const mapData: ModalMapData | null = modules["map"];
+  const mapData: ModalMapData | null = nested_data["map"];
 
   const renderedLevels: InfernoNode[] = [];
 
   for (let i = 1; i <= data.levels; i++) {
     renderedLevels.push((
       <Stack.Item>
-        <MapLevelPane data={modules[`level-${i}`]} act={act} />
+        <MapLevelPane data={nested_data[`level-${i}`]} act={act} />
       </Stack.Item>
     ));
   }

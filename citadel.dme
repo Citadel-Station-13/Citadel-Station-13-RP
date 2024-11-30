@@ -113,7 +113,6 @@
 #include "code\__DEFINES\_flags\datum_flags.dm"
 #include "code\__DEFINES\_flags\interaction_flags.dm"
 #include "code\__DEFINES\_flags\item_flags.dm"
-#include "code\__DEFINES\_flags\mob_flags.dm"
 #include "code\__DEFINES\_flags\obj_flags.dm"
 #include "code\__DEFINES\_flags\turf_flags.dm"
 #include "code\__DEFINES\admin\admin.dm"

@@ -53,8 +53,6 @@
 	//* Flags
 	/// turf flags
 	var/turf_flags = NONE
-	/// turf spawn flags
-	var/turf_spawn_flags = NONE
 	/// multiz flags
 	var/mz_flags = MZ_ATMOS_UP | MZ_OPEN_UP
 

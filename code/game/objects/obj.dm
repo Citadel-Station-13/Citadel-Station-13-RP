@@ -14,8 +14,6 @@
 	//? Flags
 	/// object flags, see __DEFINES/_flags/obj_flags.dm
 	var/obj_flags = OBJ_MELEE_TARGETABLE | OBJ_RANGE_TARGETABLE
-	/// object spawn flags
-	var/obj_spawn_flags = NONE
 
 	//? Access - see [modules/jobs/access.dm]
 	/// If set, all of these accesses are needed to access this object.

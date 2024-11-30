@@ -247,7 +247,7 @@ ADMIN_VERB_DEF(upload_map_sector, R_ADMIN, "Create Map Sector", "Create or uploa
 	if(world.maxz != world_maxz_at_prime)
 		unprime()
 		return FALSE
-
+	#warn impl
 
 /datum/admin_modal/upload_map_sector/proc/create_level()
 	var/datum/map_level/appending

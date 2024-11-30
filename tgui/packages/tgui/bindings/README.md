@@ -12,10 +12,18 @@ Example:
 
 Do not be fancy, just do it.
 
-## `json_packs`: Json Assets
+## `json`: Json Assets
 
 Example:
 
 `/datum/asset_pack/json/character_setup`'s contents should be defined in `json/Json_CharacterSetup`
 
 ## `spritesheets`: Spritesheet Assets
+
+Just contains spritesheet bindings and constants.
+
+## `types`: Type definitions
+
+Mostly for #define'd things in game.
+
+Example: `ATOM_SPAWN_FLAG_*` -> `DM_AtomSpawnFlags`

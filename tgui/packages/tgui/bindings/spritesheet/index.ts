@@ -9,3 +9,5 @@
 export enum SpritesheetMappings {
   WorldTypepaths = "WorldTypepaths",
 }
+
+export const resolveSpritesheetAssetName = (spritesheetType: SpritesheetMappings) => `${spritesheetType}.json`;

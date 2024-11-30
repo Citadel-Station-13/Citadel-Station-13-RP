@@ -55,14 +55,3 @@ DEFINE_SHARED_BITFIELD(turf_path_danger, list(
 	BITFIELD(TURF_PATH_DANGER_ANNIHILATION),
 	BITFIELD(TURF_PATH_DANGER_SPACE),
 ))
-
-//* /turf 'turf_spawn_flags' variable *//
-
-/// Allow in admin buildmode
-#define TURF_SPAWN_FLAG_ADMIN (1<<0)
-/// Allow in holodeck
-#define TURF_SPAWN_FLAG_HOLOGRAM (1<<1)
-/// Allow in virtual reality
-#define TURF_SPAWN_FLAG_VIRTUAL (1<<2)
-
-// todo: DEFINE_BITFIELD
