@@ -50,7 +50,7 @@
 /datum/event_args/actor/clickchain/New(mob/performer, mob/initiator, atom/target, list/params, intent)
 	..()
 	src.target = target
-	src.using_params = params || list()
+	src.click_params = params || list()
 	src.using_intent = intent
 
 /datum/event_args/actor/clickchain/clone()
