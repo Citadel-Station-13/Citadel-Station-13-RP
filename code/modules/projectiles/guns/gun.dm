@@ -448,8 +448,11 @@
 		PreFire(target,user,shitty_legacy_params) //They're using the new gun system, locate what they're aiming at.
 		return
 	else
-		Fire(target, user, shitty_legacy_params) //Otherwise, fire normally.
-		return
+		var/datum/event_args/actor/clickchain/e_args = new(user)
+		e_args.click_params = params
+		e_args.target = target
+		e_args.using_intent = user.a_intent
+		return handle_clickchain_fire(e_args, clickchain_flags)
 
 /obj/item/gun/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	var/mob/living/A = target
@@ -465,8 +468,11 @@
 			PreFire(A,user) //They're using the new gun system, locate what they're aiming at.
 			return
 		else
-			Fire(A, user, pointblank=1)
-			return
+			var/datum/event_args/actor/clickchain/e_args = new(user)
+			e_args.click_params = params
+			e_args.target = target
+			e_args.using_intent = user.a_intent
+			return handle_clickchain_fire(e_args, clickchain_flags)
 	return ..() //Pistolwhippin'
 
 /obj/item/gun/using_item_on(obj/item/using, datum/event_args/actor/clickchain/e_args, clickchain_flags, datum/callback/reachability_check)

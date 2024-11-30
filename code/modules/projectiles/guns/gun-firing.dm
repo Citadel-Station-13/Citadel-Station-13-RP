@@ -1,6 +1,22 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
+//* Auto Handling *//
+
+/**
+ * @return clickchain flags
+ */
+/obj/item/gun/proc/handle_clickchain_fire(datum/event_args/actor/clickchain/clickchain, clickchain_flags)
+	var/mob/resolved_firer = clickchain.performer
+	var/resolved_angle = clickchain.resolve_click_angle_from_performer()
+	var/resolved_firing_flags = NONE
+	if(resolved_firer.Reachability(clickchain.target))
+		resolved_firing_flags |= GUN_FIRING_POINT_BLANK
+	start_firing_cycle_async(resolved_firer, resolved_angle, resolved_firing_flags, legacy_get_firemode(), clickchain.target, clickchain)
+	return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
+	#warn handle pointblank
+	#warn impl
+
 //* Firing Cycle *//
 
 /**

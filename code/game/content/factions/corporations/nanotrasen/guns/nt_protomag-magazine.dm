@@ -50,6 +50,9 @@
 
 //* Typegen *//
 
+/**
+ * Generates magazines and designs for normal protomag ammo.
+ */
 #define NT_PROTOMAG_MAG_TYPEGEN(ID, SUFFIX, NAME, AMMO) \
 /obj/item/ammo_magazine/nt_protomag/pistol##SUFFIX { \
 	name = "protomag sidearm magazine (" + NAME + ")"; \
@@ -64,6 +67,9 @@
 GENERATE_DESIGN_FOR_AUTOLATHE(/obj/item/ammo_magazine/nt_protomag/pistol##SUFFIX, /nt_protomag_ammo/pistol/##SUFFIX, "NTMagPistolAmmo" + ##ID); \
 GENERATE_DESIGN_FOR_AUTOLATHE(/obj/item/ammo_magazine/nt_protomag/rifle##SUFFIX, /nt_protomag_ammo/rifle/##SUFFIX, "NTMagRifleAmmo" + ##ID);
 
+/**
+ * Generates magazines and designs for special protomag ammo.
+ */
 #define NT_PROTOMAG_MAG_TYPEGEN_SPECIAL(ID, SUFFIX, NAME, AMMO) \
 NT_PROTOMAG_MAG_TYPEGEN(ID, SUFFIX, NAME, AMMO); \
 /datum/prototype/design/generated/nt_protomag_ammo/pistol/##SUFFIX { \
@@ -79,14 +85,14 @@ NT_PROTOMAG_MAG_TYPEGEN("Sabot", /sabot, "sabot", /magboosted/sabot)
 NT_PROTOMAG_MAG_TYPEGEN("Impact", /impact, "impact", /magboosted/impact)
 NT_PROTOMAG_MAG_TYPEGEN("Practice", /practice, "practice", /magboosted/practice)
 
-NT_PROTOMAG_MAG_TYPEGEN("Smoke", /smoke, "smoke", /magnetic/smoke)
-NT_PROTOMAG_MAG_TYPEGEN("Emp", /emp, "emp", /magnetic/emp)
-// NT_PROTOMAG_MAG_TYPEGEN("Concussive", /concussive, "concussive", /magnetic/concussive)
-NT_PROTOMAG_MAG_TYPEGEN("Penetrator", /penetrator, "penetrator", /magnetic/penetrator)
-NT_PROTOMAG_MAG_TYPEGEN("Shock", /shock, "shock", /magnetic/shock)
-NT_PROTOMAG_MAG_TYPEGEN("Flare", /flare, "flare", /magnetic/flare)
-// NT_PROTOMAG_MAG_TYPEGEN("Incendiary", /incendiary, "incendiary", /magnetic/incendiary)
-// NT_PROTOMAG_MAG_TYPEGEN("Reagent", /reagent, "reagent", /magnetic/reagent)
+NT_PROTOMAG_MAG_TYPEGEN_SPECIAL("Smoke", /smoke, "smoke", /magnetic/smoke)
+NT_PROTOMAG_MAG_TYPEGEN_SPECIAL("Emp", /emp, "emp", /magnetic/emp)
+// NT_PROTOMAG_MAG_TYPEGEN_SPECIAL("Concussive", /concussive, "concussive", /magnetic/concussive)
+NT_PROTOMAG_MAG_TYPEGEN_SPECIAL("Penetrator", /penetrator, "penetrator", /magnetic/penetrator)
+NT_PROTOMAG_MAG_TYPEGEN_SPECIAL("Shock", /shock, "shock", /magnetic/shock)
+NT_PROTOMAG_MAG_TYPEGEN_SPECIAL("Flare", /flare, "flare", /magnetic/flare)
+// NT_PROTOMAG_MAG_TYPEGEN_SPECIAL("Incendiary", /incendiary, "incendiary", /magnetic/incendiary)
+// NT_PROTOMAG_MAG_TYPEGEN_SPECIAL("Reagent", /reagent, "reagent", /magnetic/reagent)
 
 #undef NT_PROTOMAG_MAG_TYPEGEN
 #undef NT_PROTOMAG_MAG_TYPEGEN_SPECIAL

@@ -182,4 +182,4 @@
  */
 /client/proc/print_keys_for_keybind_with_prefs_link(datum/keybinding/binding_or_path, append) as text
 	var/list/keys = get_keys_for_keybind(/datum/keybinding/mob/multihand_wield)
-	return length(keys) ? "<b>([english_list])</b>[append]" : "<b>(Unbound)</b>[append]"
+	return length(keys) ? "<b>([english_list(keys)])</b>[append]" : "<b>(Unbound)</b>[append]"
