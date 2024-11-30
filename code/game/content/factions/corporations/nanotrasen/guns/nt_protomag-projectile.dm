@@ -10,7 +10,7 @@
 	abstract_type = /obj/projectile/nt_protomag
 	icon = 'icons/content/factions/corporations/nanotrasen/items/guns/protomag/projectile.dmi'
 	icon_state = "kinetic"
-	speed = /obj/projectile::speed * 1
+	speed = /obj/projectile::speed * 1.1
 
 /obj/projectile/nt_protomag/Initialize(mapload)
 	. = ..()
@@ -23,6 +23,7 @@
 /obj/projectile/nt_protomag/sabot
 	name = "dense slug"
 	color = "#ff7700"
+	speed = /obj/projectile/nt_protomag::speed * 1.2
 
 // todo: this is currently disabled as medcode is not verbose enough for this to work
 // /obj/projectile/nt_protomag/shredder
@@ -31,6 +32,7 @@
 /obj/projectile/nt_protomag/impact
 	name = "deforming slug"
 	color = "#3333aa"
+	speed = /obj/projectile/nt_protomag::speed * 0.9
 
 /obj/projectile/nt_protomag/practice
 	name = "lightweight slug"
@@ -41,7 +43,7 @@
 /obj/projectile/nt_protomag/smoke
 	name = "disintegrating slug"
 	color = "#888888"
-	speed = /obj/projectile/nt_protomag::speed * 0.
+	speed = /obj/projectile/nt_protomag::speed * 0.6
 
 /obj/projectile/nt_protomag/emp
 	name = "ion slug"
