@@ -30,7 +30,7 @@
 	if(!burnt && prob(5))
 		burn_tile(exposed_temperature)
 	else if(temp_destroy && exposed_temperature >= (temp_destroy + 100) && prob(1) && !is_plating())
-		make_plating() //destroy the tile, exposing plating
+		dismantle_flooring(FALSE)
 		burn_tile(exposed_temperature)
 
 //should be a little bit lower than the temperature required to destroy the material

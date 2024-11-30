@@ -1,7 +1,7 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2023 Citadel Station developers.          *//
 
-//! ON GOD, READ tool_system.dm's use_tool_standard to learn how to use these!
+//! ON GOD, READ tool_system.dm's use_tool to learn how to use these!
 
 /**
  * Called when a crowbar is used on us.
@@ -18,7 +18,7 @@
 /**
  * Standard helper to have a timed crowbar usage.
  *
- * See tool_system.dm's use_tool_standard to know how to use this.
+ * See tool_system.dm's use_tool to know how to use this.
  *
  * The system handles sound playback for you unless you specify to skip that, but you must manually give visible_message feedback.
  *
@@ -31,7 +31,7 @@
  * - usage - usage flags for skill system checks.
  */
 /atom/proc/use_crowbar(obj/item/I, datum/event_args/actor/clickchain/e_args, flags, delay, cost, usage)
-	return use_tool_standard(TOOL_CROWBAR, I, e_args, flags, delay, cost, usage)
+	return use_tool(TOOL_CROWBAR, I, e_args, flags, delay, cost, usage)
 
 /**
  * Called when a wrench is used on us.
@@ -48,7 +48,7 @@
 /**
  * Standard helper to have a timed wrench usage.
  *
- * See tool_system.dm's use_tool_standard to know how to use this.
+ * See tool_system.dm's use_tool to know how to use this.
  *
  * The system handles sound playback for you unless you specify to skip that, but you must manually give visible_message feedback.
  *
@@ -61,7 +61,7 @@
  * - usage - usage flags for skill system checks.
  */
 /atom/proc/use_wrench(obj/item/I, datum/event_args/actor/clickchain/e_args, flags, delay, cost, usage)
-	return use_tool_standard(TOOL_WRENCH, I, e_args, flags, delay, cost, usage)
+	return use_tool(TOOL_WRENCH, I, e_args, flags, delay, cost, usage)
 
 /**
  * Called when a welder is used on us.
@@ -78,7 +78,7 @@
 /**
  * Standard helper to have a timed welder usage.
  *
- * See tool_system.dm's use_tool_standard to know how to use this.
+ * See tool_system.dm's use_tool to know how to use this.
  *
  * The system handles sound playback for you unless you specify to skip that, but you must manually give visible_message feedback.
  *
@@ -91,7 +91,7 @@
  * - usage - usage flags for skill system checks.
  */
 /atom/proc/use_welder(obj/item/I, datum/event_args/actor/clickchain/e_args, flags, delay, cost, usage)
-	return use_tool_standard(TOOL_WELDER, I, e_args, flags, delay, cost, usage)
+	return use_tool(TOOL_WELDER, I, e_args, flags, delay, cost, usage)
 
 /**
  * Called when a pair of wirecutters is used on us.
@@ -108,7 +108,7 @@
 /**
  * Standard helper to have a timed usage of wirecutters.
  *
- * See tool_system.dm's use_tool_standard to know how to use this.
+ * See tool_system.dm's use_tool to know how to use this.
  *
  * The system handles sound playback for you unless you specify to skip that, but you must manually give visible_message feedback.
  *
@@ -121,7 +121,7 @@
  * - usage - usage flags for skill system checks.
  */
 /atom/proc/use_wirecutter(obj/item/I, datum/event_args/actor/clickchain/e_args, flags, delay, cost, usage)
-	return use_tool_standard(TOOL_WIRECUTTER, I, e_args, flags, delay, cost, usage)
+	return use_tool(TOOL_WIRECUTTER, I, e_args, flags, delay, cost, usage)
 
 /**
  * Called when a screwdriver is used on us.
@@ -138,7 +138,7 @@
 /**
  * Standard helper to have a timed screwdriver usage.
  *
- * See tool_system.dm's use_tool_standard to know how to use this.
+ * See tool_system.dm's use_tool to know how to use this.
  *
  * The system handles sound playback for you unless you specify to skip that, but you must manually give visible_message feedback.
  *
@@ -151,7 +151,7 @@
  * - usage - usage flags for skill system checks.
  */
 /atom/proc/use_screwdriver(obj/item/I, datum/event_args/actor/clickchain/e_args, flags, delay, cost, usage)
-	return use_tool_standard(TOOL_SCREWDRIVER, I, e_args, flags, delay, cost, usage)
+	return use_tool(TOOL_SCREWDRIVER, I, e_args, flags, delay, cost, usage)
 
 /**
  * Called when a analyzer is used on us.
@@ -168,7 +168,7 @@
 /**
  * Standard helper to have a timed analyzer usage.
  *
- * See tool_system.dm's use_tool_standard to know how to use this.
+ * See tool_system.dm's use_tool to know how to use this.
  *
  * The system handles sound playback for you unless you specify to skip that, but you must manually give visible_message feedback.
  *
@@ -181,7 +181,7 @@
  * - usage - usage flags for skill system checks.
  */
 /atom/proc/use_analyzer(obj/item/I, datum/event_args/actor/clickchain/e_args, flags, delay, cost, usage)
-	return use_tool_standard(TOOL_ANALYZER, I, e_args, flags, delay, cost, usage)
+	return use_tool(TOOL_ANALYZER, I, e_args, flags, delay, cost, usage)
 
 
 /**
@@ -199,7 +199,7 @@
 /**
  * Standard helper to have a timed multitool usage.
  *
- * See tool_system.dm's use_tool_standard to know how to use this.
+ * See tool_system.dm's use_tool to know how to use this.
  *
  * The system handles sound playback for you unless you specify to skip that, but you must manually give visible_message feedback.
  *
@@ -212,5 +212,5 @@
  * - usage - usage flags for skill system checks.
  */
 /atom/proc/use_multitool(obj/item/I, datum/event_args/actor/clickchain/e_args, flags, delay, cost, usage)
-	return use_tool_standard(TOOL_MULTITOOL, I, e_args, flags, delay, cost, usage)
+	return use_tool(TOOL_MULTITOOL, I, e_args, flags, delay, cost, usage)
 

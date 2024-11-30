@@ -3,7 +3,7 @@
 
 /turf/simulated/floor/proc/break_tile_to_plating()
 	if(!is_plating())
-		make_plating()
+		dismantle_flooring()
 	break_tile()
 
 /turf/simulated/floor/proc/break_tile()

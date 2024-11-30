@@ -9,7 +9,6 @@
 	climb_allowed = FALSE
 
 	//* Actions *//
-
 	/// cached action descriptors
 	///
 	/// this can be:
@@ -65,8 +64,10 @@
 	/// As of right now, some flags only work in some slots.
 	/// These flags are listed in [code/__DEFINES/inventory/item_flags.dm].
 	var/inv_hide_flags = NONE
-	/// flags for the bodyparts this item covers when worn.
+	/// Flags for the bodyparts this item covers when worn.
 	/// These flags are listed in [code/__DEFINES/inventory/item_flags.dm].
+	///
+	/// * Do not set these directly, use set_body_cover_flags()!
 	var/body_cover_flags = NONE
 	/// Flags which determine which body parts are protected from heat. Use the HEAD, UPPER_TORSO, LOWER_TORSO, etc. flags. See setup.dm
 	/// These flags are listed in [code/__DEFINES/inventory/item_flags.dm].
@@ -85,6 +86,12 @@
 	var/interaction_flags_item = INTERACT_ITEM_ATTACK_SELF
 
 	//* Inventory *//
+	/// Currently equipped slot ID or hand index if held in hand
+	var/inv_slot_or_index
+	/// The inventory datum we're in.
+	///
+	/// * This also doubles as an 'is in inventory' check, as this will always be set if we are in inventory.
+	var/datum/inventory/inv_inside
 	/// currently equipped slot id
 	///
 	/// todo: `worn_slot_or_index`
@@ -117,7 +124,7 @@
 	/// Set this variable if the item protects its wearer against low pressures above a lower bound. Keep at null to disable protection. 0 represents protection against hard vacuum.
 	var/min_pressure_protection
 
-	//? Carry Weight
+	//* Carry Weight *//
 	/// encumberance.
 	/// calculated as max() of all encumbrance
 	/// result is calculated into slowdown value
@@ -836,6 +843,11 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 
 /obj/item/proc/reload_passive_parry()
 	load_passive_parry()
+
+//* Flags *//
+
+/obj/item/proc/set_body_cover_flags()
+	inv_inside.invalidate_coverage_cache()
 
 //* Interactions *//
 

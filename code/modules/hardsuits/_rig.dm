@@ -957,7 +957,7 @@
 			if(check_slot && check_slot == use_obj)
 				return
 			use_obj.copy_atom_colour(src)
-			if(!H.equip_to_slot_if_possible(use_obj, equip_to, null, INV_OP_FORCE))
+			if(!H.equip_to_slot_if_possible(use_obj, equip_to, INV_OP_FORCE))
 				if(check_slot && warn == 1)
 					to_chat(H, "<span class='danger'>You are unable to deploy \the [piece] as \the [check_slot] [check_slot.gender == PLURAL ? "are" : "is"] in the way.</span>")
 					return

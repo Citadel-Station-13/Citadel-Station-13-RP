@@ -4,7 +4,7 @@ CREATE_STANDARD_TURFS(/turf/simulated/floor/outdoors/snow)
 	icon_state = "snow"
 	edge_blending_priority = 1
 	slowdown = 2
-	initial_flooring = /singleton/flooring/snow
+	initial_flooring = /datum/prototype/flooring/snow
 	baseturfs = /turf/simulated/floor/outdoors/dirt
 
 	// smoothing_flags = SMOOTH_BITMASK | SMOOTH_BORDER
@@ -94,7 +94,7 @@ CREATE_STANDARD_TURFS(/turf/simulated/floor/outdoors/shelfice)
 	icon_state = "gravsnow"
 	desc = "A layer of coarse ice pebbles and assorted gravel."
 	edge_blending_priority = 0
-	initial_flooring = /singleton/flooring/snow/gravsnow
+	initial_flooring = /datum/prototype/flooring/snow/gravsnow
 	baseturfs = /turf/simulated/floor/outdoors/dirt
 
 /turf/simulated/floor/outdoors/snow/no_tree

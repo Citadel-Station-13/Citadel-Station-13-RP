@@ -70,7 +70,7 @@ var/datum/legacy_announcement/minor/captain_announcement = new(do_newscast = 1)
 	if(H.age>49)
 		// Since we can have something other than the default uniform at this
 		// point, check if we can actually attach the medal
-		var/obj/item/clothing/uniform = H.w_uniform
+		var/obj/item/clothing/uniform = H.inventory.get_slot_single(/datum/inventory_slot/inventory/uniform::id)
 		if(uniform)
 			var/obj/item/clothing/accessory/medal/gold/captain/medal = new()
 			if(uniform.can_attach_accessory(medal))

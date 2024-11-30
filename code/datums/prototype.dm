@@ -40,6 +40,9 @@
 
 	// TODO: deal with the rest of this
 
+	// todo: anonymous is kinda wrong. only procgen'd prototypes should have procedural ids.
+	//       right now, this is just here to support transferring legacy stuff over without having to manually assign IDs
+	//       to everything. this does mean that ::id won't be usable until it's taken off of a subtype.
 	/// anonymous? if true, coded id is ignored.
 	var/anonymous = FALSE
 	/// namespace for anonymous generation - must be set if anonymous
