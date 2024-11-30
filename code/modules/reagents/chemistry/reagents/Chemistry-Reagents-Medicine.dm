@@ -1487,7 +1487,13 @@
 	scannable = TRUE
 	affects_robots = TRUE
 
-/datum/reagent/healing_nanites/affect_blood(mob/living/carbon/M, alien, removed)
+/datum/reagent/nanite/healing/affect_blood(mob/living/carbon/M, alien, removed)
+	M.heal_organ_damage(2 * removed, 2 * removed)
+	M.adjustOxyLoss(-4 * removed)
+	M.adjustToxLoss(-2 * removed)
+	M.adjustCloneLoss(-2 * removed)
+
+/datum/reagent/nanite/healing/affect_ingest(mob/living/carbon/M, alien, removed)
 	M.heal_organ_damage(2 * removed, 2 * removed)
 	M.adjustOxyLoss(-4 * removed)
 	M.adjustToxLoss(-2 * removed)

@@ -1192,7 +1192,7 @@
 		if(prob(5))
 			H.heart_attack()
 
-/datum/reagent/nanite/heartkill_nanites/affect_blood(mob/living/carbon/M, alien, removed)//Damage handled using the heart_attack() proc in heart.dm
+/datum/reagent/nanite/heartkill/affect_blood(mob/living/carbon/M, alien, removed)//Damage handled using the heart_attack() proc in heart.dm
 	var/mob/living/carbon/human/H = M
 	if(istype(H))
 		if(prob(5))
