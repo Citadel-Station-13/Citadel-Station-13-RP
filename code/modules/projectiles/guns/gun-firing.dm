@@ -108,8 +108,11 @@
 	 * As a word of warning, any proc called in this proc must be SHOULD_NOT_SLEEP.
 	 * If this is ever violated bad things may happen and things may explode.
 	 */
+
+	if(isnull(firemode))
+		firemode = legacy_get_firemode()
+		ASSERT(firemode)
 	#warn logging
-	#warn default firemode
 
 	// create cycle
 	var/datum/gun_firing_cycle/our_cycle = new

@@ -14,6 +14,9 @@
 	var/cycle_cooldown = 0.4 SECONDS
 
 	//* rendering *//
+	/// modify the gun's base state when active
+	/// * very, very dangerous, know what you are doing.
+	var/override_icon_base
 	/// state key for rendering, if any
 	var/render_key
 	/// firemode color, used if we're doing colored `-firemode` sprite or colored `-ammo` sprite
@@ -46,6 +49,7 @@
 	for(var/varname in direct_varedits)
 		var/value = direct_varedits[varname]
 		// pull out special crap
+		// these don't corrospond to our own vars, these corrospond to old hardcoded strings.
 		switch(varname)
 			if("mode_name")
 				src.name = value
