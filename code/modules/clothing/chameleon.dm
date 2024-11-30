@@ -11,7 +11,13 @@
 	icon_override = copy.icon_override
 	default_worn_icon = copy.default_worn_icon
 	icon_state = copy.icon_state
-	snowflake_worn_state = copy.snowflake_worn_state
+	worn_render_flags = copy.worn_render_flags
+
+	var/obj/item/clothing/under/uniform_copy = copy
+	if(istype(uniform_copy))
+		var/obj/item/clothing/under/uniform_self = src
+		uniform_self.snowflake_worn_state = uniform_copy.snowflake_worn_state
+
 	color = copy.color
 	item_state = copy.item_state
 	body_cover_flags = copy.body_cover_flags

@@ -1,6 +1,7 @@
 #define HOLOGRAM_OTHER_ALPHA 230
 #define HOLOGRAM_BODY_ALPHA 100
 #define HOLOGRAM_CLOTHING_ALPHA 255
+#define HOLOGRAM_SHIELD_MAX_HEALTH 20
 
 /datum/species/holosphere
 	name = SPECIES_HOLOSPHERE
@@ -32,17 +33,17 @@
 	vision_organ = O_EYES
 
 	has_limbs = list(
-		BP_TORSO  = list("path" = /obj/item/organ/external/chest/indestructible),
-		BP_GROIN  = list("path" = /obj/item/organ/external/groin/indestructible),
-		BP_HEAD   = list("path" = /obj/item/organ/external/head/indestructible),
-		BP_L_ARM  = list("path" = /obj/item/organ/external/arm/indestructible),
-		BP_R_ARM  = list("path" = /obj/item/organ/external/arm/right/indestructible),
-		BP_L_LEG  = list("path" = /obj/item/organ/external/leg/indestructible),
-		BP_R_LEG  = list("path" = /obj/item/organ/external/leg/right/indestructible),
-		BP_L_HAND = list("path" = /obj/item/organ/external/hand/indestructible),
-		BP_R_HAND = list("path" = /obj/item/organ/external/hand/right/indestructible),
-		BP_L_FOOT = list("path" = /obj/item/organ/external/foot/indestructible),
-		BP_R_FOOT = list("path" = /obj/item/organ/external/foot/right/indestructible),
+		BP_TORSO  = list("path" = /obj/item/organ/external/chest/indestructible/holosphere),
+		BP_GROIN  = list("path" = /obj/item/organ/external/groin/indestructible/holosphere),
+		BP_HEAD   = list("path" = /obj/item/organ/external/head/indestructible/holosphere),
+		BP_L_ARM  = list("path" = /obj/item/organ/external/arm/indestructible/holosphere),
+		BP_R_ARM  = list("path" = /obj/item/organ/external/arm/right/indestructible/holosphere),
+		BP_L_LEG  = list("path" = /obj/item/organ/external/leg/indestructible/holosphere),
+		BP_R_LEG  = list("path" = /obj/item/organ/external/leg/right/indestructible/holosphere),
+		BP_L_HAND = list("path" = /obj/item/organ/external/hand/indestructible/holosphere),
+		BP_R_HAND = list("path" = /obj/item/organ/external/hand/right/indestructible/holosphere),
+		BP_L_FOOT = list("path" = /obj/item/organ/external/foot/indestructible/holosphere),
+		BP_R_FOOT = list("path" = /obj/item/organ/external/foot/right/indestructible/holosphere),
 	)
 
 	inherent_verbs = list(
@@ -65,8 +66,12 @@
 		SLOT_ID_GLASSES = /obj/item/clothing/glasses/chameleon/holosphere,
 		SLOT_ID_BELT    = /obj/item/storage/belt/chameleon/holosphere
 	)
-
 	var/list/equipped_chameleon_gear = list()
+	var/shield_health = HOLOGRAM_SHIELD_MAX_HEALTH
+	var/holosphere
+
+	var/cached_loadout_flags
+	var/cached_loadout_role
 
 /datum/species/holosphere/on_apply(mob/living/carbon/human/H)
 	. = ..()
@@ -103,12 +108,7 @@
 		var/mutable_appearance/new_overlay = make_hologram_appearance(overlay_object, alpha_to_use, TRUE)
 		overlay_args[overlay_index] = list(new_overlay)
 
-/datum/species/holosphere/proc/handle_hologram_loadout(datum/source, list/loadout)
-	if(istype(source, /mob/living/carbon/human/dummy))
-		return
-
-	// drop everything
-	var/mob/living/carbon/human/H = source
+/datum/species/holosphere/proc/give_chameleon_gear(mob/living/carbon/human/H)
 	if(!istype(H))
 		return
 	for(var/obj/item/I in H.get_equipped_items(TRUE, FALSE))
@@ -125,15 +125,27 @@
 		H.equip_to_slot_if_possible(chameleon_item, slot, INV_OP_SILENT | INV_OP_FLUFFLESS)
 		equipped_chameleon_gear[slot] = chameleon_item
 
-	var/slots_used = list()
+/datum/species/holosphere/proc/handle_hologram_loadout(datum/source, flags, datum/role/role, list/datum/loadout_entry/loadout)
+	if(istype(source, /mob/living/carbon/human/dummy))
+		return
 
+	cached_loadout_flags = flags
+	cached_loadout_role = role
+
+	give_chameleon_gear(source)
+
+	equip_loadout(source, loadout)
+
+/datum/species/holosphere/proc/equip_loadout(mob/living/carbon/human/H, list/datum/loadout_entry/loadout)
+	var/slots_used = list()
 	for(var/datum/loadout_entry/entry as anything in loadout)
+		message_admins("looking at [entry.path]")
 		var/use_slot = entry.slot
 		if(isnull(use_slot))
 			continue
 		var/obj/item/equipped = equipped_chameleon_gear[use_slot]
 		if(equipped)
-			equipped.disguise(entry.path, source)
+			equipped.disguise(entry.path, H)
 			equipped.update_worn_icon()
 			slots_used += use_slot
 			loadout -= entry
@@ -144,4 +156,25 @@
 			var/obj/item/chameleon_item = equipped_chameleon_gear[slot]
 			chameleon_item.icon = initial(chameleon_item.icon)
 			chameleon_item.icon_state = CLOTHING_BLANK_ICON_STATE
+			var/obj/item/clothing/under/chameleon_uniform = chameleon_item
+			if(istype(chameleon_uniform))
+				chameleon_uniform.snowflake_worn_state = CLOTHING_BLANK_ICON_STATE
 			chameleon_item.update_worn_icon()
+
+/datum/species/holosphere/verb/switch_loadout(mob/living/carbon/human/H)
+	var/list/loadout_options = list()
+	for(var/i in 1 to LOADOUT_MAX_SLOTS)
+		loadout_options["Loadout [i]"] = i
+	var/loadout_option = tgui_input_list(usr, "Choose Loadout", "Loadout", loadout_options)
+	var/loadout_slot = loadout_options[loadout_option]
+	message_admins("slot is [loadout_slot] option is [loadout_option]")
+	var/list/datum/loadout_entry/loadout_entries = H.client.prefs.generate_loadout_entry_list(cached_loadout_flags, cached_loadout_role, loadout_slot)
+	equip_loadout(H, loadout_entries)
+
+/*
+// go from being a hologram to a sphere
+/datum/species/holosphere/proc/enter_sphere
+
+// go from being a sphere to a hologram
+/datum/species/holosphere/proc/exit_sphere
+*/
