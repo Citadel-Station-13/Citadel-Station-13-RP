@@ -23,3 +23,12 @@
 /// NAME: must be a string
 /// VALUE: the actual enum value, whatever it is
 #define BITFIELD_NEW(NAME, VALUE) ##NAME = ##VALUE
+
+/**
+ * New bitflag declaration system.
+ *
+ * * Variables are treated as named bitfields.
+ * * Variables starting with `G_` are treated as named groups after the `_`.
+ */
+/bitflag
+	abstract_type = /bitflag

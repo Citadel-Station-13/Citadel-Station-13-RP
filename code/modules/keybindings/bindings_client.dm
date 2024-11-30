@@ -172,5 +172,14 @@
 /**
  * Returns a list of human-readable (usually) keys.
  */
-/client/proc/get_keys_for_binding(datum/keybinding/binding_or_path)
+/client/proc/get_keys_for_keybind(datum/keybinding/binding_or_path) as /list
 	#warn impl
+
+/**
+ * Returns a string that can be interpolated in tgui-chat to allow a quick click to rebind keys
+ *
+ * todo: for now, this just returns a string without the keybind UI open link.
+ */
+/client/proc/print_keys_for_keybind_with_prefs_link(datum/keybinding/binding_or_path, append) as text
+	var/list/keys = get_keys_for_keybind(/datum/keybinding/mob/multihand_wield)
+	return length(keys) ? "<b>([english_list])</b>[append]" : "<b>(Unbound)</b>[append]"

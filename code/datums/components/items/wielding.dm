@@ -40,8 +40,7 @@
 
 /datum/component/wielding/proc/signal_examine(datum/source, mob/user, list/examine_list)
 	SIGNAL_HANDLER
-	#warn tell them which bind dumbass
-	examine_list += SPAN_NOTICE("[parent] seems to be able to be used with [hands] hands. Press your \"Wield Item\" keybind [user?.client?.get_keys_for_binding(/datum/keybinding/mob/multihand_wield)] to toggle wielding.")
+	examine_list += SPAN_NOTICE("[parent] seems to be able to be used with [hands] hands. Press your \"Wield Item\" keybind [user?.client?.print_keys_for_keybind_with_prefs_link(/datum/keybinding/mob/multihand_wield, " ")]to toggle wielding.")
 
 /datum/component/wielding/proc/signal_dropped(datum/source, mob/user, flags, atom/newloc)
 	unwield()
