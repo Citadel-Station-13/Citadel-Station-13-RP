@@ -333,16 +333,6 @@
 	reagents.add_reagent("lipozine", 15)
 	color = reagents.get_color()
 
-/obj/item/reagent_containers/pill/diet
-	name = "diet pill"
-	desc = "Guaranteed to get you slim!"
-	icon_state = "pill4"
-
-/obj/item/reagent_containers/pill/diet/Initialize(mapload)
-	. = ..()
-	reagents.add_reagent("lipozine", 15)
-	color = reagents.get_color()
-
 /obj/item/reagent_containers/pill/polonium
 	name = "pill"
 	desc = "A unlabeled pill, it seems slightly warm to the touch."
