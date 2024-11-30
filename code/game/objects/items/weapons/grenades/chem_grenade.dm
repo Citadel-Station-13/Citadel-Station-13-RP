@@ -388,3 +388,53 @@
 	beakers += B1
 	beakers += B2
 	icon_state = initial(icon_state) +"_locked"
+
+
+
+//Nanite Cloud Warcrimes!!!
+
+/obj/item/grenade/chem_grenade/nanite_shredder
+	name = "shredder nanite grenade"
+	desc = "Weaponized nanites are banned by all galactic major powers. On the frontier however there is little authority to stop wannabee \
+	Oppenheimers from making weapons such as this."
+	stage = 2
+	path = 1
+
+/obj/item/grenade/chem_grenade/nanite_shredder/Initialize(mapload)
+	. = ..()
+	var/obj/item/reagent_containers/glass/beaker/B1 = new(src)
+	var/obj/item/reagent_containers/glass/beaker/B2 = new(src)
+
+	B1.reagents.add_reagent("phosphorus", 30)
+	B1.reagents.add_reagent("shredding_nanites", 30)
+	B2.reagents.add_reagent("potassium", 30)
+	B2.reagents.add_reagent("sugar", 30)
+
+	detonator = new/obj/item/assembly_holder/timer_igniter(src)
+
+	beakers += B1
+	beakers += B2
+	icon_state = initial(icon_state) +"_locked"
+
+/obj/item/grenade/chem_grenade/nanite_neurophage
+	name = "neurophage nanite grenade"
+	desc = "Weaponized nanites are banned by all galactic major powers. On the frontier however there is little authority to stop wannabee \
+	Oppenheimers and other mad scientists from making weapons such as this."
+	stage = 2
+	path = 1
+
+/obj/item/grenade/chem_grenade/nanite_neurophage/Initialize(mapload)
+	. = ..()
+	var/obj/item/reagent_containers/glass/beaker/B1 = new(src)
+	var/obj/item/reagent_containers/glass/beaker/B2 = new(src)
+
+	B1.reagents.add_reagent("phosphorus", 30)
+	B1.reagents.add_reagent("neurophage_nanites", 30)
+	B2.reagents.add_reagent("potassium", 30)
+	B2.reagents.add_reagent("sugar", 30)
+
+	detonator = new/obj/item/assembly_holder/timer_igniter(src)
+
+	beakers += B1
+	beakers += B2
+	icon_state = initial(icon_state) +"_locked"

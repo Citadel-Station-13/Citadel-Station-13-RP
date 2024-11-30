@@ -389,10 +389,16 @@
 	result_amount = 3
 	required_reagents = list("polonium" = 1, "nicotine" = 1, "arithrazine" = 1)
 
-/datum/chemical_reaction/unsuperhol //Removes Abestos from the lungs and body. Only needs 1 unit
+/datum/chemical_reaction/unsuperhol //Neutralizes Superhol making it water
 	name = "Superhol Neutralization"
 	id = "unsuperhol"
 	result = "water"
 	result_amount = 1
 	required_reagents = list("superhol" = 1, "ethylredoxrazine" = 1, "hepanephrodaxon" = 1)
 
+/datum/chemical_reaction/lessershock //May belong in medicine, in miscellaneous since that is where its product's parent chem 200 V is.
+	name = "Lesser Shockchem"
+	id = "lessershock"
+	result = "lessershock"
+	result_amount = 1
+	required_reagents = list("phosphorus" = 1, "iron" = 1, "lithium" = 1, "carbon" = 1)

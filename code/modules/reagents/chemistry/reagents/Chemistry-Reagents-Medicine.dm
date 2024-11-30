@@ -1476,7 +1476,7 @@
 			to_chat(M, "<span class='notice'>You feel invigorated and calm.</span>")
 
 // This exists to cut the number of chemicals a merc borg has to juggle on their hypo.
-/datum/reagent/healing_nanites
+/datum/reagent/nanite/healing
 	name = "Restorative Nanites"
 	id = "healing_nanites"
 	description = "Miniature medical robots that swiftly restore bodily damage."

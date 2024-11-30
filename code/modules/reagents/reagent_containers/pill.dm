@@ -351,3 +351,48 @@
 /obj/item/reagent_containers/pill/polonium/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("polonium", 5)
+
+/obj/item/reagent_containers/pill/shredding_nanites
+	name = "nanite release capsule"
+	desc = "A small 'pill' full of nanites designed to be ingested. Its impossible to tell what they do while they remain in the container."
+	icon_state = "pill_syndie"
+
+/obj/item/reagent_containers/pill/shredding_nanites/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("shredding_nanites", 5)
+
+/obj/item/reagent_containers/pill/neurophage_nanites
+	name = "nanite release capsule"
+	desc = "A small 'pill' full of nanites designed to be ingested. Its impossible to tell what they do while they remain in the container."
+	icon_state = "pill_syndie"
+
+/obj/item/reagent_containers/pill/neurophage_nanites/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("neurophage_nanites", 5)
+
+/obj/item/reagent_containers/pill/irradiated_nanites
+	name = "nanite release capsule"
+	desc = "A small 'pill' full of nanites designed to be ingested. Its impossible to tell what they do while they remain in the container."
+	icon_state = "pill_syndie"
+
+/obj/item/reagent_containers/pill/irradiated_nanites/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("irradiated_nanites", 5)
+
+/obj/item/reagent_containers/pill/heartkill_nanites
+	name = "nanite release capsule"
+	desc = "A small 'pill' full of nanites designed to be ingested. Its impossible to tell what they do while they remain in the container."
+	icon_state = "pill_syndie"
+
+/obj/item/reagent_containers/pill/heartkill_nanites/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("heartkill_nanites", 5)
+
+/obj/item/reagent_containers/pill/healing_nanites
+	name = "nanite release capsule"
+	desc = "A small 'pill' full of nanites designed to be ingested. Its impossible to tell what they do while they remain in the container."
+	icon_state = "pill_syndie"
+
+/obj/item/reagent_containers/pill/healing_nanites/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("healing_nanites", 5)
