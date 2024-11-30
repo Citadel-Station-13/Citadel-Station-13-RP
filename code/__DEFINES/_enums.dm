@@ -6,9 +6,3 @@
 /// NAME: must be a string
 /// VALUE: the actual enum value, whatever it is
 #define ENUM(NAME, VALUE) ##NAME = ##VALUE
-
-/**
- * New enum declaration system.
- */
-/enum
-	abstract_type = /enum

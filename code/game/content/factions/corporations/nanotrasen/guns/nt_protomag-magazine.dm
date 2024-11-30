@@ -73,10 +73,10 @@ GENERATE_DESIGN_FOR_AUTOLATHE(/obj/item/ammo_magazine/nt_protomag/rifle##SUFFIX,
 #define NT_PROTOMAG_MAG_TYPEGEN_SPECIAL(ID, SUFFIX, NAME, AMMO) \
 NT_PROTOMAG_MAG_TYPEGEN(ID, SUFFIX, NAME, AMMO); \
 /datum/prototype/design/generated/nt_protomag_ammo/pistol/##SUFFIX { \
-	lathe_type = LATHE_TYPE_PROTOLATHE; \
+	lathe_type = LATHE_TYPE_AUTOLATHE | LATHE_TYPE_PROTOLATHE; \
 } \
 /datum/prototype/design/generated/nt_protomag_ammo/rifle/##SUFFIX { \
-	lathe_type = LATHE_TYPE_PROTOLATHE; \
+	lathe_type = LATHE_TYPE_AUTOLATHE | LATHE_TYPE_PROTOLATHE; \
 }
 
 NT_PROTOMAG_MAG_TYPEGEN("Standard", /standard, "standard", /magboosted/standard)
