@@ -1,17 +1,13 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2023 Citadel Station developers.          *//
 
+// todo: throw this file out and rethink this again; this is not the way to go.
+
 /**
  * new, more-modular tgui_module system
  *
  * allows for generic interfaces that attach to .. really, whatever, and can even be embedded
  * without having to deal with copypaste code
- *
- * todo: for now, we just use expected_type and typecast. we want to use pointers in the future.
- * todo: maybe hold off on that pointer idea
- *
- * todo: /datum/tgui_module/push_ui_data() should route to host automatically if host registers modules.
- * todo: rework module registration system. /datum procs: register_ui_module(), unregister_ui_module() hooked to model del, for automatic inclusion in ui.
  *
  * warning: the tgui module system is inherently not cheap to run.
  * you should not expect including too many modules to bode well for performance.

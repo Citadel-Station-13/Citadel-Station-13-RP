@@ -4,6 +4,8 @@
  * Citadel in house
  * Suffer.
  *
+ * todo: throw this out and rethink modules entirely, this is not the way to go
+ *
  * Basically, how this works, is we inject the module's
  * id, ref, data, and act into context, fetched with useModule().
  *
