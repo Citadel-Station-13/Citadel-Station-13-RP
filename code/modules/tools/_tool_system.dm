@@ -191,6 +191,8 @@
  * * function - the tool function used
  * * flags - tool operation flags
  * * hint - the operation hint, if the calling system is the dynamic tool system.
+ *
+ * @return clickchain flags
  */
 /atom/proc/tool_act(obj/item/I, datum/event_args/actor/clickchain/e_args, function, flags, hint)
 	switch(function)
@@ -209,21 +211,6 @@
 		if(TOOL_ANALYZER)
 			return analyzer_act(I, e_args, flags, hint)? CLICKCHAIN_DO_NOT_PROPAGATE : NONE
 		//? Add more tool_acts as necessary.
-
-/**
- * standard use tool
- *
- * @params
- * * function - tool function
- * * I - the tool
- * * user - the person using it
- * * flags - tool operation flags
- * * delay - how long it'll take to use the tool
- * * cost - optional; cost multiplier to the default cost of 1 per second.
- * * usage - optional; usage flags for tool speed/quality checks.
- */
-/atom/proc/use_tool_standard(function, obj/item/I, datum/event_args/actor/clickchain/e_args, flags, delay, cost, usage)
-	return use_tool(function, I, e_args, flags, delay, cost, usage)
 
 /**
  * primary proc called by wrappers to use a tool on us

@@ -2179,7 +2179,7 @@
 /turf/simulated/floor/hull/airless,
 /area/talon/maintenance/deckone_starboard_aft_wing)
 "sZ" = (
-/obj/structure/sign/poster{
+/obj/structure/poster{
 	dir = 1;
 	icon_state = ""
 	},

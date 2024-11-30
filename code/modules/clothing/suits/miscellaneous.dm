@@ -1134,11 +1134,11 @@
 
 	if(rolled == 0)
 		rolled = 1
-		body_cover_flags &= ~(ARMS)
+		set_body_cover_flags(body_cover_flags & ~(ARMS))
 		to_chat(usr, "<span class='notice'>You roll up the sleeves of your [src].</span>")
 	else
 		rolled = 0
-		body_cover_flags = initial(body_cover_flags)
+		set_body_cover_flags(initial(body_cover_flags))
 		to_chat(usr, "<span class='notice'>You roll down the sleeves of your [src].</span>")
 	update_icon()
 

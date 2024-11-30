@@ -555,7 +555,7 @@
 /datum/supply_pack/nanotrasen/security/posters
 	name = "Gear - Morale Posters"
 	contains = list(
-		/obj/item/contraband/poster/nanotrasen = 6,
+		/obj/item/poster/nanotrasen = 6,
 	)
 	worth = 100 // YEAAAH NANOTRASEN PROPAGANDA WOO
 	container_type = /obj/structure/closet/crate/secure/corporate/nanotrasen
