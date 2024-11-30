@@ -450,6 +450,9 @@
  * @return TRUE / FALSE; if true, caller should stop clickchain.
  */
 /datum/object_system/storage/proc/auto_handle_interacted_insertion(obj/item/inserting, datum/event_args/actor/actor, silent, suppressed)
+	if(!actor.performer.is_holding(inserting))
+		// something probably yanked it, don't bother
+		return FALSE
 	if(is_locked(actor.performer))
 		actor.chat_feedback(
 			msg = SPAN_WARNING("[parent] is locked."),
@@ -1431,6 +1434,8 @@
 			LEFT+[STORAGE_UI_START_TILE_X]:[STORAGE_UI_START_PIXEL_X + middle_width - WORLD_ICON_SIZE + VOLUMETRIC_STORAGE_BOX_BORDER_SIZE],\
 			BOTTOM+[STORAGE_UI_START_TILE_Y + current_row - 1]:[STORAGE_UI_START_PIXEL_Y]"
 
+//* Indirection *//
+
 /**
  * **USE AT YOUR OWN PERIL**
  */
@@ -1460,17 +1465,6 @@
 	indirection.forceMove(where_to)
 
 //? Numerical Display Helper
-
-/datum/storage_numerical_display
-	var/obj/item/rendered_object
-	var/amount
-
-/datum/storage_numerical_display/New(obj/item/sample, amount = 0)
-	src.rendered_object = sample
-	src.amount = amount
-
-/proc/cmp_storage_numerical_displays_name_asc(datum/storage_numerical_display/A, datum/storage_numerical_display/B)
-	return sorttext(B.rendered_object.name, A.rendered_object.name) || sorttext(B.rendered_object.type, A.rendered_object.type)
 
 //? Action
 

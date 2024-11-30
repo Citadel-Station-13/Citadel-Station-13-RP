@@ -85,9 +85,8 @@
 /turf/space,
 /area/space)
 "q" = (
-/obj/structure/sign/poster{
-	pixel_y = 32;
-	poster_type = "/datum/poster/bay_50"
+/obj/structure/poster{
+	pixel_y = 32
 	},
 /turf/simulated/floor/airless,
 /area/submap/debrisfield_vr/mining_outpost)

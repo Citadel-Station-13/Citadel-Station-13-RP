@@ -7,10 +7,6 @@ SUBSYSTEM_DEF(materials)
 	/// material recipes
 	var/list/datum/stack_recipe/material/material_stack_recipes
 
-	// todo: Recover() should keep procedural materials
-	// however, i can't be assed to write Recover() until we do procedural materials
-	// thus, dealing with it later :^)
-
 	/// ticked atoms
 	var/list/ticking = list()
 	/// currentrun
@@ -171,7 +167,7 @@ SUBSYSTEM_DEF(materials)
  */
 /datum/controller/subsystem/materials/proc/all_materials()
 	RETURN_TYPE(/list)
-	return RSmaterials.fetch_subtypes(/datum/prototype/material):Copy()
+	return RSmaterials.fetch_subtypes_immutable(/datum/prototype/material):Copy()
 
 /**
  * drop a material sheet

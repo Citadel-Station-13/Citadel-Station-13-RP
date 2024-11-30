@@ -4,7 +4,7 @@ CREATE_STANDARD_TURFS(/turf/simulated/floor/concrete)
 	desc = "That's concrete baby!"
 	icon = 'icons/turf/flooring/concrete.dmi'
 	icon_state = "concrete"
-	initial_flooring = /singleton/flooring/concrete
+	initial_flooring = /datum/prototype/flooring/concrete
 	baseturfs = /turf/simulated/floor/outdoors/dirt
 	edge_blending_priority = 0
 	smoothing_flags = NONE
@@ -15,7 +15,7 @@ CREATE_STANDARD_TURFS(/turf/simulated/floor/concrete/tile)
 	desc = "That's concrete baby!"
 	icon = 'icons/turf/flooring/concrete.dmi'
 	icon_state = "concrete3"
-	initial_flooring = /singleton/flooring/concrete/tile
+	initial_flooring = /datum/prototype/flooring/concrete/tile
 	baseturfs = /turf/simulated/floor/outdoors/dirt
 
 CREATE_STANDARD_TURFS(/turf/simulated/floor/concrete/rng)

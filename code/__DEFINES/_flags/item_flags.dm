@@ -1,5 +1,6 @@
 //! Flags for the item_flags var on /obj/item
 /// is this item equipped into an inventory slot or hand of a mob? used for tooltips
+/// todo: is this still needed? `inv_slot_or_index` on `/obj/item` is a good check already
 #define ITEM_IN_INVENTORY		(1<<0)
 /// When dropped, it calls qdel on itself
 #define ITEM_DROPDEL			(1<<1)
@@ -128,7 +129,14 @@ DEFINE_BITFIELD(inv_hide_flags, list(
 	BITFIELD(BLOCKHAIR),
 ))
 
-//!# bitflags for /obj/item/var/body_cover_flags
+//*               Body Cover Flags / Body Part Flags                     *//
+//*                                                                      *//
+//* These are used in many places, despite only being used commonly on   *//
+//*              /item's and /item/organ/external's.                     *//
+//*                                                                      *//
+//* These should be used any time you need to store coverage or parts    *//
+//*                  of a standard humanoid body.                        *//
+
 #define HEAD        (1<<0)
 #define FACE        (1<<1)
 #define EYES        (1<<2)

@@ -122,21 +122,21 @@
 		if("normal")
 			worn_rolled_down = UNIFORM_ROLL_FALSE
 			worn_rolled_sleeves = UNIFORM_ROLL_FALSE
-			body_cover_flags = initial(body_cover_flags)
+			set_body_cover_flags(initial(body_cover_flags))
 			update_worn_icon()
 			to_chat(user, SPAN_NOTICE("You roll [src] back to normal."))
 			return TRUE
 		if("rolled down")
 			worn_rolled_down = UNIFORM_ROLL_TRUE
 			worn_rolled_sleeves = UNIFORM_ROLL_FALSE
-			body_cover_flags = (initial(body_cover_flags) & ~(UPPER_TORSO | ARMS | HANDS))
+			set_body_cover_flags(initial(body_cover_flags) & ~(UPPER_TORSO | ARMS | HANDS))
 			update_worn_icon()
 			to_chat(user, SPAN_NOTICE("You roll [src] down."))
 			return TRUE
 		if("rolled sleeves")
 			worn_rolled_down = UNIFORM_ROLL_FALSE
 			worn_rolled_sleeves = UNIFORM_ROLL_TRUE
-			body_cover_flags = (initial(body_cover_flags) & ~(ARMS | HANDS))
+			set_body_cover_flags(initial(body_cover_flags) & ~(ARMS | HANDS))
 			update_worn_icon()
 			to_chat(user, SPAN_NOTICE("You roll [src]'s sleeves."))
 			return TRUE

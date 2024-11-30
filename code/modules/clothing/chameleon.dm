@@ -13,7 +13,7 @@
 	icon_state = copy.icon_state
 	color = copy.color
 	item_state = copy.item_state
-	body_cover_flags = copy.body_cover_flags
+	set_body_cover_flags(copy.body_cover_flags)
 	inv_hide_flags = copy.inv_hide_flags
 	gender = copy.gender
 

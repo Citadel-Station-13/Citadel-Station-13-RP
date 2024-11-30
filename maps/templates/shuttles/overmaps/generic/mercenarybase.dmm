@@ -2985,7 +2985,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/mercbase/hall)
 "nN" = (
-/obj/structure/sign/poster,
+/obj/structure/poster,
 /turf/simulated/wall/r_wall,
 /area/mercbase/barracks)
 "nO" = (

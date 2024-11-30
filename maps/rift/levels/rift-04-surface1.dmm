@@ -781,7 +781,7 @@
 /turf/simulated/floor/tiled/monodark,
 /area/security/prison/upper)
 "aCk" = (
-/obj/structure/sign/poster{
+/obj/structure/poster{
 	pixel_y = 32
 	},
 /turf/simulated/floor/wood/broken,
@@ -2151,7 +2151,7 @@
 "byP" = (
 /obj/structure/flora/pottedplant/minitree,
 /obj/effect/floor_decal/corner/red/diagonal,
-/obj/structure/sign/poster{
+/obj/structure/poster{
 	pixel_x = 32
 	},
 /turf/simulated/floor/tiled/white,
@@ -10158,7 +10158,7 @@
 /obj/effect/floor_decal/borderfloor{
 	dir = 8
 	},
-/obj/structure/sign/poster{
+/obj/structure/poster{
 	pixel_x = -32
 	},
 /obj/effect/floor_decal/corner/blue/border{
@@ -12261,7 +12261,7 @@
 /obj/structure/bed/chair/comfy/red{
 	dir = 8
 	},
-/obj/structure/sign/poster{
+/obj/structure/poster{
 	pixel_x = 32
 	},
 /turf/simulated/floor/carpet/bcarpet,
@@ -21307,7 +21307,7 @@
 /turf/simulated/floor/carpet/bcarpet,
 /area/crew_quarters/game_room)
 "npr" = (
-/obj/structure/sign/poster{
+/obj/structure/poster{
 	pixel_x = -32
 	},
 /obj/structure/bed/chair/comfy/red{
@@ -21567,7 +21567,7 @@
 /turf/simulated/floor/wood,
 /area/lawoffice)
 "nyh" = (
-/obj/structure/sign/poster{
+/obj/structure/poster{
 	pixel_x = 32
 	},
 /turf/simulated/floor/wood,
@@ -32541,7 +32541,7 @@
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/medbreak)
 "tDQ" = (
-/obj/structure/sign/poster{
+/obj/structure/poster{
 	pixel_y = -32
 	},
 /turf/simulated/floor/plating,
@@ -37496,7 +37496,7 @@
 "wuX" = (
 /obj/machinery/chemical_dispenser/catering/bar_coffee,
 /obj/structure/table/woodentable,
-/obj/structure/sign/poster{
+/obj/structure/poster{
 	pixel_y = 32
 	},
 /turf/simulated/floor/reinforced,
@@ -37637,7 +37637,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
 	},
-/obj/structure/sign/poster{
+/obj/structure/poster{
 	pixel_y = 32
 	},
 /turf/simulated/floor/tiled/steel,
@@ -38323,7 +38323,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/quartermaster/office)
 "wUG" = (
-/obj/structure/sign/poster{
+/obj/structure/poster{
 	pixel_y = 32
 	},
 /turf/simulated/floor/tiled/steel,
@@ -39313,7 +39313,7 @@
 /area/rift/surfacebase/outside/outside1)
 "xxZ" = (
 /obj/structure/table/hardwoodtable,
-/obj/structure/sign/poster{
+/obj/structure/poster{
 	pixel_y = 32
 	},
 /turf/simulated/floor/wood/broken,

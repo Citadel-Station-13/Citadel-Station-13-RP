@@ -45,7 +45,7 @@
 		/obj/item/reagent_containers/syringe,
 		/obj/item/reagent_containers/glass/beaker/large,
 		/obj/item/storage/part_replacer,
-		/obj/item/shockpaddles/robot/jumper,
+		/obj/item/shockpaddles/robot,
 		/obj/item/melee/baton/slime/robot,
 		/obj/item/gun/energy/taser/xeno/robot
 	)
@@ -105,7 +105,7 @@
 		/obj/item/reagent_containers/syringe,
 		/obj/item/storage/part_replacer,
 		/obj/item/card/robot,
-		/obj/item/shockpaddles/robot/jumper,
+		/obj/item/shockpaddles/robot,
 		/obj/item/tool/wirecutters/cyborg,
 		/obj/item/melee/baton/slime/robot,
 		/obj/item/gun/energy/taser/xeno/robot,

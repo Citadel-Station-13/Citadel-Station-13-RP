@@ -139,3 +139,4 @@
 	constructed.hand_index = active_hand
 	if(!unarmed)
 		constructed.using = get_active_held_item()
+	return constructed

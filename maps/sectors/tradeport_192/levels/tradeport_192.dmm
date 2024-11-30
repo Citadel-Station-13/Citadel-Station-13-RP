@@ -480,7 +480,7 @@
 	dir = 8
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals4,
-/obj/structure/sign/poster{
+/obj/structure/poster{
 	pixel_x = -32
 	},
 /turf/simulated/floor/tiled/old_tile/gray,
@@ -494,7 +494,7 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
 	},
-/obj/structure/sign/poster{
+/obj/structure/poster{
 	pixel_x = 32
 	},
 /turf/simulated/floor/tiled/neutral,
@@ -1545,7 +1545,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
 "fq" = (
-/obj/structure/sign/poster{
+/obj/structure/poster{
 	pixel_y = -32
 	},
 /obj/machinery/atm{
@@ -1927,16 +1927,16 @@
 /area/tradeport/pads)
 "gF" = (
 /obj/structure/table/rack/shelf/steel,
-/obj/item/contraband/poster,
-/obj/item/contraband/poster,
-/obj/item/contraband/poster,
-/obj/item/contraband/poster,
-/obj/item/contraband/poster,
-/obj/item/contraband/poster,
-/obj/item/contraband/poster,
-/obj/item/contraband/poster,
-/obj/item/contraband/poster,
-/obj/item/contraband/poster,
+/obj/item/poster,
+/obj/item/poster,
+/obj/item/poster,
+/obj/item/poster,
+/obj/item/poster,
+/obj/item/poster,
+/obj/item/poster,
+/obj/item/poster,
+/obj/item/poster,
+/obj/item/poster,
 /turf/simulated/floor/wood,
 /area/tradeport/cyndi)
 "gJ" = (
@@ -2104,7 +2104,7 @@
 	name = "discount cryptographic sequencer";
 	uses = 1
 	},
-/obj/structure/sign/poster{
+/obj/structure/poster{
 	pixel_x = 32
 	},
 /turf/simulated/floor/tiled/dark,
@@ -3002,7 +3002,7 @@
 	dir = 4
 	},
 /obj/structure/table/alien,
-/obj/structure/sign/poster{
+/obj/structure/poster{
 	pixel_x = 32
 	},
 /obj/item/paper_bin{
@@ -7380,7 +7380,7 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/obj/structure/sign/poster{
+/obj/structure/poster{
 	pixel_x = 32
 	},
 /obj/item/reagent_containers/food/snacks/candy_corn,
@@ -7398,7 +7398,7 @@
 /turf/simulated/floor/tiled/red,
 /area/shuttle/trade_ship/general)
 "Ax" = (
-/obj/structure/sign/poster{
+/obj/structure/poster{
 	pixel_y = 32
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -8223,7 +8223,7 @@
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
 	},
-/obj/structure/sign/poster{
+/obj/structure/poster{
 	pixel_x = -32
 	},
 /turf/simulated/floor/tiled/neutral,
@@ -8254,7 +8254,7 @@
 "DG" = (
 /obj/structure/bed/padded,
 /obj/item/bedsheet/hos,
-/obj/structure/sign/poster{
+/obj/structure/poster{
 	pixel_y = -32
 	},
 /turf/simulated/floor/tiled/old_tile/gray,
@@ -8929,7 +8929,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/cockpit)
 "Gd" = (
-/obj/structure/sign/poster{
+/obj/structure/poster{
 	pixel_y = -32
 	},
 /obj/structure/table/standard,
@@ -13791,7 +13791,7 @@
 "XT" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/item/defib_kit/loaded,
-/obj/item/defib_kit/jumper_kit/loaded,
+/obj/item/defib_kit/loaded,
 /obj/effect/floor_decal/corner/blue/border{
 	dir = 10
 	},
@@ -13985,7 +13985,7 @@
 /turf/simulated/floor/tiled/old_tile/purple,
 /area/tradeport/spine)
 "Yx" = (
-/obj/structure/sign/poster{
+/obj/structure/poster{
 	pixel_x = 32
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden{
@@ -14271,7 +14271,7 @@
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
 	},
-/obj/structure/sign/poster{
+/obj/structure/poster{
 	pixel_x = -32
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
