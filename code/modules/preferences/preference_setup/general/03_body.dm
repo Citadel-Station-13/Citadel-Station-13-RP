@@ -105,6 +105,8 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 	pref.g_eyes			= sanitize_integer(pref.g_eyes, 0, 255, initial(pref.g_eyes))
 	pref.b_eyes			= sanitize_integer(pref.b_eyes, 0, 255, initial(pref.b_eyes))
 	pref.b_type			= sanitize_istext(pref.b_type, initial(pref.b_type))
+	pref.hologram_body_alpha = sanitize_integer(pref.hologram_body_alpha, MINIMUM_HOLOGRAM_BODY_ALPHA, MAXIMUM_HOLOGRAM_BODY_ALPHA, initial(pref.hologram_body_alpha))
+	pref.hologram_clothing_alpha = sanitize_integer(pref.hologram_clothing_alpha, MINIMUM_HOLOGRAM_CLOTHING_ALPHA, MAXIMUM_HOLOGRAM_CLOTHING_ALPHA, initial(pref.hologram_clothing_alpha))
 	if(pref.mirror == null)
 		pref.mirror = TRUE
 	pref.disabilities	= sanitize_integer(pref.disabilities, 0, 65535, initial(pref.disabilities))
@@ -156,6 +158,8 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 	character.b_synth			= pref.b_synth
 	character.synth_markings 	= pref.synth_markings
 	character.s_base			= pref.s_base
+	character.hologram_body_alpha = pref.hologram_body_alpha
+	character.hologram_clothing_alpha = pref.hologram_clothing_alpha
 
 	// Destroy/cyborgize organs and limbs.
 	character.synthetic = null
@@ -415,6 +419,18 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 	. += "<b>Allow Synth color:</b> <a href='?src=\ref[src];synth_color=1'><b>[pref.synth_color ? "Yes" : "No"]</b></a><br>"
 	if(pref.synth_color)
 		. += "<a href='?src=\ref[src];synth2_color=1'>Change Color</a> [color_square(pref.r_synth, pref.g_synth, pref.b_synth)]"
+
+	var/has_body_alpha = has_flag(mob_species, HAS_HOLOGRAM_BODY_ALPHA)
+	var/has_clothing_alpha = has_flag(mob_species, HAS_HOLOGRAM_CLOTHING_ALPHA)
+	var/has_hair_alpha = has_flag(mob_species, HAS_HOLOGRAM_HAIR_ALPHA)
+	if(has_body_alpha || has_clothing_alpha || has_hair_alpha)
+		. += "<br><b>Holosphere Appearance</b><br>"
+		if(has_body_alpha)
+			. += "<a href='?src=\ref[src];hologram_body_alpha=1'>Change Body Alpha</a> [pref.hologram_body_alpha]<br>"
+		if(has_clothing_alpha)
+			. += "<a href='?src=\ref[src];hologram_clothing_alpha=1'>Change Clothing Alpha</a> [pref.hologram_clothing_alpha]<br>"
+		if(has_hair_alpha)
+			. += "<a href='?src=\ref[src];hologram_hair_alpha=1'>Change Hair Alpha</a> [pref.hologram_hair_alpha]<br>"
 
 	. = jointext(.,null)
 
@@ -833,6 +849,21 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 
 	else if(href_list["cycle_bg"])
 		pref.bgstate = next_list_item(pref.bgstate, pref.bgstate_options)
+		return PREFERENCES_REFRESH_UPDATE_PREVIEW
+
+	else if(href_list["hologram_body_alpha"])
+		var/new_hologram_body_alpha = input(user, "Choose your character's body alpha: ", "Character Preference", pref.hologram_body_alpha) as num|null
+		pref.hologram_body_alpha = min(max(round(new_hologram_body_alpha),MINIMUM_HOLOGRAM_BODY_ALPHA),MAXIMUM_HOLOGRAM_BODY_ALPHA)
+		return PREFERENCES_REFRESH_UPDATE_PREVIEW
+
+	else if(href_list["hologram_clothing_alpha"])
+		var/new_hologram_clothing_alpha = input(user, "Choose your character's clothing alpha: ", "Character Preference", pref.hologram_clothing_alpha) as num|null
+		pref.hologram_clothing_alpha = min(max(round(new_hologram_clothing_alpha),MINIMUM_HOLOGRAM_CLOTHING_ALPHA),MAXIMUM_HOLOGRAM_CLOTHING_ALPHA)
+		return PREFERENCES_REFRESH_UPDATE_PREVIEW
+
+	else if(href_list["hologram_hair_alpha"])
+		var/new_hologram_hair_alpha = input(user, "Choose your character's hair alpha: ", "Character Preference", pref.hologram_hair_alpha) as num|null
+		pref.hologram_hair_alpha = min(max(round(new_hologram_hair_alpha),MINIMUM_HOLOGRAM_HAIR_ALPHA),MAXIMUM_HOLOGRAM_HAIR_ALPHA)
 		return PREFERENCES_REFRESH_UPDATE_PREVIEW
 
 	return ..()

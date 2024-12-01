@@ -51,7 +51,7 @@
 		/mob/living/carbon/human/proc/hide_tail,
 	)
 
-	species_appearance_flags = HAS_HAIR_COLOR | HAS_SKIN_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_EYE_COLOR | HAS_BODY_ALPHA | HAS_CLOTHING_ALPHA
+	species_appearance_flags = HAS_HAIR_COLOR | HAS_SKIN_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_EYE_COLOR | HAS_HOLOGRAM_BODY_ALPHA | HAS_HOLOGRAM_CLOTHING_ALPHA | HAS_HOLOGRAM_HAIR_ALPHA
 
 	var/list/chameleon_gear = list(
 		SLOT_ID_UNIFORM = /obj/item/clothing/under/chameleon/holosphere,
@@ -86,7 +86,12 @@
 		qdel(chameleon_item)
 
 /datum/species/holosphere/proc/get_alpha_from_key(var/mob/living/carbon/human/H, var/key)
-	return key == HUMAN_OVERLAY_BODY ? H.hologram_body_alpha : HOLOGRAM_OTHER_ALPHA
+	switch(key)
+		if(HUMAN_OVERLAY_BODY)
+			return H.hologram_body_alpha
+		if(HUMAN_OVERLAY_HAIR, HUMAN_OVERLAY_FACEHAIR)
+			return H.hologram_hair_alpha
+	return HOLOGRAM_OTHER_ALPHA
 
 /datum/species/holosphere/proc/handle_hologram_overlays(datum/source, list/overlay_args, category)
 	var/mob/living/carbon/human/H = source
@@ -166,14 +171,5 @@
 		loadout_options["Loadout [i]"] = i
 	var/loadout_option = tgui_input_list(usr, "Choose Loadout", "Loadout", loadout_options)
 	var/loadout_slot = loadout_options[loadout_option]
-	message_admins("slot is [loadout_slot] option is [loadout_option]")
 	var/list/datum/loadout_entry/loadout_entries = H.client.prefs.generate_loadout_entry_list(cached_loadout_flags, cached_loadout_role, loadout_slot)
 	equip_loadout(H, loadout_entries)
-
-/*
-// go from being a hologram to a sphere
-/datum/species/holosphere/proc/enter_sphere
-
-// go from being a sphere to a hologram
-/datum/species/holosphere/proc/exit_sphere
-*/

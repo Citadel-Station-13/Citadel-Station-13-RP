@@ -151,6 +151,8 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	var/hologram_body_alpha = DEFAULT_HOLOGRAM_BODY_ALPHA
 	/// Clothing alpha (currently only handled by holospheres)
 	var/hologram_clothing_alpha = DEFAULT_HOLOGRAM_CLOTHING_ALPHA
+	/// Hair alpha (currently only handled by holospheres)
+	var/hologram_hair_alpha = DEFAULT_HOLOGRAM_HAIR_ALPHA
 
 	//* ## Background Preferences
 	///Antag associated faction.
