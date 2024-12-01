@@ -277,3 +277,6 @@
 	var/hiding_horns = FALSE
 
 	var/datum/ability_handler/ab_handler
+
+	var/hologram_body_alpha = DEFAULT_HOLOGRAM_BODY_ALPHA
+	var/hologram_clothing_alpha = DEFAULT_HOLOGRAM_CLOTHING_ALPHA

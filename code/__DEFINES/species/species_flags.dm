@@ -119,6 +119,10 @@ DEFINE_BITFIELD(species_spawn_flags, list(
 #define RADIATION_GLOWS (1<<6)
 /// Sets default skin colors based on icons.
 #define HAS_BASE_SKIN_COLOR (1<<7)
+/// Body alpha selectable (Holospheres)
+#define HAS_BODY_ALPHA (1<<8)
+/// Clothing alpha selectable (Holospheres)
+#define HAS_CLOTHING_ALPHA (1<<9)
 
 DEFINE_BITFIELD(species_appearance_flags, list(
 	"HAS_SKIN_TONE"   = HAS_SKIN_TONE,

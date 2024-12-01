@@ -99,6 +99,8 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	var/g_hair = 0
 	/// Hair color.
 	var/b_hair = 0
+	/// Hair alpha (currently only handled by holospheres)
+	var/a_hair = 255
 	/// Gradient style.
 	var/grad_style = "None"
 	/// Gradient color.
@@ -145,6 +147,10 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	var/b_synth
 	/// Enable/disable markings on synth parts.
 	var/synth_markings = 1
+	/// Body alpha (currently only handled by holospheres)
+	var/hologram_body_alpha = DEFAULT_HOLOGRAM_BODY_ALPHA
+	/// Clothing alpha (currently only handled by holospheres)
+	var/hologram_clothing_alpha = DEFAULT_HOLOGRAM_CLOTHING_ALPHA
 
 	//* ## Background Preferences
 	///Antag associated faction.

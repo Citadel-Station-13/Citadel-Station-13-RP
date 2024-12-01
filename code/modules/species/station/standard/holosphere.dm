@@ -1,6 +1,4 @@
-#define HOLOGRAM_OTHER_ALPHA 230
-#define HOLOGRAM_BODY_ALPHA 100
-#define HOLOGRAM_CLOTHING_ALPHA 255
+#define HOLOGRAM_OTHER_ALPHA 255
 #define HOLOGRAM_SHIELD_MAX_HEALTH 20
 
 /datum/species/holosphere
@@ -53,7 +51,7 @@
 		/mob/living/carbon/human/proc/hide_tail,
 	)
 
-	species_appearance_flags = HAS_HAIR_COLOR | HAS_SKIN_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_EYE_COLOR
+	species_appearance_flags = HAS_HAIR_COLOR | HAS_SKIN_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_EYE_COLOR | HAS_BODY_ALPHA | HAS_CLOTHING_ALPHA
 
 	var/list/chameleon_gear = list(
 		SLOT_ID_UNIFORM = /obj/item/clothing/under/chameleon/holosphere,
@@ -87,14 +85,15 @@
 		var/chameleon_item = equipped_chameleon_gear[slot]
 		qdel(chameleon_item)
 
-/datum/species/holosphere/proc/get_alpha_from_key(var/key)
-	return key == HUMAN_OVERLAY_BODY ? HOLOGRAM_BODY_ALPHA : HOLOGRAM_OTHER_ALPHA
+/datum/species/holosphere/proc/get_alpha_from_key(var/mob/living/carbon/human/H, var/key)
+	return key == HUMAN_OVERLAY_BODY ? H.hologram_body_alpha : HOLOGRAM_OTHER_ALPHA
 
 /datum/species/holosphere/proc/handle_hologram_overlays(datum/source, list/overlay_args, category)
+	var/mob/living/carbon/human/H = source
 	var/is_clothing = category == CARBON_APPEARANCE_UPDATE_CLOTHING
 	var/overlay_index = is_clothing ? 1 : 2
 	var/overlay_object = overlay_args[overlay_index]
-	var/alpha_to_use = is_clothing ? HOLOGRAM_CLOTHING_ALPHA : get_alpha_from_key(overlay_args[1])
+	var/alpha_to_use = is_clothing ? H.hologram_clothing_alpha : get_alpha_from_key(H, overlay_args[1])
 	if(islist(overlay_object))
 		var/list/new_list = list()
 		var/list/overlay_list = overlay_object
