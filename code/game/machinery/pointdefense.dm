@@ -117,7 +117,7 @@ GLOBAL_LIST_BOILERPLATE(pointdefense_turrets, /obj/machinery/power/pointdefense)
 /obj/machinery/power/pointdefense
 	name = "\improper point defense battery"
 	icon = 'icons/obj/pointdefense.dmi'
-	icon_state = "pointdefense2"
+	icon_state = "pointdefense"
 	desc = "A Kuiper pattern anti-meteor battery. Capable of destroying most threats in a single salvo."
 	description_info = "Must have the same ident tag as a fire assist mainframe on the same facility. Use a multitool to set the ident tag."
 	density = TRUE

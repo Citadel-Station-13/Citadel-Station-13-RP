@@ -31,8 +31,6 @@
  */
 /atom/proc/context_menu(datum/event_args/actor/e_args)
 	set waitfor = FALSE
-	// admin proccall support
-	E_ARGS_WRAP_USER_TO_ACTOR(e_args)
 	// todo: dynamically rebuild menu based on distance?
 	var/client/receiving = e_args.initiator.client
 	if(isnull(receiving))
@@ -92,7 +90,7 @@
 
 	menu.radius = 32
 	menu.host = src
-	menu.anchor = src
+	menu.anchor = (loc == e_args.performer) ? e_args.performer : loc
 	menu.check_screen_border(receiving.mob)
 	menu.set_choices(transformed, FALSE)
 	menu.show_to(receiving.mob)

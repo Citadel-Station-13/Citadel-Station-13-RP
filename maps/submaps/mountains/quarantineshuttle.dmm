@@ -683,7 +683,7 @@
 	},
 /area/submap/cave/qShuttle)
 "bQ" = (
-/obj/item/contraband/poster,
+/obj/item/poster,
 /turf/simulated/shuttle/floor{
 	icon_state = "floor_yellow"
 	},

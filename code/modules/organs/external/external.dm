@@ -547,14 +547,8 @@
 		return FALSE
 
 	if(user == src.owner)
-		var/grasp
-		if(user.l_hand == tool && (src.body_part_flags & (ARM_LEFT|HAND_LEFT)))
-			grasp = BP_L_HAND
-		else if(user.r_hand == tool && (src.body_part_flags & (ARM_RIGHT|HAND_RIGHT)))
-			grasp = BP_R_HAND
-
-		if(grasp)
-			to_chat(user, SPAN_WARNING("You can't reach your [src.name] while holding [tool] in your [owner.get_bodypart_name(grasp)]."))
+		if(owner.get_hand_organ(owner.get_held_index(tool)) == src)
+			to_chat(user, SPAN_WARNING("You can't reach your [src] while holding [tool] in the same hand!"))
 			return FALSE
 
 	user.setClickCooldown(user.get_attack_speed(tool))
@@ -1021,13 +1015,6 @@ Note that amputating the affected organ does in fact remove the infection from t
 				I.throw_at_old(get_edge_target_turf(src,pick(GLOB.alldirs)),rand(1,3),5)
 
 			qdel(src)
-
-	if(victim.l_hand)
-		if(istype(victim.l_hand,/obj/item/material/twohanded)) //if they're holding a two-handed weapon, drop it now they've lost a hand
-			victim.l_hand.update_held_icon()
-	if(victim.r_hand)
-		if(istype(victim.r_hand,/obj/item/material/twohanded))
-			victim.r_hand.update_held_icon()
 
 /****************************************************
 			   HELPERS
@@ -1508,6 +1495,12 @@ Note that amputating the affected organ does in fact remove the infection from t
 		for(var/obj/item/I in L.implants)
 			if(!istype(I,/obj/item/implant) && !istype(I,/obj/item/nif))
 				return TRUE
+
+//* Hand Integration *//
+
+// todo: some kind of API for querying what hands this organ provides
+//       this will require organs be composition instead of inheritance,
+//       as defining this on every left / right hand would be satanic.
 
 //* Environmentals *//
 

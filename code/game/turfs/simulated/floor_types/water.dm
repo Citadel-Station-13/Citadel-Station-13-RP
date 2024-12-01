@@ -24,7 +24,7 @@
 
 /turf/simulated/floor/water/Initialize(mapload)
 	. = ..()
-	var/singleton/flooring/F = get_flooring_data(/singleton/flooring/water)
+	var/datum/prototype/flooring/F = RSflooring.fetch(/datum/prototype/flooring/water)
 	footstep_sounds = F?.footstep_sounds
 	update_icon()
 
@@ -223,6 +223,7 @@ var/list/shoreline_icon_cache = list()
 
 //Supernatural/Horror Pool Turfs
 
+CREATE_STANDARD_TURFS(/turf/simulated/floor/water/acid)
 /turf/simulated/floor/water/acid
 	name = "hissing pool"
 	desc = "A sickly green liquid. It emanates an acrid stench. It seems shallow enough to walk through, if needed."
@@ -303,6 +304,7 @@ var/list/shoreline_icon_cache = list()
 			to_chat(L, "<span class='warning'>You climb out of \the [src].</span>")
 	..()
 
+CREATE_STANDARD_TURFS(/turf/simulated/floor/water/acid/deep)
 /turf/simulated/floor/water/acid/deep
 	name = "deep hissing pool"
 	desc = "A body of sickly green liquid. It emanates an acrid stench.  It seems quite deep."

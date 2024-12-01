@@ -1,4 +1,4 @@
-/obj/item/clothing/_inv_return_attached()
+/obj/item/clothing/inv_slot_attached()
 	if(!accessories)
 		return ..()
 	. = ..()
@@ -273,7 +273,7 @@
 	var/list/choices = list()
 	for(var/i in accessories)
 		choices[i] = i
-	A = show_radial_menu(usr, src, choices)
+	A = show_radial_menu(usr, usr.is_in_inventory(src) ? usr : src, choices)
 	if(!usr || usr.stat || !(src in usr))
 		return
 	if(A)

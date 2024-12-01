@@ -128,8 +128,6 @@
  * actor can be /datum/event_args/actor or a single mob.
  */
 /obj/item/melee/transforming/proc/on_activate(datum/event_args/actor/actor, silent)
-	E_ARGS_WRAP_USER_TO_ACTOR(actor)
-
 	damage_force = VALUE_OR_DEFAULT(active_damage_force, initial(damage_force))
 	damage_tier = VALUE_OR_DEFAULT(active_damage_tier, initial(damage_tier))
 	damage_mode = VALUE_OR_DEFAULT(active_damage_mode, initial(damage_mode))
@@ -154,8 +152,6 @@
  * actor can be /datum/event_args/actor or a single mob.
  */
 /obj/item/melee/transforming/proc/on_deactivate(datum/event_args/actor/actor, silent)
-	E_ARGS_WRAP_USER_TO_ACTOR(actor)
-
 	damage_force = VALUE_OR_DEFAULT(inactive_damage_force, initial(damage_force))
 	damage_tier = VALUE_OR_DEFAULT(inactive_damage_tier, initial(damage_tier))
 	damage_mode = VALUE_OR_DEFAULT(inactive_damage_mode, initial(damage_mode))
