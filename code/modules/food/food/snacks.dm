@@ -4752,7 +4752,7 @@ END CITADEL CHANGE */
 	. = ..()
 	bitesize = 2
 
-/obj/item/reagent_containers/food/snacks/chickenfillet
+/obj/item/reagent_containers/food/snacks/chickenfilletsandwich
 	name = "chicken fillet sandwich"
 	desc = "Fried chicken, in sandwich format. Beauty is simplicity."
 	icon_state = "chickenfillet"

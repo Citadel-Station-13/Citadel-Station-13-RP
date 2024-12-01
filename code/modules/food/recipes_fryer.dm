@@ -189,3 +189,25 @@
 	)
 	result = /obj/item/reagent_containers/food/snacks/churro
 
+/datum/cooking_recipe/nugget
+	reagents = list("flour" = 5)
+	items = list(
+		/obj/item/reagent_containers/food/snacks/ingredient/meat/chicken
+	)
+	reagent_mix = RECIPE_REAGENT_REPLACE
+	result = /obj/item/reagent_containers/food/snacks/nugget
+
+/datum/cooking_recipe/onionrings
+	fruit = list("onion" = 100)
+	reagents = list("batter" = 5)
+	result = /obj/item/reagent_containers/food/snacks/onionrings
+
+//Goblin Food Goblin Food
+/datum/cooking_recipe/cavenuggets
+	fruit = list("mushroom" = 1)
+	items = list(
+		/obj/item/reagent_containers/food/snacks/ingredient/meatball,
+		/obj/item/reagent_containers/food/snacks/ingredient/meat/grubmeat,
+		/obj/item/reagent_containers/food/snacks/spreads/butter
+	)
+	result = /obj/item/reagent_containers/food/snacks/cavenuggets

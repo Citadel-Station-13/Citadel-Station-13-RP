@@ -499,9 +499,132 @@
 
 
 /datum/cooking_recipe/tofurkey
+	required_method = METHOD_OVEN
 	items = list(
-		/obj/item/reagent_containers/food/snacks/ingredient/tofu,
-		/obj/item/reagent_containers/food/snacks/ingredient/tofu,
+		/obj/item/reagent_containers/food/snacks/ingredient/tofu = 800
 		/obj/item/reagent_containers/food/snacks/stuffing
 	)
 	result = /obj/item/reagent_containers/food/snacks/tofurkey
+
+/datum/cooking_recipe/chilicheesefries
+	required_method = METHOD_OVEN
+	items = list(
+		/obj/item/reagent_containers/food/snacks/fries,
+		/obj/item/reagent_containers/food/snacks/ingredient/cheesewedge = 100,
+		/obj/item/reagent_containers/food/snacks/hotchili //lol.
+	)
+	reagent_mix = RECIPE_REAGENT_REPLACE //Simplify end product
+	result = /obj/item/reagent_containers/food/snacks/chilicheesefries
+
+/datum/cooking_recipe/meatbun
+	reagents = list("sodiumchloride" = 1, "water" = 5)
+	items = list(
+		/obj/item/reagent_containers/food/snacks/ingredient/transformable/dough/slice = 100,
+		/obj/item/reagent_containers/food/snacks/ingredient/cutlet = 50
+	)
+	reagent_mix = RECIPE_REAGENT_REPLACE //Water used up in cooking
+	result = /obj/item/reagent_containers/food/snacks/meatbun
+
+/datum/cooking_recipe/custardbun
+	reagents = list("spacespice" = 1, "water" = 5, "egg" = 3)
+	items = list(
+		/obj/item/reagent_containers/food/snacks/ingredient/transformable/dough/slice = 100
+	)
+	reagent_mix = RECIPE_REAGENT_REPLACE //Water, egg used up in cooking
+	result = /obj/item/reagent_containers/food/snacks/custardbun
+
+/datum/cooking_recipe/chips
+	reagents = list("sodiumchloride" = 1)
+	items = list(
+		/obj/item/reagent_containers/food/snacks/ingredient/tortilla
+	)
+	result = /obj/item/reagent_containers/food/snacks/chipplate
+
+/datum/cooking_recipe/nachos
+	items = list(
+		/obj/item/reagent_containers/food/snacks/chipplate,
+		/obj/item/reagent_containers/food/snacks/ingredient/cheesewedge
+	)
+	result = /obj/item/reagent_containers/food/snacks/chipplate/nachos
+
+/datum/cooking_recipe/roastbeef
+	fruit = list("carrot" = 2, "potato" = 2)
+	items = list(
+		/obj/item/reagent_containers/food/snacks/ingredient/meat
+	)
+	result = /obj/item/reagent_containers/food/snacks/roastbeef
+
+/datum/cooking_recipe/pillbugball
+	reagents = list(MAT_CARBON = 5)
+	items = list(
+		/obj/item/reagent_containers/food/snacks/ingredient/meat/grubmeat
+	)
+	result = /obj/item/reagent_containers/food/snacks/bugball
+
+/datum/cooking_recipe/mammi
+	fruit = list("orange" = 1)
+	reagents = list("water" = 10, "flour" = 10, "milk" = 5, "sodiumchloride" = 1)
+	result = /obj/item/reagent_containers/food/snacks/mammi
+
+/datum/cooking_recipe/makaroni
+	reagents = list("flour" = 15, "milk" = 5)
+	items = list(
+		/obj/item/reagent_containers/food/snacks/ingredient/meat/grubmeat,
+		/obj/item/reagent_containers/food/snacks/ingredient/egg,
+		/obj/item/reagent_containers/food/snacks/ingredient/cheesewedge = 2
+	)
+	result = /obj/item/reagent_containers/food/snacks/makaroni
+
+/datum/cooking_recipe/greenham
+	reagents = list("spacespice" = 2, "water" = 10)
+	items = list(
+		/obj/item/reagent_containers/food/snacks/ingredient/meat/grubmeat,
+		/obj/item/reagent_containers/food/snacks/bait/worm
+	)
+	result = /obj/item/reagent_containers/food/snacks/greenham
+
+/datum/cooking_recipe/greenhamandeggs
+	reagents = list("spacespice" = 2, "water" = 10)
+	items = list(
+		/obj/item/reagent_containers/food/snacks/ingredient/egg = 2,
+		/obj/item/reagent_containers/food/snacks/ingredient/meat/grubmeat,
+		/obj/item/reagent_containers/food/snacks/bait/worm
+	)
+	result = /obj/item/reagent_containers/food/snacks/greenham
+
+/datum/cooking_recipe/puddi
+	reagents = list("milk" = 10, "sugar" = 5)
+	items = list(
+		/obj/item/reagent_containers/food/snacks/ingredient/egg = 3,
+		/obj/item/reagent_containers/food/snacks/chocolatebar
+	)
+	result = /obj/item/reagent_containers/food/snacks/puddi
+
+
+/datum/cooking_recipe/puddi_happy
+	reagents = list("milk" = 10, "sugar" = 5, "honey" = 5)
+	items = list(
+		/obj/item/reagent_containers/food/snacks/ingredient/egg = 3,
+		/obj/item/reagent_containers/food/snacks/chocolatebar
+	)
+	result = /obj/item/reagent_containers/food/snacks/puddi/happy
+
+/datum/cooking_recipe/puddi_angry
+	fruit = list("chili" = 2)
+	reagents = list("milk" = 10, "sugar" = 5)
+	items = list(
+		/obj/item/reagent_containers/food/snacks/ingredient/egg = 3,
+		/obj/item/reagent_containers/food/snacks/chocolatebar
+	)
+	result = /obj/item/reagent_containers/food/snacks/puddi/angry
+
+
+/datum/cooking_recipe/applepie
+	fruit = list("apple" = 1)
+	items = list(/obj/item/reagent_containers/food/snacks/ingredient/transformable/dough/flat)
+	result = /obj/item/reagent_containers/food/snacks/applepie
+
+/datum/cooking_recipe/plumphelmetbiscuit
+	fruit = list("plumphelmet" = 1)
+	reagents = list("water" = 5, "flour" = 5)
+	result = /obj/item/reagent_containers/food/snacks/plumphelmetbiscuit
