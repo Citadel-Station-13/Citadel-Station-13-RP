@@ -608,7 +608,7 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
 	},
-/obj/structure/sign/poster{
+/obj/structure/poster{
 	pixel_x = 32
 	},
 /turf/simulated/floor/tiled/neutral,
@@ -2696,7 +2696,7 @@
 	name = "discount cryptographic sequencer";
 	uses = 1
 	},
-/obj/structure/sign/poster{
+/obj/structure/poster{
 	pixel_x = 32
 	},
 /turf/simulated/floor/tiled/dark,
@@ -2801,7 +2801,7 @@
 /obj/machinery/shower{
 	dir = 8
 	},
-/obj/structure/sign/poster{
+/obj/structure/poster{
 	pixel_x = -32
 	},
 /obj/machinery/light{
@@ -3964,7 +3964,7 @@
 	dir = 4
 	},
 /obj/structure/table/alien,
-/obj/structure/sign/poster{
+/obj/structure/poster{
 	pixel_x = 32
 	},
 /obj/item/paper_bin{
@@ -9096,7 +9096,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan{
 	dir = 10
 	},
-/obj/structure/sign/poster{
+/obj/structure/poster{
 	pixel_x = -32
 	},
 /turf/simulated/floor/plating,
@@ -10097,7 +10097,7 @@
 /turf/simulated/floor/tiled/red,
 /area/shuttle/trade_ship/general)
 "aAx" = (
-/obj/structure/sign/poster{
+/obj/structure/poster{
 	pixel_y = 32
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -11325,7 +11325,7 @@
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
 	},
-/obj/structure/sign/poster{
+/obj/structure/poster{
 	pixel_x = -32
 	},
 /turf/simulated/floor/tiled/neutral,
@@ -11350,7 +11350,7 @@
 "aDG" = (
 /obj/structure/bed/padded,
 /obj/item/bedsheet/hos,
-/obj/structure/sign/poster{
+/obj/structure/poster{
 	pixel_y = -32
 	},
 /turf/simulated/floor/tiled/old_tile/gray,
@@ -12278,7 +12278,7 @@
 /turf/simulated/floor/tiled/old_tile/red,
 /area/sector/nebula_tradeport/security)
 "aGd" = (
-/obj/structure/sign/poster{
+/obj/structure/poster{
 	pixel_y = -32
 	},
 /obj/structure/table/standard,
@@ -16465,7 +16465,7 @@
 /obj/structure/bed/chair/sofa/beige/corner{
 	dir = 1
 	},
-/obj/structure/sign/poster{
+/obj/structure/poster{
 	pixel_x = -32
 	},
 /turf/simulated/floor/carpet/patterened/brown,
@@ -18959,7 +18959,7 @@
 /turf/simulated/floor/tiled/old_tile/purple,
 /area/tradeport/spine)
 "aYx" = (
-/obj/structure/sign/poster{
+/obj/structure/poster{
 	pixel_x = 32
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden{
@@ -19694,7 +19694,7 @@
 	dir = 8
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals4,
-/obj/structure/sign/poster{
+/obj/structure/poster{
 	pixel_x = -32
 	},
 /turf/simulated/floor/tiled/old_tile/gray,
@@ -20988,7 +20988,7 @@
 	light_range = 12
 	},
 /obj/item/bedsheet/cosmos,
-/obj/structure/sign/poster{
+/obj/structure/poster{
 	pixel_x = -32
 	},
 /turf/simulated/floor/carpet/patterened/blue,
@@ -21706,7 +21706,7 @@
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
 	},
-/obj/structure/sign/poster{
+/obj/structure/poster{
 	pixel_x = -32
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -22536,7 +22536,7 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
-/obj/structure/sign/poster{
+/obj/structure/poster{
 	pixel_x = 32
 	},
 /turf/simulated/floor/carpet/patterened/red,
@@ -25230,7 +25230,7 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/obj/structure/sign/poster{
+/obj/structure/poster{
 	pixel_x = 32
 	},
 /obj/item/reagent_containers/food/snacks/candy_corn,
@@ -26454,7 +26454,7 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
-/obj/structure/sign/poster{
+/obj/structure/poster{
 	pixel_x = 32
 	},
 /turf/simulated/floor/wood,
@@ -26494,7 +26494,7 @@
 /turf/simulated/wall/r_wall,
 /area/sector/nebula_tradeport/motel/room8)
 "vns" = (
-/obj/structure/sign/poster{
+/obj/structure/poster{
 	pixel_y = -32
 	},
 /obj/machinery/atm{
