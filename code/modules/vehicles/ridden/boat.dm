@@ -128,7 +128,7 @@
 /datum/component/riding_handler/vehicle/boat/small/ashlander
 	allowed_turf_types = list(
 		/turf/simulated/floor/water,
-		/turf/simulated/floor/outdoors/lava
+		/turf/simulated/lava
 	)
 	rider_offsets = list(
 		list(

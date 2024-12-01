@@ -85,7 +85,7 @@
 /area/killhouse/two)
 "bc" = (
 /obj/structure/sign/greencross,
-/turf/simulated/wall/classm,
+/turf/simulated/wall,
 /area/killhouse/two)
 "br" = (
 /obj/machinery/requests_console/preset/medical{
@@ -1393,7 +1393,7 @@
 /area/killhouse/two)
 "Ab" = (
 /obj/structure/sign/nosmoking_2,
-/turf/simulated/wall/classm,
+/turf/simulated/wall,
 /area/killhouse/two)
 "Ae" = (
 /obj/structure/table/standard,
@@ -2132,7 +2132,7 @@
 /turf/simulated/floor/tiled/white,
 /area/killhouse/two)
 "NI" = (
-/turf/simulated/wall/classm,
+/turf/simulated/wall,
 /area/killhouse/two)
 "NM" = (
 /obj/effect/floor_decal/borderfloor{

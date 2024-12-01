@@ -154,7 +154,7 @@
 /turf/simulated/floor/airless,
 /area/talon/maintenance/decktwo_solars)
 "dl" = (
-/obj/structure/sign/poster{
+/obj/structure/poster{
 	dir = 1;
 	icon_state = ""
 	},
@@ -478,7 +478,7 @@
 /turf/simulated/floor/plating,
 /area/talon/maintenance/decktwo_starboard)
 "gS" = (
-/obj/structure/sign/poster{
+/obj/structure/poster{
 	dir = 4;
 	icon_state = ""
 	},
@@ -1334,7 +1334,7 @@
 /turf/simulated/floor/tiled/eris/cafe,
 /area/talon/decktwo/kitchen)
 "pt" = (
-/obj/structure/sign/poster{
+/obj/structure/poster{
 	dir = 4;
 	icon_state = ""
 	},
@@ -3644,7 +3644,7 @@
 /turf/simulated/wall,
 /area/talon/decktwo/bar)
 "PD" = (
-/obj/structure/sign/poster{
+/obj/structure/poster{
 	dir = 4;
 	icon_state = ""
 	},

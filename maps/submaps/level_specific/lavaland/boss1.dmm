@@ -3,97 +3,97 @@
 /turf/template_noop,
 /area/template_noop)
 "c" = (
-/turf/simulated/floor/greengrid/lavaland,
-/area/lavaland/bosses)
+/turf/simulated/floor/greengrid,
+/area/sector/surt/bosses)
 "e" = (
 /mob/living/simple_mob/mechanical/cyber_horror/priest/surt,
-/turf/simulated/floor/bluegrid/lavaland,
-/area/lavaland/bosses)
+/turf/simulated/floor/bluegrid,
+/area/sector/surt/bosses)
 "h" = (
 /obj/effect/decal/remains/xeno,
-/turf/simulated/floor/outdoors/lavaland,
+/turf/simulated/floor/outdoors/ash_sand,
 /area/template_noop)
 "j" = (
 /obj/effect/decal/remains/mummy2,
-/turf/simulated/floor/outdoors/lavaland,
+/turf/simulated/floor/outdoors/ash_sand,
 /area/template_noop)
 "l" = (
 /obj/effect/floor_decal/corner_techfloor_grid,
-/turf/simulated/floor/greengrid/lavaland,
-/area/lavaland/bosses)
+/turf/simulated/floor/greengrid,
+/area/sector/surt/bosses)
 "m" = (
 /obj/effect/debris/cleanable/blood/gibs,
-/turf/simulated/floor/greengrid/lavaland,
-/area/lavaland/bosses)
+/turf/simulated/floor/greengrid,
+/area/sector/surt/bosses)
 "r" = (
-/turf/simulated/floor/bluegrid/lavaland,
-/area/lavaland/bosses)
+/turf/simulated/floor/bluegrid,
+/area/sector/surt/bosses)
 "s" = (
 /obj/structure/girder/displaced,
-/turf/simulated/floor/greengrid/lavaland,
-/area/lavaland/bosses)
+/turf/simulated/floor/greengrid,
+/area/sector/surt/bosses)
 "u" = (
 /obj/effect/decal/remains/ribcage,
-/turf/simulated/floor/outdoors/lavaland,
+/turf/simulated/floor/outdoors/ash_sand,
 /area/template_noop)
 "v" = (
 /mob/living/simple_mob/mechanical/cyber_horror/surt,
-/turf/simulated/floor/greengrid/lavaland,
-/area/lavaland/bosses)
+/turf/simulated/floor/greengrid,
+/area/sector/surt/bosses)
 "z" = (
 /obj/structure/girder,
-/turf/simulated/floor/bluegrid/lavaland,
-/area/lavaland/bosses)
+/turf/simulated/floor/bluegrid,
+/area/sector/surt/bosses)
 "A" = (
 /obj/effect/decal/remains/mummy1,
-/turf/simulated/floor/outdoors/lavaland,
+/turf/simulated/floor/outdoors/ash_sand,
 /area/template_noop)
 "C" = (
 /turf/simulated/wall/titanium,
-/area/lavaland/bosses)
+/area/sector/surt/bosses)
 "D" = (
 /mob/living/simple_mob/mechanical/cyber_horror/grey/surt,
-/turf/simulated/floor/bluegrid/lavaland,
-/area/lavaland/bosses)
+/turf/simulated/floor/bluegrid,
+/area/sector/surt/bosses)
 "F" = (
 /obj/effect/decal/remains/human,
-/turf/simulated/floor/greengrid/lavaland,
-/area/lavaland/bosses)
+/turf/simulated/floor/greengrid,
+/area/sector/surt/bosses)
 "G" = (
-/turf/simulated/floor/outdoors/lavaland,
+/turf/simulated/floor/outdoors/ash_sand,
 /area/template_noop)
 "H" = (
 /obj/effect/decal/remains/deer,
-/turf/simulated/floor/outdoors/lavaland,
+/turf/simulated/floor/outdoors/ash_sand,
 /area/template_noop)
 "I" = (
 /obj/effect/decal/remains/tajaran,
-/turf/simulated/floor/outdoors/lavaland,
+/turf/simulated/floor/outdoors/ash_sand,
 /area/template_noop)
 "M" = (
-/turf/simulated/floor/outdoors/lavaland,
-/area/lavaland/bosses)
+/turf/simulated/floor/outdoors/ash_sand,
+/area/sector/surt/bosses)
 "O" = (
 /obj/effect/floor_decal/corner_techfloor_grid/diagonal,
-/turf/simulated/floor/greengrid/lavaland,
-/area/lavaland/bosses)
+/turf/simulated/floor/greengrid,
+/area/sector/surt/bosses)
 "R" = (
 /obj/random/multiple/treasure,
 /obj/structure/closet/crate,
 /obj/random/multiple/treasure,
-/turf/simulated/floor/greengrid/lavaland,
-/area/lavaland/bosses)
+/turf/simulated/floor/greengrid,
+/area/sector/surt/bosses)
 "S" = (
 /obj/effect/debris/cleanable/blood/gibs,
-/turf/simulated/floor/bluegrid/lavaland,
-/area/lavaland/bosses)
+/turf/simulated/floor/bluegrid,
+/area/sector/surt/bosses)
 "U" = (
 /turf/simulated/wall/solidrock,
 /area/template_noop)
 "V" = (
 /mob/living/simple_mob/mechanical/cyber_horror/grey/surt,
-/turf/simulated/floor/greengrid/lavaland,
-/area/lavaland/bosses)
+/turf/simulated/floor/greengrid,
+/area/sector/surt/bosses)
 
 (1,1,1) = {"
 a
