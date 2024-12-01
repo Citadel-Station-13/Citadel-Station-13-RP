@@ -4,6 +4,7 @@
 REPOSITORY_DEF(designs)
 	name = "Repository - Designs"
 	expected_type = /datum/prototype/design
+	database_key = "design"
 
 	//* caches *//
 
@@ -32,3 +33,5 @@ REPOSITORY_DEF(designs)
 		autolathe_design_ids -= instance.id
 	if(istype(instance, /datum/prototype/design/medical))
 		medical_mini_design_ids -= instance.id
+
+#warn persistence-ify designs

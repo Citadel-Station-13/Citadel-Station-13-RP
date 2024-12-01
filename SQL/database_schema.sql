@@ -18,6 +18,21 @@ CREATE TABLE IF NOT EXISTS `%_PREFIX_%schema_revision` (
   PRIMARY KEY (`major`, `minor`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--                     Backend Stores                    --
+--                                                       --
+
+CREATE TABLE IF NOT EXISTS `%_PREFIX_%backend_repository` (
+  `repository` VARCHAR(64) NOT NULL,
+  `id` VARCHAR(128) NOT NULL,
+  `version` INT(11) NOT NULL,
+  `data` MEDIUMTEXT NOT NULL,
+  `storedTime` DATETIME NOT NULL DEFAULT Now(),
+  `modifiedTime` DATETIME NOT NULL DEFAULT Now(),
+  PRIMARY KEY(`repository`, `id`),
+  INDEX(`repository`),
+  INDEX(`id`)
+)
+
 -- persistence --
 
 -- SSpersistence modules/bulk_entity

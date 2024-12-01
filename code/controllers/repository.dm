@@ -25,6 +25,13 @@
 
 	/// expected type of prototype
 	var/expected_type
+	/// database key; this is immutable.
+	/// * persistence is disabled if this is not set
+	var/database_key
+	/// store version
+	/// * persistence is disabled if this is not set
+	/// * migration is triggered if this doesn't match a loaded entry
+	var/store_version
 
 	/// by-id lookup
 	var/list/id_lookup
@@ -33,6 +40,9 @@
 
 	/// fetched subtype lists
 	var/tmp/list/subtype_lists
+
+	/// 'doesn't exist' cache for DB loads
+	var/tmp/list/doesnt_exist_cache
 
 	/// temporary id to path lookup used during init
 	//  todo: figure out a way to not do this, this is bad
@@ -43,6 +53,7 @@
 	type_lookup = list()
 	subtype_lists = list()
 	init_reverse_lookup_shim = list()
+	doesnt_exist_cache = list()
 	for(var/datum/prototype/casted as anything in subtypesof(expected_type))
 		if(initial(casted.abstract_type) == casted)
 			continue
@@ -119,7 +130,7 @@
 		if(init_reverse_lookup_shim)
 			var/potential_path = init_reverse_lookup_shim[type_or_id]
 			return fetch(potential_path)
-		return id_lookup[type_or_id]
+		return id_lookup[type_or_id] || handle_db_load(type_or_id)
 	else if(ispath(type_or_id))
 		. = type_lookup[type_or_id]
 		if(.)
@@ -185,6 +196,7 @@
  */
 /datum/controller/repository/proc/register(datum/prototype/instance)
 	return load(instance)
+	#warn db store
 
 //* Private API *//
 
@@ -230,3 +242,21 @@
 		subtype_lists = list()
 		type_lookup -= instance.type
 	return TRUE
+
+/**
+ * Perform migration on a data-list from the database.
+ *
+ * * Edit the passed in list directly.
+ */
+/datum/controller/repository/proc/migrate(list/modifying, from_version)
+	PROTECTED_PROC(TRUE)
+
+/datum/controller/repository/proc/handle_db_store(datum/prototype/instance)
+	doesnt_exist_cache -= instance.id
+
+/datum/controller/repository/proc/handle_db_load(instance_id)
+	if(doesnt_exist_cache[instance_id])
+		return
+
+
+#warn impl

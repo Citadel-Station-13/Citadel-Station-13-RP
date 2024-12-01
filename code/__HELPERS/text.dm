@@ -15,9 +15,6 @@
 /proc/format_table_name(table)
 	return CONFIG_GET(string/sql_server_prefix) + table
 
-/proc/format_unified_table_name(table)
-	return CONFIG_GET(string/sql_unified_prefix) + table
-
 /**
  *! Text sanitization
  */
