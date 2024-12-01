@@ -16,7 +16,7 @@
 	rock_tcache = typecacheof(/turf/simulated/mineral)
 	obstacle_tcache = typecacheof(list(
 		/turf/simulated/wall,
-		/turf/unsimulated/mineral,
+		/turf/unsimulated/wall/mineral,
 		/turf/unsimulated/wall
 	)) - typecacheof(/turf/unsimulated/wall/planetary)
 	path_tcache = typecacheof(list(

@@ -22,6 +22,6 @@
 	id = "Tradeport192"
 	name = "Sector - Trade Port (192x192)"
 	display_name = "Nebula Gas Trade Hub"
-	absolute_path = "maps/sectors/tradeport_192/levels/tradeport_192.dmm"
+	path = "maps/sectors/tradeport_192/levels/tradeport_192.dmm"
 	base_turf = /turf/space
 	base_area = /area/space

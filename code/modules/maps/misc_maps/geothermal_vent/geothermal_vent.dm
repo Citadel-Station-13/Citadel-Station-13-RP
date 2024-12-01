@@ -18,7 +18,7 @@
 #define GEOTHERMAL_TURF_CREATE_UN(x)	x/geothermal/initial_gas_mix=ATMOSPHERE_ID_GEOTHERMAL;x/geothermal/outdoors=FALSE;x/geothermal/temperature_for_heat_exchangers=GEOTHERMAL_TEMP
 
 GEOTHERMAL_TURF_CREATE_UN(/turf/simulated/open)
-GEOTHERMAL_TURF_CREATE_UN(/turf/simulated/floor/outdoors/lava/indoors)
+GEOTHERMAL_TURF_CREATE_UN(/turf/simulated/lava/indoors)
 GEOTHERMAL_TURF_CREATE_UN(/turf/simulated/floor/outdoors/rocks/caves)
 GEOTHERMAL_TURF_CREATE_UN(/turf/unsimulated/floor/lava)
 GEOTHERMAL_TURF_CREATE_UN(/turf/simulated/mineral/ignore_cavegen)

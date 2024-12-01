@@ -1,11 +1,64 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
-//* Procs in this file are mirrored to the /mob level for ease of use.        *//
-//*                                                                           *//
-//* In the future, there should likely be a separation of concerns            *//
-//* and the enforcement of 'mob.inventory' access, but given the overhead of  *//
-//* a proc-call, this is currently not done.                                  *//
+/**
+ * Gets the item held in a given hand index
+ *
+ * * This only includes the topmost item in a slot, and ignores compound / attached items.
+ *
+ * @return /obj/item or null
+ */
+/datum/inventory/proc/get_hand_single(index) as /obj/item
+	if(index < 1 || index > length(held_items))
+		return
+	return held_items[index]
+
+/**
+ * Gets the item held in a given hand index
+ *
+ * * This includes all items in a hand slot including nested and compound/attached items.
+ *
+ * @return list() of items
+ */
+/datum/inventory/proc/get_hand(index) as /list
+	if(index < 1 || index > length(held_items))
+		return
+	var/obj/item/held = held_items[index]
+	if(!held)
+		return
+	return held.inv_slot_attached()
+
+/**
+ * Gets items in given hand indices.
+ *
+ * * This does not check that 'indices' list is deduped, or that the hands exist.
+ *
+ * Non-compound mode:
+ * * This returns a list, and includes only the topmost item in a slot.
+ *
+ * Compound mode:
+ * * This returns a list, and includes all items in compound items.
+ *
+ * @params
+ * * indices - List of indices, or null for all hands. This list must be deduped, or the resulting list will be duped.
+ * * compound - Compound mode?
+ *
+ * @return list() of items
+ */
+/datum/inventory/proc/get_hands_unsafe(list/indices, compound) as /list
+	. = list()
+	if(indices)
+		for(var/index in indices)
+			if(index < 1 || index > length(held_items))
+				continue
+			var/obj/item/maybe_held = held_items[index]
+			if(maybe_held)
+				. += compound ? maybe_held.inv_slot_attached() : maybe_held
+	else
+		for(var/obj/item/held in held_items)
+			. += compound ? held.inv_slot_attached() : held
+
+// todo: old below
 
 //* Basic *//
 
@@ -16,18 +69,7 @@
  *
  * @return /obj/item or null.
  */
-/datum/inventory/proc/get_held_item(index)
-	RETURN_TYPE(/obj/item)
-	return held_items[index]
-
-/**
- * Gets the item held in a given hand index
- *
- * * This expects a valid index.
- *
- * @return /obj/item or null.
- */
-/mob/proc/get_held_item(index)
+/mob/proc/get_item_in_hand(index)
 	RETURN_TYPE(/obj/item)
 	return inventory?.held_items[index]
 
@@ -80,7 +122,7 @@
 	RETURN_TYPE(/list)
 	. = list()
 	for(var/obj/item/I in held_items)
-		return I
+		. += I
 
 /**
  * @return list of held items

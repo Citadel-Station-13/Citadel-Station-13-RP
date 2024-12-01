@@ -171,7 +171,7 @@
 /turf/simulated/floor/carpet/gaycarpet,
 /area/class_h/POIs/covert_post)
 "J" = (
-/turf/simulated/mineral/classh,
+/turf/simulated/mineral,
 /area/class_h/POIs/covert_post)
 "L" = (
 /obj/structure/bed/chair/comfy/lime{

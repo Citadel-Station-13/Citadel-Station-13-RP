@@ -3064,7 +3064,7 @@
 /obj/structure/table/bench/steel{
 	pixel_y = 22
 	},
-/obj/structure/sign/poster{
+/obj/structure/poster{
 	pixel_x = 32
 	},
 /obj/structure/flora/pottedplant/shoot{
@@ -6069,7 +6069,7 @@
 	dir = 4;
 	pixel_x = 22
 	},
-/obj/item/defib_kit/jumper_kit/loaded,
+/obj/item/defib_kit/loaded,
 /obj/item/storage/box/masks,
 /obj/item/storage/box/gloves{
 	pixel_x = 2;
@@ -7120,7 +7120,7 @@
 /obj/structure/table/hardwoodtable{
 	density = 0
 	},
-/obj/structure/sign/poster/nanotrasen{
+/obj/structure/poster/nanotrasen{
 	pixel_y = -32
 	},
 /obj/item/deck/tarot,
@@ -12763,9 +12763,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/assembly/robotics)
 "hYt" = (
-/obj/structure/curtain/open/shower{
-	anchored = 1
-	},
+/obj/structure/curtain/open/shower,
 /obj/machinery/door/airlock{
 	name = "Sauna"
 	},
@@ -13898,7 +13896,7 @@
 /turf/simulated/floor/reinforced,
 /area/rnd/outpost/xenobiology/outpost_slimepens)
 "iMz" = (
-/obj/structure/sign/poster,
+/obj/structure/poster,
 /turf/simulated/wall/prepainted/security,
 /area/security/briefing_room)
 "iMB" = (
@@ -22580,7 +22578,7 @@
 	pixel_x = -2;
 	pixel_y = -2
 	},
-/obj/structure/sign/poster/nanotrasen{
+/obj/structure/poster/nanotrasen{
 	pixel_x = -32
 	},
 /obj/machinery/camera/network/civilian{
@@ -25645,7 +25643,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/research/rnd)
 "pTn" = (
-/turf/unsimulated/wall/planetary/lythios43c{
+/turf/unsimulated/wall/planetary/permafrost{
 	desc = "Glacial permafrost, compacted harder than stone.";
 	icon_state = "icerock-dark"
 	},
@@ -28913,7 +28911,7 @@
 	},
 /obj/effect/paint/babyblue,
 /obj/map_helper/electrochromatic_linker{
-	id = "operating-theatre-2"
+	id = "operating_theatre_1"
 	},
 /turf/simulated/floor/plating,
 /area/medical/surgery)
@@ -29593,7 +29591,7 @@
 	},
 /obj/effect/paint/babyblue,
 /obj/map_helper/electrochromatic_linker{
-	id = "operating-theatre-2"
+	id = "operating_theatre_2"
 	},
 /turf/simulated/floor/plating,
 /area/medical/surgery2)

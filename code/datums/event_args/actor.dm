@@ -14,6 +14,11 @@
 /datum/event_args/actor/clone(include_contents)
 	return new /datum/event_args/actor(performer, initiator)
 
+//* Logging *//
+
+/datum/event_args/actor/proc/actor_log_string()
+	return performer == initiator ? key_name(performer) : "[key_name(performer)] (via [key_name(initiator)])"
+
 // todo: reowrk these awful ass feedback/message procs wtf
 
 /datum/event_args/actor/proc/chat_feedback(msg, atom/target)

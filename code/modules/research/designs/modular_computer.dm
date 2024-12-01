@@ -1,4 +1,5 @@
 /datum/prototype/design/science/modularcomponent
+	category = DESIGN_CATEGORY_COMPUTER
 	abstract_type = /datum/prototype/design/science/modularcomponent
 
 /datum/prototype/design/science/modularcomponent/generate_name(template)

@@ -2,6 +2,7 @@
 /datum/prototype/design/circuit/disk
 	abstract_type = /datum/prototype/design/circuit/disk
 	lathe_type = LATHE_TYPE_CIRCUIT
+	category = DESIGN_CATEGORY_PROSTHETIC
 	req_tech = list(TECH_DATA = 3)
 	materials_base = list(MAT_PLASTIC = 2000, MAT_GLASS = 1000)
 	reagents = list("pacid" = 10)

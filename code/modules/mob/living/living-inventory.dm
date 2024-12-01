@@ -55,13 +55,6 @@
 		SLOT_ID_MASK
 	)
 
-//* Init *//
-
-/mob/living/init_inventory()
-	if(inventory)
-		return
-	inventory = new(src)
-
 //* Carry Weight *//
 
 // don't call this you shouldn't need to
@@ -74,7 +67,7 @@
 	var/flat_encumbrance = 0
 	for(var/obj/item/I as anything in get_equipped_items())
 		tally_weight += (I.weight_registered = I.get_weight())
-		if(I.is_held())
+		if(I.is_being_held())
 			if(!(I.item_flags & ITEM_ENCUMBERS_WHILE_HELD))
 				I.encumbrance_registered = null
 				continue

@@ -2,12 +2,14 @@
 	design_name = "Algae Oxygen Generator"
 	id = "algae_farm"
 	req_tech = list(TECH_ENGINEERING = 3, TECH_BIO = 2)
+	category = DESIGN_CATEGORY_ATMOS
 	build_path = /obj/item/circuitboard/algae_farm
 
 /datum/prototype/design/circuit/thermoregulator
 	design_name = "thermal regulator"
 	id = "thermoregulator"
 	req_tech = list(TECH_ENGINEERING = 4, TECH_POWER = 3)
+	category = DESIGN_CATEGORY_ATMOS
 	build_path = /obj/item/circuitboard/thermoregulator
 
 /datum/prototype/design/circuit/bomb_tester
