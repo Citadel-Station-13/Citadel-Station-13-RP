@@ -1489,7 +1489,7 @@
 	req_one_access = list(160)
 	},
 /obj/structure/simple_door/hardwood,
-/turf/simulated/floor/wood/classm,
+/turf/simulated/floor/wood,
 /area/sector/nebula_tradeport/motel/vip)
 "aej" = (
 /obj/effect/floor_decal/corner/blue/border{
@@ -2175,7 +2175,7 @@
 /obj/machinery/door/window/westleft{
 	dir = 2
 	},
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/tradeport/safarizoo)
 "afX" = (
 /obj/effect/floor_decal/borderfloorblack{
@@ -2190,7 +2190,7 @@
 /obj/structure/cable/orange{
 	icon_state = "4-8"
 	},
-/turf/simulated/floor/wood/classm,
+/turf/simulated/floor/wood,
 /area/sector/nebula_tradeport/motel/vip)
 "afZ" = (
 /obj/structure/closet/emcloset,
@@ -3411,7 +3411,7 @@
 	dir = 1
 	},
 /obj/structure/lightpost,
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/tradeport/safarizoo)
 "aiX" = (
 /obj/structure/sink{
@@ -4293,7 +4293,7 @@
 	},
 /obj/structure/railing,
 /obj/structure/lightpost,
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/tradeport/safarizoo)
 "aln" = (
 /obj/machinery/atmospherics/pipe/manifold4w/hidden/supply,
@@ -5048,7 +5048,7 @@
 /area/tradeport/commons)
 "anr" = (
 /obj/structure/flora/tree/jungle_small,
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/tradeport/safarizoo)
 "ans" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
@@ -5898,7 +5898,7 @@
 /obj/structure/cable/orange{
 	icon_state = "4-8"
 	},
-/turf/simulated/floor/wood/classm,
+/turf/simulated/floor/wood,
 /area/sector/nebula_tradeport/motel/vip)
 "apL" = (
 /obj/machinery/atmospherics/component/unary/engine{
@@ -5962,7 +5962,7 @@
 /obj/structure/railing{
 	dir = 8
 	},
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/tradeport/safarizoo)
 "apY" = (
 /obj/structure/bed/chair/comfy{
@@ -7483,7 +7483,7 @@
 /area/tradeport/commons)
 "atS" = (
 /obj/structure/flora/tree/jungle,
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/tradeport/safarizoo)
 "atT" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -7793,7 +7793,7 @@
 /area/tradeport/cafeteria)
 "auN" = (
 /obj/structure/railing,
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/tradeport/safarizoo)
 "auO" = (
 /obj/structure/cable/green{
@@ -8289,7 +8289,7 @@
 /area/space)
 "avX" = (
 /obj/structure/lightpost,
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/tradeport/safarizoo)
 "avY" = (
 /obj/machinery/door/firedoor{
@@ -10161,7 +10161,7 @@
 /obj/structure/cable/orange{
 	icon_state = "4-8"
 	},
-/turf/simulated/floor/wood/classm,
+/turf/simulated/floor/wood,
 /area/sector/nebula_tradeport/motel/vip)
 "aAG" = (
 /obj/machinery/fire_alarm/west_mount{
@@ -10519,7 +10519,7 @@
 	dir = 8
 	},
 /obj/structure/lightpost,
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/tradeport/safarizoo)
 "aBy" = (
 /obj/machinery/atmospherics/pipe/manifold4w/hidden,
@@ -10980,7 +10980,7 @@
 /area/tradeport/cyndishow)
 "aCH" = (
 /obj/structure/simple_door/hardwood,
-/turf/simulated/floor/wood/classm,
+/turf/simulated/floor/wood,
 /area/sector/nebula_tradeport/motel/vip)
 "aCI" = (
 /obj/structure/cable/yellow{
@@ -11390,7 +11390,7 @@
 /area/tradeport/dock)
 "aDN" = (
 /mob/living/simple_mob/vore/redpanda,
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/tradeport/safarizoo)
 "aDO" = (
 /obj/effect/floor_decal/techfloor{
@@ -13038,7 +13038,7 @@
 	dir = 8
 	},
 /obj/structure/railing,
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/tradeport/safarizoo)
 "aIn" = (
 /obj/machinery/light{
@@ -15024,7 +15024,7 @@
 /obj/machinery/door/window/westright{
 	dir = 2
 	},
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/tradeport/safarizoo)
 "aNJ" = (
 /obj/machinery/door/blast/shutters{
@@ -15313,7 +15313,7 @@
 /turf/simulated/floor/wood,
 /area/sector/nebula_tradeport/motel)
 "aOA" = (
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/tradeport/safarizoo)
 "aOB" = (
 /obj/effect/floor_decal/rust,
@@ -15951,7 +15951,7 @@
 	},
 /obj/structure/railing,
 /obj/structure/lightpost,
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/tradeport/safarizoo)
 "aQu" = (
 /obj/effect/floor_decal/spline/fancy/wood{
@@ -16514,7 +16514,7 @@
 /obj/structure/railing{
 	dir = 1
 	},
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/tradeport/safarizoo)
 "aRR" = (
 /obj/effect/floor_decal/corner_kafel/blue/full,
@@ -18581,7 +18581,7 @@
 	dir = 4
 	},
 /obj/structure/lightpost,
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/tradeport/safarizoo)
 "aXt" = (
 /obj/structure/janitorialcart,
@@ -18774,7 +18774,7 @@
 "aXT" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/item/defib_kit/loaded,
-/obj/item/defib_kit/jumper_kit/loaded,
+/obj/item/defib_kit/loaded,
 /obj/effect/floor_decal/corner/blue/border{
 	dir = 10
 	},
@@ -19054,7 +19054,7 @@
 /obj/structure/railing{
 	dir = 4
 	},
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/tradeport/safarizoo)
 "aYK" = (
 /obj/machinery/atmospherics/pipe/simple/hidden,
@@ -19952,7 +19952,7 @@
 	dir = 8
 	},
 /obj/structure/flora/ausbushes/lavendergrass,
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/tradeport/safarizoo)
 "cbA" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -20209,7 +20209,7 @@
 /area/sector/nebula_tradeport/motel)
 "cKu" = (
 /obj/structure/bed/chair/comfy/black,
-/turf/simulated/floor/wood/classm,
+/turf/simulated/floor/wood,
 /area/sector/nebula_tradeport/motel/vip)
 "cKH" = (
 /obj/effect/floor_decal/spline/fancy/wood{
@@ -20474,7 +20474,7 @@
 /area/tradeport/commons)
 "dwj" = (
 /obj/structure/table/bench/wooden,
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/tradeport/safarizoo)
 "dxa" = (
 /obj/effect/floor_decal/spline/plain{
@@ -20638,7 +20638,7 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 4
 	},
-/turf/simulated/floor/wood/classm,
+/turf/simulated/floor/wood,
 /area/sector/nebula_tradeport/motel/vip)
 "dMY" = (
 /obj/structure/bed/chair/sofa/red/right{
@@ -20674,7 +20674,7 @@
 	dir = 1
 	},
 /obj/effect/floor_decal/spline/fancy/wood,
-/turf/simulated/floor/wood/classm,
+/turf/simulated/floor/wood,
 /area/sector/nebula_tradeport/motel/vip)
 "dSv" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -20864,7 +20864,7 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 5
 	},
-/turf/simulated/floor/wood/classm,
+/turf/simulated/floor/wood,
 /area/sector/nebula_tradeport/motel/vip)
 "eoV" = (
 /obj/structure/sink/kitchen{
@@ -21037,7 +21037,7 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 8
 	},
-/turf/simulated/floor/wood/classm,
+/turf/simulated/floor/wood,
 /area/sector/nebula_tradeport/motel/vip)
 "eKY" = (
 /obj/machinery/computer/arcade/battle,
@@ -22084,7 +22084,7 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 9
 	},
-/turf/simulated/floor/wood/classm,
+/turf/simulated/floor/wood,
 /area/sector/nebula_tradeport/motel/vip)
 "hTV" = (
 /obj/effect/floor_decal/corner/red/border{
@@ -22398,7 +22398,7 @@
 	dir = 4
 	},
 /obj/structure/table/wooden_reinforced,
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/tradeport/safarizoo)
 "iPk" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan{
@@ -22614,7 +22614,7 @@
 	dir = 8
 	},
 /obj/structure/table/bench/wooden,
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/tradeport/safarizoo)
 "jFL" = (
 /obj/structure/bed/chair/sofa/red/left{
@@ -23134,7 +23134,7 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 1
 	},
-/turf/simulated/floor/wood/classm,
+/turf/simulated/floor/wood,
 /area/sector/nebula_tradeport/motel/vip)
 "kXi" = (
 /obj/structure/closet/crate,
@@ -23712,7 +23712,7 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 6
 	},
-/turf/simulated/floor/wood/classm,
+/turf/simulated/floor/wood,
 /area/sector/nebula_tradeport/motel/vip)
 "mtD" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
@@ -23829,7 +23829,7 @@
 /area/sector/nebula_tradeport/motel)
 "mHG" = (
 /obj/structure/table/hardwoodtable,
-/turf/simulated/floor/wood/classm,
+/turf/simulated/floor/wood,
 /area/sector/nebula_tradeport/motel/vip)
 "mIR" = (
 /obj/structure/closet/secure_closet/personal,
@@ -24142,7 +24142,7 @@
 /area/tradeport/facility)
 "nLQ" = (
 /obj/structure/flora/ausbushes/sparsegrass,
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/tradeport/safarizoo)
 "nMv" = (
 /obj/effect/floor_decal/spline/fancy/wood/cee{
@@ -24409,7 +24409,7 @@
 /obj/machinery/light/small{
 	dir = 8
 	},
-/turf/simulated/floor/wood/classm,
+/turf/simulated/floor/wood,
 /area/sector/nebula_tradeport/motel/vip)
 "oAt" = (
 /obj/structure/shuttle/engine/heater{
@@ -24750,7 +24750,7 @@
 /area/sector/nebula_tradeport/motel)
 "pJb" = (
 /obj/structure/flora/ausbushes/fullgrass,
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/tradeport/safarizoo)
 "pLj" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
@@ -24906,7 +24906,7 @@
 	dir = 1
 	},
 /obj/structure/flora/ausbushes/sparsegrass,
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/tradeport/safarizoo)
 "qqN" = (
 /obj/effect/floor_decal/spline/fancy/wood{
@@ -24955,7 +24955,7 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 10
 	},
-/turf/simulated/floor/wood/classm,
+/turf/simulated/floor/wood,
 /area/sector/nebula_tradeport/motel/vip)
 "qAU" = (
 /obj/machinery/vending/boozeomat{
@@ -25660,7 +25660,7 @@
 /obj/machinery/portable_atmospherics/hydroponics{
 	color = "#754116"
 	},
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/tradeport/spine)
 "sHj" = (
 /obj/structure/window/reinforced,
@@ -25746,7 +25746,7 @@
 /turf/simulated/floor/wood,
 /area/tradeport/cafeteria)
 "sSX" = (
-/turf/simulated/floor/wood/classm,
+/turf/simulated/floor/wood,
 /area/sector/nebula_tradeport/motel/vip)
 "sTE" = (
 /obj/machinery/light{
@@ -25771,7 +25771,7 @@
 	dir = 4
 	},
 /obj/structure/flora/ausbushes/lavendergrass,
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/tradeport/safarizoo)
 "tbk" = (
 /obj/machinery/holopad/ship/starts_inactive,
@@ -25785,7 +25785,7 @@
 /obj/machinery/portable_atmospherics/hydroponics{
 	color = "#754116"
 	},
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/tradeport/spine)
 "tcM" = (
 /obj/machinery/bodyscanner,
@@ -25866,7 +25866,7 @@
 /area/sector/nebula_tradeport/motel/room1)
 "tmd" = (
 /obj/structure/flora/ausbushes/lavendergrass,
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/tradeport/safarizoo)
 "tna" = (
 /obj/structure/bed/chair/sofa/red/right{
@@ -26401,7 +26401,7 @@
 /area/shuttle/scoophead/engineering)
 "uSY" = (
 /obj/structure/flora/ausbushes/grassybush,
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/tradeport/safarizoo)
 "uUp" = (
 /obj/structure/railing/grey{
@@ -26558,7 +26558,7 @@
 /area/sector/nebula_tradeport/motel)
 "vvg" = (
 /obj/structure/table/wooden_reinforced,
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/tradeport/safarizoo)
 "vyh" = (
 /obj/item/stool/padded,
@@ -27034,7 +27034,7 @@
 	dir = 4
 	},
 /obj/structure/table/bench/wooden,
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/tradeport/safarizoo)
 "wXR" = (
 /obj/machinery/button/remote/blast_door{
