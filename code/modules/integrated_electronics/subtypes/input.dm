@@ -237,10 +237,10 @@
 		"quantity of reagents"	= IC_PINTYPE_LIST,		//15
 		"health scan tier"		= IC_PINTYPE_NUMBER,	//16
 		"brain damage"			= IC_PINTYPE_NUMBER,	//17
-		"bleeding limps"		= IC_PINTYPE_LIST,		//18
-		"infected limps"		= IC_PINTYPE_LIST,		//19
+		"bleeding limbs"		= IC_PINTYPE_LIST,		//18
+		"infected limbs"		= IC_PINTYPE_LIST,		//19
 		"internal bleeding"		= IC_PINTYPE_LIST,		//20
-		"fractured limps"		= IC_PINTYPE_LIST		//21
+		"fractured limbs"		= IC_PINTYPE_LIST		//21
 	)
 	activators = list("scan" = IC_PINTYPE_PULSE_IN, "on scanned" = IC_PINTYPE_PULSE_OUT)
 	spawn_flags = IC_SPAWN_RESEARCH
