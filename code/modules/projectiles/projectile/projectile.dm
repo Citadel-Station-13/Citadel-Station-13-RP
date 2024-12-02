@@ -110,14 +110,12 @@
 	VAR_PROTECTED/list/additional_projectile_effects
 
 	//* Configuration *//
-
 	/// Projectile type bitfield; set all that is relevant
 	var/projectile_type = NONE
 	/// Impact ground on expiry (range, or lifetime)
 	var/impact_ground_on_expiry = FALSE
 
 	//* Physics - Configuration *//
-
 	/// speed, in pixels per second
 	var/speed = 25 * WORLD_ICON_SIZE
 	/// are we a hitscan projectile?
@@ -151,7 +149,6 @@
 	var/homing_offset_y = 0
 
 	//* Physics - Tracers *//
-
 	/// tracer /datum/point's
 	var/list/tracer_vertices
 	/// first point is a muzzle effect
@@ -162,7 +159,6 @@
 	var/tracer_duration = 5
 
 	//* Physics - State *//
-
 	/// paused? if so, we completely get passed over during processing
 	var/paused = FALSE
 	/// currently hitscanning
@@ -221,8 +217,26 @@
 	//        optimally physics loop should handle tracking for stuff like animations, not require on hit processing to check turfs
 	var/turf/trajectory_moving_to
 
-	//* Targeting *//
+	//*                                          Submunitions                                                  *//
+	//* While projectile has procs to handle this, these vars are used automatically if 'submunitions' is set. *//
+	/// Submunitions to use by default on fire(). Either a number to split self into n fragments.
+	var/submunitions
+	/// Delete ourselves after splitting.
+	var/submunitions_only = FALSE
+	/// Typepath to use for submunitions. Defaults to self, if not specified.
+	var/submunition_type
+	/// Default submunition dispersion.
+	var/submunition_dispersion = 0
+	/// Default submunition dispersion gaussian mode off
+	var/submunition_uniform_disperson = FALSE
+	/// Default submunition linear spread
+	var/submunition_linear_spread = 0
+	/// Default submunition divisor mod
+	var/submunition_division_mod = 0
+	/// Overwrite target projectile instead of adding?
+	var/submunition_division_overwrite = FALSE
 
+	//* Targeting *//
 	/// Originally clicked target
 	var/atom/original_target
 
@@ -275,18 +289,6 @@
 
 	var/dispersion = 0.0
 
-	// Sub-munitions. Basically, multi-projectile shotgun, rather than pellets.
-	var/use_submunitions = FALSE
-	var/only_submunitions = FALSE // Will the projectile delete itself after firing the submunitions?
-	var/list/submunitions = list() // Assoc list of the paths of any submunitions, and how many they are. [projectilepath] = [projectilecount].
-	var/submunition_spread_max = 30 // Divided by 10 to get the percentile dispersion.
-	var/submunition_spread_min = 5 // Above.
-	/// randomize spread? if so, evenly space between 0 and max on each side.
-	var/submunition_constant_spread = FALSE
-	var/force_max_submunition_spread = FALSE // Do we just force the maximum?
-	var/spread_submunition_damage = FALSE // Do we assign damage to our sub projectiles based on our main projectile damage?
-
-	//? Damage - default handling
 	/// damage amount
 	var/damage_force = 0
 	/// damage tier - goes hand in hand with [damage_mode]
@@ -542,23 +544,87 @@
 	return 0
 
 /**
+ * This can qdel() ourselves!
+ */
+/obj/projectile/proc/split_into_default_submunitions(amount, path, dispersion, uniform_dispersion, linear_spread, division_mod, division_overwrite, fire_immediately)
+	. = split_into_submunitions(
+		submunitions,
+		submunition_type || type,
+		submunition_dispersion,
+		submunition_uniform_disperson,
+		submunition_linear_spread,
+		submunition_division_mod,
+		submunition_division_overwrite,
+	)
+	if(submunitions_only)
+		qdel(src)
+
+/**
  * @params
- * * submunitions - either a number or a list of types
- * * dispersion - angular dispersion
+ * * amount - amount to use
+ * * path - typepath to use
+ * * dispersion - angular dispersion. uniform min/max, or standard deviation if gaussian.
  * * uniform_dispersion - use deterministic instead of gaussian for dispersion
  * * linear_spread - spread apart this many pixels over every projectile
  * * division_mod - 1 = full divide, 0.5 = only lose half the power we should, 2 = two splits into 2 * 1/4 instead of 2 *1/2
+ * * division_overwrite - overwrite stats of the split submunitions instead of adding.
+ * * fire_immediately - fire the split shots.
  *
  * @return list() of submunitions
  */
-/obj/projectile/proc/split_into_submunitions(list/submunitions, dispersion, uniform_dispersion, linear_spread, division_mod)
+/obj/projectile/proc/split_into_submunitions(amount, path, dispersion, uniform_dispersion, linear_spread, division_mod, division_overwrite, fire_immediately)
+	// we must be fired; otherwise, things don't work right.
+	ASSERT(fired)
+	. = list()
+	// halve it as we're going in both directions, and artificially multiply by 10 to be
+	// divided out after the rand to boost randomness by a slight bit as rand only returns
+	// whole numbers.
+	linear_spread *= 0.5 * 10
+	// artificially multiply by 10 to boost randomness
+	dispersion *= 10
+	var/px_rand_mul = calculated_dy
+	var/py_rand_mul = calculated_dx
+	for(var/iter in 1 to amount)
+		var/obj/projectile/split = new path
+		split.imprint_from_supermunition(src, divisor, division_mod, division_overwrite)
+		var/our_linear_spread = rand(-linear_spread, linear_spread) * 0.1
+		var/our_angle_mod = uniform_dispersion ? rand(-dispersion, dispersion) * 0.1 : gaussian(0, dispersion)
+		split.pixel_x = pixel_x + px_rand_mul * our_linear_spread
+		split.pixel_y = pixel_y + py_rand_mul * our_linear_spread
+		split.forceMove(loc)
+		split.set_angle(angle + our_angle_mod)
+		if(fire_immediately)
+			split.fire()
+		. += split
 
-	if(isnum(submunitions))
-		// that many of ourselves
+/**
+ * @params
+ * * parent - what we're splitting from
+ * * split_count - the number of projectiles being split into. we are 1 of this.
+ * * division_mod - multiplier to how harsh division is. 2 means to halve damage again after division, 0.5 means to divide by 0.5 of usual.
+ * * overwrite - overwrite our own stats/effects/damage instead of adding to it.
+ */
+/obj/projectile/proc/imprint_from_supermunition(obj/projectile/parent, split_count, division_mod, overwrite)
+	SHOULD_CALL_PARENT(TRUE)
+
+	var/effective_divisor = (1 / (split_count * division_mod))
+	// todo: how to handle split damagetypes?
+	if(overwrite)
+		damage_type = parent.damage_type
+		damage_force = parent.damage_force * effective_divisor
+		damage_flag = parent.damage_flag
+		damage_tier = parent.damage_tier
+		base_projectile_effects = parent.base_projectile_effects
+		additional_projectile_effects = parent.additional_projectile_effects
 	else
-		// list of typepaths
+		damage_force += parent.damage_force * effective_divisor
+		damage_tier = max(damage_tier, parent.damage_tier)
+		// todo: proper collation for effects, not just an add
+		if(parent.base_projectile_effects)
+			base_projectile_effects = parent.base_projectile_effects
+		if(parent.additional_projectile_effects)
+			additional_projectile_effects = parent.additional_projectile_effects
 
-/obj/projectile/proc/imprint_from_supermunition(obj/projectile/parent, divisor, division_mod)
 
 #warn deal with this
 /**
