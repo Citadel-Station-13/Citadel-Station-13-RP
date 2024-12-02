@@ -1234,7 +1234,7 @@
 
 //This chem is for removing nanites without grubmeat
 /datum/reagent/lessershock
-	name = "2 V" //in other words a painful shock
+	name = "2 V" //in other words a less painful shock
 	id = "lessershock"
 	description = "A liquidified Lithium-Iron-Phosphate battery. Can be used to deliver shocks to the body in order to counter hostile nanomachines."
 	reagent_state = REAGENT_SOLID
@@ -1277,7 +1277,7 @@
 	overdose = 10
 
 /datum/reagent/asbestos/affect_blood(mob/living/carbon/M, alien, removed)
-	M.ingested.add_reagent("asbestos", 0.02) //No idea what to do with injected asbestos I will simply say it goes to your lungs faster.
+	M.ingested.add_reagent(/datum/reagent/asbestos, 0.02) //No idea what to do with injected asbestos I will simply say it goes to your lungs faster.
 
 /datum/reagent/asbestos/affect_ingest(mob/living/carbon/M, alien, removed)
 	var/mob/living/carbon/human/H = M
@@ -1345,5 +1345,5 @@
 	reagent_filter_flags = REAGENT_FILTER_NO_COMMON_BIOANALYSIS
 
 /datum/reagent/superhol/affect_ingest(mob/living/carbon/M, alien, removed)
-	M.bloodstr.add_reagent("ethanol", removed * 200) //Two Ethanol a tick enough so the drunkeness hits slow enough to be semi plausible
+	M.bloodstr.add_reagent(/datum/reagent/ethanol, removed * 200) //Two Ethanol a tick enough so the drunkeness hits slow enough to be semi plausible
 	M.add_chemical_effect(CE_ALCOHOL_TOXIC, 5)
