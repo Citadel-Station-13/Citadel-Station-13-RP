@@ -213,7 +213,9 @@
 
 	name = "integrated advanced medical analyzer"
 	desc = "A very small version of the medibot's medical analyzer.  This allows the machine to know how healthy someone is.  \
-	This type is much more precise, allowing the machine to know much more about the target than a normal analyzer."
+	This type is much more precise, allowing the machine to know much more about the target than a normal analyzer.	\
+	A better health scanner can be installed to expand functionality. T1 for brain damage, bleeding and infection.	\
+	T2 For fractions and internal bleeding. T3 for non medical reagents."
 	icon_state = "medscan_adv"
 	complexity = 12
 	inputs = list("target" = IC_PINTYPE_REF)
