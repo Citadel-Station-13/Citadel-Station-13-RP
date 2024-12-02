@@ -339,7 +339,7 @@
 		"innsuficient_medical"			= 'sound/voice/Hevsounds/innsuficient_medical.wav',
 		"internal_bleeding"				= 'sound/voice/Hevsounds/internal_bleeding.wav'
 		)
-	sounds = list(
+	durations = list(
 		"bio_warn"						= 31,
 		"chem_warn" 					= 38,
 		"rad_warn" 						= 45,
