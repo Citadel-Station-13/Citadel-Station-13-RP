@@ -541,6 +541,25 @@
 		return damage_force
 	return 0
 
+/**
+ * @params
+ * * submunitions - either a number or a list of types
+ * * dispersion - angular dispersion
+ * * uniform_dispersion - use deterministic instead of gaussian for dispersion
+ * * linear_spread - spread apart this many pixels over every projectile
+ * * division_mod - 1 = full divide, 0.5 = only lose half the power we should, 2 = two splits into 2 * 1/4 instead of 2 *1/2
+ *
+ * @return list() of submunitions
+ */
+/obj/projectile/proc/split_into_submunitions(list/submunitions, dispersion, uniform_dispersion, linear_spread, division_mod)
+
+	if(isnum(submunitions))
+		// that many of ourselves
+	else
+		// list of typepaths
+
+/obj/projectile/proc/imprint_from_supermunition(obj/projectile/parent, divisor, division_mod)
+
 #warn deal with this
 /**
  * i hate everything
