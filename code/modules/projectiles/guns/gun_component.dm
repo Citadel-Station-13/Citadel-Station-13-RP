@@ -121,5 +121,5 @@
 	var/use_tooltip = {"
 		[desc]
 		[jointext(transformed, "")]
-	"} :
+	"}
 	return SPAN_TOOLTIP(use_tooltip, use_name)

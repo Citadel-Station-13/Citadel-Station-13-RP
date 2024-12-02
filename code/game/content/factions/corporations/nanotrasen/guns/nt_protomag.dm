@@ -48,3 +48,5 @@
 	render_battery_overlay = MAGNETIC_RENDER_BATTERY_IN
 	base_shot_power = /obj/item/cell/device/weapon::maxcharge * (1 / (/obj/item/ammo_magazine/nt_protomag/rifle::ammo_max * 4))
 	fire_sound = 'sound/factions/corporations/nanotrasen/protomag-rifle.ogg'
+
+#warn materials / rnd designs
