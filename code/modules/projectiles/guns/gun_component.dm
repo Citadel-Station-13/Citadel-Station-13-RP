@@ -34,6 +34,15 @@
 	/// currently attached gun
 	var/obj/item/gun/attached
 
+/obj/item/gun_component/examine(mob/user, dist)
+	. = ..()
+	var/list/summarized = summarize_bullet_points()
+	if(!length(summarized))
+		return
+	var/list/transformed = list()
+	for(var/string in summarized)
+		. += "<li>[string]</li>"
+
 //* Attach / Detach *//
 
 /**
@@ -68,7 +77,7 @@
 	if(hook_iteration_pre_fire)
 		UnregisterSignal(gun, COMSIG_GUN_FIRING_CYCLE_ITERATION_PREFIRE)
 
-//* Gun API *//
+//* Gun API - Hooks *//
 
 /**
  * Called right before fire() is invoked, if [hook_iteration_pre_fire] is set.
@@ -76,12 +85,41 @@
 /obj/item/gun_component/proc/on_firing_cycle_iteration(datum/gun_firing_cycle/cycle)
 	return
 
+//* Gun API - Actions *//
+
+/obj/item/gun_component/proc/use_power(joules)
+	return attached.modular_use_power(src, joules)
+
+/obj/item/gun_component/proc/use_checked_power(joules, reserve)
+	return attached.modular_use_checked_power(src, joules, reserve)
+
 //* Information *//
 
 /**
  * Called to query the stat bullet points of this component
  *
+ * @params
+ * * actor - (optional) actor data
+ *
  * @return a list of data about us to put in bullet points, in raw HTML
  */
 /obj/item/gun_component/proc/summarize_bullet_points(datum/event_args/actor/actor)
 	return list()
+
+/**
+ * Called to return our examine name injection.
+ */
+/obj/item/gun_component/proc/get_examine_fragment()
+	// todo: render as icon & name
+	var/use_name = name
+	var/list/summarized = summarize_bullet_points()
+	if(!length(summarized))
+		return SPAN_TOOLTIP(desc, use_name)
+	var/list/transformed = list()
+	for(var/string in summarized)
+		transformed += "<li>[string]</li>"
+	var/use_tooltip = {"
+		[desc]
+		[jointext(transformed, "")]
+	"} :
+	return SPAN_TOOLTIP(use_tooltip, use_name)

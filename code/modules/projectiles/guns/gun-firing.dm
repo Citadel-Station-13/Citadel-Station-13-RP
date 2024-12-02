@@ -8,7 +8,7 @@
  */
 /obj/item/gun/proc/handle_clickchain_fire(datum/event_args/actor/clickchain/clickchain, clickchain_flags)
 	var/mob/resolved_firer = clickchain.performer
-	var/resolved_angle = clickchain.resolve_click_angle_from_performer()
+	var/resolved_angle = clickchain.resolve_click_angle()
 	var/resolved_firing_flags = NONE
 	if(resolved_firer.Reachability(clickchain.target))
 		resolved_firing_flags |= GUN_FIRING_POINT_BLANK

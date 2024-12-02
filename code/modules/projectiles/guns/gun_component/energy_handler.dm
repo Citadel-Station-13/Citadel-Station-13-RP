@@ -10,9 +10,7 @@
 /obj/item/gun_component/energy_handler/active_reload
 	name = "weapon energy handler (slide charging)"
 	desc = {"
-		An uncommon energy handler. Requires the user to rack the weapon to recharge
-		a linked supercapacitor array between shots for fast operation. In return,
-		the power provided to a given shot is improved by a decent margin.
+		An energy handler that requires an user to rack the weapon to perform a charge cycle.
 	"}
 
 /obj/item/gun_component/energy_handler/active_reload/summarize_bullet_points(datum/event_args/actor/actor, range)
@@ -26,11 +24,7 @@
 /obj/item/gun_component/energy_handler/active_reload/perfect
 	name = "weapon energy handler (synchronous slide charging)"
 	desc = {"
-		An uncommon energy handler. Requires the user to rack the weapon to recharge
-		a linked supercapacitor array between shots for fast operation. In return,
-		the power provided to a given shot is improved by a decent margin. This one is
-		even more unwieldly to use, requiring the slide action to coincide with the chaotic peak
-		of an initiated recharging cycle for optimal performance.
+		An energy handler that requires an user to rack the weapon at a specific point in the charge cycle.
 	"}
 
 /obj/item/gun_component/energy_handler/active_reload/perfect/summarize_bullet_points(datum/event_args/actor/actor, range)
@@ -41,7 +35,5 @@
 	. += "Increases the available power on a fired shot."
 	. += "On a <b>successful active reload</b> (early finish), this will further increase the available power on a fired shot."
 	. += "Suffers decreased efficiency on burst shots."
-
-#warn impl all
 
 // TODO: This file is mostly stubs and WIPs.

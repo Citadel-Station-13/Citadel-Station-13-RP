@@ -385,6 +385,8 @@
 	expire()
 
 /obj/projectile/proc/fire(set_angle_to, atom/direct_target, no_source_check)
+	// don't fire multiple times
+	ASSERT(!fired)
 	if(only_submunitions)	// refactor projectiles whwen holy shit this is awful lmao
 		// todo: this should make a muzzle flash
 		qdel(src)
@@ -443,6 +445,7 @@
 		physics_iteration(WORLD_ICON_SIZE, SSprojectiles.wait)
 
 //Spread is FORCED!
+// todo: obliterate
 /obj/projectile/proc/preparePixelProjectile(atom/target, atom/source, params, spread = 0)
 	var/turf/curloc = get_turf(source)
 	var/turf/targloc = get_turf(target)
@@ -478,6 +481,7 @@
 		stack_trace("WARNING: Projectile [type] fired without either mouse parameters, or a target atom to aim at!")
 		qdel(src)
 
+// todo: obliterate
 /proc/calculate_projectile_angle_and_pixel_offsets(mob/user, params)
 	var/list/mouse_control = params2list(params)
 	var/p_x = 0

@@ -64,15 +64,16 @@
 	return cloning
 
 /**
- * Resolves the angle of the clicked pixel from the **performer**.
+ * Resolves the angle of the clicked pixel from a given entity.
  *
- * * This means that this proc should correctly offset the effective angle if the performer is not the center of the
+ * * This defaults to the clickchain's performer.
+ * * This means that this proc should correctly offset the effective angle if the entity is not the center of the
  *   initiator's screen!
  *
  * @return degrees clockwise from north, or null if failed to resolve
  */
-/datum/event_args/actor/clickchain/proc/resolve_click_angle_from_performer()
-	if(!isnull(resolved_angle_from_performer))
+/datum/event_args/actor/clickchain/proc/resolve_click_angle(atom/from_entity = performer)
+	if((from_entity == performer) && !isnull(resolved_angle_from_performer))
 		return resolved_angle_from_performer
 	// todo: this relies on a client existing. this shouldn't be necessary for a true click simulation!
 	if(!initiator?.client)
@@ -92,4 +93,6 @@
 	var/origin_x = (initiator.client.current_viewport_width * WORLD_ICON_SIZE * 0.5) - initiator.client.pixel_x
 	var/origin_y = (initiator.client.current_viewport_height * WORLD_ICON_SIZE * 0.5) - initiator.client.pixel_y
 	// atan args are reversed for clockwise from north instead of counterclockwise from east
-	return arctan(target_y - origin_y, target_x - origin_x)
+	. = arctan(target_y - origin_y, target_x - origin_x)
+	if(from_entity == performer)
+		resolved_angle_from_performer = .

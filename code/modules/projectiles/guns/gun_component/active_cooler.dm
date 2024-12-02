@@ -27,6 +27,4 @@
 		is racked. Has mediocre cooling performance otherwise.
 	"}
 
-#warn impl all
-
 // TODO: This file is mostly stubs and WIPs.
