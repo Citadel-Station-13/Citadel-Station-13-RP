@@ -13,10 +13,10 @@
 /datum/admin_verb_descriptor/##PATH_SUFFIX { \
 	id = #PATH_SUFFIX; \
 	required_rights = ##REQUIRED_RIGHTS; \
-	verb_path = /datum/admins/proc/verb__##PATH_SUFFIX; \
-	reflection_path = /datum/admins/proc/verb__invoke_##PATH_SUFFIX; \
+	verb_path = /datum/admin_verb_abstraction/proc/verb__##PATH_SUFFIX; \
+	reflection_path = /datum/admin_verb_abstraction/proc/verb__invoke_##PATH_SUFFIX; \
 }; \
-/datum/admins/proc/verb__##PATH_SUFFIX(##HEADER) { \
+/datum/admin_verb_abstraction/proc/verb__##PATH_SUFFIX(##HEADER) { \
 	set name = NAME; \
 	set desc = DESC; \
 	set category = CATEGORY; \
@@ -28,6 +28,14 @@
 		metric_increment_nested_numerical(/datum/metric/nested_numerical/admin_verb_invocation, #PATH_SUFFIX, 1); \
 	}; \
 	while(FALSE); \
-	verb__invoke_##PATH_SUFFIX(arglist(list(usr.client) + args)); \
+	call(usr.client, /datum/admin_verb_abstraction::verb__invoke_##PATH_SUFFIX())(arglist(list(usr.client) + args)); \
 }; \
-/datum/admins/proc/verb__invoke_##PATH_SUFFIX(client/caller, ##HEADER)
+/datum/admin_verb_abstraction/proc/verb__invoke_##PATH_SUFFIX(client/caller, ##HEADER)
+
+/**
+ * Abstract datum with no variables. Used to hold the proc definitions for admin verbs.
+ *
+ * * The way this works is black magic, so, uh, no touchy I guess.
+ */
+/datum/admin_verb_abstraction
+	abstract_type = /datum/admin_verb_abstraction

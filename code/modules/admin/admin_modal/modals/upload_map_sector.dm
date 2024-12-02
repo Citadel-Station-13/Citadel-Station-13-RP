@@ -61,7 +61,7 @@ ADMIN_VERB_DEF(upload_map_sector, R_ADMIN, "Create Map Sector", "Create or uploa
 	if(!MC_INITIALIZED())
 		loud_rejection("Cannot upload map sectors while the server is initializing.")
 		return FALSE
-	..()
+	. = ..()
 	buffer = new
 	buffer.name = "Custom Map"
 
