@@ -8,8 +8,7 @@
 	icon_state = "bullet"
 
 	submunitions_only = TRUE
-	submunitions_division_mod = 1
-	submunition_division_overwrite = TRUE
+	submunition_distribution = TRUE
 #warn damage tiers for these
 
 /obj/projectile/scatter/flak_shotgun
