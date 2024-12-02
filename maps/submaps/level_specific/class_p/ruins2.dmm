@@ -1,40 +1,40 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "a" = (
-/turf/simulated/floor/outdoors/snow/classp,
+/turf/simulated/floor/outdoors/snow,
 /area/class_p/ruins)
 "f" = (
 /obj/random/triumph/uncertain,
-/turf/simulated/floor/outdoors/snow/classp/no_tree,
+/turf/simulated/floor/outdoors/snow/no_tree,
 /area/class_p/ruins)
 "m" = (
-/turf/simulated/floor/outdoors/snow/classp/no_tree,
+/turf/simulated/floor/outdoors/snow/no_tree,
 /area/class_p/ruins)
 "r" = (
 /obj/structure/closet/crate/secure/loot,
-/turf/simulated/floor/outdoors/snow/classp/no_tree,
+/turf/simulated/floor/outdoors/snow/no_tree,
 /area/class_p/ruins)
 "v" = (
-/turf/simulated/floor/old_tile/green/classp{
+/turf/simulated/floor/tiled/old_tile/green{
 	color = "#63A83A";
 	icon_state = "tile_full"
 	},
 /area/class_p/ruins)
 "x" = (
-/turf/simulated/wall/classp,
+/turf/simulated/wall,
 /area/class_p/ruins)
 "E" = (
-/turf/simulated/floor/classp/outdoors,
+/turf/simulated/floor/plating/outdoors,
 /area/class_p/ruins)
 "G" = (
 /obj/item/reagent_containers/food/snacks/sliceable/pizza/margherita,
 /obj/structure/table,
-/turf/simulated/floor/classp/outdoors,
+/turf/simulated/floor/plating/outdoors,
 /area/class_p/ruins)
 "K" = (
 /obj/random/mob/robotic/hivebot{
 	mob_faction = "frozen"
 	},
-/turf/simulated/floor/classp/outdoors,
+/turf/simulated/floor/plating/outdoors,
 /area/class_p/ruins)
 
 (1,1,1) = {"

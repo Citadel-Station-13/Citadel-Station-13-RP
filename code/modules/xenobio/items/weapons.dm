@@ -26,7 +26,7 @@
 			var/mob/living/carbon/human/H = L
 			if(H.species && H.species.get_species_id() == SPECIES_ID_PROMETHEAN)
 				var/agony_to_apply = 60 - agonyforce
-				H.apply_damage(agony_to_apply, HALLOSS)
+				H.apply_damage(agony_to_apply, DAMAGE_TYPE_HALLOSS)
 
 	return ..() // do normal effects too
 
@@ -91,7 +91,11 @@
 /obj/projectile/beam/stun/xeno/weak //Weaker variant for non-research equipment, turrets, or rapid fire types.
 	agony = 3
 
-/obj/projectile/beam/stun/xeno/on_hit(var/atom/target, var/blocked = 0, var/def_zone = null)
+/obj/projectile/beam/stun/xeno/on_impact(atom/target, impact_flags, def_zone, efficiency)
+	. = ..()
+	if(. & PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT)
+		return
+
 	if(istype(target, /mob/living))
 		var/mob/living/L = target
 		if(L.mob_class & MOB_CLASS_SLIME)
@@ -106,5 +110,3 @@
 			if(H.species && H.species.get_species_id() == SPECIES_ID_PROMETHEAN)
 				if(agony == initial(agony)) // ??????
 					agony = round((14 * agony) - agony) //60-4 = 56, 56 / 4 = 14. Prior was flat 60 - agony of the beam to equate to 60.
-
-	..()

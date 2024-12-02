@@ -62,7 +62,8 @@
 
 	see_in_dark = 6
 	universal_understand = 1
-	faction = "roaches"
+
+	iff_factions = MOB_IFF_FACTION_ROACH
 
 	mob_size = MOB_SMALL
 	pass_flags = ATOM_PASS_TABLE
@@ -346,7 +347,7 @@
 
 	armor_type = /datum/armor/physiology/roach/atomar
 
-	base_attack_cooldown = 4
+	base_attack_cooldown = 2 SECONDS
 	projectiletype = /obj/projectile/energy/blob/toxic
 	projectilesound = 'sound/effects/slime_squish.ogg'
 
@@ -377,7 +378,7 @@
 	item_state = "uberfallen"
 	icon_living = "uberfallen"
 	icon_dead = "uberfallen_dead"
-	faction = "synthtide"
+
 	catalogue_data = list(/datum/category_item/catalogue/fauna/roach/uberfallen)
 	maxHealth = 30
 	health = 30
@@ -425,7 +426,7 @@
 	taser_kill = 0
 	armor_type = /datum/armor/physiology/roach/strahland
 
-	base_attack_cooldown = 4
+	base_attack_cooldown = 2 SECONDS
 	projectiletype = /obj/projectile/energy/dart
 
 	ai_holder_type = /datum/ai_holder/polaris/simple_mob/ranged/kiting
@@ -537,7 +538,7 @@
 	..() // For the poison.
 
 // Force unstealthing if attacked.
-/mob/living/simple_mob/animal/roach/zeitraum/bullet_act(obj/projectile/P)
+/mob/living/simple_mob/animal/roach/zeitraum/on_bullet_act(obj/projectile/proj, impact_flags, list/bullet_act_args)
 	. = ..()
 	break_cloak()
 

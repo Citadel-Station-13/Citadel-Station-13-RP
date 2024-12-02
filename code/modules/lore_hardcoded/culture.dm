@@ -1,7 +1,7 @@
 /datum/lore/character_background/culture
 	abstract_type = /datum/lore/character_background/culture
 
-/datum/lore/character_background/culture/check_character_species(datum/character_species/S)
+/datum/lore/character_background/culture/check_species(datum/species/S)
 	if(S.species_fluff_flags & SPECIES_FLUFF_PICKY_CULTURE)
 		. = (S.uid in allow_species) || (subspecies_included && S.is_subspecies && (S.superspecies_id in allow_species))
 		if(!.)

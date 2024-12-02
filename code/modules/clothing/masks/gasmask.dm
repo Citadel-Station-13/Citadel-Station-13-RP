@@ -57,7 +57,7 @@
 		if (src.hanging)
 			gas_transfer_coefficient = 1
 			gas_filter_strength = 0
-			body_cover_flags = body_cover_flags & ~FACE
+			set_body_cover_flags(body_cover_flags & ~FACE)
 			clothing_flags &= ~(BLOCK_GAS_SMOKE_EFFECT | ALLOWINTERNALS)
 			inv_hide_flags = 0
 			set_armor(/datum/armor/none)
@@ -66,7 +66,7 @@
 		else
 			gas_transfer_coefficient = initial(gas_transfer_coefficient)
 			gas_filter_strength = initial(gas_filter_strength)
-			body_cover_flags = initial(body_cover_flags)
+			set_body_cover_flags(initial(body_cover_flags))
 			clothing_flags = initial(clothing_flags)
 			inv_hide_flags = initial(inv_hide_flags)
 			reset_armor()
@@ -80,7 +80,7 @@
 	set src in usr
 	adjust_mask(usr)
 
-/obj/item/clothing/mask/gas/half/attack_self(mob/user)
+/obj/item/clothing/mask/gas/half/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -116,14 +116,14 @@
 	if(!CHECK_MOBILITY(user, MOBILITY_CAN_USE))
 		mask_open = !mask_open
 		if(mask_open)
-			body_cover_flags = EYES
+			set_body_cover_flags(EYES)
 			to_chat(user, "Your mask moves to allow you to eat.")
 		else
-			body_cover_flags = FACE|EYES
+			set_body_cover_flags(FACE|EYES)
 			to_chat(user, "Your mask moves to cover your mouth.")
 	return
 
-/obj/item/clothing/mask/gas/swat/vox/attack_self(mob/user)
+/obj/item/clothing/mask/gas/swat/vox/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return

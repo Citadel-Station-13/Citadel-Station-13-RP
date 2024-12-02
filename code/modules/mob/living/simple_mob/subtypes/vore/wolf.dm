@@ -30,14 +30,12 @@
 
 // Activate Noms!
 /mob/living/simple_mob/animal/wolf
-	vore_active = 1
-	vore_icons = SA_ICON_LIVING
 
 
 // Adds Phoron Wolf
 /mob/living/simple_mob/animal/wolf/phoron
+	iff_factions = MOB_IFF_FACTION_BIND_TO_LEVEL
 
-	faction = "underdark"
 	movement_cooldown = 0
 
 	harm_intent_damage = 5

@@ -48,7 +48,7 @@ BLIND     // can't see anything
 	if(!isnull(vision_modifier))
 		user.remove_vision_modifier(vision_modifier)
 
-/obj/item/clothing/glasses/attack_self(mob/user)
+/obj/item/clothing/glasses/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -429,7 +429,7 @@ BLIND     // can't see anything
 	flash_protection = FLASH_PROTECTION_MAJOR
 	tint = TINT_HEAVY
 
-/obj/item/clothing/glasses/welding/attack_self(mob/user)
+/obj/item/clothing/glasses/welding/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -453,14 +453,14 @@ BLIND     // can't see anything
 	if(src.up)
 		src.up = !src.up
 		inv_hide_flags |= HIDEEYES
-		body_cover_flags |= EYES
+		set_body_cover_flags(body_cover_flags | EYES)
 		flash_protection = initial(flash_protection)
 		tint = initial(tint)
 		to_chat(usr, "You flip \the [src] down to protect your eyes.")
 	else
 		src.up = !src.up
 		inv_hide_flags &= ~HIDEEYES
-		body_cover_flags &= ~EYES
+		set_body_cover_flags(body_cover_flags & ~EYES)
 		flash_protection = FLASH_PROTECTION_NONE
 		tint = TINT_NONE
 		to_chat(usr, "You push \the [src] up out of your face.")
@@ -563,7 +563,7 @@ BLIND     // can't see anything
 	toggleable = 1
 	activation_sound = 'sound/effects/pop.ogg'
 
-/obj/item/clothing/glasses/sunglasses/sechud/aviator/attack_self(mob/user)
+/obj/item/clothing/glasses/sunglasses/sechud/aviator/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -682,7 +682,7 @@ BLIND     // can't see anything
 	body_cover_flags = EYES
 	species_restricted = list(SPECIES_TESHARI)
 
-/obj/item/clothing/glasses/aerogelgoggles/attack_self(mob/user)
+/obj/item/clothing/glasses/aerogelgoggles/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -697,13 +697,13 @@ BLIND     // can't see anything
 		if(src.up)
 			src.up = !src.up
 			inv_hide_flags |= HIDEEYES
-			body_cover_flags |= EYES
+			set_body_cover_flags(body_cover_flags | EYES)
 			icon_state = initial(icon_state)
 			to_chat(usr, "You flip \the [src] down to protect your eyes.")
 		else
 			src.up = !src.up
 			inv_hide_flags &= ~HIDEEYES
-			body_cover_flags &= ~EYES
+			set_body_cover_flags(body_cover_flags & ~EYES)
 			icon_state = "[initial(icon_state)]up"
 			to_chat(usr, "You push \the [src] up from in front of your eyes.")
 		update_worn_icon()

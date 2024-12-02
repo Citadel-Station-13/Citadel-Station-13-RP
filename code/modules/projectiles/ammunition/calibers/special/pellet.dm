@@ -12,7 +12,7 @@
 	projectile_type = /obj/projectile/bullet/practice
 	casing_flags = CASING_DELETE
 	materials_base = list(
-		/datum/material/plastic::id = 10,
+		/datum/prototype/material/plastic::id = 10,
 	)
 
 //* Magazines *//
@@ -28,9 +28,9 @@
 	rendering_count = 1
 
 	ammo_caliber = /datum/ammo_caliber/pellet
-	ammo_type = /obj/item/ammo_casing/p_pellet
+	ammo_preload = /obj/item/ammo_casing/p_pellet
 	magazine_type = MAGAZINE_TYPE_BOX
 	materials_base = list(
-		/datum/material/steel::id = 100,
+		/datum/prototype/material/steel::id = 100,
 	)
 	ammo_max = 50

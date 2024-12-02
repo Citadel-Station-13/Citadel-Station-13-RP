@@ -235,7 +235,7 @@
 /turf/simulated/floor/carpet,
 /area/awaymission/academy/headmaster)
 "aQ" = (
-/turf/simulated/mineral/triumph,
+/turf/simulated/mineral,
 /area/awaymission/academy)
 "aR" = (
 /obj/structure/noticeboard,
@@ -1912,7 +1912,7 @@
 /obj/structure/closet,
 /obj/item/reagent_containers/food/drinks/bottle/small/beer,
 /obj/item/clothing/under/color/lightpurple,
-/obj/item/contraband/poster,
+/obj/item/poster,
 /turf/simulated/floor,
 /area/awaymission/academy/academyaft)
 "hV" = (

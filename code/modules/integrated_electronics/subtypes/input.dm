@@ -106,14 +106,19 @@
 	outputs = list(
 		"registered name" = IC_PINTYPE_STRING,
 		"assignment" = IC_PINTYPE_STRING,
-		"passkey" = IC_PINTYPE_STRING
+		"passkey" = IC_PINTYPE_STRING,
+		"rank" = IC_PINTYPE_STRING
 	)
 	activators = list(
 		"on read" = IC_PINTYPE_PULSE_OUT
 	)
 
 /obj/item/integrated_circuit/input/card_reader/attackby_react(obj/item/I, mob/living/user, intent)
-	var/obj/item/card/id/card = I.GetIdCard()
+	var/obj/item/card/id/card
+	if(istype(I,/obj/item/card/id))
+		card = I
+	else
+		card = I.GetIdCard()
 	var/list/access = I.GetAccess()
 	var/json_access = json_encode(access)
 	var/passkey = add_data_signature(json_access)
@@ -121,11 +126,12 @@
 	if(card) // An ID card.
 		set_pin_data(IC_OUTPUT, 1, card.registered_name)
 		set_pin_data(IC_OUTPUT, 2, card.assignment)
+		set_pin_data(IC_OUTPUT, 4, card.rank)
 
 	else if(length(access))	// A non-card object that has access levels.
 		set_pin_data(IC_OUTPUT, 1, null)
 		set_pin_data(IC_OUTPUT, 2, null)
-
+		set_pin_data(IC_OUTPUT, 4, null)
 	else
 		return FALSE
 
@@ -457,12 +463,6 @@
 		else
 			set_pin_data(IC_OUTPUT, 1, H.name)
 			set_pin_data(IC_OUTPUT, 2, H.desc)
-
-			if(istype(H, /mob/living))
-				var/msg = H.examine(H)
-				if(msg)
-					set_pin_data(IC_OUTPUT, 2, msg)
-
 			set_pin_data(IC_OUTPUT, 3, H.x-T.x)
 			set_pin_data(IC_OUTPUT, 4, H.y-T.y)
 			set_pin_data(IC_OUTPUT, 5, sqrt((H.x-T.x)*(H.x-T.x)+ (H.y-T.y)*(H.y-T.y)))
@@ -1091,7 +1091,7 @@ GLOBAL_DATUM_INIT(circuit_translation_context, /datum/translation_context/simple
 	listening_objects -= src
 	return ..()
 
-/obj/item/integrated_circuit/input/microphone/hear_talk(mob/living/M, msg, var/verb="says", datum/language/speaking=null)
+/obj/item/integrated_circuit/input/microphone/hear_talk(mob/living/M, msg, var/verb="says", datum/prototype/language/speaking=null)
 	var/translated = FALSE
 	if(M && msg)
 		if(speaking)
@@ -1099,7 +1099,7 @@ GLOBAL_DATUM_INIT(circuit_translation_context, /datum/translation_context/simple
 				msg = speaking.scramble(msg)
 			else
 				msg = translation_context.attempt_translation(speaking, M, msg)
-			if(!istype(speaking, /datum/language/common) && !istype(speaking, /datum/language/noise))
+			if(!istype(speaking, /datum/prototype/language/common) && !istype(speaking, /datum/prototype/language/noise))
 				translated = TRUE
 		set_pin_data(IC_OUTPUT, 1, M.GetVoice())
 		set_pin_data(IC_OUTPUT, 2, msg)
@@ -1139,10 +1139,10 @@ GLOBAL_DATUM_INIT(circuit_translation_context, /datum/translation_context/simple
 /obj/item/integrated_circuit/input/microphone/sign/Initialize(mapload)
 	. = ..()
 	for(var/lang in readable_langs)
-		var/datum/language/newlang = SScharacters.resolve_language_name(lang)
+		var/datum/prototype/language/newlang = RSlanguages.legacy_resolve_language_name(lang)
 		my_langs |= newlang
 
-/obj/item/integrated_circuit/input/microphone/sign/hear_talk(mob/living/M, msg, var/verb="says", datum/language/speaking=null)
+/obj/item/integrated_circuit/input/microphone/sign/hear_talk(mob/living/M, msg, var/verb="says", datum/prototype/language/speaking=null)
 	var/signlang = FALSE
 	if(M && msg)
 		if(speaking)
@@ -1159,7 +1159,7 @@ GLOBAL_DATUM_INIT(circuit_translation_context, /datum/translation_context/simple
 	if(signlang)
 		activate_pin(2)
 
-/obj/item/integrated_circuit/input/microphone/sign/hear_signlang(text, verb, datum/language/speaking, mob/M as mob)
+/obj/item/integrated_circuit/input/microphone/sign/hear_signlang(mob/M as mob, text, verb, datum/prototype/language/speaking)
 	hear_talk(M, text, verb, speaking)
 	return
 

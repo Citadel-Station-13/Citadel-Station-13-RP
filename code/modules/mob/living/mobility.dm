@@ -17,11 +17,13 @@
 	. = ..()
 
 	if(!(mobility_flags & MOBILITY_CAN_HOLD))
-		drop_all_held_items()
+		drop_held_items()
 	if(!(mobility_flags & MOBILITY_CAN_PULL))
 		stop_pulling()
 	if(!(mobility_flags & MOBILITY_CAN_STAND))
 		set_resting(TRUE)
+	else if(resting)
+		auto_resist_rest()
 
 /**
  * immediately sets whether or not we're prone.

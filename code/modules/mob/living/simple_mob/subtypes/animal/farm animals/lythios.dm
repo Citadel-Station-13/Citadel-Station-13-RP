@@ -22,10 +22,10 @@
 	icon_dead = "icegoat_dead"
 	catalogue_data = list(/datum/category_item/catalogue/fauna/livestock/icegoat)
 
-	faction = "goat"
+	iff_factions = MOB_IFF_FACTION_FARM_ANIMAL
 
 	minbodytemp = 180
-	maxbodytemp = 275
+	maxbodytemp = 280 //Temp Stablization means that Glacicorns overheat when Lythios is warmest.
 
 	health = 40
 	maxHealth = 40
@@ -48,7 +48,7 @@
 	hide_amount = 3
 	exotic_amount = 2
 
-	var/datum/reagents/udder = null
+	var/datum/reagent_holder/udder = null
 
 /mob/living/simple_mob/animal/icegoat/Initialize(mapload)
 	. = ..()
@@ -117,7 +117,7 @@
 	icon_dead = "woolie_dead"
 	catalogue_data = list(/datum/category_item/catalogue/fauna/livestock/woolie)
 
-	faction = "goat"
+	iff_factions = MOB_IFF_FACTION_FARM_ANIMAL
 
 	minbodytemp = 180
 	maxbodytemp = 300
@@ -189,7 +189,8 @@
 	minbodytemp = 180
 	maxbodytemp = 350
 
-	faction = "grubs"
+	iff_factions = MOB_IFF_FACTION_FARM_ANIMAL
+
 	maxHealth = 50
 	health = 50
 

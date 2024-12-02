@@ -41,7 +41,7 @@
 /datum/reagent/blood/affect_ingest(mob/living/carbon/M, alien, removed)
 
 	var/effective_dose = dose
-	if(issmall(M)) 
+	if(issmall(M))
 		effective_dose *= 2
 
 	var/nutritionvalue = 10 //for reference, normal nutrition has a value of about 30.
@@ -76,9 +76,10 @@
 		M.add_chemical_effect(CE_BLOODRESTORE, 8 * removed) // Same rating as taking iron
 	else
 		M.adjust_nutrition(nutritionvalue * removed * volume_mod)
-		M.heal_organ_damage(0.2 * removed * volume_mod, 0)	// Heal brute slightly like normal nutrition. More 'effective' blood means more usable material.
 		M.adjust_hydration(2 * removed) // Still has some water in the form of plasma. Hydrates less than a normal drink.
 		M.add_chemical_effect(CE_BLOODRESTORE, 4 * removed) //same rating as eating nutriment
+		if(effective_dose >= 20 && prob(10))
+			M.vomit(FALSE, FALSE) //Drinking blood makes you vomit, due to the high iron content and unpleasant consistency
 
 	if(data && data["virus2"])
 		var/list/vlist = data["virus2"]

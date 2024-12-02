@@ -45,17 +45,7 @@
 	integrity = 120
 	integrity_max = 120
 
-/obj/structure/alien/resin/Initialize(mapload)
-	. = ..()
-	var/turf/T = get_turf(src)
-	T.thermal_conductivity = WALL_HEAT_TRANSFER_COEFFICIENT
-
-/obj/structure/alien/resin/Destroy()
-	var/turf/T = get_turf(src)
-	T.thermal_conductivity = initial(T.thermal_conductivity)
-	..()
-
-/obj/structure/alien/resin/attack_hand(mob/user, list/params)
+/obj/structure/alien/resin/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(iscarbon(user))
 		var/mob/living/carbon/C = user
 		if(locate(/obj/item/organ/internal/xenos/hivenode) in C.internal_organs)
@@ -344,7 +334,7 @@ Alien plants should do something if theres a lot of poison
 		if((status == GROWING) && (BURST == 0))
 			Grow()
 
-/obj/structure/alien/egg/attack_hand(mob/user, list/params)
+/obj/structure/alien/egg/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 
 	var/mob/living/carbon/M = user
 	if(!istype(M) || !(locate(/obj/item/organ/internal/xenos/hivenode) in M.internal_organs))

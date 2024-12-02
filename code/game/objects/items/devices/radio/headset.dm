@@ -50,10 +50,10 @@
 /obj/item/radio/headset/handle_message_mode(mob/living/M as mob, message, channel)
 	if (channel == "special")
 		if (translate_binary)
-			var/datum/language/binary = SScharacters.resolve_language_id(LANGUAGE_ID_SILICON_BINARY)
+			var/datum/prototype/language/binary = RSlanguages.fetch(LANGUAGE_ID_SILICON_BINARY)
 			binary.broadcast(M, message)
 		if (translate_hive)
-			var/datum/language/hivemind = SScharacters.resolve_language_name("Hivemind")
+			var/datum/prototype/language/hivemind = RSlanguages.legacy_resolve_language_name("Hivemind")
 			hivemind.broadcast(M, message)
 		return null
 
@@ -92,7 +92,7 @@
 
 /obj/item/radio/headset/raider/Initialize(mapload)
 	. = ..()
-	set_frequency(RAID_FREQ)
+	set_frequency(FREQ_RAIDER)
 
 /obj/item/radio/headset/trader
 	name = "trade headset"
@@ -103,7 +103,7 @@
 
 /obj/item/radio/headset/trader/Initialize(mapload)
 	. = ..()
-	set_frequency(TRADE_FREQ)
+	set_frequency(FREQ_TRADER)
 
 /obj/item/radio/headset/binary
 	origin_tech = list(TECH_ILLEGAL = 3)

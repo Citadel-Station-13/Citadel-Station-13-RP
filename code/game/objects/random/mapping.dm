@@ -405,11 +405,11 @@
 			//	/obj/item/archaeological_find
 			//),
 			prob(1);list(
-				/obj/item/melee/energy/sword,
-				/obj/item/melee/energy/sword,
-				/obj/item/melee/energy/sword,
-				/obj/item/shield/energy,
-				/obj/item/shield/energy,
+				/obj/item/melee/transforming/energy/sword,
+				/obj/item/melee/transforming/energy/sword,
+				/obj/item/melee/transforming/energy/sword,
+				/obj/item/shield/transforming/energy,
+				/obj/item/shield/transforming/energy,
 				/obj/structure/closet/crate/science
 			),
 			prob(1);list(
@@ -489,7 +489,7 @@
 	turf_outdoors = FALSE
 
 /obj/random/turf/lava/item_to_spawn()
-	return pick(prob(5);/turf/simulated/floor/outdoors/lava,
+	return pick(prob(5);/turf/simulated/lava,
 				prob(3);/turf/simulated/floor/outdoors/rocks/caves,
 				prob(1);/turf/simulated/mineral)
 

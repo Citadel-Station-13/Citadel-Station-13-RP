@@ -23,11 +23,11 @@
 			return
 		syringe = I
 		to_chat(user, "<span class='notice'>You carefully insert [syringe] into [src].</span>")
-		sharp = 1
+		damage_mode |= DAMAGE_MODE_SHARP
 		name = "syringe dart"
 		update_icon()
 
-/obj/item/syringe_cartridge/attack_self(mob/user)
+/obj/item/syringe_cartridge/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -36,7 +36,7 @@
 		playsound(src, 'sound/weapons/empty.ogg', 50, 1)
 		user.grab_item_from_interacted_with(syringe, src)
 		syringe = null
-		sharp = initial(sharp)
+		damage_mode &= ~DAMAGE_MODE_SHARP
 		name = initial(name)
 		update_icon()
 
@@ -95,7 +95,7 @@
 	darts -= next
 	next = null
 
-/obj/item/gun/launcher/syringe/attack_self(mob/user)
+/obj/item/gun/launcher/syringe/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -108,7 +108,7 @@
 		next = darts[1]
 	add_fingerprint(user)
 
-/obj/item/gun/launcher/syringe/attack_hand(mob/user, list/params)
+/obj/item/gun/launcher/syringe/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(user.get_inactive_held_item() == src)
 		if(!darts.len)
 			to_chat(user, "<span class='warning'>[src] is empty.</span>")

@@ -1,5 +1,5 @@
 // todo: this is just a placeholder
-/datum/material/bronze
+/datum/prototype/material/bronze
 	id = "bronze"
 	name = "bronze"
 	icon_colour = "#EDD12F"

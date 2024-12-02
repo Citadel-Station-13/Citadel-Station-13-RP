@@ -4,9 +4,11 @@
 	var/recharge_rate = 2000
 	var/energy
 
-/datum/matter_synth/New(var/store = 0)
+/datum/matter_synth/New(var/store = 0, var/name = null)
 	if(store)
 		max_energy = store
+	if(name)
+		src.name = name
 	energy = max_energy
 	return
 

@@ -46,7 +46,7 @@ GLOBAL_LIST_BOILERPLATE(all_singularities, /obj/singularity)
 	STOP_PROCESSING(SSobj, src)
 	return ..()
 
-/obj/singularity/attack_hand(mob/user, list/params)
+/obj/singularity/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	consume(user)
 	return 1
 
@@ -64,8 +64,8 @@ GLOBAL_LIST_BOILERPLATE(all_singularities, /obj/singularity)
 		if(3)
 			energy -= round(((energy+1)/4),1)
 
-/obj/singularity/bullet_act(obj/projectile/P)
-	return 0 //Will there be an impact? Who knows. Will we see it? No.
+/obj/singularity/on_bullet_act(obj/projectile/proj, impact_flags, list/bullet_act_args)
+	return PROJECTILE_IMPACT_DELETE
 
 /obj/singularity/Bump(atom/A)
 	consume(A)

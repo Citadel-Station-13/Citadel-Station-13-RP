@@ -21,7 +21,8 @@
 	if(!isweakref(I.data))
 		activate_pin(3)
 		return
-	var/atom/A = I.data.resolve()
+	var/datum/weakref/d = I.data
+	var/atom/A = d.resolve()
 	if(!A)
 		activate_pin(3)
 		return
@@ -192,7 +193,7 @@
 	O.brainmob.remote_control=src
 	set_pin_data(IC_OUTPUT, 1, O)
 
-/obj/item/integrated_circuit/input/mmi_tank/attack_self(mob/user)
+/obj/item/integrated_circuit/input/mmi_tank/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -319,7 +320,7 @@
 	O.pai.remote_control=src
 	set_pin_data(IC_OUTPUT, 1, O)
 
-/obj/item/integrated_circuit/input/pAI_connector/attack_self(mob/user)
+/obj/item/integrated_circuit/input/pAI_connector/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return

@@ -85,7 +85,7 @@
 		a_right.holder_movement()
 
 
-/obj/item/assembly_holder/attack_hand(mob/user, list/params)//Perhapse this should be a holder_pickup proc instead, can add if needbe I guess
+/obj/item/assembly_holder/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(a_left && a_right)
 		a_left.holder_movement()
 		a_right.holder_movement()
@@ -108,7 +108,7 @@
 	else
 		..()
 
-/obj/item/assembly_holder/attack_self(mob/user)
+/obj/item/assembly_holder/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -154,7 +154,7 @@
 		master.receive_signal()
 	return TRUE
 
-/obj/item/assembly_holder/hear_talk(mob/living/M as mob, msg, verb, datum/language/speaking)
+/obj/item/assembly_holder/hear_talk(mob/living/M as mob, msg, verb, datum/prototype/language/speaking)
 	if(a_right)
 		a_right.hear_talk(M,msg,verb,speaking)
 	if(a_left)

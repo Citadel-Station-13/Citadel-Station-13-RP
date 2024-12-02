@@ -13,6 +13,8 @@ SUBSYSTEM_DEF(ai_holders)
 	name = "AI Holders"
 	subsystem_flags = NONE
 	priority = FIRE_PRIORITY_AI_HOLDERS
+	init_order = INIT_ORDER_AI_HOLDERS
+	init_stage = INIT_STAGE_EARLY
 	wait = 0
 
 	/// all ticking ai holders
@@ -36,7 +38,7 @@ SUBSYSTEM_DEF(ai_holders)
 /datum/controller/subsystem/ai_holders/Initialize()
 	active_holders = list()
 	rebuild()
-	return ..()
+	return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/ai_holders/on_ticklag_changed(old_ticklag, new_ticklag)
 	rebuild()
@@ -69,26 +71,31 @@ SUBSYSTEM_DEF(ai_holders)
 		var/datum/ai_holder/being_processed
 		while((being_processed = buckets[bucket_offset]))
 			being_processed.tick(++being_processed.ticking_cycles)
-			// eject; we don't change being_processed.ticking_(next|previous)
-			if(being_processed.ticking_next == being_processed)
-				buckets[bucket_offset] = null
-			else
-				buckets[bucket_offset] = being_processed.ticking_next
-				being_processed.ticking_next.ticking_previous = being_processed.ticking_previous
-				being_processed.ticking_previous.ticking_next = being_processed.ticking_next
-			// insert; we now set its ticking_(next|previous)
-			// note that we don't do catchup
-			var/inject_offset = ((now_index_raw + round(DS2TICKS(being_processed.ticking))) % bucket_amount) + 1
-			if(buckets[inject_offset])
-				var/datum/ai_holder/being_injected = buckets[inject_offset]
-				being_processed.ticking_next = being_injected
-				being_processed.ticking_previous = being_injected.ticking_previous
-				being_processed.ticking_previous.ticking_next = being_processed
-				being_processed.ticking_next.ticking_previous = being_processed
-			else
-				buckets[inject_offset] = being_processed
-				being_processed.ticking_next = being_processed.ticking_previous = being_processed
-			being_processed.ticking_position = inject_offset
+			// check if we are still ticking; if not, we got ejected, so we abort as we don't need to eject or insert again
+			if(buckets[bucket_offset] == being_processed)
+				// eject; we don't change being_processed.ticking_(next|previous)
+				if(being_processed.ticking_next == being_processed)
+#ifdef CF_AI_HOLDER_DEBUG_ASSERTIONS
+					ASSERT(buckets[bucket_offset] == being_processed)
+#endif
+					buckets[bucket_offset] = null
+				else
+					buckets[bucket_offset] = being_processed.ticking_next
+					being_processed.ticking_next.ticking_previous = being_processed.ticking_previous
+					being_processed.ticking_previous.ticking_next = being_processed.ticking_next
+				// insert; we now set its ticking_(next|previous)
+				// note that we don't do catchup
+				var/inject_offset = ((now_index_raw + round(DS2TICKS(being_processed.ticking))) % bucket_amount) + 1
+				if(buckets[inject_offset])
+					var/datum/ai_holder/being_injected = buckets[inject_offset]
+					being_processed.ticking_next = being_injected
+					being_processed.ticking_previous = being_injected.ticking_previous
+					being_processed.ticking_previous.ticking_next = being_processed
+					being_processed.ticking_next.ticking_previous = being_processed
+				else
+					buckets[inject_offset] = being_processed
+					being_processed.ticking_next = being_processed.ticking_previous = being_processed
+				being_processed.ticking_position = inject_offset
 			if(MC_TICK_CHECK)
 				break
 		if(state != SS_RUNNING)
@@ -100,7 +107,10 @@ SUBSYSTEM_DEF(ai_holders)
 	bucket_head_time = bucket_head_time + TICKS2DS(buckets_processed)
 
 /datum/controller/subsystem/ai_holders/proc/bucket_insert(datum/ai_holder/holder)
+#ifdef CF_AI_HOLDER_DEBUG_ASSERTIONS
 	ASSERT(holder.ticking <= AI_SCHEDULING_LIMIT)
+	ASSERT(!holder.ticking_position)
+#endif
 
 	var/new_index = round(bucket_head_index + ((world.time - bucket_head_time) * 0.1 * world.fps) + rand(0, holder.ticking * 0.1 * world.fps))
 	new_index = (new_index % length(buckets)) + 1
@@ -117,12 +127,19 @@ SUBSYSTEM_DEF(ai_holders)
 
 /datum/controller/subsystem/ai_holders/proc/bucket_evict(datum/ai_holder/holder)
 	ASSERT(holder.ticking_position)
-	if(buckets[holder.ticking_position] == holder)
-		buckets[holder.ticking_position] = holder.ticking_next
-	if(holder.ticking_next != holder)
+	// if we're linking to ourselves, we're the head of the linked list
+	if(holder.ticking_next == holder)
+#ifdef CF_AI_HOLDER_DEBUG_ASSERTIONS
+		ASSERT(buckets[holder.ticking_position] == holder)
+#endif
+		buckets[holder.ticking_position] = null
+	// else, eject from linked list
+	else
+		if(buckets[holder.ticking_position] == holder)
+			buckets[holder.ticking_position] = holder.ticking_next
 		holder.ticking_next.ticking_previous = holder.ticking_previous
 		holder.ticking_previous.ticking_next = holder.ticking_next
-	holder.ticking_next = holder.ticking_previous = null
+	holder.ticking_next = holder.ticking_previous = holder.ticking_position = null
 
 /**
  * perform error checking
@@ -139,13 +156,12 @@ SUBSYSTEM_DEF(ai_holders)
 		if(!istype(holder))
 			active_holders -= holder
 			continue
-		if(!holder.ticking)
-			continue
-		if(holder.ticking > AI_SCHEDULING_LIMIT)
+		if(!holder.ticking || (holder.ticking > AI_SCHEDULING_LIMIT))
 			holder.ticking = null
 			holder.ticking_position = null
 			holder.ticking_next = null
 			holder.ticking_previous = null
+			active_holders -= holder
 			continue
 		var/new_index = bucket_head_index + rand(0, round(holder.ticking * 0.1 * world.fps))
 		new_index = (new_index % bucket_amount) + 1

@@ -32,7 +32,7 @@
 
 	old_turf = isturf(loc)? loc : null
 
-/obj/machinery/floorlayer/attack_hand(mob/user, list/params)
+/obj/machinery/floorlayer/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	on=!on
 	user.visible_message( \
 		SPAN_NOTICE("[user] has [!on?"de":""]activated \the [src]."), \
@@ -85,7 +85,7 @@
 	if(istype(new_turf, /turf/simulated/floor))
 		var/turf/simulated/floor/T = new_turf
 		if(!T.is_plating())
-			T.make_plating(!(T.broken || T.burnt))
+			T.dismantle_flooring(!(T.broken || T.burnt))
 	return new_turf.is_plating()
 
 /obj/machinery/floorlayer/proc/TakeNewStack()

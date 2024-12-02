@@ -24,7 +24,8 @@
 		SMITE_DARKSPACE_ABDUCT,
 		SMITE_DROP_LIMB_RANDOM,
 		SMITE_DROP_LIMB_ALL,
-		SMITE_DROP_LIMB_PICK
+		SMITE_DROP_LIMB_PICK,
+		SMITE_VALIDHUNT
 		)
 
 	var/smite_choice = input("Select the type of SMITE for [target]","SMITE Type Choice") as null|anything in smite_types
@@ -100,6 +101,13 @@
 		if(SMITE_DARKSPACE_ABDUCT)
 			darkspace_abduction(target, src)
 
+		if(SMITE_VALIDHUNT)
+			var/noncanon = tgui_alert(src, "Would you like to announce that [target] is now noncanon?", "Validhunting time", list("Yes", "No", "Wait no LET THEM LIVE"))
+			if(noncanon == "Wait no LET THEM LIVE")
+				return
+			var/exclude = tgui_alert(src, "Would you like [target] to be aware that they are now KOS?", "They're valid now", list("Yes", "No"))
+			validhunting_time(target, src, ((noncanon == "Yes") ? TRUE : FALSE), ((exclude == "No") ? TRUE : FALSE))
+
 		else
 			return //Injection? Don't print any messages.
 
@@ -122,17 +130,12 @@
 	to_chat(target,"You've been hit by bluespace artillery!")
 	log_and_message_admins("[key_name(target)] has been hit by Bluespace Artillery fired by [key_name(user ? user : usr)]")
 
-	var/obj/effect/stop/S
-	S = new /obj/effect/stop
-	S.victim = target
-	S.loc = target.loc
-	spawn(20)
-		qdel(S)
-
 	var/turf/simulated/floor/T = get_turf(target)
 	if(istype(T))
-		if(prob(80))	T.break_tile_to_plating()
-		else			T.break_tile()
+		if(prob(80))
+			T.break_tile_to_plating()
+		else
+			T.break_tile()
 
 	if(target.health == 1)
 		target.gib()
@@ -270,3 +273,27 @@
 	to_chat(user,"<span class='notice'>The mob has been moved. ([admin_jump_link(target,usr.client.holder)])</span>")
 
 	target.transforming = FALSE
+
+
+/proc/validhunting_time(mob/living/target, user, declare_noncanon, exclude_target)
+	if(!istype(target))
+		return
+	var/image/killsign = image('icons/effects/killsign.dmi', target, declare_noncanon ? "noncanon" : "kill", ABOVE_LIGHTING_LAYER_MAIN)
+	killsign.pixel_z = 16
+	killsign.plane = ABOVE_LIGHTING_PLANE
+	killsign.appearance_flags = KEEP_APART | RESET_COLOR | RESET_ALPHA | RESET_TRANSFORM | NO_CLIENT_COLOR
+
+	var/list/recipients = list()
+	for(var/mob/M in GLOB.player_list)
+		if(exclude_target && M == target)
+			continue
+		var/client/C = M.client
+		if(!istype(C))
+			continue
+		C.images += killsign
+		recipients += M
+
+	if(declare_noncanon)
+		for(var/mob/M in recipients)
+			to_chat(M, "<span class ='danger minorannounce'>[target] is now non-canon.</span><br><span class='danger'>[target] is now valid to kill on sight. All actions performed in pursuit of killing them are non-canon, with the exception of any collateral damage that may occur.</span>")
+			M.playsound_local(get_turf(M), 'sound/misc/notice1.ogg', 50)

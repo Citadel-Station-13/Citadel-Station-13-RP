@@ -58,7 +58,6 @@
 
 
 /obj/machinery/tele_projector/LateInitialize()
-	. = ..()
 	for(var/target_dir in GLOB.cardinal)
 		var/obj/machinery/tele_pad/found_pad = locate() in get_step(src, target_dir)
 		if(found_pad)
@@ -182,7 +181,7 @@
 /obj/machinery/tele_projector/attack_ai()
 	attack_hand()
 
-/obj/machinery/tele_projector/attack_hand(mob/user, list/params)
+/obj/machinery/tele_projector/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(engaged)
 		disengage()
 	else

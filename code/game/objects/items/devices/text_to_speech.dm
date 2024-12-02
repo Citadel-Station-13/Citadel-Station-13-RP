@@ -8,7 +8,7 @@
 	var/activated = FALSE
 	var/mob/linked_user
 
-/obj/item/text_to_speech/attack_self(mob/user)
+/obj/item/text_to_speech/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -51,8 +51,20 @@
 	if(activated)
 		var/message = message_args["message"]
 		var/whispering = message_args["whispering"]
+		var/message_mode = message_args["message_mode"]
+		var/speech_verb = whispering ? "quietly states" : "states"
 		message_args["cancelled"] = TRUE
-		audible_message("[icon2html(thing = src, target = world)] \The [name] [whispering ? "quietly states" : "states"], \"[message]\"", null, whispering ? 2 : world.view)
+		audible_message("[icon2html(thing = src, target = world)] \The [name] [speech_verb], \"[message]\"", null, whispering ? 2 : world.view)
 		if(!whispering)
 			linked_user.say_overhead(message, FALSE, MESSAGE_RANGE_COMBAT_LOUD)
+
+		if(ishuman(source) && message_mode != null)
+			var/mob/living/carbon/human/H = source
+			var/obj/item/radio/headset/left_radio = H.l_ear
+			var/obj/item/radio/headset/right_radio = H.r_ear
+			if(istype(left_radio))
+				left_radio.talk_into(source, message, message_mode, speech_verb, null)
+			if(istype(right_radio))
+				right_radio.talk_into(source, message, message_mode, speech_verb, null)
+
 		playsound(src, 'sound/items/tts/stopped_type.ogg', 25, TRUE)

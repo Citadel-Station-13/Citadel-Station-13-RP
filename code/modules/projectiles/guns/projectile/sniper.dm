@@ -30,7 +30,7 @@
 	else
 		icon_state = "heavysniper"
 
-/obj/item/gun/ballistic/heavysniper/attack_self(mob/user)
+/obj/item/gun/ballistic/heavysniper/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return

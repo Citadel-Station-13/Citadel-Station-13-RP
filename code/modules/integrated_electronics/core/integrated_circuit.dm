@@ -269,7 +269,7 @@ a creative player the means to solve many problems.  Circuits are held inside an
 					examined.ui_interact(usr)
 
 		if("remove")
-			remove(usr, FALSE, index = params["index"])
+			remove(usr, FALSE)
 			return
 	return FALSE
 
@@ -285,6 +285,11 @@ a creative player the means to solve many problems.  Circuits are held inside an
 
 	power_fail()
 	disconnect_all()
+
+	// in case we can't easily get the index, we want to be able to get it still.
+	if(!index && A)
+		index = A.ui_circuit_props.Find(src)
+
 	// Remove from helper and TGUI lists
 	A.ui_circuit_props.Cut(index, index + 1)
 	A.assembly_components.Cut(index, index + 1)

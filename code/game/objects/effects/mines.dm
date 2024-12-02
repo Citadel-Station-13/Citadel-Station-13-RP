@@ -18,6 +18,8 @@
 	wires = new(src)
 
 /obj/effect/mine/proc/explode(var/mob/living/M)
+	if(QDELETED(src))
+		return
 	var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread()
 	triggered = 1
 	s.set_up(3, 1, src)
@@ -27,8 +29,9 @@
 	qdel(s)
 	qdel(src)
 
-/obj/effect/mine/bullet_act()
-	if(prob(50))
+/obj/effect/mine/on_bullet_act(obj/projectile/proj, impact_flags, list/bullet_act_args)
+	. = ..()
+	spawn(0)
 		explode()
 
 /obj/effect/mine/legacy_ex_act(severity)
@@ -167,7 +170,7 @@
 	var/turf/O = get_turf(src)
 	if(!O)
 		return
-	src.fragmentate(O, 20, 7, list(/obj/projectile/bullet/pellet/fragment)) //only 20 weak fragments because you're stepping directly on it
+	shrapnel_explosion(20, 7, /obj/projectile/bullet/pellet/fragment)
 	visible_message("\The [src.name] detonates!")
 	spawn(0)
 		qdel(s)
@@ -223,7 +226,7 @@
 	var/countdown = 10
 	var/minetype = /obj/effect/mine		//This MUST be an /obj/effect/mine type, or it'll runtime.
 
-/obj/item/mine/attack_self(mob/user)
+/obj/item/mine/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return	// You do not want to move or throw a land mine while priming it... Explosives + Sudden Movement = Bad Times

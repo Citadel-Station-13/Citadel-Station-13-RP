@@ -85,7 +85,6 @@ GLOBAL_LIST_INIT(firelock_align_types, typecacheof(list(
 	return INITIALIZE_HINT_LATELOAD
 
 /obj/machinery/door/firedoor/LateInitialize()
-	. = ..()
 	if(autoset_dir)
 		for (var/cardinal in GLOB.cardinal)
 			var/turf/step_turf = get_step(src, cardinal)
@@ -170,7 +169,7 @@ GLOBAL_LIST_INIT(firelock_align_types, typecacheof(list(
 			attack_hand(M)
 	return 0
 
-/obj/machinery/door/firedoor/attack_hand(mob/user, list/params)
+/obj/machinery/door/firedoor/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	add_fingerprint(user)
 	if(operating)
 		return//Already doing something.

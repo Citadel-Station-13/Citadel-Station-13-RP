@@ -67,13 +67,15 @@
 		set_weight_class(initial(w_class))
 		clear_holster()
 
-/obj/item/clothing/accessory/holster/attack_hand(mob/user, list/params)
+/obj/item/clothing/accessory/holster/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if (accessory_host && (slot & ACCESSORY_SLOT_UTILITY))
 		if(holstered)
 			unholster(user)
 	..(user)
 
 /obj/item/clothing/accessory/holster/attackby(obj/item/W as obj, mob/user as mob)
+	if(!user.is_holding(W))
+		return
 	holster(W, user)
 
 /obj/item/clothing/accessory/holster/emp_act(severity)
@@ -157,7 +159,7 @@
 	desc = "A handsome synthetic leather scabbard with matching belt."
 	icon_state = "holster_machete"
 	concealed_holster = 0
-	can_hold = list(/obj/item/material/knife/machete, /obj/item/melee/energy/hfmachete, /obj/item/reagent_containers/spray, /obj/item/soap,
+	can_hold = list(/obj/item/material/knife/machete, /obj/item/melee/transforming/hfmachete, /obj/item/reagent_containers/spray, /obj/item/soap,
 		/obj/item/c_tube, /obj/item/bikehorn)
 	cant_hold = list(/obj/item/material/knife/machete/armblade)
 	sound_in = 'sound/effects/holster/sheathin.ogg'

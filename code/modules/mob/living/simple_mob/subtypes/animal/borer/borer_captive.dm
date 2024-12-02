@@ -5,7 +5,7 @@
 	real_name = "host brain"
 	universal_understand = 1
 
-/mob/living/captive_brain/say(var/message, var/datum/language/speaking = null, var/verb="says", var/alt_name="", var/whispering = 0)
+/mob/living/captive_brain/say(var/message, var/datum/prototype/language/speaking = null, var/verb="says", var/alt_name="", var/whispering = 0)
 
 	if (src.client)
 		if(client.prefs.muted & MUTE_IC)
@@ -54,6 +54,6 @@
 			remove_verb(src, /mob/living/carbon/proc/punish_host)
 			remove_verb(src, /mob/living/carbon/proc/spawn_larvae)
 
-		return
+		return TRUE
 
 	..()

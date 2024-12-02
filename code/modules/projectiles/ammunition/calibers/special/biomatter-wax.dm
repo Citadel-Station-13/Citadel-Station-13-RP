@@ -10,7 +10,7 @@
 	projectile_type = /obj/projectile/bullet/organic/wax
 	caliber = /datum/ammo_caliber/biomatter/wax
 	materials_base = list(
-		/datum/material/wax::id = 100,
+		/datum/prototype/material/wax::id = 100,
 	)
 
 /obj/item/ammo_magazine/biovial
@@ -26,6 +26,6 @@
 	ammo_caliber = /datum/ammo_caliber/biomatter/wax
 	ammo_preload = /obj/item/ammo_casing/biomatter/wax
 	materials_base = list(
-		/datum/material/wax::id = 100,
+		/datum/prototype/material/wax::id = 100,
 	)
 	ammo_max = 10

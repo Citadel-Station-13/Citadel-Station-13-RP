@@ -1,7 +1,8 @@
+CREATE_STANDARD_TURFS(/turf/simulated/floor/outdoors/grass)
 /turf/simulated/floor/outdoors/grass
 	name = "grass"
 	icon_state = "grass"
-	initial_flooring = /singleton/flooring/outdoors/grass
+	initial_flooring = /datum/prototype/flooring/outdoors/grass
 	baseturfs = /turf/simulated/floor/outdoors/dirt
 
 	// smoothing_flags = SMOOTH_BITMASK
@@ -27,7 +28,7 @@
 /turf/simulated/floor/outdoors/grass/sif
 	name = "growth"
 	icon_state = "grass_sif"
-	initial_flooring = /singleton/flooring/outdoors/grass/sif
+	initial_flooring = /datum/prototype/flooring/outdoors/grass/sif
 	grass_chance = 5
 	var/tree_chance = 2
 

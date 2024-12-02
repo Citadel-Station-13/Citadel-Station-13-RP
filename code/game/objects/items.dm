@@ -9,7 +9,6 @@
 	climb_allowed = FALSE
 
 	//* Actions *//
-
 	/// cached action descriptors
 	///
 	/// this can be:
@@ -27,7 +26,34 @@
 	/// the action will check for
 	var/item_action_mobility_flags = MOBILITY_CAN_HOLD | MOBILITY_CAN_USE
 
-	//? Flags
+	//* Combat *//
+	/// Amount of damage we do on melee.
+	var/damage_force = 0
+	/// armor flag for melee attacks
+	var/damage_flag = ARMOR_MELEE
+	/// damage tier
+	var/damage_tier = MELEE_TIER_MEDIUM
+	/// damage_mode bitfield - see [code/__DEFINES/combat/damage.dm]
+	var/damage_mode = NONE
+	/// DAMAGE_TYPE_* enum
+	///
+	/// * This is the primary damage type this object does on usage as a melee / thrown weapon.
+	var/damage_type = DAMAGE_TYPE_BRUTE
+	/// passive parry data / frame
+	///
+	/// * anonymous typepath is allowed
+	/// * typepath is allowed
+	/// * instance is allowed
+	///
+	/// note that the component will not be modified while held;
+	/// if this is changed, the component needs to be remade.
+	var/passive_parry
+
+	//* Economy
+	/// economic category for items
+	var/economic_category_item = ECONOMIC_CATEGORY_ITEM_DEFAULT
+
+	//* Flags *//
 	/// Item flags.
 	/// These flags are listed in [code/__DEFINES/inventory/item_flags.dm].
 	var/item_flags = ITEM_ENCUMBERS_WHILE_HELD
@@ -38,8 +64,10 @@
 	/// As of right now, some flags only work in some slots.
 	/// These flags are listed in [code/__DEFINES/inventory/item_flags.dm].
 	var/inv_hide_flags = NONE
-	/// flags for the bodyparts this item covers when worn.
+	/// Flags for the bodyparts this item covers when worn.
 	/// These flags are listed in [code/__DEFINES/inventory/item_flags.dm].
+	///
+	/// * Do not set these directly, use set_body_cover_flags()!
 	var/body_cover_flags = NONE
 	/// Flags which determine which body parts are protected from heat. Use the HEAD, UPPER_TORSO, LOWER_TORSO, etc. flags. See setup.dm
 	/// These flags are listed in [code/__DEFINES/inventory/item_flags.dm].
@@ -57,9 +85,33 @@
 	/// These flags are listed in [code/__DEFINES/_flags/interaction_flags.dm]
 	var/interaction_flags_item = INTERACT_ITEM_ATTACK_SELF
 
-	//? Economy
-	/// economic category for items
-	var/economic_category_item = ECONOMIC_CATEGORY_ITEM_DEFAULT
+	//* Inventory *//
+	/// Currently equipped slot ID or hand index if held in hand
+	var/inv_slot_or_index
+	/// The inventory datum we're in.
+	///
+	/// * This also doubles as an 'is in inventory' check, as this will always be set if we are in inventory.
+	var/datum/inventory/inv_inside
+	/// currently equipped slot id
+	///
+	/// todo: `worn_slot_or_index`
+	var/worn_slot
+	/// current hand index, if held in hand
+	///
+	/// todo: `worn_slot_or_index`
+	var/held_index
+	/**
+	 * current item we fitted over
+	 * ! DANGER: While this is more or less bug-free for "won't lose the item when you unequip/won't get stuck", we
+	 * ! do not promise anything for functionality - this is a SNOWFLAKE SYSTEM.
+	 */
+	var/obj/item/worn_over
+	/**
+	 * current item we're fitted in.
+	 */
+	var/obj/item/worn_inside
+	/// suppress auto inventory hooks in forceMove
+	var/worn_hook_suppressed = FALSE
 
 	//* Environmentals *//
 	/// Set this variable to determine up to which temperature (IN KELVIN) the item protects against heat damage. Keep at null to disable protection. Only protects areas set by heat_protection flags.
@@ -72,7 +124,7 @@
 	/// Set this variable if the item protects its wearer against low pressures above a lower bound. Keep at null to disable protection. 0 represents protection against hard vacuum.
 	var/min_pressure_protection
 
-	//? Carry Weight
+	//* Carry Weight *//
 	/// encumberance.
 	/// calculated as max() of all encumbrance
 	/// result is calculated into slowdown value
@@ -90,17 +142,6 @@
 	/// Hard slowdown. Applied before carry weight.
 	/// This affects multiplicative movespeed.
 	var/slowdown = 0
-
-	//? Combat
-	/// Amount of damage we do on melee.
-	var/damage_force = 0
-	/// armor flag for melee attacks
-	var/damage_flag = ARMOR_MELEE
-	/// damage tier
-	var/damage_tier = MELEE_TIER_MEDIUM
-	/// damage_mode bitfield - see [code/__DEFINES/combat/damage.dm]
-	var/damage_mode = NONE
-	// todo: port over damtype
 
 	//* Storage *//
 	/// storage cost for volumetric storage
@@ -180,10 +221,20 @@
 		origin_tech = typelist(NAMEOF(src, origin_tech), origin_tech)
 	//Potential memory optimization: Making embed chance a getter if unset.
 	if(embed_chance == EMBED_CHANCE_UNSET)
-		if(sharp)
+		if(damage_mode & DAMAGE_MODE_SHARP)
 			embed_chance = max(5, round(damage_force/w_class))
 		else
 			embed_chance = max(5, round(damage_force/(w_class*3)))
+
+/obj/item/Destroy()
+	// run inventory hooks
+	if(worn_slot && !worn_hook_suppressed)
+		var/mob/M = worn_mob()
+		if(!ismob(M))
+			stack_trace("invalid current equipped slot [worn_slot] on an item not on a mob.")
+			return ..()
+		M.temporarily_remove_from_inventory(src, INV_OP_FORCE | INV_OP_DELETING)
+	return ..()
 
 /// Check if target is reasonable for us to operate on.
 /obj/item/proc/check_allowed_items(atom/target, not_inside, target_self)
@@ -193,35 +244,14 @@
 		return TRUE
 
 /obj/item/proc/update_twohanding()
-	update_held_icon()
+	update_worn_icon()
 
 /obj/item/proc/is_held_twohanded(mob/living/M)
-	var/check_hand
-	if(M.l_hand == src && !M.r_hand)
-		check_hand = BP_R_HAND //item in left hand, check right hand
-	else if(M.r_hand == src && !M.l_hand)
-		check_hand = BP_L_HAND //item in right hand, check left hand
-	else
-		return FALSE
-
-	//would check is_broken() and is_malfunctioning() here too but is_malfunctioning()
-	//is probabilistic so we can't do that and it would be unfair to just check one.
-	if(ishuman(M))
-		var/mob/living/carbon/human/H = M
-		var/obj/item/organ/external/hand = H.organs_by_name[check_hand]
-		if(istype(hand) && hand.is_usable())
-			return TRUE
+	for(var/i in M.get_usable_hand_indices())
+		if(!isnull(M.inventory?.held_items[i]))
+			continue
+		return TRUE
 	return FALSE
-
-
-///Checks if the item is being held by a mob, and if so, updates the held icons
-/obj/item/proc/update_held_icon()
-	if(isliving(src.loc))
-		var/mob/living/M = src.loc
-		if(M.l_hand == src)
-			M.update_inv_l_hand()
-		else if(M.r_hand == src)
-			M.update_inv_r_hand()
 
 /obj/item/legacy_ex_act(severity)
 	switch(severity)
@@ -423,14 +453,6 @@
 /obj/item/ui_action_click(datum/action/action, datum/event_args/actor/actor)
 	attack_self(usr)
 
-//RETURN VALUES
-//handle_shield should return a positive value to indicate that the attack is blocked and should be prevented.
-//If a negative value is returned, it should be treated as a special return value for bullet_act() and handled appropriately.
-//For non-projectile attacks this usually means the attack is blocked.
-//Otherwise should return 0 to indicate that the attack is not affected in any way.
-/obj/item/proc/handle_shield(mob/user, var/damage, atom/damage_source = null, mob/attacker = null, var/def_zone = null, var/attack_text = "the attack")
-	return 0
-
 /obj/item/proc/get_loc_turf()
 	var/atom/L = loc
 	while(L && !istype(L, /turf/))
@@ -526,7 +548,7 @@
 	if (!..())
 		return 0
 
-	if(istype(src, /obj/item/melee/energy))
+	if(istype(src, /obj/item/melee/transforming/energy))
 		return
 
 	//if we haven't made our blood_overlay already
@@ -759,27 +781,6 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 		var/datum/action/action = item_actions
 		action.revoke(user.inventory.actions)
 
-//* Armor *//
-
-/**
- * called to be checked for mob armor
- *
- * @returns copy of args with modified values
- */
-/obj/item/proc/checking_mob_armor(damage, tier, flag, mode, attack_type, datum/weapon, target_zone)
-	damage = fetch_armor().resultant_damage(damage, tier, flag)
-	return args.Copy()
-
-/**
- * called to be used as mob armor
- * side effects are allowed
- *
- * @returns copy of args with modified values
- */
-/obj/item/proc/running_mob_armor(damage, tier, flag, mode, attack_type, datum/weapon, target_zone)
-	damage = fetch_armor().resultant_damage(damage, tier, flag)
-	return args.Copy()
-
 //* Attack *//
 
 /**
@@ -801,7 +802,7 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
  * * strict - require us to be toggled to sharp mode if there's multiple modes of attacking.
  */
 /obj/item/proc/is_sharp(strict)
-	return sharp || (damage_mode & DAMAGE_MODE_SHARP)
+	return (damage_mode & DAMAGE_MODE_SHARP)
 
 /**
  * can be edged; even if not being used as such
@@ -810,7 +811,7 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
  * * strict - require us to be toggled to sharp mode if there's multiple modes of attacking.
  */
 /obj/item/proc/is_edge(strict)
-	return sharp || (damage_mode & DAMAGE_MODE_EDGE)
+	return (damage_mode & DAMAGE_MODE_EDGE)
 
 /**
  * can be piercing; even if not being used as such
@@ -830,7 +831,25 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 /obj/item/proc/is_shred(strict)
 	return (damage_mode & DAMAGE_MODE_SHRED)
 
-//* Interaction *//
+//* Combat *//
+
+/obj/item/proc/load_passive_parry()
+	if(!passive_parry)
+		return
+	passive_parry = resolve_passive_parry_data(passive_parry)
+	var/datum/component/passive_parry/loaded = GetComponent(/datum/component/passive_parry)
+	if(loaded)
+		loaded.parry_data = passive_parry
+
+/obj/item/proc/reload_passive_parry()
+	load_passive_parry()
+
+//* Flags *//
+
+/obj/item/proc/set_body_cover_flags()
+	inv_inside.invalidate_coverage_cache()
+
+//* Interactions *//
 
 /obj/item/attackby(obj/item/I, mob/user, list/params, clickchain_flags, damage_multiplier)
 	if(isturf(loc) && I.obj_storage?.allow_mass_gather && I.obj_storage.allow_mass_gather_via_click)
@@ -859,236 +878,7 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 /obj/item/proc/attacksound_override(atom/target, attack_type)
 	return
 
-//* Carry Weight *//
-
-/obj/item/proc/get_weight()
-	return weight + obj_storage?.get_containing_weight()
-
-/obj/item/proc/get_encumbrance()
-	return encumbrance
-
-/obj/item/proc/get_flat_encumbrance()
-	return flat_encumbrance
-
-/obj/item/proc/update_weight()
-	if(isnull(weight_registered))
-		return null
-	. = get_weight()
-	if(. == weight_registered)
-		return 0
-	. -= weight_registered
-	weight_registered += .
-	var/mob/living/wearer = worn_mob()
-	if(istype(wearer))
-		wearer.adjust_current_carry_weight(.)
-
-/obj/item/proc/update_encumbrance()
-	if(isnull(encumbrance_registered))
-		return null
-	. = get_encumbrance()
-	if(. == encumbrance_registered)
-		return 0
-	. -= encumbrance_registered
-	encumbrance_registered += .
-	var/mob/living/wearer = worn_mob()
-	if(istype(wearer))
-		wearer.adjust_current_carry_encumbrance(.)
-
-/obj/item/proc/update_flat_encumbrance()
-	var/mob/living/wearer = worn_mob()
-	if(istype(wearer))
-		wearer.recalculate_carry()
-
-/obj/item/proc/set_weight(amount)
-	if(amount == weight)
-		return
-	var/old = weight
-	weight = amount
-	update_weight()
-	propagate_weight(old, weight)
-
-/obj/item/proc/set_encumbrance(amount)
-	if(amount == encumbrance)
-		return
-	encumbrance = amount
-	update_encumbrance()
-
-/obj/item/proc/set_flat_encumbrance(amount)
-	if(amount == flat_encumbrance)
-		return
-	flat_encumbrance = amount
-	update_flat_encumbrance()
-
-/obj/item/proc/set_slowdown(amount)
-	if(amount == slowdown)
-		return
-	slowdown = amount
-	worn_mob()?.update_item_slowdown()
-
-/obj/item/proc/propagate_weight(old_weight, new_weight)
-	loc?.on_contents_weight_change(src, old_weight, new_weight)
-
-//* Interactions *//
-
-/obj/item/on_attack_hand(datum/event_args/actor/clickchain/e_args)
-	. = ..()
-	if(.)
-		return
-
-	if(e_args.performer.is_in_inventory(src))
-		if(e_args.performer.is_holding(src))
-			if(obj_storage?.allow_open_via_offhand_click && obj_storage.auto_handle_interacted_open(e_args))
-				return TRUE
-		else
-			if(obj_storage?.allow_open_via_equipped_click && obj_storage.auto_handle_interacted_open(e_args))
-				return TRUE
-	if(!e_args.performer.is_holding(src))
-		if(should_attempt_pickup(e_args) && attempt_pickup(e_args.performer))
-			return TRUE
-
-/obj/item/OnMouseDrop(atom/over, mob/user, proximity, params)
-	. = ..()
-	if(. & CLICKCHAIN_DO_NOT_PROPAGATE)
-		return
-	if(anchored)	// Don't.
-		return
-	if(user.restrained())
-		return	// don't.
-		// todo: restraint levels, e.g. handcuffs vs straightjacket
-	if(!user.is_in_inventory(src))
-		// not being held
-		if(!isturf(loc))	// yea nah
-			return ..()
-		if(user.Adjacent(src))
-			// check for equip
-			if(istype(over, /atom/movable/screen/inventory/hand))
-				var/atom/movable/screen/inventory/hand/H = over
-				user.put_in_hand(src, H.index)
-				return CLICKCHAIN_DO_NOT_PROPAGATE
-			else if(istype(over, /atom/movable/screen/inventory/slot))
-				var/atom/movable/screen/inventory/slot/S = over
-				user.equip_to_slot_if_possible(src, S.slot_id)
-				return CLICKCHAIN_DO_NOT_PROPAGATE
-		// check for slide
-		if(Adjacent(over) && user.CanSlideItem(src, over) && (istype(over, /obj/structure/table/rack) || istype(over, /obj/structure/table) || istype(over, /turf)))
-			var/turf/old = get_turf(src)
-			if(over == old)	// same tile don't bother
-				return CLICKCHAIN_DO_NOT_PROPAGATE
-			if(!Move(get_turf(over)))
-				return CLICKCHAIN_DO_NOT_PROPAGATE
-			//! todo: i want to strangle the mofo who did planes instead of invisibility, which makes it computationally infeasible to check ghost invisibility in get hearers in view
-			//! :) FUCK YOU.
-			//! this if check is all for you. FUCK YOU.
-			if(!isobserver(user))
-				user.visible_message(SPAN_NOTICE("[user] slides [src] over."), SPAN_NOTICE("You slide [src] over."), range = MESSAGE_RANGE_COMBAT_SUBTLE)
-			log_inventory("[user] slid [src] from [COORD(old)] to [COORD(over)]")
-			return CLICKCHAIN_DO_NOT_PROPAGATE
-	else
-		// being held, check for attempt unequip
-		if(istype(over, /atom/movable/screen/inventory/hand))
-			var/atom/movable/screen/inventory/hand/H = over
-			user.put_in_hand(src, H.index)
-			return CLICKCHAIN_DO_NOT_PROPAGATE
-		else if(istype(over, /atom/movable/screen/inventory/slot))
-			var/atom/movable/screen/inventory/slot/S = over
-			user.equip_to_slot_if_possible(src, S.slot_id)
-			return CLICKCHAIN_DO_NOT_PROPAGATE
-		else if(istype(over, /turf))
-			user.drop_item_to_ground(src)
-			return CLICKCHAIN_DO_NOT_PROPAGATE
-
-// funny!
-// todo: move to mob files
-/mob/proc/CanSlideItem(obj/item/I, turf/over)
-	return FALSE
-
-// todo: move to mob files
-/mob/living/CanSlideItem(obj/item/I, turf/over)
-	return Adjacent(I) && !incapacitated() && !stat && !restrained()
-
-// todo: move to mob files
-/mob/observer/dead/CanSlideItem(obj/item/I, turf/over)
-	return is_spooky
-
 //* Inventory *//
-
-/obj/item/proc/should_attempt_pickup(datum/event_args/actor/actor)
-	return TRUE
-
-/**
- * @params
- * * actor - (optional) person doing it
- * * silent - suppress feedback
- */
-/obj/item/proc/should_allow_pickup(datum/event_args/actor/actor, silent)
-	if(anchored)
-		if(!silent)
-			actor?.chat_feedback(
-				SPAN_NOTICE("\The [src] won't budge, you can't pick it up!"),
-				target = src,
-			)
-		return FALSE
-	return TRUE
-
-/obj/item/proc/attempt_pickup(mob/user)
-	. = TRUE
-	if (!user)
-		return
-
-	if(!should_allow_pickup(new /datum/event_args/actor(user)))
-		return FALSE
-
-	if(!CHECK_MOBILITY(user, MOBILITY_CAN_PICKUP))
-		user.action_feedback(SPAN_WARNING("You can't do that right now."), src)
-		return
-
-	if (hasorgans(user))
-		var/mob/living/carbon/human/H = user
-		var/obj/item/organ/external/temp = H.organs_by_name["r_hand"]
-		if (H.hand)
-			temp = H.organs_by_name["l_hand"]
-		if(temp && !temp.is_usable())
-			to_chat(user, "<span class='notice'>You try to move your [temp.name], but cannot!</span>")
-			return
-		if(!temp)
-			to_chat(user, "<span class='notice'>You try to use your hand, but realize it is no longer attached!</span>")
-			return
-
-	var/old_loc = src.loc
-	var/obj/item/actually_picked_up = src
-	var/has_to_drop_to_ground_on_fail = FALSE
-
-	if(isturf(old_loc))
-		// if picking up from floor
-		throwing?.terminate()
-	else if(item_flags & ITEM_IN_STORAGE)
-		// trying to take out of backpack
-		var/datum/object_system/storage/resolved
-		if(istype(loc, /atom/movable/storage_indirection))
-			var/atom/movable/storage_indirection/holder = loc
-			resolved = holder.parent
-		else if(isobj(loc))
-			var/obj/obj_loc = loc
-			resolved = obj_loc.obj_storage
-		if(isnull(resolved))
-			item_flags &= ~ITEM_IN_STORAGE
-			CRASH("in storage at [loc] ([REF(loc)]) ([loc?.type || "NULL"]) but cannot resolve storage system")
-		actually_picked_up = resolved.try_remove(src, user, new /datum/event_args/actor(user))
-		// they're in user, but not equipped now. this is so it doesn't touch the ground first.
-		has_to_drop_to_ground_on_fail = TRUE
-
-	if(isnull(actually_picked_up))
-		to_chat(user, SPAN_WARNING("[src] somehow slips through your grasp. What just happened?"))
-		return
-	if(!user.put_in_hands(actually_picked_up))
-		if(has_to_drop_to_ground_on_fail)
-			actually_picked_up.forceMove(user.drop_location())
-		return
-	// success
-	if(isturf(old_loc))
-		var/obj/effect/temporary_effect/item_pickup_ghost/ghost = new(old_loc)
-		ghost.assumeform(actually_picked_up)
-		ghost.animate_towards(user)
 
 /**
  * Called when someone clisk us on a storage, before the storage handler's
@@ -1106,7 +896,7 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 //* Materials *//
 
 /obj/item/material_trait_brittle_shatter()
-	var/datum/material/material = get_primary_material()
+	var/datum/prototype/material/material = get_primary_material()
 	var/turf/T = get_turf(src)
 	T.visible_message("<span class='danger'>\The [src] [material.destruction_desc]!</span>")
 	if(istype(loc, /mob/living))
@@ -1172,8 +962,18 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 
 //* VV *//
 
+/obj/item/vv_get_var(var_name, resolve)
+	switch(var_name)
+		if(NAMEOF(src, passive_parry))
+			if(resolve)
+				load_passive_parry()
+	return ..()
+
 /obj/item/vv_edit_var(var_name, var_value, mass_edit, raw_edit)
 	switch(var_name)
+		if(NAMEOF(src, passive_parry))
+			. = ..()
+			reload_passive_parry()
 		if(NAMEOF(src, item_flags))
 			var/requires_update = (item_flags & (ITEM_ENCUMBERS_WHILE_HELD | ITEM_ENCUMBERS_ONLY_HELD)) != (var_value & (ITEM_ENCUMBERS_WHILE_HELD | ITEM_ENCUMBERS_ONLY_HELD))
 			. = ..()
@@ -1193,7 +993,7 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 					L.update_carry_slowdown()
 		if(NAMEOF(src, slowdown))
 			. = ..()
-			if(. )
+			if(.)
 				var/mob/living/L = worn_mob()
 				// check, as worn_mob() returns /mob, not /living
 				if(istype(L))

@@ -47,7 +47,7 @@
 	return say(message)
 
 /mob/living/proc/IIsAlly(mob/living/L)
-	return src.faction == L.faction
+	return shares_iff_faction(L)
 
 /mob/living/simple_mob/IIsAlly(mob/living/L)
 	. = ..()

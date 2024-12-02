@@ -1,4 +1,4 @@
-/datum/material/platinum
+/datum/prototype/material/platinum
 	name = "platinum"
 	id = MAT_PLATINUM
 	stack_type = /obj/item/stack/material/platinum

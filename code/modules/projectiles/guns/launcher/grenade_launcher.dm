@@ -65,7 +65,7 @@
 	else
 		to_chat(user, "<span class='warning'>[src] is empty.</span>")
 
-/obj/item/gun/launcher/grenade/attack_self(mob/user)
+/obj/item/gun/launcher/grenade/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -77,7 +77,7 @@
 	else
 		..()
 
-/obj/item/gun/launcher/grenade/attack_hand(mob/user, list/params)
+/obj/item/gun/launcher/grenade/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(user.get_inactive_held_item() == src)
 		unload(user)
 	else
@@ -104,7 +104,7 @@
 	damage_force = 5
 	max_grenades = 0
 
-/obj/item/gun/launcher/grenade/underslung/attack_self(mob/user)
+/obj/item/gun/launcher/grenade/underslung/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return

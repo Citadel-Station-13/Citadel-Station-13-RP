@@ -97,7 +97,7 @@
 		/obj/item/clothing/glasses/sunglasses/sechud,
 		/obj/item/barrier_tape_roll/police,
 		/obj/item/shield/riot,
-		/obj/item/shield/riot/tele,
+		/obj/item/shield/transforming/telescopic,
 		/obj/item/storage/box/holobadge/hos,
 		/obj/item/storage/box/firingpins,
 		/obj/item/clothing/accessory/badge/holo/hos,
@@ -173,7 +173,7 @@
 		/obj/item/radio/headset/heads/hos/alt,
 		/obj/item/clothing/accessory/armor/helmetcamera/security,
 		/obj/item/clothing/accessory/armor/helmetcamera/security/body,
-		/obj/item/shield/riot/tele,
+		/obj/item/shield/transforming/telescopic,
 		/obj/item/storage/box/holobadge/hos,
 		/obj/item/clothing/accessory/badge/holo/hos,
 		/obj/item/reagent_containers/spray/pepper,
@@ -327,7 +327,7 @@
 	if(prob(50))
 		starts_with += /obj/item/storage/backpack/dufflebag/sec
 	if(prob(30))
-		starts_with += /obj/item/contraband/poster/nanotrasen
+		starts_with += /obj/item/poster/nanotrasen
 	return ..()
 
 /obj/structure/closet/secure_closet/security/cargo/Initialize(mapload)
@@ -407,11 +407,11 @@ GLOBAL_LIST_BOILERPLATE(all_brig_closets, /obj/structure/closet/secure_closet/br
 	anchored = 1
 
 	starts_with = list(
-		/obj/item/contraband/poster/nanotrasen,
-		/obj/item/contraband/poster/nanotrasen,
-		/obj/item/contraband/poster/nanotrasen,
-		/obj/item/contraband/poster/nanotrasen,
-		/obj/item/contraband/poster/nanotrasen)
+		/obj/item/poster/nanotrasen,
+		/obj/item/poster/nanotrasen,
+		/obj/item/poster/nanotrasen,
+		/obj/item/poster/nanotrasen,
+		/obj/item/poster/nanotrasen)
 
 /obj/structure/closet/secure_closet/courtroom
 	name = "courtroom locker"
@@ -500,7 +500,7 @@ GLOBAL_LIST_BOILERPLATE(all_brig_closets, /obj/structure/closet/secure_closet/br
 		/obj/item/clothing/glasses/sunglasses/sechud,
 		/obj/item/barrier_tape_roll/police,
 		/obj/item/shield/riot,
-		/obj/item/shield/riot/tele,
+		/obj/item/shield/transforming/telescopic,
 		/obj/item/storage/box/holobadge/hos,
 		/obj/item/clothing/accessory/badge/holo/hos,
 		/obj/item/reagent_containers/spray/pepper,

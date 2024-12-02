@@ -604,3 +604,13 @@
 	corpsesuit = /obj/item/clothing/suit/pirate
 	corpsehelmet = /obj/item/clothing/head/pirate
 */
+
+
+//////////////////////////
+//		Other Bodies
+//////////////////////////
+
+/obj/spawner/corpse/skeleton
+	name = "skeleton"
+	corpseid = 0
+	species = /datum/species/skeleton

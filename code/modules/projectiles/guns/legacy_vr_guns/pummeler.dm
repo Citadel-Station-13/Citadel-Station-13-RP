@@ -29,20 +29,21 @@
 /obj/projectile/pummel
 	name = "sonic blast"
 	icon_state = "sound"
-	damage = 5
-	damage_type = BRUTE
+	damage_force = 5
+	damage_type = DAMAGE_TYPE_BRUTE
 	damage_flag = ARMOR_MELEE
 	embed_chance = 0
 	vacuum_traversal = 0
 	range = WORLD_ICON_SIZE * 6 //Scary name, but just deletes the projectile after this range
 
-/obj/projectile/pummel/on_hit(var/atom/movable/target, var/blocked = 0)
+/obj/projectile/pummel/on_impact(atom/target, impact_flags, def_zone, efficiency)
+	. = ..()
+	if(. & PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT)
+		return
 	if(isliving(target))
 		var/mob/living/L = target
 		var/throwdir = get_dir(firer,L)
-		if(prob(40) && !blocked)
+		if(prob(40) && (efficiency >= 0.9))
 			L.afflict_stun(20 * 1)
 			L.Confuse(1)
 		L.throw_at_old(get_edge_target_turf(L, throwdir), rand(3,6), 10)
-
-		return 1

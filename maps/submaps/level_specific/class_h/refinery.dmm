@@ -1,27 +1,27 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "a" = (
 /turf/simulated/floor/tiled/asteroid_steel,
-/area/tether_away/beach/desert/poi/refinery)
+/area/sector/miaphus/beach/desert/poi/refinery)
 "b" = (
 /obj/structure/fence{
 	dir = 8
 	},
 /turf/simulated/floor/outdoors/beach/sand/lowdesert,
-/area/tether_away/beach/desert/poi/refinery)
+/area/sector/miaphus/beach/desert/poi/refinery)
 "d" = (
 /obj/structure/sink/oil_well,
 /turf/simulated/floor/outdoors/beach/sand/lowdesert,
-/area/tether_away/beach/desert/poi/refinery)
+/area/sector/miaphus/beach/desert/poi/refinery)
 "e" = (
 /turf/simulated/wall,
-/area/tether_away/beach/desert/poi/refinery)
+/area/sector/miaphus/beach/desert/poi/refinery)
 "f" = (
 /obj/structure/reagent_dispensers/fueltank/barrel,
 /obj/machinery/light/small{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/asteroid_steel,
-/area/tether_away/beach/desert/poi/refinery)
+/area/sector/miaphus/beach/desert/poi/refinery)
 "g" = (
 /obj/machinery/conveyor,
 /obj/structure/reagent_dispensers/fueltank/barrel,
@@ -29,13 +29,13 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/asteroid_steel,
-/area/tether_away/beach/desert/poi/refinery)
+/area/sector/miaphus/beach/desert/poi/refinery)
 "h" = (
 /obj/structure/fence{
 	dir = 1
 	},
 /turf/simulated/floor/outdoors/beach/sand/lowdesert,
-/area/tether_away/beach/desert/poi/refinery)
+/area/sector/miaphus/beach/desert/poi/refinery)
 "i" = (
 /obj/structure/fence/door/locked{
 	dir = 4
@@ -43,40 +43,40 @@
 /turf/simulated/floor/tiled/asteroid_steel{
 	outdoors = 1
 	},
-/area/tether_away/beach/desert/poi/refinery)
+/area/sector/miaphus/beach/desert/poi/refinery)
 "j" = (
 /turf/simulated/floor/tiled/asteroid_steel{
 	outdoors = 1
 	},
-/area/tether_away/beach/desert/poi/refinery)
+/area/sector/miaphus/beach/desert/poi/refinery)
 "k" = (
 /obj/machinery/conveyor,
 /obj/structure/reagent_dispensers/fueltank/barrel,
 /turf/simulated/floor/tiled/asteroid_steel,
-/area/tether_away/beach/desert/poi/refinery)
+/area/sector/miaphus/beach/desert/poi/refinery)
 "m" = (
 /obj/machinery/conveyor{
 	dir = 4
 	},
 /obj/structure/reagent_dispensers/fueltank/barrel,
 /turf/simulated/floor/tiled/asteroid_steel,
-/area/tether_away/beach/desert/poi/refinery)
+/area/sector/miaphus/beach/desert/poi/refinery)
 "n" = (
 /obj/machinery/conveyor{
 	dir = 9
 	},
 /obj/structure/reagent_dispensers/fueltank/barrel,
 /turf/simulated/floor/tiled/asteroid_steel,
-/area/tether_away/beach/desert/poi/refinery)
+/area/sector/miaphus/beach/desert/poi/refinery)
 "q" = (
 /obj/structure/fence/door,
 /turf/simulated/floor/tiled/asteroid_steel{
 	outdoors = 1
 	},
-/area/tether_away/beach/desert/poi/refinery)
+/area/sector/miaphus/beach/desert/poi/refinery)
 "r" = (
 /turf/simulated/floor/outdoors/beach/sand/lowdesert,
-/area/tether_away/beach/desert/poi/refinery)
+/area/sector/miaphus/beach/desert/poi/refinery)
 "u" = (
 /obj/item/storage/box/pillbottles,
 /obj/item/storage/box/syringes,
@@ -89,21 +89,21 @@
 	},
 /obj/structure/closet/wardrobe/chemistry_white,
 /turf/simulated/floor/tiled/asteroid_steel,
-/area/tether_away/beach/desert/poi/refinery)
+/area/sector/miaphus/beach/desert/poi/refinery)
 "x" = (
 /obj/machinery/conveyor,
 /turf/simulated/floor/tiled/asteroid_steel,
-/area/tether_away/beach/desert/poi/refinery)
+/area/sector/miaphus/beach/desert/poi/refinery)
 "y" = (
 /obj/structure/window/reinforced{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/asteroid_steel,
-/area/tether_away/beach/desert/poi/refinery)
+/area/sector/miaphus/beach/desert/poi/refinery)
 "z" = (
 /obj/machinery/light/flamp/noshade,
 /turf/simulated/floor/outdoors/beach/sand/lowdesert,
-/area/tether_away/beach/desert/poi/refinery)
+/area/sector/miaphus/beach/desert/poi/refinery)
 "A" = (
 /turf/simulated/floor/outdoors/beach/sand/lowdesert,
 /area/template_noop)
@@ -113,13 +113,13 @@
 	},
 /obj/effect/debris/cleanable/liquid_fuel,
 /turf/simulated/floor/tiled/asteroid_steel,
-/area/tether_away/beach/desert/poi/refinery)
+/area/sector/miaphus/beach/desert/poi/refinery)
 "C" = (
 /obj/structure/fence/corner{
 	dir = 9
 	},
 /turf/simulated/floor/outdoors/beach/sand/lowdesert,
-/area/tether_away/beach/desert/poi/refinery)
+/area/sector/miaphus/beach/desert/poi/refinery)
 "E" = (
 /obj/machinery/chemical_analyzer,
 /obj/structure/window/reinforced{
@@ -129,13 +129,13 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/asteroid_steel,
-/area/tether_away/beach/desert/poi/refinery)
+/area/sector/miaphus/beach/desert/poi/refinery)
 "F" = (
 /obj/structure/fence/corner{
 	dir = 10
 	},
 /turf/simulated/floor/outdoors/beach/sand/lowdesert,
-/area/tether_away/beach/desert/poi/refinery)
+/area/sector/miaphus/beach/desert/poi/refinery)
 "I" = (
 /turf/template_noop,
 /area/template_noop)
@@ -148,30 +148,30 @@
 /obj/item/reagent_containers/portable_fuelcan,
 /obj/item/reagent_containers/portable_fuelcan,
 /turf/simulated/floor/tiled/asteroid_steel,
-/area/tether_away/beach/desert/poi/refinery)
+/area/sector/miaphus/beach/desert/poi/refinery)
 "S" = (
 /obj/machinery/light/small{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/asteroid_steel,
-/area/tether_away/beach/desert/poi/refinery)
+/area/sector/miaphus/beach/desert/poi/refinery)
 "X" = (
 /obj/machinery/conveyor{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/asteroid_steel,
-/area/tether_away/beach/desert/poi/refinery)
+/area/sector/miaphus/beach/desert/poi/refinery)
 "Y" = (
 /obj/machinery/chem_master,
 /obj/structure/window/reinforced{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/asteroid_steel,
-/area/tether_away/beach/desert/poi/refinery)
+/area/sector/miaphus/beach/desert/poi/refinery)
 "Z" = (
 /obj/structure/reagent_dispensers/fueltank/barrel,
 /turf/simulated/floor/tiled/asteroid_steel,
-/area/tether_away/beach/desert/poi/refinery)
+/area/sector/miaphus/beach/desert/poi/refinery)
 
 (1,1,1) = {"
 I

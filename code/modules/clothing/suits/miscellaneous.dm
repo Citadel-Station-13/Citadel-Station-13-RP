@@ -305,7 +305,7 @@
 /obj/item/clothing/suit/straight_jacket/equipped(var/mob/living/user,var/slot)
 	. = ..()
 	if(slot == SLOT_ID_SUIT)
-		user.drop_all_held_items()
+		user.drop_held_items()
 		user.drop_item_to_ground(user.item_by_slot_id(SLOT_ID_HANDCUFFED), INV_OP_FORCE)
 
 /obj/item/clothing/suit/ianshirt
@@ -482,6 +482,15 @@
 	icon_state = "jamrock_blazer"
 	body_cover_flags = UPPER_TORSO|ARMS|LOWER_TORSO
 	inv_hide_flags = HIDETIE|HIDEHOLSTER
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+
+/obj/item/clothing/suit/storage/cropped_turtleneck
+	name = "turtleneck cropped"
+	desc = "A tastefully cropped turtleneck with added, entirely cosmetic shoulder straps and puffy sleeves. The contradictory elements bring out the wearer's personality, and navel."
+	icon = 'icons/clothing/suit/misc/turtle_crop.dmi'
+	icon_state = "turtle_crop"
+	body_cover_flags = UPPER_TORSO|ARMS|LOWER_TORSO
+	inv_hide_flags = HIDETIE
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 
 /obj/item/clothing/suit/storage/khaki
@@ -1125,11 +1134,11 @@
 
 	if(rolled == 0)
 		rolled = 1
-		body_cover_flags &= ~(ARMS)
+		set_body_cover_flags(body_cover_flags & ~(ARMS))
 		to_chat(usr, "<span class='notice'>You roll up the sleeves of your [src].</span>")
 	else
 		rolled = 0
-		body_cover_flags = initial(body_cover_flags)
+		set_body_cover_flags(initial(body_cover_flags))
 		to_chat(usr, "<span class='notice'>You roll down the sleeves of your [src].</span>")
 	update_icon()
 

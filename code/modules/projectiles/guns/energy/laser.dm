@@ -87,9 +87,9 @@
 	unlikely.\
 	<br><br>\
 	An interesting note about this weapon, when compared to contemporary energy weapons, is \
-	that this gun appears to be inferior to modern laser weapons. The beam fired has less \
-	of an ability to harm, and the power consumption appears to be higher than average for \
-	a human-made energy side-arm. One possible explaination is that the creators of this \
+	that this gun appears to utilize some sort of exotic particle beam instead of being a laser \
+	or plasma. The beam fired is decently capable of causing damage, and the power consumption is close \
+	to that of a human-made energy side-arm. One possible explaination is that the creators of this \
 	weapon, in their later years, had less of a need to optimize their capability for war, \
 	and instead focused on other endeavors. Another explaination is that vast age of the weapon \
 	may have caused it to degrade, yet still remain functional at a reduced capability."
@@ -102,7 +102,7 @@
 	icon_state = "alienpistol"
 	item_state = "alienpistol"
 	fire_delay = 10 // Handguns should be inferior to two-handed weapons. Even alien ones I suppose.
-	charge_cost = 480 // Five shots.
+	charge_cost = 240 // Ten shots.
 
 	projectile_type = /obj/projectile/beam/cyan
 	cell_type = /obj/item/cell/device/weapon/recharge/alien // Self charges.

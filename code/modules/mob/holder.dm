@@ -72,7 +72,8 @@
 	// appearance clone their ass
 	var/mutable_appearance/MA = new
 	MA.appearance = M
-	MA.plane = plane
+	MA.plane = FLOAT_PLANE
+	MA.layer = FLOAT_LAYER
 	MA.dir = SOUTH
 	add_overlay(MA)
 	name = M.name

@@ -18,9 +18,9 @@
 
 /obj/item/mmi/digital/robot/Initialize(mapload)
 	. = ..()
-	src.brainmob.name = "[pick(list("ADA","DOS","GNU","MAC","WIN"))]-[rand(1000, 9999)]"
-	src.brainmob.real_name = src.brainmob.name
-	src.name = "robotic intelligence circuit ([src.brainmob.name])"
+	src.brainmob?.name = "[pick(list("ADA","DOS","GNU","MAC","WIN"))]-[rand(1000, 9999)]"
+	src.brainmob?.real_name = src.brainmob.name
+	src.name = "robotic intelligence circuit ([src.brainmob?.name])"
 
 /obj/item/mmi/digital/robot/transfer_identity(var/mob/living/carbon/H)
 	..()
@@ -29,7 +29,7 @@
 	to_chat(brainmob, "<span class='notify'>You feel slightly disoriented. That's normal when you're little more than a complex circuit.</span>")
 	return
 
-/obj/item/mmi/digital/robot/attack_self(mob/user)
+/obj/item/mmi/digital/robot/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return

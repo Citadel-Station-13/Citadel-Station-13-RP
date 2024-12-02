@@ -41,7 +41,6 @@
 
 
 /turf/simulated/wall/proc/update_air()
-	update_thermal(src)
 	queue_zone_update()
 	// old code left below because it's by time we had a hall of shame
 	// "turf in loc" on a turf
@@ -54,13 +53,6 @@
 		update_thermal(turf)
 		SSair.mark_for_update(turf)
 */
-
-/turf/simulated/wall/proc/update_thermal(var/turf/simulated/source)
-	if(istype(source))
-		if(density && opacity)
-			source.thermal_conductivity = WALL_HEAT_TRANSFER_COEFFICIENT
-		else
-			source.thermal_conductivity = initial(source.thermal_conductivity)
 
 /turf/simulated/wall/proc/try_touch(var/mob/user, var/rotting)
 
@@ -82,7 +74,10 @@
 
 	return 0
 
-/turf/simulated/wall/attack_hand(mob/user, list/params)
+/turf/simulated/wall/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
+	. = ..()
+	if(.)
+		return
 	add_fingerprint(user)
 	user.setClickCooldown(user.get_attack_speed())
 	var/rotting = (locate(/obj/effect/overlay/wallrot) in src)
@@ -170,8 +165,8 @@
 				thermitemelt(user)
 				return
 
-		else if( istype(I, /obj/item/melee/energy/blade) )
-			var/obj/item/melee/energy/blade/EB = I
+		else if( istype(I, /obj/item/melee/ninja_energy_blade) )
+			var/obj/item/melee/ninja_energy_blade/EB = I
 
 			EB.spark_system.start()
 			to_chat(user, "<span class='notice'>You slash \the [src] with \the [EB]; the thermite ignites!</span>")
@@ -222,7 +217,7 @@
 			dismantle_verb = "cutting"
 			dismantle_sound = I.tool_sound
 		//	cut_delay *= 0.7 // Tools themselves now can shorten the time it takes.
-		else if(istype(I,/obj/item/melee/energy/blade))
+		else if(istype(I,/obj/item/melee/ninja_energy_blade))
 			dismantle_sound = /datum/soundbyte/grouped/sparks
 			dismantle_verb = "slicing"
 			cut_delay *= 0.5

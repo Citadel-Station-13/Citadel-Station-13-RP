@@ -7,7 +7,7 @@
 	item_state = "battlerifle_i"
 	item_icons = null
 	w_class = WEIGHT_CLASS_BULKY
-	recoil = 2 // The battlerifle was known for its nasty recoil.
+	recoil = 1.5 // The battlerifle was known for its nasty recoil.
 	max_shells = 36
 	caliber = /datum/ammo_caliber/a9_5mm
 	origin_tech = list(TECH_COMBAT = 4, TECH_MATERIAL = 2)
@@ -20,7 +20,7 @@
 
 /obj/item/gun/ballistic/automatic/battlerifle/update_icon()
 	. = ..()
-	update_held_icon()
+	update_worn_icon()
 
 /obj/item/gun/ballistic/automatic/battlerifle/update_icon_state()
 	. = ..()
@@ -61,7 +61,7 @@
 
 /obj/item/gun/ballistic/automatic/pdw/update_icon()
 	. = ..()
-	update_held_icon()
+	update_worn_icon()
 
 /obj/item/gun/ballistic/automatic/pdw/update_icon_state()
 	. = ..()
@@ -102,7 +102,7 @@
 
 /obj/item/gun/ballistic/automatic/stg/update_icon()
 	. = ..()
-	update_held_icon()
+	update_worn_icon()
 
 /obj/item/gun/ballistic/automatic/stg/update_icon_state()
 	. = ..()

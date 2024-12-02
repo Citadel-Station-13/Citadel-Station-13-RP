@@ -13,17 +13,18 @@
 		SPRITE_ACCESSORY_SLOT_TAIL = /datum/sprite_accessory/tail/bodyset/shadekin,
 	)
 
-	//TODO: Something that's not wiki copypaste
 	blurb = {"
-	Very little is known about these creatures. They appear to be largely mammalian in appearance.
-	Seemingly very rare to encounter, there have been widespread myths of these creatures the galaxy over,
-	but next to no verifiable evidence to their existence. However, they have recently been more verifiably
-	documented in the Virgo system, following a mining bombardment of Virgo 3. The crew of NSB Adephagia have
-	taken to calling these creatures 'Shadekin', and the name has generally stuck and spread.
+	Shadekin are rather unusual creatures, coming from the Azuel system. Their appearance is largely
+	mammalian, even though they aren't mammals. The official, formal name for the species is Lumelea,
+	but thanks to a period of difficulties when the Lumelea first met other species, the nickname
+	Shadekin was made popular by the galaxy's various species, and it stuck to this day as an
+	informal name. After a few hundred years of living side by side, it's by now widely known that
+	Shadekin culture revolves around tribes with various levels of technology, with some tribes
+	integrating into other cultures and cities, as well as some Shadekin leaving their tribe to
+	travel alone. Nanotrasen is one of the biggest employers of Shadekin.
 	"}
 	wikilink = "https://citadel-station.net/wikiRP/index.php?title=Race:_Shadekin"
 	catalogue_data = list(/datum/category_item/catalogue/fauna/shadekin)
-	//rarity_value = 15 //INTERDIMENSIONAL FLUFFERS
 
 	max_additional_languages = 3
 	intrinsic_languages = LANGUAGE_ID_SHADEKIN_HIVEMIND
@@ -39,7 +40,7 @@
 	siemens_coefficient = 1
 	vision_innate = /datum/vision/baseline/species_tier_3/for_snowflake_ocs
 	vision_organ = O_EYES
-	
+
 	slowdown = -0.5
 	item_slowdown_mod = 0.5
 
@@ -120,7 +121,6 @@
 
 	vision_innate = /datum/vision/baseline/species_tier_3/for_snowflake_ocs
 
-	//SHADEKIN-UNIQUE STUFF GOES HERE
 	var/list/shadekin_abilities = list(
 		/datum/power/shadekin/phase_shift,
 		/datum/power/shadekin/regenerate_other,

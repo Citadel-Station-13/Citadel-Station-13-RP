@@ -5,6 +5,8 @@
 
 /proc/_animate(atom/A, set_vars, time = 10, loop = 1, easing = LINEAR_EASING, flags = null)
 	var/mutable_appearance/MA = new()
+	// mutable appearance is not FLOAT_PLANE by default
+	MA.plane = FLOAT_PLANE
 	for(var/v in set_vars)
 		MA.vars[v] = set_vars[v]
 	animate(A, appearance = MA, time, loop, easing, flags)
