@@ -32,7 +32,7 @@
 		add_attack_logs(
 			proj.firer,
 			src,
-			"shot with [src] ([type]) (missed)",
+			"shot with [proj] ([type]) (missed)",
 		)
 		impact_flags |= PROJECTILE_IMPACT_PASSTHROUGH
 		return ..()
@@ -47,13 +47,13 @@
 		add_attack_logs(
 			proj.firer,
 			src,
-			"shot with [src] ([type]) (aborted)",
+			"shot with [proj] ([type]) (aborted)",
 		)
 		return
 	add_attack_logs(
 		proj.firer,
 		src,
-		"shot with [src] ([type])[(impact_flags & PROJECTILE_IMPACT_BLOCKED)? " (blocked)" : ""]",
+		"shot with [proj] ([type])[(impact_flags & PROJECTILE_IMPACT_BLOCKED)? " (blocked)" : ""]",
 	)
 	// emit feedback
 	if(!(impact_flags & PROJECTILE_IMPACT_BLOCKED))
