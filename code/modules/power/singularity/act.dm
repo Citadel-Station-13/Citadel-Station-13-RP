@@ -106,7 +106,7 @@
 			if(broken || burnt || flooring.flooring_flags & TURF_IS_FRAGILE)
 				leave_tile = FALSE
 			playsound(src, 'sound/items/crowbar.ogg', 50, 1)
-			make_plating(leave_tile)
+			dismantle_flooring(leave_tile)
 
 /turf/simulated/wall/singularity_pull(S, current_size)
 

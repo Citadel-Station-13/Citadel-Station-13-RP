@@ -265,7 +265,7 @@ var/last_chew = 0
 	if(!H.can_equip(src, SLOT_ID_LEGCUFFED, user = user))
 		return FALSE
 
-	if(istype(H.shoes,/obj/item/clothing/shoes/magboots/hardsuit) && !elastic) // Can't cuff someone who's in a deployed hardsuit.
+	if(istype(H.inventory.get_slot(/datum/inventory_slot/inventory/shoes), /obj/item/clothing/shoes/magboots/hardsuit) && !elastic) // Can't cuff someone who's in a deployed hardsuit.
 		to_chat(user, "<span class='danger'>\The [src] won't fit around \the [H.shoes]!</span>")
 		return 0
 

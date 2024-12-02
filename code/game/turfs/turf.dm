@@ -614,6 +614,12 @@
 
 //* Multiz *//
 
+/**
+ * Update multiz linkage. This is done when a zlevel rebuilds its multiz state.
+ *
+ * todo: maybe include params for 'z_offset_up', 'z_offset_down'? manuallly fetching on
+ *       every turf is slow as balls.
+ */
 /turf/proc/update_multiz()
 	return
 
