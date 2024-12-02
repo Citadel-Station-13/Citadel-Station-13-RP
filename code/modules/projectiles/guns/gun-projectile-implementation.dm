@@ -60,14 +60,19 @@
 	launching.shot_from = src.name
 	// this shouldn't be a hard-set thing and should be attachment set
 	launching.silenced = src.silenced
+	launching.p_x = cycle.original_tile_pixel_x
+	launching.p_y = cycle.original_tile_pixel_y
 	//! END
+
+	launching.original_target = cycle.original_target
+	launching.firer = cycle.firing_atom
+	launching.def_zone = cycle.original_target_zone
 
 	var/effective_angle = cycle.original_angle + cycle.base_angle_adjust + cycle.next_angle_adjust
 	var/effective_dispersion = cycle.base_dispersion_adjust + cycle.next_dispersion_adjust
 
 	effective_angle += rand(-effective_dispersion, effective_dispersion)
 
-	#warn shoudl dispersion be handled here or in projectile
 	#warn launching's launch_projectile_common
 
 	launching.fire(effective_angle, get_turf(cycle.original_target) == get_turf(src) ? cycle.original_target : null)

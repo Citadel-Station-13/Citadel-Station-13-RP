@@ -18,6 +18,16 @@
 	var/atom/original_target
 	/// original angle
 	var/original_angle
+	/// original target pixel x of tile
+	//  todo: re-evaluate if this is needed. this is usually for detecting exact impact spots, but is
+	//        kinda janky for what it is, though there might not be a better option.
+	var/original_tile_pixel_x
+	/// original target pixel y of tile
+	//  todo: re-evaluate if this is needed. this is usually for detecting exact impact spots, but is
+	//        kinda janky for what it is, though there might not be a better option.
+	var/original_tile_pixel_y
+	/// original target zone
+	var/original_target_zone
 
 	//* firemode *//
 	/// firemode: the original /datum/firemode we're firing on

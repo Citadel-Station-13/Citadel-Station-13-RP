@@ -26,6 +26,16 @@
 
 	/// optional: click params
 	var/list/click_params
+	/// did we unpack click params?
+	var/tmp/click_params_unpacked = FALSE
+	/// pixel x on tile clicked
+	var/tmp/click_params_tile_px
+	/// pixel y on tile clicked
+	var/tmp/click_params_tile_py
+	/// tile x from bottom left of screen, starting at 1
+	var/tmp/click_params_screen_tx
+	/// tile y from bottom left of screen, starting at 1
+	var/tmp/click_params_screen_ty
 
 	//* Target Data *//
 
@@ -69,6 +79,8 @@
  * * This defaults to the clickchain's performer.
  * * This means that this proc should correctly offset the effective angle if the entity is not the center of the
  *   initiator's screen!
+ * * Calling this with no arguments or with the clickchain's performer will also resolve the pixel x/y
+ *   of the click
  *
  * @return degrees clockwise from north, or null if failed to resolve
  */
@@ -80,13 +92,10 @@
 		return
 	if(!click_params)
 		return
-	// Screen loc is specified as "tile_x:pixel_x,tile_y:pixel_y"
-	var/list/x_y_split = splittext(click_params["screen-loc"], ",")
-	var/list/x_split = splittext(x_y_split[1], ":")
-	var/list/y_split = splittext(x_y_split[2], ":")
+	unpack_click_params()
 	// target x/y from bottom left of screen
-	var/target_x = text2num(x_split[1]) * WORLD_ICON_SIZE + text2num(x_split[2]) - WORLD_ICON_SIZE
-	var/target_y = text2num(y_split[1]) * WORLD_ICON_SIZE + text2num(y_split[2]) - WORLD_ICON_SIZE
+	var/target_x = click_params_screen_tx * WORLD_ICON_SIZE + click_params_tile_px - WORLD_ICON_SIZE
+	var/target_y = click_params_screen_ty * WORLD_ICON_SIZE + click_params_tile_py - WORLD_ICON_SIZE
 	// origin x/y of the performing mob on the screen
 	// todo: this doesn't take into account if the performer isn't the eye of the initiator's client!
 	//       that'll need to be added for remote control to work.
@@ -96,3 +105,22 @@
 	. = arctan(target_y - origin_y, target_x - origin_x)
 	if(from_entity == performer)
 		resolved_angle_from_performer = .
+
+/datum/event_args/actor/clickchain/proc/unpack_click_params()
+	if(click_params_unpacked)
+		return
+	click_params_unpacked = TRUE
+	if(!click_params)
+		return
+	// Handle `screen-loc`, specified as "tile_x:pixel_x,tile_y:pixel_y"
+	var/list/x_y_split = splittext(click_params["screen-loc"], ",")
+	if(length(x_y_split))
+		var/list/x_split = splittext(x_y_split[1], ":")
+		var/list/y_split = splittext(x_y_split[2], ":")
+		click_params_screen_tx = text2num(x_split[1])
+		click_params_screen_ty = text2num(y_split[1])
+		click_params_tile_px = text2num(x_split[2])
+		click_params_tile_py = text2num(y_split[2])
+
+/datum/event_args/actor/clickchain/proc/legacy_get_target_zone()
+	#warn impl

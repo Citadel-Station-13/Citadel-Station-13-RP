@@ -585,7 +585,6 @@
 	if(recoil)
 		spawn()
 			shake_camera(user, recoil+1, recoil)
-	update_icon()
 
 /obj/item/gun/proc/play_fire_sound(var/mob/user, var/obj/projectile/P)
 	var/shot_sound = fire_sound

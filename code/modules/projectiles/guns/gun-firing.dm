@@ -12,7 +12,17 @@
 	var/resolved_firing_flags = NONE
 	if(resolved_firer.Reachability(clickchain.target))
 		resolved_firing_flags |= GUN_FIRING_POINT_BLANK
-	start_firing_cycle_async(resolved_firer, resolved_angle, resolved_firing_flags, legacy_get_firemode(), clickchain.target, clickchain)
+	start_firing_cycle_async(
+		resolved_firer,
+		resolved_angle,
+		resolved_firing_flags,
+		legacy_get_firemode(),
+		clickchain.target,
+		clickchain,
+		clickchain.click_params_tile_px,
+		clickchain.click_params_tile_py,
+		clickchain.legacy_get_target_zone(),
+	)
 	return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
 	#warn handle pointblank
 	#warn impl
@@ -29,12 +39,12 @@
  *
  * @return firing cycle datum
  */
-/obj/item/gun/proc/start_firing_cycle_async(atom/firer, angle, firing_flags, datum/firemode/firemode, atom/target, datum/event_args/actor/actor) as /datum/gun_firing_cycle
+/obj/item/gun/proc/start_firing_cycle_async(atom/firer, angle, firing_flags, datum/firemode/firemode, atom/target, datum/event_args/actor/actor, tile_pixel_x, tile_pixel_y, target_zone) as /datum/gun_firing_cycle
 	SHOULD_CALL_PARENT(TRUE)
 	SHOULD_NOT_SLEEP(TRUE)
 
 	// invoke async; when it returns, our firing_cycle will still be set
-	INVOKE_ASYNC(PROC_REF(firing_cycle), firer, angle, firing_flags, firemode, target, actor)
+	INVOKE_ASYNC(PROC_REF(firing_cycle), firer, angle, firing_flags, firemode, target, actor, tile_pixel_x, tile_pixel_y, target_zone)
 	// check to make sure it's always set
 	ASSERT(firing_cycle)
 	// return it; beware that it can be mutated in the firing cycle.
@@ -48,7 +58,7 @@
  * * if firer is a mob, we use its calculations for that depending on how we're held
  * * if firer is ourselves, projectile comes out of us. this is implementation defined.
  */
-/obj/item/gun/proc/start_firing_cycle(atom/firer, angle, firing_flags, datum/firemode/firemode, atom/target, datum/event_args/actor/actor) as /datum/gun_firing_cycle
+/obj/item/gun/proc/start_firing_cycle(atom/firer, angle, firing_flags, datum/firemode/firemode, atom/target, datum/event_args/actor/actor, tile_pixel_x, tile_pixel_y, target_zone) as /datum/gun_firing_cycle
 	SHOULD_CALL_PARENT(TRUE)
 	#warn check next fire time / delays; silently fail if there's a cycle ongoing or right after, and give a message if there isn't
 	// if(world.time < next_fire_time)
@@ -60,7 +70,7 @@
 		return
 	//! END
 
-	return firing_cycle(firer, angle, firing_flags, firemode, target, actor)
+	return firing_cycle(firer, angle, firing_flags, firemode, target, actor, tile_pixel_x, tile_pixel_y, target_zone)
 
 /**
  * interrupts a given firing cycle ID; if none is provided, we interrupt any active firing cycle.
@@ -90,7 +100,7 @@
  * called exactly once at the start of a firing cycle to start it
  *
  * @params
- * * firer - the thing physically firing us; whether a turret or a person.
+ * * firer - the thing physically firing us; whether a turret, a gun, a person, or anything else.
  *   this is where the projectile will originate regardles of where the gun actually is!
  * * angle - the angle to fire in.
  * * firing_flags - (optional) GUN_FIRING_* flags
@@ -100,7 +110,7 @@
  *
  * @return the gun firing cycle made and used
  */
-/obj/item/gun/proc/firing_cycle(atom/firer, angle, firing_flags, datum/firemode/firemode, atom/target, datum/event_args/actor/actor) as /datum/gun_firing_cycle
+/obj/item/gun/proc/firing_cycle(atom/firer, angle, firing_flags, datum/firemode/firemode, atom/target, datum/event_args/actor/actor, tile_pixel_x, tile_pixel_y, target_zone) as /datum/gun_firing_cycle
 	SHOULD_NOT_OVERRIDE(TRUE)
 	PRIVATE_PROC(TRUE) // only base of /start_firing_cycle is allowed to call us
 
@@ -124,6 +134,9 @@
 	our_cycle.firing_atom = firer
 	our_cycle.firing_iterations = firemode.burst_amount
 	our_cycle.firing_delay = firemode.burst_delay
+	our_cycle.original_tile_pixel_x = tile_pixel_x
+	our_cycle.original_tile_pixel_y = tile_pixel_y
+	our_cycle.original_target_zone = target_zone
 	// cycle notch
 	our_cycle.cycle_notch = ++firing_cycle_next
 	if(firing_cycle_next >= SHORT_REAL_LIMIT)
@@ -155,7 +168,9 @@
 		if(!post_fire(our_cycle))
 			break
 		// reset variables
-		our_cycle.next_dispersion_adjust = our_cycle.next_angle_adjust = null
+		our_cycle.next_dispersion_adjust = \
+		our_cycle.next_angle_adjust = \
+			null
 		// continue if needed
 		if(iteration != our_cycle.firing_iterations)
 			sleep(our_cycle.firing_delay)

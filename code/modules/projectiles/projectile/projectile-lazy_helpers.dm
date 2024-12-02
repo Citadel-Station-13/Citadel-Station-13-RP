@@ -7,7 +7,17 @@
  * Set 'use_firer' to not use the performer as the firer. This affects where the projectile raycasts from.
  */
 /obj/projectile/proc/lazy_imprint_from_clickchain(datum/event_args/actor/clickchain/clickchain, clickchain_flags, atom/use_firer)
+	clickchain.unpack_click_params()
+
 	original_target = clickchain.target
+
+	//! legacy
+	firer = use_firer ? use_firer : clickchain.performer
+	def_zone = clickchain.legacy_get_target_zone()
+	p_x = clickchain.click_params_tile_px
+	p_x = clickchain.click_params_tile_py
+	//! end
+
 	set_angle(clickchain.resolve_click_angle(use_firer))
 
 /**

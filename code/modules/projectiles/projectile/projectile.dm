@@ -577,24 +577,17 @@
 		return damage_force
 	return 0
 
-
-#warn deal with this
 /**
- * i hate everything
- *
- * todo: refactor guns
- * projectiles
- * and everything else
- *
- * i am losing my fucking mind
- * this shouldn't have to fucking exist because the ammo casing and/or gun should be doing it
- * and submunitions SHOULDNT BE HANDLED HERE!!
+ * todo: annihilate this
  */
 /obj/projectile/proc/launch_projectile_common(atom/target, target_zone, mob/user, params, angle_override, forced_spread = 0)
 	original_target = target
 	def_zone = check_zone(target_zone)
 	firer = user
 
+/**
+ * todo: annihilate this
+ */
 /obj/projectile/proc/launch_projectile(atom/target, target_zone, mob/user, params, angle_override, forced_spread = 0)
 	var/direct_target
 	if(get_turf(target) == get_turf(src))
@@ -604,6 +597,9 @@
 	launch_projectile_common(target, target_zone, user, params, angle_override, forced_spread)
 	return fire(angle_override, direct_target)
 
+/**
+ * todo: annihilate this
+ */
 /obj/projectile/proc/launch_projectile_from_turf(atom/target, target_zone, mob/user, params, angle_override, forced_spread = 0)
 	var/direct_target
 	if(get_turf(target) == get_turf(src))
@@ -1186,8 +1182,8 @@
 		submunition_uniform_disperson,
 		submunition_linear_spread,
 		submunition_distribution,
-		submunition_division_mod,
-		submunition_division_overwrite,
+		submunition_distribution_mod,
+		submunition_distribution_overwrite,
 		fire_immediately,
 		on_submunition_ready,
 	)
@@ -1206,6 +1202,7 @@
  * * distribute_overwrite - overwrite stats of the split submunitions instead of adding.
  * * fire_immediately - fire the split shots.
  * * on_submunition_ready - (optional) callback to execute when a submunition is readied, right before it's fire()'d.
+ *                          The callback is executed asynchronously.
  *
  * @return list() of submunitions
  */
@@ -1230,7 +1227,7 @@
 		split.pixel_y = pixel_y + py_rand_mul * our_linear_spread
 		split.forceMove(loc)
 		split.set_angle(angle + our_angle_mod)
-		on_submunition_ready?.Invoke(split)
+		on_submunition_ready?.InvokeAsync(split)
 		if(fire_immediately)
 			split.fire()
 		. += split
@@ -1250,12 +1247,16 @@
 	//! legacy - clone variables
 	shot_from = parent.shot_from
 	silenced = parent.silenced
+	firer = parent.firer
 	//! end
 
+	// share impacted data
+	impacted = parent.impacted?.Copy()
+	// distrbute if needed
 	if(distribute && distribute_mod)
-		var/effective_multiplier = 1 / (split_count / min(distribute_mod, split_cout))
+		var/effective_multiplier = 1 / (split_count / min(distribute_mod, split_count))
 		// todo: how to handle split damagetypes?
-		if(overwrite)
+		if(distribute_overwrite)
 			damage_type = parent.damage_type
 			damage_force = parent.damage_force * effective_multiplier
 			damage_flag = parent.damage_flag
