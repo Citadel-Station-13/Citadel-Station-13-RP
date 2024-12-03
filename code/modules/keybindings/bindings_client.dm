@@ -173,7 +173,13 @@
  * Returns a list of human-readable (usually) keys.
  */
 /client/proc/get_keys_for_keybind(datum/keybinding/binding_or_path) as /list
-	#warn impl
+	if(!preferences?.initialized)
+		return list()
+	var/bind_id = ispath(binding_or_path) ? binding_or_path::name : binding_or_path.name
+	. = list()
+	for(var/key in preferences.keybindings)
+		if(bind_id in preferences.keybindings[key])
+			. += key
 
 /**
  * Returns a string that can be interpolated in tgui-chat to allow a quick click to rebind keys

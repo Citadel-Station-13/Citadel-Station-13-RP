@@ -203,18 +203,6 @@
 	return cell?.checked_use(amount, reserve) ? TRUE : FALSE
 
 /**
- * cell function wrapper - use x cell units, affected by GLOB.cellefficiency, returns the amount actually used or 0 if null
- */
-/datum/object_system/cell_slot/proc/use_scaled(var/amount)
-	return cell?.use_scaled(amount) || 0
-
-/**
- * cell function wrapper - checked_use() but scaled by GLOB.cellefficiency
- */
-/datum/object_system/cell_slot/proc/checked_use_scaled(var/amount)
-	return cell?.checked_use_scaled(amount) ? TRUE : FALSE
-
-/**
  * cell function wrapper - recharge the cell by x amount returns the amount consumed or 0 if cell is null
  */
 /datum/object_system/cell_slot/proc/give(var/amount)

@@ -160,17 +160,18 @@
 		++iteration
 		our_cycle.cycle_iterations_fired = iteration
 		// fire signal
-		SEND_SIGNAL(src, COMSIG_GUN_FIRING_CYCLE_ITERATION_PREFIRE, our_cycle)
-		// fire
-		our_cycle.last_firing_result = fire(our_cycle)
-		our_cycle.cycle_iterations_fired++
+		SEND_SIGNAL(src, COMSIG_GUN_FIRING_PREFIRE, our_cycle)
+		// did they abort?
+		if(our_cycle.next_firing_fail_result)
+			our_cycle.finish_iteration(our_cycle.next_firing_fail_result)
+		// else fire
+		else
+			our-cycle.finish_iteration(fire(our_cycle))
+		SEND_SIGNAL(src, COMSIG_GUN_FIRING_POSTFIRE, our_cycle)
 		// post-fire
 		if(!post_fire(our_cycle))
 			break
 		// reset variables
-		our_cycle.next_dispersion_adjust = \
-		our_cycle.next_angle_adjust = \
-			null
 		// continue if needed
 		if(iteration != our_cycle.firing_iterations)
 			sleep(our_cycle.firing_delay)

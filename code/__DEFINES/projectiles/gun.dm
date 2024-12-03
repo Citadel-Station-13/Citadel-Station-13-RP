@@ -23,7 +23,7 @@
 //* these are flags but should be returned only one at a time. *//
 //*            they are flags for fast comparisons.            *//
 
-/// fired
+/// fired. this must be false-y.
 #define GUN_FIRED_SUCCESS 0
 /// unknown failure
 #define GUN_FIRED_FAIL_UNKNOWN (1<<0)

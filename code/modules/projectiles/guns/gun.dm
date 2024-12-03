@@ -360,6 +360,8 @@
 	#warn firemode action if needed
 
 /obj/item/gun/Destroy()
+	if(locate(/obj/projectile) in src)
+		stack_trace("found an /obj/projectile in ourselves. this is not only invalid state, but means someone probably caused a memory leak.")
 	QDEL_NULL(pin)
 	QDEL_LIST(attachments)
 	return ..()
@@ -380,8 +382,6 @@
 		. += "It has [attachment] installed on its [attachment.attachment_slot].[attachment.can_detach ? "" : " It doesn't look like it can be removed."]"
 	for(var/obj/item/gun_component/component as anything in modular_components)
 		. += "It has a [component.get_examine_fragment()] installed."
-
-#warn component examine
 
 /obj/item/gun/on_wield(mob/user, hands)
 	. = ..()

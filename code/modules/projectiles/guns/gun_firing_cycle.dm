@@ -65,6 +65,9 @@
 	var/base_dispersion_adjust
 	/// for all iterations, this is the base angle adjust (pos = cw, neg = ccw); this is in degrees
 	var/base_angle_adjust
+	/// current GUN_FIRED_* to inject; this is used to fail a cycle from a component signal
+	/// by setting this on us.
+	var/next_firing_fail_result
 	/// on this iteration, have this much dispersion added
 	var/next_dispersion_adjust
 	#warn hook
@@ -73,3 +76,12 @@
 	#warn hook
 	/// blackboard for modular gun components to use
 	var/list/blackboard
+
+/datum/gun_firing_cycle/proc/finish_iteration(result)
+	last_firing_result = result
+	++cycle_iterations_fired
+
+	next_dispersion_adjust = \
+	next_angle_adjust = \
+	next_firing_fail_result = \
+		null

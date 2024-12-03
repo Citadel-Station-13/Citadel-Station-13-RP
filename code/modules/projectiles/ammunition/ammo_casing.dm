@@ -10,19 +10,27 @@
 	drop_sound = 'sound/items/drop/ring.ogg'
 	pickup_sound = 'sound/items/pickup/ring.ogg'
 
-	//* Casing
+	//* Casing *//
 	/// casing flags - see __DEFINES/projectiles/ammo_casing.dm
 	var/casing_flags = NONE
 	/// what types of primer we react to
 	var/casing_primer = CASING_PRIMER_CHEMICAL
-	/// projectile type
-	var/projectile_type
 	/// caliber - set to typepath of datum for compile checking
+	///
+	/// todo: rename to casing_caliber?
 	///
 	/// * may be typepath of caliber (recommended)
 	/// * may be instance of caliber (not recommended, but allowable for special cases)
 	/// * may NOT be string of caliber, currently
 	var/caliber
+	/// Effective mass multiplier.
+	///
+	/// * This is used to calculate energy draw for magnetic weapons.
+	var/effective_mass_multiplier = 1
+
+	//* Projectile *//
+	/// projectile type
+	var/projectile_type
 	/// stored projectile - either null for un-init'd, FALSE for empty, or an instance
 	VAR_PROTECTED/obj/projectile/stored
 

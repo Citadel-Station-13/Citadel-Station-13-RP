@@ -30,6 +30,12 @@
 	if(!istype(firing_projectile))
 		// it's an error code if it's not real
 		return firing_projectile
+	// sike; real poitn of no return
+	SEND_SIGNAL(src, COMSIG_GUN_FIRING_PROJECTILE_INJECTION, cycle, firing_projectile)
+	// if they want to abort..
+	if(cycle.next_firing_fail_result)
+		qdel(firing_projectile)
+		return cycle.next_firing_fail_result
 
 	//! LEGACY
 	process_accuracy(firing_projectile, cycle.firing_actor?.performer, cycle.original_target, cycle.cycle_iterations_fired, held_twohanded)
@@ -85,8 +91,13 @@
  *
  * * Things like jams go in here.
  * * Things like 'the next bullet is empty so we fail' go in here
- * * This should be called *as* the point of no return. This has side effects.
  * * Everything is optional here. Things like portable turrets reserve the right to 'pull' from the gun without caring about params.
+ *
+ * This should be called as the point of no return.
+ *
+ * * All of your checks that can / should fail go before the ..() call, as that's what makes the projectile.
+ * * Anything that doesn't do anything but emit side effects go after.
+ * * Once the projectile is made, you must delete it if you want to cancel. Otherwise, it's a memory leak.
  */
 /obj/item/gun/proc/consume_next_projectile(datum/gun_firing_cycle/cycle)
 	. = GUN_FIRED_FAIL_UNKNOWN

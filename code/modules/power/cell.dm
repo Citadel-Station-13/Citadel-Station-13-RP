@@ -134,20 +134,6 @@
 	use(amount)
 	return 1
 
-/**
- * use x cell units, affected by GLOB.cellefficiency
- */
-/obj/item/cell/proc/use_scaled(amount)
-	return use(amount / GLOB.cellefficiency) * GLOB.cellefficiency
-
-/**
- * uses x cell units but only if we have enough, affected by GLOB.cellefficiency
- *
- * returns TRUE/FALSE
- */
-/obj/item/cell/proc/checked_use_scaled(amount)
-	return checked_use(amount / GLOB.cellefficiency)
-
 // recharge the cell
 /obj/item/cell/proc/give(var/amount)
 	if(rigged && amount > 0)

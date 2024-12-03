@@ -22,6 +22,9 @@
 	name = "protomag round"
 	desc = "A slender bullet. It seems to have less propellant than usual."
 	casing_primer = CASING_PRIMER_MAGNETIC | CASING_PRIMER_CHEMICAL
+	effective_mass_multiplier = /obj/item/ammo_casing/nt_protomag::effective_mass_multiplier * 0.5
+
+#warn make these lose performance if shot without magnetic priming
 
 /obj/item/ammo_casing/nt_protomag/magboosted/standard
 	projectile_type = /obj/projectile/nt_protomag/standard
