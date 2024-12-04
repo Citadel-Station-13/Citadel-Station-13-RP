@@ -166,7 +166,7 @@
 			our_cycle.finish_iteration(our_cycle.next_firing_fail_result)
 		// else fire
 		else
-			our-cycle.finish_iteration(fire(our_cycle))
+			our_cycle.finish_iteration(fire(our_cycle))
 		SEND_SIGNAL(src, COMSIG_GUN_FIRING_POSTFIRE, our_cycle)
 		// post-fire
 		if(!post_fire(our_cycle))

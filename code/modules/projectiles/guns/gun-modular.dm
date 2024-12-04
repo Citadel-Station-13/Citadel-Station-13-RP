@@ -40,16 +40,30 @@
 /**
  * * moves the component into us if it wasn't already
  */
-/obj/item/gun/proc/attach_modular_component(obj/item/gun_component/component, datum/event_args/actor/actor, silent, force)
+/obj/item/gun/proc/install_modular_component(obj/item/gun_component/component, datum/event_args/actor/actor, silent, force)
+	SHOULD_NOT_OVERRIDE(TRUE)
+	SHOULD_NOT_SLEEP(TRUE)
 	#warn impl
 
 /**
  * * deletes the component if no location is provided to move it to
  */
-/obj/item/gun/proc/detach_modular_component(obj/item/gun_component/component, datum/event_args/actor/actor, silent, force, atom/new_loc)
+/obj/item/gun/proc/uninstall_modular_component(obj/item/gun_component/component, datum/event_args/actor/actor, silent, force, atom/new_loc)
+	SHOULD_NOT_OVERRIDE(TRUE)
+	SHOULD_NOT_SLEEP(TRUE)
 	#warn impl
 
 #warn hook everything in attackby's
+
+//* Modular Components - Hooks *//
+
+/obj/item/gun/proc/on_modular_component_install(obj/item/gun_component/component, datum/event_args/actor/actor, silent)
+	SHOULD_NOT_SLEEP(TRUE)
+	SHOULD_CALL_PARENT(TRUE)
+
+/obj/item/gun/proc/on_modular_component_uninstall(obj/item/gun_component/component, datum/event_args/actor/actor, silent)
+	SHOULD_NOT_SLEEP(TRUE)
+	SHOULD_CALL_PARENT(TRUE)
 
 //* Modular Components - API *//
 

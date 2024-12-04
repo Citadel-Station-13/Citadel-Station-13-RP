@@ -31,8 +31,8 @@
 	/// automatically hook firing iteration pre-fire? will call on_firing_cycle_iteration(cycle) if hooked.
 	var/hook_iteration_pre_fire = FALSE
 
-	/// currently attached gun
-	var/obj/item/gun/attached
+	/// The gun we are installed in.
+	var/obj/item/gun/installed
 
 /obj/item/gun_component/examine(mob/user, dist)
 	. = ..()
@@ -64,7 +64,8 @@
 /**
  * called on attach
  */
-/obj/item/gun_component/proc/on_attach(obj/item/gun/gun, datum/event_args/actor/actor, silent)
+/obj/item/gun_component/proc/on_install(obj/item/gun/gun, datum/event_args/actor/actor, silent)
+	SHOULD_NOT_SLEEP(TRUE)
 	SHOULD_CALL_PARENT(TRUE)
 	if(hook_iteration_pre_fire)
 		RegisterSignal(gun, COMSIG_GUN_FIRING_PREFIRE, PROC_REF(on_firing_cycle_iteration))
@@ -72,7 +73,8 @@
 /**
  * called on detach
  */
-/obj/item/gun_component/proc/on_detach(obj/item/gun/gun, datum/event_args/actor/actor, silent)
+/obj/item/gun_component/proc/on_uninstall(obj/item/gun/gun, datum/event_args/actor/actor, silent)
+	SHOULD_NOT_SLEEP(TRUE)
 	SHOULD_CALL_PARENT(TRUE)
 	if(hook_iteration_pre_fire)
 		UnregisterSignal(gun, COMSIG_GUN_FIRING_PREFIRE)
@@ -88,10 +90,10 @@
 //* Gun API - Actions *//
 
 /obj/item/gun_component/proc/use_power(joules)
-	return attached.modular_use_power(src, joules)
+	return installed.modular_use_power(src, joules)
 
 /obj/item/gun_component/proc/use_checked_power(joules, reserve)
-	return attached.modular_use_checked_power(src, joules, reserve)
+	return installed.modular_use_checked_power(src, joules, reserve)
 
 //* Information *//
 
