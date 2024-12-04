@@ -721,35 +721,35 @@
 	var/datum/component/radioactive/RA = GetComponent(/datum/component/radioactive)
 	RA?.clean(str, mul)
 
-//? Atom Colour Priority System
+//* Color *//
+
 /**
- * A System that gives finer control over which atom colour to colour the atom with.
- * The "highest priority" one is always displayed as opposed to the default of
- * "whichever was set last is displayed"
+ * Managed color set procs for the atom's raw `color` variable. This used to be a full priority system,
+ * but it was determined to be unnecessary.
  */
 
 /**
  * getter for current color
  */
-/atom/proc/get_atom_colour()
+/atom/proc/get_atom_color()
 	CRASH("base proc hit")
 
 /**
  * copies from other
  */
-/atom/proc/copy_atom_colour(atom/other, colour_priority)
+/atom/proc/copy_atom_color(atom/other)
 	CRASH("base proc hit")
 
-/// Adds an instance of colour_type to the atom's atom_colours list
-/atom/proc/add_atom_colour(coloration, colour_priority)
+/// Adds an instance of colour_type to the atom's atom_colors list
+/atom/proc/add_atom_color(new_color)
 	CRASH("base proc hit")
 
-/// Removes an instance of colour_type from the atom's atom_colours list
-/atom/proc/remove_atom_colour(colour_priority, coloration)
+/// Removes an instance of colour_type from the atom's atom_colors list
+/atom/proc/remove_atom_color(require_color)
 	CRASH("base proc hit")
 
 /// Resets the atom's color to null, and then sets it to the highest priority colour available
-/atom/proc/update_atom_colour()
+/atom/proc/update_atom_color()
 	CRASH("base proc hit")
 
 //* Deletions *//
