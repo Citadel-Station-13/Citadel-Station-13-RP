@@ -36,7 +36,7 @@
 				cooked_span = "yellow"
 			if(BURNT)
 				cooked_span = "tajaran_signlang"
-		. += "<span class='notice'>[icon2html(thing = examine_ingredient, target = user)][examine_ingredient.weight]g of [examine_ingredient.name], which looks </span><span class='[cooked_span]'>[examine_ingredient.cookstage2text()]</span><span class='notice'> and has been cooked for about [examine_ingredient.accumulated_time_cooked / 10] seconds.</span>"
+		. += "<span class='notice'>[icon2html(thing = examine_ingredient, target = user)][examine_ingredient.food_weight]g of [examine_ingredient.name], which looks </span><span class='[cooked_span]'>[examine_ingredient.cookstage2text()]</span><span class='notice'> and has been cooked for about [examine_ingredient.accumulated_time_cooked / 10] seconds.</span>"
 
 /obj/item/reagent_containers/glass/food_holder/update_icon()
 	cut_overlays()
@@ -154,8 +154,8 @@
 
 	for(var/obj/item/reagent_containers/food/snacks/ingredient/tally_ingredient in contents)
 		var/ing_ratio = (1/ingredient_count)
-		tally_flavours[tally_ingredient.cookstage_information[tally_ingredient.cookstage][COOKINFO_TASTE]] = WEIGHT_TASTE_DIVISION(tally_ingredient.weight) //the more it is the stronger it'll taste
-		var/total_volume_transferred = WEIGHT_TASTE_DIVISION(ing_ratio * tally_ingredient.weight)
+		tally_flavours[tally_ingredient.cookstage_information[tally_ingredient.cookstage][COOKINFO_TASTE]] = WEIGHT_TASTE_DIVISION(tally_ingredient.food_weight) //the more it is the stronger it'll taste
+		var/total_volume_transferred = WEIGHT_TASTE_DIVISION(ing_ratio * tally_ingredient.food_weight)
 		tally_ingredient.reagents.trans_to_holder(generated_serving.reagents, total_volume_transferred, tally_ingredient.cookstage_information[tally_ingredient.cookstage][COOKINFO_NUTRIMULT])
 
 
@@ -173,7 +173,7 @@
 		mixed_stuff_overlay.color = food_color
 		fancy_overlay_to_add += mixed_stuff_overlay
 
-		tally_ingredient.consume_weight(ing_ratio * tally_ingredient.weight)
+		tally_ingredient.consume_weight(ing_ratio * tally_ingredient.food_weight)
 
 	for(var/obj/item/reagent_containers/food/snacks/tally_snack in contents)
 		if(istype(tally_snack, /obj/item/reagent_containers/food/snacks/ingredient))
@@ -198,7 +198,7 @@
 
 	generated_serving.name = "[serving_thing_name] of "
 	generated_serving.name += foodname
-	generated_serving.desc = (generated_serving.name + ". It looks tasty. Potentially.")
+	generated_serving.desc = ("That's a" + generated_serving.name + ". It looks tasty. Potentially.")
 	generated_serving.icon = fs_icon
 	generated_serving.icon_state = fs_iconstate
 	generated_serving.add_overlay(fancy_overlay_to_add)

@@ -51,7 +51,7 @@
 	cut_overlays()
 	var/overlay_amount = FLOOR(food_weight/additional_overlay_weight_threshold, 1)
 	if((overlay_amount > 1) && can_stack)
-		for(var/i, i<=overlay_amount, i++)
+		for(var/i = 0, i<=overlay_amount, i++)
 			var/mutable_appearance/stuff_overlay = mutable_appearance(icon, icon_state)
 			stuff_overlay.color = color
 			stuff_overlay.pixel_x = pick(rand(-12,-6), rand(6,12))

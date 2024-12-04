@@ -54,8 +54,8 @@ GLOBAL_LIST_EMPTY(cooking_recipes)
 
 /datum/cooking_recipe
 	var/list/reagents // example: = list("berryjuice" = 5) // do not list same reagent twice. coating reagents should go here
-	var/list/items    // example: = list(/obj/item/crowbar = 1, /obj/item/welder = 2) // place /foo/bar before /foo
-	var/list/fruit    // example: = list("fruit" = 3)
+	var/list/items    // example: = list(/obj/item/crowbar = 1, /obj/item/welder = 2, /obj/item/reagent_containers/food/snacks/ingredient/shrimp = 100) // place /foo/bar before /foo. will take 100g of shrimp
+	var/list/fruit    // example: = list("apple" = 300) = 300g of apples
 
 
 	var/result        // example: = /obj/item/reagent_containers/food/snacks/donut/normal
@@ -127,7 +127,7 @@ GLOBAL_LIST_EMPTY(cooking_recipes)
 			if(!G.seed || !G.seed.kitchen_tag || isnull(checklist[G.seed.kitchen_tag]))
 				continue
 
-			checklist[G.seed.kitchen_tag] -= G.serving_amount
+			checklist[G.seed.kitchen_tag] -= G.food_weight
 		for(var/ktag in checklist)
 			if(!isnull(checklist[ktag]))
 				if(checklist[ktag] < 0)
@@ -150,7 +150,7 @@ GLOBAL_LIST_EMPTY(cooking_recipes)
 			if((is_exact_type_in_list(O, checklist)))
 				if(istype(O, /obj/item/reagent_containers/food/snacks/ingredient))
 					var/obj/item/reagent_containers/food/snacks/ingredient/our_ingredient = O
-					checklist[our_ingredient.type] -= our_ingredient.serving_amount
+					checklist[our_ingredient.type] -= our_ingredient.food_weight
 					if(checklist[our_ingredient.type] < 1)
 						checklist -= our_ingredient.type
 				else
@@ -206,10 +206,10 @@ GLOBAL_LIST_EMPTY(cooking_recipes)
 			if(checklist[G.seed.kitchen_tag] > 0)
 				//We found a thing we need
 				var/amount_to_consume = checklist[G.seed.kitchen_tag]
-				checklist[G.seed.kitchen_tag] -= G.serving_amount
+				checklist[G.seed.kitchen_tag] -= G.food_weight
 				if(G && G.reagents)
-					G.reagents.trans_to_holder(temp.reagents, G.reagents.total_volume * (amount_to_consume / G.serving_amount))
-				G.consume_serving(amount_to_consume)
+					G.reagents.trans_to_holder(temp.reagents, G.reagents.total_volume * (amount_to_consume / G.food_weight))
+				G.consume_weight(amount_to_consume)
 
 
 	//Find items we need
@@ -221,8 +221,8 @@ GLOBAL_LIST_EMPTY(cooking_recipes)
 			if(istype(I, /obj/item/reagent_containers/food/snacks/ingredient))
 				var/obj/item/reagent_containers/food/snacks/ingredient/IN = I
 				var/consume_amount = items[IN.type]
-				I.reagents.trans_to_holder(temp.reagents, I.reagents.total_volume * (consume_amount / IN.serving_amount))
-				IN.consume_serving(consume_amount)
+				I.reagents.trans_to_holder(temp.reagents, I.reagents.total_volume * (consume_amount / IN.food_weight))
+				IN.consume_weight(consume_amount)
 				continue
 			if(I.reagents)
 				I.reagents.trans_to_holder(temp.reagents,I.reagents.total_volume)

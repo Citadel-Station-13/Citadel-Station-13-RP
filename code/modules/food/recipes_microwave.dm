@@ -337,6 +337,63 @@
 		/obj/item/reagent_containers/food/snacks/ingredient/meat/human
 	)
 	result = /obj/item/reagent_containers/food/snacks/sliceable/sushi/mystery
+
+/datum/cooking_recipe/crayonburger_red
+	items = list(
+		/obj/item/reagent_containers/food/snacks/ingredient/bun,
+		/obj/item/reagent_containers/food/snacks/ingredient/meat,
+		/obj/item/pen/crayon/red
+	)
+	result = /obj/item/reagent_containers/food/snacks/crayonburger_red
+
+/datum/cooking_recipe/crayonburger_org
+	items = list(
+		/obj/item/reagent_containers/food/snacks/ingredient/bun,
+		/obj/item/reagent_containers/food/snacks/ingredient/meat,
+		/obj/item/pen/crayon/orange
+	)
+	result = /obj/item/reagent_containers/food/snacks/crayonburger_org
+
+/datum/cooking_recipe/crayonburger_yel
+	items = list(
+		/obj/item/reagent_containers/food/snacks/ingredient/bun,
+		/obj/item/reagent_containers/food/snacks/ingredient/meat,
+		/obj/item/pen/crayon/yellow
+	)
+	result = /obj/item/reagent_containers/food/snacks/crayonburger_yel
+
+/datum/cooking_recipe/crayonburger_grn
+	items = list(
+		/obj/item/reagent_containers/food/snacks/ingredient/bun,
+		/obj/item/reagent_containers/food/snacks/ingredient/meat,
+		/obj/item/pen/crayon/green
+	)
+	result = /obj/item/reagent_containers/food/snacks/crayonburger_grn
+
+/datum/cooking_recipe/crayonburger_blu
+	items = list(
+		/obj/item/reagent_containers/food/snacks/ingredient/bun,
+		/obj/item/reagent_containers/food/snacks/ingredient/meat,
+		/obj/item/pen/crayon/blue
+	)
+	result = /obj/item/reagent_containers/food/snacks/crayonburger_blu
+
+/datum/cooking_recipe/crayonburger_prp
+	items = list(
+		/obj/item/reagent_containers/food/snacks/ingredient/bun,
+		/obj/item/reagent_containers/food/snacks/ingredient/meat,
+		/obj/item/pen/crayon/purple
+	)
+	result = /obj/item/reagent_containers/food/snacks/crayonburger_prp
+
+/datum/cooking_recipe/crayonburger_rbw
+	items = list(
+		/obj/item/reagent_containers/food/snacks/ingredient/bun,
+		/obj/item/reagent_containers/food/snacks/ingredient/meat,
+		/obj/item/pen/crayon/rainbow
+	)
+	result = /obj/item/reagent_containers/food/snacks/crayonburger_rbw
+
 */
 /datum/cooking_recipe/hotdog
 	items = list(
@@ -414,15 +471,14 @@
 /datum/cooking_recipe/fishandchips
 	items = list(
 		/obj/item/reagent_containers/food/snacks/fries,
-		/obj/item/reagent_containers/food/snacks/ingredient/carp
+		/obj/item/reagent_containers/food/snacks/ingredient/carp = 100
 	)
 	result = /obj/item/reagent_containers/food/snacks/fishandchips
 
 /datum/cooking_recipe/rofflewaffles
 	reagents = list("psilocybin" = 5, "sugar" = 10)
 	items = list(
-		/obj/item/reagent_containers/food/snacks/ingredient/transformable/dough,
-		/obj/item/reagent_containers/food/snacks/ingredient/transformable/dough
+		/obj/item/reagent_containers/food/snacks/ingredient/transformable/dough = 200
 	)
 	result = /obj/item/reagent_containers/food/snacks/rofflewaffles
 
@@ -435,7 +491,7 @@
 /datum/cooking_recipe/twobread
 	reagents = list("wine" = 5)
 	items = list(
-		/obj/item/reagent_containers/food/snacks/ingredient/slice/bread = 2
+		/obj/item/reagent_containers/food/snacks/ingredient/slice/bread = 200
 	)
 	result = /obj/item/reagent_containers/food/snacks/twobread
 
@@ -448,7 +504,7 @@
 
 /datum/cooking_recipe/chocolateegg
 	items = list(
-		/obj/item/reagent_containers/food/snacks/ingredient/egg,
+		/obj/item/reagent_containers/food/snacks/ingredient/egg = 100,
 		/obj/item/reagent_containers/food/snacks/chocolatebar
 	)
 	result = /obj/item/reagent_containers/food/snacks/chocolateegg
@@ -485,13 +541,13 @@
 /datum/cooking_recipe/sashimi
 	reagents = list("soysauce" = 5)
 	items = list(
-		/obj/item/reagent_containers/food/snacks/ingredient/carp
+		/obj/item/reagent_containers/food/snacks/ingredient/carp = 100
 	)
 	result = /obj/item/reagent_containers/food/snacks/sashimi
 
 /datum/cooking_recipe/bacon_and_eggs
 	items = list(
-		/obj/item/reagent_containers/food/snacks/ingredient/bacon,
+		/obj/item/reagent_containers/food/snacks/ingredient/bacon = 100,
 		/obj/item/reagent_containers/food/snacks/friedegg
 	)
 	result = /obj/item/reagent_containers/food/snacks/bacon_and_eggs
@@ -508,61 +564,6 @@
 	)
 	result = /obj/item/reagent_containers/food/snacks/reishicup
 
-/datum/cooking_recipe/crayonburger_red
-	items = list(
-		/obj/item/reagent_containers/food/snacks/ingredient/bun,
-		/obj/item/reagent_containers/food/snacks/ingredient/meat,
-		/obj/item/pen/crayon/red
-	)
-	result = /obj/item/reagent_containers/food/snacks/crayonburger_red
-
-/datum/cooking_recipe/crayonburger_org
-	items = list(
-		/obj/item/reagent_containers/food/snacks/ingredient/bun,
-		/obj/item/reagent_containers/food/snacks/ingredient/meat,
-		/obj/item/pen/crayon/orange
-	)
-	result = /obj/item/reagent_containers/food/snacks/crayonburger_org
-
-/datum/cooking_recipe/crayonburger_yel
-	items = list(
-		/obj/item/reagent_containers/food/snacks/ingredient/bun,
-		/obj/item/reagent_containers/food/snacks/ingredient/meat,
-		/obj/item/pen/crayon/yellow
-	)
-	result = /obj/item/reagent_containers/food/snacks/crayonburger_yel
-
-/datum/cooking_recipe/crayonburger_grn
-	items = list(
-		/obj/item/reagent_containers/food/snacks/ingredient/bun,
-		/obj/item/reagent_containers/food/snacks/ingredient/meat,
-		/obj/item/pen/crayon/green
-	)
-	result = /obj/item/reagent_containers/food/snacks/crayonburger_grn
-
-/datum/cooking_recipe/crayonburger_blu
-	items = list(
-		/obj/item/reagent_containers/food/snacks/ingredient/bun,
-		/obj/item/reagent_containers/food/snacks/ingredient/meat,
-		/obj/item/pen/crayon/blue
-	)
-	result = /obj/item/reagent_containers/food/snacks/crayonburger_blu
-
-/datum/cooking_recipe/crayonburger_prp
-	items = list(
-		/obj/item/reagent_containers/food/snacks/ingredient/bun,
-		/obj/item/reagent_containers/food/snacks/ingredient/meat,
-		/obj/item/pen/crayon/purple
-	)
-	result = /obj/item/reagent_containers/food/snacks/crayonburger_prp
-
-/datum/cooking_recipe/crayonburger_rbw
-	items = list(
-		/obj/item/reagent_containers/food/snacks/ingredient/bun,
-		/obj/item/reagent_containers/food/snacks/ingredient/meat,
-		/obj/item/pen/crayon/rainbow
-	)
-	result = /obj/item/reagent_containers/food/snacks/crayonburger_rbw
 
 /datum/cooking_recipe/rkibble
 	reagents = list("milk" = 5, "tallow" = 10)
@@ -574,35 +575,35 @@
 
 /datum/cooking_recipe/roach_burger
 	items = list(
-		/obj/item/reagent_containers/food/snacks/ingredient/bun,
+		/obj/item/reagent_containers/food/snacks/ingredient/bun = 100,
 		/obj/item/holder/roach
 	)
 	result = /obj/item/reagent_containers/food/snacks/roach_burger
 
 /datum/cooking_recipe/roach_burger/armored
 	items = list(
-		/obj/item/reagent_containers/food/snacks/ingredient/bun,
+		/obj/item/reagent_containers/food/snacks/ingredient/bun = 100,
 		/obj/item/holder/panzer
 	)
 	result = /obj/item/reagent_containers/food/snacks/roach_burger/armored
 
 /datum/cooking_recipe/roach_burger/pale
 	items = list(
-		/obj/item/reagent_containers/food/snacks/ingredient/bun,
+		/obj/item/reagent_containers/food/snacks/ingredient/bun = 100,
 		/obj/item/holder/jager
 	)
 	result = /obj/item/reagent_containers/food/snacks/roach_burger/pale
 
 /datum/cooking_recipe/roach_burger/purple
 	items = list(
-		/obj/item/reagent_containers/food/snacks/ingredient/bun,
+		/obj/item/reagent_containers/food/snacks/ingredient/bun = 100,
 		/obj/item/holder/seuche
 	)
 	result = /obj/item/reagent_containers/food/snacks/roach_burger/purple
 
 /datum/cooking_recipe/roach_burger/big
 	items = list(
-		/obj/item/reagent_containers/food/snacks/ingredient/bun,
+		/obj/item/reagent_containers/food/snacks/ingredient/bun = 100,
 		/obj/item/holder/roach,
 		/obj/item/holder/roach,
 		/obj/item/holder/jager,
@@ -612,24 +613,24 @@
 
 /datum/cooking_recipe/roach_burger/reich
 	items = list(
-		/obj/item/reagent_containers/food/snacks/ingredient/bun,
+		/obj/item/reagent_containers/food/snacks/ingredient/bun = 100,
 		/obj/item/holder/fuhrer
 	)
 	result = /obj/item/reagent_containers/food/snacks/roach_burger/reich
 
 /datum/cooking_recipe/fruitsalad
-	fruit = list("apple" = 1, "berries" = 1, "banana" = 1, "cherries" = 1)
+	fruit = list("apple" = 100, "berries" = 100, "banana" = 100, "cherries" = 100)
 	reagents = list("milk" = 10, "cream" = 5)
 	result = /obj/item/reagent_containers/food/snacks/fruitsalad
 
 
 /datum/cooking_recipe/sauerkraut
-	fruit = list("cabbage" = 1)
+	fruit = list("cabbage" = 100)
 	reagents = list("brine" = 5)
 	result = /obj/item/reagent_containers/food/snacks/sauerkraut
 
 /datum/cooking_recipe/kimchi
-	fruit = list("cabbage" = 1, "whitebeet" = 1)
+	fruit = list("cabbage" = 100, "whitebeet" = 100)
 	reagents = list("brine" = 5, "blackpepper" = 2)
 	result = /obj/item/reagent_containers/food/snacks/kimchi
 
@@ -637,7 +638,7 @@
 
 
 /datum/cooking_recipe/bananasplit
-	fruit = list("banana" = 1, "cherries" = 1)
+	fruit = list("banana" = 100, "cherries" = 20)
 	reagents = list("milk" = 5, "ice" = 5)
 	items = list(
 		/obj/item/reagent_containers/food/snacks/chocolatebar,
@@ -648,10 +649,10 @@
 
 /datum/cooking_recipe/wormburger
 	items = list(
-		/obj/item/reagent_containers/food/snacks/ingredient/bun,
+		/obj/item/reagent_containers/food/snacks/ingredient/bun = 100,
 		/obj/item/reagent_containers/food/snacks/bait/worm,
 		/obj/item/reagent_containers/food/snacks/bait/worm,
-		/obj/item/reagent_containers/food/snacks/ingredient/meat
+		/obj/item/reagent_containers/food/snacks/ingredient/meat = 20
 	)
 	result = /obj/item/reagent_containers/food/snacks/wormburger
 
@@ -659,11 +660,7 @@
 	fruit = list("tomato" = 2, "chili" = 2, "lemon" = 2)
 	reagents = list("water" = 5, "sodiumchloride" = 5, "pepper" = 5)
 	items = list(
-		/obj/item/reagent_containers/food/snacks/ingredient/shrimp,
-		/obj/item/reagent_containers/food/snacks/ingredient/shrimp,
-		/obj/item/reagent_containers/food/snacks/ingredient/shrimp,
-		/obj/item/reagent_containers/food/snacks/ingredient/shrimp,
-		/obj/item/reagent_containers/food/snacks/ingredient/shrimp,
+		/obj/item/reagent_containers/food/snacks/ingredient/shrimp = 100 //shrimp glockenspiel
 	)
 	result = /obj/item/reagent_containers/food/snacks/shrimpcocktail
 

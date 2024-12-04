@@ -752,11 +752,6 @@
 	nutriment_amt = 12
 	nutriment_desc = list("turkey" = 3, "tofu" = 5, "goeyness" = 4)
 
-/obj/item/reagent_containers/food/snacks/tofurkey/Initialize(mapload)
-	. = ..()
-	reagents.add_reagent("stoxin", 3)
-	bitesize = 3
-
 /obj/item/reagent_containers/food/snacks/stuffing // Buff 3 >> 5
 	name = "Stuffing"
 	desc = "Moist, peppery breadcrumbs for filling the body cavities of dead birds. Dig in!"

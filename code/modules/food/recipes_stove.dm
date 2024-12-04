@@ -260,16 +260,16 @@ custom foods handle soups pretty well, so
 /datum/cooking_recipe/meatballspaghetti
 	reagents = list("water" = 5)
 	items = list(
-		/obj/item/reagent_containers/food/snacks/ingredient/spaghetti,
-		/obj/item/reagent_containers/food/snacks/ingredient/meatball = 2
+		/obj/item/reagent_containers/food/snacks/ingredient/spaghetti = 100,
+		/obj/item/reagent_containers/food/snacks/ingredient/meatball = 100
 	)
 	result = /obj/item/reagent_containers/food/snacks/meatballspaghetti
 
 /datum/cooking_recipe/spesslaw
 	reagents = list("water" = 5)
 	items = list(
-		/obj/item/reagent_containers/food/snacks/ingredient/spaghetti,
-		/obj/item/reagent_containers/food/snacks/ingredient/meatball = 4
+		/obj/item/reagent_containers/food/snacks/ingredient/spaghetti = 100,
+		/obj/item/reagent_containers/food/snacks/ingredient/meatball = 400
 	)
 	result = /obj/item/reagent_containers/food/snacks/spesslaw
 
@@ -277,7 +277,7 @@ custom foods handle soups pretty well, so
 	required_method = METHOD_STOVE
 	reagents = list("milk" = 5)
 	items = list(
-		/obj/item/reagent_containers/food/snacks/spreads/butter = 10 // to prevent conflicts with yellow curry
+		/obj/item/reagent_containers/food/snacks/spreads/butter // to prevent conflicts with yellow curry
 	)
 	fruit = list("potato" = 100)
 	result = /obj/item/reagent_containers/food/snacks/mashedpotato
@@ -396,16 +396,16 @@ custom foods handle soups pretty well, so
 /datum/cooking_recipe/honeytoast
 	reagents = list("honey" = 5)
 	items = list(
-		/obj/item/reagent_containers/food/snacks/ingredient/slice/bread
+		/obj/item/reagent_containers/food/snacks/ingredient/slice/bread = 100
 	)
 	reagent_mix = RECIPE_REAGENT_REPLACE //Simplify end product
 	result = /obj/item/reagent_containers/food/snacks/honeytoast
 
 /datum/cooking_recipe/cheesesauce
-	fruit = list("chili" = 1, "tomato" = 1)
+	fruit = list("chili" = 20, "tomato" = 20)
 	reagents = list("spacespice" = 1, "blackpepper" = 1,"sodiumchloride" = 1)
 	items = list(
-		/obj/item/reagent_containers/food/snacks/ingredient/cheesewedge
+		/obj/item/reagent_containers/food/snacks/ingredient/cheesewedge = 20
 	)
 	result = /obj/item/reagent_containers/food/snacks/dip
 	reagent_mix = RECIPE_REAGENT_REPLACE //Ingredients are mixed together.
@@ -417,10 +417,10 @@ custom foods handle soups pretty well, so
 	reagent_mix = RECIPE_REAGENT_REPLACE //Ingredients are mixed together.
 
 /datum/cooking_recipe/guac
-	fruit = list("chili" = 1, "lime" = 1)
+	fruit = list("chili" = 10, "lime" = 10)
 	reagents = list("spacespice" = 1, "blackpepper" = 1,"sodiumchloride" = 1)
 	items = list(
-		/obj/item/reagent_containers/food/snacks/ingredient/tofu
+		/obj/item/reagent_containers/food/snacks/ingredient/tofu = 20
 	)
 	result = /obj/item/reagent_containers/food/snacks/dip/guac
 	reagent_mix = RECIPE_REAGENT_REPLACE //Ingredients are mixed together.
@@ -434,8 +434,8 @@ custom foods handle soups pretty well, so
 
 /datum/cooking_recipe/red_sun_special
 	items = list(
-		/obj/item/reagent_containers/food/snacks/ingredient/sausage,
-		/obj/item/reagent_containers/food/snacks/ingredient/cheesewedge
+		/obj/item/reagent_containers/food/snacks/ingredient/sausage = 100,
+		/obj/item/reagent_containers/food/snacks/ingredient/cheesewedge = 100
 
 	)
 	result = /obj/item/reagent_containers/food/snacks/red_sun_special
@@ -443,21 +443,21 @@ custom foods handle soups pretty well, so
 /datum/cooking_recipe/hatchling_suprise
 	items = list(
 		/obj/item/reagent_containers/food/snacks/poachedegg,
-		/obj/item/reagent_containers/food/snacks/ingredient/bacon = 3
+		/obj/item/reagent_containers/food/snacks/ingredient/bacon = 300
 
 	)
 	result = /obj/item/reagent_containers/food/snacks/hatchling_suprise
 
 /datum/cooking_recipe/riztizkzi_sea
 	items = list(
-		/obj/item/reagent_containers/food/snacks/ingredient/egg = 3
+		/obj/item/reagent_containers/food/snacks/ingredient/egg = 300
 	)
 	reagents = list("blood" = 15)
 	result = /obj/item/reagent_containers/food/snacks/riztizkzi_sea
 
 /datum/cooking_recipe/father_breakfast
 	items = list(
-		/obj/item/reagent_containers/food/snacks/ingredient/sausage,
+		/obj/item/reagent_containers/food/snacks/ingredient/sausage = 100,
 		/obj/item/reagent_containers/food/snacks/omelette,
 		/obj/item/reagent_containers/food/snacks/meatsteak
 	)
@@ -465,30 +465,30 @@ custom foods handle soups pretty well, so
 
 /datum/cooking_recipe/stuffed_meatball
 	items = list(
-		/obj/item/reagent_containers/food/snacks/ingredient/meatball,
-		/obj/item/reagent_containers/food/snacks/ingredient/cheesewedge
+		/obj/item/reagent_containers/food/snacks/ingredient/meatball = 20,
+		/obj/item/reagent_containers/food/snacks/ingredient/cheesewedge = 100
 	)
 	fruit = list("cabbage" = 1)
 	result = /obj/item/reagent_containers/food/snacks/stuffed_meatball
 
 /datum/cooking_recipe/egg_pancake
 	items = list(
-		/obj/item/reagent_containers/food/snacks/ingredient/meatball = 3,
+		/obj/item/reagent_containers/food/snacks/ingredient/meatball = 300,
 		/obj/item/reagent_containers/food/snacks/omelette
 	)
 	result = /obj/item/reagent_containers/food/snacks/egg_pancake
 
 /datum/cooking_recipe/grilled_carp
 	items = list(
-		/obj/item/reagent_containers/food/snacks/ingredient/carp = 6
+		/obj/item/reagent_containers/food/snacks/ingredient/carp = 600
 	)
 	reagents = list("spacespice" = 1)
-	fruit = list("cabbage" = 1, "lime" = 1)
+	fruit = list("lime" = 20)
 	result = /obj/item/reagent_containers/food/snacks/sliceable/grilled_carp
 
 /datum/cooking_recipe/bacon_stick
 	items = list(
-		/obj/item/reagent_containers/food/snacks/ingredient/bacon,
+		/obj/item/reagent_containers/food/snacks/ingredient/bacon = 100,
 		/obj/item/reagent_containers/food/snacks/boiledegg
 	)
 	result = /obj/item/reagent_containers/food/snacks/bacon_stick
@@ -497,36 +497,36 @@ custom foods handle soups pretty well, so
 	reagents = list("water" = 5, "rice" = 10)
 	reagent_mix = RECIPE_REAGENT_REPLACE
 	items = list(
-		/obj/item/reagent_containers/food/snacks/ingredient/bacon
+		/obj/item/reagent_containers/food/snacks/ingredient/bacon = 100
 	)
 	result = /obj/item/reagent_containers/food/snacks/porkbowl
 
 /datum/cooking_recipe/goulash
-	fruit = list("tomato" = 1)
+	fruit = list("tomato" = 100)
 	items = list(
-		/obj/item/reagent_containers/food/snacks/ingredient/cutlet,
-		/obj/item/reagent_containers/food/snacks/ingredient/spaghetti
+		/obj/item/reagent_containers/food/snacks/ingredient/cutlet = 100,
+		/obj/item/reagent_containers/food/snacks/ingredient/spaghetti = 100
 	)
 	result = /obj/item/reagent_containers/food/snacks/goulash
 
 /datum/cooking_recipe/hotandsoursoup
-	fruit = list("cabbage" = 1, "mushroom" = 1)
+	fruit = list("cabbage" = 50, "mushroom" = 50)
 	reagents = list("sodiumchloride" = 2, "blackpepper" = 2, "water" = 10)
 	items = list(
-		/obj/item/reagent_containers/food/snacks/ingredient/tofu
+		/obj/item/reagent_containers/food/snacks/ingredient/tofu = 100
 	)
 	result = /obj/item/reagent_containers/food/snacks/hotandsoursoup
 
 /datum/cooking_recipe/kitsuneudon
 	reagents = list("egg" = 3)
 	items = list(
-		/obj/item/reagent_containers/food/snacks/ingredient/spaghetti,
-		/obj/item/reagent_containers/food/snacks/ingredient/tofu
+		/obj/item/reagent_containers/food/snacks/ingredient/spaghetti = 100,
+		/obj/item/reagent_containers/food/snacks/ingredient/tofu = 100
 	)
 	result = /obj/item/reagent_containers/food/snacks/kitsuneudon
 
 /datum/cooking_recipe/diggerstew
-	fruit = list("carrot" = 1, "mushroom" = 1)
+	fruit = list("carrot" = 100, "mushroom" = 100)
 	reagents = list("spacespice" = 2, "water" = 10)
 	items = list(
 		/obj/item/reagent_containers/food/snacks/bait/worm,
@@ -536,7 +536,7 @@ custom foods handle soups pretty well, so
 	result = /obj/item/reagent_containers/food/snacks/diggerstew
 
 /datum/cooking_recipe/diggerstew_pot
-	fruit = list("carrot" = 1, "potato" = 1, "mushroom" = 1)
+	fruit = list("carrot" = 300, "potato" = 300, "mushroom" = 200)
 	reagents = list("spacespice" = 2, "water" = 10)
 	items = list(
 		/obj/item/reagent_containers/food/snacks/bait/worm,
@@ -546,72 +546,70 @@ custom foods handle soups pretty well, so
 	result = /obj/item/reagent_containers/food/snacks/diggerstew_pot
 
 /datum/cooking_recipe/full_goss
-	fruit = list("carrot" = 1, "mushroom" = 1)
+	fruit = list("carrot" = 100, "mushroom" = 100)
 	items = list(
 		/obj/item/reagent_containers/food/snacks/friedegg,
-		/obj/item/reagent_containers/food/snacks/ingredient/meat/grubmeat
+		/obj/item/reagent_containers/food/snacks/ingredient/meat/grubmeat = 100
 	)
 	result = /obj/item/reagent_containers/food/snacks/full_goss
 
 /datum/cooking_recipe/chickensatay
-	fruit = list("peanut" = 1, "lime" = 1)
+	fruit = list("peanut" = 10, "lime" = 10)
+	reagents = list("water" = 5, "milk" = 5, "soysauce" = 5, "sodiumchloride" = 1, "sugar" = 1)
 	items = list(
 		/obj/item/stack/rods,
-		/obj/item/reagent_containers/food/snacks/ingredient/meat/chicken,
-		/obj/item/reagent_containers/food/snacks/yellowcurry
+		/obj/item/reagent_containers/food/snacks/ingredient/meat/chicken = 100,
 	)
-	reagents = list("water" = 5, "milk" = 5, "soysauce" = 5, "sodiumchloride" = 1, "sugar" = 1)
 	result = /obj/item/reagent_containers/food/snacks/chickensatay
 
 /datum/cooking_recipe/spider_wingfangchu
 	reagents = list("soysauce" = 5)
 	items = list(
-		/obj/item/reagent_containers/food/snacks/ingredient/xenomeat/spidermeat
+		/obj/item/reagent_containers/food/snacks/ingredient/xenomeat/spidermeat = 100
 	)
 	result = /obj/item/reagent_containers/food/snacks/spider_wingfangchu
 
 
 /datum/cooking_recipe/mushroompasta
-	fruit = list("mushroom" = 1)
-	items = list(/obj/item/reagent_containers/food/snacks/ingredient/spaghetti)
+	fruit = list("mushroom" = 100)
+	items = list(/obj/item/reagent_containers/food/snacks/ingredient/spaghetti = 100)
 	reagents = list("water" = 5)
 	result = /obj/item/reagent_containers/food/snacks/mushroompasta
 
 /datum/cooking_recipe/carbonara
 	items = list(
-		/obj/item/reagent_containers/food/snacks/ingredient/spaghetti,
-		/obj/item/reagent_containers/food/snacks/ingredient/cheesewedge,
-		/obj/item/reagent_containers/food/snacks/ingredient/egg,
-		/obj/item/reagent_containers/food/snacks/ingredient/meat
+		/obj/item/reagent_containers/food/snacks/ingredient/spaghetti = 100,
+		/obj/item/reagent_containers/food/snacks/ingredient/cheesewedge = 100,
+		/obj/item/reagent_containers/food/snacks/ingredient/egg = 100,
+		/obj/item/reagent_containers/food/snacks/ingredient/meat = 100
 	)
 	reagents = list("water" = 5, "sodiumchloride" = 1, "blackpepper" = 1)
 	result = /obj/item/reagent_containers/food/snacks/carbonara
 
 /datum/cooking_recipe/bloodsausage
 	items = list(
-		/obj/item/reagent_containers/food/snacks/ingredient/sausage
+		/obj/item/reagent_containers/food/snacks/ingredient/sausage = 100
 	)
 	reagents = list("blood" = 15)
 	result = /obj/item/reagent_containers/food/snacks/bloodsausage
 
 /datum/cooking_recipe/weisswurst
-	fruit = list("onion" = 1, "lemon" = 1)
-	items = list(/obj/item/reagent_containers/food/snacks/ingredient/sausage)
+	fruit = list("onion" = 20, "lemon" = 20)
+	items = list(/obj/item/reagent_containers/food/snacks/ingredient/sausage = 100)
 	reagents = list("water" = 15, "sodiumchloride" = 1)
 	result = /obj/item/reagent_containers/food/snacks/weisswurst
 
 /datum/cooking_recipe/shrimpfriedrice
-	fruit = list("corn" = 1, "carrot" = 1, "peas" = 1)
+	fruit = list("corn" = 100, "carrot" = 100, "peas" = 100)
 	reagents = list("water" = 5, "sodiumchloride" = 5)
 	items = list(
-		/obj/item/reagent_containers/food/snacks/ingredient/shrimp,
-		/obj/item/reagent_containers/food/snacks/ingredient/shrimp,
+		/obj/item/reagent_containers/food/snacks/ingredient/shrimp = 100,
 		/obj/item/reagent_containers/food/snacks/boiledrice
 	)
 	result = /obj/item/reagent_containers/food/snacks/shrimpfriedrice
 
 /datum/cooking_recipe/bowl_peas
-	fruit = list("peas" = 4)
+	fruit = list("peas" = 400) //fuck it, almost half a kilo of peas. have fun
 	reagents = list("water" = 5, "sodiumchloride" = 1)
 	items = list(
 		/obj/item/reagent_containers/food/snacks/spreads/butter
@@ -633,20 +631,20 @@ custom foods handle soups pretty well, so
 
 /datum/cooking_recipe/sausage
 	items = list(
-		/obj/item/reagent_containers/food/snacks/ingredient/meatball,
-		/obj/item/reagent_containers/food/snacks/ingredient/cutlet
+		/obj/item/reagent_containers/food/snacks/ingredient/meatball = 100,
+		/obj/item/reagent_containers/food/snacks/ingredient/cutlet = 100
 	)
 	result = /obj/item/reagent_containers/food/snacks/ingredient/sausage
 	result_quantity = 2
 
 /datum/cooking_recipe/chawanmushi
-	fruit = list("mushroom" = 1)
+	fruit = list("mushroom" = 100)
 	reagents = list("water" = 5, "soysauce" = 5, "egg" = 6)
 	reagent_mix = RECIPE_REAGENT_REPLACE
 	result = /obj/item/reagent_containers/food/snacks/chawanmushi
 
 /datum/cooking_recipe/frenchonionsoup
-	fruit = list("onion" = 1)
-	items = list(/obj/item/reagent_containers/food/snacks/ingredient/cheesewedge)
+	fruit = list("onion" = 100)
+	items = list(/obj/item/reagent_containers/food/snacks/ingredient/cheesewedge = 100)
 	reagents = list("water" = 10, "sodiumchloride" = 1, "sugar" = 1)
 	result = /obj/item/reagent_containers/food/snacks/frenchonionsoup

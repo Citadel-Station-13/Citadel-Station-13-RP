@@ -121,7 +121,7 @@
 	reagents = list("frostoil" = 10, "capsaicin" = 10, "sugar" = 10, "batter" = 5)
 	reagent_mix = RECIPE_REAGENT_REPLACE //This creates its own reagents
 	items = list(
-		/obj/item/reagent_containers/food/snacks/ingredient/transformable/dough/slice = 20
+		/obj/item/reagent_containers/food/snacks/ingredient/transformable/dough/slice = 40
 	)
 	result = /obj/item/reagent_containers/food/snacks/donut/chaos
 	result_quantity = 2
@@ -134,16 +134,17 @@
 /datum/cooking_recipe/pisanggoreng
 	required_method = METHOD_DEEPFRY
 	fruit = list("banana" = 200)
+	reagents = list("batter" = 5)
 	reagent_mix = RECIPE_REAGENT_REPLACE //Simplify end product
 	result = /obj/item/reagent_containers/food/snacks/pisanggoreng
-	reagents = list("batter" = 5)
+
 
 /datum/cooking_recipe/corn_dog
 	required_method = METHOD_DEEPFRY
 	items = list(
 		/obj/item/reagent_containers/food/snacks/ingredient/sausage = 100
 	)
-	fruit = list("corn" = 1)
+	fruit = list("corn" = 100)
 	reagents = list("batter" = 5)
 	result = /obj/item/reagent_containers/food/snacks/corn_dog
 
@@ -192,7 +193,7 @@
 /datum/cooking_recipe/nugget
 	reagents = list("flour" = 5)
 	items = list(
-		/obj/item/reagent_containers/food/snacks/ingredient/meat/chicken
+		/obj/item/reagent_containers/food/snacks/ingredient/meat/chicken = 10
 	)
 	reagent_mix = RECIPE_REAGENT_REPLACE
 	result = /obj/item/reagent_containers/food/snacks/nugget
@@ -204,10 +205,10 @@
 
 //Goblin Food Goblin Food
 /datum/cooking_recipe/cavenuggets
-	fruit = list("mushroom" = 1)
+	fruit = list("mushroom" = 100)
 	items = list(
-		/obj/item/reagent_containers/food/snacks/ingredient/meatball,
-		/obj/item/reagent_containers/food/snacks/ingredient/meat/grubmeat,
+		/obj/item/reagent_containers/food/snacks/ingredient/meatball = 100,
+		/obj/item/reagent_containers/food/snacks/ingredient/meat/grubmeat = 100,
 		/obj/item/reagent_containers/food/snacks/spreads/butter
 	)
 	result = /obj/item/reagent_containers/food/snacks/cavenuggets
