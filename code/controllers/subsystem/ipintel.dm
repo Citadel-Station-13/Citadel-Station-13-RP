@@ -20,7 +20,7 @@ SUBSYSTEM_DEF(ipintel)
 	/// max retries
 	var/max_retries = 1
 
-/datum/controller/subsystem/ipintel/OnConfigLoad()
+/datum/controller/subsystem/ipintel/on_config_reload()
 	. = ..()
 	enabled = !!CONFIG_GET(flag/ipintel_enabled)
 	consequetive_errors = 0

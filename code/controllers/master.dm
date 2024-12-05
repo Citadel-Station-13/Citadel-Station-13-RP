@@ -883,10 +883,10 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 		var/datum/controller/subsystem/SS = S
 		SS.StopLoadingMap()
 
-/datum/controller/master/proc/OnConfigLoad()
+/datum/controller/master/proc/on_config_reload()
 	for (var/thing in subsystems)
 		var/datum/controller/subsystem/SS = thing
-		SS.OnConfigLoad()
+		SS.on_config_reload()
 
 /**
  * CitRP snowflake special: Check if any subsystems are sleeping.

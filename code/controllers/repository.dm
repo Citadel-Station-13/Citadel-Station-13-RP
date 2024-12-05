@@ -195,8 +195,10 @@
  *   After this call, the repository now owns the instance, not whichever system created it.
  */
 /datum/controller/repository/proc/register(datum/prototype/instance)
-	return load(instance)
-	#warn db store
+	. = load(instance)
+	if(!.)
+		return
+	handle_db_store(instance)
 
 //* Private API *//
 
@@ -252,10 +254,20 @@
 	PROTECTED_PROC(TRUE)
 
 /datum/controller/repository/proc/handle_db_store(datum/prototype/instance)
+	if(!global.toml_config.get_entry(/datum/toml_config_entry/backend/repository/persistence))
+		return
 	doesnt_exist_cache -= instance.id
 
 /datum/controller/repository/proc/handle_db_load(instance_id)
 	if(doesnt_exist_cache[instance_id])
+		return
+
+	var/const/doesnt_exist_cache_trim_at = 1000
+	var/const/doesnt_exist_cache_trim_to = 500
+	if(!global.toml_config.get_entry(/datum/toml_config_entry/backend/repository/persistence))
+		doesnt_exist_cache[instance_id] = TRUE
+		if(length(doesnt_exist_cache) > doesnt_exist_cache_trim_at)
+			doesnt_exist_cache.len = doesnt_exist_cache_trim_to
 		return
 
 

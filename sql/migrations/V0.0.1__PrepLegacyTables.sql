@@ -1,3 +1,5 @@
+-- DIRECT RIP FROM OLD PREFIXED TABLES FILE!! --
+
 /**
  * make sure to bump schema version and mark changes in database_changelog.md!
  *

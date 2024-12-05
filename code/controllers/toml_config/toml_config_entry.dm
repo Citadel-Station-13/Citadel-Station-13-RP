@@ -39,4 +39,62 @@
 	/// * does not actually imply [vv_locked] and [vv_secret]
 	var/sensitive = FALSE
 
-#warn impl
+/datum/toml_config_entry/vv_edit_var(var_name, var_value, mass_edit, raw_edit)
+	switch(var_name)
+		if(NAMEOF(src, default))
+			return FALSE
+		if(NAMEOF(src, value))
+			if(vv_locked)
+				return FALSE
+		if(NAMEOF(src, key))
+			return FALSE
+		if(NAMEOF(src, category))
+			return FALSE
+		if(NAMEOF(src, desc))
+			return FALSE
+		if(NAMEOF(src, vv_locked))
+			return FALSE
+		if(NAMEOF(src, vv_secret))
+			return FALSE
+		if(NAMEOF(src, sensitive))
+			return FALSE
+	return ..()
+
+/datum/toml_config_entry/vv_get_var(var_name, resolve)
+	switch(var_name)
+		if(NAMEOF(src, value))
+			if(vv_locked)
+				return "-- secret --"
+	return ..()
+
+/datum/toml_config_entry/CanProcCall(procname)
+	switch(procname)
+		if(NAMEOF_PROC(src, reset))
+			return FALSE
+		if(NAMEOF_PROC(src, apply))
+			return FALSE
+	return ..()
+
+/**
+ * Called once when resetting.
+ */
+/datum/toml_config_entry/proc/reset()
+	if(isnum(default))
+		value = default
+	else if(istext(default))
+		value = default
+	else if(islist(default))
+		value = deep_copy_list(default)
+	else
+		CRASH("unexpected value in default.")
+
+/**
+ * Called once with the value from each load.
+ *
+ * Can be used to overlay values.
+ *
+ * @params
+ * * raw_config_value - Raw parsed data. We own the reference to this once this proc is called.
+ */
+/datum/toml_config_entry/proc/apply(raw_config_value)
+	value = raw_config_value
