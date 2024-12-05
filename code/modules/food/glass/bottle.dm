@@ -192,4 +192,4 @@
 	desc = "A unlabeled bottle that seems to be filled with ethanol. The fumes burn the air around you."
 	icon = 'icons/obj/medical/chemical.dmi'
 	icon_state = "bottle-4"
-	prefill = list("superhol" = 60)
+	prefill = list(/datum/reagent/superhol = 60)
