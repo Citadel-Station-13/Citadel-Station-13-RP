@@ -3,7 +3,7 @@
 
 // todo: sensical admin rights
 // todo: better verb category
-ADMIN_VERB_DEF(upload_map_sector, R_ADMIN, "Create Map Sector", "Create or upload a custom map.", VERB_CATEGORY_ADMIN)
+ADMIN_VERB_DEF(upload_map_sector, R_ADMIN, "Upload Map Sector", "Upload a custom map.", VERB_CATEGORY_ADMIN)
 	caller.holder.open_admin_modal(/datum/admin_modal/upload_map_sector)
 
 /**

@@ -50,7 +50,7 @@ VV_PROTECT_READONLY(/datum/admin_modal)
 	ui_interact(owner.owner.mob)
 
 /datum/admin_modal/proc/Initialize()
-	return
+	return TRUE
 
 /**
  * Call to complain about a failure in doing something.
