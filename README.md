@@ -42,8 +42,12 @@ On **May 9, 2022** we have changed the way to compile the codebase.
 ## SQL Setup
 
 The SQL backend for the library and stats tracking requires a MariaDB server.
-Your server details go in /config/legacy/dbconfig.txt, and the SQL schema is in /SQL/tgstation_schema.sql.
-More detailed setup instructions arecoming soon, for now ask in our Discord.
+Your server details go in /config/legacy/dbconfig.txt.
+
+Flyway is used for setup and migration. Run the migrations in `sql/migrations` against your database, and everything should just work.
+We do not use table prefixes.
+
+More detailed setup instructions are coming soon, for now ask in our Discord.
 
 todo: update this section
 

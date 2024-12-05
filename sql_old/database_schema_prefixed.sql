@@ -18,6 +18,21 @@ CREATE TABLE IF NOT EXISTS `rp_schema_revision` (
   PRIMARY KEY (`major`, `minor`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--                     Backend Stores                    --
+--                                                       --
+
+CREATE TABLE IF NOT EXISTS `rp_backend_repository` (
+  `repository` VARCHAR(64) NOT NULL,
+  `id` VARCHAR(128) NOT NULL,
+  `version` INT(11) NOT NULL,
+  `data` MEDIUMTEXT NOT NULL,
+  `storedTime` DATETIME NOT NULL DEFAULT Now(),
+  `modifiedTime` DATETIME NOT NULL DEFAULT Now(),
+  PRIMARY KEY(`repository`, `id`),
+  INDEX(`repository`),
+  INDEX(`id`)
+)
+
 -- persistence --
 
 -- SSpersistence modules/bulk_entity
@@ -379,13 +394,6 @@ CREATE TABLE IF NOT EXISTS `rp_privacy` (
   `ckey` varchar(32) NOT NULL,
   `option` varchar(128) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
-CREATE TABLE IF NOT EXISTS `rp_vr_player_hours` (
-  `ckey` varchar(32) CHARACTER SET latin1 COLLATE latin1_general_ci NOT NULL,
-  `department` varchar(64) CHARACTER SET latin1 COLLATE latin1_general_ci NOT NULL,
-  `hours` double NOT NULL,
-  PRIMARY KEY (`ckey`,`department`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 CREATE TABLE IF NOT EXISTS `rp_death` (
