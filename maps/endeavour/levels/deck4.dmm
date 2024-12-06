@@ -4464,7 +4464,7 @@
 	tag_west = 1;
 	tag_north = 2;
 	tag_east_con = 0.79;
-	tag_west_con = .21
+	tag_west_con = 0.21
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/atmos)
