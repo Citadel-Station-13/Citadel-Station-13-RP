@@ -33,5 +33,3 @@ REPOSITORY_DEF(designs)
 		autolathe_design_ids -= instance.id
 	if(istype(instance, /datum/prototype/design/medical))
 		medical_mini_design_ids -= instance.id
-
-#warn persistence-ify designs
