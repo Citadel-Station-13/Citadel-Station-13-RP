@@ -88,8 +88,17 @@ ADMIN_VERB_DEF(upload_map_sector, R_ADMIN, "Upload Map Sector", "Upload a custom
 	.["primed"] = primed
 	.["ready"] = ready
 	.["levels"] = length(buffer.levels)
-	.["staged"] = primed ? list(
 
+/datum/admin_modal/upload_map_sector/ui_static_data(mob/user, datum/tgui/ui)
+	. = ..()
+	.["staged"] = primed ? list(
+		"computedWidth" = computed_width,
+		"computedHeight" = computed_height,
+		"computedTurfs" = computed_turf_count,
+		"computedLoad" = computed_utilization,
+		"computedZStart" = computed_start_z,
+		"computedZEnd" = computed_end_z,
+		"errors" = computed_errors,
 	) : null
 
 /datum/admin_modal/upload_map_sector/ui_asset_injection(datum/tgui/ui, list/immediate, list/deferred)
@@ -120,22 +129,36 @@ ADMIN_VERB_DEF(upload_map_sector, R_ADMIN, "Upload Map Sector", "Upload a custom
 			update_map_data()
 			. = TRUE
 		if("mapOrientation")
+			if(!(params["orient"] in GLOB.cardinal))
+				return
+			buffer.orientation = params["orient"]
 			update_map_data()
 			. = TRUE
 		if("mapCenter")
+			buffer.center = !buffer.center
 			update_map_data()
 			. = TRUE
 		// overmap //
 		if("overmapActive")
+			overmap_active = !overmap_active
+			if(!istype(buffer.overmap_initializer, /datum/overmap_initializer/struct))
+				buffer.overmap_initializer = new /datum/overmap_initializer/struct
 			update_overmap_data()
 			. = TRUE
 		if("overmapX")
+			if(!is_safe_number(params["setTo"]))
+				return
+			buffer.overmap_initializer.manual_position_x = params["setTo"]
 			update_overmap_data()
 			. = TRUE
 		if("overmapY")
+			if(!is_safe_number(params["setTo"]))
+				return
+			buffer.overmap_initializer.manual_position_y = params["setTo"]
 			update_overmap_data()
 			. = TRUE
 		if("overmapForcePosition")
+			buffer.overmap_initializer.manual_position_is_strong_suggestion = !buffer.overmap_initializer.manual_position_is_strong_suggestion
 			update_overmap_data()
 			. = TRUE
 		// levels //
@@ -206,7 +229,16 @@ ADMIN_VERB_DEF(upload_map_sector, R_ADMIN, "Upload Map Sector", "Upload a custom
 	)
 
 /datum/admin_modal/upload_map_sector/proc/overmap_data()
+	if(!istype(buffer.overmap_initializer, /datum/overmap_initializer/struct))
+		return list(
+			"x" = 0,
+			"y" = 0,
+			"forcePos" = FALSE,
+		)
 	return list(
+		"x" = buffer.overmap_initializer.manual_position_x,
+		"y" = buffer.overmap_initializer.manual_position_y,
+		"forcePos" = buffer.overmap_initializer.manual_position_is_strong_suggestion,
 	)
 
 /datum/admin_modal/upload_map_sector/proc/update_overmap_data()
@@ -226,6 +258,7 @@ ADMIN_VERB_DEF(upload_map_sector, R_ADMIN, "Upload Map Sector", "Upload a custom
 	)
 
 /datum/admin_modal/upload_map_sector/proc/prime()
+	computed_errors = list()
 	#warn check bounds
 	#warn sort up/down levels as needed
 
