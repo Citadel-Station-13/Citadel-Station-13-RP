@@ -1458,7 +1458,7 @@
 /obj/item/stack/nanopaste,
 /obj/item/stack/nanopaste,
 /obj/item/stack/nanopaste,
-/obj/item/defib_kit/jumper_kit/loaded,
+/obj/item/defib_kit/loaded,
 /obj/item/defib_kit/compact/loaded,
 /turf/simulated/floor/tiled/white,
 /area/shuttle/tabiranth)

@@ -513,7 +513,7 @@
 /obj/effect/transit/light{
 	dir = 4
 	},
-/turf/unsimulated/mineral{
+/turf/unsimulated/wall/mineral{
 	icon_state = "rock"
 	},
 /area/space)
@@ -2099,7 +2099,7 @@
 /turf/unsimulated/beach/sand,
 /area/beach)
 "rW" = (
-/turf/simulated/sky/virgo3b/south,
+/turf/simulated/fake_sky/virgo3b/south,
 /area/space)
 "rZ" = (
 /obj/structure/morgue/crematorium{
@@ -2807,7 +2807,7 @@
 /obj/effect/transit/light{
 	dir = 8
 	},
-/turf/unsimulated/mineral{
+/turf/unsimulated/wall/mineral{
 	icon_state = "rock"
 	},
 /area/space)
@@ -3051,7 +3051,7 @@
 /turf/space/transit/north,
 /area/space)
 "zb" = (
-/turf/unsimulated/mineral{
+/turf/unsimulated/wall/mineral{
 	icon_state = "rock"
 	},
 /area/space)
@@ -3675,11 +3675,11 @@
 "DY" = (
 /obj/effect/shuttle_landmark/transit{
 	base_area = /area/space;
-	base_turf = /turf/simulated/sky/virgo3b/south;
+	base_turf = /turf/simulated/fake_sky/virgo3b/south;
 	landmark_tag = "tether_backup_transit";
 	name = "Tether Backup Transit"
 	},
-/turf/simulated/sky/virgo3b/south,
+/turf/simulated/fake_sky/virgo3b/south,
 /area/space)
 "Ea" = (
 /obj/machinery/door/airlock/alien/public,
@@ -3776,7 +3776,7 @@
 	name = "thrower_escapeshuttletop(right)";
 	tiles = 0
 	},
-/turf/simulated/sky/virgo3b/south,
+/turf/simulated/fake_sky/virgo3b/south,
 /area/space)
 "EI" = (
 /obj/effect/step_trigger/teleporter/planetary_fall/virgo3b,
@@ -3908,7 +3908,7 @@
 /area/shuttle/escape)
 "Fz" = (
 /obj/effect/step_trigger/teleporter/planetary_fall/virgo3b,
-/turf/simulated/sky/virgo3b/south,
+/turf/simulated/fake_sky/virgo3b/south,
 /area/space)
 "FA" = (
 /obj/effect/floor_decal/corner/green/full{
@@ -5453,7 +5453,7 @@
 	stopper = 0;
 	tiles = 0
 	},
-/turf/simulated/sky/virgo3b/south,
+/turf/simulated/fake_sky/virgo3b/south,
 /area/space)
 "QI" = (
 /turf/simulated/floor/tiled/steel,
@@ -5489,7 +5489,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/centcom/simulated/living)
 "QQ" = (
-/turf/unsimulated/mineral/virgo3b,
+/turf/unsimulated/wall/mineral,
 /area/centcom/simulated/terminal)
 "QS" = (
 /obj/structure/closet/secure_closet/brig{
@@ -5535,7 +5535,7 @@
 	name = "thrower_escapeshuttletop(left)";
 	tiles = 0
 	},
-/turf/simulated/sky/virgo3b/south,
+/turf/simulated/fake_sky/virgo3b/south,
 /area/space)
 "Rt" = (
 /obj/structure/bed/chair,
@@ -6482,7 +6482,7 @@
 /turf/simulated/floor/holofloor/beach/water,
 /area/holodeck/source_beach)
 "Yi" = (
-/turf/unsimulated/mineral/virgo3b,
+/turf/unsimulated/wall/mineral,
 /area/space)
 "Yj" = (
 /obj/structure/holostool,
@@ -6697,7 +6697,7 @@
 	teleport_z = 6;
 	teleport_z_offset = 6
 	},
-/turf/simulated/sky/virgo3b/south,
+/turf/simulated/fake_sky/virgo3b/south,
 /area/space)
 "Zz" = (
 /obj/effect/step_trigger/thrower{

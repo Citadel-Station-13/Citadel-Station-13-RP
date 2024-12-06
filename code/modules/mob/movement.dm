@@ -13,16 +13,6 @@
 /client/proc/client_dir(input, direction=-1)
 	return turn(input, direction*dir2angle(dir))
 
-/client/verb/swap_hand()
-	set hidden = 1
-	if(istype(mob, /mob/living))
-		var/mob/living/L = mob
-		L.swap_hand()
-	if(istype(mob,/mob/living/silicon/robot))
-		var/mob/living/silicon/robot/R = mob
-		R.cycle_modules()
-	return
-
 /client/verb/drop_item()
 	set hidden = 1
 
@@ -244,7 +234,7 @@
 	//? NOW we try to move.
 
 	// get additional delay from this move
-	var/add_delay = mob.movement_delay()
+	var/add_delay = max(world.tick_lag, mob.movement_delay())
 	//! TODO: REMOVE ; COMPATABILITY LAYER TO USE NEW MOVESPEED.
 	add_delay = min(10 / ((10 / add_delay) * (1 * mob.cached_movespeed_multiply)), 10 / MOVESPEED_ABSOLUTE_MINIMUM_TILES_PER_SECOND)
 	//! END

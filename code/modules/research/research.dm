@@ -110,7 +110,7 @@ research holder datum.
 ///Input/Output: n/a
 /datum/research/proc/RefreshResearch()
 	if(stores_designs)
-		for(var/datum/prototype/design/PD in RSdesigns.fetch_subtypes(/datum/prototype/design))
+		for(var/datum/prototype/design/PD in RSdesigns.fetch_subtypes_immutable(/datum/prototype/design))
 			if(DesignHasReqs(PD))
 				AddDesign2Known(PD)
 	for(var/datum/tech/T in known_tech)

@@ -12,8 +12,6 @@
 	var/list/adding = list()
 	var/list/other = list()
 	var/list/hotkeybuttons = list()
-	var/list/slot_info = list()
-	var/list/hand_info = list()
 
 	hud.adding = adding
 	hud.other = other
@@ -21,42 +19,6 @@
 
 	var/list/hud_elements = list()
 	var/atom/movable/screen/using
-	var/atom/movable/screen/inventory/slot/inv_box
-
-	var/has_hidden_gear
-	if(LAZYLEN(hud_gears))
-		for(var/gear_slot in hud_gears)
-			inv_box = new /atom/movable/screen/inventory()
-			inv_box.icon = ui_style
-			inv_box.color = ui_color
-			inv_box.alpha = ui_alpha
-
-			var/list/slot_data =  hud_gears[gear_slot]
-			inv_box.name =        gear_slot
-			inv_box.screen_loc =  slot_data["loc"]
-			inv_box.slot_id =     slot_data["slot"]
-			inv_box.icon_state =  slot_data["state"]
-			slot_info["[inv_box.slot_id]"] = inv_box.screen_loc
-
-			if(slot_data["dir"])
-				inv_box.setDir(slot_data["dir"])
-
-			if(slot_data["toggle"])
-				other += inv_box
-				has_hidden_gear = 1
-			else
-				adding += inv_box
-
-	if(has_hidden_gear)
-		using = new /atom/movable/screen()
-		using.name = "toggle"
-		using.icon = ui_style
-		using.icon_state = "other"
-		using.screen_loc = ui_inventory
-		using.hud_layerise()
-		using.color = ui_color
-		using.alpha = ui_alpha
-		adding += using
 
 	//Intent Backdrop
 	using = new /atom/movable/screen()
@@ -82,7 +44,7 @@
 	using.icon = ico
 	using.screen_loc = ui_acti
 	using.alpha = ui_alpha
-	using.layer = HUD_LAYER_ITEM //These sit on the intent box
+	using.layer = HUD_LAYER_ABOVE //These sit on the intent box
 	hud.adding += using
 	hud.help_intent = using
 
@@ -94,7 +56,7 @@
 	using.icon = ico
 	using.screen_loc = ui_acti
 	using.alpha = ui_alpha
-	using.layer = HUD_LAYER_ITEM
+	using.layer = HUD_LAYER_ABOVE
 	hud.adding += using
 	hud.disarm_intent = using
 
@@ -106,7 +68,7 @@
 	using.icon = ico
 	using.screen_loc = ui_acti
 	using.alpha = ui_alpha
-	using.layer = HUD_LAYER_ITEM
+	using.layer = HUD_LAYER_ABOVE
 	hud.adding += using
 	hud.grab_intent = using
 
@@ -118,7 +80,7 @@
 	using.icon = ico
 	using.screen_loc = ui_acti
 	using.alpha = ui_alpha
-	using.layer = HUD_LAYER_ITEM
+	using.layer = HUD_LAYER_ABOVE
 	hud.adding += using
 	hud.hurt_intent = using
 
@@ -219,7 +181,7 @@
 	hud_elements |= zone_sel
 
 	//Hand things
-	if(has_hands)
+	if(get_nominal_hand_count() > 0)
 		//Drop button
 		using = new /atom/movable/screen()
 		using.name = "drop"
@@ -229,68 +191,6 @@
 		using.color = ui_color
 		using.alpha = ui_alpha
 		hud.hotkeybuttons += using
-
-		//Equip detail
-		using = new /atom/movable/screen()
-		using.name = "equip"
-		using.icon = ui_style
-		using.icon_state = "act_equip"
-		using.screen_loc = ui_equip
-		using.color = ui_color
-		using.alpha = ui_alpha
-		hud.adding += using
-
-		//Hand slots themselves
-		var/atom/movable/screen/inventory/hand/right/right_hand = new
-		right_hand.index = 2
-		using = right_hand
-		using.hud = src
-		using.name = "r_hand"
-		using.icon = ui_style
-		using.icon_state = "r_hand_inactive"
-		if(!hand)	//This being 0 or null means the right hand is in use
-			using.icon_state = "r_hand_active"
-		using.screen_loc = ui_rhand
-		using.color = ui_color
-		using.alpha = ui_alpha
-		hud.r_hand_hud_object = using
-		hud.adding += using
-		hand_info["2"] = using.screen_loc
-
-		var/atom/movable/screen/inventory/hand/left/left_hand = new
-		left_hand.index = 1
-		using = left_hand
-		using.hud = src
-		using.name = "l_hand"
-		using.icon = ui_style
-		using.icon_state = "l_hand_inactive"
-		if(hand)	//This being 1 means the left hand is in use
-			using.icon_state = "l_hand_active"
-		using.screen_loc = ui_lhand
-		using.color = ui_color
-		using.alpha = ui_alpha
-		hud.l_hand_hud_object = using
-		hud.adding += using
-		hand_info["1"] = using.screen_loc
-
-		//Swaphand titlebar
-		using = new /atom/movable/screen/inventory/swap_hands
-		using.name = "hand"
-		using.icon = ui_style
-		using.icon_state = "hand1"
-		using.screen_loc = ui_swaphand1
-		using.color = ui_color
-		using.alpha = ui_alpha
-		hud.adding += using
-
-		using = new /atom/movable/screen/inventory/swap_hands
-		using.name = "hand"
-		using.icon = ui_style
-		using.icon_state = "hand2"
-		using.screen_loc = ui_swaphand2
-		using.color = ui_color
-		using.alpha = ui_alpha
-		hud.adding += using
 
 		//Throw button
 		throw_icon = new /atom/movable/screen()

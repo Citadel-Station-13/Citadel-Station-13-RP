@@ -235,7 +235,7 @@
 	if(!hostile && !retaliate) // Not allowed to defend ourselves.
 		ai_log("react_to_attack_polaris() : Was attacked by [attacker], but we are not allowed to attack back.", AI_LOG_TRACE)
 		return FALSE
-	if(holder.IIsAlly(attacker)) // I'll overlook it THIS time...
+	if(ismob(attacker) && holder.IIsAlly(attacker)) // I'll overlook it THIS time...
 		ai_log("react_to_attack_polaris() : Was attacked by [attacker], but they were an ally.", AI_LOG_TRACE)
 		return FALSE
 	if(target) // Already fighting someone. Switching every time we get hit would impact our combat performance.

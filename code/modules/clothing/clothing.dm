@@ -269,7 +269,7 @@
 	if(!length(available))
 		to_chat(user, SPAN_WARNING("[src] can only be worn one way."))
 		return
-	var/choice = show_radial_menu(user, src, assembled, radius = 48)
+	var/choice = show_radial_menu(user, loc == user ? user : src, assembled, radius = 48)
 	if(isnull(choice))
 		return
 	set_style(choice, user)

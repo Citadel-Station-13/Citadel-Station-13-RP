@@ -75,7 +75,7 @@
 	name = "Minitest - Station"
 	display_id = "!debug-station"
 	display_name = "Minitest Debugging Map - Station"
-	absolute_path = "maps/minitest/levels/minitest.dmm"
+	path = "maps/minitest/levels/minitest.dmm"
 	traits = list(
 		ZTRAIT_STATION,
 		ZTRAIT_FACILITY_SAFETY,
@@ -88,7 +88,7 @@
 	name = "Minitest - Sector 1"
 	display_id = "!debug-sector-1"
 	display_name = "Minitest Debugging Map - Sector 1"
-	absolute_path = "maps/minitest/levels/sector1.dmm"
+	path = "maps/minitest/levels/sector1.dmm"
 	base_turf = /turf/simulated/floor/plating
 	flags = LEGACY_LEVEL_STATION | LEGACY_LEVEL_CONTACT | LEGACY_LEVEL_PLAYER | LEGACY_LEVEL_CONSOLES
 
@@ -97,6 +97,6 @@
 	name = "Minitest - Sector 2"
 	display_id = "!debug-sector-2"
 	display_name = "Minitest Debugging Map - Sector 2"
-	absolute_path = "maps/minitest/levels/sector2.dmm"
+	path = "maps/minitest/levels/sector2.dmm"
 	base_turf = /turf/simulated/floor/plating
 	flags = LEGACY_LEVEL_STATION | LEGACY_LEVEL_CONTACT | LEGACY_LEVEL_PLAYER | LEGACY_LEVEL_CONSOLES

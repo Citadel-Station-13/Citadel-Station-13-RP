@@ -31,7 +31,7 @@
 	var/eattiles = FALSE
 	var/maketiles = FALSE
 	var/targetdirection = null
-	var/floor_build_type = /singleton/flooring/tiling // Basic steel floor.
+	var/floor_build_type = /datum/prototype/flooring/tiling // Basic steel floor.
 	var/toolbox = /obj/item/storage/toolbox/mechanical
 	skin = "blue" // Blue Toolbox is the default
 
@@ -279,8 +279,7 @@
 			update_icons()
 			visible_message("<span class='notice'>\The [src] begins to remove the broken floor.</span>")
 			if(do_after(src, 50, F))
-				if(F.broken || F.burnt)
-					F.make_plating()
+				F.auto_dismantle_flooring()
 			target = null
 			busy = 0
 			update_icons()
@@ -290,7 +289,7 @@
 			visible_message("<span class='notice'>\The [src] begins to improve the floor.</span>")
 			if(do_after(src, 50))
 				if(!F.flooring)
-					F.set_flooring(get_flooring_data(floor_build_type))
+					F.set_flooring(RSflooring.fetch(floor_build_type))
 					addTiles(-1)
 			target = null
 			busy = 0

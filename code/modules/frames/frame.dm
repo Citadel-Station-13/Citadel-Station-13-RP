@@ -237,7 +237,7 @@ GLOBAL_LIST_INIT(frame_datum_lookup, init_frame_datums())
 		var/obj/item/frame2/collapsed
 		if(actor?.performer && put_in_hand_if_possible)
 			collapsed = new(actor.performer, src)
-			actor.performer.put_in_hand_or_drop(collapsed)
+			actor.performer.put_in_hands_or_drop(collapsed)
 		else
 			collapsed = new(frame.drop_location(), src)
 		return collapsed

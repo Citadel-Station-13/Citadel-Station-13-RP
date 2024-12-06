@@ -4399,7 +4399,7 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/hallway/primary/underone)
 "ms" = (
-/turf/unsimulated/wall/planetary/lythios43c{
+/turf/unsimulated/wall/planetary/permafrost{
 	desc = "Glacial permafrost, compacted harder than stone.";
 	icon_state = "icerock-dark"
 	},
@@ -7357,7 +7357,7 @@
 /area/maintenance/engineering)
 "wC" = (
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging,
-/turf/simulated/floor/outdoors/lava/indoors/geothermal,
+/turf/simulated/lava/indoors/geothermal,
 /area/rift/surfacebase/underground/under1)
 "wD" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -13884,7 +13884,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 8
 	},
-/obj/structure/sign/poster/nanotrasen{
+/obj/structure/poster/nanotrasen{
 	pixel_x = -32
 	},
 /turf/simulated/floor/wood,
@@ -16385,7 +16385,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 1
 	},
-/obj/structure/sign/poster/nanotrasen{
+/obj/structure/poster/nanotrasen{
 	pixel_y = 32
 	},
 /obj/structure/disposalpipe/trunk,

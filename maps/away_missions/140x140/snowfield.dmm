@@ -1,6 +1,6 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "aa" = (
-/turf/unsimulated/wall/planetary/sif,
+/turf/unsimulated/wall/planetary,
 /area/awaymission/snowfield/restricted)
 "ab" = (
 /turf/simulated/floor/outdoors/snow{

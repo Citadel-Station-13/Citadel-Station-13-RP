@@ -159,51 +159,51 @@
 				if(16 to 25) //10% chance
 					//Strange items
 					//to_chat(src, "Traitor Items")
-					if(!halitem)
-						halitem = new
-						var/list/slots_free = list(ui_lhand,ui_rhand)
-						if(l_hand) slots_free -= ui_lhand
-						if(r_hand) slots_free -= ui_rhand
-						if(istype(src,/mob/living/carbon/human))
-							var/mob/living/carbon/human/H = src
-							if(!H.belt) slots_free += ui_belt
-							if(!H.l_store) slots_free += ui_storage1
-							if(!H.r_store) slots_free += ui_storage2
-						if(slots_free.len)
-							halitem.screen_loc = pick(slots_free)
-							halitem.layer = 50
-							switch(rand(1,6))
-								if(1) //revolver
-									halitem.icon = 'icons/obj/gun/ballistic.dmi'
-									halitem.icon_state = "revolver"
-									halitem.name = "Revolver"
-								if(2) //c4
-									halitem.icon = 'icons/obj/assemblies.dmi'
-									halitem.icon_state = "plastic-explosive0"
-									halitem.name = "Mysterious Package"
-									if(prob(25))
-										halitem.icon_state = "c4small_1"
-								if(3) //sword
-									halitem.icon = 'icons/obj/weapons.dmi'
-									halitem.icon_state = "sword1"
-									halitem.name = "Sword"
-								if(4) //stun baton
-									halitem.icon = 'icons/obj/weapons.dmi'
-									halitem.icon_state = "stunbaton"
-									halitem.name = "Stun Baton"
-								if(5) //emag
-									halitem.icon = 'icons/obj/card.dmi'
-									halitem.icon_state = "emag"
-									halitem.name = "Cryptographic Sequencer"
-								if(6) //flashbang
-									halitem.icon = 'icons/obj/grenade.dmi'
-									halitem.icon_state = "flashbang1"
-									halitem.name = "Flashbang"
-							if(client) client.screen += halitem
-							spawn(rand(100,250))
-								if(client)
-									client.screen -= halitem
-								halitem = null
+					// if(!halitem)
+					// 	halitem = new
+					// 	var/list/slots_free = list()
+					// 	for(var/i in get_empty_hand_indices())
+					// 		slots_free += SCREEN_LOC_INV_HAND(i)
+					// 	if(istype(src,/mob/living/carbon/human))
+					// 		var/mob/living/carbon/human/H = src
+					// 		if(!H.belt) slots_free += ui_belt
+					// 		if(!H.l_store) slots_free += ui_storage1
+					// 		if(!H.r_store) slots_free += ui_storage2
+					// 	if(slots_free.len)
+					// 		halitem.screen_loc = pick(slots_free)
+					// 		halitem.layer = 50
+					// 		switch(rand(1,6))
+					// 			if(1) //revolver
+					// 				halitem.icon = 'icons/obj/gun/ballistic.dmi'
+					// 				halitem.icon_state = "revolver"
+					// 				halitem.name = "Revolver"
+					// 			if(2) //c4
+					// 				halitem.icon = 'icons/obj/assemblies.dmi'
+					// 				halitem.icon_state = "plastic-explosive0"
+					// 				halitem.name = "Mysterious Package"
+					// 				if(prob(25))
+					// 					halitem.icon_state = "c4small_1"
+					// 			if(3) //sword
+					// 				halitem.icon = 'icons/obj/weapons.dmi'
+					// 				halitem.icon_state = "sword1"
+					// 				halitem.name = "Sword"
+					// 			if(4) //stun baton
+					// 				halitem.icon = 'icons/obj/weapons.dmi'
+					// 				halitem.icon_state = "stunbaton"
+					// 				halitem.name = "Stun Baton"
+					// 			if(5) //emag
+					// 				halitem.icon = 'icons/obj/card.dmi'
+					// 				halitem.icon_state = "emag"
+					// 				halitem.name = "Cryptographic Sequencer"
+					// 			if(6) //flashbang
+					// 				halitem.icon = 'icons/obj/grenade.dmi'
+					// 				halitem.icon_state = "flashbang1"
+					// 				halitem.name = "Flashbang"
+					// 		if(client) client.screen += halitem
+					// 		spawn(rand(100,250))
+					// 			if(client)
+					// 				client.screen -= halitem
+					// 			halitem = null
 				if(26 to 35) //10% chance
 					//Flashes of danger
 					//to_chat(src, "Danger Flash")
