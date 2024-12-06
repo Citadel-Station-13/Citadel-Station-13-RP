@@ -824,6 +824,12 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d4portafthall)
+"aQR" = (
+/obj/machinery/atmospherics/pipe/cap/visible{
+	dir = 1
+	},
+/turf/simulated/floor/plating,
+/area/engineering/atmos)
 "aQW" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 10
@@ -1503,6 +1509,13 @@
 /obj/structure/cable/green,
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/locker_room)
+"bLG" = (
+/obj/machinery/atmospherics/component/binary/pump{
+	dir = 1;
+	name = "Scrubbers to Filter"
+	},
+/turf/simulated/floor/plating,
+/area/engineering/atmos)
 "bMd" = (
 /obj/structure/sign/deck/fourth,
 /turf/simulated/wall/r_wall/prepainted/engineering,
@@ -2780,11 +2793,22 @@
 /turf/simulated/wall/r_wall/prepainted/engineering,
 /area/engineering/storage)
 "drD" = (
-/obj/machinery/atmospherics/pipe/cap/visible{
-	dir = 1
+/obj/machinery/power/smes/buildable/tcomms{
+	RCon_tag = "Secondary Supply";
+	name = "Secondary Supply PSU";
+	desc = "A high-capacity superconducting magnetic energy storage (SMES) unit. This is the one dedicated to the secondary power net.";
+	capacity = 8000;
+	charge = 19200;
+	output_level_max = 1500;
+	output_level = 1000;
+	cur_coils = 4;
+	input_attempt = 0
+	},
+/obj/structure/cable/orange{
+	icon_state = "0-2"
 	},
 /turf/simulated/floor/plating,
-/area/engineering/atmos)
+/area/endeavour/hallway/d4aftmaint)
 "drH" = (
 /obj/spawner/window/low_wall/borosillicate/reinforced/full/firelocks,
 /obj/machinery/atmospherics/pipe/manifold/visible/blue{
@@ -4032,14 +4056,9 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/atmos)
 "eUr" = (
-/obj/effect/floor_decal/industrial/warning{
-	dir = 1
-	},
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/machinery/atmospherics/pipe/cap/visible{
-	dir = 8
+/obj/machinery/atmospherics/component/binary/pump/on{
+	dir = 1;
+	name = "Waste to Filter"
 	},
 /turf/simulated/floor/plating,
 /area/engineering/atmos)
@@ -4094,12 +4113,6 @@
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/endeavour/hallway/d4starboardforhall)
-"eYq" = (
-/obj/machinery/atmospherics/pipe/cap/visible{
-	dir = 8
-	},
-/turf/simulated/floor/plating,
-/area/engineering/atmos)
 "eYL" = (
 /obj/structure/cable{
 	icon_state = "0-2"
@@ -4450,7 +4463,7 @@
 	tag_east = 1;
 	tag_west = 1;
 	tag_north = 2;
-	tag_east_con = .79;
+	tag_east_con = 0.79;
 	tag_west_con = .21
 	},
 /turf/simulated/floor/tiled/techmaint,
@@ -6617,18 +6630,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/endeavour/hallway/d4fwdmaint)
-"hUF" = (
-/obj/machinery/light/small{
-	dir = 1
-	},
-/obj/machinery/power/terminal{
-	dir = 4
-	},
-/obj/structure/cable{
-	icon_state = "0-8"
-	},
-/turf/simulated/floor/plating,
-/area/endeavour/hallway/d4aftmaint)
 "hVq" = (
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging{
 	dir = 4
@@ -7057,13 +7058,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/endeavour/hallway/d4aftmaint)
-"iCl" = (
-/obj/machinery/atmospherics/component/binary/pump{
-	dir = 8;
-	name = "Mix to Nacelles"
-	},
-/turf/simulated/floor/plating,
-/area/engineering/atmos)
 "iCO" = (
 /obj/machinery/camera/network/engineering,
 /obj/machinery/atmospherics/valve/digital{
@@ -7615,6 +7609,13 @@
 	},
 /turf/simulated/floor/carpet/oracarpet,
 /area/engineering/engineering_monitoring)
+"jlT" = (
+/obj/machinery/atmospherics/component/binary/pump{
+	dir = 8;
+	name = "Mix to Nacelles"
+	},
+/turf/simulated/floor/plating,
+/area/engineering/atmos)
 "jmD" = (
 /obj/structure/cable{
 	icon_state = "1-8"
@@ -8539,23 +8540,6 @@
 	},
 /turf/simulated/floor/tiled/steel_dirty,
 /area/engineering/atmos/workshop)
-"kpG" = (
-/obj/machinery/power/smes/buildable/tcomms{
-	RCon_tag = "Secondary Supply";
-	name = "Secondary Supply PSU";
-	desc = "A high-capacity superconducting magnetic energy storage (SMES) unit. This is the one dedicated to the secondary power net.";
-	capacity = 8000;
-	charge = 19200;
-	output_level_max = 1500;
-	output_level = 1000;
-	cur_coils = 4;
-	input_attempt = 0
-	},
-/obj/structure/cable/orange{
-	icon_state = "0-2"
-	},
-/turf/simulated/floor/plating,
-/area/endeavour/hallway/d4aftmaint)
 "kqk" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
@@ -10191,6 +10175,18 @@
 	},
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d4fwdhall)
+"mpX" = (
+/obj/machinery/light/small{
+	dir = 1
+	},
+/obj/machinery/power/terminal{
+	dir = 4
+	},
+/obj/structure/cable{
+	icon_state = "0-8"
+	},
+/turf/simulated/floor/plating,
+/area/endeavour/hallway/d4aftmaint)
 "mqz" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 9
@@ -10417,6 +10413,15 @@
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/endeavour/hallway/d4starboardamidhall)
+"mCV" = (
+/obj/effect/floor_decal/industrial/warning{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/cap/visible{
+	dir = 1
+	},
+/turf/simulated/floor/plating,
+/area/engineering/atmos)
 "mEi" = (
 /obj/machinery/atmospherics/component/binary/passive_gate{
 	dir = 8
@@ -10820,11 +10825,14 @@
 /turf/simulated/wall/r_wall/prepainted,
 /area/endeavour/hallway/d4portforhall)
 "nat" = (
-/obj/machinery/atmospherics/pipe/cap/visible{
-	dir = 8
+/obj/structure/cable{
+	icon_state = "1-2"
 	},
-/turf/simulated/floor/tiled/techmaint,
-/area/engineering/atmos)
+/obj/structure/cable{
+	icon_state = "2-4"
+	},
+/turf/simulated/floor/plating,
+/area/endeavour/hallway/d4aftmaint)
 "naO" = (
 /obj/effect/floor_decal/corner/navgold/full,
 /turf/simulated/floor/tiled/techfloor,
@@ -13431,15 +13439,6 @@
 	},
 /turf/simulated/floor/reinforced/carbon_dioxide,
 /area/engineering/atmos)
-"qtS" = (
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
-/obj/structure/cable{
-	icon_state = "2-4"
-	},
-/turf/simulated/floor/plating,
-/area/endeavour/hallway/d4aftmaint)
 "quw" = (
 /obj/machinery/computer/general_air_control/large_tank_control{
 	frequency = 2346;
@@ -14211,11 +14210,8 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/heads/chief)
 "ryU" = (
-/obj/effect/floor_decal/industrial/warning{
-	dir = 4
-	},
 /obj/machinery/atmospherics/pipe/cap/visible{
-	dir = 1
+	dir = 8
 	},
 /turf/simulated/floor/plating,
 /area/engineering/atmos)
@@ -15378,6 +15374,18 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d4porthall)
+"tkJ" = (
+/obj/effect/floor_decal/industrial/warning{
+	dir = 1
+	},
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/cap/visible{
+	dir = 8
+	},
+/turf/simulated/floor/plating,
+/area/engineering/atmos)
 "tkV" = (
 /obj/machinery/camera/network/command,
 /turf/simulated/floor/tiled/techfloor,
@@ -15478,13 +15486,6 @@
 	initial_gas_mix = "n2=100;TEMP=80"
 	},
 /area/tcommsat/chamber)
-"tqE" = (
-/obj/machinery/atmospherics/component/binary/pump{
-	dir = 1;
-	name = "Scrubbers to Filter"
-	},
-/turf/simulated/floor/plating,
-/area/engineering/atmos)
 "tqM" = (
 /obj/machinery/computer/med_data{
 	dir = 1
@@ -15586,13 +15587,6 @@
 /obj/effect/shuttle_landmark/endeavour/deck1/port,
 /turf/space,
 /area/space)
-"tBi" = (
-/obj/machinery/atmospherics/component/binary/pump/on{
-	dir = 1;
-	name = "Waste to Filter"
-	},
-/turf/simulated/floor/plating,
-/area/engineering/atmos)
 "tBv" = (
 /obj/structure/table/reinforced,
 /obj/effect/floor_decal/spline/fancy{
@@ -18333,6 +18327,12 @@
 /obj/effect/floor_decal/corner/lightorange/border,
 /turf/simulated/floor/tiled/steel_grid,
 /area/endeavour/hallway/d4porthall)
+"wOD" = (
+/obj/machinery/atmospherics/pipe/cap/visible{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techmaint,
+/area/engineering/atmos)
 "wPg" = (
 /obj/structure/cable/green{
 	icon_state = "2-4"
@@ -31284,7 +31284,7 @@ nrt
 nrt
 ukW
 emb
-qtS
+nat
 uEt
 ksD
 uEt
@@ -31477,7 +31477,7 @@ jCb
 usH
 usH
 ukW
-hUF
+mpX
 iCe
 aXZ
 bfk
@@ -31671,7 +31671,7 @@ usH
 myq
 kAf
 ukW
-kpG
+drD
 pLM
 coP
 bJi
@@ -35221,10 +35221,10 @@ mxs
 klt
 eMH
 eMH
-eUr
-eYq
-eYq
-eYq
+tkJ
+ryU
+ryU
+ryU
 xKs
 xKs
 gDj
@@ -35413,7 +35413,7 @@ kwy
 bBE
 jPA
 lEE
-iCl
+jlT
 qqA
 iLQ
 xKs
@@ -35996,7 +35996,7 @@ ful
 qRw
 pfc
 sgO
-nat
+wOD
 fVN
 xKs
 xKs
@@ -36192,7 +36192,7 @@ jLt
 fBC
 vdE
 utR
-drD
+aQR
 xKs
 xKs
 xKs
@@ -36386,7 +36386,7 @@ eUp
 jPu
 eWw
 nmZ
-ryU
+mCV
 cWi
 cWi
 cWi
@@ -36578,7 +36578,7 @@ qwn
 qRw
 lEE
 sFd
-tqE
+bLG
 gFL
 jse
 wrG
@@ -36772,7 +36772,7 @@ wCy
 coT
 aMT
 ekS
-tBi
+eUr
 gFL
 jOw
 njb
