@@ -508,6 +508,12 @@
 	//How quickly the species can fly up z-levels (0 is instant, 1 is 7 seconds, 0.5 is ~3.5 seconds)
 	var/flight_mod = 1
 
+	// Alpha values
+	var/minimum_hair_alpha = 255
+	var/maximum_hair_alpha = 255
+	var/minimum_body_alpha = 255
+	var/maximum_body_alpha = 255
+
 /datum/species/New()
 	//! LEGACY
 	is_subspecies = id != uid

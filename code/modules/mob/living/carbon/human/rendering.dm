@@ -111,15 +111,16 @@
 		null,
 		flattened = flatten,
 	)
+	var/alpha_to_use = species.species_appearance_flags & HAS_HAIR_ALPHA ? hair_alpha : head_organ.hair_opacity
 	// todo: this is awful
 	if(islist(rendered))
 		for(var/image/I as anything in rendered)
 			I.pixel_y += head_spriteacc_offset
-			I.alpha = head_organ.hair_opacity
+			I.alpha = alpha_to_use
 	else
 		var/image/I = rendered
 		I.pixel_y += head_spriteacc_offset
-		I.alpha = head_organ.hair_opacity
+		I.alpha = alpha_to_use
 
 	. = rendered
 	set_standing_overlay(HUMAN_OVERLAY_FACEHAIR, rendered)
@@ -151,15 +152,17 @@
 		null,
 		flattened = flatten,
 	)
+	var/alpha_to_use = species.species_appearance_flags & HAS_HAIR_ALPHA ? hair_alpha : head_organ.hair_opacity
+	message_admins("alpha to use is [alpha_to_use]")
 	// todo: this is awful
 	if(islist(rendered))
 		for(var/image/I as anything in rendered)
 			I.pixel_y += head_spriteacc_offset
-			I.alpha = head_organ.hair_opacity
+			I.alpha = alpha_to_use
 	else
 		var/image/I = rendered
 		I.pixel_y += head_spriteacc_offset
-		I.alpha = head_organ.hair_opacity
+		I.alpha = alpha_to_use
 
 	. = rendered
 	set_standing_overlay(HUMAN_OVERLAY_HAIR, rendered)
@@ -590,9 +593,14 @@
 
 		GLOB.human_icon_cache[icon_key] = base_icon
 
+
 	//END CACHED ICON GENERATION.
 	stand_icon.Blend(base_icon,ICON_OVERLAY)
-	set_standing_overlay(HUMAN_OVERLAY_BODY, image(stand_icon, layer = HUMAN_LAYER_BODY))
+
+	var/image/img = image(stand_icon, layer = HUMAN_LAYER_BODY)
+	if(species.species_appearance_flags & HAS_BODY_ALPHA)
+		img.alpha = body_alpha
+	set_standing_overlay(HUMAN_OVERLAY_BODY, img)
 
 	//tail
 	render_spriteacc_tail()

@@ -11,9 +11,10 @@
 	icobase = 'icons/mob/species/human/body_greyscale.dmi'
 	deform  = 'icons/mob/species/human/deformed_body_greyscale.dmi'
 
-	selects_bodytype = TRUE
+	//selects_bodytype = TRUE
 
 	species_spawn_flags = SPECIES_SPAWN_CHARACTER
+	species_appearance_flags = HAS_HAIR_COLOR | HAS_SKIN_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_EYE_COLOR | HAS_BODY_ALPHA | HAS_HAIR_ALPHA
 
 	has_organ = list(
 		O_HEART     = /obj/item/organ/internal/heart,
@@ -44,6 +45,7 @@
 		BP_R_FOOT = list("path" = /obj/item/organ/external/foot/right/indestructible/holosphere),
 	)
 
+
 	inherent_verbs = list(
 		/mob/living/carbon/human/proc/tie_hair,
 		/mob/living/carbon/human/proc/hide_horns,
@@ -51,7 +53,13 @@
 		/mob/living/carbon/human/proc/hide_tail,
 	)
 
-	species_appearance_flags = HAS_HAIR_COLOR | HAS_SKIN_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_EYE_COLOR | HAS_HOLOGRAM_BODY_ALPHA | HAS_HOLOGRAM_CLOTHING_ALPHA | HAS_HOLOGRAM_HAIR_ALPHA
+	minimum_hair_alpha = MINIMUM_HOLOGRAM_HAIR_ALPHA
+	maximum_hair_alpha = MAXIMUM_HOLOGRAM_HAIR_ALPHA
+	minimum_body_alpha = MINIMUM_HOLOGRAM_BODY_ALPHA
+	maximum_body_alpha = MAXIMUM_HOLOGRAM_BODY_ALPHA
+
+	color_mult = 1
+	base_color = "#EECEB3"
 
 	var/list/chameleon_gear = list(
 		SLOT_ID_UNIFORM = /obj/item/clothing/under/chameleon/holosphere,
@@ -88,17 +96,16 @@
 /datum/species/holosphere/proc/get_alpha_from_key(var/mob/living/carbon/human/H, var/key)
 	switch(key)
 		if(HUMAN_OVERLAY_BODY)
-			return H.hologram_body_alpha
+			return H.body_alpha
 		if(HUMAN_OVERLAY_HAIR, HUMAN_OVERLAY_FACEHAIR)
-			return H.hologram_hair_alpha
+			return H.hair_alpha
 	return HOLOGRAM_OTHER_ALPHA
 
 /datum/species/holosphere/proc/handle_hologram_overlays(datum/source, list/overlay_args, category)
-	var/mob/living/carbon/human/H = source
 	var/is_clothing = category == CARBON_APPEARANCE_UPDATE_CLOTHING
 	var/overlay_index = is_clothing ? 1 : 2
 	var/overlay_object = overlay_args[overlay_index]
-	var/alpha_to_use = is_clothing ? H.hologram_clothing_alpha : get_alpha_from_key(H, overlay_args[1])
+	var/alpha_to_use = is_clothing ? 255 : get_alpha_from_key(category)
 	if(islist(overlay_object))
 		var/list/new_list = list()
 		var/list/overlay_list = overlay_object

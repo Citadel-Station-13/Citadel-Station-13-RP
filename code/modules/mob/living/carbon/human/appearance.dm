@@ -178,40 +178,6 @@
 	update_icons_body()
 	return 1
 
-/mob/living/carbon/human/proc/change_hologram_body_alpha(var/alpha)
-	if(hologram_body_alpha == alpha)
-		return
-
-	hologram_body_alpha = alpha
-
-	update_icons_body()
-	return 1
-
-/mob/living/carbon/human/proc/change_hologram_clothing_alpha(var/alpha)
-	if(hologram_clothing_alpha == alpha)
-		return
-
-	hologram_clothing_alpha = alpha
-
-	// update clothing overlays (this updates less than calling regenerate_icons)
-	update_inv_w_uniform()
-	update_inv_wear_id()
-	update_inv_gloves()
-	update_inv_glasses()
-	update_inv_ears()
-	update_inv_shoes()
-	update_inv_s_store()
-	update_inv_wear_mask()
-	update_inv_head()
-	update_inv_belt()
-	update_inv_back()
-	update_inv_wear_suit()
-	update_inv_hands()
-	update_handcuffed()
-	update_inv_legcuffed()
-
-	return 1
-
 /mob/living/carbon/human/proc/update_dna()
 	check_dna()
 	dna.ready_dna(src)

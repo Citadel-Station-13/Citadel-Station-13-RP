@@ -276,6 +276,5 @@
 
 	var/datum/ability_handler/ab_handler
 
-	var/hologram_body_alpha = DEFAULT_HOLOGRAM_BODY_ALPHA
-	var/hologram_clothing_alpha = DEFAULT_HOLOGRAM_CLOTHING_ALPHA
-	var/hologram_hair_alpha = DEFAULT_HOLOGRAM_HAIR_ALPHA
+	var/body_alpha = 255
+	var/hair_alpha = 255

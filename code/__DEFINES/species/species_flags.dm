@@ -119,12 +119,10 @@ DEFINE_BITFIELD(species_spawn_flags, list(
 #define RADIATION_GLOWS (1<<6)
 /// Sets default skin colors based on icons.
 #define HAS_BASE_SKIN_COLOR (1<<7)
-/// Body alpha selectable (Holospheres)
-#define HAS_HOLOGRAM_BODY_ALPHA (1<<8)
-/// Clothing alpha selectable (Holospheres)
-#define HAS_HOLOGRAM_CLOTHING_ALPHA (1<<9)
-/// Hair alpha selectable (Holospheres)
-#define HAS_HOLOGRAM_HAIR_ALPHA (1<<10)
+/// Body alpha selectable
+#define HAS_BODY_ALPHA (1<<8)
+/// Hair alpha selectable
+#define HAS_HAIR_ALPHA (1<<9)
 
 DEFINE_BITFIELD(species_appearance_flags, list(
 	"HAS_SKIN_TONE"   = HAS_SKIN_TONE,
@@ -135,6 +133,8 @@ DEFINE_BITFIELD(species_appearance_flags, list(
 	"HAS_HAIR_COLOR"  = HAS_HAIR_COLOR,
 	"RADIATION_GLOWS" = RADIATION_GLOWS,
 	"HAS_BASE_SKIN_COLOR" = HAS_BASE_SKIN_COLOR,
+	"HAS_BODY_ALPHA"  = HAS_BODY_ALPHA,
+	"HAS_HAIR_ALPHA"  = HAS_HAIR_ALPHA,
 ))
 
 

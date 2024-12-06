@@ -147,12 +147,10 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	var/b_synth
 	/// Enable/disable markings on synth parts.
 	var/synth_markings = 1
-	/// Body alpha (currently only handled by holospheres)
-	var/hologram_body_alpha = DEFAULT_HOLOGRAM_BODY_ALPHA
-	/// Clothing alpha (currently only handled by holospheres)
-	var/hologram_clothing_alpha = DEFAULT_HOLOGRAM_CLOTHING_ALPHA
-	/// Hair alpha (currently only handled by holospheres)
-	var/hologram_hair_alpha = DEFAULT_HOLOGRAM_HAIR_ALPHA
+	/// Body alpha
+	var/body_alpha = 255
+	/// Hair alpha
+	var/hair_alpha = 255
 
 	//* ## Background Preferences
 	///Antag associated faction.
