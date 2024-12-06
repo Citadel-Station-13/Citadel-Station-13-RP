@@ -500,7 +500,7 @@
 	. = shieldcall_returns
 	// todo: doesn't take into account any damage randomization
 	// todo: why isn't thrownthing just with a get_damage() or a better inflict_damage() and get_damage_tuple() idfk man
-	var/estimated_severity = clamp(thrown.thrownthing.throw_force * thrown.getdamage_multiplier() / 20 * 75, 0, 100)
+	var/estimated_severity = clamp(thrown.thrownthing.throw_force * thrown.get_damage_multiplier() / 20 * 75, 0, 100)
 	thrown.damage_multiplier *= clamp(1 - efficiency, 0, 1)
 	. = perform_aftereffects(defending, ATTACK_TYPE_THROWN, efficiency, thrown, ., thrown.thrownthing, tool_text)
 	perform_audiovisuals(defending, ATTACK_TYPE_THROWN, efficiency, thrown, ., estimated_severity)

@@ -123,4 +123,4 @@
 		click_params_tile_py = text2num(y_split[2])
 
 /datum/event_args/actor/clickchain/proc/legacy_get_target_zone()
-	#warn impl
+	return initiator?.zone_sel?.selecting
