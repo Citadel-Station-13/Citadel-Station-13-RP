@@ -4845,6 +4845,46 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/bridge/hallway)
+"dSn" = (
+/obj/structure/table/marble,
+/obj/item/reagent_containers/food/drinks/cup{
+	pixel_x = -9;
+	pixel_y = 10
+	},
+/obj/item/reagent_containers/food/drinks/cup{
+	pixel_x = -9;
+	pixel_y = 5
+	},
+/obj/item/reagent_containers/food/drinks/cup{
+	pixel_x = -2;
+	pixel_y = 10
+	},
+/obj/item/reagent_containers/food/drinks/cup{
+	pixel_x = -9;
+	pixel_y = -1
+	},
+/obj/item/reagent_containers/food/drinks/cup{
+	pixel_x = -2;
+	pixel_y = 5
+	},
+/obj/item/reagent_containers/food/drinks/cup{
+	pixel_x = 7;
+	pixel_y = 10
+	},
+/obj/item/reagent_containers/food/drinks/cup{
+	pixel_x = 7;
+	pixel_y = 5
+	},
+/obj/item/reagent_containers/food/drinks/cup{
+	pixel_x = -2;
+	pixel_y = -1
+	},
+/obj/item/reagent_containers/food/drinks/cup{
+	pixel_x = 7;
+	pixel_y = -1
+	},
+/turf/simulated/floor/wood,
+/area/bridge/meeting_room)
 "dSB" = (
 /obj/machinery/light{
 	dir = 8
@@ -5008,6 +5048,14 @@
 	},
 /turf/simulated/floor/wood,
 /area/hydroponics/garden)
+"dZQ" = (
+/obj/structure/table/marble,
+/obj/item/reagent_containers/food/drinks/britcup{
+	pixel_y = 9;
+	pixel_x = 9
+	},
+/turf/simulated/floor/carpet,
+/area/bridge/meeting_room)
 "eav" = (
 /obj/machinery/light{
 	dir = 1
@@ -24034,6 +24082,12 @@
 	},
 /turf/simulated/floor/grass,
 /area/hydroponics/garden)
+"snk" = (
+/obj/structure/table/marble,
+/obj/item/paper_bin,
+/obj/item/pen,
+/turf/simulated/floor/carpet,
+/area/bridge/meeting_room)
 "snQ" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
 /turf/simulated/floor,
@@ -61058,8 +61112,8 @@ xRj
 xRj
 skI
 tps
-xlX
-xlX
+dZQ
+snk
 xlX
 xlX
 pgc
@@ -61445,7 +61499,7 @@ xRj
 xRj
 xRj
 skI
-kab
+dSn
 lKq
 qnv
 cgB
