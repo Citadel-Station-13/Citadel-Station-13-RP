@@ -47,6 +47,7 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
+/obj/structure/bed/chair/comfy/brown,
 /turf/simulated/floor/wood,
 /area/library)
 "acr" = (
@@ -1753,7 +1754,6 @@
 /area/exploration)
 "brQ" = (
 /obj/effect/floor_decal/steeldecal/steel_decals_central7,
-/obj/item/radio/beacon,
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply,
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 1
@@ -3610,6 +3610,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/light{
 	dir = 8
+	},
+/obj/structure/cable/green{
+	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/pool/changing_room)
@@ -13071,13 +13074,6 @@
 "jNg" = (
 /turf/space,
 /area/space)
-"jNp" = (
-/obj/machinery/fire_alarm/south_mount{
-	pixel_y = -24
-	},
-/obj/machinery/light/small,
-/turf/simulated/floor/carpet/bcarpet,
-/area/library)
 "jNC" = (
 /obj/machinery/computer/ship/navigation/telescreen{
 	pixel_x = 32
@@ -25182,6 +25178,7 @@
 /obj/structure/cable/green{
 	icon_state = "1-4"
 	},
+/obj/structure/bed/chair/comfy/brown,
 /turf/simulated/floor/wood,
 /area/library)
 "tjQ" = (
@@ -27606,12 +27603,6 @@
 /obj/machinery/air_alarm/north_mount,
 /turf/simulated/floor/wood,
 /area/exploration/meeting)
-"uUz" = (
-/obj/item/radio/intercom{
-	pixel_y = -24
-	},
-/turf/simulated/floor/carpet/bcarpet,
-/area/library)
 "uUK" = (
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/endeavour/surfacebase/tram)
@@ -29078,12 +29069,21 @@
 /turf/simulated/floor/tiled,
 /area/endeavour/exploration/hallway_aft)
 "vUL" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/structure/disposalpipe/segment,
-/obj/structure/bed/chair/comfy/brown,
-/turf/simulated/floor/wood,
-/area/library)
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/item/radio/beacon,
+/turf/simulated/floor/tiled/steel,
+/area/endeavour/hallway/d1afthall)
 "vVa" = (
 /obj/structure/catwalk,
 /obj/structure/cable/green{
@@ -42103,7 +42103,7 @@ iDg
 iDg
 lOm
 kHh
-wfp
+vUL
 kHh
 fVP
 iDg
@@ -48717,7 +48717,7 @@ esl
 esl
 wAB
 tjy
-eOl
+sfX
 fDI
 tsT
 dsD
@@ -49491,7 +49491,7 @@ jBQ
 mJP
 iKG
 mJP
-jNp
+shJ
 dsD
 vvP
 tbS
@@ -49879,7 +49879,7 @@ mJP
 wvw
 scN
 mJP
-uUz
+xoy
 dsD
 kjF
 jnZ

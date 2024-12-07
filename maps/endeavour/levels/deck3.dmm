@@ -720,9 +720,6 @@
 /obj/machinery/light_switch{
 	pixel_y = -23
 	},
-/obj/structure/cable/green{
-	icon_state = "2-8"
-	},
 /turf/simulated/floor/carpet/purcarpet,
 /area/crew_quarters/sleep/Dorm_5)
 "aDw" = (
@@ -1849,17 +1846,8 @@
 /turf/simulated/floor/tiled,
 /area/endeavour/surfacebase/mining_main/refinery)
 "boM" = (
-/obj/structure/cable/green{
-	icon_state = "4-8"
-	},
 /obj/structure/disposalpipe/segment{
 	dir = 8
-	},
-/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
-	dir = 4
 	},
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 8
@@ -1870,6 +1858,8 @@
 /obj/structure/cable/green{
 	icon_state = "2-4"
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d3afthall)
 "bpe" = (
@@ -2601,15 +2591,11 @@
 /turf/simulated/floor/carpet,
 /area/security/detectives_office)
 "bTA" = (
-/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
-	dir = 8
-	},
 /obj/structure/disposalpipe/junction/yjunction{
 	dir = 8
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled,
 /area/quartermaster/foyer)
 "bUa" = (
@@ -4445,23 +4431,14 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/bedrooms)
 "dky" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
 /obj/structure/cable/green{
-	icon_state = "4-8"
+	icon_state = "1-2"
 	},
-/obj/effect/floor_decal/borderfloorblack/corner{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
 	},
-/obj/effect/floor_decal/corner/red/bordercorner{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/dark,
-/area/security/hallway)
+/turf/simulated/floor/tiled,
+/area/quartermaster/foyer)
 "dkE" = (
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/toilet)
@@ -4930,6 +4907,20 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/endeavour/station/stairs_three)
+"dFS" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/disposalpipe/segment,
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/navblue/border{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+	dir = 4
+	},
+/turf/simulated/floor/tiled,
+/area/quartermaster/foyer)
 "dGe" = (
 /obj/structure/window/reinforced/tinted{
 	dir = 1
@@ -9559,8 +9550,19 @@
 /turf/simulated/floor/tiled/old_cargo/gray,
 /area/security/hallway)
 "gDD" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/disposalpipe/segment,
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/navblue/border{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+	dir = 4
+	},
 /turf/simulated/floor/tiled,
-/area/endeavour/hallway/d3portamidhall)
+/area/quartermaster/foyer)
 "gDZ" = (
 /obj/structure/dogbed,
 /turf/simulated/floor/plating,
@@ -12827,9 +12829,6 @@
 /turf/simulated/floor/tiled,
 /area/security/lobby)
 "jhH" = (
-/obj/machinery/atmospherics/component/unary/vent_pump/on{
-	dir = 4
-	},
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
@@ -13606,6 +13605,15 @@
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_1)
+"jJu" = (
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
+/obj/structure/cable/green{
+	icon_state = "2-8"
+	},
+/turf/simulated/floor/tiled,
+/area/quartermaster/foyer)
 "jJA" = (
 /obj/machinery/camera/network/command{
 	dir = 4
@@ -14213,6 +14221,15 @@
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_10)
+"kgm" = (
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
+	dir = 4
+	},
+/turf/simulated/floor/tiled,
+/area/quartermaster/foyer)
 "kgM" = (
 /turf/simulated/wall/prepainted/cargo,
 /area/maintenance/bar/lower)
@@ -15016,9 +15033,6 @@
 /turf/simulated/floor/plating,
 /area/endeavour/hallway/d3aftmaint)
 "kPT" = (
-/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
-	dir = 8
-	},
 /obj/structure/bed/chair{
 	dir = 4
 	},
@@ -49752,8 +49766,8 @@ pJR
 cmw
 hrc
 izO
-bSQ
-bSQ
+gal
+gal
 dyR
 gal
 tVX
@@ -49948,14 +49962,14 @@ qAh
 qAh
 gal
 dLj
-fva
+jJu
 jhH
 pVz
 jwQ
 fva
+kgm
 fva
-fva
-fva
+dky
 fva
 fva
 fva
@@ -50147,9 +50161,9 @@ bTA
 xDr
 mhO
 lAm
-lAm
+dFS
 pZg
-lAm
+gDD
 lAm
 pZg
 lAm
