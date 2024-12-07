@@ -28357,7 +28357,7 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
-/turf/space/basic,
+/turf/simulated/floor/plating,
 /area/endeavour/hallway/d2aftmaint)
 "rUx" = (
 /obj/effect/floor_decal/borderfloorwhite{
