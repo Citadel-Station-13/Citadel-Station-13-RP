@@ -12,5 +12,3 @@
 		features will not function.
 	"}
 	default = TRUE
-
-#warn impl

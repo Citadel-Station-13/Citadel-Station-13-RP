@@ -30,13 +30,15 @@
 	var/value
 
 	/// vv edit disallowed
+	/// * Does not stop get_entry and set_entry from setting our value. Those are not considered vv-protected.
 	var/vv_locked = FALSE
 	/// vv read disallowed
-	/// * does not automatically imply [vv_locked]
+	/// * Does not automatically imply [vv_locked].
+	/// * Does not stop get_entry and set_entry from pulling our value. Those are not considered vv-protected.
 	var/vv_secret = FALSE
 	/// sensitive
-	/// * requires get_sensitive_entry() and set_sensitive_entry() to read/write
-	/// * does not actually imply [vv_locked] and [vv_secret]
+	/// * Requires get_sensitive_entry() and set_sensitive_entry() to read/write.
+	/// * Does not actually imply [vv_locked] and [vv_secret].
 	var/sensitive = FALSE
 
 /datum/toml_config_entry/vv_edit_var(var_name, var_value, mass_edit, raw_edit)
@@ -69,11 +71,16 @@
 
 /datum/toml_config_entry/CanProcCall(procname)
 	switch(procname)
+		if(NAMEOF_PROC(src, New), NAMEOF_PROC(src, Destroy))
+			return FALSE
 		if(NAMEOF_PROC(src, reset))
 			return FALSE
 		if(NAMEOF_PROC(src, apply))
 			return FALSE
 	return ..()
+
+/datum/toml_config_entry/vv_delete()
+	return FALSE
 
 /**
  * Called once when resetting.

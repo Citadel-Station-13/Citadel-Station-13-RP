@@ -117,6 +117,9 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 		load_configuration()
 	if(!config)
 		config = new
+	if(!Configuration)
+		Configuration = new
+		Configuration.Initialize()
 
 	//# 2. set up random seed
 	if(!random_seed)

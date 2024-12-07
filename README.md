@@ -66,6 +66,7 @@ These are also the folders you are likely going to encounter while managing the 
   - /players: player data, like saves and characters get dumped in here
 - /tmp: server scratch space
   - /assets - for asset generation
+  - /config - used as scratch space for config
   
 You only need to make the top level folders (e.g. config, data) static folders in TGS4.
 
