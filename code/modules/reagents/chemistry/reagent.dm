@@ -224,35 +224,41 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 		removed = ingest_met * ingest_rem_mult
 	if(touch_met && (active_metab.metabolism_class == CHEM_TOUCH))
 		removed = touch_met
+	var/volume = location.reagent_volumes[id]
+	var/datum/reagent_metabolism/metabolism = location.reagent_metabolisms[id]
 	removed = min(removed, volume)
-	max_dose = max(volume, max_dose)
-	dose = min(dose + removed, max_dose)
+	metabolism.peak_dose = max(volume, metabolism.peak_dose)
+	metabolism.total_processed_dose = min(metabolism.peak_dose, metabolism.total_processed_dose + removed)
+	metabolism.cycles_so_far++
 	if(removed >= (metabolism * 0.1) || removed >= 0.1) // If there's too little chemical, don't affect the mob, just remove it
 		switch(active_metab.metabolism_class)
 			if(CHEM_INJECT)
-				affect_blood(M, alien, removed)
+				legacy_affect_blood(M, alien, removed, metabolism)
 			if(CHEM_INGEST)
-				affect_ingest(M, alien, removed * ingest_abs_mult)
+				legacy_affect_ingest(M, alien, removed * ingest_abs_mult, metabolism)
 			if(CHEM_TOUCH)
-				affect_touch(M, alien, removed)
+				legacy_affect_touch(M, alien, removed, metabolism)
 	if(overdose && (volume > overdose) && (active_metab.metabolism_class != CHEM_TOUCH && !can_overdose_touch))
+		metabolism.cycles_overdosing++
 		overdose(M, alien, removed)
+	else
+		metabolism.cycles_overdosing = 0
 	remove_self(removed)
 
 #warn injcet reagent metabolism datum to calls
 // todo: on_mob_life with method of CHEM_INJECT, or tick_mob_blood
-/datum/reagent/proc/affect_blood(mob/living/carbon/M, alien, removed)
+/datum/reagent/proc/legacy_affect_blood(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	return
 
 #warn injcet reagent metabolism datum to calls
 // todo: on_mob_life with method of CHEM_INGEST, or tick_mob_ingest
-/datum/reagent/proc/affect_ingest(mob/living/carbon/M, alien, removed)
+/datum/reagent/proc/legacy_affect_ingest(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	M.bloodstr.add_reagent(id, removed)
 	return
 
 #warn injcet reagent metabolism datum to calls
 // todo: on_mob_life with method of CHEM_TOUCH, or tick_mob_touch
-/datum/reagent/proc/affect_touch(mob/living/carbon/M, alien, removed)
+/datum/reagent/proc/legacy_affect_touch(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	return
 
 // todo: fourth apply method of CHEM_VAPOR implementation?

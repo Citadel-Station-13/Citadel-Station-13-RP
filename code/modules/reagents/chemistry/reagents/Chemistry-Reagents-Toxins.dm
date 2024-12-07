@@ -37,7 +37,7 @@
 	strength = 8
 	skin_danger = 0.4
 
-/datum/reagent/toxin/neurotoxic_protein/affect_blood(mob/living/carbon/M, alien, removed)
+/datum/reagent/toxin/neurotoxic_protein/legacy_affect_blood(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	..()
 	if(alien != IS_DIONA)
 		if(CHECK_MOBILITY(M, MOBILITY_CAN_MOVE) && istype(M.loc, /turf/space))
@@ -60,7 +60,7 @@
 	if(istype(L))
 		L.adjust_fire_stacks(amount / fire_mult)
 
-/datum/reagent/toxin/hydrophoron/affect_touch(mob/living/carbon/M, alien, removed)
+/datum/reagent/toxin/hydrophoron/legacy_affect_touch(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	M.take_random_targeted_damage(brute = 0, brute = removed * 0.1) //being splashed directly with hydrophoron causes minor chemical burns
 	if(prob(10 * fire_mult))
 		M.pl_effects()
@@ -74,7 +74,7 @@
 		spawn (0) target_tile.hotspot_expose(700, 400)
 	remove_self(volume)
 
-/datum/reagent/toxin/hydrophoron/affect_blood(mob/living/carbon/M, alien, removed)
+/datum/reagent/toxin/hydrophoron/legacy_affect_blood(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	..()
 	if(alien == IS_SLIME)
 		M.adjust_fire_stacks(removed * 10)
@@ -105,7 +105,7 @@
 	if(istype(L))
 		L.adjust_fire_stacks(amount / 5)
 
-/datum/reagent/toxin/phoron/affect_touch(mob/living/carbon/M, alien, removed)
+/datum/reagent/toxin/phoron/legacy_affect_touch(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	..()
 	M.adjust_fire_stacks(removed / 5)
 	if(alien == IS_VOX || alien == IS_XENOHYBRID)
@@ -114,7 +114,7 @@
 	if(prob(50))
 		M.pl_effects()
 
-/datum/reagent/toxin/phoron/affect_blood(mob/living/carbon/M, alien, removed)
+/datum/reagent/toxin/phoron/legacy_affect_blood(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	if(alien == IS_VOX)
 		M.adjustOxyLoss(-100 * removed) //5 oxyloss healed per tick.
 		return //You're wasting plasma (a semi-limited chemical) to save someone, so it might as well be somewhat strong.
@@ -141,7 +141,7 @@
 	strength = 20
 	metabolism = REM * 2
 
-/datum/reagent/toxin/cyanide/affect_blood(mob/living/carbon/M, alien, removed)
+/datum/reagent/toxin/cyanide/legacy_affect_blood(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	..()
 	M.adjustOxyLoss(20 * removed)
 	M.afflict_sleeping(20 * 1)
@@ -154,7 +154,7 @@
 	reagent_state = REAGENT_SOLID
 	strength = 5
 
-/datum/reagent/toxin/mold/affect_ingest(mob/living/carbon/M, alien, removed)
+/datum/reagent/toxin/mold/legacy_affect_ingest(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	..()
 	M.adjustToxLoss(strength * removed)
 	if(prob(5))
@@ -178,14 +178,13 @@
 	strength = 5
 	filtered_organs = list(O_SPLEEN)
 
-/datum/reagent/toxin/expired_medicine/affect_blood(mob/living/carbon/M, alien, removed)
+/datum/reagent/toxin/expired_medicine/legacy_affect_blood(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	..()
 	if(prob(5))
 		M.vomit()
 
-/datum/reagent/toxin/expired_medicine/affect_ingest(mob/living/carbon/M, alien, removed)
-	affect_blood(M, alien, removed * 0.66)
-
+/datum/reagent/toxin/expired_medicine/legacy_affect_ingest(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
+	legacy_affect_blood(M, alien, removed * 0.66, metabolism)
 
 /datum/reagent/toxin/stimm	//Homemade Hyperzine
 	name = "Stimm"
@@ -198,7 +197,7 @@
 	overdose = 10
 	strength = 3
 
-/datum/reagent/toxin/stimm/affect_blood(mob/living/carbon/M, alien, removed)
+/datum/reagent/toxin/stimm/legacy_affect_blood(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	if(alien == IS_TAJARA)
 		removed *= 1.25
 	..()
@@ -220,7 +219,7 @@
 	overdose = REAGENTS_OVERDOSE
 	filtered_organs = list(O_SPLEEN, O_KIDNEYS)
 
-/datum/reagent/toxin/potassium_chloride/affect_blood(mob/living/carbon/M, alien, removed)
+/datum/reagent/toxin/potassium_chloride/legacy_affect_blood(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	..()
 	if(alien == IS_SLIME)
 		M.adjustFireLoss(removed * 2)
@@ -246,7 +245,7 @@
 	overdose = 20
 	filtered_organs = list(O_SPLEEN, O_KIDNEYS)
 
-/datum/reagent/toxin/potassium_chlorophoride/affect_blood(mob/living/carbon/M, alien, removed)
+/datum/reagent/toxin/potassium_chlorophoride/legacy_affect_blood(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	..()
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
@@ -269,7 +268,7 @@
 	strength = 3
 	mrate_static = TRUE
 
-/datum/reagent/toxin/zombiepowder/affect_blood(mob/living/carbon/M, alien, removed)
+/datum/reagent/toxin/zombiepowder/legacy_affect_blood(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	..()
 	if(alien == IS_DIONA)
 		return
@@ -295,7 +294,7 @@
 	strength = 2
 	mrate_static = TRUE
 
-/datum/reagent/toxin/lichpowder/affect_touch(mob/living/carbon/M, alien, removed)
+/datum/reagent/toxin/lichpowder/legacy_affect_touch(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	..()
 	if(alien == IS_DIONA)
 		return
@@ -324,7 +323,7 @@
 	strength = 0.5 // It's not THAT poisonous.
 	color = "#664330"
 
-/datum/reagent/toxin/fertilizer/affect_blood(mob/living/carbon/M, alien, removed)
+/datum/reagent/toxin/fertilizer/legacy_affect_blood(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	if(alien == IS_ALRAUNE) //cit change: fertilizer is full of natural easily digestible plant fats
 		M.nutrition += removed * 5
 		return
@@ -365,11 +364,11 @@
 		var/obj/structure/alien/weeds/alien_weeds = O
 		alien_weeds.damage_integrity(15, 35)
 
-/datum/reagent/toxin/plantbgone/affect_blood(mob/living/carbon/M, alien, removed)
+/datum/reagent/toxin/plantbgone/legacy_affect_blood(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	if(alien == IS_ALRAUNE)
 		M.adjustToxLoss(50 * removed)
 
-/datum/reagent/toxin/plantbgone/affect_touch(mob/living/carbon/M, alien, removed)
+/datum/reagent/toxin/plantbgone/legacy_affect_touch(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	if(alien == IS_ALRAUNE)
 		M.adjustToxLoss(50 * removed)
 
@@ -388,11 +387,11 @@
 	else if(istype(A, /mob/living/simple_mob/animal/giant_spider))
 		A.adjustToxLoss(5 * removed)
 
-/datum/reagent/toxin/pestbgone/affect_blood(mob/living/carbon/M, alien, removed)
+/datum/reagent/toxin/pestbgone/legacy_affect_blood(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	if(alien == IS_APIDAEN)
 		M.adjustToxLoss(50 * removed)
 
-/datum/reagent/toxin/pestbgone/affect_touch(mob/living/carbon/M, alien, removed)
+/datum/reagent/toxin/pestbgone/legacy_affect_touch(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	if(alien == IS_APIDAEN)
 		M.adjustToxLoss(50 * removed)
 
@@ -406,7 +405,7 @@
 	strength = 2
 	overdose = 20
 
-/datum/reagent/toxin/sifslurry/affect_blood(mob/living/carbon/M, alien, removed)
+/datum/reagent/toxin/sifslurry/legacy_affect_blood(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	if(alien == IS_DIONA) // Symbiotic bacteria.
 		M.nutrition += strength * removed
 		return
@@ -423,8 +422,8 @@
 	M.afflict_radiation(RAD_MOB_AFFLICT_STRENGTH_SIFSLURRY_OD(removed))
 	M.apply_effect(5 * removed, DROWSY, 0, 0)
 
-/datum/reagent/toxin/sifslurry/affect_ingest(mob/living/carbon/M, alien, removed)
-	affect_blood(M, alien, removed * 0.7)
+/datum/reagent/toxin/sifslurry/legacy_affect_ingest(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
+	legacy_affect_blood(M, alien, removed * 0.7, metabolism)
 
 /datum/reagent/acid/polyacid
 	name = "Polytrinic acid"
@@ -463,7 +462,7 @@
 	color = "#673910"
 	touch_met = 50
 
-/datum/reagent/thermite/venom/affect_blood(mob/living/carbon/M, alien, removed)
+/datum/reagent/thermite/venom/legacy_affect_blood(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	M.adjustFireLoss(3 * removed)
 	if(M.fire_stacks <= 1.5)
 		M.adjust_fire_stacks(0.15)
@@ -484,7 +483,7 @@
 	color = "#B31008"
 	filtered_organs = list(O_SPLEEN)
 
-/datum/reagent/condensedcapsaicin/venom/affect_blood(mob/living/carbon/M, alien, removed)
+/datum/reagent/condensedcapsaicin/venom/legacy_affect_blood(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	if(alien == IS_DIONA)
 		return
 	if(prob(50))
@@ -507,7 +506,7 @@
 	color = "#C8A5DC"
 	overdose = REAGENTS_OVERDOSE
 
-/datum/reagent/lexorin/affect_blood(mob/living/carbon/M, alien, removed)
+/datum/reagent/lexorin/legacy_affect_blood(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	if(alien == IS_DIONA)
 		return
 	if(alien == IS_SLIME)
@@ -535,15 +534,15 @@
 	reagent_state = REAGENT_LIQUID
 	color = "#13BC5E"
 
-/datum/reagent/mutagen/affect_touch(mob/living/carbon/M, alien, removed)
+/datum/reagent/mutagen/legacy_affect_touch(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	if(prob(33))
-		affect_blood(M, alien, removed)
+		legacy_affect_blood(M, alien, removed, metabolism)
 
-/datum/reagent/mutagen/affect_ingest(mob/living/carbon/M, alien, removed)
+/datum/reagent/mutagen/legacy_affect_ingest(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	if(prob(67))
-		affect_blood(M, alien, removed)
+		legacy_affect_blood(M, alien, removed, metabolism)
 
-/datum/reagent/mutagen/affect_blood(mob/living/carbon/M, alien, removed)
+/datum/reagent/mutagen/legacy_affect_blood(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 
 	if(M.isSynthetic())
 		return
@@ -629,7 +628,7 @@
 	reagent_state = REAGENT_LIQUID
 	color = "#801E28"
 
-/datum/reagent/slimejelly/affect_blood(mob/living/carbon/M, alien, removed)
+/datum/reagent/slimejelly/legacy_affect_blood(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	if(alien == IS_DIONA)
 		return
 	if(alien == IS_SLIME) //Partially made of the stuff. Why would it hurt them?
@@ -652,7 +651,7 @@
 	reagent_state = REAGENT_LIQUID
 	color = "#13BC5E"
 
-/datum/reagent/advmutationtoxin/affect_blood(mob/living/carbon/M, alien, removed)
+/datum/reagent/advmutationtoxin/legacy_affect_blood(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
 		if(H.species.get_species_id() != SPECIES_ID_PROMETHEAN)
@@ -687,7 +686,7 @@
 	ingest_met = REM * 1.5
 	overdose = REAGENTS_OVERDOSE
 
-/datum/reagent/soporific/affect_blood(mob/living/carbon/M, alien, removed)
+/datum/reagent/soporific/legacy_affect_blood(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	if(alien == IS_DIONA)
 		return
 
@@ -736,7 +735,7 @@
 	overdose = REAGENTS_OVERDOSE * 0.5
 	overdose_mod = 5	//For that good, lethal feeling
 
-/datum/reagent/chloralhydrate/affect_blood(mob/living/carbon/M, alien, removed)
+/datum/reagent/chloralhydrate/legacy_affect_blood(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	if(alien == IS_DIONA)
 		return
 
@@ -799,7 +798,7 @@
 	metabolism = REM * 0.5
 	overdose = REAGENTS_OVERDOSE
 
-/datum/reagent/space_drugs/affect_blood(mob/living/carbon/M, alien, removed)
+/datum/reagent/space_drugs/legacy_affect_blood(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	if(alien == IS_DIONA)
 		return
 
@@ -826,7 +825,7 @@
 	metabolism = REM * 0.25
 	overdose = REAGENTS_OVERDOSE
 
-/datum/reagent/serotrotium/affect_blood(mob/living/carbon/M, alien, removed)
+/datum/reagent/serotrotium/legacy_affect_blood(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	if(alien == IS_DIONA)
 		return
 	if(prob(7))
@@ -840,7 +839,7 @@
 	taste_description = "chalky bitterness"
 	filtered_organs = list(O_SPLEEN)
 
-/datum/reagent/serotrotium/venom/affect_blood(mob/living/carbon/M, alien, removed)
+/datum/reagent/serotrotium/venom/legacy_affect_blood(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	if(alien == IS_DIONA)
 		return
 	if(prob(30))
@@ -859,7 +858,7 @@
 	metabolism = REM * 0.5
 	overdose = REAGENTS_OVERDOSE
 
-/datum/reagent/cryptobiolin/affect_blood(mob/living/carbon/M, alien, removed)
+/datum/reagent/cryptobiolin/legacy_affect_blood(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	if(alien == IS_DIONA)
 		return
 	var/drug_strength = 4
@@ -883,7 +882,7 @@
 	overdose = REAGENTS_OVERDOSE
 	filtered_organs = list(O_SPLEEN)
 
-/datum/reagent/impedrezene/affect_blood(mob/living/carbon/M, alien, removed)
+/datum/reagent/impedrezene/legacy_affect_blood(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	if(alien == IS_DIONA)
 		return
 	M.jitteriness = max(M.jitteriness - 5, 0)
@@ -904,7 +903,7 @@
 	metabolism = REM * 0.25
 	overdose = REAGENTS_OVERDOSE
 
-/datum/reagent/mindbreaker/affect_blood(mob/living/carbon/M, alien, removed)
+/datum/reagent/mindbreaker/legacy_affect_blood(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	if(alien == IS_DIONA)
 		return
 
@@ -927,7 +926,7 @@
 	overdose = REAGENTS_OVERDOSE
 	metabolism = REM * 0.5
 
-/datum/reagent/psilocybin/affect_blood(mob/living/carbon/M, alien, removed)
+/datum/reagent/psilocybin/legacy_affect_blood(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	if(alien == IS_DIONA)
 		return
 
@@ -981,7 +980,7 @@
 	metabolism = REM * 0.5
 	overdose = REAGENTS_OVERDOSE
 
-/datum/reagent/talum_quem/affect_blood(mob/living/carbon/M, alien, removed)
+/datum/reagent/talum_quem/legacy_affect_blood(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	if(alien == IS_DIONA)
 		return
 
@@ -1007,7 +1006,7 @@
 	reagent_state = REAGENT_LIQUID
 	color = "#13BC5E"
 
-/datum/reagent/slimetoxin/affect_blood(mob/living/carbon/M, alien, removed)
+/datum/reagent/slimetoxin/legacy_affect_blood(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	if(M.isSynthetic())
 		return
 
@@ -1037,7 +1036,7 @@
 	reagent_state = REAGENT_LIQUID
 	color = "#FF69B4"
 
-/datum/reagent/aslimetoxin/affect_blood(mob/living/carbon/M, alien, removed) // TODO: check if there's similar code anywhere else
+/datum/reagent/aslimetoxin/legacy_affect_blood(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism) // TODO: check if there's similar code anywhere else
 	if(M.isSynthetic())
 		return
 
@@ -1074,7 +1073,7 @@
 	metabolism = REM * 4 // Nanomachines. Fast.
 	affects_robots = TRUE
 
-/datum/reagent/shredding_nanites/affect_blood(mob/living/carbon/M, alien, removed)
+/datum/reagent/shredding_nanites/legacy_affect_blood(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	M.adjustBruteLoss(4 * removed)
 	M.adjustOxyLoss(4 * removed)
 
@@ -1088,7 +1087,7 @@
 	metabolism = REM * 4
 	affects_robots = TRUE
 
-/datum/reagent/irradiated_nanites/affect_blood(mob/living/carbon/M, alien, removed)
+/datum/reagent/irradiated_nanites/legacy_affect_blood(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	// todo: this should be more brutal on people around the person without being too brutal on the person
 	// new radiation just kind of scales pretty badly
 	/// rads to everyone around you
@@ -1107,7 +1106,7 @@
 	filtered_organs = list(O_SPLEEN)
 	affects_robots = TRUE
 
-/datum/reagent/neurophage_nanites/affect_blood(mob/living/carbon/M, alien, removed)
+/datum/reagent/neurophage_nanites/legacy_affect_blood(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	M.adjustBrainLoss(2 * removed)	// Their job is to give you a bad time.
 	M.adjustBruteLoss(2 * removed)
 
@@ -1123,5 +1122,5 @@
 	var/power = 9
 	affects_robots = TRUE
 
-/datum/reagent/grubshock/affect_blood(mob/living/carbon/M, alien, removed)
+/datum/reagent/grubshock/legacy_affect_blood(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	M.take_random_targeted_damage(brute = 0, brute = removed * power * 0.2)

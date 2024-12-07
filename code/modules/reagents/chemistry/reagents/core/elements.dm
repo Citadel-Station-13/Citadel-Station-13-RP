@@ -26,7 +26,7 @@
 	color = "#1C1300"
 	ingest_met = REM * 5
 
-/datum/reagent/carbon/affect_ingest(mob/living/carbon/M, alien, removed)
+/datum/reagent/carbon/legacy_affect_ingest(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	if(alien == IS_DIONA)
 		return
 	if(length(M.ingested.reagent_volumes) > 1)
@@ -53,10 +53,10 @@
 	reagent_state = REAGENT_GAS
 	color = "#d1db77"
 
-/datum/reagent/chlorine/affect_blood(mob/living/carbon/M, alien, removed)
+/datum/reagent/chlorine/legacy_affect_blood(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	M.take_random_targeted_damage(brute = 1*REM, brute = 0)
 
-/datum/reagent/chlorine/affect_touch(mob/living/carbon/M, alien, removed)
+/datum/reagent/chlorine/legacy_affect_touch(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	M.take_random_targeted_damage(brute = 1*REM, brute = 0)
 
 /datum/reagent/copper
@@ -74,10 +74,10 @@
 	reagent_state = REAGENT_GAS
 	color = "#808080"
 
-/datum/reagent/fluorine/affect_blood(mob/living/carbon/M, alien, removed)
+/datum/reagent/fluorine/legacy_affect_blood(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	M.adjustToxLoss(removed)
 
-/datum/reagent/fluorine/affect_touch(mob/living/carbon/M, alien, removed)
+/datum/reagent/fluorine/legacy_affect_touch(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	M.adjustToxLoss(removed)
 
 /datum/reagent/hydrogen
@@ -96,7 +96,7 @@
 	reagent_state = REAGENT_SOLID
 	color = "#353535"
 
-/datum/reagent/iron/affect_ingest(mob/living/carbon/M, alien, removed)
+/datum/reagent/iron/legacy_affect_ingest(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	if(alien != IS_DIONA)
 		M.add_chemical_effect(CE_BLOODRESTORE, 8 * removed)
 
@@ -108,7 +108,7 @@
 	reagent_state = REAGENT_SOLID
 	color = "#808080"
 
-/datum/reagent/lithium/affect_blood(mob/living/carbon/M, alien, removed)
+/datum/reagent/lithium/legacy_affect_blood(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	if(alien != IS_DIONA)
 		if(CHECK_MOBILITY(M, MOBILITY_CAN_MOVE) && istype(M.loc, /turf/space))
 			step(M, pick(GLOB.cardinal))
@@ -123,7 +123,7 @@
 	reagent_state = REAGENT_LIQUID
 	color = "#484848"
 
-/datum/reagent/mercury/affect_blood(mob/living/carbon/M, alien, removed)
+/datum/reagent/mercury/legacy_affect_blood(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	if(alien != IS_DIONA)
 		if(CHECK_MOBILITY(M, MOBILITY_CAN_MOVE) && istype(M.loc, /turf/space))
 			step(M, pick(GLOB.cardinal))
@@ -147,7 +147,7 @@
 	reagent_state = REAGENT_GAS
 	color = "#808080"
 
-/datum/reagent/oxygen/affect_blood(mob/living/carbon/M, alien, removed)
+/datum/reagent/oxygen/legacy_affect_blood(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	if(alien == IS_VOX)
 		M.adjustToxLoss(removed * 3)
 
@@ -159,7 +159,7 @@
 	reagent_state = REAGENT_SOLID
 	color = "#832828"
 
-/datum/reagent/phosphorus/affect_blood(mob/living/carbon/M, alien, removed)
+/datum/reagent/phosphorus/legacy_affect_blood(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	if(alien == IS_ALRAUNE)
 		M.nutrition += removed * 2 //cit change - phosphorus is good for plants
 
@@ -179,7 +179,7 @@
 	reagent_state = REAGENT_SOLID
 	color = "#C7C7C7"
 
-/datum/reagent/radium/affect_blood(mob/living/carbon/M, alien, removed)
+/datum/reagent/radium/legacy_affect_blood(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	if(issmall(M))
 		removed *= 2
 	M.afflict_radiation(RAD_MOB_AFFLICT_STRENGTH_RADIUM(removed))

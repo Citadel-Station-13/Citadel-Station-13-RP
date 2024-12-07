@@ -12,9 +12,12 @@
 
 	/// maximum amount ever put in
 	var/peak_dose = 0
+	/// maximum amount processed so far
+	var/total_processed_dose = 0
+
 	/// cycles we've been in a mob
 	var/cycles_so_far = 0
 	/// cycles we've been overdosing
+	///
+	/// * This is reset if we stop overdosing, even for a single tick.
 	var/cycles_overdosing = 0
-
-#warn impl

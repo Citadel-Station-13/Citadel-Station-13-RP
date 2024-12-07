@@ -96,7 +96,7 @@
 		if(B)
 			B.blood_DNA["UNKNOWN DNA STRUCTURE"] = "X*"
 
-/datum/reagent/blood/affect_ingest(mob/living/carbon/M, alien, removed)
+/datum/reagent/blood/legacy_affect_ingest(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 
 	var/effective_dose = dose
 	if(issmall(M))
@@ -147,13 +147,13 @@
 				if(V.spreadtype == "Contact")
 					infect_virus2(M, V.getcopy())
 
-/datum/reagent/blood/affect_touch(mob/living/carbon/M, alien, removed)
+/datum/reagent/blood/legacy_affect_touch(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
 		if(H.isSynthetic())
 			return
 	if(alien == IS_SLIME)
-		affect_ingest(M, alien, removed)
+		legacy_affect_ingest(M, alien, removed, metabolism)
 		return
 	if(data && data["virus2"])
 		var/list/vlist = data["virus2"]
@@ -165,9 +165,9 @@
 	if(data && data["antibodies"])
 		M.antibodies |= data["antibodies"]
 
-/datum/reagent/blood/affect_blood(mob/living/carbon/M, alien, removed)
+/datum/reagent/blood/legacy_affect_blood(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	if(alien == IS_SLIME) //They don't have blood, so it seems weird that they would instantly 'process' the chemical like another species does.
-		affect_ingest(M, alien, removed)
+		legacy_affect_ingest(M, alien, removed, metabolism)
 		return
 
 	if(M.isSynthetic())

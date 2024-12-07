@@ -49,13 +49,13 @@
 	old_data.merge_from(new_data)
 	return old_data
 
-/datum/reagent/nutriment/affect_blood(mob/living/carbon/M, alien, removed)
+/datum/reagent/nutriment/legacy_affect_blood(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	if(!injectable && alien != IS_SLIME && alien != IS_CHIMERA)
 		M.adjustToxLoss(0.1 * removed)
 		return
-	affect_ingest(M, alien, removed)
+	legacy_affect_ingest(M, alien, removed, metabolism)
 
-/datum/reagent/nutriment/affect_ingest(mob/living/carbon/M, alien, removed)
+/datum/reagent/nutriment/legacy_affect_ingest(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	switch(alien)
 		if(IS_DIONA)
 			return

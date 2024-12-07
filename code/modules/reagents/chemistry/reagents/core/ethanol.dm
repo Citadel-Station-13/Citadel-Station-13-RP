@@ -33,7 +33,7 @@
 
 #define ABV (proof/200)
 
-/datum/reagent/ethanol/affect_blood(mob/living/carbon/M, alien, removed) //This used to do just toxin. That's boring. Let's make this FUN.
+/datum/reagent/ethanol/legacy_affect_blood(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism) //This used to do just toxin. That's boring. Let's make this FUN.
 	var/strength_mod = 1 //Alcohol is 3x stronger when injected into the veins.
 	if(alien == IS_SKRELL)
 		strength_mod *= 5
@@ -120,7 +120,7 @@
 	#undef DOSE_LEVEL
 	return
 
-/datum/reagent/ethanol/affect_ingest(mob/living/carbon/M, alien, removed)
+/datum/reagent/ethanol/legacy_affect_ingest(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	if(issmall(M)) removed *= 2
 	M.adjust_nutrition(nutriment_factor * removed)
 	M.adjust_hydration(hydration_factor * removed)

@@ -12,7 +12,7 @@
 	var/strength = 4 // How much damage it deals per unit
 	var/skin_danger = 0.2 // The multiplier for how effective the toxin is when making skin contact.
 
-/datum/reagent/toxin/affect_blood(mob/living/carbon/M, alien, removed)
+/datum/reagent/toxin/legacy_affect_blood(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	if(strength && alien != IS_DIONA)
 		if(issmall(M)) removed *= 2 // Small bodymass, more effect from lower volume.
 		if(alien == IS_SLIME)
@@ -23,5 +23,5 @@
 				M.heal_organ_damage((10/strength) * removed, (10/strength) * removed) //Doses of toxins below 10 units, and 10 strength, are capable of providing useful compounds for repair.
 		M.adjustToxLoss(strength * removed)
 
-/datum/reagent/toxin/affect_touch(mob/living/carbon/M, alien, removed)
-	affect_blood(M, alien, removed * 0.2)
+/datum/reagent/toxin/legacy_affect_touch(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
+	legacy_affect_blood(M, alien, removed * 0.2, metabolism)

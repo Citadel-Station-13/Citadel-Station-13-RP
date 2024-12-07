@@ -19,5 +19,5 @@
 	if(istype(L))
 		L.adjust_fire_stacks(amount / 5)
 
-/datum/reagent/thermite/affect_blood(mob/living/carbon/M, alien, removed)
+/datum/reagent/thermite/legacy_affect_blood(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	M.adjustFireLoss(3 * removed)

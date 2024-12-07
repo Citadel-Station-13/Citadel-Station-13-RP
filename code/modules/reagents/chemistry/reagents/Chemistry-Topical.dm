@@ -19,19 +19,21 @@
 
 	var/toxicity = 1//factor of toxin damage dealt by improper application
 
-/datum/reagent/topical/affect_blood(mob/living/carbon/M, alien, removed)
-	if(alien != IS_DIONA)
-		M.adjustToxLoss(toxicity * removed)//if injected cause toxin damage
+/datum/reagent/topical/legacy_affect_blood(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
+	if(alien == IS_DIONA)
+		return
+	M.adjustToxLoss(toxicity * removed)//if injected cause toxin damage
 
-/datum/reagent/topical/affect_ingest(mob/living/carbon/M, alien, removed)
-	if(alien != IS_DIONA)
-		if(prob(10) && toxicity)//If ingested, either throw up
-			M.vomit(1)
-		else//or half the reagent passes through into blood(rest is filtered off) and alittle bit affects the inner skin
-			affect_blood(M, alien, removed/2)
-			affect_touch(M, alien, removed/10)
+/datum/reagent/topical/legacy_affect_ingest(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
+	if(alien == IS_DIONA)
+		return
+	if(prob(10) && toxicity)//If ingested, either throw up
+		M.vomit(1)
+	else//or half the reagent passes through into blood(rest is filtered off) and alittle bit affects the inner skin
+		legacy_affect_blood(M, alien, removed/2, metabolism)
+		legacy_affect_touch(M, alien, removed/10, metabolism)
 
-/datum/reagent/topical/affect_touch(mob/living/carbon/M, alien, removed)
+/datum/reagent/topical/legacy_affect_touch(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	M.ceiling_chemical_effect(CE_PAINKILLER, 1)//just so there is something here...
 
 /datum/reagent/topical/bicarilaze
@@ -42,7 +44,7 @@
 
 	toxicity = 3
 
-/datum/reagent/topical/bicarilaze/affect_touch(mob/living/carbon/M, alien, removed)
+/datum/reagent/topical/bicarilaze/legacy_affect_touch(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	if(alien != IS_DIONA)
 		M.heal_organ_damage(6*removed,0)//Heal brute damage
 
@@ -54,7 +56,7 @@
 
 	toxicity = 2
 
-/datum/reagent/topical/kelotalaze/affect_touch(mob/living/carbon/M, alien, removed)
+/datum/reagent/topical/kelotalaze/legacy_affect_touch(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	if(alien != IS_DIONA)
 		M.heal_organ_damage(0,6*removed)//Heal burns
 
@@ -65,7 +67,7 @@
 
 	toxicity = 0
 
-/datum/reagent/topical/tricoralaze/affect_touch(mob/living/carbon/M, alien, removed)
+/datum/reagent/topical/tricoralaze/legacy_affect_touch(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	if(alien != IS_DIONA)
 		M.heal_organ_damage(3*removed,3*removed)//Heal both damage
 
@@ -76,7 +78,7 @@
 
 	toxicity = 0
 
-/datum/reagent/topical/inaprovalaze/affect_touch(mob/living/carbon/M, alien, removed)
+/datum/reagent/topical/inaprovalaze/legacy_affect_touch(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	if(alien != IS_DIONA)
 		M.add_chemical_effect(CE_STABLE, 20)//Reduces bleeding rate, and allowes the patient to breath even when in shock
 		M.ceiling_chemical_effect(CE_PAINKILLER, 40)
@@ -103,7 +105,7 @@
 
 	toxicity = 5
 
-/datum/reagent/topical/neurolaze/affect_touch(mob/living/carbon/M, alien, removed)
+/datum/reagent/topical/neurolaze/legacy_affect_touch(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	if(alien != IS_DIONA)
 		M.ceiling_chemical_effect(CE_PAINKILLER, 100)//Half oxycodone
 		M.make_jittery(50*removed)//Your nerves are itching
@@ -115,12 +117,12 @@
 			data = world.time
 			to_chat(M, "<span class='warning'>You feel like all your nerves are itching.</span>")
 
-/datum/reagent/topical/neurolaze/affect_blood(mob/living/carbon/M, alien, removed)
+/datum/reagent/topical/neurolaze/legacy_affect_blood(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	if(alien != IS_DIONA)
 		M.apply_damage(5 * removed, DAMAGE_TYPE_HALLOSS)//holodeck boxing glove damage
 		M.make_jittery(200)
 
-/datum/reagent/topical/neurolaze/affect_ingest(mob/living/carbon/M, alien, removed)
+/datum/reagent/topical/neurolaze/legacy_affect_ingest(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	if(alien != IS_DIONA)
 		M.vomit()
 		holder.remove_reagent("neurolaze", 10 * removed)//purges itself...
@@ -136,7 +138,7 @@
 
 	toxicity = 3
 
-/datum/reagent/topical/sterilaze/affect_touch(mob/living/carbon/M, alien, removed)
+/datum/reagent/topical/sterilaze/legacy_affect_touch(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
 		for(var/obj/item/organ/external/O in H.bad_external_organs)
@@ -150,7 +152,7 @@
 
 	toxicity = 1
 
-/datum/reagent/topical/cleansalaze/affect_touch(mob/living/carbon/M, alien, removed)
+/datum/reagent/topical/cleansalaze/legacy_affect_touch(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	if(alien != IS_DIONA)
 		M.cure_radiation(RAD_MOB_CURE_STRENGTH_CLEANSALAZE(removed))
 
@@ -161,7 +163,7 @@
 
 	toxicity = 0
 
-/datum/reagent/topical/lotion/affect_touch(mob/living/carbon/M, alien, removed)
+/datum/reagent/topical/lotion/legacy_affect_touch(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	if (alien != IS_DIONA)
 		M.ceiling_chemical_effect(CE_PAINKILLER, 5)//Not really usefull but I guess a lotion would help alittle with pain
 		if(prob(1))

@@ -8,7 +8,7 @@
 	color = "#0050F0"
 	mrate_static = TRUE
 
-/datum/reagent/antibodies/affect_blood(mob/living/carbon/M, alien, removed)
+/datum/reagent/antibodies/legacy_affect_blood(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	if(src.data)
 		M.antibodies |= src.data["antibodies"]
 	..()
@@ -83,7 +83,7 @@
 	var/effective = amount || 10
 	L.clean_radiation(RAD_CONTAMINATION_CLEANSE_POWER * (effective / 10), RAD_CONTAMINATION_CLEANSE_FACTOR ** (1 / (effective / 10)))
 
-/datum/reagent/water/affect_ingest(mob/living/carbon/M, alien, removed)
+/datum/reagent/water/legacy_affect_ingest(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	//if(alien == IS_SLIME)
 	//	M.adjustToxLoss(6 * removed)
 	//else
@@ -106,7 +106,7 @@
 	remove_self(amount)
 	return
 
-/datum/reagent/fuel/affect_blood(mob/living/carbon/M, alien, removed)
+/datum/reagent/fuel/legacy_affect_blood(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	if(issmall(M)) removed *= 2
 	M.adjustToxLoss(4 * removed)
 

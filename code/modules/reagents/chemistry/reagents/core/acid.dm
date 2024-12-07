@@ -10,11 +10,11 @@
 	var/power = 5
 	var/meltdose = 10 // How much is needed to melt
 
-/datum/reagent/acid/affect_blood(mob/living/carbon/M, alien, removed)
+/datum/reagent/acid/legacy_affect_blood(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	if(issmall(M)) removed *= 2
 	M.take_random_targeted_damage(brute = 0, brute = removed * power * 2)
 
-/datum/reagent/acid/affect_touch(mob/living/carbon/M, alien, removed) // This is the most interesting
+/datum/reagent/acid/legacy_affect_touch(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism) // This is the most interesting
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
 		if(H.head)
