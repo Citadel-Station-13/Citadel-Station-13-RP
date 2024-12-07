@@ -651,7 +651,7 @@
 	if(is_vampire)
 		handle_vampire(M, alien, removed, is_vampire)
 
-/datum/reagent/drink/overdose(mob/living/carbon/M, alien) //Add special interactions here in the future if desired.
+/datum/reagent/drink/legacy_affect_overdose(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	..()
 
 // Juices
@@ -1212,7 +1212,7 @@
 /datum/reagent/drink/coffee/legacy_affect_blood(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	..()
 
-/datum/reagent/drink/coffee/overdose(mob/living/carbon/M, alien)
+/datum/reagent/drink/coffee/legacy_affect_overdose(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	if(alien == IS_DIONA)
 		return
 	M.make_jittery(5)
@@ -1538,7 +1538,7 @@
 	glass_name = "Coffee Milkshake"
 	glass_desc = "An energizing coffee milkshake, perfect for hot days at work.."
 
-/datum/reagent/drink/milkshake/coffeeshake/overdose(mob/living/carbon/M, alien)
+/datum/reagent/drink/milkshake/coffeeshake/legacy_affect_overdose(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	M.make_jittery(5)
 
 /datum/reagent/drink/milkshake/peanutshake
@@ -2398,7 +2398,7 @@
 	if(M.bodytemperature > 310)
 		M.bodytemperature = max(310, M.bodytemperature - (5 * TEMPERATURE_DAMAGE_COEFFICIENT))
 
-/datum/reagent/ethanol/coffee/overdose(mob/living/carbon/M, alien)
+/datum/reagent/ethanol/coffee/legacy_affect_overdose(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	if(alien == IS_DIONA)
 		return
 	M.make_jittery(5)

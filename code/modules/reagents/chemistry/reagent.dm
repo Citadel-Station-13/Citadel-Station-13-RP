@@ -274,7 +274,7 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 				return
 		M.nutrition += removed * blood_content //We should always be able to process real blood.
 
-/datum/reagent/proc/overdose(var/mob/living/carbon/M, var/alien, var/removed) // Overdose effect.
+/datum/reagent/proc/legacy_affect_overdose(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	if(alien == IS_DIONA)
 		return
 	if(ishuman(M))

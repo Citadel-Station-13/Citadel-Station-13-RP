@@ -224,7 +224,7 @@
 	if(alien == IS_SLIME)
 		M.adjustFireLoss(removed * 2)
 
-/datum/reagent/toxin/potassium_chloride/overdose(mob/living/carbon/M, alien)
+/datum/reagent/toxin/potassium_chloride/legacy_affect_overdose(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	..()
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
@@ -413,7 +413,7 @@
 		M.add_modifier(/datum/modifier/slow_pulse, 30 SECONDS)
 	..()
 
-/datum/reagent/toxin/sifslurry/overdose(mob/living/carbon/M, alien, removed) // Overdose effect.
+/datum/reagent/toxin/sifslurry/legacy_affect_overdose(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	if(alien == IS_DIONA)
 		return
 	if(ishuman(M))
@@ -769,7 +769,7 @@
 	if(effective_dose > 1 * threshold)
 		M.adjustToxLoss(removed)
 
-/datum/reagent/chloralhydrate/overdose(mob/living/carbon/M, alien, removed)
+/datum/reagent/chloralhydrate/legacy_affect_overdose(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	..()
 	M.SetLosebreath(10)
 	M.adjustOxyLoss(removed * overdose_mod)

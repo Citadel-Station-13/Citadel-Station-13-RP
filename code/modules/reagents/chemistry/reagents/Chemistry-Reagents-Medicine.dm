@@ -34,7 +34,7 @@
 	if(alien != IS_DIONA)
 		M.heal_organ_damage(4 * removed * chem_effective, 0) //The first Parameter of the function is brute, the second burn damage
 
-/datum/reagent/bicaridine/overdose(mob/living/carbon/M, alien, removed)
+/datum/reagent/bicaridine/legacy_affect_overdose(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	..()
 	var/wound_heal = 1.5 * removed//Overdose enhances the healing effects
 	M.eye_blurry = min(M.eye_blurry + wound_heal, 250)
@@ -467,7 +467,7 @@
 		chem_effective = 0.75
 	M.ceiling_chemical_effect(CE_PAINKILLER, 25 * chem_effective)//kinda weak painkilling, for non life threatening injuries
 
-/datum/reagent/paracetamol/overdose(mob/living/carbon/M, alien)
+/datum/reagent/paracetamol/legacy_affect_overdose(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	..()
 	if(alien == IS_SLIME)
 		M.add_chemical_effect(CE_SLOWDOWN, 1)
@@ -492,7 +492,7 @@
 		M.add_chemical_effect(CE_SLOWDOWN, 1)
 	M.ceiling_chemical_effect(CE_PAINKILLER, 80 * chem_effective)//more potent painkilling, for close to fatal injuries
 
-/datum/reagent/tramadol/overdose(mob/living/carbon/M, alien)
+/datum/reagent/tramadol/legacy_affect_overdose(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	..()
 	M.setHallucination(max(M.hallucination, 2))
 
@@ -517,7 +517,7 @@
 	M.add_chemical_effect(CE_SLOWDOWN, 1)
 	M.eye_blurry = min(M.eye_blurry + 10, 250 * chem_effective)
 
-/datum/reagent/oxycodone/overdose(mob/living/carbon/M, alien)
+/datum/reagent/oxycodone/legacy_affect_overdose(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	..()
 	M.druggy = max(M.druggy, 10)
 	M.setHallucination(max(M.hallucination, 3))
@@ -540,7 +540,7 @@
 		to_chat(M,"<span class='warning'>Your body feels numb as a light, tingly sensation spreads throughout it, like some odd warmth.</span>")
 	//Not noted here, but a movement debuff of 1.5 is handed out in human_movement.dm when numbing_enzyme is in a person's bloodstream!
 
-/datum/reagent/numbing_enzyme/overdose(mob/living/carbon/M, alien)
+/datum/reagent/numbing_enzyme/legacy_affect_overdose(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	//..() //Add this if you want it to do toxin damage. Personally, let's allow them to have the horrid effects below without toxin damage.
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
@@ -1625,7 +1625,7 @@
 	M.druggy += 10
 	M.vomit()
 
-/datum/reagent/neuratrextate/overdose(mob/living/carbon/M)
+/datum/reagent/neuratrextate/legacy_affect_overdose(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	..()
 	M.druggy += 30
 	M.adjustHallucination(20)

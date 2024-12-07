@@ -127,7 +127,7 @@
 		M.vomit()
 		holder.remove_reagent("neurolaze", 10 * removed)//purges itself...
 
-/datum/reagent/topical/neurolaze/overdose(mob/living/carbon/M, alien)
+/datum/reagent/topical/neurolaze/legacy_affect_overdose(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	if(alien != IS_DIONA)
 		M.adjustBrainLoss(0.1)//deals braindamage on overdose
 
