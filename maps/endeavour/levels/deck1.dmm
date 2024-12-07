@@ -18485,7 +18485,12 @@
 	},
 /obj/effect/floor_decal/corner/black/diagonal,
 /obj/structure/table/marble,
-/obj/item/reagent_containers/food/condiment/flour,
+/obj/item/storage/fancy/egg_box{
+	pixel_y = 11
+	},
+/obj/item/storage/fancy/egg_box{
+	pixel_y = 5
+	},
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/lounge/kitchen_freezer)
 "nLZ" = (
