@@ -161,11 +161,11 @@ GLOBAL_REAL(Configuration, /datum/controller/toml_configuration)
 	for(var/key in decoded_list)
 		var/value = decoded_list[key]
 		if(islist(value))
-			var/list/entry_list = entry_list[key]
-			if(!islist(entry_list))
+			var/list/next_entry_list = entry_list[key]
+			if(!islist(next_entry_list))
 				// todo: warn
 			else
-				recursively_load_from_list(value, entry_list[key])
+				recursively_load_from_list(value, next_entry_list[key])
 		else
 			var/datum/toml_config_entry/entry = entry_list[key]
 			if(!istype(entry))
