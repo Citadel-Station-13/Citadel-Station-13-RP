@@ -25856,9 +25856,6 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
-/obj/machinery/computer/ship/navigation/telescreen{
-	pixel_y = 27
-	},
 /obj/machinery/door/airlock/maintenance/common,
 /obj/machinery/door/firedoor{
 	dir = 1
