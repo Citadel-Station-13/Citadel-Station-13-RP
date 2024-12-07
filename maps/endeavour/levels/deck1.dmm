@@ -7414,6 +7414,9 @@
 /obj/structure/disposalpipe/segment{
 	dir = 8
 	},
+/obj/structure/bed/chair/comfy/brown{
+	dir = 1
+	},
 /turf/simulated/floor/wood,
 /area/library)
 "fDJ" = (
@@ -7748,6 +7751,9 @@
 /obj/structure/disposalpipe/segment{
 	dir = 8;
 	icon_state = "pipe-c"
+	},
+/obj/structure/bed/chair/comfy/brown{
+	dir = 1
 	},
 /turf/simulated/floor/wood,
 /area/library)
@@ -14140,6 +14146,8 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/disposalpipe/segment,
+/obj/structure/table/woodentable,
+/obj/item/paper_bin,
 /turf/simulated/floor/wood,
 /area/library)
 "kAg" = (
@@ -14195,13 +14203,11 @@
 /turf/simulated/floor/lino,
 /area/chapel/office)
 "kBS" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/structure/disposalpipe/segment,
 /obj/machinery/light/small{
-	dir = 4
+	dir = 8
 	},
-/turf/simulated/floor/carpet/bcarpet,
+/obj/machinery/libraryscanner,
+/turf/simulated/floor/wood,
 /area/library)
 "kCA" = (
 /obj/machinery/camera/network/civilian,
@@ -18468,6 +18474,9 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4;
 	icon_state = "pipe-c"
+	},
+/obj/structure/bed/chair/comfy/brown{
+	dir = 1
 	},
 /turf/simulated/floor/wood,
 /area/library)
@@ -23924,8 +23933,7 @@
 	pixel_y = -24
 	},
 /obj/machinery/light/small,
-/obj/machinery/photocopier,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/carpet/bcarpet,
 /area/library)
 "shR" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -25421,11 +25429,8 @@
 /obj/structure/extinguisher_cabinet{
 	pixel_y = -31
 	},
-/obj/structure/table/woodentable,
-/obj/item/paper_bin,
-/obj/item/paicard,
 /obj/machinery/light/small,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/carpet/bcarpet,
 /area/library)
 "tsU" = (
 /obj/structure/cable/green{
@@ -26600,6 +26605,7 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
+/obj/machinery/light/small,
 /turf/simulated/floor/carpet/bcarpet,
 /area/library)
 "ugI" = (
@@ -27297,6 +27303,11 @@
 /obj/machinery/door/firedoor,
 /turf/simulated/shuttle/floor/voidcraft,
 /area/shuttle/civvie/general)
+"uFV" = (
+/obj/structure/table/woodentable,
+/obj/item/paicard,
+/turf/simulated/floor/wood,
+/area/library)
 "uGs" = (
 /obj/machinery/tele_pad,
 /turf/simulated/floor/tiled/dark,
@@ -29088,6 +29099,13 @@
 	},
 /turf/simulated/floor/tiled,
 /area/endeavour/exploration/hallway_aft)
+"vUL" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/disposalpipe/segment,
+/obj/structure/bed/chair/comfy/brown,
+/turf/simulated/floor/wood,
+/area/library)
 "vVa" = (
 /obj/structure/catwalk,
 /obj/structure/cable/green{
@@ -30750,12 +30768,10 @@
 /turf/simulated/floor/tiled/dark,
 /area/gateway)
 "xoy" = (
-/obj/structure/table/woodentable,
-/obj/item/paper_bin,
 /obj/item/radio/intercom{
 	pixel_y = -24
 	},
-/turf/simulated/floor/wood,
+/turf/simulated/floor/carpet/bcarpet,
 /area/library)
 "xoB" = (
 /obj/structure/window/reinforced,
@@ -47368,7 +47384,7 @@ dsD
 plx
 ayy
 plx
-uMM
+kBS
 eOl
 jBQ
 jBQ
@@ -48531,8 +48547,8 @@ sfX
 wrh
 mJP
 mJP
-eOl
-eOl
+gVv
+uFV
 nJA
 cfh
 ltO
@@ -48725,8 +48741,8 @@ vEe
 mJP
 mJP
 wAB
-eOl
-eOl
+gVv
+lEF
 fDI
 tsT
 dsD
@@ -48916,10 +48932,10 @@ cfh
 cfh
 cfh
 uvU
-kBS
+jTs
 jTs
 rVX
-kzG
+vUL
 kzG
 fOe
 xoy
@@ -49113,9 +49129,9 @@ ugs
 dsD
 mJP
 iKm
-eOl
-eOl
-eOl
+mJP
+mJP
+mJP
 shJ
 dsD
 uze
