@@ -419,7 +419,10 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/endeavour/command/turrets)
 "aws" = (
-/obj/structure/table/reinforced,
+/obj/structure/closet/secure_closet/engineering_personal,
+/obj/structure/window/reinforced{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/locker_room)
 "awG" = (
@@ -1462,7 +1465,7 @@
 /area/engineering/engineering_monitoring)
 "bIs" = (
 /obj/effect/floor_decal/techfloor/orange,
-/obj/structure/closet/secure_closet/engineering_personal,
+/obj/machinery/vending/tool,
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/locker_room)
 "bII" = (
@@ -2478,9 +2481,9 @@
 /turf/simulated/floor/carpet/oracarpet,
 /area/engineering/engineering_monitoring)
 "cQd" = (
-/obj/machinery/vending/engivend,
-/turf/simulated/floor/tiled/techmaint,
-/area/engineering/storage)
+/obj/machinery/portable_atmospherics/canister/empty,
+/turf/simulated/floor/plating,
+/area/endeavour/hallway/d4aftmaint)
 "cQn" = (
 /obj/machinery/computer/atmos_alert,
 /obj/effect/floor_decal/corner/yellow{
@@ -7646,8 +7649,11 @@
 /area/endeavour/hallway/d4aftmaint)
 "jnl" = (
 /obj/effect/floor_decal/techfloor/orange,
-/obj/structure/table/reinforced,
 /obj/machinery/light,
+/obj/structure/closet/secure_closet/engineering_personal,
+/obj/structure/window/reinforced{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/locker_room)
 "jnR" = (
@@ -11094,7 +11100,7 @@
 /area/endeavour/hallway/d4starboardafthall)
 "npV" = (
 /obj/effect/floor_decal/techfloor/orange,
-/obj/structure/table/bench/padded,
+/obj/machinery/vending/assist,
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/locker_room)
 "nqa" = (
@@ -15251,7 +15257,9 @@
 /turf/simulated/wall/r_wall/prepainted/engineering/atmos,
 /area/engineering/atmos/eva)
 "sWB" = (
-/obj/machinery/vending/tool,
+/obj/structure/dispenser{
+	phorontanks = 0
+	},
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/storage)
 "sXt" = (
@@ -19302,7 +19310,7 @@
 /turf/space/basic,
 /area/space)
 "xSM" = (
-/obj/machinery/vending/assist,
+/obj/machinery/portable_atmospherics/canister/oxygen,
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/storage)
 "xSO" = (
@@ -19518,7 +19526,7 @@
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 10
 	},
-/obj/structure/closet/secure_closet/engineering_personal,
+/obj/machinery/vending/engivend,
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/locker_room)
 "yky" = (
@@ -31682,7 +31690,7 @@ ppa
 qTY
 jZF
 jZF
-cQd
+sWB
 dpZ
 liC
 hER
@@ -32292,9 +32300,9 @@ aIs
 vLj
 aIs
 aIs
-jBO
-jBO
-jBO
+cQd
+cQd
+cQd
 jBO
 jBO
 jBO
@@ -32458,7 +32466,7 @@ sHl
 hDC
 jZF
 jZF
-ohO
+okW
 dpZ
 vTS
 qzJ
@@ -32649,7 +32657,7 @@ qip
 kiI
 hLB
 sHl
-okW
+ohO
 jZF
 jZF
 wHS
@@ -33816,7 +33824,7 @@ ukI
 oxm
 iUe
 ryp
-bIs
+npV
 fJm
 pEq
 atZ
@@ -35174,7 +35182,7 @@ jQA
 fHR
 kuh
 ryp
-npV
+nqw
 fJm
 azJ
 atZ
@@ -35368,7 +35376,7 @@ qyK
 grk
 kuh
 ryp
-npV
+nqw
 fJm
 xQN
 gTq
