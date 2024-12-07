@@ -26,6 +26,18 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 	//* Data *//
 	/// Supports data system.
 	var/holds_data = FALSE
+
+	//* Economy *//
+	/// Raw intrinsic worth of this reagent
+	var/worth = 0
+	/// economic category of the reagent
+	var/economic_category_reagent = ECONOMIC_CATEGORY_REAGENT_DEFAULT
+
+	//* Identity *//
+	/// our name - visible from guidebooks and to admins
+	var/name = "Reagent"
+	/// our description - visible from guidebooks and to admins
+	var/description = "A non-descript chemical of some kind."
 	/// defaults to [name]
 	/// overrides name in guidebook
 	var/display_name
@@ -49,6 +61,8 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 	var/reagent_guidebook_category = "Unsorted"
 
 	//? legacy / unsorted
+	var/glass_icon_state = null
+	var/glass_center_of_mass = null
 	var/taste_description = "bitterness"
 	/// How this taste compares to others. Higher values means it is more noticable
 	var/taste_mult = 1
@@ -83,12 +97,6 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 	var/glass_name = "something"
 	var/glass_desc = "It's a glass of... what, exactly?"
 	var/list/glass_special = null // null equivalent to list()
-
-	//? Economy
-	/// Raw intrinsic worth of this reagent
-	var/worth = 0
-	/// economic category of the reagent
-	var/economic_category_reagent = ECONOMIC_CATEGORY_REAGENT_DEFAULT
 
 	//? wiki markup generation additional
 	/// override "name"

@@ -655,7 +655,7 @@
 				return
 		if(istype(I,/obj/item/reagent_containers/hypospray/autoinjector))
 			var/obj/item/reagent_containers/hypospray/autoinjector/A = I
-			if(A.reagents && A.reagents.reagent_list.len)
+			if(A.reagents?.total_volume)
 				if(istype(src,/mob/living/carbon/human)) //in case other mobs besides humans have trashcan trait
 					to_chat(src, "<span class='warning'>[A] gets injected into you as you try to consume it!</span>")
 					A.do_injection(src,src) //a rather strange way of injecting yourself, don't you think?

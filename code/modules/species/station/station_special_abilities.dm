@@ -75,8 +75,12 @@
 				revive_ready = REVIVING_READY //reset their cooldown
 
 /mob/living/carbon/human/proc/hasnutriment()
-	return (nutrition+ bloodstr.get_reagent("protein") * 10 + bloodstr.get_reagent("nutriment") * 5 + ingested.get_reagent("protein") * 5 + ingested.get_reagent("nutriment") * 2.5) > 425
-
+	. = nutrition
+	. += bloodstr.reagent_volumes[/datum/reagent/nutriment::id] * 5
+	. += bloodstr.reagent_volumes[/datum/reagent/nutriment/protein::id] * 10
+	. += ingested.reagent_volumes[/datum/reagent/nutriment::id] * 2.5
+	. += ingested.reagent_volumes[/datum/reagent/nutriment/protein::id] * 5
+	return . > 425
 
 /mob/living/carbon/human/proc/hatch()
 	set name = "Hatch"

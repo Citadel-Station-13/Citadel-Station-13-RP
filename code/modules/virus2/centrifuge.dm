@@ -136,7 +136,8 @@
 			. = TRUE
 
 /obj/machinery/computer/centrifuge/proc/cure()
-	if(!sample) return
+	if(!sample)
+		return
 	var/datum/reagent/blood/B = locate(/datum/reagent/blood) in sample.reagents.reagent_list
 	if(!B) return
 
@@ -150,7 +151,8 @@
 	ping("\The [src] pings, \"Antibody isolated.\"")
 
 /obj/machinery/computer/centrifuge/proc/isolate()
-	if(!sample) return
+	if(!sample)
+		return
 	var/obj/item/virusdish/dish = new/obj/item/virusdish(loc)
 	dish.virus2 = virus2
 	virus2 = null

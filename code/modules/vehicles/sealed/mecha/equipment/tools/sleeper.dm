@@ -166,17 +166,19 @@
 
 /obj/item/mecha_parts/mecha_equipment/tool/sleeper/proc/get_occupant_reagents()
 	if(occupant_legacy.reagents)
-		for(var/datum/reagent/R in occupant_legacy.reagents.reagent_list)
-			if(R.volume > 0)
-				. += "[R]: [round(R.volume,0.01)]<br />"
+		for(var/datum/reagent/R in occupant_legacy.reagents.get_reagent_datums())
+			var/volume = occupant_legacy.reagents.reagent_volumes[R.id]
+			if(volume > 0)
+				. += "[R]: [round(volume,0.01)]<br />"
 	return . || "None"
 
 /obj/item/mecha_parts/mecha_equipment/tool/sleeper/proc/get_available_reagents()
 	var/output
 	var/obj/item/mecha_parts/mecha_equipment/tool/syringe_gun/SG = locate(/obj/item/mecha_parts/mecha_equipment/tool/syringe_gun) in chassis
-	if(SG && SG.reagents && islist(SG.reagents.reagent_list))
-		for(var/datum/reagent/R in SG.reagents.reagent_list)
-			if(R.volume > 0)
+	if(length(SG.reagents.reagent_volumes))
+		for(var/datum/reagent/R in SG.reagents.get_reagent_datums())
+			var/volume = occupant_legacy.reagents.reagent_volumes[R.id]
+			if(volume > 0)
 				output += "<a href=\"?src=\ref[src];inject=\ref[R];source=\ref[SG]\">Inject [R.name]</a><br />"
 	return output
 
@@ -184,7 +186,7 @@
 /obj/item/mecha_parts/mecha_equipment/tool/sleeper/proc/inject_reagent(var/datum/reagent/R,var/obj/item/mecha_parts/mecha_equipment/tool/syringe_gun/SG)
 	if(!R || !occupant_legacy || !SG || !(SG in chassis.equipment))
 		return 0
-	var/to_inject = min(R.volume, inject_amount)
+	var/to_inject = min(SG.reagents.reagent_volumes[R.id], inject_amount)
 	if(to_inject && occupant_legacy.reagents.get_reagent_amount(R.id) + to_inject > inject_amount*4)
 		occupant_message("Sleeper safeties prohibit you from injecting more than [inject_amount*4] units of [R.name].")
 	else
@@ -194,7 +196,6 @@
 		SG.reagents.remove_reagent(R.id,to_inject)
 		occupant_legacy.reagents.add_reagent(R.id,to_inject)
 		update_equip_info()
-	return
 
 /obj/item/mecha_parts/mecha_equipment/tool/sleeper/update_equip_info()
 	if(..())
@@ -202,7 +203,6 @@
 		send_byjax(chassis.occupant_legacy,"msleeper.browser","reagents",get_occupant_reagents())
 		send_byjax(chassis.occupant_legacy,"msleeper.browser","injectwith",get_available_reagents())
 		return 1
-	return
 
 /obj/item/mecha_parts/mecha_equipment/tool/sleeper/verb/eject()
 	set name = "Sleeper Eject"

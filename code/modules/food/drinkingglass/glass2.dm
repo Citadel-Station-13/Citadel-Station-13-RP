@@ -58,9 +58,9 @@
 		var/datum/reagent/R = reagents.get_master_reagent()
 		if(!("fizz" in R.glass_special))
 			var/totalfizzy = 0
-			for(var/datum/reagent/re in reagents.reagent_list)
+			for(var/datum/reagent/re in reagents.get_reagent_datums())
 				if("fizz" in re.glass_special)
-					totalfizzy += re.volume
+					totalfizzy += reagents.reagent_volumes[re.id]
 			if(totalfizzy >= reagents.total_volume / 5) // 20% fizzy by volume
 				return 1
 	return 0

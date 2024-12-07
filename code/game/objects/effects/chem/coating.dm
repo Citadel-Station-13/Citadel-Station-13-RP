@@ -19,7 +19,7 @@
 				continue
 			if(istype(O, /obj/effect/debris/cleanable/chemcoating))
 				var/obj/effect/debris/cleanable/chemcoating/C = O
-				if(C.reagents && C.reagents.reagent_list.len)
+				if(C.reagents?.total_volume)
 					C.reagents.trans_to_obj(src,C.reagents.total_volume)
 				qdel(O)
 

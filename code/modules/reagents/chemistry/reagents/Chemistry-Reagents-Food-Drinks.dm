@@ -4575,33 +4575,16 @@
 	if(volume >= 3)
 		T.wet_floor(2)
 
-// todo: review data procs
-/datum/reagent/nutriment/triglyceride/oil/initialize_data(newdata) // Called when the reagent is created.
-	..()
-	if (!data)
-		data = list("temperature" = T20C)
-
-//Handles setting the temperature when oils are mixed
-/datum/reagent/nutriment/triglyceride/oil/mix_data(datum/reagent_holder/holder, list/current_data, current_amount, list/new_data, new_amount)
-	LAZYINITLIST(data)
-	if (current_amount <= 0 || !data["temperature"] || !volume)
-		//If we get here, then this reagent has just been created, just copy the temperature exactly
-		data["temperature"] = new_data["temperature"]
-	else
-		//Our temperature is set to the mean of the two mixtures, taking volume into account
-		var/total = (data["temperature"] * current_amount) + (new_data["temperature"] * new_amount)
-		data["temperature"] = total / volume
-	return ..()
-
 //Calculates a scaling factor for scalding damage, based on the temperature of the oil and creature's heat resistance
-/datum/reagent/nutriment/triglyceride/oil/proc/heatdamage(mob/living/carbon/M)
+/datum/reagent/nutriment/triglyceride/oil/proc/heatdamage(mob/living/carbon/M, datum/reagent_holder/holder)
+	var/temperature = holder.temperature
 	var/threshold = 360//Human heatdamage threshold
 	var/datum/species/S = M.species
 	if (S && istype(S))
 		threshold = S.heat_level_1
 
 	//If temperature is too low to burn, return a factor of 0. no damage
-	if (data["temperature"] < threshold)
+	if (temperature < threshold)
 		return 0
 
 	//Step = degrees above heat level 1 for 1.0 multiplier
@@ -4609,7 +4592,7 @@
 	if (S && istype(S))
 		step = (S.heat_level_2 - S.heat_level_1)*1.5
 
-	. = data["temperature"] - threshold
+	. = temperature - threshold
 	. /= step
 	. = min(., 2.5)//Cap multiplier at 2.5
 
@@ -4617,7 +4600,7 @@
 	var/dfactor = heatdamage(M)
 	if (dfactor)
 		M.take_random_targeted_damage(brute = 0, brute = removed * 1.5 * dfactor)
-		data["temperature"] -= (6 * removed) / (1 + volume*0.1)//Cools off as it burns you
+		temperature -= (6 * removed) / (1 + volume*0.1)//Cools off as it burns you
 		if (lastburnmessage+100 < world.time	)
 			to_chat(M, SPAN_DANGER("Searing hot oil burns you, wash it off quick!"))
 			lastburnmessage = world.time

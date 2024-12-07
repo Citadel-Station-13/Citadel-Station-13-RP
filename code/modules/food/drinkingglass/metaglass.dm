@@ -49,10 +49,6 @@
 Drinks Data
 */
 
-/datum/reagent
-	var/glass_icon_state = null
-	var/glass_center_of_mass = null
-
 /datum/reagent/adminordrazine
 	glass_icon_state = "golden_cup"
 

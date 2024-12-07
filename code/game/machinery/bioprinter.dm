@@ -293,7 +293,8 @@
 	// DNA sample from syringe.
 	if(istype(W,/obj/item/reagent_containers/syringe))	//TODO: Make this actually empty the syringe
 		var/obj/item/reagent_containers/syringe/S = W
-		if((loaded_blood_dna = S.reagents?.reagent_datas[/datum/reagent/blood::id]?.Copy()))
+		var/list/datum/blood_data/datas = S.reagents?.reagent_datas[/datum/reagent/blood::id]
+		if((loaded_blood_dna = datas?.Copy()))
 			S.reagents.del_reagent(/datum/reagent/blood)
 			to_chat(user, SPAN_INFO("You scan the blood sample into the bioprinter."))
 		return

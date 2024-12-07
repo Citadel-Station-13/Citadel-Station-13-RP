@@ -161,7 +161,7 @@
 	//Though this damage seems reduced, some hot oil is transferred to the victim and will burn them for a while after
 
 	var/datum/reagent/nutriment/triglyceride/oil/OL = oil.get_master_reagent()
-	damage *= OL.heatdamage(victim)
+	damage *= OL.heatdamage(victim, oil)
 
 	var/obj/item/organ/external/E
 	var/nopain
