@@ -4825,7 +4825,7 @@
 /area/endeavour/hallway/d4porthall)
 "fSk" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint/amber,
+/obj/effect/paint/sun,
 /turf/simulated/floor/tiled/monotile,
 /area/engineering/engineering_monitoring)
 "fSI" = (
@@ -9056,11 +9056,6 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/monotile,
-/area/engineering/engineering_monitoring)
-"kWg" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint/amber,
-/turf/simulated/wall/prepainted/civilian,
 /area/engineering/engineering_monitoring)
 "kXh" = (
 /obj/effect/floor_decal/borderfloorblack{
@@ -17958,7 +17953,7 @@
 /area/endeavour/command/turrets)
 "wpR" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint/amber,
+/obj/effect/paint/sun,
 /turf/simulated/floor/plating,
 /area/engineering/engineering_monitoring)
 "wqa" = (
@@ -33062,7 +33057,7 @@ pSm
 cNE
 tBv
 jtO
-kWg
+wpR
 elg
 elF
 vXQ
