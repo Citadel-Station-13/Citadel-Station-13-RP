@@ -1271,6 +1271,12 @@
 	},
 /turf/simulated/floor/tiled,
 /area/hallway/secondary/docking_hallway2)
+"aVJ" = (
+/obj/machinery/light{
+	dir = 8
+	},
+/turf/simulated/floor/wood,
+/area/bridge/meeting_room)
 "aVK" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
@@ -5710,6 +5716,9 @@
 "eyP" = (
 /obj/structure/cable/green{
 	icon_state = "1-4"
+	},
+/obj/machinery/light{
+	dir = 8
 	},
 /turf/simulated/floor/wood,
 /area/bridge/meeting_room)
@@ -60722,7 +60731,7 @@ jNg
 skI
 kab
 avM
-qnv
+aVJ
 cAF
 uDt
 xNZ
@@ -61499,8 +61508,8 @@ skI
 dSn
 lKq
 qnv
-cgB
 qnv
+cgB
 qnv
 xUH
 jlr

@@ -4799,7 +4799,8 @@
 /area/medical/virology)
 "ddG" = (
 /obj/machinery/smartfridge/chemistry/chemvator{
-	name = "\improper Smart Chemavator"
+	name = "\improper Smart Chemavator";
+	desc = "A refrigerated storage unit for medicine and chemical storage."
 	},
 /turf/simulated/wall,
 /area/medical/chemistry)
@@ -8165,6 +8166,12 @@
 "fiX" = (
 /obj/structure/bed/chair/sofa/beige/left{
 	dir = 8
+	},
+/obj/machinery/button/windowtint{
+	dir = 6;
+	id = "medbreak";
+	pixel_x = 24;
+	pixel_y = -8
 	},
 /turf/simulated/floor/carpet/blucarpet,
 /area/crew_quarters/medbreak)
@@ -11880,6 +11887,9 @@
 /obj/structure/window/reinforced/polarized/full{
 	id = "exam_1"
 	},
+/obj/machinery/door/firedoor{
+	dir = 8
+	},
 /turf/simulated/floor/plating,
 /area/medical/exam_room/exam_1)
 "hxy" = (
@@ -14904,11 +14914,11 @@
 /area/endeavour/hallway/d2fwdmaint)
 "jym" = (
 /obj/effect/paint/babyblue,
-/obj/structure/window/reinforced/polarized/full{
-	id = "exam_1"
-	},
 /obj/machinery/door/firedoor{
 	dir = 8
+	},
+/obj/structure/window/reinforced/polarized/full{
+	id = "oncall"
 	},
 /turf/simulated/floor/plating,
 /area/medical/oncall_room)
@@ -26237,10 +26247,15 @@
 /turf/simulated/floor/plating,
 /area/endeavour/hallway/d2aftmaint)
 "qBq" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
 /obj/effect/paint/babyblue,
 /obj/structure/cable/green{
 	icon_state = "1-2"
+	},
+/obj/structure/window/reinforced/polarized/full{
+	id = "medbreak"
+	},
+/obj/machinery/door/firedoor{
+	dir = 8
 	},
 /turf/simulated/floor/plating,
 /area/crew_quarters/medbreak)
@@ -27139,10 +27154,6 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/surgery)
 "rci" = (
-/obj/machinery/air_alarm{
-	dir = 1;
-	pixel_y = -22
-	},
 /obj/machinery/vending/cola,
 /turf/simulated/floor/wood,
 /area/crew_quarters/medbreak)
@@ -29920,6 +29931,11 @@
 /area/rnd/rdoffice)
 "sWG" = (
 /obj/effect/floor_decal/spline/fancy/wood,
+/obj/machinery/smartfridge{
+	pixel_x = 32;
+	accepted_types = list(/obj/item);
+	desc = "A wall-mounted refrigerated storage unit. Should keep your food fresh until lunchtime."
+	},
 /turf/simulated/floor/carpet/blucarpet,
 /area/crew_quarters/medbreak)
 "sWT" = (
@@ -32638,6 +32654,9 @@
 /obj/effect/paint/babyblue,
 /obj/structure/window/reinforced/polarized/full{
 	id = "exam_2"
+	},
+/obj/machinery/door/firedoor{
+	dir = 8
 	},
 /turf/simulated/floor/plating,
 /area/medical/exam_room/exam_2)
@@ -36057,8 +36076,13 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/medical/morgue)
 "wRU" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
 /obj/effect/paint/babyblue,
+/obj/structure/window/reinforced/polarized/full{
+	id = "medbreak"
+	},
+/obj/machinery/door/firedoor{
+	dir = 8
+	},
 /turf/simulated/floor/plating,
 /area/crew_quarters/medbreak)
 "wSf" = (
@@ -37817,7 +37841,8 @@
 /area/medical/psych/psych_2)
 "xYH" = (
 /obj/machinery/smartfridge/chemistry/chemvator{
-	name = "\improper Smart Chemavator"
+	name = "\improper Smart Chemavator";
+	desc = "A refrigerated storage unit for medicine and chemical storage."
 	},
 /turf/simulated/wall/prepainted/medical,
 /area/medical/chemistry)
