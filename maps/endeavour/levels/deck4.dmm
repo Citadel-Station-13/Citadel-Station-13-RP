@@ -1460,6 +1460,11 @@
 "bHY" = (
 /turf/simulated/floor/tiled/monotile,
 /area/engineering/engineering_monitoring)
+"bIs" = (
+/obj/effect/floor_decal/techfloor/orange,
+/obj/structure/closet/secure_closet/engineering_personal,
+/turf/simulated/floor/tiled/techmaint,
+/area/engineering/locker_room)
 "bII" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -2894,11 +2899,10 @@
 /turf/simulated/floor/tiled/monotile,
 /area/engineering/engineering_monitoring)
 "dxT" = (
-/obj/effect/floor_decal/techfloor/orange,
-/obj/structure/table/bench/padded,
-/obj/machinery/light,
+/obj/machinery/door/airlock/glass/engineering,
+/obj/map_helper/access_helper/airlock/station/engineering/department,
 /turf/simulated/floor/tiled/techmaint,
-/area/engineering/locker_room)
+/area/engineering/storage)
 "dyB" = (
 /turf/space,
 /area/engineering/portnacelle)
@@ -6242,6 +6246,24 @@
 /obj/item/stack/material/glass/phoronrglass{
 	amount = 40
 	},
+/obj/item/stack/material/plastic{
+	amount = 50
+	},
+/obj/item/stack/material/plastic{
+	amount = 50
+	},
+/obj/item/stack/material/plastic{
+	amount = 50
+	},
+/obj/item/stack/material/plasteel{
+	amount = 10
+	},
+/obj/item/stack/material/plasteel{
+	amount = 10
+	},
+/obj/item/stack/material/plasteel{
+	amount = 10
+	},
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/storage)
 "hEj" = (
@@ -6513,6 +6535,7 @@
 	pixel_y = 5
 	},
 /obj/item/storage/toolbox/mechanical,
+/obj/machinery/light,
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/locker_room)
 "hPj" = (
@@ -7101,8 +7124,7 @@
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 6
 	},
-/obj/machinery/suit_cycler/engineering,
-/obj/machinery/light,
+/obj/structure/closet/secure_closet/engineering_personal,
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/locker_room)
 "iFh" = (
@@ -7623,10 +7645,9 @@
 /turf/simulated/floor/plating,
 /area/endeavour/hallway/d4aftmaint)
 "jnl" = (
-/obj/structure/closet/secure_closet/engineering_personal,
-/obj/effect/floor_decal/techfloor/orange{
-	dir = 8
-	},
+/obj/effect/floor_decal/techfloor/orange,
+/obj/structure/table/reinforced,
+/obj/machinery/light,
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/locker_room)
 "jnR" = (
@@ -9038,7 +9059,6 @@
 /turf/simulated/floor/reinforced/airless,
 /area/engineering/portnacelle)
 "kVC" = (
-/obj/structure/closet/secure_closet/engineering_personal,
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 8
 	},
@@ -11935,25 +11955,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/endeavour/command/turrets)
 "ohO" = (
-/obj/structure/table/reinforced,
-/obj/item/stack/material/plasteel{
-	amount = 10
-	},
-/obj/item/stack/material/plasteel{
-	amount = 10
-	},
-/obj/item/stack/material/plasteel{
-	amount = 10
-	},
-/obj/item/stack/material/plastic{
-	amount = 50
-	},
-/obj/item/stack/material/plastic{
-	amount = 50
-	},
-/obj/item/stack/material/plastic{
-	amount = 50
-	},
+/obj/machinery/suit_cycler/engineering,
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/storage)
 "oie" = (
@@ -19034,7 +19036,6 @@
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 9
 	},
-/obj/structure/closet/toolcloset,
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/locker_room)
 "xCS" = (
@@ -19517,7 +19518,7 @@
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 10
 	},
-/obj/machinery/suit_cycler/engineering,
+/obj/structure/closet/secure_closet/engineering_personal,
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/locker_room)
 "yky" = (
@@ -33231,7 +33232,7 @@ vRr
 uJI
 dpZ
 dpZ
-dpZ
+dxT
 dpZ
 dpZ
 dpZ
@@ -33425,7 +33426,7 @@ kiI
 qjJ
 jQA
 xCw
-jnl
+kuh
 kVC
 yki
 fJm
@@ -33621,7 +33622,7 @@ qyK
 grk
 kuh
 kuh
-nqw
+bIs
 fJm
 azJ
 atZ
@@ -33815,7 +33816,7 @@ ukI
 oxm
 iUe
 ryp
-npV
+bIs
 fJm
 pEq
 atZ
@@ -34009,7 +34010,7 @@ jQA
 fHR
 kBo
 ryp
-npV
+nqw
 fJm
 azJ
 atZ
@@ -34979,7 +34980,7 @@ jQA
 dsn
 kuh
 aws
-vvE
+jnl
 fJm
 vVK
 atZ
@@ -35367,7 +35368,7 @@ qyK
 grk
 kuh
 ryp
-dxT
+npV
 fJm
 xQN
 gTq
