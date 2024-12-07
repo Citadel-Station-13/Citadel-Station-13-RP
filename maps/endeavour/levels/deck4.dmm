@@ -8993,7 +8993,7 @@
 "kWg" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
 /obj/effect/paint/amber,
-/turf/space/basic,
+/turf/simulated/floor/plating,
 /area/engineering/engineering_monitoring)
 "kXh" = (
 /obj/effect/floor_decal/borderfloorblack{

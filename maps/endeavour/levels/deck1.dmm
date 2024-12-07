@@ -2879,6 +2879,15 @@
 /obj/structure/curtain/open/shower,
 /turf/simulated/floor/tiled/white,
 /area/endeavour/surfacebase/sauna)
+"csh" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 5
+	},
+/obj/effect/floor_decal/corner/navblue/border{
+	dir = 5
+	},
+/turf/simulated/floor/tiled/steel,
+/area/endeavour/hallway/d1portamidhall)
 "csk" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 4
@@ -57421,7 +57430,7 @@ svt
 svt
 svt
 svt
-uvX
+hYO
 vEP
 cQC
 ydG
@@ -57615,7 +57624,7 @@ xJZ
 xGd
 qFN
 svt
-sZv
+hYO
 hZy
 vwv
 mne
@@ -57809,7 +57818,7 @@ xJZ
 xJZ
 xJZ
 cYp
-gnm
+csh
 bve
 kah
 mne
