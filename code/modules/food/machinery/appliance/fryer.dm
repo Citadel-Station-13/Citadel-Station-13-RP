@@ -46,26 +46,17 @@
 
 /obj/machinery/appliance/cooker/fryer/heat_up()
 	if (..())
-		//Set temperature of oil reagent
-		var/datum/reagent/nutriment/triglyceride/oil/OL = oil.get_master_reagent()
-		if (OL && istype(OL))
-			OL.data["temperature"] = temperature
+		oil.temperature = temperature
 
 /obj/machinery/appliance/cooker/fryer/equalize_temperature()
 	if (..())
 		//Set temperature of oil reagent
-		var/datum/reagent/nutriment/triglyceride/oil/OL = oil.get_master_reagent()
-		if (OL && istype(OL))
-			OL.data["temperature"] = temperature
-
+		oil.temperature = temperature
 
 /obj/machinery/appliance/cooker/fryer/update_cooking_power()
 	..()//In addition to parent temperature calculation
 	//Fryer efficiency also drops when oil levels arent optimal
-	var/oil_level = 0
-	var/datum/reagent/nutriment/triglyceride/oil/OL = oil.get_master_reagent()
-	if (OL && istype(OL))
-		oil_level = OL.volume
+	var/oil_level =  oil.reagent_volumes[/datum/reagent/nutriment/triglyceride/oil::id] || 0
 
 	var/oil_efficiency = 0
 	if (oil_level)
@@ -117,7 +108,6 @@
 					else
 						total_our_oil += R.volume
 
-
 	if (total_removed > 0 || total_oil != CI.max_oil)
 		total_oil = min(total_oil, CI.max_oil)
 
@@ -136,7 +126,6 @@
 					for (var/datum/reagent/R in I.reagents.reagent_list)
 						if (R.id == our_oil.id)
 							I.reagents.remove_reagent(R.id, R.volume*portion)
-
 
 
 /obj/machinery/appliance/cooker/fryer/cook_mob(var/mob/living/victim, var/mob/user)

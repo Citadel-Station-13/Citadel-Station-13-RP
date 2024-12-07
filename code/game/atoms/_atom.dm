@@ -95,6 +95,8 @@
 
 	//? Chemistry
 	// todo: properly finalize the semantics of this variable and what it's for.
+	// todo: should this variable even exist? most atoms don't need this, and we can easily have an APi
+	//       to fetch a relevant holder upon being inspected by an analyzer.
 	var/datum/reagent_holder/reagents = null
 
 	//? Detective Work

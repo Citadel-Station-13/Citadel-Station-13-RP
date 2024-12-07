@@ -617,40 +617,44 @@
  *
  * @return total volume transferred
  */
-/datum/reagent_holder/proc/transfer_to_holder(datum/reagent_holder/target, list/reagent_ids, amount = INFINITY, copy, multiplier = 1, defer_reactions)
-	. = 0
-	// todo: rework this proc
+/datum/reagent_holder/proc/transfer_to_holder(datum/reagent_holder/target, list/reagents, amount = INFINITY, copy, multiplier = 1, defer_reactions)
 	if(!total_volume)
-		return
-	if(!reagents)
-		var/ratio = min(1, min(amount, target.maximum_volume - target.total_volume) / total_volume)
-		. = total_volume * ratio
-		if(!copy)
-			for(var/datum/reagent/R as anything in reagent_list)
-				var/transferred = R.volume * ratio
-				target.add_reagent(R.id, transferred * multiplier, R.get_data(), TRUE)
-				remove_reagent(R.id, transferred, TRUE)
-		else
-			for(var/datum/reagent/R as anything in reagent_list)
-				var/transferred = R.volume * ratio
-				target.add_reagent(R.id, transferred * multiplier, R.get_data(), TRUE)
-	else
-		volume_to_transfer = 0
+		return 0
+
+	var/list/ids_to_transfer
+	var/ratio
+
+	if(reagents)
+		var/total_transferable = 0
 		ids_to_transfer = list()
-		for(var/datum/reagent/potential as anything in reagent_ids)
+		for(var/datum/reagent/potential as anything in reagents)
 			if(ispath(potential))
 				potential = initial(potential.id)
 			var/volume = reagent_volumes[potential]
 			if(!volume)
 				continue
 			total_transferable += R.volume
-			reagents_transferring += R
+			ids_to_transfer += R.id
 		if(!total_transferable)
 			return 0
 		var/ratio = min(1, min(amount, target.maximum_volume - target.total_volume) / total_transferable)
 		. = total_transferable * ratio
-		if(!copy)
-			remove_reagent(id, volume_to_transfer, TRUE)
+	else
+		ids_to_transfer = reagent_volumes
+		ratio = min(1, min(amount, target.maximum_volume - target.total_volume) / total_volume)
+		. = total_volume * ratio
+
+	if(!copy)
+		for(var/id in ids_to_transfer)
+			var/datum/reagent/resolved = SSchemistry.fetch_reagent(id)
+			var/transferred = reagent_volumes[id] * ratio
+			target.add_reagent(id, transferred, resolved.make_copy_data_initializer(reagent_datas[id]), TRUE)
+			remove_reagent(id, transferred, TRUE)
+	else
+		for(var/id in ids_to_transfer)
+			var/datum/reagent/resolved = SSchemistry.fetch_reagent(id)
+			var/transferred = reagent_volumes[id] * ratio
+			target.add_reagent(id, transferred, resolved.make_copy_data_initializer(reagent_datas[id]), TRUE)
 
 	if(!defer_reactions)
 		if(!copy)

@@ -164,9 +164,8 @@
 /datum/reagent/topical/lotion/affect_touch(mob/living/carbon/M, alien, removed)
 	if (alien != IS_DIONA)
 		M.ceiling_chemical_effect(CE_PAINKILLER, 5)//Not really usefull but I guess a lotion would help alittle with pain
-		if(world.time > (data + (5*60*10)))
-			data = world.time
-			to_chat(M, "<span class='notice'>Your skin feels refreshed and sooth.</span>")
+		if(prob(1))
+			to_chat(M, "<span class='notice'>Your skin feels refreshed and soothed.</span>")
 
 //Remove before merge
 /obj/item/storage/box/touch_bottles

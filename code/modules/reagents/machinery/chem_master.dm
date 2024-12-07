@@ -243,10 +243,10 @@
 
 	var/beaker_contents[0]
 	if(beaker)
-		for(var/datum/reagent/R in beaker.reagents.reagent_list)
+		for(var/datum/reagent/R in beaker.reagents.get_reagent_datums())
 			beaker_contents.Add(list(list( //! list in a list because Byond merges the first list...
 				"name"        = R.name,
-				"volume"      = round(R.volume, 0.01),
+				"volume"      = round(beaker.reagents.reagent_volumes[R.id], 0.01),
 				"description" = R.description,
 				"id"          = R.id,
 			)))
@@ -254,10 +254,10 @@
 
 	var/buffer_contents[0]
 	if(reagents.total_volume)
-		for(var/datum/reagent/R in reagents.reagent_list)
+		for(var/datum/reagent/R in reagents.get_reagent_datums())
 			buffer_contents.Add(list(list( //! ^
 				"name"        = R.name,
-				"volume"      = round(R.volume, 0.01),
+				"volume"      = round(reagents.reagent_volumes[R.id], 0.01),
 				"description" = R.description,
 				"id"          = R.id,
 			)))

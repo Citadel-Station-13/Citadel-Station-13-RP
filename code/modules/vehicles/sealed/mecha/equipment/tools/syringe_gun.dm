@@ -192,9 +192,8 @@
 
 /obj/item/mecha_parts/mecha_equipment/tool/syringe_gun/proc/get_current_reagents()
 	var/output
-	for(var/datum/reagent/R in reagents.reagent_list)
-		if(R.volume > 0)
-			output += "[R]: [round(R.volume,0.001)] - <a href=\"?src=\ref[src];purge_reagent=[R.id]\">Purge Reagent</a><br />"
+	for(var/datum/reagent/R in reagents.get_reagent_datums())
+		output += "[R]: [round(reagents.reagent_volumes[R.id],0.001)] - <a href=\"?src=\ref[src];purge_reagent=[R.id]\">Purge Reagent</a><br />"
 	if(output)
 		output += "Total: [round(reagents.total_volume,0.001)]/[reagents.maximum_volume] - <a href=\"?src=\ref[src];purge_all=1\">Purge All</a>"
 	return output || "None"

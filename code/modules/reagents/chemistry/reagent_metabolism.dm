@@ -5,6 +5,11 @@
  * Holds metabolism state on reagents.
  */
 /datum/reagent_metabolism
+	/// arbitrary blackboard for metabolism
+	///
+	/// * This is separate from data because a lot of things require this and data is far more expensive.
+	var/list/blackboard = list()
+
 	/// maximum amount ever put in
 	var/peak_dose = 0
 	/// cycles we've been in a mob

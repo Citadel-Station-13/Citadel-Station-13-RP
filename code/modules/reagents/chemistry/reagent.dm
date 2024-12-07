@@ -239,15 +239,18 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 		overdose(M, alien, removed)
 	remove_self(removed)
 
+#warn injcet reagent metabolism datum to calls
 // todo: on_mob_life with method of CHEM_INJECT, or tick_mob_blood
 /datum/reagent/proc/affect_blood(mob/living/carbon/M, alien, removed)
 	return
 
+#warn injcet reagent metabolism datum to calls
 // todo: on_mob_life with method of CHEM_INGEST, or tick_mob_ingest
 /datum/reagent/proc/affect_ingest(mob/living/carbon/M, alien, removed)
 	M.bloodstr.add_reagent(id, removed)
 	return
 
+#warn injcet reagent metabolism datum to calls
 // todo: on_mob_life with method of CHEM_TOUCH, or tick_mob_touch
 /datum/reagent/proc/affect_touch(mob/living/carbon/M, alien, removed)
 	return
@@ -326,6 +329,8 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 	)
 
 //* Holder - Application *//
+
+#warn deal with these
 
 /**
  * Called when we're sprayed / splashed onto an obj

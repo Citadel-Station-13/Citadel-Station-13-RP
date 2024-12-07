@@ -37,10 +37,14 @@
 		copy.legacy_resistances = legacy_resistances
 	if(legacy_donor)
 		copy.legacy_donor = legacy_donor
+	return copy
 
 /datum/blood_data/reagent
 	/// % of the reagent this is
 	var/ratio
+
+/datum/blood_data/reagent/clone(include_contents)
+	CRASH("not supported; reagents should manually mix this in with provided data procs.")
 
 /**
  * Blood.
@@ -52,7 +56,7 @@
  * Data format:
  *
  * list(
- *     /datum/blood_data instance,
+ *     /datum/blood_data/reagent instance,
  *     ...
  * )
  */
