@@ -6385,9 +6385,6 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/endeavour/command/turrets)
 "hKh" = (
-/obj/machinery/computer/med_data{
-	dir = 1
-	},
 /obj/effect/floor_decal/corner/paleblue{
 	dir = 10
 	},
@@ -6395,6 +6392,9 @@
 	dir = 4
 	},
 /obj/machinery/light/no_nightshift,
+/obj/machinery/computer/crew{
+	dir = 1
+	},
 /turf/simulated/floor/tiled/techfloor,
 /area/endeavour/command/turrets)
 "hKp" = (
@@ -7564,16 +7564,16 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_eva)
 "jkF" = (
-/obj/machinery/door/airlock/glass/engineering{
-	name = "Shield Room";
-	req_one_access = null
-	},
 /obj/machinery/door/firedoor{
 	dir = 8
 	},
 /obj/map_helper/access_helper/airlock/station/engineering/department,
 /obj/structure/cable/green{
 	icon_state = "1-2"
+	},
+/obj/machinery/door/airlock/glass/engineering{
+	name = "Monitoring Room";
+	req_one_access = null
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/engineering/engineering_monitoring)
@@ -7743,14 +7743,11 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/atmos)
 "jsv" = (
-/obj/machinery/door/airlock/glass/engineering{
-	name = "Engineering Hallway";
-	req_one_access = null
-	},
 /obj/map_helper/access_helper/airlock/station/maintenance,
 /obj/machinery/door/firedoor{
 	dir = 8
 	},
+/obj/machinery/door/airlock/maintenance,
 /turf/simulated/floor/airless/ceiling,
 /area/endeavour/hallway/d4fwdmaint)
 "jsW" = (
@@ -8282,7 +8279,7 @@
 /area/engineering/atmos)
 "jYd" = (
 /obj/machinery/door/airlock/glass/engineering{
-	name = "Shield Room";
+	name = "Monitoring Room";
 	req_one_access = null
 	},
 /obj/machinery/door/firedoor{
@@ -8846,14 +8843,14 @@
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d4starboardamidhall)
 "kJO" = (
-/obj/machinery/door/airlock/glass/engineering{
-	name = "Shield Room";
-	req_one_access = null
-	},
 /obj/machinery/door/firedoor{
 	dir = 8
 	},
 /obj/map_helper/access_helper/airlock/station/engineering/department,
+/obj/machinery/door/airlock/glass/engineering{
+	name = "Break Room";
+	req_one_access = null
+	},
 /turf/simulated/floor/wood,
 /area/engineering/hallway/lower)
 "kJR" = (
@@ -12681,7 +12678,7 @@
 /area/engineering/atmos)
 "pnG" = (
 /obj/machinery/door/airlock/glass/engineering{
-	name = "Shield Room";
+	name = "Break Room";
 	req_one_access = null
 	},
 /obj/machinery/door/firedoor{

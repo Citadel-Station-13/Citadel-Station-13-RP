@@ -4932,7 +4932,7 @@
 /obj/machinery/light{
 	dir = 4
 	},
-/obj/structure/dispenser/oxygen,
+/obj/machinery/vending/medical,
 /turf/simulated/floor/tiled,
 /area/medical/medbay_primary_storage)
 "djp" = (
@@ -10068,6 +10068,9 @@
 	dir = 8;
 	light_range = 12
 	},
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d2fwdhall)
 "gtH" = (
@@ -12494,7 +12497,7 @@
 /area/rnd/xenobiology/xenoflora/lab_atmos)
 "hQy" = (
 /obj/machinery/computer/ship/navigation/telescreen{
-	pixel_x = -32
+	pixel_x = 32
 	},
 /turf/simulated/floor/tiled,
 /area/medical/medbay_primary_storage)
@@ -12982,7 +12985,6 @@
 /obj/structure/disposalpipe/trunk{
 	dir = 8
 	},
-/obj/item/barrier_tape_segment/engineering,
 /turf/simulated/floor/tiled,
 /area/medical/medbay_primary_storage)
 "ijZ" = (
@@ -14485,7 +14487,7 @@
 /turf/simulated/floor/tiled,
 /area/rnd/reception_desk)
 "jlP" = (
-/obj/machinery/vending/medical,
+/obj/structure/dispenser/oxygen,
 /turf/simulated/floor/tiled,
 /area/medical/medbay_primary_storage)
 "jlX" = (
@@ -17311,6 +17313,9 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
+/obj/structure/cable/green{
+	icon_state = "1-8"
+	},
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d2fwdhall)
 "lcu" = (
@@ -19907,6 +19912,9 @@
 /obj/machinery/camera/network/civilian{
 	dir = 4
 	},
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d2fwdhall)
 "mSd" = (
@@ -20616,6 +20624,9 @@
 	},
 /obj/effect/floor_decal/corner/navgold/bordercorner{
 	dir = 1
+	},
+/obj/structure/cable/green{
+	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d2fwdhall)
@@ -25587,7 +25598,7 @@
 /obj/machinery/door/firedoor/glass{
 	dir = 4
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/tiled/white,
 /area/medical/virology_fore_access)
 "qjz" = (
 /obj/effect/floor_decal/borderfloorblack{
@@ -31532,6 +31543,9 @@
 /obj/effect/floor_decal/corner/navgold/border{
 	dir = 8
 	},
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d2fwdhall)
 "tZm" = (
@@ -33597,9 +33611,6 @@
 /turf/space/basic,
 /area/space)
 "vwR" = (
-/obj/machinery/door/airlock/maintenance/rnd{
-	req_one_access = null
-	},
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/research{
 	name = "Research Entrance"
@@ -37979,15 +37990,6 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/medbay4)
-"yhx" = (
-/obj/effect/floor_decal/borderfloorblack{
-	dir = 8
-	},
-/obj/effect/floor_decal/corner/navgold/border{
-	dir = 8
-	},
-/turf/simulated/floor/tiled,
-/area/endeavour/hallway/d2fwdhall)
 "yhE" = (
 /obj/effect/floor_decal/industrial/warning/dust,
 /turf/simulated/floor/tiled/dark,
@@ -68096,7 +68098,7 @@ dSt
 oZA
 cmb
 gtd
-yhx
+cmb
 mRH
 tYH
 nrD
