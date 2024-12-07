@@ -3184,13 +3184,12 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
-/obj/machinery/door/airlock/glass/medical/polarized{
-	req_one_access = null;
-	name = "Operating Theatre 2";
-	id_tint = "or2"
-	},
 /obj/map_helper/electrochromatic_linker{
 	id = "or2"
+	},
+/obj/machinery/door/airlock/medical{
+	name = "Operating Theatre 2";
+	req_one_access = null
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/surgeryprep)
@@ -9537,13 +9536,12 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
-/obj/machinery/door/airlock/glass/medical/polarized{
-	req_one_access = null;
-	name = "Operating Theatre 1";
-	id_tint = "or1"
-	},
 /obj/map_helper/electrochromatic_linker{
 	id = "or1"
+	},
+/obj/machinery/door/airlock/medical{
+	name = "Operating Theatre 1";
+	req_one_access = null
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/surgeryprep)
@@ -11879,7 +11877,7 @@
 /area/rnd/workshop)
 "hxs" = (
 /obj/effect/paint/babyblue,
-/obj/spawner/window/low_wall/reinforced/tinted/full/firelocks{
+/obj/structure/window/reinforced/polarized/full{
 	id = "exam_1"
 	},
 /turf/simulated/floor/plating,
@@ -14906,8 +14904,11 @@
 /area/endeavour/hallway/d2fwdmaint)
 "jym" = (
 /obj/effect/paint/babyblue,
-/obj/spawner/window/low_wall/reinforced/tinted/full/firelocks{
-	id = "oncall"
+/obj/structure/window/reinforced/polarized/full{
+	id = "exam_1"
+	},
+/obj/machinery/door/firedoor{
+	dir = 8
 	},
 /turf/simulated/floor/plating,
 /area/medical/oncall_room)
@@ -24792,8 +24793,11 @@
 /area/holodeck_control)
 "pNT" = (
 /obj/effect/paint/babyblue,
-/obj/spawner/window/low_wall/reinforced/tinted/full/firelocks{
+/obj/structure/window/reinforced/polarized/full{
 	id = "ward_b"
+	},
+/obj/machinery/door/firedoor{
+	dir = 8
 	},
 /turf/simulated/floor/plating,
 /area/medical/patient_b)
@@ -27012,8 +27016,11 @@
 /area/rnd/research/researchdivision)
 "qZA" = (
 /obj/effect/paint/babyblue,
-/obj/spawner/window/low_wall/reinforced/tinted/full/firelocks{
+/obj/structure/window/reinforced/polarized/full{
 	id = "ward_c"
+	},
+/obj/machinery/door/firedoor{
+	dir = 8
 	},
 /turf/simulated/floor/plating,
 /area/medical/patient_c)
@@ -27112,6 +27119,16 @@
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/rnd/reception_desk)
+"rbX" = (
+/obj/effect/paint/babyblue,
+/obj/structure/window/reinforced/polarized/full{
+	id = "oncall"
+	},
+/obj/machinery/door/firedoor{
+	dir = 8
+	},
+/turf/simulated/floor/plating,
+/area/medical/oncall_room)
 "rcb" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
@@ -30656,8 +30673,11 @@
 /area/endeavour/hallway/d2afthall)
 "twc" = (
 /obj/effect/paint/babyblue,
-/obj/spawner/window/low_wall/reinforced/tinted/full/firelocks{
+/obj/structure/window/reinforced/polarized/full{
 	id = "ward_a"
+	},
+/obj/machinery/door/firedoor{
+	dir = 8
 	},
 /turf/simulated/floor/plating,
 /area/medical/patient_a)
@@ -32616,7 +32636,7 @@
 /area/endeavour/hallway/d2portamidhall)
 "uMG" = (
 /obj/effect/paint/babyblue,
-/obj/spawner/window/low_wall/reinforced/tinted/full/firelocks{
+/obj/structure/window/reinforced/polarized/full{
 	id = "exam_2"
 	},
 /turf/simulated/floor/plating,
@@ -50877,9 +50897,9 @@ jmm
 qKw
 hXy
 qnr
-jym
+rbX
 nfS
-jym
+rbX
 fcX
 fcX
 fcX
@@ -51070,7 +51090,7 @@ yfP
 vXJ
 kqx
 hXy
-jym
+rbX
 uQM
 hrJ
 lSl
@@ -51264,7 +51284,7 @@ fwu
 ehC
 kqx
 hXy
-jym
+rbX
 kNr
 qhH
 qGj
@@ -51458,7 +51478,7 @@ yfP
 vXJ
 pHA
 hXy
-jym
+rbX
 rMO
 jHE
 eYX

@@ -2895,7 +2895,7 @@
 	tag = "mailroom";
 	id = "DLBelt"
 	},
-/obj/structure/plasticflaps,
+/obj/structure/plasticflaps/mining,
 /turf/simulated/floor/plating,
 /area/quartermaster/delivery)
 "chh" = (
@@ -12658,7 +12658,7 @@
 	tag = "mailroom";
 	id = "DLBelt"
 	},
-/obj/structure/plasticflaps,
+/obj/structure/plasticflaps/mining,
 /turf/simulated/floor/plating,
 /area/quartermaster/delivery)
 "jaT" = (
