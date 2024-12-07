@@ -3,14 +3,14 @@
 /turf/simulated/floor/outdoors/beach/sand/lowdesert,
 /area/class_h/explored)
 "h" = (
-/turf/simulated/wall/sandstone/classh,
+/turf/simulated/wall/sandstone,
 /area/class_h/explored)
 "I" = (
 /obj/effect/floor_decal/plaque{
 	desc = "The carving that used to be here has worn beyond any recoginition.";
 	name = "dusty plaque"
 	},
-/turf/simulated/wall/sandstone/classh,
+/turf/simulated/wall/sandstone,
 /area/class_h/explored)
 "U" = (
 /obj/random/multiple/minevault,
@@ -18,7 +18,7 @@
 /turf/simulated/floor/bmarble,
 /area/class_h/explored)
 "Z" = (
-/turf/simulated/wall/sandstone/classh{
+/turf/simulated/wall/sandstone{
 	can_open = 1
 	},
 /area/class_h/explored)

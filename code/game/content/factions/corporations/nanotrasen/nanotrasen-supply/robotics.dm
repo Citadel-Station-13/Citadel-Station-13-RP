@@ -19,13 +19,6 @@
 	)
 	worth = 250 // literally only because of the flashes; nerf flashes when?
 
-/datum/supply_pack/nanotrasen/robotics/jumper_cables
-	name = "Jumper kit crate"
-	contains = list(
-		/obj/item/defib_kit/jumper_kit = 2,
-	)
-	worth = 250
-
 /datum/supply_pack/nanotrasen/robotics/restrainingbolt
 	name = "Restraining bolt crate"
 	contains = list(

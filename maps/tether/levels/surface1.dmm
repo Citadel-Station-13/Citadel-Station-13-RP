@@ -4013,7 +4013,7 @@
 /obj/structure/sign/warning/bomb_range{
 	name = "\improper MINING AREA - WATCH FOR BLASTING"
 	},
-/turf/unsimulated/wall/planetary/virgo3b,
+/turf/unsimulated/wall/planetary/facility_wall,
 /area/tether/surfacebase/outside/outside1)
 "cfZ" = (
 /obj/structure/closet/crate,
@@ -4305,7 +4305,7 @@
 	desc = "No unarmed personnel beyond this point.";
 	name = "\improper DANGER - WILDERNESS"
 	},
-/turf/unsimulated/wall/planetary/virgo3b,
+/turf/unsimulated/wall/planetary/facility_wall,
 /area/tether/surfacebase/outside/outside1)
 "cmk" = (
 /turf/simulated/floor/plating,
@@ -15236,7 +15236,7 @@
 /obj/structure/bed/chair/wheelchair{
 	dir = 8
 	},
-/obj/structure/sign/poster{
+/obj/structure/poster{
 	pixel_y = 32
 	},
 /turf/simulated/floor/plating,
@@ -26847,7 +26847,7 @@
 /turf/simulated/floor/virgo3b,
 /area/tether/surfacebase/outside/outside1)
 "osh" = (
-/turf/simulated/mineral/virgo3b,
+/turf/simulated/mineral,
 /area/tether/surfacebase/outside/outside1)
 "osY" = (
 /mob/living/simple_mob/animal/passive/fish/koi/poisonous,
@@ -29911,7 +29911,7 @@
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/lowernorthhall)
 "qbg" = (
-/turf/unsimulated/mineral/virgo3b,
+/turf/unsimulated/wall/mineral,
 /area/tether/surfacebase/outside/outside1)
 "qbk" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
@@ -31057,7 +31057,7 @@
 /turf/simulated/floor,
 /area/rnd/outpost/atmos)
 "qJd" = (
-/obj/structure/sign/poster,
+/obj/structure/poster,
 /turf/simulated/wall/prepainted,
 /area/hallway/lower/first_west)
 "qJp" = (
@@ -35298,7 +35298,7 @@
 /obj/machinery/sleeper{
 	dir = 8
 	},
-/obj/structure/sign/poster{
+/obj/structure/poster{
 	pixel_y = 32
 	},
 /turf/simulated/floor/tiled/white,
@@ -37562,7 +37562,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/lower/xenoflora)
 "ujj" = (
-/turf/unsimulated/wall/planetary/virgo3b,
+/turf/unsimulated/wall/planetary/facility_wall,
 /area/tether/surfacebase/outside/outside1)
 "ujA" = (
 /obj/structure/bed/chair/comfy/black{

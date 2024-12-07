@@ -68,7 +68,7 @@
 		errors?.Add(SPAN_WARNING("You have selected too many extra languages for your species and culture."))
 		return FALSE
 	var/list/extraneous = data
-	var/datum/character_species/CS = prefs.character_species_datum()
+	var/datum/species/CS = prefs.character_species_datum()
 	var/list/whitelisted_ids = CS.get_whitelisted_language_ids() // cache ids from character species for speed
 	for(var/id in extraneous)
 		var/datum/prototype/language/L = RSlanguages.fetch(id)
@@ -88,7 +88,7 @@
  */
 /datum/preferences/proc/innate_language_ids(include_background = TRUE)
 	RETURN_TYPE(/list)
-	var/datum/character_species/S = character_species_datum()
+	var/datum/species/S = character_species_datum()
 	. = S.get_intrinsic_language_ids()
 	if(include_background)
 		var/list/datum/lore/character_background/backgrounds = all_background_datums()

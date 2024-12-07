@@ -33,8 +33,9 @@
 		var/obj/item/stack/S = I
 		for(var/obj/item/stack/held_stack in get_held_items())
 			if(S.can_merge(held_stack) && S.merge(held_stack))
-				to_chat(src, SPAN_NOTICE("Your [held_stack] stack now contains [held_stack.get_amount()] [held_stack.singular_name]\s."))
-				return INV_RETURN_SUCCESS
+				to_chat(owner, SPAN_NOTICE("The [held_stack.name] in your hands now contains [held_stack.get_amount()] [held_stack.singular_name]\s."))
+				if(QDELETED(S))
+					return INV_RETURN_SUCCESS
 
 	if(prioritize_index)
 		var/priority_result = put_in_hand(I, prioritize_index, inv_op_flags)

@@ -7811,7 +7811,7 @@
 /obj/effect/floor_decal/corner/red/border{
 	dir = 4
 	},
-/obj/structure/sign/poster{
+/obj/structure/poster{
 	pixel_x = 32
 	},
 /turf/simulated/floor/tiled,
@@ -10400,7 +10400,7 @@
 	},
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/red/border,
-/obj/structure/sign/poster{
+/obj/structure/poster{
 	pixel_y = -32
 	},
 /turf/simulated/floor/tiled,
@@ -12487,7 +12487,7 @@
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/southhall)
 "hvT" = (
-/turf/unsimulated/wall/planetary/virgo3b,
+/turf/unsimulated/wall/planetary/facility_wall,
 /area/tether/surfacebase/outside/outside3)
 "hvW" = (
 /obj/effect/floor_decal/steeldecal/steel_decals4{
@@ -15018,7 +15018,7 @@
 /obj/effect/floor_decal/corner/red/bordercorner2{
 	dir = 4
 	},
-/obj/structure/sign/poster{
+/obj/structure/poster{
 	pixel_x = 32
 	},
 /obj/structure/disposalpipe/segment{
@@ -22160,7 +22160,7 @@
 /turf/simulated/wall/r_wall/prepainted,
 /area/tether/elevator)
 "nwl" = (
-/obj/structure/sign/poster{
+/obj/structure/poster{
 	pixel_x = -32
 	},
 /obj/effect/floor_decal/borderfloorwhite{
@@ -27253,7 +27253,7 @@
 /area/crew_quarters/bar)
 "qjY" = (
 /obj/structure/table/standard,
-/obj/item/defib_kit/jumper_kit,
+/obj/item/defib_kit,
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
@@ -36071,7 +36071,7 @@
 /area/tether/surfacebase/cafeteria)
 "vyj" = (
 /obj/structure/table/reinforced,
-/obj/structure/sign/poster{
+/obj/structure/poster{
 	pixel_x = 32
 	},
 /obj/effect/floor_decal/borderfloorwhite{
