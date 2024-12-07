@@ -2895,7 +2895,9 @@
 	tag = "mailroom";
 	id = "DLBelt"
 	},
-/obj/structure/plasticflaps/mining,
+/obj/structure/plasticflaps/mining{
+	desc = "Heavy duty, airtight, plastic flaps."
+	},
 /turf/simulated/floor/plating,
 /area/quartermaster/delivery)
 "chh" = (
@@ -12658,7 +12660,9 @@
 	tag = "mailroom";
 	id = "DLBelt"
 	},
-/obj/structure/plasticflaps/mining,
+/obj/structure/plasticflaps/mining{
+	desc = "Heavy duty, airtight, plastic flaps."
+	},
 /turf/simulated/floor/plating,
 /area/quartermaster/delivery)
 "jaT" = (
