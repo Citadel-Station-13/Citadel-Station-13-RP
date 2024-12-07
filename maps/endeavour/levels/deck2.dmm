@@ -8226,13 +8226,14 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/door/firedoor,
 /obj/map_helper/access_helper/airlock/station/medical/department,
-/obj/machinery/door/airlock/glass/medical{
-	name = "Medical Breakroom"
-	},
 /obj/structure/disposalpipe/segment{
 	dir = 1
 	},
 /obj/effect/floor_decal/spline/fancy/wood,
+/obj/machinery/door/airlock/medical{
+	name = "Medical Breakroom";
+	req_one_access = null
+	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/medbreak)
 "flY" = (
@@ -10591,12 +10592,13 @@
 /turf/simulated/floor/plating,
 /area/maintenance/substation/medical_science)
 "gKL" = (
-/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
-	dir = 8
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 6
 	},
-/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
-	dir = 8
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 6
 	},
+/obj/machinery/fire_alarm/north_mount,
 /turf/simulated/floor/wood,
 /area/crew_quarters/medbreak)
 "gKZ" = (
@@ -11603,6 +11605,9 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
+	},
+/obj/machinery/air_alarm{
+	pixel_y = 22
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/medbreak)
@@ -16448,11 +16453,11 @@
 /obj/effect/floor_decal/corner/navgold/border{
 	dir = 1
 	},
-/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
-	dir = 1
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
-	dir = 1
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
 	},
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d1starboardafthall)
@@ -19940,17 +19945,6 @@
 "mSd" = (
 /turf/simulated/floor/tiled/dark,
 /area/endeavour/hallway/d2portafthall)
-"mSe" = (
-/obj/structure/cable/green{
-	icon_state = "4-8"
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/turf/simulated/floor/tiled,
-/area/endeavour/hallway/d1starboardafthall)
 "mSK" = (
 /obj/machinery/computer/timeclock/premade/south,
 /obj/effect/floor_decal/borderfloorblack,
@@ -24361,6 +24355,13 @@
 	},
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d2portamidhall)
+"pBD" = (
+/obj/machinery/smartfridge{
+	accepted_types = list(/obj/item);
+	desc = "A wall-mounted refrigerated storage unit. Should keep your food fresh until lunchtime."
+	},
+/turf/simulated/wall/prepainted/medical,
+/area/crew_quarters/medical_restroom)
 "pBG" = (
 /obj/structure/closet/crate,
 /obj/item/grenade/chem_grenade,
@@ -26259,16 +26260,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/crew_quarters/medbreak)
-"qCG" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/effect/floor_decal/borderfloorblack,
-/obj/effect/floor_decal/corner/navgold/border,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/turf/simulated/floor/tiled,
-/area/endeavour/hallway/d1starboardafthall)
 "qCZ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 6
@@ -29838,23 +29829,10 @@
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d2portforhall)
 "sUg" = (
-/obj/structure/cable/green{
-	icon_state = "1-2"
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/medical{
-	name = "Rest Room";
-	req_one_access = null
-	},
-/obj/map_helper/access_helper/airlock/station/medical/department,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 1
 	},
-/turf/simulated/floor/wood,
+/turf/simulated/wall/prepainted/medical,
 /area/crew_quarters/medbreak)
 "sUx" = (
 /obj/structure/disposalpipe/segment,
@@ -29931,11 +29909,6 @@
 /area/rnd/rdoffice)
 "sWG" = (
 /obj/effect/floor_decal/spline/fancy/wood,
-/obj/machinery/smartfridge{
-	pixel_x = 32;
-	accepted_types = list(/obj/item);
-	desc = "A wall-mounted refrigerated storage unit. Should keep your food fresh until lunchtime."
-	},
 /turf/simulated/floor/carpet/blucarpet,
 /area/crew_quarters/medbreak)
 "sWT" = (
@@ -37518,6 +37491,10 @@
 "xLu" = (
 /obj/structure/bed/chair/sofa/beige{
 	dir = 8
+	},
+/obj/item/radio/intercom{
+	dir = 4;
+	pixel_x = 24
 	},
 /turf/simulated/floor/carpet/blucarpet,
 /area/crew_quarters/medbreak)
@@ -54972,8 +54949,8 @@ cHC
 cHC
 oDd
 kzM
-mSe
-qCG
+cTm
+mdU
 sUg
 gKL
 pVI
@@ -55755,7 +55732,7 @@ pEq
 uCH
 uCH
 uCH
-uCH
+pBD
 uCH
 uCH
 rsI
