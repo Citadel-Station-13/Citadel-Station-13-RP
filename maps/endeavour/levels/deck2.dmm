@@ -19102,6 +19102,10 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/patient_wing)
+"mrz" = (
+/obj/structure/ladder/up,
+/turf/simulated/floor/plating,
+/area/maintenance/research)
 "mrL" = (
 /obj/structure/closet/secure_closet/medical_wall/pills{
 	pixel_x = -32
@@ -51171,7 +51175,7 @@ pRW
 jRE
 qBd
 uPt
-xIf
+mrz
 xIf
 xIf
 xIf
