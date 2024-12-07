@@ -1427,14 +1427,9 @@
 /turf/simulated/floor/carpet,
 /area/bridge/office)
 "bbP" = (
-/obj/effect/floor_decal/borderfloor{
-	dir = 5
-	},
-/obj/effect/floor_decal/corner/mauve/border{
-	dir = 5
-	},
-/turf/simulated/floor/tiled,
-/area/endeavour/exploration/hallway_fore)
+/obj/structure/target_stake,
+/turf/simulated/floor/plating,
+/area/maintenance/station/exploration)
 "bcg" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 6
@@ -8596,14 +8591,8 @@
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d1afthall)
 "gtI" = (
-/obj/effect/floor_decal/borderfloor{
-	dir = 8
-	},
-/obj/effect/floor_decal/corner/mauve/border{
-	dir = 8
-	},
 /obj/structure/railing,
-/turf/simulated/floor/tiled,
+/turf/simulated/wall/r_wall/prepainted/exploration,
 /area/endeavour/exploration/hallway_fore)
 "gud" = (
 /obj/machinery/door/firedoor,
@@ -11625,6 +11614,10 @@
 /obj/structure/railing,
 /turf/simulated/floor/plating,
 /area/shuttle/courser/cockpit)
+"iIx" = (
+/obj/machinery/door/airlock/maintenance/common,
+/turf/simulated/floor/plating,
+/area/endeavour/exploration/hallway_fore)
 "iIB" = (
 /obj/effect/floor_decal/corner/purple/full{
 	dir = 8
@@ -19263,11 +19256,14 @@
 /turf/simulated/floor/grass,
 /area/hydroponics/garden)
 "opm" = (
-/obj/effect/floor_decal/borderfloor{
+/obj/structure/railing{
 	dir = 8
 	},
+/obj/effect/floor_decal/borderfloor{
+	dir = 5
+	},
 /obj/effect/floor_decal/corner/mauve/border{
-	dir = 8
+	dir = 5
 	},
 /turf/simulated/floor/tiled,
 /area/endeavour/exploration/hallway_fore)
@@ -25417,14 +25413,9 @@
 /turf/simulated/floor/tiled/steel,
 /area/hallway/secondary/docking_hallway)
 "tsv" = (
-/obj/effect/floor_decal/borderfloor{
-	dir = 9
-	},
-/obj/effect/floor_decal/corner/mauve/border{
-	dir = 9
-	},
-/turf/simulated/floor/tiled,
-/area/endeavour/exploration/hallway_fore)
+/obj/structure/ladder,
+/turf/simulated/floor/plating,
+/area/maintenance/station/exploration)
 "tsT" = (
 /obj/structure/extinguisher_cabinet{
 	pixel_y = -31
@@ -45190,13 +45181,13 @@ xRj
 xRj
 fOo
 usG
-sjU
-sjU
+xgT
+xgT
 tsv
-opm
-opm
-iJn
-opm
+ehq
+ehq
+ehq
+ehq
 gtI
 bxh
 bxh
@@ -45384,15 +45375,15 @@ xRj
 xRj
 usG
 usY
-sjU
-sjU
+xgT
+xgT
 bbP
-tfh
-oBL
-tfh
-tfh
-tfh
-fDY
+ehq
+ehq
+ehq
+ehq
+iIx
+opm
 fDY
 oBL
 mZn
@@ -45583,8 +45574,8 @@ aGI
 aGI
 aGI
 aGI
-lnF
-lnF
+aGI
+aGI
 aGI
 lnF
 lnF

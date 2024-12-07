@@ -434,9 +434,8 @@
 /area/security/lobby)
 "avI" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
-/obj/machinery/light_switch{
-	pixel_x = 26;
-	pixel_y = -4
+/obj/machinery/light/small{
+	dir = 4
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_5)
@@ -700,7 +699,9 @@
 /turf/space,
 /area/space)
 "aDs" = (
-/obj/machinery/light/small,
+/obj/machinery/light_switch{
+	pixel_y = -23
+	},
 /turf/simulated/floor/carpet/purcarpet,
 /area/crew_quarters/sleep/Dorm_5)
 "aDw" = (
@@ -1104,8 +1105,8 @@
 /turf/simulated/floor/tiled/monotile,
 /area/security/brig)
 "aUT" = (
-/obj/machinery/light/small{
-	dir = 1
+/obj/machinery/light_switch{
+	pixel_y = 26
 	},
 /turf/simulated/floor/carpet/tealcarpet,
 /area/crew_quarters/sleep/Dorm_8)
@@ -6135,7 +6136,9 @@
 /turf/simulated/floor/plating,
 /area/quartermaster/qm)
 "etU" = (
-/obj/machinery/light/small,
+/obj/machinery/light_switch{
+	pixel_y = -23
+	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/crew_quarters/sleep/Dorm_9)
 "etV" = (
@@ -10541,6 +10544,12 @@
 	},
 /turf/simulated/floor/tiled,
 /area/quartermaster/warehouse)
+"huv" = (
+/obj/machinery/light/small{
+	dir = 4
+	},
+/turf/simulated/floor/carpet,
+/area/crew_quarters/sleep/Dorm_10)
 "huy" = (
 /obj/structure/disposalpipe/segment{
 	dir = 8;
@@ -11045,9 +11054,8 @@
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
-/obj/machinery/light_switch{
-	pixel_x = -26;
-	pixel_y = -4
+/obj/machinery/light/small{
+	dir = 8
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_10)
@@ -11289,9 +11297,8 @@
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
-/obj/machinery/light_switch{
-	pixel_x = -26;
-	pixel_y = -4
+/obj/machinery/light/small{
+	dir = 8
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_6)
@@ -12943,9 +12950,8 @@
 /area/crew_quarters/sleep/Dorm_3)
 "jnU" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
-/obj/machinery/light_switch{
-	pixel_x = 26;
-	pixel_y = -4
+/obj/machinery/light/small{
+	dir = 4
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_9)
@@ -13212,6 +13218,12 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
 /turf/simulated/floor/carpet,
 /area/security/detectives_office)
+"jAs" = (
+/obj/machinery/light/small{
+	dir = 8
+	},
+/turf/simulated/floor/carpet/purcarpet,
+/area/crew_quarters/sleep/Dorm_5)
 "jAA" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -13913,6 +13925,12 @@
 /obj/machinery/media/jukebox,
 /turf/simulated/floor/wood,
 /area/security/breakroom)
+"kdL" = (
+/obj/machinery/light/small{
+	dir = 8
+	},
+/turf/simulated/floor/carpet/bcarpet,
+/area/crew_quarters/sleep/Dorm_9)
 "kdS" = (
 /obj/machinery/door/airlock/command{
 	id_tag = "HoSdoor";
@@ -16041,7 +16059,9 @@
 /turf/simulated/floor/tiled/dark,
 /area/security/brig)
 "lIR" = (
-/obj/machinery/light/small,
+/obj/machinery/light_switch{
+	pixel_y = -23
+	},
 /turf/simulated/floor/carpet/sblucarpet,
 /area/crew_quarters/sleep/Dorm_7)
 "lIV" = (
@@ -16593,6 +16613,12 @@
 	},
 /turf/simulated/floor/tiled,
 /area/security/lobby)
+"meh" = (
+/obj/machinery/light/small{
+	dir = 4
+	},
+/turf/simulated/floor/carpet/oracarpet,
+/area/crew_quarters/sleep/Dorm_6)
 "mff" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -23901,8 +23927,8 @@
 /turf/simulated/floor/tiled/old_cargo/white,
 /area/security/forensics)
 "rpc" = (
-/obj/machinery/light/small{
-	dir = 1
+/obj/machinery/light_switch{
+	pixel_y = 26
 	},
 /turf/simulated/floor/carpet/oracarpet,
 /area/crew_quarters/sleep/Dorm_6)
@@ -25191,9 +25217,8 @@
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
-/obj/machinery/light_switch{
-	pixel_x = -26;
-	pixel_y = -4
+/obj/machinery/light/small{
+	dir = 8
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_8)
@@ -27063,8 +27088,8 @@
 /turf/simulated/floor/plating,
 /area/endeavour/hallway/d3aftmaint)
 "tzN" = (
-/obj/machinery/light/small{
-	dir = 1
+/obj/machinery/light_switch{
+	pixel_y = 26
 	},
 /turf/simulated/floor/carpet,
 /area/crew_quarters/sleep/Dorm_10)
@@ -29923,9 +29948,8 @@
 /area/endeavour/hallway/d3aftmaint)
 "vrD" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
-/obj/machinery/light_switch{
-	pixel_x = 26;
-	pixel_y = -4
+/obj/machinery/light/small{
+	dir = 4
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_7)
@@ -31559,6 +31583,12 @@
 	},
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d3starboardafthall)
+"wvt" = (
+/obj/machinery/light/small{
+	dir = 8
+	},
+/turf/simulated/floor/carpet/sblucarpet,
+/area/crew_quarters/sleep/Dorm_7)
 "wvC" = (
 /turf/simulated/wall/prepainted/security,
 /area/security/warden)
@@ -32328,6 +32358,12 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/security/warden)
+"xae" = (
+/obj/machinery/light/small{
+	dir = 4
+	},
+/turf/simulated/floor/carpet/tealcarpet,
+/area/crew_quarters/sleep/Dorm_8)
 "xai" = (
 /obj/effect/floor_decal/industrial/outline/red,
 /obj/machinery/computer/ship/navigation/telescreen{
@@ -58005,7 +58041,7 @@ uod
 mLw
 ekH
 aqY
-imX
+kdL
 hCU
 ekH
 syZ
@@ -58982,7 +59018,7 @@ syZ
 ekX
 nhQ
 oMi
-bmr
+huv
 orX
 nhQ
 cuJ
@@ -59169,7 +59205,7 @@ nTY
 jmJ
 gSN
 qoW
-dzM
+wvt
 pmM
 gSN
 syZ
@@ -60146,7 +60182,7 @@ syZ
 ekX
 dlI
 irP
-puL
+xae
 uSv
 dlI
 bmY
@@ -60333,7 +60369,7 @@ adZ
 tGB
 hyv
 qzO
-glK
+jAs
 sxA
 hyv
 syZ
@@ -61310,7 +61346,7 @@ syZ
 ekX
 rVy
 oez
-aNV
+meh
 dRK
 hTz
 aKn

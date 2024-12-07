@@ -33419,6 +33419,10 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/medbay4)
+"vey" = (
+/obj/structure/ladder/up,
+/turf/simulated/floor/plating,
+/area/maintenance/research)
 "vez" = (
 /turf/simulated/wall/prepainted/science,
 /area/rnd/xenobiology/xenoflora)
@@ -51432,7 +51436,7 @@ pRW
 jRE
 qBd
 uPt
-xIf
+vey
 xIf
 xIf
 xIf
