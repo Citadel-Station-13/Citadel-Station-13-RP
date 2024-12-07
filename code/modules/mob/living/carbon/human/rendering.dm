@@ -153,7 +153,6 @@
 		flattened = flatten,
 	)
 	var/alpha_to_use = species.species_appearance_flags & HAS_HAIR_ALPHA ? hair_alpha : head_organ.hair_opacity
-	message_admins("alpha to use is [alpha_to_use]")
 	// todo: this is awful
 	if(islist(rendered))
 		for(var/image/I as anything in rendered)

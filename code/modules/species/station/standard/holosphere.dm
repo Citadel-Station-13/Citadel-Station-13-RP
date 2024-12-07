@@ -45,7 +45,6 @@
 		BP_R_FOOT = list("path" = /obj/item/organ/external/foot/right/indestructible/holosphere),
 	)
 
-
 	inherent_verbs = list(
 		/mob/living/carbon/human/proc/tie_hair,
 		/mob/living/carbon/human/proc/hide_horns,
@@ -105,7 +104,7 @@
 	var/is_clothing = category == CARBON_APPEARANCE_UPDATE_CLOTHING
 	var/overlay_index = is_clothing ? 1 : 2
 	var/overlay_object = overlay_args[overlay_index]
-	var/alpha_to_use = is_clothing ? 255 : get_alpha_from_key(category)
+	var/alpha_to_use = is_clothing ? 255 : get_alpha_from_key(source, category)
 	if(islist(overlay_object))
 		var/list/new_list = list()
 		var/list/overlay_list = overlay_object
@@ -150,7 +149,6 @@
 /datum/species/holosphere/proc/equip_loadout(mob/living/carbon/human/H, list/datum/loadout_entry/loadout)
 	var/slots_used = list()
 	for(var/datum/loadout_entry/entry as anything in loadout)
-		message_admins("looking at [entry.path]")
 		var/use_slot = entry.slot
 		if(isnull(use_slot))
 			continue
