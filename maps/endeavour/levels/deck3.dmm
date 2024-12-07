@@ -2951,10 +2951,6 @@
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_9)
-"clL" = (
-/obj/effect/floor_decal/industrial/outline/yellow,
-/turf/simulated/floor/tiled,
-/area/maintenance/cargo/mining)
 "cmi" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4;
@@ -12322,12 +12318,6 @@
 /obj/random/drinkbottle,
 /turf/simulated/floor/tiled/dark,
 /area/maintenance/starboardsolar)
-"iJx" = (
-/obj/machinery/door/firedoor{
-	dir = 8
-	},
-/turf/simulated/wall/prepainted/cargo,
-/area/quartermaster/qm)
 "iJy" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/glass/security{
@@ -17944,7 +17934,6 @@
 /turf/simulated/floor/tiled/old_cargo/gray,
 /area/security/hanger)
 "nbL" = (
-/obj/structure/ladder,
 /turf/simulated/floor/airless,
 /area/space)
 "nbW" = (
@@ -18056,10 +18045,9 @@
 /turf/simulated/floor/tiled/dark,
 /area/vacant/vacant_shop)
 "nfA" = (
-/obj/effect/floor_decal/industrial/outline/yellow,
 /obj/structure/closet/crate/trashcart,
 /obj/random/maintenance/engineering,
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/plating,
 /area/maintenance/cargo/mining)
 "nfG" = (
 /obj/structure/cable{
@@ -18333,9 +18321,6 @@
 /obj/structure/table/standard,
 /obj/machinery/photocopier/faxmachine{
 	department = "Quartermaster-Office"
-	},
-/obj/machinery/door/firedoor{
-	dir = 8
 	},
 /turf/simulated/floor/wood,
 /area/quartermaster/qm)
@@ -47191,7 +47176,7 @@ twR
 twR
 gNj
 gNj
-iJx
+gNj
 mLm
 mLm
 mLm
@@ -47385,7 +47370,7 @@ nWj
 iIq
 sBr
 npS
-iJx
+gNj
 mLm
 mLm
 mLm
@@ -47774,10 +47759,10 @@ juy
 feq
 nNn
 oOI
-mLm
-mLm
-mLm
-mLm
+xLm
+xLm
+xLm
+xLm
 hwP
 lMH
 nqP
@@ -48164,7 +48149,7 @@ tkT
 gNj
 atw
 nfA
-clL
+mLm
 xLm
 hwP
 lMH
