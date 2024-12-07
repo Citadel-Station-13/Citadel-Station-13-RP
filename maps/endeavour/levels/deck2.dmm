@@ -319,6 +319,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 9
 	},
+/obj/structure/flora/grass/event/ferny_bush1,
 /turf/simulated/floor/grass/indoors,
 /area/tether/station/public_meeting_room)
 "amG" = (
@@ -13986,7 +13987,6 @@
 /turf/simulated/wall/prepainted/medical,
 /area/medical/morgue)
 "iRZ" = (
-/obj/structure/flora/grass/event/ferny_bush1,
 /obj/effect/floor_decal/spline/plain{
 	dir = 8
 	},
@@ -17100,6 +17100,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 10
 	},
+/obj/structure/flora/grass/event/yellow_flowers1,
 /turf/simulated/floor/grass/indoors,
 /area/tether/station/public_meeting_room)
 "kWR" = (
@@ -35632,7 +35633,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/structure/flora/grass/event/yellow_flowers1,
 /obj/effect/floor_decal/spline/plain{
 	dir = 4
 	},

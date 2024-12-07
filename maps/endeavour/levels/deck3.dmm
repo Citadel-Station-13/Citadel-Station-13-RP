@@ -1056,6 +1056,9 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 8
 	},
+/obj/machinery/light/small{
+	dir = 1
+	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/crew_quarters/game_room)
 "aOG" = (
@@ -2053,11 +2056,10 @@
 /obj/machinery/door/firedoor{
 	dir = 8
 	},
+/obj/effect/floor_decal/borderfloorblack,
+/obj/effect/floor_decal/corner/navgold/border,
 /obj/effect/floor_decal/borderfloorblack{
-	dir = 6
-	},
-/obj/effect/floor_decal/corner/navgold/border{
-	dir = 6
+	dir = 4
 	},
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d3afthall)
@@ -11603,6 +11605,7 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 4
 	},
+/obj/machinery/light/small,
 /turf/simulated/floor/carpet/bcarpet,
 /area/crew_quarters/game_room)
 "icM" = (
@@ -13559,11 +13562,13 @@
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d3afthall)
 "jGP" = (
-/obj/structure/table/gamblingtable,
-/obj/item/deck/cards,
-/obj/machinery/light/small{
-	dir = 1
+/obj/structure/bed/chair/wood{
+	dir = 4
 	},
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 8
+	},
+/obj/machinery/light/small,
 /turf/simulated/floor/carpet/bcarpet,
 /area/crew_quarters/game_room)
 "jGZ" = (
@@ -16309,7 +16314,6 @@
 "lNU" = (
 /obj/structure/table/gamblingtable,
 /obj/item/deck/cards,
-/obj/machinery/light/small,
 /turf/simulated/floor/carpet/bcarpet,
 /area/crew_quarters/game_room)
 "lOf" = (
@@ -17420,6 +17424,18 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/crystal,
 /area/endeavour/hallway/d3fwdhall)
+"mCZ" = (
+/obj/structure/bed/chair/wood{
+	dir = 8
+	},
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 4
+	},
+/obj/machinery/light/small{
+	dir = 1
+	},
+/turf/simulated/floor/carpet/bcarpet,
+/area/crew_quarters/game_room)
 "mDp" = (
 /turf/space,
 /area/space)
@@ -19748,10 +19764,13 @@
 	dir = 8
 	},
 /obj/effect/floor_decal/borderfloorblack{
-	dir = 5
+	dir = 1
 	},
 /obj/effect/floor_decal/corner/navblue/border{
-	dir = 5
+	dir = 1
+	},
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 4
 	},
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d3afthall)
@@ -22270,7 +22289,7 @@
 	dir = 9
 	},
 /obj/effect/floor_decal/corner/navblue/border{
-	dir = 9
+	dir = 1
 	},
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d3afthall)
@@ -29630,9 +29649,7 @@
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 10
 	},
-/obj/effect/floor_decal/corner/navgold/border{
-	dir = 10
-	},
+/obj/effect/floor_decal/corner/navgold/border,
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d3afthall)
 "vcO" = (
@@ -39474,7 +39491,7 @@ aOy
 hnK
 dnR
 iCe
-aOy
+jGP
 jZR
 gLU
 gLU
@@ -39664,7 +39681,7 @@ uzm
 uzm
 jAH
 cHy
-jGP
+lNU
 ecM
 dnR
 gRi
@@ -39858,7 +39875,7 @@ cUe
 uzm
 jAH
 cHy
-icz
+mCZ
 iAO
 dnR
 bUI
