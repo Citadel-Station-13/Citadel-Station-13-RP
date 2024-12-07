@@ -18,7 +18,7 @@ GLOBAL_REAL(Configuration, /datum/controller/toml_configuration)
 			return FALSE
 		if(NAMEOF_PROC(src, get_sensitive_entry), NAMEOF_PROC(src, set_sensitive_entry))
 			return FALSE
-		if(NAMEOF_PROC(src, reload), NAMEOF_PROC(src, reset), NAMEOF_PROC(src, load))
+		if(NAMEOF_PROC(src, reload), NAMEOF_PROC(src, reset), NAMEOF_PROC(src, load), NAMEOF_PROC(src, recursively_load_from_list))
 			return FALSE
 	return ..()
 
@@ -50,12 +50,12 @@ GLOBAL_REAL(Configuration, /datum/controller/toml_configuration)
 			continue
 		var/datum/toml_config_entry/entry = new path
 		typed_entries[entry.type] = entry
-		var/list/nesting = splittext(entry.key, ".")
+		var/list/nesting = splittext(entry.category, ".")
 		var/list/current_list = keyed_entries
 		for(var/i in 1 to length(nesting) - 1)
 			LAZYINITLIST(current_list[nesting[i]])
 			current_list = nesting[i]
-		current_list[nesting[length(nesting)]] = entry
+		current_list[entry.key] = entry
 	reload()
 
 /datum/controller/toml_configuration/stat_key()
@@ -112,6 +112,9 @@ GLOBAL_REAL(Configuration, /datum/controller/toml_configuration)
 		CRASH("attempted to set sensitive entry with normal set entry.")
 	entry.value = value
 
+/datum/controller/toml_configuration/proc/admin_reload()
+	reload()
+
 /**
  * Automatically loads default config, and the server's config file.
  *
@@ -149,3 +152,23 @@ GLOBAL_REAL(Configuration, /datum/controller/toml_configuration)
 		fdel("tmp/config/loading.toml")
 	if(!decoded)
 		CRASH("failed to decode config [filelike]!")
+
+	recursively_load_from_list(decoded, keyed_entries)
+
+/datum/controller/toml_configuration/proc/recursively_load_from_list(list/decoded_list, list/entry_list)
+	if(!decoded_list || !entry_list)
+		return
+	for(var/key in decoded_list)
+		var/value = decoded_list[key]
+		if(islist(value))
+			var/list/entry_list = entry_list[key]
+			if(!islist(entry_list))
+				// todo: warn
+			else
+				recursively_load_from_list(value, entry_list[key])
+		else
+			var/datum/toml_config_entry/entry = entry_list[key]
+			if(!istype(entry))
+				// todo: warn
+			else
+				entry.apply(value)
