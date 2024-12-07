@@ -54,7 +54,7 @@ GLOBAL_REAL(Configuration, /datum/controller/toml_configuration)
 		var/list/current_list = keyed_entries
 		for(var/i in 1 to length(nesting) - 1)
 			LAZYINITLIST(current_list[nesting[i]])
-			current_list = nesting[i]
+			current_list = current_list[nesting[i]]
 		current_list[entry.key] = entry
 	reload()
 
