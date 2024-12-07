@@ -17,7 +17,6 @@
 	var/initial_temperature = 500
 	var/initial_moles = 10
 	var/initial_heat_capacity = /datum/gas/oxygen::specific_heat * initial_moles
-	var/initial_energy = initial_temperature * initial_heat_capacity
 
 	// 5 pieces of the exchanger @ 40L each is touching an unsim turf
 	var/cell_limit = 5

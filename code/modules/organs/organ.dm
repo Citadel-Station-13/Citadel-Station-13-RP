@@ -76,7 +76,7 @@
 
 	//* ## LANGUAGE VARS - For organs that assist with certain languages.
 	var/list/will_assist_languages = list()
-	var/list/datum/language/assists_languages = list()
+	var/list/datum/prototype/language/assists_languages = list()
 
 
 	//* ## VERB VARS

@@ -2982,6 +2982,10 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/exploration)
+"ajJ" = (
+/obj/effect/shuttle_landmark/rift/deck3/udang,
+/turf/simulated/floor/reinforced/lythios43c,
+/area/rift/surfacebase/outside/outside3)
 "ajM" = (
 /obj/machinery/appliance/cooker/oven,
 /obj/effect/floor_decal/corner/grey{
@@ -7735,7 +7739,7 @@
 /turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
 /area/rift/surfacebase/outside/outside3)
 "axS" = (
-/turf/unsimulated/wall/planetary/lythios43c,
+/turf/unsimulated/wall/planetary/permafrost,
 /area/rift/surfacebase/outside/outside3)
 "axT" = (
 /obj/machinery/computer/ship/sensors,
@@ -7764,6 +7768,14 @@
 	},
 /turf/simulated/floor,
 /area/shuttle/civvie/general)
+"axY" = (
+/obj/machinery/embedded_controller/radio/simple_docking_controller{
+	frequency = 1380;
+	id_tag = "rift_udang_dock";
+	req_one_access = list(67)
+	},
+/turf/simulated/wall/r_wall/prepainted,
+/area/rift/surfacebase/outside/outside3)
 "axZ" = (
 /obj/structure/closet/chefcloset,
 /obj/item/glass_jar,
@@ -15765,7 +15777,7 @@
 /turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
 /area/rift/surfacebase/outside/outside3)
 "aXj" = (
-/turf/unsimulated/wall/planetary/lythios43c{
+/turf/unsimulated/wall/planetary/permafrost{
 	desc = "Glacial permafrost, compacted harder than stone.";
 	icon_state = "icerock-dark"
 	},
@@ -16682,6 +16694,16 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/rift/stairwell/primary/surfacethree)
+"bdT" = (
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/structure/railing{
+	dir = 1
+	},
+/obj/structure/marker_beacon/yellow,
+/turf/simulated/floor/reinforced/lythios43c,
+/area/rift/surfacebase/outside/outside3)
 "bfe" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/disposalpipe/segment,
@@ -18370,6 +18392,10 @@
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/shuttle/courser/general)
+"elu" = (
+/obj/structure/marker_beacon/red,
+/turf/simulated/floor/reinforced/lythios43c,
+/area/rift/surfacebase/outside/outside3)
 "eod" = (
 /turf/simulated/wall/r_wall/prepainted/command,
 /area/ai)
@@ -18397,6 +18423,13 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled/steel,
 /area/security/checkpoint2)
+"eqy" = (
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/structure/lattice,
+/turf/simulated/open/lythios43c,
+/area/rift/surfacebase/outside/outside3)
 "esl" = (
 /obj/machinery/door/airlock/maintenance/int,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -18437,6 +18470,16 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacethree)
+"ewC" = (
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/structure/railing{
+	dir = 1
+	},
+/obj/structure/marker_beacon/yellow,
+/turf/simulated/floor/reinforced/lythios43c,
+/area/rift/surfacebase/outside/outside3)
 "ewE" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 1
@@ -18998,6 +19041,16 @@
 "fhj" = (
 /turf/simulated/wall/prepainted/exploration,
 /area/maintenance/station/exploration)
+"fhW" = (
+/obj/structure/railing{
+	dir = 1
+	},
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/structure/marker_beacon/yellow,
+/turf/simulated/floor/reinforced/lythios43c,
+/area/rift/surfacebase/outside/outside3)
 "fin" = (
 /obj/machinery/door/firedoor{
 	dir = 8
@@ -19096,6 +19149,14 @@
 /obj/effect/paint/violet,
 /turf/simulated/floor/plating,
 /area/exploration/courser_dock)
+"ftd" = (
+/obj/machinery/embedded_controller/radio/simple_docking_controller{
+	frequency = 1380;
+	id_tag = "oldcentury_dock";
+	req_one_access = list(67)
+	},
+/turf/simulated/wall/r_wall/prepainted,
+/area/rift/surfacebase/outside/outside3)
 "ftr" = (
 /obj/machinery/door/firedoor/glass{
 	dir = 4
@@ -20245,6 +20306,10 @@
 	},
 /turf/simulated/floor/wood,
 /area/exploration/pilot_Office)
+"hso" = (
+/obj/effect/shuttle_landmark/rift/deck3/scoophead,
+/turf/simulated/floor/reinforced/lythios43c,
+/area/rift/surfacebase/outside/outside3)
 "huM" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 9
@@ -21146,6 +21211,14 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/shuttle/emt/cockpit)
+"iYY" = (
+/obj/structure/marker_beacon/yellow,
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/structure/railing,
+/turf/simulated/floor/reinforced/lythios43c,
+/area/rift/surfacebase/outside/outside3)
 "iZn" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 10
@@ -21723,6 +21796,7 @@
 	},
 /obj/structure/table/woodentable,
 /obj/item/tool/wrench,
+/obj/item/material/ashtray/glass,
 /turf/simulated/floor/carpet/bcarpet,
 /area/crew_quarters/bar)
 "jPH" = (
@@ -23088,6 +23162,10 @@
 "mpX" = (
 /turf/simulated/wall/prepainted/exploration,
 /area/exploration/pathfinder_office)
+"mqh" = (
+/obj/structure/metal_edge,
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/rift/surfacebase/outside/outside3)
 "mrb" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
@@ -24031,6 +24109,10 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/crew_quarters/bar)
+"ocS" = (
+/obj/structure/marker_beacon/yellow,
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/rift/surfacebase/outside/outside3)
 "odR" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply,
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
@@ -24613,6 +24695,13 @@
 /obj/structure/flora/ausbushes/ywflowers,
 /turf/simulated/floor/outdoors/snow/lythios43c,
 /area/rift/surfacebase/outside/outside3)
+"paF" = (
+/obj/structure/railing{
+	dir = 1
+	},
+/obj/structure/marker_beacon/yellow,
+/turf/simulated/floor/reinforced/lythios43c,
+/area/rift/surfacebase/outside/outside3)
 "peI" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/door/firedoor/glass{
@@ -24978,6 +25067,13 @@
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/monodark,
 /area/shuttle/oldcentury)
+"pZE" = (
+/obj/effect/floor_decal/industrial/halfstair,
+/obj/structure/railing{
+	dir = 8
+	},
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/rift/surfacebase/outside/outside3)
 "qcL" = (
 /obj/landmark/spawnpoint/job/pilot,
 /obj/item/stool/padded,
@@ -26164,6 +26260,13 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/secondary/docking_hallway)
+"sBh" = (
+/obj/effect/floor_decal/industrial/halfstair,
+/obj/structure/railing{
+	dir = 4
+	},
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/rift/surfacebase/outside/outside3)
 "sCu" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/cyan{
 	dir = 4
@@ -27017,6 +27120,10 @@
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/exploration)
+"uue" = (
+/obj/structure/marker_beacon/yellow,
+/turf/simulated/floor/reinforced/lythios43c,
+/area/rift/surfacebase/outside/outside3)
 "uuE" = (
 /obj/structure/flora/ausbushes/sparsegrass,
 /turf/simulated/floor/outdoors/snow/lythios43c,
@@ -27559,6 +27666,11 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/security/checkpoint2)
+"vmB" = (
+/obj/structure/lattice,
+/obj/structure/metal_edge,
+/turf/simulated/open/lythios43c,
+/area/rift/surfacebase/outside/outside3)
 "vmQ" = (
 /obj/structure/flora/grass/both{
 	pixel_x = 10;
@@ -28451,6 +28563,14 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/bar/lower)
+"wyy" = (
+/obj/structure/railing,
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/structure/marker_beacon/yellow,
+/turf/simulated/floor/reinforced/lythios43c,
+/area/rift/surfacebase/outside/outside3)
 "wzN" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 4
@@ -28610,6 +28730,13 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/bar/lower)
+"wVI" = (
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/structure/marker_beacon/yellow,
+/turf/simulated/floor/reinforced/lythios43c,
+/area/rift/surfacebase/outside/outside3)
 "wWx" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -28975,6 +29102,10 @@
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/shuttle/excursion/cargo)
+"xxH" = (
+/obj/structure/lattice,
+/turf/simulated/open/lythios43c,
+/area/rift/surfacebase/outside/outside3)
 "xxP" = (
 /turf/simulated/wall/prepainted/civilian,
 /area/crew_quarters/bar_backroom)
@@ -31645,7 +31776,7 @@ aus
 aus
 aus
 aus
-aus
+elu
 afQ
 anp
 aOi
@@ -33745,7 +33876,7 @@ aus
 aus
 aus
 aus
-wyl
+ftd
 abI
 chB
 xBA
@@ -33974,7 +34105,7 @@ aus
 aus
 aus
 aus
-jWp
+wyl
 aQh
 aIA
 aIA
@@ -34165,10 +34296,10 @@ aus
 aus
 aus
 aus
+hso
 aus
 aus
-aus
-aus
+uue
 apa
 aIA
 aIA
@@ -34750,8 +34881,8 @@ aus
 aus
 aus
 aus
-jWp
-abI
+aus
+apa
 aIA
 aIA
 ahS
@@ -34944,8 +35075,8 @@ aus
 aus
 aus
 aus
-amn
-aZo
+aus
+apa
 aIA
 aIA
 ahS
@@ -35112,12 +35243,6 @@ aBK
 aus
 aus
 aus
-aus
-aus
-aus
-aus
-aus
-aus
 aNd
 aus
 aus
@@ -35138,8 +35263,14 @@ aus
 aus
 aus
 aus
-amn
-aZo
+aus
+aus
+aus
+aus
+aus
+aus
+aus
+apa
 aIA
 aIA
 ahS
@@ -35332,8 +35463,8 @@ aus
 aus
 aus
 aus
-amn
-aZo
+aus
+apa
 aIA
 aIA
 ahS
@@ -35526,8 +35657,8 @@ aus
 aus
 aus
 aus
-amn
-avM
+aus
+apa
 aIA
 aIA
 ahS
@@ -35720,8 +35851,8 @@ aus
 aus
 aus
 aus
-amn
-aZo
+aus
+apa
 aIA
 aIA
 ahS
@@ -35914,8 +36045,8 @@ aus
 aus
 aus
 aus
-amn
-aZo
+jWp
+abI
 aIA
 aIA
 ahS
@@ -36108,7 +36239,7 @@ aus
 aus
 aus
 aus
-jWp
+amn
 aZo
 aIA
 aIA
@@ -37077,7 +37208,7 @@ aus
 aus
 aus
 aus
-aus
+elu
 atI
 avM
 aIA
@@ -38025,13 +38156,13 @@ aDY
 aDY
 aDY
 aDY
+eqy
 aDY
 aDY
 aDY
 aDY
 aDY
-aDY
-aDY
+eqy
 aDY
 aDY
 dwo
@@ -38219,13 +38350,13 @@ aOi
 aOi
 aOi
 aOi
+xxH
 aOi
 aOi
 aOi
 aOi
 aOi
-aOi
-aOi
+xxH
 aOi
 aOi
 aKW
@@ -38411,16 +38542,16 @@ aOi
 aOi
 aOi
 aOi
-aOi
-aOi
-aOi
-aOi
-aOi
-aOi
-aOi
-aOi
-aOi
-aOi
+ewC
+aUZ
+aUZ
+aUZ
+aUZ
+aUZ
+aUZ
+aUZ
+iYY
+vmB
 aOi
 aKW
 fkw
@@ -38604,18 +38735,18 @@ aOi
 aOi
 aOi
 aOi
-aOi
-aOi
-aOi
-aOi
-aOi
-aOi
-aOi
-aOi
-aOi
-aOi
-aOi
-aOi
+fhW
+aus
+aus
+aus
+aus
+aus
+aus
+aus
+aus
+aus
+iYY
+vmB
 aKW
 fkw
 aIA
@@ -38798,18 +38929,18 @@ aOi
 aOi
 aOi
 aOi
-aOi
-aOi
-aOi
-aOi
-aOi
-aOi
-aOi
-aOi
-aOi
-aOi
-aOi
-aOi
+aBK
+aus
+aus
+aus
+aus
+aus
+aus
+aus
+aus
+aus
+amn
+avN
 aKW
 fkw
 aIA
@@ -38992,19 +39123,19 @@ aOi
 aOi
 aOi
 aOi
-aOi
-aOi
-aOi
-aOi
-aOi
-aOi
-aOi
-aOi
-aOi
-aOi
-aOi
-aOi
-aKW
+aBK
+aus
+aus
+aus
+aus
+aus
+aus
+aus
+aus
+aus
+amn
+vmB
+aGz
 fkw
 aIA
 ahS
@@ -39186,18 +39317,18 @@ aOi
 aOi
 aOi
 aOi
-aOi
-aOi
-aOi
-aOi
-aOi
-aOi
-aOi
-aOi
-aOi
-aOi
-aOi
-aOi
+aBK
+aus
+aus
+aus
+aus
+aus
+aus
+aus
+aus
+aus
+amn
+vmB
 aKW
 fkw
 aIA
@@ -39380,18 +39511,18 @@ aOi
 aOi
 aOi
 aOi
-aOi
-aOi
-aOi
-aOi
-aOi
-aOi
-aOi
-aOi
-aOi
-aOi
-aOi
-aOi
+aBK
+aus
+aus
+aus
+aus
+aus
+aus
+ajJ
+aus
+aus
+amn
+vmB
 aKW
 fkw
 aIA
@@ -39574,18 +39705,18 @@ aOi
 aOi
 aOi
 aOi
-aOi
-aOi
-aOi
-aOi
-aOi
-aOi
-aOi
-aOi
-aOi
-aOi
-aOi
-aOi
+aBK
+aus
+aus
+aus
+aus
+aus
+aus
+aus
+aus
+aus
+amn
+vmB
 aKW
 fkw
 aIA
@@ -39768,18 +39899,18 @@ aOi
 aOi
 aOi
 aOi
-aOi
-aOi
-aOi
-aOi
-aOi
-aOi
-aOi
-aOi
-aOi
-aOi
-aOi
-aOi
+aBK
+aus
+aus
+aus
+aus
+aus
+aus
+aus
+aus
+aus
+amn
+avN
 aKW
 fkw
 aIA
@@ -39962,31 +40093,31 @@ acH
 acH
 acH
 acH
-acH
-aOi
-aOi
-aOi
-aOi
-aOi
-aOi
-aOi
-aOi
-aOi
-aOi
-aOi
-aKW
+aBK
+aus
+aus
+aus
+aus
+aus
+aus
+aus
+aus
+aus
+amn
+vmB
+aGz
 fkw
 aIA
-ahS
+aOP
 aOi
 aOi
 aOi
 aOi
 aOi
-aOi
-aOi
-aOi
-aOi
+xxH
+xxH
+xxH
+xxH
 aOi
 aOi
 aOi
@@ -40156,34 +40287,34 @@ acH
 acH
 acH
 acH
-acH
-acH
-aOi
-aOi
-aOi
-aOi
-aOi
-aOi
-aOi
-aOi
-aOi
-aOi
+aBK
+aus
+aus
+aus
+aus
+aus
+aus
+aus
+aus
+aus
+amn
+vmB
 aKW
 fkw
 aIA
-ahS
-aOi
-aOi
-aOi
-aOi
-aOi
-aOi
-aOi
-aOi
-aOi
-aOi
-aOi
-aOi
+aOP
+xxH
+xxH
+xxH
+xxH
+xxH
+xxH
+xxH
+xxH
+xxH
+xxH
+xxH
+xxH
 aOi
 aOi
 aOi
@@ -40350,18 +40481,18 @@ acH
 acH
 vmQ
 acH
-acH
-acH
-acH
-acH
-acH
-acH
-acH
-acH
-acH
-acH
-acH
-aOi
+aBK
+aus
+aus
+aus
+aus
+aus
+aus
+aus
+aus
+aus
+amn
+avN
 aKW
 fFk
 dSP
@@ -40544,18 +40675,18 @@ acH
 qhn
 acH
 acH
-acH
-acH
-acH
-acH
-acH
-acH
-acH
-acH
-acH
-acH
-acH
-acH
+aBK
+aus
+aus
+aus
+aus
+aus
+aus
+aus
+aus
+aus
+amn
+mqh
 aNk
 auz
 auz
@@ -40738,23 +40869,23 @@ acH
 acH
 acH
 acH
-acH
-acH
-acH
-acH
-acH
-acH
-acH
-acH
-acH
-acH
-acH
-acH
-acH
+aBK
+aus
+aus
+aus
+aus
+aus
+aus
+aus
+aus
+aus
+amn
+mqh
+qgy
 aAd
 aAd
 acH
-acH
+gFD
 afk
 aPZ
 aUZ
@@ -40932,18 +41063,18 @@ fRp
 fRp
 aej
 acH
-acH
-acH
-xbv
-acH
-sGC
-acH
-acH
-xbv
-acH
-acH
-acH
-acH
+aBK
+aus
+aus
+aus
+aus
+aus
+aus
+aus
+aus
+aus
+amn
+mqh
 acH
 aAd
 aAd
@@ -41126,22 +41257,22 @@ jTt
 fRp
 aej
 lVJ
-acH
-acH
-acH
-acH
-acH
-mUB
-acH
-acH
-mUB
-acH
-acH
+aBK
+aus
+aus
+aus
+aus
+aus
+aus
+aus
+aus
+aus
+amn
+axY
+ocS
+aAd
+aAd
 xbv
-acH
-aAd
-aAd
-acH
 adx
 aus
 aus
@@ -41320,19 +41451,19 @@ aHG
 fRp
 aej
 acH
-acH
-acH
-acH
-acH
-sGC
-acH
-acH
-acH
-acH
-acH
-acH
-acH
-acH
+aBK
+aus
+aus
+aus
+aus
+aus
+aus
+aus
+aus
+aus
+aus
+pZE
+aAd
 aAd
 aAd
 acH
@@ -41514,19 +41645,19 @@ dWj
 fRp
 aej
 acH
-acH
-mUB
-acH
-acH
-acH
-acH
-acH
-acH
-xbv
-acH
-mUB
-acH
-acH
+aBK
+aus
+aus
+aus
+aus
+aus
+aus
+aus
+aus
+aus
+aus
+sBh
+aAd
 aAd
 aAd
 acH
@@ -41708,22 +41839,22 @@ dWj
 fRp
 aej
 acH
-acH
-acH
-acH
-acH
-acH
-xbv
-acH
-acH
-acH
-acH
-acH
-acH
-acH
+aBK
+aus
+aus
+aus
+aus
+aus
+aus
+aus
+aus
+aus
+amn
+mqh
+gFD
 aAd
 aAd
-acH
+qgy
 adx
 aus
 aus
@@ -41902,18 +42033,18 @@ xak
 fRp
 aej
 acH
-acH
-acH
-acH
-acH
-acH
-acH
-acH
-acH
-acH
-acH
-acH
-acH
+aBK
+aus
+aus
+aus
+aus
+aus
+aus
+aus
+aus
+aus
+amn
+mqh
 acH
 aAd
 aAd
@@ -42096,18 +42227,18 @@ fRp
 fRp
 aej
 acH
-mUB
-acH
-acH
-acH
-acH
-acH
-acH
-acH
-acH
-acH
-xbv
-acH
+paF
+aus
+aus
+aus
+aus
+aus
+aus
+aus
+aus
+aus
+wyy
+mqh
 acH
 aAd
 aAd
@@ -42291,21 +42422,21 @@ fRp
 aej
 acH
 acH
+bdT
+aTN
+aTN
+aTN
+aTN
+aTN
+aTN
+aTN
+wVI
+mqh
 acH
-acH
-acH
-acH
-acH
-acH
-acH
-acH
-acH
-acH
-acH
-acH
+xbv
 aAd
 aAd
-acH
+gFD
 adx
 aus
 aus

@@ -1,4 +1,6 @@
 /datum/prototype/design/science/xenobio
+	category = DESIGN_CATEGORY_SCIENCE
+	subcategory = DESIGN_SUBCATEGORY_XENOBIOLOGY
 	abstract_type = /datum/prototype/design/science/xenobio
 
 /datum/prototype/design/science/xenobio/generate_name(template)

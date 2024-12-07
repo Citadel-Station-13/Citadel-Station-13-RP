@@ -161,7 +161,7 @@
 		to_chat(user, "\The [src] doesn't have any available modules!")
 		return
 	var/obj/item/choice
-	choice = show_radial_menu(user, src, options)
+	choice = show_radial_menu(user, user, options, require_near = TRUE)
 	if(deploy(choice))
 		to_chat(user, "You deploy \the [deployed].")
 		return TRUE

@@ -544,7 +544,7 @@
 		occupant.ghostize()
 
 	//Attach as much stuff as possible to the mob.
-	for(var/datum/language/L in MR.languages)
+	for(var/datum/prototype/language/L in MR.languages)
 		occupant.add_language(L.name)
 	MR.mind_ref.active = 1 //Well, it's about to be.
 	MR.mind_ref.transfer(occupant) //Does mind+ckey+client.

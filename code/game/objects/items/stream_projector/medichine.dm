@@ -17,7 +17,7 @@ GLOBAL_LIST_EMPTY(medichine_cell_datums)
  * todo: should we use reagents instead..?
  */
 /obj/item/stream_projector/medichine
-	prototype_id = "medichine-projector"
+	prototype_id = "ItemMedichineProjector"
 	name = "medichine stream projector"
 	desc = "A specialized, locked-down variant of a nanite stream projector. Deploys medichines from a cartridge onto a target's surface."
 	icon = 'icons/items/stream_projector/medichine.dmi'
@@ -362,7 +362,7 @@ GLOBAL_LIST_EMPTY(medichine_cell_datums)
  * medical beamgun cell
  */
 /obj/item/medichine_cell
-	prototype_id = "medichine-cell"
+	prototype_id = "ItemMedichineCell"
 	name = "medichine cartridge (EMPTY)"
 	desc = "A cartridge meant to hold medicinal nanites."
 	icon = 'icons/items/stream_projector/medichine.dmi'

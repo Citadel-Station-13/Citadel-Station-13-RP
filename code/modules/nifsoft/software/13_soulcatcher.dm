@@ -453,7 +453,7 @@
 	else
 		return ..(direction)
 
-/mob/living/carbon/brain/caught_soul/say(var/message, var/datum/language/speaking = null, var/verb="says", var/alt_name="", var/whispering = 0)
+/mob/living/carbon/brain/caught_soul/say(var/message, var/datum/prototype/language/speaking = null, var/verb="says", var/alt_name="", var/whispering = 0)
 	if(silent)
 		return FALSE
 	soulcatcher.say_into(message,src,eyeobj)
@@ -546,6 +546,7 @@
 
 		// appearance clone immediately
 		appearance = dummy.appearance
+		set_overlays(overlays)
 		plane = AUGMENTED_PLANE
 		qdel(dummy)
 

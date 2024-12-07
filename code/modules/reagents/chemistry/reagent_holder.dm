@@ -324,9 +324,9 @@
 	if (!target || !target.reagents)
 		return
 
-	amount = min(amount, get_reagent_amount(id))
+	amount = min(amount, get_reagent_amount(id), target.reagents.maximum_volume - target.reagents.total_volume)
 
-	if(!amount)
+	if(amount <= 0)
 		return
 
 	var/datum/reagent_holder/F = new /datum/reagent_holder(amount)
@@ -479,6 +479,49 @@
 	for(var/id in reagent_volumes)
 		. += SSchemistry.fetch_reagent(id)
 
+//* Filtering *//
+
+/**
+ * Filters chemicals by `reagent_filter_flags`
+ *
+ * @params
+ * * transfer_to - where to transfer to
+ * * amount - volume limit
+ * * flags - only these flags are allowed
+ */
+/datum/reagent_holder/proc/filter_to_holder(datum/reagent_holder/transfer_to, amount = INFINITY, flags)
+	if(amount <= 0)
+		return
+	var/list/filtering_ids = list()
+	for(var/datum/reagent/reagent in reagent_list)
+		if(!(reagent.reagent_filter_flags & flags))
+			continue
+		filtering_ids += reagent.id
+	return transfer_to_holder(transfer_to, filtering_ids, amount)
+
+/**
+ * Filters chemicals by `reagent_filter_flags`
+ *
+ * @params
+ * * amount - volume limit
+ * * flags - only these flags are allowed
+ */
+/datum/reagent_holder/proc/filter_to_void(amount = INFINITY, flags)
+	if(amount <= 0)
+		return
+	var/total_filterable = 0
+	var/list/datum/reagent/filtering = list()
+	for(var/datum/reagent/reagent in reagent_list)
+		if(!(reagent.reagent_filter_flags & flags))
+			continue
+		total_filterable += reagent.volume
+		filtering += reagent
+	var/ratio = amount / total_filterable
+	for(var/datum/reagent/to_filter in filtering)
+		remove_reagent(to_filter.id, to_filter.volume * ratio, TRUE)
+	reconsider_reactions()
+	return min(amount, total_filterable)
+
 //* Queries *//
 
 /**
@@ -579,11 +622,18 @@
 	// todo: rework this proc
 	if(!total_volume)
 		return
-	var/list/ids_to_transfer
-	var/volume_to_transfer
-	if(!reagent_ids)
-		volume_to_transfer = total_volume
-		ids_to_transfer = reagent_volumes
+	if(!reagents)
+		var/ratio = min(1, min(amount, target.maximum_volume - target.total_volume) / total_volume)
+		. = total_volume * ratio
+		if(!copy)
+			for(var/datum/reagent/R as anything in reagent_list)
+				var/transferred = R.volume * ratio
+				target.add_reagent(R.id, transferred * multiplier, R.get_data(), TRUE)
+				remove_reagent(R.id, transferred, TRUE)
+		else
+			for(var/datum/reagent/R as anything in reagent_list)
+				var/transferred = R.volume * ratio
+				target.add_reagent(R.id, transferred * multiplier, R.get_data(), TRUE)
 	else
 		volume_to_transfer = 0
 		ids_to_transfer = list()
@@ -593,17 +643,12 @@
 			var/volume = reagent_volumes[potential]
 			if(!volume)
 				continue
-			volume_to_transfer += volume
-			ids_to_transfer += potential
-
-	if(!volume_to_transfer)
-		return 0
-
-	var/ratio = min(1, (target.maximum_volume - target.total_volume) / volume_to_transfer)
-	. = volume_to_transfer * ratio
-	for(var/id in ids_to_transfer)
-		var/datum/reagent/R = SSchemistry.fetch_reagent(id)
-		target.add_reagent(id, volume_to_transfer, R.make_copy_data_initializer(reagent_datas[id]), TRUE)
+			total_transferable += R.volume
+			reagents_transferring += R
+		if(!total_transferable)
+			return 0
+		var/ratio = min(1, min(amount, target.maximum_volume - target.total_volume) / total_transferable)
+		. = total_transferable * ratio
 		if(!copy)
 			remove_reagent(id, volume_to_transfer, TRUE)
 

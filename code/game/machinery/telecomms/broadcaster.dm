@@ -179,7 +179,7 @@ var/message_delay = 0 // To make sure restarting the recentmessages list is kept
 						var/vmask, var/vmessage, var/obj/item/radio/radio,
 						var/message, var/name, var/job, var/realname, var/vname,
 						var/data, var/compression, var/list/level, var/freq, var/verbage = "says",
-						datum/language/speaking, var/list/forced_radios)
+						datum/prototype/language/speaking, var/list/forced_radios)
 
   /* ###### Prepare the radio connection ###### */
 

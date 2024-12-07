@@ -1,4 +1,3 @@
-
 // pure concentrated antibodies
 /datum/reagent/antibodies
 	data = list("antibodies"=list())

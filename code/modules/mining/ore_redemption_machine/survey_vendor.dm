@@ -49,6 +49,7 @@
 		new	/datum/data/mining_equipment("Holy Crusade Pack",			/obj/item/storage/lockbox/crusade,							200),
 		new	/datum/data/mining_equipment("Maniple Pack",				/obj/item/storage/lockbox/maniple,							200),
 		new /datum/data/mining_equipment("Jump Boots",					/obj/item/clothing/shoes/bhop,								250),
+		new	/datum/data/mining_equipment("Defense Equipment - AXHS Gun Case",	/obj/item/storage/lockbox/axhs,						250),
 		new	/datum/data/mining_equipment("Conscript Pack",				/obj/item/storage/lockbox/russian,							250),
 		new /datum/data/mining_equipment("Extraction Equipment - Fulton Beacon",	/obj/item/fulton_core,							300),
 		new /datum/data/mining_equipment("Industrial Equipment - Phoron Bore",	/obj/item/gun/magnetic/matfed,						300),

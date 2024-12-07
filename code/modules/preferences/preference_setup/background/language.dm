@@ -8,7 +8,7 @@
 	. = list()
 	var/list/innate_names = list()
 	for(var/id in prefs.innate_language_ids())
-		var/datum/language/L = SScharacters.resolve_language_id(id)
+		var/datum/prototype/language/L = RSlanguages.fetch(id)
 		innate_names += L.name
 	. += "<center><b>Languages</b></center>"
 	. += "<div class='statusDisplay'>"
@@ -17,7 +17,7 @@
 	var/count = 0
 	for(var/id in prefs.extraneous_language_ids())
 		++count
-		var/datum/language/L = SScharacters.resolve_language_id(id)
+		var/datum/prototype/language/L = RSlanguages.fetch(id)
 		. += "[L.name] [href_simple(prefs, "remove", "Remove", id)]"
 		. += " "
 	if(count < prefs.extraneous_languages_max())
@@ -49,7 +49,7 @@
 		extra.len = clamp(extra.len, 0, extra_max)
 		errors?.Add(SPAN_WARNING("truncated [english_list(truncated)] languages - too many!"))
 	for(var/id in extra)
-		if(isnull(SScharacters.resolve_language_id(id)))
+		if(isnull(RSlanguages.fetch(id)))
 			extra -= id
 			errors?.Add(SPAN_WARNING("removed id [id] - can't locate it."))
 			continue
@@ -68,10 +68,10 @@
 		errors?.Add(SPAN_WARNING("You have selected too many extra languages for your species and culture."))
 		return FALSE
 	var/list/extraneous = data
-	var/datum/character_species/CS = prefs.character_species_datum()
+	var/datum/species/CS = prefs.character_species_datum()
 	var/list/whitelisted_ids = CS.get_whitelisted_language_ids() // cache ids from character species for speed
 	for(var/id in extraneous)
-		var/datum/language/L = SScharacters.resolve_language_id(id)
+		var/datum/prototype/language/L = RSlanguages.fetch(id)
 		if((L.language_flags & LANGUAGE_WHITELISTED) && (!(L.id in whitelisted_ids)) && !config.check_alien_whitelist(ckey(L.name), prefs.client_ckey))
 			errors?.Add(SPAN_WARNING("[L] is a whitelisted language."))
 			return FALSE
@@ -88,7 +88,7 @@
  */
 /datum/preferences/proc/innate_language_ids(include_background = TRUE)
 	RETURN_TYPE(/list)
-	var/datum/character_species/S = character_species_datum()
+	var/datum/species/S = character_species_datum()
 	. = S.get_intrinsic_language_ids()
 	if(include_background)
 		var/list/datum/lore/character_background/backgrounds = all_background_datums()

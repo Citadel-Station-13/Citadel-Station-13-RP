@@ -1956,7 +1956,7 @@
 				to_chat(usr, "[M] is illegal type, must be /mob!")
 				return
 			var/lang2toggle = href_list["lang"]
-			var/datum/language/L = SScharacters.resolve_language_name(lang2toggle)
+			var/datum/prototype/language/L = RSlanguages.legacy_resolve_language_name(lang2toggle)
 
 			if(L in M.languages)
 				if(!M.remove_language(lang2toggle))

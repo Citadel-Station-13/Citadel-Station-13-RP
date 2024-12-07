@@ -189,7 +189,7 @@
 					prob(2);/obj/item/flashlight/glowstick/blue,
 					prob(2);/obj/item/card/emag_broken,
 					prob(2);/obj/item/cell/super,
-					prob(2);/obj/item/contraband/poster,
+					prob(2);/obj/item/poster,
 					prob(2);/obj/item/reagent_containers/glass/rag,
 					prob(2);/obj/item/storage/box/sinpockets,
 					prob(2);/obj/item/storage/secure/briefcase,

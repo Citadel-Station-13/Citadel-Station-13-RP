@@ -1,9 +1,3 @@
-/mob
-	/// What receives our keyboard inputs, defaulting to src.
-	var/datum/key_focus
-	/// a singular thing that can intercept keyboard inputs
-	var/datum/key_intercept
-
 /**
  * set our keyboard input focus
  */

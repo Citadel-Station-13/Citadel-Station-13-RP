@@ -26,13 +26,6 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 	//* Data *//
 	/// Supports data system.
 	var/holds_data = FALSE
-
-	//* Identity
-	/// our name - visible from guidebooks and to admins
-	var/name = "Reagent"
-	/// our description - visible from guidebooks and to admins
-	var/description = "A non-descript chemical of some kind."
-	/// player-facing name - visible via scan tools
 	/// defaults to [name]
 	/// overrides name in guidebook
 	var/display_name
@@ -40,6 +33,14 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 	/// defaults to [desc]
 	/// overrides desc in guidebook
 	var/display_description
+
+	//* Filtering *//
+	/// reagent filter flags - dynamic flags used for simulations of filtration/identification/detection
+	///
+	/// * used for a lot of things
+	/// * REAGENT_FILTER_GENERIC is a default because this allows us to have a single 'flags' on filter,
+	///   instead of a 'include flags' and 'exclude flags'.
+	var/reagent_filter_flags = REAGENT_FILTER_GENERIC
 
 	//* Guidebook
 	/// guidebook flags

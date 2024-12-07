@@ -257,7 +257,7 @@
 	var/assembly_path = all_assemblies[assembly_params["type"]]
 	var/obj/item/electronic_assembly/assembly = cached_assemblies[assembly_path]
 	if(!assembly)
-		return "Invalid assembly type."
+		return "Invalid assembly type: \"[assembly_params["type"]]\"."
 
 	// Make sure the container is supposed to have that type of assembly.
 	if(possible_container)
@@ -295,7 +295,7 @@
 		var/component_path = all_components[component_params["type"]]
 		var/obj/item/integrated_circuit/component = cached_components[component_path]
 		if(!component)
-			return "Invalid component type."
+			return "Invalid component type: \"[component_params["type"]]\"."
 
 		// Add temporary component to assembly_components list, to be used later when verifying the wires
 		assembly_components.Add(component)
