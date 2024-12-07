@@ -57,7 +57,7 @@
 	to_chat(user, "<span class='notice'>You swallow some of contents of \the [src].</span>")
 
 /obj/item/reagent_containers/food/condiment/on_reagent_change()
-	if(reagents.reagent_list.len > 0)
+	if(reagents.total_volume)
 		switch(reagents.get_master_reagent_id())
 			if("ketchup")
 				name = "Ketchup"

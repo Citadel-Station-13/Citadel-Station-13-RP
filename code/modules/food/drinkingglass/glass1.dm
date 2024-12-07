@@ -18,7 +18,7 @@
 	/*else if(reagents.reagent_list.len == 1)
 		for(var/datum/reagent/R in reagents.reagent_list)
 			switch(R.id)*/
-	if (reagents.reagent_list.len > 0)
+	if (reagents.total_volume)
 		var/datum/reagent/R = reagents.get_master_reagent()
 
 		if(R.glass_icon_state)
@@ -62,7 +62,7 @@
 	materials_base = list(MAT_GLASS = 60)
 
 /obj/item/reagent_containers/food/drinks/cup/on_reagent_change()
-	if (reagents.reagent_list.len > 0)
+	if (reagents.total_volume)
 		var/datum/reagent/R = reagents.get_master_reagent()
 
 		if(R.cup_icon_state)

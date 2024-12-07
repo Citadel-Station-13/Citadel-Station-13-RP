@@ -773,7 +773,7 @@
  */
 /obj/machinery/chem_master/proc/guess_condi_style(datum/reagent_holder/reagents)
 	var/list/styles = get_condi_styles()
-	if (reagents.reagent_list.len > 0)
+	if (reagents.total_volume)
 		var/main_reagent = reagents.get_master_reagent_id()
 		if (main_reagent)
 			var/list/path = splittext("[main_reagent]", "/")

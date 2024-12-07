@@ -1414,7 +1414,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 			if(!isobj(target))
 				return
 			if(!isnull(target.reagents))
-				if(target.reagents.reagent_list.len > 0)
+				if(target.reagents.total_volume)
 					var/reagents_length = target.reagents.reagent_list.len
 					to_chat(user, "<span class='notice'>[reagents_length] chemical agent[reagents_length > 1 ? "s" : ""] found.</span>")
 					for (var/re in target.reagents.reagent_list)

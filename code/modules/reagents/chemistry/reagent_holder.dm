@@ -469,6 +469,16 @@
 /datum/reagent_holder/proc/splash_turf(turf/target, ratio, hit_contents, destroy_unused)
 	#warn impl
 
+//* Getters *//
+
+/**
+ * Gets the global singletons of reagents in us.
+ */
+/datum/reagent_holder/proc/get_reagent_datums() as /list
+	. = list()
+	for(var/id in reagent_volumes)
+		. += SSchemistry.fetch_reagent(id)
+
 //* Queries *//
 
 /**

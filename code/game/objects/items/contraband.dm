@@ -34,7 +34,7 @@
 		reagents.add_reagent(reagent, picked_reagents[reagent])
 
 	var/list/names = new
-	for(var/datum/reagent/R in reagents.reagent_list)
+	for(var/datum/reagent/R in reagents.get_reagent_datums())
 		names += R.name
 
 	desc = "Contains [english_list(names)]."

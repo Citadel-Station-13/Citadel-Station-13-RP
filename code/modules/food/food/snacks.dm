@@ -3980,9 +3980,7 @@ END CITADEL CHANGE */
 //Code for dipping food in batter
 /obj/item/reagent_containers/food/snacks/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	if(target.is_open_container() && target.reagents && !(istype(target, /obj/item/reagent_containers/food)))
-		for (var/r in target.reagents.reagent_list)
-
-			var/datum/reagent/R = r
+		for(var/datum/reagent/R as anything in target.reagents.get_reagent_datums())
 			if (istype(R, /datum/reagent/nutriment/coating))
 				if (apply_coating(R, user))
 					return 1
@@ -3997,12 +3995,11 @@ END CITADEL CHANGE */
 
 	//Calculate the reagents of the coating needed
 	var/req = 0
-	for (var/r in reagents.reagent_list)
-		var/datum/reagent/R = r
+	for(var/datum/reagent/R as anything in reagents.get_reagent_datums())
 		if (istype(R, /datum/reagent/nutriment))
-			req += R.volume * 0.2
+			req += reagents.reagent_volumes[R.id] * 0.2
 		else
-			req += R.volume * 0.1
+			req += reagents.reagent_volumes[R.id] * 0.1
 
 	req += w_class*0.5
 
@@ -4025,7 +4022,7 @@ END CITADEL CHANGE */
 	C.holder.trans_to_holder(reagents, req)
 
 	//We're done with C now, repurpose the var to hold a reference to our local instance of it
-	C = reagents.get_reagent(id)
+	C = SSchemistry.fetch_reagent(id)
 	if (!C)
 		return
 

@@ -8,7 +8,7 @@
 	integrity_flags = INTEGRITY_ACIDPROOF
 
 /obj/item/reagent_containers/food/drinks/jar/on_reagent_change()
-	if (reagents.reagent_list.len > 0)
+	if (reagents.total_volume > 0)
 		switch(reagents.get_master_reagent_id())
 			if("slime")
 				icon_state = "jar_slime"
