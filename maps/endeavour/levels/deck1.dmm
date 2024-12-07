@@ -14091,7 +14091,7 @@
 /obj/structure/cable/orange{
 	icon_state = "1-2"
 	},
-/turf/simulated/wall/prepainted/civilian,
+/turf/simulated/floor/plating,
 /area/maintenance/substation/dock)
 "kAE" = (
 /obj/structure/cable/green{
