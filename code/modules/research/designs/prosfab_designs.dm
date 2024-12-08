@@ -59,13 +59,13 @@
 		var/mob/living/carbon/human/H = new(where,newspecies)
 		H.set_stat(DEAD)
 		H.gender = gender
-		for(var/obj/item/organ/external/EO in H.organs)
+		for(var/obj/item/organ/external/EO as anything in H.external_organs)
 			if(EO.organ_tag == BP_TORSO || EO.organ_tag == BP_GROIN)
 				continue //Roboticizing a torso does all the children and wastes time, do it later
 			else
 				EO.remove_rejuv()
 
-		for(var/obj/item/organ/external/O in H.organs)
+		for(var/obj/item/organ/external/O as anything in H.external_organs)
 			O.species = SScharacters.resolve_species_name(newspecies)
 
 			if(!(O.organ_tag in manf.parts))	// Make sure we're using an actually present icon.

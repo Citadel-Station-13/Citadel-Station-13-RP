@@ -46,7 +46,7 @@
 	//First we shock the guy we just hit.
 	if(ishuman(target_mob))
 		var/mob/living/carbon/human/H = target_mob
-		var/obj/item/organ/external/affected = H.get_organ(check_zone(BP_TORSO))
+		var/obj/item/organ/external/affected = H.legacy_organ_by_zone(check_zone(BP_TORSO))
 		H.electrocute_act(power, src, H.get_siemens_coefficient_organ(affected), affected, 0)
 	else
 		target_mob.electrocute_act(power, src, 0.75, BP_TORSO)
@@ -69,7 +69,7 @@
 		var/siemens_comparison = 0
 
 		for(var/mob/living/carbon/human/H in filtered_targets)
-			var/obj/item/organ/external/affected = H.get_organ(check_zone(BP_TORSO))
+			var/obj/item/organ/external/affected = H.legacy_organ_by_zone(check_zone(BP_TORSO))
 			var/their_siemens = H.get_siemens_coefficient_organ(affected)
 			if(their_siemens > siemens_comparison) //We want as conductive as possible, so higher is better.
 				new_target = H

@@ -772,7 +772,7 @@
 		return //Silent, because can_shred does messages.
 
 	//Let them pick any of the target's external organs
-	var/obj/item/organ/external/T_ext = input(src,"What do you wish to severely damage?") as null|anything in T.organs //D for destroy.
+	var/obj/item/organ/external/T_ext = input(src,"What do you wish to severely damage?") as null|anything in T.external_organs //D for destroy.
 	if(!T_ext) //Picking something here is critical.
 		return
 	if(T_ext.vital)

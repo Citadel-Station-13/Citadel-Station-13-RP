@@ -280,8 +280,7 @@ var/list/sacrificed = list()
 				if(I.damage <= 5 && I.organ_tag == O_EYES)
 					H.remove_blindness_source(TRAIT_BLINDNESS_EYE_DMG)
 			// check their limbs
-			for(var/obj/item/organ/E in H.bad_external_organs)
-				var/obj/item/organ/external/affected = E
+			for(var/obj/item/organ/external/affected in H.external_organs)
 				// fix bones
 				if((affected.damage < affected.min_broken_damage) && (affected.status & ORGAN_BROKEN))
 					affected.status &= ~ORGAN_BROKEN
