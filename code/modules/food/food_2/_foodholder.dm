@@ -225,3 +225,17 @@
 	if (!our_recipe)
 		return
 	our_recipe.make_food(src)
+
+
+//visalalize recipe
+
+/obj/item/reagent_containers/glass/food_holder/proc/visualize_recipe(mob/user)
+	var/cook_method = input(user, "What to remove?", "Remove from container", null) as null|anything in list(METHOD_OVEN,METHOD_GRILL,METHOD_STOVE,METHOD_DEEPFRY,METHOD_MICROWAVE,METHOD_BLOWTORCH,METHOD_ENERGETIC_ANOMALY)
+	if(!cook_method)
+		return
+	var/datum/cooking_recipe/our_recipe = select_recipe(GLOB.cooking_recipes, src, available_method = cook_method)
+
+	if (!our_recipe)
+		return
+	our_recipe.
+
