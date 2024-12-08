@@ -256,13 +256,6 @@
 /atom/movable/proc/get_icon_scale_y()
 	return icon_scale_y
 
-// todo: refactor this shit
-/atom/movable/proc/update_transform()
-	var/matrix/M = matrix()
-	M.Scale(icon_scale_x, icon_scale_y)
-	M.Turn(icon_rotation)
-	src.transform = M
-
 // Use this to set the object's scale.
 /atom/movable/proc/adjust_scale(new_scale_x, new_scale_y)
 	if(isnull(new_scale_y))
