@@ -28,7 +28,7 @@
 
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging/Initialize(mapload)
 	. = ..()
-	add_atom_colour("#404040", FIXED_COLOUR_PRIORITY) //we don't make use of the fancy overlay system for colours, use this to set the default.
+	add_atom_color("#404040") //we don't make use of the fancy overlay system for colours, use this to set the default.
 
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging/init_dir()
 	..()

@@ -4,7 +4,6 @@
 	pass_flags_self = ATOM_PASS_OVERHEAD_THROW
 	animate_movement = SLIDE_STEPS
 	rad_flags = NONE
-	atom_colouration_system = TRUE
 	integrity_enabled = TRUE
 	armor_type = /datum/armor/object/default
 
