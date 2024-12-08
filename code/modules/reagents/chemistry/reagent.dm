@@ -17,20 +17,27 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 	/// reagent flags - see [code/__DEFINES/reagents/flags.dm]
 	var/reagent_flags = NONE
 
-	//* Filtering *//
-	/// reagent filter flags - dynamic flags used for simulations of filtration/identification/detection
-	///
-	/// * used for a lot of things
-	/// * REAGENT_FILTER_GENERIC is a default because this allows us to have a single 'flags' on filter,
-	///   instead of a 'include flags' and 'exclude flags'.
-	var/reagent_filter_flags = REAGENT_FILTER_GENERIC
+	//* Color *//
+	/// our reagent color
+	var/color = "#000000"
+	/// multiplier to effective volume when calculating color
+	var/color_weight = 1
 
-	//* Identity
+	//* Data *//
+	/// Supports data system.
+	var/holds_data = FALSE
+
+	//* Economy *//
+	/// Raw intrinsic worth of this reagent
+	var/worth = 0
+	/// economic category of the reagent
+	var/economic_category_reagent = ECONOMIC_CATEGORY_REAGENT_DEFAULT
+
+	//* Identity *//
 	/// our name - visible from guidebooks and to admins
 	var/name = "Reagent"
 	/// our description - visible from guidebooks and to admins
 	var/description = "A non-descript chemical of some kind."
-	/// player-facing name - visible via scan tools
 	/// defaults to [name]
 	/// overrides name in guidebook
 	var/display_name
@@ -39,6 +46,14 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 	/// overrides desc in guidebook
 	var/display_description
 
+	//* Filtering *//
+	/// reagent filter flags - dynamic flags used for simulations of filtration/identification/detection
+	///
+	/// * used for a lot of things
+	/// * REAGENT_FILTER_GENERIC is a default because this allows us to have a single 'flags' on filter,
+	///   instead of a 'include flags' and 'exclude flags'.
+	var/reagent_filter_flags = REAGENT_FILTER_GENERIC
+
 	//* Guidebook
 	/// guidebook flags
 	var/reagent_guidebook_flags = NONE
@@ -46,13 +61,12 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 	var/reagent_guidebook_category = "Unsorted"
 
 	//? legacy / unsorted
+	var/glass_icon_state = null
+	var/glass_center_of_mass = null
 	var/taste_description = "bitterness"
 	/// How this taste compares to others. Higher values means it is more noticable
 	var/taste_mult = 1
-	var/datum/reagent_holder/holder = null
 	var/reagent_state = REAGENT_SOLID
-	var/list/data = null
-	var/volume = 0
 	var/metabolism = REM // This would be 0.2 normally
 	/// Used for vampric-Digestion
 	var/blood_content = 0
@@ -62,8 +76,6 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 	var/mrate_static = FALSE
 	var/ingest_met = 0
 	var/touch_met = 0
-	var/dose = 0
-	var/max_dose = 0
 	///Amount at which overdose starts
 	var/overdose = 0
 	///Modifier to overdose damage
@@ -81,19 +93,10 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 	var/cup_desc = null
 	var/cup_center_of_mass = null
 
-	var/color = "#000000"
-	var/color_weight = 1
-
 	var/glass_icon = DRINK_ICON_DEFAULT
 	var/glass_name = "something"
 	var/glass_desc = "It's a glass of... what, exactly?"
 	var/list/glass_special = null // null equivalent to list()
-
-	//? Economy
-	/// Raw intrinsic worth of this reagent
-	var/worth = 0
-	/// economic category of the reagent
-	var/economic_category_reagent = ECONOMIC_CATEGORY_REAGENT_DEFAULT
 
 	//? wiki markup generation additional
 	/// override "name"
@@ -105,20 +108,19 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 	/// forced sort ordering in its category - falls back to name otherwise.
 	var/wiki_sort = 0
 
-/datum/reagent/proc/remove_self(var/amount) // Shortcut
-	if(holder)
-		holder.remove_reagent(id, amount)
-
 /// This doesn't apply to skin contact - this is for, e.g. extinguishers and sprays. The difference is that reagent is not directly on the mob's skin - it might just be on their clothing.
 /datum/reagent/proc/touch_mob(mob/M, amount)
+	SHOULD_NOT_OVERRIDE(TRUE)
 	return
 
 /// Acid melting, cleaner cleaning, etc
 /datum/reagent/proc/touch_obj(obj/O, amount)
+	SHOULD_NOT_OVERRIDE(TRUE)
 	return
 
 /// Cleaner cleaning, lube lubbing, etc, all go here
 /datum/reagent/proc/touch_turf(turf/T, amount)
+	SHOULD_NOT_OVERRIDE(TRUE)
 	return
 
 /// Currently, on_mob_life is called on carbons. Any interaction with non-carbon mobs (lube) will need to be done in touch_mob.
@@ -222,33 +224,41 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 		removed = ingest_met * ingest_rem_mult
 	if(touch_met && (active_metab.metabolism_class == CHEM_TOUCH))
 		removed = touch_met
+	var/volume = location.reagent_volumes[id]
+	var/datum/reagent_metabolism/metabolism = location.reagent_metabolisms[id]
 	removed = min(removed, volume)
-	max_dose = max(volume, max_dose)
-	dose = min(dose + removed, max_dose)
+	metabolism.peak_dose = max(volume, metabolism.peak_dose)
+	metabolism.total_processed_dose = min(metabolism.peak_dose, metabolism.total_processed_dose + removed)
+	metabolism.cycles_so_far++
 	if(removed >= (metabolism * 0.1) || removed >= 0.1) // If there's too little chemical, don't affect the mob, just remove it
 		switch(active_metab.metabolism_class)
 			if(CHEM_INJECT)
-				affect_blood(M, alien, removed)
+				legacy_affect_blood(M, alien, removed, metabolism)
 			if(CHEM_INGEST)
-				affect_ingest(M, alien, removed * ingest_abs_mult)
+				legacy_affect_ingest(M, alien, removed * ingest_abs_mult, metabolism)
 			if(CHEM_TOUCH)
-				affect_touch(M, alien, removed)
+				legacy_affect_touch(M, alien, removed, metabolism)
 	if(overdose && (volume > overdose) && (active_metab.metabolism_class != CHEM_TOUCH && !can_overdose_touch))
+		metabolism.cycles_overdosing++
 		overdose(M, alien, removed)
+	else
+		metabolism.cycles_overdosing = 0
 	remove_self(removed)
-	return
 
+#warn injcet reagent metabolism datum to calls
 // todo: on_mob_life with method of CHEM_INJECT, or tick_mob_blood
-/datum/reagent/proc/affect_blood(mob/living/carbon/M, alien, removed)
+/datum/reagent/proc/legacy_affect_blood(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	return
 
+#warn injcet reagent metabolism datum to calls
 // todo: on_mob_life with method of CHEM_INGEST, or tick_mob_ingest
-/datum/reagent/proc/affect_ingest(mob/living/carbon/M, alien, removed)
+/datum/reagent/proc/legacy_affect_ingest(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	M.bloodstr.add_reagent(id, removed)
 	return
 
+#warn injcet reagent metabolism datum to calls
 // todo: on_mob_life with method of CHEM_TOUCH, or tick_mob_touch
-/datum/reagent/proc/affect_touch(mob/living/carbon/M, alien, removed)
+/datum/reagent/proc/legacy_affect_touch(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	return
 
 // todo: fourth apply method of CHEM_VAPOR implementation?
@@ -264,7 +274,7 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 				return
 		M.nutrition += removed * blood_content //We should always be able to process real blood.
 
-/datum/reagent/proc/overdose(var/mob/living/carbon/M, var/alien, var/removed) // Overdose effect.
+/datum/reagent/proc/legacy_affect_overdose(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	if(alien == IS_DIONA)
 		return
 	if(ishuman(M))
@@ -272,40 +282,42 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 		overdose_mod *= H.species.chemOD_mod
 	M.adjustToxLoss(removed * overdose_mod)
 
-/datum/reagent/proc/initialize_data(newdata) // Called when the reagent is created.
-	if(!isnull(newdata))
-		data = newdata
-	return
-
-/datum/reagent/proc/get_data() // Just in case you have a reagent that handles data differently.
-	if(data && istype(data, /list))
-		return data.Copy()
-	else if(data)
-		return data
-	return null
-
 /datum/reagent/Destroy() // This should only be called by the holder, so it's already handled clearing its references
 	holder = null
 	. = ..()
 
-/* DEPRECATED - TODO: REMOVE EVERYWHERE */
+//* Data *//
 
-/datum/reagent/proc/reaction_turf(var/turf/target, amt)
-	touch_turf(target, amt)
+/**
+ * Get data to feed in as the `data_initializer` during a reagents transfer.
+ */
+/datum/reagent/proc/make_copy_data_initializer(data)
+	return null
 
-/datum/reagent/proc/reaction_obj(var/obj/target, amt)
-	touch_obj(target, amt)
+/**
+ * Preprocess data fed in during add_reagent
+ */
+/datum/reagent/proc/preprocess_data(data_initializer)
+	return null
 
-/datum/reagent/proc/reaction_mob(var/mob/target, amt)
-	touch_mob(target, amt)
+/**
+ * Mixes data
+ *
+ * * in add_reagent, this is called with the preprocessed new data
+ * * in transfer procs, this is called with the old data
+ * * this is not called if there's no reagents of ourselves in the new container.
+ *
+ * @params
+ * * old_data - existing data; null if not there
+ * * old_volume - existing volume; 0 if not there
+ * * new_data - adding data; this is from the returns of `preprocess_data()`
+ * * new_volume - adding volume
+ * * holder - (optional) the holder we're mixing in, if any
+ */
+/datum/reagent/proc/mix_data(old_data, old_volume, new_data, new_volume, datum/reagent_holder/holder)
+	return null
 
-/datum/reagent/proc/on_move(mob/M)
-	return
-
-/datum/reagent/proc/on_update(atom/A)
-	return
-
-//* Guidebook
+//* Guidebook *//
 
 /**
  * Guidebook Data for TGUIGuidebookReagent
@@ -322,63 +334,118 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 		"alcoholStrength" = null,
 	)
 
-//* Holder - Application
+//* Holder - Application *//
+
+#warn deal with these
 
 /**
- * called when we first get applied to a mob
+ * Called when we're sprayed / splashed onto an obj
  *
  * @params
- * * target - target mob
- * * holder - the holder on the target mob
- * * method - an enum of how we're applied from [code/__DEFINES/chemistry.dm]
- * * amount - how much is being applied
- * * data - data. not necessarily a list, but casted as one. this is before mix_data is called.
+ * * target - turf
+ * * remaining - how much is being applied / is remaining / is in the container right now
+ * * allocated - how much is supposed to be hitting the turf (useful for sprays)
+ *               this will never be over remaining.
+ * * spread_between - unlike turfs, there's potentially a lot of objects.
+ *                    if we're splashed onto a turf, this is the length
+ *                    of all the things we're being splashed into.
+ * * data - our reagent data, if any
  *
- * @return amount to inject into the mob side holder. defaults to amount. this can be overriden by the mob / transfer procs.
+ * @return amount used, if any
  */
-// todo: implement this proc, replace reaction mob and similar with it.
-// /datum/reagent/proc/apply_to_mob(mob/target, datum/reagent_holder/holder, amount, list/data)
-// 	return amount
+/datum/reagent/proc/splashed_onto_obj(obj/target, remaining, allocated, data)
+	#warn how to deal with this
+	return 0
 
 /**
- * called when we first get sprayed/splashed on a non-mob
- *
- * not called if we're transferred into a holder on the obj
+ * Called when we're sprayed / splashed onto a turf
  *
  * @params
- * * target - the target.
- * * amount - how much is being applied
- * * data - data. not necessarily a list, but casted as one. this is before mix_data is caled.
+ * * target - turf
+ * * remaining - how much is being applied / is remaining / is in the container right now
+ * * allocated - how much is supposed to be hitting the turf (useful for sprays)
+ *               this will never be over remaining.
+ * * data - our reagent data, if any
+ *
+ * @return amount used, if any
  */
-// todo: implement this proc, replace touch_obj/reaction_obj and similar with it.
-// /datum/reagent/proc/apply_to_obj(obj/target, amount, list/data)
+/datum/reagent/proc/splashed_onto_turf(turf/target, remaining, allocated, data)
+	#warn how to deal with this
+	return 0
 
 /**
- * called when we first get sprayed/splashed on a turf
- *
- * not called if we're transferred into a holder on the turf, somehow
+ * Called when we're splashed onto a carbon mob.
  *
  * @params
- * * target - the target.
- * * amount - how much is being applied
- * * data - data. not necessarily a list, but casted as one. this is before mix_data is caled.
+ * * target - the mob
+ * * zone - the body zone, if it exists.
+ *          this is used if we don't have a bodypart specified.
+ * * limb - the external organ splashed onto.
+ * * remaining - how much is left in the thing being splashed.
+ * * allocated - how much is supposed to be hitting the target limb (useful for sprays).
+ *               this will never be over remaining.
+ * * data - our reagent data, if any
+ *
+ * @return amount used, if any
  */
-// todo: implement this proc, replace touch_turf/reaction_turf and similar with it.
-// /datum/reagent/proc/apply_to_turf(turf/target, amount, list/data)
-
-//* Holder - Mixing
+/datum/reagent/proc/splashed_onto_carbon(mob/living/carbon/target, zone, obj/item/organ/external/limb, remaining, allocated, data)
+	return splashed_onto_living(target, zone, limb, remaining, allocated, data)
 
 /**
- * called when a new reagent is being mixed with this one to mix our data lists.
- *
- * this may not be called if the data is the exact same!
+ * Called when we're splashed onto a silicon mob.
  *
  * @params
- * * holder - (optional) the holder we're mixing in, if any.
- * * current_data - our current data. not necessarily a list, only typecasted to one.
- * * current_amount - our current amount
- * * new_data - new inbound data. not necessarily a list, only typedcasted to one.
- * * new_amount - the amount that's coming in, not what we will be at after mixing.
+ * * target - the mob
+ * * zone - the body zone, if it exists.
+ *          this is used if we don't have a bodypart specified.
+ * * limb - the external organ splashed onto.
+ * * remaining - how much is left in the thing being splashed.
+ * * allocated - how much is supposed to be hitting the target limb (useful for sprays).
+ *               this will never be over remaining.
+ * * data - our reagent data, if any
+ *
+ * @return amount used, if any
  */
-/datum/reagent/proc/mix_data(datum/reagent_holder/holder, list/current_data, current_amount, list/new_data, new_amount)
-	return
+/datum/reagent/proc/splashed_onto_silicon(mob/living/silicon/target, zone, obj/item/organ/external/limb, remaining, allocated, data)
+	return splashed_onto_living(target, zone, limb, remaining, allocated, data)
+
+/**
+ * Called when we're splashed onto a simple mob.
+ *
+ * @params
+ * * target - the mob
+ * * zone - the body zone, if it exists.
+ *          this is used if we don't have a bodypart specified.
+ * * limb - the external organ splashed onto.
+ * * remaining - how much is left in the thing being splashed.
+ * * allocated - how much is supposed to be hitting the target limb (useful for sprays).
+ *               this will never be over remaining.
+ * * data - our reagent data, if any
+ *
+ * @return amount used, if any
+ */
+/datum/reagent/proc/splashed_onto_simple(mob/living/simple_mob/target, zone, obj/item/organ/external/limb, remaining, allocated, data)
+	return splashed_onto_living(target, zone, limb, remaining, allocated, data)
+
+/**
+ * Called when we're splashed onto a mob that is not handled by the other procs.
+ *
+ * So, any mob that is not any of these:
+ * * /mob/living/carbon
+ * * /mob/living/silicon
+ * * /mob/living/simple_mob
+ *
+ * @params
+ * * target - the mob
+ * * zone - the body zone, if it exists.
+ *          this is used if we don't have a bodypart specified.
+ * * limb - the external organ splashed onto.
+ * * remaining - how much is left in the thing being splashed.
+ * * allocated - how much is supposed to be hitting the target limb (useful for sprays).
+ *               this will never be over remaining.
+ * * data - our reagent data, if any
+ *
+ * @return amount used, if any
+ */
+/datum/reagent/proc/splashed_onto_living(mob/living/target, zone, obj/item/organ/external/limb, remaining, allocated, data)
+	return 0

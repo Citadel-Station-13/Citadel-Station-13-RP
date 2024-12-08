@@ -14,11 +14,10 @@
 			W.thermite = 1
 			W.add_overlay(image('icons/effects/effects.dmi', icon_state = "#673910"))
 			remove_self(5)
-	return
 
 /datum/reagent/thermite/touch_mob(mob/living/L, amount)
 	if(istype(L))
 		L.adjust_fire_stacks(amount / 5)
 
-/datum/reagent/thermite/affect_blood(mob/living/carbon/M, alien, removed)
+/datum/reagent/thermite/legacy_affect_blood(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	M.adjustFireLoss(3 * removed)

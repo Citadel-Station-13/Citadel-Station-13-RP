@@ -1,6 +1,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 /// HYPOSPRAY
 ////////////////////////////////////////////////////////////////////////////////
+// todo: remove these, move behavior to /obj/item/autoinjector for autoinjectors
 
 /obj/item/reagent_containers/hypospray
 	name = "hypospray"
@@ -176,7 +177,7 @@
 
 /obj/item/reagent_containers/hypospray/autoinjector/examine(mob/user, dist)
 	. = ..()
-	if(reagents && reagents.reagent_list.len)
+	if(reagents?.total_volume)
 		. += "<span class='notice'>It is currently loaded.</span>"
 	else
 		. += "<span class='notice'>It is spent.</span>"
@@ -439,7 +440,7 @@
 
 /obj/item/reagent_containers/hypospray/glukoz/examine(mob/user, dist)
 	. = ..()
-	if(reagents && reagents.reagent_list.len)
+	if(reagents?.total_volume)
 		. += "<span class='notice'>It is currently loaded.</span>"
 	else
 		. += "<span class='notice'>It is spent.</span>"

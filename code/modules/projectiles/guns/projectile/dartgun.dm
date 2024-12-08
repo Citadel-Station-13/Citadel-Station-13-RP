@@ -58,18 +58,6 @@
 	if(istype(dart))
 		fill_dart(dart)
 
-/obj/item/gun/ballistic/dartgun/examine(mob/user, dist)
-	//update_icon()
-	//if (!..(user, 2))
-	//	return
-	. = ..()
-	if (beakers.len)
-		to_chat(user, "<font color=#4F49AF>[src] contains:</font>")
-		for(var/obj/item/reagent_containers/glass/beaker/B in beakers)
-			if(B.reagents && B.reagents.reagent_list.len)
-				for(var/datum/reagent/R in B.reagents.reagent_list)
-					. += "<font color=#4F49AF>[R.volume] units of [R.name]</font>"
-
 /obj/item/gun/ballistic/dartgun/attackby(obj/item/I as obj, mob/user as mob)
 	if(istype(I, /obj/item/reagent_containers/glass))
 		if(!istype(I, container_type))
