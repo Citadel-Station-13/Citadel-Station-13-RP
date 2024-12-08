@@ -24,20 +24,18 @@
 	charge_sections = 3 //For the icon
 	ammo_x_offset = 2
 	ammo_y_offset = 0
-	can_flashlight = TRUE
-	light_state = "prot_light"
-	flight_x_offset = 0
-	flight_y_offset = 0
+
+	// todo: add flashlight attachment support
 
 	firemodes = list(
-	list(mode_name="stun", projectile_type=/obj/projectile/beam/stun/protector, modifystate="stun", fire_sound='sound/weapons/Taser.ogg'),
+			list(mode_name="stun", projectile_type=/obj/projectile/beam/stun/protector, modifystate="stun", fire_sound='sound/weapons/Taser.ogg'),
 	list(mode_name="lethal", projectile_type=/obj/projectile/beam, modifystate="kill", fire_sound='sound/weapons/gauss_shoot.ogg'),
 	)
 
 	var/emagged = FALSE
 
 /obj/item/gun/energy/protector/special_check(mob/user)
-	if(!emagged && mode_name == "lethal" && get_security_level() == "green")
+	if(!emagged && legacy_get_firemode()?.name == "lethal" && get_security_level() == "green")
 		to_chat(user,"<span class='warning'>The trigger refuses to depress while on the lethal setting under security level green!</span>")
 		return FALSE
 
@@ -72,10 +70,10 @@
 		if(itemState)
 			itemState += "[modifystate]"
 		*/
-	if(power_supply)
-		ratio = CEILING(((power_supply.charge / power_supply.maxcharge) * charge_sections), 1)
+	if(obj_cell_slot.cell)
+		ratio = CEILING(((obj_cell_slot.cell.charge / obj_cell_slot.cell.maxcharge) * charge_sections), 1)
 
-		if(power_supply.charge < charge_cost)
+		if(obj_cell_slot.cell.charge < charge_cost)
 			overlays_to_add += "[icon_state]_empty"
 		else
 			if(!shaded_charge)
@@ -85,12 +83,6 @@
 					overlays_to_add += charge_overlay
 			else
 				overlays_to_add += "[icon_state]_[modifystate][ratio]"
-
-	if(can_flashlight & gun_light)
-		var/mutable_appearance/flashlight_overlay = mutable_appearance(icon, light_state)
-		flashlight_overlay.pixel_x = flight_x_offset
-		flashlight_overlay.pixel_y = flight_y_offset
-		overlays_to_add += flashlight_overlay
 
 	/* Don't have one for this gun
 	if(itemState)
