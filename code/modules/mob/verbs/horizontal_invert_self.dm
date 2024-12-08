@@ -6,9 +6,15 @@
 	set desc = "Mirror your sprite across the N-S axis."
 	set category = VERB_CATEGORY_IC
 
-	// logging here
+	// todo: remote control? mobs that don't allow it?
 
-	var/matrix/our_transform = transform
-	our_transform.Scale(-1, 1)
-	transform = our_transform
+	log_game("[key_name(usr)] invoked horizontal_invert_self on [key_name(src)].")
+
+	var/datum/component/mob_self_horizontal_inversion/inversion = GetComponent(/datum/component/mob_self_horizontal_inversion)
+	if(inversion)
+		qdel(inversion)
+	else
+		AddComponent(/datum/component/mob_self_horizontal_inversion)
+
+	update_transform()
 

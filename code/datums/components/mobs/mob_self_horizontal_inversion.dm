@@ -5,6 +5,7 @@
  * Component added to a mob by the mob themselves to invert themselves horizontally.
  */
 /datum/component/mob_self_horizontal_inversion
+	registered_type = mob_self_horizontal_inversion
 
 /datum/component/mob_self_horizontal_inversion/Initialize()
 	if(!ismob(parent))
