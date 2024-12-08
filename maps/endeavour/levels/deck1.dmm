@@ -1683,7 +1683,13 @@
 /obj/effect/floor_decal/corner/blue/border{
 	dir = 1
 	},
-/obj/machinery/suit_storage_unit/search_and_rescue,
+/obj/machinery/suit_cycler/medical,
+/obj/effect/floor_decal/steeldecal/steel_decals10{
+	dir = 9
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals10{
+	dir = 10
+	},
 /turf/simulated/floor/tiled/white,
 /area/exploration/medical)
 "bmL" = (
@@ -6948,6 +6954,7 @@
 /area/crew_quarters/mimeoffice)
 "foK" = (
 /obj/structure/flora/pottedplant/shoot,
+/obj/machinery/light,
 /turf/simulated/floor/tiled,
 /area/endeavour/surfacebase/tram)
 "foM" = (
@@ -12686,13 +12693,15 @@
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d1starboardamidhall)
 "jwy" = (
-/obj/machinery/suit_cycler/medical,
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
 	},
 /obj/effect/floor_decal/corner/blue/border{
 	dir = 1
 	},
+/obj/structure/table/standard,
+/obj/item/duct_tape_roll,
+/obj/item/hand_labeler,
 /turf/simulated/floor/tiled/white,
 /area/exploration/medical)
 "jxc" = (
@@ -13288,16 +13297,14 @@
 /turf/simulated/floor/wood,
 /area/bridge/meeting_room)
 "jTN" = (
-/obj/structure/table/standard,
-/obj/item/duct_tape_roll,
 /obj/effect/floor_decal/borderfloor{
 	dir = 5
 	},
 /obj/effect/floor_decal/corner/blue/border{
 	dir = 5
 	},
-/obj/item/hand_labeler,
 /obj/machinery/fire_alarm/north_mount,
+/obj/machinery/suit_storage_unit/search_and_rescue,
 /turf/simulated/floor/tiled/white,
 /area/exploration/medical)
 "jTR" = (
@@ -20088,6 +20095,9 @@
 /obj/effect/floor_decal/corner/navblue/border{
 	dir = 4
 	},
+/obj/machinery/holoposter{
+	pixel_x = 32
+	},
 /turf/simulated/floor/tiled,
 /area/exploration)
 "pbT" = (
@@ -22702,9 +22712,9 @@
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d1portamidhall)
 "reN" = (
-/obj/landmark/spawnpoint/overflow/station,
-/turf/simulated/floor/tiled/techfloor/grid,
-/area/endeavour/hallway/d1afthall)
+/obj/machinery/cryopod/robot/door/shuttle,
+/turf/simulated/floor/tiled,
+/area/crew_quarters/lounge)
 "rfe" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
@@ -27521,6 +27531,13 @@
 /obj/landmark/spawnpoint/job/mime,
 /turf/simulated/floor/carpet/bcarpet,
 /area/crew_quarters/mimeoffice)
+"uQm" = (
+/obj/machinery/computer/cryopod{
+	name = "asset retention console";
+	pixel_x = 32
+	},
+/turf/simulated/floor/wood,
+/area/crew_quarters/lounge)
 "uQz" = (
 /obj/structure/cable/orange{
 	icon_state = "1-8"
@@ -31240,9 +31257,6 @@
 	},
 /obj/effect/floor_decal/corner/navblue/border{
 	dir = 1
-	},
-/obj/machinery/holoposter{
-	pixel_y = 32
 	},
 /obj/machinery/vending/cola,
 /turf/simulated/floor/tiled/steel_ridged,
@@ -40189,7 +40203,7 @@ wTD
 wTD
 wTD
 sQR
-bLC
+reN
 rTZ
 rTZ
 sqa
@@ -40382,8 +40396,8 @@ wTD
 wTD
 yaG
 dvq
-wTD
-bLC
+uQm
+reN
 rTZ
 rTZ
 sjw
@@ -40778,7 +40792,7 @@ pWN
 apf
 agD
 pgL
-pgL
+agD
 aqI
 cMJ
 rTZ
@@ -40969,8 +40983,8 @@ jLe
 jLe
 jLe
 fVV
-amu
-reN
+apf
+pgL
 pgL
 pgL
 eNz
