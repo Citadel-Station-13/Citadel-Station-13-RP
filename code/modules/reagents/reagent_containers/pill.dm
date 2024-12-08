@@ -303,13 +303,12 @@
 /obj/item/reagent_containers/pill/happy
 	name = "Happy pill"
 	desc = "Happy happy joy joy!"
-	icon_state = "pill4"
+	icon_state = "pill_happy"
 
 /obj/item/reagent_containers/pill/happy/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("space_drugs", 15)
 	reagents.add_reagent("sugar", 15)
-	color = reagents.get_color()
 
 /obj/item/reagent_containers/pill/zoom
 	name = "Zoom pill"
@@ -333,3 +332,57 @@
 	. = ..()
 	reagents.add_reagent("lipozine", 15)
 	color = reagents.get_color()
+
+/obj/item/reagent_containers/pill/polonium
+	name = "pill"
+	desc = "A unlabeled pill, it seems slightly warm to the touch."
+	icon_state = "yellow"
+
+/obj/item/reagent_containers/pill/polonium/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent(/datum/reagent/polonium, 5)
+
+/obj/item/reagent_containers/pill/shredding_nanites
+	name = "nanite release capsule"
+	desc = "A small 'pill' full of nanites designed to be ingested. Its impossible to tell what they do while they remain in the container."
+	icon_state = "pill_syndie"
+
+/obj/item/reagent_containers/pill/shredding_nanites/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent(/datum/reagent/nanite/shredding, 5)
+
+/obj/item/reagent_containers/pill/neurophage_nanites
+	name = "nanite release capsule"
+	desc = "A small 'pill' full of nanites designed to be ingested. Its impossible to tell what they do while they remain in the container."
+	icon_state = "pill_syndie"
+
+/obj/item/reagent_containers/pill/neurophage_nanites/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent(/datum/reagent/nanite/neurophage, 5)
+
+/obj/item/reagent_containers/pill/irradiated_nanites
+	name = "nanite release capsule"
+	desc = "A small 'pill' full of nanites designed to be ingested. Its impossible to tell what they do while they remain in the container."
+	icon_state = "pill_syndie"
+
+/obj/item/reagent_containers/pill/irradiated_nanites/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent(/datum/reagent/nanite/irradiated, 5)
+
+/obj/item/reagent_containers/pill/heartkill_nanites
+	name = "nanite release capsule"
+	desc = "A small 'pill' full of nanites designed to be ingested. Its impossible to tell what they do while they remain in the container."
+	icon_state = "pill_syndie"
+
+/obj/item/reagent_containers/pill/heartkill_nanites/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent(/datum/reagent/nanite/heartkill, 5)
+
+/obj/item/reagent_containers/pill/healing_nanites
+	name = "nanite release capsule"
+	desc = "A small 'pill' full of nanites designed to be ingested. Its impossible to tell what they do while they remain in the container."
+	icon_state = "pill_syndie"
+
+/obj/item/reagent_containers/pill/healing_nanites/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent(/datum/reagent/nanite/healing, 5)
