@@ -71,6 +71,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
+/obj/machinery/door/airlock/glass,
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d1portamidhall)
 "adZ" = (
@@ -2549,6 +2550,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/machinery/door/airlock/glass,
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d1starboardafthall)
 "cdx" = (
@@ -3575,13 +3577,6 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d1afthall)
-"cSl" = (
-/obj/structure/catwalk,
-/obj/machinery/light{
-	dir = 8
-	},
-/turf/simulated/floor/plating,
-/area/endeavour/hallway/d1fwdmaint)
 "cSo" = (
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/corner/navgold/border,
@@ -8719,6 +8714,7 @@
 /obj/structure/cable/orange{
 	icon_state = "4-8"
 	},
+/obj/machinery/door/airlock/glass,
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d1portamidhall)
 "gBF" = (
@@ -13319,6 +13315,7 @@
 /obj/machinery/door/firedoor{
 	dir = 1
 	},
+/obj/machinery/door/airlock/glass,
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d1starboardafthall)
 "jUy" = (
@@ -22118,6 +22115,7 @@
 /obj/effect/floor_decal/corner/navgold/bordercorner2{
 	dir = 9
 	},
+/obj/machinery/door/airlock/glass,
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d1starboardafthall)
 "qLL" = (
@@ -24684,6 +24682,7 @@
 /obj/machinery/door/firedoor{
 	dir = 8
 	},
+/obj/machinery/door/airlock/glass,
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d1portamidhall)
 "sQi" = (
@@ -24888,6 +24887,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/door/airlock/glass,
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d1portforhall)
 "sYp" = (
@@ -24917,6 +24917,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 6
 	},
+/obj/machinery/door/airlock/glass,
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d1portforhall)
 "sYy" = (
@@ -26409,6 +26410,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/machinery/door/airlock/glass,
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d1starboardamidhall)
 "ubW" = (
@@ -28015,14 +28017,12 @@
 /turf/simulated/floor/tiled/freezer,
 /area/crew_quarters/pool)
 "vik" = (
-/obj/effect/floor_decal/borderfloorblack,
-/obj/effect/floor_decal/corner/navgold/border,
-/obj/machinery/light,
-/obj/machinery/door/firedoor{
-	dir = 1
+/obj/effect/floor_decal/rust,
+/obj/machinery/light{
+	dir = 8
 	},
-/turf/simulated/floor/tiled/steel,
-/area/endeavour/hallway/d1starboardamidhall)
+/turf/simulated/floor/plating,
+/area/endeavour/hallway/d1fwdmaint)
 "viz" = (
 /obj/machinery/fire_alarm/south_mount{
 	pixel_y = -25
@@ -31274,6 +31274,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 9
 	},
+/obj/machinery/door/airlock/glass,
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d1portforhall)
 "xEQ" = (
@@ -31290,10 +31291,10 @@
 /area/maintenance/substation/dock)
 "xFb" = (
 /obj/structure/closet/crate/trashcart,
-/obj/random/maintenance,
-/obj/random/maintenance,
-/obj/random/maintenance,
 /obj/random/drinkbottle,
+/obj/random/maintenance,
+/obj/random/maintenance,
+/obj/random/maintenance,
 /turf/simulated/floor/plating,
 /area/endeavour/hallway/d1fwdmaint)
 "xGd" = (
@@ -31596,6 +31597,7 @@
 /obj/machinery/door/firedoor{
 	dir = 1
 	},
+/obj/machinery/door/airlock/glass,
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d1starboardamidhall)
 "xSt" = (
@@ -56655,7 +56657,7 @@ uTr
 uTr
 ubV
 xSm
-vik
+aoR
 huP
 rCH
 rCH
@@ -56849,7 +56851,7 @@ maa
 uTr
 gJc
 rCE
-lSz
+ykX
 uTr
 maa
 maa
@@ -60518,7 +60520,7 @@ qJU
 qJU
 qJU
 byt
-uTr
+maa
 uTr
 rAx
 vHL
@@ -61876,8 +61878,8 @@ agQ
 xrx
 blR
 byt
-maa
-kfn
+xFb
+vik
 uTr
 mER
 xwO
@@ -62263,9 +62265,9 @@ blR
 mBw
 dAp
 blR
-izR
-uTr
-uTr
+byt
+maa
+maa
 uTr
 nuG
 khU
@@ -62458,8 +62460,8 @@ pCl
 wOi
 blR
 byt
-xFb
-qZT
+maa
+maa
 uTr
 uTr
 aEU
@@ -62474,9 +62476,9 @@ aEU
 aEU
 aEU
 uTr
-izR
-uTr
-uTr
+byt
+maa
+maa
 cYi
 cYi
 cYi
@@ -62654,8 +62656,8 @@ blR
 byt
 byt
 byt
-cSl
-byt
+maa
+maa
 aEU
 iDg
 iDg
@@ -62667,7 +62669,7 @@ oQJ
 iDg
 iDg
 aEU
-byt
+maa
 byt
 fvr
 byt
