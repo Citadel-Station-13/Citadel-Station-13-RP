@@ -1,7 +1,7 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "bm" = (
 /obj/structure/sign/graffiti/pisoff,
-/turf/simulated/wall/sandstone/classh,
+/turf/simulated/wall/sandstone,
 /area/tether_away/beach/desert/explored)
 "eI" = (
 /obj/machinery/light/small{
@@ -14,7 +14,7 @@
 /turf/simulated/floor/outdoors/beach/sand/lowdesert,
 /area/tether_away/beach/desert/explored)
 "gz" = (
-/turf/unsimulated/mineral,
+/turf/unsimulated/wall/mineral,
 /area/tether_away/beach/desert/explored)
 "hw" = (
 /obj/random/outcrop,
@@ -25,14 +25,14 @@
 /turf/simulated/floor/outdoors/beach/sand/desert,
 /area/tether_away/beach/desert/explored)
 "iL" = (
-/turf/simulated/floor/water/shoreline/classh{
+/turf/simulated/floor/water/shoreline{
 	dir = 6
 	},
 /area/tether_away/beach/desert/explored)
 "jD" = (
 /obj/structure/table,
 /obj/random/trash,
-/turf/simulated/floor/wood/classh,
+/turf/simulated/floor/wood,
 /area/tether_away/beach/desert/explored)
 "kK" = (
 /turf/simulated/floor/outdoors/beach/sand/lowdesert,
@@ -56,10 +56,10 @@
 /area/tether_away/beach/desert/explored)
 "no" = (
 /obj/random/junk,
-/turf/simulated/floor/wood/classh,
+/turf/simulated/floor/wood,
 /area/tether_away/beach/desert/explored)
 "od" = (
-/turf/simulated/floor/water/shoreline/classh{
+/turf/simulated/floor/water/shoreline{
 	dir = 9
 	},
 /area/tether_away/beach/desert/explored)
@@ -85,7 +85,7 @@
 /turf/simulated/floor/water/shoreline/corner,
 /area/tether_away/beach/desert/explored)
 "vd" = (
-/turf/simulated/wall/sandstone/classh,
+/turf/simulated/wall/sandstone,
 /area/tether_away/beach/desert/explored)
 "vr" = (
 /obj/random/humanoidremains,
@@ -97,7 +97,7 @@
 /turf/simulated/floor/outdoors/beach/sand/lowdesert,
 /area/tether_away/beach/desert/explored)
 "wg" = (
-/turf/unsimulated/wall/planetary/desert/standard_temp,
+/turf/unsimulated/wall/planetary/endless_sands,
 /area/tether_away/beach/desert/explored)
 "wH" = (
 /obj/machinery/light/small/flicker{
@@ -125,7 +125,7 @@
 /turf/simulated/floor/water/shoreline,
 /area/tether_away/beach/desert/explored)
 "CM" = (
-/turf/simulated/floor/wood/classh,
+/turf/simulated/floor/wood,
 /area/tether_away/beach/desert/explored)
 "Dc" = (
 /obj/item/ammo_casing/spent,
@@ -137,11 +137,11 @@
 /area/tether_away/beach/desert/explored)
 "Eh" = (
 /obj/structure/simple_door/wood,
-/turf/simulated/floor/wood/classh,
+/turf/simulated/floor/wood,
 /area/tether_away/beach/desert/explored)
 "Ev" = (
 /obj/structure/closet/crate/miningcar,
-/turf/simulated/mineral/floor/classh,
+/turf/simulated/mineral/floor,
 /area/tether_away/beach/desert/explored)
 "EJ" = (
 /turf/simulated/floor/water/shoreline{
@@ -196,7 +196,7 @@
 /turf/simulated/floor/plating/outdoors,
 /area/tether_away/beach/desert/explored)
 "LF" = (
-/turf/simulated/floor/water/shoreline/classh{
+/turf/simulated/floor/water/shoreline{
 	dir = 5
 	},
 /area/tether_away/beach/desert/explored)
@@ -217,7 +217,7 @@
 /area/tether_away/beach/desert/explored)
 "Nx" = (
 /obj/random/fishing_junk,
-/turf/simulated/floor/wood/classh,
+/turf/simulated/floor/wood,
 /area/tether_away/beach/desert/explored)
 "NW" = (
 /obj/item/ammo_casing/spent{
@@ -247,7 +247,7 @@
 /area/tether_away/beach/desert/explored)
 "Rb" = (
 /obj/random/trash,
-/turf/simulated/floor/wood/classh,
+/turf/simulated/floor/wood,
 /area/tether_away/beach/desert/explored)
 "Rm" = (
 /obj/item/ammo_casing/spent{
@@ -263,11 +263,11 @@
 /obj/machinery/light/small/flicker{
 	dir = 4
 	},
-/turf/simulated/floor/wood/classh,
+/turf/simulated/floor/wood,
 /area/tether_away/beach/desert/explored)
 "ST" = (
 /obj/effect/debris/cleanable/blood,
-/turf/simulated/mineral/floor/classh,
+/turf/simulated/mineral/floor,
 /area/tether_away/beach/desert/explored)
 "UP" = (
 /turf/simulated/floor/water/shoreline{
@@ -280,7 +280,7 @@
 	},
 /area/tether_away/beach/desert/explored)
 "XZ" = (
-/turf/simulated/mineral/ignore_mapgen/classh,
+/turf/simulated/mineral/ignore_mapgen,
 /area/tether_away/beach/desert/explored)
 
 (1,1,1) = {"

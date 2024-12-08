@@ -2,8 +2,8 @@
 	var/list/ids = list()
 	var/list/names = list()
 	var/list/keys = list()
-	for(var/path in subtypesof(/datum/language))
-		var/datum/language/L = path
+	for(var/path in subtypesof(/datum/prototype/language))
+		var/datum/prototype/language/L = path
 		if(initial(L.abstract_type) == path)
 			continue
 		L = new path
@@ -26,4 +26,4 @@
 			Fail("collision on key [L.key] between [path] and [keys[L.key]]")
 		else
 			keys[L.key] = path
-			
+

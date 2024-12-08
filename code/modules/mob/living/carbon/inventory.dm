@@ -1,6 +1,8 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2023 Citadel Station developers.          *//
 
+//* Abstraction *//
+
 /mob/living/carbon/_slot_by_item(obj/item/I)
 	if(handcuffed == I)
 		return SLOT_ID_HANDCUFFED
@@ -38,9 +40,9 @@
 	. = ..()
 	if(include_restraints)
 		if(handcuffed)
-			. += handcuffed._inv_return_attached()
+			. += handcuffed.inv_slot_attached()
 		if(legcuffed)
-			. += legcuffed._inv_return_attached()
+			. += legcuffed.inv_slot_attached()
 
 /mob/living/carbon/_get_inventory_slot_ids()
 	return ..() + list(

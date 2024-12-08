@@ -75,7 +75,7 @@
 	idle_power_usage = 0
 	var/global/list/blockedturfs =  list(
 		/turf/space,
-		/turf/simulated/floor/outdoors,
+		/turf/simulated/floor/plating/outdoors,
 	)		//For Future additions to exterior tiles, add them on this list.
 
 /obj/machinery/shieldgen/Destroy()

@@ -39,7 +39,6 @@
 /obj/item/gun/energy/frontier/update_icon()
 	if(recharging)
 		icon_state = "[initial(icon_state)]_pump"
-		update_held_icon()
 		return
 	..()
 
@@ -67,12 +66,6 @@
 		list(mode_name="low-power", fire_delay=8, projectile_type=/obj/projectile/beam/weaklaser, modifystate="carbinestun", charge_cost = 60),
 
 	)
-
-/obj/item/gun/energy/frontier/locked/carbine/update_icon_state()
-	. = ..()
-	if(recharging)
-		icon_state = "[modifystate]_pump"
-		update_held_icon()
 
 //Expeditionary Holdout Phaser Pistol
 /obj/item/gun/energy/frontier/locked/holdout

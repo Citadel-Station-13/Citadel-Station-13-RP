@@ -1,5 +1,6 @@
 /datum/prototype/design/science/medical
 	abstract_type = /datum/prototype/design/science/medical
+	category = DESIGN_CATEGORY_MEDICAL
 	materials_base = list(MAT_STEEL = 30, MAT_GLASS = 20)
 
 /datum/prototype/design/science/medical/generate_name(template)

@@ -1,4 +1,5 @@
 /datum/prototype/design/science/integrated_circuitry
+	category = DESIGN_CATEGORY_INTEGRATED_CIRCUITRY
 	abstract_type = /datum/prototype/design/science/integrated_circuitry
 
 /datum/prototype/design/science/integrated_circuitry/generate_name(template)

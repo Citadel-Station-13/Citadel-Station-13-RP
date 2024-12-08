@@ -1016,7 +1016,7 @@
 /area/centcom/specops)
 "dg" = (
 /obj/structure/flora/ausbushes/ppflowers,
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/centcom/main_hall)
 "dh" = (
 /obj/machinery/computer/security/telescreen/entertainment{
@@ -1109,7 +1109,7 @@
 /area/centcom/control)
 "dq" = (
 /obj/structure/flora/ausbushes/brflowers,
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/centcom/main_hall)
 "dr" = (
 /obj/effect/floor_decal/borderfloorblack{
@@ -3301,7 +3301,7 @@
 /area/centcom/security)
 "ky" = (
 /obj/machinery/light/flamp/noshade,
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/centcom/main_hall)
 "kA" = (
 /obj/machinery/computer/supplycomp{
@@ -4758,7 +4758,7 @@
 /area/shuttle/escape)
 "ox" = (
 /obj/structure/flora/ausbushes/ywflowers,
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/centcom/main_hall)
 "oy" = (
 /obj/effect/floor_decal/borderfloorwhite{
@@ -4832,7 +4832,7 @@
 	},
 /area/centcom/command)
 "oK" = (
-/turf/unsimulated/wall/planetary/virgo3b,
+/turf/unsimulated/wall/planetary/facility_wall,
 /area/centcom/living)
 "oL" = (
 /obj/structure/fans/tiny,
@@ -6530,7 +6530,7 @@
 /turf/unsimulated/floor/steel,
 /area/centcom/evac)
 "tT" = (
-/turf/unsimulated/wall/planetary/virgo3b,
+/turf/unsimulated/wall/planetary/facility_wall,
 /area/space)
 "tU" = (
 /obj/machinery/status_display{
@@ -7019,7 +7019,7 @@
 /turf/unsimulated/floor/steel,
 /area/centcom/control)
 "vI" = (
-/turf/unsimulated/wall/planetary/virgo3b,
+/turf/unsimulated/wall/planetary/facility_wall,
 /area/centcom/bathroom)
 "vK" = (
 /obj/structure/table/standard,
@@ -7054,7 +7054,7 @@
 	},
 /area/centcom/medical)
 "vP" = (
-/turf/unsimulated/wall/planetary/virgo3b,
+/turf/unsimulated/wall/planetary/facility_wall,
 /area/centcom/security)
 "vQ" = (
 /obj/effect/floor_decal/corner_steel_grid/diagonal,
@@ -7346,7 +7346,7 @@
 	},
 /area/centcom/security)
 "wE" = (
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/centcom/main_hall)
 "wF" = (
 /obj/structure/table/standard,
@@ -8338,7 +8338,7 @@
 /obj/item/clothing/mask/breath/medical,
 /obj/item/clothing/mask/breath/medical,
 /obj/item/storage/box/gloves,
-/obj/item/defib_kit/jumper_kit,
+/obj/item/defib_kit,
 /turf/unsimulated/floor/steel{
 	icon_state = "white"
 	},
@@ -10452,7 +10452,7 @@
 /turf/unsimulated/floor/steel,
 /area/centcom/terminal)
 "GK" = (
-/turf/unsimulated/wall/planetary/virgo3b,
+/turf/unsimulated/wall/planetary/facility_wall,
 /area/centcom/specops)
 "GN" = (
 /obj/machinery/camera/network/crescent,
@@ -13173,7 +13173,7 @@
 	},
 /area/centcom/command)
 "Pk" = (
-/turf/unsimulated/wall/planetary/virgo3b,
+/turf/unsimulated/wall/planetary/facility_wall,
 /area/centcom/control)
 "Pm" = (
 /obj/machinery/atmospherics/pipe/tank/phoron{

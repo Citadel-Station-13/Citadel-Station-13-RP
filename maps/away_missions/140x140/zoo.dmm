@@ -2451,7 +2451,7 @@
 /turf/simulated/floor/plating,
 /area/awaymission/zoo/pirateship)
 "hl" = (
-/obj/item/contraband/poster,
+/obj/item/poster,
 /turf/simulated/floor/plating,
 /area/awaymission/zoo/pirateship)
 "hm" = (
@@ -8235,7 +8235,7 @@
 /obj/structure/grille{
 	name = "mass ventilation"
 	},
-/turf/unsimulated/wall/planetary/normal,
+/turf/unsimulated/wall/planetary,
 /area/awaymission/zoo)
 "wH" = (
 /obj/machinery/door/airlock/maintenance,

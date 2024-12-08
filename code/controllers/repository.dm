@@ -110,7 +110,8 @@
  *
  * @return prototype instance or null
  */
-/datum/controller/repository/proc/fetch(datum/prototype/type_or_id)
+/datum/controller/repository/proc/fetch(datum/prototype/type_or_id) as /datum/prototype
+	RETURN_TYPE(/datum/prototype)
 	// todo: optimize
 	if(isnull(type_or_id))
 		return
@@ -154,7 +155,7 @@
  * lists returned should never, ever be modified.
  * this fetches subtypes, not the first type on purpose.
  */
-/datum/controller/repository/proc/fetch_subtypes(path)
+/datum/controller/repository/proc/fetch_subtypes_immutable(path) as /list
 	RETURN_TYPE(/list)
 	ASSERT(ispath(path, /datum/prototype))
 	if(subtype_lists[path])
@@ -167,6 +168,13 @@
 		var/datum/prototype/instance = fetch(casted)
 		generating += instance
 	return generating
+
+/**
+ * lists returned may be modified
+ */
+/datum/controller/repository/proc/fetch_subtypes_mutable(path) as /list
+	RETURN_TYPE(/list)
+	return fetch_subtypes_immutable(path).Copy()
 
 /**
  * Registers a prototype created midround.
