@@ -6,7 +6,7 @@ SUBSYSTEM_DEF(server_maint)
 	subsystem_flags = SS_POST_FIRE_TIMING
 	priority = FIRE_PRIORITY_SERVER_MAINT
 	init_order = INIT_ORDER_SERVER_MAINT
-	init_stage = INITSTAGE_EARLY
+	init_stage = INIT_STAGE_EARLY
 	runlevels = RUNLEVEL_LOBBY | RUNLEVELS_DEFAULT
 	var/list/currentrun
 	///Associated list of list names to lists to clear of nulls
