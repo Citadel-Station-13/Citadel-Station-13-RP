@@ -177,16 +177,18 @@
 	desc = "A miniature speaker is attached to this component."
 	icon_state = "speaker"
 	complexity = 8
-	cooldown_per_use = 4 SECONDS
+	cooldown_per_use = 1 SECONDS //The cooldown is adjusted by sound length
+	var/cooldown_after_use = 1 SECONDS //Extra cooldown added to the sound length
 	inputs = list(
 		"sound ID" = IC_PINTYPE_STRING,
 		"volume" = IC_PINTYPE_NUMBER,
 		"frequency" = IC_PINTYPE_BOOLEAN
 	)
-	outputs = list()
-	activators = list("play sound" = IC_PINTYPE_PULSE_IN)
+	outputs = list("cooldown duration" = IC_PINTYPE_NUMBER)
+	activators = list("play sound" = IC_PINTYPE_PULSE_IN, "on played" = IC_PINTYPE_PULSE_OUT)
 	power_draw_per_use = 20
 	var/list/sounds = list()
+	var/list/durations = list() //Audacity works decently well to finding out deciseconds
 
 /obj/item/integrated_circuit/output/sound/Initialize(mapload)
 	. = ..()
@@ -205,8 +207,13 @@
 		var/selected_sound = sounds[ID]
 		if(!selected_sound)
 			return
+		var/selected_cooldown = durations[ID]
 		vol = clamp( vol, 0,  100)
 		playsound(get_turf(src), selected_sound, vol, freq, -1)
+		cooldown_per_use = selected_cooldown + cooldown_after_use
+		set_pin_data(IC_OUTPUT, 1, cooldown_per_use)
+		push_data()
+		activate_pin(2)
 
 /obj/item/integrated_circuit/output/sound/beeper
 	name = "beeper circuit"
@@ -223,6 +230,16 @@
 		"synth no"		= 'sound/machines/synth_no.ogg',
 		"warning buzz"	= 'sound/machines/warning-buzzer.ogg'
 		)
+	durations = list(
+		"beep"			= 3,
+		"chime"			= 4,
+		"buzz sigh"		= 3,
+		"buzz twice"	= 6,
+		"ping"			= 5,
+		"synth yes"		= 4,
+		"synth no"		= 4,
+		"warning buzz"	= 35
+		)
 	spawn_flags = IC_SPAWN_DEFAULT|IC_SPAWN_RESEARCH
 
 /obj/item/integrated_circuit/output/sound/beepsky
@@ -237,6 +254,16 @@
 		"insult"		= 'sound/voice/binsult.ogg',
 		"radio"			= 'sound/voice/bradio.ogg',
 		"secure day"	= 'sound/voice/bsecureday.ogg',
+		)
+	durations = list(
+		"creep"			= 16,
+		"criminal"		= 11,
+		"freeze"		= 10,
+		"god"			= 30,
+		"i am the law"	= 22,
+		"insult"		= 141, //Yeah it is that long
+		"radio"			= 18,
+		"secure day"	= 12,
 		)
 	spawn_flags = IC_SPAWN_RESEARCH
 	origin_tech = list(TECH_ENGINEERING = 2, TECH_DATA = 2, TECH_ILLEGAL = 1)
@@ -261,8 +288,85 @@
 		"apple"			= 'sound/voice/medibot/mapple.ogg',
 		"no"			= 'sound/voice/medibot/mno.ogg',
 		)
+	durations = list(
+		"surgeon"		= 39,
+		"radar"			= 16,
+		"feel better"	= 14,
+		"patched up"	= 11,
+		"injured"		= 21,
+		"insult"		= 155,
+		"coming"		= 20,
+		"help"			= 13,
+		"live"			= 15,
+		"lost"			= 45,
+		"flies"			= 50,
+		"catch"			= 38,
+		"delicious"		= 7,
+		"apple"			= 23,
+		"no"			= 16,
+		)
 	spawn_flags = IC_SPAWN_RESEARCH
 	origin_tech = list(TECH_ENGINEERING = 2, TECH_DATA = 2, TECH_BIO = 1)
+
+/obj/item/integrated_circuit/output/sound/hev
+	name = "HEV sound circuit"
+	desc = "Takes a sound name as an input, and will play said sound when pulsed. This circuit is similar to those used in some old RIG suit"
+	cooldown_after_use = 5
+	sounds = list(
+		"bio_warn"						= 'sound/voice/Hevsounds/biohazard_detected.wav',
+		"chem_warn" 					= 'sound/voice/Hevsounds/chemical_detected.wav',
+		"rad_warn" 						= 'sound/voice/Hevsounds/radiation_detected.wav',
+		"near_death"					= 'sound/voice/Hevsounds/near_death.wav',
+		"seek_medic"					= 'sound/voice/Hevsounds/seek_medic.wav',
+		"shock_damage"					= 'sound/voice/Hevsounds/shock_damage.wav',
+		"blood_loss"					= 'sound/voice/Hevsounds/blood_loss.wav',
+		"blood_plasma"					= 'sound/voice/Hevsounds/blood_plasma.wav',
+		"blood_toxins"					= 'sound/voice/Hevsounds/blood_toxins.wav',
+		"health_critical"				= 'sound/voice/Hevsounds/health_critical.wav',
+		"health_dropping"				= 'sound/voice/Hevsounds/health_dropping.wav',
+		"health_dropping2"				= 'sound/voice/Hevsounds/health_dropping2.wav',
+		"minor_fracture"				= 'sound/voice/Hevsounds/minor_fracture.wav',
+		"minor_lacerations"				= 'sound/voice/Hevsounds/minor_lacerations.wav',
+		"major_fracture"				= 'sound/voice/Hevsounds/major_fracture.wav',
+		"major_lacerations"				= 'sound/voice/Hevsounds/major_lacerations.wav',
+		"wound_sterilized"				= 'sound/voice/Hevsounds/wound_sterilized.wav',
+		"administering_medical"			= 'sound/voice/Hevsounds/administering_medical.wav',
+		"adrenaline_shot"				= 'sound/voice/Hevsounds/adrenaline_shot.wav',
+		"automedic_on"					= 'sound/voice/Hevsounds/automedic_on.wav',
+		"antitoxin_shot"				= 'sound/voice/Hevsounds/antitoxin_shot.wav',
+		"heat_damage"					= 'sound/voice/Hevsounds/heat_damage.wav',
+		"morphine_shot"					= 'sound/voice/Hevsounds/morphine_shot.wav',
+		"innsuficient_medical"			= 'sound/voice/Hevsounds/innsuficient_medical.wav',
+		"internal_bleeding"				= 'sound/voice/Hevsounds/internal_bleeding.wav'
+		)
+	durations = list(
+		"bio_warn"						= 31,
+		"chem_warn" 					= 38,
+		"rad_warn" 						= 45,
+		"near_death"					= 36,
+		"seek_medic"					= 25,
+		"shock_damage"					= 23,
+		"blood_loss"					= 22,
+		"blood_plasma"					= 26,
+		"blood_toxins"					= 38,
+		"health_critical"				= 32,
+		"health_dropping"				= 35,
+		"health_dropping2"				= 29,
+		"minor_fracture"				= 24,
+		"minor_lacerations"				= 29,
+		"major_fracture"				= 24,
+		"major_lacerations"				= 30,
+		"wound_sterilized"				= 20,
+		"administering_medical"			= 31,
+		"adrenaline_shot"				= 20,
+		"automedic_on"					= 35,
+		"antitoxin_shot"				= 22,
+		"heat_damage"					= 30,
+		"morphine_shot"					= 20,
+		"innsuficient_medical"			= 45,
+		"internal_bleeding"				= 24
+		)
+	spawn_flags = IC_SPAWN_RESEARCH
 
 /obj/item/integrated_circuit/output/video_camera
 	name = "video camera circuit"
