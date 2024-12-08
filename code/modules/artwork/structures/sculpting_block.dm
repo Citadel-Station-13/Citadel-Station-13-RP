@@ -78,9 +78,15 @@
 	/// sculpting mask for our block
 	var/icon/sculpting_rolldown_mask
 
-/obj/structure/sculpting_block/Initialize(mapload, material)
+/obj/structure/sculpting_block/Initialize(mapload, datum/prototype/material/material_like)
 	// todo: materials system
-	src.material = RSmaterials.fetch(material || src.material)
+	if(!isnull(material_like))
+		var/resolved_material = RSmaterials.fetch_or_defer(material_like)
+		switch(resolved_material)
+			if(REPOSITORY_FETCH_DEFER)
+				// todo: handle
+			else
+				src.material = resolved_material || RSmaterials.fetch_local_or_throw(/datum/prototype/material/steel)
 	// todo: if it autoinit'd, don't do this
 	reset_sculpting()
 	return ..()

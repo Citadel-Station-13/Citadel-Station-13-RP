@@ -91,7 +91,12 @@
 	if(islist(material_parts))
 		var/list/parts = list()
 		for(var/key in material_parts)
-			parts[key] = RSmaterials.fetch(key)
+			var/datum/prototype/material/result = RSmaterials.fetch_or_defer(key)
+			switch(result)
+				if(REPOSITORY_FETCH_DEFER)
+					// todo: handle this
+					result = null
+			parts[key] = result
 		update_material_multi(parts)
 	else if(material_parts == MATERIAL_DEFAULT_DISABLED)
 	else if(material_parts == MATERIAL_DEFAULT_ABSTRACTED)
@@ -99,7 +104,12 @@
 		// skip specifying parts because abstracted
 		update_material_multi()
 	else
-		update_material_single((material_parts = RSmaterials.fetch(material_parts)))
+		var/datum/prototype/material/result = RSmaterials.fetch_or_defer(material_parts)
+		switch(result)
+			if(REPOSITORY_FETCH_DEFER)
+				// todo: handle this
+				result = null
+		update_material_single((material_parts = result))
 
 /**
  * forces a material update

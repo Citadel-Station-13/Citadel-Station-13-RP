@@ -117,6 +117,9 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 		load_configuration()
 	if(!config)
 		config = new
+	if(!Configuration)
+		Configuration = new
+		Configuration.Initialize()
 
 	//# 2. set up random seed
 	if(!random_seed)
@@ -883,10 +886,12 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 		var/datum/controller/subsystem/SS = S
 		SS.StopLoadingMap()
 
-/datum/controller/master/proc/OnConfigLoad()
+/datum/controller/master/proc/on_config_loaded()
 	for (var/thing in subsystems)
 		var/datum/controller/subsystem/SS = thing
-		SS.OnConfigLoad()
+		SS.on_config_loaded()
+	for(var/datum/controller/repository/repository in SSrepository.get_all_repositories())
+		repository.on_config_loaded()
 
 /**
  * CitRP snowflake special: Check if any subsystems are sleeping.

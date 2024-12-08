@@ -682,3 +682,8 @@
 		thing.update_hiding_underfloor(
 			(thing.hides_underfloor != OBJ_UNDERFLOOR_NEVER) && we_should_cover,
 		)
+
+//* VV *//
+
+/turf/vv_delete()
+	ScrapeAway()

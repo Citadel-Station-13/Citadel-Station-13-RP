@@ -36,7 +36,7 @@
 
 /obj/machinery/door/blast/puzzle/Initialize(mapload)
 	. = ..()
-	implicit_material = RSmaterials.fetch(/datum/prototype/material/alienalloy/dungeonium)
+	implicit_material = RSmaterials.fetch_local_or_throw(/datum/prototype/material/alienalloy/dungeonium)
 	if(locks.len)
 		return
 	var/check_range = world.view * checkrange_mult

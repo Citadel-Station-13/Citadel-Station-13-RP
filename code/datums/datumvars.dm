@@ -1,3 +1,13 @@
+/**
+ * Called when an admin attempts to delete us with introspection tools.
+ */
+/datum/proc/vv_delete()
+	. = TRUE
+	// incase qdel returns QDEL_HINT_HARDDEL_NOW
+	var/datum/deleting = src
+	src = null
+	qdel(deleting)
+
 /datum/proc/CanProcCall(procname)
 	return TRUE
 

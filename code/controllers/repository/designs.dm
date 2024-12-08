@@ -4,6 +4,7 @@
 REPOSITORY_DEF(designs)
 	name = "Repository - Designs"
 	expected_type = /datum/prototype/design
+	database_key = "design"
 
 	//* caches *//
 
