@@ -18,6 +18,8 @@ function ResolveFlywayURL {
 	return "https://download.red-gate.com/maven/release/com/redgate/flyway/flyway-commandline/$Version/flyway-commandline-$Version-windows-x64.zip"
 }
 
+function
+
 $ToolRoot = Split-Path $script:MyInvocation.MyCommand.Path
 
 $MARIADB_VERSION = ExtractVersion -Path "$ToolRoot/../../dependencies.sh" -Key "MARIADB_VERSION"

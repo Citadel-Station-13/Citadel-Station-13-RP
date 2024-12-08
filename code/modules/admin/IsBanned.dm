@@ -88,7 +88,7 @@
 			cidquery = " OR computerid = ':cid' "
 
 		var/datum/db_query/query = SSdbcore.RunQuery(
-			"SELECT ckey, ip, computerid, a_ckey, reason, expiration_time, duration, bantime, bantype FROM [fetch_local_or_tDB_PREFIX_TABLE_NAMEhrow("ban")] WHERE (ckey = :ckey [ipquery] [cidquery]) AND (bantype = 'PERMABAN' OR (bantype = 'TEMPBAN' AND expiration_time > Now())) AND isnull(unbanned)",
+			"SELECT ckey, ip, computerid, a_ckey, reason, expiration_time, duration, bantime, bantype FROM [DB_PREFIX_TABLE_NAME("ban")] WHERE (ckey = :ckey [ipquery] [cidquery]) AND (bantype = 'PERMABAN' OR (bantype = 'TEMPBAN' AND expiration_time > Now())) AND isnull(unbanned)",
 			list(
 				"ckey" = ckeytext,
 				"ip" = address,

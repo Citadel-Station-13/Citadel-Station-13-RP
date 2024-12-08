@@ -9,8 +9,8 @@ def log_message(source: str, string: str):
 
 if __name__ == "main":
     argparser = argparse.ArgumentParser(
-        prog="invoke.py",
-        usage="invoke.py --daemon [path-to-mysqld] --flyway [path-to-flyway] --migrations [path-to-migrations-folder]",
+        prog="setup.ps1",
+        usage="setup.ps1 --daemon [path-to-mysqld] --flyway [path-to-flyway] --migrations [path-to-migrations-folder]",
     )
     argparser.add_argument("--daemon", type=str)
     argparser.add_argument("--flyway", type=str)
@@ -85,17 +85,14 @@ if __name__ == "main":
         time.sleep(0.001)
 
     # exit mysqld and flyway
-
     if mysqld != None:
         mysqld.send_signal(sig=signal.CTRL_C_EVENT)
-
     if flyway != None:
         flyway.send_signal(sig=signal.CTRL_C_EVENT)
 
     # block on mysqld/flyway exiting
     mysqld_exitcode: int | None = mysqld.wait()
     log_message("setup_dev_db", 'mysqld exited with code %d' % exited)
-
     flyway_exitcode: int | None = flyway.wait()
     log_message("setup_dev_db", 'flyway exited with code %d' % exited)
 
