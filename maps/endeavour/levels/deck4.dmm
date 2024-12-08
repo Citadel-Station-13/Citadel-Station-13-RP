@@ -19454,7 +19454,8 @@
 /obj/machinery/turretid/stun{
 	check_synth = 1;
 	name = "AI Chamber turret control";
-	pixel_y = -32
+	pixel_y = -32;
+	control_area = "\improper AI Chamber"
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ai_upload)
