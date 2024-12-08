@@ -665,12 +665,12 @@
 	id_tag = "researchdoor";
 	name = "R&D Distribution Area"
 	},
-/obj/map_helper/access_helper/airlock/station/science/robotics,
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/map_helper/access_helper/airlock/station/science/department,
 /turf/simulated/floor/tiled,
 /area/rnd/research/researchdivision)
 "aww" = (
@@ -2299,7 +2299,6 @@
 	id_tag = "researchdoor";
 	name = "R&D Distribution Area"
 	},
-/obj/map_helper/access_helper/airlock/station/science/robotics,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
@@ -2312,6 +2311,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 8
 	},
+/obj/map_helper/access_helper/airlock/station/science/department,
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology)
 "bEz" = (
@@ -2497,7 +2497,7 @@
 /obj/item/storage/toolbox/emergency,
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
-/area/maintenance/research)
+/area/maintenance/medbay/aft)
 "bHC" = (
 /obj/machinery/door/firedoor{
 	dir = 1
@@ -2829,12 +2829,12 @@
 	id_tag = "researchdoor";
 	name = "Robotics Lab"
 	},
-/obj/map_helper/access_helper/airlock/station/science/robotics,
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/map_helper/access_helper/airlock/station/science/department,
 /turf/simulated/floor/tiled,
 /area/rnd/research/researchdivision)
 "bSe" = (
@@ -5912,7 +5912,7 @@
 	id_tag = "researchdoor";
 	name = "R&D Distribution Area"
 	},
-/obj/map_helper/access_helper/airlock/station/science/robotics,
+/obj/map_helper/access_helper/airlock/station/science/department,
 /turf/simulated/floor/tiled,
 /area/rnd/research/researchdivision)
 "dPs" = (
@@ -8104,7 +8104,7 @@
 /obj/item/tank/emergency/oxygen/engi,
 /obj/item/tank/emergency/oxygen/engi,
 /turf/simulated/floor/plating,
-/area/maintenance/research)
+/area/maintenance/medbay/aft)
 "ffh" = (
 /obj/structure/cable/green{
 	icon_state = "1-4"
@@ -10667,7 +10667,7 @@
 	id_tag = "researchdoor";
 	name = "R&D Distribution Area"
 	},
-/obj/map_helper/access_helper/airlock/station/science/robotics,
+/obj/map_helper/access_helper/airlock/station/exploration/auxillerysci,
 /turf/simulated/floor/tiled/dark,
 /area/rnd/research/researchdivision)
 "gMn" = (
@@ -11766,7 +11766,7 @@
 	dir = 1
 	},
 /obj/machinery/door/airlock/maintenance/common,
-/obj/map_helper/access_helper/airlock/station/science/robotics,
+/obj/map_helper/access_helper/airlock/station/science/department,
 /turf/simulated/floor/plating,
 /area/maintenance/medbay/aft)
 "hrJ" = (
@@ -12731,7 +12731,7 @@
 	},
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
-/area/maintenance/research)
+/area/maintenance/medbay/aft)
 "iaO" = (
 /obj/machinery/r_n_d/circuit_imprinter,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -14106,9 +14106,10 @@
 /turf/simulated/wall/r_wall/prepainted,
 /area/endeavour/hallway/d2fwdhall)
 "iUp" = (
-/obj/structure/closet/emcloset,
+/obj/item/storage/briefcase/inflatable,
+/obj/structure/table/rack/shelf/steel,
 /turf/simulated/floor/plating,
-/area/maintenance/research)
+/area/maintenance/medbay/aft)
 "iUs" = (
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/mauve/border,
@@ -15933,9 +15934,11 @@
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d2afthall)
 "kgb" = (
-/obj/machinery/portable_atmospherics/powered/scrubber,
+/obj/machinery/door/airlock/maintenance/common,
+/obj/structure/catwalk,
+/obj/map_helper/access_helper/airlock/station/science/department,
 /turf/simulated/floor/plating,
-/area/maintenance/research)
+/area/maintenance/medbay/aft)
 "kgh" = (
 /turf/simulated/floor/tiled/white,
 /area/medical/sleeper)
@@ -17553,13 +17556,13 @@
 	id_tag = "researchdoor";
 	name = "Robotics Lab"
 	},
-/obj/map_helper/access_helper/airlock/station/science/robotics,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
+/obj/map_helper/access_helper/airlock/station/science/department,
 /turf/simulated/floor/tiled,
 /area/rnd/research/researchdivision)
 "ljq" = (
@@ -21246,9 +21249,10 @@
 /turf/simulated/floor/plating,
 /area/medical/virologymaint)
 "nJI" = (
-/obj/machinery/space_heater,
+/obj/structure/catwalk,
+/obj/structure/catwalk,
 /turf/simulated/floor/plating,
-/area/maintenance/research)
+/area/maintenance/medbay/aft)
 "nJM" = (
 /obj/machinery/power/apc/north_mount,
 /obj/structure/cable/green{
@@ -22693,7 +22697,7 @@
 	id_tag = "researchdoor";
 	name = "R&D Distribution Area"
 	},
-/obj/map_helper/access_helper/airlock/station/science/robotics,
+/obj/map_helper/access_helper/airlock/station/science/department,
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology)
 "oGQ" = (
@@ -25060,9 +25064,9 @@
 /turf/simulated/floor/plating,
 /area/maintenance/medbay/aft)
 "pTX" = (
-/obj/machinery/floodlight,
+/obj/machinery/portable_atmospherics/powered/scrubber,
 /turf/simulated/floor/plating,
-/area/maintenance/research)
+/area/maintenance/medbay/aft)
 "pUb" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 1
@@ -28365,13 +28369,12 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/surgeryprep)
 "rRe" = (
-/obj/machinery/door/firedoor{
-	dir = 1
+/obj/machinery/light/small{
+	dir = 4
 	},
-/obj/machinery/door/airlock/maintenance/common,
-/obj/map_helper/access_helper/airlock/station/science/robotics,
+/obj/machinery/floodlight,
 /turf/simulated/floor/plating,
-/area/rnd/research/researchdivision)
+/area/maintenance/medbay/aft)
 "rRo" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
@@ -29605,7 +29608,7 @@
 	id_tag = "researchdoor";
 	name = "Robotics Lab"
 	},
-/obj/map_helper/access_helper/airlock/station/science/robotics,
+/obj/map_helper/access_helper/airlock/station/science/department,
 /turf/simulated/floor/tiled,
 /area/rnd/research/researchdivision)
 "sKg" = (
@@ -31190,7 +31193,7 @@
 	id_tag = "researchdoor";
 	name = "R&D Distribution Area"
 	},
-/obj/map_helper/access_helper/airlock/station/science/robotics,
+/obj/map_helper/access_helper/airlock/station/exploration/auxillerysci,
 /turf/simulated/floor/tiled,
 /area/rnd/research/researchdivision)
 "tLU" = (
@@ -34166,8 +34169,8 @@
 	id_tag = "researchdoor";
 	name = "R&D Distribution Area"
 	},
-/obj/map_helper/access_helper/airlock/station/science/robotics,
 /obj/structure/disposalpipe/segment,
+/obj/map_helper/access_helper/airlock/station/exploration/auxillerysci,
 /turf/simulated/floor/tiled,
 /area/rnd/research/researchdivision)
 "vQu" = (
@@ -34247,7 +34250,7 @@
 "vUa" = (
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
-/area/maintenance/research)
+/area/maintenance/medbay/aft)
 "vUf" = (
 /obj/structure/closet/secure_closet/personal/patient,
 /obj/effect/floor_decal/borderfloorwhite{
@@ -34506,7 +34509,7 @@
 /obj/structure/reagent_dispensers/watertank,
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
-/area/maintenance/research)
+/area/maintenance/medbay/aft)
 "waa" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -35175,7 +35178,7 @@
 	id_tag = "researchdoor";
 	name = "Robotics Lab"
 	},
-/obj/map_helper/access_helper/airlock/station/science/robotics,
+/obj/map_helper/access_helper/airlock/station/science/department,
 /turf/simulated/floor/tiled,
 /area/rnd/research/researchdivision)
 "wqB" = (
@@ -36797,7 +36800,7 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/sleeper)
 "xpI" = (
-/obj/map_helper/access_helper/airlock/station/science/robotics,
+/obj/map_helper/access_helper/airlock/station/science/department,
 /obj/machinery/door/airlock/maintenance/common,
 /turf/simulated/floor/tiled,
 /area/rnd/research/researchdivision)
@@ -37915,10 +37918,12 @@
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d1starboardforhall)
 "ybi" = (
-/obj/structure/table/rack/shelf/steel,
-/obj/item/storage/briefcase/inflatable,
+/obj/machinery/light/small{
+	dir = 1
+	},
+/obj/machinery/space_heater,
 /turf/simulated/floor/plating,
-/area/maintenance/research)
+/area/maintenance/medbay/aft)
 "ybk" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -38085,6 +38090,10 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/medbay4)
+"yhA" = (
+/obj/structure/closet/emcloset,
+/turf/simulated/floor/plating,
+/area/maintenance/medbay/aft)
 "yhE" = (
 /obj/effect/floor_decal/industrial/warning/dust,
 /turf/simulated/floor/tiled/dark,
@@ -43739,8 +43748,8 @@ xVe
 xVe
 xVe
 xVe
-kim
-xIf
+ybi
+qpq
 qpq
 pTU
 qpq
@@ -43933,8 +43942,8 @@ xVe
 feQ
 bHB
 vZE
-nJI
-xIf
+qpq
+qpq
 qpq
 pTU
 qpq
@@ -44126,9 +44135,9 @@ xVe
 xVe
 hZY
 vUa
-xIf
-xIf
-xIf
+qpq
+qpq
+qpq
 qpq
 pTU
 qpq
@@ -44318,11 +44327,11 @@ eZZ
 xIf
 xIf
 tcy
-ybi
-iUp
-kgb
-pTX
-xIf
+qpq
+qpq
+qpq
+qpq
+qpq
 qpq
 pTU
 qpq
@@ -44512,11 +44521,11 @@ uwU
 xIf
 xIf
 tcy
-xIf
-xIf
-xIf
-mUB
-xIf
+iUp
+yhA
+pTX
+rRe
+qpq
 qpq
 pTU
 qpq
@@ -47616,7 +47625,7 @@ qpQ
 qpQ
 qpQ
 xHD
-iec
+kgb
 xHD
 uLi
 ajd
@@ -47806,11 +47815,11 @@ jPA
 ixo
 bhD
 wSM
-qpq
+aXm
 dyL
 aXm
 qpq
-iec
+nJI
 xHD
 ctj
 ogg
@@ -48002,7 +48011,7 @@ oGF
 wSM
 hjM
 qpq
-aXm
+qpq
 qpq
 iec
 xHD
@@ -48775,7 +48784,7 @@ cje
 oCO
 jVn
 bOa
-rRe
+olh
 iec
 iec
 hqT
