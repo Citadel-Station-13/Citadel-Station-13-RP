@@ -107,6 +107,9 @@ SUBSYSTEM_DEF(garbage)
 			dellog += "\tIgnored force: [I.no_respect_force] times"
 		if (I.no_hint)
 			dellog += "\tNo hint: [I.no_hint] times"
+		if(LAZYLEN(I.extra_details))
+			dellog += "\tDeleted Metadata: [I.extra_details.Join("\n\t\t")]"
+
 	log_qdel(dellog.Join("\n"))
 
 /datum/controller/subsystem/garbage/fire()
@@ -216,6 +219,10 @@ SUBSYSTEM_DEF(garbage)
 				message = "[message] (ref count of [refcount(D)])"
 				log_world(message)
 
+				var/detail = D.dump_harddel_info()
+				if(detail)
+					LAZYADD(I.extra_details, detail)
+
 				#ifdef TESTING
 				for(var/c in GLOB.admins) //Using testing() here would fill the logs with ADMIN_VV garbage
 					var/client/admin = c
@@ -273,6 +280,9 @@ SUBSYSTEM_DEF(garbage)
 	var/type = D.type
 	var/refID = ref(D)
 	var/datum/qdel_item/type_info = items[type]
+	var/detail = D.dump_harddel_info()
+	if(detail)
+		LAZYADD(type_info.extra_details, detail)
 
 	var/tick_usage = TICK_USAGE
 	del(D)
@@ -321,6 +331,7 @@ SUBSYSTEM_DEF(garbage)
 	var/no_hint = 0 //!Number of times it's not even bother to give a qdel hint
 	var/slept_destroy = 0 //!Number of times it's slept in its destroy
 	var/qdel_flags = 0 //!Flags related to this type's trip thru qdel.
+	var/list/extra_details //!Lazylist of string metadata about the deleted objects
 
 /datum/qdel_item/New(mytype)
 	name = "[mytype]"
