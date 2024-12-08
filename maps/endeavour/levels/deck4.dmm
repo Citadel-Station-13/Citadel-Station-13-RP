@@ -419,7 +419,10 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/endeavour/command/turrets)
 "aws" = (
-/obj/structure/table/reinforced,
+/obj/structure/closet/secure_closet/engineering_personal,
+/obj/structure/window/reinforced{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/locker_room)
 "awG" = (
@@ -1460,6 +1463,11 @@
 "bHY" = (
 /turf/simulated/floor/tiled/monotile,
 /area/engineering/engineering_monitoring)
+"bIs" = (
+/obj/effect/floor_decal/techfloor/orange,
+/obj/machinery/vending/tool,
+/turf/simulated/floor/tiled/techmaint,
+/area/engineering/locker_room)
 "bII" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -2473,9 +2481,9 @@
 /turf/simulated/floor/carpet/oracarpet,
 /area/engineering/engineering_monitoring)
 "cQd" = (
-/obj/machinery/vending/engivend,
-/turf/simulated/floor/tiled/techmaint,
-/area/engineering/storage)
+/obj/machinery/portable_atmospherics/canister/empty,
+/turf/simulated/floor/plating,
+/area/endeavour/hallway/d4aftmaint)
 "cQn" = (
 /obj/machinery/computer/atmos_alert,
 /obj/effect/floor_decal/corner/yellow{
@@ -2894,11 +2902,10 @@
 /turf/simulated/floor/tiled/monotile,
 /area/engineering/engineering_monitoring)
 "dxT" = (
-/obj/effect/floor_decal/techfloor/orange,
-/obj/structure/table/bench/padded,
-/obj/machinery/light,
+/obj/machinery/door/airlock/glass/engineering,
+/obj/map_helper/access_helper/airlock/station/engineering/department,
 /turf/simulated/floor/tiled/techmaint,
-/area/engineering/locker_room)
+/area/engineering/storage)
 "dyB" = (
 /turf/space,
 /area/engineering/portnacelle)
@@ -6242,6 +6249,24 @@
 /obj/item/stack/material/glass/phoronrglass{
 	amount = 40
 	},
+/obj/item/stack/material/plastic{
+	amount = 50
+	},
+/obj/item/stack/material/plastic{
+	amount = 50
+	},
+/obj/item/stack/material/plastic{
+	amount = 50
+	},
+/obj/item/stack/material/plasteel{
+	amount = 10
+	},
+/obj/item/stack/material/plasteel{
+	amount = 10
+	},
+/obj/item/stack/material/plasteel{
+	amount = 10
+	},
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/storage)
 "hEj" = (
@@ -6385,9 +6410,6 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/endeavour/command/turrets)
 "hKh" = (
-/obj/machinery/computer/med_data{
-	dir = 1
-	},
 /obj/effect/floor_decal/corner/paleblue{
 	dir = 10
 	},
@@ -6395,6 +6417,9 @@
 	dir = 4
 	},
 /obj/machinery/light/no_nightshift,
+/obj/machinery/computer/crew{
+	dir = 1
+	},
 /turf/simulated/floor/tiled/techfloor,
 /area/endeavour/command/turrets)
 "hKp" = (
@@ -6513,6 +6538,7 @@
 	pixel_y = 5
 	},
 /obj/item/storage/toolbox/mechanical,
+/obj/machinery/light,
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/locker_room)
 "hPj" = (
@@ -7101,8 +7127,7 @@
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 6
 	},
-/obj/machinery/suit_cycler/engineering,
-/obj/machinery/light,
+/obj/structure/closet/secure_closet/engineering_personal,
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/locker_room)
 "iFh" = (
@@ -7564,16 +7589,16 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_eva)
 "jkF" = (
-/obj/machinery/door/airlock/glass/engineering{
-	name = "Shield Room";
-	req_one_access = null
-	},
 /obj/machinery/door/firedoor{
 	dir = 8
 	},
 /obj/map_helper/access_helper/airlock/station/engineering/department,
 /obj/structure/cable/green{
 	icon_state = "1-2"
+	},
+/obj/machinery/door/airlock/glass/engineering{
+	name = "Monitoring Room";
+	req_one_access = null
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/engineering/engineering_monitoring)
@@ -7623,8 +7648,10 @@
 /turf/simulated/floor/plating,
 /area/endeavour/hallway/d4aftmaint)
 "jnl" = (
+/obj/effect/floor_decal/techfloor/orange,
+/obj/machinery/light,
 /obj/structure/closet/secure_closet/engineering_personal,
-/obj/effect/floor_decal/techfloor/orange{
+/obj/structure/window/reinforced{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techmaint,
@@ -7743,14 +7770,11 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/atmos)
 "jsv" = (
-/obj/machinery/door/airlock/glass/engineering{
-	name = "Engineering Hallway";
-	req_one_access = null
-	},
 /obj/map_helper/access_helper/airlock/station/maintenance,
 /obj/machinery/door/firedoor{
 	dir = 8
 	},
+/obj/machinery/door/airlock/maintenance,
 /turf/simulated/floor/airless/ceiling,
 /area/endeavour/hallway/d4fwdmaint)
 "jsW" = (
@@ -8282,7 +8306,7 @@
 /area/engineering/atmos)
 "jYd" = (
 /obj/machinery/door/airlock/glass/engineering{
-	name = "Shield Room";
+	name = "Monitoring Room";
 	req_one_access = null
 	},
 /obj/machinery/door/firedoor{
@@ -8846,14 +8870,14 @@
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d4starboardamidhall)
 "kJO" = (
-/obj/machinery/door/airlock/glass/engineering{
-	name = "Shield Room";
-	req_one_access = null
-	},
 /obj/machinery/door/firedoor{
 	dir = 8
 	},
 /obj/map_helper/access_helper/airlock/station/engineering/department,
+/obj/machinery/door/airlock/glass/engineering{
+	name = "Break Room";
+	req_one_access = null
+	},
 /turf/simulated/floor/wood,
 /area/engineering/hallway/lower)
 "kJR" = (
@@ -9041,7 +9065,6 @@
 /turf/simulated/floor/reinforced/airless,
 /area/engineering/portnacelle)
 "kVC" = (
-/obj/structure/closet/secure_closet/engineering_personal,
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 8
 	},
@@ -11077,7 +11100,7 @@
 /area/endeavour/hallway/d4starboardafthall)
 "npV" = (
 /obj/effect/floor_decal/techfloor/orange,
-/obj/structure/table/bench/padded,
+/obj/machinery/vending/assist,
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/locker_room)
 "nqa" = (
@@ -11938,25 +11961,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/endeavour/command/turrets)
 "ohO" = (
-/obj/structure/table/reinforced,
-/obj/item/stack/material/plasteel{
-	amount = 10
-	},
-/obj/item/stack/material/plasteel{
-	amount = 10
-	},
-/obj/item/stack/material/plasteel{
-	amount = 10
-	},
-/obj/item/stack/material/plastic{
-	amount = 50
-	},
-/obj/item/stack/material/plastic{
-	amount = 50
-	},
-/obj/item/stack/material/plastic{
-	amount = 50
-	},
+/obj/machinery/suit_cycler/engineering,
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/storage)
 "oie" = (
@@ -12681,7 +12686,7 @@
 /area/engineering/atmos)
 "pnG" = (
 /obj/machinery/door/airlock/glass/engineering{
-	name = "Shield Room";
+	name = "Break Room";
 	req_one_access = null
 	},
 /obj/machinery/door/firedoor{
@@ -15252,7 +15257,9 @@
 /turf/simulated/wall/r_wall/prepainted/engineering/atmos,
 /area/engineering/atmos/eva)
 "sWB" = (
-/obj/machinery/vending/tool,
+/obj/structure/dispenser{
+	phorontanks = 0
+	},
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/storage)
 "sXt" = (
@@ -19037,7 +19044,6 @@
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 9
 	},
-/obj/structure/closet/toolcloset,
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/locker_room)
 "xCS" = (
@@ -19304,7 +19310,7 @@
 /turf/space/basic,
 /area/space)
 "xSM" = (
-/obj/machinery/vending/assist,
+/obj/machinery/portable_atmospherics/canister/oxygen,
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/storage)
 "xSO" = (
@@ -19448,7 +19454,8 @@
 /obj/machinery/turretid/stun{
 	check_synth = 1;
 	name = "AI Chamber turret control";
-	pixel_y = -32
+	pixel_y = -32;
+	control_area = "\improper AI Chamber"
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ai_upload)
@@ -19520,7 +19527,7 @@
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 10
 	},
-/obj/machinery/suit_cycler/engineering,
+/obj/machinery/vending/engivend,
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/locker_room)
 "yky" = (
@@ -31684,7 +31691,7 @@ ppa
 qTY
 jZF
 jZF
-cQd
+sWB
 dpZ
 liC
 hER
@@ -32294,9 +32301,9 @@ aIs
 vLj
 aIs
 aIs
-jBO
-jBO
-jBO
+cQd
+cQd
+cQd
 jBO
 jBO
 jBO
@@ -32460,7 +32467,7 @@ sHl
 hDC
 jZF
 jZF
-ohO
+okW
 dpZ
 vTS
 qzJ
@@ -32651,7 +32658,7 @@ qip
 kiI
 hLB
 sHl
-okW
+ohO
 jZF
 jZF
 wHS
@@ -33234,7 +33241,7 @@ vRr
 uJI
 dpZ
 dpZ
-dpZ
+dxT
 dpZ
 dpZ
 dpZ
@@ -33428,7 +33435,7 @@ kiI
 qjJ
 jQA
 xCw
-jnl
+kuh
 kVC
 yki
 fJm
@@ -33624,7 +33631,7 @@ qyK
 grk
 kuh
 kuh
-nqw
+bIs
 fJm
 azJ
 atZ
@@ -34012,7 +34019,7 @@ jQA
 fHR
 kBo
 ryp
-npV
+nqw
 fJm
 azJ
 atZ
@@ -34982,7 +34989,7 @@ jQA
 dsn
 kuh
 aws
-vvE
+jnl
 fJm
 vVK
 atZ
@@ -35176,7 +35183,7 @@ jQA
 fHR
 kuh
 ryp
-npV
+nqw
 fJm
 azJ
 atZ
@@ -35370,7 +35377,7 @@ qyK
 grk
 kuh
 ryp
-dxT
+nqw
 fJm
 xQN
 gTq
