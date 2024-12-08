@@ -3,7 +3,7 @@ CREATE TABLE IF NOT EXISTS `backend_repository` (
   `id` VARCHAR(128) NOT NULL,
   `version` INT(11) NOT NULL,
   `data` MEDIUMTEXT NOT NULL,
-  `storedTime` DATETIME NOT NULL DEFAULT Now(),
+  `createdTime` DATETIME NOT NULL DEFAULT Now(),
   `modifiedTime` DATETIME NOT NULL DEFAULT Now(),
   PRIMARY KEY(`repository`, `id`),
   INDEX(`repository`),

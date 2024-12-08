@@ -26,7 +26,9 @@
 /obj/item/stack/material/Initialize(mapload, new_amount, merge = TRUE, material)
 	if(!isnull(material))
 		src.material = material
-	src.material = RSmaterials.fetch(src.material)
+	src.material = RSmaterials.fetch_or_defer(src.material)
+	if(src.material == REPOSITORY_FETCH_DEFER)
+		stack_trace("material deferred on a material stack. this isn't supported.")
 	. = ..()
 
 	pixel_x = rand(0,4)-4

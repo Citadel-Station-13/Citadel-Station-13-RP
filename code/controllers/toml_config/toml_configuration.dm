@@ -28,14 +28,6 @@ GLOBAL_REAL(Configuration, /datum/controller/toml_configuration)
 			return FALSE
 	return ..()
 
-/datum/controller/toml_configuration/vv_get_var(var_name, resolve)
-	switch(var_name)
-		if(NAMEOF(src, keyed_entries))
-			return debug_variable(NAMEOF(src, keyed_entries), deep_copy_list(keyed_entries), 0, src)
-		if(NAMEOF(src, typed_entries))
-			return debug_variable(NAMEOF(src, typed_entries), typed_entries.Copy(), 0, src)
-	return ..()
-
 /datum/controller/toml_configuration/New()
 	if(Configuration != src)
 		if(Configuration)
@@ -52,7 +44,7 @@ GLOBAL_REAL(Configuration, /datum/controller/toml_configuration)
 		typed_entries[entry.type] = entry
 		var/list/nesting = splittext(entry.category, ".")
 		var/list/current_list = keyed_entries
-		for(var/i in 1 to length(nesting) - 1)
+		for(var/i in 1 to length(nesting))
 			LAZYINITLIST(current_list[nesting[i]])
 			current_list = current_list[nesting[i]]
 		current_list[entry.key] = entry

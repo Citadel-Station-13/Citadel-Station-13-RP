@@ -60,7 +60,7 @@
 	var/oldusr = usr
 	usr = null
 	var/datum/db_query/query = SSdbcore.NewQuery(
-		"SELECT `value` FROM [format_table_name("persistence_string_kkv")] WHERE `group` = :group AND `key` = :key",
+		"SELECT `value` FROM [fetch_local_or_tDB_PREFIX_TABLE_NAMEhrow("persistence_string_kkv")] WHERE `group` = :group AND `key` = :key",
 		list(
 			"group" = group,
 			"key" = key
@@ -79,7 +79,7 @@
 	var/oldusr = usr
 	usr = null
 	var/datum/db_query/query = SSdbcore.NewQuery(
-		"INSERT INTO [format_table_name("persistence_string_kkv")] (`group`, `key`, `value`) VALUES (:group, :key, :value) ON DUPLICATE KEY UPDATE `value` = VALUES(`value`), `modified` = Now(), `revision` = `revision` + 1",
+		"INSERT INTO [fetch_local_or_tDB_PREFIX_TABLE_NAMEhrow("persistence_string_kkv")] (`group`, `key`, `value`) VALUES (:group, :key, :value) ON DUPLICATE KEY UPDATE `value` = VALUES(`value`), `modified` = Now(), `revision` = `revision` + 1",
 		list(
 			"group" = group,
 			"key" = key,

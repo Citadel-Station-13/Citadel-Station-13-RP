@@ -19,7 +19,7 @@
 
 	for(var/datum/bulk_entity_chunk/chunk as anything in chunks)
 		var/datum/db_query/query = SSdbcore.NewQuery(
-			"INSERT INTO [format_table_name("persistence_bulk_entity")] \
+			"INSERT INTO [fetch_local_or_tDB_PREFIX_TABLE_NAMEhrow("persistence_bulk_entity")] \
 				(generation, persistence_key, level_id, data, round_id) \
 				VALUES (:generation, :persistence, :level, :data, :round)",
 			list(
@@ -47,7 +47,7 @@
 	usr = null
 
 	var/datum/db_query/query = SSdbcore.NewQuery(
-		"SELECT data FROM [format_table_name("persistence_bulk_entity")] \
+		"SELECT data FROM [fetch_local_or_tDB_PREFIX_TABLE_NAMEhrow("persistence_bulk_entity")] \
 			WHERE generation = :generation AND persistence_key = :persistence AND level_id = :level",
 		list(
 			"generation" = generation,
@@ -85,7 +85,7 @@
 
 	SSdbcore.dangerously_block_on_multiple_unsanitized_queries(
 		list(
-			"TRUNCATE TABLE [format_table_name("persistence_bulk_entity")]",
+			"TRUNCATE TABLE [fetch_local_or_tDB_PREFIX_TABLE_NAMEhrow("persistence_bulk_entity")]",
 		),
 	)
 
@@ -99,7 +99,7 @@
 	usr = null
 
 	SSdbcore.RunQuery(
-		"DELETE FROM [format_table_name("persistence_bulk_entity")] WHERE level_id = :level",
+		"DELETE FROM [fetch_local_or_tDB_PREFIX_TABLE_NAMEhrow("persistence_bulk_entity")] WHERE level_id = :level",
 		list(
 			"level" = level_id,
 		),

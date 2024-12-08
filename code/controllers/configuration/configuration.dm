@@ -46,7 +46,7 @@
 	loaded = TRUE
 
 	if (Master)
-		Master.on_config_reload()
+		Master.on_config_loaded()
 
 /datum/controller/configuration/proc/full_wipe()
 	if(IsAdminAdvancedProcCall())
