@@ -15,6 +15,3 @@
 		qdel(inversion)
 	else
 		AddComponent(/datum/component/mob_self_horizontal_inversion)
-
-	update_transform()
-

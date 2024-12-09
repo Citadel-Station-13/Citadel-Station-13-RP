@@ -35,3 +35,10 @@
 	applying.Turn(icon_rotation)
 	SEND_SIGNAL(src, COMSIG_MOVABLE_BASE_TRANSFORM, applying)
 	return applying
+
+/**
+ * Immediate transform modify.
+ */
+/atom/movable/proc/set_transform(matrix/new_transform)
+	var/matrix/old_transform = transform
+	SEND_SIGNAL(src, COMSIG_MOVABLE_ON_UPDATE_TRANSFORM, old_transform, new_transform)
