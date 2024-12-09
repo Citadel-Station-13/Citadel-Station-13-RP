@@ -98,15 +98,18 @@
 	var/datum/reagent/our_oil = oil.get_master_reagent()
 
 	for (var/obj/item/I in CI.container)
-		if (I.reagents && I.reagents.total_volume)
-			for (var/datum/reagent/R in I.reagents.reagent_list)
-				if (istype(R, /datum/reagent/nutriment/triglyceride/oil))
-					total_oil += R.volume
-					if (R.id != our_oil.id)
-						total_removed += R.volume
-						I.reagents.remove_reagent(R.id, R.volume)
-					else
-						total_our_oil += R.volume
+		if(!I.reagents?.total_volume)
+			continue
+		for(var/datum/reagent/reagent as anything in I.reagents.get_reagent_datums())
+			if(!istype(reagent, /datum/reagent/nutriment/triglyceride/oil))
+				continue
+			var/the_volume = I.reagents.reagent_volumes[reagent.id]
+			total_oil += the_volume
+			if(reagent.id != our_oil.id)
+				total_removed += the_volume
+				I.reagents.remove_reagent(reagent.id, the_volume)
+			else
+				total_our_oil += the_volume
 
 	if (total_removed > 0 || total_oil != CI.max_oil)
 		total_oil = min(total_oil, CI.max_oil)
@@ -121,12 +124,10 @@
 			//If we have more than the maximum allowed then we delete some.
 			//This could only happen if one of the objects spawns with the same type of oil as ours
 			var/portion = 1 - (total_oil / total_our_oil) //find the percentage to remove
-			for (var/obj/item/I in CI.container)
-				if (I.reagents && I.reagents.total_volume)
-					for (var/datum/reagent/R in I.reagents.reagent_list)
-						if (R.id == our_oil.id)
-							I.reagents.remove_reagent(R.id, R.volume*portion)
-
+			for (var/obj/item/I as anything in CI.container)
+				if(!I.reagents?.total_volume)
+					continue
+				I.reagents.remove_reagent(our_oil.id, I.reagents.reagent_volumes[our_oil.id] * portion)
 
 /obj/machinery/appliance/cooker/fryer/cook_mob(var/mob/living/victim, var/mob/user)
 

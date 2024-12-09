@@ -130,8 +130,8 @@
 		)
 		if (!O.reagents)
 			return 1
-		for (var/datum/reagent/R in O.reagents.reagent_list)
-			if (!(R.id in acceptable_reagents))
+		for (var/id in O.reagents.reagent_volumes)
+			if (!(id in acceptable_reagents))
 				to_chat(user, "<span class='warning'>Your [O] contains components unsuitable for cookery.</span>")
 				return 1
 		return
