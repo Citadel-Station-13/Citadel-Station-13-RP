@@ -759,7 +759,7 @@ GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
 	else if(H.vessel.total_volume > blood_volume)
 		H.vessel.remove_reagent("blood", H.vessel.total_volume - blood_volume)
 		H.vessel.maximum_volume = blood_volume
-	H.fixblood()
+	H.reset_blood_to_species()
 
 /datum/species/proc/hug(var/mob/living/carbon/human/H, var/mob/living/target)
 

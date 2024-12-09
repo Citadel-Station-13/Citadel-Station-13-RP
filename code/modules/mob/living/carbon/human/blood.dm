@@ -16,7 +16,6 @@ var/const/CE_STABLE_THRESHOLD = 0.5
 
 //Initializes blood vessels
 /mob/living/carbon/human/proc/make_blood()
-
 	if(vessel)
 		return
 
@@ -29,32 +28,36 @@ var/const/CE_STABLE_THRESHOLD = 0.5
 	if(!should_have_organ(O_HEART)) //We want the var for safety but we can do without the actual blood.
 		return
 
-	vessel.add_reagent("blood",species.blood_volume)
+	reset_blood_to_species()
 
-//Resets blood data
-/mob/living/carbon/human/proc/fixblood()
+/**
+ * Hard resets our data to our 'natural' blood.
+ *
+ * @params
+ * * do_not_regenerate - if set, do not reset to species.blood_volume, instead use current
+ */
+/mob/living/carbon/human/proc/reset_blood_to_species(do_not_regenerate)
+	var/total_volume = 0
 	for(var/datum/reagent/blood/god_damnit_fine_well_loop_through_everything in vessel.get_reagent_datums())
-		var/datum/blood_mixture/mixture = vessel.reagent_datas?[god_damnit_fine_well_loop_through_everything.id]
-		mixture.legacy_trace_chem = null
-		mixture.legacy_virus2 = null
-		mixture.legacy_antibodies = list()
-		for(var/datum/blood_data/fragment in mixture.fragments)
-			fragment.legacy_blood_dna = dna.unique_enzymes
-			fragment.legacy_blood_type = dna.b_type
-			fragment.legacy_donor = src
-			fragment.legacy_species = isSynthetic() ? "synthetic" : species.name
-			fragment.legacy_name = species.get_blood_name(src)
-			#warn how to deal with name / color?
-			fragment.color = species.get_blood_colour(src)
+		total_volume += vessel.reagent_volumes[god_damnit_fine_well_loop_through_everything.id]
+		vessel.remove_reagent(god_damnit_fine_well_loop_through_everything.id)
 
-/mob/living/carbon/human/proc/fixblood_if_broken()
+	var/datum/blood_mixture/mixture = new
+	mixture.legacy_trace_chem = null
+	mixture.legacy_virus2 = null
+	mixture.legacy_antibodies = list()
+	var/datum/blood_data/our_fragment = create_self_blood_data()
+	our_fragment.reagent_ctx_ratio = 1
+	mixture.fragments = list(our_fragment)
+
+	vessel.add_reagent(/datum/reagent/blood, do_not_regenerate ? total_volume : species.blood_volume, mixture)
+
+/mob/living/carbon/human/proc/reset_blood_to_species_if_needed(do_not_regenerate)
 	if(species.species_flags & NO_BLOOD)
 		return
 	if(!should_have_organ(O_HEART))
 		return
-	if(!vessel.has_reagent("blood"))
-		vessel.add_reagent("blood", 0.1)
-		fixblood()
+	reset_blood_to_species(do_not_regenerate)
 
 // Takes care blood loss and regeneration
 /mob/living/carbon/human/handle_blood()
@@ -305,7 +308,7 @@ var/const/CE_STABLE_THRESHOLD = 0.5
 		reagents.update_total()
 		return
 
-	fixblood_if_broken()
+	reset_blood_to_species_if_needed()
 
 	var/datum/reagent/blood/our = get_blood(vessel)
 

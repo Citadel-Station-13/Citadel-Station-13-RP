@@ -161,4 +161,4 @@
 	var/list/all_bits = internal_organs|organs
 	for(var/obj/item/organ/O in all_bits)
 		O.set_dna(dna)
-	fixblood()		// make sure we have the right DNA since blood is an ""organ"" (scientists say it is!!)
+	reset_blood_to_species()		// make sure we have the right DNA since blood is an ""organ"" (scientists say it is!!)

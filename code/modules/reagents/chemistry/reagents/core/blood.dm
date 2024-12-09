@@ -30,6 +30,11 @@
 	/// the blood's color
 	var/color
 
+	/// % of the reagent this is, if in a reagent context
+	///
+	/// * This means nothing outside of a reagent context.
+	var/reagent_ctx_ratio
+
 	//! LEGACY FIELDS
 	var/legacy_species
 	var/legacy_blood_dna
@@ -41,6 +46,8 @@
 /datum/blood_data/clone(include_contents)
 	var/datum/blood_data/copy = new /datum/blood_data
 	copy.color = color
+	if(reagent_ctx_ratio)
+		copy.reagent_ctx_ratio = reagent_ctx_ratio
 	if(legacy_blood_dna)
 		copy.legacy_blood_dna = legacy_blood_dna
 	if(legacy_blood_type)
@@ -52,13 +59,6 @@
 	if(legacy_species)
 		copy.legacy_species = legacy_species
 	return copy
-
-/datum/blood_data/reagent
-	/// % of the reagent this is
-	var/ratio
-
-/datum/blood_data/reagent/clone(include_contents)
-	CRASH("not supported; reagents should manually mix this in with provided data procs.")
 
 /**
  * Blood.

@@ -322,7 +322,7 @@
 
 		else
 			H.vessel.add_reagent("blood", removed)
-			H.fixblood()
+			H.reset_blood_to_species()
 
 	else
 		..()
