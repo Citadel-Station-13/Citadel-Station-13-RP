@@ -22,11 +22,17 @@ function ResolveFlywayURL {
 # Archive will be temporarily downloaded as /path/to/folder.zip
 function PullURLAndUnpack {
 	param([string] $URL, [string] $Path)
-	Remove-Item -Path "$Path.zip"
+	if(Test-Path "$Path.zip" -PathType Leaf) {
+		Remove-Item -Path "$Path.zip"
+	}
+	Write-Output "Pulling $URL to $Path.zip"
+	$ProgressPreference = 'SilentlyContinue'
 	Invoke-WebRequest `
 		"$URL" `
 		-OutFile "$Path.zip" `
 		-ErrorAction Stop
+	$ProgressPreference = 'Continue'
+	Write-Output "Expanding $Path.zip to $Path"
 	Expand-Archive "$Path.zip" -DestinationPath "$Path"
 }
 
@@ -38,8 +44,8 @@ $FLYWAY_VERSION = ExtractVersion -Path "$ToolRoot/../../dependencies.sh" -Key "F
 $MARIADB_FOLDER = "$ToolRoot/.cache/mariadb/$MARIADB_VERSION"
 $FLYWAY_FOLDER = "$ToolRoot/.cache/flyway/$FLYWAY_VERSION"
 
-$MYSQLD_PATH = "$MARIADB_FOLDER/"
-$FLYWAY_PATH = "$FLYWAY_FOLDER/"
+$MYSQLD_PATH = "$MARIADB_FOLDER/mariadb-$MARIADB_VERSION-winx64/bin/mariadbd.exe"
+$FLYWAY_PATH = "$FLYWAY_FOLDER/flyway-$FLYWAY_VERSION/flyway.cmd"
 
 # GET mariadb IF NOT EXISTS
 
@@ -55,7 +61,7 @@ if(!(Test-Path $MYSQLD_PATH -PathType Leaf)) {
 # GET flyway IF NOT EXISTS
 
 if(!(Test-Path $FLYWAY_PATH -PathType Leaf)) {
-	$FLYWAY_URL = ResolveMariaDBURL $FLYWAY_VERSION
+	$FLYWAY_URL = ResolveFlywayURL $FLYWAY_VERSION
 	PullURLAndUnpack $FLYWAY_URL $FLYWAY_FOLDER
 	if(!(Test-Path $FLYWAY_PATH -PathType Leaf)) {
 		Write-Error "Failed to find '$FLYWAY_PATH' after unpacking."
@@ -65,4 +71,4 @@ if(!(Test-Path $FLYWAY_PATH -PathType Leaf)) {
 
 # run database
 
-& $ToolRoot/../bootstrap/python._ps1 $ToolRoot/invoke.py $args
+& $ToolRoot/../bootstrap/python_.ps1 $ToolRoot/invoke.py --daemon $MYSQLD_PATH --flyway $FLYWAY_PATH --migrations "../../sql/migrations" $args

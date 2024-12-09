@@ -7,10 +7,10 @@ import time;
 def log_message(source: str, string: str):
     print('%s: %s' % (source, string))
 
-if __name__ == "main":
+if __name__ == "__main__":
     argparser = argparse.ArgumentParser(
         prog="setup.ps1",
-        usage="setup.ps1 --daemon [path-to-mysqld] --flyway [path-to-flyway] --migrations [path-to-migrations-folder]",
+        usage="setup.ps1 --port [port] --dbname [dbname]",
     )
     argparser.add_argument("--daemon", type=str)
     argparser.add_argument("--flyway", type=str)
@@ -18,7 +18,14 @@ if __name__ == "main":
     argparser.add_argument("--port", required=False, default=3306, type=int)
     argparser.add_argument("--dbname", required=False, default="ss13", type=str)
 
-    parsed_args = argparser.parse_args(sys.argv)
+    # we slice it, as being invoked from bootstrap consumes this script's file path as the first arg
+    effective_args: list[str] = sys.argv[1:]
+
+    if len(effective_args) == 0:
+        argparser.print_help()
+        exit(1)
+
+    parsed_args = argparser.parse_args(effective_args)
 
     PATH_TO_MYSQLD: str = parsed_args.daemon
     PATH_TO_FLYWAY: str = parsed_args.flyway
@@ -27,6 +34,7 @@ if __name__ == "main":
     USE_DATABASE: str = parsed_args.dbname
 
     log_message("setup_dev_db", "WARNING: This is a very, very lazy Python app! Logs are not necessarily in order of occurence; the script is just a very, very dumb while(True) loop that is just jank enough to work. Do not use this for production")
+    log_message("setup_dev_db", 'Using port %d and setting up on database %s. Use --port and --dbname to override!' % (USE_PORT, USE_DATABASE))
     log_message("setup_dev_db", "Starting processes...")
 
     mysqld: subprocess.Popen | None = subprocess.Popen(

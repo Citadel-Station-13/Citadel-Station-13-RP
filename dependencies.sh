@@ -26,3 +26,6 @@ export PYTHON_VERSION=3.9.0
 
 # MariaDB version
 export MARIADB_VERSION=11.4.4
+
+# Flyway version
+export FLYWAY_VERSION=11.0.1
