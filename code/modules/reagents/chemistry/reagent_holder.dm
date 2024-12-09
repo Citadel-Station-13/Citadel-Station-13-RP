@@ -464,13 +464,13 @@
  * Gets the amount of a reagent ID or path
  */
 /datum/reagent_holder/proc/get_reagent_amount(datum/reagent/reagentlike)
-	return reagent_volumes ? reagent_volumes[ispath(reagentlike) ? initial(reagentlike.id) : (istype(reagentlike) ? reagentlike.id : reagentlike)]
+	return reagent_volumes ? reagent_volumes[ispath(reagentlike) ? initial(reagentlike.id) : (istype(reagentlike) ? reagentlike.id : reagentlike)] : 0
 
 /**
  * Gets the data of a reagent ID or path
  */
 /datum/reagent_holder/proc/get_reagent_data(datum/reagent/reagentlike)
-	return reagent_datas ? reagent_datas[ispath(reagentlike) ? initial(reagentlike.id) : (istype(reagentlike) ? reagentlike.id : reagentlike)]
+	return reagent_datas ? reagent_datas[ispath(reagentlike) ? initial(reagentlike.id) : (istype(reagentlike) ? reagentlike.id : reagentlike)] : null
 
 /**
  * Gets the global singletons of reagents in us.

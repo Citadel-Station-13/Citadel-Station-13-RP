@@ -37,7 +37,6 @@ var/const/CE_STABLE_THRESHOLD = 0.5
 		var/datum/blood_mixture/mixture = vessel.reagent_datas?[god_damnit_fine_well_loop_through_everything.id]
 		mixture.legacy_trace_chem = null
 		mixture.legacy_virus2 = null
-		mixture.legacy_viruses = null
 		mixture.legacy_antibodies = list()
 		for(var/datum/blood_data/fragment in mixture.fragments)
 			fragment.legacy_blood_dna = dna.unique_enzymes
