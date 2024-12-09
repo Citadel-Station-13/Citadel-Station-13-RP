@@ -2,6 +2,8 @@
  * datastruct for nutriment data.
  */
 /datum/nutriment_data
+	/// were we cooked?
+	var/cooked = FALSE
 	/// taste list as "description" = amount
 	///
 	/// * always sorted from largest to least
@@ -30,6 +32,17 @@
 		var/power = source.taste[description]
 		add_taste(description, power, TRUE)
 	cull_taste()
+	cooked ||= source.cooked
+
+/datum/nutriment_data/clone(include_contents)
+	var/datum/nutriment_data/copying = new
+	copying.cooked = cooked
+	copying.taste = taste?.Copy()
+	copying.taste_total = taste_total
+	return copying
+
+/datum/nutriment_data/static_spawn_initializer
+	cooked = TRUE
 
 /datum/reagent/nutriment
 	name = "Nutriment"
@@ -45,7 +58,15 @@
 	var/injectable = 0
 	color = "#664330"
 
+/datum/reagent/nutriment/make_copy_data_initializer(datum/nutriment_data/data)
+	return data
+
+/datum/reagent/nutriment/preprocess_data(datum/nutriment_data/data_initializer)
+	return data_initializer
+
 /datum/reagent/nutriment/mix_data(datum/nutriment_data/old_data, old_volume, datum/nutriment_data/new_data, new_volume, datum/reagent_holder/holder)
+	if(!istype(new_data))
+		return old_data
 	old_data.merge_from(new_data)
 	return old_data
 

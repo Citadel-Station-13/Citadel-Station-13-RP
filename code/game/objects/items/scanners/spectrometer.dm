@@ -44,8 +44,8 @@
 			if(R.type != /datum/reagent/blood)
 				continue
 			else
-				for(var/datum/blood_data/data in reagents.reagent_datas[id])
-					blood_traces = params2list(data.legacy_trace_chem)
+				var/datum/blood_mixture/mixture = reagents.reagent_datas?[id]
+				blood_traces = params2list(mixture.legacy_trace_chem)
 				break
 		var/dat = "Trace Chemicals Found: "
 		for(var/R in blood_traces)

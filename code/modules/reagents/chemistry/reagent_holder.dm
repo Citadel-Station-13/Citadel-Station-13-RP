@@ -242,17 +242,6 @@
 		id = initial(path.id)
 	return !isnull(reagent_volumes?[id])
 
-// todo: annihilate this proc in favor of direct access
-/datum/reagent_holder/proc/get_reagent_amount(id)
-	if(ispath(id))
-		var/datum/reagent/path = id
-		id = initial(path.id)
-	return reagent_volumes?[id]
-
-// todo: annihilate this proc in favor of direct access
-/datum/reagent_holder/proc/get_data(id)
-	return reagent_datas?[id]
-
 /datum/reagent_holder/proc/get_reagents()
 	. = list()
 	for(var/id in reagent_volumes)
@@ -472,7 +461,21 @@
 //* Getters *//
 
 /**
+ * Gets the amount of a reagent ID or path
+ */
+/datum/reagent_holder/proc/get_reagent_amount(datum/reagent/reagentlike)
+	return reagent_volumes ? reagent_volumes[ispath(reagentlike) ? initial(reagentlike.id) : (istype(reagentlike) ? reagentlike.id : reagentlike)]
+
+/**
+ * Gets the data of a reagent ID or path
+ */
+/datum/reagent_holder/proc/get_reagent_data(datum/reagent/reagentlike)
+	return reagent_datas ? reagent_datas[ispath(reagentlike) ? initial(reagentlike.id) : (istype(reagentlike) ? reagentlike.id : reagentlike)]
+
+/**
  * Gets the global singletons of reagents in us.
+ *
+ * todo: how do we handle this cleanly? this shouldn't be the usual case. rename to fetch_reagent_datums()?
  */
 /datum/reagent_holder/proc/get_reagent_datums() as /list
 	. = list()
@@ -583,6 +586,7 @@
  *                     If 'no_check_reactions' is set to TRUE, we skip that.
  */
 /datum/reagent_holder/proc/set_no_react(new_value, no_check_reactions)
+	// todo: this shouldn't be on atom AAAAA
 	if(!my_atom)
 		return
 	if(!!new_value == !!(my_atom?.atom_flags & NOREACT))

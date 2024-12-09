@@ -34,19 +34,19 @@ var/const/CE_STABLE_THRESHOLD = 0.5
 //Resets blood data
 /mob/living/carbon/human/proc/fixblood()
 	for(var/datum/reagent/blood/god_damnit_fine_well_loop_through_everything in vessel.get_reagent_datums())
-		for(var/datum/blood_data/data_set in vessel.reagent_datas?[god_damnit_fine_well_loop_through_everything.id])
-			data_set.legacy_blood_dna = dna.unique_enzymes
-			data_set.legacy_blood_type = dna.b_type
-			data_set.legacy_donor = src
-			data_set.legacy_resistances = null
-			data_set.legacy_trace_chem = null
-			data_set.legacy_virus2 = null
-			data_set.legacy_viruses = null
-			data_set.legacy_antibodies = list()
-			data_set.legacy_species = isSynthetic() ? "synthetic" : species.name
-			data_set.legacy_name = species.get_blood_name(src)
+		var/datum/blood_mixture/mixture = vessel.reagent_datas?[god_damnit_fine_well_loop_through_everything.id]
+		mixture.legacy_trace_chem = null
+		mixture.legacy_virus2 = null
+		mixture.legacy_viruses = null
+		mixture.legacy_antibodies = list()
+		for(var/datum/blood_data/fragment in mixture.fragments)
+			fragment.legacy_blood_dna = dna.unique_enzymes
+			fragment.legacy_blood_type = dna.b_type
+			fragment.legacy_donor = src
+			fragment.legacy_species = isSynthetic() ? "synthetic" : species.name
+			fragment.legacy_name = species.get_blood_name(src)
 			#warn how to deal with name / color?
-			data_set.color = species.get_blood_colour(src)
+			fragment.color = species.get_blood_colour(src)
 
 /mob/living/carbon/human/proc/fixblood_if_broken()
 	if(species.species_flags & NO_BLOOD)

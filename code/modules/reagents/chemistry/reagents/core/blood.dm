@@ -1,47 +1,59 @@
 /**
  * Reagent blood data
  */
+/datum/blood_mixture
+	var/list/legacy_antibodies
+	var/list/legacy_viruses
+	var/list/legacy_virus2
+	#warn uhh
+	var/legacy_trace_chem
+
+	var/list/datum/blood_data/fragments
+
+/datum/blood_mixture/clone(include_contents)
+	var/datum/blood_mixture/copy = new /datum/blood_mixture
+	if(legacy_trace_chem)
+		copy.legacy_trace_chem = legacy_trace_chem
+	if(legacy_antibodies)
+		copy.legacy_antibodies = legacy_antibodies
+	if(legacy_viruses)
+		copy.legacy_viruses = legacy_viruses
+	if(legacy_virus2)
+		copy.legacy_virus2 = legacy_virus2
+	if(length(fragments))
+		copy.fragments = list()
+		for(var/datum/blood_data/data as anything in fragments)
+			copy.fragments += data.clone()
+	return copy
+
+/**
+ * Reagent blood data
+ */
 /datum/blood_data
 	/// the blood's color
 	var/color
 
 	//! LEGACY FIELDS
 	var/legacy_species
-	var/legacy_antibodies
-	var/legacy_viruses
-	var/legacy_virus2
 	var/legacy_blood_dna
 	var/legacy_blood_type
-	var/legacy_trace_chem
-	var/legacy_resistances
 	var/legacy_donor
 	var/legacy_name
 	//! END
 
 /datum/blood_data/clone(include_contents)
 	var/datum/blood_data/copy = new /datum/blood_data
-	copy.species_id = species_id
 	copy.color = color
-	if(legacy_viruses)
-		copy.legacy_viruses = legacy_viruses
-	if(legacy_virus2)
-		copy.legacy_virus2 = legacy_virus2
 	if(legacy_blood_dna)
 		copy.legacy_blood_dna = legacy_blood_dna
 	if(legacy_blood_type)
 		copy.legacy_blood_type = legacy_blood_type
-	if(legacy_trace_chem)
-		copy.legacy_trace_chem = legacy_trace_chem
-	if(legacy_resistances)
-		copy.legacy_resistances = legacy_resistances
 	if(legacy_donor)
 		copy.legacy_donor = legacy_donor
 	if(legacy_name)
 		copy.legacy_name = legacy_name
 	if(legacy_species)
 		copy.legacy_species = legacy_species
-	if(legacy_antibodies)
-		copy.legacy_antibodies = legacy_antibodies
 	return copy
 
 /datum/blood_data/reagent
@@ -82,12 +94,10 @@
 	glass_name = "tomato juice"
 	glass_desc = "Are you sure this is tomato juice?"
 
-/datum/reagent/blood/make_copy_data_initializer(list/datum/blood_data/data)
-	. = list()
-	for(var/datum/blood_data/blood_data as anything in data)
-		. += blood_data.clone()
+/datum/reagent/blood/make_copy_data_initializer(datum/blood_mixture/data)
+	return data
 
-/datum/reagent/blood/mix_data(list/datum/blood_data/old_data, old_volume, list/datum/blood_data/new_data, new_volume, datum/reagent_holder/holder)
+/datum/reagent/blood/mix_data(datum/blood_mixture/old_data, old_volume, datum/blood_mixture/new_data, new_volume, datum/reagent_holder/holder)
 	. = ..()
 	#warn impl ; hard limit of 10 blood instances
 
@@ -194,6 +204,7 @@
 	M.inject_blood(src, volume * volume_mod)
 	remove_self(volume)
 
+// todo: this should be the same as /datum/reagent/blood!
 /datum/reagent/blood/synthblood
 	name = "Synthetic blood"
 	id = "synthblood"
@@ -204,16 +215,16 @@
 	..()
 	if(data && !data["blood_type"])
 		data["blood_type"] = "O-"
-	return
 
+// todo: this should be the same as /datum/reagent/blood!
 /datum/reagent/blood/bludbloodlight
 	name = "Synthetic blood"
 	id = "bludbloodlight"
 	color = "#999966"
 	volume_mod = 2
 
+// todo: this should be the same as /datum/reagent/blood!
 /datum/reagent/blood/bludbloodlight/initialize_data(newdata)
 	..()
 	if(data && !data["blood_type"])
 		data["blood_type"] = "AB+"
-	return

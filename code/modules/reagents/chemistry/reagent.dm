@@ -298,12 +298,22 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 
 /**
  * Get data to feed in as the `data_initializer` during a reagents transfer.
+ *
+ * * `data` is not considered mutable. You may not edit it in this proc.
+ * * Do not modify the returned value. It is not considered mutable.
+ *
+ * @return an initializer. This initializer is not mutable.
  */
 /datum/reagent/proc/make_copy_data_initializer(data)
 	return null
 
 /**
  * Preprocess data fed in during add_reagent
+ *
+ * * `data_initializer` is not considered mutable. You may not edit it in this proc.
+ * * Do not modify the returned value. It is not considered mutable.
+ *
+ * @return data to put into mix_data. This data is immutable.
  */
 /datum/reagent/proc/preprocess_data(data_initializer)
 	return null
@@ -314,6 +324,8 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
  * * in add_reagent, this is called with the preprocessed new data
  * * in transfer procs, this is called with the old data
  * * this is not called if there's no reagents of ourselves in the new container.
+ * * `old_data` is considered mutable. `new_data` is not. This is becuase `old_data` belongs to the holder
+ *   calling us, but `new_data` can potentially be a shared struct.
  *
  * @params
  * * old_data - existing data; null if not there
@@ -321,6 +333,8 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
  * * new_data - adding data; this is from the returns of `preprocess_data()`
  * * new_volume - adding volume
  * * holder - (optional) the holder we're mixing in, if any
+ *
+ * @return overall data to assign to reagent
  */
 /datum/reagent/proc/mix_data(old_data, old_volume, new_data, new_volume, datum/reagent_holder/holder)
 	return null
