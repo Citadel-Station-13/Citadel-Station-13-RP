@@ -43,4 +43,5 @@
  */
 /atom/movable/proc/set_transform(matrix/new_transform)
 	var/matrix/old_transform = transform
+	src.transform = new_transform
 	SEND_SIGNAL(src, COMSIG_MOVABLE_ON_UPDATE_TRANSFORM, old_transform, new_transform)

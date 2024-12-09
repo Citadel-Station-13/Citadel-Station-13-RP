@@ -8,6 +8,12 @@
 
 	// todo: remote control? mobs that don't allow it?
 
+	if(TIMER_COOLDOWN_CHECK(src, CD_INDEX_MOB_VERB_INVERT_SELF))
+		// todo: don't usr lol
+		to_chat(usr, SPAN_WARNING("You can't do that yet!"))
+		return
+	TIMER_COOLDOWN_START(src, CD_INDEX_MOB_VERB_INVERT_SELF, 0.5 SECONDS)
+
 	log_game("[key_name(usr)] invoked horizontal_invert_self on [key_name(src)].")
 
 	var/datum/component/mob_self_horizontal_inversion/inversion = GetComponent(/datum/component/mob_self_horizontal_inversion)
