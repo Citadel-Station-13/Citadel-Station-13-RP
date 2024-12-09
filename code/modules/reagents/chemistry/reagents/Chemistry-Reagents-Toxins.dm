@@ -127,7 +127,7 @@
 /datum/reagent/toxin/phoron/touch_turf(turf/simulated/T, amount)
 	if(!istype(T))
 		return
-	T.assume_gas(GAS_ID_VOLATILE_FUEL, amount, T20C)
+	T.assume_gas(GAS_ID_PHORON, amount, T20C)
 	remove_self(amount)
 
 /datum/reagent/toxin/cyanide //Fast and Lethal
@@ -273,16 +273,17 @@
 	if(alien == IS_DIONA)
 		return
 	M.status_flags |= STATUS_FAKEDEATH
+	addtimer(CALLBACK(M, __really_shitty_zombie_powder_shim), 0.5 SECONDS)
 	M.adjustOxyLoss(3 * removed)
-	M.afflict_paralyze(20 * 10)
+	M.afflict_paralyze(20 SECONDS)
 	M.silent = max(M.silent, 10)
 	M.tod = stationtime2text()
 
-/datum/reagent/toxin/zombiepowder/Destroy()
-	if(holder && holder.my_atom && ismob(holder.my_atom))
-		var/mob/M = holder.my_atom
-		M.status_flags &= ~STATUS_FAKEDEATH
-	return ..()
+/mob/living/carbon/proc/__really_shitty_zombie_powder_shim()
+	if(bloodstr.has_reagent(/datum/reagent/toxin/zombiepowder))
+		return
+	status_flags &= ~STATUS_FAKEDEATH
+	update_mobility()
 
 /datum/reagent/toxin/lichpowder
 	name = "Lich Powder"
@@ -299,6 +300,7 @@
 	if(alien == IS_DIONA)
 		return
 	M.status_flags |= STATUS_FAKEDEATH
+	addtimer(CALLBACK(M, __really_shitty_lich_powder_shim), 0.5 SECONDS)
 	M.adjustOxyLoss(1 * removed)
 	M.silent = max(M.silent, 10)
 	M.tod = stationtime2text()
@@ -307,11 +309,11 @@
 		M.visible_message("[M] wheezes.", "You wheeze sharply... it's cold.")
 		M.bodytemperature = max(M.bodytemperature - 10 * TEMPERATURE_DAMAGE_COEFFICIENT, T0C - 10)
 
-/datum/reagent/toxin/lichpowder/Destroy()
-	if(holder && holder.my_atom && ismob(holder.my_atom))
-		var/mob/M = holder.my_atom
-		M.status_flags &= ~STATUS_FAKEDEATH
-	return ..()
+/mob/living/carbon/proc/__really_shitty_lich_powder_shim()
+	if(bloodstr.has_reagent(/datum/reagent/toxin/lichpowder))
+		return
+	status_flags &= ~STATUS_FAKEDEATH
+	update_mobility()
 
 /datum/reagent/toxin/fertilizer //Reagents used for plant fertilizers.
 	name = "fertilizer"
