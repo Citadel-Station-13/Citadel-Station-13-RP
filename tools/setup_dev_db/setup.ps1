@@ -8,7 +8,7 @@ function ExtractVersion {
 	throw "Couldn't find value for $Key in $Path"
 }
 
-function ResolveMariadbURL {
+function ResolveMariaDBURL {
 	param([string] $Version)
 	return "https://mirror.rackspace.com/mariadb//mariadb-$Version/winx64-packages/mariadb-$Version-winx64.zip"
 }
@@ -18,26 +18,49 @@ function ResolveFlywayURL {
 	return "https://download.red-gate.com/maven/release/com/redgate/flyway/flyway-commandline/$Version/flyway-commandline-$Version-windows-x64.zip"
 }
 
-function
+# Path is a /path/to/folder
+# Archive will be temporarily downloaded as /path/to/folder.zip
+function PullURLAndUnpack {
+	param([string] $URL, [string] $Path)
+	Remove-Item -Path "$Path.zip"
+	Invoke-WebRequest `
+		"$URL" `
+		-OutFile "$Path.zip" `
+		-ErrorAction Stop
+	Expand-Archive "$Path.zip" -DestinationPath "$Path"
+}
 
 $ToolRoot = Split-Path $script:MyInvocation.MyCommand.Path
 
 $MARIADB_VERSION = ExtractVersion -Path "$ToolRoot/../../dependencies.sh" -Key "MARIADB_VERSION"
 $FLYWAY_VERSION = ExtractVersion -Path "$ToolRoot/../../dependencies.sh" -Key "FLYWAY_VERSION"
 
-$MYSQLD_PATH = "$ToolRoot/"
-$FLYWAY_PATH = ""
+$MARIADB_FOLDER = "$ToolRoot/.cache/mariadb/$MARIADB_VERSION"
+$FLYWAY_FOLDER = "$ToolRoot/.cache/flyway/$FLYWAY_VERSION"
+
+$MYSQLD_PATH = "$MARIADB_FOLDER/"
+$FLYWAY_PATH = "$FLYWAY_FOLDER/"
 
 # GET mariadb IF NOT EXISTS
 
 if(!(Test-Path $MYSQLD_PATH -PathType Leaf)) {
-
+	$MARIADB_URL = ResolveMariaDBURL $MARIADB_VERSION
+	PullURLAndUnpack $MARIADB_URL $MARIADB_FOLDER
+	if(!(Test-Path $MYSQLD_PATH -PathType Leaf)) {
+		Write-Error "Failed to find '$MYSQLD_PATH' after unpacking."
+		exit 1
+	}
 }
 
 # GET flyway IF NOT EXISTS
 
 if(!(Test-Path $FLYWAY_PATH -PathType Leaf)) {
-
+	$FLYWAY_URL = ResolveMariaDBURL $FLYWAY_VERSION
+	PullURLAndUnpack $FLYWAY_URL $FLYWAY_FOLDER
+	if(!(Test-Path $FLYWAY_PATH -PathType Leaf)) {
+		Write-Error "Failed to find '$FLYWAY_PATH' after unpacking."
+		exit 1
+	}
 }
 
 # run database
