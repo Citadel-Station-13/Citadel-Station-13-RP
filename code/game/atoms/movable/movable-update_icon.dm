@@ -38,6 +38,8 @@
 
 /**
  * Immediate transform modify.
+ *
+ * todo: this should use apply_transform and use update icon flags or something, like NO_ANIMATIONS
  */
 /atom/movable/proc/set_transform(matrix/new_transform)
 	var/matrix/old_transform = transform
