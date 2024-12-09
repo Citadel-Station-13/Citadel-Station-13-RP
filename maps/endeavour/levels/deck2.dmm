@@ -11044,13 +11044,13 @@
 /turf/simulated/wall/prepainted/medical,
 /area/maintenance/research)
 "gWJ" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
 /obj/effect/floor_decal/borderfloorwhite/corner{
 	dir = 4
 	},
 /obj/effect/floor_decal/corner/paleblue/bordercorner{
+	dir = 4
+	},
+/obj/structure/disposalpipe/junction{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/white,
@@ -11869,12 +11869,6 @@
 /obj/machinery/door/airlock/glass,
 /turf/simulated/floor/tiled/techfloor,
 /area/crew_quarters/cafeteria)
-"hsE" = (
-/obj/map_helper/electrochromatic_linker{
-	id = "robotics-outer"
-	},
-/turf/space/basic,
-/area/space)
 "hui" = (
 /obj/machinery/atmospherics/pipe/manifold/visible/yellow{
 	dir = 1
@@ -12462,14 +12456,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/medical/virology)
-"hLz" = (
-/obj/machinery/button/windowtint{
-	id = "robotics-outer";
-	pixel_x = -22;
-	pixel_y = 32
-	},
-/turf/space/basic,
-/area/space)
 "hLV" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -15675,10 +15661,6 @@
 /area/medical/reception)
 "jUZ" = (
 /turf/simulated/floor/wood,
-/area/endeavour/hallway/d2afthall)
-"jVj" = (
-/obj/machinery/computer/arcade,
-/turf/simulated/floor/carpet/bcarpet,
 /area/endeavour/hallway/d2afthall)
 "jVn" = (
 /obj/structure/cable/green{
@@ -20245,9 +20227,6 @@
 	},
 /obj/effect/floor_decal/borderfloorwhite,
 /obj/effect/floor_decal/corner/paleblue/border,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply,
 /obj/structure/cable/green{
@@ -22111,14 +22090,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology)
-"ojU" = (
-/obj/machinery/button/windowtint{
-	id = "robotics-inner";
-	pixel_x = -22;
-	pixel_y = 24
-	},
-/turf/space/basic,
-/area/space)
 "ojY" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -33829,11 +33800,20 @@
 /turf/simulated/floor/tiled,
 /area/rnd/hallway)
 "vwz" = (
-/obj/map_helper/electrochromatic_linker{
-	id = "robotics-inner"
+/obj/structure/cable/green{
+	icon_state = "4-8"
 	},
-/turf/space/basic,
-/area/space)
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/effect/floor_decal/borderfloorwhite,
+/obj/effect/floor_decal/corner/paleblue/border,
+/obj/structure/disposalpipe/segment,
+/turf/simulated/floor/tiled/white,
+/area/medical/sleeper)
 "vwR" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/research{
@@ -45434,7 +45414,7 @@ qiH
 cNW
 cNW
 ymb
-eZZ
+uwU
 xIf
 xIf
 huY
@@ -46031,7 +46011,7 @@ qpq
 qpq
 tvV
 oaU
-jVj
+sNK
 jbC
 xDZ
 jUZ
@@ -52963,7 +52943,7 @@ mDp
 mDp
 mDp
 pRW
-hsE
+pRW
 pRW
 pRW
 pRW
@@ -53033,7 +53013,7 @@ whZ
 dxA
 uVY
 gWJ
-ggO
+vwz
 jAX
 gdj
 iJo
@@ -53353,7 +53333,7 @@ mDp
 pRW
 pRW
 pRW
-hLz
+pRW
 pRW
 pRW
 pRW
@@ -53549,7 +53529,7 @@ pRW
 pRW
 pRW
 pRW
-ojU
+pRW
 pRW
 pRW
 pRW
@@ -53744,7 +53724,7 @@ pRW
 pRW
 pRW
 pRW
-vwz
+pRW
 pRW
 pRW
 qBd

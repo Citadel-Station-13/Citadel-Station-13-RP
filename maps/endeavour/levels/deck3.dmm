@@ -3401,6 +3401,13 @@
 	},
 /turf/simulated/floor/tiled,
 /area/security/hanger)
+"cDv" = (
+/obj/machinery/station_map{
+	dir = 4;
+	pixel_x = -32
+	},
+/turf/simulated/floor/tiled,
+/area/quartermaster/foyer)
 "cEz" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -10594,10 +10601,6 @@
 /turf/simulated/wall/prepainted,
 /area/crew_quarters/showers)
 "hrc" = (
-/obj/machinery/station_map{
-	dir = 4;
-	pixel_x = -32
-	},
 /obj/machinery/computer/supplycomp{
 	dir = 4
 	},
@@ -49939,7 +49942,7 @@ izO
 gal
 gal
 dyR
-gal
+cDv
 tVX
 vaA
 gal

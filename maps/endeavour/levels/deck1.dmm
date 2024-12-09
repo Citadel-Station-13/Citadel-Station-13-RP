@@ -5511,11 +5511,10 @@
 /turf/simulated/floor/tiled/old_tile/green,
 /area/shuttle/civvie/general)
 "esr" = (
-/obj/item/radio/intercom{
-	pixel_y = -24
-	},
+/obj/structure/table/bench/wooden,
 /obj/effect/mist,
-/turf/simulated/floor/water/deep/pool,
+/obj/item/radio/intercom/north_mount,
+/turf/simulated/floor/wood,
 /area/endeavour/surfacebase/sauna)
 "est" = (
 /obj/effect/floor_decal/borderfloorblack{
@@ -19318,6 +19317,7 @@
 /area/exploration/explorer_prep)
 "ovE" = (
 /obj/machinery/door/airlock/maintenance/common,
+/obj/map_helper/access_helper/airlock/station/exploration/department,
 /turf/simulated/floor/plating,
 /area/endeavour/exploration/hallway_fore)
 "owg" = (
@@ -22839,13 +22839,13 @@
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d1afthall)
 "rln" = (
-/obj/machinery/air_alarm{
-	dir = 1;
-	pixel_y = -22;
-	target_temperature = 312.15
-	},
+/obj/structure/table/bench/wooden,
 /obj/effect/mist,
-/turf/simulated/floor/water/pool,
+/obj/machinery/air_alarm{
+	frequency = 1441;
+	pixel_y = 22
+	},
+/turf/simulated/floor/wood,
 /area/endeavour/surfacebase/sauna)
 "rlA" = (
 /obj/machinery/door/firedoor{
@@ -23620,11 +23620,6 @@
 "rVI" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
-	},
-/obj/machinery/button/windowtint{
-	dir = 4;
-	id = "sauna_tint";
-	pixel_x = -25
 	},
 /obj/structure/table/bench/wooden,
 /obj/effect/mist,
@@ -56248,7 +56243,7 @@ maa
 maa
 maa
 dIE
-pGO
+rln
 job
 job
 job
@@ -56447,7 +56442,7 @@ job
 job
 iQS
 iQS
-rln
+iQS
 dIE
 cEb
 hYO
@@ -56830,12 +56825,12 @@ byt
 maa
 maa
 dIE
-pGO
-job
-job
-iQS
-iQS
 esr
+job
+job
+iQS
+iQS
+kim
 vdw
 cEb
 hAP
