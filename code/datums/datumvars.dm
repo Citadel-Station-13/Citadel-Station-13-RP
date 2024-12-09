@@ -3,10 +3,7 @@
  */
 /datum/proc/vv_delete()
 	. = TRUE
-	// incase qdel returns QDEL_HINT_HARDDEL_NOW
-	var/datum/deleting = src
-	src = null
-	qdel(deleting)
+	qdel(src)
 
 /datum/proc/CanProcCall(procname)
 	return TRUE
