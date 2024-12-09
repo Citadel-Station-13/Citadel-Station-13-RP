@@ -11822,6 +11822,12 @@
 "imX" = (
 /turf/simulated/floor/carpet/bcarpet,
 /area/crew_quarters/sleep/Dorm_9)
+"inp" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/disposalpipe/segment,
+/turf/simulated/floor/tiled/dark,
+/area/security/lobby)
 "inw" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/machinery/camera/network/cargo{
@@ -26337,12 +26343,6 @@
 	},
 /turf/simulated/floor/tiled/old_tile/gray,
 /area/security/range)
-"sFM" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/structure/disposalpipe/segment,
-/turf/simulated/floor/tiled/dark,
-/area/security/lobby)
 "sFQ" = (
 /obj/machinery/light/small{
 	dir = 1
@@ -49175,11 +49175,11 @@ ojU
 jqq
 aVb
 suB
-sFM
-sFM
-sFM
-sFM
-sFM
+inp
+inp
+inp
+inp
+inp
 pwu
 kps
 quZ

@@ -2522,15 +2522,11 @@
 /turf/simulated/floor/carpet/arcadecarpet,
 /area/endeavour/hallway/d1aftmaint)
 "cdv" = (
-/obj/effect/floor_decal/borderfloor{
-	dir = 8
-	},
-/obj/effect/floor_decal/corner/blue/border{
-	dir = 8
-	},
-/obj/machinery/suit_storage_unit/search_and_rescue,
-/turf/simulated/floor/tiled/white,
-/area/exploration/medical)
+/obj/effect/floor_decal/borderfloorblack,
+/obj/effect/floor_decal/corner/navgold/border,
+/obj/machinery/computer/timeclock/premade/south,
+/turf/simulated/floor/tiled/steel,
+/area/endeavour/hallway/d1starboardafthall)
 "cdx" = (
 /obj/structure/cable{
 	icon_state = "2-8"
@@ -11262,11 +11258,27 @@
 /turf/simulated/floor/tiled,
 /area/hallway/secondary/docking_hallway)
 "iwR" = (
-/obj/effect/floor_decal/borderfloorblack,
-/obj/effect/floor_decal/corner/navgold/border,
-/obj/machinery/computer/timeclock/premade/south,
-/turf/simulated/floor/tiled/steel,
-/area/endeavour/hallway/d1starboardafthall)
+/obj/machinery/camera/network/exploration{
+	dir = 4
+	},
+/obj/structure/closet/secure_closet/sar{
+	req_access = list(5);
+	req_one_access = list(5)
+	},
+/obj/item/storage/box/pillbottles,
+/obj/item/storage/box/syringes,
+/obj/item/tank/jetpack/oxygen,
+/obj/item/storage/backpack/parachute,
+/obj/item/clothing/accessory/permit/gun/planetside,
+/obj/effect/floor_decal/borderfloor{
+	dir = 9
+	},
+/obj/effect/floor_decal/corner/blue/border{
+	dir = 9
+	},
+/obj/effect/floor_decal/industrial/outline/blue,
+/turf/simulated/floor/tiled/monotile,
+/area/exploration/medical)
 "ixp" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -12617,26 +12629,16 @@
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d1starboardamidhall)
 "jwy" = (
-/obj/machinery/light{
-	dir = 8
-	},
-/obj/structure/closet/secure_closet/sar{
-	req_access = list(5);
-	req_one_access = list(5)
-	},
-/obj/item/storage/box/pillbottles,
-/obj/item/storage/box/syringes,
-/obj/item/tank/jetpack/oxygen,
-/obj/item/storage/backpack/parachute,
-/obj/item/clothing/accessory/permit/gun/planetside,
 /obj/effect/floor_decal/borderfloor{
-	dir = 8
+	dir = 1
 	},
 /obj/effect/floor_decal/corner/blue/border{
-	dir = 8
+	dir = 1
 	},
-/obj/effect/floor_decal/industrial/outline/blue,
-/turf/simulated/floor/tiled/monotile,
+/obj/structure/table/rack/shelf,
+/obj/item/tank/oxygen,
+/obj/item/suit_cooling_unit,
+/turf/simulated/floor/tiled/white,
 /area/exploration/medical)
 "jxc" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -13821,10 +13823,6 @@
 	dir = 10
 	},
 /obj/machinery/camera/network/civilian{
-	dir = 4
-	},
-/obj/machinery/disposal,
-/obj/structure/disposalpipe/trunk{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/steel,
@@ -16657,16 +16655,26 @@
 /turf/simulated/floor/plating,
 /area/maintenance/asmaint)
 "mxK" = (
+/obj/machinery/light{
+	dir = 8
+	},
+/obj/structure/closet/secure_closet/sar{
+	req_access = list(5);
+	req_one_access = list(5)
+	},
+/obj/item/storage/box/pillbottles,
+/obj/item/storage/box/syringes,
+/obj/item/tank/jetpack/oxygen,
+/obj/item/storage/backpack/parachute,
+/obj/item/clothing/accessory/permit/gun/planetside,
 /obj/effect/floor_decal/borderfloor{
-	dir = 1
+	dir = 8
 	},
 /obj/effect/floor_decal/corner/blue/border{
-	dir = 1
+	dir = 8
 	},
-/obj/structure/table/rack/shelf,
-/obj/item/tank/oxygen,
-/obj/item/suit_cooling_unit,
-/turf/simulated/floor/tiled/white,
+/obj/effect/floor_decal/industrial/outline/blue,
+/turf/simulated/floor/tiled/monotile,
 /area/exploration/medical)
 "myg" = (
 /obj/effect/floor_decal/spline/plain,
@@ -18969,7 +18977,7 @@
 /obj/effect/floor_decal/corner/navblue/border{
 	dir = 9
 	},
-/obj/machinery/vending/fitness,
+/obj/machinery/vending/snack,
 /turf/simulated/floor/tiled/steel_ridged,
 /area/endeavour/hallway/d1afthall)
 "oiv" = (
@@ -21764,7 +21772,7 @@
 /area/endeavour/hallway/d1fwdhall)
 "qzb" = (
 /obj/structure/disposalpipe/segment{
-	dir = 2;
+	dir = 4;
 	icon_state = "pipe-c"
 	},
 /turf/simulated/floor/tiled/steel,
@@ -23414,12 +23422,12 @@
 /area/shuttle/civvie/general)
 "rKP" = (
 /obj/effect/floor_decal/borderfloor{
-	dir = 10
+	dir = 8
 	},
 /obj/effect/floor_decal/corner/blue/border{
-	dir = 10
+	dir = 8
 	},
-/obj/machinery/portable_atmospherics/canister/oxygen,
+/obj/machinery/suit_storage_unit/search_and_rescue,
 /turf/simulated/floor/tiled/white,
 /area/exploration/medical)
 "rLb" = (
@@ -24755,6 +24763,13 @@
 	},
 /turf/simulated/floor/plating,
 /area/endeavour/hallway/d1aftmaint)
+"sST" = (
+/obj/structure/disposalpipe/segment{
+	dir = 8;
+	icon_state = "pipe-c"
+	},
+/turf/simulated/floor/tiled/steel,
+/area/endeavour/hallway/d1afthall)
 "sTF" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -25299,6 +25314,16 @@
 /obj/random/tech_supply,
 /turf/simulated/floor/tiled,
 /area/maintenance/tool_storage)
+"tqY" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 10
+	},
+/obj/effect/floor_decal/corner/blue/border{
+	dir = 10
+	},
+/obj/machinery/portable_atmospherics/canister/oxygen,
+/turf/simulated/floor/tiled/white,
+/area/exploration/medical)
 "trn" = (
 /obj/item/barrier_tape_segment/engineering,
 /obj/structure/cable/green{
@@ -28142,13 +28167,14 @@
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d1starboardamidhall)
 "vnQ" = (
-/obj/machinery/vending/snack,
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
 	},
 /obj/effect/floor_decal/corner/navblue/border{
 	dir = 1
 	},
+/obj/machinery/disposal,
+/obj/structure/disposalpipe/trunk,
 /turf/simulated/floor/tiled/steel_ridged,
 /area/endeavour/hallway/d1afthall)
 "voy" = (
@@ -29600,28 +29626,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/bridge/office)
-"wrW" = (
-/obj/machinery/camera/network/exploration{
-	dir = 4
-	},
-/obj/structure/closet/secure_closet/sar{
-	req_access = list(5);
-	req_one_access = list(5)
-	},
-/obj/item/storage/box/pillbottles,
-/obj/item/storage/box/syringes,
-/obj/item/tank/jetpack/oxygen,
-/obj/item/storage/backpack/parachute,
-/obj/item/clothing/accessory/permit/gun/planetside,
-/obj/effect/floor_decal/borderfloor{
-	dir = 9
-	},
-/obj/effect/floor_decal/corner/blue/border{
-	dir = 9
-	},
-/obj/effect/floor_decal/industrial/outline/blue,
-/turf/simulated/floor/tiled/monotile,
-/area/exploration/medical)
 "wsZ" = (
 /obj/structure/catwalk,
 /obj/structure/cable/orange{
@@ -36639,12 +36643,12 @@ xRj
 xRj
 dkX
 aHh
-wrW
-jwy
-cdv
-cdv
-quA
+iwR
+mxK
 rKP
+rKP
+quA
+tqY
 bkR
 euS
 euS
@@ -37415,7 +37419,7 @@ xRj
 fOo
 usG
 aHh
-mxK
+jwy
 xws
 myn
 pAX
@@ -37609,7 +37613,7 @@ xRj
 usG
 usY
 aHh
-mxK
+jwy
 mfS
 azC
 azC
@@ -43061,7 +43065,7 @@ cCy
 jWs
 cqc
 vnQ
-kHh
+sST
 mEO
 rkY
 lEq
@@ -48119,7 +48123,7 @@ lxO
 hnl
 aej
 iuy
-iwR
+cdv
 dsD
 ikV
 jZL
