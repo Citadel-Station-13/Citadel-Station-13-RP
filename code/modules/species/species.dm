@@ -752,7 +752,7 @@ GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
  * this is a destructive proc and will erase incompatible blood.
  */
 /datum/species/proc/create_blood(mob/living/carbon/human/H)
-	H.make_blood()
+	H.create_blood()
 	if(H.vessel.total_volume < blood_volume)
 		H.vessel.maximum_volume = blood_volume
 		H.vessel.add_reagent("blood", blood_volume - H.vessel.total_volume)

@@ -110,13 +110,13 @@
 								if(!do_mob(user, target, time))
 									drawing = 0
 									return
-							B = T.take_blood(src, amount)
+							B = T.take_blood_legacy(src, amount)
 							drawing = 0
 					else
 						if(!do_mob(user, target, time))
 							drawing = 0
 							return
-						B = T.take_blood(src,amount)
+						B = T.take_blood_legacy(src,amount)
 						drawing = 0
 
 					if (B && !(B in reagents.reagent_list))

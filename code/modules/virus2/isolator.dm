@@ -62,7 +62,7 @@
 	var/list/pathogen_pool = list()
 	if(sample)
 		var/datum/blood_mixture/mixture = sample.reagents.get_reagent_data(/datum/reagent/blood)
-		for(var/datum/blood_data/blood_data as anything in mixture.fragments)
+		for(var/datum/blood_fragment/blood_data as anything in mixture.fragments)
 			var/list/virus = blood_data.legacy_virus2
 			for (var/ID in virus)
 				var/datum/disease2/disease/V = virus[ID]
@@ -160,7 +160,7 @@
 			P.info += "<hr>"
 
 			var/datum/blood_mixture/mixture = sample.reagents.get_reagent_data(/datum/reagent/blood)
-			for(var/datum/blood_data/blood_data as anything in mixture.fragments)
+			for(var/datum/blood_fragment/blood_data as anything in mixture.fragments)
 				var/mob/living/carbon/human/D = blood_data.legacy_donor
 				P.info += "<large><u>[D.get_true_species_name()] [B.name]:</u></large><br>[blood_data.legacy_blood_dna]<br>"
 

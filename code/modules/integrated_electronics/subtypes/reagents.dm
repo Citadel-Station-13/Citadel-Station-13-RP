@@ -197,7 +197,7 @@
 			if(do_atom(src, L, extra_checks=CALLBACK(L, TYPE_PROC_REF(/mob/living, can_inject),null,0,BP_TORSO,bypass),uninterruptible = bypass))
 				var/mob/living/carbon/LB = L
 				var/datum/reagent/B
-				B = LB.take_blood(src, tramount)
+				B = LB.take_blood_legacy(src, tramount)
 				if(B)
 					reagents.reagent_list += B
 					reagents.update_total()

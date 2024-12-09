@@ -119,7 +119,7 @@
 					if(H.species.species_flags & NO_BLOOD)
 						bloodtrail = 0
 					else
-						var/blood_volume = H.vessel.get_reagent_amount("blood")
+						var/blood_volume = H.blood_holder.get_total_volume()
 						if(blood_volume < H.species?.blood_volume * H.species?.blood_level_fatal)
 							bloodtrail = 0	//Most of it's gone already, just leave it be
 						else
@@ -144,7 +144,7 @@
 							if(H.species.species_flags & NO_BLOOD)
 								bloodtrail = 0
 							else
-								var/blood_volume = H.vessel.get_reagent_amount("blood")
+								var/blood_volume = H.blood_holder.get_total_volume()
 								if(blood_volume < H.species?.blood_volume * H.species?.blood_level_fatal)
 									bloodtrail = 0	//Most of it's gone already, just leave it be
 								else

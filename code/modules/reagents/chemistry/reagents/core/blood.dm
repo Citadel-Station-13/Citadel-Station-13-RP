@@ -1,3 +1,71 @@
+// todo: stuff in this file might need to be moved somewhere else, this being in reagents/core is weird.
+
+/**
+ * Blood holder.
+ *
+ * This is basically just a blood mixture datum but permanent. Caching is more pronounced,
+ * and things can be stored that otherwise wouldn't be because we're considered cheap to store.
+ *
+ * * We own all fragments in us. We always copy when giving references, and always copy
+ *   when accepting references.
+ */
+/datum/blood_holder
+	/// Our host blood.
+	var/datum/blood_fragment/host_blood
+	/// Amount of host blood we have
+	var/host_blood_volume = 0
+	/// Our fragments that aren't ourselves, associated to amount.
+	var/list/datum/blood_fragment/guest_bloods
+	/// Total amount of guest blood volume
+	var/guest_blood_volume = 0
+
+	//! legacy crap !//
+	var/list/legacy_antibodies
+	var/list/legacy_virus2
+	var/legacy_trace_chem
+	//! end !//
+
+/datum/blood_holder/proc/set_host_fragment_to(datum/blood_fragment/fragment)
+	host_blood = fragment.clone()
+
+/datum/blood_holder/proc/set_host_volume(amount)
+	host_blood_volume = amount
+
+/datum/blood_holder/proc/adjust_host_volume(amount)
+	host_blood_volume = max(host_blood_volume + amount, 0)
+
+/datum/blood_holder/proc/set_volume(datum/blood_fragment/fragment, amount)
+	#warn impl
+
+/datum/blood_holder/proc/adjust_volume(datum/blood_fragment/fragment, amount)
+	#warn impl
+
+/datum/blood_holder/proc/get_total_volume()
+	return host_blood_volume + guest_blood_volume
+
+/**
+ * Takes a blood mixture from us.
+ *
+ * * Expensive.
+ *
+ * @params
+ * * amount - amount to take
+ * * infinite - don't actually take any, and allow drawing any amount
+ *
+ * @return mixture taken
+ */
+/datum/blood_holder/proc/take_blood_mixture(amount, infinite) as /datum/blood_mixture
+	var/datum/blood_mixture/creating = new
+	if(legacy_antibodies)
+		creating.legacy_antibodies = legacy_antibodies.Copy()
+	if(legacy_virus2)
+		creating.legacy_virus2 = legacy_virus2.Copy()
+	if(legacy_trace_chem)
+		creating.legacy_trace_chem = legacy_trace_chem
+	creating.fragments = list()
+	#warn impl fragments self/others
+	return creating
+
 /**
  * Reagent blood data
  */
@@ -7,7 +75,15 @@
 	#warn uhh
 	var/legacy_trace_chem
 
-	var/list/datum/blood_data/fragments
+	/// Fragments, associated to **ratio of total**.
+	var/list/datum/blood_fragment/fragments
+
+	/// The total amount of all of our fragments
+	/// * Only useful in a return-value context. This is to avoid needing to recalcualte this.
+	/// * This can, in-fact, be '0'.
+	/// * In a reagent / storage context, the reagent's volume will always supercede this.
+	/// * This is not copied during a clone, as it's purely return-value context.
+	var/tmp/ctx_return_amount = 0
 
 /datum/blood_mixture/clone(include_contents)
 	var/datum/blood_mixture/copy = new /datum/blood_mixture
@@ -19,21 +95,16 @@
 		copy.legacy_virus2 = legacy_virus2
 	if(length(fragments))
 		copy.fragments = list()
-		for(var/datum/blood_data/data as anything in fragments)
-			copy.fragments += data.clone()
+		for(var/datum/blood_fragment/data as anything in fragments)
+			copy.fragments[data.clone()] = fragments[data]
 	return copy
 
 /**
  * Reagent blood data
  */
-/datum/blood_data
+/datum/blood_fragment
 	/// the blood's color
 	var/color
-
-	/// % of the reagent this is, if in a reagent context
-	///
-	/// * This means nothing outside of a reagent context.
-	var/reagent_ctx_ratio
 
 	//! LEGACY FIELDS
 	var/legacy_species
@@ -43,11 +114,9 @@
 	var/legacy_name
 	//! END
 
-/datum/blood_data/clone(include_contents)
-	var/datum/blood_data/copy = new /datum/blood_data
+/datum/blood_fragment/clone(include_contents)
+	var/datum/blood_fragment/copy = new /datum/blood_fragment
 	copy.color = color
-	if(reagent_ctx_ratio)
-		copy.reagent_ctx_ratio = reagent_ctx_ratio
 	if(legacy_blood_dna)
 		copy.legacy_blood_dna = legacy_blood_dna
 	if(legacy_blood_type)
@@ -61,16 +130,35 @@
 	return copy
 
 /**
+ * Checks if other is equivalent to self.
+ *
+ * * We intentionally do not check color. It's too expensive to, given this is used for
+ *   deduping.
+ * * We intentionally do not check name. It's too expensive to, given this is used for
+ *   deduping.
+ * * This implies that color / name should implicitly be the same if this proc returns TRUE
+ *   for two given blood fragments.
+ */
+/datum/blood_fragment/proc/equivalent(datum/blood_fragment/other)
+	if(other.legacy_species != src.legacy_species)
+		return FALSE
+	if(other.legacy_blood_dna != src.legacy_blood_dna)
+		return FALSE
+	if(other.legacy_blood_type != src.legacy_blood_type)
+		return FALSE
+	return TRUE
+
+/**
  * Blood.
  *
  * I'm not sure what you expected this to say.
  *
- * * `data_initializer` for this is a `/datum/blood_data` instance.
+ * * `data_initializer` for this is a `/datum/blood_fragment` instance.
  *
  * Data format:
  *
  * list(
- *     /datum/blood_data/reagent instance,
+ *     /datum/blood_fragment/reagent instance,
  *     ...
  * )
  */
@@ -96,7 +184,7 @@
 
 /datum/reagent/blood/mix_data(datum/blood_mixture/old_data, old_volume, datum/blood_mixture/new_data, new_volume, datum/reagent_holder/holder)
 	. = ..()
-	#warn impl ; hard limit of 10 blood instances
+	#warn impl ; hard limit of 10 blood instances. also, dedupe. also, never evict holder's blood,
 
 /datum/reagent/blood/touch_turf(turf/simulated/T)
 	if(!istype(T) || volume < 3)

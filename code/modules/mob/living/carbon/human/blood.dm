@@ -11,11 +11,14 @@ var/const/BLOOD_VOLUME_SURVIVE = 40
 var/const/CE_STABLE_THRESHOLD = 0.5
 */
 
+#warn annihilate this
 /mob/living/carbon/human/var/datum/reagent_holder/vessel // Container for blood and BLOOD ONLY. Do not transfer other chems here.
 /mob/living/carbon/human/var/var/pale = 0          // Should affect how mob sprite is drawn, but currently doesn't.
 
 //Initializes blood vessels
-/mob/living/carbon/human/proc/make_blood()
+/mob/living/carbon/human/proc/create_blood()
+	..()
+	#warn check in ..() for vessel / organ maybe?
 	if(vessel)
 		return
 
@@ -30,27 +33,6 @@ var/const/CE_STABLE_THRESHOLD = 0.5
 
 	reset_blood_to_species()
 
-/**
- * Hard resets our data to our 'natural' blood.
- *
- * @params
- * * do_not_regenerate - if set, do not reset to species.blood_volume, instead use current
- */
-/mob/living/carbon/human/proc/reset_blood_to_species(do_not_regenerate)
-	var/total_volume = 0
-	for(var/datum/reagent/blood/god_damnit_fine_well_loop_through_everything in vessel.get_reagent_datums())
-		total_volume += vessel.reagent_volumes[god_damnit_fine_well_loop_through_everything.id]
-		vessel.remove_reagent(god_damnit_fine_well_loop_through_everything.id)
-
-	var/datum/blood_mixture/mixture = new
-	mixture.legacy_trace_chem = null
-	mixture.legacy_virus2 = null
-	mixture.legacy_antibodies = list()
-	var/datum/blood_data/our_fragment = create_self_blood_data()
-	our_fragment.reagent_ctx_ratio = 1
-	mixture.fragments = list(our_fragment)
-
-	vessel.add_reagent(/datum/reagent/blood, do_not_regenerate ? total_volume : species.blood_volume, mixture)
 
 /mob/living/carbon/human/proc/reset_blood_to_species_if_needed(do_not_regenerate)
 	if(species.species_flags & NO_BLOOD)
@@ -72,22 +54,15 @@ var/const/CE_STABLE_THRESHOLD = 0.5
 
 	if(stat != DEAD && bodytemperature >= 170)	//Dead or cryosleep people do not pump the blood.
 
-		var/blood_volume_raw = vessel.get_reagent_amount("blood")
+		var/blood_volume_raw = blood_holder.get_total_volume()
 		var/blood_volume = round((blood_volume_raw/species.blood_volume)*100) // Percentage.
+
+		#warn assimilate other bloods; no hemolytic reaction system yet
 
 		//Blood regeneration if there is some space
 		if(blood_volume_raw < species.blood_volume)
-			var/datum/reagent/blood/B = locate() in vessel.reagent_list //Grab some blood
-			if(B) // Make sure there's some blood at all
-				if(B.data["donor"] != src) //If it's not theirs, then we look for theirs
-					for(var/datum/reagent/blood/D in vessel.reagent_list)
-						if(D.data["donor"] == src)
-							B = D
-							break
-
-				B.volume += 0.1 // regenerate blood VERY slowly
-				if(CE_BLOODRESTORE in chem_effects)
-					B.volume += chem_effects[CE_BLOODRESTORE]
+			var/regenerating_volume = 0.1 + max(0, chem_effects[CE_BLOODRESTORE])
+			blood_holder.adjust_host_volume(regenerating_volume)
 
 		// Damaged heart virtually reduces the blood volume, as the blood isn't
 		// being pumped properly anymore.
@@ -225,8 +200,8 @@ var/const/CE_STABLE_THRESHOLD = 0.5
 	if(!amt)
 		return 0
 
-	if(amt >= vessel.get_reagent_amount("blood"))
-		amt = vessel.get_reagent_amount("blood") - 1	// Bit of a safety net; it's impossible to add blood if there's not blood already in the vessel.
+	if(amt >= blood_holder.get_total_volume())
+		amt = blood_holder.get_total_volume() - 1	// Bit of a safety net; it's impossible to add blood if there's not blood already in the vessel.
 
 	return vessel.remove_reagent("blood",amt * (src.mob_size/MOB_MEDIUM))
 
@@ -235,7 +210,7 @@ var/const/CE_STABLE_THRESHOLD = 0.5
 ****************************************************/
 
 //Gets blood from mob to the container, preserving all data in it.
-/mob/living/carbon/proc/take_blood(obj/item/reagent_containers/container, var/amount)
+/mob/living/carbon/proc/take_blood_legacy(obj/item/reagent_containers/container, var/amount)
 
 	var/datum/reagent/B = get_blood(container.reagents)
 	if(!B)
@@ -270,16 +245,16 @@ var/const/CE_STABLE_THRESHOLD = 0.5
 	return B
 
 //For humans, blood does not appear from blue, it comes from vessels.
-/mob/living/carbon/human/take_blood(obj/item/reagent_containers/container, var/amount)
+/mob/living/carbon/human/take_blood_legacy(obj/item/reagent_containers/container, var/amount)
 
 	if(!should_have_organ(O_HEART))
 		return null
 
-	if(vessel.get_reagent_amount("blood") < amount)
+	if(blood_holder.get_total_volume() < amount)
 		return null
 
-	if(amount >= vessel.get_reagent_amount("blood"))
-		amount = vessel.get_reagent_amount("blood") - 1	// Bit of a safety net; it's impossible to add blood if there's not blood already in the vessel.
+	if(amount >= blood_holder.get_total_volume())
+		amount = blood_holder.get_total_volume() - 1	// Bit of a safety net; it's impossible to add blood if there's not blood already in the vessel.
 
 	. = ..()
 	vessel.remove_reagent("blood",amount) // Removes blood if human
