@@ -12,6 +12,11 @@ Only works on windows right now, if you're on linux you should know how to set u
 
 If you do, and you get breached / bad things happen, I will not provide any help or condolences. This is purely a dev tool. **It is the responsibility of the server owner to set up a proper production database and to maintain it.**
 
+## Defaults
+
+* The default root password is set to `password`.
+* The default database is not secured at all.
+
 ## License
 
 This entire folder is under the MIT license.

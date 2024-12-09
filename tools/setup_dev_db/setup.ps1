@@ -42,9 +42,10 @@ $MARIADB_VERSION = ExtractVersion -Path "$ToolRoot/../../dependencies.sh" -Key "
 $FLYWAY_VERSION = ExtractVersion -Path "$ToolRoot/../../dependencies.sh" -Key "FLYWAY_VERSION"
 
 $MARIADB_FOLDER = "$ToolRoot/.cache/mariadb/$MARIADB_VERSION"
+$MARIADB_BIN_FOLDER = "$MARIADB_FOLDER/mariadb-$MARIADB_VERSION-winx64/bin"
 $FLYWAY_FOLDER = "$ToolRoot/.cache/flyway/$FLYWAY_VERSION"
 
-$MYSQLD_PATH = "$MARIADB_FOLDER/mariadb-$MARIADB_VERSION-winx64/bin/mariadbd.exe"
+$MYSQLD_PATH = "$MARIADB_BIN_FOLDER/mariadbd.exe"
 $FLYWAY_PATH = "$FLYWAY_FOLDER/flyway-$FLYWAY_VERSION/flyway.cmd"
 
 # GET mariadb IF NOT EXISTS
@@ -71,4 +72,13 @@ if(!(Test-Path $FLYWAY_PATH -PathType Leaf)) {
 
 # run database
 
-& $ToolRoot/../bootstrap/python_.ps1 $ToolRoot/invoke.py --daemon $MYSQLD_PATH --flyway $FLYWAY_PATH --migrations "../../sql/migrations" $args
+$DATABASE_DATA_DIR_RAW = "$ToolRoot/../../data/setup_dev_db"
+if(!(Test-Path $DATABASE_DATA_DIR_RAW -PathType Container)) {
+	New-Item $DATABASE_DATA_DIR_RAW -ItemType Directory
+	$DATABASE_DATA_DIR = Resolve-Path "$ToolRoot/../../data/setup_dev_db"
+	Write-Output "Bootstrapping database with data directory '$DATABASE_DATA_DIR'."
+	& $MARIADB_BIN_FOLDER/mariadb-install-db.exe -d $DATABASE_DATA_DIR -p password
+}
+$DATABASE_DATA_DIR = Resolve-Path "$ToolRoot/../../data/setup_dev_db"
+
+& $ToolRoot/../bootstrap/python_.ps1 $ToolRoot/invoke.py --dataDir $DATABASE_DATA_DIR --daemon $MYSQLD_PATH --flyway $FLYWAY_PATH --migrations "../../sql/migrations" $args
