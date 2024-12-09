@@ -39,14 +39,14 @@ if __name__ == "__main__":
 
     mysqld: subprocess.Popen | None = subprocess.Popen(
         [],
-        executable="",
+        executable=PATH_TO_MYSQLD,
         stdout=subprocess.PIPE,
         stderr=subprocess.PIPE,
     )
 
     flyway: subprocess.Popen | None = subprocess.Popen(
         [],
-        executable="",
+        executable=PATH_TO_FLYWAY,
         stdout=subprocess.PIPE,
         stderr=subprocess.PIPE,
     )
@@ -86,6 +86,9 @@ if __name__ == "__main__":
                 flyway = None
                 log_message("setup_dev_db", 'flyway exited with code %d' % exited)
 
+        if flyway == None and mysqld == None:
+            keep_running = False
+
         # "this is async right"
         # "yeah"
         # pulls the cover off
@@ -99,8 +102,10 @@ if __name__ == "__main__":
         flyway.send_signal(sig=signal.CTRL_C_EVENT)
 
     # block on mysqld/flyway exiting
-    mysqld_exitcode: int | None = mysqld.wait()
-    log_message("setup_dev_db", 'mysqld exited with code %d' % exited)
-    flyway_exitcode: int | None = flyway.wait()
-    log_message("setup_dev_db", 'flyway exited with code %d' % exited)
+    if mysqld != None:
+        mysqld_exitcode: int | None = mysqld.wait()
+        log_message("setup_dev_db", 'mysqld exited with code %d' % exited)
+    if flyway != None:
+        flyway_exitcode: int | None = flyway.wait()
+        log_message("setup_dev_db", 'flyway exited with code %d' % exited)
 
