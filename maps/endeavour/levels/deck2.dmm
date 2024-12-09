@@ -16106,6 +16106,7 @@
 /area/endeavour/hallway/d2portamidhall)
 "kjj" = (
 /obj/structure/table/standard,
+/obj/item/material/ashtray/glass,
 /turf/simulated/floor/tiled,
 /area/holodeck_control)
 "kjr" = (
@@ -37071,6 +37072,7 @@
 	},
 /obj/machinery/atmospherics/pipe/manifold4w/hidden/scrubbers,
 /obj/structure/table/woodentable,
+/obj/item/material/ashtray/glass,
 /turf/simulated/floor/wood,
 /area/tether/station/public_meeting_room)
 "xtD" = (
