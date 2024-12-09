@@ -3940,6 +3940,9 @@
 /obj/effect/floor_decal/corner/paleblue/bordercorner2{
 	dir = 9
 	},
+/obj/structure/sign/department/morgue{
+	pixel_y = -30
+	},
 /turf/simulated/floor/tiled/white,
 /area/medical/medbay3)
 "cwT" = (

@@ -820,29 +820,13 @@
 /turf/simulated/wall/r_wall/prepainted/exploration,
 /area/exploration/courser_dock)
 "aGL" = (
-/obj/machinery/camera/network/exploration{
-	dir = 4
-	},
 /obj/effect/floor_decal/borderfloor{
-	dir = 9
-	},
-/obj/effect/floor_decal/corner/blue/border{
-	dir = 9
-	},
-/obj/effect/floor_decal/industrial/outline/blue,
-/obj/structure/window/reinforced{
 	dir = 1
 	},
-/obj/structure/closet/secure_closet/sar{
-	req_access = list(5);
-	req_one_access = list(5)
+/obj/effect/floor_decal/corner/blue/border{
+	dir = 1
 	},
-/obj/item/storage/box/pillbottles,
-/obj/item/storage/box/syringes,
-/obj/item/tank/jetpack/oxygen,
-/obj/item/storage/backpack/parachute,
-/obj/item/clothing/accessory/permit/gun/planetside,
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/tiled/white,
 /area/exploration/medical)
 "aHc" = (
 /obj/structure/bed/chair,
@@ -895,6 +879,12 @@
 	pixel_x = -1
 	},
 /obj/structure/curtain/open/shower,
+/obj/effect/floor_decal/steeldecal/steel_decals10{
+	dir = 6
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals10{
+	dir = 5
+	},
 /turf/simulated/floor/tiled,
 /area/exploration/showers)
 "aIl" = (
@@ -1675,9 +1665,6 @@
 	pixel_y = 22
 	},
 /obj/effect/floor_decal/borderfloor{
-	dir = 1
-	},
-/obj/effect/floor_decal/corner/blue/border{
 	dir = 1
 	},
 /obj/machinery/suit_cycler/medical,
@@ -2535,11 +2522,15 @@
 /turf/simulated/floor/carpet/arcadecarpet,
 /area/endeavour/hallway/d1aftmaint)
 "cdv" = (
-/obj/effect/floor_decal/borderfloorblack,
-/obj/effect/floor_decal/corner/navgold/border,
-/obj/machinery/computer/timeclock/premade/south,
-/turf/simulated/floor/tiled/steel,
-/area/endeavour/hallway/d1starboardafthall)
+/obj/effect/floor_decal/borderfloor{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/blue/border{
+	dir = 8
+	},
+/obj/machinery/suit_storage_unit/search_and_rescue,
+/turf/simulated/floor/tiled/white,
+/area/exploration/medical)
 "cdx" = (
 /obj/structure/cable{
 	icon_state = "2-8"
@@ -9042,6 +9033,7 @@
 /obj/machinery/sleeper{
 	dir = 8
 	},
+/obj/effect/floor_decal/industrial/outline,
 /turf/simulated/floor/tiled/white,
 /area/exploration/medical)
 "gOL" = (
@@ -11270,28 +11262,11 @@
 /turf/simulated/floor/tiled,
 /area/hallway/secondary/docking_hallway)
 "iwR" = (
-/obj/machinery/light{
-	dir = 8
-	},
-/obj/effect/floor_decal/borderfloor{
-	dir = 8
-	},
-/obj/effect/floor_decal/corner/blue/border{
-	dir = 8
-	},
-/obj/effect/floor_decal/industrial/outline/blue,
-/obj/structure/window/reinforced,
-/obj/structure/closet/secure_closet/sar{
-	req_access = list(5);
-	req_one_access = list(5)
-	},
-/obj/item/storage/box/pillbottles,
-/obj/item/storage/box/syringes,
-/obj/item/tank/jetpack/oxygen,
-/obj/item/storage/backpack/parachute,
-/obj/item/clothing/accessory/permit/gun/planetside,
-/turf/simulated/floor/tiled/monotile,
-/area/exploration/medical)
+/obj/effect/floor_decal/borderfloorblack,
+/obj/effect/floor_decal/corner/navgold/border,
+/obj/machinery/computer/timeclock/premade/south,
+/turf/simulated/floor/tiled/steel,
+/area/endeavour/hallway/d1starboardafthall)
 "ixp" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -11997,15 +11972,7 @@
 /turf/simulated/floor/tiled,
 /area/exploration/pilot_prep)
 "jag" = (
-/obj/structure/table/rack/shelf,
-/obj/item/tank/oxygen,
-/obj/item/suit_cooling_unit,
-/obj/effect/floor_decal/borderfloor{
-	dir = 8
-	},
-/obj/effect/floor_decal/corner/blue/border{
-	dir = 8
-	},
+/obj/landmark/spawnpoint/job/field_medic,
 /turf/simulated/floor/tiled/white,
 /area/exploration/medical)
 "jbd" = (
@@ -12650,16 +12617,26 @@
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d1starboardamidhall)
 "jwy" = (
+/obj/machinery/light{
+	dir = 8
+	},
+/obj/structure/closet/secure_closet/sar{
+	req_access = list(5);
+	req_one_access = list(5)
+	},
+/obj/item/storage/box/pillbottles,
+/obj/item/storage/box/syringes,
+/obj/item/tank/jetpack/oxygen,
+/obj/item/storage/backpack/parachute,
+/obj/item/clothing/accessory/permit/gun/planetside,
 /obj/effect/floor_decal/borderfloor{
-	dir = 1
+	dir = 8
 	},
 /obj/effect/floor_decal/corner/blue/border{
-	dir = 1
+	dir = 8
 	},
-/obj/structure/table/standard,
-/obj/item/duct_tape_roll,
-/obj/item/hand_labeler,
-/turf/simulated/floor/tiled/white,
+/obj/effect/floor_decal/industrial/outline/blue,
+/turf/simulated/floor/tiled/monotile,
 /area/exploration/medical)
 "jxc" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -13258,7 +13235,9 @@
 	dir = 5
 	},
 /obj/machinery/fire_alarm/north_mount,
-/obj/machinery/suit_storage_unit/search_and_rescue,
+/obj/structure/table/standard,
+/obj/item/duct_tape_roll,
+/obj/item/hand_labeler,
 /turf/simulated/floor/tiled/white,
 /area/exploration/medical)
 "jTR" = (
@@ -15256,6 +15235,7 @@
 /obj/structure/sink{
 	pixel_y = 22
 	},
+/obj/landmark/spawnpoint/job/field_medic,
 /turf/simulated/floor/tiled/white,
 /area/exploration/medical)
 "lth" = (
@@ -16221,7 +16201,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
 	},
-/obj/landmark/spawnpoint/job/field_medic,
 /turf/simulated/floor/tiled/white,
 /area/exploration/medical)
 "mgg" = (
@@ -16678,13 +16657,15 @@
 /turf/simulated/floor/plating,
 /area/maintenance/asmaint)
 "mxK" = (
-/obj/machinery/suit_storage_unit/search_and_rescue,
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
 	},
 /obj/effect/floor_decal/corner/blue/border{
 	dir = 1
 	},
+/obj/structure/table/rack/shelf,
+/obj/item/tank/oxygen,
+/obj/item/suit_cooling_unit,
 /turf/simulated/floor/tiled/white,
 /area/exploration/medical)
 "myg" = (
@@ -20729,6 +20710,7 @@
 /area/endeavour/surfacebase/sauna)
 "pAX" = (
 /obj/machinery/sleep_console,
+/obj/effect/floor_decal/industrial/outline,
 /turf/simulated/floor/tiled/white,
 /area/exploration/medical)
 "pBk" = (
@@ -23431,8 +23413,13 @@
 /turf/simulated/floor/carpet/tealcarpet,
 /area/shuttle/civvie/general)
 "rKP" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/landmark/spawnpoint/job/field_medic,
+/obj/effect/floor_decal/borderfloor{
+	dir = 10
+	},
+/obj/effect/floor_decal/corner/blue/border{
+	dir = 10
+	},
+/obj/machinery/portable_atmospherics/canister/oxygen,
 /turf/simulated/floor/tiled/white,
 /area/exploration/medical)
 "rLb" = (
@@ -23722,13 +23709,9 @@
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d1afthall)
 "saq" = (
+/obj/effect/floor_decal/borderfloor,
+/obj/effect/floor_decal/corner/blue/border,
 /obj/machinery/iv_drip,
-/obj/effect/floor_decal/borderfloor{
-	dir = 10
-	},
-/obj/effect/floor_decal/corner/blue/border{
-	dir = 10
-	},
 /turf/simulated/floor/tiled/white,
 /area/exploration/medical)
 "saB" = (
@@ -27039,6 +27022,12 @@
 	pixel_y = 16
 	},
 /obj/structure/curtain/open/shower,
+/obj/effect/floor_decal/steeldecal/steel_decals10{
+	dir = 6
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals10{
+	dir = 5
+	},
 /turf/simulated/floor/tiled,
 /area/exploration/showers)
 "uwu" = (
@@ -29611,6 +29600,28 @@
 	},
 /turf/simulated/floor/tiled,
 /area/bridge/office)
+"wrW" = (
+/obj/machinery/camera/network/exploration{
+	dir = 4
+	},
+/obj/structure/closet/secure_closet/sar{
+	req_access = list(5);
+	req_one_access = list(5)
+	},
+/obj/item/storage/box/pillbottles,
+/obj/item/storage/box/syringes,
+/obj/item/tank/jetpack/oxygen,
+/obj/item/storage/backpack/parachute,
+/obj/item/clothing/accessory/permit/gun/planetside,
+/obj/effect/floor_decal/borderfloor{
+	dir = 9
+	},
+/obj/effect/floor_decal/corner/blue/border{
+	dir = 9
+	},
+/obj/effect/floor_decal/industrial/outline/blue,
+/turf/simulated/floor/tiled/monotile,
+/area/exploration/medical)
 "wsZ" = (
 /obj/structure/catwalk,
 /obj/structure/cable/orange{
@@ -31888,11 +31899,11 @@
 /turf/simulated/floor/plating,
 /area/shuttle/courser/general)
 "ydA" = (
+/obj/effect/floor_decal/borderfloor,
+/obj/effect/floor_decal/corner/blue/border,
 /obj/structure/table/standard,
 /obj/item/defib_kit/loaded,
 /obj/item/storage/firstaid/surgery,
-/obj/effect/floor_decal/borderfloor,
-/obj/effect/floor_decal/corner/blue/border,
 /turf/simulated/floor/tiled/white,
 /area/exploration/medical)
 "ydG" = (
@@ -36628,13 +36639,13 @@ xRj
 xRj
 dkX
 aHh
-aHh
-aHh
-aHh
-aHh
-aHh
-aHh
-euS
+wrW
+jwy
+cdv
+cdv
+quA
+rKP
+bkR
 euS
 euS
 euS
@@ -36823,10 +36834,10 @@ xRj
 ePJ
 aHh
 aGL
-iwR
+mEg
 jag
-jag
-quA
+mEg
+lNd
 saq
 bkR
 aIj
@@ -37015,7 +37026,7 @@ xRj
 xRj
 xRj
 xRj
-aHh
+dXL
 lta
 mEg
 mEg
@@ -37404,7 +37415,7 @@ xRj
 fOo
 usG
 aHh
-jwy
+mxK
 xws
 myn
 pAX
@@ -37601,7 +37612,7 @@ aHh
 mxK
 mfS
 azC
-rKP
+azC
 sDP
 glY
 bkR
@@ -48108,7 +48119,7 @@ lxO
 hnl
 aej
 iuy
-cdv
+iwR
 dsD
 ikV
 jZL
