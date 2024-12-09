@@ -2,14 +2,12 @@
  * Reagent blood data
  */
 /datum/blood_data
-	/// species id
-	///
-	/// * this is the UID of the species, so subspecies does matter.
-	var/species_id
 	/// the blood's color
 	var/color
 
 	//! LEGACY FIELDS
+	var/legacy_species
+	var/legacy_antibodies
 	var/legacy_viruses
 	var/legacy_virus2
 	var/legacy_blood_dna
@@ -17,6 +15,7 @@
 	var/legacy_trace_chem
 	var/legacy_resistances
 	var/legacy_donor
+	var/legacy_name
 	//! END
 
 /datum/blood_data/clone(include_contents)
@@ -37,6 +36,12 @@
 		copy.legacy_resistances = legacy_resistances
 	if(legacy_donor)
 		copy.legacy_donor = legacy_donor
+	if(legacy_name)
+		copy.legacy_name = legacy_name
+	if(legacy_species)
+		copy.legacy_species = legacy_species
+	if(legacy_antibodies)
+		copy.legacy_antibodies = legacy_antibodies
 	return copy
 
 /datum/blood_data/reagent

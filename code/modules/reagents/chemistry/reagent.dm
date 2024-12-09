@@ -286,6 +286,14 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 	holder = null
 	. = ..()
 
+//* Color *//
+
+/**
+ * Only called if holds_data is TRUE.
+ */
+/datum/reagent/proc/compute_color_with_data(data)
+	return color
+
 //* Data *//
 
 /**

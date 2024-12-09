@@ -33,17 +33,20 @@ var/const/CE_STABLE_THRESHOLD = 0.5
 
 //Resets blood data
 /mob/living/carbon/human/proc/fixblood()
-	for(var/datum/reagent/blood/B in vessel.reagent_list)
-		if(B.id == "blood")
-			B.data = list(	"donor"=src,"viruses"=null,"species"=species.name,"blood_DNA"=dna.unique_enzymes,"blood_colour"= species.get_blood_colour(src),"blood_type"=dna.b_type,	\
-							"resistances"=null,"trace_chem"=null, "virus2" = null, "antibodies" = list(), "blood_name" = species.get_blood_name(src))
-
-			if(isSynthetic())
-				B.data["species"] = "synthetic"
-
-
-			B.color = B.data["blood_colour"]
-			B.name = B.data["blood_name"]
+	for(var/datum/reagent/blood/god_damnit_fine_well_loop_through_everything in vessel.get_reagent_datums())
+		for(var/datum/blood_data/data_set in vessel.reagent_datas?[god_damnit_fine_well_loop_through_everything.id])
+			data_set.legacy_blood_dna = dna.unique_enzymes
+			data_set.legacy_blood_type = dna.b_type
+			data_set.legacy_donor = src
+			data_set.legacy_resistances = null
+			data_set.legacy_trace_chem = null
+			data_set.legacy_virus2 = null
+			data_set.legacy_viruses = null
+			data_set.legacy_antibodies = list()
+			data_set.legacy_species = isSynthetic() ? "synthetic" : species.name
+			data_set.legacy_name = species.get_blood_name(src)
+			#warn how to deal with name / color?
+			data_set.color = species.get_blood_colour(src)
 
 /mob/living/carbon/human/proc/fixblood_if_broken()
 	if(species.species_flags & NO_BLOOD)

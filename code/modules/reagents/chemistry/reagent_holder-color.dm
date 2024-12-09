@@ -7,7 +7,7 @@
 			return "#ffffff"
 		if(1)
 			var/datum/reagent/solo_reagent = SSchemistry.reagent_lookup[reagent_volumes[1]]
-			return solo_reagent.color
+			return solo_reagent.holds_data ? solo_reagent.compute_color_with_data(reagent_datas?[solo_reagent.id]) : solo_reagent.color
 	var/total_r = 0
 	var/total_g = 0
 	var/total_b = 0
@@ -16,7 +16,8 @@
 	for(var/id in reagent_volumes)
 		var/volume = reagent_volumes[id]
 		var/datum/reagent/resolved_reagent = SSchemistry.reagent_lookup[id]
-		switch(length(resolved_reagent.color))
+		var/effective_color = resolved_reagent.holds_data ? resolved_reagent.compute_color_with_data(reagent_datas?[resolved_reagent.id]) : resolved_reagent.color
+		switch(effective_color)
 			if(7)
 			if(9)
 				total_a += hex2num(copytext(resolved_reagent.color, 8, 10)) * volume * resolved_reagent.color_weight
