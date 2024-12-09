@@ -32,8 +32,6 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 /mob/living/carbon/human/base_transform(matrix/applying)
 	SHOULD_CALL_PARENT(FALSE)
 
-	var/matrix/old_matrix = transform
-
 	// handle scaling first, we don't want to have massive mobs still shift to align to tile
 	// when they're laying down.
 	var/desired_scale_x = size_multiplier * icon_scale_x
