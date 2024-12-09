@@ -1046,11 +1046,11 @@
 /turf/simulated/floor/carpet/bcarpet,
 /area/shuttle/trade_ship/general)
 "adb" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/cyan{
-	dir = 4
-	},
 /obj/machinery/air_alarm/alarms_hidden/north_mount,
 /obj/structure/window/reinforced/tinted{
+	dir = 4
+	},
+/obj/machinery/atmospherics/valve{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
@@ -3974,6 +3974,9 @@
 	icon_state = "4-8"
 	},
 /obj/structure/bed/chair/bay/chair/padded/red/smallnest,
+/obj/machinery/atmospherics/pipe/simple/hidden/green{
+	dir = 10
+	},
 /turf/simulated/floor/tiled/monotechmaint,
 /area/shuttle/runabout)
 "akv" = (
@@ -4616,6 +4619,9 @@
 /obj/structure/table/rack/shelf/steel,
 /obj/item/clothing/suit/storage/hazardvest,
 /obj/item/clothing/suit/storage/hazardvest,
+/obj/item/clothing/suit/space/emergency,
+/obj/item/clothing/suit/space/emergency,
+/obj/item/clothing/head/helmet/space/emergency,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/sector/nebula_tradeport/engineering)
 "aml" = (
@@ -10047,9 +10053,6 @@
 /obj/structure/railing/grey{
 	dir = 1
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/green{
-	dir = 5
-	},
 /obj/structure/panic_button{
 	pixel_y = -28
 	},
@@ -10118,6 +10121,9 @@
 "aAA" = (
 /obj/effect/floor_decal/rust,
 /obj/structure/bed/chair/bay/chair/padded/red/smallnest,
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/monotechmaint,
 /area/shuttle/runabout)
 "aAB" = (
@@ -11207,10 +11213,6 @@
 "aDn" = (
 /obj/machinery/light{
 	dir = 1
-	},
-/obj/item/paper{
-	info = "WELCOME TO THE NEBULA MOTEL \ TO BUY A PASS, SEEK M4RIA, AT BEHIND THE COUNTER. \ \ We have 9 rooms. \ Room 1 to 4 have a small kitchen, and washing room. \  Room 1 and 4 have 1 Double bed. \ 2 has 1 single bed \ 3 have 2 single beds. \ Those rooms are 30 Thrallers the 3 to 5 hours. \ \ Room 5 to 8 have no kitchen, and washing room. \ Room 6 and 8 have 1 Double bed. \ 5 has 1 single bed \ 7 have 2 single beds. \ Those rooms are 15 Thrallers the 3 to 5 hours. \ \  Room 9 is our VIP Suite. This suite has 2 bed rooms, 1 office, 1 fully equipped kitchen, 1 washroom, 1 laundry room, And its own shuttle call the Arrowhead, used by ex Tajaran racer Cheuk'Yager. the suite is 80 Thrallers the 3 to 5 hours. \ \ The Sauna is free to use. The public laundry machine and public bathroom are free to use. Guest pass are available if the rooms are shared.";
-	name = "Nebula Motel"
 	},
 /obj/machinery/computer/cryopod/gateway{
 	pixel_x = -31
@@ -12605,6 +12607,10 @@
 /obj/structure/table/rack/shelf/steel,
 /obj/item/clothing/suit/storage/hazardvest,
 /obj/item/clothing/suit/storage/hazardvest,
+/obj/item/clothing/suit/space/emergency,
+/obj/item/clothing/suit/space/emergency,
+/obj/item/clothing/head/helmet/space/emergency,
+/obj/item/clothing/head/helmet/space/emergency,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/sector/nebula_tradeport/engineering)
 "aHe" = (
@@ -14174,6 +14180,10 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
+/obj/item/clothing/suit/space/emergency,
+/obj/item/clothing/suit/space/emergency,
+/obj/item/clothing/head/helmet/space/emergency,
+/obj/item/clothing/head/helmet/space/emergency,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/sector/nebula_tradeport/engineering)
 "aLu" = (
@@ -14828,7 +14838,7 @@
 	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/green{
-	dir = 4
+	dir = 5
 	},
 /turf/simulated/floor/tiled/monodark,
 /area/shuttle/runabout)
@@ -15107,10 +15117,6 @@
 /turf/simulated/floor/tiled/old_tile/yellow,
 /area/tradeport/safari)
 "aNU" = (
-/obj/machinery/door/airlock/hatch{
-	name = "Tug Airtight Hatch";
-	req_one_access = list(173)
-	},
 /obj/machinery/door/blast/regular{
 	density = 0;
 	dir = 4;
@@ -15118,6 +15124,10 @@
 	id = "tugdoor2";
 	name = "Tug hauler shuttle Airlock";
 	opacity = 0
+	},
+/obj/machinery/door/airlock/hatch{
+	name = "Tug Airtight Hatch";
+	req_one_access = null
 	},
 /turf/simulated/floor/tiled/monotechmaint,
 /area/shuttle/tug)
@@ -15193,6 +15203,18 @@
 	dir = 8;
 	light_range = 12
 	},
+/obj/item/tank/jetpack/oxygen,
+/obj/item/tank/jetpack/oxygen,
+/obj/item/tank/jetpack/oxygen,
+/obj/item/tank/jetpack/oxygen,
+/obj/structure/table/rack/shelf/steel,
+/obj/item/tank/oxygen,
+/obj/item/tank/oxygen,
+/obj/item/tank/oxygen,
+/obj/item/tank/oxygen,
+/obj/item/tank/oxygen,
+/obj/item/tank/oxygen,
+/obj/item/tank/oxygen,
 /turf/simulated/floor/glass/reinforced,
 /area/sector/nebula_tradeport/engineering)
 "aOh" = (
@@ -18966,11 +18988,13 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/tradeport/dock)
 "aYC" = (
-/obj/machinery/atmospherics/component/unary/vent_pump/on,
 /obj/structure/cable/green{
 	icon_state = "1-4"
 	},
 /obj/structure/bed/chair/bay/chair/padded/red/smallnest,
+/obj/machinery/atmospherics/valve{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/monotechmaint,
 /area/shuttle/runabout)
 "aYD" = (
@@ -19730,11 +19754,11 @@
 /area/sector/nebula_tradeport/motel/room2)
 "bAj" = (
 /obj/structure/railing/grey,
-/obj/machinery/atmospherics/pipe/simple/hidden/red{
-	dir = 4
-	},
 /obj/effect/floor_decal/techfloor{
 	dir = 1
+	},
+/obj/machinery/atmospherics/valve{
+	dir = 4
 	},
 /turf/simulated/floor/tiled/steel_dirty/dark,
 /area/shuttle/arrowhead)
