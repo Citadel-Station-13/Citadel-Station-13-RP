@@ -1240,6 +1240,28 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d1portforhall)
+"aVc" = (
+/obj/machinery/camera/network/exploration{
+	dir = 4
+	},
+/obj/structure/closet/secure_closet/sar{
+	req_access = list(5);
+	req_one_access = list(5)
+	},
+/obj/item/storage/box/pillbottles,
+/obj/item/storage/box/syringes,
+/obj/item/tank/jetpack/oxygen,
+/obj/item/storage/backpack/parachute,
+/obj/item/clothing/accessory/permit/gun/planetside,
+/obj/effect/floor_decal/borderfloor{
+	dir = 9
+	},
+/obj/effect/floor_decal/corner/blue/border{
+	dir = 9
+	},
+/obj/effect/floor_decal/industrial/outline/blue,
+/turf/simulated/floor/tiled/monotile,
+/area/exploration/medical)
 "aVu" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -2046,7 +2068,7 @@
 /turf/simulated/floor/carpet/bcarpet,
 /area/crew_quarters/captain)
 "bHg" = (
-/obj/machinery/vending/fitness,
+/obj/machinery/gear_painter,
 /turf/simulated/floor/tiled,
 /area/maintenance/tool_storage)
 "bHC" = (
@@ -11258,26 +11280,14 @@
 /turf/simulated/floor/tiled,
 /area/hallway/secondary/docking_hallway)
 "iwR" = (
-/obj/machinery/camera/network/exploration{
-	dir = 4
-	},
-/obj/structure/closet/secure_closet/sar{
-	req_access = list(5);
-	req_one_access = list(5)
-	},
-/obj/item/storage/box/pillbottles,
-/obj/item/storage/box/syringes,
-/obj/item/tank/jetpack/oxygen,
-/obj/item/storage/backpack/parachute,
-/obj/item/clothing/accessory/permit/gun/planetside,
 /obj/effect/floor_decal/borderfloor{
-	dir = 9
+	dir = 10
 	},
 /obj/effect/floor_decal/corner/blue/border{
-	dir = 9
+	dir = 10
 	},
-/obj/effect/floor_decal/industrial/outline/blue,
-/turf/simulated/floor/tiled/monotile,
+/obj/machinery/portable_atmospherics/canister/oxygen,
+/turf/simulated/floor/tiled/white,
 /area/exploration/medical)
 "ixp" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -13859,6 +13869,13 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d1starboardforhall)
+"kpq" = (
+/obj/structure/disposalpipe/segment{
+	dir = 8;
+	icon_state = "pipe-c"
+	},
+/turf/simulated/floor/tiled/steel,
+/area/endeavour/hallway/d1afthall)
 "kpN" = (
 /obj/machinery/air_alarm{
 	dir = 1;
@@ -24611,7 +24628,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d1portamidhall)
 "sPy" = (
-/obj/machinery/vending/snack,
+/obj/machinery/vending/fitness,
 /turf/simulated/floor/wood,
 /area/hydroponics/garden)
 "sPS" = (
@@ -24763,13 +24780,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/endeavour/hallway/d1aftmaint)
-"sST" = (
-/obj/structure/disposalpipe/segment{
-	dir = 8;
-	icon_state = "pipe-c"
-	},
-/turf/simulated/floor/tiled/steel,
-/area/endeavour/hallway/d1afthall)
 "sTF" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -25314,16 +25324,6 @@
 /obj/random/tech_supply,
 /turf/simulated/floor/tiled,
 /area/maintenance/tool_storage)
-"tqY" = (
-/obj/effect/floor_decal/borderfloor{
-	dir = 10
-	},
-/obj/effect/floor_decal/corner/blue/border{
-	dir = 10
-	},
-/obj/machinery/portable_atmospherics/canister/oxygen,
-/turf/simulated/floor/tiled/white,
-/area/exploration/medical)
 "trn" = (
 /obj/item/barrier_tape_segment/engineering,
 /obj/structure/cable/green{
@@ -36643,12 +36643,12 @@ xRj
 xRj
 dkX
 aHh
-iwR
+aVc
 mxK
 rKP
 rKP
 quA
-tqY
+iwR
 bkR
 euS
 euS
@@ -43065,7 +43065,7 @@ cCy
 jWs
 cqc
 vnQ
-sST
+kpq
 mEO
 rkY
 lEq

@@ -7448,7 +7448,7 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/bar)
 "ffP" = (
-/obj/machinery/vending/fitness,
+/obj/machinery/vending/cola,
 /turf/simulated/floor/tiled,
 /area/quartermaster/foyer)
 "ffW" = (
@@ -12947,6 +12947,9 @@
 	dir = 10
 	},
 /obj/structure/table/steel_reinforced,
+/obj/machinery/camera/network/security{
+	dir = 1
+	},
 /turf/simulated/floor/tiled/dark,
 /area/security/warden)
 "jkm" = (
@@ -15806,7 +15809,6 @@
 /turf/simulated/floor/wood,
 /area/tether/surfacebase/entertainment)
 "lsC" = (
-/obj/machinery/camera/network/security,
 /obj/effect/floor_decal/corner/red{
 	dir = 5
 	},
@@ -15846,10 +15848,15 @@
 /turf/simulated/floor/tiled,
 /area/hydroponics)
 "lul" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/turf/simulated/floor/tiled/dark,
-/area/security/lobby)
+/obj/structure/table/marble,
+/obj/machinery/door/blast/shutters{
+	dir = 8;
+	id = "bar";
+	name = "Bar Shutters"
+	},
+/obj/item/material/ashtray/glass,
+/turf/simulated/floor/wood,
+/area/crew_quarters/bar)
 "luu" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 4
@@ -22161,7 +22168,6 @@
 /obj/effect/floor_decal/corner/red/border{
 	dir = 1
 	},
-/obj/machinery/camera/network/security,
 /turf/simulated/floor/tiled/dark,
 /area/security/hallway)
 "pQh" = (
@@ -23462,7 +23468,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/security/hallway)
 "qIo" = (
-/obj/machinery/vending/fitness,
+/obj/machinery/vending/cola,
 /turf/simulated/floor/wood,
 /area/endeavour/surfacebase/mining_main/break_room)
 "qIr" = (
@@ -24944,31 +24950,10 @@
 /turf/simulated/floor/wood,
 /area/tether/surfacebase/entertainment)
 "rNH" = (
-/obj/map_helper/access_helper/airlock/station/security/general,
-/obj/machinery/door/blast/regular{
-	density = 0;
-	icon_state = "pdoor0";
-	id = "security_lockdown";
-	name = "Security Blast Doors";
-	opacity = 0
-	},
-/obj/machinery/door/firedoor/glass,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/obj/machinery/door/airlock/multi_tile/glass{
-	id_tag = "BrigFoyer";
-	name = "Security";
-	dir = 4
-	},
-/obj/structure/cable/green{
-	icon_state = "4-8"
-	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled/dark,
-/area/security/hallway)
+/area/security/lobby)
 "rOn" = (
 /obj/structure/cable/green{
 	icon_state = "1-4"
@@ -25361,6 +25346,9 @@
 	},
 /obj/effect/floor_decal/corner/red/border{
 	dir = 8
+	},
+/obj/machinery/camera/network/security{
+	dir = 4
 	},
 /turf/simulated/floor/tiled/dark,
 /area/security/hallway)
@@ -26343,6 +26331,32 @@
 	},
 /turf/simulated/floor/tiled/old_tile/gray,
 /area/security/range)
+"sFM" = (
+/obj/map_helper/access_helper/airlock/station/security/general,
+/obj/machinery/door/blast/regular{
+	density = 0;
+	icon_state = "pdoor0";
+	id = "security_lockdown";
+	name = "Security Blast Doors";
+	opacity = 0
+	},
+/obj/machinery/door/firedoor/glass,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/door/airlock/multi_tile/glass{
+	id_tag = "BrigFoyer";
+	name = "Security";
+	dir = 4
+	},
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled/dark,
+/area/security/hallway)
 "sFQ" = (
 /obj/machinery/light/small{
 	dir = 1
@@ -34160,15 +34174,17 @@
 /turf/simulated/floor/wood,
 /area/tether/surfacebase/entertainment)
 "xZs" = (
-/obj/structure/table/marble,
-/obj/machinery/door/blast/shutters{
-	dir = 8;
-	id = "bar";
-	name = "Bar Shutters"
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 8
 	},
-/obj/item/material/ashtray/glass,
-/turf/simulated/floor/wood,
-/area/crew_quarters/bar)
+/obj/effect/floor_decal/corner/red/border{
+	dir = 8
+	},
+/obj/machinery/camera/network/security{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/dark,
+/area/security/hallway)
 "xZC" = (
 /obj/structure/table/marble,
 /obj/structure/flora/pottedplant/small,
@@ -39678,7 +39694,7 @@ udU
 rJC
 tjK
 knW
-uGl
+xZs
 vzu
 flS
 dPF
@@ -41012,7 +41028,7 @@ kEf
 szl
 vAZ
 dJX
-xZs
+lul
 vSO
 iYC
 jfm
@@ -49183,8 +49199,8 @@ inp
 pwu
 kps
 quZ
-lul
-lul
+rNH
+rNH
 arz
 cZB
 bbp
@@ -49956,7 +49972,7 @@ eem
 wpe
 wpe
 eYt
-lul
+rNH
 qyf
 qQq
 uPY
@@ -50345,7 +50361,7 @@ chh
 wWx
 qHe
 kUz
-rNH
+sFM
 hsu
 qqU
 qqU
