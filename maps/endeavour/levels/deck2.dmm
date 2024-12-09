@@ -10048,7 +10048,7 @@
 	pixel_x = -26
 	},
 /turf/simulated/floor/tiled/steel_grid,
-/area/rnd/research/researchdivision)
+/area/rnd/reception_desk)
 "gqb" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 6
@@ -10158,7 +10158,7 @@
 	name = "Research Shutters"
 	},
 /turf/simulated/floor/tiled,
-/area/rnd/research/researchdivision)
+/area/rnd/reception_desk)
 "gtd" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 8
@@ -14185,7 +14185,7 @@
 	pixel_x = -26
 	},
 /turf/simulated/floor/tiled/steel_grid,
-/area/endeavour/hallway/d2portafthall)
+/area/rnd/reception_desk)
 "iUD" = (
 /obj/structure/closet/secure_closet/RD,
 /obj/item/aicard,
@@ -36519,7 +36519,7 @@
 	name = "Research Hall Shutters"
 	},
 /turf/simulated/floor/tiled,
-/area/endeavour/hallway/d2portafthall)
+/area/rnd/reception_desk)
 "xcx" = (
 /obj/structure/closet/secure_closet/medical2,
 /obj/effect/floor_decal/corner/paleblue{
