@@ -1,9 +1,10 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
+// todo: maybe rename to config? or keep it as Configuration to keep with naming scheme of other 'system / backend' modules like the MC?
 GLOBAL_REAL(Configuration, /datum/controller/toml_configuration)
 
-// todo: /datum/controller/config
+// todo: /datum/controller/configuration
 /datum/controller/toml_configuration
 	/// Entries by type.
 	VAR_PRIVATE/list/datum/toml_config_entry/typed_entries
@@ -135,6 +136,8 @@ GLOBAL_REAL(Configuration, /datum/controller/toml_configuration)
 /datum/controller/toml_configuration/proc/load(filelike)
 	var/list/decoded
 	if(istext(filelike))
+		if(!fexists(filelike))
+			CRASH("failed to load [filelike]: does not exist")
 		decoded = rustg_read_toml_file(filelike)
 	else if(isfile(filelike))
 		// noa path, it might be rsc cache; rust_g can't read that directly.
