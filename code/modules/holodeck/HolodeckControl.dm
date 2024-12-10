@@ -220,13 +220,13 @@
 	if(!..())
 		return
 	if(active)
-		use_power(item_power_usage * (holographic_objs.len + holographic_mobs.len))
+		use_burst_power(item_power_usage * (holographic_objs.len + holographic_mobs.len))
 
 		if(!checkInteg(linkedholodeck))
 			damaged = 1
 			loadProgram(powerdown_program, 0)
 			active = 0
-			update_use_power(USE_POWER_IDLE)
+			set_use_power(USE_POWER_IDLE)
 			for(var/mob/M in range(10,src))
 				M.show_message("The holodeck overloads!")
 
@@ -268,7 +268,7 @@
 			linkedholodeck.gravitychange(1,linkedholodeck)
 
 		active = 0
-		update_use_power(USE_POWER_IDLE)
+		set_use_power(USE_POWER_IDLE)
 
 
 /obj/machinery/computer/HolodeckControl/proc/loadProgram(var/prog, var/check_delay = 1)

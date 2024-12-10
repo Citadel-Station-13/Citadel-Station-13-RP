@@ -10,7 +10,7 @@
 	name = "\improper Cruise Shuttle"
 	icon_state = "blue-red2"
 	area_flags = AREA_RAD_SHIELDED
-	requires_power = 1
+	area_power_override = null
 
 /area/shuttle/cruise_ship/bedroom
 	name = "\improper Cruise Shuttle - Private Quarters"

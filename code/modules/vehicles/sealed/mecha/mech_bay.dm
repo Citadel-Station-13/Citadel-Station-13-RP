@@ -61,7 +61,7 @@
 				mech.give_power(t)
 			else
 				cell.give(t)
-			use_power(t * 150)
+			use_burst_power(t * 150)
 		else
 			if(istype(mech))
 				mech.occupant_message(SPAN_NOTICE("Fully charged."))

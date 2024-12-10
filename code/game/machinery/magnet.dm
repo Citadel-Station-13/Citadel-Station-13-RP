@@ -144,10 +144,10 @@
 
 	// Update power usage:
 	if(on)
-		update_use_power(USE_POWER_ACTIVE)
+		set_use_power(USE_POWER_ACTIVE)
 		active_power_usage = electricity_level*15
 	else
-		update_use_power(USE_POWER_OFF)
+		set_use_power(USE_POWER_OFF)
 
 	// Overload conditions:
 	/* // Eeeehhh kinda stupid
@@ -178,7 +178,7 @@
 					continue
 				step_towards(S, center)
 
-		use_power(electricity_level * 5)
+		use_burst_power(electricity_level * 5)
 		sleep(13 - electricity_level)
 
 	pull_active = FALSE

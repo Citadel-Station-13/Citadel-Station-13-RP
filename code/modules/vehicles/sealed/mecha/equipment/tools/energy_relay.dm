@@ -8,7 +8,11 @@
 	range = 0
 	var/datum/global_iterator/pr_energy_relay
 	var/coeff = 100
-	var/list/use_channels = list(EQUIP,ENVIRON,LIGHT)
+	var/list/use_channels = list(
+		POWER_CHANNEL_EQUIP,
+		POWER_CHANNEL_LIGHT,
+		POWER_CHANNEL_ENVIR,
+	)
 
 	equip_type = EQUIP_UTILITY
 
@@ -83,7 +87,7 @@
 			var/area/A = get_area(chassis)
 			var/pow_chan = get_power_channel(A)
 			if(pow_chan)
-				A.master.use_power(amount*coeff, pow_chan)
+				A.master.use_burst_power(amount*coeff, pow_chan)
 				return 1
 		return chassis.dynusepower(amount)*/
 
@@ -104,12 +108,12 @@
 		var/area/A = get_area(ER.chassis)
 		if(A)
 			var/pow_chan
-			for(var/c in list(EQUIP,ENVIRON,LIGHT))
+			for(var/c in power_channels)
 				if(A.powered(c))
 					pow_chan = c
 					break
 			if(pow_chan)
 				var/delta = min(12, ER.chassis.cell.maxcharge-cur_charge)
 				ER.chassis.give_power(delta)
-				A.use_power_oneoff(delta*ER.coeff, pow_chan)
+				A.use_burst_power(delta*ER.coeff, pow_chan)
 	return

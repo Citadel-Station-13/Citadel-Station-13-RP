@@ -69,8 +69,8 @@
 		being_shocked = TRUE
 		//don't lose arc power when it's not connected to anything
 		//please place tesla coils all around the station to maximize effectiveness
-		var/power_produced = powernet ? power / power_loss : power
-		add_avail(power_produced * input_power_multiplier * 0.001)
+		var/power_produced = connection.is_connected() ? power / power_loss : power
+		supply(power_produced * input_power_multiplier * 0.001)
 		flick("coilhit", src)
 		playsound(src.loc, 'sound/effects/lightningshock.ogg', 100, 1, extrarange = 5)
 		tesla_zap(src, 5, power_produced)

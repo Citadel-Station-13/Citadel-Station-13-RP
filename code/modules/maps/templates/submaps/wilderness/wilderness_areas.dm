@@ -6,7 +6,7 @@
 
 /area/submap/event //To be used for Events not for regular PoIs
 	name = "Unknown"
-	requires_power = FALSE
+	area_power_override = TRUE
 
 /area/submap/spider1
 	name = "POI - spider nest"
@@ -58,7 +58,7 @@
 
 /area/submap/Blackshuttledown
 	name = "POI - BSD"
-	requires_power = FALSE
+	area_power_override = TRUE
 	ambience = AMBIENCE_HIGHSEC
 
 /area/submap/Cragzone1

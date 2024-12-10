@@ -19,7 +19,7 @@
 	set waitfor = FALSE
 	if(inoperable())
 		return
-	use_power(active_power_usage)
+	use_burst_power(active_power_usage)
 	playsound(src.loc, chime_sound, 75)
 	icon_state = "dbchime-active"
 	set_light(2, 0.5, "#33FF33")
@@ -115,7 +115,7 @@
 	user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
 	if(..())
 		return
-	use_power(5)
+	use_burst_power(5)
 	flick("doorbell-active", src)
 
 	for(var/obj/machinery/doorbell_chime/M in GLOB.machines)

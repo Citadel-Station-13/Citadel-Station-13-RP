@@ -14,7 +14,7 @@
 	cause a period of lag as the explosion is processed by the server, as well as irradiating the entire station and causing hallucinations to happen.  \
 	Wearing radiation equipment will protect you from most of the delamination effects sans explosion."
 
-/obj/machinery/power/apc
+/obj/machinery/apc
 	description_info = "An APC (Area Power Controller) regulates and supplies backup power for the area they are in. Their power channels are divided \
 	out into 'environmental' (Items that manipulate airflow and temperature), 'lighting' (the lights), and 'equipment' (Everything else that consumes power).  \
 	Power consumption and backup power cell charge can be seen from the interface, further controls (turning a specific channel on, off or automatic, \

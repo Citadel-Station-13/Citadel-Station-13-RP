@@ -17,7 +17,7 @@ GLOBAL_REAL(radiation_infect_ignore, /list) = __radiation_infect_ignore()
 /proc/__radiation_infect_ignore()
 	return typecacheof(list(
 		/turf,
-		/obj/structure/cable,
+		/obj/structure/wire,
 		/obj/machinery/atmospherics,
 		/obj/item/ammo_casing,
 		/obj/singularity,

@@ -14,7 +14,7 @@
 	icon = 'icons/obj/heartmonitor.dmi'
 	icon_state = "base"
 	anchored = FALSE
-	power_channel = EQUIP
+	power_channel = POWER_CHANNEL_EQUIP
 	idle_power_usage = 10
 	active_power_usage = 100
 
@@ -64,11 +64,11 @@
 	if(QDELETED(victim))
 		victim = null
 		update_icon()
-		update_use_power(USE_POWER_IDLE)
+		set_use_power(USE_POWER_IDLE)
 	if(victim && !Adjacent(victim))
 		victim = null
 		update_icon()
-		update_use_power(USE_POWER_IDLE)
+		set_use_power(USE_POWER_IDLE)
 	if(victim)
 		update_icon()
 	if(beep && victim && victim.pulse)
@@ -79,10 +79,10 @@
 		return
 	if(victim)
 		victim = null
-		update_use_power(USE_POWER_IDLE)
+		set_use_power(USE_POWER_IDLE)
 	else if(ishuman(over_object))
 		victim = over_object
-		update_use_power(USE_POWER_ACTIVE)
+		set_use_power(USE_POWER_ACTIVE)
 		visible_message("<span class='notice'>\The [src] is now showing data for [victim].</span>")
 
 /obj/machinery/vitals_monitor/update_icon()

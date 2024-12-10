@@ -74,7 +74,7 @@ SUBSYSTEM_DEF(nightshift)
 
 	SSlighting.pause_instant()
 
-	for(var/obj/machinery/power/apc/APC as anything in currentrun)
+	for(var/obj/machinery/apc/APC as anything in currentrun)
 		currentrun -= APC
 		if (APC.area && (APC.z in (LEGACY_MAP_DATUM).station_levels))
 			APC.set_nightshift(nightshift_active && (APC.area.nightshift_level & nightshift_level), TRUE)

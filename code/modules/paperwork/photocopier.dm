@@ -9,7 +9,7 @@
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 30
 	active_power_usage = 200
-	power_channel = EQUIP
+	power_channel = POWER_CHANNEL_EQUIP
 	circuit = /obj/item/circuitboard/photocopier
 	buckle_allowed = TRUE
 	buckle_max_mobs = 1
@@ -98,7 +98,7 @@
 			playsound(loc, "sound/machines/buzz-two.ogg", 100)
 			break
 
-		use_power(USE_POWER_ACTIVE)
+		use_burst_power(USE_POWER_ACTIVE)
 	copying = FALSE
 
 /obj/machinery/photocopier/Topic(href, href_list)

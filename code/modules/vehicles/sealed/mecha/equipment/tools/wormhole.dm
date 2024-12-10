@@ -34,7 +34,7 @@
 	var/turf/target_turf = pick(L)
 	if(!target_turf)
 		return
-	chassis.use_power(energy_drain)
+	chassis.use_burst_power(energy_drain)
 	set_ready_state(0)
 	var/obj/effect/portal/P = new /obj/effect/portal(get_turf(target))
 	P.target = target_turf

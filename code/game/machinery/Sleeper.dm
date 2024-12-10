@@ -386,7 +386,7 @@
 			to_chat(user, SPAN_WARNING("\The [src] is already occupied."))
 			return
 		M.forceMove(src)
-		update_use_power(USE_POWER_ACTIVE)
+		set_use_power(USE_POWER_ACTIVE)
 		occupant = M
 		update_icon()
 
@@ -405,7 +405,7 @@
 		if(A in component_parts)
 			continue
 		A.loc = src.loc
-	update_use_power(USE_POWER_IDLE)
+	set_use_power(USE_POWER_IDLE)
 	update_icon()
 	toggle_filter()
 	toggle_pump()
@@ -422,7 +422,7 @@
 
 	if(occupant && occupant.reagents)
 		if(occupant.reagents.get_reagent_amount(chemical) + amount <= 20)
-			use_power(amount * CHEM_SYNTH_ENERGY)
+			use_burst_power(amount * CHEM_SYNTH_ENERGY)
 			occupant.reagents.add_reagent(chemical, amount)
 			to_chat(user, "Occupant now has [occupant.reagents.get_reagent_amount(chemical)] units of [available_chemicals[chemical]] in their bloodstream.")
 		else

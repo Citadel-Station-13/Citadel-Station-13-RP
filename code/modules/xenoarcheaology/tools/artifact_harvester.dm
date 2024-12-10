@@ -107,7 +107,7 @@
 							inserted_battery.battery_effect.ToggleActivate(1)
 						last_process = world.time
 						harvesting = -1
-						update_use_power(USE_POWER_ACTIVE)
+						set_use_power(USE_POWER_ACTIVE)
 						icon_state = "incubator_on"
 						atom_say("Warning, battery charge dump commencing.")
 				else
@@ -195,7 +195,7 @@
 
 		if(source_effect)
 			harvesting = 1
-			update_use_power(USE_POWER_ACTIVE)
+			set_use_power(USE_POWER_ACTIVE)
 			cur_artifact.anchored = 1
 			cur_artifact.being_used = 1
 			icon_state = "incubator_on"
@@ -226,7 +226,7 @@
 
 		//check if we've finished
 		if(inserted_battery.stored_charge >= inserted_battery.capacity)
-			update_use_power(USE_POWER_IDLE)
+			set_use_power(USE_POWER_IDLE)
 			harvesting = 0
 			cur_artifact.anchored = 0
 			cur_artifact.being_used = 0
@@ -251,7 +251,7 @@
 
 		//if there's no charge left, finish
 		if(inserted_battery.stored_charge <= 0)
-			update_use_power(USE_POWER_IDLE)
+			set_use_power(USE_POWER_IDLE)
 			inserted_battery.stored_charge = 0
 			harvesting = 0
 			if(inserted_battery.battery_effect && inserted_battery.battery_effect.activated)

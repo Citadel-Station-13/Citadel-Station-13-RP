@@ -34,7 +34,7 @@
 		icon_state += use_power ? "on" : "off"
 	else
 		icon_state += "off"
-		update_use_power(USE_POWER_OFF)
+		set_use_power(USE_POWER_OFF)
 
 /obj/machinery/atmospherics/component/trinary/mixer/Initialize(mapload)
 	. = ..()
@@ -71,8 +71,8 @@
 			network3.update = 1
 
 	if (power_draw >= 0)
+		use_burst_power(power_draw)
 		last_power_draw_legacy = power_draw
-		use_power(power_draw)
 
 	return 1
 
@@ -105,7 +105,7 @@
 
 	switch(action)
 		if("power")
-			update_use_power(!use_power)
+			legacy_toggle_use_power()
 			. = TRUE
 		if("pressure")
 			var/pressure = params["pressure"]

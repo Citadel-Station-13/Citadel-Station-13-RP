@@ -8,7 +8,7 @@
 	pass_flags_self = ATOM_PASS_THROWN | ATOM_PASS_CLICK
 	use_power = USE_POWER_IDLE
 	layer = ON_WINDOW_LAYER
-	power_channel = EQUIP
+	power_channel = POWER_CHANNEL_EQUIP
 	var/on = 0
 	var/id_tag = null
 

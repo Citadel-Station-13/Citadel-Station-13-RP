@@ -106,7 +106,7 @@ var/global/list/grub_machine_overlays = list()
 		var/obj/machinery/M = A
 		if(is_type_in_list(M, ignored_machine_types))
 			return
-		if(!M.idle_power_usage && !M.active_power_usage && !(istype(M, /obj/machinery/power/apc) || istype(M, /obj/machinery/power/smes)))
+		if(!M.idle_power_usage && !M.active_power_usage && !(istype(M, /obj/machinery/apc) || istype(M, /obj/machinery/power/smes)))
 			return
 		if(locate(/mob/living/simple_mob/animal/solargrub_larva) in M)
 			return
@@ -228,7 +228,7 @@ var/global/list/grub_machine_overlays = list()
 			continue
 		if(is_type_in_list(M, ignored_machine_types))
 			continue
-		if(!M.idle_power_usage && !M.active_power_usage && !(istype(M, /obj/machinery/power/apc) || istype(M, /obj/machinery/power/smes)))
+		if(!M.idle_power_usage && !M.active_power_usage && !(istype(M, /obj/machinery/apc) || istype(M, /obj/machinery/power/smes)))
 			continue
 		if(locate(/mob/living/simple_mob/animal/solargrub_larva) in M)
 			continue
@@ -244,7 +244,7 @@ var/global/list/grub_machine_overlays = list()
 		return FALSE
 	if(is_type_in_list(M, ignored_machine_types))
 		return FALSE
-	if(!M.idle_power_usage && !M.active_power_usage && !(istype(M, /obj/machinery/power/apc) || istype(M, /obj/machinery/power/smes)))
+	if(!M.idle_power_usage && !M.active_power_usage && !(istype(M, /obj/machinery/apc) || istype(M, /obj/machinery/power/smes)))
 		return FALSE
 	if(locate(/mob/living/simple_mob/animal/solargrub_larva) in M)
 		return FALSE
@@ -285,7 +285,7 @@ var/global/list/grub_machine_overlays = list()
 			power_list = active_power_usages
 	for(var/i = 1 to power_list.len)
 		if(A.powered(i))
-			use_power(power_list[i], i)
+			use_burst_power(power_list[i], i)
 			grub.power_drained += power_list[i]
 	if(prob(5))
 		shuffle_power_usages()

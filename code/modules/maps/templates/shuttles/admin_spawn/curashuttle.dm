@@ -10,22 +10,22 @@
 /area/shuttle/curabitur/curashuttle/eng
 	name = "\improper Curabitur Rescue - Engineering"
 	icon_state = "shuttle2"
-	requires_power = 1
+	area_power_override = null
 
 /area/shuttle/curabitur/curashuttle/med
 	name = "\improper Curabitur Rescue - Medbay"
 	icon_state = "shuttle2"
-	requires_power = 1
+	area_power_override = null
 
 /area/shuttle/curabitur/curashuttle/hangar
 	name = "\improper Curabitur Rescue - Hangar"
 	icon_state = "shuttle2"
-	requires_power = 1
+	area_power_override = null
 
 /area/shuttle/curabitur/curashuttle/cockpit
 	name = "\improper Curabitur Rescue - Cockpit"
 	icon_state = "shuttle2"
-	requires_power = 1
+	area_power_override = null
 
 // The shuttle's 'shuttle' computer
 /obj/machinery/computer/shuttle_control/explore/curashuttle

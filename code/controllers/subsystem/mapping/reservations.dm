@@ -120,5 +120,5 @@
 /area/reservation_unused
 	name = "Unallocated Reservation Area"
 	unique = TRUE
-	always_unpowered = TRUE
+	area_power_override = FALSE
 	has_gravity = FALSE

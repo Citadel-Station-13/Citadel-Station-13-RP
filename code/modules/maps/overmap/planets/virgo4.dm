@@ -143,7 +143,7 @@
 	name = "\improper Away Mission - Virgo 4 Beach"
 	icon_state = "away"
 	dynamic_lighting = 1
-	requires_power = 1
+	area_power_override = null
 
 /area/tether_away/beach/powershed
 	name = "\improper Away Mission - Virgo 4 Coast PS"
@@ -226,7 +226,7 @@
 /area/tether_away/beach/desert/poi
 	name = "\improper Away Mission - Virgo 4 Desert"
 	icon_state = "away"
-	requires_power = 1
+	area_power_override = null
 
 /area/tether_away/beach/desert/explored
 	name = "\improper Away Mission - Virgo 4 Desert (E)"

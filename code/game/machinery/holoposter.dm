@@ -7,7 +7,7 @@ GLOBAL_LIST_EMPTY(holoposters)
 	anchored = TRUE
 	use_power = TRUE
 	idle_power_usage = 80
-	power_channel = ENVIRON
+	power_channel = POWER_CHANNEL_ENVIR
 	var/icon_forced = FALSE
 	var/examine_addon = "It appears to be powered off."
 	var/mytimer

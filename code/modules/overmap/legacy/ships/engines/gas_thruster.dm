@@ -36,12 +36,12 @@
 
 /datum/ship_engine/gas_thruster/toggle()
 	if(nozzle.use_power)
-		nozzle.update_use_power(USE_POWER_OFF)
+		nozzle.set_use_power(USE_POWER_OFF)
 	else
 		if(nozzle.blockage)
 			if(nozzle.check_blockage())
 				return
-		nozzle.update_use_power(USE_POWER_IDLE)
+		nozzle.set_use_power(USE_POWER_IDLE)
 		if(nozzle.machine_stat & NOPOWER)//try again
 			nozzle.power_change()
 		if(nozzle.is_on())//if everything is in working order, start booting!
@@ -69,7 +69,7 @@
 	// uncreated_component_parts = list(/obj/item/stock_parts/power/apc/buildable = 1)
 
 	use_power = USE_POWER_OFF
-	power_channel = EQUIP
+	power_channel = POWER_CHANNEL_EQUIP
 	idle_power_usage = 1000
 
 	var/datum/ship_engine/gas_thruster/controller
@@ -128,7 +128,7 @@
 /obj/machinery/atmospherics/component/unary/engine/power_change()
 	. = ..()
 	if(machine_stat & NOPOWER)
-		update_use_power(USE_POWER_OFF)
+		set_use_power(USE_POWER_OFF)
 
 /obj/machinery/atmospherics/component/unary/engine/proc/is_on()
 	return use_power && operable() && (next_on < world.time)
@@ -159,9 +159,9 @@
 /obj/machinery/atmospherics/component/unary/engine/proc/burn()
 	if(!is_on())
 		return 0
-	if(!check_fuel() || (use_power_oneoff(charge_per_burn) < charge_per_burn) || check_blockage())
+	if(!check_fuel() || (use_burst_power(charge_per_burn) < charge_per_burn) || check_blockage())
 		audible_message(src,"<span class='warning'>[src] coughs once and goes silent!</span>")
-		update_use_power(USE_POWER_OFF)
+		set_use_power(USE_POWER_OFF)
 		return 0
 
 	var/datum/gas_mixture/removed = air_contents.remove_ratio(volume_per_burn * thrust_limit / air_contents.volume)

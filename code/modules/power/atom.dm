@@ -6,7 +6,7 @@
  * @params
  * - actor - thing draining, can be null
  * - amount - amount to drain in kilojoules
- * - flags
+ * - flags - ENERGY_DRAIN_X defines to determine behavior
  *
  * @return Amount drained
  */
@@ -18,7 +18,7 @@
  *
  * @params
  * - actor - thing draining, can be null
- * - flags
+ * - flags - ENERGY_DRAIN_X defines to determine behavior
  *
  * @return TRUE/FALSE
  */
@@ -26,6 +26,6 @@
 	return FALSE
 
 // below may be bad ideas, idk yet. COMSIG_USE_CELL_UNITS? COMSIG_GENERIC_USE_POWER? COMSIG_GENERIC_USE_ENERGY?
-// TODO: generic use_power() proc with scales.
+// TODO: generic use_burst_power() proc with scales.
 // TODO: generic use_energy() proc with scales.
 // TODO: machinery components for backup batteries?? apc link?? grid link??

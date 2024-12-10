@@ -212,7 +212,7 @@
 			speak(vend_reply)
 			last_reply = world.time
 
-	use_power(vend_power_usage)	//actuators and stuff
+	use_burst_power(vend_power_usage)	//actuators and stuff
 	spawn(vend_delay)
 		R.amount--
 		new R.item_path(H.nif)

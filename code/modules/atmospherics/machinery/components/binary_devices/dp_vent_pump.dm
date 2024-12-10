@@ -140,8 +140,8 @@
 					network2.update = 1
 
 	if (power_draw >= 0)
+		use_burst_power(power_draw)
 		last_power_draw_legacy = power_draw
-		use_power(power_draw)
 
 	return 1
 
@@ -214,10 +214,10 @@
 	if(!signal.data["tag"] || (signal.data["tag"] != id) || (signal.data["sigtype"]!="command"))
 		return 0
 	if(signal.data["power"])
-		update_use_power(text2num(signal.data["power"]))
+		set_use_power(text2num(signal.data["power"]))
 
 	if(signal.data["power_toggle"])
-		update_use_power(!use_power)
+		legacy_toggle_use_power()
 
 	if(signal.data["direction"])
 		pump_direction = text2num(signal.data["direction"])

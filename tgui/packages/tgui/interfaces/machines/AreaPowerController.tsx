@@ -1,9 +1,83 @@
-import { useBackend } from '../backend';
-import { Box, Button, Dimmer, Icon, LabeledList, NoticeBox, ProgressBar, Section } from '../components';
-import { Window } from '../layouts';
-import { InterfaceLockNoticeBox } from './common/InterfaceLockNoticeBox';
-import { FullscreenNotice } from './common/FullscreenNotice';
+/**
+ * @file
+ * @license MIT
+ */
 
+import { BooleanLike } from "../../../common/react";
+import { useBackend } from "../../backend";
+import { PowerBalancingTiers, PowerChannelBits, PowerChannelList, PowerChannels } from "../../constants/power";
+import { Window } from "../../layouts"
+
+enum ApcNightshiftSetting {
+  Auto = 1,
+  Never = 2,
+  Always = 3,
+}
+
+enum ApcChannelSetting {
+  Auto = 1,
+  On = 2,
+  OFf = 3,
+}
+
+interface ApcControlProps {
+  state: AreaPowerControllerData;
+  nightshiftAct?: (setting: ApcNightshiftSetting) => void;
+  channelAct?: (channel: PowerChannels, state: ApcChannelSetting) => void;
+  thresholdAct?: (channel: PowerChannels, threshold: number) => void;
+}
+
+export const ApcControls = (props: ApcControlProps) => {
+
+}
+
+
+interface AreaPowerControllerData {
+  // apc nightshift setting
+  nightshiftSetting: ApcNightshiftSetting;
+  // area nightshift active
+  nightshiftActive: BooleanLike;
+  // on/off setting; used if auto is not present
+  channelsEnabled: PowerChannelBits;
+  // set to auto
+  channelsAuto: PowerChannelBits;
+  // currently on
+  channelsActive: PowerChannelBits;
+  // channel thresholds
+  channelThresholds: PowerChannelList<number>;
+  // charging?
+  chargeActive: BooleanLike;
+  // charging enabled?
+  chargeEnabled: BooleanLike;
+  // load balancing editable?
+  loadBalanceAllowed: BooleanLike;
+  // load balancing level
+  loadBalancePriority: PowerBalancingTiers;
+  // is the entire apc on/off
+  loadActive: BooleanLike;
+  // is the entire apc toggled on/off?
+  loadToggled: BooleanLike;
+  // breaker tripped?
+  breakerTripped: BooleanLike;
+}
+
+export const AreaPowerController = (props, context) => {
+  const {data, act} = useBackend<AreaPowerControllerData>(context);
+  return (
+    <Window
+      width={500}
+      height={500}>
+      <Window.Content>
+        <ApcControls state={data}
+          channelAct={(channel, state) => act('channel', {channel: channel, state: state})}
+          nightshiftAct={(setting) => act('nightshift', {state: setting})}
+          thresholdAct={(channel, threshold) => act('threshold', {channel: channel, threshold: threshold})} />
+      </Window.Content>
+    </Window>
+  )
+}
+
+/*
 export const APC = (props, context) => {
   return (
     <Window
@@ -290,3 +364,4 @@ const ApcFailure = (props, context) => {
     </Dimmer>
   );
 };
+*/

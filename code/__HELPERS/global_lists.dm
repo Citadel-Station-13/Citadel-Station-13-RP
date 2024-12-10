@@ -16,8 +16,6 @@ var/global/list/dead_mob_list = list()
 /// List of all objects which care about receiving messages (communicators, radios, etc)
 var/global/list/listening_objects = list()
 
-/// Index for all cables, so that powernets don't have to look through the entire world all the time.
-var/global/list/cable_list = list()
 /// List of all medical sideeffects types by thier names.
 var/global/list/side_effects = list()
 /// List of all mechs. Used by hostile mobs target tracking.

@@ -16,7 +16,7 @@
 /datum/artifact_effect/cellcharge/DoEffectAura()
 	if(holder)
 		var/turf/T = get_turf(holder)
-		for (var/obj/machinery/power/apc/C in GLOB.apcs)
+		for (var/obj/machinery/apc/C in GLOB.apcs)
 			if(T.z != C.z)
 				continue
 			if(get_dist(T, C) > 200)
@@ -44,7 +44,7 @@
 /datum/artifact_effect/cellcharge/DoEffectPulse()
 	if(holder)
 		var/turf/T = get_turf(holder)
-		for (var/obj/machinery/power/apc/C in GLOB.apcs)
+		for (var/obj/machinery/apc/C in GLOB.apcs)
 			if(T.z != C.z)
 				continue
 			if(get_dist(T, C) > 200)

@@ -26,8 +26,8 @@
 	var/mode = 0					// 0 = off, 1=clamped (off), 2=operating
 	var/drained_this_tick = 0		// This is unfortunately necessary to ensure we process powersinks BEFORE other machinery such as APCs.
 
-	var/datum/powernet/PN			// Our powernet
-	var/obj/structure/cable/attached		// the attached cable
+	var/datum/wirenet/power/PN			// Our powernet
+	var/obj/structure/wire/power_cable/attached		// the attached cable
 
 /obj/item/powersink/Destroy()
 	STOP_PROCESSING(SSobj, src)
@@ -103,19 +103,19 @@
 		return 1
 
 	set_light(12)
-	PN.trigger_warning()
+	PN.raise_fault(POWERNET_FAULT_DRAIN, 30 SECONDS)
 	// found a powernet, so drain up to max power from it
-	drained = PN.draw_power(drain_rate)
+	drained = PN.flat_draw(drain_rate)
 	// if tried to drain more than available on powernet
 	// now look for APCs and drain their cells
 	if(drained < drain_rate)
-		for(var/obj/machinery/power/terminal/T in PN.nodes)
+		for(var/obj/machinery/power/terminal/T in PN.get_hosts())
 			// Enough power drained this tick, no need to torture more APCs
 			if(drained >= drain_rate)
 				break
-			if(istype(T.master, /obj/machinery/power/apc))
-				var/obj/machinery/power/apc/A = T.master
-				if(A.operating && A.cell)
+			if(istype(T.master, /obj/machinery/apc))
+				var/obj/machinery/apc/A = T.master
+				if(A.charging_enabled && A.cell)
 					var/cur_charge = DYNAMIC_CELL_UNITS_TO_KW(A.cell.charge, 1)
 					var/drain_val = min(apc_drain_rate, cur_charge)
 					A.cell.use(DYNAMIC_KW_TO_CELL_UNITS(drain_val, 1))
@@ -132,7 +132,7 @@
 		explosion(src.loc, 3,6,9,12)
 		qdel(src)
 		return
-	if(attached && attached.powernet)
-		PN = attached.powernet
+	if(attached && attached.network)
+		PN = attached.network
 	else
 		PN = null

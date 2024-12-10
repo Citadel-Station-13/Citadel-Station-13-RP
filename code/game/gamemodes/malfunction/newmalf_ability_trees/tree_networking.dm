@@ -38,7 +38,7 @@
 // END RESEARCH DATUMS
 // BEGIN ABILITY VERBS
 
-/datum/game_mode/malfunction/verb/basic_encryption_hack(obj/machinery/power/apc/A as obj in get_unhacked_apcs(src))
+/datum/game_mode/malfunction/verb/basic_encryption_hack(obj/machinery/apc/A as obj in get_unhacked_apcs(src))
 	set category = "Software"
 	set name = "Basic Encryption Hack"
 	set desc = "10 CPU - Basic encryption hack that allows you to overtake APCs on the station."
@@ -147,7 +147,7 @@
 			to_chat(user, "You already started the system override sequence.")
 		return
 	var/list/remaining_apcs = list()
-	for(var/obj/machinery/power/apc/A in GLOB.apcs)
+	for(var/obj/machinery/apc/A in GLOB.apcs)
 		if(!(A.z in (LEGACY_MAP_DATUM).station_levels)) 		// Only station APCs
 			continue
 		if(A.hacker == user || A.aidisabled) 		// This one is already hacked, or AI control is disabled on it.
@@ -180,7 +180,7 @@
 	user.hacking = 1
 	user.system_override = 1
 	// Now actually begin the hack. Each APC takes 10 seconds.
-	for(var/obj/machinery/power/apc/A in shuffle(remaining_apcs))
+	for(var/obj/machinery/apc/A in shuffle(remaining_apcs))
 		sleep(100)
 		if(!user || user.stat == DEAD)
 			return
@@ -193,7 +193,7 @@
 	to_chat(user, "## REACHABLE APC SYSTEMS OVERTAKEN. BYPASSING PRIMARY FIREWALL.")
 	sleep(300)
 	// Hack all APCs, including those built during hack sequence.
-	for(var/obj/machinery/power/apc/A in GLOB.apcs)
+	for(var/obj/machinery/apc/A in GLOB.apcs)
 		if((!A.hacker || (A.hacker != src)) && !A.aidisabled && (A.z in (LEGACY_MAP_DATUM).station_levels))
 			A.ai_hack(src)
 

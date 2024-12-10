@@ -22,55 +22,55 @@
 /area/shuttle/gecko_sh
 	name = "\improper Gecko Stationhopper"
 	icon_state = "green"
-	requires_power = 1
+	area_power_override = null
 	has_gravity = 0
 
 /area/shuttle/gecko_sh_engineering
 	name = "\improper Gecko Stationhopper Engineering"
 	icon_state = "yellow"
-	requires_power = 1
+	area_power_override = null
 	has_gravity = 0
 
 /area/shuttle/gecko_sh_cockpit
 	name = "\improper Gecko Stationhopper Cockpit"
 	icon_state = "purple"
-	requires_power = 1
+	area_power_override = null
 	has_gravity = 0
 
 /area/shuttle/gecko_cr
 	name = "\improper Gecko Cargo Hauler Bay"
 	icon_state = "green"
-	requires_power = 1
+	area_power_override = null
 	has_gravity = 0
 
 /area/shuttle/gecko_cr_engineering
 	name = "\improper Gecko Cargo Hauler Aft"
 	icon_state = "yellow"
-	requires_power = 1
+	area_power_override = null
 	has_gravity = 0
 
 /area/shuttle/gecko_cr_cockpit
 	name = "\improper Gecko Cargo Hauler Fore"
 	icon_state = "purple"
-	requires_power = 1
+	area_power_override = null
 	has_gravity = 0
 
 /area/shuttle/gecko_cr_wreck
 	name = "\improper Wrecked Gecko Cargo Hauler Bay"
 	icon_state = "green"
-	requires_power = 1
+	area_power_override = null
 	has_gravity = 0
 
 /area/shuttle/gecko_cr_engineering_wreck
 	name = "\improper Wrecked Gecko Cargo Hauler Aft"
 	icon_state = "yellow"
-	requires_power = 1
+	area_power_override = null
 	has_gravity = 0
 
 /area/shuttle/gecko_cr_cockpit_wreck
 	name = "\improper Wrecked Gecko Cargo Hauler Fore"
 	icon_state = "purple"
-	requires_power = 1
+	area_power_override = null
 	has_gravity = 0
 
 // The shuttle's 'shuttle' computer
