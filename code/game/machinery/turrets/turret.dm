@@ -691,7 +691,7 @@
 			var/dispersion = gaussian(0, fire_suppressive_dispersion_deviation)
 			real_angle += dispersion
 		shoot(target, real_angle)
-		use_power(reqpower)
+		use_burst_power(reqpower)
 		sleep(fire_burst_spacing)
 
 /obj/machinery/porta_turret/proc/shoot(atom/target, angle)
