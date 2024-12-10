@@ -8,7 +8,7 @@
  *
  * todo: vv hooks
  *
- * ! WARNING : YOU MUST HAVE NETWORK DECLARED ON A SUBTYPE, OR THINGS HORRIBLY BREAK. !
+ * ! WARNING : YOU MUST HAVE `network` DECLARED ON A SUBTYPE, OR THINGS HORRIBLY BREAK. !
  */
 /datum/wirenet_connection
 	/// our host, so we can track
@@ -26,7 +26,6 @@
 			RegisterSignals(
 				host,
 				list(
-					COMSIG_TURF_WIRENODE_DISCOVERY,
 					COMSIG_MOVABLE_MOVED,
 				),
 				PROC_REF(auto_move),
@@ -42,7 +41,6 @@
 			UnregisterSignal(
 				host,
 				list(
-					COMSIG_TURF_WIRENODE_DISCOVERY,
 					COMSIG_MOVABLE_MOVED,
 				),
 			)
