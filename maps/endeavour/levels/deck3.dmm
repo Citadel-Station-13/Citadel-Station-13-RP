@@ -2754,8 +2754,8 @@
 /area/endeavour/station/stairs_three)
 "bXD" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/structure/curtain/black,
 /obj/effect/paint/palebottlegreen,
+/obj/structure/curtain/open/black,
 /turf/simulated/floor/plating,
 /area/endeavour/surfacebase/bar_backroom)
 "bXV" = (
@@ -4910,10 +4910,10 @@
 /turf/simulated/floor/tiled/dark,
 /area/security/nuke_storage)
 "dBF" = (
-/obj/machinery/door/airlock/civilian{
-	name = "Reading Room 1"
-	},
 /obj/machinery/door/firedoor,
+/obj/machinery/door/airlock/glass{
+	name = "Bar Lounge 1"
+	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/bar/lounge)
 "dBL" = (
@@ -7136,14 +7136,14 @@
 /area/endeavour/hallway/d3portamidhall)
 "eVd" = (
 /obj/machinery/door/firedoor,
-/obj/machinery/door/airlock{
-	name = "Kitchen"
-	},
 /obj/map_helper/access_helper/airlock/station/service/kitchen,
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
 /obj/effect/floor_decal/corner_oldtile/white/diagonal,
+/obj/machinery/door/airlock/civilian{
+	name = "Kitchen"
+	},
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/kitchen)
 "eVt" = (
@@ -9786,9 +9786,7 @@
 /area/quartermaster/delivery)
 "gMc" = (
 /obj/spawner/window/reinforced/full/firelocks,
-/obj/structure/curtain/open/bed{
-	name = "curtain"
-	},
+/obj/structure/curtain/open/black,
 /turf/simulated/floor/plating,
 /area/crew_quarters/bar/lounge)
 "gMk" = (
@@ -11474,10 +11472,6 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_6)
 "hYD" = (
-/obj/machinery/door/airlock{
-	name = "Kitchen";
-	req_one_access = list(28)
-	},
 /obj/machinery/door/firedoor,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -11490,6 +11484,9 @@
 	},
 /obj/map_helper/access_helper/airlock/station/service/kitchen,
 /obj/effect/floor_decal/corner_oldtile/white/diagonal,
+/obj/machinery/door/airlock/civilian{
+	name = "Kitchen"
+	},
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/kitchen)
 "hYL" = (
@@ -13419,7 +13416,10 @@
 /turf/simulated/floor/tiled,
 /area/endeavour/surfacebase/mining_main/storage)
 "jAH" = (
-/turf/simulated/wall/prepainted/cargo,
+/obj/structure/poster{
+	pixel_x = 32
+	},
+/turf/simulated/floor/wood,
 /area/crew_quarters/bar/lounge)
 "jBe" = (
 /obj/machinery/suit_cycler/mining,
@@ -14482,7 +14482,6 @@
 /area/security/hallway)
 "ksT" = (
 /obj/machinery/disposal,
-/obj/effect/floor_decal/industrial/warning/full,
 /obj/structure/disposalpipe/trunk,
 /obj/effect/floor_decal/corner_oldtile/white/diagonal,
 /turf/simulated/floor/tiled/dark,
@@ -14874,8 +14873,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d3starboardafthall)
 "kKF" = (
-/obj/structure/table/woodentable,
-/obj/item/flashlight/lamp/green,
+/obj/structure/bed/chair/sofa/brown/right,
 /turf/simulated/floor/carpet/bcarpet,
 /area/crew_quarters/bar/lounge)
 "kKL" = (
@@ -18329,14 +18327,11 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/crew_quarters/sleep/cryo)
 "noi" = (
-/obj/structure/cable/green{
-	icon_state = "1-2"
-	},
 /obj/machinery/door/firedoor,
-/obj/machinery/door/airlock{
+/obj/map_helper/access_helper/airlock/station/service/kitchen,
+/obj/machinery/door/airlock/civilian{
 	name = "Kitchen"
 	},
-/obj/map_helper/access_helper/airlock/station/service/kitchen,
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/kitchen)
 "noB" = (
@@ -22734,6 +22729,10 @@
 /obj/machinery/light/small{
 	dir = 1
 	},
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 4
+	},
+/obj/structure/bed/chair/sofa/brown/corner,
 /turf/simulated/floor/carpet/bcarpet,
 /area/crew_quarters/bar/lounge)
 "qmA" = (
@@ -24638,9 +24637,7 @@
 /area/shuttle/mining_ship/general)
 "rAG" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/structure/curtain/open/bed{
-	name = "curtain"
-	},
+/obj/structure/curtain/open/black,
 /turf/simulated/floor/plating,
 /area/crew_quarters/bar/lounge)
 "rBG" = (
@@ -24858,6 +24855,15 @@
 /obj/effect/paint/darkred,
 /turf/simulated/floor/plating,
 /area/security/brig)
+"rJH" = (
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 4
+	},
+/obj/structure/bed/chair/sofa/brown/left{
+	dir = 8
+	},
+/turf/simulated/floor/carpet/bcarpet,
+/area/crew_quarters/bar/lounge)
 "rKm" = (
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/corner/red/border,
@@ -25441,9 +25447,10 @@
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d3starboardamidhall)
 "seB" = (
-/obj/structure/bed/chair/comfy/beige{
-	dir = 8
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 4
 	},
+/obj/structure/bed/chair/sofa/brown/corner,
 /turf/simulated/floor/carpet/bcarpet,
 /area/crew_quarters/bar/lounge)
 "seM" = (
@@ -27516,7 +27523,7 @@
 /area/quartermaster/foyer)
 "tBs" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/structure/curtain/black,
+/obj/structure/curtain/open/black,
 /turf/simulated/floor/plating,
 /area/crew_quarters/game_room)
 "tBN" = (
@@ -27846,11 +27853,11 @@
 	dir = 4
 	},
 /obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/freezer{
-	name = "Kitchen Cold Room"
-	},
 /obj/map_helper/access_helper/airlock/station/service/kitchen,
 /obj/effect/floor_decal/corner_oldtile/white/diagonal,
+/obj/machinery/door/airlock/civilian{
+	name = "Kitchen Cold Room"
+	},
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/kitchen)
 "tNF" = (
@@ -28352,6 +28359,12 @@
 /area/endeavour/hallway/d3fwdhall)
 "ugs" = (
 /obj/machinery/light/small,
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 4
+	},
+/obj/structure/bed/chair/sofa/brown/left{
+	dir = 8
+	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/crew_quarters/bar/lounge)
 "ugt" = (
@@ -29439,10 +29452,10 @@
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d3fwdhall)
 "uOI" = (
-/obj/machinery/door/airlock/civilian{
-	name = "Reading Room 2"
-	},
 /obj/machinery/door/firedoor,
+/obj/machinery/door/airlock/glass{
+	name = "Bar Lounge 2"
+	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/bar/lounge)
 "uOQ" = (
@@ -38683,9 +38696,9 @@ mDp
 bzE
 bzE
 bzE
-cnc
 kKF
-jAH
+cnc
+lEK
 kKF
 cnc
 bzE
@@ -38879,9 +38892,9 @@ bzE
 bzE
 seB
 ugs
-jAH
+lEK
 qmi
-seB
+rJH
 lEK
 lEK
 bzE
@@ -39071,11 +39084,11 @@ mDp
 nNX
 bzE
 bzE
-uzm
-uzm
 jAH
 uzm
+lEK
 uzm
+jAH
 lEK
 lEK
 bzE
@@ -39267,7 +39280,7 @@ bzE
 bzE
 bzE
 dBF
-jAH
+lEK
 uOI
 cHy
 cHy
@@ -39654,9 +39667,9 @@ jGe
 jYr
 bzE
 bzE
-kbt
 uzm
 uzm
+rlf
 cHy
 aOy
 hnK
@@ -39848,7 +39861,7 @@ jYr
 aKn
 bzE
 bzE
-uzm
+kbt
 uzm
 lEK
 cHy
