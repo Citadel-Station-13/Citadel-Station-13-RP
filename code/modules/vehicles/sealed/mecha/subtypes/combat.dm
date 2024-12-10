@@ -59,7 +59,7 @@
 				var/mob/living/carbon/human/H = T
 	//			if (M.integrity <= 0) return
 
-				var/obj/item/organ/external/temp = H.get_organ(pick(BP_TORSO, BP_TORSO, BP_TORSO, BP_HEAD))
+				var/obj/item/organ/external/temp = H.legacy_organ_by_zone(pick(BP_TORSO, BP_TORSO, BP_TORSO, BP_HEAD))
 				if(temp)
 					var/update = 0
 					switch(damtype)

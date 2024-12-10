@@ -121,7 +121,8 @@
 	return
 
 /datum/reagent/ethanol/affect_ingest(mob/living/carbon/M, alien, removed)
-	if(issmall(M)) removed *= 2
+	if(issmall(M))
+		removed *= 2
 	M.adjust_nutrition(nutriment_factor * removed)
 	M.adjust_hydration(hydration_factor * removed)
 	M.bloodstr.add_reagent("ethanol", removed * ABV)
@@ -135,7 +136,6 @@
 
 	if(halluci)
 		M.setHallucination(max(M.hallucination, halluci))
-	return
 
 /datum/reagent/ethanol/touch_obj(obj/O)
 	if(istype(O, /obj/item/paper))
@@ -221,7 +221,7 @@
 	if(!M.unacidable && removed > 0)
 		if(istype(M, /mob/living/carbon/human) && volume >= meltdose)
 			var/mob/living/carbon/human/H = M
-			var/obj/item/organ/external/affecting = H.get_organ(BP_HEAD)
+			var/obj/item/organ/external/affecting = H.legacy_organ_by_zone(BP_HEAD)
 			if(affecting)
 				affecting.inflict_bodypart_damage(
 					burn = removed * power * 0.1,

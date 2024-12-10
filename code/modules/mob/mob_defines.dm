@@ -85,12 +85,6 @@
 	/// Tracks if we have gravity from environment right now.
 	var/in_gravity
 
-	//? Physiology
-	/// overall physiology - see physiology.dm
-	var/datum/global_physiology/physiology
-	/// physiology modifiers - see physiology.dm; set to list of paths at init to initialize into instances.
-	var/list/datum/physiology_modifier/physiology_modifiers
-
 	//? Actionspeed
 	/// List of action speed modifiers applying to this mob
 	var/list/actionspeed_modification				//Lazy list, see mob_movespeed.dm
@@ -239,8 +233,10 @@
 	var/incorporeal_move = 0 //0 is off, 1 is normal, 2 is for ninjas.
 	var/unacidable = 0
 	/// List of things pinning this creature to walls. (see living_defense.dm)
+	//  todo: /living
 	var/list/pinned = list()
 	/// Embedded items, since simple mobs don't have organs.
+	//  todo: /living
 	var/list/embedded = list()
 	/// For speaking/listening.
 	var/list/languages = list()

@@ -2,6 +2,7 @@
 	name = "brain"
 	desc = "A piece of juicy meat found in a person's head."
 	organ_tag = "brain"
+	organ_key = ORGAN_KEY_BRAIN
 	parent_organ = BP_HEAD
 	vital = 1
 	decay_rate = ORGAN_DECAY_PER_SECOND_BRAIN
@@ -63,7 +64,9 @@
 			owner.custom_pain("Your feel very dizzy for a moment!",0)
 			owner.Confuse(2)
 
+// todo: this is silly.
 /obj/item/organ/internal/brain/proc/replace_self_with(replace_path)
+	ASSERT(ispath(replace_path, /obj/item/organ/internal/brain))
 	var/mob/living/carbon/human/tmp_owner = owner
 	qdel(src)
 	if(tmp_owner)
@@ -257,7 +260,7 @@
 	H.adjustFireLoss(40)
 	H.afflict_unconscious(20 * 4)
 	H.update_health()
-	for(var/obj/item/organ/external/E in H.organs) //They've still gotta congeal, but it's faster than the clone sickness they'd normally get.
+	for(var/obj/item/organ/external/E as anything in H.external_organs) //They've still gotta congeal, but it's faster than the clone sickness they'd normally get.
 		if(E && E.organ_tag == BP_L_ARM || E.organ_tag == BP_R_ARM || E.organ_tag == BP_L_LEG || E.organ_tag == BP_R_LEG)
 			E.removed()
 			qdel(E)
