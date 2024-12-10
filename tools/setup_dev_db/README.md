@@ -6,6 +6,12 @@ Sets up a database for use in development, automatically downloading a portable 
 
 Only works on windows right now, if you're on linux you should know how to set up a database.
 
+## What this is not for.
+
+This is **not** for developing the database.
+
+This sounds counterintuitive, but this script pretty much just blindly runs migrations. If a migration fails, there's nothing it can do about it unless there's an undo migration (which is usually not the case).
+
 ## WARNING
 
 **Do not, under any circumstances, use or attempt to modify this tool to run in production.**

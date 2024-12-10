@@ -11,10 +11,10 @@ import threading;
 
 keep_running: bool = True
 
-def on_interrupt():
+def on_interrupt(signo, frame):
     global keep_running
-    print("ctrl+C caught!")
     keep_running = False
+    print("ctrl+C caught!")
 
 signal.signal(signal.SIGINT, on_interrupt)
 
@@ -33,12 +33,14 @@ if __name__ == "__main__":
         prog="setup.ps1",
         usage="setup.ps1 --port [port] --dbname [dbname]",
     )
-    argparser.add_argument("--daemon", type=str)
+    argparser.add_argument("--mysqld", type=str)
+    argparser.add_argument("--mysql_admin", type=str)
     argparser.add_argument("--flyway", type=str)
     argparser.add_argument("--migrations", type=str)
     argparser.add_argument("--dataDir", type=str)
     argparser.add_argument("--port", required=False, default=3306, type=int)
     argparser.add_argument("--dbname", required=False, default="ss13", type=str)
+    argparser.add_argument("--no_migrations", required=False, action="store_true", default=False)
 
     # we slice it, as being invoked from bootstrap consumes this script's file path as the first arg
     effective_args: list[str] = sys.argv[1:]
@@ -49,7 +51,8 @@ if __name__ == "__main__":
 
     parsed_args = argparser.parse_args(effective_args)
 
-    PATH_TO_MYSQLD: str = parsed_args.daemon
+    PATH_TO_MYSQLD: str = parsed_args.mysqld
+    PATH_TO_MYSQL_ADMIN: str = parsed_args.mysql_admin
     PATH_TO_FLYWAY: str = parsed_args.flyway
     PATH_TO_MIGRATIONS: str = parsed_args.migrations
     USE_DATADIR: str = parsed_args.dataDir
@@ -73,25 +76,45 @@ if __name__ == "__main__":
         stderr=subprocess.STDOUT,
         text=True,
     )
+    os.set_blocking(mysqld.stdout.fileno(), False)
+    mysqld_out_dump = threading.Thread(target=thread_pipe_dump, args=("mysqld-out", mysqld.stdout), daemon=True)
+    mysqld_out_dump.start()
 
-    log_message("setup_dev_db", "Starting flyway...")
-    flyway: subprocess.Popen | None = subprocess.Popen(
+    log_message("setup_dev_db", "Creating database...")
+    create_db_run: subprocess.CompletedProcess = subprocess.run(
         [
-            PATH_TO_FLYWAY,
+            PATH_TO_MYSQL_ADMIN,
+            "--user=root",
+            '--password=password',
+            "create",
+            USE_DATABASE,
         ],
         stdout=subprocess.PIPE,
         stderr=subprocess.STDOUT,
         text=True,
     )
+    log_message("mariadb_admin", create_db_run.stdout or "\n", end="")
 
-    os.set_blocking(mysqld.stdout.fileno(), False)
-    os.set_blocking(flyway.stdout.fileno(), False)
+    flyway: subprocess.Popen | None = None
+    if not parsed_args.no_migrations:
+        log_message("setup_dev_db", "Starting flyway and migrating...")
+        flyway = subprocess.Popen(
+            [
+                PATH_TO_FLYWAY,
+                "-user=root",
+                "-password=password",
+                '-url=jdbc:mariadb://localhost:%d/%s' % (USE_PORT, USE_DATABASE),
+                '-locations=filesystem:%s' % (PATH_TO_MIGRATIONS),
+                "migrate",
+            ],
+            stdout=subprocess.PIPE,
+            stderr=subprocess.STDOUT,
+            text=True,
+        )
+        os.set_blocking(flyway.stdout.fileno(), False)
+        flyway_out_dump = threading.Thread(target=thread_pipe_dump, args=("flyway-out", flyway.stdout), daemon=True)
+        flyway_out_dump.start()
 
-    mysqld_out_dump = threading.Thread(target=thread_pipe_dump, args=("mysqld-out", mysqld.stdout), daemon=True)
-    flyway_out_dump = threading.Thread(target=thread_pipe_dump, args=("flyway-out", flyway.stdout), daemon=True)
-
-    mysqld_out_dump.start()
-    flyway_out_dump.start()
 
     # main loop
     while keep_running == True:
@@ -103,13 +126,13 @@ if __name__ == "__main__":
             exited = mysqld.poll()
             if exited != None:
                 mysqld = None
-                log_message("setup_dev_db", 'mysqld exited with code %d' % exited)
+                log_message("setup_dev_db", 'mysqld exited with code %d' % (exited))
 
         if flyway != None:
             exited = flyway.poll()
             if exited != None:
                 flyway = None
-                log_message("setup_dev_db", 'flyway exited with code %d' % exited)
+                log_message("setup_dev_db", 'flyway exited with code %d' % (exited))
 
         if flyway == None and mysqld == None:
             keep_running = False
@@ -124,15 +147,14 @@ if __name__ == "__main__":
 
     # exit mysqld and flyway
     if mysqld != None:
-        mysqld.send_signal(sig=signal.CTRL_C_EVENT)
+        mysqld.terminate()
     if flyway != None:
-        flyway.send_signal(sig=signal.CTRL_C_EVENT)
+        flyway.terminate()
 
     # block on mysqld/flyway exiting
     if mysqld != None:
         mysqld_exitcode: int | None = mysqld.wait()
-        log_message("setup_dev_db", 'mysqld exited with code %d' % exited)
+        log_message("setup_dev_db", 'mysqld exited with code %d' % (mysqld_exitcode))
     if flyway != None:
         flyway_exitcode: int | None = flyway.wait()
-        log_message("setup_dev_db", 'flyway exited with code %d' % exited)
-
+        log_message("setup_dev_db", 'flyway exited with code %d' % (flyway_exitcode))

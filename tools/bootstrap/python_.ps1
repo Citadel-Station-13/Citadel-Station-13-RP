@@ -9,6 +9,7 @@
 # The underscore in the name is so that typing `bootstrap/python` into
 # PowerShell finds the `.bat` file first, which ensures this script executes
 # regardless of ExecutionPolicy.
+
 $host.ui.RawUI.WindowTitle = "starting :: python $args"
 $ErrorActionPreference = "Stop"
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
@@ -95,14 +96,9 @@ if (!(Test-Path "$PythonDir/requirements.txt") -or ((Get-FileHash "$Tools/requir
 Write-Output $PythonExe | Out-File -Encoding utf8 $Log
 [System.String]::Join([System.Environment]::NewLine, $args) | Out-File -Encoding utf8 -Append $Log
 Write-Output "---" | Out-File -Encoding utf8 -Append $Log
+
 $host.ui.RawUI.WindowTitle = "python $args"
-$ErrorActionPreference = "Continue"
-& $PythonExe -u $args 2>&1 | ForEach-Object {
-	$str = "$_"
-	if ($_.GetType() -eq [System.Management.Automation.ErrorRecord]) {
-		$str = $str.TrimEnd("`r`n")
-	}
-	$str | Out-File -Encoding utf8 -Append $Log
-	$str | Out-Host
-}
+
+& $PythonExe -u $args
+
 exit $LastExitCode

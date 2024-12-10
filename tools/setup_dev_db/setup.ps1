@@ -46,6 +46,7 @@ $MARIADB_BIN_FOLDER = "$MARIADB_FOLDER/mariadb-$MARIADB_VERSION-winx64/bin"
 $FLYWAY_FOLDER = "$ToolRoot/.cache/flyway/$FLYWAY_VERSION"
 
 $MYSQLD_PATH = "$MARIADB_BIN_FOLDER/mariadbd.exe"
+$MYSQLD_ADMIN_PATH = "$MARIADB_BIN_FOLDER/mariadb-admin.exe"
 $FLYWAY_PATH = "$FLYWAY_FOLDER/flyway-$FLYWAY_VERSION/flyway.cmd"
 
 # GET mariadb IF NOT EXISTS
@@ -77,8 +78,8 @@ if(!(Test-Path $DATABASE_DATA_DIR_RAW -PathType Container)) {
 	New-Item $DATABASE_DATA_DIR_RAW -ItemType Directory
 	$DATABASE_DATA_DIR = Resolve-Path "$ToolRoot/../../data/setup_dev_db"
 	Write-Output "Bootstrapping database with data directory '$DATABASE_DATA_DIR'."
-	& $MARIADB_BIN_FOLDER/mariadb-install-db.exe -d $DATABASE_DATA_DIR -p password
+	& $MARIADB_BIN_FOLDER/mariadb-install-db.exe -d $DATABASE_DATA_DIR -p password -D
 }
 $DATABASE_DATA_DIR = Resolve-Path "$ToolRoot/../../data/setup_dev_db"
 
-& $ToolRoot/../bootstrap/python_.ps1 $ToolRoot/invoke.py --dataDir $DATABASE_DATA_DIR --daemon $MYSQLD_PATH --flyway $FLYWAY_PATH --migrations "../../sql/migrations" $args
+& $ToolRoot/../bootstrap/python_.ps1 $ToolRoot/invoke.py --dataDir $DATABASE_DATA_DIR --mysqld $MYSQLD_PATH --flyway $FLYWAY_PATH --migrations "../../sql/migrations" --mysql_admin $MYSQLD_ADMIN_PATH $args
