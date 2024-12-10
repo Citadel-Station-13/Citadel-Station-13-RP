@@ -311,22 +311,6 @@
 	color = "#C8A5DC"
 	affects_robots = TRUE
 
-/datum/reagent/coolant/legacy_affect_blood(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
-	if(M.isSynthetic() && ishuman(M))
-		var/mob/living/carbon/human/H = M
-
-		var/datum/reagent/blood/coolant = H.get_blood(H.vessel)
-
-		if(coolant)
-			H.vessel.add_reagent("blood", removed, coolant.data)
-
-		else
-			H.vessel.add_reagent("blood", removed)
-			H.reset_blood_to_species()
-
-	else
-		..()
-
 /datum/reagent/ultraglue
 	name = "Ultra Glue"
 	id = "glue"

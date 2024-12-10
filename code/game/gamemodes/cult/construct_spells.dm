@@ -473,7 +473,7 @@
 		var/mob/living/carbon/human/H = owner
 		if(!H.should_have_organ(O_HEART))
 			return 1
-		if(H.blood_holder.take_checked_blood_mixture(amount))
+		if(H.erase_checked_blood(amount))
 			return TRUE
 	return 0
 

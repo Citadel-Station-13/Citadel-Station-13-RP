@@ -13,25 +13,6 @@ var/const/CE_STABLE_THRESHOLD = 0.5
 
 /mob/living/carbon/human/var/var/pale = 0          // Should affect how mob sprite is drawn, but currently doesn't.
 
-//Initializes blood vessels
-/mob/living/carbon/human/proc/create_blood()
-	..()
-	#warn check in ..() for vessel / organ maybe?
-	if(vessel)
-		return
-
-	if(species.species_flags & NO_BLOOD)
-		return
-
-	vessel = new/datum/reagent_holder(species.blood_volume)
-	vessel.my_atom = src
-
-	if(!should_have_organ(O_HEART)) //We want the var for safety but we can do without the actual blood.
-		return
-
-	reset_blood_to_species()
-
-
 /mob/living/carbon/human/proc/reset_blood_to_species_if_needed(do_not_regenerate)
 	if(species.species_flags & NO_BLOOD)
 		return
@@ -188,20 +169,8 @@ var/const/CE_STABLE_THRESHOLD = 0.5
 
 //Makes a blood drop, leaking amt units of blood from the mob
 /mob/living/carbon/human/proc/drip(var/amt)
-	if(remove_blood(amt))
+	if(erase_blood(amt))
 		blood_splatter(src,src)
-
-/mob/living/carbon/human/proc/remove_blood(var/amt)
-	if(!should_have_organ(O_HEART)) //TODO: Make drips come from the reagents instead.
-		return 0
-
-	if(!amt)
-		return 0
-
-	if(amt >= blood_holder.get_total_volume())
-		amt = blood_holder.get_total_volume() - 1	// Bit of a safety net; it's impossible to add blood if there's not blood already in the vessel.
-
-	return vessel.remove_reagent("blood",amt * (src.mob_size/MOB_MEDIUM))
 
 /****************************************************
 				BLOOD TRANSFERS
@@ -272,17 +241,7 @@ var/const/CE_STABLE_THRESHOLD = 0.5
 
 	return ..()
 
-//Gets human's own blood.
-/mob/living/carbon/proc/get_blood(datum/reagent_holder/container)
-	var/datum/reagent/blood/res = locate() in container.reagent_list //Grab some blood
-	if(res) // Make sure there's some blood at all
-		if(res.data["donor"] != src) //If it's not theirs, then we look for theirs
-			for(var/datum/reagent/blood/D in container.reagent_list)
-				if(D.data["donor"] == src)
-					return D
-	return res
-
-/proc/blood_splatter(target, datum/reagent/blood/source, large)
+/proc/blood_splatter_legacy(turf/target, datum/reagent/blood/source, large)
 
 	// We're not going to splatter at all because we're in something and that's silly.
 	if(istype(source,/atom/movable))

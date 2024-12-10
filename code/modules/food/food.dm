@@ -37,7 +37,7 @@
 		src.pixel_y = rand(-6.0, 6)
 	. = ..()
 	// prefill depending on if we were cooked or an actual spawn.
-	var/static/datum/nutrient_data/static_nutrient_data_initializer = new /datum/nutriment_data/static_spawn_initializer
+	var/static/datum/nutriment_data/static_nutrient_data_initializer = new /datum/nutriment_data/static_spawn_initializer
 	for(var/key in cooked? inherent_reagents : inherent_reagents | prefill_reagents)
 		reagents.add_reagent(key, inherent_reagents[key], static_nutrient_data_initializer)
 

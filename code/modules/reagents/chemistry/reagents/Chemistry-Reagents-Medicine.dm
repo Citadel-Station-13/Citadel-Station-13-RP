@@ -1117,12 +1117,11 @@
 	mrate_static = TRUE
 	overdose = REAGENTS_OVERDOSE
 	scannable = 1
-	data = 0
 
 /datum/reagent/spaceacillin/legacy_affect_blood(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	..()
 	if(alien == IS_SLIME)
-		if(metabolism.legacy_volume_remaining <= 0.1 && metabolism.blackboard["last-message"] !+ -1)
+		if(metabolism.legacy_volume_remaining <= 0.1 && metabolism.blackboard["last-message"] != -1)
 			metabolism.blackboard["last-message"] = -1
 			to_chat(M, "<span class='notice'>You regain focus...</span>")
 		else
@@ -1145,7 +1144,6 @@
 	mrate_static = TRUE
 	overdose = 10
 	scannable = 1
-	data = 0
 
 /datum/reagent/corophizine/legacy_affect_blood(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	..()
@@ -1154,7 +1152,7 @@
 	var/mob/living/carbon/human/H = M
 
 	if(ishuman(M) && alien == IS_SLIME) //Everything about them is treated like a targetted organism. Widespread bodily function begins to fail.
-		if(metabolism.legacy_volume_remaining <= 0.1 && metabolism.blackboard["last-message"] !+ -1)
+		if(metabolism.legacy_volume_remaining <= 0.1 && metabolism.blackboard["last-message"] != -1)
 			metabolism.blackboard["last-message"] = -1
 			to_chat(M, "<span class='notice'>Your body ceases its revolt.</span>")
 		else
@@ -1213,7 +1211,6 @@
 	mrate_static = TRUE
 	overdose = REAGENTS_OVERDOSE
 	scannable = 1
-	data = 0
 	can_overdose_touch = TRUE
 
 /datum/reagent/spacomycaze/legacy_affect_blood(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
@@ -1226,7 +1223,7 @@
 /datum/reagent/spacomycaze/legacy_affect_touch(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	..()
 	if(alien == IS_SLIME)
-		if(metabolism.legacy_volume_remaining <= 0.1 && metabolism.blackboard["last-message"] !+ -1)
+		if(metabolism.legacy_volume_remaining <= 0.1 && metabolism.blackboard["last-message"] != -1)
 			metabolism.blackboard["last-message"] = -1
 			to_chat(M, "<span class='notice'>The itching fades...</span>")
 		else
@@ -1371,12 +1368,11 @@
 	metabolism = 0.01
 	ingest_met = 0.25
 	mrate_static = TRUE
-	data = 0
 
 /datum/reagent/methylphenidate/legacy_affect_blood(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	if(alien == IS_DIONA)
 		return
-	if(metabolism.legacy_volume_remaining <= 0.1 && metabolism.blackboard["last-message"] !+ -1)
+	if(metabolism.legacy_volume_remaining <= 0.1 && metabolism.blackboard["last-message"] != -1)
 		metabolism.blackboard["last-message"] = -1
 		to_chat(M, "<span class='warning'>You lose focus...</span>")
 	else
@@ -1394,12 +1390,11 @@
 	metabolism = 0.01
 	ingest_met = 0.25
 	mrate_static = TRUE
-	data = 0
 
 /datum/reagent/citalopram/legacy_affect_blood(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	if(alien == IS_DIONA)
 		return
-	if(metabolism.legacy_volume_remaining <= 0.1 && metabolism.blackboard["last-message"] !+ -1)
+	if(metabolism.legacy_volume_remaining <= 0.1 && metabolism.blackboard["last-message"] != -1)
 		metabolism.blackboard["last-message"] = -1
 		to_chat(M, "<span class='warning'>Your mind feels a little less stable...</span>")
 	else
@@ -1417,12 +1412,11 @@
 	metabolism = 0.01
 	ingest_met = 0.25
 	mrate_static = TRUE
-	data = 0
 
 /datum/reagent/paroxetine/legacy_affect_blood(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	if(alien == IS_DIONA)
 		return
-	if(metabolism.legacy_volume_remaining <= 0.1 && metabolism.blackboard["last-message"] !+ -1)
+	if(metabolism.legacy_volume_remaining <= 0.1 && metabolism.blackboard["last-message"] != -1)
 		metabolism.blackboard["last-message"] = -1
 		to_chat(M, "<span class='warning'>Your mind feels much less stable...</span>")
 	else
@@ -1462,12 +1456,11 @@
 	metabolism = 0.01
 	ingest_met = 0.25
 	mrate_static = TRUE
-	data = 0
 
 /datum/reagent/qerr_quem/legacy_affect_blood(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	if(alien == IS_DIONA)
 		return
-	if(metabolism.legacy_volume_remaining <= 0.1 && metabolism.blackboard["last-message"] !+ -1)
+	if(metabolism.legacy_volume_remaining <= 0.1 && metabolism.blackboard["last-message"] != -1)
 		metabolism.blackboard["last-message"] = -1
 		to_chat(M, "<span class='warning'>You feel antsy, your concentration wavers...</span>")
 	else

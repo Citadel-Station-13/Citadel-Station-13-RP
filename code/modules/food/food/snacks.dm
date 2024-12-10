@@ -16,6 +16,7 @@
 	var/survivalfood = FALSE
 	var/nutriment_amt = 0
 	var/list/nutriment_desc = list("food" = 1)
+	#warn ohhh no
 	var/datum/reagent/nutriment/coating/coating = null
 	var/sealed = FALSE
 	var/custom_open_sound

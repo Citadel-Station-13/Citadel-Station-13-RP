@@ -266,7 +266,7 @@
 			set_pin_data(IC_OUTPUT, 13, H.nutrition)
 			var/cont[0]
 			var/amt[0]
-			for(var/datum/reagent/RE in H.reagents.reagent_list)
+			for(var/datum/reagent/RE in H.reagents.get_reagent_datums())
 				if(RE.scannable)
 					cont += RE.id
 					amt	+= round(H.reagents.get_reagent_amount(RE.id), 1)

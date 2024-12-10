@@ -21,8 +21,10 @@
 
 	if(!do_not_regenerate)
 		blood_holder.set_host_volume(species.blood_volume)
+		#warn erase all others, combine volumes
 
 	blood_holder.set_host_fragment_to(create_natural_blood_fragment())
+	#warn erase all others, combine volumes
 
 /**
  * Imprint ourselves on an outgoing blood mixture.
@@ -33,9 +35,47 @@
 	mixture.legacy_antibodies = antibodies?.Copy()
 
 /**
+ * Gets our blood mixture.
+ *
+ * todo: get_blood
+ *
+ * @return /datum/blood_mixture or null
+ */
+/mob/living/carbon/proc/get_blood_mixture() as /datum/blood_mixture
+	var/datum/blood_mixture/mixture = blood_holder?.draw(0)
+	if(!mixture)
+		return
+	imprint_blood_mixture(mixture)
+	return mixture
+
+/**
+ * [take_checked_blood_mixture] but fast,
+ *
+ * * This returns just a number, not the mixture.
+ *
+ * @return amount erased
+ */
+/mob/living/carbon/proc/erase_checked_blood(amount) as num
+	#warn impl
+
+/**
+ * [take_mixture] but fast,
+ *
+ * * This returns just a number, not the mixture.
+ *
+ * @return amount erased
+ */
+/mob/living/carbon/proc/erase_blood(amount) as num
+	#warn impl
+
+
+/**
  * Takes a blood mixture from ourselves.
  *
+ * * Expensive
  * * Fails if we don't have enough.
+ *
+ * todo: take_checked_blood
  *
  * @params
  * * amount - amount to take
@@ -55,6 +95,10 @@
 /**
  * Takes a blood mixture from ourselves.
  *
+ * * Expensive
+ *
+ * todo: take_blood
+ *
  * @params
  * * amount - amount to take
  * * infinite - allow taking any amount, don't actually remove any
@@ -72,6 +116,8 @@
 
 /**
  * Puts a blood mixture into ourselves.
+ *
+ * todo: give_blood
  *
  * @params
  * * mixture - mixture descriptor

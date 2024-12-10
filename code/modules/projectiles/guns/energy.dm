@@ -85,7 +85,7 @@
 					end_nutrition = H.nutrition
 
 					if(start_nutrition - max(0, end_nutrition) < rechargeamt / 10)
-						H.remove_blood((rechargeamt / 10) - (start_nutrition - max(0, end_nutrition)))
+						H.erase_blood((rechargeamt / 10) - (start_nutrition - max(0, end_nutrition)))
 
 			power_supply.give(rechargeamt) //... to recharge 1/5th the battery
 			update_icon()
