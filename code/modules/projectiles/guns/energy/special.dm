@@ -381,7 +381,7 @@
 /obj/item/gun/energy/service/shatter
 	name = "service weapon (shatter)"
 	icon_state = "service_shatter"
-	projectile_type = /obj/projectile/bullet/pellet/shotgun/silver
+	projectile_type = /obj/projectile/bullet/pellet/shotgun/silvershot
 	fire_delay = 15		//Increased by 50% for strength.
 	charge_cost = 600	//Charge increased due to shotgun round.
 
@@ -491,7 +491,7 @@
 	. = ..()
 	if(overheating)
 		icon_state = "prifle_overheat"
-		update_held_icon()
+		update_worn_icon()
 	else
 		return
 
@@ -528,7 +528,7 @@
 	. = ..()
 	if(overheating)
 		icon_state = "ppistol_overheat"
-		update_held_icon()
+		update_worn_icon()
 	else
 		return
 

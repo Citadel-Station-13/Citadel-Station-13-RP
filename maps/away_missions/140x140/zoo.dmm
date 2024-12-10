@@ -1537,12 +1537,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/awaymission/zoo/pirateship)
-"eB" = (
-/mob/living/simple_mob/animal/space/alien{
-	iff_factions = "pirate"
-	},
-/turf/simulated/floor/plating,
-/area/awaymission/zoo/pirateship)
 "eC" = (
 /obj/machinery/door/window{
 	base_state = "right";
@@ -2457,7 +2451,7 @@
 /turf/simulated/floor/plating,
 /area/awaymission/zoo/pirateship)
 "hl" = (
-/obj/item/contraband/poster,
+/obj/item/poster,
 /turf/simulated/floor/plating,
 /area/awaymission/zoo/pirateship)
 "hm" = (
@@ -6372,15 +6366,6 @@
 	name = "scorched sand"
 	},
 /area/awaymission/zoo)
-"rL" = (
-/mob/living/simple_mob/animal/space/alien{
-	iff_factions = "!bind-map"
-	},
-/turf/simulated/floor/holofloor/desert{
-	icon_state = "asteroidplating";
-	name = "scorched sand"
-	},
-/area/awaymission/zoo)
 "rM" = (
 /obj/effect/floor_decal/spline{
 	icon_state = "asteroid_edge_e";
@@ -6431,15 +6416,6 @@
 	name = "Xenomorph Exhibit"
 	},
 /turf/simulated/floor/plating,
-/area/awaymission/zoo)
-"rS" = (
-/mob/living/simple_mob/animal/space/alien/drone{
-	iff_factions = "!bind-map"
-	},
-/turf/simulated/floor/holofloor/desert{
-	icon_state = "asteroidplating";
-	name = "scorched sand"
-	},
 /area/awaymission/zoo)
 "rT" = (
 /obj/structure/window/reinforced{
@@ -6503,23 +6479,6 @@
 	},
 /turf/simulated/floor/holofloor/beach/sand{
 	icon_state = "fullgrass1"
-	},
-/area/awaymission/zoo)
-"sa" = (
-/obj/effect/floor_decal/spline{
-	icon_state = "asteroid_edge_w";
-	name = "rocky edge"
-	},
-/obj/effect/floor_decal/spline{
-	icon_state = "asteroid_edge_s";
-	name = "rocky edge"
-	},
-/mob/living/simple_mob/animal/space/alien/drone{
-	iff_factions = "!bind-map"
-	},
-/turf/simulated/floor/holofloor/desert{
-	icon_state = "asteroidplating";
-	name = "scorched sand"
 	},
 /area/awaymission/zoo)
 "sb" = (
@@ -6610,19 +6569,6 @@
 /obj/effect/floor_decal/spline{
 	icon_state = "asteroid_edge_e";
 	name = "rocky edge"
-	},
-/turf/simulated/floor/holofloor/desert{
-	icon_state = "asteroidplating";
-	name = "scorched sand"
-	},
-/area/awaymission/zoo)
-"so" = (
-/obj/effect/floor_decal/spline{
-	icon_state = "asteroid_edge_e";
-	name = "rocky edge"
-	},
-/mob/living/simple_mob/animal/space/alien/drone{
-	iff_factions = "!bind-map"
 	},
 /turf/simulated/floor/holofloor/desert{
 	icon_state = "asteroidplating";
@@ -6738,20 +6684,6 @@
 	name = "scorched sand"
 	},
 /area/awaymission/zoo)
-"sz" = (
-/obj/effect/floor_decal/spline{
-	icon_state = "asteroid_edge_w";
-	name = "rocky edge"
-	},
-/mob/living/simple_mob/animal/space/alien{
-	iff_factions = "!bind-map";
-	name = "invisible alien hunter"
-	},
-/turf/simulated/floor/holofloor/desert{
-	icon_state = "asteroidplating";
-	name = "scorched sand"
-	},
-/area/awaymission/zoo)
 "sA" = (
 /obj/effect/spider/stickyweb{
 	icon_state = "stickyweb2"
@@ -6837,16 +6769,6 @@
 	iff_factions = "!bind-map"
 	},
 /turf/simulated/floor/holofloor/desert,
-/area/awaymission/zoo)
-"sM" = (
-/mob/living/simple_mob/animal/space/alien{
-	iff_factions = "!bind-map";
-	name = "invisible alien hunter"
-	},
-/turf/simulated/floor/holofloor/desert{
-	icon_state = "asteroidplating";
-	name = "scorched sand"
-	},
 /area/awaymission/zoo)
 "sN" = (
 /obj/effect/decal/remains,
@@ -6942,16 +6864,6 @@
 "sZ" = (
 /obj/structure/flora/grass/brown,
 /turf/simulated/floor/holofloor/snow,
-/area/awaymission/zoo)
-"ta" = (
-/obj/effect/floor_decal/asteroid,
-/mob/living/simple_mob/animal/space/alien{
-	iff_factions = "!bind-map"
-	},
-/turf/simulated/floor/holofloor/desert{
-	icon_state = "asteroidplating";
-	name = "scorched sand"
-	},
 /area/awaymission/zoo)
 "tb" = (
 /obj/structure/grille,
@@ -8323,7 +8235,7 @@
 /obj/structure/grille{
 	name = "mass ventilation"
 	},
-/turf/unsimulated/wall/planetary/normal,
+/turf/unsimulated/wall/planetary,
 /area/awaymission/zoo)
 "wH" = (
 /obj/machinery/door/airlock/maintenance,
@@ -15424,7 +15336,7 @@ br
 dl
 dY
 al
-eB
+al
 eg
 al
 dl
@@ -17370,7 +17282,7 @@ rM
 ry
 ry
 ry
-rS
+rx
 rx
 ry
 ry
@@ -17977,7 +17889,7 @@ ry
 rD
 rx
 rA
-sz
+rA
 rA
 sn
 sQ
@@ -18894,7 +18806,7 @@ rx
 rx
 rx
 rx
-sa
+rE
 rz
 rM
 rB
@@ -18903,7 +18815,7 @@ rz
 rz
 rG
 rx
-sM
+rx
 rx
 rx
 rx
@@ -19199,7 +19111,7 @@ rt
 rx
 rx
 rx
-rL
+rx
 rx
 sb
 rz
@@ -19517,7 +19429,7 @@ rx
 rx
 rD
 rx
-rS
+rx
 rx
 rx
 rB
@@ -21054,7 +20966,7 @@ rM
 rD
 rx
 rx
-rS
+rx
 rx
 rx
 rx
@@ -21349,7 +21261,7 @@ rB
 rz
 rz
 rM
-rS
+rx
 rx
 rN
 rB
@@ -21671,7 +21583,7 @@ rM
 rx
 rD
 rx
-ta
+rD
 rx
 rt
 hq
@@ -21970,7 +21882,7 @@ rF
 rA
 rx
 rx
-sM
+rx
 rA
 rE
 rz
@@ -22274,7 +22186,7 @@ rz
 rz
 rz
 rM
-so
+ry
 ry
 rx
 rx

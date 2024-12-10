@@ -24,7 +24,6 @@
 	return INITIALIZE_HINT_LATELOAD
 
 /obj/machinery/computer/ship/sensors/planet/LateInitialize()
-	. = ..()
 	var/area/overmap/map = locate() in world
 	for(var/obj/overmap/entity/visitable/sector/S in map)
 		if(istype(S,planet_type))

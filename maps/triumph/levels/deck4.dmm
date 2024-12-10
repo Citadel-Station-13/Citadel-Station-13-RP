@@ -2082,6 +2082,13 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled,
 /area/exploration)
+"buD" = (
+/obj/effect/floor_decal/techfloor/orange/corner{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden,
+/turf/simulated/floor/tiled/dark,
+/area/hallway/secondary/docking_hallway)
 "bvo" = (
 /turf/simulated/wall/prepainted/exploration,
 /area/hallway/primary/aft)
@@ -3763,7 +3770,7 @@
 /area/hallway/primary/aft)
 "cHX" = (
 /obj/structure/table/woodentable,
-/obj/item/flashlight/lamp/green,
+/obj/item/flashlight/lamp/green/on,
 /turf/simulated/floor/carpet/bcarpet,
 /area/library)
 "cIw" = (
@@ -4151,10 +4158,6 @@
 	},
 /obj/map_helper/access_helper/airlock/station/external_airlock,
 /turf/simulated/floor/tiled/dark,
-/area/hallway/secondary/docking_hallway)
-"cVf" = (
-/obj/effect/floor_decal/sign/dock/three,
-/turf/simulated/wall/r_wall/prepainted,
 /area/hallway/secondary/docking_hallway)
 "cVE" = (
 /obj/machinery/light/small{
@@ -5311,7 +5314,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/hallway/primary/aft)
 "dBa" = (
-/obj/structure/sign/poster{
+/obj/structure/poster{
 	pixel_y = -32
 	},
 /turf/simulated/floor/tiled/dark,
@@ -6431,6 +6434,7 @@
 	},
 /obj/structure/table/standard,
 /obj/item/duct_tape_roll,
+/obj/item/hand_labeler,
 /turf/simulated/floor/tiled/white,
 /area/exploration/medical)
 "ert" = (
@@ -7897,6 +7901,20 @@
 /obj/effect/floor_decal/corner/red/border,
 /turf/simulated/floor/tiled/dark,
 /area/security/hallway)
+"fsM" = (
+/obj/map_helper/airlock/door/int_door,
+/obj/machinery/access_button/airlock_interior{
+	dir = 1;
+	frequency = 1380;
+	master_tag = "triumph_udang_dock";
+	pixel_x = 24
+	},
+/obj/machinery/door/airlock/glass_external{
+	req_one_access = null
+	},
+/obj/map_helper/access_helper/airlock/station/external_airlock,
+/turf/simulated/floor/tiled/dark,
+/area/hallway/secondary/docking_hallway)
 "fsN" = (
 /obj/machinery/vending/coffee,
 /turf/simulated/floor/carpet/bcarpet,
@@ -13384,6 +13402,17 @@
 /obj/item/hand_labeler,
 /turf/simulated/floor/tiled,
 /area/exploration/pathfinder_office)
+"jjZ" = (
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 9
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden,
+/obj/machinery/light{
+	dir = 8;
+	light_range = 12
+	},
+/turf/simulated/floor/tiled/dark,
+/area/hallway/secondary/docking_hallway)
 "jkq" = (
 /obj/structure/cable/green{
 	icon_state = "1-2"
@@ -14618,6 +14647,21 @@
 	},
 /turf/simulated/floor/wood,
 /area/hydroponics/garden)
+"jXh" = (
+/obj/machinery/shield_diffuser,
+/obj/map_helper/airlock/door/ext_door,
+/obj/machinery/access_button/airlock_exterior{
+	dir = 1;
+	frequency = 1380;
+	master_tag = "triumph_udang_dock";
+	pixel_x = -24
+	},
+/obj/machinery/door/airlock/glass_external{
+	req_one_access = null
+	},
+/obj/map_helper/access_helper/airlock/station/external_airlock,
+/turf/simulated/floor/tiled/dark,
+/area/hallway/secondary/docking_hallway)
 "jXo" = (
 /obj/structure/cable/green{
 	icon_state = "1-2"
@@ -15216,10 +15260,7 @@
 /obj/machinery/light_switch{
 	pixel_y = -26
 	},
-/obj/item/flashlight/lamp/green{
-	pixel_x = 1;
-	pixel_y = 5
-	},
+/obj/item/flashlight/lamp/green/on,
 /turf/simulated/floor/carpet/bcarpet,
 /area/library/study)
 "ksv" = (
@@ -16620,6 +16661,17 @@
 	},
 /turf/simulated/floor/tiled,
 /area/shuttle/excursion/general)
+"lrZ" = (
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden,
+/obj/machinery/light{
+	dir = 8;
+	light_range = 12
+	},
+/turf/simulated/floor/tiled/dark,
+/area/hallway/secondary/docking_hallway)
 "lsb" = (
 /obj/structure/bookcase,
 /obj/item/book/manual/detective,
@@ -16899,6 +16951,15 @@
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/triumph/surfacebase/tram)
+"lDQ" = (
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 5
+	},
+/obj/machinery/camera/network/civilian{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/dark,
+/area/hallway/secondary/docking_hallway)
 "lEq" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
@@ -16932,7 +16993,7 @@
 /area/ai)
 "lEF" = (
 /obj/structure/table/woodentable,
-/obj/item/flashlight/lamp/green,
+/obj/item/flashlight/lamp/green/on,
 /turf/simulated/floor/wood,
 /area/library)
 "lFl" = (
@@ -18177,6 +18238,10 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/bridge)
+"mDV" = (
+/obj/effect/shuttle_landmark/triumph/deck4/udang,
+/turf/space,
+/area/space)
 "mEf" = (
 /obj/machinery/door/firedoor/glass,
 /obj/structure/cable/green{
@@ -18757,6 +18822,22 @@
 /obj/item/ammo_magazine/a5_7mm/five_seven/ap,
 /turf/simulated/floor/tiled/dark,
 /area/security/tactical)
+"mVH" = (
+/obj/machinery/airlock_sensor{
+	dir = 8;
+	frequency = 1380;
+	id_tag = "triumph_udang_dock";
+	pixel_x = 23
+	},
+/obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
+	dir = 8;
+	frequency = 1380;
+	id_tag = "triumph_udang_dock_pump"
+	},
+/obj/map_helper/airlock/sensor/chamber_sensor,
+/obj/map_helper/airlock/atmos/chamber_pump,
+/turf/simulated/floor/tiled/dark,
+/area/hallway/secondary/docking_hallway)
 "mVP" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 10
@@ -21096,7 +21177,7 @@
 /area/triumph/surfacebase/sauna)
 "oGx" = (
 /obj/structure/table/woodentable,
-/obj/item/flashlight/lamp/green,
+/obj/item/flashlight/lamp/green/on,
 /obj/machinery/light/small{
 	dir = 4
 	},
@@ -23201,8 +23282,9 @@
 /turf/simulated/floor/tiled/dark,
 /area/triumph/station/stairs_four)
 "qey" = (
+/obj/effect/floor_decal/sign/dock/three,
 /obj/effect/floor_decal/techfloor/orange{
-	dir = 5
+	dir = 4
 	},
 /turf/simulated/floor/tiled/dark,
 /area/hallway/secondary/docking_hallway)
@@ -25475,7 +25557,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/table/woodentable,
-/obj/item/flashlight/lamp/green,
+/obj/item/flashlight/lamp/green/on,
 /turf/simulated/floor/wood,
 /area/library)
 "rMx" = (
@@ -26115,6 +26197,19 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/bridge)
+"sjk" = (
+/obj/machinery/embedded_controller/radio/airlock/docking_port{
+	dir = 4;
+	frequency = 1380;
+	id_tag = "triumph_udang_dock";
+	pixel_x = -26;
+	pixel_y = 1
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 6
+	},
+/turf/simulated/floor/tiled/dark,
+/area/hallway/secondary/docking_hallway)
 "sjw" = (
 /obj/machinery/air_alarm{
 	dir = 8;
@@ -28265,7 +28360,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/bridge)
 "tPy" = (
-/obj/structure/sign/poster{
+/obj/structure/poster{
 	pixel_y = 32
 	},
 /turf/simulated/floor/carpet,
@@ -28951,9 +29046,7 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
-/obj/machinery/atmospherics/pipe/manifold/hidden{
-	dir = 1
-	},
+/obj/machinery/atmospherics/pipe/manifold4w/hidden,
 /turf/simulated/floor/tiled/dark,
 /area/hallway/secondary/docking_hallway)
 "unB" = (
@@ -31633,9 +31726,8 @@
 "wfu" = (
 /obj/machinery/camera/network/exploration,
 /obj/structure/table/standard,
-/obj/item/binoculars,
-/obj/item/binoculars,
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
+/obj/item/hand_labeler,
 /turf/simulated/floor/tiled,
 /area/exploration/explorer_prep)
 "wfz" = (
@@ -33498,6 +33590,13 @@
 	},
 /turf/simulated/floor/carpet/tealcarpet,
 /area/shuttle/civvie/general)
+"xrj" = (
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden,
+/turf/simulated/floor/tiled/dark,
+/area/hallway/secondary/docking_hallway)
 "xrR" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 5
@@ -58788,14 +58887,14 @@ jNg
 jNg
 jNg
 jNg
-jNg
-jNg
-jNg
-jNg
-jNg
-jNg
-jNg
+wBM
+wBM
+wBM
+wBM
 yfo
+yfo
+wBM
+wBM
 hja
 dpS
 vTi
@@ -58980,17 +59079,17 @@ jNg
 jNg
 jNg
 jNg
+mDV
 jNg
-jNg
-jNg
-jNg
-jNg
-jNg
-jNg
-jNg
-jNg
-yfo
-hja
+jXh
+sjk
+tyc
+jjZ
+xrj
+xrj
+lrZ
+xrj
+buD
 unu
 clX
 tkc
@@ -59176,14 +59275,14 @@ jNg
 jNg
 jNg
 jNg
-jNg
-jNg
-jNg
-jNg
-jNg
-jNg
-jNg
-cVf
+gKK
+mVH
+fsM
+lDQ
+aTp
+aTp
+aTp
+aTp
 qey
 wDo
 hvu
@@ -59370,13 +59469,13 @@ jNg
 jNg
 jNg
 jNg
-jNg
-jNg
-jNg
-jNg
-jNg
-jNg
-jNg
+wBM
+wBM
+gGl
+wBM
+yfo
+yfo
+wBM
 wBM
 pcR
 xPV

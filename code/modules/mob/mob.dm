@@ -175,7 +175,7 @@
 	if(C.statpanel_tab("Status"))
 		STATPANEL_DATA_ENTRY("Ping", "[round(client.lastping,1)]ms (Avg: [round(client.avgping,1)]ms)")
 		STATPANEL_DATA_ENTRY("Map", "[(LEGACY_MAP_DATUM)?.name || "Loading..."]")
-		if(!isnull(SSmapping.next_station) && (SSmapping.next_station.name != SSmapping.loaded_station.name))
+		if(!isnull(SSmapping.next_station) && !isnull(SSmapping.loaded_station) && (SSmapping.next_station.name != SSmapping.loaded_station.name))
 			STATPANEL_DATA_ENTRY("Next Map", "[SSmapping.next_station.name]")
 
 /// Message, type of message (1 or 2), alternative message, alt message type (1 or 2)
@@ -1029,9 +1029,6 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 /mob/proc/update_client_color()
 	if(client && client.color)
 		animate(client, color = null, time = 10)
-	return
-
-/mob/proc/swap_hand()
 	return
 
 /mob/proc/will_show_tooltip()

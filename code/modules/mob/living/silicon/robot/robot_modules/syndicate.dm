@@ -93,7 +93,7 @@
 
 		// FBP repair.
 		/obj/item/robotanalyzer,
-		/obj/item/shockpaddles/robot/jumper,
+		/obj/item/shockpaddles/robot,
 		/obj/item/gripper/no_use/organ/robotics,
 
 		// Hacking other things.

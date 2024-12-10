@@ -210,7 +210,7 @@
 		return
 	var/amount_to_take = min(I.reagents.get_reagent_amount(reagent_id), qty_need)
 	if(amount_to_take >= 1)
-		I.reagents.remove_reagent(reagent_id, amount_to_take, safety = 1)
+		I.reagents.remove_reagent(reagent_id, amount_to_take)
 		qty_need = CEILING((qty_need - amount_to_take), 1)
 		return 1
 	else
@@ -268,9 +268,9 @@
 	return
 
 /datum/event/supply_demand/proc/choose_research_items(var/differentTypes)
-	var/list/types = typesof(/datum/design) - /datum/design
+	var/list/types = typesof(/datum/prototype/design) - /datum/prototype/design
 	for(var/i in 1 to differentTypes)
-		var/datum/design/D = pick(types)
+		var/datum/prototype/design/D = pick(types)
 		types -= D // Don't pick the same thing twice
 		var/chosen_path = initial(D.build_path)
 		var/chosen_qty = rand(1, 3)

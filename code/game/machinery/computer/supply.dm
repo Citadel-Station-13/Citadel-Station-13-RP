@@ -102,7 +102,7 @@
 			else
 				shuttle_status["engine"] = "Idle"
 	else
-		shuttle["mode"] = SUP_SHUTTLE_ERROR
+		shuttle_status["mode"] = SUP_SHUTTLE_ERROR
 
 	for(var/pack_name in SSsupply.legacy_supply_packs)
 		var/datum/supply_pack/P = SSsupply.legacy_supply_packs[pack_name]
@@ -410,7 +410,7 @@
 
 /obj/machinery/computer/supplycomp/proc/post_signal(var/command)
 
-	var/datum/radio_frequency/frequency = radio_controller.return_frequency(1435)
+	var/datum/radio_frequency/frequency = radio_controller.return_frequency(FREQ_STATUS_DISPLAYS)
 
 	if(!frequency) return
 

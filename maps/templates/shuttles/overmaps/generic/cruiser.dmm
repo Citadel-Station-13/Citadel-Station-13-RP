@@ -5824,10 +5824,10 @@
 /obj/structure/closet/crate/secure/weapon{
 	req_one_access = list(108)
 	},
-/obj/item/gun/energy/pulse_rifle,
-/obj/item/gun/energy/pulse_rifle,
-/obj/item/gun/energy/pulse_rifle,
-/obj/item/gun/energy/pulse_rifle,
+/obj/item/gun/energy/nt_pulse/rifle,
+/obj/item/gun/energy/nt_pulse/rifle,
+/obj/item/gun/energy/nt_pulse/rifle,
+/obj/item/gun/energy/nt_pulse/rifle,
 /obj/item/cell/device/weapon,
 /obj/item/cell/device/weapon,
 /obj/item/cell/device/weapon,
@@ -6248,7 +6248,7 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/mothership/rnd)
 "nO" = (
-/obj/item/defib_kit/jumper_kit,
+/obj/item/defib_kit,
 /obj/structure/table/steel_reinforced,
 /obj/item/robotanalyzer,
 /obj/machinery/light,

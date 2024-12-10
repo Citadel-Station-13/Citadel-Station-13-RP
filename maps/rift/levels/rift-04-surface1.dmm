@@ -781,7 +781,7 @@
 /turf/simulated/floor/tiled/monodark,
 /area/security/prison/upper)
 "aCk" = (
-/obj/structure/sign/poster{
+/obj/structure/poster{
 	pixel_y = 32
 	},
 /turf/simulated/floor/wood/broken,
@@ -1129,7 +1129,7 @@
 /obj/machinery/camera/network/medbay{
 	dir = 4
 	},
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/medical/virologyisolation)
 "aPZ" = (
 /obj/machinery/power/apc/north_mount,
@@ -1158,7 +1158,7 @@
 /obj/effect/floor_decal/grass_edge{
 	dir = 5
 	},
-/turf/simulated/floor/outdoors/dirt,
+/turf/simulated/floor/outdoors/dirt/indoors,
 /area/rift/station/public_garden)
 "aRh" = (
 /obj/structure/toilet{
@@ -1387,7 +1387,7 @@
 /obj/machinery/light/fairy{
 	dir = 8
 	},
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/rift/station/public_garden)
 "bbs" = (
 /obj/machinery/door/airlock/glass{
@@ -1534,7 +1534,7 @@
 /area/rift/trade_shop)
 "bfY" = (
 /obj/structure/flora/tree/jungle,
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/rift/station/public_garden)
 "bgv" = (
 /obj/structure/sign/warning/lethal_turrets,
@@ -1743,7 +1743,7 @@
 /obj/machinery/light/small{
 	dir = 4
 	},
-/obj/item/flashlight/lamp,
+/obj/item/flashlight/lamp/on,
 /turf/simulated/floor/carpet/bcarpet,
 /area/library)
 "bmh" = (
@@ -2151,7 +2151,7 @@
 "byP" = (
 /obj/structure/flora/pottedplant/minitree,
 /obj/effect/floor_decal/corner/red/diagonal,
-/obj/structure/sign/poster{
+/obj/structure/poster{
 	pixel_x = 32
 	},
 /turf/simulated/floor/tiled/white,
@@ -2283,7 +2283,7 @@
 /area/maintenance/evahallway)
 "bCI" = (
 /obj/structure/flora/ausbushes/grassybush,
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/rift/station/fighter_bay/transport_tunnel_garage_maint)
 "bDe" = (
 /obj/structure/filingcabinet/chestdrawer{
@@ -3058,10 +3058,10 @@
 /area/quartermaster/foyer)
 "cdl" = (
 /obj/structure/table/woodentable,
-/obj/item/flashlight/lamp,
 /obj/item/radio/intercom{
 	pixel_y = -24
 	},
+/obj/item/flashlight/lamp/on,
 /turf/simulated/floor/carpet/bcarpet,
 /area/library)
 "cdE" = (
@@ -3501,7 +3501,7 @@
 	dir = 8
 	},
 /obj/structure/table/woodentable,
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/rift/station/public_garden)
 "cvf" = (
 /obj/structure/cryofeed{
@@ -4438,7 +4438,7 @@
 /obj/machinery/door/airlock/maintenance/rnd{
 	req_one_access = null
 	},
-/obj/map_helper/access_helper/airlock/station/science/department,
+/obj/map_helper/access_helper/airlock/station/science/xenoarcheology,
 /turf/simulated/floor/plating,
 /area/rnd/xenoarch_storage)
 "dcG" = (
@@ -4598,7 +4598,7 @@
 /turf/simulated/wall/prepainted/cargo,
 /area/maintenance/substation/cargo)
 "dit" = (
-/turf/simulated/floor/outdoors/dirt,
+/turf/simulated/floor/outdoors/dirt/indoors,
 /area/rift/station/public_garden)
 "dix" = (
 /obj/structure/table/rack/shelf,
@@ -5412,7 +5412,7 @@
 /turf/simulated/floor/tiled/monowhite,
 /area/medical/exam_room)
 "dGy" = (
-/turf/unsimulated/wall/planetary/lythios43c,
+/turf/unsimulated/wall/planetary/permafrost,
 /area/rift/surfacebase/outside/outside1)
 "dGA" = (
 /obj/machinery/door/firedoor/glass,
@@ -5422,8 +5422,7 @@
 	name = "Science First Aid";
 	req_one_access = null
 	},
-/obj/map_helper/access_helper/airlock/station/medical/department,
-/obj/map_helper/access_helper/airlock/station/science/department,
+/obj/map_helper/access_helper/airlock/station/science/infirmary,
 /turf/simulated/floor/tiled/steel,
 /area/rnd/hallway)
 "dHp" = (
@@ -6303,7 +6302,7 @@
 /area/maintenance/starboard)
 "edR" = (
 /obj/structure/flora/ausbushes/sparsegrass,
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/rift/station/public_garden)
 "een" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -6933,7 +6932,7 @@
 "exH" = (
 /obj/structure/flora/ausbushes/palebush,
 /obj/machinery/atmospherics/component/unary/vent_pump/high_volume,
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/medical/virologyisolation)
 "eym" = (
 /obj/machinery/door/airlock/medical{
@@ -7201,7 +7200,7 @@
 /area/medical/medbay_emt_bay)
 "eGP" = (
 /obj/structure/flora/tree/jungle_small,
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/rift/station/public_garden)
 "eGS" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
@@ -7513,7 +7512,7 @@
 /area/rift/station/public_garden)
 "eUt" = (
 /obj/structure/closet/secure_closet/freezer/meat,
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/rift/station/public_garden)
 "eUW" = (
 /obj/structure/disposalpipe/segment{
@@ -7737,7 +7736,7 @@
 /area/quartermaster/foyer)
 "fcq" = (
 /obj/structure/sink/puddle,
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/rift/station/fighter_bay/transport_tunnel_garage_maint)
 "fdn" = (
 /obj/machinery/papershredder,
@@ -8012,7 +8011,7 @@
 /area/medical/psych)
 "fnO" = (
 /obj/machinery/appliance/cooker/grill/stand,
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/rift/station/public_garden)
 "foq" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -8230,7 +8229,7 @@
 /area/medical/virologymaint)
 "fwp" = (
 /obj/structure/flora/ausbushes/sparsegrass,
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/rift/station/fighter_bay/transport_tunnel_garage_maint)
 "fwr" = (
 /obj/structure/table/woodentable,
@@ -9761,7 +9760,7 @@
 /obj/machinery/light/fairy{
 	dir = 8
 	},
-/turf/simulated/floor/outdoors/dirtlight,
+/turf/simulated/floor/outdoors/dirtlight/indoors,
 /area/rift/station/public_garden)
 "gzo" = (
 /obj/structure/window/reinforced/tinted/frosted{
@@ -10159,7 +10158,7 @@
 /obj/effect/floor_decal/borderfloor{
 	dir = 8
 	},
-/obj/structure/sign/poster{
+/obj/structure/poster{
 	pixel_x = -32
 	},
 /obj/effect/floor_decal/corner/blue/border{
@@ -11275,7 +11274,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/black{
 	dir = 10
 	},
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/medical/virologyisolation)
 "hqo" = (
 /obj/machinery/power/apc/west_mount,
@@ -11834,7 +11833,7 @@
 	name = "Mining Operations";
 	req_one_access = list()
 	},
-/obj/map_helper/access_helper/airlock/station/supply/cargo_bay,
+/obj/map_helper/access_helper/airlock/station/supply/department,
 /turf/simulated/floor/tiled/steel,
 /area/quartermaster/office)
 "hIo" = (
@@ -12084,7 +12083,7 @@
 	dir = 8
 	},
 /obj/machinery/portable_atmospherics/hydroponics/soil,
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/rift/station/public_garden)
 "hNW" = (
 /obj/effect/floor_decal/industrial/halfstair,
@@ -12262,7 +12261,7 @@
 /obj/structure/bed/chair/comfy/red{
 	dir = 8
 	},
-/obj/structure/sign/poster{
+/obj/structure/poster{
 	pixel_x = 32
 	},
 /turf/simulated/floor/carpet/bcarpet,
@@ -12740,7 +12739,7 @@
 /area/rnd/hallway)
 "iiZ" = (
 /obj/structure/flora/tree/jungle_small,
-/turf/simulated/floor/outdoors/dirtlight,
+/turf/simulated/floor/outdoors/dirtlight/indoors,
 /area/rift/station/public_garden)
 "ijn" = (
 /obj/machinery/door/airlock/glass_external/public{
@@ -13721,7 +13720,7 @@
 /obj/structure/window/wooden{
 	dir = 8
 	},
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/rift/station/public_garden)
 "iKe" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
@@ -13742,7 +13741,7 @@
 /area/rnd/outpost/xenobiology/outpost_main)
 "iKA" = (
 /obj/structure/sink/puddle,
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/medical/virologyisolation)
 "iKE" = (
 /obj/structure/disposalpipe/down{
@@ -13857,7 +13856,7 @@
 /obj/machinery/door/airlock/maintenance/cargo{
 	req_one_access = null
 	},
-/obj/map_helper/access_helper/airlock/station/supply/cargo_bay,
+/obj/map_helper/access_helper/airlock/station/supply/department,
 /turf/simulated/floor/plating,
 /area/quartermaster/office)
 "iQn" = (
@@ -14999,7 +14998,7 @@
 /obj/effect/floor_decal/grass_edge{
 	dir = 10
 	},
-/turf/simulated/floor/outdoors/dirt,
+/turf/simulated/floor/outdoors/dirt/indoors,
 /area/rift/station/public_garden)
 "jFr" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
@@ -15091,7 +15090,7 @@
 /area/medical/virology)
 "jIa" = (
 /obj/machinery/light/flamp,
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/rift/station/public_garden)
 "jJy" = (
 /obj/structure/table/reinforced,
@@ -16981,8 +16980,7 @@
 /obj/machinery/door/airlock/maintenance/rnd{
 	req_one_access = null
 	},
-/obj/map_helper/access_helper/airlock/station/service/botany,
-/obj/map_helper/access_helper/airlock/station/science/department,
+/obj/map_helper/access_helper/airlock/station/science/xenobotany,
 /turf/simulated/floor/plating,
 /area/rnd/xenobiology/xenoflora)
 "kJN" = (
@@ -17158,7 +17156,7 @@
 "kPk" = (
 /obj/structure/flora/ausbushes/sparsegrass,
 /obj/machinery/light,
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/rift/station/fighter_bay/transport_tunnel_garage_maint)
 "kQb" = (
 /obj/random/trash_pile,
@@ -17193,7 +17191,7 @@
 /obj/effect/floor_decal/grass_edge{
 	dir = 1
 	},
-/turf/simulated/floor/outdoors/dirt,
+/turf/simulated/floor/outdoors/dirt/indoors,
 /area/rift/station/public_garden)
 "kRE" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
@@ -18013,7 +18011,7 @@
 /obj/effect/floor_decal/grass_edge/corner{
 	dir = 1
 	},
-/turf/simulated/floor/outdoors/dirt,
+/turf/simulated/floor/outdoors/dirt/indoors,
 /area/rift/station/public_garden)
 "lpX" = (
 /obj/machinery/door/airlock/maintenance/engi{
@@ -18478,7 +18476,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/black{
 	dir = 4
 	},
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/medical/virologyisolation)
 "lHT" = (
 /obj/structure/cable/green{
@@ -18852,7 +18850,7 @@
 /area/quartermaster/hallway)
 "lRL" = (
 /obj/structure/table/wooden_reinforced,
-/obj/item/flashlight/lamp,
+/obj/item/flashlight/lamp/on,
 /turf/simulated/floor/carpet,
 /area/library)
 "lSy" = (
@@ -19026,7 +19024,7 @@
 /obj/effect/floor_decal/grass_edge{
 	dir = 1
 	},
-/turf/simulated/floor/outdoors/dirt,
+/turf/simulated/floor/outdoors/dirt/indoors,
 /area/rift/station/public_garden)
 "mau" = (
 /obj/structure/disposalpipe/segment{
@@ -19083,7 +19081,7 @@
 /area/rift/station/public_garden)
 "mbJ" = (
 /obj/structure/table/woodentable,
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/rift/station/public_garden)
 "mbK" = (
 /obj/effect/floor_decal/borderfloorwhite/corner{
@@ -19487,7 +19485,7 @@
 /area/medical/virologyisolation)
 "mna" = (
 /obj/structure/flora/ausbushes/fernybush,
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/rift/station/fighter_bay/transport_tunnel_garage_maint)
 "mnd" = (
 /obj/machinery/light_construct/small,
@@ -19811,7 +19809,7 @@
 /obj/effect/floor_decal/grass_edge{
 	dir = 10
 	},
-/turf/simulated/floor/outdoors/dirt,
+/turf/simulated/floor/outdoors/dirt/indoors,
 /area/rift/station/public_garden)
 "muE" = (
 /obj/machinery/vending/fitness{
@@ -20893,7 +20891,7 @@
 "nci" = (
 /obj/structure/flora/ausbushes/grassybush,
 /obj/machinery/light,
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/rift/station/fighter_bay/transport_tunnel_garage_maint)
 "ncj" = (
 /obj/effect/floor_decal/borderfloorwhite{
@@ -21309,7 +21307,7 @@
 /turf/simulated/floor/carpet/bcarpet,
 /area/crew_quarters/game_room)
 "npr" = (
-/obj/structure/sign/poster{
+/obj/structure/poster{
 	pixel_x = -32
 	},
 /obj/structure/bed/chair/comfy/red{
@@ -21569,7 +21567,7 @@
 /turf/simulated/floor/wood,
 /area/lawoffice)
 "nyh" = (
-/obj/structure/sign/poster{
+/obj/structure/poster{
 	pixel_x = 32
 	},
 /turf/simulated/floor/wood,
@@ -21625,7 +21623,7 @@
 /obj/item/reagent_containers/food/condiment/enzyme{
 	pixel_x = -8
 	},
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/rift/station/public_garden)
 "nzD" = (
 /obj/effect/floor_decal/techfloor{
@@ -21702,7 +21700,7 @@
 /obj/machinery/light/fairy{
 	dir = 8
 	},
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/rift/station/public_garden)
 "nBa" = (
 /obj/structure/railing{
@@ -21787,7 +21785,7 @@
 /area/rnd/outpost/xenobiology/outpost_hallway)
 "nDQ" = (
 /obj/structure/table/woodentable,
-/obj/item/flashlight/lamp,
+/obj/item/flashlight/lamp/on,
 /turf/simulated/floor/carpet/bcarpet,
 /area/library)
 "nEd" = (
@@ -22047,7 +22045,7 @@
 /obj/machinery/light/fairy{
 	dir = 1
 	},
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/rift/station/public_garden)
 "nLt" = (
 /obj/structure/catwalk,
@@ -22139,7 +22137,7 @@
 /obj/machinery/light/fairy{
 	dir = 4
 	},
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/rift/station/public_garden)
 "nNw" = (
 /obj/machinery/portable_atmospherics/powered/scrubber/huge/stationary/phoronlock{
@@ -22409,7 +22407,7 @@
 /area/medical/exam_room)
 "nWK" = (
 /obj/effect/floor_decal/grass_edge/corner,
-/turf/simulated/floor/outdoors/dirt,
+/turf/simulated/floor/outdoors/dirt/indoors,
 /area/rift/station/public_garden)
 "nXc" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -22483,7 +22481,7 @@
 	dir = 8
 	},
 /obj/structure/table/bench/wooden,
-/turf/simulated/floor/outdoors/dirtlight,
+/turf/simulated/floor/outdoors/dirtlight/indoors,
 /area/rift/station/public_garden)
 "nZo" = (
 /obj/machinery/floodlight,
@@ -22699,7 +22697,7 @@
 /obj/effect/floor_decal/grass_edge{
 	dir = 4
 	},
-/turf/simulated/floor/outdoors/dirt,
+/turf/simulated/floor/outdoors/dirt/indoors,
 /area/rift/station/public_garden)
 "oev" = (
 /obj/effect/floor_decal/steeldecal/steel_decals10{
@@ -23809,7 +23807,7 @@
 /obj/machinery/light/fairy{
 	dir = 1
 	},
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/rift/station/public_garden)
 "oKV" = (
 /obj/effect/floor_decal/industrial/halfstair,
@@ -24042,7 +24040,7 @@
 /obj/machinery/light/fairy{
 	dir = 1
 	},
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/rift/station/public_garden)
 "oPJ" = (
 /obj/effect/floor_decal/borderfloorwhite{
@@ -24183,7 +24181,7 @@
 	pixel_x = -47;
 	pixel_y = -11
 	},
-/turf/simulated/floor/outdoors/dirtlight,
+/turf/simulated/floor/outdoors/dirtlight/indoors,
 /area/rift/station/public_garden)
 "oUV" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -24609,7 +24607,7 @@
 "pek" = (
 /obj/structure/flora/ausbushes/grassybush,
 /obj/machinery/light,
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/medical/virologyisolation)
 "peB" = (
 /obj/machinery/atmospherics/pipe/simple/visible/scrubbers,
@@ -24938,7 +24936,7 @@
 /area/maintenance/lowmedbaymaint)
 "ppC" = (
 /obj/structure/table/bench/wooden,
-/turf/simulated/floor/outdoors/dirtlight,
+/turf/simulated/floor/outdoors/dirtlight/indoors,
 /area/rift/station/public_garden)
 "ppX" = (
 /obj/structure/table/woodentable,
@@ -26054,7 +26052,7 @@
 /obj/effect/floor_decal/grass_edge/corner{
 	dir = 4
 	},
-/turf/simulated/floor/outdoors/dirt,
+/turf/simulated/floor/outdoors/dirt/indoors,
 /area/rift/station/public_garden)
 "pWm" = (
 /obj/machinery/light/small{
@@ -26980,7 +26978,7 @@
 /area/maintenance/library)
 "qyE" = (
 /obj/structure/table/bench/wooden,
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/rift/station/public_garden)
 "qzf" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -27042,7 +27040,7 @@
 	use_power = 1;
 	volume_rate = 700
 	},
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/medical/virologyisolation)
 "qAB" = (
 /obj/structure/catwalk,
@@ -27126,7 +27124,7 @@
 /area/quartermaster/garage)
 "qDk" = (
 /obj/structure/flora/ausbushes/fullgrass,
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/rift/station/public_garden)
 "qDy" = (
 /obj/effect/floor_decal/borderfloorwhite/cee{
@@ -27964,7 +27962,7 @@
 /obj/effect/floor_decal/grass_edge{
 	dir = 6
 	},
-/turf/simulated/floor/outdoors/dirt,
+/turf/simulated/floor/outdoors/dirt/indoors,
 /area/rift/station/public_garden)
 "rcK" = (
 /obj/effect/floor_decal/borderfloorwhite{
@@ -28124,7 +28122,7 @@
 "rkb" = (
 /obj/structure/flora/rock/alternative_1,
 /obj/effect/floor_decal/grass_edge/corner,
-/turf/simulated/floor/outdoors/dirt,
+/turf/simulated/floor/outdoors/dirt/indoors,
 /area/rift/station/public_garden)
 "rkh" = (
 /obj/item/stool/padded,
@@ -28316,7 +28314,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/janitor)
 "rpP" = (
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/rift/station/public_garden)
 "rqe" = (
 /obj/effect/floor_decal/industrial/warning/dust{
@@ -29140,7 +29138,7 @@
 	pixel_x = -32;
 	pixel_y = -33
 	},
-/turf/simulated/floor/outdoors/dirt,
+/turf/simulated/floor/outdoors/dirt/indoors,
 /area/rift/station/public_garden)
 "rKQ" = (
 /obj/effect/floor_decal/industrial/warning/corner{
@@ -30023,10 +30021,10 @@
 /area/maintenance/research/lower)
 "skM" = (
 /obj/structure/flora/ausbushes/ywflowers,
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/rift/station/public_garden)
 "skO" = (
-/turf/simulated/floor/outdoors/dirtlight,
+/turf/simulated/floor/outdoors/dirtlight/indoors,
 /area/rift/station/public_garden)
 "skZ" = (
 /obj/effect/floor_decal/steeldecal/steel_decals4{
@@ -30100,8 +30098,7 @@
 	name = "Xenoflora Research";
 	req_one_access = null
 	},
-/obj/map_helper/access_helper/airlock/station/service/botany,
-/obj/map_helper/access_helper/airlock/station/science/department,
+/obj/map_helper/access_helper/airlock/station/science/xenobotany,
 /turf/simulated/floor/tiled/steel,
 /area/rnd/xenobiology/xenoflora/lab_atmos)
 "smJ" = (
@@ -30450,7 +30447,7 @@
 /area/medical/virologyisolation)
 "sur" = (
 /obj/structure/flora/ausbushes/ppflowers,
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/rift/station/public_garden)
 "suv" = (
 /obj/structure/flora/ausbushes/grassybush,
@@ -30555,7 +30552,7 @@
 /area/tether/surfacebase/entertainment)
 "sxj" = (
 /obj/structure/flora/ausbushes/brflowers,
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/rift/station/public_garden)
 "sxm" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
@@ -30684,7 +30681,7 @@
 	dir = 1;
 	power_rating = 45000
 	},
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/medical/virologyisolation)
 "sCY" = (
 /obj/effect/floor_decal/borderfloorblack{
@@ -31073,7 +31070,7 @@
 /area/tether/surfacebase/medical/mentalhealth)
 "sLo" = (
 /obj/machinery/portable_atmospherics/hydroponics/soil,
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/rift/station/public_garden)
 "sLr" = (
 /obj/machinery/portable_atmospherics/powered/scrubber/huge/stationary/phoronlock{
@@ -31202,13 +31199,13 @@
 /area/quartermaster/hallway)
 "sQo" = (
 /obj/structure/flora/ausbushes/fernybush,
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/rift/station/public_garden)
 "sQt" = (
 /obj/effect/floor_decal/grass_edge{
 	dir = 9
 	},
-/turf/simulated/floor/outdoors/dirt,
+/turf/simulated/floor/outdoors/dirt/indoors,
 /area/rift/station/public_garden)
 "sQN" = (
 /obj/machinery/door/window/brigdoor/northright,
@@ -31241,7 +31238,7 @@
 "sRG" = (
 /obj/structure/flora/ausbushes/sparsegrass,
 /obj/structure/flora/ausbushes/ppflowers,
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/rift/station/fighter_bay/transport_tunnel_garage_maint)
 "sRS" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -31418,7 +31415,7 @@
 "sXy" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/item/reagent_containers/food/condiment/soysauce,
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/rift/station/public_garden)
 "sXD" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
@@ -32544,7 +32541,7 @@
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/medbreak)
 "tDQ" = (
-/obj/structure/sign/poster{
+/obj/structure/poster{
 	pixel_y = -32
 	},
 /turf/simulated/floor/plating,
@@ -32704,7 +32701,7 @@
 /obj/machinery/light/fairy{
 	dir = 8
 	},
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/rift/station/public_garden)
 "tIx" = (
 /obj/effect/floor_decal/borderfloor{
@@ -33035,7 +33032,7 @@
 /area/rift/surfacebase/outside/outside1)
 "tSX" = (
 /obj/effect/floor_decal/grass_edge,
-/turf/simulated/floor/outdoors/dirt,
+/turf/simulated/floor/outdoors/dirt/indoors,
 /area/rift/station/public_garden)
 "tSZ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -33488,7 +33485,7 @@
 /area/medical/virologyaccess)
 "ufa" = (
 /obj/structure/sink/puddle,
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/rift/station/public_garden)
 "ufp" = (
 /obj/structure/bed/double/padded,
@@ -34348,7 +34345,7 @@
 /area/quartermaster/garage)
 "uyG" = (
 /obj/structure/flora/ausbushes/palebush,
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/rift/station/fighter_bay/transport_tunnel_garage_maint)
 "uyU" = (
 /obj/machinery/holopad,
@@ -34438,7 +34435,7 @@
 /obj/structure/window/wooden{
 	dir = 8
 	},
-/turf/simulated/floor/outdoors/dirtlight,
+/turf/simulated/floor/outdoors/dirtlight/indoors,
 /area/rift/station/public_garden)
 "uBa" = (
 /obj/machinery/button/remote/blast_door{
@@ -35368,7 +35365,7 @@
 	name = "Chemical Research";
 	req_one_access = null
 	},
-/obj/map_helper/access_helper/airlock/station/science/department,
+/obj/map_helper/access_helper/airlock/station/science/genetics,
 /turf/simulated/floor/tiled/white,
 /area/rnd/chemistry_lab)
 "vdS" = (
@@ -35991,7 +35988,7 @@
 /obj/machinery/air_alarm/monitor/isolation{
 	pixel_y = 26
 	},
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/medical/virologyisolation)
 "vBx" = (
 /obj/effect/floor_decal/borderfloor{
@@ -36160,7 +36157,7 @@
 	id_tag = "researchdoor";
 	name = "Testing Room"
 	},
-/obj/map_helper/access_helper/airlock/station/science/department,
+/obj/map_helper/access_helper/airlock/station/science/genetics,
 /turf/simulated/floor/tiled/monowhite,
 /area/rnd/testingroom)
 "vIa" = (
@@ -36502,7 +36499,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/black{
 	dir = 5
 	},
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/medical/virologyisolation)
 "vST" = (
 /obj/structure/disposalpipe/segment{
@@ -36563,7 +36560,7 @@
 /area/rift/surfacebase/outside/outside1)
 "vVm" = (
 /obj/effect/overlay/coconut,
-/turf/simulated/floor/outdoors/dirtlight,
+/turf/simulated/floor/outdoors/dirtlight/indoors,
 /area/rift/station/public_garden)
 "vVs" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -36711,7 +36708,7 @@
 	name = "Cargo Airlock";
 	req_one_access = null
 	},
-/obj/map_helper/access_helper/airlock/station/supply/cargo_bay,
+/obj/map_helper/access_helper/airlock/station/supply/department,
 /turf/simulated/floor/tiled/steel,
 /area/quartermaster/office)
 "vYQ" = (
@@ -36856,12 +36853,11 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
-/obj/map_helper/access_helper/airlock/station/service/botany,
-/obj/map_helper/access_helper/airlock/station/science/department,
 /obj/machinery/door/airlock/glass/research{
 	name = "Xenoflora Research";
 	req_one_access = null
 	},
+/obj/map_helper/access_helper/airlock/station/science/xenobotany,
 /turf/simulated/floor/tiled/steel,
 /area/rnd/xenobiology/xenoflora)
 "wdf" = (
@@ -37282,7 +37278,7 @@
 /turf/simulated/floor/plating,
 /area/security/checkpoint)
 "wpT" = (
-/turf/unsimulated/wall/planetary/lythios43c{
+/turf/unsimulated/wall/planetary/permafrost{
 	desc = "Glacial permafrost, compacted harder than stone.";
 	icon_state = "icerock-dark"
 	},
@@ -37356,7 +37352,7 @@
 	dir = 8
 	},
 /obj/structure/flora/ausbushes/fullgrass,
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/rift/station/public_garden)
 "wrH" = (
 /obj/structure/table/standard,
@@ -37500,7 +37496,7 @@
 "wuX" = (
 /obj/machinery/chemical_dispenser/catering/bar_coffee,
 /obj/structure/table/woodentable,
-/obj/structure/sign/poster{
+/obj/structure/poster{
 	pixel_y = 32
 	},
 /turf/simulated/floor/reinforced,
@@ -37641,7 +37637,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
 	},
-/obj/structure/sign/poster{
+/obj/structure/poster{
 	pixel_y = 32
 	},
 /turf/simulated/floor/tiled/steel,
@@ -37900,7 +37896,7 @@
 	dir = 8
 	},
 /obj/structure/table/bench/wooden,
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/rift/station/public_garden)
 "wGi" = (
 /obj/structure/railing{
@@ -38062,7 +38058,7 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/virologytransitwest)
 "wJK" = (
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/medical/virologyisolation)
 "wKe" = (
 /obj/structure/railing{
@@ -38071,7 +38067,7 @@
 /obj/machinery/light/fairy{
 	dir = 8
 	},
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/rift/station/public_garden)
 "wKr" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
@@ -38188,7 +38184,7 @@
 /obj/machinery/door/airlock/maintenance/rnd{
 	req_one_access = null
 	},
-/obj/map_helper/access_helper/airlock/station/science/department,
+/obj/map_helper/access_helper/airlock/station/science/xenoarcheology,
 /turf/simulated/floor/plating,
 /area/maintenance/research/lower)
 "wQk" = (
@@ -38327,7 +38323,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/quartermaster/office)
 "wUG" = (
-/obj/structure/sign/poster{
+/obj/structure/poster{
 	pixel_y = 32
 	},
 /turf/simulated/floor/tiled/steel,
@@ -38404,7 +38400,7 @@
 /area/maintenance/substation/research/southwest_wing)
 "wZk" = (
 /obj/structure/flora/ausbushes/grassybush,
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/rift/station/public_garden)
 "wZo" = (
 /obj/structure/bonfire,
@@ -39317,7 +39313,7 @@
 /area/rift/surfacebase/outside/outside1)
 "xxZ" = (
 /obj/structure/table/hardwoodtable,
-/obj/structure/sign/poster{
+/obj/structure/poster{
 	pixel_y = 32
 	},
 /turf/simulated/floor/wood/broken,
@@ -39787,7 +39783,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/rift/surfaceeva)
 "xNM" = (
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/rift/station/fighter_bay/transport_tunnel_garage_maint)
 "xNO" = (
 /obj/structure/stairs/spawner/south,
@@ -39902,7 +39898,7 @@
 	dir = 4
 	},
 /obj/effect/overlay/coconut,
-/turf/simulated/floor/outdoors/dirtlight,
+/turf/simulated/floor/outdoors/dirtlight/indoors,
 /area/rift/station/public_garden)
 "xRb" = (
 /turf/simulated/floor/tiled/steel,

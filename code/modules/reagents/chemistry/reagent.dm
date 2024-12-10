@@ -17,6 +17,14 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 	/// reagent flags - see [code/__DEFINES/reagents/flags.dm]
 	var/reagent_flags = NONE
 
+	//* Filtering *//
+	/// reagent filter flags - dynamic flags used for simulations of filtration/identification/detection
+	///
+	/// * used for a lot of things
+	/// * REAGENT_FILTER_GENERIC is a default because this allows us to have a single 'flags' on filter,
+	///   instead of a 'include flags' and 'exclude flags'.
+	var/reagent_filter_flags = REAGENT_FILTER_GENERIC
+
 	//* Identity
 	/// our name - visible from guidebooks and to admins
 	var/name = "Reagent"
@@ -41,7 +49,7 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 	var/taste_description = "bitterness"
 	/// How this taste compares to others. Higher values means it is more noticable
 	var/taste_mult = 1
-	var/datum/reagents/holder = null
+	var/datum/reagent_holder/holder = null
 	var/reagent_state = REAGENT_SOLID
 	var/list/data = null
 	var/volume = 0
@@ -114,7 +122,7 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 	return
 
 /// Currently, on_mob_life is called on carbons. Any interaction with non-carbon mobs (lube) will need to be done in touch_mob.
-/datum/reagent/proc/on_mob_life(var/mob/living/carbon/M, var/alien, var/datum/reagents/metabolism/location, speed_mult = 1, force_allow_dead)
+/datum/reagent/proc/on_mob_life(var/mob/living/carbon/M, var/alien, var/datum/reagent_holder/metabolism/location, speed_mult = 1, force_allow_dead)
 	if(!istype(M))
 		return
 	if(!affects_dead && M.stat == DEAD && !force_allow_dead)
@@ -124,7 +132,7 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 	if(!istype(location))
 		return
 
-	var/datum/reagents/metabolism/active_metab = location
+	var/datum/reagent_holder/metabolism/active_metab = location
 	var/removed = metabolism
 	var/mechanical_circulation = HAS_TRAIT(M, TRAIT_MECHANICAL_CIRCULATION)
 
@@ -329,7 +337,7 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
  * @return amount to inject into the mob side holder. defaults to amount. this can be overriden by the mob / transfer procs.
  */
 // todo: implement this proc, replace reaction mob and similar with it.
-// /datum/reagent/proc/apply_to_mob(mob/target, datum/reagents/holder, amount, list/data)
+// /datum/reagent/proc/apply_to_mob(mob/target, datum/reagent_holder/holder, amount, list/data)
 // 	return amount
 
 /**
@@ -372,5 +380,5 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
  * * new_data - new inbound data. not necessarily a list, only typedcasted to one.
  * * new_amount - the amount that's coming in, not what we will be at after mixing.
  */
-/datum/reagent/proc/mix_data(datum/reagents/holder, list/current_data, current_amount, list/new_data, new_amount)
+/datum/reagent/proc/mix_data(datum/reagent_holder/holder, list/current_data, current_amount, list/new_data, new_amount)
 	return

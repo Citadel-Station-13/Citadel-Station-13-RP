@@ -161,7 +161,7 @@
 					prob(6);/obj/item/gun/ballistic/automatic/lmg,\
 					prob(6);/obj/item/gun/energy/lasercannon,\
 					prob(5);/obj/item/gun/ballistic/automatic/bullpup,\
-					prob(5);/obj/item/gun/energy/pulse_rifle,\
+					prob(5);/obj/item/gun/energy/nt_pulse/rifle,\
 				/*	prob(4);/obj/item/gun/ballistic/automatic/battlerifle,\ */
 					prob(3);/obj/item/gun/ballistic/deagle/camo,\
 					prob(3);/obj/item/gun/energy/gun/nuclear,\
@@ -183,8 +183,8 @@
 					prob(5);/obj/item/storage/box/shotgunshells,\
 					prob(5);/obj/item/ammo_magazine/a357/speedloader,\
 					prob(5);/obj/item/ammo_magazine/a7_62mm/clip,\
-					prob(5);/obj/item/ammo_magazine/a45,\
-					prob(5);/obj/item/ammo_magazine/a45/rubber,\
+					prob(5);/obj/item/ammo_magazine/a45/doublestack,\
+					prob(5);/obj/item/ammo_magazine/a45/doublestack/rubber,\
 					prob(5);/obj/item/ammo_magazine/a38/speedloader,\
 					prob(5);/obj/item/ammo_magazine/a38/speedloader/rubber,\
 					prob(5);/obj/item/storage/box/flashbangs,\
@@ -288,7 +288,7 @@
 					new /obj/item/clothing/suit/storage/hooded/carp_costume(C)
 			else if(prob(50))
 				if(live_cargo) // Something else very much alive and angry.
-					var/spawn_type = pick(/mob/living/simple_mob/animal/space/alien/warrior, /mob/living/simple_mob/animal/space/alien/drone, /mob/living/simple_mob/animal/space/alien/basic_spitter)
+					var/spawn_type = pick(/mob/living/simple_mob/animal/space/xenomorph/warrior, /mob/living/simple_mob/animal/space/xenomorph/drone, /mob/living/simple_mob/animal/space/xenomorph/neurotoxin_spitter)
 					new spawn_type(C)
 				else // Just a costume.
 					new /obj/item/clothing/head/xenos(C)

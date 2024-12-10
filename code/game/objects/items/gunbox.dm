@@ -7,7 +7,7 @@
 
 /obj/item/gunbox/attack_self(mob/user, datum/event_args/actor/actor)
 	var/list/options = list()
-	options["NT Mk58 (.45)"] = list(/obj/item/gun/ballistic/sec, /obj/item/ammo_magazine/a45/rubber, /obj/item/ammo_magazine/a45/flash)
+	options["NT Mk58 (.45)"] = list(/obj/item/gun/ballistic/sec, /obj/item/ammo_magazine/a45/doublestack/rubber, /obj/item/ammo_magazine/a45/doublestack/flash)
 	options["SW 625 Revolver (.45)"] = list(/obj/item/gun/ballistic/revolver/detective45, /obj/item/ammo_magazine/a45/speedloader/rubber, /obj/item/ammo_magazine/a45/speedloader/rubber)
 	options["P92X (9mm)"] = list(/obj/item/gun/ballistic/p92x/sec, /obj/item/ammo_magazine/a9mm/rubber, /obj/item/ammo_magazine/a9mm/flash)
 	var/choice = input(user,"Would you prefer a pistol or a revolver?") as null|anything in options
@@ -28,7 +28,7 @@
 
 /obj/item/gunbox/lethal/attack_self(mob/user, datum/event_args/actor/actor)
 	var/list/options = list()
-	options["M1911 Dynamic (.45)"] = list(/obj/item/gun/ballistic/colt, /obj/item/ammo_magazine/a45, /obj/item/ammo_magazine/a45)
+	options["M1911 Dynamic (.45)"] = list(/obj/item/gun/ballistic/colt, /obj/item/ammo_magazine/a45/singlestack, /obj/item/ammo_magazine/a45/singlestack)
 	options["SW 625 Revolver (.45)"] = list(/obj/item/gun/ballistic/revolver/detective45, /obj/item/ammo_magazine/a45/speedloader, /obj/item/ammo_magazine/a45/speedloader)
 	options["P92X (9mm)"] = list(/obj/item/gun/ballistic/p92x, /obj/item/ammo_magazine/a9mm, /obj/item/ammo_magazine/a9mm)
 	var/choice = input(user,"Would you prefer a pistol or a revolver?") as null|anything in options
@@ -72,7 +72,7 @@
 /obj/item/gunbox/marksman/attack_self(mob/user, datum/event_args/actor/actor)
 	var/list/options = list()
 	options["Marksman Energy Rifle"] = list(/obj/item/gun/energy/sniperrifle/locked)
-	options["M1A Garand"] = list(/obj/item/gun/ballistic/garand/sniper, /obj/item/storage/belt/security/tactical/bandolier, /obj/item/ammo_magazine/a7_62mm/garand/sniperhunter, /obj/item/ammo_magazine/a7_62mm/garand/sniperhunter, /obj/item/ammo_magazine/a7_62mm/garand/sniperhunter, /obj/item/ammo_magazine/a7_62mm/garand/sniperhunter, /obj/item/ammo_magazine/a7_62mm/garand/sniperhunter, /obj/item/ammo_magazine/a7_62mm/garand/sniperhunter, /obj/item/ammo_magazine/a7_62mm/garand/sniperhunter) // 7 clips, 56 rounds
+	options["Expeditionary Reconnaissance Rifle"] = list(/obj/item/gun/ballistic/reconrifle, /obj/item/storage/belt/security/tactical/bandolier, /obj/item/ammo_magazine/a7_62mm, /obj/item/ammo_magazine/a7_62mm, /obj/item/ammo_magazine/a7_62mm, /obj/item/ammo_magazine/a7_62mm, /obj/item/ammo_magazine/a7_62mm, /obj/item/ammo_magazine/a7_62mm, /obj/item/ammo_magazine/a7_62mm, /obj/item/ammo_magazine/a7_62mm, /obj/item/ammo_magazine/a7_62mm, /obj/item/ammo_magazine/a7_62mm) // 10x 10rnd mags (max belt carry capacity)
 	var/choice = input(user,"Would you prefer a ballistic rifle or a laser?") as null|anything in options
 	if(src && choice)
 		var/list/things_to_spawn = options[choice]

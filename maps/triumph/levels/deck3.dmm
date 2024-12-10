@@ -19116,7 +19116,7 @@
 /turf/simulated/floor/tiled,
 /area/triumph/station/stairs_three)
 "pMA" = (
-/obj/item/defib_kit/jumper_kit,
+/obj/item/defib_kit,
 /obj/machinery/newscaster{
 	pixel_y = 32
 	},

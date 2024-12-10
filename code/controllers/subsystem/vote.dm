@@ -35,9 +35,9 @@ SUBSYSTEM_DEF(vote)
 /datum/config_entry/string/default_on_transfer_tie
 	default = "Extend the Shift"
 
-/datum/controller/subsystem/vote/Initialize(start_timeofday)
-	. = ..()
+/datum/controller/subsystem/vote/Initialize()
 	ghost_weight_percent = CONFIG_GET(number/ghost_weight)
+	return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/vote/fire(resumed)
 	if(mode)

@@ -85,7 +85,7 @@ var/list/infomorph_emotions = list(
 
 /mob/living/silicon/infomorph/Initialize(mapload, obj/item/sleevecard/SC, name = "Unknown")
 	ASSERT(SC)
-	name = "[initial(name)] ([name])"
+	name = "Unknown ([name])"
 	src.forceMove(SC)
 	card = SC
 	sradio = new(src)
@@ -411,7 +411,7 @@ var/list/infomorph_emotions = list(
 	else
 		to_chat(src,"<span class='warning'>You don't have a radio!</span>")
 
-/mob/living/silicon/infomorph/say(var/message, var/datum/language/speaking = null, var/verb="says", var/alt_name="", var/whispering = 0)
+/mob/living/silicon/infomorph/say(var/message, var/datum/prototype/language/speaking = null, var/verb="says", var/alt_name="", var/whispering = 0)
 	if(silence_time)
 		to_chat(src, "<font color=green>Communication circuits remain uninitialized.</font>")
 	else

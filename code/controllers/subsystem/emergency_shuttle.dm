@@ -1,6 +1,7 @@
 SUBSYSTEM_DEF(emergencyshuttle)
 	name = "Emergency Shuttle"
 	wait = 20
+	subsystem_flags = SS_NO_INIT
 
 /datum/controller/subsystem/emergencyshuttle
 	var/datum/shuttle/autodock/ferry/emergency/shuttle	// Set in shuttle_emergency.dm TODO - is it really?

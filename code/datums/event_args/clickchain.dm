@@ -14,6 +14,10 @@
 	var/intent
 	/// optional: click params
 	var/list/params
+	/// optional: hand index, if any
+	var/hand_index
+	/// with item, if any
+	var/obj/item/using
 	/// optional: target atom
 	var/atom/target
 

@@ -122,7 +122,7 @@
 	new /obj/item/gun/energy/ionrifle/pistol(src)
 	new /obj/item/clothing/glasses/thermal/syndi(src)
 	new /obj/item/card/emag(src)
-	new /obj/item/ammo_magazine/a45/ap(src)
+	new /obj/item/ammo_magazine/a45/doublestack/ap(src)
 	new /obj/item/material/knife/tacknife/combatknife(src)
 	new /obj/item/clothing/mask/balaclava(src)
 

@@ -20,7 +20,7 @@
 	name = "carpet"
 	icon = 'icons/turf/flooring/carpet.dmi'
 	icon_state = "carpet"
-	initial_flooring = /singleton/flooring/carpet
+	initial_flooring = /datum/prototype/flooring/carpet
 
 	// smoothing_flags = SMOOTH_BITMASK
 	smoothing_groups = (SMOOTH_GROUP_TURF_OPEN + SMOOTH_GROUP_CARPET)
@@ -30,30 +30,30 @@
 	name = "floor"
 	icon = 'icons/turf/flooring/tiles.dmi'
 	icon_state = "steel"
-	initial_flooring = /singleton/flooring/tiling
+	initial_flooring = /datum/prototype/flooring/tiling
 
 /turf/simulated/floor/holofloor/tiled/dark
 	name = "dark floor"
 	icon_state = "dark"
-	initial_flooring = /singleton/flooring/tiling/dark
+	initial_flooring = /datum/prototype/flooring/tiling/dark
 
 /turf/simulated/floor/holofloor/lino
 	name = "lino"
 	icon = 'icons/turf/flooring/linoleum.dmi'
 	icon_state = "lino"
-	initial_flooring = /singleton/flooring/linoleum
+	initial_flooring = /datum/prototype/flooring/linoleum
 
 /turf/simulated/floor/holofloor/wood
 	name = "wooden floor"
 	icon = 'icons/turf/flooring/wood.dmi'
 	icon_state = "wood"
-	initial_flooring = /singleton/flooring/wood
+	initial_flooring = /datum/prototype/flooring/wood
 
 /turf/simulated/floor/holofloor/grass
 	name = "lush grass"
 	icon = 'icons/turf/flooring/grass.dmi'
 	icon_state = "grass0"
-	initial_flooring = /singleton/flooring/grass
+	initial_flooring = /datum/prototype/flooring/grass
 
 /turf/simulated/floor/holofloor/snow
 	name = "snow"
@@ -71,7 +71,7 @@
 
 /turf/simulated/floor/holofloor/reinforced
 	icon = 'icons/turf/flooring/tiles.dmi'
-	initial_flooring = /singleton/flooring/reinforced
+	initial_flooring = /datum/prototype/flooring/reinforced
 	name = "reinforced holofloor"
 	icon_state = "reinforced"
 
@@ -280,10 +280,7 @@
 	cut_overlays()		//So that it doesn't keep stacking overlays non-stop on top of each other
 	if(active)
 		add_overlay(blade_overlay)
-	if(istype(usr,/mob/living/carbon/human))
-		var/mob/living/carbon/human/H = usr
-		H.update_inv_l_hand()
-		H.update_inv_r_hand()
+	update_worn_icon()
 
 //BASKETBALL OBJECTS
 

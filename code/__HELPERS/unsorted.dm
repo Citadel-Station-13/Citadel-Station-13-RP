@@ -319,27 +319,6 @@
 			return 0
 	return 1
 
-/// Ensure the frequency is within bounds of what it should be sending/recieving at.
-/proc/sanitize_frequency(frequency, low = PUBLIC_LOW_FREQ, high = PUBLIC_HIGH_FREQ)
-	frequency = round(frequency)
-	frequency = max(low, frequency)
-	frequency = min(high, frequency)
-	// Ensure the last digit is an odd number.
-	if ((frequency % 2) == 0)
-		frequency += 1
-	return frequency
-
-/// Turns 1479 into 147.9.
-/proc/format_frequency(frequency)
-	return "[round(frequency / 10)].[frequency % 10]"
-
-/// Opposite of format, returns as a number.
-/proc/unformat_frequency(frequency)
-	frequency = text2num(frequency)
-	return frequency * 10
-
-
-
 
 /// Picks a string of symbols to display as the law number for hacked or ion laws.
 /proc/ionnum()
@@ -427,7 +406,8 @@
 	var/list/creatures = list()
 	var/list/namecounts = list()
 	for(var/mob/M in mobs)
-		if(isobserver(M) && ghostfollow && M.client.is_under_stealthmin() && M.get_preference_toggle(/datum/game_preference_toggle/admin/stealth_hides_ghost))
+		// todo: stealthmin will **break** when they're logged out. we don't want this! it's a hard tell.
+		if(isobserver(M) && ghostfollow && M.client?.is_under_stealthmin() && M.get_preference_toggle(/datum/game_preference_toggle/admin/stealth_hides_ghost))
 			continue
 		var/name = M.name
 		if (name in names)

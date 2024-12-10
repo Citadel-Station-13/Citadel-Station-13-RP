@@ -22,6 +22,6 @@
 /datum/map_level/sector/roguemining_192/one
 	id = "Roguemining1"
 	name = "Roguemining - Allocation 1"
-	absolute_path = "maps/sectors/roguemining_192/levels/roguemining_192_1.dmm"
+	path = "maps/sectors/roguemining_192/levels/roguemining_192_1.dmm"
 
 // we only use one allocation now

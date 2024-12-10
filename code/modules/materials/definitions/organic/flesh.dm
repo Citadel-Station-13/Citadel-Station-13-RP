@@ -1,4 +1,4 @@
-/datum/material/flesh
+/datum/prototype/material/flesh
 	id = "flesh"
 	name = "flesh"
 	icon_colour = "#35343a"
@@ -26,13 +26,13 @@
 	absorption = MATERIAL_RESISTANCE_LOW
 	nullification = MATERIAL_RESISTANCE_NONE
 
-/datum/material/flesh/can_open_material_door(var/mob/living/user)
+/datum/prototype/material/flesh/can_open_material_door(var/mob/living/user)
 	var/mob/living/carbon/M = user
 	if(istype(M))
 		return 1
 	return 0
 
-/datum/material/flesh/wall_touch_special(var/turf/simulated/wall/W, var/mob/living/L)
+/datum/prototype/material/flesh/wall_touch_special(var/turf/simulated/wall/W, var/mob/living/L)
 	var/mob/living/carbon/M = L
 	if(istype(M) && L.mind.isholy)
 		to_chat(M, "<span class = 'notice'>\The [W] shudders under your touch, starting to become porous.</span>")

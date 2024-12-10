@@ -29,6 +29,12 @@
 	/// id usually identical to uid, if we are a subspecies we use the parent species id/uid here
 	var/id
 	// TODO: ref species by id in code, so we can rename as needed
+	/// is a subspecies?
+	//  todo: this is autodetected, and only here for legacy support
+	var/is_subspecies
+	/// our superspecies id if we are a subspecies
+	//  todo: this is autodetected, and only here for legacy support
+	var/superspecies_id
 
 	/// Species real name.
 	// TODO: STOP USING THIS. This is being phased out for species IDs.
@@ -110,6 +116,29 @@
 	var/pixel_offset_x = 0
 	/// Used for offsetting large icons.
 	var/pixel_offset_y = 0
+
+	//* Inventory *//
+
+	/// Available inventory slots IDs
+	///
+	/// * associate to list for remapping; use INVENTORY_SLOT_REMAP_* keys
+	var/list/inventory_slots = list(
+		/datum/inventory_slot/inventory/back::id,
+		/datum/inventory_slot/inventory/suit::id,
+		/datum/inventory_slot/inventory/suit_storage::id,
+		/datum/inventory_slot/inventory/uniform::id,
+		/datum/inventory_slot/inventory/ears/left::id,
+		/datum/inventory_slot/inventory/ears/right::id,
+		/datum/inventory_slot/inventory/glasses::id,
+		/datum/inventory_slot/inventory/gloves::id,
+		/datum/inventory_slot/inventory/mask::id,
+		/datum/inventory_slot/inventory/shoes::id,
+		/datum/inventory_slot/inventory/pocket/left::id,
+		/datum/inventory_slot/inventory/pocket/right::id,
+		/datum/inventory_slot/inventory/belt::id,
+		/datum/inventory_slot/inventory/id::id,
+		/datum/inventory_slot/inventory/head::id,
+	)
 
 	//? Overlays
 	/// Used by changelings. Should also be used for icon previews.
@@ -480,6 +509,10 @@
 	var/flight_mod = 1
 
 /datum/species/New()
+	//! LEGACY
+	is_subspecies = id != uid
+	superspecies_id = id
+
 	if(hud_type)
 		hud = new hud_type()
 	else
@@ -502,6 +535,8 @@
 		if(!inherent_verbs)
 			inherent_verbs = list()
 		inherent_verbs |= /mob/living/carbon/human/proc/regurgitate
+
+	//! END
 
 	if(abilities)
 		var/list/built = list()
@@ -882,6 +917,21 @@ GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
 
 /datum/species/proc/handle_falling(mob/living/carbon/human/H, atom/hit_atom, damage_min, damage_max, silent, planetary)
 	return FALSE
+
+/datum/species/proc/get_default_origin_id()
+	return SScharacters.resolve_origin(default_origin).id
+
+/datum/species/proc/get_default_citizenship_id()
+	return SScharacters.resolve_citizenship(default_citizenship).id
+
+/datum/species/proc/get_default_faction_id()
+	return SScharacters.resolve_faction(default_faction).id
+
+/datum/species/proc/get_default_religion_id()
+	return SScharacters.resolve_religion(default_religion).id
+
+/datum/species/proc/get_default_culture_id()
+	return SScharacters.resolve_culture(default_culture).id
 
 /**
  * clones us into a new datum

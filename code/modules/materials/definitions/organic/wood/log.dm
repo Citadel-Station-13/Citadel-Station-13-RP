@@ -1,4 +1,4 @@
-/datum/material/wood_log
+/datum/prototype/material/wood_log
 	id = "log"
 	name = "log"
 	icon_base = 'icons/turf/walls/wood_wall.dmi' // TODO: make a log wall sprites
@@ -37,7 +37,7 @@
 
 	worth = 5
 
-/datum/material/wood_log/generate_recipes()
+/datum/prototype/material/wood_log/generate_recipes()
 	. = ..()
 	. += create_stack_recipe_datum(
 		name = "bonfire",
@@ -45,20 +45,20 @@
 		cost = 5,
 	)
 
-/datum/material/wood_log/sif
+/datum/prototype/material/wood_log/sif
 	id = "log_sif"
 	name = MAT_SIFLOG
 	icon_colour = "#0099cc" // Cyan-ish
 	stack_origin_tech = list(TECH_MATERIAL = 2, TECH_BIO = 2)
 	stack_type = /obj/item/stack/material/log/sif
 
-/datum/material/wood_log/hard
+/datum/prototype/material/wood_log/hard
 	id = "log_hardwood"
 	name = MAT_HARDLOG
 	icon_colour = "#6f432a"
 	stack_type = /obj/item/stack/material/log/hard
 
-/datum/material/wood_log/ironwood
+/datum/prototype/material/wood_log/ironwood
 	id = "log_ironwood"
 	name = MAT_IRONLOG
 	icon_colour = "#5C5454"

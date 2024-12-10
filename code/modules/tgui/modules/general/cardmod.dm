@@ -293,7 +293,7 @@
 
 /datum/tgui_module/card_mod/standard/query_access_ids(mob/user, obj/item/card/id/editing, obj/item/card/id/authing, list/direct)
 	. = list()
-	for(var/id in direct || (((authing?.access || list())) & SSjob.cached_access_edit_relevant))
+	for(var/id in (direct || (((authing?.access || list())) & SSjob.cached_access_edit_relevant)))
 		var/datum/access/A = SSjob.access_lookup(id)
 		if(isnull(A.access_edit_list))
 			continue
@@ -304,19 +304,19 @@
 
 /datum/tgui_module/card_mod/standard/query_access_types(mob/user, obj/item/card/id/editing, obj/item/card/id/authing, list/direct)
 	. = NONE
-	for(var/id in direct || (((authing?.access || list())) & SSjob.cached_access_edit_relevant))
+	for(var/id in (direct || (((authing?.access || list())) & SSjob.cached_access_edit_relevant)))
 		var/datum/access/A = SSjob.access_lookup(id)
 		. |= A.access_edit_type
 
 /datum/tgui_module/card_mod/standard/query_access_categories(mob/user, obj/item/card/id/editing, obj/item/card/id/authing, list/direct)
 	. = list()
-	for(var/id in direct || (((authing?.access || list())) & SSjob.cached_access_edit_relevant))
+	for(var/id in (direct || (((authing?.access || list())) & SSjob.cached_access_edit_relevant)))
 		var/datum/access/A = SSjob.access_lookup(id)
 		. |= A.access_edit_category
 
 /datum/tgui_module/card_mod/standard/query_access_regions(mob/user, obj/item/card/id/editing, obj/item/card/id/authing, list/direct)
 	. = NONE
-	for(var/id in direct || (((authing?.access || list())) & SSjob.cached_access_edit_relevant))
+	for(var/id in (direct || (((authing?.access || list())) & SSjob.cached_access_edit_relevant)))
 		var/datum/access/A = SSjob.access_lookup(id)
 		if(isnull(A.access_edit_region))
 			continue

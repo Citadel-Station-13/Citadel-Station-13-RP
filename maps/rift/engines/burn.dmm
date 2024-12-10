@@ -551,6 +551,10 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_room)
+"Bq" = (
+/obj/structure/closet/firecloset/full/double,
+/turf/template_noop,
+/area/template_noop)
 "Bu" = (
 /turf/simulated/floor,
 /area/engineering/engine_room)
@@ -1819,6 +1823,31 @@ Zn
 Zn
 Zn
 bZ
+Zn
+Zn
+Zn
+Zn
+Zn
+Zn
+Zn
+Zn
+Zn
+Zn
+Zn
+Zn
+"}
+(30,1,1) = {"
+Zn
+Zn
+Zn
+Zn
+Zn
+Zn
+Zn
+Zn
+Zn
+Zn
+Bq
 Zn
 Zn
 Zn

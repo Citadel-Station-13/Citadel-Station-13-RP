@@ -76,7 +76,7 @@
 
 	//* ## LANGUAGE VARS - For organs that assist with certain languages.
 	var/list/will_assist_languages = list()
-	var/list/datum/language/assists_languages = list()
+	var/list/datum/prototype/language/assists_languages = list()
 
 
 	//* ## VERB VARS
@@ -95,6 +95,10 @@
 /obj/item/organ/Initialize(mapload, internal)
 	. = ..(mapload)
 	create_reagents(5)
+
+	// HACK: if we're in repository subsystem load, skip brainmob
+	if(!SSrepository.initialized)
+		return
 
 	if(isliving(loc))
 		owner = loc
@@ -326,6 +330,9 @@
 
 /obj/item/organ/proc/bruise()
 	damage = max(damage, min_bruised_damage)
+
+/obj/item/organ/proc/break_organ()
+	damage = max(damage, min_broken_damage)
 
 /// Being used to make robutt hearts, etc
 /obj/item/organ/proc/robotize()

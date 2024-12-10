@@ -45,7 +45,7 @@
 /datum/component/wielding/proc/wield(mob/wielder)
 	if(src.wielder)
 		return
-	var/possible = wielder.get_number_of_hands()
+	var/possible = wielder.get_nominal_hand_count()
 	var/wanted = hands - 1
 	if(possible < wanted)
 		return
@@ -108,8 +108,18 @@
 
 //* Item Hooks *//
 
+/**
+ * Called when wielded via wielding component.
+ *
+ * * This is a default hook that's always executed, even if there's a callback provided to the component.
+ */
 /obj/item/proc/on_wield(mob/user, hands)
 	return
 
+/**
+ * Called when wielded via wielding component.
+ *
+ * * This is a default hook that's always executed, even if there's a callback provided to the component.
+ */
 /obj/item/proc/on_unwield(mob/user, hands)
 	return

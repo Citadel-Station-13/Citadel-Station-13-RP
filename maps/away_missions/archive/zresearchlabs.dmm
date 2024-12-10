@@ -2922,11 +2922,6 @@
 	temperature = 393.15
 	},
 /area/awaymission/labs/researchdivision)
-"iG" = (
-/turf/simulated/floor{
-	temperature = 393.15
-	},
-/area/awaymission/labs/researchdivision)
 "iH" = (
 /obj/machinery/recharge_station,
 /obj/effect/debris/cleanable/cobweb2,
@@ -5581,7 +5576,7 @@
 /area/awaymission/labs/command)
 "pQ" = (
 /obj/structure/closet/cabinet,
-/obj/item/gun/energy/pulse_carbine,
+/obj/item/gun/energy/nt_pulse/carbine,
 /obj/item/clothing/accessory/medal/gold/heroism,
 /obj/item/clothing/under/rank/head_of_security/navyblue,
 /obj/item/clothing/accessory/holster/armpit,
@@ -30995,7 +30990,7 @@ bG
 iA
 iA
 jD
-iG
+iD
 iY
 bG
 bS
@@ -31509,7 +31504,7 @@ bG
 iB
 iY
 jD
-iG
+iD
 iY
 iI
 bS
@@ -32278,7 +32273,7 @@ hb
 hL
 bG
 iE
-iG
+iD
 iY
 iY
 kd
@@ -32535,7 +32530,7 @@ dI
 hM
 bG
 iF
-iG
+iD
 iY
 iY
 kc
@@ -32792,7 +32787,7 @@ bN
 hN
 bG
 iF
-iG
+iD
 iY
 iY
 iY
@@ -33048,9 +33043,9 @@ bN
 hu
 hO
 il
-iG
-iG
-iG
+iD
+iD
+iD
 iY
 ke
 iI
@@ -33307,7 +33302,7 @@ hP
 ek
 iH
 iZ
-iG
+iD
 iY
 kf
 bG

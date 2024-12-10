@@ -1,11 +1,14 @@
+/**
+ * outdoors floor types
+ */
 /turf/simulated/floor/outdoors
 	name = "generic ground"
 	desc = "Rather boring."
 	icon = 'icons/turf/outdoors.dmi'
 	icon_state = null
 	edge_blending_priority = 1
-	outdoors = TRUE					// This variable is used for weather effects.
-	can_dirty = FALSE				// Looks hideous with dirt on it.
+	outdoors = TRUE
+	can_dirty = FALSE
 	can_build_into_floor = TRUE
 	baseturfs = /turf/simulated/floor/outdoors/rocks
 
@@ -26,13 +29,8 @@ CREATE_STANDARD_TURFS(/turf/simulated/floor/outdoors/rocks)
 
 // Called by weather processes, and maybe technomancers in the future.
 /turf/simulated/floor/proc/chill()
-	return
-
-/turf/simulated/floor/outdoors/chill()
-	PlaceOnTop(/turf/simulated/floor/outdoors/snow, flags = CHANGETURF_PRESERVE_OUTDOORS|CHANGETURF_INHERIT_AIR)
-
-/turf/simulated/floor/outdoors/snow/chill()
-	return // Todo: Add heavy snow.
+	if(outdoors)
+		PlaceOnTop(/turf/simulated/floor/outdoors/snow, flags = CHANGETURF_PRESERVE_OUTDOORS|CHANGETURF_INHERIT_AIR)
 
 /turf/simulated/floor/outdoors/legacy_ex_act(severity)
 	switch(severity)

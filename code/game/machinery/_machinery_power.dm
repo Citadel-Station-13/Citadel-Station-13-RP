@@ -165,5 +165,7 @@
 	if(power_init_complete && use_power == USE_POWER_ACTIVE) // If this is the channel in use
 		REPORT_POWER_CONSUMPTION_CHANGE(old_power, new_power_usage)
 
+	pass() // macro used immediately before being undefined; BYOND bug 2072419
+
 #undef REPORT_POWER_CONSUMPTION_CHANGE
 #undef POWER_CONSUMPTION

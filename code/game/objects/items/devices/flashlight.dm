@@ -29,6 +29,7 @@
 	var/spawn_dir
 
 /obj/item/flashlight/Initialize(mapload)
+	set_flashlight()
 	. = ..()
 
 	if(power_use && cell_type)
@@ -149,10 +150,9 @@
 
 		var/mob/living/carbon/human/H = L	//mob has protective eyewear
 		if(istype(H))
-			for(var/obj/item/clothing/C in list(H.head,H.wear_mask,H.glasses))
-				if(istype(C) && (C.body_cover_flags & EYES))
-					to_chat(user, SPAN_WARNING("You're going to need to remove [C.name] first."))
-					return
+			for(var/obj/item/C in H.inventory.query_coverage(EYES))
+				to_chat(user, SPAN_WARNING("You're going to need to remove [C.name] first."))
+				return
 
 			var/obj/item/organ/vision
 			if(H.species.vision_organ)
@@ -269,6 +269,33 @@
 	light_color = LIGHT_COLOR_FLUORESCENT_FLASHLIGHT
 	light_wedge = LIGHT_NARROW
 
+	/// the gun attachment used for testing if we can attach
+	var/static/obj/item/gun_attachment/flashlight/maglight/test_attachment
+
+/obj/item/flashlight/maglight/proc/get_test_attachment() as /obj/item/gun_attachment/flashlight/maglight
+	if(!test_attachment)
+		test_attachment = new
+	return test_attachment
+
+/obj/item/flashlight/maglight/using_as_item(atom/target, datum/event_args/actor/clickchain/e_args, clickchain_flags, datum/callback/reachability_check)
+	. = ..()
+	if(. & CLICKCHAIN_DO_NOT_PROPAGATE)
+		return
+	if(istype(target, /obj/item/gun))
+		var/obj/item/gun/gun_target = target
+		var/obj/item/gun_attachment/flashlight/maglight/test_attach = get_test_attachment()
+		if(gun_target.can_install_attachment(test_attach, e_args))
+			if(!e_args.performer.temporarily_remove_from_inventory(src))
+				e_args.chat_feedback(SPAN_WARNING("[src] is stuck to your hands!"), src)
+				return CLICKCHAIN_DO_NOT_PROPAGATE
+			var/obj/item/gun_attachment/flashlight/maglight/attaching = new
+			if(!gun_target.install_attachment(attaching, e_args))
+				CRASH("install failed after check")
+			else
+				attaching.our_maglight = src
+				forceMove(attaching)
+		return CLICKCHAIN_DO_NOT_PROPAGATE
+
 /obj/item/flashlight/drone
 	name = "low-power flashlight"
 	desc = "A miniature lamp, that might be used by small robots."
@@ -288,11 +315,12 @@
 	brightness_on = 5
 	w_class = WEIGHT_CLASS_BULKY
 	power_use = 0
-	on = 1
 	light_wedge = LIGHT_OMNI
 	light_color = LIGHT_COLOR_FIRE
 	flashlight_range = 4
 
+/obj/item/flashlight/lamp/on
+	on = 1
 
 // green-shaded desk lamp
 /obj/item/flashlight/lamp/green
@@ -300,6 +328,9 @@
 	icon_state = "lampgreen"
 	brightness_on = 5
 	light_color = LIGHT_COLOR_TUNGSTEN
+
+/obj/item/flashlight/lamp/green/on
+	on = 1
 
 /obj/item/flashlight/lamp/verb/toggle_light()
 	set name = "Toggle light"

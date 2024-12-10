@@ -253,7 +253,7 @@ var/list/civilian_cartridges = list(
 
 /obj/item/cartridge/proc/post_status(var/command, var/data1, var/data2)
 
-	var/datum/radio_frequency/frequency = radio_controller.return_frequency(1435)
+	var/datum/radio_frequency/frequency = radio_controller.return_frequency(FREQ_STATUS_DISPLAYS)
 	if(!frequency) return
 
 	var/datum/signal/status_signal = new

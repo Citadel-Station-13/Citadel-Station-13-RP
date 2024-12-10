@@ -23,6 +23,14 @@
 	var/active_for = -1
 	var/power_total = 0
 
+/obj/machinery/power/geothermal_controller/prepared/Initialize(mapload)
+	. = ..()
+	scanner = new()
+	return INITIALIZE_HINT_LATELOAD
+
+/obj/machinery/power/geothermal_controller/prepared/LateInitialize()
+	scan_for_collectors(scanner?.range)
+
 /obj/machinery/power/geothermal_controller/examine(mob/user, dist)
 	. = ..()
 	if(isrobot(user) && !scanner)
@@ -123,7 +131,7 @@
 	. = ..()
 	var/turf/simulated/T = src.loc
 	if(istype(T))
-		local_special_temp = T.special_temperature
+		local_special_temp = T.temperature_for_heat_exchangers
 		power_provided = local_special_temp
 		if(local_special_temp > 500)
 			var/icon_temperature = local_special_temp
