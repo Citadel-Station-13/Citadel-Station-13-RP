@@ -6928,6 +6928,7 @@
 	id = "chapel"
 	},
 /obj/effect/paint/palebottlegreen,
+/obj/structure/curtain/black,
 /turf/simulated/floor/plating,
 /area/chapel/main)
 "fkF" = (
@@ -8183,11 +8184,10 @@
 /turf/simulated/wall/prepainted/civilian,
 /area/crew_quarters/lounge/kitchen_freezer)
 "fZE" = (
-/obj/structure/curtain/black{
-	pixel_x = 32
-	},
-/turf/simulated/floor/tiled/dark,
-/area/chapel/main)
+/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/effect/paint/babyblue,
+/turf/simulated/floor/plating,
+/area/hallway/secondary/docking_hallway2)
 "fZY" = (
 /obj/machinery/door/firedoor{
 	dir = 8
@@ -9374,9 +9374,6 @@
 /turf/simulated/floor/wood,
 /area/library)
 "gRB" = (
-/obj/structure/curtain/black{
-	pixel_x = -32
-	},
 /turf/simulated/floor/tiled/dark,
 /area/chapel/main)
 "gRE" = (
@@ -25091,9 +25088,15 @@
 /turf/simulated/floor/carpet/purcarpet,
 /area/exploration/meeting)
 "sJt" = (
-/obj/machinery/holopad,
-/turf/simulated/floor/wood,
-/area/crew_quarters/coffee_shop)
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 6
+	},
+/obj/effect/floor_decal/corner/navgold/border{
+	dir = 6
+	},
+/obj/item/radio/intercom/south_mount,
+/turf/simulated/floor/tiled/steel,
+/area/endeavour/hallway/d1starboardforhall)
 "sJw" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -29193,21 +29196,14 @@
 /obj/effect/floor_decal/corner/navgold/border{
 	dir = 9
 	},
-/obj/machinery/power/apc/west_mount{
-	cell_type = /obj/item/cell/super
-	},
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
 /obj/machinery/light{
 	dir = 8
 	},
-/obj/item/radio/intercom{
-	dir = 1;
-	name = "Station Intercom (General)";
-	pixel_y = 26
-	},
 /obj/effect/floor_decal/steeldecal/steel_decals4,
+/obj/machinery/power/apc/north_mount,
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d1starboardforhall)
 "vBt" = (
@@ -45423,7 +45419,7 @@ lhS
 suU
 jyC
 fnT
-xSt
+fZE
 wuD
 eQc
 fYz
@@ -50807,7 +50803,7 @@ ahR
 xwz
 eaK
 eaK
-sJt
+eaK
 lDo
 eaK
 rzS
@@ -54136,11 +54132,11 @@ sDi
 mZV
 dNy
 iwC
-fZE
+gRB
 wtI
-fZE
+gRB
 aeg
-fZE
+gRB
 tDC
 jGM
 quB
@@ -61495,7 +61491,7 @@ tuO
 uJk
 oWx
 tvd
-xpv
+sJt
 uTr
 uTr
 uTr
