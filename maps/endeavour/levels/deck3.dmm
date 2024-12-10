@@ -15127,7 +15127,6 @@
 	id = "QMLoad2"
 	},
 /obj/machinery/status_display/supply_display{
-	mode = 99;
 	pixel_y = 32
 	},
 /obj/machinery/light{
@@ -24163,7 +24162,6 @@
 /area/crew_quarters/sleep/Dorm_7)
 "rjY" = (
 /obj/machinery/status_display/supply_display{
-	mode = 99;
 	pixel_y = -32
 	},
 /obj/effect/floor_decal/industrial/outline/red,
@@ -26429,7 +26427,6 @@
 /obj/structure/ore_box,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/machinery/status_display/supply_display{
-	mode = 99;
 	pixel_y = -32
 	},
 /turf/simulated/floor/tiled,
@@ -26619,7 +26616,6 @@
 /area/crew_quarters/kitchen)
 "sSl" = (
 /obj/machinery/status_display/supply_display{
-	mode = 99;
 	pixel_y = 32
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{

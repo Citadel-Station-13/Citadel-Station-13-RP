@@ -49,7 +49,8 @@
 #define FIRE_PRIORITY_OVERLAYS         100
 #define FIRE_PRIORITY_SMOOTHING        100
 #define FIRE_PRIORITY_CHAT             100
-#define FIRE_PRIORITY_INPUT            100
+#define FIRE_PRIORITY_RUNECHAT		   100
+#define FIRE_PRIORITY_INPUT            1000 // we dont want to drop user input right?
 
 //? Ticker Subsystems - Highest priority
 // Any subsystem flagged with SS_TICKER is here!

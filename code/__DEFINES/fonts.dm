@@ -23,3 +23,7 @@
 /// Emoji icon set
 #define EMOJI_SET 'icons/ui_icons/emoji/emoji.dmi'
 #define EMOJI32_SET 'icons/ui_icons/emoji/emoji32.dmi'
+
+// Font metrics bitfield
+/// Include leading A width and trailing C width in GetWidth() or in DrawText()
+#define INCLUDE_AC (1<<0)
