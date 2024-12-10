@@ -884,6 +884,12 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/research/researchdivision)
+"aEp" = (
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/dark,
+/area/endeavour/hallway/d2portafthall)
 "aEO" = (
 /obj/machinery/door/window/brigdoor/northright{
 	name = "Containment Pen";
@@ -1335,6 +1341,7 @@
 	id = "rndshutters";
 	name = "Research Shutters"
 	},
+/obj/effect/paint/purplegray,
 /turf/simulated/floor/plating,
 /area/rnd/reception_desk)
 "aUR" = (
@@ -4331,12 +4338,6 @@
 "cIi" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
-	},
-/obj/effect/floor_decal/borderfloorblack/corner{
-	dir = 4
-	},
-/obj/effect/floor_decal/corner/navblue/bordercorner{
-	dir = 4
 	},
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled,
@@ -10707,6 +10708,7 @@
 /obj/map_helper/electrochromatic_linker{
 	id = "research-inner"
 	},
+/obj/effect/paint/purplegray,
 /turf/simulated/floor/plating,
 /area/rnd/research/researchdivision)
 "gLH" = (
@@ -13243,12 +13245,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/cable/green{
 	icon_state = "1-4"
-	},
-/obj/effect/floor_decal/borderfloorblack/corner{
-	dir = 1
-	},
-/obj/effect/floor_decal/corner/navblue/bordercorner{
-	dir = 1
 	},
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d2portafthall)
@@ -18911,6 +18907,12 @@
 	dir = 1
 	},
 /obj/machinery/door/airlock/glass,
+/obj/effect/floor_decal/borderfloorblack/corner2{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/navblue/bordercorner2{
+	dir = 4
+	},
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d2portafthall)
 "mgH" = (
@@ -19499,6 +19501,7 @@
 /obj/map_helper/electrochromatic_linker{
 	id = "robotics-outer"
 	},
+/obj/effect/paint/purplegray,
 /turf/simulated/floor/plating,
 /area/assembly/robotics)
 "mBc" = (
@@ -22452,6 +22455,7 @@
 	id = "rndshutters";
 	name = "Research Shutters"
 	},
+/obj/effect/paint/purplegray,
 /turf/simulated/floor/plating,
 /area/rnd/reception_desk)
 "owE" = (
@@ -28498,6 +28502,7 @@
 /obj/map_helper/electrochromatic_linker{
 	id = "robotics-inner"
 	},
+/obj/effect/paint/purplegray,
 /turf/simulated/floor/plating,
 /area/assembly/robotics)
 "rUa" = (
@@ -28777,6 +28782,7 @@
 /obj/map_helper/electrochromatic_linker{
 	id = "robotics-inner"
 	},
+/obj/effect/paint/purplegray,
 /turf/simulated/floor/plating,
 /area/assembly/robotics)
 "sdA" = (
@@ -32052,6 +32058,12 @@
 	},
 /obj/structure/sign/department/sci{
 	pixel_y = 32
+	},
+/obj/effect/floor_decal/borderfloorblack/corner2{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/navblue/bordercorner2{
+	dir = 1
 	},
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d2portafthall)
@@ -48296,7 +48308,7 @@ qpq
 qpq
 iec
 xHD
-mSd
+aEp
 uJM
 mSd
 nYN
