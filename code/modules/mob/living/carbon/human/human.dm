@@ -909,6 +909,16 @@
 	var/obj/item/organ/internal/lungs/L = internal_organs_by_name[O_LUNGS]
 	L?.rupture()
 
+/mob/living/carbon/human/proc/asbestos_lung()
+	var/obj/item/organ/internal/lungs/L = internal_organs_by_name[O_LUNGS]
+	L?.damage_lung()
+
+/mob/living/carbon/human/proc/heart_attack()
+	var/obj/item/organ/internal/heart/H = internal_organs_by_name[O_HEART]
+
+	if(H)
+		H.heart_attack()
+
 //returns 1 if made bloody, returns 0 otherwise
 /mob/living/carbon/human/add_blood(mob/living/carbon/human/M as mob)
 	if (!..())

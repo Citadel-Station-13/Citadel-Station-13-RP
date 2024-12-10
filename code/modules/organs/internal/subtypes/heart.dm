@@ -47,8 +47,11 @@
 
 	standard_pulse_level = PULSE_NONE
 
-/obj/item/organ/internal/stomach/machine/handle_organ_proc_special()
-	..()
-	if(owner && owner.stat != DEAD)
-		owner.bodytemperature += round(owner.robobody_count * 0.25, 0.1)
-
+/obj/item/organ/internal/heart/proc/heart_attack() //Do 10 damage the first time and 5 damage subsequent times.
+	var/obj/item/organ/external/parent = owner.get_organ(parent_organ)
+	if(istype(parent))
+		owner.custom_pain("You feel a stabbing pain in your [parent.name]!", 50)
+	if(is_bruised())
+		take_damage(5)
+	else
+		bruise() //I bruised heart multiplies total blood circulation by .7 so you are effectively 70% blood and taking Oxy damage before bloodloss

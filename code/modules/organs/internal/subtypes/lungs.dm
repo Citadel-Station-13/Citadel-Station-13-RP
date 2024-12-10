@@ -37,6 +37,9 @@
 		owner.custom_pain("You feel a stabbing pain in your [parent.name]!", 50)
 	bruise()
 
+/obj/item/organ/internal/lungs/proc/damage_lung()
+	take_damage(1)
+
 /obj/item/organ/internal/lungs/handle_germ_effects()
 	. = ..() //Up should return an infection level as an integer
 	if(!.)
