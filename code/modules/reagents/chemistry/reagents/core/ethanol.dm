@@ -22,8 +22,6 @@
 	var/targ_temp = 310
 	var/halluci = 0
 
-	data=0
-
 	glass_name = "ethanol"
 	glass_desc = "A well-known alcohol with a variety of applications."
 
@@ -61,9 +59,9 @@
 		return 0
 	#define DOSE_LEVEL 6
 	var/effect_level=round(effective_dose/DOSE_LEVEL)
-	if(effect_level != data)
-		var/lowering=(data>effect_level)
-		data=effect_level
+	if(effect_level != metabolism.blackboard["last-effect-level"])
+		var/lowering=(metabolism.blackboard["last-effect-level"]>effect_level)
+		metabolism.blackboard["last-effect-level"]=effect_level
 		if(lowering)
 			switch(effect_level)
 				if(0)

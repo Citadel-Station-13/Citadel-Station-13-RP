@@ -92,7 +92,7 @@
 		else
 			return -1
 
-	if ((reagents?(reagents.len):(0)) < avail_reagents.reagent_list.len)
+	if ((reagents?(reagents.len):(0)) < avail_reagents.reagent_volumes.len)
 		return 0
 	return .
 

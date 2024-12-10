@@ -439,24 +439,39 @@
 //* Application *//
 
 /**
+ * Spill us onto an entity.
+ *
+ * * 'auto' designates the fact that we're default handling. Use with caution; this reserves
+ *   the right to do pretty much anything, really.
+ * * Returned amount is amount removed. This doesn't actually return the amount 'consumed'.
+ * * The ratio controls actual amount consumed for splash; if something isn't consumed, it's still deleted.
+ *
+ * The reality of this proc is that this is not enough (intentionally) to prevent reagent duping of any kind.
+ *
+ * If we actually enforced hard unit conservation, a lot of reagents would just not do much on splash
+ * because it wouldn't apply enough to be a big deal, and we can't have it do more with less because
+ * that would make the reagent too powerful.
+ *
  * @params
- * * target - what to apply to
- * * ratio - how much should be applied
- * * splash_through - allow splashing through to stuff near / behind / below the target
- * * destroy_unused - destroy unused reagents
+ * * target - what to splash on
+ * * ratio - % to apply
+ * * splash - splash around. if it's an object, we can hit stuff around it; if it's a turf, we can hit
+ *            anything on the turf.
+ * * keep_remaining - return unused reagents to holder.
+ *
+ * @return amount splashed
  */
-/datum/reagent_holder/proc/splash_object(obj/target, ratio, allow_splash, destroy_unused)
-	#warn impl
+/datum/reagent_holder/proc/auto_spill(atom/target, ratio, splash, keep_remaining)
+	. = ratio * total_volume
+	if(splash)
 
-/**
- * @params
- * * target - what to apply to
- * * ratio - how much should be applied
- * * hit_contents - splash everything on the turf
- * * destroy_unused - destroy unused reagents
- */
-/datum/reagent_holder/proc/splash_turf(turf/target, ratio, hit_contents, destroy_unused)
-	#warn impl
+	if(isturf(target))
+	else if(ismob(target))
+	else if(isobj(target))
+
+
+
+#warn deal with these
 
 //* Getters *//
 
@@ -496,10 +511,11 @@
 	if(amount <= 0)
 		return
 	var/list/filtering_ids = list()
-	for(var/datum/reagent/reagent in reagent_list)
+	for(var/id in reagent_volumes)
+		var/datum/reagent/reagent = SSchemistry.fetch_reagent(id)
 		if(!(reagent.reagent_filter_flags & flags))
 			continue
-		filtering_ids += reagent.id
+		filtering_ids += id
 	return transfer_to_holder(transfer_to, filtering_ids, amount)
 
 /**
@@ -513,15 +529,16 @@
 	if(amount <= 0)
 		return
 	var/total_filterable = 0
-	var/list/datum/reagent/filtering = list()
-	for(var/datum/reagent/reagent in reagent_list)
+	var/list/filtering_ids = list()
+	for(var/id in reagent_volumes)
+		var/datum/reagent/reagent = SSchemistry.fetch_reagent(id)
 		if(!(reagent.reagent_filter_flags & flags))
 			continue
-		total_filterable += reagent.volume
-		filtering += reagent
+		total_filterable += reagent_volumes[id]
+		filtering_ids += id
 	var/ratio = amount / total_filterable
-	for(var/datum/reagent/to_filter in filtering)
-		remove_reagent(to_filter.id, to_filter.volume * ratio, TRUE)
+	for(var/id in filtering_ids)
+		remove_reagent(id, reagent_volumes[id] * ratio, TRUE)
 	reconsider_reactions()
 	return min(amount, total_filterable)
 
@@ -637,8 +654,8 @@
 			var/volume = reagent_volumes[potential]
 			if(!volume)
 				continue
-			total_transferable += R.volume
-			ids_to_transfer += R.id
+			total_transferable += volume
+			ids_to_transfer += potential
 		if(!total_transferable)
 			return 0
 		var/ratio = min(1, min(amount, target.maximum_volume - target.total_volume) / total_transferable)
