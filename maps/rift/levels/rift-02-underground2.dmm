@@ -11859,13 +11859,6 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/sleep/engi_wash)
-"Su" = (
-/obj/machinery/airlock_sensor{
-	id_tag = "eng_al_c_snsr";
-	pixel_x = -25
-	},
-/turf/simulated/mineral/icerock/lythios43c,
-/area/rift/surfacebase/underground/under2)
 "Sw" = (
 /obj/structure/bed/chair/bay/chair/padded/yellow,
 /obj/machinery/fire_alarm/north_mount,
@@ -37406,7 +37399,7 @@ aa
 aa
 aa
 aa
-Su
+aa
 aa
 aa
 aa
