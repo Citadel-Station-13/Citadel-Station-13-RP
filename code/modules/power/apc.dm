@@ -1044,12 +1044,12 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/apc, 22)
 	switch(new_setting)
 		if(APC_CHANNEL_AUTO)
 			channels_auto |= bit
-			channels_enabled |= bit
+			channels_toggled |= bit
 		if(APC_CHANNEL_ON)
-			channels_enabled |= bit
+			channels_toggled |= bit
 			channels_auto &= ~bit
 		if(APC_CHANNEL_OFF)
-			channels_enabled &= ~bit
+			channels_toggled &= ~bit
 			channels_auto &= ~bit
 	update_channel_status(channel, defer_updates)
 
@@ -1466,7 +1466,7 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/apc, 22)
 	#warn audit below
 	.["nightshiftSetting"] = nightshift_setting
 	.["nightshiftActive"] = registered_area?.nightshift
-	.["channelsEnabled"] = channels_enabled
+	.["channelsEnabled"] = channels_toggled
 	.["channelsAuto"] = channels_auto
 	.["channelsActive"] = channels_active
 	.["channelThresholds"] = channel_thresholds

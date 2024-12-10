@@ -92,7 +92,8 @@
 	/// Parallax move dir - degrees clockwise from north
 	var/parallax_move_angle = 0
 
-	//? Power
+	//* Power *//
+
 	/// force all machinery using area power to be able to receive unlimited power, or no power; null for use area power system.
 	/// implies the same setting of area_power_infinite if set.
 	var/area_power_override = null
@@ -465,37 +466,7 @@
 		icon_state = null
 
 
-/**
- * Called when the area power status changes
- *
- * Updates the area icon, calls power change on all machinees in the area, and sends the `COMSIG_AREA_POWER_CHANGE` signal.
- */
-/area/proc/power_change()
-	for(var/obj/machinery/M in src)	// for each machine in the area
-		M.power_change() // reverify power status (to update icons etc.)
-	if (fire || eject || party)
-		update_appearance()
 
-/area/vv_get_dropdown()
-	. = ..()
-	VV_DROPDOWN_OPTION("check_static_power", "Check Static Power")
-
-/area/vv_do_topic(list/href_list)
-	. = ..()
-	if(href_list["check_static_power"])
-		debug_static_power(usr)
-
-/// Debugging proc to report if static power is correct or not.
-/area/proc/debug_static_power(mob/user)
-	var/list/was = power_usage_static.Copy()
-	retally_power()
-	if(user)
-		var/list/report = list()
-		report += "[src] ([type]) static power trace: was --> actual:"
-		for(var/i in 1 to POWER_CHANNEL_COUNT)
-			report += "[global.power_channel_names[i]] - [power_usage_static[i] == was[i]? "<span class='good'>" : "<span class='bad'>"][was[i]] --> [power_usage_static[i]]</span>"
-		to_chat(user, jointext(report, "<br>"))
-	return was ~= power_usage_static
 
 //////////////////////////////////////////////////////////////////
 
@@ -556,7 +527,7 @@ GLOBAL_LIST_EMPTY(forced_ambiance_list)
 		playsound(get_turf(src), "bodyfall", 50, 1)
 
 /area/proc/prison_break()
-	var/obj/machinery/apc/theAPC = get_apc()
+	var/obj/machinery/apc/theAPC = get_master_apc()
 	if(theAPC.load_active)
 		for(var/obj/machinery/apc/temp_apc in src)
 			temp_apc.overload_lighting(70)
@@ -615,7 +586,8 @@ var/list/ghostteleportlocs = list()
 	ghostteleportlocs = tim_sort(ghostteleportlocs, GLOBAL_PROC_REF(cmp_text_asc), TRUE)
 
 	return 1
-//? Atmospherics
+
+//* Atmospherics *//
 
 /area/proc/register_scrubber(obj/machinery/atmospherics/component/unary/vent_scrubber/instance)
 	LAZYADD(vent_scrubbers, instance)
@@ -661,7 +633,7 @@ var/list/ghostteleportlocs = list()
 		if(scrubber.id_tag == id)
 			return scrubber
 
-//? Dropping
+//* Dropping *//
 
 /area/AllowDrop()
 	CRASH("Bad op: area/AllowDrop() called")
@@ -691,63 +663,6 @@ var/list/ghostteleportlocs = list()
 	// mutex stopped another update, redo the cycle
 	if(nightshift != on)
 		set_nightshift(nightshift, force = TRUE)
-
-//* Power *//
-
-/**
- * returns if the channel is being powered
- */
-/area/proc/powered(channel)
-	if(!isnull(area_power_override))
-		return area_power_override
-	return power_channels & global.power_channel_bits[channel]
-
-/**
- * use a dynamic amount of burst power
- *
- * @params
- * * amount - how much in joules
- * * channel - power channel
- * * allow_partial - allow partial usage
- * * over_time - (optional) amount of deciseconds this is over, used for smoothing
- *
- * @return power drawn
- */
-/area/proc/use_burst_power(amount, channel, allow_partial, over_time)
-	if(!powered(channel))
-		return 0
-	if(area_power_infinite || (area_power_override == TRUE))
-		return amount
-	return isnull(apc)? 0 : apc.use_burst_power(amount, channel, allow_partial, over_time)
-
-/**
- * set which power channels are turned on
- */
-/area/proc/set_power_channels(channels)
-	if(channels == power_channels)
-		return
-	power_channels = channels
-	power_change()
-
-/**
- * EXTREMELY SLOW
- *
- * Retallys area power and makes sure it's up to date.
- */
-/area/proc/retally_power()
-	power_usage_static = EMPTY_POWER_CHANNEL_LIST
-	for(var/obj/machinery/M in src)
-		switch(M.use_power)
-			if(USE_POWER_ACTIVE)
-				power_usage_static[M.power_channel] += M.active_power_usage
-				M.registered_power_usage = M.active_power_usage
-			if(USE_POWER_IDLE)
-				power_usage_static[M.power_channel] += M.idle_power_usage
-				M.registered_power_usage = M.idle_power_usage
-			if(USE_POWER_CUSTOM)
-				if(isnull(M.registered_power_usage))
-					continue
-				power_usage_static[M.power_channel] += M.registered_power_usage
 
 //* Turfs *//
 

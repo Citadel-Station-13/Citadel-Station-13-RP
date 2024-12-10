@@ -82,7 +82,7 @@
 				if(world.time >= releaseWhen + start_time)
 					var/obj/machinery/apc/theAPC = null
 					for(var/area/A in areas)
-						theAPC = A.get_apc()
+						theAPC = A.get_master_apc()
 						if(theAPC.load_active)	//If the apc's off, it's a little hard to overload the lights.
 							for(var/obj/machinery/light/L in A)
 								L.flicker(10)

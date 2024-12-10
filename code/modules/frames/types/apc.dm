@@ -34,7 +34,7 @@ AUTO_FRAME_DATUM(/datum/frame2/apc, apc, 'icons/machinery/power/apc.dmi')
 				target = entity,
 			)
 		return FALSE
-	if(area.get_apc())
+	if(area.get_master_apc())
 		if(!silent)
 			actor.chat_feedback(
 				SPAN_WARNING("[location] is part of an area that already has an APC."),
