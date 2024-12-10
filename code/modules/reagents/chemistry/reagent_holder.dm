@@ -365,9 +365,9 @@
 	if (!target || !target.reagents)
 		return
 
-	amount = min(amount, get_reagent_amount(id))
+	amount = min(amount, get_reagent_amount(id), target.reagents.maximum_volume - target.reagents.total_volume)
 
-	if(!amount)
+	if(amount <= 0)
 		return
 
 	var/datum/reagent_holder/F = new /datum/reagent_holder(amount)

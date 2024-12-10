@@ -84,6 +84,10 @@
 		SPECIES_ZORREN_HIGH,
 	)
 
+/obj/item/clothing/gloves/gauntlets/hardsuit/equipped
+
+/obj/item/clothing/gloves/gauntlets/hardsuit
+
 /obj/item/clothing/shoes/magboots/hardsuit
 	name = "boots"
 	atom_flags = PHORONGUARD
