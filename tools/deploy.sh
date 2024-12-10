@@ -11,6 +11,7 @@ fi
 
 mkdir -p \
 	$1/_mapload \
+	$1/config.default \
     $1/maps \
     $1/icons \
     $1/sound \

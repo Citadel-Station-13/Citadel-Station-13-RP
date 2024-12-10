@@ -171,7 +171,7 @@ SUBSYSTEM_DEF(materials)
 	for(var/i in 1 to length(L))
 		var/key = L[i]
 		var/value = L[key]
-		var/datum/prototype/material/resolved = RSmaterials.fetch_or_defer(key)
+		var/datum/prototype/material/resolved = RSmaterials.fetch_or_defer(value)
 		switch(resolved)
 			if(REPOSITORY_FETCH_DEFER)
 				// todo: handle this
