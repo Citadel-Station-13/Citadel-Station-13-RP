@@ -17667,6 +17667,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
+/obj/structure/cable/green{
+	icon_state = "1-4"
+	},
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d1starboardhall)
 "mTU" = (
@@ -17945,6 +17948,21 @@
 "nct" = (
 /turf/simulated/floor/plating,
 /area/hallway/secondary/docking_hallway)
+"ncC" = (
+/obj/effect/floor_decal/borderfloorblack,
+/obj/effect/floor_decal/corner/navgold/border,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/power/apc/south_mount,
+/obj/structure/cable/green{
+	icon_state = "0-8"
+	},
+/turf/simulated/floor/tiled/steel,
+/area/endeavour/hallway/d1starboardhall)
 "ncX" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 6
@@ -50064,7 +50082,7 @@ esl
 tBZ
 hyg
 leq
-fdP
+ncC
 oxc
 uze
 uze
