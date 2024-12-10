@@ -22,7 +22,7 @@
 				H.cure_radiation(RAD_MOB_CURE_ANOMALY_BURST * weakness)
 				H.bodytemperature = initial(H.bodytemperature)
 				spawn(1)
-					H.fixblood()
+					H.reset_blood_to_species()
 			//
 			C.adjustOxyLoss(-25 * weakness)
 			C.adjustToxLoss(-25 * weakness)

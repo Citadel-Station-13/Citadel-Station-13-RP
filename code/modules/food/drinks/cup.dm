@@ -8,7 +8,7 @@
 
 /obj/item/reagent_containers/food/drinks/cup/on_reagent_change()
 	..()
-	if (reagents.reagent_list.len > 0)
+	if (reagents.total_volume)
 		var/datum/reagent/R = reagents.get_master_reagent()
 
 		if(R.cup_icon_state)
@@ -58,7 +58,7 @@
 	volume = 15 //I figure if you have to craft these it should at least be slightly better than something you can get for free from a watercooler
 
 /obj/item/reagent_containers/food/drinks/sillycup/smallcarton/on_reagent_change(changetype)
-	if (reagents.reagent_list.len)
+	if (reagents.total_volume)
 		switch(reagents.get_master_reagent_id())
 			if("orangejuice")
 				icon_state = "orangebox"

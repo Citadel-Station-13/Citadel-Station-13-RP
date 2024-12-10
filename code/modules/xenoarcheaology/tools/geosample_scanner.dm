@@ -101,7 +101,7 @@
 	fresh_coolant = 0
 	coolant_purity = 0
 	var/num_reagent_types = 0
-	for (var/datum/reagent/current_reagent in reagents.reagent_list)
+	for (var/datum/reagent/current_reagent in reagents.get_reagent_datums())
 		if (!current_reagent)
 			continue
 		var/cur_purity = coolant_reagents_purity[current_reagent.id]
@@ -109,8 +109,8 @@
 			cur_purity = 0.1
 		else if(cur_purity > 1)
 			cur_purity = 1
-		total_purity += cur_purity * current_reagent.volume
-		fresh_coolant += current_reagent.volume
+		total_purity += cur_purity * reagents.reagent_volumes[current_reagent.id]
+		fresh_coolant += reagents.reagent_volumes[current_reagent.id]
 		num_reagent_types += 1
 	if(total_purity && fresh_coolant)
 		coolant_purity = total_purity / fresh_coolant

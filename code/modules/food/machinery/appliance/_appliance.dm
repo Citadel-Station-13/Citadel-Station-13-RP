@@ -297,26 +297,25 @@
 	for (var/obj/item/J in CI.container)
 		oilwork(J, CI)
 
-	for (var/r in CI.container.reagents.reagent_list)
-		var/datum/reagent/R = r
-		if (istype(R, /datum/reagent/nutriment))
-			CI.max_cookwork += R.volume *2//Added reagents contribute less than those in food items due to granular form
-
-			//Nonfat reagents will soak oil
-			if (!istype(R, /datum/reagent/nutriment/triglyceride))
-				CI.max_oil += R.volume * 0.25
+	for(var/id in CI.container.reagents.reagent_volumes)
+		var/datum/reagent/the_reagent = SSchemistry.fetch_reagent(id)
+		var/the_volume = CI.container.reagents.reagent_volumes[id]
+		if(istype(the_reagent, /datum/reagent/nutriment))
+			CI.max_cookwork += the_volume * 2
+			if(!istype(the_reagent, /datum/reagent/nutriment/triglyceride))
+				CI.max_oil += the_volume * 0.25
 		else
-			CI.max_cookwork += R.volume
-			CI.max_oil += R.volume * 0.10
+			CI.max_cookwork += the_volume
+			CI.max_oil += the_volume * 0.1
 
 	//Rescaling cooking work to avoid insanely long times for large things
 	var/buffer = CI.max_cookwork
 	CI.max_cookwork = 0
 	var/multiplier = 1
-	var/step = 4
-	while (buffer > step)
-		buffer -= step
-		CI.max_cookwork += step*multiplier
+	var/step_amount = 4
+	while (buffer > step_amount)
+		buffer -= step_amount
+		CI.max_cookwork += step_amount * multiplier
 		multiplier *= 0.95
 
 	CI.max_cookwork += buffer*multiplier
@@ -326,19 +325,16 @@
 	var/obj/item/reagent_containers/food/snacks/S = I
 	var/work = 0
 	if (istype(S))
-		if (S.reagents)
-			for (var/r in S.reagents.reagent_list)
-				var/datum/reagent/R = r
-				if (istype(R, /datum/reagent/nutriment))
-					work += R.volume *3//Core nutrients contribute much more than peripheral chemicals
-
-					//Nonfat reagents will soak oil
-					if (!istype(R, /datum/reagent/nutriment/triglyceride))
-						CI.max_oil += R.volume * 0.35
-				else
-					work += R.volume
-					CI.max_oil += R.volume * 0.15
-
+		for(var/id in S.reagents.reagent_volumes)
+			var/datum/reagent/the_reagent = SSchemistry.fetch_reagent(id)
+			var/the_volume = S.reagents.reagent_volumes[id]
+			if(istype(the_reagent, /datum/reagent/nutriment))
+				work += the_volume
+				if(!istype(the_reagent, /datum/reagent/nutriment/triglyceride))
+					CI.max_oil += the_volume * 0.35
+			else
+				work += the_volume
+				CI.max_oil += the_volume * 0.15
 
 	else if(istype(I, /obj/item/holder))
 		var/obj/item/holder/H = I

@@ -127,127 +127,7 @@
 	id = "chalk_dust_blue"
 	color = "#000370"
 
-/datum/reagent/paint
-	name = "Paint"
-	id = "paint"
-	description = "This paint will stick to almost any object."
-	taste_description = "chalk"
-	reagent_state = REAGENT_LIQUID
-	color = "#808080"
-	overdose = REAGENTS_OVERDOSE * 0.5
-	color_weight = 20
-
-/datum/reagent/paint/touch_turf(turf/T)
-	if(istype(T) && !istype(T, /turf/space))
-		T.color = color
-
-/datum/reagent/paint/touch_obj(obj/O)
-	if(istype(O))
-		O.color = color
-
-/datum/reagent/paint/touch_mob(mob/M)
-	if(istype(M) && !istype(M, /mob/observer)) //painting ghosts: not allowed
-		M.color = color //maybe someday change this to paint only clothes and exposed body parts for human mobs.
-
-/datum/reagent/paint/get_data()
-	return color
-
-/datum/reagent/paint/initialize_data(newdata)
-	color = newdata
-	return
-
-/datum/reagent/paint/mix_data(newdata, newamount)
-	var/list/colors = list(0, 0, 0, 0)
-	var/tot_w = 0
-
-	var/hex1 = uppertext(color)
-	var/hex2 = uppertext(newdata)
-	if(length(hex1) == 7)
-		hex1 += "FF"
-	if(length(hex2) == 7)
-		hex2 += "FF"
-	if(length(hex1) != 9 || length(hex2) != 9)
-		return
-	colors[1] += hex2num(copytext(hex1, 2, 4)) * volume
-	colors[2] += hex2num(copytext(hex1, 4, 6)) * volume
-	colors[3] += hex2num(copytext(hex1, 6, 8)) * volume
-	colors[4] += hex2num(copytext(hex1, 8, 10)) * volume
-	tot_w += volume
-	colors[1] += hex2num(copytext(hex2, 2, 4)) * newamount
-	colors[2] += hex2num(copytext(hex2, 4, 6)) * newamount
-	colors[3] += hex2num(copytext(hex2, 6, 8)) * newamount
-	colors[4] += hex2num(copytext(hex2, 8, 10)) * newamount
-	tot_w += newamount
-
-	color = rgb(colors[1] / tot_w, colors[2] / tot_w, colors[3] / tot_w, colors[4] / tot_w)
-	return
-
 /* Things that didn't fit anywhere else */
-
-/datum/reagent/adminordrazine //An OP chemical for admins
-	name = "Adminordrazine"
-	id = "adminordrazine"
-	description = "It's magic. We don't have to explain it."
-	taste_description = "bwoink"
-	reagent_state = REAGENT_LIQUID
-	color = "#C8A5DC"
-	affects_dead = 1 //This can even heal dead people.
-	metabolism = 0.1
-	mrate_static = TRUE //Just in case
-
-	glass_name = "liquid gold"
-	glass_desc = "It's magic. We don't have to explain it."
-
-/datum/reagent/adminordrazine/affect_touch(mob/living/carbon/M, alien, removed)
-	affect_blood(M, alien, removed)
-
-/datum/reagent/adminordrazine/affect_blood(mob/living/carbon/M, alien, removed)
-	M.setCloneLoss(0)
-	M.setOxyLoss(0)
-	M.radiation = 0
-	M.heal_organ_damage(20,20)
-	M.adjustToxLoss(-20)
-	M.setHallucination(0)
-	M.setHalLoss(0)
-	M.setBrainLoss(0)
-	M.disabilities = 0
-	M.sdisabilities = 0
-	M.eye_blurry = 0
-	M.remove_status_effect(/datum/status_effect/sight/blindness)
-	M.set_paralyzed(0)
-	M.set_stunned(0)
-	M.set_unconscious(0)
-	M.silent = 0
-	M.dizziness = 0
-	M.drowsyness = 0
-	M.stuttering = 0
-	M.SetConfused(0)
-	M.set_sleeping(0)
-	M.jitteriness = 0
-	M.radiation = 0
-	M.ExtinguishMob()
-	M.fire_stacks = 0
-	if(M.bodytemperature > 310)
-		M.bodytemperature = max(310, M.bodytemperature - (40 * TEMPERATURE_DAMAGE_COEFFICIENT))
-	else if(M.bodytemperature < 311)
-		M.bodytemperature = min(310, M.bodytemperature + (40 * TEMPERATURE_DAMAGE_COEFFICIENT))
-	if(ishuman(M))
-		var/mob/living/carbon/human/H = M
-		var/wound_heal = 5
-		for(var/obj/item/organ/external/O in H.bad_external_organs)
-			if(O.status & ORGAN_BROKEN)
-				O.mend_fracture()		//Only works if the bone won't rebreak, as usual
-			for(var/datum/wound/W as anything in O.wounds)
-				if(W.bleeding())
-					W.damage = max(W.damage - wound_heal, 0)
-					if(W.damage <= 0)
-						O.cure_exact_wound(W)
-						continue
-				if(W.internal)
-					W.damage = max(W.damage - wound_heal, 0)
-					if(W.damage <= 0)
-						O.cure_exact_wound(W)
-						continue
 
 /datum/reagent/gold
 	name = "Gold"
@@ -281,10 +161,10 @@
 	reagent_state = REAGENT_SOLID
 	color = "#777777"
 
-/datum/reagent/uranium/affect_touch(mob/living/carbon/M, alien, removed)
-	affect_ingest(M, alien, removed)
+/datum/reagent/uranium/legacy_affect_touch(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
+	legacy_affect_ingest(M, alien, removed, metabolism)
 
-/datum/reagent/uranium/affect_blood(mob/living/carbon/M, alien, removed)
+/datum/reagent/uranium/legacy_affect_blood(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	M.apply_effect(5 * removed, IRRADIATE, 0)
 
 /datum/reagent/uranium/touch_turf(turf/T)
@@ -304,7 +184,7 @@
 	color = "#C8A5DC"
 	mrate_static = TRUE
 
-/datum/reagent/adrenaline/affect_blood(mob/living/carbon/M, alien, removed)
+/datum/reagent/adrenaline/legacy_affect_blood(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	if(alien == IS_DIONA)
 		return
 	M.set_unconscious(0)
@@ -322,7 +202,7 @@
 	glass_name = "holy water"
 	glass_desc = "An ashen-obsidian-water mix, this solution will alter certain sections of the brain's rationality."
 
-/datum/reagent/water/holywater/affect_ingest(mob/living/carbon/M, alien, removed)
+/datum/reagent/water/holywater/legacy_affect_ingest(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	..()
 	if(ishuman(M)) // Any location
 		if(M.mind && cult.is_antagonist(M.mind) && prob(10))
@@ -342,7 +222,7 @@
 	reagent_state = REAGENT_GAS
 	color = "#404030"
 
-/datum/reagent/ammonia/affect_blood(mob/living/carbon/M, alien, removed)
+/datum/reagent/ammonia/legacy_affect_blood(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	if(alien == IS_ALRAUNE)
 		M.nutrition += removed * 2 //cit change: fertilizer is waste for plants
 		return
@@ -355,7 +235,7 @@
 	reagent_state = REAGENT_LIQUID
 	color = "#604030"
 
-/datum/reagent/diethylamine/affect_blood(mob/living/carbon/M, alien, removed)
+/datum/reagent/diethylamine/legacy_affect_blood(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	if(alien == IS_ALRAUNE)
 		M.nutrition += removed * 5 //cit change: fertilizer is waste for plants
 		return
@@ -431,22 +311,6 @@
 	color = "#C8A5DC"
 	affects_robots = TRUE
 
-/datum/reagent/coolant/affect_blood(mob/living/carbon/M, alien, removed)
-	if(M.isSynthetic() && ishuman(M))
-		var/mob/living/carbon/human/H = M
-
-		var/datum/reagent/blood/coolant = H.get_blood(H.vessel)
-
-		if(coolant)
-			H.vessel.add_reagent("blood", removed, coolant.data)
-
-		else
-			H.vessel.add_reagent("blood", removed)
-			H.fixblood()
-
-	else
-		..()
-
 /datum/reagent/ultraglue
 	name = "Ultra Glue"
 	id = "glue"
@@ -495,7 +359,7 @@
 	metabolism = REM * 3 // Broken nanomachines go a bit slower.
 	scannable = 1
 
-/datum/reagent/defective_nanites/affect_blood(mob/living/carbon/M, alien, removed)
+/datum/reagent/defective_nanites/legacy_affect_blood(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	M.take_random_targeted_damage(brute = 2 * removed, brute = 2 * removed)
 	M.adjustOxyLoss(4 * removed)
 	M.adjustToxLoss(2 * removed)

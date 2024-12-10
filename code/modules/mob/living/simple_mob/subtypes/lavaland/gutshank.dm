@@ -139,7 +139,7 @@
 /mob/living/simple_mob/animal/gutshank/proc/blood_drink(var/mob/living/carbon/human/M)
 	if(istype(M))
 		to_chat(M, "<span class='warning'>The [src] pierces your flesh! You feel a sickening suction!</span>")
-		M.vessel.remove_reagent("blood",rand(10,20))
+		M.take_blood_mixture(rand(10, 20))
 
 /mob/living/simple_mob/animal/gutshank/death()
 	STOP_PROCESSING(SSobj, src)
@@ -265,7 +265,7 @@
 /mob/living/simple_mob/animal/shank/proc/blood_drink(var/mob/living/carbon/human/M)
 	if(istype(M))
 		to_chat(M, "<span class='warning'>The [src] pierces your flesh! You feel a sickening suction!</span>")
-		M.vessel.remove_reagent("blood",rand(20,25))
+		M.take_blood_mixture(rand(20, 25))
 
 /mob/living/simple_mob/animal/shank/update_icon()
 	if(rideable)

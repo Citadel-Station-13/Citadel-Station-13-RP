@@ -10,7 +10,7 @@
 	icon = 'icons/obj/drinks.dmi'
 
 /obj/item/reagent_containers/food/drinks/metaglass/on_reagent_change()
-	if (reagents.reagent_list.len > 0)
+	if (reagents.total_volume)
 		var/datum/reagent/R = reagents.get_master_reagent()
 
 		if(R.glass_icon_state)
@@ -48,10 +48,6 @@
 /*
 Drinks Data
 */
-
-/datum/reagent
-	var/glass_icon_state = null
-	var/glass_center_of_mass = null
 
 /datum/reagent/adminordrazine
 	glass_icon_state = "golden_cup"

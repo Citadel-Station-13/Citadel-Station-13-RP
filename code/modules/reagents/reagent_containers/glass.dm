@@ -375,9 +375,9 @@
 
 /obj/item/reagent_containers/glass/bucket/sandstone/examine(mob/user, dist)
 	. = ..()
-	if(reagents && reagents.reagent_list.len)
-		for(var/datum/reagent/R in reagents.reagent_list)
-			. += "[icon2html(thing = src, target = world)] The [src.name] currently contains [R.volume] units of [R.name]!"
+	if(reagents?.total_volume)
+		for(var/datum/reagent/R in reagents.get_reagent_datums())
+			. += "[icon2html(thing = src, target = world)] The [src.name] currently contains [reagents.reagent_volumes[R.id]] units of [R.name]!"
 	else
 		. += "<span class='notice'>It is empty.</span>"
 
