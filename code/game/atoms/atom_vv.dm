@@ -222,8 +222,6 @@
 		return
 
 	switch(var_name)
-		if(NAMEOF(src, color))
-			add_atom_colour(color, ADMIN_COLOUR_PRIORITY)
 		if(NAMEOF(src, base_layer), NAMEOF(src, layer))
 			set_base_layer(var_value)
 		if(NAMEOF(src, relative_layer))

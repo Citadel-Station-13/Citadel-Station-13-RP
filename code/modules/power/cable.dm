@@ -48,7 +48,6 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 	desc = "A flexible superconducting cable for heavy-duty power transfer."
 	icon = 'icons/obj/power_cond_white.dmi'
 	icon_state = "0-1"
-	atom_colouration_system = FALSE
 
 	plane = TURF_PLANE
 	layer = EXPOSED_WIRE_LAYER
@@ -76,7 +75,7 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 	. = ..()
 
 	if(_color)
-		add_atom_colour(GLOB.possible_cable_coil_colours[_color] || COLOR_RED, FIXED_COLOUR_PRIORITY)
+		add_atom_color(GLOB.possible_cable_coil_colours[_color] || COLOR_RED)
 
 	if(_d1 || _d2)
 		d1 = _d1
@@ -566,7 +565,7 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 /obj/item/stack/cable_coil/Initialize(mapload, new_amount = MAXCOIL, merge, param_color)
 	. = ..()
 	if (param_color) // It should be red by default, so only recolor it if parameter was specified.
-		add_atom_colour(param_color, FIXED_COLOUR_PRIORITY)
+		add_atom_color(param_color)
 	pixel_x = rand(-2,2)
 	pixel_y = rand(-2,2)
 	update_icon()

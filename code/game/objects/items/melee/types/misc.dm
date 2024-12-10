@@ -47,7 +47,7 @@
 
 // Randomizes color
 /obj/item/melee/umbrella/random/Initialize(mapload)
-	add_atom_colour("#"+get_random_colour(), FIXED_COLOUR_PRIORITY)
+	add_atom_color("#"+get_random_colour())
 	return ..()
 
 /obj/item/melee/cursedblade

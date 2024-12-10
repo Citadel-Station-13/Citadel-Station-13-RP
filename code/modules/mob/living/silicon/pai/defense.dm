@@ -27,7 +27,7 @@
 			var/obj/item/clothing/under/U = C
 			if(istype(U))
 				uploaded_snowflake_worn_state = U.snowflake_worn_state
-			uploaded_color = W.get_atom_colour()
+			uploaded_color = W.get_atom_color()
 
 			to_chat(user, "<span class='notice'>You successfully upload the [W.name] to [src].</span>")
 			to_chat(src, "<span class='notice'>[user] has successfully uploaded the [W.name] to you.</span>")

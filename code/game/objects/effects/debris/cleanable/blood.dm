@@ -70,7 +70,7 @@ var/global/list/image/splatter_cache=list()
 /obj/effect/debris/cleanable/blood/update_icon()
 	if(basecolor == "rainbow")
 		basecolor = "#[get_random_colour(1)]"
-	add_atom_colour(basecolor, FIXED_COLOUR_PRIORITY)
+	add_atom_color(basecolor)
 
 	if(basecolor == SYNTH_BLOOD_COLOUR)
 		name = "oil"
@@ -129,7 +129,7 @@ var/global/list/image/splatter_cache=list()
 	name = dryname
 	desc = drydesc
 	var/newcolor = adjust_brightness(color, -50)
-	add_atom_colour(newcolor, FIXED_COLOUR_PRIORITY)
+	add_atom_color(newcolor)
 	amount = 0
 
 /obj/effect/debris/cleanable/blood/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)

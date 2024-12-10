@@ -20,7 +20,7 @@
 	if(!material)
 		qdel(src)
 		return
-	add_atom_colour(material.icon_colour, FIXED_COLOUR_PRIORITY)
+	add_atom_color(material.icon_colour)
 
 /obj/vehicle/ridden/boat/drive_check(mob/user)
 	return !!user.get_held_item_of_type(/obj/item/oar)
@@ -83,7 +83,7 @@
 	if(!material)
 		qdel(src)
 		return
-	add_atom_colour(material.icon_colour, FIXED_COLOUR_PRIORITY)
+	add_atom_color(material.icon_colour)
 
 /obj/item/oar/ashlander
 	name = "blessed oar"

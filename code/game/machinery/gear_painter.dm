@@ -192,7 +192,7 @@
 				drop_item()
 				return TRUE
 			if("clear")
-				inserted.remove_atom_colour(FIXED_COLOUR_PRIORITY)
+				inserted.remove_atom_color()
 				playsound(src, 'sound/effects/spray3.ogg', 50, 1)
 				temp = "Cleared Successfully!"
 				return TRUE
@@ -236,7 +236,7 @@
 	if(!color_to_use || !check_valid_color(color_to_use, user))
 		to_chat(user, SPAN_NOTICE("Invalid color."))
 		return FALSE
-	inserted.add_atom_colour(color_to_use, FIXED_COLOUR_PRIORITY)
+	inserted.add_atom_color(color_to_use)
 	playsound(src, 'sound/effects/spray3.ogg', 50, 1)
 	return TRUE
 
