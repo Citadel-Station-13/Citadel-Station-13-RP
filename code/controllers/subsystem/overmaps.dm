@@ -232,7 +232,7 @@ SUBSYSTEM_DEF(overmaps)
 		GLOB.overmap_event_handler.create_events((LEGACY_MAP_DATUM).overmap_z, (LEGACY_MAP_DATUM).overmap_size, (LEGACY_MAP_DATUM).overmap_event_areas)
 	rebuild_helm_computers()
 	initialize_engines_legacy()
-	return ..()
+	return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/overmaps/proc/initialize_engines_legacy()
 	//! citadel edit - initialize overmaps shuttles here until we rewrite overmaps to not be a dumpster fire god damnit
