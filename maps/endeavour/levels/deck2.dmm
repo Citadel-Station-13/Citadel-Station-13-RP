@@ -646,6 +646,7 @@
 	opacity = 0
 	},
 /obj/spawner/window/low_wall/reinforced/full,
+/obj/effect/paint/purplegray,
 /turf/simulated/floor/reinforced,
 /area/rnd/xenobiology)
 "avE" = (
@@ -856,6 +857,7 @@
 	opacity = 0
 	},
 /obj/spawner/window/low_wall/reinforced/full,
+/obj/effect/paint/purplegray,
 /turf/simulated/floor/reinforced,
 /area/rnd/xenobiology)
 "aDx" = (
@@ -2008,6 +2010,7 @@
 "btU" = (
 /obj/machinery/door/firedoor,
 /obj/spawner/window/low_wall/reinforced/full,
+/obj/effect/paint/babyblue,
 /turf/simulated/floor/plating,
 /area/shuttle/emt/general)
 "buE" = (
@@ -4458,6 +4461,7 @@
 	opacity = 0
 	},
 /obj/spawner/window/low_wall/reinforced/full,
+/obj/effect/paint/purplegray,
 /turf/simulated/floor/reinforced,
 /area/rnd/xenobiology)
 "cNW" = (
@@ -5051,6 +5055,7 @@
 	name = "Containment Blast Doors";
 	opacity = 0
 	},
+/obj/effect/paint/purplegray,
 /turf/simulated/floor/reinforced,
 /area/rnd/xenobiology)
 "dlw" = (
@@ -5087,6 +5092,7 @@
 	dir = 8
 	},
 /obj/spawner/window/low_wall/reinforced/full,
+/obj/effect/paint/purplegray,
 /turf/simulated/floor/plating,
 /area/rnd/xenobiology/xenoflora/lab_atmos)
 "dni" = (
@@ -7329,6 +7335,7 @@
 	opacity = 0
 	},
 /obj/spawner/window/low_wall/reinforced/full,
+/obj/effect/paint/purplegray,
 /turf/simulated/floor/reinforced,
 /area/rnd/xenobiology)
 "eEX" = (
@@ -8438,6 +8445,7 @@
 	opacity = 0
 	},
 /obj/spawner/window/low_wall/reinforced/full,
+/obj/effect/paint/purplegray,
 /turf/simulated/floor/reinforced,
 /area/rnd/xenobiology)
 "fqm" = (
@@ -8676,6 +8684,7 @@
 	name = "Containment Blast Doors";
 	opacity = 0
 	},
+/obj/effect/paint/purplegray,
 /turf/simulated/floor/reinforced,
 /area/rnd/xenobiology)
 "fAD" = (
@@ -11183,6 +11192,7 @@
 	opacity = 0
 	},
 /obj/spawner/window/low_wall/reinforced/full,
+/obj/effect/paint/purplegray,
 /turf/simulated/floor/reinforced,
 /area/rnd/xenobiology)
 "hdr" = (
@@ -11197,6 +11207,7 @@
 	dir = 8
 	},
 /obj/spawner/window/low_wall/reinforced/full,
+/obj/effect/paint/babyblue,
 /turf/simulated/floor/plating,
 /area/shuttle/emt/cockpit)
 "heh" = (
@@ -13937,6 +13948,7 @@
 	name = "Containment Blast Doors";
 	opacity = 0
 	},
+/obj/effect/paint/purplegray,
 /turf/simulated/floor/reinforced,
 /area/rnd/xenobiology)
 "iNI" = (
@@ -19582,6 +19594,7 @@
 	opacity = 0
 	},
 /obj/spawner/window/low_wall/reinforced/full,
+/obj/effect/paint/purplegray,
 /turf/simulated/floor/reinforced,
 /area/rnd/xenobiology)
 "mFC" = (
@@ -20406,6 +20419,7 @@
 	opacity = 0
 	},
 /obj/spawner/window/low_wall/reinforced/full,
+/obj/effect/paint/purplegray,
 /turf/simulated/floor/reinforced,
 /area/rnd/xenobiology)
 "neQ" = (
@@ -21025,6 +21039,7 @@
 	dir = 8
 	},
 /obj/spawner/window/low_wall/reinforced/full,
+/obj/effect/paint/babyblue,
 /turf/simulated/floor/plating,
 /area/shuttle/emt/general)
 "nBC" = (
@@ -22150,6 +22165,7 @@
 	name = "Containment Blast Doors";
 	opacity = 0
 	},
+/obj/effect/paint/purplegray,
 /turf/simulated/floor/reinforced,
 /area/rnd/xenobiology)
 "omt" = (
@@ -23400,6 +23416,7 @@
 	name = "Containment Blast Doors";
 	opacity = 0
 	},
+/obj/effect/paint/purplegray,
 /turf/simulated/floor/reinforced,
 /area/rnd/xenobiology)
 "oZA" = (
@@ -27140,6 +27157,7 @@
 	name = "Containment Blast Doors";
 	opacity = 0
 	},
+/obj/effect/paint/purplegray,
 /turf/simulated/floor/reinforced,
 /area/rnd/xenobiology)
 "rbh" = (
@@ -29817,6 +29835,7 @@
 	opacity = 0
 	},
 /obj/spawner/window/low_wall/reinforced/full,
+/obj/effect/paint/purplegray,
 /turf/simulated/floor/reinforced,
 /area/rnd/xenobiology)
 "sRh" = (
@@ -29903,6 +29922,7 @@
 	opacity = 0
 	},
 /obj/spawner/window/low_wall/reinforced/full,
+/obj/effect/paint/purplegray,
 /turf/simulated/floor/reinforced,
 /area/rnd/xenobiology)
 "sUJ" = (
@@ -31056,6 +31076,7 @@
 	opacity = 0
 	},
 /obj/spawner/window/low_wall/reinforced/full,
+/obj/effect/paint/purplegray,
 /turf/simulated/floor/reinforced,
 /area/rnd/xenobiology)
 "tHr" = (
@@ -31296,6 +31317,7 @@
 	},
 /obj/structure/disposalpipe/segment,
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/effect/paint/purplegray,
 /turf/simulated/floor/reinforced,
 /area/rnd/testingroom)
 "tOP" = (
@@ -31941,6 +31963,7 @@
 	name = "Testing Chamber Blast Door"
 	},
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/effect/paint/purplegray,
 /turf/simulated/floor/reinforced,
 /area/rnd/testingroom)
 "ukt" = (
@@ -32294,6 +32317,7 @@
 	opacity = 0
 	},
 /obj/spawner/window/low_wall/reinforced/full,
+/obj/effect/paint/purplegray,
 /turf/simulated/floor/reinforced,
 /area/rnd/xenobiology)
 "uxB" = (
@@ -35646,6 +35670,7 @@
 /area/maintenance/research)
 "wDV" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/effect/paint/purplegray,
 /turf/simulated/floor/plating,
 /area/rnd/xenobiology)
 "wEl" = (

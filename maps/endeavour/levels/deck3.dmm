@@ -207,9 +207,17 @@
 /turf/simulated/floor/tiled,
 /area/endeavour/station/stairs_three)
 "aiW" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/turf/simulated/floor/plating,
-/area/security/hallway)
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 1
+	},
+/obj/machinery/button/remote/airlock{
+	id = "DRAMATIC";
+	name = "Blast Door Control";
+	specialfunctions = 4;
+	pixel_y = 30
+	},
+/turf/simulated/floor/wood,
+/area/tether/surfacebase/entertainment)
 "ajk" = (
 /obj/structure/closet/secure_closet/detective,
 /turf/simulated/floor/carpet,
@@ -452,6 +460,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
+/obj/effect/paint/darkred,
 /turf/simulated/floor,
 /area/security/hallway)
 "auQ" = (
@@ -976,7 +985,7 @@
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d3starboardafthall)
 "aMQ" = (
-/turf/simulated/wall/prepainted/civilian,
+/turf/simulated/wall/prepainted,
 /area/crew_quarters/barrestroom)
 "aMW" = (
 /obj/structure/cable/green{
@@ -1454,6 +1463,7 @@
 	icon_state = "1-2"
 	},
 /obj/structure/cable/green,
+/obj/effect/paint/darkred,
 /turf/simulated/floor,
 /area/security/hallway)
 "bee" = (
@@ -2170,7 +2180,7 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/recreation_area_hallway)
 "bzE" = (
-/turf/simulated/wall/r_wall/prepainted/cargo,
+/turf/simulated/wall/r_wall/prepainted,
 /area/crew_quarters/bar/lounge)
 "bzQ" = (
 /obj/effect/floor_decal/spline/fancy/wood/corner{
@@ -2288,6 +2298,7 @@
 /area/maintenance/dormitory)
 "bDw" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/effect/paint/darkred,
 /turf/simulated/floor/plating,
 /area/security/brig)
 "bDG" = (
@@ -3533,7 +3544,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/substation/civilian)
 "cHy" = (
-/turf/simulated/wall/prepainted/cargo,
+/turf/simulated/wall/prepainted,
 /area/crew_quarters/game_room)
 "cHK" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -3920,6 +3931,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
+/obj/effect/paint/darkred,
 /turf/simulated/floor/plating,
 /area/security/warden)
 "cVy" = (
@@ -5370,6 +5382,7 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
+/obj/effect/paint/darkred,
 /turf/simulated/floor,
 /area/security/hallway)
 "dSJ" = (
@@ -6359,6 +6372,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
+/obj/effect/paint/darkred,
 /turf/simulated/floor,
 /area/security/hallway)
 "ewW" = (
@@ -6938,6 +6952,7 @@
 	icon_state = "1-8"
 	},
 /obj/structure/cable/green,
+/obj/effect/paint/darkred,
 /turf/simulated/floor,
 /area/security/hallway)
 "eMX" = (
@@ -7385,11 +7400,8 @@
 	id = "DRAMATIC";
 	name = "Dramatic Blast Door"
 	},
-/obj/machinery/door/blast/shutters{
-	id = "Druma";
-	name = "Entertainment Shutters"
-	},
 /obj/spawner/window/reinforced/full/firelocks,
+/obj/effect/paint/palebottlegreen,
 /turf/simulated/floor/plating,
 /area/tether/surfacebase/entertainment)
 "fdy" = (
@@ -7755,6 +7767,7 @@
 /area/endeavour/hallway/d3afthall)
 "fnF" = (
 /obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
+/obj/effect/paint/darkred,
 /turf/simulated/floor/plating,
 /area/prison/cell_block)
 "fop" = (
@@ -8462,6 +8475,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
+/obj/effect/paint/darkred,
 /turf/simulated/floor/plating,
 /area/security/armoury)
 "fOe" = (
@@ -8863,6 +8877,7 @@
 	dir = 8
 	},
 /obj/spawner/window/low_wall/reinforced/full,
+/obj/effect/paint/beastybrown,
 /turf/simulated/floor/plating,
 /area/endeavour/surfacebase/mining_main/uxstorage)
 "fYR" = (
@@ -8888,6 +8903,7 @@
 "gbe" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
 /obj/structure/cable/green,
+/obj/effect/paint/darkred,
 /turf/simulated/floor/plating,
 /area/security/armoury)
 "gbs" = (
@@ -9387,6 +9403,7 @@
 	dir = 8
 	},
 /obj/spawner/window/low_wall/borosillicate/reinforced/full,
+/obj/effect/paint/darkred,
 /turf/simulated/floor,
 /area/security/hanger)
 "gtM" = (
@@ -9397,6 +9414,7 @@
 /area/space)
 "gtZ" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/effect/paint/beastybrown,
 /turf/simulated/floor/plating,
 /area/quartermaster/office)
 "gug" = (
@@ -11133,6 +11151,14 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/wood,
 /area/tether/surfacebase/entertainment)
+"hLw" = (
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/obj/effect/floor_decal/corner_oldtile/white/diagonal,
+/obj/machinery/light,
+/turf/simulated/floor/tiled/dark,
+/area/crew_quarters/kitchen)
 "hLN" = (
 /obj/machinery/camera/network/civilian{
 	dir = 1
@@ -11534,7 +11560,7 @@
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d3starboardforhall)
 "iaP" = (
-/turf/simulated/wall/prepainted/civilian,
+/turf/simulated/wall/prepainted,
 /area/maintenance/bar/catwalk)
 "ibm" = (
 /obj/effect/floor_decal/steeldecal/steel_decals10{
@@ -11746,6 +11772,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
+/obj/effect/paint/darkred,
 /turf/simulated/floor/plating,
 /area/security/warden)
 "ikN" = (
@@ -12046,6 +12073,7 @@
 /obj/structure/cable/green{
 	icon_state = "2-8"
 	},
+/obj/effect/paint/darkred,
 /turf/simulated/floor/plating,
 /area/security/warden)
 "iyq" = (
@@ -13557,6 +13585,7 @@
 	dir = 8
 	},
 /obj/spawner/window/low_wall/borosillicate/reinforced/full,
+/obj/effect/paint/darkred,
 /turf/simulated/floor,
 /area/security/hanger)
 "jHr" = (
@@ -13795,6 +13824,7 @@
 	icon_state = "1-2"
 	},
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/effect/paint/darkred,
 /turf/simulated/floor/plating,
 /area/security/brig)
 "jRB" = (
@@ -14297,6 +14327,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
+/obj/effect/paint/darkred,
 /turf/simulated/floor,
 /area/security/brig)
 "kkw" = (
@@ -14641,6 +14672,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
+/obj/effect/paint/darkred,
 /turf/simulated/floor/plating,
 /area/security/warden)
 "kCb" = (
@@ -16148,7 +16180,7 @@
 /turf/simulated/floor/carpet,
 /area/crew_quarters/heads/hos)
 "lEK" = (
-/turf/simulated/wall/prepainted/civilian,
+/turf/simulated/wall/prepainted,
 /area/crew_quarters/bar/lounge)
 "lEM" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -16659,6 +16691,7 @@
 /area/crew_quarters/sleep/Dorm_6)
 "lYO" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/effect/paint/beastybrown,
 /turf/simulated/floor/tiled/steel/airless,
 /area/shuttle/belter)
 "lZO" = (
@@ -18922,6 +18955,7 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
+/obj/effect/paint/darkred,
 /turf/simulated/floor/plating,
 /area/security/warden)
 "nLT" = (
@@ -20399,6 +20433,7 @@
 	name = "Bar Shutters"
 	},
 /obj/spawner/window/low_wall/full/nogrille/firelocks,
+/obj/effect/paint/palebottlegreen,
 /turf/simulated/floor/carpet/bcarpet,
 /area/crew_quarters/bar)
 "oFO" = (
@@ -20718,6 +20753,7 @@
 /obj/map_helper/electrochromatic_linker{
 	id = "vicDetOffice"
 	},
+/obj/effect/paint/darkred,
 /turf/simulated/floor/lino,
 /area/security/detectives_office)
 "oSY" = (
@@ -21703,6 +21739,7 @@
 /obj/map_helper/electrochromatic_linker{
 	id = "vicDetOffice"
 	},
+/obj/effect/paint/darkred,
 /turf/simulated/floor/plating,
 /area/security/detectives_office)
 "pzs" = (
@@ -22157,6 +22194,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
+/obj/effect/paint/darkred,
 /turf/simulated/floor/plating,
 /area/security/brig)
 "pRW" = (
@@ -22536,6 +22574,7 @@
 	icon_state = "0-2"
 	},
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/effect/paint/darkred,
 /turf/simulated/floor/plating,
 /area/security/brig)
 "qdR" = (
@@ -23267,18 +23306,8 @@
 /turf/simulated/floor/wood,
 /area/endeavour/hallway/d3fwdhall)
 "qCs" = (
-/obj/machinery/door/blast/regular/open{
-	dir = 4;
-	id = "DRAMATIC";
-	name = "Dramatic Blast Door"
-	},
-/obj/machinery/door/blast/shutters{
-	id = "Druma";
-	name = "Entertainment Shutters"
-	},
-/obj/spawner/window/reinforced/full/firelocks,
-/turf/simulated/floor/plating,
-/area/tether/surfacebase/entertainment)
+/turf/simulated/wall/prepainted,
+/area/maintenance/bar/lower)
 "qCM" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/machinery/camera/network/security,
@@ -23507,6 +23536,7 @@
 	icon_state = "1-2"
 	},
 /obj/structure/cable/green,
+/obj/effect/paint/darkred,
 /turf/simulated/floor/plating,
 /area/security/warden)
 "qLH" = (
@@ -23899,6 +23929,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
+/obj/effect/paint/darkred,
 /turf/simulated/floor/plating,
 /area/security/brig)
 "rbG" = (
@@ -23964,6 +23995,7 @@
 /obj/map_helper/electrochromatic_linker{
 	id = "vicDetOffice"
 	},
+/obj/effect/paint/darkred,
 /turf/simulated/floor/plating,
 /area/security/detectives_office)
 "rfb" = (
@@ -24821,6 +24853,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
+/obj/effect/paint/darkred,
 /turf/simulated/floor/plating,
 /area/security/brig)
 "rKm" = (
@@ -25273,6 +25306,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
+/obj/effect/paint/darkred,
 /turf/simulated/floor/plating,
 /area/security/warden)
 "saz" = (
@@ -26410,6 +26444,7 @@
 /area/endeavour/hallway/d3starboardafthall)
 "sKL" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/effect/paint/beastybrown,
 /turf/simulated/floor/tiled/steel/airless,
 /area/shuttle/mining_ship/general)
 "sKV" = (
@@ -26760,6 +26795,7 @@
 	icon_state = "1-4"
 	},
 /obj/structure/cable/green,
+/obj/effect/paint/darkred,
 /turf/simulated/floor,
 /area/security/hallway)
 "sYK" = (
@@ -27864,6 +27900,7 @@
 /obj/structure/cable/green{
 	icon_state = "1-8"
 	},
+/obj/effect/paint/darkred,
 /turf/simulated/floor/plating,
 /area/security/warden)
 "tQn" = (
@@ -29106,6 +29143,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
+/obj/effect/paint/darkred,
 /turf/simulated/floor/plating,
 /area/security/brig)
 "uHj" = (
@@ -29934,15 +29972,14 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_12)
 "viU" = (
-/obj/item/radio/intercom{
-	dir = 4;
-	pixel_x = 24
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 9
 	},
 /obj/effect/floor_decal/corner_oldtile/white/diagonal,
+/obj/machinery/light{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/kitchen)
 "vjb" = (
@@ -30050,6 +30087,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
+/obj/effect/paint/darkred,
 /turf/simulated/floor/plating,
 /area/security/brig)
 "vlO" = (
@@ -30773,6 +30811,7 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
+/obj/effect/paint/darkred,
 /turf/simulated/floor/plating,
 /area/security/armoury)
 "vEC" = (
@@ -30893,6 +30932,7 @@
 /area/crew_quarters/recreation_area_hallway)
 "vIs" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/effect/paint/darkred,
 /turf/simulated/floor/plating,
 /area/prison/cell_block)
 "vIC" = (
@@ -30966,6 +31006,14 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/cargo)
+"vKG" = (
+/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
+/obj/map_helper/electrochromatic_linker{
+	id = "vicDetOffice"
+	},
+/obj/effect/paint/darkred,
+/turf/simulated/floor/plating,
+/area/security/detectives_office)
 "vKH" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
@@ -31736,6 +31784,7 @@
 	id = "bar";
 	name = "Bar Shutters"
 	},
+/obj/effect/paint/palebottlegreen,
 /turf/simulated/floor/carpet/bcarpet,
 /area/crew_quarters/bar)
 "wma" = (
@@ -32034,6 +32083,7 @@
 /obj/structure/cable/green{
 	icon_state = "1-8"
 	},
+/obj/effect/paint/darkred,
 /turf/simulated/floor/plating,
 /area/security/warden)
 "wws" = (
@@ -33050,9 +33100,6 @@
 	pixel_x = -24;
 	pixel_y = -10
 	},
-/obj/machinery/light{
-	dir = 8
-	},
 /obj/effect/floor_decal/corner_oldtile/white/diagonal,
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/kitchen)
@@ -34031,7 +34078,7 @@
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d3portamidhall)
 "xXg" = (
-/turf/simulated/wall/r_wall/prepainted/cargo,
+/turf/simulated/wall/r_wall/prepainted,
 /area/crew_quarters/game_room)
 "xXk" = (
 /obj/structure/cable/green{
@@ -38438,7 +38485,7 @@ bzE
 bzE
 rAG
 rAG
-jAH
+bzE
 rAG
 rAG
 bzE
@@ -38829,8 +38876,8 @@ ugs
 jAH
 qmi
 seB
-jAH
-jAH
+lEK
+lEK
 bzE
 pRW
 pRW
@@ -39023,8 +39070,8 @@ uzm
 jAH
 uzm
 uzm
-jAH
-jAH
+lEK
+lEK
 bzE
 pRW
 pRW
@@ -39797,7 +39844,7 @@ bzE
 bzE
 uzm
 uzm
-jAH
+lEK
 cHy
 lNU
 ecM
@@ -39991,7 +40038,7 @@ bzE
 bzE
 cUe
 uzm
-jAH
+lEK
 cHy
 mCZ
 iAO
@@ -40185,7 +40232,7 @@ bzE
 bzE
 bwN
 uzm
-jAH
+lEK
 cHy
 bfd
 uvh
@@ -40379,7 +40426,7 @@ tUu
 bzE
 bwN
 rnj
-jAH
+lEK
 cHy
 cHy
 cHy
@@ -41151,7 +41198,7 @@ pRW
 pRW
 pRW
 tUu
-rxD
+eAp
 bzE
 kbt
 uzm
@@ -41345,8 +41392,8 @@ pRW
 pRW
 pRW
 pRW
-rxD
-rxD
+eAp
+eAp
 ddU
 piG
 iaP
@@ -41941,8 +41988,8 @@ aMQ
 aMQ
 aMQ
 aMQ
-xbH
-xbH
+qCs
+qCs
 tIj
 pir
 sNC
@@ -42340,7 +42387,7 @@ mup
 mup
 mup
 mup
-hCa
+hLw
 pir
 piX
 tJl
@@ -46620,7 +46667,7 @@ uMs
 uPx
 gFf
 kGS
-keU
+vKG
 ajk
 oux
 pdl
@@ -47590,7 +47637,7 @@ syH
 awA
 wuH
 aWe
-keU
+vKG
 bnZ
 bnZ
 bnZ
@@ -47784,7 +47831,7 @@ fiy
 kEF
 wuH
 qmV
-keU
+vKG
 dfI
 bnZ
 voJ
@@ -51475,7 +51522,7 @@ alB
 pGi
 vpi
 xkB
-aiW
+uxk
 xyL
 rkC
 vBk
@@ -51861,7 +51908,7 @@ uwo
 qHe
 qHe
 oit
-aiW
+uxk
 qHe
 qHe
 dAT
@@ -59980,7 +60027,7 @@ pRW
 pRW
 pRW
 pRW
-qCs
+fdp
 eQM
 hPt
 hPt
@@ -60174,7 +60221,7 @@ pRW
 pRW
 pRW
 pRW
-qCs
+fdp
 qmZ
 hPt
 hPt
@@ -60368,7 +60415,7 @@ pRW
 pRW
 pRW
 pRW
-qCs
+fdp
 hPt
 hPt
 hPt
@@ -60562,7 +60609,7 @@ pRW
 pRW
 pRW
 pRW
-qCs
+fdp
 lNv
 hPt
 hPt
@@ -61146,7 +61193,7 @@ pRW
 pRW
 pRW
 imb
-bcw
+aiW
 hEc
 hEc
 hEc

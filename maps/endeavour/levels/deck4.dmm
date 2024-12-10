@@ -2891,6 +2891,7 @@
 /area/engineering/atmos)
 "dtj" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/effect/paint/sun,
 /turf/simulated/floor/wood,
 /area/engineering/hallway/lower)
 "dtD" = (
@@ -3634,6 +3635,7 @@
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/effect/paint/sun,
 /turf/simulated/floor/wood,
 /area/engineering/hallway/lower)
 "euv" = (
@@ -5193,6 +5195,7 @@
 /area/endeavour/command/turrets)
 "gtb" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/effect/paint/sun,
 /turf/simulated/floor/wood,
 /area/endeavour/station/stairs_four)
 "gtA" = (
@@ -7054,6 +7057,7 @@
 /area/ai_upload_foyer)
 "ixU" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/effect/paint/sun,
 /turf/simulated/floor/wood,
 /area/engineering/break_room)
 "iyC" = (
