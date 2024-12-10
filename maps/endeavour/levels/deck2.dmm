@@ -11046,14 +11046,15 @@
 /turf/simulated/wall/prepainted/medical,
 /area/maintenance/research)
 "gWJ" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
 /obj/effect/floor_decal/borderfloorwhite/corner{
 	dir = 4
 	},
 /obj/effect/floor_decal/corner/paleblue/bordercorner{
 	dir = 4
+	},
+/obj/structure/disposalpipe/junction{
+	dir = 8;
+	icon_state = "pipe-j2"
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/sleeper)
@@ -15041,11 +15042,9 @@
 /turf/simulated/floor/plating,
 /area/endeavour/hallway/d2fwdmaint)
 "jym" = (
+/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
 /obj/effect/paint/babyblue,
-/obj/machinery/door/firedoor{
-	dir = 8
-	},
-/obj/structure/window/reinforced/polarized/full{
+/obj/map_helper/electrochromatic_linker{
 	id = "oncall"
 	},
 /turf/simulated/floor/plating,
@@ -20530,17 +20529,12 @@
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology)
 "nfS" = (
-/obj/machinery/door/firedoor/glass,
 /obj/map_helper/access_helper/airlock/station/medical/department,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
-	},
-/obj/machinery/door/airlock/glass/medical/polarized{
-	req_one_access = null;
-	name = "On-Call Room"
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -20550,6 +20544,16 @@
 	},
 /obj/structure/cable/green{
 	icon_state = "4-8"
+	},
+/obj/machinery/door/firedoor/glass{
+	dir = 4
+	},
+/obj/machinery/door/airlock/glass/medical/polarized{
+	req_one_access = null;
+	name = "On-Call Room"
+	},
+/obj/map_helper/electrochromatic_linker{
+	id = "oncall"
 	},
 /turf/simulated/floor/wood,
 /area/medical/oncall_room)
@@ -27321,15 +27325,20 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/rnd/reception_desk)
 "rbX" = (
-/obj/effect/paint/babyblue,
-/obj/structure/window/reinforced/polarized/full{
-	id = "oncall"
+/obj/structure/cable/green{
+	icon_state = "4-8"
 	},
-/obj/machinery/door/firedoor{
-	dir = 8
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
 	},
-/turf/simulated/floor/plating,
-/area/medical/oncall_room)
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/effect/floor_decal/borderfloorwhite,
+/obj/effect/floor_decal/corner/paleblue/border,
+/obj/structure/disposalpipe/segment,
+/turf/simulated/floor/tiled/white,
+/area/medical/sleeper)
 "rcb" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
@@ -51132,9 +51141,9 @@ jmm
 qKw
 hXy
 qnr
-rbX
+jym
 nfS
-rbX
+jym
 fcX
 fcX
 fcX
@@ -51325,7 +51334,7 @@ yfP
 vXJ
 kqx
 hXy
-rbX
+jym
 uQM
 hrJ
 lSl
@@ -51519,7 +51528,7 @@ fwu
 ehC
 kqx
 hXy
-rbX
+jym
 kNr
 qhH
 qGj
@@ -51713,7 +51722,7 @@ yfP
 vXJ
 pHA
 hXy
-rbX
+jym
 rMO
 jHE
 eYX
@@ -53060,7 +53069,7 @@ whZ
 dxA
 uVY
 gWJ
-ggO
+rbX
 jAX
 gdj
 iJo
