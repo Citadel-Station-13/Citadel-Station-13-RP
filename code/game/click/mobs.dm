@@ -134,9 +134,9 @@
 	constructed.initiator = src
 	constructed.performer = src
 	constructed.target = target
-	constructed.params = list()
-	constructed.intent = a_intent
-	constructed.hand_index = active_hand
+	constructed.click_params = list()
+	constructed.using_intent = a_intent
+	constructed.using_hand_index = active_hand
 	if(!unarmed)
-		constructed.using = get_active_held_item()
+		constructed.using_item = get_active_held_item()
 	return constructed

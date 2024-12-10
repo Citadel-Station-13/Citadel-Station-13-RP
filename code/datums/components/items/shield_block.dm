@@ -1,5 +1,5 @@
 //* This file is explicitly licensed under the MIT license. *//
-//* Copyright (c) Citadel Station Developers                *//
+//* Copyright (c) 2024 Citadel Station Developers           *//
 
 /**
  * generic shield-like block provider on items

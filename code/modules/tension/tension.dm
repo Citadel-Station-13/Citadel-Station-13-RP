@@ -195,7 +195,7 @@
 				weapon_damage = P.damage_force
 				if(will_point_blank && a_intent == INTENT_HARM)
 					weapon_damage *= 1.5
-				weapon_attack_speed = G.fire_delay / (1 SECOND)
+				weapon_attack_speed = (G.legacy_get_firemode()?.cycle_cooldown || (0.4 SECONDS)) / (1 SECONDS)
 				qdel(P)
 
 		var/average_damage = weapon_damage / weapon_attack_speed
