@@ -36,6 +36,16 @@
 
 // todo: automatic subtypes for modules
 
+/**
+ * ## Composition
+ *
+ * Robots are / will be made out of:
+ *
+ * * chassis - determines baseline functionality and support
+ * * iconsets - determines sprites
+ *
+ * WIP. Modules, components, etc, are next.
+ */
 /mob/living/silicon/robot
 	name = "Cyborg"
 	real_name = "Cyborg"
@@ -59,6 +69,13 @@
 	light_offset_y = 1
 
 	can_be_antagged = TRUE
+
+	//* Composition *//
+
+	#warn impl
+	var/datum/prototype/robot_chassis/chassis
+	#warn impl
+	var/datum/prototype/robot_iconset/iconset
 
 	/// Is our integrated light on?
 	var/lights_on = 0
