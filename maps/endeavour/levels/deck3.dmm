@@ -686,6 +686,9 @@
 /area/crew_quarters/toilet)
 "aAV" = (
 /obj/structure/closet/l3closet/janitor,
+/obj/machinery/light{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/dark,
 /area/janitor)
 "aBl" = (
@@ -11563,9 +11566,6 @@
 /turf/simulated/wall/prepainted,
 /area/maintenance/bar/catwalk)
 "ibm" = (
-/obj/effect/floor_decal/steeldecal/steel_decals10{
-	dir = 1
-	},
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
@@ -14484,11 +14484,7 @@
 /obj/machinery/disposal,
 /obj/effect/floor_decal/industrial/warning/full,
 /obj/structure/disposalpipe/trunk,
-/obj/machinery/light{
-	dir = 1
-	},
 /obj/effect/floor_decal/corner_oldtile/white/diagonal,
-/obj/item/barrier_tape_segment/engineering,
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/kitchen)
 "ksW" = (
@@ -19920,6 +19916,9 @@
 /obj/item/packageWrap,
 /obj/machinery/camera/network/civilian,
 /obj/effect/floor_decal/corner_oldtile/white/diagonal,
+/obj/machinery/light{
+	dir = 1
+	},
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/kitchen)
 "opZ" = (
@@ -21907,6 +21906,9 @@
 	pixel_y = 16
 	},
 /obj/effect/floor_decal/corner_oldtile/white/diagonal,
+/obj/machinery/light{
+	dir = 1
+	},
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/kitchen)
 "pFW" = (
@@ -26340,6 +26342,12 @@
 	},
 /turf/simulated/floor/water/deep/indoors,
 /area/crew_quarters/sleep/bedrooms)
+"sFW" = (
+/obj/machinery/light{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/freezer,
+/area/crew_quarters/kitchen)
 "sFX" = (
 /obj/structure/cable/green{
 	icon_state = "2-8"
@@ -29262,6 +29270,7 @@
 /obj/effect/floor_decal/corner/navgold/bordercorner2{
 	dir = 4
 	},
+/obj/effect/floor_decal/steeldecal/steel_decals4,
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d3starboardafthall)
 "uJP" = (
@@ -33408,9 +33417,6 @@
 "xyI" = (
 /obj/machinery/air_alarm{
 	pixel_y = 22
-	},
-/obj/effect/floor_decal/steeldecal/steel_decals10{
-	dir = 8
 	},
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
@@ -40824,7 +40830,7 @@ uzm
 uzm
 uzm
 uzm
-uzm
+rlf
 uzm
 uzm
 xLN
@@ -43939,7 +43945,7 @@ dgB
 hOP
 aVW
 aVW
-aVW
+sFW
 pir
 fbH
 uhA
@@ -44518,9 +44524,9 @@ sRJ
 aHs
 kyF
 jfy
+aVW
 aHs
-aHs
-aHs
+aVW
 dhd
 pir
 lhR

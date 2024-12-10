@@ -4190,6 +4190,9 @@
 /obj/machinery/fire_alarm/east_mount,
 /turf/simulated/floor/tiled/steel,
 /area/station/stairs_one)
+"dor" = (
+/turf/simulated/wall/prepainted/civilian,
+/area/maintenance/substation/exploration)
 "dos" = (
 /obj/machinery/chem_master/condimaster,
 /obj/effect/floor_decal/corner/black{
@@ -5874,6 +5877,7 @@
 	icon_state = "4-8"
 	},
 /obj/spawner/window/reinforced/full,
+/obj/effect/paint/palebottlegreen,
 /turf/simulated/floor/plating,
 /area/maintenance/substation/exploration)
 "eAX" = (
@@ -17848,7 +17852,7 @@
 /turf/simulated/floor/lino,
 /area/crew_quarters/coffee_shop)
 "mYb" = (
-/turf/simulated/wall/prepainted,
+/turf/simulated/wall/prepainted/civilian,
 /area/hydroponics/garden)
 "mYF" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -53330,16 +53334,16 @@ enD
 tOv
 atm
 mYb
-bjg
-bjg
-bjg
-bjg
+dor
+dor
+dor
+dor
 hfQ
 eAL
-bjg
-bjg
-bjg
-bjg
+dor
+dor
+dor
+dor
 yaO
 oPk
 nqO
@@ -57403,17 +57407,17 @@ cEb
 sQg
 gBE
 acA
-uTr
-uTr
-uTr
-uTr
-uTr
-uTr
-uTr
-uTr
-uTr
-uTr
-uTr
+ogT
+ogT
+ogT
+ogT
+ogT
+ogT
+ogT
+ogT
+ogT
+ogT
+ogT
 ubV
 xSm
 aoR
