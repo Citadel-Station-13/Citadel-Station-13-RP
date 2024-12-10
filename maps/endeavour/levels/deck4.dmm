@@ -1945,8 +1945,7 @@
 /area/endeavour/hallway/d4starboardamidhall)
 "ckl" = (
 /obj/machinery/light{
-	dir = 4;
-	pixel_x = 10
+	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/door/airlock/glass/research{
@@ -2318,8 +2317,7 @@
 /area/rnd/robotics/smallcraft)
 "cGm" = (
 /obj/machinery/light{
-	dir = 4;
-	pixel_x = 10
+	dir = 4
 	},
 /obj/machinery/computer/atmos_alert{
 	dir = 8
@@ -3348,8 +3346,7 @@
 	dir = 8
 	},
 /obj/machinery/light{
-	dir = 8;
-	pixel_x = -10
+	dir = 8
 	},
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -4523,8 +4520,7 @@
 /area/endeavour/hallway/d4fwdmaint)
 "fwT" = (
 /obj/machinery/light{
-	dir = 4;
-	pixel_x = 10
+	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/door/airlock/glass/research{
@@ -6519,8 +6515,7 @@
 	dir = 4
 	},
 /obj/machinery/light{
-	dir = 4;
-	use_power = 0
+	dir = 4
 	},
 /obj/machinery/door/firedoor{
 	dir = 8
@@ -6654,8 +6649,7 @@
 	dir = 4
 	},
 /obj/machinery/light{
-	dir = 4;
-	use_power = 0
+	dir = 4
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/endeavour/hallway/d4starboardamidhall)
@@ -6886,8 +6880,7 @@
 /area/endeavour/hallway/d4aftmaint)
 "ikC" = (
 /obj/machinery/light{
-	dir = 1;
-	pixel_y = 20
+	dir = 1
 	},
 /turf/simulated/floor/plating,
 /area/endeavour/hallway/d4aftmaint)
@@ -10081,8 +10074,7 @@
 /area/endeavour/hallway/d4porthall)
 "mel" = (
 /obj/machinery/light{
-	dir = 8;
-	pixel_x = -10
+	dir = 8
 	},
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d4fwdhall)
@@ -10477,8 +10469,7 @@
 	dir = 8
 	},
 /obj/machinery/light{
-	dir = 8;
-	pixel_x = -10
+	dir = 8
 	},
 /obj/machinery/camera/network/engineering{
 	dir = 4
@@ -12336,19 +12327,6 @@
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/atmos)
-"oLT" = (
-/obj/effect/floor_decal/borderfloorblack{
-	dir = 4
-	},
-/obj/effect/floor_decal/corner/lightorange/border{
-	dir = 4
-	},
-/obj/machinery/light{
-	dir = 4;
-	use_power = 0
-	},
-/turf/simulated/floor/tiled/steel_ridged,
-/area/endeavour/hallway/d4portamidhall)
 "oNF" = (
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging{
 	dir = 9
@@ -17726,8 +17704,7 @@
 	},
 /obj/structure/catwalk,
 /obj/machinery/light{
-	dir = 4;
-	use_power = 0
+	dir = 4
 	},
 /turf/simulated/floor/plating,
 /area/engineering/engine_smes)
@@ -18496,8 +18473,7 @@
 /area/endeavour/command/turrets)
 "wSS" = (
 /obj/machinery/light{
-	dir = 4;
-	pixel_x = 10
+	dir = 4
 	},
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d4fwdhall)
@@ -18957,8 +18933,7 @@
 /area/engineering/drone_fabrication)
 "xwH" = (
 /obj/machinery/light{
-	dir = 4;
-	pixel_x = 10
+	dir = 4
 	},
 /obj/machinery/computer/rcon{
 	dir = 8
@@ -36646,7 +36621,7 @@ hOe
 rAC
 bSY
 rAC
-oLT
+kSz
 gPH
 xbS
 gPH
