@@ -160,13 +160,6 @@
 	name = "\improper Reading Room"
 /area/triumph/surfacebase/vacant_site
 	name = "\improper Vacant Site"
-//Shuttle crashes
-/area/shuttle/triumph/crash1
-	name = "\improper Crash Site 1"
-	icon_state = "shuttle2"
-/area/shuttle/triumph/crash2
-	name = "\improper Crash Site 2"
-	icon_state = "shuttle2"
 
 // Class D world areas
 /area/class_d
@@ -764,133 +757,10 @@
 	icon_state = "shuttle"
 	dynamic_lighting = 0
 
-
 // Lavaland
 /area/shuttle/excursion/lavaland
 	name = "Shuttle Landing Point"
 	area_flags = AREA_RAD_SHIELDED
-
-/area/lavaland
-	name = "Lava Land"
-	icon_state = "away"
-	area_power_override = null
-	dynamic_lighting = 1
-
-/area/lavaland/horrors
-	name = "Lava Land - Horrors"
-
-/area/lavaland/dogs
-	name = "Lava Land - Dogs"
-
-/area/lavaland/idleruins
-	name = "Lava Land - Idle Ruins"
-
-/area/lavaland/ashlander_camp
-	name = "Lava Land - Ashlander Camp"
-
-/area/lavaland/bosses
-	name = "Lava Land - Boss"
-	area_power_override = TRUE
-
-/area/lavaland/central/base
-	name = "Lava Land (Center) - Mining Base"
-	icon_state = "green"
-
-/area/lavaland/central/base/common
-	name = "Lava Land (Center) - Mining Base"
-	icon_state = "blue"
-
-/area/lavaland/central/explored
-	name = "Lava Land (Center) - Thoroughfare"
-	icon_state = "red"
-	ambience = AMBIENCE_LAVA
-
-/area/lavaland/central/unexplored
-	name = "Lava Land (Center) - Unknown"
-	icon_state = "yellow"
-	ambience = AMBIENCE_LAVA
-
-/area/lavaland/central/transit
-	name = "Lava Land (Center) - Transit"
-	icon_state = "blue"
-
-/area/lavaland/north/explored
-	name = "Lava Land (North) - Thoroughfare"
-	icon_state = "red"
-	ambience = AMBIENCE_LAVA
-
-/area/lavaland/north/unexplored
-	name = "Lava Land (North) - Unknown"
-	icon_state = "yellow"
-	ambience = AMBIENCE_LAVA
-
-/area/lavaland/south/explored
-	name = "Lava Land (South) - Thoroughfare"
-	icon_state = "red"
-	ambience = AMBIENCE_LAVA
-
-/area/lavaland/south/unexplored
-	name = "Lava Land (South) - Unknown"
-	icon_state = "yellow"
-	ambience = AMBIENCE_LAVA
-
-/area/lavaland/east/explored
-	name = "Lava Land (East) - Thoroughfare"
-	icon_state = "red"
-	ambience = AMBIENCE_LAVA
-
-/area/lavaland/east/unexplored
-	name = "Lava Land (East) - Unknown"
-	icon_state = "yellow"
-	ambience = AMBIENCE_LAVA
-
-/area/lavaland/east/transit
-	name = "Lava Land (East) - Transit"
-	icon_state = "blue"
-
-/area/lavaland/east/ashlander_village
-	name = "Lava Land (East) - Ashlander Village"
-	icon_state = "blue"
-
-/area/lavaland/west/explored
-	name = "Lava Land (West) - Thoroughfare"
-	icon_state = "red"
-	ambience = AMBIENCE_LAVA
-
-//These were from the Colony Event. Just holding onto them for now.
-/*
-/area/lavaland/east/colony
-	name = "Lava Land (East) - Colony"
-	icon_state = "blue"
-
-/area/lavaland/east/lab
-	name = "Lava Land (East) - S4"
-
-/area/lavaland/east/lab/core
-	name = "Lava Land (East) - S4"
-	icon_state = "blue"
-
-/area/lavaland/east/lab/containment
-	name = "Lava Land (East) - S4 Containment"
-	icon_state = "blue"
-
-/area/lavaland/east/lab/bunker
-	name = "Lava Land (East) - S4 Bunker"
-	icon_state = "blue"
-*/
-
-/area/lavaland/west/unexplored
-	name = "Lava Land (West) - Unknown"
-	icon_state = "yellow"
-	ambience = AMBIENCE_LAVA
-
-/area/lavaland/dungeon/exterior
-	name = "Lava Land (Dungeon) - Unknown"
-	icon_state = "yellow"
-
-/area/lavaland/dungeon/facility
-	name = "Lava Land (Dungeon) - Pump Facility"
-	icon_state = "blue"
 
 // Aerostat
 /area/shuttle/excursion/away_aerostat

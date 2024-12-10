@@ -59,7 +59,7 @@
 
 /obj/item/integrated_circuit/manipulation/anchoring/remove(mob/user, silent, index)
 	if(assembly.anchored_by == src)
-		silent ? null : to_chat(SPAN_WARNING("With the bolts deployed you can't remove the circuit."))
+		silent ? null : to_chat(user, SPAN_WARNING("With the bolts deployed you can't remove the circuit."))
 		return
 	. = ..()
 
@@ -291,7 +291,7 @@
 	set_pin_data(IC_OUTPUT, 4, contents)
 	push_data()
 
-/obj/item/integrated_circuit/manipulation/grabber/attack_self(mob/user)
+/obj/item/integrated_circuit/manipulation/grabber/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -495,17 +495,17 @@
 	ext_cooldown = 1
 	cooldown_per_use = 10
 	var/static/list/mtypes = list(
-		/datum/material/iron,
-		/datum/material/glass,
-		/datum/material/silver,
-		/datum/material/gold,
-		/datum/material/diamond,
-		/datum/material/uranium,
-		/datum/material/plasma,
-		/datum/material/bluespace,
-		/datum/material/bananium,
-		/datum/material/titanium,
-		/datum/material/plastic
+		/datum/prototype/material/iron,
+		/datum/prototype/material/glass,
+		/datum/prototype/material/silver,
+		/datum/prototype/material/gold,
+		/datum/prototype/material/diamond,
+		/datum/prototype/material/uranium,
+		/datum/prototype/material/plasma,
+		/datum/prototype/material/bluespace,
+		/datum/prototype/material/bananium,
+		/datum/prototype/material/titanium,
+		/datum/prototype/material/plastic
 		)
 
 /obj/item/integrated_circuit/manipulation/matman/ComponentInitialize()
@@ -517,7 +517,7 @@
 	var/datum/component/material_container/materials = GetComponent(/datum/component/material_container)
 	set_pin_data(IC_OUTPUT, 2, materials.total_amount)
 	for(var/I in 1 to mtypes.len)
-		var/datum/material/M = materials.materials[SSmaterials.GetMaterialRef(I)]
+		var/datum/prototype/material/M = materials.materials[SSmaterials.GetMaterialRef(I)]
 		var/amount = materials[M]
 		if(M)
 			set_pin_data(IC_OUTPUT, I+2, amount)
@@ -548,7 +548,7 @@
 			var/datum/component/material_container/mt = H.GetComponent(/datum/component/material_container)
 			var/suc
 			for(var/I in 1 to mtypes.len)
-				var/datum/material/M = materials.materials[mtypes[I]]
+				var/datum/prototype/material/M = materials.materials[mtypes[I]]
 				if(M)
 					var/U = clamp(get_pin_data(IC_INPUT, I+2),-100000,100000)
 					if(!U)
@@ -691,7 +691,7 @@
 	if(isliving(target))
 		if(ishuman(target))
 			var/mob/living/carbon/human/S = target
-			S.apply_damage(drill_force, BRUTE)
+			S.apply_damage(drill_force, DAMAGE_TYPE_BRUTE)
 			return
 		else if(issimple(target))
 			var/mob/living/simple_mob/S = target
@@ -835,10 +835,13 @@
 	installed_gun = null // It will be qdel'd by ..() if still in our contents
 	return ..()
 
-/obj/item/integrated_circuit/manipulation/weapon_firing/proc/ask_for_input(obj/item/I, mob/living/user, a_intent)
-	if(!isobj(I))
-		return FALSE
-	attackby_react(I, user, a_intent)
+/obj/item/integrated_circuit/manipulation/weapon_firing/proc/ask_for_input(mob/living/user, obj/item/I,  a_intent)
+	if(!installed_gun)
+		if(!isobj(I))
+			return FALSE
+		attackby_react(I, user, a_intent)
+	else
+		attack_self(user)
 
 /obj/item/integrated_circuit/manipulation/weapon_firing/attackby_react(var/obj/O, var/mob/user)
 	if(istype(O, /obj/item/gun))
@@ -855,7 +858,7 @@
 	else
 		..()
 
-/obj/item/integrated_circuit/manipulation/weapon_firing/attack_self(mob/user)
+/obj/item/integrated_circuit/manipulation/weapon_firing/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -872,41 +875,41 @@
 	if(!installed_gun)
 		return
 
-	var/datum/integrated_io/target_x = inputs[1]
-	var/datum/integrated_io/target_y = inputs[2]
+	var/target_x = get_pin_data(IC_INPUT, 1)
+	var/target_y = get_pin_data(IC_INPUT, 2)
 
 	if(src.assembly)
-		if(isnum(target_x.data))
-			target_x.data = round(target_x.data)
-		if(isnum(target_y.data))
-			target_y.data = round(target_y.data)
+		if(isnum(target_x))
+			set_pin_data(IC_INPUT, 1, round(target_x))
+		if(isnum(target_y))
+			set_pin_data(IC_INPUT, 2, round(target_y))
 
 		var/turf/T = get_turf(src.assembly)
 
-		if(target_x.data == 0 && target_y.data == 0) // Don't shoot ourselves.
+		if(target_x == 0 && target_y == 0) // Don't shoot ourselves.
 			return
 
 		// We need to do this in order to enable relative coordinates, as locate() only works for absolute coordinates.
 		var/i
-		if(target_x.data > 0)
-			i = abs(target_x.data)
+		if(target_x > 0)
+			i = abs(target_x)
 			while(i > 0)
 				T = get_step(T, EAST)
 				i--
 		else
-			i = abs(target_x.data)
+			i = abs(target_x)
 			while(i > 0)
 				T = get_step(T, WEST)
 				i--
 
 		i = 0
-		if(target_y.data > 0)
-			i = abs(target_y.data)
+		if(target_y > 0)
+			i = abs(target_y)
 			while(i > 0)
 				T = get_step(T, NORTH)
 				i--
-		else if(target_y.data < 0)
-			i = abs(target_y.data)
+		else if(target_y < 0)
+			i = abs(target_y)
 			while(i > 0)
 				T = get_step(T, SOUTH)
 				i--
@@ -946,7 +949,7 @@
 	detach_grenade()
 	. =..()
 
-/obj/item/integrated_circuit/manipulation/grenade/proc/ask_for_input(obj/item/I, mob/living/user, a_intent)
+/obj/item/integrated_circuit/manipulation/grenade/proc/ask_for_input(mob/living/user, obj/item/I,  a_intent)
 	if(!isobj(I))
 		return FALSE
 	attackby_react(I, user, a_intent)
@@ -965,7 +968,7 @@
 	else
 		return ..()
 
-/obj/item/integrated_circuit/manipulation/grenade/attack_self(mob/user)
+/obj/item/integrated_circuit/manipulation/grenade/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return

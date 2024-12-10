@@ -1,45 +1,8 @@
-// Flags for specifying which states we have vore icon_states for.
-#define SA_ICON_LIVING	0x01
-#define SA_ICON_DEAD	0x02
-#define SA_ICON_REST	0x04
-
 /mob/living/simple_mob
 	base_attack_cooldown = 15
 
 	var/temperature_range = 40			// How close will they get to environmental temperature before their body stops changing its heat
 
-	var/vore_active = 0					// If vore behavior is enabled for this mob
-
-	var/vore_capacity = 1				// The capacity (in people) this person can hold
-	var/vore_max_size = RESIZE_HUGE		// The max size this mob will consider eating
-	var/vore_min_size = RESIZE_TINY 	// The min size this mob will consider eating
-	var/vore_bump_chance = 0			// Chance of trying to eat anyone that bumps into them, regardless of hostility
-	var/vore_bump_emote	= "grabs hold of"				// Allow messages for bumpnom mobs to have a flavorful bumpnom
-	var/vore_pounce_chance = 5			// Chance of this mob knocking down an opponent
-	var/vore_pounce_cooldown = 0		// Cooldown timer - if it fails a pounce it won't pounce again for a while
-	var/vore_pounce_successrate	= 100	// Chance of a pounce succeeding against a theoretical 0-health opponent
-	var/vore_pounce_falloff = 1			// Success rate falloff per %health of target mob.
-	var/vore_pounce_maxhealth = 80		// Mob will not attempt to pounce targets above this %health
-	var/vore_standing_too = 0			// Can also eat non-stunned mobs
-	var/vore_ignores_undigestable = 1	// Refuse to eat mobs who are undigestable by the prefs toggle.
-	var/swallowsound = null				// What noise plays when you succeed in eating the mob.
-
-	var/vore_default_mode = DM_DIGEST	// Default bellymode (DM_DIGEST, DM_HOLD, DM_ABSORB)
-	var/vore_default_flags = 0			// No flags
-	var/vore_digest_chance = 25			// Chance to switch to digest mode if resisted
-	var/vore_absorb_chance = 0			// Chance to switch to absorb mode if resisted
-	var/vore_escape_chance = 25			// Chance of resisting out of mob
-
-	var/vore_stomach_name				// The name for the first belly if not "stomach"
-	var/vore_stomach_flavor				// The flavortext for the first belly if not the default
-
-	var/vore_default_item_mode = IM_DIGEST_FOOD			//How belly will interact with items
-	var/vore_default_contaminates = TRUE				//Will it contaminate?
-	var/vore_default_contamination_flavor = "Generic"	//Contamination descriptors
-	var/vore_default_contamination_color = "green"		//Contamination color
-
-	var/vore_fullness = 0				// How "full" the belly is (controls icons)
-	var/vore_icons = 0					// Bitfield for which fields we have vore icons for.
 	var/life_disabled = 0				// For performance reasons
 
 	var/obj/item/radio/headset/mob_headset/mob_radio		//Adminbus headset for simplemob shenanigans.
@@ -47,67 +10,20 @@
 // Release belly contents before being gc'd!
 /mob/living/simple_mob/Destroy()
 	release_vore_contents()
-	prey_excludes.Cut()
-	. = ..()
+	return ..()
 
 //For all those ID-having mobs
 /mob/living/simple_mob/GetIdCard()
 	if(access_card)
 		return access_card
 
-// Update fullness based on size & quantity of belly contents
-/mob/living/simple_mob/proc/update_fullness()
-	var/new_fullness = 0
-	for(var/belly in vore_organs)
-		var/obj/belly/B = belly
-		for(var/mob/living/M in B)
-			new_fullness += M.size_multiplier
-	new_fullness = round(new_fullness, 1) // Because intervals of 0.25 are going to make sprite artists cry.
-	vore_fullness = min(vore_capacity, new_fullness)
-
-/mob/living/simple_mob/update_icon()
-	. = ..()
-	if(vore_active)
-		update_fullness()
-		if(!vore_fullness)
-			return 0
-		else if((stat == CONSCIOUS) && (!icon_rest || !resting || !incapacitated(INCAPACITATION_DISABLED)) && (vore_icons & SA_ICON_LIVING))
-			icon_state = "[icon_living]-[vore_fullness]"
-		else if(stat >= DEAD && (vore_icons & SA_ICON_DEAD))
-			icon_state = "[icon_dead]-[vore_fullness]"
-		else if(((stat == UNCONSCIOUS) || resting || incapacitated(INCAPACITATION_DISABLED) ) && icon_rest && (vore_icons & SA_ICON_REST))
-			icon_state = "[icon_rest]-[vore_fullness]"
-
-/mob/living/simple_mob/proc/will_eat(var/mob/living/M)
-	return FALSE // no more mobvore
-
-// Attempt to eat target
-// TODO - Review this.  Could be some issues here
-/mob/living/simple_mob/proc/EatTarget(var/mob/living/M)
-	var/old_target = M
-	set_AI_busy(1)
-	. = animal_nom(M)
-	playsound(src, swallowsound, 50, 1)
-	update_icon()
-
-	if(.)
-		// If we succesfully ate them, lose the target
-		set_AI_busy(0)
-		return old_target
-	else if(old_target == M)
-		// If we didn't but they are still our target, go back to attack.
-		// but don't run the handler immediately, wait until next tick
-		// Otherwise we'll be in a possibly infinate loop
-		set_AI_busy(0)
-
 /mob/living/simple_mob/death()
 	release_vore_contents()
-	. = ..()
+	return ..()
 
 // Make sure you don't call ..() on this one, otherwise you duplicate work.
 /mob/living/simple_mob/init_vore()
-	if(!vore_active || no_vore)
-		return
+	. = ..()
 
 	if(!IsAdvancedToolUser())
 		add_verb(src, /mob/living/simple_mob/proc/animal_nom)
@@ -116,62 +32,11 @@
 	if(LAZYLEN(vore_organs))
 		return
 
-	// Since they have bellies, add verbs to toggle settings on them.
-	add_verb(src, /mob/living/simple_mob/proc/toggle_digestion)
-	add_verb(src, /mob/living/simple_mob/proc/toggle_fancygurgle)
-
-	//A much more detailed version of the default /living implementation
-	var/obj/belly/B = new /obj/belly(src)
-	vore_selected = B
-	B.immutable = 1
-	B.name = vore_stomach_name ? vore_stomach_name : "stomach"
-	B.desc = vore_stomach_flavor ? vore_stomach_flavor : "Your surroundings are warm, soft, and slimy. Makes sense, considering you're inside \the [name]."
-	B.digest_mode = vore_default_mode
-	B.mode_flags = vore_default_flags
-	B.item_digest_mode = vore_default_item_mode
-	B.contaminates = vore_default_contaminates
-	B.contamination_flavor = vore_default_contamination_flavor
-	B.contamination_color = vore_default_contamination_color
-	B.escapable = vore_escape_chance > 0
-	B.escapechance = vore_escape_chance
-	B.digestchance = vore_digest_chance
-	B.absorbchance = vore_absorb_chance
-	B.human_prey_swallow_time = swallowTime
-	B.nonhuman_prey_swallow_time = swallowTime
-	B.vore_verb = "swallow"
-	B.emote_lists[DM_HOLD] = list( // We need more that aren't repetitive. I suck at endo. -Ace
-		"The insides knead at you gently for a moment.",
-		"The guts glorp wetly around you as some air shifts.",
-		"The predator takes a deep breath and sighs, shifting you somewhat.",
-		"The stomach squeezes you tight for a moment, then relaxes harmlessly.",
-		"The predator's calm breathing and thumping heartbeat pulses around you.",
-		"The warm walls kneads harmlessly against you.",
-		"The liquids churn around you, though there doesn't seem to be much effect.",
-		"The sound of bodily movements drown out everything for a moment.",
-		"The predator's movements gently force you into a different position.")
-	B.emote_lists[DM_DIGEST] = list(
-		"The burning acids eat away at your form.",
-		"The muscular stomach flesh grinds harshly against you.",
-		"The caustic air stings your chest when you try to breathe.",
-		"The slimy guts squeeze inward to help the digestive juices soften you up.",
-		"The onslaught against your body doesn't seem to be letting up; you're food now.",
-		"The predator's body ripples and crushes against you as digestive enzymes pull you apart.",
-		"The juices pooling beneath you sizzle against your sore skin.",
-		"The churning walls slowly pulverize you into meaty nutrients.",
-		"The stomach glorps and gurgles as it tries to work you into slop.")
-
 // Checks to see if mob doesn't like this kind of turf
 /mob/living/simple_mob/IMove(turf/newloc, safety = TRUE)
-	if(istype(newloc,/turf/simulated/floor/sky))
+	if(istype(newloc,/turf/simulated/sky))
 		return MOVEMENT_FAILED //Mobs aren't that stupid, probably
 	return ..() // Procede as normal.
-
-//Grab = Nomf
-/mob/living/simple_mob/UnarmedAttack(var/atom/A, var/proximity)
-	. = ..()
-
-	if(a_intent == INTENT_GRAB && isliving(A) && !has_hands)
-		animal_nom(A)
 
 // todo: shitcode, rewrite on say rewrite
 /mob/living/simple_mob/handle_message_mode(message_mode, message, verb, speaking, used_radios, alt_name)
@@ -246,7 +111,7 @@
 			return
 	var/armor_block = run_armor_check(T, "melee")
 	var/armor_soak = get_armor_soak(T, "melee")
-	T.apply_damage(20, HALLOSS,, armor_block, armor_soak)
+	T.apply_damage(20, DAMAGE_TYPE_HALLOSS,, armor_block, armor_soak)
 	if(prob(33))
 		T.apply_effect(3, WEAKEN, armor_block)
 

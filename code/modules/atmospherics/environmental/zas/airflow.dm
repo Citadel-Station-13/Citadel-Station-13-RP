@@ -2,9 +2,6 @@
 Contains helper procs for airflow, handled in /connection_group.
 */
 
-/mob
-	var/tmp/last_airflow_stun = 0
-
 /mob/proc/airflow_stun()
 	if(stat == 2)
 		return 0
@@ -136,15 +133,15 @@ Contains helper procs for airflow, handled in /connection_group.
 
 	var/blocked = run_armor_check(BP_HEAD,"melee")
 	var/soaked = get_armor_soak(BP_HEAD,"melee")
-	apply_damage(b_loss/3, BRUTE, BP_HEAD, blocked, soaked, 0, "Airflow")
+	apply_damage(b_loss/3, DAMAGE_TYPE_BRUTE, BP_HEAD, blocked, soaked, 0, "Airflow")
 
 	blocked = run_armor_check(BP_TORSO,"melee")
 	soaked = get_armor_soak(BP_TORSO,"melee")
-	apply_damage(b_loss/3, BRUTE, BP_TORSO, blocked, soaked, 0, "Airflow")
+	apply_damage(b_loss/3, DAMAGE_TYPE_BRUTE, BP_TORSO, blocked, soaked, 0, "Airflow")
 
 	blocked = run_armor_check(BP_GROIN,"melee")
 	soaked = get_armor_soak(BP_GROIN,"melee")
-	apply_damage(b_loss/3, BRUTE, BP_GROIN, blocked, soaked, 0, "Airflow")
+	apply_damage(b_loss/3, DAMAGE_TYPE_BRUTE, BP_GROIN, blocked, soaked, 0, "Airflow")
 
 	GET_VSC_PROP(atmos_vsc, /atmos/airflow/impact_stun, impact_stun)
 

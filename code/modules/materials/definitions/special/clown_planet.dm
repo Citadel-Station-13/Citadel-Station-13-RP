@@ -1,4 +1,4 @@
-/datum/material/bananium
+/datum/prototype/material/bananium
 	id = MAT_BANANIUM
 	name = "bananium"
 	stack_type = /obj/item/stack/material/bananium
@@ -20,13 +20,13 @@
 	absorption = MATERIAL_RESISTANCE_HIGH
 	nullification = MATERIAL_RESISTANCE_LOW
 
-/datum/material/bananium/generate_recipes()
+/datum/prototype/material/bananium/generate_recipes()
 	. = ..()
 	. += create_stack_recipe_datum(category = "statues", name = "bananium statue", product = /obj/structure/statue/bananium, cost = 10, time = 2 SECONDS)
 	. += create_stack_recipe_datum(category = "statues", name = "clown statue", product = /obj/structure/statue/bananium/clown, cost = 10, time = 2 SECONDS)
 	. += create_stack_recipe_datum(name = "bananium floor tiles", cost = 1, product = /obj/item/stack/tile/bananium, amount = 4)
 
-/datum/material/silencium
+/datum/prototype/material/silencium
 	id = MAT_SILENCIUM
 	name = "silencium"
 	stack_type = /obj/item/stack/material/silencium
@@ -47,6 +47,6 @@
 	absorption = MATERIAL_RESISTANCE_HIGH
 	nullification = MATERIAL_RESISTANCE_LOW
 
-/datum/material/silencium/generate_recipes()
+/datum/prototype/material/silencium/generate_recipes()
 	. = ..()
 	. += create_stack_recipe_datum(name = "silencium floor tiles", cost = 1, product = /obj/item/stack/tile/silencium, amount = 4)

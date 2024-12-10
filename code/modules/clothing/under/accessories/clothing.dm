@@ -40,6 +40,11 @@
 	desc = "A pair of loose, black leather chaps."
 	icon_state = "chaps_black"
 
+/obj/item/clothing/accessory/chaps/unchaps
+	name = "black unchaps"
+	desc = "A pair of loose, black contradictions."
+	icon_state = "unchaps"
+
 /*
  * Poncho
  */
@@ -57,6 +62,7 @@
 	siemens_coefficient = 0.9
 	w_class = WEIGHT_CLASS_NORMAL
 	slot = ACCESSORY_SLOT_OVER
+	worth_intrinsic = 150
 
 /obj/item/clothing/accessory/poncho/equipped(mob/user, slot, flags) //Solution for race-specific sprites for an accessory which is also a suit. Suit icons break if you don't use icon override which then also overrides race-specific sprites.
 	..()
@@ -135,7 +141,7 @@
 	/obj/item/gun/ballistic, /obj/item/ammo_magazine, /obj/item/melee/baton)
 	item_action_name = "Adjust Cloak"
 
-/obj/item/clothing/accessory/poncho/rough_cloak/attack_self(mob/user)
+/obj/item/clothing/accessory/poncho/rough_cloak/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return

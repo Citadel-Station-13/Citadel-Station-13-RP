@@ -1,4 +1,4 @@
-/datum/material/sandstone
+/datum/prototype/material/sandstone
 	id = "sandstone"
 	name = "sandstone"
 	stack_type = /obj/item/stack/material/sandstone
@@ -25,7 +25,9 @@
 	absorption = MATERIAL_RESISTANCE_MODERATE
 	nullification = MATERIAL_RESISTANCE_VULNERABLE
 
-/datum/material/sandstone/generate_recipes()
+	worth = 1.25
+
+/datum/prototype/material/sandstone/generate_recipes()
 	. = ..()
 	. += create_stack_recipe_datum(category = "statues", name = "assistant statue", product = /obj/structure/statue/sandstone/assistant, amount = 10)
 	. += create_stack_recipe_datum(

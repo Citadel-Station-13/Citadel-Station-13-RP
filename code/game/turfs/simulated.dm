@@ -8,7 +8,6 @@
 	var/list/resources
 
 	var/thermite = 0
-	initial_gas_mix = GAS_STRING_STP
 	var/to_be_destroyed = 0 //Used for fire, if a melting temperature was reached, it will be destroyed
 	var/max_fire_temperature_sustained = 0 //The max temperature of the fire which it was subjected to
 	var/can_dirty = TRUE	// If false, tile never gets dirty
@@ -16,7 +15,6 @@
 	// todo: don't do this because peresistence
 	var/dirty_prob = 0	// Chance of being dirty roundstart
 	var/dirt = 0
-	var/special_temperature //Used for Lava HE-Pipe interaction
 
 	// If greater than 0, this turf will apply edge overlays on top of other turfs cardinally adjacent to it, if those adjacent turfs are of a different icon_state,
 	// and if those adjacent turfs have a lower edge_blending_priority.
@@ -139,19 +137,19 @@
 
 	var/slip_dist = 1
 	var/slip_stun = 6
-	var/floor_type = "wet"
+	var/class = SLIP_CLASS_WATER
 
 	switch(src.wet)
 		if(2) // Lube
-			floor_type = "slippery"
 			slip_dist = 4
 			slip_stun = 10
+			class = SLIP_CLASS_LUBRICANT
 		if(3) // Ice
-			floor_type = "icy"
 			slip_stun = 4
 			slip_dist = 2
+			class = SLIP_CLASS_ICE
 
-	if(M.slip("the [floor_type] floor", slip_stun))
+	if(M.slip_act(class, src, slip_stun, slip_stun) > 0)
 		for(var/i = 1 to slip_dist)
 			step(M, M.dir)
 			sleep(1)
@@ -182,9 +180,6 @@
 		new /obj/effect/debris/cleanable/blood/oil(src)
 	else if(ishuman(M))
 		add_blood(M)
-
-/turf/simulated/floor/plating
-	can_start_dirty = TRUE	// But let maints and decrepit areas have some randomness
 
 //? Radiation
 

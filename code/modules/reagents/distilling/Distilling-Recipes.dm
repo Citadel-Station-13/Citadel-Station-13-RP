@@ -1,61 +1,30 @@
 /datum/chemical_reaction/distilling
-//	name = null
-//	id = null
-//	result = null
-//	required_reagents = list()
-//	catalysts = list()
-//	inhibitors = list()
-//	result_amount = 0
+	abstract_type = /datum/chemical_reaction/distilling
+	reaction_half_life = 12 SECONDS
 
-	//how far the reaction proceeds each time it is processed. Used with either REACTION_RATE or HALF_LIFE macros.
-	reaction_rate = HALF_LIFE(6)
+	// reaction_message_instant = "The solution churns."
+	// reaction_sound_instant = 'sound/effects/slosh.ogg'
 
-	//if less than 1, the reaction will be inhibited if the ratio of products/reagents is too high.
-	//0.5 = 50% yield -> reaction will only proceed halfway until products are removed.
-//	yield = 1.0
+	temperature_low = T0C
+	temperature_high = T20C
 
-	//If limits on reaction rate would leave less than this amount of any reagent (adjusted by the reaction ratios),
-	//the reaction goes to completion. This is to prevent reactions from going on forever with tiny reagent amounts.
-//	min_reaction = 2
+	required_container_path = /obj/item/reagent_containers/glass/distilling
 
-	mix_message = "The solution churns."
-	reaction_sound = 'sound/effects/slosh.ogg'
-
-//	log_is_important = 0 // If this reaction should be considered important for logging. Important recipes message admins when mixed, non-important ones just log to file.
-
-	var/list/temp_range = list(T0C, T20C)
 	var/temp_shift = 0 // How much the temperature changes when the reaction occurs.
 
-/datum/chemical_reaction/distilling/can_happen(var/datum/reagents/holder)
-	//check that all the required reagents are present
-	if(!holder.has_all_reagents(required_reagents))
-		return 0
+/datum/chemical_reaction/on_reaction_start(datum/reagent_holder/holder)
+	. = ..()
+	holder.my_atom.visible_message("<span class='notice'>\The [holder.my_atom] rumbles to life!</span>")
 
-	//check that all the required catalysts are present in the required amount
-	if(!holder.has_all_reagents(catalysts))
-		return 0
+/datum/chemical_reaction/distilling/on_reaction_tick(datum/reagent_holder/holder, delta_time, multiplier)
+	. = ..()
+	if(prob(10))
+		holder.my_atom.visible_message("<span class='notice'>\The [holder.my_atom] rumbles faintly...</span>")
+	holder.temperature += temp_shift
 
-	//check that none of the inhibitors are present in the required amount
-	if(holder.has_any_reagent(inhibitors))
-		return 0
-
-	if(!istype(holder.my_atom, /obj/item/reagent_containers/glass/distilling))
-		return 0
-
-	else // Super special temperature check.
-		var/obj/item/reagent_containers/glass/distilling/D = holder.my_atom
-		var/obj/machinery/portable_atmospherics/powered/reagent_distillery/RD = D.Master
-		if(RD.current_temp < temp_range[1] || RD.current_temp > temp_range[2])
-			return 0
-
-	return 1
-
-/datum/chemical_reaction/distilling/on_reaction(datum/reagents/holder, created_volume)
-	if(istype(holder.my_atom, /obj/item/reagent_containers/glass/distilling))
-		var/obj/item/reagent_containers/glass/distilling/D = holder.my_atom
-		var/obj/machinery/portable_atmospherics/powered/reagent_distillery/RD = D.Master
-		RD.current_temp += temp_shift
-	return
+/datum/chemical_reaction/distilling/on_reaction_finish(datum/reagent_holder/holder)
+	. = ..()
+	holder.my_atom.visible_message("<span class='notice'>\The [holder.my_atom]'s rumbling dies down...</span>")
 
 // Subtypes //
 
@@ -67,7 +36,9 @@
 	required_reagents = list("blood" = 1, "sugar" = 1, MAT_PHORON = 0.5)
 	result_amount = 1 // 40 units per sheet, requires actually using the machine, and having blood to spare.
 
-	temp_range = list(T20C + 80, T20C + 130)
+	temperature_low = T0C + 100
+	temperature_high = T0C + 150
+
 	temp_shift = -2
 
 // Medicinal
@@ -78,9 +49,9 @@
 	required_reagents = list("paracetamol" = 1, "spaceacillin" = 1, "foaming_agent" = 1)
 	result_amount = 2
 
-	reaction_rate = HALF_LIFE(10)
-
-	temp_range = list(T0C + 100, T0C + 120)
+	reaction_half_life = 20 SECONDS
+	temperature_low = T0C + 100
+	temperature_high = T0C + 120
 
 // Alcohol
 /datum/chemical_reaction/distilling/beer
@@ -90,9 +61,9 @@
 	required_reagents = list("nutriment" = 1, "water" = 1, "sugar" = 1)
 	result_amount = 2
 
-	reaction_rate = HALF_LIFE(30)
-
-	temp_range = list(T20C, T20C + 2)
+	reaction_half_life = 60 SECONDS
+	temperature_low = T0C + 20
+	temperature_high = T0C + 22
 
 /datum/chemical_reaction/distilling/ale
 	name = "Distilling Ale"
@@ -102,10 +73,11 @@
 	inhibitors = list("water" = 1)
 	result_amount = 2
 
-	reaction_rate = HALF_LIFE(30)
+	reaction_half_life = 60 SECONDS
+	temperature_low = T0C + 7
+	temperature_high = T0C + 13
 
 	temp_shift = 0.5
-	temp_range = list(T0C + 7, T0C + 13)
 
 // Unique
 /datum/chemical_reaction/distilling/berserkjuice
@@ -115,16 +87,17 @@
 	required_reagents = list("biomass" = 1, "hyperzine" = 3, "synaptizine" = 2, MAT_PHORON = 1)
 	result_amount = 3
 
-	temp_range = list(T0C + 600, T0C + 700)
+	reaction_half_life = 30 SECONDS
+	temperature_low = T0C + 600
+	temperature_high = T0C + 700
+
 	temp_shift = 4
 
-/datum/chemical_reaction/distilling/berserkjuice/on_reaction(datum/reagents/holder, created_volume)
+/datum/chemical_reaction/distilling/berserkjuice/on_reaction_tick(datum/reagent_holder/holder, delta_time, multiplier)
 	..()
-
 	if(prob(1))
 		var/turf/T = get_turf(holder.my_atom)
 		explosion(T, -1, rand(-1, 1), rand(1,2), rand(3,5))
-	return
 
 /datum/chemical_reaction/distilling/cryogel
 	name = "Distilling Cryogellatin"
@@ -134,18 +107,19 @@
 	inhibitors = list("water" = 5)
 	result_amount = 1
 
-	temp_range = list(0, 15)
+	reaction_half_life = 15 SECONDS
+	temperature_low = T0C
+	temperature_high = T0C + 15
+
 	temp_shift = 20
 
-/datum/chemical_reaction/distilling/cryogel/on_reaction(datum/reagents/holder, created_volume)
+/datum/chemical_reaction/distilling/cryogel/on_reaction_tick(datum/reagent_holder/holder, delta_time, multiplier)
 	..()
-
 	if(prob(1))
 		var/turf/T = get_turf(holder.my_atom)
 		var/datum/effect_system/smoke_spread/frost/F = new (holder.my_atom)
 		F.set_up(6, 0, T)
 		F.start()
-	return
 
 /datum/chemical_reaction/distilling/lichpowder
 	name = "Distilling Lichpowder"
@@ -154,9 +128,9 @@
 	required_reagents = list("zombiepowder" = 2, "leporazine" = 1)
 	result_amount = 2
 
-	reaction_rate = HALF_LIFE(8)
-
-	temp_range = list(T0C + 100, T0C + 150)
+	reaction_half_life = 16 SECONDS
+	temperature_low = T0C + 100
+	temperature_high = T0C + 150
 
 /datum/chemical_reaction/distilling/necroxadone
 	name = "Distilling Necroxadone"
@@ -167,6 +141,6 @@
 
 	catalysts = list(MAT_PHORON = 5)
 
-	reaction_rate = HALF_LIFE(20)
-
-	temp_range = list(T0C + 90, T0C + 95)
+	reaction_half_life = 40 SECONDS
+	temperature_low = T0C + 90
+	temperature_high = T0C + 95

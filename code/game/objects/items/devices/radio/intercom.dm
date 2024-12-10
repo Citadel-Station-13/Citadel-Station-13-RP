@@ -52,11 +52,11 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/item/radio/intercom, 28)
 
 /obj/item/radio/intercom/private
 	name = "station intercom (Private)"
-	frequency = AI_FREQ
+	frequency = FREQ_AI_PRIVATE
 
 /obj/item/radio/intercom/specops
 	name = "\improper Spec Ops intercom"
-	frequency = ERT_FREQ
+	frequency = FREQ_ERT
 	subspace_transmission = 1
 	centcom = 1
 
@@ -67,17 +67,17 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/item/radio/intercom, 28)
 
 /obj/item/radio/intercom/department/medbay
 	name = "station intercom (Medbay)"
-	frequency = MED_I_FREQ
+	frequency = FREQ_MEDICAL_INTERNAL
 	overlay_color = COLOR_TEAL
 
 /obj/item/radio/intercom/department/security
 	name = "station intercom (Security)"
-	frequency = SEC_I_FREQ
+	frequency = FREQ_SECURITY_INTERNAL
 	overlay_color = COLOR_MAROON
 
 /obj/item/radio/intercom/entertainment
 	name = "entertainment intercom"
-	frequency = ENT_FREQ
+	frequency = FREQ_ENTERTAINMENT
 
 /obj/item/radio/intercom/omni
 	name = "global announcer"
@@ -98,49 +98,49 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/item/radio/intercom, 28)
 /obj/item/radio/intercom/department/security/Initialize(mapload)
 	. = ..()
 	internal_channels = list(
-		num2text(PUB_FREQ) = list(),
-		num2text(SEC_I_FREQ) = list(ACCESS_SECURITY_EQUIPMENT)
+		num2text(FREQ_COMMON) = list(),
+		num2text(FREQ_SECURITY_INTERNAL) = list(ACCESS_SECURITY_EQUIPMENT)
 	)
 
 /obj/item/radio/intercom/entertainment/Initialize(mapload)
 	. = ..()
 	internal_channels = list(
-		num2text(PUB_FREQ) = list(),
-		num2text(ENT_FREQ) = list()
+		num2text(FREQ_COMMON) = list(),
+		num2text(FREQ_ENTERTAINMENT) = list()
 	)
 
 /obj/item/radio/intercom/syndicate
 	name = "illicit intercom"
 	desc = "Talk through this. Evilly"
-	frequency = SYND_FREQ
+	frequency = FREQ_SYNDICATE
 	subspace_transmission = 1
 	syndie = 1
 
 /obj/item/radio/intercom/syndicate/Initialize(mapload)
 	. = ..()
-	internal_channels[num2text(SYND_FREQ)] = list(ACCESS_FACTION_SYNDICATE)
+	internal_channels[num2text(FREQ_SYNDICATE)] = list(ACCESS_FACTION_SYNDICATE)
 
 /obj/item/radio/intercom/raider
 	name = "illicit intercom"
 	desc = "Pirate radio, but not in the usual sense of the word."
-	frequency = RAID_FREQ
+	frequency = FREQ_RAIDER
 	subspace_transmission = 0
 	syndie = 0
 
 /obj/item/radio/intercom/raider/Initialize(mapload)
 	. = ..()
-	internal_channels[num2text(RAID_FREQ)] = list(ACCESS_FACTION_PIRATE)
+	internal_channels[num2text(FREQ_RAIDER)] = list(ACCESS_FACTION_PIRATE)
 
 /obj/item/radio/intercom/trader
 	name = "commercial intercom"
 	desc = "Good luck finding a 'Skip Advertisements' button here."
-	frequency = TRADE_FREQ
+	frequency = FREQ_TRADER
 	subspace_transmission = 0
 	syndie = 0
 
 /obj/item/radio/intercom/trader/Initialize(mapload)
 	. = ..()
-	internal_channels[num2text(TRADE_FREQ)] = list(ACCESS_FACTION_TRADER)
+	internal_channels[num2text(FREQ_TRADER)] = list(ACCESS_FACTION_TRADER)
 
 /obj/item/radio/intercom/Destroy()
 	STOP_PROCESSING(SSobj, src)
@@ -151,7 +151,7 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/item/radio/intercom, 28)
 	spawn (0)
 		attack_self(user)
 
-/obj/item/radio/intercom/attack_hand(mob/user, list/params)
+/obj/item/radio/intercom/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	src.add_fingerprint(user)
 	spawn (0)
 		attack_self(user)
@@ -232,7 +232,7 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/item/radio/intercom, 28)
 
 /obj/item/radio/intercom/locked/ai_private
 	name = "\improper AI intercom"
-	frequency = AI_FREQ
+	frequency = FREQ_AI_PRIVATE
 	broadcasting = 1
 	listening = 1
 

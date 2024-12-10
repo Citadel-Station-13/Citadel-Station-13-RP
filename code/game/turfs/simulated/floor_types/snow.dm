@@ -1,9 +1,10 @@
+CREATE_STANDARD_TURFS(/turf/simulated/floor/outdoors/snow)
 /turf/simulated/floor/outdoors/snow
 	name = "snow"
 	icon_state = "snow"
 	edge_blending_priority = 1
 	slowdown = 2
-	initial_flooring = /singleton/flooring/snow
+	initial_flooring = /datum/prototype/flooring/snow
 	baseturfs = /turf/simulated/floor/outdoors/dirt
 
 	// smoothing_flags = SMOOTH_BITMASK | SMOOTH_BORDER
@@ -11,6 +12,7 @@
 	canSmoothWith = (SMOOTH_GROUP_FLOOR_SNOW)
 
 	var/crossed_dirs = NONE
+
 
 /turf/simulated/floor/outdoors/snow/Entered(atom/movable/AM)
 	if(AM.hovering || AM.is_incorporeal()) // Flying things shouldn't make footprints.
@@ -39,7 +41,7 @@
 	else
 		..()
 
-/turf/simulated/floor/outdoors/snow/attack_hand(mob/user, list/params)
+/turf/simulated/floor/outdoors/snow/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	visible_message("[user] starts scooping up some snow.", "You start scooping up some snow.")
 	if(do_after(user, 1 SECOND))
 		user.put_in_hands_or_drop(new /obj/item/stack/material/snow)
@@ -58,6 +60,8 @@
 	desc = "Looks slippery."
 	edge_blending_priority = 0
 
+CREATE_STANDARD_TURFS(/turf/simulated/floor/outdoors/ice)
+
 /turf/simulated/floor/outdoors/ice/Entered(var/mob/living/M)
 	. = ..()
 	if(istype(M, /mob/living))
@@ -72,6 +76,8 @@
 	desc = "Looks slippery."
 	slowdown = 4
 	edge_blending_priority = 0
+
+CREATE_STANDARD_TURFS(/turf/simulated/floor/outdoors/shelfice)
 
 // Ice that is safe to walk on.
 /turf/simulated/floor/outdoors/safeice
@@ -88,5 +94,9 @@
 	icon_state = "gravsnow"
 	desc = "A layer of coarse ice pebbles and assorted gravel."
 	edge_blending_priority = 0
-	initial_flooring = /singleton/flooring/snow/gravsnow
+	initial_flooring = /datum/prototype/flooring/snow/gravsnow
 	baseturfs = /turf/simulated/floor/outdoors/dirt
+
+/turf/simulated/floor/outdoors/snow/no_tree
+	// tree_chance = 0
+	// deadtree_chance = 0

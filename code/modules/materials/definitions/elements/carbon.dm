@@ -1,4 +1,4 @@
-/datum/material/carbon
+/datum/prototype/material/carbon
 	id = "carbon"
 	name = MAT_CARBON
 	stack_type = /obj/item/stack/material/carbon
@@ -22,3 +22,5 @@
 	refraction = MATERIAL_RESISTANCE_NONE
 	absorption = MATERIAL_RESISTANCE_LOW
 	nullification = MATERIAL_RESISTANCE_NONE
+
+	worth = 1.25

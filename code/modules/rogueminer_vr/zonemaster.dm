@@ -295,7 +295,7 @@
 			var/mobchoice = pickweight(rm_controller.mobs["tier[rm_controller.diffstep]"])
 			rm_controller.dbg("ZM(p): Picked [mobchoice] to spawn.")
 			var/mob/living/newmob = new mobchoice(get_turf(SP))
-			newmob.faction = "asteroid_belt"
+			newmob.set_iff_factions(MOB_IFF_FACTION_BIND_AUTO)
 			spawned_mobs += newmob
 			if(delay)
 				sleep(delay)

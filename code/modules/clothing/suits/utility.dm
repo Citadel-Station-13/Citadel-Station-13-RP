@@ -83,6 +83,7 @@
 	armor_type = /datum/armor/general/radsuit
 	weight = ITEM_WEIGHT_ARMOR_BIORAD_SUIT_HELMET
 	encumbrance = ITEM_ENCUMBRANCE_ARMOR_BIORAD_HELMET
+	worth_intrinsic = 75
 
 /obj/item/clothing/suit/radiation
 	name = "Radiation suit"
@@ -98,3 +99,4 @@
 	inv_hide_flags = HIDEJUMPSUIT|HIDETAIL|HIDETIE|HIDEHOLSTER
 	clothing_flags = CLOTHING_THICK_MATERIAL | CLOTHING_INJECTION_PORT
 	encumbrance = ITEM_ENCUMBRANCE_ARMOR_BIORAD_SUIT
+	worth_intrinsic = 250

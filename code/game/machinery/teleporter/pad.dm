@@ -17,7 +17,6 @@
 	return INITIALIZE_HINT_LATELOAD
 
 /obj/machinery/tele_pad/LateInitialize()
-	. = ..()
 	update_icon()
 
 /obj/machinery/tele_pad/update_icon()

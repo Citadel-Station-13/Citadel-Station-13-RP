@@ -1,20 +1,9 @@
-/**********************Mineral deposits**************************/
-CREATE_STANDARD_TURFS(/turf/unsimulated/mineral)
-/turf/unsimulated/mineral
-	name = "impassable rock"
-	icon = 'icons/turf/walls.dmi'
-	icon_state = "rock-dark"
-	density = 1
-
-	smoothing_groups = (SMOOTH_GROUP_CLOSED_TURFS + SMOOTH_GROUP_MINERAL_WALLS)
-
+CREATE_STANDARD_TURFS(/turf/simulated/mineral)
 /turf/simulated/mineral //wall piece
 	name = "rock"
 	icon = 'icons/turf/walls/natural.dmi'
 	icon_state = "preview"
 	base_icon_state = "wall"
-	smoothing_flags = SMOOTH_CUSTOM
-	initial_gas_mix = GAS_STRING_VACUUM
 	opacity = 1
 	density = 1
 	blocks_air = 1
@@ -51,39 +40,45 @@ CREATE_STANDARD_TURFS(/turf/unsimulated/mineral)
 	var/ignore_oregen = FALSE
 	var/ignore_cavegen = FALSE
 
-/turf/simulated/mineral/rich
-	//Placeholder, go to the oregen stuff at the bottom to see the oregen weight
+/turf/simulated/mineral/floor
+	name = "sand"
+	icon = 'icons/turf/flooring/asteroid.dmi'
+	icon_state = "asteroid"
+	density = 0
+	opacity = 0
+	blocks_air = 0
+	can_build_into_floor = TRUE
 
-// Alternatives that ignore ore_gen and cavegen
+CREATE_STANDARD_TURFS(/turf/simulated/mineral/rich)
+/turf/simulated/mineral/rich
+
+CREATE_STANDARD_TURFS(/turf/simulated/mineral/ignore_oregen)
 /turf/simulated/mineral/ignore_oregen
 	ignore_oregen = TRUE
 
+CREATE_STANDARD_TURFS(/turf/simulated/mineral/floor/ignore_oregen)
 /turf/simulated/mineral/floor/ignore_oregen
 	ignore_oregen = TRUE
 
+CREATE_STANDARD_TURFS(/turf/simulated/mineral/ignore_cavegen)
 /turf/simulated/mineral/ignore_cavegen
 	ignore_cavegen = TRUE
 
+CREATE_STANDARD_TURFS(/turf/simulated/mineral/floor/ignore_cavegen)
 /turf/simulated/mineral/floor/ignore_cavegen
 	ignore_cavegen = TRUE
 
+CREATE_STANDARD_TURFS(/turf/simulated/mineral/floor/ignore_cavegen)
 /turf/simulated/mineral/floor/ignore_cavegen/has_air
 	initial_gas_mix = GAS_STRING_STP
 
-/turf/simulated/mineral/floor/indoors
-	outdoors = FALSE
-	name = "Depreciated, tell a mapper if you see this"
-	icon_state = ""
-
+CREATE_STANDARD_TURFS(/turf/simulated/mineral/icerock/ignore_cavegen)
 /turf/simulated/mineral/icerock/ignore_cavegen
 	ignore_cavegen = TRUE
 
+CREATE_STANDARD_TURFS(/turf/simulated/mineral/icerock/floor/ignore_cavegen)
 /turf/simulated/mineral/icerock/floor/ignore_cavegen
 	ignore_cavegen = TRUE
-
-/turf/simulated/mineral/icerock/floor/ignore_cavegen/indoors
-	outdoors = FALSE
-
 
 // Alternative rock wall sprites.
 /turf/simulated/mineral/light
@@ -100,27 +95,19 @@ CREATE_STANDARD_TURFS(/turf/unsimulated/mineral)
 
 /turf/simulated/mineral/icerock/airmix
 	initial_gas_mix = GAS_STRING_STP
-/turf/unsimulated/mineral/icerock
+
+/turf/unsimulated/wall/mineral/icerock
 	name = "impassable icerock"
 	icon = 'icons/turf/walls.dmi'
 	base_icon_state = "wall"
 	density = 1
 	smoothing_flags = SMOOTH_BITMASK
-	smoothing_groups = (SMOOTH_GROUP_WALLS+ SMOOTH_GROUP_CLOSED_TURFS + SMOOTH_GROUP_MINERAL_WALLS )
-	canSmoothWith = (SMOOTH_GROUP_WALLS+ SMOOTH_GROUP_CLOSED_TURFS + SMOOTH_GROUP_MINERAL_WALLS )
+	smoothing_groups = (SMOOTH_GROUP_WALLS + SMOOTH_GROUP_CLOSED_TURFS + SMOOTH_GROUP_MINERAL_WALLS )
+	canSmoothWith = (SMOOTH_GROUP_WALLS + SMOOTH_GROUP_CLOSED_TURFS + SMOOTH_GROUP_MINERAL_WALLS )
 	color = COLOR_OFF_WHITE
 
 /turf/simulated/mineral/ignore_mapgen
 	ignore_mapgen = 1
-
-/turf/simulated/mineral/floor
-	name = "sand"
-	icon = 'icons/turf/flooring/asteroid.dmi'
-	icon_state = "asteroid"
-	density = 0
-	opacity = 0
-	blocks_air = 0
-	can_build_into_floor = TRUE
 
 //Alternative sand floor sprite.
 /turf/simulated/mineral/floor/light
@@ -206,10 +193,6 @@ CREATE_STANDARD_TURFS(/turf/unsimulated/mineral)
 		return NULLTURF_BORDER
 	return T.density? ADJ_FOUND : NO_ADJ_FOUND
 
-/turf/simulated/mineral/custom_smooth(dirs)
-	smoothing_junction = dirs
-	update_appearance()
-
 /turf/simulated/mineral/update_appearance(updates)
 	. = ..()
 
@@ -291,10 +274,10 @@ CREATE_STANDARD_TURFS(/turf/unsimulated/mineral)
 						new oretype(src)
 				resources[ore] = 0
 
-/turf/simulated/mineral/bullet_act(var/obj/projectile/Proj) // only emitters for now
+/turf/simulated/mineral/on_bullet_act(obj/projectile/proj, impact_flags, list/bullet_act_args)
 	. = ..()
-	if(Proj.excavation_amount)
-		var/newDepth = excavation_level + Proj.excavation_amount // Used commonly below
+	if(proj.excavation_amount)
+		var/newDepth = excavation_level + proj.excavation_amount // Used commonly below
 		if(newDepth >= 200) // first, if the turf is completely drilled then don't bother checking for finds and just drill it
 			GetDrilled(0)
 			return
@@ -307,8 +290,8 @@ CREATE_STANDARD_TURFS(/turf/unsimulated/mineral)
 				if(prob(50))
 					artifact_debris()
 
-		excavation_level += Proj.excavation_amount
-		update_archeo_overlays(Proj.excavation_amount)
+		excavation_level += proj.excavation_amount
+		update_archeo_overlays(proj.excavation_amount)
 
 /turf/simulated/mineral/Bumped(AM)
 
@@ -328,8 +311,8 @@ CREATE_STANDARD_TURFS(/turf/unsimulated/mineral)
 		if(istype(R.module_active,/obj/item/pickaxe))
 			attackby(R.module_active,R)
 
-	else if(istype(AM,/obj/mecha))
-		var/obj/mecha/M = AM
+	else if(istype(AM,/obj/vehicle/sealed/mecha))
+		var/obj/vehicle/sealed/mecha/M = AM
 		if(istype(M.selected,/obj/item/mecha_parts/mecha_equipment/tool/drill))
 			M.selected.action(src)
 

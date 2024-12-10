@@ -1,4 +1,4 @@
-/datum/material/supermatter
+/datum/prototype/material/supermatter
 	id = MAT_SUPERMATTER
 	name = "supermatter"
 	icon_colour = "#FFFF00"
@@ -25,14 +25,16 @@
 	absorption = MATERIAL_RESISTANCE_EXTREME
 	nullification = MATERIAL_RESISTANCE_HIGH
 
+	worth = 200 // holy moly!
+
 	// you didn't think you were getting the stats for free now did you
 	material_traits = list(
-		/datum/material_trait/radioactive = RAD_INTENSITY_MAT_SUPERMATTER,
-		/datum/material_trait/supermatter,
-		/datum/material_trait/glow = list("power" = 0.75, "range" = 3, "color" = "#ffff00", "sensitivity" = 0.5),
+		/datum/prototype/material_trait/radioactive = RAD_INTENSITY_MAT_SUPERMATTER,
+		/datum/prototype/material_trait/supermatter,
+		/datum/prototype/material_trait/glow = list("power" = 0.75, "range" = 3, "color" = "#ffff00", "sensitivity" = 0.5),
 	)
 
-/datum/material/supermatter/generate_recipes()
+/datum/prototype/material/supermatter/generate_recipes()
 	. = ..()
 	. += create_stack_recipe_datum(
 		name = "supermatter shard",

@@ -45,40 +45,46 @@
 		/datum/lore/codex/page/fallmansstar,
 		/datum/lore/codex/page/hivebots,
 		/datum/lore/codex/page/three_fingers,
-		/datum/lore/codex/page/changeling
+		/datum/lore/codex/page/changeling,
+		/datum/lore/codex/page/contractors,
+		/datum/lore/codex/page/ad5,
+		/datum/lore/codex/page/cm_xenos,
+		/datum/lore/codex/page/enigma,
+		/datum/lore/codex/page/enigma2,
+		/datum/lore/codex/page/nuclear_spirits,
+		/datum/lore/codex/page/andromeda_haven
 		)
 
 /datum/lore/codex/page/about_news
 	name = "About the Publisher"
-	data = "The <i>Daedalus Pocket Newscaster</i> is produced and maintained by Occulum Broadcast, the foremost authority on media distribution \
+	data = "The <i>Daedalus Pocket Newscaster</i> is produced and maintained by Occulum Broadcast Corporation, the foremost authority on media distribution \
 	and owner-operator of the award-winning Daedalus Dispatch newsletter. We use our unparalleled network of freelance reporters, political scientists, \
 	and other experts to deliver hour-by-hour analysis of a complex interstellar political climate, an analysis which you now hold in your hands. For more \
 	information, feel free to visit our homepage at oc.about.tsc, or the sites of any of our constituents."
 
 /datum/lore/codex/page/lythios
-	name = "Nanotrasen Acquires Three Worlds from People's Republic of Adhomai! Insult to revolution or savy political move? -  6/19/2563"
-	data = "Today Nanotrasen announced that is had purchased three systems from the People's Republic of Adhomai (PRA), a move widely mocked by the Republic's rivals on Adhomai.\
-	The three planets Lythios-43, Miaphus, and Motov were 'settled' as penal colonies in the late 2530's and early 2540's. Since then these three systems have been a drain on the \
-	resources of the PRA. The meagre mines and resources of the three worlds along with their meagre forced laborer population could not hope to cover the costs of maintaining \
-	the distant colonies. The final straw came for the colonies when in 2557 a experimental reactor in a weapons testing facility on Lythios-43c suffered a catastrophic meltdown.\
-	With hundreds injured and dozens dead from the meltdown, the PRA vowed to close the facility and in 2560 the Lythios last Tajaran personelle left Lythios-43c abandoning the planet.\
+	name = "Nanotrasen Acquires System from People's Republic of Adhomai! Insult to revolution or savy political move? -  6/19/2563"
+	data = "Today Nanotrasen announced that is had purchased the Lythios 43 system from the People's Republic of Adhomai (PRA), a move widely mocked by the Republic's rivals on Adhomai.\
+	The system was claimed when the PRA 'settled' the planet of Miaphus'irra as a pneal colony in the late 2530'. Since then the systems has been a drain on the \
+	resources of the PRA. The meagre mines and resources of Miaphus'irra along with their meagre forced laborer population could not hope to cover the costs of maintaining \
+	the distant colony. The final straw came for the colonies when in 2557 a experimental reactor in a weapons testing facility on Lythios-43c another world in the same system, suffered a catastrophic meltdown.\
+	With hundreds injured and dozens dead from the meltdown, the PRA vowed to close the facility and in 2560 the Lythios last PRA military personelle left Lythios-43c abandoning the planet.\
 	<br><br>\
-	Shortly after, the PRA entered negotations with Nanotrasen over the rights to the three worlds after similar high profile disasters occured in Miaphus and Motov systems.\
+	Shortly after, the PRA entered negotations with Nanotrasen over the rights to the Lythios 43 system after similar high profile mining disaster occured on Miaphus'irra.\
 	The deal was made public last week, when documents detailing the arrangement were leaked to the independent press on Adhomai by anonamous source. In total, Nanotrasen has \
-	acquired the two colonies Miaphus'irra, a scorching desert world, and Motov'maal, an icy planet witha subterrainian ocean respectively, various outposts orbiting the Motov,\
-	Miaphus and Lythios-43, along with the estimated fifty thousand Tajaran penal colonists within. Nanotrasen has vowed to turn the colonies into prosperous frontier societies,\
-	freeing the former laborers and offering them all gainful employment within the company.\
+	acquired the planet of Miaphus'irra, a and all PRA assests on the planet. This apparently includes responsibility gor the estimated fifty thousand Tajaran penal colonists within. \
+	Nanotrasen has vowed to turn the colonies into prosperous frontier societies, freeing the former laborers and offering them all gainful employment within the company.\
 	<br><br>\
 	On Adhomai however the sale has been met with mass mockery. The New Kingdom of Adhomai and Democratic Republic of Adhomai have both issued scathing criticism of the PRA \
 	mocking their lack of commitment to the revolutionary values they claim to strive for not only selling their planets to foriegners but a foriegn megacorporation.\
-	The media on Adhomai aside from PRA controlled channels have given non-stop coverage of the incident which has provided almost endless fodder for the comedians across \
+	The media on Adhomai aside from PRA controlled channels have given non-stop coverage of the incident which has provided almost endless fodder for comedians across \
 	the snowy hoemworld of the Tajaran people. The PRA in response annouced their 'partnership' with Nanotrasen relating to the systems earlier today in a blatant attempt to \
 	save face.\
 	<br><br>\
 	Nanotrasen for its part has begun preparing to take over the facilities they have purchased from the PRA. One of its first priorities and part of the original deal with the PRA \
-	is to take some measures to clean up the still heavily radioactive remains of the reactor site of Lythios-43c Nanotrasen considers the world a top priority for resource expoitation \
-	and study and are eager to repurpose the remanents of the Tajaran base their into yet another of their countless surface bases. Similarly it hopes to ressume production on the mines \
-	of Miaphus'irra and improve the aquaponics and geothermal facilities on Motov'maal, hoping to turn the former penal colonies around in a positive way.\
+	is to take some measures to clean up the still heavily radioactive remains of the reactor site of Lythios-43c. Nanotrasen considers the world a top priority for resource expoitation \
+	and reseach. They are apparently eager to repurpose the remanents of the Tajaran base their into yet another of their countless surface bases. Similarly it hopes to resume production on the mines \
+	of Miaphus'irra hoping to turn the former penal colony around in a positive way.\
 	<br><br>\
 	This is a developing story please stay tuned for more updates."
 
@@ -86,13 +92,13 @@
 	name = "New Drydock Being Constucted in Naramadi Home System in Apparent Hegemony Military Buildup - 12/10/2563"
 	data = "Orion Confederation intelligence sources confirmed today that the Naramadi Ascendency have begun construction of yet another military drydock in their homesystem.\
 	With the Moghes Hegemony and its Naramadi allies already boasting the largest navy in the galaxy by tonnage the new drydock is seen as a escalation \
-	of their already growing military power. Orion Confederation officals have already condemned the build up citing the new drydock as only exsascerbating tensions \
+	of their already growing military power. Orion Confederation officals have already condemned the build up citing the new drydock as only exasperating tensions \
 	between the Hegemony and the rest of the galaxy. There has been no response from the Hegemony or the Naramadi Ascendency as of yet continuing their tradition of cold silence \
-	towards Orion diplomatic overtures. The Vikara combine has responded in a more restained manner simply acknowledging the current construction of the new dockyard \
+	towards Orion diplomatic overtures. The Vikara Combine has responded in a more restained manner simply acknowledging the current construction of the new dockyard \
 	and that is unlikely to change their current diplomatic policy towards the Hegemony.\
 	<br><br>\
 	Political analysts fear the continuing slow escalation between Hegemony and the rest of the galaxy, stating that inevitably the slaving empire will be drawn into \
-	conflict with larger neighbors after it runs out of easy opponents. Military analysts are adamant of the increasing need for the Orion Confederation to increase its own \
+	conflict with other superpowers after it runs out of easy opponents. Military analysts are adamant of the increasing need for the Orion Confederation to increase its own \
 	military spending and to reorganize its byzantine command structures claiming the current navy of Orion would stand no chance should the Hegemony invade in force.\
 	With reliance on Orion's allies in the  Vikara Combine growing every day Orion refues to improve its own fleet, pessimeists claijm its only a matter of time before \
 	humanity is put in true danger by the Moghes slaver menace."
@@ -202,13 +208,13 @@
 	Maisi Tai."
 
 /datum/lore/codex/page/governments
-	name = "New Governments proclaimed on Motov'maal and Miaphus'irra! NT moves forward with construction on Lythios. - 11/22/2564"
-	data = "Nanotrasen today proclaimed the formations of governments on Miaphus'irra and Motov'maal. The two former People's Repupiblic \
-	of Adhomai penal colonies announced their status as free holds with Nanotrasen as their partners in governance. Nanotrasen had purchased \
-	the planets along with the Lythios-43 system from the PRA in 2562 and since then been in deep negotiations with the former penal laborers \
-	over the creation of civilian governments in the former colonies. Nanotrasen in a public statement expressed optimism that their relationship \
-	with their latest client worlds will be prosperous and constructive for all parties involved. Both worlds have sent communications to the Confederate \
-	Commonwealth government back on Adhomai seeking recognition as independent Free Holds. However with opposition to their membership among their former \
+	name = "New Governments proclaimed on Miaphus'irra! NT moves forward with construction on Lythios. - 11/22/2564"
+	data = "Nanotrasen today proclaimed the formations of a new frontier governments on Miaphus'irra. The former People's Repupiblic \
+	of Adhomai penal colony proclaimed themself the 'Hadii's Folly Confederation of Freeholds', and named Nanotrasen as their parnter in governance. Nanotrasen had purchased \
+	the planet along with the Lythios-43 system from the PRA in 2562 and since then has been in deep negotiations with the former penal laborers \
+	over the creation of a civilian governments in the former colony. Nanotrasen in a public statement expressed optimism that their relationship \
+	with their latest client world will be prosperous and constructive for all parties involved. The new government has sent communications to the Confederate \
+	Commonwealth government back on Adhomai seeking recognition as an independent Free Holds. However with opposition to their membership among their former \
 	PRA owners and other Tajaran factions it is unlikely this recognition will occur anytime soon.\
 	<br><br>\
 	In addition Nanotrasen all annouced that construction and radiation clean up operations continue on Lythios-43c. According to Nanotrasen representatives \
@@ -288,7 +294,7 @@
 	data = "Martian By-Elections this week have resulted in an unexpected windfall for the Tyrmalin population on the planet.\
 	A dozen Tyrmalin political hopefuls have been elected to the lower Martian house doubling the amount of Tyrmalin representatives \
 	serving in the Martian lower house. Political analysts have contributed this surprise win to the high political participation rate \
-	among Mar's Tyrmalin minority along with the increasing populations of the 'little green aliens' of Mars. Last Martian census \
+	among Mars' Tyrmalin minority along with the increasing populations of the 'little green aliens' of Mars. The last Martian census \
 	showed the Tyrmalin as being 9% of the Martian population with the Tyrmalins being the fastest growing population on the planet.\
 	<br><br>\
 	Celebrations of the sudden political victory have sontaneously errupted across the entire planet with some Tyrmalin districts \
@@ -342,7 +348,7 @@
 	allies such as the Gorlex Manufacturing Corporation, saw countless stockpiles of Syndicate Nuclear Biological and Chemical weaponry disappear as they were either \
 	hidden, destroyed, sold or perhaps even simply forgotten about. With the spread of Nanotrasen's antifungal counter to fungal TB and Zeng-Hu Pharmaceutical's own \
 	incorporation of  similarly effective anti-fungal agents into their own mass market drugs, deaths from Fungal Tuberculois are now thankfully rare, and with \
-	fewer and fewer samples of the weapon floating about the galaxy, many hope that this grim reminder of the phoron wars will soon only exist in labortories."
+	fewer and fewer samples of the weapon floating about the galaxy, many hope that this grim reminder of the phoron wars will soon only exist in laboratories."
 
 /datum/lore/codex/page/pirates3
 	name = "Pirate Raids Lock Down the Temhoser Gate, Kill Prominent Naramadi Matriach! - 11/7/2566"
@@ -389,7 +395,7 @@
 	constructs. Xenoarchaeological teams hope that with better understanding of the Keisa language they can disable and repurpose these \
 	ancient nanites devices and constructs furthering the galaxy's collective understanding of nanite technology without falling into the same \
 	pitfalls of the extinct Keisa. Though the codex is currently only available in xenoarchaeological circles both trained professionals and \
-	educators the xenoarchaeology team has also announced it is developing a version for civilian and commercial use, though when this product will be available \
+	educators in the xenoarchaeology team announced it is developing a version for civilian and commercial use, though when this product will be available \
 	remains to be seen."
 
 /datum/lore/codex/page/xenohybrid
@@ -408,12 +414,12 @@
 	<br><br>\
 	Melanippe's Canididacy on Traskherren was a close faught campaign. Traskherren politics had been largely dominated by Zheng-Hu Pharmaceuticals with \
 	their Orion representative being the Zheng-Hu endorsed candidate since the world's admission to the Confederation. Melanippe challenged the nearly two \
-	decade long incumbent candidate Zhou Yingkun. After two decades Yingkun despite his Zheng-Hu backing had become increasing unpopular due to his \
-	economic policies being seen as favorable only to his Zheng-Hu backers. His campaign against Melanippe was marred by personal attacks towards the \
-	hybrid asking if she could truly represent the entire system rather than just the interests of the Neomorph hives of Traskherren. Despite this though\
+	decade long incumbent candidate Zhou Yingkun. After two decades Yingkun had become increasing unpopular due to his economic policies which were seen as \
+	favorable only to his Zheng-Hu backers. His campaign against Melanippe was marred by personal attacks towards the \
+	hybrid, asking if she could truly represent the entire system rather than just the interests of the Neomorph hives of Traskherren. Despite this though\
 	Melanippe was able to gain enough support from the non-Neomorph population to win a narrow victory on Traskherren with 52% of the vote. \
 	<br><br>\
-	Melanippe has recieved a warm welcome already from many council members,her membership was soon faced with a problem in that the standardized \
+	Melanippe has recieved a warm welcome already from many council members, her membership was soon faced with a problem in that the standardized \
 	sized seats in the Confederation halls would be too small for the three and half meter tall Praetorian. Until a properly sized seat can be secured \
 	and the council chamber rearranged to accommodate her, Melanippe will have to attend Council meetings through holocall. During her victory speech Melanippe \
 	promised to not only represent everyone on Traskherren not just Xenohybrid population. She reiterated her campaign to see the corporate investments on Taskherren \
@@ -435,20 +441,20 @@
 	<br><br>\
 	Available at selected DONK Co. Locations or Order off of exo at 63453.94321.56721.12521! \
 	<br><br>\
-	Warning, civilian ownership of DONK brand riot darts is not legal in some polities be sure to check with local law before order. DONK Co \
-	Riot Darts should be kept out of the reach of children at all times. DONK Co waives all liabilities to injuries sustained by DONK Co Riot Darts \
-	and other Donk Co products. DONK Co Riot Darts can cause severe damage to eyes and eyewear, gentilia, children and Teshari, please use caution when employing \
+	Warning, civilian ownership of DONK brand riot darts is not legal in some polities be sure to check with local law before ordering. DONK Co \
+	Riot Darts should be kept out of the reach of children at all times. DONK Co waives all liabilities to injuries caused by DONK Co Riot Darts \
+	and other Donk Co products. DONK Co Riot Darts can cause severe damage to eyes and eyewear, gentilia, children, and Teshari, please use caution when employing \
 	Donk Co Riot Darts against these targets."
 
 /datum/lore/codex/page/prince
 	name = "The New Kingdom of Adhomai Says Final Goobye To Its Prince. Millions Attend Funeral For Prince Thram Azunja - 3/13/2567"
 	data = "The funeral for Crown Prince Thram Azunja drew the attendance of hundreds of thousands of the citizens of the New Kingdom of Adhomai. In accordance with \
 	Adhomai tradition the prince was cremated in one of the original furnace engines of Adhomai first created to hold off the cold on the onset of \
-	Adhomai's continuing age of frost. The body reportedly already horribly disfigured from the shuttle crash that killed the prince a mere 10 days ago \
+	Adhomai's continuing age of frost. The body, reportedly already horribly disfigured from the shuttle crash that killed the prince a mere 10 days ago, \
 	was only allowed to be seen by the royal family and a few thousand nobles and chosen commoners before it was commited to S'randarr. Hundreds of \
-	thousands of Tajara prayed for the prince's soul in the temple complex and  with millions praying in the adjoining residential units around the \
+	thousands of Tajara prayed for the prince's soul in the temple complex with millions praying in the adjoining residential units around the \
 	old furnace generator. Across the New Kingom hundreds of millions prayed in a nationwide moment of prayer. Several public services were also held \
-	in the handful of New Kingdom Alignd Freehold but private services honoring the Prince occured across Adhomai even within the territory of rival \
+	in the handful of New Kingdom Alignd Freeholds and private services honoring the Prince occured across Adhomai even within the territory of rival \
 	governments like the People's Republic of Adhomai. \
 	<br><br>\
 	King Arzthram Azunja, the father of the deceased, made only a brief appearance at the funeral. He stayed only long enough to see his son commended to \
@@ -488,10 +494,10 @@
 	The prince's initial annoucement of his candidacy originally was almost ignored, the young prince was written off as being far too \
 	progressive and full of alien ideas to be a serious contender for the crown in the conservative New Kingdom. Volink's presentation today however, greatly shifted \
 	the balance of power of court. Rather than being flanked by a small cadre of his supporters while presenting himself to the King he was escorted to the throne by a \
-	formation of 'knights' armored in shining RiGs and armed with energy shields and metamaterial swords. The knights later revealed to be the sons of many lower ranking \
+	formation of 'knights' armored in shining RiGs and armed with energy shields and metamaterial swords. The equipment of the knights, who were later revealed to be the sons of many lower ranking \
 	nobles currently serving in the New Kingom Royal Navy, shocked the court. Indeed Volink was accused of violating the laws of the courts, however the Prince quickly \
-	pointed out that it is the tradition that Knights of Noble blood should not be deprived of their swords or shields even in the presence of their king as it is their\
-	right to bear these arms, a rule which dates back to even before the cataclysmic sudden onset iceage that was the Great Frost of Adhomai.\
+	pointed out that it is the tradition that Knights of Noble blood should not be deprived of their swords or shields even in the presence of their king, as it is their\
+	right to bear these arms. This tradiation dates back to even before the cataclysmic sudden onset iceage that was the Great Frost of Adhomai.\
 	<br><br>\
 	The Prince's gambit seems to be have successful. Already he has courted many undecided nobles and won over many progressives within the noble houses. Among the frontrunners \
 	for the title of crown prince, Volink remains the youngest, a criticism he has noted. Addressing the critiques to his candidacy Volink made the following annoucement: \
@@ -533,17 +539,17 @@
 	of the cannibal killer. In the chase that followed allegedly a dozen more people were killed between cases of mistaken identity, and strikes from the own killer with some victims apparently \
 	having been partially cannibalized raw. Eventually the killer was cornered by the mob and security forces, his last action was to charge the mob with an large machete resulting in him being \
 	shot over 40 times before finally dropping dead. Analysis of the bodies from the back room, not only confirmed that all dozen missing persons were killed at the suspect's shop, but that there \
-	was at  least six more unidentified persons among the remains found in the shop bringing the this killer's gruesome total to 18. The identity of the killer has not been released by the police and \
+	was at  least six more unidentified persons among the remains, bringing the this killer's gruesome total to 18. The identity of the killer has not been released by the police and \
 	the Viento Seco government has vowed that the killer's name will never be released less it encourage further acts of killing. \
 	<br><br>\
-	The 'Butcher of Parana' is just the latest in a rash of cannibalism incidents over the past two year. Some statistics say that incidents of cannibalism is up over 200% since 2564. \
+	The 'Butcher of Parana' is just the latest in a rash of cannibalism incidents over the past two years. Some statistics say that incidents of cannibalism are up over 200% since 2564. \
 	What was once merely the subject of horror movies and the habits of certain Vox pirate bands has become an increasingly common phenoma among the Galaxy's derranged. Sociologists are \
 	baffled at the sudden rise with many blaming the attention cannibals get in the media for the rise of cannibal activity. Others blame social contagion from societies where cannibalism \
 	isn't taboo such as among Vox raider groups who are infamous for preying on Teshari. Still some point to a darker connection. Many of these cannibal murderers share common ritual \
-	practices in their murders despite them happening tens of lightyears apart. This has lead some to suggest that these killers had a way of communicating with eachother and such a \
-	connection has even been explored by police on several frontier worlds however, no compelling evidence of a 'Cannibal Cult' has been found. This hasn't assauged the trauma the people of \
+	practices in their murders despite them happening tens if not hundred or thousands of lightyears apart. This has lead some to suggest that these killers had a way of communicating with eachother. \
+	Such potentialconnections have even been explored by police on several frontier worlds however, no compelling evidence of a 'Cannibal Cult' has been found. This news brings no relief to people of \
 	Parana, many of whom shopped at the 'Gourmet Cuts'. An anonymous citizen quoted to an Occulum Jounalist the following: 'You wouldn't know anything was wrong with it all. \
-	I never got a bad cut for Gourmet's ate a lot there. Now I gotta live with the idea that I may have been fed a person! God I am going to be sick, he fed me a person and I liked it!'."
+	I never got a bad cut at Gourmet's I ate a lot there. Now I gotta live with the idea that I may have been fed a person! God I am going to be sick, he fed me a person and I liked it!'."
 
 /datum/lore/codex/page/catskinner
 	name = "Prospective Prince DESTROYS Infamous Pirate Hoard! Thousands of Lifes Saved! Dreaded Pirate Lord on the Run!- 6/6/2567"
@@ -765,9 +771,9 @@
 	<br><br>\
 	Since that time Fallman's Rock has been on the up. The population has risen as countless shady factions are drawn to the planet. Whether it is the Dremachir run 'All You Desire' \
 	a place where one can experience near any pleasure, the mysterious Ogden Cartel allegedly capable of obtaining anything money could buy, or even a well equipped Vey-Med expedition \
-	it seems you truly can find everything in Fallman's Rock. The prices aren't bad either, the illgotten loot of the pirates and theives that bring their goods to Fallman's Star \
-	to sell them for pennies on the dollar. The spaceships resting in orbit comprise a small armada, if ever thoroughly examined they could probably answer the questions of hundred \
-	missing vessels. However there the reddish stains that mark the halls of the vessels are just another discount on the price tag, and if one can brave the trip to Fallman's Star \
+	it seems you truly can find everything in Fallman's Rock. The prices aren't bad either. Pirates and uheives that bring their ill gotten goods to Fallman's Star \
+	to sell them for pennies on the thaler. The spaceships resting in orbit comprise a small armada. If the ships were ever thoroughly examined one could probably discover the fates of hundred \
+	missing vessels. However in Fallman's Star the reddish stains that mark the halls of these 'used spaceships' are just another discount on the price tag, and if one can brave the trip to Fallman's Star \
 	spaceships can be obtained at record low prices. \
 	<br><br>\
 	Whether this commercial prosperity can be maintained remains to be seen. The excesses of Fallman's Star are a hard pill to swallow for the Orion Confederation and many megacorps \
@@ -776,7 +782,7 @@
 	finds itself working side by side with legitmate enterprise. Perhaps one day this wretched hive of scum and villainy could one day be a hive of legitmate commerce."
 
 /datum/lore/codex/page/hivebots
-	name = "Orion Legion Deploys to in Wake of Increased Hivebot Activity - 3/19/2568"
+	name = "Orion Legion Deploys to Frontier in Wake of Increased Hivebot Activity - 3/19/2568"
 	data = "Today the Orion Confederation approved the deployment of Orion Legion Naval forces to frontier space beyond the Interplanetary Worker's League. The decision has come in light \
 	of increased hivebot activity in the region. Both the Hazzori Clan hivebots and the Enigmatic Scavneger type hivebots have been encountered in the region by League Naval patrols \
 	corporate vessels and civilian traders, heightening fears that a hivebot incursion could be brewing in the area. Reports of hivebot activity have been recieved from as far as \
@@ -801,7 +807,7 @@
 	The mercenaries then beheaded the pirate taking the head with them before departing in their transport. Remnants of that transport were found mere hours later by SDF on a nearby asteroid \
 	with evidence the shuttle had been intentionally destroyed with the mercenary team likely switching to an escape vehicle. \
 	<br><br>\
-	The attack leaves the Eridani Alliance little to go off of. The attacking mercenaries, all Tajara, used Gorlex made hardsuits, making their origin difficult to identifty. The Eridani \
+	The attack leaves the Eridani Alliance little to go off of. The attacking mercenaries, all Tajara, used Gorlex made hardsuits, making their origin difficult to identify. The Eridani \
 	Alliance believes that the one passenger of the transports the pirate captain Isaac 'Three Fingers' Morgan was the only target of the attack. 'Three Fingers' Morgan was an associate \
 	of the infamous pirate lord Ssizikar 'Catskinner' Tartic whose cruelty against the Tajara is legendary. When Tartic was forced away from Tajara space in the lates 2520s by renewed \
 	increased Tajara Naval patrols, it is believed that Three Fingers Morgan stayed behind to continue to menace trade in the Frontier beyond the reach of Adhomai. It is also believe that \
@@ -811,11 +817,11 @@
 	that aided their raids into Tajara space. \
 	<br><br>\
 	Whatever information that convinced the Eridani navy to move Morgan to protective custody has likely died with him. There is no shortage of suspects for the attack \
-	Three Fingers Morgan is wanted Dead or Alive by the Confederate Commonwealth of Adhomai in addition to all the major Tajara nations. Though none yet claim that the bounty on \
-	Morgan's head has been claimed, any Tajara nation or even independent Tajara groups could have been capable of financing such an attack. Morgan's pirate allies are also suspect \
+	Three Fingers Morgan is wanted Dead or Alive by the Confederate Commonwealth of Adhomai in addition to all the major Tajara nations. Though none yet have claimed the bounty on \
+	Morgan's head, any Tajara nation or even independent Tajara groups could have been capable of financing such an attack. Morgan's pirate allies are also suspect \
 	as it was believed Morgan was to turn on them. Still the professional nature of the mercs suggest that those who arranged the attack payed top dollar and had access only to the \
-	highest quality mercenaries. The Eridani Alliance vowed to apprehend the mercenaries however it seems already the trail is going cold. It seems the identity of Three Fingers \
-	assassins along with the secrets he held will remain a mystery."
+	highest quality mercenaries. The Eridani Alliance vowed to apprehend the mercenaries however it seems already the trail is going cold. It seems the identity of Three Fingers' \
+	assassins, along with the secrets he held, will remain a mystery."
 
 /datum/lore/codex/page/changeling
 	name = "Unknown Roanoke Cell Aliens Attacks Nanotrasen Facility, Murders High Ranking RD, Slaughters Security Forces! - 5/16/2568"
@@ -838,3 +844,128 @@
 	attack have been shared with its officials. In apparent response to the news Nanotrasen stock went into the red for the day droping 1% in value. This has prompted Nanotrasen \
 	to issue a statement ensuring investors that the events of the past weeks will have no noticable effects on revenue. We will bring you more details on this story as it develops \
 	and can only hope that the combined efforts of the intelligence and security forces of the galaxy can bring this new Roanoke threat to heel before it costs more lives."
+
+/datum/lore/codex/page/contractors
+	name = "Nanotrasen Cuts Contractor Ties With Many Megacorps, Vows to Tighten Hiring Belt - 6/24/2568"
+	data = "Today Nanotrasen annouced it is not going to renew its contractor agreements with many megacorporations. Of the many corporations NT was hiring contractors from only its old allies \
+	Vey-Med and Hephaestus Industries along with the Free Trade Union and Occulum News have survived Nanotrasen's aggressive cost cutting strategy. The cuts come after repeated revenue misses \
+	by Nanotrasen in recent financial quarters which has led NT to beginning cutting unnecessary expenses. Many experts believe that this will not result \
+	in a great loss in manpower for the company as many contractors have been offered positions within Nanotrasen, however it yet another sign of the persistent financial troubles \
+	Nanotrasen has faced following the loss of its Phoron monopoly. \
+	<br><br>\
+	Nanotrasen has ensured its investors that the cuts to the contractors do not represent a decline in revenue expectations and that intends to double down on its relationships \
+	with its remaining partners, strengthening ties to Vey-Med and Hephaestus while pursuing deeper relations with The Free Trade Union and Occulum News. Investors remained unconvinced \
+	and Nanotrasen's stock drop 2% the next day at the Orion Stock Exchange following the annoucement of the cuts. Inside sources state that the financial situation with Nanotrasen remains \
+	worse then the company claims and that Nanotrasen may begin aggressively cutting expenses in order to raise profits. Nanotrasen for its matter remains commited to its \
+	research and discovery focused strategy and continues its ambitions to search the galaxy for the next phoron or bluespace crystal hoping that once more, a radical scientific \
+	breakthrough can propel the company to new heights. Whether lightning will strike thrice for Nanotrasen remains to be seen, but for now the company's financial fate remains \
+	up the air."
+
+/datum/lore/codex/page/ad5
+	name = "AD: Let Go at a Happy Trails Resort Station: A Paradise for Any Species!"
+	data = " All are welcome at our Happy Trails Resorts. Now unvieling a line of luxury resort stations, we can ensure you find paradise anywhere in the galaxy. \
+	Enjoy our brand new luxury biodomes: <br><br>\
+	Try out the Winter Wonderland, perfect for Tajara and Teshari no matter where they roam. <br><br>\
+	The Desert resort will be comfortable for Unathi and Skrell along with those who simply like a lot of Sun. <br><br>\
+	Our selection of cute and friendly animals will allow to experience comfortable nature anywhere in the galaxy. <br><br>\
+	Buy premium pass to enjoy a luxury buffet and exocitic liquors with top tier dormotory accomodations. <br><br>\
+	All of this an more can be yours at Happy Trails Resort Stations, just dock, buy a pass and enjoy your stay at a Happy Trails Resort Station. Coming to you anywhere \
+	there is space to have yes, bringing paradise."
+
+/datum/lore/codex/page/cm_xenos
+	name = "Xenomorphs Hordes Undergo Mass Evolution! SDF on High Alert! - 8/21/2568"
+	data = "Today the Orion Legion confirmed reports from across the frontier that xenomorph colonies were undergoing a mass metamorphosis. The newly evolved xenos seem to \
+	be trading longevity for strenght and power with the new forms resembling the warforms that Orion Forces faced during the last great Xenomorph incursion into Orion space. \
+	The Orion Legion fears that the mass evolutionary event possibly set off by a galaxy spanning morphogenic signal, could signal that the xenos are once more ready to  \
+	go on the offensive in their war against all life in the galaxy. These 'warform xenomorphs' have already begun assaulting SDF positions across the frontier using their \
+	superior forms and specializations to overwhelm SDF formation used to dealing with less dangerous 'colony xenomorphs'. Thankfully the Orion Legion's xenofighting expertise has \
+	not waned in years since the last big incursion and the Legion has updated their publically avaiable tactical guide to fighting xenomorphs. \
+	<br><br>\
+	The remainder of the Orion Legion press release detailed the particular warforms that SDF and others are now expected to deal with. Of note, the Line Breaker Xenomorphs have \
+	made a comeback with the warforms presenting a trouble to SDF forces who lack the ammunition to crack the shells of these rhino like xenomorphs. In addition the return of \
+	War Monarchs has been confirmed. These warform xenomorph royals are far from the overgrown egg layers of their colony cousions. Capable of fighting even armored vehicles \
+	only the most prepared SDF teams have any chance of taking one down even without her hive backing her up. Marksman Acid spitters have also been confirmed and existing acid \
+	spitters have begun to release a more potent blend of acid. More specialized warforms are for now absent though the Orion Legion expects them to begin appearing in the coming \
+	weeks. The Legion advises you report any xenomorph activity to the local SDF immediately, when it comes to fighting xenos hours can mean the difference between a minor incident \
+	and a major outbreak that kills thousands. Keep alert out there everyone just because they have been beaten before does not mean they don't pose a threat now. \
+	<br><br>\
+	Occulum News Network will provide updates on major xenomorph activity on its local stations be sure to tune in so you can be alerted to the latest developments."
+
+/datum/lore/codex/page/enigma
+	name = "Hivebots Salvage Precursor Technology, ENIGMA AI Begins Reign of Terror on the Frontier - 8/30/2568"
+	data = "Terrible news from the frontier. A hivebot cluster has managed to salvage tech from the precursor 'Abductor' species and its central intelligence has managed \
+	to integrate itself with an Abductor AI. This new intelligence reportedly goes by the designation ENIGMA and has rapidly assembled an army of new synthetic warriors \
+	based on Abductor technology. These dangerous combat units are said to be humanoids and armed with advanced energy weapons. Capable of easily matching the combat \
+	potential of even military personnel these ENIGMA drones are now on a quest to secure Abductor technology by any means neccessary exterminating anyone who dare \
+	oppose their quest to recover Abductor artifacts. \
+	<br><br>\
+	Details regarding the exact strength of the ENIGMA forces is unknown however the AI has already stuck at multiple abductor archaelogical sites across the frontier. \
+	Survivors describe ENIGMA as ultilizing a large about of humanoid drones armed with energy weapons supported by larger humanoids resembling light mechs. The heavier \
+	units are said to make use or personal sheild generators to protect them from attacks. Some units resemble floating spheres where leader units resemble floating squids \
+	using a form of antigravity technology to sustain flight. The squid like drones have been confirmed to be commanders of the drones. Nanotrasen and Necropolis security \
+	teams have been among the first to engage with the forces having been barely able to hold them back but managing to deny Enigma the capture of some Abductor Artifacts. \
+	<br><br>\
+	Local governments and SDFs are preparing contigencies to deal to the new ENIGMA threat. Please contact your local governments for more information about the threat \
+	ENIGMA may pose to you."
+
+/datum/lore/codex/page/enigma2
+	name = "ENIGMA AI Deploys Nanite Soldiers in Bloody Search for Abductor Technology! What Other Horrors Could Await? - 9/10/2568"
+	data = "Today Frontier the Orion Legion published its latest intelligence on the ENIGMA AI and its reign of terror across the frontier. Shocking the audience \
+	it showed live footage of what was identified as a Nanite soldier attacking SDF patrols. The footage taken from shuttle craft shows the blade armed nanite monstrosity \
+	cut through the SDF forces, apparently teleporting through SDF fire to close the distant between it and the soldiers. The footage closes when SDF command orders an air-strike \
+	upon the nanite drone who had just finished off the last of the patrol. The Orion Legion, Nanotrasen, and the Blackstar Legion have together dubbed the new drone as a \
+	'Banshee' and confirmed that this was not a unique drone and that addition versions of this nanite assassin droid can be expected to be fought wherever ENIGMA forces \
+	can be found. \
+	<br><br>\
+	The Banshee is a stark wakeup call for the Orion Confederation and militaries of the galaxy at large. Nanite weapons have been a matter of theory before, with development \
+	being largely banned due to the dangers posed by grey goo swarms or nanite plagues. Though nanite synthetics already exist in the form of proteans, such a clear weaponization of \
+	nanite technology is a stark reminder of how dangerous such technology. For the Orion Legion and corporate intelligence offices this only underlies the importance of developing \
+	countermeasures to nanite weaponry and countering the ENIGMA threat. The Orion Legion at the end of their presentation stated that they would be designating additional ships \
+	into tracking and surpressing ENIGMA presence, however with the Orion Legion already stretched so thin across the Frontier it is unlikely this allocation will have a signifcant \
+	effect. Frontier powers and corporation will likely have to bear the brunt of the fight against ENIGMA which is bitter pill both in terms of financial burdern and in lives lost. \
+	<br><br> \
+	Contact your local government for more information about what threat ENIGMA may poss to you."
+
+/datum/lore/codex/page/nuclear_spirits
+	name = "Six Dead After Breaking into World War 3 Nuclear Disposal Site on Earth! Could Other Atomic Graves Be Unearthed? - 10/3/2568"
+	data = "Tragedy struck in Old Russian territories of Earth when a group of young adults somehow managed to breach a storage site for the nuclear debris left behind by the \
+	Third World War. Somehow the breach managed to remain undetected until monitoring equipment picked up a sharp spike in radiation levels from the site. When a team was \
+	dispatched to investigate it they discover the bodies of 6 young men and women ages 31 to 22, whose identities are to remain confidential out of respect to their families. \
+	The youths somehow managed to disturb the carefully stored nuclear waste releasing a lethal dose of radiation. The bodies of the youth's were found with burns and bruises \
+	across their bodies suggesting extreme exposure to radiation. It is believed that after being exposed to radiation the youths began to hallucinate as the radiation ravaged \
+	their minds attacking eachother before their deaths. Due to the extreme radioactive contaming of their bodies the victims will not be cremated and instead they will be \
+	sealed in lead caskets and buried in another secure site for atomic waste. Hopefully this grim reminder of the dangers of nuclear waste can prevent a tragedy like this \
+	from ever happening again. \
+	<br><br> \
+	Yet still the fact that this tragedy was even allowed to happen has outraged many. Both Earth citizens and government officials are demanding answers on what sort of negligence \
+	allowed the waste site to be breached, how the teens were not detected and how such active waste was left so easily accessible. The answers for now are few but a trusted \
+	anonymous source for Occulum News claims that the site had been dealing with electronic issues for years now. Problems can be traced all the way back to early 2565. It appears \
+	that despite having advanced security and detection equipment the site was plagued with malfunctions. Site workers blame these malfunctions on a as of yet unexplained increase \
+	in radioactivity over the past few years. Some experts believe that the containers used to store the radioactive material have begun failing thousands of years earlier then expected. \
+	What is clear though is that on the night of the breach the site's seucrity system underwent some sort of critical error which left the gate wide open for the six victims \
+	that would die later that night. \
+	<br><br> \
+	Much remains unanswered, such as why there was such a critical spike in radiation following the breach by the six victims. No incidence of criticality is even thought possible \
+	with waste so thoroughly decayed. Experts currently debate whether the radiation spike was caused by some incredibly improbably criticality incident or whether it is possible \
+	that the half-lives of the material stored at the site need to be recalculated under the special circumstances of the waste's storage. Additional questions remain as to what \
+	to do with the waste still stored at the site and other sites across Earth. Do existing containment sites need to be reinforced? Do new containment sites need to be \
+	constructed to account for the new challenges in waste disposal? Is it possible to dispose of the waste off planet without risking lives and health during transit? \
+	These are the questions Earth's governments are asking themselves right now. What remains certain though is no one wants anything like this to happen again."
+
+/datum/lore/codex/page/andromeda_haven
+	name = "Xenomorphs Hegemony Border Space! Hegemony Forces Fight Off Xenowarforms! - 11/3/2568"
+	data = "Two months ago the Orion Legion warned of a mass evolution of xenomorphs across the galaxy, with colony xenomorphs evolving into more dangerous warforms and \
+	becoming far more aggressive. Today reports came in from the border with the Three Hands Hegemony of just how widespread the xeno problem has gotten. The Three Hands \
+	gave official reports today of ongoing military operations against xenomorphs in Hegemony Border regions. According to the Moghesian representative the Hegemony became \
+	aware of the scale of the problem when the independently owned Andromeda Haven space station was destroyed during a Xenomorph attack. Since then the Hegemony has launched \
+	a counter attack destroyed xeno infested ships and asteroids across their border in order to keep the region secure. Casaulties are allegedly minimal save for Andromeda \
+	Haven which was reportedly lost with all hands. \
+	<br><br> \
+	The full scale of the xenomorph assault is yet to be determined as the scale of the Hegemony's military operations is restricted information. What is known is that it appears \
+	the destruction of Adromeda Haven greatly slowed the incursion of Xenomorphs into the region. The Hegemony's military did confirm that specialized combat xenomorphs \
+	were among the ones slain by Hegemony's QRF. Kamekaze Burster Xenomorphs, Fiery Inferno Xenomorphs and even Beserks were confirmed slain by the Hegemony. This only confirms \
+	the Orion Legion;s earlier prediction of the spread of the specialist xenomorphs across the galaxy. With xenomorph attacks becomes more and more sophisticated many wonder \
+	if some sort of major Xenomorph invasion is on the horizon and where it could be. Others fear that this evolution is the beginning of a new normal with the xenomorphs \
+	and that sporadic attacks like this one could become commonplace across the cosmos. \
+	<br><br> \
+	Please make sure to report any xenomorph activity to your local SDF. Follow local Occulum News Network channels for reports on Xenomorph activity in your area."

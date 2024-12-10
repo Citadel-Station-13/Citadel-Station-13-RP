@@ -141,7 +141,7 @@
 	MA.pixel_x = MA.pixel_y = round(WORLD_ICON_SIZE * (1 - scale) * 0.5, 1)
 	return MA
 
-/obj/mecha/make_sonar_shape()
+/obj/vehicle/sealed/mecha/make_sonar_shape()
 	return SSsonar.get_shape_raw(SONAR_IMAGE_HEXAGON)
 
 /obj/make_sonar_shape()

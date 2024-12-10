@@ -10,6 +10,10 @@
 	integrity_max = 300
 	integrity_failure = 100
 	w_class = WEIGHT_CLASS_HUGE
+	materials_base = list(
+		/datum/prototype/material/steel::id = 5 * /datum/prototype/material/steel::sheet_amount,
+	)
+	worth_intrinsic = 50
 
 	layer = TABLE_LAYER	// Above catwalks, hopefully below other things
 
@@ -41,6 +45,13 @@
 	volume = 1000
 	use_power = USE_POWER_OFF
 	var/update_flag = 0
+
+/obj/machinery/portable_atmospherics/canister/get_containing_worth(flags)
+	. = ..()
+	var/list/gas = air_contents.gas
+	for(var/id in gas)
+		var/datum/gas/gas_datum = global.gas_data.gases[id]
+		. += gas_datum.worth * gas[id]
 
 /obj/machinery/portable_atmospherics/canister/nitrous_oxide
 	name = "Canister: \[N2O\]"
@@ -296,7 +307,7 @@ update_flag
 /obj/machinery/portable_atmospherics/canister/attack_ai(var/mob/user as mob)
 	return src.attack_hand(user)
 
-/obj/machinery/portable_atmospherics/canister/attack_hand(mob/user, list/params)
+/obj/machinery/portable_atmospherics/canister/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	return src.ui_interact(user)
 
 /obj/machinery/portable_atmospherics/canister/ui_state()
@@ -516,6 +527,7 @@ update_flag
 /obj/machinery/portable_atmospherics/canister/nitrous_oxide/roomfiller/Initialize(mapload)
 	. = ..()
 	air_contents.gas[GAS_ID_NITROUS_OXIDE] = 9*4000
+	air_contents.update_values()
 	return INITIALIZE_HINT_LATELOAD
 
 /obj/machinery/portable_atmospherics/canister/nitrous_oxide/roomfiller/LateInitialize()

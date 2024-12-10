@@ -1,4 +1,4 @@
-/datum/material/algae
+/datum/prototype/material/algae
 	id = "algae"
 	name = MAT_ALGAE
 	stack_type = /obj/item/stack/material/algae
@@ -18,3 +18,5 @@
 	refraction = MATERIAL_RESISTANCE_NONE
 	absorption = MATERIAL_RESISTANCE_LOW
 	nullification = MATERIAL_RESISTANCE_NONE
+
+	worth = 10

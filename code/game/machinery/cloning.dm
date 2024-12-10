@@ -60,7 +60,7 @@
 	add_hiddenprint(user)
 	return attack_hand(user)
 
-/obj/machinery/clonepod/attack_hand(mob/user, list/params)
+/obj/machinery/clonepod/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if((isnull(occupant)) || (machine_stat & NOPOWER))
 		return
 	if((!isnull(occupant)) && (occupant.stat != 2))
@@ -161,7 +161,7 @@
 	for(var/modifier_type in R.genetic_modifiers)
 		H.add_modifier(modifier_type)
 
-	for(var/datum/language/L in R.languages)
+	for(var/datum/prototype/language/L in R.languages)
 		H.add_language(L.name)
 
 	H.flavor_texts = R.flavor.Copy()
@@ -525,7 +525,7 @@
 	var/diskcolor = pick(0,1,2)
 	icon_state = "datadisk[diskcolor]"
 
-/obj/item/disk/data/attack_self(mob/user)
+/obj/item/disk/data/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return

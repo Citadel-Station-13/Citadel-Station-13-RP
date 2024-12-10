@@ -30,7 +30,7 @@
 
 /obj/machinery/microwave/Initialize(mapload)
 	. = ..()
-	reagents = new/datum/reagents(100)
+	reagents = new/datum/reagent_holder(100)
 	reagents.my_atom = src
 	if (!available_recipes)
 		available_recipes = new
@@ -162,7 +162,7 @@
 	if(istype(user, /mob/living/silicon/robot) && Adjacent(user))
 		attack_hand(user)
 
-/obj/machinery/microwave/attack_hand(mob/user, list/params)
+/obj/machinery/microwave/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	user.set_machine(src)
 	interact(user)
 

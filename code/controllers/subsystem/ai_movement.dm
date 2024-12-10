@@ -17,6 +17,8 @@ SUBSYSTEM_DEF(ai_movement)
 	name = "AI Movement"
 	subsystem_flags = NONE
 	priority = FIRE_PRIORITY_AI_MOVEMENT
+	init_order = INIT_ORDER_AI_MOVEMENT
+	init_stage = INIT_STAGE_EARLY
 	wait = 0
 
 	/// ais that are moving using a movement handler right now
@@ -44,7 +46,7 @@ SUBSYSTEM_DEF(ai_movement)
 	moving_ais = list()
 	rebuild()
 	init_ai_pathfinders()
-	return ..()
+	return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/ai_movement/on_ticklag_changed(old_ticklag, new_ticklag)
 	rebuild()
@@ -80,32 +82,34 @@ SUBSYSTEM_DEF(ai_movement)
 		var/datum/ai_holder/being_processed
 		while((being_processed = buckets[bucket_offset]))
 			var/reschedule_delay = being_processed.move(++being_processed.movement_cycle)
-			// eject; we don't change being_processed.ticking_(next|previous)
-			if(being_processed.ticking_next == being_processed)
-				buckets[bucket_offset] = null
-			else
-				buckets[bucket_offset] = being_processed.ticking_next
-				being_processed.ticking_next.ticking_previous = being_processed.ticking_previous
-				being_processed.ticking_previous.ticking_next = being_processed.ticking_next
-
-			if(reschedule_delay)
-				// insert; we now set its ticking_(next|previous)
-				// note that we don't do catchup
-				var/inject_offset = ((now_index_raw + round(DS2TICKS(reschedule_delay))) % bucket_amount) + 1
-				if(buckets[inject_offset])
-					var/datum/ai_holder/being_injected = buckets[inject_offset]
-					being_processed.ticking_next = being_injected
-					being_processed.ticking_previous = being_injected.ticking_previous
-					being_processed.ticking_previous.ticking_next = being_processed
-					being_processed.ticking_next.ticking_previous = being_processed
+			// check if we are still ticking; if not, we got ejected, so we abort as we don't need to eject or insert again
+			if(buckets[bucket_offset] == being_processed)
+				if(reschedule_delay)
+					// eject; we don't change being_processed.ticking_(next|previous)
+					if(being_processed.movement_bucket_next == being_processed)
+						// this was the only holder in the bucket
+						buckets[bucket_offset] = null
+					else
+						// this was not the only holder in the bucket, stitch it back together after the ejection.
+						buckets[bucket_offset] = being_processed.movement_bucket_next
+						being_processed.movement_bucket_next.movement_bucket_prev = being_processed.movement_bucket_prev
+						being_processed.movement_bucket_prev.movement_bucket_next = being_processed.movement_bucket_next
+					// insert; we now set its ticking_(next|previous)
+					// note that we don't do catchup
+					var/inject_offset = ((now_index_raw + round(DS2TICKS(reschedule_delay))) % bucket_amount) + 1
+					if(buckets[inject_offset])
+						var/datum/ai_holder/being_injected = buckets[inject_offset]
+						being_processed.movement_bucket_next = being_injected
+						being_processed.movement_bucket_prev = being_injected.movement_bucket_prev
+						being_processed.movement_bucket_prev.movement_bucket_next = being_processed
+						being_processed.movement_bucket_next.movement_bucket_prev = being_processed
+					else
+						buckets[inject_offset] = being_processed
+						being_processed.movement_bucket_next = being_processed.movement_bucket_prev = being_processed
+					being_processed.movement_bucket_position = inject_offset
 				else
-					buckets[inject_offset] = being_processed
-					being_processed.ticking_next = being_processed.ticking_previous = being_processed
-				being_processed.movement_bucket_position = inject_offset
-			else
-				// we were already evicted so mark as such
-				being_processed.movement_bucket_position = null
-				unregister_moving(being_processed)
+					// get out if not rescheduling
+					unregister_moving(being_processed)
 			if(MC_TICK_CHECK)
 				break
 		if(state != SS_RUNNING)
@@ -135,7 +139,7 @@ SUBSYSTEM_DEF(ai_movement)
 				moving_ais -= holder
 				stack_trace("bad holder found")
 				continue
-			// doubly linked list inject
+			// circular double-linked list inject
 			if(!isnull(buckets[position]))
 				var/datum/ai_holder/existing = buckets[position]
 				holder.movement_bucket_next = existing.movement_bucket_next
@@ -155,7 +159,7 @@ SUBSYSTEM_DEF(ai_movement)
 		buckets.len = BUCKET_AMOUNT
 		for(var/i in 1 to length(moving_ais))
 			var/datum/ai_holder/holder = buckets[i]
-			holder.movement_bucket_next = holder.movement_bucket_prev = null
+			holder.movement_bucket_next = holder.movement_bucket_prev = holder
 			holder.movement_bucket_position = i
 
 /**
@@ -193,6 +197,7 @@ SUBSYSTEM_DEF(ai_movement)
 	holder.movement_bucket_position = bucket
 	holder.movement_ticking = TRUE
 	holder.movement_cycle = 0
+	moving_ais += holder
 	return TRUE
 
 /datum/controller/subsystem/ai_movement/proc/unregister_moving(datum/ai_holder/holder)
@@ -209,10 +214,14 @@ SUBSYSTEM_DEF(ai_movement)
 				buckets[holder.movement_bucket_position] = next
 		else
 			// if we are linking to ourselves, we must be the head
-			buckets[holder.movement_bucket_position] = next
+#ifdef CF_AI_HOLDER_DEBUG_ASSERTIONS
+			ASSERT(buckets[holder.movement_bucket_position] == holder)
+#endif
+			buckets[holder.movement_bucket_position] = null
 	holder.movement_bucket_prev = holder.movement_bucket_next = holder.movement_bucket_position = null
 	holder.movement_ticking = FALSE
 	holder.movement_cycle = 0
+	moving_ais -= holder
 	return TRUE
 
 #undef BUCKET_CATASTROPHIC_LAG_THRESHOLD

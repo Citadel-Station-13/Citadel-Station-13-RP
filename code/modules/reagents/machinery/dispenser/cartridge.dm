@@ -41,7 +41,7 @@
 	if(!is_open_container())
 		. += "The cap is sealed."
 
-/obj/item/reagent_containers/cartridge/dispenser/attack_self(mob/user)
+/obj/item/reagent_containers/cartridge/dispenser/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -56,11 +56,23 @@
 /obj/item/reagent_containers/cartridge/dispenser/large
 	name = "large dispenser cartridge"
 	volume = 1000
+	materials_base = list(
+		/datum/prototype/material/plastic::id = 5 * /datum/prototype/material/plastic::sheet_amount,
+	)
+	worth_intrinsic = 100
 
 /obj/item/reagent_containers/cartridge/dispenser/medium
 	name = "medium dispenser cartridge"
 	volume = 500
+	materials_base = list(
+		/datum/prototype/material/plastic::id = 3 * /datum/prototype/material/plastic::sheet_amount,
+	)
+	worth_intrinsic = 75
 
 /obj/item/reagent_containers/cartridge/dispenser/small
 	name = "small dispenser cartridge"
 	volume = 250
+	materials_base = list(
+		/datum/prototype/material/plastic::id = 1 * /datum/prototype/material/plastic::sheet_amount,
+	)
+	worth_intrinsic = 50

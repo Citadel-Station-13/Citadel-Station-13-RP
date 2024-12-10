@@ -54,7 +54,7 @@
 			else
 				to_chat(user, "<span class='warning'>DPS calculation by this verb is not supported for \the [G]'s type. Energy or Ballistic only, sorry.</span>")
 
-			weapon_damage = P.damage
+			weapon_damage = P.damage_force
 			weapon_attack_speed = G.fire_delay / 10
 			qdel(P)
 
@@ -540,6 +540,7 @@
 				var/obj/item/tank/phoron/Phoron = new/obj/item/tank/phoron(Rad)
 
 				Phoron.air_contents.gas[GAS_ID_PHORON] = 29.1154	//This is a full tank if you filled it from a canister
+				Phoron.air_contents.update_values()
 				Rad.P = Phoron
 
 				Phoron.loc = Rad

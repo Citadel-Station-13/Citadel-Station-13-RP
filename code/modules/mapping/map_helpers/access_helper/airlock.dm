@@ -411,12 +411,12 @@
 /obj/map_helper/access_helper/airlock/station/science/research_lab
 	req_one_access = list(
 		ACCESS_GENERAL_PATHFINDER,
-		ACCESS_SCIENCE_MAIN,
+		ACCESS_SCIENCE_FABRICATION,
 	)
 
 /obj/map_helper/access_helper/airlock/station/science/shared_xenoflora
 	req_one_access = list(
-		ACCESS_SCIENCE_MAIN,
+		ACCESS_SCIENCE_XENOBOTANY,
 		ACCESS_GENERAL_BOTANY,
 	)
 
@@ -527,6 +527,14 @@
 	req_one_access = list(
 		ACCESS_GENERAL_EXPLORER,
 	)
+
+/obj/map_helper/access_helper/airlock/station/exploration/auxillerysci
+	req_one_access = list(
+		ACCESS_GENERAL_EXPLORER,
+		ACCESS_SCIENCE_ROBOTICS,
+		ACCESS_SCIENCE_MAIN,
+	)
+
 
 /obj/map_helper/access_helper/airlock/station/exploration/shuttle
 	req_one_access = list(

@@ -106,14 +106,19 @@
 	outputs = list(
 		"registered name" = IC_PINTYPE_STRING,
 		"assignment" = IC_PINTYPE_STRING,
-		"passkey" = IC_PINTYPE_STRING
+		"passkey" = IC_PINTYPE_STRING,
+		"rank" = IC_PINTYPE_STRING
 	)
 	activators = list(
 		"on read" = IC_PINTYPE_PULSE_OUT
 	)
 
 /obj/item/integrated_circuit/input/card_reader/attackby_react(obj/item/I, mob/living/user, intent)
-	var/obj/item/card/id/card = I.GetIdCard()
+	var/obj/item/card/id/card
+	if(istype(I,/obj/item/card/id))
+		card = I
+	else
+		card = I.GetIdCard()
 	var/list/access = I.GetAccess()
 	var/json_access = json_encode(access)
 	var/passkey = add_data_signature(json_access)
@@ -121,11 +126,12 @@
 	if(card) // An ID card.
 		set_pin_data(IC_OUTPUT, 1, card.registered_name)
 		set_pin_data(IC_OUTPUT, 2, card.assignment)
+		set_pin_data(IC_OUTPUT, 4, card.rank)
 
 	else if(length(access))	// A non-card object that has access levels.
 		set_pin_data(IC_OUTPUT, 1, null)
 		set_pin_data(IC_OUTPUT, 2, null)
-
+		set_pin_data(IC_OUTPUT, 4, null)
 	else
 		return FALSE
 
@@ -371,12 +377,6 @@
 		else
 			set_pin_data(IC_OUTPUT, 1, H.name)
 			set_pin_data(IC_OUTPUT, 2, H.desc)
-
-			if(istype(H, /mob/living))
-				var/msg = H.examine(H)
-				if(msg)
-					set_pin_data(IC_OUTPUT, 2, msg)
-
 			set_pin_data(IC_OUTPUT, 3, H.x-T.x)
 			set_pin_data(IC_OUTPUT, 4, H.y-T.y)
 			set_pin_data(IC_OUTPUT, 5, sqrt((H.x-T.x)*(H.x-T.x)+ (H.y-T.y)*(H.y-T.y)))
@@ -490,13 +490,11 @@
 
 /obj/item/integrated_circuit/input/local_locator/do_work(ord)
 	if(ord == 1)
-		var/datum/integrated_io/O = outputs[1]
-		O.data = null
+		set_pin_data(IC_OUTPUT, 1, null)
 		if(!get_pin_data(IC_INPUT, 1)) // Check toggle.  We can just grab ref if false.
-			O.data = WEAKREF(assembly.loc)
-		else if(get_pin_data(IC_INPUT, 1) && istype(assembly.loc, /mob/living)) // Now check if someone's holding us.
-			O.data = WEAKREF(assembly.loc)
-		istype(O.data, /obj/item/electronic_assembly/clothing) ? (O.data = WEAKREF(O.data)) : null
+			set_pin_data(IC_OUTPUT, 1, assembly.loc)
+		else if(istype(assembly.loc, /mob/living)) // Now check if someone's holding us.
+			set_pin_data(IC_OUTPUT, 1, assembly.loc)
 		set_pin_data(IC_OUTPUT, 2, isturf(assembly.loc))
 		set_pin_data(IC_OUTPUT, 3, ismob(assembly.loc))
 		push_data()
@@ -519,16 +517,13 @@
 
 /obj/item/integrated_circuit/input/adjacent_locator/do_work(ord)
 	if(ord == 1)
-		var/datum/integrated_io/I = inputs[1]
-		var/datum/integrated_io/O = outputs[1]
-		O.data = null
+		var/atom/I = get_pin_data(IC_INPUT, 1)
+		set_pin_data(IC_OUTPUT, 1, null)
 
-		if(!isweakref(I.data))
+		if(!istype(I))
 			return
-		var/atom/A = I.data.resolve()
-		if(!A)
-			return
-		var/desired_type = A.type
+
+		var/desired_type = I.type
 
 		var/list/nearby_things = range(1, get_turf(src))
 		var/list/valid_things = list()
@@ -537,11 +532,12 @@
 				continue
 			valid_things.Add(thing)
 		if(valid_things.len)
-			O.data = WEAKREF(pick(valid_things))
+			set_pin_data(IC_OUTPUT, 1, pick(valid_things))
+			push_data()
 			activate_pin(2)
 		else
+			push_data()
 			activate_pin(3)
-		O.push_data()
 
 /obj/item/integrated_circuit/input/advanced_locator
 	complexity = 6
@@ -567,32 +563,31 @@
 
 /obj/item/integrated_circuit/input/advanced_locator/do_work(ord)
 	if(ord == 1)
-		var/datum/integrated_io/I = inputs[1]
-		var/datum/integrated_io/O = outputs[1]
-		O.data = null
+		var/datum/I = get_pin_data(IC_INPUT, 1)
+		set_pin_data(IC_OUTPUT, 1, null)
 		var/turf/T = get_turf(src)
 		var/list/nearby_things = view(radius,T)
 		var/list/valid_things = list()
-		if(isweakref(I.data))
-			var/atom/A = I.data.resolve()
+		if(istype(I))
+			var/atom/A = I
 			var/desired_type = A.type
 			if(desired_type)
 				for(var/i in nearby_things)
 					var/atom/thing = i
 					if(thing.type == desired_type)
 						valid_things.Add(thing)
-		else if(istext(I.data))
-			var/DT = I.data
+		else if(istext(I))
+			var/DT = I
 			for(var/i in nearby_things)
 				var/atom/thing = i
 				if(findtext(addtext(thing.name," ",thing.desc), DT, 1, 0) )
 					valid_things.Add(thing)
 		if(valid_things.len)
-			O.data = WEAKREF(pick(valid_things))
-			O.push_data()
+			set_pin_data(IC_OUTPUT, 1, pick(valid_things))
+			push_data()
 			activate_pin(2)
 		else
-			O.push_data()
+			push_data()
 			activate_pin(3)
 
 
@@ -621,11 +616,10 @@
 
 /obj/item/integrated_circuit/input/advanced_locator_list/do_work(ord)
 	if(ord == 1)
-		var/datum/integrated_io/I = inputs[1]
-		var/datum/integrated_io/O = outputs[1]
-		O.data = null
+		var/datum/I = get_pin_data(IC_INPUT, 1)
+		set_pin_data(IC_OUTPUT, 1, null)
 		var/list/input_list = list()
-		input_list = I.data
+		input_list = I
 		if(length(input_list))	//if there is no input don't do anything.
 			var/turf/T = get_turf(src)
 			var/list/nearby_things = view(radius,T)
@@ -650,14 +644,14 @@
 								continue
 							valid_things.Add(WEAKREF(thing))
 			if(valid_things.len)
-				O.data = valid_things
-				O.push_data()
+				set_pin_data(IC_OUTPUT, 1, valid_things)
+				push_data()
 				activate_pin(2)
 			else
-				O.push_data()
+				push_data()
 				activate_pin(3)
 		else
-			O.push_data()
+			push_data()
 			activate_pin(3)
 
 
@@ -713,17 +707,16 @@
 	activate_pin(2)
 
 /obj/item/integrated_circuit/input/signaler/proc/signal_good(datum/signal/signal)
-	if(!signal || signal.source == src)
+	if(!signal)
 		return FALSE
-	if(code)
-		var/real_code = 0
-		if(isnum(code))
-			real_code = code
-		var/rec = 0
-		if(signal.encryption)
-			rec = signal.encryption
-		if(real_code != rec)
-			return FALSE
+	if(!code)
+		return FALSE
+	if(!isnum(code))
+		return FALSE
+	if(!signal.encryption)
+		return FALSE
+	if(code != signal.encryption)
+		return FALSE
 	return TRUE
 
 /obj/item/integrated_circuit/input/signaler/proc/create_signal()
@@ -764,31 +757,25 @@
 	name = "advanced integrated signaler"
 	icon_state = "signal_advanced"
 	desc = "Signals from a signaler can be received with this, allowing for remote control.  Additionally, it can send signals as well."
-	extended_desc = "When a signal is received from another signaler with the right id tag, the 'on signal received' activator pin will be pulsed and the command output is updated.  \
+	extended_desc = "When a signal is received from another signaler with the right code, the 'on signal received' activator pin will be pulsed and the command output is updated.  \
 	The two input pins are to configure the integrated signaler's settings.  Note that the frequency should not have a decimal in it.  \
 	Meaning the default frequency is expressed as 1457, not 145.7.  To send a signal, pulse the 'send signal' activator pin. Set the command output to set the message received."
 	complexity = 8
-	inputs = list("frequency" = IC_PINTYPE_NUMBER, "id tag" = IC_PINTYPE_STRING, "command" = IC_PINTYPE_STRING)
+	inputs = list("frequency" = IC_PINTYPE_NUMBER, "code" = IC_PINTYPE_NUMBER, "command" = IC_PINTYPE_STRING)
 	outputs = list("received command" = IC_PINTYPE_STRING)
 	var/command
-	code = "Integrated_Circuits"
+	code = 30
 	simple = 0
 
 /obj/item/integrated_circuit/input/signaler/advanced/on_data_written()
 	..()
 	command = get_pin_data(IC_INPUT,3)
 
-/obj/item/integrated_circuit/input/signaler/advanced/signal_good(datum/signal/signal)
-	if(!..() || signal.data["tag"] != code)
-		return FALSE
-	return TRUE
-
 /obj/item/integrated_circuit/input/signaler/advanced/create_signal()
 	var/datum/signal/signal = new()
 	signal.transmission_method = 1
-	signal.data["tag"] = code
 	signal.data["command"] = command
-	signal.encryption = 0
+	signal.encryption = code
 	return signal
 
 /obj/item/integrated_circuit/input/signaler/advanced/treat_signal(datum/signal/signal)
@@ -1018,7 +1005,7 @@ GLOBAL_DATUM_INIT(circuit_translation_context, /datum/translation_context/simple
 	listening_objects -= src
 	return ..()
 
-/obj/item/integrated_circuit/input/microphone/hear_talk(mob/living/M, msg, var/verb="says", datum/language/speaking=null)
+/obj/item/integrated_circuit/input/microphone/hear_talk(mob/living/M, msg, var/verb="says", datum/prototype/language/speaking=null)
 	var/translated = FALSE
 	if(M && msg)
 		if(speaking)
@@ -1026,7 +1013,7 @@ GLOBAL_DATUM_INIT(circuit_translation_context, /datum/translation_context/simple
 				msg = speaking.scramble(msg)
 			else
 				msg = translation_context.attempt_translation(speaking, M, msg)
-			if(!istype(speaking, /datum/language/common) && !istype(speaking, /datum/language/noise))
+			if(!istype(speaking, /datum/prototype/language/common) && !istype(speaking, /datum/prototype/language/noise))
 				translated = TRUE
 		set_pin_data(IC_OUTPUT, 1, M.GetVoice())
 		set_pin_data(IC_OUTPUT, 2, msg)
@@ -1066,10 +1053,10 @@ GLOBAL_DATUM_INIT(circuit_translation_context, /datum/translation_context/simple
 /obj/item/integrated_circuit/input/microphone/sign/Initialize(mapload)
 	. = ..()
 	for(var/lang in readable_langs)
-		var/datum/language/newlang = SScharacters.resolve_language_name(lang)
+		var/datum/prototype/language/newlang = RSlanguages.legacy_resolve_language_name(lang)
 		my_langs |= newlang
 
-/obj/item/integrated_circuit/input/microphone/sign/hear_talk(mob/living/M, msg, var/verb="says", datum/language/speaking=null)
+/obj/item/integrated_circuit/input/microphone/sign/hear_talk(mob/living/M, msg, var/verb="says", datum/prototype/language/speaking=null)
 	var/signlang = FALSE
 	if(M && msg)
 		if(speaking)
@@ -1086,7 +1073,7 @@ GLOBAL_DATUM_INIT(circuit_translation_context, /datum/translation_context/simple
 	if(signlang)
 		activate_pin(2)
 
-/obj/item/integrated_circuit/input/microphone/sign/hear_signlang(text, verb, datum/language/speaking, mob/M as mob)
+/obj/item/integrated_circuit/input/microphone/sign/hear_signlang(mob/M as mob, text, verb, datum/prototype/language/speaking)
 	hear_talk(M, text, verb, speaking)
 	return
 
@@ -1186,12 +1173,12 @@ GLOBAL_DATUM_INIT(circuit_translation_context, /datum/translation_context/simple
 	spawn_flags = IC_SPAWN_DEFAULT|IC_SPAWN_RESEARCH
 	power_draw_per_use = 20
 
-/obj/item/integrated_circuit/input/obj_scanner/ask_for_input(obj/item/I, mob/living/user, a_intent)
+/obj/item/integrated_circuit/input/obj_scanner/ask_for_input(mob/living/user, obj/item/I, a_intent)
 	if(!isobj(I))
 		return FALSE
 	attackby_react(I, user, a_intent)
 
-/obj/item/integrated_circuit/input/obj_scanner/attackby_react(obj/item/I, mob/living/user, a_intent)
+/obj/item/integrated_circuit/input/obj_scanner/attackby_react(mob/living/user, obj/item/I, a_intent)
 	if(!isobj(I) || a_intent!=INTENT_HELP || !check_then_do_work())
 		return FALSE
 	var/pu = get_pin_data(IC_INPUT, 1)
@@ -1372,12 +1359,12 @@ GLOBAL_DATUM_INIT(circuit_translation_context, /datum/translation_context/simple
 		"on read" = IC_PINTYPE_PULSE_OUT
 	)
 
-/obj/item/integrated_circuit/input/data_card_reader/ask_for_input(obj/item/I, mob/living/user, a_intent)
+/obj/item/integrated_circuit/input/data_card_reader/ask_for_input(mob/living/user, obj/item/I,  a_intent)
 	if(!isobj(I))
 		return FALSE
 	attackby_react(I, user, a_intent)
 
-/obj/item/integrated_circuit/input/data_card_reader/attackby_react(obj/item/I, mob/living/user, intent)
+/obj/item/integrated_circuit/input/data_card_reader/attackby_react(mob/living/user, obj/item/I,  intent)
 	var/obj/item/card/data/card = I
 	var/write_mode = get_pin_data(IC_INPUT, 3)
 	if(card)

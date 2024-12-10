@@ -74,7 +74,7 @@
 		..()
 	return
 
-/obj/machinery/space_heater/attack_hand(mob/user, list/params)
+/obj/machinery/space_heater/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	interact(user)
 
 /obj/machinery/space_heater/interact(mob/user as mob)
@@ -190,6 +190,8 @@
 	density = 1
 	anchored = 0
 
+	worth_intrinsic = 500
+
 	use_power = USE_POWER_OFF //is powered directly from cables
 	active_power_usage = 150 KILOWATTS  //BIG POWER
 	idle_power_usage = 500
@@ -229,7 +231,7 @@
 	. = ..()
 	turn_off()
 
-/obj/machinery/power/thermoregulator/attack_hand(mob/user, list/params)
+/obj/machinery/power/thermoregulator/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	add_fingerprint(user)
 	interact(user)
 

@@ -19,7 +19,8 @@
 	icon_dead = "horse-dead"
 	icon = 'icons/mob/animal.dmi'
 
-	faction = "horse"
+	iff_factions = MOB_IFF_FACTION_FARM_ANIMAL
+
 	maxHealth = 60
 	health = 60
 	randomized = TRUE

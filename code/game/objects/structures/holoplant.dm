@@ -21,7 +21,7 @@
 	. = ..()
 	activate()
 
-/obj/machinery/holoplant/attack_hand(mob/user, list/params)
+/obj/machinery/holoplant/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(!istype(user) || interference)
 		return
 

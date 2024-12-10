@@ -13,6 +13,7 @@
 	materials_base = list(MAT_STEEL = 500)
 	drop_sound = 'sound/items/drop/accessory.ogg'
 	pickup_sound = 'sound/items/pickup/accessory.ogg'
+	worth_intrinsic = 10
 	var/elastic
 	var/dispenser = 0
 	var/breakouttime = 1200 //Deciseconds = 120s = 2 minutes
@@ -102,7 +103,7 @@
 /obj/item/handcuffs/equipped(mob/living/user, slot, accessory)
 	. = ..()
 	if(slot == SLOT_ID_HANDCUFFED)
-		user.drop_all_held_items()
+		user.drop_held_items()
 		user.stop_pulling()
 
 /* grimdark code that's disabled for code quality reasons - readd later if we care
@@ -153,6 +154,8 @@ var/last_chew = 0
 	cuff_sound = 'sound/weapons/cablecuff.ogg'
 	cuff_type = "cable restraints"
 	elastic = 0 //citadel change, why would cable be better than actual handcuffs? who knows.
+	worth_intrinsic = 10
+	economic_category_obj = ECONOMIC_CATEGORY_OBJ_SCRAP
 
 /obj/item/handcuffs/cable/red
 	color = "#DD0000"
@@ -262,7 +265,7 @@ var/last_chew = 0
 	if(!H.can_equip(src, SLOT_ID_LEGCUFFED, user = user))
 		return FALSE
 
-	if(istype(H.shoes,/obj/item/clothing/shoes/magboots/hardsuit) && !elastic) // Can't cuff someone who's in a deployed hardsuit.
+	if(istype(H.inventory.get_slot(/datum/inventory_slot/inventory/shoes), /obj/item/clothing/shoes/magboots/hardsuit) && !elastic) // Can't cuff someone who's in a deployed hardsuit.
 		to_chat(user, "<span class='danger'>\The [src] won't fit around \the [H.shoes]!</span>")
 		return 0
 

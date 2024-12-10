@@ -25,7 +25,7 @@
 	icon_dead = "piratemelee_dead"
 	catalogue_data = list(/datum/category_item/catalogue/fauna/pirate)
 
-	faction = "pirate"
+	iff_factions = MOB_IFF_FACTION_PIRATE
 
 	response_help = "pushes"
 	response_disarm = "shoves"
@@ -122,7 +122,7 @@
 	attack_sound = 'sound/weapons/blade1.ogg'
 
 
-	loot_list = list(/obj/item/melee/energy/sword/pirate = 100)
+	loot_list = list(/obj/item/melee/transforming/energy/sword/cutlass = 100)
 
 	corpse = /obj/spawner/corpse/pirate/melee_energy
 
@@ -134,7 +134,7 @@
 	icon_living = "piratemelee-las-armor"
 	movement_cooldown = 4
 	armor_legacy_mob = list(melee = 30, bullet = 20, laser = 20, energy = 5, bomb = 5, bio = 100, rad = 100)
-	loot_list = list(/obj/item/melee/energy/sword/pirate = 100, /obj/item/clothing/accessory/armor/armorplate/stab = 100)
+	loot_list = list(/obj/item/melee/transforming/energy/sword/cutlass = 100, /obj/item/clothing/accessory/armor/armorplate/stab = 100)
 
 	corpse = /obj/spawner/corpse/pirate/melee_energy_armor
 
@@ -164,15 +164,13 @@
 		to_chat(user, "<span class='warning'>This weapon is ineffective, it does no damage.</span>")
 		visible_message("<span class='warning'>\The [user] gently taps [src] with \the [O].</span>")
 
-/mob/living/simple_mob/humanoid/merc/melee/sword/bullet_act(var/obj/projectile/Proj)
-	if(!Proj)	return
+/mob/living/simple_mob/humanoid/merc/melee/sword/on_bullet_act(obj/projectile/proj, impact_flags, list/bullet_act_args)
 	if(prob(25))
-		visible_message("<font color='red'><B>[src] blocks [Proj] with its shield!</B></font>")
-		if(Proj.firer)
-			ai_holder.react_to_attack_polaris(Proj.firer)
-		return
-	else
-		..()
+		visible_message("<font color='red'><B>[src] blocks [proj] with its shield!</B></font>")
+		if(proj.firer)
+			ai_holder.react_to_attack_polaris(proj.firer)
+		return PROJECTILE_IMPACT_BLOCKED
+	return ..()
 
 // Armored Variant
 /mob/living/simple_mob/humanoid/pirate/shield/armored
@@ -352,7 +350,7 @@
 
 	armor_legacy_mob = list(melee = 30, bullet = 20, laser = 20, energy = 5, bomb = 5, bio = 100, rad = 100)
 
-	loot_list = list(/obj/item/melee/energy/sword/pirate = 100, /obj/item/clothing/suit/armor/riot/alt = 100)
+	loot_list = list(/obj/item/melee/transforming/energy/sword/cutlass = 100, /obj/item/clothing/suit/armor/riot/alt = 100)
 
 	corpse = /obj/spawner/corpse/pirate/mate
 
@@ -526,13 +524,13 @@
 	icon_state = "old-piratemelee-las"
 	icon_living = "old-piratemelee-las"
 	icon_dead = "old-piratemelee_dead"
-	loot_list = list(/obj/item/melee/energy/sword/pirate = 100)
+	loot_list = list(/obj/item/melee/transforming/energy/sword/cutlass = 100)
 
 //Armored Variant
 /mob/living/simple_mob/humanoid/pirate/las/armored/old
 	icon_state = "old-piratemelee-las-armor"
 	icon_living = "old-piratemelee-las-armor"
-	loot_list = list(/obj/item/melee/energy/sword/pirate = 100, /obj/item/clothing/suit/armor/material/makeshift = 100)
+	loot_list = list(/obj/item/melee/transforming/energy/sword/cutlass = 100, /obj/item/clothing/suit/armor/material/makeshift = 100)
 
 //Shield Pirate
 /mob/living/simple_mob/humanoid/pirate/shield/old
@@ -653,7 +651,7 @@
 
 	armor_legacy_mob = list(melee = 30, bullet = 20, laser = 20, energy = 5, bomb = 5, bio = 100, rad = 100)
 
-	loot_list = list(/obj/item/melee/energy/sword/pirate = 100, /obj/item/clothing/suit/pirate = 100)
+	loot_list = list(/obj/item/melee/transforming/energy/sword/cutlass = 100, /obj/item/clothing/suit/pirate = 100)
 
 
 ///////////////////////////////

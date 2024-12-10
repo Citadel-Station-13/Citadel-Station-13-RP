@@ -17,6 +17,8 @@
 	throw_range = 5
 	w_class = WEIGHT_CLASS_SMALL
 
+	worth_intrinsic = 35
+
 	//Cost to make in the autolathe
 	materials_base = list(MAT_STEEL = 70, MAT_GLASS = 30)
 
@@ -44,7 +46,7 @@
 /obj/item/weldingtool/Initialize(mapload)
 	. = ..()
 //	var/random_fuel = min(rand(10,20),max_fuel)
-	var/datum/reagents/R = new/datum/reagents(max_fuel)
+	var/datum/reagent_holder/R = new/datum/reagent_holder(max_fuel)
 	reagents = R
 	R.my_atom = src
 	R.add_reagent("fuel", max_fuel)
@@ -75,7 +77,7 @@
 			to_chat(user, "<span class='warning'>You'll need to turn [src] on to patch the damage on [H]'s [S.name]!</span>")
 			return NONE
 
-		if(S.robo_repair(15, BRUTE, "some dents", src, user))
+		if(S.robo_repair(15, DAMAGE_TYPE_BRUTE, "some dents", src, user))
 			remove_fuel(1, user)
 		return NONE
 	return ..()
@@ -149,7 +151,7 @@
 		if (istype(location, /turf))
 			location.hotspot_expose(700, 50, 1)
 
-/obj/item/weldingtool/attack_self(mob/user)
+/obj/item/weldingtool/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -230,11 +232,7 @@
 	else
 		set_light(0)
 
-//	icon_state = welding ? "[icon_state]1" : "[initial(icon_state)]"
-	var/mob/M = loc
-	if(istype(M))
-		M.update_inv_l_hand()
-		M.update_inv_r_hand()
+	update_worn_icon()
 
 //Sets the welding state of the welding tool. If you see W.welding = 1 anywhere, please change it to W.setWelding(1)
 //so that the welding tool updates accordingly
@@ -251,7 +249,7 @@
 				T.visible_message("<span class='danger'>\The [src] turns on.</span>")
 			playsound(loc, acti_sound, 50, 1)
 			src.damage_force = 15
-			src.damtype = "fire"
+			src.damage_type = DAMAGE_TYPE_BURN
 			src.set_weight_class(WEIGHT_CLASS_BULKY)
 			src.attack_sound = 'sound/items/welder.ogg'
 			welding = 1
@@ -273,7 +271,7 @@
 			T.visible_message("<span class='warning'>\The [src] turns off.</span>")
 		playsound(loc, deac_sound, 50, 1)
 		src.damage_force = 3
-		src.damtype = "brute"
+		src.damage_type = DAMAGE_TYPE_BRUTE
 		src.set_weight_class(initial(src.w_class))
 		src.welding = 0
 		src.attack_sound = initial(src.attack_sound)
@@ -362,12 +360,13 @@
 	eye_safety_modifier = 1 // Safer on eyes.
 
 /obj/item/weldingtool/bone
-	name = "primitive welding tool"
-	desc = "A curious welding tool that uses an anomalous ignition method."
+	name = "Elder's Bellows"
+	desc = "A curious welding tool that uses an anomalous crystal and a bellows to create heat."
+	icon = 'icons/obj/lavaland.dmi'
 	icon_state = "ashwelder"
 	max_fuel = 20
 	materials_base = list(MAT_METAL = 30, MAT_BONE = 10)
-	tool_speed = 1.5
+	tool_speed = 3 ///It doesn't get that hot
 	eye_safety_modifier = 3 // Safe for Scorians who don't have goggles.
 	always_process = TRUE
 
@@ -575,6 +574,7 @@
 	icon_state = "arcwelder"
 	max_fuel = 0	//We'll handle the consumption later.
 	item_state = "ewelder"
+	worth_intrinsic = 70
 	var/obj/item/cell/power_supply //What type of power cell this uses
 	var/charge_cost = 24	//The rough equivalent of 1 unit of fuel, based on us wanting 10 welds per battery
 	var/cell_type = /obj/item/cell/device
@@ -647,7 +647,7 @@
 		update_icon()
 		return 0
 
-/obj/item/weldingtool/electric/attack_hand(mob/user, list/params)
+/obj/item/weldingtool/electric/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(user.get_inactive_held_item() == src)
 		if(power_supply)
 			power_supply.update_icon()
@@ -719,11 +719,11 @@
 	..()
 
 	if(equip_mount && equip_mount.chassis)
-		var/obj/mecha/M = equip_mount.chassis
+		var/obj/vehicle/sealed/mecha/M = equip_mount.chassis
 		if(M.selected == equip_mount && get_fuel())
-			setWelding(TRUE, M.occupant)
+			setWelding(TRUE, M.occupant_legacy)
 		else
-			setWelding(FALSE, M.occupant)
+			setWelding(FALSE, M.occupant_legacy)
 
 #undef WELDER_FUEL_BURN_INTERVAL
 
@@ -745,13 +745,13 @@
 /obj/item/weldingtool/electric/crystal/update_icon()
 	icon_state = welding ? "crystal_welder_on" : "crystal_welder"
 	item_state = welding ? "crystal_tool_lit"  : "crystal_tool"
-	var/mob/M = loc
-	if(istype(M))
-		M.update_inv_l_hand()
-		M.update_inv_r_hand()
+	update_worn_icon()
 
-/obj/item/weldingtool/electric/crystal/attack_self(var/mob/living/carbon/human/user)
-	if(user.species.name == SPECIES_ADHERENT)
+/obj/item/weldingtool/electric/crystal/attack_self(mob/user, datum/event_args/actor/actor)
+	var/mob/living/carbon/human/H = user
+	if(!istype(H))
+		return
+	if(H.species.name == SPECIES_ADHERENT)
 		if(user.nutrition >= 40)
 			setWelding(!welding, user)
 		else

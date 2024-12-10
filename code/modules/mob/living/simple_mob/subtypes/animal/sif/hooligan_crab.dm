@@ -36,7 +36,7 @@
 	mod_min = 100
 	mod_max = 150
 
-	faction = "crabs"
+	iff_factions = MOB_IFF_FACTION_BIND_TO_MAP
 
 	maxHealth = 200
 	health = 200

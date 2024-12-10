@@ -52,21 +52,20 @@
 	else
 		. += "<span class='warning'>It expired at [worldtime2stationtime(expire_time)].</span>"
 
-/obj/item/card/id/guest/read()
-	if(!Adjacent(usr))
-		return //Too far to read
+/obj/item/card/id/guest/get_description_info()
+	. = ..()
 	if (expired)
-		to_chat(usr, "<span class='notice'>This pass expired at [worldtime2stationtime(expire_time)].</span>")
+		. += SPAN_NOTICE("This pass expired at [worldtime2stationtime(expire_time)].")
 	else
-		to_chat(usr, "<span class='notice'>This pass expires at [worldtime2stationtime(expire_time)].</span>")
-	to_chat(usr, "<span class='notice'>It grants access to following areas:</span>")
+		. += SPAN_NOTICE("This pass expires at [worldtime2stationtime(expire_time)].")
+	. += SPAN_NOTICE("It grants access to following areas:")
 	for (var/A in access)
-		to_chat(usr, "<span class='notice'>[get_access_desc(A)].</span>")
-	to_chat(usr, "<span class='notice'>Issuing reason: [given_reason].</span>")
-	to_chat(usr, SPAN_NOTICE("Issuer name: [giver_name]"))
-	to_chat(usr, SPAN_NOTICE("Issuer rank: [giver_rank]"))
+		. += SPAN_NOTICE("[get_access_desc(A)].")
+	. += SPAN_NOTICE("Issuing reason: [given_reason].")
+	. += SPAN_NOTICE("Issuer name: [giver_name]")
+	. += SPAN_NOTICE("Issuer rank: [giver_rank]")
 
-/obj/item/card/id/guest/attack_self(mob/user)
+/obj/item/card/id/guest/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return

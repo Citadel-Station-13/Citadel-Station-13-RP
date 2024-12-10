@@ -47,7 +47,7 @@
 		return CLICKCHAIN_DO_NOT_PROPAGATE
 	return CLICKCHAIN_DO_NOT_PROPAGATE
 
-/obj/vehicle_old/skateboard/attack_hand(mob/user, list/params)
+/obj/vehicle_old/skateboard/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(user == load)
 		unbuckle_mob(load, user)
 		to_chat(user, "You unbuckle yourself from \the [src].")
@@ -98,7 +98,7 @@
 					egg?.fracture()
 					H.adjustBrainLoss(rand(5, 10))
 					visible_message("<span class='danger'>[src] crashes into [A], sending [H] flying! They land on their head, that doesn't look good...</span>")
-				else 
+				else
 					//Minor brain injury from hitting your head
 					H.adjustBrainLoss(rand(1, 2))
 					visible_message("<span class='danger'>[src] crashes into [A], sending [H] flying!</span>")
@@ -116,7 +116,7 @@
 					egg?.fracture()
 					H.adjustBrainLoss(rand(5, 10))
 					visible_message("<span class='danger'>[src] crashes into [A], sending [H] flying! They land on their head, that doesn't look good...</span>")
-				else 
+				else
 					H.adjustBrainLoss(rand(1, 2))
 					visible_message("<span class='danger'>[src] crashes into [A], sending [H] flying!</span>")
 				H.update_health()
@@ -223,6 +223,7 @@
 	board_item_type = /obj/item/melee/skateboard/improv
 	icon_state = "skateboard"
 	board_icon = "skateboard"
+	worth_intrinsic = 75
 
 /obj/vehicle_old/skateboard/beginner
 	name = "skateboard"
@@ -230,6 +231,7 @@
 	board_item_type = /obj/item/melee/skateboard/beginner
 	icon_state = "skateboard"
 	board_icon = "skateboard"
+	worth_intrinsic = 125
 
 /obj/vehicle_old/skateboard/pro
 	name = "skateboard"
@@ -238,6 +240,7 @@
 	icon_state = "skateboard2"
 	board_icon = "skateboard2"
 	move_delay = 1
+	worth_intrinsic = 200
 
 /*
 /obj/vehicle_old/skateboard/pro/Bump(atom/A)
@@ -284,6 +287,7 @@
 	icon_state = "hoverboard_red"
 	board_icon = "hoverboard_red"
 	move_delay = 0
+	worth_intrinsic = 275
 
 /obj/vehicle_old/skateboard/hoverboard/attackby(obj/item/I, mob/user, params)
 	if(istype(I, /obj/item/stack/rods))

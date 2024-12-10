@@ -79,7 +79,7 @@
 	else
 		return ..()
 
-/obj/structure/trash_pile/attack_hand(mob/user, list/params)
+/obj/structure/trash_pile/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	//Human mob
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user
@@ -189,7 +189,7 @@
 					prob(2);/obj/item/flashlight/glowstick/blue,
 					prob(2);/obj/item/card/emag_broken,
 					prob(2);/obj/item/cell/super,
-					prob(2);/obj/item/contraband/poster,
+					prob(2);/obj/item/poster,
 					prob(2);/obj/item/reagent_containers/glass/rag,
 					prob(2);/obj/item/storage/box/sinpockets,
 					prob(2);/obj/item/storage/secure/briefcase,

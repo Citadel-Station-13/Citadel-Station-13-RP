@@ -341,7 +341,7 @@
 			to_chat(usr, "This can only be done to instances of type /mob")
 			return
 
-		var/new_language = tgui_input_list(usr, "Please choose a language to add.","Language", SScharacters.all_language_names())
+		var/new_language = tgui_input_list(usr, "Please choose a language to add.","Language", RSlanguages.legacy_sorted_all_language_names())
 
 		if(!new_language)
 			return
@@ -367,7 +367,7 @@
 			to_chat(usr, "This mob knows no languages.")
 			return
 
-		var/datum/language/rem_language = tgui_input_list(usr, "Please choose a language to remove.","Language", H.languages)
+		var/datum/prototype/language/rem_language = tgui_input_list(usr, "Please choose a language to remove.","Language", H.languages)
 
 		if(!rem_language)
 			return
@@ -532,7 +532,7 @@
 			return
 		message_admins("[key_name_admin(usr)] Showed [key_name_admin(C)] a <a href='?_src_=vars;datumrefresh=\ref[thing]'>VV window</a>")
 		log_admin("Admin [key_name(usr)] Showed [key_name(C)] a VV window of a [src]")
-		to_chat(C, "[holder.fakekey ? "an Administrator" : "[usr.client.key]"] has granted you access to view a View Variables window")
+		to_chat(C, "[is_under_stealthmin() ? "an Administrator" : "[usr.client.key]"] has granted you access to view a View Variables window")
 		C.debug_variables(thing)
 
 	if(href_list["datumrefresh"])

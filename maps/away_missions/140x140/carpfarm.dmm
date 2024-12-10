@@ -467,9 +467,9 @@
 /area/awaymission/carpfarm/base)
 "bE" = (
 /obj/structure/closet/crate/secure/weapon,
-/obj/item/ammo_magazine/clip/c762,
-/obj/item/ammo_magazine/clip/c762,
-/obj/item/ammo_magazine/clip/c762,
+/obj/item/ammo_magazine/a7_62mm/clip,
+/obj/item/ammo_magazine/a7_62mm/clip,
+/obj/item/ammo_magazine/a7_62mm/clip,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/tiled/dark,
 /area/awaymission/carpfarm/base)
@@ -525,7 +525,7 @@
 /turf/simulated/floor/tiled,
 /area/awaymission/carpfarm/base)
 "bM" = (
-/obj/mecha/working/hoverpod/combatpod,
+/obj/vehicle/sealed/mecha/working/hoverpod/combatpod,
 /obj/machinery/mech_recharger,
 /turf/simulated/floor/tiled/dark,
 /area/awaymission/carpfarm/base)

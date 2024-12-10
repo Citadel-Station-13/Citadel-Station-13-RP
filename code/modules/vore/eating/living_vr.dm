@@ -9,12 +9,9 @@
 	var/list/vore_organs = list()		// List of vore containers inside a mob
 	var/absorbed = FALSE				// If a mob is absorbed into another
 	var/weight = 137					// Weight for mobs for weightgain system
-	var/weight_gain = 1 				// How fast you gain weight
-	var/weight_loss = 0.5 				// How fast you lose weight
 	var/vore_egg_type = "egg" 				// Default egg type.
 	var/feral = 0 						// How feral the mob is, if at all. Does nothing for non xenochimera at the moment.
 	var/revive_ready = REVIVING_READY	// Only used for creatures that have the xenochimera regen ability, so far.
-	var/metabolism = 0.0015
 	var/vore_taste = null				// What the character tastes like
 	var/vore_smell = null				// What the character smells like
 	var/no_vore = FALSE					// If the character/mob can vore.
@@ -390,15 +387,10 @@
 	//You're in a belly!
 	if(isbelly(loc))
 		var/obj/belly/B = loc
-		var/confirm = alert(src, "You're in a mob. Don't use this as a trick to get out of hostile animals. This is for escaping from preference-breaking and if you're otherwise unable to escape from endo (pred AFK for a long time).", "Confirmation", "Okay", "Cancel")
-		if(!confirm == "Okay" || loc != B)
-			return
 		//Actual escaping
 		absorbed = 0	//Make sure we're not absorbed
 		muffled = 0		//Removes Muffling
 		forceMove(get_turf(src)) //Just move me up to the turf, let's not cascade through bellies, there's been a problem, let's just leave.
-		for(var/mob/living/simple_mob/SA in range(10))
-			SA.prey_excludes[src] = world.time
 		log_and_message_admins("[key_name(src)] used the OOC escape button to get out of [key_name(B.owner)] ([B.owner ? "<a href='?_src_=holder;adminplayerobservecoodjump=1;X=[B.owner.x];Y=[B.owner.y];Z=[B.owner.z]'>JMP</a>" : "null"])")
 
 		if(!ishuman(B.owner))
@@ -526,15 +518,17 @@
 
 // This is about 0.896m^3 of atmosphere
 /datum/gas_mixture/belly_air
-    volume = 2500
-    temperature = 293.150
-    total_moles = 104
+	volume = 2500
+	temperature = 293.150
+	total_moles = 104
 
 /datum/gas_mixture/belly_air/New()
-    . = ..()
-    gas = list(
-        GAS_ID_OXYGEN = 21,
-        GAS_ID_NITROGEN = 79)
+	. = ..()
+	gas = list(
+		GAS_ID_OXYGEN = 21,
+		GAS_ID_NITROGEN = 79,
+	)
+	update_values()
 
 // Procs for micros stuffed into boots and the like to escape from them
 /mob/living/proc/escape_clothes(obj/item/clothing/C)

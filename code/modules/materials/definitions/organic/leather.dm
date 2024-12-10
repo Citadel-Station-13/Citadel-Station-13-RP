@@ -1,6 +1,6 @@
 //TODO PLACEHOLDERS:
 // todo: wtf are these they need to be subtyped properly and uhh yea
-/datum/material/leather
+/datum/prototype/material/leather
 	id = "leather"
 	name = "leather"
 	icon_colour = "#5C4831"
@@ -21,7 +21,9 @@
 	absorption = MATERIAL_RESISTANCE_LOW
 	nullification = MATERIAL_RESISTANCE_NONE
 
-/datum/material/leather/generate_recipes()
+	worth = 2.5
+
+/datum/prototype/material/leather/generate_recipes()
 	. = ..()
 	. += create_stack_recipe_datum(
 		name = "wallet",

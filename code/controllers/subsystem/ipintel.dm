@@ -3,8 +3,7 @@
  */
 SUBSYSTEM_DEF(ipintel)
 	name = "IPIntel"
-	init_order = INIT_ORDER_IPINTEL
-	subsystem_flags = SS_NO_FIRE
+	subsystem_flags = SS_NO_FIRE | SS_NO_INIT
 
 	/// is ipintel enabled?
 	var/enabled = FALSE

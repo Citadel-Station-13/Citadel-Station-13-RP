@@ -17,6 +17,6 @@
 	name = "Njarir"
 	id = "culture_tajaran_njarir"
 	innate_languages = list(
-		/datum/language/tajaranakhani
+		/datum/prototype/language/tajaranakhani
 	)
 	desc = "The ethnic group that made up the majority of the plutocracy prior to the Great Frost. Their lineage can be traced from careful breeding between Hharar and M'sai, leading to where they currently are today. Following the series of events on Adhomai, Njarir make up less than ten percent of the population. Easily identifiable by their large ears, fluffy tails, luxurious fur, and slender, elegant features. Njarir suffer persecution and rejection from certain proponents of Tajaran society because of their bloodline. As the most learned of all Tajaran ethnic groups, they boast high intelligence and have a propensity towards the arts and sciences. When the Great Frost began they did not fare well at all, most of them however did either end up continuing their research, or rule in holds they made up an extreme minority of the population, which has led to inbreeding in order to keep the blood “pure”. They usually can speak the language known as Ahkani, the royal ancient tongue, typically not taught to non-royals as to retain a method for speaking above the commoners. Njarir'Akhran are usually orange, cinnamon, ruddy, or cream in coloration."

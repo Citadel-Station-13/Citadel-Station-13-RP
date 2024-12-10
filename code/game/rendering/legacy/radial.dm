@@ -254,16 +254,19 @@ GLOBAL_LIST_EMPTY(radial_menus)
 				I.layer = FLOAT_LAYER
 				//! end
 				choices_icons[id] = I
+		else
+			choices_icons[id] = extract_image(E)
 	setup_menu(use_tooltips)
 
-
 /datum/radial_menu/proc/extract_image(E)
+	if(!isimage(E) && !isatom(E) && !ismutableappearance(E) && !IS_APPEARANCE(E))
+		return null
 	var/mutable_appearance/MA = new /mutable_appearance(E)
 	if(MA)
 		MA.layer = HUD_LAYER_ABOVE
+		MA.plane = ABOVE_HUD_PLANE
 		MA.appearance_flags |= RESET_TRANSFORM
 	return MA
-
 
 /datum/radial_menu/proc/next_page()
 	if(pages > 1)

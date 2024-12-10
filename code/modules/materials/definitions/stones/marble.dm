@@ -1,4 +1,4 @@
-/datum/material/marble
+/datum/prototype/material/marble
 	id = "marble"
 	name = "marble"
 	icon_colour = "#AAAAAA"
@@ -25,7 +25,9 @@
 	absorption = MATERIAL_RESISTANCE_MODERATE
 	nullification = MATERIAL_RESISTANCE_VULNERABLE
 
-/datum/material/marble/generate_recipes()
+	worth = 2
+
+/datum/prototype/material/marble/generate_recipes()
 	. = ..()
 	. += create_stack_recipe_datum(
 		name = "light marble floor tile",

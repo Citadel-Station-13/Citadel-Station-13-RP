@@ -62,7 +62,7 @@
 		tape.ruin() //Fires destroy the tape
 	return ..()
 
-/obj/item/tape_recorder/attack_hand(mob/user, list/params)
+/obj/item/tape_recorder/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(user.get_inactive_held_item() == src)
 		if(tape)
 			eject()
@@ -186,7 +186,7 @@
 		return
 	var/msg = got[CASSETTE_TAPE_DATA_MESSAGE]
 	if(msg)
-		var/datum/language/L = got[CASSETTE_TAPE_DATA_LANGUAGE]
+		var/datum/prototype/language/L = got[CASSETTE_TAPE_DATA_LANGUAGE]
 		var/speaker = got[CASSETTE_TAPE_DATA_NAME]
 		var/opcode = got[CASSETTE_TAPE_DATA_OPCODE]
 		switch(opcode)
@@ -284,7 +284,7 @@
 	writer.tick(delta_time)
 
 //! todo : saycode refactor
-/obj/item/tape_recorder/hear_talk(mob/living/M as mob, msg, var/verb="says", datum/language/speaking=null)
+/obj/item/tape_recorder/hear_talk(mob/living/M as mob, msg, var/verb="says", datum/prototype/language/speaking=null)
 	if(!recording)
 		return
 	var/datum/cassette_tape_iterator/write/writer = tape_iterator
@@ -408,7 +408,7 @@
 	var/datum/cassette_tape_iterator/reader = tape_iterator
 	var/msg
 	var/name
-	var/datum/language/lang
+	var/datum/prototype/language/lang
 	var/delay
 	var/current_time = 0
 	var/opcode
@@ -441,7 +441,7 @@
 /obj/item/tape_recorder/proc/print_cooldown()
 	TIMER_COOLDOWN_START(src, CD_INDEX_TAPE_PRINT, 30 SECONDS)
 
-/obj/item/tape_recorder/attack_self(mob/user)
+/obj/item/tape_recorder/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return

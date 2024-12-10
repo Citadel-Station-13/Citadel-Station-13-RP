@@ -1,6 +1,6 @@
 /obj/structure/window/Initialize(mapload)
 	. = ..()
-	if(SSatoms.initialized == INITIALIZATION_INNEW_REGULAR)
+	if(SSatoms.atom_init_status == ATOM_INIT_IN_NEW_REGULAR)
 		for(var/obj/structure/table/T in view(src, 1))
 			T.update_connections()
 			T.update_icon()

@@ -100,7 +100,7 @@
 	return SScharacters.resolve_faction(/datum/lore/character_background/faction/nanotrasen).id
 
 /datum/category_item/player_setup_item/background/faction/informed_default_value(datum/preferences/prefs, randomizing)
-	var/datum/character_species/S = SScharacters.resolve_character_species(prefs.character_species_id())
+	var/datum/species/S = SScharacters.resolve_character_species(prefs.character_species_id())
 	if(!S)
 		return ..()
 	return S.get_default_faction_id()

@@ -1,4 +1,4 @@
-/datum/material/osmium
+/datum/prototype/material/osmium
 	name = "osmium"
 	id = MAT_OSMIUM
 	stack_type = /obj/item/stack/material/osmium
@@ -7,6 +7,8 @@
 	sheet_singular_name = "ingot"
 	sheet_plural_name = "ingots"
 	tgui_icon_key = "ingots"
+
+	worth = 17.5
 
 	relative_integrity = 0.8
 	density = 8 * 1.5

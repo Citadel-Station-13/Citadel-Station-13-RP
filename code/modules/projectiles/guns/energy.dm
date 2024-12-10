@@ -131,7 +131,7 @@
 					user.visible_message("[user] inserts [P] into [src].", "<span class='notice'>You insert [P] into [src].</span>")
 					playsound(src, 'sound/weapons/flipblade.ogg', 50, 1)
 					update_icon()
-					update_held_icon()
+					update_worn_icon()
 		else
 			to_chat(user, "<span class='notice'>This cell is not fitted for [src].</span>")
 	return
@@ -147,7 +147,7 @@
 		power_supply = null
 		playsound(src, 'sound/weapons/empty.ogg', 50, 1)
 		update_icon()
-		update_held_icon()
+		update_worn_icon()
 	else
 		to_chat(user, "<span class='notice'>[src] does not have a power cell.</span>")
 
@@ -155,7 +155,7 @@
 	..()
 	load_ammo(A, user)
 
-/obj/item/gun/energy/attack_hand(mob/user, list/params)
+/obj/item/gun/energy/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(user.get_inactive_held_item() == src)
 		unload_ammo(user)
 	else
@@ -189,6 +189,8 @@
 
 /obj/item/gun/energy/update_icon(ignore_inhands)
 	. = ..()
+	if((item_renderer || mob_renderer) || !render_use_legacy_by_default)
+		return // using new system
 	if(power_supply == null)
 		if(modifystate)
 			icon_state = "[modifystate]_open"
@@ -216,7 +218,7 @@
 			icon_state = "[initial(icon_state)]"
 
 	if(!ignore_inhands)
-		update_held_icon()
+		update_worn_icon()
 
 /obj/item/gun/energy/proc/start_recharge()
 	if(power_supply == null)
@@ -242,3 +244,10 @@
 	if(inducer_flags & INDUCER_NO_GUNS)
 		return
 	return ..()
+
+//* Ammo *//
+
+/obj/item/gun/energy/get_ammo_ratio()
+	if(!power_supply)
+		return 0
+	return power_supply.charge / power_supply.maxcharge

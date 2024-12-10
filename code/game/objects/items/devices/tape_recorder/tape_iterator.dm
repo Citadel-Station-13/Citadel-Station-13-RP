@@ -13,7 +13,7 @@
 	/// current language id
 	var/current_language_id
 	/// current language datum to save on lookups
-	var/datum/language/current_language
+	var/datum/prototype/language/current_language
 	//? we stage things because we have to be one *ahead* of the playback so delays are done properly.
 	/// staged message
 	var/staged_msg
@@ -73,7 +73,7 @@
 						current_speaker_name = val
 					if(CASSETTE_METADATA_LANGUAGE)
 						current_language_id = val
-						current_language = SScharacters.resolve_language_id(val)
+						current_language = RSlanguages.fetch(val)
 		else if(ispath(read, /datum/cassette_opcode))
 			staged_opcode = read
 		index++
@@ -88,7 +88,7 @@
 	reel_index = 1
 	current_speaker_name = "Unknown"
 	current_language_id = LANGUAGE_ID_COMMON
-	current_language = SScharacters.resolve_language_id(LANGUAGE_ID_COMMON)
+	current_language = RSlanguages.fetch(LANGUAGE_ID_COMMON)
 	staged_msg = null
 	staged_opcode = null
 	staged_delay = 1 SECONDS
@@ -115,7 +115,7 @@
 						current_speaker_name = val
 					if(CASSETTE_METADATA_LANGUAGE)
 						current_language_id = val
-						current_language = SScharacters.resolve_language_id(val)
+						current_language = RSlanguages.fetch(val)
 		else if(ispath(read, /datum/cassette_opcode))
 			staged_opcode = read
 		index++
@@ -283,7 +283,7 @@
 				continue
 			if(mdstr[1] == CASSETTE_METADATA_LANGUAGE)
 				var/id = copytext(mdstr, 2)
-				var/datum/language/L = SScharacters.resolve_language_id(id)
+				var/datum/prototype/language/L = RSlanguages.fetch(id)
 				if(context.can_translate(L, require_perfect = TRUE))
 					reel[i] = common_index
 					translating = TRUE

@@ -133,7 +133,7 @@
 		dat += P.html(user)
 		user << browse(dat, "window=[name]")
 
-/obj/item/paper_bundle/attack_self(mob/user)
+/obj/item/paper_bundle/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -167,7 +167,7 @@
 			to_chat(usr, "<span class='notice'>You remove the [W.name] from the bundle.</span>")
 
 			if(pages.len <= 1)
-				var/obj/item/paper/P = src[1]
+				var/obj/item/paper/P = pages[1]
 				usr.temporarily_remove_from_inventory(src, INV_OP_FORCE | INV_OP_SHOULD_NOT_INTERCEPT | INV_OP_SILENT)
 				usr.put_in_hands_or_drop(P)
 				qdel(src)

@@ -26,7 +26,7 @@
 	var/require_comms_key = FALSE
 
 /datum/world_topic/proc/TryRun(list/input)
-	key_valid = config && config_legacy.comms_key == input["key"] && (config_legacy.comms_key != initial(config_legacy.comms_key))		//no fucking defaults allowed.
+	key_valid = config_legacy.comms_key == input["key"] && (config_legacy.comms_key != initial(config_legacy.comms_key)) && config_legacy.comms_key	&& input["key"]	//no fucking defaults allowed.
 	//key_valid = config && (CONFIG_GET(string/comms_key) == input["key"])
 	if(require_comms_key && !key_valid)
 		return "Bad Key"
@@ -98,10 +98,7 @@
 /datum/world_topic/jsonplayers/Run(list/input, addr)
 	. = list()
 	for(var/client/C in GLOB.clients)
-		if(C.holder?.fakekey)
-			. += C.holder.fakekey
-			continue
-		. += C.key
+		. += C.get_public_key()
 	return json_encode(.)
 
 /datum/world_topic/jsonmanifest

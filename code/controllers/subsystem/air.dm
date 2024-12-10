@@ -89,7 +89,7 @@ SUBSYSTEM_DEF(air)
 				continue
 			generated_atmospheres[id] = SSair.generated_atmospheres[id]
 
-/datum/controller/subsystem/air/Initialize(timeofday)
+/datum/controller/subsystem/air/Initialize()
 #ifndef FASTBOOT_DISABLE_ZONES
 	report_progress("Initializing [name] subsystem...")
 
@@ -114,9 +114,7 @@ SUBSYSTEM_DEF(air)
 		startup_active_edge_log = edge_log.Copy()
 
 	//! Fancy blockquote of data.
-	var/time = (REALTIMEOFDAY - timeofday) / 10
 	var/list/blockquote_data = list(
-		SPAN_BOLDANNOUNCE("Initialized [name] subsystem within [time] second[time == 1 ? "" : "s"]!<hr>"),
 		SPAN_DEBUGINFO("<b>Total Zones:</b> [zones.len]"),
 		SPAN_DEBUGINFO("\n<b>Total Edges:</b> [edges.len]"),
 		SPAN_DEBUGINFO("\n<b>Total Active Edges:</b> [active_edges.len ? SPAN_DANGER("[active_edges.len]") : "None"]"),
@@ -131,28 +129,29 @@ SUBSYSTEM_DEF(air)
 	)
 
 #endif
-	return ..()
+
+	return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/air/fire(resumed = FALSE)
 	var/timer
 	if(!resumed)
 		if(LAZYLEN(currentrun) != 0)
-			stack_trace("Currentrun not empty before processing cycle when it should be. [english_list(currentrun)]")
+			stack_trace("Currentrun not empty before processing cycle when it should be. [english_list(currentrun, limit = 5)]")
 		currentrun = list()
 		if(current_step != null)
 			stack_trace("current_step before processing cycle was [current_step] instead of null")
 		current_step = SSAIR_TURFS
 		current_cycle++
 
-	INTERNAL_PROCESS_STEP(SSAIR_TURFS, TRUE, process_tiles_to_update, cost_turfs, SSAIR_EDGES)
-	INTERNAL_PROCESS_STEP(SSAIR_EDGES, FALSE, process_active_edges, cost_edges, SSAIR_FIREZONES)
-	INTERNAL_PROCESS_STEP(SSAIR_FIREZONES, FALSE, process_active_fire_zones, cost_firezones, SSAIR_HOTSPOTS)
-	INTERNAL_PROCESS_STEP(SSAIR_HOTSPOTS, FALSE, process_active_hotspots, cost_hotspots, SSAIR_ZONES)
-	INTERNAL_PROCESS_STEP(SSAIR_ZONES, FALSE, process_zones_to_update, cost_zones, SSAIR_DONE)
+	INTERNAL_SUBSYSTEM_PROCESS_STEP(SSAIR_TURFS, TRUE, process_tiles_to_update, cost_turfs, SSAIR_EDGES)
+	INTERNAL_SUBSYSTEM_PROCESS_STEP(SSAIR_EDGES, FALSE, process_active_edges, cost_edges, SSAIR_FIREZONES)
+	INTERNAL_SUBSYSTEM_PROCESS_STEP(SSAIR_FIREZONES, FALSE, process_active_fire_zones, cost_firezones, SSAIR_HOTSPOTS)
+	INTERNAL_SUBSYSTEM_PROCESS_STEP(SSAIR_HOTSPOTS, FALSE, process_active_hotspots, cost_hotspots, SSAIR_ZONES)
+	INTERNAL_SUBSYSTEM_PROCESS_STEP(SSAIR_ZONES, FALSE, process_zones_to_update, cost_zones, SSAIR_DONE)
 
 	// Okay, we're done! Woo! Got thru a whole SSair cycle!
 	if(LAZYLEN(currentrun) != 0)
-		stack_trace("Currentrun not empty after processing cycle when it should be. [english_list(currentrun.Copy(1, min(currentrun.len, 5)))]")
+		stack_trace("Currentrun not empty after processing cycle when it should be. [english_list(currentrun, limit = 5)]")
 	currentrun = null
 	if(current_step != SSAIR_DONE)
 		stack_trace("current_step after processing cycle was [current_step] instead of [SSAIR_DONE]")
@@ -249,7 +248,7 @@ SUBSYSTEM_DEF(air)
 		src.currentrun = active_hotspots.Copy()
 	//cache for sanic speed (lists are references anyways)
 	var/list/currentrun = src.currentrun
-	var/dt = (subsystem_flags & SS_TICKER)? (wait * world.tick_lag * 0.1) : (wait * 0.1)
+	var/dt = nominal_dt_s
 	while(currentrun.len)
 		var/atom/movable/fire/fire = currentrun[currentrun.len]
 		currentrun.len--

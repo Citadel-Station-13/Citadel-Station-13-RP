@@ -159,51 +159,51 @@
 				if(16 to 25) //10% chance
 					//Strange items
 					//to_chat(src, "Traitor Items")
-					if(!halitem)
-						halitem = new
-						var/list/slots_free = list(ui_lhand,ui_rhand)
-						if(l_hand) slots_free -= ui_lhand
-						if(r_hand) slots_free -= ui_rhand
-						if(istype(src,/mob/living/carbon/human))
-							var/mob/living/carbon/human/H = src
-							if(!H.belt) slots_free += ui_belt
-							if(!H.l_store) slots_free += ui_storage1
-							if(!H.r_store) slots_free += ui_storage2
-						if(slots_free.len)
-							halitem.screen_loc = pick(slots_free)
-							halitem.layer = 50
-							switch(rand(1,6))
-								if(1) //revolver
-									halitem.icon = 'icons/obj/gun/ballistic.dmi'
-									halitem.icon_state = "revolver"
-									halitem.name = "Revolver"
-								if(2) //c4
-									halitem.icon = 'icons/obj/assemblies.dmi'
-									halitem.icon_state = "plastic-explosive0"
-									halitem.name = "Mysterious Package"
-									if(prob(25))
-										halitem.icon_state = "c4small_1"
-								if(3) //sword
-									halitem.icon = 'icons/obj/weapons.dmi'
-									halitem.icon_state = "sword1"
-									halitem.name = "Sword"
-								if(4) //stun baton
-									halitem.icon = 'icons/obj/weapons.dmi'
-									halitem.icon_state = "stunbaton"
-									halitem.name = "Stun Baton"
-								if(5) //emag
-									halitem.icon = 'icons/obj/card.dmi'
-									halitem.icon_state = "emag"
-									halitem.name = "Cryptographic Sequencer"
-								if(6) //flashbang
-									halitem.icon = 'icons/obj/grenade.dmi'
-									halitem.icon_state = "flashbang1"
-									halitem.name = "Flashbang"
-							if(client) client.screen += halitem
-							spawn(rand(100,250))
-								if(client)
-									client.screen -= halitem
-								halitem = null
+					// if(!halitem)
+					// 	halitem = new
+					// 	var/list/slots_free = list()
+					// 	for(var/i in get_empty_hand_indices())
+					// 		slots_free += SCREEN_LOC_INV_HAND(i)
+					// 	if(istype(src,/mob/living/carbon/human))
+					// 		var/mob/living/carbon/human/H = src
+					// 		if(!H.belt) slots_free += ui_belt
+					// 		if(!H.l_store) slots_free += ui_storage1
+					// 		if(!H.r_store) slots_free += ui_storage2
+					// 	if(slots_free.len)
+					// 		halitem.screen_loc = pick(slots_free)
+					// 		halitem.layer = 50
+					// 		switch(rand(1,6))
+					// 			if(1) //revolver
+					// 				halitem.icon = 'icons/obj/gun/ballistic.dmi'
+					// 				halitem.icon_state = "revolver"
+					// 				halitem.name = "Revolver"
+					// 			if(2) //c4
+					// 				halitem.icon = 'icons/obj/assemblies.dmi'
+					// 				halitem.icon_state = "plastic-explosive0"
+					// 				halitem.name = "Mysterious Package"
+					// 				if(prob(25))
+					// 					halitem.icon_state = "c4small_1"
+					// 			if(3) //sword
+					// 				halitem.icon = 'icons/obj/weapons.dmi'
+					// 				halitem.icon_state = "sword1"
+					// 				halitem.name = "Sword"
+					// 			if(4) //stun baton
+					// 				halitem.icon = 'icons/obj/weapons.dmi'
+					// 				halitem.icon_state = "stunbaton"
+					// 				halitem.name = "Stun Baton"
+					// 			if(5) //emag
+					// 				halitem.icon = 'icons/obj/card.dmi'
+					// 				halitem.icon_state = "emag"
+					// 				halitem.name = "Cryptographic Sequencer"
+					// 			if(6) //flashbang
+					// 				halitem.icon = 'icons/obj/grenade.dmi'
+					// 				halitem.icon_state = "flashbang1"
+					// 				halitem.name = "Flashbang"
+					// 		if(client) client.screen += halitem
+					// 		spawn(rand(100,250))
+					// 			if(client)
+					// 				client.screen -= halitem
+					// 			halitem = null
 				if(26 to 35) //10% chance
 					//Flashes of danger
 					//to_chat(src, "Danger Flash")
@@ -396,7 +396,7 @@
 			if(src.nutrition > 901) //prevent going into the fat ranges of nutrition needlessly and prevents minmaxing certain racial traits/abilities that rely on nutrition via farming one victim
 				src.nutrition = 900
 			if(B.nutrition < 100)
-				B.apply_damage(15, BRUTE, BP_TORSO) // if they have nothing to give, this just harms them
+				B.apply_damage(15, DAMAGE_TYPE_BRUTE, BP_TORSO) // if they have nothing to give, this just harms them
 			B.bitten = 1 //debuff tracking for balance
 	else if(!istype(B,/mob/living/carbon) && src.isSynthetic() || istype(B,/mob/living/carbon) && B.isSynthetic() && src.isSynthetic()) // for synths to feed on robots and other synths
 		if(do_after(src, 50, B))
@@ -406,7 +406,7 @@
 				src.nutrition += 300
 				B.nutrition -= 150
 			if(B.nutrition < 100)
-				B.apply_damage(15, BRUTE, BP_TORSO)
+				B.apply_damage(15, DAMAGE_TYPE_BRUTE, BP_TORSO)
 	else if(istype(B,/mob/living/silicon) && !istype(src,/mob/living/silicon))
 		if(do_after(src, 50, B))
 			to_chat(src, "You don't sense any viable blood...")
@@ -474,7 +474,7 @@
 				C.nutrition = (C.nutrition + T.nutrition)
 				T.nutrition = 0 //Completely drained of everything.
 				var/damage_to_be_applied = T.species.total_health //Get their max health.
-				T.apply_damage(damage_to_be_applied, HALLOSS) //Knock em out.
+				T.apply_damage(damage_to_be_applied, DAMAGE_TYPE_HALLOSS) //Knock em out.
 				C.absorbing_prey = 0
 				if(T.isSynthetic())
 					to_chat(C, "<span class='notice'>You have siphoned the power out of [T], causing them to crumple on the floor.</span>")
@@ -562,7 +562,7 @@
 					nutrition = (nutrition + T.nutrition)
 					T.nutrition = 0 //Completely drained of everything.
 					var/damage_to_be_applied = T.species.total_health //Get their max health.
-					T.apply_damage(damage_to_be_applied, HALLOSS) //Knock em out.
+					T.apply_damage(damage_to_be_applied, DAMAGE_TYPE_HALLOSS) //Knock em out.
 					absorbing_prey = 0 //Clean this up before we return
 					return
 				if(T.isSynthetic())
@@ -573,7 +573,7 @@
 					to_chat(T, "<span class='danger'>An odd sensation flows through your body as you as [src] begins to drain you to dangerous levels!</span>")
 			if(51 to 98)
 				if(T.stat == DEAD)
-					T.apply_damage(500, OXY) //Bit of fluff.
+					T.apply_damage(500, DAMAGE_TYPE_OXY) //Bit of fluff.
 					absorbing_prey = 0
 					if(T.isSynthetic())
 						to_chat(src, "<span class='notice'>You have completely drained the power from [T], shutting them down for good.</span>")
@@ -591,7 +591,7 @@
 				if(drain_finalized != 1)
 					stage = 51
 			if(100) //They shouldn't  survive long enough to get here, but just in case.
-				T.apply_damage(500, OXY) //Kill them.
+				T.apply_damage(500, DAMAGE_TYPE_OXY) //Kill them.
 				absorbing_prey = 0
 				if(T.isSynthetic())
 					to_chat(src, "<span class='notice'>You have completely drained the power from [T], shutting them down for good.</span>")
@@ -802,7 +802,7 @@
 
 		//Removing an internal organ
 		if(T_int && T_int.damage >= 25) //Internal organ and it's been severely damaged
-			T.apply_damage(15, BRUTE, T_ext) //Damage the external organ they're going through.
+			T.apply_damage(15, DAMAGE_TYPE_BRUTE, T_ext) //Damage the external organ they're going through.
 			T_int.removed()
 			if(B)
 				T_int.forceMove(B) //Move to pred's gut
@@ -817,7 +817,7 @@
 
 			//Is it groin/chest? You can't remove those.
 			if(T_ext.cannot_amputate)
-				T.apply_damage(25, BRUTE, T_ext)
+				T.apply_damage(25, DAMAGE_TYPE_BRUTE, T_ext)
 				visible_message("<span class='danger'>[src] severely damages [T]'s [T_ext.name]!</span>")
 			else if(B)
 				T_ext.forceMove(B)
@@ -830,7 +830,7 @@
 		else
 			if(T_int)
 				T_int.take_damage(25 - T_int.damage)
-			T.apply_damage(25, BRUTE, T_ext)
+			T.apply_damage(25, DAMAGE_TYPE_BRUTE, T_ext)
 			visible_message("<span class='danger'>[src] severely damages [T]'s [T_ext.name]!</span>")
 
 		add_attack_logs(src,T,"Shredded (hardvore)")

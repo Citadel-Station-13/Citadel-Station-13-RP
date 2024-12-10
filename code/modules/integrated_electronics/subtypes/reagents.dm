@@ -140,7 +140,7 @@
 		return
 
 	if(direction_mode == SYRINGE_INJECT)
-		if(!reagents.total_volume || !AM.can_be_injected_by(src) || AM.reagents.holder_full())
+		if(!reagents.total_volume || (!AM.can_be_injected_by(src) && !isliving(AM)) || AM.reagents.holder_full())
 			activate_pin(3)
 			return
 		if(isliving(AM))
@@ -160,7 +160,7 @@
 			L.visible_message("<span class='danger'>[acting_object] is trying to inject [L]!</span>", \
 								"<span class='userdanger'>[acting_object] is trying to inject you!</span>")
 			busy = TRUE
-			if(do_atom(src, L, extra_checks=CALLBACK(L, TYPE_PROC_REF(/mob/living, can_inject),null,0,BP_TORSO,bypass)))
+			if(do_atom(src, L, extra_checks=CALLBACK(L, TYPE_PROC_REF(/mob/living, can_inject),null,0,BP_TORSO,bypass),uninterruptible = bypass))
 				reagents.trans_to_mob(L, transfer_amount)
 				log_attack(src, L, "attempted to inject [L] which had [contained]")
 				L.visible_message("<span class='danger'>[acting_object] injects [L] with its needle!</span>", \
@@ -194,7 +194,7 @@
 			L.visible_message("<span class='danger'>[acting_object] is trying to take a blood sample from [L]!</span>", \
 								"<span class='userdanger'>[acting_object] is trying to take a blood sample from you!</span>")
 			busy = TRUE
-			if(do_atom(src, L, extra_checks=CALLBACK(L, TYPE_PROC_REF(/mob/living, can_inject),null,0,BP_TORSO,bypass)))
+			if(do_atom(src, L, extra_checks=CALLBACK(L, TYPE_PROC_REF(/mob/living, can_inject),null,0,BP_TORSO,bypass),uninterruptible = bypass))
 				var/mob/living/carbon/LB = L
 				var/datum/reagent/B
 				B = LB.take_blood(src, tramount)
@@ -202,7 +202,7 @@
 					reagents.reagent_list += B
 					reagents.update_total()
 					AM.on_reagent_change()
-					reagents.handle_reactions()
+					reagents.reconsider_reactions()
 					L.visible_message("<span class='danger'>[acting_object] takes a blood sample from [L]!</span>", \
 					"<span class='userdanger'>[acting_object] takes a blood sample from you!</span>")
 				else
@@ -311,14 +311,17 @@
 
 	var/obj/item/reagent_containers/glass/beaker/current_beaker
 
-/obj/item/integrated_circuit/input/beaker_connector/ask_for_input(obj/item/I, mob/living/user, a_intent)
-	if(!isobj(I))
-		return FALSE
-	attackby_react(I, user, a_intent)
+/obj/item/integrated_circuit/input/beaker_connector/ask_for_input(mob/living/user, obj/item/I,  a_intent)
+	if(!current_beaker)
+		if(!isobj(I))
+			return FALSE
+		attackby_react(I, user, a_intent)
+	else
+		attack_self(user)
 
 /obj/item/integrated_circuit/input/beaker_connector/attackby_react(var/obj/item/reagent_containers/I, var/mob/living/user)
 	//Check if it truly is a reagent container
-	if(!istype(I,/obj/item/reagent_containers/glass/beaker))
+	if(!(istype(I,/obj/item/reagent_containers/glass/beaker) || istype(I,/obj/item/reagent_containers/glass/hypovial)))
 		to_chat(user,"<span class='warning'>The [I.name] doesn't seem to fit in here.</span>")
 		return
 
@@ -342,12 +345,7 @@
 	activate_pin(1)
 	activate_pin(3)
 
-
-/obj/item/integrated_circuit/input/beaker_connector/ask_for_input(mob/user)
-	attack_self(user)
-
-
-/obj/item/integrated_circuit/input/beaker_connector/attack_self(mob/user)
+/obj/item/integrated_circuit/input/beaker_connector/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -476,7 +474,7 @@
 	complexity = 4
 	power_draw_per_use = 5
 
-/obj/item/integrated_circuit/reagent/funnel/proc/ask_for_input(obj/item/I, mob/living/user, a_intent)
+/obj/item/integrated_circuit/reagent/funnel/proc/ask_for_input(mob/living/user, obj/item/I, a_intent)
 	if(!isobj(I))
 		return FALSE
 	attackby_react(I, user, a_intent)

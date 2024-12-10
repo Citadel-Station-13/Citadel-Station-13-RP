@@ -29,23 +29,6 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 /mob/living/carbon/human/update_icons_huds()
 	stack_trace("CANARY: Old human update_icons_huds was called.")
 
-//TODO: Carbon procs in my human update_icons??
-/mob/living/carbon/human/update_hud()	//TODO: do away with this if possible
-	// todo: this is utterly shitcode and fucking stupid ~silicons
-	// todo: the rest of hud code here ain't much better LOL
-	var/list/obj/item/relevant = get_equipped_items(TRUE, TRUE)
-	if(hud_used)
-		for(var/obj/item/I as anything in relevant)
-			position_hud_item(I, slot_id_by_item(I))
-	if(client)
-		client.screen |= relevant
-
-//update whether handcuffs appears on our hud.
-/mob/living/carbon/proc/update_hud_handcuffed()
-	if(hud_used && hud_used.l_hand_hud_object && hud_used.r_hand_hud_object)
-		hud_used.l_hand_hud_object.update_icon()
-		hud_used.r_hand_hud_object.update_icon()
-
 /mob/living/carbon/human/update_transform()
 	var/matrix/old_matrix = transform
 	var/matrix/M = matrix()
@@ -110,8 +93,7 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 	update_inv_belt()
 	update_inv_back()
 	update_inv_wear_suit()
-	update_inv_r_hand()
-	update_inv_l_hand()
+	update_inv_hands()
 	update_handcuffed()
 	update_inv_legcuffed()
 	//update_inv_pockets() //Doesn't do anything

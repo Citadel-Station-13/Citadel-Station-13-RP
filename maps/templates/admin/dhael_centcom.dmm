@@ -1,12 +1,12 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "aa" = (
-/turf/unsimulated/wall/planetary/virgo3b,
+/turf/unsimulated/wall/planetary/facility_wall,
 /area/space)
 "ac" = (
-/turf/unsimulated/mineral/virgo3b,
+/turf/unsimulated/wall/mineral,
 /area/space)
 "ad" = (
-/turf/unsimulated/wall/planetary/virgo3b,
+/turf/unsimulated/wall/planetary/facility_wall,
 /area/centcom/specops)
 "af" = (
 /obj/structure/table/standard,
@@ -179,14 +179,14 @@
 /obj/structure/window/reinforced{
 	dir = 4
 	},
-/obj/item/ammo_magazine/m556/ap,
-/obj/item/ammo_magazine/m556/ap,
-/obj/item/ammo_magazine/m556,
-/obj/item/ammo_magazine/m556,
-/obj/item/ammo_magazine/m556,
-/obj/item/ammo_magazine/m556,
-/obj/item/ammo_magazine/m556,
-/obj/item/ammo_magazine/m556,
+/obj/item/ammo_magazine/a5_56mm/ap,
+/obj/item/ammo_magazine/a5_56mm/ap,
+/obj/item/ammo_magazine/a5_56mm,
+/obj/item/ammo_magazine/a5_56mm,
+/obj/item/ammo_magazine/a5_56mm,
+/obj/item/ammo_magazine/a5_56mm,
+/obj/item/ammo_magazine/a5_56mm,
+/obj/item/ammo_magazine/a5_56mm,
 /obj/item/gun/ballistic/automatic/sts35,
 /obj/item/gun/ballistic/automatic/sts35,
 /turf/unsimulated/floor{
@@ -199,14 +199,14 @@
 	},
 /obj/structure/table/rack,
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/item/ammo_magazine/m556/ap,
-/obj/item/ammo_magazine/m556/ap,
-/obj/item/ammo_magazine/m556,
-/obj/item/ammo_magazine/m556,
-/obj/item/ammo_magazine/m556,
-/obj/item/ammo_magazine/m556,
-/obj/item/ammo_magazine/m556,
-/obj/item/ammo_magazine/m556,
+/obj/item/ammo_magazine/a5_56mm/ap,
+/obj/item/ammo_magazine/a5_56mm/ap,
+/obj/item/ammo_magazine/a5_56mm,
+/obj/item/ammo_magazine/a5_56mm,
+/obj/item/ammo_magazine/a5_56mm,
+/obj/item/ammo_magazine/a5_56mm,
+/obj/item/ammo_magazine/a5_56mm,
+/obj/item/ammo_magazine/a5_56mm,
 /obj/item/gun/ballistic/automatic/sts35,
 /obj/item/gun/ballistic/automatic/sts35,
 /turf/unsimulated/floor{
@@ -229,17 +229,17 @@
 /area/centcom/specops)
 "ay" = (
 /obj/structure/table/rack,
-/obj/item/shield/energy,
-/obj/item/shield/energy,
-/obj/item/shield/energy,
-/obj/item/shield/energy,
-/obj/item/shield/energy,
+/obj/item/shield/transforming/energy,
+/obj/item/shield/transforming/energy,
+/obj/item/shield/transforming/energy,
+/obj/item/shield/transforming/energy,
+/obj/item/shield/transforming/energy,
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/item/melee/energy/sword,
-/obj/item/melee/energy/sword,
-/obj/item/melee/energy/sword,
-/obj/item/melee/energy/sword,
-/obj/item/melee/energy/sword,
+/obj/item/melee/transforming/energy/sword,
+/obj/item/melee/transforming/energy/sword,
+/obj/item/melee/transforming/energy/sword,
+/obj/item/melee/transforming/energy/sword,
+/obj/item/melee/transforming/energy/sword,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/structure/window/reinforced{
 	dir = 1
@@ -367,10 +367,10 @@
 /obj/structure/window/reinforced,
 /obj/item/gun/ballistic/revolver/detective45,
 /obj/item/gun/ballistic/revolver/detective45,
-/obj/item/ammo_magazine/s45,
-/obj/item/ammo_magazine/s45,
-/obj/item/ammo_magazine/s45,
-/obj/item/ammo_magazine/s45,
+/obj/item/ammo_magazine/a45/speedloader,
+/obj/item/ammo_magazine/a45/speedloader,
+/obj/item/ammo_magazine/a45/speedloader,
+/obj/item/ammo_magazine/a45/speedloader,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -379,10 +379,10 @@
 /obj/structure/table/rack,
 /obj/structure/window/reinforced,
 /obj/item/gun/ballistic/automatic/advanced_smg,
-/obj/item/ammo_magazine/m9mmAdvanced,
-/obj/item/ammo_magazine/m9mmAdvanced,
-/obj/item/ammo_magazine/m9mmAdvanced,
-/obj/item/ammo_magazine/m9mmAdvanced,
+/obj/item/ammo_magazine/a9mm/advanced_smg,
+/obj/item/ammo_magazine/a9mm/advanced_smg,
+/obj/item/ammo_magazine/a9mm/advanced_smg,
+/obj/item/ammo_magazine/a9mm/advanced_smg,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -405,14 +405,14 @@
 /obj/item/gun/ballistic/p92x,
 /obj/item/gun/ballistic/p92x,
 /obj/item/gun/ballistic/p92x,
-/obj/item/ammo_magazine/m9mm/large/licensed,
-/obj/item/ammo_magazine/m9mm/large/licensed,
-/obj/item/ammo_magazine/m9mm/large/licensed,
-/obj/item/ammo_magazine/m9mm/large/licensed,
-/obj/item/ammo_magazine/m9mm/large/licensed,
-/obj/item/ammo_magazine/m9mm/large/licensed,
-/obj/item/ammo_magazine/m9mm/large/licensed,
-/obj/item/ammo_magazine/m9mm/large/licensed,
+/obj/item/ammo_magazine/a9mm/large,
+/obj/item/ammo_magazine/a9mm/large,
+/obj/item/ammo_magazine/a9mm/large,
+/obj/item/ammo_magazine/a9mm/large,
+/obj/item/ammo_magazine/a9mm/large,
+/obj/item/ammo_magazine/a9mm/large,
+/obj/item/ammo_magazine/a9mm/large,
+/obj/item/ammo_magazine/a9mm/large,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -1221,7 +1221,7 @@
 /turf/unsimulated/wall,
 /area/centcom/control)
 "dn" = (
-/turf/unsimulated/wall/planetary/virgo3b,
+/turf/unsimulated/wall/planetary/facility_wall,
 /area/centcom/control)
 "do" = (
 /obj/machinery/camera/network/crescent,
@@ -3031,7 +3031,7 @@
 /obj/item/clothing/mask/breath/medical,
 /obj/item/clothing/mask/breath/medical,
 /obj/item/storage/box/gloves,
-/obj/item/defib_kit/jumper_kit,
+/obj/item/defib_kit,
 /turf/unsimulated/floor/steel{
 	icon_state = "white"
 	},
@@ -3116,7 +3116,7 @@
 /turf/unsimulated/wall,
 /area/centcom/security)
 "hX" = (
-/turf/unsimulated/wall/planetary/virgo3b,
+/turf/unsimulated/wall/planetary/facility_wall,
 /area/centcom/security)
 "hY" = (
 /obj/effect/floor_decal/industrial/outline,
@@ -3138,7 +3138,7 @@
 /turf/unsimulated/floor/steel,
 /area/centcom/control)
 "iy" = (
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/centcom/main_hall)
 "iz" = (
 /obj/effect/floor_decal/industrial/warning/dust{
@@ -3941,16 +3941,16 @@
 "lE" = (
 /obj/structure/table/rack,
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/item/ammo_magazine/m9mmt,
-/obj/item/ammo_magazine/m9mmt,
-/obj/item/ammo_magazine/m9mmt,
-/obj/item/ammo_magazine/m9mmt,
-/obj/item/ammo_magazine/m9mmt,
-/obj/item/ammo_magazine/m9mmt,
-/obj/item/ammo_magazine/m9mmt,
-/obj/item/ammo_magazine/m9mmt,
-/obj/item/ammo_magazine/m9mmt,
-/obj/item/ammo_magazine/m9mmt,
+/obj/item/ammo_magazine/a9mm/top_mount,
+/obj/item/ammo_magazine/a9mm/top_mount,
+/obj/item/ammo_magazine/a9mm/top_mount,
+/obj/item/ammo_magazine/a9mm/top_mount,
+/obj/item/ammo_magazine/a9mm/top_mount,
+/obj/item/ammo_magazine/a9mm/top_mount,
+/obj/item/ammo_magazine/a9mm/top_mount,
+/obj/item/ammo_magazine/a9mm/top_mount,
+/obj/item/ammo_magazine/a9mm/top_mount,
+/obj/item/ammo_magazine/a9mm/top_mount,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -7491,8 +7491,8 @@
 "tB" = (
 /obj/structure/table/reinforced,
 /obj/item/clothing/accessory/holster/hip,
-/obj/item/ammo_magazine/m44,
-/obj/item/ammo_magazine/m44,
+/obj/item/ammo_magazine/a44,
+/obj/item/ammo_magazine/a44,
 /obj/item/gun/ballistic/deagle,
 /turf/unsimulated/floor/wood,
 /area/centcom/specops)
@@ -8029,7 +8029,7 @@
 	},
 /area/centcom/living)
 "uO" = (
-/turf/unsimulated/wall/planetary/virgo3b,
+/turf/unsimulated/wall/planetary/facility_wall,
 /area/centcom/living)
 "uP" = (
 /obj/structure/table/rack,
@@ -8605,11 +8605,11 @@
 /area/centcom/main_hall)
 "xg" = (
 /obj/machinery/light/flamp/noshade,
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/centcom/main_hall)
 "xh" = (
 /obj/structure/flora/ausbushes/brflowers,
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/centcom/main_hall)
 "xi" = (
 /obj/structure/bed/chair{
@@ -8647,7 +8647,7 @@
 /area/centcom/restaurant)
 "xI" = (
 /obj/structure/flora/ausbushes/ppflowers,
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/centcom/main_hall)
 "xN" = (
 /obj/effect/floor_decal/borderfloorwhite{
@@ -8839,7 +8839,7 @@
 /area/centcom/security)
 "ze" = (
 /obj/structure/flora/ausbushes/ywflowers,
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/centcom/main_hall)
 "zi" = (
 /obj/effect/floor_decal/borderfloorblack{
@@ -9809,16 +9809,16 @@
 "Ds" = (
 /obj/structure/table/rack,
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/item/ammo_magazine/m9mml,
-/obj/item/ammo_magazine/m9mml,
-/obj/item/ammo_magazine/m9mml,
-/obj/item/ammo_magazine/m9mml,
-/obj/item/ammo_magazine/m9mml,
-/obj/item/ammo_magazine/m9mml,
-/obj/item/ammo_magazine/m9mml/ap,
-/obj/item/ammo_magazine/m9mml/ap,
-/obj/item/ammo_magazine/m9mml/ap,
-/obj/item/ammo_magazine/m9mml/ap,
+/obj/item/ammo_magazine/a9mm/large,
+/obj/item/ammo_magazine/a9mm/large,
+/obj/item/ammo_magazine/a9mm/large,
+/obj/item/ammo_magazine/a9mm/large,
+/obj/item/ammo_magazine/a9mm/large,
+/obj/item/ammo_magazine/a9mm/large,
+/obj/item/ammo_magazine/a9mm/large/ap,
+/obj/item/ammo_magazine/a9mm/large/ap,
+/obj/item/ammo_magazine/a9mm/large/ap,
+/obj/item/ammo_magazine/a9mm/large/ap,
 /obj/machinery/button/remote/blast_door{
 	id = "ArmouryC4";
 	name = "Armoury Access";
@@ -10455,11 +10455,11 @@
 "Fy" = (
 /obj/structure/table/rack,
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/item/ammo_magazine/m556saw/ap,
-/obj/item/ammo_magazine/m556saw/ap,
-/obj/item/ammo_magazine/m556saw,
-/obj/item/ammo_magazine/m556saw,
-/obj/item/ammo_magazine/m556saw,
+/obj/item/ammo_magazine/a5_56mm/saw/ap,
+/obj/item/ammo_magazine/a5_56mm/saw/ap,
+/obj/item/ammo_magazine/a5_56mm/saw,
+/obj/item/ammo_magazine/a5_56mm/saw,
+/obj/item/ammo_magazine/a5_56mm/saw,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -10688,17 +10688,17 @@
 /area/centcom/specops)
 "GH" = (
 /obj/structure/table/rack,
-/obj/item/shield/energy,
-/obj/item/shield/energy,
-/obj/item/shield/energy,
-/obj/item/shield/energy,
-/obj/item/shield/energy,
+/obj/item/shield/transforming/energy,
+/obj/item/shield/transforming/energy,
+/obj/item/shield/transforming/energy,
+/obj/item/shield/transforming/energy,
+/obj/item/shield/transforming/energy,
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/item/melee/energy/sword,
-/obj/item/melee/energy/sword,
-/obj/item/melee/energy/sword,
-/obj/item/melee/energy/sword,
-/obj/item/melee/energy/sword,
+/obj/item/melee/transforming/energy/sword,
+/obj/item/melee/transforming/energy/sword,
+/obj/item/melee/transforming/energy/sword,
+/obj/item/melee/transforming/energy/sword,
+/obj/item/melee/transforming/energy/sword,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -11278,16 +11278,16 @@
 "IE" = (
 /obj/structure/table/rack,
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/item/ammo_magazine/m762,
-/obj/item/ammo_magazine/m762,
-/obj/item/ammo_magazine/m762,
-/obj/item/ammo_magazine/m762,
-/obj/item/ammo_magazine/m762,
-/obj/item/ammo_magazine/m762,
-/obj/item/ammo_magazine/m762/ap,
-/obj/item/ammo_magazine/m762/ap,
-/obj/item/ammo_magazine/m762/ap,
-/obj/item/ammo_magazine/m762/ap,
+/obj/item/ammo_magazine/a7_62mm,
+/obj/item/ammo_magazine/a7_62mm,
+/obj/item/ammo_magazine/a7_62mm,
+/obj/item/ammo_magazine/a7_62mm,
+/obj/item/ammo_magazine/a7_62mm,
+/obj/item/ammo_magazine/a7_62mm,
+/obj/item/ammo_magazine/a7_62mm/ap,
+/obj/item/ammo_magazine/a7_62mm/ap,
+/obj/item/ammo_magazine/a7_62mm/ap,
+/obj/item/ammo_magazine/a7_62mm/ap,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -11332,7 +11332,7 @@
 /obj/structure/table/rack,
 /obj/item/clothing/under/color/red,
 /obj/item/clothing/shoes/brown,
-/obj/item/melee/energy/axe,
+/obj/item/melee/transforming/energy/axe,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -11714,18 +11714,18 @@
 "KN" = (
 /obj/structure/table/rack,
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/item/ammo_magazine/m762,
-/obj/item/ammo_magazine/m762,
-/obj/item/ammo_magazine/m762,
-/obj/item/ammo_magazine/m762,
-/obj/item/ammo_magazine/m762,
-/obj/item/ammo_magazine/m762,
-/obj/item/ammo_magazine/m762,
-/obj/item/ammo_magazine/m762,
-/obj/item/ammo_magazine/m762/ap,
-/obj/item/ammo_magazine/m762/ap,
-/obj/item/ammo_magazine/m762/ap,
-/obj/item/ammo_magazine/m762/ap,
+/obj/item/ammo_magazine/a7_62mm,
+/obj/item/ammo_magazine/a7_62mm,
+/obj/item/ammo_magazine/a7_62mm,
+/obj/item/ammo_magazine/a7_62mm,
+/obj/item/ammo_magazine/a7_62mm,
+/obj/item/ammo_magazine/a7_62mm,
+/obj/item/ammo_magazine/a7_62mm,
+/obj/item/ammo_magazine/a7_62mm,
+/obj/item/ammo_magazine/a7_62mm/ap,
+/obj/item/ammo_magazine/a7_62mm/ap,
+/obj/item/ammo_magazine/a7_62mm/ap,
+/obj/item/ammo_magazine/a7_62mm/ap,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -12059,7 +12059,7 @@
 /obj/structure/table/rack,
 /obj/item/clothing/under/color/green,
 /obj/item/clothing/shoes/brown,
-/obj/item/melee/energy/axe,
+/obj/item/melee/transforming/energy/axe,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -12076,7 +12076,7 @@
 /obj/item/clothing/suit/armor/tdome/green,
 /obj/item/clothing/head/helmet/thunderdome,
 /obj/item/melee/baton/loaded,
-/obj/item/melee/energy/sword,
+/obj/item/melee/transforming/energy/sword,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -12351,16 +12351,16 @@
 "NJ" = (
 /obj/structure/table/rack,
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/item/ammo_magazine/m57x28mmp90,
-/obj/item/ammo_magazine/m57x28mmp90,
-/obj/item/ammo_magazine/m57x28mmp90,
-/obj/item/ammo_magazine/m57x28mmp90,
-/obj/item/ammo_magazine/m57x28mmp90,
-/obj/item/ammo_magazine/m57x28mmp90,
-/obj/item/ammo_magazine/m57x28mmp90,
-/obj/item/ammo_magazine/m57x28mmp90,
-/obj/item/ammo_magazine/m57x28mmp90,
-/obj/item/ammo_magazine/m57x28mmp90,
+/obj/item/ammo_magazine/a5_7mm/p90,
+/obj/item/ammo_magazine/a5_7mm/p90,
+/obj/item/ammo_magazine/a5_7mm/p90,
+/obj/item/ammo_magazine/a5_7mm/p90,
+/obj/item/ammo_magazine/a5_7mm/p90,
+/obj/item/ammo_magazine/a5_7mm/p90,
+/obj/item/ammo_magazine/a5_7mm/p90,
+/obj/item/ammo_magazine/a5_7mm/p90,
+/obj/item/ammo_magazine/a5_7mm/p90,
+/obj/item/ammo_magazine/a5_7mm/p90,
 /obj/machinery/camera/network/crescent,
 /turf/unsimulated/floor{
 	icon_state = "dark"
@@ -12528,16 +12528,16 @@
 "Oq" = (
 /obj/structure/table/rack,
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/item/ammo_magazine/m9mmt/rubber,
-/obj/item/ammo_magazine/m9mmt/rubber,
-/obj/item/ammo_magazine/m9mmt/rubber,
-/obj/item/ammo_magazine/m9mmt/rubber,
-/obj/item/ammo_magazine/m9mmt/rubber,
-/obj/item/ammo_magazine/m9mmt/rubber,
-/obj/item/ammo_magazine/m9mmt/rubber,
-/obj/item/ammo_magazine/m9mmt/rubber,
-/obj/item/ammo_magazine/m9mmt/rubber,
-/obj/item/ammo_magazine/m9mmt/rubber,
+/obj/item/ammo_magazine/a9mm/top_mount/rubber,
+/obj/item/ammo_magazine/a9mm/top_mount/rubber,
+/obj/item/ammo_magazine/a9mm/top_mount/rubber,
+/obj/item/ammo_magazine/a9mm/top_mount/rubber,
+/obj/item/ammo_magazine/a9mm/top_mount/rubber,
+/obj/item/ammo_magazine/a9mm/top_mount/rubber,
+/obj/item/ammo_magazine/a9mm/top_mount/rubber,
+/obj/item/ammo_magazine/a9mm/top_mount/rubber,
+/obj/item/ammo_magazine/a9mm/top_mount/rubber,
+/obj/item/ammo_magazine/a9mm/top_mount/rubber,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -13315,7 +13315,7 @@
 /obj/item/clothing/suit/armor/tdome/red,
 /obj/item/clothing/head/helmet/thunderdome,
 /obj/item/melee/baton/loaded,
-/obj/item/melee/energy/sword,
+/obj/item/melee/transforming/energy/sword,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -13427,11 +13427,11 @@
 /area/centcom/specops)
 "RE" = (
 /obj/structure/table/rack,
-/obj/item/gun/energy/pulse_rifle,
-/obj/item/gun/energy/pulse_rifle,
-/obj/item/gun/energy/pulse_rifle,
-/obj/item/gun/energy/pulse_rifle,
-/obj/item/gun/energy/pulse_rifle,
+/obj/item/gun/energy/nt_pulse/rifle,
+/obj/item/gun/energy/nt_pulse/rifle,
+/obj/item/gun/energy/nt_pulse/rifle,
+/obj/item/gun/energy/nt_pulse/rifle,
+/obj/item/gun/energy/nt_pulse/rifle,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -13440,16 +13440,16 @@
 /obj/structure/table/rack,
 /obj/item/gun/ballistic/automatic/z8,
 /obj/item/gun/ballistic/automatic/z8,
-/obj/item/ammo_magazine/m762,
-/obj/item/ammo_magazine/m762,
-/obj/item/ammo_magazine/m762,
-/obj/item/ammo_magazine/m762,
-/obj/item/ammo_magazine/m762,
-/obj/item/ammo_magazine/m762,
-/obj/item/ammo_magazine/m762/ap,
-/obj/item/ammo_magazine/m762/ap,
-/obj/item/ammo_magazine/m762/ap,
-/obj/item/ammo_magazine/m762/ap,
+/obj/item/ammo_magazine/a7_62mm,
+/obj/item/ammo_magazine/a7_62mm,
+/obj/item/ammo_magazine/a7_62mm,
+/obj/item/ammo_magazine/a7_62mm,
+/obj/item/ammo_magazine/a7_62mm,
+/obj/item/ammo_magazine/a7_62mm,
+/obj/item/ammo_magazine/a7_62mm/ap,
+/obj/item/ammo_magazine/a7_62mm/ap,
+/obj/item/ammo_magazine/a7_62mm/ap,
+/obj/item/ammo_magazine/a7_62mm/ap,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -14168,20 +14168,20 @@
 /obj/structure/table/rack,
 /obj/item/gun/ballistic/automatic/lmg,
 /obj/item/gun/ballistic/automatic/lmg,
-/obj/item/ammo_magazine/m556saw,
-/obj/item/ammo_magazine/m556saw,
-/obj/item/ammo_magazine/m556saw,
-/obj/item/ammo_magazine/m556saw,
-/obj/item/ammo_magazine/m556saw,
-/obj/item/ammo_magazine/m556saw,
-/obj/item/ammo_magazine/m556saw/ap,
-/obj/item/ammo_magazine/m556saw/ap,
+/obj/item/ammo_magazine/a5_56mm/saw,
+/obj/item/ammo_magazine/a5_56mm/saw,
+/obj/item/ammo_magazine/a5_56mm/saw,
+/obj/item/ammo_magazine/a5_56mm/saw,
+/obj/item/ammo_magazine/a5_56mm/saw,
+/obj/item/ammo_magazine/a5_56mm/saw,
+/obj/item/ammo_magazine/a5_56mm/saw/ap,
+/obj/item/ammo_magazine/a5_56mm/saw/ap,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
 /area/centcom/specops)
 "Vq" = (
-/turf/unsimulated/wall/planetary/virgo3b,
+/turf/unsimulated/wall/planetary/facility_wall,
 /area/centcom/bathroom)
 "VB" = (
 /obj/structure/closet/wardrobe/orange,

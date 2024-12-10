@@ -36,7 +36,7 @@
 				return
 		else
 			to_chat(user, "<span class='warning'>Access Denied</span>")
-	else if(istype(W, /obj/item/melee/energy/blade))
+	else if(istype(W, /obj/item/melee/ninja_energy_blade))
 		if(emag_act(INFINITY, user, W, "The locker has been sliced open by [user] with an energy blade!", "You hear metal being sliced and sparks flying."))
 			var/datum/effect_system/spark_spread/spark_system = new /datum/effect_system/spark_spread()
 			spark_system.set_up(5, 0, src.loc)
@@ -121,9 +121,9 @@
 		/obj/item/clothing/accessory/storage/black_vest = 4,
 		/obj/item/clothing/head/soft/black = 4,
 		/obj/item/gun/ballistic/automatic/p90 = 2,
-		/obj/item/ammo_magazine/m57x28mmp90 = 4,
+		/obj/item/ammo_magazine/a5_7mm/p90 = 4,
 		/obj/item/gun/ballistic/p92x = 1,
-		/obj/item/ammo_magazine/m9mm = 2,
+		/obj/item/ammo_magazine/a9mm = 2,
 	)
 
 /obj/item/storage/lockbox/cowboy
@@ -135,9 +135,9 @@
 		/obj/item/clothing/shoes/boots/cowboy/classic = 4,
 		/obj/item/clothing/head/cowboy_hat = 4,
 		/obj/item/gun/ballistic/revolver/dirty_harry = 2,
-		/obj/item/ammo_magazine/s44 = 4,
+		/obj/item/ammo_magazine/a44/speedloader = 4,
 		/obj/item/gun/ballistic/shotgun/pump/rifle/lever/win1895 = 1,
-		/obj/item/ammo_magazine/clip/c762 = 2,
+		/obj/item/ammo_magazine/a7_62mm/clip = 2,
 		/obj/item/gun/ballistic/shotgun/doublebarrel/pellet = 1,
 		/obj/item/storage/box/shotgunshells = 1,
 		/obj/item/reagent_containers/food/drinks/bottle/small/sarsaparilla = 3,
@@ -154,9 +154,9 @@
 		/obj/item/clothing/head/ushanka = 3,
 		/obj/item/clothing/head/bearpelt = 1,
 		/obj/item/gun/ballistic/shotgun/pump/rifle = 3,
-		/obj/item/ammo_magazine/clip/c762 = 3,
+		/obj/item/ammo_magazine/a7_62mm/clip = 3,
 		/obj/item/gun/ballistic/pistol = 1,
-		/obj/item/ammo_magazine/m9mm/compact = 1,
+		/obj/item/ammo_magazine/a9mm/compact = 1,
 		/obj/item/reagent_containers/food/drinks/bottle/vodka = 1,
 	)
 
@@ -197,6 +197,22 @@
 		/obj/item/gun/energy/retro = 4,
 		/obj/item/cell/device/weapon = 8,
 	)
+
+/obj/item/storage/lockbox/axhs
+	name = "AXHS gun case"
+	desc = "A locked waterproof case."
+	icon_state = "gunlockbox+l"
+	sfx_open = 'sound/items/storage/briefcase.ogg'
+	req_access = list(ACCESS_GENERAL_EXPLORER)
+	starts_with = list(
+		/obj/item/gun/ballistic/ax59 = 1,
+		/obj/item/clothing/accessory/holster/leg = 1,
+		/obj/item/ammo_magazine/a45/doublestack = 2,
+		/obj/item/gun_attachment/harness/magnetic/lanyard = 1
+	)
+	icon_locked = "gunlockbox+l"
+	icon_closed = "gunlockbox"
+	icon_broken = "gunlockbox+b"
 
 //Plate Harness Kits
 /obj/item/storage/lockbox/limb_plate

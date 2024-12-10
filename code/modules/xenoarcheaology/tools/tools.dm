@@ -44,7 +44,7 @@
 	var/last_scan_time = 0
 	var/scan_delay = 25
 
-/obj/item/ano_scanner/attack_self(mob/user)
+/obj/item/ano_scanner/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -156,7 +156,7 @@
 
 			to_chat(user, "<span class='notice'>[icon2html(thing = src, target = world)] [src] pings [pick("madly","wildly","excitedly","crazily")]!</span>")
 
-/obj/item/depth_scanner/attack_self(mob/user)
+/obj/item/depth_scanner/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -233,7 +233,7 @@
 	item_state = "electronic"
 	origin_tech = list(TECH_MAGNET = 3, TECH_ENGINEERING = 2, TECH_BLUESPACE = 3)
 	materials_base = list(MAT_STEEL = 1000, MAT_GLASS = 500)
-	var/frequency = PUB_FREQ
+	var/frequency = FREQ_COMMON
 	var/scan_ticks = 0
 	var/obj/item/radio/target_radio
 
@@ -283,7 +283,7 @@
 		else
 			icon_state = "pinoff"
 
-/obj/item/beacon_locator/attack_self(mob/user)
+/obj/item/beacon_locator/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -307,8 +307,8 @@
 		data["degrees"] = round(get_visual_angle(get_turf(src), get_turf(target_radio)))
 
 	data["rawfreq"] = frequency
-	data["minFrequency"] = RADIO_LOW_FREQ
-	data["maxFrequency"] = RADIO_HIGH_FREQ
+	data["minFrequency"] = MIN_FREE_FREQ
+	data["maxFrequency"] = MAX_FREE_FREQ
 
 	return data
 
@@ -323,7 +323,7 @@
 			return TRUE
 		if("setFrequency")
 			var/new_frequency = (text2num(params["freq"]))
-			new_frequency = sanitize_frequency(new_frequency, RADIO_LOW_FREQ, RADIO_HIGH_FREQ)
+			new_frequency = sanitize_frequency(new_frequency, free = TRUE)
 			frequency = new_frequency
 			return TRUE
 
@@ -337,6 +337,7 @@
 	materials_base = list(MAT_STEEL = 10000, MAT_GLASS = 5000)
 	w_class = WEIGHT_CLASS_SMALL
 	slot_flags = SLOT_BELT
+	worth_intrinsic = 250
 	var/mode = 1 //Start off scanning. 1 = scanning, 0 = measuring
 	var/obj/item/ano_scanner/anomaly_scanner = null
 	var/obj/item/depth_scanner/depth_scanner = null
@@ -346,7 +347,7 @@
 	anomaly_scanner = new/obj/item/ano_scanner/integrated(src)
 	depth_scanner = new/obj/item/depth_scanner(src)
 
-/obj/item/xenoarch_multi_tool/attack_self(mob/user)
+/obj/item/xenoarch_multi_tool/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return

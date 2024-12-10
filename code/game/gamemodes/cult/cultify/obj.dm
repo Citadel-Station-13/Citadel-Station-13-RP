@@ -131,7 +131,7 @@
 	// Make it a wood-reinforced wooden table.
 	// There are cult materials available, but it'd make the table non-deconstructable with how holotables work.
 	// Could possibly use a new material var for holographic-ness?
-	var/datum/material/resolved = SSmaterials.resolve_material(/datum/material/wood_plank)
+	var/datum/prototype/material/resolved = RSmaterials.fetch(/datum/prototype/material/wood_plank)
 	set_material_parts(list("base" = resolved, "reinf" = resolved))
 	update_desc()
 	update_connections(1)

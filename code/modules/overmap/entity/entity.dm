@@ -2,8 +2,20 @@
  * entities
  *
  * overmap objects capable of motion
+ *
+ * * overmap objects use pixel movement
+ * * overmap objects call Moved() at very, very weird times.
+ * * overmap objects do not respond to normal Enter/Exit checks, overmap turfs and objects must use Cross()/Uncross() and their -ed versions.
  */
 /obj/overmap/entity
+	// pixel movement gaming
+	appearance_flags = KEEP_TOGETHER
+	pixel_movement = TRUE
+	animate_movement = NONE
+	glide_size = 128
+	step_size = INFINITY
+	uses_bounds_overlay = TRUE
+
 	//* identity *//
 	/// id
 	var/id
@@ -19,12 +31,15 @@
 	var/vel_x
 	/// velocity y in overmap units per second
 	var/vel_y
-	/// position x in overmap units
+	/// cached, read-only cached center x in overmap dist
 	var/pos_x
-	/// position y in overmap units
+	/// cached, read-only cached center y in overmap dist
 	var/pos_y
+	/// bump was handled
+	var/bump_handled = FALSE
+
 	/// max speed in overmap units per second
-	var/max_speed = OVERMAP_DISTANCE_TILE
+	var/max_speed = OVERMAP_DISTANCE_TILE * 2
 	/// is moving
 	var/tmp/is_moving = FALSE
 	/// is forced moving
@@ -50,6 +65,9 @@
 	deactivate_physics()
 	return ..()
 
+/obj/overmap/entity/set_glide_size(new_glide_size, recursive)
+	return
+
 /obj/overmap/entity/Moved(atom/old_loc, movement_dir, forced, list/old_locs, momentum_change)
 	. = ..()
 	if(!isturf(old_loc) || (forced && !is_forced_moving))
@@ -64,6 +82,9 @@
 			set_velocity(vy = var_value)
 			return TRUE
 	return ..()
+
+/obj/overmap/entity/get_bounds_overlay()
+	return SSovermaps.entity_bounds_overlay(bound_x, bound_y, bound_width, bound_height)
 
 /**
  * called when we join an overmap

@@ -28,7 +28,7 @@
 /datum/ai_holder/polaris/proc/list_targets()
 	. = hearers(vision_range, holder) - holder // Remove ourselves to prevent suicidal decisions. ~ SRC is the ai_holder.
 
-	var/static/list/hostile_machines = typecacheof(list(/obj/machinery/porta_turret, /obj/mecha))
+	var/static/list/hostile_machines = typecacheof(list(/obj/machinery/porta_turret, /obj/vehicle/sealed/mecha))
 	var/static/list/ignore = typecacheof(list(/mob/observer))
 
 	for(var/HM in typecache_filter_list(range(vision_range, holder), hostile_machines))
@@ -133,17 +133,17 @@
 					return FALSE
 		return TRUE
 
-	if(istype(the_target, /obj/mecha))
-		var/obj/mecha/M = the_target
-		if(M.occupant)
-			return can_attack(M.occupant)
+	if(istype(the_target, /obj/vehicle/sealed/mecha))
+		var/obj/vehicle/sealed/mecha/M = the_target
+		if(M.occupant_legacy)
+			return can_attack(M.occupant_legacy)
 		return destructive // Empty mechs are 'neutral'.
 
 	if(istype(the_target, /obj/machinery/porta_turret))
 		var/obj/machinery/porta_turret/P = the_target
 		if(P.machine_stat & BROKEN)
 			return FALSE // Already dead.
-		if(P.faction == holder.faction)
+		if(holder.has_iff_faction(P.faction))
 			return FALSE // Don't shoot allied turrets.
 		if(!P.raised && !P.raising)
 			return FALSE // Turrets won't get hurt if they're still in their cover.
@@ -235,7 +235,7 @@
 	if(!hostile && !retaliate) // Not allowed to defend ourselves.
 		ai_log("react_to_attack_polaris() : Was attacked by [attacker], but we are not allowed to attack back.", AI_LOG_TRACE)
 		return FALSE
-	if(holder.IIsAlly(attacker)) // I'll overlook it THIS time...
+	if(ismob(attacker) && holder.IIsAlly(attacker)) // I'll overlook it THIS time...
 		ai_log("react_to_attack_polaris() : Was attacked by [attacker], but they were an ally.", AI_LOG_TRACE)
 		return FALSE
 	if(target) // Already fighting someone. Switching every time we get hit would impact our combat performance.
@@ -243,7 +243,7 @@
 			ai_log("react_to_attack_polaris() : Was attacked by [attacker], but we already have a target.", AI_LOG_TRACE)
 			on_attacked(attacker) // So we attack immediately and not threaten.
 			return FALSE
-		else if(attacker in attackers && world.time > last_target_time + 3 SECONDS)	// Otherwise, let 'er rip
+		else if((attacker in attackers) && world.time > last_target_time + 3 SECONDS)	// Otherwise, let 'er rip
 			ai_log("react_to_attack_polaris() : Was attacked by [attacker]. Can retaliate, waited 3 seconds.", AI_LOG_INFO)
 			on_attacked(attacker) // So we attack immediately and not threaten.
 			return give_target(attacker) // Also handles setting the appropiate stance.

@@ -141,7 +141,6 @@
 		else
 			for(var/obj/machinery/telecomms/T in GLOB.telecomms_list)
 				add_link(T)
-	return ..()
 
 /obj/machinery/telecomms/Destroy()
 	GLOB.telecomms_list -= src
@@ -363,7 +362,7 @@
 			return UI_CLOSE
 	. = ..()
 
-/obj/machinery/telecomms/attack_hand(mob/user, list/params)
+/obj/machinery/telecomms/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	ui_interact(user)
 
 /obj/machinery/telecomms/ui_interact(mob/user, datum/tgui/ui)

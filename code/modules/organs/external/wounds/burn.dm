@@ -1,6 +1,6 @@
 /** BURNS **/
 /datum/wound/burn
-	damage_type = BURN
+	wound_type = WOUND_TYPE_BURN
 	max_bleeding_stage = 0
 
 /datum/wound/burn/bleeding()
