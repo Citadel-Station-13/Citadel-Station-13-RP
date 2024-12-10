@@ -49,7 +49,7 @@
 /datum/blood_holder/proc/checked_draw(amount) as /datum/blood_mixture
 	if(get_total_volume() < amount)
 		return null
-	var/datum/blood_mixture/taken = take_blood_mixture(amount)
+	var/datum/blood_mixture/taken = draw(amount)
 	// assert that it is enough
 	taken.ctx_return_amount = amount
 	return taken
@@ -68,7 +68,7 @@
  */
 /datum/blood_holder/proc/draw(amount, infinite) as /datum/blood_mixture
 	var/datum/blood_mixture/creating = new
-	creating.fragments = list()take_checked_blood_mixture
+	creating.fragments = list()
 	#warn impl fragments self/others, amounts
 	return creating
 
@@ -185,7 +185,7 @@
 		return FALSE
 
 	var/our_rh = our_blood_type[length(our_blood_type)] == "+"
-	var/their_rh = their_blood_type[length(their_blood_type)]" == "+"
+	var/their_rh = their_blood_type[length(their_blood_type)] == "+"
 
 	if(their_rh && !our_rh)
 		return FALSE

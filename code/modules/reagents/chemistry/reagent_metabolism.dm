@@ -21,3 +21,7 @@
 	///
 	/// * This is reset if we stop overdosing, even for a single tick.
 	var/cycles_overdosing = 0
+
+	//! LEGACY LOOKUP VARIABLES !//
+	/// set to volume remaining
+	var/legacy_volume_remaining

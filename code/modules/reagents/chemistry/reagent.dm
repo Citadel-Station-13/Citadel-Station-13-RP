@@ -230,6 +230,7 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 	metabolism.peak_dose = max(volume, metabolism.peak_dose)
 	metabolism.total_processed_dose = min(metabolism.peak_dose, metabolism.total_processed_dose + removed)
 	metabolism.cycles_so_far++
+	metabolism.legacy_volume_remaining = volume
 	if(removed >= (metabolism * 0.1) || removed >= 0.1) // If there's too little chemical, don't affect the mob, just remove it
 		switch(active_metab.metabolism_class)
 			if(CHEM_INJECT)

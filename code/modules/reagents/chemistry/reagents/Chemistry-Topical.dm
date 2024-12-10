@@ -114,7 +114,7 @@
 		if(prob(5))// Speed boost and emotes
 			M.emote(pick("twitch", "blink_r", "shiver"))
 		if(world.time > (data + (60*10)))
-			data = world.time
+			metabolism.blackboard["last-message"] = world.time
 			to_chat(M, "<span class='warning'>You feel like all your nerves are itching.</span>")
 
 /datum/reagent/topical/neurolaze/legacy_affect_blood(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)

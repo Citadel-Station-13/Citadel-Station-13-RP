@@ -1122,13 +1122,13 @@
 /datum/reagent/spaceacillin/legacy_affect_blood(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	..()
 	if(alien == IS_SLIME)
-		if(volume <= 0.1 && data != -1)
-			data = -1
+		if(metabolism.legacy_volume_remaining <= 0.1 && metabolism.blackboard["last-message"] !+ -1)
+			metabolism.blackboard["last-message"] = -1
 			to_chat(M, "<span class='notice'>You regain focus...</span>")
 		else
 			var/delay = (5 MINUTES)
-			if(world.time > data + delay)
-				data = world.time
+			if(world.time > metabolism.blackboard["last-message"] + delay)
+				metabolism.blackboard["last-message"] = world.time
 				to_chat(M, "<span class='warning'>Your senses feel unfocused, and divided.</span>")
 	M.add_chemical_effect(CE_ANTIBIOTIC, dose >= overdose ? ANTIBIO_OD : ANTIBIO_NORM)
 
@@ -1154,13 +1154,13 @@
 	var/mob/living/carbon/human/H = M
 
 	if(ishuman(M) && alien == IS_SLIME) //Everything about them is treated like a targetted organism. Widespread bodily function begins to fail.
-		if(volume <= 0.1 && data != -1)
-			data = -1
+		if(metabolism.legacy_volume_remaining <= 0.1 && metabolism.blackboard["last-message"] !+ -1)
+			metabolism.blackboard["last-message"] = -1
 			to_chat(M, "<span class='notice'>Your body ceases its revolt.</span>")
 		else
 			var/delay = (3 MINUTES)
-			if(world.time > data + delay)
-				data = world.time
+			if(world.time > metabolism.blackboard["last-message"] + delay)
+				metabolism.blackboard["last-message"] = world.time
 				to_chat(M, "<span class='critical'>It feels like your body is revolting!</span>")
 		M.Confuse(7)
 		M.adjustFireLoss(removed * 2)
@@ -1226,13 +1226,13 @@
 /datum/reagent/spacomycaze/legacy_affect_touch(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	..()
 	if(alien == IS_SLIME)
-		if(volume <= 0.1 && data != -1)
-			data = -1
+		if(metabolism.legacy_volume_remaining <= 0.1 && metabolism.blackboard["last-message"] !+ -1)
+			metabolism.blackboard["last-message"] = -1
 			to_chat(M, "<span class='notice'>The itching fades...</span>")
 		else
 			var/delay = (2 MINUTES)
-			if(world.time > data + delay)
-				data = world.time
+			if(world.time > metabolism.blackboard["last-message"] + delay)
+				metabolism.blackboard["last-message"] = world.time
 				to_chat(M, "<span class='warning'>Your skin itches.</span>")
 
 	M.add_chemical_effect(CE_ANTIBIOTIC, dose >= overdose ? ANTIBIO_OD : ANTIBIO_NORM)
@@ -1376,12 +1376,12 @@
 /datum/reagent/methylphenidate/legacy_affect_blood(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	if(alien == IS_DIONA)
 		return
-	if(volume <= 0.1 && data != -1)
-		data = -1
+	if(metabolism.legacy_volume_remaining <= 0.1 && metabolism.blackboard["last-message"] !+ -1)
+		metabolism.blackboard["last-message"] = -1
 		to_chat(M, "<span class='warning'>You lose focus...</span>")
 	else
 		if(world.time > data + ANTIDEPRESSANT_MESSAGE_DELAY)
-			data = world.time
+			metabolism.blackboard["last-message"] = world.time
 			to_chat(M, "<span class='notice'>Your mind feels focused and undivided.</span>")
 
 /datum/reagent/citalopram
@@ -1399,12 +1399,12 @@
 /datum/reagent/citalopram/legacy_affect_blood(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	if(alien == IS_DIONA)
 		return
-	if(volume <= 0.1 && data != -1)
-		data = -1
+	if(metabolism.legacy_volume_remaining <= 0.1 && metabolism.blackboard["last-message"] !+ -1)
+		metabolism.blackboard["last-message"] = -1
 		to_chat(M, "<span class='warning'>Your mind feels a little less stable...</span>")
 	else
 		if(world.time > data + ANTIDEPRESSANT_MESSAGE_DELAY)
-			data = world.time
+			metabolism.blackboard["last-message"] = world.time
 			to_chat(M, "<span class='notice'>Your mind feels stable... a little stable.</span>")
 
 /datum/reagent/paroxetine
@@ -1422,12 +1422,12 @@
 /datum/reagent/paroxetine/legacy_affect_blood(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	if(alien == IS_DIONA)
 		return
-	if(volume <= 0.1 && data != -1)
-		data = -1
+	if(metabolism.legacy_volume_remaining <= 0.1 && metabolism.blackboard["last-message"] !+ -1)
+		metabolism.blackboard["last-message"] = -1
 		to_chat(M, "<span class='warning'>Your mind feels much less stable...</span>")
 	else
 		if(world.time > data + ANTIDEPRESSANT_MESSAGE_DELAY)
-			data = world.time
+			metabolism.blackboard["last-message"] = world.time
 			if(prob(1))
 				to_chat(M, "<span class='warning'>Your mind breaks apart...</span>")
 				M.adjustHallucination(200)
@@ -1467,12 +1467,12 @@
 /datum/reagent/qerr_quem/legacy_affect_blood(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	if(alien == IS_DIONA)
 		return
-	if(volume <= 0.1 && data != -1)
-		data = -1
+	if(metabolism.legacy_volume_remaining <= 0.1 && metabolism.blackboard["last-message"] !+ -1)
+		metabolism.blackboard["last-message"] = -1
 		to_chat(M, "<span class='warning'>You feel antsy, your concentration wavers...</span>")
 	else
 		if(world.time > data + ANTIDEPRESSANT_MESSAGE_DELAY)
-			data = world.time
+			metabolism.blackboard["last-message"] = world.time
 			to_chat(M, "<span class='notice'>You feel invigorated and calm.</span>")
 
 // This exists to cut the number of chemicals a merc borg has to juggle on their hypo.
