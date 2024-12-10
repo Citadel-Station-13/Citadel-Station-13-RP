@@ -3882,6 +3882,7 @@
 #include "code\modules\mob\living\silicon\robot\login.dm"
 #include "code\modules\mob\living\silicon\robot\mobility.dm"
 #include "code\modules\mob\living\silicon\robot\photos.dm"
+#include "code\modules\mob\living\silicon\robot\robot-rendering.dm"
 #include "code\modules\mob\living\silicon\robot\robot.dm"
 #include "code\modules\mob\living\silicon\robot\robot_animation_vr.dm"
 #include "code\modules\mob\living\silicon\robot\robot_chassis.dm"
