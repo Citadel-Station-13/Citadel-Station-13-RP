@@ -18,14 +18,15 @@
 
 /obj/structure/flora/tree/Initialize(mapload)
 	icon_state = choose_icon_state()
-
 	return ..()
 
-/obj/structure/flora/tree/update_transform()
-	var/matrix/M = matrix()
-	M.Scale(icon_scale_x, icon_scale_y)
-	M.Translate(0, 16*(icon_scale_y-1))
-	animate(src, transform = M, time = 10)
+/obj/structure/flora/tree/apply_transform(matrix/to_apply)
+	animate(src, transform = to_apply, time = 1 SECONDS)
+
+/obj/structure/flora/tree/base_transform(matrix/applying)
+	var/matrix/base_matrix = ..()
+	base_matrix.Translate(0, 16 * (icon_scale_y - 1))
+	return base_matrix
 
 // Override this for special icons.
 /obj/structure/flora/tree/proc/choose_icon_state()
