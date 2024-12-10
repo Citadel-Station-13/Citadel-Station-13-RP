@@ -806,7 +806,7 @@
 					var/old_underlays = T.underlays.Copy()
 
 					if(platingRequired)
-						if(istype(B, SSmapping.level_baseturf(B.z)))
+						if(istype(B, SSmapping.level_get_baseturf(B.z)))
 							continue moving
 
 					var/turf/X = B
