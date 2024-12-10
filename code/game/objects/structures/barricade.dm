@@ -13,7 +13,12 @@
 
 /obj/structure/barricade/Initialize(mapload, datum/prototype/material/material_like)
 	if(!isnull(material_like))
-		set_primary_material(RSmaterials.fetch(material_like))
+		var/resolved_material = RSmaterials.fetch_or_defer(material_like)
+		switch(resolved_material)
+			if(REPOSITORY_FETCH_DEFER)
+				// todo: handle
+			else
+				set_primary_material(resolved_material)
 	return ..()
 
 /obj/structure/barricade/update_material_single(datum/prototype/material/material)

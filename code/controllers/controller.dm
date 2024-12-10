@@ -15,6 +15,9 @@
 	//  todo: kil
 	var/verbose_logging = FALSE
 
+/datum/controller/vv_delete()
+	return FALSE
+
 /**
  * Called to initialize a controller.
  *

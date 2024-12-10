@@ -30,7 +30,7 @@ jobs:
   run_linters:
     name: Run Linters
     needs: start_gate
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     timeout-minutes: 10
 
     steps:
@@ -75,6 +75,7 @@ jobs:
           bash tools/ci/install_node.sh
           bash tools/ci/install/install_spaceman_dmm.sh dreamchecker
           bash tools/ci/install_ripgrep.sh
+          sudo apt install -y python3-pip
           tools/bootstrap/python -c ''
       - name: Give Linters A Go
         id: linter-setup
@@ -140,19 +141,25 @@ jobs:
         options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
     steps:
       - uses: actions/checkout@v4
+      - name: Restore Flyway
+        uses: actions/cache@v4
+        with:
+          path: ~/flyway
+          key: ${{ runner.os }}-flyway-${{ hashFiles('dependencies.sh') }}
       - name: Restore BYOND cache
         uses: actions/cache@v4
         with:
           path: ~/BYOND
           key: ${{ runner.os }}-byond-${{ hashFiles('dependencies.sh') }}
+      - name: Install flyway
+        run: |
+          bash tools/ci/install/install_flyway.sh
       - name: Setup database
         run: |
           sudo systemctl start mysql
-          mysql -u root -proot -e 'CREATE DATABASE ss13_ci;'
-          mysql -u root -proot ss13_ci < SQL/database_schema_prefixed.sql
-          mysql -u root -proot ss13_ci < SQL/unified_schema.sql
-        # mysql -u root -proot -e 'CREATE DATABASE tg_ci_prefixed;'
-        # mysql -u root -proot tg_ci_prefixed < SQL/tgstation_schema_prefixed.sql
+          mysql -u root -proot -e 'CREATE DATABASE ss13;'
+          source dependencies.sh
+          ~/flyway/flyway-$FLYWAY_VERSION/flyway -user=root -password=root -url=jdbc:mariadb://localhost:3306/ss13 -locations="filesystem:sql/migrations" migrate
       - name: Install rust-g
         run: |
           bash tools/ci/install/install_rust_g.sh

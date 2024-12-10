@@ -1,7 +1,7 @@
 /turf/simulated/wall/proc/init_materials(datum/prototype/material/outer = material_outer, datum/prototype/material/reinforcing = material_reinf, datum/prototype/material/girder = material_girder)
-	outer = RSmaterials.fetch(outer)
-	reinforcing = RSmaterials.fetch(reinforcing)
-	girder = RSmaterials.fetch(girder)
+	outer = RSmaterials.fetch_local_or_throw(outer)
+	reinforcing = RSmaterials.fetch_local_or_throw(reinforcing)
+	girder = RSmaterials.fetch_local_or_throw(girder)
 
 	if(!isnull(outer))
 		material_outer = outer

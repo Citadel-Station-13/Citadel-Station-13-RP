@@ -108,12 +108,16 @@ SUBSYSTEM_DEF(materials)
 	// todo: optimize
 	. = list()
 	for(var/i in 1 to length(L))
-		var/key = L[i]
-		var/datum/prototype/material/resolved = RSmaterials.fetch(key)
-		if(isnull(resolved))
-			continue
+		var/datum/prototype/material/key = L[i]
 		var/value = L[key]
-		.[resolved.id] = value
+		if(istype(key))
+			key = key.id
+		else if(ispath(key))
+			key = initial(key.id)
+		else if(istext(key))
+		else
+			CRASH("what? '[key]'")
+		.[key] = value
 
 /**
  * ensures a list is full of material references for keys
@@ -126,10 +130,14 @@ SUBSYSTEM_DEF(materials)
 	. = list()
 	for(var/i in 1 to length(L))
 		var/key = L[i]
-		var/datum/prototype/material/resolved = RSmaterials.fetch(key)
-		if(isnull(resolved))
-			continue
 		var/value = L[key]
+		var/datum/prototype/material/resolved = RSmaterials.fetch_or_defer(key)
+		switch(resolved)
+			if(null)
+				continue
+			if(REPOSITORY_FETCH_DEFER)
+				// todo: handle this
+				continue
 		.[resolved] = value
 
 /**
@@ -142,9 +150,15 @@ SUBSYSTEM_DEF(materials)
 	. = list()
 	for(var/i in 1 to length(L))
 		var/key = L[i]
-		var/value = L[key]
-		var/datum/prototype/material/resolved = RSmaterials.fetch(value)
-		.[key] = resolved?.id
+		var/datum/prototype/material/value = L[key]
+		if(istype(value))
+			value = value.id
+		else if(ispath(value))
+			value = initial(value.id)
+		else if(istext(value))
+		else
+			CRASH("what? '[value]'")
+		.[key] = value
 
 /**
  * ensures a list is full of material references for values
@@ -157,7 +171,12 @@ SUBSYSTEM_DEF(materials)
 	for(var/i in 1 to length(L))
 		var/key = L[i]
 		var/value = L[key]
-		var/datum/prototype/material/resolved = RSmaterials.fetch(value)
+		var/datum/prototype/material/resolved = RSmaterials.fetch_or_defer(value)
+		switch(resolved)
+			if(REPOSITORY_FETCH_DEFER)
+				// todo: handle this
+			else
+				value = resolved
 		.[key] = resolved
 
 /**

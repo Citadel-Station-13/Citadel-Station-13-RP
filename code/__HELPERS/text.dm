@@ -1,22 +1,11 @@
 /**
  * Holds procs designed to help with filtering text
  * Contains groups:
- *	! SQL sanitization
  *	! Text sanitization
  *	! Text searches
  *	! Text modification
  *	! Misc
  */
-
-/**
- *! SQL sanitization
- */
-
-/proc/format_table_name(table)
-	return CONFIG_GET(string/sql_server_prefix) + table
-
-/proc/format_unified_table_name(table)
-	return CONFIG_GET(string/sql_unified_prefix) + table
 
 /**
  *! Text sanitization
