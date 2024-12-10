@@ -24122,6 +24122,13 @@
 	},
 /turf/space,
 /area/space)
+"ppZ" = (
+/obj/structure/table/glass,
+/obj/machinery/photocopier/faxmachine{
+	department = "Research Break Room"
+	},
+/turf/simulated/floor/carpet/purcarpet,
+/area/rnd/breakroom)
 "pqy" = (
 /obj/effect/floor_decal/borderfloor/corner{
 	dir = 1
@@ -52922,9 +52929,9 @@ xIf
 xnR
 svR
 gZg
-xJb
+ppZ
 sxo
-aTQ
+xJb
 gZg
 xaR
 nBU
