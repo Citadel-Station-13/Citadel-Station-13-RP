@@ -734,14 +734,6 @@
 /turf/simulated/floor/tiled,
 /area/medical/medbay_primary_storage)
 "azx" = (
-/obj/machinery/door/blast/shutters{
-	density = 0;
-	dir = 2;
-	icon_state = "shutter0";
-	id = "medbayquar";
-	name = "Medbay Emergency Lockdown Shutters";
-	opacity = 0
-	},
 /obj/machinery/door/firedoor,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -752,7 +744,14 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 4
 	},
-/obj/structure/disposalpipe/segment,
+/obj/machinery/door/blast/shutters{
+	density = 0;
+	dir = 2;
+	icon_state = "shutter0";
+	id = "medbayquar";
+	name = "Medbay Emergency Lockdown Shutters";
+	opacity = 0
+	},
 /turf/simulated/floor/tiled/white,
 /area/medical/reception)
 "azK" = (
@@ -6259,10 +6258,6 @@
 	},
 /obj/machinery/door/firedoor/glass{
 	dir = 4
-	},
-/obj/machinery/door/window/westleft{
-	name = "Chemistry Reception Desk";
-	req_one_access = list(5)
 	},
 /obj/machinery/door/blast/shutters{
 	dir = 8;
@@ -21436,26 +21431,15 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/sleeper)
 "nKL" = (
-/obj/machinery/door/blast/shutters{
-	density = 0;
-	dir = 2;
-	icon_state = "shutter0";
-	id = "medbayquar";
-	name = "Medbay Emergency Lockdown Shutters";
-	opacity = 0
-	},
 /obj/machinery/door/firedoor,
-/obj/effect/floor_decal/corner/paleblue/border{
-	dir = 8
-	},
 /obj/effect/floor_decal/corner/paleblue/border{
 	dir = 8
 	},
 /obj/effect/floor_decal/spline/plain{
 	dir = 8
 	},
-/obj/machinery/door/airlock/multi_tile/glass/medical{
-	name = "Medbay Lobby"
+/obj/structure/cable{
+	icon_state = "1-2"
 	},
 /obj/machinery/door/blast/shutters{
 	density = 0;
@@ -21465,8 +21449,8 @@
 	name = "Medbay Emergency Lockdown Shutters";
 	opacity = 0
 	},
-/obj/structure/cable{
-	icon_state = "1-2"
+/obj/machinery/door/airlock/multi_tile/glass/medical{
+	name = "Medbay Lobby"
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/reception)
@@ -23089,6 +23073,7 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
+/obj/map_helper/access_helper/airlock/station/medical/department,
 /turf/simulated/floor/tiled,
 /area/crew_quarters/medical_restroom)
 "oNw" = (
@@ -24810,27 +24795,13 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/medbay3)
 "pHO" = (
-/obj/machinery/door/blast/shutters{
-	density = 0;
-	dir = 2;
-	icon_state = "shutter0";
-	id = "medbayquar";
-	name = "Medbay Emergency Lockdown Shutters";
-	opacity = 0
-	},
 /obj/machinery/door/firedoor,
-/obj/effect/floor_decal/corner/paleblue/border{
-	dir = 8
-	},
 /obj/effect/floor_decal/corner/paleblue/border{
 	dir = 8
 	},
 /obj/effect/floor_decal/spline/plain{
 	dir = 8
 	},
-/obj/machinery/door/airlock/multi_tile/glass/medical{
-	name = "Medbay Lobby"
-	},
 /obj/machinery/door/blast/shutters{
 	density = 0;
 	dir = 2;
@@ -24838,6 +24809,9 @@
 	id = "medbayquar";
 	name = "Medbay Emergency Lockdown Shutters";
 	opacity = 0
+	},
+/obj/machinery/door/airlock/multi_tile/glass/medical{
+	name = "Medbay Lobby"
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/reception)
@@ -25803,6 +25777,7 @@
 /obj/machinery/door/firedoor/glass{
 	dir = 4
 	},
+/obj/map_helper/access_helper/airlock/station/medical/department,
 /turf/simulated/floor/tiled/white,
 /area/medical/virology_fore_access)
 "qjz" = (
@@ -28306,20 +28281,16 @@
 	opacity = 0
 	},
 /obj/machinery/door/firedoor,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/structure/disposalpipe/segment,
-/obj/effect/floor_decal/corner/paleblue/border{
-	dir = 4
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 1
-	},
 /obj/effect/floor_decal/corner/paleblue/border{
 	dir = 4
 	},
 /obj/effect/floor_decal/spline/plain{
 	dir = 4
+	},
+/obj/structure/disposalpipe/segment,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 1
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/reception)
