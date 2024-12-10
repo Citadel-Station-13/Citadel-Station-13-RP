@@ -25249,11 +25249,17 @@
 /turf/simulated/floor/plating,
 /area/maintenance/substation/cargo)
 "rYo" = (
-/obj/structure/sign/directions/evac{
-	dir = 8
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 1
 	},
-/turf/simulated/wall/prepainted/civilian,
-/area/crew_quarters/kitchen)
+/obj/effect/floor_decal/corner/navblue/border{
+	dir = 1
+	},
+/obj/machinery/station_map{
+	pixel_y = 32
+	},
+/turf/simulated/floor/tiled,
+/area/endeavour/hallway/d3afthall)
 "rYq" = (
 /obj/structure/cable/green{
 	icon_state = "1-4"
@@ -44712,8 +44718,8 @@ pir
 pir
 pir
 pir
+pir
 rYo
-iSj
 rfb
 kGS
 glG
