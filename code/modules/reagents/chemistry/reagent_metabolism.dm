@@ -25,3 +25,5 @@
 	//! LEGACY LOOKUP VARIABLES !//
 	/// set to volume remaining
 	var/legacy_volume_remaining
+	/// set to data
+	var/legacy_data
