@@ -19,12 +19,6 @@
 	/// Total amount of guest blood volume
 	var/guest_blood_volume = 0
 
-	//! legacy crap !//
-	var/list/legacy_antibodies
-	var/list/legacy_virus2
-	var/legacy_trace_chem
-	//! end !//
-
 /datum/blood_holder/proc/set_host_fragment_to(datum/blood_fragment/fragment)
 	host_blood = fragment.clone()
 
@@ -35,10 +29,10 @@
 	host_blood_volume = max(host_blood_volume + amount, 0)
 
 /datum/blood_holder/proc/set_volume(datum/blood_fragment/fragment, amount)
-	#warn impl
+	#warn impl; check for host blood
 
 /datum/blood_holder/proc/adjust_volume(datum/blood_fragment/fragment, amount)
-	#warn impl
+	#warn impl; check for host blood
 
 /datum/blood_holder/proc/get_total_volume()
 	return host_blood_volume + guest_blood_volume
@@ -47,6 +41,24 @@
  * Takes a blood mixture from us.
  *
  * * Expensive.
+ * * Fails if we don't have enough.
+ * * Does not put viruses/antibodies/etc into it; that's the responsibiliy of the host, for now.
+ *
+ * @return mixture taken or null
+ */
+/datum/blood_holder/proc/checked_draw(amount) as /datum/blood_mixture
+	if(get_total_volume() < amount)
+		return null
+	var/datum/blood_mixture/taken = take_blood_mixture(amount)
+	// assert that it is enough
+	taken.ctx_return_amount = amount
+	return taken
+
+/**
+ * Takes a blood mixture from us.
+ *
+ * * Expensive.
+ * * Does not put viruses/antibodies/etc into it; that's the responsibiliy of the host, for now.
  *
  * @params
  * * amount - amount to take
@@ -54,17 +66,13 @@
  *
  * @return mixture taken
  */
-/datum/blood_holder/proc/take_blood_mixture(amount, infinite) as /datum/blood_mixture
+/datum/blood_holder/proc/draw(amount, infinite) as /datum/blood_mixture
 	var/datum/blood_mixture/creating = new
-	if(legacy_antibodies)
-		creating.legacy_antibodies = legacy_antibodies.Copy()
-	if(legacy_virus2)
-		creating.legacy_virus2 = legacy_virus2.Copy()
-	if(legacy_trace_chem)
-		creating.legacy_trace_chem = legacy_trace_chem
-	creating.fragments = list()
-	#warn impl fragments self/others
+	creating.fragments = list()take_checked_blood_mixture
+	#warn impl fragments self/others, amounts
 	return creating
+
+#warn how to handle color? compute_color_from_data, don't forget!
 
 /**
  * Reagent blood data
@@ -146,6 +154,42 @@
 		return FALSE
 	if(other.legacy_blood_type != src.legacy_blood_type)
 		return FALSE
+	return TRUE
+
+/**
+ * Checks if other is compatible with self.
+ *
+ * * This is **not** a symmetric relation. Some bloods are universally compatible with others,
+ *   and accept everything.
+ * * This means that if host is not compatible with donor, but donor is compatible with host,
+ *   the host attacks the donoar, even if the donor wouldn't if it was reversed.
+ */
+/datum/blood_fragment/proc/compatible_with_self(datum/blood_fragment/other)
+	return legacy_blood_compatible_with_self(legacy_blood_type, other.legacy_blood_type, legacy_species, other.legacy_species)
+
+/proc/legacy_blood_compatible_with_self(our_blood_type, their_blood_type, our_species_name, their_species_name)
+	// todo: remove species check, we have dumb xeno-compatibility-like canon anyways
+	if(our_species_name && their_species_name && (their_species_name != our_species_name))
+		return FALSE
+
+	var/our_antigen = copytext(our_blood_type, 1, length(legacy_blood_dna))
+	var/their_antigen = copytext(their_blood_type, 1, length(their_blood_type))
+
+	var/static/antigen_incompatible_matrix = list(
+		"AB" = list(),
+		"A" = list("AB" = TRUE, "B" = TRUE),
+		"B" = list("AB" = TRUE, "A" = TRUE),
+		"O" = list("AB" = TRUE, "A" = TRUE, "B" = TRUE),
+	)
+	if(antigen_incompatible_matrix[our_antigen]?[their_antigen])
+		return FALSE
+
+	var/our_rh = our_blood_type[length(our_blood_type)] == "+"
+	var/their_rh = their_blood_type[length(their_blood_type)]" == "+"
+
+	if(their_rh && !our_rh)
+		return FALSE
+
 	return TRUE
 
 /**

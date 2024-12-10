@@ -218,8 +218,8 @@
 				visible_message(SPAN_HEAR("[src] beeps loudly."))
 				playsound(loc, 'sound/machines/twobeep_high.ogg', 50, TRUE)
 			var/atom/movable/target = reagent_container
-			attached_victim.take_blood_legacy(target, amount)
-			update_appearance()
+			if(attached_victim.take_blood_legacy(target, amount) > 0)
+				update_appearance()
 
 /// Called when an IV is attached.
 /obj/machinery/iv_drip/proc/attach_iv(mob/living/target, mob/user)

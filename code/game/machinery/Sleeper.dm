@@ -257,7 +257,7 @@
 					),
 					dialysis_reagent_filter_flags,
 				)
-				occupant.vessel.trans_to_holder(beaker.reagents, filtered_volume * (1 / 3))
+				occupant.take_blood_legacy(beaker, filtered_volume * (1 / 3))
 			else
 				toggle_filter()
 

@@ -196,13 +196,7 @@
 			busy = TRUE
 			if(do_atom(src, L, extra_checks=CALLBACK(L, TYPE_PROC_REF(/mob/living, can_inject),null,0,BP_TORSO,bypass),uninterruptible = bypass))
 				var/mob/living/carbon/LB = L
-				var/datum/reagent/B
-				B = LB.take_blood_legacy(src, tramount)
-				if(B)
-					reagents.reagent_list += B
-					reagents.update_total()
-					AM.on_reagent_change()
-					reagents.reconsider_reactions()
+				if(LB.take_blood_legacy(src, tramount) > 0)
 					L.visible_message("<span class='danger'>[acting_object] takes a blood sample from [L]!</span>", \
 					"<span class='userdanger'>[acting_object] takes a blood sample from you!</span>")
 				else

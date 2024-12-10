@@ -1078,11 +1078,11 @@
 	reagent_filter_flags = REAGENT_FILTER_NO_COMMON_BIOANALYSIS
 	affects_robots = TRUE
 
-/datum/reagent/nanite/shredding/legacy_affect_blood(mob/living/carbon/M, alien, removed)
+/datum/reagent/nanite/shredding/legacy_affect_blood(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	M.adjustBruteLoss(40 * removed) //Bicaridine can outheal it (unless Metabolism is less then 75%).
 	M.adjustOxyLoss(40 * removed)
 
-/datum/reagent/nanite/shredding/affect_ingest(mob/living/carbon/M, alien, removed) //Now they can be used in chemsmoke (Nanite Kill Clouds)
+/datum/reagent/nanite/shredding/legacy_affect_ingest(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism) //Now they can be used in chemsmoke (Nanite Kill Clouds)
 	M.adjustBruteLoss(40 * removed)
 	M.adjustOxyLoss(40 * removed)
 
@@ -1099,7 +1099,7 @@
 	reagent_filter_flags = REAGENT_FILTER_NO_COMMON_BIOANALYSIS
 	affects_robots = TRUE
 
-/datum/reagent/nanite/irradiated/legacy_affect_blood(mob/living/carbon/M, alien, removed)
+/datum/reagent/nanite/irradiated/legacy_affect_blood(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	// todo: this should be more brutal on people around the person without being too brutal on the person
 	// new radiation just kind of scales pretty badly
 	/// rads to everyone around you
@@ -1107,7 +1107,7 @@
 	/// radiate the person a bit just in case they're armored
 	M.rad_act(RAD_INTENSITY_CHEM_IRRADIATED_NANITES_SELF)
 
-/datum/reagent/nanite/irradiated/affect_ingest(mob/living/carbon/M, alien, removed)
+/datum/reagent/nanite/irradiated/affect_ingest(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	radiation_pulse(M, RAD_INTENSITY_CHEM_IRRADIATED_NANITES)
 	M.rad_act(RAD_INTENSITY_CHEM_IRRADIATED_NANITES_SELF)
 
@@ -1125,7 +1125,7 @@
 	filtered_organs = list(O_SPLEEN)
 	affects_robots = TRUE
 
-/datum/reagent/nanite/neurophage/legacy_affect_blood(mob/living/carbon/M, alien, removed)
+/datum/reagent/nanite/neurophage/legacy_affect_blood(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	M.adjustBrainLoss(20 * removed)	// Alkysine can outheal it, however since mrate is so slow you need 5 times the Alky to fully heal through it
 	M.adjustBruteLoss(20 * removed)
 	if(M.ingested)
@@ -1136,7 +1136,7 @@
 			R.remove_self(removed * 10)
 
 
-/datum/reagent/nanite/neurophage/legacy_affect_ingest(mob/living/carbon/M, alien, removed)
+/datum/reagent/nanite/neurophage/legacy_affect_ingest(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	M.adjustBrainLoss(20 * removed)
 	M.adjustBruteLoss(20 * removed)
 	if(M.ingested)
@@ -1157,13 +1157,13 @@
 	color = "#555555"
 	metabolism = 0.01
 
-/datum/reagent/nanite/heartkill/legacy_affect_ingest(mob/living/carbon/M, alien, removed) //Damage handled using the heart_attack() proc in heart.dm
+/datum/reagent/nanite/heartkill/legacy_affect_ingest(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism) //Damage handled using the heart_attack() proc in heart.dm
 	var/mob/living/carbon/human/H = M
 	if(istype(H))
 		if(prob(5))
 			H.heart_attack()
 
-/datum/reagent/nanite/heartkill/legacy_affect_blood(mob/living/carbon/M, alien, removed)//Damage handled using the heart_attack() proc in heart.dm
+/datum/reagent/nanite/heartkill/legacy_affect_blood(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)//Damage handled using the heart_attack() proc in heart.dm
 	var/mob/living/carbon/human/H = M
 	if(istype(H))
 		if(prob(5))
@@ -1180,7 +1180,7 @@
 	metabolism = 2.50
 	affects_robots = TRUE
 
-/datum/reagent/grubshock/legacy_affect_blood(mob/living/carbon/M, alien, removed)
+/datum/reagent/grubshock/legacy_affect_blood(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	M.electrocute_act(10 * removed, src, 1.0, BP_TORSO, 0)
 	if(M.ingested)
 		for(var/datum/reagent/nanite/R in M.ingested.reagent_list)
@@ -1190,7 +1190,7 @@
 			R.remove_self(removed * 20)
 
 
-/datum/reagent/grubshock/legacy_affect_ingest(mob/living/carbon/M, alien, removed)
+/datum/reagent/grubshock/legacy_affect_ingest(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	M.electrocute_act(10 * removed, src, 1.0, BP_TORSO, 0)
 	if(M.ingested)
 		for(var/datum/reagent/nanite/R in M.ingested.reagent_list)
@@ -1199,7 +1199,7 @@
 		for(var/datum/reagent/nanite/R in M.bloodstr.reagent_list)
 			R.remove_self(removed * 20)
 
-/datum/reagent/grubshock/affect_touch(mob/living/carbon/M, alien, removed)
+/datum/reagent/grubshock/affect_touch(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	M.electrocute_act(10 * volume, src, 1.0, BP_TORSO, 0)
 
 //This chem is for removing nanites without grubmeat
@@ -1213,7 +1213,7 @@
 
 	affects_robots = TRUE
 
-/datum/reagent/lessershock/legacy_affect_blood(mob/living/carbon/M, alien, removed)
+/datum/reagent/lessershock/legacy_affect_blood(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	M.electrocute_act(5 * removed, src, 1.0, BP_TORSO, 0)
 	if(M.ingested)
 		for(var/datum/reagent/nanite/R in M.ingested.reagent_list)
@@ -1222,7 +1222,7 @@
 		for(var/datum/reagent/nanite/R in M.bloodstr.reagent_list)
 			R.remove_self(removed)
 
-/datum/reagent/lessershock/legacy_affect_ingest(mob/living/carbon/M, alien, removed)
+/datum/reagent/lessershock/legacy_affect_ingest(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	M.electrocute_act(5 * removed, src, 1.0, BP_TORSO, 0)
 	if(M.ingested)
 		for(var/datum/reagent/nanite/R in M.ingested.reagent_list)
@@ -1231,7 +1231,7 @@
 		for(var/datum/reagent/nanite/R in M.bloodstr.reagent_list)
 			R.remove_self(removed)
 
-/datum/reagent/lessershock/legacy_affect_touch(mob/living/carbon/M, alien, removed)
+/datum/reagent/lessershock/legacy_affect_touch(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	M.electrocute_act(5 * volume, src, 1.0, BP_TORSO, 0)
 
 /datum/reagent/asbestos //asbestos removal handled in under datum/reagent/respirodaxon
@@ -1246,10 +1246,10 @@
 	reagent_filter_flags = REAGENT_FILTER_NO_COMMON_BIOANALYSIS
 	overdose = 10
 
-/datum/reagent/asbestos/legacy_affect_blood(mob/living/carbon/M, alien, removed)
+/datum/reagent/asbestos/legacy_affect_blood(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	M.ingested.add_reagent(/datum/reagent/asbestos, 0.02) //No idea what to do with injected asbestos I will simply say it goes to your lungs faster.
 
-/datum/reagent/asbestos/legacy_affect_ingest(mob/living/carbon/M, alien, removed)
+/datum/reagent/asbestos/legacy_affect_ingest(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	var/mob/living/carbon/human/H = M
 	if(prob(2))
 		M.emote("cough")
@@ -1289,10 +1289,10 @@
 	mrate_static = TRUE
 	reagent_filter_flags = REAGENT_FILTER_NO_COMMON_BIOANALYSIS
 
-/datum/reagent/polonium/legacy_affect_blood(mob/living/carbon/M, alien, removed)
+/datum/reagent/polonium/legacy_affect_blood(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	M.afflict_radiation(RAD_MOB_AFFLICT_STRENGTH_POL210(removed))
 
-/datum/reagent/polonium/legacy_affect_ingest(mob/living/carbon/M, alien, removed)
+/datum/reagent/polonium/legacy_affect_ingest(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	M.afflict_radiation(RAD_MOB_AFFLICT_STRENGTH_POL210(removed))
 
 /datum/reagent/polonium/touch_turf(turf/T)
@@ -1314,6 +1314,6 @@
 	mrate_static = TRUE
 	reagent_filter_flags = REAGENT_FILTER_NO_COMMON_BIOANALYSIS
 
-/datum/reagent/superhol/legacy_affect_ingest(mob/living/carbon/M, alien, removed)
+/datum/reagent/superhol/legacy_affect_ingest(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	M.bloodstr.add_reagent(/datum/reagent/ethanol, removed * 200) //Two Ethanol a tick enough so the drunkeness hits slow enough to be semi plausible
 	M.add_chemical_effect(CE_ALCOHOL_TOXIC, 5)

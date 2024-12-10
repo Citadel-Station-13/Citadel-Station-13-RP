@@ -1487,13 +1487,13 @@
 	scannable = TRUE
 	affects_robots = TRUE
 
-/datum/reagent/nanite/healing/legacy_affect_blood(mob/living/carbon/M, alien, removed)
+/datum/reagent/nanite/healing/legacy_affect_blood(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	M.heal_organ_damage(2 * removed, 2 * removed)
 	M.adjustOxyLoss(-4 * removed)
 	M.adjustToxLoss(-2 * removed)
 	M.adjustCloneLoss(-2 * removed)
 
-/datum/reagent/nanite/healing/legacy_affect_ingest(mob/living/carbon/M, alien, removed)
+/datum/reagent/nanite/healing/legacy_affect_ingest(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	M.heal_organ_damage(2 * removed, 2 * removed)
 	M.adjustOxyLoss(-4 * removed)
 	M.adjustToxLoss(-2 * removed)

@@ -14,21 +14,43 @@
  *
  * @params
  * * do_not_regenerate - if set, do not reset to species.blood_volume, instead use current
- * * do_not_purge - do not purge all traces like antibodies and viruses.
  */
-/mob/living/carbon/proc/reset_blood_to_species(do_not_regenerate, do_not_purge)
+/mob/living/carbon/proc/reset_blood_to_species(do_not_regenerate)
 	if(!blood_holder)
 		return
-
-	if(!do_not_purge)
-		blood_holder.legacy_trace_chem = null
-		blood_holder.legacy_virus2 = null
-		blood_holder.legacy_antibodies = list()
 
 	if(!do_not_regenerate)
 		blood_holder.set_host_volume(species.blood_volume)
 
 	blood_holder.set_host_fragment_to(create_natural_blood_fragment())
+
+/**
+ * Imprint ourselves on an outgoing blood mixture.
+ */
+/mob/living/carbon/proc/imprint_blood_mixture(datum/blood_mixture/mixture)
+	mixture.legacy_trace_chem = list2params(bloodstr.reagent_volumes)
+	mixture.legacy_virus2 = virus_copylist(virus2)
+	mixture.legacy_antibodies = antibodies?.Copy()
+
+/**
+ * Takes a blood mixture from ourselves.
+ *
+ * * Fails if we don't have enough.
+ *
+ * @params
+ * * amount - amount to take
+ * * infinite - allow taking any amount, don't actually remove any
+ *
+ * @return mixture or null
+ */
+/mob/living/carbon/proc/take_checked_blood_mixture(amount) as /datum/blood_mixture
+	if(!blood_holder)
+		return null
+	var/datum/blood_mixture/mixture = blood_holder.checked_draw(amount, infinite)
+	if(!mixture)
+		return null
+	imprint_blood_mixture(mixture)
+	return mixture
 
 /**
  * Takes a blood mixture from ourselves.
@@ -40,7 +62,13 @@
  * @return mixture or null
  */
 /mob/living/carbon/proc/take_blood_mixture(amount, infinite) as /datum/blood_mixture
-	return blood_holder?.take_blood_mixture(amount, infinite)
+	if(!blood_holder)
+		return null
+	var/datum/blood_mixture/mixture = blood_holder.draw(amount, infinite)
+	if(!mixture)
+		return null
+	imprint_blood_mixture(mixture)
+	return mixture
 
 /**
  * Puts a blood mixture into ourselves.
@@ -48,11 +76,41 @@
  * @params
  * * mixture - mixture descriptor
  * * amount - the amount. defaults to the mixture's `ctx_return_amount`.
+ *
+ * @return amount given
  */
 /mob/living/carbon/proc/give_blood_mixture(datum/blood_mixture/mixture, amount)
+	if(!blood_holder)
+		return 0
 	if(isnull(amount))
 		amount = mixture.ctx_return_amount
-	#warn impl
+
+	// give them the blood
+	blood_holder.adjust_volume(mixture, amount)
+	// give them the sniffles
+	var/list/i_hate_old_virology = virus_copylist(mixture.legacy_virus2)
+	for(var/id in i_hate_old_virology)
+		var/datum/disease2/the_coof = i_hate_old_virology[id]
+		infect_virus2(src, the_coof, TRUE)
+	// give them the anti-sniffles but only sometimes
+	// yes this does mean IV drips are very good for this. too bad!
+	// i don't care to deal with this dumb shit.
+	if(length(mixture.legacy_antibodies) && prob(5))
+		antibodies |= mixture.legacy_antibodies
+	// this is very questionable but this does mean that you can cross-contaminate chemicals via blood
+	// this dumb part is the chemicals aren't actually in the extracted reagent holder,
+	// so this only .. does anything to humans.
+	// oh well. here, let's fix this with this one simple trick:
+	// todo: taking blood should generally draw out a bit of the reagents in someone's bloodstream,
+	//       without using the trace chem system!
+	var/list/decoded_trace_chem = params2list(mixture.legacy_trace_chem)
+	for(var/id in decoded_trace_chem)
+		var/volume_str = decoded_trace_chem[id]
+		// the math here is weird; this means that this scales to blood volume and not bloodstream volume of
+		// where it came from. oh well, we'll fix it later. it's called legacy_trace_chem for a reason.
+		bloodstr.add_reagent(id, (text2num(volume_str) / species.blood_volume) * amount)
+
+	return amount
 
 /**
  * Makes a blood fragment of our natural blood

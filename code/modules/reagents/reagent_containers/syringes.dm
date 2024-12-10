@@ -99,7 +99,7 @@
 						to_chat(user, "<span class='warning'>You are already drawing blood from [T.name].</span>")
 						return
 
-					var/datum/reagent/B
+					var/amount_drawn = 0
 					drawing = 1
 					if(istype(T, /mob/living/carbon/human))
 						var/mob/living/carbon/human/H = T
@@ -110,20 +110,15 @@
 								if(!do_mob(user, target, time))
 									drawing = 0
 									return
-							B = T.take_blood_legacy(src, amount)
+							amount_drawn = T.take_blood_legacy(src, amount)
 							drawing = 0
 					else
 						if(!do_mob(user, target, time))
 							drawing = 0
 							return
-						B = T.take_blood_legacy(src,amount)
+						amount_drawn = T.take_blood_legacy(src,amount)
 						drawing = 0
 
-					if (B && !(B in reagents.reagent_list))
-						reagents.reagent_list += B
-						reagents.update_total()
-						on_reagent_change()
-						reagents.reconsider_reactions()
 					to_chat(user, "<span class='notice'>You take a blood sample from [target].</span>")
 					for(var/mob/O in viewers(4, user))
 						O.show_message("<span class='notice'>[user] takes a blood sample from [target].</span>", 1)

@@ -426,12 +426,7 @@
 			if(H.blood_holder.get_total_volume() < H.species.blood_volume*H.species.blood_level_safe)
 				visible_message("\The [src] beeps loudly.")
 
-			var/datum/reagent/B = H.take_blood_legacy(beaker,amount)
-			if (B)
-				beaker.reagents.reagent_list |= B
-				beaker.reagents.update_total()
-				beaker.on_reagent_change()
-				beaker.reagents.reconsider_reactions()
+			if(H.take_blood_legacy(beaker, amount) > 0)
 				update_icon()
 
 	if ((!valve_opened || tank.distribute_pressure == 0) && !breather && !attached)
