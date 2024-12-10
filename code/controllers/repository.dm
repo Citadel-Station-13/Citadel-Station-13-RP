@@ -152,6 +152,7 @@
 		if(init_reverse_lookup_shim)
 			var/potential_path = init_reverse_lookup_shim[type_or_id]
 			return fetch(potential_path)
+		. = id_lookup[type_or_id]
 		if(.)
 			return
 		if(!store_enabled)
