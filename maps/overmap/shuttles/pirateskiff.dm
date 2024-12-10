@@ -22,15 +22,7 @@
 
 /obj/effect/shuttle_landmark/shuttle_initializer/pirate
 	name = "Pirate Skiff Dock"
-	landmark_tag = "pirate_docking_arm"
-	docking_controller = "pirate_dock"
-	base_turf = /turf/space
-	base_area = /area/space
 	shuttle_type = /datum/shuttle/autodock/overmap/pirate
-
-/obj/machinery/computer/shuttle_control/explore/pirate
-	name = "short jump raiding console"
-	shuttle_tag = "Pirate Skiff"
 
 // Pirate Skiff
 /area/shuttle/pirate
