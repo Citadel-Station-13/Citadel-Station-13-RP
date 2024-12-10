@@ -5128,10 +5128,6 @@
 /obj/effect/floor_decal/corner/mauve/border,
 /turf/simulated/floor/tiled,
 /area/endeavour/exploration/hallway_aft)
-"dYN" = (
-/obj/structure/sign/deck/first,
-/turf/simulated/wall/r_wall/prepainted/civilian,
-/area/station/stairs_one)
 "dYO" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -15933,7 +15929,7 @@
 	dir = 8;
 	pixel_y = -7
 	},
-/turf/simulated/wall/r_wall/prepainted/civilian,
+/turf/simulated/wall/r_wall/prepainted,
 /area/station/stairs_one)
 "lKq" = (
 /obj/machinery/camera/network/command{
@@ -16853,7 +16849,7 @@
 /obj/structure/sign/directions/cargo{
 	pixel_y = -4
 	},
-/turf/simulated/wall/r_wall/prepainted/civilian,
+/turf/simulated/wall/r_wall/prepainted,
 /area/station/stairs_one)
 "mrA" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -21787,7 +21783,7 @@
 /obj/structure/sign/directions/engineering{
 	pixel_y = 11
 	},
-/turf/simulated/wall/r_wall/prepainted/civilian,
+/turf/simulated/wall/r_wall/prepainted,
 /area/station/stairs_one)
 "qdM" = (
 /obj/machinery/door/firedoor,
@@ -28559,7 +28555,7 @@
 /turf/simulated/floor/plating,
 /area/shuttle/courser/general)
 "vdF" = (
-/turf/simulated/wall/r_wall/prepainted/civilian,
+/turf/simulated/wall/r_wall/prepainted,
 /area/station/stairs_one)
 "vdU" = (
 /obj/structure/cable{
@@ -50618,7 +50614,7 @@ mYH
 veS
 kAE
 wNy
-dYN
+lDc
 wXu
 mrv
 ngd
@@ -51208,7 +51204,7 @@ wPz
 qOo
 qdt
 wXu
-dYN
+lDc
 xgB
 iuy
 baf
