@@ -71,6 +71,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
+/obj/machinery/door/airlock/glass,
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d1portamidhall)
 "adZ" = (
@@ -716,7 +717,7 @@
 "aEK" = (
 /obj/machinery/door/airlock/maintenance/common,
 /turf/simulated/floor/plating,
-/area/endeavour/hallway/d1portamidhall)
+/area/endeavour/hallway/d1fwdmaint)
 "aEU" = (
 /turf/simulated/wall/prepainted,
 /area/station/stairs_one)
@@ -2549,6 +2550,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/machinery/door/airlock/glass,
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d1starboardafthall)
 "cdx" = (
@@ -3575,13 +3577,6 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d1afthall)
-"cSl" = (
-/obj/structure/catwalk,
-/obj/machinery/light{
-	dir = 8
-	},
-/turf/simulated/floor/plating,
-/area/endeavour/hallway/d1fwdmaint)
 "cSo" = (
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/corner/navgold/border,
@@ -4276,9 +4271,6 @@
 /obj/machinery/door/morgue{
 	name = "Private Study";
 	req_access = list(37)
-	},
-/obj/structure/cable/green{
-	icon_state = "4-8"
 	},
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -5886,9 +5878,9 @@
 /turf/simulated/floor/tiled/white,
 /area/endeavour/hallway/d1fwdmaint)
 "eFG" = (
-/obj/effect/floor_decal/rust,
+/obj/machinery/door/airlock/maintenance/common,
 /turf/simulated/floor/plating,
-/area/endeavour/surfacebase/sauna)
+/area/maintenance/tool_storage)
 "eFW" = (
 /turf/simulated/wall/r_wall/prepainted,
 /area/endeavour/hallway/d1afthall)
@@ -7717,7 +7709,7 @@
 "fND" = (
 /obj/structure/memorial{
 	name = "NSV Endeavour's Builder's Plate";
-	desc = "The Armstrong-Hawker Shipbuilding company would like to thank the following for the contributions to the design: Dáire van der Waals, M.D., Ph.D.; Ruminous Melro, B.S.E; Hammond McGuire Sr., M.S.E.. Their work was essential in the design and manufacture of this vessel, and those of her class in the years to follow."
+	desc = "The Armstrong-Hawker Shipbuilding company would like to thank the following for the contributions to the design: Dáire van der Waals, M.D., Ph.D.; Ruminis Melro, B.S.E; Hammond McGuire Sr., M.S.E.. Their work was essential in the design and manufacture of this vessel, and those of her class in the years to follow."
 	},
 /turf/simulated/wall/prepainted/civilian,
 /area/station/stairs_one)
@@ -8722,6 +8714,7 @@
 /obj/structure/cable/orange{
 	icon_state = "4-8"
 	},
+/obj/machinery/door/airlock/glass,
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d1portamidhall)
 "gBF" = (
@@ -13322,6 +13315,7 @@
 /obj/machinery/door/firedoor{
 	dir = 1
 	},
+/obj/machinery/door/airlock/glass,
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d1starboardafthall)
 "jUy" = (
@@ -14333,6 +14327,7 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
+/obj/machinery/fire_alarm/west_mount,
 /turf/simulated/floor/wood,
 /area/bridge/office)
 "kHM" = (
@@ -14569,10 +14564,6 @@
 /obj/machinery/recharge_station,
 /turf/simulated/floor/tiled,
 /area/endeavour/surfacebase/sauna)
-"kNV" = (
-/obj/effect/floor_decal/rust,
-/turf/simulated/floor/plating,
-/area/endeavour/hallway/d1portamidhall)
 "kOi" = (
 /obj/structure/bed/chair/bay/shuttle{
 	dir = 4
@@ -14599,6 +14590,7 @@
 	dir = 8
 	},
 /obj/structure/table/bench/wooden,
+/obj/effect/floor_decal/spline/fancy/wood,
 /turf/simulated/floor/tiled/dark,
 /area/chapel/main)
 "kOQ" = (
@@ -17687,9 +17679,6 @@
 	},
 /turf/simulated/wall/r_wall/prepainted/civilian,
 /area/shuttle/civvie/general)
-"nka" = (
-/turf/simulated/floor/plating,
-/area/endeavour/surfacebase/sauna)
 "nkk" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -22082,6 +22071,7 @@
 	dir = 4
 	},
 /obj/structure/disposalpipe/segment,
+/obj/machinery/fire_alarm/east_mount,
 /turf/simulated/floor/tiled/dark,
 /area/bridge/hallway)
 "qKF" = (
@@ -22125,6 +22115,7 @@
 /obj/effect/floor_decal/corner/navgold/bordercorner2{
 	dir = 9
 	},
+/obj/machinery/door/airlock/glass,
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d1starboardafthall)
 "qLL" = (
@@ -23165,12 +23156,9 @@
 /turf/simulated/floor/tiled,
 /area/exploration)
 "rzL" = (
-/obj/structure/extinguisher_cabinet{
-	dir = 8;
-	pixel_x = 30
-	},
-/turf/simulated/wall/wood/hardwood,
-/area/endeavour/surfacebase/sauna)
+/obj/machinery/fire_alarm/west_mount,
+/turf/simulated/floor/wood,
+/area/crew_quarters/captain)
 "rzM" = (
 /obj/structure/railing,
 /turf/simulated/floor/tiled,
@@ -23432,6 +23420,7 @@
 /obj/effect/floor_decal/corner/beige/border{
 	dir = 4
 	},
+/obj/machinery/fire_alarm/east_mount,
 /turf/simulated/floor/tiled/dark,
 /area/bridge/hallway)
 "rJw" = (
@@ -24327,6 +24316,7 @@
 /obj/machinery/camera/network/command{
 	dir = 9
 	},
+/obj/machinery/fire_alarm/east_mount,
 /turf/simulated/floor/tiled/dark,
 /area/teleporter)
 "sAT" = (
@@ -24692,6 +24682,7 @@
 /obj/machinery/door/firedoor{
 	dir = 8
 	},
+/obj/machinery/door/airlock/glass,
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d1portamidhall)
 "sQi" = (
@@ -24896,6 +24887,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/door/airlock/glass,
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d1portforhall)
 "sYp" = (
@@ -24925,6 +24917,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 6
 	},
+/obj/machinery/door/airlock/glass,
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d1portforhall)
 "sYy" = (
@@ -26417,6 +26410,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/machinery/door/airlock/glass,
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d1starboardamidhall)
 "ubW" = (
@@ -28023,14 +28017,12 @@
 /turf/simulated/floor/tiled/freezer,
 /area/crew_quarters/pool)
 "vik" = (
-/obj/effect/floor_decal/borderfloorblack,
-/obj/effect/floor_decal/corner/navgold/border,
-/obj/machinery/light,
-/obj/machinery/door/firedoor{
-	dir = 1
+/obj/effect/floor_decal/rust,
+/obj/machinery/light{
+	dir = 8
 	},
-/turf/simulated/floor/tiled/steel,
-/area/endeavour/hallway/d1starboardamidhall)
+/turf/simulated/floor/plating,
+/area/endeavour/hallway/d1fwdmaint)
 "viz" = (
 /obj/machinery/fire_alarm/south_mount{
 	pixel_y = -25
@@ -31282,6 +31274,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 9
 	},
+/obj/machinery/door/airlock/glass,
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d1portforhall)
 "xEQ" = (
@@ -31298,15 +31291,20 @@
 /area/maintenance/substation/dock)
 "xFb" = (
 /obj/structure/closet/crate/trashcart,
-/obj/random/maintenance,
-/obj/random/maintenance,
-/obj/random/maintenance,
 /obj/random/drinkbottle,
+/obj/random/maintenance,
+/obj/random/maintenance,
+/obj/random/maintenance,
 /turf/simulated/floor/plating,
 /area/endeavour/hallway/d1fwdmaint)
 "xGd" = (
-/turf/simulated/floor/plating,
-/area/endeavour/hallway/d1portamidhall)
+/obj/machinery/light{
+	dir = 8
+	},
+/obj/structure/table/bench/wooden,
+/obj/effect/floor_decal/spline/fancy/wood,
+/turf/simulated/floor/tiled/dark,
+/area/chapel/main)
 "xGj" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
@@ -31409,10 +31407,6 @@
 /obj/effect/shuttle_landmark/endeavour/deck4/excursion_space,
 /turf/space/basic,
 /area/space)
-"xJZ" = (
-/obj/structure/catwalk,
-/turf/simulated/floor/plating,
-/area/endeavour/hallway/d1portamidhall)
 "xKz" = (
 /obj/machinery/fire_alarm/south_mount{
 	pixel_y = -25
@@ -31603,6 +31597,7 @@
 /obj/machinery/door/firedoor{
 	dir = 1
 	},
+/obj/machinery/door/airlock/glass,
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d1starboardamidhall)
 "xSt" = (
@@ -31611,6 +31606,7 @@
 /area/hallway/secondary/docking_hallway2)
 "xSS" = (
 /obj/effect/floor_decal/corner/purple/full,
+/obj/machinery/fire_alarm/west_mount,
 /turf/simulated/floor/tiled/dark,
 /area/bridge)
 "xST" = (
@@ -51827,7 +51823,7 @@ nEa
 gRB
 uVx
 gRB
-nEa
+xGd
 uni
 hWW
 sDi
@@ -53724,8 +53720,8 @@ hub
 maa
 maa
 byt
-jkE
 maa
+jkE
 svt
 xln
 eDR
@@ -53918,8 +53914,8 @@ hub
 maa
 maa
 byt
-sIg
 maa
+sIg
 cEb
 cEb
 cEb
@@ -54112,8 +54108,8 @@ hub
 maa
 maa
 byt
-sIg
 maa
+sIg
 cEb
 pvF
 pOC
@@ -54306,8 +54302,8 @@ oYa
 maa
 maa
 byt
-sIg
 maa
+sIg
 cEb
 cri
 coH
@@ -55664,8 +55660,8 @@ oYa
 maa
 byt
 maa
-nka
-cEb
+maa
+maa
 cEb
 cEb
 cEb
@@ -55858,8 +55854,8 @@ oYa
 maa
 byt
 maa
-eFG
-cEb
+kfn
+maa
 dIE
 dIE
 dIE
@@ -56052,8 +56048,8 @@ oYa
 maa
 byt
 maa
-nka
-cEb
+maa
+maa
 dIE
 ubG
 pGO
@@ -56246,8 +56242,8 @@ unB
 maa
 byt
 maa
-nka
-cEb
+maa
+maa
 dIE
 pGO
 job
@@ -56440,8 +56436,8 @@ unB
 maa
 byt
 kfn
-nka
-cEb
+maa
+maa
 dIE
 pGO
 job
@@ -56634,8 +56630,8 @@ unB
 maa
 byt
 byt
-nka
-cEb
+maa
+maa
 dIE
 pGO
 job
@@ -56661,7 +56657,7 @@ uTr
 uTr
 ubV
 xSm
-vik
+aoR
 huP
 rCH
 rCH
@@ -56828,8 +56824,8 @@ unB
 maa
 maa
 byt
-nka
-cEb
+maa
+maa
 dIE
 pGO
 job
@@ -56855,7 +56851,7 @@ maa
 uTr
 gJc
 rCE
-lSz
+ykX
 uTr
 maa
 maa
@@ -57022,8 +57018,8 @@ ris
 maa
 maa
 byt
-eFG
-cEb
+kfn
+maa
 dIE
 mpL
 pGO
@@ -57216,15 +57212,15 @@ ris
 maa
 kfn
 byt
-nka
-cEb
+uTr
+uTr
 dIE
 dIE
 dIE
 dIE
 dIE
 dIE
-rzL
+dIE
 dIE
 cEb
 hYO
@@ -57411,16 +57407,16 @@ maa
 maa
 byt
 uTr
-svt
-svt
-svt
-svt
-svt
-svt
-svt
-svt
-svt
-svt
+maa
+maa
+maa
+maa
+maa
+maa
+maa
+maa
+maa
+uTr
 hYO
 vEP
 cQC
@@ -57605,16 +57601,16 @@ maa
 byt
 byt
 izR
-xJZ
-xJZ
-kNV
-xGd
-xGd
-xJZ
-xJZ
-xGd
-kNV
-svt
+byt
+byt
+kfn
+maa
+maa
+byt
+byt
+maa
+kfn
+uTr
 hYO
 hZy
 vwv
@@ -57799,15 +57795,15 @@ sIg
 byt
 maa
 uTr
-xGd
-xJZ
-xJZ
-xJZ
-xJZ
-xJZ
-xJZ
-xJZ
-xJZ
+maa
+byt
+byt
+byt
+byt
+byt
+byt
+byt
+byt
 aEK
 wEG
 bve
@@ -57994,9 +57990,9 @@ izR
 uTr
 uTr
 uTr
-uTr
-uTr
-uTr
+maa
+maa
+maa
 pcK
 dDd
 pcK
@@ -59550,7 +59546,7 @@ bZN
 bZN
 bZN
 bpw
-rXC
+lia
 eDV
 tqr
 rXC
@@ -59743,8 +59739,8 @@ byt
 fvr
 maa
 maa
-pcK
-lia
+eFG
+rXC
 oLF
 wAr
 jrM
@@ -60524,7 +60520,7 @@ qJU
 qJU
 qJU
 byt
-uTr
+maa
 uTr
 rAx
 vHL
@@ -61882,8 +61878,8 @@ agQ
 xrx
 blR
 byt
-maa
-kfn
+xFb
+vik
 uTr
 mER
 xwO
@@ -62269,9 +62265,9 @@ blR
 mBw
 dAp
 blR
-izR
-uTr
-uTr
+byt
+maa
+maa
 uTr
 nuG
 khU
@@ -62464,8 +62460,8 @@ pCl
 wOi
 blR
 byt
-xFb
-qZT
+maa
+maa
 uTr
 uTr
 aEU
@@ -62480,9 +62476,9 @@ aEU
 aEU
 aEU
 uTr
-izR
-uTr
-uTr
+byt
+maa
+maa
 cYi
 cYi
 cYi
@@ -62660,8 +62656,8 @@ blR
 byt
 byt
 byt
-cSl
-byt
+maa
+maa
 aEU
 iDg
 iDg
@@ -62673,7 +62669,7 @@ oQJ
 iDg
 iDg
 aEU
-byt
+maa
 byt
 fvr
 byt
@@ -63456,7 +63452,7 @@ ugo
 cYi
 kXH
 prS
-hai
+rzL
 vFv
 qDT
 cYi
