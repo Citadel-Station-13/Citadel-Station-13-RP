@@ -186,13 +186,13 @@ CREATE TABLE IF NOT EXISTS `rp_playtime_log` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 DELIMITER $$
-CREATE TRIGGER `playtimeTlogupdate` AFTER UPDATE ON `rp_playtime` FOR EACH ROW BEGIN INSERT into `rp_playtime_log` (player, roleid, delta) VALUES (NEW.player, NEW.roleid, NEW.minutes-OLD.minutes);
+CREATE TRIGGER IF NOT EXISTS `playtimeTlogupdate` AFTER UPDATE ON `rp_playtime` FOR EACH ROW BEGIN INSERT into `rp_playtime_log` (player, roleid, delta) VALUES (NEW.player, NEW.roleid, NEW.minutes-OLD.minutes);
 END
 $$
-CREATE TRIGGER `playtimeTloginsert` AFTER INSERT ON `rp_playtime` FOR EACH ROW BEGIN INSERT into `rp_playtime_log` (player, roleid, delta) VALUES (NEW.player, NEW.roleid, NEW.minutes);
+CREATE TRIGGER IF NOT EXISTS `playtimeTloginsert` AFTER INSERT ON `rp_playtime` FOR EACH ROW BEGIN INSERT into `rp_playtime_log` (player, roleid, delta) VALUES (NEW.player, NEW.roleid, NEW.minutes);
 END
 $$
-CREATE TRIGGER `playtimeTlogdelete` AFTER DELETE ON `rp_playtime` FOR EACH ROW BEGIN INSERT into `rp_playtime_log` (player, roleid, delta) VALUES (OLD.player, OLD.roleid, 0-OLD.minutes);
+CREATE TRIGGER IF NOT EXISTS `playtimeTlogdelete` AFTER DELETE ON `rp_playtime` FOR EACH ROW BEGIN INSERT into `rp_playtime_log` (player, roleid, delta) VALUES (OLD.player, OLD.roleid, 0-OLD.minutes);
 END
 $$
 DELIMITER ;
