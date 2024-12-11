@@ -8,6 +8,7 @@
 		"donkie.vscode-tgstation-test-adapter",
 		"anturk.dmi-editor",
 		"aaron-bond.better-comments",
-		"ss13.opendream"
+		"ss13.opendream",
+		"tamasfe.even-better-toml"
 	]
 }

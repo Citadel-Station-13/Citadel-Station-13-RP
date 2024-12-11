@@ -55,7 +55,7 @@ var/inactive_keys = "None<br>"
 	var/list/inactive_ckeys = list()
 	if(ckeys_with_customitems.len)
 		var/datum/db_query/query_inactive = SSdbcore.RunQuery(
-			"SELECT ckey, lastseen FROM [format_table_name("player_lookup")] WHERE datediff(Now(), lastseen) > 60",
+			"SELECT ckey, lastseen FROM [DB_PREFIX_TABLE_NAME("player_lookup")] WHERE datediff(Now(), lastseen) > 60",
 			list()
 		)
 		while(query_inactive.NextRow())
@@ -69,7 +69,7 @@ var/inactive_keys = "None<br>"
 	if(ckeys_with_customitems.len)
 		for(var/cur_ckey in ckeys_with_customitems)
 			var/datum/db_query/query_inactive = SSdbcore.RunQuery(
-				"SELECT ckey FROM [format_table_name("player_lookup")] WHERE ckey = :ckey",
+				"SELECT ckey FROM [DB_PREFIX_TABLE_NAME("player_lookup")] WHERE ckey = :ckey",
 				list(
 					"ckey" = cur_ckey
 				)

@@ -7,7 +7,7 @@
 		return
 
 	var/datum/db_query/lookup = SSdbcore.NewQuery(
-		"SELECT id FROM [format_table_name("player_lookup")] WHERE ckey = :ckey",
+		"SELECT id FROM [DB_PREFIX_TABLE_NAME("player_lookup")] WHERE ckey = :ckey",
 		list(
 			"ckey" = ckey,
 		)
@@ -20,7 +20,7 @@
 
 	if(sql_id)
 		var/datum/db_query/update = SSdbcore.NewQuery(
-			"UPDATE [format_table_name("player_lookup")] SET lastseen = Now(), ip = :ip, computerid = :computerid, lastadminrank = :lastadminrank WHERE id = :id",
+			"UPDATE [DB_PREFIX_TABLE_NAME("player_lookup")] SET lastseen = Now(), ip = :ip, computerid = :computerid, lastadminrank = :lastadminrank WHERE id = :id",
 			list(
 				"ip" = address,
 				"computerid" = computer_id,
@@ -33,7 +33,7 @@
 	else
 		//New player!! Need to insert all the stuff
 		var/datum/db_query/insert = SSdbcore.NewQuery(
-			"INSERT INTO [format_table_name("player_lookup")] (id, ckey, firstseen, lastseen, ip, computerid, lastadminrank) VALUES (null, :ckey, Now(), Now(), :ip, :cid, :rank)",
+			"INSERT INTO [DB_PREFIX_TABLE_NAME("player_lookup")] (id, ckey, firstseen, lastseen, ip, computerid, lastadminrank) VALUES (null, :ckey, Now(), Now(), :ip, :cid, :rank)",
 			list(
 				"ckey" = ckey,
 				"ip" = address,
@@ -55,7 +55,7 @@
 		return
 
 	SSdbcore.RunQuery(
-		"INSERT INTO [format_table_name("connection_log")] (id, datetime, serverip, ckey, ip, computerid) VALUES (null, Now(), :server, :ckey, :ip, :cid)",
+		"INSERT INTO [DB_PREFIX_TABLE_NAME("connection_log")] (id, datetime, serverip, ckey, ip, computerid) VALUES (null, Now(), :server, :ckey, :ip, :cid)",
 		list(
 			"server" = "[world.internet_address]:[world.port]",
 			"ckey" = ckey,

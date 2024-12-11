@@ -1,3 +1,10 @@
+/**
+ * Called when an admin attempts to delete us with introspection tools.
+ */
+/datum/proc/vv_delete()
+	. = TRUE
+	qdel(src)
+
 /datum/proc/CanProcCall(procname)
 	return TRUE
 

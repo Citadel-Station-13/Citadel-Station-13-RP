@@ -33,7 +33,7 @@
 		// last played is not updated by this proc
 		// everything else can though!
 		var/datum/db_query/update_query = SSdbcore.NewQuery(
-			"UPDATE [format_table_name("character")] \
+			"UPDATE [DB_PREFIX_TABLE_NAME("character")] \
 			SET[persisting? " last_persisted = NOW()," : ""] canonical_name = :name, persist_data = :data, \
 			playerid = :pid \
 			WHERE id = :id",
@@ -48,7 +48,7 @@
 		qdel(update_query)
 	else
 		var/datum/db_query/insert_query = SSdbcore.NewQuery(
-			"INSERT INTO [format_table_name("character")] \
+			"INSERT INTO [DB_PREFIX_TABLE_NAME("character")] \
 			(`created`, `last_played`, `last_persisted`, `playerid`, `canonical_name`, \
 			`persist_data`, `character_type`) \
 			VALUES (NOW(), NULL, [persisting? "NOW" : "NULL"], :pid, :name, :data, :type)",
@@ -85,7 +85,7 @@
 
 	var/datum/db_query/load_query = SSdbcore.NewQuery(
 		"SELECT `id` FROM \
-		[format_table_name("character")] WHERE playerid = :id AND canonical_name = :name AND character_type = :type",
+		[DB_PREFIX_TABLE_NAME("character")] WHERE playerid = :id AND canonical_name = :name AND character_type = :type",
 		list(
 			"id" = playerid,
 			"canonical_name" = name,
@@ -134,7 +134,7 @@
 
 	var/datum/db_query/load_query = SSdbcore.NewQuery(
 		"SELECT `created`, `last_played`, `last_persisted`, `playerid`, `canonical_name`, `persist_data`, `character_type` FROM \
-		[format_table_name("character")] WHERE id = :id",
+		[DB_PREFIX_TABLE_NAME("character")] WHERE id = :id",
 		list(
 			"id" = id,
 		)
@@ -190,7 +190,7 @@
 
 	. = list()
 	var/datum/db_query/iteration_query = SSdbcore.ExecuteQuery(
-		"SELECT id FROM [format_table_name("character")] WHERE playerid = :id",
+		"SELECT id FROM [DB_PREFIX_TABLE_NAME("character")] WHERE playerid = :id",
 		list(
 			"id" = playerid
 		)
@@ -223,7 +223,7 @@
 	// section below can never be allowed to runtime
 
 	var/datum/db_query/mark_query = SSdbcore.ExecuteQuery(
-		"UPDATE [format_table_name("character")] SET last_played = NOW() WHERE id = :id",
+		"UPDATE [DB_PREFIX_TABLE_NAME("character")] SET last_played = NOW() WHERE id = :id",
 		list(
 			"id" = id
 		)

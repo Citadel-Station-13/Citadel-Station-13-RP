@@ -1,3 +1,5 @@
+-- DIRECT RIP FROM OLD PREFIXED TABLES FILE!! --
+
 /**
  * make sure to bump schema version and mark changes in database_changelog.md!
  *
@@ -184,13 +186,13 @@ CREATE TABLE IF NOT EXISTS `rp_playtime_log` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 DELIMITER $$
-CREATE TRIGGER `playtimeTlogupdate` AFTER UPDATE ON `rp_playtime` FOR EACH ROW BEGIN INSERT into `rp_playtime_log` (player, roleid, delta) VALUES (NEW.player, NEW.roleid, NEW.minutes-OLD.minutes);
+CREATE TRIGGER IF NOT EXISTS `playtimeTlogupdate` AFTER UPDATE ON `rp_playtime` FOR EACH ROW BEGIN INSERT into `rp_playtime_log` (player, roleid, delta) VALUES (NEW.player, NEW.roleid, NEW.minutes-OLD.minutes);
 END
 $$
-CREATE TRIGGER `playtimeTloginsert` AFTER INSERT ON `rp_playtime` FOR EACH ROW BEGIN INSERT into `rp_playtime_log` (player, roleid, delta) VALUES (NEW.player, NEW.roleid, NEW.minutes);
+CREATE TRIGGER IF NOT EXISTS `playtimeTloginsert` AFTER INSERT ON `rp_playtime` FOR EACH ROW BEGIN INSERT into `rp_playtime_log` (player, roleid, delta) VALUES (NEW.player, NEW.roleid, NEW.minutes);
 END
 $$
-CREATE TRIGGER `playtimeTlogdelete` AFTER DELETE ON `rp_playtime` FOR EACH ROW BEGIN INSERT into `rp_playtime_log` (player, roleid, delta) VALUES (OLD.player, OLD.roleid, 0-OLD.minutes);
+CREATE TRIGGER IF NOT EXISTS `playtimeTlogdelete` AFTER DELETE ON `rp_playtime` FOR EACH ROW BEGIN INSERT into `rp_playtime_log` (player, roleid, delta) VALUES (OLD.player, OLD.roleid, 0-OLD.minutes);
 END
 $$
 DELIMITER ;
@@ -379,13 +381,6 @@ CREATE TABLE IF NOT EXISTS `rp_privacy` (
   `ckey` varchar(32) NOT NULL,
   `option` varchar(128) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
-CREATE TABLE IF NOT EXISTS `rp_vr_player_hours` (
-  `ckey` varchar(32) CHARACTER SET latin1 COLLATE latin1_general_ci NOT NULL,
-  `department` varchar(64) CHARACTER SET latin1 COLLATE latin1_general_ci NOT NULL,
-  `hours` double NOT NULL,
-  PRIMARY KEY (`ckey`,`department`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 CREATE TABLE IF NOT EXISTS `rp_death` (

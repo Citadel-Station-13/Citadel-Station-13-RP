@@ -72,7 +72,7 @@
 		computerid = ""
 	if(isnull(ip))
 		ip = ""
-	var/sql = "INSERT INTO [format_table_name("ban")] \
+	var/sql = "INSERT INTO [DB_PREFIX_TABLE_NAME("ban")] \
 	(`id`,`bantime`,`serverip`,`bantype`,`reason`,`job`,`duration`,`rounds`,`expiration_time`,`ckey`,`computerid`,`ip`,`a_ckey`,`a_computerid`,`a_ip`,`who`,`adminwho`,`edits`,`unbanned`,`unbanned_datetime`,`unbanned_ckey`,`unbanned_computerid`,`unbanned_ip`) \
 	VALUES (null, Now(), :serverip, :type, :reason, :job, :duration, :rounds, Now() + INTERVAL :duration MINUTE, :ckey, :cid, :ip, :a_ckey, :a_cid, :a_ip, :who, :adminwho, '', null, null, null, null, null)"
 	SSdbcore.RunQuery(
@@ -133,7 +133,7 @@
 	else
 		bantype_sql = "bantype = '[bantype_str]'"
 
-	var/sql = "SELECT id FROM [format_table_name("ban")] WHERE ckey = :ckey AND [bantype_sql] AND (unbanned is null OR unbanned = false)"
+	var/sql = "SELECT id FROM [DB_PREFIX_TABLE_NAME("ban")] WHERE ckey = :ckey AND [bantype_sql] AND (unbanned is null OR unbanned = false)"
 	if(job)
 		sql += " AND job = :job"
 
@@ -183,7 +183,7 @@
 		return
 
 	var/datum/db_query/query = SSdbcore.RunQuery(
-		"SELECT ckey, duration, reason FROM [format_table_name("ban")] WHERE id = :id",
+		"SELECT ckey, duration, reason FROM [DB_PREFIX_TABLE_NAME("ban")] WHERE id = :id",
 		list(
 			"id" = banid
 		)
@@ -215,7 +215,7 @@
 					return
 
 			SSdbcore.RunQuery(
-				"UPDATE [format_table_name("ban")] SET reason = :reason, \
+				"UPDATE [DB_PREFIX_TABLE_NAME("ban")] SET reason = :reason, \
 				edits = CONCAT(edits, '- :ckey changed ban reason from <cite><b>\\\":oldreason\\\"</b></cite> to <cite><b>\\\":reason\\\"</b></cite><BR>') \
 				WHERE id = :id",
 				list(
@@ -233,7 +233,7 @@
 					to_chat(usr, "Cancelled")
 					return
 			SSdbcore.RunQuery(
-				"UPDATE [format_table_name("ban")] SET duration = :duration, \
+				"UPDATE [DB_PREFIX_TABLE_NAME("ban")] SET duration = :duration, \
 				edits = CONCAT(edits, '- :ckey changed ban duration from :oldduration to :duration<br>'), expiration_time = DATE_ADD(bantime, INTERVAL :duration MINUTE) \
 				WHERE id = :id",
 				list(
@@ -264,7 +264,7 @@
 	var/pckey
 
 	var/datum/db_query/query = SSdbcore.RunQuery(
-		"SELECT ckey FROM [format_table_name("ban")] WHERE id = :id",
+		"SELECT ckey FROM [DB_PREFIX_TABLE_NAME("ban")] WHERE id = :id",
 		list(
 			"id" = id
 		)
@@ -292,7 +292,7 @@
 	message_admins("[key_name_admin(usr)] has lifted [pckey]'s ban.",1)
 
 	SSdbcore.RunQuery(
-		"UPDATE [format_table_name("ban")] SET unbanned = 1, unbanned_datetime = Now(), unbanned_ckey = :ckey, unbanned_computerid = :cid, unbanned_ip = :ip WHERE id = :id",
+		"UPDATE [DB_PREFIX_TABLE_NAME("ban")] SET unbanned = 1, unbanned_datetime = Now(), unbanned_ckey = :ckey, unbanned_computerid = :cid, unbanned_ip = :ip WHERE id = :id",
 		list(
 			"ckey" = unban_ckey,
 			"cid" = unban_computerid,
@@ -458,7 +458,7 @@
 
 			var/datum/db_query/select_query = SSdbcore.RunQuery(
 				"SELECT id, bantime, bantype, reason, job, duration, expiration_time, ckey, a_ckey, unbanned, unbanned_ckey, unbanned_datetime, edits, ip, computerid \
-				FROM [format_table_name("ban")] \
+				FROM [DB_PREFIX_TABLE_NAME("ban")] \
 				WHERE 1 [playersearch] [adminsearch] [ipsearch] [cidsearch] [bantypesearch] ORDER BY bantime DESC LIMIT 100",
 				search_params
 			)
