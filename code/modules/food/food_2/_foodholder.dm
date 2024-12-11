@@ -229,13 +229,25 @@
 
 //visalalize recipe
 
-/obj/item/reagent_containers/glass/food_holder/proc/visualize_recipe(mob/user)
-	var/cook_method = input(user, "What to remove?", "Remove from container", null) as null|anything in list(METHOD_OVEN,METHOD_GRILL,METHOD_STOVE,METHOD_DEEPFRY,METHOD_MICROWAVE,METHOD_BLOWTORCH,METHOD_ENERGETIC_ANOMALY)
+/obj/item/reagent_containers/glass/food_holder/verb/visualize_recipe()
+	set name = "Visualize Recipe"
+	set desc = "Predicts the output for a given container of food cooked in a specific method."
+	set category = "Object"
+	set src in range(0)
+
+
+	var/cook_method = input(usr, "What cooking method?", "Select cooking method", null) as null|anything in list(METHOD_OVEN,METHOD_GRILL,METHOD_STOVE,METHOD_DEEPFRY,METHOD_MICROWAVE,METHOD_BLOWTORCH,METHOD_ENERGETIC_ANOMALY)
 	if(!cook_method)
 		return
 	var/datum/cooking_recipe/our_recipe = select_recipe(GLOB.cooking_recipes, src, available_method = cook_method)
-
 	if (!our_recipe)
+		to_chat(usr, "<span class='notice'>The contents of [name] wouldn't make anything special when cooked that way.</span>")
 		return
-	our_recipe.
+
+	var/list/reagent_result_pretty = list()
+	for(var/id in our_recipe.result_reagents)
+		reagent_result_pretty += "[our_recipe.result_reagents[id]]u of [initial((SSchemistry.fetch_reagent(id)).name)]"
+	to_chat(usr, "<span class='notice'>You can see the contents of [name] would make [isnull(initial(initial(our_recipe.result).name)) ? "no item" : initial(initial(our_recipe.result).name)][reagent_result_pretty.len ? " as well as [english_list(reagent_result_pretty)]." : "."]</span>")
+
+
 

@@ -50,6 +50,7 @@
 /obj/item/reagent_containers/food/snacks/ingredient/update_icon()
 	cut_overlays()
 	var/overlay_amount = FLOOR(food_weight/additional_overlay_weight_threshold, 1)
+	to_chat(world, overlay_amount)//REMOVE THIS LINE
 	if((overlay_amount > 1) && can_stack)
 		for(var/i = 0, i<=overlay_amount, i++)
 			var/mutable_appearance/stuff_overlay = mutable_appearance(icon, icon_state)
@@ -267,6 +268,7 @@
 			var/obj/item/reagent_containers/food/snacks/ingredient/create_ingredient = create_item
 			create_ingredient.accumulated_time_cooked = accumulated_time_cooked
 			create_ingredient.cookstage = cookstage
+			create_ingredient.food_weight = food_weight
 			var/datum/reagent/nutriment/our_nutrient = create_ingredient.reagents.get_reagent("nutriment")
 			our_nutrient.data = list()
 			our_nutrient.data[create_ingredient.cookstage_information[cookstage][COOKINFO_TASTE]] = WEIGHT_TASTE_DIVISION(food_weight)
