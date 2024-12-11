@@ -212,18 +212,6 @@
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/security/brig)
-"akL" = (
-/obj/effect/floor_decal/borderfloorblack{
-	dir = 4
-	},
-/obj/effect/floor_decal/corner/navgold/half{
-	dir = 4
-	},
-/obj/effect/floor_decal/corner/navblue/half{
-	dir = 5
-	},
-/turf/simulated/floor/tiled,
-/area/endeavour/hallway/d3starboardafthall)
 "all" = (
 /obj/landmark/spawnpoint/job/botanist,
 /turf/simulated/floor/tiled,
@@ -3532,24 +3520,6 @@
 	},
 /turf/simulated/floor/tiled/old_cargo/white,
 /area/security/forensics)
-"cMK" = (
-/obj/structure/cable/green{
-	icon_state = "4-8"
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 8
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 8
-	},
-/obj/effect/floor_decal/borderfloorblack{
-	dir = 8
-	},
-/turf/simulated/floor/tiled,
-/area/endeavour/hallway/d3afthall)
 "cMT" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -6703,21 +6673,6 @@
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/security/hallway)
-"eMM" = (
-/obj/machinery/door/blast/regular{
-	density = 0;
-	icon_state = "pdoor0";
-	id = "security_lockdown";
-	name = "Security Blast Doors";
-	opacity = 0
-	},
-/obj/machinery/door/firedoor/glass{
-	dir = 8
-	},
-/obj/effect/paint/darkred,
-/obj/spawner/window/low_wall/borosillicate/reinforced/full,
-/turf/simulated/floor,
-/area/security/hallway)
 "eMX" = (
 /obj/structure/cable/green{
 	icon_state = "2-4"
@@ -7164,12 +7119,6 @@
 /obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/tether/surfacebase/entertainment)
-"fdy" = (
-/obj/structure/bed/chair{
-	dir = 1
-	},
-/turf/simulated/floor/tiled,
-/area/security/brig)
 "fek" = (
 /obj/machinery/light{
 	dir = 8
@@ -8216,6 +8165,11 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/security/riot_control)
+"fNN" = (
+/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/effect/paint/darkred,
+/turf/simulated/floor/plating,
+/area/security/armoury)
 "fOe" = (
 /turf/simulated/wall/prepainted,
 /area/crew_quarters/sleep/Dorm_11)
@@ -8626,11 +8580,6 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/security/hallway)
-"gbe" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint/darkred,
-/turf/simulated/floor/plating,
-/area/security/armoury)
 "gbs" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -11782,6 +11731,11 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/security/hallway)
+"ixU" = (
+/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/effect/paint/darkred,
+/turf/simulated/floor/plating,
+/area/security/warden)
 "iyq" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
@@ -12094,11 +12048,20 @@
 /turf/simulated/floor/tiled/dark,
 /area/security/armoury)
 "iKI" = (
-/obj/machinery/door/airlock/glass,
 /obj/machinery/door/firedoor{
 	dir = 8
 	},
-/turf/simulated/floor/tiled/monotile,
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/navblue/border{
+	dir = 1
+	},
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 8
+	},
+/obj/machinery/door/airlock/glass,
+/turf/simulated/floor/tiled,
 /area/crew_quarters/bar)
 "iLr" = (
 /obj/structure/table/woodentable,
@@ -13510,6 +13473,18 @@
 /obj/map_helper/access_helper/airlock/station/security/general,
 /turf/simulated/floor/tiled/dark,
 /area/security/interrogation)
+"jRg" = (
+/obj/machinery/door/firedoor{
+	dir = 8
+	},
+/obj/effect/floor_decal/borderfloorblack,
+/obj/effect/floor_decal/corner/navgold/border,
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 8
+	},
+/obj/machinery/door/airlock/glass,
+/turf/simulated/floor/tiled,
+/area/crew_quarters/bar)
 "jRB" = (
 /obj/machinery/status_display/supply_display{
 	pixel_y = 32
@@ -16546,6 +16521,15 @@
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_12)
+"miG" = (
+/obj/effect/floor_decal/corner/red{
+	dir = 6
+	},
+/obj/structure/cable/green{
+	icon_state = "1-4"
+	},
+/turf/simulated/floor/tiled/dark,
+/area/security/warden)
 "miH" = (
 /obj/machinery/light_switch{
 	dir = 1;
@@ -18521,11 +18505,6 @@
 /obj/machinery/fitness/heavy/lifter,
 /turf/simulated/floor/tiled/dark,
 /area/security/brig)
-"nLm" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint/darkred,
-/turf/simulated/floor/plating,
-/area/security/warden)
 "nLT" = (
 /obj/machinery/atm{
 	pixel_y = 30
@@ -18686,15 +18665,6 @@
 /obj/machinery/camera/network/civilian,
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/bar)
-"nQY" = (
-/obj/effect/floor_decal/corner/red{
-	dir = 6
-	},
-/obj/structure/cable/green{
-	icon_state = "1-4"
-	},
-/turf/simulated/floor/tiled/dark,
-/area/security/warden)
 "nRf" = (
 /obj/structure/cable/orange{
 	icon_state = "2-8"
@@ -19593,14 +19563,17 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/machinery/door/airlock/glass,
 /obj/machinery/door/firedoor{
 	dir = 8
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 8
 	},
-/turf/simulated/floor/tiled/monotile,
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 8
+	},
+/obj/machinery/door/airlock/glass,
+/turf/simulated/floor/tiled,
 /area/crew_quarters/bar)
 "oux" = (
 /obj/machinery/camera/network/security{
@@ -19625,6 +19598,23 @@
 	},
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d3fwdhall)
+"ovb" = (
+/obj/effect/floor_decal/corner/red/full,
+/obj/structure/table/steel,
+/obj/item/retail_scanner/security,
+/obj/item/storage/firstaid/regular,
+/obj/item/clothing/accessory/badge/holo/cord,
+/obj/item/clothing/accessory/badge/holo/cord,
+/obj/item/clothing/accessory/badge/holo/cord,
+/obj/item/clothing/accessory/badge/holo,
+/obj/item/clothing/accessory/badge/holo,
+/obj/item/clothing/accessory/badge/holo,
+/obj/item/clothing/accessory/badge/holo,
+/obj/item/clothing/accessory/badge/holo,
+/obj/item/clothing/accessory/badge/holo,
+/obj/effect/floor_decal/industrial/outline/yellow,
+/turf/simulated/floor/tiled,
+/area/security/security_lockerroom)
 "ovN" = (
 /obj/structure/undies_wardrobe,
 /turf/simulated/floor/wood,
@@ -21260,21 +21250,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/civilian)
-"pzo" = (
-/obj/machinery/door/blast/regular{
-	density = 0;
-	icon_state = "pdoor0";
-	id = "security_lockdown";
-	name = "Security Blast Doors";
-	opacity = 0
-	},
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
-/obj/map_helper/electrochromatic_linker{
-	id = "vicDetOffice"
-	},
-/obj/effect/paint/darkred,
-/turf/simulated/floor/plating,
-/area/security/detectives_office)
 "pzs" = (
 /obj/machinery/hyperpad/centre{
 	map_pad_id = "lavaland_station";
@@ -21869,7 +21844,7 @@
 	pixel_y = 30
 	},
 /obj/effect/floor_decal/borderfloorblack{
-	dir = 9
+	dir = 1
 	},
 /obj/effect/floor_decal/corner/navblue/border{
 	dir = 1
@@ -23325,6 +23300,18 @@
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/recreation_area)
+"qYn" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/navgold/half{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/navblue/half{
+	dir = 5
+	},
+/turf/simulated/floor/tiled,
+/area/endeavour/hallway/d3starboardafthall)
 "qYF" = (
 /obj/machinery/cryopod{
 	dir = 4
@@ -23401,6 +23388,12 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled/freezer,
 /area/crew_quarters/kitchen)
+"rbn" = (
+/obj/structure/bed/chair{
+	dir = 1
+	},
+/turf/simulated/floor/tiled,
+/area/security/brig)
 "rbG" = (
 /obj/structure/table/steel,
 /obj/machinery/power/apc/west_mount,
@@ -23448,6 +23441,21 @@
 	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/crew_quarters/bar)
+"reV" = (
+/obj/machinery/door/blast/regular{
+	density = 0;
+	icon_state = "pdoor0";
+	id = "security_lockdown";
+	name = "Security Blast Doors";
+	opacity = 0
+	},
+/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
+/obj/map_helper/electrochromatic_linker{
+	id = "vicDetOffice"
+	},
+/obj/effect/paint/darkred,
+/turf/simulated/floor/plating,
+/area/security/detectives_office)
 "rfb" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -24028,22 +24036,6 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/security/nuke_storage)
-"rzr" = (
-/obj/machinery/door/blast/regular{
-	density = 0;
-	icon_state = "pdoor0";
-	id = "security_lockdown";
-	name = "Security Blast Doors";
-	opacity = 0
-	},
-/obj/machinery/door/firedoor/glass{
-	dir = 8
-	},
-/obj/spawner/window/low_wall/borosillicate/reinforced/full,
-/obj/effect/paint/darkred,
-/obj/structure/curtain/black,
-/turf/simulated/floor,
-/area/security/brig)
 "rzG" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/blast/regular{
@@ -26130,6 +26122,21 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d3portforhall)
+"sYp" = (
+/obj/machinery/door/blast/regular{
+	density = 0;
+	icon_state = "pdoor0";
+	id = "security_lockdown";
+	name = "Security Blast Doors";
+	opacity = 0
+	},
+/obj/machinery/door/firedoor/glass{
+	dir = 8
+	},
+/obj/effect/paint/darkred,
+/obj/spawner/window/low_wall/borosillicate/reinforced/full,
+/turf/simulated/floor,
+/area/security/hallway)
 "sYK" = (
 /obj/machinery/newscaster{
 	pixel_y = 32
@@ -28948,23 +28955,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/civilian)
-"uZq" = (
-/obj/effect/floor_decal/corner/red/full,
-/obj/structure/table/steel,
-/obj/item/retail_scanner/security,
-/obj/item/storage/firstaid/regular,
-/obj/item/clothing/accessory/badge/holo/cord,
-/obj/item/clothing/accessory/badge/holo/cord,
-/obj/item/clothing/accessory/badge/holo/cord,
-/obj/item/clothing/accessory/badge/holo,
-/obj/item/clothing/accessory/badge/holo,
-/obj/item/clothing/accessory/badge/holo,
-/obj/item/clothing/accessory/badge/holo,
-/obj/item/clothing/accessory/badge/holo,
-/obj/item/clothing/accessory/badge/holo,
-/obj/effect/floor_decal/industrial/outline/yellow,
-/turf/simulated/floor/tiled,
-/area/security/security_lockerroom)
 "uZv" = (
 /obj/machinery/air_alarm{
 	pixel_y = 22
@@ -29025,13 +29015,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled,
 /area/hydroponics)
-"vcz" = (
-/obj/effect/floor_decal/borderfloorblack{
-	dir = 10
-	},
-/obj/effect/floor_decal/corner/navgold/border,
-/turf/simulated/floor/tiled,
-/area/endeavour/hallway/d3afthall)
 "vcO" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -30541,6 +30524,22 @@
 "vVA" = (
 /turf/simulated/wall/r_wall/prepainted/cargo,
 /area/endeavour/surfacebase/mining_main/uxstorage)
+"vVH" = (
+/obj/machinery/door/blast/regular{
+	density = 0;
+	icon_state = "pdoor0";
+	id = "security_lockdown";
+	name = "Security Blast Doors";
+	opacity = 0
+	},
+/obj/machinery/door/firedoor/glass{
+	dir = 8
+	},
+/obj/spawner/window/low_wall/borosillicate/reinforced/full,
+/obj/effect/paint/darkred,
+/obj/structure/curtain/black,
+/turf/simulated/floor,
+/area/security/brig)
 "vWK" = (
 /obj/structure/cable/orange{
 	icon_state = "2-4"
@@ -37594,8 +37593,8 @@ pRW
 pRW
 pRW
 rcG
-rzr
-rzr
+vVH
+vVH
 rcG
 rcG
 rcG
@@ -38776,10 +38775,10 @@ flS
 dPF
 vcO
 vBk
-eMM
-eMM
-eMM
-eMM
+sYp
+sYp
+sYp
+sYp
 evH
 pRW
 pRW
@@ -38970,10 +38969,10 @@ pFD
 oth
 dBm
 voq
-eMM
+sYp
 cKR
 mxj
-eMM
+sYp
 pRW
 pRW
 pRW
@@ -39167,7 +39166,7 @@ xrk
 puT
 pFW
 cKR
-eMM
+sYp
 pRW
 pRW
 pRW
@@ -39353,9 +39352,9 @@ bDw
 dAT
 bgj
 vBk
-nLm
-nLm
-nLm
+ixU
+ixU
+ixU
 jYQ
 jYQ
 jYQ
@@ -39733,7 +39732,7 @@ osg
 osg
 osg
 qQz
-fdy
+rbn
 rcG
 tjK
 uGl
@@ -39741,7 +39740,7 @@ uGl
 dPF
 dfG
 voq
-nLm
+ixU
 oJb
 xbA
 vDS
@@ -39935,7 +39934,7 @@ onm
 onm
 byM
 vBk
-nLm
+ixU
 oJb
 xbA
 xbA
@@ -40517,7 +40516,7 @@ uny
 uny
 cEz
 vBk
-nLm
+ixU
 dzq
 vOT
 mHc
@@ -40711,7 +40710,7 @@ pTu
 pTu
 cHK
 cZm
-nLm
+ixU
 aId
 cUO
 xad
@@ -40886,7 +40885,7 @@ njT
 pir
 iKI
 otU
-iKI
+jRg
 uGk
 uGk
 uGk
@@ -40905,10 +40904,10 @@ xjK
 pTu
 lnD
 vBk
-nLm
+ixU
 vAQ
 vFp
-nQY
+miG
 rtF
 wvC
 tTs
@@ -41079,8 +41078,8 @@ mup
 hEe
 pir
 pYf
-cMK
-vcz
+tJl
+kGS
 hkY
 kSn
 kSn
@@ -41100,10 +41099,10 @@ pTu
 jMc
 vBk
 fJN
-gbe
-gbe
+fNN
+fNN
 uHj
-gbe
+fNN
 fJN
 fJN
 fJN
@@ -45938,7 +45937,7 @@ syH
 tUi
 cKe
 dnn
-pzo
+reV
 yck
 bMj
 uBN
@@ -46132,7 +46131,7 @@ syH
 eqO
 bIs
 qMq
-pzo
+reV
 fJn
 cfS
 uBN
@@ -47907,7 +47906,7 @@ gOc
 pSx
 ujF
 mHD
-uZq
+ovb
 bPr
 bPr
 pRW
@@ -51749,7 +51748,7 @@ wXO
 wXO
 wXO
 hNe
-akL
+qYn
 fUU
 kKU
 kKU
