@@ -36,7 +36,7 @@
 				return
 		else
 			to_chat(user, "<span class='warning'>Access Denied</span>")
-	else if(istype(W, /obj/item/melee/energy/blade))
+	else if(istype(W, /obj/item/melee/ninja_energy_blade))
 		if(emag_act(INFINITY, user, W, "The locker has been sliced open by [user] with an energy blade!", "You hear metal being sliced and sparks flying."))
 			var/datum/effect_system/spark_spread/spark_system = new /datum/effect_system/spark_spread()
 			spark_system.set_up(5, 0, src.loc)
@@ -197,6 +197,22 @@
 		/obj/item/gun/energy/retro = 4,
 		/obj/item/cell/device/weapon = 8,
 	)
+
+/obj/item/storage/lockbox/axhs
+	name = "AXHS gun case"
+	desc = "A locked waterproof case."
+	icon_state = "gunlockbox+l"
+	sfx_open = 'sound/items/storage/briefcase.ogg'
+	req_access = list(ACCESS_GENERAL_EXPLORER)
+	starts_with = list(
+		/obj/item/gun/ballistic/ax59 = 1,
+		/obj/item/clothing/accessory/holster/leg = 1,
+		/obj/item/ammo_magazine/a45/doublestack = 2,
+		/obj/item/gun_attachment/harness/magnetic/lanyard = 1
+	)
+	icon_locked = "gunlockbox+l"
+	icon_closed = "gunlockbox"
+	icon_broken = "gunlockbox+b"
 
 //Plate Harness Kits
 /obj/item/storage/lockbox/limb_plate

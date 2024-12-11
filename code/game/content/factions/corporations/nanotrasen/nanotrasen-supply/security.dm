@@ -466,7 +466,7 @@
 		/obj/item/clothing/accessory/badge/holo/hos,
 		/obj/item/clothing/accessory/holster/waist,
 		/obj/item/melee/telebaton,
-		/obj/item/shield/riot/tele,
+		/obj/item/shield/transforming/telescopic,
 		/obj/item/clothing/head/beret/sec/corporate/hos,
 		/obj/item/flashlight/maglight,
 	)
@@ -555,7 +555,7 @@
 /datum/supply_pack/nanotrasen/security/posters
 	name = "Gear - Morale Posters"
 	contains = list(
-		/obj/item/contraband/poster/nanotrasen = 6,
+		/obj/item/poster/nanotrasen = 6,
 	)
 	worth = 100 // YEAAAH NANOTRASEN PROPAGANDA WOO
 	container_type = /obj/structure/closet/crate/secure/corporate/nanotrasen

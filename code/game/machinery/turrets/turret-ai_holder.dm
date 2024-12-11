@@ -161,7 +161,9 @@
  */
 /datum/ai_holder/turret/proc/trace_trajectory(atom/target, angle)
 	var/obj/projectile/trace/trace = new(agent.loc)
-	trace.prepare_trace(target, null, TRUE)
+	trace.only_opacity = TRUE
+	if(!trace.prepare_trace(target))
+		return FALSE
 	trace.fire(angle)
 	return trace.could_hit_target
 

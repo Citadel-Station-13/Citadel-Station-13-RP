@@ -144,6 +144,9 @@
 	var/max_equip = 2
 	var/datum/events/events
 
+	/// outgoing melee damage (legacy var)
+	var/damtype
+
 //mechaequipt2 stuffs
 	var/list/hull_equipment = new
 	var/list/weapon_equipment = new
@@ -304,16 +307,16 @@
 	src.legacy_eject_occupant()
 	for(var/mob/M in src) //Be Extra Sure
 		M.forceMove(get_turf(src))
-		M.loc.Entered(M)
 		if(M != src.occupant_legacy)
 			step_rand(M)
+
 	for(var/atom/movable/A in src.cargo)
 		A.forceMove(get_turf(src))
 		var/turf/T = get_turf(A)
 		if(T)
 			T.Entered(A)
 		step_rand(A)
-
+	cargo = list()
 
 	if(prob(30))
 		explosion(get_turf(loc), 0, 0, 1, 3)
@@ -562,32 +565,6 @@
 			occupant_legacy << browse(src.get_stats_html(), "window=exosuit")
 
 
-////////////////////////////
-///// Action processing ////
-////////////////////////////
-/*
-/atom/DblClick(object,location,control,params)
-	var/mob/M = src.mob
-	if(M && M.in_contents_of(/obj/vehicle/sealed/mecha))
-
-		if(mech_click == world.time) return
-		mech_click = world.time
-
-		if(!istype(object, /atom)) return
-		if(istype(object, /atom/movable/screen))
-			var/atom/movable/screen/using = object
-			if(using.screen_loc == ui_acti || using.screen_loc == ui_iarrowleft || using.screen_loc == ui_iarrowright)//ignore all HUD objects save 'intent' and its arrows
-				return ..()
-			else
-				return
-		var/obj/vehicle/sealed/mecha/Mech = M.loc
-		spawn() //this helps prevent clickspam fest.
-			if (Mech)
-				Mech.click_action(object,M)
-//	else
-//		return ..()
-*/
-
 /obj/vehicle/sealed/mecha/proc/click_action(atom/target,mob/user, params)
 	if(!src.occupant_legacy || src.occupant_legacy != user ) return
 	if(user.stat) return
@@ -624,7 +601,7 @@
 	return
 
 /obj/vehicle/sealed/mecha/proc/interface_action(obj/machinery/target)
-	if(istype(target, /obj/machinery/access_button))
+	if(istype(target, /obj/machinery/access_button) || istype(target, /obj/machinery/button/remote/blast_door))
 		src.occupant_message("<span class='notice'>Interfacing with [target].</span>")
 		src.log_message("Interfaced with [target].")
 		target.attack_hand(src.occupant_legacy)
@@ -918,6 +895,7 @@
 ///////////////////////////////////
 
 //ATM, the ignore_threshold is literally only used for the pulse rifles beams used mostly by deathsquads.
+// todo: this is uh, not a check, this is a **roll**.
 /obj/vehicle/sealed/mecha/proc/check_for_internal_damage(var/list/possible_int_damage,var/ignore_threshold=null)
 	if(!islist(possible_int_damage) || !length(possible_int_damage)) return
 	if(prob(30))
@@ -945,10 +923,10 @@
 	if(!pr_internal_damage) return
 
 	internal_damage |= int_dam_flag
-	pr_internal_damage.start()
+	spawn(-1)
+		pr_internal_damage.start()
 	log_append_to_last("Internal damage of type [int_dam_flag].",1)
 	occupant_legacy << sound('sound/mecha/internaldmgalarm.ogg',volume=50) //Better sounding.
-	return
 
 /obj/vehicle/sealed/mecha/proc/clearInternalDamage(int_dam_flag)
 	internal_damage &= ~int_dam_flag
@@ -960,16 +938,6 @@
 			occupant_message("<font color='blue'><b>Internal fire extinquished.</b></font>")
 		if(MECHA_INT_TANK_BREACH)
 			occupant_message("<font color='blue'><b>Damaged internal tank has been sealed.</b></font>")
-	return
-
-
-////////////////////////////////////////
-////////  Health related procs  ////////
-////////////////////////////////////////
-
-/obj/vehicle/sealed/mecha/bullet_act(obj/projectile/Proj)
-	. = ..()
-
 
 /obj/vehicle/sealed/mecha/proc/take_damage_legacy(amount, type="brute")
 	update_damage_alerts()
@@ -984,7 +952,7 @@
 		log_append_to_last("Took [damage] points of damage. Damage type: \"[type]\".",1)
 	return
 
-/obj/vehicle/sealed/mecha/proc/components_handle_damage(var/damage, var/type = BRUTE)
+/obj/vehicle/sealed/mecha/proc/components_handle_damage(var/damage, var/type = DAMAGE_TYPE_BRUTE)
 	var/obj/item/mecha_parts/component/armor/AC = internal_components[MECH_ARMOR]
 
 	if(AC)
@@ -1041,7 +1009,7 @@
 		qdel(src)
 	return
 
-/obj/vehicle/sealed/mecha/attack_hand(mob/user, list/params)
+/obj/vehicle/sealed/mecha/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(user == occupant_legacy)
 		show_radial_occupant(user)
 		return
@@ -1155,20 +1123,12 @@
 			src.take_damage_legacy(pass_damage)	//The take_damage_legacy() proc handles armor values
 			if(pass_damage > internal_damage_minimum)	//Only decently painful attacks trigger a chance of mech damage.
 				src.check_for_internal_damage(list(MECHA_INT_TEMP_CONTROL,MECHA_INT_TANK_BREACH,MECHA_INT_CONTROL_LOST))
-	return
 
-
-// todo: MAKE INFLICT_DAMAGE_INSTANCE() A THING ON HIT HANDLING PR!!
-/obj/vehicle/sealed/mecha/bullet_act(var/obj/projectile/Proj) //wrapper
-	if(istype(Proj, /obj/projectile/test))
-		var/obj/projectile/test/Test = Proj
-		Test.hit |= occupant_legacy // Register a hit on the occupant_legacy, for things like turrets, or in simple-mob cases stopping friendly fire in firing line mode.
-		return
-
-	src.log_message("Hit by projectile. Type: [Proj.name]([Proj.damage_flag]).",1)
-	call((proc_res["dynbulletdamage"]||src), "dynbulletdamage")(Proj) //calls equipment
-	..()
-	return
+/obj/vehicle/sealed/mecha/on_bullet_act(obj/projectile/proj, impact_flags, list/bullet_act_args)
+	src.log_message("Hit by projectile. Type: [proj.name]([proj.damage_flag]).",1)
+	impact_flags |= call((proc_res["dynbulletdamage"]||src), "dynbulletdamage")(proj) //calls equipment
+	impact_flags |= PROJECTILE_IMPACT_SKIP_STANDARD_DAMAGE
+	return ..()
 
 /obj/vehicle/sealed/mecha/proc/dynbulletdamage(var/obj/projectile/Proj)
 	var/obj/item/mecha_parts/component/armor/ArmC = internal_components[MECH_ARMOR]
@@ -1196,13 +1156,13 @@
 		src.log_append_to_last("Armor saved.")
 		return
 
-	if(Proj.damage_type == HALLOSS)
+	if(Proj.damage_type == DAMAGE_TYPE_HALLOSS)
 		use_power(Proj.agony * 5)
 
 	if(!(Proj.nodamage))
 		var/ignore_threshold
 
-		var/pass_damage = Proj.damage
+		var/pass_damage = Proj.damage_force
 		var/pass_damage_reduc_mod
 		for(var/obj/item/mecha_parts/mecha_equipment/ME in equipment)
 			pass_damage = ME.handle_projectile_contact(Proj, pass_damage)
@@ -1210,7 +1170,7 @@
 		if(pass_damage < temp_damage_minimum)//too pathetic to really damage you.
 			src.occupant_message("<span class='notice'>The armor deflects incoming projectile.</span>")
 			src.visible_message("The [src.name] armor deflects\the [Proj]")
-			return
+			return PROJECTILE_IMPACT_BLOCKED
 
 		else if(Proj.armor_penetration < temp_minimum_penetration)	//If you don't have enough pen, you won't do full damage
 			src.occupant_message("<span class='notice'>\The [Proj] struggles to pierce \the [src] armor.</span>")
@@ -1230,24 +1190,20 @@
 			src.check_for_internal_damage(list(MECHA_INT_FIRE,MECHA_INT_TEMP_CONTROL,MECHA_INT_TANK_BREACH,MECHA_INT_CONTROL_LOST,MECHA_INT_SHORT_CIRCUIT),ignore_threshold)
 
 		//AP projectiles have a chance to cause additional damage
-		if(Proj.penetrating)
-			var/distance = get_dist(Proj.starting, get_turf(loc))
-			var/hit_occupant = 1 //only allow the occupant_legacy to be hit once
-			for(var/i in 1 to min(Proj.penetrating, round(Proj.damage/15)))
+		if(Proj.legacy_penetrating)
+			var/hit_occupant = 1 //only allow the occupant to be hit once
+			for(var/i in 1 to min(Proj.legacy_penetrating, round(Proj.damage_force/15)))
 				if(src.occupant_legacy && hit_occupant && prob(20))
-					Proj.projectile_attack_mob(src.occupant_legacy, distance)
+					Proj.impact(occupant_legacy)
 					hit_occupant = 0
 				else
 					if(pass_damage > internal_damage_minimum)	//Only decently painful attacks trigger a chance of mech damage.
 						src.check_for_internal_damage(list(MECHA_INT_FIRE,MECHA_INT_TEMP_CONTROL,MECHA_INT_TANK_BREACH,MECHA_INT_CONTROL_LOST,MECHA_INT_SHORT_CIRCUIT), 1)
 
-				Proj.penetrating--
+				Proj.legacy_penetrating--
 
 				if(prob(15))
 					break //give a chance to exit early
-
-	Proj.on_hit(src) //on_hit just returns if it's argument is not a living mob so does this actually do anything?
-	return
 
 //This refer to whenever you are caught in an explosion.
 /obj/vehicle/sealed/mecha/legacy_ex_act(severity)
@@ -1267,19 +1223,13 @@
 		src.log_append_to_last("Armor saved, changing severity to [severity].")
 	switch(severity)
 		if(1.0)
-			src.take_damage_legacy(initial(src.integrity), "bomb")
+			src.take_damage_legacy(initial(src.integrity)/1.25, "bomb")
 		if(2.0)
-			if (prob(30))
-				src.take_damage_legacy(initial(src.integrity), "bomb")
-			else
-				src.take_damage_legacy(initial(src.integrity)/2, "bomb")
-				src.check_for_internal_damage(list(MECHA_INT_FIRE,MECHA_INT_TEMP_CONTROL,MECHA_INT_TANK_BREACH,MECHA_INT_CONTROL_LOST,MECHA_INT_SHORT_CIRCUIT),1)
+			src.take_damage_legacy(initial(src.integrity)/2.5, "bomb")
+			src.check_for_internal_damage(list(MECHA_INT_FIRE,MECHA_INT_TEMP_CONTROL,MECHA_INT_TANK_BREACH,MECHA_INT_CONTROL_LOST,MECHA_INT_SHORT_CIRCUIT),1)
 		if(3.0)
-			if (prob(5))
-				qdel(src)
-			else
-				src.take_damage_legacy(initial(src.integrity)/5, "bomb")
-				src.check_for_internal_damage(list(MECHA_INT_FIRE,MECHA_INT_TEMP_CONTROL,MECHA_INT_TANK_BREACH,MECHA_INT_CONTROL_LOST,MECHA_INT_SHORT_CIRCUIT),1)
+			src.take_damage_legacy(initial(src.integrity)/8, "bomb")
+			src.check_for_internal_damage(list(MECHA_INT_FIRE,MECHA_INT_TEMP_CONTROL,MECHA_INT_TANK_BREACH,MECHA_INT_CONTROL_LOST,MECHA_INT_SHORT_CIRCUIT),1)
 	return
 
 /*Will fix later -Sieve
@@ -1371,7 +1321,7 @@
 		pass_damage = (pass_damage*pass_damage_reduc_mod)	//Apply the reduction of damage from not having enough armor penetration. This is not regular armor values at play.
 		for(var/obj/item/mecha_parts/mecha_equipment/ME in equipment)
 			pass_damage = ME.handle_projectile_contact(W, user, pass_damage)
-		src.take_damage_legacy(pass_damage,W.damtype)	//The take_damage_legacy() proc handles armor values
+		src.take_damage_legacy(pass_damage, W.damage_type)	//The take_damage_legacy() proc handles armor values
 		if(pass_damage > internal_damage_minimum)	//Only decently painful attacks trigger a chance of mech damage.
 			src.check_for_internal_damage(list(MECHA_INT_TEMP_CONTROL,MECHA_INT_TANK_BREACH,MECHA_INT_CONTROL_LOST))
 	return
@@ -2201,7 +2151,7 @@
 	if(href_list["rfreq"])
 		if(usr != src.occupant_legacy)	return
 		var/new_frequency = (radio.frequency + top_filter.getNum("rfreq"))
-		if ((radio.frequency < PUBLIC_LOW_FREQ || radio.frequency > PUBLIC_HIGH_FREQ))
+		if ((radio.frequency < MIN_FREQ || radio.frequency > MAX_FREQ))
 			new_frequency = sanitize_frequency(new_frequency)
 		radio.set_frequency(new_frequency)
 		send_byjax(src.occupant_legacy,"exosuit.browser","rfreq","[format_frequency(radio.frequency)]")
@@ -2724,7 +2674,6 @@
 	// 	removing.mobility_flags = NONE
 	removing.clear_alert("charge")
 	removing.clear_alert("mech damage")
-	removing.reset_perspective()
 
 	if(occupant_legacy == removing)
 		occupant_legacy = null

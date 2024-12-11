@@ -1,6 +1,6 @@
 
 //* This file is explicitly licensed under the MIT license. *//
-//* Copyright (c) 2024 Citadel Station developers.          *//
+//* Copyright (c) 2024 Citadel Station Developers           *//
 
 /**
  * gun render system
@@ -60,7 +60,7 @@
 		return
 	var/x = initial_x
 	var/y = initial_y
-	var/append = "[use_firemode && firemode_key && "-[firemode_key]"]"
+	var/append = "[use_firemode && firemode_key ? "-[firemode_key]" : ""]"
 	for(var/i in 1 to ceil(count * ammo_ratio))
 		var/image/creating = image(gun.icon, "[base_icon_state][append]-ammo", null, null, x, y)
 		x += offset_x
@@ -132,7 +132,7 @@
 		return
 	if(!ammo_ratio)
 		if(use_empty)
-			gun.icon_state = "[base_icon_state][firemode_key && use_firemode_empty && "-[firemode_key]"]-empty"
+			gun.icon_state = "[base_icon_state][firemode_key && use_firemode_empty ? "-[firemode_key]" : ""]-empty"
 		else
 			gun.icon_state = base_icon_state
 		return
@@ -146,3 +146,17 @@
  */
 /datum/gun_item_renderer/states/all_or_nothing
 	count = 1
+
+/**
+ * just swaps icon state to "-empty"
+ *
+ * * can optionally append a firemode key
+ */
+/datum/gun_item_renderer/empty_state
+
+/datum/gun_item_renderer/empty_state/render(obj/item/gun/gun, ammo_ratio, firemode_key)
+	var/base_icon_state = gun.base_icon_state || initial(gun.icon_state)
+	gun.icon_state = "[base_icon_state][firemode_key && use_firemode ? "-[firemode_key]" : ""][ammo_ratio ? "" : "-empty"]"
+
+/datum/gun_item_renderer/empty_state/dedupe_key()
+	return "empty_state-[use_firemode]"

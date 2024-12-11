@@ -14,11 +14,14 @@
 
 /obj/item/organ/internal/voicebox/Initialize(mapload)
 	. = ..()
+	// HACK: if we're in repository subsystem load, skip brainmob
+	if(!SSrepository.initialized)
+		return
 	amend_assist_langs()
 
 /obj/item/organ/internal/voicebox/proc/amend_assist_langs()	// Adds the list of language datums assisted by the voicebox to the list used in speaking
 	for(var/L in will_assist_languages)
-		assists_languages |= SScharacters.resolve_language_name(L)
+		assists_languages |= RSlanguages.legacy_resolve_language_name(L)
 
 /obj/item/organ/internal/voicebox/proc/add_assistable_langs(var/language)	// Adds a new language (by string/define) to the list of things the voicebox can assist
 	will_assist_languages |= language

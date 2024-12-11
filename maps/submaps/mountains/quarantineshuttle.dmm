@@ -604,28 +604,6 @@
 	icon_state = "floor_white"
 	},
 /area/submap/cave/qShuttle)
-"bE" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced,
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/turf/simulated/shuttle/plating,
-/area/submap/cave/qShuttle)
-"bF" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced,
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/turf/simulated/shuttle/plating,
-/area/submap/cave/qShuttle)
 "bG" = (
 /obj/machinery/button{
 	dir = 4;
@@ -705,7 +683,7 @@
 	},
 /area/submap/cave/qShuttle)
 "bQ" = (
-/obj/item/contraband/poster,
+/obj/item/poster,
 /turf/simulated/shuttle/floor{
 	icon_state = "floor_yellow"
 	},
@@ -1303,7 +1281,7 @@ aF
 aV
 bj
 bv
-bE
+be
 bP
 ad
 ab
@@ -1357,7 +1335,7 @@ aH
 aW
 bk
 bw
-bF
+bg
 bR
 ad
 ab

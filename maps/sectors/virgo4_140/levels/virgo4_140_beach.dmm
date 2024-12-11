@@ -257,7 +257,7 @@
 /turf/simulated/floor/outdoors/beach/sand/desert,
 /area/tether_away/beach/jungle)
 "bi" = (
-/turf/unsimulated/wall/planetary/normal,
+/turf/unsimulated/wall/planetary,
 /area/tether_away/beach/water)
 "bj" = (
 /turf/simulated/floor/water,
@@ -836,7 +836,7 @@
 /turf/simulated/floor/wood,
 /area/tether_away/beach/resort/dorm1)
 "om" = (
-/turf/unsimulated/mineral,
+/turf/unsimulated/wall/mineral,
 /area/tether_away/beach)
 "oq" = (
 /obj/item/bedsheet/rainbow,
@@ -1328,7 +1328,7 @@
 /turf/simulated/floor/outdoors/beach/sand,
 /area/tether_away/beach/resort)
 "Cg" = (
-/turf/unsimulated/mineral,
+/turf/unsimulated/wall/mineral,
 /area/tether_away/beach/water)
 "Cr" = (
 /obj/structure/cable/cyan{
@@ -1570,7 +1570,7 @@
 	},
 /area/tether_away/beach/cavebase)
 "Lj" = (
-/turf/unsimulated/mineral,
+/turf/unsimulated/wall/mineral,
 /area/tether_away/beach/coast)
 "Lp" = (
 /obj/structure/closet/secure_closet/personal,
@@ -1639,7 +1639,7 @@
 	},
 /area/tether_away/beach/resort)
 "MA" = (
-/turf/unsimulated/mineral,
+/turf/unsimulated/wall/mineral,
 /area/tether_away/beach/jungle)
 "ME" = (
 /obj/structure/cable{

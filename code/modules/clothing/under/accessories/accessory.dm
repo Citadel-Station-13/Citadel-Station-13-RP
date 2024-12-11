@@ -113,6 +113,8 @@
 	// todo: don't call dropped/pickup if going to same person
 	if(accessory_host.worn_slot)
 		unequipped(accessory_host.worn_mob(), accessory_host.worn_slot, INV_OP_IS_ACCESSORY)
+		var/mob/host_worn_mob = accessory_host.worn_mob()
+		on_unequipped(accessory_host.worn_mob(), accessory_host.worn_slot == SLOT_ID_HANDS ? host_worn_mob.get_held_index(accessory_host) : accessory_host.worn_slot, INV_OP_IS_ACCESSORY)
 		dropped(accessory_host.worn_mob(), INV_OP_IS_ACCESSORY)
 
 	// inventory handling stop
@@ -133,7 +135,7 @@
 	..()
 
 //default attack_hand behaviour
-/obj/item/clothing/accessory/attack_hand(mob/user, list/params)
+/obj/item/clothing/accessory/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(accessory_host)
 		return	//we aren't an object on the ground so don't call parent
 	..()
@@ -386,7 +388,7 @@
 	slot = ACCESSORY_SLOT_DECOR
 	item_action_name = "Adjust Gaiter"
 
-/obj/item/clothing/accessory/gaiter/attack_self(mob/user)
+/obj/item/clothing/accessory/gaiter/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -497,7 +499,7 @@
 	overlay_state = "choker_cst_overlay"
 	var/customized = 0
 
-/obj/item/clothing/accessory/choker/attack_self(mob/user)
+/obj/item/clothing/accessory/choker/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -694,7 +696,7 @@
 		M.afflict_paralyze(20 * 10)
 	return
 
-/obj/item/clothing/accessory/collar/shock/attack_self(mob/user)
+/obj/item/clothing/accessory/collar/shock/attack_self(mob/user, datum/event_args/actor/actor)
 	if(!istype(user, /mob/living/carbon/human))
 		return
 	user.set_machine(src)
@@ -767,7 +769,7 @@
 /obj/item/clothing/accessory/collar/holo/indigestible/digest_act(var/atom/movable/item_storage = null)
 	return FALSE
 
-/obj/item/clothing/accessory/collar/attack_self(mob/user)
+/obj/item/clothing/accessory/collar/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return

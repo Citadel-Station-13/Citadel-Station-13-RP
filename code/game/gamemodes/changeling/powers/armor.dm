@@ -67,7 +67,7 @@
 	encumbrance = ITEM_ENCUMBRANCE_CHANGELING_MAGBOOTS
 	encumbrance_on = ITEM_ENCUMBRANCE_CHANGELING_MAGBOOTS_PULSE
 
-/obj/item/clothing/shoes/magboots/changeling/attack_self(mob/user)
+/obj/item/clothing/shoes/magboots/changeling/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return

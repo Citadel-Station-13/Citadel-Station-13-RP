@@ -35,7 +35,7 @@
 				return
 
 		if(1)
-			if(I.is_material_stack_of(/datum/material/steel))
+			if(I.is_material_stack_of(/datum/prototype/material/steel))
 				var/obj/item/stack/M = I
 				if(M.use(2))
 					to_chat(user, "<span class='notice'>You add some metal armor to the interior frame.</span>")
@@ -103,7 +103,7 @@
 				to_chat(user, "<span class='notice'>You add the prox sensor to the turret.</span>")
 				return
 
-			//attack_hand() removes the gun
+			//attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 
 		if(5)
 			if(I.is_screwdriver())
@@ -112,10 +112,10 @@
 				to_chat(user, "<span class='notice'>You close the internal access hatch.</span>")
 				return
 
-			//attack_hand() removes the prox sensor
+			//attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 
 		if(6)
-			if(I.is_material_stack_of(/datum/material/steel))
+			if(I.is_material_stack_of(/datum/prototype/material/steel))
 				var/obj/item/stack/M = I
 				if(M.use(2))
 					to_chat(user, "<span class='notice'>You add some metal armor to the exterior frame.</span>")
@@ -173,7 +173,7 @@
 
 	..()
 
-/obj/machinery/porta_turret_construct/attack_hand(mob/user, list/params)
+/obj/machinery/porta_turret_construct/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	switch(build_step)
 		if(4)
 			if(!installation)

@@ -8,8 +8,6 @@
 	rad_flags = RAD_BLOCK_CONTENTS
 	slot_flags = SLOT_BELT
 	damage_force = 15
-	sharp = 0
-	edge = 0
 	throw_force = 7
 	atom_flags = NOCONDUCT
 	w_class = WEIGHT_CLASS_NORMAL
@@ -100,7 +98,7 @@
 		else
 			to_chat(user, "<span class='notice'>This cell is not fitted for [src].</span>")
 
-/obj/item/melee/baton/attack_hand(mob/user, list/params)
+/obj/item/melee/baton/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(user.get_inactive_held_item() == src)
 		if(bcell && !integrated_cell)
 			bcell.update_icon()
@@ -114,7 +112,7 @@
 	else
 		return ..()
 
-/obj/item/melee/baton/attack_self(mob/user)
+/obj/item/melee/baton/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return

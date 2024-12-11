@@ -25,7 +25,7 @@
 	tt_desc = "S Choeros shantak"
 	catalogue_data = list(/datum/category_item/catalogue/fauna/shantak)
 
-	faction = "shantak"
+	iff_factions = MOB_IFF_FACTION_BIND_TO_MAP
 
 	icon_state = "shantak"
 	icon_living = "shantak"
@@ -74,7 +74,7 @@
 			continue
 		if(!S.ai_holder)
 			continue
-		if(S.faction != src.faction)
+		if(!S.shares_iff_faction(src))
 			continue
 		var/datum/ai_holder/polaris/AI = S.ai_holder
 		AI.set_follow(src)
@@ -94,4 +94,4 @@
 	name = "Scruffy"
 	ai_holder_type = /datum/ai_holder/polaris/simple_mob/passive
 	makes_dirt = 0
-	faction = "neutral"
+	iff_factions = MOB_IFF_FACTION_NEUTRAL

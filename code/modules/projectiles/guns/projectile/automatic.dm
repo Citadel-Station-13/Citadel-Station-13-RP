@@ -95,7 +95,7 @@
 /obj/item/gun/ballistic/automatic/sts35/update_icon(ignore_inhands)
 	. = ..()
 
-	update_held_icon()
+	update_worn_icon()
 
 /obj/item/gun/ballistic/automatic/wt550
 	name = "machine pistol"
@@ -166,7 +166,7 @@
 	else
 		..()
 
-/obj/item/gun/ballistic/automatic/z8/attack_hand(mob/user, list/params)
+/obj/item/gun/ballistic/automatic/z8/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(user.get_inactive_held_item() == src && use_launcher)
 		launcher.unload(user)
 	else
@@ -189,7 +189,7 @@
 
 /obj/item/gun/ballistic/automatic/z8/update_icon()
 	. = ..()
-	update_held_icon()
+	update_worn_icon()
 
 /obj/item/gun/ballistic/automatic/z8/examine(mob/user, dist)
 	. = ..()
@@ -247,15 +247,15 @@
 	cover_open = !cover_open
 	to_chat(user, "<span class='notice'>You [cover_open ? "open" : "close"] [src]'s cover.</span>")
 	update_icon()
-	update_held_icon()
+	update_worn_icon()
 
-/obj/item/gun/ballistic/automatic/lmg/attack_self(mob/user)
+/obj/item/gun/ballistic/automatic/lmg/attack_self(mob/user, datum/event_args/actor/actor)
 	if(cover_open)
 		toggle_cover(user) //close the cover
 	else
 		return ..() //once closed, behave like normal
 
-/obj/item/gun/ballistic/automatic/lmg/attack_hand(mob/user, list/params)
+/obj/item/gun/ballistic/automatic/lmg/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(!cover_open && user.get_inactive_held_item() == src)
 		toggle_cover(user) //open the cover
 	else
@@ -263,7 +263,7 @@
 
 /obj/item/gun/ballistic/automatic/lmg/update_icon()
 	. = ..()
-	update_held_icon()
+	update_worn_icon()
 
 /obj/item/gun/ballistic/automatic/lmg/update_icon_state()
 	. = ..()
@@ -467,7 +467,7 @@
 /obj/item/gun/ballistic/automatic/tommygun/update_icon_state()
 	. = ..()
 	icon_state = (ammo_magazine)? "tommygun" : "tommygun-empty"
-//	update_held_icon()
+//	update_worn_icon()
 
 /obj/item/gun/ballistic/automatic/bullpup // Admin abuse assault rifle. ToDo: Make this less shit. Maybe remove its autofire, and make it spawn with only 10 rounds at start.
 	name = "bullpup rifle"
@@ -498,11 +498,11 @@
 
 /obj/item/gun/ballistic/automatic/bullpup/update_icon()
 	. = ..()
-	update_held_icon()
+	update_worn_icon()
 
 /obj/item/gun/ballistic/automatic/fal
 	name = "FN-FAL"
-	desc = "A 20th century Assault Rifle originally designed by Fabrique National. Famous for its use by mercs in grinding proxy wars in backwater nations. This reproduction was probably made for similar purposes."
+	desc = "A 20th century Assault Rifle originally designed by Fabrique Nationale. Famous for its use by mercs in grinding proxy wars in backwater nations. This reproduction was probably made for similar purposes."
 	icon_state = "fal"
 	item_state = "fal"
 	w_class = WEIGHT_CLASS_BULKY
@@ -735,10 +735,6 @@
 	. = ..()
 	icon_state = (ammo_magazine)? "toy_smg" : "toy_smg-empty"
 
-/obj/item/gun/ballistic/automatic/advanced_smg/foam/handle_suicide(mob/living/user)
-	user.show_message("<span class = 'warning'>You feel rather silly, trying to commit suicide with a toy.</span>")
-	mouthshoot = 0
-
 /obj/item/gun/ballistic/automatic/advanced_smg/foam/blue
 	icon_state = "toy_smg_blue"
 
@@ -767,10 +763,6 @@
 	else
 		icon_state = "toy_c20r"
 
-/obj/item/gun/ballistic/automatic/c20r/foam/handle_suicide(mob/living/user)
-	user.show_message("<span class = 'warning'>You feel rather silly, trying to commit suicide with a toy.</span>")
-	mouthshoot = 0
-
 //Foam LMG
 /obj/item/gun/ballistic/automatic/lmg/foam
 	name = "toy light machine gun"
@@ -794,9 +786,4 @@
 
 /obj/item/gun/ballistic/automatic/lmg/foam/update_icon()
 	. = ..()
-	update_held_icon()
-
-/obj/item/gun/ballistic/automatic/lmg/foam/handle_suicide(mob/living/user)
-	user.show_message("<span class = 'warning'>You feel rather silly, trying to commit suicide with a toy.</span>")
-	mouthshoot = 0
-	return
+	update_worn_icon()

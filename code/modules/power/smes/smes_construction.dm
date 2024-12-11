@@ -111,7 +111,7 @@
 // Proc: attack_hand()
 // Parameters: None
 // Description: Opens the UI as usual, and if cover is removed opens the wiring panel.
-/obj/machinery/power/smes/buildable/attack_hand(mob/user, list/params)
+/obj/machinery/power/smes/buildable/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	..()
 	if(open_hatch)
 		wires.Interact(usr)
@@ -165,7 +165,7 @@
 	log_game("SMES FAILURE: <b>[src.x]X [src.y]Y [src.z]Z</b> User: [usr.ckey], Intensity: [intensity]/100")
 	message_admins("SMES FAILURE: <b>[src.x]X [src.y]Y [src.z]Z</b> User: [usr.ckey], Intensity: [intensity]/100 - <A HREF='?_src_=holder;adminplayerobservecoodjump=1;X=[src.x];Y=[src.y];Z=[src.z]'>JMP</a>")
 
-	var/used_hand = h_user.hand? BP_L_HAND : BP_R_HAND
+	var/used_hand = h_user.get_active_hand_organ()?.organ_tag
 
 	switch (intensity)
 		if (0 to 15)

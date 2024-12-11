@@ -1,6 +1,6 @@
 
 //* This file is explicitly licensed under the MIT license. *//
-//* Copyright (c) 2024 Citadel Station developers.          *//
+//* Copyright (c) 2024 Citadel Station Developers           *//
 
 /**
  * gun render system
@@ -43,7 +43,7 @@
 
 /datum/gun_mob_renderer/states/render(obj/item/gun/gun, ammo_ratio, firemode_key)
 	// todo: do we really need to always return TRUE and force an update?
-	var/base_icon_state = gun.render_mob_base || gun.base_icon_state || initial(gun.icon_state)
+	var/base_icon_state = gun.base_mob_state || gun.base_icon_state || initial(gun.icon_state)
 	if(!ammo_ratio)
 		if(empty_state)
 			gun.inhand_state = "[base_icon_state][firemode_key && use_firemode && "-[firemode_key]"]-empty"

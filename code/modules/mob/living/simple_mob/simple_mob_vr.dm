@@ -34,7 +34,7 @@
 
 // Checks to see if mob doesn't like this kind of turf
 /mob/living/simple_mob/IMove(turf/newloc, safety = TRUE)
-	if(istype(newloc,/turf/simulated/floor/sky))
+	if(istype(newloc,/turf/simulated/sky))
 		return MOVEMENT_FAILED //Mobs aren't that stupid, probably
 	return ..() // Procede as normal.
 
@@ -111,7 +111,7 @@
 			return
 	var/armor_block = run_armor_check(T, "melee")
 	var/armor_soak = get_armor_soak(T, "melee")
-	T.apply_damage(20, HALLOSS,, armor_block, armor_soak)
+	T.apply_damage(20, DAMAGE_TYPE_HALLOSS,, armor_block, armor_soak)
 	if(prob(33))
 		T.apply_effect(3, WEAKEN, armor_block)
 

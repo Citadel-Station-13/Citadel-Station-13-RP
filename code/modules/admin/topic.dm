@@ -1655,11 +1655,11 @@
 			else if(!ispath(path, /obj) && !ispath(path, /turf) && !ispath(path, /mob))
 				removed_paths += dirty_path
 				continue
-			else if(ispath(path, /obj/item/gun/energy/pulse_rifle))
+			else if(ispath(path, /obj/item/gun/energy/nt_pulse/rifle))
 				if(!check_rights(R_FUN,0))
 					removed_paths += dirty_path
 					continue
-			else if(ispath(path, /obj/item/melee/energy/blade))//Not an item one should be able to spawn./N
+			else if(ispath(path, /obj/item/melee/ninja_energy_blade))//Not an item one should be able to spawn./N
 				if(!check_rights(R_FUN,0))
 					removed_paths += dirty_path
 					continue
@@ -1956,7 +1956,7 @@
 				to_chat(usr, "[M] is illegal type, must be /mob!")
 				return
 			var/lang2toggle = href_list["lang"]
-			var/datum/language/L = SScharacters.resolve_language_name(lang2toggle)
+			var/datum/prototype/language/L = RSlanguages.legacy_resolve_language_name(lang2toggle)
 
 			if(L in M.languages)
 				if(!M.remove_language(lang2toggle))

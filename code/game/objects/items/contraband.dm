@@ -13,6 +13,12 @@
 	//wrapper_color = COLOR_BLUE
 	starts_with = list(/obj/item/reagent_containers/pill/zoom = 7)
 
+/obj/item/storage/pill_bottle/polonium
+	name = "bottle of pills"
+	desc = "An unlabeled bottle of pills. It seems vaguely warm."
+	//wrapper_color = COLOR_BLUE
+	starts_with = list(/obj/item/reagent_containers/pill/polonium = 7)
+
 /obj/item/reagent_containers/glass/beaker/vial/random
 	atom_flags = NONE
 	var/list/random_reagent_list = list(list("water" = 15) = 1, list("cleaner" = 15) = 1)
@@ -50,7 +56,7 @@
 	worth_intrinsic = 200
 	w_class = WEIGHT_CLASS_HUGE
 
-/obj/item/stolenpackage/attack_self(mob/user)
+/obj/item/stolenpackage/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -104,17 +110,17 @@
 		/obj/item/card/emag,
 		/obj/item/card/emag_broken,
 		/obj/item/card/id/syndicate,
-		/obj/item/contraband/poster,
+		/obj/item/poster,
 		/obj/item/disposable_teleporter,
 		/obj/item/grenade/flashbang/clusterbang,
 		/obj/item/grenade/flashbang/clusterbang,
 		/obj/item/grenade/spawnergrenade/spesscarp,
-		/obj/item/melee/energy/sword/ionic_rapier,
+		/obj/item/melee/transforming/energy/sword/ionic_rapier,
 		/obj/item/clothing/shoes/syndigaloshes,
 		/obj/item/storage/backpack/dufflebag/syndie,
 		/obj/item/binoculars,
 		/obj/item/storage/firstaid/combat,
-		/obj/item/melee/energy/sword,
+		/obj/item/melee/transforming/energy/sword,
 		/obj/item/melee/telebaton,
 		/obj/item/pen/reagent/paralysis,
 		/obj/item/pickaxe/diamonddrill,
@@ -124,7 +130,7 @@
 		/obj/item/reagent_containers/food/snacks/xenomeat,
 		/obj/item/reagent_containers/glass/beaker/neurotoxin,
 		/obj/item/hardsuit/combat,
-		/obj/item/shield/energy,
+		/obj/item/shield/transforming/energy,
 		/obj/item/stamp/centcom,
 		/obj/item/stamp/oricon,
 		/obj/item/storage/fancy/cigar/havana,
@@ -179,7 +185,7 @@
 	worth_intrinsic = 350
 	w_class = WEIGHT_CLASS_HUGE
 
-/obj/item/stolenpackageplus/attack_self(mob/user)
+/obj/item/stolenpackageplus/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -217,13 +223,13 @@
 					/obj/item/grenade/flashbang/clusterbang,
 					/obj/item/grenade/flashbang/clusterbang,
 					/obj/item/grenade/spawnergrenade/spesscarp,
-					/obj/item/melee/energy/sword,
+					/obj/item/melee/transforming/energy/sword,
 					/obj/item/melee/telebaton,
 					/obj/item/pen/reagent/paralysis,
 					/obj/item/pickaxe/diamonddrill,
 					/obj/item/reagent_containers/glass/beaker/neurotoxin,
 					/obj/item/hardsuit/combat,
-					/obj/item/shield/energy,
+					/obj/item/shield/transforming/energy,
 					/obj/item/stamp/centcom,
 					/obj/item/stamp/oricon,
 					/obj/item/storage/fancy/cigar/havana,
@@ -245,7 +251,7 @@
 	w_class = WEIGHT_CLASS_HUGE
 	worth_intrinsic = 400
 
-/obj/item/mechasalvage/attack_self(mob/user)
+/obj/item/mechasalvage/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return

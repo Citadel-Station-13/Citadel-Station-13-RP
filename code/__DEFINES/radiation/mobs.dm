@@ -84,6 +84,7 @@
 #define RAD_MOB_AFFLICT_STRENGTH_SLIMETOXIN(removed) (75 * removed)
 #define RAD_MOB_AFFLICT_STRENGTH_MUTAGEN(removed) (100 * removed)
 #define RAD_MOB_AFFLICT_STRENGTH_RADIUM(removed) (100 * removed)
+#define RAD_MOB_AFFLICT_STRENGTH_POL210(removed) (5000 * removed) //Polonium 210
 #define RAD_MOB_AFFLICT_DNA_INJECTOR (rand(150, 300))
 #define RAD_MOB_AFFLICT_FLORARAY_ON_PLANT (rand(30, 80))
 #define RAD_MOB_AFFLICT_VIRUS_RADIAN(multiplier) (multiplier * 15)

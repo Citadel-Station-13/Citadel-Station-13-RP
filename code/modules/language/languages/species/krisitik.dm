@@ -1,4 +1,4 @@
-/datum/language/squeakish
+/datum/prototype/language/squeakish
 	id = LANGUAGE_ID_SQUEAKISH
 	name = LANGUAGE_SQUEAKISH
 	translation_class = TRANSLATION_CLASS_DEFAULT_STANDARD_RACE

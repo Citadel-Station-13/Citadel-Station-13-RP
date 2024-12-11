@@ -19,7 +19,7 @@
 
 /obj/item/gun/ballistic/automatic/k25/update_icon()
 	. = ..()
-	update_held_icon()
+	update_worn_icon()
 
 /obj/item/gun/ballistic/automatic/k25/update_icon_state()
 	. = ..()
@@ -49,4 +49,4 @@
 // 	projectile_type = /obj/projectile/bullet/rifle/s72
 
 // /obj/projectile/bullet/rifle/s72
-// 	damage = 35
+// 	damage_force = 35

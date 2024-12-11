@@ -1,4 +1,4 @@
-/datum/language/demon
+/datum/prototype/language/demon
 	id = LANGUAGE_ID_DAEDAL_DREMACHIR
 	name = LANGUAGE_DAEMON
 	//! set to common due to overwhelming playerbase saturation.
@@ -13,7 +13,7 @@
 	"dttm","aggr","uujl","hjjifr","wwuthaav",)
 	shorthand = "DEM"
 
-/datum/language/angel
+/datum/prototype/language/angel
 	id = LANGUAGE_ID_DAEDAL_AURIL
 	name = LANGUAGE_ENOCHIAN
 	//! trialling putting it on rare; put it to common if everyone uses it

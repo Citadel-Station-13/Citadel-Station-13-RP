@@ -81,7 +81,7 @@
 	desc = "A Ripley modified by pirates. Sports additional riveted armor plating and a jury rigged machine gun in addition to its hull piercing drill."
 	catalogue_data = list(/datum/category_item/catalogue/technology/ripley)
 	icon_state = "pirate"
-	faction = "pirate"
+	iff_factions = MOB_IFF_FACTION_PIRATE
 	wreckage = /obj/structure/loot_pile/mecha/ripley/pirate
 
 	maxHealth = 250

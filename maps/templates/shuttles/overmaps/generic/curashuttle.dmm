@@ -352,7 +352,7 @@
 /area/shuttle/curabitur/curashuttle/med)
 "aM" = (
 /obj/structure/table/rack,
-/obj/item/defib_kit/jumper_kit/loaded,
+/obj/item/defib_kit/loaded,
 /obj/item/defib_kit/compact/combat/loaded,
 /obj/item/defib_kit/compact/combat/loaded,
 /obj/item/mmi/radio_enabled{
@@ -1356,18 +1356,10 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/curabitur/curashuttle/hangar)
-"cO" = (
-/obj/machinery/atmospherics/component/unary/engine{
-	dir = 1
-	},
-/turf/space,
-/turf/simulated/shuttle/plating/airless/carry,
-/area/shuttle/curabitur/curashuttle/eng)
 "cP" = (
 /obj/machinery/ion_engine{
 	dir = 1
 	},
-/turf/space,
 /turf/simulated/shuttle/plating/airless/carry,
 /area/shuttle/curabitur/curashuttle/eng)
 "dF" = (
@@ -1524,7 +1516,7 @@ ce
 co
 cv
 cD
-cO
+cM
 aa
 aa
 "}
@@ -1724,7 +1716,7 @@ cl
 cr
 cB
 cJ
-cO
+cM
 aa
 aa
 "}

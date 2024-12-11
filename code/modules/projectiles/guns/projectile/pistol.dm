@@ -2,8 +2,8 @@
 	var/unique_reskin
 	name = ".45 pistol"
 	desc = "A cheap Martian knock-off of a Colt M1911. Uses .45 rounds."
-	magazine_type = /obj/item/ammo_magazine/a45
-	allowed_magazines = list(/obj/item/ammo_magazine/a45)
+	magazine_type = /obj/item/ammo_magazine/a45/singlestack
+	allowed_magazines = list(/obj/item/ammo_magazine/a45/singlestack)
 	projectile_type = /obj/projectile/bullet/pistol/medium
 	icon_state = "colt"
 	caliber = /datum/ammo_caliber/a45
@@ -25,7 +25,7 @@
 
 /obj/item/gun/ballistic/colt/detective
 	desc = "A Martian recreation of an old pistol. Uses .45 rounds."
-	magazine_type = /obj/item/ammo_magazine/a45/rubber
+	magazine_type = /obj/item/ammo_magazine/a45/singlestack/rubber
 
 /obj/item/gun/ballistic/colt/detective/verb/rename_gun()
 	set name = "Name Gun"
@@ -74,7 +74,7 @@
 	icon_state = "colt-taj"
 
 /*//apart of reskins that have two sprites, touching may result in frustration and breaks
-/obj/item/gun/ballistic/colt/detective/attack_hand(mob/user, list/params)
+/obj/item/gun/ballistic/colt/detective/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(!unique_reskin && loc == user)
 		reskin_gun(user)
 		return
@@ -85,8 +85,8 @@
 	name = ".45 pistol"
 	desc = "The NT Mk58 is a cheap, ubiquitous sidearm, produced by a Nanotrasen subsidiary. Found pretty much everywhere humans are. This one is a less-lethal variant that only accepts .45 rubber or flash magazines."
 	icon_state = "secguncomp"
-	magazine_type = /obj/item/ammo_magazine/a45/rubber
-//	allowed_magazines = list(/obj/item/ammo_magazine/a45/rubber, /obj/item/ammo_magazine/a45/flash, /obj/item/ammo_magazine/a45/practice)
+	magazine_type = /obj/item/ammo_magazine/a45/doublestack/rubber
+	allowed_magazines = list(/obj/item/ammo_magazine/a45/doublestack/rubber, /obj/item/ammo_magazine/a45/doublestack/flash, /obj/item/ammo_magazine/a45/doublestack/practice)
 	projectile_type = /obj/projectile/bullet/pistol/medium
 	caliber = /datum/ammo_caliber/a45
 	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2)
@@ -94,7 +94,7 @@
 
 /obj/item/gun/ballistic/sec/flash
 	name = ".45 signal pistol"
-	magazine_type = /obj/item/ammo_magazine/a45/flash
+	magazine_type = /obj/item/ammo_magazine/a45/doublestack/flash
 
 /obj/item/gun/ballistic/sec/wood
 	desc = "The NT Mk58 is a cheap, ubiquitous sidearm, produced by a Nanotrasen subsidiary. This one has a sweet wooden grip and only accepts .45 rubber or flash magazines."
@@ -112,8 +112,8 @@
 	recoil = 0
 	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2, TECH_ILLEGAL = 8)
 	load_method = MAGAZINE
-	magazine_type = /obj/item/ammo_magazine/a45
-	allowed_magazines = list(/obj/item/ammo_magazine/a45)
+	magazine_type = /obj/item/ammo_magazine/a45/doublestack
+	allowed_magazines = list(/obj/item/ammo_magazine/a45/doublestack)
 	projectile_type = /obj/projectile/bullet/pistol/medium
 
 /obj/item/gun/ballistic/deagle
@@ -273,7 +273,7 @@
 		to_chat(user, "<span class='notice'>\The [src] is completely inoperable!</span>")
 		handle_click_empty()
 
-/obj/item/gun/ballistic/pirate/attack_hand(mob/user, list/params)
+/obj/item/gun/ballistic/pirate/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(user.get_inactive_held_item() == src && destroyed)
 		to_chat(user, "<span class='danger'>\The [src]'s chamber is too warped to extract the casing!</span>")
 		return
@@ -403,7 +403,7 @@
 	else
 		..()
 
-/obj/item/gun/ballistic/konigin/attack_hand(mob/user, list/params)
+/obj/item/gun/ballistic/konigin/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(user.get_inactive_held_item() == src && use_shotgun)
 		shotgun.unload_ammo(user)
 	else
@@ -454,7 +454,7 @@
 	else
 		icon_state = "ntles-empty"
 
-/obj/item/gun/ballistic/ntles/attack_self(mob/user, obj/item/gun/G)
+/obj/item/gun/ballistic/ntles/attack_self(mob/user, datum/event_args/actor/actor)
 	if(collapsible && !extended)
 		to_chat(user, "<span class='notice'>You pull out the stock on the [src], steadying the weapon.</span>")
 		set_weight_class(WEIGHT_CLASS_BULKY)
@@ -491,6 +491,36 @@
 	. = ..()
 	if(istype(ammo_magazine,/obj/item/ammo_magazine/a5_7mm/five_seven/highcap))
 		icon_state = "fiveseven-extended"
+
+//AXHS Series
+/obj/item/gun/ballistic/ax59 //Exploration model
+	name = "large pistol"
+	desc = "A bulky semi-automatic handgun with 'NT AX59' engraved on the slide. Comes with an integrated light module and a small lanyard loop at the bottom of the grip. Uses .45 rounds."
+	description_fluff = "The Advanced Expeditionary Handgun System, more commonly known by it's model name 'AX59', or coloquially as the 'Axe', was one of the first attempts by Nanotrasen to modernize and standardize their Exploration department's gear in the years following the Phoron Wars, although it was swiftly replaced by more compact, field-rechargeable energy weapon designs within only a few years. A handgun chambered in the .45 ACP cartridge, it was designed to offer enough stopping power to handle common 'environmental threats' such as hostile fauna within a small form factor, ideally eliminating the need to carry a long gun, although the final design was still considered bulky even by the time of it's introduction. Some of this weight, thankfully, owes itself to features specifically designed for it's use in Exploration:  All base models come equipped with a non-detachable weapon-mounted light and are issued alongside a durable wire lanyard."
+	projectile_type = /obj/projectile/bullet/pistol/medium
+	icon_state = "ax59"
+	caliber = /datum/ammo_caliber/a45
+	load_method = MAGAZINE
+	magazine_type = /obj/item/ammo_magazine/a45/doublestack
+	allowed_magazines = list(/obj/item/ammo_magazine/a45/doublestack)
+	pin = /obj/item/firing_pin/explorer
+	attachments = list(
+		/obj/item/gun_attachment/flashlight/internal,
+	)
+	attachment_alignment = list(
+		GUN_ATTACHMENT_SLOT_UNDERBARREL = list(0,0),
+		GUN_ATTACHMENT_SLOT_GRIP = list(0,0)
+	)
+
+/obj/item/gun/ballistic/ax99 //PMD model
+	name = "long-slide pistol"
+	desc = "A bulky semi-automatic handgun with 'NT AX99' engraved on the slide. Uses .44 rounds."
+	description_fluff = "A later derivative of what started as the Advanced Expeditionary Handgun System (AXHS), the AX99 entered production solely at the behest of the company's Paracausal Monitoring Division shortly after it's establishment due to the new department's need for a standardized handgun design that could operate reliably even under anomalous circumstances and against unknown threats. Compared to it's predecessor, it is chambered for the more powerful .44 Magnum cartridge and equipped with a partially redesigned operating system able to withstand the higher pressure, as well as a longer ported barrel and slide assembly. On the other hand, it has been stripped of fragile electronic utilities such as the underbarrel light. It has been occasionally referred to as the 'Silver Axe' due to it's use in conjuction with silver rounds, although it is perfectly capable of operating with standard ammunition."
+	icon_state = "ax99"
+	caliber = /datum/ammo_caliber/a44
+	load_method = MAGAZINE
+	magazine_type = /obj/item/ammo_magazine/a44
+	allowed_magazines = list(/obj/item/ammo_magazine/a44)
 
 //Apidean Weapons
 /obj/item/gun/ballistic/apinae_pistol
@@ -536,11 +566,6 @@
 	magazine_type = /obj/item/ammo_magazine/foam/pistol
 	allowed_magazines = list(/obj/item/ammo_magazine/foam/pistol)
 	fire_sound = 'sound/items/syringeproj.ogg'
-
-/obj/item/gun/ballistic/pistol/foam/handle_suicide(mob/living/user)
-	user.show_message("<span class = 'warning'>You feel rather silly, trying to commit suicide with a toy.</span>")
-	mouthshoot = 0
-	return
 
 /obj/item/gun/ballistic/pistol/foam/blue
 	icon_state = "toy_pistol_blue"

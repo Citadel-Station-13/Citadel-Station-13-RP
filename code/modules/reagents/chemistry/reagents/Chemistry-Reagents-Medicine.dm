@@ -423,7 +423,7 @@
 	mrate_static = TRUE
 	scannable = 1
 
-/datum/reagent/necroxadone/on_mob_life(mob/living/carbon/M, alien, datum/reagents/metabolism/location)
+/datum/reagent/necroxadone/on_mob_life(mob/living/carbon/M, alien, datum/reagent_holder/metabolism/location)
 	if(M.stat == DEAD && M.has_modifier_of_type(/datum/modifier/bloodpump_corpse))
 		affects_dead = TRUE
 	else
@@ -799,6 +799,14 @@
 				H.losebreath = clamp(H.losebreath + 3, 0, 20)
 		else
 			H.losebreath = max(H.losebreath - 4, 0)
+	if(M.ingested)
+		for(var/datum/reagent/asbestos/R in M.ingested.reagent_list)
+			R.remove_self(removed * 4)
+	if(M.bloodstr)
+		for(var/datum/reagent/asbestos/R in M.bloodstr.reagent_list)
+			R.remove_self(removed * 4)
+
+
 
 /datum/reagent/gastirodaxon
 	name = "Gastirodaxon"
@@ -1468,7 +1476,7 @@
 			to_chat(M, "<span class='notice'>You feel invigorated and calm.</span>")
 
 // This exists to cut the number of chemicals a merc borg has to juggle on their hypo.
-/datum/reagent/healing_nanites
+/datum/reagent/nanite/healing
 	name = "Restorative Nanites"
 	id = "healing_nanites"
 	description = "Miniature medical robots that swiftly restore bodily damage."
@@ -1479,7 +1487,13 @@
 	scannable = TRUE
 	affects_robots = TRUE
 
-/datum/reagent/healing_nanites/affect_blood(mob/living/carbon/M, alien, removed)
+/datum/reagent/nanite/healing/affect_blood(mob/living/carbon/M, alien, removed)
+	M.heal_organ_damage(2 * removed, 2 * removed)
+	M.adjustOxyLoss(-4 * removed)
+	M.adjustToxLoss(-2 * removed)
+	M.adjustCloneLoss(-2 * removed)
+
+/datum/reagent/nanite/healing/affect_ingest(mob/living/carbon/M, alien, removed)
 	M.heal_organ_damage(2 * removed, 2 * removed)
 	M.adjustOxyLoss(-4 * removed)
 	M.adjustToxLoss(-2 * removed)

@@ -45,7 +45,7 @@
 	else
 		..()
 
-/obj/item/gun/ballistic/rocket/attack_hand(mob/user, list/params)
+/obj/item/gun/ballistic/rocket/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(user.get_inactive_held_item() == src)
 		unload(user)
 	else
@@ -86,14 +86,14 @@
 	to_chat(user, "<span class='danger'>You cannot reload the [src]!</span>")
 	return
 
-/obj/item/gun/ballistic/rocket/collapsible/attack_hand(mob/user, list/params)
+/obj/item/gun/ballistic/rocket/collapsible/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(user.get_inactive_held_item() == src)
 		to_chat(user, "<span class='danger'>You cannot unload the [src]'s munition!</span>")
 		return
 	else
 		return ..()
 
-/obj/item/gun/ballistic/rocket/collapsible/attack_self(mob/user, obj/item/gun/G)
+/obj/item/gun/ballistic/rocket/collapsible/attack_self(mob/user, datum/event_args/actor/actor)
 	if(collapsed)
 		to_chat(user, "<span class='notice'>You pull out the tube on the [src], readying the weapon to be fired.</span>")
 		icon_state = "[initial(icon_state)]-extended"
@@ -167,7 +167,7 @@
 		to_chat(user, "<span class='notice'>\The [src] is completely inoperable!</span>")
 		handle_click_empty()
 
-/obj/item/gun/ballistic/rocket/tyrmalin/attack_hand(mob/user, list/params)
+/obj/item/gun/ballistic/rocket/tyrmalin/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(user.get_inactive_held_item() == src && destroyed)
 		to_chat(user, "<span class='danger'>\The [src]'s chamber is too warped to extract the casing!</span>")
 		return
@@ -176,7 +176,7 @@
 
 /obj/item/gun/ballistic/rocket/tyrmalin/attackby(var/obj/item/A as obj, mob/user as mob)
 	. = ..()
-	if(A.is_material_stack_of(/datum/material/plasteel))
+	if(A.is_material_stack_of(/datum/prototype/material/plasteel))
 		var/obj/item/stack/material/M = A
 		if(M.use(1))
 			var/obj/item/tyrmalin_rocket_assembly/R = new /obj/item/tyrmalin_rocket_assembly(get_turf(src))

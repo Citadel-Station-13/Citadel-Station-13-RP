@@ -1,5 +1,3 @@
-//* This file is explicitly licensed under the MIT license. *//
-//* Copyright (c) 2023 Citadel Station developers.          *//
 
 /datum/gas/oxygen
 	id = GAS_ID_OXYGEN

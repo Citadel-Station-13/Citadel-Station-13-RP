@@ -27,7 +27,7 @@
 	. = ..()
 	add_obj_verb(src, /obj/item/gun/energy/sizegun/proc/select_size)
 
-/obj/item/gun/energy/sizegun/attack_self(mob/user)
+/obj/item/gun/energy/sizegun/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -65,7 +65,7 @@
 	name = "size beam"
 	icon_state = "xray"
 	nodamage = 1
-	damage = 0
+	damage_force = 0
 	damage_flag = ARMOR_LASER
 	var/set_size = 1 //Let's default to 100%
 
@@ -73,7 +73,11 @@
 	tracer_type = /obj/effect/projectile/tracer/xray
 	impact_type = /obj/effect/projectile/impact/xray
 
-/obj/projectile/beam/sizelaser/on_hit(var/atom/target)
+/obj/projectile/beam/sizelaser/on_impact(atom/target, impact_flags, def_zone, efficiency)
+	. = ..()
+	if(. & PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT)
+		return
+
 	var/mob/living/M = target
 	if(!M.permit_sizegun)
 		M.visible_message("<span class='warning'>[src] has no effect on [M].</span>")
@@ -87,17 +91,12 @@
 		var/mob/living/H = M
 		H.resize(set_size, TRUE)
 		H.updateicon()
-	else
-		return 1
-
 
 /obj/projectile/beam/sizelaser/shrink
 	set_size = 0.5 //50% of current size
 
-
 /obj/projectile/beam/sizelaser/grow
 	set_size = 2.0 //200% of current size
-
 
 /obj/item/gun/energy/stripper//Because it can be fun
 	name = "stripper gun"

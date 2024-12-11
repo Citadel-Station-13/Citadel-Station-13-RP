@@ -202,7 +202,7 @@
 /obj/item/hardsuit_module/mounted/energy_blade/process(delta_time)
 
 	if(holder && holder.wearer)
-		if(!(locate(/obj/item/melee/energy/blade) in holder.wearer))
+		if(!(locate(/obj/item/melee/ninja_energy_blade) in holder.wearer))
 			deactivate()
 			return 0
 
@@ -214,12 +214,12 @@
 
 	var/mob/living/M = holder.wearer
 
-	if(M.l_hand && M.r_hand)
+	if(M.are_usable_hands_full())
 		to_chat(M, "<span class='danger'>Your hands are full.</span>")
 		deactivate()
 		return
 
-	var/obj/item/melee/energy/blade/blade = new(M)
+	var/obj/item/melee/ninja_energy_blade/blade = new(M)
 	blade.creator = M
 	M.put_in_hands(blade)
 
@@ -232,7 +232,7 @@
 	if(!M)
 		return
 
-	for(var/obj/item/melee/energy/blade/blade in M.contents)
+	for(var/obj/item/melee/ninja_energy_blade/blade in M.contents)
 		qdel(blade)
 
 /obj/item/hardsuit_module/fabricator
@@ -266,7 +266,7 @@
 		H.visible_message("<span class='danger'>[H] launches \a [firing]!</span>")
 		firing.throw_at_old(target,fire_force,fire_distance)
 	else
-		if(H.l_hand && H.r_hand)
+		if(H.are_usable_hands_full())
 			to_chat(H, "<span class='danger'>Your hands are full.</span>")
 		else
 			var/obj/item/new_weapon = new fabrication_type()

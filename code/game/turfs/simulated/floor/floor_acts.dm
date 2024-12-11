@@ -1,27 +1,28 @@
 /turf/simulated/floor/legacy_ex_act(severity)
 	//set src in oview(1)
 	switch(severity)
-		if(1.0)
+		if(1)
 			ScrapeAway(flags = CHANGETURF_INHERIT_AIR)
-		if(2.0)
+		if(2)
 			switch(pick(40;1,40;2,3))
 				if (1)
-					if(prob(33)) new /obj/item/stack/material/steel(src)
+					if(prob(33))
+						new /obj/item/stack/material/steel(src)
 					src.ReplaceWithLattice()
 				if(2)
 					ScrapeAway(flags = CHANGETURF_INHERIT_AIR)
 				if(3)
-					if(prob(33)) new /obj/item/stack/material/steel(src)
+					if(prob(33))
+						new /obj/item/stack/material/steel(src)
 					if(prob(80))
 						src.break_tile_to_plating()
 					else
 						src.break_tile()
 					src.hotspot_expose(1000,CELL_VOLUME)
-		if(3.0)
+		if(3)
 			if (prob(50))
 				src.break_tile()
 				src.hotspot_expose(1000,CELL_VOLUME)
-	return
 
 /turf/simulated/floor/fire_act(datum/gas_mixture/air, exposed_temperature, exposed_volume)
 
@@ -29,9 +30,8 @@
 	if(!burnt && prob(5))
 		burn_tile(exposed_temperature)
 	else if(temp_destroy && exposed_temperature >= (temp_destroy + 100) && prob(1) && !is_plating())
-		make_plating() //destroy the tile, exposing plating
+		dismantle_flooring(FALSE)
 		burn_tile(exposed_temperature)
-	return
 
 //should be a little bit lower than the temperature required to destroy the material
 /turf/simulated/floor/proc/get_damage_temperature()

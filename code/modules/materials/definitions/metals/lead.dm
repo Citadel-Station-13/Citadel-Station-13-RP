@@ -1,4 +1,4 @@
-/datum/material/lead
+/datum/prototype/material/lead
 	name = MAT_LEAD
 	id = MAT_LEAD
 	stack_type = /obj/item/stack/material/lead

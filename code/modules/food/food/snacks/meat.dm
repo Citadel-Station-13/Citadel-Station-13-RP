@@ -31,7 +31,7 @@
 	else
 		..()
 
-/obj/item/reagent_containers/food/snacks/meat/syntiflesh
+/obj/item/reagent_containers/food/snacks/meat/synthflesh
 	name = "synthetic meat"
 	desc = "A synthetic slab of flesh."
 
@@ -56,9 +56,9 @@
 	filling_color = "#BBBBAA"
 
 /obj/item/reagent_containers/food/snacks/meat/chicken/Initialize(mapload)
-		..()
-		reagents.remove_reagent("triglyceride", INFINITY)
-		//Chicken is low fat. Less total calories than other meats
+	. = ..()
+	reagents.remove_reagent("triglyceride", INFINITY)
+	//Chicken is low fat. Less total calories than other meats
 
 /obj/item/reagent_containers/food/snacks/meat/chicken/penguin
 	name = "meat"

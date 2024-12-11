@@ -853,7 +853,6 @@
 /turf/simulated/floor/snow/snow2,
 /area/awaymission/snow_outpost/outside/nospawn)
 "dN" = (
-/turf/simulated/floor/snow/snow2,
 /turf/simulated/shuttle/wall/dark{
 	icon_state = "dark6";
 	name = "Unknown Shuttle"
@@ -866,7 +865,6 @@
 	},
 /area/awaymission/snow_outpost/outside/nospawn)
 "dP" = (
-/turf/simulated/floor/snow/snow2,
 /turf/simulated/shuttle/wall/dark{
 	icon_state = "dark10";
 	name = "Unknown Shuttle"
@@ -972,7 +970,6 @@
 /turf/simulated/floor/tiled/white,
 /area/awaymission/snow_outpost/powered)
 "eb" = (
-/turf/simulated/floor/tiled/steel,
 /turf/simulated/shuttle/wall/dark{
 	icon_state = "dark5";
 	name = "Unknown Shuttle"
@@ -1030,19 +1027,11 @@
 /turf/simulated/floor/tiled/white,
 /area/awaymission/snow_outpost/powered)
 "em" = (
-/turf/simulated/floor/tiled/steel,
 /turf/simulated/shuttle/wall/dark{
 	icon_state = "dark9";
 	name = "Unknown Shuttle"
 	},
 /area/awaymission/snow_outpost/powered)
-"en" = (
-/turf/simulated/floor/tiled/steel,
-/turf/simulated/shuttle/wall/dark{
-	icon_state = "dark6";
-	name = "Unknown Shuttle"
-	},
-/area/awaymission/snow_outpost/outside/nospawn)
 "eo" = (
 /mob/living/simple_mob/mechanical/viscerator,
 /mob/living/simple_mob/mechanical/viscerator,
@@ -1195,13 +1184,6 @@
 /obj/machinery/door/airlock/glass,
 /turf/simulated/floor/tiled/white,
 /area/awaymission/snow_outpost/powered)
-"eL" = (
-/turf/simulated/floor/tiled/steel,
-/turf/simulated/shuttle/wall/dark{
-	icon_state = "dark10";
-	name = "Unknown Shuttle"
-	},
-/area/awaymission/snow_outpost/outside/nospawn)
 "eM" = (
 /obj/machinery/computer/communications,
 /obj/effect/floor_decal/borderfloor{
@@ -1943,7 +1925,7 @@
 /area/awaymission/snow_outpost/dark)
 "hm" = (
 /obj/structure/closet/cabinet,
-/obj/item/contraband/poster,
+/obj/item/poster,
 /turf/simulated/floor/carpet,
 /area/awaymission/snow_outpost/dark)
 "hn" = (
@@ -2205,7 +2187,7 @@
 /turf/simulated/shuttle/wall,
 /area/awaymission/snow_outpost/outside)
 "in" = (
-/turf/unsimulated/mineral,
+/turf/unsimulated/wall/mineral,
 /area/awaymission/snow_outpost/outside)
 "io" = (
 /obj/structure/flora/grass/brown,
@@ -2349,15 +2331,7 @@
 /obj/item/toy/plushie/spider,
 /turf/simulated/floor/tiled/steel,
 /area/awaymission/snow_outpost/powered)
-"iU" = (
-/turf/simulated/floor/snow/snow2,
-/turf/simulated/shuttle/wall/dark{
-	icon_state = "dark5";
-	name = "Unknown Shuttle"
-	},
-/area/awaymission/snow_outpost/outside/nospawn)
 "iV" = (
-/turf/simulated/floor/snow/snow2,
 /turf/simulated/shuttle/wall/dark{
 	icon_state = "dark9";
 	name = "Unknown Shuttle"
@@ -2383,7 +2357,7 @@
 /area/awaymission/snow_outpost/dark)
 "jb" = (
 /obj/structure/flora/tree/sif,
-/turf/unsimulated/mineral,
+/turf/unsimulated/wall/mineral,
 /area/awaymission/snow_outpost/outside)
 "jo" = (
 /turf/simulated/mineral/floor/ignore_mapgen,
@@ -2425,7 +2399,7 @@
 /turf/simulated/floor/tiled/white,
 /area/awaymission/snow_outpost/powered)
 "pV" = (
-/turf/unsimulated/mineral,
+/turf/unsimulated/wall/mineral,
 /area/awaymission/snow_outpost/outside/nospawn)
 "qL" = (
 /obj/random/landmine,
@@ -2530,13 +2504,6 @@
 	},
 /turf/simulated/floor/plating/outdoors,
 /area/awaymission/snow_outpost/dark)
-"DR" = (
-/turf/simulated/floor/tiled/steel,
-/turf/simulated/shuttle/wall/dark{
-	icon_state = "dark9";
-	name = "Unknown Shuttle"
-	},
-/area/awaymission/snow_outpost/outside/nospawn)
 "Eo" = (
 /obj/machinery/fire_alarm/north_mount,
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan{
@@ -2705,7 +2672,7 @@
 /turf/simulated/floor/snow/snow2,
 /area/awaymission/snow_outpost/dark)
 "Rs" = (
-/turf/unsimulated/mineral,
+/turf/unsimulated/wall/mineral,
 /area/awaymission/snow_outpost/dark)
 "RF" = (
 /turf/simulated/mineral/ignore_mapgen,
@@ -15299,7 +15266,7 @@ uy
 uy
 uy
 uy
-en
+dN
 dO
 eW
 fe
@@ -15440,7 +15407,7 @@ uy
 uy
 uy
 uy
-en
+dN
 EA
 eM
 eX
@@ -15581,7 +15548,7 @@ dN
 dO
 dO
 eb
-en
+dN
 EA
 eH
 eN
@@ -15593,10 +15560,10 @@ fm
 fA
 EA
 eb
-en
+dN
 dO
 dO
-iU
+eb
 uy
 ab
 ab
@@ -17868,7 +17835,7 @@ fF
 fF
 iT
 dO
-iU
+eb
 uy
 ab
 cd
@@ -18421,18 +18388,18 @@ dO
 dO
 EA
 EA
-DR
+iV
 uy
-eL
+dP
 EA
 fd
 fd
 fd
 fp
 EA
-DR
+iV
 uy
-eL
+dP
 dO
 dO
 dO
@@ -18566,16 +18533,16 @@ em
 uy
 uy
 uy
-eL
+dP
 dR
 dR
 dR
 dR
-DR
+iV
 uy
 uy
 uy
-eL
+dP
 dR
 dR
 iV

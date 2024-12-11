@@ -58,7 +58,7 @@ For now this is still usable but bad.
 		my_mob.low_priority = TRUE
 
 		if(faction)
-			my_mob.faction = faction
+			my_mob.set_iff_factions(faction)
 
 		if(atmos_comp)
 			var/turf/T = get_turf(src)

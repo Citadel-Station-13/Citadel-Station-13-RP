@@ -109,7 +109,6 @@
 /turf/simulated/shuttle/wall/dark,
 /area/awaymission/syndishuttle)
 "aD" = (
-/turf/simulated/shuttle/wall/dark,
 /turf/space,
 /area/awaymission/syndishuttle)
 "aH" = (
@@ -124,9 +123,6 @@
 /area/awaymission/syndishuttle)
 "aJ" = (
 /turf/simulated/floor/airless,
-/area/awaymission/syndishuttle)
-"aK" = (
-/turf/space,
 /area/awaymission/syndishuttle)
 "aL" = (
 /obj/machinery/recharge_station,
@@ -285,7 +281,6 @@
 /turf/simulated/shuttle/plating,
 /area/awaymission/syndishuttle)
 "bF" = (
-/turf/simulated/floor/airless,
 /turf/simulated/shuttle/wall{
 	dir = 4;
 	icon_state = "diagonalWall3"
@@ -582,13 +577,6 @@
 /area/awaymission/northblock)
 "cS" = (
 /obj/structure/closet/firecloset,
-/turf/simulated/floor/airless,
-/area/awaymission/research)
-"cU" = (
-/mob/living/simple_mob/animal/space/alien{
-	fireloss = 200;
-	stat = 2
-	},
 /turf/simulated/floor/airless,
 /area/awaymission/research)
 "cV" = (
@@ -1368,10 +1356,6 @@
 	},
 /obj/structure/grille,
 /turf/simulated/shuttle/plating,
-/area/awaymission/arrivalblock)
-"fT" = (
-/turf/space,
-/turf/simulated/shuttle/wall,
 /area/awaymission/arrivalblock)
 "fU" = (
 /obj/structure/table/woodentable,
@@ -2777,7 +2761,7 @@
 /turf/simulated/floor,
 /area/awaymission/arrivalblock)
 "kN" = (
-/obj/item/melee/energy/sword,
+/obj/item/melee/transforming/energy/sword,
 /obj/item/clothing/shoes/syndigaloshes,
 /obj/item/clothing/under/syndicate,
 /obj/effect/decal/remains/human{
@@ -3717,7 +3701,7 @@ aj
 aj
 aa
 aa
-fT
+fO
 fO
 gB
 gU
@@ -3969,7 +3953,7 @@ bB
 bB
 aC
 aI
-aK
+aD
 aC
 af
 dy
@@ -4091,7 +4075,7 @@ ap
 ap
 af
 af
-aK
+aD
 aD
 aC
 bl
@@ -4491,7 +4475,7 @@ ak
 aa
 ba
 aa
-aK
+aD
 bf
 aC
 aD
@@ -4557,7 +4541,7 @@ ak
 ak
 aa
 ap
-aK
+aD
 bf
 aC
 af
@@ -4691,7 +4675,7 @@ aj
 ap
 aJ
 aJ
-aK
+aD
 ap
 ap
 ap
@@ -5289,7 +5273,7 @@ bw
 bw
 co
 cG
-cU
+bw
 dg
 bw
 co

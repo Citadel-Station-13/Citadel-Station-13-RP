@@ -146,7 +146,7 @@ var/list/channel_to_radio_key = new
 		return "asks"
 	return verb
 
-/mob/living/say(var/message, var/datum/language/speaking = null, var/verb="says", var/alt_name="", var/whispering = 0)
+/mob/living/say(var/message, var/datum/prototype/language/speaking = null, var/verb="says", var/alt_name="", var/whispering = 0)
 	//If you're muted for IC chat
 	if(client)
 		if(message)
@@ -194,7 +194,7 @@ var/list/channel_to_radio_key = new
 		speaking = get_default_language()
 
 	if(!can_speak(speaking))
-		speaking = SScharacters.resolve_language_name(LANGUAGE_GIBBERISH)
+		speaking = RSlanguages.legacy_resolve_language_name(LANGUAGE_GIBBERISH)
 		var/babble_key = ",r"
 		message = babble_key + message
 
@@ -206,7 +206,7 @@ var/list/channel_to_radio_key = new
 	while(speaking && is_language_prefix(copytext_char(message, 1, 2)))
 		message = copytext_char(message,2+length_char(speaking.key))
 
-	if(speaking && speaking == SScharacters.resolve_language_name("Noise"))
+	if(speaking && speaking == RSlanguages.legacy_resolve_language_name("Noise"))
 		message = copytext_char(message,2)
 
 	//LANGUAGE_HIVEMIND languages always send to all people with that language
@@ -236,7 +236,7 @@ var/list/channel_to_radio_key = new
 		verb = speaking.speech_verb
 		w_not_heard = "[speaking.speech_verb] something [w_adverb]"
 
-	var/list/message_args = list("message" = message, "whispering" = whispering, "cancelled" = FALSE)
+	var/list/message_args = list("message" = message, "whispering" = whispering, "cancelled" = FALSE, "message_mode" = message_mode)
 
 	SEND_SIGNAL(src, COMSIG_MOB_SAY, message_args)
 
@@ -446,7 +446,7 @@ var/list/channel_to_radio_key = new
 		log_say(message, src)
 	return 1
 
-/mob/living/proc/say_signlang(var/message, var/verb="gestures", var/datum/language/language)
+/mob/living/proc/say_signlang(var/message, var/verb="gestures", var/datum/prototype/language/language)
 	var/turf/T = get_turf(src)
 	//We're in something, gesture to people inside the same thing
 	if(loc != T)

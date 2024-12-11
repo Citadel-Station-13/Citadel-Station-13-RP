@@ -17,6 +17,32 @@
 	/// If set, accepts ammo and magazines of this caliber.
 	var/caliber = /datum/ammo_caliber/a357
 
+	//* Rendering *//
+
+	/// Render an overlay when magazine is in.
+	///
+	/// todo: mob renderer integration
+	///
+	/// * This uses MAGAZINE_CLASS_* defines
+	/// * We'll look for a matching class that we support to render
+	/// * If we can't find one, we'll use any class that we have on ourselves
+	var/render_magazine_overlay = NONE
+	/// Render the chamber state.
+	///
+	/// todo: mob renderer integration
+	/// todo: this is not supported yet
+	///
+	/// * uses BALLISTIC_RENDER_BOLT_* enms
+	var/render_bolt_overlay = BALLISTIC_RENDER_BOLT_NEVER
+	/// Render the state of a gun that's 'break action'
+	///
+	/// todo: mob renderer integration
+	/// todo: this is not supported yet
+	///
+	/// * uses BALLISTIC_RENDER_BREAK_* enums
+	/// * This is also used for LMGs, and any other gun requiring this stuff.
+	var/render_break_overlay = BALLISTIC_RENDER_BREAK_NEVER
+
 	//! LEGACY BELOW
 
 	var/handle_casings = EJECT_CASINGS	//determines how spent casings should be handled
@@ -111,7 +137,8 @@
 				qdel(chambered)
 				return
 			else
-				chambered.loc = get_turf(src)
+				chambered.forceMove(get_turf(src))
+				chambered.randomize_offsets_after_eject()
 				playsound(src.loc, "casing", 50, 1)
 		if(CYCLE_CASINGS) //cycle the casing back to the end.
 			if(ammo_magazine)
@@ -279,7 +306,7 @@
 				set_weight_class(WEIGHT_CLASS_SMALL)
 				update_icon()
 
-/obj/item/gun/ballistic/attack_self(mob/user)
+/obj/item/gun/ballistic/attack_self(mob/user, datum/event_args/actor/actor)
 	if(firemodes.len > 1)
 		switch_firemodes(user)
 	else if(ammo_magazine)
@@ -292,7 +319,7 @@
 		unload_ammo(user)
 	update_icon()
 
-/obj/item/gun/ballistic/attack_hand(mob/user, list/params)
+/obj/item/gun/ballistic/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(user.get_inactive_held_item() == src)
 		unload_ammo(user, allow_dump=0)
 	else
@@ -366,3 +393,30 @@
 	var/datum/ammo_caliber/ours = resolve_caliber(caliber)
 	var/datum/ammo_caliber/theirs = resolve_caliber(caliberlike)
 	return ours.equivalent(theirs)
+
+//* Rendering *//
+
+/**
+ * Returns an overlay for a magazine. This can be a string, or anything else that goes into our 'overlays' list.
+ */
+/obj/item/gun/ballistic/proc/get_magazine_overlay_for(obj/item/ammo_magazine/magazine)
+	var/effective_magazine_class = magazine.magazine_class
+	if(!(effective_magazine_class & render_magazine_overlay))
+		if(render_magazine_overlay & MAGAZINE_CLASS_GENERIC)
+			effective_magazine_class = MAGAZINE_CLASS_GENERIC
+		else
+			return
+	return global.magazine_class_bit_to_state[log(2, magazine.magazine_class) + 1]
+
+/obj/item/gun/ballistic/update_icon()
+	// todo: shouldn't need this check, deal with legacy
+	if(!item_renderer && !mob_renderer && render_use_legacy_by_default)
+		return ..()
+	. = ..()
+	// todo: render_break_overlay
+	// todo: render_bolt_overlay
+	if(render_magazine_overlay)
+		if(ammo_magazine)
+			var/overlay = get_magazine_overlay_for(ammo_magazine)
+			if(overlay)
+				add_overlay(overlay)

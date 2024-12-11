@@ -957,7 +957,7 @@
 			if(check_slot && check_slot == use_obj)
 				return
 			use_obj.copy_atom_colour(src)
-			if(!H.equip_to_slot_if_possible(use_obj, equip_to, null, INV_OP_FORCE))
+			if(!H.equip_to_slot_if_possible(use_obj, equip_to, INV_OP_FORCE))
 				if(check_slot && warn == 1)
 					to_chat(H, "<span class='danger'>You are unable to deploy \the [piece] as \the [check_slot] [check_slot.gender == PLURAL ? "are" : "is"] in the way.</span>")
 					return
@@ -1135,11 +1135,6 @@
 	//This is sota the goto stop mobs from moving var
 	if(!CHECK_MOBILITY(user, MOBILITY_CAN_MOVE))
 		return
-
-	if(locate(/obj/effect/stop/, wearer.loc))
-		for(var/obj/effect/stop/S in wearer.loc)
-			if(S.victim == wearer)
-				return
 
 	if(!wearer.lastarea)
 		wearer.lastarea = get_area(wearer.loc)

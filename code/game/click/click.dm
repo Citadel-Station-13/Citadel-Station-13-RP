@@ -1,10 +1,3 @@
-/*
-	Click code cleanup
-	~Sayu
-*/
-
-// 1 decisecond click delay (above and beyond mob/next_move)
-/mob/var/next_click = 0
 
 /*
 	Before anything else, defer these calls to a per-mobtype handler.  This allows us to
@@ -20,21 +13,17 @@
 	if(!(atom_flags & ATOM_INITIALIZED))
 		to_chat(usr, SPAN_WARNING("[type] initialization failure. Click dropped. Contact a coder or admin."))
 		return
-	if(src)
-		SEND_SIGNAL(src, COMSIG_CLICK, location, control, params, usr)
-		usr.ClickOn(src, params)
+	SEND_SIGNAL(src, COMSIG_CLICK, location, control, params, usr)
+	usr.ClickOn(src, params)
 
 /atom/DblClick(var/location, var/control, var/params)
 	if(!(atom_flags & ATOM_INITIALIZED))
 		to_chat(usr, SPAN_WARNING("[type] initialization failure. Click dropped. Contact a coder or admin."))
 		return
-	if(src)
-		usr.DblClickOn(src, params)
+	usr.DblClickOn(src, params)
 
 /atom/MouseWheel(delta_x,delta_y,location,control,params)
 	usr.MouseWheelOn(src, delta_x, delta_y, params)
-
-
 
 /**
  * click handling entrypoint
@@ -282,7 +271,7 @@
 		return
 	if(!client)
 		return
-	if(T == client.statpanel_turf)
+	if(T == client.tgui_stat?.byond_stat_turf)
 		client.unlist_turf()
 		return
 	client.list_turf(T)
@@ -370,10 +359,11 @@
 			setDir(WEST)
 
 /atom/movable/screen/click_catcher
+	name = ""
 	icon = 'icons/mob/screen_gen.dmi'
 	icon_state = "click_catcher"
 	plane = CLICKCATCHER_PLANE
-	mouse_opacity = 2
+	mouse_opacity = MOUSE_OPACITY_OPAQUE
 	screen_loc = "CENTER-7,CENTER-7"
 
 /atom/movable/screen/click_catcher/proc/MakeGreed()

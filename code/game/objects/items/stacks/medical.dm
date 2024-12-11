@@ -44,7 +44,7 @@
 				to_chat(user, "<span class='warning'>You can't apply [src] through [H.head]!</span>")
 				return FALSE
 		else
-			if(H.wear_suit && istype(H.wear_suit,/obj/item/clothing/suit/space))
+			if(istype(H.inventory.get_slot_single(/datum/inventory_slot/inventory/suit), /obj/item/clothing/suit/space))
 				to_chat(user, "<span class='warning'>You can't apply [src] through [H.wear_suit]!</span>")
 				return FALSE
 
@@ -192,7 +192,7 @@
 					user.visible_message("<span class='notice'>\The [user] bandages \a [W.desc] on [H]'s [affecting.name].</span>", \
 					                              "<span class='notice'>You bandage \a [W.desc] on [H]'s [affecting.name].</span>" )
 					//H.add_side_effect("Itch")
-				else if (W.damage_type == BRUISE)
+				else if (W.wound_type == WOUND_TYPE_BRUISE)
 					user.visible_message("<span class='notice'>\The [user] places a bruise patch over \a [W.desc] on [H]'s [affecting.name].</span>", \
 					                              "<span class='notice'>You place a bruise patch over \a [W.desc] on [H]'s [affecting.name].</span>" )
 				else
@@ -295,7 +295,7 @@
 				if (W.current_stage <= W.max_bleeding_stage)
 					user.visible_message("<span class='notice'>\The [user] cleans \a [W.desc] on [M]'s [affecting.name] and seals the edges with bioglue.</span>", \
 					                     "<span class='notice'>You clean and seal \a [W.desc] on [M]'s [affecting.name].</span>" )
-				else if (W.damage_type == BRUISE)
+				else if (W.wound_type == WOUND_TYPE_BRUISE)
 					user.visible_message("<span class='notice'>\The [user] places a medical patch over \a [W.desc] on [M]'s [affecting.name].</span>", \
 					                              "<span class='notice'>You place a medical patch over \a [W.desc] on [M]'s [affecting.name].</span>" )
 				else
@@ -384,8 +384,8 @@
 		if (M != user)
 			user.visible_message("<span class='danger'>[user] starts to apply \the [src] to [M]'s [limb].</span>", "<span class='danger'>You start to apply \the [src] to [M]'s [limb].</span>", "<span class='danger'>You hear something being wrapped.</span>")
 		else
-			if(( !H.hand && (affecting.organ_tag in list(BP_R_ARM, BP_R_HAND)) || \
-				H.hand && (affecting.organ_tag in list(BP_L_ARM, BP_L_HAND)) ))
+			if(( !(H.active_hand % 2) && (affecting.organ_tag in list(BP_R_ARM, BP_R_HAND)) || \
+				(H.active_hand % 2) && (affecting.organ_tag in list(BP_L_ARM, BP_L_HAND)) ))
 				to_chat(user, "<span class='danger'>You can't apply a splint to the arm you're using!</span>")
 				return
 			user.visible_message("<span class='danger'>[user] starts to apply \the [src] to their [limb].</span>", "<span class='danger'>You start to apply \the [src] to your [limb].</span>", "<span class='danger'>You hear something being wrapped.</span>")
@@ -502,7 +502,7 @@
 					user.visible_message("<span class='notice'>\The [user] covers \a [W.desc] on [H]'s [affecting.name].</span>", \
 					                              "<span class='notice'>You cover \a [W.desc] on [H]'s [affecting.name].</span>" )
 					//H.add_side_effect("Itch")
-				else if (W.damage_type == BRUISE)
+				else if (W.wound_type == WOUND_TYPE_BRUISE)
 					user.visible_message("<span class='notice'>\The [user] spreads the poultice over \a [W.desc] on [H]'s [affecting.name].</span>", \
 					                              "<span class='notice'>You spread the poultice over \a [W.desc] on [H]'s [affecting.name].</span>" )
 				else

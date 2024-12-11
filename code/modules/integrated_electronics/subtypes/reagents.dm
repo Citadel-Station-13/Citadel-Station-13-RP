@@ -140,7 +140,7 @@
 		return
 
 	if(direction_mode == SYRINGE_INJECT)
-		if(!reagents.total_volume || !AM.can_be_injected_by(src) || AM.reagents.holder_full())
+		if(!reagents.total_volume || (!AM.can_be_injected_by(src) && !isliving(AM)) || AM.reagents.holder_full())
 			activate_pin(3)
 			return
 		if(isliving(AM))
@@ -160,7 +160,7 @@
 			L.visible_message("<span class='danger'>[acting_object] is trying to inject [L]!</span>", \
 								"<span class='userdanger'>[acting_object] is trying to inject you!</span>")
 			busy = TRUE
-			if(do_atom(src, L, extra_checks=CALLBACK(L, TYPE_PROC_REF(/mob/living, can_inject),null,0,BP_TORSO,bypass)))
+			if(do_atom(src, L, extra_checks=CALLBACK(L, TYPE_PROC_REF(/mob/living, can_inject),null,0,BP_TORSO,bypass),uninterruptible = bypass))
 				reagents.trans_to_mob(L, transfer_amount)
 				log_attack(src, L, "attempted to inject [L] which had [contained]")
 				L.visible_message("<span class='danger'>[acting_object] injects [L] with its needle!</span>", \
@@ -194,7 +194,7 @@
 			L.visible_message("<span class='danger'>[acting_object] is trying to take a blood sample from [L]!</span>", \
 								"<span class='userdanger'>[acting_object] is trying to take a blood sample from you!</span>")
 			busy = TRUE
-			if(do_atom(src, L, extra_checks=CALLBACK(L, TYPE_PROC_REF(/mob/living, can_inject),null,0,BP_TORSO,bypass)))
+			if(do_atom(src, L, extra_checks=CALLBACK(L, TYPE_PROC_REF(/mob/living, can_inject),null,0,BP_TORSO,bypass),uninterruptible = bypass))
 				var/mob/living/carbon/LB = L
 				var/datum/reagent/B
 				B = LB.take_blood(src, tramount)
@@ -202,7 +202,7 @@
 					reagents.reagent_list += B
 					reagents.update_total()
 					AM.on_reagent_change()
-					reagents.handle_reactions()
+					reagents.reconsider_reactions()
 					L.visible_message("<span class='danger'>[acting_object] takes a blood sample from [L]!</span>", \
 					"<span class='userdanger'>[acting_object] takes a blood sample from you!</span>")
 				else
@@ -345,7 +345,7 @@
 	activate_pin(1)
 	activate_pin(3)
 
-/obj/item/integrated_circuit/input/beaker_connector/attack_self(mob/user)
+/obj/item/integrated_circuit/input/beaker_connector/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return

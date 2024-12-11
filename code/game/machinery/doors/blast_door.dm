@@ -28,7 +28,7 @@
 
 	smoothing_groups = (SMOOTH_GROUP_SHUTTERS_BLASTDOORS)
 
-	var/datum/material/implicit_material
+	var/datum/prototype/material/implicit_material
 	// Icon states for different shutter types. Simply change this instead of rewriting the update_icon proc.
 	var/icon_state_open = null
 	var/icon_state_opening = null
@@ -116,7 +116,7 @@
 
 //Proc: attack_hand
 //Description: Attacked with empty hand. Only to allow special attack_bys.
-/obj/machinery/door/blast/attack_hand(mob/user, list/params)
+/obj/machinery/door/blast/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(istype(user, /mob/living/carbon/human))
 		var/mob/living/carbon/human/X = user
 		if(istype(X.species, /datum/species/xenos))
@@ -148,7 +148,7 @@
 			else
 				to_chat(user, "<span class='notice'>[src]'s motors resist your effort.</span>")
 			return
-	else if(I.is_material_stack_of(/datum/material/plasteel)) // Repairing.
+	else if(I.is_material_stack_of(/datum/prototype/material/plasteel)) // Repairing.
 		var/amt = CEILING((integrity_max - integrity)/150, 1)
 		if(!amt)
 			to_chat(user, "<span class='notice'>\The [src] is already fully repaired.</span>")

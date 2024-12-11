@@ -61,7 +61,7 @@
 	temp_blade.set_active(TRUE)
 	concealed_blade = temp_blade
 
-/obj/item/cane/concealed/attack_self(mob/user)
+/obj/item/cane/concealed/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -131,7 +131,7 @@
 	damage_force = 3
 	var/on = 0
 
-/obj/item/cane/whitecane/collapsible/attack_self(mob/user)
+/obj/item/cane/whitecane/collapsible/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -160,14 +160,9 @@
 		damage_force = 3
 		attack_verb = list("hit", "poked", "prodded")
 
-	if(istype(user,/mob/living/carbon/human))
-		var/mob/living/carbon/human/H = user
-		H.update_inv_l_hand()
-		H.update_inv_r_hand()
-
+	update_worn_icon()
 	playsound(src, 'sound/weapons/empty.ogg', 50, 1)
 	add_fingerprint(user)
-	return TRUE
 
 /obj/item/cane/crutch
 	name ="crutch"
@@ -427,11 +422,11 @@
 	. = CLICKCHAIN_DO_NOT_PROPAGATE
 	if(!target.mind)
 		return
-	if(target.faction == user.faction)
+	if(target.shares_iff_faction(user))
 		to_chat(target, "<span class='notice'>You are graced by the familiar gaze of the Mother for a brief moment.</span>")
 
 	to_chat(user, "<span class='notice'>You smear the Mark of the Mother on [target]'s forehead using the [src].</span>")
 	to_chat(target, "<span class='notice'>You sense an unfamiliar presence looming over you. It encases you in a gentle, all-encompassing warmth.</span>")
-	target.faction = user.faction
+	target.copy_iff_factions(user)
 	playsound(src, pick(use_sound), 25)
 	qdel(src)

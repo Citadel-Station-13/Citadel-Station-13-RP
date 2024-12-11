@@ -109,7 +109,7 @@
 	..()
 
 //TODO: ORGAN REMOVAL UPDATE. Make the brain remain in the MMI so it doesn't lose organ data.
-/obj/item/mmi/attack_self(mob/user)
+/obj/item/mmi/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -199,11 +199,13 @@
 
 /obj/item/mmi/digital/Initialize(mapload)
 	. = ..()
+	// HACK: if we're in repository subsystem load, skip brainmob
+	if(!SSrepository.initialized)
+		return
 	brainmob = new(src)
 //	brainmob.add_language("Robot Talk")//No binary without a binary communication device
 	brainmob.add_language(LANGUAGE_GALCOM)
 	brainmob.add_language(LANGUAGE_EAL)
-	brainmob.loc = src
 	brainmob.container = src
 	brainmob.set_stat(CONSCIOUS)
 	brainmob.silent = FALSE
@@ -249,7 +251,7 @@
 		H.mind.transfer(brainmob)
 	return
 
-/obj/item/mmi/digital/attack_self(mob/user)
+/obj/item/mmi/digital/attack_self(mob/user, datum/event_args/actor/actor)
 	if(brainmob && !brainmob.key && searching == 0)
 		//Start the process of searching for a new user.
 		to_chat(user, "<font color=#4F49AF>You carefully locate the manual activation switch and start the [src]'s boot process.</font>")
@@ -308,8 +310,8 @@
 
 /obj/item/mmi/digital/robot/Initialize(mapload)
 	. = ..()
-	brainmob.name = "[pick(list("ADA","DOS","GNU","MAC","WIN","NJS","SKS","DRD","IOS","CRM","IBM","TEX","LVM","BSD",))]-[rand(1000, 9999)]"
-	brainmob.real_name = brainmob.name
+	brainmob?.name = "[pick(list("ADA","DOS","GNU","MAC","WIN","NJS","SKS","DRD","IOS","CRM","IBM","TEX","LVM","BSD",))]-[rand(1000, 9999)]"
+	brainmob?.real_name = brainmob.name
 
 /obj/item/mmi/digital/robot/transfer_identity(var/mob/living/carbon/H)
 	..()
@@ -361,8 +363,8 @@
 
 /obj/item/mmi/digital/posibrain/Initialize(mapload)
 	. = ..()
-	brainmob.name = "[pick(list("PBU","HIU","SINA","ARMA","OSI"))]-[rand(100, 999)]"
-	brainmob.real_name = brainmob.name
+	brainmob?.name = "[pick(list("PBU","HIU","SINA","ARMA","OSI"))]-[rand(100, 999)]"
+	brainmob?.real_name = brainmob.name
 
 // This type shouldn't care about brainmobs.
 /obj/item/mmi/inert

@@ -30,7 +30,14 @@
 	for(var/propname in settings)
 		gun.vars[propname] = settings[propname]
 
-//Parent gun type. Guns are weapons that can be aimed at mobs and act over a distance
+/**
+ * Weapons that can be aimed at an angle or a mob or whatever.
+ *
+ * Current caveats:
+ *
+ * * Flashlight attachments directly edit the light variable of the gun. This means that they'll trample the gun's
+ *   inherent light if there is one.
+ */
 /obj/item/gun
 	name = "gun"
 	desc = "Its a gun. It's pretty terrible, though."
@@ -55,6 +62,35 @@
 	zoomdevicename = "scope"
 	inhand_default_type = INHAND_DEFAULT_ICON_GUNS
 
+	//* Accuracy, Dispersion, Instability *//
+
+	/// entirely disable baymiss on fired projectiles
+	///
+	/// * this is a default value; set to null by default to have the projectile's say.
+	var/accuracy_disabled = null
+
+	//* Attachments *//
+
+	/// Installed attachments
+	///
+	/// * Set to list of typepaths to immediately install them on init.
+	/// * Do not set this.
+	var/list/obj/item/gun_attachment/attachments
+	/// Attachment alignments.
+	///
+	/// * Format: "attachment slot" = list(x, y)
+	/// * Typelisted. If you varedit this, be aware of that.
+	/// * If an attachment slot isn't here, it's not allowed on the gun.
+	/// * See `code/__DEFINES/projectiles/gun_attachment.dm` for what this is doing to the attachments.
+	///   We basically match the specified align_x/y pixel on the attachment to the x/y on the gun's sprite
+	///   specified here.
+	/// * This is pixel coordinates on the gun's real icon. Out of bounds is allowed as attachments are just overlays.
+	var/list/attachment_alignment
+	/// Blacklisted attachment types.
+	var/attachment_type_blacklist = NONE
+
+	// legacy below //
+
 	var/burst = 1
 	var/fire_delay = 6 	//delay after shooting before the gun can be used again
 	var/burst_delay = 2	//delay between shots, if firing in bursts
@@ -72,6 +108,7 @@
 	var/list/burst_accuracy = list(0) //allows for different accuracies for each shot in a burst. Applied on top of accuracy
 	var/list/dispersion = list(0)
 	var/mode_name = null
+	// todo: purge with fire
 	var/projectile_type = /obj/projectile	//On ballistics, only used to check for the cham gun
 	var/holy = FALSE //For Divinely blessed guns
 	// todo: this should be on /ballistic, and be `internal_chambered`.
@@ -120,7 +157,11 @@
 	var/unstable = 0
 	var/destroyed = 0
 
-	//* Rendering
+	//* Rendering *//
+
+	/// Used instead of base_icon_state for the mob renderer, if this exists.
+	var/base_mob_state
+
 	/// renderer datum we use for world rendering of the gun item itself
 	/// set this in prototype to a path
 	/// if null, we will not perform default rendering/updating of item states.
@@ -139,25 +180,26 @@
 	var/datum/gun_mob_renderer/mob_renderer
 	/// for de-duping
 	var/static/list/mob_renderer_store = list()
-	/// base onmob state override so we don't use [base_icon_state] if overridden
-	//  todo: impl
-	var/render_mob_base
-	/// render as -wield if we're wielded? applied at the end of our worn state no matter what
+
+	/// render as -wield if we're wielded? applied at the end of our base worn state no matter what
+	///
+	///  todo: impl
 	///
 	/// * ignores [mob_renderer]
 	/// * ignores [render_additional_exclusive] / [render_additional_worn]
-	//  todo: impl
+	/// * ordering: [base]-wield-[additional]-[...rest]
 	var/render_mob_wielded = FALSE
 	/// state to add as an append
 	///
 	/// * segment and overlay renders add [base_icon_state]-[append]
-	/// * state renders set state to [base_icon_state]-[append]-[...rest]
+	/// * state renders set state to [base_icon_state]-[wield?]-[append]-[...rest]
 	var/render_additional_state
 	/// only render [render_additional_state]
 	var/render_additional_exclusive = FALSE
 	/// [render_additional_state] and [render_additional_exclusive] apply to worn sprites
 	//  todo: impl
 	var/render_additional_worn = FALSE
+
 	/// use the old render system, if item_renderer and mob_renderer are not set
 	//  todo: remove
 	var/render_use_legacy_by_default = TRUE
@@ -165,7 +207,7 @@
 /obj/item/gun/Initialize(mapload)
 	. = ..()
 
-	// instantiate & dedupe renderers
+	//* instantiate & dedupe renderers *//
 	var/requires_icon_update
 	if(item_renderer)
 		if(ispath(item_renderer) || IS_ANONYMOUS_TYPEPATH(item_renderer))
@@ -189,6 +231,28 @@
 			SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_guns.dmi',
 			)
 
+	//* handle attachment typelists *//
+	if(attachment_alignment)
+		attachment_alignment = typelist(NAMEOF(src, attachment_alignment), attachment_alignment)
+
+	//* handle attachments *//
+	if(length(attachments))
+		var/list/translating_attachments = attachments
+		attachments = list()
+		for(var/obj/item/gun_attachment/casted as anything in translating_attachments)
+			var/obj/item/gun_attachment/actual
+			if(IS_ANONYMOUS_TYPEPATH(casted))
+				actual = new casted
+			else if(ispath(casted, /obj/item/gun_attachment))
+				actual = new casted
+			else if(istype(casted))
+				actual = casted
+			if(actual.attached != src)
+				if(!install_attachment(actual))
+					stack_trace("[actual] ([actual.type]) couldn't be auto-installed on initialize despite being in list.")
+					qdel(actual)
+
+	//! LEGACY: firemodes
 	for(var/i in 1 to firemodes.len)
 		var/key = firemodes[i]
 		if(islist(key))
@@ -201,11 +265,18 @@
 		sel_mode = 0
 		switch_firemodes()
 
+	//! LEGACY: accuracy
 	if(isnull(scoped_accuracy))
 		scoped_accuracy = accuracy
 
+	//! LEGACY: pin
 	if(pin)
 		pin = new pin(src)
+
+/obj/item/gun/Destroy()
+	QDEL_NULL(pin)
+	QDEL_LIST(attachments)
+	return ..()
 
 /obj/item/gun/CtrlClick(mob/user)
 	if(can_flashlight && ishuman(user) && src.loc == usr && !user.incapacitated(INCAPACITATION_ALL))
@@ -237,7 +308,7 @@
 		update_icon() // In case item_state is set somewhere else.
 	..()
 
-/obj/item/gun/update_held_icon()
+/obj/item/gun/update_worn_icon()
 	if(wielded_item_state)
 		var/mob/living/M = loc
 		if(istype(M))
@@ -321,9 +392,10 @@
 	if(!istype(A))
 		return ..()
 	if(user.a_intent == INTENT_HARM) //point blank shooting
-		if (A == user && user.zone_sel.selecting == O_MOUTH && !mouthshoot)
-			handle_suicide(user)
-			return
+		// todo: disabled for now
+		// if (A == user && user.zone_sel.selecting == O_MOUTH && !mouthshoot)
+		// 	handle_suicide(user)
+		// 	return
 		var/mob/living/L = user
 		if(user && user.client && istype(L) && L.aiming && L.aiming.active && L.aiming.aiming_at != A && A != user)
 			PreFire(A,user) //They're using the new gun system, locate what they're aiming at.
@@ -332,6 +404,14 @@
 			Fire(A, user, pointblank=1)
 			return
 	return ..() //Pistolwhippin'
+
+/obj/item/gun/using_item_on(obj/item/using, datum/event_args/actor/clickchain/e_args, clickchain_flags, datum/callback/reachability_check)
+	. = ..()
+	if(. & CLICKCHAIN_DO_NOT_PROPAGATE)
+		return
+	if(istype(using, /obj/item/gun_attachment))
+		user_install_attachment(using, e_args)
+		return CLICKCHAIN_DO_NOT_PROPAGATE
 
 /obj/item/gun/attackby(obj/item/A, mob/user)
 	if(A.is_multitool())
@@ -346,10 +426,10 @@
 						explosion(get_turf(src), -1, 0, 2, 3)
 						qdel(src)
 					if(11 to 49)
-						to_chat(user, "<span class='notice'>You fail to disrupt \the electronic warfare suite.</span>")
+						to_chat(user, "<span class='notice'>You fail to disrupt the electronic warfare suite.</span>")
 						return
 					if(50 to 100)
-						to_chat(user, "<span class='notice'>You disrupt \the electronic warfare suite.</span>")
+						to_chat(user, "<span class='notice'>You disrupt the electronic warfare suite.</span>")
 						scrambled = 1
 		else
 			to_chat(user, "<span class='warning'>\The [src] does not have an active electronic warfare suite!</span>")
@@ -361,7 +441,7 @@
 			if(do_after(user, 60* A.tool_speed))
 				switch(rand(1,100))
 					if(1 to 10)
-						to_chat(user, "<span class='danger'>You twist \the firing pin as you tug, destroying the firing pin.</span>")
+						to_chat(user, "<span class='danger'>You twist the firing pin as you tug, destroying the firing pin.</span>")
 						pin = null
 					if(11 to 74)
 						to_chat(user, "<span class='notice'>You grasp the firing pin, but it slips free!</span>")
@@ -452,7 +532,7 @@
 
 
 	// We do this down here, so we don't get the message if we fire an empty gun.
-	if(user.is_holding(src) && user.hands_full())
+	if(user.is_holding(src) && user.are_usable_hands_full())
 		if(one_handed_penalty >= 20)
 			to_chat(user, "<span class='warning'>You struggle to keep \the [src] pointed at the correct position with just one hand!</span>")
 
@@ -471,11 +551,12 @@
 
 	accuracy = initial(accuracy)	//Reset the gun's accuracyw
 
-	if(muzzle_flash)
-		if(gun_light)
-			set_light(light_brightness)
-		else
-			set_light(0)
+	// todo: better muzzle flash
+	// if(muzzle_flash)
+	// 	if(gun_light)
+	// 		set_light(light_brightness)
+	// 	else
+	// 		set_light(0)
 
 // Similar to the above proc, but does not require a user, which is ideal for things like turrets.
 /obj/item/gun/proc/Fire_userless(atom/target)
@@ -501,7 +582,7 @@
 			var/acc = burst_accuracy[min(i, burst_accuracy.len)]
 			var/disp = dispersion[min(i, dispersion.len)]
 
-			P.accuracy = accuracy + acc
+			P.accuracy_overall_modify *= 1 + acc / 100
 			P.dispersion = disp
 
 			P.shot_from = src.name
@@ -553,15 +634,6 @@
 //obtains the next projectile to fire
 /obj/item/gun/proc/consume_next_projectile()
 	return null
-
-//used by aiming code
-/obj/item/gun/proc/can_hit(atom/target as mob, var/mob/living/user as mob)
-	if(!special_check(user))
-		return 2
-	//just assume we can shoot through glass and stuff. No big deal, the player can just choose to not target someone
-	//on the other side of a window if it makes a difference. Or if they run behind a window, too bad.
-	if(check_trajectory(target, user))
-		return 1 // Magic numbers are fun.
 
 //called if there was no projectile to shoot
 /obj/item/gun/proc/handle_click_empty(mob/user)
@@ -646,7 +718,7 @@
 				damage_mult = 2.5
 			else if(grabstate >= GRAB_AGGRESSIVE)
 				damage_mult = 1.5
-	P.damage *= damage_mult
+	P.damage_force *= damage_mult
 
 /obj/item/gun/proc/process_accuracy(obj/projectile, mob/living/user, atom/target, var/burst, var/held_twohanded)
 	var/obj/projectile/P = projectile
@@ -662,22 +734,24 @@
 			disp_mod += one_handed_penalty*0.5 //dispersion per point of two-handedness
 
 	//Accuracy modifiers
-	P.accuracy = accuracy + acc_mod
-	P.dispersion = disp_mod
+	if(!isnull(accuracy_disabled))
+		P.accuracy_disabled = accuracy_disabled
 
-	P.accuracy -= user.get_accuracy_penalty()
+	P.accuracy_overall_modify *= 1 + (acc_mod / 100)
+	P.accuracy_overall_modify *= 1 - (user.get_accuracy_penalty() / 100)
+	P.dispersion = disp_mod
 
 	//accuracy bonus from aiming
 	if (aim_targets && (target in aim_targets))
 		//If you aim at someone beforehead, it'll hit more often.
 		//Kinda balanced by fact you need like 2 seconds to aim
 		//As opposed to no-delay pew pew
-		P.accuracy += 30
+		P.accuracy_overall_modify *= 1.3
 
 	// Some modifiers make it harder or easier to hit things.
 	for(var/datum/modifier/M in user.modifiers)
 		if(!isnull(M.accuracy))
-			P.accuracy += M.accuracy
+			P.accuracy_overall_modify += 1 + (M.accuracy / 100)
 		if(!isnull(M.accuracy_dispersion))
 			P.dispersion = max(P.dispersion + M.accuracy_dispersion, 0)
 
@@ -717,44 +791,45 @@
 	else
 		playsound(src, shot_sound, 50, 1)
 
+// todo: rework all this this is fucking dumb
 //Suicide handling.
-/obj/item/gun/var/mouthshoot = 0 //To stop people from suiciding twice... >.>
+// /obj/item/gun/var/mouthshoot = 0 //To stop people from suiciding twice... >.>
 
-/obj/item/gun/proc/handle_suicide(mob/living/user)
-	if(!ishuman(user))
-		return
-	var/mob/living/carbon/human/M = user
+// /obj/item/gun/proc/handle_suicide(mob/living/user)
+// 	if(!ishuman(user))
+// 		return
+// 	var/mob/living/carbon/human/M = user
 
-	mouthshoot = 1
-	M.visible_message("<font color='red'>[user] sticks their gun in their mouth, ready to pull the trigger...</font>")
-	if(!do_after(user, 40))
-		M.visible_message("<font color=#4F49AF>[user] decided life was worth living</font>")
-		mouthshoot = 0
-		return
-	var/obj/projectile/in_chamber = consume_next_projectile()
-	if (istype(in_chamber))
-		user.visible_message("<span class = 'warning'>[user] pulls the trigger.</span>")
-		play_fire_sound(M, in_chamber)
-		if(istype(in_chamber, /obj/projectile/beam/lasertag))
-			user.show_message("<span class = 'warning'>You feel rather silly, trying to commit suicide with a toy.</span>")
-			mouthshoot = 0
-			return
+// 	mouthshoot = 1
+// 	M.visible_message("<font color='red'>[user] sticks their gun in their mouth, ready to pull the trigger...</font>")
+// 	if(!do_after(user, 40))
+// 		M.visible_message("<font color=#4F49AF>[user] decided life was worth living</font>")
+// 		mouthshoot = 0
+// 		return
+// 	var/obj/projectile/in_chamber = consume_next_projectile()
+// 	if (istype(in_chamber))
+// 		user.visible_message("<span class = 'warning'>[user] pulls the trigger.</span>")
+// 		play_fire_sound(M, in_chamber)
+// 		if(istype(in_chamber, /obj/projectile/beam/lasertag))
+// 			user.show_message("<span class = 'warning'>You feel rather silly, trying to commit suicide with a toy.</span>")
+// 			mouthshoot = 0
+// 			return
 
-		in_chamber.on_hit(M)
-		if(in_chamber.damage_type != HALLOSS && !in_chamber.nodamage)
-			log_and_message_admins("[key_name(user)] commited suicide using \a [src]")
-			user.apply_damage(in_chamber.damage*2.5, in_chamber.damage_type, "head", used_weapon = "Point blank shot in the mouth with \a [in_chamber]", sharp=1)
-			user.death()
-		else if(in_chamber.damage_type == HALLOSS)
-			to_chat(user, "<span class = 'notice'>Ow...</span>")
-			user.apply_effect(110,AGONY,0)
-		qdel(in_chamber)
-		mouthshoot = 0
-		return
-	else
-		handle_click_empty(user)
-		mouthshoot = 0
-		return
+// 		in_chamber.on_hit(M)
+// 		if(in_chamber.damage_type != DAMAGE_TYPE_HALLOSS && !in_chamber.nodamage)
+// 			log_and_message_admins("[key_name(user)] commited suicide using \a [src]")
+// 			user.apply_damage(in_chamber.damage_force*2.5, in_chamber.damage_type, "head", used_weapon = "Point blank shot in the mouth with \a [in_chamber]", sharp=1)
+// 			user.death()
+// 		else if(in_chamber.damage_type == DAMAGE_TYPE_HALLOSS)
+// 			to_chat(user, "<span class = 'notice'>Ow...</span>")
+// 			user.apply_effect(110,AGONY,0)
+// 		qdel(in_chamber)
+// 		mouthshoot = 0
+// 		return
+// 	else
+// 		handle_click_empty(user)
+// 		mouthshoot = 0
+// 		return
 
 /obj/item/gun/proc/toggle_scope(var/zoom_amount=2.0)
 	//looking through a scope limits your periphereal vision
@@ -787,7 +862,9 @@
 		var/datum/firemode/current_mode = firemodes[sel_mode]
 		. += "The fire selector is set to [current_mode.name]."
 	if(safety_state != GUN_NO_SAFETY)
-		to_chat(user, SPAN_NOTICE("The safety is [check_safety() ? "on" : "off"]."))
+		. += SPAN_NOTICE("The safety is [check_safety() ? "on" : "off"].")
+	for(var/obj/item/gun_attachment/attachment as anything in attachments)
+		. += "It has [attachment] installed on its [attachment.attachment_slot].[attachment.can_detach ? "" : " It doesn't look like it can be removed."]"
 
 /obj/item/gun/proc/switch_firemodes(mob/user)
 	if(firemodes.len <= 1)
@@ -803,7 +880,7 @@
 		playsound(loc, selector_sound, 50, 1)
 	return new_mode
 
-/obj/item/gun/attack_self(mob/user)
+/obj/item/gun/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -860,12 +937,6 @@
 	if(usr == loc)
 		toggle_safety(usr)
 
-/obj/item/gun/AltClick(mob/user)
-	if(loc == user)
-		toggle_safety(user)
-		return TRUE
-	return ..()
-
 /**
  * returns TRUE/FALSE based on if we have safeties on
  */
@@ -874,7 +945,19 @@
 
 // PENDING FIREMODE REWORK
 /obj/item/gun/proc/legacy_get_firemode()
+	if(!length(firemodes) || (sel_mode > length(firemodes)))
+		return
 	return firemodes[sel_mode]
+
+/obj/item/gun/register_item_actions(mob/user)
+	. = ..()
+	for(var/obj/item/gun_attachment/attachment as anything in attachments)
+		attachment.register_attachment_actions(user)
+
+/obj/item/gun/unregister_item_actions(mob/user)
+	. = ..()
+	for(var/obj/item/gun_attachment/attachment as anything in attachments)
+		attachment.unregister_attachment_actions(user)
 
 //* Ammo *//
 
@@ -888,10 +971,195 @@
 /obj/item/gun/proc/get_ammo_ratio()
 	return 0
 
+//* Attachments *//
+
+/**
+ * Check if we can attach an attachment
+ */
+/obj/item/gun/proc/can_install_attachment(obj/item/gun_attachment/attachment, datum/event_args/actor/actor, silent)
+	if(!attachment.attachment_slot || !attachment_alignment[attachment.attachment_slot])
+		if(!silent)
+			actor?.chat_feedback(
+				SPAN_WARNING("[attachment] won't fit anywhere on [src]!"),
+				target = src,
+			)
+		return FALSE
+	if(attachment.attachment_type & attachment_type_blacklist)
+		if(!silent)
+			actor?.chat_feedback(
+				SPAN_WARNING("[attachment] doesn't work with [src]!"),
+				target = src,
+			)
+		return FALSE
+	for(var/obj/item/gun_attachment/existing as anything in attachments)
+		if(existing.attachment_slot == attachment.attachment_slot)
+			if(!silent)
+				actor?.chat_feedback(
+					SPAN_WARNING("[src] already has [existing] installed on its [existing.attachment_slot]!"),
+					target = src,
+				)
+			return FALSE
+		if(existing.attachment_type & attachment.attachment_type)
+			if(!silent)
+				actor?.chat_feedback(
+					SPAN_WARNING("[src]'s [existing] conflicts with [attachment]!"),
+					target = src,
+				)
+			return FALSE
+	if(!attachment.fits_on_gun(src, actor, silent))
+		return FALSE
+	return TRUE
+
+/**
+ * Called when a mob tries to uninstall an attachment
+ */
+/obj/item/gun/proc/user_install_attachment(obj/item/gun_attachment/attachment, datum/event_args/actor/actor)
+	if(actor)
+		if(actor.performer && actor.performer.is_in_inventory(attachment))
+			if(!actor.performer.can_unequip(attachment, attachment.worn_slot))
+				actor.chat_feedback(
+					SPAN_WARNING("[attachment] is stuck to your hand!"),
+					target = src,
+				)
+				return FALSE
+	if(!install_attachment(attachment, actor))
+		return FALSE
+	// todo: better sound
+	playsound(src, 'sound/weapons/empty.ogg', 25, TRUE, -3)
+	return TRUE
+
+/**
+ * Installs an attachment
+ *
+ * * This moves the attachment into the gun if it isn't already.
+ * * This does have default visible feedback for the installation.
+ *
+ * @return TRUE / FALSE on success / failure
+ */
+/obj/item/gun/proc/install_attachment(obj/item/gun_attachment/attachment, datum/event_args/actor/actor, silent)
+	if(!can_install_attachment(attachment, actor, silent))
+		return FALSE
+
+	if(!silent)
+		actor?.visible_feedback(
+			target = src,
+			visible = SPAN_NOTICE("[actor.performer] attaches [attachment] to [src]'s [attachment.attachment_slot]."),
+		)
+	if(attachment.loc != src)
+		attachment.forceMove(src)
+
+	LAZYADD(attachments, attachment)
+	attachment.attached = src
+	attachment.on_attach(src)
+	attachment.update_gun_overlay()
+	on_attachment_install(attachment)
+	var/mob/holding_mob = worn_mob()
+	if(holding_mob)
+		attachment.register_attachment_actions(holding_mob)
+	return TRUE
+
+/**
+ * Called when a mob tries to uninstall an attachment
+ */
+/obj/item/gun/proc/user_uninstall_attachment(obj/item/gun_attachment/attachment, datum/event_args/actor/actor, put_in_hands)
+	if(!attachment.can_detach)
+		actor?.chat_feedback(
+			SPAN_WARNING("[attachment] is not removable."),
+			target = src,
+		)
+		return FALSE
+	var/obj/item/uninstalled = uninstall_attachment(attachment, actor)
+	if(put_in_hands && actor?.performer)
+		actor.performer.put_in_hands_or_drop(uninstalled)
+	else
+		var/atom/where_to_drop = drop_location()
+		ASSERT(where_to_drop)
+		uninstalled.forceMove(where_to_drop)
+	// todo: better sound
+	playsound(src, 'sound/weapons/empty.ogg', 25, TRUE, -3)
+	return TRUE
+
+/**
+ * Uninstalls an attachment
+ *
+ * * This does not move the attachment after uninstall; you have to do that.
+ * * This does not have default visible feedback for the uninstallation / removal.
+ *
+ * @return the /obj/item uninstalled
+ */
+/obj/item/gun/proc/uninstall_attachment(obj/item/gun_attachment/attachment, datum/event_args/actor/actor, silent, deleting)
+	ASSERT(attachment.attached == src)
+	var/mob/holding_mob = worn_mob()
+	if(holding_mob)
+		attachment.unregister_attachment_actions(holding_mob)
+	attachment.on_detach(src)
+	attachment.remove_gun_overlay()
+	attachment.attached = null
+	on_attachment_uninstall(attachment)
+	LAZYREMOVE(attachments, attachment)
+	return deleting ? null : attachment.uninstall_product_transform(src)
+
+/**
+ * Align an attachment overlay.
+ *
+ * @return TRUE / FALSE on success / failure
+ */
+/obj/item/gun/proc/align_attachment_overlay(obj/item/gun_attachment/attachment, image/appearancelike)
+	var/list/alignment = attachment_alignment?[attachment.attachment_slot]
+	if(!alignment)
+		return FALSE
+	appearancelike.pixel_x = (alignment[1] - attachment.align_x)
+	appearancelike.pixel_y = (alignment[2] - attachment.align_y)
+	return TRUE
+
+/**
+ * Called exactly once when an attachment is installed
+ *
+ * * Called before the attachment's on_attach()
+ */
+/obj/item/gun/proc/on_attachment_install(obj/item/gun_attachment/attachment)
+	PROTECTED_PROC(TRUE)
+
+/**
+ * Called exactly once when an attachment is uninstalled
+ *
+ * * Called after the attachment's on_detach()
+ */
+/obj/item/gun/proc/on_attachment_uninstall(obj/item/gun_attachment/attachment)
+	PROTECTED_PROC(TRUE)
+
+//* Context *//
+
+/obj/item/gun/context_query(datum/event_args/actor/e_args)
+	. = ..()
+	if(length(attachments))
+		.["remove-attachment"] = atom_context_tuple("Remove Attachment", image('icons/screen/radial/actions.dmi', "red-arrow-up"), 0, MOBILITY_CAN_USE)
+	if(safety_state != GUN_NO_SAFETY)
+		.["toggle-safety"] = atom_context_tuple("Toggle Safety", image(src), 0, MOBILITY_CAN_USE, TRUE)
+
+/obj/item/gun/context_act(datum/event_args/actor/e_args, key)
+	. = ..()
+	if(.)
+		return
+	switch(key)
+		if("remove-attachment")
+			// todo: e_args support
+			var/obj/item/gun_attachment/attachment = show_radial_menu(e_args.initiator, src, attachments)
+			if(!attachment)
+				return TRUE
+			if(!e_args.performer.Reachability(src) || !(e_args.performer.mobility_flags & MOBILITY_CAN_USE))
+				return TRUE
+			user_uninstall_attachment(attachment, e_args, TRUE)
+			return TRUE
+		if("toggle-safety")
+			toggle_safety(e_args.performer)
+			return TRUE
+
 //* Rendering *//
 
 /obj/item/gun/update_icon(updates)
-	if(!item_renderer && !mob_renderer)
+	// todo: shouldn't need this check, deal with legacy
+	if(!item_renderer && !mob_renderer && render_use_legacy_by_default)
 		return ..()
 	cut_overlays()
 	var/ratio_left = get_ammo_ratio()

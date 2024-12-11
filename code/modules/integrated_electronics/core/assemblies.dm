@@ -32,7 +32,6 @@
 	/// Time until circuit cn perform another external action
 	var/ext_next_use = 0
 	var/atom/collw
-	var/obj/item/card/id/access_card
 	/// Which circuit flags are allowed
 	var/allowed_circuit_action_flags = IC_ACTION_COMBAT | IC_ACTION_LONG_RANGE
 	/// Number of combat cicuits in the assembly, used for diagnostic hud
@@ -107,15 +106,13 @@
 	diag_hud_set_circuitstat()
 	diag_hud_set_circuittracking()
 */
-	access_card = new /obj/item/card/id(src)
-	. =..()
+	return ..()
 
 /obj/item/electronic_assembly/Destroy()
 	battery = null // It will be qdel'd by ..() if still in our contents
 	STOP_PROCESSING(SSobj, src)
 //	for(var/datum/atom_hud/data/diagnostic/diag_hud in GLOB.huds)
 // TBI		diag_hud.remove_from_hud(src)
-	QDEL_NULL(access_card)
 	return ..()
 
 /obj/item/electronic_assembly/process(delta_time)
@@ -514,7 +511,7 @@
 			return TRUE
 	return ..()
 
-/obj/item/electronic_assembly/attack_self(mob/user)
+/obj/item/electronic_assembly/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -609,7 +606,7 @@
 		return
 	..()
 
-/obj/item/electronic_assembly/attack_hand(mob/user, act_intent = user.a_intent, unarmed_attack_flags)
+/obj/item/electronic_assembly/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(anchored)
 		attack_self(user)
 		return

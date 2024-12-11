@@ -5,7 +5,6 @@
 /turf/space,
 /area)
 "ac" = (
-/turf/simulated/shuttle/wall/dark,
 /turf/space,
 /area/awaymission/spacebattle/syndicate2)
 "ad" = (
@@ -63,17 +62,12 @@
 /obj/item/grenade/empgrenade,
 /turf/simulated/floor,
 /area/awaymission/spacebattle/syndicate2)
-"at" = (
-/obj/structure/table/reinforced,
-/turf/simulated/floor,
-/area/awaymission/spacebattle/syndicate2)
 "au" = (
 /obj/structure/table/reinforced,
 /obj/item/gun/ballistic/automatic/c20r,
 /turf/simulated/floor,
 /area/awaymission/spacebattle/syndicate2)
 "av" = (
-/turf/simulated/shuttle/wall/dark,
 /turf/space,
 /area/awaymission/spacebattle/syndicate3)
 "aw" = (
@@ -132,7 +126,6 @@
 /turf/simulated/floor,
 /area/awaymission/spacebattle/syndicate2)
 "aP" = (
-/turf/simulated/shuttle/wall/dark,
 /turf/space,
 /area/awaymission/spacebattle/syndicate1)
 "aQ" = (
@@ -270,7 +263,7 @@
 /area/awaymission/spacebattle/syndicate3)
 "bw" = (
 /obj/structure/table/reinforced,
-/obj/item/melee/energy/sword,
+/obj/item/melee/transforming/energy/sword,
 /turf/simulated/floor,
 /area/awaymission/spacebattle/syndicate1)
 "bx" = (
@@ -307,7 +300,6 @@
 /turf/simulated/floor/plating,
 /area/awaymission/spacebattle/syndicate1)
 "bJ" = (
-/turf/simulated/shuttle/wall/dark,
 /turf/space,
 /area/awaymission/spacebattle/cruiser)
 "bK" = (
@@ -812,7 +804,6 @@
 /turf/simulated/floor/plating,
 /area/awaymission/spacebattle/cruiser)
 "et" = (
-/turf/simulated/shuttle/wall/dark,
 /turf/space,
 /area/awaymission/spacebattle/syndicate4)
 "eu" = (
@@ -888,7 +879,7 @@
 /turf/simulated/floor,
 /area/awaymission/spacebattle/cruiser)
 "eR" = (
-/obj/item/shield/energy,
+/obj/item/shield/transforming/energy,
 /turf/simulated/floor,
 /area/awaymission/spacebattle/cruiser)
 "eT" = (
@@ -929,7 +920,7 @@
 /area/awaymission/spacebattle/cruiser)
 "fa" = (
 /obj/spawner/corpse/syndicatesoldier,
-/obj/item/melee/energy/sword,
+/obj/item/melee/transforming/energy/sword,
 /obj/effect/debris/cleanable/blood,
 /turf/simulated/floor,
 /area/awaymission/spacebattle/cruiser)
@@ -1048,7 +1039,7 @@
 /area/awaymission/spacebattle/cruiser)
 "gg" = (
 /obj/structure/closet/crate,
-/obj/item/contraband/poster,
+/obj/item/poster,
 /turf/simulated/floor/plating,
 /area/awaymission/spacebattle/cruiser)
 "gh" = (
@@ -1196,7 +1187,6 @@
 	},
 /area/awaymission/spacebattle/syndicate7)
 "gV" = (
-/turf/simulated/shuttle/wall/dark,
 /turf/space,
 /area/awaymission/spacebattle/syndicate7)
 "gW" = (
@@ -1560,10 +1550,6 @@
 "iD" = (
 /turf/simulated/shuttle/wall/dark,
 /area)
-"iE" = (
-/turf/simulated/shuttle/wall/dark,
-/turf/space,
-/area)
 "iF" = (
 /obj/machinery/sleeper,
 /turf/simulated/floor/airless{
@@ -1594,7 +1580,6 @@
 	},
 /area)
 "iL" = (
-/turf/simulated/shuttle/wall/dark,
 /turf/space,
 /area/awaymission/spacebattle/syndicate5)
 "iM" = (
@@ -1644,7 +1629,6 @@
 /turf/space,
 /area/awaymission/spacebattle/syndicate5)
 "jc" = (
-/turf/simulated/shuttle/wall/dark,
 /turf/space,
 /area/awaymission/spacebattle/syndicate6)
 "jd" = (
@@ -36685,7 +36669,7 @@ aj
 aj
 ah
 an
-at
+an
 an
 an
 aj
@@ -37970,7 +37954,7 @@ aj
 aj
 ah
 an
-at
+an
 an
 an
 aj
@@ -38226,7 +38210,7 @@ aj
 aj
 aj
 ah
-at
+an
 aj
 aj
 aj
@@ -44523,7 +44507,7 @@ iJ
 iJ
 iD
 iD
-iE
+ab
 ab
 ab
 ab
@@ -44781,7 +44765,7 @@ iG
 iG
 iO
 iD
-iE
+ab
 ab
 ab
 ab
@@ -45039,7 +45023,7 @@ iG
 iG
 iF
 iD
-iE
+ab
 ab
 ab
 ab
@@ -45297,7 +45281,7 @@ iG
 iG
 iF
 iD
-iE
+ab
 ab
 ab
 ab
@@ -46582,7 +46566,7 @@ iG
 iG
 iF
 iD
-iE
+ab
 ab
 ab
 ab
@@ -46838,7 +46822,7 @@ iG
 iG
 iF
 iD
-iE
+ab
 ab
 ab
 ab
@@ -47085,7 +47069,7 @@ ab
 ab
 ab
 ab
-iE
+ab
 iD
 iG
 iG
@@ -47094,7 +47078,7 @@ iG
 iG
 iF
 iD
-iE
+ab
 ab
 ab
 ab
@@ -47343,14 +47327,14 @@ ab
 ab
 ab
 ab
-iE
+ab
 iD
 iD
 iJ
 iJ
 iD
 iD
-iE
+ab
 ab
 ab
 ab

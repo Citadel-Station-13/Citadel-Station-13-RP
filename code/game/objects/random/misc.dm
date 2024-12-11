@@ -264,7 +264,7 @@
 				prob(8);/obj/item/haircomb,
 				prob(4);/obj/item/storage/pill_bottle/happy,
 				prob(4);/obj/item/storage/pill_bottle/zoom,
-				prob(10);/obj/item/contraband/poster,
+				prob(10);/obj/item/poster,
 				prob(4);/obj/item/material/butterfly,
 				prob(6);/obj/item/material/butterflyblade,
 				prob(6);/obj/item/material/butterflyhandle,
@@ -335,7 +335,7 @@
 				prob(20);/obj/item/reagent_containers/food/snacks/xenomeat/spidermeat,
 				prob(10);/obj/item/reagent_containers/food/snacks/carpmeat,
 				prob(5);/obj/item/reagent_containers/food/snacks/bearmeat,
-				prob(1);/obj/item/reagent_containers/food/snacks/meat/syntiflesh,
+				prob(1);/obj/item/reagent_containers/food/snacks/meat/synthflesh,
 				prob(1);/obj/item/reagent_containers/food/snacks/meat/human,
 				prob(1);/obj/item/reagent_containers/food/snacks/meat/monkey,
 				prob(1);/obj/item/reagent_containers/food/snacks/meat/corgi,
@@ -352,7 +352,7 @@
 				prob(20);/obj/item/reagent_containers/food/snacks/xenomeat/spidermeat,
 				prob(10);/obj/item/reagent_containers/food/snacks/carpmeat,
 				prob(5);/obj/item/reagent_containers/food/snacks/bearmeat,
-				prob(1);/obj/item/reagent_containers/food/snacks/meat/syntiflesh,
+				prob(1);/obj/item/reagent_containers/food/snacks/meat/synthflesh,
 				prob(1);/obj/item/reagent_containers/food/snacks/meat/monkey,
 				prob(1);/obj/item/reagent_containers/food/snacks/meat/corgi)
 
@@ -811,7 +811,7 @@
 		prob(8);/obj/item/gun/energy/gun/eluger,
 		prob(8);/obj/item/gun/energy/xray,
 		prob(8);/obj/item/gun/ballistic/automatic/c20r,
-		prob(8);/obj/item/melee/energy/sword,
+		prob(8);/obj/item/melee/transforming/energy/sword,
 		prob(8);/obj/item/gun/ballistic/derringer,
 		prob(8);/obj/item/gun/ballistic/konigin,
 		prob(8);/obj/item/gun/ballistic/revolver/lemat,
@@ -835,7 +835,7 @@
 		prob(4);/obj/item/gun/ballistic/deagle,
 		prob(4);/obj/item/gun/ballistic/deagle/taj,
 		prob(4);/obj/item/material/knife/tacknife/combatknife,
-		prob(4);/obj/item/melee/energy/sword,
+		prob(4);/obj/item/melee/transforming/energy/sword,
 		prob(2);/obj/item/gun/ballistic/automatic/mini_uzi,
 		prob(2);/obj/item/gun/ballistic/automatic/mini_uzi/taj,
 		prob(4);/obj/item/gun/ballistic/automatic/wt274,
@@ -846,7 +846,7 @@
 		prob(3);/obj/item/gun/energy/lasercannon,
 		prob(3);/obj/item/gun/ballistic/shotgun/pump/rifle/lever,
 		prob(3);/obj/item/gun/ballistic/automatic/bullpup,
-		prob(2);/obj/item/gun/energy/pulse_rifle,
+		prob(2);/obj/item/gun/energy/nt_pulse/rifle,
 		prob(2);/obj/item/gun/energy/gun/nuclear,
 		prob(2);/obj/item/gun/ballistic/automatic/lmg,
 		prob(2);/obj/item/gun/energy/gun/burst,
@@ -889,7 +889,8 @@
 		prob(5);/obj/item/storage/box/shotgunshells,
 		prob(5);/obj/item/ammo_magazine/a7_62mm/clip,
 		prob(5);/obj/item/ammo_magazine/a38,
-		prob(5);/obj/item/ammo_magazine/a45,
+		prob(5);/obj/item/ammo_magazine/a45/doublestack,
+		prob(5);/obj/item/ammo_magazine/a45/singlestack,
 		prob(5);/obj/item/ammo_magazine/a9mm,
 		prob(5);/obj/item/ammo_magazine/a38/speedloader,
 		prob(4);/obj/item/ammo_magazine/a45/clip,
@@ -932,7 +933,7 @@
 	icon_state = "purplecomb"
 
 /obj/random/cargopod/item_to_spawn()
-	return pick(prob(10);/obj/item/contraband/poster,\
+	return pick(prob(10);/obj/item/poster,\
 				prob(8);/obj/item/haircomb,\
 				prob(6);/obj/item/material/wirerod,\
 				prob(6);/obj/item/storage/pill_bottle/tramadol,\
