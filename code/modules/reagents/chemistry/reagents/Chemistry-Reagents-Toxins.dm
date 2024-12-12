@@ -699,9 +699,7 @@
 	if(alien == IS_SLIME)
 		threshold = 6	//Evens to 3 due to the fact they are considered 'small' for flaps.
 
-	var/effective_dose = dose
-	if(issmall(M))
-		effective_dose *= 2
+	var/effective_dose = metabolism.total_processed_dose
 
 	if(effective_dose < 1 * threshold)
 		if(effective_dose == metabolism * 2 || prob(5))
@@ -748,7 +746,7 @@
 	if(alien == IS_SLIME)
 		threshold = 6	//Evens to 3 due to the fact they are considered 'small' for flaps.
 
-	var/effective_dose = dose
+	var/effective_dose = metabolism.total_processed_dose
 	if(issmall(M))
 		effective_dose *= 2
 
@@ -941,8 +939,8 @@
 
 	M.druggy = max(M.druggy, 30)
 
-	var/effective_dose = dose
-	if(issmall(M)) effective_dose *= 2
+	var/effective_dose = metabolism.total_processed_dose
+
 	if(effective_dose < 1 * threshold)
 		M.apply_effect(3, STUTTER)
 		M.make_dizzy(5)

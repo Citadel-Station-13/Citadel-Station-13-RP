@@ -111,17 +111,14 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 /// This doesn't apply to skin contact - this is for, e.g. extinguishers and sprays. The difference is that reagent is not directly on the mob's skin - it might just be on their clothing.
 /datum/reagent/proc/touch_mob(mob/M, amount)
 	SHOULD_NOT_OVERRIDE(TRUE)
-	return
 
 /// Acid melting, cleaner cleaning, etc
 /datum/reagent/proc/touch_obj(obj/O, amount)
 	SHOULD_NOT_OVERRIDE(TRUE)
-	return
 
 /// Cleaner cleaning, lube lubbing, etc, all go here
 /datum/reagent/proc/touch_turf(turf/T, amount)
 	SHOULD_NOT_OVERRIDE(TRUE)
-	return
 
 /// Currently, on_mob_life is called on carbons. Any interaction with non-carbon mobs (lube) will need to be done in touch_mob.
 /datum/reagent/proc/on_mob_life(var/mob/living/carbon/M, var/alien, var/datum/reagent_holder/metabolism/location, speed_mult = 1, force_allow_dead)
@@ -232,6 +229,7 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 	metabolism.cycles_so_far++
 	metabolism.legacy_volume_remaining = volume
 	metabolism.legacy_data = location.reagent_datas?[id]
+	metabolism.legacy_current_holder = active_metab
 	if(removed >= (metabolism_rate * 0.1) || removed >= 0.1) // If there's too little chemical, don't affect the mob, just remove it
 		switch(active_metab.metabolism_class)
 			if(CHEM_INJECT)
@@ -245,6 +243,7 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 		overdose(M, alien, removed)
 	else
 		metabolism.cycles_overdosing = 0
+	metabolism.legacy_current_holder = null
 	remove_self(removed)
 
 #warn injcet reagent metabolism datum to calls

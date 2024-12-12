@@ -14,7 +14,7 @@
 /datum/reagent/sugar/legacy_affect_blood(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	M.nutrition += removed * 3
 
-	var/effective_dose = dose
+	var/effective_dose = metabolism.total_processed_dose
 	if(issmall(M))
 		effective_dose *= 2
 

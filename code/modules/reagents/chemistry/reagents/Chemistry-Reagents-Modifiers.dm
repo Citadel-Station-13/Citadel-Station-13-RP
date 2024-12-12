@@ -17,7 +17,7 @@
 /datum/reagent/modapplying/legacy_affect_blood(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	if(alien == IS_DIONA)
 		return
-	M.add_modifier(modifier_to_add, dose * modifier_duration)
+	M.add_modifier(modifier_to_add, metabolism.total_processed_dose * modifier_duration)
 
 /datum/reagent/modapplying/cryofluid
 	name = "cryogenic slurry"

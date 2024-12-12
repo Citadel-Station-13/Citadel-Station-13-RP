@@ -57,9 +57,7 @@
 /datum/reagent/nutriment/honey/legacy_affect_ingest(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	..()
 
-	var/effective_dose = dose
-	if(issmall(M))
-		effective_dose *= 2
+	var/effective_dose = metabolism.total_processed_dose
 
 	if(alien == IS_UNATHI)
 		if(effective_dose < 2)
@@ -423,9 +421,9 @@
 		if(!H.can_feel_pain())
 			return
 
-	if(dose < 5 && (dose == metabolism_rate || prob(5)))
+	if(metabolism.total_processed_dose < 5 && (metabolism.cycles_so_far == 1 || prob(5)))
 		to_chat(M, "<span class='danger'>Your insides feel uncomfortably hot!</span>")
-	if(dose >= 5)
+	if(metabolism.total_processed_dose >= 5)
 		M.apply_effect(2, AGONY, 0)
 		if(prob(5))
 			M.visible_message("<span class='warning'>[M] [pick("dry heaves!","coughs!","splutters!")]</span>", "<span class='danger'>You feel like your insides are burning!</span>")
@@ -450,7 +448,7 @@
 		var/mob/living/carbon/human/H = M
 		if(!H.can_feel_pain())
 			return
-	if(dose == metabolism_rate)
+	if(metabolism.cycles_so_far == 1)
 		to_chat(M, "<span class='danger'>You feel like your insides are burning!</span>")
 	else
 		M.apply_effect(3, AGONY, 0)
@@ -604,7 +602,7 @@
 		var/mob/living/carbon/human/H = M
 		if(!H.can_feel_pain())
 			return
-	if(dose == metabolism_rate)
+	if(metabolism.cycles_so_far == 1)
 		to_chat(M, "<span class='danger'>You feel like your insides are burning!</span>")
 	else
 		M.apply_effect(4, AGONY, 0)
@@ -715,9 +713,7 @@
 /datum/reagent/drink/juice/legacy_affect_ingest(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	..()
 
-	var/effective_dose = dose/2
-	if(issmall(M))
-		effective_dose *= 2
+	var/effective_dose = metabolism.total_processed_dose
 
 	if(alien == IS_UNATHI)
 		if(effective_dose < 2)
@@ -1468,9 +1464,7 @@
 /datum/reagent/drink/milkshake/legacy_affect_ingest(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	..()
 
-	var/effective_dose = dose/2
-	if(issmall(M))
-		effective_dose *= 2
+	var/effective_dose = metabolism.total_processed_dose / 2
 
 	if(alien == IS_UNATHI)
 		if(effective_dose < 2)
@@ -3485,7 +3479,7 @@
 		var/mob/living/carbon/human/H = M
 		if(!H.can_feel_pain())
 			return
-	if(dose == metabolism_rate)
+	if(metabolism.cycles_so_far == 1)
 		to_chat(M, "<span class='danger'>You feel like your insides are burning!</span>")
 	else
 		M.apply_effect(4, AGONY, 0)
@@ -4817,7 +4811,7 @@
 
 	M.druggy = max(M.druggy, 30)
 
-	var/effective_dose = dose
+	var/effective_dose = metabolism.total_processed_dose
 	if(issmall(M)) effective_dose *= 2
 	if(effective_dose < 1 * threshold)
 		M.apply_effect(3, STUTTER)

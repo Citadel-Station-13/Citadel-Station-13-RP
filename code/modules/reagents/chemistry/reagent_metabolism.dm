@@ -27,3 +27,5 @@
 	var/legacy_volume_remaining
 	/// set to data
 	var/legacy_data
+	/// the reagent holder we're in
+	var/datum/reagent_holder/legacy_current_holder

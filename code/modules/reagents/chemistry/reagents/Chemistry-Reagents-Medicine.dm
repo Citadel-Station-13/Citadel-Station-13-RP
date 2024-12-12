@@ -235,6 +235,7 @@
 	overdose = REAGENTS_OVERDOSE
 	scannable = 1
 	metabolism_rate = REM * 0.25
+
 /datum/reagent/dexalin/legacy_affect_blood(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	if(alien == IS_VOX)
 		M.adjustToxLoss(removed * 24) //Vox breath phoron, oxygen is rather deadly to them
@@ -249,8 +250,8 @@
 	else if(alien != IS_DIONA)
 		M.adjustOxyLoss(-60 * removed) //Heals alot of oxyloss damage/but
 		//keep in mind that Dexaline has a metabolism rate of 0.25*REM meaning only 0.25 units are removed every tick(if your metabolism takes usuall 1u per tick)
+	holder.legacy_current_holder.remove_reagent(/datum/reagent/lexorin, 8 * removed)
 
-	holder.remove_reagent("lexorin", 8 * removed)
 /datum/reagent/dexalinp
 	name = "Dexalin Plus"
 	id = "dexalinp"
@@ -266,7 +267,7 @@
 		M.adjustToxLoss(removed * 9)//Again, vox dont like O2
 	if(alien == IS_ALRAUNE)
 		M.adjustToxLoss(removed * 5) //cit change: oxygen is waste for plants
-	else if(alien == IS_SLIME && dose >= 10)
+	else if(alien == IS_SLIME && metabolism.total_processed_dose >= 10)
 		M.ceiling_chemical_effect(CE_PAINKILLER, 25)
 		if(prob(25))
 			to_chat(M, "<span class='notice'>You have a moment of clarity, as you feel your tubes lose pressure rapidly.</span>")
@@ -275,7 +276,7 @@
 	else if(alien != IS_DIONA)
 		M.adjustOxyLoss(-150 * removed)//Heals more oxyloss than Dex and has no metabolism reduction
 
-	holder.remove_reagent("lexorin", 3 * removed)
+	holder.legacy_current_holder.remove_reagent(/datum/reagent/lexorin, 3 * removed)
 
 /datum/reagent/tricordrazine
 	name = "Tricordrazine"
@@ -636,7 +637,7 @@
 		chem_effective = 0.25
 		if(M.brainloss >= 10)
 			M.afflict_paralyze(20 * 5)
-		if(dose >= 10 && M.is_unconscious())
+		if(metabolism.total_processed_dose >= 10 && M.is_unconscious())
 			M.adjust_unconscious(20 * 1) //Messing with the core with a simple chemical probably isn't the best idea.
 	M.adjustBrainLoss(-8 * removed * chem_effective) //the Brain damage heal
 	M.ceiling_chemical_effect(CE_PAINKILLER, 10 * chem_effective)
@@ -941,7 +942,7 @@
 			if(I.robotic >= ORGAN_ROBOT)
 				organtotal -= I
 
-		if(dose >= 15)
+		if(metabolism.total_processed_dose >= 15)
 			for(var/obj/item/organ/I in organtotal)
 				if(I.transplant_data && prob(round(15 * strength_mod)))	// Reset the rejection process, toggle it to not reject.
 					I.rejecting = 0
@@ -1163,6 +1164,7 @@
 		M.Confuse(7)
 		M.adjustFireLoss(removed * 2)
 		M.adjustToxLoss(removed * 2)
+		var/dose = metabolism.total_processed_dose
 		if(dose >= 5 && M.toxloss >= 10) //It all starts going wrong.
 			M.adjustBruteLoss(removed * 3)
 			M.eye_blurry = min(20, max(0, M.eye_blurry + 10))
@@ -1376,7 +1378,7 @@
 		metabolism.blackboard["last-message"] = -1
 		to_chat(M, "<span class='warning'>You lose focus...</span>")
 	else
-		if(world.time > data + ANTIDEPRESSANT_MESSAGE_DELAY)
+		if(world.time > metabolism.blackboard["last-message"] + ANTIDEPRESSANT_MESSAGE_DELAY)
 			metabolism.blackboard["last-message"] = world.time
 			to_chat(M, "<span class='notice'>Your mind feels focused and undivided.</span>")
 
@@ -1398,7 +1400,7 @@
 		metabolism.blackboard["last-message"] = -1
 		to_chat(M, "<span class='warning'>Your mind feels a little less stable...</span>")
 	else
-		if(world.time > data + ANTIDEPRESSANT_MESSAGE_DELAY)
+		if(world.time > metabolism.blackboard["last-message"] + ANTIDEPRESSANT_MESSAGE_DELAY)
 			metabolism.blackboard["last-message"] = world.time
 			to_chat(M, "<span class='notice'>Your mind feels stable... a little stable.</span>")
 
@@ -1420,7 +1422,7 @@
 		metabolism.blackboard["last-message"] = -1
 		to_chat(M, "<span class='warning'>Your mind feels much less stable...</span>")
 	else
-		if(world.time > data + ANTIDEPRESSANT_MESSAGE_DELAY)
+		if(world.time > metabolism.blackboard["last-message"] + ANTIDEPRESSANT_MESSAGE_DELAY)
 			metabolism.blackboard["last-message"] = world.time
 			if(prob(1))
 				to_chat(M, "<span class='warning'>Your mind breaks apart...</span>")
@@ -1464,7 +1466,7 @@
 		metabolism.blackboard["last-message"] = -1
 		to_chat(M, "<span class='warning'>You feel antsy, your concentration wavers...</span>")
 	else
-		if(world.time > data + ANTIDEPRESSANT_MESSAGE_DELAY)
+		if(world.time > metabolism.blackboard["last-message"] + ANTIDEPRESSANT_MESSAGE_DELAY)
 			metabolism.blackboard["last-message"] = world.time
 			to_chat(M, "<span class='notice'>You feel invigorated and calm.</span>")
 
