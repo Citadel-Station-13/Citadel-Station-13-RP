@@ -1,6 +1,6 @@
-DROP TRIGGER IF NOT EXISTS `playtimeTlogupdate`;
-DROP TRIGGER IF NOT EXISTS `playtimeTloginsert`;
-DROP TRIGGER IF NOT EXISTS `playtimeTlogdelete`;
+DROP TRIGGER IF EXISTS `playtimeTlogupdate`;
+DROP TRIGGER IF EXISTS `playtimeTloginsert`;
+DROP TRIGGER IF EXISTS `playtimeTlogdelete`;
 
 DELIMITER $$
 CREATE TRIGGER `playtimeTlogupdate` AFTER UPDATE ON `playtime` FOR EACH ROW BEGIN INSERT into `playtime_log` (player, roleid, delta) VALUES (NEW.player, NEW.roleid, NEW.minutes-OLD.minutes);
