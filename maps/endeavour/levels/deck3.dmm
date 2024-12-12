@@ -2392,6 +2392,7 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 6
 	},
+/obj/machinery/fire_alarm/north_mount,
 /turf/simulated/floor/tiled/steel_grid,
 /area/quartermaster/belterdock)
 "bCj" = (
@@ -14149,6 +14150,7 @@
 /obj/machinery/camera/network/cargo{
 	dir = 8
 	},
+/obj/machinery/fire_alarm/east_mount,
 /turf/simulated/floor/tiled/white,
 /area/quartermaster/belterdock/gear)
 "jAH" = (
@@ -14292,6 +14294,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/machinery/fire_alarm/north_mount,
 /turf/simulated/floor/tiled/monotile,
 /area/quartermaster/belterdock/refinery)
 "jGe" = (
@@ -18954,6 +18957,16 @@
 /obj/machinery/air_alarm/north_mount,
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d3starboardafthall)
+"mYA" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 9
+	},
+/obj/effect/floor_decal/corner/brown/border{
+	dir = 9
+	},
+/obj/machinery/fire_alarm/north_mount,
+/turf/simulated/floor/tiled/dark,
+/area/quartermaster/foyer)
 "mYK" = (
 /obj/machinery/shower{
 	dir = 8
@@ -25464,6 +25477,9 @@
 /obj/structure/catwalk,
 /obj/machinery/door/airlock/maintenance,
 /obj/map_helper/access_helper/airlock/station/supply/maintenance,
+/obj/machinery/door/firedoor{
+	dir = 8
+	},
 /turf/simulated/floor/plating,
 /area/quartermaster/foyer)
 "rme" = (
@@ -28430,7 +28446,9 @@
 	req_one_access = null
 	},
 /obj/map_helper/access_helper/airlock/station/supply/department,
-/obj/machinery/door/firedoor,
+/obj/machinery/door/firedoor{
+	dir = 8
+	},
 /turf/simulated/floor/wood,
 /area/quartermaster/office)
 "tds" = (
@@ -30865,7 +30883,6 @@
 	req_one_access = null
 	},
 /obj/map_helper/access_helper/airlock/station/supply/department,
-/obj/machinery/door/firedoor,
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
@@ -30877,6 +30894,9 @@
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
+	},
+/obj/machinery/door/firedoor{
+	dir = 8
 	},
 /turf/simulated/floor/wood,
 /area/quartermaster/office)
@@ -34157,6 +34177,7 @@
 	dir = 4
 	},
 /obj/structure/flora/pottedplant/stoutbush,
+/obj/machinery/fire_alarm/north_mount,
 /turf/simulated/floor/tiled,
 /area/endeavour/surfacebase/mining_main/break_room)
 "wHm" = (
@@ -50009,7 +50030,7 @@ uJr
 juy
 feq
 mSw
-oOI
+mYA
 xLm
 gXm
 xLm
