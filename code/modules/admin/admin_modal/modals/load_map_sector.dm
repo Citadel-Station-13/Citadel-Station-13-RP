@@ -3,21 +3,23 @@
 
 // todo: sensical admin rights
 // todo: better verb category
-ADMIN_VERB_DEF(upload_map_sector, R_ADMIN, "Upload Map Sector", "Upload a custom map.", VERB_CATEGORY_ADMIN)
-	caller.holder.open_admin_modal(/datum/admin_modal/upload_map_sector)
+ADMIN_VERB_DEF(load_map_sector, R_ADMIN, "Upload Map Sector", "Upload a custom map.", VERB_CATEGORY_ADMIN)
+	caller.holder.open_admin_modal(/datum/admin_modal/load_map_sector)
 
 /**
- * Modal supporting arbitrary map uploads.
+ * Modal supporting arbitrary map loads.
  *
- * * Does not support shuttles yet. You must upload shuttles separately!
+ * * Does not support shuttles yet. You must load shuttles separately!
  * * This will always create sectors with structs. Uploading singular levels
  *   is no longer natively supported, as the game's backend orchestration
  *   expects to work with abstracted sectors, instead of singular z-level's.
- * * This does not currently support invoking map generation during an upload.
+ *
+ * todo: ability to load compiled in map defs
+ * todo: ability to use a generator for a level
  */
-/datum/admin_modal/upload_map_sector
-	name = "Upload Map Sector"
-	tgui_interface = "UploadMapSector"
+/datum/admin_modal/load_map_sector
+	name = "Load Map Sector"
+	tgui_interface = "LoadMapSector"
 	tgui_update = FALSE
 
 	//* constraints *//
@@ -56,16 +58,16 @@ ADMIN_VERB_DEF(upload_map_sector, R_ADMIN, "Upload Map Sector", "Upload a custom
 	var/tmp/computed_end_z
 	var/tmp/list/computed_errors
 
-/datum/admin_modal/upload_map_sector/Initialize()
+/datum/admin_modal/load_map_sector/Initialize()
 	// no uploading new map sectors while MC is initializing.
 	if(!MC_INITIALIZED())
-		loud_rejection("Cannot upload map sectors while the server is initializing.")
+		loud_rejection("Cannot load new map sectors while the server is initializing.")
 		return FALSE
 	. = ..()
 	buffer = new
 	buffer.name = "Custom Map"
 
-/datum/admin_modal/upload_map_sector/Destroy()
+/datum/admin_modal/load_map_sector/Destroy()
 	if(buffer)
 		// unreference only if the buffer is already loaded in
 		if(buffer.loaded)
@@ -76,21 +78,23 @@ ADMIN_VERB_DEF(upload_map_sector, R_ADMIN, "Upload Map Sector", "Upload a custom
 
 #warn impl
 
-/datum/admin_modal/upload_map_sector/ui_nested_data(mob/user, datum/tgui/ui)
+/datum/admin_modal/load_map_sector/ui_nested_data(mob/user, datum/tgui/ui)
 	. = ..()
 	.["map"] = map_data()
 	.["overmap"] = overmap_data()
 	for(var/index in 1 to length(buffer.levels))
 		.["level-[index]"] = level_index_data(index)
 
-/datum/admin_modal/upload_map_sector/ui_data(mob/user, datum/tgui/ui)
+/datum/admin_modal/load_map_sector/ui_data(mob/user, datum/tgui/ui)
 	. = ..()
 	.["primed"] = primed
 	.["ready"] = ready
 	.["levels"] = length(buffer.levels)
 
-/datum/admin_modal/upload_map_sector/ui_static_data(mob/user, datum/tgui/ui)
+/datum/admin_modal/load_map_sector/ui_static_data(mob/user, datum/tgui/ui)
 	. = ..()
+	.["const_airVacuum"] = GAS_STRING_VACUUM
+	.["const_airHabitable"] = GAS_STRING_STP
 	.["staged"] = primed ? list(
 		"computedWidth" = computed_width,
 		"computedHeight" = computed_height,
@@ -101,13 +105,13 @@ ADMIN_VERB_DEF(upload_map_sector, R_ADMIN, "Upload Map Sector", "Upload a custom
 		"errors" = computed_errors,
 	) : null
 
-/datum/admin_modal/upload_map_sector/ui_asset_injection(datum/tgui/ui, list/immediate, list/deferred)
+/datum/admin_modal/load_map_sector/ui_asset_injection(datum/tgui/ui, list/immediate, list/deferred)
 	. = ..()
 	deferred += /datum/asset_pack/json/map_system
 	deferred += /datum/asset_pack/json/world_typepaths
 	deferred += /datum/asset_pack/spritesheet/world_typepaths
 
-/datum/admin_modal/upload_map_sector/ui_act(action, list/params, datum/tgui/ui)
+/datum/admin_modal/load_map_sector/ui_act(action, list/params, datum/tgui/ui)
 	. = ..()
 	if(.)
 		return
@@ -118,8 +122,16 @@ ADMIN_VERB_DEF(upload_map_sector, R_ADMIN, "Upload Map Sector", "Upload a custom
 			load()
 			return TRUE
 	unprime()
+
 	// this may or may not be set but we're doing it here to avoid too many definitions
-	var/target_level_index = text2num(params["levelIndex"])
+	var/target_level_index
+	var/datum/map_level/target_level
+	if(!isnull(params["levelIndex"]))
+		target_level_index = text2num(params["levelIndex"])
+		if(target_level_index < 1 || target_level_index > length(buffer.levels))
+			return TRUE
+		target_level = buffer.levels[target_level_index]
+
 	switch(action)
 		if("prime")
 			prime()
@@ -129,9 +141,9 @@ ADMIN_VERB_DEF(upload_map_sector, R_ADMIN, "Upload Map Sector", "Upload a custom
 			update_map_data()
 			. = TRUE
 		if("mapOrientation")
-			if(!(params["orient"] in GLOB.cardinal))
+			if(!(params["setTo"] in GLOB.cardinal))
 				return
-			buffer.orientation = params["orient"]
+			buffer.orientation = params["setTo"]
 			update_map_data()
 			. = TRUE
 		if("mapCenter")
@@ -170,65 +182,79 @@ ADMIN_VERB_DEF(upload_map_sector, R_ADMIN, "Upload Map Sector", "Upload a custom
 			. = TRUE
 		// level //
 		if("levelDmm")
+			var/loaded_file = input(owner.owner, "Upload a .dmm file.", "Upload DMM") as file | null
+			#warn process dmm
 			update_level_index_data(target_level_index)
 			. = TRUE
 		if("levelName")
+			target_level.name = params["setTo"] || "Custom Level"
 			update_level_index_data(target_level_index)
 			. = TRUE
 		if("levelId")
+			target_level.id = params["setTo"] || null
 			update_level_index_data(target_level_index)
 			. = TRUE
 		if("levelDisplayName")
+			target_level.display_name = params["setTo"] || "Unknown Sector"
 			update_level_index_data(target_level_index)
 			. = TRUE
 		if("levelDisplayId")
+			target_level.display_id = params["setTo"] || null
 			update_level_index_data(target_level_index)
 			. = TRUE
 		if("levelAddTrait")
+			target_level.add_trait(params["trait"])
 			update_level_index_data(target_level_index)
 			. = TRUE
 		if("levelDelTrait")
+			target_level.remove_trait(params["trait"])
 			update_level_index_data(target_level_index)
 			. = TRUE
 		if("levelSetAttribute")
+			target_level.set_attribute(params["attribute"], params["value"])
 			update_level_index_data(target_level_index)
 			. = TRUE
 		if("levelBaseTurf")
+			target_level.base_turf = text2path(params["type"]) || world.turf
 			update_level_index_data(target_level_index)
 			. = TRUE
 		if("levelBaseArea")
+			target_level.base_area = text2path(params["type"]) || world.turf
 			. = TRUE
 		if("levelStructXYZ")
+			target_level.struct_x = params["x"]
+			target_level.struct_y = params["y"]
+			target_level.struct_z = params["z"]
 			update_level_index_data(target_level_index)
 			. = TRUE
 		if("levelAirIndoors")
+			target_level.air_indoors = params["air"]
 			update_level_index_data(target_level_index)
 			. = TRUE
 		if("levelAirOutdoors")
+			target_level.air_outdoors = params["air"]
 			update_level_index_data(target_level_index)
 			. = TRUE
 		if("levelCeilingHeight")
+			target_level.ceiling_height = params["height"]
 			update_level_index_data(target_level_index)
 			. = TRUE
 
-
-#warn impl all
-
-/datum/admin_modal/upload_map_sector/proc/map_data()
+/datum/admin_modal/load_map_sector/proc/map_data()
 	return list(
 		"name" = buffer.name,
 		"orientation" = buffer.orientation,
 		"center" = buffer.center,
 	)
 
-/datum/admin_modal/upload_map_sector/proc/update_map_data()
+/datum/admin_modal/load_map_sector/proc/update_map_data()
 	push_ui_data(
 		nested_data = list(
 			"map" = map_data(),
 		),
 	)
 
-/datum/admin_modal/upload_map_sector/proc/overmap_data()
+/datum/admin_modal/load_map_sector/proc/overmap_data()
 	if(!istype(buffer.overmap_initializer, /datum/overmap_initializer/struct))
 		return list(
 			"x" = 0,
@@ -241,28 +267,30 @@ ADMIN_VERB_DEF(upload_map_sector, R_ADMIN, "Upload Map Sector", "Upload a custom
 		"forcePos" = buffer.overmap_initializer.manual_position_is_strong_suggestion,
 	)
 
-/datum/admin_modal/upload_map_sector/proc/update_overmap_data()
+/datum/admin_modal/load_map_sector/proc/update_overmap_data()
 	push_ui_data(
 		nested_data = list(
 			"overmap" = overmap_data(),
 		),
 	)
 
-/datum/admin_modal/upload_map_sector/proc/level_index_data(index)
+/datum/admin_modal/load_map_sector/proc/level_index_data(index)
 
-/datum/admin_modal/upload_map_sector/proc/update_level_index_data(index)
+/datum/admin_modal/load_map_sector/proc/update_level_index_data(index)
 	push_ui_data(
 		nested_data = list(
 			"level-[index]" = level_index_data(index),
 		),
 	)
 
-/datum/admin_modal/upload_map_sector/proc/prime()
+/datum/admin_modal/load_map_sector/proc/prime()
 	computed_errors = list()
 	#warn check bounds
 	#warn sort up/down levels as needed
 
-/datum/admin_modal/upload_map_sector/proc/unprime()
+	update_static_data()
+
+/datum/admin_modal/load_map_sector/proc/unprime()
 	primed = FALSE
 	ready = FALSE
 
@@ -276,21 +304,25 @@ ADMIN_VERB_DEF(upload_map_sector, R_ADMIN, "Upload Map Sector", "Upload a custom
 	computed_errors = \
 	computed_utilization = null
 
-/datum/admin_modal/upload_map_sector/proc/load()
+	update_static_data()
+
+/datum/admin_modal/load_map_sector/proc/load()
 	if(world.maxz != world_maxz_at_prime)
 		unprime()
 		return FALSE
 	#warn impl
 
-/datum/admin_modal/upload_map_sector/proc/create_level()
-	var/datum/map_level/appending
-	#warn check & track turf utilization
+/datum/admin_modal/load_map_sector/proc/create_level()
+	var/datum/map_level/appending = new(buffer)
+	appending.name = "Custom Level"
+	appending.display_name = "Unknown Sector"
+	buffer.levels += appending
+	update_level_index_data(length(buffer.levels))
+	update_ui_data()
 
-/datum/admin_modal/upload_map_sector/proc/delete_level_index(target_level_index)
+/datum/admin_modal/load_map_sector/proc/delete_level_index(target_level_index)
 	var/datum/map_level/obliterating = buffer.levels[target_level_index]
 	buffer.levels.Cut(target_level_index, target_level_index + 1)
 	QDEL_NULL(obliterating)
 	for(var/updating in target_level_index to length(buffer.levels))
 		update_level_index_data(updating)
-	#warn check & track turf utilization
-
