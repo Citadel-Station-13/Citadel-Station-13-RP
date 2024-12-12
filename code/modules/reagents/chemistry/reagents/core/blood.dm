@@ -212,7 +212,7 @@
 	taste_description = "iron"
 	taste_mult = 1.3
 	reagent_state = REAGENT_LIQUID
-	metabolism = REM * 5
+	metabolism_rate = REM * 5
 	mrate_static = TRUE
 	affects_dead = 1 //so you can pump blood into someone before defibbing them
 	color = "#A80000"

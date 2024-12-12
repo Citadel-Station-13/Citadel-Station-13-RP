@@ -7,7 +7,7 @@
 	description = "A ubiquitous chemical substance that is composed of hydrogen and oxygen."
 	reagent_state = REAGENT_LIQUID
 	color = "#0064C877"
-	metabolism = REM * 10
+	metabolism_rate = REM * 10
 
 	glass_name = "water"
 	glass_desc = "The father of all refreshments."

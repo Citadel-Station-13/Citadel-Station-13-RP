@@ -9,7 +9,7 @@
 	taste_description = "metal"
 	reagent_state = REAGENT_LIQUID
 	color = "#ff5555"
-	metabolism = REM
+	metabolism_rate = REM
 
 	var/modifier_to_add = /datum/modifier/berserk
 	var/modifier_duration = 2 SECONDS	// How long, per unit dose, will this last?
@@ -25,7 +25,7 @@
 	description = "An incredibly strange liquid that rapidly absorbs thermal energy from materials it contacts."
 	taste_description = "siberian hellscape"
 	color = "#4CDBDB"
-	metabolism = REM * 0.5
+	metabolism_rate = REM * 0.5
 
 	modifier_to_add = /datum/modifier/cryogelled
 	modifier_duration = 3 SECONDS

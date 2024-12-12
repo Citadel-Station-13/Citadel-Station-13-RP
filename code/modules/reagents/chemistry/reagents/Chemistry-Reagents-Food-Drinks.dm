@@ -63,7 +63,7 @@
 
 	if(alien == IS_UNATHI)
 		if(effective_dose < 2)
-			if(effective_dose == metabolism * 2 || prob(5))
+			if(effective_dose == metabolism_rate * 2 || prob(5))
 				M.emote("yawn")
 		else if(effective_dose < 5)
 			M.eye_blurry = max(M.eye_blurry, 10)
@@ -391,7 +391,7 @@
 	description = "Lowers the body's internal temperature."
 	reagent_state = REAGENT_LIQUID
 	color = "#B31008"
-	metabolism = REM * 0.5
+	metabolism_rate = REM * 0.5
 
 /datum/reagent/capsaicin
 	name = "Capsaicin Oil"
@@ -423,7 +423,7 @@
 		if(!H.can_feel_pain())
 			return
 
-	if(dose < 5 && (dose == metabolism || prob(5)))
+	if(dose < 5 && (dose == metabolism_rate || prob(5)))
 		to_chat(M, "<span class='danger'>Your insides feel uncomfortably hot!</span>")
 	if(dose >= 5)
 		M.apply_effect(2, AGONY, 0)
@@ -450,7 +450,7 @@
 		var/mob/living/carbon/human/H = M
 		if(!H.can_feel_pain())
 			return
-	if(dose == metabolism)
+	if(dose == metabolism_rate)
 		to_chat(M, "<span class='danger'>You feel like your insides are burning!</span>")
 	else
 		M.apply_effect(3, AGONY, 0)
@@ -604,7 +604,7 @@
 		var/mob/living/carbon/human/H = M
 		if(!H.can_feel_pain())
 			return
-	if(dose == metabolism)
+	if(dose == metabolism_rate)
 		to_chat(M, "<span class='danger'>You feel like your insides are burning!</span>")
 	else
 		M.apply_effect(4, AGONY, 0)
@@ -721,7 +721,7 @@
 
 	if(alien == IS_UNATHI)
 		if(effective_dose < 2)
-			if(effective_dose == metabolism * 2 || prob(5))
+			if(effective_dose == metabolism_rate * 2 || prob(5))
 				M.emote("yawn")
 		else if(effective_dose < 5)
 			M.eye_blurry = max(M.eye_blurry, 10)
@@ -1474,7 +1474,7 @@
 
 	if(alien == IS_UNATHI)
 		if(effective_dose < 2)
-			if(effective_dose == metabolism * 2 || prob(5))
+			if(effective_dose == metabolism_rate * 2 || prob(5))
 				M.emote("yawn")
 		else if(effective_dose < 5)
 			M.eye_blurry = max(M.eye_blurry, 10)
@@ -3485,7 +3485,7 @@
 		var/mob/living/carbon/human/H = M
 		if(!H.can_feel_pain())
 			return
-	if(dose == metabolism)
+	if(dose == metabolism_rate)
 		to_chat(M, "<span class='danger'>You feel like your insides are burning!</span>")
 	else
 		M.apply_effect(4, AGONY, 0)
@@ -4661,7 +4661,7 @@
 	taste_description = "the gross yet satisfying combination of chewing on a raw steak while downing a shot of whiskey"
 	proof = WHISKEY/2
 	color = "#d3785d"
-	metabolism = REM * 2.5 // about right for mixing nutriment and ethanol.
+	metabolism_rate = REM * 2.5 // about right for mixing nutriment and ethanol.
 	var/alt_nutriment_factor = 5 //half as much as protein since it's half protein.
 	//using a new variable instead of nutriment_factor so we can call ..() without that adding nutrition for us without taking factors for protein into account
 
@@ -4687,7 +4687,7 @@
 	description = "A questionably-delicious blend of a carnivore's favorite food and, it turns out, certain oligosaccharides common to certain plants."
 	taste_description = "the gross yet satisfying combination of chewing on a raw steak while gulping a bunch of root beer"
 	color = "#d3785d"
-	metabolism = REM * 2.5 // not actually right for the mix, but required to make it mechanically equivalent for feralness purposes
+	metabolism_rate = REM * 2.5 // not actually right for the mix, but required to make it mechanically equivalent for feralness purposes
 	var/alt_nutriment_factor = 5 //half as much as protein since it's half protein.
 	//using a new variable instead of nutriment_factor so we can call ..() without that adding nutrition for us without taking factors for protein into account
 

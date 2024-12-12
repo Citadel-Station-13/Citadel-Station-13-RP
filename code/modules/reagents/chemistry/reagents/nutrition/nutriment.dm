@@ -51,7 +51,7 @@
 	description = "All the vitamins, minerals, and carbohydrates the body needs in pure form."
 	taste_mult = 4
 	reagent_state = REAGENT_SOLID
-	metabolism = REM * 4
+	metabolism_rate = REM * 4
 	ingest_met = REM * 4
 	var/nutriment_factor = 30 // Per unit
 	var/hydration_factor = 0 //Per unit

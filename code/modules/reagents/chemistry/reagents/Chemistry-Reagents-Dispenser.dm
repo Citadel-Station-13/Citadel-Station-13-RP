@@ -20,7 +20,7 @@
 
 	if(alien == IS_UNATHI)
 		if(effective_dose < 2)
-			if(effective_dose == metabolism * 2 || prob(5))
+			if(effective_dose == metabolism_rate * 2 || prob(5))
 				M.emote("yawn")
 		else if(effective_dose < 5)
 			M.eye_blurry = max(M.eye_blurry, 10)

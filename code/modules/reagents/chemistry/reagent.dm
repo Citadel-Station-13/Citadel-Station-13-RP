@@ -67,7 +67,7 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 	/// How this taste compares to others. Higher values means it is more noticable
 	var/taste_mult = 1
 	var/reagent_state = REAGENT_SOLID
-	var/metabolism = REM // This would be 0.2 normally
+	var/metabolism_rate = REM // This would be 0.2 normally
 	/// Used for vampric-Digestion
 	var/blood_content = 0
 	/// Organs that will slow the processing of this chemical.
@@ -135,7 +135,7 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 		return
 
 	var/datum/reagent_holder/metabolism/active_metab = location
-	var/removed = metabolism
+	var/removed = metabolism_rate
 	var/mechanical_circulation = HAS_TRAIT(M, TRAIT_MECHANICAL_CIRCULATION)
 
 	var/ingest_rem_mult = 1
@@ -232,7 +232,7 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 	metabolism.cycles_so_far++
 	metabolism.legacy_volume_remaining = volume
 	metabolism.legacy_data = location.reagent_datas?[id]
-	if(removed >= (metabolism * 0.1) || removed >= 0.1) // If there's too little chemical, don't affect the mob, just remove it
+	if(removed >= (metabolism_rate * 0.1) || removed >= 0.1) // If there's too little chemical, don't affect the mob, just remove it
 		switch(active_metab.metabolism_class)
 			if(CHEM_INJECT)
 				legacy_affect_blood(M, alien, removed, metabolism)

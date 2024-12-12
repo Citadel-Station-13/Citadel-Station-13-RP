@@ -8,7 +8,7 @@
 	reagent_state = REAGENT_LIQUID
 	color = "#404030"
 
-	metabolism = REM/ETHANOL_MET_DIVISOR
+	metabolism_rate = REM/ETHANOL_MET_DIVISOR
 
 	ingest_met = REM * 5
 

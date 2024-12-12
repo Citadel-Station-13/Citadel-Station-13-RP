@@ -139,7 +139,7 @@
 	reagent_state = REAGENT_LIQUID
 	color = "#CF3600"
 	strength = 20
-	metabolism = REM * 2
+	metabolism_rate = REM * 2
 
 /datum/reagent/toxin/cyanide/legacy_affect_blood(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	..()
@@ -193,7 +193,7 @@
 	taste_description = "sweetness"
 	taste_mult = 1.8
 	color = "#d0583a"
-	metabolism = REM * 3
+	metabolism_rate = REM * 3
 	overdose = 10
 	strength = 3
 
@@ -264,7 +264,7 @@
 	taste_description = "numbness"
 	reagent_state = REAGENT_SOLID
 	color = "#669900"
-	metabolism = REM
+	metabolism_rate = REM
 	strength = 3
 	mrate_static = TRUE
 
@@ -291,7 +291,7 @@
 	description = "A stablized nerve agent that puts the subject into a strange state of un-death."
 	reagent_state = REAGENT_SOLID
 	color = "#666666"
-	metabolism = REM * 0.75
+	metabolism_rate = REM * 0.75
 	strength = 2
 	mrate_static = TRUE
 
@@ -684,7 +684,7 @@
 	taste_description = "bitterness"
 	reagent_state = REAGENT_LIQUID
 	color = "#009CA8"
-	metabolism = REM * 0.5
+	metabolism_rate = REM * 0.5
 	ingest_met = REM * 1.5
 	overdose = REAGENTS_OVERDOSE
 
@@ -732,7 +732,7 @@
 	taste_description = "bitterness"
 	reagent_state = REAGENT_SOLID
 	color = "#000067"
-	metabolism = REM * 0.5
+	metabolism_rate = REM * 0.5
 	ingest_met = REM * 1.5
 	overdose = REAGENTS_OVERDOSE * 0.5
 	overdose_mod = 5	//For that good, lethal feeling
@@ -797,7 +797,7 @@
 	taste_mult = 0.4
 	reagent_state = REAGENT_LIQUID
 	color = "#60A584"
-	metabolism = REM * 0.5
+	metabolism_rate = REM * 0.5
 	overdose = REAGENTS_OVERDOSE
 
 /datum/reagent/space_drugs/legacy_affect_blood(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
@@ -824,7 +824,7 @@
 	taste_description = "bitterness"
 	reagent_state = REAGENT_LIQUID
 	color = "#202040"
-	metabolism = REM * 0.25
+	metabolism_rate = REM * 0.25
 	overdose = REAGENTS_OVERDOSE
 
 /datum/reagent/serotrotium/legacy_affect_blood(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
@@ -857,7 +857,7 @@
 	taste_description = "sourness"
 	reagent_state = REAGENT_LIQUID
 	color = "#000055"
-	metabolism = REM * 0.5
+	metabolism_rate = REM * 0.5
 	overdose = REAGENTS_OVERDOSE
 
 /datum/reagent/cryptobiolin/legacy_affect_blood(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
@@ -902,7 +902,7 @@
 	taste_description = "sourness"
 	reagent_state = REAGENT_LIQUID
 	color = "#B31008"
-	metabolism = REM * 0.25
+	metabolism_rate = REM * 0.25
 	overdose = REAGENTS_OVERDOSE
 
 /datum/reagent/mindbreaker/legacy_affect_blood(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
@@ -926,7 +926,7 @@
 	taste_description = "mushroom"
 	color = "#E700E7"
 	overdose = REAGENTS_OVERDOSE
-	metabolism = REM * 0.5
+	metabolism_rate = REM * 0.5
 
 /datum/reagent/psilocybin/legacy_affect_blood(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	if(alien == IS_DIONA)
@@ -979,7 +979,7 @@
 	taste_mult = 1.6
 	reagent_state = REAGENT_LIQUID
 	color = "#db2ed8"
-	metabolism = REM * 0.5
+	metabolism_rate = REM * 0.5
 	overdose = REAGENTS_OVERDOSE
 
 /datum/reagent/talum_quem/legacy_affect_blood(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
@@ -1074,7 +1074,7 @@
 	reagent_state = REAGENT_SOLID
 	color = "#555555"
 	mrate_static = TRUE
-	metabolism = 0.01 //Fast no more they stick in you for a long time
+	metabolism_rate = 0.01 //Fast no more they stick in you for a long time
 	reagent_filter_flags = REAGENT_FILTER_NO_COMMON_BIOANALYSIS
 	affects_robots = TRUE
 
@@ -1095,7 +1095,7 @@
 	reagent_state = REAGENT_SOLID
 	mrate_static = TRUE
 	color = "#555555"
-	metabolism = 0.01 //No gimmick you just glow for longer now!
+	metabolism_rate = 0.01 //No gimmick you just glow for longer now!
 	reagent_filter_flags = REAGENT_FILTER_NO_COMMON_BIOANALYSIS
 	affects_robots = TRUE
 
@@ -1120,7 +1120,7 @@
 	reagent_state = REAGENT_SOLID
 	mrate_static = TRUE
 	color = "#555555"
-	metabolism = 0.01
+	metabolism_rate = 0.01
 	reagent_filter_flags = REAGENT_FILTER_NO_COMMON_BIOANALYSIS
 	filtered_organs = list(O_SPLEEN)
 	affects_robots = TRUE
@@ -1146,7 +1146,7 @@
 	reagent_state = REAGENT_SOLID
 	mrate_static = TRUE
 	color = "#555555"
-	metabolism = 0.01
+	metabolism_rate = 0.01
 
 /datum/reagent/nanite/heartkill/legacy_affect_ingest(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism) //Damage handled using the heart_attack() proc in heart.dm
 	var/mob/living/carbon/human/H = M
@@ -1168,7 +1168,7 @@
 	description = "A liquid that quickly dissapates to deliver a painful shock. It can also disable nanomachines in the body."
 	reagent_state = REAGENT_LIQUID
 	color = "#E4EC2F"
-	metabolism = 2.50
+	metabolism_rate = 2.50
 	affects_robots = TRUE
 
 /datum/reagent/grubshock/legacy_affect_blood(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
@@ -1195,7 +1195,7 @@
 	description = "A liquidified Lithium-Iron-Phosphate battery. Can be used to deliver shocks to the body in order to counter hostile nanomachines."
 	reagent_state = REAGENT_SOLID
 	color = "#E4EC2F"
-	metabolism = 2.50
+	metabolism_rate = 2.50
 
 	affects_robots = TRUE
 
@@ -1223,7 +1223,7 @@
 	taste_description = "sharp dust"
 	reagent_state = REAGENT_SOLID
 	color = "#d8d6d6"
-	metabolism = 0.01 // Does not leave your system easily
+	metabolism_rate = 0.01 // Does not leave your system easily
 	mrate_static = TRUE
 	reagent_filter_flags = REAGENT_FILTER_NO_COMMON_BIOANALYSIS
 	overdose = 10
@@ -1267,7 +1267,7 @@
 	taste_mult = 0	//It would be a rather bad if you could taste this poison
 	reagent_state = REAGENT_SOLID
 	color = "#A6FAFF"
-	metabolism = 0.01 //This is around 100 radiation a tick for a total of 5k radiaion a unit. Use stasis!!!
+	metabolism_rate = 0.01 //This is around 100 radiation a tick for a total of 5k radiaion a unit. Use stasis!!!
 	mrate_static = TRUE
 	reagent_filter_flags = REAGENT_FILTER_NO_COMMON_BIOANALYSIS
 
@@ -1292,7 +1292,7 @@
 	taste_description = "burning alcohol"
 	color = "#404030"
 	taste_mult = 0.1
-	metabolism = 0.01
+	metabolism_rate = 0.01
 	mrate_static = TRUE
 	reagent_filter_flags = REAGENT_FILTER_NO_COMMON_BIOANALYSIS
 

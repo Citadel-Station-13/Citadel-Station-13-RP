@@ -8,7 +8,7 @@
 	reagent_state = REAGENT_LIQUID
 	color = "#00BFFF"
 	overdose = REAGENTS_OVERDOSE * 2
-	metabolism = REM * 0.5
+	metabolism_rate = REM * 0.5
 	scannable = 1
 
 /datum/reagent/inaprovaline/legacy_affect_blood(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
@@ -103,7 +103,7 @@
 	reagent_state = REAGENT_SOLID
 	color = "#eae6e3"
 	overdose = REAGENTS_OVERDOSE * 0.8
-	metabolism = REM * 0.4
+	metabolism_rate = REM * 0.4
 	scannable = 1
 
 /datum/reagent/calciumcarbonate/legacy_affect_blood(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism) // Why would you inject this.
@@ -234,7 +234,7 @@
 	color = "#0080FF"
 	overdose = REAGENTS_OVERDOSE
 	scannable = 1
-	metabolism = REM * 0.25
+	metabolism_rate = REM * 0.25
 /datum/reagent/dexalin/legacy_affect_blood(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	if(alien == IS_VOX)
 		M.adjustToxLoss(removed * 24) //Vox breath phoron, oxygen is rather deadly to them
@@ -370,7 +370,7 @@
 	taste_description = "overripe bananas"
 	reagent_state = REAGENT_LIQUID
 	color = "#8080FF"
-	metabolism = REM * 0.5
+	metabolism_rate = REM * 0.5
 	mrate_static = TRUE
 	scannable = 1
 
@@ -395,7 +395,7 @@
 	taste_description = "rotten bananas"
 	reagent_state = REAGENT_LIQUID
 	color = "#80BFFF"
-	metabolism = REM * 0.5
+	metabolism_rate = REM * 0.5
 	mrate_static = TRUE
 	scannable = 1
 
@@ -421,7 +421,7 @@
 	taste_description = "meat"
 	reagent_state = REAGENT_LIQUID
 	color = "#94B21C"
-	metabolism = REM * 0.5
+	metabolism_rate = REM * 0.5
 	mrate_static = TRUE
 	scannable = 1
 
@@ -458,7 +458,7 @@
 	color = "#C8A5DC"
 	overdose = 60
 	scannable = 1
-	metabolism = 0.02
+	metabolism_rate = 0.02
 	mrate_static = TRUE
 
 /datum/reagent/paracetamol/legacy_affect_blood(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
@@ -482,7 +482,7 @@
 	color = "#CB68FC"
 	overdose = 30
 	scannable = 1
-	metabolism = 0.02
+	metabolism_rate = 0.02
 	mrate_static = TRUE
 
 /datum/reagent/tramadol/legacy_affect_blood(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
@@ -505,7 +505,7 @@
 	color = "#800080"
 	overdose = 20
 	scannable = 1
-	metabolism = 0.02
+	metabolism_rate = 0.02
 	mrate_static = TRUE
 
 /datum/reagent/oxycodone/legacy_affect_blood(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
@@ -529,7 +529,7 @@
 	taste_description = "sourness"
 	reagent_state = REAGENT_LIQUID
 	color = "#800080"
-	metabolism = 0.1 //Lasts up to 200 seconds if you give 20u which is OD.
+	metabolism_rate = 0.1 //Lasts up to 200 seconds if you give 20u which is OD.
 	mrate_static = TRUE
 	overdose = 20 //High OD. This is to make numbing bites have somewhat of a downside if you get bit too much. Have to go to medical for dialysis.
 	scannable = 0 //Let's not have medical mechs able to make an extremely strong organic painkiller
@@ -574,7 +574,7 @@
 	taste_description = "bitterness"
 	reagent_state = REAGENT_LIQUID
 	color = "#99CCFF"
-	metabolism = REM * 0.05
+	metabolism_rate = REM * 0.05
 	overdose = REAGENTS_OVERDOSE
 	scannable = 1
 
@@ -602,7 +602,7 @@
 	id = "hyperzine"
 	description = "Hyperzine is a highly effective, long lasting, muscle stimulant."
 	taste_description = "bitterness"
-	metabolism = REM * 0.25 // see "long lasting"
+	metabolism_rate = REM * 0.25 // see "long lasting"
 	reagent_state = REAGENT_LIQUID
 	color = "#FF3300"
 	overdose = REAGENTS_OVERDOSE * 0.5
@@ -624,7 +624,7 @@
 	taste_description = "bitterness"
 	reagent_state = REAGENT_LIQUID
 	color = "#FFFF66"
-	metabolism = REM * 0.25
+	metabolism_rate = REM * 0.25
 	overdose = REAGENTS_OVERDOSE
 	scannable = 1
 
@@ -722,7 +722,7 @@
 	description = "An experimental drug used to heal bone fractures."
 	reagent_state = REAGENT_LIQUID
 	color = "#C9BCE3"
-	metabolism = REM * 0.5
+	metabolism_rate = REM * 0.5
 	overdose = REAGENTS_OVERDOSE * 0.5
 	scannable = 1
 
@@ -744,7 +744,7 @@
 	description = "Used to rapidly clot internal hemorrhages by increasing the effectiveness of platelets."
 	reagent_state = REAGENT_LIQUID
 	color = "#4246C7"
-	metabolism = REM * 0.5
+	metabolism_rate = REM * 0.5
 	overdose = REAGENTS_OVERDOSE * 0.5
 	scannable = 1
 	var/repair_strength = 3
@@ -776,7 +776,7 @@
 	taste_description = "metallic"
 	reagent_state = REAGENT_LIQUID
 	color = "#4444FF"
-	metabolism = REM * 1.5
+	metabolism_rate = REM * 1.5
 	overdose = 10
 	scannable = 1
 
@@ -815,7 +815,7 @@
 	taste_description = "chalk"
 	reagent_state = REAGENT_LIQUID
 	color = "#8B4513"
-	metabolism = REM * 1.5
+	metabolism_rate = REM * 1.5
 	overdose = 10
 	scannable = 1
 
@@ -846,7 +846,7 @@
 	taste_description = "glue"
 	reagent_state = REAGENT_LIQUID
 	color = "#D2691E"
-	metabolism = REM * 1.5
+	metabolism_rate = REM * 1.5
 	overdose = 10
 	scannable = 1
 
@@ -879,7 +879,7 @@
 	taste_description = "rust"
 	reagent_state = REAGENT_LIQUID
 	color = "#FF4444"
-	metabolism = REM * 1.5
+	metabolism_rate = REM * 1.5
 	overdose = 10
 	scannable = 1
 
@@ -963,7 +963,7 @@
 	taste_description = "mordant"
 	reagent_state = REAGENT_SOLID
 	color = "#84B2B0"
-	metabolism = REM * 0.75
+	metabolism_rate = REM * 0.75
 	overdose = 20
 	scannable = 1
 
@@ -1078,7 +1078,7 @@
 	taste_description = "bitterness"
 	reagent_state = REAGENT_LIQUID
 	color = "#408000"
-	metabolism = REM * 0.25
+	metabolism_rate = REM * 0.25
 	overdose = REAGENTS_OVERDOSE
 	scannable = 1
 
@@ -1094,7 +1094,7 @@
 	taste_description = "bitterness"
 	reagent_state = REAGENT_LIQUID
 	color = "#008000"
-	metabolism = REM * 0.25
+	metabolism_rate = REM * 0.25
 	overdose = REAGENTS_OVERDOSE
 	scannable = 1
 
@@ -1113,7 +1113,7 @@
 	taste_description = "bitterness"
 	reagent_state = REAGENT_LIQUID
 	color = "#C1C1C1"
-	metabolism = REM * 0.25
+	metabolism_rate = REM * 0.25
 	mrate_static = TRUE
 	overdose = REAGENTS_OVERDOSE
 	scannable = 1
@@ -1121,7 +1121,7 @@
 /datum/reagent/spaceacillin/legacy_affect_blood(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	..()
 	if(alien == IS_SLIME)
-		if(metabolism.legacy_volume_remaining <= 0.1 && metabolism.blackboard["last-message"] != -1)
+		if(metabolism_rate.legacy_volume_remaining <= 0.1 && metabolism_rate.blackboard["last-message"] != -1)
 			metabolism.blackboard["last-message"] = -1
 			to_chat(M, "<span class='notice'>You regain focus...</span>")
 		else
@@ -1207,7 +1207,7 @@
 	taste_description = "oil"
 	reagent_state = REAGENT_SOLID
 	color = "#C1C1C8"
-	metabolism = REM * 0.4
+	metabolism_rate = REM * 0.4
 	mrate_static = TRUE
 	overdose = REAGENTS_OVERDOSE
 	scannable = 1
@@ -1365,7 +1365,7 @@
 	taste_description = "bitterness"
 	reagent_state = REAGENT_LIQUID
 	color = "#BF80BF"
-	metabolism = 0.01
+	metabolism_rate = 0.01
 	ingest_met = 0.25
 	mrate_static = TRUE
 
@@ -1387,7 +1387,7 @@
 	taste_description = "bitterness"
 	reagent_state = REAGENT_LIQUID
 	color = "#FF80FF"
-	metabolism = 0.01
+	metabolism_rate = 0.01
 	ingest_met = 0.25
 	mrate_static = TRUE
 
@@ -1409,7 +1409,7 @@
 	taste_description = "bitterness"
 	reagent_state = REAGENT_LIQUID
 	color = "#FF80BF"
-	metabolism = 0.01
+	metabolism_rate = 0.01
 	ingest_met = 0.25
 	mrate_static = TRUE
 
@@ -1453,7 +1453,7 @@
 	taste_description = "mint"
 	reagent_state = REAGENT_LIQUID
 	color = "#e6efe3"
-	metabolism = 0.01
+	metabolism_rate = 0.01
 	ingest_met = 0.25
 	mrate_static = TRUE
 
@@ -1476,7 +1476,7 @@
 	taste_description = "metal"
 	reagent_state = REAGENT_SOLID
 	color = "#555555"
-	metabolism = REM * 4 // Nanomachines gotta go fast.
+	metabolism_rate = REM * 4 // Nanomachines gotta go fast.
 	scannable = TRUE
 	affects_robots = TRUE
 
@@ -1620,7 +1620,7 @@
 	taste_description = "sour metal"
 	taste_mult = 2
 	reagent_state = REAGENT_LIQUID
-	metabolism = REM * 0.016
+	metabolism_rate = REM * 0.016
 	mrate_static = TRUE
 	color = "#52ca22"
 	scannable = 1

@@ -801,7 +801,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 			if(!(W.can_autoheal() || (bicardose && inaprovaline) || myeldose))	//bicaridine and inaprovaline stop internal wounds from growing bigger with time, unless it is so small that it is already healing
 				W.open_wound(0.1)
 
-			owner.vessel.remove_reagent("blood", W.damage/40) //line should possibly be moved to handle_blood, so all the bleeding stuff is in one place.
+			owner.erase_blood(W.damage / 40)
 			if(prob(1))
 				owner.custom_pain("You feel a stabbing pain in your [name]!", 50)
 

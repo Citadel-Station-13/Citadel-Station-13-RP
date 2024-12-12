@@ -356,7 +356,7 @@
 	taste_description = "metal"
 	reagent_state = REAGENT_SOLID
 	color = "#333333"
-	metabolism = REM * 3 // Broken nanomachines go a bit slower.
+	metabolism_rate = REM * 3 // Broken nanomachines go a bit slower.
 	scannable = 1
 
 /datum/reagent/defective_nanites/legacy_affect_blood(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
