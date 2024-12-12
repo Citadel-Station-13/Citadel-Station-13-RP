@@ -17624,7 +17624,6 @@
 /area/crew_quarters/sleep/Dorm_6)
 "lYO" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint/beastybrown,
 /turf/simulated/floor/tiled/steel/airless,
 /area/shuttle/belter)
 "lZO" = (
