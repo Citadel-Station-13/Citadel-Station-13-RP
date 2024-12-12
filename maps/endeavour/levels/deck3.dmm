@@ -172,11 +172,6 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/shuttle/belter)
-"agX" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint_stripe/beastybrown,
-/turf/simulated/floor/plating,
-/area/quartermaster/foyer)
 "ahk" = (
 /obj/structure/closet/wardrobe,
 /turf/simulated/floor/wood,
@@ -3226,7 +3221,7 @@
 /area/quartermaster/foyer)
 "cmw" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint_stripe/beastybrown,
+/obj/effect/paint/beastybrown,
 /turf/simulated/floor/plating,
 /area/quartermaster/office)
 "cmE" = (
@@ -8187,7 +8182,7 @@
 /area/security/hallway)
 "fmj" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint_stripe/beastybrown,
+/obj/effect/paint/beastybrown,
 /turf/simulated/floor/plating,
 /area/endeavour/surfacebase/mining_main/break_room)
 "fmB" = (
@@ -13839,7 +13834,7 @@
 /area/crew_quarters/sleep/Dorm_9)
 "jon" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint_stripe/beastybrown,
+/obj/effect/paint/beastybrown,
 /turf/simulated/floor/plating,
 /area/quartermaster/warehouse)
 "jou" = (
@@ -17629,6 +17624,7 @@
 /area/crew_quarters/sleep/Dorm_6)
 "lYO" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/effect/paint/beastybrown,
 /turf/simulated/floor/tiled/steel/airless,
 /area/shuttle/belter)
 "lZO" = (
@@ -18597,7 +18593,7 @@
 /area/endeavour/surfacebase/mining_main/break_room)
 "mIP" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint_stripe/beastybrown,
+/obj/effect/paint/beastybrown,
 /turf/simulated/floor/plating,
 /area/quartermaster/belterdock)
 "mJs" = (
@@ -21606,7 +21602,7 @@
 /area/crew_quarters/bar)
 "oFO" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint_stripe/beastybrown,
+/obj/effect/paint/beastybrown,
 /turf/simulated/floor/airless/ceiling,
 /area/quartermaster/warehouse)
 "oGe" = (
@@ -24148,7 +24144,7 @@
 /area/crew_quarters/sleep/bedrooms)
 "qoU" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint_stripe/beastybrown,
+/obj/effect/paint/beastybrown,
 /turf/simulated/floor/plating,
 /area/quartermaster/belterdock/refinery)
 "qoW" = (
@@ -24785,10 +24781,10 @@
 /area/crew_quarters/bar)
 "qKQ" = (
 /obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
-/obj/effect/paint_stripe/beastybrown,
 /obj/map_helper/electrochromatic_linker{
 	id = "qm_office"
 	},
+/obj/effect/paint/beastybrown,
 /turf/simulated/floor/plating,
 /area/quartermaster/qm)
 "qLx" = (
@@ -26276,10 +26272,10 @@
 /turf/simulated/floor/wood,
 /area/tether/surfacebase/entertainment)
 "rMY" = (
-/obj/effect/paint_stripe/beastybrown,
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/turf/simulated/floor/plating,
-/area/quartermaster/office)
+/obj/structure/disposalpipe/segment,
+/obj/structure/closet/crate/large,
+/turf/simulated/floor/tiled/dark,
+/area/quartermaster/warehouse)
 "rNH" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -27871,6 +27867,7 @@
 /area/endeavour/hallway/d3starboardafthall)
 "sKL" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/effect/paint/beastybrown,
 /turf/simulated/floor/tiled/steel/airless,
 /area/shuttle/mining_ship/general)
 "sKV" = (
@@ -31435,7 +31432,7 @@
 	name = "EXTERNAL AIRLOCK"
 	},
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint_stripe/beastybrown,
+/obj/effect/paint/beastybrown,
 /turf/simulated/floor/plating,
 /area/quartermaster/warehouse)
 "vbj" = (
@@ -33251,7 +33248,7 @@
 	dir = 4
 	},
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint_stripe/beastybrown,
+/obj/effect/paint/beastybrown,
 /turf/simulated/floor/airless/ceiling,
 /area/quartermaster/warehouse)
 "wau" = (
@@ -51959,7 +51956,7 @@ txc
 txc
 txc
 rZY
-qmY
+rMY
 qmY
 shT
 xCV
@@ -53523,7 +53520,7 @@ lqE
 sXC
 ldm
 cmw
-rMY
+cmw
 nKd
 jPe
 wnA
@@ -54686,7 +54683,7 @@ aaK
 aaK
 aaK
 mSw
-agX
+hrS
 hdh
 hdh
 hdh
