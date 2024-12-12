@@ -1231,6 +1231,8 @@
 	dir = 8
 	},
 /obj/machinery/door/airlock/maintenance,
+/obj/map_helper/access_helper/airlock/station/maintenance,
+/obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/maintenance/bar/catwalk)
 "aUp" = (
@@ -2112,7 +2114,7 @@
 /turf/simulated/floor/plating,
 /area/endeavour/hallway/d3fwdhall)
 "bta" = (
-/turf/simulated/floor/reinforced/overhang,
+/turf/simulated/floor/reinforced,
 /area/maintenance/bar/catwalk)
 "btf" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
@@ -4235,17 +4237,12 @@
 /area/hydroponics)
 "cXR" = (
 /obj/machinery/door/firedoor,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
 /obj/machinery/door/airlock/maintenance,
 /obj/structure/catwalk,
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
+/obj/map_helper/access_helper/airlock/station/maintenance,
 /turf/simulated/floor/plating,
 /area/crew_quarters/bar/lounge)
 "cXW" = (
@@ -9015,7 +9012,8 @@
 	},
 /obj/machinery/door/airlock/maintenance,
 /obj/map_helper/access_helper/airlock/station/maintenance,
-/turf/simulated/floor/tiled,
+/obj/structure/catwalk,
+/turf/simulated/floor/plating,
 /area/maintenance/bar/lower)
 "fPZ" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
@@ -11563,6 +11561,9 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
+/obj/structure/disposalpipe/segment{
+	dir = 1
+	},
 /turf/simulated/floor/tiled/monotile,
 /area/quartermaster/belterdock/refinery)
 "hEc" = (
@@ -13064,11 +13065,11 @@
 /area/endeavour/station/stairs_three)
 "iJR" = (
 /obj/structure/plasticflaps,
-/obj/machinery/disposal/deliveryChute{
-	dir = 8
-	},
 /obj/structure/disposalpipe/trunk{
 	dir = 4
+	},
+/obj/structure/disposaloutlet{
+	dir = 8
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/lower/trash_pit)
@@ -14441,13 +14442,13 @@
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_4)
-"jLr" = (
-/turf/simulated/wall/r_wall,
-/area/crew_quarters/bar/lounge)
 "jLH" = (
 /obj/map_helper/access_helper/airlock/station/supply/maintenance,
 /obj/structure/catwalk,
 /obj/machinery/door/airlock/maintenance,
+/obj/structure/disposalpipe/segment{
+	dir = 1
+	},
 /turf/simulated/floor/plating,
 /area/maintenance/lower/trash_pit)
 "jLP" = (
@@ -15814,7 +15815,7 @@
 	dir = 4;
 	name = "\improper Titan Class Fighter"
 	},
-/turf/simulated/floor/reinforced/overhang,
+/turf/simulated/floor/reinforced,
 /area/maintenance/bar/catwalk)
 "kOc" = (
 /obj/structure/cable/green{
@@ -22746,6 +22747,10 @@
 /obj/effect/floor_decal/corner/navblue/bordercorner2{
 	dir = 4
 	},
+/obj/structure/sign/department/cargo{
+	pixel_x = 0;
+	pixel_y = 32
+	},
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d3portforhall)
 "prw" = (
@@ -24287,7 +24292,8 @@
 "qup" = (
 /obj/machinery/door/airlock/maintenance,
 /obj/item/barrier_tape_segment/engineering,
-/turf/simulated/floor/tiled/techmaint,
+/obj/map_helper/access_helper/airlock/station/supply/maintenance,
+/turf/simulated/floor/reinforced,
 /area/maintenance/bar/catwalk)
 "quZ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -24944,7 +24950,7 @@
 	id = "cludge_hanger";
 	pixel_y = 32
 	},
-/turf/simulated/floor/reinforced/overhang,
+/turf/simulated/floor/reinforced,
 /area/maintenance/bar/catwalk)
 "qQb" = (
 /obj/structure/closet/firecloset,
@@ -25582,7 +25588,7 @@
 /obj/vehicle/sealed/mecha/combat/fighter/cludge{
 	dir = 4
 	},
-/turf/simulated/floor/reinforced/overhang,
+/turf/simulated/floor/reinforced,
 /area/maintenance/bar/catwalk)
 "rrf" = (
 /obj/machinery/power/apc/south_mount,
@@ -28320,6 +28326,10 @@
 /obj/effect/floor_decal/corner/navblue/bordercorner2{
 	dir = 1
 	},
+/obj/structure/sign/department/cargo{
+	pixel_x = 0;
+	pixel_y = 32
+	},
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d3portforhall)
 "taa" = (
@@ -29252,15 +29262,6 @@
 /obj/machinery/door/firedoor{
 	dir = 8
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
 /obj/structure/catwalk,
 /obj/machinery/door/airlock/maintenance,
 /obj/structure/disposalpipe/segment{
@@ -29966,7 +29967,7 @@
 /obj/effect/decal/mecha_wreckage/cludge{
 	dir = 1
 	},
-/turf/simulated/floor/reinforced/overhang,
+/turf/simulated/floor/reinforced,
 /area/maintenance/bar/catwalk)
 "uhv" = (
 /obj/structure/cable/green{
@@ -34025,6 +34026,10 @@
 	},
 /obj/structure/cable/green{
 	icon_state = "4-8"
+	},
+/obj/structure/sign/department/miner_dock{
+	pixel_x = 0;
+	pixel_y = 32
 	},
 /turf/simulated/floor/reinforced,
 /area/quartermaster/miningdock)
@@ -43425,7 +43430,7 @@ pRW
 pRW
 pRW
 rxD
-rxD
+gNV
 ddU
 piG
 iaP
@@ -43621,7 +43626,7 @@ jYr
 rEk
 rEk
 rEk
-jLr
+rEk
 rEk
 rEk
 rEk
