@@ -6354,6 +6354,16 @@
 "ekH" = (
 /turf/simulated/wall/prepainted,
 /area/crew_quarters/sleep/Dorm_9)
+"ekJ" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 9
+	},
+/obj/effect/floor_decal/corner/brown/border{
+	dir = 9
+	},
+/obj/machinery/fire_alarm/north_mount,
+/turf/simulated/floor/tiled/dark,
+/area/quartermaster/foyer)
 "ekX" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -7613,7 +7623,7 @@
 /area/endeavour/hallway/d3portamidhall)
 "eWe" = (
 /obj/effect/floor_decal/industrial/outline{
-	color = #D6DBDB
+	color = "#D6DBDB"
 	},
 /obj/structure/closet/crate/medical,
 /turf/simulated/floor/tiled/monodark,
@@ -17188,7 +17198,7 @@
 /area/endeavour/hallway/d3starboardforhall)
 "lKt" = (
 /obj/effect/floor_decal/industrial/outline{
-	color = #D6DBDB
+	color = "#D6DBDB"
 	},
 /obj/structure/closet/crate/plastic,
 /turf/simulated/floor/tiled/monodark,
@@ -18957,16 +18967,6 @@
 /obj/machinery/air_alarm/north_mount,
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d3starboardafthall)
-"mYA" = (
-/obj/effect/floor_decal/borderfloorblack{
-	dir = 9
-	},
-/obj/effect/floor_decal/corner/brown/border{
-	dir = 9
-	},
-/obj/machinery/fire_alarm/north_mount,
-/turf/simulated/floor/tiled/dark,
-/area/quartermaster/foyer)
 "mYK" = (
 /obj/machinery/shower{
 	dir = 8
@@ -21874,7 +21874,7 @@
 /area/quartermaster/foyer)
 "oOV" = (
 /obj/effect/floor_decal/industrial/outline{
-	color = #D6DBDB
+	color = "#D6DBDB"
 	},
 /obj/structure/closet/crate/large,
 /turf/simulated/floor/tiled/monodark,
@@ -24445,7 +24445,7 @@
 /area/tether/surfacebase/entertainment)
 "qzI" = (
 /obj/effect/floor_decal/industrial/outline{
-	color = #D6DBDB
+	color = "#D6DBDB"
 	},
 /obj/structure/ore_box,
 /turf/simulated/floor/tiled/monodark,
@@ -27563,7 +27563,7 @@
 /area/endeavour/hallway/d3portforhall)
 "sxY" = (
 /obj/effect/floor_decal/industrial/outline{
-	color = #D6DBDB
+	color = "#D6DBDB"
 	},
 /obj/structure/closet/crate,
 /obj/item/clothing/mask/gas,
@@ -28178,7 +28178,7 @@
 /area/security/range)
 "sWe" = (
 /obj/effect/floor_decal/industrial/outline{
-	color = #D6DBDB
+	color = "#D6DBDB"
 	},
 /obj/structure/closet/crate/large,
 /obj/structure/closet/crate/large,
@@ -28928,7 +28928,7 @@
 /area/endeavour/hallway/d3afthall)
 "tvT" = (
 /obj/effect/floor_decal/industrial/outline{
-	color = #D6DBDB
+	color = "#D6DBDB"
 	},
 /obj/structure/closet/crate/science,
 /turf/simulated/floor/tiled/monodark,
@@ -31188,7 +31188,7 @@
 /area/crew_quarters/bar)
 "uUl" = (
 /obj/effect/floor_decal/industrial/outline{
-	color = #D6DBDB
+	color = "#D6DBDB"
 	},
 /turf/simulated/floor/tiled/monodark,
 /area/quartermaster/warehouse)
@@ -31240,7 +31240,7 @@
 /area/crew_quarters/sleep/bedrooms)
 "uVS" = (
 /obj/effect/floor_decal/industrial/outline{
-	color = #D6DBDB
+	color = "#D6DBDB"
 	},
 /obj/structure/closet/crate/engineering,
 /turf/simulated/floor/tiled/monodark,
@@ -50030,7 +50030,7 @@ uJr
 juy
 feq
 mSw
-mYA
+ekJ
 xLm
 gXm
 xLm
