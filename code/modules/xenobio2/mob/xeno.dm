@@ -79,7 +79,7 @@ Also includes Life and New
 	ProcessTraits()
 	. =..()
 	if(colored)
-		add_atom_colour(traitdat.get_trait(TRAIT_XENO_COLOR), FIXED_COLOUR_PRIORITY)
+		add_atom_color(traitdat.get_trait(TRAIT_XENO_COLOR))
 	create_reagents(internal_vol)
 	temp_chem_holder = new()
 	temp_chem_holder.create_reagents(20)
