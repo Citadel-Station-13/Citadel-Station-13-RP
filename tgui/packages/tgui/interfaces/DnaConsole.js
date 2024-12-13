@@ -493,7 +493,7 @@ const StorageMutations = (props, context) => {
 const StorageChromosomes = (props, context) => {
   const { data, act } = useBackend(context);
   const chromos = data.chromoStorage ?? [];
-  const uniqueChromos = uniqBy(chromo => chromo.Name)(chromos);
+  const uniqueChromos = uniqBy(chromos, chromo => chromo.Name);
   const chromoName = data.view.storageChromoName;
   const chromo = chromos.find(chromo => chromo.Name === chromoName);
   return (
