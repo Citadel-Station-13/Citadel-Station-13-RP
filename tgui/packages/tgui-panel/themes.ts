@@ -21,7 +21,7 @@ const COLOR_WHITE_BG = "#F0F0F0";
 const COLOR_WHITE_DARKBG = "#E6E6E6";
 const COLOR_WHITE_TEXT = "#000000";
 
-let setClientThemeTimer = null;
+let setClientThemeTimer: NodeJS.Timeout;
 
 /**
  * Darkmode preference, originally by Kmc2000.
@@ -33,17 +33,15 @@ let setClientThemeTimer = null;
  * There's no way round it. We're essentially changing the skin by hand.
  * It's painful but it works, and is the way Lummox suggested.
  */
-export const setClientTheme = name => {
+export const setClientTheme = (name) => {
   // Transmit once for fast updates and again in a little while in case we won
   // the race against statbrowser init.
   let stat_theme = name === "light"? "light" : "dark";
-  clearTimeout(setClientThemeTimer);
-  setTimeout(() => {
-    Byond.command(`.output statbrowser:set_theme ${stat_theme}`);
-  }, 500);
+  clearInterval(setClientThemeTimer);
+  Byond.command(`.output statbrowser:set_theme ${stat_theme}`);
   setClientThemeTimer = setTimeout(() => {
     Byond.command(`.output statbrowser:set_theme ${stat_theme}`);
-  }, 5000);
+  }, 1500);
 
   if (name === 'light') {
     return Byond.winset({

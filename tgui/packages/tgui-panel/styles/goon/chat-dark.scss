@@ -111,13 +111,13 @@ a.popt {
   color: #333;
 }
 
-.popup input[type=text]:hover,
-.popup input[type=text]:active,
-.popup input[type=text]:focus {
+.popup input[type='text']:hover,
+.popup input[type='text']:active,
+.popup input[type='text']:focus {
   border-color: green;
 }
 
-.popup input[type=submit] {
+.popup input[type='submit'] {
   padding: 5px 10px;
   background: #999;
   color: #ddd;
@@ -126,9 +126,9 @@ a.popt {
   font-weight: bold;
 }
 
-.popup input[type=submit]:hover,
-.popup input[type=submit]:focus,
-.popup input[type=submit]:active {
+.popup input[type='submit']:hover,
+.popup input[type='submit']:focus,
+.popup input[type='submit']:active {
   background: #aaa;
   cursor: pointer;
 }
@@ -153,7 +153,7 @@ a.popt {
   text-align: center;
 }
 
-.highlightPopup input[type=text] {
+.highlightPopup input[type='text'] {
   display: block;
   width: 215px;
   text-align: left;
@@ -161,17 +161,14 @@ a.popt {
 }
 
 .highlightPopup input.highlightColor {
-  background-color: #FFFF00;
+  background-color: hsl(60, 100%, 50%);
 }
 
 .highlightPopup input.highlightTermSubmit {
   margin-top: 5px;
 }
 
-
-
 /* ADMIN CONTEXT MENU */
-
 
 .contextMenu {
   background-color: #ddd;
@@ -191,10 +188,7 @@ a.popt {
   background-color: #ccc;
 }
 
-
-
 /* ADMIN FILTER MESSAGES MENU */
-
 
 .filterMessages {
   padding: 5px;
@@ -218,24 +212,16 @@ a.popt {
   margin-top: -2px;
 }
 
-
-
-
 /*****************************************
 *
 * OUTPUT ACTUALLY RELATED TO MESSAGES
 *
 ******************************************/
 
-
-
-
-
 /* MOTD */
 
-
 .motd {
-  color: #a4bad6;
+  color: hsl(213.6, 37.9%, 74.1%);
   font-family: Verdana, sans-serif;
   white-space: normal;
 }
@@ -246,7 +232,7 @@ a.popt {
 .motd h4,
 .motd h5,
 .motd h6 {
-  color: #a4bad6;
+  color: hsl(213.6, 37.9%, 74.1%);
   text-decoration: underline;
 }
 
@@ -255,13 +241,10 @@ a.popt {
 .motd a:visited,
 .motd a:active,
 .motd a:hover {
-  color: #a4bad6;
+  color: hsl(213.6, 37.9%, 74.1%);
 }
 
-
-
 /* ADD HERE FOR BOLD */
-
 
 .bold,
 .name,
@@ -275,31 +258,32 @@ a.popt {
   font-weight: bold;
 }
 
-
-
 /* ADD HERE FOR ITALIC */
 
-
-.italic, .italics {
+.italic,
+.italics {
   font-style: italic;
 }
 
-
-
 /* OUTPUT COLORS */
-
 
 .highlight {
   background: yellow;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  color: #a4bad6;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: hsl(213.6, 37.9%, 74.1%);
   font-family: Georgia, Verdana, sans-serif;
 }
 
-h1.alert, h2.alert {
-  color: #a4bad6;
+h1.alert,
+h2.alert {
+  color: hsl(213.6, 37.9%, 74.1%);
 }
 
 em {
@@ -1039,13 +1023,13 @@ blockquote.brass {
 }
 
 .singing {
-  font-family: "Trebuchet MS", cursive, sans-serif;
+  font-family: 'Trebuchet MS', cursive, sans-serif;
   font-style: italic;
 }
 
 .his_grace {
-  color: #15D512;
-  font-family: "Courier New", cursive, sans-serif;
+  color: hsl(119.1, 84.4%, 45.3%);
+  font-family: 'Courier New', cursive, sans-serif;
   font-style: italic;
 }
 
@@ -1131,22 +1115,22 @@ blockquote.brass {
 }
 
 .phobia {
-  color: #dd0000;
+  color: hsl(0, 100%, 43.3%);
   font-weight: bold;
   animation: phobia 750ms infinite;
 }
 
 @keyframes phobia {
   0% {
-    color: #f75a5a;
+    color: hsl(0, 90.8%, 66.1%);
   }
 
   50% {
-    color: #dd0000;
+    color: hsl(0, 100%, 43.3%);
   }
 
   100% {
-    color: #f75a5a;
+    color: hsl(0, 90.8%, 66.1%);
   }
 }
 
@@ -1155,12 +1139,16 @@ blockquote.brass {
   width: auto;
 }
 
-.iconbig {
+.bigicon {
   font-size: 2.5em;
 }
 
+.hugeicon {
+  font-size: 5em;
+}
+
 .memo {
-  color: #638500;
+  color: hsl(75.3, 100%, 26.1%);
   text-align: center;
 }
 
@@ -1170,35 +1158,35 @@ blockquote.brass {
 }
 
 .abductor {
-  color: #c204c2;
+  color: hsl(300, 96%, 38.8%);
   font-style: italic;
 }
 
 .mind_control {
-  color: #df3da9;
+  color: hsl(320, 71.7%, 55.7%);
   font-size: 100%;
   font-weight: bold;
   font-style: italic;
 }
 
 .slime {
-  color: #00CED1;
+  color: hsl(180.9, 100%, 41%);
 }
 
 .drone {
-  color: #848482;
+  color: hsl(60, 0.8%, 51.4%);
 }
 
 .monkey {
-  color: #975032;
+  color: hsl(17.8, 50.2%, 39.4%);
 }
 
 .swarmer {
-  color: #2C75FF;
+  color: hsl(219.2, 100%, 58.6%);
 }
 
 .resonate {
-  color: #298F85;
+  color: hsl(174.1, 55.4%, 36.1%);
 }
 
 .monkeyhive {
@@ -1210,7 +1198,8 @@ blockquote.brass {
   font-size: 80%;
 }
 
-.connectionClosed, .fatalError {
+.connectionClosed,
+.fatalError {
   background: red;
   color: white;
   padding: 5px;
@@ -1221,7 +1210,7 @@ blockquote.brass {
 }
 
 .internal.boldnshit {
-  color: #3d5bc3;
+  color: hsl(226.6, 52.8%, 50.2%);
   font-weight: bold;
 }
 
@@ -1230,11 +1219,9 @@ blockquote.brass {
   color: #9e619e;
 }
 
-
 .tajaran {
   color: #8c405d;
 }
-
 
 .tajaran_signlang {
   color: #941C1C;
@@ -1361,5 +1348,40 @@ blockquote.brass {
 }
 
 .ml-3 {
-  margin-left: 3em;
+  margin-left: 2.5em;
+}
+
+.examine_block {
+  background: hsl(220, 5.3%, 11.2%);
+  border: 1px solid hsl(213.6, 37.9%, 74.1%);
+  margin: 0.5em;
+  padding: 0.5em 0.75em;
+}
+
+.tooltip {
+  font-style: italic;
+  border-bottom: 1px dashed #fff;
+}
+
+// Provides a horizontal bar with text in the middle
+// I got this off stackoverflow
+.separator {
+  display: flex;
+  align-items: center;
+  text-align: center;
+}
+
+.separator::before,
+.separator::after {
+  content: '';
+  flex: 1;
+  border-bottom: 1px solid hsl(213.6, 37.9%, 74.1%);
+}
+
+.separator:not(:empty)::before {
+  margin-right: 0.25em;
+}
+
+.separator:not(:empty)::after {
+  margin-left: 0.25em;
 }

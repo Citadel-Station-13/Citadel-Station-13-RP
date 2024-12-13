@@ -4,4 +4,4 @@
  * @license MIT
  */
 
-export const selectPing = state => state.ping;
+export const selectAudio = (state) => state.audio;

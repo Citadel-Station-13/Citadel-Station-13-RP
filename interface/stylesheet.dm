@@ -216,7 +216,8 @@ h1.alert, h2.alert		{color: #000000;}
 }
 
 .icon					{height: 1em;	width: auto;}
-.iconbig				{height: 32px;	width: 32px; }
+.bigicon				{height: 2.5em;	width: auto; }
+.hugeicon				{height: 5em;	width: auto; }
 
 .memo					{color: #638500;	text-align: center;}
 .memoedit				{text-align: center;	font-size: 2;}

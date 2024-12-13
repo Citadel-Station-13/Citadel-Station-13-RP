@@ -7,34 +7,50 @@
 import { storage } from 'common/storage';
 import DOMPurify from 'dompurify';
 
-import { loadSettings, updateSettings } from '../settings/actions';
+import {
+  addHighlightSetting,
+  loadSettings,
+  removeHighlightSetting,
+  updateHighlightSetting,
+  updateSettings,
+} from '../settings/actions';
 import { selectSettings } from '../settings/selectors';
-import { addChatPage, changeChatPage, changeScrollTracking, loadChat, rebuildChat, removeChatPage, saveChatToDisk, toggleAcceptedType, updateMessageCount } from './actions';
+import {
+  addChatPage,
+  changeChatPage,
+  changeScrollTracking,
+  clearChat,
+  loadChat,
+  moveChatPageLeft,
+  moveChatPageRight,
+  rebuildChat,
+  removeChatPage,
+  saveChatToDisk,
+  toggleAcceptedType,
+  updateMessageCount,
+} from './actions';
 import { MAX_PERSISTED_MESSAGES, MESSAGE_SAVE_INTERVAL } from './constants';
 import { createMessage, serializeMessage } from './model';
 import { chatRenderer } from './renderer';
 import { selectChat, selectCurrentChatPage } from './selectors';
 
 // List of blacklisted tags
-const FORBID_TAGS = [
-  'a',
-  'iframe',
-  'link',
-  'video',
-];
+const FORBID_TAGS = ['a', 'iframe', 'link', 'video'];
 
-const saveChatToStorage = async store => {
+const saveChatToStorage = async (store) => {
   const state = selectChat(store.getState());
-  const fromIndex = Math.max(0,
-    chatRenderer.messages.length - MAX_PERSISTED_MESSAGES);
+  const fromIndex = Math.max(
+    0,
+    chatRenderer.messages.length - MAX_PERSISTED_MESSAGES,
+  );
   const messages = chatRenderer.messages
     .slice(fromIndex)
-    .map(message => serializeMessage(message));
+    .map((message) => serializeMessage(message));
   storage.set('chat-state', state);
   storage.set('chat-messages', messages);
 };
 
-const loadChatFromStorage = async store => {
+const loadChatFromStorage = async (store) => {
   const [state, messages] = await Promise.all([
     storage.get('chat-state'),
     storage.get('chat-messages'),
@@ -65,10 +81,12 @@ const loadChatFromStorage = async store => {
   store.dispatch(loadChat(state));
 };
 
-export const chatMiddleware = store => {
+export const chatMiddleware = (store) => {
   let initialized = false;
   let loaded = false;
-  chatRenderer.events.on('batchProcessed', countByType => {
+  const sequences = [];
+  const sequences_requested = [];
+  chatRenderer.events.on('batchProcessed', (countByType) => {
     // Use this flag to workaround unread messages caused by
     // loading them from storage. Side effect of that, is that
     // message count can not be trusted, only unread count.
@@ -76,11 +94,13 @@ export const chatMiddleware = store => {
       store.dispatch(updateMessageCount(countByType));
     }
   });
-  chatRenderer.events.on('scrollTrackingChanged', scrollTracking => {
+  chatRenderer.events.on('scrollTrackingChanged', (scrollTracking) => {
     store.dispatch(changeScrollTracking(scrollTracking));
   });
-  setInterval(() => saveChatToStorage(store), MESSAGE_SAVE_INTERVAL);
-  return next => action => {
+  setInterval(() => {
+    saveChatToStorage(store);
+  }, MESSAGE_SAVE_INTERVAL);
+  return (next) => (action) => {
     const { type, payload } = action;
     if (!initialized) {
       initialized = true;
@@ -88,6 +108,7 @@ export const chatMiddleware = store => {
     }
     if (type === 'chat/message') {
       // Normalize the payload
+      // this is the old method
       const batch = Array.isArray(payload) ? payload : [payload];
       chatRenderer.processBatch(batch);
       return;
@@ -100,10 +121,14 @@ export const chatMiddleware = store => {
       loaded = true;
       return;
     }
-    if (type === changeChatPage.type
-        || type === addChatPage.type
-        || type === removeChatPage.type
-        || type === toggleAcceptedType.type) {
+    if (
+      type === changeChatPage.type ||
+      type === addChatPage.type ||
+      type === removeChatPage.type ||
+      type === toggleAcceptedType.type ||
+      type === moveChatPageLeft.type ||
+      type === moveChatPageRight.type
+    ) {
       next(action);
       const page = selectCurrentChatPage(store.getState());
       chatRenderer.changePage(page);
@@ -113,14 +138,21 @@ export const chatMiddleware = store => {
       chatRenderer.rebuildChat();
       return next(action);
     }
-    if (type === updateSettings.type || type === loadSettings.type) {
+
+    if (
+      type === updateSettings.type ||
+      type === loadSettings.type ||
+      type === addHighlightSetting.type ||
+      type === removeHighlightSetting.type ||
+      type === updateHighlightSetting.type
+    ) {
       next(action);
       const settings = selectSettings(store.getState());
       chatRenderer.setHighlight(
-        settings.highlightText,
-        settings.highlightColor,
-        settings.matchWord,
-        settings.matchCase);
+        settings.highlightSettings,
+        settings.highlightSettingById,
+      );
+
       return;
     }
     if (type === 'roundrestart') {
@@ -130,6 +162,10 @@ export const chatMiddleware = store => {
     }
     if (type === saveChatToDisk.type) {
       chatRenderer.saveToDisk();
+      return;
+    }
+    if (type === clearChat.type) {
+      chatRenderer.clearChat();
       return;
     }
     return next(action);

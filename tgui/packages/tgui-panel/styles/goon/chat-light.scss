@@ -82,6 +82,7 @@ a.popt {
   text-decoration: none;
 }
 
+
 /* POPUPS */
 
 .popup {
@@ -129,13 +130,13 @@ a.popt {
   color: #333;
 }
 
-.popup input[type=text]:hover,
-.popup input[type=text]:active,
-.popup input[type=text]:focus {
+.popup input[type='text']:hover,
+.popup input[type='text']:active,
+.popup input[type='text']:focus {
   border-color: green;
 }
 
-.popup input[type=submit] {
+.popup input[type='submit'] {
   padding: 5px 10px;
   background: #999;
   color: #ddd;
@@ -144,9 +145,9 @@ a.popt {
   font-weight: bold;
 }
 
-.popup input[type=submit]:hover,
-.popup input[type=submit]:focus,
-.popup input[type=submit]:active {
+.popup input[type='submit']:hover,
+.popup input[type='submit']:focus,
+.popup input[type='submit']:active {
   background: #aaa;
   cursor: pointer;
 }
@@ -171,7 +172,7 @@ a.popt {
   text-align: center;
 }
 
-.highlightPopup input[type=text] {
+.highlightPopup input[type='text'] {
   display: block;
   width: 215px;
   text-align: left;
@@ -179,17 +180,14 @@ a.popt {
 }
 
 .highlightPopup input.highlightColor {
-  background-color: #FFFF00;
+  background-color: hsl(60, 100%, 50%);
 }
 
 .highlightPopup input.highlightTermSubmit {
   margin-top: 5px;
 }
 
-
-
 /* ADMIN CONTEXT MENU */
-
 
 .contextMenu {
   background-color: #ddd;
@@ -209,10 +207,7 @@ a.popt {
   background-color: #ccc;
 }
 
-
-
 /* ADMIN FILTER MESSAGES MENU */
-
 
 .filterMessages {
   padding: 5px;
@@ -236,24 +231,16 @@ a.popt {
   margin-top: -2px;
 }
 
-
-
-
 /*****************************************
 *
 * OUTPUT ACTUALLY RELATED TO MESSAGES
 *
 ******************************************/
 
-
-
-
-
 /* MOTD */
 
-
 .motd {
-  color: #638500;
+  color: hsl(75.3, 100%, 26.1%);
   font-family: Verdana, sans-serif;
   white-space: normal;
 }
@@ -264,7 +251,7 @@ a.popt {
 .motd h4,
 .motd h5,
 .motd h6 {
-  color: #638500;
+  color: hsl(75.3, 100%, 26.1%);
   text-decoration: underline;
 }
 
@@ -273,13 +260,10 @@ a.popt {
 .motd a:visited,
 .motd a:active,
 .motd a:hover {
-  color: #638500;
+  color: hsl(75.3, 100%, 26.1%);
 }
 
-
-
 /* ADD HERE FOR BOLD */
-
 
 .bold,
 .name,
@@ -293,32 +277,32 @@ a.popt {
   font-weight: bold;
 }
 
-
-
 /* ADD HERE FOR ITALIC */
-
 
 .italic,
 .italics {
   font-style: italic;
 }
 
-
-
 /* OUTPUT COLORS */
-
 
 .highlight {
   background: yellow;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  color: #0000ff;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: hsl(240, 100%, 50%);
   font-family: Georgia, Verdana, sans-serif;
 }
 
-h1.alert, h2.alert {
-  color: #000000;
+h1.alert,
+h2.alert {
+  color: hsl(0, 0%, 0%);
 }
 
 em {
@@ -520,11 +504,12 @@ em {
 }
 
 .alert {
-  color: #ff0000;
+  color: hsl(0, 100%, 50%);
 }
 
-h1.alert, h2.alert {
-  color: #000000;
+h1.alert,
+h2.alert {
+  color: hsl(0, 0%, 0%);
 }
 
 .userdanger {
@@ -1070,20 +1055,20 @@ blockquote.brass {
 }
 
 .clown {
-  color: #FF69Bf;
-  font-size: 125%;
-  font-family: "Comic Sans MS", cursive, sans-serif;
+  color: hsl(325.6, 100%, 70.6%);
+  font-size: 160%;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
   font-weight: bold;
 }
 
 .singing {
-  font-family: "Trebuchet MS", cursive, sans-serif;
+  font-family: 'Trebuchet MS', cursive, sans-serif;
   font-style: italic;
 }
 
 .his_grace {
-  color: #15D512;
-  font-family: "Courier New", cursive, sans-serif;
+  color: hsl(119.1, 84.4%, 45.3%);
+  font-family: 'Courier New', cursive, sans-serif;
   font-style: italic;
 }
 
@@ -1168,22 +1153,22 @@ blockquote.brass {
 }
 
 .phobia {
-  color: #dd0000;
+  color: hsl(0, 100%, 43.3%);
   font-weight: bold;
   animation: phobia 750ms infinite;
 }
 
 @keyframes phobia {
   0% {
-    color: #0d0d0d;
+    color: hsl(0, 0%, 5.1%);
   }
 
   50% {
-    color: #dd0000;
+    color: hsl(0, 100%, 43.3%);
   }
 
   100% {
-    color: #0d0d0d;
+    color: hsl(0, 0%, 5.1%);
   }
 }
 
@@ -1192,12 +1177,16 @@ blockquote.brass {
   width: auto;
 }
 
-.iconbig {
+.bigicon {
   font-size: 2.5em;
 }
 
+.hugeicon {
+  font-size: 5em;
+}
+
 .memo {
-  color: #638500;
+  color: hsl(75.3, 100%, 26.1%);
   text-align: center;
 }
 
@@ -1212,7 +1201,7 @@ blockquote.brass {
 }
 
 .mind_control {
-  color: #A00D6F;
+  color: hsl(320, 85%, 33.9%);
   font-size: 100%;
   font-weight: bold;
   font-style: italic;
@@ -1247,6 +1236,15 @@ blockquote.brass {
   font-size: 80%;
 }
 
+.upside_down {
+  display: inline;
+  -moz-transform: scale(-1, -1);
+  -webkit-transform: scale(-1, -1);
+  -o-transform: scale(-1, -1);
+  -ms-transform: scale(-1, -1);
+  transform: scale(-1, -1);
+}
+
 .connectionClosed,
 .fatalError {
   background: red;
@@ -1268,11 +1266,9 @@ blockquote.brass {
   color: #543354;
 }
 
-
 .tajaran {
   color: #803B56;
 }
-
 
 .tajaran_signlang {
   color: #941C1C;
@@ -1380,7 +1376,6 @@ blockquote.brass {
 
 /* HELPER CLASSES */
 
-
 .text-normal {
   font-weight: normal;
   font-style: normal;
@@ -1401,4 +1396,39 @@ blockquote.brass {
 
 .ml-3 {
   margin-left: 3em;
+}
+
+.examine_block {
+  background: hsl(202.5, 44.4%, 96.5%);
+  border: 1px solid hsl(215.5, 39.3%, 11%);
+  margin: 0.5em;
+  padding: 0.5em 0.75em;
+}
+
+.tooltip {
+  font-style: italic;
+  border-bottom: 1px dashed #000;
+}
+
+// Provides a horizontal bar with text in the middle
+// I got this off stackoverflow
+.separator {
+  display: flex;
+  align-items: center;
+  text-align: center;
+}
+
+.separator::before,
+.separator::after {
+  content: '';
+  flex: 1;
+  border-bottom: 1px solid hsl(215.5, 39.3%, 11%);
+}
+
+.separator:not(:empty)::before {
+  margin-right: 0.25em;
+}
+
+.separator:not(:empty)::after {
+  margin-left: 0.25em;
 }
