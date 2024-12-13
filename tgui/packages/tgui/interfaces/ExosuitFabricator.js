@@ -132,7 +132,7 @@ const searchFilter = (search, allparts) => {
       .forEach(e => { searchResults.push(e); });
   });
 
-  searchResults = uniqBy(part => part.name)(searchResults);
+  searchResults = uniqBy(searchResults, part => part.name);
 
   return searchResults;
 };
