@@ -53,7 +53,7 @@
 	if(AM.movable_flags & MOVABLE_IN_MOVED_YANK)
 		return // we're already in a yank
 	var/turf/our_turf = parent
-	var/z_index = SSmapping.level_index_in_dir(our_turf.z, dir)
+	var/z_index = SSmapping.level_get_index_in_dir(our_turf.z, dir)
 	if(isnull(z_index))
 		STACK_TRACE("no z index?! deleting self.")
 		qdel(src)
@@ -203,7 +203,7 @@
 	var/turf/T = src
 	if(!istype(T, /turf/level_border))
 		T = PlaceOnTop(/turf/level_border)
-	if(isnull(SSmapping.level_index_in_dir(z, dir)))
+	if(isnull(SSmapping.level_get_index_in_dir(z, dir)))
 		return
 	var/datum/component/transition_border/border = T.GetComponent(/datum/component/transition_border)
 	if(border)
