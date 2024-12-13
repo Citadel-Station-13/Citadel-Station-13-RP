@@ -56,6 +56,14 @@
 	return mixture
 
 /**
+ * Regenerates our blood by a certain amount / volume.
+ *
+ * @return amount regenerated
+ */
+/mob/living/carbon/proc/regen_blood(amount)
+	return blood_holder.adjust_host_volume(amount)
+
+/**
  * [take_checked_blood_mixture] but fast,
  *
  * * This returns just a number, not the mixture.

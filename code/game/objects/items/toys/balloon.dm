@@ -37,7 +37,7 @@
 
 /obj/item/toy/balloon/throw_impact(atom/A, datum/thrownthing/TT)
 	. = ..()
-	if(!TT.throw_flags & (THROW_AT_IS_GENTLE))
+	if(!(TT.throw_flags & THROW_AT_IS_GENTLE))
 		if(src.reagents.total_volume >= 1)
 			src.visible_message("<span class='warning'>\The [src] bursts!</span>","You hear a pop and a splash.")
 			reagents.auto_spill(A, 1, TRUE, FALSE)
@@ -46,7 +46,7 @@
 
 /obj/item/toy/balloon/throw_land(atom/A, datum/thrownthing/TT)
 	. = ..()
-	if(!TT.throw_flags & (THROW_AT_IS_GENTLE))
+	if(!(TT.throw_flags & THROW_AT_IS_GENTLE))
 		if(src.reagents.total_volume >= 1)
 			src.visible_message("<span class='warning'>\The [src] bursts!</span>","You hear a pop and a splash.")
 			reagents.auto_spill(A, 1, TRUE, FALSE)

@@ -494,7 +494,7 @@
 					state = "Liquid"
 				else if(initial(analyzed_reagent.reagent_state) == REAGENT_GAS)
 					state = "Gas"
-				var/metabolization_rate = initial(analyzed_reagent.metabolism)// * (60 / SSMOBS_DT)
+				var/metabolization_rate = initial(analyzed_reagent.metabolism_rate)// * (60 / SSMOBS_DT)
 				analyze_vars = list(
 					"name" = initial(analyzed_reagent.name),
 					"state" = state,

@@ -128,7 +128,7 @@
 		return
 	if(W && W.get_weight_class() <= get_weight_class() && (atom_flags & OPENCONTAINER))
 		to_chat(user, "<span class='notice'>You dip \the [W] into \the [src].</span>")
-		reagents.touch_obj(W, reagents.total_volume)
+		reagents.auto_spill(W, 1, FALSE, TRUE)
 
 /obj/item/reagent_containers/glass/proc/update_name_label()
 	if(label_text == "")
@@ -462,9 +462,9 @@
 
 /obj/item/reagent_containers/glass/stone/examine(mob/user, dist)
 	. = ..()
-	if(reagents && reagents.reagent_list.len)
-		for(var/datum/reagent/R in reagents.reagent_list)
-			. += "[icon2html(thing = src, target = world)] The [src.name] currently contains [R.volume] units of [R.name]!"
+	if(reagents?.total_volume)
+		for(var/datum/reagent/R in reagents.get_reagent_datums())
+			. += "[icon2html(thing = src, target = world)] The [src.name] currently contains [reagents.reagent_volumes[R.id]] units of [R.name]!"
 	else
 		. += "<span class='notice'>It is empty.</span>"
 

@@ -55,7 +55,7 @@
 	M.adjustToxLoss(4 * removed)
 
 /datum/reagent/fuel/on_touch_mob(mob/target, remaining, allocated, data, zone)
-	if(isliving(target, /mob/living))
+	if(isliving(target))
 		// todo: rework and actually use some
 		var/mob/living/living_target = target
 		living_target.adjust_fire_stacks(allocated / 10)
