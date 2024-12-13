@@ -1,3 +1,4 @@
+#warn uh
 /datum/matter_synth
 	var/name = "Generic Synthesizer"
 	var/max_energy = 60000
