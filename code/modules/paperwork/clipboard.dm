@@ -179,7 +179,8 @@
 		if("edit_paper")
 			var/obj/item/paper/paper = locate(params["ref"]) in src
 			if(istype(paper))
-				paper.ui_interact(usr)
+				// paper.ui_interact(usr)
+				paper.show_content(usr)
 				update_icon()
 				. = TRUE
 		// Move paper to the top
