@@ -2,8 +2,15 @@
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
 /**
- * Definitions for robot physicality
+ * The baseline physical chassis for a silicon.
+ *
+ * Contains:
+ *
+ * * Base physical stats
+ * * Internal slots / space / interconnects
+ * * WIP
  */
 /datum/prototype/robot_chassis
 
+/datum/prototype/robot_chassis
 

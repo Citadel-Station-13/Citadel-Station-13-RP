@@ -1,6 +1,9 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
+/**
+ * Base abstraction for silicon iconsets
+ */
 /datum/prototype/robot_iconset
 	abstract_type = /datum/prototype/robot_iconset
 

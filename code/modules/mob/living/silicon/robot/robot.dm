@@ -71,11 +71,13 @@
 	can_be_antagged = TRUE
 
 	//* Composition *//
-
 	#warn impl
 	var/datum/prototype/robot_chassis/chassis
 	#warn impl
 	var/datum/prototype/robot_iconset/iconset
+
+	//* Inventory *//
+	inventory = /datum/inventory/silicon
 
 	/// Is our integrated light on?
 	var/lights_on = 0
