@@ -170,7 +170,7 @@ var/const/CE_STABLE_THRESHOLD = 0.5
 //Makes a blood drop, leaking amt units of blood from the mob
 /mob/living/carbon/human/proc/drip(var/amt)
 	if(erase_blood(amt))
-		blood_splatter(src,src)
+		blood_splatter_legacy(get_turf(src), get_blood_mixture())
 
 /****************************************************
 				BLOOD TRANSFERS
@@ -235,74 +235,53 @@ var/const/CE_STABLE_THRESHOLD = 0.5
 		total_ratio_removed += fragment_ratio
 		mixture.fragments -= fragment
 	if(total_ratio_removed)
+		amount *= (1 - total_ratio_removed)
 		var/expand_ratio = 1 / total_ratio_removed
 		for(var/datum/blood_fragment/expanding_to_fill as anything in mixture.fragments)
 			mixture.fragments[expanding_to_fill] *= expand_ratio
 
 	return ..()
 
-/proc/blood_splatter_legacy(turf/target, datum/reagent/blood/source, large)
+/proc/blood_splatter_legacy(turf/target, datum/blood_mixture/mixture, large)
+	if(!istype(target))
+		return
 
-	// We're not going to splatter at all because we're in something and that's silly.
-	if(istype(source,/atom/movable))
-		var/atom/movable/A = source
-		if(!isturf(A.loc))
-			return
+	var/splatter_type = /obj/effect/debris/cleanable/blood/splatter
+	var/obj/effect/debris/cleanable/blood/existing_splatter
 
-	var/obj/effect/debris/cleanable/blood/B
-	var/decal_type = /obj/effect/debris/cleanable/blood/splatter
-	var/turf/T = get_turf(target)
-	var/synth = 0
+	// todo: change how this works, we should stop making effects like this! only one should ever
+	//       exist.
 
-	if(istype(source,/mob/living/carbon/human))
-		var/mob/living/carbon/human/M = source
-		if(M.isSynthetic()) synth = 1
-		source = M.get_blood(M.vessel)
-
-	// Are we dripping or splattering?
 	var/list/drips = list()
-	// Only a certain number of drips (or one large splatter) can be on a given turf.
-	for(var/obj/effect/debris/cleanable/blood/drip/drop in T)
-		drips |= drop.drips
+	for(var/obj/effect/debris/cleanable/blood/drip/drop in target)
+		drips += drop.icon_state
 		qdel(drop)
-	if(!large && drips.len < 3)
-		decal_type = /obj/effect/debris/cleanable/blood/drip
 
-	// Find a blood decal or create a new one.
-	B = locate(decal_type) in T
-	if(!B)
-		B = new decal_type(T)
+	if(!large && length(drips) < 3)
+		splatter_type = /obj/effect/debris/cleanable/blood/drip
 
-	var/obj/effect/debris/cleanable/blood/drip/drop = B
-	if(istype(drop) && drips && drips.len && !large)
-		drop.add_overlay(drips)
-		drop.drips |= drips
+	existing_splatter = locate(splatter_type) in target
+	if(!existing_splatter)
+		existing_splatter = new splatter_type(target)
 
-	// If there's no data to copy, call it quits here.
-	if(!istype(source))
-		return B
+	// todo: this is fucking stupid
 
-	// Update appearance.
-	if(source.data["blood_colour"])
-		B.basecolor = source.data["blood_colour"]
-		B.synthblood = synth
-		B.update_icon()
+	var/obj/effect/debris/cleanable/blood/drip/is_it_drips = existing_splatter
+	if(istype(is_it_drips) && length(drips) && !large)
+		is_it_drips.add_overlay(drips)
+		is_it_drips.drips |= drips
 
-	if(source.data["blood_name"])
-		B.name = source.data["blood_name"]
+	// is there data to copy?
+	if(!mixture)
+		return existing_splatter
 
-	// Update blood information.
-	if(source.data["blood_DNA"])
-		B.blood_DNA = list()
-		if(source.data["blood_type"])
-			B.blood_DNA[source.data["blood_DNA"]] = source.data["blood_type"]
-		else
-			B.blood_DNA[source.data["blood_DNA"]] = "O+"
+	existing_splatter.name = mixture.get_name()
+	existing_splatter.basecolor = mixture.get_color()
+	existing_splatter.synthblood = mixture.legacy_is_synthetic
+	existing_splatter.update_icon()
 
-	// Update virus information.
-	if(source.data["virus2"])
-		B.virus2 = virus_copylist(source.data["virus2"])
+	existing_splatter.blood_DNA = mixture.legacy_get_forensic_blood_dna()
+	if(mixture.legacy_virus2)
+		existing_splatter.virus2 = virus_copylist(mixture.legacy_virus2)
 
-	B.fluorescent  = 0
-	B.invisibility = 0
-	return B
+	return existing_splatter
