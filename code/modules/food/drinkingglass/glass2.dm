@@ -46,7 +46,7 @@
 
 /obj/item/reagent_containers/food/drinks/glass2/proc/has_ice()
 	if(reagents.total_volume)
-		var/datum/reagent/R = reagents.get_master_reagent()
+		var/datum/reagent/R = reagents.get_majority_reagent_datum()
 		if(!((R.id == "ice") || ("ice" in R.glass_special))) // if it's not a cup of ice, and it's not already supposed to have ice in, see if the bartender's put ice in it
 			if(reagents.has_reagent("ice", reagents.total_volume / 10)) // 10% ice by volume
 				return 1
@@ -55,7 +55,7 @@
 
 /obj/item/reagent_containers/food/drinks/glass2/proc/has_fizz()
 	if(reagents.total_volume)
-		var/datum/reagent/R = reagents.get_master_reagent()
+		var/datum/reagent/R = reagents.get_majority_reagent_datum()
 		if(!("fizz" in R.glass_special))
 			var/totalfizzy = 0
 			for(var/datum/reagent/re in reagents.get_reagent_datums())
@@ -85,7 +85,7 @@
 	underlays.Cut()
 
 	if (reagents.total_volume)
-		var/datum/reagent/R = reagents.get_master_reagent()
+		var/datum/reagent/R = reagents.get_majority_reagent_datum()
 		name = "[base_name] of [R.glass_name ? R.glass_name : "something"]"
 		desc = R.glass_desc ? R.glass_desc : initial(desc)
 

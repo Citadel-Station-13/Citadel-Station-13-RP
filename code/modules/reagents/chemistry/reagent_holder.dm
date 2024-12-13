@@ -73,20 +73,6 @@
 
 /* Internal procs */
 
-/datum/reagent_holder/proc/get_master_reagent() as /datum/reagent // Returns reference to the reagent with the biggest volume.
-	var/highest_so_far = 0
-	var/id_so_far
-	for(var/id in reagent_volumes)
-		if(reagent_volumes[id] > highest_so_far)
-			id_so_far = id
-	return SSchemistry.fetch_reagent(id_so_far)
-
-/datum/reagent_holder/proc/get_master_reagent_name() // Returns the name of the reagent with the biggest volume.
-	return get_master_reagent()?.name
-
-/datum/reagent_holder/proc/get_master_reagent_id() // Returns the id of the reagent with the biggest volume.
-	return get_master_reagent()?.id
-
 /datum/reagent_holder/proc/update_total() // Updates volume.
 	var/new_volume = 0
 	for(var/id in reagent_volumes)

@@ -137,7 +137,7 @@
 				reagents.Add(list(list(
 					"name" = R.name,
 					"id" = R.id,
-					"volume" = linked_imprinter.reagent_volumes[R.id],
+					"volume" = linked_imprinter.reagents.reagent_volumes[R.id],
 				)))
 			data["info"]["linked_imprinter"]["reagents"] = reagents
 

@@ -382,7 +382,7 @@
 				if (style && style["name"] && !style["generate_name"])
 					name_default = style["name"]
 				else
-					name_default = reagents.get_master_reagent_name()
+					name_default = reagents.get_majority_reagent_name()
 				if (name_has_units)
 					name_default += " ([vol_each]u)"
 				name = tgui_input_text(usr,
@@ -774,7 +774,7 @@
 /obj/machinery/chem_master/proc/guess_condi_style(datum/reagent_holder/reagents)
 	var/list/styles = get_condi_styles()
 	if (reagents.total_volume)
-		var/main_reagent = reagents.get_master_reagent_id()
+		var/main_reagent = reagents.get_majority_reagent_id()
 		if (main_reagent)
 			var/list/path = splittext("[main_reagent]", "/")
 			main_reagent = path[path.len]

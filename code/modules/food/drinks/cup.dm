@@ -9,7 +9,7 @@
 /obj/item/reagent_containers/food/drinks/cup/on_reagent_change()
 	..()
 	if (reagents.total_volume)
-		var/datum/reagent/R = reagents.get_master_reagent()
+		var/datum/reagent/R = reagents.get_majority_reagent_datum()
 
 		if(R.cup_icon_state)
 			icon_state = R.cup_icon_state
@@ -59,7 +59,7 @@
 
 /obj/item/reagent_containers/food/drinks/sillycup/smallcarton/on_reagent_change(changetype)
 	if (reagents.total_volume)
-		switch(reagents.get_master_reagent_id())
+		switch(reagents.get_majority_reagent_id())
 			if("orangejuice")
 				icon_state = "orangebox"
 				name = "orange juice box"

@@ -18,7 +18,7 @@
 
 /obj/item/reagent_containers/food/drinks/on_reagent_change()
 	if (reagents.total_volume)
-		var/datum/reagent/R = reagents.get_master_reagent()
+		var/datum/reagent/R = reagents.get_majority_reagent_datum()
 		if(R.price_tag)
 			price_tag = R.price_tag
 		else

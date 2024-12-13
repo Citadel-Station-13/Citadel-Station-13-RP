@@ -341,8 +341,8 @@
 
 	if(ishuman(src))
 		var/mob/living/carbon/human/H = src
-		if(H.touching.reagent_list.len) // Just the first one otherwise I'll go insane.
-			var/datum/reagent/R = H.touching.reagent_list[1]
+		if(H.touching.total_volume) // Just the first one otherwise I'll go insane.
+			var/datum/reagent/R = H.touching.get_majority_reagent_datum()
 			taste_message += " You also get the flavor of [R.taste_description] from something on them"
 	return taste_message
 

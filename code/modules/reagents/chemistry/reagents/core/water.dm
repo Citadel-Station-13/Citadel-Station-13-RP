@@ -15,58 +15,63 @@
 	cup_name = "water"
 	cup_desc = "The father of all refreshments."
 
-/datum/reagent/water/touch_turf(turf/simulated/T)
-	if(!istype(T))
-		return
+/datum/reagent/water/on_touch_turf(turf/target, remaining, allocated, data)
+	. = ..()
 
-	var/datum/gas_mixture/environment = T.return_air()
+	var/datum/gas_mixture/environment = target.return_air()
 	var/min_temperature = T0C + 100 // 100C, the boiling point of water
 
-	var/hotspot = (locate(/atom/movable/fire) in T)
-	if(hotspot && !istype(T, /turf/space))
-		var/datum/gas_mixture/lowertemp = T.remove_cell_volume()
+	var/hotspot = (locate(/atom/movable/fire) in target)
+	if(hotspot && !istype(target, /turf/space))
+		var/datum/gas_mixture/lowertemp = target.remove_cell_volume()
 		lowertemp.temperature = max(min(lowertemp.temperature-2000, lowertemp.temperature / 2), 0)
 		lowertemp.react()
-		T.assume_air(lowertemp)
+		target.assume_air(lowertemp)
 		qdel(hotspot)
 
 	if (environment && environment.temperature > min_temperature) // Abstracted as steam or something
-		var/removed_heat = between(0, volume * WATER_LATENT_HEAT, -environment.get_thermal_energy_change(min_temperature))
+		var/removed_heat = between(0, allocated * WATER_LATENT_HEAT, -environment.get_thermal_energy_change(min_temperature))
 		environment.adjust_thermal_energy(-removed_heat)
 		if (prob(5))
-			T.visible_message("<span class='warning'>The water sizzles as it lands on \the [T]!</span>")
+			target.visible_message("<span class='warning'>The water sizzles as it lands on \the [target]!</span>")
+	else if(allocated >= 10)
+		if(istype(target, /turf/simulated))
+			var/turf/simulated/simulated_target = target
+			simulated_target.wet_floor(1)
 
-	else if(volume >= 10)
-		T.wet_floor(1)
-
-/datum/reagent/water/touch_obj(obj/O, amount)
-	if(istype(O, /obj/item/reagent_containers/food/snacks/monkeycube))
-		var/obj/item/reagent_containers/food/snacks/monkeycube/cube = O
+/datum/reagent/water/on_touch_obj(obj/target, remaining, allocated, data, spread_between)
+	if(istype(target, /obj/item/reagent_containers/food/snacks/monkeycube))
+		var/obj/item/reagent_containers/food/snacks/monkeycube/cube = target
 		if(!cube.wrapped)
 			cube.Expand()
 	else
-		O.water_act(amount / 5)
-	var/effective = amount || 10
-	O.clean_radiation(RAD_CONTAMINATION_CLEANSE_POWER * (effective / 10), RAD_CONTAMINATION_CLEANSE_FACTOR ** (1 / (effective / 10)))
+		target.water_act(allocated / 5)
+	var/effective = allocated || 10
+	target.clean_radiation(RAD_CONTAMINATION_CLEANSE_POWER * (effective / 10), RAD_CONTAMINATION_CLEANSE_FACTOR ** (1 / (effective / 10)))
+	return ..()
 
-/datum/reagent/water/touch_mob(mob/living/L, amount)
-	if(istype(L))
+/datum/reagent/water/on_touch_mob(mob/target, remaining, allocated, data, zone)
+	if(isliving(target))
+		var/mob/living/living_target = target
 		// First, kill slimes.
-		if(istype(L, /mob/living/simple_mob/slime))
-			var/mob/living/simple_mob/slime/S = L
-			var/amt = 15 * amount * (1-S.water_resist)
+		if(istype(living_target, /mob/living/simple_mob/slime))
+			var/mob/living/simple_mob/slime/S = living_target
+			var/amt = 15 * allocated * (1-S.water_resist)
 			if(amt>0)
 				S.adjustToxLoss(amt)
 				S.visible_message("<span class='warning'>[S]'s flesh sizzles where the water touches it!</span>", "<span class='danger'>Your flesh burns in the water!</span>")
 
 		// Then extinguish people on fire.
-		var/needed = L.fire_stacks * 5
-		if(amount > needed)
-			L.ExtinguishMob()
-		L.adjust_fire_stacks(-(amount / 5))
-		remove_self(needed)
-	var/effective = amount || 10
-	L.clean_radiation(RAD_CONTAMINATION_CLEANSE_POWER * (effective / 10), RAD_CONTAMINATION_CLEANSE_FACTOR ** (1 / (effective / 10)))
+		var/needed = living_target.fire_stacks * 5
+		if(allocated > needed)
+			living_target.ExtinguishMob()
+		living_target.adjust_fire_stacks(-(allocated / 5))
+		allocated -= needed
+		. += needed
+
+	var/effective = allocated || 10
+	target.clean_radiation(RAD_CONTAMINATION_CLEANSE_POWER * (effective / 10), RAD_CONTAMINATION_CLEANSE_FACTOR ** (1 / (effective / 10)))
+	return . + ..()
 
 /datum/reagent/water/legacy_affect_ingest(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	//else

@@ -189,7 +189,7 @@
 	var/chem_effective = 1
 	if(alien == IS_SLIME)
 		chem_effective = 0.66
-		if(dose >= 15)
+		if(metabolism.total_processed_dose >= 15)
 			M.druggy = max(M.druggy, 5)
 	if(alien != IS_DIONA)
 		M.drowsyness = max(0, M.drowsyness - 6 * removed * chem_effective)//reduces drowsyness to zero
@@ -241,7 +241,7 @@
 		M.adjustToxLoss(removed * 24) //Vox breath phoron, oxygen is rather deadly to them
 	if(alien == IS_ALRAUNE)
 		M.adjustToxLoss(removed * 10) //cit change: oxygen is waste for plants
-	else if(alien == IS_SLIME && dose >= 15)
+	else if(alien == IS_SLIME && metabolism.total_processed_dose >= 15)
 		M.ceiling_chemical_effect(CE_PAINKILLER, 15)
 		if(prob(15))
 			to_chat(M, "<span class='notice'>You have a moment of clarity as you collapse.</span>")
@@ -250,7 +250,7 @@
 	else if(alien != IS_DIONA)
 		M.adjustOxyLoss(-60 * removed) //Heals alot of oxyloss damage/but
 		//keep in mind that Dexaline has a metabolism rate of 0.25*REM meaning only 0.25 units are removed every tick(if your metabolism takes usuall 1u per tick)
-	holder.legacy_current_holder.remove_reagent(/datum/reagent/lexorin, 8 * removed)
+	metabolism.legacy_current_holder.remove_reagent(/datum/reagent/lexorin, 8 * removed)
 
 /datum/reagent/dexalinp
 	name = "Dexalin Plus"
@@ -276,7 +276,7 @@
 	else if(alien != IS_DIONA)
 		M.adjustOxyLoss(-150 * removed)//Heals more oxyloss than Dex and has no metabolism reduction
 
-	holder.legacy_current_holder.remove_reagent(/datum/reagent/lexorin, 3 * removed)
+	metabolism.legacy_current_holder.remove_reagent(/datum/reagent/lexorin, 3 * removed)
 
 /datum/reagent/tricordrazine
 	name = "Tricordrazine"
@@ -584,7 +584,7 @@
 	if(alien == IS_DIONA)
 		return
 	if(alien == IS_SLIME)
-		if(dose >= 5) //Not effective in small doses, though it causes toxloss at higher ones, it will make the regeneration for brute and burn more 'efficient' at the cost of more nutrition.
+		if(metabolism.total_processed_dose >= 5) //Not effective in small doses, though it causes toxloss at higher ones, it will make the regeneration for brute and burn more 'efficient' at the cost of more nutrition.
 			M.nutrition -= removed * 2
 			M.adjustBruteLoss(-2 * removed)
 			M.adjustFireLoss(-1 * removed)
@@ -593,7 +593,7 @@
 	M.adjust_unconscious(20 * -1)
 	M.adjust_stunned(20 * -1)
 	M.adjust_paralyzed(20 * -1)
-	holder.remove_reagent("mindbreaker", 5)
+	metabolism.legacy_current_holder.remove_reagent(/datum/reagent/mindbreaker, 5)
 	M.adjustHallucination(-10) //Primary use
 	M.adjustToxLoss(5 * removed * chem_effective) // It used to be incredibly deadly due to an oversight. Not anymore!
 	M.ceiling_chemical_effect(CE_PAINKILLER, 20 * chem_effective)
@@ -800,14 +800,8 @@
 				H.losebreath = clamp(H.losebreath + 3, 0, 20)
 		else
 			H.losebreath = max(H.losebreath - 4, 0)
-	if(M.ingested)
-		for(var/datum/reagent/asbestos/R in M.ingested.reagent_list)
-			R.remove_self(removed * 4)
-	if(M.bloodstr)
-		for(var/datum/reagent/asbestos/R in M.bloodstr.reagent_list)
-			R.remove_self(removed * 4)
-
-
+	M.ingested?.remove_reagent(/datum/reagent/asbestos)
+	M.bloodstr?.remove_reagent(/datum/reagent/asbestos)
 
 /datum/reagent/gastirodaxon
 	name = "Gastirodaxon"
@@ -1065,12 +1059,10 @@
 	M.drowsyness = 0
 	M.stuttering = 0
 	M.SetConfused(0)
-	if(M.ingested)
-		for(var/datum/reagent/ethanol/R in M.ingested.reagent_list)
-			R.remove_self(removed * 30)
-	if(M.bloodstr)
-		for(var/datum/reagent/ethanol/R in M.bloodstr.reagent_list)
-			R.remove_self(removed * 20)
+	for(var/datum/reagent/ethanol/ethanol_filter in M.ingested.get_reagent_datums())
+		M.ingested.remove_reagent(ethanol_filter.id, removed * 30)
+	for(var/datum/reagent/ethanol/ethanol_filter in M.bloodstr.get_reagent_datums())
+		M.ingested.remove_reagent(ethanol_filter.id, removed * 20)
 
 /datum/reagent/hyronalin
 	name = "Hyronalin"
@@ -1122,7 +1114,7 @@
 /datum/reagent/spaceacillin/legacy_affect_blood(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	..()
 	if(alien == IS_SLIME)
-		if(metabolism_rate.legacy_volume_remaining <= 0.1 && metabolism_rate.blackboard["last-message"] != -1)
+		if(metabolism.legacy_volume_remaining <= 0.1 && metabolism.blackboard["last-message"] != -1)
 			metabolism.blackboard["last-message"] = -1
 			to_chat(M, "<span class='notice'>You regain focus...</span>")
 		else
@@ -1130,7 +1122,7 @@
 			if(world.time > metabolism.blackboard["last-message"] + delay)
 				metabolism.blackboard["last-message"] = world.time
 				to_chat(M, "<span class='warning'>Your senses feel unfocused, and divided.</span>")
-	M.add_chemical_effect(CE_ANTIBIOTIC, dose >= overdose ? ANTIBIO_OD : ANTIBIO_NORM)
+	M.add_chemical_effect(CE_ANTIBIOTIC, metabolism.total_processed_dose >= overdose ? ANTIBIO_OD : ANTIBIO_NORM)
 
 /datum/reagent/spaceacillin/legacy_affect_touch(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	legacy_affect_blood(M, alien, removed * 0.8, metabolism)
@@ -1234,7 +1226,7 @@
 				metabolism.blackboard["last-message"] = world.time
 				to_chat(M, "<span class='warning'>Your skin itches.</span>")
 
-	M.add_chemical_effect(CE_ANTIBIOTIC, dose >= overdose ? ANTIBIO_OD : ANTIBIO_NORM)
+	M.add_chemical_effect(CE_ANTIBIOTIC, metabolism.total_processed_dose >= overdose ? ANTIBIO_OD : ANTIBIO_NORM)
 	M.ceiling_chemical_effect(CE_PAINKILLER, 20) // 5 less than paracetamol.
 
 /datum/reagent/spacomycaze/touch_obj(obj/O)

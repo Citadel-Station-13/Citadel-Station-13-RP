@@ -95,7 +95,7 @@
 	var/total_oil = 0
 	var/total_our_oil = 0
 	var/total_removed = 0
-	var/datum/reagent/our_oil = oil.get_master_reagent()
+	var/datum/reagent/our_oil = oil.get_majority_reagent_datum()
 
 	for (var/obj/item/I in CI.container)
 		if(!I.reagents?.total_volume)
@@ -150,7 +150,7 @@
 	var/damage = rand(7,13)
 	//Though this damage seems reduced, some hot oil is transferred to the victim and will burn them for a while after
 
-	var/datum/reagent/nutriment/triglyceride/oil/OL = oil.get_master_reagent()
+	var/datum/reagent/nutriment/triglyceride/oil/OL = oil.get_majority_reagent_datum()
 	damage *= OL.heatdamage(victim, oil)
 
 	var/obj/item/organ/external/E

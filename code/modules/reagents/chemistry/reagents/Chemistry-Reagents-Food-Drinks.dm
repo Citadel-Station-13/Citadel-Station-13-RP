@@ -260,8 +260,7 @@
 
 /datum/reagent/nutriment/durian/on_touch_turf(turf/target, remaining, allocated, data)
 	var/obj/effect/debris/cleanable/chemcoating/C = new /obj/effect/debris/cleanable/chemcoating(target)
-	C.reagents.add_reagent(id, amount)
-	var/amount_used = allocated
+	var/amount_used = C.reagents.add_reagent(id, allocated)
 	allocated -= amount_used
 	return ..() + amount_used
 
