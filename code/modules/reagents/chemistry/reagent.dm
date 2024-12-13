@@ -240,29 +240,21 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 				legacy_affect_touch(M, alien, removed, metabolism)
 	if(overdose && (volume > overdose) && (active_metab.metabolism_class != CHEM_TOUCH && !can_overdose_touch))
 		metabolism.cycles_overdosing++
-		overdose(M, alien, removed)
+		legacy_affect_overdose(M, alien, removed, metabolism)
 	else
 		metabolism.cycles_overdosing = 0
 	metabolism.legacy_current_holder = null
-	remove_self(removed)
+	active_metab.remove_reagent(id, removed)
 
-#warn injcet reagent metabolism datum to calls
-// todo: on_mob_life with method of CHEM_INJECT, or tick_mob_blood
 /datum/reagent/proc/legacy_affect_blood(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	return
 
-#warn injcet reagent metabolism datum to calls
-// todo: on_mob_life with method of CHEM_INGEST, or tick_mob_ingest
 /datum/reagent/proc/legacy_affect_ingest(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	M.bloodstr.add_reagent(id, removed)
 	return
 
-#warn injcet reagent metabolism datum to calls
-// todo: on_mob_life with method of CHEM_TOUCH, or tick_mob_touch
 /datum/reagent/proc/legacy_affect_touch(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	return
-
-// todo: fourth apply method of CHEM_VAPOR implementation?
 
 /datum/reagent/proc/handle_vampire(var/mob/living/carbon/M, var/alien, var/removed, var/is_vampire)
 	if(blood_content > 0 && is_vampire)

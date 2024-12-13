@@ -27,64 +27,9 @@
 	throw_range = 20
 	damage_force = 0
 
-
 /*
  * Balloons
  */
-/obj/item/toy/balloon
-	name = "water balloon"
-	desc = "A translucent balloon. There's nothing in it."
-	icon = 'icons/obj/toy.dmi'
-	icon_state = "waterballoon-e"
-	damage_force = 0
-
-/obj/item/toy/balloon/Initialize(mapload)
-	. = ..()
-	create_reagents(10)
-
-/obj/item/toy/balloon/afterattack(atom/target, mob/user, clickchain_flags, list/params)
-	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY)) return
-	if (istype(target, /obj/structure/reagent_dispensers/watertank) && get_dist(src,target) <= 1)
-		target.reagents.trans_to_obj(src, 10)
-		to_chat(user, "<span class='notice'>You fill the balloon with the contents of [target].</span>")
-		src.desc = "A translucent balloon with some form of liquid sloshing around in it."
-		src.update_icon()
-	return
-
-/obj/item/toy/balloon/attackby(obj/O as obj, mob/user as mob)
-	if(istype(O, /obj/item/reagent_containers/glass))
-		if(O.reagents)
-			if(O.reagents.total_volume < 1)
-				to_chat(user, "The [O] is empty.")
-			else if(O.reagents.total_volume >= 1)
-				if(O.reagents.has_reagent("pacid", 1))
-					to_chat(user, "The acid chews through the balloon!")
-					O.reagents.splash(user, reagents.total_volume)
-					qdel(src)
-				else
-					src.desc = "A translucent balloon with some form of liquid sloshing around in it."
-					to_chat(user, "<span class='notice'>You fill the balloon with the contents of [O].</span>")
-					O.reagents.trans_to_obj(src, 10)
-	src.update_icon()
-	return
-
-/obj/item/toy/balloon/throw_impact(atom/hit_atom)
-	if(src.reagents.total_volume >= 1)
-		src.visible_message("<span class='warning'>\The [src] bursts!</span>","You hear a pop and a splash.")
-		src.reagents.touch_turf(get_turf(hit_atom))
-		for(var/atom/A in get_turf(hit_atom))
-			src.reagents.touch(A)
-		src.icon_state = "burst"
-		spawn(5)
-			if(src)
-				qdel(src)
-	return
-
-/obj/item/toy/balloon/update_icon()
-	if(src.reagents.total_volume >= 1)
-		icon_state = "waterballoon"
-	else
-		icon_state = "waterballoon-e"
 
 /obj/item/toy/syndicateballoon
 	name = "criminal balloon"
@@ -401,70 +346,6 @@
 			playsound(src, 'sound/effects/snap.ogg', 50, 1)
 			qdel(src)
 
-/*
- * Water flower
- */
-/obj/item/toy/waterflower
-	name = "water flower"
-	desc = "A seemingly innocent sunflower...with a twist."
-	icon = 'icons/obj/device.dmi'
-	icon_state = "sunflower"
-	item_state = "sunflower"
-	var/empty = 0
-	slot_flags = SLOT_HOLSTER
-	damage_force = 0
-
-/obj/item/toy/waterflower/Initialize(mapload)
-	. = ..()
-	var/datum/reagent_holder/R = create_reagents(10)
-	R.add_reagent("water", 10)
-
-/obj/item/toy/waterflower/afterattack(atom/target, mob/user, clickchain_flags, list/params)
-
-	if (istype(target, /obj/item/storage/backpack ))
-		return
-
-	else if (locate (/obj/structure/table, src.loc))
-		return
-
-	else if (istype(target, /obj/structure/reagent_dispensers/watertank) && get_dist(src,target) <= 1)
-		target.reagents.trans_to(src, 10)
-		to_chat(user, "<span class='notice'>You refill your flower!</span>")
-		return
-
-	else if (src.reagents.total_volume < 1)
-		src.empty = 1
-		to_chat(user, "<span class='notice'>Your flower has run dry!</span>")
-		return
-
-	else
-		src.empty = 0
-
-
-		var/obj/effect/decal/D = new/obj/effect/decal/(get_turf(src))
-		D.name = "water"
-		D.icon = 'icons/obj/medical/chemical.dmi'
-		D.icon_state = "chempuff"
-		D.create_reagents(5)
-		src.reagents.trans_to_obj(D, 1)
-		playsound(src.loc, 'sound/effects/spray3.ogg', 50, 1, -6)
-
-		spawn(0)
-			for(var/i=0, i<1, i++)
-				step_towards(D,target)
-				D.reagents.touch_turf(get_turf(D))
-				for(var/atom/T in get_turf(D))
-					D.reagents.touch(T)
-					if(ismob(T))
-						to_chat(T, "<span class='warning'>\The [user] has sprayed you with water!</span>")
-				sleep(4)
-			qdel(D)
-
-		return
-
-/obj/item/toy/waterflower/examine(mob/user, dist)
-	. = ..()
-	. += "[src] has [src.reagents.total_volume] units of water left!"
 
 /*
  * Bosun's whistle

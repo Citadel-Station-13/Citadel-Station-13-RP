@@ -427,7 +427,7 @@
 		M.apply_effect(2, AGONY, 0)
 		if(prob(5))
 			M.visible_message("<span class='warning'>[M] [pick("dry heaves!","coughs!","splutters!")]</span>", "<span class='danger'>You feel like your insides are burning!</span>")
-	holder.remove_reagent("frostoil", 5)
+	metabolism.legacy_current_holder.remove_reagent(/datum/reagent/frostoil, 5)
 
 /datum/reagent/hexaisin
 	name = "Hexaisin"
@@ -454,7 +454,7 @@
 		M.apply_effect(3, AGONY, 0)
 		if(prob(5))
 			M.visible_message("<span class='warning'>[M] [pick("dry heaves!","coughs!","splutters!")]</span>", "<span class='danger'>You feel like your insides are burning!</span>")
-	holder.remove_reagent("frostoil", 5)
+	metabolism.legacy_current_holder.remove_reagent(/datum/reagent/frostoil, 5)
 
 /datum/reagent/condensedcapsaicin
 	name = "Condensed Capsaicin"
@@ -608,7 +608,7 @@
 		M.apply_effect(4, AGONY, 0)
 		if(prob(5))
 			M.visible_message("<span class='warning'>[M] [pick("dry heaves!","coughs!","splutters!")]</span>", "<span class='danger'>You feel like your insides are burning!</span>")
-	holder.remove_reagent("frostoil", 5)
+	metabolism.legacy_current_holder.remove_reagent(/datum/reagent/frostoil, 5)
 
 /* Drinks */
 
@@ -887,7 +887,7 @@
 	if(alien == IS_ALRAUNE) //cit change: milk good for plant.
 		M.nutrition += removed * 3
 	M.heal_organ_damage(0.5 * removed, 0)
-	holder.remove_reagent("capsaicin", 10 * removed)
+	metabolism.legacy_current_holder.remove_reagent(/datum/reagent/capsaicin, 10 * removed)
 	if(contains_lactose == TRUE && alien == IS_NARAMADI) //Species-wide lactose intolerance, also funny that cheeses can't drink milk.
 		if(prob(5))
 			to_chat(M, SPAN_WARNING("You feel nauseous!"))
@@ -1203,7 +1203,7 @@
 		return
 	..()
 	if(adj_temp > 0)
-		holder.remove_reagent("frostoil", 10 * removed)
+		metabolism.legacy_current_holder.remove_reagent(/datum/reagent/frostoil, 10 * removed)
 
 /datum/reagent/drink/coffee/legacy_affect_blood(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	..()
@@ -2080,7 +2080,7 @@
 /datum/reagent/drink/sodaoil/legacy_affect_blood(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	..()
 	if(M.bloodstr) // If, for some reason, they are injected, dilute them as well.
-		for(var/datum/reagent/R in M.ingested.reagent_list)
+		for(var/datum/reagent/R in M.ingested.get_reagent_datums())
 			if(istype(R, /datum/reagent/drink))
 				var/datum/reagent/drink/D = R
 				if(D.water_based)
@@ -2089,7 +2089,7 @@
 /datum/reagent/drink/sodaoil/legacy_affect_ingest(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	..()
 	if(M.ingested) // Find how many drinks are causing tox, and negate them.
-		for(var/datum/reagent/R in M.ingested.reagent_list)
+		for(var/datum/reagent/R in M.ingested.get_reagent_datums())
 			if(istype(R, /datum/reagent/drink))
 				var/datum/reagent/drink/D = R
 				if(D.water_based)
@@ -4487,12 +4487,10 @@
 	touch_met = 1.5
 	var/lastburnmessage = 0
 
-/datum/reagent/nutriment/triglyceride/oil/touch_turf(turf/simulated/T)
-	if(!istype(T))
-		return
-
-	if(volume >= 3)
-		T.wet_floor(2)
+/datum/reagent/nutriment/triglyceride/oil/on_touch_turf(turf/target, remaining, allocated, data)
+	if(allocated >= 3)
+		target.wet_floor(2)
+	return ..()
 
 //Calculates a scaling factor for scalding damage, based on the temperature of the oil and creature's heat resistance
 /datum/reagent/nutriment/triglyceride/oil/proc/heatdamage(mob/living/carbon/M, datum/reagent_holder/holder)

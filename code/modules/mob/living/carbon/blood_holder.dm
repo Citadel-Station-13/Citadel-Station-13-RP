@@ -15,10 +15,13 @@
 	var/datum/blood_fragment/host_blood
 	/// Amount of host blood we have
 	var/host_blood_volume = 0
-	/// Our fragments that aren't ourselves, associated to amount.
+	/// Our fragments that aren't ourselves, associated to ratio.
 	var/list/datum/blood_fragment/guest_bloods
 	/// Total amount of guest blood volume
 	var/guest_blood_volume = 0
+
+/datum/blood_holder/proc/get_total_volume()
+	return host_blood_volume + guest_blood_volume
 
 /datum/blood_holder/proc/set_host_fragment_to(datum/blood_fragment/fragment)
 	host_blood = fragment.clone()
@@ -26,17 +29,101 @@
 /datum/blood_holder/proc/set_host_volume(amount)
 	host_blood_volume = amount
 
+/**
+ * @return amount change
+ */
 /datum/blood_holder/proc/adjust_host_volume(amount)
+	. = host_blood_volume
 	host_blood_volume = max(host_blood_volume + amount, 0)
+	. = host_blood_volume - .
 
-/datum/blood_holder/proc/set_volume(datum/blood_fragment/fragment, amount)
+/**
+ * @return amount injected
+ */
+/datum/blood_holder/proc/inject_mixture(datum/blood_mixture/mixture, amount)
+	if(amount < 0)
+		return 0
+	if(isnull(amount))
+		amount = mixture.ctx_return_amount
+	if(!amount)
+		return 0
 	#warn impl; check for host blood
 
-/datum/blood_holder/proc/adjust_volume(datum/blood_fragment/fragment, amount)
-	#warn impl; check for host blood
+	// todo: auto-trim system
 
-/datum/blood_holder/proc/get_total_volume()
-	return host_blood_volume + guest_blood_volume
+	var/list/datum/blood_fragment/new_fragments = list()
+
+	first_pass:
+		for(var/datum/blood_fragment/potential_injecting as anything in mixture.fragments)
+			if(host_blood.equivalent(potential_injecting))
+				var/computed_amount = (1 - mixture.fragments[potential_injecting]) * amount
+				amount -= computed_amount
+				. += adjust_host_volume(computed_amount)
+				continue
+			for(var/datum/blood_fragment/potential_pair as anything in guest_bloods)
+				if(potential_pair.equivalent(potential_injecting))
+					#warn impl; scaling will be a pain here
+					continue first_pass
+			new_fragments += potential_injecting
+
+	var/old_volume = guest_blood_volume
+
+/**
+ * @return amount injected
+ */
+/datum/blood_holder/proc/inject_fragment(datum/blood_fragment/fragment, amount)
+	if(amount < 0)
+		return 0
+	if(host_blood.equivalent(fragment))
+		return adjust_host_volume(amount)
+
+	// todo: auto-trim system
+
+	var/datum/blood_fragment/existing
+	for(var/datum/blood_fragment/checking as anything in guest_bloods)
+		if(checking.equivalent(fragment))
+			existing = checking
+			break
+
+	var/old_volume = guest_blood_volume
+	guest_blood_volume += amount
+	var/scaler = old_volume / guest_blood_volume
+
+	for(var/datum/blood_fragment/scaling as anything in guest_bloods)
+		guest_bloods[scaling] *= scaler
+
+	if(!existing)
+		guest_bloods[checking] = 1 - scaler
+
+	return amount
+
+/**
+ * Erases blood uniformly.
+ *
+ * * Fails if we don't have enough.
+ *
+ * @return amount erased
+ */
+/datum/blood_holder/proc/erase_checked_amount(amount)
+	var/total = host_blood_volume + guest_blood_volume
+	if(amount < total)
+		return 0
+	var/multiplier = 1 - (amount / total)
+	host_blood_volume *= multiplier
+	guest_blood_volume *= multiplier
+	return amount
+
+/**
+ * Erases blood uniformly.
+ *
+ * @return amount erased
+ */
+/datum/blood_holder/proc/erase_amount(amount)
+	var/total = host_blood_volume + guest_blood_volume
+	var/multiplier = max(0, 1 - (amount / total))
+	. = min(amount, total)
+	host_blood_volume *= multiplier
+	guest_blood_volume *= multiplier
 
 /**
  * Takes a blood mixture from us.
@@ -44,6 +131,7 @@
  * * Expensive.
  * * Fails if we don't have enough.
  * * Does not put viruses/antibodies/etc into it; that's the responsibiliy of the host, for now.
+ * * `ctx_return_amount` will be set on the returned mixture.
  *
  * @return mixture taken or null
  */
@@ -60,6 +148,7 @@
  *
  * * Expensive.
  * * Does not put viruses/antibodies/etc into it; that's the responsibiliy of the host, for now.
+ * * `ctx_return_amount` will be set on the returned mixture.
  *
  * @params
  * * amount - amount to take

@@ -28,11 +28,18 @@
 
 /**
  * Imprint ourselves on an outgoing blood mixture.
+ *
+ * * Accepts null, for ease of use.
+ *
+ * @return the imprinted mixture
  */
 /mob/living/carbon/proc/imprint_blood_mixture(datum/blood_mixture/mixture)
+	if(!mixture)
+		return null
 	mixture.legacy_trace_chem = list2params(bloodstr.reagent_volumes)
 	mixture.legacy_virus2 = virus_copylist(virus2)
 	mixture.legacy_antibodies = antibodies?.Copy()
+	return mixture
 
 /**
  * Gets our blood mixture.
@@ -56,7 +63,7 @@
  * @return amount erased
  */
 /mob/living/carbon/proc/erase_checked_blood(amount) as num
-	#warn impl
+	return blood_holder.erase_checked_amount(amount)
 
 /**
  * [take_mixture] but fast,
@@ -66,7 +73,7 @@
  * @return amount erased
  */
 /mob/living/carbon/proc/erase_blood(amount) as num
-	#warn impl
+	return blood_holder.erase_amount(amount)
 
 
 /**
@@ -84,13 +91,7 @@
  * @return mixture or null
  */
 /mob/living/carbon/proc/take_checked_blood_mixture(amount) as /datum/blood_mixture
-	if(!blood_holder)
-		return null
-	var/datum/blood_mixture/mixture = blood_holder.checked_draw(amount, infinite)
-	if(!mixture)
-		return null
-	imprint_blood_mixture(mixture)
-	return mixture
+	return imprint_blood_mixture(blood_holder?.checked_draw(amount))
 
 /**
  * Takes a blood mixture from ourselves.
@@ -106,13 +107,7 @@
  * @return mixture or null
  */
 /mob/living/carbon/proc/take_blood_mixture(amount, infinite) as /datum/blood_mixture
-	if(!blood_holder)
-		return null
-	var/datum/blood_mixture/mixture = blood_holder.draw(amount, infinite)
-	if(!mixture)
-		return null
-	imprint_blood_mixture(mixture)
-	return mixture
+	return imprint_blood_mixture(blood_holder?.draw(amount, infinite))
 
 /**
  * Puts a blood mixture into ourselves.
@@ -132,7 +127,7 @@
 		amount = mixture.ctx_return_amount
 
 	// give them the blood
-	blood_holder.adjust_volume(mixture, amount)
+	blood_holder.inject_mixture(mixture, amount)
 	// give them the sniffles
 	var/list/i_hate_old_virology = virus_copylist(mixture.legacy_virus2)
 	for(var/id in i_hate_old_virology)

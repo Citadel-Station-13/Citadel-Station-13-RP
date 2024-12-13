@@ -419,7 +419,7 @@
 				/obj/item/pda/clown,
 				/obj/item/clothing/mask/gas/clown_hat,
 				/obj/item/bikehorn,
-				/obj/item/toy/waterflower,
+				/obj/item/reagent_containers/spray/waterflower,
 				/obj/item/pen/crayon/rainbow,
 				/obj/structure/closet/crate
 			),
