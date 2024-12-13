@@ -1,3 +1,4 @@
+CREATE_STANDARD_TURFS(/turf/simulated/floor/glass)
 /turf/simulated/floor/glass
 	name = "glass floor"
 	desc = "Don't jump on it, or do, I'm not your mom."
@@ -8,7 +9,7 @@
 
 	base_layer = CATWALK_LAYER
 	// Currently if flooring is set, it breaks the layering of the glass floor.
-	// initial_flooring = /singleton/flooring/glass
+	// initial_flooring = /datum/prototype/flooring/glass
 
 	smoothing_flags = SMOOTH_BITMASK
 	smoothing_groups = (SMOOTH_GROUP_TURF_OPEN + SMOOTH_GROUP_FLOOR_TRANSPARENT_GLASS)
@@ -16,17 +17,14 @@
 
 	mz_flags = MZ_MIMIC_DEFAULTS
 
-CREATE_STANDARD_TURFS(/turf/simulated/floor/glass)
-
 /turf/simulated/floor/glass/Initialize()
 	. = ..()
 	return INITIALIZE_HINT_LATELOAD
 
 /turf/simulated/floor/glass/LateInitialize()
-	. = ..()
 	layer = base_layer
 
-
+CREATE_STANDARD_TURFS(/turf/simulated/floor/glass/reinforced)
 /turf/simulated/floor/glass/reinforced
 	name = "reinforced glass flooring"
 	desc = "Heavily reinforced with steel rods."
@@ -36,6 +34,5 @@ CREATE_STANDARD_TURFS(/turf/simulated/floor/glass)
 	base_icon_state = "glass_reinf"
 
 	// Currently if flooring is set, it breaks the layering of the glass floor.
-	// initial_flooring = /singleton/flooring/glass/reinforced
+	// initial_flooring = /datum/prototype/flooring/glass/reinforced
 
-CREATE_STANDARD_TURFS(/turf/simulated/floor/glass/reinforced)

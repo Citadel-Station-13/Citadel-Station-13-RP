@@ -27,6 +27,7 @@
 
 #define TIMER_COOLDOWN_START(cd_source, cd_index, cd_time) LAZYSET(cd_source.cooldowns, cd_index, addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(end_cooldown), cd_source, cd_index), cd_time))
 
+/// Checks if a timer based cooldown is NOT finished.
 #define TIMER_COOLDOWN_CHECK(cd_source, cd_index) LAZYACCESS(cd_source.cooldowns, cd_index)
 
 #define TIMER_COOLDOWN_END(cd_source, cd_index) LAZYREMOVE(cd_source.cooldowns, cd_index)
@@ -86,3 +87,9 @@
 //? Structures
 //* /obj/structure/sculpting_block
 #define CD_INDEX_SCULPTING_COOLDOWN			"sculpting_block"
+
+// admin verb cooldowns
+#define CD_INTERNET_SOUND "internet_sound"
+
+//* /mob
+#define CD_INDEX_MOB_VERB_INVERT_SELF "mob-verb-invert-self"

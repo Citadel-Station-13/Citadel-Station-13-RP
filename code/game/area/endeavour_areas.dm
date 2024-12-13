@@ -213,6 +213,10 @@
 	name = "\improper Robotics Morgue"
 	icon_state = "robotics"
 
+/area/rnd/robotics/smallcraft
+	name = "\improper Small Craft and Probe Assembly"
+	icon_state = "robotics"
+
 /** Exploration
  */
 /area/endeavour/exploration

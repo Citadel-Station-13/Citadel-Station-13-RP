@@ -16,4 +16,4 @@ SUBSYSTEM_DEF(holomaps)
 
 /datum/controller/subsystem/holomaps/Initialize(timeofday)
 	generateHoloMinimaps()
-	. = ..()
+	return SS_INIT_SUCCESS

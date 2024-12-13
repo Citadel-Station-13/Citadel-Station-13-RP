@@ -13,12 +13,12 @@
 /// Invocation of material traits
 /// A - the atom
 /// CHECK - material_trait_flags to check
-/// INVOKE - procname on /datum/material_trait to invoke
+/// INVOKE - procname on /datum/prototype/material_trait to invoke
 /// ARGS... - directly appended to the material_trait proc invocation after the params 'host' being A, and 'data' being the data the trait has on A.
 #define MATERIAL_INVOKE(A, CHECK, INVOKE, ARGS...) \
 	if(A.material_trait_flags & CHECK) { \
 		if(islist(A.material_traits)) { \
-			for(var/datum/material_trait/__trait as anything in A.material_traits){ \
+			for(var/datum/prototype/material_trait/__trait as anything in A.material_traits){ \
 				if(!(__trait.material_trait_flags & CHECK)) { \
 					continue; \
 				} \
@@ -26,7 +26,7 @@
 			} \
 		} \
 		else { \
-			var/datum/material_trait/__trait = A.material_traits; \
+			var/datum/prototype/material_trait/__trait = A.material_traits; \
 			__trait.INVOKE(A, A.material_traits_data, ##args); \
 		} \
 	}
@@ -35,12 +35,12 @@
 /// OUT - flag returns from invocations are binary OR'd into this.
 /// A - the atom
 /// CHECK - material_trait_flags to check
-/// INVOKE - procname on /datum/material_trait to invoke
+/// INVOKE - procname on /datum/prototype/material_trait to invoke
 /// ARGS... - directly appended to the material_trait proc invocation after the params 'host' being A, and 'data' being the data the trait has on A.
 #define MATERIAL_INVOKE_OUT(OUT, A, CHECK, INVOKE, ARGS...) \
 	if(A.material_trait_flags & CHECK) { \
 		if(islist(A.material_traits)) { \
-			for(var/datum/material_trait/__trait as anything in A.material_traits){ \
+			for(var/datum/prototype/material_trait/__trait as anything in A.material_traits){ \
 				if(!(__trait.material_trait_flags & CHECK)) { \
 					continue; \
 				} \
@@ -48,7 +48,7 @@
 			} \
 		} \
 		else { \
-			var/datum/material_trait/__trait = A.material_traits; \
+			var/datum/prototype/material_trait/__trait = A.material_traits; \
 			OUT |= __trait.INVOKE(A, A.material_traits_data, ##args); \
 		} \
 	}

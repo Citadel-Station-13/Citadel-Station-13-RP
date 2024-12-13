@@ -14,10 +14,10 @@
 	src.pixel_y = rand(-12, 12)
 
 /obj/item/material/star/ninja
-	material_parts = /datum/material/uranium
+	material_parts = /datum/prototype/material/uranium
 
 /obj/item/material/star/plasteel
-	material_parts = /datum/material/plasteel
+	material_parts = /datum/prototype/material/plasteel
 
 /obj/item/material/star/durasteel
-	material_parts = /datum/material/durasteel
+	material_parts = /datum/prototype/material/durasteel

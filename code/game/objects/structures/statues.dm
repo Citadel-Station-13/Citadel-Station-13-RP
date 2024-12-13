@@ -51,6 +51,7 @@
 			deconstruct(ATOM_DECONSTRUCT_DISASSEMBLED)
 		return
 	return ..()
+
 /obj/structure/statue/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	add_fingerprint(user)
 	user.visible_message("[user] rubs some dust off from the [name]'s surface.", \
@@ -58,13 +59,13 @@
 
 /obj/structure/statue/drop_products(method, atom/where)
 	. = ..()
-	var/datum/material/primary = get_primary_material()
+	var/datum/prototype/material/primary = get_primary_material()
 	if(!isnull(primary))
 		drop_product(method, primary.place_sheet(null, 10), where)
 
 /obj/structure/statue/silver
 	desc = "This is a valuable statue made from silver."
-	material_parts = /datum/material/silver
+	material_parts = /datum/prototype/material/silver
 
 /obj/structure/statue/silver/hos
 	name = "Statue of a Head of Security"
@@ -94,7 +95,7 @@
 
 /obj/structure/statue/gold
 	desc = "This is a highly valuable statue made from gold."
-	material_parts = /datum/material/gold
+	material_parts = /datum/prototype/material/gold
 
 /obj/structure/statue/gold/hos
 	name = "Statue of the Head of Security"
@@ -120,7 +121,7 @@
 
 /obj/structure/statue/phoron
 	desc = "This statue is suitably made from phoron."
-	material_parts = /datum/material/phoron
+	material_parts = /datum/prototype/material/phoron
 
 /obj/structure/statue/phoron/scientist
 	name = "Statue of a Scientist"
@@ -135,7 +136,7 @@
 /obj/structure/statue/uranium
 	luminosity = 2
 	desc = "If you can read this, go to Medical."
-	material_parts = /datum/material/uranium
+	material_parts = /datum/prototype/material/uranium
 
 /obj/structure/statue/uranium/nuke
 	name = "Statue of a Nuclear Fission Explosive"
@@ -151,7 +152,7 @@
 
 /obj/structure/statue/diamond
 	desc = "This is a very expensive diamond statue"
-	material_parts = /datum/material/diamond
+	material_parts = /datum/prototype/material/diamond
 
 /obj/structure/statue/diamond/captain
 	name = "Statue of THE Captain."
@@ -169,7 +170,7 @@
 
 /obj/structure/statue/bananium
 	desc = "A bananium statue with a small engraving:'HOOOOOOONK'."
-	material_parts = /datum/material/bananium
+	material_parts = /datum/prototype/material/bananium
 
 /obj/structure/statue/bananium/clown
 	name = "Statue of a clown"
@@ -178,7 +179,7 @@
 /////////////////////sandstone/////////////////////////////////////////
 
 /obj/structure/statue/sandstone
-	material_parts = /datum/material/sandstone
+	material_parts = /datum/prototype/material/sandstone
 
 /obj/structure/statue/sandstone/assistant
 	name = "Statue of an assistant"
@@ -189,7 +190,7 @@
 
 /obj/structure/statue/marble
 	desc = "This is a shiny statue made from marble."
-	material_parts = /datum/material/marble
+	material_parts = /datum/prototype/material/marble
 
 /obj/structure/statue/marble/male
 	name = "male statue"
@@ -223,14 +224,14 @@
 	name = "wood statue"
 	desc = "A simple wooden mannequin, generally used to display clothes or equipment. Water frequently."
 	icon_state = "fashion_m"
-	material_parts = /datum/material/wood_log
+	material_parts = /datum/prototype/material/wood_log
 
 /obj/structure/statue/bone
 	name = "bone statue"
 	desc = "A towering menhir of bone, perhaps the colossal rib of some fallen beast."
 	icon = 'icons/obj/statuelarge.dmi'
 	icon_state = "rib"
-	material_parts = /datum/material/bone
+	material_parts = /datum/prototype/material/bone
 
 /obj/structure/statue/bone/skull
 	name = "skull statue"

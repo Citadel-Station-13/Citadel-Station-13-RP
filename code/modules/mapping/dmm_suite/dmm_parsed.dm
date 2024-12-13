@@ -299,8 +299,9 @@
 
 	var/static/loading = FALSE
 	UNTIL(!loading)
-	loading = TRUE
 	Master.StartLoadingMap()
+	loading = TRUE
+	SSatoms.map_loader_begin(REF(src))
 
 	_populate_orientation(context, orientation)
 	context.loaded_dmm = src
@@ -312,8 +313,9 @@
 	context.loaded_bounds = loaded_bounds
 	context.success = !isnull(loaded_bounds)
 
-	Master.StopLoadingMap()
+	SSatoms.map_loader_stop(REF(src))
 	loading = FALSE
+	Master.StopLoadingMap()
 
 /datum/dmm_parsed/proc/_populate_orientation(datum/dmm_context/context,orientation)
 	var/datum/dmm_orientation/orientation_pattern = GLOB.dmm_orientations["[orientation]"]
@@ -497,7 +499,7 @@
 		// 3. there are exactly 2 members
 		// 4. with no attributes
 		// 5. and the members are world.turf and world.area
-		// Basically, if we find an entry like this: "XXX" = (/turf/default, /area/default)
+		// Basically, if we find an entry like this: "XXX" = (/turf/default, /area/inherit_area)
 		// We can skip calling this proc every time we see XXX
 		if(no_changeturf \
 			&& !(.[SPACE_KEY]) \
@@ -522,9 +524,6 @@
 	////////////////
 	//Instanciation
 	////////////////
-
-	//turn off base new Initialization until the whole thing is loaded
-	SSatoms.map_loader_begin()
 
 	//The next part of the code assumes there's ALWAYS an /area AND a /turf on a given tile
 	//first instance the /area and remove it from the members list
@@ -578,9 +577,6 @@
 	for(index in 1 to first_turf_index-1)
 		instance_atom(members[index],members_attributes[index],crds,no_changeturf,placeOnTop)
 
-	//Restore initialization to the previous value
-	SSatoms.map_loader_stop()
-
 ////////////////
 //Helpers procs
 ////////////////
@@ -605,9 +601,9 @@
 
 	//custom CHECK_TICK here because we don't want things created while we're sleeping to not initialize
 	if(TICK_CHECK)
-		SSatoms.map_loader_stop()
+		SSatoms.map_loader_stop(REF(src))
 		stoplag()
-		SSatoms.map_loader_begin()
+		SSatoms.map_loader_begin(REF(src))
 
 /**
  * create an atom at a location

@@ -1,37 +1,109 @@
 ## bootstrap/node_.ps1
 ## Downloads a Node version to a cache directory and invokes it.
-## This will download / load a vendored version of node, as specified by dependencies.sh
 
-# Set flags
 $ErrorActionPreference = "Stop"
 
-# Init
-. $PSScriptRoot/common.ps1
-Initialize-Bootstrap
+function Extract-Variable {
+	param([string] $Path, [string] $Key)
+	foreach ($Line in Get-Content $Path) {
+		if ($Line.StartsWith("export $Key=")) {
+			return $Line.Substring("export $Key=".Length)
+		}
+	}
+	throw "Couldn't find value for $Key in $Path"
+}
 
-# Write-Output "bootstrap-node: starting (powershell)"
+function Download-Node {
+	if (Test-Path $NodeTarget -PathType Leaf) {
+		Verify-Node
+		return
+	}
 
-$NodePath = "$global:CacheDir/node-v$global:NODE_VERSION_PRECISE-windows-x64"
-$NodeExe = "$NodePath/node.exe"
+	Write-Output "Downloading Node v$NodeVersion (may take a while)"
+	New-Item $NodeTargetDir -ItemType Directory -ErrorAction silentlyContinue | Out-Null
+	$WebClient = New-Object Net.WebClient
+	$WebClient.DownloadFile($NodeSource, "$NodeTarget.downloading")
+	Rename-Item "$NodeTarget.downloading" $NodeTarget
+	Verify-Node
+}
 
-# Download Node if it isn't there
-if (Test-Path $NodeExe -PathType Leaf) {
-	# Write-Output "bootstrap-node: found at $NodeExe"
+function Verify-Node {
+	$Tries = $Tries + 1
+
+	Write-Output "Verifying Node checksum"
+	$FileHash = Get-FileHash $NodeTarget -Algorithm SHA256
+	$ActualSha = $FileHash.Hash
+	$LoginResponse = Invoke-WebRequest "https://nodejs.org/download/release/v$NodeVersion/SHASUMS256.txt"
+	$ShaArray = $LoginResponse.Content.split("`n")
+	foreach ($ShaArrayEntry in $ShaArray) {
+		$EntrySplit = $ShaArrayEntry -split "\s+"
+		$EntrySha = $EntrySplit[0]
+		$EntryExe = $EntrySplit[1]
+		if ($EntryExe -eq "win-x64/node.exe") {
+			$ExpectedSha = $EntrySha
+			break
+		}
+	}
+
+	if ($null -eq $ExpectedSha) {
+		Write-Output "Failed to determine the correct checksum value. This is probably fine."
+		return
+	}
+
+	if ($ExpectedSha -ne $ActualSha) {
+		Write-Output "$ExpectedSha != $ActualSha"
+		if ($Tries -gt 3) {
+			Write-Output "Failed to verify Node checksum three times. Aborting."
+			exit 1
+		}
+		Write-Output "Checksum mismatch on Node. Retrying."
+		Remove-Item $NodeTarget
+		Download-Node
+	}
+}
+
+## Convenience variables
+$BaseDir = Split-Path $script:MyInvocation.MyCommand.Path
+$Cache = "$BaseDir\.cache"
+if ($Env:TG_BOOTSTRAP_CACHE) {
+	$Cache = $Env:TG_BOOTSTRAP_CACHE
+}
+
+# Get OS version
+[int]$OSMajor = (Get-WmiObject -Class Win32_OperatingSystem).Version.Split(".")[0]
+
+# Set Node version based on OS version
+if ($OSMajor -lt 10) {
+	# Anything under Windows 10
+	$NodeVersion = Extract-Variable -Path "$BaseDir\..\..\dependencies.sh" -Key "NODE_VERSION_COMPAT"
 }
 else {
-	# Write-Output "bootstrap-node: downloading node v$global:NODE_VERSION_PRECISE"
-	New-Item $NodePath -ItemType Directory -ErrorAction SilentlyContinue | Out-Null
-	$NodeDownloader = New-Object Net.WebClient
-	$NodeDownloader.DownloadFile("https://nodejs.org/download/release/v$global:NODE_VERSION_PRECISE/win-x64/node.exe", "$NodeExe.downloading")
-	Rename-Item "$NodeExe.downloading" "$NodeExe"
+	$NodeVersion = Extract-Variable -Path "$BaseDir\..\..\dependencies.sh" -Key "NODE_VERSION_LTS"
 }
 
-# Set PATH
-$Env:PATH = "$NodePath;$Env:PATH"
+$NodeSource = "https://nodejs.org/download/release/v$NodeVersion/win-x64/node.exe"
+$NodeTargetDir = "$Cache\node-v$NodeVersion-x64"
+$NodeTarget = "$NodeTargetDir\node.exe"
 
-# Invoke Node with passed in params
+## Just print the path and exit
+if ($Args.length -eq 1 -and $Args[0] -eq "Get-Path") {
+	Write-Output "$NodeTargetDir"
+	exit 0
+}
+
+## Just download node and exit
+if ($Args.length -eq 1 -and $Args[0] -eq "Download-Node") {
+	Download-Node
+	exit 0
+}
+
+## Download node
+Download-Node
+
+## Set PATH so that recursive calls find it
+$Env:PATH = "$NodeTargetDir;$ENV:Path"
+
+## Invoke Node with all command-line arguments
 $ErrorActionPreference = "Continue"
-# Write-Output "bootstrap-node: path is $NodeExe"
-Write-Output "Using vendored node $(& "$NodeExe" --version)"
-& "$NodeExe" @Args
+& "$NodeTarget" @Args
 exit $LastExitCode

@@ -9,10 +9,10 @@
 	attack_verb = list("jabbed","stabbed","ripped")
 
 /obj/item/material/harpoon/plasteel
-	material_parts = /datum/material/plasteel
+	material_parts = /datum/prototype/material/plasteel
 
 /obj/item/material/harpoon/durasteel
-	material_parts = /datum/material/durasteel
+	material_parts = /datum/prototype/material/durasteel
 
 /obj/item/material/knife/machete/hatchet
 	name = "hatchet"
@@ -32,7 +32,7 @@
 	name = "primitive hatchet"
 	desc = "A broad, flat piece of bone knapped to a sharp edge. A truly primitive weapon."
 	icon_state = "hatchet_bone"
-	material_parts = /datum/material/bone
+	material_parts = /datum/prototype/material/bone
 
 /obj/item/material/knife/machete/hatchet/bronze
 	name = "bronze hatchet"
@@ -40,7 +40,7 @@
 	icon = 'icons/obj/lavaland.dmi'
 	icon_state = "hatchet_bronze"
 	item_state = "hatchet_bronze"
-	material_parts = /datum/material/bronze
+	material_parts = /datum/prototype/material/bronze
 
 /obj/item/material/knife/machete/hatchet/unathiknife
 	name = "duelling knife"
@@ -52,10 +52,10 @@
 	var/hits = 0
 
 /obj/item/material/knife/machete/hatchet/durasteel
-	material_parts = /datum/material/durasteel
+	material_parts = /datum/prototype/material/durasteel
 
 /obj/item/material/knife/machete/hatchet/unathiknife/durasteel
-	material_parts = /datum/material/durasteel
+	material_parts = /datum/prototype/material/durasteel
 
 /obj/item/material/knife/machete/hatchet/unathiknife/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if(hits > 0)
@@ -80,27 +80,33 @@
 	attack_verb = list("slashed", "sliced", "cut", "clawed")
 
 /obj/item/material/minihoe/plasteel
-	material_parts = /datum/material/plasteel
+	material_parts = /datum/prototype/material/plasteel
 
 /obj/item/material/minihoe/durasteel
-	material_parts = /datum/material/durasteel
+	material_parts = /datum/prototype/material/durasteel
 
 /obj/item/material/minihoe/bone
 	name = "primitive mini hoe"
 	icon = 'icons/obj/mining.dmi'
 	icon_state = "cultivator_bone"
-	material_parts = /datum/material/bone
+	material_parts = /datum/prototype/material/bone
 
 /obj/item/material/snow/snowball
 	name = "loose packed snowball"
 	desc = "A fun snowball. Throw it at your friends!"
 	icon = 'icons/obj/weapons.dmi'
 	icon_state = "snowball"
-	material_parts = /datum/material/snow
+	material_parts = /datum/prototype/material/snow
 	material_significance = MATERIAL_SIGNIFICANCE_SHARD
 	force_multiplier = 0
 	w_class = WEIGHT_CLASS_SMALL
 	attack_verb = list("mushed", "splatted", "splooshed", "splushed") // Words that totally exist.
+
+/obj/item/material/snow/snowball/throw_impact(atom/hit_atom)
+	if(!..()) // not caught in mid-air
+		if(isliving(hit_atom))
+			visible_message("<span class='notice'>[src] explodes into a shower of snow upon impact!</span>")
+			qdel(src)
 
 /obj/item/material/snow/snowball/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()

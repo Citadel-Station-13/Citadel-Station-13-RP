@@ -1,6 +1,6 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "aa" = (
-/turf/unsimulated/wall/planetary/desert,
+/turf/unsimulated/wall/planetary/endless_sands,
 /area/space)
 "ab" = (
 /turf/simulated/floor/outdoors/beach/sand/desert,

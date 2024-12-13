@@ -6,8 +6,8 @@
 /turf/simulated/wall
 	name = "wall"
 	desc = "A huge chunk of iron used to separate rooms."
-	color = /datum/material/steel::icon_colour
-	icon = /datum/material/steel::icon_base
+	color = /datum/prototype/material/steel::icon_colour
+	icon = /datum/prototype/material/steel::icon_base
 	icon_state = "wall-0"
 	base_icon_state = "wall"
 
@@ -23,6 +23,7 @@
 	integrity_failure = 0
 
 	armor_type = /datum/armor/object/heavy
+	outdoors = FALSE
 
 	opacity = TRUE
 	density = TRUE
@@ -49,11 +50,11 @@
 	var/can_open = FALSE
 
 	/// The material of the girders that are produced when the wall is dismantled.
-	var/datum/material/material_girder = /datum/material/steel
+	var/datum/prototype/material/material_girder = /datum/prototype/material/steel
 	/// The base material of the wall.
-	var/datum/material/material_outer = /datum/material/steel
+	var/datum/prototype/material/material_outer = /datum/prototype/material/steel
 	/// The reinforcement material of the wall.
-	var/datum/material/material_reinf
+	var/datum/prototype/material/material_reinf
 
 	var/last_state
 	var/construction_stage
@@ -166,8 +167,8 @@
 				material_outer.place_dismantled_product(src)
 
 	for(var/obj/O in src.contents) //Eject contents!
-		if(istype(O,/obj/structure/sign/poster))
-			var/obj/structure/sign/poster/P = O
+		if(istype(O,/obj/structure/poster))
+			var/obj/structure/poster/P = O
 			P.roll_and_drop(src)
 		else
 			O.forceMove(src)

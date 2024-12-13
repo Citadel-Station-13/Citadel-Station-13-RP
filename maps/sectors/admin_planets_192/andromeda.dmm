@@ -4425,7 +4425,7 @@
 /area/admin_planet/andromeda/supply_warehouse)
 "nv" = (
 /obj/structure/table/steel_reinforced,
-/obj/item/defib_kit/jumper_kit/loaded,
+/obj/item/defib_kit/loaded,
 /turf/simulated/floor/tiled/dark{
 	color = "#A9A9A9"
 	},

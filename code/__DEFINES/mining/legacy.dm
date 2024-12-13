@@ -1,19 +1,31 @@
 /**
- * *sigh*
+ * todo: entirely rework this
  */
 /proc/standard_mineral_roll(rare)
 	var/static/list/probabilities = list(
-		"marble" = 2,
-		"uranium" = 4,
-		"platinum" = 3,
-		"hematite" = 5,
-		"carbon" = 5,
-		"diamond" = 2,
-		"gold" = 8,
-		"silver" = 8,
-		"phoron" = 8,
-		"lead" = 3,
-		"verdantium" = 1,
-		"copper" = 4,
+		/datum/ore/uranium::name = 4,
+		/datum/ore/hematite::name = 5,
+		/datum/ore/coal::name = 5,
+		/datum/ore/phoron::name = 8,
+		/datum/ore/silver::name = 8,
+		/datum/ore/gold::name = 8,
+		/datum/ore/diamond::name = 2,
+		/datum/ore/platinum::name = 3,
+		/datum/ore/verdantium::name = 1,
+		/datum/ore/lead::name = 4,
+		/datum/ore/copper::name = 6,
 	)
-	return pickweight(probabilities)
+	var/static/list/probabilities_rare = list(
+		/datum/ore/uranium::name = 4 + 2,
+		/datum/ore/hematite::name = 5,
+		/datum/ore/coal::name = 5,
+		/datum/ore/phoron::name = 8 + 1,
+		/datum/ore/silver::name = 8 + 1,
+		/datum/ore/gold::name = 8 + 1,
+		/datum/ore/diamond::name = 2 + 3,
+		/datum/ore/platinum::name = 3 + 3,
+		/datum/ore/verdantium::name = 1 + 3,
+		/datum/ore/lead::name = 4,
+		/datum/ore/copper::name = 6,
+	)
+	return pickweight(rare ? probabilities_rare : probabilities)

@@ -1,25 +1,25 @@
 // Access check is of the type requires one. These have been carefully selected to avoid allowing the janitor to see channels he shouldn't
 GLOBAL_LIST_INIT(default_internal_channels, list(
-	num2text(PUB_FREQ) = list(),
-	num2text(AI_FREQ)  = list(ACCESS_SPECIAL_SILICONS),
-	num2text(ENT_FREQ) = list(),
-	num2text(ERT_FREQ) = list(ACCESS_CENTCOM_ERT),
-	num2text(COMM_FREQ)= list(ACCESS_COMMAND_BRIDGE),
-	num2text(ENG_FREQ) = list(ACCESS_ENGINEERING_ENGINE, ACCESS_ENGINEERING_ATMOS),
-	num2text(MED_FREQ) = list(ACCESS_MEDICAL_EQUIPMENT),
-	num2text(MED_I_FREQ)=list(ACCESS_MEDICAL_EQUIPMENT),
-	num2text(SEC_FREQ) = list(ACCESS_SECURITY_EQUIPMENT),
-	num2text(SEC_I_FREQ)=list(ACCESS_SECURITY_EQUIPMENT),
-	num2text(SCI_FREQ) = list(ACCESS_SCIENCE_FABRICATION, ACCESS_SCIENCE_ROBOTICS, ACCESS_SCIENCE_XENOBIO, ACCESS_GENERAL_EXPLORER),
-	num2text(SUP_FREQ) = list(ACCESS_SUPPLY_BAY, ACCESS_SUPPLY_MINE_OUTPOST),
-	num2text(SRV_FREQ) = list(ACCESS_GENERAL_JANITOR, ACCESS_GENERAL_LIBRARY, ACCESS_GENERAL_BOTANY, ACCESS_GENERAL_BAR, ACCESS_GENERAL_KITCHEN),
-	num2text(EXP_FREQ) = list(ACCESS_GENERAL_EXPLORER, ACCESS_GENERAL_PILOT, ACCESS_SCIENCE_RD)
+	num2text(FREQ_COMMON) = list(),
+	num2text(FREQ_AI_PRIVATE)  = list(ACCESS_SPECIAL_SILICONS),
+	num2text(FREQ_ENTERTAINMENT) = list(),
+	num2text(FREQ_ERT) = list(ACCESS_CENTCOM_ERT),
+	num2text(FREQ_COMMAND)= list(ACCESS_COMMAND_BRIDGE),
+	num2text(FREQ_ENGINEERING) = list(ACCESS_ENGINEERING_ENGINE, ACCESS_ENGINEERING_ATMOS),
+	num2text(FREQ_MEDICAL) = list(ACCESS_MEDICAL_EQUIPMENT),
+	num2text(FREQ_MEDICAL_INTERNAL)=list(ACCESS_MEDICAL_EQUIPMENT),
+	num2text(FREQ_SECURITY) = list(ACCESS_SECURITY_EQUIPMENT),
+	num2text(FREQ_SECURITY_INTERNAL)=list(ACCESS_SECURITY_EQUIPMENT),
+	num2text(FREQ_SCIENCE) = list(ACCESS_SCIENCE_FABRICATION, ACCESS_SCIENCE_ROBOTICS, ACCESS_SCIENCE_XENOBIO, ACCESS_GENERAL_EXPLORER),
+	num2text(FREQ_SUPPLY) = list(ACCESS_SUPPLY_BAY, ACCESS_SUPPLY_MINE_OUTPOST),
+	num2text(FREQ_SERVICE) = list(ACCESS_GENERAL_JANITOR, ACCESS_GENERAL_LIBRARY, ACCESS_GENERAL_BOTANY, ACCESS_GENERAL_BAR, ACCESS_GENERAL_KITCHEN),
+	num2text(FREQ_EXPLORER) = list(ACCESS_GENERAL_EXPLORER, ACCESS_GENERAL_PILOT, ACCESS_SCIENCE_RD)
 ))
 
 GLOBAL_LIST_INIT(default_medbay_channels, list(
-	num2text(PUB_FREQ) = list(),
-	num2text(MED_FREQ) = list(ACCESS_MEDICAL_EQUIPMENT),
-	num2text(MED_I_FREQ) = list(ACCESS_MEDICAL_EQUIPMENT)
+	num2text(FREQ_COMMON) = list(),
+	num2text(FREQ_MEDICAL) = list(ACCESS_MEDICAL_EQUIPMENT),
+	num2text(FREQ_MEDICAL_INTERNAL) = list(ACCESS_MEDICAL_EQUIPMENT)
 ))
 
 /obj/item/radio
@@ -32,7 +32,7 @@ GLOBAL_LIST_INIT(default_medbay_channels, list(
 	///FALSE for off
 	var/on = TRUE
 	var/last_transmission
-	var/frequency = PUB_FREQ //common chat
+	var/frequency = FREQ_COMMON //common chat
 	///Tune to frequency to unlock traitor supplies
 	var/traitor_frequency = 0
 	///The range which mobs can hear this radio from
@@ -82,8 +82,8 @@ GLOBAL_LIST_INIT(default_medbay_channels, list(
 	wires = new(src)
 	internal_channels = GLOB.default_internal_channels.Copy()
 	listening_objects += src
-	if(frequency < RADIO_LOW_FREQ || frequency > RADIO_HIGH_FREQ)
-		frequency = sanitize_frequency(frequency, RADIO_LOW_FREQ, RADIO_HIGH_FREQ)
+	if(frequency < MIN_FREE_FREQ || frequency > MAX_FREE_FREQ)
+		frequency = sanitize_frequency(frequency, free = TRUE)
 	set_frequency(frequency)
 
 	for (var/ch_name in channels)
@@ -182,8 +182,8 @@ GLOBAL_LIST_INIT(default_medbay_channels, list(
 	if(syndie)
 		data["useSyndMode"] = TRUE
 
-	data["minFrequency"] = PUBLIC_LOW_FREQ
-	data["maxFrequency"] = PUBLIC_HIGH_FREQ
+	data["minFrequency"] = MIN_FREQ
+	data["maxFrequency"] = MAX_FREQ
 
 	return data
 
@@ -194,7 +194,7 @@ GLOBAL_LIST_INIT(default_medbay_channels, list(
 	switch(action)
 		if("setFrequency")
 			var/new_frequency = (text2num(params["freq"]))
-			if((new_frequency < PUBLIC_LOW_FREQ || new_frequency > PUBLIC_HIGH_FREQ))
+			if((new_frequency < MIN_FREQ || new_frequency > MAX_FREQ))
 				new_frequency = sanitize_frequency(new_frequency)
 			set_frequency(new_frequency)
 			if(hidden_uplink)
@@ -341,7 +341,7 @@ GLOBAL_DATUM_INIT(virtual_announcer_ai, /mob/living/silicon/ai/announcer, new(nu
 	//If we were to send to a channel we don't have, drop it.
 	return null
 
-/obj/item/radio/talk_into(mob/living/M as mob, message, channel, var/verb = "says", var/datum/language/speaking = null)
+/obj/item/radio/talk_into(mob/living/M as mob, message, channel, var/verb = "says", var/datum/prototype/language/speaking = null)
 	if(!on)
 		return FALSE //The device has to be on
 	//Fix for permacell radios, but kinda eh about actually fixing them.
@@ -551,7 +551,7 @@ GLOBAL_DATUM_INIT(virtual_announcer_ai, /mob/living/silicon/ai/announcer, new(nu
 		src, message, displayname, jobname, real_name, M.voice_name,
 		filter_type, signal.data["compression"], (LEGACY_MAP_DATUM).get_map_levels(pos_z), connection.frequency, verb, speaking)
 
-/obj/item/radio/hear_talk(mob/M as mob, msg, var/verb = "says", var/datum/language/speaking = null)
+/obj/item/radio/hear_talk(mob/M as mob, msg, var/verb = "says", var/datum/prototype/language/speaking = null)
 	if (broadcasting)
 		if(get_dist(src, M) <= canhear_range)
 			talk_into(M, msg,null,verb,speaking)
@@ -761,7 +761,7 @@ GLOBAL_DATUM_INIT(virtual_announcer_ai, /mob/living/silicon/ai/announcer, new(nu
 	name = "phone"
 
 /obj/item/radio/phone/medbay
-	frequency = MED_I_FREQ
+	frequency = FREQ_MEDICAL_INTERNAL
 
 /obj/item/radio/phone/medbay/Initialize(mapload)
 	. = ..()
@@ -776,7 +776,7 @@ GLOBAL_DATUM_INIT(virtual_announcer_ai, /mob/living/silicon/ai/announcer, new(nu
 /obj/item/radio/emergency
 	name = "Medbay Emergency Radio Link"
 	icon_state = "med_walkietalkie"
-	frequency = MED_I_FREQ
+	frequency = FREQ_MEDICAL_INTERNAL
 	subspace_transmission = 1
 	adhoc_fallback = TRUE
 

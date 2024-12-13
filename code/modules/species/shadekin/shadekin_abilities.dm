@@ -287,7 +287,10 @@
 	on_created_text = "<span class='notice'>You drag part of The Dark into realspace, enveloping yourself.</span>"
 	on_expired_text = "<span class='warning'>You lose your grasp on The Dark and realspace reasserts itself.</span>"
 	stacks = MODIFIER_STACK_EXTEND
+
 	var/mob/living/carbon/human/my_kin
+	var/range = 8
+	var/power = -10
 
 /datum/modifier/shadekin/create_shade/tick()
 	if(my_kin.ability_flags & AB_PHASE_SHIFTED)
@@ -296,15 +299,9 @@
 /datum/modifier/shadekin/create_shade/on_applied()
 	my_kin = holder
 	holder.glow_toggle = TRUE
-	holder.glow_range = 8
-	holder.glow_intensity = -10
-	holder.glow_color = "#FFFFFF"
-	holder.set_light(8, -10, "#FFFFFF")
+	holder.set_light(range, power, "#FFFFFF")
 
 /datum/modifier/shadekin/create_shade/on_expire()
 	holder.glow_toggle = initial(holder.glow_toggle)
-	holder.glow_range = initial(holder.glow_range)
-	holder.glow_intensity = initial(holder.glow_intensity)
-	holder.glow_color = initial(holder.glow_color)
-	holder.set_light(0)
+	holder.set_light(initial(holder.glow_range), initial(holder.glow_intensity), initial(holder.glow_color))
 	my_kin = null

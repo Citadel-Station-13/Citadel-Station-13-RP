@@ -1,11 +1,16 @@
 /// Any floor or wall. What makes up the station and the rest of the map.
 /turf
 	abstract_type = /turf
-
 	icon = 'icons/turf/floors.dmi'
+	luminosity = 1
+
+	//* Default turf inbuilts *//
+
 	layer = TURF_LAYER
 	plane = TURF_PLANE
-	luminosity = 1
+	opacity = FALSE
+	density = FALSE
+	alpha = 255
 
 	//* Atmospherics
 	/**
@@ -72,7 +77,7 @@
 	 * FALSE - as it implies
 	 * null - use area default
 	 */
-	var/outdoors = FALSE
+	var/outdoors = null
 
 	//* Radiation
 	/// cached rad insulation of contents
@@ -153,7 +158,6 @@
 
 	SETUP_SMOOTHING()
 
-	// queue if necessary; QUEUE_SMOOTH implicitly checks IS_SMOOTH so don't check again
 	QUEUE_SMOOTH(src)
 
 	//atom color stuff
@@ -165,8 +169,8 @@
 	// this is to trigger entered effects
 	// bad news is this is not necessarily currently idempotent
 	// we probably have to deal with this at.. some point.
-	for(var/atom/movable/AM in src)
-		Entered(AM)
+	for(var/atom/movable/content as anything in src)
+		Entered(content)
 
 	var/area/A = loc
 
@@ -231,7 +235,7 @@
 
 	// clear vis contents here instead of in Init
 	if(length(vis_contents))
-		vis_contents.len = 0
+		vis_contents.Cut()
 
 	..()
 
@@ -610,6 +614,12 @@
 
 //* Multiz *//
 
+/**
+ * Update multiz linkage. This is done when a zlevel rebuilds its multiz state.
+ *
+ * todo: maybe include params for 'z_offset_up', 'z_offset_down'? manuallly fetching on
+ *       every turf is slow as balls.
+ */
 /turf/proc/update_multiz()
 	return
 

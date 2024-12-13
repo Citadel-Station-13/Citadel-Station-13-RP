@@ -1,9 +1,10 @@
+CREATE_STANDARD_TURFS(/turf/simulated/floor/outdoors/snow)
 /turf/simulated/floor/outdoors/snow
 	name = "snow"
 	icon_state = "snow"
 	edge_blending_priority = 1
 	slowdown = 2
-	initial_flooring = /singleton/flooring/snow
+	initial_flooring = /datum/prototype/flooring/snow
 	baseturfs = /turf/simulated/floor/outdoors/dirt
 
 	// smoothing_flags = SMOOTH_BITMASK | SMOOTH_BORDER
@@ -12,7 +13,6 @@
 
 	var/crossed_dirs = NONE
 
-CREATE_STANDARD_TURFS(/turf/simulated/floor/outdoors/snow)
 
 /turf/simulated/floor/outdoors/snow/Entered(atom/movable/AM)
 	if(AM.hovering || AM.is_incorporeal()) // Flying things shouldn't make footprints.
@@ -94,5 +94,9 @@ CREATE_STANDARD_TURFS(/turf/simulated/floor/outdoors/shelfice)
 	icon_state = "gravsnow"
 	desc = "A layer of coarse ice pebbles and assorted gravel."
 	edge_blending_priority = 0
-	initial_flooring = /singleton/flooring/snow/gravsnow
+	initial_flooring = /datum/prototype/flooring/snow/gravsnow
 	baseturfs = /turf/simulated/floor/outdoors/dirt
+
+/turf/simulated/floor/outdoors/snow/no_tree
+	// tree_chance = 0
+	// deadtree_chance = 0

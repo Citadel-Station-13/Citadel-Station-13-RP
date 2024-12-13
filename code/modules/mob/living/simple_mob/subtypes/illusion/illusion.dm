@@ -40,10 +40,7 @@
 // Because we can't perfectly duplicate some examine() output, we directly examine the AM it is copying.  It's messy but
 // this is to prevent easy checks from the opposing force.
 /mob/living/simple_mob/illusion/examine(mob/user, dist)
-	if(copying)
-		copying.examine(user)
-		return
-
+	return copying?.examine(user) || ..() // ugh
 
 /mob/living/simple_mob/illusion/on_bullet_act(obj/projectile/proj, impact_flags, list/bullet_act_args)
 	if(realistic)

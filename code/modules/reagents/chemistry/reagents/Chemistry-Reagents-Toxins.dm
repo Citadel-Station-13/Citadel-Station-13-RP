@@ -1091,34 +1091,44 @@
 
 /*
  * Hostile nanomachines.
- * Unscannable, and commonly all look the same.
+ * Now scannable! Removed with shockchems!
  */
 
-/datum/reagent/shredding_nanites
-	name = "Restorative Nanites"
+/datum/reagent/nanite/shredding
+	name = "Shredding Nanites"
 	id = "shredding_nanites"
-	description = "Miniature medical robots that swiftly restore bodily damage. These ones seem to be malfunctioning."
+	description = "Nanites meant to stitch wounds togeher repurpose to tear the body apart from the inside out!"
 	taste_description = "metal"
+	taste_mult = 0.1
 	reagent_state = REAGENT_SOLID
 	color = "#555555"
-	metabolism = REM * 4 // Nanomachines. Fast.
+	mrate_static = TRUE
+	metabolism = 0.01 //Fast no more they stick in you for a long time
+	reagent_filter_flags = REAGENT_FILTER_NO_COMMON_BIOANALYSIS
 	affects_robots = TRUE
 
-/datum/reagent/shredding_nanites/affect_blood(mob/living/carbon/M, alien, removed)
-	M.adjustBruteLoss(4 * removed)
-	M.adjustOxyLoss(4 * removed)
+/datum/reagent/nanite/shredding/affect_blood(mob/living/carbon/M, alien, removed)
+	M.adjustBruteLoss(40 * removed) //Bicaridine can outheal it (unless Metabolism is less then 75%).
+	M.adjustOxyLoss(40 * removed)
 
-/datum/reagent/irradiated_nanites
-	name = "Restorative Nanites"
+/datum/reagent/nanite/shredding/affect_ingest(mob/living/carbon/M, alien, removed) //Now they can be used in chemsmoke (Nanite Kill Clouds)
+	M.adjustBruteLoss(40 * removed)
+	M.adjustOxyLoss(40 * removed)
+
+/datum/reagent/nanite/irradiated
+	name = "Irradiated Nanites"
 	id = "irradiated_nanites"
-	description = "Miniature medical robots that swiftly restore bodily damage. These ones seem to be malfunctioning."
+	description = "These miniature robots seem to be give off life threatening gamma radiation endangering both the host and those around them."
 	taste_description = "metal"
+	taste_mult = 0.1
 	reagent_state = REAGENT_SOLID
+	mrate_static = TRUE
 	color = "#555555"
-	metabolism = REM * 4
+	metabolism = 0.01 //No gimmick you just glow for longer now!
+	reagent_filter_flags = REAGENT_FILTER_NO_COMMON_BIOANALYSIS
 	affects_robots = TRUE
 
-/datum/reagent/irradiated_nanites/affect_blood(mob/living/carbon/M, alien, removed)
+/datum/reagent/nanite/irradiated/affect_blood(mob/living/carbon/M, alien, removed)
 	// todo: this should be more brutal on people around the person without being too brutal on the person
 	// new radiation just kind of scales pretty badly
 	/// rads to everyone around you
@@ -1126,32 +1136,214 @@
 	/// radiate the person a bit just in case they're armored
 	M.rad_act(RAD_INTENSITY_CHEM_IRRADIATED_NANITES_SELF)
 
-/datum/reagent/neurophage_nanites
-	name = "Restorative Nanites"
+/datum/reagent/nanite/irradiated/affect_ingest(mob/living/carbon/M, alien, removed)
+	radiation_pulse(M, RAD_INTENSITY_CHEM_IRRADIATED_NANITES)
+	M.rad_act(RAD_INTENSITY_CHEM_IRRADIATED_NANITES_SELF)
+
+/datum/reagent/nanite/neurophage
+	name = "Neurophage Nanites"
 	id = "neurophage_nanites"
-	description = "Miniature medical robots that swiftly restore bodily damage. These ones seem to be completely hostile."
+	description = "Dangerous microscoptic robots that attack the both the brain and the alkysine sent to repair it."
 	taste_description = "metal"
+	taste_mult = 0.1
 	reagent_state = REAGENT_SOLID
+	mrate_static = TRUE
 	color = "#555555"
-	metabolism = REM * 4
+	metabolism = 0.01
+	reagent_filter_flags = REAGENT_FILTER_NO_COMMON_BIOANALYSIS
 	filtered_organs = list(O_SPLEEN)
 	affects_robots = TRUE
 
-/datum/reagent/neurophage_nanites/affect_blood(mob/living/carbon/M, alien, removed)
-	M.adjustBrainLoss(2 * removed)	// Their job is to give you a bad time.
-	M.adjustBruteLoss(2 * removed)
+/datum/reagent/nanite/neurophage/affect_blood(mob/living/carbon/M, alien, removed)
+	M.adjustBrainLoss(20 * removed)	// Alkysine can outheal it, however since mrate is so slow you need 5 times the Alky to fully heal through it
+	M.adjustBruteLoss(20 * removed)
+	if(M.ingested)
+		for(var/datum/reagent/alkysine/R in M.ingested.reagent_list) //Alkysine takes a while to metabolize this means the brain shield Alkysine gives you wears off quicker
+			R.remove_self(removed * 10)
+	if(M.bloodstr)
+		for(var/datum/reagent/alkysine/R  in M.bloodstr.reagent_list) //This is about triple alkysine's regular metabolization rate.
+			R.remove_self(removed * 10)
+
+
+/datum/reagent/nanite/neurophage/affect_ingest(mob/living/carbon/M, alien, removed)
+	M.adjustBrainLoss(20 * removed)
+	M.adjustBruteLoss(20 * removed)
+	if(M.ingested)
+		for(var/datum/reagent/alkysine/R in M.ingested.reagent_list)
+			R.remove_self(removed * 10)
+	if(M.bloodstr)
+		for(var/datum/reagent/alkysine/R  in M.bloodstr.reagent_list)
+			R.remove_self(removed * 10)
+
+/datum/reagent/nanite/heartkill
+	name = "Heartkill Nanites"
+	id = "heartkill_nanites"
+	description = "A simple weaponized nanomachine which enters the bloodstream then begins to clot flow to the heart. ."
+	taste_description = "metal"
+	taste_mult = 0.1 //Sssshhh you don't want them to know they have been poisoned
+	reagent_state = REAGENT_SOLID
+	mrate_static = TRUE
+	color = "#555555"
+	metabolism = 0.01
+
+/datum/reagent/nanite/heartkill/affect_ingest(mob/living/carbon/M, alien, removed) //Damage handled using the heart_attack() proc in heart.dm
+	var/mob/living/carbon/human/H = M
+	if(istype(H))
+		if(prob(5))
+			H.heart_attack()
+
+/datum/reagent/nanite/heartkill/affect_blood(mob/living/carbon/M, alien, removed)//Damage handled using the heart_attack() proc in heart.dm
+	var/mob/living/carbon/human/H = M
+	if(istype(H))
+		if(prob(5))
+			H.heart_attack()
+
 
 //Special toxins for solargrubs
 //Moved from Chemistry-Reagents-Vore_vr.dm
 /datum/reagent/grubshock
 	name = "200 V" //in other words a painful shock
 	id = "shockchem"
-	description = "A liquid that quickly dissapates to deliver a painful shock."
+	description = "A liquid that quickly dissapates to deliver a painful shock. It can also disable nanomachines in the body."
 	reagent_state = REAGENT_LIQUID
 	color = "#E4EC2F"
 	metabolism = 2.50
-	var/power = 9
 	affects_robots = TRUE
 
 /datum/reagent/grubshock/affect_blood(mob/living/carbon/M, alien, removed)
-	M.take_random_targeted_damage(brute = 0, brute = removed * power * 0.2)
+	M.electrocute_act(10 * removed, src, 1.0, BP_TORSO, 0)
+	if(M.ingested)
+		for(var/datum/reagent/nanite/R in M.ingested.reagent_list)
+			R.remove_self(removed * 30)
+	if(M.bloodstr)
+		for(var/datum/reagent/nanite/R in M.bloodstr.reagent_list)
+			R.remove_self(removed * 20)
+
+
+/datum/reagent/grubshock/affect_ingest(mob/living/carbon/M, alien, removed)
+	M.electrocute_act(10 * removed, src, 1.0, BP_TORSO, 0)
+	if(M.ingested)
+		for(var/datum/reagent/nanite/R in M.ingested.reagent_list)
+			R.remove_self(removed * 30)
+	if(M.bloodstr)
+		for(var/datum/reagent/nanite/R in M.bloodstr.reagent_list)
+			R.remove_self(removed * 20)
+
+/datum/reagent/grubshock/affect_touch(mob/living/carbon/M, alien, removed)
+	M.electrocute_act(10 * volume, src, 1.0, BP_TORSO, 0)
+
+//This chem is for removing nanites without grubmeat
+/datum/reagent/lessershock
+	name = "2 V" //in other words a less painful shock
+	id = "lessershock"
+	description = "A liquidified Lithium-Iron-Phosphate battery. Can be used to deliver shocks to the body in order to counter hostile nanomachines."
+	reagent_state = REAGENT_SOLID
+	color = "#E4EC2F"
+	metabolism = 2.50
+
+	affects_robots = TRUE
+
+/datum/reagent/lessershock/affect_blood(mob/living/carbon/M, alien, removed)
+	M.electrocute_act(5 * removed, src, 1.0, BP_TORSO, 0)
+	if(M.ingested)
+		for(var/datum/reagent/nanite/R in M.ingested.reagent_list)
+			R.remove_self(removed)
+	if(M.bloodstr)
+		for(var/datum/reagent/nanite/R in M.bloodstr.reagent_list)
+			R.remove_self(removed)
+
+/datum/reagent/lessershock/affect_ingest(mob/living/carbon/M, alien, removed)
+	M.electrocute_act(5 * removed, src, 1.0, BP_TORSO, 0)
+	if(M.ingested)
+		for(var/datum/reagent/nanite/R in M.ingested.reagent_list)
+			R.remove_self(removed)
+	if(M.bloodstr)
+		for(var/datum/reagent/nanite/R in M.bloodstr.reagent_list)
+			R.remove_self(removed)
+
+/datum/reagent/lessershock/affect_touch(mob/living/carbon/M, alien, removed)
+	M.electrocute_act(5 * volume, src, 1.0, BP_TORSO, 0)
+
+/datum/reagent/asbestos //asbestos removal handled in under datum/reagent/respirodaxon
+	name = "Asbestos"
+	id = "asbestos"
+	description = "A silicate made of packed fibrils. Renowned for its insulative properties and for getting permanently stuck in the lungs when inhaled as a powder."
+	taste_description = "sharp dust"
+	reagent_state = REAGENT_SOLID
+	color = "#d8d6d6"
+	metabolism = 0.01 // Does not leave your system easily
+	mrate_static = TRUE
+	reagent_filter_flags = REAGENT_FILTER_NO_COMMON_BIOANALYSIS
+	overdose = 10
+
+/datum/reagent/asbestos/affect_blood(mob/living/carbon/M, alien, removed)
+	M.ingested.add_reagent(/datum/reagent/asbestos, 0.02) //No idea what to do with injected asbestos I will simply say it goes to your lungs faster.
+
+/datum/reagent/asbestos/affect_ingest(mob/living/carbon/M, alien, removed)
+	var/mob/living/carbon/human/H = M
+	if(prob(2))
+		M.emote("cough")
+		M.adjustOxyLoss(5)
+	if(istype(H))
+		if(prob(1))
+			H.asbestos_lung()
+
+/datum/reagent/asbestos/overdose(mob/living/carbon/human/M, alien, removed)
+	var/mob/living/carbon/human/H = M
+	if(prob(4))
+		M.emote("cough")
+		M.adjustOxyLoss(10)
+	if(istype(H))
+		if(prob(1))
+			H.asbestos_lung()
+
+
+/datum/reagent/asbestos/touch_turf(turf/T) //Great now the dust is airborne!
+	if(volume >= 20)
+		var/location = get_turf(holder.my_atom)
+		var/datum/effect_system/smoke_spread/chem/S = new /datum/effect_system/smoke_spread/chem
+		S.attach(location)
+		S.set_up(holder, volume * 0.05, 0, location) //This ghetto smoke solution is 1/8th as effecient as chemsmoke
+		playsound(location, 'sound/effects/smoke.ogg', 50, 1, -3)
+		spawn(0)
+			S.start()
+
+/datum/reagent/polonium
+	name = "Polonium-210"
+	id = "polonium"
+	description = "An extremely deadly radioactive isotope. Even a microgram is lethal. A nicotine-arithrazine mixture is known to help remove it from the blood and stomach."
+	taste_mult = 0	//It would be a rather bad if you could taste this poison
+	reagent_state = REAGENT_SOLID
+	color = "#A6FAFF"
+	metabolism = 0.01 //This is around 100 radiation a tick for a total of 5k radiaion a unit. Use stasis!!!
+	mrate_static = TRUE
+	reagent_filter_flags = REAGENT_FILTER_NO_COMMON_BIOANALYSIS
+
+/datum/reagent/polonium/affect_blood(mob/living/carbon/M, alien, removed)
+	M.afflict_radiation(RAD_MOB_AFFLICT_STRENGTH_POL210(removed))
+
+/datum/reagent/polonium/affect_ingest(mob/living/carbon/M, alien, removed)
+	M.afflict_radiation(RAD_MOB_AFFLICT_STRENGTH_POL210(removed))
+
+/datum/reagent/polonium/touch_turf(turf/T)
+	if(volume >= 3)
+		if(!istype(T, /turf/space))
+			var/obj/effect/debris/cleanable/greenglow/glow = locate(/obj/effect/debris/cleanable/greenglow, T)
+			if(!glow)
+				new /obj/effect/debris/cleanable/greenglow(T)
+			return
+
+/datum/reagent/superhol
+	name = "Superhol"
+	id = "superhol"
+	description = "A synthetic alcohol that attaches to filtration organs and rapidly induces lethal alcohol poisoning. Treated with hepanephrodaxon and ethylredoxrazine."
+	taste_description = "burning alcohol"
+	color = "#404030"
+	taste_mult = 0.1
+	metabolism = 0.01
+	mrate_static = TRUE
+	reagent_filter_flags = REAGENT_FILTER_NO_COMMON_BIOANALYSIS
+
+/datum/reagent/superhol/affect_ingest(mob/living/carbon/M, alien, removed)
+	M.bloodstr.add_reagent(/datum/reagent/ethanol, removed * 200) //Two Ethanol a tick enough so the drunkeness hits slow enough to be semi plausible
+	M.add_chemical_effect(CE_ALCOHOL_TOXIC, 5)
