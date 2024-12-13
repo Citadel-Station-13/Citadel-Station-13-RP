@@ -7880,13 +7880,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/shuttle/excursion/cockpit)
-"fND" = (
-/obj/structure/memorial{
-	name = "NSV Endeavour's Builder's Plate";
-	desc = "The Armstrong-Hawker Shipbuilding company would like to thank the following for the contributions to the design: Dáire van der Waals, M.D., Ph.D.; Ruminis Melro, B.S.E; Hammond McGuire Sr., M.S.E.. Their work was essential in the design and manufacture of this vessel, and those of her class in the years to follow."
-	},
-/turf/simulated/wall/prepainted/civilian,
-/area/station/stairs_one)
 "fNJ" = (
 /obj/machinery/light,
 /turf/simulated/floor/tiled/dark,
@@ -31095,8 +31088,12 @@
 /turf/simulated/floor/tiled/dark,
 /area/hallway/secondary/docking_hallway2)
 "wWq" = (
-/turf/simulated/wall/prepainted/civilian,
-/area/station/stairs_one)
+/obj/structure/memorial{
+	name = "NSV Endeavour's Builder's Plate";
+	desc = "The Armstrong-Hawker Shipbuilding company would like to thank the following for the contributions to the design: Dáire van der Waals, M.D., Ph.D.; Ruminis Melro, B.S.E; Hammond McGuire Sr., M.S.E.. Their work was essential in the design and manufacture of this vessel, and those of her class in the years to follow."
+	},
+/turf/simulated/wall/prepainted,
+/area/endeavour/hallway/d1fwdhall)
 "wWR" = (
 /obj/machinery/fire_alarm/north_mount,
 /turf/simulated/floor/tiled,
@@ -62453,7 +62450,7 @@ uTr
 xGj
 cDX
 pQg
-lUh
+wWq
 lUh
 tuO
 qyL
@@ -64010,7 +64007,7 @@ aEU
 wyY
 uhG
 eDl
-fND
+aEU
 srV
 srV
 aEU
@@ -64204,7 +64201,7 @@ aEU
 hBB
 uhG
 xYV
-wWq
+aEU
 srV
 vBK
 aEU
