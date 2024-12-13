@@ -473,30 +473,6 @@
 
 #warn deal with these
 
-//* Getters *//
-
-/**
- * Gets the amount of a reagent ID or path
- */
-/datum/reagent_holder/proc/get_reagent_amount(datum/reagent/reagentlike)
-	return reagent_volumes ? reagent_volumes[ispath(reagentlike) ? initial(reagentlike.id) : (istype(reagentlike) ? reagentlike.id : reagentlike)] : 0
-
-/**
- * Gets the data of a reagent ID or path
- */
-/datum/reagent_holder/proc/get_reagent_data(datum/reagent/reagentlike)
-	return reagent_datas ? reagent_datas[ispath(reagentlike) ? initial(reagentlike.id) : (istype(reagentlike) ? reagentlike.id : reagentlike)] : null
-
-/**
- * Gets the global singletons of reagents in us.
- *
- * todo: how do we handle this cleanly? this shouldn't be the usual case. rename to fetch_reagent_datums()?
- */
-/datum/reagent_holder/proc/get_reagent_datums() as /list
-	. = list()
-	for(var/id in reagent_volumes)
-		. += SSchemistry.fetch_reagent(id)
-
 //* Filtering *//
 
 /**
@@ -541,6 +517,30 @@
 		remove_reagent(id, reagent_volumes[id] * ratio, TRUE)
 	reconsider_reactions()
 	return min(amount, total_filterable)
+
+//* Getters *//
+
+/**
+ * Gets the amount of a reagent ID or path
+ */
+/datum/reagent_holder/proc/get_reagent_amount(datum/reagent/reagentlike)
+	return reagent_volumes ? reagent_volumes[ispath(reagentlike) ? initial(reagentlike.id) : (istype(reagentlike) ? reagentlike.id : reagentlike)] : 0
+
+/**
+ * Gets the data of a reagent ID or path
+ */
+/datum/reagent_holder/proc/get_reagent_data(datum/reagent/reagentlike)
+	return reagent_datas ? reagent_datas[ispath(reagentlike) ? initial(reagentlike.id) : (istype(reagentlike) ? reagentlike.id : reagentlike)] : null
+
+/**
+ * Gets the global singletons of reagents in us.
+ *
+ * todo: how do we handle this cleanly? this shouldn't be the usual case. rename to fetch_reagent_datums()?
+ */
+/datum/reagent_holder/proc/get_reagent_datums() as /list
+	. = list()
+	for(var/id in reagent_volumes)
+		. += SSchemistry.fetch_reagent(id)
 
 //* Queries *//
 

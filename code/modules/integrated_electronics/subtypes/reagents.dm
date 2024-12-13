@@ -563,7 +563,7 @@
 	var/obj/item/I = get_pin_data_as_type(IC_INPUT, 1, /obj/item)
 	if(istype(I) && (I.reagents?.total_volume) && check_target(I))
 		var/list/reagent_names_list = list()
-		for(var/datum/reagent/R in reagents?.reagent_list)
+		for(var/datum/reagent/R in reagents?.get_reagent_datums())
 			reagent_names_list.Add(R.name)
 		var/atom/AM = get_object()
 		AM.investigate_log("ground reagents: [jointext(reagent_names_list, ", ")] with [src].", INVESTIGATE_CIRCUIT)
@@ -589,7 +589,7 @@
 
 /obj/item/integrated_circuit/reagent/storage/scan/do_work()
 	var/cont[0]
-	for(var/datum/reagent/RE in reagents.reagent_list)
+	for(var/datum/reagent/RE in reagents.get_reagent_datums())
 		cont += RE.id
 	set_pin_data(IC_OUTPUT, 3, cont)
 	push_data()
@@ -642,7 +642,7 @@
 			return
 		if(!target.reagents.available_volume())
 			return
-		for(var/datum/reagent/G in source.reagents.reagent_list)
+		for(var/datum/reagent/G in source.reagents.get_reagent_datums())
 			if (!direc)
 				if(G.id in demand)
 					source.reagents.trans_id_to(target, G.id, transfer_amount)

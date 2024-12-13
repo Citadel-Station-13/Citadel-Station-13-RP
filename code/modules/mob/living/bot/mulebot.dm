@@ -235,8 +235,8 @@
 /mob/living/bot/mulebot/Bump(var/mob/living/M)
 	if(!safety && istype(M))
 		visible_message("<span class='warning'>[src] knocks over [M]!</span>")
-		M.afflict_stun(20 * 8)
-		M.afflict_paralyze(20 * 5)
+		M.afflict_paralyze(1 SECONDS)
+		M.afflict_knockdown(2 SECONDS)
 	..()
 
 /mob/living/bot/mulebot/proc/runOver(var/mob/living/M)
@@ -256,7 +256,7 @@
 		if(iscarbon(M))
 			var/mob/living/carbon/carbon = M
 			to_use = carbon.get_blood_mixture()
-		blood_splatter_legacy(get_turf(src), to_use, TRUE)
+		blood_splatter_legacy(get_turf(M), to_use, TRUE)
 
 /mob/living/bot/mulebot/relaymove(var/mob/user, var/direction)
 	if(load == user)

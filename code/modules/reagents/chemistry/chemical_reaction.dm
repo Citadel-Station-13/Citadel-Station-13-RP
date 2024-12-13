@@ -203,6 +203,7 @@
 //obtains any special data that will be provided to the reaction products
 //this is called just before reactants are removed.
 // todo: rework data system
+#warn refactor
 /datum/chemical_reaction/proc/send_data(datum/reagent_holder/holder, reaction_limit)
 	return null
 
