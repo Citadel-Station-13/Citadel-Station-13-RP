@@ -3750,10 +3750,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@popperjs/core@npm:^2.9.3":
-  version: 2.9.3
-  resolution: "@popperjs/core@npm:2.9.3"
-  checksum: 10c0/7c6f58275a6c40699b494820b30dc327ae9650ca954bdcbcdf85ac827273ca17cc55a24b6dc7ef4efe56cc718dafa43193fe1faf316839bc571316cd138bd247
+"@popperjs/core@npm:^2.11.8":
+  version: 2.11.8
+  resolution: "@popperjs/core@npm:2.11.8"
+  checksum: 10c0/4681e682abc006d25eb380d0cf3efc7557043f53b6aea7a5057d0d1e7df849a00e281cd8ea79c902a35a414d7919621fc2ba293ecec05f413598e0b23d5a1e63
   languageName: node
   linkType: hard
 
@@ -6162,10 +6162,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"dateformat@npm:^4.5.1":
-  version: 4.5.1
-  resolution: "dateformat@npm:4.5.1"
-  checksum: 10c0/b8a0729386254f8e1633b552f156160777302f91cd81bba3dc91641b80ce2ea7f330e2980e95ee460e079fb4d7d1b821ef8562f38dc2b461c7101db9b503f504
+"dateformat@npm:^5.0.3":
+  version: 5.0.3
+  resolution: "dateformat@npm:5.0.3"
+  checksum: 10c0/ccc7a5351080f7ae00496e246ed4d3afdba770f9a8267348d0d04387e23414ef219d9bb6f273a6d628c0ff5f0255ab75977d668dc7ab066b916a196950bdde9a
   languageName: node
   linkType: hard
 
@@ -6429,6 +6429,13 @@ __metadata:
   version: 2.3.1
   resolution: "dompurify@npm:2.3.1"
   checksum: 10c0/cf82f83551ef8537a761e4f035cde712ef5ad55f2c632b9788266dceb74b8ac65d13e443772bf2f8b6ff98cc1bf41579bbf1622a1149be6fb484fd3e2d478b81
+  languageName: node
+  linkType: hard
+
+"dompurify@npm:^2.5.7":
+  version: 2.5.8
+  resolution: "dompurify@npm:2.5.8"
+  checksum: 10c0/4101708d190b67be00350369d72619266a2e0ebb7dcab12628cf07711329b1df12239baea613df41b65cba571128e8ea4c29c442f4e2c98670a9bb5563521f03
   languageName: node
   linkType: hard
 
@@ -10298,12 +10305,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"marked@npm:^4.0.10":
-  version: 4.0.10
-  resolution: "marked@npm:4.0.10"
+"marked@npm:^4.3.0":
+  version: 4.3.0
+  resolution: "marked@npm:4.3.0"
   bin:
     marked: bin/marked.js
-  checksum: 10c0/137660cd1eca54cfcdcec9d9c7dea786fc57ba3663da9043b721aff4c1419fc869d21bc38f6d5907062b82d4ef354f4fcac6605cac5f4f9dc1595a743b856d91
+  checksum: 10c0/0013463855e31b9c88d8bb2891a611d10ef1dc79f2e3cbff1bf71ba389e04c5971298c886af0be799d7fa9aa4593b086a136062d59f1210b0480b026a8c5dc47
   languageName: node
   linkType: hard
 
@@ -13138,14 +13145,15 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "tgui@workspace:packages/tgui"
   dependencies:
-    "@popperjs/core": "npm:^2.9.3"
+    "@popperjs/core": "npm:^2.11.8"
     common: "workspace:*"
-    dateformat: "npm:^4.5.1"
-    dompurify: "npm:^2.3.1"
+    dateformat: "npm:^5.0.3"
+    dompurify: "npm:^2.5.7"
     inferno: "npm:^7.4.8"
     inferno-vnode-flags: "npm:^7.4.8"
+    jest: "npm:^29.7.0"
     js-yaml: "npm:^4.1.0"
-    marked: "npm:^4.0.10"
+    marked: "npm:^4.3.0"
     tgui-dev-server: "workspace:*"
     tgui-polyfill: "workspace:*"
   languageName: unknown

@@ -21,7 +21,7 @@ import { Layout } from './Layout';
 
 const logger = createLogger('Window');
 
-const DEFAULT_SIZE = [400, 600];
+const DEFAULT_SIZE: [number, number] = [400, 600];
 
 export interface WindowProps extends BoxProps{
   className?: string,
@@ -62,7 +62,7 @@ export class Window<T extends WindowProps> extends Component<T, {}> {
     const size = (this.props.width && this.props.height)? [this.props.width, this.props.height] : DEFAULT_SIZE;
     const options = {
       ...config.window,
-      size,
+      size: DEFAULT_SIZE,
     };
 
     if (config.window?.key) {
@@ -98,7 +98,7 @@ export class Window<T extends WindowProps> extends Component<T, {}> {
         theme={theme}>
         <TitleBar
           className="Window__titleBar"
-          title={!suspended && (title || decodeHtmlEntities(config.title))}
+          title={(title || decodeHtmlEntities(config.title))}
           status={config.status}
           fancy={fancy}
           onDragStart={dragStartHandler}
@@ -157,7 +157,7 @@ export class Window<T extends WindowProps> extends Component<T, {}> {
   };
 }
 
-const statusToColor = status => {
+const statusToColor = (status) => {
   switch (status) {
     case UI_INTERACTIVE:
       return 'good';
@@ -169,7 +169,18 @@ const statusToColor = status => {
   }
 };
 
-const TitleBar = (props, context) => {
+type TitleBarProps = Partial<{
+  canClose: boolean;
+  className: string;
+  fancy: boolean;
+  onClose: (e) => void;
+  onDragStart: (e) => void;
+  status: number;
+  title: string;
+}> &
+  BoxProps;
+
+const TitleBar = (props: TitleBarProps, context) => {
   const {
     className,
     title,
@@ -181,52 +192,43 @@ const TitleBar = (props, context) => {
     children,
   } = props;
   const dispatch = useDispatch(context);
+
+  const finalTitle =
+    (typeof title === 'string' &&
+      title === title.toLowerCase() &&
+      toTitleCase(title)) ||
+    title;
+
   return (
-    <div
-      className={classes([
-        'TitleBar',
-        className,
-      ])}>
-      {status === undefined && (
-        <Icon
-          className="TitleBar__statusIcon"
-          name="tools"
-          opacity={0.5} />
-      ) || (
+    <div className={classes(['TitleBar', className])}>
+      {(status === undefined && (
+        <Icon className="TitleBar__statusIcon" name="tools" opacity={0.5} />
+      )) || (
         <Icon
           className="TitleBar__statusIcon"
           color={statusToColor(status)}
-          name="eye" />
+          name="eye"
+        />
       )}
       <div
         className="TitleBar__dragZone"
-        onMouseDown={e => fancy && onDragStart(e)} />
+        onMouseDown={(e) => fancy && onDragStart && onDragStart(e)}
+      />
       <div className="TitleBar__title">
-        {typeof title === 'string'
-          && title === title.toLowerCase()
-          && toTitleCase(title)
-          || title}
-        {!!children && (
-          <div className="TitleBar__buttons">
-            {children}
-          </div>
-        )}
+        {finalTitle}
+        {!!children && <div className="TitleBar__buttons">{children}</div>}
       </div>
-      {process.env['NODE_ENV'] !== 'production' && (
+      {process.env.NODE_ENV !== 'production' && (
         <div
           className="TitleBar__devBuildIndicator"
-          onClick={() => dispatch(toggleKitchenSink())}>
+          onClick={() => dispatch(toggleKitchenSink())}
+        >
           <Icon name="bug" />
         </div>
       )}
       {Boolean(fancy && canClose) && (
-        <div
-          className="TitleBar__close TitleBar__clickable"
-          // IE8: Synthetic onClick event doesn't work on IE8.
-          // IE8: Use a plain character instead of a unicode symbol.
-          // eslint-disable-next-line react/no-unknown-property
-          onclick={onClose}>
-          {Byond.IS_LTE_IE8 ? 'x' : '×'}
+        <div className="TitleBar__close TitleBar__clickable" onClick={onClose}>
+          ×
         </div>
       )}
     </div>

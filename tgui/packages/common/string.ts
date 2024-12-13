@@ -7,7 +7,7 @@
 /**
  * Removes excess whitespace and indentation from the string.
  */
-export const multiline = (str: string) => {
+export const multiline = (str) => {
   if (Array.isArray(str)) {
     // Small stub to allow usage as a template tag
     return multiline(str.join(''));
