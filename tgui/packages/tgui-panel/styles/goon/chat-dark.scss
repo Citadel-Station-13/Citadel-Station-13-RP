@@ -1,9 +1,32 @@
-@import './chat.scss';
-
 /**
  * Copyright (c) 2020 Aleksej Komarov
  * SPDX-License-Identifier: MIT
  */
+
+@use 'sass:map';
+@use 'sass:color';
+
+// nonstandard addons
+blockquote {
+  background-color: rgba(
+    color.adjust(color.complement(hsl(210, 50%, 80%)), $alpha: -0.9, $hue: -180deg),
+    0.1
+  );
+  border: 0.1em solid;
+  border-radius: 0.5em;
+  border-color: hsl(210, 50%, 80%);
+  margin: 0.5em;
+  padding: 0.5em 0.5em;
+}
+
+hr {
+  background-color: hsl(210, 50%, 80%);
+  height: 0.15em;
+  border-style: none;
+  border-radius: 0.5em;
+}
+
+// end nonstandard addons
 
 em {
   font-style: normal;
@@ -26,15 +49,15 @@ img.icon {
 }
 
 a {
-  color: #397ea5;
+  color: hsl(201.7, 48.6%, 43.5%);
 }
 
 a.visited {
-  color: #7c00e6;
+  color: hsl(272.3, 100%, 45.1%);
 }
 
 a:visited {
-  color: #7c00e6;
+  color: hsl(272.3, 100%, 45.1%);
 }
 
 a.popt {
@@ -963,25 +986,55 @@ blockquote.brass {
   font-family: "Courier New", cursive, sans-serif;
 }
 
+.command_headset {
+  font-weight: bold;
+  font-size: 160%;
+}
+
+.soapbox {
+  font-weight: bold;
+  font-size: 135%;
+}
+
+.small {
+  font-size: 60%;
+}
+
+.slightly_larger {
+  font-size: 115%;
+}
+
+.big {
+  font-size: 185%;
+}
+
+.reallybig {
+  font-size: 245%;
+}
+
+.extremelybig {
+  font-size: 310%;
+}
+
 .greentext {
-  @include size-ll;
-  color: #059223;
+  color: hsl(132.8, 93.4%, 29.6%);
+  font-size: 185%;
 }
 
 .yellowtext	{
-  @include size-ll;
+  font-size: 185%;
   color: #FFCC00;
 }
 
 .redtext {
-  @include size-ll;
-  color: #c51e1e;
+  color: hsl(0, 73.6%, 44.5%);
+  font-size: 185%;
 }
 
 .clown {
-  color: #ff70c1;
-  font-size: 125%;
-  font-family: "Comic Sans MS", cursive, sans-serif;
+  color: hsl(326, 100%, 72%);
+  font-size: 160%;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
   font-weight: bold;
 }
 
@@ -1024,7 +1077,7 @@ blockquote.brass {
 }
 
 .hypnophrase {
-  color: #202020;
+  color: hsl(0, 0%, 12.5%);
   font-weight: bold;
   animation: hypnocolor 1500ms infinite;
   animation-direction: alternate;
@@ -1032,23 +1085,23 @@ blockquote.brass {
 
 @keyframes hypnocolor {
   0% {
-    color: #202020;
+    color: hsl(0, 0%, 12.5%);
   }
 
   25% {
-    color: #4b02ac;
+    color: hsl(265.8, 97.7%, 34.1%);
   }
 
   50% {
-    color: #9f41f1;
+    color: hsl(272, 86.3%, 60%);
   }
 
   75% {
-    color: #541c9c;
+    color: hsl(266.2, 69.6%, 36.1%);
   }
 
   100% {
-    color: #7adbf3;
+    color: hsl(191.9, 83.4%, 71.6%);
   }
 }
 

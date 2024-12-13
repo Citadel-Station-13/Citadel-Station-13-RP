@@ -1,15 +1,39 @@
-@import './chat.scss';
 
 /**
  * Copyright (c) 2020 Aleksej Komarov
  * SPDX-License-Identifier: MIT
  */
+@use 'sass:map';
+@use 'sass:color';
 
-html, body {
+// nonstandard addons
+blockquote {
+  background-color: rgba(
+    color.adjust(color.complement(hsl(210, 50%, 80%)), $alpha: -0.9, $hue: -180deg),
+    0.1
+  );
+  border: 0.1em solid;
+  border-radius: 0.5em;
+  border-color: hsl(210, 50%, 80%);
+  margin: 0.5em;
+  padding: 0.5em 0.5em;
+}
+
+hr {
+  background-color: hsl(210, 50%, 80%);
+  height: 0.15em;
+  border-style: none;
+  border-radius: 0.5em;
+}
+
+// end nonstandard addons
+
+html,
+body {
   padding: 0;
   margin: 0;
   height: 100%;
-  color: #000000;
+  color: hsl(0, 0%, 0%);
 }
 
 body {
@@ -43,15 +67,15 @@ img.icon {
 }
 
 a {
-  color: #0000ff;
+  color: hsl(240, 100%, 50%);
 }
 
 a.visited {
-  color: #ff00ff;
+  color: hsl(300, 100%, 50%);
 }
 
 a:visited {
-  color: #ff00ff;
+  color: hsl(300, 100%, 50%);
 }
 
 a.popt {
@@ -1000,19 +1024,49 @@ blockquote.brass {
   font-family: "Courier New", cursive, sans-serif;
 }
 
+.command_headset {
+  font-weight: bold;
+  font-size: 160%;
+}
+
+.soapbox {
+  font-weight: bold;
+  font-size: 135%;
+}
+
+.small {
+  font-size: 60%;
+}
+
+.slightly_larger {
+  font-size: 115%;
+}
+
+.big {
+  font-size: 185%;
+}
+
+.reallybig {
+  font-size: 245%;
+}
+
+.extremelybig {
+  font-size: 310%;
+}
+
 .greentext {
-  @include size-ll;
-  color: #00FF00;
+  color: hsl(120, 100%, 50%);
+  font-size: 185%;
 }
 
 .yellowtext	{
-  @include size-ll;
+  font-size: 185%;
   color: #FFCC00;
 }
 
 .redtext {
-  @include size-ll;
-  color: #FF0000;
+  color: hsl(0, 100%, 50%);
+  font-size: 185%;
 }
 
 .clown {
@@ -1060,7 +1114,7 @@ blockquote.brass {
 }
 
 .hypnophrase {
-  color: #0d0d0d;
+  color: hsl(0, 0%, 5.1%);
   font-weight: bold;
   animation: hypnocolor 1500ms infinite;
   animation-direction: alternate;
@@ -1068,23 +1122,23 @@ blockquote.brass {
 
 @keyframes hypnocolor {
   0% {
-    color: #0d0d0d;
+    color: hsl(0, 0%, 5.1%);
   }
 
   25% {
-    color: #410194;
+    color: hsl(266.1, 98.7%, 29.2%);
   }
 
   50% {
-    color: #7f17d8;
+    color: hsl(272.3, 80.8%, 46.9%);
   }
 
   75% {
-    color: #410194;
+    color: hsl(266.1, 98.7%, 29.2%);
   }
 
   100% {
-    color: #3bb5d3;
+    color: hsl(191.8, 63.3%, 52.9%);
   }
 }
 

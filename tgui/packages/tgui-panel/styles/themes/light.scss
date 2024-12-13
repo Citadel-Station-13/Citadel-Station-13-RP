@@ -7,12 +7,12 @@
 @use 'sass:meta';
 
 @use '~tgui/styles/colors.scss' with (
-  $primary: #ffffff,
+  $primary: hsl(0, 0%, 100%),
   $bg-lightness: -25%,
   $fg-lightness: -10%,
-  $label: #3b3b3b,
+  $label: hsl(0, 0%, 23.1%),
   // Makes button look actually grey due to weird maths.
-  $grey: #ffffff,
+  $grey: hsl(0, 0%, 100%),
   // Commenting out color maps will adjust all colors based on the lightness
   // settings above, but will add extra 10KB to the theme.
   // $fg-map-keys: (),
