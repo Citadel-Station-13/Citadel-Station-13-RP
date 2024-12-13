@@ -43,26 +43,26 @@ const StackCraftingEntry = (props: StackCraftingEntryProps, context) => {
                 props.recipe.resultAmt))} />
           </Stack.Item>
           <Stack.Item>
-            <NumberInput width={2.5} value={amt}
-              onChange={(e, val) => setAmt(
-                Math.max(
+            <NumberInput width={"2.5"} value={amt}
+            onChange={(val) => setAmt(
+              Math.max(
+                Math.min(
                   Math.min(
-                    Math.min(
-                      ceiling(
-                        Math.min(
-                          Math.max(1, val),
-                          props.recipe.maxAmount? props.recipe.maxAmount : Infinity
-                        ),
-                        props.recipe.resultAmt
-                      )
-                    ),
-                    floor(
-                      (props.stackAmt / props.recipe.cost) * props.recipe.resultAmt,
+                    ceiling(
+                      Math.min(
+                        Math.max(1, val),
+                        props.recipe.maxAmount ? props.recipe.maxAmount : Infinity
+                      ),
                       props.recipe.resultAmt
                     )
                   ),
-                  props.recipe.resultAmt
-                ))} />
+                  floor(
+                    (props.stackAmt / props.recipe.cost) * props.recipe.resultAmt,
+                    props.recipe.resultAmt
+                  )
+                ),
+                props.recipe.resultAmt
+              ))} minValue={0} maxValue={Number.MAX_SAFE_INTEGER} step={1} />
           </Stack.Item>
           <Stack.Item>
             <Button icon="minus" onClick={() => setAmt(Math.max(props.recipe.resultAmt, amt - props.recipe.resultAmt))} />
@@ -77,7 +77,7 @@ export const StackCrafting = (props, context) => {
   const { act, data } = useBackend<StackCraftingData>(context);
   let approximateEntries = 0;
   let categories: string[] = [];
-  const [searchText, setSearchText] = useLocalState<string | null>(context, "searchText", null);
+  const [searchText, setSearchText] = useLocalState<string | undefined>(context, "searchText", undefined);
   let searchString = searchText?.toLowerCase() || "";
   data.recipes.forEach((r) => {
     if (r.category) {

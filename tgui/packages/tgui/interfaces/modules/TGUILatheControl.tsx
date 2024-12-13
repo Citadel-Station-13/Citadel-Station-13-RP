@@ -355,8 +355,8 @@ const LatheQueued = (props: LatheQueuedProps, context) => {
             color="transparent"
             icon="plus"
             onClick={() => act('modqueue', { index: props.index, amount: props.entry.amount + 1 })} />
-          <NumberInput minValue={1} maxValue={100} step={1} width={3}
-            value={props.entry.amount} onChange={(e, v) => act('modqueue', { index: props.index, amount: v })} />
+          <NumberInput minValue={1} maxValue={100} step={1} width={"3"}
+            value={props.entry.amount} onChange={(v) => act('modqueue', { index: props.index, amount: v })} />
           <Button
             color="transparent"
             icon="minus"

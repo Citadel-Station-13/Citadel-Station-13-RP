@@ -4,7 +4,7 @@ import { InfernoNode } from "inferno";
 import { BooleanLike } from "../../../common/react";
 import { useBackend } from "../../backend";
 import { AnimatedNumber, Button, LabeledList, NumberInput, ProgressBar, Section, Stack } from "../../components";
-import { ComponentProps } from "../../components/Component";
+import { PropsWithChildren } from "../../components/Component";
 import { Window } from "../../layouts";
 import { AtmosTank, AtmosTankSlot } from "./Atmos";
 
@@ -55,8 +55,8 @@ export const AtmosPortableControl = (props: AtmosPortableControlProps, context) 
           {props.data.controlFlags & AtmosPortableUIFlags.SetFlow? (
             <LabeledList.Item label="Flow Limit">
               <NumberInput value={props.data.flowSetting}
-                maxValue={props.data.flowMax} onChange={(e, val) => props.setFlowAct?.(val)}
-                unit="L/s" />
+              maxValue={props.data.flowMax} onChange={(val) => props.setFlowAct?.(val)}
+              unit="L/s" minValue={0} step={1} />
             </LabeledList.Item>
           ) : (!!(props.data.controlFlags & AtmosPortableUIFlags.ViewFlow) && (
             <LabeledList.Item label="Flow Status">
@@ -130,7 +130,7 @@ export interface AtmosPortableData {
   portConnected: BooleanLike;
 }
 
-interface AtmosPortableProps extends ComponentProps{
+interface AtmosPortableProps extends PropsWithChildren{
   readonly minimumHeight?: number;
   readonly minimumWidth?: number;
   readonly name: string;

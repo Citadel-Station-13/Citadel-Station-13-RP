@@ -67,10 +67,9 @@ export const TeleporterConsoleOperational = (props, context) => {
             width="100px"
             minValue={0}
             maxValue={100000}
-            suppressFlicker={250}
-            onChange={(e, value) => act('set_recharge', {
+            onChange={(value) => act('set_recharge', {
               target: value,
-            })} />
+            })} step={10} />
         </Section>
       </Flex>
     </Section>);

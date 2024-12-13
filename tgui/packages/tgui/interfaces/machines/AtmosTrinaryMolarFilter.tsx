@@ -23,12 +23,12 @@ export const AtmosTrinaryMolarFilterControl = (props: AtmosTrinaryMolarFilterCon
       <LabeledList>
         <LabeledList.Item label="Upper Bound">
           <NumberInput width="50px" value={props.upper} step={0.5} minValue={0} maxValue={100000000}
-            onChange={(e, val) => props.setUpper(val)}
+            onChange={(val) => props.setUpper(val)}
             unit="g/mol" />
         </LabeledList.Item>
         <LabeledList.Item label="Lower Bound">
           <NumberInput width="50px" value={props.lower} step={0.5} minValue={0} maxValue={100000000}
-            onChange={(e, val) => props.setLower(val)}
+            onChange={(val) => props.setLower(val)}
             unit="g/mol" />
         </LabeledList.Item>
         <LabeledList.Item label="Inversion">
@@ -58,8 +58,8 @@ export const AtmosTrinaryMolarFilter = (props, context) => {
       additionalListItems={(
         <LabeledList.Item label="Flow">
           <NumberInput minValue={0} maxValue={data.maxRate}
-            value={data.rate} onChange={(e, val) => act('rate', { rate: val })}
-            unit="L/s" />
+          value={data.rate} onChange={(val) => act('rate', { rate: val })}
+          unit="L/s" step={0.1} />
         </LabeledList.Item>
       )}>
       <AtmosTrinaryMolarFilterControl

@@ -1,5 +1,5 @@
 import { useBackend, useLocalState } from "../backend";
-import { Box, Button, Collapsible, Divider, Flex, Input, LabeledList, Section } from "../components";
+import { Box, Button, Collapsible, Divider, Flex, Input, LabeledList, NumberInput, Section } from "../components";
 import { Window } from "../layouts";
 
 const ACCOUNT_SECURITY_DESCRIPTIONS: AccountSecurityDescription[] = [{ "level": 0, "desc": "Only account number required, automatically scanned from ID in proximity." },
@@ -70,15 +70,15 @@ export const ATM = (props, context) => {
 
 const LoginElement = (props, context) => {
   const { act, data } = useBackend<ATMContext>(context);
-  const [epin, setPin] = useLocalState<number>(
+  const [epin, setPin] = useLocalState<string>(
     context,
     "epin",
-    0
+    ""
   );
-  const [eacc, setAcc] = useLocalState<number>(
+  const [eacc, setAcc] = useLocalState<string>(
     context,
     "eacc",
-    0
+    ""
   );
   return (
     <Flex width={200} ml={2} wrap>
@@ -133,9 +133,9 @@ const LockedElement = (props, context) => {
 
 const ATMElement = (props, context) => {
   const { act, data } = useBackend<ATMContext>(context);
-  const [TransferTarget, setTransferTarget] = useLocalState<number>(context, "TransferTarget", 1);
+  const [TransferTarget, setTransferTarget] = useLocalState<string>(context, "TransferTarget", "");
   const [TransferAmount, setTransferAmount] = useLocalState<number>(context, "TransferAmount", 1);
-  const [TransferPurpose, setTransferPurpose] = useLocalState<String>(context, "TransferPurpose", "");
+  const [TransferPurpose, setTransferPurpose] = useLocalState<string>(context, "TransferPurpose", "");
   const [WithdrawAmount, setWithdrawAmount] = useLocalState<number>(context, "WithdrawAmount", 1);
   const [EWallet, setEWallet] = useLocalState<boolean>(context, "EWallet", false);
   const [Security, setSecurity] = useLocalState<number>(context, "Security", data.current_account_security_level);
@@ -243,7 +243,7 @@ const ATMElement = (props, context) => {
               <Input placeholder="Purpose" onChange={(e, value) => setTransferPurpose(value)} />
             </LabeledList.Item>
             <LabeledList.Item label="Amount">
-              <Input placeholder="Amount" onChange={(e, value) => setTransferAmount(value)} />
+              <NumberInput onChange={(value) => setTransferAmount(value)} value={0} minValue={0} maxValue={Number.MAX_SAFE_INTEGER} step={1} />
             </LabeledList.Item>
             <Button onClick={() => act('transfer', { target_acc_number: TransferTarget, purpose: TransferPurpose, funds_amount: TransferAmount })} icon="check">Confirm Transfer</Button>
           </LabeledList>
@@ -252,7 +252,7 @@ const ATMElement = (props, context) => {
         <Collapsible title="Withdraw Funds" headerProps={{ icon: "money-bill-alt" }}>
           <LabeledList>
             <LabeledList.Item label="Amount">
-              <Input placeholder="Amount" onChange={(e, value) => setWithdrawAmount(value)} />
+              <NumberInput onChange={(value) => setWithdrawAmount(value)} value={0} minValue={0} maxValue={Number.MAX_SAFE_INTEGER} step={1} />
             </LabeledList.Item>
             <LabeledList.Item label="Method Selection">
               <Button.Checkbox checked={EWallet} onClick={() => setEWallet(!EWallet)} >EWallet</Button.Checkbox>

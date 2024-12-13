@@ -1,4 +1,4 @@
-import { Component } from "inferno";
+import { Component, SemiSyntheticEvent } from "inferno";
 
 import { useBackend } from "../backend";
 import { Box, Button, Dropdown, Input, Section, Stack } from "../components";
@@ -191,7 +191,7 @@ export class CircuitSignalHandler
 
 type EntryProps = {
   readonly onRemove: (e: MouseEvent) => any;
-  readonly onEnter: (e: MouseEvent, value: string) => any;
+  readonly onEnter: (e: SemiSyntheticEvent<HTMLInputElement>, value: string) => any;
   readonly onSetOption?: (type: string) => any;
   readonly name: string;
   readonly current_option: string;

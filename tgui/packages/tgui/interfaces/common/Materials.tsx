@@ -56,7 +56,7 @@ export const MaterialStorage = (props: MaterialStorageProps, context) => {
         return (
           <>
             {props.materialButtons}
-            <NumberInput width={3} value={ejectAmt} minValue={1} onChange={(e, v) => setEjectAmt(v)} />
+            <NumberInput width={"3"} value={ejectAmt} minValue={1} onChange={(v) => setEjectAmt(v)} maxValue={Number.MAX_SAFE_INTEGER} step={1} />
             <Button
               icon="eject"
               onClick={() => props.eject(id, ejectAmt)} />

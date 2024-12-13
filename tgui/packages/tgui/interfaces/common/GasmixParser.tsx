@@ -92,7 +92,7 @@ export const GasmixParser = (props: GasmixParserProps, context) => {
               reactionOnClick ? (
                 <Button
                   content={reaction[1]}
-                  onClick={reactionOnClick(reaction[0])}
+                  onClick={() => reactionOnClick(reaction[0])}
                 />
               ) : (reaction[1])
             }>

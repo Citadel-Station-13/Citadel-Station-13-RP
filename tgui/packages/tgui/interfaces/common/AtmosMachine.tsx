@@ -3,7 +3,7 @@ import { InfernoNode } from "inferno";
 import { BooleanLike } from "../../../common/react";
 import { useBackend } from "../../backend";
 import { Button, LabeledList, NumberInput, ProgressBar, Section, Stack } from "../../components";
-import { ComponentProps } from "../../components/Component";
+import { PropsWithChildren } from "../../components/Component";
 import { SectionProps } from "../../components/Section";
 import { Window } from "../../layouts";
 
@@ -40,7 +40,7 @@ export const AtmosComponentControl = (props: AtmosComponentControlProps, context
         {!!(props.data.controlFlags & AtmosComponentUIFlags.SetPowerLimit) && (
           <LabeledList.Item label="Power">
             <NumberInput minValue={0} maxValue={props.data.powerRating}
-              value={props.data.powerSetting} onChange={(e, val) => props.setPowerLimitAct?.(val)} />
+            value={props.data.powerSetting} onChange={(val) => props.setPowerLimitAct?.(val)} step={1} />
           </LabeledList.Item>
         )}
         {!!(props.data.controlFlags & AtmosComponentUIFlags.SeePowerUsage) && (
@@ -68,7 +68,7 @@ export interface AtmosComponentData {
   powerUsage: number;
 }
 
-export interface AtmosComponentProps extends ComponentProps {
+export interface AtmosComponentProps extends PropsWithChildren {
   readonly minumumHeight?: number;
   readonly minumumWidth?: number;
   readonly additionalListItems?: InfernoNode;

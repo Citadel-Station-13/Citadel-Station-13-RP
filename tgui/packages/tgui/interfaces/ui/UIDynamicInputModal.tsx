@@ -180,10 +180,10 @@ interface DynamicEntryNumberProps extends DynamicEntryProps {
 const DynamicEntryNumber = (props: DynamicEntryNumberProps, context) => {
   let current = props.current === undefined? props.entry.default === null? 0 : props.entry.default : props.current;
   return (
-    <NumberInput value={current} minValue={props.entry.constraints[0]} maxValue={props.entry.constraints[1]}
-      onChange={(e, val) => props.pick(
-        props.entry.constraints[2] === null? val : round(val, props.entry.constraints[2])
-      )} width="100%" />
+    <NumberInput value={current || 0} minValue={props.entry.constraints[0]} maxValue={props.entry.constraints[1]}
+    onChange={(val) => props.pick(
+      props.entry.constraints[2] === null ? val : round(val, props.entry.constraints[2])
+    )} width="100%" step={1} />
   );
 };
 
@@ -195,7 +195,7 @@ interface DynamicEntryStringProps extends DynamicEntryProps {
 const DynamicEntryString = (props: DynamicEntryStringProps, context) => {
   let current = props.current === undefined? props.entry.default === null? "" : props.entry.default : props.current;
   return (
-    <Input value={current} maxLength={props.entry.constraints[0]}
+    <Input value={current || undefined} maxLength={props.entry.constraints[0]}
       onInput={(e, val) => props.pick(
         val
       )} width="100%" />

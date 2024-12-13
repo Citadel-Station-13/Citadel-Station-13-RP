@@ -108,7 +108,7 @@ export const Crayon = (props, context) => {
                       minValue={0}
                       maxValue={359}
                       step={1}
-                      onChange={(e, val) => act('angle', { angle: val })} />
+                      onChange={(val) => act('angle', { angle: val })} />
                   </>
                 </LabeledList.Item>
               </LabeledList>

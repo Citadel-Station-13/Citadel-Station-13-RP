@@ -130,7 +130,7 @@ export const ChemDispenser = (props, context) => {
                   step={1}
                   minValue={1}
                   maxValue={data.amount_max}
-                  onChange={(_, val) => act('amount', { set: val })} />
+                  onChange={(val) => act('amount', { set: val })} />
               </>
             } />
           </LabeledList>
