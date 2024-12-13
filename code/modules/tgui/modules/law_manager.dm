@@ -7,8 +7,8 @@
 	var/supplied_law = "SuppliedLaw"
 	var/supplied_law_position = MIN_SUPPLIED_LAW_NUMBER
 
-	var/global/list/datum/ai_laws/admin_laws
-	var/global/list/datum/ai_laws/player_laws
+	var/global/list/datum/ai_lawset/admin_laws
+	var/global/list/datum/ai_lawset/player_laws
 	var/mob/living/silicon/owner = null
 
 /datum/tgui_module_old/law_manager/New(mob/living/silicon/S)
@@ -20,10 +20,10 @@
 		admin_laws = new()
 		player_laws = new()
 
-		init_subtypes(/datum/ai_laws, admin_laws)
+		init_subtypes(/datum/ai_lawset, admin_laws)
 		admin_laws = dd_sortedObjectList(admin_laws)
 
-		for(var/datum/ai_laws/laws in admin_laws)
+		for(var/datum/ai_lawset/laws in admin_laws)
 			if(laws.selectable)
 				player_laws += laws
 
@@ -116,14 +116,14 @@
 			return TRUE
 
 		if("state_law_set")
-			var/datum/ai_laws/ALs = locate(params["state_law_set"]) in (is_admin(usr) ? admin_laws : player_laws)
+			var/datum/ai_lawset/ALs = locate(params["state_law_set"]) in (is_admin(usr) ? admin_laws : player_laws)
 			if(ALs)
 				owner.statelaws(ALs)
 			return TRUE
 
 		if("transfer_laws")
 			if(is_malf(usr))
-				var/datum/ai_laws/ALs = locate(params["transfer_laws"]) in (is_admin(usr) ? admin_laws : player_laws)
+				var/datum/ai_lawset/ALs = locate(params["transfer_laws"]) in (is_admin(usr) ? admin_laws : player_laws)
 				if(ALs)
 					log_and_message_admins("has transfered the [ALs.name] laws to [owner].")
 					ALs.sync(owner, 0)
@@ -181,9 +181,9 @@
 	data[field] = packaged_laws
 	data["has_[field]"] = packaged_laws.len
 
-/datum/tgui_module_old/law_manager/proc/package_multiple_laws(var/list/datum/ai_laws/laws)
+/datum/tgui_module_old/law_manager/proc/package_multiple_laws(var/list/datum/ai_lawset/laws)
 	var/list/law_sets = list()
-	for(var/datum/ai_laws/ALs in laws)
+	for(var/datum/ai_lawset/ALs in laws)
 		var/list/packaged_laws = list()
 		package_laws(packaged_laws, "zeroth_laws", list(ALs.zeroth_law, ALs.zeroth_law_borg))
 		package_laws(packaged_laws, "ion_laws", ALs.ion_laws)

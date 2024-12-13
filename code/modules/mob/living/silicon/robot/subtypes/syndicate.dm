@@ -32,7 +32,7 @@
 	if(!cell)
 		cell = new /obj/item/cell/high(src) // 15k cell, because Antag.
 
-	laws = new /datum/ai_laws/syndicate_override()
+	laws = new /datum/ai_lawset/syndicate()
 
 	radio.keyslot = new /obj/item/encryptionkey/syndicate(radio)
 	radio.recalculateChannels()

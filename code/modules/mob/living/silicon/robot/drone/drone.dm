@@ -32,7 +32,7 @@
 	//Used for self-mailing.
 	var/mail_destination = ""
 	var/obj/machinery/drone_fabricator/master_fabricator
-	var/law_type = /datum/ai_laws/drone
+	var/law_type = /datum/ai_lawset/drone
 	var/module_type = /obj/item/robot_module/drone
 	var/obj/item/hat
 	var/hat_x_offset = 0
@@ -65,7 +65,7 @@
 /mob/living/silicon/robot/drone/construction
 	name = "construction drone"
 	icon_state = "constructiondrone"
-	law_type = /datum/ai_laws/construction_drone
+	law_type = /datum/ai_lawset/drone/construction
 	module_type = /obj/item/robot_module/drone/construction
 	hat_x_offset = 1
 	hat_y_offset = -12
@@ -74,7 +74,7 @@
 /mob/living/silicon/robot/drone/construction/matriarch
 	name = "matriarch drone"
 	module_type = /obj/item/robot_module/drone/construction/matriarch
-	law_type = /datum/ai_laws/matriarch_drone
+	law_type = /datum/ai_lawset/drone/matriarch
 	maxHealth = 50
 	health = 50
 	integrated_light_power = 4
@@ -83,7 +83,7 @@
 /mob/living/silicon/robot/drone/mining
 	icon_state = "miningdrone"
 	item_state = "constructiondrone"
-	law_type = /datum/ai_laws/mining_drone
+	law_type = /datum/ai_lawset/drone/mining
 	module_type = /obj/item/robot_module/drone/mining
 	hat_x_offset = 1
 	hat_y_offset = -12
@@ -257,7 +257,7 @@
 	connected_ai = null
 	clear_supplied_laws()
 	clear_inherent_laws()
-	laws = new /datum/ai_laws/syndicate_override
+	laws = new /datum/ai_lawset/syndicate
 	var/datum/gender/TU = GLOB.gender_datums[user.get_visible_gender()]
 	set_zeroth_law("Only [user.real_name] and people [TU.he] designate[TU.s] as being such are operatives.")
 

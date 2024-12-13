@@ -75,9 +75,15 @@
 	var/datum/prototype/robot_chassis/chassis
 	#warn impl
 	var/datum/prototype/robot_iconset/iconset
+	#warn impl
+	var/datum/prototype/robot_module/module
 
 	//* Inventory *//
-	inventory = /datum/inventory/silicon
+	inventory = /datum/inventory
+
+	//* State *//
+	/// If set, we are a blank slate, and are allowed to pick a module and frame.
+	var/can_repick_module = TRUE
 
 	/// Is our integrated light on?
 	var/lights_on = 0
@@ -256,7 +262,7 @@
 
 /mob/living/silicon/robot/proc/init()
 	aiCamera = new/obj/item/camera/siliconcam/robot_camera(src)
-	laws = new /datum/ai_laws/nanotrasen()
+	laws = new /datum/ai_lawset/nanotrasen()
 	additional_law_channels["Binary"] = "#b"
 	var/new_ai = select_active_ai_with_fewest_borgs()
 	if(new_ai)
@@ -1322,7 +1328,7 @@
 			log_game("[key_name(user)] emagged cyborg [key_name(src)].  Laws overridden.")
 			clear_supplied_laws()
 			clear_inherent_laws()
-			laws = new /datum/ai_laws/syndicate_override
+			laws = new /datum/ai_lawset/syndicate
 			var/time = time2text(world.realtime,"hh:mm:ss")
 			lawchanges.Add("[time] <B>:</B> [user.name]([user.key]) emagged [name]([key])")
 			var/datum/gender/TU = GLOB.gender_datums[user.get_visible_gender()]
