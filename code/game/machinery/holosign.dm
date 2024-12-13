@@ -18,7 +18,7 @@
 	if(machine_stat & (BROKEN|NOPOWER))
 		return
 	lit = !lit
-	update_use_power(lit ? USE_POWER_ACTIVE : USE_POWER_IDLE)
+	set_use_power(lit? USE_POWER_ACTIVE : USE_POWER_IDLE)
 	update_icon()
 
 /obj/machinery/holosign/update_icon()
@@ -30,7 +30,7 @@
 /obj/machinery/holosign/power_change()
 	if(machine_stat & NOPOWER)
 		lit = 0
-		update_use_power(USE_POWER_OFF)
+		set_use_power(USE_POWER_OFF)
 	update_icon()
 
 /obj/machinery/holosign/surgery
@@ -63,7 +63,7 @@
 	if(..())
 		return
 
-	use_power(5)
+	use_burst_power(5)
 
 	active = !active
 	icon_state = "light[active]"

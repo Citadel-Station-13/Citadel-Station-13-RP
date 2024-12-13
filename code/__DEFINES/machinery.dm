@@ -1,32 +1,25 @@
-var/global/defer_powernet_rebuild = 0 // True if net rebuild will be called manually after an event.
 
 
 //! Doors!
 #define DOOR_CRUSH_DAMAGE 20
 /// How many minutes that a person can be AFK before not being allowed to be an alien.
 #define ALIEN_SELECT_AFK_BUFFER 1
-// Constants for machine's use_power
+
+//! Constants for machine's use_power
 /// No continuous power use
 #define USE_POWER_OFF    0
 /// Machine is using power at its idle power level
 #define USE_POWER_IDLE   1
 /// Machine is using power at its active power level
 #define USE_POWER_ACTIVE 2
+/// Machine is using a custom amount of power
+#define USE_POWER_CUSTOM 3
 
 //! Bitflags for a machine's preferences on when it should start processing. For use with machinery's `processing_flags` var.
 /// Indicates the machine will automatically start processing right after it's `Initialize()` is ran.
 #define START_PROCESSING_ON_INIT (1<<0)
 /// Machines with this flag will not start processing when it's spawned. Use this if you want to manually control when a machine starts processing.
 #define START_PROCESSING_MANUALLY (1<<1)
-
-//! Channel numbers for power.
-/// Passed as an argument this means "use whatever current channel is"
-#define CURRENT_CHANNEL -1
-#define EQUIP   1
-#define LIGHT   2
-#define ENVIRON 3
-/// For total power used only.
-#define TOTAL   4
 
 //! Bitflags for machine stat variable.
 #define BROKEN	 0x1
@@ -168,9 +161,6 @@ if (!(DATUM.datum_flags & DF_ISPROCESSING)) {\
 
 #define START_PROCESSING_PIPENET(Datum) START_PROCESSING_IN_LIST(Datum, global.pipe_networks)
 #define STOP_PROCESSING_PIPENET(Datum) STOP_PROCESSING_IN_LIST(Datum, global.pipe_networks)
-
-#define START_PROCESSING_POWERNET(Datum) START_PROCESSING_IN_LIST(Datum, global.powernets)
-#define STOP_PROCESSING_POWERNET(Datum) STOP_PROCESSING_IN_LIST(Datum, global.powernets)
 
 #define START_PROCESSING_POWER_OBJECT(Datum) START_PROCESSING_IN_LIST(Datum, global.processing_power_items)
 #define STOP_PROCESSING_POWER_OBJECT(Datum) STOP_PROCESSING_IN_LIST(Datum, global.processing_power_items)

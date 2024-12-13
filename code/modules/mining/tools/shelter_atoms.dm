@@ -3,7 +3,7 @@
 	name = "\improper Emergency Shelter"
 	icon_state = "away"
 	dynamic_lighting = TRUE
-	requires_power = FALSE
+	area_power_override = TRUE
 	has_gravity = TRUE
 
 //Survival Capsule

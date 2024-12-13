@@ -262,7 +262,7 @@
 
 	var/power_generated = kin_to_el_ratio * turbine.kin_energy
 	turbine.kin_energy -= power_generated
-	add_avail(power_generated * 0.001)
+	supply(power_generated * 0.001)
 
 /obj/machinery/power/turbinemotor/attackby(obj/item/W as obj, mob/user as mob)
 	if(W.is_wrench())

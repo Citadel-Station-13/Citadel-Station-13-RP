@@ -12,3 +12,6 @@
 #define COMSIG_TURF_MULTIZ_DEL "turf_multiz_del"
 /// From base of turf/multiz_turf_new: (turf/source, direction)
 #define COMSIG_TURF_MULTIZ_NEW "turf_multiz_new"
+
+/// sent by /turf/proc/wirenode_discovery() to force everything in a turf to re-discover wirenets and connect.
+#define COMSIG_TURF_WIRENODE_DISCOVERY "turf_wirenode_discovery"

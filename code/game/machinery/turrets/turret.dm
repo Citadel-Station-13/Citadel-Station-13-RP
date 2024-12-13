@@ -39,7 +39,7 @@
 	/// When active, this turret takes up constant 300 Equipment power.
 	active_power_usage = 300
 	/// Drains power from the EQUIPMENT channel.
-	power_channel = EQUIP
+	power_channel = POWER_CHANNEL_EQUIP
 	req_one_access = list(ACCESS_SECURITY_EQUIPMENT, ACCESS_COMMAND_BRIDGE)
 
 	integrity = 200
@@ -530,7 +530,7 @@
 			popDown() // no valid targets, close the cover
 
 	if(auto_repair && (integrity < integrity_max))
-		use_power(20000)
+		use_burst_power(20000)
 		heal_integrity(1)
 
 // todo: put this on ai holder side
@@ -691,7 +691,7 @@
 			var/dispersion = gaussian(0, fire_suppressive_dispersion_deviation)
 			real_angle += dispersion
 		shoot(target, real_angle)
-		use_power(reqpower)
+		use_burst_power(reqpower)
 		sleep(fire_burst_spacing)
 
 /obj/machinery/porta_turret/proc/shoot(atom/target, angle)

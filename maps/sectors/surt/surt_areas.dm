@@ -21,7 +21,7 @@
 
 /area/sector/surt/bosses
 	name = "Lava Land - Boss"
-	requires_power = 0
+	area_power_infinite = TRUE
 
 /area/sector/surt/central/explored
 	name = "Lava Land (Center) - Thoroughfare"

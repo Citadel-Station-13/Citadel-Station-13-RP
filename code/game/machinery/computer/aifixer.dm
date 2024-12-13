@@ -98,7 +98,7 @@
 				. = TRUE
 
 /obj/machinery/computer/aifixer/proc/Fix()
-	use_power(active_power_usage)
+	use_burst_power(active_power_usage)
 	occupier.adjustOxyLoss(-5, 0, FALSE)
 	occupier.adjustFireLoss(-5, 0, FALSE)
 	occupier.adjustBruteLoss(-5, 0)

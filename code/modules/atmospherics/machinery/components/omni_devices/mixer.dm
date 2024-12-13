@@ -113,7 +113,7 @@
 
 	if (power_draw >= 0)
 		last_power_draw_legacy = power_draw
-		use_power(power_draw)
+		use_burst_power(power_draw)
 
 		for(var/datum/omni_port/P in inputs)
 			if(P.concentration && P.network)
@@ -171,14 +171,14 @@
 		if("power")
 			. = TRUE
 			if(!configuring)
-				update_use_power(!use_power)
+				legacy_toggle_use_power()
 			else
-				update_use_power(USE_POWER_OFF)
+				set_use_power(USE_POWER_OFF)
 		if("configure")
 			. = TRUE
 			configuring = !configuring
 			if(configuring)
-				update_use_power(USE_POWER_OFF)
+				set_use_power(USE_POWER_OFF)
 		if("set_flow_rate")
 			. = TRUE
 			if(!configuring || use_power)

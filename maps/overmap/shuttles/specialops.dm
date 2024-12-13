@@ -35,7 +35,7 @@
 
 // Spec Ops Areas
 /area/shuttle/specops
-	requires_power = TRUE
+	area_power_override = null
 	name = "\improper NDV Quicksilver"
 	icon_state = "shuttle1"
 

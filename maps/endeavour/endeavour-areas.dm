@@ -163,11 +163,11 @@
 
 /area/endeavour/transit
 	name = "Victory Debug Transit"
-	requires_power = 0
+	area_power_infinite = TRUE
 
 /area/endeavour/space
 	name = "Victory Debug Space"
-	requires_power = 0
+	area_power_infinite = TRUE
 
 /area/endeavour/station/stairs_three
 	name = "\improper Station Stairwell Third Floor"

@@ -146,7 +146,7 @@
 		return
 	AICtrlClick(user)
 
-/obj/machinery/power/apc/BorgCtrlClick(mob/living/silicon/robot/user) // turns off/on APCs. Forwards to AI code.
+/obj/machinery/apc/BorgCtrlClick(mob/living/silicon/robot/user) // turns off/on APCs. Forwards to AI code.
 	if(user.bolt && !user.bolt.malfunction)
 		return
 	AICtrlClick(user)

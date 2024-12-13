@@ -61,7 +61,7 @@
 					B.loc = chassis.loc
 	if(move_result)
 		wait = 1
-		chassis.use_power(energy_drain)
+		chassis.use_burst_power(energy_drain)
 		if(!chassis.pr_inertial_movement.active())
 			chassis.pr_inertial_movement.start(list(chassis,direction))
 		else

@@ -4,11 +4,11 @@
 
 /area/tether/transit
 	name = "Tether Debug Transit"
-	requires_power = 0
+	area_power_override = TRUE
 
 /area/tether/space
 	name = "Tether Debug Space"
-	requires_power = 0
+	area_power_override = TRUE
 
 // Tether Areas itself
 /area/tether/surfacebase/tether
@@ -1589,7 +1589,7 @@
 	ambience = AMBIENCE_GENERIC
 
 /area/shuttle/excursion
-	requires_power = 1
+	area_power_override = null
 	icon_state = "shuttle2"
 
 /area/shuttle/excursion/general
@@ -1602,7 +1602,7 @@
 	name = "\improper Excursion Shuttle Cargo"
 
 /area/shuttle/tourbus
-	requires_power = 1
+	area_power_override = null
 	icon_state = "shuttle2"
 
 /area/shuttle/tourbus/general
@@ -1615,7 +1615,7 @@
 	name = "\improper Tour Bus Engines"
 
 /area/shuttle/medivac
-	requires_power = 1
+	area_power_override = null
 	icon_state = "shuttle2"
 
 /area/shuttle/medivac/general
@@ -1628,7 +1628,7 @@
 	name = "\improper Medivac Engines"
 
 /area/shuttle/securiship
-	requires_power = 1
+	area_power_override = null
 	icon_state = "shuttle2"
 
 /area/shuttle/securiship/general
@@ -1666,9 +1666,8 @@
 	name = "\improper Tether Elevator"
 	icon = 'icons/turf/areas.dmi'
 	icon_state = "elevator"
-	dynamic_lighting = FALSE
-
-	requires_power = FALSE
+	dynamic_lighting = DYNAMIC_LIGHTING_DISABLED
+	area_power_override = TRUE
 
 /area/tether/elevator/two
 	name = "\improper Tether Elevator Two"
@@ -1680,8 +1679,8 @@
 
 /area/antag/antag_base
 	name = "\improper Syndicate Outpost"
-	requires_power = 0
-	dynamic_lighting = 0
+	area_power_override = TRUE
+	dynamic_lighting = DYNAMIC_LIGHTING_DISABLED
 
 //Merc shuttle
 /area/shuttle/mercenary
@@ -1757,7 +1756,7 @@
 
 /area/bigship
 	name = "Bigship"
-	requires_power = 0
+	area_power_override = TRUE
 	area_flags = AREA_RAD_SHIELDED
 	sound_env = SMALL_ENCLOSED
 	icon_state = "red2"
@@ -1767,7 +1766,7 @@
 
 //////// Abductor Areas ////////
 /area/unknown
-	requires_power = 0
+	area_power_override = TRUE
 	area_flags = AREA_RAD_SHIELDED
 	icon_state = "red2"
 
@@ -1812,7 +1811,7 @@
 /area/skipjack_station
 	name = "Raider Outpost"
 	icon_state = "yellow"
-	requires_power = 0
+	area_power_override = TRUE
 	dynamic_lighting = 0
 	area_flags = AREA_RAD_SHIELDED
 	ambience = AMBIENCE_HIGHSEC
@@ -1833,7 +1832,7 @@
 /area/ninja_dojo
 	name = "\improper Ninja Base"
 	icon_state = "green"
-	requires_power = 0
+	area_power_override = TRUE
 	area_flags = AREA_RAD_SHIELDED
 	ambience = AMBIENCE_HIGHSEC
 

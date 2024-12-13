@@ -3,5 +3,5 @@
 /area/misc/testroom
 	name = "Test Room"
 	icon_state = "test_room"
-	requires_power = FALSE
+	area_power_override = TRUE
 	has_gravity = TRUE

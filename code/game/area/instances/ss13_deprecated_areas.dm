@@ -153,9 +153,9 @@
 /area/supply/station
 	name = "Supply Shuttle"
 	icon_state = "shuttle3"
-	requires_power = FALSE
+	area_power_override = TRUE
 
 /area/supply/dock
 	name = "Supply Shuttle"
 	icon_state = "shuttle3"
-	requires_power = FALSE
+	area_power_override = TRUE

@@ -99,7 +99,12 @@
 #undef OVERLAY_PARTIAL
 #undef OVERLAY_EMPTY
 
-/obj/item/cell/proc/percent()		// return % charge of cell
+/**
+ * returns percent; 0 to 100 to infinity inclusive
+ *
+ * it goes above 100 if we're more than 100% charged.
+ */
+/obj/item/cell/proc/percent()
 	if(!maxcharge)
 		return 0
 	return 100.0*charge/maxcharge

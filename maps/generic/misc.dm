@@ -173,7 +173,7 @@
 	layer = ABOVE_WINDOW_LAYER
 /obj/machinery/newscaster
 	layer = ABOVE_WINDOW_LAYER
-/obj/machinery/power/apc
+/obj/machinery/apc
 	layer = ABOVE_WINDOW_LAYER
 /obj/machinery/requests_console
 	layer = ABOVE_WINDOW_LAYER
@@ -226,7 +226,7 @@
 	layer = ABOVE_WINDOW_LAYER
 /obj/machinery/newscaster
 	layer = ABOVE_WINDOW_LAYER
-/obj/machinery/power/apc
+/obj/machinery/apc
 	layer = ABOVE_WINDOW_LAYER
 /obj/machinery/requests_console
 	layer = ABOVE_WINDOW_LAYER

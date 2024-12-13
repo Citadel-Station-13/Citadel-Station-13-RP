@@ -1,3 +1,3 @@
 /area/submap/HeadscientistHQ
 	name = "HSQ Spaceship"
-	requires_power = 0
+	area_power_override = TRUE

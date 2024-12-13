@@ -28,7 +28,7 @@
 	var/turf/targloc = get_turf(target)
 	if(!curloc || !targloc)
 		return
-	chassis.use_power(energy_drain)
+	chassis.use_burst_power(energy_drain)
 	chassis.visible_message("<span class='warning'>[chassis] fires [src]!</span>")
 	occupant_message("<span class='warning'>You fire [src]!</span>")
 	log_message("Fired from [src], targeting [target].")

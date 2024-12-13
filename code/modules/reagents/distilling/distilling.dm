@@ -189,7 +189,7 @@
 
 	update_icon()
 
-/obj/machinery/portable_atmospherics/powered/reagent_distillery/use_power(var/amount, var/chan = -1)
+/obj/machinery/portable_atmospherics/powered/reagent_distillery/use_burst_power(var/amount, var/chan = -1)
 	last_power_draw_legacy = amount
 	if(use_cell && cell && cell.charge)
 		var/needed = DYNAMIC_W_TO_CELL_UNITS(amount, 1)
@@ -201,7 +201,7 @@
 		return
 	if(chan == -1)
 		chan = power_channel
-	A.use_power_oneoff(amount, chan)
+	A.use_burst_power(amount, chan)
 
 /obj/machinery/portable_atmospherics/powered/reagent_distillery/process(delta_time)
 	..()
@@ -241,7 +241,7 @@
 				else if(Reservoir.reagents.temperature > target_temp)
 					shift_mod = -1
 				Reservoir.reagents.temperature = clamp(round((Reservoir.reagents.temperature + 1 * shift_mod) + (rand(-5, 5) / 10)), min_temp, max_temp)
-				use_power(power_rating)
+				use_burst_power(power_rating)
 		else if(connected_port && avg_pressure > 15)
 			Reservoir.reagents.temperature = round((Reservoir.reagents.temperature + avg_temp) / 2)
 		else if(!run_pump)
@@ -252,7 +252,7 @@
 			InputBeaker.reagents.trans_to_holder(Reservoir.reagents, amount = rand(10,20))
 
 		if(OutputBeaker && OutputBeaker.reagents.total_volume < OutputBeaker.reagents.maximum_volume)
-			use_power(power_rating)
+			use_burst_power(power_rating)
 			Reservoir.reagents.trans_to_holder(OutputBeaker.reagents, amount = rand(1, 5))
 
 	update_icon()

@@ -26,6 +26,12 @@
  * # area
  *
  * A grouping of tiles into a logical space, mostly used by map editors
+ *
+ * *Warning*: Accessing contents in any way, including "in src", "in contents", "contents", etc,
+ *     is *extremely* expensive. Do not do it unless it's truly for an one off purpose.
+ *     This is because BYOND does not actually internally maintain a contents list for /area;
+ *     accessing contents is equivalent to iterating over world and filtering out everything
+ *     not in the area.
  */
 /area
 	name = "Unknown"
@@ -58,6 +64,10 @@
 	var/display_name
 
 	//? nightshift
+	/// is nightshift on?
+	var/nightshift = FALSE
+	/// is nightshift currently cycling?
+	var/nightshift_mutex = FALSE
 	/// nightshift level
 	/// in general, nightshift must be at or above this level for it to proc on areas.
 	var/nightshift_level = NIGHTSHIFT_LEVEL_UNSET
@@ -74,6 +84,30 @@
 	/// next scrubber id
 	var/vent_scrubber_next = 1
 
+	//? Parallax
+	/// Parallax moving?
+	var/parallax_moving = FALSE
+	/// Parallax move speed - 0 to disable
+	var/parallax_move_speed = 0
+	/// Parallax move dir - degrees clockwise from north
+	var/parallax_move_angle = 0
+
+	//* Power *//
+
+	/// force all machinery using area power to be able to receive unlimited power, or no power; null for use area power system.
+	/// implies the same setting of area_power_infinite if set.
+	var/area_power_override = null
+	/// if set to on, apcs don't ever drain and all power usage is just done without hitting APC at all.
+	var/area_power_infinite = FALSE
+	/// power usages - registered / static
+	var/list/power_usage_static = EMPTY_POWER_CHANNEL_LIST
+	/// power channels turned on
+	var/power_channels = POWER_BITS_ALL
+
+	//? Smoothing
+	/// Typepath to limit the areas (subtypes included) that atoms in this area can smooth with. Used for shuttles.
+	var/area/area_limited_icon_smoothing
+
 	//? unsorted
 	var/fire = null
 	var/atmos = 1
@@ -86,37 +120,10 @@
 
 	var/debug = 0
 
-	/// Will objects this area be needing power?
-	var/requires_power = TRUE
-	/// This gets overridden to 1 for space in area/.
-	var/always_unpowered = FALSE
-
-	/// Power channel status - Is it currently energized?
-	var/power_equip = TRUE
-	var/power_light = TRUE
-	var/power_environ = TRUE
-
-	// Oneoff power usage - Used once and cleared each power cycle
-	var/oneoff_equip = 0
-	var/oneoff_light = 0
-	var/oneoff_environ = 0
-
-	// Continuous "static" power usage - Do not update these directly!
-	var/static_equip = 0
-	var/static_light = 0
-	var/static_environ = 0
-
-	/// Parallax moving?
-	var/parallax_moving = FALSE
-	/// Parallax move speed - 0 to disable
-	var/parallax_move_speed = 0
-	/// Parallax move dir - degrees clockwise from north
-	var/parallax_move_angle = 0
-
 	var/music = null
 
 	var/has_gravity = TRUE
-	var/obj/machinery/power/apc/apc = null
+	var/obj/machinery/apc/apc = null
 //	var/list/lights				// list of all lights on this area
 	var/list/all_doors = null		//Added by Strumpetplaya - Alarm Change - Contains a list of doors adjacent to this area
 	var/list/all_arfgs = null		//Similar, but a list of all arfgs adjacent to this area
@@ -130,9 +137,6 @@
 
 	/// Color on minimaps, if it's null (which is default) it makes one at random.
 	var/minimap_color
-
-	///Typepath to limit the areas (subtypes included) that atoms in this area can smooth with. Used for shuttles.
-	var/area/area_limited_icon_smoothing
 
 	var/tmp/is_outside = OUTSIDE_NO
 
@@ -173,20 +177,22 @@
 /area/Initialize(mapload)
 	icon_state = ""
 
-	if(requires_power)
+	var/should_be_lit
+
+	switch(dynamic_lighting)
+		if(DYNAMIC_LIGHTING_FORCED)
+			should_be_lit = FALSE
+		if(DYNAMIC_LIGHTING_IFSTARLIGHT)
+			should_be_lit = !CONFIG_GET(flag/starlight)
+		else
+			should_be_lit = area_power_override == TRUE
+
+	if(should_be_lit)
+		dynamic_lighting = DYNAMIC_LIGHTING_ENABLED
 		luminosity = 0
 	else
-		power_light = TRUE
-		power_equip = TRUE
-		power_environ = TRUE
-
-		if(dynamic_lighting == DYNAMIC_LIGHTING_FORCED)
-			dynamic_lighting = DYNAMIC_LIGHTING_ENABLED
-			luminosity = 0
-		else if(dynamic_lighting != DYNAMIC_LIGHTING_IFSTARLIGHT)
-			dynamic_lighting = DYNAMIC_LIGHTING_DISABLED
-	if(dynamic_lighting == DYNAMIC_LIGHTING_IFSTARLIGHT)
-		dynamic_lighting = CONFIG_GET(flag/starlight) ? DYNAMIC_LIGHTING_ENABLED : DYNAMIC_LIGHTING_DISABLED
+		dynamic_lighting = DYNAMIC_LIGHTING_DISABLED
+		luminosity = 1
 
 	. = ..()
 
@@ -288,9 +294,19 @@
 /area/has_gravity()
 	return has_gravity
 
+/**
+ * DANGER DANGER EXTREMELY EXPENSIVE DO NOT CALL OFTEN
+ *
+ * THIS IS ON THE REFACTOR
+ */
 /area/proc/get_contents()
 	return contents
 
+/**
+ * DANGER DANGER EXTREMELY EXPENSIVE DO NOT CALL OFTEN
+ *
+ * THIS IS ON THE REFACTOR
+ */
 /area/proc/get_cameras()
 	var/list/cameras = list()
 	for (var/obj/machinery/camera/C in src)
@@ -434,7 +450,7 @@
 	return
 
 /area/proc/updateicon()
-	if ((fire || eject || party) && (!requires_power||power_environ) && !istype(src, /area/space))//If it doesn't require power, can still activate this proc.
+	if ((fire || eject || party) && powered(POWER_CHANNEL_ENVIR) && !istype(src, /area/space))//If it doesn't require power, can still activate this proc.
 		if(fire && !eject && !party)
 			icon_state = null // Let lights take care of it
 		/*else if(atmosalm && !fire && !eject && !party)
@@ -450,141 +466,7 @@
 		icon_state = null
 
 
-/*
-#define EQUIP 1
-#define LIGHT 2
-#define ENVIRON 3
-*/
 
-
-/**
- * Returns int 1 or 0 if the area has power for the given channel
- *
- * evalutes a mixture of variables mappers can set, requires_power, always_unpowered and then
- * per channel power_equip, power_light, power_environ
- */
-/area/proc/powered(chan) // return true if the area has power to given channel
-
-	if(!requires_power)
-		return 1
-	if(always_unpowered)
-		return 0
-	switch(chan)
-		if(EQUIP)
-			return power_equip
-		if(LIGHT)
-			return power_light
-		if(ENVIRON)
-			return power_environ
-
-	return FALSE
-
-/**
- * Called when the area power status changes
- *
- * Updates the area icon, calls power change on all machinees in the area, and sends the `COMSIG_AREA_POWER_CHANGE` signal.
- */
-/area/proc/power_change()
-	for(var/obj/machinery/M in src)	// for each machine in the area
-		M.power_change() // reverify power status (to update icons etc.)
-	if (fire || eject || party)
-		update_appearance()
-
-/area/proc/usage(var/chan, var/include_static = TRUE)
-	var/used = 0
-	switch(chan)
-		if(LIGHT)
-			used += oneoff_light + (include_static * static_light)
-		if(EQUIP)
-			used += oneoff_equip + (include_static * static_equip)
-		if(ENVIRON)
-			used += oneoff_environ + (include_static * static_environ)
-		if(TOTAL)
-			used += oneoff_light + (include_static * static_light)
-			used += oneoff_equip + (include_static * static_equip)
-			used += oneoff_environ + (include_static * static_environ)
-	return used
-
-/**
- * Clear all non-static power usage in area
- *
- * Clears all power used for the dynamic equipment, light and environment channels
- */
-/area/proc/clear_usage()
-	oneoff_equip = 0
-	oneoff_light = 0
-	oneoff_environ = 0
-
-/**
- * Add a power value amount to the stored used_x variables
- */
-/area/proc/use_power_oneoff(var/amount, var/chan)
-	switch(chan)
-		if(EQUIP)
-			oneoff_equip += amount
-		if(LIGHT)
-			oneoff_light += amount
-		if(ENVIRON)
-			oneoff_environ += amount
-	return amount
-
-/// This is used by machines to properly update the area of power changes.
-/area/proc/power_use_change(old_amount, new_amount, chan)
-	use_power_static(new_amount - old_amount, chan) // Simultaneously subtract old_amount and add new_amount.
-
-/// Not a proc you want to use directly unless you know what you are doing; see use_power_oneoff above instead.
-/area/proc/use_power_static(var/amount, var/chan)
-	switch(chan)
-		if(EQUIP)
-			static_equip += amount
-		if(LIGHT)
-			static_light += amount
-		if(ENVIRON)
-			static_environ += amount
-
-/// This recomputes the continued power usage; can be used for testing or error recovery, but is not called every tick.
-/area/proc/retally_power()
-	static_equip = 0
-	static_light = 0
-	static_environ = 0
-	for(var/obj/machinery/M in src)
-		switch(M.power_channel)
-			if(EQUIP)
-				static_equip += M.get_power_usage()
-			if(LIGHT)
-				static_light += M.get_power_usage()
-			if(ENVIRON)
-				static_environ += M.get_power_usage()
-
-
-//////////////////////////////////////////////////////////////////
-
-/area/vv_get_dropdown()
-	. = ..()
-	VV_DROPDOWN_OPTION("check_static_power", "Check Static Power")
-
-/area/vv_do_topic(list/href_list)
-	. = ..()
-	if(href_list["check_static_power"])
-		if(!check_rights(R_DEBUG))
-			return
-		src.check_static_power(usr)
-		href_list["datumrefresh"] = "\ref[src]"
-
-/// Debugging proc to report if static power is correct or not.
-/area/proc/check_static_power(var/user)
-	set name = "Check Static Power"
-	var/actual_static_equip = static_equip
-	var/actual_static_light = static_light
-	var/actual_static_environ = static_environ
-	retally_power()
-	if(user)
-		var/list/report = list("[src] ([type]) static power tally:")
-		report += "EQUIP:   Actual: [actual_static_equip] Correct: [static_equip] Difference: [actual_static_equip - static_equip]"
-		report += "LIGHT:   Actual: [actual_static_light] Correct: [static_light] Difference: [actual_static_light - static_light]"
-		report += "ENVIRON: Actual: [actual_static_environ] Correct: [static_environ] Difference: [actual_static_environ - static_environ]"
-		to_chat(user, report.Join("\n"))
-	return (actual_static_equip == static_equip && actual_static_light == static_light && actual_static_environ == static_environ)
 
 //////////////////////////////////////////////////////////////////
 
@@ -645,20 +527,14 @@ GLOBAL_LIST_EMPTY(forced_ambiance_list)
 		playsound(get_turf(src), "bodyfall", 50, 1)
 
 /area/proc/prison_break()
-	var/obj/machinery/power/apc/theAPC = get_apc()
-	if(theAPC.operating)
-		for(var/obj/machinery/power/apc/temp_apc in src)
+	var/obj/machinery/apc/theAPC = get_master_apc()
+	if(theAPC.load_active)
+		for(var/obj/machinery/apc/temp_apc in src)
 			temp_apc.overload_lighting(70)
 		for(var/obj/machinery/door/airlock/temp_airlock in src)
 			temp_airlock.prison_open()
 		for(var/obj/machinery/door/window/temp_windoor in src)
 			temp_windoor.open()
-
-/area/AllowDrop()
-	CRASH("Bad op: area/AllowDrop() called")
-
-/area/drop_location()
-	CRASH("Bad op: area/drop_location() called")
 
 // A hook so areas can modify the incoming args
 /**
@@ -711,7 +587,7 @@ var/list/ghostteleportlocs = list()
 
 	return 1
 
-//* Atmospherics
+//* Atmospherics *//
 
 /area/proc/register_scrubber(obj/machinery/atmospherics/component/unary/vent_scrubber/instance)
 	LAZYADD(vent_scrubbers, instance)
@@ -756,6 +632,37 @@ var/list/ghostteleportlocs = list()
 	for(var/obj/machinery/atmospherics/component/unary/vent_scrubber/scrubber as anything in vent_scrubbers)
 		if(scrubber.id_tag == id)
 			return scrubber
+
+//* Dropping *//
+
+/area/AllowDrop()
+	CRASH("Bad op: area/AllowDrop() called")
+
+/area/drop_location()
+	CRASH("Bad op: area/drop_location() called")
+
+//* Nightshift *//
+
+/**
+ * This is tick checked.
+ */
+/area/proc/set_nightshift(on, automatic, force)
+	if(on == nightshift && !force)
+		return
+	nightshift = on
+	if(nightshift_mutex)
+		return
+	nightshift_mutex = TRUE
+	for(var/obj/machinery/light/L in src)
+		if(!istype(L))
+			// no runtimes allowed, we have a mutex to clear!
+			continue
+		L.nightshift_mode(on)
+		CHECK_TICK
+	nightshift_mutex = FALSE
+	// mutex stopped another update, redo the cycle
+	if(nightshift != on)
+		set_nightshift(nightshift, force = TRUE)
 
 //* Turfs *//
 

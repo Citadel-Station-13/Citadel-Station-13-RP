@@ -89,7 +89,7 @@
 					spawn(20)
 						to_chat(src, "Backup battery online. Scanners, camera, and radio interface offline. Beginning fault-detection.")
 						sleep(50)
-						if (loc.power_equip)
+						if (loc.power_channels & POWER_BIT_EQUIP)
 							if (!istype(T, /turf/space))
 								to_chat(src, "Alert cancelled. Power has been restored without our assistance.")
 								aiRestorePowerRoutine = 0
@@ -105,11 +105,11 @@
 							return
 						to_chat(src, "Connection verified. Searching for APC in power network.")
 						sleep(50)
-						var/obj/machinery/power/apc/theAPC = null
+						var/obj/machinery/apc/theAPC = null
 
 						var/PRP
 						for (PRP=1, PRP<=4, PRP++)
-							for (var/obj/machinery/power/apc/APC in current_area)
+							for (var/obj/machinery/apc/APC in current_area)
 								if (!(APC.machine_stat & BROKEN))
 									theAPC = APC
 									break
@@ -155,10 +155,9 @@
 
 /mob/living/silicon/ai/proc/lacks_power()
 	if(APU_power)
-		return 0
-	var/turf/T = get_turf(src)
+		return 0\
 	var/area/A = get_area(src)
-	return ((!A.power_equip) && A.requires_power == 1 || istype(T, /turf/space)) && !istype(src.loc,/obj/item)
+	return !istype(loc, /obj/item) && !A?.powered(POWER_CHANNEL_EQUIP)
 
 /mob/living/silicon/ai/update_health()
 	if(status_flags & STATUS_GODMODE)

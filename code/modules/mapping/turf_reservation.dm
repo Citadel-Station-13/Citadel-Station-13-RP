@@ -410,7 +410,7 @@
 /area/reservation_border
 	name = "Reservation Border Area"
 	unique = FALSE
-	always_unpowered = TRUE
+	area_power_override = FALSE
 	has_gravity = FALSE
 
 	/// the reservation that owns us

@@ -71,7 +71,7 @@
 	playsound(src.loc, 'sound/weapons/flash.ogg', 100, TRUE)
 	flick("[base_state]_flash", src)
 	last_flash = world.time
-	use_power(1500)
+	use_burst_power(1500)
 
 	for (var/mob/O in viewers(src, null))
 		if(get_dist(src, O) > range)
@@ -134,7 +134,7 @@
 	if(..())
 		return
 
-	use_power(5)
+	use_burst_power(5)
 
 	active = TRUE
 	icon_state = "launcheract"

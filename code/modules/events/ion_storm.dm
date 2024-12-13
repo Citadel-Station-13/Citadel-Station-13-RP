@@ -197,7 +197,7 @@ Would like to add a law like "Law x is _______" where x = a number, and _____ is
 
 	spawn(0)
 		to_chat(world, "Started processing APCs")
-		for (var/obj/machinery/power/apc/apc in GLOB.apcs)
+		for (var/obj/machinery/apc/apc in GLOB.apcs)
 			if(APC.z in station_levels)
 				APC.ion_act()
 				apcnum++

@@ -3,7 +3,7 @@
 /turf/simulated/shuttle/wall/voidcraft/green/virgo2/nocol,
 /area/tether_away/aerostat)
 "ab" = (
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "2-8"
 	},
 /obj/effect/debris/cleanable/cobweb2,
@@ -276,7 +276,7 @@
 /turf/simulated/floor/bluegrid/virgo2,
 /area/tether_away/aerostat/inside)
 "aN" = (
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/bluegrid/virgo2,
@@ -345,7 +345,7 @@
 /turf/simulated/floor/plating/virgo2,
 /area/tether_away/aerostat/solars)
 "aW" = (
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "1-8"
 	},
 /obj/effect/floor_decal/rust,
@@ -353,7 +353,7 @@
 /turf/simulated/floor/plating/virgo2,
 /area/tether_away/aerostat/inside)
 "aX" = (
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "1-4"
 	},
 /obj/effect/floor_decal/rust,
@@ -519,7 +519,7 @@
 /turf/simulated/floor/tiled/techfloor/virgo2,
 /area/tether_away/aerostat/inside)
 "bz" = (
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "1-2"
 	},
 /obj/machinery/door/airlock/maintenance/common,
@@ -530,7 +530,7 @@
 /turf/simulated/floor/tiled/techfloor/virgo2,
 /area/tether_away/aerostat/inside)
 "bB" = (
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/techfloor/virgo2,
@@ -694,7 +694,7 @@
 /turf/simulated/floor/plating/virgo2,
 /area/tether_away/aerostat/inside)
 "cd" = (
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "1-2"
 	},
 /obj/machinery/door/airlock/maintenance/common,
@@ -713,13 +713,13 @@
 /turf/simulated/floor/plating/virgo2,
 /area/tether_away/aerostat/inside)
 "ch" = (
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "1-4"
 	},
 /turf/simulated/floor/tiled/techfloor/virgo2,
 /area/tether_away/aerostat/inside)
 "ci" = (
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/techfloor/virgo2,
@@ -736,7 +736,7 @@
 /turf/simulated/shuttle/floor/yellow,
 /area/shuttle/aerostat)
 "cm" = (
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "1-8"
 	},
 /turf/simulated/floor/tiled/techfloor/virgo2,
@@ -752,13 +752,13 @@
 /turf/simulated/floor/tiled/techfloor/virgo2,
 /area/tether_away/aerostat/inside)
 "co" = (
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "2-4"
 	},
 /turf/simulated/floor/tiled/techfloor/virgo2,
 /area/tether_away/aerostat/inside)
 "cp" = (
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "4-8"
 	},
 /obj/machinery/door/airlock/multi_tile/metal{
@@ -767,7 +767,7 @@
 /turf/simulated/floor/tiled/techfloor/virgo2,
 /area/tether_away/aerostat/inside)
 "cq" = (
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "2-8"
 	},
 /turf/simulated/floor/tiled/techfloor/virgo2,
@@ -1062,7 +1062,7 @@
 /turf/simulated/floor/bluegrid/virgo2,
 /area/tether_away/aerostat/inside)
 "di" = (
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "0-4"
 	},
 /obj/structure/cable/yellow,
@@ -1073,14 +1073,14 @@
 /turf/simulated/floor/plating/virgo2,
 /area/tether_away/aerostat/solars)
 "dj" = (
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "4-8"
 	},
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating/virgo2,
 /area/tether_away/aerostat/solars)
 "dk" = (
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "4-8"
 	},
 /obj/effect/floor_decal/industrial/warning/dust{
@@ -1090,7 +1090,7 @@
 /turf/simulated/floor/plating/virgo2,
 /area/tether_away/aerostat/solars)
 "dl" = (
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "4-8"
 	},
 /obj/effect/floor_decal/industrial/warning/dust{
@@ -1100,7 +1100,7 @@
 /turf/simulated/floor/plating/virgo2,
 /area/tether_away/aerostat/solars)
 "dm" = (
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "0-8"
 	},
 /obj/structure/cable/yellow,
@@ -1114,7 +1114,7 @@
 /obj/machinery/power/terminal{
 	dir = 4
 	},
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "0-8"
 	},
 /obj/structure/cable{
@@ -1150,7 +1150,7 @@
 /turf/simulated/floor/plating/virgo2,
 /area/tether_away/aerostat/solars)
 "dr" = (
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "2-4"
 	},
 /obj/effect/debris/cleanable/cobweb,
@@ -1158,7 +1158,7 @@
 /turf/simulated/floor/plating/virgo2,
 /area/tether_away/aerostat/inside)
 "ds" = (
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "4-8"
 	},
 /obj/effect/floor_decal/rust,
@@ -1210,7 +1210,7 @@
 /turf/simulated/floor/plating/virgo2,
 /area/tether_away/aerostat/solars)
 "dy" = (
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "1-2"
 	},
 /obj/effect/floor_decal/rust,
@@ -1321,7 +1321,7 @@
 /obj/machinery/power/terminal{
 	dir = 8
 	},
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "0-4"
 	},
 /obj/structure/cable{

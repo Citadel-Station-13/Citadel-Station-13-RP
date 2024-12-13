@@ -10,7 +10,7 @@
 // The shuttle's area(s)
 /area/shuttle/screebarge
 	icon_state = "shuttle2"
-	requires_power = 1
+	area_power_override = null
 /area/shuttle/screebarge/fore
 	name = "\improper Battle Barge - Fore"
 /area/shuttle/screebarge/mid

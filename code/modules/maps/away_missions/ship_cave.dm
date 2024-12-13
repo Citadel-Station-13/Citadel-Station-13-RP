@@ -8,7 +8,7 @@
 /area/awaymission/shipcave
 	name = "Mysterious Caverns"
 	icon_state = "blank"
-	requires_power = 0
+	area_power_infinite = TRUE
 	dynamic_lighting = 1
 
 /area/awaymission/shipcave/temple

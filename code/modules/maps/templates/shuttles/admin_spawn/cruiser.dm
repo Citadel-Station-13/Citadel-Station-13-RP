@@ -1,7 +1,7 @@
 
 //////// Mothership areas ////////
 /area/mothership
-	requires_power = 1
+	area_power_override = null
 	area_flags = AREA_RAD_SHIELDED
 	icon_state = "blue2"
 

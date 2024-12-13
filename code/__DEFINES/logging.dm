@@ -22,6 +22,7 @@ GLOBAL_VAR(##gvar);
 #define INVESTIGATE_SINGULO "singulo"
 #define INVESTIGATE_SUPERMATTER "supermatter"
 #define INVESTIGATE_TELESCI "telesci"
+#define INVESTIGATE_WIRES "wires"
 
 #define ALL_INVESTIGATE_SUBJECTS list(	\
 	INVESTIGATE_ATMOS,					\
@@ -32,7 +33,8 @@ GLOBAL_VAR(##gvar);
 	INVESTIGATE_RECORDS,				\
 	INVESTIGATE_SINGULO,				\
 	INVESTIGATE_SUPERMATTER,			\
-	INVESTIGATE_TELESCI					\
+	INVESTIGATE_TELESCI,				\
+	INVESTIGATE_WIRES,					\
 )
 
 // Logging types for log_message()

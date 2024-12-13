@@ -106,7 +106,7 @@
 		return
 	if(!operating)
 		return
-	use_power(10)
+	use_burst_power(10)
 	// check catastrophic crowding
 	if(length(loc.contents) > TURF_CROWDING_HARD_LIMIT)
 		return
