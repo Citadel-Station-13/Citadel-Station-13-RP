@@ -6,6 +6,7 @@
 
 import { BooleanLike } from 'common/react';
 import { Component, InfernoNode } from 'inferno';
+
 import { Box, BoxProps } from './Box';
 import { Button, ButtonProps } from './Button';
 import { ComponentProps } from './Component';

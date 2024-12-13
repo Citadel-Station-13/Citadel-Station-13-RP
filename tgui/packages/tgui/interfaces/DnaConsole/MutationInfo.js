@@ -1,5 +1,6 @@
 import { filter, uniqBy } from 'common/collections';
 import { flow } from 'common/fp';
+
 import { useBackend } from '../../backend';
 import { Box, Button, Divider, Dropdown, LabeledList } from '../../components';
 import { CHROMOSOME_NEVER, CHROMOSOME_NONE, CHROMOSOME_USED, MUT_COLORS, MUT_EXTRA } from './constants';

@@ -1,5 +1,6 @@
-import { decodeHtmlEntities } from 'common/string';
 import { filter } from 'common/collections';
+import { decodeHtmlEntities } from 'common/string';
+
 import { useBackend, useLocalState } from "../../../../backend";
 import { Box, Button, LabeledList, Section } from "../../../../components";
 

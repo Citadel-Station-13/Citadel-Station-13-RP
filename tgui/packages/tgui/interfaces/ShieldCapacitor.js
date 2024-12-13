@@ -1,8 +1,9 @@
-import { useBackend } from "../backend";
-import { Window } from "../layouts";
-import { Button, Box, Section, LabeledList, NumberInput, AnimatedNumber } from "../components";
 import { round } from "common/math";
-import { formatSiUnit, formatPower } from "../format";
+
+import { useBackend } from "../backend";
+import { AnimatedNumber, Box, Button, LabeledList, NumberInput, Section } from "../components";
+import { formatPower, formatSiUnit } from "../format";
+import { Window } from "../layouts";
 
 export const ShieldCapacitor = (props, context) => {
   const { act, data } = useBackend(context);

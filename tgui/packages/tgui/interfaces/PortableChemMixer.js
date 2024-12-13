@@ -1,5 +1,6 @@
 import { sortBy } from 'common/collections';
 import { toTitleCase } from 'common/string';
+
 import { useBackend } from '../backend';
 import { AnimatedNumber, Box, Button, LabeledList, Section } from '../components';
 import { Window } from '../layouts';

@@ -4,7 +4,7 @@
 import { useBackend } from "../../backend";
 import { LabeledList, NumberInput } from "../../components";
 import { Section, SectionProps } from "../../components/Section";
-import { AtmosGasGroups, AtmosGasID, AtmosGasGroupFlags, GasContext, AtmosFilterList } from "../common/Atmos";
+import { AtmosFilterList, AtmosGasGroupFlags, AtmosGasGroups, AtmosGasID, GasContext } from "../common/Atmos";
 import { AtmosComponent, AtmosComponentData } from "../common/AtmosMachine";
 
 interface AtmosTrinaryFilterControlProps extends SectionProps {

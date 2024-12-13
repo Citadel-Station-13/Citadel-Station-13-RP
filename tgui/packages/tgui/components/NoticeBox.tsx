@@ -5,6 +5,7 @@
  */
 
 import { BooleanLike, classes, pureComponentHooks } from 'common/react';
+
 import { Box, BoxProps } from './Box';
 
 export type NoticeBoxProps = BoxProps & {

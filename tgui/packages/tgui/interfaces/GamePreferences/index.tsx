@@ -10,6 +10,7 @@
  */
 import { BooleanLike } from "common/react";
 import { InfernoNode } from "inferno";
+
 import { getModuleData, useBackend, useLocalState } from "../../backend";
 import { Button, Flex, Section, Stack, Tooltip } from "../../components";
 import { Window } from "../../layouts";

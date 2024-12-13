@@ -1,6 +1,7 @@
 import { round } from 'common/math';
+
 import { useBackend } from "../backend";
-import { Button, LabeledList, Section, Knob, Slider, LabeledControls, AnimatedNumber } from "../components";
+import { AnimatedNumber, Button, Knob, LabeledControls, LabeledList, Section, Slider } from "../components";
 import { Window } from "../layouts";
 
 export const GasTemperatureSystem = (props, context) => {

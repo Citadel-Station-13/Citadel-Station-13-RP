@@ -1,7 +1,8 @@
-import { Section, Flex, Box, Dropdown, ProgressBar, NumberInput } from "../components";
-import { Window } from "../layouts";
-import { useBackend } from "../backend";
 import { toFixed } from 'common/math';
+
+import { useBackend } from "../backend";
+import { Box, Dropdown, Flex, NumberInput, ProgressBar, Section } from "../components";
+import { Window } from "../layouts";
 
 interface TeleporterConsoleContext {
   "disabled",

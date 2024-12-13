@@ -1,5 +1,6 @@
 import { toTitleCase } from 'common/string';
 import { Fragment } from 'inferno';
+
 import { useBackend } from "../backend";
 import { Box, Button, Flex, LabeledList, ProgressBar, Section } from "../components";
 import { Window } from "../layouts";

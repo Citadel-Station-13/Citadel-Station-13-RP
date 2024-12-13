@@ -1,4 +1,5 @@
 import { Component } from 'inferno';
+
 import { useBackend } from '../backend';
 import { Box, Stack } from '../components';
 import { Window } from '../layouts';

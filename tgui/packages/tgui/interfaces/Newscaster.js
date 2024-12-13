@@ -6,12 +6,13 @@
  */
 
 import { decodeHtmlEntities } from 'common/string';
-import { useBackend, useSharedState, useLocalState } from '../backend';
+import { marked } from 'marked';
+
+import { useBackend, useLocalState, useSharedState } from '../backend';
+import { BlockQuote, Box, Button, Divider, LabeledList, Modal, Section, Stack, Tabs, TextArea } from '../components';
+import { sanitizeText } from "../sanitize";
 import { BountyBoardContent } from './BountyBoard';
 import { UserDetails } from './Vending';
-import { BlockQuote, Box, Button, Divider, LabeledList, Modal, Section, Stack, Tabs, TextArea } from '../components';
-import { marked } from 'marked';
-import { sanitizeText } from "../sanitize";
 
 const CENSOR_MESSAGE = "This channel has been deemed as threatening to \
   the welfare of the station, and marked with a Nanotrasen D-Notice.";

@@ -1,5 +1,6 @@
-import { flow } from 'common/fp';
 import { filter, sortBy } from 'common/collections';
+import { flow } from 'common/fp';
+
 import { useBackend, useSharedState } from '../backend';
 import { AnimatedNumber, Box, Button, Flex, Icon, Input, LabeledList, NoticeBox, Section, Stack, Table, Tabs } from '../components';
 import { formatMoney } from '../format';

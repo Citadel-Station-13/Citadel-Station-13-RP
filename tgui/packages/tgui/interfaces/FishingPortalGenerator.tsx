@@ -1,6 +1,6 @@
 import { useBackend } from '../backend';
-import { Window } from '../layouts';
 import { Button, LabeledList, Section } from '../components';
+import { Window } from '../layouts';
 
 type FishingPortalData = {
   active: boolean;

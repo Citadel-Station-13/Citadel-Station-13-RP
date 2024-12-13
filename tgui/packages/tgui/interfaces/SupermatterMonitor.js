@@ -1,10 +1,11 @@
-import { useBackend } from '../backend';
-import { Box, Button, LabeledList, ProgressBar, Section, Flex, AnimatedNumber, Chart, ColorBox }
-  from '../components';
-import { Window } from '../layouts';
 import { round } from 'common/math';
 import { toTitleCase } from 'common/string';
 import { Fragment } from 'inferno';
+
+import { useBackend } from '../backend';
+import { AnimatedNumber, Box, Button, Chart, ColorBox, Flex, LabeledList, ProgressBar, Section }
+  from '../components';
+import { Window } from '../layouts';
 
 //  As of 2020-08-06 this isn't actually ever used, but it needs to exist
 //  because that's what tgui_modules expect

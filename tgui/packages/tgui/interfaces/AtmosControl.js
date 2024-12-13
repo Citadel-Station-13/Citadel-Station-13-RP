@@ -1,8 +1,9 @@
 import { sortBy } from 'common/collections';
-import { Window } from '../layouts';
 import { Fragment } from 'inferno';
-import { Button, Box, Tabs, Icon, Section, NanoMap } from '../components';
+
 import { useBackend, useLocalState } from '../backend';
+import { Box, Button, Icon, NanoMap, Section, Tabs } from '../components';
+import { Window } from '../layouts';
 import { createLogger } from '../logging';
 const logger = createLogger("fuck");
 

@@ -1,4 +1,5 @@
 import { toFixed } from 'common/math';
+
 import { useBackend, useLocalState } from '../backend';
 import { Button, Flex, LabeledControls, NoticeBox, RoundGauge, Section, Stack } from '../components';
 import { Window } from '../layouts';

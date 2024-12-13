@@ -1,6 +1,6 @@
-import { AppTechweb } from './Techweb.js';
 import { useBackend } from '../backend';
 import { createLogger } from '../logging';
+import { AppTechweb } from './Techweb.js';
 
 const logger = createLogger('backend');
 

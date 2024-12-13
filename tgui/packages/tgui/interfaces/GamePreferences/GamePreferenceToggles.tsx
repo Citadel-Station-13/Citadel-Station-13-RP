@@ -3,6 +3,7 @@
  * @license MIT
  */
 import { BooleanLike } from "common/react";
+
 import { Button, Section, Stack, Table } from "../../components";
 
 export interface GamePreferenceTogglesMiddleware {

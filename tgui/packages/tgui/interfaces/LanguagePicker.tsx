@@ -1,6 +1,6 @@
 import { useBackend, useLocalState } from '../backend';
+import { Button, Section, Stack } from '../components';
 import { Window } from '../layouts';
-import { Section, Stack, Button } from '../components';
 
 type LanguagePickerContext = {
   categories: string[],

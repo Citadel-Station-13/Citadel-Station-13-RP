@@ -1,5 +1,5 @@
 import { useBackend } from '../backend';
-import { Button, Section, Icon, Stack, LabeledList, Box, NoticeBox } from '../components';
+import { Box, Button, Icon, LabeledList, NoticeBox, Section, Stack } from '../components';
 import { Window } from '../layouts';
 
 type CellularEmporiumContext = {

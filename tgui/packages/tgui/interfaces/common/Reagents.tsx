@@ -8,6 +8,7 @@
  */
 
 import { InfernoNode } from "inferno";
+
 import { LabeledList, NoticeBox, Section } from "../../components";
 import { SectionProps } from "../../components/Section";
 

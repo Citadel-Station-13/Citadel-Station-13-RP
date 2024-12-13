@@ -1,5 +1,5 @@
 import { useBackend, useSharedState } from "../../../backend";
-import { Box, Button, LabeledList, Input, Section, Table, Tabs } from "../../../components";
+import { Box, Button, Input, LabeledList, Section, Table, Tabs } from "../../../components";
 import { Window } from "../../../layouts";
 
 export const AccountsTerminal = (props, context) => {

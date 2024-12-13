@@ -1,13 +1,14 @@
-import { useBackend } from '../../backend';
-import { Window } from '../../layouts';
-import { GenericUplink, Item } from './GenericUplink';
-import { Component } from 'inferno';
-import { fetchRetry } from '../../http';
-import { resolveAsset } from '../../assets';
 import { BooleanLike } from 'common/react';
-import { Box, Tabs, Button, Stack, Section, Tooltip } from '../../components';
-import { Objective, ObjectiveMenu } from './ObjectiveMenu';
+import { Component } from 'inferno';
+
+import { resolveAsset } from '../../assets';
+import { useBackend } from '../../backend';
+import { Box, Button, Section, Stack, Tabs, Tooltip } from '../../components';
+import { fetchRetry } from '../../http';
+import { Window } from '../../layouts';
 import { calculateProgression, calculateReputationLevel, reputationDefault, reputationLevelsTooltip } from './calculateReputationLevel';
+import { GenericUplink, Item } from './GenericUplink';
+import { Objective, ObjectiveMenu } from './ObjectiveMenu';
 
 type UplinkItem = {
   id: string,

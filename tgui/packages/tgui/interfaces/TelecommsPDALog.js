@@ -4,9 +4,10 @@
  * @license MIT
  */
 import { Fragment } from 'inferno';
-import { Window } from '../layouts';
+
 import { useBackend, useSharedState } from '../backend';
-import { Button, LabeledList, NoticeBox, Section, Tabs, Input } from '../components';
+import { Button, Input, LabeledList, NoticeBox, Section, Tabs } from '../components';
+import { Window } from '../layouts';
 
 // This is the entrypoint, don't mind the others
 export const TelecommsPDALog = (props, context) => {

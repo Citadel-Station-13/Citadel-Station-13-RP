@@ -1,20 +1,21 @@
+import { Component } from 'inferno';
+
+import { resolveAsset } from '../../assets';
 import { useBackend } from '../../backend';
 import {
-  Input,
-  InfinitePlane,
-  Stack,
   Box,
   Button,
+  InfinitePlane,
+  Input,
+  Stack,
 } from '../../components';
-import { Component } from 'inferno';
 import { Window } from '../../layouts';
-import { resolveAsset } from '../../assets';
 import { CircuitInfo } from './CircuitInfo';
-import { ABSOLUTE_Y_OFFSET, MOUSE_BUTTON_LEFT, TIME_UNTIL_PORT_RELEASE_WORKS } from './constants';
+import { ComponentMenu } from './ComponentMenu';
 import { Connections } from './Connections';
+import { ABSOLUTE_Y_OFFSET, MOUSE_BUTTON_LEFT, TIME_UNTIL_PORT_RELEASE_WORKS } from './constants';
 import { ObjectComponent } from './ObjectComponent';
 import { VariableMenu } from './VariableMenu';
-import { ComponentMenu } from './ComponentMenu';
 
 export class IntegratedCircuit extends Component {
   constructor() {

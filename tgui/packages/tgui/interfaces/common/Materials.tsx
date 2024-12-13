@@ -2,15 +2,16 @@
  * @file
  * @license MIT
  */
-import { BooleanLike } from 'common/react';
-import { Box, Button, NumberInput, Section, Icon, Stack, Tooltip } from '../../components';
-import { formatSiUnit } from '../../format';
-import { useLocalState, useSharedState } from '../../backend';
-import { SectionProps } from '../../components/Section';
-import { InfernoNode } from 'inferno';
 import { toFixed } from 'common/math';
-import { Sprite } from '../../components/Sprite';
+import { BooleanLike } from 'common/react';
 import { toTitleCase } from 'common/string';
+import { InfernoNode } from 'inferno';
+
+import { useLocalState, useSharedState } from '../../backend';
+import { Box, Button, Icon, NumberInput, Section, Stack, Tooltip } from '../../components';
+import { SectionProps } from '../../components/Section';
+import { Sprite } from '../../components/Sprite';
+import { formatSiUnit } from '../../format';
 
 // the space is intentional
 export const MATERIAL_STORAGE_UNIT_NAME = " cm³";

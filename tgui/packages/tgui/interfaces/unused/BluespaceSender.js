@@ -1,8 +1,9 @@
 import { filter, sortBy } from 'common/collections';
 import { flow } from 'common/fp';
 import { toFixed } from 'common/math';
+
 import { useBackend } from '../../backend';
-import { Button, Divider, LabeledList, NumberInput, ProgressBar, Section, Stack, Box } from '../../components';
+import { Box, Button, Divider, LabeledList, NumberInput, ProgressBar, Section, Stack } from '../../components';
 import { getGasColor, getGasLabel } from '../../constants';
 import { Window } from '../../layouts';
 

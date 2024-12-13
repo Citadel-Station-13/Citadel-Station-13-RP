@@ -4,6 +4,7 @@
  */
 import { BooleanLike } from "common/react";
 import { InfernoNode } from "inferno";
+
 import { Button, Collapsible, ColorBox, Dropdown, Input, NumberInput, Section, Stack, Tooltip } from "../../components";
 import { ByondAtomColor, ByondColorString, ColorPicker } from "../common/Color";
 

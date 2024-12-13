@@ -1,5 +1,5 @@
 import { useBackend } from '../backend';
-import { Button, Section, Table, BlockQuote, ProgressBar, AnimatedNumber } from '../components';
+import { AnimatedNumber, BlockQuote, Button, ProgressBar, Section, Table } from '../components';
 import { NtosWindow } from '../layouts';
 
 export const NtosSkillTracker = (props, context) => {

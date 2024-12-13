@@ -1,7 +1,8 @@
-import { useBackend } from "../backend";
-import { Button, LabeledList, ProgressBar, Section, AnimatedNumber } from "../components";
-import { formatPower, formatSiUnit } from '../format';
 import { Fragment } from 'inferno';
+
+import { useBackend } from "../backend";
+import { AnimatedNumber, Button, LabeledList, ProgressBar, Section } from "../components";
+import { formatPower, formatSiUnit } from '../format';
 import { Window } from "../layouts";
 
 export const MassiveHeatPump = (props, context) => {

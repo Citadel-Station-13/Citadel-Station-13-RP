@@ -1,6 +1,6 @@
 import { useBackend } from "../backend";
+import { Button, Knob, Section, Table } from "../components";
 import { Window } from "../layouts";
-import { Button, Section, Table, Knob } from "../components";
 
 export const GyrotronControl = (props, context) => (
   <Window

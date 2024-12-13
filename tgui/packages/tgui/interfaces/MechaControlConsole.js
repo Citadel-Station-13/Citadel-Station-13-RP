@@ -1,8 +1,9 @@
+import { decodeHtmlEntities, toTitleCase } from 'common/string';
 import { Fragment } from 'inferno';
+
 import { useBackend } from "../backend";
-import { Box, Button, Modal, LabeledList, ProgressBar, Section, NoticeBox } from "../components";
+import { Box, Button, LabeledList, Modal, NoticeBox, ProgressBar, Section } from "../components";
 import { Window } from "../layouts";
-import { toTitleCase, decodeHtmlEntities } from 'common/string';
 
 export const MechaControlConsole = (props, context) => {
   const { act, data } = useBackend(context);

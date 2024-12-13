@@ -1,5 +1,5 @@
-import { NtosWindow } from "../layouts";
 import { Module } from "../components/Module";
+import { NtosWindow } from "../layouts";
 
 export const NtosIdentificationComputer = (props, context) => {
   return (

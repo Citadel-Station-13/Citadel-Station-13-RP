@@ -1,6 +1,7 @@
 import { DecodeRGBString, EncodeRGBAString, EncodeRGBString, HSVtoRGB, RGBtoHSV } from "common/color";
 import { round } from "common/math";
 import { Component } from "inferno";
+
 import { Box, ColorBox, Input, NumberInput, Slider, Stack, Table, Tabs } from "../../components";
 import { BoxProps } from "../../components/Box";
 

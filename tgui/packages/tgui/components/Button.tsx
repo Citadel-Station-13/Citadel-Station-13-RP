@@ -8,6 +8,7 @@ import { Placement } from '@popperjs/core';
 import { KEY_ENTER, KEY_ESCAPE, KEY_SPACE } from 'common/keycodes';
 import { BooleanLike, classes, pureComponentHooks, StrictlyStringLike } from 'common/react';
 import { Component, createRef } from 'inferno';
+
 import { createLogger } from '../logging';
 import { Box, BoxProps, computeBoxClassName, computeBoxProps } from './Box';
 import { Icon } from './Icon';

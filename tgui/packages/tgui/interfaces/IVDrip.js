@@ -1,5 +1,5 @@
 import { useBackend } from '../backend';
-import { Box, Button, NumberInput, LabeledList, Section } from '../components';
+import { Box, Button, LabeledList, NumberInput, Section } from '../components';
 import { Window } from '../layouts';
 
 export const IVDrip = (props, context) => {

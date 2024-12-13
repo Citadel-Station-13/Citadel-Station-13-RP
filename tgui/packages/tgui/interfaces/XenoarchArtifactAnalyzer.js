@@ -1,6 +1,6 @@
 import { useBackend } from "../backend";
-import { Window } from "../layouts";
 import { Box, Button, Section } from "../components";
+import { Window } from "../layouts";
 
 export const XenoarchArtifactAnalyzer = (props, context) => {
   return (

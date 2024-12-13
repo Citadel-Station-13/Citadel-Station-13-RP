@@ -4,10 +4,11 @@
  * @license MIT
  */
 
-import { clamp01 } from 'common/math';
-import { useBackend, useLocalState } from '../backend';
-import { Box, Button, Section, Input, Stack, TextArea } from '../components';
 import { KEY_ESCAPE } from 'common/keycodes';
+import { clamp01 } from 'common/math';
+
+import { useBackend, useLocalState } from '../backend';
+import { Box, Button, Input, Section, Stack, TextArea } from '../components';
 import { Window } from '../layouts';
 import { createLogger } from '../logging';
 

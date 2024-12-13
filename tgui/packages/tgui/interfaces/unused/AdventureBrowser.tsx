@@ -1,8 +1,8 @@
 import { useBackend, useLocalState } from '../../backend';
-import { Button, LabeledList, Section, Box, NoticeBox, Table } from '../../components';
+import { Box, Button, LabeledList, NoticeBox, Section, Table } from '../../components';
+import { formatTime } from '../../format';
 import { Window } from '../../layouts';
 import { AdventureDataProvider, AdventureScreen } from '../ExodroneConsole';
-import { formatTime } from '../../format';
 
 type Adventure = {
   ref: string;

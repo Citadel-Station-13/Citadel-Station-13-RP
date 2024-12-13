@@ -1,8 +1,9 @@
+import { round } from 'common/math';
+
 import { useBackend } from '../backend';
 import { Box, Button, Flex, LabeledList, ProgressBar, Section, Slider } from '../components';
 import { formatPower } from '../format';
 import { Window } from '../layouts';
-import { round } from 'common/math';
 
 export const Smes = (props, context) => {
   const { act, data } = useBackend(context);

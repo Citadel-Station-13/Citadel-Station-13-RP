@@ -1,6 +1,6 @@
-import { Section, Flex, Box, Button, Input, LabeledList, Collapsible, Divider } from "../components";
-import { Window } from "../layouts";
 import { useBackend, useLocalState } from "../backend";
+import { Box, Button, Collapsible, Divider, Flex, Input, LabeledList, Section } from "../components";
+import { Window } from "../layouts";
 
 const ACCOUNT_SECURITY_DESCRIPTIONS: AccountSecurityDescription[] = [{ "level": 0, "desc": "Only account number required, automatically scanned from ID in proximity." },
   { "level": 1, "desc": "Account number and PIN required; ID autoscan disabled." },

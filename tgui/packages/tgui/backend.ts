@@ -13,6 +13,7 @@
 
 import { perf } from 'common/perf';
 import { createAction } from 'common/redux';
+
 import { SectionProps } from './components/Section';
 import { setupDrag } from './drag';
 import { globalEvents } from './events';

@@ -5,6 +5,7 @@
 
 import { BooleanLike } from "common/react";
 import { InfernoNode } from "inferno";
+
 import { Section } from "../components";
 import { SectionProps } from "../components/Section";
 import { Window, WindowProps } from "./Window";

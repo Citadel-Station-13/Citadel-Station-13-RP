@@ -1,9 +1,10 @@
-import { useBackend, useLocalState } from '../../../backend';
-import { multiline } from 'common/string';
-import { GenericUplink, Item } from '../../Uplink/GenericUplink';
-import { BlockQuote, Button, Section, Stack, Tabs } from '../../../components';
 import { BooleanLike } from 'common/react';
+import { multiline } from 'common/string';
+
+import { useBackend, useLocalState } from '../../../backend';
+import { BlockQuote, Button, Section, Stack, Tabs } from '../../../components';
 import { Window } from '../../../layouts';
+import { GenericUplink, Item } from '../../Uplink/GenericUplink';
 
 const allystyle = {
   fontWeight: 'bold',

@@ -6,6 +6,7 @@
 
 import { BooleanLike, classes, pureComponentHooks } from 'common/react';
 import { InfernoNode } from 'inferno';
+
 import { Box, BoxStringProp, unit } from './Box';
 import { ComponentProps } from './Component';
 import { Divider } from './Divider';

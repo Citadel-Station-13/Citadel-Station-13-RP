@@ -1,7 +1,8 @@
-import { useBackend } from '../backend';
-import { Box, Button, NoticeBox, LabeledList, ProgressBar, Section, Table } from '../components';
-import { Window } from '../layouts';
 import { capitalize } from 'common/string';
+
+import { useBackend } from '../backend';
+import { Box, Button, LabeledList, NoticeBox, ProgressBar, Section, Table } from '../components';
+import { Window } from '../layouts';
 
 export const AlgaeFarm = (props, context) => {
   const { act, data } = useBackend(context);
