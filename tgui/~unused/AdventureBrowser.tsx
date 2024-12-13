@@ -1,8 +1,8 @@
-import { useBackend, useLocalState } from '../../backend';
-import { Box, Button, LabeledList, NoticeBox, Section, Table } from '../../components';
-import { formatTime } from '../../format';
-import { Window } from '../../layouts';
-import { AdventureDataProvider, AdventureScreen } from '../ExodroneConsole';
+import { useBackend, useLocalState } from '/media/lettern/Linux FS/Git Repo/Citadel-Station-13-RP-2/tgui/packages/tgui/backend';
+import { Box, Button, LabeledList, NoticeBox, Section, Table } from '/media/lettern/Linux FS/Git Repo/Citadel-Station-13-RP-2/tgui/packages/tgui/components';
+import { formatTime } from '/media/lettern/Linux FS/Git Repo/Citadel-Station-13-RP-2/tgui/packages/tgui/format';
+import { Window } from '/media/lettern/Linux FS/Git Repo/Citadel-Station-13-RP-2/tgui/packages/tgui/layouts';
+import { AdventureDataProvider, AdventureScreen } from '/media/lettern/Linux FS/Git Repo/Citadel-Station-13-RP-2/tgui/packages/tgui/interfaces/ExodroneConsole';
 
 type Adventure = {
   ref: string;
