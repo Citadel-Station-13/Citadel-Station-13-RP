@@ -13,7 +13,7 @@ import { createVNode } from 'inferno';
 import { ChildFlags, VNodeFlags } from 'inferno-vnode-flags';
 
 import { CSS_COLORS } from '../constants';
-import { ComponentProps } from './Component';
+import { PropsWithChildren } from './Component';
 
 // a css value for a numerical unit,
 // or a number to translate into units automatically,
@@ -31,7 +31,7 @@ export type BoxStringProp = string | null | undefined | boolean;
  * Things that use Box often can/should override/'augment' some of these,
  * but all of this is here so typescript knows what is/isn't valid.
  */
-export type BoxProps = ComponentProps & {
+export type BoxProps = PropsWithChildren & {
   [key: string]: any;
   as?: keyof InfernoHTML;
   className?: string | undefined;
@@ -87,18 +87,15 @@ export type BoxProps = ComponentProps & {
 /**
  * Coverts our rem-like spacing unit into a CSS unit.
  */
-export const unit = (value: unknown): string | undefined => {
+export const unit = (value: unknown) => {
   if (typeof value === 'string') {
     // Transparently convert pixels into rem units
-    if (value.endsWith('px') && !Byond.IS_LTE_IE8) {
+    if (value.endsWith('px')) {
       return parseFloat(value) / 12 + 'rem';
     }
     return value;
   }
   if (typeof value === 'number') {
-    if (Byond.IS_LTE_IE8) {
-      return value * 12 + 'px';
-    }
     return value + 'rem';
   }
 };
@@ -106,7 +103,7 @@ export const unit = (value: unknown): string | undefined => {
 /**
  * Same as `unit`, but half the size for integers numbers.
  */
-export const halfUnit = (value: unknown): string | undefined => {
+export const halfUnit = (value: unknown) => {
   if (typeof value === 'string') {
     return unit(value);
   }
@@ -118,10 +115,10 @@ export const halfUnit = (value: unknown): string | undefined => {
 const isColorCode = (str: unknown) => !isColorClass(str);
 
 const isColorClass = (str: unknown): boolean => {
-  return typeof str === "string" && CSS_COLORS.includes(str);
+  return typeof str === 'string' && CSS_COLORS.includes(str as any);
 };
 
-const mapRawPropTo = attrName => (style, value) => {
+const mapRawPropTo = (attrName) => (style, value) => {
   if (typeof value === 'number' || typeof value === 'string') {
     style[attrName] = value;
   }
@@ -147,7 +144,7 @@ const mapDirectionalUnitPropTo = (attrName, unit, dirs) => (style, value) => {
   }
 };
 
-const mapColorPropTo = attrName => (style, value) => {
+const mapColorPropTo = (attrName) => (style, value) => {
   if (isColorCode(value)) {
     style[attrName] = value;
   }
@@ -230,11 +227,12 @@ const styleMapperByPropName = {
       style['right'] = 0;
     }
   },
-};
+} as const;
 
-export const computeBoxProps = (props: BoxProps) => {
-  const computedProps: any = {};
-  const computedStyles = {};
+export const computeBoxProps = (props) => {
+  const computedProps: Record<string, any> = {};
+  const computedStyles: Record<string, string | number> = {};
+
   // Compute props
   for (let propName of Object.keys(props)) {
     if (propName === 'style') {

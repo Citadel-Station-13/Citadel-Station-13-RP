@@ -1,26 +1,34 @@
-import { Component, createRef, RefObject } from "inferno";
+import {
+  Component,
+  createRef,
+  RefObject,
+} from 'inferno';
 
 const DEFAULT_ACCEPTABLE_DIFFERENCE = 5;
 
-export class FitText extends Component<{
-  acceptableDifference?: number,
-  maxWidth: number,
-  maxFontSize: number,
-  native?: HTMLAttributes<HTMLDivElement>,
-}, {
-  fontSize: number,
-}> {
+type Props = {
+  acceptableDifference?: number;
+  maxWidth: number;
+  maxFontSize: number;
+  native?: HTMLAttributes<HTMLDivElement>;
+};
+
+type State = {
+  fontSize: number;
+};
+
+export class FitText extends Component<Props, State> {
   ref: RefObject<HTMLDivElement> = createRef();
-  state = {
+  state: State = {
     fontSize: 0,
   };
 
-  constructor() {
-    super();
+  constructor(props: Props) {
+    super(props);
 
     this.resize = this.resize.bind(this);
 
-    window.addEventListener("resize", this.resize);
+    window.addEventListener('resize', this.resize);
   }
 
   componentDidUpdate(prevProps) {
@@ -30,7 +38,7 @@ export class FitText extends Component<{
   }
 
   componentWillUnmount() {
-    window.removeEventListener("resize", this.resize);
+    window.removeEventListener('resize', this.resize);
   }
 
   resize() {
@@ -53,8 +61,8 @@ export class FitText extends Component<{
       if (difference > 0) {
         end = middle;
       } else if (
-        difference
-          < (this.props.acceptableDifference ?? DEFAULT_ACCEPTABLE_DIFFERENCE)
+        difference <
+        (this.props.acceptableDifference ?? DEFAULT_ACCEPTABLE_DIFFERENCE)
       ) {
         start = middle;
       } else {
@@ -76,12 +84,12 @@ export class FitText extends Component<{
       <span
         ref={this.ref}
         style={{
-          "font-size": `${this.state.fontSize}px`,
-          ...(
-            typeof this.props.native?.style === "object"
-            && this.props.native.style
-          ),
-        }}>
+          fontSize: `${this.state.fontSize}px`,
+          ...(typeof this.props.native?.style === 'object'
+            ? this.props.native.style
+            : {}),
+        }}
+      >
         {this.props.children}
       </span>
     );

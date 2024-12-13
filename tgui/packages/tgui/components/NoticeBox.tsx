@@ -4,27 +4,34 @@
  * @license MIT
  */
 
-import { BooleanLike, classes, pureComponentHooks } from 'common/react';
+import { classes, pureComponentHooks } from 'common/react';
 
 import { Box, BoxProps } from './Box';
 
-export type NoticeBoxProps = BoxProps & {
-  readonly warning?: BooleanLike;
-  readonly success?: BooleanLike;
-  readonly danger?: BooleanLike;
-  readonly info?: BooleanLike;
-}
+type Props = ExclusiveProps & BoxProps;
 
-export const NoticeBox = (props: NoticeBoxProps) => {
-  const {
-    className,
-    color,
-    info,
-    warning,
-    success,
-    danger,
-    ...rest
-  } = props;
+/** You MUST use only one or none */
+type NoticeType = 'info' | 'success' | 'danger';
+
+type None = {
+  [K in NoticeType]?: undefined;
+};
+
+type ExclusiveProps =
+  | None
+  | (Omit<None, 'info'> & {
+      info: boolean;
+    })
+  | (Omit<None, 'success'> & {
+      success: boolean;
+    })
+  | (Omit<None, 'danger'> & {
+      danger: boolean;
+    });
+
+export function NoticeBox(props: Props) {
+  const { className, color, info, success, danger, ...rest } = props;
+
   return (
     <Box
       className={classes([
@@ -35,8 +42,9 @@ export const NoticeBox = (props: NoticeBoxProps) => {
         danger && 'NoticeBox--type--danger',
         className,
       ])}
-      {...rest} />
+      {...rest}
+    />
   );
-};
+}
 
 NoticeBox.defaultHooks = pureComponentHooks;

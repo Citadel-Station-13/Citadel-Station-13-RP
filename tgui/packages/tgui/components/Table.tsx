@@ -4,21 +4,19 @@
  * @license MIT
  */
 
-import { BooleanLike, classes, pureComponentHooks } from 'common/react';
+import { classes, pureComponentHooks } from 'common/react';
 
 import { BoxProps, computeBoxClassName, computeBoxProps } from './Box';
 
-interface TableProps extends BoxProps {
-  readonly collapsing?: BooleanLike;
-}
+type Props = Partial<{
+  /** Collapses table to the smallest possible size. */
+  collapsing: boolean;
+}> &
+  BoxProps;
 
-export const Table = (props: TableProps) => {
-  const {
-    className,
-    collapsing,
-    children,
-    ...rest
-  } = props;
+export function Table(props: Props) {
+  const { className, collapsing, children, ...rest } = props;
+
   return (
     <table
       className={classes([
@@ -27,26 +25,24 @@ export const Table = (props: TableProps) => {
         className,
         computeBoxClassName(rest),
       ])}
-      {...computeBoxProps(rest)}>
-      <tbody>
-        {children}
-      </tbody>
+      {...computeBoxProps(rest)}
+    >
+      <tbody>{children}</tbody>
     </table>
   );
-};
+}
 
 Table.defaultHooks = pureComponentHooks;
 
-interface TableRowProps extends BoxProps {
-  readonly header?: BooleanLike;
-}
+type RowProps = Partial<{
+  /** Whether this is a header cell. */
+  header: boolean;
+}> &
+  BoxProps;
 
-export const TableRow = (props: TableRowProps) => {
-  const {
-    className,
-    header,
-    ...rest
-  } = props;
+export function TableRow(props: RowProps) {
+  const { className, header, ...rest } = props;
+
   return (
     <tr
       className={classes([
@@ -55,24 +51,30 @@ export const TableRow = (props: TableRowProps) => {
         className,
         computeBoxClassName(props),
       ])}
-      {...computeBoxProps(rest)} />
+      {...computeBoxProps(rest)}
+    />
   );
-};
-
-TableRow.defaultHooks = pureComponentHooks;
-
-interface TableCellProps extends BoxProps {
-  readonly header?: BooleanLike;
-  readonly collapsing?: BooleanLike;
 }
 
-export const TableCell = (props: TableCellProps) => {
-  const {
-    className,
-    collapsing,
-    header,
-    ...rest
-  } = props;
+TableRow.defaultHooks = pureComponentHooks;
+Table.Row = TableRow;
+
+type CellProps = Partial<{
+  /** Collapses table cell to the smallest possible size,
+  and stops any text inside from wrapping. */
+  collapsing: boolean;
+  /** Additional columns for this cell to expand, assuming there is room. */
+  colSpan: number;
+  /** Whether this is a header cell. */
+  header: boolean;
+  /** Rows for this cell to expand, assuming there is room. */
+  rowSpan: number;
+}> &
+  BoxProps;
+
+export function TableCell(props: CellProps) {
+  const { className, collapsing, colSpan, header, ...rest } = props;
+
   return (
     <td
       className={classes([
@@ -82,11 +84,11 @@ export const TableCell = (props: TableCellProps) => {
         className,
         computeBoxClassName(props),
       ])}
-      {...computeBoxProps(rest)} />
+      colSpan={colSpan}
+      {...computeBoxProps(rest)}
+    />
   );
-};
+}
 
 TableCell.defaultHooks = pureComponentHooks;
-
-Table.Row = TableRow;
 Table.Cell = TableCell;

@@ -59,44 +59,40 @@ export const Flex = (props: FlexProps) => {
 
 Flex.defaultHooks = pureComponentHooks;
 
-export type FlexItemProps = BoxProps & {
-  grow?: number | CSSWideKeyword | undefined;
-  order?: number;
-  shrink?: number | CSSWideKeyword | undefined;
-  basis?: string | BooleanLike;
-  align?: CSSWideKeyword | "flex-start" | "flex-end" | "center" | "baseline" | "stretch" | "auto" | undefined;
-};
+export type FlexItemProps = BoxProps &
+  Partial<{
+    grow: number | boolean;
+    order: number;
+    shrink: number | boolean;
+    basis: string | number;
+    align: string | boolean;
+    style: Partial<HTMLDivElement['style']>;
+  }>;
 
 export const computeFlexItemClassName = (props: FlexItemProps) => {
-  return classes([
-    'Flex__item',
-    Byond.IS_LTE_IE10 && 'Flex__item--iefix',
-    computeBoxClassName(props),
-  ]);
+  return classes(['Flex__item', computeBoxClassName(props)]);
 };
 
 export const computeFlexItemProps = (props: FlexItemProps) => {
-  const {
-    className,
-    style,
-    basis,
-    ...rest
-  } = props;
-  const computedBasis = basis
+  const { className, style, grow, order, shrink, basis, align, ...rest } =
+    props;
+
+  const computedBasis =
+    basis ??
     // IE11: Set basis to specified width if it's known, which fixes certain
     // bugs when rendering tables inside the flex.
-    ?? props.width
+    props.width ??
     // If grow is used, basis should be set to 0 to be consistent with
     // flex css shorthand `flex: 1`.
-    ?? (props.grow !== undefined ? 0 : undefined);
+    (grow !== undefined ? 0 : undefined);
   return computeBoxProps({
     style: {
       ...style,
-      'flex-grow': props.grow === undefined? undefined : Number(props.grow),
-      'flex-shrink': props.shrink === undefined? undefined : Number(props.shrink),
+      'flex-grow': grow !== undefined && Number(grow),
+      'flex-shrink': shrink !== undefined && Number(shrink),
       'flex-basis': unit(computedBasis),
-      'order': props.order,
-      'align-self': props.align,
+      'order': order,
+      'align-self': align,
     },
     ...rest,
   });
