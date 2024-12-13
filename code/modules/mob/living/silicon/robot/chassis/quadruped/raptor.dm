@@ -1,9 +1,4 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
-/**
- * Definitions for robot physicality
- */
-/datum/prototype/robot_chassis
-
-
+/datum/prototype/robot_chassis/quadruped/raptor
