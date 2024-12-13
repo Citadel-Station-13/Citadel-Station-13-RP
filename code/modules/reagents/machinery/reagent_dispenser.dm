@@ -34,8 +34,9 @@
 	if(get_dist(user, src) <= 2)
 		// todo: generic reagent examine
 		. += "<span class='notice'>It contains:</span>"
-		for(var/datum/reagent/R in reagents?.get_reagent_datums())
-			. += "<span class='notice'>[reagents.reagent_volumes[R.id]] units of [R.name]</span>"
+		if(reagents.total_volume)
+			for(var/datum/reagent/R in reagents?.get_reagent_datums())
+				. += "<span class='notice'>[reagents.reagent_volumes[R.id]] units of [R.name]</span>"
 		else
 			. += "<span class='notice'>Nothing.</span>"
 

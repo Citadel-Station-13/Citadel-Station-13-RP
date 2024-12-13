@@ -44,15 +44,19 @@
 	glass_name = "welder fuel"
 	glass_desc = "Unless you are an industrial tool, this is probably not safe for consumption."
 
-/datum/reagent/fuel/touch_turf(turf/T, amount)
-	new /obj/effect/debris/cleanable/liquid_fuel(T, amount, FALSE)
-	remove_self(amount)
-	return
+/datum/reagent/fuel/on_touch_turf(turf/target, remaining, allocated, data)
+	// todo: pseudofludi system
+	new /obj/effect/debris/cleanable/liquid_fuel(target, allocated, FALSE)
+	return allocated
 
 /datum/reagent/fuel/legacy_affect_blood(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
-	if(issmall(M)) removed *= 2
+	if(issmall(M))
+		removed *= 2
 	M.adjustToxLoss(4 * removed)
 
-/datum/reagent/fuel/touch_mob(mob/living/L, amount)
-	if(istype(L))
-		L.adjust_fire_stacks(amount / 10) // Splashing people with welding fuel to make them easy to ignite!
+/datum/reagent/fuel/on_touch_mob(mob/target, remaining, allocated, data, zone)
+	if(isliving(target, /mob/living))
+		// todo: rework and actually use some
+		var/mob/living/living_target = target
+		living_target.adjust_fire_stacks(allocated / 10)
+	return ..()

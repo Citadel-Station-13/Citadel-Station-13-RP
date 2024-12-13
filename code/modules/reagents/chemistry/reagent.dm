@@ -283,10 +283,6 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 		overdose_mod *= H.species.chemOD_mod
 	M.adjustToxLoss(removed * overdose_mod)
 
-/datum/reagent/Destroy() // This should only be called by the holder, so it's already handled clearing its references
-	holder = null
-	. = ..()
-
 //* Color *//
 
 /**
@@ -401,6 +397,7 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
  * * remaining - how much is left in the thing being splashed.
  * * allocated - how much is supposed to be hitting the target limb (useful for sprays).
  *               this will never be over remaining.
+ *               it might be useful to subtract from this in overrides before invoking ..() sometimes.
  * * data - our reagent data, if any
  * * zone - (optional) the body zone targeted
  * * limb - (optional) the external organ splashed onto.

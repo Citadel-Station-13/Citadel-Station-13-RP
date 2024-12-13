@@ -250,20 +250,20 @@
 	glass_name = "durian paste"
 	glass_desc = "Durian paste. It smells horrific."
 
-/datum/reagent/nutriment/durian/touch_mob(mob/M, amount)
-	if(iscarbon(M) && !M.isSynthetic())
+/datum/reagent/nutriment/durian/on_touch_carbon(mob/living/carbon/target, remaining, allocated, data, zone, obj/item/organ/external/limb)
+	if(!target.isSynthetic())
 		var/message = pick("Oh god, it smells disgusting here.", "What is that stench?", "That's an awful odor.")
-		to_chat(M,"<span class='alien'>[message]</span>")
-		if(prob(clamp(amount, 5, 90)))
-			var/mob/living/L = M
-			L.vomit()
+		to_chat(target, "<span class='alien'>[message]</span>")
+		if(prob(clamp(allocated, 5, 90)))
+			target.vomit()
 	return ..()
 
-/datum/reagent/nutriment/durian/touch_turf(turf/T, amount)
-	if(istype(T))
-		var/obj/effect/debris/cleanable/chemcoating/C = new /obj/effect/debris/cleanable/chemcoating(T)
-		C.reagents.add_reagent(id, amount)
-	return ..()
+/datum/reagent/nutriment/durian/on_touch_turf(turf/target, remaining, allocated, data)
+	var/obj/effect/debris/cleanable/chemcoating/C = new /obj/effect/debris/cleanable/chemcoating(target)
+	C.reagents.add_reagent(id, amount)
+	var/amount_used = allocated
+	allocated -= amount_used
+	return ..() + amount_used
 
 /datum/reagent/nutriment/virus_food
 	name = "Virus Food"

@@ -5,14 +5,8 @@
  *
  * I'm not sure what you expected this to say.
  *
- * * `data_initializer` for this is a `/datum/blood_fragment` instance.
- *
- * Data format:
- *
- * list(
- *     /datum/blood_fragment/reagent instance,
- *     ...
- * )
+ * * `data_initializer`: `/datum/blood_mixture` instance
+ * * `data`: /datum/blood_mixture instance
  */
 /datum/reagent/blood
 	name = "Blood"
@@ -25,18 +19,24 @@
 	affects_dead = 1 //so you can pump blood into someone before defibbing them
 	color = "#A80000"
 	holds_data = TRUE
-	var/volume_mod = 1	// So if you add different subtypes of blood, you can affect how much vessel blood each unit of reagent adds
 	blood_content = 4 //How effective this is for vampires.
 
 	glass_name = "tomato juice"
 	glass_desc = "Are you sure this is tomato juice?"
+	var/volume_mod = 1	// So if you add different subtypes of blood, you can affect how much vessel blood each unit of reagent adds
 
 /datum/reagent/blood/make_copy_data_initializer(datum/blood_mixture/data)
 	return data
 
 /datum/reagent/blood/mix_data(datum/blood_mixture/old_data, old_volume, datum/blood_mixture/new_data, new_volume, datum/reagent_holder/holder)
 	. = ..()
-	#warn impl ; hard limit of 10 blood instances. also, dedupe. also, never evict holder's blood,
+
+	#warn impl ; hard limit of 10 blood instances. also, dedupe.
+
+/datum/reagent/blood/on_touch_turf(turf/target, remaining, allocated, data)
+	. = ..()
+
+/datum/reagent/blood/
 
 /datum/reagent/blood/touch_turf(turf/simulated/T)
 	if(!istype(T) || volume < 3)

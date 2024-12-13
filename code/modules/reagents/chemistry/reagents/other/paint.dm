@@ -12,17 +12,26 @@
 	overdose = REAGENTS_OVERDOSE * 0.5
 	color_weight = 20
 
-/datum/reagent/paint/touch_turf(turf/T)
-	if(istype(T) && !istype(T, /turf/space))
-		T.color = color
+// todo: rework
+/datum/reagent/paint/on_touch_turf(turf/target, remaining, allocated, data)
+	target.color = compute_color_with_data(data)
+	. = allocated
+	allocated -= allocated
+	. += ..()
 
-/datum/reagent/paint/touch_obj(obj/O)
-	if(istype(O))
-		O.color = color
+// todo: rework
+/datum/reagent/paint/on_touch_obj(obj/target, remaining, allocated, data, spread_between)
+	target.color = compute_color_with_data(data)
+	. = allocated
+	allocated -= allocated
+	. += ..()
 
-/datum/reagent/paint/touch_mob(mob/M)
-	if(istype(M) && !istype(M, /mob/observer)) //painting ghosts: not allowed
-		M.color = color //maybe someday change this to paint only clothes and exposed body parts for human mobs.
+// todo: rework
+/datum/reagent/paint/on_touch_mob(mob/target, remaining, allocated, data, zone)
+	target.color = compute_color_with_data(data)
+	. = allocated
+	allocated -= allocated
+	. += ..()
 
 /datum/reagent/paint/compute_color_with_data(data)
 	return data || "#ffffff"
