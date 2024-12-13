@@ -74,6 +74,23 @@
 	announce_channel = "Trade"
 	on_store_name = "Beruang Trading Corp Storage"
 
+/datum/spawnpoint/trade/visitor
+	display_name = "Nebula Visitor Arrival"
+	restrict_job = list("Visitor", "Contractor", "Independant", "Frontier Colonis", "Tourist")
+	announce_channel = "Trade"
+
+/obj/machinery/cryopod/robot/door/gateway/trade/visitor
+	name = "Trade public teleporter"
+	desc = "The short-range teleporter you might've came in from. You could leave easily using this."
+	icon = 'icons/obj/machines/teleporter.dmi'
+	icon_state = "pad_idle"
+	announce_channel = "Trade"
+	base_icon_state = "pad"
+	occupied_icon_state = "pad_active"
+	on_store_message = "has departed via short-range teleport."
+	on_enter_occupant_message = "The teleporter activates, and you step into the swirling portal."
+	spawnpoint_type = /datum/spawnpoint/trade/visitor
+
 // Their shuttle
 
 // Shuttle landmarks. Need to be removed at some point and generic waypoints used

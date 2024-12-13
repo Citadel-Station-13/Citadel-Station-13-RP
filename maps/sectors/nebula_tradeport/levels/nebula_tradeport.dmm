@@ -170,6 +170,7 @@
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
+/obj/landmark/spawnpoint/job/trader/visitor,
 /turf/simulated/floor/tiled/old_tile/beige,
 /area/tradeport/commhall)
 "aaD" = (
@@ -2124,7 +2125,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/obj/machinery/cryopod/robot/door/gateway,
+/obj/machinery/cryopod/robot/door/gateway/trade/visitor,
 /turf/simulated/floor/tiled/old_tile/beige,
 /area/tradeport/commhall)
 "afS" = (
@@ -3634,6 +3635,12 @@
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
 	},
+/obj/machinery/door/blast/shutters{
+	dir = 2;
+	id = "clerk2";
+	name = "Clerk Shutters";
+	air_properties_vary_with_direction = d
+	},
 /turf/simulated/floor/tiled/dark,
 /area/tradeport/commons)
 "ajB" = (
@@ -4034,6 +4041,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/sector/nebula_tradeport/dock2)
 "akD" = (
+/obj/landmark/spawnpoint/job/trader/visitor,
 /turf/simulated/floor/tiled/old_tile/beige,
 /area/tradeport/commhall)
 "akE" = (
@@ -5088,7 +5096,7 @@
 /turf/space,
 /area/tradeport/spine)
 "anA" = (
-/obj/machinery/cryopod/robot/door/gateway,
+/obj/machinery/cryopod/robot/door/gateway/trade/visitor,
 /turf/simulated/floor/tiled/old_tile/beige,
 /area/tradeport/commhall)
 "anB" = (
@@ -7075,10 +7083,6 @@
 	},
 /turf/simulated/floor/airless,
 /area/space)
-"asZ" = (
-/obj/structure/loot_pile/surface/drone,
-/turf/simulated/mineral/floor/vacuum,
-/area/space)
 "ata" = (
 /obj/machinery/door/firedoor{
 	dir = 8
@@ -7896,6 +7900,12 @@
 	req_one_access = null
 	},
 /obj/map_helper/access_helper/airlock/station/external_airlock,
+/obj/machinery/door/blast/shutters{
+	dir = 2;
+	id = "clerk2";
+	name = "Clerk Shutters";
+	air_properties_vary_with_direction = d
+	},
 /turf/simulated/floor/tiled/dark,
 /area/tradeport/commons)
 "ave" = (
@@ -13492,6 +13502,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
+/obj/landmark/spawnpoint/job/trader/visitor,
 /turf/simulated/floor/tiled/old_tile/beige,
 /area/tradeport/commhall)
 "aJB" = (
@@ -14367,6 +14378,7 @@
 /obj/machinery/atm{
 	pixel_y = 27
 	},
+/obj/landmark/spawnpoint/job/trader/visitor,
 /turf/simulated/floor/tiled/old_tile/beige,
 /area/tradeport/commhall)
 "aLX" = (
@@ -15702,7 +15714,7 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/airless,
-/area/tradeport/exterior)
+/area/space)
 "aPJ" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/blast/regular{
@@ -17363,6 +17375,7 @@
 	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply,
+/obj/landmark/spawnpoint/job/trader/visitor,
 /turf/simulated/floor/tiled/old_tile/beige,
 /area/tradeport/commhall)
 "aUh" = (
@@ -19496,8 +19509,11 @@
 /turf/simulated/floor/tiled/neutral,
 /area/tradeport/commons)
 "aZT" = (
-/obj/structure/railing,
-/turf/simulated/mineral/floor/vacuum,
+/obj/structure/cable/green{
+	icon_state = "0-8"
+	},
+/obj/machinery/power/solar,
+/turf/simulated/floor/airless,
 /area/tradeport/exterior)
 "aZU" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -20268,6 +20284,10 @@
 /obj/machinery/gear_painter,
 /turf/simulated/floor/tiled/steel,
 /area/tradeport/commons)
+"cTW" = (
+/obj/structure/catwalk,
+/turf/space/basic,
+/area/space)
 "cUz" = (
 /obj/structure/shuttle/engine/heater{
 	dir = 4
@@ -20922,6 +20942,15 @@
 	},
 /turf/simulated/floor/tiled/steel_dirty/dark,
 /area/shuttle/arrowhead)
+"evN" = (
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/obj/structure/cable/green{
+	icon_state = "2-4"
+	},
+/turf/simulated/floor/airless,
+/area/space)
 "evZ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 10
@@ -26404,6 +26433,14 @@
 /obj/machinery/atmospheric_field_generator/perma,
 /turf/simulated/floor/plating,
 /area/shuttle/scoophead/main)
+"uQS" = (
+/obj/machinery/button/remote/blast_door{
+	id = "clerk2";
+	pixel_y = 27;
+	req_access = list(160)
+	},
+/turf/simulated/floor/tiled,
+/area/tradeport/commons)
 "uRl" = (
 /obj/structure/fuel_port{
 	pixel_x = -26
@@ -45548,7 +45585,7 @@ acd
 acd
 acd
 aDh
-aDh
+acd
 aDh
 aDh
 aDh
@@ -45740,9 +45777,9 @@ acd
 acd
 acd
 acd
-acd
 aDh
-aDh
+abs
+abs
 abs
 abs
 abs
@@ -45934,9 +45971,9 @@ acd
 acd
 acd
 acd
-acd
-aDh
 aMr
+aEi
+aEi
 aEi
 aEi
 aEi
@@ -46128,10 +46165,10 @@ acd
 acd
 acd
 acd
-acd
-aDh
 aMr
 aBg
+aVZ
+aVZ
 aVZ
 aVZ
 aVZ
@@ -46322,9 +46359,9 @@ acd
 acd
 acd
 acd
-acd
-aDh
 aMr
+aag
+aag
 aag
 aag
 aag
@@ -46516,9 +46553,9 @@ acd
 acd
 acd
 acd
-acd
-aDh
 aMr
+aiv
+aiv
 aiv
 aiv
 aiv
@@ -46710,9 +46747,9 @@ acd
 acd
 acd
 acd
-acd
-aDh
 aMr
+aEi
+aEi
 aEi
 aEi
 aEi
@@ -46904,10 +46941,10 @@ acd
 acd
 acd
 acd
-acd
-aDh
 aMr
 aBg
+aVZ
+aVZ
 aVZ
 aVZ
 aVZ
@@ -47098,9 +47135,9 @@ acd
 acd
 acd
 acd
-acd
-aDh
 aMr
+aag
+aag
 aag
 aag
 aag
@@ -47292,9 +47329,9 @@ aDh
 aDh
 aDh
 aDh
-aDh
-aDh
 aMr
+aiv
+aiv
 aiv
 aiv
 aiv
@@ -47486,9 +47523,9 @@ aDh
 aDh
 aDh
 aDh
-aDh
-aDh
 aMr
+aEi
+aEi
 aEi
 aEi
 aEi
@@ -47680,10 +47717,10 @@ aDh
 aDh
 aDh
 aDh
-aDh
-aDh
 aMr
 aBg
+aVZ
+aVZ
 aVZ
 aVZ
 aVZ
@@ -47874,9 +47911,9 @@ aDh
 aDh
 aDh
 aDh
-aDh
-aDh
 aMr
+aag
+aag
 aag
 aag
 aag
@@ -48068,9 +48105,9 @@ aDh
 aDh
 aDh
 aDh
-aDh
-aDh
 aMr
+aiv
+aiv
 aiv
 aiv
 aiv
@@ -48262,9 +48299,9 @@ aDh
 aDh
 aDh
 aDh
-aDh
-aDh
 aMr
+aEi
+aEi
 aEi
 aEi
 aEi
@@ -48456,10 +48493,10 @@ aDh
 aDh
 aDh
 aDh
-aDh
-aDh
 aMr
 aBg
+aVZ
+aVZ
 aVZ
 aVZ
 aVZ
@@ -48650,9 +48687,9 @@ aDh
 aDh
 aDh
 aDh
-aDh
-aDh
 aQv
+aag
+aag
 aag
 aag
 aag
@@ -48844,10 +48881,10 @@ avW
 avW
 aDh
 aDh
-aDh
-aDh
 aQv
 aOe
+aiv
+aiv
 aiv
 aiv
 aiv
@@ -49038,9 +49075,9 @@ avW
 avW
 avW
 avW
-aDh
-aDh
 aQv
+aEi
+aEi
 aEi
 aEi
 aEi
@@ -49232,10 +49269,10 @@ avW
 avW
 avW
 avW
-avW
-aDh
 aQv
 aBg
+aVZ
+aVZ
 aVZ
 aVZ
 aVZ
@@ -49426,9 +49463,9 @@ avW
 avW
 avW
 avW
-avW
-avW
 aQv
+aag
+aag
 aag
 aag
 aag
@@ -49620,9 +49657,9 @@ avW
 avW
 avW
 avW
-avW
-avW
 aQv
+aOe
+aOe
 aOe
 aOe
 aOe
@@ -49814,9 +49851,9 @@ avW
 avW
 avW
 avW
-abk
-avW
 aQv
+aEi
+aEi
 aEi
 aEi
 aEi
@@ -50008,10 +50045,10 @@ avW
 avW
 avW
 avW
-avW
-avW
 aQv
 aBg
+aVZ
+aVZ
 aVZ
 aVZ
 aVZ
@@ -50179,31 +50216,31 @@ aDh
 aDh
 aDh
 aEh
-aEh
-avW
-avW
-avW
-avW
-avW
-avW
-avW
-avW
-avW
-avW
-avW
-avW
-avW
-avW
-avW
-avW
-avW
-avW
-avW
-avW
-avW
-avW
-avW
 axY
+avW
+avW
+avW
+avW
+avW
+avW
+avW
+avW
+avW
+avW
+avW
+avW
+avW
+avW
+avW
+avW
+avW
+avW
+avW
+avW
+avW
+avW
+aQv
+aZT
 aZT
 aag
 aag
@@ -50408,25 +50445,25 @@ auG
 auG
 auG
 acT
-auG
-auG
-auG
-auG
-auG
-aew
-aew
-aew
-aew
-aew
-aew
-aew
-aew
-aew
-aew
-aew
-aew
-aew
-aDh
+cTW
+cTW
+cTW
+cTW
+cTW
+cTW
+cTW
+cTW
+cTW
+cTW
+cTW
+cTW
+cTW
+cTW
+cTW
+cTW
+cTW
+cTW
+aSY
 aTq
 aMr
 xsx
@@ -50602,25 +50639,25 @@ avW
 avW
 avW
 acT
-avW
-avW
-avW
-avW
-avW
-avW
-aDh
-aDh
-aDh
-aDh
-aDh
-aDh
-aDh
-aDh
-aDh
-aDh
-aDh
-aDh
-aDh
+aEi
+aEi
+aEi
+aEi
+aEi
+aEi
+aEi
+aEi
+aEi
+aEi
+aEi
+aEi
+aEi
+aEi
+aEi
+aEi
+aEi
+aEi
+aSY
 aTq
 aMr
 xsx
@@ -50795,26 +50832,26 @@ avW
 avW
 avW
 avW
-acT
-asZ
-avW
-avW
-awV
-awV
-abk
-avW
-aDh
-aDh
-aDh
-aDh
-aDh
-aDh
-aDh
-aDh
-aDh
-aDh
-aDh
-aDh
+evN
+akv
+akv
+akv
+aml
+aPQ
+akv
+akv
+aml
+akv
+akv
+aml
+aPQ
+aPQ
+aPQ
+aPQ
+aPQ
+aPQ
+aET
+aSY
 aTq
 aMr
 xsx
@@ -50990,25 +51027,25 @@ avW
 awV
 awV
 aPI
-awV
-awV
-awV
-awV
-awV
-awV
-avW
-awV
-aDh
-aDh
-aDh
-aDh
-aDh
-aDh
-aDh
-aDh
-aDh
-aDh
-aDh
+aag
+aag
+aag
+aag
+aag
+aag
+aag
+aag
+aag
+aag
+aag
+aag
+aag
+aag
+aag
+aag
+aag
+aag
+aSY
 aTq
 aMr
 xsx
@@ -51193,15 +51230,15 @@ awV
 avt
 awV
 awV
-aDh
-aDh
-aDh
-aDh
-aDh
-aDh
-aDh
-aDh
-aDh
+aew
+aew
+aew
+aew
+aew
+aew
+aew
+aew
+aew
 aDh
 aTq
 aMr
@@ -58786,7 +58823,7 @@ anq
 agq
 aCM
 anq
-agH
+uQS
 abG
 anq
 akf

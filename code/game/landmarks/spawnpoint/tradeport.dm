@@ -7,3 +7,12 @@
 /obj/landmark/spawnpoint/latejoin/tradeport
 	name = "Tradeport Latejoin"
 	faction = JOB_FACTION_TRADEPORT
+
+/obj/landmark/spawnpoint/job/trader/visitor
+	name = "Nebula visitor"
+	job_path = /datum/role/job/station/assistant
+	latejoin = TRUE
+	latejoin_override = TRUE
+
+/obj/landmark/spawnpoint/latejoin/tradeport/visitor
+	name = "Visitor Tradeport Latejoin"
