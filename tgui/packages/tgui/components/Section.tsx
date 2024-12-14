@@ -19,6 +19,8 @@ export type SectionProps = Partial<{
   fitted: boolean;
   /** Shows or hides the scrollbar. */
   scrollable: boolean;
+  /** Shows or hides the horizontal scrollbar. */
+  scrollableHorizontal: boolean;
   /** Title of the section. */
   title: InfernoNode;
 }> &
@@ -26,23 +28,21 @@ export type SectionProps = Partial<{
 
 export class Section extends Component<SectionProps> {
   scrollableRef: RefObject<HTMLDivElement>;
-  scrollable: boolean;
 
   constructor(props) {
     super(props);
     this.scrollableRef = createRef();
-    this.scrollable = props.scrollable;
   }
 
   componentDidMount() {
     if (!this.scrollableRef?.current) return;
-    if (!this.scrollable) return;
+    const { scrollable, scrollableHorizontal } = this.props;
+    if (!scrollable && !scrollableHorizontal) return;
     addScrollableNode(this.scrollableRef.current);
   }
 
   componentWillUnmount() {
     if (!this.scrollableRef?.current) return;
-    if (!this.scrollable) return;
     removeScrollableNode(this.scrollableRef.current);
   }
 
@@ -54,6 +54,7 @@ export class Section extends Component<SectionProps> {
       fill,
       fitted,
       scrollable,
+      scrollableHorizontal,
       children,
       ...rest
     } = this.props;
@@ -66,12 +67,13 @@ export class Section extends Component<SectionProps> {
           fill && 'Section--fill',
           fitted && 'Section--fitted',
           scrollable && 'Section--scrollable',
+          scrollableHorizontal && 'Section--scrollableHorizontal',
           className,
           computeBoxClassName(rest),
         ])}
         {...computeBoxProps(rest)}>
         {hasTitle && (
-          <div className={title? "Section__title" : "Section__titleHolder"}>
+          <div className="Section__title">
             <span className="Section__titleText">{title}</span>
             <div className="Section__buttons">{buttons}</div>
           </div>
