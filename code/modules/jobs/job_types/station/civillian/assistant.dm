@@ -103,3 +103,15 @@
 	name = OUTFIT_JOB_NAME("Server")
 	uniform = /obj/item/clothing/under/waiter
 	l_ear = /obj/item/radio/headset/headset_service
+
+/datum/outfit/job/station/assistant/contractor
+	id_pda_assignment = "Contractor"
+
+/datum/outfit/job/station/assistant/freelancer
+	id_pda_assignment = "Freelancer"
+
+/datum/outfit/job/station/assistant/colonist
+	id_pda_assignment = "Colonist"
+
+/datum/outfit/job/station/assistant/tourist
+	id_pda_assignment = "Tourist"

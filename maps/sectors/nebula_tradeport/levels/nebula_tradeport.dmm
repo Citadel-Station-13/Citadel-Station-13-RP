@@ -18243,7 +18243,7 @@
 /turf/space/basic,
 /area/sector/nebula_tradeport/motel/vip)
 "aWu" = (
-/obj/machinery/vending/security,
+/obj/structure/table/rack/shelf/steel,
 /turf/simulated/floor/tiled/old_tile/red,
 /area/sector/nebula_tradeport/security)
 "aWv" = (
