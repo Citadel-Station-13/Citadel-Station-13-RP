@@ -1,6 +1,6 @@
-# Interfaces Folder
+# The Interfaces Folder
 
-TGUI interfaces go in here.
+TGUI interfaces go in there (`packages/tgui/interfaces`).
 
 ## Interface Routing
 
