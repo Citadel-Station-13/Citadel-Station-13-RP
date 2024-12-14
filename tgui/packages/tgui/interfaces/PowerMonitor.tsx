@@ -1,19 +1,68 @@
-import { map, sortBy } from 'common/collections';
-import { flow } from 'common/fp';
 import { toFixed } from 'common/math';
 import { pureComponentHooks } from 'common/react';
 import { Fragment } from 'inferno';
 
 import { useBackend, useLocalState } from '../backend';
-import { Box, Button, Chart, ColorBox, Flex, Icon, LabeledList, ProgressBar, Section, Table } from '../components';
+import { Box, Button, Chart, ColorBox, Flex, Icon, LabeledList, ProgressBar, Section, Table, Tooltip } from '../components';
 import { Window } from '../layouts';
 
-const PEAK_DRAW = 500;
+type Data = {
+  all_sensors: Sensor[]
+  focus: {
+    name: string;
+    stored: number;
+    interval: number;
+    attached: boolean;
+    history: PowerHistory;
+    areas: Area[]
+  };
+};
 
-export const powerRank = str => {
+type Sensor = {
+  name: string;
+  alarm: boolean;
+}
+
+type Area = {
+  name: string;
+  charge: number;
+  load: string;
+  charging: number;
+  eqp: number;
+  lgt: number;
+  env: number;
+};
+
+type PowerHistory = {
+  demand: number[];
+  supply: number[];
+};
+
+export function powerRank(str: string): number {
   const unit = String(str.split(' ')[1]).toLowerCase();
   return ['w', 'kw', 'mw', 'gw'].indexOf(unit);
-};
+}
+
+// Oh no not another sorting algorithm
+function powerSort(a: Area, b: Area): number {
+  const sortedByRank = powerRank(a.load) - powerRank(b.load);
+  const sortedByLoad = parseFloat(a.load) - parseFloat(b.load);
+
+  if (sortedByRank !== 0) {
+    return sortedByRank;
+  }
+  return sortedByLoad;
+}
+
+function nameSort(a: Area, b: Area): number {
+  if (a.name < b.name) {
+    return -1;
+  }
+  if (a.name > b.name) {
+    return 1;
+  }
+  return 0;
+}
 
 export const PowerMonitor = () => {
   return (
@@ -28,11 +77,12 @@ export const PowerMonitor = () => {
   );
 };
 
+const PEAK_DRAW = 500;
+
 export const PowerMonitorContent = (props, context) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<Data>(context);
 
   const {
-    map_levels,
     all_sensors,
     focus,
   } = data;
@@ -52,9 +102,10 @@ export const PowerMonitorContent = (props, context) => {
           <Table.Row key={sensor.name}>
             <Table.Cell>
               <Button
-                content={sensor.name}
                 icon={sensor.alarm ? "bell" : "sign-in-alt"}
-                onClick={() => act("setsensor", { id: sensor.name })} />
+                onClick={() => act("setsensor", { id: sensor.name })}>
+                {sensor.name}
+              </Button>
             </Table.Cell>
           </Table.Row>
         ))}
@@ -77,13 +128,13 @@ export const PowerMonitorContent = (props, context) => {
 };
 
 export const PowerMonitorFocus = (props, context) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<Data>(context);
   const { focus } = props;
   const { history } = focus;
   const [
     sortByField,
     setSortByField,
-  ] = useLocalState(context, 'sortByField', null);
+  ] = useLocalState(context, 'sortByField', '');
   const supply = history.supply[history.supply.length - 1] || 0;
   const demand = history.demand[history.demand.length - 1] || 0;
   const supplyData = history.supply.map((value, i) => [i, value]);
@@ -93,24 +144,24 @@ export const PowerMonitorFocus = (props, context) => {
     ...history.supply,
     ...history.demand);
     // Process area data
-  const areas = flow([
-    map((area, i) => ({
+  const areas = focus.areas
+    .map((area, i) => ({
       ...area,
       // Generate a unique id
       id: area.name + i,
-    })),
-    sortByField === 'name' && sortBy(area => area.name),
-    sortByField === 'charge' && sortBy(area => -area.charge),
-    sortByField === 'draw' && sortBy(
-      area => -powerRank(area.load),
-      area => -parseFloat(area.load)),
-    sortByField === 'problems' && sortBy(
-      area => area.eqp,
-      area => area.lgt,
-      area => area.env,
-      area => area.charge,
-      area => area.name),
-  ])(focus.areas);
+    }))
+    .sort((a, b) => {
+      if (sortByField === 'name') {
+        return nameSort(a, b);
+      }
+      if (sortByField === 'charge') {
+        return a.charge - b.charge;
+      }
+      if (sortByField === 'draw') {
+        return powerSort(b, a);
+      }
+      return 0;
+    });
   return (
     <Fragment>
       <Section
@@ -146,8 +197,8 @@ export const PowerMonitorFocus = (props, context) => {
             </LabeledList>
           </Section>
         </Flex.Item>
-        <Flex.Item mx={0.5} grow={1}>
-          <Section position="relative" height="100%">
+        <Flex.Item mx={0.5} grow>
+          <Section position="relative" fill>
             <Chart.Line
               fillPositionedParent
               data={supplyData}
@@ -165,6 +216,7 @@ export const PowerMonitorFocus = (props, context) => {
           </Section>
         </Flex.Item>
       </Flex>
+
       <Section>
         <Box mb={1}>
           <Box inline mr={2} color="label">
@@ -172,61 +224,47 @@ export const PowerMonitorFocus = (props, context) => {
           </Box>
           <Button.Checkbox
             checked={sortByField === 'name'}
-            content="Name"
-            onClick={() => setSortByField(
-              sortByField !== 'name' && 'name'
-            )} />
+            onClick={() => setSortByField(sortByField !== 'name' ? 'name' : '')}
+          >
+            Name
+          </Button.Checkbox>
           <Button.Checkbox
             checked={sortByField === 'charge'}
-            content="Charge"
-            onClick={() => setSortByField(
-              sortByField !== 'charge' && 'charge'
-            )} />
+            onClick={() =>
+              setSortByField(sortByField !== 'charge' ? 'charge' : '')
+            }
+          >
+            Charge
+          </Button.Checkbox>
           <Button.Checkbox
             checked={sortByField === 'draw'}
-            content="Draw"
-            onClick={() => setSortByField(
-              sortByField !== 'draw' && 'draw'
-            )} />
-          <Button.Checkbox
-            checked={sortByField === 'problems'}
-            content="Problems"
-            onClick={() => setSortByField(
-              sortByField !== 'problems' && 'problems'
-            )} />
+            onClick={() => setSortByField(sortByField !== 'draw' ? 'draw' : '')}
+          >
+            Draw
+          </Button.Checkbox>
         </Box>
         <Table>
           <Table.Row header>
-            <Table.Cell>
-              Area
-            </Table.Cell>
-            <Table.Cell collapsing>
-              Charge
-            </Table.Cell>
-            <Table.Cell textAlign="right">
+            <Table.Cell>Area</Table.Cell>
+            <Table.Cell collapsing>Charge</Table.Cell>
+            <Table.Cell textAlign="right" width={7}>
               Draw
             </Table.Cell>
-            <Table.Cell collapsing title="Equipment">
-              Eqp
-            </Table.Cell>
-            <Table.Cell collapsing title="Lighting">
-              Lgt
-            </Table.Cell>
-            <Table.Cell collapsing title="Environment">
-              Env
-            </Table.Cell>
+            <Tooltip content="Equipment power">
+              <Table.Cell collapsing>Eqp</Table.Cell>
+            </Tooltip>
+            <Tooltip content="Lighting power">
+              <Table.Cell collapsing>Lgt</Table.Cell>
+            </Tooltip>
+            <Tooltip content="Environment power">
+              <Table.Cell collapsing>Env</Table.Cell>
+            </Tooltip>
           </Table.Row>
-          {areas.map((area, i) => (
-            <tr
-              key={area.id}
-              className="Table__row candystripe">
-              <td>
-                {area.name}
-              </td>
+          {areas.map((area) => (
+            <tr key={area.id} className="Table__row candystripe">
+              <td>{area.name}</td>
               <td className="Table__cell text-right text-nowrap">
-                <AreaCharge
-                  charging={area.charging}
-                  charge={area.charge} />
+                <AreaCharge charging={area.charging} charge={area.charge} />
               </td>
               <td className="Table__cell text-right text-nowrap">
                 {area.load}
@@ -248,55 +286,67 @@ export const PowerMonitorFocus = (props, context) => {
   );
 };
 
-export const AreaCharge = props => {
+type AreaChargeProps = {
+  charge: number;
+  charging: number;
+};
+
+const NOT_CHARGING = 0;
+const CHARGING = 1;
+const CHARGED = 2;
+
+export function AreaCharge(props: AreaChargeProps) {
   const { charging, charge } = props;
+
+  let name: string;
+  if (charging === NOT_CHARGING) {
+    name = charge > 50 ? 'battery-half' : 'battery-quarter';
+  } else if (charging === CHARGING) {
+    name = 'bolt';
+  } else {
+    name = 'battery-full';
+  }
+
   return (
-    <Fragment>
+    <>
       <Icon
         width="18px"
         textAlign="center"
-        name={(
-          charging === 0 && (
-            charge > 50
-              ? 'battery-half'
-              : 'battery-quarter'
-          )
-          || charging === 1 && 'bolt'
-          || charging === 2 && 'battery-full'
-        )}
-        color={(
-          charging === 0 && (
-            charge > 50
-              ? 'yellow'
-              : 'red'
-          )
-          || charging === 1 && 'yellow'
-          || charging === 2 && 'green'
-        )} />
-      <Box
-        inline
-        width="36px"
-        textAlign="right">
+        name={name}
+        color={
+          (charging === NOT_CHARGING && (charge > 50 ? 'yellow' : 'red')) ||
+          (charging === CHARGING && 'yellow') ||
+          (charging === CHARGED && 'green')
+        }
+      />
+      <Box inline width="36px" textAlign="right">
         {toFixed(charge) + '%'}
       </Box>
-    </Fragment>
+    </>
   );
-};
+}
 
 AreaCharge.defaultHooks = pureComponentHooks;
 
-const AreaStatusColorBox = props => {
+type AreaStatusColorBoxProps = {
+  status: number;
+};
+
+function AreaStatusColorBox(props: AreaStatusColorBoxProps) {
   const { status } = props;
+
   const power = Boolean(status & 2);
   const mode = Boolean(status & 1);
-  const tooltipText = (power ? 'On' : 'Off')
-    + ` [${mode ? 'auto' : 'manual'}]`;
+  const tooltipText = (power ? 'On' : 'Off') + ` [${mode ? 'auto' : 'manual'}]`;
+
   return (
-    <ColorBox
-      color={power ? 'good' : 'bad'}
-      content={mode ? undefined : 'M'}
-      title={tooltipText} />
+    <Tooltip content={tooltipText}>
+      <ColorBox
+        color={power ? 'good' : 'bad'}
+        content={mode ? undefined : 'M'}
+      />
+    </Tooltip>
   );
-};
+}
 
 AreaStatusColorBox.defaultHooks = pureComponentHooks;

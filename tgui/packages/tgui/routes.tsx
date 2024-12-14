@@ -108,8 +108,9 @@ export const getRoutedComponent = store => {
     return RefreshingWindow;
   }
   if (process.env.NODE_ENV !== 'production') {
+    const debug = selectDebug(state);
     // Show a kitchen sink
-    if (selectDebug(state)) {
+    if (debug.kitchenSink) {
       return require('./debug').KitchenSink;
     }
   }
