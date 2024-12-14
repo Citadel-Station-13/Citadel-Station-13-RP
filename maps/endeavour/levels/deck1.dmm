@@ -1961,6 +1961,13 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d1portforhall)
+"bzw" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 8
+	},
+/obj/random/trash_pile,
+/turf/simulated/floor/plating,
+/area/endeavour/hallway/d1fwdmaint)
 "bzz" = (
 /obj/effect/floor_decal/spline/plain{
 	dir = 8
@@ -19254,6 +19261,12 @@
 "obT" = (
 /turf/simulated/open,
 /area/rnd/misc_lab)
+"obU" = (
+/obj/structure/closet,
+/obj/random/maintenance,
+/obj/random/maintenance,
+/turf/simulated/floor/plating,
+/area/endeavour/hallway/d1fwdmaint)
 "ocK" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/cable/orange{
@@ -21809,6 +21822,12 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d1portforhall)
+"qeo" = (
+/obj/structure/bed/chair/comfy/beige{
+	dir = 8
+	},
+/turf/simulated/floor/plating,
+/area/endeavour/hallway/d1fwdmaint)
 "qer" = (
 /obj/machinery/atmospherics/valve{
 	name = "Waste"
@@ -22605,6 +22624,12 @@
 	},
 /turf/simulated/floor/plating,
 /area/shuttle/courser/general)
+"qLe" = (
+/obj/structure/bed/chair/comfy/beige{
+	dir = 4
+	},
+/turf/simulated/floor/plating,
+/area/endeavour/hallway/d1fwdmaint)
 "qLk" = (
 /obj/machinery/requests_console{
 	announcementConsole = 1;
@@ -22855,6 +22880,10 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/research/testingrange)
+"qSB" = (
+/obj/machinery/air_alarm/east_mount,
+/turf/simulated/floor/plating,
+/area/endeavour/hallway/d1fwdmaint)
 "qSG" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
@@ -26076,9 +26105,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d1starboardforhall)
 "tve" = (
-/obj/structure/closet,
-/obj/random/maintenance/clean,
-/obj/random/cigarettes,
+/obj/spawner/window/low_wall/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/endeavour/hallway/d1fwdmaint)
 "tvn" = (
@@ -27282,6 +27309,11 @@
 	},
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d1portforhall)
+"ukr" = (
+/obj/effect/floor_decal/rust,
+/obj/structure/closet/emcloset,
+/turf/simulated/floor/plating,
+/area/endeavour/hallway/d1fwdmaint)
 "ukx" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 9
@@ -28143,6 +28175,12 @@
 /obj/landmark/spawnpoint/job/mime,
 /turf/simulated/floor/carpet/bcarpet,
 /area/crew_quarters/mimeoffice)
+"uPY" = (
+/obj/structure/closet/emcloset,
+/obj/random/maintenance,
+/obj/random/maintenance,
+/turf/simulated/floor/plating,
+/area/endeavour/hallway/d1fwdmaint)
 "uQm" = (
 /obj/machinery/computer/cryopod{
 	name = "asset retention console";
@@ -29843,6 +29881,11 @@
 	},
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d1portforhall)
+"vZb" = (
+/obj/structure/table/woodentable,
+/obj/item/flame/candle/white,
+/turf/simulated/floor/plating,
+/area/endeavour/hallway/d1fwdmaint)
 "vZH" = (
 /obj/machinery/computer/ship/engines{
 	dir = 8
@@ -30551,9 +30594,6 @@
 /turf/simulated/floor/carpet/bcarpet,
 /area/library/study)
 "wyY" = (
-/obj/machinery/computer/ship/navigation/telescreen{
-	pixel_y = 27
-	},
 /obj/machinery/camera/network/civilian,
 /turf/simulated/floor/glass/reinforced,
 /area/endeavour/hallway/d1fwdhall)
@@ -31373,6 +31413,12 @@
 	},
 /turf/simulated/floor/tiled,
 /area/hallway/secondary/docking_hallway)
+"xiY" = (
+/obj/structure/closet,
+/obj/random/cigarettes,
+/obj/random/maintenance/clean,
+/turf/simulated/floor/plating,
+/area/endeavour/hallway/d1fwdmaint)
 "xjh" = (
 /obj/machinery/photocopier,
 /obj/machinery/light_switch{
@@ -32469,6 +32515,9 @@
 	},
 /obj/machinery/light{
 	dir = 4
+	},
+/obj/machinery/computer/ship/navigation/telescreen{
+	pixel_y = -35
 	},
 /turf/simulated/floor/glass/reinforced,
 /area/endeavour/hallway/d1fwdhall)
@@ -56226,7 +56275,7 @@ oYa
 maa
 byt
 maa
-maa
+ris
 sIg
 cEb
 tPy
@@ -56420,8 +56469,8 @@ oYa
 maa
 byt
 maa
-maa
-maa
+ris
+ris
 cEb
 cEb
 cEb
@@ -56652,8 +56701,8 @@ ehT
 rCH
 maa
 oNa
-maa
 qZT
+ris
 maa
 ndh
 ndh
@@ -56847,11 +56896,11 @@ rCH
 maa
 gTk
 vKb
-kZn
+ris
 maa
-ris
-ris
-ris
+maa
+qLe
+tve
 jNg
 jNg
 jvg
@@ -57041,11 +57090,11 @@ rCH
 teS
 abN
 xAC
+aEK
 maa
 maa
-ris
-ris
-ris
+vZb
+tve
 xRj
 xRj
 xRj
@@ -57235,11 +57284,11 @@ rCH
 maa
 abN
 xAC
+ris
 maa
-sIg
-ris
-ris
-ris
+qSB
+qeo
+tve
 xRj
 xRj
 xRj
@@ -57428,12 +57477,12 @@ mnd
 rCH
 maa
 abN
-xAC
-maa
+bzw
 ris
-sQl
-xRj
-xRj
+ris
+ris
+ris
+ris
 xRj
 xRj
 xRj
@@ -57623,9 +57672,9 @@ rCH
 maa
 abN
 xAC
-kfn
+ukr
 ris
-sQl
+ris
 xRj
 xRj
 xRj
@@ -57817,9 +57866,9 @@ byt
 byt
 dDM
 dWH
-maa
+kZn
 ris
-sQl
+ris
 xRj
 xRj
 xRj
@@ -58013,7 +58062,7 @@ uTr
 nuQ
 wiE
 ris
-sQl
+ris
 xRj
 xRj
 xRj
@@ -58196,10 +58245,10 @@ bAu
 vsG
 uTr
 byt
-maa
-maa
-kfn
-maa
+uTr
+uTr
+uTr
+uTr
 pob
 tlI
 mca
@@ -58207,7 +58256,7 @@ pvj
 oSJ
 pvj
 hSh
-sQl
+ris
 xRj
 xRj
 xRj
@@ -58390,7 +58439,7 @@ cxE
 cVc
 uTr
 pQQ
-maa
+uTr
 maa
 maa
 maa
@@ -58401,7 +58450,7 @@ uNS
 hqs
 aMl
 lGw
-sQl
+ris
 xRj
 xRj
 xRj
@@ -58584,9 +58633,9 @@ fmw
 xpv
 uTr
 maa
-maa
+uTr
 kfn
-kZn
+obU
 maa
 fta
 maa
@@ -58595,7 +58644,7 @@ ipU
 qSG
 cXD
 lGw
-sQl
+ris
 nof
 xRj
 xRj
@@ -58789,7 +58838,7 @@ jmh
 veH
 aMl
 qgD
-sQl
+ris
 xRj
 xRj
 xRj
@@ -58975,7 +59024,7 @@ aMl
 xPG
 qZT
 uTr
-maa
+bFR
 fta
 maa
 wXh
@@ -58983,7 +59032,7 @@ aMl
 pgd
 oVi
 viz
-sQl
+ris
 xRj
 xRj
 xRj
@@ -59177,7 +59226,7 @@ aMl
 aMl
 pcO
 sMI
-sQl
+ris
 usG
 fOo
 xRj
@@ -59371,7 +59420,7 @@ lXo
 qXx
 uPj
 aRu
-sQl
+ris
 usY
 usG
 xRj
@@ -59565,7 +59614,7 @@ vNq
 xrv
 nio
 jUZ
-sQl
+ris
 usG
 fOo
 xRj
@@ -59759,7 +59808,7 @@ qtn
 xrv
 nio
 qCA
-sQl
+ris
 xRj
 xRj
 xRj
@@ -59953,7 +60002,7 @@ ris
 xrv
 nio
 eLZ
-sQl
+ris
 xRj
 xRj
 xRj
@@ -60336,7 +60385,7 @@ qZT
 maa
 fta
 maa
-sIg
+uPY
 ris
 suQ
 kwn
@@ -60535,7 +60584,7 @@ ris
 ris
 ris
 ris
-sQl
+ris
 nof
 xRj
 xRj
@@ -60715,20 +60764,20 @@ rfe
 sdj
 oJK
 uTr
-maa
-maa
-maa
-maa
-kfn
-maa
+uTr
+uTr
+uTr
+uTr
+uTr
+uTr
 maa
 fta
 uTr
 maa
 byt
 ris
-sQl
-sQl
+ris
+ris
 xRj
 xRj
 xRj
@@ -60914,7 +60963,7 @@ tlI
 tlI
 tlI
 pod
-maa
+uTr
 maa
 fta
 uTr
@@ -61298,13 +61347,13 @@ fcc
 vsG
 uTr
 maa
-kZn
+obU
 kfn
 maa
 fta
 maa
 maa
-sIg
+uPY
 uTr
 maa
 byt
@@ -64007,14 +64056,14 @@ aEU
 wyY
 uhG
 eDl
-aEU
 srV
 srV
-aEU
+srV
+srV
 maa
+maa
+xiY
 sIg
-maa
-maa
 cYi
 cYi
 cYi
@@ -64204,9 +64253,9 @@ xYV
 aEU
 srV
 vBK
-aEU
-tve
-ugo
+srV
+maa
+maa
 ugo
 ugo
 cYi
