@@ -3638,8 +3638,7 @@
 /obj/machinery/door/blast/shutters{
 	dir = 2;
 	id = "clerk2";
-	name = "Clerk Shutters";
-	air_properties_vary_with_direction = d
+	name = "Clerk Shutters"
 	},
 /turf/simulated/floor/tiled/dark,
 /area/tradeport/commons)
@@ -7903,8 +7902,7 @@
 /obj/machinery/door/blast/shutters{
 	dir = 2;
 	id = "clerk2";
-	name = "Clerk Shutters";
-	air_properties_vary_with_direction = d
+	name = "Clerk Shutters"
 	},
 /turf/simulated/floor/tiled/dark,
 /area/tradeport/commons)
