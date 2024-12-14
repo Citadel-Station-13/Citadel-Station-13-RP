@@ -30,55 +30,9 @@
 		"ZOOM-BA" = "zoomba-engineering",
 		"W02M" = "worm-engineering"
 	)
-
-/obj/item/robot_module/robot/engineering/construction
-	name = "construction robot module"
 	no_slip = 1
 
-/* Merged back into engineering (Hell, it's about time.)
-
-/obj/item/robot_module/robot/engineering/construction/Initialize(mapload)
-	. = ..()
-	src.modules += new /obj/item/borg/sight/meson(src)
-	src.modules += new /obj/item/rcd/borg(src)
-	src.modules += new /obj/item/tool/screwdriver/cyborg(src)
-	src.modules += new /obj/item/tool/wrench/cyborg(src)
-	src.modules += new /obj/item/weldingtool/electric/mounted/cyborg(src)
-	src.modules += new /obj/item/pickaxe/plasmacutter(src)
-	src.modules += new /obj/item/pipe_painter(src)
-	src.modules += new /obj/item/floor_painter(src)
-	src.modules += new /obj/item/gripper/no_use/loader(src)
-	src.modules += new /obj/item/geiger_counter(src)
-
-	var/datum/matter_synth/metal = new /datum/matter_synth/metal()
-	var/datum/matter_synth/plasteel = new /datum/matter_synth/plasteel()
-	var/datum/matter_synth/glass = new /datum/matter_synth/glass()
-	synths += metal
-	synths += plasteel
-	synths += glass
-
-	var/obj/item/stack/material/cyborg/steel/M = new (src)
-	M.synths = list(metal)
-	src.modules += M
-
-	var/obj/item/stack/rods/cyborg/R = new /obj/item/stack/rods/cyborg(src)
-	R.synths = list(metal)
-	src.modules += R
-
-	var/obj/item/stack/tile/floor/cyborg/F = new /obj/item/stack/tile/floor/cyborg(src)
-	F.synths = list(metal)
-	src.modules += F
-
-	var/obj/item/stack/material/cyborg/plasteel/S = new (src)
-	S.synths = list(plasteel)
-	src.modules += S
-
-	var/obj/item/stack/material/cyborg/glass/reinforced/RG = new (src)
-	RG.synths = list(metal, glass)
-	src.modules += RG
-*/
-
-/obj/item/robot_module/robot/engineering/general/get_modules()
+/obj/item/robot_module/robot/engineering/get_modules()
 	. = ..()
 	. |= list(
 		/obj/item/borg/sight/meson,
@@ -103,7 +57,7 @@
 		/obj/item/pipe_dispenser
 	)
 
-/obj/item/robot_module/robot/engineering/general/get_synths(mob/living/silicon/robot/R)
+/obj/item/robot_module/robot/engineering/get_synths(mob/living/silicon/robot/R)
 	. = ..()
 	MATTER_SYNTH(MATSYN_METAL, metal, 40000)
 	MATTER_SYNTH(MATSYN_GLASS, glass, 40000)
@@ -112,7 +66,7 @@
 	MATTER_SYNTH(MATSYN_PLASTIC, plastic, 40000)
 	MATTER_SYNTH(MATSYN_WIRE, wire)
 
-/obj/item/robot_module/robot/engineering/general/handle_special_module_init(mob/living/silicon/robot/R)
+/obj/item/robot_module/robot/engineering/handle_special_module_init(mob/living/silicon/robot/R)
 	. = ..()
 
 	src.emag = new /obj/item/melee/baton/robot/arm(src)

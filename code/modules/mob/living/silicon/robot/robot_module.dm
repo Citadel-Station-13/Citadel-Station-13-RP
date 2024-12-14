@@ -18,6 +18,8 @@
 	var/use_robot_module_path = /obj/item/robot_module/robot
 
 	/// Allowed robot frames.
-	var/list/datum/allowed_frames = list()
+	/// * set to list of typepaths/anonymous types to init
+	var/list/datum/robot_frame/allowed_frames = list()
 
 #warn impL
+#warn init frames

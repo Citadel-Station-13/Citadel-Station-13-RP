@@ -3,4 +3,4 @@
 
 REPOSITORY_DEF(robot_frames)
 	name = "Repository - Robot Frames"
-	expected_type = /datum/prototype/robot_frame
+	expected_type = /datum/robot_frame

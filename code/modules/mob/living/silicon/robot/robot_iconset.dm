@@ -41,3 +41,4 @@
 	var/list/variations
 
 #warn impl
+#warn resolve variations
