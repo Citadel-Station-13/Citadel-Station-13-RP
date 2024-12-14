@@ -12,7 +12,7 @@ export const meta = {
   render: () => <Story />,
 };
 
-const Story = (props) => {
+const Story = (props, context) => {
   const [grow, setGrow] = useLocalState(
     context, 'fs_grow', 1);
   const [direction, setDirection] = useLocalState(

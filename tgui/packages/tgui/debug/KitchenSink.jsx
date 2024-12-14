@@ -22,8 +22,8 @@ const getStories = () => r.keys().map((path) => r(path));
 
 export const KitchenSink = (props, context) => {
   const { panel } = props;
-  const [theme] = useLocalState(context, null);
-  const [pageIndex, setPageIndex] = useLocalState(context, 0);
+  const [theme] = useLocalState(context, 'kitchenSinkTheme', null);
+  const [pageIndex, setPageIndex] = useLocalState(context, 'kitchenSinkIndex', 0);
   const stories = getStories();
   const story = stories[pageIndex];
   const Layout = panel ? Pane : Window;

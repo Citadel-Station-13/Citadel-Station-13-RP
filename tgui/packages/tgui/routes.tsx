@@ -46,6 +46,7 @@ const routingMissingExport = (props, context) => {
   );
 };
 
+// Displays an empty Window with scrollable content
 const SuspendedWindow = () => {
   return (
     <Window>
@@ -54,6 +55,7 @@ const SuspendedWindow = () => {
   );
 };
 
+// Displays a loading screen with a spinning icon
 const RefreshingWindow = () => {
   return (
     <Window title="Loading">
@@ -87,8 +89,10 @@ const interfacePath = (name: string) => {
   for (let i = 0; i < interfaceSubdirectories.length; i++) {
     let dir = interfaceSubdirectories[i];
     built.push(`${dir}/${name}.js`);
+    built.push(`${dir}/${name}.jsx`);
     built.push(`${dir}/${name}.tsx`);
     built.push(`${dir}/${name}/index.js`);
+    built.push(`${dir}/${name}/index.jsx`);
     built.push(`${dir}/${name}/index.tsx`);
   }
   return built;
@@ -103,10 +107,9 @@ export const getRoutedComponent = store => {
   if (config.refreshing === UI_HARD_REFRESHING) {
     return RefreshingWindow;
   }
-  if (process.env['NODE_ENV'] !== 'production') {
-    const debug = selectDebug(state);
+  if (process.env.NODE_ENV !== 'production') {
     // Show a kitchen sink
-    if (debug.kitchenSink) {
+    if (selectDebug(state)) {
       return require('./debug').KitchenSink;
     }
   }

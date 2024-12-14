@@ -17,33 +17,33 @@ import {
 import { Window } from '../layouts';
 
 const icons = {
-  bugfix: { icon: 'bug', color: 'green' },
-  wip: { icon: 'hammer', color: 'orange' },
-  qol: { icon: 'hand-holding-heart', color: 'green' },
-  soundadd: { icon: 'tg-sound-plus', color: 'green' },
-  sounddel: { icon: 'tg-sound-minus', color: 'red' },
   add: { icon: 'check-circle', color: 'green' },
+  admin: { icon: 'user-shield', color: 'purple' },
+  balance: { icon: 'balance-scale-right', color: 'yellow' },
+  bugfix: { icon: 'bug', color: 'green' },
+  code_imp: { icon: 'code', color: 'green' },
+  config: { icon: 'cogs', color: 'purple' },
   expansion: { icon: 'check-circle', color: 'green' },
-  rscadd: { icon: 'check-circle', color: 'green' },
-  rscdel: { icon: 'times-circle', color: 'red' },
+  experiment: { icon: 'radiation', color: 'yellow' },
   imageadd: { icon: 'tg-image-plus', color: 'green' },
   imagedel: { icon: 'tg-image-minus', color: 'red' },
-  spellcheck: { icon: 'spell-check', color: 'green' },
-  experiment: { icon: 'radiation', color: 'yellow' },
-  balance: { icon: 'balance-scale-right', color: 'yellow' },
-  code_imp: { icon: 'code', color: 'green' },
+  qol: { icon: 'hand-holding-heart', color: 'green' },
   refactor: { icon: 'tools', color: 'green' },
-  config: { icon: 'cogs', color: 'purple' },
-  admin: { icon: 'user-shield', color: 'purple' },
+  rscadd: { icon: 'check-circle', color: 'green' },
+  rscdel: { icon: 'times-circle', color: 'red' },
   server: { icon: 'server', color: 'purple' },
+  soundadd: { icon: 'tg-sound-plus', color: 'green' },
+  sounddel: { icon: 'tg-sound-minus', color: 'red' },
+  spellcheck: { icon: 'spell-check', color: 'green' },
   tgs: { icon: 'toolbox', color: 'purple' },
   tweak: { icon: 'wrench', color: 'green' },
   unknown: { icon: 'info-circle', color: 'label' },
+  wip: { icon: 'hammer', color: 'orange' },
 };
 
 export class Changelog extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       data: 'Loading changelog data...',
       selectedDate: '',
@@ -70,37 +70,38 @@ export class Changelog extends Component {
     const maxAttempts = 6;
 
     if (attemptNumber > maxAttempts) {
-      return this.setData('Failed to load data after ' + maxAttempts + ' attempts');
+      return this.setData(
+        'Failed to load data after ' + maxAttempts + ' attempts',
+      );
     }
 
     act('get_month', { date });
 
-    fetch(resolveAsset(date + '.yml'))
-      .then(async (changelogData) => {
-        const result = await changelogData.text();
-        const errorRegex = /^Cannot find/;
+    fetch(resolveAsset(date + '.yml')).then(async (changelogData) => {
+      const result = await changelogData.text();
+      const errorRegex = /^Cannot find/;
 
-        if (errorRegex.test(result)) {
-          const timeout = 50 + attemptNumber * 50;
+      if (errorRegex.test(result)) {
+        const timeout = 50 + attemptNumber * 50;
 
-          self.setData(
-            'Loading changelog data' + '.'.repeat(attemptNumber + 3)
-          );
-          setTimeout(() => {
-            self.getData(date, attemptNumber + 1);
-          }, timeout);
-        } else {
-          self.setData(yaml.load(result, { schema: yaml.CORE_SCHEMA }));
-        }
-      });
+        self.setData('Loading changelog data' + '.'.repeat(attemptNumber + 3));
+        setTimeout(() => {
+          self.getData(date, attemptNumber + 1);
+        }, timeout);
+      } else {
+        self.setData(yaml.load(result, { schema: yaml.CORE_SCHEMA }));
+      }
+    });
   };
 
   componentDidMount() {
-    const { data: { dates = [] } } = useBackend(this.context);
+    const {
+      data: { dates = [] },
+    } = useBackend(this.context);
 
     if (dates) {
-      dates.forEach(
-        date => this.dateChoices.push(dateformat(date, 'mmmm yyyy', true))
+      dates.forEach((date) =>
+        this.dateChoices.push(dateformat(date, 'mmmm yyyy', true)),
       );
       this.setSelectedDate(this.dateChoices[0]);
       this.getData(dates[0]);
@@ -109,7 +110,9 @@ export class Changelog extends Component {
 
   render() {
     const { data, selectedDate, selectedIndex } = this.state;
-    const { data: { dates } } = useBackend(this.context);
+    const {
+      data: { dates },
+    } = useBackend(this.context);
     const { dateChoices } = this;
 
     const dateDropdown = dateChoices.length > 0 && (
