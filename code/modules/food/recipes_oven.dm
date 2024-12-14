@@ -488,6 +488,15 @@
 	items = list(/obj/item/reagent_containers/food/snacks/ingredient/cheesewedge = 20)
 	result = /obj/item/reagent_containers/food/snacks/loadedbakedpotato
 
+/datum/cooking_recipe/donerkebab
+	required_method = 	METHOD_OVEN
+	fruit = list("tomato" = 100, "cabbage" = 100)
+	reagents = list("sodiumchloride" = 1)
+	items = list(
+		/obj/item/reagent_containers/food/snacks/meatsteak = 100,
+		/obj/item/reagent_containers/food/snacks/ingredient/transformable/dough/flat = 100
+	)
+	result = /obj/item/reagent_containers/food/snacks/donerkebab
 
 /datum/cooking_recipe/fishfingers
 	required_method = METHOD_OVEN
@@ -518,6 +527,7 @@
 	result = /obj/item/reagent_containers/food/snacks/chilicheesefries
 
 /datum/cooking_recipe/meatbun
+	required_method = METHOD_OVEN
 	reagents = list("sodiumchloride" = 1, "water" = 5)
 	items = list(
 		/obj/item/reagent_containers/food/snacks/ingredient/transformable/dough/slice = 100,
@@ -527,6 +537,7 @@
 	result = /obj/item/reagent_containers/food/snacks/meatbun
 
 /datum/cooking_recipe/custardbun
+	required_method = METHOD_OVEN
 	reagents = list("spacespice" = 1, "water" = 5, "egg" = 3)
 	items = list(
 		/obj/item/reagent_containers/food/snacks/ingredient/transformable/dough/slice = 100
@@ -535,6 +546,7 @@
 	result = /obj/item/reagent_containers/food/snacks/custardbun
 
 /datum/cooking_recipe/chips
+	required_method = METHOD_OVEN
 	reagents = list("sodiumchloride" = 1)
 	items = list(
 		/obj/item/reagent_containers/food/snacks/ingredient/tortilla
@@ -542,6 +554,7 @@
 	result = /obj/item/reagent_containers/food/snacks/chipplate
 
 /datum/cooking_recipe/nachos
+	required_method = METHOD_OVEN
 	items = list(
 		/obj/item/reagent_containers/food/snacks/chipplate,
 		/obj/item/reagent_containers/food/snacks/ingredient/cheesewedge = 100
@@ -549,6 +562,7 @@
 	result = /obj/item/reagent_containers/food/snacks/chipplate/nachos
 
 /datum/cooking_recipe/roastbeef
+	required_method = METHOD_OVEN
 	fruit = list("carrot" = 100, "potato" = 100)
 	items = list(
 		/obj/item/reagent_containers/food/snacks/ingredient/meat = 100
@@ -556,6 +570,7 @@
 	result = /obj/item/reagent_containers/food/snacks/roastbeef
 
 /datum/cooking_recipe/pillbugball
+	required_method = METHOD_OVEN
 	reagents = list(MAT_CARBON = 5)
 	items = list(
 		/obj/item/reagent_containers/food/snacks/ingredient/meat/grubmeat = 100
@@ -563,11 +578,13 @@
 	result = /obj/item/reagent_containers/food/snacks/bugball
 
 /datum/cooking_recipe/mammi
+	required_method = METHOD_OVEN
 	fruit = list("orange" = 20)
 	reagents = list("water" = 10, "flour" = 10, "milk" = 5, "sodiumchloride" = 1)
 	result = /obj/item/reagent_containers/food/snacks/mammi
 
 /datum/cooking_recipe/makaroni
+	required_method = METHOD_OVEN
 	reagents = list("flour" = 15, "milk" = 5)
 	items = list(
 		/obj/item/reagent_containers/food/snacks/ingredient/meat/grubmeat = 100,
@@ -577,6 +594,7 @@
 	result = /obj/item/reagent_containers/food/snacks/makaroni
 
 /datum/cooking_recipe/greenham
+	required_method = METHOD_OVEN
 	reagents = list("spacespice" = 2, "water" = 10)
 	items = list(
 		/obj/item/reagent_containers/food/snacks/ingredient/meat/grubmeat = 100,
@@ -585,6 +603,7 @@
 	result = /obj/item/reagent_containers/food/snacks/greenham
 
 /datum/cooking_recipe/greenhamandeggs
+	required_method = METHOD_OVEN
 	reagents = list("spacespice" = 2, "water" = 10)
 	items = list(
 		/obj/item/reagent_containers/food/snacks/ingredient/egg = 200,
@@ -594,6 +613,7 @@
 	result = /obj/item/reagent_containers/food/snacks/greenham
 
 /datum/cooking_recipe/puddi
+	required_method = METHOD_OVEN
 	reagents = list("milk" = 10, "sugar" = 5)
 	items = list(
 		/obj/item/reagent_containers/food/snacks/ingredient/egg = 300,
@@ -602,6 +622,7 @@
 	result = /obj/item/reagent_containers/food/snacks/puddi
 
 /datum/cooking_recipe/puddi_happy
+	required_method = METHOD_OVEN
 	reagents = list("milk" = 10, "sugar" = 5, "honey" = 5)
 	items = list(
 		/obj/item/reagent_containers/food/snacks/ingredient/egg = 300,
@@ -610,6 +631,7 @@
 	result = /obj/item/reagent_containers/food/snacks/puddi/happy
 
 /datum/cooking_recipe/puddi_angry
+	required_method = METHOD_OVEN
 	fruit = list("chili" = 200)
 	reagents = list("milk" = 10, "sugar" = 5)
 	items = list(
@@ -620,11 +642,13 @@
 
 
 /datum/cooking_recipe/applepie
+	required_method = METHOD_OVEN
 	fruit = list("apple" = 100)
 	items = list(/obj/item/reagent_containers/food/snacks/ingredient/transformable/dough/flat = 100)
 	result = /obj/item/reagent_containers/food/snacks/applepie
 
 /datum/cooking_recipe/plumphelmetbiscuit
+	required_method = METHOD_OVEN
 	fruit = list("plumphelmet" = 20)
 	reagents = list("water" = 5, "flour" = 5)
 	result = /obj/item/reagent_containers/food/snacks/plumphelmetbiscuit

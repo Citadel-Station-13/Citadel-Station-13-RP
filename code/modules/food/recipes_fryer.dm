@@ -29,7 +29,7 @@
 //====================
 /datum/cooking_recipe/cubancarp
 	required_method = METHOD_DEEPFRY
-	fruit = list("chili" = 1)
+	fruit = list("chili" = 50)
 	items = list(
 		/obj/item/reagent_containers/food/snacks/ingredient/transformable/dough = 100,
 		/obj/item/reagent_containers/food/snacks/ingredient/carp = 100
@@ -191,6 +191,7 @@
 	result = /obj/item/reagent_containers/food/snacks/churro
 
 /datum/cooking_recipe/nugget
+	required_method = METHOD_DEEPFRY
 	reagents = list("flour" = 5)
 	items = list(
 		/obj/item/reagent_containers/food/snacks/ingredient/meat/chicken = 10
@@ -199,12 +200,14 @@
 	result = /obj/item/reagent_containers/food/snacks/nugget
 
 /datum/cooking_recipe/onionrings
+	required_method = METHOD_DEEPFRY
 	fruit = list("onion" = 100)
 	reagents = list("batter" = 5)
 	result = /obj/item/reagent_containers/food/snacks/onionrings
 
 //Goblin Food Goblin Food
 /datum/cooking_recipe/cavenuggets
+	required_method = METHOD_DEEPFRY
 	fruit = list("mushroom" = 100)
 	items = list(
 		/obj/item/reagent_containers/food/snacks/ingredient/meatball = 100,
