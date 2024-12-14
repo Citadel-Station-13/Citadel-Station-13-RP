@@ -438,7 +438,7 @@
 				new_clothing.desc = src.desc
 				new_clothing.icon = icon
 				new_clothing.icon_state = state
-				new_clothing.add_atom_colour(uploaded_color, FIXED_COLOUR_PRIORITY)
+				new_clothing.add_atom_color(uploaded_color)
 
 				var/obj/item/clothing/under/U = new_clothing
 				if(istype(U))
