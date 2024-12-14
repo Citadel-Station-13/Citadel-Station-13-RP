@@ -59,11 +59,15 @@ export class Window<T extends WindowProps> extends Component<T, {}> {
 
   updateGeometry() {
     const { config } = useBackend(this.context);
-    const size = (this.props.width && this.props.height)? [this.props.width, this.props.height] : DEFAULT_SIZE;
+    const { width, height } = this.props;
     const options = {
       ...config.window,
       size: DEFAULT_SIZE,
     };
+
+    if (width && height) {
+      options.size = [width, height];
+    }
 
     if (config.window?.key) {
       setWindowKey(config.window.key);
