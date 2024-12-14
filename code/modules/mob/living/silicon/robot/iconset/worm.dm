@@ -5,8 +5,8 @@
 	abstract_type = /datum/prototype/robot_iconset/worm
 
 	icon = 'icons/mob/robot/iconset/worm.dmi'
-	indicator_icon_state = "indicator-lighting"
-	cover_icon_state = "open"
+	icon_state_indicator = "indicator-lighting"
+	icon_state_cover = "open"
 
 /datum/prototype/robot_iconset/worm/standard
 	icon_state = "worm-standard"

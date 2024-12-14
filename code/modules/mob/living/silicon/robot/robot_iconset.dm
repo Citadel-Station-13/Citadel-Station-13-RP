@@ -12,21 +12,9 @@
 
 	/// base icon state
 	var/icon_state
-	/// if set, we change our icon state to this from [icon_state] while dead
-	/// * this doesn't override base icon state, so things like cover overlays
-	///   still apply without change.
-	var/dead_state
-
-	/// icon override for primary indicator lighting
-	/// * if null, we use base icon.
-	var/indicator_icon
 	/// primary indicator lighting overlay state
 	/// * if null, we do not have primary lighting indicators.
-	var/indicator_icon_state
-
-	/// icon override for cover open
-	/// * if null, we use base icon.
-	var/cover_icon
+	var/icon_state_indicator
 	/// cover open overlay base state
 	///
 	/// * if null, we do not have a cover open state.
@@ -36,6 +24,20 @@
 	/// * "-cell" if cell is in
 	/// * "-empty" if cell is out
 	/// * "-wires" if wires are exposed
-	var/cover_icon_state
+	var/icon_state_cover
+
+	// todo: coloration system;
+	//       using greyscale sprites would be nice.
+
+	/// variations
+	/// * this is a list of typepaths / anonymous types at compile time, and
+	///   turned into an id-instance lookup map at init.
+	///
+	/// special ones:
+	/// * /datum/robot_iconset_variation/dead
+	/// * /datum/robot_iconset_variation/resting
+	/// * /datum/robot_iconset_variation/sitting
+	/// * /datum/robot_iconset_variation/bellyup
+	var/list/variations
 
 #warn impl

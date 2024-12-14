@@ -38,6 +38,7 @@
 			add_overlay("[module_sprites[icontype]]-shield")
 
 	if(modtype == "Combat")
+		#warn sigh
 		if(module_active && istype(module_active,/obj/item/borg/combat/mobility))
 			icon_state = "[module_sprites[icontype]]-roll"
 		else
