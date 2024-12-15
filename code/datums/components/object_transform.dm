@@ -27,6 +27,10 @@
 	if(!silent && length(to_object_text))
 		owner.visible_message("<b>[owner]</b> [to_object_text]")
 
+/datum/component/object_transform/proc/put_in_object_safe(silent = FALSE)
+	if(transformed_object.loc == parent)
+		put_in_object(silent)
+
 /datum/component/object_transform/proc/put_in_mob(silent = FALSE)
 	var/mob/owner = parent
 	owner.forceMove(transformed_object.loc)
@@ -34,6 +38,7 @@
 	if(!silent && length(to_mob_text))
 		owner.visible_message("<b>[owner]</b> [to_mob_text]")
 
-/datum/component/object_transform/proc/is_transformed()
+/datum/component/object_transform/proc/put_in_mob_safe(silent = FALSE)
 	var/mob/owner = parent
-	return owner.loc == transformed_object
+	if(owner.loc == transformed_object)
+		put_in_mob(silent)

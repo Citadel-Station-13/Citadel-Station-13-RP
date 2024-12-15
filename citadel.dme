@@ -207,7 +207,6 @@
 #include "code\__DEFINES\dcs\signals\signals_atom\signals_atom_radiation.dm"
 #include "code\__DEFINES\dcs\signals\signals_atom\signals_atom_x_act.dm"
 #include "code\__DEFINES\dcs\signals\signals_carbon\signals_carbon_appearance.dm"
-#include "code\__DEFINES\dcs\signals\signals_human\signals_human_health.dm"
 #include "code\__DEFINES\dcs\signals\signals_human\signals_loadout.dm"
 #include "code\__DEFINES\dcs\signals\signals_item\signals_item-clickchain.dm"
 #include "code\__DEFINES\dcs\signals\signals_item\signals_item-interaction.dm"

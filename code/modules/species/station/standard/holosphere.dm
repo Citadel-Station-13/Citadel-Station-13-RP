@@ -187,8 +187,7 @@
 /datum/species/holosphere/handle_death(var/mob/living/carbon/human/H, gibbed)
 	var/deathmsg = "<span class='userdanger'>Systems critically damaged. Emitters temporarily offline.</span>"
 	to_chat(H, deathmsg)
-	if(!transform_component.is_transformed())
-		transform_component.put_in_object()
+	transform_component.put_in_object_safe()
 	sleep(10 SECONDS)
 	H.revive(full_heal = TRUE)
 	var/regenmsg = "<span class='userdanger'>Emitters have returned online. Systems functional.</span>"
