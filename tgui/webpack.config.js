@@ -53,7 +53,7 @@ module.exports = (env = {}, argv) => {
       rules: [
         {
           test: /\.([tj]s(x)?|cjs)$/,
-          exclude: /node_modules[\\/]core-js/,
+          exclude: /node_modules[\\/](core-js|dateformat)/,
           use: [
             {
               loader: require.resolve('babel-loader'),
