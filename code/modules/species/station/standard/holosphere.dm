@@ -11,10 +11,10 @@
 	icobase = 'icons/mob/species/human/body_greyscale.dmi'
 	deform  = 'icons/mob/species/human/deformed_body_greyscale.dmi'
 
-	//selects_bodytype = TRUE
-
 	species_spawn_flags = SPECIES_SPAWN_CHARACTER
 	species_appearance_flags = HAS_HAIR_COLOR | HAS_SKIN_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_EYE_COLOR | HAS_BODY_ALPHA | HAS_HAIR_ALPHA
+
+	total_health = 20
 
 	has_organ = list(
 		O_HEART     = /obj/item/organ/internal/heart,
@@ -78,10 +78,15 @@
 	var/cached_loadout_flags
 	var/cached_loadout_role
 
+	var/datum/component/object_transform/transform_component
+	var/obj/holosphere_shell
+
 /datum/species/holosphere/on_apply(mob/living/carbon/human/H)
 	. = ..()
 	RegisterSignal(H, COMSIG_CARBON_UPDATING_OVERLAY, PROC_REF(handle_hologram_overlays))
 	RegisterSignal(H, COMSIG_HUMAN_EQUIPPING_LOADOUT, PROC_REF(handle_hologram_loadout))
+	holosphere_shell = new(H)
+	transform_component = H.AddComponent(/datum/component/object_transform, holosphere_shell, null, null, FALSE)
 
 /datum/species/holosphere/on_remove(mob/living/carbon/human/H)
 	. = ..()
@@ -178,3 +183,12 @@
 	var/loadout_slot = loadout_options[loadout_option]
 	var/list/datum/loadout_entry/loadout_entries = H.client.prefs.generate_loadout_entry_list(cached_loadout_flags, cached_loadout_role, loadout_slot)
 	equip_loadout(H, loadout_entries)
+
+/datum/species/holosphere/handle_death(var/mob/living/carbon/human/H, gibbed)
+	var/deathmsg = "<span class='userdanger'>Systems critically damaged. Emitters temporarily offline.</span>"
+	to_chat(H, deathmsg)
+	if(!transform_component.is_transformed())
+		transform_component.put_in_object()
+	sleep(10 SECONDS)
+	H.revive(full_heal = TRUE)
+	var/regenmsg = "<span class='userdanger'>Emitters have returned online. Systems functional.</span>"

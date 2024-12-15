@@ -2,20 +2,23 @@
 	var/obj/transformed_object
 	var/to_object_text
 	var/to_mob_text
+	var/start_in_object
 
-/datum/component/object_transform/Initialize(_transformed_object, _to_object_text, _to_mob_text)
+/datum/component/object_transform/Initialize(_transformed_object, _to_object_text, _to_mob_text, _start_in_object = TRUE)
 	transformed_object = _transformed_object
 	to_object_text = _to_object_text
 	to_mob_text = _to_mob_text
-	put_in_object(TRUE)
+	start_in_object = _start_in_object
+	if(start_in_object)
+		put_in_object(TRUE)
 
-/datum/component/object_transform/proc/swap_object(new_object)
+/datum/component/object_transform/proc/swap_object(new_object, silent = FALSE)
 	. = transformed_object
 	var/mob/owner = parent
 	if(parent in transformed_object.contents)
 		owner.forceMove(transformed_object.loc)
 	transformed_object = new_object
-	put_in_object()
+	put_in_object(silent)
 
 /datum/component/object_transform/proc/put_in_object(silent = FALSE)
 	var/mob/owner = parent
@@ -31,3 +34,6 @@
 	if(!silent && length(to_mob_text))
 		owner.visible_message("<b>[owner]</b> [to_mob_text]")
 
+/datum/component/object_transform/proc/is_transformed()
+	var/mob/owner = parent
+	return owner.loc == transformed_object
