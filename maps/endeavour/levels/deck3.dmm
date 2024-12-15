@@ -611,6 +611,12 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/security/warden)
+"ayO" = (
+/obj/structure/table/reinforced,
+/obj/item/clothing/glasses/welding,
+/obj/item/weldingtool/largetank,
+/turf/simulated/floor/plating,
+/area/maintenance/cargo)
 "ayW" = (
 /obj/machinery/portable_atmospherics/canister/oxygen,
 /obj/machinery/power/apc/south_mount,
@@ -1895,6 +1901,10 @@
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/endeavour/hallway/d3afthall)
+"bqp" = (
+/obj/structure/undies_wardrobe,
+/turf/simulated/floor/wood,
+/area/maintenance/cargo)
 "bqs" = (
 /obj/machinery/computer/ship/navigation/telescreen{
 	pixel_y = -37
@@ -2810,6 +2820,12 @@
 /obj/machinery/door/firedoor,
 /turf/simulated/floor/tiled/dark,
 /area/endeavour/hallway/d3fwdhall)
+"cbA" = (
+/obj/machinery/light/small{
+	dir = 8
+	},
+/turf/simulated/floor/wood,
+/area/maintenance/cargo)
 "cce" = (
 /obj/machinery/door/airlock/glass/security/polarized,
 /obj/machinery/door/blast/regular{
@@ -2924,6 +2940,13 @@
 "chh" = (
 /turf/simulated/floor/tiled/techfloor,
 /area/security/lobby)
+"chk" = (
+/obj/machinery/light_switch{
+	pixel_x = -26;
+	pixel_y = 4
+	},
+/turf/simulated/floor/wood,
+/area/maintenance/cargo)
 "cih" = (
 /obj/machinery/camera/network/outside{
 	dir = 1
@@ -3707,8 +3730,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/security/hallway)
 "cPI" = (
-/obj/item/pickaxe/drill,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/wood,
 /area/maintenance/cargo)
 "cPN" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
@@ -5560,6 +5582,9 @@
 /obj/machinery/power/sensor{
 	name = "Powernet Sensor - Deck 3 Aft Subgrid";
 	name_tag = "Deck 3 Subgrid"
+	},
+/obj/structure/cable/green{
+	icon_state = "0-4"
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/cargo)
@@ -7644,7 +7669,11 @@
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/toilet)
 "flt" = (
-/turf/simulated/floor/airless/ceiling,
+/obj/machinery/air_alarm{
+	dir = 8;
+	pixel_x = 25
+	},
+/turf/simulated/floor/plating,
 /area/maintenance/cargo)
 "flS" = (
 /obj/effect/floor_decal/borderfloorblack{
@@ -7938,8 +7967,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/security/hallway)
 "fBG" = (
-/obj/item/weldingtool/largetank,
-/obj/structure/table/reinforced,
+/obj/spawner/window/low_wall/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/maintenance/cargo)
 "fBZ" = (
@@ -8397,9 +8425,14 @@
 /turf/simulated/floor/plating,
 /area/security/armoury)
 "fOe" = (
-/obj/structure/curtain/black,
-/obj/item/barrier_tape_segment/engineering,
-/turf/simulated/floor/plating,
+/obj/machinery/button/remote/airlock{
+	id = "dormx";
+	name = "Room 1 Lock";
+	pixel_x = -26;
+	pixel_y = -7;
+	specialfunctions = 4
+	},
+/turf/simulated/floor/wood,
 /area/maintenance/cargo)
 "fOS" = (
 /obj/structure/undies_wardrobe,
@@ -8734,6 +8767,12 @@
 /obj/machinery/door/airlock/glass,
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d3portforhall)
+"fXT" = (
+/obj/structure/table/reinforced,
+/obj/item/storage/toolbox/syndicate,
+/obj/item/pickaxe/drill,
+/turf/simulated/floor/plating,
+/area/maintenance/cargo)
 "fYb" = (
 /obj/structure/table/woodentable,
 /obj/machinery/microwave,
@@ -12131,6 +12170,9 @@
 	name = "Powernet Sensor - Deck 3 Fore Subgrid";
 	name_tag = "Deck 3 Fore Subgrid"
 	},
+/obj/structure/cable/green{
+	icon_state = "0-4"
+	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/civilian)
 "iFW" = (
@@ -12357,6 +12399,12 @@
 /obj/machinery/vending/loadout,
 /turf/simulated/floor/tiled/dark,
 /area/vacant/vacant_shop)
+"iPz" = (
+/obj/structure/bed/chair/comfy/brown{
+	dir = 4
+	},
+/turf/simulated/floor/wood,
+/area/maintenance/cargo)
 "iPK" = (
 /obj/machinery/door/airlock/maintenance/engi{
 	req_one_access = null
@@ -13370,8 +13418,10 @@
 /turf/simulated/floor/tiled/dark,
 /area/security/hallway)
 "jDP" = (
-/obj/machinery/door/airlock/maintenance,
-/obj/item/barrier_tape_segment/engineering,
+/obj/machinery/door/airlock{
+	id_tag = "dormx";
+	name = "Maintenance Access"
+	},
 /turf/simulated/floor/plating,
 /area/maintenance/cargo)
 "jEc" = (
@@ -17862,6 +17912,10 @@
 	},
 /turf/simulated/floor/tiled/old_cargo/gray,
 /area/security/hanger)
+"nbE" = (
+/obj/structure/closet/wardrobe,
+/turf/simulated/floor/wood,
+/area/maintenance/cargo)
 "nbL" = (
 /turf/simulated/floor/airless,
 /area/space)
@@ -18295,6 +18349,10 @@
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/wood,
 /area/crew_quarters/bar)
+"nts" = (
+/obj/structure/bed/chair/comfy/brown,
+/turf/simulated/floor/wood,
+/area/maintenance/cargo)
 "ntP" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -18333,9 +18391,10 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/recreation_area)
 "nvw" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/turf/simulated/floor/airless/ceiling,
-/area/space)
+/obj/structure/table/woodentable,
+/obj/machinery/microwave,
+/turf/simulated/floor/plating,
+/area/maintenance/cargo)
 "nws" = (
 /obj/structure/table/rack{
 	dir = 8;
@@ -22354,7 +22413,9 @@
 /turf/simulated/floor/carpet,
 /area/crew_quarters/heads/hos)
 "qdl" = (
-/obj/item/storage/toolbox/syndicate,
+/obj/structure/bed/chair/comfy/brown{
+	dir = 4
+	},
 /turf/simulated/floor/plating,
 /area/maintenance/cargo)
 "qdy" = (
@@ -23051,9 +23112,10 @@
 /turf/simulated/floor/carpet/bcarpet,
 /area/vacant/vacant_shop)
 "qBQ" = (
-/obj/item/barrier_tape_segment/engineering,
-/turf/simulated/wall/r_wall/prepainted/command,
-/area/security/nuke_storage)
+/obj/structure/table/wooden_reinforced,
+/obj/item/storage/box/donkpockets,
+/turf/simulated/floor/wood,
+/area/maintenance/cargo)
 "qCe" = (
 /obj/spawner/window/low_wall/full/firelocks,
 /turf/simulated/floor/plating,
@@ -23813,6 +23875,12 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/carpet/bcarpet,
 /area/crew_quarters/bar)
+"rgA" = (
+/obj/structure/bed/double/padded,
+/obj/item/bedsheet/browndouble,
+/obj/structure/curtain/open/bed,
+/turf/simulated/floor/plating,
+/area/maintenance/cargo)
 "rhg" = (
 /obj/effect/floor_decal/spline/fancy/wood,
 /obj/structure/table/marble,
@@ -24379,8 +24447,10 @@
 /turf/simulated/floor/tiled/dark,
 /area/security/armoury)
 "rzR" = (
-/obj/item/clothing/glasses/welding,
-/obj/structure/table/reinforced,
+/obj/structure/table/wooden_reinforced,
+/obj/machinery/light/small{
+	dir = 4
+	},
 /turf/simulated/floor/plating,
 /area/maintenance/cargo)
 "rAq" = (
@@ -24394,6 +24464,17 @@
 /obj/structure/curtain/open/black,
 /turf/simulated/floor/plating,
 /area/crew_quarters/bar/lounge)
+"rBd" = (
+/obj/machinery/light/small{
+	dir = 4
+	},
+/obj/machinery/air_alarm{
+	dir = 8;
+	pixel_x = 25
+	},
+/obj/structure/table/wooden_reinforced,
+/turf/simulated/floor/wood,
+/area/maintenance/cargo)
 "rBG" = (
 /turf/simulated/wall/prepainted,
 /area/maintenance/cargo)
@@ -28254,6 +28335,9 @@
 /obj/machinery/power/sensor{
 	name = "Powernet Sensor - Deck 3 Amidships Subgrid";
 	name_tag = "Deck 3 Aft Subgrid"
+	},
+/obj/structure/cable/green{
+	icon_state = "0-4"
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/security)
@@ -51936,7 +52020,7 @@ nyi
 fju
 fju
 mIk
-fju
+flt
 rMi
 kke
 qsL
@@ -52122,7 +52206,7 @@ csb
 csb
 csb
 csb
-wzB
+fBG
 fju
 mIk
 mIk
@@ -52316,7 +52400,7 @@ aaK
 aaK
 aaK
 aaK
-wzB
+fBG
 fju
 fju
 fju
@@ -52510,8 +52594,8 @@ csb
 csb
 csb
 csb
-wzB
-flt
+fBG
+fju
 fju
 fju
 yab
@@ -52705,7 +52789,7 @@ csb
 csb
 cih
 wzB
-flt
+fju
 fju
 fju
 yab
@@ -52900,8 +52984,8 @@ csb
 csb
 wzB
 flt
-fju
-fju
+fXT
+ayO
 yab
 fju
 mIk
@@ -53286,7 +53370,7 @@ csb
 csb
 csb
 csb
-nvw
+csb
 csb
 yab
 fju
@@ -55424,7 +55508,7 @@ jGe
 jYr
 yab
 fju
-fju
+flt
 fju
 fju
 fju
@@ -55810,14 +55894,14 @@ pRW
 pRW
 pRW
 pRW
-yab
+fBG
 qdl
 fju
 fOe
 fju
-fju
-fju
-fju
+chk
+cbA
+iPz
 rBG
 fju
 mIk
@@ -56004,14 +56088,14 @@ pRW
 pRW
 pRW
 pRW
-yab
 fBG
+fju
 cPI
-fOe
 fju
 fju
-fju
-fju
+cPI
+nts
+qBQ
 rBG
 fju
 mIk
@@ -56198,14 +56282,14 @@ pRW
 pRW
 pRW
 pRW
-yab
+fBG
 rzR
+rgA
 fju
-fOe
-fju
-fju
-fju
-fju
+rBd
+nbE
+bqp
+nvw
 rBG
 fju
 mIk
@@ -56394,7 +56478,7 @@ pRW
 pRW
 vRl
 vRl
-qBQ
+vRl
 vRl
 vRl
 vRl
@@ -60685,7 +60769,7 @@ lTw
 lTw
 lTw
 lTw
-lTw
+nEe
 mMr
 sih
 adZ
@@ -60872,7 +60956,7 @@ cXW
 hbD
 mMr
 lTw
-nEe
+lTw
 hoH
 lTw
 lTw
