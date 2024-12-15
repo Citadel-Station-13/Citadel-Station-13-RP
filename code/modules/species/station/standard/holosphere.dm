@@ -192,3 +192,4 @@
 	sleep(10 SECONDS)
 	H.revive(full_heal = TRUE)
 	var/regenmsg = "<span class='userdanger'>Emitters have returned online. Systems functional.</span>"
+	to_chat(H, regenmsg)
