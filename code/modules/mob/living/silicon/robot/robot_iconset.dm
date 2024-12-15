@@ -40,5 +40,6 @@
 	/// * /datum/robot_iconset_variation/bellyup
 	var/list/variations
 
+
 #warn impl
 #warn resolve variations

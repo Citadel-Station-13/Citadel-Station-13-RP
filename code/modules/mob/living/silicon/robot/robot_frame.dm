@@ -21,4 +21,9 @@
 	/// * set to typepath; resolved on init.
 	var/datum/prototype/robot_chassis
 
+	//* donator *//
+
+	/// restrict to ckeys in list
+	var/list/donator_only
+
 #warn resolve prototypes

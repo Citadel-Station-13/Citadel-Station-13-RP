@@ -1,4 +1,10 @@
+/mob/living/silicon/robot/update_icon()
+	. = ..()
 
+/mob/living/silicon/robot/updateicon()
+	update_icon()
+
+#warn below
 /mob/living/silicon/robot/updateicon()
 	cut_overlays()
 
