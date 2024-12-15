@@ -3,7 +3,7 @@ import { DisposalUnit } from 'tgui/interfaces/DisposalUnit';
 import { createRenderer } from 'tgui/renderer';
 import { configureStore, StoreProvider } from 'tgui/store';
 
-const store = configureStore({ sideEffets: false });
+const store = configureStore({ sideEffects: false });
 
 const renderUi = createRenderer((dataJson: string) => {
   store.dispatch(backendUpdate({
