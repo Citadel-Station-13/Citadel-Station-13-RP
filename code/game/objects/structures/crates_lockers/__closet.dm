@@ -25,6 +25,7 @@
 	var/breakout_time = 2 //2 minutes by default
 	breakout_sound = 'sound/effects/grillehit.ogg'	//Sound that plays while breaking out
 
+	// todo: why the fuck is this in terms of mob defines?? this is stupid.
 	var/storage_capacity = 2 * MOB_MEDIUM //This is so that someone can't pack hundreds of items in a locker/crate
 							  //then open it in a populated area to crash clients.
 	var/storage_cost = 40	//How much space this closet takes up if it's stuffed in another closet
@@ -52,6 +53,8 @@
 	//! legacy
 	/// override attackby and anything else closet-like
 	var/not_actually_a_closet = FALSE
+	/// was made at mapload
+	var/was_made_at_mapload
 	//! end
 
 /obj/structure/closet/Initialize(mapload, singleton/closet_appearance/use_closet_appearance)
@@ -61,6 +64,7 @@
 	if(!isnull(use_closet_appearance))
 		src.closet_appearance = use_closet_appearance
 	legacy_spawn_contents()
+	was_made_at_mapload = mapload
 	/*
 	if(secure)
 		lockerelectronics = new(src)
@@ -79,6 +83,8 @@
 			icon = app.icon
 			color = null
 			update_icon()
+	if(was_made_at_mapload && !opened)
+		take_contents()
 
 /obj/structure/closet/proc/update_icon_old()
 	if(!opened)

@@ -3755,7 +3755,7 @@
 /obj/effect/floor_decal/corner/paleblue/border{
 	dir = 1
 	},
-/obj/structure/sign/poster{
+/obj/structure/poster{
 	pixel_y = 32
 	},
 /obj/effect/floor_decal/corner_steel_grid{
@@ -6084,7 +6084,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 8
 	},
-/obj/structure/sign/poster{
+/obj/structure/poster{
 	pixel_y = -32
 	},
 /turf/simulated/floor/tiled/white,
@@ -6715,7 +6715,7 @@
 /area/tether/surfacebase/east_stairs_two)
 "eWt" = (
 /obj/effect/floor_decal/corner/paleblue/diagonal,
-/obj/structure/sign/poster{
+/obj/structure/poster{
 	pixel_x = -32
 	},
 /turf/simulated/floor/tiled/white,
@@ -11023,7 +11023,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/structure/sign/poster{
+/obj/structure/poster{
 	pixel_y = 32
 	},
 /turf/simulated/floor/tiled/dark,
@@ -11167,7 +11167,7 @@
 /turf/simulated/floor/tiled,
 /area/tcommsat/computer)
 "iav" = (
-/obj/structure/sign/poster{
+/obj/structure/poster{
 	pixel_y = -32
 	},
 /turf/simulated/floor/tiled/white,
@@ -11441,7 +11441,7 @@
 /obj/effect/floor_decal/corner/red/border{
 	dir = 8
 	},
-/obj/structure/sign/poster{
+/obj/structure/poster{
 	pixel_x = -32
 	},
 /turf/simulated/floor/tiled,
@@ -17294,7 +17294,7 @@
 /area/rnd/breakroom/bathroom)
 "mIX" = (
 /obj/effect/floor_decal/corner/paleblue/diagonal,
-/obj/structure/sign/poster{
+/obj/structure/poster{
 	pixel_x = -32
 	},
 /obj/structure/bed/chair{
@@ -21487,7 +21487,7 @@
 /obj/structure/sign/warning/bomb_range{
 	name = "\improper MINING AREA - WATCH FOR BLASTING"
 	},
-/turf/unsimulated/wall/planetary/virgo3b,
+/turf/unsimulated/wall/planetary/facility_wall,
 /area/tether/surfacebase/outside/outside2)
 "pMA" = (
 /obj/machinery/smartfridge/survival_pod,
@@ -21607,7 +21607,7 @@
 	desc = "No unarmed personnel beyond this point.";
 	name = "\improper DANGER - WILDERNESS"
 	},
-/turf/unsimulated/wall/planetary/virgo3b,
+/turf/unsimulated/wall/planetary/facility_wall,
 /area/tether/surfacebase/outside/outside2)
 "pRG" = (
 /obj/structure/cable{
@@ -26923,7 +26923,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/tether/surfacebase/security/outfitting)
 "tXE" = (
-/turf/unsimulated/mineral/virgo3b,
+/turf/unsimulated/wall/mineral,
 /area/tether/surfacebase/outside/outside2)
 "tXS" = (
 /obj/machinery/washing_machine,
@@ -27196,7 +27196,7 @@
 /obj/effect/floor_decal/corner/paleblue/bordercorner2{
 	dir = 9
 	},
-/obj/structure/sign/poster{
+/obj/structure/poster{
 	pixel_y = -32
 	},
 /turf/simulated/floor/tiled/white,
@@ -27250,7 +27250,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/tcomfoyer)
 "umc" = (
-/obj/structure/sign/poster,
+/obj/structure/poster,
 /turf/simulated/wall/prepainted,
 /area/tether/surfacebase/public_garden_two)
 "umZ" = (
@@ -27549,7 +27549,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/tether/surfacebase/surface_two_hall)
 "uBb" = (
-/turf/unsimulated/wall/planetary/virgo3b,
+/turf/unsimulated/wall/planetary/facility_wall,
 /area/tether/surfacebase/outside/outside2)
 "uBd" = (
 /turf/simulated/open,
@@ -29183,7 +29183,7 @@
 /turf/simulated/floor/tiled/white,
 /area/tether/surfacebase/security/brig/bathroom)
 "vFJ" = (
-/turf/simulated/mineral/virgo3b,
+/turf/simulated/mineral,
 /area/tether/surfacebase/outside/outside2)
 "vFZ" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/red,

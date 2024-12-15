@@ -311,7 +311,7 @@
 	var/burn_user = TRUE
 	if(istype(M, /mob/living/carbon/human))
 		var/mob/living/carbon/human/H = user
-		var/obj/item/clothing/gloves/G = H.gloves
+		var/obj/item/clothing/gloves/G = H.inventory.get_slot_single(/datum/inventory_slot/inventory/gloves::id)
 		if(istype(G) && ((G.clothing_flags & CLOTHING_THICK_MATERIAL && prob(70)) || istype(G, /obj/item/clothing/gloves/gauntlets)))
 			burn_user = FALSE
 

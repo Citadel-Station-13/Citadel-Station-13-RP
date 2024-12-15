@@ -4,7 +4,6 @@
 	pass_flags_self = ATOM_PASS_OVERHEAD_THROW
 	animate_movement = SLIDE_STEPS
 	rad_flags = NONE
-	atom_colouration_system = TRUE
 	integrity_enabled = TRUE
 	armor_type = /datum/armor/object/default
 
@@ -349,7 +348,7 @@
 	if(istype(M) && M.client && M.machine == src)
 		src.attack_self(M)
 
-/obj/proc/hear_talk(mob/M as mob, text, verb, datum/language/speaking)
+/obj/proc/hear_talk(mob/M as mob, text, verb, datum/prototype/language/speaking)
 	if(talking_atom)
 		talking_atom.catchMessage(text, M)
 /*
@@ -360,7 +359,7 @@
 		*/
 	return
 
-/obj/proc/hear_signlang(mob/M as mob, text, verb, datum/language/speaking) // Saycode gets worse every day.
+/obj/proc/hear_signlang(mob/M as mob, text, verb, datum/prototype/language/speaking) // Saycode gets worse every day.
 	return FALSE
 
 /obj/proc/see_emote(mob/M as mob, text, var/emote_type)

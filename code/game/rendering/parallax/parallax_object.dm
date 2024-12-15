@@ -1,3 +1,5 @@
+//* This file is explicitly licensed under the MIT license. *//
+//* Copyright (c) 2024 Citadel Station Developers           *//
 
 /atom/movable/screen/parallax_layer
 	icon = 'icons/screen/parallax/parallax.dmi'

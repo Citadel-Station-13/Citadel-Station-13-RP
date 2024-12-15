@@ -136,6 +136,8 @@
 	//* UI - Map *//
 	/// Our action drawer
 	var/datum/action_drawer/action_drawer
+	/// Our actor HUD holder
+	var/datum/actor_hud_holder/actor_huds
 
 
 		////////////////

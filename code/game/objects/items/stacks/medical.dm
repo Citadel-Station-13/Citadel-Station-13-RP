@@ -44,7 +44,7 @@
 				to_chat(user, "<span class='warning'>You can't apply [src] through [H.head]!</span>")
 				return FALSE
 		else
-			if(H.wear_suit && istype(H.wear_suit,/obj/item/clothing/suit/space))
+			if(istype(H.inventory.get_slot_single(/datum/inventory_slot/inventory/suit), /obj/item/clothing/suit/space))
 				to_chat(user, "<span class='warning'>You can't apply [src] through [H.wear_suit]!</span>")
 				return FALSE
 
@@ -384,8 +384,8 @@
 		if (M != user)
 			user.visible_message("<span class='danger'>[user] starts to apply \the [src] to [M]'s [limb].</span>", "<span class='danger'>You start to apply \the [src] to [M]'s [limb].</span>", "<span class='danger'>You hear something being wrapped.</span>")
 		else
-			if(( !H.hand && (affecting.organ_tag in list(BP_R_ARM, BP_R_HAND)) || \
-				H.hand && (affecting.organ_tag in list(BP_L_ARM, BP_L_HAND)) ))
+			if(( !(H.active_hand % 2) && (affecting.organ_tag in list(BP_R_ARM, BP_R_HAND)) || \
+				(H.active_hand % 2) && (affecting.organ_tag in list(BP_L_ARM, BP_L_HAND)) ))
 				to_chat(user, "<span class='danger'>You can't apply a splint to the arm you're using!</span>")
 				return
 			user.visible_message("<span class='danger'>[user] starts to apply \the [src] to their [limb].</span>", "<span class='danger'>You start to apply \the [src] to your [limb].</span>", "<span class='danger'>You hear something being wrapped.</span>")

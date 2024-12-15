@@ -1,4 +1,4 @@
-/datum/language/species/moth
+/datum/prototype/language/species/moth
 	id = LANGUAGE_ID_LUINIMMA
 	name = LANGUAGE_LUINIMMA
 	translation_class = TRANSLATION_CLASS_DEFAULT_RARE_RACE
@@ -39,7 +39,7 @@
 	partial_understanding = list()
 	shorthand = "LUI"
 
-/datum/language/species/moth/get_random_name(gender, name_count = 2, syllable_count= 4 , syllable_divisor = 2)
+/datum/prototype/language/species/moth/get_random_name(gender, name_count = 2, syllable_count= 4 , syllable_divisor = 2)
 	var/list/names = GLOB.moth_lore_data["name"]
 	var/list/occupations = GLOB.moth_lore_data["profession"]
 	var/i

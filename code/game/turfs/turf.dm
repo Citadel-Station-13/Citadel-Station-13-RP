@@ -1,11 +1,16 @@
 /// Any floor or wall. What makes up the station and the rest of the map.
 /turf
 	abstract_type = /turf
-
 	icon = 'icons/turf/floors.dmi'
+	luminosity = 1
+
+	//* Default turf inbuilts *//
+
 	layer = TURF_LAYER
 	plane = TURF_PLANE
-	luminosity = 1
+	opacity = FALSE
+	density = FALSE
+	alpha = 255
 
 	//* Atmospherics
 	/**
@@ -72,7 +77,7 @@
 	 * FALSE - as it implies
 	 * null - use area default
 	 */
-	var/outdoors = FALSE
+	var/outdoors = null
 
 	//* Radiation
 	/// cached rad insulation of contents
@@ -157,7 +162,7 @@
 
 	//atom color stuff
 	if(color)
-		add_atom_colour(color, FIXED_COLOUR_PRIORITY)
+		add_atom_color(color)
 
 	// todo: uh oh.
 	// TODO: what would tg do (but maybe not that much component signal abuse?)
@@ -578,19 +583,19 @@
 
 //* Atom Color - we don't use the expensive system. *//
 
-/turf/get_atom_colour()
+/turf/get_atom_color()
 	return color
 
-/turf/add_atom_colour(coloration, colour_priority)
+/turf/add_atom_color(coloration, colour_priority)
 	color = coloration
 
-/turf/remove_atom_colour(colour_priority, coloration)
+/turf/remove_atom_color(colour_priority, coloration)
 	color = null
 
-/turf/update_atom_colour()
+/turf/update_atom_color()
 	return
 
-/turf/copy_atom_colour(atom/other, colour_priority)
+/turf/copy_atom_color(atom/other, colour_priority)
 	if(isnull(other.color))
 		return
 	color = other.color
@@ -609,6 +614,12 @@
 
 //* Multiz *//
 
+/**
+ * Update multiz linkage. This is done when a zlevel rebuilds its multiz state.
+ *
+ * todo: maybe include params for 'z_offset_up', 'z_offset_down'? manuallly fetching on
+ *       every turf is slow as balls.
+ */
 /turf/proc/update_multiz()
 	return
 

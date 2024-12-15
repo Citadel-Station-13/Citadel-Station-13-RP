@@ -1,3 +1,5 @@
+//* All static screen_loc of UI objects are in here! *//
+
 /*
 	These defines specificy screen locations.  For more information, see the byond documentation on the screen_loc var.
 
@@ -17,29 +19,37 @@
 //! BYOND will 100% allow you to.
 //! DO NOT DO THIS.
 
-#define ui_entire_screen "LEFT,BOTTOM to RIGHT,TOP"
+//*                  General HUD positions                   *//
+//* These should be as widescreen-agnostic as possible.      *//
 
-//Lower left, persistant menu
-#define ui_inventory "LEFT:6,BOTTOM:5"
+/// Fill screen
+#define SCREEN_LOC_FULLSCREEN "LEFT,BOTTOM to RIGHT,TOP"
 
-//Lower center, persistant menu
-#define ui_sstore1 "LEFT+2:10,BOTTOM:5"
-#define ui_id "LEFT+3:12,BOTTOM:5"
-#define ui_belt "LEFT+4:14,BOTTOM:5"
-#define ui_back "CENTER-2:14,BOTTOM:5"
-#define ui_rhand "CENTER-1:16,BOTTOM:5"
-#define ui_lhand "CENTER:16,BOTTOM:5"
-#define ui_equip "CENTER-1:16,BOTTOM+1:5"
-#define ui_swaphand1 "CENTER-1:16,BOTTOM+1:5"
-#define ui_swaphand2 "CENTER:16,BOTTOM+1:5"
-#define ui_storage1 "CENTER+1:16,BOTTOM:5"
-#define ui_storage2 "CENTER+2:16,BOTTOM:5"
+//*                     Mob HUD positions                    *//
+//* These should be widescreen-agnostic and use anchorings   *//
+//* to the sides of the screen / center.                     *//
+
+//* Mob HUD - Inventory *//
+
+/// screen loc for a hand index
+#define SCREEN_LOC_MOB_HUD_INVENTORY_HAND(HAND) "CENTER[index % 2? "" : "-1"]:16,BOTTOM[index < 2? "" : "+[(round(index / 2) - 1)]"]:5"
+/// screen loc for hand swap button for a given number of hands
+#define SCREEN_LOC_MOB_HUD_INVENTORY_HAND_SWAP(TOTAL_HANDS) "CENTER-1:28,BOTTOM+[ceil(TOTAL_HANDS - 2 / 2)]:5"
+/// screen loc for hand swap button for a given number of hands
+#define SCREEN_LOC_MOB_HUD_INVENTORY_EQUIP_HAND(TOTAL_HANDS) "CENTER-1:16,BOTTOM+[ceil(TOTAL_HANDS - 2 / 2)]:5"
+/// the bottom-left drawer position of inventory HUD
+#define SCREEN_LOC_MOB_HUD_INVENTORY_DRAWER "LEFT:6,BOTTOM:5"
+/// slot alignment for drawer-anchor
+#define SCREEN_LOC_MOB_HUD_INVENTORY_SLOT_DRAWER_ALIGNED(MAIN_AXIS, CROSS_AXIS) "LEFT+[CROSS_AXIS]:[6 + (CROSS_AXIS * 2)],BOTTOM+[MAIN_AXIS]:[5 + (MAIN_AXIS * 2)]"
+/// slot alignment for hand-anchor
+#define SCREEN_LOC_MOB_HUD_INVENTORY_SLOT_HANDS_ALIGNED(MAIN_AXIS, CROSS_AXIS) "CENTER-1:[16 + (MAIN_AXIS > 0 ? (32 * (MAIN_AXIS + 1)) : (32 * MAIN_AXIS))],BOTTOM+[CROSS_AXIS]:[5 + (CROSS_AXIS * 2)]"
+
+//! < legacy stuff below > !//
+
+/// Hands
+
 #define ui_smallquad "RIGHT-4:18,BOTTOM:4"
 
-///aliens
-#define ui_alien_head "CENTER-3:12,BOTTOM:5"
-///aliens
-#define ui_alien_oclothing "CENTER-2:14,BOTTOM:5"
 ///borgs
 #define ui_inv1 "CENTER-1,BOTTOM:5"
 ///borgs
@@ -50,10 +60,6 @@
 #define ui_borg_store "CENTER+2,BOTTOM:5"
 ///borgs
 #define ui_borg_inventory "CENTER-2,BOTTOM:5"
-///monkey
-#define ui_monkey_mask "LEFT+4:14,BOTTOM:5"
-///monkey
-#define ui_monkey_back "LEFT+5:14,BOTTOM:5"
 ///same height as humans, hugging the right border
 #define ui_construct_health "RIGHT:00,CENTER:15"
 #define ui_construct_purge "RIGHT:00,CENTER-1:15"
@@ -132,20 +138,6 @@
 //#define ui_wiz_instability_display "RIGHT-2:28,CENTER-3:15"
 #define ui_wiz_instability_display "RIGHT-1:28,TOP-2:27"
 
-//Pop-up inventory
-#define ui_shoes "LEFT+1:8,BOTTOM:5"
-
-#define ui_iclothing "LEFT:6,BOTTOM+1:7"
-#define ui_oclothing "LEFT+1:8,BOTTOM+1:7"
-#define ui_gloves "LEFT+2:10,BOTTOM+1:7"
-
-#define ui_glasses "LEFT:6,BOTTOM+2:9"
-#define ui_mask "LEFT+1:8,BOTTOM+2:9"
-#define ui_l_ear "LEFT+2:10,BOTTOM+2:9"
-#define ui_r_ear "LEFT+2:10,BOTTOM+3:11"
-
-#define ui_head "LEFT+1:8,BOTTOM+3:11"
-
 //Intent small buttons
 #define ui_help_small "RIGHT-3:8,BOTTOM:1"
 #define ui_disarm_small "RIGHT-3:15,BOTTOM:18"
@@ -154,16 +146,8 @@
 
 //#define ui_swapbutton "6:-16,1:5" //Unused
 
-//#define ui_headset "BOTTOM,8"
-#define ui_hand "CENTER-1:14,BOTTOM:5"
-#define ui_hstore1 "CENTER-2,CENTER-2"
-//#define ui_resist "RIGHT+1,BOTTOM-1"
 #define ui_sleep "RIGHT+1,TOP-13"
 #define ui_rest "RIGHT+1,TOP-14"
-
-
-#define ui_iarrowleft "BOTTOM-1,RIGHT-4"
-#define ui_iarrowright "BOTTOM-1,RIGHT-2"
 
 #define ui_spell_master "RIGHT-1:16,TOP-1:16"
 #define ui_genetic_master "RIGHT-1:16,TOP-2:16"

@@ -7465,7 +7465,7 @@
 /area/quartermaster/miningdock)
 "AW" = (
 /obj/effect/blocker,
-/turf/simulated/floor/sky/depths/lythios43c,
+/turf/simulated/sky/depths/lythios43c,
 /area/rift/surfacebase/underground/under2)
 "AX" = (
 /turf/simulated/wall/prepainted/cargo,
@@ -12525,7 +12525,7 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/engineering/hallway)
 "UV" = (
-/turf/simulated/floor/outdoors/lava/indoors/geothermal,
+/turf/simulated/lava/indoors/geothermal,
 /area/rift/surfacebase/underground/under2)
 "UW" = (
 /obj/structure/table/reinforced,
@@ -13033,7 +13033,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/quartermaster/miningdock)
 "WA" = (
-/turf/simulated/floor/sky/depths/lythios43c,
+/turf/simulated/sky/depths/lythios43c,
 /area/rift/surfacebase/underground/under2)
 "WC" = (
 /obj/effect/floor_decal/borderfloor{
@@ -13175,7 +13175,7 @@
 /turf/simulated/floor/tiled,
 /area/engineering/engine_airlock)
 "Xh" = (
-/turf/unsimulated/wall/planetary/lythios43c{
+/turf/unsimulated/wall/planetary/permafrost{
 	desc = "Glacial permafrost, compacted harder than stone.";
 	icon_state = "icerock-dark"
 	},

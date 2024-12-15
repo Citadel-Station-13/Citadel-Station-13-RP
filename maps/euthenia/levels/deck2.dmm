@@ -2180,7 +2180,7 @@
 /obj/structure/railing/grey{
 	dir = 4
 	},
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/rnd/research/researchdivision)
 "btX" = (
 /obj/structure/mopbucket,
@@ -5776,7 +5776,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 1
 	},
-/obj/structure/sign/poster/nanotrasen{
+/obj/structure/poster/nanotrasen{
 	pixel_y = 32
 	},
 /obj/structure/disposalpipe/trunk,
@@ -15172,7 +15172,7 @@
 /obj/machinery/light/no_nightshift{
 	dir = 1
 	},
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/medical/patient_wing)
 "lkm" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -20118,7 +20118,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 8
 	},
-/obj/structure/sign/poster/nanotrasen{
+/obj/structure/poster/nanotrasen{
 	pixel_x = -32
 	},
 /turf/simulated/floor/wood,
@@ -24607,7 +24607,7 @@
 /obj/structure/railing/grey{
 	dir = 8
 	},
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/rnd/research/researchdivision)
 "skY" = (
 /obj/machinery/atmospherics/pipe/simple/visible/purple{
@@ -28950,7 +28950,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 6
 	},
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/medical/patient_wing)
 "vxb" = (
 /obj/machinery/light/small{
@@ -32178,7 +32178,7 @@
 	dir = 10
 	},
 /obj/structure/flora/ausbushes/ppflowers,
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/medical/patient_wing)
 "xEX" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
