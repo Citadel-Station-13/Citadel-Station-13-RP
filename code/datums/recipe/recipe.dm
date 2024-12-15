@@ -82,17 +82,37 @@ GLOBAL_LIST_EMPTY(cooking_recipes)
 /datum/cooking_recipe/proc/tgui_guidebook_data()
 	var/list/required_reagents = list()
 	var/list/output_reagents = list()
+	var/list/req_items = list()
+	var/list/req_growns = list()
+
+
 	for(var/r in reagents)
-		required_reagents[SSchemistry.reagent_lookup[r].name] = reagents[r]
+		required_reagents += "[reagents[r]]u of [(SSchemistry.reagent_lookup[r]).name], "
 	for(var/ar in result_reagents)
-		output_reagents[SSchemistry.reagent_lookup[ar].name] = reagents[ar]
+		output_reagents += "[result_reagents[ar]]u of [(SSchemistry.reagent_lookup[ar]).name], "
+
+	for(var/i in items)
+		if(istype(i, /obj/item/reagent_containers/food/snacks/ingredient))
+			var/obj/item/reagent_containers/food/snacks/ingredient/ingred = i
+			req_items += "[items[i]]g of [initial(ingred.name)], "
+		else if(istype(i, /obj/item))
+			var/obj/item/input_item = i
+			req_items += "[items[i]]x [initial(input_item.name)], "
+
+	for(var/g in fruit)
+		if(istype(g, /obj/item/reagent_containers/food/snacks/ingredient))
+			var/obj/item/reagent_containers/food/snacks/ingredient/ingred = g
+			req_growns += "[fruit[g]]g of [initial(ingred.name)], "
+
+
 	return list(
-		"result" = result,
-		"result_reagents" = result_reagents,
-		"items" = items,
-		"fruit" = fruit,
-		"reagents" = reagents,
-		"required_method" = required_method
+		"result" = initial(initial(result).name) || (SSchemistry.reagent_lookup(result_reagents[0]).name),
+		"result_reagents" = output_reagents,
+		"result_amount" = result_quantity,
+		"req_items" = req_items,
+		"req_growns" = req_growns,
+		"req_reagents" = required_reagents,
+		"req_method" = required_method
 	)
 
 /datum/cooking_recipe/proc/check_reagents(var/datum/reagents/avail_reagents)
@@ -335,4 +355,3 @@ GLOBAL_LIST_EMPTY(cooking_recipes)
 	else //okay, let's select the most complicated recipe
 		tim_sort(possible_recipes, GLOBAL_PROC_REF(cmp_recipe_complexity_dsc))
 		return possible_recipes[1]
-
