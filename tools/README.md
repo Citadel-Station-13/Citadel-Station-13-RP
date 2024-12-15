@@ -8,6 +8,8 @@ All versions are grabbed from ../dependencies.sh
 - /build: The build system
 - /ci: Scripts used for our CI suite
 - /common: Common functions/things to include.
+- /setup_dev_db: Automatic way to setup and provision a development database, stored in the local data directory.
+- /tgs4_scripts: Scripts for tgstation-server to orchestrate server compiles/deploys/etc.
 
 # Todo
 

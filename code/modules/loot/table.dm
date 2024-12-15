@@ -112,7 +112,7 @@
 		if(ispath(thing, /obj/item/stack))
 			new thing(location, making)
 		else if(ispath(thing, /datum/prototype/struct/loot_pack) || istext(thing))
-			var/datum/prototype/struct/loot_pack/pack = RSstructs.fetch(thing)
+			var/datum/prototype/struct/loot_pack/pack = RSstructs.fetch_local_or_throw(thing)
 			if(!pack)
 				stack_trace("failed to fetch pack for [thing]")
 				continue
