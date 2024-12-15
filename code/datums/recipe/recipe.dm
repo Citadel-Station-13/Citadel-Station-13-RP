@@ -87,9 +87,9 @@ GLOBAL_LIST_EMPTY(cooking_recipes)
 
 
 	for(var/r in reagents)
-		required_reagents += "[reagents[r]]u of [(SSchemistry.reagent_lookup[r]).name], "
+		required_reagents += "[reagents[r]]u of [(SSchemistry.fetch_reagent(r)).name], "
 	for(var/ar in result_reagents)
-		output_reagents += "[result_reagents[ar]]u of [(SSchemistry.reagent_lookup[ar]).name], "
+		output_reagents += "[result_reagents[ar]]u of [(SSchemistry.fetch_reagent(ar)).name], "
 
 	for(var/i in items)
 		if(istype(i, /obj/item/reagent_containers/food/snacks/ingredient))
@@ -106,7 +106,7 @@ GLOBAL_LIST_EMPTY(cooking_recipes)
 
 
 	return list(
-		"result" = initial(initial(result).name) || (SSchemistry.reagent_lookup(result_reagents[0]).name),
+		"result" = initial(initial(result).name) || (SSchemistry.fetch_reagent(result_reagents[0]).name),
 		"result_reagents" = output_reagents,
 		"result_amount" = result_quantity,
 		"req_items" = req_items,

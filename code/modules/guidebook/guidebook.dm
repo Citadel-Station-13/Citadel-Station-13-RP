@@ -25,7 +25,7 @@ GLOBAL_DATUM_INIT(guidebook, /datum/guidebook, new)
 	return ..()
 
 /**
- * @params
+ * @param
  * * user - person viewing
  * * sections - list of section instances, ids, or paths
  */
@@ -68,3 +68,11 @@ GLOBAL_DATUM_INIT(guidebook, /datum/guidebook, new)
 	set category = "OOC"
 
 	GLOB.guidebook.ui_interact(src)
+
+/client/verb/access_guidebook_food()
+	set name = "Access Recipe Guidebook"
+	set category = "OOC"
+
+	var/list/accessing_section = list()
+	accessing_section.Add(new /datum/prototype/guidebook_section/recipes)
+	GLOB.guidebook.open(src.mob, accessing_section)
