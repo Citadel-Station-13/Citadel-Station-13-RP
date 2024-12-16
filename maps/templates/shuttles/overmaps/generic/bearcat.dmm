@@ -328,7 +328,7 @@
 	icon_state = "0-8"
 	},
 /obj/machinery/power/apc/alarms_hidden/east_mount{
-	
+
 	},
 /turf/simulated/floor/wood,
 /area/shuttle/bearcat/command_captain)
@@ -1927,7 +1927,7 @@
 	dir = 8
 	},
 /obj/structure/table/standard,
-/obj/fiftyspawner/steel,
+/obj/item/stack/material/steel/full_stack,
 /obj/fiftyspawner/rods,
 /obj/fiftyspawner/rglass,
 /obj/item/radio/intercom{

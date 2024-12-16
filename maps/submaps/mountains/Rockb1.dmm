@@ -195,7 +195,7 @@
 "L" = (
 /obj/structure/table/standard,
 /obj/fiftyspawner/glass,
-/obj/fiftyspawner/steel,
+/obj/item/stack/material/steel/full_stack,
 /turf/simulated/floor/tiled,
 /area/submap/Rockb1)
 "M" = (

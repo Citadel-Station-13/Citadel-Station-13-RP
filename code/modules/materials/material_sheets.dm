@@ -224,12 +224,6 @@
 	apply_colour = 1
 	no_variants = FALSE
 
-/obj/item/stack/material/steel
-	name = MAT_STEEL
-	icon_state = "sheet-metal"
-	material = /datum/prototype/material/steel
-	no_variants = FALSE
-
 /obj/item/stack/material/steel/hull
 	name = MAT_STEELHULL
 	material = /datum/prototype/material/steel/hull

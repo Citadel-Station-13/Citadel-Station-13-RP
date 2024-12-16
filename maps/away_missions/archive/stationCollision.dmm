@@ -72,8 +72,8 @@
 	dir = 8
 	},
 /obj/structure/table/standard,
-/obj/fiftyspawner/steel,
-/obj/fiftyspawner/steel,
+/obj/item/stack/material/steel/full_stack,
+/obj/item/stack/material/steel/full_stack,
 /obj/fiftyspawner/glass,
 /obj/fiftyspawner/plasteel,
 /turf/simulated/floor/airless,

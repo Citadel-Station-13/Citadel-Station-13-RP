@@ -2275,7 +2275,7 @@
 /turf/simulated/wall/prepainted,
 /area/endeavour/hallway/d3fwdmaint)
 "bDh" = (
-/obj/fiftyspawner/steel,
+/obj/item/stack/material/steel/full_stack,
 /turf/simulated/floor/plating,
 /area/maintenance/dormitory)
 "bDw" = (
@@ -12418,7 +12418,7 @@
 	pixel_x = 7
 	},
 /obj/fiftyspawner/glass,
-/obj/fiftyspawner/steel,
+/obj/item/stack/material/steel/full_stack,
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/blue/border,
 /turf/simulated/floor/tiled,
@@ -13290,14 +13290,14 @@
 "juB" = (
 /obj/structure/closet/toolcloset,
 /obj/item/storage/toolbox/mechanical,
-/obj/fiftyspawner/steel,
+/obj/item/stack/material/steel/full_stack,
 /obj/fiftyspawner/glass,
 /obj/item/stack/cable_coil/random,
 /obj/fiftyspawner/wood,
 /obj/machinery/power/apc/west_mount{
 	cell_type = /obj/item/cell/super
 	},
-/obj/fiftyspawner/steel,
+/obj/item/stack/material/steel/full_stack,
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
@@ -18031,7 +18031,7 @@
 /obj/structure/table/steel,
 /obj/fiftyspawner/glass,
 /obj/fiftyspawner/glass,
-/obj/fiftyspawner/steel,
+/obj/item/stack/material/steel/full_stack,
 /obj/effect/floor_decal/industrial/outline/blue,
 /obj/effect/floor_decal/corner/blue/full{
 	dir = 1

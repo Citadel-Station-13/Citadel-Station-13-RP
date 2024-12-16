@@ -4344,12 +4344,12 @@
 "alv" = (
 /obj/structure/table/steel_reinforced,
 /obj/fiftyspawner/glass,
-/obj/fiftyspawner/steel,
+/obj/item/stack/material/steel/full_stack,
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
 	},
 /obj/fiftyspawner/glass,
-/obj/fiftyspawner/steel,
+/obj/item/stack/material/steel/full_stack,
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
 /area/tradeport/atmospherics)
@@ -13770,7 +13770,7 @@
 	},
 /obj/structure/table/steel_reinforced,
 /obj/fiftyspawner/glass,
-/obj/fiftyspawner/steel,
+/obj/item/stack/material/steel/full_stack,
 /obj/fiftyspawner/plastic,
 /turf/simulated/floor/tiled/dark,
 /area/tradeport/facility)
@@ -18415,8 +18415,8 @@
 	},
 /obj/fiftyspawner/glass,
 /obj/fiftyspawner/glass,
-/obj/fiftyspawner/steel,
-/obj/fiftyspawner/steel,
+/obj/item/stack/material/steel/full_stack,
+/obj/item/stack/material/steel/full_stack,
 /obj/structure/table/rack/steel,
 /obj/structure/window/reinforced{
 	dir = 8

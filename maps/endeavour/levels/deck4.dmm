@@ -18304,7 +18304,7 @@
 "wFy" = (
 /obj/structure/table/rack/shelf,
 /obj/fiftyspawner/glass,
-/obj/fiftyspawner/steel,
+/obj/item/stack/material/steel/full_stack,
 /obj/machinery/fire_alarm/west_mount,
 /turf/simulated/floor/tiled/techmaint,
 /area/rnd/robotics/smallcraft)
@@ -18354,10 +18354,10 @@
 	dir = 8;
 	layer = 2.6
 	},
-/obj/fiftyspawner/steel,
-/obj/fiftyspawner/steel,
-/obj/fiftyspawner/steel,
-/obj/fiftyspawner/steel,
+/obj/item/stack/material/steel/full_stack,
+/obj/item/stack/material/steel/full_stack,
+/obj/item/stack/material/steel/full_stack,
+/obj/item/stack/material/steel/full_stack,
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/storage)
 "wLT" = (

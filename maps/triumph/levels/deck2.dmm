@@ -2550,7 +2550,7 @@
 	pixel_x = 7
 	},
 /obj/fiftyspawner/glass,
-/obj/fiftyspawner/steel,
+/obj/item/stack/material/steel/full_stack,
 /turf/simulated/floor/tiled,
 /area/quartermaster/office)
 "hF" = (
@@ -4867,7 +4867,7 @@
 /area/crew_quarters/kitchen)
 "oY" = (
 /obj/structure/table/rack,
-/obj/fiftyspawner/steel,
+/obj/item/stack/material/steel/full_stack,
 /turf/simulated/floor/plating,
 /area/maintenance/dormitory)
 "pa" = (
@@ -5831,8 +5831,8 @@
 /area/station/stairs_two)
 "rK" = (
 /obj/structure/closet/crate,
-/obj/fiftyspawner/steel,
-/obj/fiftyspawner/steel,
+/obj/item/stack/material/steel/full_stack,
+/obj/item/stack/material/steel/full_stack,
 /obj/fiftyspawner/glass,
 /obj/fiftyspawner/glass,
 /turf/simulated/floor/plating,
@@ -6226,7 +6226,7 @@
 "sR" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/structure/closet/crate,
-/obj/fiftyspawner/steel,
+/obj/item/stack/material/steel/full_stack,
 /obj/fiftyspawner/rods,
 /obj/fiftyspawner/glass,
 /turf/simulated/floor/tiled,
@@ -6535,8 +6535,8 @@
 /area/crew_quarters/sleep/Dorm_3)
 "tI" = (
 /obj/structure/closet/crate,
-/obj/fiftyspawner/steel,
-/obj/fiftyspawner/steel,
+/obj/item/stack/material/steel/full_stack,
+/obj/item/stack/material/steel/full_stack,
 /obj/fiftyspawner/glass,
 /obj/fiftyspawner/glass,
 /turf/simulated/floor/plating,
@@ -12012,7 +12012,7 @@
 "Kp" = (
 /obj/structure/closet/toolcloset,
 /obj/item/storage/toolbox/mechanical,
-/obj/fiftyspawner/steel,
+/obj/item/stack/material/steel/full_stack,
 /obj/fiftyspawner/glass,
 /obj/item/stack/cable_coil/random,
 /obj/fiftyspawner/wood,
@@ -12022,7 +12022,7 @@
 /obj/machinery/power/apc/west_mount{
 	cell_type = /obj/item/cell/super
 	},
-/obj/fiftyspawner/steel,
+/obj/item/stack/material/steel/full_stack,
 /turf/simulated/floor/wood,
 /area/triumph/surfacebase/bar_backroom)
 "Kq" = (
@@ -14332,8 +14332,8 @@
 "Rv" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/structure/closet/crate,
-/obj/fiftyspawner/steel,
-/obj/fiftyspawner/steel,
+/obj/item/stack/material/steel/full_stack,
+/obj/item/stack/material/steel/full_stack,
 /turf/simulated/floor/tiled,
 /area/maintenance/cargo)
 "Rw" = (

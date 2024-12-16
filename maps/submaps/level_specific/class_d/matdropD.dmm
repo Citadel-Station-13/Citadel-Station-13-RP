@@ -101,9 +101,9 @@
 /area/class_d/POIs/landing_pad)
 "B" = (
 /obj/structure/closet/crate,
-/obj/fiftyspawner/steel,
-/obj/fiftyspawner/steel,
-/obj/fiftyspawner/steel,
+/obj/item/stack/material/steel/full_stack,
+/obj/item/stack/material/steel/full_stack,
+/obj/item/stack/material/steel/full_stack,
 /turf/simulated/floor/tiled,
 /area/class_d/POIs/landing_pad)
 "D" = (

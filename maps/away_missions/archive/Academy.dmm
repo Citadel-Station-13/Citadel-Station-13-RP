@@ -673,7 +673,7 @@
 /turf/simulated/floor,
 /area/awaymission/academy/classrooms)
 "cG" = (
-/obj/fiftyspawner/steel,
+/obj/item/stack/material/steel/full_stack,
 /turf/simulated/floor/plating,
 /area/awaymission/academy/classrooms)
 "cJ" = (
@@ -2081,7 +2081,7 @@
 	dir = 8
 	},
 /obj/structure/table/rack,
-/obj/fiftyspawner/steel,
+/obj/item/stack/material/steel/full_stack,
 /turf/simulated/floor/tiled/old_tile/gray,
 /area/awaymission/academy/academyaft)
 "iy" = (

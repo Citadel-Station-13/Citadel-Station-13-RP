@@ -173,7 +173,7 @@
 /area/submap/virgo2/Lab1)
 "D" = (
 /obj/structure/table/standard,
-/obj/fiftyspawner/steel,
+/obj/item/stack/material/steel/full_stack,
 /obj/fiftyspawner/glass,
 /turf/simulated/floor/tiled/steel_dirty,
 /area/submap/virgo2/Lab1)

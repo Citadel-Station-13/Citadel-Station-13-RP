@@ -13265,8 +13265,8 @@
 	dir = 1
 	},
 /obj/structure/closet/crate/engineering,
-/obj/fiftyspawner/steel,
-/obj/fiftyspawner/steel,
+/obj/item/stack/material/steel/full_stack,
+/obj/item/stack/material/steel/full_stack,
 /obj/fiftyspawner/glass,
 /turf/simulated/floor/tiled/steel_dirty/virgo3b{
 	outdoors = 0
@@ -18362,7 +18362,7 @@
 	dir = 10
 	},
 /obj/structure/table/standard,
-/obj/fiftyspawner/steel,
+/obj/item/stack/material/steel/full_stack,
 /turf/simulated/floor/tiled/white,
 /area/rnd/outpost/mixing)
 "jKn" = (
@@ -22611,7 +22611,7 @@
 /obj/effect/floor_decal/corner/yellow/border{
 	dir = 5
 	},
-/obj/fiftyspawner/steel,
+/obj/item/stack/material/steel/full_stack,
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/atmos)
 "maD" = (
@@ -38721,8 +38721,8 @@
 	pixel_y = 30
 	},
 /obj/structure/table/standard,
-/obj/fiftyspawner/steel,
-/obj/fiftyspawner/steel,
+/obj/item/stack/material/steel/full_stack,
+/obj/item/stack/material/steel/full_stack,
 /obj/fiftyspawner/glass,
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
@@ -42992,7 +42992,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/lower/research)
 "xbO" = (
-/obj/fiftyspawner/steel,
+/obj/item/stack/material/steel/full_stack,
 /turf/simulated/floor/plating,
 /area/maintenance/lowmedbaymaint)
 "xbY" = (

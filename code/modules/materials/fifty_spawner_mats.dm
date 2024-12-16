@@ -52,11 +52,11 @@
 	name = "stack of osmium"
 	type_to_spawn = /obj/item/stack/material/osmium
 
-/obj/fiftyspawner/steel
+/obj/item/stack/material/steel/full_stack
 	name = "stack of steel"
 	type_to_spawn = /obj/item/stack/material/steel
 
-/obj/fiftyspawner/steel/hull
+/obj/item/stack/material/steel/full_stack/hull
 	name = "stack of steel hull"
 	type_to_spawn = /obj/item/stack/material/steel/hull
 

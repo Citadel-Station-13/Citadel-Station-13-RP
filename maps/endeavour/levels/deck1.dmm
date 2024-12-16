@@ -7581,8 +7581,8 @@
 /area/crew_quarters/coffee_shop)
 "fLD" = (
 /obj/structure/closet/crate,
-/obj/fiftyspawner/steel,
-/obj/fiftyspawner/steel,
+/obj/item/stack/material/steel/full_stack,
+/obj/item/stack/material/steel/full_stack,
 /obj/fiftyspawner/glass,
 /obj/fiftyspawner/glass,
 /turf/simulated/floor/plating,
@@ -9951,8 +9951,8 @@
 /area/maintenance/substation/dock)
 "hyL" = (
 /obj/structure/closet/crate,
-/obj/fiftyspawner/steel,
-/obj/fiftyspawner/steel,
+/obj/item/stack/material/steel/full_stack,
+/obj/item/stack/material/steel/full_stack,
 /obj/fiftyspawner/glass,
 /obj/fiftyspawner/glass,
 /turf/simulated/floor/plating,
@@ -18409,9 +18409,9 @@
 /area/rnd/research/testingrange)
 "nKb" = (
 /obj/structure/table/reinforced,
-/obj/fiftyspawner/steel,
-/obj/fiftyspawner/steel,
-/obj/fiftyspawner/steel,
+/obj/item/stack/material/steel/full_stack,
+/obj/item/stack/material/steel/full_stack,
+/obj/item/stack/material/steel/full_stack,
 /turf/simulated/floor/tiled,
 /area/maintenance/tool_storage)
 "nKg" = (
@@ -25250,8 +25250,8 @@
 /area/bridge)
 "tme" = (
 /obj/structure/closet/crate,
-/obj/fiftyspawner/steel,
-/obj/fiftyspawner/steel,
+/obj/item/stack/material/steel/full_stack,
+/obj/item/stack/material/steel/full_stack,
 /obj/fiftyspawner/glass,
 /obj/fiftyspawner/glass,
 /turf/simulated/floor/plating,

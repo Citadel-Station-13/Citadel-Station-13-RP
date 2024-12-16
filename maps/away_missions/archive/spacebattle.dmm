@@ -430,7 +430,7 @@
 /turf/simulated/floor,
 /area/awaymission/spacebattle/cruiser)
 "cz" = (
-/obj/fiftyspawner/steel,
+/obj/item/stack/material/steel/full_stack,
 /obj/item/ammo_casing/a10mm,
 /turf/simulated/floor,
 /area/awaymission/spacebattle/cruiser)
@@ -499,7 +499,7 @@
 /turf/simulated/floor,
 /area/awaymission/spacebattle/cruiser)
 "cS" = (
-/obj/fiftyspawner/steel,
+/obj/item/stack/material/steel/full_stack,
 /turf/simulated/floor,
 /area/awaymission/spacebattle/cruiser)
 "cT" = (

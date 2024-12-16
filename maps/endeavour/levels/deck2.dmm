@@ -9427,7 +9427,7 @@
 	pixel_x = 3;
 	pixel_y = 3
 	},
-/obj/fiftyspawner/steel,
+/obj/item/stack/material/steel/full_stack,
 /obj/fiftyspawner/glass,
 /obj/structure/table/reinforced,
 /obj/effect/floor_decal/borderfloor,
@@ -11396,7 +11396,7 @@
 /turf/simulated/floor/tiled,
 /area/rnd/rdoffice)
 "hjM" = (
-/obj/fiftyspawner/steel,
+/obj/item/stack/material/steel/full_stack,
 /turf/simulated/floor/plating,
 /area/maintenance/medbay/aft)
 "hjR" = (
@@ -14713,7 +14713,7 @@
 /area/tether/station/public_meeting_room)
 "joM" = (
 /obj/structure/table/steel,
-/obj/fiftyspawner/steel,
+/obj/item/stack/material/steel/full_stack,
 /turf/simulated/floor/tiled/techfloor,
 /area/rnd/workshop)
 "joN" = (
