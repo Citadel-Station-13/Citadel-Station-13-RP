@@ -167,11 +167,11 @@ export const backendReducer = (state = initialState, action) => {
   return state;
 };
 
-export const backendMiddleware = store => {
+export const backendMiddleware = (store) => {
   let fancyState;
   let suspendInterval;
 
-  return next => action => {
+  return (next) => (action) => {
     const { suspended } = selectBackend(store.getState());
     const { type, payload } = action;
 
@@ -200,12 +200,20 @@ export const backendMiddleware = store => {
       return;
     }
 
-    if (type === "byond/mousedown") {
-      globalEvents.emit("byond/mousedown");
+    if (type === 'byond/mousedown') {
+      globalEvents.emit('byond/mousedown');
     }
 
-    if (type === "byond/mouseup") {
-      globalEvents.emit("byond/mouseup");
+    if (type === 'byond/mouseup') {
+      globalEvents.emit('byond/mouseup');
+    }
+
+    if (type === 'byond/ctrldown') {
+      globalEvents.emit('byond/ctrldown');
+    }
+
+    if (type === 'byond/ctrlup') {
+      globalEvents.emit('byond/ctrlup');
     }
 
     if (type === 'backend/suspendStart' && !suspendInterval) {
@@ -224,7 +232,7 @@ export const backendMiddleware = store => {
       Byond.winset(Byond.windowId, {
         'is-visible': false,
       });
-      setImmediate(() => focusMap());
+      setTimeout(() => focusMap());
     }
 
     if (type === 'backend/update') {
@@ -254,7 +262,7 @@ export const backendMiddleware = store => {
       setupDrag();
       // We schedule this for the next tick here because resizing and unhiding
       // during the same tick will flash with a white background.
-      setImmediate(() => {
+      setTimeout(() => {
         perf.mark('resume/start');
         // Doublecheck if we are not re-suspended.
         const { suspended } = selectBackend(store.getState());
@@ -265,9 +273,11 @@ export const backendMiddleware = store => {
           'is-visible': true,
         });
         perf.mark('resume/finish');
-        if (process.env['NODE_ENV'] !== 'production') {
-          logger.log('visible in',
-            perf.measure('render/finish', 'resume/finish'));
+        if (process.env.NODE_ENV !== 'production') {
+          logger.log(
+            'visible in',
+            perf.measure('render/finish', 'resume/finish'),
+          );
         }
       });
     }
@@ -289,8 +299,9 @@ export type actFunctionType = (action: string, payload?: object, route_id?: stri
  * * payload - payload object; this is the list/params byond-side
  * * route_id - route via ui_route() with given id instead of ui_act()
  */
-export const sendAct: actFunctionType = (action: string, payload: object = {}, route_id?: string | null) => {
+export const sendAct = (action: string, payload: object = {}, route_id?: string | null) => {
   // Validate that payload is an object
+  // prettier-ignore
   const isObject = typeof payload === 'object'
     && payload !== null
     && !Array.isArray(payload);
@@ -306,33 +317,34 @@ export const sendAct: actFunctionType = (action: string, payload: object = {}, r
 
 type BackendContext = {
   config: {
-    title: string,
-    status: number,
-    interface: string,
-    refreshing: number,
+    title: string;
+    status: number;
+    interface: string;
+    refreshing: number;
     window: {
-      key: string,
-      fancy: boolean,
-      locked: boolean,
-    },
+      key: string;
+      size: [number, number];
+      fancy: boolean;
+      locked: boolean;
+    };
     client: {
-      ckey: string,
-      address: string,
-      computer_id: string,
-    },
+      ckey: string;
+      address: string;
+      computer_id: string;
+    };
     user: {
-      name: string,
-      observer: number,
-    },
-  },
-  modules: Record<string, any>,
-  shared: Record<string, any>,
-  computeCache: Record<string, any>,
-  suspending: boolean,
-  suspended: boolean,
+      name: string;
+      observer: number;
+    };
+  };
+  modules: Record<string, any>;
+  computeCache: Record<string, any>;
+  shared: Record<string, any>;
+  suspending: boolean;
+  suspended: boolean;
 };
 
-export type Backend<TData> = BackendContext & {
+export type BackendState<TData> = BackendContext & {
   data: TData,
   act: actFunctionType,
 }
@@ -340,7 +352,7 @@ export type Backend<TData> = BackendContext & {
 /**
  * Selects a backend-related slice of Redux state
  */
-export const selectBackend = <TData>(state: any): Backend<TData> => (
+export const selectBackend = <TData>(state: any): BackendState<TData> => (
   state.backend || {}
 );
 
@@ -352,7 +364,7 @@ export const selectBackend = <TData>(state: any): Backend<TData> => (
  *
  * You can make
  */
-export const useBackend = <TData>(context: any): Backend<TData> => {
+export const useBackend = <TData>(context: any): BackendState<TData> => {
   const { store } = context;
   const state = selectBackend<TData>(store.getState());
   return {
@@ -488,7 +500,7 @@ export interface ModuleData {
 export type ModuleBackend<TData extends ModuleData> = {
   data: TData;
   act: actFunctionType;
-  backend: Backend<{}>;
+  backend: BackendState<{}>;
   // / module id if is currently embedded module, null otherwise
   moduleID: string | null;
 }
