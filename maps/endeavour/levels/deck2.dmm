@@ -1433,9 +1433,6 @@
 /obj/machinery/vending/nifsoft_shop{
 	dir = 4
 	},
-/obj/machinery/light{
-	dir = 8
-	},
 /turf/simulated/floor/tiled/dark,
 /area/endeavour/hallway/d2afthall)
 "aZa" = (
@@ -2835,6 +2832,9 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 4
 	},
+/obj/machinery/light{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/dark,
 /area/endeavour/hallway/d2afthall)
 "bQj" = (
@@ -2957,6 +2957,15 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/psych_ward)
+"bUy" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 5
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/turf/simulated/floor/carpet/bcarpet,
+/area/endeavour/hallway/d2afthall)
 "bUY" = (
 /obj/machinery/atmospherics/pipe/simple/visible/yellow{
 	dir = 4
@@ -15429,6 +15438,20 @@
 "jPF" = (
 /turf/simulated/floor/tiled/white,
 /area/medical/medbay4)
+"jPJ" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/door/firedoor/glass,
+/obj/machinery/door/airlock/maintenance{
+	id_tag = "Dressroom";
+	name = "Dressing Room"
+	},
+/turf/simulated/floor/wood,
+/area/endeavour/hallway/d2afthall)
 "jPQ" = (
 /obj/structure/morgue{
 	dir = 2
@@ -18436,6 +18459,18 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/crew_quarters/cafeteria)
+"lOu" = (
+/obj/structure/coatrack,
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
+/obj/machinery/button/remote/airlock{
+	id = "Dressroom";
+	name = "Dressroom lock";
+	pixel_x = 26;
+	pixel_y = -4;
+	specialfunctions = 4
+	},
+/turf/simulated/floor/carpet/bcarpet,
+/area/endeavour/hallway/d2afthall)
 "lOB" = (
 /obj/machinery/door/firedoor{
 	dir = 1
@@ -21506,6 +21541,14 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/surgeryprep)
+"nPH" = (
+/obj/machinery/atmospherics/component/unary/vent_pump/on,
+/obj/item/stool/padded,
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/simulated/floor/carpet/bcarpet,
+/area/endeavour/hallway/d2afthall)
 "nPK" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
@@ -38079,6 +38122,12 @@
 /obj/machinery/holopad,
 /turf/simulated/floor/tiled/white,
 /area/medical/medbay4)
+"yis" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 5
+	},
+/turf/simulated/floor/carpet/bcarpet,
+/area/endeavour/hallway/d2afthall)
 "yiE" = (
 /turf/simulated/floor/tiled,
 /area/medical/resleeving)
@@ -46001,9 +46050,9 @@ dsT
 pXQ
 huY
 pTU
-qpq
-qpq
-tvV
+oaU
+oaU
+oaU
 oaU
 sNK
 jbC
@@ -46195,9 +46244,9 @@ jCw
 rpN
 huY
 pTU
-qpq
-qpq
-tvV
+oaU
+nPH
+yis
 oaU
 jak
 jbC
@@ -46389,9 +46438,9 @@ bfi
 uiz
 huY
 pTU
-qpq
-qpq
-tvV
+oaU
+lOu
+bUy
 oaU
 mnH
 ebF
@@ -46583,9 +46632,9 @@ uSa
 uSa
 huY
 pTU
-ejI
-ejI
 oaU
+oaU
+jPJ
 oaU
 oaU
 oaU

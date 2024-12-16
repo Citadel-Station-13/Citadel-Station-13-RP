@@ -5395,6 +5395,14 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/endeavour/surfacebase/tram)
+"eeo" = (
+/obj/machinery/power/apc/west_mount,
+/obj/structure/cable/green{
+	icon_state = "0-4"
+	},
+/obj/machinery/vending/loadout/uniform,
+/turf/simulated/floor/tiled,
+/area/endeavour/hallway/d1afthall)
 "eez" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
@@ -6724,9 +6732,9 @@
 /turf/simulated/floor/tiled,
 /area/gateway/prep_room)
 "eZR" = (
-/obj/structure/closet/emcloset,
-/turf/simulated/floor/plating,
-/area/exploration)
+/obj/machinery/light,
+/turf/simulated/floor/tiled,
+/area/endeavour/surfacebase/tram)
 "eZZ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled/dark,
@@ -7201,10 +7209,9 @@
 /turf/simulated/floor/plating,
 /area/crew_quarters/mimeoffice)
 "foK" = (
-/obj/structure/flora/pottedplant/shoot,
-/obj/machinery/light,
-/turf/simulated/floor/tiled,
-/area/endeavour/surfacebase/tram)
+/obj/machinery/vending/loadout/gadget,
+/turf/simulated/floor/tiled/steel,
+/area/endeavour/hallway/d1afthall)
 "foM" = (
 /obj/effect/floor_decal/techfloor/orange,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -13315,11 +13322,10 @@
 /obj/effect/floor_decal/corner/navblue/border{
 	dir = 8
 	},
-/obj/structure/cable/green{
-	icon_state = "0-4"
-	},
-/obj/machinery/power/apc/west_mount,
 /obj/structure/disposalpipe/segment,
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d1afthall)
 "jHq" = (
@@ -13533,19 +13539,12 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/exploration/courser_dock)
 "jPz" = (
-/obj/effect/floor_decal/borderfloorblack{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
 	},
-/obj/effect/floor_decal/corner/navblue/border{
-	dir = 8
-	},
-/obj/item/radio/intercom{
-	dir = 8;
-	pixel_x = -24
-	},
-/obj/structure/disposalpipe/segment,
-/turf/simulated/floor/tiled/steel,
-/area/endeavour/hallway/d1afthall)
+/obj/structure/flora/pottedplant/shoot,
+/turf/simulated/floor/tiled/steel_grid,
+/area/endeavour/surfacebase/tram)
 "jPH" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -15296,11 +15295,9 @@
 /turf/simulated/floor/tiled,
 /area/rnd/misc_lab)
 "kWd" = (
-/obj/structure/cable/green{
-	icon_state = "1-2"
-	},
+/obj/machinery/vending/loadout/overwear,
 /turf/simulated/floor/tiled/steel,
-/area/hallway/secondary/docking_hallway)
+/area/endeavour/hallway/d1afthall)
 "kWj" = (
 /obj/effect/floor_decal/steeldecal/steel_decals_central7,
 /obj/structure/cable/green{
@@ -17508,6 +17505,10 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d1portforhall)
+"mFd" = (
+/obj/machinery/vending/loadout,
+/turf/simulated/floor/tiled,
+/area/endeavour/hallway/d1afthall)
 "mFi" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -18506,15 +18507,9 @@
 /turf/simulated/wall/prepainted,
 /area/endeavour/hallway/d1aftmaint)
 "nqu" = (
-/obj/effect/floor_decal/borderfloorblack{
-	dir = 8
-	},
-/obj/effect/floor_decal/corner/navblue/border{
-	dir = 8
-	},
-/obj/structure/disposalpipe/segment,
+/obj/machinery/vending/loadout/clothing,
 /turf/simulated/floor/tiled/steel,
-/area/hallway/secondary/docking_hallway)
+/area/endeavour/hallway/d1afthall)
 "nqx" = (
 /obj/structure/bed/chair/bay/chair/padded/red/smallnest,
 /obj/random/plushie,
@@ -19578,6 +19573,10 @@
 	},
 /turf/simulated/floor/plating,
 /area/lawoffice)
+"ofd" = (
+/obj/machinery/vending/loadout/loadout_misc,
+/turf/simulated/floor/tiled/steel,
+/area/endeavour/hallway/d1afthall)
 "ofe" = (
 /obj/effect/floor_decal/steeldecal/steel_decals9{
 	dir = 8
@@ -21335,6 +21334,14 @@
 "pul" = (
 /turf/simulated/wall/prepainted/civilian,
 /area/library/study)
+"pum" = (
+/obj/item/radio/intercom{
+	dir = 8;
+	pixel_x = -24
+	},
+/obj/machinery/vending/loadout/accessory,
+/turf/simulated/floor/tiled,
+/area/endeavour/hallway/d1afthall)
 "puu" = (
 /obj/structure/sign/warning/caution,
 /turf/simulated/wall/r_wall/prepainted,
@@ -23020,7 +23027,7 @@
 	dir = 5
 	},
 /turf/simulated/floor/tiled,
-/area/hallway/secondary/docking_hallway)
+/area/endeavour/hallway/d1afthall)
 "qNt" = (
 /obj/machinery/button/remote/driver{
 	id = "chapelgun";
@@ -26017,8 +26024,9 @@
 /turf/simulated/floor/tiled/dark,
 /area/hallway/secondary/docking_hallway)
 "tfY" = (
-/turf/simulated/floor/plating,
-/area/exploration)
+/obj/machinery/gear_painter,
+/turf/simulated/floor/tiled/monodark,
+/area/crew_quarters/lounge)
 "tgG" = (
 /obj/machinery/door/airlock/glass_external{
 	name = "Courser Hangar";
@@ -26803,7 +26811,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/plating,
-/area/exploration)
+/area/endeavour/hallway/d1aftmaint)
 "tGh" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 4
@@ -30952,12 +30960,9 @@
 /turf/simulated/floor/glass/reinforced,
 /area/endeavour/hallway/d1fwdhall)
 "wzh" = (
-/obj/structure/cable/green{
-	icon_state = "4-8"
-	},
-/obj/structure/catwalk,
-/turf/simulated/floor/plating,
-/area/exploration)
+/obj/machinery/vending/loadout/costume,
+/turf/simulated/floor/tiled/steel,
+/area/endeavour/hallway/d1afthall)
 "wzN" = (
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 10
@@ -40788,7 +40793,7 @@ tmL
 tmL
 tmL
 tbP
-lDt
+jPz
 cMJ
 tAk
 tAk
@@ -41742,7 +41747,7 @@ mmO
 oAh
 oiy
 wkh
-aNK
+tfY
 aNK
 aNK
 sti
@@ -41755,10 +41760,10 @@ pjL
 pjL
 pjL
 eFW
-cMJ
+eFW
 rTZ
 rTZ
-ozV
+rTZ
 cMJ
 tAk
 tAk
@@ -41949,10 +41954,10 @@ agD
 agD
 agD
 eNz
-cMJ
+eFW
 rTZ
 rTZ
-ozV
+eZR
 cMJ
 tAk
 tAk
@@ -42143,16 +42148,16 @@ agD
 agD
 agD
 gWl
-cMJ
-ito
-ito
-foK
-cMJ
-tAk
-tAk
-tAk
-tAk
-tAk
+eFW
+eFW
+eFW
+eFW
+eFW
+wBM
+wBM
+wBM
+wBM
+wBM
 tAk
 qgw
 xxD
@@ -42337,15 +42342,15 @@ hxi
 hxi
 hxi
 dIc
-cMJ
-cMJ
-cMJ
-cMJ
-cMJ
-wBM
-wBM
-wBM
-wBM
+eFW
+eeo
+pum
+mFd
+nqu
+wzh
+foK
+ofd
+kWd
 mFk
 qdM
 ydR
@@ -42533,13 +42538,13 @@ xgP
 kKK
 cAG
 jGP
-jPz
+vsP
 vsP
 gdd
 vsP
 gXC
 vsP
-nqu
+vsP
 dvb
 esN
 uke
@@ -42733,7 +42738,7 @@ isW
 pwe
 pwe
 pwe
-kWd
+pwe
 qJu
 cPS
 rMy
@@ -44837,10 +44842,10 @@ qQg
 poP
 ffU
 qTj
-bMm
+qTj
 tGb
-cqc
-cqc
+aNK
+aNK
 mAo
 owg
 ipW
@@ -45031,10 +45036,10 @@ aID
 ubd
 ihG
 nwQ
-bMm
-wzh
-eZR
-cqc
+qTj
+cpU
+efK
+aNK
 rrh
 tBJ
 lnV
@@ -45225,10 +45230,10 @@ lcn
 gGO
 cgw
 qvM
-bMm
-wzh
-tfY
-cqc
+qTj
+cpU
+wim
+aNK
 fFk
 fnJ
 dOv
