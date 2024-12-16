@@ -762,7 +762,7 @@ GLOBAL_DATUM_INIT(admin_help_ui_handler, /datum/admin_help_ui_handler, new)
 	feedback_add_details("admin_verb","Adminhelp") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 	if(urgent)
-		if(!TG_COOLDOWN_FINISHEDA(src, ahelp_cooldowns?[user_client.ckey]))
+		if(!TG_COOLDOWN_FINISHED(src, ahelp_cooldowns?[user_client.ckey]))
 			urgent = FALSE // Prevent abuse
 		else
 			TG_COOLDOWN_START(src, ahelp_cooldowns[user_client.ckey], CONFIG_GET(number/urgent_ahelp_cooldown) * (1 SECONDS))

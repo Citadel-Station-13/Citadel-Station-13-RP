@@ -67,7 +67,7 @@
 #define TG_COOLDOWN_START(cd_source, cd_index, cd_time) (cd_source.cd_index = world.time + (cd_time))
 
 //Returns true if the cooldown has run its course, false otherwise
-#define TG_COOLDOWN_FINISHEDA(cd_source, cd_index) (cd_source.cd_index <= world.time)
+#define TG_COOLDOWN_FINISHED(cd_source, cd_index) (cd_source.cd_index <= world.time)
 
 
 // INDEXES FOR VAR COOLDOWNS - DO NOT USE UPPERCASE, DO NOT USE cooldown_, APPENDS ADDED AUTOMATICALLY
