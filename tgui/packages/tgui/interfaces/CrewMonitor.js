@@ -1,9 +1,10 @@
 import { sortBy } from 'common/collections';
 import { flow } from 'common/fp';
-import { useBackend, useLocalState } from "../backend";
-import { Window } from "../layouts";
-import { NanoMap, Box, Table, Button, Tabs, Icon } from "../components";
 import { Fragment } from 'inferno';
+
+import { useBackend, useLocalState } from "../backend";
+import { Box, Button, Icon, NanoMap, Table, Tabs } from "../components";
+import { Window } from "../layouts";
 
 const getStatText = cm => {
   if (cm.dead) {

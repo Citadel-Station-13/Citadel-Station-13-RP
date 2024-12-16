@@ -1,5 +1,5 @@
 import { useBackend } from "../backend";
-import { Button, LabeledList, Section, NumberInput, AnimatedNumber } from "../components";
+import { AnimatedNumber, Button, LabeledList, NumberInput, Section } from "../components";
 import { Window } from "../layouts";
 
 export const heat_pump = (props, context) => {

@@ -1,7 +1,8 @@
-import { Window } from '../layouts';
-import { useBackend } from '../backend';
-import { Section, Box, Button, Flex, Icon, LabeledList, Table, Tooltip } from '../components';
 import { sortBy } from 'common/collections';
+
+import { useBackend } from '../backend';
+import { Box, Button, Flex, Icon, LabeledList, Section, Table, Tooltip } from '../components';
+import { Window } from '../layouts';
 
 const ExperimentStages = props => {
   return (

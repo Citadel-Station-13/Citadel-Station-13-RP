@@ -1,6 +1,6 @@
 import { useBackend } from '../../backend';
 import { Button, LabeledList, ProgressBar } from '../../components';
-import { OperatorData, MechaUtility } from './data';
+import { MechaUtility, OperatorData } from './data';
 
 export const UtilityModulesPane = (props, context) => {
   const { act, data } = useBackend<OperatorData>(context);

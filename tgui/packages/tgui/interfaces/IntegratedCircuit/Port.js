@@ -1,11 +1,12 @@
-import {
-  Stack,
-  Box,
-} from '../../components';
-import { Component, createRef } from 'inferno';
-import { DisplayName } from "./DisplayName";
 import { classes } from 'common/react';
+import { Component, createRef } from 'inferno';
+
+import {
+  Box,
+  Stack,
+} from '../../components';
 import { noop } from './constants';
+import { DisplayName } from "./DisplayName";
 
 export class Port extends Component {
   constructor() {

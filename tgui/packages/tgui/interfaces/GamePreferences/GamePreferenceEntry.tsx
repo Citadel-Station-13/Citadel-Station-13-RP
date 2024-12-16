@@ -4,6 +4,7 @@
  */
 import { BooleanLike } from "common/react";
 import { InfernoNode } from "inferno";
+
 import { Button, Collapsible, ColorBox, Dropdown, Input, NumberInput, Section, Stack, Tooltip } from "../../components";
 import { ByondAtomColor, ByondColorString, ColorPicker } from "../common/Color";
 
@@ -121,7 +122,7 @@ const NumberEntry = (props: {
   return (
     <NumberInput fluid value={props.value}
       minValue={props.schema.minValue || -Infinity} maxValue={props.schema.maxValue || Infinity}
-      step={props.schema.roundTo || undefined} onChange={(e, val) => props.setValue(val)} />
+      step={props.schema.roundTo || 1} onChange={(val) => props.setValue(val)} />
   );
 };
 

@@ -1,17 +1,18 @@
+import { shallowDiffers } from 'common/react';
+import { Component } from 'inferno';
+
+import { resolveAsset } from '../../assets';
 import {
-  Section,
+  Box,
   Button,
   Dropdown,
-  Stack,
-  Box,
   Input,
+  Section,
+  Stack,
 } from '../../components';
-import { Component } from 'inferno';
-import { shallowDiffers } from 'common/react';
 import { fetchRetry } from "../../http";
-import { resolveAsset } from '../../assets';
-import { Port } from './Port';
 import { DEFAULT_COMPONENT_MENU_LIMIT, noop } from './constants';
+import { Port } from './Port';
 
 // Cache response so it's only sent once
 let fetchServerData;

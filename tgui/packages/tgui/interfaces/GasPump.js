@@ -1,5 +1,5 @@
 import { useBackend } from "../backend";
-import { Button, LabeledList, ProgressBar, Section, LabeledControls, AnimatedNumber } from "../components";
+import { AnimatedNumber, Button, LabeledControls, LabeledList, ProgressBar, Section } from "../components";
 import { Window } from "../layouts";
 
 export const GasPump = (props, context) => {

@@ -1,4 +1,5 @@
 import { Component } from "inferno";
+
 import { useLocalState } from "../../backend";
 import { Box, Button, Collapsible, Dropdown, Input, Stack, Tabs } from "../../components";
 import { Section, SectionProps } from "../../components/Section";
@@ -253,7 +254,7 @@ class CharacterLoadoutEntry extends Component<CharacterLoadoutEntryProps, Charac
               )}
               {this.state.editingName? (
                 <Input
-                  value={this.props.selected?.rename}
+                  value={this.props.selected?.rename || undefined}
                   onChange={(e, val) => {
                     this.props.customizeNameAct?.(this.props.entry.id, val);
                     this.setState((prevState) => ({ ...prevState, editingName: false }));
@@ -292,7 +293,7 @@ class CharacterLoadoutEntry extends Component<CharacterLoadoutEntryProps, Charac
                 )}
                 {this.state.editingDesc? (
                   <Input
-                    value={this.props.selected?.redesc}
+                    value={this.props.selected?.redesc || undefined}
                     onChange={(e, val) => {
                       this.props.customizeDescAct?.(this.props.entry.id, val);
                       this.setState((prevState) => ({ ...prevState, editingDesc: false }));

@@ -4,7 +4,7 @@
  */
 $background-dimness: 0.75 !default;
 
-@use '../base.scss' as base;
+@use '../base' as base;
 
 .Dimmer {
   // Align everything in the middle.

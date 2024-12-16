@@ -1,4 +1,5 @@
 import { BooleanLike } from 'common/react';
+
 import { useBackend, useLocalState } from '../backend';
 import { Box, Button, Dimmer, Icon, NoticeBox, Section, Stack, Tabs, Tooltip } from '../components';
 import { Window } from '../layouts';
@@ -133,9 +134,9 @@ const DepartmentCatalog = (props, context) => {
     <Stack vertical fill>
       <Stack.Item>
         <Tabs textAlign="center" fluid>
-          {supplies.map(cat => (
+          {supplies.map((cat, idx) => (
             <Tabs.Tab
-              key={cat}
+              key={idx}
               selected={tabCategory === cat}
               onClick={() => (setTabCategory(cat))}>
               {cat.name}

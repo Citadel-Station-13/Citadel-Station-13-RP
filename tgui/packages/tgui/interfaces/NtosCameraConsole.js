@@ -1,5 +1,5 @@
 import { NtosWindow } from '../layouts';
-import { CameraConsoleNTOS } from './CameraConsole';
+import { CameraContent } from './CameraConsole';
 
 export const NtosCameraConsole = () => {
   return (
@@ -8,7 +8,7 @@ export const NtosCameraConsole = () => {
       height={708}
       resizable>
       <NtosWindow.Content>
-        <CameraConsoleNTOS />
+        <CameraContent />
       </NtosWindow.Content>
     </NtosWindow>
   );

@@ -1,4 +1,4 @@
-import { LabeledList, Box, Button } from '../../components';
+import { Box, Button, LabeledList } from '../../components';
 
 export type Gasmix = {
   name?: string;
@@ -92,7 +92,7 @@ export const GasmixParser = (props: GasmixParserProps, context) => {
               reactionOnClick ? (
                 <Button
                   content={reaction[1]}
-                  onClick={reactionOnClick(reaction[0])}
+                  onClick={() => reactionOnClick(reaction[0])}
                 />
               ) : (reaction[1])
             }>

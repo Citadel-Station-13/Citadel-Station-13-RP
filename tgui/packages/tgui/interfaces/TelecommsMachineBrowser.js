@@ -1,6 +1,7 @@
 import { Fragment } from 'inferno';
+
 import { useBackend } from "../backend";
-import { Box, Button, NoticeBox, LabeledList, Section } from "../components";
+import { Box, Button, LabeledList, NoticeBox, Section } from "../components";
 import { Window } from "../layouts";
 
 export const TelecommsMachineBrowser = (props, context) => {

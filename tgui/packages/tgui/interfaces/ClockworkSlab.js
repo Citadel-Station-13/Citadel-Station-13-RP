@@ -6,10 +6,11 @@
  * @license MIT
  */
 
-import { useBackend, useSharedState } from '../backend';
 import { map } from 'common/collections';
-import { Section, Tabs, Table, Button, Box, NoticeBox, Divider } from '../components';
 import { Fragment } from 'inferno';
+
+import { useBackend, useSharedState } from '../backend';
+import { Box, Button, Divider, NoticeBox, Section, Table, Tabs } from '../components';
 import { Window } from '../layouts';
 
 let REC_RATVAR = "";

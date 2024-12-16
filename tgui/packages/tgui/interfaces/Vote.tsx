@@ -2,14 +2,14 @@ import { BooleanLike } from "../../common/react";
 import { useBackend } from "../backend";
 import {
   Box,
-  Icon,
-  Stack,
   Button,
-  Section,
+  Collapsible,
+  Icon,
+  LabeledList,
   NoticeBox,
   NumberInput,
-  LabeledList,
-  Collapsible,
+  Section,
+  Stack,
 } from "../components";
 import { Window } from "../layouts";
 
@@ -122,7 +122,7 @@ const VoteConfig = (props, context) => {
                   value={ghost_weight}
                   minValue={-1}
                   maxValue={100}
-                  onChange={(e, value) => act('ghost_weight', { ghost_weight: value })}
+                  onChange={(value) => act('ghost_weight', { ghost_weight: value })}
                 />
               </Stack.Item>
               <Stack.Item>

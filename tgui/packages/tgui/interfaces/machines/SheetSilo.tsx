@@ -41,8 +41,8 @@ export const SheetSilo = (props, context) => {
                       onClick={() => setDropAmount(k, (dropAmounts[k] || 1) - 1)} />
                   </Stack.Item>
                   <Stack.Item>
-                    <NumberInput width={2.5} value={dropAmounts[k] || 1}
-                      onChange={(e, val) => setDropAmount(k, Math.floor(val))} />
+                    <NumberInput width={"2.5"} value={dropAmounts[k] || 1}
+                    onChange={(val) => setDropAmount(k, Math.floor(val))} minValue={0} maxValue={Number.MAX_SAFE_INTEGER} step={1} />
                   </Stack.Item>
                   <Stack.Item>
                     <Button icon="plus"

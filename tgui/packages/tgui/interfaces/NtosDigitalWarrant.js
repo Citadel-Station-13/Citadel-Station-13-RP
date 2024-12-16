@@ -1,8 +1,9 @@
+import { filter } from 'common/collections';
+import { Fragment } from 'inferno';
+
 import { useBackend } from '../backend';
 import { Button, LabeledList, Section, Table } from '../components';
 import { NtosWindow } from '../layouts';
-import { filter } from 'common/collections';
-import { Fragment } from 'inferno';
 
 export const NtosDigitalWarrant = (props, context) => {
   const { act, data } = useBackend(context);
