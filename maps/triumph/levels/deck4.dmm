@@ -6828,7 +6828,7 @@
 "eFX" = (
 /obj/structure/table/rack,
 /obj/random/maintenance/security,
-/obj/item/stack/material/steel/full_stack,
+/obj/fiftyspawner/steel,
 /turf/simulated/floor/plating,
 /area/maintenance/security/starboard)
 "eGc" = (
@@ -12985,8 +12985,8 @@
 /obj/structure/table/steel,
 /obj/fiftyspawner/glass,
 /obj/fiftyspawner/glass,
-/obj/item/stack/material/steel/full_stack,
-/obj/item/stack/material/steel/full_stack,
+/obj/fiftyspawner/steel,
+/obj/fiftyspawner/steel,
 /obj/structure/cable/green{
 	icon_state = "2-8"
 	},
@@ -19869,9 +19869,9 @@
 /area/library)
 "nKb" = (
 /obj/structure/table/reinforced,
-/obj/item/stack/material/steel/full_stack,
-/obj/item/stack/material/steel/full_stack,
-/obj/item/stack/material/steel/full_stack,
+/obj/fiftyspawner/steel,
+/obj/fiftyspawner/steel,
+/obj/fiftyspawner/steel,
 /turf/simulated/floor/tiled,
 /area/maintenance/tool_storage)
 "nKg" = (
@@ -21185,8 +21185,8 @@
 /area/library)
 "oGE" = (
 /obj/structure/closet/crate,
-/obj/item/stack/material/steel/full_stack,
-/obj/item/stack/material/steel/full_stack,
+/obj/fiftyspawner/steel,
+/obj/fiftyspawner/steel,
 /obj/fiftyspawner/glass,
 /obj/fiftyspawner/glass,
 /turf/simulated/floor/plating,
@@ -21852,8 +21852,8 @@
 /area/exploration/excursion_dock)
 "pdK" = (
 /obj/structure/closet/crate,
-/obj/item/stack/material/steel/full_stack,
-/obj/item/stack/material/steel/full_stack,
+/obj/fiftyspawner/steel,
+/obj/fiftyspawner/steel,
 /obj/fiftyspawner/glass,
 /obj/fiftyspawner/glass,
 /turf/simulated/floor/plating,
@@ -28056,8 +28056,8 @@
 /area/security/interrogation)
 "tEj" = (
 /obj/structure/closet/crate,
-/obj/item/stack/material/steel/full_stack,
-/obj/item/stack/material/steel/full_stack,
+/obj/fiftyspawner/steel,
+/obj/fiftyspawner/steel,
 /obj/fiftyspawner/glass,
 /obj/fiftyspawner/glass,
 /turf/simulated/floor/plating,
@@ -28930,7 +28930,7 @@
 /turf/simulated/floor/plating,
 /area/shuttle/courser/general)
 "uhE" = (
-/obj/item/stack/material/steel/full_stack,
+/obj/fiftyspawner/steel,
 /obj/structure/table/rack,
 /turf/simulated/floor/plating,
 /area/maintenance/security/port)

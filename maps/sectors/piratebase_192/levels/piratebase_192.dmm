@@ -1186,7 +1186,7 @@
 "kX" = (
 /obj/structure/table/steel_reinforced,
 /obj/fiftyspawner/glass,
-/obj/item/stack/material/steel/full_stack,
+/obj/fiftyspawner/steel,
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
@@ -4030,8 +4030,8 @@
 /obj/structure/table/steel_reinforced,
 /obj/fiftyspawner/glass,
 /obj/fiftyspawner/glass,
-/obj/item/stack/material/steel/full_stack,
-/obj/item/stack/material/steel/full_stack,
+/obj/fiftyspawner/steel,
+/obj/fiftyspawner/steel,
 /turf/simulated/floor/tiled/steel_dirty,
 /area/piratebase/sickbay)
 "JQ" = (

@@ -7106,7 +7106,7 @@
 	pixel_x = 3;
 	pixel_y = 3
 	},
-/obj/item/stack/material/steel/full_stack,
+/obj/fiftyspawner/steel,
 /obj/fiftyspawner/glass,
 /obj/structure/table/reinforced,
 /obj/effect/floor_decal/borderfloor,
@@ -10431,8 +10431,8 @@
 /area/medical/sleeper)
 "iBU" = (
 /obj/structure/table/steel,
-/obj/item/stack/material/steel/full_stack,
-/obj/item/stack/material/steel/full_stack,
+/obj/fiftyspawner/steel,
+/obj/fiftyspawner/steel,
 /turf/simulated/floor/tiled,
 /area/rnd/misc_lab)
 "iCr" = (
@@ -11531,7 +11531,7 @@
 /area/rnd/anomaly_lab/containment_two)
 "jvv" = (
 /obj/structure/table/steel,
-/obj/item/stack/material/steel/full_stack,
+/obj/fiftyspawner/steel,
 /obj/effect/floor_decal/techfloor{
 	dir = 4
 	},
@@ -12925,7 +12925,7 @@
 	dir = 8
 	},
 /obj/structure/table/steel,
-/obj/item/stack/material/steel/full_stack,
+/obj/fiftyspawner/steel,
 /turf/simulated/floor/tiled/techfloor,
 /area/rnd/workshop)
 "kFN" = (

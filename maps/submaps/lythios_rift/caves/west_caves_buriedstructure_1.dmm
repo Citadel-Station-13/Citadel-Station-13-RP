@@ -293,7 +293,7 @@
 "KO" = (
 /obj/structure/table/rack,
 /obj/fiftyspawner/rods,
-/obj/item/stack/material/steel/full_stack,
+/obj/fiftyspawner/steel,
 /obj/fiftyspawner/glass,
 /turf/simulated/floor/tiled/lythios43c,
 /area/submap/lythios/west_caves/buried_structure)

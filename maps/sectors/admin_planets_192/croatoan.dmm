@@ -9075,7 +9075,7 @@
 /area/admin_planet/croatoan/sci_upper_checkpoint)
 "Ge" = (
 /obj/structure/table/reinforced,
-/obj/item/stack/material/steel/full_stack,
+/obj/fiftyspawner/steel,
 /turf/simulated/floor/tiled/techmaint,
 /area/admin_planet/croatoan/sci_circuitry_lab)
 "Gh" = (
@@ -13770,7 +13770,7 @@
 "Wh" = (
 /obj/structure/closet/crate/science,
 /obj/fiftyspawner/glass,
-/obj/item/stack/material/steel/full_stack,
+/obj/fiftyspawner/steel,
 /turf/simulated/floor/tiled/old_tile/white,
 /area/admin_planet/croatoan/sci_rnd_lab)
 "Wi" = (

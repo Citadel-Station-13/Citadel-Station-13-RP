@@ -1492,7 +1492,7 @@
 /area/ship/mercenary/engineeringcntrl)
 "dq" = (
 /obj/structure/table/reinforced,
-/obj/item/stack/material/steel/full_stack,
+/obj/fiftyspawner/steel,
 /obj/fiftyspawner/glass,
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1

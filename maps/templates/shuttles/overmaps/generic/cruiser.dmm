@@ -1002,9 +1002,9 @@
 /area/mothership/eva)
 "cB" = (
 /obj/structure/table/steel_reinforced,
-/obj/item/stack/material/steel/full_stack,
-/obj/item/stack/material/steel/full_stack,
-/obj/item/stack/material/steel/full_stack,
+/obj/fiftyspawner/steel,
+/obj/fiftyspawner/steel,
+/obj/fiftyspawner/steel,
 /obj/machinery/air_alarm{
 	pixel_y = 22
 	},
@@ -5732,10 +5732,10 @@
 /obj/fiftyspawner/plastic,
 /obj/fiftyspawner/osmium,
 /obj/fiftyspawner/silver,
-/obj/item/stack/material/steel/full_stack,
-/obj/item/stack/material/steel/full_stack,
-/obj/item/stack/material/steel/full_stack,
-/obj/item/stack/material/steel/full_stack,
+/obj/fiftyspawner/steel,
+/obj/fiftyspawner/steel,
+/obj/fiftyspawner/steel,
+/obj/fiftyspawner/steel,
 /obj/fiftyspawner/uranium,
 /obj/fiftyspawner/glass,
 /obj/fiftyspawner/glass,

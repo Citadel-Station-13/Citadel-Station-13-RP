@@ -6627,7 +6627,7 @@
 "pm" = (
 /obj/structure/table/steel_reinforced,
 /obj/fiftyspawner/glass,
-/obj/item/stack/material/steel/full_stack,
+/obj/fiftyspawner/steel,
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 8
 	},

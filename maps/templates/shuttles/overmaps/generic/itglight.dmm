@@ -2426,10 +2426,10 @@
 /area/itglight/metingroom)
 "qR" = (
 /obj/structure/table/rack/shelf/steel,
-/obj/item/stack/material/steel/full_stack,
-/obj/item/stack/material/steel/full_stack,
-/obj/item/stack/material/steel/full_stack/hull,
-/obj/item/stack/material/steel/full_stack/hull,
+/obj/fiftyspawner/steel,
+/obj/fiftyspawner/steel,
+/obj/fiftyspawner/steel/hull,
+/obj/fiftyspawner/steel/hull,
 /obj/fiftyspawner/rglass,
 /obj/fiftyspawner/rglass,
 /obj/fiftyspawner/glass,

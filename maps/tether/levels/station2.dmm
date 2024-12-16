@@ -12495,7 +12495,7 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 4
 	},
-/obj/item/stack/material/steel/full_stack,
+/obj/fiftyspawner/steel,
 /turf/simulated/floor/tiled,
 /area/ai_monitored/storage/eva)
 "zi" = (
@@ -12953,7 +12953,7 @@
 "Ai" = (
 /obj/structure/table/standard,
 /obj/item/multitool,
-/obj/item/stack/material/steel/full_stack,
+/obj/fiftyspawner/steel,
 /obj/fiftyspawner/glass,
 /obj/effect/floor_decal/borderfloor{
 	dir = 4
@@ -17682,9 +17682,9 @@
 /obj/item/stack/material/plasteel{
 	amount = 10
 	},
-/obj/item/stack/material/steel/full_stack,
-/obj/item/stack/material/steel/full_stack,
-/obj/item/stack/material/steel/full_stack,
+/obj/fiftyspawner/steel,
+/obj/fiftyspawner/steel,
+/obj/fiftyspawner/steel,
 /obj/effect/floor_decal/industrial/warning{
 	dir = 4
 	},

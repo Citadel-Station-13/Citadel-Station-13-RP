@@ -1028,11 +1028,11 @@
 /obj/structure/closet{
 	name = "materials"
 	},
-/obj/item/stack/material/steel/full_stack,
-/obj/item/stack/material/steel/full_stack,
-/obj/item/stack/material/steel/full_stack,
-/obj/item/stack/material/steel/full_stack,
-/obj/item/stack/material/steel/full_stack,
+/obj/fiftyspawner/steel,
+/obj/fiftyspawner/steel,
+/obj/fiftyspawner/steel,
+/obj/fiftyspawner/steel,
+/obj/fiftyspawner/steel,
 /obj/fiftyspawner/glass,
 /obj/fiftyspawner/glass,
 /obj/fiftyspawner/glass,
@@ -21773,7 +21773,7 @@
 /area/tether/surfacebase/security/iaa)
 "nlp" = (
 /obj/structure/table/steel,
-/obj/item/stack/material/steel/full_stack,
+/obj/fiftyspawner/steel,
 /obj/effect/floor_decal/techfloor{
 	dir = 8
 	},
@@ -23557,7 +23557,7 @@
 	pixel_x = 3;
 	pixel_y = 3
 	},
-/obj/item/stack/material/steel/full_stack,
+/obj/fiftyspawner/steel,
 /obj/fiftyspawner/glass,
 /turf/simulated/floor/tiled,
 /area/rnd/research)
@@ -32568,7 +32568,7 @@
 /area/rnd/robotics/resleeving)
 "tyA" = (
 /obj/structure/table/steel,
-/obj/item/stack/material/steel/full_stack,
+/obj/fiftyspawner/steel,
 /obj/effect/floor_decal/techfloor{
 	dir = 4
 	},

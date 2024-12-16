@@ -9,7 +9,7 @@
 "g" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/fiftyspawner/glass,
-/obj/item/stack/material/steel/full_stack,
+/obj/fiftyspawner/steel,
 /obj/fiftyspawner/rods,
 /turf/simulated/floor/lythios43c/indoors,
 /area/submap/lythios/west_caves/buried_structure)

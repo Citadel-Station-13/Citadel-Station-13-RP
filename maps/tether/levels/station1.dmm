@@ -1921,7 +1921,7 @@
 	},
 /obj/fiftyspawner/plastic,
 /obj/fiftyspawner/plastic,
-/obj/item/stack/material/steel/full_stack,
+/obj/fiftyspawner/steel,
 /turf/simulated/floor/tiled,
 /area/engineering/workshop)
 "dL" = (
@@ -5370,7 +5370,7 @@
 /area/maintenance/station/eng_lower)
 "kU" = (
 /obj/structure/table/reinforced,
-/obj/item/stack/material/steel/full_stack,
+/obj/fiftyspawner/steel,
 /obj/fiftyspawner/glass,
 /turf/simulated/floor/tiled,
 /area/engineering/atmos/backup)
@@ -11004,11 +11004,11 @@
 /area/engineering/shield_gen)
 "wN" = (
 /obj/structure/table/reinforced,
-/obj/item/stack/material/steel/full_stack,
-/obj/item/stack/material/steel/full_stack,
-/obj/item/stack/material/steel/full_stack,
-/obj/item/stack/material/steel/full_stack,
-/obj/item/stack/material/steel/full_stack,
+/obj/fiftyspawner/steel,
+/obj/fiftyspawner/steel,
+/obj/fiftyspawner/steel,
+/obj/fiftyspawner/steel,
+/obj/fiftyspawner/steel,
 /obj/machinery/fire_alarm/south_mount{
 	pixel_y = -24
 	},

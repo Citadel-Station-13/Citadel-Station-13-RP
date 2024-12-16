@@ -13554,7 +13554,7 @@
 /area/main_map/maintenance/deck_three)
 "mSL" = (
 /obj/structure/table/steel,
-/obj/item/stack/material/steel/full_stack,
+/obj/fiftyspawner/steel,
 /obj/effect/floor_decal/techfloor{
 	dir = 4
 	},
@@ -25701,7 +25701,7 @@
 	dir = 8
 	},
 /obj/structure/table/steel,
-/obj/item/stack/material/steel/full_stack,
+/obj/fiftyspawner/steel,
 /turf/simulated/floor/tiled/techfloor,
 /area/rnd/workshop)
 "ycj" = (

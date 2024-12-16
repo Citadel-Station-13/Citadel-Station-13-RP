@@ -4031,7 +4031,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/hammerhead/general)
 "cqn" = (
-/obj/item/stack/material/steel/full_stack,
+/obj/fiftyspawner/steel,
 /turf/simulated/floor/tiled/techfloor,
 /area/maintenance/security/upper)
 "cqp" = (
@@ -8061,7 +8061,7 @@
 /obj/effect/floor_decal/corner/purple/border{
 	dir = 4
 	},
-/obj/item/stack/material/steel/full_stack,
+/obj/fiftyspawner/steel,
 /turf/simulated/floor/tiled/steel,
 /area/rnd/workshop)
 "fcE" = (
@@ -14836,7 +14836,7 @@
 "jpV" = (
 /obj/structure/table/steel,
 /obj/fiftyspawner/glass,
-/obj/item/stack/material/steel/full_stack,
+/obj/fiftyspawner/steel,
 /turf/simulated/floor/plating,
 /area/maintenance/asmaint2)
 "jqf" = (
@@ -23381,7 +23381,7 @@
 /obj/effect/floor_decal/corner/purple/border{
 	dir = 8
 	},
-/obj/item/stack/material/steel/full_stack,
+/obj/fiftyspawner/steel,
 /turf/simulated/floor/tiled/steel,
 /area/rnd/workshop)
 "otg" = (
@@ -34175,7 +34175,7 @@
 	dir = 4
 	},
 /obj/structure/table/reinforced,
-/obj/item/stack/material/steel/full_stack,
+/obj/fiftyspawner/steel,
 /obj/fiftyspawner/glass,
 /obj/machinery/requests_console{
 	department = "Research";
@@ -34220,8 +34220,8 @@
 /area/security/evastorage)
 "vrx" = (
 /obj/structure/table/steel,
-/obj/item/stack/material/steel/full_stack,
-/obj/item/stack/material/steel/full_stack,
+/obj/fiftyspawner/steel,
+/obj/fiftyspawner/steel,
 /obj/fiftyspawner/glass,
 /obj/fiftyspawner/glass,
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
@@ -36697,7 +36697,7 @@
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/sleep/Dorm_5)
 "xdi" = (
-/obj/item/stack/material/steel/full_stack,
+/obj/fiftyspawner/steel,
 /obj/structure/table/rack,
 /obj/fiftyspawner/glass,
 /turf/simulated/floor/plating,

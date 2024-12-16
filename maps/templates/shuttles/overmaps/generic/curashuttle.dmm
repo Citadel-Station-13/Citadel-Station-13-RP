@@ -484,7 +484,7 @@
 	dir = 6
 	},
 /obj/structure/table/standard,
-/obj/item/stack/material/steel/full_stack,
+/obj/fiftyspawner/steel,
 /obj/item/storage/toolbox/syndicate/powertools,
 /obj/item/stack/nanopaste/advanced,
 /obj/item/stack/cable_coil,

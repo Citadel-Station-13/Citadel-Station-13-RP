@@ -10309,7 +10309,7 @@
 "Gl" = (
 /obj/structure/table/rack/shelf,
 /obj/item/gun/launcher/crossbow,
-/obj/item/stack/material/steel/full_stack,
+/obj/fiftyspawner/steel,
 /turf/simulated/floor/plating,
 /area/maintenance/engineering)
 "Gm" = (
@@ -10663,7 +10663,7 @@
 "Ho" = (
 /obj/structure/table/rack,
 /obj/fiftyspawner/glass,
-/obj/item/stack/material/steel/full_stack,
+/obj/fiftyspawner/steel,
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/drone_fabrication)
 "Hp" = (
@@ -13825,7 +13825,7 @@
 /obj/structure/table/rack/shelf,
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /obj/fiftyspawner/glass,
-/obj/item/stack/material/steel/full_stack,
+/obj/fiftyspawner/steel,
 /obj/machinery/camera/network/civilian,
 /turf/simulated/floor/tiled/steel,
 /area/rift/station/fighter_bay/maintenance)

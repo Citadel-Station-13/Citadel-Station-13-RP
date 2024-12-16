@@ -3470,9 +3470,9 @@
 /area/awaymission/shipcave/ship)
 "IU" = (
 /obj/structure/table/reinforced,
-/obj/item/stack/material/steel/full_stack,
-/obj/item/stack/material/steel/full_stack,
-/obj/item/stack/material/steel/full_stack,
+/obj/fiftyspawner/steel,
+/obj/fiftyspawner/steel,
+/obj/fiftyspawner/steel,
 /turf/simulated/floor/tiled/steel_dirty,
 /area/awaymission/shipcave)
 "IZ" = (

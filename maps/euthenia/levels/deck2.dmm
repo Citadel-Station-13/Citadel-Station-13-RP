@@ -12848,8 +12848,8 @@
 /area/main_map/maintenance/deck_two/aft)
 "jAm" = (
 /obj/structure/table/rack/shelf/steel,
-/obj/item/stack/material/steel/full_stack,
-/obj/item/stack/material/steel/full_stack,
+/obj/fiftyspawner/steel,
+/obj/fiftyspawner/steel,
 /obj/fiftyspawner/glass,
 /obj/fiftyspawner/glass,
 /turf/simulated/floor/reinforced,
@@ -14303,11 +14303,11 @@
 /obj/structure/closet{
 	name = "materials"
 	},
-/obj/item/stack/material/steel/full_stack,
-/obj/item/stack/material/steel/full_stack,
-/obj/item/stack/material/steel/full_stack,
-/obj/item/stack/material/steel/full_stack,
-/obj/item/stack/material/steel/full_stack,
+/obj/fiftyspawner/steel,
+/obj/fiftyspawner/steel,
+/obj/fiftyspawner/steel,
+/obj/fiftyspawner/steel,
+/obj/fiftyspawner/steel,
 /obj/fiftyspawner/glass,
 /obj/fiftyspawner/glass,
 /obj/fiftyspawner/glass,
@@ -17397,10 +17397,10 @@
 /area/main_map/maintenance/panic_bunker/two)
 "mQJ" = (
 /obj/structure/table/rack/shelf,
-/obj/item/stack/material/steel/full_stack,
+/obj/fiftyspawner/steel,
 /obj/fiftyspawner/glass,
 /obj/fiftyspawner/glass,
-/obj/item/stack/material/steel/full_stack,
+/obj/fiftyspawner/steel,
 /turf/simulated/floor/tiled/steel_grid,
 /area/rift/station/fighter_bay/hangar)
 "mQU" = (
@@ -20140,9 +20140,9 @@
 /area/medical/medbay2)
 "oOf" = (
 /obj/structure/table/reinforced,
-/obj/item/stack/material/steel/full_stack,
-/obj/item/stack/material/steel/full_stack,
-/obj/item/stack/material/steel/full_stack,
+/obj/fiftyspawner/steel,
+/obj/fiftyspawner/steel,
+/obj/fiftyspawner/steel,
 /turf/simulated/floor/tiled,
 /area/maintenance/tool_storage)
 "oOl" = (
@@ -20433,7 +20433,7 @@
 /obj/structure/table/rack/shelf,
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /obj/fiftyspawner/glass,
-/obj/item/stack/material/steel/full_stack,
+/obj/fiftyspawner/steel,
 /obj/machinery/camera/network/civilian,
 /turf/simulated/floor/tiled/steel,
 /area/rift/station/fighter_bay/maintenance)
@@ -25440,10 +25440,10 @@
 	dir = 8;
 	layer = 2.6
 	},
-/obj/item/stack/material/steel/full_stack,
-/obj/item/stack/material/steel/full_stack,
-/obj/item/stack/material/steel/full_stack,
-/obj/item/stack/material/steel/full_stack,
+/obj/fiftyspawner/steel,
+/obj/fiftyspawner/steel,
+/obj/fiftyspawner/steel,
+/obj/fiftyspawner/steel,
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/storage)
 "sRz" = (
@@ -26969,8 +26969,8 @@
 /area/main_map/Hangar_bay/deck2)
 "tUD" = (
 /obj/structure/table/rack/shelf/steel,
-/obj/item/stack/material/steel/full_stack,
-/obj/item/stack/material/steel/full_stack,
+/obj/fiftyspawner/steel,
+/obj/fiftyspawner/steel,
 /obj/fiftyspawner/glass,
 /obj/fiftyspawner/glass,
 /turf/simulated/floor/reinforced,
@@ -31350,8 +31350,8 @@
 /area/engineering/atmos)
 "xbt" = (
 /obj/structure/table/reinforced,
-/obj/item/stack/material/steel/full_stack,
-/obj/item/stack/material/steel/full_stack,
+/obj/fiftyspawner/steel,
+/obj/fiftyspawner/steel,
 /obj/effect/floor_decal/industrial/danger{
 	dir = 1
 	},

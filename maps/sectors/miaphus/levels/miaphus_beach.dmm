@@ -2582,7 +2582,7 @@
 /area/sector/miaphus/beach/resort/canteen)
 "uk" = (
 /obj/structure/table/rack/shelf/steel,
-/obj/item/stack/material/steel/full_stack,
+/obj/fiftyspawner/steel,
 /turf/simulated/floor/tiled/asteroid_steel{
 	outdoors = 1
 	},

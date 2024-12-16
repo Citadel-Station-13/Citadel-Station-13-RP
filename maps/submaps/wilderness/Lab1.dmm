@@ -176,7 +176,7 @@
 /area/submap/Lab1)
 "E" = (
 /obj/structure/table/standard,
-/obj/item/stack/material/steel/full_stack,
+/obj/fiftyspawner/steel,
 /obj/fiftyspawner/glass,
 /turf/simulated/floor/tiled/steel_dirty,
 /area/submap/Lab1)

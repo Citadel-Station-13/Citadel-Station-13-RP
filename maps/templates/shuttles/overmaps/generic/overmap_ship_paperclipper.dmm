@@ -720,7 +720,7 @@
 /area/shuttle/paper_clipper)
 "Ft" = (
 /obj/structure/table/steel,
-/obj/item/stack/material/steel/full_stack,
+/obj/fiftyspawner/steel,
 /obj/fiftyspawner/glass,
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/paper_clipper)

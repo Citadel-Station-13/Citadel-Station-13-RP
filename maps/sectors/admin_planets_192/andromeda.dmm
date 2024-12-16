@@ -3869,8 +3869,8 @@
 /obj/fiftyspawner/glass,
 /obj/fiftyspawner/glass,
 /obj/fiftyspawner/glass,
-/obj/item/stack/material/steel/full_stack,
-/obj/item/stack/material/steel/full_stack,
+/obj/fiftyspawner/steel,
+/obj/fiftyspawner/steel,
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
@@ -8781,8 +8781,8 @@
 /obj/machinery/lathe/medical/stocked{
 	pixel_x = 4
 	},
-/obj/item/stack/material/steel/full_stack,
-/obj/item/stack/material/steel/full_stack,
+/obj/fiftyspawner/steel,
+/obj/fiftyspawner/steel,
 /obj/fiftyspawner/glass,
 /obj/fiftyspawner/glass,
 /turf/simulated/floor/tiled/kafel_full/gray,
@@ -9276,7 +9276,7 @@
 "CM" = (
 /obj/structure/table/rack/shelf,
 /obj/fiftyspawner/cardboard,
-/obj/item/stack/material/steel/full_stack,
+/obj/fiftyspawner/steel,
 /obj/fiftyspawner/glass,
 /obj/effect/floor_decal/industrial/outline/grey,
 /turf/simulated/floor/tiled/steel,
@@ -9856,9 +9856,9 @@
 "EN" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/structure/closet/crate/science,
-/obj/item/stack/material/steel/full_stack,
-/obj/item/stack/material/steel/full_stack,
-/obj/item/stack/material/steel/full_stack,
+/obj/fiftyspawner/steel,
+/obj/fiftyspawner/steel,
+/obj/fiftyspawner/steel,
 /obj/fiftyspawner/glass,
 /obj/fiftyspawner/glass,
 /obj/fiftyspawner/glass,
@@ -13639,11 +13639,11 @@
 	dir = 8;
 	layer = 2.6
 	},
-/obj/item/stack/material/steel/full_stack,
-/obj/item/stack/material/steel/full_stack,
-/obj/item/stack/material/steel/full_stack,
-/obj/item/stack/material/steel/full_stack,
-/obj/item/stack/material/steel/full_stack,
+/obj/fiftyspawner/steel,
+/obj/fiftyspawner/steel,
+/obj/fiftyspawner/steel,
+/obj/fiftyspawner/steel,
+/obj/fiftyspawner/steel,
 /obj/structure/window/reinforced{
 	dir = 8
 	},
@@ -16293,8 +16293,8 @@
 /area/admin_planet/andromeda/rnd_rd_office)
 "YK" = (
 /obj/structure/table/reinforced,
-/obj/item/stack/material/steel/full_stack,
-/obj/item/stack/material/steel/full_stack,
+/obj/fiftyspawner/steel,
+/obj/fiftyspawner/steel,
 /turf/simulated/floor/tiled/kafel_full/gray,
 /area/admin_planet/andromeda/rnd_circuitry)
 "YL" = (

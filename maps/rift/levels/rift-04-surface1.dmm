@@ -5880,7 +5880,7 @@
 /area/tether/surfacebase/entertainment)
 "dTO" = (
 /obj/structure/table/reinforced,
-/obj/item/stack/material/steel/full_stack,
+/obj/fiftyspawner/steel,
 /obj/fiftyspawner/glass,
 /obj/item/storage/briefcase/inflatable,
 /turf/simulated/floor/tiled/steel,
@@ -13800,7 +13800,7 @@
 /area/rnd/outpost/xenobiology/outpost_first_aid)
 "iMl" = (
 /obj/structure/table/rack/shelf/steel,
-/obj/item/stack/material/steel/full_stack,
+/obj/fiftyspawner/steel,
 /obj/fiftyspawner/glass,
 /turf/simulated/floor/tiled/steel_grid,
 /area/quartermaster/garage)
@@ -21600,7 +21600,7 @@
 	pixel_y = 32
 	},
 /obj/fiftyspawner/glass,
-/obj/item/stack/material/steel/full_stack,
+/obj/fiftyspawner/steel,
 /obj/item/hand_labeler,
 /turf/simulated/floor/tiled/steel,
 /area/quartermaster/office)
@@ -25636,7 +25636,7 @@
 "pKE" = (
 /obj/structure/table/rack/shelf,
 /obj/fiftyspawner/glass,
-/obj/item/stack/material/steel/full_stack,
+/obj/fiftyspawner/steel,
 /turf/simulated/floor/tiled/steel_dirty,
 /area/maintenance/maint_bar)
 "pKJ" = (
@@ -26923,7 +26923,7 @@
 "qwA" = (
 /obj/structure/table/rack,
 /obj/fiftyspawner/wood,
-/obj/item/stack/material/steel/full_stack,
+/obj/fiftyspawner/steel,
 /obj/fiftyspawner/hardwood,
 /obj/fiftyspawner/glass,
 /obj/item/storage/toolbox/mechanical,
