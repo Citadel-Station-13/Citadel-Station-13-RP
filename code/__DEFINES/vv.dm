@@ -66,7 +66,6 @@
 #define VV_HK_TARGET "target"
 ///name or index of var for 1 variable targetting hrefs.
 #define VV_HK_VARNAME "targetvar"
-// VV_HK_VIEW_APPEARANCE is handled on vv natively now
 // vv_do_list() keys
 #define VV_HK_LIST_ADD "listadd"
 #define VV_HK_LIST_EDIT "listedit"

@@ -35,8 +35,6 @@
 	update_client_z(null)
 	log_access_out(src)
 
-	// admin logout shenanigans moved to client destroy!
-
 	// unrender rendering systems
 	dispose_rendering()
 	// gc perspectives
