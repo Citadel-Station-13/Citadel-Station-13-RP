@@ -637,6 +637,7 @@
 	extended_desc = "A mining drill to strike the earth.  It takes some time to get the job done and \
 	must remain stationary until complete. By default an advanced mining drill is installed but better once can be attached."
 	category_text = "Manipulation"
+	ext_cooldown = 5 //Required to not make instant death circuits
 	complexity = 40
 	cooldown_per_use = 1 //We have 'busy' as our safty net
 	can_be_asked_input = TRUE
