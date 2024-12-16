@@ -213,32 +213,93 @@
 
 	name = "integrated advanced medical analyzer"
 	desc = "A very small version of the medibot's medical analyzer.  This allows the machine to know how healthy someone is.  \
-
-	This type is much more precise, allowing the machine to know much more about the target than a normal analyzer."
+	This type is much more precise, allowing the machine to know much more about the target than a normal analyzer.	\
+	A better health scanner can be installed to expand functionality. T1 for brain damage, bleeding and infection.	\
+	T2 For fractions and internal bleeding. T3 for non medical reagents."
 	icon_state = "medscan_adv"
 	complexity = 12
 	inputs = list("target" = IC_PINTYPE_REF)
 	outputs = list(
-		"brain activity"		= IC_PINTYPE_BOOLEAN,
-		"is conscious"			= IC_PINTYPE_BOOLEAN,
-		"total health %"		= IC_PINTYPE_NUMBER,
-		"total missing health"	= IC_PINTYPE_NUMBER,
-		"brute damage"			= IC_PINTYPE_NUMBER,
-		"burn damage"			= IC_PINTYPE_NUMBER,
-		"tox damage"			= IC_PINTYPE_NUMBER,
-		"oxy damage"			= IC_PINTYPE_NUMBER,
-		"clone damage"			= IC_PINTYPE_NUMBER,
-		"blood loss"			= IC_PINTYPE_NUMBER,
-		"pain level"			= IC_PINTYPE_NUMBER,
-		"radiation"				= IC_PINTYPE_NUMBER,
-		"nutrition"				= IC_PINTYPE_NUMBER,
-		"list of reagents"		= IC_PINTYPE_LIST,
-		"quantity of reagents"	= IC_PINTYPE_LIST
+		"brain activity"		= IC_PINTYPE_BOOLEAN,	//1
+		"is conscious"			= IC_PINTYPE_BOOLEAN,	//2
+		"total health %"		= IC_PINTYPE_NUMBER,	//3
+		"total missing health"	= IC_PINTYPE_NUMBER,	//4
+		"brute damage"			= IC_PINTYPE_NUMBER,	//5
+		"burn damage"			= IC_PINTYPE_NUMBER,	//6
+		"tox damage"			= IC_PINTYPE_NUMBER,	//7
+		"oxy damage"			= IC_PINTYPE_NUMBER,	//8
+		"clone damage"			= IC_PINTYPE_NUMBER,	//9
+		"blood loss"			= IC_PINTYPE_NUMBER,	//10
+		"pain level"			= IC_PINTYPE_NUMBER,	//11
+		"radiation"				= IC_PINTYPE_NUMBER,	//12
+		"nutrition"				= IC_PINTYPE_NUMBER,	//13
+		"list of reagents"		= IC_PINTYPE_LIST,		//14
+		"quantity of reagents"	= IC_PINTYPE_LIST,		//15
+		"health scan tier"		= IC_PINTYPE_NUMBER,	//16
+		"brain damage"			= IC_PINTYPE_NUMBER,	//17
+		"bleeding limbs"		= IC_PINTYPE_LIST,		//18
+		"infected limbs"		= IC_PINTYPE_LIST,		//19
+		"internal bleeding"		= IC_PINTYPE_LIST,		//20
+		"fractured limbs"		= IC_PINTYPE_LIST		//21
 	)
 	activators = list("scan" = IC_PINTYPE_PULSE_IN, "on scanned" = IC_PINTYPE_PULSE_OUT)
 	spawn_flags = IC_SPAWN_RESEARCH
 	origin_tech = list(TECH_ENGINEERING = 3, TECH_DATA = 3, TECH_BIO = 4)
 	power_draw_per_use = 80
+	can_be_asked_input = TRUE
+	var/obj/item/healthanalyzer/current_healthanalyzer
+	var/advscan = 0
+	//T1: brain damage, bleeding, infection. T2: show location of IB and fracture. T3: show non medical reagents
+
+/obj/item/integrated_circuit/input/adv_med_scanner/ask_for_input(mob/living/user, obj/item/I,  a_intent)
+	if(!current_healthanalyzer)
+		if(!isobj(I))
+			return FALSE
+		attackby_react(I, user, a_intent)
+	else
+		attack_self(user)
+
+/obj/item/integrated_circuit/input/adv_med_scanner/attackby_react(var/obj/item/healthanalyzer/I, var/mob/living/user)
+	//Check if it truly is a health scanner
+	if(!(istype(I,/obj/item/healthanalyzer)))
+		to_chat(user,"<span class='warning'>The [I.name] doesn't seem to fit in here.</span>")
+		return
+
+	//Check if there is no other health scanner already inside
+	if(current_healthanalyzer)
+		to_chat(user,"<span class='notice'>There is already a health scanner inside.</span>")
+		return
+
+	if(!user.attempt_insert_item_for_installation(I, src))
+		return
+
+	//The health scanner is the one we just attached, its location is inside the circuit
+	current_healthanalyzer = I
+
+	to_chat(user,"<span class='warning'>You slot in the [I.name] inside the assembly.</span>")
+
+	//Set the pin to a weak reference of the current beaker
+	set_pin_data(IC_OUTPUT, 16, I.advscan)
+	advscan = I.advscan
+	push_data()
+
+/obj/item/integrated_circuit/input/adv_med_scanner/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
+	//Check if no health scanner is attached
+	if(!current_healthanalyzer)
+		to_chat(user, "<span class='notice'>There is currently no health scanner attached.</span>")
+		return
+
+	//Remove beaker and put in user's hands/location
+	to_chat(user, "<span class='notice'>You yank the [current_healthanalyzer] out of the slot.</span>")
+	user.put_in_hands(current_healthanalyzer)
+	current_healthanalyzer = null
+	//Reset to 0
+	set_pin_data(IC_OUTPUT, 16, 0)
+	advscan = 0
+	push_data()
 
 /obj/item/integrated_circuit/input/adv_med_scanner/do_work(ord)
 	if(ord == 1)
@@ -267,11 +328,38 @@
 			var/cont[0]
 			var/amt[0]
 			for(var/datum/reagent/RE in H.reagents.reagent_list)
-				if(RE.scannable)
+				if(RE.scannable || advscan >= 3)
 					cont += RE.id
 					amt	+= round(H.reagents.get_reagent_amount(RE.id), 1)
 			set_pin_data(IC_OUTPUT, 14, cont)
 			set_pin_data(IC_OUTPUT, 15, amt)
+			var/frac[0]
+			var/ib[0]
+			var/bleed[0]
+			var/infec[0]
+			if(advscan >= 1)
+				set_pin_data(IC_OUTPUT, 17, H.getBrainLoss())
+				for(var/obj/item/organ/external/e in H.organs)
+					if(!e)
+						continue
+					// Bleeding
+					if(e.status & ORGAN_BLEEDING)
+						bleed += e.name
+					// Infections
+					if(e.has_infected_wound())
+						infec += e.name
+					if(advscan >= 2)
+						// Broken limbs
+						if(e.status & ORGAN_BROKEN)
+							frac += e.name
+						// IB
+						for(var/datum/wound/W as anything in e.wounds)
+							if(W.internal)
+								ib += e.name
+			set_pin_data(IC_OUTPUT, 18, bleed)
+			set_pin_data(IC_OUTPUT, 19, infec)
+			set_pin_data(IC_OUTPUT, 20, ib)
+			set_pin_data(IC_OUTPUT, 21, frac)
 
 		push_data()
 		activate_pin(2)
