@@ -18,8 +18,8 @@
 	/*else if(reagents.reagent_list.len == 1)
 		for(var/datum/reagent/R in reagents.reagent_list)
 			switch(R.id)*/
-	if (reagents.reagent_list.len > 0)
-		var/datum/reagent/R = reagents.get_master_reagent()
+	if (reagents.total_volume)
+		var/datum/reagent/R = reagents.get_majority_reagent_datum()
 
 		if(R.glass_icon_state)
 			icon_state = R.glass_icon_state
@@ -62,8 +62,8 @@
 	materials_base = list(MAT_GLASS = 60)
 
 /obj/item/reagent_containers/food/drinks/cup/on_reagent_change()
-	if (reagents.reagent_list.len > 0)
-		var/datum/reagent/R = reagents.get_master_reagent()
+	if (reagents.total_volume)
+		var/datum/reagent/R = reagents.get_majority_reagent_datum()
 
 		if(R.cup_icon_state)
 			icon_state = R.cup_icon_state
@@ -132,7 +132,7 @@
 
 		filling.color += reagents.get_color()
 		add_overlay(filling)
-		name = "shot glass of " + reagents.get_master_reagent_name() //No matter what, the glass will tell you the reagent's name. Might be too abusable in the future.
+		name = "shot glass of " + reagents.get_majority_reagent_name() //No matter what, the glass will tell you the reagent's name. Might be too abusable in the future.
 	else
 		name = "shot glass"
 

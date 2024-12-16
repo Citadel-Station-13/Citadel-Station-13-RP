@@ -1,3 +1,9 @@
+/mob/living/carbon
+	//* Organs, Reagents, Biologies *//
+
+	/// Our blood holder.
+	var/datum/blood_holder/blood_holder
+
 /mob/living/carbon/Initialize(mapload)
 	. = ..()
 	//setup reagent holders
@@ -9,6 +15,7 @@
 		default_language = RSlanguages.legacy_resolve_language_name(species_language)
 
 /mob/living/carbon/Destroy()
+	QDEL_NULL(blood_holder)
 	qdel(ingested)
 	qdel(touching)
 	// We don't qdel(bloodstr) because it's the same as qdel(reagents)

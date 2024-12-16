@@ -1,4 +1,7 @@
 /datum/reagent_holder/metabolism
+	/// reagent id to /datum/reagent_metabolism
+	var/list/reagent_metabolisms
+
 	var/metabolism_class //CHEM_TOUCH, CHEM_INGEST, or CHEM_INJECT
 	var/metabolism_speed = 1	// Multiplicative, 1 is full speed, 0.5 is half, etc.
 	var/mob/living/carbon/parent
@@ -21,6 +24,16 @@
 	for(var/datum/reagent/current in reagent_list)
 		current.on_mob_life(parent, metabolism_type, src, speed_mult, force_allow_dead)
 	update_total()
+
+/datum/reagent_holder/metabolism/add_reagent(id, amount, data_initializer, skip_reactions)
+	. = ..()
+	LAZYINITLIST(reagent_metabolisms)
+	#warn impl
+
+/datum/reagent_holder/metabolism/remove_reagent(id, amount, skip_reactions)
+	. = ..()
+	LAZYINITLIST(reagent_metabolisms)
+	#warn impl
 
 // "Specialized" metabolism datums
 /datum/reagent_holder/metabolism/bloodstream
