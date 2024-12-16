@@ -70,7 +70,7 @@
 	var/atom/casted = result_type
 	on_border = !!(initial(casted.atom_flags) & ATOM_BORDER)
 
-	preloader_callback = CALLBACK(PROC_REF(src, make_preload_hook))
+	preloader_callback = CALLBACK(src, PROC_REF(src, make_preload_hook))
 
 /datum/stack_recipe/Destroy()
 	QDEL_NULL(preloader_callback)
@@ -148,7 +148,6 @@
  * * creating - (optional) list will be populated of objects created. supply a list so you can read it, or don't to ignore.
  */
 /datum/stack_recipe/proc/make(atom/where, amount, obj/item/stack/stack, mob/user, silent, use_dir, list/created = list())
-	#warn preload call for making sure stacks get made empty
 	if(result_is_stack)
 		var/obj/item/stack/casted = result_type
 		var/max_amount = initial(casted.max_amount)
