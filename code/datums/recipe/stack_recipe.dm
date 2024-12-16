@@ -52,12 +52,29 @@
 	var/on_border = FALSE
 	// todo: material constraints
 
+	//* Product Descriptors *//
+
+	/// Automatically create empty storage / cells / containers / whatever
+	/// * Usually this is on, because usually stacks are not meant to create the insides of a container.
+	var/product_auto_create_empty = TRUE
+
+	//* Internal *//
+
+	/// preloader callback, do not touch
+	var/datum/callback/preloader_callback
+
 /datum/stack_recipe/New()
 	if(ispath(result_type, /obj/item/stack))
 		result_is_stack = TRUE
 
 	var/atom/casted = result_type
 	on_border = !!(initial(casted.atom_flags) & ATOM_BORDER)
+
+	preloader_callback = CALLBACK(src, make_preload_hook)
+
+/datum/stack_recipe/Destroy()
+	QDEL_NULL(preloader_callback)
+	return ..()
 
 /**
  * attepmt to craft
@@ -131,6 +148,7 @@
  * * creating - (optional) list will be populated of objects created. supply a list so you can read it, or don't to ignore.
  */
 /datum/stack_recipe/proc/make(atom/where, amount, obj/item/stack/stack, mob/user, silent, use_dir, list/created = list())
+	#warn preload call for making sure stacks get made empty
 	if(result_is_stack)
 		var/obj/item/stack/casted = result_type
 		var/max_amount = initial(casted.max_amount)
@@ -139,15 +157,21 @@
 			if(!--safety)
 				CRASH("safety hit")
 			var/making_amount = min(amount, max_amount)
-			var/obj/item/stack/creating = new result_type(where, making_amount)
+			var/obj/item/stack/creating = Ssatoms.instance_atom_immediate_with_preloader(result_type, FALSE, preloader_callback, where, making_amount)
 			amount -= making_amount
 			created += creating
 	else
 		for(var/i in 1 to min(amount, 50))
-			var/atom/movable/creating = new result_type(where)
+			var/atom/movable/creating = Ssatoms.instance_atom_immediate_with_preloader(result_type, FALSE, preloader_callback, where)
 			creating.setDir(use_dir)
 			created += creating
 	return TRUE
+
+/**
+ * preloads an atom we make
+ */
+/datum/stack_recipe/proc/make_preload_hook(atom/product)
+	product.preload_from_stack_recipe(src)
 
 /**
  * tgui stack recipe data
