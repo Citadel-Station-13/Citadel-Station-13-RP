@@ -57,7 +57,7 @@
 
 /obj/item/stack/material/update_icon()
 	if(material.icon_stack_count)
-		icon_state = "stack-[ceil(amount / max_amount) * material.icon_stack_count]"
+		icon_state = "stack-[min(ceil((amount / max_amount) * material.icon_stack_count), material.icon_stack_count)]"
 	return ..()
 
 /obj/item/stack/material/tgui_recipes()
