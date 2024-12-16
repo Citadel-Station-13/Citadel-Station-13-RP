@@ -1,10 +1,9 @@
 /obj/item/paper/carbon
-	name = "paper"
+	name = "sheet of carbon"
 	icon_state = "paper_stack"
 	item_state = "paper"
 	var/copied = 0
 	var/iscopy = 0
-
 
 /obj/item/paper/carbon/update_icon()
 	if(iscopy)

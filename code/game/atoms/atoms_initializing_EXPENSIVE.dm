@@ -129,7 +129,7 @@
 
 	//atom color stuff
 	if(color)
-		add_atom_colour(color, FIXED_COLOUR_PRIORITY)
+		add_atom_color(color)
 
 	if(light_power && light_range)
 		update_light()
