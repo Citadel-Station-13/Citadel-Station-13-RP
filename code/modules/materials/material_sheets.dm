@@ -32,8 +32,8 @@
 		src.material = material
 	src.material = RSmaterials.fetch(src.material)
 
-	if(material.icon && icon != material.icon)
-		icon = material.icon
+	if(src.material.icon && icon != src.material.icon)
+		icon = src.material.icon
 
 	. = ..()
 
