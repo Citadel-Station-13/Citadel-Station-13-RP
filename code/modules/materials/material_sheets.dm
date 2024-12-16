@@ -14,8 +14,12 @@
 		)
 	drop_sound = 'sound/items/drop/axe.ogg'
 	pickup_sound = 'sound/items/pickup/axe.ogg'
+	description_info = "Use in your hand to bring up the recipe menu.  If you have enough sheets, click on something on the list to build it."
 
 	material_parts = MATERIAL_DEFAULT_DISABLED
+
+	skip_legacy_icon_update = TRUE
+
 	/// material - direct ref because stack
 	var/datum/prototype/material/material
 
@@ -27,6 +31,10 @@
 	if(!isnull(material))
 		src.material = material
 	src.material = RSmaterials.fetch(src.material)
+
+	if(material.icon && icon != material.icon)
+		icon = material.icon
+
 	. = ..()
 
 	pixel_x = rand(0,4)-4
@@ -46,6 +54,11 @@
 
 /obj/item/stack/material/get_materials(respect_multiplier)
 	return list(material.id = (respect_multiplier? material_multiplier : 1) * SHEET_MATERIAL_AMOUNT)
+
+/obj/item/stack/material/update_icon()
+	if(material.icon_stack_count)
+		icon_state = "stack-[ceil(amount / max_amount) * material.icon_stack_count]"
+	return ..()
 
 /obj/item/stack/material/tgui_recipes()
 	var/list/assembled = ..()

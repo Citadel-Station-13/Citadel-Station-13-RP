@@ -55,7 +55,7 @@
 /obj/item/storage/Initialize(mapload, empty)
 	. = ..()
 	initialize_storage()
-	if(!empty || src.empty)
+	if(!empty && !src.empty)
 		spawn_contents()
 		legacy_spawn_contents()
 	else
