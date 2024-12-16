@@ -70,7 +70,7 @@
 	var/atom/casted = result_type
 	on_border = !!(initial(casted.atom_flags) & ATOM_BORDER)
 
-	preloader_callback = CALLBACK(src, PROC_REF(src, make_preload_hook))
+	preloader_callback = CALLBACK(src, PROC_REF(make_preload_hook))
 
 /datum/stack_recipe/Destroy()
 	QDEL_NULL(preloader_callback)
