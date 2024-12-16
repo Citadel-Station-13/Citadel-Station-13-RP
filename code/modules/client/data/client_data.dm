@@ -136,7 +136,7 @@ GLOBAL_LIST_EMPTY(client_data)
 		playtime_mutex = FALSE
 		return
 	var/datum/db_query/query = SSdbcore.NewQuery(
-		"SELECT `roleid`, `minutes` FROM [format_table_name("playtime")] WHERE player = :player",
+		"SELECT `roleid`, `minutes` FROM [DB_PREFIX_TABLE_NAME("playtime")] WHERE player = :player",
 		list(
 			"player" = player_id,
 		)

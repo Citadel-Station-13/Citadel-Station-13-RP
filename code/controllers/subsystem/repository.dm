@@ -11,3 +11,6 @@ SUBSYSTEM_DEF(repository)
 	__create_repositories()
 	__init_repositories()
 	return SS_INIT_SUCCESS
+
+/datum/controller/subsystem/repository/proc/get_all_repositories()
+	return __get_all_repositories()

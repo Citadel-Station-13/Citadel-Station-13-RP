@@ -234,21 +234,21 @@
 
 	for(var/datum/map_level_persistence/level_metadata as anything in ordered_level_metadata)
 		SSdbcore.RunQuery(
-			"DELETE FROM [format_table_name("persistence_bulk_entity")] WHERE level_id = :level, generation != :generation",
+			"DELETE FROM [DB_PREFIX_TABLE_NAME("persistence_bulk_entity")] WHERE level_id = :level, generation != :generation",
 			list(
 				"level" = level_metadata.level_id,
 				"generation" = level_metadata.generation,
 			),
 		)
 		SSdbcore.RunQuery(
-			"DELETE FROM [format_table_name("persistence_static_level_objects")] WHERE level_id = :level, generation != :generation",
+			"DELETE FROM [DB_PREFIX_TABLE_NAME("persistence_static_level_objects")] WHERE level_id = :level, generation != :generation",
 			list(
 				"level" = level_metadata.level_id,
 				"generation" = level_metadata.generation,
 			),
 		)
 		SSdbcore.RunQuery(
-			"DELETE FROM [format_table_name("persistence_dynamic_objects")] WHERE level_id = :level, generation != :generation",
+			"DELETE FROM [DB_PREFIX_TABLE_NAME("persistence_dynamic_objects")] WHERE level_id = :level, generation != :generation",
 			list(
 				"level" = level_metadata.level_id,
 				"generation" = level_metadata.generation,
