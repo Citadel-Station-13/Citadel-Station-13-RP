@@ -47,6 +47,11 @@
 	/// set to prevent us from spawning starts_with
 	var/empty = FALSE
 
+/obj/item/storage/preload_from_stack_recipe(datum/stack_recipe/recipe)
+	..()
+	if(recipe.product_auto_create_empty)
+		empty = TRUE
+
 /obj/item/storage/Initialize(mapload, empty)
 	. = ..()
 	initialize_storage()

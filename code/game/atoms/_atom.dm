@@ -232,6 +232,8 @@
 
 	return ..()
 
+//* Preload Hooks *//
+
 /**
  * Called by the maploader if a dmm_context is set
  *
@@ -249,6 +251,12 @@
  */
 /atom/proc/preloading_dir(datum/dmm_context/context)
 	return TRUE
+
+/**
+ * Preloads before Initialize(), invoked by init from a stack recipe.
+ */
+/atom/proc/preload_from_stack_recipe(datum/stack_recipe/recipe)
+	return
 
 /atom/proc/reveal_blood()
 	return

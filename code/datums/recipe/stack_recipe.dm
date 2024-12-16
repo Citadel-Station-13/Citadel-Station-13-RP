@@ -70,7 +70,7 @@
 	var/atom/casted = result_type
 	on_border = !!(initial(casted.atom_flags) & ATOM_BORDER)
 
-	preloader_callback = CALLBACK(src, make_preload_hook)
+	preloader_callback = CALLBACK(PROC_REF(src, make_preload_hook))
 
 /datum/stack_recipe/Destroy()
 	QDEL_NULL(preloader_callback)
@@ -157,12 +157,12 @@
 			if(!--safety)
 				CRASH("safety hit")
 			var/making_amount = min(amount, max_amount)
-			var/obj/item/stack/creating = Ssatoms.instance_atom_immediate_with_preloader(result_type, FALSE, preloader_callback, where, making_amount)
+			var/obj/item/stack/creating = SSatoms.instance_atom_immediate_with_preloader(result_type, FALSE, preloader_callback, where, making_amount)
 			amount -= making_amount
 			created += creating
 	else
 		for(var/i in 1 to min(amount, 50))
-			var/atom/movable/creating = Ssatoms.instance_atom_immediate_with_preloader(result_type, FALSE, preloader_callback, where)
+			var/atom/movable/creating = SSatoms.instance_atom_immediate_with_preloader(result_type, FALSE, preloader_callback, where)
 			creating.setDir(use_dir)
 			created += creating
 	return TRUE
