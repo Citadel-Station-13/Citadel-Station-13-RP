@@ -29,7 +29,7 @@
 	implanted = TRUE
 	if(ishuman(source))
 		var/mob/living/carbon/human/H = source
-		var/obj/item/organ/external/affected = H.get_organ(target_zone)
+		var/obj/item/organ/external/affected = H.legacy_organ_by_zone(target_zone)
 		if(affected)
 			affected.implants |= src
 			part = affected
