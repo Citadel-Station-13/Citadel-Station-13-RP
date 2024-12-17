@@ -1,16 +1,28 @@
+import { BooleanLike } from "common/react";
 import { useBackend } from "../backend";
 import {
   Box,
   Button,
   Divider,
-  LabeledList,
   Flex,
+  LabeledList,
   Section,
 } from "../components";
 import { Window } from "../layouts";
 
+type Data = {
+  pen: string;
+  integrated_pen: BooleanLike;
+  top_paper: string;
+  top_paper_ref: string;
+  paper: string[];
+  paper_ref: string[];
+  photo: string[];
+  photo_ref: string[];
+};
+
 export const Clipboard = (props, context) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<Data>(context);
   const {
     pen,
     integrated_pen,
@@ -18,6 +30,8 @@ export const Clipboard = (props, context) => {
     top_paper_ref,
     paper,
     paper_ref,
+    photo,
+    photo_ref,
   } = data;
   return (
     <Window title="Clipboard" width={400} height={500}>
@@ -108,6 +122,26 @@ export const Clipboard = (props, context) => {
               <Button
                 icon="eject"
                 onClick={() => act("remove_paper", { ref: paper_ref[index] })}
+              />
+            </Flex.Item>
+          </Flex>
+        ))}
+        {photo.length > 0 && <Divider />}
+        {photo.map((photo_item, index) => (
+          <Flex
+            key={paper_ref[index]}
+            color="black"
+            backgroundColor="white"
+            style={{ padding: "2px 2px 0 2px" }}
+            mb={0.5}
+          >
+            <Flex.Item align="center" grow={1}>
+              <Box align="center">{photo_item}</Box>
+            </Flex.Item>
+            <Flex.Item>
+              <Button
+                icon="eject"
+                onClick={() => act("remove_photo", { ref: photo_ref[index] })}
               />
             </Flex.Item>
           </Flex>
