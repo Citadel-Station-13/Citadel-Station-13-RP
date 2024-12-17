@@ -67,8 +67,6 @@
 	return H
 
 /datum/ghostrole_instantiator/human/Equip(client/C, mob/M, list/params)
-	var/mob/living/carbon/human/H = M
-
 	// H.dna.species.before_equip_job(null, H)
 
 	var/datum/outfit/O = GetOutfit(C, M, params)
