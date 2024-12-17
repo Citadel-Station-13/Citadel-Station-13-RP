@@ -76,7 +76,6 @@
 		O = new O
 	O.equip(M)
 
-	H.species.equip_survival_gear(H, TRUE, TRUE)
 	// H.dna.species.after_equip_job(null, H)
 
 /**

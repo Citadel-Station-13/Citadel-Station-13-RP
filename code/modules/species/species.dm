@@ -672,59 +672,37 @@ GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
  *              things will not necessarily be put in their backpack, as an example a wheelchair would be put under them.
  */
 /datum/species/proc/apply_survival_gear(mob/living/carbon/for_target, list/into_box, list/into_inv)
+	into_box?.Add(/obj/item/tool/prybar/red)
 
-	new /obj/item/tool/prybar/red(L)
-	#warn give them a flare
+	// todo: crank flashlight + prybar combo?
+	into_box?.Add(/obj/item/flashlight/flare/survival)
 
-#warn below
-
-/datum/species/proc/equip_survival_gear(var/mob/living/carbon/human/H,var/extendedtank = 0,var/comprehensive = 0)
-	var/boxtype = /obj/item/storage/box/legacy_survival //Default survival box
-
-
-	var/synth = H.isSynthetic()
-
-	//Empty box for synths
-	if(synth)
-		boxtype = /obj/item/storage/box/legacy_survival/synth
-
-	//Special box with extra equipment
-	else if(comprehensive)
-		boxtype = /obj/item/storage/box/legacy_survival/comp
-
-	//Create the box
-	var/obj/item/storage/box/box = new boxtype(H)
-
-	//If not synth, they get an air tank (if they breathe)
-	if(!synth && breath_type)
-		//Create a tank (if such a thing exists for this species)
-		var/given_path = GLOB.species_oxygen_tank_by_gas[breath_type]
-		var/tankpath
-		if(extendedtank)
-			tankpath = text2path("[given_path]" + "/engi")
-			if(!tankpath) //Is it just that there's no /engi?
-				tankpath = text2path("[given_path]" + "/double")
-
-		if(!tankpath)
-			tankpath = given_path
-
-		if(tankpath)
-			new tankpath(box)
-		else
-			stack_trace("Could not find a tank path for breath type [breath_type], given path was [given_path].")
-
-	//If they are synth, they get a smol battery
-	else if(synth)
-		new /obj/item/fbp_backup_cell(box)
-
-	box.obj_storage.fit_to_contents(no_shrink = TRUE)
-
-	if(H.backbag == 1)
-		H.equip_to_slot_or_del(box, /datum/inventory_slot/abstract/hand/right, INV_OP_SILENT | INV_OP_FLUFFLESS)
+	if(for_target.isSynthetic())
+		into_box?.Add(/obj/item/fbp_backup_cell)
 	else
-		H.equip_to_slot_or_del(box, /datum/inventory_slot/abstract/put_in_backpack, INV_OP_FORCE | INV_OP_SILENT)
+		into_box?.Add(
+			/obj/item/clothing/mask/breath,
+			/obj/item/stack/medical/bruise_pack,
+			/obj/item/reagent_containers/hypospray/autoinjector,
+			/obj/item/reagent_containers/food/snacks/wrapped/proteinbar,
+			/obj/item/clothing/glasses/goggles,
+		)
 
-#warn above
+		if(breath_type)
+			var/given_path = GLOB.species_oxygen_tank_by_gas[breath_type]
+			var/tankpath
+			if(extendedtank)
+				tankpath = text2path("[given_path]" + "/engi")
+				if(!tankpath) //Is it just that there's no /engi?
+					tankpath = text2path("[given_path]" + "/double")
+
+			if(!tankpath)
+				tankpath = given_path
+
+			if(tankpath)
+				into_box?.Add(tankpath)
+			else
+				stack_trace("Could not find a tank path for breath type [breath_type], given path was [given_path].")
 
 /**
  * called to ensure organs are consistent with our species's
