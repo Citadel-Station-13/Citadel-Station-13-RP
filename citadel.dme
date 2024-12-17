@@ -1778,6 +1778,7 @@
 #include "code\game\objects\items\storage\wallets.dm"
 #include "code\game\objects\items\storage\medical\firstaid.dm"
 #include "code\game\objects\items\storage\medical\hypokit.dm"
+#include "code\game\objects\items\storage\misc\survival.dm"
 #include "code\game\objects\items\storage\misc_legacy\bible.dm"
 #include "code\game\objects\items\storage\misc_legacy\fancy.dm"
 #include "code\game\objects\items\storage\misc_legacy\laundry_basket.dm"

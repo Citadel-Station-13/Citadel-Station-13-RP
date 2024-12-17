@@ -60,15 +60,15 @@
 /obj/item/survivalcapsule,
 /obj/item/survivalcapsule,
 /obj/item/survivalcapsule,
-/obj/item/storage/box/survival/space,
-/obj/item/storage/box/survival/space,
-/obj/item/storage/box/survival/space,
-/obj/item/storage/box/survival/space,
+/obj/item/storage/box/legacy_survival/space,
+/obj/item/storage/box/legacy_survival/space,
+/obj/item/storage/box/legacy_survival/space,
+/obj/item/storage/box/legacy_survival/space,
 /obj/item/gun/energy/frontier/locked/holdout,
 /obj/item/gun/energy/frontier/locked/holdout,
 /obj/item/bluespace_radio/commerce,
-/obj/item/storage/box/survival/comp,
-/obj/item/storage/box/survival/comp,
+/obj/item/storage/box/legacy_survival/comp,
+/obj/item/storage/box/legacy_survival/comp,
 /obj/item/binoculars,
 /obj/item/perfect_tele,
 /obj/item/storage/pill_bottle/nutriment,
@@ -116,7 +116,7 @@
 /obj/item/gun/ballistic/pistol,
 /obj/item/clothing/accessory/storage/black_vest,
 /obj/item/material/knife/tacknife/survival,
-/obj/item/storage/box/survival/comp,
+/obj/item/storage/box/legacy_survival/comp,
 /turf/simulated/floor/carpet/bcarpet,
 /area/survivalpod)
 "k" = (
@@ -242,7 +242,7 @@
 /obj/item/gun/ballistic/pistol,
 /obj/item/clothing/accessory/storage/black_vest,
 /obj/item/material/knife/tacknife/survival,
-/obj/item/storage/box/survival/comp{
+/obj/item/storage/box/legacy_survival/comp{
 	starts_with = list(/obj/item/tool/prybar/red,/obj/item/clothing/glasses/goggles,/obj/item/reagent_containers/hypospray/autoinjector,/obj/item/stack/medical/bruise_pack,/obj/item/flashlight/glowstick,/obj/item/reagent_containers/food/snacks/wrapped/proteinbar,/obj/item/clothing/mask/breath,/obj/item/tank/emergency/oxygen/engi)
 	},
 /turf/simulated/floor/carpet/bcarpet,

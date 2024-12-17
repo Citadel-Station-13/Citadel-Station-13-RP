@@ -630,18 +630,67 @@ GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
 	GAS_ID_CARBON_DIOXIDE = /obj/item/tank/emergency/carbon_dioxide
 ))
 
+/**
+ * Injects spawn descriptors into `into_box` and `into_inv` lists. Both must be provided.
+ *
+ * Descriptors can be;
+ * * a typepath
+ * * an anonymous type
+ *
+ * Notes:
+ * * The `into_box` and `into_inv` lists should always be added to via `?.Add()`, incase they are null.
+ * * Returned lists **must** be handled. If you aren't equipping anything, properly qdel() any spawned items, or
+ *   a memory leak will result.
+ *
+ * @params
+ * * for_target - (optional) person who is getting survival gear. if this is not provided, default
+ *                survival gear that would go on them through inventory calls should be put into `into_inv`.
+ * * into_box - things to put into their survival kit. do not put anything large in here.
+ * * into_inv - things to make sure they have somewhere on, or near them. anything large can be put in here.
+ *              things will not necessarily be put in their backpack, as an example a wheelchair would be put under them.
+ */
+/datum/species/proc/apply_racial_gear(mob/living/carbon/for_target, list/into_box, list/into_inv)
+	return
+
+/**
+ * Injects spawn descriptors into `into_box` and `into_inv` lists. Both must be provided.
+ *
+ * Descriptors can be;
+ * * a typepath
+ * * an anonymous type
+ *
+ * Notes:
+ * * The `into_box` and `into_inv` lists should always be added to via `?.Add()`, incase they are null.
+ * * Returned lists **must** be handled. If you aren't equipping anything, properly qdel() any spawned items, or
+ *   a memory leak will result.
+ *
+ * @params
+ * * for_target - (optional) person who is getting survival gear. if this is not provided, default
+ *                survival gear that would go on them through inventory calls should be put into `into_inv`.
+ * * into_box - things to put into their survival kit. do not put anything large in here.
+ * * into_inv - things to make sure they have somewhere on, or near them. anything large can be put in here.
+ *              things will not necessarily be put in their backpack, as an example a wheelchair would be put under them.
+ */
+/datum/species/proc/apply_survival_gear(mob/living/carbon/for_target, list/into_box, list/into_inv)
+
+	new /obj/item/tool/prybar/red(L)
+	#warn give them a flare
+
+#warn below
+
 /datum/species/proc/equip_survival_gear(var/mob/living/carbon/human/H,var/extendedtank = 0,var/comprehensive = 0)
-	var/boxtype = /obj/item/storage/box/survival //Default survival box
+	var/boxtype = /obj/item/storage/box/legacy_survival //Default survival box
+
 
 	var/synth = H.isSynthetic()
 
 	//Empty box for synths
 	if(synth)
-		boxtype = /obj/item/storage/box/survival/synth
+		boxtype = /obj/item/storage/box/legacy_survival/synth
 
 	//Special box with extra equipment
 	else if(comprehensive)
-		boxtype = /obj/item/storage/box/survival/comp
+		boxtype = /obj/item/storage/box/legacy_survival/comp
 
 	//Create the box
 	var/obj/item/storage/box/box = new boxtype(H)
@@ -674,6 +723,8 @@ GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
 		H.equip_to_slot_or_del(box, /datum/inventory_slot/abstract/hand/right, INV_OP_SILENT | INV_OP_FLUFFLESS)
 	else
 		H.equip_to_slot_or_del(box, /datum/inventory_slot/abstract/put_in_backpack, INV_OP_FORCE | INV_OP_SILENT)
+
+#warn above
 
 /**
  * called to ensure organs are consistent with our species's
