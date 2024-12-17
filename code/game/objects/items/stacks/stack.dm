@@ -48,9 +48,12 @@
 	var/build_type = null
 	var/uses_charge = 0
 	var/list/charge_costs = null
-	var/list/datum/matter_synth/synths = null
 	/// Determines whether the item should update it's sprites based on amount.
 	var/no_variants = TRUE
+
+	/// use a synthesizer datum
+	/// * this is unreferenced on Destroy(). make sure the synthesizer doesn't reference us.
+	var/datum/stack_synth/synthesized
 
 	/// Will the item pass its own color var to the created item? Dyed cloth, wood, etc.
 	var/pass_color = FALSE
@@ -75,6 +78,11 @@
 			if(can_merge(S))
 				merge(S)
 	update_icon()
+
+/obj/item/stack/Destroy()
+	if(synthesized)
+		synthesized = null
+	return ..()
 
 /obj/item/stack/update_icon()
 	if(no_variants)
