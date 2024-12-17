@@ -14,6 +14,10 @@
 /datum/prototype/robot_module
 	abstract_type = /datum/prototype/robot_module
 
+	/// Allow selection
+	//  todo: replace with selection class / groups / something to that effect
+	var/selectable = FALSE
+
 	/// /obj/item/robot_module typepath
 	var/use_robot_module_path = /obj/item/robot_module/robot
 

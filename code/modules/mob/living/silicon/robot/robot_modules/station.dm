@@ -7,8 +7,7 @@ GLOBAL_LIST_INIT(robot_modules, list(
 	"Medical" 		= /obj/item/robot_module/robot/medical/surgeon,
 	"Security" 		= /obj/item/robot_module/robot/security/general,
 	"Combat" 		= /obj/item/robot_module/robot/security/combat,
-	"Engineering"	= /obj/item/robot_module/robot/engineering/general,
-//	"Construction"	= /obj/item/robot_module/robot/engineering/construction,
+	"Engineering"	= /obj/item/robot_module/robot/engineering,
 	"Janitor" 		= /obj/item/robot_module/robot/janitor,
 	"Quadruped"		= /obj/item/robot_module/robot/quad/basic,
 	"MediQuad"		= /obj/item/robot_module/robot/quad/medi,
@@ -290,18 +289,6 @@ GLOBAL_LIST_INIT(robot_modules, list(
 	T.water = synths_by_kind[MATSYN_WATER]
 	. += T
 
-/obj/item/robot_module/robot/quad/is_dog()
-	var/mob/living/silicon/robot/R = loc
-	ASSERT(istype(R))
-	// This is the only non-canid dogborg type right now.
-	return R.icontype != "F3-LINE"
-
-/obj/item/robot_module/robot/quad/is_cat()
-	var/mob/living/silicon/robot/R = loc
-	ASSERT(istype(R))
-	// This is the only non-canid dogborg type right now.
-	return R.icontype == "F3-LINE"
-
 // Custom sprite stuff. There's a dedicated system for this, not sure why this is done separately.
 
 /obj/item/robot_module/robot/quad/engi/handle_custom_item(mob/living/silicon/robot/R)
@@ -318,3 +305,5 @@ GLOBAL_LIST_INIT(robot_modules, list(
 	. = ..()
 	if (R.client?.ckey == "nezuli")
 		sprites["Alina"] = "alina-sec"
+
+#warn parse this crap

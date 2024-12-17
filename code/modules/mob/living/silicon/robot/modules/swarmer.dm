@@ -1,3 +1,10 @@
+/datum/prototype/robot_module/swarm
+	use_robot_module_path = /obj/item/robot_module/robot/swarm
+	allowed_frames = list(
+	)
+
+#warn translate chassis below
+
 /obj/item/robot_module/drone/swarm
 	name = "swarm drone module"
 	var/id

@@ -214,7 +214,7 @@
 
 		if("bark")
 			var/mob/living/silicon/robot/R = src
-			if (istype(R) && R.module.is_dog())
+			if (istype(R))
 				if (emote_target)
 					message = "barks at [emote_target]."
 				else
@@ -227,7 +227,7 @@
 
 		if("arfe")
 			var/mob/living/silicon/robot/R = src
-			if (istype(R) && R.module.is_dog())
+			if (istype(R))
 				message = "lets out an A R F E."
 
 				playsound(loc, 'sound/voice/arfe.ogg', 50, 1, -1)
@@ -245,7 +245,7 @@
 
 		if("nya")
 			var/mob/living/silicon/robot/R = src
-			if (istype(R) && R.module.is_cat())
+			if (istype(R))
 				message = "lets out a nya."
 
 				playsound(loc, 'sound/voice/nya.ogg', 50, 1, -1)
@@ -255,7 +255,7 @@
 
 		if("mrrp")
 			var/mob/living/silicon/robot/R = src
-			if (istype(R) && R.module.is_cat())
+			if (istype(R))
 				message = "mrrps."
 
 				playsound(loc, 'sound/voice/mrrp.ogg', 50, 1, -1)
@@ -265,7 +265,7 @@
 
 		if("prbt")
 			var/mob/living/silicon/robot/R = src
-			if (istype(R) && R.module.is_cat())
+			if (istype(R))
 				message = "prbts."
 
 				playsound(loc, 'sound/misc/prbt.ogg', 50, 1, -1)
@@ -275,7 +275,7 @@
 
 		if("meow", "meows")
 			var/mob/living/silicon/robot/R = src
-			if (istype(R) && R.module.is_cat())
+			if (istype(R))
 				message = "prbts."
 
 				playsound(loc, 'sound/voice/meow1.ogg', 50, 1, -1)
@@ -285,7 +285,7 @@
 
 		if("hiss")
 			var/mob/living/silicon/robot/R = src
-			if (istype(R) && R.module.is_cat())
+			if (istype(R))
 				message = "lets out a hiss."
 
 				playsound(loc, 'sound/voice/hiss.ogg', 50, 1, -1)
@@ -295,7 +295,7 @@
 
 		if("purr")
 			var/mob/living/silicon/robot/R = src
-			if (istype(R) && R.module.is_cat())
+			if (istype(R))
 				message = "purrs softly."
 
 				playsound(loc, 'sound/voice/purr.ogg', 50, 1, -1)
