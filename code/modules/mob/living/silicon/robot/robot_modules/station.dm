@@ -26,14 +26,11 @@ GLOBAL_LIST_INIT(robot_modules, list(
 	icon_state = "std_module"
 	w_class = WEIGHT_CLASS_HUGE
 	item_state = "std_mod"
-	var/hide_on_manifest = 0
 	var/channels = list()
 	var/networks = list()
 	var/sprites = list()
 	var/can_be_pushed = 1
 	var/no_slip = 0
-	/// Affects emotes.
-	var/is_the_law = FALSE
 	/// Enables a verb.
 	var/can_shred = FALSE
 
@@ -216,13 +213,6 @@ GLOBAL_LIST_INIT(robot_modules, list(
 	if(!can_be_pushed)
 		R.status_flags |= STATUS_CAN_PUSH
 
-/// This is different from the dogborg or wideborg vars -- this is specifically if the module is a *dog* - if it should be able to do dog things like bark.
-/obj/item/robot_module/proc/is_dog()
-	return FALSE
-
-/obj/item/robot_module/proc/is_cat()
-	return FALSE
-
 /obj/item/robot_module/robot/get_modules()
 	. = ..()
 	// Common items that all modules have.
@@ -240,11 +230,8 @@ GLOBAL_LIST_INIT(robot_modules, list(
 	var/mob/living/silicon/robot/R = loc
 	ASSERT(istype(R))
 
-	R.icon = 'icons/mob/robots_wide.dmi'
-	R.set_base_pixel_x(-16)
 	R.dogborg = TRUE
 	R.wideborg = TRUE
-	R.icon_x_dimension = 64
 	add_verb(R, list(
 		/mob/living/silicon/robot/proc/ex_reserve_refill,
 		/mob/living/silicon/robot/proc/rest_style
@@ -255,10 +242,6 @@ GLOBAL_LIST_INIT(robot_modules, list(
 /obj/item/robot_module/robot/quad/Reset(mob/living/silicon/robot/R)
 	. = ..()
 	// Reset a bunch of wideborg specific things.
-	R.pixel_x = initial(R.pixel_x)
-	R.pixel_y = initial(R.pixel_y)
-	R.icon = initial(R.icon)
-	R.base_pixel_x = initial(R.pixel_x)
 	remove_verb(R, list(
 		/mob/living/silicon/robot/proc/ex_reserve_refill,
 		/mob/living/proc/shred_limb,
@@ -267,12 +250,6 @@ GLOBAL_LIST_INIT(robot_modules, list(
 	R.scrubbing = FALSE
 	R.dogborg = FALSE
 	R.wideborg = FALSE
-
-/obj/item/robot_module/robot/quad/get_modules()
-	. = ..()
-	. |= list(
-		/obj/item/dogborg/boop_module //Boop people on the nose.
-	)
 
 /obj/item/robot_module/robot/quad/get_synths(mob/living/silicon/robot/R)
 	. = ..()

@@ -3,6 +3,8 @@
 
 /**
  * Base abstraction for silicon iconsets
+ *
+ * * Iconsets have no behavior.
  */
 /datum/prototype/robot_iconset
 	abstract_type = /datum/prototype/robot_iconset
@@ -25,6 +27,16 @@
 	/// * "-empty" if cell is out
 	/// * "-wires" if wires are exposed
 	var/icon_state_cover
+
+	/// Icon width
+	#warn hook
+	var/icon_dimension_x = 32
+	/// Icon height
+	#warn hook
+	var/icon_dimension_y = 32
+	/// x axis shift to the borg's sprite
+	#warn hook
+	var/base_pixel_x = 0
 
 	// todo: coloration system;
 	//       using greyscale sprites would be nice.

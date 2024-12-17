@@ -11,6 +11,10 @@
 	icon_state_indicator = "indicator-lighting"
 	icon_state_cover = "open"
 
+	base_pixel_x = -16
+	icon_dimension_x = 64
+	icon_dimension_y = 32
+
 	variations = list(
 		/datum/robot_iconset_variation/dead,
 		/datum/robot_iconset_variation/resting,
