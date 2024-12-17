@@ -693,10 +693,10 @@ GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
 			var/tankpath
 
 			// always extended now!
-			if(TRUE)
-				tankpath = text2path("[given_path]" + "/engi")
-				if(!tankpath) //Is it just that there's no /engi?
-					tankpath = text2path("[given_path]" + "/double")
+			// if(extendedtank)
+			tankpath = text2path("[given_path]" + "/engi")
+			if(!tankpath) //Is it just that there's no /engi?
+				tankpath = text2path("[given_path]" + "/double")
 
 			if(!tankpath)
 				tankpath = given_path

@@ -87,15 +87,15 @@
  */
 /datum/inventory/proc/equip_to_slots(obj/item/entity, list/datum/inventory_slot/slots, inv_op_flags, datum/event_args/actor/actor)
 	for(var/slot in slots)
-		switch((. = owner._equip_item(entity, inv_op_flags, slot, actor?.performer)))
+		switch(owner._equip_item(entity, inv_op_flags, slot, actor?.performer))
 			if(INV_RETURN_DELETED)
-				return
+				return INV_RETURN_DELETED
 			if(INV_RETURN_FAILED)
 				continue
 			if(INV_RETURN_RELOCATED)
-				return
+				return INV_RETURN_RELOCATED
 			if(INV_RETURN_SUCCESS)
-				return
+				return INV_RETURN_SUCCESS
 			else
 				CRASH("unimplemented inv return: [.]")
 	return INV_RETURN_FAILED
