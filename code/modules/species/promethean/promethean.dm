@@ -167,7 +167,7 @@ var/datum/species/shapeshifter/promethean/prometheans
 		/obj/item/storage/toolbox/lunchbox/syndicate
 	))	//Only pick the empty types
 
-	var/obj/item/storage/toolbox/lunchbox/L = new boxtype(get_turf(H))
+	var/obj/item/storage/toolbox/lunchbox/L = new boxtype
 	new /obj/item/reagent_containers/food/snacks/wrapped/proteinbar(L)
 	into_inv += L
 

@@ -69,8 +69,8 @@
 
 	has_organ = list(
 		O_BRAIN = /obj/item/organ/internal/mmi_holder/posibrain/nano,
-		O_ORCH = /obj/item/organ/internal/nano/orchestrator/loaded,
-		O_FACT = /obj/item/organ/internal/nano/refactory
+		O_ORCH = /obj/item/organ/internal/nano/orchestrator,
+		O_FACT = /obj/item/organ/internal/nano/refactory/loaded,
 		)
 
 	vision_organ = O_BRAIN

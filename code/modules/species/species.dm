@@ -691,7 +691,9 @@ GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
 		if(breath_type)
 			var/given_path = GLOB.species_oxygen_tank_by_gas[breath_type]
 			var/tankpath
-			if(extendedtank)
+
+			// always extended now!
+			if(TRUE)
 				tankpath = text2path("[given_path]" + "/engi")
 				if(!tankpath) //Is it just that there's no /engi?
 					tankpath = text2path("[given_path]" + "/double")
