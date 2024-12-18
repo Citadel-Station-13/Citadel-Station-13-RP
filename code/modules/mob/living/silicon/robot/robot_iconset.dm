@@ -38,6 +38,8 @@
 	#warn hook
 	var/base_pixel_x = 0
 
+	/// indicator lighting colorable?
+	var/indicator_lighting_coloration_mode = COLORATION_MODE_MULTIPLY
 	// todo: coloration system;
 	//       using greyscale sprites would be nice.
 
