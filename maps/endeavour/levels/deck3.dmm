@@ -3938,9 +3938,6 @@
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled/dark,
 /area/security/hallway)
-"cPI" = (
-/turf/simulated/wall/r_wall/prepainted,
-/area/security/nuke_storage)
 "cPN" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 8
@@ -7143,13 +7140,6 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/shuttle/mining_ship/general)
-"eIB" = (
-/obj/structure/catwalk,
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
-/turf/simulated/floor/plating,
-/area/space)
 "eIC" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
@@ -57962,7 +57952,7 @@ pRW
 pRW
 pRW
 pRW
-eIB
+pRW
 pRW
 pRW
 pRW
@@ -57973,10 +57963,10 @@ vRl
 vRl
 vRl
 vRl
-cPI
-cPI
-cPI
-cPI
+vRl
+vRl
+vRl
+vRl
 rBG
 mIk
 fju
