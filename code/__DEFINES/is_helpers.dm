@@ -21,9 +21,12 @@
 
 #define ismutableappearance(D) (istype(D, /mutable_appearance))
 
+#define isweakref(D) (istype(D, /datum/weakref))
+
 #define isimage(D) (istype(D, /image))
 
-#define isweakref(D) (istype(D, /datum/weakref))
+GLOBAL_VAR_INIT(magic_appearance_detecting_image, new /image) // appearances are awful to detect safely, but this seems to be the best way ~ninjanomnom
+#define isappearance(thing) (!isimage(thing) && !ispath(thing) && istype(GLOB.magic_appearance_detecting_image, thing))
 
 //Datums
 
