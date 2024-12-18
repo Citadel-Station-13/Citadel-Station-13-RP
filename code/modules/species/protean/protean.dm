@@ -177,7 +177,7 @@
 /datum/species/protean/apply_racial_gear(mob/living/carbon/for_target, list/into_box, list/into_inv)
 	var/obj/item/clothing/accessory/permit/nanotech/permit = new
 	permit.set_name(for_target.real_name)
-	into_box += permit
+	into_box?.Add(permit)
 	return ..()
 
 /datum/species/protean/get_blood_colour(var/mob/living/carbon/human/H)

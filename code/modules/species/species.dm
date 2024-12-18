@@ -512,6 +512,10 @@
 	//! LEGACY
 	is_subspecies = id != uid
 	superspecies_id = id
+	if(!id)
+		id = uid
+	if(!uid)
+		uid = id
 
 	if(hud_type)
 		hud = new hud_type()
