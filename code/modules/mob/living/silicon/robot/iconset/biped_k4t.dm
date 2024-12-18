@@ -4,7 +4,13 @@
 //                    Attributions                        //
 // All sprites used in this file made by Zydras           //
 
-/datum/prototype/robot_iconset/vale
-	abstract_type = /datum/prototype/robot_iconset/vale
+/datum/prototype/robot_iconset/biped_k4t
+	icon_state = "k4t"
+	icon_state_cover = "panel"
+	icon_state_indicator = "indicator"
 
-#warn impl
+	variations = list(
+		/datum/robot_iconset_variation/bellyup,
+		/datum/robot_iconset_variation/dead,
+		/datum/robot_iconset_variation/resting,
+	)

@@ -3954,7 +3954,7 @@
 #include "code\modules\mob\living\silicon\robot\iconset\biped_heavy.dm"
 #include "code\modules\mob\living\silicon\robot\iconset\biped_insekt.dm"
 #include "code\modules\mob\living\silicon\robot\iconset\biped_k4t.dm"
-#include "code\modules\mob\living\silicon\robot\iconset\biped_maidbot.dm"
+#include "code\modules\mob\living\silicon\robot\iconset\biped_maid.dm"
 #include "code\modules\mob\living\silicon\robot\iconset\biped_marina.dm"
 #include "code\modules\mob\living\silicon\robot\iconset\biped_meka.dm"
 #include "code\modules\mob\living\silicon\robot\iconset\biped_miss.dm"
