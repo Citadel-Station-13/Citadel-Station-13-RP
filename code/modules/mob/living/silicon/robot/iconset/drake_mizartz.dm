@@ -15,6 +15,8 @@
 	icon_dimension_x = 64
 	icon_dimension_y = 32
 
+	indicator_lighting_coloration_mode = COLORATION_MODE_MULTIPLY
+
 	variations = list(
 		/datum/robot_iconset_variation/dead,
 		/datum/robot_iconset_variation/resting,
@@ -30,6 +32,7 @@
 
 /datum/prototype/robot_iconset/drake_mizartz/janitor
 	icon_state = "janitor"
+	indicator_lighting_coloration_mode = COLORATION_MODE_NONE
 
 /datum/prototype/robot_iconset/drake_mizartz/security
 	icon_state = "security"

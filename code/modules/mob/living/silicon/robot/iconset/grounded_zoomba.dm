@@ -6,7 +6,9 @@
 
 	icon = 'icons/mob/robot/iconset/zoomba.dmi'
 	icon_state_indicator = "indicator-lighting"
-	icon_state_cover = "open"
+	icon_state_cover = "cover"
+
+	indicator_lighting_coloration_mode = COLORATION_MODE_MULTIPLY
 
 	variations = list(
 		/datum/robot_iconset_variation/dead,
