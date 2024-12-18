@@ -96,30 +96,46 @@
 
 	descriptors = list()
 
-/datum/species/zaddat/equip_survival_gear(mob/living/carbon/human/H)
-	..()
-	if(H.wear_suit) //get rid of job labcoats so they don't stop us from equipping the Shroud
-		qdel(H.wear_suit) //if you know how to gently set it in like, their backpack or whatever, be my guest
-	if(H.wear_mask)
-		qdel(H.wear_mask)
-	if(H.head)
-		qdel(H.head)
-
-	H.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/zaddat/(H), SLOT_ID_MASK) // mask has to come first or Shroud helmet will get in the way
-	H.equip_to_slot_or_del(new /obj/item/clothing/suit/space/void/zaddat/(H), SLOT_ID_SUIT)
-
-	var/obj/item/storage/toolbox/lunchbox/survival/L = new(H)
-	new /obj/item/reagent_containers/hypospray/autoinjector/biginjector/glucose(L)
-	new /obj/item/reagent_containers/hypospray/autoinjector/biginjector/glucose(L)
-	new /obj/item/reagent_containers/hypospray/autoinjector/biginjector/glucose(L)
-	new /obj/item/reagent_containers/hypospray/autoinjector/biginjector/glucose(L)
-	new /obj/item/reagent_containers/hypospray/autoinjector/biginjector/glucose(L)
-	new /obj/item/reagent_containers/hypospray/autoinjector/biginjector/glucose(L)
-
-	if(H.backbag == 1)
-		H.put_in_hands_or_del(L)
+/datum/species/zaddat/apply_survival_gear(mob/living/carbon/for_target, list/into_box, list/into_inv)
+	// ensure they have a valid mask
+	var/mask_type = /obj/item/clothing/mask/gas/zaddat
+	if(for_target)
+		var/obj/item/existing_mask = for_target.inventory.get_slot_single(/datum/inventory_slot/inventory/mask)
+		if(for_target.temporarily_remove_from_inventory(existing_mask, INV_OP_FORCE | INV_OP_SILENT))
+			into_inv?.Add(existing_mask)
+			var/obj/item/creating_mask = new mask_type
+			if(for_target.inventory.equip_to_slot_if_possible(creating_mask, /datum/inventory_slot/inventory/mask, INV_OP_SILENT | INV_OP_FLUFFLESS))
+			else
+				into_inv?.Add(creating_mask)
+		else
+			into_inv?.Add(mask_type)
 	else
-		H.equip_to_slot_or_del(L, /datum/inventory_slot/abstract/put_in_backpack)
+		into_inv?.Add(mask_type)
+
+	var/suit_path = /obj/item/clothing/suit/space/void/zaddat
+	if(for_target)
+		var/obj/item/existing_suit_slot = for_target.inventory.get_slot_single(/datum/inventory_slot/inventory/suit)
+		var/obj/item/creating_suit_slot = new suit_path
+		if(existing_suit_slot)
+			if(for_target.temporarily_remove_from_inventory(existing_suit_slot, INV_OP_FORCE | INV_OP_SILENT))
+				into_inv?.Add(existing_suit_slot)
+				if(!for_target.inventory.equip_to_slot_if_possible(creating_suit_slot, /datum/inventory_slot/inventory/suit, INV_OP_FORCE | INV_OP_SILENT))
+					into_inv?.Add(creating_suit_slot)
+			else
+				into_inv?.Add(creating_suit_slot)
+	else
+		into_inv?.Add(suit_path)
+
+	var/obj/item/storage/toolbox/lunchbox/survival/L = new
+	new /obj/item/reagent_containers/hypospray/autoinjector/biginjector/glucose(L)
+	new /obj/item/reagent_containers/hypospray/autoinjector/biginjector/glucose(L)
+	new /obj/item/reagent_containers/hypospray/autoinjector/biginjector/glucose(L)
+	new /obj/item/reagent_containers/hypospray/autoinjector/biginjector/glucose(L)
+	new /obj/item/reagent_containers/hypospray/autoinjector/biginjector/glucose(L)
+	new /obj/item/reagent_containers/hypospray/autoinjector/biginjector/glucose(L)
+	into_inv += L
+
+	return ..()
 
 /datum/species/zaddat/handle_environment_special(mob/living/carbon/human/H, datum/gas_mixture/environment, dt)
 

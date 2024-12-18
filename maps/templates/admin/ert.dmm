@@ -1285,7 +1285,7 @@
 "lv" = (
 /obj/structure/closet/wardrobe/ert,
 /obj/item/modular_computer/laptop,
-/obj/item/storage/box/survival/comp{
+/obj/item/storage/box/legacy_survival/comp{
 	starts_with = list(/obj/item/tool/prybar/red,/obj/item/clothing/glasses/goggles,/obj/item/reagent_containers/hypospray/autoinjector,/obj/item/stack/medical/bruise_pack,/obj/item/flashlight/glowstick,/obj/item/reagent_containers/food/snacks/wrapped/proteinbar,/obj/item/clothing/mask/breath,/obj/item/tank/emergency/oxygen/engi)
 	},
 /obj/effect/floor_decal/industrial/outline/grey,
@@ -2447,7 +2447,7 @@
 "sz" = (
 /obj/structure/closet/wardrobe/ert,
 /obj/item/modular_computer/laptop,
-/obj/item/storage/box/survival/comp{
+/obj/item/storage/box/legacy_survival/comp{
 	starts_with = list(/obj/item/tool/prybar/red,/obj/item/clothing/glasses/goggles,/obj/item/reagent_containers/hypospray/autoinjector,/obj/item/stack/medical/bruise_pack,/obj/item/flashlight/glowstick,/obj/item/reagent_containers/food/snacks/wrapped/proteinbar,/obj/item/clothing/mask/breath,/obj/item/tank/emergency/oxygen/engi)
 	},
 /obj/machinery/light,
@@ -4257,7 +4257,7 @@
 "Gw" = (
 /obj/structure/closet/wardrobe/ert,
 /obj/item/modular_computer/laptop,
-/obj/item/storage/box/survival/comp{
+/obj/item/storage/box/legacy_survival/comp{
 	starts_with = list(/obj/item/tool/prybar/red,/obj/item/clothing/glasses/goggles,/obj/item/reagent_containers/hypospray/autoinjector,/obj/item/stack/medical/bruise_pack,/obj/item/flashlight/glowstick,/obj/item/reagent_containers/food/snacks/wrapped/proteinbar,/obj/item/clothing/mask/breath,/obj/item/tank/emergency/oxygen/engi)
 	},
 /obj/machinery/light{

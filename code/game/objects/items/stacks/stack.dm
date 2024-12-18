@@ -52,6 +52,9 @@
 	/// Determines whether the item should update it's sprites based on amount.
 	var/no_variants = TRUE
 
+	/// skip default / old update_icon() handling
+	var/skip_legacy_icon_update = FALSE
+
 	/// Will the item pass its own color var to the created item? Dyed cloth, wood, etc.
 	var/pass_color = FALSE
 	/// Will the stack merge with other stacks that are different colors? (Dyed cloth, wood, etc).
@@ -77,6 +80,8 @@
 	update_icon()
 
 /obj/item/stack/update_icon()
+	if(skip_legacy_icon_update)
+		return
 	if(no_variants)
 		icon_state = initial(icon_state)
 	else

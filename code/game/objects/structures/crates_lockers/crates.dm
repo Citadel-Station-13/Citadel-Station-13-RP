@@ -564,7 +564,7 @@
 
 	starts_with = list(
 		/obj/item/stack/material/plasteel = 10,
-		/obj/fiftyspawner/steel = 5,
+		/obj/item/stack/material/steel/full_stack = 5,
 		/obj/fiftyspawner/glass = 4,
 		/obj/item/cell/high = 4,
 		/obj/item/stack/cable_coil = 2,

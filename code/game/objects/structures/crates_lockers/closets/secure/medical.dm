@@ -145,7 +145,7 @@
 		/obj/item/radio/headset/heads/cmo,
 		/obj/item/radio/headset/heads/cmo/alt,
 		/obj/item/flash,
-		/obj/item/storage/hypokit/advanced/cmo,
+		/obj/item/storage/hypokit/advanced/cmo/full/loaded,
 		/obj/item/clothing/suit/storage/hooded/wintercoat/medical/cmo,
 		/obj/item/clothing/shoes/boots/winter/medical,
 		/obj/item/storage/box/freezer,

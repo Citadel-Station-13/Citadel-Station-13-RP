@@ -67,8 +67,6 @@
 	return H
 
 /datum/ghostrole_instantiator/human/Equip(client/C, mob/M, list/params)
-	var/mob/living/carbon/human/H = M
-
 	// H.dna.species.before_equip_job(null, H)
 
 	var/datum/outfit/O = GetOutfit(C, M, params)
@@ -76,7 +74,6 @@
 		O = new O
 	O.equip(M)
 
-	H.species.equip_survival_gear(H, TRUE, TRUE)
 	// H.dna.species.after_equip_job(null, H)
 
 /**

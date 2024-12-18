@@ -512,6 +512,10 @@
 	//! LEGACY
 	is_subspecies = id != uid
 	superspecies_id = id
+	if(!id)
+		id = uid
+	if(!uid)
+		uid = id
 
 	if(hud_type)
 		hud = new hud_type()
@@ -630,50 +634,81 @@ GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
 	GAS_ID_CARBON_DIOXIDE = /obj/item/tank/emergency/carbon_dioxide
 ))
 
-/datum/species/proc/equip_survival_gear(var/mob/living/carbon/human/H,var/extendedtank = 0,var/comprehensive = 0)
-	var/boxtype = /obj/item/storage/box/survival //Default survival box
+/**
+ * Injects spawn descriptors into `into_box` and `into_inv` lists. Both must be provided.
+ *
+ * Descriptors can be;
+ * * a typepath
+ * * an anonymous type
+ *
+ * Notes:
+ * * The `into_box` and `into_inv` lists should always be added to via `?.Add()`, incase they are null.
+ * * Returned lists **must** be handled. If you aren't equipping anything, properly qdel() any spawned items, or
+ *   a memory leak will result.
+ *
+ * @params
+ * * for_target - (optional) person who is getting survival gear. if this is not provided, default
+ *                survival gear that would go on them through inventory calls should be put into `into_inv`.
+ * * into_box - things to put into their survival kit. do not put anything large in here.
+ * * into_inv - things to make sure they have somewhere on, or near them. anything large can be put in here.
+ *              things will not necessarily be put in their backpack, as an example a wheelchair would be put under them.
+ */
+/datum/species/proc/apply_racial_gear(mob/living/carbon/for_target, list/into_box, list/into_inv)
+	return
 
-	var/synth = H.isSynthetic()
+/**
+ * Injects spawn descriptors into `into_box` and `into_inv` lists. Both must be provided.
+ *
+ * Descriptors can be;
+ * * a typepath
+ * * an anonymous type
+ *
+ * Notes:
+ * * The `into_box` and `into_inv` lists should always be added to via `?.Add()`, incase they are null.
+ * * Returned lists **must** be handled. If you aren't equipping anything, properly qdel() any spawned items, or
+ *   a memory leak will result.
+ *
+ * @params
+ * * for_target - (optional) person who is getting survival gear. if this is not provided, default
+ *                survival gear that would go on them through inventory calls should be put into `into_inv`.
+ * * into_box - things to put into their survival kit. do not put anything large in here.
+ * * into_inv - things to make sure they have somewhere on, or near them. anything large can be put in here.
+ *              things will not necessarily be put in their backpack, as an example a wheelchair would be put under them.
+ */
+/datum/species/proc/apply_survival_gear(mob/living/carbon/for_target, list/into_box, list/into_inv)
+	into_box?.Add(/obj/item/tool/prybar/red)
 
-	//Empty box for synths
-	if(synth)
-		boxtype = /obj/item/storage/box/survival/synth
+	// todo: crank flashlight + prybar combo?
+	into_box?.Add(/obj/item/flashlight/flare/survival)
 
-	//Special box with extra equipment
-	else if(comprehensive)
-		boxtype = /obj/item/storage/box/survival/comp
+	if(for_target.isSynthetic())
+		into_box?.Add(/obj/item/fbp_backup_cell)
+	else
+		into_box?.Add(
+			/obj/item/clothing/mask/breath,
+			/obj/item/stack/medical/bruise_pack,
+			/obj/item/reagent_containers/hypospray/autoinjector,
+			/obj/item/reagent_containers/food/snacks/wrapped/proteinbar,
+			/obj/item/clothing/glasses/goggles,
+		)
 
-	//Create the box
-	var/obj/item/storage/box/box = new boxtype(H)
+		if(breath_type)
+			var/given_path = GLOB.species_oxygen_tank_by_gas[breath_type]
+			var/tankpath
 
-	//If not synth, they get an air tank (if they breathe)
-	if(!synth && breath_type)
-		//Create a tank (if such a thing exists for this species)
-		var/given_path = GLOB.species_oxygen_tank_by_gas[breath_type]
-		var/tankpath
-		if(extendedtank)
+			// always extended now!
+			// if(extendedtank)
 			tankpath = text2path("[given_path]" + "/engi")
 			if(!tankpath) //Is it just that there's no /engi?
 				tankpath = text2path("[given_path]" + "/double")
 
-		if(!tankpath)
-			tankpath = given_path
+			if(!tankpath)
+				tankpath = given_path
 
-		if(tankpath)
-			new tankpath(box)
-		else
-			stack_trace("Could not find a tank path for breath type [breath_type], given path was [given_path].")
-
-	//If they are synth, they get a smol battery
-	else if(synth)
-		new /obj/item/fbp_backup_cell(box)
-
-	box.obj_storage.fit_to_contents(no_shrink = TRUE)
-
-	if(H.backbag == 1)
-		H.equip_to_slot_or_del(box, /datum/inventory_slot/abstract/hand/right, INV_OP_SILENT | INV_OP_FLUFFLESS)
-	else
-		H.equip_to_slot_or_del(box, /datum/inventory_slot/abstract/put_in_backpack, INV_OP_FORCE | INV_OP_SILENT)
+			if(tankpath)
+				into_box?.Add(tankpath)
+			else
+				stack_trace("Could not find a tank path for breath type [breath_type], given path was [given_path].")
 
 /**
  * called to ensure organs are consistent with our species's
