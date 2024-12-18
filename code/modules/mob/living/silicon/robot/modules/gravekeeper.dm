@@ -7,7 +7,6 @@
 
 /obj/item/robot_module/robot/gravekeeper
 	name = "gravekeeper robot module"
-	hide_on_manifest = 1
 	sprites = list(
 		"Drone" = "drone-gravekeeper",
 		"Sleek" = "sleek-gravekeeper"

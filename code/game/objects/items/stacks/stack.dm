@@ -53,7 +53,9 @@
 
 	/// use a synthesizer datum
 	/// * this is unreferenced on Destroy(). make sure the synthesizer doesn't reference us.
-	var/datum/stack_synth/synthesized
+	/// * this will either be a single `/datum/stack_synth`, or a list of
+	///   them with a multiplier for the amount to draw from each.
+	var/list/datum/stack_synth/synthesized
 
 	/// Will the item pass its own color var to the created item? Dyed cloth, wood, etc.
 	var/pass_color = FALSE
@@ -427,3 +429,10 @@
 		return FALSE
 	update_icon()
 	return TRUE
+
+//* Synthesizer Support *//
+
+/obj/item/stack/proc/set_synthesized(new_value)
+	if(istype(new_value, /datum/stack_synth))
+	else if(islist(new_value))
+	#warn impl

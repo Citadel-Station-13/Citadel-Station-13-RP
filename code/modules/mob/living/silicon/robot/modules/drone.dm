@@ -7,7 +7,6 @@
 
 /obj/item/robot_module/drone
 	name = "drone module"
-	hide_on_manifest = 1
 	no_slip = 1
 	networks = list(NETWORK_ENGINEERING)
 
@@ -71,7 +70,6 @@
 
 /obj/item/robot_module/drone/construction
 	name = "construction drone module"
-	hide_on_manifest = 1
 	channels = list("Engineering" = 1)
 	languages = list()
 

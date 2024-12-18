@@ -3,8 +3,11 @@
 
 /**
  * Synthesizer define for stacks to draw from.
+ *
+ * * Despite being called synths, these can also just be
+ *   abstracted storage. This is a very modular system.
  */
 /datum/stack_synth
-	
+
 
 #warn impl

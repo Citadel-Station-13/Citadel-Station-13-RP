@@ -3,6 +3,15 @@
 	allowed_frames = list(
 	)
 
+/datum/prototype/robot_module/nanotrasen/engineering/get_stack_synth_types()
+	. = ..()
+	. += /datum/stack_synth/robot_stack_synth/steel
+	. += /datum/stack_synth/robot_stack_synth/glass
+	. += /datum/stack_synth/robot_stack_synth/wire
+	. += /datum/stack_synth/robot_stack_synth/plasteel
+	. += /datum/stack_synth/robot_stack_synth/wood
+	. += /datum/stack_synth/robot_stack_synth/plastic
+
 #warn translate chassis below
 
 /obj/item/robot_module/robot/engineering
@@ -63,15 +72,6 @@
 		/obj/item/gripper/no_use/loader,
 		/obj/item/pipe_dispenser
 	)
-
-/obj/item/robot_module/robot/engineering/get_synths(mob/living/silicon/robot/R)
-	. = ..()
-	MATTER_SYNTH(MATSYN_METAL, metal, 40000)
-	MATTER_SYNTH(MATSYN_GLASS, glass, 40000)
-	MATTER_SYNTH(MATSYN_PLASTEEL, plasteel, 20000)
-	MATTER_SYNTH(MATSYN_WOOD, wood, 40000)
-	MATTER_SYNTH(MATSYN_PLASTIC, plastic, 40000)
-	MATTER_SYNTH(MATSYN_WIRE, wire)
 
 /obj/item/robot_module/robot/engineering/handle_special_module_init(mob/living/silicon/robot/R)
 	. = ..()
@@ -136,16 +136,6 @@
 		/obj/item/pipe_dispenser,
 		/obj/item/gripper/circuit
 	)
-
-/obj/item/robot_module/robot/quad/engi/get_synths(mob/living/silicon/robot/R)
-	. = ..()
-	//Painfully slow charger regen but high capacity. Also starts with low amount.
-	MATTER_SYNTH_WITH_NAME(MATSYN_METAL   , metal   , "Steel reserves"   , 40000)
-	MATTER_SYNTH_WITH_NAME(MATSYN_GLASS   , glass   , "Glass reserves"   , 40000)
-	MATTER_SYNTH_WITH_NAME(MATSYN_WOOD    , wood    , "Wood reserves"    , 40000)
-	MATTER_SYNTH_WITH_NAME(MATSYN_PLASTIC , plastic , "Plastic reserves" , 40000)
-	MATTER_SYNTH_WITH_NAME(MATSYN_PLASTEEL, plasteel, "Plasteel reserves", 20000)
-	MATTER_SYNTH(MATSYN_WIRE, wire)
 
 /obj/item/robot_module/robot/quad/engi/handle_special_module_init(mob/living/silicon/robot/R)
 	. = ..()

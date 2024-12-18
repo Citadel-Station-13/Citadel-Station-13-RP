@@ -1,16 +1,3 @@
-/obj/projectile/beam/disable
-    name = "disabler beam"
-    icon_state = "omnilaser"
-    nodamage = 1
-    taser_effect = 1
-    agony = 100 //One shot stuns for the time being until adjustments are fully made.
-    damage_type = DAMAGE_TYPE_HALLOSS
-    light_color = "#00CECE"
-
-    muzzle_type = /obj/effect/projectile/muzzle/laser_omni
-    tracer_type = /obj/effect/projectile/tracer/laser_omni
-    impact_type = /obj/effect/projectile/impact/laser_omni
-
 /obj/projectile/beam/stun
 	agony = 35
 

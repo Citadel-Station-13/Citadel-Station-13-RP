@@ -3,6 +3,11 @@
 	allowed_frames = list(
 	)
 
+/datum/prototype/robot_module/nanotrasen/research/get_stack_synth_types()
+	. = ..()
+	. += /datum/stack_synth/robot_stack_synth/nanopaste
+	. += /datum/stack_synth/robot_stack_synth/wire
+
 #warn translate chassis below
 
 /obj/item/robot_module/robot/research
@@ -25,11 +30,6 @@
 		"ZOOM-BA" = "zoomba-research",
 		"W02M" = "worm-engineering"
 	)
-
-/obj/item/robot_module/robot/research/get_synths()
-	. = ..()
-	MATTER_SYNTH(MATSYN_NANITES, nanite, 10000)
-	MATTER_SYNTH(MATSYN_WIRE, wire)
 
 /obj/item/robot_module/robot/research/get_modules()
 	. = ..()
@@ -60,14 +60,6 @@
 /obj/item/robot_module/robot/research/handle_special_module_init(mob/living/silicon/robot/R)
 	. = ..()
 	src.emag = new /obj/item/borg/combat/shield(src)
-
-	var/obj/item/stack/nanopaste/N = new /obj/item/stack/nanopaste(src)
-	N.uses_charge = 1
-	N.charge_costs = list(1000)
-	N.synths = list(synths_by_kind[MATSYN_NANITES])
-	src.modules += N
-
-	CYBORG_STACK(cable_coil/cyborg, list(MATSYN_WIRE))
 
 /obj/item/robot_module/robot/research/respawn_consumable(var/mob/living/silicon/robot/R, var/amount)
 

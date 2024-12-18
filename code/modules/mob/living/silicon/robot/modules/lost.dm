@@ -7,7 +7,6 @@
 
 /obj/item/robot_module/robot/lost
 	name = "lost robot module"
-	hide_on_manifest = 1
 	sprites = list(
 		"Drone" = "drone-lost"
 	)
@@ -50,7 +49,6 @@
 
 /obj/item/robot_module/robot/quad/stray
 	name = "stray robot module"
-	hide_on_manifest = 1
 	sprites = list(
 		"Stray" = "stray"
 	)

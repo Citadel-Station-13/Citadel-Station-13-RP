@@ -28,4 +28,5 @@
  * The caller must handle all of these.
  * Unused item instances must be qdel'd.
  */
+#warn hook
 /datum/prototype/robot_chassis/proc/create_mounted_item_descriptors(list/normal_out, list/emag_out)

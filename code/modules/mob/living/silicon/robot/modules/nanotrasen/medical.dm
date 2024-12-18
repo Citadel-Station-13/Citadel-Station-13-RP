@@ -3,6 +3,12 @@
 	allowed_frames = list(
 	)
 
+/datum/prototype/robot_module/nanotrasen/medical/get_stack_synth_types()
+	. = ..()
+	. += /datum/stack_synth/robot_stack_synth/bandages/advanced
+	. += /datum/stack_synth/robot_stack_synth/ointment/advanced
+	. += /datum/stack_synth/robot_stack_synth/nanopaste
+
 #warn translate chassis below
 
 /obj/item/robot_module/robot/medical
@@ -67,34 +73,12 @@
 		/obj/item/dogborg/mirrortool
 	)
 
-/obj/item/robot_module/robot/medical/surgeon/get_synths(mob/living/silicon/robot/R)
-	. = ..()
-	MATTER_SYNTH(MATSYN_DRUGS, medicine, 15000)
-
 /obj/item/robot_module/robot/medical/surgeon/handle_special_module_init(mob/living/silicon/robot/R)
 	. = ..()
 
 	src.emag = new /obj/item/reagent_containers/spray(src)
 	src.emag.reagents.add_reagent("pacid", 250)
 	src.emag.name = "Polyacid spray"
-
-	var/obj/item/stack/medical/advanced/ointment/O = new /obj/item/stack/medical/advanced/ointment(src)
-	O.uses_charge = 1
-	O.charge_costs = list(1000)
-	O.synths = list(synths_by_kind[MATSYN_DRUGS])
-	. += O
-
-	var/obj/item/stack/nanopaste/N = new /obj/item/stack/nanopaste(src)
-	N.uses_charge = 1
-	N.charge_costs = list(1000)
-	N.synths = list(synths_by_kind[MATSYN_DRUGS])
-	. += N
-
-	var/obj/item/stack/medical/advanced/bruise_pack/B = new /obj/item/stack/medical/advanced/bruise_pack(src)
-	B.uses_charge = 1
-	B.charge_costs = list(1000)
-	B.synths = list(synths_by_kind[MATSYN_DRUGS])
-	. += B
 
 /obj/item/robot_module/robot/medical/surgeon/respawn_consumable(var/mob/living/silicon/robot/R, var/amount)
 
@@ -154,10 +138,6 @@
 		/obj/item/dogborg/mirrortool
 	)
 
-/obj/item/robot_module/robot/quad/medi/get_synths(mob/living/silicon/robot/R)
-	. = ..()
-	MATTER_SYNTH(MATSYN_DRUGS, medicine, 15000)
-
 /obj/item/robot_module/robot/quad/medi/handle_special_module_init(mob/living/silicon/robot/R)
 	. = ..()
 	src.emag 	 = new /obj/item/dogborg/pounce(src) //Pounce
@@ -169,23 +149,3 @@
 	var/obj/item/dogborg/sleeper/B = new /obj/item/dogborg/sleeper(src) //So they can nom people and heal them
 	B.water = synths_by_kind[MATSYN_WATER]
 	src.modules += B
-
-	var/medicine = synths_by_kind[MATSYN_DRUGS]
-
-	var/obj/item/stack/nanopaste/P = new /obj/item/stack/nanopaste(src)
-	P.uses_charge = 1
-	P.charge_costs = list(1000)
-	P.synths = list(medicine)
-	. += P
-
-	var/obj/item/stack/medical/advanced/ointment/K = new /obj/item/stack/medical/advanced/ointment(src)
-	K.uses_charge = 1
-	K.charge_costs = list(1000)
-	K.synths = list(medicine)
-	. += K
-
-	var/obj/item/stack/medical/advanced/bruise_pack/L = new /obj/item/stack/medical/advanced/bruise_pack(src)
-	L.uses_charge = 1
-	L.charge_costs = list(1000)
-	L.synths = list(medicine)
-	. += L

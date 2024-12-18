@@ -48,4 +48,18 @@
  *
  * * /obj/item/stack's are not allowed in here. Put those in `create_stacks()`.
  */
+#warn hook
 /datum/prototype/robot_module/proc/create_mounted_item_descriptors(list/normal_out, list/emag_out)
+	if(normal_out)
+		normal_out |= list(
+			/obj/item/flash,
+		)
+
+/**
+ * Returns a list of `/datum/stack_synth/robot_stack_synth` types to make.
+ *
+ * @return list()
+ */
+#warn hook
+/datum/prototype/robot_module/proc/get_stack_synth_types()
+	return list()

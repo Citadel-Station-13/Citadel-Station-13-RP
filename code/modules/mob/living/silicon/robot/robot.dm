@@ -76,7 +76,7 @@
 	#warn impl
 	var/datum/prototype/robot_iconset/iconset
 	#warn impl
-	var/datum/prototype/robot_module/module
+	var/datum/prototype/robot_module/module_new
 
 	//* Inventory *//
 	inventory = /datum/inventory

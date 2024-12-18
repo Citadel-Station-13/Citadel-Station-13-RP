@@ -3,6 +3,22 @@
 	allowed_frames = list(
 	)
 
+/datum/prototype/robot_module/nanotrasen/logistics/create_mounted_item_descriptors(list/normal_out, list/emag_out)
+	if(normal_out)
+		normal_out |= list(
+			/obj/item/borg/sight/material,
+			/obj/item/tool/wrench/cyborg,
+			/obj/item/tool/screwdriver/cyborg,
+			/obj/item/storage/bag/ore,
+			/obj/item/pickaxe/borgdrill,
+			/obj/item/gun/energy/kinetic_accelerator/cyborg,
+			/obj/item/storage/bag/sheetsnatcher/borg,
+			/obj/item/gripper/miner,
+			/obj/item/mining_scanner,
+			/obj/item/pickaxe/plasmacutter,
+		)
+	return ..()
+
 #warn translate chassis below
 
 /obj/item/robot_module/robot/miner
@@ -33,28 +49,6 @@
 		"W02M" = "worm-miner"
 	)
 
-/obj/item/robot_module/robot/miner/get_modules()
-	. = ..()
-	. |= list(
-		/obj/item/borg/sight/material,
-		/obj/item/tool/wrench/cyborg,
-		/obj/item/tool/screwdriver/cyborg,
-		/obj/item/storage/bag/ore,
-		/obj/item/pickaxe/borgdrill,
-		/obj/item/gun/energy/kinetic_accelerator/cyborg,
-		/obj/item/storage/bag/sheetsnatcher/borg,
-		/obj/item/gripper/miner,
-		/obj/item/mining_scanner
-	)
-
-/obj/item/robot_module/robot/miner/handle_special_module_init(mob/living/silicon/robot/R)
-	. = ..()
-
-	// TODO: Only one emag module is supported right now.
-	src.emag = new /obj/item/pickaxe/plasmacutter(src)
-	// src.emag = new /obj/item/pickaxe/diamonddrill(src)
-	// src.emag = new /obj/item/melee/disruptor/borg(src)
-
 /obj/item/robot_module/robot/quad/miner
 	name = "Mining Quadruped module"
 	sprites = list(
@@ -71,26 +65,8 @@
 /obj/item/robot_module/robot/quad/miner/get_modules()
 	. = ..()
 	. |= list(
-		/obj/item/borg/sight/material,
-		/obj/item/tool/wrench/cyborg,
-		/obj/item/tool/screwdriver/cyborg,
-		/obj/item/storage/bag/ore,
-		/obj/item/pickaxe/borgdrill,
-		/obj/item/gun/energy/kinetic_accelerator/cyborg,
-		/obj/item/storage/bag/sheetsnatcher/borg,
-		/obj/item/gripper/miner,
-		/obj/item/mining_scanner,
 		/obj/item/dogborg/jaws/small
 	)
-
-// In a nutshell, basically service/butler robot but in dog form.
-/obj/item/robot_module/robot/quad/miner/handle_special_module_init(mob/living/silicon/robot/R)
-	. = ..()
-
-	// TODO: Only one emag module is supported right now.
-	src.emag = new /obj/item/pickaxe/plasmacutter(src)
-	// src.emag = new /obj/item/pickaxe/diamonddrill(src)
-	// src.emag = new /obj/item/melee/disruptor/borg(src)
 
 /obj/item/robot_module/robot/quad/miner/handle_special_module_init(mob/living/silicon/robot/R)
 	. = ..()
