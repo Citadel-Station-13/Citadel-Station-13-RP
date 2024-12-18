@@ -56,10 +56,10 @@
 		)
 
 /**
- * Returns a list of `/datum/stack_synth/robot_stack_synth` types to make.
+ * Provision a robot's resource store.
  *
- * @return list()
+ * * All of the store's lists should be initalized, even if they're generally lazy.
+ *   You can lazyclearlist it later.
  */
-#warn hook
-/datum/prototype/robot_module/proc/get_stack_synth_types()
-	return list()
+/datum/prototype/robot_module/proc/provision_resource_store(datum/robot_resource_store/store)
+	return

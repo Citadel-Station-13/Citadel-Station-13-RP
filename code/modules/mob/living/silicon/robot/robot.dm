@@ -71,6 +71,7 @@
 	can_be_antagged = TRUE
 
 	//* Composition *//
+
 	#warn impl
 	var/datum/prototype/robot_chassis/chassis
 	#warn impl
@@ -79,9 +80,14 @@
 	var/datum/prototype/robot_module/module_new
 
 	//* Inventory *//
+
 	inventory = /datum/inventory
+	/// Resources store
+	#warn make on new
+	var/datum/robot_resource_store/resources
 
 	//* State *//
+
 	/// If set, we are a blank slate, and are allowed to pick a module and frame.
 	var/can_repick_module = TRUE
 

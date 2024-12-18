@@ -3,6 +3,9 @@
 	allowed_frames = list(
 	)
 
+/datum/prototype/robot_module/cybersun/sapper/provision_resource_store(datum/robot_resource_store/store)
+	..()
+
 #warn translate chassis below
 /obj/item/robot_module/robot/syndicate/mechanist
 	name = "mechanist robot module"

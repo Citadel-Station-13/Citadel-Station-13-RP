@@ -3,6 +3,9 @@
 	allowed_frames = list(
 	)
 
+/datum/prototype/robot_module/nanotrasen/research/provision_resource_store(datum/robot_resource_store/store)
+	..()
+
 /datum/prototype/robot_module/nanotrasen/research/get_stack_synth_types()
 	. = ..()
 	. += /datum/stack_synth/robot_stack_synth/nanopaste
