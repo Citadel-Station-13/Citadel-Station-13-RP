@@ -1,3 +1,11 @@
+/**
+ * ## Paths
+ *
+ * For an example of `/obj/item/storage/box/gimmicks`,
+ * * /obj/item/storage/box/gimmicks should be empty
+ * * /obj/item/storage/box/gimmicks/full should have preloaded contents in starts_with / procs
+ * * /obj/item/storage/box/gimmicks/full/loaded should have filled containers, as an example, if it's a box of reagents or something.
+ */
 /obj/item/storage
 	name = "storage"
 	icon = 'icons/obj/storage.dmi'
