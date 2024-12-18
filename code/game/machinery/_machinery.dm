@@ -107,29 +107,33 @@
 	rad_flags = RAD_BLOCK_CONTENTS
 	// todo: anchored / unanchored should be replaced by movement force someday, how to handle that?
 
-	//* Construction / Deconstruction
+	//* Construction / Deconstruction *//
+
 	/// allow default part replacement. null for disallowed, number for time.
 	var/default_part_replacement = 0
+
 	/// Can be constructed / deconstructed by players by default. null for off, number for time needed. Panel must be open.
 	//  todo: proc for allow / disallow, refactor
 	var/default_deconstruct
-	/// Can have panel open / closed by players by default. null for off, number for time needed. You usually want 0 for instant.
-	var/default_panel
-	/// Can be anchored / unanchored by players without deconstructing by default with a wrench. null for off, number for time needed.
-	//  todo: proc for allow / disallow, refactor, unify with can_be_unanchored
-	var/default_unanchor
 	/// default deconstruct requires panel open
 	var/default_deconstruct_requires_panel_open = TRUE
 	/// tool used for deconstruction
 	var/tool_deconstruct = TOOL_CROWBAR
+
+	/// Can have panel open / closed by players by default. null for off, number for time needed. You usually want 0 for instant.
+	var/default_panel
 	/// tool used for panel open
 	var/tool_panel = TOOL_SCREWDRIVER
-	/// tool used for unanchor
-	var/tool_unanchor = TOOL_WRENCH
 	/// default icon state overlay for panel open
 	var/panel_icon_state
 	/// is the maintenance panel open?
 	var/panel_open = FALSE
+
+	/// Can be anchored / unanchored by players without deconstructing by default with a wrench. null for off, number for time needed.
+	//  todo: proc for allow / disallow, refactor, unify with can_be_unanchored
+	var/default_unanchor
+	/// tool used for unanchor
+	var/tool_unanchor = TOOL_WRENCH
 
 	//* unsorted
 	var/machine_stat = 0
