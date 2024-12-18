@@ -29,10 +29,10 @@ avoid code duplication. This includes items that may sometimes act as a standard
 	return A.attackby(src, user, params, clickchain_flags, attack_modifier)
 
 // No comment
-/atom/proc/attackby(obj/item/I, mob/user, list/params, clickchain_flags, damage_multiplier)
+/atom/proc/attackby(obj/item/I, mob/user, list/params, clickchain_flags, damage_multiplier = 1)
 	return I.standard_melee_attack(src, user, clickchain_flags, params, damage_multiplier, user.zone_sel?.selecting, user.a_intent)
 
-/mob/living/attackby(obj/item/I, mob/user, list/params, clickchain_flags, damage_multiplier)
+/mob/living/attackby(obj/item/I, mob/user, list/params, clickchain_flags, damage_multiplier = 1)
 	if(can_operate(src) && user.a_intent != INTENT_HARM && I.do_surgery(src,user))
 		return NONE
 	if(attempt_vr(src,"vore_attackby",args))

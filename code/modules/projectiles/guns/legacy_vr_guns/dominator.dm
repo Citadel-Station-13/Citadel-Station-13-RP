@@ -25,7 +25,7 @@
 
 
 /obj/item/gun/energy/gun/fluff/dominator/special_check(mob/user)
-	if(!emagged && mode_name == "lethal" && get_security_level() == "green")
+	if(!emagged && legacy_get_firemode()?.name == "lethal" && get_security_level() == "green")
 		to_chat(user,"<span class='warning'>The trigger refuses to depress while on the lethal setting under security level green!</span>")
 		return FALSE
 

@@ -83,7 +83,7 @@
 	return 1
 
 /obj/item/clothing/head/update_icon()
-	var/mob/living/carbon/human/H = worn_mob()
+	var/mob/living/carbon/human/H = get_worn_mob()
 
 	if(on)
 		// Generate object icon.

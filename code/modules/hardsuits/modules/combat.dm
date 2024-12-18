@@ -145,10 +145,10 @@
 		return 0
 
 	if(!target)
-		gun.attack_self(holder.wearer)
-		return
+		gun.switch_firemodes(holder.wearer)
+		return 1
 
-	gun.Fire(target,holder.wearer)
+	gun.start_firing_cycle_async(holder.wearer, get_centered_entity_angle(holder.wearer, target), NONE, null, target, new /datum/event_args/actor(holder.wearer))
 	return 1
 
 /obj/item/hardsuit_module/mounted/egun

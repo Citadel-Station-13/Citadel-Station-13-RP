@@ -1,3 +1,6 @@
+/**
+ * A gun that throws things instead of, well, firing them.
+ */
 /obj/item/gun/launcher
 	name = "launcher"
 	desc = "A device that launches things."
@@ -18,3 +21,12 @@
 	projectile.forceMove(get_turf(user))
 	projectile.throw_at_old(target, throw_distance, release_force, user)
 	return 1
+
+/**
+ * Returns the next /atom/movable to throw, or a GUN_FIRED_* for fail satus.
+ *
+ * * This should clear the throwable from our references.
+ */
+/obj/item/gun/launcher/proc/consume_next_throwable(iteration, firing_flags, datum/firemode/firemode, datum/event_args/actor/actor, atom/firer)
+	. = GUN_FIRED_FAIL_UNKNOWN
+	CRASH("attempted to consume_next_throwable on base /gun/launcher")

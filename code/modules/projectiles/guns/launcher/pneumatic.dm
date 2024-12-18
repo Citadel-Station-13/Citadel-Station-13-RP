@@ -7,7 +7,9 @@
 	w_class = WEIGHT_CLASS_HUGE
 	heavy = TRUE
 	fire_sound_text = "a loud whoosh of moving air"
-	fire_delay = 50
+	firemodes = /datum/firemode{
+		cycle_cooldown = 5 SECONDS;
+	}
 	fire_sound = 'sound/weapons/grenade_launcher.ogg' // Formerly tablehit1.ogg but I like this better -Ace
 	one_handed_penalty = 10
 
@@ -83,12 +85,12 @@
 		return
 	eject_tank(user)
 
-/obj/item/gun/launcher/pneumatic/consume_next_projectile(mob/user=null)
+/obj/item/gun/launcher/pneumatic/consume_next_throwable(iteration, firing_flags, datum/firemode/firemode, datum/event_args/actor/actor, atom/firer)
 	if(!item_storage.contents.len)
-		return null
+		return GUN_FIRED_FAIL_EMPTY
 	if (!tank)
-		to_chat(user, "There is no gas tank in [src]!")
-		return null
+		actor?.chat_feedback(SPAN_WARNING("There's no gas tank in [src]!"), src)
+		return GUN_FIRED_FAIL_INERT
 
 	var/environment_pressure = 10
 	var/turf/T = get_turf(src)
@@ -99,8 +101,9 @@
 
 	fire_pressure = (tank.air_contents.return_pressure() - environment_pressure)*pressure_setting/100
 	if(fire_pressure < 10)
-		to_chat(user, "There isn't enough gas in the tank to fire [src].")
-		return null
+		// todo: ughhhh this should misfire not do this
+		actor?.chat_feedback(SPAN_WARNING("There's not enough gas in the tank to fire [src]!"), src)
+		return GUN_FIRED_FAIL_INERT
 
 	var/obj/item/launched = item_storage.contents[1]
 	item_storage.obj_storage.remove(launched, src)
@@ -121,14 +124,14 @@
 	else
 		release_force = 0
 
-/obj/item/gun/launcher/pneumatic/handle_post_fire()
+/obj/item/gun/launcher/pneumatic/post_fire(datum/gun_firing_cycle/cycle)
+	. = ..()
 	if(tank)
 		var/lost_gas_amount = tank.air_contents.total_moles*(pressure_setting/100)
 		var/datum/gas_mixture/removed = tank.air_contents.remove(lost_gas_amount)
 
 		var/turf/T = get_turf(src.loc)
-		if(T) T.assume_air(removed)
-	..()
+		T?.assume_air(removed)
 
 /obj/item/gun/launcher/pneumatic/update_icon()
 	. = ..()

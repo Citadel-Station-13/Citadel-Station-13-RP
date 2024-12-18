@@ -38,6 +38,9 @@
 #define ARMOR_FIRE "fire"
 #define ARMOR_ACID "acid"
 
+/**
+ * All armor enums that can be stored in an armor datum
+ */
 GLOBAL_REAL_LIST(armor_enums) = list(
 	ARMOR_MELEE,
 	ARMOR_MELEE_TIER,
@@ -59,6 +62,9 @@ GLOBAL_REAL_LIST(armor_enums) = list(
 	ARMOR_ACID,
 )
 
+/**
+ * Actual armor types that can be checked for with `damage_flag`
+ */
 GLOBAL_REAL_LIST(armor_types) = list(
 	ARMOR_MELEE,
 	ARMOR_BULLET,
