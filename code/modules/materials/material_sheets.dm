@@ -28,15 +28,23 @@
 	var/allow_window_autobuild = TRUE
 
 /obj/item/stack/material/Initialize(mapload, new_amount, merge = TRUE, material)
+	// allow material override if needed
 	if(!isnull(material))
 		src.material = material
 
+	// fetch material
 	src.material = RSmaterials.fetch_or_defer(src.material)
 	if(src.material == REPOSITORY_FETCH_DEFER)
 		stack_trace("material deferred on a material stack. this isn't supported.")
 
+	// ensure our icon is set properly
 	if(src.material.icon && icon != src.material.icon)
 		icon = src.material.icon
+
+	//! LEGACY: turn it back on if our material doesn't have the proper shit set
+	if(!material.icon_stack_count)
+		skip_legacy_icon_update = FALSE
+	//! END
 
 	. = ..()
 

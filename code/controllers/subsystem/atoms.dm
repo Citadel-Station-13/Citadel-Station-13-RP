@@ -162,7 +162,7 @@ SUBSYSTEM_DEF(atoms)
 	// this sets 'where' to if we should be mapload.
 	// this is acceptable because args[4] ('where') is not used again.
 	args[4] = mapload
-	InitAtom(created, FALSE, args)
+	InitAtom(created, FALSE, args.Copy(4))
 	atom_init_status = old_init_status
 	return created
 
