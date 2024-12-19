@@ -5,6 +5,7 @@
 
 /datum/prototype/robot_module/gravekeeper/provision_resource_store(datum/robot_resource_store/store)
 	..()
+	store.provisioned_material_store[/datum/prototype/material/wood_plank::id] = new /datum/robot_resource/provisioned/preset/material/wood
 
 #warn translate chassis below
 
@@ -39,15 +40,7 @@
 		/obj/item/gripper/gravekeeper
 	)
 
-/obj/item/robot_module/robot/gravekeeper/get_synths(mob/living/silicon/robot/R)
-	. = ..()
-	MATTER_SYNTH(MATSYN_WOOD, wood, 25000)
-
 /obj/item/robot_module/robot/gravekeeper/handle_special_module_init(mob/living/silicon/robot/R)
 	. = ..()
 	// For really persistent looters
 	emag = new /obj/item/gun/energy/retro/mounted(src)
-
-	var/obj/item/stack/material/cyborg/wood/W = new (src)
-	W.synths = list(synths_by_kind[MATSYN_WOOD])
-	. += W

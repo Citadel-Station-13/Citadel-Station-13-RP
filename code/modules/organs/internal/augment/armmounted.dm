@@ -173,12 +173,6 @@
 			integrated_tools_by_name[Tool.name] = Tool
 			integrated_tool_images[Tool.name] = image(icon = Tool.icon, icon_state = Tool.icon_state)
 
-/obj/item/organ/internal/augment/armmounted/shoulder/multiple/handle_organ_proc_special()
-	..()
-
-	if(!owner || is_bruised() || !synths)
-		return
-
 /obj/item/organ/internal/augment/armmounted/shoulder/multiple/augment_action()
 	if(!owner)
 		return

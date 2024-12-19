@@ -143,6 +143,12 @@
 	/// This affects multiplicative movespeed.
 	var/slowdown = 0
 
+	//* Mounting *//
+	/// Base level item API for item mounts.
+	/// * This is manipulated from the mount side, not from the item side for now.
+	/// * Item side does have a Destroy() hook.
+	var/datum/item_mount/mounted
+
 	//* Storage *//
 	/// storage cost for volumetric storage
 	/// null to default to weight class
@@ -234,6 +240,8 @@
 			stack_trace("invalid current equipped slot [worn_slot] on an item not on a mob.")
 			return ..()
 		M.temporarily_remove_from_inventory(src, INV_OP_FORCE | INV_OP_DELETING)
+	// inform mount so it can unmount us
+	mounted?.on_item_del(src)
 	return ..()
 
 /// Check if target is reasonable for us to operate on.
@@ -907,6 +915,32 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 
 	playsound(src, "shatter", 70, 1)
 	qdel(src)
+
+//* Mount *//
+
+/**
+ * Mounts to an item mount
+ */
+/obj/item/proc/mount(datum/item_mount/mount)
+	return mount.mount(src)
+
+/**
+ * Unmounts us if we're mounted onto an item mount
+ */
+/obj/item/proc/unmount()
+	return mounted?.unmount(src)
+
+/**
+ * Returns if we're mounted (true / false)
+ */
+/obj/item/proc/is_mounted() as num
+	return !!mounted
+
+/**
+ * Returns our mount, if any
+ */
+/obj/item/proc/get_mount() as /datum/item_mount
+	return mounted
 
 //* Mouse *//
 

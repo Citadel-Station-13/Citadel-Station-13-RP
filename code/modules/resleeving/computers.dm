@@ -104,7 +104,7 @@
 		else
 			if(!MT.imp)
 				user.visible_message("This Mirror Installation Tool is empty.")
-	if(istype(W, /obj/item/dogborg/mirrortool))
+	if(istype(W, /obj/item/robot_builtin/dog_mirrortool))
 		var/obj/item/mirrortool/MT = W
 		if(MT.imp)
 			active_mr = MT.imp.stored_mind

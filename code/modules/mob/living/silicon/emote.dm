@@ -194,7 +194,7 @@
 
 		if("law")
 			var/mob/living/silicon/robot/R = src
-			if (istype(R) && R.module.is_the_law)
+			if (istype(R))
 				message = "shows its legal authorization barcode."
 
 				playsound(src.loc, 'sound/voice/biamthelaw.ogg', 50, 0)
@@ -204,7 +204,7 @@
 
 		if("halt")
 			var/mob/living/silicon/robot/R = src
-			if (istype(R) && R.module.is_the_law)
+			if (istype(R))
 				message = "<B>'s</B> speakers skreech, \"Halt! Security!\"."
 
 				playsound(src.loc, 'sound/voice/halt.ogg', 50, 0)

@@ -57,12 +57,3 @@
 		return
 
 	..()
-
-/obj/item/stack/rods/cyborg
-	name = "metal rod synthesizer"
-	desc = "A device that makes metal rods."
-	gender = NEUTER
-	uses_charge = 1
-	charge_costs = list(500)
-	stacktype = /obj/item/stack/rods
-	no_variants = TRUE

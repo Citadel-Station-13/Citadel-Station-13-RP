@@ -250,7 +250,7 @@ GLOBAL_LIST_INIT(robot_modules, list(
 /obj/item/robot_module/robot/quad/handle_special_module_init(mob/living/silicon/robot/R)
 	. = ..()
 
-	var/obj/item/dogborg/tongue/T = new /obj/item/dogborg/tongue(src)
+	var/obj/item/robot_builtin/dog_tongue/T = new /obj/item/robot_builtin/dog_tongue(src)
 	T.water = synths_by_kind[MATSYN_WATER]
 	. += T
 

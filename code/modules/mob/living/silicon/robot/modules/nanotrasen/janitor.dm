@@ -75,8 +75,7 @@
 /obj/item/robot_module/robot/quad/jani/get_modules()
 	. = ..()
 	. |= list(
-		/obj/item/dogborg/jaws/small,
-		/obj/item/pupscrubber
+		/obj/item/pupscrubber,
 	)
 
 /obj/item/robot_module/robot/quad/jani/get_synths()
@@ -99,13 +98,9 @@
 /obj/item/robot_module/robot/quad/jani/handle_special_module_init(mob/living/silicon/robot/R)
 	. = ..()
 
-	src.emag = new /obj/item/dogborg/pounce(src) //Pounce
+	src.emag = new /obj/item/robot_builtin/dog_pounce(src) //Pounce
 
-	var/obj/item/lightreplacer/dogborg/LR = new /obj/item/lightreplacer/dogborg(src)
-	LR.glass = synths_by_kind[MATSYN_GLASS]
-	. += LR
-
-	var/obj/item/dogborg/sleeper/compactor/C = new /obj/item/dogborg/sleeper/compactor(src)
+	var/obj/item/robot_builtin/dog_sleeper/compactor/C = new /obj/item/robot_builtin/dog_sleeper/compactor(src)
 	C.metal = synths_by_kind[MATSYN_METAL]
 	C.glass = synths_by_kind[MATSYN_GLASS]
 	C.water = synths_by_kind[MATSYN_WATER]
@@ -130,4 +125,3 @@
 		create_stack_recipe_datum(name = "glass sheet", product = /obj/item/stack/material/glass, cost = 1)
 	)
 	. += G
-h

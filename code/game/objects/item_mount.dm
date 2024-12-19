@@ -8,6 +8,39 @@
  * that would usually require internal tanks; this is just an example.
  */
 /datum/item_mount
+	/// mounted items; lazy list
+	var/list/obj/item/mounted_items
+
+/datum/item_mount/Destroy()
+	for(var/obj/item/mounted as anything in mounted_items)
+		unmount(mounted)
+	return ..()
+
+/datum/item_mount/proc/mount(obj/item/item)
+	if(item.mounted)
+		if(item.mounted == src)
+			return TRUE
+		item.mounted.unmount(item)
+
+	LAZYADD(mounted_items, item)
+	item.mounted = src
+	return TRUE
+
+/datum/item_mount/proc/unmount(obj/item/item)
+	if(item.mounted != src)
+		return TRUE
+	LAZYREMOVE(mounted_items, item)
+	item.mounted = null
+	return TRUE
+
+/datum/item_mount/proc/is_mounted(obj/item/item)
+	return item in mounted_items
+
+/**
+ * Called when a mounted item is deleted.
+ */
+/datum/item_mount/proc/on_item_del(obj/item/being_deleted)
+	unmount(being_deleted)
 
 //* Reagents *//
 

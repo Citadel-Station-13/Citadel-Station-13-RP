@@ -16,10 +16,12 @@
 	/// Provisioned store for stacks.
 	/// * Stack type to `/datum/robot_resource/provisioned`
 	/// * Lazylist outside of provisioning. Lists are always formed during provisioning.
+	/// * Automatically given to the robot as a mounted item if provided.
 	var/list/provisioned_stack_store
 	/// Provisioned store for materials.
 	/// * Material id to `/datum/robot_resource/provisioned`
 	/// * Lazylist outside of provisioning. Lists are always formed during provisioning.
+	/// * Automatically given to the robot as a mounted item if provided.
 	var/list/provisioned_material_store
 	/// Provisioned store for reagents.
 	/// * Reagent id to `/datum/robot_resource/provisioned`

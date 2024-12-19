@@ -8,13 +8,21 @@
 	store.provisioned_material_store[/datum/prototype/material/steel::id] = new /datum/robot_resource/provisioned/preset/material/steel
 	store.provisioned_material_store[/datum/prototype/material/glass::id] = new /datum/robot_resource/provisioned/preset/material/glass
 	store.provisioned_material_store[/datum/prototype/material/plasteel::id] = new /datum/robot_resource/provisioned/preset/material/plasteel
-	store.provisioned_material_store[/datum/prototype/material/wood::id] = new /datum/robot_resource/provisioned/preset/material/wood
+	store.provisioned_material_store[/datum/prototype/material/wood_plank::id] = new /datum/robot_resource/provisioned/preset/material/wood
 	store.provisioned_material_store[/datum/prototype/material/plastic::id] = new /datum/robot_resource/provisioned/preset/material/plastic
-	store.provisioned_stack_store[/obj/item/stack/cable_coil] = new /datum/robot_resource/provisioned/preset/material/wire
+	store.provisioned_stack_store[/obj/item/stack/cable_coil] = new /datum/robot_resource/provisioned/preset/wire
 
 /datum/prototype/robot_module/nanotrasen/engineering/create_mounted_item_descriptors(list/normal_out, list/emag_out)
 	..()
 	if(normal_out)
+		// todo: better way to do 'sum types'?
+		normal_out |= list(
+			/obj/item/stack/rods,
+			/obj/item/stack/tile/wood,
+			/obj/item/stack/tile/floor,
+			/obj/item/stack/tile/roofing,
+			/obj/item/stack/material/glass/reinforced,
+		)
 		normal_out |= list(
 			/obj/item/borg/sight/meson,
 			/obj/item/weldingtool/electric/mounted/cyborg,
@@ -83,17 +91,6 @@
 	MD.glass = synths_by_kind[MATSYN_GLASS]
 	src.modules += MD
 
-	CYBORG_STACK(material/cyborg/steel, MATSYN_METAL)
-	CYBORG_STACK(material/cyborg/glass, MATSYN_GLASS)
-	CYBORG_STACK(rods/cyborg          , MATSYN_METAL)
-	CYBORG_STACK(cable_coil/cyborg    , MATSYN_WIRE)
-	CYBORG_STACK(tile/floor/cyborg    , MATSYN_METAL)
-	CYBORG_STACK(tile/roofing/cyborg  , MATSYN_METAL)
-	CYBORG_STACK(material/cyborg/glass/reinforced, list(MATSYN_METAL, MATSYN_GLASS))
-	CYBORG_STACK(tile/wood/cyborg     , MATSYN_WOOD)
-	CYBORG_STACK(material/cyborg/wood , MATSYN_WOOD)
-	CYBORG_STACK(material/cyborg/plastic, MATSYN_PLASTIC)
-
 /obj/item/robot_module/robot/quad/engi
 	name = "EngiQuad module"
 	sprites = list(
@@ -112,12 +109,3 @@
 	can_be_pushed = 0
 	can_shred = TRUE
 
-
-/obj/item/robot_module/robot/quad/engi/handle_special_module_init(mob/living/silicon/robot/R)
-	. = ..()
-
-	src.emag = new /obj/item/dogborg/pounce(src)
-
-	var/obj/item/lightreplacer/dogborg/LR = new /obj/item/lightreplacer/dogborg(src)
-	LR.glass = synths_by_kind[MATSYN_GLASS]
-	. += LR

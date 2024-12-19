@@ -27,17 +27,14 @@
 			/obj/item/shockpaddles/robot,
 			/obj/item/reagent_containers/dropper, // Allows surgeon borg to fix necrosis
 			/obj/item/reagent_containers/syringe,
-			/obj/item/dogborg/mirrortool,
+			/obj/item/robot_builtin/dog_mirrortool,
 		)
 
 /datum/prototype/robot_module/nanotrasen/medical/provision_resource_store(datum/robot_resource_store/store)
 	..()
-
-/datum/prototype/robot_module/nanotrasen/medical/get_stack_synth_types()
-	. = ..()
-	. += /datum/stack_provider/robot_stack_synth/bandages/advanced
-	. += /datum/stack_provider/robot_stack_synth/ointment/advanced
-	. += /datum/stack_provider/robot_stack_synth/nanopaste
+	store.provisioned_stack_store[/obj/item/stack/medical/advanced/bruise_pack] = new /datum/robot_resource/provisioned/preset/bandages/advanced
+	store.provisioned_stack_store[/obj/item/stack/medical/advanced/ointment] = new /datum/robot_resource/provisioned/preset/ointment/advanced
+	store.provisioned_stack_store[/obj/item/stack/nanopaste] = new /datum/robot_resource/provisioned/preset/nanopaste
 
 #warn translate chassis below
 
@@ -85,18 +82,15 @@
 	src.emag.name = "Polyacid spray"
 
 /obj/item/robot_module/robot/medical/surgeon/respawn_consumable(var/mob/living/silicon/robot/R, var/amount)
-
 	var/obj/item/reagent_containers/syringe/S = locate() in src.modules
 	if(S.mode == 2)
 		S.reagents.clear_reagents()
 		S.mode = initial(S.mode)
 		S.desc = initial(S.desc)
 		S.update_icon()
-
 	if(src.emag)
 		var/obj/item/reagent_containers/spray/PS = src.emag
 		PS.reagents.add_reagent("pacid", 2 * amount)
-
 	..()
 
 /obj/item/robot_module/robot/quad/medi
@@ -114,15 +108,3 @@
 		"F3-LINE" = "FELI-Medical",
 		"Drake" = "drakemed"
 	)
-
-/obj/item/robot_module/robot/quad/medi/handle_special_module_init(mob/living/silicon/robot/R)
-	. = ..()
-	src.emag 	 = new /obj/item/dogborg/pounce(src) //Pounce
-
-	var/obj/item/reagent_containers/borghypo/hound/H = new /obj/item/reagent_containers/borghypo/hound(src)
-	H.water = synths_by_kind[MATSYN_WATER]
-	. += H
-
-	var/obj/item/dogborg/sleeper/B = new /obj/item/dogborg/sleeper(src) //So they can nom people and heal them
-	B.water = synths_by_kind[MATSYN_WATER]
-	src.modules += B

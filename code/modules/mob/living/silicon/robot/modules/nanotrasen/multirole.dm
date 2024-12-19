@@ -59,7 +59,7 @@
 		/obj/item/melee/baton/loaded,
 		/obj/item/tool/wrench/cyborg,
 		/obj/item/healthanalyzer,
-		/obj/item/dogborg/jaws/small
+		/obj/item/robot_builtin/dog_jaws/small
 	)
 
 /obj/item/robot_module/robot/quad/basic/handle_special_module_init(mob/living/silicon/robot/R)

@@ -61,14 +61,3 @@
 	)
 	channels = list("Supply" = 1)
 	can_be_pushed = 0
-
-/obj/item/robot_module/robot/quad/miner/get_modules()
-	. = ..()
-	. |= list(
-		/obj/item/dogborg/jaws/small
-	)
-
-/obj/item/robot_module/robot/quad/miner/handle_special_module_init(mob/living/silicon/robot/R)
-	. = ..()
-	// These get a larger water synth.
-	synths_by_kind[MATSYN_WATER]:max_energy = 1000

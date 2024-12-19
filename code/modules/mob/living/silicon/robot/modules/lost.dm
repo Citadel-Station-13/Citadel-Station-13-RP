@@ -5,6 +5,7 @@
 
 /datum/prototype/robot_module/lost/provision_resource_store(datum/robot_resource_store/store)
 	..()
+	store.provisioned_stack_store[/obj/item/stack/cable_coil] = new /datum/robot_resource/provisioned/preset/wire
 
 #warn translate chassis below
 
@@ -37,18 +38,10 @@
 		/obj/item/robotanalyzer
 	)
 
-/obj/item/robot_module/robot/lost/get_synths(mob/living/silicon/robot/R)
-	. = ..()
-	MATTER_SYNTH(MATSYN_WIRE, wire)
-
 /obj/item/robot_module/robot/lost/handle_special_module_init(mob/living/silicon/robot/R)
 	. = ..()
 	// Potato
 	emag = new /obj/item/gun/energy/retro/mounted(src)
-
-	var/obj/item/stack/cable_coil/cyborg/C = new /obj/item/stack/cable_coil/cyborg(src)
-	C.synths = list(synths_by_kind[MATSYN_WIRE])
-	. += C
 
 /obj/item/robot_module/robot/quad/stray
 	name = "stray robot module"
@@ -62,14 +55,14 @@
 	. |= list(
 		// Sec
 		/obj/item/handcuffs/cyborg,
-		/obj/item/dogborg/jaws/big,
+		/obj/item/robot_builtin/dog_jaws/big,
 		/obj/item/melee/baton/robot,
-		/obj/item/dogborg/pounce,
+		/obj/item/robot_builtin/dog_pounce,
 
 		// Med
 		/obj/item/healthanalyzer,
 		/obj/item/shockpaddles/robot/hound,
-		/obj/item/dogborg/mirrortool,
+		/obj/item/robot_builtin/dog_mirrortool,
 
 		// Engi
 		/obj/item/weldingtool/electric/mounted,
@@ -88,6 +81,6 @@
 	H.water = synths_by_kind[MATSYN_WATER]
 	. += H
 
-	var/obj/item/dogborg/sleeper/B = new /obj/item/dogborg/sleeper(src)
+	var/obj/item/robot_builtin/dog_sleeper/B = new /obj/item/robot_builtin/dog_sleeper(src)
 	B.water = synths_by_kind[MATSYN_WATER]
 	. += B

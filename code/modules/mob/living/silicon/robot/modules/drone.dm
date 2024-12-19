@@ -5,7 +5,25 @@
 
 /datum/prototype/robot_module/drone/provision_resource_store(datum/robot_resource_store/store)
 	..()
+	store.provisioned_material_store[/datum/prototype/material/steel::id] = new /datum/robot_resource/provisioned/preset/material/steel
+	store.provisioned_material_store[/datum/prototype/material/glass::id] = new /datum/robot_resource/provisioned/preset/material/glass
+	store.provisioned_material_store[/datum/prototype/material/plasteel::id] = new /datum/robot_resource/provisioned/preset/material/plasteel
+	store.provisioned_material_store[/datum/prototype/material/wood_plank::id] = new /datum/robot_resource/provisioned/preset/material/wood
+	store.provisioned_material_store[/datum/prototype/material/plastic::id] = new /datum/robot_resource/provisioned/preset/material/plastic
+	store.provisioned_stack_store[/obj/item/stack/cable_coil] = new /datum/robot_resource/provisioned/preset/wire
 
+/datum/prototype/robot_module/drone/create_mounted_item_descriptors(list/normal_out, list/emag_out)
+	..()
+	if(normal_out)
+		// todo: better way to do 'sum types'?
+		normal_out |= list(
+			/obj/item/stack/rods,
+			/obj/item/stack/tile/wood,
+			/obj/item/stack/tile/floor,
+			/obj/item/stack/tile/roofing,
+			/obj/item/stack/material/glass/reinforced,
+		)
+		
 #warn translate chassis below
 
 /obj/item/robot_module/drone
@@ -37,14 +55,6 @@
 		/obj/item/pipe_dispenser
 	)
 
-/obj/item/robot_module/drone/get_synths(mob/living/silicon/robot/R)
-	. = ..()
-	MATTER_SYNTH(MATSYN_METAL, metal, 25000)
-	MATTER_SYNTH(MATSYN_GLASS, glass, 25000)
-	MATTER_SYNTH(MATSYN_WOOD, wood, 25000)
-	MATTER_SYNTH(MATSYN_PLASTIC, plastic, 25000)
-	MATTER_SYNTH(MATSYN_WIRE, wire, 30)
-
 /obj/item/robot_module/drone/handle_special_module_init(mob/living/silicon/robot/R)
 	. = ..()
 
@@ -60,16 +70,6 @@
 	MD.wood = synths_by_kind[MATSYN_WOOD]
 	MD.plastic = synths_by_kind[MATSYN_PLASTIC]
 	. += MD
-
-	CYBORG_STACK(material/cyborg/steel, MATSYN_METAL)
-	CYBORG_STACK(material/cyborg/glass, MATSYN_GLASS)
-	CYBORG_STACK(rods/cyborg          , MATSYN_METAL)
-	CYBORG_STACK(cable_coil/cyborg    , MATSYN_WIRE)
-	CYBORG_STACK(tile/floor/cyborg    , MATSYN_METAL)
-	CYBORG_STACK(material/cyborg/glass/reinforced, list(MATSYN_METAL, MATSYN_GLASS))
-	CYBORG_STACK(tile/wood/cyborg     , MATSYN_WOOD)
-	CYBORG_STACK(material/cyborg/wood , MATSYN_WOOD)
-	CYBORG_STACK(material/cyborg/plastic, MATSYN_PLASTIC)
 
 /obj/item/robot_module/drone/construction
 	name = "construction drone module"

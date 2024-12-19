@@ -29,6 +29,17 @@
 	#warn hook
 	var/legacy_show_on_manifest = FALSE
 
+	/// items to inject into normal out
+	/// * paths are allowed
+	/// * anonymous types are allowed
+	/// * item instances are **not allowed** and will result in shit exploding!
+	var/list/mounted_item_descriptor_inject_normal
+	/// items to inject into emag out
+	/// * paths are allowed
+	/// * anonymous types are allowed
+	/// * item instances are **not allowed** and will result in shit exploding!
+	var/list/mounted_item_descriptor_inject_emag
+
 #warn impL
 #warn init frames
 
@@ -51,10 +62,15 @@
 #warn hook
 /datum/prototype/robot_module/proc/create_mounted_item_descriptors(list/normal_out, list/emag_out)
 	if(normal_out)
+		if(mounted_item_descriptor_inject_normal)
+			normal_out |= mounted_item_descriptor_inject_normal
 		normal_out |= list(
 			/obj/item/flash,
 			/obj/item/multitool, // todo: special robot multitool that can interface with machines?
 		)
+	if(emag_out)
+		if(mounted_item_descriptor_inject_emag)
+			emag_out |= mounted_item_descriptor_inject_emag
 
 /**
  * Provision a robot's resource store.

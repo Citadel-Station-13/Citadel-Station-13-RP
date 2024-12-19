@@ -49,7 +49,7 @@
 /obj/item/robot_module/robot/quad/ert/get_modules()
 	. = ..()
 	. |= list(
-		/obj/item/dogborg/swordtail
+		/obj/item/robot_builtin/dog_swordtail
 	)
 
 /obj/item/robot_module/robot/quad/ert/handle_special_module_init(mob/living/silicon/robot/R)
@@ -57,6 +57,6 @@
 
 	src.emag = new /obj/item/gun/energy/laser/mounted(src)
 
-	var/obj/item/dogborg/sleeper/K9/B = new /obj/item/dogborg/sleeper/K9(src)
+	var/obj/item/robot_builtin/dog_sleeper/K9/B = new /obj/item/robot_builtin/dog_sleeper/K9(src)
 	B.water = synths_by_kind[MATSYN_WATER]
 	. += B

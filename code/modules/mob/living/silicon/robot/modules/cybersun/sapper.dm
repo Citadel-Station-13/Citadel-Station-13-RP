@@ -5,7 +5,24 @@
 
 /datum/prototype/robot_module/cybersun/sapper/provision_resource_store(datum/robot_resource_store/store)
 	..()
+	store.provisioned_material_store[/datum/prototype/material/steel::id] = new /datum/robot_resource/provisioned/preset/material/steel
+	store.provisioned_material_store[/datum/prototype/material/glass::id] = new /datum/robot_resource/provisioned/preset/material/glass
+	store.provisioned_material_store[/datum/prototype/material/plasteel::id] = new /datum/robot_resource/provisioned/preset/material/plasteel
+	store.provisioned_material_store[/datum/prototype/material/wood_plank::id] = new /datum/robot_resource/provisioned/preset/material/wood
+	store.provisioned_material_store[/datum/prototype/material/plastic::id] = new /datum/robot_resource/provisioned/preset/material/plastic
+	store.provisioned_stack_store[/obj/item/stack/cable_coil] = new /datum/robot_resource/provisioned/preset/wire
 
+/datum/prototype/robot_module/cybersun/sapper/create_mounted_item_descriptors(list/normal_out, list/emag_out)
+	..()
+	if(normal_out)
+		// todo: better way to do 'sum types'?
+		normal_out |= list(
+			/obj/item/stack/rods,
+			/obj/item/stack/tile/floor,
+			/obj/item/stack/tile/roofing,
+			/obj/item/stack/material/glass/reinforced,
+		)
+		
 #warn translate chassis below
 /obj/item/robot_module/robot/syndicate/mechanist
 	name = "mechanist robot module"
@@ -36,46 +53,3 @@
 		/obj/item/card/robot/syndi,
 		/obj/item/card/emag
 	)
-
-/obj/item/robot_module/robot/syndicate/mechanist/get_synths(mob/living/silicon/robot/R)
-	. = ..()
-	MATTER_SYNTH(MATSYN_NANITES, nanite, 10000)
-	MATTER_SYNTH(MATSYN_WIRE, wire)
-	MATTER_SYNTH(MATSYN_METAL, metal, 40000)
-	MATTER_SYNTH(MATSYN_GLASS, glass, 40000)
-
-/obj/item/robot_module/robot/syndicate/mechanist/handle_special_module_init(mob/living/silicon/robot/R)
-	. = ..()
-	// General engineering/hacking.
-
-	// Materials.
-	var/datum/matter_synth/nanite = synths_by_kind[MATSYN_NANITES]
-	var/datum/matter_synth/wire = synths_by_kind[MATSYN_WIRE]
-	var/datum/matter_synth/metal = synths_by_kind[MATSYN_METAL]
-	var/datum/matter_synth/glass = synths_by_kind[MATSYN_GLASS]
-
-	var/obj/item/stack/nanopaste/N = new /obj/item/stack/nanopaste(src)
-	N.uses_charge = 1
-	N.charge_costs = list(1000)
-	N.synths = list(nanite)
-	. += N
-
-	var/obj/item/stack/material/cyborg/steel/M = new (src)
-	M.synths = list(metal)
-	. += M
-
-	var/obj/item/stack/material/cyborg/glass/G = new (src)
-	G.synths = list(glass)
-	. += G
-
-	var/obj/item/stack/rods/cyborg/rods = new /obj/item/stack/rods/cyborg(src)
-	rods.synths = list(metal)
-	. += rods
-
-	var/obj/item/stack/cable_coil/cyborg/C = new /obj/item/stack/cable_coil/cyborg(src)
-	C.synths = list(wire)
-	. += C
-
-	var/obj/item/stack/material/cyborg/glass/reinforced/RG = new (src)
-	RG.synths = list(metal, glass)
-	. += RG

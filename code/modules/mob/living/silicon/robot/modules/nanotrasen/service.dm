@@ -58,7 +58,7 @@
 /obj/item/robot_module/robot/quad/serv/get_modules()
 	. = ..()
 	. |= list(
-		/obj/item/dogborg/jaws/small,
+		/obj/item/robot_builtin/dog_jaws/small,
 	)
 
 #warn translate chassis below
@@ -200,7 +200,7 @@
 // In a nutshell, basicly service/butler robot but in dog form.
 /obj/item/robot_module/robot/quad/serv/handle_special_module_init(mob/living/silicon/robot/R)
 	. = ..()
-	src.emag = new /obj/item/dogborg/pounce(src)
+	src.emag = new /obj/item/robot_builtin/dog_pounce(src)
 
 	// These get a larger water synth.
 	synths_by_kind[MATSYN_WATER]:max_energy = 1000

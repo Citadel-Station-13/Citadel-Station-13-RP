@@ -92,18 +92,18 @@
 	. = ..()
 	. |= list(
 		/obj/item/handcuffs/cyborg, //You need cuffs to be a proper sec borg!
-		/obj/item/dogborg/jaws/big, //In case there's some kind of hostile mob.
+		/obj/item/robot_builtin/dog_jaws/big, //In case there's some kind of hostile mob.
 		/obj/item/melee/baton/robot, //Since the pounce module refused to work, they get a stunbaton instead.
 		/obj/item/barrier_tape_roll/police, //Block out crime scenes.
 		/obj/item/gun/energy/taser/mounted/cyborg, //They /are/ a security borg, after all.
-		/obj/item/dogborg/pounce //Pounce
+		/obj/item/robot_builtin/dog_pounce //Pounce
 	)
 
 /obj/item/robot_module/robot/quad/sec/handle_special_module_init(mob/living/silicon/robot/R)
 	. = ..()
 	src.emag = new /obj/item/gun/energy/laser/mounted(src) //Emag. Not a big problem.
 
-	var/obj/item/dogborg/sleeper/K9/B = new /obj/item/dogborg/sleeper/K9(src) //Eat criminals. Bring them to the brig.
+	var/obj/item/robot_builtin/dog_sleeper/K9/B = new /obj/item/robot_builtin/dog_sleeper/K9(src) //Eat criminals. Bring them to the brig.
 	B.water = synths_by_kind[MATSYN_WATER]
 	src.modules += B
 
