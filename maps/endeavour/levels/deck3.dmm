@@ -586,14 +586,6 @@
 /obj/machinery/door/firedoor,
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d3starboardforhall)
-"awd" = (
-/obj/vehicle/sealed/mecha/combat/fighter/cludge{
-	dir = 1;
-	name = "\improper NLS Legal Salvage";
-	desc = "A heater, nozzle, and fuel tank strapped together. There are exposed wires strewn about it. Hastily scrawled along the portside cockpit entrance using big, blocky script (in what appears to be crayon?) is the name 'NLS LEGAL SALVAGE'"
-	},
-/turf/simulated/floor/tiled/dark,
-/area/quartermaster/warehouse)
 "awm" = (
 /obj/machinery/door/airlock{
 	id_tag = "dorm3";
@@ -5105,17 +5097,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/security/security_lockerroom)
-"dru" = (
-/obj/effect/floor_decal/industrial/outline/red{
-	color = "#AF0000"
-	},
-/obj/vehicle/sealed/mecha/combat/fighter/cludge{
-	dir = 1;
-	name = "\improper NLS Legal Salvage";
-	desc = "A heater, nozzle, and fuel tank strapped together. There are exposed wires strewn about it. Hastily scrawled along the portside cockpit entrance using big, blocky script (in what appears to be crayon?) is the name 'NLS LEGAL SALVAGE'"
-	},
-/turf/simulated/floor/tiled/monodark,
-/area/quartermaster/warehouse)
 "drJ" = (
 /obj/structure/cable/green{
 	icon_state = "2-4"
@@ -5141,15 +5122,6 @@
 	},
 /turf/simulated/wall/r_wall/prepainted/cargo,
 /area/shuttle/mining_ship/general)
-"drV" = (
-/obj/effect/floor_decal/industrial/outline/yellow,
-/obj/vehicle/sealed/mecha/combat/fighter/cludge{
-	dir = 1;
-	name = "\improper NLS Legal Salvage";
-	desc = "A heater, nozzle, and fuel tank strapped together. There are exposed wires strewn about it. Hastily scrawled along the portside cockpit entrance using big, blocky script (in what appears to be crayon?) is the name 'NLS LEGAL SALVAGE'"
-	},
-/turf/simulated/floor/tiled/monodark,
-/area/quartermaster/warehouse)
 "dsm" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
@@ -11021,16 +10993,6 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/maintenance/starboardsolar)
-"han" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/vehicle/sealed/mecha/combat/fighter/cludge{
-	dir = 1;
-	name = "\improper NLS Legal Salvage";
-	desc = "A heater, nozzle, and fuel tank strapped together. There are exposed wires strewn about it. Hastily scrawled along the portside cockpit entrance using big, blocky script (in what appears to be crayon?) is the name 'NLS LEGAL SALVAGE'"
-	},
-/turf/simulated/floor/tiled/dark,
-/area/quartermaster/warehouse)
 "haF" = (
 /turf/simulated/wall/r_wall/prepainted/engineering,
 /area/maintenance/starboardsolar)
@@ -18950,17 +18912,6 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/security/brig)
-"mNz" = (
-/obj/effect/floor_decal/industrial/hatch{
-	color = "#AF0000"
-	},
-/obj/vehicle/sealed/mecha/combat/fighter/cludge{
-	dir = 1;
-	name = "\improper NLS Legal Salvage";
-	desc = "A heater, nozzle, and fuel tank strapped together. There are exposed wires strewn about it. Hastily scrawled along the portside cockpit entrance using big, blocky script (in what appears to be crayon?) is the name 'NLS LEGAL SALVAGE'"
-	},
-/turf/simulated/floor/tiled/monodark,
-/area/quartermaster/warehouse)
 "mNI" = (
 /obj/structure/railing{
 	dir = 1
@@ -28556,11 +28507,6 @@
 "teG" = (
 /obj/effect/floor_decal/spline/plain{
 	dir = 5
-	},
-/obj/vehicle/sealed/mecha/combat/fighter/cludge{
-	dir = 1;
-	name = "\improper NLS Legal Salvage";
-	desc = "A heater, nozzle, and fuel tank strapped together. There are exposed wires strewn about it. Hastily scrawled along the portside cockpit entrance using big, blocky script (in what appears to be crayon?) is the name 'NLS LEGAL SALVAGE'"
 	},
 /turf/simulated/floor/grass,
 /area/quartermaster/warehouse)
@@ -52803,7 +52749,7 @@ txc
 txc
 scZ
 txc
-awd
+txc
 dJc
 aTk
 txc
@@ -52997,7 +52943,7 @@ uUl
 txc
 scZ
 txc
-awd
+txc
 sEz
 oXi
 uhv
@@ -53191,7 +53137,7 @@ uVS
 vVA
 scZ
 txc
-dru
+ubA
 ubA
 poa
 ubA
@@ -53385,7 +53331,7 @@ txc
 ccA
 scZ
 txc
-mNz
+kxv
 kxv
 poa
 kxv
@@ -53579,7 +53525,7 @@ uUl
 kpn
 dgn
 czr
-han
+lEM
 lEM
 ldK
 kTN
@@ -53773,7 +53719,7 @@ uUl
 tbT
 scZ
 txc
-drV
+tbK
 tbK
 ccA
 tbK
@@ -53967,7 +53913,7 @@ txc
 tbT
 scZ
 txc
-drV
+tbK
 tbK
 ccA
 tbK
