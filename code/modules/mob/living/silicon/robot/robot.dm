@@ -36,6 +36,16 @@
 
 // todo: automatic subtypes for modules
 
+/**
+ * ## Composition
+ *
+ * Robots are / will be made out of:
+ *
+ * * chassis - determines baseline functionality and support
+ * * iconsets - determines sprites
+ *
+ * WIP. Modules, components, etc, are next.
+ */
 /mob/living/silicon/robot
 	name = "Cyborg"
 	real_name = "Cyborg"
@@ -59,6 +69,27 @@
 	light_offset_y = 1
 
 	can_be_antagged = TRUE
+
+	//* Composition *//
+
+	#warn impl
+	var/datum/prototype/robot_chassis/chassis
+	#warn impl
+	var/datum/prototype/robot_iconset/iconset
+	#warn impl
+	var/datum/prototype/robot_module/module_new
+
+	//* Inventory *//
+
+	inventory = /datum/inventory
+	/// Resources store
+	#warn make on new
+	var/datum/robot_resource_store/resources
+
+	//* State *//
+
+	/// If set, we are a blank slate, and are allowed to pick a module and frame.
+	var/can_repick_module = TRUE
 
 	/// Is our integrated light on?
 	var/lights_on = 0
@@ -96,7 +127,7 @@
 	var/atom/movable/screen/robot_modules_background
 
 	//?3 Modules can be activated at any one time.
-	var/obj/item/robot_module/module = null
+	var/obj/item/robot_module/module_legacy = null
 	var/obj/item/module_active = null
 	var/obj/item/module_state_1 = null
 	var/obj/item/module_state_2 = null
@@ -237,7 +268,7 @@
 
 /mob/living/silicon/robot/proc/init()
 	aiCamera = new/obj/item/camera/siliconcam/robot_camera(src)
-	laws = new /datum/ai_laws/nanotrasen()
+	laws = new /datum/ai_lawset/nanotrasen()
 	additional_law_channels["Binary"] = "#b"
 	var/new_ai = select_active_ai_with_fewest_borgs()
 	if(new_ai)
@@ -915,77 +946,6 @@
 			return 1
 	return 0
 
-/mob/living/silicon/robot/updateicon()
-	cut_overlays()
-
-	if (dogborg)
-		zmm_flags |= ZMM_LOOKAHEAD
-		// Resting dogborgs don't get overlays.
-		if (stat == CONSCIOUS && resting)
-			if(sitting)
-				icon_state = "[module_sprites[icontype]]-sit"
-			else if(bellyup)
-				icon_state = "[module_sprites[icontype]]-bellyup"
-			else
-				icon_state = "[module_sprites[icontype]]-rest"
-			return
-	else
-		zmm_flags &= ~ZMM_LOOKAHEAD
-
-	if(stat == CONSCIOUS)
-		if(!shell || deployed) // Shell borgs that are not deployed will have no eyes.
-			add_overlay(list(
-				"eyes-[module_sprites[icontype]]",
-				emissive_appearance(icon, "eyes-[module_sprites[icontype]]")
-			))
-
-	if(opened)
-		var/panelprefix = custom_sprite ? "[src.ckey]-[src.sprite_name]" : "ov"
-		if(wiresexposed)
-			add_overlay("[panelprefix]-openpanel +w")
-		else if(cell)
-			add_overlay("[panelprefix]-openpanel +c")
-		else
-			add_overlay("[panelprefix]-openpanel -c")
-
-	if(has_active_type(/obj/item/borg/combat/shield))
-		var/obj/item/borg/combat/shield/shield = locate() in src
-		if(shield && shield.active)
-			add_overlay("[module_sprites[icontype]]-shield")
-
-	if(modtype == "Combat")
-		if(module_active && istype(module_active,/obj/item/borg/combat/mobility))
-			icon_state = "[module_sprites[icontype]]-roll"
-		else
-			icon_state = module_sprites[icontype]
-
-	if (dogborg)
-		if (stat == CONSCIOUS)
-			icon_state = "[module_sprites[icontype]]"
-			if(sleeper_g)
-				var/state = "[module_sprites[icontype]]-sleeper_g"
-				if (icon_exists(icon, state, FALSE))
-					add_overlay(state)
-				else
-					// This one seems to always be present.
-					add_overlay("[module_sprites[icontype]]-sleeper_r")
-			if(sleeper_r)
-				add_overlay("[module_sprites[icontype]]-sleeper_r")
-
-			if(istype(module_active, /obj/item/gun/energy/taser/mounted/cyborg))
-				add_overlay("taser")
-			else if(istype(module_active, /obj/item/gun/energy/laser/mounted))
-				add_overlay("laser")
-			else if(istype(module_active, /obj/item/gun/energy/taser/xeno/robot))
-				add_overlay("taser")
-
-			if(lights_on)
-				add_overlay("eyes-[module_sprites[icontype]]-lights")
-
-		else if (stat == DEAD)
-			icon_state = "[module_sprites[icontype]]-wreck"
-			add_overlay("wreck-overlay")
-
 /mob/living/silicon/robot/proc/installed_modules()
 	if(weapon_lock)
 		to_chat(src, "<font color='red'>Weapon lock active, unable to use modules! Count:[weaponlock_time]</font>")
@@ -1185,11 +1145,9 @@
 								cleaned_human.update_inv_shoes(0)
 							cleaned_human.clean_blood(1)
 							to_chat(cleaned_human, "<span class='warning'>[src] cleans your face!</span>")
-	return
 
 /mob/living/silicon/robot/proc/self_destruct()
 	gib()
-	return
 
 /mob/living/silicon/robot/proc/UnlinkSelf()
 	disconnect_from_ai()
@@ -1374,7 +1332,7 @@
 			log_game("[key_name(user)] emagged cyborg [key_name(src)].  Laws overridden.")
 			clear_supplied_laws()
 			clear_inherent_laws()
-			laws = new /datum/ai_laws/syndicate_override
+			laws = new /datum/ai_lawset/syndicate
 			var/time = time2text(world.realtime,"hh:mm:ss")
 			lawchanges.Add("[time] <B>:</B> [user.name]([user.key]) emagged [name]([key])")
 			var/datum/gender/TU = GLOB.gender_datums[user.get_visible_gender()]
