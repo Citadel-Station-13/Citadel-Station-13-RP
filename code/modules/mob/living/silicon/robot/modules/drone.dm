@@ -63,13 +63,6 @@
 	src.emag = new /obj/item/pickaxe/plasmacutter(src)
 	src.emag.name = "Plasma Cutter"
 
-	var/obj/item/matter_decompiler/MD = new /obj/item/matter_decompiler(src)
-	MD.metal = synths_by_kind[MATSYN_METAL]
-	MD.glass = synths_by_kind[MATSYN_GLASS]
-	MD.wood = synths_by_kind[MATSYN_WOOD]
-	MD.plastic = synths_by_kind[MATSYN_PLASTIC]
-	. += MD
-
 /obj/item/robot_module/drone/construction
 	name = "construction drone module"
 	channels = list("Engineering" = 1)
@@ -83,7 +76,6 @@
 	var/obj/item/lightreplacer/LR = locate() in src.modules
 	LR.Charge(R, amount)
 	..()
-	return
 
 /obj/item/robot_module/drone/mining
 	name = "miner drone module"

@@ -27,7 +27,7 @@
 	return TRUE
 
 /datum/item_mount/proc/unmount(obj/item/item)
-	if(item.mounted != src)
+	if(item.item_mount != src)
 		return TRUE
 	LAZYREMOVE(mounted_items, item)
 	item.item_mount = null

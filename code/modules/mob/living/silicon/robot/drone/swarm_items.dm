@@ -27,11 +27,8 @@
 			new/obj/effect/debris/cleanable/blood/splatter(get_turf(src))
 			qdel(M)
 
-			mounted
-			if(wood)
-				wood.add_charge(2000)
-			if(plastic)
-				plastic.add_charge(2000)
+			item_mount?.push_material(/datum/prototype/material/wood_plank, 2000)
+			item_mount?.push_material(/datum/prototype/material/plastic, 2000)
 			return
 
 		else if(istype(M,/mob/living/silicon/robot/drone) && !M.client)
