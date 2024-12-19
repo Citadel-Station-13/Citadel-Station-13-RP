@@ -53,6 +53,7 @@
 	if(normal_out)
 		normal_out |= list(
 			/obj/item/flash,
+			/obj/item/multitool, // todo: special robot multitool that can interface with machines?
 		)
 
 /**

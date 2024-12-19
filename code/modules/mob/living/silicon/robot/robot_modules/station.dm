@@ -89,11 +89,6 @@ GLOBAL_LIST_INIT(robot_modules, list(
 	// TODO: REFACTOR CYBORGS THEY ARE ALL SHITCODE
 	INVOKE_ASYNC(R, TYPE_PROC_REF(/mob/living/silicon/robot, choose_icon), R.module_sprites.len + 1, R.module_sprites)
 
-	// Setup synths, modules, and modules with custom init code.
-	synths_by_kind = get_synths(R)
-	for (var/key in synths_by_kind)
-		synths += synths_by_kind[key]
-
 	for (var/entry in get_modules())
 		modules += new entry(src)
 
@@ -132,10 +127,7 @@ GLOBAL_LIST_INIT(robot_modules, list(
 /obj/item/robot_module/Destroy()
 	for(var/module in modules)
 		qdel(module)
-	for(var/synth in synths)
-		qdel(synth)
 	modules.Cut()
-	synths.Cut()
 	synths_by_kind = null
 	qdel(emag)
 	qdel(jetpack)
@@ -149,11 +141,7 @@ GLOBAL_LIST_INIT(robot_modules, list(
 			O.emp_act(severity)
 	if(emag)
 		emag.emp_act(severity)
-	if(synths)
-		for(var/datum/matter_synth/S in synths)
-			S.emp_act(severity)
 	..()
-	return
 
 /obj/item/robot_module/proc/respawn_consumable(var/mob/living/silicon/robot/R, var/rate)
 	if(!synths || !synths.len)

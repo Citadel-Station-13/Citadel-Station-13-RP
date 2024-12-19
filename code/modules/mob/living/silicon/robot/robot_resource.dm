@@ -78,31 +78,31 @@
 //* presets - medical *//
 
 /datum/robot_resource/provisioned/preset/bandages
-	display_name = "bandage roller"
+	name = "bandage roller"
 	legacy_stack_path = /obj/item/stack/medical/bruise_pack
 	amount_max = 50
 	regen_per_second = 5
 
 /datum/robot_resource/provisioned/preset/bandages/advanced
-	display_name = "dermal nanowrap roller"
+	name = "dermal nanowrap roller"
 	legacy_stack_path = /obj/item/stack/medical/advanced/bruise_pack
 	amount_max = 50
 	regen_per_second = 5
 
 /datum/robot_resource/provisioned/preset/ointment
-	display_name = "ointment tank"
+	name = "ointment tank"
 	legacy_stack_path = /obj/item/stack/medical/ointment
 	amount_max = 50
 	regen_per_second = 5
 
 /datum/robot_resource/provisioned/preset/ointment/advanced
-	display_name = "advanced ointment tank"
+	name = "advanced ointment tank"
 	legacy_stack_path = 	amount_max = 50
 	amount_max = 50
 	regen_per_second = 5
 
 /datum/robot_resource/provisioned/preset/nanopaste
-	display_name = "synthetic polyfill nanites"
+	name = "synthetic polyfill nanites"
 	legacy_stack_path = /obj/item/stack/nanopaste/advanced
 	amount_max = 50
 	regen_per_second = 5

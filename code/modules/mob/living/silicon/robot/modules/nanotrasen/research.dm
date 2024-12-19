@@ -8,8 +8,8 @@
 
 /datum/prototype/robot_module/nanotrasen/research/get_stack_synth_types()
 	. = ..()
-	. += /datum/stack_synth/robot_stack_synth/nanopaste
-	. += /datum/stack_synth/robot_stack_synth/wire
+	. += /datum/stack_provider/robot_stack_synth/nanopaste
+	. += /datum/stack_provider/robot_stack_synth/wire
 
 #warn translate chassis below
 

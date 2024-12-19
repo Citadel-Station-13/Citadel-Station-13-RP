@@ -12,7 +12,6 @@
 	subsystems = list(/mob/living/silicon/proc/subsystem_crew_monitor)
 	can_be_pushed = 0
 	supported_upgrades = list(/obj/item/borg/upgrade/tasercooler)
-	is_the_law = TRUE
 
 /obj/item/robot_module/robot/security/general
 	sprites = list(

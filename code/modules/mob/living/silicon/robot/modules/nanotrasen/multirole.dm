@@ -1,4 +1,4 @@
-/datum/prototype/robot_module/nanotrasen/stationkeeping
+/datum/prototype/robot_module/nanotrasen/multirole
 	use_robot_module_path = /obj/item/robot_module/robot/
 	allowed_frames = list(
 	)

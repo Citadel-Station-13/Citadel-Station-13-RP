@@ -33,13 +33,13 @@
 	//* Provider API *//
 
 	/// Stack synthesizer used as a provider API.
-	var/datum/stack_synth/robot_stack_provider/stack_synth
+	var/datum/stack_provider/robot_stack_provider/stack_provider
 
 /datum/robot_resource_store/New()
-	stack_synth = new(src)
+	stack_provider = new(src)
 
 /datum/robot_resource_store/Destroy()
-	QDEL_NULL(stack_synth)
+	QDEL_NULL(stack_provider)
 	return ..()
 
 /datum/robot_resource_store/proc/prep_provisioning()

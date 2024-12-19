@@ -1,7 +1,7 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
-/datum/stack_synth/robot_stack_provider
+/datum/stack_provider/robot_stack_provider
 	/// our id, if any. this is used to find us when binding things to the robot's synths.
 	/// * null will use typepath
 	/// * change this from default and things that look for path won't be able to
@@ -14,12 +14,12 @@
 	var/datum/robot_resource_store/store
 
 
-/datum/stack_synth/robot_stack_provider/New(datum/robot_resource_store/store)
+/datum/stack_provider/robot_stack_provider/New(datum/robot_resource_store/store)
 	..()
 	src.store = store
 
-/datum/stack_synth/robot_stack_provider/Destroy()
-	if(store?.stack_synth == src)
-		store.stack_synth = null
+/datum/stack_provider/robot_stack_provider/Destroy()
+	if(store?.stack_provider == src)
+		store.stack_provider = null
 	store = null
 	return ..()

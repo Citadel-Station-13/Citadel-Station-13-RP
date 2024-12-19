@@ -53,9 +53,9 @@
 
 	/// use a synthesizer datum
 	/// * this is unreferenced on Destroy(). make sure the synthesizer doesn't reference us.
-	/// * this will either be a single `/datum/stack_synth`, or a list of
+	/// * this will either be a single `/datum/stack_provider`, or a list of
 	///   them with a multiplier for the amount to draw from each.
-	var/list/datum/stack_synth/synthesized
+	var/list/datum/stack_provider/synthesized
 
 	/// Will the item pass its own color var to the created item? Dyed cloth, wood, etc.
 	var/pass_color = FALSE
@@ -433,6 +433,6 @@
 //* Synthesizer Support *//
 
 /obj/item/stack/proc/set_synthesized(new_value)
-	if(istype(new_value, /datum/stack_synth))
+	if(istype(new_value, /datum/stack_provider))
 	else if(islist(new_value))
 	#warn impl

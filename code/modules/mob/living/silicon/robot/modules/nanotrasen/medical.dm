@@ -3,14 +3,41 @@
 	allowed_frames = list(
 	)
 
+/datum/prototype/robot_module/nanotrasen/medical/create_mounted_item_descriptors(list/normal_out, list/emag_out)
+	..()
+	if(normal_out)
+		normal_out |=  list(
+			/obj/item/healthanalyzer,
+			/obj/item/reagent_containers/borghypo/surgeon,
+			/obj/item/autopsy_scanner,
+			/obj/item/reagent_scanner/adv,
+			/obj/item/roller_holder,
+			/obj/item/reagent_containers/glass/beaker/large,
+			/obj/item/surgical/scalpel/cyborg,
+			/obj/item/surgical/hemostat/cyborg,
+			/obj/item/surgical/retractor/cyborg,
+			/obj/item/surgical/cautery/cyborg,
+			/obj/item/surgical/bonegel/cyborg,
+			/obj/item/surgical/FixOVein/cyborg,
+			/obj/item/surgical/bonesetter/cyborg,
+			/obj/item/surgical/circular_saw/cyborg,
+			/obj/item/surgical/surgicaldrill/cyborg,
+			/obj/item/gripper/no_use/organ,
+			/obj/item/gripper/medical,
+			/obj/item/shockpaddles/robot,
+			/obj/item/reagent_containers/dropper, // Allows surgeon borg to fix necrosis
+			/obj/item/reagent_containers/syringe,
+			/obj/item/dogborg/mirrortool,
+		)
+
 /datum/prototype/robot_module/nanotrasen/medical/provision_resource_store(datum/robot_resource_store/store)
 	..()
 
 /datum/prototype/robot_module/nanotrasen/medical/get_stack_synth_types()
 	. = ..()
-	. += /datum/stack_synth/robot_stack_synth/bandages/advanced
-	. += /datum/stack_synth/robot_stack_synth/ointment/advanced
-	. += /datum/stack_synth/robot_stack_synth/nanopaste
+	. += /datum/stack_provider/robot_stack_synth/bandages/advanced
+	. += /datum/stack_provider/robot_stack_synth/ointment/advanced
+	. += /datum/stack_provider/robot_stack_synth/nanopaste
 
 #warn translate chassis below
 
@@ -50,32 +77,6 @@
 		"W02M" = "worm-crisis"
 	)
 
-/obj/item/robot_module/robot/medical/surgeon/get_modules()
-	. = ..()
-	. |= list(
-		/obj/item/healthanalyzer,
-		/obj/item/reagent_containers/borghypo/surgeon,
-		/obj/item/autopsy_scanner,
-		/obj/item/reagent_scanner/adv,
-		/obj/item/roller_holder,
-		/obj/item/reagent_containers/glass/beaker/large,
-		/obj/item/surgical/scalpel/cyborg,
-		/obj/item/surgical/hemostat/cyborg,
-		/obj/item/surgical/retractor/cyborg,
-		/obj/item/surgical/cautery/cyborg,
-		/obj/item/surgical/bonegel/cyborg,
-		/obj/item/surgical/FixOVein/cyborg,
-		/obj/item/surgical/bonesetter/cyborg,
-		/obj/item/surgical/circular_saw/cyborg,
-		/obj/item/surgical/surgicaldrill/cyborg,
-		/obj/item/gripper/no_use/organ,
-		/obj/item/gripper/medical,
-		/obj/item/shockpaddles/robot,
-		/obj/item/reagent_containers/dropper, // Allows surgeon borg to fix necrosis
-		/obj/item/reagent_containers/syringe,
-		/obj/item/dogborg/mirrortool
-	)
-
 /obj/item/robot_module/robot/medical/surgeon/handle_special_module_init(mob/living/silicon/robot/R)
 	. = ..()
 
@@ -112,33 +113,6 @@
 		"Borgi" = "borgi-medi",
 		"F3-LINE" = "FELI-Medical",
 		"Drake" = "drakemed"
-	)
-
-/obj/item/robot_module/robot/quad/medi/get_modules()
-	. = ..()
-	. |= list(
-		/obj/item/dogborg/jaws/small, //In case a patient is being attacked by carp.
-		/obj/item/healthanalyzer, // See who's hurt specificially.
-		/obj/item/autopsy_scanner,
-		/obj/item/roller_holder, // Sometimes you just can't buckle someone to yourself because of taurcode. this is for those times.
-		/obj/item/reagent_scanner/adv,
-		/obj/item/reagent_containers/syringe, //In case the chemist is nice!
-		/obj/item/reagent_containers/glass/beaker/large,//For holding the chemicals when the chemist is nice
-		// /obj/item/sleevemate, //Lets them scan people.
-		/obj/item/shockpaddles/robot/hound, //Paws of life
-		//New surgery tools + grippers
-		/obj/item/surgical/scalpel/cyborg,
-		/obj/item/surgical/hemostat/cyborg,
-		/obj/item/surgical/retractor/cyborg,
-		/obj/item/surgical/cautery/cyborg,
-		/obj/item/surgical/bonegel/cyborg,
-		/obj/item/surgical/FixOVein/cyborg,
-		/obj/item/surgical/bonesetter/cyborg,
-		/obj/item/surgical/circular_saw/cyborg,
-		/obj/item/surgical/surgicaldrill/cyborg,
-		/obj/item/gripper/no_use/organ,
-		/obj/item/gripper/medical,
-		/obj/item/dogborg/mirrortool
 	)
 
 /obj/item/robot_module/robot/quad/medi/handle_special_module_init(mob/living/silicon/robot/R)
