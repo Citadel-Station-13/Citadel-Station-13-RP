@@ -76,8 +76,9 @@
 
 /datum/spawnpoint/trade/visitor
 	display_name = "Nebula Visitor Arrival"
-	restrict_job = list("Visitor", "Contractor", "Independant", "Frontier Colonis", "Tourist")
+	restrict_job = list("Visitor")
 	announce_channel = "Trade"
+	method = LATEJOIN_METHOD_ARRIVALS_SHUTTLE
 
 /obj/machinery/cryopod/robot/door/gateway/trade/visitor
 	name = "Trade public teleporter"
