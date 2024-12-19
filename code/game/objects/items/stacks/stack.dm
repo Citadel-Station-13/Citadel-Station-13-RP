@@ -26,6 +26,20 @@
 		if(!safety)
 			CRASH("ran out of safety")
 
+/proc/__construct_legacy_stack_provider_material_map()
+	return list(
+		/obj/item/stack/rods = list(
+			/datum/prototype/material/steel::id = SHEET_MATERIAL_AMOUNT / 2,
+		),
+		/obj/item/stack/tile/floor = list(
+			/datum/prototype/material/steel::id = SHEET_MATERIAL_AMOUNT / 4,
+		),
+		/obj/item/stack/material/glass/reinforced = list(
+			/datum/prototype/material/glass::id = SHEET_MATERIAL_AMOUNT / 1,
+			/datum/prototype/material/steel::id = SHEET_MATERIAL_AMOUNT / 2,
+		),
+	)
+
 /**
  * Items that can stack, tracking the number of which is in it
  *
@@ -51,11 +65,17 @@
 	/// Determines whether the item should update it's sprites based on amount.
 	var/no_variants = TRUE
 
-	/// use a synthesizer datum
+	/// use a provider datum
 	/// * this is unreferenced on Destroy(). make sure the synthesizer doesn't reference us.
 	/// * this will either be a single `/datum/stack_provider`, or a list of
 	///   them with a multiplier for the amount to draw from each.
-	var/list/datum/stack_provider/synthesized
+	var/list/datum/stack_provider/stack_provider
+	/// this is admittedly shitcode but this allows for automatic
+	/// stack provider support for non /material stacks that are directly derived from
+	/// materials, like reinf glass and metal tiles
+	///
+	/// todo: please find a better way.
+	var/static/list/legacy_stack_provider_material_map = __construct_legacy_stack_provider_material_map()
 
 	/// Will the item pass its own color var to the created item? Dyed cloth, wood, etc.
 	var/pass_color = FALSE
@@ -430,9 +450,13 @@
 	update_icon()
 	return TRUE
 
-//* Synthesizer Support *//
+//* Stack Providers *//
 
-/obj/item/stack/proc/set_synthesized(new_value)
-	if(istype(new_value, /datum/stack_provider))
-	else if(islist(new_value))
-	#warn impl
+/obj/item/stack/proc/set_provider(datum/stack_provider/provider)
+	stack_provider = provider
+
+/obj/item/stack/proc/push_to_provider(amount)
+
+/obj/item/stack/proc/pull_from_provider(amount)
+
+#warn impl
