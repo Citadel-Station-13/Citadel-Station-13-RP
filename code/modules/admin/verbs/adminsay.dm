@@ -1,20 +1,38 @@
-/client/proc/cmd_admin_say(msg as text)
+/client/proc/cmd_admin_say(message as text)
 	set category = "Special Verbs"
 	set name = "Asay" //Gave this shit a shorter name so you only have to time out "asay" rather than "admin say" to use it --NeoFite
 	set hidden = 1
 	if(!check_rights(R_ADMIN|R_MOD))
 		return
 
-	msg = emoji_parse(sanitize(msg))
-	if(!msg)
+	message = emoji_parse(copytext_char(sanitize(message), 1, MAX_MESSAGE_LEN))
+	if(!message)
 		return
 
-	log_adminsay(msg,src)
+	if(findtext(message, "@") || findtext(message, "#"))
+		var/list/link_results = check_asay_links(message)
+		if(length(link_results))
+			message = link_results[ASAY_LINK_NEW_MESSAGE_INDEX]
+			link_results[ASAY_LINK_NEW_MESSAGE_INDEX] = null
+			var/list/pinged_admin_clients = link_results[ASAY_LINK_PINGED_ADMINS_INDEX]
+			for(var/iter_ckey in pinged_admin_clients)
+				var/client/iter_admin_client = pinged_admin_clients[iter_ckey]
+				if(!iter_admin_client?.holder)
+					continue
+				window_flash(iter_admin_client)
+				SEND_SOUND(iter_admin_client.mob, sound('sound/misc/asay_ping.ogg'))
 
-	if(check_rights(R_ADMIN|R_MOD,0))
-		for(var/client/C in GLOB.admins)
-			if((R_ADMIN|R_MOD) & C.holder.rights)
-				to_chat(C, "<span class='adminsay'>" +  "ADMIN: " + " <span class='name'>[key_name(usr, 1)]</span>([admin_jump_link(mob, src)]): <span class='linkify'>[msg]</span></span>")
+	log_adminsay(message, src)
+	message = keywords_lookup(message)
+	message = "[SPAN_ADMINSAY("[SPAN_PREFIX("ADMIN:")] <EM>[key_name_admin(usr)]</EM> [ADMIN_FLW(mob)]: <span class='message linkify'>[message]")]</span>"
+
+	// manual filter
+	for(var/client/C in GLOB.admins)
+		if((R_ADMIN|R_MOD) & C.holder.rights)
+			to_chat(C,
+				type = MESSAGE_TYPE_ADMINCHAT,
+				html = message,
+				confidential = TRUE)
 
 	feedback_add_details("admin_verb","M") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
@@ -30,11 +48,11 @@
 	if(!check_rights(R_ADMIN|R_MOD|R_SERVER))
 		return
 
-	msg = emoji_parse(sanitize(msg))
-	log_modsay(msg,src)
-
+	msg = emoji_parse(copytext_char(sanitize(msg), 1, MAX_MESSAGE_LEN))
 	if (!msg)
 		return
+
+	log_modsay(msg,src)
 
 	var/sender_name = key_name(usr, 1)
 	if(check_rights(R_ADMIN, 0))

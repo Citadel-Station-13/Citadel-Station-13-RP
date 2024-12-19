@@ -512,10 +512,15 @@
 /proc/SecondsToTicks(seconds)
 	return seconds * 10
 
-/proc/window_flash(client_or_usr)
-	if (!client_or_usr)
+/// Flash the window of a player
+/proc/window_flash(client/flashed_client)
+	if(ismob(flashed_client))
+		var/mob/player_mob = flashed_client
+		if(player_mob.client)
+			flashed_client = player_mob.client
+	if(!flashed_client)
 		return
-	winset(client_or_usr, "mainwindow", "flash=5")
+	winset(flashed_client, "mainwindow", "flash=5")
 
 /**
  * Used for the multiz camera console stolen from virgo.
