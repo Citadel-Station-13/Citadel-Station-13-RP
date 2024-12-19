@@ -147,7 +147,7 @@
 	/// Base level item API for item mounts.
 	/// * This is manipulated from the mount side, not from the item side for now.
 	/// * Item side does have a Destroy() hook.
-	var/datum/item_mount/mounted
+	var/datum/item_mount/item_mount
 
 	//* Storage *//
 	/// storage cost for volumetric storage

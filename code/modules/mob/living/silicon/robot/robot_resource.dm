@@ -37,7 +37,6 @@
 
 /datum/robot_resource/provisioned/preset/wire
 	name = "wire spool"
-	legacy_stack_path = /obj/item/stack/cable_coil
 	amount_max = 250
 	regen_per_second = 30
 
