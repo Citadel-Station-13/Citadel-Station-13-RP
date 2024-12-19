@@ -6525,6 +6525,12 @@
 /obj/machinery/camera/network/cargo{
 	dir = 8
 	},
+/obj/structure/table/reinforced,
+/obj/item/tank/jetpack/oxygen,
+/obj/item/tank/jetpack/oxygen,
+/obj/item/tank/jetpack/oxygen,
+/obj/item/tank/jetpack/oxygen,
+/obj/item/tank/jetpack/oxygen,
 /turf/simulated/floor/reinforced,
 /area/quartermaster/miningdock)
 "ekc" = (
@@ -20824,9 +20830,11 @@
 /area/quartermaster/storage)
 "nWj" = (
 /obj/machinery/computer/roguezones{
-	dir = 1
+	dir = 8
 	},
-/obj/effect/floor_decal/industrial/warning/cee,
+/obj/effect/floor_decal/industrial/warning/cee{
+	dir = 8
+	},
 /turf/simulated/floor/reinforced,
 /area/quartermaster/miningdock)
 "nWz" = (
@@ -23075,16 +23083,6 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d3portforhall)
-"prw" = (
-/obj/machinery/light,
-/obj/item/tank/jetpack/oxygen,
-/obj/item/tank/jetpack/oxygen,
-/obj/item/tank/jetpack/oxygen,
-/obj/item/tank/jetpack/oxygen,
-/obj/item/tank/jetpack/oxygen,
-/obj/structure/table/reinforced,
-/turf/simulated/floor/reinforced,
-/area/quartermaster/miningdock)
 "prZ" = (
 /obj/structure/cable/green{
 	icon_state = "1-2"
@@ -48025,7 +48023,7 @@ buL
 qSx
 drT
 tdG
-nYH
+iXY
 wuh
 uNM
 nDz
@@ -48219,7 +48217,7 @@ rAq
 rAq
 rAq
 iXY
-prw
+mcn
 wuh
 aGE
 vyv
@@ -48413,7 +48411,7 @@ iXY
 iXY
 iXY
 iXY
-nWj
+iXY
 wuh
 qek
 hwN
@@ -48597,9 +48595,9 @@ wuh
 iXY
 iXY
 iXY
-iXY
+nYH
 ejk
-iXY
+nWj
 iXY
 eFf
 iXY
