@@ -115,7 +115,7 @@ SUBSYSTEM_DEF(photography)
 
 	var/datum/db_query/query = SSdbcore.NewQuery(
 		{"
-			INSERT INTO [format_table_name("pictures")]
+			INSERT INTO [DB_PREFIX_TABLE_NAME("pictures")]
 			(`hash`, `width`, `height`) VALUES
 			(:hash, :width, :height)
 		"},
@@ -140,7 +140,7 @@ SUBSYSTEM_DEF(photography)
 	var/datum/db_query/query = SSdbcore.NewQuery(
 		{"
 			SELECT `width`, `height`
-			FROM [format_table_name("pictures")]
+			FROM [DB_PREFIX_TABLE_NAME("pictures")]
 			WHERE `hash` = :hash
 		"},
 		list(
@@ -195,7 +195,7 @@ SUBSYSTEM_DEF(photography)
 
 	var/datum/db_query/query = SSdbcore.NewQuery(
 		{"
-			INSERT INTO [format_table_name("photographs")]
+			INSERT INTO [DB_PREFIX_TABLE_NAME("photographs")]
 			(`picture`, `scene`, `desc`) VALUES
 			(:hash, :scene, :desc)
 		"},
@@ -220,7 +220,7 @@ SUBSYSTEM_DEF(photography)
 	var/datum/db_query/query = SSdbcore.NewQuery(
 		{"
 			SELECT `picture`, `scene`, `desc`
-			FROM [format_table_name("photographs")]
+			FROM [DB_PREFIX_TABLE_NAME("photographs")]
 			WHERE `id` = :id
 		"},
 		list(

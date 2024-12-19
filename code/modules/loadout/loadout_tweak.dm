@@ -57,7 +57,7 @@
 	if(!metadata || (metadata == "#ffffff"))
 		return
 	if(istype(I))
-		I.add_atom_colour(metadata, FIXED_COLOUR_PRIORITY)
+		I.add_atom_color(metadata)
 	else
 		I.color = metadata		// fuck off underwear
 
