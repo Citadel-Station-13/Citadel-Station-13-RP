@@ -42,7 +42,7 @@
 		icon = src.material.icon
 
 	//! LEGACY: turn it back on if our material doesn't have the proper shit set
-	if(!material.icon_stack_count)
+	if(!src.material.icon_stack_count)
 		skip_legacy_icon_update = FALSE
 	//! END
 
