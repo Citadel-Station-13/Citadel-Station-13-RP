@@ -635,12 +635,12 @@
 	name = "mining drill"
 	desc = "A mining drill that can drill through rocks."
 	extended_desc = "A mining drill to strike the earth.  It takes some time to get the job done and \
-	must remain stationary until complete."
+	must remain stationary until complete. By default an advanced mining drill is installed but better once can be attached."
 	category_text = "Manipulation"
-	ext_cooldown = 1
+	ext_cooldown = 5 //Required to not make instant death circuits
 	complexity = 40
-	cooldown_per_use = 3 SECONDS
-	ext_cooldown = 6 SECONDS
+	cooldown_per_use = 1 //We have 'busy' as our safty net
+	can_be_asked_input = TRUE
 	inputs = list(
 		"target" = IC_PINTYPE_REF
 		)
@@ -653,6 +653,9 @@
 	spawn_flags = IC_SPAWN_RESEARCH
 	power_draw_per_use = 1000
 
+	var/obj/item/pickaxe/current_pickaxe
+	var/digspeed = 3 SECONDS
+
 	var/busy = FALSE
 	var/targetlock
 	var/usedx
@@ -662,15 +665,57 @@
 	var/drill_force = 15
 	var/turf/simulated/mineral
 
+/obj/item/integrated_circuit/mining/mining_drill/proc/ask_for_input(mob/living/user, obj/item/I,  a_intent)
+	if(!current_pickaxe)
+		if(!isobj(I))
+			return FALSE
+		attackby_react(I, user, a_intent)
+	else
+		attack_self(user)
+
+/obj/item/integrated_circuit/mining/mining_drill/attackby_react(var/obj/item/pickaxe/I, var/mob/living/user)
+	//Check if it truly is a pickaxe
+	if(!(istype(I,/obj/item/pickaxe)))
+		to_chat(user,"<span class='warning'>The [I.name] doesn't seem to fit in here.</span>")
+		return
+
+	//Check if there is no other pickaxe already inside
+	if(current_pickaxe)
+		to_chat(user,"<span class='notice'>There is already a [current_pickaxe.name] inside.</span>")
+		return
+
+	if(!user.attempt_insert_item_for_installation(I, src))
+		return
+
+	current_pickaxe = I
+	to_chat(user,"<span class='warning'>You attach the [I.name] inside the assembly.</span>")
+	digspeed = I.digspeed
+
+/obj/item/integrated_circuit/mining/mining_drill/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
+	//Check if no drill is attached
+	if(!current_pickaxe)
+		to_chat(user, "<span class='notice'>There is currently no mining tool attached.</span>")
+		return
+
+	//Remove beaker and put in user's hands/location
+	to_chat(user, "<span class='notice'>You yank the [current_pickaxe] out of the slot.</span>")
+	user.put_in_hands(current_pickaxe)
+	current_pickaxe = null
+	//Reset to default
+	digspeed = 3 SECONDS
+
 /obj/item/integrated_circuit/mining/mining_drill/do_work(ord)
 	if(ord == 1)
 		var/atom/target = get_pin_data(IC_INPUT, 1)
 		var/drill_delay = null
-		if(!target || busy)
+		if(!target || busy || !target.Adjacent(assembly))
 			activate_pin(3)
 			return
 		src.assembly.visible_message(SPAN_DANGER("[assembly] starts to drill [target]!"), null, SPAN_WARNING("You hear a drill."))
-		drill_delay = isturf(target)? 6 SECONDS : isliving(target) ? issimple(target) ? 2 SECONDS : 3 SECONDS : 4 SECONDS
+		drill_delay = isturf(target)? digspeed : isliving(target) ? issimple(target) ? 2 SECONDS : 3 SECONDS : 4 SECONDS
 		busy = TRUE
 		targetlock = target
 		usedx = assembly.loc.x
