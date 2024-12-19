@@ -68,10 +68,10 @@
 /obj/item/storage/firstaid/adv,
 /obj/item/storage/firstaid/regular,
 /obj/item/modular_computer/laptop/preset/custom_loadout/rugged,
-/obj/item/storage/box/survival/comp{
+/obj/item/storage/box/legacy_survival/comp{
 	starts_with = list(/obj/item/tool/prybar/red,/obj/item/clothing/glasses/goggles,/obj/item/reagent_containers/hypospray/autoinjector,/obj/item/stack/medical/bruise_pack,/obj/item/flashlight/glowstick,/obj/item/reagent_containers/food/snacks/wrapped/proteinbar,/obj/item/clothing/mask/breath,/obj/item/tank/emergency/oxygen/engi)
 	},
-/obj/item/storage/box/survival/space,
+/obj/item/storage/box/legacy_survival/space,
 /obj/item/extinguisher/mini,
 /obj/item/radio{
 	icon_state = "walkietalkieOLD";

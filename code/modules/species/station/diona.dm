@@ -148,12 +148,6 @@
 		return TRUE
 	return FALSE
 
-/datum/species/diona/equip_survival_gear(mob/living/carbon/human/H)
-	if(H.backbag == 1)
-		H.equip_to_slot_or_del(new /obj/item/flashlight/flare(H), /datum/inventory_slot/abstract/hand/right)
-	else
-		H.equip_to_slot_or_del(new /obj/item/flashlight/flare(H.back), /datum/inventory_slot/abstract/put_in_backpack)
-
 /datum/species/diona/handle_death(mob/living/carbon/human/H)
 
 	var/mob/living/carbon/alien/diona/S = new(get_turf(H))

@@ -2,6 +2,8 @@
 /obj/item/holder
 	name = "holder"
 	desc = "You shouldn't ever see this."
+	icon = 'icons/system/blank_32x32.dmi'
+	icon_state = ""
 	SET_APPEARANCE_FLAGS(KEEP_TOGETHER | PIXEL_SCALE | TILE_BOUND)
 	slot_flags = SLOT_HEAD | SLOT_HOLSTER
 	show_messages = 1

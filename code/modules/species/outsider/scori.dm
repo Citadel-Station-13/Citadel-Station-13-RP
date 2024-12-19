@@ -66,6 +66,3 @@
 		/mob/living/carbon/human/proc/hide_wings,
 		/mob/living/carbon/human/proc/hide_tail
 		)
-
-/datum/species/scori/equip_survival_gear()
-	return

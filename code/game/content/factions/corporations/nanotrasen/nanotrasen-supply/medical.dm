@@ -117,7 +117,7 @@
 		/obj/item/storage/belt/medical,
 		/obj/item/radio/headset/heads/cmo,
 		/obj/item/clothing/under/rank/chief_medical_officer,
-		/obj/item/storage/hypokit/advanced/cmo,
+		/obj/item/storage/hypokit/advanced/cmo/full/loaded,
 		/obj/item/clothing/accessory/stethoscope,
 		/obj/item/clothing/glasses/hud/health,
 		/obj/item/clothing/suit/storage/toggle/labcoat/cmo,
@@ -175,7 +175,7 @@
 		/obj/item/healthanalyzer,
 		/obj/item/storage/box/pillbottles,
 		/obj/item/storage/box/syringes,
-		/obj/item/storage/hypokit,
+		/obj/item/storage/hypokit/full/loaded,
 	)
 	worth = 450
 	container_type = /obj/structure/closet/crate/corporate/nanomed
@@ -201,7 +201,7 @@
 		/obj/item/cartridge/medical,
 		/obj/item/flashlight/pen,
 		/obj/item/clothing/accessory/storage/white_vest,
-		/obj/item/storage/hypokit,
+		/obj/item/storage/hypokit/full/loaded,
 	)
 	worth = 450
 	container_type = /obj/structure/closet/crate/secure/corporate/nanomed
