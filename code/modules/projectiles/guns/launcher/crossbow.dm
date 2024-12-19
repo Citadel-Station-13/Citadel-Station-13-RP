@@ -55,7 +55,9 @@
 	item_state = "crossbow-solid"
 	fire_sound = 'sound/weapons/punchmiss.ogg' // TODO: Decent THWOK noise.
 	fire_sound_text = "a solid thunk"
-	fire_delay = 25
+	firemodes = /datum/firemode{
+		cycle_cooldown = 2.5 SECONDS;
+	}
 	slot_flags = SLOT_BACK
 	safety_state = GUN_NO_SAFETY
 	one_handed_penalty = 10
@@ -70,17 +72,22 @@
 /obj/item/gun/launcher/crossbow/update_release_force()
 	release_force = tension*release_speed
 
-/obj/item/gun/launcher/crossbow/consume_next_projectile(mob/user=null)
+/obj/item/gun/launcher/crossbow/start_firing_cycle(atom/firer, angle, firing_flags, datum/firemode/firemode, atom/target, datum/event_args/actor/actor)
 	if(tension <= 0)
-		to_chat(user, "<span class='warning'>\The [src] is not drawn back!</span>")
-		return null
-	return bolt
+		actor?.chat_feedback(
+			SPAN_WARNING("The bolt on [src] isn't drawn back!"),
+			target = src,
+		)
+		return FALSE
+	return ..()
 
-/obj/item/gun/launcher/crossbow/handle_post_fire(mob/user, atom/target)
+/obj/item/gun/launcher/crossbow/consume_next_throwable(iteration, firing_flags, datum/firemode/firemode, datum/event_args/actor/actor, atom/firer)
+	. = bolt
 	bolt = null
+
+/obj/item/gun/launcher/crossbow/post_fire(datum/gun_firing_cycle/cycle)
+	. = ..()
 	tension = 0
-	update_icon()
-	..()
 
 /obj/item/gun/launcher/crossbow/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()

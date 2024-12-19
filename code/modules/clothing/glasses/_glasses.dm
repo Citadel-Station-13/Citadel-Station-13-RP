@@ -53,7 +53,7 @@ BLIND     // can't see anything
 	if(.)
 		return
 	if(toggleable)
-		var/mob/wearer = worn_mob()
+		var/mob/wearer = get_worn_mob()
 		if(active)
 			active = 0
 			icon_state = inactive_icon_state
