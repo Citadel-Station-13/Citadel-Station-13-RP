@@ -6804,9 +6804,6 @@
 /obj/random/maintenance/clean,
 /obj/random/maintenance/clean,
 /obj/item/duct_tape_roll,
-/obj/machinery/light/small{
-	dir = 8
-	},
 /turf/simulated/floor/tiled/techfloor,
 /area/maintenance/bar/catwalk)
 "esO" = (
@@ -8846,6 +8843,9 @@
 /obj/structure/table/reinforced,
 /obj/item/storage/toolbox/syndicate,
 /obj/item/pickaxe/drill,
+/obj/machinery/light/small{
+	dir = 4
+	},
 /turf/simulated/floor/plating,
 /area/maintenance/cargo)
 "fGL" = (
@@ -13815,6 +13815,12 @@
 	},
 /turf/simulated/floor/tiled/monodark,
 /area/quartermaster/foyer)
+"jbC" = (
+/obj/machinery/light/small{
+	dir = 1
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/cargo)
 "jbI" = (
 /obj/machinery/light,
 /obj/structure/cable/orange{
@@ -25622,6 +25628,12 @@
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_7)
+"rjO" = (
+/obj/machinery/light/small{
+	dir = 8
+	},
+/turf/simulated/floor/reinforced,
+/area/quartermaster/miningdock)
 "rjY" = (
 /obj/effect/floor_decal/borderfloorblack/corner{
 	dir = 8
@@ -29325,6 +29337,13 @@
 /obj/structure/curtain/open/black,
 /turf/simulated/floor/plating,
 /area/crew_quarters/game_room)
+"tBG" = (
+/obj/structure/catwalk,
+/obj/machinery/light/small{
+	dir = 8
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/cargo)
 "tBN" = (
 /obj/structure/cable/green,
 /obj/machinery/power/apc/west_mount,
@@ -30072,6 +30091,13 @@
 /obj/effect/floor_decal/corner_oldtile/white/diagonal,
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/kitchen)
+"ubc" = (
+/obj/machinery/air_alarm/north_mount,
+/obj/machinery/light/small{
+	dir = 4
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/cargo)
 "ubg" = (
 /obj/structure/closet/walllocker{
 	pixel_y = 32
@@ -31405,13 +31431,13 @@
 /turf/simulated/floor/plating,
 /area/quartermaster/storage)
 "uRN" = (
-/obj/vehicle/sealed/mecha/combat/fighter/cludge{
-	dir = 1;
-	name = "\improper NLS Legal Salvage";
-	desc = "A heater, nozzle, and fuel tank strapped together. There are exposed wires strewn about it. Hastily scrawled along the portside cockpit entrance using big, blocky script (in what appears to be crayon?) is the name 'NLS LEGAL SALVAGE'"
-	},
 /obj/effect/floor_decal/industrial/warning{
 	dir = 10
+	},
+/obj/vehicle/sealed/mecha/combat/fighter/pinnace{
+	dir = 1;
+	desc = "A cramped ship's boat, capable of atmospheric and space flight. Not capable of mounting traditional weapons. Capable of fitting one pilot and one passenger. Hastily scrawled along the portside cockpit entrance using big, blocky script (in what appears to be crayon?) is the name 'NLS LEGAL SALVAGE'.";
+	name = "\improper NLS Legal Salvage"
 	},
 /turf/simulated/floor/reinforced,
 /area/quartermaster/miningdock)
@@ -33815,6 +33841,19 @@
 /obj/effect/paint/palebottlegreen,
 /turf/simulated/floor/carpet/bcarpet,
 /area/crew_quarters/bar)
+"wlM" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/catwalk,
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/obj/machinery/light/small{
+	dir = 1
+	},
+/turf/simulated/floor/plating,
+/area/endeavour/hallway/d3aftmaint)
 "wma" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -34004,6 +34043,16 @@
 /obj/structure/flora/pottedplant/orientaltree,
 /turf/simulated/floor/carpet/bcarpet,
 /area/crew_quarters/bar)
+"wss" = (
+/obj/structure/catwalk,
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
+/obj/machinery/light/small{
+	dir = 8
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/cargo)
 "wsz" = (
 /turf/simulated/wall/prepainted/security,
 /area/security/interrogation)
@@ -36573,6 +36622,9 @@
 	dir = 8;
 	layer = 2.9
 	},
+/obj/machinery/light/small{
+	dir = 1
+	},
 /turf/simulated/floor/plating,
 /area/maintenance/cargo)
 "yfy" = (
@@ -36697,6 +36749,10 @@
 	},
 /turf/simulated/floor/wood,
 /area/endeavour/hallway/d3fwdhall)
+"yiZ" = (
+/obj/machinery/light/small,
+/turf/simulated/floor/plating,
+/area/maintenance/cargo)
 "yjd" = (
 /obj/machinery/light{
 	dir = 1
@@ -45639,7 +45695,7 @@ iXY
 iXY
 iXY
 iXY
-iXY
+rjO
 iXY
 iXY
 wuh
@@ -45842,7 +45898,7 @@ xlf
 xlf
 uRz
 hkm
-jPs
+wlM
 xhN
 rSZ
 iTk
@@ -51275,7 +51331,7 @@ noW
 pzs
 bLd
 hdh
-cZa
+nms
 uAV
 xhN
 bUP
@@ -54575,7 +54631,7 @@ jhH
 kWu
 dld
 xng
-fju
+jbC
 lUu
 rMi
 edb
@@ -55152,11 +55208,11 @@ vZR
 oFO
 kKO
 fju
-mIk
+tBG
 mIk
 sDb
 qWd
-tES
+wss
 dJV
 fju
 hFO
@@ -57869,13 +57925,13 @@ pRW
 csb
 csb
 eAp
+jbC
 fju
-fju
 mIk
 mIk
 mIk
 mIk
-mIk
+tBG
 mIk
 mIk
 fju
@@ -60013,7 +60069,7 @@ gYF
 vRl
 vRl
 mIk
-fju
+yiZ
 rBG
 fqc
 pAU
@@ -60788,7 +60844,7 @@ vRl
 vRl
 vRl
 vRl
-kdG
+ubc
 mIk
 rBG
 tMK
