@@ -5,6 +5,9 @@
 
 /datum/prototype/robot_module/cybersun/triage/provision_resource_store(datum/robot_resource_store/store)
 	..()
+	store.provisioned_stack_store[/obj/item/stack/medical/advanced/bruise_pack] = new /datum/robot_resource/provisioned/preset/bandages/advanced
+	store.provisioned_stack_store[/obj/item/stack/medical/advanced/ointment] = new /datum/robot_resource/provisioned/preset/ointment/advanced
+	store.provisioned_stack_store[/obj/item/stack/nanopaste] = new /datum/robot_resource/provisioned/preset/nanopaste
 
 #warn translate chassis below
 
@@ -42,27 +45,8 @@
 		/obj/item/roller_holder
 	)
 
-/obj/item/robot_module/robot/syndicate/combat_medic/get_synths(mob/living/silicon/robot/R)
-	. = ..()
-	MATTER_SYNTH(MATSYN_DRUGS, medicine, 15000)
-
 /obj/item/robot_module/robot/syndicate/combat_medic/Initialize(mapload)
 	. = ..()
-
-	// Materials.
-	var/datum/matter_synth/medicine = synths_by_kind[MATSYN_DRUGS]
-
-	var/obj/item/stack/medical/advanced/ointment/O = new /obj/item/stack/medical/advanced/ointment(src)
-	O.uses_charge = 1
-	O.charge_costs = list(1000)
-	O.synths = list(medicine)
-	. += O
-
-	var/obj/item/stack/medical/advanced/bruise_pack/B = new /obj/item/stack/medical/advanced/bruise_pack(src)
-	B.uses_charge = 1
-	B.charge_costs = list(1000)
-	B.synths = list(medicine)
-	. += B
 
 	var/obj/item/stack/medical/splint/S = new /obj/item/stack/medical/splint(src)
 	S.uses_charge = 1

@@ -17,20 +17,20 @@
 	return ..()
 
 /datum/item_mount/proc/mount(obj/item/item)
-	if(item.mounted)
-		if(item.mounted == src)
+	if(item.item_mount)
+		if(item.item_mount == src)
 			return TRUE
-		item.mounted.unmount(item)
+		item.item_mount.unmount(item)
 
 	LAZYADD(mounted_items, item)
-	item.mounted = src
+	item.item_mount = src
 	return TRUE
 
 /datum/item_mount/proc/unmount(obj/item/item)
 	if(item.mounted != src)
 		return TRUE
 	LAZYREMOVE(mounted_items, item)
-	item.mounted = null
+	item.item_mount = null
 	return TRUE
 
 /datum/item_mount/proc/is_mounted(obj/item/item)

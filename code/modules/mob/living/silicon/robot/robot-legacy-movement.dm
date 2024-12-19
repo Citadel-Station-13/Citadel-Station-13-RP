@@ -1,8 +1,3 @@
-/mob/living/silicon/robot/Process_Spaceslipping(var/prob_slip)
-	if(module && module.no_slip)
-		return 0
-	..(prob_slip)
-
 /mob/living/silicon/robot/Process_Spacemove()
 	if(module)
 		for(var/obj/item/tank/jetpack/J in module.modules)

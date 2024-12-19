@@ -30,7 +30,6 @@ GLOBAL_LIST_INIT(robot_modules, list(
 	var/networks = list()
 	var/sprites = list()
 	var/can_be_pushed = 1
-	var/no_slip = 0
 	/// Enables a verb.
 	var/can_shred = FALSE
 

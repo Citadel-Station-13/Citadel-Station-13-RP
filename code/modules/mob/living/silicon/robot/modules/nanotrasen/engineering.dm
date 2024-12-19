@@ -79,7 +79,6 @@
 		"ZOOM-BA" = "zoomba-engineering",
 		"W02M" = "worm-engineering"
 	)
-	no_slip = 1
 
 /obj/item/robot_module/robot/engineering/handle_special_module_init(mob/living/silicon/robot/R)
 	. = ..()

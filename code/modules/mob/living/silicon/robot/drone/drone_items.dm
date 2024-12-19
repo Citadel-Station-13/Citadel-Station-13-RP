@@ -1,16 +1,10 @@
 
-//TODO: Matter decompiler.
+//TODO: (the) Matter decompiler (is shit)
 /obj/item/matter_decompiler
 	name = "matter decompiler"
 	desc = "Eating trash, bits of glass, or other debris will replenish your stores."
 	icon = 'icons/obj/device.dmi'
 	icon_state = "decompiler"
-
-	//Metal, glass, wood, plastic.
-	var/datum/matter_synth/metal = null
-	var/datum/matter_synth/glass = null
-	var/datum/matter_synth/wood = null
-	var/datum/matter_synth/plastic = null
 
 /obj/item/matter_decompiler/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 
@@ -29,10 +23,8 @@
 			src.loc.visible_message("<span class='danger'>[src.loc] sucks [M] into its decompiler. There's a horrible crunching noise.</span>","<span class='danger'>It's a bit of a struggle, but you manage to suck [M] into your decompiler. It makes a series of visceral crunching noises.</span>")
 			new/obj/effect/debris/cleanable/blood/splatter(get_turf(src))
 			qdel(M)
-			if(wood)
-				wood.add_charge(2000)
-			if(plastic)
-				plastic.add_charge(2000)
+			item_mount?.push_material(/datum/prototype/material/wood_plank::id, 2000)
+			item_mount?.push_material(/datum/prototype/material/plastic::id, 2000)
 			return
 
 		else if(istype(M,/mob/living/silicon/robot/drone) && !M.client)
@@ -54,14 +46,10 @@
 			qdel(M)
 			new/obj/effect/debris/cleanable/blood/oil(get_turf(src))
 
-			if(metal)
-				metal.add_charge(15000)
-			if(glass)
-				glass.add_charge(15000)
-			if(wood)
-				wood.add_charge(2000)
-			if(plastic)
-				plastic.add_charge(1000)
+			item_mount?.push_material(/datum/prototype/material/steel::id, 15000)
+			item_mount?.push_material(/datum/prototype/material/glass::id, 15000)
+			item_mount?.push_material(/datum/prototype/material/wood_plank::id, 2000)
+			item_mount?.push_material(/datum/prototype/material/plastic::id, 1000)
 			return
 		else
 			continue
@@ -69,51 +57,35 @@
 	for(var/obj/W in T)
 		//Different classes of items give different commodities.
 		if(istype(W,/obj/item/cigbutt))
-			if(plastic)
-				plastic.add_charge(500)
+			item_mount?.push_material(/datum/prototype/material/plastic::id, 500)
 		else if(istype(W,/obj/effect/spider/spiderling))
-			if(wood)
-				wood.add_charge(2000)
-			if(plastic)
-				plastic.add_charge(2000)
+			item_mount?.push_material(/datum/prototype/material/wood_plank::id, 2000)
+			item_mount?.push_material(/datum/prototype/material/plastic::id, 2000)
 		else if(istype(W,/obj/item/light))
 			var/obj/item/light/L = W
 			if(L.status >= 2) //In before someone changes the inexplicably local defines. ~ Z
-				if(metal)
-					metal.add_charge(250)
-				if(glass)
-					glass.add_charge(250)
+				item_mount?.push_material(/datum/prototype/material/steel::id, 250)
+				item_mount?.push_material(/datum/prototype/material/glass::id, 250)
 			else
 				continue
 		else if(istype(W,/obj/effect/decal/remains/robot))
-			if(metal)
-				metal.add_charge(2000)
-			if(plastic)
-				plastic.add_charge(2000)
-			if(glass)
-				glass.add_charge(1000)
+			item_mount?.push_material(/datum/prototype/material/steel::id, 2000)
+			item_mount?.push_material(/datum/prototype/material/plastic::id, 2000)
+			item_mount?.push_material(/datum/prototype/material/glass::id, 1000)
 		else if(istype(W,/obj/item/trash))
-			if(metal)
-				metal.add_charge(1000)
-			if(plastic)
-				plastic.add_charge(3000)
+			item_mount?.push_material(/datum/prototype/material/steel::id, 1000)
+			item_mount?.push_material(/datum/prototype/material/plastic::id, 3000)
 		else if(istype(W,/obj/effect/debris/cleanable/blood/gibs/robot))
-			if(metal)
-				metal.add_charge(2000)
-			if(glass)
-				glass.add_charge(2000)
+			item_mount?.push_material(/datum/prototype/material/steel::id, 2000)
+			item_mount?.push_material(/datum/prototype/material/glass::id, 2000)
 		else if(istype(W,/obj/item/ammo_casing))
-			if(metal)
-				metal.add_charge(1000)
+			item_mount?.push_material(/datum/prototype/material/steel::id, 1000)
 		else if(istype(W,/obj/item/material/shard/shrapnel))
-			if(metal)
-				metal.add_charge(1000)
+			item_mount?.push_material(/datum/prototype/material/steel::id, 1000)
 		else if(istype(W,/obj/item/material/shard))
-			if(glass)
-				glass.add_charge(1000)
+			item_mount?.push_material(/datum/prototype/material/glass::id, 1000)
 		else if(istype(W,/obj/item/reagent_containers/food/snacks/grown))
-			if(wood)
-				wood.add_charge(4000)
+			item_mount?.push_material(/datum/prototype/material/wood_plank::id, 4000)
 		else if(istype(W,/obj/item/pipe))
 			// This allows drones and engiborgs to clear pipe assemblies from floors.
 		else

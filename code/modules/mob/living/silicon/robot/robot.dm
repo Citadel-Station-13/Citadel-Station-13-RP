@@ -127,7 +127,7 @@
 	var/atom/movable/screen/robot_modules_background
 
 	//?3 Modules can be activated at any one time.
-	var/obj/item/robot_module/module = null
+	var/obj/item/robot_module/module_legacy = null
 	var/obj/item/module_active = null
 	var/obj/item/module_state_1 = null
 	var/obj/item/module_state_2 = null

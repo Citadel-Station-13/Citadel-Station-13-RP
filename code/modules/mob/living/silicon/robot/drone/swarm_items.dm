@@ -26,6 +26,8 @@
 			src.loc.visible_message("<span class='danger'>[src.loc] sucks [M] into its decompiler. There's a horrible crunching noise.</span>","<span class='danger'>It's a bit of a struggle, but you manage to suck [M] into your decompiler. It makes a series of visceral crunching noises.</span>")
 			new/obj/effect/debris/cleanable/blood/splatter(get_turf(src))
 			qdel(M)
+
+			mounted
 			if(wood)
 				wood.add_charge(2000)
 			if(plastic)
@@ -51,14 +53,10 @@
 			qdel(M)
 			new/obj/effect/debris/cleanable/blood/oil(get_turf(src))
 
-			if(metal)
-				metal.add_charge(15000)
-			if(glass)
-				glass.add_charge(15000)
-			if(wood)
-				wood.add_charge(2000)
-			if(plastic)
-				plastic.add_charge(1000)
+			item_mount?.push_material(/datum/prototype/material/steel::id, 15000)
+			item_mount?.push_material(/datum/prototype/material/glass::id, 15000)
+			item_mount?.push_material(/datum/prototype/material/wood_plank::id, 2000)
+			item_mount?.push_material(/datum/prototype/material/plastic::id, 1000)
 			return
 		else
 			continue
@@ -66,31 +64,23 @@
 	for(var/obj/W in T)
 		//Different classes of items give different commodities.
 		if(istype(W,/obj/structure/girder))
-			if(metal)
-				metal.add_charge(500)
+			item_mount?.push_material(/datum/prototype/material/steel::id, 500)
 		else if(istype(W,/obj/machinery/power/emitter))
-			if(metal)
-				metal.add_charge(3000)
-			if(plastic)
-				plastic.add_charge(1000)
+			item_mount?.push_material(/datum/prototype/material/steel::id, 3000)
+			item_mount?.push_material(/datum/prototype/material/plastic::id, 1000)
 		else if(istype(W,/obj/machinery/space_heater))
-			if(metal)
-				metal.add_charge(1500)
-			if(plastic)
-				plastic.add_charge(750)
+			item_mount?.push_material(/datum/prototype/material/steel::id, 1500)
+			item_mount?.push_material(/datum/prototype/material/plastic::id, 750)
 		else if(istype(W,/obj/structure/closet))
 			var/obj/structure/closet/C = W
 			if(!C.opened)
 				continue
 			if(istype(W,/obj/structure/closet/coffin))
-				if(wood)
-					wood.add_charge(1000)
+				item_mount?.push_material(/datum/prototype/material/wood_plank::id, 1000)
 			else if(istype(W,/obj/structure/closet/crate/plastic))
-				if(plastic)
-					plastic.add_charge(750)
+				item_mount?.push_material(/datum/prototype/material/plastic::id, 1000)
 			else
-				if(metal)
-					metal.add_charge(1000)
+				item_mount?.push_material(/datum/prototype/material/steel::id, 1000)
 		else
 			continue
 
@@ -110,7 +100,6 @@
 		to_chat(user, "<span class='notice'>You deploy your decompiler and clear out the contents of \the [T].</span>")
 	else
 		to_chat(user, "<span class='danger'>Nothing on \the [T] is useful to you.</span>")
-	return
 
 /obj/effect/temporary_effect/pulse/disintegrate
 	name = "molecular debonding field"

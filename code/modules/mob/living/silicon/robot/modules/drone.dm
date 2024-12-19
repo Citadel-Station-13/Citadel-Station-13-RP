@@ -23,12 +23,11 @@
 			/obj/item/stack/tile/roofing,
 			/obj/item/stack/material/glass/reinforced,
 		)
-		
+
 #warn translate chassis below
 
 /obj/item/robot_module/drone
 	name = "drone module"
-	no_slip = 1
 	networks = list(NETWORK_ENGINEERING)
 
 /obj/item/robot_module/drone/get_modules()

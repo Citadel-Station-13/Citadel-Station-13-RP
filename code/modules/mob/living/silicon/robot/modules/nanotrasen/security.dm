@@ -84,7 +84,6 @@
 	channels = list("Security" = 1)
 	networks = list(NETWORK_SECURITY)
 	can_be_pushed = 0
-	is_the_law = TRUE
 	can_shred = TRUE
 	supported_upgrades = list(/obj/item/borg/upgrade/tasercooler)
 
