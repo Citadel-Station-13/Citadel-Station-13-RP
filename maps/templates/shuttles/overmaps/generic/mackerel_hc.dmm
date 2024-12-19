@@ -95,7 +95,7 @@
 /turf/simulated/floor/plating,
 /area/shuttle/mackerel_hc)
 "gv" = (
-/obj/machinery/computer/shuttle_control/explore/mackerel_hc,
+/obj/machinery/computer/shuttle_control,
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/mackerel_hc)
 "gU" = (

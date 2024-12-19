@@ -77,18 +77,9 @@
 	icon_state = "shuttle"
 	requires_power = 0
 
-// The shuttle's 'shuttle' computer
-/obj/machinery/computer/shuttle_control/explore/mercboat
-	name = "boat control console"
-	shuttle_tag = "Carrier's Ship's Boat"
-
 // A shuttle lateloader landmark
 /obj/effect/shuttle_landmark/shuttle_initializer/mercboat
 	name = "Carrier's Boat Bay"
-	base_area = /area/ship/mercenary/hangar
-	base_turf = /turf/simulated/floor/plating
-	landmark_tag = "omship_spawn_mercboat"
-	docking_controller = "merc_boatbay"
 	shuttle_type = /datum/shuttle/autodock/overmap/mercboat
 
 // The 'shuttle'
