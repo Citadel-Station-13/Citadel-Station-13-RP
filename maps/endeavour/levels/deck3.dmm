@@ -1614,25 +1614,6 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/security/riot_control)
-"bcS" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/structure/disposalpipe/segment,
-/obj/structure/cable/green{
-	icon_state = "1-2"
-	},
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/obj/structure/flora/ausbushes/lavendergrass,
-/obj/machinery/door/firedoor{
-	dir = 1
-	},
-/turf/simulated/floor/grass,
-/area/quartermaster/foyer)
 "bed" = (
 /obj/machinery/door/blast/regular{
 	density = 0;
@@ -16192,17 +16173,7 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/obj/structure/flora/ausbushes/sparsegrass,
-/obj/machinery/door/firedoor{
-	dir = 1
-	},
-/turf/simulated/floor/grass,
+/turf/simulated/floor/tiled/dark,
 /area/quartermaster/foyer)
 "kRb" = (
 /obj/machinery/door/firedoor/glass,
@@ -18700,17 +18671,7 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/obj/structure/flora/ausbushes/brflowers,
-/obj/machinery/door/firedoor{
-	dir = 1
-	},
-/turf/simulated/floor/grass,
+/turf/simulated/floor/tiled/dark,
 /area/quartermaster/foyer)
 "mGv" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -22257,6 +22218,9 @@
 	},
 /obj/structure/flora/ausbushes/ppflowers,
 /obj/machinery/door/firedoor{
+	dir = 1
+	},
+/obj/structure/window/reinforced{
 	dir = 1
 	},
 /turf/simulated/floor/grass,
@@ -29051,6 +29015,7 @@
 /obj/machinery/door/firedoor{
 	dir = 1
 	},
+/obj/structure/window/reinforced,
 /turf/simulated/floor/grass,
 /area/quartermaster/foyer)
 "tzm" = (
@@ -33326,25 +33291,6 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/security/hallway)
-"wcc" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/structure/disposalpipe/segment,
-/obj/structure/cable/green{
-	icon_state = "1-2"
-	},
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/obj/structure/flora/ausbushes/fullgrass,
-/obj/machinery/door/firedoor{
-	dir = 1
-	},
-/turf/simulated/floor/grass,
-/area/quartermaster/foyer)
 "wcT" = (
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
@@ -34296,6 +34242,7 @@
 /obj/machinery/door/firedoor{
 	dir = 1
 	},
+/obj/structure/window/reinforced,
 /turf/simulated/floor/grass,
 /area/quartermaster/foyer)
 "wKM" = (
@@ -53155,8 +53102,8 @@ cPy
 jdF
 wKr
 mFW
-bcS
-wcc
+kQS
+kQS
 oYC
 tyl
 kQS
