@@ -12,6 +12,7 @@
 			/obj/item/gripper/service,
 			/obj/item/reagent_containers/glass/bucket,
 			/obj/item/reagent_containers/dropper/industrial,
+			/obj/item/flame/lighter/zippo,
 			/obj/item/reagent_containers/borghypo/service,
 			/obj/item/material/minihoe,
 			/obj/item/material/knife/machete/hatchet,
@@ -27,6 +28,7 @@
 			/obj/item/stamp,
 			/obj/item/stamp/denied,
 			/obj/item/tray/robotray,
+			/obj/item/rsf/loaded,
 		)
 
 /datum/prototype/robot_module/nanotrasen/service/provision_resource_store(datum/robot_resource_store/store)
@@ -35,18 +37,6 @@
 /obj/item/robot_module/robot/clerical/butler/Initialize(mapload)
 	. = ..()
 
-	var/obj/item/rsf/M = new /obj/item/rsf(src)
-	M.stored_matter = 30
-	src.modules += M
-
-	src.modules += new /obj/item/reagent_containers/dropper/industrial(src)
-
-	var/obj/item/flame/lighter/zippo/L = new /obj/item/flame/lighter/zippo(src)
-	L.lit = 1
-	src.modules += L
-
-	src.modules += new /obj/item/tray/robotray(src)
-	src.modules += new /obj/item/reagent_containers/borghypo/service(src)
 	src.emag = new /obj/item/reagent_containers/food/drinks/bottle/small/beer(src)
 
 	var/datum/reagent_holder/R = new/datum/reagent_holder(50)

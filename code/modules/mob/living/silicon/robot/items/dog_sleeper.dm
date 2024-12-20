@@ -30,11 +30,6 @@
 	var/startdrain = 500
 	var/max_item_count = 1
 	var/gulpsound = 'sound/vore/gulp.ogg'
-	var/datum/matter_synth/metal = null
-	var/datum/matter_synth/glass = null
-	var/datum/matter_synth/wood = null
-	var/datum/matter_synth/plastic = null
-	var/datum/matter_synth/water = null
 	var/digest_brute = 2
 	var/digest_burn = 3
 	var/recycles = FALSE
@@ -531,7 +526,7 @@
 				var/actual_burn = T.getFireLoss() - old_burn
 				var/damage_gain = actual_brute + actual_burn
 				drain(-25 * damage_gain) //25*total loss as with voreorgan stats.
-				water.add_charge(damage_gain)
+				item_mount?.push_reagent(/datum/reagent/water, damagE_gain)
 				if(T.stat == DEAD)
 					if(ishuman(T))
 						message_admins("[key_name(hound)] has digested [key_name(T)] as a dogborg. ([hound ? "<a href='?_src_=holder;adminplayerobservecoodjump=1;X=[hound.x];Y=[hound.y];Z=[hound.z]'>JMP</a>" : "null"])")
@@ -568,10 +563,10 @@
 					if(ishuman(T))
 						var/mob/living/carbon/human/Prey = T
 						volume = (Prey.bloodstr.total_volume + Prey.ingested.total_volume + Prey.touching.total_volume + Prey.weight) * Prey.size_multiplier
-						water.add_charge(volume)
+						item_mount?.push_reagent(/datum/reagent/water, volume)
 					if(T.reagents)
 						volume = T.reagents.total_volume
-						water.add_charge(volume)
+						item_mount?.push_reagent(/datum/reagent/water, volume)
 					if(patient == T)
 						patient_laststat = null
 						patient = null
@@ -597,7 +592,7 @@
 							synced = FALSE
 						drain(-50 * digested)
 					if(volume)
-						water.add_charge(volume)
+						item_mount?.push_reagent(/datum/reagent/water, volume)
 					var/list/mats = T.get_materials(TRUE)
 					if(recycles && mats)
 						for(var/material in mats)
@@ -606,14 +601,14 @@
 								var/obj/item/stack/stack = T
 								total_material *= stack.get_amount()
 							if(material == MAT_STEEL)
-								metal.add_charge(total_material)
+								item_mount?.push_material(/datum/prototype/material/steel::id, total_material)
 							if(material == "glass")
-								glass.add_charge(total_material)
+								item_mount?.push_material(/datum/prototype/material/glass::id, total_material)
 							if(decompiler)
 								if(material == "plastic")
-									plastic.add_charge(total_material)
+									item_mount?.push_material(/datum/prototype/material/plastic::id, total_material)
 								if(material == "wood")
-									wood.add_charge(total_material)
+									item_mount?.push_material(/datum/prototype/material/wood::id, total_material)
 					else
 						drain(-50 * digested)
 			else if(istype(target,/obj/effect/decal/remains))
@@ -622,7 +617,6 @@
 			else
 				items_preserved |= target
 		update_patient()
-	return
 
 /obj/item/robot_builtin/dog_sleeper/process(delta_time)
 	if(!istype(src.loc,/mob/living/silicon/robot))

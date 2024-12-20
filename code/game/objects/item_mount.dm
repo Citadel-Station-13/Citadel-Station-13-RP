@@ -45,16 +45,31 @@
 //* Reagents *//
 
 /**
- * checks if the item mount has a reagent
+ * Gets if an item mount has a reagent, and if it does, its amount.
+ *
+ * * Semantically, null means 'we can't store this'.
  *
  * @params
  * * id - reagent id
- * * amount - (optional) volume required
+ *
+ * @return amount the item mount has, null if it doesn't have it
+ */
+/datum/item_mount/proc/get_reagent(id)
+	return null
+
+/**
+ * checks if the item mount has a given amount of a reagent
+ *
+ * @params
+ * * id - reagent id
+ * * amount - volume required
  *
  * @return amount the item mount has
  */
 /datum/item_mount/proc/has_reagent(id, amount)
-	return 0
+	. = get_reagent(id) || 0
+	if(. < amount)
+		return 0
 
 /**
  * todo: how to handle data pull?
@@ -67,6 +82,18 @@
  */
 /datum/item_mount/proc/pull_reagent(id, amount)
 	return 0
+
+/**
+ * todo: how to handle data pull?
+ *
+ * @params
+ * * id - reagent id
+ * * amount - volume
+ *
+ * @return amount the item mount could give
+ */
+/datum/item_mount/proc/pull_checked_reagent(id, amount)
+	return has_reagent(id, amount) ? pull_reagent(id, amount) : 0
 
 /**
  * @params
@@ -82,23 +109,38 @@
 //* Materials *//
 
 /**
- * checks if the item mount has a material
+ * checks if the item mount has a material, and how much it has
+ *
+ * * Semantically, null means 'we can't store this'.
  *
  * @params
  * * id - material id
- * * amount - (optional) volume in cm3 required
+ *
+ * @return amount the item mount has, or null
+ */
+/datum/item_mount/proc/get_material(id)
+	return null
+
+/**
+ * checks if the item mount has a given amount of a material
+ *
+ * @params
+ * * id - material id
+ * * amount - volume in cm3 required
  *
  * @return amount the item mount has
  */
 /datum/item_mount/proc/has_material(id, amount)
-	return 0
+	. = get_material(id) || 0
+	if(. < amount)
+		return 0
 
 /**
  * attempts to consume a material from the item mount
  *
  * @params
  * * id - material id
- * * amount - volume
+ * * amount - volume in cm3
  *
  * @return amount the item mount could give
  */
@@ -106,11 +148,23 @@
 	return 0
 
 /**
+ * attempts to consume a material from the item mount
+ *
+ * @params
+ * * id - material id
+ * * amount - volume in cm3
+ *
+ * @return amount the item mount could give
+ */
+/datum/item_mount/proc/pull_checked_material(id, amount)
+	return has_material(id, amount) ? pull_material(id, amount) : 0
+
+/**
  * attempts to give a material to the item mount
  *
  * @params
  * * id - material id
- * * amount - volume
+ * * amount - volume in cm3
  * * force - allow overfill
  *
  * @return amount the item mount could accept
@@ -121,16 +175,31 @@
 //* Stacks *//
 
 /**
+ * checks if the item mount has a stack, and if it does, how much of it.
+ *
+ * * Semantically, null means 'we can't store this stack'.
+ *
+ * @params
+ * * path - stack path
+ *
+ * @return amount in sheets the item mount has, or null
+ */
+/datum/item_mount/proc/get_stack(path)
+	return null
+
+/**
  * checks if the item mount has a stack
  *
  * @params
  * * path - stack path
- * * amount - (optional) volume in cm3 required
+ * * amount - sheets required
  *
  * @return amount the item mount has
  */
 /datum/item_mount/proc/has_stack(path, amount)
-	return 0
+	. = get_stack(id) || 0
+	if(. < amount)
+		return 0
 
 /**
  * attempts to consume a stack from the item mount
@@ -143,6 +212,18 @@
  */
 /datum/item_mount/proc/pull_stack(path, amount)
 	return 0
+
+/**
+ * attempts to consume a stack from the item mount
+ *
+ * @params
+ * * path - stack path
+ * * amount - volume
+ *
+ * @return amount the item mount could give
+ */
+/datum/item_mount/proc/pull_checked_stack(path, amount)
+	return has_stack(path, amount) ? pull_stack(path, amount) : 0
 
 /**
  * attempts to give a stack to the item mount

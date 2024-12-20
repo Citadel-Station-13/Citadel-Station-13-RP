@@ -50,8 +50,6 @@
 	return ..()
 
 /obj/machinery/sheet_silo/proc/take_sheets(obj/item/stack/material/sheets)
-	if(sheets.uses_charge)
-		return 0
 	var/mat_id = sheets.material.id
 	var/mat_amount = sheets.amount
 	. = mat_amount

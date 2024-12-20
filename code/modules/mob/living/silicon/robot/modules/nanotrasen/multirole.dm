@@ -1,8 +1,21 @@
 /datum/prototype/robot_module/nanotrasen/multirole
-	use_robot_module_path = /obj/item/robot_module/robot/
+	use_robot_module_path = /obj/item/robot_module/robot/standard
 	allowed_frames = list(
 	)
 
+/datum/prototype/robot_module/nanotrasen/multirole/create_mounted_item_descriptors(list/normal_out, list/emag_out)
+	..()
+	if(normal_out)
+		normal_out |= list(
+			/obj/item/melee/baton/loaded,
+			/obj/item/tool/wrench/cyborg,
+			/obj/item/healthanalyzer,
+		)
+	if(emag_out)
+		emag_out |= list(
+			/obj/item/melee/transforming/energy/sword,
+		)
+		
 #warn translate chassis below
 
 /obj/item/robot_module/robot/standard
@@ -34,36 +47,9 @@
 		"W02M" = "worm-standard"
 	)
 
-/obj/item/robot_module/robot/standard/get_modules()
-	. = ..()
-	. |= list(
-		/obj/item/melee/baton/loaded,
-		/obj/item/tool/wrench/cyborg,
-		/obj/item/healthanalyzer
-	)
-
-/obj/item/robot_module/robot/standard/handle_special_module_init(mob/living/silicon/robot/R)
-	. = ..()
-	src.emag = new /obj/item/melee/transforming/energy/sword(src)
-
 /obj/item/robot_module/robot/quad/basic
 	name = "Standard Quadruped module"
 	sprites = list(
 		"F3-LINE" = "FELI-Standard"
 	)
 	can_be_pushed = 0
-
-/obj/item/robot_module/robot/quad/basic/get_modules()
-	. = ..()
-	. |= list(
-		/obj/item/melee/baton/loaded,
-		/obj/item/tool/wrench/cyborg,
-		/obj/item/healthanalyzer,
-		/obj/item/robot_builtin/dog_jaws/small
-	)
-
-/obj/item/robot_module/robot/quad/basic/handle_special_module_init(mob/living/silicon/robot/R)
-	. = ..()
-	// These get a larger water synth.
-	synths_by_kind[MATSYN_WATER]:max_energy = 1000
-	src.emag = new /obj/item/melee/transforming/energy/sword(src)
