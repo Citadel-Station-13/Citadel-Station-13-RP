@@ -24,6 +24,7 @@
 			/obj/item/stack/material/glass/reinforced,
 		)
 		normal_out |= list(
+			/obj/item/matter_decompiler,
 			/obj/item/borg/sight/meson,
 			/obj/item/weldingtool/electric/mounted/cyborg,
 			/obj/item/tool/screwdriver/cyborg,
@@ -44,6 +45,10 @@
 			/obj/item/pipe_dispenser,
 			/obj/item/gripper/circuit,
 			/obj/item/lightreplacer,
+		)
+	if(emag_out)
+		emag_out |= list(
+			/obj/item/melee/baton/robot/arm,
 		)
 #warn translate chassis below
 
@@ -79,16 +84,6 @@
 		"ZOOM-BA" = "zoomba-engineering",
 		"W02M" = "worm-engineering"
 	)
-
-/obj/item/robot_module/robot/engineering/handle_special_module_init(mob/living/silicon/robot/R)
-	. = ..()
-
-	src.emag = new /obj/item/melee/baton/robot/arm(src)
-
-	var/obj/item/matter_decompiler/MD = new /obj/item/matter_decompiler(src)
-	MD.metal = synths_by_kind[MATSYN_METAL]
-	MD.glass = synths_by_kind[MATSYN_GLASS]
-	src.modules += MD
 
 /obj/item/robot_module/robot/quad/engi
 	name = "EngiQuad module"

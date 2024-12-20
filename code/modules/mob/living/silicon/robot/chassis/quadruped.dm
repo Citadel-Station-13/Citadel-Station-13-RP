@@ -9,6 +9,7 @@
 			/obj/item/robot_builtin/dog_boop_module,
 			/obj/item/robot_builtin/dog_tongue,
 			/obj/item/robot_builtin/dog_jaws,
+			/obj/item/robot_builtin/dog_sleeper,
 		)
 	if(emag_out)
 		emag_out |= list(

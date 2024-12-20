@@ -1,7 +1,23 @@
 /datum/prototype/robot_module/nanotrasen/security
-	use_robot_module_path = /obj/item/robot_module/robot/
+	use_robot_module_path = /obj/item/robot_module/robot/security
 	allowed_frames = list(
 	)
+
+/datum/prototype/robot_module/nanotrasen/security/create_mounted_item_descriptors(list/normal_out, list/emag_out)
+	..()
+	if(normal_out)
+		normal_out |= list(
+			/obj/item/handcuffs/cyborg,
+			/obj/item/melee/baton/robot,
+			/obj/item/gun/energy/taser/mounted/cyborg,
+			/obj/item/barrier_tape_roll/police,
+			/obj/item/reagent_containers/spray/pepper,
+			/obj/item/gripper/security,
+		)
+	if(emag_out)
+		emag_out |= list(
+			/obj/item/gun/energy/laser/mounted,
+		)
 
 #warn translate chassis below
 
@@ -40,21 +56,6 @@
 		"W02M" = "worm-security"
 	)
 
-/obj/item/robot_module/robot/security/general/get_modules()
-	. = ..()
-	. |= list(
-		/obj/item/handcuffs/cyborg,
-		/obj/item/melee/baton/robot,
-		/obj/item/gun/energy/taser/mounted/cyborg,
-		/obj/item/barrier_tape_roll/police,
-		/obj/item/reagent_containers/spray/pepper,
-		/obj/item/gripper/security
-	)
-
-/obj/item/robot_module/robot/security/general/handle_special_module_init(mapload)
-	. = ..()
-	src.emag = new /obj/item/gun/energy/laser/mounted(src)
-
 /obj/item/robot_module/robot/security/respawn_consumable(var/mob/living/silicon/robot/R, var/amount)
 	var/obj/item/flash/F = locate() in src.modules
 	if(F.broken)
@@ -90,21 +91,8 @@
 /obj/item/robot_module/robot/quad/sec/get_modules()
 	. = ..()
 	. |= list(
-		/obj/item/handcuffs/cyborg, //You need cuffs to be a proper sec borg!
-		/obj/item/robot_builtin/dog_jaws/big, //In case there's some kind of hostile mob.
-		/obj/item/melee/baton/robot, //Since the pounce module refused to work, they get a stunbaton instead.
-		/obj/item/barrier_tape_roll/police, //Block out crime scenes.
-		/obj/item/gun/energy/taser/mounted/cyborg, //They /are/ a security borg, after all.
 		/obj/item/robot_builtin/dog_pounce //Pounce
 	)
-
-/obj/item/robot_module/robot/quad/sec/handle_special_module_init(mob/living/silicon/robot/R)
-	. = ..()
-	src.emag = new /obj/item/gun/energy/laser/mounted(src) //Emag. Not a big problem.
-
-	var/obj/item/robot_builtin/dog_sleeper/K9/B = new /obj/item/robot_builtin/dog_sleeper/K9(src) //Eat criminals. Bring them to the brig.
-	B.water = synths_by_kind[MATSYN_WATER]
-	src.modules += B
 
 /obj/item/robot_module/robot/quad/sec/respawn_consumable(var/mob/living/silicon/robot/R, var/amount)
 	var/obj/item/flash/F = locate() in src.modules
@@ -120,6 +108,3 @@
 		T.update_icon()
 	else
 		T.charge_tick = 0
-	/*var/obj/item/melee/baton/robot/B = locate() in src.modules //Borg baton uses borg cell.
-	if(B && B.bcell)
-		B.bcell.give(amount)*/

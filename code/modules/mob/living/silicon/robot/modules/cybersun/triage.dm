@@ -8,6 +8,38 @@
 	store.provisioned_stack_store[/obj/item/stack/medical/advanced/bruise_pack] = new /datum/robot_resource/provisioned/preset/bandages/advanced
 	store.provisioned_stack_store[/obj/item/stack/medical/advanced/ointment] = new /datum/robot_resource/provisioned/preset/ointment/advanced
 	store.provisioned_stack_store[/obj/item/stack/nanopaste] = new /datum/robot_resource/provisioned/preset/nanopaste
+	store.provisioned_stack_store[/obj/item/stack/medical/splint] = new /datum/robot_resource/provisioned/preset/splints
+
+/datum/prototype/robot_module/cybersun/triage/create_mounted_item_descriptors(list/normal_out, list/emag_out)
+	..()
+	if(normal_out)
+		normal_out |= list(
+			/obj/item/borg/sight/hud/med,
+			/obj/item/healthanalyzer/advanced,
+			/obj/item/reagent_containers/borghypo/merc,
+			/obj/item/reagent_containers/glass/beaker/large,
+
+			// Surgery things.
+			/obj/item/autopsy_scanner,
+			/obj/item/surgical/scalpel/cyborg,
+			/obj/item/surgical/hemostat/cyborg,
+			/obj/item/surgical/retractor/cyborg,
+			/obj/item/surgical/cautery/cyborg,
+			/obj/item/surgical/bonegel/cyborg,
+			/obj/item/surgical/FixOVein/cyborg,
+			/obj/item/surgical/bonesetter/cyborg,
+			/obj/item/surgical/circular_saw/cyborg,
+			/obj/item/surgical/surgicaldrill/cyborg,
+			/obj/item/gripper/no_use/organ,
+
+			// General healing.
+			/obj/item/gripper/medical,
+			/obj/item/shockpaddles/robot/combat,
+			/obj/item/reagent_containers/dropper, // Allows borg to fix necrosis apparently
+			/obj/item/reagent_containers/syringe/unbreakable,
+			/obj/item/robot_builtin/dog_mirrortool,
+			/obj/item/roller_holder,
+		)
 
 #warn translate chassis below
 
@@ -16,50 +48,3 @@
 	sprites = list(
 		"Telemachus" = "toiletbotantag"
 	)
-
-/obj/item/robot_module/robot/syndicate/combat_medic/get_modules()
-	. = ..()
-	. |= list(
-		/obj/item/borg/sight/hud/med,
-		/obj/item/healthanalyzer/advanced,
-		/obj/item/reagent_containers/borghypo/merc,
-
-		// Surgery things.
-		/obj/item/autopsy_scanner,
-		/obj/item/surgical/scalpel/cyborg,
-		/obj/item/surgical/hemostat/cyborg,
-		/obj/item/surgical/retractor/cyborg,
-		/obj/item/surgical/cautery/cyborg,
-		/obj/item/surgical/bonegel/cyborg,
-		/obj/item/surgical/FixOVein/cyborg,
-		/obj/item/surgical/bonesetter/cyborg,
-		/obj/item/surgical/circular_saw/cyborg,
-		/obj/item/surgical/surgicaldrill/cyborg,
-		/obj/item/gripper/no_use/organ,
-
-		// General healing.
-		/obj/item/gripper/medical,
-		/obj/item/shockpaddles/robot/combat,
-		/obj/item/reagent_containers/dropper, // Allows borg to fix necrosis apparently
-		/obj/item/reagent_containers/syringe,
-		/obj/item/roller_holder
-	)
-
-/obj/item/robot_module/robot/syndicate/combat_medic/Initialize(mapload)
-	. = ..()
-
-	var/obj/item/stack/medical/splint/S = new /obj/item/stack/medical/splint(src)
-	S.uses_charge = 1
-	S.charge_costs = list(1000)
-	S.synths = list(medicine)
-	. += S
-
-/obj/item/robot_module/robot/syndicate/combat_medic/respawn_consumable(var/mob/living/silicon/robot/R, var/amount)
-
-	var/obj/item/reagent_containers/syringe/S = locate() in src.modules
-	if(S.mode == 2)
-		S.reagents.clear_reagents()
-		S.mode = initial(S.mode)
-		S.desc = initial(S.desc)
-		S.update_icon()
-	..()

@@ -100,12 +100,6 @@
 
 	src.emag = new /obj/item/robot_builtin/dog_pounce(src) //Pounce
 
-	var/obj/item/robot_builtin/dog_sleeper/compactor/C = new /obj/item/robot_builtin/dog_sleeper/compactor(src)
-	C.metal = synths_by_kind[MATSYN_METAL]
-	C.glass = synths_by_kind[MATSYN_GLASS]
-	C.water = synths_by_kind[MATSYN_WATER]
-	. += C
-
 	//Sheet refiners can only produce raw sheets.
 	var/obj/item/stack/material/cyborg/steel/M = new (src)
 	M.name = "steel recycler"

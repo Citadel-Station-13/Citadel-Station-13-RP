@@ -65,6 +65,11 @@
 
 //* presets - medical *//
 
+/datum/robot_resource/provisioned/preset/splints
+	name = "splint magazine"
+	amount_max = 20
+	regen_per_second = 2
+
 /datum/robot_resource/provisioned/preset/bandages
 	name = "bandage roller"
 	amount_max = 50
