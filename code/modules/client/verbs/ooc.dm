@@ -81,15 +81,15 @@
 	if(!mob)
 		return
 
-	if(!holder)
+	if(isnull(holder))
 		if(!config_legacy.ooc_allowed)
-			to_chat(src, "<span class='danger'>OOC is globally muted.</span>")
+			to_chat(src, SPAN_DANGER("OOC is globally muted."))
 			return
 		if(!config_legacy.dooc_allowed && (mob.stat == DEAD))
-			to_chat(usr, "<span class='danger'>OOC for dead mobs has been turned off.</span>")
+			to_chat(usr, SPAN_DANGER("OOC for dead mobs has been turned off."))
 			return
 		if(prefs.muted & MUTE_OOC)
-			to_chat(src, "<span class='danger'>You cannot use OOC (muted).</span>")
+			to_chat(src, SPAN_DANGER("You cannot use OOC (muted)."))
 			return
 
 	if(QDELETED(src))
@@ -103,7 +103,7 @@
 
 	msg = emoji_parse(msg)
 
-	if(((msg[1] in list(".",";",":","#")) || findtext_char(msg, "say", 1, 5))) //SSticker.HasRoundStarted() &&
+	if(SSticker.HasRoundStarted() && ((msg[1] in list(".",";",":","#")) || findtext_char(msg, "say", 1, 5)))
 		if(alert("Your message \"[raw_msg]\" looks like it was meant for in game communication, say it in OOC?", "Meant for OOC?", "No", "Yes") != "Yes")
 			return
 
@@ -111,14 +111,14 @@
 		if(handle_spam_prevention(MUTE_OOC))
 			return
 		if(findtext(msg, "byond://"))
-			to_chat(src, "<B>Advertising other servers is not allowed.</B>")
+			to_chat(src, SPAN_BOLDANNOUNCE("Advertising other servers is not allowed."))
 			log_admin("[key_name(src)] has attempted to advertise in OOC: [msg]")
 			message_admins("[key_name_admin(src)] has attempted to advertise in OOC: [msg]")
 			return
 
 
 	if(!get_preference_toggle(/datum/game_preference_toggle/chat/ooc))
-		to_chat(src, "<span class='warning'>You have OOC muted.</span>")
+		to_chat(src, SPAN_DANGER("You have OOC muted."))
 		return
 
 	log_ooc(raw_msg, src)
@@ -142,7 +142,7 @@
 
 	var/effective_color = holder && preferences.get_entry(/datum/game_preference_entry/simple_color/admin_ooc_color)
 
-	for(var/client/target in GLOB.clients)
+	for(var/client/target as anything in GLOB.clients)
 		if(!target.initialized)
 			continue
 
@@ -204,7 +204,7 @@
 			to_chat(src, "<span class='danger'>You cannot use OOC (muted).</span>")
 			return
 		if(findtext(msg, "byond://"))
-			to_chat(src, "<B>Advertising other servers is not allowed.</B>")
+			to_chat(src, SPAN_BOLDANNOUNCE("Advertising other servers is not allowed."))
 			log_admin("[key_name(src)] has attempted to advertise in OOC: [msg]")
 			message_admins("[key_name_admin(src)] has attempted to advertise in OOC: [msg]")
 			return

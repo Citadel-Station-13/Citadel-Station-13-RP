@@ -2043,15 +2043,15 @@
 /atom/proc/extra_admin_link()
 	return
 
-/mob/extra_admin_link(var/source)
+/mob/extra_admin_link(source)
 	if(client && eyeobj)
-		return "|<A HREF='?[source];adminplayerobservejump=\ref[eyeobj]'>EYE</A>"
+		return "|<A HREF='?[source];[HrefToken()];adminplayerobservejump=[REF(eyeobj)]'>EYE</A>"
 
-/mob/observer/dead/extra_admin_link(var/source)
-	if(mind && mind.current)
-		return "|<A HREF='?[source];adminplayerobservejump=\ref[mind.current]'>BDY</A>"
+/mob/observer/dead/extra_admin_link(source)
+	if(mind?.current)
+		return "|<A HREF='?[source];[HrefToken()];adminplayerobservejump=[REF(mind.current)]'>BDY</A>"
 
-/proc/admin_jump_link(var/atom/target, var/source)
+/proc/admin_jump_link(atom/target, source)
 	if(!target) return
 	// The way admin jump links handle their src is weirdly inconsistent...
 	if(istype(source, /datum/admins))
@@ -2059,5 +2059,5 @@
 	else
 		source = "_src_=holder"
 
-	. = "<A HREF='?[source];adminplayerobservejump=\ref[target]'>JMP</A>"
+	. = "<A HREF='?[source];HrefToken()];adminplayerobservejump=[REF(target)]'>JMP</A>"
 	. += target.extra_admin_link(source)
