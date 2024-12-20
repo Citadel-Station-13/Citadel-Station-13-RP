@@ -66,7 +66,7 @@
 	var/turf/T
 	var/area/A
 	var/Ttype
-	for (var/thing in Z_ALL_TURFS(zLevel))
+	for (var/thing in Z_TURFS(zLevel))
 		T = thing
 		A = T.loc
 		Ttype = T.type
@@ -103,7 +103,7 @@
 
 	var/turf/T
 	var/area/A
-	for (var/thing in Z_ALL_TURFS(zLevel))
+	for (var/thing in Z_TURFS(zLevel))
 		T = thing
 		A = T.loc
 		if (A.holomap_color)
