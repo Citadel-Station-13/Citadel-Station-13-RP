@@ -64,12 +64,20 @@
 /datum/stack_provider/proc/give_stack(path, amount, force)
 	return 0
 
+/**
+ * Material stacks are invalid here.
+ *
+ * @return max amount.
+ */
+/datum/stack_provider/proc/get_stack_capacity(path)
+	return 0
+
 //* Material Sheets *//
 
 /**
  * Get the name of the provider.
  */
-/datum/stack_provider/proc/get_material_provider_name(path_or_id)
+/datum/stack_provider/proc/get_material_provider_name(datum/material/path_or_id)
 	return "stack storage"
 
 /**
@@ -77,7 +85,7 @@
  *
  * @return amount remaining.
  */
-/datum/stack_provider/proc/get_material(path_or_id)
+/datum/stack_provider/proc/get_material(datum/material/path_or_id)
 	return 0
 
 /**
@@ -85,7 +93,7 @@
  *
  * @return TRUE / FALSE.
  */
-/datum/stack_provider/proc/has_material(path_or_id, amount)
+/datum/stack_provider/proc/has_material(datum/material/path_or_id, amount)
 	return FALSE
 
 /**
@@ -93,7 +101,7 @@
  *
  * @return amount used.
  */
-/datum/stack_provider/proc/use_material(path_or_id, amount)
+/datum/stack_provider/proc/use_material(datum/material/path_or_id, amount)
 	return 0
 
 /**
@@ -101,13 +109,21 @@
  *
  * @return amount used.
  */
-/datum/stack_provider/proc/checked_use_material(path_or_id, amount)
-	return has_material(path_or_id, amount) ? use_material(path_or_id, amount) : 0
+/datum/stack_provider/proc/checked_use_material(datum/material/path_or_id, amount)
+	return has_material(datum/material/path_or_id, amount) ? use_material(datum/material/path_or_id, amount) : 0
 
 /**
  * * Amount is in stack amount.
  *
  * @return amount given.
  */
-/datum/stack_provider/proc/give_material(path_or_id, amount, force)
+/datum/stack_provider/proc/give_material(datum/material/path_or_id, amount, force)
+	return 0
+
+/**
+ * * Amount is in stack amount.
+ *
+ * @return max amount.
+ */
+/datum/stack_provider/proc/get_material_capacity(datum/material/path_or_id)
 	return 0

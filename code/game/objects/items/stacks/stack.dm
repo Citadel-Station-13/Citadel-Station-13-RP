@@ -63,13 +63,14 @@
 	var/stack_type
 	/// What type we split into. Useful if you have an infinite stack you don't want to be split into another infinite stack.
 	//  todo: evaluate this
+	/// * Use `|| stack_type` to default to stack type if this is not set.
 	var/split_type
 
 	/// use a provider datum
 	/// * this is unreferenced on Destroy(). make sure the synthesizer doesn't reference us.
 	/// * this will either be a single `/datum/stack_provider`, or a list of
 	///   them with a multiplier for the amount to draw from each.
-	var/list/datum/stack_provider/stack_provider
+	var/datum/stack_provider/stack_provider
 	/// this is admittedly shitcode but this allows for automatic
 	/// stack provider support for non /material stacks that are directly derived from
 	/// materials, like reinf glass and metal tiles
@@ -97,13 +98,14 @@
 		explicit_recipes = typelist(NAMEOF(src, explicit_recipes), generate_explicit_recipes())
 	if(new_amount != null)
 		amount = new_amount
+	// todo: lint this to make sure everyone sets this, don't set in initialize as a safety net
 	if(!stack_type)
 		stack_type = type
 	. = ..()
 	if(merge)
 		for(var/obj/item/stack/S in loc)
 			if(can_merge(S))
-				merge(S)
+				merge_into_other(S)
 	update_icon()
 
 /obj/item/stack/Destroy()
@@ -294,24 +296,26 @@
 	. = ..()
 	// if we're in a mob, do not automerge
 	if(!ismob(loc) && !AM.throwing && can_merge(AM))
-		merge(AM)
+		merge_into_other(AM)
 
-/// Merge src into S, as much as possible.
-/obj/item/stack/proc/merge(obj/item/stack/S)
-	if(uses_charge)
-		return	// how about no!
-	if(QDELETED(S) || QDELETED(src) || (S == src)) //amusingly this can cause a stack to consume itself, let's not allow that.
+/**
+ * Merge self into other
+ *
+ * * Can delete ourselves.
+ *
+ * @return amount merged
+ */
+/obj/item/stack/proc/merge_into_other(obj/item/stack/other)
+	#warn redo this proc
+	if(QDELETED(other) || QDELETED(src) || (other == src)) //amusingly this can cause a stack to consume itself, let's not allow that.
 		return
 	var/transfer = get_amount()
-	if(S.uses_charge)
-		transfer = min(transfer, S.get_max_amount() - S.get_amount())
-	else
-		transfer = min(transfer, S.max_amount - S.amount)
+	transfer = min(transfer, other.max_amount - other.amount)
 	if(pulledby)
-		pulledby.start_pulling(S)
-	S.copy_evidences(src)
-	use(transfer, TRUE)
-	S.add(transfer)
+		pulledby.start_pulling(other)
+	other.copy_evidences(src)
+	use(transfer)
+	other.add(transfer)
 	return transfer
 
 /obj/item/stack/attackby(obj/item/I, mob/living/user, list/params, clickchain_flags, damage_multiplier)
@@ -509,22 +513,51 @@
 /obj/item/stack/proc/check_provider_remaining()
 	var/list/legacy_remap = legacy_stack_provider_material_map[type]
 	if(legacy_remap)
+		. = INFINITY
+		for(var/mat_id in legacy_remap)
+			. = min(., stack_provider.get_material(mat_id) / legacy_remap[mat_id])
 	else
-
+		. = stack_provider.get_stack(stack_type)
 
 /**
  * @return max volume
  */
 /obj/item/stack/proc/check_provider_capacity()
+	var/list/legacy_remap = legacy_stack_provider_material_map[type]
+	if(legacy_remap)
+		. = INFINITY
+		for(var/mat_id in legacy_remap)
+			. = min(., stack_provider.get_material_capacity(mat_id) / legacy_remap[mat_id])
+	else
+		. = stack_provider.get_stack_capacity(stack_type)
 
 /**
  * @return amount pushed
  */
 /obj/item/stack/proc/push_to_provider(amount, force)
+	var/list/legacy_remap = legacy_stack_provider_material_map[type]
+	if(legacy_remap)
+		// we have to be atomic, so do an expensive check first
+		if(!force)
+			var/has_remaining_capacity = check_provider_capacity() - check_provider_remaining()
+			if(has_remaining_capacity <= 0)
+				return 0
+			amount = min(amount, has_remaining_capacity)
+		. = amount
+		for(var/mat_id in legacy_remap)
+			stack_provider.give_material(mat_id, amount * legacy_remap[mat_id])
+	else
+		. = stack_provider.give_stack(stack_type, amount, force)
 
 /**
  * @return amount pulled
  */
 /obj/item/stack/proc/pull_from_provider(amount)
-
-#warn impl
+	var/list/legacy_remap = legacy_stack_provider_material_map[type]
+	if(legacy_remap)
+		// we have to be atomic, so do an expensive check first
+		var/has_remaining = check_provider_remaining()
+		for(var/mat_id in legacy_remap)
+			stack_provider.use_material(mat_id, has_remaining * legacy_remap[mat_id])
+	else
+		. = stack_provider.use_stack(stack_type, amount)

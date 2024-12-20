@@ -108,21 +108,52 @@
 
 //* Stack Providers *//
 
-/obj/item/stack/material/set_provider(datum/stack_provider/provider)
-	stack_provider = provider
-
 /obj/item/stack/material/get_provider_name()
 	return stack_provider.get_material_provider_name(material.id)
 
 /obj/item/stack/material/check_provider_remaining()
+	var/list/legacy_remap = legacy_stack_provider_material_map[type]
+	if(legacy_remap)
+		. = INFINITY
+		for(var/mat_id in legacy_remap)
+			. = min(., stack_provider.get_material(mat_id) / legacy_remap[mat_id])
+	else
+		. = stack_provider.get_material(material.id)
 
 /obj/item/stack/material/check_provider_capacity()
+	var/list/legacy_remap = legacy_stack_provider_material_map[type]
+	if(legacy_remap)
+		. = INFINITY
+		for(var/mat_id in legacy_remap)
+			. = min(., stack_provider.get_material_capacity(mat_id) / legacy_remap[mat_id])
+	else
+		. = stack_provider.get_material_capacity(material.id)
 
 /obj/item/stack/material/push_to_provider(amount, force)
+	var/list/legacy_remap = legacy_stack_provider_material_map[type]
+	if(legacy_remap)
+		// we have to be atomic, so do an expensive check first
+		if(!force)
+			var/has_remaining_capacity = check_provider_capacity() - check_provider_remaining()
+			if(has_remaining_capacity <= 0)
+				return 0
+			amount = min(amount, has_remaining_capacity)
+		. = amount
+		for(var/mat_id in legacy_remap)
+			stack_provider.give_material(mat_id, amount * legacy_remap[mat_id])
+	else
+		. = stack_provider.give_material(material.id, amount, force)
 
 /obj/item/stack/material/pull_from_provider(amount)
+	var/list/legacy_remap = legacy_stack_provider_material_map[type]
+	if(legacy_remap)
+		// we have to be atomic, so do an expensive check first
+		var/has_remaining = check_provider_remaining()
+		for(var/mat_id in legacy_remap)
+			stack_provider.use_material(mat_id, has_remaining * legacy_remap[mat_id])
+	else
+		. = stack_provider.use_material(material.id, amount)
 
-#warn impl
 
 // todo: we need a better way of doing this, holy shit
 
