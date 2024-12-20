@@ -5,6 +5,9 @@ GLOBAL_PROTECT(href_token)
 
 /datum/admins
 	var/rank			= "Temporary Admin"
+
+	var/target
+	var/name = "nobody's admin datum (no rank)" //Makes for better runtimes
 	var/client/owner	= null
 	var/rights = 0
 	// todo: rework
@@ -23,12 +26,22 @@ GLOBAL_PROTECT(href_token)
 	var/datum/filter_editor/filteriffic
 
 /datum/admins/New(initial_rank = "Temporary Admin", initial_rights = 0, ckey)
-	if(!ckey)
-		log_world("Admin datum created without a ckey argument. Datum has been deleted")
-		qdel(src)
+	if(IsAdminAdvancedProcCall())
+		alert_to_permissions_elevation_attempt(usr)
+		if (!target) //only del if this is a true creation (and not just a New() proc call), other wise trialmins/coders could abuse this to deadmin other admins
+			QDEL_IN(src, 0)
+			CRASH("Admin proc call creation of admin datum")
 		return
+	if(!ckey)
+		QDEL_IN(src, 0)
+		CRASH("Admin datum created without a ckey")
+
+	target = ckey
+	name = "[ckey]'s admin datum ([initial_rank])"
 	rank = initial_rank
 	rights = initial_rights
+	href_token = GenerateToken()
+
 	admin_datums[ckey] = src
 	if(rights & R_DEBUG) //grant profile access
 		world.SetConfig("APP/admin", ckey, "role=admin")
@@ -37,14 +50,35 @@ GLOBAL_PROTECT(href_token)
 		UNTIL(SSmapping.loaded_station)
 		admincaster_signature = "[(LEGACY_MAP_DATUM).company_name] Officer #[rand(0,9)][rand(0,9)][rand(0,9)]"
 
+/datum/admins/Destroy()
+	if(IsAdminAdvancedProcCall())
+		alert_to_permissions_elevation_attempt(usr)
+		return QDEL_HINT_LETMELIVE
+	. = ..()
+
 /datum/admins/proc/associate(client/C)
-	if(istype(C))
-		owner = C
-		owner.holder = src
-		owner.add_admin_verbs()	//TODO
-		GLOB.admins |= C
+	if(IsAdminAdvancedProcCall())
+		alert_to_permissions_elevation_attempt(usr)
+		return
+
+	if(!istype(C))
+		return
+
+	if(C?.ckey != target)
+		var/msg = " has attempted to associate with [target]'s admin datum"
+		message_admins("[key_name_admin(C)][msg]")
+		log_admin("[key_name(C)][msg]")
+		return
+
+	owner = C
+	owner.holder = src
+	owner.add_admin_verbs()
+	GLOB.admins |= C
 
 /datum/admins/proc/disassociate()
+	if(IsAdminAdvancedProcCall())
+		alert_to_permissions_elevation_attempt(usr)
+		return
 	if(owner)
 		GLOB.admins -= owner
 		owner.remove_admin_verbs()
@@ -52,11 +86,22 @@ GLOBAL_PROTECT(href_token)
 		owner.holder = null
 
 /datum/admins/proc/reassociate()
+	if(IsAdminAdvancedProcCall())
+		alert_to_permissions_elevation_attempt(usr)
+		return
 	if(owner)
 		GLOB.admins |= owner
 		owner.holder = src
 		owner.deadmin_holder = null
 		owner.add_admin_verbs()
+
+/datum/admins/proc/check_for_rights(rights_required)
+	if(rights_required && !(rights_required & rights))
+		return FALSE
+	return TRUE
+
+/datum/admins/vv_edit_var(var_name, var_value)
+	return FALSE //nice try trialmin
 
 /*
 checks if usr is an admin with at least ONE of the flags in rights_required. (Note, they don't need all the flags)
@@ -70,7 +115,7 @@ proc/admin_proc()
 
 NOTE: It checks usr by default. Supply the "user" argument if you wish to check for a specific mob.
 */
-/proc/check_rights(rights_required, show_msg = TRUE, var/client/C = usr)
+/proc/check_rights(rights_required, show_msg = TRUE, client/C = usr)
 	if(ismob(C))
 		var/mob/M = C
 		C = M.client
@@ -93,22 +138,17 @@ NOTE: It checks usr by default. Supply the "user" argument if you wish to check 
 	else
 		return TRUE
 
-/datum/admins/proc/check_for_rights(rights_required)
-	if(rights_required && !(rights_required & rights))
-		return FALSE
-	return TRUE
-
 //probably a bit iffy - will hopefully figure out a better solution
 /proc/check_if_greater_rights_than(client/other)
-	if(usr && usr.client)
+	if(usr?.client)
 		if(usr.client.holder)
 			if(!other || !other.holder)
-				return 1
+				return TRUE
 			if(usr.client.holder.rights != other.holder.rights)
 				if( (usr.client.holder.rights & other.holder.rights) == other.holder.rights )
-					return 1	//we have all the rights they have and more
+					return TRUE	//we have all the rights they have and more
 		to_chat(usr, "<font color='red'>Error: Cannot proceed. They have more or equal rights to us.</font>")
-	return 0
+	return FALSE
 
 //This proc checks whether subject has at least ONE of the rights specified in rights_required.
 /proc/check_rights_for(client/subject, rights_required)
@@ -144,27 +184,3 @@ NOTE: It checks usr by default. Supply the "user" argument if you wish to check 
 /proc/HrefTokenFormField(forceGlobal = FALSE)
 	return "<input type='hidden' name='admin_token' value='[RawHrefToken(forceGlobal)]'>"
 
-/datum/admins/proc/CheckAdminHref(href, href_list)
-	return TRUE
-	/*			Disabled
-	var/auth = href_list["admin_token"]
-	. = auth && (auth == href_token || auth == GLOB.href_token)
-	if(.)
-		return
-	var/msg = !auth ? "no" : "a bad"
-	message_admins("[key_name_admin(usr)] clicked an href with [msg] authorization key!")
-	if(CONFIG_GET(flag/debug_admin_hrefs))
-		message_admins("Debug mode enabled, call not blocked. Please ask your coders to review this round's logs.")
-		log_world("UAH: [href]")
-		return TRUE
-	log_admin_private("[key_name(usr)] clicked an href with [msg] authorization key! [href]")
-	*/
-
-/datum/admins/vv_edit_var(var_name, var_value)
-#ifdef TESTING
-	return ..()
-#else
-	if(var_name == NAMEOF(src, rank) || var_name == NAMEOF(src, rights))
-		return FALSE
-	return ..()
-#endif
