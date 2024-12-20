@@ -619,8 +619,8 @@
 			color = colors[1]
 		if(COLORATION_MODE_RG_MATRIX)
 			ASSERT(length(colors) == 2)
-			var/list/red_decoded = ReadRGB(colors[1])
-			var/list/green_decoded = ReadRGB(colors[2])
+			var/list/red_decoded = rgb2num(colors[1])
+			var/list/green_decoded = rgb2num(colors[2])
 			color = list(
 				red_decoded[1] / 255, red_decoded[2] / 255, red_decoded[3] / 255, 0,
 				green_decoded[1] / 255, green_decoded[2] / 255, green_decoded[3] / 255, 0,
@@ -629,8 +629,8 @@
 			)
 		if(COLORATION_MODE_GB_MATRIX)
 			ASSERT(length(colors) == 2)
-			var/list/green_decoded = ReadRGB(colors[1])
-			var/list/blue_decoded = ReadRGB(colors[2])
+			var/list/green_decoded = rgb2num(colors[1])
+			var/list/blue_decoded = rgb2num(colors[2])
 			color = list(
 				0, 0, 0, 0,
 				green_decoded[1] / 255, green_decoded[2] / 255, green_decoded[3] / 255, 0,
@@ -639,8 +639,8 @@
 			)
 		if(COLORATION_MODE_RB_MATRIX)
 			ASSERT(length(colors) == 2)
-			var/list/red_decoded = ReadRGB(colors[1])
-			var/list/blue_decoded = ReadRGB(colors[2])
+			var/list/red_decoded = rgb2num(colors[1])
+			var/list/blue_decoded = rgb2num(colors[2])
 			color = list(
 				red_decoded[1] / 255, red_decoded[2] / 255, red_decoded[3] / 255, 0,
 				0, 0, 0, 0,
@@ -649,9 +649,9 @@
 			)
 		if(COLORATION_MODE_RGB_MATRIX)
 			ASSERT(length(colors) == 3)
-			var/list/red_decoded = ReadRGB(colors[1])
-			var/list/green_decoded = ReadRGB(colors[2])
-			var/list/blue_decoded = ReadRGB(colors[3])
+			var/list/red_decoded = rgb2num(colors[1])
+			var/list/green_decoded = rgb2num(colors[2])
+			var/list/blue_decoded = rgb2num(colors[3])
 			color = list(
 				red_decoded[1] / 255, red_decoded[2] / 255, red_decoded[3] / 255, 0,
 				green_decoded[1] / 255, green_decoded[2] / 255, green_decoded[3] / 255, 0,
