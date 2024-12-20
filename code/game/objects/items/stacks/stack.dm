@@ -130,7 +130,7 @@
 	if(!stack_provider)
 		. += "There are [amount] [singular_name]\s in the stack."
 	else
-		. += "There are [amount] [singular_name]\s in \the [stack_provider.get_provider_name()]."
+		. += "There are [amount] [singular_name]\s in \the [get_provider_name()]."
 
 /**
  * Get the explicit recipes of this stack type
@@ -259,8 +259,6 @@
 /obj/item/stack/proc/split(tamount, atom/where, force)
 	if (!amount)
 		return null
-	if (uses_charge)
-		return null
 
 	var/transfer = max(min(tamount, src.amount, force? INFINITY : initial(max_amount)), 0)
 
@@ -275,16 +273,6 @@
 				newstack.blood_DNA |= blood_DNA
 		return newstack
 	return null
-
-/obj/item/stack/proc/add_to_stacks(mob/user)
-	for (var/obj/item/stack/item in user.loc)
-		if (item==src)
-			continue
-		var/transfer = src.transfer_to(item)
-		if (transfer)
-			to_chat(user, SPAN_NOTICE("You add a new [item.singular_name] to the stack. It now contains [item.amount] [item.singular_name]\s."))
-		if(!amount)
-			break
 
 /obj/item/stack/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(user.get_inactive_held_item() == src)
@@ -332,24 +320,19 @@
 	attempt_split_stack(user)
 
 /obj/item/stack/proc/attempt_split_stack(mob/living/user)
-	if(uses_charge)
-		return
-	else
-		#warn zero amount was here
-		if(zero_amount())
-			return
-		//get amount from user
-		var/max = get_amount()
-		// var/stackmaterial = round(input(user,"How many sheets do you wish to take out of this stack? (Maximum  [max])") as null|num)
-		var/stackmaterial = tgui_input_number(user, "How many sheets do you wish to take out of this stack?", "Stack", max, max, 1, round_value=TRUE)
-		max = get_amount() // Not sure why this is done twice but whatever.
-		stackmaterial = min(max, stackmaterial)
-		if(stackmaterial == null || stackmaterial <= 0 || !in_range(user, src) || !CHECK_MOBILITY(user, MOBILITY_CAN_PICKUP))
-			return TRUE
-		else
-			change_stack(user, stackmaterial)
-			to_chat(user, SPAN_NOTICE("You take [stackmaterial] sheets out of the stack"))
+	#warn zero amount was here; check this proc for zero-validity / gc safety
+	//get amount from user
+	var/max = get_amount()
+	// var/stackmaterial = round(input(user,"How many sheets do you wish to take out of this stack? (Maximum  [max])") as null|num)
+	var/stackmaterial = tgui_input_number(user, "How many sheets do you wish to take out of this stack?", "Stack", max, max, 1, round_value=TRUE)
+	max = get_amount() // Not sure why this is done twice but whatever.
+	stackmaterial = min(max, stackmaterial)
+	if(stackmaterial == null || stackmaterial <= 0 || !in_range(user, src) || !CHECK_MOBILITY(user, MOBILITY_CAN_PICKUP))
 		return TRUE
+	else
+		change_stack(user, stackmaterial)
+		to_chat(user, SPAN_NOTICE("You take [stackmaterial] sheets out of the stack"))
+	return TRUE
 
 // todo: refactor and combine with /split
 /obj/item/stack/proc/change_stack(mob/user, amount)
@@ -364,7 +347,7 @@
 			F.forceMove(user.drop_location())
 		add_fingerprint(user)
 		F.add_fingerprint(user)
-	#warn zero amount was here
+	#warn zero amount was here; check this proc for zero-validity / gc safety
 
 /obj/item/stack/proc/copy_evidences(obj/item/stack/from)
 	if(from.blood_DNA)
@@ -375,6 +358,16 @@
 		fingerprintshidden = from.fingerprintshidden.Copy()
 	if(from.fingerprintslast)
 		fingerprintslast = from.fingerprintslast
+
+/obj/item/stack/proc/legacy_add_to_stacks_please_refactor_me(mob/user)
+	for (var/obj/item/stack/item in user.loc)
+		if (item==src)
+			continue
+		var/transfer = src.transfer_to(item)
+		if (transfer)
+			to_chat(user, SPAN_NOTICE("You add a new [item.singular_name] to the stack. It now contains [item.amount] [item.singular_name]\s."))
+		if(!amount)
+			break
 
 //* Access *//
 
