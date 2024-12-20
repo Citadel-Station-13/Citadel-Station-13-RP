@@ -24,7 +24,7 @@
 
 /turf/simulated/floor/water/Initialize(mapload)
 	. = ..()
-	var/datum/prototype/flooring/F = RSflooring.fetch(/datum/prototype/flooring/water)
+	var/datum/prototype/flooring/F = RSflooring.fetch_local_or_throw(/datum/prototype/flooring/water)
 	footstep_sounds = F?.footstep_sounds
 	update_icon()
 
