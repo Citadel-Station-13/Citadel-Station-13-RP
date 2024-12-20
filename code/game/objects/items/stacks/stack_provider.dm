@@ -6,6 +6,14 @@
  */
 /datum/stack_provider
 
+//* Normal Stacks *//
+
+/**
+ * Get the name of the provider.
+ */
+/datum/stack_provider/proc/get_stack_provider_name(path)
+	return "stack storage"
+
 /**
  * Material stacks are invalid here.
  *
@@ -56,12 +64,20 @@
 /datum/stack_provider/proc/give_stack(path, amount, force)
 	return 0
 
+//* Material Sheets *//
+
+/**
+ * Get the name of the provider.
+ */
+/datum/stack_provider/proc/get_material_provider_name(path_or_id)
+	return "stack storage"
+
 /**
  * * Amount is in stack amount.
  *
  * @return amount remaining.
  */
-/datum/stack_provider/proc/get_material(path)
+/datum/stack_provider/proc/get_material(path_or_id)
 	return 0
 
 /**
@@ -69,7 +85,7 @@
  *
  * @return TRUE / FALSE.
  */
-/datum/stack_provider/proc/has_material(path, amount)
+/datum/stack_provider/proc/has_material(path_or_id, amount)
 	return FALSE
 
 /**

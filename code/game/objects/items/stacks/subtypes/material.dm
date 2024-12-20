@@ -34,7 +34,7 @@
 	pixel_x = rand(0,4)-4
 	pixel_y = rand(0,4)-4
 
-	stacktype = src.material.stack_type
+	stack_type = src.material.stack_type
 	if(islist(src.material.stack_origin_tech))
 		origin_tech = src.material.stack_origin_tech.Copy()
 
@@ -105,6 +105,24 @@
 		material.build_rod_product(user, I, src)
 		return
 	return ..()
+
+//* Stack Providers *//
+
+/obj/item/stack/material/set_provider(datum/stack_provider/provider)
+	stack_provider = provider
+
+/obj/item/stack/material/get_provider_name()
+	return stack_provider.get_material_provider_name(material.id)
+
+/obj/item/stack/material/check_provider_remaining()
+
+/obj/item/stack/material/check_provider_capacity()
+
+/obj/item/stack/material/push_to_provider(amount, force)
+
+/obj/item/stack/material/pull_from_provider(amount)
+
+#warn impl
 
 // todo: we need a better way of doing this, holy shit
 

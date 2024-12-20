@@ -50,20 +50,20 @@
 	origin_tech = list(TECH_MATERIAL = 1)
 	icon = 'icons/obj/stacks.dmi'
 	item_flags = ITEM_CAREFUL_BLUDGEON | ITEM_ENCUMBERS_WHILE_HELD
-	var/singular_name
+
+	/// Current amount
 	var/amount = 1
-	/// See stack recipes initialisation, param "max_res_amount" must be equal to this max_amount.
+	/// Maximum amount
 	var/max_amount = 50
-	/// Determines whether different stack types can merge.
-	var/stacktype
-	/// enforce a certain type when splitting; useful if you have an infinite stack you don't want to be split into another one
+
+	/// Our effective stack type. Defaults to our type.
+	//  todo: evaluate this
+	/// * Used to determine our identity when calling into providers.
+	/// * Used to determine what can merge into what (so colored subtypes of cable can all be considered cable).
+	var/stack_type
+	/// What type we split into. Useful if you have an infinite stack you don't want to be split into another infinite stack.
+	//  todo: evaluate this
 	var/split_type
-	/// Used when directly applied to a turf.
-	var/build_type = null
-	var/uses_charge = 0
-	var/list/charge_costs = null
-	/// Determines whether the item should update it's sprites based on amount.
-	var/no_variants = TRUE
 
 	/// use a provider datum
 	/// * this is unreferenced on Destroy(). make sure the synthesizer doesn't reference us.
@@ -77,13 +77,18 @@
 	/// todo: please find a better way.
 	var/static/list/legacy_stack_provider_material_map = __construct_legacy_stack_provider_material_map()
 
+	/// explicit recipes, lazy-list. this is typelist'd
+	var/list/datum/stack_recipe/explicit_recipes
+
+	//! legacy - re-evaluate these at some point!
+	var/singular_name
+	/// Determines whether the item should update it's sprites based on amount.
+	var/no_variants = TRUE
 	/// Will the item pass its own color var to the created item? Dyed cloth, wood, etc.
 	var/pass_color = FALSE
 	/// Will the stack merge with other stacks that are different colors? (Dyed cloth, wood, etc).
 	var/strict_color_stacking = FALSE
-
-	/// explicit recipes, lazy-list. this is typelist'd
-	var/list/datum/stack_recipe/explicit_recipes
+	//! end
 
 /obj/item/stack/Initialize(mapload, new_amount, merge = TRUE)
 	if(has_typelist(explicit_recipes))
@@ -92,8 +97,8 @@
 		explicit_recipes = typelist(NAMEOF(src, explicit_recipes), generate_explicit_recipes())
 	if(new_amount != null)
 		amount = new_amount
-	if(!stacktype)
-		stacktype = type
+	if(!stack_type)
+		stack_type = type
 	. = ..()
 	if(merge)
 		for(var/obj/item/stack/S in loc)
@@ -102,8 +107,8 @@
 	update_icon()
 
 /obj/item/stack/Destroy()
-	if(synthesized)
-		synthesized = null
+	if(stack_provider)
+		stack_provider = null
 	return ..()
 
 /obj/item/stack/update_icon()
@@ -120,10 +125,10 @@
 
 /obj/item/stack/examine(mob/user, dist)
 	. = ..()
-	if(!uses_charge)
+	if(!stack_provider)
 		. += "There are [amount] [singular_name]\s in the stack."
 	else
-		. += "There is enough charge for [get_amount()]."
+		. += "There are [amount] [singular_name]\s in \the [stack_provider.get_provider_name()]."
 
 /**
  * Get the explicit recipes of this stack type
@@ -205,7 +210,7 @@
 		return FALSE
 	if((strict_color_stacking || other.strict_color_stacking) && (color != other.color))
 		return FALSE
-	return other.stacktype == stacktype
+	return other.stack_type == stack_type
 
 // todo: deprecated
 /obj/item/stack/proc/can_use(used)
@@ -326,6 +331,7 @@
 	if(uses_charge)
 		return
 	else
+		#warn zero amount was here
 		if(zero_amount())
 			return
 		//get amount from user
@@ -354,15 +360,7 @@
 			F.forceMove(user.drop_location())
 		add_fingerprint(user)
 		F.add_fingerprint(user)
-	zero_amount()
-
-/obj/item/stack/proc/zero_amount()
-	if(uses_charge)
-		return get_amount() <= 0
-	if(amount < 1)
-		qdel(src)
-		return TRUE
-	return FALSE
+	#warn zero amount was here
 
 /obj/item/stack/proc/copy_evidences(obj/item/stack/from)
 	if(from.blood_DNA)
@@ -374,59 +372,22 @@
 	if(from.fingerprintslast)
 		fingerprintslast = from.fingerprintslast
 
-/obj/item/stack/proc/set_amount(new_amount, no_limits = FALSE)
-	if(new_amount < 0 || new_amount % 1)
-		stack_trace("Tried to set a bad stack amount: [new_amount]")
-		return 0
-
-	// Clean up the new amount
-	new_amount = max(round(new_amount), 0)
-
-	// Can exceed max if you really want
-	if(new_amount > max_amount && !no_limits)
-		new_amount = max_amount
-
-	amount = new_amount
-
-	// Can set it to 0 without qdel if you really want
-	if(amount == 0 && !no_limits)
-		qdel(src)
-		return FALSE
-	update_icon()
-	return TRUE
-
 //* Access *//
 
 /**
  * Gets how many sheets we have.
  */
 /obj/item/stack/proc/get_amount()
-	if(uses_charge)
-		if(!synths || synths.len < uses_charge)
-			return 0
-		var/datum/matter_synth/S = synths[1]
-		. = round(S.get_charge() / charge_costs[1])
-		if(uses_charge > 1)
-			for(var/i = 2 to uses_charge)
-				S = synths[i]
-				. = min(., round(S.get_charge() / charge_costs[i]))
-		return
+	if(stack_provider)
+		return check_provider_remaining()
 	return amount
 
 /**
  * Gets how many sheets we can carry.
  */
 /obj/item/stack/proc/get_max_amount()
-	if(uses_charge)
-		if(!synths || synths.len < uses_charge)
-			return 0
-		var/datum/matter_synth/S = synths[1]
-		. = round(S.max_energy / charge_costs[1])
-		if(uses_charge > 1)
-			for(var/i = 2 to uses_charge)
-				S = synths[i]
-				. = min(., round(S.max_energy / charge_costs[i]))
-		return
+	if(stack_provider)
+		return check_provider_capacity()
 	return max_amount
 
 /**
@@ -441,7 +402,7 @@
  * @return TRUE / FALSE
  */
 /obj/item/stack/proc/has_amount(amount)
-	#warn impl
+	return check_provider_remaining() >= amount
 
 /**
  * Use an amount if we have the whole amount.
@@ -459,53 +420,97 @@
  * @return amount used
  */
 /obj/item/stack/proc/use_amount(amount)
-	return use(amount)
-	if (!can_use(used))
-		return FALSE
-	if(!uses_charge)
-		amount -= used
-		if (amount <= 0)
-			qdel(src) //should be safe to qdel immediately since if someone is still using this stack it will persist for a little while longer
-		update_icon()
-		return TRUE
-	else
-		if(get_amount() < used)
-			return FALSE
-		for(var/i = 1 to uses_charge)
-			var/datum/matter_synth/S = synths[i]
-			S.use_charge(charge_costs[i] * used) // Doesn't need to be deleted
-		return TRUE
+	if(stack_provider)
+		return pull_from_provider(amount)
+	if(amount <= 0)
+		return 0
+	amount = min(amount, src.amount)
+	. = amount
+	src.amount -= amount
+	update_amount()
 
 /**
  * Gives a number of sheets back to us.
  *
  * @return amount added
  */
-/obj/item/stack/proc/give_amount(amount)
-	#warn impl
-	if(!uses_charge)
-		if((amount + extra > get_max_amount()) && !force)
-			return FALSE
-		else
-			amount += extra
-		update_icon()
-		return TRUE
-	else if(!synths || synths.len < uses_charge)
-		return FALSE
+/obj/item/stack/proc/give_amount(amount, force)
+	if(stack_provider)
+		return push_to_provider(amount, force)
+	if(!force)
+		amount = min(amount, max_amount - src.amount)
+	if(amount <= 0)
+		return 0
+	. = amount
+	src.amount += amount
+	update_amount()
+
+/**
+ * Sets our amount to a specific amount.
+ *
+ * * If we use a stack provider, we'll push/pull automatically. This can be weird, because providers don't act the same as stacks.
+ * * Setting us to 0 will delete us immediately.
+ *
+ * @return amount changed
+ */
+/obj/item/stack/proc/set_amount(new_amount, force)
+	if(new_amount < 0 || (new_amount != floor(amount)))
+		stack_trace("Tried to set a bad stack amount: [new_amount]")
+		return 0
+
+	if(stack_provider)
+		var/current_amount = check_provider_remaining()
+		var/amount_to_push_or_pull = new_amount - current_amount
+
+		if(!amount_to_push_or_pull)
+			return 0
+		return amount_to_push_or_pull > 0 ? push_to_provider(amount_to_push_or_pull, force) : pull_from_provider(amount_to_push_or_pull)
+
+	if(!force)
+		new_amount = min(amount, max_amount)
+
+	. = new_amount - amount
+	amount = new_amount
+
+	update_amount()
+
+/**
+ * This can destroy the stack.
+ */
+/obj/item/stack/proc/update_amount()
+	if(QDELING(src))
+		return
+	if(stack_provider)
 	else
-		for(var/i = 1 to uses_charge)
-			var/datum/matter_synth/S = synths[i]
-			S.add_charge(charge_costs[i] * extra)
+		if(amount <= 0)
+			qdel(src)
+			return
+	update_icon()
 
 //* Stack Providers *//
+
+/obj/item/stack/proc/has_provider()
+	return !!stack_provider
 
 /obj/item/stack/proc/set_provider(datum/stack_provider/provider)
 	stack_provider = provider
 
 /**
+ * Get the name of our stack provider.
+ *
+ * * You must check if provider is set.
+ */
+/obj/item/stack/proc/get_provider_name()
+	return stack_provider.get_stack_provider_name(type)
+
+/**
  * @return amount left
  */
 /obj/item/stack/proc/check_provider_remaining()
+	var/list/legacy_remap = legacy_stack_provider_material_map[type]
+	if(legacy_remap)
+	else
+
 
 /**
  * @return max volume
