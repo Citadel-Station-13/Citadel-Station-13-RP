@@ -981,7 +981,7 @@
 			if(I.robotic >= ORGAN_ROBOT)
 				organtotal -= I
 
-		if(dose >= 15)
+		if(metabolism.total_processed_dose >= 15)
 			for(var/obj/item/organ/I in organtotal)
 				if(I.transplant_data && prob(round(15 * strength_mod)))
 					I.rejecting = 0
@@ -1229,17 +1229,18 @@
 	M.add_chemical_effect(CE_ANTIBIOTIC, metabolism.total_processed_dose >= overdose ? ANTIBIO_OD : ANTIBIO_NORM)
 	M.ceiling_chemical_effect(CE_PAINKILLER, 20) // 5 less than paracetamol.
 
-/datum/reagent/spacomycaze/touch_obj(obj/O)
-	if(istype(O, /obj/item/stack/medical/crude_pack) && round(volume) >= 1)
-		var/obj/item/stack/medical/crude_pack/C = O
+/datum/reagent/spacomycaze/on_touch_obj(obj/target, remaining, allocated, data, spread_between)
+	if(istype(target, /obj/item/stack/medical/crude_pack) && round(volume) >= 1)
+		var/obj/item/stack/medical/crude_pack/C = target
 		var/packname = C.name
-		var/to_produce = min(C.amount, round(volume))
+		var/to_produce = min(C.amount, floor(allocated))
 
 		var/obj/item/stack/medical/M = C.upgrade_stack(to_produce)
 
 		if(M && M.amount)
-			holder.my_atom.visible_message("<span class='notice'>\The [packname] bubbles.</span>")
-			remove_self(to_produce)
+			target.visible_message("<span class='notice'>\The [packname] bubbles.</span>")
+			. += to_produce
+	return . + ..()
 
 /datum/reagent/sterilizine
 	name = "Sterilizine"

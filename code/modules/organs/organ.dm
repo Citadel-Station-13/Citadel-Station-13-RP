@@ -383,19 +383,20 @@
 	reconsider_processing()
 
 /obj/item/organ/proc/replaced(var/mob/living/carbon/human/target,var/obj/item/organ/external/affected)
+	if(!istype(target))
+		return
 
-	if(!istype(target)) return
-
-	var/datum/reagent/blood/transplant_blood = locate(/datum/reagent/blood) in reagents.reagent_list
+	var/datum/blood_mixture/mixture_data = reagents.get_reagent_data(/datum/reagent/blood)
 	transplant_data = list()
-	if(!transplant_blood)
+	if(!mixture_data || length(mixture_data.fragments) < 1)
 		transplant_data["species"] =    target?.species.name
 		transplant_data["blood_type"] = target?.dna.b_type
 		transplant_data["blood_DNA"] =  target?.dna.unique_enzymes
 	else
-		transplant_data["species"] =    transplant_blood?.data["species"]
-		transplant_data["blood_type"] = transplant_blood?.data["blood_type"]
-		transplant_data["blood_DNA"] =  transplant_blood?.data["blood_DNA"]
+		var/datum/blood_fragment/use_fragment = mixture_data.fragments[1]
+		transplant_data["species"] =    use_fragment.legacy_species
+		transplant_data["blood_type"] = use_fragment.legacy_blood_type
+		transplant_data["blood_DNA"] =  use_fragment.legacy_blood_dna
 
 	owner = target
 	loc = owner

@@ -380,7 +380,7 @@
 	M.bodytemperature = max(M.bodytemperature - 10 * TEMPERATURE_DAMAGE_COEFFICIENT, 215)
 	if(prob(1))
 		M.emote("shiver")
-	holder.remove_reagent("capsaicin", 5)
+	metabolism.legacy_current_holder.remove_reagent(/datum/reagent/capsaicin, 5)
 
 /datum/reagent/frostoil/cryotoxin //A longer lasting version of frost oil.
 	name = "Cryotoxin"
@@ -4488,7 +4488,9 @@
 
 /datum/reagent/nutriment/triglyceride/oil/on_touch_turf(turf/target, remaining, allocated, data)
 	if(allocated >= 3)
-		target.wet_floor(2)
+		if(istype(target, /turf/simulated))
+			var/turf/simulated/simulated_target = target
+			simulated_target.wet_floor(2)
 	return ..()
 
 //Calculates a scaling factor for scalding damage, based on the temperature of the oil and creature's heat resistance
@@ -4513,7 +4515,8 @@
 	. = min(., 2.5)//Cap multiplier at 2.5
 
 /datum/reagent/nutriment/triglyceride/oil/legacy_affect_touch(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
-	var/dfactor = heatdamage(M)
+	var/temperature = metabolism.legacy_current_holder.temperature
+	var/dfactor = heatdamage(M, metabolism.legacy_current_holder)
 	if (dfactor)
 		M.take_random_targeted_damage(brute = 0, brute = removed * 1.5 * dfactor)
 		temperature -= (6 * removed) / (1 + volume*0.1)//Cools off as it burns you

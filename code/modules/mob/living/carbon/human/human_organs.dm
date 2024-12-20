@@ -153,7 +153,7 @@
 //Handles chem traces
 /mob/living/carbon/human/proc/handle_trace_chems()
 	//New are added for reagents to random organs.
-	for(var/datum/reagent/A in reagents.reagent_list)
+	for(var/datum/reagent/A in reagents.get_reagent_datums())
 		var/obj/item/organ/O = pick(organs)
 		O.trace_chemicals[A.name] = 100
 
