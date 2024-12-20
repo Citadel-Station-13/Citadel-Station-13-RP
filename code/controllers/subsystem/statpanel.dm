@@ -89,6 +89,10 @@ SUBSYSTEM_DEF(statpanels)
 		STATPANEL_DATA_CLICK(config.stat_key(), config.stat_entry(), "\ref[config]")
 	else
 		STATPANEL_DATA_LINE("FATAL - NO CONFIG")
+	if(config)
+		STATPANEL_DATA_CLICK(Configuration.stat_key(), Configuration.stat_entry(), "\ref[Configuration]")
+	else
+		STATPANEL_DATA_LINE("FATAL - NO CONFIG (NEW)")
 	STATPANEL_DATA_ENTRY("BYOND:", "(FPS:[world.fps]) (TickCount:[world.time/world.tick_lag]) (TickDrift:[round(Master.tickdrift,1)]([round((Master.tickdrift/(world.time/world.tick_lag))*100,0.1)]%)) (Internal Tick Usage: [round(MAPTICK_LAST_INTERNAL_TICK_USAGE,0.1)]%)")
 	if(Master)
 		STATPANEL_DATA_CLICK(Master.stat_key(), Master.stat_entry(), "\ref[Master]")
