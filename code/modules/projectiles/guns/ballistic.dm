@@ -1,3 +1,11 @@
+/**
+ * Ballistic Guns
+ *
+ * These are guns that fire primarily ammo casings.
+ *
+ * They have simulation / support for both direct-load / internal magazines, as well as
+ * attached / inserted external magazines.
+ */
 /obj/item/gun/ballistic
 	name = "gun"
 	desc = "A gun that fires bullets."
@@ -95,7 +103,8 @@
 	if(magazine_type)
 		icon_state = "[silenced_state][magazine_state]"
 
-/obj/item/gun/ballistic/consume_next_projectile()
+// todo: rework
+/obj/item/gun/ballistic/consume_next_projectile(datum/gun_firing_cycle/cycle)
 	//get the next casing
 	if(loaded.len)
 		chambered = loaded[1] //load next casing.
@@ -105,19 +114,17 @@
 		chambered = ammo_magazine.pop(src)
 
 	if (chambered)
-		return chambered.get_projectile()
+		return chambered.expend()
 	return null
 
-/obj/item/gun/ballistic/handle_post_fire()
-	..()
-	if(chambered)
-		chambered.expend()
-		process_chambered()
+/obj/item/gun/ballistic/post_fire(atom/firer, angle, firing_flags, datum/firemode/firemode, iteration, firing_result, atom/target, datum/event_args/actor/actor)
+	. = ..()
+	switch(firing_result)
+		// process chamber
+		if(GUN_FIRED_FAIL_INERT, GUN_FIRED_SUCCESS, GUN_FIRED_FAIL_EMPTY)
+			process_chambered()
 
-/obj/item/gun/ballistic/handle_click_empty()
-	..()
-	process_chambered()
-
+// todo: refactor
 /obj/item/gun/ballistic/proc/process_chambered()
 	if (!chambered) return
 

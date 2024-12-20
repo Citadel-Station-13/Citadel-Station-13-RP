@@ -1,0 +1,789 @@
+/**
+ * # Guns
+ *
+ * A gun is a weapon that can be aimed and fired at someone or something over a distance.
+ *
+ * todo: /obj/item/gun/projectile vs /obj/item/gun/launcher,
+ *       instead of have projectile be on /obj/item/gun
+ *
+ * ## Hotkey Priority
+ *
+ * The usable semantic hotkeys for guns are: Z, Spacebar, F, G.
+ * F, G are avoided as 'unique defensives' and something components
+ * need to be able to register to.
+ *
+ * todo: At some point, we'll need proper hotkey priority handling for items
+ *       for the 'primary semantic keys' like active key/spacebar,
+ *       F and G. For now, it's kind of a wild west where items define
+ *       Z and Spacebar and F/G are usually component-hooked.
+ *
+ *       The problem comes in that guns have **three** self-actions instead of two:
+ *       - Wielding
+ *       - Racking / chamber charging
+ *       - Firemode switch
+ *
+ *       This is annoying because semantically, the Z key should always have wielding,
+ *       Spacebar should have racking behaviors if they exist, which means we don't
+ *       have a spot for firemode switching.
+ *
+ *       As of right now, wielding is not on all guns but that will change very soon.
+ * todo: Change that very soon.
+ *       This means that Z key will never be available to guns for firemode switches.
+ *
+ * For now, we're winging it. This is just design notes for when we cross
+ * this hellish bridge.
+ *
+ * ## Current Caveats
+ *
+ * * Flashlight attachments directly edit the light variable of the gun. This means that they'll trample the gun's
+ *   inherent light if there is one.
+ */
+/obj/item/gun
+	name = "gun"
+	desc = "Its a gun. It's pretty terrible, though."
+	description_info = "This is a gun.  To fire the weapon, ensure your intent is *not* set to 'help', have your gun mode set to 'fire', \
+		then click where you want to fire."
+	icon = 'icons/obj/gun/ballistic.dmi'
+	icon_state = "detective"
+	item_state = "gun"
+	item_flags = ITEM_ENCUMBERS_WHILE_HELD | ITEM_ENCUMBERS_ONLY_HELD
+	slot_flags = SLOT_BELT|SLOT_HOLSTER
+	materials_base = list(MAT_STEEL = 2000)
+	rad_flags = RAD_BLOCK_CONTENTS
+	w_class = WEIGHT_CLASS_NORMAL
+	throw_force = 5
+	throw_speed = 4
+	throw_range = 5
+	damage_force = 5
+	damage_tier = MELEE_TIER_MEDIUM
+	preserve_item = 1
+	origin_tech = list(TECH_COMBAT = 1)
+	attack_verb = list("struck", "hit", "bashed")
+	zoomdevicename = "scope"
+	inhand_default_type = INHAND_DEFAULT_ICON_GUNS
+
+	//* Accuracy, Dispersion, Instability *//
+
+	/// entirely disable baymiss on fired projectiles
+	///
+	/// * this is a default value; set to null by default to have the projectile's say.
+	var/accuracy_disabled = null
+
+	//* Attachments *//
+
+	/// Installed attachments
+	///
+	/// * Set to list of typepaths to immediately install them on init.
+	/// * Do not set this.
+	var/list/obj/item/gun_attachment/attachments
+	/// Attachment alignments.
+	///
+	/// * Format: "attachment slot" = list(x, y)
+	/// * Typelisted. If you varedit this, be aware of that.
+	/// * If an attachment slot isn't here, it's not allowed on the gun.
+	/// * See `code/__DEFINES/projectiles/gun_attachment.dm` for what this is doing to the attachments.
+	///   We basically match the specified align_x/y pixel on the attachment to the x/y on the gun's sprite
+	///   specified here.
+	/// * This is pixel coordinates on the gun's real icon. Out of bounds is allowed as attachments are just overlays.
+	var/list/attachment_alignment
+	/// Blacklisted attachment types.
+	var/attachment_type_blacklist = NONE
+
+	//* Firemode *//
+	/**
+	 * The list of our possible firemodes.
+	 *
+	 * Firemodes may be;
+	 *
+	 * * an instance: this will be kept around per gun
+	 * * an anonymous type (byond 'pop' object with /typepath{varedit = "abc";} syntax):
+	 *   this will be kept around per gun
+	 * * a typepath: this will be globally cached
+	 *
+	 * This variable may either be a list, of the above, or a singular of the above.
+	 */
+	var/list/firemodes = /datum/firemode
+	/// use radial for firemode
+	var/firemodes_use_radial = FALSE
+	#warn impl
+
+	//* Firing *//
+
+	/// the current firing cycle
+	///
+	/// * to interrupt a firing cycle, just change it.
+	var/tmp/datum/gun_firing_cycle/firing_cycle
+	/// the next firing cycle
+	///
+	/// * static var; technically can collide. realistically, won't.
+	var/static/firing_cycle_next = 0
+	/// last world.time we fired a shot
+	var/last_fire = 0
+	/// next world.time we can start a firing cycle
+	var/next_fire_cycle = 0
+
+	//! legacy below !//
+
+	var/fire_sound = null // This is handled by projectile.dm's fire_sound var now, but you can override the projectile's fire_sound with this one if you want to.
+	var/fire_sound_text = "gunshot"
+	var/recoil = 0		//screen shake
+	var/suppressible = FALSE
+	var/silenced = FALSE
+	var/silenced_icon = null
+	var/muzzle_flash = 3
+	var/accuracy = 65   //Accuracy is measured in percents. +15 accuracy means that everything is effectively one tile closer for the purpose of miss chance, -15 means the opposite. launchers are not supported, at the moment.
+	var/scoped_accuracy = null
+	var/list/burst_accuracy = list(0) //allows for different accuracies for each shot in a burst. Applied on top of accuracy
+	var/list/dispersion = list(0)
+	// todo: purge with fire
+	// todo: do not use this var, use firemodes on /energy
+	var/projectile_type = /obj/projectile	//On ballistics, only used to check for the cham gun
+	// todo: this should be on /ballistic, and be `internal_chambered`.
+	var/obj/item/ammo_casing/chambered = null
+
+	var/wielded_item_state
+	var/one_handed_penalty = 0 // Penalty applied if someone fires a two-handed gun with one hand.
+	var/atom/movable/screen/auto_target/auto_target
+
+	var/sel_mode = 1 //index of the currently selected mode
+	var/selector_sound = 'sound/weapons/guns/selector.ogg'
+
+	//aiming system stuff
+	var/keep_aim = 1 	//1 for keep shooting until aim is lowered
+						//0 for one bullet after tarrget moves and aim is lowered
+	var/multi_aim = 0 //Used to determine if you can target multiple people.
+	var/tmp/list/mob/living/aim_targets //List of who yer targeting.
+	var/tmp/lock_time = -100
+
+	/// whether or not we have safeties and if safeties are on
+	var/safety_state = GUN_SAFETY_ON
+
+	var/charge_sections = 4
+	var/shaded_charge = FALSE
+	var/ammo_x_offset = 2
+	var/ammo_y_offset = 0
+
+	var/obj/item/firing_pin/pin = /obj/item/firing_pin
+	var/no_pin_required = 0
+	var/scrambled = 0
+
+	//Gun Malfunction variables
+	var/unstable = 0
+	var/destroyed = 0
+
+	//! legacy above !//
+
+	                    //* THIS IS A WIP SYSTEM!! *//
+	                    // todo: well, finish this.
+	//*                      Modular Components                           *//
+	//* Generalized, and efficient modular component support at base /gun *//
+	//* level.                                                            *//
+
+	/// System flag for using modular component system
+	///
+	/// * Firing cycles are more expensive when modular components are invoked.
+	/// * This is because modular components use signal and API hooks that are not necessary for most guns.
+	/// * Thus, keep this off if it's not a modular weapon. It won't break it, but it's needless overhead.
+	var/modular_system = FALSE
+	/// currently installed components.
+	///
+	/// * This is a lazy list.
+	var/list/obj/item/gun_component/modular_components
+	/// lazy way to set internal slots, because this is modified so often
+	///
+	/// * literally not checked past init, it's used to generate the typelist
+	/// * if it's specified in the list, the list's copy is used instead.
+	var/modular_component_slots_internal = INFINITY
+	/// allowed component slots, associated to amount
+	///
+	/// * this is typelist()'d; if you want to change it later, make a copy!
+	var/list/modular_component_slots
+
+	//*                               Power                               *//
+	//* Because the use of power is such a common case on /gun, it's been *//
+	//* hoisted to the base /obj/item/gun level for handling.             *//
+
+	/// do we use a cell slot?
+	var/cell_system = FALSE
+	/// cell type to start with
+	var/cell_type = /obj/item/cell/device/weapon
+	/// -_-
+	var/cell_system_legacy_use_device = TRUE
+
+	//*                            Rendering                               *//
+
+	/// Used instead of base_icon_state for the mob renderer, if this exists.
+	var/base_mob_state
+
+	/// renderer datum we use for world rendering of the gun item itself
+	/// set this in prototype to a path
+	/// if null, we will not perform default rendering/updating of item states.
+	///
+	/// * anonymous types are allowed and encouraged.
+	/// * the renderer defaults to [base_icon_state || initial(icon_state)] for the base icon state to append to.
+	var/datum/gun_item_renderer/item_renderer
+	/// for de-duping
+	var/static/list/item_renderer_store = list()
+	/// renderer datum we use for mob rendering of the gun when held / worn
+	/// set this in prototype to a path
+	/// if null, we will not perform default rendering/updating of onmob states
+	///
+	/// * anonymous types are allowed and encouraged.
+	/// * the renderer defaults to [base_icon_state || render_mob_base || initial(icon_state)] for the base icon state to append to.
+	var/datum/gun_mob_renderer/mob_renderer
+	/// for de-duping
+	var/static/list/mob_renderer_store = list()
+
+	/// render as -wield if we're wielded? applied at the end of our base worn state no matter what
+	///
+	///  todo: impl
+	///
+	/// * ignores [mob_renderer]
+	/// * ignores [render_additional_exclusive] / [render_additional_worn]
+	/// * ordering: [base]-wield-[additional]-[...rest]
+	#warn impl
+	var/render_mob_wielded = FALSE
+	/// state to add as an append
+	///
+	/// * segment and overlay renders add [base_icon_state]-[append]
+	/// * state renders set state to [base_icon_state]-[wield?]-[append]-[...rest]
+	#warn erase?
+	var/render_additional_state
+	/// only render [render_additional_state]
+	#warn deal with this
+	var/render_additional_exclusive = FALSE
+	/// [render_additional_state] and [render_additional_exclusive] apply to worn sprites
+	//  todo: impl
+	var/render_additional_worn = FALSE
+
+	/// use the old render system, if item_renderer and mob_renderer are not set
+	//  todo: remove
+	var/render_use_legacy_by_default = TRUE
+
+/obj/item/gun/Initialize(mapload)
+	. = ..()
+	//* datum component - wielding *//
+	AddComponent(/datum/component/wielding)
+
+	//* instantiate & dedupe renderers *//
+	var/requires_icon_update
+	if(item_renderer)
+		if(ispath(item_renderer) || IS_ANONYMOUS_TYPEPATH(item_renderer))
+			item_renderer = new item_renderer
+		var/item_renderer_key = item_renderer.dedupe_key()
+		item_renderer = item_renderer_store[item_renderer_key] || (item_renderer_store[item_renderer_key] = item_renderer)
+		requires_icon_update = TRUE
+	if(mob_renderer)
+		if(ispath(mob_renderer) || IS_ANONYMOUS_TYPEPATH(mob_renderer))
+			mob_renderer = new mob_renderer
+		var/mob_renderer_key = mob_renderer.dedupe_key()
+		mob_renderer = mob_renderer_store[mob_renderer_key] || (mob_renderer_store[mob_renderer_key] = mob_renderer)
+		requires_icon_update = TRUE
+	if(requires_icon_update)
+		update_icon()
+
+	//! LEGACY BELOW !//
+
+	// if neither of these are here, we are using legacy render. //
+	if(!item_renderer && !mob_renderer && render_use_legacy_by_default)
+		item_icons = list(
+			SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand_guns.dmi',
+			SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_guns.dmi',
+			)
+
+	//* handle attachment typelists *//
+	if(attachment_alignment)
+		attachment_alignment = typelist(NAMEOF(src, attachment_alignment), attachment_alignment)
+
+	//* handle attachments *//
+	if(length(attachments))
+		var/list/translating_attachments = attachments
+		attachments = list()
+		for(var/obj/item/gun_attachment/casted as anything in translating_attachments)
+			var/obj/item/gun_attachment/actual
+			if(IS_ANONYMOUS_TYPEPATH(casted))
+				actual = new casted
+			else if(ispath(casted, /obj/item/gun_attachment))
+				actual = new casted
+			else if(istype(casted))
+				actual = casted
+			if(actual.attached != src)
+				if(!install_attachment(actual))
+					stack_trace("[actual] ([actual.type]) couldn't be auto-installed on initialize despite being in list.")
+					qdel(actual)
+
+	//! LEGACY: firemodes
+	if(!islist(firemodes))
+		firemodes = list(firemodes)
+	for(var/i in 1 to firemodes.len)
+		var/key = firemodes[i]
+		if(islist(key))
+			firemodes[i] = new /datum/firemode(src, key)
+		else if(IS_ANONYMOUS_TYPEPATH(key))
+			firemodes[i] = new key
+		else if(ispath(key))
+			firemodes[i] = new key
+	if(length(firemodes))
+		sel_mode = 0
+		switch_firemodes()
+
+	//! LEGACY: accuracy
+	if(isnull(scoped_accuracy))
+		scoped_accuracy = accuracy
+
+	//! LEGACY: pin
+	if(pin)
+		pin = new pin(src)
+
+	//! LEGACY ABOVE !//
+
+	// cell system //
+	if(cell_system)
+		var/datum/object_system/cell_slot/slot = init_cell_slot(cell_type)
+		slot.legacy_use_device_cells = cell_system_legacy_use_device
+		slot.remove_yank_offhand = TRUE
+		slot.remove_yank_context = TRUE
+
+	// modular components //
+	if(islist(modular_component_slots))
+		var/list/existing_typelist = get_typelist(NAMEOF(src, modular_component_slots))
+		if(existing_typelist)
+			modular_component_slots = existing_typelist
+		else
+			// if it's 1. a list and 2. we can't grab a typelist for it,
+			// we make it, patching internal modules lazily
+			var/internal_modules_patch = modular_component_slots[GUN_COMPONENT_INTERNAL_MODULE]
+			if(isnull(internal_modules_patch))
+				modular_component_slots[GUN_COMPONENT_INTERNAL_MODULE] = modular_component_slots_internal
+			modular_component_slots = typelist(NAMEOF(src, modular_component_slots), modular_component_slots)
+
+	#warn firemode action if needed
+
+/obj/item/gun/Destroy()
+	if(locate(/obj/projectile) in src)
+		stack_trace("found an /obj/projectile in ourselves. this is not only invalid state, but means someone probably caused a memory leak.")
+	QDEL_NULL(pin)
+	QDEL_LIST(attachments)
+	return ..()
+
+/obj/item/gun/examine(mob/user, dist)
+	. = ..()
+	if(!no_pin_required)
+		if(pin)
+			. += "It has \a [pin] installed."
+		else
+			. += "It doesn't have a firing pin installed, and won't fire."
+	if(firemodes.len > 1)
+		var/datum/firemode/current_mode = firemodes[sel_mode]
+		. += "The fire selector is set to [current_mode.name]."
+	if(safety_state != GUN_NO_SAFETY)
+		. += SPAN_NOTICE("The safety is [check_safety() ? "on" : "off"].")
+	for(var/obj/item/gun_attachment/attachment as anything in attachments)
+		. += "It has [attachment] installed on its [attachment.attachment_slot].[attachment.can_detach ? "" : " It doesn't look like it can be removed."]"
+	for(var/obj/item/gun_component/component as anything in modular_components)
+		. += "It has a [component.get_examine_fragment()] installed."
+
+/obj/item/gun/on_wield(mob/user, hands)
+	. = ..()
+	// legacy
+	if(wielded_item_state)
+		LAZYINITLIST(item_state_slots)
+		item_state_slots[SLOT_ID_LEFT_HAND] = wielded_item_state
+		item_state_slots[SLOT_ID_RIGHT_HAND] = wielded_item_state
+
+/obj/item/gun/on_unwield(mob/user, hands)
+	. = ..()
+	// legacy
+	if(wielded_item_state)
+		LAZYINITLIST(item_state_slots)
+		item_state_slots[SLOT_ID_LEFT_HAND] = initial(item_state)
+		item_state_slots[SLOT_ID_RIGHT_HAND] = initial(item_state)
+
+//Checks whether a given mob can use the gun
+//Any checks that shouldn't result in handle_click_empty() being called if they fail should go here.
+//Otherwise, if you want handle_click_empty() to be called, check in consume_next_projectile() and return null there.
+/obj/item/gun/proc/special_check(var/mob/user)
+
+	if(!istype(user, /mob/living))
+		return 0
+	if(!user.IsAdvancedToolUser())
+		return 0
+	if(isanimal(user))
+		var/mob/living/simple_mob/S = user
+		if(!S.IsHumanoidToolUser(src))
+			return 0
+	if(!handle_pins(user))
+		return 0
+	return 1
+
+/obj/item/gun/dropped(mob/user, flags, atom/newLoc)
+	. = ..()
+	update_appearance()
+
+/obj/item/gun/equipped(mob/user, slot, flags)
+	. = ..()
+	update_appearance()
+
+/obj/item/gun/afterattack(atom/target, mob/living/user, clickchain_flags, list/params)
+	if(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY)
+		return
+
+	if(!user?.client?.get_preference_toggle(/datum/game_preference_toggle/game/help_intent_firing) && user.a_intent == INTENT_HELP)
+		to_chat(user, SPAN_WARNING("You refrain from firing [src] because your intent is set to help!"))
+		return
+
+	var/shitty_legacy_params = list2params(params)
+	if(!user.aiming)
+		user.aiming = new(user)
+
+	if(check_safety())
+		//If we are on harm intent (intending to injure someone) but forgot to flick the safety off, there is a 50% chance we
+		//will reflexively do it anyway
+		if(user.a_intent == INTENT_HARM && prob(50))
+			toggle_safety(user)
+		else
+			handle_click_safety(user)
+			return
+
+	if(user && user.client && user.aiming && user.aiming.active && user.aiming.aiming_at != target)
+		PreFire(target,user,shitty_legacy_params) //They're using the new gun system, locate what they're aiming at.
+		return
+	else
+		var/datum/event_args/actor/clickchain/e_args = new(user)
+		e_args.click_params = params
+		e_args.target = target
+		e_args.using_intent = user.a_intent
+		return handle_clickchain_fire(e_args, clickchain_flags)
+
+/obj/item/gun/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+	var/mob/living/A = target
+	if(!istype(A))
+		return ..()
+	if(user.a_intent == INTENT_HARM) //point blank shooting
+		// todo: disabled for now
+		// if (A == user && user.zone_sel.selecting == O_MOUTH && !mouthshoot)
+		// 	handle_suicide(user)
+		// 	return
+		var/mob/living/L = user
+		if(user && user.client && istype(L) && L.aiming && L.aiming.active && L.aiming.aiming_at != A && A != user)
+			PreFire(A,user) //They're using the new gun system, locate what they're aiming at.
+			return
+		else
+			var/datum/event_args/actor/clickchain/e_args = new(user)
+			e_args.click_params = params
+			e_args.target = target
+			e_args.using_intent = user.a_intent
+			return handle_clickchain_fire(e_args, clickchain_flags)
+	return ..() //Pistolwhippin'
+
+/obj/item/gun/using_item_on(obj/item/using, datum/event_args/actor/clickchain/e_args, clickchain_flags, datum/callback/reachability_check)
+	. = ..()
+	if(. & CLICKCHAIN_DO_NOT_PROPAGATE)
+		return
+	if(istype(using, /obj/item/gun_attachment))
+		user_install_attachment(using, e_args)
+		return CLICKCHAIN_DO_NOT_PROPAGATE
+	#warn gun component attach
+
+/obj/item/gun/attackby(obj/item/I, mob/living/user, list/params, clickchain_flags, damage_multiplier)
+	if(I.is_multitool())
+		if(!scrambled)
+			to_chat(user, "<span class='notice'>You begin scrambling \the [src]'s electronic pins.</span>")
+			playsound(src, I.tool_sound, 50, 1)
+			if(do_after(user, 60 * I.tool_speed))
+				switch(rand(1,100))
+					if(1 to 10)
+						to_chat(user, "<span class='danger'>The electronic pin suite detects the intrusion and explodes!</span>")
+						user.show_message("<span class='danger'>SELF-DESTRUCTING...</span><br>", 2)
+						explosion(get_turf(src), -1, 0, 2, 3)
+						qdel(src)
+					if(11 to 49)
+						to_chat(user, "<span class='notice'>You fail to disrupt the electronic warfare suite.</span>")
+						return
+					if(50 to 100)
+						to_chat(user, "<span class='notice'>You disrupt the electronic warfare suite.</span>")
+						scrambled = 1
+		else
+			to_chat(user, "<span class='warning'>\The [src] does not have an active electronic warfare suite!</span>")
+
+	if(I.is_wirecutter())
+		if(pin && scrambled)
+			to_chat(user, "<span class='notice'>You attempt to remove \the firing pin from \the [src].</span>")
+			playsound(src, I.tool_sound, 50, 1)
+			if(do_after(user, 60 * I.tool_speed))
+				switch(rand(1,100))
+					if(1 to 10)
+						to_chat(user, "<span class='danger'>You twist the firing pin as you tug, destroying the firing pin.</span>")
+						pin = null
+					if(11 to 74)
+						to_chat(user, "<span class='notice'>You grasp the firing pin, but it slips free!</span>")
+						return
+					if(75 to 100)
+						to_chat(user, "<span class='notice'>You remove \the firing pin from \the [src].</span>")
+						user.put_in_hands(src.pin)
+						pin = null
+			else if(!do_after())
+				return
+		else if(pin && !scrambled)
+			to_chat(user, "<span class='notice'>The \the firing pin is firmly locked into \the [src].</span>")
+		else
+			to_chat(user, "<span class='warning'>\The [src] does not have a firing pin installed!</span>")
+
+	return ..()
+
+/obj/item/gun/emag_act(var/remaining_charges, var/mob/user)
+	if(pin)
+		pin.emag_act(remaining_charges, user)
+
+/obj/item/gun/proc/handle_click_safety(mob/user)
+	user.visible_message(SPAN_WARNING("[user] squeezes the trigger of \the [src] but it doesn't move!"), SPAN_WARNING("You squeeze the trigger but it doesn't move!"), range = MESSAGE_RANGE_COMBAT_SILENCED)
+
+//called after successfully firing
+/obj/item/gun/proc/handle_post_fire(mob/user, atom/target, var/pointblank=0, var/reflex=0)
+	SHOULD_NOT_OVERRIDE(TRUE)
+	#warn obliterate this
+	if(silenced)
+		to_chat(user, "<span class='warning'>You fire \the [src][pointblank ? " point blank at \the [target]":""][reflex ? " by reflex":""]</span>")
+		for(var/mob/living/L in oview(2,user))
+			if(L.stat)
+				continue
+			if(L.has_status_effect(/datum/status_effect/sight/blindness))
+				to_chat(L, "You hear a [fire_sound_text]!")
+				continue
+			to_chat(L, 	"<span class='danger'>\The [user] fires \the [src][pointblank ? " point blank at \the [target]":""][reflex ? " by reflex":""]!</span>")
+	else
+		user.visible_message(
+			"<span class='danger'>\The [user] fires \the [src][pointblank ? " point blank at \the [target]":""][reflex ? " by reflex":""]!</span>",
+			"<span class='warning'>You fire \the [src][pointblank ? " point blank at \the [target]":""][reflex ? " by reflex":""]!</span>",
+			"You hear a [fire_sound_text]!"
+			)
+
+	if(one_handed_penalty)
+		if(!src.is_held_twohanded(user))
+			switch(one_handed_penalty)
+				if(1 to 15)
+					if(prob(50)) //don't need to tell them every single time
+						to_chat(user, "<span class='warning'>Your aim wavers slightly.</span>")
+				if(16 to 30)
+					to_chat(user, "<span class='warning'>Your aim wavers as you fire \the [src] with just one hand.</span>")
+				if(31 to 45)
+					to_chat(user, "<span class='warning'>You have trouble keeping \the [src] on target with just one hand.</span>")
+				if(46 to INFINITY)
+					to_chat(user, "<span class='warning'>You struggle to keep \the [src] on target with just one hand!</span>")
+		else if(!user.can_wield_item(src))
+			switch(one_handed_penalty)
+				if(1 to 15)
+					if(prob(50)) //don't need to tell them every single time
+						to_chat(user, "<span class='warning'>Your aim wavers slightly.</span>")
+				if(16 to 30)
+					to_chat(user, "<span class='warning'>Your aim wavers as you try to hold \the [src] steady.</span>")
+				if(31 to 45)
+					to_chat(user, "<span class='warning'>You have trouble holding \the [src] steady.</span>")
+				if(46 to INFINITY)
+					to_chat(user, "<span class='warning'>You struggle to hold \the [src] steady!</span>")
+
+	if(recoil)
+		spawn()
+			shake_camera(user, recoil+1, recoil)
+
+/obj/item/gun/proc/play_fire_sound(var/mob/user, var/obj/projectile/P)
+	var/shot_sound = fire_sound
+
+	if(!shot_sound && istype(P) && P.fire_sound) // If the gun didn't have a fire_sound, but the projectile exists, and has a sound...
+		shot_sound = P.fire_sound
+	if(!shot_sound) // If there's still no sound...
+		return
+
+	if(silenced)
+		playsound(src, shot_sound, 10, 1)
+	else
+		playsound(src, shot_sound, 50, 1)
+
+/obj/item/gun/proc/toggle_scope(var/zoom_amount=2.0)
+	//looking through a scope limits your periphereal vision
+	//still, increase the view size by a tiny amount so that sniping isn't too restricted to NSEW
+	var/zoom_offset = round(world.view * zoom_amount)
+	var/view_size = round(world.view + zoom_amount)
+	var/scoped_accuracy_mod = zoom_offset
+
+	zoom(zoom_offset, view_size)
+	if(zoom)
+		accuracy = scoped_accuracy + scoped_accuracy_mod
+		if(recoil)
+			recoil = round(recoil*zoom_amount+1) //recoil is worse when looking through a scope
+
+//make sure accuracy and recoil are reset regardless of how the item is unzoomed.
+/obj/item/gun/zoom(tileoffset = 14, viewsize = 9, mob/user = usr)
+	..()
+	if(!zoom)
+		accuracy = initial(accuracy)
+		recoil = initial(recoil)
+
+/obj/item/gun/proc/switch_firemodes(mob/user)
+	if(firemodes.len <= 1)
+		return null
+
+	sel_mode++
+	if(sel_mode > firemodes.len)
+		sel_mode = 1
+	var/datum/firemode/new_mode = firemodes[sel_mode]
+	new_mode.apply_legacy_variables(src)
+	if(user)
+		to_chat(user, "<span class='notice'>\The [src] is now set to [new_mode.name].</span>")
+		playsound(loc, selector_sound, 50, 1)
+	return new_mode
+
+/obj/item/gun/attack_self(mob/user, datum/event_args/actor/actor)
+	. = ..()
+	if(.)
+		return
+	switch_firemodes(user)
+
+/obj/item/gun/proc/handle_pins(mob/living/user)
+	if(no_pin_required)
+		return TRUE
+	if(pin)
+		if(pin.pin_auth(user) || (pin.emagged))
+			return 1
+		else
+			pin.auth_fail(user)
+			return 0
+	else
+		to_chat(user, "<span class='warning'>[src]'s trigger is locked. This weapon doesn't have a firing pin installed!</span>")
+	return 0
+
+/obj/item/gun/update_overlays()
+	. = ..()
+	if(!(item_flags & ITEM_IN_INVENTORY))
+		return
+	. += image('icons/obj/gun/common.dmi', "safety_[check_safety()? "on" : "off"]")
+
+/obj/item/gun/proc/toggle_safety(mob/user)
+	if(user)
+		if(user.stat || user.restrained() || user.incapacitated(INCAPACITATION_DISABLED))
+			to_chat(user, SPAN_WARNING("You can't do that right now."))
+			return
+	if(safety_state == GUN_NO_SAFETY)
+		to_chat(user, SPAN_WARNING("[src] has no safety."))
+		return
+	var/current = check_safety()
+	switch(safety_state)
+		if(GUN_SAFETY_ON)
+			safety_state = GUN_SAFETY_OFF
+		if(GUN_SAFETY_OFF)
+			safety_state = GUN_SAFETY_ON
+	if(user)
+		user.visible_message(
+			SPAN_WARNING("[user] switches the safety of \the [src] [current ? "off" : "on"]."),
+			SPAN_NOTICE("You switch the safety of \the [src] [current ? "off" : "on"]."),
+			SPAN_WARNING("You hear a switch being clicked."),
+			MESSAGE_RANGE_COMBAT_SUBTLE
+		)
+	update_appearance()
+	playsound(src, 'sound/weapons/flipblade.ogg', 10, 1)
+
+/obj/item/gun/verb/toggle_safety_verb()
+	set src in usr
+	set category = VERB_CATEGORY_OBJECT
+	set name = "Toggle Gun Safety"
+
+	if(usr == loc)
+		toggle_safety(usr)
+
+/**
+ * returns TRUE/FALSE based on if we have safeties on
+ */
+/obj/item/gun/proc/check_safety()
+	return (safety_state == GUN_SAFETY_ON)
+
+// PENDING FIREMODE REWORK
+/obj/item/gun/proc/legacy_get_firemode() as /datum/firemode
+	if(!length(firemodes) || (sel_mode > length(firemodes)))
+		return
+	return firemodes[sel_mode]
+
+/obj/item/gun/register_item_actions(mob/user)
+	. = ..()
+	for(var/obj/item/gun_attachment/attachment as anything in attachments)
+		attachment.register_attachment_actions(user)
+
+/obj/item/gun/unregister_item_actions(mob/user)
+	. = ..()
+	for(var/obj/item/gun_attachment/attachment as anything in attachments)
+		attachment.unregister_attachment_actions(user)
+
+//* Ammo *//
+
+/**
+ * Gets the ratio of our ammo left
+ *
+ * * Used by rendering
+ *
+ * @return number as 0 to 1, inclusive
+ */
+/obj/item/gun/proc/get_ammo_ratio()
+	return 0
+
+//* Context *//
+
+/obj/item/gun/context_query(datum/event_args/actor/e_args)
+	. = ..()
+	if(length(attachments))
+		.["remove-attachment"] = atom_context_tuple("Remove Attachment", image('icons/screen/radial/actions.dmi', "red-arrow-up"), 0, MOBILITY_CAN_USE)
+	if(safety_state != GUN_NO_SAFETY)
+		.["toggle-safety"] = atom_context_tuple("Toggle Safety", image(src), 0, MOBILITY_CAN_USE, TRUE)
+	#warn gun component detach
+
+/obj/item/gun/context_act(datum/event_args/actor/e_args, key)
+	. = ..()
+	if(.)
+		return
+	switch(key)
+		if("remove-attachment")
+			// todo: e_args support
+			var/obj/item/gun_attachment/attachment = show_radial_menu(e_args.initiator, src, attachments)
+			if(!attachment)
+				return TRUE
+			if(!e_args.performer.Reachability(src) || !(e_args.performer.mobility_flags & MOBILITY_CAN_USE))
+				return TRUE
+			user_uninstall_attachment(attachment, e_args, TRUE)
+			return TRUE
+		if("toggle-safety")
+			toggle_safety(e_args.performer)
+			return TRUE
+
+//* Firemodes *//
+
+/**
+ * Ensures our firemodes list is not a cached copy.
+ *
+ * * This absolutely must be called before **any** mutating writes to
+ *   `firemodes` or its contents.
+ */
+/obj/item/gun/proc/ensure_firemodes_owned()
+	if(!is_typelist(NAMEOF(src, firemodes), firemodes))
+		return
+	firemodes = deep_clone_list(firemodes)
+
+//* Interaction *//
+
+/obj/item/gun/CtrlClick(mob/user)
+	. = ..()
+	if(user.is_holding(src))
+		toggle_safety(user)
+
+//* Rendering *//
+
+/obj/item/gun/update_icon(updates)
+	// todo: shouldn't need this check, deal with legacy
+	if(!item_renderer && !mob_renderer && render_use_legacy_by_default)
+		return ..()
+	cut_overlays()
+	var/ratio_left = get_ammo_ratio()
+	var/datum/firemode/using_firemode = legacy_get_firemode()
+	item_renderer?.render(src, ratio_left, using_firemode?.render_key)
+	var/needs_worn_update = mob_renderer?.render(src, ratio_left, using_firemode?.render_key)
+	// todo: render_mob_wielded
+	if(needs_worn_update)
+		update_worn_icon()
+	return ..()

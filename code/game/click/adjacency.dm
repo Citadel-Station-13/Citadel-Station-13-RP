@@ -6,6 +6,8 @@
  *
  * **DO NOT** default recursion to on.
  *
+ * * This call is basically just one-tile-reach Reachability().
+ *
  * @params
  * - neighbor - what we're trying to reach
  * - recurse - levels we're allowed to recurse up if we're not on a turf

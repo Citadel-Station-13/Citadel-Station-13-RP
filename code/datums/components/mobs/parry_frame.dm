@@ -1,5 +1,5 @@
 //* This file is explicitly licensed under the MIT license. *//
-//* Copyright (c) Citadel Station Developers                *//
+//* Copyright (c) 2024 Citadel Station Developers           *//
 
 /**
  * ## Active Parry
@@ -316,7 +316,7 @@
 		// item processing
 		if(isitem(attack_source_descriptor))
 			var/obj/item/item_source_descriptor = attack_source_descriptor
-			var/mob/mob_holding_item = item_source_descriptor.worn_mob()
+			var/mob/mob_holding_item = item_source_descriptor.get_worn_mob()
 			if(mob_holding_item)
 				attack_descriptor = "[mob_holding_item]'s [item_source_descriptor]"
 
@@ -437,8 +437,8 @@
 /datum/parry_frame/proc/handle_item_melee(atom/defending, shieldcall_returns, fake_attack, efficiency, obj/item/weapon, datum/event_args/actor/clickchain/e_args, tool_text)
 	. = shieldcall_returns
 	// todo: doesn't take into account any damage randomization
-	var/estimated_severity = clamp(weapon.damage_force * e_args.damage_multiplier / 20 * 75, 0, 100)
-	e_args.damage_multiplier *= clamp(1 - efficiency, 0, 1)
+	var/estimated_severity = clamp(weapon.damage_force * e_args.melee_damage_multiplier / 20 * 75, 0, 100)
+	e_args.melee_damage_multiplier *= clamp(1 - efficiency, 0, 1)
 	. = perform_aftereffects(defending, ATTACK_TYPE_MELEE, efficiency, weapon, ., e_args)
 	perform_audiovisuals(defending, ATTACK_TYPE_MELEE, efficiency, weapon, ., estimated_severity, weapon, tool_text)
 	if(parry_always_prevents_contact || (parry_can_prevent_contact && (efficiency >= parry_efficiency_blocked)))
@@ -457,8 +457,8 @@
 /datum/parry_frame/proc/handle_unarmed_melee(atom/defending, shieldcall_returns, fake_attack, efficiency, datum/unarmed_attack/style, datum/event_args/actor/clickchain/e_args, tool_text)
 	. = shieldcall_returns
 	// todo: doesn't take into account any damage randomization
-	var/estimated_severity = clamp(style.damage * e_args.damage_multiplier / 20 * 75, 0, 100)
-	e_args.damage_multiplier *= clamp(1 - efficiency, 0, 1)
+	var/estimated_severity = clamp(style.damage * e_args.melee_damage_multiplier / 20 * 75, 0, 100)
+	e_args.melee_damage_multiplier *= clamp(1 - efficiency, 0, 1)
 	. = perform_aftereffects(defending, ATTACK_TYPE_UNARMED, efficiency, style, ., e_args)
 	perform_audiovisuals(defending, ATTACK_TYPE_UNARMED, efficiency, style, ., estimated_severity, style, tool_text)
 	if(parry_always_prevents_contact || (parry_can_prevent_contact && (efficiency >= parry_efficiency_blocked)))
@@ -478,7 +478,7 @@
 	. = shieldcall_returns
 	// todo: doesn't take into account any damage randomization
 	var/estimated_severity = 50
-	e_args.damage_multiplier *= clamp(1 - efficiency, 0, 1)
+	e_args.melee_damage_multiplier *= clamp(1 - efficiency, 0, 1)
 	. = perform_aftereffects(defending, ATTACK_TYPE_TOUCH, efficiency, null, ., e_args)
 	perform_audiovisuals(defending, ATTACK_TYPE_TOUCH, efficiency, null, ., estimated_severity, e_args.performer, tool_text)
 	if(parry_always_prevents_contact || (parry_can_prevent_contact && (efficiency >= parry_efficiency_blocked)))

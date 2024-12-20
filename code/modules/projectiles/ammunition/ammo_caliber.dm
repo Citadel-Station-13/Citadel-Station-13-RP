@@ -28,6 +28,8 @@ GLOBAL_LIST_INIT(calibers, init_calibers())
 /**
  * desc wip
  *
+ * todo: make this a /prototype
+ *
  * welcome to hell: brought to you by a webdev
  *
  * naming convention: c[whatever] for the caliber, subtype to a[whatever] for different ammo lengths
@@ -39,7 +41,7 @@ GLOBAL_LIST_INIT(calibers, init_calibers())
 	abstract_type = /datum/ammo_caliber
 	/// caliber string
 	var/caliber
-	/// does dynamic measurements
+	/// both diameter / length are set, which means we can do dynamic measurements
 	var/measured
 	/// width in millimeters
 	var/diameter
