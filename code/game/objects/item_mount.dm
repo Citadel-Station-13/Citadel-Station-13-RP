@@ -72,13 +72,11 @@
  * @params
  * * id - reagent id
  * * amount - volume
- * * raw_data_in - raw reagent data will be put into this list, if provided.
- *                 This is a read-only list, do not modify; it's a direct reference to the
- *                 reagent's data list on the providing holder.
+ * * force - allow overfill
  *
  * @return amount the item mount could accept
  */
-/datum/item_mount/proc/push_reagent(id, amount, list/data_in)
+/datum/item_mount/proc/push_reagent(id, amount, force)
 	return 0
 
 //* Materials *//
@@ -113,10 +111,11 @@
  * @params
  * * id - material id
  * * amount - volume
+ * * force - allow overfill
  *
  * @return amount the item mount could accept
  */
-/datum/item_mount/proc/push_material(id, amount)
+/datum/item_mount/proc/push_material(id, amount, force)
 	return 0
 
 //* Stacks *//
@@ -151,8 +150,9 @@
  * @params
  * * path - stack path
  * * amount - volume
+ * * force - allow overfill
  *
  * @return amount the item mount could accept
  */
-/datum/item_mount/proc/push_stack(path, amount)
+/datum/item_mount/proc/push_stack(path, amount, force)
 	return 0

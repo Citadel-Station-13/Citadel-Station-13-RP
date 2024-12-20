@@ -198,15 +198,6 @@
 	use(needed)
 
 /**
- * Return 1 if an immediate subsequent call to use() would succeed.
- * Ensures that code dealing with stacks uses the same logic
- */
-/obj/item/stack/proc/can_use(used)
-	if (get_amount() < used)
-		return FALSE
-	return TRUE
-
-/**
  * Can we merge with this stack?
  */
 /obj/item/stack/proc/can_merge(obj/item/stack/other)
@@ -216,37 +207,17 @@
 		return FALSE
 	return other.stacktype == stacktype
 
-/obj/item/stack/proc/use(used)
-	if (!can_use(used))
-		return FALSE
-	if(!uses_charge)
-		amount -= used
-		if (amount <= 0)
-			qdel(src) //should be safe to qdel immediately since if someone is still using this stack it will persist for a little while longer
-		update_icon()
-		return TRUE
-	else
-		if(get_amount() < used)
-			return FALSE
-		for(var/i = 1 to uses_charge)
-			var/datum/matter_synth/S = synths[i]
-			S.use_charge(charge_costs[i] * used) // Doesn't need to be deleted
-		return TRUE
+// todo: deprecated
+/obj/item/stack/proc/can_use(used)
+	return has_amount(used)
 
+// todo: deprecated
+/obj/item/stack/proc/use(used)
+	return use_amount(used)
+
+// todo: deprecated
 /obj/item/stack/proc/add(extra, force)
-	if(!uses_charge)
-		if((amount + extra > get_max_amount()) && !force)
-			return FALSE
-		else
-			amount += extra
-		update_icon()
-		return TRUE
-	else if(!synths || synths.len < uses_charge)
-		return FALSE
-	else
-		for(var/i = 1 to uses_charge)
-			var/datum/matter_synth/S = synths[i]
-			S.add_charge(charge_costs[i] * extra)
+	return give_amount(extra, force)
 
 /**
  * The transfer and split procs work differently than use() and add().
@@ -297,32 +268,6 @@
 				newstack.blood_DNA |= blood_DNA
 		return newstack
 	return null
-
-/obj/item/stack/proc/get_amount()
-	if(uses_charge)
-		if(!synths || synths.len < uses_charge)
-			return 0
-		var/datum/matter_synth/S = synths[1]
-		. = round(S.get_charge() / charge_costs[1])
-		if(uses_charge > 1)
-			for(var/i = 2 to uses_charge)
-				S = synths[i]
-				. = min(., round(S.get_charge() / charge_costs[i]))
-		return
-	return amount
-
-/obj/item/stack/proc/get_max_amount()
-	if(uses_charge)
-		if(!synths || synths.len < uses_charge)
-			return 0
-		var/datum/matter_synth/S = synths[1]
-		. = round(S.max_energy / charge_costs[1])
-		if(uses_charge > 1)
-			for(var/i = 2 to uses_charge)
-				S = synths[i]
-				. = min(., round(S.max_energy / charge_costs[i]))
-		return
-	return max_amount
 
 /obj/item/stack/proc/add_to_stacks(mob/user)
 	for (var/obj/item/stack/item in user.loc)
@@ -450,13 +395,131 @@
 	update_icon()
 	return TRUE
 
+//* Access *//
+
+/**
+ * Gets how many sheets we have.
+ */
+/obj/item/stack/proc/get_amount()
+	if(uses_charge)
+		if(!synths || synths.len < uses_charge)
+			return 0
+		var/datum/matter_synth/S = synths[1]
+		. = round(S.get_charge() / charge_costs[1])
+		if(uses_charge > 1)
+			for(var/i = 2 to uses_charge)
+				S = synths[i]
+				. = min(., round(S.get_charge() / charge_costs[i]))
+		return
+	return amount
+
+/**
+ * Gets how many sheets we can carry.
+ */
+/obj/item/stack/proc/get_max_amount()
+	if(uses_charge)
+		if(!synths || synths.len < uses_charge)
+			return 0
+		var/datum/matter_synth/S = synths[1]
+		. = round(S.max_energy / charge_costs[1])
+		if(uses_charge > 1)
+			for(var/i = 2 to uses_charge)
+				S = synths[i]
+				. = min(., round(S.max_energy / charge_costs[i]))
+		return
+	return max_amount
+
+/**
+ * Gets how many sheets we can accept.
+ */
+/obj/item/stack/proc/get_missing_amount()
+	return get_max_amount() - get_amount()
+
+/**
+ * Checks if we have an amount.
+ *
+ * @return TRUE / FALSE
+ */
+/obj/item/stack/proc/has_amount(amount)
+	#warn impl
+
+/**
+ * Use an amount if we have the whole amount.
+ *
+ * @return amount used
+ */
+/obj/item/stack/proc/use_checked_amount(amount)
+	if(!has_amount(amount))
+		return 0
+	return use_amount(amount)
+
+/**
+ * Use an amount. Will use less if we don't have that much.
+ *
+ * @return amount used
+ */
+/obj/item/stack/proc/use_amount(amount)
+	return use(amount)
+	if (!can_use(used))
+		return FALSE
+	if(!uses_charge)
+		amount -= used
+		if (amount <= 0)
+			qdel(src) //should be safe to qdel immediately since if someone is still using this stack it will persist for a little while longer
+		update_icon()
+		return TRUE
+	else
+		if(get_amount() < used)
+			return FALSE
+		for(var/i = 1 to uses_charge)
+			var/datum/matter_synth/S = synths[i]
+			S.use_charge(charge_costs[i] * used) // Doesn't need to be deleted
+		return TRUE
+
+/**
+ * Gives a number of sheets back to us.
+ *
+ * @return amount added
+ */
+/obj/item/stack/proc/give_amount(amount)
+	#warn impl
+	if(!uses_charge)
+		if((amount + extra > get_max_amount()) && !force)
+			return FALSE
+		else
+			amount += extra
+		update_icon()
+		return TRUE
+	else if(!synths || synths.len < uses_charge)
+		return FALSE
+	else
+		for(var/i = 1 to uses_charge)
+			var/datum/matter_synth/S = synths[i]
+			S.add_charge(charge_costs[i] * extra)
+
 //* Stack Providers *//
 
 /obj/item/stack/proc/set_provider(datum/stack_provider/provider)
 	stack_provider = provider
 
-/obj/item/stack/proc/push_to_provider(amount)
+/**
+ * @return amount left
+ */
+/obj/item/stack/proc/check_provider_remaining()
 
+/**
+ * @return max volume
+ */
+/obj/item/stack/proc/check_provider_capacity()
+
+/**
+ * @return amount pushed
+ */
+/obj/item/stack/proc/push_to_provider(amount, force)
+
+/**
+ * @return amount pulled
+ */
 /obj/item/stack/proc/pull_from_provider(amount)
 
 #warn impl

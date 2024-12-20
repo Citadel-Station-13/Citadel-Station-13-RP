@@ -14,15 +14,17 @@
  * @return amount remaining.
  */
 /datum/stack_provider/proc/get_stack(path)
+	return 0
 
 /**
  * Material stacks are invalid here.
  *
  * * Amount is in stack amount.
  *
- * @return amount remaining.
+ * @return TRUE / FALSE.
  */
 /datum/stack_provider/proc/has_stack(path, amount)
+	return FALSE
 
 /**
  * Material stacks are invalid here.
@@ -32,6 +34,7 @@
  * @return amount used.
  */
 /datum/stack_provider/proc/use_stack(path, amount)
+	return 0
 
 /**
  * Material stacks are invalid here.
@@ -50,7 +53,8 @@
  *
  * @return amount given.
  */
-/datum/stack_provider/proc/give_stack(path, amount)
+/datum/stack_provider/proc/give_stack(path, amount, force)
+	return 0
 
 /**
  * * Amount is in stack amount.
@@ -58,13 +62,15 @@
  * @return amount remaining.
  */
 /datum/stack_provider/proc/get_material(path)
+	return 0
 
 /**
  * * Amount is in stack amount.
  *
- * @return amount remaining.
+ * @return TRUE / FALSE.
  */
 /datum/stack_provider/proc/has_material(path, amount)
+	return FALSE
 
 /**
  * * Amount is in stack amount.
@@ -72,6 +78,7 @@
  * @return amount used.
  */
 /datum/stack_provider/proc/use_material(path_or_id, amount)
+	return 0
 
 /**
  * * Amount is in stack amount.
@@ -86,8 +93,5 @@
  *
  * @return amount given.
  */
-/datum/stack_provider/proc/give_material(path_or_id, amount)
-
-
-
-#warn impl
+/datum/stack_provider/proc/give_material(path_or_id, amount, force)
+	return 0
