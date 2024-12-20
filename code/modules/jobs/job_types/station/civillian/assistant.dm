@@ -15,11 +15,7 @@
 		"Visitor" = /datum/prototype/struct/alt_title/visitor,
 		"Server" = /datum/prototype/struct/alt_title/server,
 		"Morale Officer" = /datum/prototype/struct/alt_title/morale_officer,
-		"Assistant" = /datum/prototype/struct/alt_title/assistant,
-		"Contractor" = /datum/prototype/struct/alt_title/contractor,
-		"Freelancer" = /datum/prototype/struct/alt_title/freelancer,
-		"Frontier Colonist" = /datum/prototype/struct/alt_title/colonist,
-		"Tourist" = /datum/prototype/struct/alt_title/tourist
+		"Assistant" = /datum/prototype/struct/alt_title/assistant
 	)
 
 /datum/role/job/station/assistant/get_access()
@@ -45,22 +41,6 @@
 /datum/prototype/struct/alt_title/assistant
 	title = "Assistant"
 	title_outfit = /datum/outfit/job/station/assistant
-
-/datum/prototype/struct/alt_title/contractor
-	title = "Contractor"
-	title_outfit = /datum/outfit/job/station/assistant/contractor
-
-/datum/prototype/struct/alt_title/freelancer
-	title = "Freelancer"
-	title_outfit = /datum/outfit/job/station/assistant/freelancer
-
-/datum/prototype/struct/alt_title/colonist
-	title = "Frontier Colonist"
-	title_outfit = /datum/outfit/job/station/assistant/colonist
-
-/datum/prototype/struct/alt_title/tourist
-	title = "Tourist"
-	title_outfit = /datum/outfit/job/station/assistant/tourist
 
 /datum/outfit/job/station/assistant
 	name = OUTFIT_JOB_NAME(USELESS_JOB)
@@ -104,14 +84,4 @@
 	uniform = /obj/item/clothing/under/waiter
 	l_ear = /obj/item/radio/headset/headset_service
 
-/datum/outfit/job/station/assistant/contractor
-	id_pda_assignment = "Contractor"
 
-/datum/outfit/job/station/assistant/freelancer
-	id_pda_assignment = "Freelancer"
-
-/datum/outfit/job/station/assistant/colonist
-	id_pda_assignment = "Colonist"
-
-/datum/outfit/job/station/assistant/tourist
-	id_pda_assignment = "Tourist"

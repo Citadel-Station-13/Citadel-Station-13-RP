@@ -76,7 +76,7 @@
 
 /datum/spawnpoint/trade/visitor
 	display_name = "Nebula Visitor Arrival"
-	restrict_job = list("Visitor")
+	restrict_job = list("Traveler")
 	announce_channel = "Trade"
 	method = LATEJOIN_METHOD_ARRIVALS_SHUTTLE
 

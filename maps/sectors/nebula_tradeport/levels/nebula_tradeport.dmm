@@ -4041,7 +4041,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/sector/nebula_tradeport/dock2)
 "akD" = (
-/obj/landmark/spawnpoint/job/trader/visitor,
+/obj/landmark/spawnpoint/latejoin/outsider,
 /turf/simulated/floor/tiled/old_tile/beige,
 /area/tradeport/commhall)
 "akE" = (
@@ -6835,6 +6835,7 @@
 /area/shuttle/udang/main)
 "aso" = (
 /obj/machinery/light,
+/obj/structure/reagent_dispensers/beerkeg,
 /turf/simulated/floor/plating,
 /area/shuttle/tug)
 "asp" = (
@@ -9502,14 +9503,14 @@
 /turf/simulated/floor/outdoors/beach/sand/desert/indoors,
 /area/tradeport/safarizoo)
 "ayY" = (
-/obj/structure/metal_edge{
-	layer = 2.8
-	},
 /obj/structure/closet/crate/corporate/nanotrasen,
 /obj/structure/handrail,
 /obj/structure/window/reinforced/polarized{
 	id = "udang_cargo";
 	dir = 1
+	},
+/obj/structure/metal_edge{
+	layer = 1
 	},
 /turf/simulated/floor/plating,
 /area/shuttle/udang/main)
@@ -10075,9 +10076,6 @@
 /turf/simulated/floor/tiled/monodark,
 /area/shuttle/runabout)
 "aAu" = (
-/obj/structure/metal_edge{
-	layer = 2.8
-	},
 /obj/structure/table/rack/shelf/steel,
 /obj/item/clothing/head/helmet/space/void/explorer,
 /obj/item/clothing/head/helmet/space/void/explorer,
@@ -10094,6 +10092,9 @@
 /obj/structure/window/reinforced/polarized{
 	id = "udang_cargo";
 	dir = 1
+	},
+/obj/structure/metal_edge{
+	layer = 1
 	},
 /turf/simulated/floor/plating,
 /area/shuttle/udang/main)
@@ -14240,9 +14241,6 @@
 /turf/simulated/floor/tiled/neutral,
 /area/tradeport/facility)
 "aLD" = (
-/obj/structure/metal_edge{
-	layer = 2.8
-	},
 /obj/structure/curtain/open/shower/engineering,
 /obj/structure/railing/grey{
 	dir = 8
@@ -14250,6 +14248,10 @@
 /obj/structure/window/reinforced/polarized{
 	id = "udang_cargo";
 	dir = 1
+	},
+/obj/structure/reagent_dispensers/beerkeg,
+/obj/structure/metal_edge{
+	layer = 1
 	},
 /turf/simulated/floor/plating,
 /area/shuttle/udang/main)
@@ -14348,15 +14350,15 @@
 /turf/space,
 /area/sector/nebula_tradeport/motel/vip)
 "aLT" = (
-/obj/structure/metal_edge{
-	layer = 2.8
-	},
 /obj/machinery/portable_atmospherics/canister/empty/phoron,
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan,
 /obj/structure/handrail,
 /obj/structure/window/reinforced/polarized{
 	id = "udang_cargo";
 	dir = 1
+	},
+/obj/structure/metal_edge{
+	layer = 1
 	},
 /turf/simulated/floor/plating,
 /area/shuttle/udang/main)
@@ -14376,7 +14378,6 @@
 /obj/machinery/atm{
 	pixel_y = 27
 	},
-/obj/landmark/spawnpoint/job/trader/visitor,
 /turf/simulated/floor/tiled/old_tile/beige,
 /area/tradeport/commhall)
 "aLX" = (
@@ -17649,14 +17650,14 @@
 /turf/simulated/floor/tiled/old_tile/yellow,
 /area/tradeport/safari)
 "aUK" = (
-/obj/structure/metal_edge{
-	layer = 2.8
-	},
 /obj/machinery/portable_atmospherics/canister/empty/phoron,
 /obj/structure/handrail,
 /obj/structure/window/reinforced/polarized{
 	id = "udang_cargo";
 	dir = 1
+	},
+/obj/structure/metal_edge{
+	layer = 1
 	},
 /turf/simulated/floor/plating,
 /area/shuttle/udang/main)
@@ -22401,6 +22402,17 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/sector/nebula_tradeport/medical/public)
+"itp" = (
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
+	dir = 1
+	},
+/obj/effect/floor_decal/techfloor,
+/obj/effect/floor_decal/corner/green/border{
+	dir = 1
+	},
+/obj/landmark/spawnpoint/latejoin/outsider,
+/turf/simulated/floor/tiled,
+/area/tradeport/commhall)
 "itB" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -24181,6 +24193,14 @@
 	},
 /turf/simulated/floor/tiled/old_tile/blue,
 /area/tradeport/commons)
+"nHT" = (
+/obj/effect/floor_decal/techfloor{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/green/border,
+/obj/landmark/spawnpoint/job/outsider,
+/turf/simulated/floor/tiled,
+/area/tradeport/commhall)
 "nIB" = (
 /obj/structure/curtain/open/bed,
 /obj/structure/bed/double/padded,
@@ -25278,6 +25298,18 @@
 /obj/item/bedsheet/brown,
 /turf/simulated/floor/carpet/patterened/blue,
 /area/shuttle/scoophead/office)
+"rbV" = (
+/obj/effect/floor_decal/techfloor{
+	dir = 1
+	},
+/obj/machinery/air_alarm/alarms_hidden{
+	pixel_y = 22;
+	req_one_access = list(160)
+	},
+/obj/effect/floor_decal/corner/green/border,
+/obj/landmark/spawnpoint/job/outsider,
+/turf/simulated/floor/tiled,
+/area/tradeport/commhall)
 "rch" = (
 /obj/structure/closet/crate/bin{
 	anchored = 1
@@ -26497,6 +26529,10 @@
 /obj/machinery/light,
 /turf/simulated/floor/tiled/steel_dirty/dark,
 /area/shuttle/arrowhead)
+"uVC" = (
+/obj/structure/reagent_dispensers/beerkeg,
+/turf/simulated/floor/plating,
+/area/shuttle/tug)
 "uWr" = (
 /obj/effect/floor_decal/corner/red/border{
 	dir = 1
@@ -27099,6 +27135,14 @@
 /obj/structure/bed/padded,
 /turf/simulated/floor/carpet/patterened/blue,
 /area/sector/nebula_tradeport/motel/room5)
+"wWl" = (
+/obj/effect/floor_decal/techfloor,
+/obj/effect/floor_decal/corner/green/border{
+	dir = 1
+	},
+/obj/landmark/spawnpoint/latejoin/outsider,
+/turf/simulated/floor/tiled,
+/area/tradeport/commhall)
 "wWB" = (
 /turf/simulated/wall/r_wall,
 /area/sector/nebula_tradeport/motel/room7)
@@ -36922,10 +36966,10 @@ cXs
 lFD
 jlU
 abr
-aby
+nHT
 awO
 aYp
-aVm
+wWl
 aoN
 apv
 aWO
@@ -36943,7 +36987,7 @@ avN
 aeg
 aog
 aVM
-avI
+aij
 agT
 agT
 agT
@@ -37119,7 +37163,7 @@ abr
 awu
 aCZ
 akM
-aWb
+itp
 aoN
 apv
 aeh
@@ -37138,7 +37182,7 @@ aeg
 aog
 aXG
 aij
-agT
+uVC
 agT
 agT
 axJ
@@ -37310,7 +37354,7 @@ eSp
 cXs
 koU
 aFw
-aDJ
+rbV
 fNR
 adj
 dWa

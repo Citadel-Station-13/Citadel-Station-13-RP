@@ -3131,6 +3131,7 @@
 #include "code\modules\jobs\job_types\station\admin\centcom_officer.dm"
 #include "code\modules\jobs\job_types\station\admin\emergency_responder.dm"
 #include "code\modules\jobs\job_types\station\civillian\assistant.dm"
+#include "code\modules\jobs\job_types\station\civillian\outsider.dm"
 #include "code\modules\jobs\job_types\station\civillian\chaplain.dm"
 #include "code\modules\jobs\job_types\station\civillian\clown.dm"
 #include "code\modules\jobs\job_types\station\civillian\entertainer.dm"
