@@ -1,3 +1,11 @@
+/**
+ * Base definition of mob.
+ */
+/mob
+	//* Inventory *//
+	/// our inventory datum, if any.
+	/// * Set to typepath to initialize.
+	var/datum/inventory/inventory
 
 /**
  * Intialize a mob

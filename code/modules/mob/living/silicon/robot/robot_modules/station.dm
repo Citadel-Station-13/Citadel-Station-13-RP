@@ -7,8 +7,7 @@ GLOBAL_LIST_INIT(robot_modules, list(
 	"Medical" 		= /obj/item/robot_module/robot/medical/surgeon,
 	"Security" 		= /obj/item/robot_module/robot/security/general,
 	"Combat" 		= /obj/item/robot_module/robot/security/combat,
-	"Engineering"	= /obj/item/robot_module/robot/engineering/general,
-//	"Construction"	= /obj/item/robot_module/robot/engineering/construction,
+	"Engineering"	= /obj/item/robot_module/robot/engineering,
 	"Janitor" 		= /obj/item/robot_module/robot/janitor,
 	"Quadruped"		= /obj/item/robot_module/robot/quad/basic,
 	"MediQuad"		= /obj/item/robot_module/robot/quad/medi,
@@ -27,14 +26,10 @@ GLOBAL_LIST_INIT(robot_modules, list(
 	icon_state = "std_module"
 	w_class = WEIGHT_CLASS_HUGE
 	item_state = "std_mod"
-	var/hide_on_manifest = 0
 	var/channels = list()
 	var/networks = list()
 	var/sprites = list()
 	var/can_be_pushed = 1
-	var/no_slip = 0
-	/// Affects emotes.
-	var/is_the_law = FALSE
 	/// Enables a verb.
 	var/can_shred = FALSE
 
@@ -93,11 +88,6 @@ GLOBAL_LIST_INIT(robot_modules, list(
 	// TODO: REFACTOR CYBORGS THEY ARE ALL SHITCODE
 	INVOKE_ASYNC(R, TYPE_PROC_REF(/mob/living/silicon/robot, choose_icon), R.module_sprites.len + 1, R.module_sprites)
 
-	// Setup synths, modules, and modules with custom init code.
-	synths_by_kind = get_synths(R)
-	for (var/key in synths_by_kind)
-		synths += synths_by_kind[key]
-
 	for (var/entry in get_modules())
 		modules += new entry(src)
 
@@ -136,10 +126,7 @@ GLOBAL_LIST_INIT(robot_modules, list(
 /obj/item/robot_module/Destroy()
 	for(var/module in modules)
 		qdel(module)
-	for(var/synth in synths)
-		qdel(synth)
 	modules.Cut()
-	synths.Cut()
 	synths_by_kind = null
 	qdel(emag)
 	qdel(jetpack)
@@ -153,11 +140,7 @@ GLOBAL_LIST_INIT(robot_modules, list(
 			O.emp_act(severity)
 	if(emag)
 		emag.emp_act(severity)
-	if(synths)
-		for(var/datum/matter_synth/S in synths)
-			S.emp_act(severity)
 	..()
-	return
 
 /obj/item/robot_module/proc/respawn_consumable(var/mob/living/silicon/robot/R, var/rate)
 	if(!synths || !synths.len)
@@ -217,13 +200,6 @@ GLOBAL_LIST_INIT(robot_modules, list(
 	if(!can_be_pushed)
 		R.status_flags |= STATUS_CAN_PUSH
 
-/// This is different from the dogborg or wideborg vars -- this is specifically if the module is a *dog* - if it should be able to do dog things like bark.
-/obj/item/robot_module/proc/is_dog()
-	return FALSE
-
-/obj/item/robot_module/proc/is_cat()
-	return FALSE
-
 /obj/item/robot_module/robot/get_modules()
 	. = ..()
 	// Common items that all modules have.
@@ -241,11 +217,8 @@ GLOBAL_LIST_INIT(robot_modules, list(
 	var/mob/living/silicon/robot/R = loc
 	ASSERT(istype(R))
 
-	R.icon = 'icons/mob/robots_wide.dmi'
-	R.set_base_pixel_x(-16)
 	R.dogborg = TRUE
 	R.wideborg = TRUE
-	R.icon_x_dimension = 64
 	add_verb(R, list(
 		/mob/living/silicon/robot/proc/ex_reserve_refill,
 		/mob/living/silicon/robot/proc/rest_style
@@ -256,10 +229,6 @@ GLOBAL_LIST_INIT(robot_modules, list(
 /obj/item/robot_module/robot/quad/Reset(mob/living/silicon/robot/R)
 	. = ..()
 	// Reset a bunch of wideborg specific things.
-	R.pixel_x = initial(R.pixel_x)
-	R.pixel_y = initial(R.pixel_y)
-	R.icon = initial(R.icon)
-	R.base_pixel_x = initial(R.pixel_x)
 	remove_verb(R, list(
 		/mob/living/silicon/robot/proc/ex_reserve_refill,
 		/mob/living/proc/shred_limb,
@@ -268,12 +237,6 @@ GLOBAL_LIST_INIT(robot_modules, list(
 	R.scrubbing = FALSE
 	R.dogborg = FALSE
 	R.wideborg = FALSE
-
-/obj/item/robot_module/robot/quad/get_modules()
-	. = ..()
-	. |= list(
-		/obj/item/dogborg/boop_module //Boop people on the nose.
-	)
 
 /obj/item/robot_module/robot/quad/get_synths(mob/living/silicon/robot/R)
 	. = ..()
@@ -286,21 +249,9 @@ GLOBAL_LIST_INIT(robot_modules, list(
 /obj/item/robot_module/robot/quad/handle_special_module_init(mob/living/silicon/robot/R)
 	. = ..()
 
-	var/obj/item/dogborg/tongue/T = new /obj/item/dogborg/tongue(src)
+	var/obj/item/robot_builtin/dog_tongue/T = new /obj/item/robot_builtin/dog_tongue(src)
 	T.water = synths_by_kind[MATSYN_WATER]
 	. += T
-
-/obj/item/robot_module/robot/quad/is_dog()
-	var/mob/living/silicon/robot/R = loc
-	ASSERT(istype(R))
-	// This is the only non-canid dogborg type right now.
-	return R.icontype != "F3-LINE"
-
-/obj/item/robot_module/robot/quad/is_cat()
-	var/mob/living/silicon/robot/R = loc
-	ASSERT(istype(R))
-	// This is the only non-canid dogborg type right now.
-	return R.icontype == "F3-LINE"
 
 // Custom sprite stuff. There's a dedicated system for this, not sure why this is done separately.
 
@@ -318,3 +269,5 @@ GLOBAL_LIST_INIT(robot_modules, list(
 	. = ..()
 	if (R.client?.ckey == "nezuli")
 		sprites["Alina"] = "alina-sec"
+
+#warn parse this crap

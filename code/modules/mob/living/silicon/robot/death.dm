@@ -16,7 +16,7 @@
 		var/obj/item/gripper/G = locate(/obj/item/gripper) in module
 		if(G)
 			G.drop_item()
-		var/obj/item/dogborg/sleeper/S = locate(/obj/item/dogborg/sleeper) in module
+		var/obj/item/robot_builtin/dog_sleeper/S = locate(/obj/item/robot_builtin/dog_sleeper) in module
 		if(S)
 			S.go_out()
 	remove_robot_verbs()

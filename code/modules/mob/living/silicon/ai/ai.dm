@@ -140,7 +140,7 @@ var/list/ai_verbs_default = list(
 	remove_verb(src, ai_verbs_default)
 	remove_verb(src, silicon_subsystems)
 
-/mob/living/silicon/ai/Initialize(mapload, datum/ai_laws/L, obj/item/mmi/B, safety = TRUE)
+/mob/living/silicon/ai/Initialize(mapload, datum/ai_lawset/L, obj/item/mmi/B, safety = TRUE)
 	announcement = new()
 	announcement.title = "A.I. Announcement"
 	announcement.announcement_type = "A.I. Announcement"
@@ -166,7 +166,7 @@ var/list/ai_verbs_default = list(
 		aiCommunicator = new /obj/item/communicator/integrated(src)
 
 	if(L)
-		if (istype(L, /datum/ai_laws))
+		if (istype(L, /datum/ai_lawset))
 			laws = L
 	else
 		var/datum/map/station/loaded = (LEGACY_MAP_DATUM)
