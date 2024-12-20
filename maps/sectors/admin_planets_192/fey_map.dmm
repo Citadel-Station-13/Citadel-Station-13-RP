@@ -56,10 +56,10 @@
 /area/admin_planet/fey_forest/gateway_facility)
 "bS" = (
 /obj/structure/table/rack/shelf/steel,
-/obj/item/storage/hypokit/advanced/loaded{
+/obj/item/storage/hypokit/advanced/full/loaded{
 	pixel_y = -7
 	},
-/obj/item/storage/hypokit/advanced/loaded,
+/obj/item/storage/hypokit/advanced/full/loaded,
 /turf/simulated/floor/tiled/techfloor,
 /area/admin_planet/fey_forest/gateway_facility)
 "ca" = (

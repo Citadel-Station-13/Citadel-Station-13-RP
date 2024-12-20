@@ -44,10 +44,10 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 1
 	},
-/obj/item/storage/box/survival/space,
-/obj/item/storage/box/survival/space,
-/obj/item/storage/box/survival/space,
-/obj/item/storage/box/survival/space,
+/obj/item/storage/box/legacy_survival/space,
+/obj/item/storage/box/legacy_survival/space,
+/obj/item/storage/box/legacy_survival/space,
+/obj/item/storage/box/legacy_survival/space,
 /obj/item/gps,
 /obj/item/tank/emergency/oxygen/engi,
 /obj/item/tank/emergency/oxygen/engi,

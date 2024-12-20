@@ -1,6 +1,8 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
+// todo: deal with below; new inventory-level api, don't just mirror from mob?
+
 //* Procs in this file are mirrored to the /mob level for ease of use.        *//
 //*                                                                           *//
 //* In the future, there should likely be a separation of concerns            *//

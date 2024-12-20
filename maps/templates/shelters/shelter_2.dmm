@@ -50,7 +50,7 @@
 /obj/item/fbp_backup_cell,
 /obj/item/fbp_backup_cell,
 /obj/item/storage/pill_bottle/antitox,
-/obj/item/storage/box/survival/space,
+/obj/item/storage/box/legacy_survival/space,
 /obj/item/healthanalyzer,
 /obj/item/storage/pill_bottle/dice_nerd,
 /turf/simulated/shuttle/floor/voidcraft,

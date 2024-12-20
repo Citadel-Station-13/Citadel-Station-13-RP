@@ -13,5 +13,3 @@
 
 /datum/inventory/proc/get_hand_count()
 	return length(held_items)
-
-// todo: all inventory core procs go on the inventory, not the mob; mob is just a hook point!

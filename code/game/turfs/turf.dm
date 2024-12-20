@@ -677,7 +677,7 @@
 /turf/proc/update_underfloor_objects()
 	var/we_should_cover = hides_underfloor_objects()
 	for(var/obj/thing in contents)
-		if(thing.hides_underfloor == OBJ_UNDERFLOOR_DISABLED)
+		if(thing.hides_underfloor == OBJ_UNDERFLOOR_UNSUPPORTED)
 			continue
 		thing.update_hiding_underfloor(
 			(thing.hides_underfloor != OBJ_UNDERFLOOR_NEVER) && we_should_cover,

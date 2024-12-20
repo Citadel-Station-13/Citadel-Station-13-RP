@@ -5377,15 +5377,15 @@
 /area/admin_planet/croatoan/civ_bar_public)
 "sN" = (
 /obj/structure/table/reinforced,
-/obj/item/storage/hypokit,
-/obj/item/storage/hypokit{
+/obj/item/storage/hypokit/full/loaded,
+/obj/item/storage/hypokit/full/loaded{
 	pixel_x = -8;
 	pixel_y = -8
 	},
-/obj/item/storage/hypokit{
+/obj/item/storage/hypokit/full/loaded{
 	pixel_x = -8
 	},
-/obj/item/storage/hypokit{
+/obj/item/storage/hypokit/full/loaded{
 	pixel_x = -8;
 	pixel_y = 8
 	},
@@ -10471,27 +10471,27 @@
 /obj/structure/window/reinforced{
 	dir = 4
 	},
-/obj/item/storage/hypokit,
-/obj/item/storage/hypokit{
+/obj/item/storage/hypokit/full/loaded,
+/obj/item/storage/hypokit/full/loaded{
 	pixel_x = -8;
 	pixel_y = -8
 	},
-/obj/item/storage/hypokit{
+/obj/item/storage/hypokit/full/loaded{
 	pixel_x = -8
 	},
-/obj/item/storage/hypokit{
+/obj/item/storage/hypokit/full/loaded{
 	pixel_x = -8;
 	pixel_y = 8
 	},
-/obj/item/storage/hypokit{
+/obj/item/storage/hypokit/full/loaded{
 	pixel_x = 8;
 	pixel_y = 8
 	},
-/obj/item/storage/hypokit{
+/obj/item/storage/hypokit/full/loaded{
 	pixel_x = 8;
 	pixel_y = -8
 	},
-/obj/item/storage/hypokit{
+/obj/item/storage/hypokit/full/loaded{
 	pixel_x = 8
 	},
 /obj/effect/floor_decal/corner_techfloor_grid/diagonal,

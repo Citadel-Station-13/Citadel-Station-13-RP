@@ -68,32 +68,3 @@
 	var/datum/species/real = SScharacters.resolve_species_name(base_species)
 	return real.real_race_key(H)
 
-// Stub species overrides for shoving trait abilities into
-
-//Called when face-down in the water or otherwise over their head.
-// Return: TRUE for able to breathe fine in water.
-/datum/species/custom/can_breathe_water()
-	return ..()
-
-//Called during handle_environment in Life() ticks.
-// Return: Not used.
-/datum/species/custom/handle_environment_special(mob/living/carbon/human/H, datum/gas_mixture/environment, dt)
-	return ..()
-
-//Called when spawning to equip them with special things.
-/datum/species/custom/equip_survival_gear(mob/living/carbon/human/H)
-	/* Example, from Vox:
-	H.equip_to_slot_or_del(new /obj/item/clothing/mask/breath(H), SLOT_ID_MASK)
-	if(H.backbag == 1)
-		H.equip_to_slot_or_del(new /obj/item/tank/vox(H), SLOT_ID_BACK)
-		H.equip_to_slot_or_del(new /obj/item/storage/box/vox(H), /datum/inventory_slot/abstract/hand/right)
-		H.internal = H.back
-	else
-		H.equip_to_slot_or_del(new /obj/item/tank/vox(H), /datum/inventory_slot/abstract/hand/right)
-		H.equip_to_slot_or_del(new /obj/item/storage/box/vox(H.back), /datum/inventory_slot/abstract/put_in_backpack)
-		H.internal = H.r_hand
-	H.internal = locate(/obj/item/tank) in H.contents
-	if(istype(H.internal,/obj/item/tank) && H.internals)
-		H.internals.icon_state = "internal1"
-	*/
-	return ..()

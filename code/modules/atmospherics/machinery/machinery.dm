@@ -104,7 +104,7 @@ Pipelines + Other Objects -> Pipe network
 
 /obj/machinery/atmospherics/proc/add_underlay(var/turf/T, var/obj/machinery/atmospherics/node, var/direction, var/icon_connect_type)
 	if(node)
-		if(istype(node, /obj/machinery/atmospherics/pipe) && (node.hides_underfloor == OBJ_UNDERFLOOR_ALWAYS) && T.hides_underfloor_objects())
+		if(istype(node, /obj/machinery/atmospherics/pipe) && (node.will_hide_underfloor()) && T.hides_underfloor_objects())
 			//underlays += icon_manager.get_atmos_icon("underlay_down", direction, color_cache_name(node))
 			underlays += icon_manager.get_atmos_icon("underlay", direction, color_cache_name(node), "down" + icon_connect_type)
 		else

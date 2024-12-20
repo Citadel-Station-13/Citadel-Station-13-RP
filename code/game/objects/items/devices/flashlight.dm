@@ -410,6 +410,9 @@
 	START_PROCESSING(SSobj, src)
 	return TRUE
 
+/obj/item/flashlight/flare/survival
+	// todo: make this last like 15 minutes
+
 //Glowsticks
 
 /obj/item/flashlight/glowstick

@@ -3500,25 +3500,25 @@
 /area/admin_planet/andromeda/sec_briefing)
 "kE" = (
 /obj/structure/table/rack/shelf,
-/obj/item/storage/hypokit{
+/obj/item/storage/hypokit/full/loaded{
 	pixel_x = -6;
 	pixel_y = 8
 	},
-/obj/item/storage/hypokit{
+/obj/item/storage/hypokit/full/loaded{
 	pixel_x = 8;
 	pixel_y = 8
 	},
-/obj/item/storage/hypokit{
+/obj/item/storage/hypokit/full/loaded{
 	pixel_x = 8;
 	pixel_y = -8
 	},
-/obj/item/storage/hypokit{
+/obj/item/storage/hypokit/full/loaded{
 	pixel_x = 8
 	},
-/obj/item/storage/hypokit{
+/obj/item/storage/hypokit/full/loaded{
 	pixel_x = -6
 	},
-/obj/item/storage/hypokit{
+/obj/item/storage/hypokit/full/loaded{
 	pixel_x = -6;
 	pixel_y = -8
 	},

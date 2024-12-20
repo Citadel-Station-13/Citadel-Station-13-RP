@@ -28,6 +28,8 @@
 		return
 	return held.inv_slot_attached()
 
+// todo: deal with below; new inventory-level api, don't just mirror from mob?
+
 /**
  * Gets items in given hand indices.
  *

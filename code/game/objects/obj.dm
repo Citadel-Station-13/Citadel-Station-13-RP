@@ -174,7 +174,7 @@
 	/// * gets set_underfloor(is_underfloor = TRUE | FALSE) called on init or turf init
 	/// * we are assumed to not be underfloor when we are first made
 	/// * if you want a var to track this make one yourself; we don't have one for memory concerns.
-	var/hides_underfloor = OBJ_UNDERFLOOR_DISABLED
+	var/hides_underfloor = OBJ_UNDERFLOOR_UNSUPPORTED
 	/// call update icon after update_hiding_underfloor()
 	///
 	/// * update_icon() called regardless of [hides_underfloor_defaulting] if TRUE
@@ -248,7 +248,7 @@
 		// init material parts only if it wasn't initialized already
 		if(!(obj_flags & OBJ_MATERIAL_INITIALIZED))
 			init_material_parts()
-	if(hides_underfloor != OBJ_UNDERFLOOR_NEVER && isturf(loc))
+	if(hides_underfloor != OBJ_UNDERFLOOR_UNSUPPORTED && isturf(loc))
 		initialize_hiding_underfloor(mapload)
 	if (set_obj_flags)
 		var/flagslist = splittext(set_obj_flags,";")
@@ -1058,7 +1058,7 @@
 		if(OBJ_UNDERFLOOR_IF_CREATED_UNCOVERED, OBJ_UNDERFLOOR_UNLESS_PLACED_ONTOP)
 			var/turf/where_we_are = loc
 			if(istype(where_we_are) && where_we_are.hides_underfloor_objects())
-				new_value = OBJ_UNDERFLOOR_ALWAYS
+				new_value = OBJ_UNDERFLOOR_INACTIVE
 			else
 				new_value = OBJ_UNDERFLOOR_NEVER
 	hides_underfloor = new_value
@@ -1067,7 +1067,7 @@
 /**
  * called to inform us we should / shouldn't be underfloor
  *
- * * this must be idempotent. we can get called at will by reconsider_hiding_underfloor() as we do not track if we are currently underfloor.
+ * * this must be idempotent. we can get called at will by reconsider_hiding_underfloor().
  * * we are assumed to not be underfloor when we are first made
  * * that means this is called during Initialize() if and only if we need to be hiding underfloor
  */
@@ -1076,20 +1076,29 @@
 		invisibility = new_value? (hides_underfloor_invisibility_abstract? INVISIBILITY_ABSTRACT : INVISIBILITY_UNDERFLOOR) : 0
 	if(hides_underfloor_update_icon)
 		update_icon()
+	if(hides_underfloor != OBJ_UNDERFLOOR_NEVER)
+		hides_underfloor = new_value ? OBJ_UNDERFLOOR_ACTIVE : OBJ_UNDERFLOOR_INACTIVE
 	return TRUE
 
 /**
- * **guesses** if we're hidden underfloor
- * this is not the actual state!
+ * Checks if we will hide underfloor if covered
+ *
+ * * Only valid after Initialize().
  */
-/obj/proc/is_probably_hidden_underfloor()
+/obj/proc/will_hide_underfloor()
 	switch(hides_underfloor)
-		if(OBJ_UNDERFLOOR_ALWAYS)
-			var/turf/where_we_are = loc
-			return where_we_are.hides_underfloor_objects()
-		if(OBJ_UNDERFLOOR_NEVER)
+		if(OBJ_UNDERFLOOR_ACTIVE, OBJ_UNDERFLOOR_INACTIVE)
+			return TRUE
+		if(OBJ_UNDERFLOOR_UNSUPPORTED, OBJ_UNDERFLOOR_NEVER)
 			return FALSE
-	return FALSE
+		else
+			CRASH("Proc will_hide_underfloor() called witohut a valid underfloor value. Are you calling it too early in init?")
+
+/**
+ * Checks if we're hiding underfloor
+ */
+/obj/proc/is_hidden_underfloor()
+	return hides_underfloor == OBJ_UNDERFLOOR_ACTIVE
 
 /**
  * called at init
@@ -1104,15 +1113,18 @@
 			var/hide_anyways = (hides_underfloor == OBJ_UNDERFLOOR_UNLESS_PLACED_ONTOP) && mapload
 			var/we_are_hidden = where_we_are?.hides_underfloor_objects()
 			if(istype(where_we_are) && (hide_anyways || !we_are_hidden))
-				hides_underfloor = OBJ_UNDERFLOOR_ALWAYS
 				if(!mapload && we_are_hidden)
 					update_hiding_underfloor(TRUE)
+				else
+					hides_underfloor = OBJ_UNDERFLOOR_INACTIVE
 			else
 				hides_underfloor = OBJ_UNDERFLOOR_NEVER
-		if(OBJ_UNDERFLOOR_ALWAYS)
+		if(OBJ_UNDERFLOOR_ACTIVE, OBJ_UNDERFLOOR_INACTIVE)
 			var/turf/where_we_are = loc
 			if(!mapload && istype(where_we_are) && where_we_are.hides_underfloor_objects())
 				update_hiding_underfloor(TRUE)
+			else
+				hides_underfloor = OBJ_UNDERFLOOR_INACTIVE
 
 /**
  * called to re-call update_hiding_underfloor
@@ -1121,13 +1133,13 @@
 	var/turf/where_we_are = loc
 	var/turf_will_cover = istype(where_we_are) && where_we_are.hides_underfloor_objects()
 	switch(hides_underfloor)
-		if(OBJ_UNDERFLOOR_ALWAYS)
+		if(OBJ_UNDERFLOOR_INACTIVE, OBJ_UNDERFLOOR_ACTIVE)
 			update_hiding_underfloor(turf_will_cover)
 		if(OBJ_UNDERFLOOR_NEVER)
 			update_hiding_underfloor(FALSE)
 		else
 			// we're way beyond initialize, so..
-			hides_underfloor = OBJ_UNDERFLOOR_DISABLED
+			hides_underfloor = OBJ_UNDERFLOOR_UNSUPPORTED
 
 //* VV hooks *//
 

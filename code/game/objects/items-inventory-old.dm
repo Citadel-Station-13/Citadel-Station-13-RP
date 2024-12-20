@@ -33,6 +33,7 @@
 	if((slot != SLOT_ID_HANDS) && equip_sound)
 		playsound(src, equip_sound, 30, ignore_walls = FALSE)
 
+	// call the new hook instead
 	on_equipped(user, slot == SLOT_ID_HANDS? user.get_held_index(src) : slot, flags)
 
 
@@ -63,6 +64,9 @@
 
 	if(!(flags & INV_OP_DIRECTLY_DROPPING) && (slot != SLOT_ID_HANDS) && unequip_sound)
 		playsound(src, unequip_sound, 30, ignore_walls = FALSE)
+
+	// on_unequipped cannot be called here, as we don't know the inventory index exactly
+	// todo: kill unequipped()
 
 /**
  * called when a mob drops an item

@@ -1731,11 +1731,11 @@
 /area/mothership/dorm1)
 "eb" = (
 /obj/structure/closet/wardrobe/ert,
-/obj/item/storage/box/survival/comp{
+/obj/item/storage/box/legacy_survival/comp{
 	starts_with = list(/obj/item/tool/prybar/red,/obj/item/clothing/glasses/goggles,/obj/item/reagent_containers/hypospray/autoinjector,/obj/item/stack/medical/bruise_pack,/obj/item/flashlight/glowstick,/obj/item/reagent_containers/food/snacks/wrapped/proteinbar,/obj/item/clothing/mask/breath,/obj/item/tank/emergency/oxygen/engi)
 	},
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
-/obj/item/storage/box/survival/space,
+/obj/item/storage/box/legacy_survival/space,
 /obj/item/storage/toolbox/emergency,
 /turf/simulated/floor/wood,
 /area/mothership/dorm1)
@@ -1782,11 +1782,11 @@
 /area/mothership/teleporter)
 "ei" = (
 /obj/structure/closet/wardrobe/ert,
-/obj/item/storage/box/survival/comp{
+/obj/item/storage/box/legacy_survival/comp{
 	starts_with = list(/obj/item/tool/prybar/red,/obj/item/clothing/glasses/goggles,/obj/item/reagent_containers/hypospray/autoinjector,/obj/item/stack/medical/bruise_pack,/obj/item/flashlight/glowstick,/obj/item/reagent_containers/food/snacks/wrapped/proteinbar,/obj/item/clothing/mask/breath,/obj/item/tank/emergency/oxygen/engi)
 	},
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
-/obj/item/storage/box/survival/space,
+/obj/item/storage/box/legacy_survival/space,
 /obj/item/storage/toolbox/emergency,
 /turf/simulated/floor/wood,
 /area/mothership/dorm2)
@@ -3541,25 +3541,25 @@
 /area/mothership/dorm3)
 "ig" = (
 /obj/structure/closet/wardrobe/ert,
-/obj/item/storage/box/survival/comp{
+/obj/item/storage/box/legacy_survival/comp{
 	starts_with = list(/obj/item/tool/prybar/red,/obj/item/clothing/glasses/goggles,/obj/item/reagent_containers/hypospray/autoinjector,/obj/item/stack/medical/bruise_pack,/obj/item/flashlight/glowstick,/obj/item/reagent_containers/food/snacks/wrapped/proteinbar,/obj/item/clothing/mask/breath,/obj/item/tank/emergency/oxygen/engi)
 	},
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
-/obj/item/storage/box/survival/space,
+/obj/item/storage/box/legacy_survival/space,
 /obj/item/storage/toolbox/emergency,
 /turf/simulated/floor/wood,
 /area/mothership/dorm3)
 "ih" = (
 /obj/structure/closet/wardrobe/ert,
-/obj/item/storage/box/survival/comp{
+/obj/item/storage/box/legacy_survival/comp{
 	starts_with = list(/obj/item/tool/prybar/red,/obj/item/clothing/glasses/goggles,/obj/item/reagent_containers/hypospray/autoinjector,/obj/item/stack/medical/bruise_pack,/obj/item/flashlight/glowstick,/obj/item/reagent_containers/food/snacks/wrapped/proteinbar,/obj/item/clothing/mask/breath,/obj/item/tank/emergency/oxygen/engi)
 	},
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
-/obj/item/storage/box/survival/space,
+/obj/item/storage/box/legacy_survival/space,
 /obj/item/storage/toolbox/emergency,
 /turf/simulated/floor/wood,
 /area/mothership/dorm4)
@@ -4657,11 +4657,11 @@
 /area/mothership/dorm5)
 "kF" = (
 /obj/structure/closet/wardrobe/ert,
-/obj/item/storage/box/survival/comp{
+/obj/item/storage/box/legacy_survival/comp{
 	starts_with = list(/obj/item/tool/prybar/red,/obj/item/clothing/glasses/goggles,/obj/item/reagent_containers/hypospray/autoinjector,/obj/item/stack/medical/bruise_pack,/obj/item/flashlight/glowstick,/obj/item/reagent_containers/food/snacks/wrapped/proteinbar,/obj/item/clothing/mask/breath,/obj/item/tank/emergency/oxygen/engi)
 	},
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
-/obj/item/storage/box/survival/space,
+/obj/item/storage/box/legacy_survival/space,
 /obj/item/storage/toolbox/emergency,
 /turf/simulated/floor/wood,
 /area/mothership/dorm5)
@@ -4673,11 +4673,11 @@
 /area/mothership/dorm6)
 "kI" = (
 /obj/structure/closet/wardrobe/ert,
-/obj/item/storage/box/survival/comp{
+/obj/item/storage/box/legacy_survival/comp{
 	starts_with = list(/obj/item/tool/prybar/red,/obj/item/clothing/glasses/goggles,/obj/item/reagent_containers/hypospray/autoinjector,/obj/item/stack/medical/bruise_pack,/obj/item/flashlight/glowstick,/obj/item/reagent_containers/food/snacks/wrapped/proteinbar,/obj/item/clothing/mask/breath,/obj/item/tank/emergency/oxygen/engi)
 	},
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
-/obj/item/storage/box/survival/space,
+/obj/item/storage/box/legacy_survival/space,
 /obj/item/storage/toolbox/emergency,
 /turf/simulated/floor/wood,
 /area/mothership/dorm6)
@@ -6861,7 +6861,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 9
 	},
-/obj/item/storage/box/survival/space,
+/obj/item/storage/box/legacy_survival/space,
 /turf/simulated/floor/tiled/techfloor,
 /area/mothership/holodeck)
 "pe" = (
@@ -7609,12 +7609,12 @@
 	dir = 1
 	},
 /obj/structure/closet/emcloset/legacy,
-/obj/item/storage/box/survival/space,
-/obj/item/storage/box/survival/space,
-/obj/item/storage/box/survival/space,
-/obj/item/storage/box/survival/space,
-/obj/item/storage/box/survival/space,
-/obj/item/storage/box/survival/space,
+/obj/item/storage/box/legacy_survival/space,
+/obj/item/storage/box/legacy_survival/space,
+/obj/item/storage/box/legacy_survival/space,
+/obj/item/storage/box/legacy_survival/space,
+/obj/item/storage/box/legacy_survival/space,
+/obj/item/storage/box/legacy_survival/space,
 /obj/item/storage/box/syndie_kit/space,
 /obj/item/storage/box/syndie_kit/space,
 /turf/simulated/floor/tiled/steel_grid,

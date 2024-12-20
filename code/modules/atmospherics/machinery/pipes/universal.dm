@@ -121,7 +121,7 @@
 
 /obj/machinery/atmospherics/proc/add_underlay_adapter(var/turf/T, var/obj/machinery/atmospherics/node, var/direction, var/icon_connect_type) //modified from add_underlay, does not make exposed underlays
 	if(node)
-		if(T.hides_underfloor_objects() && istype(node, /obj/machinery/atmospherics/pipe) && node.hides_underfloor == OBJ_UNDERFLOOR_ALWAYS)
+		if(T.hides_underfloor_objects() && istype(node, /obj/machinery/atmospherics/pipe) && node.will_hide_underfloor())
 			underlays += icon_manager.get_atmos_icon("underlay", direction, color_cache_name(node), "down" + icon_connect_type)
 		else
 			underlays += icon_manager.get_atmos_icon("underlay", direction, color_cache_name(node), "intact" + icon_connect_type)
