@@ -90,7 +90,7 @@
 	occupied_icon_state = "pad_active"
 	on_store_message = "has departed via short-range teleport."
 	on_enter_occupant_message = "The teleporter activates, and you step into the swirling portal."
-	spawnpoint_type = /datum/spawnpoint/trade/visitor
+	spawnpoint_type = /datum/role/job/station/outsider
 
 // Their shuttle
 
