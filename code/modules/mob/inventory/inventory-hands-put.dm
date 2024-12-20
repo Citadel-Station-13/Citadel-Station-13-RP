@@ -101,6 +101,9 @@
  */
 /mob/proc/put_in_hands_or_drop(obj/item/I, inv_op_flags, atom/drop_loc, specific_index)
 	// inventory null --> INV_RETURN_FAILED, as that's also #define'd to be null
+	if(!inventory)
+		I.forceMove(drop_loc || drop_location())
+		return INV_RETURN_FAILED
 	return inventory?.put_in_hands_or_drop(I, inv_op_flags, drop_loc, specific_index)
 
 /**

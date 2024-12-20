@@ -1076,7 +1076,8 @@
 		invisibility = new_value? (hides_underfloor_invisibility_abstract? INVISIBILITY_ABSTRACT : INVISIBILITY_UNDERFLOOR) : 0
 	if(hides_underfloor_update_icon)
 		update_icon()
-	hides_underfloor = new_value ? OBJ_UNDERFLOOR_ACTIVE : OBJ_UNDERFLOOR_INACTIVE
+	if(hides_underfloor != OBJ_UNDERFLOOR_NEVER)
+		hides_underfloor = new_value ? OBJ_UNDERFLOOR_ACTIVE : OBJ_UNDERFLOOR_INACTIVE
 	return TRUE
 
 /**
