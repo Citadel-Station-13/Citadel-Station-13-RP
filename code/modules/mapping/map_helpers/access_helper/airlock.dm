@@ -528,6 +528,14 @@
 		ACCESS_GENERAL_EXPLORER,
 	)
 
+/obj/map_helper/access_helper/airlock/station/exploration/auxillerysci
+	req_one_access = list(
+		ACCESS_GENERAL_EXPLORER,
+		ACCESS_SCIENCE_ROBOTICS,
+		ACCESS_SCIENCE_MAIN,
+	)
+
+
 /obj/map_helper/access_helper/airlock/station/exploration/shuttle
 	req_one_access = list(
 		ACCESS_GENERAL_PILOT,

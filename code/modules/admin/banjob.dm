@@ -74,7 +74,7 @@ DEBUG
 
 		//Job permabans
 		var/datum/db_query/query = SSdbcore.RunQuery(
-			"SELECT ckey, job FROM [format_table_name("ban")] WHERE bantype = 'JOB_PERMABAN' AND isnull(unbanned)",
+			"SELECT ckey, job FROM [DB_PREFIX_TABLE_NAME("ban")] WHERE bantype = 'JOB_PERMABAN' AND isnull(unbanned)",
 			list()
 		)
 
@@ -86,7 +86,7 @@ DEBUG
 
 		//Job tempbans
 		var/datum/db_query/query1 = SSdbcore.RunQuery(
-			"SELECT ckey, job FROM [format_table_name("ban")] WHERE bantype = 'JOB_TEMPBAN' AND isnull(unbanned) AND expiration_time > Now()",
+			"SELECT ckey, job FROM [DB_PREFIX_TABLE_NAME("ban")] WHERE bantype = 'JOB_TEMPBAN' AND isnull(unbanned) AND expiration_time > Now()",
 			list()
 		)
 
