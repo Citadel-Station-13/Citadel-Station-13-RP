@@ -12123,6 +12123,7 @@
 /area/tradeport/spine)
 "aFJ" = (
 /obj/effect/floor_decal/spline/plain,
+/obj/machinery/vending/voidsuit,
 /turf/simulated/floor/tiled/techfloor/lythios43c,
 /area/tradeport/spine)
 "aFK" = (
@@ -12788,6 +12789,7 @@
 /area/tradeport/commons)
 "aHD" = (
 /obj/effect/floor_decal/spline/plain,
+/obj/machinery/vending/winter,
 /turf/simulated/floor/carpet/purcarpet,
 /area/tradeport/spine)
 "aHE" = (
@@ -12835,6 +12837,7 @@
 /obj/effect/floor_decal/grass_edge{
 	dir = 8
 	},
+/obj/machinery/vending/farmer,
 /turf/simulated/floor/tiled/monotechmaint,
 /area/tradeport/spine)
 "aHM" = (
@@ -20067,7 +20070,8 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/door/airlock/silver{
-	id_tag = "motel5"
+	id_tag = "motel5";
+	req_access = list(165)
 	},
 /turf/simulated/floor/wood,
 /area/sector/nebula_tradeport/motel/room5)
@@ -21756,7 +21760,8 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/door/airlock/silver{
-	id_tag = "motel8"
+	id_tag = "motel8";
+	req_access = list(169)
 	},
 /turf/simulated/floor/wood,
 /area/sector/nebula_tradeport/motel/room8)
@@ -21935,7 +21940,8 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/door/airlock/silver{
-	id_tag = "motel4"
+	id_tag = "motel4";
+	req_access = list(164)
 	},
 /turf/simulated/floor/wood,
 /area/sector/nebula_tradeport/motel/room4)
@@ -23074,7 +23080,8 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/door/airlock/silver{
-	id_tag = "motel4"
+	id_tag = "motel4";
+	req_access = list(163)
 	},
 /turf/simulated/floor/wood,
 /area/sector/nebula_tradeport/motel/room3)
@@ -23460,7 +23467,8 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/door/airlock/silver{
-	id_tag = "motel1"
+	id_tag = "motel1";
+	req_access = list(161)
 	},
 /turf/simulated/floor/wood,
 /area/sector/nebula_tradeport/motel/room1)
@@ -24825,6 +24833,7 @@
 /obj/structure/cable/yellow{
 	icon_state = "1-4"
 	},
+/obj/machinery/vending/motel,
 /turf/simulated/floor/wood,
 /area/sector/nebula_tradeport/motel)
 "pJb" = (
@@ -25102,7 +25111,8 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/door/airlock/silver{
-	id_tag = "motel2"
+	id_tag = "motel2";
+	req_access = list(162)
 	},
 /turf/simulated/floor/wood,
 /area/sector/nebula_tradeport/motel/room2)
@@ -26480,7 +26490,8 @@
 "uNh" = (
 /obj/machinery/door/airlock/multi_tile/metal{
 	dir = 8;
-	id_tag = "motel9"
+	id_tag = "motel9";
+	req_access = list(170)
 	},
 /obj/machinery/door/firedoor{
 	req_one_access = list(160)
@@ -26558,6 +26569,10 @@
 /obj/effect/floor_decal/spline/plain,
 /turf/simulated/floor/wmarble,
 /area/tradeport/commons)
+"uZU" = (
+/obj/machinery/vending/survivalist,
+/turf/simulated/floor/tiled/monotechmaint,
+/area/tradeport/spine)
 "ves" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 6
@@ -27225,7 +27240,8 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/door/airlock/silver{
-	id_tag = "motel7"
+	id_tag = "motel7";
+	req_access = list(167)
 	},
 /turf/simulated/floor/airless,
 /area/sector/nebula_tradeport/motel/room7)
@@ -27537,7 +27553,8 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/door/airlock/silver{
-	id_tag = "motel6"
+	id_tag = "motel6";
+	req_access = list(166)
 	},
 /turf/simulated/floor/wood,
 /area/sector/nebula_tradeport/motel/room6)
@@ -49964,7 +49981,7 @@ aMr
 xsx
 abK
 bNF
-aWh
+uZU
 amU
 aWh
 aWh
