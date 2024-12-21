@@ -6,7 +6,7 @@
 	sorting_order = -1
 	department_flag = CIVILIAN
 	total_positions = -1
-	spawn_positions =  -1
+	spawn_positions = -1
 	desc = "You are in the sector for various reason, may it be visiting or simply exploring. You start on the Nebula Gas Station, and can use the services here. (This is not a antag role)"
 	supervisors = "Nobody !"
 	selection_color = "#515151"
