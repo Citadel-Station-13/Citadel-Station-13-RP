@@ -2952,19 +2952,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/exploration/excursion_dock)
-"cqV" = (
-/obj/structure/catwalk,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 10
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 10
-	},
-/obj/structure/cable{
-	icon_state = "2-8"
-	},
-/turf/simulated/floor/plating,
-/area/space)
 "cri" = (
 /obj/machinery/shower{
 	pixel_y = 8
@@ -9092,12 +9079,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/exploration)
-"gCX" = (
-/obj/machinery/light/small{
-	dir = 4
-	},
-/turf/simulated/floor/plating,
-/area/space)
 "gDf" = (
 /obj/machinery/light{
 	dir = 8
@@ -9608,17 +9589,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/misc_lab)
-"gWT" = (
-/obj/structure/table/steel,
-/obj/item/radio/electropack,
-/obj/item/handcuffs/legcuffs/fuzzy,
-/obj/item/duct_tape_roll,
-/obj/item/handcuffs/fuzzy,
-/obj/item/clothing/glasses/sunglasses/blindfold,
-/obj/item/clothing/accessory/collar/shock,
-/obj/item/assembly/signaler,
-/turf/simulated/floor/plating,
-/area/space)
 "gXh" = (
 /obj/effect/floor_decal/steeldecal/steel_decals5{
 	dir = 4
@@ -17589,10 +17559,6 @@
 /obj/structure/table/bench/steel,
 /turf/simulated/floor/tiled,
 /area/endeavour/exploration/hallway_aft)
-"mHt" = (
-/obj/machinery/light/small,
-/turf/simulated/floor/plating,
-/area/space)
 "mHu" = (
 /turf/simulated/wall/prepainted/civilian,
 /area/hallway/primary/aft)
@@ -18956,10 +18922,6 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d1portforhall)
-"nHh" = (
-/obj/machinery/door/airlock/maintenance/common,
-/turf/simulated/floor/plating,
-/area/space)
 "nHt" = (
 /obj/machinery/camera/network/civilian{
 	dir = 4
@@ -19499,9 +19461,6 @@
 /obj/random/trash_pile,
 /turf/simulated/floor/plating,
 /area/maintenance/chapel)
-"oau" = (
-/turf/simulated/wall/prepainted,
-/area/space)
 "obn" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -31962,10 +31921,6 @@
 /obj/effect/floor_decal/industrial/warning/full,
 /turf/simulated/floor/plating,
 /area/shuttle/courser/cockpit)
-"xnH" = (
-/obj/random/trash_pile,
-/turf/simulated/floor/plating,
-/area/space)
 "xoh" = (
 /obj/machinery/gateway{
 	dir = 9
@@ -57577,10 +57532,10 @@ ris
 xRj
 xRj
 xRj
-oau
-oau
-nHh
-oau
+xRj
+xRj
+xRj
+xRj
 xRj
 xRj
 xRj
@@ -57771,7 +57726,7 @@ ris
 xRj
 xRj
 xRj
-oau
+xRj
 xRj
 xRj
 xRj
@@ -57965,12 +57920,12 @@ xRj
 xRj
 xRj
 xRj
-oau
 xRj
 xRj
 xRj
 xRj
-oau
+xRj
+xRj
 xRj
 xRj
 xRj
@@ -58159,12 +58114,12 @@ xRj
 xRj
 xRj
 xRj
-oau
 xRj
 xRj
 xRj
 xRj
-oau
+xRj
+xRj
 xRj
 xRj
 xRj
@@ -58358,7 +58313,7 @@ xRj
 xRj
 xRj
 xRj
-oau
+xRj
 xRj
 xRj
 xRj
@@ -58552,7 +58507,7 @@ xRj
 xRj
 xRj
 xRj
-nHh
+xRj
 xRj
 xRj
 xRj
@@ -58679,13 +58634,13 @@ xRj
 xRj
 xRj
 xRj
-jNb
-jNb
-jNb
 xRj
 xRj
 xRj
-cqV
+xRj
+xRj
+xRj
+xRj
 xRj
 fOo
 usG
@@ -58873,12 +58828,12 @@ xRj
 xRj
 xRj
 xRj
-jNb
-jNb
-jNb
-jNb
-jNb
-jNb
+xRj
+xRj
+xRj
+xRj
+xRj
+xRj
 xRj
 xRj
 usG
@@ -59067,13 +59022,13 @@ xRj
 xRj
 xRj
 xRj
-gWT
-jNb
-xnH
-gCX
-xnH
-jNb
-jNb
+xRj
+xRj
+xRj
+xRj
+xRj
+xRj
+xRj
 xRj
 fOo
 usG
@@ -60874,9 +60829,9 @@ xRj
 xRj
 xRj
 xRj
-jNb
-jNb
-jNb
+xRj
+xRj
+xRj
 xRj
 xRj
 xRj
@@ -61068,10 +61023,10 @@ nof
 xRj
 xRj
 xRj
-jNb
-jNb
-jNb
-mHt
+xRj
+xRj
+xRj
+xRj
 xRj
 xRj
 xRj
@@ -61262,10 +61217,10 @@ xRj
 xRj
 xRj
 xRj
-oau
-oau
-jNb
-jNb
+xRj
+xRj
+xRj
+xRj
 xRj
 xRj
 xRj
@@ -61457,9 +61412,9 @@ xRj
 xRj
 xRj
 xRj
-oau
-jNb
-jNb
+xRj
+xRj
+xRj
 xRj
 xRj
 xRj
@@ -61651,9 +61606,9 @@ xRj
 xRj
 xRj
 xRj
-oau
-jNb
-jNb
+xRj
+xRj
+xRj
 xRj
 xRj
 xRj
