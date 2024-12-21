@@ -23,14 +23,7 @@
 					C.reagents.trans_to_obj(src,C.reagents.total_volume)
 				qdel(O)
 
-/obj/effect/debris/cleanable/chemcoating/Bumped(A as mob|obj)
-	if(reagents)
-		reagents.touch(A)
-	return ..()
-
-/obj/effect/debris/cleanable/chemcoating/Crossed(AM as mob|obj)
-	. = ..()
-	Bumped(AM)
+// todo: apply to whole body or just feet depending on if they're laying down, when crossed by mob or obj
 
 /obj/effect/debris/cleanable/chemcoating/update_icon()
 	..()
