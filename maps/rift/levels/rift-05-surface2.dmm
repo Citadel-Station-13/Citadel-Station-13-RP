@@ -90,6 +90,7 @@
 /obj/structure/cable/green{
 	icon_state = "1-8"
 	},
+/obj/structure/sign/christmas/lights,
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacetwo)
 "aeX" = (
@@ -106,6 +107,17 @@
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /turf/simulated/floor/tiled/freezer,
 /area/crew_quarters/pool)
+"afL" = (
+/obj/structure/railing,
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/machinery/light{
+	dir = 4
+	},
+/obj/structure/sign/christmas/lights,
+/turf/simulated/open,
+/area/rift/station/public_garden/gantry)
 "agg" = (
 /obj/structure/railing{
 	dir = 8
@@ -258,6 +270,7 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
+/obj/structure/sign/christmas/lights,
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacetwo)
 "ang" = (
@@ -319,6 +332,10 @@
 /obj/structure/railing{
 	dir = 4
 	},
+/obj/structure/sign/christmas/lights{
+	dir = 4
+	},
+/obj/structure/sign/christmas/lights,
 /turf/simulated/open,
 /area/rift/station/public_garden/gantry)
 "aov" = (
@@ -327,6 +344,12 @@
 	},
 /obj/structure/railing{
 	dir = 8
+	},
+/obj/structure/sign/christmas/lights{
+	dir = 8
+	},
+/obj/structure/sign/christmas/lights{
+	dir = 4
 	},
 /turf/simulated/open,
 /area/rift/station/public_garden/gantry)
@@ -1009,6 +1032,10 @@
 	pixel_x = -4;
 	pixel_y = 31
 	},
+/obj/structure/sign/christmas/lights{
+	dir = 1
+	},
+/obj/structure/sign/christmas/wreath,
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/lounge)
 "aGC" = (
@@ -1093,6 +1120,7 @@
 /area/security/briefing_room)
 "aIZ" = (
 /obj/structure/railing,
+/obj/structure/sign/christmas/lights,
 /turf/simulated/open,
 /area/rift/station/public_garden/gantry)
 "aJd" = (
@@ -1308,6 +1336,13 @@
 	},
 /obj/effect/floor_decal/corner/black/diagonal,
 /obj/machinery/computer/timeclock/premade/south,
+/obj/structure/sign/christmas/lights,
+/obj/structure/sign/christmas/lights{
+	dir = 8
+	},
+/obj/structure/sign/christmas/wreath{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/lounge)
 "aNv" = (
@@ -1517,6 +1552,7 @@
 /obj/structure/bed/chair/sofa/beige/left{
 	dir = 1
 	},
+/obj/structure/sign/christmas/lights,
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/lounge)
 "aVI" = (
@@ -1668,6 +1704,7 @@
 /obj/structure/cable/green{
 	icon_state = "1-8"
 	},
+/obj/structure/sign/christmas/lights,
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacetwo)
 "aYt" = (
@@ -2564,6 +2601,9 @@
 /obj/effect/floor_decal/corner/lightorange/border{
 	dir = 4
 	},
+/obj/structure/sign/christmas/lights{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacetwo)
 "bsX" = (
@@ -2689,6 +2729,9 @@
 	},
 /obj/structure/cable/green{
 	icon_state = "4-8"
+	},
+/obj/structure/sign/christmas/lights{
+	dir = 1
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacetwo)
@@ -3124,6 +3167,18 @@
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/recreation_area)
+"bKr" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/red/border{
+	dir = 1
+	},
+/obj/structure/sign/christmas/lights{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/steel,
+/area/hallway/primary/surfacetwo)
 "bKV" = (
 /obj/structure/kitchenspike,
 /obj/effect/floor_decal/rust,
@@ -3215,6 +3270,10 @@
 /obj/structure/sign/directions/security{
 	dir = 4;
 	pixel_y = 30
+	},
+/obj/structure/sign/christmas/wreath,
+/obj/structure/sign/christmas/lights{
+	dir = 1
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacetwo)
@@ -3350,6 +3409,9 @@
 	dir = 8;
 	icon_state = "pipe-j2"
 	},
+/obj/structure/sign/christmas/lights{
+	dir = 1
+	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacetwo)
 "bTa" = (
@@ -3374,6 +3436,18 @@
 /area/rift/surfacebase/outside/outside2)
 "bTZ" = (
 /turf/simulated/wall/r_wall/prepainted/medical,
+/area/hallway/primary/surfacetwo)
+"bUC" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/lightgrey/border{
+	dir = 4
+	},
+/obj/structure/sign/christmas/lights{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacetwo)
 "bUX" = (
 /obj/effect/floor_decal/spline/plain,
@@ -3666,6 +3740,15 @@
 /obj/machinery/light{
 	dir = 1
 	},
+/obj/structure/sign/christmas/lights{
+	dir = 8
+	},
+/obj/structure/sign/christmas/lights{
+	dir = 4
+	},
+/obj/structure/sign/christmas/lights{
+	dir = 1
+	},
 /turf/simulated/open,
 /area/rift/station/public_garden/gantry)
 "cgt" = (
@@ -3845,6 +3928,9 @@
 	},
 /obj/structure/cable/green{
 	icon_state = "2-4"
+	},
+/obj/structure/sign/christmas/lights{
+	dir = 4
 	},
 /turf/simulated/floor/plating,
 /area/rift/station/public_garden/gantry)
@@ -4132,6 +4218,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 8
 	},
+/obj/structure/sign/christmas/lights,
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacetwo)
 "cwG" = (
@@ -4849,6 +4936,7 @@
 /obj/structure/disposalpipe/junction/flipped{
 	dir = 4
 	},
+/obj/structure/sign/christmas/lights,
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacetwo)
 "cUU" = (
@@ -4985,6 +5073,9 @@
 /obj/structure/cable/green{
 	dir = 1;
 	icon_state = "1-2"
+	},
+/obj/structure/sign/christmas/lights{
+	dir = 4
 	},
 /turf/simulated/floor/plating,
 /area/rift/station/public_garden/gantry)
@@ -5190,6 +5281,12 @@
 /obj/machinery/light{
 	dir = 1
 	},
+/obj/structure/sign/christmas/lights{
+	dir = 1
+	},
+/obj/structure/sign/christmas/lights{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacetwo)
 "djA" = (
@@ -5210,6 +5307,9 @@
 /obj/machinery/computer/guestpass{
 	dir = 8;
 	pixel_x = 24
+	},
+/obj/structure/sign/christmas/lights{
+	dir = 4
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacetwo)
@@ -5422,6 +5522,9 @@
 	},
 /obj/effect/floor_decal/corner/lightorange/border{
 	dir = 9
+	},
+/obj/structure/sign/christmas/lights{
+	dir = 8
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacetwo)
@@ -5776,6 +5879,7 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
+/obj/structure/sign/christmas/lights,
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacetwo)
 "dAe" = (
@@ -5833,6 +5937,9 @@
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/sign/christmas/lights{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacetwo)
 "dCz" = (
@@ -6178,6 +6285,9 @@
 /obj/machinery/light{
 	dir = 4
 	},
+/obj/structure/sign/christmas/lights{
+	dir = 1
+	},
 /turf/simulated/open,
 /area/rift/station/public_garden/gantry)
 "dJK" = (
@@ -6427,6 +6537,7 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
+/obj/structure/sign/christmas/lights,
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacetwo)
 "dSA" = (
@@ -6589,6 +6700,7 @@
 	icon_state = "2-4"
 	},
 /obj/machinery/light,
+/obj/structure/sign/christmas/lights,
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/lounge)
 "dYz" = (
@@ -6690,6 +6802,9 @@
 /obj/structure/railing{
 	dir = 4
 	},
+/obj/structure/sign/christmas/lights{
+	dir = 4
+	},
 /turf/simulated/open,
 /area/rift/station/public_garden/gantry)
 "eev" = (
@@ -6700,6 +6815,10 @@
 /obj/machinery/light{
 	dir = 8
 	},
+/obj/structure/sign/christmas/lights{
+	dir = 4
+	},
+/obj/structure/sign/christmas/lights,
 /turf/simulated/open,
 /area/rift/station/public_garden/gantry)
 "efd" = (
@@ -6754,6 +6873,9 @@
 	dir = 1
 	},
 /obj/effect/floor_decal/corner/lightgrey/border{
+	dir = 1
+	},
+/obj/structure/sign/christmas/lights{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/steel,
@@ -7095,6 +7217,12 @@
 	dir = 4
 	},
 /obj/structure/railing{
+	dir = 1
+	},
+/obj/structure/sign/christmas/lights{
+	dir = 4
+	},
+/obj/structure/sign/christmas/lights{
 	dir = 1
 	},
 /turf/simulated/open,
@@ -8204,6 +8332,10 @@
 /obj/machinery/light{
 	dir = 4
 	},
+/obj/structure/sign/christmas/lights{
+	dir = 8
+	},
+/obj/structure/sign/christmas/lights,
 /turf/simulated/open,
 /area/rift/station/public_garden/gantry)
 "fgP" = (
@@ -8541,6 +8673,7 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
+/obj/structure/sign/christmas/lights,
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacetwo)
 "frf" = (
@@ -8875,6 +9008,7 @@
 /obj/machinery/light{
 	dir = 8
 	},
+/obj/structure/sign/christmas/lights,
 /turf/simulated/open,
 /area/rift/station/public_garden/gantry)
 "fIK" = (
@@ -9115,6 +9249,7 @@
 	pixel_y = 7
 	},
 /obj/item/pen,
+/obj/structure/sign/christmas/lights,
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacetwo)
 "fPN" = (
@@ -9208,6 +9343,9 @@
 	dir = 1;
 	icon_state = "2-4"
 	},
+/obj/structure/sign/christmas/lights{
+	dir = 1
+	},
 /turf/simulated/floor/plating,
 /area/rift/station/public_garden/gantry)
 "fSq" = (
@@ -9258,6 +9396,9 @@
 /obj/item/clothing/accessory/hawaii/random{
 	pixel_x = 3;
 	pixel_y = 1
+	},
+/obj/structure/sign/christmas/lights{
+	dir = 1
 	},
 /turf/simulated/floor/tiled/monotechmaint,
 /area/rift/station/public_garden/gantry)
@@ -9376,6 +9517,7 @@
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/red/border,
 /obj/structure/reagent_dispensers/water_cooler/full,
+/obj/structure/sign/christmas/lights,
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacetwo)
 "fXh" = (
@@ -9399,6 +9541,10 @@
 	},
 /obj/effect/floor_decal/corner/lightgrey/border{
 	dir = 10
+	},
+/obj/structure/sign/christmas/lights,
+/obj/structure/sign/christmas/lights{
+	dir = 8
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacetwo)
@@ -9465,6 +9611,10 @@
 	dir = 4;
 	pixel_x = -30
 	},
+/obj/structure/sign/christmas/lights{
+	dir = 8
+	},
+/obj/structure/sign/christmas/lights,
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacetwo)
 "gab" = (
@@ -9551,6 +9701,10 @@
 /obj/effect/floor_decal/corner/red/border{
 	dir = 1
 	},
+/obj/structure/sign/christmas/lights{
+	dir = 1
+	},
+/obj/structure/sign/christmas/wreath,
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacetwo)
 "gcE" = (
@@ -10053,6 +10207,9 @@
 /obj/effect/floor_decal/steeldecal/steel_decals6{
 	dir = 10
 	},
+/obj/structure/sign/christmas/lights{
+	dir = 1
+	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacetwo)
 "grX" = (
@@ -10152,6 +10309,9 @@
 /obj/structure/railing{
 	dir = 1
 	},
+/obj/structure/sign/christmas/lights{
+	dir = 1
+	},
 /turf/simulated/floor/plating,
 /area/rift/station/public_garden/gantry)
 "guh" = (
@@ -10195,6 +10355,9 @@
 	},
 /obj/effect/floor_decal/corner/lightorange/border{
 	dir = 5
+	},
+/obj/structure/sign/christmas/lights{
+	dir = 4
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacetwo)
@@ -10355,6 +10518,7 @@
 /obj/machinery/fire_alarm/south_mount{
 	pixel_y = -24
 	},
+/obj/structure/sign/christmas/lights,
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/lounge)
 "gyk" = (
@@ -10568,6 +10732,10 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/structure/sign/christmas/lights{
+	dir = 1
+	},
+/obj/structure/sign/christmas/wreath,
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacetwo)
 "gCM" = (
@@ -11688,6 +11856,9 @@
 /obj/structure/bed/chair/sofa/beige/right{
 	dir = 4
 	},
+/obj/structure/sign/christmas/lights{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/lounge)
 "hyg" = (
@@ -12105,6 +12276,9 @@
 	dir = 8
 	},
 /obj/structure/disposalpipe/segment,
+/obj/structure/sign/christmas/lights{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacetwo)
 "hJl" = (
@@ -12263,6 +12437,12 @@
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals5{
 	dir = 8
+	},
+/obj/structure/sign/christmas/lights{
+	dir = 4
+	},
+/obj/structure/sign/christmas/lights{
+	dir = 1
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacetwo)
@@ -12461,6 +12641,9 @@
 /obj/effect/floor_decal/corner/red/border{
 	dir = 8
 	},
+/obj/structure/sign/christmas/lights{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacetwo)
 "hPM" = (
@@ -12564,6 +12747,9 @@
 /obj/effect/floor_decal/steeldecal/steel_decals6{
 	dir = 9
 	},
+/obj/structure/sign/christmas/lights{
+	dir = 1
+	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacetwo)
 "hQA" = (
@@ -12571,6 +12757,16 @@
 /obj/machinery/door/airlock/maintenance/common,
 /turf/simulated/floor/plating,
 /area/maintenance/security/upper)
+"hQJ" = (
+/obj/structure/railing{
+	dir = 1
+	},
+/obj/structure/sign/christmas/lights{
+	dir = 1
+	},
+/obj/structure/sign/christmas/wreath,
+/turf/simulated/open,
+/area/rift/station/public_garden/gantry)
 "hRp" = (
 /obj/structure/disposalpipe/segment{
 	dir = 8;
@@ -12815,6 +13011,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/structure/sign/christmas/lights,
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacetwo)
 "hZL" = (
@@ -12913,6 +13110,9 @@
 	dir = 8
 	},
 /obj/structure/disposalpipe/segment,
+/obj/structure/sign/christmas/lights{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacetwo)
 "ieh" = (
@@ -13762,6 +13962,9 @@
 	dir = 1
 	},
 /obj/structure/closet/crate/bin,
+/obj/structure/sign/christmas/lights{
+	dir = 1
+	},
 /turf/simulated/floor/tiled/monotechmaint,
 /area/rift/station/public_garden/gantry)
 "iIa" = (
@@ -14630,6 +14833,9 @@
 /obj/structure/bed/chair/sofa/beige/right{
 	dir = 8
 	},
+/obj/structure/sign/christmas/lights{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/lounge)
 "jjm" = (
@@ -14679,6 +14885,10 @@
 /obj/structure/sign/directions/science{
 	pixel_y = 24
 	},
+/obj/structure/sign/christmas/wreath,
+/obj/structure/sign/christmas/lights{
+	dir = 1
+	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacetwo)
 "jlw" = (
@@ -14715,6 +14925,10 @@
 /obj/effect/floor_decal/steeldecal/steel_decals5{
 	dir = 4
 	},
+/obj/structure/sign/christmas/lights{
+	dir = 1
+	},
+/obj/structure/sign/christmas/wreath,
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacetwo)
 "jmn" = (
@@ -14907,6 +15121,12 @@
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals5{
 	dir = 4
+	},
+/obj/structure/sign/christmas/lights{
+	dir = 1
+	},
+/obj/structure/sign/christmas/lights{
+	dir = 8
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacetwo)
@@ -15429,6 +15649,7 @@
 /obj/machinery/light{
 	dir = 4
 	},
+/obj/structure/sign/christmas/lights,
 /turf/simulated/open,
 /area/rift/station/public_garden/gantry)
 "jMc" = (
@@ -15476,6 +15697,9 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 6
+	},
+/obj/structure/sign/christmas/lights{
+	dir = 1
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacetwo)
@@ -15973,6 +16197,7 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
+/obj/structure/sign/christmas/lights,
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacetwo)
 "kaZ" = (
@@ -16113,6 +16338,9 @@
 	dir = 8
 	},
 /obj/structure/disposalpipe/segment,
+/obj/structure/sign/christmas/lights{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/steel,
 /area/medical/reception)
 "kfW" = (
@@ -16488,6 +16716,9 @@
 /obj/structure/railing{
 	dir = 4
 	},
+/obj/structure/sign/christmas/lights{
+	dir = 4
+	},
 /turf/simulated/floor/plating,
 /area/rift/station/public_garden/gantry)
 "kqp" = (
@@ -16623,6 +16854,12 @@
 /obj/machinery/light{
 	dir = 1
 	},
+/obj/structure/sign/christmas/lights{
+	dir = 4
+	},
+/obj/structure/sign/christmas/lights{
+	dir = 1
+	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacetwo)
 "ksY" = (
@@ -16671,6 +16908,9 @@
 /obj/machinery/door/firedoor/glass,
 /obj/effect/floor_decal/steeldecal/steel_decals5{
 	dir = 4
+	},
+/obj/structure/sign/christmas/lights{
+	dir = 8
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacetwo)
@@ -17099,6 +17339,7 @@
 /obj/structure/cable/green{
 	icon_state = "1-4"
 	},
+/obj/structure/sign/christmas/lights,
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacetwo)
 "kIL" = (
@@ -17349,6 +17590,13 @@
 /obj/structure/railing{
 	dir = 4
 	},
+/obj/structure/sign/christmas/lights{
+	dir = 8
+	},
+/obj/structure/sign/christmas/lights{
+	dir = 4
+	},
+/obj/structure/sign/christmas/lights,
 /turf/simulated/open,
 /area/rift/station/public_garden/gantry)
 "kSp" = (
@@ -17487,6 +17735,10 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 10
 	},
+/obj/structure/sign/christmas/lights{
+	dir = 1
+	},
+/obj/structure/sign/christmas/wreath,
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacetwo)
 "kWb" = (
@@ -19180,6 +19432,9 @@
 	dir = 1
 	},
 /obj/structure/disposalpipe/segment,
+/obj/structure/sign/christmas/lights{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/steel,
 /area/medical/reception)
 "lUe" = (
@@ -19581,6 +19836,10 @@
 	dir = 4
 	},
 /obj/structure/railing,
+/obj/structure/sign/christmas/lights{
+	dir = 4
+	},
+/obj/structure/sign/christmas/lights,
 /turf/simulated/open,
 /area/rift/station/public_garden/gantry)
 "mfZ" = (
@@ -19771,6 +20030,10 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/structure/sign/christmas/lights{
+	dir = 1
+	},
+/obj/structure/sign/christmas/wreath,
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacetwo)
 "mlx" = (
@@ -19869,6 +20132,10 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/dormitory)
+"mow" = (
+/obj/structure/flora/tree/pine/xmas,
+/turf/simulated/floor/glass/reinforced,
+/area/hallway/primary/surfacetwo)
 "moy" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 5
@@ -20062,6 +20329,7 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
+/obj/structure/sign/christmas/lights,
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacetwo)
 "msf" = (
@@ -20639,6 +20907,9 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/structure/sign/christmas/lights{
+	dir = 1
+	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacetwo)
 "mHA" = (
@@ -20761,6 +21032,10 @@
 /obj/structure/cable/green{
 	icon_state = "1-4"
 	},
+/obj/structure/sign/christmas/lights,
+/obj/structure/sign/christmas/lights{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacetwo)
 "mMT" = (
@@ -20770,6 +21045,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/structure/sign/christmas/lights,
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacetwo)
 "mMZ" = (
@@ -20847,7 +21123,6 @@
 /obj/machinery/holoposter{
 	pixel_x = -32
 	},
-/obj/structure/flora/pottedplant/minitree,
 /turf/simulated/floor/tiled/steel,
 /area/security/hallway)
 "mPu" = (
@@ -21055,6 +21330,9 @@
 /obj/structure/railing{
 	dir = 4
 	},
+/obj/structure/sign/christmas/lights{
+	dir = 4
+	},
 /turf/simulated/floor/plating,
 /area/rift/station/public_garden/gantry)
 "mVh" = (
@@ -21208,6 +21486,7 @@
 /obj/structure/bed/chair{
 	dir = 1
 	},
+/obj/structure/sign/christmas/lights,
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacetwo)
 "mZa" = (
@@ -21478,6 +21757,9 @@
 	icon_state = "4-8"
 	},
 /obj/structure/railing{
+	dir = 1
+	},
+/obj/structure/sign/christmas/lights{
 	dir = 1
 	},
 /turf/simulated/floor/plating,
@@ -22061,6 +22343,21 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/security/hammerhead_bay)
+"nAE" = (
+/obj/structure/railing{
+	dir = 1
+	},
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/structure/sign/christmas/lights{
+	dir = 1
+	},
+/obj/structure/sign/christmas/lights{
+	dir = 8
+	},
+/turf/simulated/open,
+/area/rift/station/public_garden/gantry)
 "nBG" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 8
@@ -22074,6 +22371,9 @@
 	},
 /obj/item/defib_kit/loaded,
 /obj/structure/disposalpipe/segment,
+/obj/structure/sign/christmas/lights{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacetwo)
 "nCa" = (
@@ -22121,6 +22421,10 @@
 	pixel_y = 21
 	},
 /obj/structure/bed/chair/sofa/beige/right,
+/obj/structure/sign/christmas/lights{
+	dir = 1
+	},
+/obj/structure/sign/christmas/wreath,
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/lounge)
 "nDj" = (
@@ -22270,6 +22574,7 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
+/obj/structure/sign/christmas/lights,
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacetwo)
 "nIi" = (
@@ -22282,6 +22587,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/structure/sign/christmas/lights,
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacetwo)
 "nIq" = (
@@ -22937,6 +23243,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
+/obj/structure/sign/christmas/lights{
+	dir = 1
+	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacetwo)
 "obN" = (
@@ -23588,6 +23897,9 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
+/obj/structure/sign/christmas/lights{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacetwo)
 "oCh" = (
@@ -23817,6 +24129,10 @@
 /area/rnd/telescience_lab/foyer)
 "oLy" = (
 /obj/effect/floor_decal/steeldecal/steel_decals_central1,
+/obj/structure/sign/christmas/lights{
+	dir = 1
+	},
+/obj/structure/sign/christmas/wreath,
 /turf/simulated/floor/tiled/monotile,
 /area/hallway/primary/surfacetwo)
 "oLA" = (
@@ -23837,6 +24153,9 @@
 	dir = 4
 	},
 /obj/machinery/light,
+/obj/structure/sign/christmas/lights{
+	dir = 4
+	},
 /turf/simulated/open,
 /area/rift/station/public_garden/gantry)
 "oLQ" = (
@@ -24413,6 +24732,9 @@
 /obj/structure/railing{
 	dir = 1
 	},
+/obj/structure/sign/christmas/lights{
+	dir = 1
+	},
 /turf/simulated/open,
 /area/rift/station/public_garden/gantry)
 "oYs" = (
@@ -24625,6 +24947,9 @@
 	pixel_x = -32
 	},
 /obj/effect/floor_decal/corner/black/diagonal,
+/obj/structure/sign/christmas/lights{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/lounge)
 "peq" = (
@@ -24736,6 +25061,9 @@
 	},
 /obj/structure/sign/department/bar{
 	pixel_x = -32
+	},
+/obj/structure/sign/christmas/lights{
+	dir = 8
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacetwo)
@@ -25075,6 +25403,11 @@
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
 /area/maintenance/dormitory)
+"ptL" = (
+/obj/effect/floor_decal/corner/black/diagonal,
+/obj/structure/flora/tree/pine/xmas,
+/turf/simulated/floor/tiled/dark,
+/area/crew_quarters/lounge)
 "puy" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled/monotile,
@@ -25336,6 +25669,21 @@
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
 /area/maintenance/security/upper)
+"pEz" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/lightgrey/border{
+	dir = 1
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/sign/christmas/lights{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/steel,
+/area/hallway/primary/surfacetwo)
 "pEN" = (
 /obj/structure/symbol/sa,
 /turf/simulated/wall/prepainted,
@@ -25496,6 +25844,9 @@
 	dir = 1
 	},
 /obj/structure/disposalpipe/segment,
+/obj/structure/sign/christmas/lights{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/steel,
 /area/medical/reception)
 "pNZ" = (
@@ -25580,6 +25931,7 @@
 	dir = 1;
 	icon_state = "0-8"
 	},
+/obj/structure/sign/christmas/lights,
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/lounge)
 "pRj" = (
@@ -25771,6 +26123,9 @@
 	dir = 4
 	},
 /obj/effect/floor_decal/corner/paleblue/border{
+	dir = 4
+	},
+/obj/structure/sign/christmas/lights{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/steel,
@@ -26105,6 +26460,10 @@
 	pixel_x = 32
 	},
 /obj/item/toy/figure/secofficer,
+/obj/structure/sign/christmas/lights,
+/obj/structure/sign/christmas/lights{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacetwo)
 "qjg" = (
@@ -26303,6 +26662,9 @@
 	dir = 8
 	},
 /obj/structure/disposalpipe/segment,
+/obj/structure/sign/christmas/lights{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacetwo)
 "qnm" = (
@@ -26561,6 +26923,9 @@
 	dir = 4
 	},
 /obj/structure/disposalpipe/segment,
+/obj/structure/sign/christmas/lights{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/steel,
 /area/medical/reception)
 "qvW" = (
@@ -26653,6 +27018,7 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
+/obj/structure/sign/christmas/lights,
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacetwo)
 "qzf" = (
@@ -26856,6 +27222,9 @@
 /obj/structure/railing{
 	dir = 4
 	},
+/obj/structure/sign/christmas/lights{
+	dir = 4
+	},
 /turf/simulated/floor/plating,
 /area/rift/station/public_garden/gantry)
 "qEZ" = (
@@ -26951,6 +27320,9 @@
 	},
 /obj/machinery/camera/network/civilian,
 /obj/effect/floor_decal/corner/lightgrey/border{
+	dir = 1
+	},
+/obj/structure/sign/christmas/lights{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/steel,
@@ -27457,6 +27829,7 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
+/obj/structure/sign/christmas/lights,
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacetwo)
 "qWP" = (
@@ -27778,6 +28151,7 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
+/obj/structure/sign/christmas/lights,
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacetwo)
 "rib" = (
@@ -28263,6 +28637,7 @@
 	dir = 8;
 	icon_state = "pipe-c"
 	},
+/obj/structure/sign/christmas/lights,
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacetwo)
 "ruC" = (
@@ -28325,6 +28700,7 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
+/obj/structure/sign/christmas/lights,
 /turf/simulated/floor/tiled/white,
 /area/medical/reception)
 "rxW" = (
@@ -28797,6 +29173,10 @@
 /obj/structure/cable/green{
 	icon_state = "1-8"
 	},
+/obj/structure/sign/christmas/lights,
+/obj/structure/sign/christmas/lights{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacetwo)
 "rMB" = (
@@ -29135,6 +29515,7 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
+/obj/structure/sign/christmas/lights,
 /turf/simulated/floor/tiled/white,
 /area/medical/reception)
 "rWt" = (
@@ -29168,6 +29549,12 @@
 	dir = 8;
 	light_range = 12;
 	old_wall = 1
+	},
+/obj/structure/sign/christmas/lights{
+	dir = 8
+	},
+/obj/structure/sign/christmas/lights{
+	dir = 1
 	},
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/lounge)
@@ -29380,6 +29767,10 @@
 /obj/effect/floor_decal/steeldecal/steel_decals5{
 	dir = 8
 	},
+/obj/structure/sign/christmas/lights{
+	dir = 1
+	},
+/obj/structure/sign/christmas/wreath,
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacetwo)
 "sfC" = (
@@ -29415,6 +29806,10 @@
 	},
 /turf/simulated/floor/tiled/monowhite,
 /area/medical/surgery2)
+"sgs" = (
+/obj/structure/sign/christmas/wreath,
+/turf/simulated/wall/r_wall/prepainted/medical,
+/area/hallway/primary/surfacetwo)
 "sgR" = (
 /obj/effect/floor_decal/borderfloorwhite/corner{
 	dir = 1
@@ -29775,6 +30170,9 @@
 /obj/structure/railing{
 	dir = 1
 	},
+/obj/structure/sign/christmas/lights{
+	dir = 1
+	},
 /turf/simulated/open,
 /area/rift/station/public_garden/gantry)
 "sxp" = (
@@ -29943,6 +30341,7 @@
 	},
 /obj/effect/floor_decal/corner/red/border,
 /obj/machinery/computer/timeclock/premade/south,
+/obj/structure/sign/christmas/lights,
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacetwo)
 "sDK" = (
@@ -29973,6 +30372,9 @@
 	dir = 4
 	},
 /obj/structure/disposalpipe/segment,
+/obj/structure/sign/christmas/lights{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacetwo)
 "sEw" = (
@@ -30036,6 +30438,9 @@
 /obj/machinery/camera/network/civilian{
 	dir = 4
 	},
+/obj/structure/sign/christmas/lights{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/lounge)
 "sGv" = (
@@ -30079,6 +30484,9 @@
 	},
 /obj/machinery/light{
 	dir = 8
+	},
+/obj/structure/sign/christmas/lights{
+	dir = 1
 	},
 /turf/simulated/open,
 /area/rift/station/public_garden/gantry)
@@ -30201,6 +30609,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 1
+	},
+/obj/structure/sign/christmas/lights{
+	dir = 8
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacetwo)
@@ -30560,6 +30971,18 @@
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/rnd/workshop)
+"tbF" = (
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/structure/sign/christmas/lights{
+	dir = 8
+	},
+/obj/structure/sign/christmas/wreath{
+	dir = 4
+	},
+/turf/simulated/open,
+/area/rift/station/public_garden/gantry)
 "tca" = (
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/purple/border,
@@ -30569,6 +30992,7 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
+/obj/structure/sign/christmas/lights,
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacetwo)
 "tci" = (
@@ -31333,11 +31757,17 @@
 /obj/effect/floor_decal/corner/paleblue/bordercorner2{
 	dir = 10
 	},
-/obj/structure/flora/pottedplant/orientaltree,
 /obj/machinery/holoposter{
 	pixel_x = -32
 	},
 /obj/structure/disposalpipe/segment,
+/obj/structure/sign/christmas/lights{
+	dir = 8
+	},
+/obj/structure/sign/christmas/lights{
+	dir = 1
+	},
+/obj/structure/flora/pottedplant/xmas,
 /turf/simulated/floor/tiled/steel,
 /area/medical/reception)
 "tBE" = (
@@ -31430,6 +31860,7 @@
 /obj/effect/floor_decal/corner/red/border,
 /obj/structure/table/steel,
 /obj/item/storage/box/cups,
+/obj/structure/sign/christmas/lights,
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacetwo)
 "tDY" = (
@@ -31968,6 +32399,19 @@
 "tZW" = (
 /turf/simulated/floor,
 /area/maintenance/substation/security)
+"tZZ" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/red/border{
+	dir = 1
+	},
+/obj/structure/sign/christmas/lights{
+	dir = 1
+	},
+/obj/structure/flora/pottedplant/xmas,
+/turf/simulated/floor/tiled/steel,
+/area/hallway/primary/surfacetwo)
 "uax" = (
 /obj/structure/cable/green{
 	icon_state = "1-2"
@@ -32009,6 +32453,9 @@
 	dir = 8
 	},
 /obj/effect/floor_decal/corner/red/border{
+	dir = 8
+	},
+/obj/structure/sign/christmas/lights{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/steel,
@@ -32346,6 +32793,10 @@
 /obj/effect/floor_decal/corner/purple/bordercorner2{
 	dir = 9
 	},
+/obj/structure/sign/christmas/lights{
+	dir = 8
+	},
+/obj/structure/sign/christmas/lights,
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacetwo)
 "unz" = (
@@ -32599,6 +33050,9 @@
 /obj/machinery/light{
 	dir = 1
 	},
+/obj/structure/sign/christmas/lights{
+	dir = 1
+	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacetwo)
 "uxa" = (
@@ -32803,6 +33257,7 @@
 	dir = 1
 	},
 /obj/machinery/light,
+/obj/structure/sign/christmas/lights,
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacetwo)
 "uFa" = (
@@ -32973,6 +33428,12 @@
 	},
 /obj/structure/railing{
 	dir = 8
+	},
+/obj/structure/sign/christmas/lights{
+	dir = 8
+	},
+/obj/structure/sign/christmas/lights{
+	dir = 1
 	},
 /turf/simulated/open,
 /area/rift/station/public_garden/gantry)
@@ -33182,6 +33643,9 @@
 /obj/structure/bed/chair/sofa/beige/left{
 	dir = 8
 	},
+/obj/structure/sign/christmas/lights{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/lounge)
 "uQA" = (
@@ -33261,6 +33725,9 @@
 	pixel_x = -32
 	},
 /obj/structure/disposalpipe/segment,
+/obj/structure/sign/christmas/lights{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/steel,
 /area/medical/reception)
 "uRF" = (
@@ -33617,6 +34084,12 @@
 /obj/structure/railing{
 	dir = 4
 	},
+/obj/structure/sign/christmas/lights{
+	dir = 4
+	},
+/obj/structure/sign/christmas/lights{
+	dir = 1
+	},
 /turf/simulated/open,
 /area/rift/station/public_garden/gantry)
 "uXn" = (
@@ -33684,6 +34157,10 @@
 	},
 /obj/effect/floor_decal/borderfloor/corner2,
 /obj/effect/floor_decal/corner/purple/bordercorner2,
+/obj/structure/sign/christmas/lights{
+	dir = 4
+	},
+/obj/structure/sign/christmas/lights,
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacetwo)
 "uZq" = (
@@ -33765,6 +34242,9 @@
 	dir = 8
 	},
 /obj/effect/floor_decal/corner/lightgrey/border{
+	dir = 8
+	},
+/obj/structure/sign/christmas/lights{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/steel,
@@ -34357,6 +34837,9 @@
 /obj/structure/railing{
 	dir = 8
 	},
+/obj/structure/sign/christmas/lights{
+	dir = 8
+	},
 /turf/simulated/open,
 /area/rift/station/public_garden/gantry)
 "vtX" = (
@@ -34803,6 +35286,7 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
+/obj/structure/sign/christmas/lights,
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacetwo)
 "vLE" = (
@@ -35053,6 +35537,12 @@
 /obj/machinery/light{
 	dir = 4
 	},
+/obj/structure/sign/christmas/lights{
+	dir = 1
+	},
+/obj/structure/sign/christmas/lights{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/lounge)
 "vVE" = (
@@ -35091,6 +35581,9 @@
 /obj/effect/floor_decal/steeldecal/steel_decals5,
 /obj/machinery/door/firedoor/glass{
 	dir = 4
+	},
+/obj/structure/sign/christmas/lights{
+	dir = 1
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacetwo)
@@ -35196,6 +35689,9 @@
 	},
 /obj/machinery/vending/snack,
 /obj/effect/floor_decal/corner/lightgrey/border{
+	dir = 8
+	},
+/obj/structure/sign/christmas/lights{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/steel,
@@ -35675,6 +36171,7 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
+/obj/structure/sign/christmas/lights,
 /turf/simulated/floor/tiled/white,
 /area/medical/reception)
 "wqC" = (
@@ -36149,6 +36646,7 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
+/obj/structure/sign/christmas/lights,
 /turf/simulated/floor/tiled/white,
 /area/medical/reception)
 "wJB" = (
@@ -37050,6 +37548,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
+/obj/structure/sign/christmas/lights,
 /turf/simulated/floor/tiled/white,
 /area/medical/reception)
 "xqL" = (
@@ -37297,6 +37796,10 @@
 	desc = "Unlike most other jukeboxes that follow a standard center-of-certain-square-meter-footage alignment, this one was placed flush against a wall or window, making it possible to access things beyond it. Such innovation costs four hundred thousand thalers per jukebox, hence its scarcity. It looks like moving it would nullify this effect.";
 	density = 0
 	},
+/obj/structure/sign/christmas/lights{
+	dir = 4
+	},
+/obj/structure/sign/christmas/lights,
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/lounge)
 "xAl" = (
@@ -37490,6 +37993,9 @@
 /obj/machinery/door/firedoor/glass,
 /obj/effect/floor_decal/steeldecal/steel_decals5{
 	dir = 8
+	},
+/obj/structure/sign/christmas/lights{
+	dir = 4
 	},
 /turf/simulated/floor/tiled/steel,
 /area/medical/reception)
@@ -37695,6 +38201,9 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
+/obj/structure/sign/christmas/lights{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacetwo)
 "xKD" = (
@@ -37762,6 +38271,9 @@
 /obj/effect/floor_decal/corner/lightgrey/border{
 	dir = 8
 	},
+/obj/structure/sign/christmas/lights{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacetwo)
 "xLX" = (
@@ -37806,6 +38318,10 @@
 /obj/structure/railing{
 	dir = 8
 	},
+/obj/structure/sign/christmas/lights{
+	dir = 8
+	},
+/obj/structure/sign/christmas/lights,
 /turf/simulated/open,
 /area/rift/station/public_garden/gantry)
 "xME" = (
@@ -38103,6 +38619,7 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
+/obj/structure/sign/christmas/lights,
 /turf/simulated/floor/tiled/white,
 /area/medical/reception)
 "xRX" = (
@@ -38248,6 +38765,10 @@
 	dir = 1
 	},
 /obj/structure/railing,
+/obj/structure/sign/christmas/lights,
+/obj/structure/sign/christmas/lights{
+	dir = 1
+	},
 /turf/simulated/open,
 /area/rift/station/public_garden/gantry)
 "xXR" = (
@@ -50087,7 +50608,7 @@ cHW
 oRV
 mvj
 aML
-lVM
+ptL
 wYE
 vZl
 ePb
@@ -51640,7 +52161,7 @@ egy
 hKi
 hKi
 bTZ
-bTZ
+sgs
 bwg
 fEo
 tUb
@@ -54166,7 +54687,7 @@ kPd
 crX
 bgP
 bgP
-bgP
+mow
 bgP
 mod
 iLd
@@ -54552,7 +55073,7 @@ xUe
 xUe
 emT
 hLX
-sJl
+bUC
 iru
 bgP
 bgP
@@ -57260,7 +57781,7 @@ rTT
 rWX
 rWX
 rWX
-gbY
+bKr
 hhN
 fWX
 vnU
@@ -57454,14 +57975,14 @@ lBj
 vtq
 okK
 rWX
-gbY
+bKr
 hLM
 tDr
 vnU
 cdE
 xDn
 vnU
-gCG
+pEz
 bPt
 flv
 eZQ
@@ -57842,7 +58363,7 @@ oji
 oji
 nkq
 rWX
-gbY
+tZZ
 gMG
 mYE
 vnU
@@ -63501,12 +64022,12 @@ gum
 gum
 gtX
 oXW
-fgn
+afL
 iyU
 uKr
+tbF
 vtU
-vtU
-vtU
+tbF
 fgn
 iyU
 sxn
@@ -63686,9 +64207,9 @@ vtU
 pbn
 jyN
 uKr
+tbF
 vtU
-vtU
-vtU
+tbF
 vtU
 pbn
 jkt
@@ -63879,7 +64400,7 @@ bOO
 bOO
 fIH
 iyU
-sxn
+hQJ
 bOO
 bOO
 aIZ
@@ -64469,7 +64990,7 @@ frq
 gLi
 ozQ
 urc
-uKr
+nAE
 vtU
 pbn
 iyU
@@ -64663,7 +65184,7 @@ gum
 gum
 gum
 urc
-sxn
+hQJ
 bOO
 fIH
 iyU
@@ -65051,7 +65572,7 @@ wna
 gDr
 hmq
 cha
-sxn
+hQJ
 bOO
 jLY
 iyU
@@ -65627,14 +66148,14 @@ xMz
 iyU
 uKr
 vtU
-vtU
+tbF
 xMz
 iyU
 uKr
 vtU
 vtU
 vtU
-vtU
+tbF
 vtU
 vtU
 pbn
