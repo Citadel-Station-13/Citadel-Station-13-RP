@@ -2913,6 +2913,21 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/test_area)
+"coS" = (
+/obj/structure/sign/directions/security,
+/obj/structure/sign/directions/medical{
+	pixel_y = -6
+	},
+/obj/structure/sign/directions/elevator{
+	dir = 4;
+	pixel_y = 6
+	},
+/obj/structure/sign/directions/bridge{
+	dir = 4;
+	pixel_y = 12
+	},
+/turf/simulated/wall/prepainted,
+/area/station/stairs_one)
 "cpb" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 1
@@ -4080,6 +4095,12 @@
 	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/crew_quarters/lounge)
+"dgz" = (
+/obj/structure/sign/deck/first{
+	pixel_x = -4
+	},
+/turf/simulated/wall/r_wall/prepainted,
+/area/station/stairs_one)
 "dgF" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 6
@@ -4259,12 +4280,9 @@
 /turf/simulated/floor/wood,
 /area/hydroponics/garden)
 "dnA" = (
-/obj/machinery/door/firedoor{
-	dir = 8
-	},
-/obj/machinery/fire_alarm/east_mount,
-/turf/simulated/floor/tiled/steel,
-/area/station/stairs_one)
+/obj/structure/sign/deck/first,
+/turf/simulated/wall/prepainted,
+/area/endeavour/hallway/d1fwdhall)
 "dor" = (
 /turf/simulated/wall/prepainted/civilian,
 /area/maintenance/substation/exploration)
@@ -5417,6 +5435,28 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/endeavour/surfacebase/tram)
+"eex" = (
+/obj/structure/sign/directions/engineering{
+	pixel_y = -6;
+	dir = 1
+	},
+/obj/structure/sign/directions/cargo{
+	dir = 1
+	},
+/obj/structure/sign/directions/science{
+	pixel_y = 6;
+	dir = 1
+	},
+/obj/structure/sign/directions/cryo{
+	pixel_y = 13;
+	dir = 1
+	},
+/obj/structure/sign/directions/evac{
+	dir = 8;
+	pixel_y = -12
+	},
+/turf/simulated/wall/prepainted,
+/area/station/stairs_one)
 "eez" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
@@ -8069,7 +8109,7 @@
 "fQg" = (
 /obj/structure/memorial{
 	name = "NSV Endeavour's Builder's Plate";
-	desc = "The Armstrong-Hawker Shipbuilding company would like to thank the following for the contributions to the design: Dáire van der Waals, M.D., Ph.D.; Ruminis Melro, B.S.E; Hammond McGuire Sr., M.S.E.. Their work was essential in the design and manufacture of this vessel, and those of her class in the years to follow."
+	desc = "The Armstrong-Hawker Shipbuilding company would like to thank the following for the contributions to the design: Dáire van der Waals, M.D., Ph.D.; Ruminis Melro, B.S.E; Jonathan A. Russel, Ph.D.; Hammond McGuire Sr., M.S.E.. Their work was essential in the design and manufacture of this vessel, and those of her class in the years to follow."
 	},
 /turf/simulated/wall/prepainted,
 /area/endeavour/hallway/d1fwdhall)
@@ -9225,6 +9265,16 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/station/stairs_one)
+"gHB" = (
+/obj/structure/sign/directions/bridge{
+	dir = 4;
+	pixel_y = 7
+	},
+/obj/structure/sign/directions/elevator{
+	dir = 4
+	},
+/turf/simulated/wall/prepainted/civilian,
+/area/maintenance/library)
 "gIz" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
@@ -10288,6 +10338,20 @@
 /obj/fiftyspawner/glass,
 /turf/simulated/floor/plating,
 /area/vacant/vacant_bar)
+"hyQ" = (
+/obj/structure/sign/directions/elevator{
+	dir = 4
+	},
+/obj/structure/sign/directions/evac{
+	dir = 8;
+	pixel_y = -7
+	},
+/obj/structure/sign/directions/bridge{
+	dir = 4;
+	pixel_y = 7
+	},
+/turf/simulated/wall/prepainted,
+/area/endeavour/hallway/d1fwdmaint)
 "hzU" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
@@ -10604,6 +10668,9 @@
 /obj/structure/sign/directions/bridge{
 	dir = 4;
 	pixel_y = 7
+	},
+/obj/structure/sign/directions/elevator{
+	dir = 4
 	},
 /turf/simulated/wall/prepainted/civilian,
 /area/crew_quarters/coffee_shop)
@@ -11110,6 +11177,20 @@
 /obj/machinery/vending/cigarette,
 /turf/simulated/floor/wood,
 /area/exploration/meeting)
+"idq" = (
+/obj/structure/sign/directions/elevator{
+	dir = 4
+	},
+/obj/structure/sign/directions/evac{
+	dir = 8;
+	pixel_y = -7
+	},
+/obj/structure/sign/directions/bridge{
+	dir = 4;
+	pixel_y = 7
+	},
+/turf/simulated/wall/prepainted,
+/area/endeavour/hallway/d1aftmaint)
 "idu" = (
 /obj/machinery/appliance/cooker/grill/stand,
 /turf/simulated/floor/grass,
@@ -15547,7 +15628,7 @@
 	dir = 8
 	},
 /obj/machinery/vending/wallmed1{
-	pixel_x = 32
+	pixel_x = 36
 	},
 /obj/machinery/fire_alarm/east_mount,
 /turf/simulated/floor/tiled/dark,
@@ -17043,11 +17124,20 @@
 /turf/simulated/wall/r_wall/prepainted,
 /area/maintenance/asmaint)
 "mrv" = (
-/obj/structure/sign/directions/science{
-	pixel_y = 3
+/obj/structure/sign/directions/engineering{
+	pixel_y = -6;
+	dir = 1
 	},
 /obj/structure/sign/directions/cargo{
-	pixel_y = -4
+	dir = 1
+	},
+/obj/structure/sign/directions/science{
+	pixel_y = 6;
+	dir = 1
+	},
+/obj/structure/sign/directions/cryo{
+	pixel_y = 13;
+	dir = 1
 	},
 /turf/simulated/wall/r_wall/prepainted,
 /area/station/stairs_one)
@@ -17665,16 +17755,24 @@
 /turf/simulated/floor/tiled,
 /area/gateway/prep_room)
 "mMw" = (
-/obj/structure/sign/directions/elevator{
-	dir = 4
-	},
-/obj/structure/sign/directions/bridge{
-	dir = 4;
-	pixel_y = 7
-	},
 /obj/structure/sign/directions/evac{
 	dir = 8;
-	pixel_y = -7
+	pixel_y = -6
+	},
+/obj/structure/sign/directions/engineering{
+	pixel_y = -12;
+	dir = 1
+	},
+/obj/structure/sign/directions/cargo{
+	dir = 1
+	},
+/obj/structure/sign/directions/science{
+	pixel_y = 6;
+	dir = 1
+	},
+/obj/structure/sign/directions/cryo{
+	pixel_y = 13;
+	dir = 1
 	},
 /turf/simulated/wall/prepainted,
 /area/station/stairs_one)
@@ -22024,13 +22122,13 @@
 /area/endeavour/hallway/d1fwdmaint)
 "qdt" = (
 /obj/structure/sign/directions/security{
-	pixel_y = -10
+	pixel_y = -7
 	},
 /obj/structure/sign/directions/medical{
-	pixel_y = 4
+	pixel_y = 5
 	},
 /obj/structure/sign/directions/cryo{
-	pixel_y = -3
+	pixel_y = -1
 	},
 /obj/structure/sign/directions/engineering{
 	pixel_y = 11
@@ -43146,7 +43244,7 @@ jLe
 aEU
 aEU
 aEU
-lDc
+dgz
 iAO
 oiv
 fcG
@@ -43340,7 +43438,7 @@ jLe
 aEU
 iDg
 iDg
-lOm
+fVP
 kHh
 wfp
 kHh
@@ -43534,7 +43632,7 @@ jLe
 aEU
 iDg
 iDg
-dnA
+lOm
 ueA
 brQ
 xuO
@@ -43732,9 +43830,9 @@ mMw
 cUW
 rAN
 gKk
-vRx
+coS
 wXu
-aEU
+vRx
 aEU
 nCl
 dZr
@@ -48766,7 +48864,7 @@ cpU
 xkO
 wim
 aNK
-aNK
+idq
 vEN
 vHL
 bdJ
@@ -51692,7 +51790,7 @@ lDc
 xgB
 iuy
 baf
-wUJ
+gHB
 lmG
 hfR
 hfR
@@ -54991,7 +55089,7 @@ nAf
 jLq
 jwq
 lSz
-uTr
+hyQ
 bFR
 maa
 nSV
@@ -58479,7 +58577,7 @@ tjQ
 oiK
 uTr
 uTr
-apW
+hyQ
 eez
 rCE
 lSz
@@ -60798,14 +60896,14 @@ snQ
 eCz
 nYu
 uJC
-uTr
+hyQ
 ssc
 eFE
 uTr
 dMB
 uTr
 rgG
-uTr
+hyQ
 gQH
 kDV
 uXy
@@ -63129,7 +63227,7 @@ xwO
 pQg
 lUh
 lUh
-lUh
+dnA
 lUh
 lUh
 lUh
@@ -63709,8 +63807,8 @@ uTr
 uTr
 aEU
 aEU
-aEU
 vRx
+eex
 vmD
 qcd
 jlB
@@ -64296,8 +64394,8 @@ aEU
 eDl
 uhG
 eDl
-vRx
 aEU
+vRx
 aEU
 aEU
 teS
