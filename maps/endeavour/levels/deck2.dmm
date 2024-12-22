@@ -11778,9 +11778,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d1starboardamidhall)
-"hff" = (
-/turf/simulated/floor/plating,
-/area/space)
 "hfm" = (
 /obj/structure/catwalk,
 /obj/structure/cable/green{
@@ -59964,8 +59961,8 @@ pkD
 nMP
 ebu
 aUR
-hff
-hff
+pRW
+pRW
 pRW
 pRW
 pRW
@@ -60158,8 +60155,8 @@ pkD
 nMP
 uhG
 aUR
-hff
-hff
+pRW
+pRW
 pRW
 pRW
 pRW
@@ -60934,8 +60931,8 @@ vJE
 nMP
 pkD
 aUR
-hff
-hff
+pRW
+pRW
 pRW
 pRW
 pRW
