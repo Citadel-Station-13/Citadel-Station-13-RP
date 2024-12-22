@@ -79,7 +79,7 @@
 	var/cached_loadout_role
 
 	var/datum/component/custom_transform/transform_component
-	var/obj/holosphere_shell
+	var/mob/holosphere_shell/holosphere_shell
 
 /datum/species/holosphere/on_apply(mob/living/carbon/human/H)
 	. = ..()
@@ -192,3 +192,8 @@
 	H.revive(full_heal = TRUE)
 	var/regenmsg = "<span class='userdanger'>Emitters have returned online. Systems functional.</span>"
 	to_chat(H, regenmsg)
+
+/// holosphere 'sphere'
+/mob/holosphere_shell
+	name = "test"
+	description = "test"
