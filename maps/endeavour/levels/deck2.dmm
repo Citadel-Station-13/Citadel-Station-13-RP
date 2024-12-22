@@ -39262,8 +39262,7 @@
 /area/medical/virology_aft_access)
 "xJt" = (
 /turf/simulated/wall/prepainted/science{
-	can_open = 1;
-	can_start_dirty = ss
+	can_open = 1
 	},
 /area/rnd/research/researchdivision)
 "xJB" = (
