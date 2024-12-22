@@ -73,13 +73,12 @@
 	)
 	var/list/equipped_chameleon_gear = list()
 	var/shield_health = HOLOGRAM_SHIELD_MAX_HEALTH
-	var/holosphere
 
 	var/cached_loadout_flags
 	var/cached_loadout_role
 
 	var/datum/component/custom_transform/transform_component
-	var/mob/holosphere_shell/holosphere_shell
+	var/mob/living/simple_mob/holosphere_shell/holosphere_shell
 
 /datum/species/holosphere/on_apply(mob/living/carbon/human/H)
 	. = ..()
@@ -194,15 +193,40 @@
 	to_chat(H, regenmsg)
 
 /// holosphere 'sphere'
-/mob/holosphere_shell
+/mob/living/simple_mob/holosphere_shell
 	name = "test"
-	description = "test"
+	desc = "test"
+
+	maxHealth = 100
+	health = 100
+
+	response_help = "pats the"
+	response_disarm = "gently pushes aside the"
+	response_harm = "hits the"
+
+	aquatic_movement = 1
+	min_oxy = 0
+	max_oxy = 0
+	min_tox = 0
+	max_tox = 0
+	min_co2 = 0
+	max_co2 = 0
+	min_n2 = 0
+	max_n2 = 0
+
+	minbodytemp = 0
+	maxbodytemp = INFINITY
+	heat_resist = 1
+	cold_resist = 1
+
+	legacy_melee_damage_lower = 0
+	legacy_melee_damage_upper = 0
 
 	// space movement related
 	var/last_space_movement = 0
 
 // same way pAI space movement works in pai/mobility.dm
-/mob/holosphere_shell/Process_Spacemove(movement_dir = NONE)
+/mob/living/simple_mob/holosphere_shell/Process_Spacemove(movement_dir = NONE)
 	. = ..()
 	if(!. && src.loc != shell)
 		if(world.time >= last_space_movement + 3 SECONDS)
