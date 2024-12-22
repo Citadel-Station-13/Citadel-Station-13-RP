@@ -15,12 +15,17 @@
 	suffix = "sme.dmm"
 	display_name = list("Angry Rock", "The Forbidden Rock Candy", "Death Crystal", "Spicy Crystal")
 
+// disabled because it only worked at all due to an atmos bug
+// todo: proper simulation and math this shit out for joules released in total fuel
+/*
 /datum/map_template/engine/triumph/burnchamber
 	name = "ProcEngine_Triumph_Burn"
 	desc = "Burn Chamber Engine"
 	suffix = "burn.dmm"
 	display_name = list("Toxins Lab", "We Knew You Liked Tether Fires, so we Brought One in a Box", "100 Solarmoths", "Teshari's Bane")
+*/
 
+// disabled pending rework
 /*
 /datum/map_template/engine/triumph/fission
 	name = "ProcEngine_Triumph_Fission"

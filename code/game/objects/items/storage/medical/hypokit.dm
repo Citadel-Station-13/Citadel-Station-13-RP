@@ -13,7 +13,7 @@
 
 	var/hypospray_path = /obj/item/hypospray
 	var/vial_path = /obj/item/reagent_containers/glass/hypovial
-	var/vial_amount = 6
+	var/vial_amount = 0
 
 /obj/item/storage/hypokit/legacy_spawn_contents()
 	. = ..()
@@ -54,6 +54,7 @@
 	inhand_state = "normal"
 	hypospray_path = /obj/item/hypospray/advanced/loaded
 	vial_path = /obj/item/reagent_containers/glass/hypovial/large
+	vial_amount = 6
 	max_combined_volume = STORAGE_VOLUME_BOX * 2
 	weight_volume = WEIGHT_VOLUME_NORMAL * 1.5
 
