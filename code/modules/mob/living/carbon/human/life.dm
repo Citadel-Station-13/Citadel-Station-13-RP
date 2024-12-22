@@ -1807,7 +1807,7 @@
 	temp = max(0, temp + modifier_shift)	// No negative pulses.
 
 	if(Pump)
-		for(var/datum/reagent/R in reagents.reagent_list)
+		for(var/datum/reagent/R in reagents.get_reagent_datums())
 			if(R.id in bradycardics)
 				if(temp <= Pump.standard_pulse_level + 3 && temp >= Pump.standard_pulse_level)
 					temp--
@@ -1817,11 +1817,11 @@
 			if(R.id in heartstopper) //To avoid using fakedeath
 				temp = PULSE_NONE
 			if(R.id in cheartstopper) //Conditional heart-stoppage
-				if(R.volume >= R.overdose)
+				if(reagents.get_reagent_amount(R.id) >= R.overdose)
 					temp = PULSE_NONE
 		return temp * brain_modifier
 	//handles different chems' influence on pulse
-	for(var/datum/reagent/R in reagents.reagent_list)
+	for(var/datum/reagent/R in reagents.get_reagent_datums())
 		if(R.id in bradycardics)
 			if(temp <= PULSE_THREADY && temp >= PULSE_NORM)
 				temp--
@@ -1831,7 +1831,7 @@
 		if(R.id in heartstopper) //To avoid using fakedeath
 			temp = PULSE_NONE
 		if(R.id in cheartstopper) //Conditional heart-stoppage
-			if(R.volume >= R.overdose)
+			if(reagents.get_reagent_amount(R.id) >= R.overdose)
 				temp = PULSE_NONE
 
 	return max(0, round(temp * brain_modifier))

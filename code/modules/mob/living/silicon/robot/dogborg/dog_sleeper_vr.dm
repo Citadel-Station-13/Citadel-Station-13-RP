@@ -284,7 +284,8 @@
 			dat += "<div class='line'><span class='average'>Patient may be improperly cloned.</span></div><br>"
 		for(var/id in patient.reagents.reagent_volumes)
 			var/datum/reagent/R = SSchemistry.fetch_reagent(id)
-			dat += "<div class='line'><div style='width: 170px;' class='statusLabel'>[R.name]:</div><div class='statusValue'>[round(R.volume, 0.1)] units</div></div><br>"
+			var/volume = patient.reagents.reagent_volumes[id]
+			dat += "<div class='line'><div style='width: 170px;' class='statusLabel'>[R.name]:</div><div class='statusValue'>[round(volume, 0.1)] units</div></div><br>"
 	dat += "</div>"
 
 	var/datum/browser/popup = new(user, "sleeper_b", "[name] Console", 400, 500, src)

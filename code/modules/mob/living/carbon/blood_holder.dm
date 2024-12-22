@@ -93,7 +93,9 @@
 		guest_bloods[scaling] *= scaler
 
 	if(!existing)
-		guest_bloods[checking] = 1 - scaler
+		guest_bloods[fragment] = 1 - scaler
+	else
+		guest_bloods[existing] += 1 - scaler
 
 	return amount
 
