@@ -78,7 +78,7 @@
 	var/cached_loadout_flags
 	var/cached_loadout_role
 
-	var/datum/component/object_transform/transform_component
+	var/datum/component/custom_transform/transform_component
 	var/obj/holosphere_shell
 
 /datum/species/holosphere/on_apply(mob/living/carbon/human/H)
@@ -86,7 +86,7 @@
 	RegisterSignal(H, COMSIG_CARBON_UPDATING_OVERLAY, PROC_REF(handle_hologram_overlays))
 	RegisterSignal(H, COMSIG_HUMAN_EQUIPPING_LOADOUT, PROC_REF(handle_hologram_loadout))
 	holosphere_shell = new(H)
-	transform_component = H.AddComponent(/datum/component/object_transform, holosphere_shell, null, null, FALSE)
+	transform_component = H.AddComponent(/datum/component/custom_transform, holosphere_shell, null, null, FALSE)
 
 /datum/species/holosphere/on_remove(mob/living/carbon/human/H)
 	. = ..()
@@ -187,7 +187,7 @@
 /datum/species/holosphere/handle_death(var/mob/living/carbon/human/H, gibbed)
 	var/deathmsg = "<span class='userdanger'>Systems critically damaged. Emitters temporarily offline.</span>"
 	to_chat(H, deathmsg)
-	transform_component.put_in_object_safe()
+	transform_component.try_transform()
 	sleep(10 SECONDS)
 	H.revive(full_heal = TRUE)
 	var/regenmsg = "<span class='userdanger'>Emitters have returned online. Systems functional.</span>"
