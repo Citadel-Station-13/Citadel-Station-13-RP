@@ -197,3 +197,16 @@
 /mob/holosphere_shell
 	name = "test"
 	description = "test"
+
+	// space movement related
+	var/last_space_movement = 0
+
+// same way pAI space movement works in pai/mobility.dm
+/mob/holosphere_shell/Process_Spacemove(movement_dir = NONE)
+	. = ..()
+	if(!. && src.loc != shell)
+		if(world.time >= last_space_movement + 3 SECONDS)
+			last_space_movement = world.time
+			// place an effect for the movement
+			new /obj/effect/temp_visual/pai_ion_burst(get_turf(src))
+			return TRUE
