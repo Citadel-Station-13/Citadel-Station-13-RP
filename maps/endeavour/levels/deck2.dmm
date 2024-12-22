@@ -8062,6 +8062,9 @@
 /obj/structure/cable{
 	icon_state = "1-8"
 	},
+/obj/machinery/light/small{
+	dir = 4
+	},
 /turf/simulated/floor/plating,
 /area/endeavour/hallway/d2fwdmaint)
 "eRt" = (
@@ -10595,6 +10598,12 @@
 /obj/effect/floor_decal/industrial/warning/corner,
 /turf/simulated/floor/reinforced,
 /area/rnd/testingroom)
+"gsr" = (
+/obj/machinery/light/small{
+	dir = 1
+	},
+/turf/simulated/floor/plating,
+/area/medical/virologymaint)
 "gsA" = (
 /obj/machinery/door/firedoor,
 /obj/structure/cable{
@@ -15184,6 +15193,16 @@
 	},
 /turf/simulated/floor/plating,
 /area/medical/virology)
+"jii" = (
+/obj/structure/catwalk,
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
+/obj/machinery/light/small{
+	dir = 4
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/research)
 "jin" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -15407,6 +15426,16 @@
 	},
 /turf/simulated/floor/plating,
 /area/medical/chemistry)
+"jqP" = (
+/obj/machinery/air_alarm{
+	dir = 8;
+	pixel_x = 25
+	},
+/obj/machinery/light/small{
+	dir = 4
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/research)
 "jrk" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -21431,6 +21460,9 @@
 /area/rnd/xenobiology)
 "nfQ" = (
 /obj/random/cutout,
+/obj/machinery/light/small{
+	dir = 4
+	},
 /turf/simulated/floor/plating,
 /area/maintenance/fpmaint2)
 "nfS" = (
@@ -22961,6 +22993,13 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/holodeck_control)
+"ofA" = (
+/obj/structure/catwalk,
+/obj/machinery/light/small{
+	dir = 4
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/medbay/aft)
 "ofU" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -25167,6 +25206,13 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/rnd/chemistry_lab)
+"ppr" = (
+/obj/structure/catwalk,
+/obj/machinery/light/small{
+	dir = 1
+	},
+/turf/simulated/floor/airless/ceiling,
+/area/endeavour/hallway/d2aftmaint)
 "pps" = (
 /obj/machinery/computer/guestpass{
 	dir = 4;
@@ -31199,6 +31245,16 @@
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d2fwdhall)
+"sQG" = (
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/structure/catwalk,
+/obj/machinery/light/small{
+	dir = 1
+	},
+/turf/simulated/floor/plating,
+/area/endeavour/hallway/d2aftmaint)
 "sQI" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
@@ -31706,6 +31762,13 @@
 /obj/item/slime_extract/grey,
 /turf/simulated/floor/reinforced,
 /area/rnd/xenobiology)
+"tgP" = (
+/obj/effect/floor_decal/rust,
+/obj/machinery/light/small{
+	dir = 4
+	},
+/turf/simulated/floor/plating,
+/area/endeavour/hallway/d2fwdmaint)
 "thc" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/cable/green{
@@ -33362,6 +33425,16 @@
 /obj/random/maintenance/cargo,
 /turf/simulated/floor/plating,
 /area/endeavour/hallway/d2fwdmaint)
+"uhK" = (
+/obj/structure/cable/orange{
+	icon_state = "4-8"
+	},
+/obj/structure/catwalk,
+/obj/machinery/light/small{
+	dir = 1
+	},
+/turf/simulated/floor/plating,
+/area/endeavour/hallway/d2aftmaint)
 "uhO" = (
 /obj/structure/bed/chair,
 /obj/effect/floor_decal/corner/paleblue{
@@ -44529,7 +44602,7 @@ xVe
 xVe
 xcU
 xIf
-xIf
+mUB
 auj
 gUD
 xIf
@@ -45700,7 +45773,7 @@ qpq
 ejI
 pTU
 qpq
-qpq
+pJM
 qpq
 qpq
 qpq
@@ -48800,7 +48873,7 @@ iec
 iec
 iec
 iec
-iec
+ofA
 iec
 erm
 fqP
@@ -55400,7 +55473,7 @@ lTs
 tfp
 wMn
 oDd
-qgo
+sQG
 cHC
 cHC
 oDd
@@ -55786,7 +55859,7 @@ eXh
 qRh
 wgp
 oDd
-ePI
+uhK
 eEE
 uFa
 bYT
@@ -57690,7 +57763,7 @@ pRW
 qBd
 lmG
 uPt
-xIf
+kim
 hfm
 xIf
 uPt
@@ -58274,7 +58347,7 @@ pRW
 pRW
 uPt
 viH
-tzN
+jqP
 uPt
 kim
 xIf
@@ -58672,7 +58745,7 @@ vgs
 gUD
 xIf
 viH
-tzN
+jqP
 neh
 eEN
 hgr
@@ -61037,7 +61110,7 @@ bPE
 uOw
 lDm
 vYN
-kzb
+gsr
 vYN
 dic
 tGx
@@ -62966,11 +63039,11 @@ hlC
 wgF
 oDd
 oDd
-szh
+ppr
 qQK
 ojx
 cHC
-cHC
+ggW
 qBi
 oDd
 bFI
@@ -63733,7 +63806,7 @@ neh
 kLp
 cET
 yfn
-yfn
+jii
 ogd
 mDj
 tcy
@@ -68206,7 +68279,7 @@ nDt
 tUb
 oOZ
 iGp
-tqJ
+tgP
 tqJ
 eki
 qIW
