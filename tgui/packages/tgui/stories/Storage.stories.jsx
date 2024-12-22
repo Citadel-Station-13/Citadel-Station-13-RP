@@ -14,22 +14,25 @@ export const meta = {
   render: () => <Story />,
 };
 
+const storageProvider = Byond.BLINK ? window.domainStorage : window.localStorage;
+
 const Story = (props, context) => {
-  if (!window.localStorage) {
+  const storageName = Byond.BLINK ? "byondStorage" : "localStorage";
+  if (!storageProvider) {
     return (
       <NoticeBox>
-        Local storage is not available.
+        {storageName} is not available.
       </NoticeBox>
     );
   }
   return (
     <Section
-      title="Local Storage"
+      title={storageName}
       buttons={(
         <Button
           icon="recycle"
           onClick={() => {
-            localStorage.clear();
+            storageProvider.clear();
             storage.clear();
           }}>
           Clear
@@ -37,10 +40,11 @@ const Story = (props, context) => {
       )}>
       <LabeledList>
         <LabeledList.Item label="Keys in use">
-          {localStorage.length}
+          {storageProvider.length}
         </LabeledList.Item>
         <LabeledList.Item label="Remaining space">
-          {formatSiUnit(localStorage.remainingSpace, 0, 'B')}
+          {/* remainingSpace is ie proprietary thing, this approximation is good enough. 5000000 (5mb) is chrome max idk the webview max */}
+          {formatSiUnit(storageProvider?.remainingSpace ?? 5000000 - JSON.stringify(storageProvider).length, 0, 'B')}
         </LabeledList.Item>
       </LabeledList>
     </Section>

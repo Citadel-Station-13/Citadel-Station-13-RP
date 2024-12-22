@@ -7,17 +7,22 @@
  */
 
 export const IMPL_MEMORY = 0;
-export const IMPL_LOCAL_STORAGE = 1;
+export const IMPL_BROWSER_STORAGE = 1;
 export const IMPL_INDEXED_DB = 2;
 
 const INDEXED_DB_VERSION = 3;
 const INDEXED_DB_NAME = 'tgui-citadel-rp';
 const INDEXED_DB_STORE_NAME = 'tgui-storage';
 
+type StorageImplementation =
+  | typeof IMPL_MEMORY
+  | typeof IMPL_BROWSER_STORAGE
+  | typeof IMPL_INDEXED_DB;
+
 const READ_ONLY = 'readonly';
 const READ_WRITE = 'readwrite';
 
-const testGeneric = testFn => () => {
+const testGeneric = (testFn) => () => {
   try {
     return Boolean(testFn());
   }
@@ -26,11 +31,11 @@ const testGeneric = testFn => () => {
   }
 };
 
-// Localstorage can sometimes throw an error, even if DOM storage is not
-// disabled in IE11 settings.
-// See: https://superuser.com/questions/1080011
-const testLocalStorage = testGeneric(() => (
-  window.localStorage && window.localStorage.getItem
+const storageProvider = Byond.BLINK ? window.domainStorage : window.localStorage;
+
+// localStorage is only used when BLINK isnt set, else we use byondStorage
+const testBrowserStorage = testGeneric(() => (
+  storageProvider && storageProvider.getItem
 ));
 
 const testIndexedDb = testGeneric(() => (
@@ -38,58 +43,72 @@ const testIndexedDb = testGeneric(() => (
   && (window.IDBTransaction || window.msIDBTransaction)
 ));
 
-class MemoryBackend {
+interface StorageBackend {
+  get<T>(key: string): Promise<T>;
+  set(key: string, value: any): Promise<void>;
+  remove(key: string): Promise<void>;
+  clear(): Promise<void>;
+}
+
+class MemoryBackend implements StorageBackend {
+  private store: Record<string, any>;
+  public impl: StorageImplementation;
+
   constructor() {
     this.impl = IMPL_MEMORY;
     this.store = {};
   }
 
-  get(key) {
+  async get(key: string) {
     return this.store[key];
   }
 
-  set(key, value) {
+  async set(key: string, value: any) {
     this.store[key] = value;
   }
 
-  remove(key) {
+  async remove(key: string) {
     this.store[key] = undefined;
   }
 
-  clear() {
+  async clear() {
     this.store = {};
   }
 }
 
-class LocalStorageBackend {
+class BrowserStorageBackend implements StorageBackend {
+  public impl: StorageImplementation;
+
   constructor() {
-    this.impl = IMPL_LOCAL_STORAGE;
+    this.impl = IMPL_BROWSER_STORAGE;
   }
 
-  get(key) {
-    const value = localStorage.getItem(key);
+  async get(key: string) {
+    const value = storageProvider.getItem(key);
     if (typeof value === 'string') {
       return JSON.parse(value);
     }
   }
 
-  set(key, value) {
-    localStorage.setItem(key, JSON.stringify(value));
+  async set(key: string, value: any) {
+    storageProvider.setItem(key, JSON.stringify(value));
   }
 
-  remove(key) {
-    localStorage.removeItem(key);
+  async remove(key: string) {
+    storageProvider.removeItem(key);
   }
 
-  clear() {
-    localStorage.clear();
+  async clear() {
+    storageProvider.clear();
   }
 }
 
-class IndexedDbBackend {
+class IndexedDbBackend implements StorageBackend {
+  public impl: StorageImplementation;
+  public dbPromise: Promise<IDBDatabase>;
+
   constructor() {
     this.impl = IMPL_INDEXED_DB;
-    /** @type {Promise<IDBDatabase>} */
     this.dbPromise = new Promise((resolve, reject) => {
       const indexedDB = window.indexedDB || window.msIndexedDB;
       const req = indexedDB.open(INDEXED_DB_NAME, INDEXED_DB_VERSION);
@@ -108,22 +127,22 @@ class IndexedDbBackend {
     });
   }
 
-  getStore(mode) {
+  async getStore(mode: IDBTransactionMode) {
     return this.dbPromise.then(db => db
       .transaction(INDEXED_DB_STORE_NAME, mode)
       .objectStore(INDEXED_DB_STORE_NAME));
   }
 
-  async get(key) {
+  async get<T>(key: string) {
     const store = await this.getStore(READ_ONLY);
-    return new Promise((resolve, reject) => {
+    return new Promise<T>((resolve, reject) => {
       const req = store.get(key);
       req.onsuccess = () => resolve(req.result);
       req.onerror = () => reject(req.error);
     });
   }
 
-  async set(key, value) {
+  async set(key: string, value: any) {
     // The reason we don't _save_ null is because IE 10 does
     // not support saving the `null` type in IndexedDB. How
     // ironic, given the bug below!
@@ -136,7 +155,7 @@ class IndexedDbBackend {
     store.put(value, key);
   }
 
-  async remove(key) {
+  async remove(key: string) {
     // NOTE: We deliberately make this operation transactionless
     const store = await this.getStore(READ_WRITE);
     store.delete(key);
@@ -153,9 +172,15 @@ class IndexedDbBackend {
  * Web Storage Proxy object, which selects the best backend available
  * depending on the environment.
  */
-class StorageProxy {
+class StorageProxy implements StorageBackend {
+  private backendPromise: Promise<StorageBackend>;
+
   constructor() {
     this.backendPromise = (async () => {
+      // 515-516 compat: we want indexdb to load first if its ie but not when its chromium
+      if (!Byond.TRIDENT && testBrowserStorage()) {
+        return new BrowserStorageBackend();
+      }
       if (testIndexedDb()) {
         try {
           const backend = new IndexedDbBackend();
@@ -164,24 +189,28 @@ class StorageProxy {
         }
         catch {}
       }
-      if (testLocalStorage()) {
-        return new LocalStorageBackend();
+      // useless to load this again if webview fails
+      if (Byond.TRIDENT && testBrowserStorage()) {
+        return new BrowserStorageBackend();
       }
+      console.warn(
+        'No supported storage backend found. Using in-memory storage.',
+      );
       return new MemoryBackend();
     })();
   }
 
-  async get(key) {
+  async get<T>(key: string) {
     const backend = await this.backendPromise;
-    return backend.get(key);
+    return backend.get<T>(key);
   }
 
-  async set(key, value) {
+  async set(key: string, value: any) {
     const backend = await this.backendPromise;
     return backend.set(key, value);
   }
 
-  async remove(key) {
+  async remove(key: string) {
     const backend = await this.backendPromise;
     return backend.remove(key);
   }
