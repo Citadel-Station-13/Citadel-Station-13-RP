@@ -22,6 +22,7 @@
 /datum/outfit/job/station/outsider
 	name = OUTFIT_JOB_NAME("outsider")
 	id_type = /obj/item/card/id/assistant
+	l_ear = /obj/item/radio/headset/trader/outsider
 	shoes = /obj/item/clothing/shoes/black
 	uniform = /obj/item/clothing/under/laconic
 	suit = /obj/item/clothing/suit/storage/tajaran/jacket
@@ -30,6 +31,7 @@
 	pda_slot = SLOT_ID_BELT
 	pda_type = /obj/item/pda
 	flags = OUTFIT_HAS_BACKPACK|OUTFIT_COMPREHENSIVE_SURVIVAL
+	backpack_contents = (list/obj/item/spacecash/c200 = 1)
 
 /datum/prototype/struct/alt_title/contractor
 	title = "Contractor"
@@ -67,6 +69,8 @@
 
 /datum/outfit/job/station/outsider/tourist
 	id_pda_assignment = "Tourist"
+		accesory = /obj/item/clothing/accessory/hawaii/red
+		backpack_contents = (list/obj/item/spacecash/c200 = 2)
 
 /datum/outfit/job/station/outsider/indyreport
 	name = OUTFIT_JOB_NAME("Independant Reporter")

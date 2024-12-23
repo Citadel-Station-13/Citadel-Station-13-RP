@@ -742,7 +742,7 @@
 	access = list(165)
 
 /obj/item/card/id/external/nebula/room6
-	name = "Card to Room 5"
+	name = "Card to Room 6"
 	desc = "A card that grants usage of Room 6 of the Nebula Motel"
 	icon_state = "guest"
 	job_access_type = null
