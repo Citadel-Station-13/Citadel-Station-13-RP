@@ -122,7 +122,9 @@
 	// buttons
 	add_screen((button_swap_hand = new(null, src, number_of_hands)))
 	add_screen((button_equip_hand = new(null, src, number_of_hands)))
-	add_screen((button_drawer = new(null, src)))
+
+	if(length(inventory_slots_with_mappings))
+		add_screen((button_drawer = new(null, src)))
 
 	// slots
 	rebuild_slots(inventory_slots_with_mappings)

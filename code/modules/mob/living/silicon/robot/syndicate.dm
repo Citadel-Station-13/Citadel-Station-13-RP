@@ -16,7 +16,7 @@
 /mob/living/silicon/robot/syndicate/init()
 	aiCamera = new/obj/item/camera/siliconcam/robot_camera(src)
 
-	laws = new /datum/ai_laws/syndicate_override
+	laws = new /datum/ai_lawset/syndicate
 	cut_overlays()
 	init_id()
 	new /obj/item/robot_module/robot/syndicate(src)
