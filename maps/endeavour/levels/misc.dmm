@@ -146,9 +146,6 @@
 	},
 /turf/simulated/shuttle/floor,
 /area/shuttle/supply)
-"cJ" = (
-/turf/space,
-/area/space)
 "cU" = (
 /obj/structure/holostool,
 /obj/effect/floor_decal/carpet,
@@ -626,9 +623,10 @@
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/holodeck/source_emptycourt)
 "qb" = (
+/obj/map_helper/access_helper/airlock/station/external_airlock,
 /obj/machinery/conveyor{
-	dir = 4;
-	id = "QMLoad"
+	dir = 8;
+	id = "QMLoad2"
 	},
 /obj/machinery/door/airlock/glass_external{
 	frequency = 1380;
@@ -638,7 +636,6 @@
 	name = "Shuttle Hatch";
 	req_one_access = null
 	},
-/obj/map_helper/access_helper/airlock/station/external_airlock,
 /turf/simulated/shuttle/plating,
 /area/shuttle/supply)
 "qd" = (
@@ -2032,9 +2029,10 @@
 /turf/simulated/floor/holofloor/grass,
 /area/holodeck/holodorm/source_garden)
 "We" = (
+/obj/map_helper/access_helper/airlock/station/external_airlock,
 /obj/machinery/conveyor{
-	dir = 8;
-	id = "QMLoad2"
+	dir = 4;
+	id = "QMLoad"
 	},
 /obj/machinery/door/airlock/glass_external{
 	frequency = 1380;
@@ -2044,7 +2042,6 @@
 	name = "Shuttle Hatch";
 	req_one_access = null
 	},
-/obj/map_helper/access_helper/airlock/station/external_airlock,
 /turf/simulated/shuttle/plating,
 /area/shuttle/supply)
 "Ws" = (
@@ -22966,11 +22963,11 @@ oi
 RS
 pQ
 cI
-Us
+Ys
 pQ
 sZ
 pQ
-Ys
+Us
 cI
 RS
 RS
@@ -23160,11 +23157,11 @@ oi
 RS
 pQ
 pQ
-Us
-pQ
-pQ
-pQ
 Ys
+pQ
+pQ
+pQ
+Us
 pQ
 pQ
 HY
@@ -23354,11 +23351,11 @@ oi
 RS
 pQ
 pQ
-Us
-pQ
-pQ
-pQ
 Ys
+pQ
+pQ
+pQ
+Us
 pQ
 pQ
 HY
@@ -38720,9 +38717,9 @@ oi
 oi
 oi
 oi
-cJ
-cJ
-cJ
+oi
+oi
+oi
 oi
 oi
 oi
@@ -39101,10 +39098,10 @@ Uk
 oi
 oi
 oi
-cJ
-cJ
-cJ
-cJ
+oi
+oi
+oi
+oi
 oi
 oi
 oi

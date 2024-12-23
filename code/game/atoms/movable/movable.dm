@@ -153,16 +153,6 @@
 	 */
 	var/throw_speed_scaling_exponential = THROW_SPEED_SCALING_CONSTANT_DEFAULT
 
-	//? Colors
-	/**
-	 * used to store the different colors on an atom
-	 *
-	 * its inherent color, the colored paint applied on it, special color effect etc...
-	 */
-	var/list/atom_colours
-	/// use expensive color priority system
-	var/atom_colouration_system = FALSE
-
 	//? Emissives
 	/// Either FALSE, [EMISSIVE_BLOCK_GENERIC], or [EMISSIVE_BLOCK_UNIQUE]
 	var/blocks_emissive = FALSE
@@ -192,9 +182,6 @@
 
 /atom/movable/Initialize(mapload)
 	. = ..()
-	//atom color stuff
-	if(!isnull(color) && atom_colouration_system)
-		add_atom_colour(color, FIXED_COLOUR_PRIORITY)
 	// WARNING WARNING SHITCODE THIS MEANS THAT ONLY TURFS RECEIVE MAPLOAD ENTERED
 	// DO NOT RELY ON ENTERED
 	// TODO: what would tg do (but maybe not that much component signal abuse?)
@@ -548,84 +535,22 @@
 
 //? atom colors
 
-/**
- * getter for current color
- */
-/atom/movable/get_atom_colour()
+/atom/movable/get_atom_color()
 	return color
 
-/**
- * copies from other
- */
-/atom/movable/copy_atom_colour(atom/other, colour_priority)
-	if(!atom_colouration_system)
-		var/others = other.get_atom_colour()
-		if(isnull(others))
-			return
-		color = others
-		return
-	add_atom_colour(other.get_atom_colour(), colour_priority || FIXED_COLOUR_PRIORITY)
+/atom/movable/copy_atom_color(atom/other)
+	color = other.get_atom_color()
 
-/**
- * copies all from another movable
- */
-/atom/movable/proc/copy_atom_colours(atom/movable/other)
-	if(!atom_colouration_system)
-		return copy_atom_colour(other)
-	if(isnull(other.atom_colours))
-		return
-	atom_colours = other.atom_colours.Copy()
-	update_atom_colour()
+/atom/movable/add_atom_color(new_color)
+	color = new_color
 
-/// Adds an instance of colour_type to the atom's atom_colours list
-/atom/movable/add_atom_colour(coloration, colour_priority)
-	if(!coloration)
-		return
-	if(!atom_colouration_system)
-		color = coloration
-		return
-	if(colour_priority > COLOUR_PRIORITY_AMOUNT)
-		return
-	if(!atom_colours || !atom_colours.len)
-		atom_colours = list()
-		atom_colours.len = COLOUR_PRIORITY_AMOUNT //four priority levels currently.
-	atom_colours[colour_priority] = coloration
-	update_atom_colour()
-
-/// Removes an instance of colour_type from the atom's atom_colours list
-/atom/movable/remove_atom_colour(colour_priority, coloration)
-	if(!atom_colouration_system)
-		if(coloration && color != coloration)
-			return
-		if(isnull(color))
-			return
-		color = null
-		return
-	if(!islist(atom_colours))
-		return
-	if(colour_priority > COLOUR_PRIORITY_AMOUNT)
-		return
-	if(coloration && atom_colours[colour_priority] != coloration)
-		return //if we don't have the expected color (for a specific priority) to remove, do nothing
-	atom_colours[colour_priority] = null
-	update_atom_colour()
-
-/// Resets the atom's color to null, and then sets it to the highest priority colour available
-/atom/movable/update_atom_colour()
-	if(!atom_colouration_system)
-		return
-	if(!islist(atom_colours))
+/atom/movable/remove_atom_color(require_color)
+	if(require_color && color != require_color)
 		return
 	color = null
-	for(var/C in atom_colours)
-		if(islist(C))
-			var/list/L = C
-			if(L.len)
-				color = L
-				return
-		else if(C)
-			color = C
-			return
+
+/atom/movable/update_atom_color()
+	return
 
 //* Rendering *//
 
