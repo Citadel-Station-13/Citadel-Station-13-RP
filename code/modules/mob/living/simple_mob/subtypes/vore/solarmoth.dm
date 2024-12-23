@@ -131,11 +131,10 @@
 	original_temp = heating_power //We remember our old goal, for use in non perpetual heating level increase
 
 /mob/living/simple_mob/vore/solarmoth/proc/explode()
-	src.anchored = 0
+	set_anchored(FALSE)
 	set_light(0)
 	if(empulse(src, emp_heavy, emp_med, emp_light, emp_long))
 		qdel(src)
-	return
 
 /mob/living/simple_mob/vore/solarmoth/death()
 	explode()
@@ -145,15 +144,11 @@
 	explode()
 	..()
 
-
 /mob/living/simple_mob/vore/solarmoth/handle_light()
 	. = ..()
 	if(. == 0 && !is_dead())
 		set_light(9.5, 1, mycolour) //9.5 makes the brightness range super huge.
 		return 1
-
-
-/mob/living/simple_mob/vore/solarmoth //active noms
 
 /mob/living/simple_mob/vore/solarmoth/lunarmoth
 	name = "Lunarmoth"

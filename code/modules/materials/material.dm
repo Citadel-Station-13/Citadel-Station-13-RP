@@ -132,6 +132,16 @@
 	/// material constraint flags - what we are considered
 	var/material_constraints = NONE
 
+	//* Icon *//
+	/// Icon file. This is used for many miscellaneous states defined here.
+	var/icon
+	/// Count, from 1 to N, of stack states.
+	/// * If 3, and there's a stack of 50, we'll be `stack-1` from 1 to around 17, `stack-2`
+	///   from 18 to around 35, and `stack-3` for the rest.
+	/// * If null, no stack states are provided.
+	/// * If provided, a raw `stack` state should always be provided for on-map and in-UI previews.
+	var/icon_stack_count
+
 	//* Traits
 	/// Material traits - set to list of paths to instance on New / register; associate them to their initial data.
 	var/list/material_traits
