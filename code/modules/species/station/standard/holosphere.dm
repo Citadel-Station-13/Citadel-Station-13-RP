@@ -17,6 +17,8 @@
 
 	total_health = 20
 
+	hunger_factor = 0 // doesn't get hungry naturally, but instead when healing they use nutrition
+
 	has_organ = list(
 		O_HEART     = /obj/item/organ/internal/heart,
 		O_LUNGS     = /obj/item/organ/internal/lungs,
