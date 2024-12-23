@@ -59,15 +59,17 @@
 	H.pulledby?.stop_pulling()
 	H.stop_pulling()
 
-	// handle radio
-	if(isnull(M.mob_radio) && istype(H.l_ear, /obj/item/radio))
-		M.mob_radio = H.l_ear
-		if(!transfer_item_to_loc(H.l_ear, M, INV_OP_FORCE | INV_OP_SHOULD_NOT_INTERCEPT | INV_OP_SILENT))
-			M.mob_radio = null
-	if(isnull(M.mob_radio) && istype(H.r_ear, /obj/item/radio))
-		M.mob_radio = H.r_ear
-		if(!transfer_item_to_loc(H.r_ear, M, INV_OP_FORCE | INV_OP_SHOULD_NOT_INTERCEPT | INV_OP_SILENT))
-			M.mob_radio = null
+	// handle radio if we're a simple mob
+	var/mob/living/simple_mob/S = M
+	if(istype(S))
+		if(isnull(S.mob_radio) && istype(H.l_ear, /obj/item/radio))
+			S.mob_radio = H.l_ear
+			if(!H.transfer_item_to_loc(H.l_ear, M, INV_OP_FORCE | INV_OP_SHOULD_NOT_INTERCEPT | INV_OP_SILENT))
+				S.mob_radio = null
+		if(isnull(S.mob_radio) && istype(H.r_ear, /obj/item/radio))
+			S.mob_radio = H.r_ear
+			if(!H.transfer_item_to_loc(H.r_ear, M, INV_OP_FORCE | INV_OP_SHOULD_NOT_INTERCEPT | INV_OP_SILENT))
+				S.mob_radio = null
 
 	// handle languages
 	for(var/datum/prototype/language/L in H.languages)
@@ -83,14 +85,16 @@
 	H.buckled?.unbuckle_mob(H, BUCKLE_OP_FORCE)
 	H.unbuckle_all_mobs(BUCKLE_OP_FORCE)
 	H.pulledby?.stop_pulling()
-	stop_pulling()
+	H.stop_pulling()
 
-	if(!isnull(M.mob_radio))
-		if(!H.equip_to_slots_if_possible(M.mob_radio, list(
-			/datum/inventory_slot/inventory/ears/left,
-			/datum/inventory_slot/inventory/ears/right,
-		)))
-			M.mob_radio.forceMove(reform_spot)
-		M.mob_radio = null
+	var/mob/living/simple_mob/S = M
+	if(istype(S))
+		if(!isnull(S.mob_radio))
+			if(!H.equip_to_slots_if_possible(S.mob_radio, list(
+				/datum/inventory_slot/inventory/ears/left,
+				/datum/inventory_slot/inventory/ears/right,
+			)))
+				S.mob_radio.forceMove(get_turf(H))
+			S.mob_radio = null
 
 	M.transfer_client_to(H)
