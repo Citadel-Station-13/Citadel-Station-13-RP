@@ -138,6 +138,10 @@
 	icon_state = "1-2"
 	},
 /obj/machinery/door/firedoor,
+/obj/machinery/door/airlock/glass/engineering{
+	name = "Engineering Hallway";
+	req_one_access = null
+	},
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d4starboardhall)
 "ahH" = (
@@ -1022,6 +1026,19 @@
 /obj/map_helper/access_helper/airlock/station/maintenance,
 /turf/simulated/floor/plating,
 /area/endeavour/hallway/d4aftmaint)
+"bfu" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/door/firedoor{
+	dir = 8
+	},
+/obj/structure/disposalpipe/segment,
+/obj/machinery/door/airlock/glass/engineering{
+	name = "Engineering Hallway";
+	req_one_access = null
+	},
+/turf/simulated/floor/tiled/steel,
+/area/endeavour/hallway/d4starboardamidhall)
 "bfx" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -1539,6 +1556,10 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
+/obj/machinery/door/airlock/glass/engineering{
+	name = "Engineering Hallway";
+	req_one_access = null
+	},
 /turf/simulated/floor/tiled/steel_ridged,
 /area/endeavour/hallway/d4starboardhall)
 "bNS" = (
@@ -1924,8 +1945,7 @@
 /area/endeavour/hallway/d4starboardamidhall)
 "ckl" = (
 /obj/machinery/light{
-	dir = 4;
-	pixel_x = 10
+	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/door/airlock/glass/research{
@@ -2297,8 +2317,7 @@
 /area/rnd/robotics/smallcraft)
 "cGm" = (
 /obj/machinery/light{
-	dir = 4;
-	pixel_x = 10
+	dir = 4
 	},
 /obj/machinery/computer/atmos_alert{
 	dir = 8
@@ -2872,6 +2891,7 @@
 /area/engineering/atmos)
 "dtj" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/effect/paint/sun,
 /turf/simulated/floor/wood,
 /area/engineering/hallway/lower)
 "dtD" = (
@@ -3140,6 +3160,10 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/machinery/door/airlock/glass/engineering{
+	name = "Engineering Hallway";
+	req_one_access = null
+	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/endeavour/hallway/d4portamidhall)
 "dRg" = (
@@ -3323,8 +3347,7 @@
 	dir = 8
 	},
 /obj/machinery/light{
-	dir = 8;
-	pixel_x = -10
+	dir = 8
 	},
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -3587,6 +3610,10 @@
 	dir = 8
 	},
 /obj/machinery/door/firedoor,
+/obj/machinery/door/airlock/glass/engineering{
+	name = "Engineering Hallway";
+	req_one_access = null
+	},
 /turf/simulated/floor/tiled/steel_ridged,
 /area/endeavour/hallway/d4portamidhall)
 "etE" = (
@@ -3608,6 +3635,7 @@
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/effect/paint/sun,
 /turf/simulated/floor/wood,
 /area/engineering/hallway/lower)
 "euv" = (
@@ -4494,8 +4522,7 @@
 /area/endeavour/hallway/d4fwdmaint)
 "fwT" = (
 /obj/machinery/light{
-	dir = 4;
-	pixel_x = 10
+	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/door/airlock/glass/research{
@@ -5168,6 +5195,7 @@
 /area/endeavour/command/turrets)
 "gtb" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/effect/paint/sun,
 /turf/simulated/floor/wood,
 /area/endeavour/station/stairs_four)
 "gtA" = (
@@ -6417,9 +6445,6 @@
 	dir = 4
 	},
 /obj/machinery/light/no_nightshift,
-/obj/machinery/computer/crew{
-	dir = 1
-	},
 /turf/simulated/floor/tiled/techfloor,
 /area/endeavour/command/turrets)
 "hKp" = (
@@ -6493,8 +6518,7 @@
 	dir = 4
 	},
 /obj/machinery/light{
-	dir = 4;
-	use_power = 0
+	dir = 4
 	},
 /obj/machinery/door/firedoor{
 	dir = 8
@@ -6628,8 +6652,7 @@
 	dir = 4
 	},
 /obj/machinery/light{
-	dir = 4;
-	use_power = 0
+	dir = 4
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/endeavour/hallway/d4starboardamidhall)
@@ -6860,8 +6883,7 @@
 /area/endeavour/hallway/d4aftmaint)
 "ikC" = (
 /obj/machinery/light{
-	dir = 1;
-	pixel_y = 20
+	dir = 1
 	},
 /turf/simulated/floor/plating,
 /area/endeavour/hallway/d4aftmaint)
@@ -7035,6 +7057,7 @@
 /area/ai_upload_foyer)
 "ixU" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/effect/paint/sun,
 /turf/simulated/floor/wood,
 /area/engineering/break_room)
 "iyC" = (
@@ -7175,6 +7198,10 @@
 	},
 /obj/machinery/door/firedoor{
 	dir = 8
+	},
+/obj/machinery/door/airlock/glass/engineering{
+	name = "Engineering Hallway";
+	req_one_access = null
 	},
 /turf/simulated/floor/tiled/steel_ridged,
 /area/endeavour/hallway/d4starboardamidhall)
@@ -8529,6 +8556,25 @@
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/endeavour/hallway/d4portforhall)
+"kna" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/obj/machinery/door/firedoor{
+	dir = 8
+	},
+/obj/machinery/door/airlock/glass/engineering{
+	name = "Engineering Hallway";
+	req_one_access = null
+	},
+/turf/simulated/floor/tiled/steel,
+/area/endeavour/hallway/d4starboardamidhall)
 "knf" = (
 /turf/simulated/wall/r_wall/prepainted,
 /area/rnd/robotics/smallcraft)
@@ -8544,6 +8590,10 @@
 	dir = 4
 	},
 /obj/machinery/door/firedoor,
+/obj/machinery/door/airlock/glass/engineering{
+	name = "Engineering Hallway";
+	req_one_access = null
+	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/endeavour/hallway/d4portamidhall)
 "koO" = (
@@ -9702,6 +9752,10 @@
 /obj/machinery/door/firedoor{
 	dir = 8
 	},
+/obj/machinery/door/airlock/glass/engineering{
+	name = "Engineering Hallway";
+	req_one_access = null
+	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/endeavour/hallway/d4starboardamidhall)
 "lRa" = (
@@ -10024,8 +10078,7 @@
 /area/endeavour/hallway/d4porthall)
 "mel" = (
 /obj/machinery/light{
-	dir = 8;
-	pixel_x = -10
+	dir = 8
 	},
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d4fwdhall)
@@ -10420,8 +10473,7 @@
 	dir = 8
 	},
 /obj/machinery/light{
-	dir = 8;
-	pixel_x = -10
+	dir = 8
 	},
 /obj/machinery/camera/network/engineering{
 	dir = 4
@@ -10483,6 +10535,10 @@
 /obj/machinery/door/firedoor,
 /obj/structure/cable/orange{
 	icon_state = "1-2"
+	},
+/obj/machinery/door/airlock/glass/engineering{
+	name = "Engineering Hallway";
+	req_one_access = null
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/endeavour/hallway/d4starboardhall)
@@ -12136,14 +12192,14 @@
 /turf/simulated/floor/tiled/steel,
 /area/tcommsat/computer)
 "oyc" = (
-/obj/machinery/computer/transhuman/resleeving{
-	dir = 1
-	},
 /obj/effect/floor_decal/corner/paleblue{
 	dir = 10
 	},
 /obj/machinery/newscaster{
 	pixel_y = -32
+	},
+/obj/machinery/computer/mecha{
+	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/endeavour/command/turrets)
@@ -12275,19 +12331,6 @@
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/atmos)
-"oLT" = (
-/obj/effect/floor_decal/borderfloorblack{
-	dir = 4
-	},
-/obj/effect/floor_decal/corner/lightorange/border{
-	dir = 4
-	},
-/obj/machinery/light{
-	dir = 4;
-	use_power = 0
-	},
-/turf/simulated/floor/tiled/steel_ridged,
-/area/endeavour/hallway/d4portamidhall)
 "oNF" = (
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging{
 	dir = 9
@@ -12313,6 +12356,10 @@
 	},
 /obj/machinery/door/firedoor,
 /obj/structure/disposalpipe/segment,
+/obj/machinery/door/airlock/glass/engineering{
+	name = "Engineering Hallway";
+	req_one_access = null
+	},
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d4portamidhall)
 "oPx" = (
@@ -13947,6 +13994,25 @@
 	},
 /turf/simulated/floor/tiled/monowhite,
 /area/engineering/drone_fabrication)
+"rbd" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/machinery/door/firedoor{
+	dir = 8
+	},
+/obj/machinery/door/airlock/glass/engineering{
+	name = "Engineering Hallway";
+	req_one_access = null
+	},
+/turf/simulated/floor/tiled/steel,
+/area/endeavour/hallway/d4portamidhall)
 "rbo" = (
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/corner/lightorange/border,
@@ -14449,6 +14515,10 @@
 /obj/effect/floor_decal/corner/lightorange/border,
 /obj/machinery/door/firedoor{
 	dir = 8
+	},
+/obj/machinery/door/airlock/glass/engineering{
+	name = "Engineering Hallway";
+	req_one_access = null
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/endeavour/hallway/d4starboardamidhall)
@@ -16902,6 +16972,10 @@
 /obj/machinery/door/firedoor{
 	dir = 8
 	},
+/obj/machinery/door/airlock/glass/engineering{
+	name = "Engineering Hallway";
+	req_one_access = null
+	},
 /turf/simulated/floor/tiled/steel_ridged,
 /area/endeavour/hallway/d4portamidhall)
 "vkW" = (
@@ -17634,8 +17708,7 @@
 	},
 /obj/structure/catwalk,
 /obj/machinery/light{
-	dir = 4;
-	use_power = 0
+	dir = 4
 	},
 /turf/simulated/floor/plating,
 /area/engineering/engine_smes)
@@ -18404,8 +18477,7 @@
 /area/endeavour/command/turrets)
 "wSS" = (
 /obj/machinery/light{
-	dir = 4;
-	pixel_x = 10
+	dir = 4
 	},
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d4fwdhall)
@@ -18865,8 +18937,7 @@
 /area/engineering/drone_fabrication)
 "xwH" = (
 /obj/machinery/light{
-	dir = 4;
-	pixel_x = 10
+	dir = 4
 	},
 /obj/machinery/computer/rcon{
 	dir = 8
@@ -19486,6 +19557,10 @@
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 8
+	},
+/obj/machinery/door/airlock/glass/engineering{
+	name = "Engineering Hallway";
+	req_one_access = null
 	},
 /turf/simulated/floor/tiled/steel_ridged,
 /area/endeavour/hallway/d4starboardamidhall)
@@ -36366,7 +36441,7 @@ vzj
 odE
 puY
 jnR
-jsW
+bfu
 jnR
 jnR
 nRE
@@ -36550,7 +36625,7 @@ hOe
 rAC
 bSY
 rAC
-oLT
+kSz
 gPH
 xbS
 gPH
@@ -36738,7 +36813,7 @@ wiw
 xsV
 xsV
 vkt
-bmK
+rbd
 dQV
 etM
 etM
@@ -36752,7 +36827,7 @@ aQf
 aQf
 aQf
 yhC
-avq
+kna
 rRU
 xsV
 xsV

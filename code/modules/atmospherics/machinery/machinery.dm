@@ -19,7 +19,6 @@ Pipelines + Other Objects -> Pipe network
 	obj_flags = OBJ_ON_BLUEPRINTS | OBJ_MELEE_TARGETABLE
 	// why block contents? so you ventcrawling little fucks don't pull a 2020 Citadel Main.
 	rad_flags = RAD_BLOCK_CONTENTS | RAD_NO_CONTAMINATE
-	atom_colouration_system = FALSE
 	climb_allowed = FALSE
 	depth_projected = FALSE
 	hides_underfloor = OBJ_UNDERFLOOR_UNLESS_PLACED_ONTOP

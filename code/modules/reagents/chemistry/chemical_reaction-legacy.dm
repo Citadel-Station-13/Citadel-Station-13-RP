@@ -228,7 +228,7 @@
 	name = "Myelamine"
 	id = "myelamine"
 	result = "myelamine"
-	required_reagents = list("bicaridine" = 1, MAT_IRON = 2, "spidertoxin" = 1)
+	required_reagents = list("bicaridine" = 1, "calcium" = 2, "spidertoxin" = 1)
 	result_amount = 2
 
 /datum/chemical_reaction/imidazoline
