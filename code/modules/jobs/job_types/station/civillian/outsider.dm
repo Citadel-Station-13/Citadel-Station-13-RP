@@ -69,8 +69,6 @@
 
 /datum/outfit/job/station/outsider/tourist
 	id_pda_assignment = "Tourist"
-		accesory = /obj/item/clothing/accessory/hawaii/red
-		backpack_contents = (list/obj/item/spacecash/c200 = 2)
 
 /datum/outfit/job/station/outsider/indyreport
 	name = OUTFIT_JOB_NAME("Independant Reporter")
