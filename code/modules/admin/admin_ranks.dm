@@ -115,7 +115,7 @@ var/list/admin_ranks = list()								//list of all ranks with associated rights
 			return
 
 		var/datum/db_query/query = SSdbcore.RunQuery(
-			"SELECT ckey, rank, level, flags FROM [format_table_name("admin")]",
+			"SELECT ckey, rank, level, flags FROM [DB_PREFIX_TABLE_NAME("admin")]",
 			list()
 		)
 

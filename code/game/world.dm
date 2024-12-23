@@ -410,15 +410,11 @@ GLOBAL_LIST(topic_status_cache)
 
 	status = .
 
-/world/proc/update_hub_visibility(new_value)					//CITADEL PROC: TG's method of changing visibility
-	if(new_value)				//I'm lazy so this is how I wrap it to a bool number
-		new_value = TRUE
-	else
-		new_value = FALSE
-	if(new_value == visibility)
+/world/proc/update_hub_visibility(new_visibility)
+	if(new_visibility == visibility)
 		return
 
-	visibility = new_value
+	visibility = new_visibility
 	if(visibility)
 		hub_password = "kMZy3U5jJHSiBQjr"
 	else
