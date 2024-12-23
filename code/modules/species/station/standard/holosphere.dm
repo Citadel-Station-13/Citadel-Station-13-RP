@@ -197,10 +197,10 @@
 	if(holosphere_shell.stat != DEAD)
 		H.revive(full_heal = TRUE)
 		var/regenmsg = "<span class='userdanger'>Emitters have returned online. Systems functional.</span>"
-		to_chat(H, regenmsg)
+		to_chat(holosphere_shell, regenmsg)
 
 /datum/species/holosphere/verb/disable_hologram(mob/living/carbon/human/H)
-	transform_component.try_untransform()
+	transform_component.try_transform()
 
 /// holosphere 'sphere'
 /mob/living/simple_mob/holosphere_shell
@@ -240,8 +240,8 @@
 	// the human we belong to
 	var/mob/living/carbon/human/hologram
 
-/mob/living/simple_mob/holosphere_shell/verb/enable_hologram(mob/living/carbon/human/H)
-	transform_component.try_transform()
+/mob/living/simple_mob/holosphere_shell/verb/enable_hologram()
+	transform_component.try_untransform()
 
 // same way pAI space movement works in pai/mobility.dm
 /mob/living/simple_mob/holosphere_shell/Process_Spacemove(movement_dir = NONE)
