@@ -195,7 +195,7 @@
 	holosphere_shell.afflict_stun(hologram_death_duration)
 	sleep(hologram_death_duration)
 	if(holosphere_shell.stat != DEAD)
-		H.revive(full_heal = TRUE)
+		H.revive(force = TRUE, full_heal = TRUE)
 		var/regenmsg = "<span class='userdanger'>Emitters have returned online. Systems functional.</span>"
 		to_chat(holosphere_shell, regenmsg)
 
