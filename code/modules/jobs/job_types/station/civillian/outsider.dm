@@ -31,7 +31,7 @@
 	pda_slot = SLOT_ID_BELT
 	pda_type = /obj/item/pda
 	flags = OUTFIT_HAS_BACKPACK|OUTFIT_COMPREHENSIVE_SURVIVAL
-	backpack_contents = (list/obj/item/spacecash/c200 = 1)
+	backpack_contents = (/obj/item/spacecash/c200 = 1)
 
 /datum/prototype/struct/alt_title/contractor
 	title = "Contractor"
