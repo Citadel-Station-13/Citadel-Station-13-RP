@@ -180,6 +180,14 @@
 	/// Relative layer - position this atom should be in within things of the same base layer. defaults to 0.
 	var/relative_layer = 0
 
+	//? Chat colors cache
+	/// Last name used to calculate a color for the chatmessage overlays
+	var/chat_color_name
+	/// Last color calculated for the the chatmessage overlays
+	var/chat_color
+	/// A luminescence-shifted value of the last color calculated for chatmessage overlays
+	var/chat_color_darkened
+
 	//? Pixel Offsets
 	/// Default pixel x shifting for the atom's icon.
 	var/base_pixel_x = 0
@@ -550,13 +558,26 @@
 	else
 		return 0
 
-/// Show a message to all mobs and objects in sight of this atom
-/// Use for objects performing visible actions
-/// message is output to anyone who can see, e.g. "The [src] does something!"
-/// blind_message (optional) is what blind people will hear e.g. "You hear something!"
-// todo: refactor
+/**
+ * Generate a visible message from this atom
+ *
+ * Show a message to all player mobs who sees this atom
+ *
+ * Show a message to the src mob (if the src is a mob)
+ *
+ * Use for atoms performing visible actions
+ *
+ * message is output to anyone who can see, e.g. `"The [src] does something!"`
+ *
+ * Vars:
+ * * message is the message output to anyone who can see.
+ * * self_message (optional) is what the src mob sees e.g. "You do something!"
+ * * blind_message (optional) is what blind people will hear e.g. "You hear something!"
+ * * range (optional) define how many tiles away the message can be seen.
+ */
 /atom/proc/visible_message(message, self_message, blind_message, range = world.view)
 	var/list/see
+
 	//! LEGACY
 	if(isbelly(loc))
 		var/obj/belly/B = loc
@@ -564,6 +585,7 @@
 	else
 		see = get_hearers_in_view(range, src)
 	//! end
+
 	for(var/atom/movable/AM as anything in see)
 		if(ismob(AM))
 			var/mob/M = AM
@@ -573,6 +595,9 @@
 				M.show_message(message, 1, blind_message, 2)
 			else if(blind_message)
 				M.show_message(blind_message, 2)
+
+			if(!M.is_blind() && M.client)
+				M.create_chat_message(src, raw_message = message)
 		else
 			AM.show_message(message, 1, blind_message, 2)
 
@@ -580,15 +605,19 @@
 /atom/movable/proc/show_message(msg, type, alt, alt_type)//Message, type of message (1 or 2), alternative message, alt message type (1 or 2)
 	return
 
-/// Show a message to all mobs and objects in earshot of this atom
-/// Use for objects performing audible actions
-/// message is the message output to anyone who can hear.
-/// deaf_message (optional) is what deaf people will see.
-/// hearing_distance (optional) is the range, how many tiles away the message can be heard.
-/atom/proc/audible_message(var/message, var/deaf_message, var/hearing_distance, datum/prototype/language/lang)
-
-	var/range = hearing_distance || world.view
-	var/list/hear = get_mobs_and_objs_in_view_fast(get_turf(src),range,remote_ghosts = FALSE)
+/**
+ * Show a message to all mobs in earshot of this atom
+ *
+ * Use for objects performing audible actions
+ *
+ * vars:
+ * * message is the message output to anyone who can hear.
+ * * deaf_message (optional) is what deaf people will see.
+ * * hearing_distance (optional) is the range, how many tiles away the message can be heard.
+ * * lang (optional) our language
+ */
+/atom/proc/audible_message(message, deaf_message, hearing_distance = world.view, datum/prototype/language/lang)
+	var/list/hear = get_mobs_and_objs_in_view_fast(get_turf(src), hearing_distance, remote_ghosts = FALSE)
 
 	var/list/hearing_mobs = hear["mobs"]
 	var/list/hearing_objs = hear["objs"]
@@ -597,16 +626,16 @@
 		var/obj/O = obj
 		O.show_message(message, 2, deaf_message, 1)
 
-	var/no_runechat = FALSE
 	for(var/mob in hearing_mobs)
 		var/mob/M = mob
 		var/msg = message
 		if(lang && !(lang.name in M.languages))
 			msg = lang.scramble(msg)
 		M.show_message(msg, 2, deaf_message, 1)
+		// code above scrambles it
+		if(!M.is_blind() && M.client)
+			M.create_chat_message(src, raw_message = (message ? msg : deaf_message))
 		heard_to_floating_message += M
-	if(!no_runechat && ismovable(src))
-		INVOKE_ASYNC(src, TYPE_PROC_REF(/atom/movable, animate_chat), (message ? message : deaf_message), null, FALSE, heard_to_floating_message, 30)
 
 /atom/movable/proc/dropInto(var/atom/destination)
 	while(istype(destination))

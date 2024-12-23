@@ -19127,7 +19127,6 @@
 	dir = 1
 	},
 /obj/machinery/status_display/supply_display{
-	mode = 99;
 	pixel_y = 32
 	},
 /turf/simulated/floor/tiled/dark,
@@ -21662,7 +21661,6 @@
 	dir = 1
 	},
 /obj/machinery/status_display/supply_display{
-	mode = 99;
 	pixel_y = 32
 	},
 /turf/simulated/floor/tiled/dark,
@@ -24794,7 +24792,6 @@
 /area/quartermaster/qm)
 "qLx" = (
 /obj/machinery/status_display/supply_display{
-	mode = 99;
 	pixel_y = 32
 	},
 /obj/structure/table/wooden_reinforced,
@@ -25267,7 +25264,6 @@
 /area/quartermaster/qm)
 "rdv" = (
 /obj/machinery/status_display/supply_display{
-	mode = 99;
 	pixel_y = 32
 	},
 /obj/effect/floor_decal/borderfloorblack{
@@ -30596,7 +30592,6 @@
 	},
 /obj/structure/bed/chair/sofa/black/left,
 /obj/machinery/status_display/supply_display{
-	mode = 99;
 	pixel_y = 32
 	},
 /turf/simulated/floor/tiled/dark,
@@ -33238,7 +33233,6 @@
 	dir = 1
 	},
 /obj/machinery/status_display/supply_display{
-	mode = 99;
 	pixel_y = 32
 	},
 /turf/simulated/floor/tiled/monodark,
@@ -34616,7 +34610,6 @@
 	dir = 10
 	},
 /obj/machinery/status_display/supply_display{
-	mode = 99;
 	pixel_y = 0;
 	pixel_x = -32
 	},
