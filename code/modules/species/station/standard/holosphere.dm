@@ -72,13 +72,13 @@
 		SLOT_ID_BELT    = /obj/item/storage/belt/chameleon/holosphere
 	)
 	var/list/equipped_chameleon_gear = list()
-	var/shield_health = HOLOGRAM_SHIELD_MAX_HEALTH
 
 	var/cached_loadout_flags
 	var/cached_loadout_role
 
 	var/datum/component/custom_transform/transform_component
 	var/mob/living/simple_mob/holosphere_shell/holosphere_shell
+	var/hologram_death_duration = 10 SECONDS
 
 /datum/species/holosphere/on_apply(mob/living/carbon/human/H)
 	. = ..()
@@ -86,6 +86,8 @@
 	RegisterSignal(H, COMSIG_HUMAN_EQUIPPING_LOADOUT, PROC_REF(handle_hologram_loadout))
 	holosphere_shell = new(H)
 	transform_component = H.AddComponent(/datum/component/custom_transform, holosphere_shell, null, null, FALSE)
+	holosphere_shell.transform_component = transform_component
+	holosphere_shell.hologram = H
 
 /datum/species/holosphere/on_remove(mob/living/carbon/human/H)
 	. = ..()
@@ -187,10 +189,15 @@
 	var/deathmsg = "<span class='userdanger'>Systems critically damaged. Emitters temporarily offline.</span>"
 	to_chat(H, deathmsg)
 	transform_component.try_transform()
-	sleep(10 SECONDS)
-	H.revive(full_heal = TRUE)
-	var/regenmsg = "<span class='userdanger'>Emitters have returned online. Systems functional.</span>"
-	to_chat(H, regenmsg)
+	holosphere_shell.afflict_stun(hologram_death_duration)
+	sleep(hologram_death_duration)
+	if(holosphere_shell.stat != DEAD)
+		H.revive(full_heal = TRUE)
+		var/regenmsg = "<span class='userdanger'>Emitters have returned online. Systems functional.</span>"
+		to_chat(H, regenmsg)
+
+/datum/species/holosphere/verb/disable_hologram(mob/living/carbon/human/H)
+	transform_component.try_untransform()
 
 /// holosphere 'sphere'
 /mob/living/simple_mob/holosphere_shell
@@ -225,10 +232,18 @@
 	// space movement related
 	var/last_space_movement = 0
 
+	// the transform component we are used with
+	var/datum/component/custom_transform/transform_component
+	// the human we belong to
+	var/mob/living/carbon/human/hologram
+
+/mob/living/simple_mob/holosphere_shell/verb/enable_hologram(mob/living/carbon/human/H)
+	transform_component.try_transform()
+
 // same way pAI space movement works in pai/mobility.dm
 /mob/living/simple_mob/holosphere_shell/Process_Spacemove(movement_dir = NONE)
 	. = ..()
-	if(!. && src.loc != shell)
+	if(!. && src.loc != hologram)
 		if(world.time >= last_space_movement + 3 SECONDS)
 			last_space_movement = world.time
 			// place an effect for the movement
