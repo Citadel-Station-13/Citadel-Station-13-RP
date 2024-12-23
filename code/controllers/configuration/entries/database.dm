@@ -4,9 +4,6 @@
 /datum/config_entry/string/sql_server_prefix
 	protection = CONFIG_ENTRY_LOCKED
 
-/datum/config_entry/string/sql_unified_prefix
-	protection = CONFIG_ENTRY_LOCKED
-
 /datum/config_entry/string/sql_address
 	protection = CONFIG_ENTRY_HIDDEN | CONFIG_ENTRY_LOCKED
 	config_entry_value = "localhost"

@@ -1,5 +1,6 @@
 /obj/item/paper_bin
 	name = "paper bin"
+	desc = "Contains all the paper you'll never need."
 	icon = 'icons/obj/bureaucracy.dmi'
 	icon_state = "paper_bin1"
 	item_icons = list(
@@ -17,6 +18,10 @@
 	var/list/papers = new/list()	//List of papers put in the bin for reference.
 	drop_sound = 'sound/items/drop/cardboardbox.ogg'
 	pickup_sound = 'sound/items/pickup/cardboardbox.ogg'
+
+/obj/item/paper_bin/Destroy()
+	QDEL_LIST(papers)
+	return ..()
 
 /obj/item/paper_bin/OnMouseDropLegacy(mob/user as mob)
 	if((user == usr && (!( usr.restrained() ) && (!( usr.stat ) && (usr.contents.Find(src) || in_range(src, usr))))))

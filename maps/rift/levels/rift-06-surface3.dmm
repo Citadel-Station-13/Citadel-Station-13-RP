@@ -16937,6 +16937,23 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/bar/lower)
+"byF" = (
+/obj/machinery/door/blast/regular{
+	density = 0;
+	dir = 4;
+	icon_state = "pdoor0";
+	id = "shuttle blast";
+	name = "Shuttle Blast Doors";
+	opacity = 0
+	},
+/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/effect/paint_stripe/violet,
+/obj/structure/disposalpipe/segment{
+	dir = 4;
+	icon_state = "pipe-c"
+	},
+/turf/simulated/floor/plating,
+/area/shuttle/excursion/cargo)
 "bBv" = (
 /obj/map_helper/airlock/door/int_door,
 /obj/structure/cable/green{
@@ -17041,6 +17058,15 @@
 /obj/structure/flora/tree/pine,
 /turf/simulated/floor/outdoors/snow/noblend/lythios43c,
 /area/rift/surfacebase/outside/outside3)
+"bKl" = (
+/obj/effect/paint/black,
+/obj/effect/paint_stripe/violet,
+/obj/structure/disposalpipe/segment,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/simulated/wall/rshull,
+/area/shuttle/excursion/cargo)
 "bKm" = (
 /obj/structure/flora/grass/both{
 	pixel_x = 6;
@@ -25273,6 +25299,14 @@
 /obj/effect/debris/cleanable/blood/oil/streak,
 /turf/simulated/floor,
 /area/shuttle/oldcentury)
+"qss" = (
+/obj/effect/paint/black,
+/obj/effect/paint_stripe/violet,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/simulated/wall/rshull,
+/area/shuttle/excursion/cargo)
 "qsA" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
@@ -28677,6 +28711,10 @@
 "wJJ" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
 /obj/effect/paint_stripe/violet,
+/obj/structure/disposalpipe/segment{
+	dir = 4;
+	icon_state = "pipe-c"
+	},
 /turf/simulated/floor/plating,
 /area/shuttle/excursion/cargo)
 "wKU" = (
@@ -44268,7 +44306,7 @@ oGm
 oGm
 afV
 aQn
-mHU
+byF
 avr
 amn
 aej
@@ -44462,7 +44500,7 @@ axn
 lxt
 dcP
 wJJ
-lxt
+bKl
 azE
 amn
 aej
@@ -44656,7 +44694,7 @@ aHo
 aYI
 afV
 aVj
-lxt
+qss
 lxt
 amn
 aej

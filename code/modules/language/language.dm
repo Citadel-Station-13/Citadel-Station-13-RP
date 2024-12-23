@@ -232,7 +232,7 @@
 // Language handling.
 /mob/proc/add_language(var/language)
 
-	var/datum/prototype/language/new_language = RSlanguages.fetch(language) || RSlanguages.legacy_resolve_language_name(language)
+	var/datum/prototype/language/new_language = RSlanguages.fetch_or_defer(language) || RSlanguages.legacy_resolve_language_name(language)
 
 	if(!istype(new_language) || (new_language in languages))
 		return 0
@@ -241,12 +241,12 @@
 	return 1
 
 /mob/proc/remove_language(var/rem_language)
-	var/datum/prototype/language/L = RSlanguages.fetch(rem_language)
+	var/datum/prototype/language/L = RSlanguages.fetch_or_defer(rem_language)
 	. = (L in languages)
 	languages.Remove(L)
 
 /mob/living/remove_language(rem_language)
-	var/datum/prototype/language/L = RSlanguages.fetch(rem_language)
+	var/datum/prototype/language/L = RSlanguages.fetch_or_defer(rem_language)
 	if(default_language == L)
 		default_language = null
 	return ..()
