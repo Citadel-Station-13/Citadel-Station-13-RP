@@ -56,7 +56,9 @@
 
 
 //? Health - General
-/** Store the default minimum health mobs die at
- * This is currently only respected by carbons
+/** Store the default minimum health, crit health, soft crit health
+ * These are currently only respected by carbons
 */
-#define MOB_MINIMUM_HEALTH		-100
+#define MOB_MINIMUM_HEALTH			-100
+#define MOB_CRITICAL_HEALTH			-50
+#define MOB_SOFT_CRITICAL_HEALTH 	0
