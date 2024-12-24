@@ -1,7 +1,7 @@
-import { Section, Flex, Divider, Table, Collapsible, Box } from "../components";
-import { Window } from "../layouts";
 import { useBackend, useLocalState } from "../backend";
+import { Box, Collapsible, Divider, Flex, Section, Table } from "../components";
 import { Tabs } from "../components";
+import { Window } from "../layouts";
 
 const getTagColor = (erptag) => {
   switch (erptag) {

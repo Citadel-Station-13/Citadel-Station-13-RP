@@ -3,6 +3,7 @@
  * @license MIT
  */
 import { BooleanLike } from "common/react";
+
 import { useBackend, useLocalState } from "../../backend";
 import { Button, LabeledList, NoticeBox, Section, Stack, Table, Tabs } from "../../components";
 import { Window } from "../../layouts";
@@ -96,7 +97,7 @@ export const Holopad = (props, context) => {
                 ?(data.isAIProjecting? "Stop Projecting" : "Start Projecting")
                 : "AI Disabled"}
               disabled={!data.aiEnabled}
-              icon={data.aiEnabled && (data.isAIProjecting? `stop` : `phone`)}
+              icon={!!data.aiEnabled && (data.isAIProjecting? `stop` : `phone`)}
               selected={data.aiEnabled && data.isAIProjecting}
               onClick={() => act('ai_project', { mode: !data.isAIProjecting })} />
           ) : (

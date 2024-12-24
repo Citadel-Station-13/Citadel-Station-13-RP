@@ -1,11 +1,12 @@
-import { classes } from 'common/react';
 import { uniqBy } from 'common/collections';
-import { useBackend, useSharedState } from '../backend';
-import { formatSiUnit, formatMoney } from '../format';
-import { Flex, Section, Tabs, Box, Button, Fragment, ProgressBar, NumberInput, Icon, Input, Tooltip } from '../components';
-import { Window } from '../layouts';
-import { createSearch, toTitleCase } from 'common/string';
 import { toFixed } from 'common/math';
+import { classes } from 'common/react';
+import { createSearch, toTitleCase } from 'common/string';
+
+import { useBackend, useSharedState } from '../backend';
+import { Box, Button, Flex, Fragment, Icon, Input, NumberInput, ProgressBar, Section, Tabs, Tooltip } from '../components';
+import { formatMoney, formatSiUnit } from '../format';
+import { Window } from '../layouts';
 
 const MATERIAL_KEYS = {
   "steel": "stack-metal",
@@ -131,7 +132,7 @@ const searchFilter = (search, allparts) => {
       .forEach(e => { searchResults.push(e); });
   });
 
-  searchResults = uniqBy(part => part.name)(searchResults);
+  searchResults = uniqBy(searchResults, part => part.name);
 
   return searchResults;
 };

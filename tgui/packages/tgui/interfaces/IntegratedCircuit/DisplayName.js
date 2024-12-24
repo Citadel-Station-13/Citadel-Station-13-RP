@@ -1,5 +1,5 @@
 import { Box, Button, Flex } from '../../components';
-import { FUNDAMENTAL_DATA_TYPES, DATATYPE_DISPLAY_HANDLERS } from './FundamentalTypes';
+import { DATATYPE_DISPLAY_HANDLERS, FUNDAMENTAL_DATA_TYPES } from './FundamentalTypes';
 
 export const DisplayName = (props, context) => {
   const { port, isOutput, componentId, portIndex, act, ...rest } = props;

@@ -1,4 +1,5 @@
-import { toFixed, round } from 'common/math';
+import { round, toFixed } from 'common/math';
+
 import { useBackend } from '../backend';
 import { Box, Button, Icon, LabeledList, NumberInput, Section } from '../components';
 import { Window } from '../layouts';

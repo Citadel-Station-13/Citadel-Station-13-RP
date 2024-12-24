@@ -1,6 +1,7 @@
 import { Fragment } from 'inferno';
+
 import { useBackend } from '../backend';
-import { Box, Button, Dropdown, NumberInput, LabeledList, NoticeBox, Section } from '../components';
+import { Box, Button, Dropdown, LabeledList, NoticeBox, NumberInput, Section } from '../components';
 import { Window } from '../layouts';
 
 export const SuitCycler = (props, context) => {

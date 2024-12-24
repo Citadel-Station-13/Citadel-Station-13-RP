@@ -4,6 +4,7 @@
  */
 
 import { BooleanLike, classes } from "common/react";
+
 import { Box, BoxProps } from "./Box";
 
 interface SpriteProps extends BoxProps {

@@ -4,10 +4,11 @@
  * @license MIT
  */
 import { Fragment } from 'inferno';
-import { Window } from '../layouts';
+
 import { useBackend, useSharedState } from '../backend';
+import { Box, Button, Input, LabeledList, NoticeBox, ProgressBar, Section, Tabs } from '../components';
 import { RADIO_CHANNELS } from '../constants';
-import { Box, Button, LabeledList, NoticeBox, Section, Tabs, Input, ProgressBar } from '../components';
+import { Window } from '../layouts';
 
 
 export const TelecommsMonitor = (props, context) => {

@@ -1,5 +1,5 @@
 import { useBackend } from '../backend';
-import { Button, Icon, NoticeBox, NumberInput, Section, Table, Tabs, Slider } from '../components';
+import { Button, Icon, NoticeBox, NumberInput, Section, Slider, Table, Tabs } from '../components';
 import { Window } from '../layouts';
 
 export const ColorMate = (props, context) => {
