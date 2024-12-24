@@ -108,6 +108,8 @@
  * moments, while allowing people to manually double-examine to take a closer look
  *
  * Produces a signal [COMSIG_PARENT_EXAMINE_MORE]
+ *
+ * todo: hook into examine, maybe rework
  */
 /atom/proc/examine_more(mob/user)
 	SHOULD_CALL_PARENT(TRUE)
@@ -115,3 +117,30 @@
 
 	. = list()
 	SEND_SIGNAL(src, COMSIG_PARENT_EXAMINE_MORE, user, .)
+
+/**
+ * Gets a list of usage tips that players should be able to see.
+ *
+ * * These should not depend on the user's inhand items / worn equipment / whatever.
+ * * These are fully HTML-formatted
+ *
+ * todo: hook into examine
+ *
+ * @return list
+ */
+/atom/proc/examine_query_usage_hints(datum/event_args/examine/examining)
+	return list()
+
+/**
+ * Gets a list of introspected data, like recharge delays, that players should be able to see.
+ *
+ * * These should not depend on the user's inhand items / worn equipment / whatever.
+ * * These are fully HTML-formatted
+ * * This can return either key-values or just strings.
+ *
+ * todo: hook into examine
+ *
+ * @return list(key = value, key only, ...)
+ */
+/atom/proc/examine_query_stat_hints(datum/event_args/examine/examining)
+	return list()

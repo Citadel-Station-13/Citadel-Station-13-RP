@@ -26,24 +26,32 @@
 		add_overlay("[base_icon_state]-empty")
 	update_worn_icon()
 
-/obj/item/kinetic_gauntlets/context_menu_query(datum/event_args/actor/e_args)
+/obj/item/kinetic_gauntlets/examine_query_usage_hints(datum/event_args/examine/examining)
+	. = ..()
+	. += "Punching a rock wall on <b>harm intent</b>, while charged, will try to mine it with the gauntlets."
+	. += "Punching a mob on <b>harm intent</b>, while charged, will apply additional damage and stagger it."
+	. += "Punching a mob with a kinetic destabilization field on <b>harm intent</b>, while charged, will detonate the field."
+
+/obj/item/kinetic_gauntlets/examine_query_stat_hints(datum/event_args/examine/examining)
+	. = ..()
+	.["Charge Delay (Base)"] = charge_delay
 
 /obj/item/kinetic_gauntlets/context_menu_query(datum/event_args/actor/e_args)
 	. = ..()
+	.["toggle-fingerless"] = create_context_menu_tuple("Toggle Finger Caps", image(src), null, MOBILITY_CAN_USE, FALSE)
 
 /obj/item/kinetic_gauntlets/context_menu_act(datum/event_args/actor/e_args)
 	. = ..()
 	if(.)
 		return
 
-/obj/item/kinetic_gauntlets/equipped(mob/user, slot, flags)
+/obj/item/kinetic_gauntlets/on_equipped(mob/wearer, slot_id_or_index, inv_op_flags, datum/event_args/actor/actor)
 	. = ..()
-	#warn bugfix branch changes this
-	start_recharge()
+	if(slot_id_or_index == /datum/inventory_slot/inventory/gloves::id)
+		start_recharge()
 
-/obj/item/kinetic_gauntlets/unequipped(mob/user, slot, flags)
+/obj/item/kinetic_gauntlets/on_unequipped(mob/wearer, slot_id_or_index, inv_op_flags, datum/event_args/actor/actor)
 	. = ..()
-	#warn bugfix branch changes this
 	discharge()
 
 /obj/item/kinetic_gauntlets/proc/recharge()
