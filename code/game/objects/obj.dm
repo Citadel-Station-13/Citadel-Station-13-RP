@@ -697,18 +697,18 @@
 
 //* Context *//
 
-/obj/context_query(datum/event_args/actor/e_args)
+/obj/context_menu_query(datum/event_args/actor/e_args)
 	. = ..()
 	if(!isnull(obj_cell_slot?.cell) && obj_cell_slot.remove_yank_context && obj_cell_slot.interaction_active(e_args.performer))
 		var/image/rendered = image(obj_cell_slot.cell)
-		.["obj_cell_slot"] = atom_context_tuple("remove cell", rendered, mobility = MOBILITY_CAN_USE, defaultable = TRUE)
+		.["obj_cell_slot"] = create_context_menu_tuple("remove cell", rendered, mobility = MOBILITY_CAN_USE, defaultable = TRUE)
 	if(obj_storage?.allow_open_via_context_click)
 		var/image/rendered = image(src)
-		.["obj_storage"] = atom_context_tuple("open storage", rendered, mobility = MOBILITY_CAN_STORAGE, defaultable = TRUE)
+		.["obj_storage"] = create_context_menu_tuple("open storage", rendered, mobility = MOBILITY_CAN_STORAGE, defaultable = TRUE)
 	if(obj_rotation_flags & OBJ_ROTATION_ENABLED)
 		if(obj_rotation_flags & OBJ_ROTATION_BIDIRECTIONAL)
 			var/image/rendered = image(src) // todo: sprite
-			.["rotate_cw"] = atom_context_tuple(
+			.["rotate_cw"] = create_context_menu_tuple(
 				"Rotate Clockwise",
 				rendered,
 				1,
@@ -716,7 +716,7 @@
 				!!(obj_rotation_flags & OBJ_ROTATION_DEFAULTING),
 			)
 			rendered = image(src) // todo: sprite
-			.["rotate_ccw"] = atom_context_tuple(
+			.["rotate_ccw"] = create_context_menu_tuple(
 				"Rotate Counterclockwise",
 				rendered,
 				1,
@@ -725,7 +725,7 @@
 			)
 		else
 			var/image/rendered = image(src) // todo: sprite
-			.["rotate_[obj_rotation_flags & OBJ_ROTATION_CCW? "ccw" : "cw"]"] = atom_context_tuple(
+			.["rotate_[obj_rotation_flags & OBJ_ROTATION_CCW? "ccw" : "cw"]"] = create_context_menu_tuple(
 				"Rotate [obj_rotation_flags & OBJ_ROTATION_CCW? "Counterclockwise" : "Clockwise"]",
 				rendered,
 				1,
@@ -733,7 +733,7 @@
 				!!(obj_rotation_flags & OBJ_ROTATION_DEFAULTING),
 			)
 
-/obj/context_act(datum/event_args/actor/e_args, key)
+/obj/context_menu_act(datum/event_args/actor/e_args, key)
 	switch(key)
 		if("obj_cell_slot")
 			var/reachability = e_args.performer.Reachability(src)

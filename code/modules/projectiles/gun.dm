@@ -1130,14 +1130,14 @@
 
 //* Context *//
 
-/obj/item/gun/context_query(datum/event_args/actor/e_args)
+/obj/item/gun/context_menu_query(datum/event_args/actor/e_args)
 	. = ..()
 	if(length(attachments))
-		.["remove-attachment"] = atom_context_tuple("Remove Attachment", image('icons/screen/radial/actions.dmi', "red-arrow-up"), 0, MOBILITY_CAN_USE)
+		.["remove-attachment"] = create_context_menu_tuple("Remove Attachment", image('icons/screen/radial/actions.dmi', "red-arrow-up"), 0, MOBILITY_CAN_USE)
 	if(safety_state != GUN_NO_SAFETY)
-		.["toggle-safety"] = atom_context_tuple("Toggle Safety", image(src), 0, MOBILITY_CAN_USE, TRUE)
+		.["toggle-safety"] = create_context_menu_tuple("Toggle Safety", image(src), 0, MOBILITY_CAN_USE, TRUE)
 
-/obj/item/gun/context_act(datum/event_args/actor/e_args, key)
+/obj/item/gun/context_menu_act(datum/event_args/actor/e_args, key)
 	. = ..()
 	if(.)
 		return

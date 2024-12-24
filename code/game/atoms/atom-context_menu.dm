@@ -9,7 +9,7 @@
  *
  * @return list(key = value)
  */
-/atom/proc/context_query(datum/event_args/actor/e_args)
+/atom/proc/context_menu_query(datum/event_args/actor/e_args)
 	. = list()
 	SEND_SIGNAL(src, COMSIG_ATOM_CONTEXT_QUERY, ., e_args)
 
@@ -20,29 +20,33 @@
  *
  * @return TRUE / FALSE; TRUE if handled.
  */
-/atom/proc/context_act(datum/event_args/actor/e_args, key)
+/atom/proc/context_menu_act(datum/event_args/actor/e_args, key)
 	if(SEND_SIGNAL(src, COMSIG_ATOM_CONTEXT_ACT, key, e_args) & RAISE_ATOM_CONTEXT_ACT_HANDLED)
 		return TRUE
 	return FALSE
 
 /**
+ * Opens a context menu for someone.
+ * This is the asynchronous version, and will not block or return anything.
+ *
  * @params
- * * e_args - the actor data or a single mob
+ * * e_args - the actor data
  */
-/atom/proc/context_menu(datum/event_args/actor/e_args)
-	set waitfor = FALSE
+/atom/proc/open_context_menu(datum/event_args/actor/e_args)
+	SHOULD_NOT_OVERRIDE(TRUE)
+	SHOULD_NOT_SLEEP(TRUE)
 	// todo: dynamically rebuild menu based on distance?
 	var/client/receiving = e_args.initiator.client
 	if(isnull(receiving))
 		// well what the hell are we doing here?
-		// automated functions should be using context_query and context_act directly
+		// automated functions should be using context_menu_query and context_menu_act directly
 		return FALSE
 	if(context_menus?[receiving])
 		// close
 		log_click_context(e_args, src, "menu close")
 		qdel(context_menus[receiving])
 		return TRUE
-	var/list/menu_options = context_query(e_args)
+	var/list/menu_options = context_menu_query(e_args)
 	if(!length(menu_options))
 		return FALSE
 	// check for defaulting
@@ -54,14 +58,23 @@
 		if(length(first_option) >= 5 && first_option[5])
 			// it is, log and execute
 			log_click_context(e_args, src, "menu execute [key] (default)")
-			context_act(e_args, key)
+			context_menu_act(e_args, key)
 			return
 	// open
 	log_click_context(e_args, src, "menu open")
 	. = TRUE
-	blocking_context_menu(e_args, receiving, menu_options, e_args.performer)
+	open_blocking_context_menu(e_args, receiving, menu_options, e_args.performer)
 
-/atom/proc/blocking_context_menu(datum/event_args/actor/e_args, client/receiving, list/menu_options, mob/actor)
+/**
+ * Opens a synchronous context menu for someone,
+ * returning only when they pick something or the menu closes.
+ *
+ * @params
+ * * e_args - the actor data
+ */
+/atom/proc/open_blocking_context_menu(datum/event_args/actor/e_args, client/receiving, list/menu_options, mob/actor)
+	SHOULD_NOT_OVERRIDE(TRUE)
+	set waitfor = FALSE
 	// for now, we just filter without auto-updating/rebuilding when things change
 	var/list/transformed = list()
 	var/list/inverse_lookup = list()
@@ -108,8 +121,8 @@
 
 	var/key = inverse_lookup[chosen_name]
 	log_click_context(e_args, src, "menu execute [key]")
-	context_act(e_args, key)
+	context_menu_act(e_args, key)
 
-/atom/proc/context_close()
+/atom/proc/close_context_menus()
 	for(var/client/C as anything in context_menus)
 		qdel(context_menus[C])
