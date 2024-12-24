@@ -162,7 +162,7 @@
 
 	//atom color stuff
 	if(color)
-		add_atom_colour(color, FIXED_COLOUR_PRIORITY)
+		add_atom_color(color)
 
 	// todo: uh oh.
 	// TODO: what would tg do (but maybe not that much component signal abuse?)
@@ -583,19 +583,19 @@
 
 //* Atom Color - we don't use the expensive system. *//
 
-/turf/get_atom_colour()
+/turf/get_atom_color()
 	return color
 
-/turf/add_atom_colour(coloration, colour_priority)
+/turf/add_atom_color(coloration, colour_priority)
 	color = coloration
 
-/turf/remove_atom_colour(colour_priority, coloration)
+/turf/remove_atom_color(colour_priority, coloration)
 	color = null
 
-/turf/update_atom_colour()
+/turf/update_atom_color()
 	return
 
-/turf/copy_atom_colour(atom/other, colour_priority)
+/turf/copy_atom_color(atom/other, colour_priority)
 	if(isnull(other.color))
 		return
 	color = other.color
@@ -677,8 +677,13 @@
 /turf/proc/update_underfloor_objects()
 	var/we_should_cover = hides_underfloor_objects()
 	for(var/obj/thing in contents)
-		if(thing.hides_underfloor == OBJ_UNDERFLOOR_DISABLED)
+		if(thing.hides_underfloor == OBJ_UNDERFLOOR_UNSUPPORTED)
 			continue
 		thing.update_hiding_underfloor(
 			(thing.hides_underfloor != OBJ_UNDERFLOOR_NEVER) && we_should_cover,
 		)
+
+//* VV *//
+
+/turf/vv_delete()
+	ScrapeAway()

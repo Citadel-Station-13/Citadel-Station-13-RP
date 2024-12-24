@@ -9,8 +9,6 @@
 
 	var/nudge_script_path = "nudge.py"  // where the nudge.py script is located
 
-	var/hub_visibility = FALSE				//CITADEL CHANGE - HUB CONFIG
-
 	var/log_ooc = 0						// log OOC channel
 	var/log_access = 0					// log login/logout
 	var/log_say = 0						// log client say
@@ -279,9 +277,6 @@
 
 				if ("ban_legacy_system")
 					config_legacy.ban_legacy_system = 1
-
-				if ("hub_visibility")					//CITADEL CHANGE - ADDS HUB CONFIG
-					config_legacy.hub_visibility = 1
 
 				if ("jobs_have_minimal_access")
 					config_legacy.jobs_have_minimal_access = 1
@@ -834,4 +829,3 @@
 			config_legacy.python_path = "/usr/bin/env python2"
 		else //probably windows, if not this should work anyway
 			config_legacy.python_path = "python"
-	world.update_hub_visibility(hub_visibility)			//CITADEL CHANGE - HUB CONFIG

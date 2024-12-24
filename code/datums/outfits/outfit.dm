@@ -141,8 +141,59 @@
 		for(var/i=0,i<number,i++)
 			H.equip_to_slot_or_del(new path(H), /datum/inventory_slot/abstract/attach_as_accessory, INV_OP_FLUFFLESS | INV_OP_SILENT)
 
-	if(H.species)
-		H.species.equip_survival_gear(H, flags&OUTFIT_EXTENDED_SURVIVAL, flags&OUTFIT_COMPREHENSIVE_SURVIVAL)
+	// deal with racial & survival gear
+	var/list/to_inject_box = list()
+	var/list/to_inject_inv = list()
+	H.species.apply_survival_gear(H, to_inject_box, to_inject_inv)
+	H.species.apply_racial_gear(H, to_inject_box, to_inject_inv)
+
+	if(length(to_inject_box))
+		var/obj/item/survival_box = new /obj/item/storage/box/survival
+		for(var/descriptor in to_inject_box)
+			if(ispath(descriptor))
+				new descriptor(survival_box)
+			else if(IS_ANONYMOUS_TYPEPATH(descriptor))
+				new descriptor(survival_box)
+			else if(isitem(descriptor))
+				var/obj/item/moving = descriptor
+				moving.forceMove(survival_box)
+			else
+				stack_trace("invalid descriptor '[descriptor]' encountered")
+		survival_box.obj_storage.fit_to_contents(no_shrink = TRUE)
+
+		if(!H.inventory.equip_to_slot_if_possible(survival_box, /datum/inventory_slot/abstract/put_in_backpack))
+			if(!H.inventory.put_in_hands(survival_box))
+				survival_box.forceMove(H.drop_location())
+
+	if(length(to_inject_inv))
+		var/list/atom/movable/arbitrary_instantiated_gear = list()
+		for(var/descriptor in to_inject_inv)
+			if(ispath(descriptor))
+				arbitrary_instantiated_gear += new descriptor
+			else if(IS_ANONYMOUS_TYPEPATH(descriptor))
+				arbitrary_instantiated_gear += new descriptor
+			else if(ismovable(descriptor))
+				arbitrary_instantiated_gear += descriptor
+			else
+				stack_trace("invalid descriptor '[descriptor]' encountered")
+		for(var/atom/movable/gear as anything in arbitrary_instantiated_gear)
+			if(isitem(gear))
+				// try to put into inv, then hands, then nearby
+				var/obj/item/gear_item = gear
+				if(!H.equip_to_slots_if_possible(
+					gear_item,
+					list(
+						/datum/inventory_slot/abstract/put_in_backpack,
+						/datum/inventory_slot/abstract/put_in_belt,
+						/datum/inventory_slot/abstract/put_in_hands,
+						/datum/inventory_slot/inventory/pocket/left,
+						/datum/inventory_slot/inventory/pocket/right,
+					),
+				))
+					gear_item.forceMove(H.drop_location())
+			else
+				// put nearby
+				gear.forceMove(H.drop_location())
 
 /datum/outfit/proc/equip_id(mob/living/carbon/human/H, rank, assignment)
 	if(!id_slot || !id_type)
