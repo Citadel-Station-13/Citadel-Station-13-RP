@@ -56,6 +56,7 @@
 
 
 //? Health - General
-/** Store the default minimum health carbons die at
+/** Store the default minimum health mobs die at
+ * This is currently only respected by carbons
 */
-#define CARBON_MINIMUM_HEALTH	-100
+#define MOB_MINIMUM_HEALTH		-100

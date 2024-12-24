@@ -1123,7 +1123,7 @@
 	else				//ALIVE. LIGHTS ARE ON
 		update_health()	//TODO
 
-		if(health <= config_legacy.health_threshold_dead || (should_have_organ("brain") && !has_brain()))
+		if(health <= getMinHealth() || (should_have_organ("brain") && !has_brain()))
 			death()
 			apply_status_effect(/datum/status_effect/sight/blindness, 5 SECOND)
 			silent = 0

@@ -273,7 +273,7 @@
 	/// Point at which the mob will enter crit.
 	var/total_health = 100
 	/// Point at which the mob will die
-	var/death_health = CARBON_MINIMUM_HEALTH
+	var/death_health = MOB_MINIMUM_HEALTH
 	/// Physical damage multiplier.
 	var/brute_mod = 1
 	/// Burn damage multiplier.

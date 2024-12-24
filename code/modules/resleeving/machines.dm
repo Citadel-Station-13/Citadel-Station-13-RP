@@ -92,7 +92,7 @@
 		H.add_modifier(modifier_type)
 
 	//Apply damage
-	H.adjustCloneLoss((H.getMaxHealth() - config_legacy.health_threshold_dead)*-0.75)
+	H.adjustCloneLoss((H.getMaxHealth() - H.getMinHealth())*-0.75)
 	H.afflict_unconscious(20 * 4)
 	H.update_health()
 
