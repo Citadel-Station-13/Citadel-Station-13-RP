@@ -85,10 +85,10 @@
 	H.update_health()
 
 	if(H.isSynthetic())
-		if(H.health + H.getOxyLoss() + H.getToxLoss() <= config_legacy.health_threshold_dead)
+		if(H.health + H.getOxyLoss() + H.getToxLoss() <= H.getMinHealth())
 			return "buzzes, \"Resuscitation failed - Severe damage detected. Begin manual repair.\""
 
-	else if(H.health + H.getOxyLoss() <= config_legacy.health_threshold_dead || (MUTATION_HUSK in H.mutations) || !H.can_defib)
+	else if(H.health + H.getOxyLoss() <= H.getMinHealth() || (MUTATION_HUSK in H.mutations) || !H.can_defib)
 		// TODO: REFACTOR DEFIBS AND HEALTH
 		return "buzzes, \"Resuscitation failed - Severe tissue damage makes recovery of patient impossible via defibrillator.\""
 

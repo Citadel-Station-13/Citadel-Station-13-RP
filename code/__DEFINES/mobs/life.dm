@@ -55,3 +55,7 @@
 #define ORGAN_DECAY_PER_SECOND_BRAIN			(60 / (60 * 10))				// brain decays entirely over 10 minutes, or to lethal degrees in 5
 
 
+//? Health - General
+/** Store the default minimum health carbons die at
+*/
+#define CARBON_MINIMUM_HEALTH	-100

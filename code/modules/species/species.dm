@@ -272,6 +272,8 @@
 	//? Stats
 	/// Point at which the mob will enter crit.
 	var/total_health = 100
+	/// Point at which the mob will die
+	var/death_health = CARBON_MINIMUM_HEALTH
 	/// Physical damage multiplier.
 	var/brute_mod = 1
 	/// Burn damage multiplier.
@@ -571,6 +573,7 @@
 		H.gender = genders[1]
 
 	H.maxHealth = total_health
+	H.minHealth = death_health
 
 	if(!isnull(mob_physiology_modifier))
 		H.add_physiology_modifier(mob_physiology_modifier)
