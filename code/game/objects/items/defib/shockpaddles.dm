@@ -223,7 +223,7 @@
 	H.apply_damage(burn_damage_amt, DAMAGE_TYPE_BURN, BP_TORSO)
 
 	//set oxyloss so that the patient is just barely in crit, if possible
-	var/barely_in_crit = config_legacy.health_threshold_crit - 1
+	var/barely_in_crit = getCritHealth() - 1
 	var/adjust_health = barely_in_crit - H.health //need to increase health by this much
 	H.adjustOxyLoss(-adjust_health)
 

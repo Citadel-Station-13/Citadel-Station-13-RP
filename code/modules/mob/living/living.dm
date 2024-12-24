@@ -335,6 +335,12 @@ default behaviour is:
 /mob/living/proc/getMinHealth()
 	return minHealth
 
+/mob/living/proc/getCritHealth()
+	return critHealth
+
+/mob/living/proc/getSoftCritHealth()
+	return softCritHealth
+
 /mob/living/Confuse(amount)
 	for(var/datum/modifier/M in modifiers)
 		if(!isnull(M.disable_duration_percent))

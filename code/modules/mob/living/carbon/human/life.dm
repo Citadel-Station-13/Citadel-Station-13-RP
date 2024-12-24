@@ -1130,7 +1130,7 @@
 			return 1
 
 		//UNCONSCIOUS. NO-ONE IS HOME
-		if((getOxyLoss() > (species.total_health/2)) || (health <= config_legacy.health_threshold_crit))
+		if((getOxyLoss() > (species.total_health/2)) || (health <= getCritHealth()))
 			afflict_unconscious(20 * 3)
 
 		if(hallucination)
@@ -1696,12 +1696,12 @@
 	if(!can_feel_pain())
 		return
 
-	if(health < config_legacy.health_threshold_softcrit)// health 0 makes you immediately collapse
+	if(health < getSoftCritHealth())// health 0 makes you immediately collapse
 		shock_stage = max(shock_stage, 61)
 
 	if(traumatic_shock >= 80)
 		shock_stage += 1
-	else if(health < config_legacy.health_threshold_softcrit)
+	else if(health < getSoftCritHealth())
 		shock_stage = max(shock_stage, 61)
 	else
 		shock_stage = min(shock_stage, 160)
