@@ -8,6 +8,16 @@
 	latejoin = TRUE
 	priority = 5
 
+/obj/landmark/spawnpoint/job/outsider
+	name = "Traveler"
+	icon_state = "Assistant"
+	job_path = /datum/role/job/station/outsider
+
+/obj/landmark/spawnpoint/job/outsider/override
+	spawns_left = INFINITY
+	latejoin = TRUE
+	priority = 5
+
 /obj/landmark/spawnpoint/job/janitor
 	name = "Janitor"
 	icon_state = "Janitor"

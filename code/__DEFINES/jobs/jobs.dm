@@ -47,6 +47,7 @@
 #define JOB_ID_LIBRARIAN "librarian"
 #define JOB_ID_LAWYER "lawyer"			// IAA
 #define JOB_ID_ASSISTANT "assistant"
+#define JOB_ID_OUTSIDER "traveler"
 
 #define JOB_ID_CLOWN "clown"
 #define JOB_ID_MIME "mime"
