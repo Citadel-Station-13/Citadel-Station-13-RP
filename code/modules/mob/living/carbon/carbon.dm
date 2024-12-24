@@ -61,7 +61,7 @@
 	return ..()
 
 /mob/living/carbon/proc/help_shake_act(mob/living/carbon/M)
-	if(src.health >= config_legacy.health_threshold_crit)
+	if(src.health >= getCritHealth())
 		if(src == M && istype(src, /mob/living/carbon/human))
 
 			var/mob/living/carbon/human/H = src

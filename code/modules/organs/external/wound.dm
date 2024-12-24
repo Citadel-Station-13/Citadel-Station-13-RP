@@ -17,7 +17,7 @@
 //Burn damage can cause fluid loss due to blistering and cook-off
 
 	if((damage > 5 || damage + burn_dam >= 15) && type == WOUND_TYPE_BURN && (robotic < ORGAN_ROBOT) && !(species.species_flags & NO_BLOOD))
-		var/fluid_loss = 0.4 * (damage/(owner.getMaxHealth() - config_legacy.health_threshold_dead)) * owner.species.blood_volume*(1 - owner.species.blood_level_fatal)
+		var/fluid_loss = 0.4 * (damage/(owner.getMaxHealth() - owner.getMinHealth())) * owner.species.blood_volume*(1 - owner.species.blood_level_fatal)
 		owner.remove_blood(fluid_loss)
 
 	// first check whether we can widen an existing wound

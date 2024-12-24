@@ -64,9 +64,9 @@
 		to_chat(user, "<span class='notice'>\The [I] does <b>[DPS]</b> damage per second.</span>")
 		if(DPS > 0)
 			to_chat(user, "<span class='notice'>At your maximum health ([user.getMaxHealth()]), it would take approximately;</span>")
-			to_chat(user, "<span class='notice'>[(user.getMaxHealth() - config_legacy.health_threshold_softcrit) / DPS] seconds to softcrit you. ([config_legacy.health_threshold_softcrit] health)</span>")
-			to_chat(user, "<span class='notice'>[(user.getMaxHealth() - config_legacy.health_threshold_crit) / DPS] seconds to hardcrit you. ([config_legacy.health_threshold_crit] health)</span>")
-			to_chat(user, "<span class='notice'>[(user.getMaxHealth() - config_legacy.health_threshold_dead) / DPS] seconds to kill you. ([config_legacy.health_threshold_dead] health)</span>")
+			to_chat(user, "<span class='notice'>[(user.getMaxHealth() - user.getCritHealth()) / DPS] seconds to softcrit you. ([user.getSoftCritHealth()] health)</span>")
+			to_chat(user, "<span class='notice'>[(user.getMaxHealth() - user.getCritHealth()) / DPS] seconds to hardcrit you. ([user.getCritHealth()] health)</span>")
+			to_chat(user, "<span class='notice'>[(user.getMaxHealth() - user.getMinHealth()) / DPS] seconds to kill you. ([user.getMinHealth()] health)</span>")
 
 	else
 		to_chat(user, "<span class='warning'>You need to be a living mob, with hands, and for an object to be in your active hand, to use this verb.</span>")
