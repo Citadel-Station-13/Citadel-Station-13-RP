@@ -8,6 +8,8 @@
  * object to provide some single functionality (i.e a slippery component)
  * that makes the object it's attached to cause people to slip over.
  * Useful when you want shared behaviour independent of type inheritance
+ *
+ * todo: refactor transfers a bit maybe?
  */
 /datum/component
 	/**
@@ -139,7 +141,7 @@
  * Overridable proc that's called when added to a new parent
  */
 /datum/component/proc/RegisterWithParent()
-	return
+	SHOULD_NOT_SLEEP(TRUE)
 
 /**
  * Unregister from our parent object
@@ -150,7 +152,7 @@
  * *
  */
 /datum/component/proc/UnregisterFromParent()
-	return
+	SHOULD_NOT_SLEEP(TRUE)
 
 /**
  * Register to listen for a signal from the passed in target
