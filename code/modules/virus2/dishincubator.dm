@@ -186,15 +186,11 @@
 		if (!dish)
 			return 1
 
-		var/datum/reagent/blood/B = locate(/datum/reagent/blood) in beaker.reagents.reagent_list
-		if (!B)
-			return 1
-
-		if (!B.data["virus2"])
-			B.data["virus2"] = list()
-
-		var/list/virus = list("[dish.virus2.uniqueID]" = dish.virus2.getcopy())
-		B.data["virus2"] += virus
+		var/datum/blood_mixture/mixture = beaker.reagents.reagent_datas?[/datum/reagent/blood::id]
+		if(!mixture)
+			return TRUE
+		LAZYINITLIST(mixture.legacy_virus2)
+		mixture.legacy_virus2["[dish.virus2.uniqueID]"] = dish.virus2.getcopy()
 
 		ping("\The [src] pings, \"Injection complete.\"")
 		return 1

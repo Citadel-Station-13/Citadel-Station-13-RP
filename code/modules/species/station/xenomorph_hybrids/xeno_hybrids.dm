@@ -149,6 +149,6 @@
 	if(H.nutrition < 100 || heal_amount <= 0.6)
 		return
 
-	if(H.vessel.get_reagent_amount("blood") <= blood_level_safe && H.try_take_nutrition(heal_amount * 4))
-		H.vessel.add_reagent("blood", heal_amount)//instead of IB healing, they regenerate blood a lot faster
+	if(H.blood_holder.get_total_volume() <= blood_level_safe && H.try_take_nutrition(heal_amount * 4))
+		H.regen_blood(heal_amount)
 

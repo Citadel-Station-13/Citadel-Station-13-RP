@@ -24,7 +24,7 @@
 		for(var/mob/living/simple_mob/slime/M in T)
 			M.adjustToxLoss(rand(5, 10))
 
-/datum/reagent/space_cleaner/affect_touch(mob/living/carbon/M, alien, removed)
+/datum/reagent/space_cleaner/legacy_affect_touch(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	for(var/obj/item/held as anything in M.get_held_items())
 		held.clean_blood()
 	if(M.wear_mask)
@@ -51,7 +51,7 @@
 			return
 	M.clean_blood()
 
-/datum/reagent/space_cleaner/affect_ingest(mob/living/carbon/M, alien, removed)
+/datum/reagent/space_cleaner/legacy_affect_ingest(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	if(alien == IS_SLIME)
 		M.adjustToxLoss(6 * removed)
 	else

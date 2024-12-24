@@ -337,10 +337,7 @@
 This function restores the subjects blood to max.
 */
 /mob/living/carbon/human/proc/restore_blood()
-	if(!should_have_organ(O_HEART))
-		return
-	if(vessel.total_volume < species.blood_volume)
-		vessel.add_reagent("blood", species.blood_volume - vessel.total_volume)
+	blood_holder.set_host_volume(species.blood_volume)
 
 /*
 This function restores all organs.

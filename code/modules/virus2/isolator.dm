@@ -61,18 +61,19 @@
 
 	var/list/pathogen_pool = list()
 	if(sample)
-		for(var/datum/reagent/blood/B in sample.reagents.reagent_list)
-			var/list/virus = B.data["virus2"]
+		var/datum/blood_mixture/mixture = sample.reagents.get_reagent_data(/datum/reagent/blood)
+		for(var/datum/blood_fragment/blood_data as anything in mixture.fragments)
+			var/list/virus = blood_data.legacy_virus2
 			for (var/ID in virus)
 				var/datum/disease2/disease/V = virus[ID]
 				var/datum/data/record/R = null
 				if (ID in virusDB)
 					R = virusDB[ID]
 
-				var/mob/living/carbon/human/D = B.data["donor"]
+				var/mob/living/carbon/human/D = blood_data.legacy_donor
 				pathogen_pool.Add(list(list(\
-					"name" = "[D.get_true_species_name()] [B.name]", \
-					"dna" = B.data["blood_DNA"], \
+					"name" = "[D.get_true_species_name()] [B]", \
+					"dna" = blood_data.legacy_blood_dna, \
 					"unique_id" = V.uniqueID, \
 					"reference" = "\ref[V]", \
 					"is_in_database" = !!R, \
@@ -158,11 +159,12 @@
 
 			P.info += "<hr>"
 
-			for(var/datum/reagent/blood/B in sample.reagents.reagent_list)
-				var/mob/living/carbon/human/D = B.data["donor"]
-				P.info += "<large><u>[D.get_true_species_name()] [B.name]:</u></large><br>[B.data["blood_DNA"]]<br>"
+			var/datum/blood_mixture/mixture = sample.reagents.get_reagent_data(/datum/reagent/blood)
+			for(var/datum/blood_fragment/blood_data as anything in mixture.fragments)
+				var/mob/living/carbon/human/D = blood_data.legacy_donor
+				P.info += "<large><u>[D.get_true_species_name()] [B.name]:</u></large><br>[blood_data.legacy_blood_dna]<br>"
 
-				var/list/virus = B.data["virus2"]
+				var/list/virus = mixture.legacy_virus2
 				P.info += "<u>Pathogens:</u> <br>"
 				if (virus.len > 0)
 					for (var/ID in virus)

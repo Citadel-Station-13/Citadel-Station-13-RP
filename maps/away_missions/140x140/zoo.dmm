@@ -3771,7 +3771,7 @@
 /area/awaymission/zoo)
 "kv" = (
 /obj/structure/table/rack,
-/obj/item/toy/waterflower,
+/obj/item/reagent_containers/spray/waterflower,
 /turf/simulated/floor/holofloor/carpet,
 /area/awaymission/zoo)
 "kw" = (

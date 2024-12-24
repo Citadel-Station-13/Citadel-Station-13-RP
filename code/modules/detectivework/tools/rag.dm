@@ -190,8 +190,8 @@
 		fuel += reagents.get_reagent_amount("fuel")
 
 	else
-		for(var/datum/reagent/ethanol/R in reagents.reagent_list)
-			fuel += reagents.get_reagent_amount(R.id)
+		for(var/datum/reagent/ethanol/R in reagents.get_reagent_datums())
+			fuel += reagents.reagent_volumes[R.id]
 
 	return (fuel >= 2 && fuel >= reagents.total_volume*0.8)
 
@@ -250,7 +250,7 @@
 		return
 
 	reagents.remove_reagent("fuel", reagents.maximum_volume/25)
-	for(var/datum/reagent/ethanol/R in reagents.reagent_list)
+	for(var/datum/reagent/ethanol/R in reagents.get_reagent_datums())
 		if(istype(R, /datum/reagent/ethanol))
 			reagents.remove_reagent(R.id, reagents.maximum_volume/25)
 	update_name()
