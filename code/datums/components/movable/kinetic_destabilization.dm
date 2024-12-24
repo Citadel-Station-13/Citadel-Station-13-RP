@@ -8,6 +8,10 @@
 	/// source to timerid
 	var/list/stacks = list()
 
+	/// source for general crusher marks.
+	/// * this is a const value; access with ::
+	var/SOURCE_CRUSHER_MARK = "crusher-mark"
+
 /datum/component/kinetic_destabilization/Initialize()
 	if(!ismovable(parent))
 		return COMPONENT_INCOMPATIBLE
