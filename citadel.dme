@@ -3439,6 +3439,7 @@
 #include "code\modules\maps\templates\shuttles\admin_spawn\mercenarybase.dm"
 #include "code\modules\maps\templates\shuttles\admin_spawn\mercship.dm"
 #include "code\modules\maps\templates\shuttles\admin_spawn\OM_paperclipper.dm"
+#include "code\modules\maps\templates\shuttles\admin_spawn\reaver.dm"
 #include "code\modules\maps\templates\shuttles\admin_spawn\salamander.dm"
 #include "code\modules\maps\templates\shuttles\admin_spawn\screebarge.dm"
 #include "code\modules\maps\templates\shuttles\admin_spawn\shelter_5.dm"
