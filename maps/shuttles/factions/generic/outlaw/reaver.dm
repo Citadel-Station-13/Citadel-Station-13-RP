@@ -1,9 +1,9 @@
 /datum/shuttle/autodock/overmap/reaver
 	name = "Reaver-Class Shuttle"
 	warmup_time = 3
-	shuttle_area = list(/area/shuttle/pirate/deck, /area/shuttle/pirate/bridge, /area/shuttle/pirate/engine)
+	shuttle_area = list(/area/shuttle/reaver/fore, /area/shuttle/reaver/prep, /area/shuttle/reaver/cargo, /area/shuttle/reaver/cockpit, /area/shuttle/reaver/engine)
 	docking_controller_tag = "reaver_dock"
-	fuel_consumption = 5
+	fuel_consumption = 4
 	move_time = 10
 	defer_initialisation = TRUE
 
