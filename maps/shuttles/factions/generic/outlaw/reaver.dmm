@@ -44,6 +44,7 @@
 	dir = 4;
 	old_wall = 1
 	},
+/obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/reaver/prep)
 "cd" = (
@@ -173,12 +174,16 @@
 	dir = 4;
 	old_wall = 1
 	},
+/obj/effect/floor_decal/industrial/outline/grey,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/reaver/prep)
 "jH" = (
 /obj/machinery/recharger/wallcharger{
 	pixel_y = -28;
 	pixel_x = 3
+	},
+/obj/effect/floor_decal/techfloor{
+	dir = 10
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/reaver/fore)
@@ -247,6 +252,7 @@
 	name = "Shuttle Blast Doors";
 	opacity = 0
 	},
+/obj/effect/floor_decal/industrial/hatch/yellow,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/reaver/fore)
 "lK" = (
