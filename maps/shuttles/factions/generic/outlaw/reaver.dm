@@ -17,7 +17,7 @@
 	shuttle = "Reaver-Class Shuttle"
 
 /obj/machinery/computer/shuttle_control/explore/reaver
-	name = "short jump raiding console"
+	name = "short jump console"
 	shuttle_tag = "Reaver-Class Shuttle"
 
 // Reaver Shuttle
