@@ -119,7 +119,7 @@
 /area/shuttle/reaver/cargo)
 "gQ" = (
 /obj/structure/handrail,
-/turf/simulated/shuttle/plating/airless/carry,
+/turf/simulated/floor/airless,
 /area/shuttle/reaver/fore)
 "hh" = (
 /obj/effect/floor_decal/techfloor{
@@ -322,16 +322,16 @@
 /turf/simulated/floor/tiled/monotechmaint,
 /area/shuttle/reaver/cockpit)
 "qf" = (
-/obj/machinery/computer/ship/navigation{
+/obj/machinery/computer/ship/engines{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/monotechmaint,
 /area/shuttle/reaver/cockpit)
 "qB" = (
-/obj/structure/bed/chair/bay/shuttle,
 /obj/effect/floor_decal/techfloor{
 	dir = 1
 	},
+/obj/structure/bed/chair/bay/chair/padded/black,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/reaver/fore)
 "rz" = (
@@ -489,11 +489,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/reaver/fore)
 "Ap" = (
-/obj/effect/floor_decal/techfloor{
-	dir = 1
-	},
-/obj/structure/bed/chair/bay/shuttle,
-/turf/simulated/floor/tiled/techfloor,
+/turf/simulated/floor/airless,
 /area/shuttle/reaver/fore)
 "Bg" = (
 /obj/machinery/atmospherics/pipe/tank/phoron{
@@ -582,13 +578,13 @@
 /turf/simulated/wall/rshull,
 /area/shuttle/reaver/prep)
 "EP" = (
-/obj/structure/bed/chair/bay/shuttle,
 /obj/effect/floor_decal/techfloor{
 	dir = 9
 	},
 /obj/machinery/light{
 	dir = 1
 	},
+/obj/structure/bed/chair/bay/chair/padded/black,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/reaver/fore)
 "EY" = (
@@ -822,7 +818,6 @@
 /obj/structure/closet/crate{
 	dir = 1
 	},
-/obj/item/clothing/gloves/yellow,
 /obj/item/storage/briefcase/inflatable,
 /obj/item/stack/material/phoron{
 	amount = 20
@@ -874,7 +869,7 @@
 	pixel_y = 5
 	},
 /obj/map_helper/airlock/sensor/ext_sensor,
-/turf/simulated/shuttle/plating/airless/carry,
+/turf/simulated/floor/airless,
 /area/shuttle/reaver/fore)
 "SH" = (
 /obj/machinery/computer/ship/sensors{
@@ -1068,7 +1063,7 @@ Ti
 SS
 Ti
 gQ
-Nq
+Ap
 Sx
 Nq
 Nq
@@ -1096,7 +1091,7 @@ Nq
 Nq
 Nq
 Ti
-Ap
+qB
 yp
 Ti
 OZ
