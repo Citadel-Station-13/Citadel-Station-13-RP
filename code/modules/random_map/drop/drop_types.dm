@@ -267,9 +267,9 @@ var/global/list/datum/supply_drop_loot/supply_drop
 /datum/supply_drop_loot/materials/New()
 	..()
 	contents = list(
-		/obj/fiftyspawner/steel,
-		/obj/fiftyspawner/steel,
-		/obj/fiftyspawner/steel,
+		/obj/item/stack/material/steel/full_stack,
+		/obj/item/stack/material/steel/full_stack,
+		/obj/item/stack/material/steel/full_stack,
 		/obj/fiftyspawner/glass,
 		/obj/fiftyspawner/glass,
 		/obj/fiftyspawner/wood,
@@ -283,7 +283,7 @@ var/global/list/datum/supply_drop_loot/supply_drop
 /datum/supply_drop_loot/materials_advanced/New()
 	..()
 	contents = list(
-		/obj/fiftyspawner/steel,
+		/obj/item/stack/material/steel/full_stack,
 		/obj/fiftyspawner/glass,
 		/obj/fiftyspawner/wood,
 		/obj/fiftyspawner/plastic,

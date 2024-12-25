@@ -131,7 +131,7 @@
 		var/turf/T = get_turf(src)
 		if(!istype(T))
 			return
-		if(T.hides_underfloor_objects() && istype(node, /obj/machinery/atmospherics/pipe) && node.hides_underfloor == OBJ_UNDERFLOOR_ALWAYS)
+		if(T.hides_underfloor_objects() && istype(node, /obj/machinery/atmospherics/pipe) && node.will_hide_underfloor())
 			return
 		else
 			if(node)
@@ -234,7 +234,7 @@
 		to_chat(user, "<span class='warning'>You cannot unwrench \the [src], turn it off first.</span>")
 		return 1
 	var/turf/T = src.loc
-	if(T?.hides_underfloor_objects() && node?.hides_underfloor == OBJ_UNDERFLOOR_ALWAYS)
+	if(T?.hides_underfloor_objects() && node?.will_hide_underfloor())
 		to_chat(user, "<span class='warning'>You must remove the plating first.</span>")
 		return 1
 	if(unsafe_pressure())

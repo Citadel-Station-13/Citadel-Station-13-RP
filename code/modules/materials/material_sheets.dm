@@ -14,8 +14,12 @@
 		)
 	drop_sound = 'sound/items/drop/axe.ogg'
 	pickup_sound = 'sound/items/pickup/axe.ogg'
+	description_info = "Use in your hand to bring up the recipe menu.  If you have enough sheets, click on something on the list to build it."
 
 	material_parts = MATERIAL_DEFAULT_DISABLED
+
+	skip_legacy_icon_update = TRUE
+
 	/// material - direct ref because stack
 	var/datum/prototype/material/material
 
@@ -24,11 +28,24 @@
 	var/allow_window_autobuild = TRUE
 
 /obj/item/stack/material/Initialize(mapload, new_amount, merge = TRUE, material)
+	// allow material override if needed
 	if(!isnull(material))
 		src.material = material
+
+	// fetch material
 	src.material = RSmaterials.fetch_or_defer(src.material)
 	if(src.material == REPOSITORY_FETCH_DEFER)
 		stack_trace("material deferred on a material stack. this isn't supported.")
+
+	// ensure our icon is set properly
+	if(src.material.icon && icon != src.material.icon)
+		icon = src.material.icon
+
+	//! LEGACY: turn it back on if our material doesn't have the proper shit set
+	if(!src.material.icon_stack_count)
+		skip_legacy_icon_update = FALSE
+	//! END
+
 	. = ..()
 
 	pixel_x = rand(0,4)-4
@@ -48,6 +65,11 @@
 
 /obj/item/stack/material/get_materials(respect_multiplier)
 	return list(material.id = (respect_multiplier? material_multiplier : 1) * SHEET_MATERIAL_AMOUNT)
+
+/obj/item/stack/material/update_icon()
+	if(material.icon_stack_count)
+		icon_state = "stack-[min(ceil((amount / max_amount) * material.icon_stack_count), material.icon_stack_count)]"
+	return ..()
 
 /obj/item/stack/material/tgui_recipes()
 	var/list/assembled = ..()
@@ -211,12 +233,6 @@
 	icon_state = "sheet-silver"
 	material = /datum/prototype/material/hydrogen/deuterium
 	apply_colour = 1
-	no_variants = FALSE
-
-/obj/item/stack/material/steel
-	name = MAT_STEEL
-	icon_state = "sheet-metal"
-	material = /datum/prototype/material/steel
 	no_variants = FALSE
 
 /obj/item/stack/material/steel/hull
