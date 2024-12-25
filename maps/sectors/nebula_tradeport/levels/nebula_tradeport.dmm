@@ -298,6 +298,7 @@
 	name = "Adventurer Airtight Hatch";
 	req_one_access = null
 	},
+/obj/machinery/atmospheric_field_generator/perma,
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/shuttle/adventurer)
 "aaS" = (
@@ -1386,6 +1387,7 @@
 	name = "Tug hauler shuttle Airlock";
 	opacity = 0
 	},
+/obj/machinery/atmospheric_field_generator/perma,
 /turf/simulated/floor/tiled/monotechmaint,
 /area/shuttle/tug)
 "adV" = (
@@ -4421,6 +4423,7 @@
 	name = "Teshari Runabout Airlock";
 	opacity = 0
 	},
+/obj/structure/fans/tiny,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/runabout)
 "alF" = (
@@ -5328,6 +5331,7 @@
 	name = "Spacenat Caravan Airlock";
 	opacity = 0
 	},
+/obj/structure/fans/tiny,
 /turf/simulated/floor/plating,
 /area/shuttle/caravan)
 "aof" = (
@@ -7090,6 +7094,7 @@
 	name = "Caravan Airtight Hatch";
 	req_one_access = null
 	},
+/obj/structure/fans/tiny,
 /turf/simulated/floor/plating,
 /area/shuttle/caravan)
 "asV" = (
@@ -12571,6 +12576,7 @@
 	name = "Spacenat Caravan Airlock";
 	opacity = 0
 	},
+/obj/machinery/atmospheric_field_generator/perma,
 /turf/simulated/floor/plating,
 /area/shuttle/adventurer)
 "aGV" = (
@@ -12758,6 +12764,7 @@
 	name = "Tug hauler shuttle Airlock";
 	opacity = 0
 	},
+/obj/machinery/atmospheric_field_generator/perma,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/tug)
 "aHv" = (
@@ -15174,6 +15181,7 @@
 	name = "Tug Airtight Hatch";
 	req_one_access = null
 	},
+/obj/machinery/atmospheric_field_generator/perma,
 /turf/simulated/floor/tiled/monotechmaint,
 /area/shuttle/tug)
 "aNV" = (
@@ -15762,6 +15770,7 @@
 	name = "Adventurer Airtight Hatch";
 	req_one_access = null
 	},
+/obj/machinery/atmospheric_field_generator/perma,
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/shuttle/adventurer)
 "aPK" = (
@@ -19095,6 +19104,7 @@
 	name = "Shuttle Utility Door";
 	pixel_x = 30
 	},
+/obj/structure/fans/tiny,
 /turf/simulated/floor/tiled/monotechmaint,
 /area/shuttle/utilitymicro)
 "aYJ" = (
@@ -20777,6 +20787,7 @@
 /obj/structure/cable/orange{
 	icon_state = "1-2"
 	},
+/obj/machinery/atmospheric_field_generator/perma,
 /turf/simulated/floor/tiled/steel_dirty/dark,
 /area/shuttle/arrowhead)
 "dWa" = (
@@ -23014,6 +23025,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
+/obj/item/storage/box/glasses/meta,
 /turf/simulated/floor/tiled/dark,
 /area/sector/nebula_tradeport/motel/room4)
 "keh" = (
@@ -24129,6 +24141,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
+/obj/item/storage/box/glasses/meta,
 /turf/simulated/floor/tiled/dark,
 /area/sector/nebula_tradeport/motel/room1)
 "ngf" = (
@@ -24926,6 +24939,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
+/obj/item/storage/box/glasses/meta,
 /turf/simulated/floor/tiled/dark,
 /area/sector/nebula_tradeport/motel/room2)
 "pSM" = (
@@ -25306,6 +25320,7 @@
 /obj/structure/cable/yellow{
 	icon_state = "2-4"
 	},
+/obj/item/integrated_circuit_printer,
 /turf/simulated/floor/tiled/techmaint,
 /area/tradeport/facility)
 "qSt" = (
@@ -25576,6 +25591,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
+/obj/item/storage/box/glasses/meta,
 /turf/simulated/floor/tiled/dark,
 /area/sector/nebula_tradeport/motel/room3)
 "rMJ" = (
@@ -35924,7 +35940,7 @@ sEm
 aRn
 aXl
 atV
-aTp
+aIs
 aza
 aZQ
 aId
