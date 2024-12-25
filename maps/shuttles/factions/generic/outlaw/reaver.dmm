@@ -27,7 +27,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 6
 	},
-/obj/machinery/meter,
 /turf/simulated/floor/plating/indoors,
 /area/space)
 "cY" = (
@@ -39,6 +38,12 @@
 	},
 /obj/map_helper/airlock/sensor/chamber_sensor,
 /turf/simulated/floor/tiled/techfloor/grid,
+/area/space)
+"di" = (
+/obj/machinery/atmospherics/component/binary/pump{
+	dir = 4
+	},
+/turf/simulated/floor/plating/indoors,
 /area/space)
 "fz" = (
 /obj/structure/bed/chair/bay/shuttle,
@@ -79,12 +84,17 @@
 /area/space)
 "it" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden,
+/obj/machinery/meter,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/space)
 "jW" = (
 /obj/structure/dispenser/oxygen,
 /obj/effect/floor_decal/techfloor{
 	dir = 6
+	},
+/obj/machinery/light{
+	dir = 4;
+	old_wall = 1
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/space)
@@ -98,7 +108,6 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 8
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden,
 /obj/machinery/airlock_sensor{
 	dir = 4;
 	pixel_x = -27
@@ -197,7 +206,16 @@
 /area/space)
 "qp" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden,
+/obj/machinery/meter,
 /turf/simulated/floor/plating/indoors,
+/area/space)
+"qX" = (
+/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/machinery/light{
+	dir = 4;
+	old_wall = 1
+	},
+/turf/simulated/floor/tiled/techmaint,
 /area/space)
 "qY" = (
 /turf/simulated/floor/tiled/monotechmaint,
@@ -206,8 +224,9 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 8
 	},
-/obj/structure/handrail{
-	dir = 4
+/obj/machinery/light{
+	dir = 8;
+	light_range = 12
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/space)
@@ -292,6 +311,7 @@
 	},
 /obj/effect/floor_decal/techfloor,
 /obj/effect/floor_decal/industrial/outline/yellow,
+/obj/machinery/light,
 /turf/simulated/floor/tiled/techfloor,
 /area/space)
 "xR" = (
@@ -312,6 +332,9 @@
 	name = "Engine Fuel Port"
 	},
 /obj/effect/floor_decal/industrial/outline/red,
+/obj/machinery/light{
+	dir = 1
+	},
 /turf/simulated/floor/plating/indoors,
 /area/space)
 "zl" = (
@@ -333,7 +356,6 @@
 /obj/item/reagent_containers/blood/OMinus,
 /obj/item/reagent_containers/blood/OMinus,
 /obj/item/reagent_containers/blood/OMinus,
-/obj/item/tank/anesthetic,
 /turf/simulated/floor/tiled/techmaint,
 /area/space)
 "At" = (
@@ -377,6 +399,10 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 4
 	},
+/obj/machinery/light{
+	dir = 4;
+	old_wall = 1
+	},
 /turf/simulated/floor/tiled/techfloor,
 /area/space)
 "BT" = (
@@ -393,18 +419,29 @@
 	input_attempt = 1
 	},
 /obj/structure/cable/orange,
+/obj/machinery/light,
 /turf/simulated/floor/plating/indoors,
 /area/space)
 "Cx" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 1
 	},
-/obj/machinery/atmospherics/pipe/tank/air,
+/obj/structure/closet/secure_closet/guncabinet,
 /turf/simulated/floor/tiled/techfloor,
 /area/space)
 "CA" = (
 /obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor/plating/indoors,
+/area/space)
+"DP" = (
+/obj/effect/floor_decal/techfloor{
+	dir = 4
+	},
+/obj/structure/handrail{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden,
+/turf/simulated/floor/tiled/techfloor,
 /area/space)
 "DV" = (
 /obj/effect/floor_decal/techfloor/corner{
@@ -423,12 +460,18 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 1
 	},
+/obj/machinery/light{
+	dir = 1
+	},
 /turf/simulated/floor/tiled/techfloor,
 /area/space)
 "Er" = (
 /obj/structure/bed/chair/bay/shuttle,
 /obj/effect/floor_decal/techfloor{
 	dir = 9
+	},
+/obj/machinery/light{
+	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/space)
@@ -437,6 +480,14 @@
 	name = "Ship Hatch"
 	},
 /obj/map_helper/airlock/door/ext_door,
+/obj/machinery/door/blast/regular{
+	density = 0;
+	dir = 2;
+	icon_state = "pdoor0";
+	id = "reaver_lockdown";
+	name = "Shuttle Blast Doors";
+	opacity = 0
+	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/space)
 "ET" = (
@@ -476,9 +527,6 @@
 /obj/effect/floor_decal/techfloor/corner{
 	dir = 8
 	},
-/obj/machinery/atmospherics/pipe/manifold/hidden{
-	dir = 8
-	},
 /obj/structure/cable/orange{
 	icon_state = "4-8"
 	},
@@ -500,7 +548,6 @@
 /obj/effect/floor_decal/techfloor/corner{
 	dir = 1
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden,
 /turf/simulated/floor/tiled/techfloor,
 /area/space)
 "HD" = (
@@ -509,11 +556,13 @@
 /turf/simulated/floor/plating/indoors,
 /area/space)
 "Ig" = (
-/obj/effect/floor_decal/techfloor,
-/obj/structure/handrail{
-	dir = 1
+/obj/machinery/button/remote/blast_door{
+	pixel_x = 26;
+	name = "Lockdown Shutters";
+	id = "reaver_lockdown";
+	pixel_y = 28
 	},
-/turf/simulated/floor/tiled/techfloor,
+/turf/simulated/floor/tiled/monotechmaint,
 /area/space)
 "Ij" = (
 /turf/simulated/floor/tiled/techfloor,
@@ -542,8 +591,8 @@
 /area/space)
 "Kc" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/fuel,
-/obj/structure/handrail{
-	dir = 8
+/obj/machinery/light{
+	dir = 4
 	},
 /turf/simulated/floor/plating/indoors,
 /area/space)
@@ -581,6 +630,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 5
 	},
+/obj/machinery/light,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/space)
 "LB" = (
@@ -613,6 +663,10 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/space)
+"Od" = (
+/obj/machinery/telecomms/relay/preset/telecomms,
+/turf/simulated/floor/airless,
+/area/space)
 "OG" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 5
@@ -624,12 +678,25 @@
 /obj/spawner/window/reinforced/full,
 /turf/simulated/floor/plating/indoors,
 /area/space)
-"Rn" = (
-/obj/effect/floor_decal/techfloor/corner{
+"PR" = (
+/obj/effect/floor_decal/techfloor{
+	dir = 4
+	},
+/obj/structure/handrail{
 	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 9
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/space)
+"Rn" = (
+/obj/effect/floor_decal/techfloor/corner{
+	dir = 8
+	},
+/obj/machinery/light,
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/space)
@@ -659,6 +726,9 @@
 	dir = 1
 	},
 /obj/effect/floor_decal/industrial/outline/blue,
+/obj/machinery/light{
+	dir = 1
+	},
 /turf/simulated/floor/tiled/techfloor,
 /area/space)
 "SF" = (
@@ -667,12 +737,27 @@
 	},
 /turf/simulated/floor/plating/indoors,
 /area/space)
+"SI" = (
+/obj/machinery/atmospherics/pipe/manifold/hidden,
+/obj/structure/handrail{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/space)
 "TH" = (
 /obj/machinery/portable_atmospherics/canister/oxygen,
 /obj/effect/floor_decal/techfloor,
 /obj/machinery/power/apc/south_mount,
 /obj/structure/cable/orange,
 /turf/simulated/floor/tiled/techfloor,
+/area/space)
+"Ui" = (
+/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/machinery/light{
+	dir = 8;
+	light_range = 12
+	},
+/turf/simulated/floor/tiled/techmaint,
 /area/space)
 "Us" = (
 /obj/machinery/door/airlock/hatch,
@@ -685,11 +770,31 @@
 /obj/machinery/computer/ship/sensors{
 	dir = 4
 	},
+/obj/structure/panic_button{
+	pixel_y = 32;
+	pixel_x = 3
+	},
+/obj/machinery/light{
+	dir = 8;
+	light_range = 12
+	},
 /turf/simulated/floor/tiled/monotechmaint,
 /area/space)
 "UJ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/fuel,
 /turf/simulated/floor/plating/indoors,
+/area/space)
+"UP" = (
+/obj/effect/floor_decal/techfloor{
+	dir = 4
+	},
+/obj/machinery/button/remote/blast_door{
+	pixel_x = 26;
+	name = "Lockdown Shutters";
+	id = "reaver_lockdown"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden,
+/turf/simulated/floor/tiled/techfloor,
 /area/space)
 "UU" = (
 /obj/structure/handrail{
@@ -719,8 +824,24 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/space)
+"VE" = (
+/obj/spawner/window/reinforced/full,
+/obj/machinery/door/blast/regular{
+	density = 0;
+	dir = 2;
+	icon_state = "pdoor0";
+	id = "reaver_lockdown";
+	name = "Shuttle Blast Doors";
+	opacity = 0
+	},
+/turf/simulated/floor/plating/indoors,
+/area/space)
 "VG" = (
 /obj/machinery/atmospherics/pipe/manifold4w/hidden/fuel,
+/obj/machinery/meter{
+	pixel_y = 9;
+	pixel_x = 7
+	},
 /turf/simulated/floor/plating/indoors,
 /area/space)
 "VN" = (
@@ -734,12 +855,10 @@
 /obj/effect/floor_decal/techfloor/corner{
 	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 9
-	},
 /obj/structure/cable/orange{
 	icon_state = "4-8"
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden,
 /turf/simulated/floor/tiled/techfloor,
 /area/space)
 "WK" = (
@@ -766,6 +885,10 @@
 	},
 /turf/simulated/floor/plating/indoors,
 /area/space)
+"Yv" = (
+/obj/machinery/shipsensors,
+/turf/simulated/floor/airless,
+/area/space)
 "YM" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 4
@@ -776,6 +899,17 @@
 /obj/machinery/suit_storage_unit/syndicate,
 /obj/effect/floor_decal/techfloor{
 	dir = 5
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/space)
+"Zi" = (
+/obj/structure/closet,
+/obj/effect/floor_decal/techfloor{
+	dir = 8
+	},
+/obj/machinery/light{
+	dir = 8;
+	light_range = 12
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/space)
@@ -2273,7 +2407,7 @@ zl
 zl
 rE
 rE
-PF
+VE
 rE
 ZK
 zl
@@ -2697,13 +2831,13 @@ zl
 zl
 zl
 zl
-PF
+VE
 fz
 bo
 PF
 AX
 it
-PF
+VE
 zl
 zl
 zl
@@ -2841,10 +2975,10 @@ zl
 zl
 rE
 XD
-Ig
+bo
 rE
 ol
-it
+SI
 rE
 zl
 zl
@@ -3268,9 +3402,9 @@ zl
 rE
 OG
 WF
-YM
-oh
-oh
+UP
+DP
+PR
 rE
 zl
 zl
@@ -3554,7 +3688,7 @@ ni
 DV
 rE
 Ru
-Xj
+Ui
 Ao
 rE
 zl
@@ -3833,12 +3967,12 @@ zl
 zl
 zl
 zl
-PF
+VE
 gY
 vu
 rE
 Lg
-Xj
+qX
 Xj
 rE
 zl
@@ -4122,7 +4256,7 @@ ra
 DV
 WK
 WK
-WK
+Zi
 LB
 rE
 zl
@@ -4266,7 +4400,7 @@ Ij
 Ij
 Ij
 bo
-PF
+VE
 zl
 zl
 zl
@@ -4968,8 +5102,8 @@ zl
 zl
 zl
 zl
-PF
-qY
+VE
+Ig
 Zs
 mz
 gL
@@ -5109,7 +5243,7 @@ zl
 zl
 zl
 zl
-zl
+Yv
 rE
 mH
 EV
@@ -5117,7 +5251,7 @@ MJ
 VC
 mG
 bo
-PF
+VE
 zl
 zl
 zl
@@ -5260,7 +5394,7 @@ rE
 uk
 xR
 rE
-zl
+Od
 zl
 zl
 zl
@@ -5539,7 +5673,7 @@ rE
 ck
 SF
 qp
-lF
+di
 IE
 mD
 tR
@@ -5681,7 +5815,7 @@ rE
 yS
 uc
 ka
-VN
+lF
 RK
 RK
 RK
