@@ -5436,6 +5436,7 @@
 #include "maps\sectors\wasteland_192\wasteland_192.dm"
 #include "maps\shuttles\factions\corporations\nanotrasen\drone_prototype.dm"
 #include "maps\shuttles\factions\corporations\nanotrasen\sci_vector.dm"
+#include "maps\shuttles\factions\generic\outlaw\reaver.dm"
 #include "maps\submaps\_helpers.dm"
 #include "maps\submaps\_readme.dm"
 #include "maps\submaps\level_specific\debrisfield_vr\debrisfield_things.dm"
