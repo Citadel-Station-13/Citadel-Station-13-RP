@@ -55,7 +55,7 @@
 	icon_state = "nose"
 	desc = "The BOOP module, a simple reagent and atmosphere sniffer."
 	damage_force = 0
-	item_flags = ITEM_NOBLUDGEON | ITEM_ENCUMBERS_WHILE_HELD
+	item_flags = ITEM_NO_BLUDGEON | ITEM_ENCUMBERS_WHILE_HELD
 	throw_force = 0
 	attack_verb = list("nuzzled", "nosed", "booped")
 	w_class = WEIGHT_CLASS_TINY
@@ -174,7 +174,7 @@
 	icon = 'icons/mob/dogborg_vr.dmi'
 	icon_state = "synthtongue"
 	attack_sound = 'sound/effects/attackblob.ogg'
-	item_flags = ITEM_NOBLUDGEON | ITEM_ENCUMBERS_WHILE_HELD
+	item_flags = ITEM_NO_BLUDGEON | ITEM_ENCUMBERS_WHILE_HELD
 	var/emagged = 0
 	var/datum/matter_synth/water = null
 
@@ -296,7 +296,7 @@
 	desc = "Toggles floor scrubbing."
 	icon = 'icons/mob/dogborg_vr.dmi'
 	icon_state = "scrub0"
-	item_flags = ITEM_NOBLUDGEON | ITEM_ENCUMBERS_WHILE_HELD
+	item_flags = ITEM_NO_BLUDGEON | ITEM_ENCUMBERS_WHILE_HELD
 	var/enabled = FALSE
 
 /obj/item/pupscrubber/attack_self(mob/user, datum/event_args/actor/actor)
@@ -374,7 +374,7 @@
 	icon_state = "pounce"
 	desc = "Leap at your target to momentarily stun them."
 	damage_force = 0
-	item_flags = ITEM_NOBLUDGEON | ITEM_ENCUMBERS_WHILE_HELD
+	item_flags = ITEM_NO_BLUDGEON | ITEM_ENCUMBERS_WHILE_HELD
 	throw_force = 0
 
 /obj/item/dogborg/pounce/attack_self(mob/user, datum/event_args/actor/actor)

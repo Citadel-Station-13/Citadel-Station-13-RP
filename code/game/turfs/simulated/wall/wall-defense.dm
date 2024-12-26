@@ -1,6 +1,9 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2024 silicons                             *//
 
+/turf/simulated/wall/melee_targetable(datum/event_args/actor/clickchain/clickchain, clickchain_flags)
+	return TRUE
+
 /turf/simulated/wall/throw_impacted(atom/movable/AM, datum/thrownthing/TT)
 	. = ..()
 	if(TT.throw_flags & THROW_AT_IS_GENTLE)

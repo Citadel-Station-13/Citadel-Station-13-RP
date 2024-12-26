@@ -118,6 +118,8 @@
 /obj/item/proc/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	return NONE
 
+#warn burn everything below this line with fire
+
 /**
  * standard proc for engaging a target in melee
  *
@@ -137,7 +139,7 @@
 	if(isnull(intent))
 		intent = user.a_intent
 	// end
-	if(item_flags & ITEM_NOBLUDGEON)
+	if(item_flags & ITEM_NO_BLUDGEON)
 		return NONE
 	if(clickchain_flags & CLICKCHAIN_DO_NOT_ATTACK)
 		return NONE

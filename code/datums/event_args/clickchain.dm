@@ -48,6 +48,8 @@
 
 	/// optional: target atom
 	var/atom/target
+	/// optional: target zone
+	var/target_zone
 
 	//* Attack Data *//
 
@@ -66,9 +68,13 @@
 
 /datum/event_args/actor/clickchain/New(mob/performer, mob/initiator, atom/target, list/params, intent)
 	..()
-	src.target = target
-	src.click_params = params || list()
+	// using //
 	src.using_intent = intent
+	// click //
+	src.click_params = params || list()
+	// target //
+	src.target = target
+	#warn auto fill: target_zone, using_intent
 
 /datum/event_args/actor/clickchain/clone()
 	var/datum/event_args/actor/clickchain/cloning = ..()
@@ -76,7 +82,10 @@
 	cloning.using_hand_index = using_hand_index
 	cloning.using_item = using_item
 	cloning.click_params = click_params
+	cloning.click_cooldown_base = click_cooldown_base
+	cloning.click_cooldown_multiplier = click_cooldown_multiplier
 	cloning.target = target
+	cloning.target_zone = target_zone
 	cloning.melee_damage_multiplier = melee_damage_multiplier
 	return cloning
 

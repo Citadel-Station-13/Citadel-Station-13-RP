@@ -12,7 +12,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 	w_class = WEIGHT_CLASS_SMALL
 	slot_flags = SLOT_ID | SLOT_BELT
 	rad_flags = RAD_BLOCK_CONTENTS
-	item_flags = ITEM_NOBLUDGEON
+	item_flags = ITEM_NO_BLUDGEON
 
 	//Main variables
 	var/pdachoice = 1

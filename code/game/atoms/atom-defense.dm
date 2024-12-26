@@ -5,6 +5,14 @@
 
 // todo: everything needs comsigs comsigs comsigs
 
+//* Targeting *//
+
+/**
+ * Checks if we should be targetable in melee.
+ */
+/atom/proc/melee_targetable(datum/event_args/actor/clickchain/clickchain, clickchain_flags)
+	return FALSE
+
 //* External API / Damage Receiving *//
 
 /**
