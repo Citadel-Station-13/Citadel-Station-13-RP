@@ -105,7 +105,7 @@
 	examining.seer_distance = dist
 	examining.examiner_atom = user
 	var/list/usage_hints = examine_query_usage_hints(examining)
-	if(length(stat_hints))
+	if(length(usage_hints))
 		. += "<b>Usage:</b>"
 		for(var/hint in usage_hints)
 			. += "<li>[hint]</li>"
