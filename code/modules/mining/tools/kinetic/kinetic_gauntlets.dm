@@ -1,6 +1,8 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
+
+
 /obj/item/kinetic_gauntlets
 	name = "proto-kinetic gauntlets"
 	icon = 'icons/modules/mining/tools/kinetic/kinetic_gauntlets.dmi'
@@ -16,6 +18,11 @@
 	var/charged = FALSE
 	var/charge_delay = 3 SECONDS
 	var/charge_timerid
+
+	/// our combo tracker
+	var/datum/combo_tracker/melee/combo_tracker
+	/// only reapplied on un-equip/re-equip right now!
+	var/combo_continuation_timeout = 3 SECONDS
 
 /obj/item/kinetic_gauntlets/update_icon()
 	cut_overlays()
@@ -56,10 +63,13 @@
 	. = ..()
 	if(slot_id_or_index == /datum/inventory_slot/inventory/gloves::id)
 		start_recharge()
+		if(!combo_tracker)
+			combo_tracker = new(combo_continuation_timeout)
 
 /obj/item/kinetic_gauntlets/on_unequipped(mob/wearer, slot_id_or_index, inv_op_flags, datum/event_args/actor/actor)
 	. = ..()
 	discharge()
+	QDEL_NULL(combo_tracker)
 
 /obj/item/kinetic_gauntlets/proc/recharge()
 	charged = TRUE

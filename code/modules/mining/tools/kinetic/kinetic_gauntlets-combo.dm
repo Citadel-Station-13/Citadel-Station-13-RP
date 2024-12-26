@@ -1,6 +1,8 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
+GLOBAL_DATUM_INIT(kinetic_gauntlet_melee_combo, /datum/combo_set/melee, new /datum/combo_set/melee/intent_based/kinetic_gauntlets)
+
 /datum/combo_set/melee/intent_based/kinetic_gauntlets
 	expected_combo_type = /datum/combo/melee/kinetic_gauntlets
 	combos = list(
