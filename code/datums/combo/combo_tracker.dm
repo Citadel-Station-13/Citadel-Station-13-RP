@@ -6,7 +6,7 @@
  *
  * todo: unit test this shit
  */
-/datum/combo_holder
+/datum/combo_tracker
 	/// current stored key sequence, first to last
 	/// * this is not a lazy list
 	var/list/stored = list()
@@ -16,7 +16,7 @@
 	var/tmp/list/datum/combo/sec_possible
 	var/tmp/sec_position
 
-/datum/combo_holder/proc/reset()
+/datum/combo_tracker/proc/reset()
 	stored = list()
 	sec_set = null
 	sec_possible = null
@@ -33,11 +33,11 @@
  *
  * * a shorter combo will always mask a longer one if it is present at any point in the longer one
  */
-/datum/combo_holder/proc/evaluate_inbound_via_tail_match(inbound, datum/combo_set/combo_set) as /datum/combo
+/datum/combo_tracker/proc/evaluate_inbound_via_tail_match(inbound, datum/combo_set/combo_set) as /datum/combo
 	stored += inbound
 	return evaluate_via_tail_match(combo_set)
 
-/datum/combo_holder/proc/evaluate_via_tail_match(datum/combo_set/combo_set) as /datum/combo
+/datum/combo_tracker/proc/evaluate_via_tail_match(datum/combo_set/combo_set) as /datum/combo
 	if(!stored)
 		return
 	var/datum/combo/found
@@ -89,7 +89,7 @@
  *
  * @return list(datum/combo/resolved, position, finished, list/datum/combo/possible)
  */
-/datum/combo_holder/proc/evaluate_inbound_via_stateful_exclusive_chain(inbound, datum/combo_set/combo_set)
+/datum/combo_tracker/proc/evaluate_inbound_via_stateful_exclusive_chain(inbound, datum/combo_set/combo_set)
 	// reset if we changed combos
 	if(combo_set != sec_set)
 		sec_set = combo_set

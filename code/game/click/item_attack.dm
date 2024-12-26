@@ -49,7 +49,7 @@ avoid code duplication. This includes items that may sometimes act as a standard
 /mob/living/get_attack_speed_legacy(obj/item/using_item)
 	var/speed = base_attack_cooldown
 	if(istype(using_item))
-		speed = using_item.melee_click_cd_cooldown * using_iwztem.melee_click_cd_multiply
+		speed = using_item.melee_click_cd_base * using_item.melee_click_cd_multiply
 	for(var/datum/modifier/M in modifiers)
 		if(!isnull(M.attack_speed_percent))
 			speed *= M.attack_speed_percent

@@ -9,7 +9,7 @@
  *
  * ## Hey! Listen!
  *
- * * A design flaw in how /datum/combo_holder works means that combo sets and their internal combos **will** be hard referenced
+ * * A design flaw in how /datum/combo_tracker works means that combo sets and their internal combos **will** be hard referenced
  *   and there's currently no way to inform holders to clear ref when we're being deleted. For now.
  *   A component signal system will be added later. For now, until we need to start deleting these / runtime-generating,
  *   please store combo sets in global variables.
