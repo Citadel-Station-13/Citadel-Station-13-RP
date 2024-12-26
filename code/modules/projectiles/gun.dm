@@ -470,6 +470,7 @@
 	add_fingerprint(user)
 
 	user.break_cloak()
+	user.setClickCooldownLegacy()
 
 	if(!special_check(user))
 		return
@@ -495,7 +496,7 @@
 	var/shoot_time = (burst - 1)* burst_delay
 
 	//These should apparently be disabled to allow for the automatic system to function without causing near-permanant paralysis. Re-enabling them while we sort that out.
-	user.setClickCooldown(shoot_time) //no clicking on things while shooting
+	user.setClickCooldownLegacy(shoot_time) //no clicking on things while shooting
 
 	next_fire_time = world.time + shoot_time
 
@@ -545,7 +546,7 @@
 	add_attack_logs(user,target_for_log,"Fired gun [src.name] ([reflex ? "REFLEX" : "MANUAL"])")
 
 	//update timing
-	user.setClickCooldown(DEFAULT_QUICK_COOLDOWN)
+	user.setClickCooldownLegacy(DEFAULT_QUICK_COOLDOWN)
 
 	next_fire_time = world.time + fire_delay
 

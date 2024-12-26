@@ -249,7 +249,7 @@
 
 // Attacks with hand tools. Blocked by Hyperkinetic flag.
 /obj/effect/shield/attackby(var/obj/item/I as obj, var/mob/user as mob)
-	user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
+	user.setClickCooldownLegacy(DEFAULT_ATTACK_COOLDOWN)
 	user.do_attack_animation(src)
 
 	if(gen.check_flag(MODEFLAG_HYPERKINETIC))

@@ -7,7 +7,7 @@
 			// this means execute both and get as boolean
 			// this is done so resist doesn't always invoke clickcd
 			if(resist_grab() | process_resist())
-				setClickCooldown(20)
+				setClickCooldownLegacy(20)
 
 // todo: refactor
 // todo: resist doing normal clickcd is kinda weird

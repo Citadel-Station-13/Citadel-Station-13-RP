@@ -74,7 +74,7 @@
 				return 0
 		hardsuit.selected_module.engage(A, alert_ai)
 		if(ismob(A)) // No instant mob attacking - though modules have their own cooldowns
-			setClickCooldown(get_attack_speed_legacy())
+			setClickCooldownLegacy(get_attack_speed_legacy())
 		return 1
 	return 0
 

@@ -50,7 +50,7 @@
 	if(target && user && ishuman(target) && ishuman(user) && !user.incapacitated() && user.zone_sel &&user.zone_sel.selecting == "mouth" )
 		user.visible_message("<span class='danger'>\The [user] washes \the [target]'s mouth out with soap!</span>")
 		playsound(src.loc, 'sound/items/soapmouth.ogg', 50, 1)
-		user.setClickCooldown(DEFAULT_QUICK_COOLDOWN) //prevent spam
+		user.setClickCooldownLegacy(DEFAULT_QUICK_COOLDOWN) //prevent spam
 		return CLICKCHAIN_DO_NOT_PROPAGATE
 	return ..()
 

@@ -92,4 +92,7 @@
 #define CD_INTERNET_SOUND "internet_sound"
 
 //* /mob
-#define CD_INDEX_MOB_VERB_INVERT_SELF "mob-verb-invert-self"
+#define TIMER_CD_INDEX_MOB_VERB_INVERT_SELF "mob-verb-invert_self"
+
+//* /client
+#define TIMER_CD_INDEX_CLIENT_CHARACTER_DIRECTORY "client-verb-character_directory"

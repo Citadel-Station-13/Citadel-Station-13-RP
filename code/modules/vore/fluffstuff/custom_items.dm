@@ -963,7 +963,7 @@
 	if(isliving(user))
 		user.visible_message("<span class='danger'>[user] invades [target]'s personal space, thrusting [src] into their face with an insistent huff.</span>","<span class='danger'>You invade [target]'s personal space, thrusting [src] into their face with an insistent huff.</span>")
 		user.do_attack_animation(target)
-		user.setClickCooldown(DEFAULT_QUICK_COOLDOWN) //to prevent spam
+		user.setClickCooldownLegacy(DEFAULT_QUICK_COOLDOWN) //to prevent spam
 
 /obj/item/clothing/accessory/badge/holo/detective/ruda/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()

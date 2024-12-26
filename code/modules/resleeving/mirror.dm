@@ -137,7 +137,7 @@
 	if(user.zone_sel.selecting == BP_TORSO && imp == null)
 		if(imp == null && H.mirror)
 			H.visible_message("<span class='warning'>[user] is attempting remove [H]'s mirror!</span>")
-			user.setClickCooldown(DEFAULT_QUICK_COOLDOWN)
+			user.setClickCooldownLegacy(DEFAULT_QUICK_COOLDOWN)
 			user.do_attack_animation(H)
 			var/turf/T1 = get_turf(H)
 			if (T1 && ((H == user) || do_after(user, 20)))
@@ -160,7 +160,7 @@
 				return
 			if(!H.mirror)
 				H.visible_message("<span class='warning'>[user] is attempting to implant [H] with a mirror.</span>")
-				user.setClickCooldown(DEFAULT_QUICK_COOLDOWN)
+				user.setClickCooldownLegacy(DEFAULT_QUICK_COOLDOWN)
 				user.do_attack_animation(H)
 				var/turf/T1 = get_turf(H)
 				if (T1 && ((H == user) || do_after(user, 20)))

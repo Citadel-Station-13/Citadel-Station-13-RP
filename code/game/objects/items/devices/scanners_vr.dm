@@ -116,7 +116,7 @@ var/global/mob/living/carbon/human/dummy/mannequin/sleevemate_mob
 	to_chat(user,output)
 
 /obj/item/sleevemate/Topic(href, href_list)
-	usr.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
+	usr.setClickCooldownLegacy(DEFAULT_ATTACK_COOLDOWN)
 
 	//Sanity checking/href-hacking checking
 	if(usr.get_active_held_item() != src)

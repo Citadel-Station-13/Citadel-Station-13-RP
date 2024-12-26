@@ -8,7 +8,7 @@
 #define RESIST_ATTACK_BITE		2
 
 /mob/living/carbon/human/proc/escape_straight_jacket()
-	setClickCooldown(100)
+	setClickCooldownLegacy(100)
 
 	if(can_break_straight_jacket())
 		break_straight_jacket()

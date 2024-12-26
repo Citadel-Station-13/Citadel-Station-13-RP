@@ -413,7 +413,7 @@
 		return ..()
 	if(CHECK_MULTIPLE_BITFIELDS(I.damage_mode, DAMAGE_MODE_EDGE | DAMAGE_MODE_SHARP))
 		var/time = (3 SECONDS / max(I.damage_force / 10, 1)) * I.tool_speed
-		user.setClickCooldown(time)
+		user.setClickCooldownLegacy(time)
 		if(do_after(user, time, src) && use(1))
 			to_chat(user, "<span class='notice'>You cut up a log into planks.</span>")
 			playsound(get_turf(src), 'sound/effects/woodcutting.ogg', 50, 1)
@@ -444,7 +444,7 @@
 		return ..()
 	if(CHECK_MULTIPLE_BITFIELDS(I.damage_mode, DAMAGE_MODE_EDGE | DAMAGE_MODE_SHARP))
 		var/time = (3 SECONDS / max(I.damage_force / 10, 1)) * I.tool_speed
-		user.setClickCooldown(time)
+		user.setClickCooldownLegacy(time)
 		if(do_after(user, time, src) && use(1))
 			to_chat(user, "<span class='notice'>You cut up a log into planks.</span>")
 			playsound(get_turf(src), 'sound/effects/woodcutting.ogg', 50, 1)

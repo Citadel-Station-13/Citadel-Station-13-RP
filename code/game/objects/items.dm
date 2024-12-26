@@ -488,7 +488,7 @@
 
 	add_attack_logs(user,M,"Attack eyes with [name]")
 
-	user.setClickCooldown(user.get_attack_speed_legacy())
+	user.setClickCooldownLegacy(user.get_attack_speed_legacy())
 	user.do_attack_animation(M)
 
 	src.add_fingerprint(user)
