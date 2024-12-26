@@ -1,8 +1,9 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
-
-
+/**
+ * Glove-worn gauntlets usable for punching rock, creatures, objects, and people alike.
+ */
 /obj/item/kinetic_gauntlets
 	name = "proto-kinetic gauntlets"
 	icon = 'icons/modules/mining/tools/kinetic/kinetic_gauntlets.dmi'
@@ -18,6 +19,13 @@
 	var/charged = FALSE
 	var/charge_delay = 3 SECONDS
 	var/charge_timerid
+
+	/// recharge speed mult when breaking rock
+	var/charge_delay_multiplier_rock = (1 / 3)
+	/// recharge speed mult on failed combo
+	var/charge_delay_multiplier_combo_fail = 1
+	/// recharge speed mult on successful combo
+	var/charge_delay_multiplier_combo_success = (2 / 3)
 
 	/// our combo tracker
 	var/datum/combo_tracker/melee/combo_tracker

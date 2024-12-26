@@ -99,17 +99,22 @@
 
 	MATERIAL_INVOKE(src, MATERIAL_TRAIT_EXAMINE, on_examine, ., user, dist)
 
-	// todo: this shouldn't be in main examine()
+	// todo: this shouldn't be in main examine(), format this crap better too.
 	var/datum/event_args/examine/examining = new /datum/event_args/examine
 	examining.seer_atom = user
 	examining.seer_distance = dist
 	examining.examiner_atom = user
 	var/list/usage_hints = examine_query_usage_hints(examining)
-	. += usage_hints
+	if(length(stat_hints))
+		. += "<b>Usage:</b>"
+		for(var/hint in usage_hints)
+			. += "<li>[hint]</li>"
 	var/list/stat_hints = examine_query_stat_hints(examining)
-	for(var/key in stat_hints)
-		var/value = stat_hints[key]
-		. += "<li>[key] - [value]</li>"
+	if(length(stat_hints))
+		. += "<b>Stats:</b>"
+		for(var/key in stat_hints)
+			var/value = stat_hints[key]
+			. += "<li>[key] - [value]</li>"
 
 	SEND_SIGNAL(src, COMSIG_PARENT_EXAMINE, user, .)
 
@@ -135,6 +140,7 @@
  *
  * * These should not depend on the user's inhand items / worn equipment / whatever.
  * * These are fully HTML-formatted
+ * * These will be formatted into list entries by the caller.
  *
  * @return list
  */
@@ -147,6 +153,7 @@
  * * These should not depend on the user's inhand items / worn equipment / whatever.
  * * These are fully HTML-formatted
  * * This can return either key-values or just strings.
+ * * These will be formatted into list entries by the caller.
  *
  * @return list(key = value, key only, ...)
  */

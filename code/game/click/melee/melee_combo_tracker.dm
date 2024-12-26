@@ -28,7 +28,7 @@
 		return
 	continuation_active = TRUE
 	on_continuation_begin?.invoke_no_sleep()
-	addtimer(CALLBACK(src, PROC_REF(check_continuation)), remaining_time)
+	addtimer(CALLBACK(src, PROC_REF(check_continuation)), continuation_timeout)
 
 /datum/combo_tracker/melee/proc/end_continuation(timed_out)
 	var/list/old_stored = stored
