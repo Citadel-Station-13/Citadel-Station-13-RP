@@ -410,12 +410,16 @@ GLOBAL_LIST(topic_status_cache)
 
 	status = .
 
+/**
+ * Sets whether or not we're visible on the hub.
+ * * This is the only place where `hub_password`, `visibility`, or `hub` should be touched!
+ */
 /world/proc/update_hub_visibility(new_visibility)
+	new_visibility = !!new_visibility
 	if(new_visibility == visibility)
 		return
-
-	visibility = new_visibility
-	if(visibility)
+	src.visibility = new_visibility
+	if(src.visibility)
 		hub_password = "kMZy3U5jJHSiBQjr"
 	else
 		hub_password = "SORRYNOPASSWORD"
