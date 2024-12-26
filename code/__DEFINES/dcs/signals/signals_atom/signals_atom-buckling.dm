@@ -1,5 +1,5 @@
 //* This file is explicitly licensed under the MIT license. *//
-//* Copyright (c) 2024 silicons                             *//
+//* Copyright (c) 2024 Citadel Station Developers           *//
 
 //* --           Buckling          -- *//
 //* flags are always buckling opflags *//
@@ -16,7 +16,7 @@
 /// called on the mob that just got unbuckled: (mob, flags, user, semantic)
 #define COMSIG_MOB_UNBUCKLED_FROM				"unbuckled"
 
-//* For the below, component_block/force_buckle_operation works to varying degrees on varying procs. *//
+//* For the below, SIGNAL_RETURN_(BLOCK|FORCE)_BUCKLE_OPERATION works to varying degrees on varying procs. *//
 
 /// called during mob buckling: (mob, flags, user, semantic)
 #define COMSIG_MOVABLE_PRE_BUCKLE_MOB		"pre_buckle_mob"
@@ -35,11 +35,11 @@
 /// called during can unbuckle on mob: (AM, flags, user, semantic, movable_opinion)
 #define COMSIG_MOB_CAN_UNBUCKLE_FROM				"mob_can_unbuckle"
 	/// block mob buckle/unbuckle **silently**
-	#define SIGNAL_RAISE_BLOCK_BUCKLE_OPERATION		(1<<0)
+	#define SIGNAL_RETURN_BLOCK_BUCKLE_OPERATION		(1<<0)
 	///
-	/// * has priority over [SIGNAL_RAISE_FORCE_BUCKLE_OPERATION] where applicable
+	/// * has priority over [SIGNAL_RETURN_FORCE_BUCKLE_OPERATION] where applicable
 	/// force allow buckle/unbuckled **silently**
-	#define SIGNAL_RAISE_FORCE_BUCKLE_OPERATION		(1<<1)
+	#define SIGNAL_RETURN_FORCE_BUCKLE_OPERATION		(1<<1)
 
 //* Interactions; only blocking default interactions work. *//
 
@@ -50,4 +50,4 @@
 /// called from resist_unbuckle_interaction(M)
 #define COMSIG_MOVABLE_RESIST_UNBUCKLE_INTERACTION "resist_unbuckle"
 	/// cancel rest of procs
-	#define SIGNAL_RAISE_BUCKLE_INTERACTION_HANDLED	(1<<0)
+	#define SIGNAL_RETURN_BUCKLE_INTERACTION_HANDLED	(1<<0)

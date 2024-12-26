@@ -119,8 +119,6 @@
 	if(!wielded && requires_wield)
 		to_chat(user, "<span class='warning'>[src] is too heavy to use with one hand.")
 		return
-	var/datum/status_effect/crusher_damage/C = L.has_status_effect(/datum/status_effect/crusher_damage)
-	var/target_health = L.health
 	. = ..()
 /*
 	for(var/t in trophies)
@@ -128,8 +126,6 @@
 			var/obj/item/crusher_trophy/T = t
 			T.on_melee_hit(L, user)
 */
-	if(!QDELETED(C) && !QDELETED(L))
-		C.total_damage += target_health - L.health //we did some damage, but let's not assume how much we did
 
 /obj/item/kinetic_crusher/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	. = ..()
@@ -163,19 +159,10 @@
 		detonate(target, user)
 
 /obj/item/kinetic_crusher/proc/detonate(mob/living/L, mob/living/user, thrown = FALSE)
-	var/datum/status_effect/grouped/crusher_mark/CM = L.has_status_effect(/datum/status_effect/grouped/crusher_mark)
-	if(!CM || (CM.has_source(WEAKREF(src))) || !L.remove_status_effect(/datum/status_effect/grouped/crusher_mark))
+	var/datum/status_effect/grouped/proto_kinetic_mark/CM = L.has_status_effect(/datum/status_effect/grouped/proto_kinetic_mark)
+	if(!CM || (CM.has_source(WEAKREF(src))) || !L.remove_status_effect(/datum/status_effect/grouped/proto_kinetic_mark))
 		return
-	var/datum/status_effect/crusher_damage/C = L.has_status_effect(/datum/status_effect/crusher_damage)
-	var/target_health = L.health
-/*
-	for(var/t in trophies)
-		var/obj/item/crusher_trophy/T = t
-		T.on_mark_detonation(target, user)
-*/
 	if(!QDELETED(L))
-		if(!QDELETED(C))
-			C.total_damage += target_health - L.health //we did some damage, but let's not assume how much we did
 		new /obj/effect/temp_visual/kinetic_blast(get_turf(L))
 		var/backstab_dir = get_dir(user, L)
 		var/def_check = L.legacy_mob_armor(type = "bomb")
@@ -183,13 +170,9 @@
 		var/backstab_bonus = src.backstab_bonus * (!ishuman(L)? 1 : human_backstab_nerf)
 		var/thrown_bonus = thrown? (src.thrown_bonus * (!ishuman(L)? 1 : human_damage_nerf)) : 0
 		if(thrown? (get_dir(src, L) & L.dir) : ((user.dir & backstab_dir) && (L.dir & backstab_dir)))
-			if(!QDELETED(C))
-				C.total_damage += detonation_damage + backstab_bonus + thrown_bonus //cheat a little and add the total before killing it, so certain mobs don't have much lower chances of giving an item
 			L.apply_damage(detonation_damage + backstab_bonus + thrown_bonus, DAMAGE_TYPE_BRUTE, blocked = def_check)
 			playsound(src, 'sound/weapons/kenetic_accel.ogg', 100, 1) //Seriously who spelled it wrong
 		else
-			if(!QDELETED(C))
-				C.total_damage += detonation_damage + thrown_bonus
 			L.apply_damage(detonation_damage + thrown_bonus, DAMAGE_TYPE_BRUTE, blocked = def_check)
 
 /obj/item/kinetic_crusher/throw_impact(atom/A, datum/thrownthing/TT)
@@ -197,7 +180,7 @@
 	if(!isliving(A))
 		return
 	var/mob/living/L = A
-	if(!L.has_status_effect(/datum/status_effect/grouped/crusher_mark))
+	if(!L.has_status_effect(/datum/status_effect/grouped/proto_kinetic_mark))
 		detonate(L, TT.thrower, TRUE)
 
 /obj/item/kinetic_crusher/proc/Recharge()
@@ -326,12 +309,12 @@
 		var/mob/living/L = target
 		if(hammer_synced.can_mark(L))
 			L.apply_grouped_effect(
-				/datum/status_effect/grouped/crusher_mark,
+				/datum/status_effect/grouped/proto_kinetic_mark,
 				WEAKREF(src),
 				TRUE,
 			)
-		// var/had_effect = (L.has_status_effect(/datum/status_effect/grouped/crusher_mark)) //used as a boolean
-		// var/datum/status_effect/grouped/crusher_mark/CM = L.apply_status_effect(/datum/status_effect/grouped/crusher_mark, hammer_synced)
+		// var/had_effect = (L.has_status_effect(/datum/status_effect/grouped/proto_kinetic_mark)) //used as a boolean
+		// var/datum/status_effect/grouped/proto_kinetic_mark/CM = L.apply_status_effect(/datum/status_effect/grouped/proto_kinetic_mark, hammer_synced)
 /*
 		if(hammer_synced)
 			for(var/t in hammer_synced.trophies)

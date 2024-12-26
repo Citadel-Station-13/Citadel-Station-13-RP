@@ -1,7 +1,7 @@
 //* This file is explicitly licensed under the MIT license. *//
-//* Copyright (c) Citadel Station Developers                *//
+//* Copyright (c) 2024 Citadel Station Developers           *//
 
-// todo: integrity signals?
+// todo: integrity signals? probably not?
 
 /// called from bullet_act(): (args)
 #define COMSIG_ATOM_BULLET_ACT "bullet_act"
@@ -20,7 +20,7 @@
 /// * This is an extremely low-level signal. Handle with care.
 #define COMSIG_ATOM_SHIELDCALL "atom-shieldcalls"
 
-/// called from atom_shieldcall_handle_*l: (shieldcall_type)
+/// called from atom_shieldcall_handle_*l: (ATOM_SHIELDCALL_ITERATING_*)
 ///
 /// * use this for stuff that should spin up a full shield when attacked but is usually inactive.
 /// * this is not used for base of /atom_shieldcall(), as it already has a signal!
