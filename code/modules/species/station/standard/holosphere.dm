@@ -207,7 +207,7 @@
 	name = "test"
 	desc = "test"
 
-	icon = 'icons\mob\species\holosphere\holosphere.dmi'
+	icon = 'icons/mob/species/holosphere/holosphere.dmi'
 	icon_state = "holosphere_body"
 
 	maxHealth = 100
@@ -248,7 +248,7 @@
 
 /mob/living/simple_mob/holosphere_shell/regenerate_icons()
 	cut_overlays()
-	var/icon/eye_icon = image('icons/mob/corgi_head.dmi',eye_icon_state)
+	var/image/eye_icon = image('icons/mob/corgi_head.dmi',eye_icon_state)
 	eye_icon.color = eye_color
 	add_overlay(eye_icon)
 
