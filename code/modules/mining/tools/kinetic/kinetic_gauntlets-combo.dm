@@ -18,6 +18,7 @@
 	keys = list(
 		INTENT_DISARM,
 		INTENT_DISARM,
+		INTENT_HARM,
 	)
 
 /datum/combo/melee/intent_based/kinetic_gauntlets/concuss
@@ -26,12 +27,14 @@
 	keys = list(
 		INTENT_DISARM,
 		INTENT_HARM,
+		INTENT_DISARM,
 	)
 
 /datum/combo/melee/intent_based/kinetic_gauntlets/detonate
 	name = "detonate"
 	desc = "Detonate a kinetic mark on a target with full intensity, in lieu of any special effects."
 	keys = list(
+		INTENT_HARM,
 		INTENT_HARM,
 		INTENT_HARM,
 	)

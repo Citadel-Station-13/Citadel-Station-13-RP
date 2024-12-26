@@ -41,15 +41,15 @@ avoid code duplication. This includes items that may sometimes act as a standard
 
 // Used to get how fast a mob should attack, and influences click delay.
 // This is just for inheritence.
-/mob/proc/get_attack_speed()
+/mob/proc/get_attack_speed_legacy(obj/item/using_item)
 	return DEFAULT_ATTACK_COOLDOWN
 
 // Same as above but actually does useful things.
 // W is the item being used in the attack, if any. modifier is if the attack should be longer or shorter than usual, for whatever reason.
-/mob/living/get_attack_speed(var/obj/item/W)
+/mob/living/get_attack_speed_legacy(obj/item/using_item)
 	var/speed = base_attack_cooldown
-	if(W && istype(W))
-		speed = W.attackspeed
+	if(istype(using_item))
+		speed = using_item.melee_click_cd_cooldown * using_iwztem.melee_click_cd_multiply
 	for(var/datum/modifier/M in modifiers)
 		if(!isnull(M.attack_speed_percent))
 			speed *= M.attack_speed_percent

@@ -140,7 +140,7 @@
 	if(!..())
 		return FALSE
 
-	setClickCooldown(get_attack_speed())
+	setClickCooldown(get_attack_speed_legacy())
 	A.attack_generic(src,rand(5,6),"bitten")
 
 /*

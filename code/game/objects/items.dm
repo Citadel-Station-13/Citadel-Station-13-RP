@@ -48,6 +48,10 @@
 	/// note that the component will not be modified while held;
 	/// if this is changed, the component needs to be remade.
 	var/passive_parry
+	/// base melee click cooldown
+	var/melee_click_cd_base = 0.8 SECONDS
+	/// base melee click cooldown multiplier
+	var/melee_click_cd_multiply = 1
 
 	//* Economy
 	/// economic category for items
@@ -185,8 +189,6 @@
 	/// 0 won't embed, and 100 will always embed
 	var/embed_chance = EMBED_CHANCE_UNSET
 
-	/// How long click delay will be when using this, in 1/10ths of a second. Checked in the user's get_attack_speed().
-	var/attackspeed = DEFAULT_ATTACK_COOLDOWN
 	/// Length of tiles it can reach, 1 is adjacent.
 	var/reach = 1
 	/// Icon overlay for ADD highlights when applicable.
@@ -486,7 +488,7 @@
 
 	add_attack_logs(user,M,"Attack eyes with [name]")
 
-	user.setClickCooldown(user.get_attack_speed())
+	user.setClickCooldown(user.get_attack_speed_legacy())
 	user.do_attack_animation(M)
 
 	src.add_fingerprint(user)
