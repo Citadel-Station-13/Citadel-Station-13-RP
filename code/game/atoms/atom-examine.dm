@@ -100,7 +100,16 @@
 	MATERIAL_INVOKE(src, MATERIAL_TRAIT_EXAMINE, on_examine, ., user, dist)
 
 	// todo: this shouldn't be in main examine()
-	#warn usage / stat hints
+	var/datum/event_args/examine/examining = new /datum/event_args/examine
+	examining.seer_atom = user
+	examining.seer_distance = dist
+	examining.examiner_atom = user
+	var/list/usage_hints = examine_query_usage_hints(examining)
+	. += usage_hints
+	var/list/stat_hints = examine_query_stat_hints(examining)
+	for(var/key in stat_hints)
+		var/value = stat_hints[value]
+		. += "<li>[key] - [value]</li>"
 
 	SEND_SIGNAL(src, COMSIG_PARENT_EXAMINE, user, .)
 

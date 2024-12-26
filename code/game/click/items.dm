@@ -25,8 +25,6 @@
 
 	. = clickchain_flags
 
-	// todo: inject something here for 'used as item' much like /tg/, to get rid of attackby pattern
-
 	var/datum/event_args/actor/clickchain/e_args = new(user)
 
 	if((. |= item_attack_chain(target, e_args, ., params)) & CLICKCHAIN_DO_NOT_PROPAGATE)
