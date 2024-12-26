@@ -19687,7 +19687,7 @@
 /area/sector/nebula_tradeport/motel)
 "bqy" = (
 /turf/simulated/wall/prepainted/exploration,
-/area/shuttle/scoophead/office)
+/area/shuttle/scoophead/main2)
 "bqF" = (
 /obj/effect/floor_decal/corner/red/border{
 	dir = 9
@@ -19735,7 +19735,7 @@
 	id = "scoophead_office"
 	},
 /turf/simulated/floor/plating,
-/area/shuttle/scoophead/office)
+/area/shuttle/scoophead/main2)
 "bsc" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -19756,7 +19756,7 @@
 	dir = 9
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/shuttle/scoophead/office)
+/area/shuttle/scoophead/main2)
 "btw" = (
 /obj/machinery/atmospherics/portables_connector{
 	dir = 1
@@ -19841,7 +19841,7 @@
 	id = "scoophead_office"
 	},
 /turf/simulated/floor/carpet/patterened/red,
-/area/shuttle/scoophead/office)
+/area/shuttle/scoophead/main2)
 "bEl" = (
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 10
@@ -19884,7 +19884,7 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/carpet/patterened/red,
-/area/shuttle/scoophead/office)
+/area/shuttle/scoophead/main2)
 "bHd" = (
 /obj/structure/aquarium/prefilled,
 /turf/simulated/floor/carpet/turcarpet,
@@ -20521,7 +20521,7 @@
 	req_one_access = null
 	},
 /turf/simulated/floor/plating,
-/area/shuttle/scoophead/office)
+/area/shuttle/scoophead/main2)
 "dzE" = (
 /obj/structure/toilet{
 	dir = 4
@@ -20559,7 +20559,7 @@
 	id = "scoophead_room"
 	},
 /turf/simulated/floor/plating,
-/area/shuttle/scoophead/office)
+/area/shuttle/scoophead/main2)
 "dCd" = (
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 9
@@ -20616,7 +20616,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/shuttle/scoophead/office)
+/area/shuttle/scoophead/main2)
 "dGF" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
 /obj/structure/curtain/black,
@@ -21089,7 +21089,7 @@
 	pixel_x = -32
 	},
 /turf/simulated/floor/carpet/patterened/blue,
-/area/shuttle/scoophead/office)
+/area/shuttle/scoophead/main2)
 "eEX" = (
 /obj/structure/simple_door/hardwood,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -21295,7 +21295,7 @@
 	id = "scoophead_office"
 	},
 /turf/simulated/floor/plating,
-/area/shuttle/scoophead/office)
+/area/shuttle/scoophead/main2)
 "fir" = (
 /obj/machinery/computer/ship/sensors,
 /obj/effect/floor_decal/techfloor{
@@ -21423,7 +21423,7 @@
 	},
 /obj/machinery/power/apc/alarms_hidden/south_mount,
 /turf/simulated/floor/tiled/techfloor,
-/area/shuttle/scoophead/office)
+/area/shuttle/scoophead/main2)
 "fFF" = (
 /obj/structure/table/steel_reinforced,
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
@@ -22069,7 +22069,7 @@
 	id = "scoophead_office"
 	},
 /turf/simulated/floor/plating,
-/area/shuttle/scoophead/office)
+/area/shuttle/scoophead/main2)
 "hyI" = (
 /obj/structure/table/hardwoodtable,
 /obj/machinery/chemical_dispenser/catering/bar_coffee{
@@ -22584,7 +22584,7 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/carpet/patterened/red,
-/area/shuttle/scoophead/office)
+/area/shuttle/scoophead/main2)
 "iQo" = (
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /obj/machinery/meter,
@@ -22633,7 +22633,7 @@
 /obj/structure/curtain/open/shower,
 /obj/structure/simple_door/wood,
 /turf/simulated/floor/tiled/neutral,
-/area/shuttle/scoophead/office)
+/area/shuttle/scoophead/main2)
 "jdu" = (
 /obj/machinery/washing_machine,
 /obj/item/storage/laundry_basket{
@@ -22715,7 +22715,7 @@
 	pixel_x = 32
 	},
 /turf/simulated/floor/carpet/patterened/red,
-/area/shuttle/scoophead/office)
+/area/shuttle/scoophead/main2)
 "jpc" = (
 /obj/structure/window/reinforced/polarized{
 	dir = 8;
@@ -22723,7 +22723,7 @@
 	},
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
-/area/shuttle/scoophead/office)
+/area/shuttle/scoophead/main2)
 "juq" = (
 /obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/tiled/old_tile/blue,
@@ -22906,7 +22906,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/shuttle/scoophead/office)
+/area/shuttle/scoophead/main2)
 "jQe" = (
 /obj/machinery/computer/ship/helm{
 	dir = 1
@@ -23518,7 +23518,7 @@
 /area/sector/nebula_tradeport/motel)
 "luK" = (
 /turf/simulated/floor/wood,
-/area/shuttle/scoophead/office)
+/area/shuttle/scoophead/main2)
 "luQ" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
 /obj/structure/curtain/open/black,
@@ -24047,7 +24047,7 @@
 /area/shuttle/arrowhead)
 "mLx" = (
 /turf/simulated/wall/prepainted/command,
-/area/shuttle/scoophead/office)
+/area/shuttle/scoophead/main2)
 "mMt" = (
 /obj/effect/shuttle_landmark/triumph/trade/arrowhead,
 /obj/overmap/entity/visitable/ship/landable/trade/arrowhead,
@@ -24203,7 +24203,7 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/shuttle/scoophead/office)
+/area/shuttle/scoophead/main2)
 "nkf" = (
 /obj/machinery/atmospherics/pipe/tank/air{
 	dir = 8
@@ -24655,7 +24655,7 @@
 /obj/item/pen/fountain,
 /obj/item/pen,
 /turf/simulated/floor/carpet/patterened/red,
-/area/shuttle/scoophead/office)
+/area/shuttle/scoophead/main2)
 "oFP" = (
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
@@ -24764,7 +24764,7 @@
 	id = "scoophead_room"
 	},
 /turf/simulated/floor/wood,
-/area/shuttle/scoophead/office)
+/area/shuttle/scoophead/main2)
 "pfv" = (
 /obj/structure/cable/yellow{
 	icon_state = "0-8"
@@ -25437,7 +25437,7 @@
 /obj/structure/bed/pod,
 /obj/item/bedsheet/brown,
 /turf/simulated/floor/carpet/patterened/blue,
-/area/shuttle/scoophead/office)
+/area/shuttle/scoophead/main2)
 "rbV" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 1
@@ -25747,7 +25747,7 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/plating,
-/area/shuttle/scoophead/office)
+/area/shuttle/scoophead/main2)
 "rYV" = (
 /obj/machinery/light,
 /obj/structure/flora/pottedplant/drooping,
@@ -26226,7 +26226,7 @@
 /obj/item/storage/single_use/mre/random,
 /obj/item/storage/single_use/mre/random,
 /turf/simulated/floor/carpet/patterened/blue,
-/area/shuttle/scoophead/office)
+/area/shuttle/scoophead/main2)
 "tBI" = (
 /obj/structure/closet/secure_closet/personal,
 /obj/item/storage/box/glasses/meta,
@@ -26451,7 +26451,7 @@
 	gps_tag = "SCOOP"
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/shuttle/scoophead/office)
+/area/shuttle/scoophead/main2)
 "umU" = (
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 10
@@ -26494,7 +26494,7 @@
 	dir = 4
 	},
 /turf/simulated/wall/prepainted/command,
-/area/shuttle/scoophead/office)
+/area/shuttle/scoophead/main2)
 "uuk" = (
 /obj/structure/noticeboard{
 	pixel_y = 29
@@ -26614,7 +26614,7 @@
 "uFC" = (
 /obj/structure/table/woodentable,
 /turf/simulated/floor/carpet/patterened/red,
-/area/shuttle/scoophead/office)
+/area/shuttle/scoophead/main2)
 "uHN" = (
 /obj/machinery/light{
 	dir = 1
@@ -26750,7 +26750,7 @@
 	pixel_x = 32
 	},
 /turf/simulated/floor/wood,
-/area/shuttle/scoophead/office)
+/area/shuttle/scoophead/main2)
 "vff" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -27046,7 +27046,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/carpet/patterened/red,
-/area/shuttle/scoophead/office)
+/area/shuttle/scoophead/main2)
 "wlu" = (
 /obj/machinery/shipsensors,
 /turf/simulated/floor/plating,
@@ -27098,7 +27098,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/neutral,
-/area/shuttle/scoophead/office)
+/area/shuttle/scoophead/main2)
 "wqt" = (
 /obj/structure/shuttle/engine/heater{
 	dir = 4
@@ -27140,7 +27140,7 @@
 	dir = 9
 	},
 /turf/simulated/floor/carpet/patterened/red,
-/area/shuttle/scoophead/office)
+/area/shuttle/scoophead/main2)
 "wvG" = (
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /turf/simulated/floor/tiled/neutral,
@@ -27315,7 +27315,7 @@
 "wSZ" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
-/area/shuttle/scoophead/office)
+/area/shuttle/scoophead/main2)
 "wUd" = (
 /obj/structure/bed/padded,
 /obj/machinery/fire_alarm/north_mount,
@@ -27541,13 +27541,13 @@
 	},
 /obj/machinery/computer/shuttle_control/explore/trade/scoophead,
 /turf/simulated/floor/tiled/techfloor,
-/area/shuttle/scoophead/office)
+/area/shuttle/scoophead/main2)
 "xvE" = (
 /obj/structure/bed/chair/shuttle{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/shuttle/scoophead/office)
+/area/shuttle/scoophead/main2)
 "xwL" = (
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 4
