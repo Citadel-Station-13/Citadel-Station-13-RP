@@ -38,7 +38,7 @@
 	keep_alive()
 	return ..()
 
-/datum/combo_tracker/melee/evaluate_inbound_via_stateful_exclusive_match(inbound, datum/combo_set/combo_set)
+/datum/combo_tracker/melee/evaluate_inbound_via_stateful_exclusive_chain(inbound, datum/combo_set/combo_set)
 	keep_alive()
 	return ..()
 
