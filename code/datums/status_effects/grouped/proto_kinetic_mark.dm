@@ -81,7 +81,7 @@
 	target_filter = owner.filters[length(owner.filters)]
 
 	animating_filter_args = list(
-		size = 1.5,
+		size = 1.65,
 	)
 	animate(
 		target_filter,

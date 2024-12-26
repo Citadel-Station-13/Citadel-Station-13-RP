@@ -4,42 +4,55 @@
 /datum/combo_tracker/melee
 	/// if set, we automatically clear ourselves if nothing happens for this time
 	var/continuation_timeout = 3 SECONDS
-	var/tmp/continuation_timeout_active = FALSE
+	/// currently in continuation mode
+	var/tmp/continuation_active = FALSE
+	/// last world.time an action occurred
 	var/tmp/continuation_last
+	/// terminate continuation on a 'wrong combo'
+	/// * only works with 'stateful exclusive chain' right now.
+	var/continuation_terminate_on_fail = TRUE
 	/// if exists, invoked with ()
 	/// * this is not allowed to sleep.
 	var/datum/callback/on_continuation_begin
-	/// if exists, invoked with (list/stored_keys)
+	/// if exists, invoked with (list/stored_keys, timed_out)
 	/// * this is not allowed to sleep.
-	var/datum/callback/on_continuation_timeout
+	var/datum/callback/on_continuation_end
 
 /datum/combo_tracker/melee/New(continuation_timeout)
 	if(!isnull(continuation_timeout))
 		src.continuation_timeout = continuation_timeout
 
-/datum/combo_tracker/melee/proc/keep_alive()
-	continuation_last = world.time
-	if(!continuation_timeout_active)
-		on_timeout()
-		on_continuation_begin?.invoke_no_sleep()
+/datum/combo_tracker/melee/proc/begin_continuation()
+	if(continuation_active)
+		refresh_continuation()
+		return
+	continuation_active = TRUE
+	on_continuation_begin?.invoke_no_sleep()
+	addtimer(CALLBACK(src, PROC_REF(check_continuation)), remaining_time)
 
-/datum/combo_tracker/melee/proc/on_timeout()
-	continuation_timeout_active = FALSE
+/datum/combo_tracker/melee/proc/end_continuation(timed_out)
+	var/list/old_stored = stored
+	reset()
+	on_continuation_end?.invoke_no_sleep(old_stored, timed_out)
+
+/datum/combo_tracker/melee/proc/refresh_continuation()
+	continuation_last = world.time
+
+/datum/combo_tracker/melee/proc/check_continuation()
 	var/remaining_time = continuation_last - (world.time - continuation_timeout)
 	if(remaining_time < 0)
-		var/list/stored_keys = stored
-		reset()
-		on_continuation_timeout?.invoke_no_sleep(stored_keys)
+		end_continuation()
 		return
-	addtimer(CALLBACK(src, PROC_REF(on_timeout)), remaining_time)
-	continuation_timeout_active = TRUE
+	addtimer(CALLBACK(src, PROC_REF(check_continuation)), remaining_time)
 
-/datum/combo_tracker/melee/evaluate_inbound_via_tail_match(inbound, datum/combo_set/combo_set)
-	keep_alive()
+/datum/combo_tracker/melee/process_inbound_via_tail_match(inbound, datum/combo_set/combo_set)
+	begin_continuation()
 	return ..()
 
-/datum/combo_tracker/melee/evaluate_inbound_via_stateful_exclusive_chain(inbound, datum/combo_set/combo_set)
-	keep_alive()
-	return ..()
+/datum/combo_tracker/melee/process_inbound_via_stateful_exclusive_chain(inbound, datum/combo_set/combo_set)
+	begin_continuation()
+	var/list/out_data = ..()
+	if(continuation_terminate_on_fail && out_data[/datum/combo_tracker::SEC_OUT_IDX_POSITION] == null)
+		end_continuation(FALSE)
 
 /datum/combo_tracker/melee/intent_based

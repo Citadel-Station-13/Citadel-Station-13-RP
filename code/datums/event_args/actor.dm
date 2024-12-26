@@ -12,7 +12,10 @@
 	src.initiator = initiator || performer
 
 /datum/event_args/actor/clone(include_contents)
-	return new /datum/event_args/actor(performer, initiator)
+	var/datum/event_args/actor/cloning = new type
+	cloning.performer = performer
+	cloning.initiator = initiator
+	return cloning
 
 //* Logging *//
 

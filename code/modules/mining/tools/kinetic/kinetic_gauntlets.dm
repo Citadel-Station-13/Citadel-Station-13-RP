@@ -68,7 +68,7 @@
 		if(!combo_tracker)
 			combo_tracker = new(combo_continuation_timeout)
 			combo_tracker.on_continuation_begin = CALLBACK(src, PROC_REF(on_continuation_begin))
-			combo_tracker.on_continuation_timeout = CALLBACK(src, PROC_REF(on_continuation_timeout))
+			combo_tracker.on_continuation_end = CALLBACK(src, PROC_REF(on_continuation_end))
 
 /obj/item/kinetic_gauntlets/on_unequipped(mob/wearer, slot_id_or_index, inv_op_flags, datum/event_args/actor/actor)
 	. = ..()
@@ -79,7 +79,7 @@
 	SHOULD_NOT_SLEEP(TRUE)
 	combo_continuation_active = TRUE
 
-/obj/item/kinetic_gauntlets/proc/on_continuation_timeout()
+/obj/item/kinetic_gauntlets/proc/on_continuation_end(list/stored_keys, timed_out)
 	SHOULD_NOT_SLEEP(TRUE)
 	discharge()
 	combo_continuation_active = FALSE

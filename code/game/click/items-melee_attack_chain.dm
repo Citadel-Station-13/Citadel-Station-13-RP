@@ -29,7 +29,7 @@
 	if(!clickchain.target?.melee_targetable(clickchain))
 		return CLICKCHAIN_DO_NOT_ATTACK
 
-	legacy_alter_melee_clickchain(clickchain)
+	clickchain.performer.legacy_alter_melee_clickchain(clickchain)
 
 #warn deal with this trainwreck
 #warn parse below

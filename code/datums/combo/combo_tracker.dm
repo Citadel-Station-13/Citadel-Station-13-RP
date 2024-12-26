@@ -4,6 +4,11 @@
 /**
  * Arbitrary holder for an in-progress combo.
  *
+ * * 'process_inbound_via_*' runs processing, often with automatic handling and side effects.
+ *    these procs should be SHOULD_NOT_SLEEP.
+ * * 'evaluate_via_*' just runs the algorithm in question without touching anything.
+ *    these procs should be SHOULD_NOT_OVERRIDE, and SHOULD_NOT_SLEEP.
+ *
  * todo: unit test this shit
  */
 /datum/combo_tracker
@@ -15,6 +20,18 @@
 	var/tmp/datum/combo_set/sec_set
 	var/tmp/list/datum/combo/sec_possible
 	var/tmp/sec_position
+	/// out-list index
+	/// access via ::
+	var/SEC_OUT_IDX_RESOLVED = 1
+	/// out-list index
+	/// access via ::
+	var/SEC_OUT_IDX_POSITION = 2
+	/// out-list index
+	/// access via ::
+	var/SEC_OUT_IDX_FINISHED = 3
+	/// out-list index
+	/// access via ::
+	var/SEC_OUT_IDX_POSSIBLE = 4
 
 /datum/combo_tracker/proc/reset()
 	// do not cut, make a new list; subtypes might be referencing this before reset!
@@ -34,11 +51,14 @@
  *
  * * a shorter combo will always mask a longer one if it is present at any point in the longer one
  */
-/datum/combo_tracker/proc/evaluate_inbound_via_tail_match(inbound, datum/combo_set/combo_set) as /datum/combo
+/datum/combo_tracker/proc/process_inbound_via_tail_match(inbound, datum/combo_set/combo_set) as /datum/combo
+	SHOULD_NOT_SLEEP(TRUE)
 	stored += inbound
 	return evaluate_via_tail_match(combo_set)
 
 /datum/combo_tracker/proc/evaluate_via_tail_match(datum/combo_set/combo_set) as /datum/combo
+	SHOULD_NOT_SLEEP(TRUE)
+	SHOULD_NOT_OVERRIDE(TRUE)
 	if(!stored)
 		return
 	var/datum/combo/found
@@ -90,7 +110,8 @@
  *
  * @return list(datum/combo/resolved, position, finished, list/datum/combo/possible)
  */
-/datum/combo_tracker/proc/evaluate_inbound_via_stateful_exclusive_chain(inbound, datum/combo_set/combo_set)
+/datum/combo_tracker/proc/process_inbound_via_stateful_exclusive_chain(inbound, datum/combo_set/combo_set)
+	SHOULD_NOT_SLEEP(TRUE)
 	// reset if we changed combos
 	if(combo_set != sec_set)
 		sec_set = combo_set
