@@ -408,7 +408,7 @@
  * semantically returns true if we transferred something from our inventory to newloc in the call
  *
  * if the item is null, this returns true
- * if an item is not in us, this crashes
+ * if an item is not in us, this returns FALSE
  */
 /mob/proc/transfer_item_to_loc(obj/item/I, newloc, flags, mob/user)
 	if(!I)
@@ -424,7 +424,7 @@
  * semantically returns true if we transferred something from our inventory to null in the call
  *
  * if the item is null, this returns true
- * if an item is not in us, this crashes
+ * if an item is not in us, this returns false
  */
 /mob/proc/transfer_item_to_nullspace(obj/item/I, flags, mob/user)
 	if(!I)

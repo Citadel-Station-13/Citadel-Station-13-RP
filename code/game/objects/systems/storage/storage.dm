@@ -8,7 +8,7 @@
  */
 /datum/object_system/storage
 
-	//* Access
+	//* Access *//
 
 	/// if set, limit allowable random access to first n items
 	var/limited_random_access_stack_amount
@@ -16,7 +16,7 @@
 	/// * top down is from end of contents list, bottom up is from start of contents list
 	var/limited_random_access_stack_bottom_first = FALSE
 
-	//* Actions
+	//* Actions *//
 
 	/// the action we have for mode switching gathering
 	var/datum/action/storage_gather_mode/action_mode_switch
@@ -362,6 +362,12 @@
 
 //* Hooks *//
 
+/**
+ * Hooked into obj/Moved().
+ */
+/datum/object_system/storage/proc/on_parent_moved(atom/old_loc, forced)
+	reconsider_mob_viewable()
+
 /datum/object_system/storage/proc/on_pickup(mob/user)
 	grant_buttons(user)
 
@@ -404,35 +410,6 @@
 	physically_insert_item(item, no_move = TRUE)
 	ui_queue_refresh()
 
-//* Filters *//
-
-/datum/object_system/storage/proc/check_insertion_filters(obj/item/candidate)
-	if(insertion_allow_typecache?[candidate.type])
-		return TRUE
-	if(!isnull(insertion_whitelist_typecache) && !insertion_whitelist_typecache?[candidate.type])
-		return FALSE
-	if(insertion_blacklist_typecache?[candidate.type])
-		return FALSE
-	return TRUE
-
-/datum/object_system/storage/proc/set_insertion_whitelist(list/types)
-	if(!length(types))
-		src.insertion_whitelist_typecache = null
-		return
-	src.insertion_whitelist_typecache = cached_typecacheof(types)
-
-/datum/object_system/storage/proc/set_insertion_blacklist(list/types)
-	if(!length(types))
-		src.insertion_blacklist_typecache = null
-		return
-	src.insertion_blacklist_typecache = cached_typecacheof(types)
-
-/datum/object_system/storage/proc/set_insertion_allow(list/types)
-	if(!length(types))
-		src.insertion_allow_typecache = null
-		return
-	src.insertion_allow_typecache = cached_typecacheof(types)
-
 //* Interaction *//
 
 /**
@@ -447,12 +424,46 @@
 //* Insertion & Removal *//
 
 /**
+ * todo: refactor?
+ *
  * @return TRUE / FALSE; if true, caller should stop clickchain.
  */
 /datum/object_system/storage/proc/auto_handle_interacted_insertion(obj/item/inserting, datum/event_args/actor/actor, silent, suppressed)
 	if(!actor.performer.is_holding(inserting))
 		// something probably yanked it, don't bother
 		return FALSE
+	if(is_locked(actor.performer))
+		actor.chat_feedback(
+			msg = SPAN_WARNING("[parent] is locked."),
+			target = parent,
+		)
+		return TRUE
+	if(!actor.performer.Reachability(indirection || parent))
+		return TRUE
+	if(!try_insert(inserting, actor, silent, suppressed))
+		return TRUE
+	// sound
+	// todo: put this in interacted_insert()..?
+	if(!suppressed && !isnull(actor))
+		if(sfx_insert)
+			// todo: variable sound
+			playsound(actor.performer, sfx_insert, 50, 1, -5)
+		actor.visible_feedback(
+			target = parent,
+			range = MESSAGE_RANGE_INVENTORY_SOFT,
+			visible = "[actor.performer] puts [inserting] into [parent].",
+			visible_self = "You put [inserting] into [parent]",
+		)
+	return TRUE
+
+/**
+ * Called by inventory procs; skips some checks of interacted insertion.
+ *
+ * todo: refactor?
+ *
+ * @return TRUE on success, FALSE on failure.
+ */
+/datum/object_system/storage/proc/auto_handle_inventory_insertion(obj/item/inserting, datum/event_args/actor/actor, silent, suppressed)
 	if(is_locked(actor.performer))
 		actor.chat_feedback(
 			msg = SPAN_WARNING("[parent] is locked."),
@@ -633,36 +644,6 @@
 
 //* Limits *//
 
-/datum/object_system/storage/proc/check_insertion_limits(obj/item/candidate)
-	var/atom/movable/indirection = real_contents_loc()
-	if(!isnull(max_items) && length(indirection.contents) > max_items)
-		return FALSE
-	if(!isnull(max_combined_volume) && (cached_combined_volume + candidate.get_weight_volume() > max_combined_volume))
-		return FALSE
-	var/their_weight_class = candidate.get_weight_class()
-	if(!isnull(max_single_weight_class) && (their_weight_class > max_single_weight_class))
-		return FALSE
-	if(!isnull(max_combined_weight_class) && (cached_combined_weight_class + their_weight_class > max_combined_weight_class))
-		return FALSE
-	if(candidate.obj_storage && (candidate.w_class >= parent.w_class) && disallow_equal_weight_class_storage_nesting)
-		return FALSE
-	return TRUE
-
-/datum/object_system/storage/proc/why_failed_insertion_limits(obj/item/candidate)
-	var/atom/movable/indirection = real_contents_loc()
-	if(!isnull(max_items) && length(indirection.contents) > max_items)
-		return "too many items"
-	if(!isnull(max_combined_volume) && (cached_combined_volume + candidate.get_weight_volume() > max_combined_volume))
-		return "insufficient volume"
-	var/their_weight_class = candidate.get_weight_class()
-	if(!isnull(max_single_weight_class) && (their_weight_class > max_single_weight_class))
-		return "too large"
-	if(!isnull(max_combined_weight_class) && (cached_combined_weight_class + their_weight_class > max_combined_weight_class))
-		return "insufficient space"
-	if(candidate.obj_storage && (candidate.w_class >= parent.w_class) && disallow_equal_weight_class_storage_nesting)
-		return "can't nest storage"
-	return null
-
 /**
  * generally a bad idea to call, tbh.
  *
@@ -713,34 +694,6 @@
 //* Quickdraw *//
 
 // todo: quickdraw
-/*
-/datum/component/storage/proc/on_alt_click(datum/source, mob/user)
-	if(!isliving(user) || !user.CanReach(parent))
-		return
-	if(check_locked(source, user, TRUE))
-		return TRUE
-
-	var/atom/A = parent
-	if(!quickdraw)
-		A.add_fingerprint(user)
-		user_show_to_mob(user, trigger_on_found = TRUE)
-		if(rustle_sound)
-			playsound(A, "rustle", 50, 1, -5)
-		return TRUE
-
-	if(user.can_hold_items() && !user.incapacitated())
-		var/obj/item/I = locate() in real_location()
-		if(!I)
-			return
-		A.add_fingerprint(user)
-		remove_from_storage(I, get_turf(user))
-		if(!user.put_in_hands(I))
-			user.visible_message("<span class='warning'>[user] fumbles with the [parent], letting [I] fall on the floor.</span>", \
-								"<span class='notice'>You fumble with [parent], letting [I] fall on the floor.</span>")
-			return TRUE
-		user.visible_message("<span class='warning'>[user] draws [I] from [parent]!</span>", "<span class='notice'>You draw [I] from [parent].</span>")
-		return TRUE
-*/
 
 //* Redirection *//
 
@@ -1169,12 +1122,6 @@
 
 	parent.object_storage_closed(viewer)
 
-/**
- * Hooked into obj/Moved().
- */
-/datum/object_system/storage/proc/on_parent_moved(atom/old_loc, forced)
-	reconsider_mob_viewable()
-
 /datum/object_system/storage/proc/refresh(mob/viewer)
 	ui_refresh_queued = FALSE
 	if(isnull(viewer))
@@ -1183,26 +1130,6 @@
 		return
 	refresh_ui(viewer)
 
-/**
- * Do not modify the returned appearances; they might be real instances!
- *
- * @return list(/datum/storage_numerical_display instance, ...)
- */
-/datum/object_system/storage/proc/render_numerical_display(list/obj/item/for_items)
-	RETURN_TYPE(/list)
-	. = list()
-	var/list/types = list()
-	for(var/obj/item/iterating in (for_items || real_contents_loc()))
-		var/datum/storage_numerical_display/collation
-		if(isnull(types[iterating.type]))
-			collation = new
-			collation.rendered_object = iterating
-			collation.amount = 0
-			. += collation
-			types[iterating.type] = collation
-		collation = types[iterating.type]
-		++collation.amount
-	tim_sort(., /proc/cmp_storage_numerical_displays_name_asc)
 
 /datum/object_system/storage/proc/reconsider_mob_viewable(mob/user)
 	if(isnull(user))
@@ -1212,259 +1139,6 @@
 	if(accessible_by_mob(user))
 		return
 	hide(user)
-
-/datum/object_system/storage/proc/ui_queue_refresh()
-	if(ui_refresh_queued)
-		return
-	ui_refresh_queued = TRUE
-	addtimer(CALLBACK(src, PROC_REF(refresh)), 0)
-
-/datum/object_system/storage/proc/cleanup_ui(mob/user)
-	var/list/objects = ui_by_mob[user]
-	user.client?.screen -= objects
-	QDEL_LIST(objects)
-	ui_by_mob -= user
-
-/**
- * we assume that the display style didn't change.
- */
-/datum/object_system/storage/proc/refresh_ui(mob/user)
-	// for now, we just do a full redraw.
-	cleanup_ui(user)
-	create_ui(user)
-
-/datum/object_system/storage/proc/create_ui(mob/user)
-	var/uses_volumetric_ui = uses_volumetric_ui()
-	var/list/atom/movable/screen/storage/objects
-	if(uses_volumetric_ui)
-		objects += create_ui_volumetric_mode(user)
-	else
-		objects += create_ui_slot_mode(user)
-	LAZYINITLIST(ui_by_mob)
-	ui_by_mob[user] = objects
-	user.client?.screen += objects
-
-/**
- * this should not rely on uses_numerical_ui()
- */
-/datum/object_system/storage/proc/uses_volumetric_ui()
-	return max_combined_volume && !ui_numerical_mode && !ui_force_slot_mode
-
-/**
- * this should not rely on uses_volumetric_ui()
- */
-/datum/object_system/storage/proc/uses_numerical_ui()
-	return ui_numerical_mode
-
-/datum/object_system/storage/proc/create_ui_slot_mode(mob/user)
-	. = list()
-	var/atom/movable/screen/storage/closer/closer = new
-	. += closer
-	var/atom/movable/screen/storage/panel/slot/boxes/boxes = new
-	. += boxes
-	// todo: clientless support is awful here
-	var/list/decoded_view = decode_view_size(user.client?.view || world.view)
-	var/view_x = decoded_view[1]
-	// clamp to max items if needed
-	var/rendering_width = STORAGE_UI_TILES_FOR_SCREEN_VIEW_X(view_x)
-	if(max_items)
-		rendering_width = min(max_items, rendering_width)
-	// see if we need to process numerical display
-	var/list/datum/storage_numerical_display/numerical_rendered = uses_numerical_ui()? render_numerical_display() : null
-	// process indirection
-	var/atom/indirection = real_contents_loc()
-	// if we have expand when needed, only show 1 more than the actual amount.
-	if(ui_expand_when_needed)
-		rendering_width = min(rendering_width, (isnull(numerical_rendered)? length(indirection.contents) : length(numerical_rendered)) + 1)
-	// compute count and rows
-	var/item_count = isnull(numerical_rendered)? length(indirection.contents) : length(numerical_rendered)
-	var/rows_needed = ROUND_UP(item_count / rendering_width) || 1
-	// prepare iteration
-	var/current_row = 1
-	var/current_column = 1
-	// render boxes
-	boxes.screen_loc = "LEFT+[STORAGE_UI_START_TILE_X]:[STORAGE_UI_START_PIXEL_X],BOTTOM+[STORAGE_UI_START_TILE_Y]:[STORAGE_UI_START_PIXEL_Y] to \
-		LEFT+[STORAGE_UI_START_TILE_X + rendering_width - 1]:[STORAGE_UI_START_PIXEL_X],BOTTOM+[STORAGE_UI_START_TILE_Y + rows_needed - 1]:[STORAGE_UI_START_PIXEL_Y]"
-	// render closer
-	closer.screen_loc = "LEFT+[STORAGE_UI_START_TILE_X + rendering_width]:[STORAGE_UI_START_PIXEL_X],BOTTOM+[STORAGE_UI_START_TILE_Y]:[STORAGE_UI_START_PIXEL_Y]"
-	// render items
-	if(islist(numerical_rendered))
-		for(var/datum/storage_numerical_display/display as anything in numerical_rendered)
-			var/atom/movable/screen/storage/item/slot/renderer = new(null, display.rendered_object)
-			. += renderer
-			// render amount
-			display.rendered_object.maptext = MAPTEXT("[display.amount]")
-			// position
-			renderer.screen_loc = "LEFT+[STORAGE_UI_START_TILE_X + current_column - 1]:[STORAGE_UI_START_PIXEL_X],\
-				BOTTOM+[STORAGE_UI_START_TILE_Y + current_row - 1]:[STORAGE_UI_START_PIXEL_Y]"
-			// advance
-			++current_column
-			if(current_column > rendering_width)
-				current_column = 1
-				++current_row
-				if(current_row > STORAGE_UI_MAX_ROWS)
-					break
-	else
-		for(var/obj/item/item in indirection)
-			var/atom/movable/screen/storage/item/slot/renderer = new(null, item)
-			. += renderer
-			// position
-			renderer.screen_loc = "LEFT+[STORAGE_UI_START_TILE_X + current_column - 1]:[STORAGE_UI_START_PIXEL_X],\
-				BOTTOM+[STORAGE_UI_START_TILE_Y + current_row - 1]:[STORAGE_UI_START_PIXEL_Y]"
-			// advance
-			++current_column
-			if(current_column > rendering_width)
-				current_column = 1
-				++current_row
-				if(current_row > STORAGE_UI_MAX_ROWS)
-					break
-
-/datum/object_system/storage/proc/create_ui_volumetric_mode(mob/user)
-	// guard against divide-by-0's
-	if(!max_combined_volume)
-		return create_ui_slot_mode(user)
-	. = list()
-
-	//? resolve view and rendering
-	// todo: clientless support is awful here
-
-	// resolve view
-	var/list/decoded_view = decode_view_size(user.client?.view || world.view)
-	var/view_x = decoded_view[1]
-	// setup initial width
-	var/rendering_width = STORAGE_UI_TILES_FOR_SCREEN_VIEW_X(view_x)
-	var/rendering_width_in_pixels = rendering_width * 32
-	// effective max scales up if we're overrunning
-	var/effective_max_volume = max(max_combined_volume, cached_combined_volume)
-	// scale down width to volume
-	rendering_width_in_pixels = min(rendering_width_in_pixels, effective_max_volume * VOLUMETRIC_STORAGE_STANDARD_PIXEL_RATIO)
-
-	//? resolve items
-
-	// resolve indirection
-	var/atom/indirection = real_contents_loc()
-
-	//? prepare iteration
-
-	// max x used in all rows, including padding.
-	var/maximum_used_width = 0
-	// current consumed x of row
-	var/iteration_used_width = 0
-	// current consumed item padding of row
-	var/iteration_used_padding = 0
-	// current row
-	var/current_row = 1
-	// safety
-	var/safety = VOLUMETRIC_STORAGE_MAX_ITEMS
-	// iterate and render
-	for(var/obj/item/item in indirection)
-		// check safety
-		safety--
-		if(safety <= 0)
-			to_chat(user, SPAN_WARNING("Some items in this storage have been truncated for performance reasons."))
-			break
-
-		// check row
-		if(iteration_used_width >= rendering_width_in_pixels)
-			// check if we're out of rows
-			if(current_row >= STORAGE_UI_MAX_ROWS)
-				to_chat(user, SPAN_WARNING("Some items in this storage have been truncated for performance reasons."))
-				break
-			// make another row
-			current_row++
-			// register to maximum used width
-			// we add the edge padding for both edges, but remove the last item's padding.
-			maximum_used_width = max(maximum_used_width, iteration_used_width + iteration_used_padding + VOLUMETRIC_STORAGE_EDGE_PADDING * 2 - VOLUMETRIC_STORAGE_ITEM_PADDING)
-			// reset vars
-			iteration_used_padding = 0
-			iteration_used_width = 0
-
-		// render the item
-		var/atom/movable/screen/storage/item/volumetric/renderer = new(null, item)
-		// scale it as necessary, to nearest multiple of 2
-		var/used_pixels = max(VOLUMETRIC_STORAGE_MINIMUM_PIXELS_PER_ITEM, CEILING(rendering_width_in_pixels * (item.get_weight_volume() / effective_max_volume), 2))
-		// emit to renderer
-		renderer.set_pixel_width(used_pixels)
-		// set screen loc
-		renderer.screen_loc = "LEFT+[STORAGE_UI_START_TILE_X]:[STORAGE_UI_START_PIXEL_X + (iteration_used_width + iteration_used_padding + VOLUMETRIC_STORAGE_EDGE_PADDING) + (used_pixels - VOLUMETRIC_STORAGE_BOX_ICON_SIZE) * 0.5],\
-			BOTTOM+[STORAGE_UI_START_TILE_Y + current_row - 1]:[STORAGE_UI_START_PIXEL_Y]"
-		// add to emitted screen list
-		. += renderer
-		// add to iteration tracking
-		iteration_used_width += used_pixels
-		iteration_used_padding += VOLUMETRIC_STORAGE_ITEM_PADDING
-	// register to maximum used width
-	// we add the edge padding for both edges, but remove the last item's padding.
-	maximum_used_width = max(maximum_used_width, iteration_used_width + iteration_used_padding + VOLUMETRIC_STORAGE_EDGE_PADDING * 2 - VOLUMETRIC_STORAGE_ITEM_PADDING)
-
-	// now that everything's set up, we can render everything based on the solved sizes.
-	// middle size; we also keep in account padding so there's a smooth expansion instead of a sudden expansion at the end.
-	var/middle_width = max(maximum_used_width, rendering_width_in_pixels + iteration_used_padding)
-	// i hate byond i hate byond i hate byond i hate byond; this is because things break if we don't extend by 2 pixels
-	// at a time for left/right as we use a dumb transform matrix and screen loc to shift, instead of a scale and shift matrix
-	middle_width = CEILING(middle_width, 2)
-	// todo: instead of this crap we should instead have the translation matrix do the shift
-	var/middle_shift = round(middle_width * 0.5 - VOLUMETRIC_STORAGE_BOX_ICON_SIZE * 0.5)
-	// render left
-	var/atom/movable/screen/storage/panel/volumetric/left/p_left = new
-	. += p_left
-	p_left.screen_loc = "LEFT+[STORAGE_UI_START_TILE_X]:[STORAGE_UI_START_PIXEL_X - VOLUMETRIC_STORAGE_BOX_BORDER_SIZE],\
-		BOTTOM+[STORAGE_UI_START_TILE_Y]:[STORAGE_UI_START_PIXEL_Y] to \
-		LEFT+[STORAGE_UI_START_TILE_X]:[STORAGE_UI_START_PIXEL_X - VOLUMETRIC_STORAGE_BOX_BORDER_SIZE],\
-		BOTTOM+[STORAGE_UI_START_TILE_Y + current_row - 1]:[STORAGE_UI_START_PIXEL_Y]"
-	// render middle
-	var/atom/movable/screen/storage/panel/volumetric/middle/p_box = new
-	. += p_box
-	p_box.set_pixel_width(middle_width)
-	p_box.screen_loc = "LEFT+[STORAGE_UI_START_TILE_X]:[STORAGE_UI_START_PIXEL_X + middle_shift],\
-		BOTTOM+[STORAGE_UI_START_TILE_Y]:[STORAGE_UI_START_PIXEL_Y] to \
-		LEFT+[STORAGE_UI_START_TILE_X]:[STORAGE_UI_START_PIXEL_X + middle_shift],\
-		BOTTOM+[STORAGE_UI_START_TILE_Y + current_row - 1]:[STORAGE_UI_START_PIXEL_Y]"
-	// render closer on bottom
-	var/atom/movable/screen/storage/closer/closer = new
-	. += closer
-	closer.screen_loc = "LEFT+[STORAGE_UI_START_TILE_X]:[STORAGE_UI_START_PIXEL_X + middle_width],\
-		BOTTOM+[STORAGE_UI_START_TILE_Y]:[STORAGE_UI_START_PIXEL_Y]"
-	// render right sides above closer
-	if(current_row > 1)
-		var/atom/movable/screen/storage/panel/volumetric/right/p_right = new
-		. += p_right
-		p_right.screen_loc = "LEFT+[STORAGE_UI_START_TILE_X]:[STORAGE_UI_START_PIXEL_X + middle_width - WORLD_ICON_SIZE + VOLUMETRIC_STORAGE_BOX_BORDER_SIZE],\
-			BOTTOM+[STORAGE_UI_START_TILE_Y + 1]:[STORAGE_UI_START_PIXEL_Y] to \
-			LEFT+[STORAGE_UI_START_TILE_X]:[STORAGE_UI_START_PIXEL_X + middle_width - WORLD_ICON_SIZE + VOLUMETRIC_STORAGE_BOX_BORDER_SIZE],\
-			BOTTOM+[STORAGE_UI_START_TILE_Y + current_row - 1]:[STORAGE_UI_START_PIXEL_Y]"
-
-//* Indirection *//
-
-/**
- * **USE AT YOUR OWN PERIL**
- */
-/datum/object_system/storage/proc/indirect(atom/where)
-	ASSERT(isnull(indirection))
-	indirection = new(where, src)
-
-/**
- * remove indirection by obliterating contents
- */
-/datum/object_system/storage/proc/destructively_remove_indirection()
-	QDEL_NULL(indirection)
-
-/**
- * remove indirection by moving contents
- */
-/datum/object_system/storage/proc/relocate_remove_indirection(atom/where_to)
-	ASSERT(!isnull(where_to) && where_to != indirection)
-	for(var/atom/movable/AM as anything in indirection)
-		AM.forceMove(where_to)
-	QDEL_NULL(indirection)
-
-/**
- * move indirection somewhere else
- */
-/datum/object_system/storage/proc/move_indirection_to(atom/where_to)
-	indirection.forceMove(where_to)
-
-//? Numerical Display Helper
 
 //? Action
 
@@ -1495,49 +1169,3 @@
 	else
 		obj_storage.indirect(src)
 	return obj_storage
-
-//? Indirection Holder
-
-/atom/movable/storage_indirection
-	atom_flags = ATOM_ABSTRACT
-
-	/// owner
-	var/datum/object_system/storage/parent
-
-/atom/movable/storage_indirection/Initialize(mapload, datum/object_system/storage/parent)
-	src.parent = parent
-	return ..()
-
-/atom/movable/storage_indirection/Destroy()
-	if(src.parent.indirection == src)
-		src.parent.indirection = null
-	src.parent = null
-	return ..()
-
-/atom/movable/storage_indirection/CanReachIn(atom/movable/mover, atom/target, obj/item/tool, list/cache)
-	return TRUE
-
-/atom/movable/storage_indirection/CanReachOut(atom/movable/mover, atom/target, obj/item/tool, list/cache)
-	return TRUE
-
-/atom/movable/storage_indirection/Exited(atom/movable/AM, atom/newLoc)
-	. = ..()
-	if(isitem(AM))
-		parent.on_item_exited(AM)
-
-/atom/movable/storage_indirection/Entered(atom/movable/AM, atom/oldLoc)
-	. = ..()
-	if(isitem(AM))
-		parent.on_item_entered(AM)
-
-/atom/movable/storage_indirection/on_contents_weight_class_change(obj/item/item, old_weight_class, new_weight_class)
-	parent.on_contents_weight_class_change(item, old_weight_class, new_weight_class)
-
-/atom/movable/storage_indirection/on_contents_weight_volume_change(obj/item/item, old_weight_volume, new_weight_volume)
-	parent.on_contents_weight_volume_change(item, old_weight_volume, new_weight_volume)
-
-/atom/movable/storage_indirection/on_contents_weight_change(obj/item/item, old_weight, new_weight)
-	parent.on_contents_weight_change(item, old_weight, new_weight)
-
-/atom/movable/storage_indirection/on_contents_item_new(obj/item/item)
-	parent.on_contents_item_new(item)
