@@ -37,6 +37,7 @@
 		new /datum/data/mining_equipment("Geiger Counter",				/obj/item/geiger_counter,									75),
 		new /datum/data/mining_equipment("Defense Equipment - Steel Machete",	/obj/item/material/knife/machete,					75),
 		new /datum/data/mining_equipment("Defense Equipment - Kinetic Dagger",	/obj/item/kinetic_crusher/dagger,					75),
+		new /datum/data/mining_equipment("Defense Equipment - Kinetic Gauntlets",	/obj/item/kinetic_gauntlets,				75),
 		new /datum/data/mining_equipment("Laser Pointer",				/obj/item/laser_pointer,									90),
 		new /datum/data/mining_equipment("Digital Tablet - Advanced",	/obj/item/modular_computer/tablet/preset/custom_loadout/advanced,				100),
 		new /datum/data/mining_equipment("Nanopaste Tube",				/obj/item/stack/nanopaste,									100),

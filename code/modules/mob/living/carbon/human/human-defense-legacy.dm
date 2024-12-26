@@ -77,12 +77,8 @@
 	if (!def_zone)
 		return 1.0
 
-	var/siemens_coefficient = max(species.siemens_coefficient,0)
-
-	var/list/clothing_items = list(head, wear_mask, wear_suit, w_uniform, gloves, shoes) // What all are we checking?
-	for(var/obj/item/clothing/C in clothing_items)
-		if(istype(C) && (C.body_cover_flags & def_zone.body_part_flags)) // Is that body part being targeted covered?
-			siemens_coefficient *= C.siemens_coefficient
+	var/siemens_coefficient = max(species.siemens_coefficient, 0)
+	siemens_coefficient *= inventory.query_simple_covered_siemens_coefficient(def_zone.body_part_flags)
 
 	// Modifiers.
 	for(var/thing in modifiers)

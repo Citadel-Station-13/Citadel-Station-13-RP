@@ -73,19 +73,6 @@
 /datum/inventory/proc/invalidate_cache()
 	cache = list()
 
-//* Queries *//
-
-/**
- * returns list() of items with body_cover_flags
- */
-/datum/inventory/proc/items_that_cover(cover_flags)
-	if(cover_flags == NONE)
-		return list()
-	. = list()
-	for(var/obj/item/I as anything in owner.get_equipped_items())
-		if(I.body_cover_flags & cover_flags)
-			. += I
-
 //* Slots *//
 
 /**
