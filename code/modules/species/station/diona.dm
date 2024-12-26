@@ -82,9 +82,9 @@
 	dispersed_eyes = TRUE//Its a bunch of nymphes that means it has eyes everywhere
 
 	unarmed_types = list(
-		/datum/unarmed_attack/stomp,
-		/datum/unarmed_attack/kick,
-		/datum/unarmed_attack/diona,
+		/datum/melee_attack/unarmed/stomp,
+		/datum/melee_attack/unarmed/kick,
+		/datum/melee_attack/unarmed/diona,
 	)
 
 	inherent_verbs = list(

@@ -89,7 +89,7 @@
 	punch_force -= G.punch_force
 
 /obj/item/clothing/gloves
-	var/datum/unarmed_attack/special_attack = null //do the gloves have a special unarmed attack?
+	var/datum/melee_attack/unarmed/special_attack = null //do the gloves have a special unarmed attack?
 	var/special_attack_type = null
 
 /obj/item/clothing/gloves/Initialize(mapload)

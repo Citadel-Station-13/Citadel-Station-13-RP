@@ -9,6 +9,8 @@
  * * The click may be real or fake.
  * * Clickchain flags are deliberately not stored in here; you're supposed to modify and return them a ton, so it's inefficient to put it in here.
  * * This is required for item swings / interaction, usually, not just base /event_args/actor.
+ * * **This should always be clone()'d if you are invoking, semantically, a new attack from an existing attack.**
+ *   Otherwise, modifiers might apply twice and all kinds of fuckery can occur.
  *
  * todo: helpers for true clickchain event generation / simulation
  */

@@ -51,8 +51,8 @@
 	combat_flags = (NIF_C_HARDCLAWS)
 
 // The unarmed attack to go with the hardclaws
-var/global/datum/unarmed_attack/hardclaws/unarmed_hardclaws = new()
-/datum/unarmed_attack/hardclaws
+var/global/datum/melee_attack/unarmed/hardclaws/unarmed_hardclaws = new()
+/datum/melee_attack/unarmed/hardclaws
 	verb_past_participle = list("sliced", "shredded")
 	attack_verb_legacy = list("claws")
 	attack_noun = list("talons")
@@ -64,7 +64,7 @@ var/global/datum/unarmed_attack/hardclaws/unarmed_hardclaws = new()
 	attack_sound = "punch"
 	miss_sound = 'sound/weapons/punchmiss.ogg'
 	damage_mode = DAMAGE_MODE_SHARP | DAMAGE_MODE_EDGE
-	sparring_variant_type = /datum/unarmed_attack/hardclaws
+	sparring_variant_type = /datum/melee_attack/unarmed/hardclaws
 
 /datum/nifsoft/hidelaser
 	name = "Dazzle"

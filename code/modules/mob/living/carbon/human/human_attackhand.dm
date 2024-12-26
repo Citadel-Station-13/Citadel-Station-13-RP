@@ -3,7 +3,7 @@
 	if(nif && nif.flag_check(NIF_C_HARDCLAWS,NIF_FLAGS_COMBAT)){return unarmed_hardclaws}
 	if(src.default_attack && src.default_attack.is_usable(src, target, hit_zone))
 		if(pulling_punches)
-			var/datum/unarmed_attack/soft_type = src.default_attack.get_sparring_variant()
+			var/datum/melee_attack/unarmed/soft_type = src.default_attack.get_sparring_variant()
 			if(soft_type)
 				return soft_type
 		return src.default_attack
@@ -12,14 +12,14 @@
 		var/obj/item/clothing/gloves/G = src.gloves
 		if(istype(G) && G.special_attack && G.special_attack.is_usable(src, target, hit_zone))
 			if(pulling_punches)
-				var/datum/unarmed_attack/soft_type = G.special_attack.get_sparring_variant()
+				var/datum/melee_attack/unarmed/soft_type = G.special_attack.get_sparring_variant()
 				if(soft_type)
 					return soft_type
 			return G.special_attack
-	for(var/datum/unarmed_attack/u_attack in species.unarmed_attacks)
+	for(var/datum/melee_attack/unarmed/u_attack in species.unarmed_attacks)
 		if(u_attack.is_usable(src, target, hit_zone))
 			if(pulling_punches)
-				var/datum/unarmed_attack/soft_variant = u_attack.get_sparring_variant()
+				var/datum/melee_attack/unarmed/soft_variant = u_attack.get_sparring_variant()
 				if(soft_variant)
 					return soft_variant
 			return u_attack
@@ -192,7 +192,7 @@
 				miss_type = 2
 
 			// See what attack they use
-			var/datum/unarmed_attack/attack = H.get_unarmed_attack(src, hit_zone)
+			var/datum/melee_attack/unarmed/attack = H.get_unarmed_attack(src, hit_zone)
 			if(!attack)
 				return FALSE
 
@@ -404,7 +404,7 @@
 	return TRUE
 
 /mob/living/carbon/human
-	var/datum/unarmed_attack/default_attack
+	var/datum/melee_attack/unarmed/default_attack
 
 /mob/living/carbon/human/verb/check_attacks()
 	set name = "Check Attacks"
@@ -413,7 +413,7 @@
 
 	var/dat = "<b><font size = 5>Known Attacks</font></b><br/><br/>"
 
-	for(var/datum/unarmed_attack/u_attack in species.unarmed_attacks)
+	for(var/datum/melee_attack/unarmed/u_attack in species.unarmed_attacks)
 		dat += "<b>Primarily [u_attack.attack_name] </b><br/><br/><br/>"
 
 	src << browse(dat, "window=checkattack")
@@ -425,7 +425,7 @@
 	if(default_attack)
 		dat += "Current default attack: [default_attack.attack_name] - <a href='byond://?src=\ref[src];default_attk=reset_attk'>reset</a><br/><br/>"
 
-	for(var/datum/unarmed_attack/u_attack in species.unarmed_attacks)
+	for(var/datum/melee_attack/unarmed/u_attack in species.unarmed_attacks)
 		if(u_attack == default_attack)
 			dat += "<b>Primarily [u_attack.attack_name]</b> - default - <a href='byond://?src=\ref[src];default_attk=reset_attk'>reset</a><br/><br/><br/>"
 		else
@@ -438,7 +438,7 @@
 		if(href_list["default_attk"] == "reset_attk")
 			set_default_attack(null)
 		else
-			var/datum/unarmed_attack/u_attack = locate(href_list["default_attk"])
+			var/datum/melee_attack/unarmed/u_attack = locate(href_list["default_attk"])
 			if(u_attack && (u_attack in species.unarmed_attacks))
 				set_default_attack(u_attack)
 		check_attacks()
@@ -446,39 +446,39 @@
 	else
 		return ..()
 
-/mob/living/carbon/human/proc/set_default_attack(var/datum/unarmed_attack/u_attack)
+/mob/living/carbon/human/proc/set_default_attack(var/datum/melee_attack/unarmed/u_attack)
 	default_attack = u_attack
 
 /mob/living/carbon/human/unarmed_attack_style()
 	return get_unarmed_attack() || ..()
 
-/datum/unarmed_attack
+/datum/melee_attack/unarmed
 	var/attack_name = "fist"
 
 
-/datum/unarmed_attack/bite
+/datum/melee_attack/unarmed/bite
 	attack_name = "bite"
-/datum/unarmed_attack/bite/sharp
+/datum/melee_attack/unarmed/bite/sharp
 	attack_name = "sharp bite"
-/datum/unarmed_attack/bite/strong
+/datum/melee_attack/unarmed/bite/strong
 	attack_name = "strong bite"
-/datum/unarmed_attack/punch
+/datum/melee_attack/unarmed/punch
 	attack_name = "punch"
-/datum/unarmed_attack/kick
+/datum/melee_attack/unarmed/kick
 	attack_name = "kick"
-/datum/unarmed_attack/stomp
+/datum/melee_attack/unarmed/stomp
 	attack_name = "stomp"
-/datum/unarmed_attack/stomp/weak
+/datum/melee_attack/unarmed/stomp/weak
 	attack_name = "weak stomp"
-/datum/unarmed_attack/light_strike
+/datum/melee_attack/unarmed/light_strike
 	attack_name = "light hit"
-/datum/unarmed_attack/diona
+/datum/melee_attack/unarmed/diona
 	attack_name = "tendrils"
-/datum/unarmed_attack/claws
+/datum/melee_attack/unarmed/claws
 	attack_name = "claws"
-/datum/unarmed_attack/claws/strong
+/datum/melee_attack/unarmed/claws/strong
 	attack_name = "strong claws"
-/datum/unarmed_attack/slime_glomp
+/datum/melee_attack/unarmed/slime_glomp
 	attack_name = "glomp"
-/datum/unarmed_attack/bite/sharp/numbing
+/datum/melee_attack/unarmed/bite/sharp/numbing
 	attack_name = "numbing bite"

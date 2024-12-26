@@ -14,7 +14,7 @@
 	max_additional_languages = 3
 	name_language = null // name randomisers are fucking weird
 
-	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick, /datum/unarmed_attack/punch)
+	unarmed_types = list(/datum/melee_attack/unarmed/stomp, /datum/melee_attack/unarmed/kick, /datum/melee_attack/unarmed/punch)
 	blurb = {"
 	Phoronoids are a race rarely seen by most, tending to keep to themselves throughout known space.
 	These curious skeleton-folk react violently with oxygen, catching alight in the normal concentration needed for humans.

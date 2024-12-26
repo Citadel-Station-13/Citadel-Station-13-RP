@@ -89,7 +89,7 @@ GLOBAL_LIST_EMPTY(cached_shieldcall_datums)
  *
  * @return SHIELDCALL_FLAG_* flags
  */
-/datum/shieldcall/proc/handle_unarmed_melee(atom/defending, shieldcall_returns, fake_attack, datum/unarmed_attack/style, datum/event_args/actor/clickchain/e_args)
+/datum/shieldcall/proc/handle_unarmed_melee(atom/defending, shieldcall_returns, fake_attack, datum/melee_attack/unarmed/style, datum/event_args/actor/clickchain/e_args)
 	return NONE
 
 //* Interaction Handling *//

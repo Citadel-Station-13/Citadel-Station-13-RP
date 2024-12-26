@@ -36,7 +36,7 @@
 	)
 	return NONE
 
-/obj/unarmed_melee_act(mob/attacker, datum/unarmed_attack/style, target_zone, datum/event_args/actor/clickchain/clickchain)
+/obj/unarmed_melee_act(mob/attacker, datum/melee_attack/unarmed/style, target_zone, datum/event_args/actor/clickchain/clickchain)
 	var/shieldcall_returns = atom_shieldcall_handle_unarmed_melee(style, clickchain, FALSE, NONE)
 	if(shieldcall_returns & SHIELDCALL_FLAGS_BLOCK_ATTACK)
 		return CLICKCHAIN_FULL_BLOCKED
@@ -112,7 +112,7 @@
 			return
 	return ..()
 
-/obj/hitsound_unarmed(mob/M, datum/unarmed_attack/style)
+/obj/hitsound_unarmed(mob/M, datum/melee_attack/unarmed/style)
 	if(!isnull(material_primary))
 		var/datum/prototype/material/primary = get_primary_material()
 		. = style.damage_type == DAMAGE_TYPE_BURN? primary.sound_melee_burn : primary.sound_melee_brute

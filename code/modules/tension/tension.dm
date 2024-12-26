@@ -155,7 +155,7 @@
 		var/damage_guess = 0
 		if(ishuman(src) && ishuman(threatened))
 			var/mob/living/carbon/human/H = src
-			var/datum/unarmed_attack/attack = H.get_unarmed_attack(threatened, BP_TORSO)
+			var/datum/melee_attack/unarmed/attack = H.get_unarmed_attack(threatened, BP_TORSO)
 			if(!attack)
 				damage_guess += 5
 

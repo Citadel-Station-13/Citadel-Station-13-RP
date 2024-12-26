@@ -4,6 +4,10 @@
 /**
  * Called to initiate a melee attack as ourselves.
  *
+ * * This is a melee attack. This is not a grab, this is not a disarm.
+ *   Those should be handled by other parts of the clickchain.
+ *   If we are in this proc, it's because we're punching something or someone.
+ *
  * @params
  * * e_args - the clickchain data, including who's doing the interaction
  * * clickchain_flags - the clickchain flags given

@@ -98,7 +98,7 @@
 				WD.update_appearance()
 	return ..()
 
-/obj/structure/grille/unarmed_melee_act(mob/attacker, datum/unarmed_attack/style, target_zone, datum/event_args/actor/clickchain/clickchain)
+/obj/structure/grille/unarmed_melee_act(mob/attacker, datum/melee_attack/unarmed/style, target_zone, datum/event_args/actor/clickchain/clickchain)
 	if(shock(attacker, 70))
 		return FALSE
 	return ..()

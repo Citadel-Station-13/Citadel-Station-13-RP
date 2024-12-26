@@ -64,7 +64,7 @@
  *
  * @return clickchain flags to append
  */
-/atom/proc/unarmed_melee_act(mob/attacker, datum/unarmed_attack/style, target_zone, datum/event_args/actor/clickchain/clickchain)
+/atom/proc/unarmed_melee_act(mob/attacker, datum/melee_attack/unarmed/style, target_zone, datum/event_args/actor/clickchain/clickchain)
 	return CLICKCHAIN_DO_NOT_ATTACK
 
 /**
@@ -200,7 +200,7 @@
 		else
 			return "swing_hit"
 
-/atom/proc/hitsound_unarmed(mob/M, datum/unarmed_attack/style)
+/atom/proc/hitsound_unarmed(mob/M, datum/melee_attack/unarmed/style)
 	//? todo: style gets final say
 	. = hitsound_override(M, style.damage_mode, ATTACK_TYPE_UNARMED, style)
 	if(.)
@@ -453,7 +453,7 @@
  *
  * @return SHIELDCALL_FLAG_* flags
  */
-/atom/proc/atom_shieldcall_handle_unarmed_melee(datum/unarmed_attack/style, datum/event_args/actor/clickchain/e_args, fake_attack, shieldcall_flags, clickchain_flags)
+/atom/proc/atom_shieldcall_handle_unarmed_melee(datum/melee_attack/unarmed/style, datum/event_args/actor/clickchain/e_args, fake_attack, shieldcall_flags, clickchain_flags)
 	SHOULD_NOT_SLEEP(TRUE)
 	// cannot parry yourself
 	if(e_args.performer == src)

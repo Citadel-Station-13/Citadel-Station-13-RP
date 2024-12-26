@@ -23,7 +23,7 @@
 			. |= COMPONENT_THROW_HIT_PIERCE // :trol:
 		return
 
-/turf/simulated/wall/unarmed_melee_act(mob/attacker, datum/unarmed_attack/style, target_zone, datum/event_args/actor/clickchain/clickchain)
+/turf/simulated/wall/unarmed_melee_act(mob/attacker, datum/melee_attack/unarmed/style, target_zone, datum/event_args/actor/clickchain/clickchain)
 	var/shieldcall_returns = atom_shieldcall_handle_unarmed_melee(style, clickchain, FALSE, NONE)
 	if(shieldcall_returns & SHIELDCALL_FLAGS_BLOCK_ATTACK)
 		return CLICKCHAIN_FULL_BLOCKED

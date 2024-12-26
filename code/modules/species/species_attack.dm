@@ -1,16 +1,16 @@
-/datum/unarmed_attack/bite/sharp //eye teeth
+/datum/melee_attack/unarmed/bite/sharp //eye teeth
 	verb_past_participle = list("bit")
 	attack_verb_legacy = list("bit", "chomped on")
 	attack_sound = 'sound/weapons/bite.ogg'
 	damage_mode = DAMAGE_MODE_SHARP | DAMAGE_MODE_EDGE
 
-/datum/unarmed_attack/diona
+/datum/melee_attack/unarmed/diona
 	attack_verb_legacy = list("lashed", "bludgeoned")
 	attack_noun = list("tendril")
 	eye_attack_text = "a tendril"
 	eye_attack_text_victim = "a tendril"
 
-/datum/unarmed_attack/claws
+/datum/melee_attack/unarmed/claws
 	verb_past_participle = list("scratched", "clawed", "slashed")
 	attack_verb_legacy = list("scratched", "clawed", "slashed")
 	attack_noun = list("claws")
@@ -20,7 +20,7 @@
 	miss_sound = 'sound/weapons/slashmiss.ogg'
 	damage_mode = DAMAGE_MODE_SHARP | DAMAGE_MODE_EDGE
 
-/datum/unarmed_attack/claws/show_attack(var/mob/living/carbon/human/user, var/mob/living/carbon/human/target, var/zone, var/attack_damage)
+/datum/melee_attack/unarmed/claws/show_attack(var/mob/living/carbon/human/user, var/mob/living/carbon/human/target, var/zone, var/attack_damage)
 	var/skill = user.skills["combat"]
 	var/obj/item/organ/external/affecting = target.get_organ(zone)
 	var/datum/gender/T = GLOB.gender_datums[user.get_visible_gender()]
@@ -52,60 +52,60 @@
 				if(3 to 4)	user.visible_message("<span class='danger'>[user] [pick(attack_verb_legacy)] [pick("", "", "the side of")] [target]'s [affecting.name]!</span>")
 				if(5)		user.visible_message("<span class='danger'>[user] tears [T.his] [pick(attack_noun)] [pick("deep into", "into", "across")] [target]'s [affecting.name]!</span>")
 
-/datum/unarmed_attack/claws/strong
+/datum/melee_attack/unarmed/claws/strong
 	attack_verb_legacy = list("slashed")
 	damage = 10
 	damage_tier = MELEE_TIER_MEDIUM
 	damage_mode = DAMAGE_MODE_SHRED | DAMAGE_MODE_SHARP | DAMAGE_MODE_EDGE
 
-/datum/unarmed_attack/claws/strong/xeno
+/datum/melee_attack/unarmed/claws/strong/xeno
 	verb_past_participle = list("slashed", "gouged", "stabbed")
 	attack_verb_legacy = list("slashed", "gouged", "stabbed")
 	damage_tier = MELEE_TIER_HEAVY
 	damage = 20
 
-/datum/unarmed_attack/claws/strong/xeno/queen
+/datum/melee_attack/unarmed/claws/strong/xeno/queen
 	verb_past_participle = list("slashed", "gouged", "stabbed", "gored")
 	attack_verb_legacy = list("slashed", "gouged", "stabbed", "gored")
 	damage = 25
 
-/datum/unarmed_attack/bite/strong
+/datum/melee_attack/unarmed/bite/strong
 	verb_past_participle = list("mauled")
 	attack_verb_legacy = list("mauled")
 	damage = 12
 	damage_tier = MELEE_TIER_MEDIUM
 	damage_mode = DAMAGE_MODE_SHRED | DAMAGE_MODE_SHARP
 
-/datum/unarmed_attack/bite/strong/xeno
+/datum/melee_attack/unarmed/bite/strong/xeno
 	damage = 17
 
-/datum/unarmed_attack/slime_glomp
+/datum/melee_attack/unarmed/slime_glomp
 	attack_verb_legacy = list("glomped")
 	attack_noun = list("body")
 	damage = 7
 
-/datum/unarmed_attack/slime_glomp/apply_effects(var/mob/living/carbon/human/user,var/mob/living/carbon/human/target,var/armour,var/attack_damage,var/zone)
+/datum/melee_attack/unarmed/slime_glomp/apply_effects(var/mob/living/carbon/human/user,var/mob/living/carbon/human/target,var/armour,var/attack_damage,var/zone)
 	..()
 	user.apply_stored_shock_to(target)
 
-/datum/unarmed_attack/stomp/weak
+/datum/melee_attack/unarmed/stomp/weak
 	attack_verb_legacy = list("jumped on")
 
-/datum/unarmed_attack/stomp/weak/get_unarmed_damage()
+/datum/melee_attack/unarmed/stomp/weak/get_unarmed_damage()
 	return damage
 
-/datum/unarmed_attack/stomp/weak/show_attack(var/mob/living/carbon/human/user, var/mob/living/carbon/human/target, var/zone, var/attack_damage)
+/datum/melee_attack/unarmed/stomp/weak/show_attack(var/mob/living/carbon/human/user, var/mob/living/carbon/human/target, var/zone, var/attack_damage)
 	var/obj/item/organ/external/affecting = target.get_organ(zone)
 	user.visible_message("<span class='warning'>[user] jumped up and down on \the [target]'s [affecting.name]!</span>")
 	playsound(user.loc, attack_sound, 25, 1, -1)
 
-/datum/unarmed_attack/bite/sharp/numbing //Is using this against someone you are truly trying to fight a bad idea? Yes. Yes it is.
+/datum/melee_attack/unarmed/bite/sharp/numbing //Is using this against someone you are truly trying to fight a bad idea? Yes. Yes it is.
 	attack_verb_legacy = list("bit")
 	attack_noun = list("fangs")
 	attack_sound = 'sound/weapons/bite.ogg'
 	damage_mode = DAMAGE_MODE_SHARP
 
-/datum/unarmed_attack/bite/sharp/numbing/show_attack(var/mob/living/carbon/human/user, var/mob/living/carbon/human/target, var/zone, var/attack_damage)
+/datum/melee_attack/unarmed/bite/sharp/numbing/show_attack(var/mob/living/carbon/human/user, var/mob/living/carbon/human/target, var/zone, var/attack_damage)
 	var/obj/item/organ/external/affecting = target.get_organ(zone)
 
 	attack_damage = clamp(attack_damage, 1, 5)
@@ -144,39 +144,39 @@
 					to_chat(target, "<font color='red'><b>Your [affecting.name] feels like it's going to burst! Moments later, you simply can't feel your [affecting.name] any longer, the numbness slowly spreading throughout your body!</b></font>")
 					target.bloodstr.add_reagent("numbenzyme",attack_damage)
 
-/datum/unarmed_attack/claws/shadekin
+/datum/melee_attack/unarmed/claws/shadekin
 	var/energy_gain = 3
 
-/datum/unarmed_attack/claws/shadekin/show_attack(var/mob/living/carbon/human/user, var/mob/living/carbon/human/target, var/zone, var/attack_damage)
+/datum/melee_attack/unarmed/claws/shadekin/show_attack(var/mob/living/carbon/human/user, var/mob/living/carbon/human/target, var/zone, var/attack_damage)
 	..()
 	user.shadekin_adjust_energy(energy_gain)
 
-/datum/unarmed_attack/bite/sharp/shadekin
+/datum/melee_attack/unarmed/bite/sharp/shadekin
 	var/energy_gain = 3
 
-/datum/unarmed_attack/bite/sharp/shadekin/show_attack(var/mob/living/carbon/human/user, var/mob/living/carbon/human/target, var/zone, var/attack_damage)
+/datum/melee_attack/unarmed/bite/sharp/shadekin/show_attack(var/mob/living/carbon/human/user, var/mob/living/carbon/human/target, var/zone, var/attack_damage)
 	..()
 	user.shadekin_adjust_energy(energy_gain)
 
 //Traits attack
-/datum/unarmed_attack/bite/sharp/good
+/datum/melee_attack/unarmed/bite/sharp/good
 	damage = 10
 	damage_tier = MELEE_TIER_LIGHT
 
-/datum/unarmed_attack/claws/good
+/datum/melee_attack/unarmed/claws/good
 	damage = 10
 	damage_tier = MELEE_TIER_LIGHT
 
-/datum/unarmed_attack/bite/sharp/good/venom
+/datum/melee_attack/unarmed/bite/sharp/good/venom
 
-/datum/unarmed_attack/bite/sharp/good/venom/show_attack(var/mob/living/carbon/human/user, var/mob/living/carbon/human/target, var/zone, var/attack_damage)
+/datum/melee_attack/unarmed/bite/sharp/good/venom/show_attack(var/mob/living/carbon/human/user, var/mob/living/carbon/human/target, var/zone, var/attack_damage)
 	..()
 	if(target.can_inject(null,FALSE,zone,FALSE))
 		target.bloodstr.add_reagent("toxin",2) //8 extra damage per hit over time
 
-/datum/unarmed_attack/claws/good/venom
+/datum/melee_attack/unarmed/claws/good/venom
 
-/datum/unarmed_attack/claws/good/venom/show_attack(var/mob/living/carbon/human/user, var/mob/living/carbon/human/target, var/zone, var/attack_damage)
+/datum/melee_attack/unarmed/claws/good/venom/show_attack(var/mob/living/carbon/human/user, var/mob/living/carbon/human/target, var/zone, var/attack_damage)
 	..()
 	if(target.can_inject(null,FALSE,zone,FALSE))
 		target.bloodstr.add_reagent("toxin",2)

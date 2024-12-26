@@ -18,7 +18,7 @@
 
 	//* Attacks - Basic *//
 	/// melee style
-	var/datum/unarmed_attack/melee_style
+	var/datum/melee_attack/unarmed/melee_style
 
 	//? Darksight
 	/// our innate darksight

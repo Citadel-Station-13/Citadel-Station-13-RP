@@ -1,6 +1,6 @@
 GLOBAL_LIST_EMPTY(unarmed_attack_cache)
 
-/proc/fetch_unarmed_style(datum/unarmed_attack/path)
+/proc/fetch_unarmed_style(datum/melee_attack/unarmed/path)
 	if(isnull(GLOB.unarmed_attack_cache[path]))
 		GLOB.unarmed_attack_cache[path] = new path
 	return GLOB.unarmed_attack_cache[path]
@@ -8,7 +8,7 @@ GLOBAL_LIST_EMPTY(unarmed_attack_cache)
 /**
  * Unarmed attacks for mobs
  */
-/datum/unarmed_attack
+/datum/melee_attack/unarmed
 	//? Damage
 	/// damage amount - flat
 	var/damage = 5
@@ -47,20 +47,20 @@ GLOBAL_LIST_EMPTY(unarmed_attack_cache)
 	var/attack_noun = list("fist")
 	var/infected_wound_probability = 10
 
-	var/sparring_variant_type = /datum/unarmed_attack/light_strike
+	var/sparring_variant_type = /datum/melee_attack/unarmed/light_strike
 
 	var/eye_attack_text
 	var/eye_attack_text_victim
 
-/datum/unarmed_attack/proc/operator""()
+/datum/melee_attack/unarmed/proc/operator""()
 	return pick(attack_verb_legacy)
 
 //* Feedback
 
-/datum/unarmed_attack/proc/get_sparring_variant()
+/datum/melee_attack/unarmed/proc/get_sparring_variant()
 	return fetch_unarmed_style(sparring_variant_type)
 
-/datum/unarmed_attack/proc/is_usable(var/mob/living/carbon/human/user, var/mob/living/carbon/human/target, var/zone)
+/datum/melee_attack/unarmed/proc/is_usable(var/mob/living/carbon/human/user, var/mob/living/carbon/human/target, var/zone)
 	if(user.restrained())
 		return FALSE
 
@@ -75,11 +75,11 @@ GLOBAL_LIST_EMPTY(unarmed_attack_cache)
 
 	return FALSE
 
-/datum/unarmed_attack/proc/get_unarmed_damage(mob/attacker, atom/defender)
+/datum/melee_attack/unarmed/proc/get_unarmed_damage(mob/attacker, atom/defender)
 	// todo: damage_structural_add is awful and shouldn't be kept in the future
 	return damage + rand(damage_add_low, damage_add_high) + (ismob(defender)? 0 : damage_structural_add)
 
-/datum/unarmed_attack/proc/apply_effects(var/mob/living/carbon/human/user,var/mob/living/carbon/human/target,var/armour,var/attack_damage,var/zone)
+/datum/melee_attack/unarmed/proc/apply_effects(var/mob/living/carbon/human/user,var/mob/living/carbon/human/target,var/armour,var/attack_damage,var/zone)
 
 	var/stun_chance = rand(0, 100)
 	var/datum/gender/TT = GLOB.gender_datums[target.get_visible_gender()]
@@ -144,12 +144,12 @@ GLOBAL_LIST_EMPTY(unarmed_attack_cache)
 
 			target.visible_message("<span class='danger'><i>[user] [attack_message]</i></span>")
 
-/datum/unarmed_attack/proc/show_attack(var/mob/living/carbon/human/user, var/mob/living/carbon/human/target, var/zone, var/attack_damage)
+/datum/melee_attack/unarmed/proc/show_attack(var/mob/living/carbon/human/user, var/mob/living/carbon/human/target, var/zone, var/attack_damage)
 	var/obj/item/organ/external/affecting = target.get_organ(zone)
 	user.visible_message("<span class='warning'>[user] [pick(attack_verb_legacy)] [target] in the [affecting.name]!</span>")
 	playsound(user.loc, attack_sound, 25, 1, -1)
 
-/datum/unarmed_attack/proc/handle_eye_attack(var/mob/living/carbon/human/user, var/mob/living/carbon/human/target)
+/datum/melee_attack/unarmed/proc/handle_eye_attack(var/mob/living/carbon/human/user, var/mob/living/carbon/human/target)
 	var/obj/item/organ/internal/eyes/eyes = target.internal_organs_by_name[O_EYES]
 	var/datum/gender/TU = GLOB.gender_datums[user.get_visible_gender()]
 	var/datum/gender/TT = GLOB.gender_datums[target.get_visible_gender()]
@@ -161,10 +161,10 @@ GLOBAL_LIST_EMPTY(unarmed_attack_cache)
 		return
 	user.visible_message("<span class='danger'>[user] attempts to press [TU.his] [eye_attack_text] into [target]'s eyes, but [TT.he] [TT.does]n't have any!</span>")
 
-/datum/unarmed_attack/proc/unarmed_override(var/mob/living/carbon/human/user,var/mob/living/carbon/human/target,var/zone)
+/datum/melee_attack/unarmed/proc/unarmed_override(var/mob/living/carbon/human/user,var/mob/living/carbon/human/target,var/zone)
 	return FALSE //return true if the unarmed override prevents further attacks
 
-/datum/unarmed_attack/bite
+/datum/melee_attack/unarmed/bite
 	verb_past_participle = list("bitten")
 	attack_verb_legacy = list("bit")
 	attack_sound = 'sound/weapons/bite.ogg'
@@ -172,7 +172,7 @@ GLOBAL_LIST_EMPTY(unarmed_attack_cache)
 	damage_mode = NONE
 	damage_tier = MELEE_TIER_UNARMED_FISTS
 
-/datum/unarmed_attack/bite/is_usable(var/mob/living/carbon/human/user, var/mob/living/carbon/human/target, var/zone)
+/datum/melee_attack/unarmed/bite/is_usable(var/mob/living/carbon/human/user, var/mob/living/carbon/human/target, var/zone)
 
 	if (user.is_muzzled())
 		return 0
@@ -180,7 +180,7 @@ GLOBAL_LIST_EMPTY(unarmed_attack_cache)
 		return 0
 	return TRUE
 
-/datum/unarmed_attack/punch
+/datum/melee_attack/unarmed/punch
 	verb_past_participle = list("punched")
 	attack_verb_legacy = list("punched")
 	attack_noun = list("fist")
@@ -190,7 +190,7 @@ GLOBAL_LIST_EMPTY(unarmed_attack_cache)
 	damage_add_high = 5
 	damage_tier = MELEE_TIER_UNARMED_FISTS
 
-/datum/unarmed_attack/punch/show_attack(var/mob/living/carbon/human/user, var/mob/living/carbon/human/target, var/zone, var/attack_damage)
+/datum/melee_attack/unarmed/punch/show_attack(var/mob/living/carbon/human/user, var/mob/living/carbon/human/target, var/zone, var/attack_damage)
 	var/obj/item/organ/external/affecting = target.get_organ(zone)
 	var/organ = affecting.name
 
@@ -235,7 +235,7 @@ GLOBAL_LIST_EMPTY(unarmed_attack_cache)
 	else
 		user.visible_message("<span class='danger'>[user] [pick("punched", "threw a punch against", "struck", "slammed [TU.his] [pick(attack_noun)] into")] [target]'s [organ]!</span>") //why do we have a separate set of verbs for lying targets?
 
-/datum/unarmed_attack/kick
+/datum/melee_attack/unarmed/kick
 	verb_past_participle = list("kicked")
 	attack_verb_legacy = list("kicked", "kicked", "kicked", "kneed")
 	attack_noun = list("kick", "kick", "kick", "knee strike")
@@ -243,7 +243,7 @@ GLOBAL_LIST_EMPTY(unarmed_attack_cache)
 	damage_add_low = 0
 	damage_add_high = 5
 
-/datum/unarmed_attack/kick/is_usable(var/mob/living/carbon/human/user, var/mob/living/carbon/human/target, var/zone)
+/datum/melee_attack/unarmed/kick/is_usable(var/mob/living/carbon/human/user, var/mob/living/carbon/human/target, var/zone)
 	if (user.legcuffed)
 		return FALSE
 
@@ -260,13 +260,13 @@ GLOBAL_LIST_EMPTY(unarmed_attack_cache)
 
 	return FALSE
 
-/datum/unarmed_attack/kick/get_unarmed_damage(var/mob/living/carbon/human/user)
+/datum/melee_attack/unarmed/kick/get_unarmed_damage(var/mob/living/carbon/human/user)
 	var/obj/item/clothing/shoes = user.shoes
 	if(!istype(shoes))
 		return damage
 	return damage + max(0, shoes ? shoes.damage_force - 5 : 0)
 
-/datum/unarmed_attack/kick/show_attack(var/mob/living/carbon/human/user, var/mob/living/carbon/human/target, var/zone, var/attack_damage)
+/datum/melee_attack/unarmed/kick/show_attack(var/mob/living/carbon/human/user, var/mob/living/carbon/human/target, var/zone, var/attack_damage)
 	var/obj/item/organ/external/affecting = target.get_organ(zone)
 	var/datum/gender/TT = GLOB.gender_datums[target.get_visible_gender()]
 	var/organ = affecting.name
@@ -278,7 +278,7 @@ GLOBAL_LIST_EMPTY(unarmed_attack_cache)
 		if(3 to 4)	user.visible_message("<span class='danger'>[user] [pick(attack_verb_legacy)] [target] in [TT.his] [organ]!</span>")
 		if(5)		user.visible_message("<span class='danger'>[user] landed a strong [pick(attack_noun)] against [target]'s [organ]!</span>")
 
-/datum/unarmed_attack/stomp
+/datum/melee_attack/unarmed/stomp
 	verb_past_participle = list("stomped")
 	attack_verb_legacy = list("stomped")
 	attack_noun = list("stomp")
@@ -286,7 +286,7 @@ GLOBAL_LIST_EMPTY(unarmed_attack_cache)
 	damage_add_low = 0
 	damage_add_high = 5
 
-/datum/unarmed_attack/stomp/is_usable(var/mob/living/carbon/human/user, var/mob/living/carbon/human/target, var/zone)
+/datum/melee_attack/unarmed/stomp/is_usable(var/mob/living/carbon/human/user, var/mob/living/carbon/human/target, var/zone)
 
 	if (user.legcuffed)
 		return FALSE
@@ -307,11 +307,11 @@ GLOBAL_LIST_EMPTY(unarmed_attack_cache)
 
 		return FALSE
 
-/datum/unarmed_attack/stomp/get_unarmed_damage(var/mob/living/carbon/human/user)
+/datum/melee_attack/unarmed/stomp/get_unarmed_damage(var/mob/living/carbon/human/user)
 	var/obj/item/clothing/shoes = user.shoes
 	return damage + max(0, shoes ? shoes.damage_force - 5 : 0)
 
-/datum/unarmed_attack/stomp/show_attack(var/mob/living/carbon/human/user, var/mob/living/carbon/human/target, var/zone, var/attack_damage)
+/datum/melee_attack/unarmed/stomp/show_attack(var/mob/living/carbon/human/user, var/mob/living/carbon/human/target, var/zone, var/attack_damage)
 	var/obj/item/organ/external/affecting = target.get_organ(zone)
 	var/organ = affecting.name
 	var/obj/item/clothing/shoes = user.shoes
@@ -323,7 +323,7 @@ GLOBAL_LIST_EMPTY(unarmed_attack_cache)
 		if(1 to 4)	user.visible_message("<span class='danger'>[pick("[user] stomped on", "[user] slammed [TU.his] [shoes ? copytext(shoes.name, 1, -1) : "foot"] down onto")] [target]'s [organ]!</span>")
 		if(5)		user.visible_message("<span class='danger'>[pick("[user] landed a powerful stomp on", "[user] stomped down hard on", "[user] slammed [TU.his] [shoes ? copytext(shoes.name, 1, -1) : "foot"] down hard onto")] [target]'s [organ]!</span>") //Devastated lol. No. We want to say that the stomp was powerful or forceful, not that it /wrought devastation/
 
-/datum/unarmed_attack/light_strike
+/datum/melee_attack/unarmed/light_strike
 	verb_past_participle = list("lightly struck")
 	attack_noun = list("tap","light strike")
 	attack_verb_legacy = list("tapped", "lightly struck")

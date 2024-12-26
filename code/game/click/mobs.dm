@@ -31,7 +31,7 @@
 /**
  * called to try to hit something in melee
  */
-/mob/proc/melee_attack_chain(atom/target, datum/event_args/actor/clickchain/clickchain, datum/unarmed_attack/style = unarmed_attack_style(), clickchain_flags, target_zone, mult = 1)
+/mob/proc/melee_attack_chain(atom/target, datum/event_args/actor/clickchain/clickchain, datum/melee_attack/unarmed/style = unarmed_attack_style(), clickchain_flags, target_zone, mult = 1)
 	if(isnull(style))
 		// we can't autoattack
 		return NONE
@@ -63,7 +63,7 @@
 
 // todo: melee_special for overrides (?)
 
-/mob/proc/melee_attack(atom/target, datum/event_args/actor/clickchain/clickchain, datum/unarmed_attack/style, clickchain_flags, target_zone, mult)
+/mob/proc/melee_attack(atom/target, datum/event_args/actor/clickchain/clickchain, datum/melee_attack/unarmed/style, clickchain_flags, target_zone, mult)
 	SHOULD_CALL_PARENT(TRUE)
 	// todo: move this somewhere else
 	if(!target.integrity_enabled)
@@ -100,7 +100,7 @@
 
 	log_attack(key_name(src), ismob(target)? key_name(target) : "[target] ([ref(target)])", "attacked with [style.attack_name] newhp ~[newhp || "unknown"]")
 
-/mob/proc/melee_attack_hit(atom/target, datum/event_args/actor/clickchain/clickchain, datum/unarmed_attack/style, clickchain_flags, target_zone, mult)
+/mob/proc/melee_attack_hit(atom/target, datum/event_args/actor/clickchain/clickchain, datum/melee_attack/unarmed/style, clickchain_flags, target_zone, mult)
 	. = target.unarmed_melee_act(src, style, target_zone, clickchain)
 	if(. & CLICKCHAIN_ATTACK_MISSED)
 		return . | melee_attack_miss(target, clickchain, style, clickchain_flags, target_zone, mult)
@@ -114,7 +114,7 @@
 	)
 	target.animate_hit_by_attack(style.animation_type)
 
-/mob/proc/melee_attack_miss(atom/target, datum/event_args/actor/clickchain/clickchain, datum/unarmed_attack/style, clickchain_flags, target_zone, mult)
+/mob/proc/melee_attack_miss(atom/target, datum/event_args/actor/clickchain/clickchain, datum/melee_attack/unarmed/style, clickchain_flags, target_zone, mult)
 	playsound(src, 'sound/weapons/punchmiss.ogg', 25, 1, -1)
 	clickchain.visible_feedback(
 		target = target,
@@ -123,7 +123,7 @@
 	)
 	return NONE
 
-/mob/proc/melee_attack_finalize(atom/target, datum/event_args/actor/clickchain/clickchain, datum/unarmed_attack/style, clickchain_flags, target_zone, mult)
+/mob/proc/melee_attack_finalize(atom/target, datum/event_args/actor/clickchain/clickchain, datum/melee_attack/unarmed/style, clickchain_flags, target_zone, mult)
 	return NONE
 
 /**

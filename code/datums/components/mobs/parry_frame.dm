@@ -444,7 +444,7 @@
 	if(parry_always_prevents_contact || (parry_can_prevent_contact && (efficiency >= parry_efficiency_blocked)))
 		. |= SHIELDCALL_FLAG_ATTACK_BLOCKED
 
-/datum/shieldcall/bound/parry_frame/handle_unarmed_melee(atom/defending, shieldcall_returns, fake_attack, datum/unarmed_attack/style, datum/event_args/actor/clickchain/e_args)
+/datum/shieldcall/bound/parry_frame/handle_unarmed_melee(atom/defending, shieldcall_returns, fake_attack, datum/melee_attack/unarmed/style, datum/event_args/actor/clickchain/e_args)
 	var/datum/component/parry_frame/frame = bound
 	if(!(frame.active_parry.parry_attack_types & ATTACK_TYPE_UNARMED))
 		return
@@ -454,7 +454,7 @@
 	. = frame.active_parry.handle_unarmed_melee(defending, shieldcall_returns, fake_attack, efficiency, style, e_args, tool_text)
 	frame.on_parry(ATTACK_TYPE_UNARMED, style, ., efficiency)
 
-/datum/parry_frame/proc/handle_unarmed_melee(atom/defending, shieldcall_returns, fake_attack, efficiency, datum/unarmed_attack/style, datum/event_args/actor/clickchain/e_args, tool_text)
+/datum/parry_frame/proc/handle_unarmed_melee(atom/defending, shieldcall_returns, fake_attack, efficiency, datum/melee_attack/unarmed/style, datum/event_args/actor/clickchain/e_args, tool_text)
 	. = shieldcall_returns
 	// todo: doesn't take into account any damage randomization
 	var/estimated_severity = clamp(style.damage * e_args.melee_damage_multiplier / 20 * 75, 0, 100)

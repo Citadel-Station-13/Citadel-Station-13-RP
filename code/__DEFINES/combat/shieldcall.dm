@@ -83,7 +83,7 @@
 /// attacking weapon datum
 ///
 /// * /obj/projectile if projectile
-/// * /datum/unarmed_attack if unarmed melee
+/// * /datum/melee_attack/unarmed if unarmed melee
 /// * /obj/item if item melee
 /// * /datum/thrownthing if thrown
 /// * null if touch
@@ -141,7 +141,7 @@
 			var/datum/thrownthing/thrown = shieldcall_args[SHIELDCALL_ARG_WEAPON]
 			return "a [thrown.thrownthing]"
 		if(ATTACK_TYPE_MELEE, ATTACK_TYPE_UNARMED)
-			var/datum/unarmed_attack/style = shieldcall_args[SHIELDCALL_ARG_WEAPON]
+			var/datum/melee_attack/unarmed/style = shieldcall_args[SHIELDCALL_ARG_WEAPON]
 			return "a [style.attack_name]"
 	if(!.)
 		. = "an attack"

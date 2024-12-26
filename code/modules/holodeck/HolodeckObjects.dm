@@ -131,12 +131,12 @@
 			SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_gloves.dmi',
 			)
 	item_state = "boxing"
-	special_attack_type = /datum/unarmed_attack/holopugilism
+	special_attack_type = /datum/melee_attack/unarmed/holopugilism
 
-/datum/unarmed_attack/holopugilism
-	sparring_variant_type = /datum/unarmed_attack/holopugilism
+/datum/melee_attack/unarmed/holopugilism
+	sparring_variant_type = /datum/melee_attack/unarmed/holopugilism
 
-/datum/unarmed_attack/holopugilism/unarmed_override(var/mob/living/carbon/human/user,var/mob/living/carbon/human/target,var/zone)
+/datum/melee_attack/unarmed/holopugilism/unarmed_override(var/mob/living/carbon/human/user,var/mob/living/carbon/human/target,var/zone)
 	user.do_attack_animation(src)
 	var/damage = rand(0, 9)
 	if(!damage)
