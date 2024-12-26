@@ -31,8 +31,6 @@
 /**
  * called on melee hit
  *
- * todo: add clickchain datum, instead of multiplier
- *
  * * check CLICKCHAIN_FLAGS_* as needed, especially UNCONDITIONAL_ABORT and ATTACK_ABORT
  * * clickchain flags are sent down through parent calls.
  *
@@ -44,13 +42,11 @@
  *
  * @return clickchain flags to append
  */
-/atom/proc/melee_act(mob/user, obj/item/weapon, target_zone, datum/event_args/actor/clickchain/clickchain)
+/atom/proc/item_melee_act(mob/user, obj/item/weapon, target_zone, datum/event_args/actor/clickchain/clickchain)
 	return CLICKCHAIN_DO_NOT_ATTACK
 
 /**
  * called on unarmed melee hit
- *
- * todo: add clickchain datum, instead of multiplier
  *
  * @params
  * * user - person attacking
@@ -60,7 +56,7 @@
  *
  * @return clickchain flags to append
  */
-/atom/proc/unarmed_act(mob/attacker, datum/unarmed_attack/style, target_zone, datum/event_args/actor/clickchain/clickchain)
+/atom/proc/unarmed_melee_act(mob/attacker, datum/unarmed_attack/style, target_zone, datum/event_args/actor/clickchain/clickchain)
 	return CLICKCHAIN_DO_NOT_ATTACK
 
 /**
@@ -296,6 +292,19 @@
 	run_armorcalls(args, FALSE)
 	return args.Copy()
 
+/**
+ * Runs a damage instance against armor
+ *
+ * * This is a low level proc. Make sure you undersatnd how shieldcalls work [__DEFINES/combat/shieldcall.dm].
+ */
+/atom/proc/run_armorcalls(list/shieldcall_args, fake_attack)
+	SHOULD_NOT_SLEEP(TRUE)
+	SEND_SIGNAL(src, COMSIG_ATOM_ARMORCALL, shieldcall_args, fake_attack)
+	if(shieldcall_args[SHIELDCALL_ARG_FLAGS] & SHIELDCALL_FLAG_TERMINATE)
+		return
+	var/datum/armor/our_armor = fetch_armor()
+	our_armor.handle_shieldcall(shieldcall_args, fake_attack)
+
 //* Shieldcalls *//
 
 /**
@@ -384,19 +393,6 @@
 		calling.handle_shieldcall(src, args, fake_attack)
 		if(shieldcall_args[SHIELDCALL_ARG_FLAGS] & SHIELDCALL_FLAG_TERMINATE)
 			break
-
-/**
- * Runs a damage instance against armor
- *
- * * This is a low level proc. Make sure you undersatnd how shieldcalls work [__DEFINES/combat/shieldcall.dm].
- */
-/atom/proc/run_armorcalls(list/shieldcall_args, fake_attack)
-	SHOULD_NOT_SLEEP(TRUE)
-	SEND_SIGNAL(src, COMSIG_ATOM_ARMORCALL, shieldcall_args, fake_attack)
-	if(shieldcall_args[SHIELDCALL_ARG_FLAGS] & SHIELDCALL_FLAG_TERMINATE)
-		return
-	var/datum/armor/our_armor = fetch_armor()
-	our_armor.handle_shieldcall(shieldcall_args, fake_attack)
 
 /atom/proc/register_shieldcall(datum/shieldcall/delegate)
 	SHOULD_NOT_SLEEP(TRUE)

@@ -20,13 +20,13 @@
 			. |= COMPONENT_THROW_HIT_PIERCE // :trol:
 		return
 
-/turf/simulated/wall/unarmed_act(mob/attacker, datum/unarmed_attack/style, target_zone, datum/event_args/actor/clickchain/clickchain)
+/turf/simulated/wall/unarmed_melee_act(mob/attacker, datum/unarmed_attack/style, target_zone, datum/event_args/actor/clickchain/clickchain)
 	var/shieldcall_returns = atom_shieldcall_handle_unarmed_melee(style, clickchain, FALSE, NONE)
 	if(shieldcall_returns & SHIELDCALL_FLAGS_BLOCK_ATTACK)
 		return CLICKCHAIN_FULL_BLOCKED
 	// todo: maybe the unarmed_style side should handle this?
 	run_damage_instance(
-		style.damage * (clickchain ? clickchain.damage_multiplier : 1),
+		style.damage * (clickchain ? clickchain.melee_damage_multiplier : 1),
 		style.damage_type,
 		style.damage_tier,
 		style.damage_flag,
@@ -40,13 +40,13 @@
 	)
 	return NONE
 
-/turf/simulated/wall/melee_act(mob/user, obj/item/weapon, target_zone, datum/event_args/actor/clickchain/clickchain)
+/turf/simulated/wall/item_melee_act(mob/user, obj/item/weapon, target_zone, datum/event_args/actor/clickchain/clickchain)
 	var/shieldcall_returns = atom_shieldcall_handle_item_melee(weapon, clickchain, FALSE, NONE)
 	if(shieldcall_returns & SHIELDCALL_FLAGS_BLOCK_ATTACK)
 		return CLICKCHAIN_FULL_BLOCKED
 	// todo: maybe the item side should handle this?
 	run_damage_instance(
-		weapon.damage_force * (clickchain ? clickchain.damage_multiplier : 1),
+		weapon.damage_force * (clickchain ? clickchain.melee_damage_multiplier : 1),
 		weapon.damage_type,
 		weapon.damage_tier,
 		weapon.damage_flag,

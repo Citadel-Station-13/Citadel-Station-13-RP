@@ -38,7 +38,7 @@
  * @return overall siemens coefficient as multiplier
  */
 /datum/inventory/proc/query_simple_covered_siemens_coefficient(body_cover_flags) as /list
-	if(!isnull(. = cache["siemens-single-[body_cover_flags]"]))
+	if(!isnull((. = cache["siemens-single-[body_cover_flags]"])))
 		return
 	trim_simple_covered_siemens_coefficient_cache()
 	. = 1

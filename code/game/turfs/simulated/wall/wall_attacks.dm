@@ -89,7 +89,7 @@
 			if(INTENT_DISARM, INTENT_GRAB)
 				try_touch(M, rotting)
 			else
-				user.melee_attack_chain(src)
+				user.melee_attack_chain(e_args)
 				return
 	else
 		try_touch(user, rotting)

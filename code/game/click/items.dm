@@ -20,16 +20,23 @@
  * - params - params as list.
  */
 /obj/item/proc/melee_interaction_chain(atom/target, mob/user, clickchain_flags, list/params)
+	// todo: this should be not overridable but it's not right now for indirection handling. we should just have
+	//       an alternative indirection proc.
+	// SHOULD_NOT_OVERRIDE(TRUE)
+
 	// wow we have a lot of params
 	// if only this was ss14 so we could have the EntityEventArgs :pleading:
 
 	. = clickchain_flags
 
 	var/datum/event_args/actor/clickchain/e_args = new(user)
+	e_args.target = target
+	e_args.click_params = params
 
-	if((. |= item_attack_chain(target, e_args, ., params)) & CLICKCHAIN_DO_NOT_PROPAGATE)
+	if((. |= item_attack_chain(e_args, .)) & CLICKCHAIN_DO_NOT_PROPAGATE)
 		return
 
+	// todo: should only have e_args and clickchain_flags as params.
 	if((. |= tool_attack_chain(target, user, ., params)) & CLICKCHAIN_DO_NOT_PROPAGATE)
 		return
 
@@ -40,7 +47,7 @@
 	// todo: this should all be split into:
 	// - item use & receive item use (item_interaction() on /atom, definiteily)
 	// - tool use & receive tool use (we already have tool_interaction() on /atom)
-	// - melee attack & receive melee attack (melee_interaction() on /atom? not melee_act directly?)
+	// - melee attack & receive melee attack (melee_interaction() on /atom? not item_melee_act directly?)
 	// - melee attack shouldn't require attackby() to allow it to, it should be automatic on harm intent (?)
 	// - the item should have final say but we need a way to allow click redirections so..
 	if(resolve_attackby(target, user, params, null, .))
@@ -64,16 +71,6 @@
 /obj/item/proc/ranged_interaction_chain(atom/target, mob/user, clickchain_flags, list/params)
 	// todo: signal for afterattack here
 	return clickchain_flags | afterattack(target, user, clickchain_flags, params)
-
-/**
- * Called when trying to click something that the user can Reachability() to,
- * to allow for the tool system to intercept the attack as a tool action.
- */
-/obj/item/proc/tool_attack_chain(atom/target, mob/user, clickchain_flags, list/params)
-	// are we on harm intent? if so, lol no
-	if(user && (user.a_intent == INTENT_HARM))
-		return NONE
-	return target.tool_interaction(src, new /datum/event_args/actor/clickchain(user, target = target, params = params), clickchain_flags | CLICKCHAIN_TOOL_ACT)
 
 /**
  * called at the start of melee attack chains
@@ -344,13 +341,13 @@
 			// no targeting
 			return NONE
 	// check intent
-	if((item_flags & ITEM_CAREFUL_BLUDGEON) && clickchain.intent == INTENT_HELP)
+	if((item_flags & ITEM_CAREFUL_BLUDGEON) && clickchain.using_intent == INTENT_HELP)
 		clickchain.initiator.action_feedback(SPAN_WARNING("You refrain from hitting [target] because your intent is set to help."), src)
 		return CLICKCHAIN_DO_NOT_PROPAGATE
 	//? legacy: decloak
 	clickchain.performer.break_cloak()
 	// set mult
-	clickchain.damage_multiplier *= mult
+	clickchain.melee_damage_multiplier *= mult
 	// click cooldown
 	// todo: clickcd rework
 	clickchain.performer.setClickCooldown(clickchain.performer.get_attack_speed(src))
@@ -421,7 +418,7 @@
 		visible = SPAN_DANGER("[target] has been [islist(attack_verb)? pick(attack_verb) : attack_verb] with [src] by [clickchain.performer]!")
 	)
 	// damage
-	target.melee_act(clickchain.performer, src, null, clickchain)
+	target.item_melee_act(clickchain.performer, src, null, clickchain)
 	// animate
 	target.animate_hit_by_weapon(clickchain.performer, src)
 

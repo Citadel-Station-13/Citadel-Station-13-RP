@@ -38,7 +38,7 @@
 	if(on_attack_hand(e_args))
 		return TRUE
 	if(user.a_intent == INTENT_HARM)
-		return user.melee_attack_chain(src, e_args)
+		return user.melee_attack_chain(e_args)
 	. = _try_interact(user)
 
 /**

@@ -277,7 +277,7 @@
 		test_attachment = new
 	return test_attachment
 
-/obj/item/flashlight/maglight/using_as_item(atom/target, datum/event_args/actor/clickchain/e_args, clickchain_flags, datum/callback/reachability_check)
+/obj/item/flashlight/maglight/using_as_item(atom/target, datum/event_args/actor/clickchain/e_args, clickchain_flags)
 	. = ..()
 	if(. & CLICKCHAIN_DO_NOT_PROPAGATE)
 		return

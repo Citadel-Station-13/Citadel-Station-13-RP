@@ -108,7 +108,7 @@
 	. += usage_hints
 	var/list/stat_hints = examine_query_stat_hints(examining)
 	for(var/key in stat_hints)
-		var/value = stat_hints[value]
+		var/value = stat_hints[key]
 		. += "<li>[key] - [value]</li>"
 
 	SEND_SIGNAL(src, COMSIG_PARENT_EXAMINE, user, .)

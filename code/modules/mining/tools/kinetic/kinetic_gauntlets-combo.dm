@@ -35,3 +35,5 @@
 		INTENT_HARM,
 		INTENT_HARM,
 	)
+
+#warn melee injection hooks
