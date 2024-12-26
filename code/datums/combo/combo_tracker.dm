@@ -17,6 +17,7 @@
 	var/tmp/sec_position
 
 /datum/combo_tracker/proc/reset()
+	// do not cut, make a new list; subtypes might be referencing this before reset!
 	stored = list()
 	sec_set = null
 	sec_possible = null

@@ -23,6 +23,8 @@
 	var/datum/combo_tracker/melee/combo_tracker
 	/// only reapplied on un-equip/re-equip right now!
 	var/combo_continuation_timeout = 3 SECONDS
+	/// our combo is active; we won't go onto clickdelay until it falls off
+	var/combo_continuation_active = FALSE
 
 /obj/item/kinetic_gauntlets/update_icon()
 	cut_overlays()
@@ -65,11 +67,22 @@
 		start_recharge()
 		if(!combo_tracker)
 			combo_tracker = new(combo_continuation_timeout)
+			combo_tracker.on_continuation_begin = CALLBACK(src, PROC_REF(on_continuation_begin))
+			combo_tracker.on_continuation_timeout = CALLBACK(src, PROC_REF(on_continuation_timeout))
 
 /obj/item/kinetic_gauntlets/on_unequipped(mob/wearer, slot_id_or_index, inv_op_flags, datum/event_args/actor/actor)
 	. = ..()
 	discharge()
 	QDEL_NULL(combo_tracker)
+
+/obj/item/kinetic_gauntlets/proc/on_continuation_begin()
+	SHOULD_NOT_SLEEP(TRUE)
+	combo_continuation_active = TRUE
+
+/obj/item/kinetic_gauntlets/proc/on_continuation_timeout()
+	SHOULD_NOT_SLEEP(TRUE)
+	discharge()
+	combo_continuation_active = FALSE
 
 /obj/item/kinetic_gauntlets/proc/recharge()
 	charged = TRUE
