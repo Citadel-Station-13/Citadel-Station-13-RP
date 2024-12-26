@@ -207,6 +207,9 @@
 	name = "test"
 	desc = "test"
 
+	icon = 'icons\mob\species\holosphere\holosphere.dmi'
+	icon_state = "holosphere_body"
+
 	maxHealth = 100
 	health = 100
 
@@ -232,6 +235,9 @@
 	legacy_melee_damage_lower = 0
 	legacy_melee_damage_upper = 0
 
+	var/eye_icon_state = "holosphere_eye"
+	var/eye_color = rgb(255,255,255)
+
 	// space movement related
 	var/last_space_movement = 0
 
@@ -239,6 +245,12 @@
 	var/datum/component/custom_transform/transform_component
 	// the human we belong to
 	var/mob/living/carbon/human/hologram
+
+/mob/living/simple_mob/holosphere_shell/regenerate_icons()
+	cut_overlays()
+	var/icon/eye_icon = image('icons/mob/corgi_head.dmi',eye_icon_state)
+	eye_icon.color = eye_color
+	add_overlay(eye_icon)
 
 /mob/living/simple_mob/holosphere_shell/verb/enable_hologram()
 	transform_component.try_untransform()
