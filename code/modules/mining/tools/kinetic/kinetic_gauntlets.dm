@@ -26,6 +26,13 @@
 		add_overlay("[base_icon_state]-empty")
 	update_worn_icon()
 
+/obj/item/kinetic_gauntlets/equip_worn_over_check(mob/M, slot, mob/user, obj/item/I, flags)
+	if(slot != /datum/inventory_slot/inventory/gloves::id)
+		return ..()
+	if(istype(I, /obj/item/clothing/gloves/gauntlets))
+		return ..()
+	return TRUE
+
 /obj/item/kinetic_gauntlets/examine_query_usage_hints(datum/event_args/examine/examining)
 	. = ..()
 	. += "Punching a rock wall on <b>harm intent</b>, while charged, will try to mine it with the gauntlets."
