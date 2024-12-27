@@ -53,6 +53,9 @@
 		/mob/living/carbon/human/proc/hide_horns,
 		/mob/living/carbon/human/proc/hide_wings,
 		/mob/living/carbon/human/proc/hide_tail,
+		/datum/species/holosphere/verb/switch_loadout,
+		/datum/species/holosphere/verb/disable_hologram
+
 	)
 
 	minimum_hair_alpha = MINIMUM_HOLOGRAM_HAIR_ALPHA
@@ -179,7 +182,9 @@
 				chameleon_uniform.snowflake_worn_state = CLOTHING_BLANK_ICON_STATE
 			chameleon_item.update_worn_icon()
 
-/datum/species/holosphere/verb/switch_loadout(mob/living/carbon/human/H)
+/datum/species/holosphere/verb/switch_loadout()
+	var/mob/living/carbon/human/H = holosphere_shell.hologram
+
 	var/list/loadout_options = list()
 	for(var/i in 1 to LOADOUT_MAX_SLOTS)
 		loadout_options["Loadout [i]"] = i
@@ -199,7 +204,7 @@
 		var/regenmsg = "<span class='userdanger'>Emitters have returned online. Systems functional.</span>"
 		to_chat(holosphere_shell, regenmsg)
 
-/datum/species/holosphere/verb/disable_hologram(mob/living/carbon/human/H)
+/datum/species/holosphere/verb/disable_hologram()
 	transform_component.try_transform()
 
 /// holosphere 'sphere'
@@ -248,7 +253,7 @@
 
 /mob/living/simple_mob/holosphere_shell/regenerate_icons()
 	cut_overlays()
-	var/image/eye_icon = image('icons/mob/corgi_head.dmi',eye_icon_state)
+	var/image/eye_icon = image('icons/mob/species/holosphere/holosphere.dmi',eye_icon_state)
 	eye_icon.color = eye_color
 	add_overlay(eye_icon)
 
