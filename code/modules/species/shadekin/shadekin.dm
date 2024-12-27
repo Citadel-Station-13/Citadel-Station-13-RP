@@ -74,7 +74,6 @@
 
 	has_glowing_eyes = TRUE
 
-	death_message = "phases to somewhere far away!"
 	male_cough_sounds   = null
 	female_cough_sounds = null
 	male_sneeze_sound   = null
