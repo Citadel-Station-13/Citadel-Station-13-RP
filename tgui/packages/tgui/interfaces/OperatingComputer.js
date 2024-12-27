@@ -21,6 +21,25 @@ const damageTypes = [
   },
 ];
 
+const patientStates = {
+  0: {
+    color: 'good',
+    statText: 'Conscious',
+  },
+  1: {
+    color: 'average',
+    statText: 'Unconscious',
+  },
+  2: {
+    color: 'bad',
+    statText: 'Dead',
+  },
+  3: {
+    color: 'light-gray',
+    statText: 'Unknown',
+  },
+};
+
 export const OperatingComputer = (props, context) => {
   const { act } = useBackend(context);
   const [tab, setTab] = useSharedState(context, 'tab', 1);
@@ -62,8 +81,9 @@ const PatientStateView = (props, context) => {
   const {
     table,
     procedures = [],
-    patient = {},
   } = data;
+  const patient = data.occupant;
+  const patientStat = patientStates[patient.stat] || patientStates[3];
   if (!table) {
     return (
       <NoticeBox>
@@ -74,15 +94,15 @@ const PatientStateView = (props, context) => {
   return (
     <>
       <Section title="Patient State">
-        {patient && (
+        {data.hasOccupant && (
           <LabeledList>
             <LabeledList.Item
               label="State"
-              color={patient.statstate}>
-              {patient.stat}
+              color={patientStat.color}>
+              {patientStat.statText}
             </LabeledList.Item>
             <LabeledList.Item label="Blood Type">
-              {patient.blood_type}
+              {patient.bloodType}
             </LabeledList.Item>
             <LabeledList.Item label="Health">
               <ProgressBar

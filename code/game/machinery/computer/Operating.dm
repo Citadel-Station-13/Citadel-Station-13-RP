@@ -54,7 +54,7 @@
 	ui_interact(user)
 	..()
 
-/obj/machinery/computer/operating/ui_interact(mob/user, datum/tgui/ui = null)
+/obj/machinery/computer/operating/ui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
 		ui = new(user, src, "OperatingComputer", "Patient Monitor")
@@ -63,7 +63,10 @@
 /obj/machinery/computer/operating/ui_data(mob/user, datum/tgui/ui)
 	var/data[0]
 	var/mob/living/carbon/human/occupant
-	if(table)
+	if(!table)
+		data["table"] = 0
+	else
+		data["table"] = 1
 		occupant = table.victim
 	data["hasOccupant"] = occupant ? 1 : 0
 	var/occupantData[0]
