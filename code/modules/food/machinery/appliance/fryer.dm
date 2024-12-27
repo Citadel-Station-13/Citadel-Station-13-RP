@@ -211,10 +211,10 @@
 	//That would really require coding some sort of filter or better replacement mechanism first
 	//So for now, restrict to oil only
 			var/amount = 0
-			for (var/datum/reagent/R in I.reagents.reagent_list)
+			for (var/datum/reagent/R in I.reagents.get_reagent_datums())
 				if (istype(R, /datum/reagent/nutriment/triglyceride/oil))
 					var/delta = oil.available_volume()
-					delta = min(delta, R.volume)
+					delta = min(delta, I.reagents.get_reagent_amount(R))
 					oil.add_reagent(R.id, delta)
 					I.reagents.remove_reagent(R.id, delta)
 					amount += delta
