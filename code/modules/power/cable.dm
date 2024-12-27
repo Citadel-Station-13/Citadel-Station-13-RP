@@ -53,7 +53,7 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 	layer = EXPOSED_WIRE_LAYER
 	color = COLOR_RED
 
-	hides_underfloor = OBJ_UNDERFLOOR_ALWAYS
+	hides_underfloor = OBJ_UNDERFLOOR_ACTIVE
 	anchored =1
 	rad_flags = RAD_BLOCK_CONTENTS | RAD_NO_CONTAMINATE
 

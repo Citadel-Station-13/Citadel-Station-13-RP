@@ -9573,14 +9573,14 @@
 /area/centcom/specops)
 "Vb" = (
 /obj/structure/table/steel_reinforced,
-/obj/item/storage/box/survival/comp,
-/obj/item/storage/box/survival/comp,
-/obj/item/storage/box/survival/comp,
-/obj/item/storage/box/survival/comp,
-/obj/item/storage/box/survival/comp,
-/obj/item/storage/box/survival/comp,
-/obj/item/storage/box/survival/comp,
-/obj/item/storage/box/survival/comp,
+/obj/item/storage/box/legacy_survival/comp,
+/obj/item/storage/box/legacy_survival/comp,
+/obj/item/storage/box/legacy_survival/comp,
+/obj/item/storage/box/legacy_survival/comp,
+/obj/item/storage/box/legacy_survival/comp,
+/obj/item/storage/box/legacy_survival/comp,
+/obj/item/storage/box/legacy_survival/comp,
+/obj/item/storage/box/legacy_survival/comp,
 /turf/unsimulated/floor/dark,
 /area/centcom/specops)
 "Vd" = (
