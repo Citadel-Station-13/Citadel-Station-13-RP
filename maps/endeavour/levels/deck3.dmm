@@ -1079,6 +1079,7 @@
 /obj/machinery/light/small{
 	dir = 4
 	},
+/obj/fiftyspawner/wood,
 /turf/simulated/floor/plating,
 /area/endeavour/hallway/d3aftmaint)
 "aKg" = (
@@ -10360,6 +10361,10 @@
 /obj/machinery/power/apc/south_mount,
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_8)
+"gym" = (
+/obj/fiftyspawner/wood,
+/turf/simulated/floor/plating,
+/area/endeavour/hallway/d3aftmaint)
 "gyJ" = (
 /turf/simulated/floor/tiled/dark,
 /area/endeavour/hallway/d3afthall)
@@ -26092,6 +26097,10 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled/monodark,
 /area/quartermaster/delivery)
+"rvL" = (
+/obj/fiftyspawner/hardwood,
+/turf/simulated/floor/plating,
+/area/endeavour/hallway/d3aftmaint)
 "rvT" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -51081,8 +51090,8 @@ hzu
 kSn
 kSn
 kSn
-kSn
-kSn
+rvL
+rvL
 xhN
 txu
 ndp
@@ -51275,7 +51284,7 @@ kSn
 kSn
 kSn
 kSn
-kSn
+gym
 ays
 xhN
 rcz
