@@ -836,10 +836,6 @@
 			to_chat(usr, "<span class='warning'>You do not have the appropriate permissions to add bans!</span>")
 			return
 
-		if(check_rights(R_MOD,0) && !check_rights(R_ADMIN, 0) && !config_legacy.mods_can_job_tempban) // If mod and tempban disabled
-			to_chat(usr, "<span class='warning'>Mod jobbanning is disabled!</span>")
-			return
-
 		var/target_ckey = href_list["oocban"]
 		// clients can gc at any time, do not use this outside of getting existing mob
 		var/client/_existing_client = GLOB.directory[target_ckey]
