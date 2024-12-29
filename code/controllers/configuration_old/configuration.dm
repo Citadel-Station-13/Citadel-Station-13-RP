@@ -554,10 +554,6 @@
 					config_legacy.revival_cloning = value
 				if("revival_brain_life")
 					config_legacy.revival_brain_life = value
-				if("default_brain_health")
-					config_legacy.default_brain_health = text2num(value)
-					if(!config_legacy.default_brain_health || config_legacy.default_brain_health < 1)
-						config_legacy.default_brain_health = initial(config_legacy.default_brain_health)
 				if("allow_headgibs")
 					config_legacy.allow_headgibs = TRUE
 
