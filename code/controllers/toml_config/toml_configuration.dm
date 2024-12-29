@@ -27,6 +27,8 @@ GLOBAL_REAL(Configuration, /datum/controller/toml_configuration)
 	switch(var_name)
 		if(NAMEOF(src, keyed_entries))
 			return FALSE
+		if(NAMEOF(src, typed_entries))
+			return FALSE
 	return ..()
 
 /datum/controller/toml_configuration/New()
