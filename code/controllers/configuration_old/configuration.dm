@@ -7,25 +7,6 @@
 	var/server_name = null				// server name (for world name / status)
 	var/server_suffix = 0				// generate numeric suffix based on server port
 
-	var/nudge_script_path = "nudge.py"  // where the nudge.py script is located
-
-	var/log_ooc = 0						// log OOC channel
-	var/log_access = 0					// log login/logout
-	var/log_say = 0						// log client say
-	var/log_admin = 0					// log admin actions
-	var/log_debug = 1					// log debug output
-	var/log_game = 0					// log game events
-	var/log_vote = 0					// log voting
-	var/log_whisper = 0					// log client whisper
-	var/log_emote = 0					// log emotes
-	var/log_attack = 0					// log attack messages
-	var/log_adminchat = 0				// log admin chat messages
-	var/log_adminwarn = 0				// log warnings admins get about bomb construction and such
-	var/log_pda = 0						// log pda messages
-	var/log_hrefs = 0					// logs all links clicked in-game. Could be used for debugging and tracking down exploits
-	var/log_runtime = 0					// logs world.log to a file
-	var/log_world_output = 0			// log world.log << messages
-	var/log_topic = TRUE
 	var/allow_vote_restart = 0 			// allow votes to restart
 	var/ert_admin_call_only = 0
 	var/allow_vote_mode = 0				// allow votes to change mode
@@ -99,8 +80,6 @@
 	var/uneducated_mice = 0 //Set to 1 to prevent newly-spawned mice from understanding human speech
 
 	var/usealienwhitelist = 0
-	var/limitalienplayers = 0
-	var/alien_to_human_ratio = 0.5
 	var/allow_extra_antags = 0
 	var/guests_allowed = 1
 	var/debugparanoid = 0
@@ -115,15 +94,12 @@
 	var/rulesurl
 	var/mapurl
 
-	var/forbid_singulo_possession = 0
-
 	//game_options.txt configs
 
 	var/health_threshold_softcrit = 0
 	var/health_threshold_crit = 0
 	var/health_threshold_dead = -100
 
-	var/default_brain_health = 400
 	var/allow_headgibs = FALSE
 
 	var/revival_pod_plants = 1
@@ -165,17 +141,6 @@
 
 	var/enter_allowed = 1
 
-	var/use_irc_bot = 0
-	var/use_node_bot = 0
-	var/irc_bot_port = 0
-	var/irc_bot_host = ""
-	var/irc_bot_export = 0 // whether the IRC bot in use is a Bot32 (or similar) instance; Bot32 uses world.Export() instead of nudge.py/libnudge
-	var/main_irc = ""
-	var/admin_irc = ""
-	var/python_path = "" //Path to the python executable.  Defaults to "python" on windows and "/usr/bin/env python2" on unix
-	var/use_lib_nudge = 0 //Use the C library nudge instead of the python nudge.
-	var/use_overmap = 0
-
 	// Event settings
 	var/expected_round_length = 3 * 60 * 60 * 10 // 3 hours
 	// If the first delay has a custom start time
@@ -196,13 +161,7 @@
 	var/dooc_allowed = 1
 	var/dsay_allowed = 1
 
-	var/static/starlight = 0	// Whether space turfs have ambient light or not
-
-	var/list/ert_species = list(SPECIES_HUMAN)
-
 	var/law_zero = "ERROR ER0RR $R0RRO$!R41.%%!!(%$^^__+ @#F0E4'ALL LAWS OVERRIDDEN#*?&110010"
-
-	var/aggressive_changelog = 0
 
 	var/list/language_prefixes = list(",","#")//Default language prefixes
 
@@ -287,59 +246,8 @@
 				if ("multi_z_explosion_scalar")
 					multi_z_explosion_scalar = text2num(value)
 
-				if ("log_ooc")
-					config_legacy.log_ooc = 1
-
-				if ("log_access")
-					config_legacy.log_access = 1
-
-				if ("log_say")
-					config_legacy.log_say = 1
-
 				if ("debug_paranoid")
 					config_legacy.debugparanoid = 1
-
-				if ("log_admin")
-					config_legacy.log_admin = 1
-
-				if ("log_debug")
-					config_legacy.log_debug = text2num(value)
-
-				if ("log_game")
-					config_legacy.log_game = 1
-
-				if ("log_vote")
-					config_legacy.log_vote = 1
-
-				if ("log_whisper")
-					config_legacy.log_whisper = 1
-
-				if ("log_attack")
-					config_legacy.log_attack = 1
-
-				if ("log_emote")
-					config_legacy.log_emote = 1
-
-				if ("log_adminchat")
-					config_legacy.log_adminchat = 1
-
-				if ("log_adminwarn")
-					config_legacy.log_adminwarn = 1
-
-				if ("log_pda")
-					config_legacy.log_pda = 1
-
-				if ("log_world_output")
-					config_legacy.log_world_output = 1
-
-				if ("log_hrefs")
-					config_legacy.log_hrefs = 1
-
-				if ("log_runtime")
-					config_legacy.log_runtime = 1
-
-				if ("log_topic")
-					config_legacy.log_topic = text2num(value)
 
 				if ("generate_map")
 					config_legacy.generate_map = 1
@@ -413,9 +321,6 @@
 
 				if ("serversuffix")
 					config_legacy.server_suffix = 1
-
-				if ("nudge_script_path")
-					config_legacy.nudge_script_path = value
 
 				if ("hostedby")
 					config_legacy.hostedby = value
@@ -563,18 +468,6 @@
 				if("allow_holidays")
 					Holiday = 1
 
-				if("use_irc_bot")
-					use_irc_bot = 1
-
-				if("use_node_bot")
-					use_node_bot = 1
-
-				if("irc_bot_port")
-					config_legacy.irc_bot_port = value
-
-				if("irc_bot_export")
-					irc_bot_export = 1
-
 				if("ticklag")
 					var/ticklag = text2num(value)
 					if(ticklag > 0)
@@ -603,10 +496,6 @@
 				if("usealienwhitelist")
 					usealienwhitelist = 1
 
-				if("alien_player_ratio")
-					limitalienplayers = 1
-					alien_to_human_ratio = text2num(value)
-
 				if("assistant_maint")
 					config_legacy.assistant_maint = 1
 
@@ -624,22 +513,6 @@
 
 				if("uneducated_mice")
 					config_legacy.uneducated_mice = 1
-
-				if("irc_bot_host")
-					config_legacy.irc_bot_host = value
-
-				if("main_irc")
-					config_legacy.main_irc = value
-
-				if("admin_irc")
-					config_legacy.admin_irc = value
-
-				if("python_path")
-					if(value)
-						config_legacy.python_path = value
-
-				if("use_lib_nudge")
-					config_legacy.use_lib_nudge = 1
 
 				if("allow_cult_ghostwriter")
 					config_legacy.cult_ghostwriter = 1
@@ -659,21 +532,6 @@
 				if("max_maint_drones")
 					config_legacy.max_maint_drones = text2num(value)
 
-				if("use_overmap")
-					config_legacy.use_overmap = 1
-/*
-				if("station_levels")
-					(LEGACY_MAP_DATUM).station_levels = text2numlist(value, ";")
-
-				if("admin_levels")
-					(LEGACY_MAP_DATUM).admin_levels = text2numlist(value, ";")
-
-				if("contact_levels")
-					(LEGACY_MAP_DATUM).contact_levels = text2numlist(value, ";")
-
-				if("player_levels")
-					(LEGACY_MAP_DATUM).player_levels = text2numlist(value, ";")
-*/
 				if("expected_round_length")
 					config_legacy.expected_round_length = MinutesToTicks(text2num(value))
 
@@ -707,16 +565,8 @@
 					config_legacy.event_delay_upper[EVENT_LEVEL_MODERATE] = MinutesToTicks(values[2])
 					config_legacy.event_delay_upper[EVENT_LEVEL_MAJOR] = MinutesToTicks(values[3])
 
-				if("ert_species")
-					config_legacy.ert_species = splittext(value, ";")
-					if(!config_legacy.ert_species.len)
-						config_legacy.ert_species += SPECIES_HUMAN
-
 				if("law_zero")
 					law_zero = value
-
-				if("aggressive_changelog")
-					config_legacy.aggressive_changelog = 1
 
 				if("default_language_prefixes")
 					var/list/values = splittext(value, " ")
@@ -821,11 +671,3 @@
 		if(M && M.can_start() && !isnull(config_legacy.probabilities[M.config_tag]) && config_legacy.probabilities[M.config_tag] > 0)
 			runnable_modes |= M
 	return runnable_modes
-
-/datum/configuration_legacy/proc/post_load()
-	//apply a default value to config_legacy.python_path, if needed
-	if (!config_legacy.python_path)
-		if(world.system_type == UNIX)
-			config_legacy.python_path = "/usr/bin/env python2"
-		else //probably windows, if not this should work anyway
-			config_legacy.python_path = "python"

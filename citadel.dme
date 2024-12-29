@@ -689,6 +689,8 @@
 #include "code\controllers\toml_config\toml_configuration.dm"
 #include "code\controllers\toml_config\entries\backend.dm"
 #include "code\controllers\toml_config\entries\backend.repository.dm"
+#include "code\controllers\toml_config\entries\bcakend.logging.dm"
+#include "code\controllers\toml_config\entries\bcakend.logging.toggles.dm"
 #include "code\datums\ability.dm"
 #include "code\datums\ability_handler.dm"
 #include "code\datums\access.dm"
