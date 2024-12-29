@@ -19,19 +19,12 @@
 	var/vote_autogamemode_timeleft = 100 //Length of time before round start when autogamemode vote is called (in seconds, default 100).
 	var/vote_no_default = 0				// vote does not default to nochange/norestart (tbi)
 	var/vote_no_dead = 0				// dead people can't vote (tbi)
-//	var/enable_authentication = 0		// goon authentication
-	var/del_new_on_log = 1				// del's new players if they log before they spawn in
 	var/feature_object_spell_system = 0 //spawns a spellbook which gives object-type spells instead of verb-type spells for the wizard
 	var/traitor_scaling = 0 			//if amount of traitors scales based on amount of players
 	var/objectives_disabled = 0 			//if objectives are disabled or not
 	var/protect_roles_from_antagonist = 0// If security and such can be traitor/cult/other
 	var/continous_rounds = 0			// Gamemodes which end instantly will instead keep on going until the round ends by escape shuttle or nuke.
-	var/popup_admin_pm = 0				//adminPMs to non-admins show in a pop-up 'reply' window when set to 1.
 	var/fps = 20
-	var/tick_limit_mc_init = TICK_LIMIT_MC_INIT_DEFAULT	//SSinitialization throttling
-	var/Tickcomp = 0
-	var/socket_talk	= 0					// use socket_talk to communicate with other processes
-	var/list/resource_urls = null
 	var/antag_hud_allowed = 0			// Ghosts can turn on Antagovision to see a HUD of who is the bad guys this round.
 	var/antag_hud_restricted = 0                    // Ghosts that turn on Antagovision cannot rejoin the round.
 	var/list/mode_names = list()
@@ -55,13 +48,6 @@
 	var/guest_jobban = 1
 	var/usewhitelist = 0
 	var/kick_inactive = 0				//force disconnect for inactive players after this many minutes, if non-0
-	var/show_mods = 0
-	var/show_devs = 0
-	var/show_event_managers = 0
-	var/mods_can_tempban = 0
-	var/mods_can_job_tempban = 0
-	var/mod_tempban_max = 1440
-	var/mod_job_tempban_max = 1440
 	var/load_jobs_from_txt = 0
 	var/ToRban = 0
 	var/automute_on = 0					//enables automuting/spam prevention
@@ -109,7 +95,6 @@
 	var/use_loyalty_implants = 0
 
 	var/welder_vision = 1
-	var/generate_map = 1
 	var/no_click_cooldown = 0
 
 	//Used for modifying movement speed for mobs.
@@ -164,12 +149,6 @@
 	var/law_zero = "ERROR ER0RR $R0RRO$!R41.%%!!(%$^^__+ @#F0E4'ALL LAWS OVERRIDDEN#*?&110010"
 
 	var/list/language_prefixes = list(",","#")//Default language prefixes
-
-	var/show_human_death_message = 1
-
-	var/radiation_decay_rate = 1 //How much radiation is reduced by each tick
-	var/radiation_resistance_multiplier = 8.5
-	var/radiation_lower_limit = 0.35 //If the radiation level for a turf would be below this, ignore it.
 
 	var/comms_key = "default_password"
 
@@ -228,9 +207,6 @@
 
 		if(type == "config")
 			switch (name)
-				if ("resource_urls")
-					config_legacy.resource_urls = splittext(value, " ")
-
 				if ("admin_legacy_system")
 					config_legacy.admin_legacy_system = 1
 
@@ -248,9 +224,6 @@
 
 				if ("debug_paranoid")
 					config_legacy.debugparanoid = 1
-
-				if ("generate_map")
-					config_legacy.generate_map = 1
 
 				if ("no_click_cooldown")
 					config_legacy.no_click_cooldown = 1
@@ -435,35 +408,8 @@
 				if("kick_inactive")
 					config_legacy.kick_inactive = text2num(value)
 
-				if("show_mods")
-					config_legacy.show_mods = 1
-
-				if("show_devs")
-					config_legacy.show_devs = 1
-
-				if("show_event_managers")
-					config_legacy.show_event_managers = 1
-
-				if("mods_can_tempban")
-					config_legacy.mods_can_tempban = 1
-
-				if("mods_can_job_tempban")
-					config_legacy.mods_can_job_tempban = 1
-
-				if("mod_tempban_max")
-					config_legacy.mod_tempban_max = text2num(value)
-
-				if("mod_job_tempban_max")
-					config_legacy.mod_job_tempban_max = text2num(value)
-
 				if("load_jobs_from_txt")
 					load_jobs_from_txt = 1
-
-				if("forbid_singulo_possession")
-					forbid_singulo_possession = 1
-
-				if("popup_admin_pm")
-					config_legacy.popup_admin_pm = 1
 
 				if("allow_holidays")
 					Holiday = 1
@@ -473,16 +419,10 @@
 					if(ticklag > 0)
 						fps = 10 / ticklag
 
-				if("tick_limit_mc_init")
-					tick_limit_mc_init = text2num(value)
-
 				if("allow_antag_hud")
 					config_legacy.antag_hud_allowed = 1
 				if("antag_hud_restricted")
 					config_legacy.antag_hud_restricted = 1
-
-				if("socket_talk")
-					socket_talk = text2num(value)
 
 				if("humans_need_surnames")
 					humans_need_surnames = 1
@@ -573,10 +513,7 @@
 					if(values.len > 0)
 						language_prefixes = values
 
-				if("radiation_lower_limit")
-					radiation_lower_limit = text2num(value)
-
-				if ("paranoia_logging")
+				if("paranoia_logging")
 					config_legacy.paranoia_logging = 1
 
 				if("minute_click_limit")
@@ -613,8 +550,6 @@
 					config_legacy.health_threshold_softcrit = value
 				if("health_threshold_dead")
 					config_legacy.health_threshold_dead = value
-				if("show_human_death_message")
-					config_legacy.show_human_death_message = 1
 				if("revival_pod_plants")
 					config_legacy.revival_pod_plants = value
 				if("revival_cloning")
