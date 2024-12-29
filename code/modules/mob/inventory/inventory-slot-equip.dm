@@ -5,10 +5,10 @@
  * Equips an item to a slot or deletes it.
  *
  * @params
- * * Entity - Item being equipped.
+ * * entity - Item being equipped.
  * * type_or_id - A typepath, or string ID.
  * * inv_op_flags - INV_OP_* bits.
- * * actors - Actor data of who did it.
+ * * actor - Actor data of who did it.
  *
  * @return TRUE / FALSE
  */
@@ -19,10 +19,10 @@
  * Equips an item to a slot or drops it beneath our owner.
  *
  * @params
- * * Entity - Item being equipped.
+ * * entity - Item being equipped.
  * * type_or_id - A typepath, or string ID.
  * * inv_op_flags - INV_OP_* bits.
- * * actors - Actor data of who did it.
+ * * actor - Actor data of who did it.
  *
  * @return TRUE / FALSE
  */
@@ -36,10 +36,10 @@
  * Equips an item to a slot if possible
  *
  * @params
- * * Entity - Item being equipped.
+ * * entity - Item being equipped.
  * * type_or_id - A typepath, or string ID.
  * * inv_op_flags - INV_OP_* bits.
- * * actors - Actor data of who did it.
+ * * actor - Actor data of who did it.
  *
  * @return TRUE / FALSE
  */
@@ -50,10 +50,10 @@
  * Equips an item to a slot forcefully, trampling anything in the way.
  *
  * @params
- * * Entity - Item being equipped.
+ * * entity - Item being equipped.
  * * type_or_id - A typepath, or string ID.
  * * inv_op_flags - INV_OP_* bits.
- * * actors - Actor data of who did it.
+ * * actor - Actor data of who did it.
  *
  * @return TRUE / FALSE
  */
@@ -64,12 +64,38 @@
  * Equips an item to a slot. This is the advanced version of the proc that returns an INV_RETURN_* result.
  *
  * @params
- * * Entity - Item being equipped.
+ * * entity - Item being equipped.
  * * type_or_id - A typepath, or string ID.
  * * inv_op_flags - INV_OP_* bits.
- * * actors - Actor data of who did it.
+ * * actor - Actor data of who did it.
  *
  * @return INV_RETURN_*
  */
 /datum/inventory/proc/equip_to_slot(obj/item/entity, datum/inventory_slot/type_or_id, inv_op_flags, datum/event_args/actor/actor)
 	return owner._equip_item(entity, inv_op_flags, type_or_id, actor?.performer) ? INV_RETURN_SUCCESS : INV_RETURN_FAILED
+
+/**
+ * Equips an item to an ordered list of slots. This is an advanced version of the proc that returns an INV_RETURN_* result
+ *
+ * @params
+ * * entity - item being equipped
+ * * slots - A list of: typepaths, or string ids
+ * * inv_op_flags - INV_OP_* bits
+ * * actor - actor data of who did it.
+ *
+ * @return INV_RETURN_*
+ */
+/datum/inventory/proc/equip_to_slots(obj/item/entity, list/datum/inventory_slot/slots, inv_op_flags, datum/event_args/actor/actor)
+	for(var/slot in slots)
+		switch(owner._equip_item(entity, inv_op_flags, slot, actor?.performer))
+			if(INV_RETURN_DELETED)
+				return INV_RETURN_DELETED
+			if(INV_RETURN_FAILED)
+				continue
+			if(INV_RETURN_RELOCATED)
+				return INV_RETURN_RELOCATED
+			if(INV_RETURN_SUCCESS)
+				return INV_RETURN_SUCCESS
+			else
+				CRASH("unimplemented inv return: [.]")
+	return INV_RETURN_FAILED
