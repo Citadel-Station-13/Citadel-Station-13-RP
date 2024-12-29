@@ -9083,12 +9083,6 @@
 	},
 /turf/simulated/floor/reinforced,
 /area/endeavour/hallway/d4aftmaint)
-"klQ" = (
-/obj/machinery/shield_diffuser{
-	icon_state = "fdiffuser_off"
-	},
-/turf/space/basic,
-/area/space)
 "kmv" = (
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/corner/lightorange/border,
@@ -54738,7 +54732,7 @@ xRj
 xRj
 xRj
 xRj
-klQ
+xRj
 xRj
 xRj
 xRj
