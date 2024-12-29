@@ -92,8 +92,6 @@
 	var/revival_cloning = 1
 	var/revival_brain_life = -1
 
-	var/use_loyalty_implants = 0
-
 	var/welder_vision = 1
 	var/no_click_cooldown = 0
 
@@ -583,9 +581,6 @@
 
 				if("footstep_volume")
 					config_legacy.footstep_volume = text2num(value)
-
-				if("use_loyalty_implants")
-					config_legacy.use_loyalty_implants = 1
 
 				else
 					log_misc("Unknown setting in configuration: '[name]'")
