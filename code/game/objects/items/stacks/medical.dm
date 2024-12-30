@@ -52,6 +52,9 @@
 			to_chat(user, "<span class='warning'>This isn't useful at all on a robotic limb.</span>")
 			return FALSE
 
+		if(affecting.robotic == ORGAN_NO_HEALING)
+			to_chat(user, "<span class='warning'>For whatever reason, it seems completely impossible to use this on [M]!</span>")
+
 		if(affecting.robotic >= ORGAN_LIFELIKE)
 			to_chat(user, "<span class='warning'>You apply the [src], but it seems to have no effect...</span>")
 			use(1)
