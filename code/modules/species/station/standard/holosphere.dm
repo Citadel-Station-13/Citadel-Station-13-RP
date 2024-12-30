@@ -53,8 +53,8 @@
 		/mob/living/carbon/human/proc/hide_horns,
 		/mob/living/carbon/human/proc/hide_wings,
 		/mob/living/carbon/human/proc/hide_tail,
-		/datum/species/holosphere/verb/switch_loadout,
-		/datum/species/holosphere/verb/disable_hologram
+		/mob/living/carbon/human/proc/switch_loadout_holosphere,
+		/mob/living/carbon/human/proc/disable_hologram
 
 	)
 
@@ -94,6 +94,8 @@
 	transform_component = H.AddComponent(/datum/component/custom_transform, holosphere_shell, null, null, FALSE)
 	holosphere_shell.transform_component = transform_component
 	holosphere_shell.hologram = H
+	holosphere_shell.regenerate_icons()
+	holosphere_shell.name = H.name
 
 /datum/species/holosphere/on_remove(mob/living/carbon/human/H)
 	. = ..()
@@ -182,17 +184,6 @@
 				chameleon_uniform.snowflake_worn_state = CLOTHING_BLANK_ICON_STATE
 			chameleon_item.update_worn_icon()
 
-/datum/species/holosphere/verb/switch_loadout()
-	var/mob/living/carbon/human/H = holosphere_shell.hologram
-
-	var/list/loadout_options = list()
-	for(var/i in 1 to LOADOUT_MAX_SLOTS)
-		loadout_options["Loadout [i]"] = i
-	var/loadout_option = tgui_input_list(usr, "Choose Loadout", "Loadout", loadout_options)
-	var/loadout_slot = loadout_options[loadout_option]
-	var/list/datum/loadout_entry/loadout_entries = H.client.prefs.generate_loadout_entry_list(cached_loadout_flags, cached_loadout_role, loadout_slot)
-	equip_loadout(H, loadout_entries)
-
 /datum/species/holosphere/handle_death(var/mob/living/carbon/human/H, gibbed)
 	var/deathmsg = "<span class='userdanger'>Systems critically damaged. Emitters temporarily offline.</span>"
 	to_chat(H, deathmsg)
@@ -204,13 +195,38 @@
 		var/regenmsg = "<span class='userdanger'>Emitters have returned online. Systems functional.</span>"
 		to_chat(holosphere_shell, regenmsg)
 
-/datum/species/holosphere/verb/disable_hologram()
-	transform_component.try_transform()
+/mob/livign/carbon/human/proc/switch_loadout_holosphere()
+	set name = "Switch Loadout (Holosphere)"
+	set desc = "Switch your chameleon clothing to a specific loadout slot."
+	set category = VERB_CATEGORY_IC
+
+	var/datum/species/holosphere/holosphere_species = species
+	if(!istype(holosphere_species))
+		return
+
+	var/list/loadout_options = list()
+	for(var/i in 1 to LOADOUT_MAX_SLOTS)
+		loadout_options["Loadout [i]"] = i
+	var/loadout_option = tgui_input_list(usr, "Choose Loadout", "Loadout", loadout_options)
+	var/loadout_slot = loadout_options[loadout_option]
+	var/list/datum/loadout_entry/loadout_entries = client.prefs.generate_loadout_entry_list(cached_loadout_flags, cached_loadout_role, loadout_slot)
+	holosphere_species.equip_loadout(src, loadout_entries)
+
+/mob/living/carbon/human/proc/disable_hologram()
+	set name = "Disable Hologram (Holosphere)"
+	set desc = "Disable your hologram."
+	set category = VERB_CATEGORY_IC
+
+	var/datum/species/holosphere/holosphere_species = species
+	if(!istype(holosphere_species))
+		return
+
+	holosphere_species.transform_component.try_transform()
 
 /// holosphere 'sphere'
 /mob/living/simple_mob/holosphere_shell
-	name = "test"
-	desc = "test"
+	name = "holosphere shell"
+	desc = "A holosphere shell."
 
 	icon = 'icons/mob/species/holosphere/holosphere.dmi'
 	icon_state = "holosphere_body"
@@ -258,6 +274,10 @@
 	add_overlay(eye_icon)
 
 /mob/living/simple_mob/holosphere_shell/verb/enable_hologram()
+	set name = "Enable Hologram (Holosphere)"
+	set desc = "Enable your hologram."
+	set category = VERB_CATEGORY_IC
+
 	transform_component.try_untransform()
 
 // same way pAI space movement works in pai/mobility.dm
@@ -269,3 +289,6 @@
 			// place an effect for the movement
 			new /obj/effect/temp_visual/pai_ion_burst(get_turf(src))
 			return TRUE
+
+/mob/living/simple_mob/holosphere_shell/examine(mob/user, dist)
+	return hologram?.examine(user, dist) || ..()
