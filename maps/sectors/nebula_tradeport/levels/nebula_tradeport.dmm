@@ -4401,7 +4401,6 @@
 	},
 /obj/machinery/door/blast/regular{
 	density = 0;
-	icon_state = "pdoor1";
 	id = "Runabout'";
 	name = "Teshari Runabout Airlock";
 	opacity = 0
@@ -17183,9 +17182,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
 "aTM" = (
-/obj/structure/cable/orange{
-	dir = 2
-	},
+/obj/structure/cable/orange,
 /obj/machinery/power/terminal,
 /turf/simulated/floor/tiled/monotechmaint,
 /area/shuttle/tug)
@@ -19695,7 +19692,6 @@
 "brN" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
 /obj/structure/window/reinforced/polarized{
-	dir = 2;
 	id = "scoophead_office"
 	},
 /turf/simulated/floor/plating,
