@@ -14,7 +14,12 @@
  *
  * @return CLICKCHAIN_* flags. These are added / interpreted by the caller.
  */
+#warn audit calls
 /mob/proc/melee_attack_chain(datum/event_args/actor/clickchain/clickchain, clickchain_flags)
 
 
 #warn deal with this trainwreck
+
+#warn audit calls
+/mob/proc/melee_attack(datum/event_args/actor/clickchain/clickchain, clickchain_flags, datum/melee_attack/unarmed/style)
+	SHOULD_CALL_PARENT(TRUE)

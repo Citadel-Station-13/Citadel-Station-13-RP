@@ -5,3 +5,5 @@
  * A descriptor for a type of melee attack.
  */
 /datum/melee_attack
+
+/datum/melee_attack/proc/perform_attack_animation()
