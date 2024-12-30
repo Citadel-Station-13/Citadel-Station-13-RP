@@ -1,0 +1,99 @@
+/datum/species/holosphere/proc/handle_hologram_overlays(datum/source, list/overlay_args, category)
+	var/is_clothing = category == CARBON_APPEARANCE_UPDATE_CLOTHING
+	var/overlay_index = is_clothing ? 1 : 2
+	var/overlay_object = overlay_args[overlay_index]
+	var/alpha_to_use = is_clothing ? 255 : get_alpha_from_key(source, category)
+	if(islist(overlay_object))
+		var/list/new_list = list()
+		var/list/overlay_list = overlay_object
+		for(var/I in overlay_list)
+			if(isnull(I))
+				continue
+			var/mutable_appearance/new_overlay = make_hologram_appearance(I, alpha_to_use, TRUE)
+			new_list += new_overlay
+		overlay_args[overlay_index] = new_list
+	else
+		var/mutable_appearance/new_overlay = make_hologram_appearance(overlay_object, alpha_to_use, TRUE)
+		overlay_args[overlay_index] = list(new_overlay)
+
+/datum/species/holosphere/proc/give_chameleon_gear(mob/living/carbon/human/H)
+	if(!istype(H))
+		return
+	for(var/obj/item/I in H.get_equipped_items(TRUE, FALSE))
+		var/turf = get_turf(H)
+		if(turf)
+			I.forceMove(get_turf(H))
+		else
+			qdel(I)
+
+	// give character chameleon gear
+	for(var/slot in chameleon_gear)
+		var/chameleon_path = chameleon_gear[slot]
+		var/obj/item/chameleon_item = new chameleon_path()
+		H.equip_to_slot_if_possible(chameleon_item, slot, INV_OP_SILENT | INV_OP_FLUFFLESS)
+		equipped_chameleon_gear[slot] = chameleon_item
+
+/datum/species/holosphere/proc/remove_chameleon_gear()
+	for(var/slot in equipped_chameleon_gear)
+			var/chameleon_item = equipped_chameleon_gear[slot]
+			qdel(chameleon_item)
+
+/datum/species/holosphere/proc/handle_hologram_loadout(datum/source, flags, datum/role/role, list/datum/loadout_entry/loadout)
+	if(istype(source, /mob/living/carbon/human/dummy))
+		return
+
+	cached_loadout_flags = flags
+	cached_loadout_role = role
+
+	give_chameleon_gear(source)
+
+	equip_loadout(source, loadout)
+
+/datum/species/holosphere/proc/equip_loadout(mob/living/carbon/human/H, list/datum/loadout_entry/loadout)
+	var/slots_used = list()
+	for(var/datum/loadout_entry/entry as anything in loadout)
+		var/use_slot = entry.slot
+		if(isnull(use_slot))
+			continue
+		var/obj/item/equipped = equipped_chameleon_gear[use_slot]
+		if(equipped)
+			equipped.disguise(entry.path, H)
+			equipped.update_worn_icon()
+			slots_used += use_slot
+			loadout -= entry
+
+	// no loadout items in that slot, hide the items icon
+	for(var/slot in equipped_chameleon_gear)
+		if(!(slot in slots_used))
+			var/obj/item/chameleon_item = equipped_chameleon_gear[slot]
+			chameleon_item.icon = initial(chameleon_item.icon)
+			chameleon_item.icon_state = CLOTHING_BLANK_ICON_STATE
+			var/obj/item/clothing/under/chameleon_uniform = chameleon_item
+			if(istype(chameleon_uniform))
+				chameleon_uniform.snowflake_worn_state = CLOTHING_BLANK_ICON_STATE
+			chameleon_item.update_worn_icon()
+
+/mob/living/carbon/human/proc/switch_loadout_holosphere()
+	set name = "Switch Loadout (Holosphere)"
+	set desc = "Switch your chameleon clothing to a specific loadout slot."
+	set category = VERB_CATEGORY_IC
+
+	var/datum/species/holosphere/holosphere_species = species
+	if(!istype(holosphere_species))
+		return
+
+	var/list/loadout_options = list()
+	for(var/i in 1 to LOADOUT_MAX_SLOTS)
+		loadout_options["Loadout [i]"] = i
+	var/loadout_option = tgui_input_list(usr, "Choose Loadout", "Loadout", loadout_options)
+	var/loadout_slot = loadout_options[loadout_option]
+	var/list/datum/loadout_entry/loadout_entries = client.prefs.generate_loadout_entry_list(cached_loadout_flags, cached_loadout_role, loadout_slot)
+	holosphere_species.equip_loadout(src, loadout_entries)
+
+/datum/species/holosphere/proc/get_alpha_from_key(var/mob/living/carbon/human/H, var/key)
+	switch(key)
+		if(HUMAN_OVERLAY_BODY)
+			return H.body_alpha
+		if(HUMAN_OVERLAY_HAIR, HUMAN_OVERLAY_FACEHAIR)
+			return H.hair_alpha
+	return HOLOGRAM_OTHER_ALPHA
