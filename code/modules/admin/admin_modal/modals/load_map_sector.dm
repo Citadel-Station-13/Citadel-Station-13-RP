@@ -6,6 +6,17 @@
 ADMIN_VERB_DEF(load_map_sector, R_ADMIN, "Upload Map Sector", "Upload a custom map.", VERB_CATEGORY_ADMIN)
 	caller.holder.open_admin_modal(/datum/admin_modal/load_map_sector)
 
+#warn do it this way instead
+// ADMIN_VERB_DECLARE(load_map_sector)
+// 	name = "Load Map Sector"
+// 	desc = "Create or upload a custom map."
+// 	category = VERB_CATEGORY_ADMIN
+// 	required_rights = R_ADMIN
+
+// ADMIN_VEBR_BEHAVIOR(load_map_sector, name_arg)
+// 	world.log << "look at me i accessed an arg [name_arg] and calling client [calling_client] is included by the macro!"
+// 	calling_client.holder.open_admin_modal(/datum/admin_modal/load_map_sector)
+
 /**
  * Modal supporting arbitrary map loads.
  *

@@ -1,6 +1,8 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
+// todo: deal with below; new inventory-level api, don't just mirror from mob?
+
 //* Procs in this file are mirrored to the /mob level for ease of use.        *//
 //*                                                                           *//
 //* In the future, there should likely be a separation of concerns            *//
@@ -101,6 +103,9 @@
  */
 /mob/proc/put_in_hands_or_drop(obj/item/I, inv_op_flags, atom/drop_loc, specific_index)
 	// inventory null --> INV_RETURN_FAILED, as that's also #define'd to be null
+	if(!inventory)
+		I.forceMove(drop_loc || drop_location())
+		return INV_RETURN_FAILED
 	return inventory?.put_in_hands_or_drop(I, inv_op_flags, drop_loc, specific_index)
 
 /**
