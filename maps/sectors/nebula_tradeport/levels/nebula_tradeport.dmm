@@ -3989,6 +3989,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 10
 	},
+/obj/machinery/holopad/ship,
 /turf/simulated/floor/tiled/monotechmaint,
 /area/shuttle/runabout)
 "akv" = (
@@ -7706,7 +7707,7 @@
 /area/tradeport/pads)
 "auC" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan{
-	dir = 6
+	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/adventurer)
@@ -8658,6 +8659,9 @@
 	pixel_y = 30;
 	pixel_x = -6;
 	id_tag = "tradeport_adventurer_docker"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan{
+	dir = 6
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/adventurer)
@@ -10323,6 +10327,7 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
+/obj/machinery/holopad/ship,
 /turf/simulated/floor/carpet/patterened/blue,
 /area/shuttle/caravan)
 "aBb" = (
@@ -11306,6 +11311,7 @@
 /obj/structure/cable/orange{
 	icon_state = "1-2"
 	},
+/obj/machinery/holopad/ship,
 /turf/simulated/floor/tiled/monotechmaint,
 /area/shuttle/tug)
 "aDy" = (
@@ -14768,6 +14774,7 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
+/obj/machinery/holopad/ship,
 /turf/simulated/floor/tiled/monotechmaint,
 /area/shuttle/utilitymicro)
 "aMX" = (
@@ -18180,6 +18187,9 @@
 /obj/structure/bed/chair/bay/chair/padded/black{
 	dir = 8
 	},
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
+	dir = 1
+	},
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/adventurer)
 "aWh" = (
@@ -18241,9 +18251,7 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
-/obj/machinery/atmospherics/component/unary/vent_pump/on{
-	dir = 1
-	},
+/obj/machinery/holopad/ship,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/adventurer)
 "aWr" = (
