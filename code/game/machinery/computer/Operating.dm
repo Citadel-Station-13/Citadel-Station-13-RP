@@ -320,4 +320,5 @@
 				allowed_tools_by_name += capitalize(initial(tool_path.name))
 			// Please for the love of all that is holy, someone make surgery steps
 			// have names so I don't have to do this stupid pretty_type shit.
-			. += "[pretty_type(S)]: [english_list(allowed_tools_by_name)]"
+			. += list(english_list(allowed_tools_by_name) = pretty_type(S))
+			// . += "[pretty_type(S)]: [english_list(allowed_tools_by_name)]"
