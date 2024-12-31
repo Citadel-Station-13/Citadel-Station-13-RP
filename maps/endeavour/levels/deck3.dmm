@@ -5004,6 +5004,12 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/quartermaster/foyer)
+"dkR" = (
+/obj/machinery/power/breakerbox/activated{
+	RCon_tag = "MAIN - DECK 3 AMIDSHIPS"
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/substation/security)
 "dld" = (
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/corner/brown/border,
@@ -57527,7 +57533,7 @@ lTw
 cjw
 mhY
 nfG
-xfl
+dkR
 mhY
 jkU
 nuP
