@@ -50,8 +50,6 @@
 #define ORGAN_NANOFORM 4
 /// The organ does not suffer laser damage, but shatters on droplimb.
 #define ORGAN_CRYSTAL  5
-/// The organ cannot be healed through standard means at all
-#define ORGAN_NO_HEALING 6
 
 //! Germs and infections.
 //? Using no gloves on surgery WILL give a high risk of infection.

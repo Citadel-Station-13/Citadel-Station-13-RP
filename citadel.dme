@@ -38,6 +38,7 @@
 #include "code\__DEFINES\automata.dm"
 #include "code\__DEFINES\belly_modes_vr.dm"
 #include "code\__DEFINES\bitflags.dm"
+#include "code\__DEFINES\bodypart_behaviour_flags.dm"
 #include "code\__DEFINES\bound_proc.dm"
 #include "code\__DEFINES\callbacks.dm"
 #include "code\__DEFINES\chat.dm"

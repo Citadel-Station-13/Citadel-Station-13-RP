@@ -39,6 +39,10 @@
 			to_chat(user, "<span class='warning'>No body part there to work on!</span>")
 			return FALSE
 
+		if(affecting.behaviour_flags & BODYPART_NO_HEAL)
+			to_chat(user, "<span class='warning'>You aren't able to apply the [src] to [affecting]!")
+			return FALSE
+
 		if(affecting.organ_tag == BP_HEAD)
 			if(H.head && istype(H.head,/obj/item/clothing/head/helmet/space))
 				to_chat(user, "<span class='warning'>You can't apply [src] through [H.head]!</span>")
@@ -50,10 +54,6 @@
 
 		if(affecting.robotic == ORGAN_ROBOT)
 			to_chat(user, "<span class='warning'>This isn't useful at all on a robotic limb.</span>")
-			return FALSE
-
-		if(affecting.robotic == ORGAN_NO_HEALING)
-			to_chat(user, "<span class='warning'>For whatever reason, it seems completely impossible to use this on [M]!</span>")
 			return FALSE
 
 		if(affecting.robotic >= ORGAN_LIFELIKE)
