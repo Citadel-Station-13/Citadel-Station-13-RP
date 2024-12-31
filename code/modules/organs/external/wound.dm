@@ -7,6 +7,9 @@
 	if(damage == 0)
 		return
 
+	if(behaviour_flags & BODYPART_NO_WOUND)
+		return
+
 	//moved this before the open_wound check so that having many small wounds for example doesn't somehow protect you from taking internal damage (because of the return)
 	//Possibly trigger an internal wound, too.
 	var/local_damage = brute_dam + burn_dam + damage
