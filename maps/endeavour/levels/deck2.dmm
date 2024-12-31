@@ -20585,6 +20585,9 @@
 /obj/effect/floor_decal/corner/navblue/border{
 	dir = 5
 	},
+/obj/machinery/station_map{
+	pixel_y = 32
+	},
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d2portamidhall)
 "mxO" = (
@@ -22125,6 +22128,18 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/surgeryprep)
+"nwH" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/navblue/border{
+	dir = 1
+	},
+/obj/machinery/station_map{
+	pixel_y = 32
+	},
+/turf/simulated/floor/tiled,
+/area/endeavour/hallway/d2portamidhall)
 "nwK" = (
 /obj/effect/floor_decal/spline/fancy{
 	dir = 1
@@ -24084,17 +24099,8 @@
 /obj/machinery/station_map{
 	pixel_y = 32
 	},
-/obj/effect/floor_decal/borderfloorblack{
-	dir = 1
-	},
-/obj/effect/floor_decal/corner/navblue/border{
-	dir = 1
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 8
-	},
-/turf/simulated/floor/tiled,
-/area/endeavour/hallway/d2portforhall)
+/turf/simulated/floor/tiled/dark,
+/area/endeavour/hallway/d2portafthall)
 "oGx" = (
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 1
@@ -24323,6 +24329,9 @@
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 8
+	},
+/obj/machinery/station_map{
+	pixel_y = 32
 	},
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d2portforhall)
@@ -34016,6 +34025,9 @@
 	},
 /obj/effect/floor_decal/corner/navblue/border{
 	dir = 1
+	},
+/obj/machinery/station_map{
+	pixel_y = 32
 	},
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d2fwdhall)
@@ -51180,7 +51192,7 @@ ohX
 iwg
 ohX
 rkZ
-mSd
+oGt
 uJM
 mSd
 uCx
@@ -57388,7 +57400,7 @@ gKZ
 qog
 aPb
 dbo
-uza
+nwH
 hBL
 rVF
 rBK
@@ -60491,7 +60503,7 @@ eQu
 liR
 jBH
 vez
-uza
+nwH
 wil
 wtZ
 rBK
@@ -67478,7 +67490,7 @@ jRK
 jRK
 jRK
 mai
-oGt
+eYA
 mFT
 uXO
 iDS
