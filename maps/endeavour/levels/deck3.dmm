@@ -3719,6 +3719,8 @@
 /obj/machinery/status_display/supply_display{
 	pixel_x = -32
 	},
+/obj/structure/dogbed,
+/mob/living/simple_mob/animal/sif/fluffy,
 /turf/simulated/floor/wood,
 /area/quartermaster/qm)
 "czc" = (
@@ -36041,8 +36043,7 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
-/obj/machinery/disposal,
-/obj/structure/disposalpipe/trunk{
+/obj/structure/disposalpipe/segment{
 	dir = 4
 	},
 /turf/simulated/floor/wood,
@@ -36290,14 +36291,16 @@
 /turf/simulated/floor/crystal,
 /area/endeavour/hallway/d3fwdhall)
 "xJa" = (
-/obj/structure/dogbed,
-/mob/living/simple_mob/animal/sif/fluffy,
 /obj/structure/cable/green{
 	icon_state = "1-4"
 	},
 /obj/machinery/air_alarm{
 	dir = 4;
 	pixel_x = -23
+	},
+/obj/machinery/disposal,
+/obj/structure/disposalpipe/trunk{
+	dir = 4
 	},
 /turf/simulated/floor/wood,
 /area/quartermaster/qm)

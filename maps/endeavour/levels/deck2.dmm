@@ -15424,6 +15424,9 @@
 /area/rnd/reception_desk)
 "jlP" = (
 /obj/structure/dispenser/oxygen,
+/obj/machinery/camera/network/outside{
+	dir = 5
+	},
 /turf/simulated/floor/tiled,
 /area/medical/medbay_primary_storage)
 "jlX" = (
@@ -17229,6 +17232,13 @@
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/rnd/anomaly_lab)
+"kss" = (
+/obj/effect/floor_decal/industrial/outline/blue,
+/obj/structure/closet/secure_closet/medical3,
+/obj/item/soap/nanotrasen,
+/obj/item/storage/belt/medical,
+/turf/simulated/floor/tiled,
+/area/medical/medbay_primary_storage)
 "ksB" = (
 /obj/machinery/light,
 /obj/effect/floor_decal/borderfloorblack,
@@ -18294,6 +18304,13 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/medical_restroom)
+"kZb" = (
+/obj/effect/floor_decal/industrial/outline/blue,
+/obj/structure/closet/secure_closet/medical3,
+/obj/item/storage/belt/medical,
+/obj/item/soap/nanotrasen,
+/turf/simulated/floor/tiled,
+/area/medical/medbay_primary_storage)
 "kZg" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -29528,10 +29545,6 @@
 /area/tether/station/public_meeting_room)
 "ryO" = (
 /obj/machinery/light,
-/obj/structure/closet/secure_closet/medical3,
-/obj/item/soap/nanotrasen,
-/obj/item/storage/belt/medical,
-/obj/effect/floor_decal/industrial/outline/blue,
 /turf/simulated/floor/tiled,
 /area/medical/medbay_primary_storage)
 "rzi" = (
@@ -30685,7 +30698,6 @@
 /obj/structure/cable/green{
 	icon_state = "2-8"
 	},
-/obj/machinery/vending/blood,
 /turf/simulated/floor/tiled,
 /area/medical/medbay_primary_storage)
 "snQ" = (
@@ -31024,10 +31036,10 @@
 /turf/simulated/floor/tiled,
 /area/medical/surgery)
 "szk" = (
-/obj/structure/closet/secure_closet/medical3,
-/obj/item/soap/nanotrasen,
-/obj/item/storage/belt/medical,
 /obj/effect/floor_decal/industrial/outline/blue,
+/obj/item/soap/nanotrasen,
+/obj/structure/closet/secure_closet/medical3,
+/obj/item/storage/belt/medical,
 /turf/simulated/floor/tiled,
 /area/medical/medbay_primary_storage)
 "szz" = (
@@ -36069,6 +36081,13 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/psych_ward)
+"vLZ" = (
+/obj/effect/floor_decal/industrial/outline/blue,
+/obj/item/storage/belt/medical,
+/obj/item/soap/nanotrasen,
+/obj/structure/closet/secure_closet/medical3,
+/turf/simulated/floor/tiled,
+/area/medical/medbay_primary_storage)
 "vMh" = (
 /obj/machinery/air_alarm{
 	pixel_y = 22
@@ -58763,9 +58782,9 @@ bNp
 wlg
 kTz
 bNp
+kZb
 ujt
 ujt
-szk
 xFH
 lmG
 qBd
@@ -58957,7 +58976,7 @@ bNp
 mnx
 kTz
 bNp
-ujt
+vLZ
 ujt
 ryO
 xFH
@@ -59151,9 +59170,9 @@ xFH
 bxy
 peZ
 bNp
-ujt
-ujt
 szk
+ujt
+ujt
 vTa
 pRW
 pRW
@@ -59345,9 +59364,9 @@ xFH
 kTz
 kTz
 xFH
-ujt
+kss
 hQy
-szk
+ujt
 xFH
 lIp
 pRW
