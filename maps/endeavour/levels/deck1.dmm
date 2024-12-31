@@ -5076,6 +5076,21 @@
 /turf/simulated/floor/tiled,
 /area/gateway/prep_room)
 "dSe" = (
+/obj/machinery/camera/network/command{
+	dir = 4
+	},
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/beige/border{
+	dir = 8
+	},
+/obj/effect/floor_decal/borderfloorblack/corner2{
+	dir = 10
+	},
+/obj/effect/floor_decal/corner/beige/bordercorner2{
+	dir = 10
+	},
 /turf/simulated/floor/tiled/dark,
 /area/bridge/hallway)
 "dSn" = (
@@ -5524,12 +5539,6 @@
 	},
 /obj/effect/floor_decal/corner/beige/border{
 	dir = 8
-	},
-/obj/effect/floor_decal/borderfloorblack/corner2{
-	dir = 10
-	},
-/obj/effect/floor_decal/corner/beige/bordercorner2{
-	dir = 10
 	},
 /turf/simulated/floor/tiled/dark,
 /area/bridge/hallway)
@@ -7887,12 +7896,6 @@
 /turf/simulated/floor/tiled,
 /area/exploration/explorer_prep)
 "fKd" = (
-/obj/effect/floor_decal/borderfloorblack{
-	dir = 8
-	},
-/obj/effect/floor_decal/corner/beige/border{
-	dir = 8
-	},
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
@@ -18526,6 +18529,12 @@
 /obj/effect/floor_decal/corner/beige/border{
 	dir = 8
 	},
+/obj/effect/floor_decal/borderfloorblack/corner2{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/beige/bordercorner2{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/dark,
 /area/bridge/hallway)
 "nnq" = (
@@ -25834,12 +25843,6 @@
 	dir = 8
 	},
 /obj/effect/floor_decal/corner/beige/border{
-	dir = 8
-	},
-/obj/effect/floor_decal/borderfloorblack/corner2{
-	dir = 8
-	},
-/obj/effect/floor_decal/corner/beige/bordercorner2{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/dark,
@@ -65257,11 +65260,11 @@ gDf
 tIO
 fIr
 gDf
-wDH
+dSe
 fKd
 nnp
 eiM
-dSe
+mBp
 sRV
 jJL
 hcK

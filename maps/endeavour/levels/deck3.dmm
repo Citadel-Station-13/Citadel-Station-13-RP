@@ -4079,9 +4079,6 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 1
 	},
-/obj/structure/cable/green{
-	icon_state = "1-2"
-	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/recreation_area)
 "cLp" = (
@@ -7810,14 +7807,11 @@
 /turf/simulated/floor/tiled/monotile,
 /area/security/security_lockerroom)
 "eTv" = (
-/obj/structure/cable/green{
-	icon_state = "2-8"
-	},
 /obj/structure/disposalpipe/segment{
 	dir = 8
 	},
 /obj/structure/cable/green{
-	icon_state = "2-4"
+	icon_state = "4-8"
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/recreation_area)
@@ -7844,16 +7838,16 @@
 	dir = 1
 	},
 /obj/effect/floor_decal/borderfloorblack/corner2{
-	dir = 4
-	},
-/obj/effect/floor_decal/corner/navblue/bordercorner2{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 1
 	},
+/obj/effect/floor_decal/corner/navblue/bordercorner2{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/steel,
-/area/endeavour/hallway/d3portamidhall)
+/area/endeavour/hallway/d3portforhall)
 "eVb" = (
 /turf/simulated/floor/tiled/techfloor,
 /area/maintenance/bar/catwalk)
@@ -18825,6 +18819,9 @@
 	dir = 2;
 	icon_state = "pipe-j2"
 	},
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/recreation_area)
 "mwM" = (
@@ -20145,10 +20142,13 @@
 "nvp" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/structure/cable/green{
-	icon_state = "4-8"
-	},
 /obj/structure/disposalpipe/junction,
+/obj/structure/cable/green{
+	icon_state = "2-4"
+	},
+/obj/structure/cable/green{
+	icon_state = "2-8"
+	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/recreation_area)
 "nvw" = (
@@ -21990,12 +21990,13 @@
 /turf/simulated/floor/tiled/dark,
 /area/security/tactical)
 "oBe" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
-/obj/machinery/atmospherics/pipe/manifold/hidden/supply,
 /obj/structure/disposalpipe/segment,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d3portamidhall)
 "oBE" = (
@@ -25056,7 +25057,6 @@
 /obj/structure/disposalpipe/junction{
 	dir = 8
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d3portamidhall)
 "qBU" = (
@@ -25450,13 +25450,10 @@
 /area/security/brig)
 "qQD" = (
 /obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/multi_tile/glass{
-	name = "Crew Quarters"
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/structure/cable/green{
-	icon_state = "1-2"
+/obj/machinery/door/airlock/multi_tile/glass{
+	name = "Crew Quarters"
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/recreation_area)
@@ -28778,21 +28775,8 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/obj/effect/floor_decal/borderfloorblack{
-	dir = 1
-	},
-/obj/effect/floor_decal/corner/navblue/border{
-	dir = 1
-	},
-/obj/effect/floor_decal/borderfloorblack/corner2{
-	dir = 1
-	},
-/obj/effect/floor_decal/corner/navblue/bordercorner2{
-	dir = 1
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d3portforhall)
 "sYp" = (
@@ -34263,6 +34247,18 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/navblue/border{
+	dir = 1
+	},
+/obj/effect/floor_decal/borderfloorblack/corner2{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/navblue/bordercorner2{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d3portamidhall)
 "wpe" = (
@@ -36733,17 +36729,12 @@
 /turf/simulated/floor/tiled/old_cargo/red,
 /area/security/security_processing)
 "xXa" = (
-/obj/machinery/camera/network/civilian{
-	dir = 1
+/obj/structure/disposalpipe/segment{
+	dir = 8
 	},
-/obj/structure/cable/orange{
-	icon_state = "4-8"
-	},
-/obj/effect/floor_decal/borderfloorblack,
-/obj/effect/floor_decal/corner/navblue/border,
-/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled,
-/area/endeavour/hallway/d3portamidhall)
+/area/endeavour/hallway/d3portforhall)
 "xXg" = (
 /turf/simulated/wall/r_wall/prepainted,
 /area/crew_quarters/game_room)
@@ -56361,7 +56352,7 @@ rEX
 mkn
 jHr
 pwq
-sTd
+eUA
 bBc
 sid
 eqa
@@ -56556,8 +56547,8 @@ eTv
 cLn
 qQD
 sXK
-bBc
-sid
+xXa
+swv
 eqa
 mmq
 mmq
@@ -56751,7 +56742,7 @@ mwA
 sQO
 oBe
 qBQ
-xXa
+iIc
 mMr
 bWK
 bWK
@@ -57137,7 +57128,7 @@ qbT
 bzu
 iPO
 jiy
-eUA
+fqc
 pAU
 rPF
 mMr
