@@ -1,5 +1,5 @@
-#define BODYPART_NO_INJECT  "no_inject"
-#define BODYPART_NO_HEAL    "no_heal"
-#define BODYPART_NO_SURGERY "no_surgery"
-#define BODYPART_NO_PATCH	"no_patch"
-#define BODYPART_NO_WOUND   "no_wound"
+#define BODYPART_NO_INJECT  (1 << 0)
+#define BODYPART_NO_HEAL    (1 << 1)
+#define BODYPART_NO_SURGERY (1 << 2)
+#define BODYPART_NO_PATCH	(1 << 3)
+#define BODYPART_NO_WOUND   (1 << 4)
