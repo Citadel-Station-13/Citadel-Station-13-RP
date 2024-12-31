@@ -12739,7 +12739,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/medical/morgue)
 "hBp" = (
-/obj/machinery/power/breakerbox{
+/obj/machinery/power/breakerbox/activated{
 	RCon_tag = "MAIN - DECK 2 AMIDSHIPS"
 	},
 /turf/simulated/floor/plating,
@@ -13132,7 +13132,7 @@
 /turf/simulated/floor/plating,
 /area/endeavour/hallway/d2fwdmaint)
 "hMz" = (
-/obj/machinery/power/breakerbox{
+/obj/machinery/power/breakerbox/activated{
 	RCon_tag = "MAIN - DECK 2 FORE"
 	},
 /turf/simulated/floor/plating,
@@ -14832,8 +14832,8 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/medbay4)
 "iPG" = (
-/obj/machinery/power/breakerbox{
-	RCon_tag = "DECK 2 AFT MAIN"
+/obj/machinery/power/breakerbox/activated{
+	RCon_tag = "MAIN - DECK 2 AFT"
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/medical_science)
@@ -16313,6 +16313,7 @@
 /obj/machinery/light/small{
 	dir = 8
 	},
+/obj/item/paper/pamphlet/substation,
 /turf/simulated/floor/plating,
 /area/maintenance/substation/research)
 "jPA" = (
@@ -20977,6 +20978,7 @@
 /obj/machinery/light/small{
 	dir = 8
 	},
+/obj/item/paper/pamphlet/substation,
 /turf/simulated/floor/plating,
 /area/maintenance/substation/medical)
 "mKe" = (
@@ -24789,6 +24791,7 @@
 /obj/machinery/light{
 	dir = 8
 	},
+/obj/item/paper/pamphlet/substation,
 /turf/simulated/floor/plating,
 /area/maintenance/substation/medical_science)
 "oYE" = (
@@ -56427,7 +56430,7 @@ mIs
 xsd
 mHV
 rxV
-kyR
+iPG
 eEE
 cHC
 cBK
@@ -56618,7 +56621,7 @@ qIV
 ePI
 eEE
 fPm
-iPG
+kyR
 eEE
 qPc
 djp

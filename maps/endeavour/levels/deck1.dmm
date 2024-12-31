@@ -9134,6 +9134,7 @@
 /obj/machinery/light{
 	dir = 8
 	},
+/obj/item/paper/pamphlet/substation,
 /turf/simulated/floor/plating,
 /area/maintenance/substation/exploration)
 "gDf" = (
@@ -15488,6 +15489,7 @@
 /obj/machinery/light{
 	dir = 8
 	},
+/obj/item/paper/pamphlet/substation,
 /turf/simulated/floor/plating,
 /area/maintenance/substation/command)
 "kYZ" = (
@@ -16116,11 +16118,11 @@
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d1portamidhall)
 "lBc" = (
-/obj/machinery/power/breakerbox{
-	RCon_tag = "MAIN - DECK 1 AFT"
+/obj/machinery/power/breakerbox/activated{
+	RCon_tag = "MAIN - DECK 1 FORE"
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/substation/civilian)
+/area/maintenance/substation/command)
 "lBV" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 6
@@ -30788,11 +30790,11 @@
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d1starboardafthall)
 "wmU" = (
-/obj/machinery/power/breakerbox{
-	RCon_tag = "MAIN - DECK 1 FORE"
+/obj/machinery/power/breakerbox/activated{
+	RCon_tag = "MAIN - DECK 1 AFT"
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/substation/command)
+/area/maintenance/substation/civilian)
 "wne" = (
 /obj/item/pen/crayon/mime,
 /obj/item/pen/crayon/marker/mime,
@@ -31249,6 +31251,7 @@
 /obj/machinery/power/port_gen/pacman/mrs{
 	anchored = 1
 	},
+/obj/item/paper/pamphlet/substation,
 /turf/simulated/floor/plating,
 /area/maintenance/substation/civilian)
 "wAB" = (
@@ -33202,7 +33205,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d1starboardamidhall)
 "ybg" = (
-/obj/machinery/power/breakerbox{
+/obj/machinery/power/breakerbox/activated{
 	RCon_tag = "MAIN - DECK 1 AMIDSHIPS"
 	},
 /turf/simulated/floor/plating,
@@ -49551,7 +49554,7 @@ vDR
 hWC
 vRj
 hVP
-aVW
+wmU
 kPV
 lxO
 hnl
@@ -49742,7 +49745,7 @@ vHL
 bdJ
 eOe
 djQ
-lBc
+aVW
 pEr
 mWe
 cGJ
@@ -59834,7 +59837,7 @@ lmB
 oVe
 lCd
 ghn
-meH
+lBc
 aLV
 uhY
 jux
@@ -60025,7 +60028,7 @@ uwI
 aLV
 oZB
 cdx
-wmU
+meH
 aLV
 pIq
 uWI

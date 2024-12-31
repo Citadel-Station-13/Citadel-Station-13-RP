@@ -697,7 +697,7 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/tiled,
 /area/endeavour/hallway/d3afthall)
 "ayd" = (
 /obj/machinery/door/firedoor,
@@ -1759,7 +1759,7 @@
 /obj/effect/floor_decal/corner/navgold/border{
 	dir = 4
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/tiled,
 /area/endeavour/hallway/d3afthall)
 "bfE" = (
 /obj/machinery/fire_alarm/west_mount{
@@ -3119,7 +3119,7 @@
 /obj/effect/floor_decal/corner/navblue/border{
 	dir = 4
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/tiled,
 /area/endeavour/hallway/d3afthall)
 "bYP" = (
 /obj/structure/disposalpipe/segment{
@@ -6285,6 +6285,9 @@
 	name = "Powernet Sensor - Deck 3 Aft Subgrid";
 	name_tag = "Deck 3 Subgrid"
 	},
+/obj/structure/cable/green{
+	icon_state = "0-4"
+	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/cargo)
 "dYL" = (
@@ -6362,7 +6365,7 @@
 /obj/effect/floor_decal/corner/navblue/border{
 	dir = 4
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/tiled,
 /area/endeavour/hallway/d3afthall)
 "ecv" = (
 /obj/structure/cable/green{
@@ -10233,6 +10236,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
+/obj/item/paper/pamphlet/substation,
 /turf/simulated/floor/plating,
 /area/maintenance/substation/civilian)
 "gqN" = (
@@ -13391,6 +13395,9 @@
 	name = "Powernet Sensor - Deck 3 Fore Subgrid";
 	name_tag = "Deck 3 Fore Subgrid"
 	},
+/obj/structure/cable/green{
+	icon_state = "0-4"
+	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/civilian)
 "iFW" = (
@@ -14760,7 +14767,7 @@
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 4
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/tiled,
 /area/endeavour/hallway/d3afthall)
 "jDL" = (
 /obj/machinery/button/remote/blast_door{
@@ -17867,12 +17874,6 @@
 /obj/structure/undies_wardrobe,
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_6)
-"lSK" = (
-/obj/machinery/power/breakerbox{
-	RCon_tag = "MAIN - DECK 3 AMIDSHIPS"
-	},
-/turf/simulated/floor/plating,
-/area/maintenance/substation/security)
 "lTj" = (
 /turf/simulated/wall/r_wall/prepainted/civilian,
 /area/endeavour/hallway/d3fwdmaint)
@@ -18810,7 +18811,7 @@
 	dir = 4
 	},
 /obj/machinery/fire_alarm/east_mount,
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/tiled,
 /area/endeavour/hallway/d3afthall)
 "mwk" = (
 /obj/item/banner/cargo,
@@ -18911,7 +18912,7 @@
 /turf/simulated/floor/carpet,
 /area/security/brig)
 "mBj" = (
-/obj/machinery/power/breakerbox{
+/obj/machinery/power/breakerbox/activated{
 	RCon_tag = "MAIN - DECK 3 FORE"
 	},
 /turf/simulated/floor/plating,
@@ -23964,7 +23965,7 @@
 	dir = 4
 	},
 /obj/machinery/fire_alarm/east_mount,
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/tiled,
 /area/endeavour/hallway/d3afthall)
 "pSx" = (
 /obj/structure/closet/secure_closet/security,
@@ -24409,6 +24410,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
+/obj/item/paper/pamphlet/substation,
 /turf/simulated/floor/plating,
 /area/maintenance/substation/security)
 "qeX" = (
@@ -25270,7 +25272,7 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/tiled,
 /area/endeavour/hallway/d3afthall)
 "qJB" = (
 /turf/simulated/wall/prepainted/cargo,
@@ -27109,7 +27111,7 @@
 /turf/simulated/wall/prepainted,
 /area/maintenance/substation/cargo)
 "rXl" = (
-/obj/machinery/power/breakerbox{
+/obj/machinery/power/breakerbox/activated{
 	RCon_tag = "MAIN - DECK 3 AFT"
 	},
 /turf/simulated/floor/plating,
@@ -27791,7 +27793,7 @@
 /obj/effect/floor_decal/corner/navgold/border{
 	dir = 4
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/tiled,
 /area/endeavour/hallway/d3afthall)
 "ssY" = (
 /obj/machinery/light/small{
@@ -30660,6 +30662,9 @@
 	name = "Powernet Sensor - Deck 3 Amidships Subgrid";
 	name_tag = "Deck 3 Aft Subgrid"
 	},
+/obj/structure/cable/green{
+	icon_state = "0-4"
+	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/security)
 "ujb" = (
@@ -30679,6 +30684,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
+/obj/item/paper/pamphlet/substation,
 /turf/simulated/floor/plating,
 /area/maintenance/substation/cargo)
 "ujB" = (
@@ -36443,7 +36449,7 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/tiled,
 /area/endeavour/hallway/d3afthall)
 "xMC" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
@@ -57527,7 +57533,7 @@ lTw
 cjw
 mhY
 nfG
-lSK
+xfl
 mhY
 jkU
 nuP
