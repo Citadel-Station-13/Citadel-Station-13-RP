@@ -147,7 +147,7 @@
 
 	var/list/area_cache = instance.bundle_area_cache? list() : null
 
-	for(var/datum/map_level/level as anything in instance.levels)
+	for(var/datum/map_level/level as anything in instance.get_sorted_levels())
 		var/datum/dmm_context/loaded_context = _load_level(level, FALSE, instance.center, instance.crop, generation_callbacks, orientation = instance.orientation, area_cache = area_cache, defer_context = TRUE)
 		if(isnull(loaded_context))
 			STACK_TRACE("unable to load level [level] ([level.id])")

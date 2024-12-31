@@ -266,7 +266,7 @@
 	// sort x_y_stacks by level z index
 	for(var/i in 1 to length(x_y_stacks))
 		var/list/stack = x_y_stacks[x_y_stacks[i]]
-		tim_sort(stack, /proc/cmp_map_level_struct_z)
+		tim_sort(stack, /proc/cmp_map_level_struct_z_asc)
 
 	// calculate and sort elevations
 	// elevation_tuples = list[z] = elev
@@ -379,8 +379,3 @@
 	SEND_SIGNAL(src, COMSIG_MAP_STRUCT_DECONSTRUCTED)
 
 	return TRUE
-
-//* Helpers *//
-
-/proc/cmp_map_level_struct_z(datum/map_level/A, datum/map_level/B)
-	return A.struct_z - B.struct_z

@@ -188,7 +188,7 @@ ADMIN_VERB_DEF(load_map_sector, R_ADMIN, "Upload Map Sector", "Upload a custom m
 			var/loaded_file_size = length(loaded_file)
 			if(isfile(target_level.path))
 				current_upload_size -= length(target_level.path)
-			current_upload_size += length(loaded_file)
+			current_upload_size += loaded_file_size
 			target_level.path = loaded_file
 			update_level_index_data(target_level_index)
 			. = TRUE
@@ -292,7 +292,7 @@ ADMIN_VERB_DEF(load_map_sector, R_ADMIN, "Upload Map Sector", "Upload a custom m
 /datum/admin_modal/load_map_sector/proc/prime()
 	computed_errors = list()
 	#warn check bounds
-	#warn sort up/down levels as needed
+	#warn remove this warn
 
 	update_static_data()
 

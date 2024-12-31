@@ -164,6 +164,13 @@
 				level_instance.mangling_id = mangling_id || id
 
 /**
+ * Get levels sorted into z-loading order
+ */
+/datum/map/proc/get_sorted_levels()
+	#warn this
+	return tim_sort(levels.Copy(), /proc/cmp_map_level_load_sequence)
+
+/**
  * primary station map
  *
  * this is what's loaded at init. this determines what other maps initially load.
