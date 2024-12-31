@@ -25,19 +25,9 @@
 	hunger_factor = 0 // doesn't get hungry naturally, but instead when healing they use nutrition
 
 	has_organ = list(
-		O_HEART     = /obj/item/organ/internal/heart,
-		O_LUNGS     = /obj/item/organ/internal/lungs,
-		O_VOICE     = /obj/item/organ/internal/voicebox,
-		O_LIVER     = /obj/item/organ/internal/liver,
-		O_KIDNEYS   = /obj/item/organ/internal/kidneys,
-		O_BRAIN     = /obj/item/organ/internal/brain,
-		O_APPENDIX  = /obj/item/organ/internal/appendix,
-		O_SPLEEN    = /obj/item/organ/internal/spleen,
-		O_EYES      = /obj/item/organ/internal/eyes,
-		O_STOMACH   = /obj/item/organ/internal/stomach,
-		O_INTESTINE = /obj/item/organ/internal/intestine,
+		O_BRAIN     = /obj/item/organ/internal/brain
 	)
-	vision_organ = O_EYES
+	vision_organ = O_BRAIN
 
 	has_limbs = list(
 		BP_TORSO  = list("path" = /obj/item/organ/external/chest/indestructible/holosphere),
