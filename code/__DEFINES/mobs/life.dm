@@ -55,3 +55,10 @@
 #define ORGAN_DECAY_PER_SECOND_BRAIN			(60 / (60 * 10))				// brain decays entirely over 10 minutes, or to lethal degrees in 5
 
 
+//? Health - General
+/** Store the default minimum health, crit health, soft crit health
+ * These are currently only respected by carbons
+*/
+#define MOB_MINIMUM_HEALTH			-100
+#define MOB_CRITICAL_HEALTH			-50
+#define MOB_SOFT_CRITICAL_HEALTH 	0

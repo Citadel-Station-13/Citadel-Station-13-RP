@@ -270,8 +270,14 @@
 	var/pass_flags = 0
 
 	//? Stats
-	/// Point at which the mob will enter crit.
+	/// Total health the mob has
 	var/total_health = 100
+	/// Point at which the mob will die
+	var/death_health = MOB_MINIMUM_HEALTH
+	/// Point at which the mob will enter crit
+	var/crit_health = MOB_CRITICAL_HEALTH
+	/// Point at which the mob will enter soft crit
+	var/soft_crit_health = MOB_SOFT_CRITICAL_HEALTH
 	/// Physical damage multiplier.
 	var/brute_mod = 1
 	/// Burn damage multiplier.
@@ -575,6 +581,9 @@
 		H.gender = genders[1]
 
 	H.maxHealth = total_health
+	H.minHealth = death_health
+	H.critHealth = crit_health
+	H.softCritHealth = soft_crit_health
 
 	if(!isnull(mob_physiology_modifier))
 		H.add_physiology_modifier(mob_physiology_modifier)
