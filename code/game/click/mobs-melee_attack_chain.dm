@@ -18,8 +18,8 @@
  */
 #warn audit calls
 /mob/proc/melee_attack_chain(datum/event_args/actor/clickchain/clickchain, clickchain_flags)
-
-
+	if(clickchain_flags & CLICKCHAIN_DO_NOT_ATTACK)
+		return clickchain_flags
 #warn deal with this trainwreck
 
 /**
@@ -34,6 +34,12 @@
 		clickchain = default_clickchain_event_args(clickchain)
 	//! End
 
+	//! Legacy
+	break_cloak()
+	if(isnull(style))
+		style = unarmed_attack_style()
+	//! End
+
 	/**
 	 * the tl;dr of how the chain of negotiations go here is;
 	 *
@@ -42,8 +48,9 @@
 	 * 3. we react to what they return
 	 */
 
-
 	// -- resolve our side --
+
+	sort_of_legacy_imprint_upon_melee_clickchain(clickchain)
 
 	// -- call on them --
 	. = clickchain.target.unarmed_melee_act(src, style, target_zone, clickchain)

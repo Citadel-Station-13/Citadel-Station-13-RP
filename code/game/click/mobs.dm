@@ -28,29 +28,10 @@
 	var/stupid_fucking_shim = list2params(params)
 	RangedAttack(target, stupid_fucking_shim)
 
-/**
- * called to try to hit something in melee
- */
-/mob/proc/melee_attack_chain(atom/target, datum/event_args/actor/clickchain/clickchain, datum/melee_attack/unarmed/style = unarmed_attack_style(), clickchain_flags, target_zone, mult = 1)
-	if(isnull(style))
-		// we can't autoattack
-		return NONE
-	if(isnull(clickchain))
-		clickchain = new(src, target = target, intent = a_intent)
-	// too complciated to be put in proc header
-	if(isnull(target_zone))
-		target_zone = clickchain.performer.zone_sel?.selecting
-	// end
-	if(clickchain_flags & CLICKCHAIN_DO_NOT_ATTACK)
-		return NONE
-	// todo: not hardcoding this
-	if(IS_PRONE(clickchain.performer))
-		mult *= 0.66
-	// todo: signals
-	. = melee_attack(target, clickchain, style, clickchain_flags, target_zone, mult)
-	if(. & CLICKCHAIN_DO_NOT_PROPAGATE)
-		return
-	return . | melee_attack_finalize(target, clickchain, style, clickchain_flags, target_zone, mult)
+// i'm sorry
+/mob/proc/sort_of_legacy_imprint_upon_melee_clickchain(datum/event_args/actor/clickchain/clickchain)
+	if(IS_PRONE(src))
+		clickchain.melee_damage_multiplier *= (2 / 3)
 
 /**
  * default current unarmed attack style
@@ -74,16 +55,9 @@
 		if(!(casted.obj_flags & OBJ_MELEE_TARGETABLE))
 			// no targeting
 			return NONE
-	//? legacy: for now no attacking nonliving
-	if(ismob(target) && !isliving(target))
-		return NONE
-	//? legacy: decloak
-	clickchain.performer.break_cloak()
 
 	// todo: clickcd rework
 	clickchain.performer.setClickCooldownLegacy(clickchain.performer.get_attack_speed_legacy())
-	// todo: animation might need to depend on if it hits
-	// animate_swing_at_target(target)
 
 	. = melee_attack_hit(target, clickchain, style, clickchain_flags, target_zone, mult)
 
