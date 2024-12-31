@@ -6,17 +6,6 @@
 ADMIN_VERB_DEF(load_map_sector, R_ADMIN, "Upload Map Sector", "Upload a custom map.", VERB_CATEGORY_ADMIN)
 	caller.holder.open_admin_modal(/datum/admin_modal/load_map_sector)
 
-#warn do it this way instead
-// ADMIN_VERB_DECLARE(load_map_sector)
-// 	name = "Load Map Sector"
-// 	desc = "Create or upload a custom map."
-// 	category = VERB_CATEGORY_ADMIN
-// 	required_rights = R_ADMIN
-
-// ADMIN_VEBR_BEHAVIOR(load_map_sector, name_arg)
-// 	world.log << "look at me i accessed an arg [name_arg] and calling client [calling_client] is included by the macro!"
-// 	calling_client.holder.open_admin_modal(/datum/admin_modal/load_map_sector)
-
 /**
  * Modal supporting arbitrary map loads.
  *
@@ -193,8 +182,14 @@ ADMIN_VERB_DEF(load_map_sector, R_ADMIN, "Upload Map Sector", "Upload a custom m
 			. = TRUE
 		// level //
 		if("levelDmm")
-			var/loaded_file = input(owner.owner, "Upload a .dmm file.", "Upload DMM") as file | null
-			#warn process dmm
+			if(owner.owner.is_prompting_for_file())
+				return TRUE
+			var/loaded_file = owner.owner.prompt_for_file("Upload a .dmm file.", "Upload DMM", 1024 * 1024 * 2)
+			var/loaded_file_size = length(loaded_file)
+			if(isfile(target_level.path))
+				current_upload_size -= length(target_level.path)
+			current_upload_size += length(loaded_file)
+			target_level.path = loaded_file
 			update_level_index_data(target_level_index)
 			. = TRUE
 		if("levelName")
