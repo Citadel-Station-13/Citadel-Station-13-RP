@@ -1,3 +1,6 @@
+#define HOLOGRAM_OTHER_ALPHA 255
+#define HOLOGRAM_SHIELD_MAX_HEALTH 20
+
 /datum/species/holosphere/proc/handle_hologram_overlays(datum/source, list/overlay_args, category)
 	var/is_clothing = category == CARBON_APPEARANCE_UPDATE_CLOTHING
 	var/overlay_index = is_clothing ? 1 : 2
@@ -35,8 +38,8 @@
 
 /datum/species/holosphere/proc/remove_chameleon_gear()
 	for(var/slot in equipped_chameleon_gear)
-			var/chameleon_item = equipped_chameleon_gear[slot]
-			qdel(chameleon_item)
+		var/chameleon_item = equipped_chameleon_gear[slot]
+		qdel(chameleon_item)
 
 /datum/species/holosphere/proc/handle_hologram_loadout(datum/source, flags, datum/role/role, list/datum/loadout_entry/loadout)
 	if(istype(source, /mob/living/carbon/human/dummy))
@@ -87,7 +90,7 @@
 		loadout_options["Loadout [i]"] = i
 	var/loadout_option = tgui_input_list(usr, "Choose Loadout", "Loadout", loadout_options)
 	var/loadout_slot = loadout_options[loadout_option]
-	var/list/datum/loadout_entry/loadout_entries = client.prefs.generate_loadout_entry_list(cached_loadout_flags, cached_loadout_role, loadout_slot)
+	var/list/datum/loadout_entry/loadout_entries = client.prefs.generate_loadout_entry_list(holosphere_species.cached_loadout_flags, holosphere_species.cached_loadout_role, loadout_slot)
 	holosphere_species.equip_loadout(src, loadout_entries)
 
 /datum/species/holosphere/proc/get_alpha_from_key(var/mob/living/carbon/human/H, var/key)

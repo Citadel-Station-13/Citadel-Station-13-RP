@@ -1,6 +1,3 @@
-#define HOLOGRAM_OTHER_ALPHA 255
-#define HOLOGRAM_SHIELD_MAX_HEALTH 20
-
 /// HOLOSPHERES
 /* 'transform_component' refers to the component letting them switch between their 'shell' (see holosphere_shell.dm) and their 'hologram' (the mob/living/carbon/human part)
  * 'try_transform' means going from the hologram to the shell
@@ -62,7 +59,7 @@
 		/mob/living/carbon/human/proc/hide_wings,
 		/mob/living/carbon/human/proc/hide_tail,
 		/mob/living/carbon/human/proc/switch_loadout_holosphere,
-		/mob/living/carbon/human/proc/disable_hologram
+		/mob/living/carbon/human/proc/disable_hologram,
 		/mob/living/carbon/human/proc/shapeshifter_select_hair,
 		/mob/living/carbon/human/proc/shapeshifter_select_hair_colors,
 		/mob/living/carbon/human/proc/shapeshifter_select_colour,
@@ -130,11 +127,11 @@
 
 	remove_chameleon_gear()
 
-/datum/species/holosphere/try_transform(force = FALSE)
+/datum/species/holosphere/proc/try_transform(force = FALSE)
 	if(force || !IS_DEAD(holosphere_shell))
 		transform_component.try_transform()
 
-/datum/species/holosphere/try_untransform(force = FALSE)
+/datum/species/holosphere/proc/try_untransform(force = FALSE)
 	if(force || !IS_DEAD(holosphere_shell.hologram))
 		transform_component.try_untransform()
 
