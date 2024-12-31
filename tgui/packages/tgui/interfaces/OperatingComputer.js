@@ -54,10 +54,12 @@ export const OperatingComputer = (props, context) => {
 
 const PatientStateView = (props, context) => {
   const { act, data } = useBackend(context);
-  const procedures = data.surgery;
-  const patient = data.occupant;
+  const {
+    table,
+    patient,
+  } = data;
   const patientStat = patientStates[patient.stat] || patientStates[3];
-  if (!data.table) {
+  if (!table) {
     return (
       <NoticeBox>
         No Table Detected
@@ -66,7 +68,7 @@ const PatientStateView = (props, context) => {
   }
   return (
     <>
-      <Section title="Patient State">
+      <Section title={patient.name || "Patient State"}>
         {data.hasOccupant && (
           <LabeledList>
             <LabeledList.Item
@@ -100,18 +102,19 @@ const PatientStateView = (props, context) => {
           'No Patient Detected'
         )}
       </Section>
-      {procedures.length === 0 && (
+      {(patient.procedures?.length === 0) && (
         <Section>
           No Active Procedures
         </Section>
       )}
-      {procedures.map(procedure => (
+      {patient.procedures?.map(procedure => (
         <Section
           key={procedure.name}
           title={procedure.name}>
           <LabeledList>
+            {procedure.currentStage}
             <LabeledList.Item label="Next Step">
-              {procedure.next_step}
+              {procedure.nextSteps}
               {procedure.chems_needed && (
                 <>
                   <b>Required Chemicals:</b>
@@ -138,4 +141,3 @@ const PatientStateView = (props, context) => {
     </>
   );
 };
-

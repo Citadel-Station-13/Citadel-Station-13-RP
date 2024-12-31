@@ -122,9 +122,9 @@
 			occupantData["bloodPercent"] = round(100*(blood_volume/occupant.species.blood_volume), 0.01) //copy pasta ends here
 
 			occupantData["bloodType"] = occupant.dna.b_type
-			occupantData["surgery"] = build_surgery_list(user)
+			occupantData["procedures"] = build_surgery_list(user)
 
-	data["occupant"] = occupantData
+	data["patient"] = occupantData
 	data["verbose"]=verbose
 	data["oxyAlarm"]=oxyAlarm
 	data["choice"]=choice
@@ -289,7 +289,11 @@
 			/datum/surgery_step/cavity,
 			/datum/surgery_step/limb,
 			/datum/surgery_step/brainstem,
-		)
+			/datum/surgery_step/internal/detatch_organ,
+			/datum/surgery_step/internal/remove_organ,
+			/datum/surgery_step/internal/attach_organ,
+			/datum/surgery_step/internal/rip_organ,
+		) // exclude organ manipulation so people don't get spammed with organ removal prompts
 	good_surgeries = GLOB.surgery_steps
 	for(var/datum/surgery_step/S in good_surgeries)
 		if(S.type in banned_surgery_steps)
