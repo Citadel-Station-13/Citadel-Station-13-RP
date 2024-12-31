@@ -11986,7 +11986,7 @@
 	pixel_x = -32
 	},
 /turf/simulated/wall/r_wall/prepainted,
-/area/crew_quarters/sleep/Dorm_13)
+/area/crew_quarters/recreation_area)
 "hGe" = (
 /obj/machinery/door/airlock/glass{
 	desc = "A room dedicated for the repairs and recharging of adherent.";
@@ -15879,7 +15879,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/wood,
-/area/crew_quarters/sleep/Dorm_13)
+/area/crew_quarters/recreation_area)
 "kuG" = (
 /obj/landmark/spawnpoint/latejoin/station/cryogenics,
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
@@ -16701,7 +16701,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/carpet/turcarpet,
-/area/crew_quarters/sleep/Dorm_13)
+/area/crew_quarters/recreation_area)
 "kZA" = (
 /obj/effect/floor_decal/corner/green/full{
 	dir = 1
@@ -23396,10 +23396,6 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
 /turf/simulated/floor/tiled/dark,
 /area/security/hallway)
-"pwn" = (
-/obj/spawner/window/low_wall/full/firelocks/nogrille,
-/turf/simulated/floor/plating,
-/area/crew_quarters/sleep/Dorm_13)
 "pwo" = (
 /turf/simulated/wall/r_wall/prepainted/civilian,
 /area/crew_quarters/game_room)
@@ -23780,7 +23776,7 @@
 	},
 /obj/effect/floor_decal/spline/plain,
 /turf/simulated/floor/carpet/turcarpet,
-/area/crew_quarters/sleep/Dorm_13)
+/area/crew_quarters/recreation_area)
 "pNn" = (
 /obj/effect/floor_decal/industrial/hatch/yellow,
 /obj/machinery/light/small{
@@ -26869,7 +26865,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/wood,
-/area/crew_quarters/sleep/Dorm_13)
+/area/crew_quarters/recreation_area)
 "rPa" = (
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/corner/navblue/border,
@@ -55582,7 +55578,7 @@ kZu
 pMS
 kur
 rOW
-pwn
+vaf
 sTd
 bBc
 sid

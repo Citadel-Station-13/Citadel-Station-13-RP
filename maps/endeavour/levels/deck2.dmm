@@ -4432,6 +4432,9 @@
 "cEs" = (
 /obj/effect/floor_decal/borderfloorwhite,
 /obj/effect/floor_decal/corner/paleblue/border,
+/obj/structure/cable/green{
+	icon_state = "1-8"
+	},
 /turf/simulated/floor/tiled/white,
 /area/shuttle/emt/cockpit)
 "cEy" = (
@@ -28193,6 +28196,9 @@
 /obj/effect/floor_decal/corner/paleblue/border{
 	dir = 1
 	},
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
 /turf/simulated/floor/tiled/white,
 /area/shuttle/emt/cockpit)
 "qLf" = (
@@ -35862,9 +35868,6 @@
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d2portafthall)
 "vFG" = (
-/obj/structure/cable/green{
-	icon_state = "1-2"
-	},
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 1
 	},
@@ -38690,13 +38693,13 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/psych_ward)
 "xhP" = (
-/obj/structure/cable/green{
-	icon_state = "1-8"
-	},
 /obj/effect/floor_decal/borderfloorwhite,
 /obj/effect/floor_decal/corner/paleblue/border,
 /obj/machinery/computer/ship/sensors{
 	dir = 8
+	},
+/obj/structure/cable/green{
+	icon_state = "0-4"
 	},
 /turf/simulated/floor/tiled/white,
 /area/shuttle/emt/cockpit)
